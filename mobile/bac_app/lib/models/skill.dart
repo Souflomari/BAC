@@ -101,7 +101,9 @@ class LessonCard {
       titleFr: json['title_fr'] as String? ?? '',
       bodyFr: json['body_fr'] as String? ?? '',
       figure: json['figure'] as Map<String, dynamic>?,
-      widgetType: json['widget_type'] as String?,
+      // Accept either snake_case (canonical) or camelCase (legacy from
+      // migrations 011, 012). Mixed convention exists in the DB.
+      widgetType: (json['widget_type'] ?? json['widgetType']) as String?,
       config: json['config'] as Map<String, dynamic>?,
     );
   }

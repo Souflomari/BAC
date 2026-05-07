@@ -122,7 +122,7 @@ void main(List<String> args) {
               'type': 'interactive',
               'title_fr': 'Exploration',
               'body_fr': 'Manipule les paramètres pour développer ton intuition.',
-              'widgetType': r['widget_type'],
+              'widget_type': r['widget_type'],
               if (r['config'] != null) 'config': r['config'],
             });
           }
