@@ -1,0 +1,38 @@
+# Secrets — never commit
+.env
+.env.local
+.env.production
+*.token
+.supabase_token*
+
+# Vercel
+.vercel/
+.vercel
+
+# Flutter/Dart build artifacts
+**/build/
+**/.dart_tool/
+**/.flutter-plugins-dependencies
+**/.flutter-plugins
+**/pubspec.lock.bak
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.history/
+.DS_Store
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Python
+*.pyc
+__pycache__/
+
+# Supabase local
+backend/supabase/.branches/
+backend/supabase/.temp/

@@ -1,0 +1,1609 @@
+{
+  "stream": "sciences_maths_a",
+  "stream_label_fr": "2ème Bac Sciences Mathématiques A (BIOF)",
+  "stream_label_ar": "الثانية باكالوريا علوم رياضية أ",
+  "version": "2025-2026",
+  "_doc": "Curriculum tree for SMA. Each skill carries an `interactive_resources` array referencing native Flutter widget slugs. status='ready' = widget exists and wired today; status='todo' = scheduled in Phase 3.",
+  "subjects": [
+    {
+      "subject_id": "math",
+      "name_fr": "Mathématiques",
+      "name_ar": "الرياضيات",
+      "coefficient": 9,
+      "exam_type": "national",
+      "topics": [
+        {
+          "topic_id": "limits",
+          "name_fr": "Limites et continuité",
+          "name_ar": "النهايات والاستمرارية",
+          "exam_relevance_weight": 0.95,
+          "skills": [
+            {
+              "subtopic_id": "limit_def",
+              "name_fr": "Notion de limite (ε-δ)",
+              "name_ar": "مفهوم النهاية",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" },
+                { "widget_type": "epsilon_delta_visualizer", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "eps_delta" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "limit_calc",
+              "name_fr": "Calcul de limites",
+              "name_ar": "حساب النهايات",
+              "difficulty_level": 2,
+              "prerequisites": ["limit_def"],
+              "exam_relevance_weight": 0.95,
+              "question_templates": ["numeric", "mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "limit_ops",
+              "name_fr": "Opérations sur les limites",
+              "name_ar": "العمليات على النهايات",
+              "difficulty_level": 3,
+              "prerequisites": ["limit_calc"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "continuity",
+              "name_fr": "Continuité",
+              "name_ar": "الاستمرارية",
+              "difficulty_level": 3,
+              "prerequisites": ["limit_calc"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "true_false", "short_text"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "tvi",
+              "name_fr": "Théorème des valeurs intermédiaires",
+              "name_ar": "مبرهنة القيم الوسيطية",
+              "difficulty_level": 3,
+              "prerequisites": ["continuity"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "asymptotes",
+              "name_fr": "Branches infinies et asymptotes",
+              "name_ar": "الفروع اللانهائية والمقاربات",
+              "difficulty_level": 3,
+              "prerequisites": ["limit_ops"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "derivatives",
+          "name_fr": "Dérivabilité et étude de fonctions",
+          "name_ar": "الاشتقاق ودراسة الدوال",
+          "exam_relevance_weight": 0.95,
+          "skills": [
+            {
+              "subtopic_id": "deriv_definition",
+              "name_fr": "Dérivabilité en un point",
+              "name_ar": "الاشتقاق في نقطة",
+              "difficulty_level": 2,
+              "prerequisites": ["limit_calc"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "derivative_graph", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "local_derivative" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "deriv_basic",
+              "name_fr": "Dérivées de base",
+              "name_ar": "الاشتقاقات الأساسية",
+              "difficulty_level": 1,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "derivative_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "deriv_rules",
+              "name_fr": "Règles de dérivation",
+              "name_ar": "قواعد الاشتقاق",
+              "difficulty_level": 2,
+              "prerequisites": ["deriv_basic"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["mcq", "numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "derivative_graph", "status": "ready" },
+                { "widget_type": "chain_rule_visualizer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "deriv_apps",
+              "name_fr": "Applications (tangente, extrema, variations)",
+              "name_ar": "تطبيقات الاشتقاق",
+              "difficulty_level": 3,
+              "prerequisites": ["deriv_rules"],
+              "exam_relevance_weight": 0.95,
+              "question_templates": ["numeric", "multi_step", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "derivative_graph", "status": "ready" },
+                { "widget_type": "sign_table", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "function_study",
+              "name_fr": "Étude complète d'une fonction",
+              "name_ar": "دراسة دالة",
+              "difficulty_level": 4,
+              "prerequisites": ["deriv_apps", "asymptotes"],
+              "exam_relevance_weight": 0.95,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" },
+                { "widget_type": "sign_table", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "ln_function",
+          "name_fr": "Fonction logarithme népérien",
+          "name_ar": "الدالة اللوغاريتمية النيبيرية",
+          "exam_relevance_weight": 0.90,
+          "skills": [
+            {
+              "subtopic_id": "ln_basics",
+              "name_fr": "Définition et propriétés de ln",
+              "name_ar": "تعريف وخصائص ln",
+              "difficulty_level": 2,
+              "prerequisites": ["limit_calc"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "ln_derivative",
+              "name_fr": "Dérivée et primitives de ln",
+              "name_ar": "اشتقاق ودوال أصلية للوغاريتم",
+              "difficulty_level": 3,
+              "prerequisites": ["ln_basics", "deriv_rules"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "derivative_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "ln_equations",
+              "name_fr": "Équations et inéquations avec ln",
+              "name_ar": "معادلات ومتراجحات اللوغاريتم",
+              "difficulty_level": 3,
+              "prerequisites": ["ln_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "ln_study",
+              "name_fr": "Étude de fonctions avec ln",
+              "name_ar": "دراسة دوال تشمل ln",
+              "difficulty_level": 4,
+              "prerequisites": ["ln_derivative", "function_study"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" },
+                { "widget_type": "sign_table", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "exp_function",
+          "name_fr": "Fonctions exponentielles",
+          "name_ar": "الدوال الأسية",
+          "exam_relevance_weight": 0.90,
+          "skills": [
+            {
+              "subtopic_id": "exp_basics",
+              "name_fr": "Définition et propriétés de exp",
+              "name_ar": "تعريف وخصائص الدالة الأسية",
+              "difficulty_level": 2,
+              "prerequisites": ["ln_basics"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "exponential_growth" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "exp_derivative",
+              "name_fr": "Dérivée et primitives de exp",
+              "name_ar": "اشتقاق ودوال أصلية للدالة الأسية",
+              "difficulty_level": 3,
+              "prerequisites": ["exp_basics", "deriv_rules"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "derivative_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "exp_equations",
+              "name_fr": "Équations et inéquations avec exp",
+              "name_ar": "معادلات ومتراجحات الدالة الأسية",
+              "difficulty_level": 3,
+              "prerequisites": ["exp_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "exp_study",
+              "name_fr": "Étude de fonctions avec exp",
+              "name_ar": "دراسة دوال تشمل exp",
+              "difficulty_level": 4,
+              "prerequisites": ["exp_derivative", "function_study"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "exp_general",
+              "name_fr": "Fonctions a^x et applications",
+              "name_ar": "الدوال a^x وتطبيقاتها",
+              "difficulty_level": 3,
+              "prerequisites": ["exp_basics", "ln_basics"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "function_graph", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "sequences",
+          "name_fr": "Suites numériques",
+          "name_ar": "المتتاليات العددية",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "sequences_review",
+              "name_fr": "Rappels sur les suites",
+              "name_ar": "تذكير بالمتتاليات",
+              "difficulty_level": 1,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.70,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "sequence_viz", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "sequence_convergence",
+              "name_fr": "Convergence des suites",
+              "name_ar": "تقارب المتتاليات",
+              "difficulty_level": 2,
+              "prerequisites": ["sequences_review", "limit_calc"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["mcq", "true_false", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "sequence_viz", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "recurrent_sequences",
+              "name_fr": "Suites récurrentes u_(n+1)=f(u_n)",
+              "name_ar": "المتتاليات التراجعية",
+              "difficulty_level": 3,
+              "prerequisites": ["sequence_convergence"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "sequence_viz", "status": "ready" },
+                { "widget_type": "recurrence_solver", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "fixed_point",
+              "name_fr": "Convergence vers point fixe",
+              "name_ar": "التقارب نحو نقطة ثابتة",
+              "difficulty_level": 4,
+              "prerequisites": ["recurrent_sequences"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "sequence_viz", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "adjacent_sequences",
+              "name_fr": "Suites adjacentes",
+              "name_ar": "المتتاليات المتجاورة",
+              "difficulty_level": 3,
+              "prerequisites": ["sequence_convergence"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": [
+                { "widget_type": "sequence_viz", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "integration",
+          "name_fr": "Calcul intégral et primitives",
+          "name_ar": "التكامل والدوال الأصلية",
+          "exam_relevance_weight": 0.90,
+          "skills": [
+            {
+              "subtopic_id": "primitives",
+              "name_fr": "Primitives",
+              "name_ar": "الدوال الأصلية",
+              "difficulty_level": 2,
+              "prerequisites": ["deriv_rules"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "sign_table", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "definite_integral",
+              "name_fr": "Intégrale définie",
+              "name_ar": "التكامل المعين",
+              "difficulty_level": 3,
+              "prerequisites": ["primitives"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "area_curve", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "integral_as_area" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "riemann_sums",
+              "name_fr": "Sommes de Riemann",
+              "name_ar": "مجاميع ريمان",
+              "difficulty_level": 3,
+              "prerequisites": ["definite_integral"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "area_curve", "status": "ready", "config": { "show_riemann_slider": true } }
+              ]
+            },
+            {
+              "subtopic_id": "ipp",
+              "name_fr": "Intégration par parties",
+              "name_ar": "المكاملة بالأجزاء",
+              "difficulty_level": 3,
+              "prerequisites": ["definite_integral"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "ipp_calculator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "substitution",
+              "name_fr": "Changement de variable",
+              "name_ar": "تغيير المتغير",
+              "difficulty_level": 4,
+              "prerequisites": ["definite_integral"],
+              "exam_relevance_weight": 0.70,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "area_curve", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "integral_apps",
+              "name_fr": "Calcul d'aires et volumes",
+              "name_ar": "حساب المساحات والحجوم",
+              "difficulty_level": 4,
+              "prerequisites": ["definite_integral"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "area_curve", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "differential_equations",
+          "name_fr": "Équations différentielles",
+          "name_ar": "المعادلات التفاضلية",
+          "exam_relevance_weight": 0.75,
+          "skills": [
+            {
+              "subtopic_id": "ode_first_order",
+              "name_fr": "y'+ay=b (premier ordre)",
+              "name_ar": "معادلات تفاضلية من الرتبة الأولى",
+              "difficulty_level": 3,
+              "prerequisites": ["primitives"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["multi_step", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "slope_field", "status": "ready" },
+                { "widget_type": "diff_eq_solver", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "ode_second_order",
+              "name_fr": "y''+ω²y=0 (second ordre)",
+              "name_ar": "معادلات تفاضلية من الرتبة الثانية",
+              "difficulty_level": 4,
+              "prerequisites": ["ode_first_order"],
+              "exam_relevance_weight": 0.70,
+              "question_templates": ["multi_step", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "slope_field", "status": "ready" },
+                { "widget_type": "diff_eq_solver", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "ode_apps",
+              "name_fr": "Applications physiques (RC, RLC, mécanique)",
+              "name_ar": "تطبيقات فيزيائية",
+              "difficulty_level": 4,
+              "prerequisites": ["ode_first_order", "ode_second_order"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "diff_eq_solver", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "complex_numbers",
+          "name_fr": "Nombres complexes",
+          "name_ar": "الأعداد العقدية",
+          "exam_relevance_weight": 0.90,
+          "skills": [
+            {
+              "subtopic_id": "complex_basics",
+              "name_fr": "Forme algébrique et opérations",
+              "name_ar": "الشكل الجبري والعمليات",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "complex_plane", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "complex_trig",
+              "name_fr": "Forme trigonométrique et exponentielle",
+              "name_ar": "الشكل المثلثي والأسي",
+              "difficulty_level": 3,
+              "prerequisites": ["complex_basics"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "complex_plane", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "complex_rotation" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "complex_multiplication",
+              "name_fr": "Multiplication = rotation et homothétie",
+              "name_ar": "الضرب = دوران وتحاكي",
+              "difficulty_level": 3,
+              "prerequisites": ["complex_trig"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "complex_multiplication", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "complex_rotation" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "complex_geometry",
+              "name_fr": "Applications géométriques",
+              "name_ar": "تطبيقات هندسية",
+              "difficulty_level": 4,
+              "prerequisites": ["complex_multiplication"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "complex_plane", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "complex_equations",
+              "name_fr": "Équations dans ℂ",
+              "name_ar": "معادلات في ℂ",
+              "difficulty_level": 3,
+              "prerequisites": ["complex_basics"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "complex_plane", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "moivre",
+              "name_fr": "Formule de Moivre et racines",
+              "name_ar": "صيغة دو موافر والجذور",
+              "difficulty_level": 4,
+              "prerequisites": ["complex_trig"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["multi_step", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "complex_plane", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "complex_rotation" }, "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "geometry_3d",
+          "name_fr": "Géométrie dans l'espace",
+          "name_ar": "الهندسة في الفضاء",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "vectors_3d",
+              "name_fr": "Produit scalaire et produit vectoriel",
+              "name_ar": "الجداء السلمي والمتجهي",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "geometry_3d_viewer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "lines_planes",
+              "name_fr": "Équations de droites et plans",
+              "name_ar": "معادلات المستقيمات والمستويات",
+              "difficulty_level": 3,
+              "prerequisites": ["vectors_3d"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "geometry_3d_viewer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "distances_3d",
+              "name_fr": "Distances et projections",
+              "name_ar": "المسافات والمساقط",
+              "difficulty_level": 4,
+              "prerequisites": ["lines_planes"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "geometry_3d_viewer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "sphere_3d",
+              "name_fr": "Sphères et intersections",
+              "name_ar": "الكرات والتقاطعات",
+              "difficulty_level": 4,
+              "prerequisites": ["lines_planes"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["multi_step"],
+              "interactive_resources": [
+                { "widget_type": "geometry_3d_viewer", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "counting_probability",
+          "name_fr": "Dénombrement et probabilités",
+          "name_ar": "العد والاحتمالات",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "counting",
+              "name_fr": "Arrangements, permutations, combinaisons",
+              "name_ar": "الترتيبات والتباديل والتوليفات",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "probability_tree", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "prob_basics",
+              "name_fr": "Probabilités de base",
+              "name_ar": "الاحتمالات الأساسية",
+              "difficulty_level": 1,
+              "prerequisites": ["counting"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "probability_tree", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "conditional_prob",
+              "name_fr": "Probabilités conditionnelles",
+              "name_ar": "الاحتمالات الشرطية",
+              "difficulty_level": 2,
+              "prerequisites": ["prob_basics"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "probability_tree", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "independence",
+              "name_fr": "Indépendance d'événements",
+              "name_ar": "استقلالية الأحداث",
+              "difficulty_level": 2,
+              "prerequisites": ["conditional_prob"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": [
+                { "widget_type": "probability_tree", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "random_variables",
+              "name_fr": "Variables aléatoires",
+              "name_ar": "المتغيرات العشوائية",
+              "difficulty_level": 3,
+              "prerequisites": ["prob_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "probability_tree", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "binomial_law",
+              "name_fr": "Loi binomiale",
+              "name_ar": "القانون الحدي",
+              "difficulty_level": 3,
+              "prerequisites": ["random_variables"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "probability_tree", "status": "ready" },
+                { "widget_type": "monte_carlo_simulator", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "arithmetic_integers",
+          "name_fr": "Arithmétique dans ℤ",
+          "name_ar": "الحسابيات في ℤ",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "divisibility",
+              "name_fr": "Divisibilité dans ℤ",
+              "name_ar": "القابلية للقسمة في ℤ",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "true_false", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "euclid_visualizer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "euclid_division",
+              "name_fr": "Division euclidienne",
+              "name_ar": "القسمة الإقليدية",
+              "difficulty_level": 2,
+              "prerequisites": ["divisibility"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "euclid_visualizer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "gcd",
+              "name_fr": "PGCD et algorithme d'Euclide",
+              "name_ar": "ق.م.م وخوارزمية أقليدس",
+              "difficulty_level": 3,
+              "prerequisites": ["euclid_division"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "euclid_visualizer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "bezout",
+              "name_fr": "Théorème de Bézout",
+              "name_ar": "مبرهنة بيزو",
+              "difficulty_level": 4,
+              "prerequisites": ["gcd"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "euclid_visualizer", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "congruences",
+              "name_fr": "Congruences modulo n",
+              "name_ar": "التطابقات",
+              "difficulty_level": 3,
+              "prerequisites": ["euclid_division"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "euclid_visualizer", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "algebraic_structures",
+          "name_fr": "Structures algébriques",
+          "name_ar": "البنيات الجبرية",
+          "exam_relevance_weight": 0.65,
+          "skills": [
+            {
+              "subtopic_id": "groups",
+              "name_fr": "Groupes",
+              "name_ar": "الزمر",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.65,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": []
+            },
+            {
+              "subtopic_id": "rings_fields",
+              "name_fr": "Anneaux et corps",
+              "name_ar": "الحلقات والحقول",
+              "difficulty_level": 4,
+              "prerequisites": ["groups"],
+              "exam_relevance_weight": 0.60,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject_id": "physics",
+      "name_fr": "Physique-Chimie",
+      "name_ar": "الفيزياء والكيمياء",
+      "coefficient": 7,
+      "exam_type": "national",
+      "topics": [
+        {
+          "topic_id": "mechanical_waves",
+          "name_fr": "Ondes mécaniques progressives",
+          "name_ar": "الموجات الميكانيكية المتوالية",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "wave_basics",
+              "name_fr": "Caractéristiques d'une onde",
+              "name_ar": "خصائص الموجة",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "true_false", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "wave", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "wave_propagation",
+              "name_fr": "Propagation et célérité",
+              "name_ar": "الانتشار والسرعة",
+              "difficulty_level": 2,
+              "prerequisites": ["wave_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "wave", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "periodic_waves",
+          "name_fr": "Ondes périodiques, diffraction et interférences",
+          "name_ar": "الموجات الدورية والحيود والتداخل",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "periodic_waves",
+              "name_fr": "Ondes périodiques",
+              "name_ar": "الموجات الدورية",
+              "difficulty_level": 2,
+              "prerequisites": ["wave_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "wave", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "diffraction",
+              "name_fr": "Diffraction (a·sinθ=kλ)",
+              "name_ar": "الحيود",
+              "difficulty_level": 3,
+              "prerequisites": ["periodic_waves"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "wave", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "young_slits" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "interference",
+              "name_fr": "Interférences (fentes d'Young)",
+              "name_ar": "التداخل",
+              "difficulty_level": 4,
+              "prerequisites": ["diffraction"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "wave", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "young_slits" }, "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "nuclear",
+          "name_fr": "Transformations nucléaires",
+          "name_ar": "التحولات النووية",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "nuclear_radioactivity",
+              "name_fr": "Radioactivité (α, β, γ)",
+              "name_ar": "النشاط الإشعاعي",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "nuclear_decay_simulator", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "half_life" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "nuclear_fission_fusion",
+              "name_fr": "Fission et fusion",
+              "name_ar": "الانشطار والاندماج",
+              "difficulty_level": 3,
+              "prerequisites": ["nuclear_radioactivity"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "nuclear_decay_simulator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "half_life",
+              "name_fr": "Loi de décroissance et demi-vie",
+              "name_ar": "قانون التناقص ونصف العمر",
+              "difficulty_level": 3,
+              "prerequisites": ["nuclear_radioactivity"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "nuclear_decay_simulator", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "half_life" }, "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "rc_circuit",
+          "name_fr": "Dipôle RC",
+          "name_ar": "ثنائي القطب RC",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "rc_charge_discharge",
+              "name_fr": "Charge et décharge d'un condensateur",
+              "name_ar": "شحن وتفريغ المكثف",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "capacitor_charge", "status": "ready" },
+                { "widget_type": "circuit", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "rc_time_constant",
+              "name_fr": "Constante de temps τ=RC",
+              "name_ar": "الزمن المميز",
+              "difficulty_level": 3,
+              "prerequisites": ["rc_charge_discharge"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "capacitor_charge", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "rl_circuit",
+          "name_fr": "Dipôle RL",
+          "name_ar": "ثنائي القطب RL",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "rl_establishment",
+              "name_fr": "Établissement et rupture du courant",
+              "name_ar": "إقامة وانقطاع التيار",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "circuit", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "rl_time_constant",
+              "name_fr": "Constante de temps τ=L/R",
+              "name_ar": "الزمن المميز τ=L/R",
+              "difficulty_level": 3,
+              "prerequisites": ["rl_establishment"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "circuit", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "rlc_free",
+          "name_fr": "Oscillations RLC libres",
+          "name_ar": "الذبذبات الحرة RLC",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "rlc_regimes",
+              "name_fr": "Régimes (apériodique, critique, pseudo-périodique)",
+              "name_ar": "الأنظمة الذبذبية",
+              "difficulty_level": 3,
+              "prerequisites": ["rc_charge_discharge", "rl_establishment"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "rlc", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "rlc_period",
+              "name_fr": "Période propre et amortissement",
+              "name_ar": "الدور الذاتي والتخميد",
+              "difficulty_level": 4,
+              "prerequisites": ["rlc_regimes"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "rlc", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "rlc_forced",
+          "name_fr": "Oscillations RLC forcées et résonance",
+          "name_ar": "الذبذبات القسرية والرنين",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "forced_oscillations",
+              "name_fr": "Oscillations forcées",
+              "name_ar": "الذبذبات القسرية",
+              "difficulty_level": 4,
+              "prerequisites": ["rlc_regimes"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "rlc", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "resonance",
+              "name_fr": "Résonance et facteur de qualité Q",
+              "name_ar": "الرنين ومعامل الجودة",
+              "difficulty_level": 4,
+              "prerequisites": ["forced_oscillations"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "rlc", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "resonance" }, "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "am_modulation",
+          "name_fr": "Modulation d'amplitude",
+          "name_ar": "تضمين السعة",
+          "exam_relevance_weight": 0.65,
+          "skills": [
+            {
+              "subtopic_id": "am_basics",
+              "name_fr": "Modulation d'amplitude",
+              "name_ar": "تضمين السعة",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.65,
+              "question_templates": ["mcq", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "am_modulation", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "am_demodulation",
+              "name_fr": "Démodulation",
+              "name_ar": "إزالة التضمين",
+              "difficulty_level": 4,
+              "prerequisites": ["am_basics"],
+              "exam_relevance_weight": 0.55,
+              "question_templates": ["mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "am_modulation", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "mechanics_newton",
+          "name_fr": "Lois de Newton",
+          "name_ar": "قوانين نيوتن",
+          "exam_relevance_weight": 0.95,
+          "skills": [
+            {
+              "subtopic_id": "newton_laws",
+              "name_fr": "Lois de Newton",
+              "name_ar": "قوانين نيوتن",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.95,
+              "question_templates": ["numeric", "multi_step", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "force_diagram", "status": "ready" },
+                { "widget_type": "motion_simulator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "mrur",
+              "name_fr": "Mouvement rectiligne (uniforme et uniformément varié)",
+              "name_ar": "الحركة المستقيمية",
+              "difficulty_level": 2,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "motion_simulator", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "gravity_field",
+          "name_fr": "Champ de pesanteur uniforme",
+          "name_ar": "حقل الثقالة المنتظم",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "projectile_motion",
+              "name_fr": "Tir avec angle (projectile)",
+              "name_ar": "حركة المقذوف",
+              "difficulty_level": 3,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "projectile", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "free_fall",
+              "name_fr": "Chute libre verticale",
+              "name_ar": "السقوط الحر",
+              "difficulty_level": 2,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "projectile", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "e_field",
+          "name_fr": "Champ électrique uniforme",
+          "name_ar": "الحقل الكهربائي المنتظم",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "e_field_basics",
+              "name_fr": "Champ E uniforme",
+              "name_ar": "الحقل E المنتظم",
+              "difficulty_level": 3,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "e_field_uniform", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "cathode_oscilloscope",
+              "name_fr": "Déviation d'une particule (oscilloscope cathodique)",
+              "name_ar": "انحراف جسيم مشحون",
+              "difficulty_level": 4,
+              "prerequisites": ["e_field_basics"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "e_field_uniform", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "b_field",
+          "name_fr": "Champ magnétique uniforme",
+          "name_ar": "الحقل المغنطيسي المنتظم",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "b_field_basics",
+              "name_fr": "Champ B uniforme",
+              "name_ar": "الحقل B المنتظم",
+              "difficulty_level": 3,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "b_field_uniform", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "circular_motion_charge",
+              "name_fr": "Mouvement circulaire d'une charge (r=mv/qB)",
+              "name_ar": "الحركة الدائرية لشحنة",
+              "difficulty_level": 4,
+              "prerequisites": ["b_field_basics"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["multi_step", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "b_field_uniform", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "magnetic_deflection" }, "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "laplace_force",
+              "name_fr": "Force de Laplace",
+              "name_ar": "قوة لابلاص",
+              "difficulty_level": 3,
+              "prerequisites": ["b_field_basics"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "b_field_uniform", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "pendulum",
+          "name_fr": "Pendule pesant et élastique",
+          "name_ar": "النواس الثقالي والمرن",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "pendulum_simple",
+              "name_fr": "Pendule simple",
+              "name_ar": "النواس البسيط",
+              "difficulty_level": 3,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "pendulum_lab", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "pendulum_elastic",
+              "name_fr": "Pendule élastique (masse-ressort)",
+              "name_ar": "النواس المرن",
+              "difficulty_level": 3,
+              "prerequisites": ["pendulum_simple"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "pendulum_lab", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "pendulum_period",
+              "name_fr": "Période et identification de g",
+              "name_ar": "الدور وتحديد g",
+              "difficulty_level": 3,
+              "prerequisites": ["pendulum_simple"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "pendulum_lab", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "energy_aspects",
+          "name_fr": "Aspects énergétiques",
+          "name_ar": "الجوانب الطاقية",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "kinetic_potential",
+              "name_fr": "Énergies cinétique et potentielle",
+              "name_ar": "الطاقتان الحركية والكامنة",
+              "difficulty_level": 2,
+              "prerequisites": ["newton_laws"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "motion_simulator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "mechanical_energy",
+              "name_fr": "Énergie mécanique",
+              "name_ar": "الطاقة الميكانيكية",
+              "difficulty_level": 3,
+              "prerequisites": ["kinetic_potential"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "motion_simulator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "oscillator_energy",
+              "name_fr": "Énergie d'un oscillateur",
+              "name_ar": "طاقة المتذبذب",
+              "difficulty_level": 3,
+              "prerequisites": ["mechanical_energy", "pendulum_simple"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "rlc", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "kinetics",
+          "name_fr": "Cinétique chimique",
+          "name_ar": "الحركية الكيميائية",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "reaction_speed",
+              "name_fr": "Vitesse de réaction v=−d[A]/dt",
+              "name_ar": "سرعة التفاعل",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "kinetics_reactor", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "kinetic_factors",
+              "name_fr": "Facteurs cinétiques (T, [réactif])",
+              "name_ar": "العوامل الحركية",
+              "difficulty_level": 2,
+              "prerequisites": ["reaction_speed"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["mcq", "true_false", "numeric"],
+              "interactive_resources": [
+                { "widget_type": "kinetics_reactor", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "half_time",
+              "name_fr": "Temps de demi-réaction t½",
+              "name_ar": "زمن نصف التفاعل",
+              "difficulty_level": 3,
+              "prerequisites": ["reaction_speed"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "kinetics_reactor", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "reversible_reactions",
+          "name_fr": "Transformations dans les deux sens",
+          "name_ar": "التحولات في الاتجاهين",
+          "exam_relevance_weight": 0.75,
+          "skills": [
+            {
+              "subtopic_id": "reversible_basics",
+              "name_fr": "Réactions réversibles",
+              "name_ar": "التفاعلات الانعكاسية",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": [
+                { "widget_type": "equilibrium_qr_k", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "equilibrium_evolution",
+              "name_fr": "Évolution vers l'équilibre",
+              "name_ar": "التطور نحو التوازن",
+              "difficulty_level": 3,
+              "prerequisites": ["reversible_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "equilibrium_qr_k", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "chemical_equilibrium" }, "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "equilibrium",
+          "name_fr": "État d'équilibre (Qr, K)",
+          "name_ar": "حالة التوازن",
+          "exam_relevance_weight": 0.85,
+          "skills": [
+            {
+              "subtopic_id": "qr_k",
+              "name_fr": "Quotient de réaction Qr et constante K",
+              "name_ar": "حاصل التفاعل وثابتة التوازن",
+              "difficulty_level": 3,
+              "prerequisites": ["equilibrium_evolution"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "equilibrium_qr_k", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "evolution_direction",
+              "name_fr": "Sens d'évolution spontanée",
+              "name_ar": "منحى التطور التلقائي",
+              "difficulty_level": 3,
+              "prerequisites": ["qr_k"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "equilibrium_qr_k", "status": "ready" },
+                { "widget_type": "concept_animation", "config": { "animation_id": "chemical_equilibrium" }, "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "acid_base",
+          "name_fr": "Acide-base et pH",
+          "name_ar": "الحموض والقواعد و pH",
+          "exam_relevance_weight": 0.90,
+          "skills": [
+            {
+              "subtopic_id": "ph_definition",
+              "name_fr": "Définition du pH",
+              "name_ar": "تعريف pH",
+              "difficulty_level": 2,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "acid_base_ph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "ka_pka",
+              "name_fr": "Constante d'acidité Ka et pKa",
+              "name_ar": "ثابتة الحمضية Ka و pKa",
+              "difficulty_level": 3,
+              "prerequisites": ["ph_definition", "qr_k"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "acid_base_ph", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "predominance",
+              "name_fr": "Diagramme de prédominance",
+              "name_ar": "مبيان الهيمنة",
+              "difficulty_level": 3,
+              "prerequisites": ["ka_pka"],
+              "exam_relevance_weight": 0.85,
+              "question_templates": ["mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "acid_base_ph", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "titration",
+          "name_fr": "Dosage acide-base",
+          "name_ar": "المعايرة الحمض-قاعدية",
+          "exam_relevance_weight": 0.90,
+          "skills": [
+            {
+              "subtopic_id": "titration_curve",
+              "name_fr": "Courbe de titrage pH=f(V)",
+              "name_ar": "منحنى المعايرة",
+              "difficulty_level": 3,
+              "prerequisites": ["ka_pka"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "titration_simulator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "equivalence_point",
+              "name_fr": "Point d'équivalence",
+              "name_ar": "نقطة التكافؤ",
+              "difficulty_level": 3,
+              "prerequisites": ["titration_curve"],
+              "exam_relevance_weight": 0.90,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "titration_simulator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "indicators",
+              "name_fr": "Indicateurs colorés",
+              "name_ar": "الكواشف الملونة",
+              "difficulty_level": 2,
+              "prerequisites": ["equivalence_point"],
+              "exam_relevance_weight": 0.70,
+              "question_templates": ["mcq", "true_false"],
+              "interactive_resources": [
+                { "widget_type": "titration_simulator", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "electrochemistry",
+          "name_fr": "Piles et électrolyse",
+          "name_ar": "الأعمدة والإلكتروليز",
+          "exam_relevance_weight": 0.80,
+          "skills": [
+            {
+              "subtopic_id": "daniell_cell_basics",
+              "name_fr": "Pile Daniell",
+              "name_ar": "عمود دانيال",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "daniell_cell", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "emf_potential",
+              "name_fr": "Force électromotrice ΔE",
+              "name_ar": "القوة الكهرمحركة",
+              "difficulty_level": 3,
+              "prerequisites": ["daniell_cell_basics"],
+              "exam_relevance_weight": 0.80,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "daniell_cell", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "electrolysis",
+              "name_fr": "Électrolyse",
+              "name_ar": "الإلكتروليز",
+              "difficulty_level": 3,
+              "prerequisites": ["daniell_cell_basics"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["numeric", "mcq"],
+              "interactive_resources": [
+                { "widget_type": "daniell_cell", "status": "ready" }
+              ]
+            }
+          ]
+        },
+        {
+          "topic_id": "esterification",
+          "name_fr": "Estérification et hydrolyse",
+          "name_ar": "الأسترة والحلمأة",
+          "exam_relevance_weight": 0.75,
+          "skills": [
+            {
+              "subtopic_id": "esterification_mechanism",
+              "name_fr": "Mécanisme d'estérification",
+              "name_ar": "آلية الأسترة",
+              "difficulty_level": 3,
+              "prerequisites": [],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["mcq", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "esterification_animator", "status": "ready" }
+              ]
+            },
+            {
+              "subtopic_id": "esterification_yield",
+              "name_fr": "Rendement à l'équilibre",
+              "name_ar": "مردود التفاعل",
+              "difficulty_level": 3,
+              "prerequisites": ["esterification_mechanism", "qr_k"],
+              "exam_relevance_weight": 0.75,
+              "question_templates": ["numeric", "multi_step"],
+              "interactive_resources": [
+                { "widget_type": "esterification_animator", "status": "ready" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

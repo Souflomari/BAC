@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BacPrep - Solutions Interactives</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --primary: #4A90D9;
+      --primary-dark: #3A7BC8;
+      --secondary: #E8744F;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+      --bg: #F7FAFC;
+      --card: #FFFFFF;
+      --text: #1A202C;
+      --text-secondary: #64748B;
+      --border: #E2E8F0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    /* Question Card */
+    .question-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+    }
+
+    .question-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 20px;
+    }
+
+    .question-meta {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .question-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* Interactive Graph Area */
+    .graph-container {
+      padding: 20px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .graph-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .graph-tab {
+      padding: 8px 16px;
+      border: none;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .graph-tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .graph-canvas {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    canvas {
+      max-height: 300px;
+    }
+
+    .graph-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .graph-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .graph-control label {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .graph-control input[type="range"] {
+      width: 120px;
+      accent-color: var(--primary);
+    }
+
+    .graph-value {
+      background: var(--primary);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* Step by Step Solution */
+    .solution-section {
+      padding: 20px;
+    }
+
+    .solution-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .step-card {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--primary);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .step-card:hover {
+      background: #eef2ff;
+      transform: translateX(4px);
+    }
+
+    .step-card.active {
+      background: linear-gradient(135deg, rgba(74,144,217,0.1), rgba(74,144,217,0.05));
+      border-left-color: var(--success);
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .step-title {
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .step-points {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .step-content {
+      padding-left: 40px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .step-visual {
+      margin-top: 12px;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      display: none;
+    }
+
+    .step-card.active .step-visual {
+      display: block;
+    }
+
+    /* Interactive Elements */
+    .interactive-zone {
+      background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .interactive-label {
+      font-size: 13px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drag-area {
+      background: white;
+      border: 2px dashed var(--primary);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .drag-item {
+      background: var(--primary);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: grab;
+      font-weight: 500;
+      user-select: none;
+      transition: all 0.2s;
+    }
+
+    .drag-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(74,144,217,0.3);
+    }
+
+    .drag-item:active {
+      cursor: grabbing;
+    }
+
+    .drop-zone {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 60px;
+      transition: all 0.2s;
+    }
+
+    .drop-zone.highlight {
+      border-color: var(--primary);
+      background: rgba(74,144,217,0.05);
+    }
+
+    .drop-zone.correct {
+      border-color: var(--success);
+      background: rgba(16,185,129,0.1);
+    }
+
+    .drop-zone.wrong {
+      border-color: var(--error);
+      background: rgba(239,68,68,0.1);
+    }
+
+    /* Slider Exercise */
+    .slider-exercise {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .slider-label {
+      font-size: 16px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .slider-track {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .slider-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.1s;
+    }
+
+    input[type="range"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+    }
+
+    .slider-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .check-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .check-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .check-btn.correct {
+      background: var(--success);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-in {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    /* Navigation Dots */
+    .step-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .step-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .step-dot.active {
+      background: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Physics Simulation */
+    .physics-sim {
+      background: #1a1a2e;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .sim-canvas {
+      background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 60%, #228B22 60%, #228B22 100%);
+      border-radius: 12px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ball {
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+      border-radius: 50%;
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .sim-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .sim-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sim-btn.play {
+      background: var(--success);
+      color: white;
+    }
+
+    .sim-btn.reset {
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .sim-info {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 12px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .sim-info-item {
+      text-align: center;
+    }
+
+    .sim-info-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* Answer Input */
+    .answer-input {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .answer-input input {
+      flex: 1;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .answer-input input:focus {
+      border-color: var(--primary);
+    }
+
+    .answer-input button {
+      padding: 14px 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎓 Solution Interactive</h1>
+      <p>Examen National 2024 - Mathématiques - Sciences Maths A</p>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-meta">
+          <span class="badge">Question 3</span>
+          <span class="badge">4 points</span>
+        </div>
+        <div class="question-title">
+          On considère la fonction \( f(x) = x^3 - 3x + 1 \).<br>
+          Déterminer l'équation de la tangente à la courbe au point d'abscisse \( x = 1 \).
+        </div>
+      </div>
+
+      <!-- Interactive Graph -->
+      <div class="graph-container">
+        <div class="graph-tabs">
+          <button class="graph-tab active" onclick="showGraph('function')">Fonction</button>
+          <button class="graph-tab" onclick="showGraph('derivative')">Dérivée</button>
+          <button class="graph-tab" onclick="showGraph('tangent')">Tangente</button>
+        </div>
+        
+        <div class="graph-canvas">
+          <canvas id="functionChart"></canvas>
+          
+          <div class="graph-controls">
+            <div class="graph-control">
+              <label>Point x:</label>
+              <input type="range" min="-2" max="2" step="0.1" value="1" id="xSlider" oninput="updateX(this.value)">
+              <span class="graph-value" id="xValue">1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step by Step -->
+      <div class="solution-section">
+        <div class="solution-header">
+          <span>💡</span>
+          <span>Solution Détaillée</span>
+        </div>
+
+        <!-- Step 1: Calculate f(1) -->
+        <div class="step-card active" onclick="showStep(0)">
+          <div class="step-header">
+            <span class="step-number">1</span>
+            <span class="step-title">Calculer f(1)</span>
+            <span class="step-points">+1 pt</span>
+          </div>
+          <div class="step-content">
+            \[ f(1) = 1^3 - 3(1) + 1 = 1 - 3 + 1 = -1 \]
+          </div>
+          <div class="step-visual">
+            <div class="interactive-zone">
+              <div class="interactive-label">🎯 Vérifiez le calcul:</div>
+              <div class="answer-input">
+                <input type="number" id="f1Answer" placeholder="f(1) = ?" value="-1">
+                <button onclick="checkF1()">Vérifier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Calculate f'(x) -->
+        <div class="step-card" onclick="showStep(1)">
+          <div class="step-header">
+            <span class="step-number">2</span>
+            <span class="step-title">Calculer f'(x)</span>
+            <span class="step-points">+1 pt</span>
+          </div>
+          <div class="step-content">
+            \[ f'(x) = 3x^2 - 3 = 3(x^2 - 1) \]
+          </div>
+          <div class="step-visual">
+            <div class="interactive-zone">
+              <div class="interactive-label">📐 Tracez la tangente sur le graphique:</div>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+                Cliquez sur le graphique pour placer le point tangent, puis观察 la pente.
+              </p>
+              <div style="background: white; border-radius: 8px; padding: 12px; text-align: center;">
+                <p style="font-size: 14px;">Pente de la tangente = <strong id="slopeDisplay">f'(1) = 0</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Calculate f'(1) -->
+        <div class="step-card" onclick="showStep(2)">
+          <div class="step-header">
+            <span class="step-number">3</span>
+            <span class="step-title">Calculer f'(1)</span>
+            <span class="step-points">+1 pt</span>
+          </div>
+          <div class="step-content">
+            \[ f'(1) = 3(1)^2 - 3 = 3 - 3 = 0 \]
+          </div>
+          <div class="step-visual">
+            <div class="slider-exercise">
+              <div class="slider-label">Déplacez le point sur x = 1 et lisez f'(x):</div>
+              <div class="slider-container">
+                <span style="color: var(--text-secondary);">-3</span>
+                <div class="slider-track">
+                  <div class="slider-fill" id="derivFill"></div>
+                  <input type="range" min="-3" max="9" step="0.1" value="0" id="derivSlider" oninput="updateDeriv(this.value)">
+                </div>
+                <span style="color: var(--text-secondary);">9</span>
+              </div>
+              <div style="text-align: center; margin-top: 12px;">
+                <span class="graph-value" id="derivValue">0</span>
+              </div>
+              <button class="check-btn" id="derivBtn" onclick="checkDeriv()">Vérifier f'(1) = 0</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Write Equation -->
+        <div class="step-card" onclick="showStep(3)">
+          <div class="step-header">
+            <span class="step-number">4</span>
+            <span class="step-title">Écrire l'équation de la tangente</span>
+            <span class="step-points">+1 pt</span>
+          </div>
+          <div class="step-content">
+            Formule: \( T: y = f'(a)(x - a) + f(a) \)<br><br>
+            \[ T: y = 0(x - 1) + (-1) = -1 \]
+          </div>
+          <div class="step-visual">
+            <div class="interactive-zone">
+              <div class="interactive-label">✏️ Complétez l'équation:</div>
+              <div style="background: white; border-radius: 8px; padding: 16px; font-family: monospace;">
+                <p>T: y = <input type="number" id="slopeInput" style="width: 50px; padding: 4px; border: 1px solid var(--border); border-radius: 4px;">(x - <input type="number" id="aInput" style="width: 50px; padding: 4px; border: 1px solid var(--border); border-radius: 4px;">) + <input type="number" id="fInput" style="width: 50px; padding: 4px; border: 1px solid var(--border); border-radius: 4px;"></p>
+                <button class="check-btn" onclick="checkEquation()" style="margin-top: 12px;">Vérifier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final Answer -->
+        <div style="background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05)); border: 2px solid var(--success); border-radius: 16px; padding: 20px; margin-top: 20px; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: var(--success); margin-bottom: 8px;">
+            ✅ Réponse: \( T: y = -1 \)
+          </div>
+          <div style="font-size: 13px; color: var(--text-secondary);">
+            Vous avez trouvé la bonne réponse!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics Example -->
+    <div class="question-card">
+      <div class="question-header" style="background: linear-gradient(135deg, #E8744F, #c0392b);">
+        <div class="question-meta">
+          <span class="badge">Physique</span>
+          <span class="badge">Question 2</span>
+        </div>
+        <div class="question-title">
+          Un projectile est lancé avec \( v_0 = 20 \, \text{m/s} \) à \( \alpha = 30° \).<br>
+          Calculer la portée du tir.
+        </div>
+      </div>
+
+      <div class="solution-section">
+        <div class="physics-sim">
+          <div class="sim-canvas" id="simCanvas">
+            <div class="ball" id="ball"></div>
+          </div>
+          
+          <div class="sim-controls">
+            <button class="sim-btn play" onclick="playSimulation()">▶ Lancer</button>
+            <button class="sim-btn reset" onclick="resetSimulation()">↺ Reset</button>
+          </div>
+
+          <div class="sim-info">
+            <div class="sim-info-item">
+              <div class="sim-info-value" id="timeDisplay">0.0s</div>
+              <div>Temps</div>
+            </div>
+            <div class="sim-info-item">
+              <div class="sim-info-value" id="xDisplay">0.0m</div>
+              <div>Distance</div>
+            </div>
+            <div class="sim-info-item">
+              <div class="sim-info-value" id="yDisplay">0.0m</div>
+              <div>Hauteur</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card" style="margin-top: 20px;">
+          <div class="step-header">
+            <span class="step-number">📐</span>
+            <span class="step-title">Formule de la portée</span>
+          </div>
+          <div class="step-content">
+            \[ R = \frac{v_0^2 \sin(2\alpha)}{g} = \frac{400 \times \sin(60°)}{10} = \frac{400 \times 0.866}{10} = 34.6 \, \text{m} \]
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drag and Drop Exercise -->
+    <div class="question-card">
+      <div class="question-header" style="background: linear-gradient(135deg, #10B981, #059669);">
+        <div class="question-meta">
+          <span class="badge">Exercice</span>
+        </div>
+        <div class="question-title">
+          🧩 Assemblez les étapes pour résoudre l'équation \( x^2 - 4 = 0 \)
+        </div>
+      </div>
+
+      <div class="solution-section">
+        <div class="interactive-zone">
+          <div class="interactive-label">Glissez les étapes dans le bon ordre:</div>
+          
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px;">
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Étapes disponibles:</p>
+              <div class="drag-area" id="source">
+                <div class="drag-item" draggable="true" data-step="2">Factoriser: (x-2)(x+2)</div>
+                <div class="drag-item" draggable="true" data-step="1">Écrire: x² = 4</div>
+                <div class="drag-item" draggable="true" data-step="3">Solutions: x = 2 ou x = -2</div>
+              </div>
+            </div>
+            
+            <div style="flex: 1; min-width: 200px;">
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Réponse (ordre correct):</p>
+              <div class="drop-zone" id="target"></div>
+            </div>
+          </div>
+          
+          <button class="check-btn" style="background: var(--success); margin-top: 16px;" onclick="checkOrder()">
+            ✓ Vérifier l'ordre
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Chart.js setup
+    let chart;
+    
+    function initChart() {
+      const ctx = document.getElementById('functionChart').getContext('2d');
+      
+      const data = {
+        labels: [],
+        datasets: [{
+          label: 'f(x) = x³ - 3x + 1',
+          data: [],
+          borderColor: '#4A90D9',
+          backgroundColor: 'rgba(74, 144, 217, 0.1)',
+          fill: true,
+          tension: 0.4,
+          pointRadius: 0,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: '#4A90D9'
+        }, {
+          label: 'Tangente en x=1',
+          data: [],
+          borderColor: '#10B981',
+          borderDash: [5, 5],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false
+        }]
+      };
+
+      // Generate function data
+      for (let x = -2; x <= 2; x += 0.1) {
+        data.labels.push(x.toFixed(1));
+        data.datasets[0].data.push(x*x*x - 3*x + 1);
+      }
+
+      // Tangent line at x=1 (y = -1)
+      const tangentData = [];
+      for (let x = -2; x <= 2; x += 0.1) {
+        tangentData.push(-1);
+      }
+      data.datasets[1].data = tangentData;
+
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          interaction: {
+            intersect: false,
+            mode: 'index'
+          },
+          plugins: {
+            legend: {
+              position: 'top'
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y.toFixed(2);
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(0,0,0,0.05)'
+              }
+            },
+            y: {
+              grid: {
+                color: 'rgba(0,0,0,0.05)'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateX(value) {
+      document.getElementById('xValue').textContent = value;
+    }
+
+    function updateDeriv(value) {
+      document.getElementById('derivValue').textContent = value;
+      document.getElementById('derivFill').style.width = ((parseFloat(value) + 3) / 12 * 100) + '%';
+    }
+
+    function checkDeriv() {
+      const btn = document.getElementById('derivBtn');
+      if (Math.abs(parseFloat(document.getElementById('derivValue').textContent)) < 0.1) {
+        btn.textContent = '✓ Correct! f\'(1) = 0';
+        btn.classList.add('correct');
+      } else {
+        btn.textContent = '✗ Réessayez!';
+        btn.style.background = '#EF4444';
+      }
+    }
+
+    function checkF1() {
+      const input = document.getElementById('f1Answer');
+      if (parseFloat(input.value) === -1) {
+        input.style.borderColor = '#10B981';
+        input.style.background = 'rgba(16,185,129,0.1)';
+      }
+    }
+
+    function checkEquation() {
+      const slope = document.getElementById('slopeInput').value;
+      const a = document.getElementById('aInput').value;
+      const f = document.getElementById('fInput').value;
+      
+      if (slope == 0 && a == 1 && f == -1) {
+        alert('✓ Excellent! T: y = -1');
+      }
+    }
+
+    function showStep(index) {
+      document.querySelectorAll('.step-card').forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+    }
+
+    function showGraph(type) {
+      document.querySelectorAll('.graph-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Update chart based on type
+      if (chart) {
+        if (type === 'derivative') {
+          chart.data.datasets[0].data = chart.data.labels.map(x => 3*x*x - 3);
+          chart.data.datasets[0].label = 'f\'(x) = 3x² - 3';
+        } else {
+          chart.data.datasets[0].data = chart.data.labels.map(x => x*x*x - 3*x + 1);
+          chart.data.datasets[0].label = 'f(x) = x³ - 3x + 1';
+        }
+        chart.update();
+      }
+    }
+
+    // Physics simulation
+    let animId;
+    let ballX = 50;
+    let ballY = 50;
+    let vx = 0;
+    let vy = 0;
+    let t = 0;
+    const g = 9.8;
+    const v0 = 20;
+    const alpha = 30 * Math.PI / 180;
+
+    function playSimulation() {
+      vx = v0 * Math.cos(alpha);
+      vy = -v0 * Math.sin(alpha);
+      t = 0;
+      ballX = 50;
+      ballY = 50;
+      
+      function animate() {
+        t += 0.02;
+        
+        ballX = 50 + vx * t * 10;
+        ballY = 50 + (vy * t + 0.5 * g * t * t) * 5;
+        
+        document.getElementById('ball').style.left = ballX + 'px';
+        document.getElementById('ball').style.top = ballY + 'px';
+        
+        document.getElementById('timeDisplay').textContent = t.toFixed(1) + 's';
+        document.getElementById('xDisplay').textContent = (ballX - 50).toFixed(1) + 'm';
+        document.getElementById('yDisplay').textContent = Math.max(0, (50 - ballY) / 5).toFixed(1) + 'm';
+        
+        if (ballY < 200) {
+          animId = requestAnimationFrame(animate);
+        }
+      }
+      
+      animate();
+    }
+
+    function resetSimulation() {
+      cancelAnimationFrame(animId);
+      ballX = 50;
+      ballY = 50;
+      t = 0;
+      document.getElementById('ball').style.left = '50px';
+      document.getElementById('ball').style.top = '50px';
+      document.getElementById('timeDisplay').textContent = '0.0s';
+      document.getElementById('xDisplay').textContent = '0.0m';
+      document.getElementById('yDisplay').textContent = '0.0m';
+    }
+
+    // Drag and drop
+    const dragItems = document.querySelectorAll('.drag-item');
+    const source = document.getElementById('source');
+    const target = document.getElementById('target');
+
+    dragItems.forEach(item => {
+      item.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', e.target.innerText);
+        e.dataTransfer.setData('step', e.target.dataset.step);
+      });
+    });
+
+    target.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      target.classList.add('highlight');
+    });
+
+    target.addEventListener('dragleave', () => {
+      target.classList.remove('highlight');
+    });
+
+    target.addEventListener('drop', (e) => {
+      e.preventDefault();
+      target.classList.remove('highlight');
+      
+      const text = e.dataTransfer.getData('text/plain');
+      const step = e.dataTransfer.getData('step');
+      
+      const newItem = document.createElement('div');
+      newItem.className = 'drag-item';
+      newItem.draggable = true;
+      newItem.dataset.step = step;
+      newItem.textContent = text;
+      
+      newItem.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', e.target.innerText);
+        e.dataTransfer.setData('step', e.target.dataset.step);
+      });
+      
+      target.appendChild(newItem);
+      
+      // Remove from source if exists
+      const sourceItem = source.querySelector(`[data-step="${step}"]`);
+      if (sourceItem) sourceItem.remove();
+    });
+
+    function checkOrder() {
+      const items = target.querySelectorAll('.drag-item');
+      let correct = true;
+      let expectedStep = 1;
+      
+      items.forEach(item => {
+        if (parseInt(item.dataset.step) !== expectedStep) {
+          correct = false;
+        }
+        expectedStep++;
+      });
+      
+      if (correct && items.length === 3) {
+        target.classList.add('correct');
+        alert('✓ Parfait! L\'ordre est correct!\n1. x² = 4\n2. Factoriser (x-2)(x+2)\n3. Solutions x = ±2');
+      } else {
+        target.classList.add('wrong');
+        setTimeout(() => target.classList.remove('wrong'), 1000);
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      initChart();
+      
+      // Trigger MathJax
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    });
+  </script>
+</body>
+</html>

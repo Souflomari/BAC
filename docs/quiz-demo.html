@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BacPrep - Quiz Demo</title>
+<style>
+  :root {
+    --primary: #1565C0;
+    --primary-light: #42A5F5;
+    --accent: #FF8F00;
+    --success: #2E7D32;
+    --error: #C62828;
+    --surface: #FFFFFF;
+    --surface-variant: #F0F0F0;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --border: #E0E0E0;
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #F5F5F5;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone-frame {
+    width: 390px;
+    min-height: 100vh;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+  }
+
+  /* AppBar */
+  .appbar {
+    background: var(--surface);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .appbar .close-btn { font-size: 24px; color: var(--text-secondary); cursor: pointer; background: none; border: none; }
+  .appbar .progress-text { flex: 1; text-align: center; font-weight: 600; font-size: 15px; }
+  .appbar .hint-btn {
+    width: 36px; height: 36px; border-radius: 50%; border: none;
+    background: none; cursor: pointer; font-size: 22px; transition: all 0.2s;
+  }
+  .appbar .hint-btn.active { background: rgba(255,143,0,0.12); }
+  .appbar .xp-badge {
+    background: rgba(255,143,0,0.12); color: var(--accent);
+    padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 13px;
+    margin-left: 8px;
+  }
+
+  /* Progress bar */
+  .progress-bar { height: 4px; background: var(--surface-variant); }
+  .progress-bar .fill { height: 100%; background: var(--primary); transition: width 0.4s ease; }
+
+  /* Skill label row */
+  .skill-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px 0;
+  }
+  .skill-tag {
+    background: rgba(21,101,192,0.08); color: var(--primary);
+    padding: 4px 10px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  }
+  .difficulty-dots { display: flex; gap: 3px; }
+  .difficulty-dots .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--surface-variant);
+  }
+  .difficulty-dots .dot.filled { background: var(--accent); }
+
+  /* Hint panel */
+  .hint-panel {
+    margin: 8px 20px 0; padding: 12px 14px;
+    background: rgba(255,143,0,0.07); border: 1px solid rgba(255,143,0,0.25);
+    border-radius: 10px; display: none; align-items: flex-start; gap: 8px;
+    font-size: 13px; animation: slideDown 0.25s ease;
+  }
+  .hint-panel.visible { display: flex; }
+  .hint-penalty {
+    text-align: center; font-size: 11px; color: rgba(255,143,0,0.7);
+    padding-top: 4px; display: none;
+  }
+  .hint-penalty.visible { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Question area */
+  .question-area { padding: 20px; flex: 1; }
+  .stem { font-size: 17px; line-height: 1.6; margin-bottom: 20px; }
+  .stem .latex { font-family: 'Times New Roman', serif; font-style: italic; }
+
+  /* MCQ Choices */
+  .choice {
+    display: flex; align-items: center; padding: 14px; margin-bottom: 10px;
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    cursor: pointer; transition: all 0.15s; gap: 12px;
+  }
+  .choice:hover:not(.disabled) { border-color: var(--primary); background: rgba(21,101,192,0.03); }
+  .choice.selected { border-color: var(--primary); background: rgba(21,101,192,0.05); }
+  .choice.correct { border-color: var(--success); background: rgba(46,125,50,0.06); }
+  .choice.wrong { border-color: var(--error); background: rgba(198,40,40,0.06); }
+  .choice.disabled { cursor: default; }
+
+  .choice-letter {
+    width: 32px; height: 32px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-weight: 600; font-size: 14px;
+    background: var(--surface-variant); color: var(--text-secondary);
+    flex-shrink: 0; transition: all 0.15s;
+  }
+  .choice.selected .choice-letter { background: var(--primary); color: white; }
+  .choice.correct .choice-letter { background: var(--success); color: white; }
+  .choice.wrong .choice-letter { background: var(--error); color: white; }
+
+  .choice-text { flex: 1; font-size: 15px; }
+  .choice.correct .choice-text { color: var(--success); font-weight: 600; }
+  .choice.wrong .choice-text { color: var(--error); font-weight: 600; }
+
+  .choice-icon { font-size: 22px; flex-shrink: 0; }
+
+  /* Validate button */
+  .validate-btn {
+    width: 100%; padding: 14px; margin-top: 8px;
+    background: var(--primary); color: white; border: none;
+    border-radius: var(--radius); font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .validate-btn:disabled { background: var(--surface-variant); color: var(--text-secondary); cursor: default; }
+  .validate-btn:not(:disabled):hover { background: #0D47A1; }
+
+  /* Explanation panel */
+  .explanation-panel {
+    border-top: 2px solid var(--success); padding: 20px;
+    max-height: 60vh; overflow-y: auto; display: none;
+    animation: slideUp 0.3s ease;
+  }
+  .explanation-panel.visible { display: block; }
+  .explanation-panel.incorrect { border-top-color: var(--error); }
+  .explanation-panel.correct { background: rgba(46,125,50,0.05); }
+  .explanation-panel.incorrect { background: rgba(198,40,40,0.05); }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+  .result-icon { font-size: 26px; }
+  .result-text { font-size: 17px; font-weight: 600; flex: 1; }
+  .result-text.correct { color: var(--success); }
+  .result-text.incorrect { color: var(--error); }
+  .xp-earned {
+    background: rgba(255,143,0,0.15); color: var(--accent);
+    padding: 4px 10px; border-radius: 8px; font-weight: 600; font-size: 13px;
+  }
+
+  /* Contrastive feedback cards */
+  .contrast-card {
+    padding: 12px 14px; border-radius: 10px; margin-bottom: 10px;
+    font-size: 13px; line-height: 1.5;
+  }
+  .contrast-card.wrong-card {
+    background: rgba(198,40,40,0.05); border: 1px solid rgba(198,40,40,0.2);
+  }
+  .contrast-card.correct-card {
+    background: rgba(46,125,50,0.05); border: 1px solid rgba(46,125,50,0.2);
+  }
+  .contrast-card .card-title { font-weight: 600; margin-bottom: 4px; }
+  .contrast-card.wrong-card .card-title { color: var(--error); }
+  .contrast-card.correct-card .card-title { color: var(--success); }
+
+  /* Explanation text */
+  .explanation-text { font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+
+  /* Step-by-step */
+  .steps-container { margin: 8px 0 12px; }
+  .step-item {
+    display: flex; gap: 8px; padding: 4px 0; align-items: flex-start;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+  .step-number {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(21,101,192,0.12); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-text { font-size: 13px; line-height: 1.5; }
+
+  .step-buttons { display: flex; gap: 8px; margin: 8px 0; }
+  .step-btn {
+    padding: 6px 14px; border-radius: 8px; font-size: 13px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .step-btn.outline {
+    background: none; border: 1.5px solid var(--primary); color: var(--primary);
+  }
+  .step-btn.outline:hover { background: rgba(21,101,192,0.05); }
+  .step-btn.text-btn { background: none; border: none; color: var(--primary); }
+  .step-btn.text-btn:hover { text-decoration: underline; }
+
+  /* Mastery meter */
+  .mastery-meter {
+    display: flex; align-items: center; gap: 10px; padding: 10px 0;
+    border-top: 1px solid var(--border); margin-top: 8px;
+  }
+  .mastery-badge {
+    padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 600;
+    text-transform: uppercase;
+  }
+  .mastery-badge.novice { background: #E3F2FD; color: #1565C0; }
+  .mastery-badge.developing { background: #FFF3E0; color: #E65100; }
+  .mastery-badge.proficient { background: #E8F5E9; color: #2E7D32; }
+  .mastery-dots { display: flex; gap: 4px; }
+  .mastery-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--surface-variant); }
+  .mastery-dots .dot.filled { background: var(--primary); }
+  .streak-info { margin-left: auto; font-size: 13px; color: var(--accent); font-weight: 600; }
+
+  /* Elaborative prompts */
+  .prompt-card {
+    border: 1px solid rgba(21,101,192,0.25); border-radius: 10px;
+    background: rgba(21,101,192,0.03); margin-top: 12px; overflow: hidden;
+  }
+  .prompt-header {
+    display: flex; align-items: center; padding: 12px 14px;
+    cursor: pointer; gap: 8px; transition: background 0.15s;
+  }
+  .prompt-header:hover { background: rgba(21,101,192,0.05); }
+  .prompt-icon { font-size: 18px; }
+  .prompt-label { font-weight: 600; color: var(--primary); font-size: 14px; flex: 1; }
+  .prompt-arrow { color: var(--primary); font-size: 20px; transition: transform 0.25s; }
+  .prompt-card.expanded .prompt-arrow { transform: rotate(180deg); }
+  .prompt-question {
+    padding: 0 14px 10px; font-size: 13px;
+    color: rgba(26,26,26,0.75); font-style: italic;
+  }
+  .prompt-answer {
+    padding: 0 14px 14px; font-size: 13px; line-height: 1.5;
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .prompt-card.expanded .prompt-answer { max-height: 200px; padding-bottom: 14px; }
+
+  /* Lesson link */
+  .lesson-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 20px; margin-top: 10px;
+    background: var(--surface-variant); border: 1px solid var(--border);
+    font-size: 13px; cursor: pointer; transition: all 0.15s;
+  }
+  .lesson-chip:hover { background: rgba(21,101,192,0.08); border-color: var(--primary); color: var(--primary); }
+
+  /* Next button */
+  .next-btn {
+    width: 100%; padding: 14px; margin-top: 14px;
+    background: var(--primary); color: white; border: none;
+    border-radius: var(--radius); font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .next-btn:hover { background: #0D47A1; }
+
+  /* Badge overlay */
+  .badge-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 100;
+    display: none; align-items: center; justify-content: center;
+    animation: fadeInOverlay 0.2s ease;
+  }
+  .badge-overlay.visible { display: flex; }
+  @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
+
+  .badge-dialog {
+    background: var(--surface); border-radius: 20px; padding: 32px;
+    width: 320px; text-align: center;
+    border: 2px solid rgba(255,143,0,0.4);
+    box-shadow: 0 0 40px rgba(255,143,0,0.15);
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  @keyframes scaleIn { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  .badge-title { font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
+  .badge-icon-circle {
+    width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 12px;
+    background: linear-gradient(135deg, var(--accent), rgba(255,143,0,0.7));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; color: white;
+  }
+  .badge-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .badge-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+  .badge-continue-btn {
+    width: 100%; padding: 12px; background: var(--accent); color: white;
+    border: none; border-radius: var(--radius); font-size: 16px;
+    font-weight: 600; cursor: pointer;
+  }
+  .badge-continue-btn:hover { background: #EF6C00; }
+
+  /* Demo controls */
+  .demo-controls {
+    position: fixed; bottom: 16px; right: 16px; z-index: 200;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .demo-btn {
+    padding: 8px 14px; border-radius: 8px; border: none;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    background: #333; color: white; opacity: 0.85;
+  }
+  .demo-btn:hover { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- Demo Controls -->
+<div class="demo-controls">
+  <button class="demo-btn" onclick="resetDemo()">Reset</button>
+  <button class="demo-btn" onclick="showBadgeDemo()">Badge Demo</button>
+  <button class="demo-btn" onclick="simulateWrong()">Wrong Answer</button>
+  <button class="demo-btn" onclick="simulateCorrect()">Correct Answer</button>
+</div>
+
+<!-- Badge Overlay -->
+<div class="badge-overlay" id="badgeOverlay">
+  <div class="badge-dialog">
+    <div class="badge-title">Felicitations !</div>
+    <div class="badge-icon-circle">&#128293;</div>
+    <div class="badge-name">Serie de 5 !</div>
+    <div class="badge-desc">5 bonnes reponses consecutives</div>
+    <button class="badge-continue-btn" onclick="closeBadge()">Continuer</button>
+  </div>
+</div>
+
+<!-- Phone Frame -->
+<div class="phone-frame">
+
+  <!-- AppBar -->
+  <div class="appbar">
+    <button class="close-btn">&times;</button>
+    <div class="progress-text">3 / 15</div>
+    <button class="hint-btn" id="hintBtn" onclick="toggleHint()" title="Indice">&#128161;</button>
+    <div class="xp-badge" id="xpTotal">+45</div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="fill" style="width: 20%"></div>
+  </div>
+
+  <!-- Skill Row -->
+  <div class="skill-row">
+    <span class="skill-tag">Suites arithmetiques</span>
+    <div class="difficulty-dots">
+      <div class="dot filled"></div>
+      <div class="dot filled"></div>
+      <div class="dot filled"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Hint Panel -->
+  <div class="hint-panel" id="hintPanel">
+    <span>&#128161;</span>
+    <span>Pensez a la formule du terme general : <em>U<sub>n</sub> = U<sub>0</sub> + n &times; r</em>. Identifiez d'abord U<sub>0</sub> et la raison <em>r</em>.</span>
+  </div>
+  <div class="hint-penalty" id="hintPenalty">Indice utilise (-30% XP)</div>
+
+  <!-- Question Area -->
+  <div class="question-area" id="questionArea">
+    <div class="stem">
+      Soit <span class="latex">(U<sub>n</sub>)</span> une suite arithmetique de premier terme
+      <span class="latex">U<sub>0</sub> = 3</span> et de raison <span class="latex">r = 4</span>.
+      <br><br>
+      Calculer <span class="latex">U<sub>10</sub></span>.
+    </div>
+
+    <!-- Choices -->
+    <div class="choice" id="choice0" onclick="selectChoice(0)">
+      <div class="choice-letter">A</div>
+      <div class="choice-text">43</div>
+      <div class="choice-icon" id="icon0"></div>
+    </div>
+    <div class="choice" id="choice1" onclick="selectChoice(1)">
+      <div class="choice-letter">B</div>
+      <div class="choice-text">40</div>
+      <div class="choice-icon" id="icon1"></div>
+    </div>
+    <div class="choice" id="choice2" onclick="selectChoice(2)">
+      <div class="choice-letter">C</div>
+      <div class="choice-text">34</div>
+      <div class="choice-icon" id="icon2"></div>
+    </div>
+    <div class="choice" id="choice3" onclick="selectChoice(3)">
+      <div class="choice-letter">D</div>
+      <div class="choice-text">30</div>
+      <div class="choice-icon" id="icon3"></div>
+    </div>
+
+    <!-- Validate Button -->
+    <button class="validate-btn" id="validateBtn" disabled onclick="validateAnswer()">Valider</button>
+  </div>
+
+  <!-- Explanation Panel -->
+  <div class="explanation-panel" id="explanationPanel">
+    <!-- Filled dynamically -->
+  </div>
+
+</div>
+
+<script>
+  let selectedIndex = null;
+  let isAnswered = false;
+  let hintUsed = false;
+  let revealedSteps = 0;
+  const correctIndex = 0; // A = 43
+  const steps = [
+    "Identifier les donnees : U\u2080 = 3, r = 4, n = 10",
+    "Appliquer la formule : U\u2099 = U\u2080 + n \u00d7 r",
+    "Calculer : U\u2081\u2080 = 3 + 10 \u00d7 4 = 3 + 40 = 43"
+  ];
+
+  function selectChoice(idx) {
+    if (isAnswered) return;
+    selectedIndex = idx;
+    for (let i = 0; i < 4; i++) {
+      document.getElementById('choice' + i).className = 'choice' + (i === idx ? ' selected' : '');
+    }
+    document.getElementById('validateBtn').disabled = false;
+  }
+
+  function toggleHint() {
+    const panel = document.getElementById('hintPanel');
+    const btn = document.getElementById('hintBtn');
+    const penalty = document.getElementById('hintPenalty');
+    if (isAnswered) return;
+    const visible = panel.classList.contains('visible');
+    panel.classList.toggle('visible');
+    btn.classList.toggle('active');
+    if (!visible) {
+      hintUsed = true;
+      penalty.classList.add('visible');
+    }
+    if (visible) {
+      penalty.classList.add('visible');
+    }
+  }
+
+  function validateAnswer() {
+    if (selectedIndex === null || isAnswered) return;
+    isAnswered = true;
+    document.getElementById('validateBtn').style.display = 'none';
+    document.getElementById('hintBtn').style.display = 'none';
+    document.getElementById('hintPanel').classList.remove('visible');
+    document.getElementById('hintPenalty').classList.remove('visible');
+
+    const isCorrect = selectedIndex === correctIndex;
+
+    // Show choice results
+    for (let i = 0; i < 4; i++) {
+      const el = document.getElementById('choice' + i);
+      const icon = document.getElementById('icon' + i);
+      el.classList.add('disabled');
+      el.onclick = null;
+      if (i === correctIndex) {
+        el.className = 'choice correct disabled';
+        icon.textContent = '\u2705';
+      } else if (i === selectedIndex && !isCorrect) {
+        el.className = 'choice wrong disabled';
+        icon.textContent = '\u274C';
+      }
+    }
+
+    // Build explanation
+    showExplanation(isCorrect);
+  }
+
+  function showExplanation(isCorrect) {
+    const panel = document.getElementById('explanationPanel');
+    const xp = isCorrect ? (hintUsed ? 21 : 30) : 1;
+    revealedSteps = 0;
+
+    let html = '';
+
+    // Header
+    html += `<div class="result-header">
+      <span class="result-icon">${isCorrect ? '\u2705' : '\u274C'}</span>
+      <span class="result-text ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correct !' : 'Incorrect'}</span>
+      <span class="xp-earned">+${xp} XP${hintUsed ? ' (indice)' : ''}</span>
+    </div>`;
+
+    // Contrastive feedback (wrong answer only)
+    if (!isCorrect) {
+      const wrongExplanations = {
+        1: "Erreur : 40 correspond a n \u00d7 r = 10 \u00d7 4, mais vous avez oublie d'ajouter U\u2080 = 3.",
+        2: "Confusion : 34 = U\u2080 + n + r = 3+10+4... On ne fait pas une addition simple, on applique U\u2099 = U\u2080 + n\u00d7r.",
+        3: "Erreur : 30 = 3 \u00d7 10. Vous avez multiplie U\u2080 par n au lieu d'utiliser la formule U\u2099 = U\u2080 + n\u00d7r."
+      };
+      if (wrongExplanations[selectedIndex]) {
+        html += `<div class="contrast-card wrong-card">
+          <div class="card-title">Pourquoi votre reponse est incorrecte :</div>
+          ${wrongExplanations[selectedIndex]}
+        </div>`;
+      }
+      html += `<div class="contrast-card correct-card">
+        <div class="card-title">La bonne reponse est "43" :</div>
+        En appliquant la formule du terme general U<sub>n</sub> = U<sub>0</sub> + n \u00d7 r = 3 + 10 \u00d7 4 = 43.
+      </div>`;
+    } else {
+      html += `<div class="explanation-text">
+        Le terme general d'une suite arithmetique est <strong>U<sub>n</sub> = U<sub>0</sub> + n \u00d7 r</strong>.
+        Avec U<sub>0</sub> = 3 et r = 4, on obtient U<sub>10</sub> = 3 + 40 = <strong>43</strong>.
+      </div>`;
+    }
+
+    // Steps
+    html += `<div class="steps-container" id="stepsContainer"></div>
+    <div class="step-buttons" id="stepButtons">
+      <button class="step-btn outline" onclick="revealNextStep()">Voir les etapes</button>
+      <button class="step-btn text-btn" onclick="revealAllSteps()">Voir tout</button>
+    </div>`;
+
+    // Mastery meter
+    html += `<div class="mastery-meter">
+      <span class="mastery-badge ${isCorrect ? 'developing' : 'novice'}">${isCorrect ? 'En progres' : 'Novice'}</span>
+      <div class="mastery-dots">
+        <div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot ${isCorrect ? 'filled' : ''}"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <span class="streak-info">${isCorrect ? '\uD83D\uDD25 Serie: 5' : 'Serie: 0'}</span>
+    </div>`;
+
+    // Elaborative prompts
+    html += `<div class="prompt-card" id="whyCard">
+      <div class="prompt-header" onclick="togglePrompt('whyCard')">
+        <span class="prompt-icon">\uD83E\uDDE0</span>
+        <span class="prompt-label">Approfondissez</span>
+        <span class="prompt-arrow">\u25BC</span>
+      </div>
+      <div class="prompt-question">Pourquoi la formule U<sub>n</sub> = U<sub>0</sub> + n\u00d7r fonctionne-t-elle ?</div>
+      <div class="prompt-answer">
+        Parce que chaque terme ajoute exactement <em>r</em> au precedent.
+        Apres <em>n</em> etapes depuis U<sub>0</sub>, on a ajoute <em>r</em> exactement <em>n</em> fois,
+        d'ou U<sub>n</sub> = U<sub>0</sub> + n\u00d7r. C'est l'essence meme de l'arithmetique : un accroissement constant.
+      </div>
+    </div>
+
+    <div class="prompt-card" id="whatIfCard">
+      <div class="prompt-header" onclick="togglePrompt('whatIfCard')">
+        <span class="prompt-icon">\uD83D\uDCA1</span>
+        <span class="prompt-label">Et si...?</span>
+        <span class="prompt-arrow">\u25BC</span>
+      </div>
+      <div class="prompt-question">Et si la raison etait r = -3 ?</div>
+      <div class="prompt-answer">
+        U<sub>10</sub> = 3 + 10\u00d7(-3) = 3 - 30 = <strong>-27</strong>.
+        La suite serait decroissante : chaque terme diminue de 3. Le signe de la raison determine le sens de variation.
+      </div>
+    </div>`;
+
+    // Lesson link
+    html += `<div><span class="lesson-chip" onclick="alert('Navigation vers la lecon: Suites arithmetiques')">\uD83D\uDCD6 Voir la lecon</span></div>`;
+
+    // Next button
+    html += `<button class="next-btn" onclick="alert('Question suivante...')">Suivant</button>`;
+
+    panel.innerHTML = html;
+    panel.className = 'explanation-panel visible ' + (isCorrect ? 'correct' : 'incorrect');
+  }
+
+  function revealNextStep() {
+    if (revealedSteps >= steps.length) return;
+    const container = document.getElementById('stepsContainer');
+    const step = document.createElement('div');
+    step.className = 'step-item';
+    step.innerHTML = `<div class="step-number">${revealedSteps + 1}</div><div class="step-text">${steps[revealedSteps]}</div>`;
+    container.appendChild(step);
+    revealedSteps++;
+    if (revealedSteps >= steps.length) {
+      document.getElementById('stepButtons').style.display = 'none';
+    } else {
+      document.querySelector('#stepButtons .outline').textContent = 'Etape suivante \u2192';
+    }
+  }
+
+  function revealAllSteps() {
+    const container = document.getElementById('stepsContainer');
+    while (revealedSteps < steps.length) {
+      const step = document.createElement('div');
+      step.className = 'step-item';
+      step.innerHTML = `<div class="step-number">${revealedSteps + 1}</div><div class="step-text">${steps[revealedSteps]}</div>`;
+      container.appendChild(step);
+      revealedSteps++;
+    }
+    document.getElementById('stepButtons').style.display = 'none';
+  }
+
+  function togglePrompt(id) {
+    document.getElementById(id).classList.toggle('expanded');
+  }
+
+  // Demo controls
+  function resetDemo() { location.reload(); }
+
+  function showBadgeDemo() {
+    document.getElementById('badgeOverlay').classList.add('visible');
+  }
+  function closeBadge() {
+    document.getElementById('badgeOverlay').classList.remove('visible');
+  }
+
+  function simulateCorrect() {
+    if (isAnswered) resetDemo();
+    selectChoice(0);
+    setTimeout(() => validateAnswer(), 300);
+  }
+  function simulateWrong() {
+    if (isAnswered) resetDemo();
+    selectChoice(1);
+    setTimeout(() => validateAnswer(), 300);
+  }
+</script>
+
+</body>
+</html>

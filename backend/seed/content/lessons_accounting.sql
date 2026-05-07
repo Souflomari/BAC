@@ -1,0 +1,188 @@
+-- ============================================================
+-- Accounting lesson content (Comptabilite et Maths Financieres)
+-- 8 skills, IDs 110-117, Moroccan Bac syllabus
+-- ============================================================
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Les écritures comptables",
+      "body_fr": "La comptabilité enregistre toutes les opérations de l'entreprise selon le **principe de la partie double** : chaque opération est enregistrée simultanément au **débit** et au **crédit** pour un même montant.\n\n**Plan Comptable Marocain (PCM)** — 8 classes :\n- **1** : Comptes de financement permanent (capitaux propres, dettes LT)\n- **2** : Actif immobilisé\n- **3** : Actif circulant (stocks)\n- **4** : Comptes de tiers (clients, fournisseurs)\n- **5** : Trésorerie\n- **6** : Charges\n- **7** : Produits\n- **8** : Résultats\n\n**Règle mnémotechnique** : Charges et Actifs → **augmentent au Débit**. Produits et Passifs → **augmentent au Crédit**."
+    },
+    {
+      "type": "formula",
+      "title_fr": "Méthode de passation des écritures",
+      "body_fr": "**Étapes** :\n1. Identifier l'opération (achat, vente, paiement...)\n2. Identifier les comptes concernés\n3. Déterminer ce qui est débité et crédité\n4. Vérifier : **Total Débit = Total Crédit**\n\n**Comptes courants** :\n- 611 Achats de marchandises\n- 711 Ventes de marchandises\n- 3455 TVA récupérable\n- 4455 TVA facturée\n- 514 Banque\n- 530 Caisse\n- 441 Fournisseurs\n- 342 Clients\n\n**TVA** : taux normal = 20% au Maroc\n- Achat HT 1 000 DH + TVA 200 DH = TTC 1 200 DH\n- Débiter 611 (1 000) + 3455 (200) / Créditer 441 (1 200)"
+    },
+    {
+      "type": "example",
+      "title_fr": "Écritures d'achat et de vente",
+      "body_fr": "**Opération 1** : Achat de marchandises 10 000 DH HT (TVA 20%), paiement par chèque.\n\n| Débit | Crédit |\n|---|---|\n| 611 Achats marchandises : 10 000 | 514 Banque : 12 000 |\n| 3455 TVA récupérable : 2 000 | |\n\n**Opération 2** : Vente de marchandises 15 000 DH HT (TVA 20%), à crédit.\n\n| Débit | Crédit |\n|---|---|\n| 342 Clients : 18 000 | 711 Ventes marchandises : 15 000 |\n| | 4455 TVA facturée : 3 000 |\n\n**Vérification** : toujours Débit = Crédit. La TVA à reverser à l'État = 4455 - 3455 = 3 000 - 2 000 = 1 000 DH."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000110';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Le bilan et le CPC",
+      "body_fr": "Le **bilan** est un état de synthèse qui représente le patrimoine de l'entreprise à un instant T.\n\n**ACTIF** (ce que l'entreprise possède) :\n- Actif immobilisé (AI) : biens durables (machines, bâtiments, véhicules, brevets)\n- Actif circulant (AC) : biens à court terme (stocks, créances clients)\n- Trésorerie actif (TA) : banque, caisse\n\n**PASSIF** (ce que l'entreprise doit) :\n- Financement permanent (FP) : capitaux propres + dettes à long terme\n- Passif circulant (PC) : dettes fournisseurs, dettes fiscales et sociales\n- Trésorerie passif (TP) : découverts bancaires\n\n**Équilibre fondamental** : ACTIF = PASSIF (toujours)"
+    },
+    {
+      "type": "formula",
+      "title_fr": "Le CPC et les soldes de gestion",
+      "body_fr": "Le **CPC** (Compte de Produits et Charges) mesure la performance sur une période.\n\n**Soldes intermédiaires de gestion** :\n$$\\text{Marge brute} = \\text{Ventes} - \\text{Coût d'achat des ventes}$$\n$$VA = \\text{Marge brute} - \\text{Autres charges externes}$$\n$$EBE = VA - \\text{Charges de personnel} - \\text{Impôts et taxes}$$\n$$\\text{Résultat d'exploitation} = EBE - \\text{Dotations aux amortissements}$$\n$$\\text{Résultat net} = \\text{Résultat d'exploitation} + \\text{Résultat financier} + \\text{Résultat non courant} - IS$$\n\n**IS** (Impôt sur les Sociétés) : taux progressif au Maroc (20% jusqu'à 1M DH, 31% au-delà)."
+    },
+    {
+      "type": "example",
+      "title_fr": "Lire un bilan simplifié",
+      "body_fr": "**Bilan au 31/12 (en DH)** :\n\n**ACTIF** :\n- Immobilisations nettes : 500 000\n- Stocks : 80 000\n- Créances clients : 120 000\n- Banque : 50 000\n- **Total ACTIF = 750 000**\n\n**PASSIF** :\n- Capital social : 200 000\n- Réserves : 100 000\n- Dettes à long terme : 250 000\n- Fournisseurs : 150 000\n- Dettes fiscales : 50 000\n- **Total PASSIF = 750 000** ✓\n\n**Analyse rapide** :\n- Fonds de roulement = FP - AI = (200+100+250) - 500 = 50 000 DH (positif → bon)\n- Les dettes fournisseurs (150 000) financent une partie du cycle d'exploitation"
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000111';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Amortissements et provisions",
+      "body_fr": "**L'amortissement** constate la perte de valeur **irréversible** d'une immobilisation due à l'usure ou à l'obsolescence. Il est calculé et comptabilisé annuellement.\n\n**Méthodes d'amortissement** :\n- **Linéaire** : annuité constante = Valeur d'origine × Taux (Taux = 100% / Durée)\n- **Dégressif** : annuité décroissante, taux = Taux linéaire × Coefficient fiscal\n  - Durée 3-4 ans : coefficient = 1,5\n  - Durée 5-6 ans : coefficient = 2\n  - Durée > 6 ans : coefficient = 3\n\n**La provision** constate une dépréciation **probable et réversible** (stock déprécié, client douteux) ou un risque futur (provisions pour risques et charges).\n\n**Différence clé** : amortissement = certain et définitif / provision = probable et réversible."
+    },
+    {
+      "type": "formula",
+      "title_fr": "Tableau d'amortissement linéaire",
+      "body_fr": "**Amortissement linéaire** :\n$$\\text{Annuité} = \\text{Valeur d'origine} \\times \\frac{100\\%}{n}$$\n\n**Valeur Nette d'Amortissement (VNA)** :\n$$VNA = \\text{Valeur d'origine} - \\text{Amortissements cumulés}$$\n\n**Proratisation** (acquisition en cours d'année) :\n$$\\text{Annuité}_1 = VO \\times Taux \\times \\frac{\\text{mois restants}}{12}$$\n\n**Tableau d'amortissement** (structure) :\n| Année | VO | Annuité | Amort. cumulés | VNA |\n|---|---|---|---|---|\n| N | 60 000 | ... | ... | ... |"
+    },
+    {
+      "type": "example",
+      "title_fr": "Calcul d'amortissement avec proratisation",
+      "body_fr": "**Machine** achetée le **01/04/N** pour **60 000 DH**, durée d'utilisation **5 ans**, amortissement linéaire.\n\nTaux = 100% / 5 = **20%**. Annuité pleine = 60 000 × 20% = 12 000 DH/an.\n\n**Proratisation année N** : d'avril à décembre = 9 mois\n$$\\text{Annuité N} = 12\\ 000 \\times \\frac{9}{12} = 9\\ 000\\;DH$$\n\n| Année | Annuité | Amort. cumulés | VNA |\n|---|---|---|---|\n| N | 9 000 | 9 000 | 51 000 |\n| N+1 | 12 000 | 21 000 | 39 000 |\n| N+2 | 12 000 | 33 000 | 27 000 |\n| N+3 | 12 000 | 45 000 | 15 000 |\n| N+4 | 3 000* | 48 000 | 12 000 |\n\n*N+4 : 3 mois restants = 12 000 × 3/12 = 3 000 DH. VNA finale = 12 000 DH (valeur résiduelle)."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000112';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Les ratios financiers",
+      "body_fr": "Les **ratios** permettent d'analyser la situation financière d'une entreprise en comparant des grandeurs du bilan et du CPC. On distingue :\n\n**Ratios de liquidité** : capacité à faire face aux dettes à court terme\n- Liquidité générale = AC / PC (norme > 1)\n- Liquidité réduite = (AC - Stocks) / PC (norme > 0,8)\n- Liquidité immédiate = Trésorerie / PC\n\n**Ratios de solvabilité** : capacité à rembourser toutes les dettes\n- Autonomie financière = Capitaux propres / Total passif (norme > 0,5)\n- Taux d'endettement = Dettes financières / Capitaux propres (norme < 1)\n\n**Ratios de rentabilité** : performance économique et financière\n- Rentabilité commerciale = Résultat net / CA\n- Rentabilité financière (ROE) = Résultat net / Capitaux propres"
+    },
+    {
+      "type": "formula",
+      "title_fr": "Calcul et normes des ratios",
+      "body_fr": "**Rentabilité économique (ROA)** :\n$$ROA = \\frac{EBE}{\\text{Actif économique}}$$\n\n**Rentabilité financière (ROE)** :\n$$ROE = \\frac{\\text{Résultat net}}{\\text{Capitaux propres}}$$\n\n**Effet de levier financier** :\n$$ROE = ROA + \\frac{\\text{Dettes}}{CP} \\times (ROA - i)$$\noù $i$ = taux d'intérêt moyen des dettes.\n- Si ROA > $i$ → l'endettement **améliore** la rentabilité financière (effet de levier positif)\n- Si ROA < $i$ → l'endettement **dégrade** la rentabilité (effet de massue)\n\n**Rotation des stocks** = CA / Stocks moyen → plus c'est élevé, mieux c'est."
+    },
+    {
+      "type": "example",
+      "title_fr": "Analyse des ratios d'une entreprise",
+      "body_fr": "**Bilan simplifié** : AC = 200 000 DH, Stocks = 80 000, Trésorerie = 30 000, PC = 150 000 DH, CP = 350 000, Total passif = 600 000.\n\n**Calculs** :\n- Liquidité générale = 200 000 / 150 000 = **1,33** (> 1 ✓ correct)\n- Liquidité réduite = (200 000 - 80 000) / 150 000 = **0,80** (= 0,8 ✓ limite acceptable)\n- Liquidité immédiate = 30 000 / 150 000 = **0,20** (faible → peu de cash disponible)\n- Autonomie financière = 350 000 / 600 000 = **0,58** (> 0,5 ✓ bonne indépendance financière)\n\n**Interprétation** : entreprise globalement saine mais attention à la liquidité immédiate — elle pourrait avoir des difficultés à payer une dette urgente en cash. Recommandation : négocier une ligne de crédit de précaution."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000113';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Fonds de roulement et BFR",
+      "body_fr": "L'**équilibre financier** d'une entreprise s'analyse à travers trois grandeurs :\n\n**Fonds de Roulement (FR)** = Financement Permanent - Actif Immobilisé\n→ Ressources stables qui financent l'actif immobilisé. L'excédent finance le cycle d'exploitation.\n\n**Besoin en Fonds de Roulement (BFR)** = Actif Circulant (hors trésorerie) - Passif Circulant (hors trésorerie)\n→ Besoin de financement du cycle d'exploitation (stocks + créances clients - dettes fournisseurs).\n\n**Trésorerie Nette (TN)** = FR - BFR\n→ Mesure l'équilibre financier à court terme.\n\n**Règle d'or de l'équilibre financier** : le FR doit couvrir le BFR pour avoir une TN positive."
+    },
+    {
+      "type": "formula",
+      "title_fr": "Calculs FR, BFR, TN",
+      "body_fr": "$$FR = \\text{Financement permanent} - \\text{Actif immobilisé}$$\n$$BFR = \\text{Actif circulant}_{(hors\\ trésorerie)} - \\text{Passif circulant}_{(hors\\ dettes\\ CT)}$$\n$$TN = FR - BFR$$\n\n**Vérification** :\n$$TN = \\text{Trésorerie actif} - \\text{Trésorerie passif}$$\n\n**Interprétations** :\n- $TN > 0$ : FR > BFR → situation financière saine\n- $TN < 0$ : FR < BFR → recours au crédit à court terme (découvert)\n- $BFR < 0$ : les fournisseurs financent l'entreprise (ex: grande distribution)\n\n**Réduire le BFR** : allonger les délais fournisseurs, réduire les stocks, accélérer l'encaissement clients."
+    },
+    {
+      "type": "example",
+      "title_fr": "Calcul complet FR, BFR, TN",
+      "body_fr": "**Bilan** (en DH) :\n- Financement permanent : 800 000\n- Actif immobilisé net : 650 000\n- Actif circulant (hors trésorerie) : 300 000\n- Passif circulant (hors dettes CT) : 180 000\n- Trésorerie actif : 50 000\n- Trésorerie passif : 20 000\n\n**Calculs** :\n$$FR = 800\\ 000 - 650\\ 000 = 150\\ 000\\;DH$$\n$$BFR = 300\\ 000 - 180\\ 000 = 120\\ 000\\;DH$$\n$$TN = FR - BFR = 150\\ 000 - 120\\ 000 = 30\\ 000\\;DH$$\n\n**Vérification** : TN = TA - TP = 50 000 - 20 000 = 30 000 DH ✓\n\n**Interprétation** : FR > BFR → TN positive → équilibre financier satisfaisant. L'entreprise dispose d'un coussin de sécurité de 30 000 DH."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000114';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Les intérêts simples",
+      "body_fr": "L'**intérêt simple** est calculé uniquement sur le **capital initial** (pas de capitalisation des intérêts).\n\nApplications : placements à court terme (< 1 an), escompte commercial, calcul de l'échéance des effets de commerce.\n\n**Principes** :\n- L'intérêt est proportionnel au capital, au taux et à la durée\n- Les intérêts ne produisent pas eux-mêmes d'intérêts (contrairement aux intérêts composés)\n- Utilisé principalement pour des opérations de durée inférieure à 1 an\n\n**Escompte commercial** : opération par laquelle une banque achète un effet de commerce avant son échéance, en déduisant les intérêts (escompte) pour la durée restante."
+    },
+    {
+      "type": "formula",
+      "title_fr": "Formules des intérêts simples",
+      "body_fr": "**Intérêt** :\n$$I = C \\times t \\times n$$\noù $C$ = capital, $t$ = taux annuel (décimal), $n$ = durée en années.\n\n**Conversions de durée** :\n- Mois : $n = \\frac{\\text{mois}}{12}$\n- Jours : $n = \\frac{\\text{jours}}{360}$ (année commerciale de 360 jours)\n\n**Capital acquis** :\n$$C_n = C \\times (1 + t \\times n)$$\n\n**Escompte d'un effet** :\n$$E = N \\times t \\times n$$\n$$V_a = N - E$$\noù $N$ = valeur nominale, $V_a$ = valeur actuelle remise par la banque.\n\n**Taux réel de l'escompte** : toujours supérieur au taux nominal (car base = $V_a < N$)."
+    },
+    {
+      "type": "example",
+      "title_fr": "Calculs d'intérêts simples et d'escompte",
+      "body_fr": "**Placement** : 50 000 DH placés à 6%/an pendant 9 mois.\n$$I = 50\\ 000 \\times 0{,}06 \\times \\frac{9}{12} = 50\\ 000 \\times 0{,}06 \\times 0{,}75 = 2\\ 250\\;DH$$\n$$C_9 = 50\\ 000 + 2\\ 250 = 52\\ 250\\;DH$$\n\n**Escompte** : billet de 30 000 DH présenté 45 jours avant l'échéance, taux d'escompte 9%/an.\n$$E = 30\\ 000 \\times 0{,}09 \\times \\frac{45}{360} = 30\\ 000 \\times 0{,}09 \\times 0{,}125 = 337{,}5\\;DH$$\n$$V_a = 30\\ 000 - 337{,}5 = 29\\ 662{,}5\\;DH$$\n→ La banque verse 29 662,5 DH aujourd'hui contre le billet de 30 000 DH à l'échéance."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000115';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Les intérêts composés",
+      "body_fr": "L'**intérêt composé** (ou capitalisé) signifie que les intérêts générés à chaque période sont **ajoutés au capital** et produisent eux-mêmes des intérêts lors de la période suivante. C'est le principe de la capitalisation.\n\nApplications : placements à long terme (compte épargne, assurance-vie), emprunts bancaires, calcul de la valeur actuelle et future, VAN (Valeur Actuelle Nette) pour les décisions d'investissement.\n\n**Comparaison** :\n- Intérêt simple : croissance **linéaire** des intérêts\n- Intérêt composé : croissance **exponentielle** → beaucoup plus avantageux pour l'épargnant sur le long terme\n\n**Règle des 72** : pour estimer le temps de doublement du capital → $n \\approx 72 / (t\\%)$"
+    },
+    {
+      "type": "formula",
+      "title_fr": "Formules des intérêts composés",
+      "body_fr": "**Capital acquis** :\n$$C_n = C_0 \\times (1 + t)^n$$\n\n**Valeur actuelle** (actualisation) :\n$$C_0 = \\frac{C_n}{(1 + t)^n}$$\n\n**Équivalence de taux** : taux mensuel $t_m$ équivalent au taux annuel $t_a$ :\n$$(1 + t_a) = (1 + t_m)^{12} \\implies t_m = (1 + t_a)^{1/12} - 1$$\n\n**VAN** (Valeur Actuelle Nette) :\n$$VAN = \\sum_{k=1}^{n} \\frac{F_k}{(1+t)^k} - I_0$$\n- VAN > 0 : investissement rentable (accepter)\n- VAN < 0 : investissement à rejeter"
+    },
+    {
+      "type": "example",
+      "title_fr": "Calcul de capital acquis et VAN",
+      "body_fr": "**Placement** : 20 000 DH placés à 5%/an composé pendant 4 ans.\n$$C_4 = 20\\ 000 \\times (1{,}05)^4 = 20\\ 000 \\times 1{,}2155 = 24\\ 310\\;DH$$\nIntérêts = 4 310 DH\n\nComparaison intérêt simple : $I = 20\\ 000 \\times 0{,}05 \\times 4 = 4\\ 000$ DH → **310 DH de moins** que les composés.\n\n**Décision d'investissement (VAN)** : Investissement de 100 000 DH, flux annuels de 35 000 DH pendant 3 ans, taux d'actualisation 10%.\n$$VAN = \\frac{35000}{1{,}1} + \\frac{35000}{1{,}1^2} + \\frac{35000}{1{,}1^3} - 100\\ 000$$\n$$= 31\\ 818 + 28\\ 926 + 26\\ 296 - 100\\ 000 = -12\\ 960\\;DH$$\nVAN < 0 → investissement **non rentable** à 10%."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000116';
+
+UPDATE public.skills SET lesson = $lesson$
+{
+  "cards": [
+    {
+      "type": "theory",
+      "title_fr": "Les annuités",
+      "body_fr": "Une **annuité** est une suite de versements périodiques **égaux** à intervalles réguliers (annuels, mensuels...).\n\n**Deux types** :\n- **Annuités de terme échu** (versement en fin de période) : cas le plus courant — remboursement d'emprunt\n- **Annuités de terme à échoir** (versement en début de période) : cas de certains contrats d'assurance\n\n**Applications principales** :\n- Remboursement d'un emprunt bancaire (calcul de la mensualité)\n- Plan d'épargne régulier\n- Calcul de la valeur actuelle d'une rente\n- Évaluation d'un bail commercial\n\n**Tableau d'amortissement d'emprunt** : décompose chaque annuité en intérêts + remboursement du capital."
+    },
+    {
+      "type": "formula",
+      "title_fr": "Valeur acquise et actuelle d'une suite d'annuités",
+      "body_fr": "**Valeur acquise** (terme échu) :\n$$V_n = a \\times \\frac{(1+t)^n - 1}{t}$$\n\n**Valeur actuelle** (terme échu) :\n$$V_0 = a \\times \\frac{1 - (1+t)^{-n}}{t}$$\n\n**Mensualité d'un emprunt** :\n$$a = V_0 \\times \\frac{t}{1 - (1+t)^{-n}}$$\n\n**Tableau d'amortissement** :\n- Intérêts = Capital restant dû × $t$\n- Amortissement = Annuité - Intérêts\n- Capital restant dû (fin) = Capital (début) - Amortissement"
+    },
+    {
+      "type": "example",
+      "title_fr": "Remboursement d'emprunt par annuités",
+      "body_fr": "**Emprunt** : 100 000 DH sur 3 ans au taux annuel de 10%, remboursement par annuités constantes.\n\n**Calcul de l'annuité** :\n$$a = 100\\ 000 \\times \\frac{0{,}10}{1 - (1{,}10)^{-3}} = \\frac{10\\ 000}{1 - 0{,}7513} = \\frac{10\\ 000}{0{,}2487} \\approx 40\\ 211\\;DH$$\n\n**Tableau d'amortissement** :\n\n| Année | Capital début | Intérêts | Amortissement | Annuité | Capital fin |\n|---|---|---|---|---|---|\n| 1 | 100 000 | 10 000 | 30 211 | 40 211 | 69 789 |\n| 2 | 69 789 | 6 979 | 33 232 | 40 211 | 36 557 |\n| 3 | 36 557 | 3 656 | 36 555 | 40 211 | 0 |\n\nTotal intérêts payés = 10 000 + 6 979 + 3 656 = **20 635 DH** sur 100 000 DH empruntés."
+    }
+  ]
+}
+$lesson$
+WHERE id = '33333333-0000-0000-0000-000000000117';
