@@ -13,6 +13,7 @@ import '../../services/sync_service.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/papier/papier_footer.dart';
 import '../../widgets/error_retry_widget.dart';
+import '../../providers/lesson_progress_provider.dart';
 import '../../widgets/shimmer_skeleton.dart';
 import '../../widgets/daily_quests_card.dart';
 import '../../widgets/exam_readiness_card.dart';
@@ -126,6 +127,14 @@ class HomeScreen extends ConsumerWidget {
                   ),
 
                   const SliverToBoxAdapter(child: Fleuron()),
+
+                  // ── Continue learning ──
+                  const SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(22, 8, 22, 16),
+                      child: _ContinueLearningCard(),
+                    ),
+                  ),
 
                   // ── Daily quests + analytics cards (auto-stack to 2 cols on wide) ──
                   SliverToBoxAdapter(
@@ -585,6 +594,70 @@ class _SubjectBar extends StatelessWidget {
           style: PapierType.mono(fontSize: 8, color: Papier.ink3),
         ),
       ],
+    );
+  }
+}
+
+/// "Continue learning" card — picks up where the user left off based on
+/// the most recent lesson_progress row. Hidden when there's no in-progress
+/// lesson.
+class _ContinueLearningCard extends ConsumerWidget {
+  const _ContinueLearningCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cont = ref.watch(continueLearningProvider);
+    return cont.when(
+      loading: () => const SizedBox.shrink(),
+      error: (_, __) => const SizedBox.shrink(),
+      data: (row) {
+        if (row == null) return const SizedBox.shrink();
+        final skill = row['skills'] as Map?;
+        final skillId = row['skill_id'] as String?;
+        final name = (skill?['name_fr'] as String?) ?? 'Reprendre';
+        if (skillId == null) return const SizedBox.shrink();
+        return InkWell(
+          onTap: () => context.push('/lesson/$skillId'),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(16, 14, 14, 14),
+            decoration: BoxDecoration(
+              color: Papier.surface,
+              border: const Border(
+                left: BorderSide(color: Papier.green, width: 3),
+                top: BorderSide(color: Papier.line),
+                right: BorderSide(color: Papier.line),
+                bottom: BorderSide(color: Papier.line),
+              ),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.menu_book_outlined,
+                    size: 18, color: Papier.green),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('CONTINUER LA LECTURE',
+                          style: PapierType.smallCaps(
+                              fontSize: 9, color: Papier.green)),
+                      const SizedBox(height: 2),
+                      Text(name,
+                          style: PapierType.serif(
+                              fontSize: 15,
+                              color: Papier.ink,
+                              fontWeight: FontWeight.w600)),
+                    ],
+                  ),
+                ),
+                Text('→',
+                    style: PapierType.italic(
+                        fontSize: 18, color: Papier.green)),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

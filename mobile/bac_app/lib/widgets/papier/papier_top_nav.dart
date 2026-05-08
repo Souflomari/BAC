@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/theme_provider.dart';
+import '../global_search.dart';
 
 /// Papier-styled top navigation bar.
 ///
@@ -86,6 +87,14 @@ class PapierTopNav extends ConsumerWidget {
           ],
           const Spacer(),
           // Right side
+          if (isAuthed) ...[
+            IconButton(
+              tooltip: 'Rechercher (Cmd/Ctrl + K)',
+              icon: const Icon(Icons.search, size: 20, color: Papier.ink),
+              onPressed: () => GlobalSearchOverlay.open(context),
+            ),
+            const SizedBox(width: 2),
+          ],
           const _ThemeToggleButton(),
           const SizedBox(width: 4),
           if (isAuthed)

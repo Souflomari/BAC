@@ -63,3 +63,36 @@ final skillByIdProvider =
   final api = ref.read(apiServiceProvider);
   return api.getSkillById(skillId);
 });
+
+/// All topics across all subjects — fuels global search.
+final allTopicsProvider = FutureProvider<List<Topic>>((ref) async {
+  final subjects = await ref.watch(subjectsProvider.future);
+  final api = ref.read(apiServiceProvider);
+  final results = <Topic>[];
+  for (final s in subjects) {
+    try {
+      final topics = await api.getTopicsForSubject(s.id);
+      results.addAll(topics);
+    } catch (_) {
+      // skip subject if fetch fails
+    }
+  }
+  return results;
+});
+
+/// All skills across all topics — fuels global search. Heavy fetch; cached
+/// by Riverpod, refreshed only on invalidate.
+final allSkillsProvider = FutureProvider<List<Skill>>((ref) async {
+  final topics = await ref.watch(allTopicsProvider.future);
+  final api = ref.read(apiServiceProvider);
+  final results = <Skill>[];
+  for (final t in topics) {
+    try {
+      final skills = await api.getSkillsForTopic(t.id);
+      results.addAll(skills);
+    } catch (_) {
+      // skip topic on failure
+    }
+  }
+  return results;
+});
