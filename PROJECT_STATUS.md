@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-08 (during long-form lesson redesign run)
+**Last updated:** 2026-05-08 (after "Apple/Google quality" 5-hour polish run)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -383,16 +383,89 @@ Pass-criteria: 132 ready, 0 unwired, 0 todo, 0 errors.
 ## 11. Outstanding TODOs / known issues
 
 - **Service worker stickiness on Vercel.** After every deploy, users may need to hard-refresh or open Incognito to bust the cache. The `index.html` already wires `controllerchange` reload, but cached `main.dart.js` is `immutable` — if Flutter doesn't bump the bootstrap hash, users see stale code.
-- **ProgressScreen + SettingsScreen still mobile-density** on desktop. Out of scope for the website pass but worth fixing.
-- **26 SMA chapters still on v1 cards** — only 7 have been promoted to v2 long-form lessons. Authoring more is the obvious next backlog.
 - **Arabic translation** of v2 chapter content not done. Schema supports it (`title_ar`, `body_ar` fields can be added to blocks) but no content is written yet.
-- **Checkpoint progress not persisted** — passing a checkpoint is in-memory only. Should write to `user_skill_states` or a new `user_lesson_progress` table.
 - **No SEO** — Flutter web SPA, single index.html. If organic search matters, consider prerendering or a static landing.
-- **Sign-up flow** is functional but not split-tested. No email verification UX flow yet.
+- **Sign-up email verification UX**: Supabase OTP works, but no dedicated `/verify-email` screen yet.
+- **Avatar uploads**: storage bucket not yet set up; profile uses generated initials.
+- **SMB long-form chapters**: only SMA stream has v2 long-form. SMB still on placeholder cards.
+- **Items expansion**: many SMA chapters lack quiz items in their session.
+- **Code-splitting**: web bundle currently loads all 33 interactive widgets at startup (~5.2 MB). Deferred imports would shrink landing first paint.
 
 ---
 
-## 12. If you're starting a fresh session
+## 12. 2026-05-08 — "Apple/Google quality" 5-hour polish run
+
+A focused run targeting perceived-quality gaps. **All 32 SMA chapters were
+already live as v2 long-form** before this run; this pass made the surrounding
+shell feel finished.
+
+### Migrations applied
+- **015_user_lesson_progress.sql** — `(user_id, skill_id) → passed_keys jsonb`
+  with RLS policies. Persists checkpoint passes across sessions.
+
+### New widgets / providers
+- `lib/widgets/empty_state.dart` — Papier-styled empty state (icon + italic
+  headline + body + optional CTA). Used in subjects list, progress,
+  exam browser.
+- `lib/widgets/global_error_boundary.dart` — `GlobalErrorBoundary.install()`
+  swaps red Flutter `ErrorWidget` with a friendly Papier pane in production.
+  Wired in `main.dart`.
+- `lib/widgets/papier/papier_toast.dart` — `PapierToast.show/note/success/warning/error`
+  via OverlayEntry. Cream surface, ink border, color bar by tone, 3s auto-dismiss.
+  Replaces Material `showSnackBar` calls.
+- `lib/widgets/global_search.dart` — `GlobalSearchOverlay.toggle/open/close`.
+  Cmd/Ctrl+K modal. Searches subjects + topics + skills via existing providers
+  (`subjectsProvider`, `allTopicsProvider`, `allSkillsProvider`). Keyboard nav
+  ↑↓/Enter/Esc.
+- `lib/providers/lesson_progress_provider.dart` —
+  `LessonProgressNotifier extends FamilyAsyncNotifier<Set<String>, String>`
+  with debounced (800ms) upsert to `user_lesson_progress`. Plus
+  `continueLearningProvider` returning the most-recent in-progress lesson.
+
+### New screens / routes
+- `/profile` → `lib/screens/profile/profile_screen.dart`. 76×76 initial
+  avatar, name/email/joined-date, three stat cards (Série, XP, Maîtrisées),
+  links to /progress, /settings, /exams, /analytics. Responsive 2-col on
+  width ≥ 900.
+
+### Modified
+- `lib/screens/subjects/long_lesson_screen.dart` — checkpoint state moved
+  from `Map<String, bool>` in-memory to provider-backed `Set<String>`.
+  `_PrevNextNav` + `_NavCard` widgets at end-of-lesson for chapter siblings.
+- `lib/screens/subjects/lesson_screen.dart` — skeleton on loading,
+  `ErrorRetryWidget` on error.
+- `lib/screens/subjects/subjects_screen.dart` — empty state, skeleton,
+  hover lift on `_ChapterCard`.
+- `lib/screens/progress/progress_screen.dart` — `ErrorRetryWidget`,
+  `LayoutBuilder` 2-col at width ≥ 900.
+- `lib/screens/settings/settings_screen.dart` — grouped sections (COMPTE,
+  PRÉFÉRENCES, À PROPOS), profile preview tappable → `/profile`.
+- `lib/screens/home/home_screen.dart` — `_ContinueLearningCard` wired to
+  `continueLearningProvider` between Fleuron and quests.
+- `lib/config/router.dart` — `_papierPage()` helper (180ms fade + 4px slide)
+  replaces `NoTransitionPage` on tab routes. New `/profile` route.
+- `lib/widgets/papier/papier_top_nav.dart` — search icon (authed only),
+  `_ThemeToggleButton` (3-state cycle).
+- `lib/app.dart` — `_GlobalShortcuts` wraps the router for Cmd/Ctrl+K and
+  Cmd/Ctrl+/ → `GlobalSearchOverlay.toggle`.
+- `lib/main.dart` — `GlobalErrorBoundary.install()` first.
+- `lib/providers/progress_provider.dart` — `allTopicsProvider`,
+  `allSkillsProvider` (memoized aggregators, fuel global search).
+
+### Resolved from prior outstanding list
+- ~~ProgressScreen + SettingsScreen mobile-density~~ — both now responsive.
+- ~~Checkpoint progress not persisted~~ — migration 015 + provider lands it.
+- ~~Inconsistent loading / silent empty / raw error~~ — skeletons,
+  EmptyState, ErrorRetryWidget applied across primary screens.
+- ~~No global search~~ — Cmd/Ctrl+K modal lives.
+- ~~No theme toggle in top nav~~ — added.
+- ~~No dedicated profile screen~~ — `/profile` lives.
+- ~~No "continue learning" affordance~~ — home card.
+- ~~Snap tab transitions~~ — papierPage fade-slide.
+
+---
+
+## 13. If you're starting a fresh session
 
 1. Read this file in full.
 2. `git log --oneline -10` to see what's actually shipped.

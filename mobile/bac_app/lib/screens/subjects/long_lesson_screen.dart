@@ -6,6 +6,7 @@ import '../../config/theme.dart';
 import '../../models/item.dart';
 import '../../models/lesson_v2.dart';
 import '../../providers/lesson_progress_provider.dart';
+import '../../providers/progress_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/rich_text_renderer.dart';
 // Interactive widget dispatch — reuse the same set as the v1 lesson cards.
@@ -311,7 +312,118 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
                     color: Papier.surface,
                     fontWeight: FontWeight.w500)),
           ),
+          const SizedBox(height: 28),
+          _PrevNextNav(currentSkillId: widget.skillId),
         ],
+      ),
+    );
+  }
+}
+
+/// Prev/next chapter navigation. Renders only when sibling chapters exist
+/// in the same topic.
+class _PrevNextNav extends ConsumerWidget {
+  final String currentSkillId;
+  const _PrevNextNav({required this.currentSkillId});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final skillAsync = ref.watch(skillByIdProvider(currentSkillId));
+    return skillAsync.when(
+      loading: () => const SizedBox.shrink(),
+      error: (_, __) => const SizedBox.shrink(),
+      data: (skill) {
+        final siblingsAsync = ref.watch(skillsProvider(skill.topicId));
+        return siblingsAsync.when(
+          loading: () => const SizedBox.shrink(),
+          error: (_, __) => const SizedBox.shrink(),
+          data: (siblings) {
+            final ordered = [...siblings]
+              ..sort((a, b) => a.displayOrder.compareTo(b.displayOrder));
+            final i = ordered.indexWhere((s) => s.id == currentSkillId);
+            if (i == -1) return const SizedBox.shrink();
+            final prev = i > 0 ? ordered[i - 1] : null;
+            final next = i < ordered.length - 1 ? ordered[i + 1] : null;
+            if (prev == null && next == null) return const SizedBox.shrink();
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('CHAPITRES',
+                    style: PapierType.smallCaps(
+                        fontSize: 10, color: Papier.ink3)),
+                const SizedBox(height: 10),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: prev != null
+                          ? _NavCard(
+                              direction: '← Chapitre précédent',
+                              title: prev.nameFr,
+                              onTap: () =>
+                                  context.go('/lesson/${prev.id}'),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: next != null
+                          ? _NavCard(
+                              direction: 'Chapitre suivant →',
+                              title: next.nameFr,
+                              onTap: () =>
+                                  context.go('/lesson/${next.id}'),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+class _NavCard extends StatelessWidget {
+  final String direction;
+  final String title;
+  final VoidCallback onTap;
+  const _NavCard({
+    required this.direction,
+    required this.title,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+        decoration: BoxDecoration(
+          color: Papier.bg2,
+          border: Border.all(color: Papier.line2, width: 1),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(direction,
+                style: PapierType.smallCaps(
+                    fontSize: 9, color: Papier.ink3)),
+            const SizedBox(height: 4),
+            Text(title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: PapierType.italic(
+                    fontSize: 16,
+                    color: Papier.ink,
+                    fontWeight: FontWeight.w500,
+                    height: 1.2)),
+          ],
+        ),
       ),
     );
   }
