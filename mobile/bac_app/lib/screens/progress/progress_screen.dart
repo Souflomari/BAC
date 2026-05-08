@@ -7,6 +7,7 @@ import '../../providers/auth_provider.dart';
 import '../../providers/progress_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/shimmer_skeleton.dart';
+import '../../widgets/error_retry_widget.dart';
 
 final weakSkillsProvider = FutureProvider<List<Map<String, dynamic>>>((ref) async {
   final api = ref.read(apiServiceProvider);
@@ -29,8 +30,9 @@ class ProgressScreen extends ConsumerWidget {
           SafeArea(
             child: progressAsync.when(
               loading: () => const ProgressSkeleton(),
-              error: (e, _) => Center(
-                child: Text('$e', style: PapierType.body(color: Papier.red)),
+              error: (e, _) => ErrorRetryWidget(
+                message: 'Impossible de charger ta progression.',
+                onRetry: () => ref.invalidate(progressProvider),
               ),
               data: (progress) {
                 final profile = profileAsync.valueOrNull;

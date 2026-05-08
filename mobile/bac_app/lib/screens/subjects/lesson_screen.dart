@@ -6,6 +6,8 @@ import '../../l10n/app_localizations.dart';
 import '../../models/lesson_v2.dart';
 import '../../providers/progress_provider.dart';
 import '../../widgets/lesson_card_widget.dart';
+import '../../widgets/shimmer_skeleton.dart';
+import '../../widgets/error_retry_widget.dart';
 import 'long_lesson_screen.dart';
 
 class LessonScreen extends ConsumerStatefulWidget {
@@ -162,8 +164,49 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             ),
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text(l.error('$e'))),
+        loading: () => const _LessonSkeleton(),
+        error: (e, _) => ErrorRetryWidget(
+          message: l.errorLoadingData,
+          onRetry: () => ref.invalidate(skillByIdProvider(widget.skillId)),
+        ),
+      ),
+    );
+  }
+}
+
+/// Skeleton for the lesson screen while the skill loads.
+class _LessonSkeleton extends StatelessWidget {
+  const _LessonSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    return ShimmerWrap(
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(22, 18, 22, 22),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              ShimmerBox(width: 120, height: 11),
+              SizedBox(height: 8),
+              ShimmerBox(width: 240, height: 28),
+              SizedBox(height: 6),
+              ShimmerBox(width: 200, height: 16),
+              SizedBox(height: 18),
+              ShimmerBox(height: 4),
+              SizedBox(height: 24),
+              ShimmerBox(height: 16),
+              SizedBox(height: 8),
+              ShimmerBox(height: 16),
+              SizedBox(height: 8),
+              ShimmerBox(width: 280, height: 16),
+              SizedBox(height: 24),
+              ShimmerBox(height: 220, borderRadius: 4),
+              SizedBox(height: 16),
+              ShimmerBox(height: 80, borderRadius: 4),
+            ],
+          ),
+        ),
       ),
     );
   }

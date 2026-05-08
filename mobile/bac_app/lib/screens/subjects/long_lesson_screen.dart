@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../models/item.dart';
 import '../../models/lesson_v2.dart';
+import '../../providers/lesson_progress_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/rich_text_renderer.dart';
 // Interactive widget dispatch — reuse the same set as the v1 lesson cards.
@@ -51,7 +53,7 @@ import '../../widgets/animations/concept_animation_widget.dart';
 /// Renders a v2 long-form lesson — sections of typed blocks, with inline
 /// checkpoints that gate per-section completion. Designed to read like a
 /// textbook chapter, not a Duolingo card stack.
-class LongLessonScreen extends StatefulWidget {
+class LongLessonScreen extends ConsumerStatefulWidget {
   final String skillId;
   final LessonV2 lesson;
   final String? practiceSkillId; // optional override for the "Pratiquer" CTA
@@ -64,14 +66,10 @@ class LongLessonScreen extends StatefulWidget {
   });
 
   @override
-  State<LongLessonScreen> createState() => _LongLessonScreenState();
+  ConsumerState<LongLessonScreen> createState() => _LongLessonScreenState();
 }
 
-class _LongLessonScreenState extends State<LongLessonScreen> {
-  /// Keyed by `${sectionIndex}.${blockIndex}.${questionIndex}` → user got it
-  /// right at least once.
-  final Map<String, bool> _checkpointPassed = {};
-
+class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
   /// Per-section keys for scroll-to navigation from the TOC.
   late final List<GlobalKey> _sectionKeys;
 
@@ -97,8 +95,8 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
   }
 
   /// Section completion: a section is "complete" iff every CheckpointBlock
-  /// inside it has at least one `_checkpointPassed[…] == true` per question.
-  Set<int> get _completedSections {
+  /// inside it has at least one passed key per question.
+  Set<int> _computeCompletedSections(Set<String> passed) {
     final out = <int>{};
     for (var s = 0; s < widget.lesson.sections.length; s++) {
       final section = widget.lesson.sections[s];
@@ -110,7 +108,7 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
           hasCheckpoint = true;
           for (var q = 0; q < block.questions.length; q++) {
             final key = '$s.$b.$q';
-            if (_checkpointPassed[key] != true) allPassed = false;
+            if (!passed.contains(key)) allPassed = false;
           }
         }
       }
@@ -120,9 +118,8 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
   }
 
   void _onQuestionPassed(int sectionIdx, int blockIdx, int questionIdx) {
-    setState(() {
-      _checkpointPassed['$sectionIdx.$blockIdx.$questionIdx'] = true;
-    });
+    final key = '$sectionIdx.$blockIdx.$questionIdx';
+    ref.read(lessonProgressProvider(widget.skillId).notifier).markPassed(key);
   }
 
   @override
@@ -130,7 +127,10 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
     final l = widget.lesson;
     final width = MediaQuery.sizeOf(context).width;
     final isWide = width >= 1024;
-    final completed = _completedSections;
+    // Watch the persisted progress; falls back to empty set while loading.
+    final progressAsync = ref.watch(lessonProgressProvider(widget.skillId));
+    final passed = progressAsync.valueOrNull ?? const <String>{};
+    final completed = _computeCompletedSections(passed);
 
     final body = ListView.builder(
       padding: EdgeInsets.symmetric(
@@ -147,7 +147,7 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
             section: l.sections[idx],
             isCompleted: completed.contains(idx),
             onQuestionPassed: (b, q) => _onQuestionPassed(idx, b, q),
-            passedKeys: _checkpointPassed,
+            passedKeys: passed,
           ),
         );
       },
@@ -197,7 +197,9 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
   Widget _buildHeader() {
     final l = widget.lesson;
     final mins = l.totalEstimatedMinutes;
-    final completed = _completedSections;
+    final passed = ref.read(lessonProgressProvider(widget.skillId)).valueOrNull
+        ?? const <String>{};
+    final completed = _computeCompletedSections(passed);
     final total = l.sections.length;
     final pct = total == 0 ? 0.0 : completed.length / total;
     return Container(
@@ -396,7 +398,7 @@ class _SectionView extends StatelessWidget {
   final int index;
   final LessonSection section;
   final bool isCompleted;
-  final Map<String, bool> passedKeys;
+  final Set<String> passedKeys;
   final void Function(int blockIdx, int questionIdx) onQuestionPassed;
 
   const _SectionView({
@@ -448,7 +450,7 @@ class _SectionView extends StatelessWidget {
               block: section.blocks[b],
               onQuestionPassed: (q) => onQuestionPassed(b, q),
               passedFor: (q) =>
-                  passedKeys['$index.$b.$q'] == true,
+                  passedKeys.contains('$index.$b.$q'),
             ),
         ],
       ),

@@ -6,6 +6,8 @@ import '../../providers/progress_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/papier/papier_footer.dart';
 import '../../widgets/error_retry_widget.dart';
+import '../../widgets/shimmer_skeleton.dart';
+import '../../widgets/empty_state.dart';
 
 class SubjectsScreen extends ConsumerWidget {
   const SubjectsScreen({super.key});
@@ -27,7 +29,7 @@ class SubjectsScreen extends ConsumerWidget {
           const PaperGrain(opacity: 0.2),
           SafeArea(
             child: subjectsAsync.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const _SubjectsSkeleton(),
               error: (e, _) => ErrorRetryWidget(
                 message: 'Erreur de chargement',
                 onRetry: () => ref.invalidate(subjectsProvider),
@@ -546,6 +548,56 @@ class _LegendItem extends StatelessWidget {
         const SizedBox(width: 6),
         Text(label, style: PapierType.italic(fontSize: 12, color: Papier.ink2)),
       ],
+    );
+  }
+}
+
+/// Skeleton mimicking the subjects list/grid layout while data loads.
+class _SubjectsSkeleton extends StatelessWidget {
+  const _SubjectsSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+    final isWide = width >= 800;
+    return ShimmerWrap(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(22, 24, 22, 22),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const ShimmerBox(width: 130, height: 11),
+            const SizedBox(height: 6),
+            const ShimmerBox(width: 200, height: 32),
+            const SizedBox(height: 12),
+            Container(height: 1, color: Colors.white),
+            const SizedBox(height: 24),
+            if (isWide)
+              GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: width >= 1100 ? 3 : 2,
+                childAspectRatio: 1.35,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                children: List.generate(
+                  6,
+                  (_) => const ShimmerBox(height: 200, borderRadius: 4),
+                ),
+              )
+            else
+              Column(
+                children: List.generate(
+                  6,
+                  (_) => const Padding(
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: ShimmerBox(height: 80, borderRadius: 4),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
