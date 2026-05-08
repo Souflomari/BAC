@@ -118,19 +118,39 @@ class ProgressScreen extends ConsumerWidget {
                         ),
                       ),
 
-                      // Study calendar
+                      // Study calendar (full width)
                       SliverToBoxAdapter(
                         child: _StudyCalendar(progress: progress),
                       ),
 
-                      // Badges / Sceaux
+                      // Badges + Subject breakdown — 2-col on wide screens
                       SliverToBoxAdapter(
-                        child: _BadgesSection(streak: progress.streakCurrent),
-                      ),
-
-                      // Subject hours breakdown
-                      SliverToBoxAdapter(
-                        child: _SubjectBreakdown(subjects: progress.subjects),
+                        child: LayoutBuilder(
+                          builder: (ctx, c) {
+                            final isWide = c.maxWidth >= 900;
+                            if (isWide) {
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: _BadgesSection(
+                                        streak: progress.streakCurrent),
+                                  ),
+                                  Expanded(
+                                    child: _SubjectBreakdown(
+                                        subjects: progress.subjects),
+                                  ),
+                                ],
+                              );
+                            }
+                            return Column(
+                              children: [
+                                _BadgesSection(streak: progress.streakCurrent),
+                                _SubjectBreakdown(subjects: progress.subjects),
+                              ],
+                            );
+                          },
+                        ),
                       ),
 
                       // Analytics shortcut

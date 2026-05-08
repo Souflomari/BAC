@@ -15,6 +15,7 @@ import '../screens/subjects/subject_detail_screen.dart';
 import '../screens/subjects/lesson_screen.dart';
 import '../screens/shell/app_shell.dart';
 import '../screens/landing/landing_screen.dart';
+import '../screens/profile/profile_screen.dart';
 import '../widgets/demo/interactive_widget_demo_screen.dart';
 import '../widgets/demo/interactive_widget_test_screen.dart';
 import '../screens/exams/exam_browser_screen.dart';
@@ -164,6 +165,12 @@ final routerProvider = Provider<GoRouter>((ref) {
             ),
           ),
         ],
+      ),
+
+      // Profile
+      GoRoute(
+        path: '/profile',
+        builder: (context, state) => const ProfileScreen(),
       ),
 
       // Notification settings

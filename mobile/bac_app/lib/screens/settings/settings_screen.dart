@@ -49,64 +49,82 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                 ),
 
-                // Profile section
+                // Compte section header
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(22, 0, 22, 4),
+                  child: Text(
+                    'COMPTE',
+                    style: PapierType.smallCaps(color: Papier.ink3),
+                  ),
+                ),
+
+                // Profile preview card → tap to open ProfileScreen
                 profileAsync.when(
                   data: (profile) {
                     if (profile == null) return const SizedBox.shrink();
-                    return Container(
-                      margin: const EdgeInsets.fromLTRB(22, 0, 22, 20),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Papier.surface,
-                        border: Border.all(color: Papier.ink, width: 1.5),
-                      ),
-                      child: Row(
-                        children: [
-                          // Initial stamp
-                          Container(
-                            width: 54,
-                            height: 54,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Papier.ink, width: 1.5),
-                              color: Papier.bg2,
-                            ),
-                            child: Center(
-                              child: Text(
-                                profile.displayName.isNotEmpty
-                                    ? profile.displayName[0].toUpperCase()
-                                    : '?',
-                                style: PapierType.italic(
-                                  fontSize: 22,
-                                  color: Papier.ink,
+                    return InkWell(
+                      onTap: () => context.push('/profile'),
+                      child: Container(
+                        margin: const EdgeInsets.fromLTRB(22, 4, 22, 20),
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Papier.surface,
+                          border: Border.all(color: Papier.ink, width: 1.5),
+                        ),
+                        child: Row(
+                          children: [
+                            // Initial stamp
+                            Container(
+                              width: 54,
+                              height: 54,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border:
+                                    Border.all(color: Papier.ink, width: 1.5),
+                                color: Papier.bg2,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  profile.displayName.isNotEmpty
+                                      ? profile.displayName[0].toUpperCase()
+                                      : '?',
+                                  style: PapierType.italic(
+                                    fontSize: 22,
+                                    color: Papier.ink,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  profile.displayName,
-                                  style: PapierType.serif(fontSize: 17),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  isArabic
-                                      ? profile.bacStream.labelAr
-                                      : profile.bacStream.labelFr,
-                                  style: PapierType.mono(
-                                    fontSize: 9,
-                                    color: Papier.ink3,
-                                    letterSpacing: 1.2,
+                            const SizedBox(width: 14),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    profile.displayName,
+                                    style: PapierType.serif(fontSize: 17),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    isArabic
+                                        ? profile.bacStream.labelAr
+                                        : profile.bacStream.labelFr,
+                                    style: PapierType.mono(
+                                      fontSize: 9,
+                                      color: Papier.ink3,
+                                      letterSpacing: 1.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Text(
+                              '→',
+                              style: PapierType.italic(
+                                  fontSize: 18, color: Papier.ink3),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -152,6 +170,38 @@ class SettingsScreen extends ConsumerWidget {
                   label: l.notifications,
                   value: l.studyReminders,
                   onTap: () => context.push('/settings/notifications'),
+                  isLast: true,
+                ),
+
+                const SizedBox(height: 24),
+
+                // À propos
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(22, 0, 22, 4),
+                  child: Text(
+                    'À PROPOS',
+                    style: PapierType.smallCaps(color: Papier.ink3),
+                  ),
+                ),
+                _PapierTile(
+                  label: 'Version',
+                  value: '1.0.0',
+                  onTap: () {},
+                ),
+                _PapierTile(
+                  label: 'Confidentialité',
+                  value: 'Comment on protège tes données',
+                  onTap: () {},
+                ),
+                _PapierTile(
+                  label: 'Conditions d\'utilisation',
+                  value: '',
+                  onTap: () {},
+                ),
+                _PapierTile(
+                  label: 'À propos de BacPrep',
+                  value: 'Mission, équipe, contact',
+                  onTap: () {},
                   isLast: true,
                 ),
 
