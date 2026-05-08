@@ -13,6 +13,7 @@ import '../screens/auth/forgot_password_screen.dart';
 import '../screens/subjects/subject_detail_screen.dart';
 import '../screens/subjects/lesson_screen.dart';
 import '../screens/shell/app_shell.dart';
+import '../screens/landing/landing_screen.dart';
 import '../widgets/demo/interactive_widget_demo_screen.dart';
 import '../widgets/demo/interactive_widget_test_screen.dart';
 import '../screens/exams/exam_browser_screen.dart';
@@ -34,18 +35,22 @@ final routerProvider = Provider<GoRouter>((ref) {
     initialLocation: '/splash',
     redirect: (context, state) {
       final isAuthenticated = authState.valueOrNull?.session != null;
-      final isSplash = state.matchedLocation == '/splash';
-      final isAuthRoute = state.matchedLocation == '/login' ||
-          state.matchedLocation == '/forgot-password' ||
-          state.matchedLocation.startsWith('/onboarding');
+      final loc = state.matchedLocation;
+      final isSplash = loc == '/splash';
+      final isPublic = loc == '/landing' ||
+          loc == '/login' ||
+          loc == '/forgot-password' ||
+          loc.startsWith('/onboarding');
 
       // Let splash screen handle its own navigation
       if (isSplash) return null;
 
-      if (!isAuthenticated && !isAuthRoute) {
-        return '/login';
+      // Unauth: anything non-public redirects to landing.
+      if (!isAuthenticated && !isPublic) {
+        return '/landing';
       }
-      if (isAuthenticated && state.matchedLocation == '/login') {
+      // Auth: bounce off public marketing/auth routes back into the app.
+      if (isAuthenticated && (loc == '/landing' || loc == '/login')) {
         return '/home';
       }
       return null;
@@ -55,6 +60,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
+      ),
+
+      // Public marketing landing
+      GoRoute(
+        path: '/landing',
+        builder: (context, state) => const LandingScreen(),
       ),
 
       // Auth

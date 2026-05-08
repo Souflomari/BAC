@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../providers/progress_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
+import '../../widgets/papier/papier_footer.dart';
 import '../../widgets/error_retry_widget.dart';
 
 class SubjectsScreen extends ConsumerWidget {
@@ -96,35 +97,79 @@ class SubjectsScreen extends ConsumerWidget {
                       ),
                     ),
 
-                    // Chapter list
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          if (index == subjects.length) return const _Legend();
-                          final subject = subjects[index];
-                          final sp = progress?.subjects
-                              .where((p) => p.subject.id == subject.id)
-                              .firstOrNull;
-                          return _ChapterRow(
-                            numeral: index < _romanNumerals.length
-                                ? _romanNumerals[index]
-                                : '${index + 1}',
-                            title: subject.nameFr,
-                            subtitle: subject.examType == 'national'
-                                ? 'épreuve nationale'
-                                : 'épreuve régionale',
-                            masteredSkills: sp?.masteredSkills ?? 0,
-                            totalSkills: sp?.totalSkills ?? 0,
-                            averageStrength: sp?.averageStrength ?? 0,
-                            isCurrent: subject.id == currentId,
-                            onTap: () => context.push('/subjects/${subject.id}'),
-                          );
-                        },
-                        childCount: subjects.length + 1,
+                    // Chapter content — list on phone, card grid on wide.
+                    if (MediaQuery.sizeOf(context).width >= 800)
+                      SliverPadding(
+                        padding: const EdgeInsets.fromLTRB(22, 16, 22, 16),
+                        sliver: SliverGrid(
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 360,
+                            childAspectRatio: 1.35,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                          ),
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              final subject = subjects[index];
+                              final sp = progress?.subjects
+                                  .where((p) => p.subject.id == subject.id)
+                                  .firstOrNull;
+                              return _ChapterCard(
+                                numeral: index < _romanNumerals.length
+                                    ? _romanNumerals[index]
+                                    : '${index + 1}',
+                                title: subject.nameFr,
+                                subtitle: subject.examType == 'national'
+                                    ? 'épreuve nationale'
+                                    : 'épreuve régionale',
+                                masteredSkills: sp?.masteredSkills ?? 0,
+                                totalSkills: sp?.totalSkills ?? 0,
+                                averageStrength: sp?.averageStrength ?? 0,
+                                isCurrent: subject.id == currentId,
+                                onTap: () =>
+                                    context.push('/subjects/${subject.id}'),
+                              );
+                            },
+                            childCount: subjects.length,
+                          ),
+                        ),
+                      )
+                    else
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            if (index == subjects.length) return const _Legend();
+                            final subject = subjects[index];
+                            final sp = progress?.subjects
+                                .where((p) => p.subject.id == subject.id)
+                                .firstOrNull;
+                            return _ChapterRow(
+                              numeral: index < _romanNumerals.length
+                                  ? _romanNumerals[index]
+                                  : '${index + 1}',
+                              title: subject.nameFr,
+                              subtitle: subject.examType == 'national'
+                                  ? 'épreuve nationale'
+                                  : 'épreuve régionale',
+                              masteredSkills: sp?.masteredSkills ?? 0,
+                              totalSkills: sp?.totalSkills ?? 0,
+                              averageStrength: sp?.averageStrength ?? 0,
+                              isCurrent: subject.id == currentId,
+                              onTap: () => context.push('/subjects/${subject.id}'),
+                            );
+                          },
+                          childCount: subjects.length + 1,
+                        ),
                       ),
-                    ),
 
-                    const SliverToBoxAdapter(child: SizedBox(height: 80)),
+                    if (MediaQuery.sizeOf(context).width >= 800)
+                      const SliverToBoxAdapter(child: _Legend()),
+                    const SliverToBoxAdapter(child: SizedBox(height: 40)),
+                    if (MediaQuery.sizeOf(context).width >= 800)
+                      const SliverToBoxAdapter(child: PapierFooter())
+                    else
+                      const SliverToBoxAdapter(child: SizedBox(height: 40)),
                   ],
                 );
               },
@@ -253,6 +298,131 @@ class _ChapterRow extends StatelessWidget {
               child: Container(width: 3, color: Papier.red),
             ),
         ],
+      ),
+    );
+  }
+}
+
+/// Grid-style chapter card used on tablet/desktop. The vertical layout fits
+/// inside a ~360px-wide tile with a fixed aspect ratio. Same data shape as
+/// `_ChapterRow`.
+class _ChapterCard extends StatelessWidget {
+  final String numeral;
+  final String title;
+  final String subtitle;
+  final int masteredSkills;
+  final int totalSkills;
+  final double averageStrength;
+  final bool isCurrent;
+  final VoidCallback onTap;
+
+  const _ChapterCard({
+    required this.numeral,
+    required this.title,
+    required this.subtitle,
+    required this.masteredSkills,
+    required this.totalSkills,
+    required this.averageStrength,
+    required this.isCurrent,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = totalSkills > 0 ? masteredSkills / totalSkills : 0.0;
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: isCurrent ? Papier.bg2 : Papier.surface,
+          border: Border.all(
+            color: isCurrent ? Papier.red : Papier.line2,
+            width: isCurrent ? 1.6 : 1,
+          ),
+        ),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Numeral + status row
+            Row(
+              children: [
+                Text(
+                  '$numeral.',
+                  style: PapierType.italic(
+                    fontSize: 22,
+                    color: isCurrent ? Papier.red : Papier.ink3,
+                  ),
+                ),
+                const Spacer(),
+                Text(
+                  subtitle.toUpperCase(),
+                  style: PapierType.mono(
+                    fontSize: 9,
+                    color: Papier.ink3,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            // Title
+            Text(
+              title,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: PapierType.italic(
+                fontSize: 22,
+                color: Papier.ink,
+                height: 1.1,
+              ),
+            ),
+            const Spacer(),
+            // Mastery bar
+            Container(
+              height: 4,
+              decoration: BoxDecoration(
+                color: Papier.line,
+                borderRadius: BorderRadius.circular(2),
+              ),
+              child: FractionallySizedBox(
+                alignment: Alignment.centerLeft,
+                widthFactor: pct.clamp(0.0, 1.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: pct >= 0.95
+                        ? Papier.green
+                        : pct >= 0.4
+                            ? Papier.gold
+                            : Papier.red,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            // Bottom row: count + Continuer
+            Row(
+              children: [
+                Text(
+                  totalSkills > 0
+                      ? '$masteredSkills · $totalSkills compétences'
+                      : 'à venir',
+                  style: PapierType.mono(fontSize: 11, color: Papier.ink2),
+                ),
+                const Spacer(),
+                Text(
+                  isCurrent ? 'Continuer →' : 'Ouvrir →',
+                  style: PapierType.serif(
+                    fontSize: 13,
+                    color: isCurrent ? Papier.red : Papier.ink,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

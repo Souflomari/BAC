@@ -11,6 +11,7 @@ import '../../providers/connectivity_provider.dart';
 import '../../providers/progress_provider.dart';
 import '../../services/sync_service.dart';
 import '../../widgets/papier/papier_primitives.dart';
+import '../../widgets/papier/papier_footer.dart';
 import '../../widgets/error_retry_widget.dart';
 import '../../widgets/shimmer_skeleton.dart';
 import '../../widgets/daily_quests_card.dart';
@@ -126,26 +127,51 @@ class HomeScreen extends ConsumerWidget {
 
                   const SliverToBoxAdapter(child: Fleuron()),
 
-                  // ── Daily quests + analytics cards (existing widgets,
-                  //     auto-restyled by theme tokens) ──
-                  const SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 22),
-                      child: DailyQuestsCard(),
-                    ),
-                  ),
-                  const SliverToBoxAdapter(child: SizedBox(height: 12)),
-                  const SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 22),
-                      child: ExamReadinessCard(),
-                    ),
-                  ),
-                  const SliverToBoxAdapter(child: SizedBox(height: 12)),
-                  const SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 22),
-                      child: SmartRecommendations(),
+                  // ── Daily quests + analytics cards (auto-stack to 2 cols on wide) ──
+                  SliverToBoxAdapter(
+                    child: LayoutBuilder(
+                      builder: (ctx, c) {
+                        final wide = c.maxWidth >= 900;
+                        if (wide) {
+                          return const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 22),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(child: DailyQuestsCard()),
+                                SizedBox(width: 16),
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      ExamReadinessCard(),
+                                      SizedBox(height: 12),
+                                      SmartRecommendations(),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        return const Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 22),
+                              child: DailyQuestsCard(),
+                            ),
+                            SizedBox(height: 12),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 22),
+                              child: ExamReadinessCard(),
+                            ),
+                            SizedBox(height: 12),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 22),
+                              child: SmartRecommendations(),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                   const SliverToBoxAdapter(child: SizedBox(height: 18)),
@@ -173,6 +199,13 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ),
                   const SliverToBoxAdapter(child: SizedBox(height: 80)),
+                  // Footer (web-style) — only on tablet/desktop, the phone keeps
+                  // breathing space at the bottom for the bottom nav bar.
+                  SliverToBoxAdapter(
+                    child: MediaQuery.sizeOf(context).width >= 800
+                        ? const PapierFooter()
+                        : const SizedBox.shrink(),
+                  ),
                 ],
               ),
             ),

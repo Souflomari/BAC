@@ -134,6 +134,47 @@ class PapierType {
         fontStyle: FontStyle.italic,
       );
 
+  /// Display 1 — hero headlines on landing / marketing pages. ~64px desktop.
+  /// Tight line-height + slight negative tracking so the italic Garamond
+  /// glyphs feel like a printed cover instead of a UI label.
+  static TextStyle display1({
+    double fontSize = 64,
+    Color color = Papier.ink,
+    FontWeight fontWeight = FontWeight.w500,
+  }) => italic(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        letterSpacing: -1.2,
+        height: 1.02,
+      );
+
+  /// Display 2 — section titles on landing / dashboards. ~48px.
+  static TextStyle display2({
+    double fontSize = 48,
+    Color color = Papier.ink,
+    FontWeight fontWeight = FontWeight.w500,
+  }) => italic(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        letterSpacing: -0.9,
+        height: 1.05,
+      );
+
+  /// Display 3 — page-level headings. ~36px.
+  static TextStyle display3({
+    double fontSize = 36,
+    Color color = Papier.ink,
+    FontWeight fontWeight = FontWeight.w500,
+  }) => italic(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        letterSpacing: -0.6,
+        height: 1.1,
+      );
+
   /// Inter — body / UI / actions.
   static TextStyle body({
     double fontSize = 13,

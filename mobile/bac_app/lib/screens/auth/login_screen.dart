@@ -79,6 +79,79 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
+    final width = MediaQuery.sizeOf(context).width;
+    final isSplit = width >= 900;
+
+    final formColumn = _buildFormColumn(context, l);
+
+    if (isSplit) {
+      return Scaffold(
+        backgroundColor: Papier.bg,
+        body: Row(
+          children: [
+            Expanded(
+              child: Container(
+                color: Papier.ink,
+                padding: const EdgeInsets.all(56),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'BACPREP',
+                      style: PapierType.smallCaps(
+                        fontSize: 12,
+                        color: Papier.darkInk2,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Le Cahier\nvivant.',
+                      style: PapierType.display1(
+                        fontSize: 64,
+                        color: Papier.surface,
+                      ),
+                    ),
+                    const SizedBox(height: 28),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 420),
+                      child: Text(
+                        'Toutes les filières du Bac marocain. 16 chapitres animés. Une mémoire qui ne s\'use pas.',
+                        style: PapierType.body(
+                          fontSize: 16,
+                          color: Papier.darkInk2,
+                          height: 1.55,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Stack(
+                children: [
+                  const Positioned.fill(child: PaperGrain(opacity: 0.3)),
+                  SafeArea(
+                    child: SingleChildScrollView(
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 480),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 32),
+                            child: formColumn,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Papier.bg,
@@ -87,9 +160,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           const PaperGrain(opacity: 0.3),
           SafeArea(
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
+              child: formColumn,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column _buildFormColumn(BuildContext context, AppLocalizations l) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
                   // Masthead
                   Container(
                     padding: const EdgeInsets.fromLTRB(22, 40, 22, 24),
@@ -265,12 +347,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      ],
     );
   }
 }
