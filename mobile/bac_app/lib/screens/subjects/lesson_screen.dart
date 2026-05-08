@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../l10n/app_localizations.dart';
+import '../../models/lesson_v2.dart';
 import '../../providers/progress_provider.dart';
 import '../../widgets/lesson_card_widget.dart';
+import 'long_lesson_screen.dart';
 
 class LessonScreen extends ConsumerStatefulWidget {
   final String skillId;
@@ -81,6 +83,17 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
       backgroundColor: Papier.bg,
       body: skillAsync.when(
         data: (skill) {
+          // V2 long-form lesson dispatch — if the JSONB has version=2 (or
+          // a `sections` list), route to the new screen.
+          if (skill.isLongLesson && skill.lessonRaw != null) {
+            final lesson =
+                LessonV2.fromJson(widget.skillId, skill.lessonRaw!);
+            return LongLessonScreen(
+              skillId: widget.skillId,
+              lesson: lesson,
+            );
+          }
+
           final cards = skill.lessonCards ?? [];
           if (cards.isEmpty) {
             return _EmptyLessonView(

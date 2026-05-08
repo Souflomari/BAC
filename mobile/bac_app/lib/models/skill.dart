@@ -160,6 +160,10 @@ class Skill extends Equatable {
   final int displayOrder;
   final List<LessonCard>? lessonCards;
 
+  /// Raw JSONB from `skills.lesson`. Kept around so the lesson-screen router
+  /// can detect v2 (long-form) lessons via `lessonRaw?['version'] == 2`.
+  final Map<String, dynamic>? lessonRaw;
+
   const Skill({
     required this.id,
     required this.topicId,
@@ -171,14 +175,25 @@ class Skill extends Equatable {
     this.examRelevanceWeight = 0.5,
     this.displayOrder = 0,
     this.lessonCards,
+    this.lessonRaw,
   });
 
-  bool get hasLesson => lessonCards != null && lessonCards!.isNotEmpty;
+  bool get hasLesson =>
+      (lessonCards != null && lessonCards!.isNotEmpty) || isLongLesson;
+
+  /// True when the lesson JSON is the v2 long-form schema.
+  bool get isLongLesson {
+    final raw = lessonRaw;
+    if (raw == null) return false;
+    return raw['version'] == 2 || raw['sections'] is List;
+  }
 
   factory Skill.fromJson(Map<String, dynamic> json) {
     List<LessonCard>? cards;
+    Map<String, dynamic>? rawLesson;
     final lessonJson = json['lesson'];
     if (lessonJson is Map<String, dynamic>) {
+      rawLesson = lessonJson;
       final cardsJson = lessonJson['cards'];
       if (cardsJson is List) {
         cards = cardsJson
@@ -198,6 +213,7 @@ class Skill extends Equatable {
       examRelevanceWeight: (json['exam_relevance_weight'] as num?)?.toDouble() ?? 0.5,
       displayOrder: json['display_order'] as int? ?? 0,
       lessonCards: cards,
+      lessonRaw: rawLesson,
     );
   }
 
