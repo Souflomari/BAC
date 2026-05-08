@@ -29,6 +29,7 @@ import '../screens/splash/splash_screen.dart';
 import '../screens/analytics/analytics_hub_screen.dart';
 import '../screens/analytics/memory_heatmap_screen.dart';
 import '../screens/analytics/study_schedule_screen.dart';
+import 'theme.dart';
 
 /// Smooth Papier-style page transition: short fade + small upward slide.
 /// Used for tab routes (replaces NoTransitionPage which snaps instantly).
@@ -67,6 +68,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     initialLocation: '/splash',
+    errorBuilder: (context, state) => NotFoundScreen(uri: state.uri.toString()),
     redirect: (context, state) {
       final isAuthenticated = authState.valueOrNull?.session != null;
       final loc = state.matchedLocation;
@@ -275,3 +277,92 @@ final routerProvider = Provider<GoRouter>((ref) {
     ],
   );
 });
+
+/// Papier-styled 404. Shown by GoRouter when no route matches.
+class NotFoundScreen extends StatelessWidget {
+  final String uri;
+  const NotFoundScreen({super.key, required this.uri});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Papier.bg,
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: Padding(
+              padding: const EdgeInsets.all(28),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    '404',
+                    style: PapierType.italic(
+                      fontSize: 88,
+                      color: Papier.ink,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Cette page n'existe pas",
+                    textAlign: TextAlign.center,
+                    style: PapierType.italic(fontSize: 24, color: Papier.ink),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    "L'URL « $uri » ne mène nulle part. Voici quelques chapitres pour t'orienter.",
+                    textAlign: TextAlign.center,
+                    style: PapierType.serif(fontSize: 14, color: Papier.ink2),
+                  ),
+                  const SizedBox(height: 24),
+                  const Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      _NotFoundLink(label: 'Cahier', route: '/home'),
+                      _NotFoundLink(label: 'Sujets', route: '/subjects'),
+                      _NotFoundLink(label: 'Annales', route: '/exams'),
+                      _NotFoundLink(label: 'Progrès', route: '/progress'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NotFoundLink extends StatelessWidget {
+  final String label;
+  final String route;
+  const _NotFoundLink({required this.label, required this.route});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: () => GoRouter.of(context).go(route),
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Papier.ink,
+        side: const BorderSide(color: Papier.ink, width: 1.4),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(2)),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
+      child: Text(
+        label,
+        style: PapierType.smallCaps(
+          fontSize: 11,
+          color: Papier.ink,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+}

@@ -34,7 +34,10 @@ class MemoryHeatmapScreen extends ConsumerWidget {
 
           final subjectIds = bySubject.keys.toList();
 
-          return ListView.builder(
+          return Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 960),
+              child: ListView.builder(
             padding: const EdgeInsets.all(Spacing.md),
             itemCount: subjectIds.length,
             itemBuilder: (context, index) {
@@ -57,6 +60,8 @@ class MemoryHeatmapScreen extends ConsumerWidget {
                 isArabic: isArabic,
               );
             },
+          ),
+            ),
           );
         },
       ),

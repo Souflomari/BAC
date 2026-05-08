@@ -29,7 +29,10 @@ class AnalyticsHubScreen extends ConsumerWidget {
           ref.invalidate(progressProvider);
           ref.invalidate(enrichedSkillStatesProvider);
         },
-        child: ListView(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 960),
+            child: ListView(
           padding: const EdgeInsets.all(Spacing.md),
           children: [
             // 1. Exam Readiness Score
@@ -85,6 +88,8 @@ class AnalyticsHubScreen extends ConsumerWidget {
 
             const SizedBox(height: Spacing.xxl),
           ],
+        ),
+          ),
         ),
       ),
     );

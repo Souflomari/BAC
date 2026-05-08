@@ -75,7 +75,10 @@ class StudyScheduleScreen extends ConsumerWidget {
 
           return RefreshIndicator(
             onRefresh: () async => ref.invalidate(enrichedSkillStatesProvider),
-            child: ListView(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 960),
+                child: ListView(
               padding: const EdgeInsets.all(Spacing.md),
               children: [
                 // Overdue banner
@@ -114,6 +117,8 @@ class StudyScheduleScreen extends ConsumerWidget {
                   ),
                 ),
               ],
+            ),
+              ),
             ),
           );
         },
