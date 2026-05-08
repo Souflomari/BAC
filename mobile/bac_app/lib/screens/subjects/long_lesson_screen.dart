@@ -72,6 +72,30 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
   /// right at least once.
   final Map<String, bool> _checkpointPassed = {};
 
+  /// Per-section keys for scroll-to navigation from the TOC.
+  late final List<GlobalKey> _sectionKeys;
+
+  @override
+  void initState() {
+    super.initState();
+    _sectionKeys = List.generate(
+      widget.lesson.sections.length,
+      (_) => GlobalKey(),
+    );
+  }
+
+  void _scrollToSection(int index) {
+    final ctx = _sectionKeys[index].currentContext;
+    if (ctx != null) {
+      Scrollable.ensureVisible(
+        ctx,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutCubic,
+        alignment: 0.05,
+      );
+    }
+  }
+
   /// Section completion: a section is "complete" iff every CheckpointBlock
   /// inside it has at least one `_checkpointPassed[…] == true` per question.
   Set<int> get _completedSections {
@@ -116,12 +140,15 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
       itemCount: l.sections.length + 1, // sections + end-of-lesson row
       itemBuilder: (context, idx) {
         if (idx == l.sections.length) return _buildEndOfLesson();
-        return _SectionView(
-          index: idx,
-          section: l.sections[idx],
-          isCompleted: completed.contains(idx),
-          onQuestionPassed: (b, q) => _onQuestionPassed(idx, b, q),
-          passedKeys: _checkpointPassed,
+        return KeyedSubtree(
+          key: _sectionKeys[idx],
+          child: _SectionView(
+            index: idx,
+            section: l.sections[idx],
+            isCompleted: completed.contains(idx),
+            onQuestionPassed: (b, q) => _onQuestionPassed(idx, b, q),
+            passedKeys: _checkpointPassed,
+          ),
         );
       },
     );
@@ -144,6 +171,7 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
                           child: _Toc(
                             sections: l.sections,
                             completed: completed,
+                            onTap: _scrollToSection,
                           ),
                         ),
                         const VerticalDivider(width: 1, color: Papier.line2),
@@ -169,6 +197,9 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
   Widget _buildHeader() {
     final l = widget.lesson;
     final mins = l.totalEstimatedMinutes;
+    final completed = _completedSections;
+    final total = l.sections.length;
+    final pct = total == 0 ? 0.0 : completed.length / total;
     return Container(
       padding: const EdgeInsets.fromLTRB(22, 14, 14, 16),
       decoration: const BoxDecoration(
@@ -199,6 +230,27 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
                   Text('≈ $mins min de lecture',
                       style: PapierType.mono(fontSize: 11, color: Papier.ink3)),
                 ],
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(2),
+                        child: LinearProgressIndicator(
+                          value: pct,
+                          minHeight: 4,
+                          backgroundColor: Papier.line,
+                          valueColor: const AlwaysStoppedAnimation(Papier.green),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      '${completed.length} / $total',
+                      style: PapierType.mono(fontSize: 11, color: Papier.ink2),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -266,12 +318,17 @@ class _LongLessonScreenState extends State<LongLessonScreen> {
 class _Toc extends StatelessWidget {
   final List<LessonSection> sections;
   final Set<int> completed;
+  final void Function(int) onTap;
 
-  const _Toc({required this.sections, required this.completed});
+  const _Toc({
+    required this.sections,
+    required this.completed,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(22, 28, 16, 28),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,36 +337,53 @@ class _Toc extends StatelessWidget {
               style: PapierType.smallCaps(fontSize: 10, color: Papier.ink3)),
           const SizedBox(height: 12),
           for (var i = 0; i < sections.length; i++)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 4, right: 8),
-                    width: 8,
-                    height: 8,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: completed.contains(i)
-                          ? Papier.green
-                          : Colors.transparent,
-                      border:
-                          Border.all(color: Papier.ink2, width: 1),
+            InkWell(
+              onTap: () => onTap(i),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 4, right: 8),
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: completed.contains(i)
+                            ? Papier.green
+                            : Colors.transparent,
+                        border: Border.all(color: Papier.ink2, width: 1),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      sections[i].titleFr,
-                      style: PapierType.serif(
-                          fontSize: 13,
-                          color: completed.contains(i)
-                              ? Papier.ink
-                              : Papier.ink2,
-                          fontWeight: FontWeight.w500),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            sections[i].titleFr,
+                            style: PapierType.serif(
+                                fontSize: 13,
+                                color: completed.contains(i)
+                                    ? Papier.ink
+                                    : Papier.ink2,
+                                fontWeight: FontWeight.w500,
+                                height: 1.3),
+                          ),
+                          if (sections[i].estimatedMinutes != null)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Text(
+                                '${sections[i].estimatedMinutes} min',
+                                style: PapierType.mono(
+                                    fontSize: 9, color: Papier.ink3),
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
         ],

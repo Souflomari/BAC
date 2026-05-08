@@ -40,7 +40,7 @@ void main(List<String> args) {
 
   final output = args.isNotEmpty
       ? args[0]
-      : 'backend/supabase/migrations/013_long_lessons_sma.sql';
+      : 'backend/supabase/migrations/014_long_lessons_sma_complete.sql';
   File(output).writeAsStringSync(out.toString());
   stdout.writeln('Wrote $output (${_chapters.length} chapters).');
   for (final code in _chapters.keys) {
@@ -142,13 +142,41 @@ Map<String, dynamic> _tryIt({
 // ============================================================================
 
 final Map<String, Map<String, dynamic>> _chapters = {
+  // Math (11 chapters — algebraic_structures left as v1)
   'sma_limit_def': _ch1Limites(),
   'sma_deriv_definition': _ch2Derivabilite(),
   'sma_sequences_review': _ch3Suites(),
+  'sma_ln_basics': _chLn(),
+  'sma_exp_basics': _chExp(),
+  'sma_primitives': _chIntegration(),
+  'sma_ode_first_order': _chOde(),
+  'sma_complex_basics': _chComplex(),
+  'sma_vectors_3d': _chGeom3d(),
+  'sma_counting': _chProba(),
+  'sma_divisibility': _chArith(),
+  // Physique (14 chapters)
   'sma_newton_laws': _ch4Newton(),
   'sma_rlc_regimes': _ch5Rlc(),
+  'sma_wave_basics': _chMechWaves(),
+  'sma_periodic_waves': _chPeriodicWaves(),
+  'sma_nuclear_radioactivity': _chNuclear(),
+  'sma_rc_charge_discharge': _chRc(),
+  'sma_rl_establishment': _chRl(),
+  'sma_forced_oscillations': _chRlcForced(),
+  'sma_am_basics': _chAm(),
+  'sma_projectile_motion': _chGravity(),
+  'sma_e_field_basics': _chEField(),
+  'sma_b_field_basics': _chBField(),
+  'sma_pendulum_simple': _chPendulum(),
+  'sma_kinetic_potential': _chEnergy(),
+  // Chimie (7 chapters)
   'sma_ph_definition': _ch6AcidBase(),
   'sma_titration_curve': _ch7Titration(),
+  'sma_reaction_speed': _chKinetics(),
+  'sma_reversible_basics': _chReversible(),
+  'sma_qr_k': _chEquilibrium(),
+  'sma_daniell_cell_basics': _chDaniell(),
+  'sma_esterification_mechanism': _chEsterification(),
 };
 
 // ----------------------------------------------------------------------------
@@ -1714,5 +1742,1323 @@ Map<String, dynamic> _ch7Titration() => _lesson(
             ]),
           ],
         ),
+      ],
+    );
+
+// ============================================================================
+// MATH chapters (8 new) — ln, exp, integration, ODE, complex, geom3d, proba, arith
+// ============================================================================
+
+Map<String, dynamic> _chLn() => _lesson(
+      titleFr: 'Fonction logarithme népérien',
+      subtitleFr: "Définition, propriétés, dérivée, équations.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : exponentielle', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '3', blocks: [
+          _p("La fonction logarithme népérien \$\\ln\$ est la **bijection réciproque** de la fonction exponentielle \$\\exp\$. Avant d'aborder \$\\ln\$, assure-toi de maîtriser \$e^x\$."),
+          _f("e^a \\cdot e^b = e^{a+b} \\quad ; \\quad (e^a)^n = e^{na} \\quad ; \\quad e^0 = 1", "Propriétés clés de l'exponentielle."),
+          _checkpoint("Quelques rappels", [
+            _q(stem: "Combien vaut \$e^0\$ ?", choices: ['\$0\$', '\$1\$', '\$e\$', "\$+\\infty\$"], correct: 1, explanation: "Toute exponentielle en 0 vaut 1."),
+            _q(stem: "Si \$e^x = 1\$, alors \$x\$ vaut :", choices: ['\$0\$', '\$1\$', '\$e\$', "\$-1\$"], correct: 0, explanation: "\$\\ln 1 = 0\$, donc \$x = 0\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Définition et propriétés', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Le logarithme népérien \$\\ln\$ est défini sur \$]0, +\\infty[\$ par : \$\\ln x\$ est l'unique réel \$y\$ tel que \$e^y = x\$."),
+          _f("\\ln(ab) = \\ln a + \\ln b \\quad ; \\quad \\ln(a/b) = \\ln a - \\ln b \\quad ; \\quad \\ln(a^n) = n \\ln a", "Propriétés algébriques fondamentales — à connaître par cœur."),
+          _f("\\ln 1 = 0 \\quad ; \\quad \\ln e = 1", "Valeurs particulières."),
+          _interactive('function_graph', config: {'function': 'log(x)'}, caption: "Le graphe de \$\\ln\$ : croissant, passe par \$(1, 0)\$ et \$(e, 1)\$, asymptote verticale en \$x=0\$."),
+          _example(
+            title: "Simplifier une expression",
+            problem: "Simplifie \$\\ln 6 - \\ln 3 + \\ln 2\$.",
+            steps: [
+              "\$\\ln 6 - \\ln 3 = \\ln(6/3) = \\ln 2\$.",
+              "\$\\ln 2 + \\ln 2 = \\ln(2 \\times 2) = \\ln 4\$.",
+            ],
+            answer: "\$\\ln 6 - \\ln 3 + \\ln 2 = \\ln 4\$.",
+          ),
+          _checkpoint("Propriétés du logarithme", [
+            _q(stem: "Que vaut \$\\ln(e^3)\$ ?", choices: ['\$0\$', '\$1\$', '\$3\$', '\$e^3\$'], correct: 2, explanation: "\$\\ln(e^x) = x\$ — c'est la propriété de bijection."),
+            _q(stem: "\$\\ln(2x)\$ s'écrit aussi :", choices: ['\$2 \\ln x\$', '\$\\ln 2 + \\ln x\$', '\$\\ln 2 \\cdot \\ln x\$', "\$x \\ln 2\$"], correct: 1, explanation: "\$\\ln(ab) = \\ln a + \\ln b\$."),
+            _q(stem: "Si \$\\ln x = 2\$, alors \$x\$ vaut :", choices: ['\$2\$', "\$e^2\$", "\$\\ln 2\$", '\$2/e\$'], correct: 1, explanation: "Bijection : \$\\ln x = 2 \\Leftrightarrow x = e^2\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Dérivée, primitive, équations', eyebrowFr: 'OUTILS', estimatedMinutes: '5', blocks: [
+          _f("(\\ln x)' = \\frac{1}{x} \\quad \\text{pour } x > 0", "La dérivée de \$\\ln\$ est \$1/x\$ — résultat fondamental."),
+          _f("\\int \\frac{1}{x}\\,dx = \\ln |x| + C", "Inversement, \$\\ln\$ est la primitive de \$1/x\$."),
+          _example(
+            title: "Dériver \$x \\ln x\$",
+            problem: "Dérive \$f(x) = x \\ln x\$ pour \$x > 0\$.",
+            steps: [
+              "Produit : \$u = x\$, \$v = \\ln x\$. \$u' = 1\$, \$v' = 1/x\$.",
+              "\$f'(x) = u'v + uv' = \\ln x + x \\cdot \\frac{1}{x} = \\ln x + 1\$.",
+            ],
+            answer: "\$f'(x) = \\ln x + 1\$.",
+          ),
+          _h("Résoudre \$\\ln u = a\$"),
+          _p("Une équation \$\\ln u = a\$ s'inverse en \$u = e^a\$ — sous condition que \$u > 0\$."),
+          _example(
+            title: "Équation logarithmique",
+            problem: "Résous \$\\ln(2x - 1) = 3\$.",
+            steps: [
+              "**Conditions** : \$2x - 1 > 0\$, soit \$x > 1/2\$.",
+              "**Inversion** : \$2x - 1 = e^3\$, donc \$x = (e^3 + 1)/2 \\approx 10{,}54\$.",
+              "**Vérification** : \$x > 1/2\$ ✓.",
+            ],
+            answer: "\$x = (e^3 + 1)/2 \\approx 10{,}54\$.",
+          ),
+          _checkpoint("Dérivée et équations", [
+            _q(stem: "\$(\\ln(x^2))'\$ vaut :", choices: ['\$1/x^2\$', '\$2/x\$', '\$2x\$', '\$\\ln(2x)\$'], correct: 1, explanation: "Composition : \$(\\ln u)' = u'/u\$ avec \$u = x^2\$. \$(2x)/x^2 = 2/x\$."),
+            _q(stem: "Solution de \$\\ln x = 1\$ :", choices: ['\$0\$', '\$1\$', '\$e\$', '\$10\$'], correct: 2, explanation: "\$\\ln e = 1\$ ⟹ \$x = e\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Limites et croissances comparées", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("\\lim_{x \\to 0^+} \\ln x = -\\infty \\quad ; \\quad \\lim_{x \\to +\\infty} \\ln x = +\\infty", "Limites aux bornes."),
+          _f("\\lim_{x \\to +\\infty} \\frac{\\ln x}{x} = 0", "Croissances comparées : \$\\ln\$ plus lent que toute puissance positive de \$x\$."),
+          _checkpoint("À retenir", [
+            _q(stem: "\$\\lim_{x \\to +\\infty} \\dfrac{\\ln x}{x^2}\$ vaut :", choices: ['\$0\$', '\$1\$', "\$+\\infty\$", "\$\\ln 2\$"], correct: 0, explanation: "Croissances comparées."),
+            _q(stem: "Domaine de \$\\ln(x^2 - 4)\$ ?", choices: ['\$\\mathbb{R}\$', "\$\\mathbb{R} \\setminus \\{-2,2\\}\$", "\$]-\\infty,-2[ \\cup ]2,+\\infty[\$", "\$]2,+\\infty[\$"], correct: 2, explanation: "\$x^2 - 4 > 0 \\Leftrightarrow |x| > 2\$."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chExp() => _lesson(
+      titleFr: 'Fonctions exponentielles',
+      subtitleFr: "L'unique fonction \$f\$ avec \$f' = f\$ et \$f(0) = 1\$.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : ln et puissances', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '3', blocks: [
+          _p("L'exponentielle est la fonction réciproque de \$\\ln\$. Avant tout, sois à l'aise avec les puissances : \$a^n \\cdot a^m = a^{n+m}\$, \$(a^n)^m = a^{nm}\$."),
+          _checkpoint("Bases", [
+            _q(stem: "\$2^3 \\cdot 2^4\$ vaut :", choices: ['\$2^7\$', '\$4^7\$', '\$2^{12}\$', '\$8\$'], correct: 0, explanation: "\$2^{3+4} = 2^7 = 128\$."),
+            _q(stem: "\$\\ln(e^x) = ?\$", choices: ['\$1\$', '\$e\$', '\$x\$', "\$e^x\$"], correct: 2, explanation: "Bijection : \$\\ln \\circ \\exp = \\text{id}\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Définition et propriétés', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("L'exponentielle \$\\exp(x) = e^x\$ est définie sur \$\\mathbb{R}\$, où \$e \\approx 2{,}718\$."),
+          _f("e^{a+b} = e^a \\cdot e^b \\quad ; \\quad e^{-a} = \\frac{1}{e^a} \\quad ; \\quad (e^a)^n = e^{na}", "Propriétés algébriques."),
+          _f("e^0 = 1 \\quad ; \\quad e^1 = e \\quad ; \\quad e^x > 0", "Valeurs particulières et **positivité stricte**."),
+          _interactive('function_graph', config: {'function': 'exp(x)'}, caption: "Graphe de \$e^x\$ : strictement croissant, passe par \$(0,1)\$, tend vers 0 en \$-\\infty\$."),
+          _example(
+            title: "Simplifier",
+            problem: "Simplifie \$\\dfrac{e^{2x} \\cdot e^{-x}}{e^{x+1}}\$.",
+            steps: [
+              "Numérateur : \$e^{2x - x} = e^x\$.",
+              "Quotient : \$\\frac{e^x}{e^{x+1}} = e^{-1} = \\frac{1}{e}\$.",
+            ],
+            answer: "\$\\frac{1}{e}\$.",
+          ),
+          _checkpoint("Propriétés", [
+            _q(stem: "\$e^x\$ est :", choices: ['parfois nul', 'toujours positif', 'parfois négatif', 'parfois nul ou négatif'], correct: 1, explanation: "\$e^x > 0\$ pour tout \$x\$."),
+            _q(stem: "\$e^{-2}\$ vaut :", choices: ['\$-e^2\$', '\$1/e^2\$', '\$-1/e^2\$', '\$0\$'], correct: 1, explanation: "\$e^{-a} = 1/e^a\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Dérivée et équations', eyebrowFr: 'OUTILS', estimatedMinutes: '5', blocks: [
+          _f("(e^x)' = e^x", "**Propriété fondamentale** : l'exponentielle est sa propre dérivée."),
+          _f("(e^{u(x)})' = u'(x) \\cdot e^{u(x)}", "Dérivée d'une exponentielle composée."),
+          _example(
+            title: "Dérivée composée",
+            problem: "Dérive \$f(x) = e^{3x^2 + 1}\$.",
+            steps: [
+              "\$u(x) = 3x^2 + 1\$, \$u'(x) = 6x\$.",
+              "\$f'(x) = u'(x) e^{u(x)} = 6x \\cdot e^{3x^2 + 1}\$.",
+            ],
+            answer: "\$f'(x) = 6x \\cdot e^{3x^2 + 1}\$.",
+          ),
+          _h("Résoudre \$e^x = a\$"),
+          _p("Si \$a > 0\$ : \$x = \\ln a\$. Si \$a \\le 0\$ : pas de solution."),
+          _example(
+            title: "Équation exponentielle",
+            problem: "Résous \$e^{2x} - 3 e^x + 2 = 0\$.",
+            steps: [
+              "**Substitution** : \$X = e^x\$. \$X^2 - 3X + 2 = 0\$.",
+              "**Factorisation** : \$(X-1)(X-2) = 0\$, donc \$X = 1\$ ou \$X = 2\$.",
+              "**Retour** : \$x = 0\$ ou \$x = \\ln 2\$.",
+            ],
+            answer: "\$x = 0\$ et \$x = \\ln 2 \\approx 0{,}69\$.",
+          ),
+          _checkpoint("Dérivée et équations", [
+            _q(stem: "\$(e^{-x})'\$ vaut :", choices: ["\$e^{-x}\$", "\$-e^{-x}\$", '\$e^x\$', "\$-e^x\$"], correct: 1, explanation: "\$u'(x) = -1\$, donc \$-e^{-x}\$."),
+            _q(stem: "Solution de \$e^x = 5\$ :", choices: ['\$5\$', "\$\\ln 5\$", "\$e^5\$", "Aucune"], correct: 1, explanation: "\$x = \\ln 5\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Limites et étude', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("\\lim_{x \\to +\\infty} e^x = +\\infty \\quad ; \\quad \\lim_{x \\to -\\infty} e^x = 0", "Limites aux bornes."),
+          _f("\\lim_{x \\to +\\infty} \\frac{e^x}{x^n} = +\\infty", "Croissances comparées : \$e^x\$ l'emporte sur toute puissance."),
+          _interactive('concept_animation', config: {'animation_id': 'exponential_growth'}, caption: "Animation : \$e^x\$ vs \$x^2\$ vs \$x^3\$. L'exponentielle finit toujours en tête."),
+          _checkpoint("Limites", [
+            _q(stem: "\$\\lim_{x \\to +\\infty} \\dfrac{e^x}{x^{100}}\$ :", choices: ['\$0\$', '\$100\$', "\$+\\infty\$", '\$1\$'], correct: 2, explanation: "Croissances comparées."),
+            _q(stem: "\$\\lim_{x \\to -\\infty} e^x\$ :", choices: ['\$0\$', "\$-\\infty\$", '\$1\$', "\$+\\infty\$"], correct: 0, explanation: "Asymptote horizontale \$y=0\$ en \$-\\infty\$."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chIntegration() => _lesson(
+      titleFr: 'Calcul intégral',
+      subtitleFr: "Primitives, intégrale définie, calcul d'aires, IPP.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : dérivation', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '3', blocks: [
+          _p("L'intégration est l'opération **inverse** de la dérivation. La table des primitives est essentiellement la table des dérivées lue à l'envers."),
+          _checkpoint("Bases", [
+            _q(stem: "\$(x^2)' = ?\$", choices: ['\$x\$', '\$2x\$', '\$x^2\$', '\$2\$'], correct: 1, explanation: "\$(x^n)' = n x^{n-1}\$."),
+            _q(stem: "\$(\\sin x)' = ?\$", choices: ['\$\\cos x\$', "\$-\\cos x\$", '\$\\sin x\$', "\$-\\sin x\$"], correct: 0, explanation: "Dérivée de sin = cos."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Primitives', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Une **primitive** \$F\$ de \$f\$ vérifie \$F'(x) = f(x)\$. Deux primitives diffèrent par une constante — d'où le \"\$+ C\$\"."),
+          _f("\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C \\quad (n \\ne -1)", "Primitive d'une puissance."),
+          _f("\\int \\frac{1}{x}\\,dx = \\ln|x| + C \\quad ; \\quad \\int e^x\\,dx = e^x + C", "Cas particuliers."),
+          _f("\\int \\sin x\\,dx = -\\cos x + C \\quad ; \\quad \\int \\cos x\\,dx = \\sin x + C", "Trigonométriques."),
+          _example(
+            title: "Trouver une primitive",
+            problem: "Primitive de \$f(x) = 3x^2 - 5x + 2\$.",
+            steps: [
+              "Linéarité : intégration terme par terme.",
+              "\$\\int 3x^2 = x^3\$, \$\\int -5x = -5x^2/2\$, \$\\int 2 = 2x\$.",
+              "Somme : \$F(x) = x^3 - \\frac{5x^2}{2} + 2x + C\$.",
+            ],
+            answer: "\$F(x) = x^3 - \\frac{5x^2}{2} + 2x + C\$.",
+          ),
+          _checkpoint("Primitives", [
+            _q(stem: "Primitive de \$2x\$ :", choices: ['\$x\$', '\$x^2\$', '\$x^2 + C\$', '\$2x^2\$'], correct: 2, explanation: "\$\\int 2x\\,dx = x^2 + C\$."),
+            _q(stem: "Primitive de \$1/x\$ sur \$]0,+\\infty[\$ :", choices: ["\$1/x^2\$", "\$\\ln x + C\$", "\$\\ln(2x)\$", '\$x\$'], correct: 1, explanation: "\$(\\ln x)' = 1/x\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Intégrale définie', eyebrowFr: 'AIRE', estimatedMinutes: '5', blocks: [
+          _f("\\int_a^b f(x)\\,dx = F(b) - F(a)", "Formule fondamentale — \$F\$ est une primitive de \$f\$."),
+          _p("Géométriquement, quand \$f \\ge 0\$ sur \$[a,b]\$, \$\\int_a^b f\$ est l'**aire** sous la courbe."),
+          _interactive('area_curve', caption: "Visualise l'aire — somme de Riemann qui converge."),
+          _example(
+            title: "Calcul",
+            problem: "Calcule \$\\int_0^2 (3x^2 + 1)\\,dx\$.",
+            steps: [
+              "Primitive : \$F(x) = x^3 + x\$.",
+              "\$F(2) - F(0) = (8+2) - 0 = 10\$.",
+            ],
+            answer: "\$\\int_0^2 (3x^2+1)\\,dx = 10\$.",
+          ),
+          _f("\\int_a^b f \\pm \\int_a^b g = \\int_a^b (f \\pm g) \\quad ; \\quad \\int_a^b k f = k \\int_a^b f", "Linéarité."),
+          _f("\\int_a^b f = -\\int_b^a f \\quad ; \\quad \\int_a^b f = \\int_a^c f + \\int_c^b f", "Relation de Chasles."),
+          _checkpoint("Intégrale définie", [
+            _q(stem: "\$\\int_0^1 2x\\,dx\$ :", choices: ['\$0\$', '\$1\$', '\$2\$', '\$1/2\$'], correct: 1, explanation: "\$[x^2]_0^1 = 1\$."),
+            _q(stem: "\$\\int_0^\\pi \\sin x\\,dx\$ :", choices: ['\$0\$', '\$1\$', '\$2\$', "\$-2\$"], correct: 2, explanation: "\$[-\\cos x]_0^\\pi = 1 - (-1) = 2\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "IPP et calcul d'aires", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '5', blocks: [
+          _f("\\int_a^b u v'\\,dx = [uv]_a^b - \\int_a^b u' v\\,dx", "**Intégration par parties (IPP)** — utile pour intégrer un produit polynôme × \$e^x\$, polynôme × \$\\ln\$, etc."),
+          _example(
+            title: "IPP : \$\\int_0^1 x e^x\\,dx\$",
+            problem: "Calcule \$\\int_0^1 x e^x\\,dx\$.",
+            steps: [
+              "\$u = x\$ (à dériver), \$v' = e^x\$ (à intégrer). Donc \$u' = 1\$, \$v = e^x\$.",
+              "IPP : \$[xe^x]_0^1 - \\int_0^1 e^x\\,dx = e - [e^x]_0^1 = e - (e - 1) = 1\$.",
+            ],
+            answer: "\$\\int_0^1 x e^x\\,dx = 1\$.",
+          ),
+          _interactive('ipp_calculator', caption: "Outil pratique : entre \$u\$ et \$v'\$, l'IPP est exécutée pas à pas."),
+          _f("A = \\int_a^b |f - g|\\,dx", "Aire entre deux courbes."),
+          _checkpoint("IPP", [
+            _q(stem: "Pour intégrer \$x \\sin x\$, le bon choix de \$u\$ dans l'IPP est :", choices: ['\$\\sin x\$', '\$x\$', '\$x \\sin x\$', "Pas d'IPP"], correct: 1, explanation: "On dérive \$u = x\$ (devient 1) ; on intègre \$v' = \\sin x\$."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chOde() => _lesson(
+      titleFr: 'Équations différentielles',
+      subtitleFr: "Premier ordre \$y' = ay + b\$ et second ordre \$y'' + \\omega^2 y = 0\$.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : dériver et intégrer', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Une équation différentielle relie une fonction \$y\$ à ses dérivées. Résoudre = trouver les fonctions \$y(x)\$ qui vérifient l'équation."),
+          _checkpoint("Bases", [
+            _q(stem: "Primitive de \$3x^2\$ :", choices: ['\$3x\$', '\$x^3\$', '\$6x\$', '\$x^3 + C\$'], correct: 3, explanation: "Toujours penser à la constante."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Premier ordre : \$y' = ay + b\$", eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("y(x) = C e^{ax} - \\frac{b}{a}", "Solution générale, avec \$a \\ne 0\$. \$C\$ : constante d'intégration."),
+          _p("La condition initiale \$y(x_0) = y_0\$ détermine \$C\$."),
+          _example(
+            title: "Avec condition initiale",
+            problem: "Résous \$y' = 2y + 4\$ avec \$y(0) = 1\$.",
+            steps: [
+              "Solution générale : \$y(x) = C e^{2x} - 2\$.",
+              "CI : \$y(0) = C - 2 = 1\$, donc \$C = 3\$.",
+              "**Solution** : \$y(x) = 3 e^{2x} - 2\$.",
+            ],
+            answer: "\$y(x) = 3 e^{2x} - 2\$.",
+          ),
+          _interactive('slope_field', caption: "Champ de pentes — chaque solution est une trajectoire."),
+          _checkpoint("Premier ordre", [
+            _q(stem: "Solution générale de \$y' = 3y\$ :", choices: ['\$3x + C\$', "\$C e^{3x}\$", "\$C e^x + 3\$", '\$3 \\ln x\$'], correct: 1, explanation: "\$y' = ay\$ → \$y = C e^{ax}\$."),
+            _q(stem: "\$y' = -y + 2\$ avec \$y(0) = 5\$ : \$y(x) = ?\$", choices: ["\$3 e^{-x} + 2\$", "\$5 e^{-x}\$", "\$2 e^{-x} + 3\$", "\$3 e^x + 2\$"], correct: 0, explanation: "\$y = C e^{-x} + 2\$, \$C + 2 = 5\$ ⟹ \$C = 3\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Second ordre : \$y'' + \\omega^2 y = 0\$", eyebrowFr: 'OSCILLATION', estimatedMinutes: '5', blocks: [
+          _p("Cette équation décrit toute oscillation harmonique : pendule, masse-ressort, RLC libre sans amortissement."),
+          _f("y(x) = A \\cos(\\omega x) + B \\sin(\\omega x)", "Solution générale — deux constantes \$A, B\$ déterminées par 2 CI."),
+          _example(
+            title: "Avec deux CI",
+            problem: "Résous \$y'' + 4y = 0\$ avec \$y(0) = 2\$, \$y'(0) = 0\$.",
+            steps: [
+              "\$\\omega^2 = 4\$, donc \$\\omega = 2\$.",
+              "Solution générale : \$y = A \\cos(2x) + B \\sin(2x)\$.",
+              "CI 1 : \$A = 2\$.",
+              "CI 2 : \$y'(x) = -2A \\sin(2x) + 2B \\cos(2x)\$ → \$2B = 0\$ → \$B = 0\$.",
+            ],
+            answer: "\$y(x) = 2\\cos(2x)\$. Période \$T = \\pi\$.",
+          ),
+          _interactive('diff_eq_solver', caption: "Outil : résous \$y' + ay = b\$ et \$y'' + \\omega^2 y = 0\$ interactivement."),
+          _checkpoint("Second ordre", [
+            _q(stem: "Pour \$y'' + 9y = 0\$, \$\\omega\$ vaut :", choices: ['\$3\$', '\$9\$', "\$\\sqrt{3}\$", '\$1/3\$'], correct: 0, explanation: "\$\\omega^2 = 9\$ ⟹ \$\\omega = 3\$."),
+            _q(stem: "Période propre de \$y'' + 4y = 0\$ :", choices: ["\$\\pi\$", "\$2\\pi\$", "\$\\pi/2\$", '\$4\$'], correct: 0, explanation: "\$T = 2\\pi/\\omega = \\pi\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Lecture physique", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("**\$y' = ay\$** : croissance/décroissance proportionnelle (radioactivité, condensateur)."),
+          _p("**\$y' = ay + b\$** : évolution avec frottement vers un équilibre (RC en charge, refroidissement Newton)."),
+          _p("**\$y'' + \\omega^2 y = 0\$** : oscillation libre sans amortissement (pendule petites oscillations, LC pur)."),
+          _checkpoint("Application", [
+            _q(stem: "Décroissance radioactive obéit à :", choices: ["\$y' = ay, a > 0\$", "\$y' = ay, a < 0\$", "\$y'' + \\omega^2 y = 0\$", "\$y' = b\$"], correct: 1, explanation: "Décroissance ⟹ \$a < 0\$ (typiquement \$-\\lambda\$)."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chComplex() => _lesson(
+      titleFr: 'Nombres complexes',
+      subtitleFr: "Forme algébrique, trigonométrique, applications géométriques.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : trigonométrie', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '3', blocks: [
+          _p("Les complexes vivent dans le **plan**. Maîtrise le cercle trigo : \$\\cos\$, \$\\sin\$ et leurs valeurs particulières."),
+          _f("\\cos^2\\theta + \\sin^2\\theta = 1", "Identité fondamentale."),
+          _checkpoint("Cercle trigo", [
+            _q(stem: "\$\\cos(\\pi/2) = ?\$", choices: ['\$0\$', '\$1\$', "\$-1\$", "\$1/2\$"], correct: 0, explanation: "\$\\cos(\\pi/2) = 0\$."),
+            _q(stem: "\$\\sin(\\pi) = ?\$", choices: ['\$0\$', '\$1\$', "\$-1\$", "\$\\pi\$"], correct: 0, explanation: "\$\\sin(\\pi) = 0\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Forme algébrique', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("z = a + ib \\quad \\text{avec } i^2 = -1", "Forme algébrique : \$a\$ partie réelle, \$b\$ partie imaginaire."),
+          _f("\\bar{z} = a - ib \\quad ; \\quad |z| = \\sqrt{a^2 + b^2}", "Conjugué et module."),
+          _interactive('complex_plane', caption: "Place \$z\$ dans le plan — point \$(a,b)\$, vecteur \$\\vec{OM}\$."),
+          _example(
+            title: "Opérations",
+            problem: "\$z_1 = 2 + 3i\$, \$z_2 = 1 - i\$. Calcule \$z_1 + z_2\$, \$z_1 z_2\$, \$|z_1|\$.",
+            steps: [
+              "Somme : \$3 + 2i\$.",
+              "Produit : \$(2+3i)(1-i) = 2 - 2i + 3i - 3i^2 = 2 + i + 3 = 5 + i\$.",
+              "Module : \$|z_1| = \\sqrt{4 + 9} = \\sqrt{13}\$.",
+            ],
+            answer: "\$z_1 + z_2 = 3+2i\$, \$z_1 z_2 = 5+i\$, \$|z_1| = \\sqrt{13}\$.",
+          ),
+          _checkpoint("Forme algébrique", [
+            _q(stem: "\$i^2 = ?\$", choices: ['\$1\$', "\$-1\$", '\$i\$', '\$0\$'], correct: 1, explanation: "Définition fondamentale."),
+            _q(stem: "Conjugué de \$3 - 2i\$ :", choices: ['\$3 + 2i\$', "\$-3 + 2i\$", "\$-3 - 2i\$", '\$2 - 3i\$'], correct: 0, explanation: "Change le signe de la partie imaginaire."),
+            _q(stem: "Module de \$3 + 4i\$ :", choices: ['\$3\$', '\$4\$', '\$5\$', '\$7\$'], correct: 2, explanation: "\$\\sqrt{9+16} = 5\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Forme trigonométrique et exponentielle', eyebrowFr: 'GÉOMÉTRIE', estimatedMinutes: '5', blocks: [
+          _f("z = r(\\cos\\theta + i\\sin\\theta) = r e^{i\\theta}", "\$r = |z|\$, \$\\theta = \\arg(z)\$."),
+          _f("e^{i\\theta_1} \\cdot e^{i\\theta_2} = e^{i(\\theta_1 + \\theta_2)}", "**Multiplication = rotation** : multiplier par \$e^{i\\theta}\$ tourne d'un angle \$\\theta\$."),
+          _f("(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)", "Formule de Moivre."),
+          _interactive('complex_multiplication', caption: "Multiplication = rotation + homothétie. Joue avec modules et arguments."),
+          _interactive('concept_animation', config: {'animation_id': 'complex_rotation'}, caption: "Animation : multiplier par \$e^{i\\theta}\$ tourne le plan."),
+          _example(
+            title: "Mise en forme exponentielle",
+            problem: "\$z = 1 + i\$. Mets sous forme \$r e^{i\\theta}\$.",
+            steps: [
+              "Module : \$|z| = \\sqrt{2}\$.",
+              "Argument : \$\\theta = \\pi/4\$.",
+              "Forme : \$z = \\sqrt{2}\\,e^{i\\pi/4}\$.",
+            ],
+            answer: "\$z = \\sqrt{2}\\,e^{i\\pi/4}\$.",
+          ),
+          _checkpoint("Forme exp", [
+            _q(stem: "Argument de \$z = i\$ :", choices: ['\$0\$', "\$\\pi/4\$", "\$\\pi/2\$", "\$\\pi\$"], correct: 2, explanation: "Axe imaginaire positif ⟹ \$\\pi/2\$."),
+            _q(stem: "\$|e^{i\\theta}|\$ vaut :", choices: ['\$0\$', '\$1\$', "\$\\theta\$", "\$e^\\theta\$"], correct: 1, explanation: "Cercle unité."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Applications géométriques", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '4', blocks: [
+          _p("**Rotation** d'angle \$\\theta\$ autour de O = multiplication par \$e^{i\\theta}\$. **Translation** = addition. **Distance** entre deux points = module de la différence."),
+          _f("d(M_1, M_2) = |z_1 - z_2|", "Distance dans le plan."),
+          _example(
+            title: "Rotation",
+            problem: "Image de \$z = 2\$ par rotation \$\\pi/2\$ autour de \$O\$ ?",
+            steps: ["Multiplication par \$e^{i\\pi/2} = i\$.", "\$z' = 2i\$."],
+            answer: "\$z' = 2i\$ — \$(2, 0)\$ devient \$(0, 2)\$.",
+          ),
+          _checkpoint("Géométrie", [
+            _q(stem: "Distance entre \$z_1 = 1+i\$ et \$z_2 = 4+5i\$ :", choices: ['\$3\$', '\$4\$', '\$5\$', '\$25\$'], correct: 2, explanation: "\$|3 + 4i| = 5\$."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chGeom3d() => _lesson(
+      titleFr: "Géométrie dans l'espace",
+      subtitleFr: "Vecteurs, droites, plans, sphères en 3D.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : vecteurs en 2D', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("La 3D étend la 2D : un point a maintenant 3 coordonnées \$(x, y, z)\$."),
+          _checkpoint("Notation", [
+            _q(stem: "\$\\vec{AB}\$ pour \$A(1,2,3)\$ et \$B(4,6,3)\$ :", choices: ['\$(3,4,0)\$', '\$(5,8,6)\$', '\$(3,4,3)\$', '\$(-3,-4,0)\$'], correct: 0, explanation: "\$B - A = (3,4,0)\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Produits scalaire et vectoriel', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + u_3 v_3 = \\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta", "Produit scalaire — un nombre."),
+          _f("\\vec{u} \\cdot \\vec{v} = 0 \\iff \\vec{u} \\perp \\vec{v}", "Critère d'orthogonalité — extrêmement utile."),
+          _f("\\vec{u} \\wedge \\vec{v} = (u_2 v_3 - u_3 v_2,\\, u_3 v_1 - u_1 v_3,\\, u_1 v_2 - u_2 v_1)", "Produit vectoriel — un vecteur **perpendiculaire à \$\\vec{u}\$ et \$\\vec{v}\$**."),
+          _interactive('geometry_3d_viewer', caption: "Vue 3D — glisse pour faire tourner. Joue avec plans, droites, sphères."),
+          _example(
+            title: "Orthogonalité",
+            problem: "\$\\vec{u} = (1, 2, -1)\$ et \$\\vec{v} = (2, -1, 0)\$ sont-ils orthogonaux ?",
+            steps: ["\$\\vec{u} \\cdot \\vec{v} = 2 - 2 + 0 = 0\$.", "Produit scalaire nul ⟹ orthogonalité."],
+            answer: "Oui.",
+          ),
+          _checkpoint("Produits", [
+            _q(stem: "Si \$\\vec{u} \\cdot \\vec{v} = 0\$ :", choices: ['parallèles', 'orthogonaux', 'au moins un nul', 'rien'], correct: 1, explanation: "Critère d'orthogonalité."),
+            _q(stem: "\$\\vec{u} \\wedge \\vec{v}\$ est :", choices: ['un nombre', 'dans le plan de \$\\vec{u}, \\vec{v}\$', "perpendiculaire à \$\\vec{u}\$ et \$\\vec{v}\$", 'toujours nul'], correct: 2, explanation: "Propriété fondamentale."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Droites et plans', eyebrowFr: 'OBJETS', estimatedMinutes: '5', blocks: [
+          _f("(D) : M = A + t\\vec{u}", "Droite paramétrique : \$A\$ point, \$\\vec{u}\$ vecteur directeur."),
+          _f("(P) : ax + by + cz + d = 0", "Plan — \$\\vec{n} = (a,b,c)\$ est **normal** au plan."),
+          _example(
+            title: "Plan par 3 points",
+            problem: "Plan par \$A(1,0,0)\$, \$B(0,1,0)\$, \$C(0,0,1)\$.",
+            steps: [
+              "\$\\vec{AB} = (-1,1,0)\$, \$\\vec{AC} = (-1,0,1)\$.",
+              "\$\\vec{n} = \\vec{AB} \\wedge \\vec{AC} = (1, 1, 1)\$.",
+              "Plan : \$x + y + z + d = 0\$. En \$A\$ : \$1 + d = 0\$ ⟹ \$d = -1\$.",
+            ],
+            answer: "\$x + y + z = 1\$.",
+          ),
+          _checkpoint("Plans", [
+            _q(stem: "Vecteur normal au plan \$2x + y - z = 5\$ :", choices: ['\$(2, 1, -1)\$', '\$(2, 1, 5)\$', '\$(5, 0, 0)\$', '\$(1, 1, 1)\$'], correct: 0, explanation: "Coefficients de \$x, y, z\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Distances et sphères', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '4', blocks: [
+          _f("d(M, P) = \\frac{|a x_M + b y_M + c z_M + d|}{\\sqrt{a^2 + b^2 + c^2}}", "Distance d'un point à un plan."),
+          _f("(x - x_C)^2 + (y - y_C)^2 + (z - z_C)^2 = R^2", "Sphère de centre \$C\$, rayon \$R\$."),
+          _checkpoint("Distances", [
+            _q(stem: "\$d(O, x+y+z=3)\$ :", choices: ["\$3\$", "\$\\sqrt{3}\$", "\$1\$", "\$3/\\sqrt{3} = \\sqrt{3}\$"], correct: 3, explanation: "\$d = 3/\\sqrt{3} = \\sqrt{3}\$."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chProba() => _lesson(
+      titleFr: 'Dénombrement et probabilités',
+      subtitleFr: "Du décompte à la loi binomiale.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : ensembles', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Une expérience aléatoire : univers \$\\Omega\$, événement \$A \\subset \\Omega\$, probabilité \$P(A)\$ entre 0 et 1."),
+          _f("0 \\le P(A) \\le 1 \\quad ; \\quad P(\\bar{A}) = 1 - P(A)", "Axiomes."),
+          _checkpoint("Bases", [
+            _q(stem: "Probabilité d'obtenir 6 sur un dé équilibré :", choices: ['\$1/2\$', '\$1/3\$', '\$1/6\$', '\$6\$'], correct: 2, explanation: "1/6."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Permutations, arrangements, combinaisons", eyebrowFr: 'COMPTER', estimatedMinutes: '5', blocks: [
+          _f("n! = n \\times (n-1) \\times \\cdots \\times 1", "Factorielle."),
+          _f("A_n^k = \\frac{n!}{(n-k)!} \\quad ; \\quad \\binom{n}{k} = \\frac{n!}{k!(n-k)!}", "Arrangements (ordonné) et combinaisons (non ordonné)."),
+          _example(
+            title: "Mains de cartes",
+            problem: "Combien de mains de 5 cartes parmi 32 ?",
+            steps: ["Non ordonné ⟹ combinaison.", "\$\\binom{32}{5} = \\frac{32 \\cdot 31 \\cdot 30 \\cdot 29 \\cdot 28}{120}\$.", "= 201 376."],
+            answer: "201 376 mains.",
+          ),
+          _checkpoint("Compter", [
+            _q(stem: "Nombre d'anagrammes de MATH :", choices: ['\$4\$', '\$8\$', '\$16\$', '\$24\$'], correct: 3, explanation: "\$4! = 24\$."),
+            _q(stem: "Choisir 3 personnes parmi 10 :", choices: ['\$30\$', '\$120\$', '\$720\$', '\$1000\$'], correct: 1, explanation: "\$\\binom{10}{3} = 120\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Probabilités conditionnelles", eyebrowFr: 'CONDITIONS', estimatedMinutes: '4', blocks: [
+          _f("P(A|B) = \\frac{P(A \\cap B)}{P(B)}", "Conditionnelle."),
+          _f("A, B \\text{ indépendants} \\iff P(A \\cap B) = P(A) P(B)", "Indépendance."),
+          _interactive('probability_tree', caption: "Arbre de probabilités — chemins se multiplient, branches s'additionnent."),
+          _checkpoint("Indépendance", [
+            _q(stem: "\$P(A) = 0{,}3\$, \$P(B) = 0{,}5\$, indépendants : \$P(A \\cap B) = ?\$", choices: ['\$0{,}15\$', '\$0{,}3\$', '\$0{,}8\$', '\$0\$'], correct: 0, explanation: "\$0{,}3 \\times 0{,}5 = 0{,}15\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Variables aléatoires et loi binomiale", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '5', blocks: [
+          _f("E(X) = \\sum_i x_i P(X = x_i)", "Espérance — moyenne théorique."),
+          _h("Loi binomiale \$\\mathcal{B}(n, p)\$"),
+          _f("P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}", "Loi binomiale : \$n\$ essais indépendants, \$p\$ proba de succès."),
+          _f("E(X) = np \\quad ; \\quad V(X) = np(1-p)", "Espérance et variance."),
+          _interactive('monte_carlo_simulator', caption: "Simule la loi binomiale — l'histogramme converge vers la théorie."),
+          _example(
+            title: "Bac-style",
+            problem: "Lancer 10 fois un dé. Probabilité d'obtenir exactement 2 fois le 6 ?",
+            steps: ["\$X \\sim \\mathcal{B}(10, 1/6)\$.", "\$P(X=2) = \\binom{10}{2}(1/6)^2(5/6)^8 = 45 \\cdot \\frac{1}{36} \\cdot 0{,}2326 \\approx 0{,}29\$."],
+            answer: "≈ 0,29 (29 %).",
+          ),
+          _checkpoint("Binomiale", [
+            _q(stem: "\$X \\sim \\mathcal{B}(20, 0{,}3)\$ : \$E(X) = ?\$", choices: ['\$3\$', '\$6\$', '\$10\$', '\$20\$'], correct: 1, explanation: "\$np = 6\$."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chArith() => _lesson(
+      titleFr: 'Arithmétique dans ℤ',
+      subtitleFr: "Divisibilité, division euclidienne, PGCD, Bézout, congruences.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : ℤ', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("L'arithmétique étudie les propriétés des entiers : divisibilité, premiers, équations diophantiennes."),
+          _checkpoint("Bases", [
+            _q(stem: "17 est-il premier ?", choices: ['Oui', 'Non — par 3', 'Non — par 17', 'Non — par 2'], correct: 0, explanation: "17 n'a que 1 et 17 comme diviseurs."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Divisibilité et division euclidienne', eyebrowFr: 'CONCEPT', estimatedMinutes: '4', blocks: [
+          _f("a | b \\iff \\exists k \\in \\mathbb{Z} : b = ak", "« \$a\$ divise \$b\$ »."),
+          _f("a = bq + r, \\quad 0 \\le r < |b|", "Division euclidienne — existence et unicité."),
+          _example(
+            title: "Diviser 257 par 14",
+            problem: "Effectue la division euclidienne de 257 par 14.",
+            steps: ["\$257/14 \\approx 18{,}36\$, donc \$q = 18\$.", "\$14 \\times 18 = 252\$.", "\$r = 257 - 252 = 5\$."],
+            answer: "\$257 = 14 \\times 18 + 5\$.",
+          ),
+          _checkpoint("Division", [
+            _q(stem: "Reste de 25 par 7 :", choices: ['\$0\$', '\$3\$', '\$4\$', '\$5\$'], correct: 2, explanation: "\$25 = 7 \\cdot 3 + 4\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "PGCD et algorithme d'Euclide", eyebrowFr: 'PGCD', estimatedMinutes: '5', blocks: [
+          _p("**PGCD(a, b)** = plus grand diviseur commun. **Algorithme d'Euclide** : remplacer \$\\text{pgcd}(a, b)\$ par \$\\text{pgcd}(b, r)\$ avec \$r\$ reste de \$a\$ par \$b\$. Itérer jusqu'à reste 0."),
+          _interactive('euclid_visualizer', caption: "Joue avec deux entiers — l'algo + Bézout pas à pas."),
+          _example(
+            title: "PGCD(252, 105)",
+            problem: "Calcule \$\\text{pgcd}(252, 105)\$.",
+            steps: [
+              "\$252 = 105 \\cdot 2 + 42\$.",
+              "\$105 = 42 \\cdot 2 + 21\$.",
+              "\$42 = 21 \\cdot 2 + 0\$.",
+              "Dernier reste non nul : 21.",
+            ],
+            answer: "\$\\text{pgcd}(252, 105) = 21\$.",
+          ),
+          _f("\\exists u, v \\in \\mathbb{Z} : a u + b v = \\text{pgcd}(a, b)", "**Bézout** — toujours possible."),
+          _checkpoint("PGCD", [
+            _q(stem: "pgcd = 1, on dit :", choices: ['premiers', 'premiers entre eux', 'pairs', 'égaux'], correct: 1, explanation: "« Premiers entre eux »."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Congruences modulo n", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '4', blocks: [
+          _f("a \\equiv b \\;[n] \\iff n | (a - b)", "Congruence."),
+          _f("a \\equiv b \\;[n], c \\equiv d \\;[n] \\Rightarrow a + c \\equiv b + d \\;[n], ac \\equiv bd \\;[n]", "Compatibilité avec + et ×."),
+          _example(
+            title: "Reste de \$7^{100}\$ par 5",
+            problem: "Quel est le reste de \$7^{100}\$ dans la division par 5 ?",
+            steps: [
+              "\$7 \\equiv 2 \\;[5]\$ ⟹ \$7^{100} \\equiv 2^{100} \\;[5]\$.",
+              "Cycle de \$2^n \\;[5]\$ : 2, 4, 3, 1, 2, ... (période 4).",
+              "\$100 = 4 \\cdot 25\$ ⟹ \$2^{100} \\equiv 1 \\;[5]\$.",
+            ],
+            answer: "Reste = 1.",
+          ),
+          _checkpoint("Congruences", [
+            _q(stem: "\$15 \\equiv ? \\;[4]\$", choices: ['\$0\$', '\$1\$', '\$2\$', '\$3\$'], correct: 3, explanation: "\$15 = 4 \\cdot 3 + 3\$."),
+          ]),
+        ]),
+      ],
+    );
+
+// ============================================================================
+// PHYSIQUE chapters (12 new) — waves, nuclear, RC/RL/RLC forced/AM, gravity, E/B fields, pendulum, energy
+// ============================================================================
+
+Map<String, dynamic> _chMechWaves() => _lesson(
+      titleFr: 'Ondes mécaniques progressives',
+      subtitleFr: "Propagation d'une perturbation dans un milieu matériel.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : vitesse, milieu', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Une **onde mécanique** est la propagation d'une **perturbation** dans un milieu matériel — sans transport global de matière. Le milieu vibre localement, l'énergie voyage."),
+          _checkpoint("Bases", [
+            _q(stem: "Une onde transporte :", choices: ['de la matière', "de l'énergie", 'de la masse', 'rien'], correct: 1, explanation: "Le milieu vibre sur place, l'énergie se propage."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Caractéristiques d'une onde", eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Une onde est caractérisée par : **célérité** \$v\$ (vitesse de propagation), **direction** (longitudinale si la perturbation est dans la direction de propagation, transversale sinon)."),
+          _f("v = \\frac{d}{\\Delta t}", "Célérité = distance parcourue par la perturbation / temps."),
+          _interactive('wave', caption: "Onde sur une corde — joue avec célérité et fréquence."),
+          _example(
+            title: "Calcul de célérité",
+            problem: "Une perturbation parcourt 10 m en 0,02 s. Quelle est sa célérité ?",
+            steps: ["\$v = d/\\Delta t = 10 / 0{,}02 = 500\$ m/s."],
+            answer: "\$v = 500\$ m/s.",
+          ),
+          _checkpoint("Caractéristiques", [
+            _q(stem: "Une onde sonore est :", choices: ['transversale', 'longitudinale', 'aucune', 'les deux'], correct: 1, explanation: "Le son comprime le milieu dans la direction de propagation — onde longitudinale."),
+            _q(stem: "Une vague à la surface de l'eau est :", choices: ['transversale', 'longitudinale', 'aucune', 'mixte'], correct: 3, explanation: "En surface, mouvement à la fois vertical et horizontal — mixte."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Retard et propagation', eyebrowFr: 'RETARD', estimatedMinutes: '4', blocks: [
+          _f("\\tau = \\frac{d}{v}", "**Retard** \$\\tau\$ : temps mis par l'onde pour parcourir la distance \$d\$ entre deux points."),
+          _p("Au point B situé à distance \$d\$ de la source A, le mouvement est identique à celui en A mais avec un retard \$\\tau\$ : \$y_B(t) = y_A(t - \\tau)\$."),
+          _example(
+            title: "Retard à distance",
+            problem: "Source à 0, onde de célérité 4 m/s. Quel est le retard à 12 m ?",
+            steps: ["\$\\tau = 12 / 4 = 3\$ s."],
+            answer: "\$\\tau = 3\$ s.",
+          ),
+          _checkpoint("Retard", [
+            _q(stem: "Si \$y_A(t) = \\sin(\\omega t)\$ et le retard est \$\\tau\$, alors :", choices: ["\$y_B(t) = \\sin(\\omega t)\$", "\$y_B(t) = \\sin(\\omega(t - \\tau))\$", "\$y_B(t) = \\sin(\\omega(t + \\tau))\$", "\$y_B(t) = \\tau \\sin(\\omega t)\$"], correct: 1, explanation: "L'onde reproduit le mouvement de A avec un décalage temporel \$\\tau\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Synthèse", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("Trois choses à retenir : (1) **célérité** dépend du milieu, (2) **retard = distance/célérité**, (3) **pas de transport de matière**, juste de l'énergie."),
+          _checkpoint("Récap", [
+            _q(stem: "Le son va plus vite dans :", choices: ['le vide', "l'eau", "l'air"], correct: 1, explanation: "Plus le milieu est dense (mais pas trop visqueux), plus la célérité est grande. Pas de son dans le vide."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chPeriodicWaves() => _lesson(
+      titleFr: 'Ondes périodiques, diffraction, interférences',
+      subtitleFr: "Période, longueur d'onde, fentes d'Young.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : ondes progressives', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Une **onde périodique** est une onde dont la perturbation se répète identique à elle-même à intervalles réguliers."),
+          _checkpoint("Bases", [
+            _q(stem: "Une onde périodique a :", choices: ['une période et une longueur d\'onde', 'seulement une fréquence', 'pas de répétition', 'rien'], correct: 0, explanation: "Périodique en temps (période \$T\$) et en espace (longueur d'onde \$\\lambda\$)."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Période, fréquence, longueur d'onde", eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("T = \\frac{1}{f} \\quad ; \\quad \\lambda = v T = \\frac{v}{f}", "Relations fondamentales : période, fréquence, longueur d'onde."),
+          _p("**\$T\$** : durée d'un motif (en s). **\$f\$** : nombre de motifs par seconde (en Hz). **\$\\lambda\$** : distance parcourue pendant une période (en m)."),
+          _interactive('wave', caption: "Joue avec célérité et fréquence — observe \$\\lambda = v/f\$."),
+          _example(
+            title: "Calcul de \$\\lambda\$",
+            problem: "Une onde sonore de fréquence 440 Hz dans l'air (v = 340 m/s). Quelle est sa longueur d'onde ?",
+            steps: ["\$\\lambda = v/f = 340/440 \\approx 0{,}77\$ m."],
+            answer: "\$\\lambda \\approx 0{,}77\$ m.",
+          ),
+          _checkpoint("Calculs", [
+            _q(stem: "Si \$f = 50\$ Hz, \$T = ?\$", choices: ['\$50\$ s', '\$0{,}02\$ s', '\$2\$ s', '\$1\$ s'], correct: 1, explanation: "\$T = 1/f = 0{,}02\$ s."),
+            _q(stem: "\$\\lambda = 2\$ m, \$v = 8\$ m/s, alors \$f = ?\$", choices: ['\$0{,}25\$ Hz', '\$4\$ Hz', '\$16\$ Hz', '\$10\$ Hz'], correct: 1, explanation: "\$f = v/\\lambda = 4\$ Hz."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Diffraction', eyebrowFr: 'DIFFRACTION', estimatedMinutes: '5', blocks: [
+          _p("**Diffraction** : déformation d'une onde quand elle passe par une ouverture ou un obstacle de taille comparable à \$\\lambda\$."),
+          _f("\\sin\\theta \\approx \\theta = \\frac{\\lambda}{a}", "Demi-écart angulaire de la tache centrale (radian) — pour une fente de largeur \$a\$."),
+          _interactive('concept_animation', config: {'animation_id': 'young_slits'}, caption: "Animation : ondes traversant deux fentes — interférences alternées."),
+          _example(
+            title: "Diffraction par une fente",
+            problem: "Une onde de \$\\lambda = 600\$ nm passe par une fente de \$a = 0{,}1\$ mm. Quel est l'écart angulaire ?",
+            steps: [
+              "\$\\theta = \\lambda / a = 600 \\times 10^{-9} / 10^{-4} = 6 \\times 10^{-3}\$ rad.",
+              "Soit environ 0{,}34°.",
+            ],
+            answer: "\$\\theta \\approx 6 \\times 10^{-3}\$ rad ≈ 0,34°.",
+          ),
+          _checkpoint("Diffraction", [
+            _q(stem: "Diffraction notable quand \$a\$ est :", choices: ['\$\\gg \\lambda\$', '\$\\ll \\lambda\$', 'comparable à \$\\lambda\$', 'peu importe'], correct: 2, explanation: "L'écart angulaire \$\\theta = \\lambda/a\$ est notable quand \$a \\sim \\lambda\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Interférences (fentes d'Young)", eyebrowFr: 'INTERFÉRENCES', estimatedMinutes: '4', blocks: [
+          _p("Deux ondes cohérentes qui se rencontrent **interfèrent** : addition constructive (frange brillante) ou destructive (frange sombre)."),
+          _f("i = \\frac{\\lambda D}{a}", "**Interfrange** \$i\$ — écart entre deux franges brillantes consécutives. \$D\$ = distance fentes-écran, \$a\$ = écart entre fentes."),
+          _example(
+            title: "Fentes d'Young",
+            problem: "\$\\lambda = 500\$ nm, \$a = 0{,}5\$ mm, \$D = 1\$ m. Quel est l'interfrange ?",
+            steps: [
+              "\$i = \\lambda D / a = 500 \\times 10^{-9} \\times 1 / (5 \\times 10^{-4})\$.",
+              "\$= 10^{-3}\$ m = 1 mm.",
+            ],
+            answer: "\$i = 1\$ mm.",
+          ),
+          _checkpoint("Interférences", [
+            _q(stem: "Si on double \$\\lambda\$, l'interfrange :", choices: ['est divisée par 2', 'est doublée', 'inchangée', 'est quadruplée'], correct: 1, explanation: "\$i \\propto \\lambda\$ — proportionnalité directe."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chNuclear() => _lesson(
+      titleFr: 'Transformations nucléaires',
+      subtitleFr: "Radioactivité, décroissance, demi-vie.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: "Prérequis : structure de l'atome", eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Un noyau atomique \$^A_Z X\$ : \$Z\$ protons, \$A - Z\$ neutrons, \$A\$ nucléons."),
+          _checkpoint("Notation", [
+            _q(stem: "\$^{14}_6 C\$ contient :", choices: ['6 protons, 14 neutrons', '14 protons, 6 neutrons', '6 protons, 8 neutrons', '8 protons, 6 neutrons'], correct: 2, explanation: "\$Z = 6\$ protons, \$A - Z = 14 - 6 = 8\$ neutrons."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Types de radioactivité', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("\\alpha : ^A_Z X \\to ^{A-4}_{Z-2} Y + ^4_2 He", "Radioactivité alpha — émission d'un noyau d'hélium."),
+          _f("\\beta^- : ^A_Z X \\to ^A_{Z+1} Y + ^0_{-1} e", "Radioactivité \$\\beta^-\$ — émission d'un électron (un neutron devient proton)."),
+          _f("\\beta^+ : ^A_Z X \\to ^A_{Z-1} Y + ^0_{+1} e", "Radioactivité \$\\beta^+\$ — émission d'un positron (un proton devient neutron)."),
+          _example(
+            title: "Désintégration alpha",
+            problem: "Quel est le noyau fils de la désintégration \$\\alpha\$ de \$^{226}_{88} Ra\$ ?",
+            steps: ["\$A: 226 - 4 = 222\$ ; \$Z: 88 - 2 = 86\$.", "\$Z = 86\$ : c'est le radon \$Rn\$."],
+            answer: "\$^{222}_{86} Rn\$ + \$\\alpha\$.",
+          ),
+          _checkpoint("Désintégrations", [
+            _q(stem: "Conservation : \$A_{père} = A_{fils} + A_{particule}\$. Vrai ou faux ?", choices: ['Vrai', 'Faux'], correct: 0, explanation: "Conservation du nombre de nucléons \$A\$ ET du nombre de charge \$Z\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Loi de décroissance', eyebrowFr: 'LOI', estimatedMinutes: '5', blocks: [
+          _f("N(t) = N_0 \\, e^{-\\lambda t}", "Nombre de noyaux radioactifs restants au temps \$t\$. \$\\lambda\$ : constante radioactive."),
+          _f("t_{1/2} = \\frac{\\ln 2}{\\lambda}", "**Demi-vie** : temps au bout duquel la moitié des noyaux se sont désintégrés."),
+          _f("A(t) = \\lambda N(t)", "Activité — nombre de désintégrations par seconde (Bq)."),
+          _interactive('nuclear_decay_simulator', caption: "Simule la décroissance — observe \$N(t)\$ et la demi-vie."),
+          _interactive('concept_animation', config: {'animation_id': 'half_life'}, caption: "Animation : la demi-vie comme abscisse à laquelle \$N\$ est divisé par 2."),
+          _example(
+            title: "Demi-vie",
+            problem: "Si \$\\lambda = 0{,}03\$ an⁻¹, quelle est la demi-vie ?",
+            steps: ["\$t_{1/2} = \\ln 2 / 0{,}03 \\approx 23{,}1\$ ans."],
+            answer: "\$t_{1/2} \\approx 23\$ ans.",
+          ),
+          _checkpoint("Décroissance", [
+            _q(stem: "Au bout de \$2 t_{1/2}\$, il reste :", choices: ['1/2 des noyaux', '1/4 des noyaux', '1/8 des noyaux', '0 noyau'], correct: 1, explanation: "Chaque \$t_{1/2}\$ divise par 2 ⟹ après 2 \$t_{1/2}\$, il reste \$1/4\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Énergie de liaison', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("E_l = \\Delta m \\cdot c^2", "Énergie de liaison du noyau (Einstein \$E = mc^2\$). \$\\Delta m\$ = défaut de masse."),
+          _p("Plus \$E_l/A\$ est grande, plus le noyau est stable. Maximum vers \$A \\approx 60\$ (Fer) — au-dessus, **fission** libère de l'énergie ; en-dessous, **fusion** libère de l'énergie."),
+          _checkpoint("Énergie", [
+            _q(stem: "La fission libère de l'énergie pour les noyaux :", choices: ['légers', 'lourds', 'tous', 'aucun'], correct: 1, explanation: "Au-dessus du fer, la fission libère."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chRc() => _lesson(
+      titleFr: 'Dipôle RC',
+      subtitleFr: "Charge et décharge d'un condensateur, constante de temps τ = RC.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : condensateur', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _f("u_C = \\frac{q}{C} \\quad ; \\quad i = C \\frac{du_C}{dt}", "Lois constitutives du condensateur."),
+          _checkpoint("Bases", [
+            _q(stem: "Si \$C = 100\\,\\mu F\$ porte \$q = 10^{-3}\$ C, \$u_C = ?\$", choices: ['\$0{,}01\$ V', '\$1\$ V', '\$10\$ V', '\$100\$ V'], correct: 2, explanation: "\$u = q/C = 10^{-3}/10^{-4} = 10\$ V."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Charge du condensateur', eyebrowFr: 'CHARGE', estimatedMinutes: '5', blocks: [
+          _p("Circuit : générateur \$E\$, résistance \$R\$, condensateur \$C\$ en série, interrupteur fermé à \$t = 0\$ avec \$u_C(0) = 0\$."),
+          _f("\\tau \\frac{du_C}{dt} + u_C = E \\quad \\text{avec } \\tau = RC", "**Équation différentielle de la charge** — premier ordre."),
+          _f("u_C(t) = E (1 - e^{-t/\\tau})", "**Solution** : \$u_C\$ croît exponentiellement de 0 vers \$E\$."),
+          _interactive('capacitor_charge', caption: "Visualise la charge — joue avec \$R\$, \$C\$, \$E\$. Observe \$\\tau\$."),
+          _example(
+            title: "Constante de temps",
+            problem: "\$R = 1\\,k\\Omega\$, \$C = 10\\,\\mu F\$. Calcule \$\\tau\$.",
+            steps: ["\$\\tau = RC = 1000 \\times 10^{-5} = 10^{-2}\$ s = 10 ms."],
+            answer: "\$\\tau = 10\$ ms.",
+          ),
+          _callout('insight', "Au bout de \$5\\tau\$, c'est fini",
+              "Après 5 constantes de temps, \$u_C \\approx 99{,}3 \\% \\cdot E\$. En pratique, le régime permanent est atteint."),
+          _checkpoint("Charge", [
+            _q(stem: "Si on double \$R\$, \$\\tau\$ :", choices: ['est divisée par 2', 'est doublée', 'inchangée', 'est quadruplée'], correct: 1, explanation: "\$\\tau = RC\$ — proportionnel à \$R\$."),
+            _q(stem: "À \$t = \\tau\$, \$u_C\$ vaut environ :", choices: ['\$0{,}37 E\$', '\$0{,}50 E\$', '\$0{,}63 E\$', '\$E\$'], correct: 2, explanation: "\$u_C(\\tau) = E(1 - e^{-1}) \\approx 0{,}63 E\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Décharge', eyebrowFr: 'DÉCHARGE', estimatedMinutes: '4', blocks: [
+          _p("On retire le générateur, le condensateur se décharge dans \$R\$. Avec \$u_C(0) = U_0\$ :"),
+          _f("u_C(t) = U_0 e^{-t/\\tau}", "Décroissance exponentielle de \$U_0\$ vers 0."),
+          _example(
+            title: "Décharge",
+            problem: "Un condensateur chargé sous 10 V se décharge avec \$\\tau = 0{,}1\$ s. Quelle est \$u_C\$ à \$t = 0{,}3\$ s ?",
+            steps: ["\$u_C = 10 \\cdot e^{-0{,}3/0{,}1} = 10 \\cdot e^{-3} \\approx 10 \\cdot 0{,}050 = 0{,}5\$ V."],
+            answer: "\$u_C \\approx 0{,}5\$ V.",
+          ),
+          _checkpoint("Décharge", [
+            _q(stem: "À \$t = \\tau\$, \$u_C\$ vaut environ :", choices: ['\$0{,}37 U_0\$', '\$0{,}50 U_0\$', '\$0{,}63 U_0\$', '\$0\$'], correct: 0, explanation: "\$e^{-1} \\approx 0{,}37\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Énergie stockée', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("E_C = \\frac{1}{2} C u_C^2 = \\frac{1}{2} \\frac{q^2}{C}", "Énergie stockée dans le condensateur (en J)."),
+          _checkpoint("Énergie", [
+            _q(stem: "\$C = 100\\,\\mu F\$, \$u_C = 10\$ V. \$E_C = ?\$", choices: ['\$5\\,\\mu J\$', '\$50\\,\\mu J\$', '\$5\$ mJ', '\$50\$ mJ'], correct: 2, explanation: "\$E_C = 0{,}5 \\times 10^{-4} \\times 100 = 5 \\times 10^{-3}\$ J = 5 mJ."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chRl() => _lesson(
+      titleFr: 'Dipôle RL',
+      subtitleFr: "Établissement et rupture du courant, constante de temps τ = L/R.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : bobine', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _f("u_L = L \\frac{di}{dt}", "Loi de la bobine."),
+          _checkpoint("Bases", [
+            _q(stem: "\$L = 0{,}1\$ H, \$di/dt = 5\$ A/s. \$u_L = ?\$", choices: ['\$0{,}5\$ V', '\$5\$ V', '\$0{,}02\$ V', '\$50\$ V'], correct: 0, explanation: "\$u_L = L \\cdot 5 = 0{,}5\$ V."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Établissement du courant', eyebrowFr: 'ÉTABLISSEMENT', estimatedMinutes: '5', blocks: [
+          _p("Circuit : \$E, R, L\$ en série. À \$t = 0\$, on ferme l'interrupteur, \$i(0) = 0\$."),
+          _f("\\tau \\frac{di}{dt} + i = \\frac{E}{R} \\quad \\text{avec } \\tau = \\frac{L}{R}", "Équation différentielle."),
+          _f("i(t) = \\frac{E}{R}(1 - e^{-t/\\tau})", "Solution — croissance exponentielle de 0 vers \$I_0 = E/R\$."),
+          _example(
+            title: "Constante de temps RL",
+            problem: "\$L = 0{,}1\$ H, \$R = 50\\,\\Omega\$. \$\\tau = ?\$",
+            steps: ["\$\\tau = L/R = 0{,}1/50 = 2 \\times 10^{-3}\$ s = 2 ms."],
+            answer: "\$\\tau = 2\$ ms.",
+          ),
+          _interactive('circuit', caption: "Simule un circuit RL — observe la montée du courant."),
+          _checkpoint("Établissement", [
+            _q(stem: "Si on double \$L\$, \$\\tau\$ :", choices: ['divisée par 2', 'doublée', 'inchangée', 'quadruplée'], correct: 1, explanation: "\$\\tau = L/R\$."),
+            _q(stem: "À \$t = \\tau\$, \$i\$ vaut environ :", choices: ['\$0{,}37 I_0\$', '\$0{,}50 I_0\$', '\$0{,}63 I_0\$', '\$I_0\$'], correct: 2, explanation: "\$i(\\tau) = I_0(1 - e^{-1}) \\approx 0{,}63 I_0\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Rupture du courant', eyebrowFr: 'RUPTURE', estimatedMinutes: '3', blocks: [
+          _f("i(t) = I_0 e^{-t/\\tau}", "Lors de l'ouverture du circuit, le courant décroît exponentiellement."),
+          _callout('warning', "Surtension à l'ouverture",
+              "Comme la bobine s'oppose à la variation brutale du courant, **l'ouverture brusque** d'un circuit RL provoque une forte surtension aux bornes de la bobine. Danger en pratique."),
+          _checkpoint("Rupture", [
+            _q(stem: "À l'ouverture, le courant :", choices: ['saute à 0 instantanément', 'reste constant', 'décroît exponentiellement', 'augmente'], correct: 2, explanation: "La bobine s'oppose à la variation — décroissance exponentielle."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Énergie stockée', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("E_L = \\frac{1}{2} L i^2", "Énergie magnétique stockée dans la bobine."),
+          _checkpoint("Énergie", [
+            _q(stem: "\$L = 0{,}5\$ H, \$i = 2\$ A. \$E_L = ?\$", choices: ['\$0{,}5\$ J', '\$1\$ J', '\$2\$ J', '\$5\$ J'], correct: 1, explanation: "\$E_L = 0{,}5 \\times 0{,}5 \\times 4 = 1\$ J."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chRlcForced() => _lesson(
+      titleFr: 'Oscillations RLC forcées et résonance',
+      subtitleFr: "Régime sinusoïdal forcé, courbe de résonance.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : RLC libre', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Le circuit RLC libre s'amortit. Maintenant on lui impose une excitation sinusoïdale extérieure."),
+          _checkpoint("Bases", [
+            _q(stem: "Pulsation propre d'un LC : \$\\omega_0 = ?\$", choices: ['\$LC\$', "\$1/\\sqrt{LC}\$", "\$\\sqrt{LC}\$", '\$L/C\$'], correct: 1, explanation: "\$\\omega_0 = 1/\\sqrt{LC}\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Régime forcé', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Excitation : tension \$u(t) = U_m \\cos(\\omega t)\$ aux bornes du circuit. Après un transitoire, le circuit oscille à la pulsation \$\\omega\$ imposée."),
+          _f("i(t) = I_m \\cos(\\omega t - \\varphi)", "Courant en régime établi — même fréquence que la tension, déphasage \$\\varphi\$."),
+          _f("I_m = \\frac{U_m}{Z} \\quad \\text{avec } Z = \\sqrt{R^2 + (L\\omega - 1/(C\\omega))^2}", "Loi d'Ohm en régime sinusoïdal — \$Z\$ est l'**impédance**."),
+          _interactive('rlc', caption: "Compare régime libre vs forcé — joue avec la fréquence d'excitation."),
+          _checkpoint("Régime forcé", [
+            _q(stem: "L'impédance \$Z\$ est minimale quand :", choices: ["\$\\omega = 0\$", "\$\\omega = \\omega_0\$", "\$\\omega = +\\infty\$", "Toujours égale à \$R\$"], correct: 1, explanation: "À \$\\omega = \\omega_0\$, le terme \$L\\omega - 1/(C\\omega)\$ s'annule ⟹ \$Z = R\$ minimum."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Résonance', eyebrowFr: 'RÉSONANCE', estimatedMinutes: '5', blocks: [
+          _p("**Résonance** : à \$\\omega = \\omega_0\$, l'amplitude du courant est maximale (\$I_m = U_m/R\$). C'est le pic de la courbe \$I_m(\\omega)\$."),
+          _f("Q = \\frac{1}{R}\\sqrt{\\frac{L}{C}} = \\frac{L \\omega_0}{R}", "**Facteur de qualité Q** : plus \$Q\$ est grand, plus la résonance est aiguë."),
+          _interactive('concept_animation', config: {'animation_id': 'resonance'}, caption: "Animation : courbe d'amplitude vs pulsation, pic à \$\\omega_0\$."),
+          _example(
+            title: "Calcul de résonance",
+            problem: "\$L = 1\$ H, \$C = 100\\,\\mu F\$, \$R = 10\\,\\Omega\$. Quelle est la pulsation de résonance et le facteur de qualité ?",
+            steps: [
+              "\$\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{10^{-4}} = 100\$ rad/s.",
+              "\$Q = L\\omega_0/R = 1 \\times 100 / 10 = 10\$.",
+            ],
+            answer: "\$\\omega_0 = 100\$ rad/s, \$Q = 10\$ (résonance aiguë).",
+          ),
+          _checkpoint("Résonance", [
+            _q(stem: "Plus \$Q\$ est grand :", choices: ['plus la résonance est large', 'plus la résonance est aiguë', "pas d'effet", 'plus \$\\omega_0\$ est grand'], correct: 1, explanation: "\$Q\$ grand ⟹ pic étroit et haut."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Applications', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("Résonance utilisée dans : **radio** (sélectionner une station), **accordage musical**, **circuits accordés** en télécommunications."),
+          _checkpoint("Applications", [
+            _q(stem: "Pour sélectionner une station radio, on cherche :", choices: ['résonance large', 'résonance aiguë', "pas de résonance", 'plusieurs résonances'], correct: 1, explanation: "Une résonance aiguë sépare bien les stations voisines."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chAm() => _lesson(
+      titleFr: "Modulation d'amplitude",
+      subtitleFr: "Transmission radio AM — porteuse, modulant, signal AM.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : signal sinusoïdal', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Une onde sinusoïdale : \$s(t) = A \\cos(2\\pi f t + \\varphi)\$. Trois paramètres : amplitude \$A\$, fréquence \$f\$, phase \$\\varphi\$. **Moduler** = faire varier l'un d'eux."),
+          _checkpoint("Bases", [
+            _q(stem: "Amplitude d'un signal \$s(t) = 5 \\cos(100 t)\$ :", choices: ['\$5\$', '\$100\$', "\$2\\pi\$", '\$0\$'], correct: 0, explanation: "Le coefficient devant le cosinus."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Principe de la modulation", eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("**Porteuse** \$s_c(t) = A_c \\cos(2\\pi f_c t)\$ : haute fréquence (radio, ~MHz). **Modulant** \$s_m(t) = A_m \\cos(2\\pi f_m t)\$ : basse fréquence (audio, ~kHz). On veut transporter \$s_m\$ sur \$s_c\$."),
+          _f("s(t) = (A_c + s_m(t)) \\cos(2\\pi f_c t) = (A_c + A_m \\cos(2\\pi f_m t)) \\cos(2\\pi f_c t)", "Signal AM — l'amplitude de la porteuse varie avec le signal modulant."),
+          _f("m = \\frac{A_m}{A_c}", "**Indice de modulation** — typiquement 0,3 < m < 0,8 en pratique."),
+          _interactive('am_modulation', caption: "Modulant + porteuse + signal AM — trois courbes empilées. Joue avec \$A_m\$."),
+          _checkpoint("Modulation", [
+            _q(stem: "Si \$m > 1\$ :", choices: ['signal optimal', 'sur-modulation, distorsion', "pas d'effet", 'meilleur signal'], correct: 1, explanation: "Sur-modulation = enveloppe croise zéro = distorsion."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Démodulation', eyebrowFr: 'DÉMODULATION', estimatedMinutes: '4', blocks: [
+          _p("À la réception, on **démodule** pour récupérer \$s_m(t)\$. Méthode classique : **détection d'enveloppe** = redresser + filtre passe-bas."),
+          _checkpoint("Démodulation", [
+            _q(stem: "Le filtre passe-bas après détection d'enveloppe sert à :", choices: ['amplifier', 'éliminer la composante porteuse', 'augmenter la fréquence', 'rien'], correct: 1, explanation: "Il ne laisse passer que les basses fréquences (\$f_m\$), supprimant les résidus de \$f_c\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Synthèse', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '2', blocks: [
+          _p("AM = signal information variable d'amplitude × porteuse haute fréquence. Démodulation = extraction de l'enveloppe."),
+          _checkpoint("Récap", [
+            _q(stem: "Pourquoi utiliser une porteuse haute fréquence ?", choices: ["c'est plus joli", "permet la propagation radio", "plus d'amplitude", 'pas utile'], correct: 1, explanation: "Les ondes audio ne se propagent pas en radio — il faut les porter sur une fréquence radio."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chGravity() => _lesson(
+      titleFr: 'Champ de pesanteur uniforme',
+      subtitleFr: "Mouvement d'un projectile : tir, chute libre.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : Newton', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Près de la surface terrestre, le champ de pesanteur \$\\vec{g}\$ est **uniforme** (même direction, même intensité). \$g \\approx 9{,}81\$ m/s² vertical, vers le bas."),
+          _checkpoint("Bases", [
+            _q(stem: "Sur un objet en chute libre, la seule force est :", choices: ['poussée', "frottement de l'air", 'poids', 'inertie'], correct: 2, explanation: "En chute libre, on néglige les frottements — il ne reste que le poids."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Mouvement parabolique', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Un projectile lancé avec vitesse \$\\vec{v}_0\$ depuis \$O\$ subit \$\\vec{a} = \\vec{g}\$. Avec \$\\vec{v}_0 = (v_0 \\cos\\alpha, v_0 \\sin\\alpha, 0)\$, RFD donne :"),
+          _f("x(t) = v_0 \\cos\\alpha \\cdot t \\quad ; \\quad y(t) = v_0 \\sin\\alpha \\cdot t - \\tfrac{1}{2} g t^2", "Équations horaires — horizontalement uniforme, verticalement uniformément varié."),
+          _f("y(x) = -\\frac{g}{2 v_0^2 \\cos^2\\alpha} x^2 + \\tan\\alpha \\cdot x", "Équation de la trajectoire — **parabole**."),
+          _interactive('projectile', caption: "Joue avec \$v_0\$ et \$\\alpha\$ — observe la trajectoire parabolique."),
+          _example(
+            title: "Portée maximale",
+            problem: "Pour quel angle \$\\alpha\$ la portée est-elle maximale (sol horizontal) ?",
+            steps: ["Portée \$P = v_0^2 \\sin(2\\alpha) / g\$.", "\$\\sin(2\\alpha)\$ est maximal en \$2\\alpha = 90°\$, soit \$\\alpha = 45°\$."],
+            answer: "\$\\alpha = 45°\$ — portée maximale.",
+          ),
+          _checkpoint("Parabole", [
+            _q(stem: "Sur le sommet de la trajectoire, \$v_y\$ vaut :", choices: ['\$v_0\$', '\$g t\$', '\$0\$', '\$v_0 \\sin\\alpha\$'], correct: 2, explanation: "Au sommet, la vitesse verticale s'annule (avant de redescendre)."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Chute libre verticale', eyebrowFr: 'CHUTE', estimatedMinutes: '3', blocks: [
+          _p("Cas particulier : lâcher sans vitesse initiale (\$v_0 = 0\$, \$\\alpha = 0\$)."),
+          _f("y(t) = -\\tfrac{1}{2} g t^2 \\quad ; \\quad v(t) = -g t", "Position et vitesse en chute libre depuis le repos."),
+          _example(
+            title: "Hauteur d'une chute",
+            problem: "Un objet tombe pendant 3 s. Quelle hauteur a-t-il parcourue ?",
+            steps: ["\$|y| = \\tfrac{1}{2} g t^2 = 0{,}5 \\times 9{,}81 \\times 9 \\approx 44{,}1\$ m."],
+            answer: "≈ 44 m.",
+          ),
+          _checkpoint("Chute", [
+            _q(stem: "À \$t = 1\$s, vitesse en chute libre depuis repos (\$g = 10\$ m/s²) :", choices: ['\$5\$ m/s', '\$10\$ m/s', '\$20\$ m/s', '\$1\$ m/s'], correct: 1, explanation: "\$v = g t = 10\$ m/s."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: "Avec ou sans frottement", eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '2', blocks: [
+          _p("Avec frottements, la trajectoire n'est plus une parabole exacte — la portée diminue, le sommet s'abaisse. Au Bac, on précise toujours « on néglige les frottements » sauf indication contraire."),
+          _checkpoint("Récap", [
+            _q(stem: "Sans frottement, le mouvement horizontal d'un projectile est :", choices: ['accéléré', 'uniformément varié', 'uniforme', 'au repos'], correct: 2, explanation: "Pas de force horizontale ⟹ \$v_x\$ constant."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chEField() => _lesson(
+      titleFr: 'Champ électrique uniforme',
+      subtitleFr: "Mouvement d'une particule chargée — déviation cathodique.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : force électrique', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _f("\\vec{F} = q\\vec{E}", "Force électrique sur une charge \$q\$ dans un champ \$\\vec{E}\$."),
+          _checkpoint("Bases", [
+            _q(stem: "Sur une charge \$q < 0\$ dans \$\\vec{E}\$, la force est :", choices: ["dans le sens de \$\\vec{E}\$", "opposée à \$\\vec{E}\$", "perpendiculaire à \$\\vec{E}\$", "nulle"], correct: 1, explanation: "\$q < 0\$ inverse le sens : \$\\vec{F}\$ est opposée à \$\\vec{E}\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Champ E uniforme entre plaques', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Entre deux plaques parallèles séparées de \$d\$ et soumises à une tension \$U\$ : champ **uniforme** \$\\vec{E}\$ perpendiculaire aux plaques."),
+          _f("E = \\frac{U}{d}", "Intensité du champ entre plaques — en V/m."),
+          _f("\\vec{F} = q \\vec{E} \\quad ; \\quad \\vec{a} = \\frac{q}{m}\\vec{E}", "Force et accélération — uniformes."),
+          _checkpoint("Champ", [
+            _q(stem: "\$U = 100\$ V, \$d = 0{,}1\$ m. \$E = ?\$", choices: ['\$1\$ V/m', '\$10\$ V/m', '\$100\$ V/m', '\$1000\$ V/m'], correct: 3, explanation: "\$E = U/d = 100/0{,}1 = 1000\$ V/m."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Déviation cathodique', eyebrowFr: 'DÉVIATION', estimatedMinutes: '5', blocks: [
+          _p("Une particule chargée entre dans un champ E uniforme avec vitesse horizontale \$\\vec{v}_0\$. Le champ vertical \$\\vec{E}\$ produit une accélération verticale uniforme — **trajectoire parabolique** (analogue au tir)."),
+          _f("y(x) = \\frac{q E}{2 m v_0^2} x^2", "Équation de la trajectoire dans la zone de champ."),
+          _interactive('e_field_uniform', caption: "Particule chargée entre plaques — joue avec \$U\$, \$v_0\$, \$L\$, \$d\$."),
+          _example(
+            title: "Déviation à la sortie",
+            problem: "Une particule de \$q/m = 10^{11}\$ C/kg entre à \$v_0 = 10^7\$ m/s dans des plaques de longueur \$L = 0{,}1\$ m, séparation \$d = 0{,}05\$ m, \$U = 200\$ V. Quelle est la déviation à la sortie ?",
+            steps: [
+              "\$E = U/d = 4000\$ V/m.",
+              "\$y(L) = \\frac{q E L^2}{2 m v_0^2} = \\frac{10^{11} \\times 4000 \\times 0{,}01}{2 \\times 10^{14}} = \\frac{4 \\times 10^{12}}{2 \\times 10^{14}} = 0{,}02\$ m.",
+            ],
+            answer: "Déviation = 2 cm.",
+          ),
+          _checkpoint("Trajectoire", [
+            _q(stem: "Si on double \$U\$, la déviation à la sortie :", choices: ['est divisée par 2', 'est doublée', 'inchangée', 'est quadruplée'], correct: 1, explanation: "\$y \\propto E \\propto U\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Tube cathodique', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("Le **tube cathodique** (oscilloscope, ancien téléviseur) utilise ce principe : un faisceau d'électrons est dévié par des plaques de manière à dessiner un point sur un écran phosphorescent."),
+          _checkpoint("Récap", [
+            _q(stem: "Un électron est dévié vers la plaque :", choices: ['positive', 'négative', 'aucune', "n'est pas dévié"], correct: 0, explanation: "L'électron (\$q < 0\$) est attiré par la plaque positive."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chBField() => _lesson(
+      titleFr: 'Champ magnétique uniforme',
+      subtitleFr: "Mouvement circulaire d'une charge — force de Lorentz.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : produit vectoriel', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("\$\\vec{u} \\wedge \\vec{v}\$ est perpendiculaire à \$\\vec{u}\$ et \$\\vec{v}\$. Sa norme : \$|\\vec{u}||\\vec{v}|\\sin\\theta\$."),
+          _checkpoint("Bases", [
+            _q(stem: "\$\\vec{u} \\wedge \\vec{v} = \\vec{0}\$ si :", choices: ['les vecteurs sont parallèles', 'orthogonaux', "n'importe quoi", 'jamais'], correct: 0, explanation: "Parallèles ⟹ \$\\sin\\theta = 0\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Force de Lorentz', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("\\vec{F} = q \\vec{v} \\wedge \\vec{B}", "Force magnétique sur une charge en mouvement."),
+          _p("Particularité : \$\\vec{F} \\perp \\vec{v}\$ — la force ne fait **pas de travail**, elle ne change pas l'énergie cinétique. Elle change la **direction**."),
+          _checkpoint("Force", [
+            _q(stem: "Sur une charge en mouvement dans \$\\vec{B}\$, le travail de la force magnétique est :", choices: ['positif', 'négatif', 'nul', "ça dépend"], correct: 2, explanation: "\$\\vec{F} \\perp \\vec{v}\$ ⟹ \$W = \\vec{F} \\cdot d\\vec{r} = 0\$."),
+            _q(stem: "Une charge au repos dans \$\\vec{B}\$ subit :", choices: ['une force', 'aucune force', "ça dépend du sens de \$\\vec{B}\$", 'une accélération'], correct: 1, explanation: "\$\\vec{v} = 0\$ ⟹ \$\\vec{F} = q \\vec{v} \\wedge \\vec{B} = 0\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Mouvement circulaire uniforme', eyebrowFr: 'CIRCULAIRE', estimatedMinutes: '5', blocks: [
+          _p("Une particule entrant **perpendiculairement** à \$\\vec{B}\$ uniforme suit un **cercle** de rayon :"),
+          _f("r = \\frac{m v}{|q| B}", "Rayon de la trajectoire circulaire."),
+          _f("T = \\frac{2 \\pi m}{|q| B}", "Période — indépendante de la vitesse !"),
+          _interactive('b_field_uniform', caption: "Joue avec \$v\$, \$B\$, charge — observe le cercle de rayon \$r\$."),
+          _interactive('concept_animation', config: {'animation_id': 'magnetic_deflection'}, caption: "Animation : déflexion d'une charge dans un champ magnétique."),
+          _example(
+            title: "Rayon en spectromètre de masse",
+            problem: "Un proton (\$q = 1{,}6 \\times 10^{-19}\$ C, \$m = 1{,}67 \\times 10^{-27}\$ kg) à \$v = 10^6\$ m/s dans \$B = 0{,}1\$ T. Quel rayon ?",
+            steps: ["\$r = mv/(qB) = (1{,}67 \\times 10^{-27} \\times 10^6) / (1{,}6 \\times 10^{-19} \\times 0{,}1) = 0{,}104\$ m."],
+            answer: "\$r \\approx 10\$ cm.",
+          ),
+          _checkpoint("Mouvement circulaire", [
+            _q(stem: "Si on double \$v\$, le rayon :", choices: ['inchangé', 'doublé', 'divisé par 2', 'quadruplé'], correct: 1, explanation: "\$r \\propto v\$."),
+            _q(stem: "Si on double \$B\$, le rayon :", choices: ['doublé', 'inchangé', 'divisé par 2', 'quadruplé'], correct: 2, explanation: "\$r \\propto 1/B\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Force de Laplace', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("\\vec{F} = i \\vec{l} \\wedge \\vec{B}", "Force de Laplace — sur un conducteur de longueur \$\\vec{l}\$ parcouru par un courant \$i\$ dans \$\\vec{B}\$."),
+          _p("Application : moteurs électriques, hauts-parleurs, rails de Laplace."),
+          _checkpoint("Laplace", [
+            _q(stem: "Sur un fil parcouru par \$i\$ dans \$\\vec{B}\$, la force est :", choices: ['parallèle au fil', "perpendiculaire au fil et à \$\\vec{B}\$", "parallèle à \$\\vec{B}\$", 'nulle'], correct: 1, explanation: "Produit vectoriel ⟹ \$\\perp\$ aux deux."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chPendulum() => _lesson(
+      titleFr: 'Pendule pesant et élastique',
+      subtitleFr: "Oscillations harmoniques, période propre.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : équation du second ordre', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("La solution de \$\\ddot x + \\omega_0^2 x = 0\$ est \$x(t) = A \\cos(\\omega_0 t + \\varphi)\$. Période \$T_0 = 2\\pi/\\omega_0\$."),
+          _checkpoint("Bases", [
+            _q(stem: "Si \$\\omega_0 = 2\$ rad/s, \$T_0 = ?\$", choices: ["\$\\pi\$ s", "\$2\\pi\$ s", "\$\\pi/2\$ s", '\$2\$ s'], correct: 0, explanation: "\$T_0 = 2\\pi/\\omega_0 = \\pi\$ s."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Pendule simple', eyebrowFr: 'PESANT', estimatedMinutes: '4', blocks: [
+          _p("Pendule simple : masse \$m\$ au bout d'un fil de longueur \$L\$. Pour de petites oscillations (\$\\theta < 10°\$), c'est un oscillateur harmonique."),
+          _f("\\ddot{\\theta} + \\frac{g}{L} \\theta = 0 \\quad \\text{(petites oscillations)}", "Équation du pendule simple."),
+          _f("T_0 = 2\\pi \\sqrt{\\frac{L}{g}}", "Période propre — **indépendante de la masse et de l'amplitude** (pour petites oscillations)."),
+          _interactive('pendulum_lab', caption: "Joue avec \$L\$, \$g\$, \$\\theta_0\$ — observe la période."),
+          _example(
+            title: "Mesure de g",
+            problem: "Un pendule de \$L = 1\$ m a une période \$T = 2{,}01\$ s. Calcule \$g\$.",
+            steps: [
+              "\$T = 2\\pi \\sqrt{L/g}\$ ⟹ \$g = 4\\pi^2 L/T^2\$.",
+              "\$g = 4\\pi^2 \\times 1 / 4{,}04 \\approx 9{,}77\$ m/s².",
+            ],
+            answer: "\$g \\approx 9{,}77\$ m/s² (proche de la valeur attendue 9,81).",
+          ),
+          _checkpoint("Pendule simple", [
+            _q(stem: "Si on double \$L\$, \$T_0\$ :", choices: ['inchangé', 'doublé', "multiplié par \$\\sqrt{2}\$", 'divisé par 2'], correct: 2, explanation: "\$T \\propto \\sqrt{L}\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Pendule élastique (masse-ressort)', eyebrowFr: 'ÉLASTIQUE', estimatedMinutes: '4', blocks: [
+          _p("Masse \$m\$ accrochée à un ressort de raideur \$k\$. Position d'équilibre \$x = 0\$, écart \$x(t)\$."),
+          _f("\\ddot x + \\frac{k}{m} x = 0", "Équation du masse-ressort."),
+          _f("T_0 = 2\\pi \\sqrt{\\frac{m}{k}}", "Période propre — **dépend de m**, contrairement au pendule simple."),
+          _example(
+            title: "Période d'un masse-ressort",
+            problem: "\$m = 200\$ g, \$k = 50\$ N/m. \$T_0 = ?\$",
+            steps: ["\$T_0 = 2\\pi \\sqrt{0{,}2/50} = 2\\pi \\sqrt{4 \\times 10^{-3}} = 2\\pi \\times 0{,}0632 \\approx 0{,}397\$ s."],
+            answer: "\$T_0 \\approx 0{,}40\$ s.",
+          ),
+          _checkpoint("Élastique", [
+            _q(stem: "Si on double \$m\$, \$T_0\$ :", choices: ['inchangé', 'doublé', "multiplié par \$\\sqrt{2}\$", 'divisé par 2'], correct: 2, explanation: "\$T \\propto \\sqrt{m}\$."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Énergie et amortissement', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("E = \\tfrac{1}{2} m v^2 + \\tfrac{1}{2} k x^2 = \\text{cste}", "Énergie mécanique constante en absence de frottement."),
+          _p("Avec frottements, l'énergie diminue, l'amplitude décroît exponentiellement (régime pseudo-périodique)."),
+          _checkpoint("Énergie", [
+            _q(stem: "Au passage par la position d'équilibre, \$E_c\$ est :", choices: ['nulle', 'minimale', 'maximale', "ça dépend"], correct: 2, explanation: "Vitesse maximale ⟹ \$E_c\$ maximale ⟹ \$E_p\$ nulle."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chEnergy() => _lesson(
+      titleFr: 'Aspects énergétiques',
+      subtitleFr: "Énergie cinétique, potentielle, mécanique — théorèmes.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : forces', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("L'énergie est une grandeur scalaire conservée — elle peut changer de forme mais ne disparaît pas (système isolé)."),
+          _checkpoint("Bases", [
+            _q(stem: "Unité d'énergie SI :", choices: ['N', 'J', 'W', 'Pa'], correct: 1, explanation: "Joule (J)."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Énergies cinétique et potentielle", eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("E_c = \\frac{1}{2} m v^2", "Énergie cinétique — liée au mouvement."),
+          _f("E_p = m g h", "Énergie potentielle de pesanteur — liée à la hauteur."),
+          _f("E_p = \\frac{1}{2} k x^2", "Énergie potentielle élastique — liée à la déformation d'un ressort."),
+          _example(
+            title: "Calculs",
+            problem: "\$m = 2\$ kg lancé à \$v = 5\$ m/s à \$h = 10\$ m. \$E_c\$, \$E_p\$, \$E_m = ?\$",
+            steps: [
+              "\$E_c = 0{,}5 \\times 2 \\times 25 = 25\$ J.",
+              "\$E_p = 2 \\times 10 \\times 10 = 200\$ J (\$g \\approx 10\$).",
+              "\$E_m = E_c + E_p = 225\$ J.",
+            ],
+            answer: "\$E_c = 25\$ J, \$E_p = 200\$ J, \$E_m = 225\$ J.",
+          ),
+          _checkpoint("Énergies", [
+            _q(stem: "Si on double \$v\$, \$E_c\$ :", choices: ['doublée', 'inchangée', 'quadruplée', 'divisée par 2'], correct: 2, explanation: "\$E_c \\propto v^2\$."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Théorèmes énergétiques', eyebrowFr: 'THÉORÈMES', estimatedMinutes: '5', blocks: [
+          _f("\\Delta E_c = W_{\\text{forces ext}}", "**Théorème de l'énergie cinétique** — variation d'\$E_c\$ = somme des travaux des forces."),
+          _f("\\Delta E_m = W_{\\text{forces non conservatives}}", "**Théorème de l'énergie mécanique** — \$E_m\$ ne se conserve pas s'il y a frottement."),
+          _f("\\boxed{E_m = E_c + E_p = \\text{cste}} \\quad \\text{(sans frottement)}", "Conservation de l'énergie mécanique — c'est l'outil-roi pour résoudre les problèmes Bac."),
+          _example(
+            title: "Vitesse en bas d'une pente",
+            problem: "Un objet glisse sans frottement depuis le repos d'une hauteur \$h = 5\$ m. Quelle est sa vitesse en bas ?",
+            steps: [
+              "Conservation : \$E_m^{\\text{haut}} = E_m^{\\text{bas}}\$.",
+              "\$mgh = \\tfrac{1}{2} m v^2\$ ⟹ \$v = \\sqrt{2 g h}\$.",
+              "\$v = \\sqrt{2 \\times 10 \\times 5} = \\sqrt{100} = 10\$ m/s.",
+            ],
+            answer: "\$v = 10\$ m/s.",
+          ),
+          _checkpoint("Théorèmes", [
+            _q(stem: "Sans frottement, \$E_m\$ :", choices: ['augmente', 'diminue', "se conserve", 'ne dit rien'], correct: 2, explanation: "Pas de frottement = pas de dissipation."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Énergie en oscillation', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("Sur un oscillateur idéal, \$E_m\$ est constante. \$E_c\$ et \$E_p\$ s'échangent — quand \$E_c\$ est max, \$E_p\$ est min, et inversement."),
+          _checkpoint("Récap", [
+            _q(stem: "Au point le plus haut d'un pendule, \$E_c\$ est :", choices: ['max', 'min (= 0)', 'égale à \$E_p\$', "ça dépend"], correct: 1, explanation: "Vitesse nulle ⟹ \$E_c = 0\$ ; toute l'énergie est en \$E_p\$."),
+          ]),
+        ]),
+      ],
+    );
+
+// ============================================================================
+// CHIMIE chapters (5 new) — kinetics, reversible, equilibrium, daniell, esterification
+// ============================================================================
+
+Map<String, dynamic> _chKinetics() => _lesson(
+      titleFr: 'Cinétique chimique',
+      subtitleFr: "Vitesse de réaction, facteurs cinétiques, temps de demi-réaction.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: "Prérequis : avancement, concentrations", eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("La cinétique chimique étudie **comment vite** une réaction se déroule. Elle complète la thermodynamique (qui dit si une réaction peut avoir lieu)."),
+          _checkpoint("Bases", [
+            _q(stem: "La cinétique étudie :", choices: ["si la réaction a lieu", 'à quelle vitesse', "l'équilibre", 'le coût'], correct: 1, explanation: "Cinétique = vitesse."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Vitesse de réaction', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("v = -\\frac{d[A]}{dt}", "Pour une réaction \$A \\to B\$, la vitesse de disparition de A vaut \$-d[A]/dt\$ (positif car \$[A]\$ décroît)."),
+          _interactive('kinetics_reactor', caption: "Joue avec \$[A]_0\$, \$k\$, \$T\$ — observe la décroissance et \$t_{1/2}\$."),
+          _example(
+            title: "Vitesse initiale",
+            problem: "Si \$[A]\$ passe de 0,10 à 0,08 mol/L en 5 s, quelle est la vitesse moyenne de disparition ?",
+            steps: ["\$v_{\\text{moy}} = -\\Delta[A]/\\Delta t = (0{,}10 - 0{,}08)/5 = 4 \\times 10^{-3}\$ mol/(L·s)."],
+            answer: "\$v_{\\text{moy}} = 4 \\times 10^{-3}\$ mol/(L·s).",
+          ),
+          _checkpoint("Vitesse", [
+            _q(stem: "Vitesse de réaction : unité SI ?", choices: ['mol/L', 'mol/s', 'mol/(L·s)', 's'], correct: 2, explanation: "Concentration par unité de temps."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Facteurs cinétiques', eyebrowFr: 'FACTEURS', estimatedMinutes: '5', blocks: [
+          _p("Trois facteurs principaux influencent la vitesse :"),
+          _p("**1. Concentration des réactifs.** Plus elle est élevée, plus la vitesse est grande (lois cinétiques d'ordre n)."),
+          _p("**2. Température.** Loi d'Arrhenius : la vitesse double environ tous les 10°C. Une réaction à 30°C est ~2× plus rapide qu'à 20°C."),
+          _p("**3. Catalyseur.** Substance qui accélère une réaction sans être consommée — abaisse l'énergie d'activation."),
+          _checkpoint("Facteurs", [
+            _q(stem: "Augmenter la température :", choices: ['ralentit la réaction', 'accélère la réaction', "n'a pas d'effet", "dépend de la réaction"], correct: 1, explanation: "L'agitation thermique augmente le nombre de chocs efficaces."),
+            _q(stem: "Un catalyseur :", choices: ['est consommé', 'accélère sans être consommé', 'ralentit', 'modifie le produit final'], correct: 1, explanation: "Définition même d'un catalyseur."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Temps de demi-réaction', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '4', blocks: [
+          _f("t_{1/2} : [A](t_{1/2}) = \\frac{[A]_0}{2}", "**Temps de demi-réaction** : moment où la moitié du réactif a été consommée."),
+          _p("Pour une réaction d'ordre 1 (\$v = k[A]\$) : \$t_{1/2} = \\ln 2 / k\$ — **indépendant** de la concentration initiale."),
+          _example(
+            title: "Calcul de t½",
+            problem: "Réaction d'ordre 1 avec \$k = 0{,}05\$ s⁻¹. \$t_{1/2} = ?\$",
+            steps: ["\$t_{1/2} = \\ln 2 / 0{,}05 \\approx 13{,}9\$ s."],
+            answer: "\$t_{1/2} \\approx 14\$ s.",
+          ),
+          _checkpoint("t½", [
+            _q(stem: "Pour une cinétique d'ordre 1, \$t_{1/2}\$ dépend :", choices: ['de \$[A]_0\$', 'seulement de \$k\$', "des deux", "d'aucun"], correct: 1, explanation: "Caractéristique unique de l'ordre 1 : \$t_{1/2}\$ ne dépend pas de la concentration initiale."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chReversible() => _lesson(
+      titleFr: 'Transformations dans les deux sens',
+      subtitleFr: "Réactions réversibles, évolution vers l'équilibre.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : avancement', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Toutes les réactions ne vont pas jusqu'au bout. Beaucoup s'arrêtent en cours de route — un état d'équilibre s'installe entre réactifs et produits."),
+          _checkpoint("Bases", [
+            _q(stem: "Une réaction réversible :", choices: ['va toujours jusqu\'au bout', "peut atteindre un équilibre", "n'avance jamais", 'est impossible'], correct: 1, explanation: "Définition même d'une réaction réversible."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Réaction directe et inverse', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("A + B \\rightleftharpoons C + D", "Une réaction réversible — la double flèche indique les deux sens."),
+          _p("**Réaction directe** : de gauche à droite (consomme A, B ; produit C, D). **Inverse** : l'autre sens. Les deux ont lieu simultanément."),
+          _interactive('equilibrium_qr_k', caption: "Joue avec les concentrations initiales et K — observe l'évolution vers l'équilibre."),
+          _interactive('concept_animation', config: {'animation_id': 'chemical_equilibrium'}, caption: "Animation : vitesses directe et inverse s'égalisent à l'équilibre."),
+          _checkpoint("Sens", [
+            _q(stem: "Quand la réaction directe est aussi rapide que l'inverse :", choices: ["la réaction s'arrête", "le système est à l'équilibre", 'la réaction recule', "rien de spécial"], correct: 1, explanation: "Égalité des vitesses = équilibre dynamique."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Évolution vers l'équilibre", eyebrowFr: 'ÉQUILIBRE', estimatedMinutes: '5', blocks: [
+          _p("Au début, seuls les réactifs sont présents — la réaction directe domine. Au fur et à mesure, \$[C]\$ et \$[D]\$ augmentent — la réaction inverse s'accélère. À l'équilibre, les deux vitesses sont égales : les concentrations restent constantes (mais les réactions continuent)."),
+          _example(
+            title: "Identification de l'état d'équilibre",
+            problem: "Comment reconnaître qu'un système est à l'équilibre ?",
+            steps: [
+              "Concentrations stables (mesurables sur la durée).",
+              "Vitesse globale d'évolution = 0.",
+              "Mais à l'échelle microscopique, les réactions directe et inverse continuent à la même vitesse — équilibre dynamique.",
+            ],
+            answer: "Concentrations stables + équilibre dynamique des vitesses.",
+          ),
+          _checkpoint("Évolution", [
+            _q(stem: "À l'équilibre, les concentrations :", choices: ['oscillent', "sont stables", 'sont nulles', "tendent vers 0"], correct: 1, explanation: "Stabilité macroscopique = équilibre."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Quotient de réaction Qr', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _f("Q_r = \\frac{[C][D]}{[A][B]}", "Quotient de réaction — calculable à tout instant."),
+          _p("À l'équilibre, \$Q_r = K\$ (constante d'équilibre). Sinon, le système évolue pour atteindre cet équilibre."),
+          _checkpoint("Qr", [
+            _q(stem: "Si \$Q_r < K\$ :", choices: ["système en équilibre", 'évolue dans le sens direct', 'évolue dans le sens inverse', 'pas d\'évolution'], correct: 1, explanation: "Pour faire monter \$Q_r\$ vers \$K\$, on consomme A,B et produit C,D — sens direct."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chEquilibrium() => _lesson(
+      titleFr: "État d'équilibre",
+      subtitleFr: "Quotient Qr, constante K, sens d'évolution.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : Qr', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("Le quotient \$Q_r\$ est calculable à tout moment. La constante \$K\$ est sa valeur à l'équilibre — elle ne dépend que de la température."),
+          _checkpoint("Bases", [
+            _q(stem: "K dépend de :", choices: ['concentrations', 'volume', 'température seulement', 'pression'], correct: 2, explanation: "K est une fonction de T seule (pour une réaction donnée)."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Constante d\'équilibre K', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("K = \\frac{[C]_{\\text{éq}}^c [D]_{\\text{éq}}^d}{[A]_{\\text{éq}}^a [B]_{\\text{éq}}^b}", "Pour la réaction \$aA + bB \\rightleftharpoons cC + dD\$ — coefficients stœchiométriques en exposant."),
+          _interactive('equilibrium_qr_k', caption: "Joue avec les concentrations et observe Qr converger vers K."),
+          _example(
+            title: "Calcul de Qr",
+            problem: "Réaction \$A + B \\rightleftharpoons C + D\$. À un instant : \$[A] = 0{,}1\$, \$[B] = 0{,}2\$, \$[C] = 0{,}05\$, \$[D] = 0{,}05\$ mol/L. Calcule \$Q_r\$.",
+            steps: ["\$Q_r = (0{,}05)(0{,}05)/((0{,}1)(0{,}2)) = 0{,}0025/0{,}02 = 0{,}125\$."],
+            answer: "\$Q_r = 0{,}125\$.",
+          ),
+          _checkpoint("K", [
+            _q(stem: "K grand ⟹ équilibre :", choices: ['favorise les réactifs', 'favorise les produits', "n'évolue pas", "indéterminé"], correct: 1, explanation: "Numérateur grand ⟹ produits dominent."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Sens d'évolution", eyebrowFr: 'SENS', estimatedMinutes: '5', blocks: [
+          _f("Q_r < K \\Rightarrow \\text{sens direct} \\quad ; \\quad Q_r > K \\Rightarrow \\text{sens inverse}", "**Critère d'évolution spontanée**."),
+          _example(
+            title: "Prédire le sens",
+            problem: "Réaction avec \$K = 4\$. À un instant donné, \$Q_r = 2\$. Dans quel sens évolue le système ?",
+            steps: [
+              "\$Q_r = 2 < K = 4\$.",
+              "Donc le système évolue dans le **sens direct** (produit du C et D, consomme A et B), jusqu'à ce que \$Q_r = K\$.",
+            ],
+            answer: "Sens direct.",
+          ),
+          _checkpoint("Sens", [
+            _q(stem: "\$K = 10\$, à un moment \$Q_r = 50\$. Le système évolue :", choices: ['sens direct', 'sens inverse', 'reste à l\'équilibre', 'oscille'], correct: 1, explanation: "\$Q_r > K\$ ⟹ on doit consommer C, D et reformer A, B — sens inverse."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Récapitulatif', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("**À retenir :** \$K\$ caractérise l'équilibre (T donné). \$Q_r\$ est calculable à tout moment. La comparaison \$Q_r\$ vs \$K\$ donne le **sens d'évolution**. Atteindre \$Q_r = K\$ = atteindre l'équilibre."),
+          _checkpoint("Récap", [
+            _q(stem: "Pour augmenter le rendement, on peut :", choices: ['ajouter du produit', 'enlever du produit', 'ajouter du catalyseur (rendement)', 'rien'], correct: 1, explanation: "Enlever C ou D fait \$Q_r\$ baisser — la réaction continue dans le sens direct."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chDaniell() => _lesson(
+      titleFr: 'Piles et électrolyse',
+      subtitleFr: "Pile Daniell, force électromotrice, réactions d'oxydoréduction.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : oxydoréduction', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("**Oxydation** = perte d'électrons (Ox). **Réduction** = gain d'électrons (Red). Couple Ox/Red : \$M^{n+}/M\$."),
+          _checkpoint("Bases", [
+            _q(stem: "\$Zn \\to Zn^{2+} + 2e^-\$ est une :", choices: ['réduction', 'oxydation', "ni l'un ni l'autre", 'précipitation'], correct: 1, explanation: "Perte d'électrons = oxydation."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'La pile Daniell', eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _p("Pile Daniell : électrode de **zinc** dans \$Zn^{2+}\$, électrode de **cuivre** dans \$Cu^{2+}\$, reliées par un pont salin."),
+          _f("\\text{Anode (-)} : Zn \\to Zn^{2+} + 2e^- \\quad ; \\quad \\text{Cathode (+)} : Cu^{2+} + 2e^- \\to Cu", "Demi-équations aux électrodes."),
+          _f("\\text{Globale} : Zn + Cu^{2+} \\to Zn^{2+} + Cu", "Réaction globale : le zinc se dissout, le cuivre se dépose."),
+          _interactive('daniell_cell', caption: "Animation : électrons circulent dans le fil, ions migrent dans le pont salin."),
+          _checkpoint("Pile", [
+            _q(stem: "Dans la pile Daniell, les électrons circulent :", choices: ['de Cu vers Zn', 'de Zn vers Cu', "ne circulent pas", 'dans le pont salin'], correct: 1, explanation: "Anode (Zn) → cathode (Cu) — extérieur."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Force électromotrice', eyebrowFr: 'FEM', estimatedMinutes: '4', blocks: [
+          _f("\\Delta E = E^\\circ(Cu^{2+}/Cu) - E^\\circ(Zn^{2+}/Zn)", "**Fem standard** = différence des potentiels redox standard."),
+          _p("Pour la pile Daniell : \$\\Delta E^\\circ = 0{,}34 - (-0{,}76) = 1{,}10\$ V."),
+          _f("\\Delta E = \\Delta E^\\circ - \\frac{0{,}030}{n} \\log Q_r", "Équation de Nernst — corrige la fem standard pour les concentrations effectives."),
+          _checkpoint("Fem", [
+            _q(stem: "Pile Daniell standard : \$\\Delta E^\\circ\$ vaut :", choices: ["\$0{,}34\$ V", "\$0{,}76\$ V", "\$1{,}10\$ V", "\$2{,}10\$ V"], correct: 2, explanation: "\$0{,}34 - (-0{,}76) = 1{,}10\$ V."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Électrolyse', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("**Électrolyse** = pile à l'envers : on **fournit** de l'énergie électrique pour faire avancer une réaction qui ne le ferait pas spontanément. Application : galvanoplastie, production d'aluminium, hydrogène vert."),
+          _checkpoint("Électrolyse", [
+            _q(stem: "L'électrolyse :", choices: ['produit du courant', 'consomme du courant', "n'a pas d'effet", "est spontanée"], correct: 1, explanation: "On fournit de l'énergie électrique au système."),
+          ]),
+        ]),
+      ],
+    );
+
+Map<String, dynamic> _chEsterification() => _lesson(
+      titleFr: 'Estérification et hydrolyse',
+      subtitleFr: "Acide carboxylique + alcool ⇌ ester + eau.",
+      sections: [
+        _section(kind: 'prerequisite', titleFr: 'Prérequis : groupes fonctionnels', eyebrowFr: 'PRÉREQUIS', estimatedMinutes: '2', blocks: [
+          _p("**Acide carboxylique** R-COOH (le groupe -COOH). **Alcool** R'-OH. **Ester** R-COO-R' — fragrant, présent dans les fruits, parfums, savons."),
+          _checkpoint("Bases", [
+            _q(stem: "L'éthanol est :", choices: ['un acide', 'un alcool', 'un ester', "un éther"], correct: 1, explanation: "\$CH_3CH_2OH\$ — fonction alcool."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: "Réaction d'estérification", eyebrowFr: 'CONCEPT', estimatedMinutes: '5', blocks: [
+          _f("R-COOH + R'-OH \\rightleftharpoons R-COO-R' + H_2O", "Estérification — réaction **réversible et limitée**."),
+          _p("Trois caractéristiques importantes : **lente** (peut prendre des heures à T ambiante), **limitée** (équilibre, rendement souvent ~67% en proportions stœchiométriques), **athermique** (pas de chaleur dégagée)."),
+          _interactive('esterification_animator', caption: "Joue avec les quantités et observe l'évolution vers l'équilibre."),
+          _checkpoint("Estérification", [
+            _q(stem: "L'estérification est :", choices: ['totale et rapide', 'totale et lente', 'limitée et rapide', 'limitée et lente'], correct: 3, explanation: "Limitée par l'équilibre, lente sans catalyseur."),
+          ]),
+        ]),
+        _section(kind: 'concept', titleFr: 'Améliorer le rendement', eyebrowFr: 'OPTIMISATION', estimatedMinutes: '4', blocks: [
+          _p("Trois leviers (loi de modération / Le Chatelier) :"),
+          _p("**1. Excès d'un réactif** — déplace l'équilibre vers les produits."),
+          _p("**2. Élimination d'un produit** — typiquement l'eau (par distillation, dessiccateur)."),
+          _p("**3. Catalyseur** — accélère, mais ne change PAS le rendement à l'équilibre. Typiquement \$H_2SO_4\$ ou \$H_3O^+\$."),
+          _example(
+            title: "Augmenter le rendement",
+            problem: "Comment augmenter le rendement d'une estérification ?",
+            steps: [
+              "1. Ajouter un excès d'alcool ou d'acide carboxylique.",
+              "2. Éliminer l'eau formée (distillation, sels desséchants).",
+              "3. Le catalyseur n'augmente PAS le rendement — seulement la vitesse.",
+            ],
+            answer: "Excès de réactif et/ou élimination de l'eau (loi de Le Chatelier).",
+          ),
+          _checkpoint("Optimisation", [
+            _q(stem: "Un catalyseur en estérification :", choices: ['augmente le rendement', "accélère sans changer le rendement", 'diminue le rendement', "n'a aucun effet"], correct: 1, explanation: "Catalyseur = effet sur la vitesse uniquement."),
+          ]),
+        ]),
+        _section(kind: 'synthesis', titleFr: 'Hydrolyse de l\'ester', eyebrowFr: 'SYNTHÈSE', estimatedMinutes: '3', blocks: [
+          _p("La réaction inverse de l'estérification = **hydrolyse**. Mêmes propriétés (lente, limitée), c'est la **saponification** quand on la fait en milieu basique (avec NaOH). La saponification est elle, totale (pas réversible) — d'où son utilité industrielle pour fabriquer les savons."),
+          _checkpoint("Hydrolyse", [
+            _q(stem: "La saponification est :", choices: ['identique à l\'hydrolyse', "totale et irréversible", 'limitée comme l\'hydrolyse', "lente"], correct: 1, explanation: "En milieu basique, la base déprotone l'acide formé, déplaçant l'équilibre — réaction totale."),
+          ]),
+        ]),
       ],
     );
