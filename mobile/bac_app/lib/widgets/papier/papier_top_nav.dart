@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../providers/auth_provider.dart';
+import '../../providers/theme_provider.dart';
 
 /// Papier-styled top navigation bar.
 ///
@@ -85,6 +86,8 @@ class PapierTopNav extends ConsumerWidget {
           ],
           const Spacer(),
           // Right side
+          const _ThemeToggleButton(),
+          const SizedBox(width: 4),
           if (isAuthed)
             _ProfileMenu()
           else ...[
@@ -156,6 +159,33 @@ class _NavItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ThemeToggleButton extends ConsumerWidget {
+  const _ThemeToggleButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mode = ref.watch(themeModeProvider);
+    final notifier = ref.read(themeModeProvider.notifier);
+    final (icon, tooltip) = switch (mode) {
+      ThemeMode.system => (Icons.brightness_auto, 'Thème : auto (clic pour clair)'),
+      ThemeMode.light => (Icons.light_mode_outlined, 'Thème : clair (clic pour sombre)'),
+      ThemeMode.dark => (Icons.dark_mode_outlined, 'Thème : sombre (clic pour auto)'),
+    };
+    return IconButton(
+      tooltip: tooltip,
+      icon: Icon(icon, size: 20, color: Papier.ink),
+      onPressed: () {
+        final next = switch (mode) {
+          ThemeMode.system => ThemeMode.light,
+          ThemeMode.light => ThemeMode.dark,
+          ThemeMode.dark => ThemeMode.system,
+        };
+        notifier.setMode(next);
+      },
     );
   }
 }

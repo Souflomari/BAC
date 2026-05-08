@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../providers/auth_provider.dart';
@@ -27,6 +28,38 @@ import '../screens/splash/splash_screen.dart';
 import '../screens/analytics/analytics_hub_screen.dart';
 import '../screens/analytics/memory_heatmap_screen.dart';
 import '../screens/analytics/study_schedule_screen.dart';
+
+/// Smooth Papier-style page transition: short fade + small upward slide.
+/// Used for tab routes (replaces NoTransitionPage which snaps instantly).
+CustomTransitionPage<void> _papierPage({
+  required Widget child,
+  Object? key,
+  Duration duration = const Duration(milliseconds: 180),
+}) {
+  return CustomTransitionPage<void>(
+    key: key is LocalKey ? key : null,
+    child: child,
+    transitionDuration: duration,
+    reverseTransitionDuration: const Duration(milliseconds: 120),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      );
+      return FadeTransition(
+        opacity: curved,
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0, 0.012),
+            end: Offset.zero,
+          ).animate(curved),
+          child: child,
+        ),
+      );
+    },
+  );
+}
 
 final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
@@ -96,14 +129,16 @@ final routerProvider = Provider<GoRouter>((ref) {
         routes: [
           GoRoute(
             path: '/home',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: HomeScreen(),
+            pageBuilder: (context, state) => _papierPage(
+              child: const HomeScreen(),
+              key: state.pageKey,
             ),
           ),
           GoRoute(
             path: '/subjects',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: SubjectsScreen(),
+            pageBuilder: (context, state) => _papierPage(
+              child: const SubjectsScreen(),
+              key: state.pageKey,
             ),
             routes: [
               GoRoute(
@@ -116,14 +151,16 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: '/progress',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: ProgressScreen(),
+            pageBuilder: (context, state) => _papierPage(
+              child: const ProgressScreen(),
+              key: state.pageKey,
             ),
           ),
           GoRoute(
             path: '/settings',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: SettingsScreen(),
+            pageBuilder: (context, state) => _papierPage(
+              child: const SettingsScreen(),
+              key: state.pageKey,
             ),
           ),
         ],

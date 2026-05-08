@@ -35,6 +35,16 @@ class SubjectsScreen extends ConsumerWidget {
                 onRetry: () => ref.invalidate(subjectsProvider),
               ),
               data: (subjects) {
+                if (subjects.isEmpty) {
+                  return EmptyState(
+                    icon: Icons.menu_book_outlined,
+                    title: 'Aucun chapitre disponible',
+                    message:
+                        "Le programme n'est pas encore chargé. Tire vers le bas pour réessayer ou reviens dans quelques instants.",
+                    actionLabel: 'Recharger',
+                    onAction: () => ref.invalidate(subjectsProvider),
+                  );
+                }
                 final progress = progressAsync.valueOrNull;
                 final totalMastered = progress?.subjects
                         .fold(0, (s, p) => s + p.masteredSkills) ??
@@ -308,7 +318,7 @@ class _ChapterRow extends StatelessWidget {
 /// Grid-style chapter card used on tablet/desktop. The vertical layout fits
 /// inside a ~360px-wide tile with a fixed aspect ratio. Same data shape as
 /// `_ChapterRow`.
-class _ChapterCard extends StatelessWidget {
+class _ChapterCard extends StatefulWidget {
   final String numeral;
   final String title;
   final String subtitle;
@@ -330,14 +340,45 @@ class _ChapterCard extends StatelessWidget {
   });
 
   @override
+  State<_ChapterCard> createState() => _ChapterCardState();
+}
+
+class _ChapterCardState extends State<_ChapterCard> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    final pct = totalSkills > 0 ? masteredSkills / totalSkills : 0.0;
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: isCurrent ? Papier.bg2 : Papier.surface,
-          border: Border.all(
+    final pct =
+        widget.totalSkills > 0 ? widget.masteredSkills / widget.totalSkills : 0.0;
+    final numeral = widget.numeral;
+    final title = widget.title;
+    final subtitle = widget.subtitle;
+    final masteredSkills = widget.masteredSkills;
+    final totalSkills = widget.totalSkills;
+    final isCurrent = widget.isCurrent;
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: AnimatedScale(
+        scale: _hovered ? 1.012 : 1.0,
+        duration: const Duration(milliseconds: 140),
+        curve: Curves.easeOut,
+        child: InkWell(
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 140),
+            decoration: BoxDecoration(
+              color: isCurrent ? Papier.bg2 : Papier.surface,
+              boxShadow: _hovered
+                  ? const [
+                      BoxShadow(
+                        color: Color(0x18000000),
+                        offset: Offset(0, 4),
+                        blurRadius: 16,
+                      ),
+                    ]
+                  : null,
+              border: Border.all(
             color: isCurrent ? Papier.red : Papier.line2,
             width: isCurrent ? 1.6 : 1,
           ),
@@ -424,6 +465,8 @@ class _ChapterCard extends StatelessWidget {
               ],
             ),
           ],
+        ),
+      ),
         ),
       ),
     );
