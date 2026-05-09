@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
+import '../../services/analytics_service.dart';
 import '../../widgets/papier/papier_primitives.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -38,17 +39,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     try {
       if (_isSignUp) {
+        final email = _emailController.text.trim();
         await auth.signUp(
-          _emailController.text.trim(),
+          email,
           _passwordController.text,
           displayName: _nameController.text.trim(),
         );
-        if (mounted) context.go('/onboarding');
+        Analytics.event('signup_completed');
+        if (mounted) context.go('/verify-email?email=${Uri.encodeQueryComponent(email)}');
       } else {
         await auth.signIn(
           _emailController.text.trim(),
           _passwordController.text,
         );
+        Analytics.event('login_completed');
         if (mounted) context.go('/home');
       }
     } catch (e) {

@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/models.dart';
 import '../models/session.dart' as session_models;
@@ -47,6 +48,54 @@ class ApiService {
         .from('profiles')
         .update(profile.toJson())
         .eq('id', profile.id);
+  }
+
+  /// Partial profile update. Only provided fields are written, so callers
+  /// can change a single column (e.g. just display_name or just avatar_url)
+  /// without nuking the rest.
+  Future<void> patchProfile({
+    String? displayName,
+    String? avatarUrl,
+    BacStream? bacStream,
+    DateTime? examDate,
+    int? dailyGoalMinutes,
+    bool? onboardingCompleted,
+  }) async {
+    final userId = currentUser?.id;
+    if (userId == null) throw Exception('Non authentifié');
+    final patch = Profile.patchJson(
+      displayName: displayName,
+      avatarUrl: avatarUrl,
+      bacStream: bacStream,
+      examDate: examDate,
+      dailyGoalMinutes: dailyGoalMinutes,
+      onboardingCompleted: onboardingCompleted,
+    );
+    if (patch.isEmpty) return;
+    await _client.from('profiles').update(patch).eq('id', userId);
+  }
+
+  /// Uploads an avatar image to the `avatars` bucket and returns the public URL.
+  /// Path: `avatars/{user_id}/avatar.jpg`. Overwrites existing.
+  Future<String> uploadAvatar(List<int> bytes, {String contentType = 'image/jpeg'}) async {
+    final userId = currentUser?.id;
+    if (userId == null) throw Exception('Non authentifié');
+    final path = '$userId/avatar.jpg';
+    await _client.storage.from('avatars').uploadBinary(
+          path,
+          Uint8List.fromList(bytes),
+          fileOptions: FileOptions(contentType: contentType, upsert: true),
+        );
+    final url = _client.storage.from('avatars').getPublicUrl(path);
+    // Bust cache so the new image actually shows
+    return '$url?v=${DateTime.now().millisecondsSinceEpoch}';
+  }
+
+  /// Calls the `delete-self-account` edge function. Cascades happen via FKs
+  /// on the user_id columns; the auth.users row is deleted last by the
+  /// service-role client inside the edge function.
+  Future<void> deleteSelfAccount() async {
+    await _client.functions.invoke('delete-self-account');
   }
 
   // --- Curriculum ---

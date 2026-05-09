@@ -95,8 +95,30 @@ class Profile extends Equatable {
     'onboarding_completed': onboardingCompleted,
   };
 
+  /// Patch keys for partial updates (avoids resetting fields like avatar_url
+  /// to null when only updating display_name). Only includes the keys that
+  /// are explicitly passed.
+  static Map<String, dynamic> patchJson({
+    String? displayName,
+    String? avatarUrl,
+    BacStream? bacStream,
+    DateTime? examDate,
+    int? dailyGoalMinutes,
+    bool? onboardingCompleted,
+  }) {
+    final m = <String, dynamic>{};
+    if (displayName != null) m['display_name'] = displayName;
+    if (avatarUrl != null) m['avatar_url'] = avatarUrl;
+    if (bacStream != null) m['bac_stream'] = bacStream.value;
+    if (examDate != null) m['exam_date'] = examDate.toIso8601String().split('T').first;
+    if (dailyGoalMinutes != null) m['daily_goal_minutes'] = dailyGoalMinutes;
+    if (onboardingCompleted != null) m['onboarding_completed'] = onboardingCompleted;
+    return m;
+  }
+
   Profile copyWith({
     String? displayName,
+    String? avatarUrl,
     BacStream? bacStream,
     int? bacYear,
     DateTime? examDate,
@@ -109,7 +131,7 @@ class Profile extends Equatable {
     return Profile(
       id: id,
       displayName: displayName ?? this.displayName,
-      avatarUrl: avatarUrl,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
       bacStream: bacStream ?? this.bacStream,
       bacYear: bacYear ?? this.bacYear,
       examDate: examDate ?? this.examDate,

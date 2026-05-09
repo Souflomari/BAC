@@ -8,6 +8,7 @@ import '../../providers/auth_provider.dart';
 import '../../providers/locale_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
+import '../../widgets/papier/papier_toast.dart';
 import 'daily_goal_picker.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -147,7 +148,7 @@ class SettingsScreen extends ConsumerWidget {
                   value: isArabic
                       ? (profileAsync.valueOrNull?.bacStream.labelAr ?? '')
                       : (profileAsync.valueOrNull?.bacStream.labelFr ?? ''),
-                  onTap: () => context.push('/onboarding/stream'),
+                  onTap: () => _confirmStreamSwitch(context),
                 ),
                 _PapierTile(
                   label: l.dailyGoal,
@@ -228,6 +229,25 @@ class SettingsScreen extends ConsumerWidget {
                             color: Papier.red,
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 14),
+
+                // Delete account (low-key text link, double-confirm modal)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 22),
+                  child: GestureDetector(
+                    onTap: () => _confirmDeleteAccount(context, ref),
+                    child: Center(
+                      child: Text(
+                        'Supprimer mon compte',
+                        style: PapierType.italic(
+                          fontSize: 13,
+                          color: Papier.ink3,
+                        ).copyWith(decoration: TextDecoration.underline),
                       ),
                     ),
                   ),
@@ -370,6 +390,175 @@ class SettingsScreen extends ConsumerWidget {
   void _setTheme(BuildContext context, WidgetRef ref, ThemeMode mode) {
     Navigator.pop(context);
     ref.read(themeModeProvider.notifier).setMode(mode);
+  }
+
+  Future<void> _confirmStreamSwitch(BuildContext context) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: Papier.surface,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+          side: BorderSide(color: Papier.ink, width: 2),
+        ),
+        title: Text('Changer de filière',
+            style: PapierType.italic(fontSize: 22, fontWeight: FontWeight.w500)),
+        content: Text(
+          "Cela ne supprimera pas ta progression, mais les chapitres affichés changeront. Continuer ?",
+          style: PapierType.body(fontSize: 14, color: Papier.ink2, height: 1.5),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text('Annuler',
+                style: PapierType.smallCaps(fontSize: 12, color: Papier.ink2)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text('Continuer',
+                style: PapierType.smallCaps(fontSize: 12, color: Papier.indigo)),
+          ),
+        ],
+      ),
+    );
+    if (ok == true && context.mounted) {
+      context.push('/onboarding/stream');
+    }
+  }
+
+  Future<void> _confirmDeleteAccount(BuildContext context, WidgetRef ref) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => const _DeleteAccountDialog(),
+    );
+    if (confirmed != true) return;
+    if (!context.mounted) return;
+    try {
+      await ref.read(authActionsProvider).deleteSelfAccount();
+      if (!context.mounted) return;
+      // Sign out client-side; the auth.users row is gone server-side already.
+      await ref.read(authActionsProvider).signOut();
+      if (!context.mounted) return;
+      PapierToast.success(context, 'Compte supprimé.');
+      context.go('/landing');
+    } catch (e) {
+      if (!context.mounted) return;
+      PapierToast.error(context, "Échec de la suppression. Réessaie.");
+    }
+  }
+}
+
+/// Two-step confirm: must type DELETE to enable the destroy button.
+class _DeleteAccountDialog extends StatefulWidget {
+  const _DeleteAccountDialog();
+
+  @override
+  State<_DeleteAccountDialog> createState() => _DeleteAccountDialogState();
+}
+
+class _DeleteAccountDialogState extends State<_DeleteAccountDialog> {
+  final _controller = TextEditingController();
+  bool _canConfirm = false;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Papier.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+        side: BorderSide(color: Papier.ink, width: 2),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(22, 22, 22, 18),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text('SUPPRIMER LE COMPTE',
+                style: PapierType.smallCaps(fontSize: 11, color: Papier.red)),
+            const SizedBox(height: 6),
+            Text('Action irréversible',
+                style: PapierType.italic(fontSize: 22, fontWeight: FontWeight.w500)),
+            const SizedBox(height: 14),
+            Text(
+              "Toute ta progression, tes badges, ton historique et ton compte d'auth seront effacés. Cette action ne peut pas être annulée.",
+              style: PapierType.body(fontSize: 14, color: Papier.ink2, height: 1.5),
+            ),
+            const SizedBox(height: 18),
+            Text("Tape DELETE en majuscules pour confirmer :",
+                style: PapierType.body(fontSize: 13, color: Papier.ink2)),
+            const SizedBox(height: 8),
+            TextField(
+              controller: _controller,
+              autofocus: true,
+              style: PapierType.mono(fontSize: 14, color: Papier.ink),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Papier.bg,
+                contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.zero,
+                  borderSide: BorderSide(color: Papier.line2),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.zero,
+                  borderSide: BorderSide(color: Papier.line2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.zero,
+                  borderSide: BorderSide(color: Papier.ink, width: 1.5),
+                ),
+              ),
+              onChanged: (v) =>
+                  setState(() => _canConfirm = v.trim() == 'DELETE'),
+            ),
+            const SizedBox(height: 18),
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context).pop(false),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      decoration:
+                          BoxDecoration(border: Border.all(color: Papier.ink, width: 1.4)),
+                      child: Center(
+                        child: Text('Annuler',
+                            style: PapierType.smallCaps(
+                                fontSize: 12, color: Papier.ink)),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: _canConfirm
+                        ? () => Navigator.of(context).pop(true)
+                        : null,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      color: _canConfirm ? Papier.red : Papier.ink3,
+                      child: Center(
+                        child: Text('Supprimer',
+                            style: PapierType.smallCaps(
+                                fontSize: 12, color: Papier.surface)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

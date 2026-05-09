@@ -11,6 +11,7 @@ import '../screens/subjects/subjects_screen.dart';
 import '../screens/settings/settings_screen.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/auth/forgot_password_screen.dart';
+import '../screens/auth/verify_email_screen.dart';
 import '../screens/subjects/subject_detail_screen.dart';
 import '../screens/subjects/lesson_screen.dart';
 import '../screens/shell/app_shell.dart';
@@ -76,6 +77,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       final isPublic = loc == '/landing' ||
           loc == '/login' ||
           loc == '/forgot-password' ||
+          loc == '/verify-email' ||
           loc.startsWith('/onboarding');
 
       // Let splash screen handle its own navigation
@@ -112,6 +114,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/forgot-password',
         builder: (context, state) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/verify-email',
+        builder: (context, state) {
+          final email = state.uri.queryParameters['email'];
+          return VerifyEmailScreen(email: email);
+        },
       ),
 
       // Onboarding

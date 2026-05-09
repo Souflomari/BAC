@@ -7,6 +7,7 @@ import '../../models/item.dart';
 import '../../models/lesson_v2.dart';
 import '../../providers/lesson_progress_provider.dart';
 import '../../providers/progress_provider.dart';
+import '../../services/analytics_service.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/rich_text_renderer.dart';
 // Interactive widget dispatch — reuse the same set as the v1 lesson cards.
@@ -81,6 +82,10 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
       widget.lesson.sections.length,
       (_) => GlobalKey(),
     );
+    Analytics.event('lesson_opened', {
+      'skill_id': widget.skillId,
+      'section_count': widget.lesson.sections.length,
+    });
   }
 
   void _scrollToSection(int index) {
@@ -121,6 +126,10 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
   void _onQuestionPassed(int sectionIdx, int blockIdx, int questionIdx) {
     final key = '$sectionIdx.$blockIdx.$questionIdx';
     ref.read(lessonProgressProvider(widget.skillId).notifier).markPassed(key);
+    Analytics.event('checkpoint_passed', {
+      'skill_id': widget.skillId,
+      'section': sectionIdx,
+    });
   }
 
   @override

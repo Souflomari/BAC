@@ -8,6 +8,7 @@ import '../../providers/progress_provider.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/error_retry_widget.dart';
 import '../../widgets/shimmer_skeleton.dart';
+import 'edit_profile_sheet.dart';
 
 /// Dedicated profile screen — avatar, stats, recent activity, badges.
 class ProfileScreen extends ConsumerWidget {
@@ -43,9 +44,13 @@ class ProfileScreen extends ConsumerWidget {
                     SliverToBoxAdapter(
                       child: _Header(
                         displayName: profile.displayName,
+                        avatarUrl: profile.avatarUrl,
                         streamLabel: profile.bacStream.labelFr,
                         joinedFr: '',
-                        onEdit: () {},
+                        onEdit: () async {
+                          final saved = await EditProfileSheet.show(context, profile);
+                          if (saved == true) ref.invalidate(profileProvider);
+                        },
                         onClose: () {
                           if (context.canPop()) {
                             context.pop();
@@ -115,6 +120,7 @@ class ProfileScreen extends ConsumerWidget {
 
 class _Header extends StatelessWidget {
   final String displayName;
+  final String? avatarUrl;
   final String streamLabel;
   final String joinedFr;
   final VoidCallback onEdit;
@@ -122,6 +128,7 @@ class _Header extends StatelessWidget {
 
   const _Header({
     required this.displayName,
+    required this.avatarUrl,
     required this.streamLabel,
     required this.joinedFr,
     required this.onEdit,
@@ -140,23 +147,34 @@ class _Header extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 76,
-            height: 76,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Papier.ink, width: 1.5),
-              color: Papier.bg2,
-            ),
-            child: Center(
-              child: Text(
-                initial,
-                style: PapierType.italic(
-                  fontSize: 36,
-                  color: Papier.ink,
-                  fontWeight: FontWeight.w500,
-                ),
+          GestureDetector(
+            onTap: onEdit,
+            child: Container(
+              width: 76,
+              height: 76,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Papier.ink, width: 1.5),
+                color: Papier.bg2,
+                image: avatarUrl != null
+                    ? DecorationImage(
+                        image: NetworkImage(avatarUrl!),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
               ),
+              child: avatarUrl == null
+                  ? Center(
+                      child: Text(
+                        initial,
+                        style: PapierType.italic(
+                          fontSize: 36,
+                          color: Papier.ink,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                  : null,
             ),
           ),
           const SizedBox(width: 16),
@@ -184,6 +202,17 @@ class _Header extends StatelessWidget {
                     fontSize: 10,
                     color: Papier.ink2,
                     letterSpacing: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                GestureDetector(
+                  onTap: onEdit,
+                  child: Text(
+                    'Modifier →',
+                    style: PapierType.smallCaps(
+                      fontSize: 11,
+                      color: Papier.indigo,
+                    ),
                   ),
                 ),
               ],

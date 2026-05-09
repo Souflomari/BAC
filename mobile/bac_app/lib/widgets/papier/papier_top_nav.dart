@@ -235,16 +235,24 @@ class _ProfileMenu extends ConsumerWidget {
             color: Papier.bg2,
             border: Border.all(color: Papier.ink, width: 1.5),
             shape: BoxShape.circle,
+            image: profile.valueOrNull?.avatarUrl != null
+                ? DecorationImage(
+                    image: NetworkImage(profile.valueOrNull!.avatarUrl!),
+                    fit: BoxFit.cover,
+                  )
+                : null,
           ),
           alignment: Alignment.center,
-          child: Text(
-            initial,
-            style: PapierType.italic(
-              fontSize: 16,
-              color: Papier.ink,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          child: profile.valueOrNull?.avatarUrl == null
+              ? Text(
+                  initial,
+                  style: PapierType.italic(
+                    fontSize: 16,
+                    color: Papier.ink,
+                    fontWeight: FontWeight.w600,
+                  ),
+                )
+              : null,
         ),
       ),
     );
