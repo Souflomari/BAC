@@ -165,6 +165,7 @@ class _ComplexPlaneWidgetState extends State<ComplexPlaneWidget> {
               const Spacer(),
               IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
+                tooltip: 'Diminuer Re(z)',
                 onPressed: () => setState(() => _real = (_real - 0.5).clamp(-10, 10)),
               ),
               Container(
@@ -186,6 +187,7 @@ class _ComplexPlaneWidgetState extends State<ComplexPlaneWidget> {
               ),
               IconButton(
                 icon: const Icon(Icons.add_circle_outline),
+                tooltip: 'Augmenter Re(z)',
                 onPressed: () => setState(() => _real = (_real + 0.5).clamp(-10, 10)),
               ),
             ],
@@ -197,6 +199,7 @@ class _ComplexPlaneWidgetState extends State<ComplexPlaneWidget> {
               const Spacer(),
               IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
+                tooltip: 'Diminuer Im(z)',
                 onPressed: () => setState(() => _imaginary = (_imaginary - 0.5).clamp(-10, 10)),
               ),
               Container(
@@ -218,6 +221,7 @@ class _ComplexPlaneWidgetState extends State<ComplexPlaneWidget> {
               ),
               IconButton(
                 icon: const Icon(Icons.add_circle_outline),
+                tooltip: 'Augmenter Im(z)',
                 onPressed: () => setState(() => _imaginary = (_imaginary + 0.5).clamp(-10, 10)),
               ),
             ],

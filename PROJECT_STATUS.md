@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-09 (after content run: SMB lessons + items + annales)
+**Last updated:** 2026-05-09 (after integral run: defer-cleanup + tests + CI + docs)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -645,7 +645,76 @@ material, not finished pedagogy:
 
 ---
 
-## 15. If you're starting a fresh session
+## 15. 2026-05-09 — Integral run (defer-cleanup + production-quality + features + docs)
+
+Touched all four axes the user asked for. The run focuses on closing
+loose ends from previous runs and adding the production-grade layer
+(tests + CI + docs) that was previously absent. Live in production.
+
+### Defer cleanup (closes "DEFERRED" tags)
+- **Ctrl+F lesson search** — `lib/widgets/lesson_find_bar.dart` + state
+  in `_LongLessonScreenState`. Sticky bar opens on Cmd/Ctrl+F, walks
+  paragraph/heading/callout/example text, highlights matching sections
+  with a yellow rule on the active match. Keyboard nav (↑/↓, Esc).
+- **A11y tooltips** added to icon-only `IconButton`s in
+  `function_graph_widget`, `area_under_curve_widget`,
+  `complex_plane_widget`, `exam_practice_screen`. Other widgets had
+  tooltips already.
+- **Email-verify soft gate** — `lib/widgets/email_verify_banner.dart`
+  rendered inside `AppShell` on every authed tab. Dismissable +
+  re-send button. Hard router gate stays off (low risk for existing
+  test accounts).
+
+### Production quality
+- **Test suite baseline** — 23 tests pass: existing models/items +
+  new `test/models/profile_test.dart` (12 cases) and
+  `test/models/lesson_v2_test.dart` (5 cases). Fixed a pre-existing
+  type-cast flake in `item_test.dart`.
+- **CI** — `.github/workflows/ci.yml` runs `flutter analyze
+  --no-fatal-infos` + `flutter test` + `flutter build web` on every
+  push and PR. Uses `subosito/flutter-action@v2`.
+
+### Feature growth
+- **Share** — `lib/utils/share_helper.dart` (+ web/stub variants) with
+  a `sharePage(title, url)` API. Web copies the URL via
+  `navigator.clipboard.writeText` (or legacy `execCommand` fallback)
+  and toasts. New share icon in long-lesson header.
+- **Daily reminders** — already wired (NotificationService +
+  `/settings/notifications`). Verified reachable.
+
+### Documentation
+- **`README.md`** — high-level orientation, stack, layout, where to
+  start reading code.
+- **`ARCHITECTURE.md`** — frontend layers (routing, state, models,
+  services, design system, interactive widgets) + backend layers
+  (DB migrations, edge functions, seed authoring) + lifecycle
+  flows.
+- **`CONTRIBUTING.md`** — toolchain, run instructions, code style,
+  migration rules, content authoring, testing, commit conventions.
+- **`CHANGELOG.md`** — user-facing release notes.
+- **`/docs` route** — `lib/screens/docs/docs_screen.dart`. Papier-styled
+  in-app changelog + roadmap. Linked from settings → "Notes de
+  version". Public route (works pre-auth).
+
+### Deferred from this run (recorded for next session)
+- **Phase A.2 — code-splitting** of the 50+ interactive widgets via
+  deferred imports. Requires converting synchronous switch returns to
+  FutureBuilder, high refactor risk for an autonomous run.
+- **Phase A.3 — l10n FR→AR** for new widgets (PapierToast, EmptyState,
+  GlobalSearch, etc.). Cosmetic; current hardcoded FR is consistent
+  with the rest of the codebase.
+- **Phase B.3 — Lighthouse audit** measurement and fixes. Could be a
+  10-minute follow-up once the user runs Lighthouse in their browser
+  and shares the report.
+- **Phase C.2 — Hive offline cache** for v2 lessons. CacheService +
+  Hive boxes are already plumbed; needs a read-through wrapper around
+  `apiService.getSkillById`.
+- **Phase C.4 — Premium feature flag scaffold**. Requires product
+  decisions on what's free vs. premium.
+
+---
+
+## 16. If you're starting a fresh session
 
 1. Read this file in full.
 2. `git log --oneline -10` to see what's actually shipped.

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../l10n/app_localizations.dart';
+import '../../widgets/email_verify_banner.dart';
 import '../../widgets/papier/papier_tab_bar.dart';
 import '../../widgets/papier/papier_top_nav.dart';
 
@@ -37,7 +38,12 @@ class AppShell extends StatelessWidget {
     if (!isWide) {
       // Phone layout — bottom tab bar, unchanged.
       return Scaffold(
-        body: child,
+        body: Column(
+          children: [
+            const EmailVerifyBanner(),
+            Expanded(child: child),
+          ],
+        ),
         bottomNavigationBar: PapierTabBar(
           currentIndex: selected,
           onTap: (i) {
@@ -68,6 +74,7 @@ class AppShell extends StatelessWidget {
       body: Column(
         children: [
           PapierTopNav(selectedIndex: selected),
+          const EmailVerifyBanner(),
           Expanded(
             child: Center(
               child: ConstrainedBox(

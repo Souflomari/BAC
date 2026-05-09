@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +10,9 @@ import '../../providers/lesson_progress_provider.dart';
 import '../../providers/progress_provider.dart';
 import '../../services/analytics_service.dart';
 import '../../utils/print_helper.dart';
+import '../../utils/share_helper.dart';
+import '../../widgets/lesson_find_bar.dart';
+import '../../widgets/papier/papier_toast.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/rich_text_renderer.dart';
 // Interactive widget dispatch — reuse the same set as the v1 lesson cards.
@@ -76,6 +80,12 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
   /// Per-section keys for scroll-to navigation from the TOC.
   late final List<GlobalKey> _sectionKeys;
 
+  // Find-in-page state.
+  bool _findOpen = false;
+  String _findQuery = '';
+  List<int> _findMatchSections = const [];
+  int _findCurrentMatch = 0;
+
   @override
   void initState() {
     super.initState();
@@ -99,6 +109,96 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
         alignment: 0.05,
       );
     }
+  }
+
+  /// Walk every section's blocks and collect plain text from paragraph,
+  /// heading, callout, and example blocks. Returns the section indices
+  /// that contain a substring match (case-insensitive) for [query].
+  List<int> _findSectionsMatching(String query) {
+    final q = query.trim().toLowerCase();
+    if (q.isEmpty) return const [];
+    final out = <int>[];
+    for (var s = 0; s < widget.lesson.sections.length; s++) {
+      final section = widget.lesson.sections[s];
+      final hay = StringBuffer(section.titleFr.toLowerCase());
+      for (final block in section.blocks) {
+        if (block is ParagraphBlock) hay.write(' ${block.md.toLowerCase()}');
+        if (block is HeadingBlock) hay.write(' ${block.text.toLowerCase()}');
+        if (block is CalloutBlock) {
+          hay.write(' ${block.titleFr.toLowerCase()}');
+          hay.write(' ${block.bodyFr.toLowerCase()}');
+        }
+        if (block is ExampleBlock) {
+          hay.write(' ${block.titleFr.toLowerCase()}');
+          hay.write(' ${block.problemFr.toLowerCase()}');
+          for (final st in block.stepsFr) {
+            hay.write(' ${st.toLowerCase()}');
+          }
+        }
+      }
+      if (hay.toString().contains(q)) out.add(s);
+    }
+    return out;
+  }
+
+  void _onFindChanged(String query) {
+    setState(() {
+      _findQuery = query;
+      _findMatchSections = _findSectionsMatching(query);
+      _findCurrentMatch = 0;
+    });
+    if (_findMatchSections.isNotEmpty) {
+      _scrollToSection(_findMatchSections.first);
+    }
+  }
+
+  void _findNext() {
+    if (_findMatchSections.isEmpty) return;
+    setState(() {
+      _findCurrentMatch =
+          (_findCurrentMatch + 1) % _findMatchSections.length;
+    });
+    _scrollToSection(_findMatchSections[_findCurrentMatch]);
+  }
+
+  void _findPrev() {
+    if (_findMatchSections.isEmpty) return;
+    setState(() {
+      _findCurrentMatch =
+          (_findCurrentMatch - 1 + _findMatchSections.length) %
+              _findMatchSections.length;
+    });
+    _scrollToSection(_findMatchSections[_findCurrentMatch]);
+  }
+
+  void _toggleFind() {
+    setState(() {
+      _findOpen = !_findOpen;
+      if (!_findOpen) {
+        _findQuery = '';
+        _findMatchSections = const [];
+        _findCurrentMatch = 0;
+      }
+    });
+  }
+
+  Future<void> _share() async {
+    final url = 'https://bacapp.vercel.app/lesson/${widget.skillId}';
+    final result = await sharePage(
+      title: 'BacPrep · ${widget.lesson.titleFr}',
+      url: url,
+    );
+    if (!mounted) return;
+    switch (result) {
+      case ShareResult.shared:
+        // Share sheet closed — nothing to toast.
+        break;
+      case ShareResult.copiedToClipboard:
+        PapierToast.success(context, 'Lien copié dans le presse-papiers');
+      case ShareResult.unsupported:
+        PapierToast.note(context, 'Partage non disponible sur ce navigateur');
+    }
+    Analytics.event('feature_used:share', {'skill_id': widget.skillId});
   }
 
   /// Section completion: a section is "complete" iff every CheckpointBlock
@@ -143,6 +243,11 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
     final passed = progressAsync.valueOrNull ?? const <String>{};
     final completed = _computeCompletedSections(passed);
 
+    final matchSet = _findMatchSections.toSet();
+    final activeMatchSection = _findMatchSections.isNotEmpty
+        ? _findMatchSections[_findCurrentMatch]
+        : -1;
+
     final body = ListView.builder(
       padding: EdgeInsets.symmetric(
         horizontal: isWide ? 0 : 22,
@@ -159,6 +264,8 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
             isCompleted: completed.contains(idx),
             onQuestionPassed: (b, q) => _onQuestionPassed(idx, b, q),
             passedKeys: passed,
+            findMatch: matchSet.contains(idx),
+            findActive: idx == activeMatchSection,
           ),
         );
       },
@@ -166,40 +273,70 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
 
     final header = _buildHeader();
 
-    return Scaffold(
-      backgroundColor: Papier.bg,
-      body: SafeArea(
-        child: Column(
-          children: [
-            header,
-            Expanded(
-              child: isWide
-                  ? Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 240,
-                          child: _Toc(
-                            sections: l.sections,
-                            completed: completed,
-                            onTap: _scrollToSection,
-                          ),
-                        ),
-                        const VerticalDivider(width: 1, color: Papier.line2),
-                        Expanded(
-                          child: Center(
-                            child: ConstrainedBox(
-                              constraints:
-                                  const BoxConstraints(maxWidth: 760),
-                              child: body,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : body,
+    return Shortcuts(
+      shortcuts: const <ShortcutActivator, Intent>{
+        SingleActivator(LogicalKeyboardKey.keyF, control: true): _FindIntent(),
+        SingleActivator(LogicalKeyboardKey.keyF, meta: true): _FindIntent(),
+      },
+      child: Actions(
+        actions: <Type, Action<Intent>>{
+          _FindIntent: CallbackAction<_FindIntent>(
+            onInvoke: (_) {
+              if (!_findOpen) _toggleFind();
+              return null;
+            },
+          ),
+        },
+        child: Focus(
+          autofocus: true,
+          child: Scaffold(
+            backgroundColor: Papier.bg,
+            body: SafeArea(
+              child: Column(
+                children: [
+                  header,
+                  if (_findOpen)
+                    LessonFindBar(
+                      initialQuery: _findQuery,
+                      matchCount: _findMatchSections.length,
+                      currentIndex: _findCurrentMatch,
+                      onChanged: _onFindChanged,
+                      onPrev: _findPrev,
+                      onNext: _findNext,
+                      onClose: _toggleFind,
+                    ),
+                  Expanded(
+                    child: isWide
+                        ? Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 240,
+                                child: _Toc(
+                                  sections: l.sections,
+                                  completed: completed,
+                                  onTap: _scrollToSection,
+                                ),
+                              ),
+                              const VerticalDivider(
+                                  width: 1, color: Papier.line2),
+                              Expanded(
+                                child: Center(
+                                  child: ConstrainedBox(
+                                    constraints:
+                                        const BoxConstraints(maxWidth: 760),
+                                    child: body,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : body,
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -266,6 +403,19 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
                 ),
               ],
             ),
+          ),
+          IconButton(
+            icon: Icon(
+              _findOpen ? Icons.search_off : Icons.search,
+              color: Papier.ink,
+            ),
+            tooltip: 'Rechercher dans le chapitre (Cmd/Ctrl + F)',
+            onPressed: _toggleFind,
+          ),
+          IconButton(
+            icon: const Icon(Icons.share_outlined, color: Papier.ink),
+            tooltip: 'Partager',
+            onPressed: _share,
           ),
           IconButton(
             icon: const Icon(Icons.print_outlined, color: Papier.ink),
@@ -527,6 +677,8 @@ class _SectionView extends StatelessWidget {
   final bool isCompleted;
   final Set<String> passedKeys;
   final void Function(int blockIdx, int questionIdx) onQuestionPassed;
+  final bool findMatch;
+  final bool findActive;
 
   const _SectionView({
     required this.index,
@@ -534,12 +686,31 @@ class _SectionView extends StatelessWidget {
     required this.isCompleted,
     required this.onQuestionPassed,
     required this.passedKeys,
+    this.findMatch = false,
+    this.findActive = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final highlightDecoration = findMatch
+        ? BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: findActive ? Papier.gold : Papier.line2,
+                width: findActive ? 3 : 2,
+              ),
+            ),
+            color: findActive
+                ? Papier.gold.withValues(alpha: 0.05)
+                : null,
+          )
+        : null;
     return Container(
       margin: const EdgeInsets.only(bottom: 32),
+      padding: findMatch
+          ? const EdgeInsets.only(left: 12, top: 4, bottom: 4)
+          : EdgeInsets.zero,
+      decoration: highlightDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -1562,4 +1733,8 @@ class _DividerView extends StatelessWidget {
       ),
     );
   }
+}
+
+class _FindIntent extends Intent {
+  const _FindIntent();
 }

@@ -206,6 +206,7 @@ class _AreaUnderCurveWidgetState extends State<AreaUnderCurveWidget> {
               const Spacer(),
               IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
+                tooltip: 'Diminuer a',
                 onPressed: () => _adjustBound(true, -0.5),
               ),
               Container(
@@ -225,6 +226,7 @@ class _AreaUnderCurveWidgetState extends State<AreaUnderCurveWidget> {
               ),
               IconButton(
                 icon: const Icon(Icons.add_circle_outline),
+                tooltip: 'Augmenter a',
                 onPressed: () => _adjustBound(true, 0.5),
               ),
             ],
@@ -238,6 +240,7 @@ class _AreaUnderCurveWidgetState extends State<AreaUnderCurveWidget> {
               const Spacer(),
               IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
+                tooltip: 'Diminuer b',
                 onPressed: () => _adjustBound(false, -0.5),
               ),
               Container(
@@ -257,6 +260,7 @@ class _AreaUnderCurveWidgetState extends State<AreaUnderCurveWidget> {
               ),
               IconButton(
                 icon: const Icon(Icons.add_circle_outline),
+                tooltip: 'Augmenter b',
                 onPressed: () => _adjustBound(false, 0.5),
               ),
             ],

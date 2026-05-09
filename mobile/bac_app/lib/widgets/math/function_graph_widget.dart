@@ -311,6 +311,7 @@ class _FunctionGraphWidgetState extends State<FunctionGraphWidget> {
             ),
           IconButton(
             icon: const Icon(Icons.zoom_in),
+            tooltip: 'Zoomer',
             onPressed: () {
               setState(() {
                 final midX = (_xMin + _xMax) / 2;
@@ -324,6 +325,7 @@ class _FunctionGraphWidgetState extends State<FunctionGraphWidget> {
           ),
           IconButton(
             icon: const Icon(Icons.zoom_out),
+            tooltip: 'Dézoomer',
             onPressed: () {
               setState(() {
                 final midX = (_xMin + _xMax) / 2;

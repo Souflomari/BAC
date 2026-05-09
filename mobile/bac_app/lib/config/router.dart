@@ -30,6 +30,7 @@ import '../screens/splash/splash_screen.dart';
 import '../screens/analytics/analytics_hub_screen.dart';
 import '../screens/analytics/memory_heatmap_screen.dart';
 import '../screens/analytics/study_schedule_screen.dart';
+import '../screens/docs/docs_screen.dart';
 import 'theme.dart';
 
 /// Smooth Papier-style page transition: short fade + small upward slide.
@@ -78,6 +79,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           loc == '/login' ||
           loc == '/forgot-password' ||
           loc == '/verify-email' ||
+          loc == '/docs' ||
           loc.startsWith('/onboarding');
 
       // Let splash screen handle its own navigation
@@ -282,6 +284,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/analytics/schedule',
         builder: (context, state) => const StudyScheduleScreen(),
+      ),
+
+      // In-app changelog + roadmap
+      GoRoute(
+        path: '/docs',
+        builder: (context, state) => const DocsScreen(),
       ),
     ],
   );

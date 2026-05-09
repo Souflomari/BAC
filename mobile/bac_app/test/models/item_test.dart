@@ -56,7 +56,7 @@ void main() {
         'skill_id': 's',
         'item_type': 'totally_made_up',
         'difficulty_level': 1,
-        'question': {},
+        'question': <String, dynamic>{},
       });
       expect(item.itemType, ItemType.mcq);
     });

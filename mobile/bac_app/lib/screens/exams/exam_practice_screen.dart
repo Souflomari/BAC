@@ -259,6 +259,7 @@ class _ExamPracticeScreenState extends ConsumerState<ExamPracticeScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.close),
+          tooltip: 'Quitter',
           onPressed: () => _showExitDialog(context),
         ),
         title: state.exam != null

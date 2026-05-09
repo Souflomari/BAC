@@ -200,6 +200,11 @@ class SettingsScreen extends ConsumerWidget {
                   onTap: () {},
                 ),
                 _PapierTile(
+                  label: 'Notes de version',
+                  value: "Quoi de neuf, qu'arrive-t-il ensuite",
+                  onTap: () => context.push('/docs'),
+                ),
+                _PapierTile(
                   label: 'À propos de BacPrep',
                   value: 'Mission, équipe, contact',
                   onTap: () {},
