@@ -6,7 +6,9 @@ import '../../config/theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/exam.dart';
 import '../../providers/exam_provider.dart';
+import '../../widgets/error_retry_widget.dart';
 import '../../widgets/papier/papier_primitives.dart';
+import '../../widgets/shimmer_skeleton.dart';
 import 'exam_practice_screen.dart';
 
 class ExamDetailScreen extends ConsumerWidget {
@@ -69,7 +71,7 @@ class ExamDetailScreen extends ConsumerWidget {
                     exam: exam,
                     progress: progress,
                   ),
-                  loading: () => const Center(child: CircularProgressIndicator()),
+                  loading: () => const ShimmerBox(width: double.infinity, height: 80),
                   error: (_, __) => const SizedBox.shrink(),
                 ),
                 const SizedBox(height: Spacing.lg),
@@ -78,16 +80,22 @@ class ExamDetailScreen extends ConsumerWidget {
                     exam: exam,
                     questions: questions,
                   ),
-                  loading: () => const Center(child: CircularProgressIndicator()),
-                  error: (e, _) => Text(AppLocalizations.of(context)!.error('$e')),
+                  loading: () => const CardListSkeleton(itemCount: 4, itemHeight: 56),
+                  error: (e, _) => ErrorRetryWidget(
+                    message: 'Impossible de charger les questions.',
+                    onRetry: () => ref.invalidate(examQuestionsProvider(examId)),
+                  ),
                 ),
                 const SizedBox(height: Spacing.xl),
               ],
             ),
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text(AppLocalizations.of(context)!.error('$e'))),
+        loading: () => const CardListSkeleton(itemCount: 3, itemHeight: 100),
+        error: (e, _) => ErrorRetryWidget(
+          message: "Impossible de charger l'épreuve.",
+          onRetry: () => ref.invalidate(examProvider(examId)),
+        ),
       ),
       bottomNavigationBar: examAsync.when(
         data: (exam) => _BottomBar(exam: exam, examId: examId),

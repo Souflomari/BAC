@@ -111,6 +111,22 @@
       0%, 100% { opacity: 0.35; transform: scale(0.85); }
       50% { opacity: 1; transform: scale(1); }
     }
+
+    /* Print styles — when the user prints from a long lesson, hide the
+       app shell chrome and force readable contrast. Flutter web renders
+       to <flt-glass-pane> + <flt-scene-host>; we let those keep their
+       paint and just override the page background and hide overlays. */
+    @media print {
+      html, body {
+        background: white !important;
+      }
+      #loader { display: none !important; }
+      /* Browsers print 1 page per scroll page by default; this lets the
+         lesson flow naturally across pages. */
+      flt-glass-pane, flt-scene-host {
+        background: white !important;
+      }
+    }
   </style>
 </head>
 <body>

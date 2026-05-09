@@ -7,6 +7,7 @@ import '../../models/exam.dart';
 import '../../models/item.dart';
 import '../../providers/exam_provider.dart';
 import '../../widgets/rich_text_renderer.dart';
+import '../../widgets/shimmer_skeleton.dart';
 
 class ExamResultsScreen extends ConsumerStatefulWidget {
   final String examId;
@@ -46,7 +47,7 @@ class _ExamResultsScreenState extends ConsumerState<ExamResultsScreen>
     if (exam == null) {
       return Scaffold(
         appBar: AppBar(title: Text(l.results)),
-        body: const Center(child: CircularProgressIndicator()),
+        body: const CardListSkeleton(itemCount: 4, itemHeight: 80),
       );
     }
 

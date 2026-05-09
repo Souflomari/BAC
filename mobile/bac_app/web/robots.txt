@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Allow: /landing
+Allow: /login
+
+# Authed-only routes — crawlers redirect to /landing anyway,
+# but be explicit so they don't waste budget.
+Disallow: /home
+Disallow: /subjects
+Disallow: /progress
+Disallow: /settings
+Disallow: /profile
+Disallow: /lesson
+Disallow: /session
+Disallow: /exams
+Disallow: /analytics
+Disallow: /leaderboard
+
+Sitemap: https://bacapp.vercel.app/sitemap.xml

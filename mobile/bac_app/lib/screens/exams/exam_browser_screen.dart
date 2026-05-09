@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../models/exam.dart';
 import '../../providers/exam_provider.dart';
+import '../../widgets/empty_state.dart';
+import '../../widgets/error_retry_widget.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/shimmer_skeleton.dart';
 
@@ -82,19 +84,17 @@ class _ExamBrowserScreenState extends ConsumerState<ExamBrowserScreen> {
                 Expanded(
                   child: examsAsync.when(
                     loading: () => const CardListSkeleton(itemCount: 6, itemHeight: 80),
-                    error: (e, _) => Center(
-                      child: Text(
-                        '$e',
-                        style: PapierType.body(color: Papier.red),
-                      ),
+                    error: (e, _) => ErrorRetryWidget(
+                      message: 'Impossible de charger les annales.',
+                      onRetry: () => ref.invalidate(examsByYearProvider),
                     ),
                     data: (examsByYear) {
                       if (examsByYear.isEmpty) {
-                        return Center(
-                          child: Text(
-                            'Aucun examen disponible',
-                            style: PapierType.italic(color: Papier.ink3),
-                          ),
+                        return const EmptyState(
+                          icon: Icons.menu_book_outlined,
+                          title: 'Pas encore d\'annales',
+                          message:
+                              "Les épreuves passées seront ajoutées au fur et à mesure. Reviens bientôt.",
                         );
                       }
 

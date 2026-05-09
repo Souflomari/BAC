@@ -91,7 +91,7 @@ class _StreamSelectionScreenState extends ConsumerState<StreamSelectionScreen> {
                                   fontSize: 14, color: Papier.ink3),
                             ),
                             Text(
-                              'p. 2 / 4',
+                              'p. 2 / 2',
                               style: PapierType.mono(
                                   fontSize: 9, color: Papier.ink3),
                             ),
@@ -334,7 +334,7 @@ class _StreamSelectionScreenState extends ConsumerState<StreamSelectionScreen> {
                   child: Row(
                     children: [
                       Text(
-                        '● ● ○ ○\nÉTAPE 2 / 4',
+                        '● ●\nÉTAPE 2 / 2',
                         style: PapierType.mono(
                           fontSize: 8,
                           color: Papier.ink3,

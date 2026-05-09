@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-08 (after "Apple/Google quality" 5-hour polish run)
+**Last updated:** 2026-05-09 (after "tackle everything at once" account/observability/UX run)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -384,12 +384,15 @@ Pass-criteria: 132 ready, 0 unwired, 0 todo, 0 errors.
 
 - **Service worker stickiness on Vercel.** After every deploy, users may need to hard-refresh or open Incognito to bust the cache. The `index.html` already wires `controllerchange` reload, but cached `main.dart.js` is `immutable` — if Flutter doesn't bump the bootstrap hash, users see stale code.
 - **Arabic translation** of v2 chapter content not done. Schema supports it (`title_ar`, `body_ar` fields can be added to blocks) but no content is written yet.
-- **No SEO** — Flutter web SPA, single index.html. If organic search matters, consider prerendering or a static landing.
-- **Sign-up email verification UX**: Supabase OTP works, but no dedicated `/verify-email` screen yet.
-- **Avatar uploads**: storage bucket not yet set up; profile uses generated initials.
 - **SMB long-form chapters**: only SMA stream has v2 long-form. SMB still on placeholder cards.
+- **PC + SVT streams** beyond shared models: no skill maps, no v2 lessons.
 - **Items expansion**: many SMA chapters lack quiz items in their session.
-- **Code-splitting**: web bundle currently loads all 33 interactive widgets at startup (~5.2 MB). Deferred imports would shrink landing first paint.
+- **Code-splitting**: web bundle currently loads all 50+ interactive widgets at startup. Deferred imports would shrink landing first paint. Deferred from the 2026-05-09 run because of refactor risk.
+- **Email-verification redirect gate**: screen exists at `/verify-email` but unverified users can still use the app. Flip on once existing test accounts are manually verified in the Supabase dashboard.
+- **Google OAuth**: code path not in place; needs dashboard config + button.
+- **Lesson Ctrl+F search-within**: not implemented.
+- **A11y a11y / l10n cleanup**: some new widgets bypass `AppLocalizations`; some icon-only `IconButton`s lack `tooltip:`.
+- **Past exam papers (annales)**: schema is ready, but no exam paper data has been seeded.
 
 ---
 
@@ -465,7 +468,112 @@ shell feel finished.
 
 ---
 
-## 13. If you're starting a fresh session
+## 13. 2026-05-09 — "tackle everything at once" run
+
+Targeted the four blocker categories the prior audit surfaced: account
+hygiene, observability, lesson UX, and coverage tail. Bundle-size
+code-splitting and Ctrl+F-in-lesson were both deferred (high refactor
+risk for an autonomous run). Live in production at the same URL.
+
+### Migrations applied
+- **016_storage_avatars.sql** — `avatars` storage bucket (public read,
+  owner write/update/delete on `{user_id}/...` path).
+
+### Edge functions deployed
+- **delete-self-account** — `backend/supabase/functions/delete-self-account/index.ts`.
+  Service-role client; cascades via FKs and finally calls
+  `auth.admin.deleteUser()`. Caller is identified by JWT, never by body
+  parameter, so users can only delete themselves.
+
+### New screens / widgets / providers / utils
+- `lib/screens/auth/verify_email_screen.dart` — post-signup destination.
+  "Renvoyer le lien" calls `auth.resend(type: signup, ...)`. "Continuer"
+  goes to `/onboarding`. **No global redirect gate** — preserves access
+  for existing test accounts.
+- `lib/screens/profile/edit_profile_sheet.dart` — bottom sheet for
+  editing display name + avatar. Uses `image_picker` to pick a 512×512
+  JPEG, uploads via `apiService.uploadAvatar()` to the new bucket,
+  patches `profiles.avatar_url`.
+- `lib/widgets/keyboard_help_dialog.dart` — Papier-styled list of
+  shortcuts. Bound to `?` (Shift+/) globally.
+- `lib/services/analytics_service.dart` — thin PostHog wrapper. Every
+  method no-ops when `POSTHOG_API_KEY` is empty at build time.
+- `lib/utils/print_helper.dart` (+ web/stub variants) — `printPage()`
+  calls `dart:html` `window.print()` on web, no-op elsewhere.
+
+### Modified
+- `pubspec.yaml` — added `image_picker`, `sentry_flutter`, `posthog_flutter`.
+- `lib/main.dart` — Sentry init guarded by `SENTRY_DSN` env;
+  `Analytics.init()` runs unconditionally (no-op if key empty).
+- `lib/app.dart` — `?` shortcut + `_HelpIntent` → `KeyboardHelpDialog.show`.
+- `lib/config/router.dart` — new `/verify-email` route; `isPublic` set
+  extended.
+- `lib/screens/auth/login_screen.dart` — sign-up routes to
+  `/verify-email?email=…` instead of `/onboarding`. Fires
+  `signup_completed` / `login_completed` analytics.
+- `lib/services/api_service.dart` — `patchProfile`, `uploadAvatar`,
+  `deleteSelfAccount`.
+- `lib/providers/auth_provider.dart` — `updateDisplayName`,
+  `uploadAvatar`, `deleteSelfAccount` exposed; `Analytics.identify` on
+  signedIn; `Analytics.reset` on signOut.
+- `lib/models/profile.dart` — `copyWith` now preserves `avatarUrl`;
+  new `Profile.patchJson` for partial updates.
+- `lib/screens/profile/profile_screen.dart` — header avatar renders
+  `NetworkImage` when set; tap → `EditProfileSheet`. New "Modifier →"
+  link.
+- `lib/screens/settings/settings_screen.dart` — "Supprimer mon compte"
+  entry with double-confirm dialog (must type DELETE). Stream-switch
+  now goes through a confirmation dialog.
+- `lib/widgets/papier/papier_top_nav.dart` — profile menu renders
+  `NetworkImage` avatar when set; on width < 800, tapping opens a
+  bottom sheet with Profil / Paramètres / Se déconnecter (instead of
+  the desktop popup menu).
+- `lib/screens/subjects/long_lesson_screen.dart` — Imprimer button in
+  header. Fires `lesson_opened` and `checkpoint_passed` analytics.
+- `lib/screens/exams/{exam_browser,exam_detail,exam_results}_screen.dart`
+  + `lib/screens/leaderboard/leaderboard_screen.dart` — replaced
+  `CircularProgressIndicator` and raw `Text('$e')` with skeletons +
+  `ErrorRetryWidget`. Added designed empty states for the leaderboard
+  and exam-browser zero-data cases.
+- `lib/screens/onboarding/stream_selection_screen.dart` — step
+  indicator was lying about "ÉTAPE 2 / 4"; now reads "2 / 2".
+- `mobile/bac_app/web/index.html` — print CSS (white bg, no loader).
+- `mobile/bac_app/web/robots.txt`, `web/sitemap.xml` — new.
+
+### Resolved from prior outstanding TODOs
+- ~~Sign-up email verification UX~~ — `/verify-email` screen lives.
+  (Global redirect gate is still deferred; documented under §11.)
+- ~~Avatar uploads~~ — bucket + upload flow + render in profile + nav.
+- ~~No SEO~~ — robots.txt + sitemap.xml shipped.
+- ~~Account deletion (GDPR/store)~~ — flow + edge function shipped.
+- ~~No error monitoring~~ — Sentry SDK wired (set `SENTRY_DSN` to enable).
+- ~~No analytics events~~ — PostHog SDK wired with key events.
+- ~~Mobile-density profile menu~~ — bottom sheet on mobile.
+- ~~Onboarding step counter mismatch~~ — fixed to truthful 2/2.
+
+### Deferred from this run (recorded for next session)
+- **C — Bundle code-splitting**: deferred `as` imports for the 50+
+  interactive widgets in `lib/widgets/lesson_card_widget.dart`.
+  High refactor risk; would need its own focused session.
+- **D.2 — Ctrl+F search-within-lesson**: building a paragraph-text
+  index + match highlight + scroll-to-match overlay. Deferred.
+- **E.4 — Hardcoded FR strings → l10n**: cosmetic; new widgets have
+  hardcoded strings consistent with the pre-existing pattern.
+- **E.5 — Add `tooltip:` to all icon-only buttons**: cosmetic a11y pass.
+- **A.5 — Google OAuth**: needs Supabase dashboard config in same
+  sitting; revisit when ready.
+- **Tighten email verification**: once existing test accounts are
+  manually confirmed in the dashboard, add the redirect gate for
+  `emailConfirmedAt == null`.
+
+### Manual release-checklist (one-time setup the user does)
+- Provision Sentry project; set `SENTRY_DSN` in Vercel env.
+- Provision PostHog project; set `POSTHOG_API_KEY` in Vercel env.
+- (When ready) configure Google OAuth in the Supabase dashboard.
+
+---
+
+## 14. If you're starting a fresh session
 
 1. Read this file in full.
 2. `git log --oneline -10` to see what's actually shipped.

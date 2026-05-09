@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../config/theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
+import '../../widgets/empty_state.dart';
+import '../../widgets/error_retry_widget.dart';
 import '../../widgets/shimmer_skeleton.dart';
 
 enum LeaderboardScope { global, stream }
@@ -60,11 +62,17 @@ class LeaderboardScreen extends ConsumerWidget {
       ),
       body: leaderboardAsync.when(
         loading: () => const CardListSkeleton(itemCount: 8, itemHeight: 64),
-        error: (e, _) => Center(child: Text(l.error('$e'))),
+        error: (e, _) => ErrorRetryWidget(
+          message: 'Impossible de charger le classement.',
+          onRetry: () => ref.invalidate(leaderboardProvider),
+        ),
         data: (entries) {
           if (entries.isEmpty) {
-            return Center(
-              child: Text(l.noData),
+            return const EmptyState(
+              icon: Icons.emoji_events_outlined,
+              title: 'Pas encore de classement',
+              message:
+                  'Les premiers à finir des chapitres apparaîtront ici.',
             );
           }
 

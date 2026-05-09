@@ -8,6 +8,7 @@ import '../../models/lesson_v2.dart';
 import '../../providers/lesson_progress_provider.dart';
 import '../../providers/progress_provider.dart';
 import '../../services/analytics_service.dart';
+import '../../utils/print_helper.dart';
 import '../../widgets/papier/papier_primitives.dart';
 import '../../widgets/rich_text_renderer.dart';
 // Interactive widget dispatch — reuse the same set as the v1 lesson cards.
@@ -265,6 +266,11 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
                 ),
               ],
             ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.print_outlined, color: Papier.ink),
+            tooltip: 'Imprimer',
+            onPressed: printPage,
           ),
           IconButton(
             icon: const Icon(Icons.close, color: Papier.ink),

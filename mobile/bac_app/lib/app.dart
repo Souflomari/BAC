@@ -7,6 +7,7 @@ import 'l10n/app_localizations.dart';
 import 'providers/locale_provider.dart';
 import 'providers/theme_provider.dart';
 import 'widgets/global_search.dart';
+import 'widgets/keyboard_help_dialog.dart';
 
 class BacPrepApp extends ConsumerWidget {
   const BacPrepApp({super.key});
@@ -50,6 +51,8 @@ class _GlobalShortcuts extends StatelessWidget {
         SingleActivator(LogicalKeyboardKey.keyK, control: true): _SearchIntent(),
         SingleActivator(LogicalKeyboardKey.slash, meta: true): _SearchIntent(),
         SingleActivator(LogicalKeyboardKey.slash, control: true): _SearchIntent(),
+        // Shift+/ produces ?
+        SingleActivator(LogicalKeyboardKey.slash, shift: true): _HelpIntent(),
       },
       child: Builder(
         builder: (innerContext) {
@@ -58,6 +61,12 @@ class _GlobalShortcuts extends StatelessWidget {
               _SearchIntent: CallbackAction<_SearchIntent>(
                 onInvoke: (_) {
                   GlobalSearchOverlay.toggle(innerContext);
+                  return null;
+                },
+              ),
+              _HelpIntent: CallbackAction<_HelpIntent>(
+                onInvoke: (_) {
+                  KeyboardHelpDialog.show(innerContext);
                   return null;
                 },
               ),
@@ -75,4 +84,8 @@ class _GlobalShortcuts extends StatelessWidget {
 
 class _SearchIntent extends Intent {
   const _SearchIntent();
+}
+
+class _HelpIntent extends Intent {
+  const _HelpIntent();
 }

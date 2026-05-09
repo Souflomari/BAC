@@ -205,10 +205,52 @@ class _ProfileMenu extends ConsumerWidget {
     final profile = ref.watch(profileProvider);
     final name = profile.valueOrNull?.displayName ?? '';
     final initial = name.isNotEmpty ? name[0].toUpperCase() : '?';
+    final width = MediaQuery.sizeOf(context).width;
+    final isMobile = width < 800;
+    final avatar = Container(
+      width: 36,
+      height: 36,
+      decoration: BoxDecoration(
+        color: Papier.bg2,
+        border: Border.all(color: Papier.ink, width: 1.5),
+        shape: BoxShape.circle,
+        image: profile.valueOrNull?.avatarUrl != null
+            ? DecorationImage(
+                image: NetworkImage(profile.valueOrNull!.avatarUrl!),
+                fit: BoxFit.cover,
+              )
+            : null,
+      ),
+      alignment: Alignment.center,
+      child: profile.valueOrNull?.avatarUrl == null
+          ? Text(
+              initial,
+              style: PapierType.italic(
+                fontSize: 16,
+                color: Papier.ink,
+                fontWeight: FontWeight.w600,
+              ),
+            )
+          : null,
+    );
+
+    if (isMobile) {
+      return GestureDetector(
+        onTap: () => _showMobileSheet(context, ref),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: avatar,
+        ),
+      );
+    }
+
     return PopupMenuButton<String>(
       offset: const Offset(0, 56),
+      tooltip: 'Mon compte',
       onSelected: (value) async {
-        if (value == 'settings') {
+        if (value == 'profile') {
+          context.go('/profile');
+        } else if (value == 'settings') {
           context.go('/settings');
         } else if (value == 'signout') {
           await ref.read(authActionsProvider).signOut();
@@ -216,6 +258,10 @@ class _ProfileMenu extends ConsumerWidget {
         }
       },
       itemBuilder: (_) => [
+        PopupMenuItem(
+          value: 'profile',
+          child: Text('Profil', style: PapierType.serif(fontSize: 14)),
+        ),
         PopupMenuItem(
           value: 'settings',
           child: Text('Paramètres', style: PapierType.serif(fontSize: 14)),
@@ -228,31 +274,86 @@ class _ProfileMenu extends ConsumerWidget {
       ],
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Container(
-          width: 36,
-          height: 36,
-          decoration: BoxDecoration(
-            color: Papier.bg2,
-            border: Border.all(color: Papier.ink, width: 1.5),
-            shape: BoxShape.circle,
-            image: profile.valueOrNull?.avatarUrl != null
-                ? DecorationImage(
-                    image: NetworkImage(profile.valueOrNull!.avatarUrl!),
-                    fit: BoxFit.cover,
-                  )
-                : null,
+        child: avatar,
+      ),
+    );
+  }
+
+  void _showMobileSheet(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Papier.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+        side: BorderSide(color: Papier.ink, width: 2),
+      ),
+      builder: (sheetCtx) => SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 12, 0, 18),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                child: Container(width: 36, height: 3, color: Papier.ink3),
+              ),
+              const SizedBox(height: 12),
+              _SheetItem(
+                label: 'Profil',
+                icon: Icons.person_outline,
+                onTap: () {
+                  Navigator.of(sheetCtx).pop();
+                  context.go('/profile');
+                },
+              ),
+              _SheetItem(
+                label: 'Paramètres',
+                icon: Icons.tune_outlined,
+                onTap: () {
+                  Navigator.of(sheetCtx).pop();
+                  context.go('/settings');
+                },
+              ),
+              const Divider(color: Papier.line2, height: 1),
+              _SheetItem(
+                label: 'Se déconnecter',
+                icon: Icons.logout,
+                color: Papier.red,
+                onTap: () async {
+                  Navigator.of(sheetCtx).pop();
+                  await ref.read(authActionsProvider).signOut();
+                  if (context.mounted) context.go('/landing');
+                },
+              ),
+            ],
           ),
-          alignment: Alignment.center,
-          child: profile.valueOrNull?.avatarUrl == null
-              ? Text(
-                  initial,
-                  style: PapierType.italic(
-                    fontSize: 16,
-                    color: Papier.ink,
-                    fontWeight: FontWeight.w600,
-                  ),
-                )
-              : null,
+        ),
+      ),
+    );
+  }
+}
+
+class _SheetItem extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final Color? color;
+  final VoidCallback onTap;
+  const _SheetItem(
+      {required this.label, required this.icon, this.color, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final c = color ?? Papier.ink;
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+        child: Row(
+          children: [
+            Icon(icon, size: 22, color: c),
+            const SizedBox(width: 14),
+            Text(label, style: PapierType.serif(fontSize: 16, color: c)),
+          ],
         ),
       ),
     );
