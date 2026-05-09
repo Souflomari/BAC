@@ -6,6 +6,7 @@ import '../../l10n/app_localizations.dart';
 import '../../models/exam.dart';
 import '../../models/item.dart';
 import '../../providers/exam_provider.dart';
+import '../../widgets/exams/animated_solution.dart';
 import '../../widgets/rich_text_renderer.dart';
 import '../../widgets/mcq_item_widget.dart';
 import '../../widgets/numeric_item_widget.dart';
@@ -1001,6 +1002,23 @@ class _ExplanationPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // New animated path: progressive step reveal + optional widget embed +
+    // inline mistake/tip callouts. Falls back to the legacy panel only
+    // when there's truly nothing to show.
+    if (question.answerSteps.isNotEmpty || question.finalAnswer.isNotEmpty) {
+      return AnimatedSolution(
+        steps: question.answerSteps,
+        finalAnswer: question.finalAnswer.isEmpty ? null : question.finalAnswer,
+        gradingNotes:
+            question.gradingNotes.isEmpty ? null : question.gradingNotes,
+        commonMistakes: question.commonMistakes,
+        tips: question.tips,
+      );
+    }
+    return _legacyPanel(context);
+  }
+
+  Widget _legacyPanel(BuildContext context) {
     final answer = question.answer;
     final steps = question.answerSteps;
     final gradingNotes = question.gradingNotes;

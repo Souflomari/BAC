@@ -6,6 +6,7 @@ import '../../l10n/app_localizations.dart';
 import '../../models/exam.dart';
 import '../../models/item.dart';
 import '../../providers/exam_provider.dart';
+import '../../widgets/exams/animated_solution.dart';
 import '../../widgets/rich_text_renderer.dart';
 import '../../widgets/shimmer_skeleton.dart';
 
@@ -630,6 +631,21 @@ class _SolutionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // New animated path: progressive reveal + widget embed.
+    if (question.answerSteps.isNotEmpty || question.finalAnswer.isNotEmpty) {
+      return AnimatedSolution(
+        steps: question.answerSteps,
+        finalAnswer: question.finalAnswer.isEmpty ? null : question.finalAnswer,
+        gradingNotes:
+            question.gradingNotes.isEmpty ? null : question.gradingNotes,
+        commonMistakes: question.commonMistakes,
+        tips: question.tips,
+      );
+    }
+    return _legacy(context);
+  }
+
+  Widget _legacy(BuildContext context) {
     final steps = question.answerSteps;
     final finalAnswer = question.finalAnswer;
     final gradingNotes = question.gradingNotes;
