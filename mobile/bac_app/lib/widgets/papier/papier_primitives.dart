@@ -50,7 +50,7 @@ class _GrainPainter extends CustomPainter {
         final v = rnd.nextDouble();
         if (v < 0.25) {
           final intensity = 0.5 + rnd.nextDouble() * 0.5;
-          paint.color = const Color(0xFF1F1B14).withValues(
+          paint.color = const Color(0xFF111111).withValues(
             alpha: intensity * 0.5 * opacity,
           );
           canvas.drawCircle(Offset(x, y), 0.9, paint);

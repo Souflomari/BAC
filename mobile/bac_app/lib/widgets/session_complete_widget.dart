@@ -151,7 +151,7 @@ class _SessionCompleteWidgetState extends State<SessionCompleteWidget>
                                 : 'Continue comme ça.',
                             style: PapierType.italic(
                               fontSize: 22,
-                              color: const Color(0xFFF0E4C8),
+                              color: Papier.darkInk,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -164,7 +164,7 @@ class _SessionCompleteWidgetState extends State<SessionCompleteWidget>
                               _encouragementMessage(l),
                               style: PapierType.italic(
                                 fontSize: 12,
-                                color: const Color(0xFFA89E87),
+                                color: Papier.darkInk2,
                                 height: 1.6,
                               ),
                               textAlign: TextAlign.center,
@@ -235,7 +235,7 @@ class _SessionCompleteWidgetState extends State<SessionCompleteWidget>
                                 l.newSession,
                                 style: PapierType.italic(
                                   fontSize: 13,
-                                  color: const Color(0xFFA89E87),
+                                  color: Papier.darkInk2,
                                 ),
                               ),
                             ),
@@ -251,7 +251,7 @@ class _SessionCompleteWidgetState extends State<SessionCompleteWidget>
                                   '↳ ${l.reviewLesson}',
                                   style: PapierType.italic(
                                     fontSize: 12,
-                                    color: const Color(0xFF7E7360),
+                                    color: Papier.darkInk3,
                                   ),
                                 ),
                               ),
@@ -274,7 +274,7 @@ class _SessionCompleteWidgetState extends State<SessionCompleteWidget>
         width: 0.5,
         height: 28,
         margin: const EdgeInsets.symmetric(horizontal: 18),
-        color: const Color(0xFFA89E8740),
+        color: Papier.darkInk2.withValues(alpha: 0.25),
       );
 
   String _encouragementMessage(AppLocalizations l) {
@@ -299,7 +299,7 @@ class _Stat extends StatelessWidget {
           value,
           style: PapierType.italic(
             fontSize: 18,
-            color: const Color(0xFFF0E4C8),
+            color: Papier.darkInk,
           ),
         ),
         const SizedBox(height: 2),
@@ -307,7 +307,7 @@ class _Stat extends StatelessWidget {
           label,
           style: PapierType.mono(
             fontSize: 9,
-            color: const Color(0xFF7E7360),
+            color: Papier.darkInk3,
             letterSpacing: 0.5,
           ),
         ),

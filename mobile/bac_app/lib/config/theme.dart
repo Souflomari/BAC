@@ -14,11 +14,10 @@ import 'package:google_fonts/google_fonts.dart';
 ///   Indigo = scientific graph
 ///   Ink    = everything else
 class BacPrepColors {
-  // Primary palette — remapped to Papier.
-  // (Names kept for backward compat with existing widgets.)
-  static const primary       = Color(0xFF1F1B14);  // ink (warm near-black)
-  static const primaryLight  = Color(0xFF4A4236);  // ink2
-  static const primaryDark   = Color(0xFF1F1B14);
+  // Primary palette — neutral black/gray (was warm brown, unreadable).
+  static const primary       = Color(0xFF111111);
+  static const primaryLight  = Color(0xFF424242);
+  static const primaryDark   = Color(0xFF111111);
 
   // Accents
   static const accent  = Color(0xFFA07B2B);  // gold leaf — XP / streak / reward
@@ -26,38 +25,38 @@ class BacPrepColors {
   static const error   = Color(0xFF8B2A20);  // manuscript red — critical action
   static const warning = Color(0xFFA07B2B);  // gold
 
-  // Subject colors — recolored on the Papier palette
+  // Subject colors — recolored on the neutral palette
   static const math       = Color(0xFF8B2A20);  // red
   static const physics    = Color(0xFF2D4963);  // engraving indigo
   static const biology    = Color(0xFF3E5A3B);  // green
-  static const philosophy = Color(0xFF4A4236);  // ink2
+  static const philosophy = Color(0xFF424242);  // neutral gray (was ink2)
   static const french     = Color(0xFF2D4963);
   static const arabic     = Color(0xFFA07B2B);  // gold
-  static const english    = Color(0xFF7E7360);
+  static const english    = Color(0xFF757575);  // neutral gray (was ink3)
 
-  // Mastery levels (Papier rendering)
-  static const locked      = Color(0xFFC4B893);  // line2
-  static const novice      = Color(0xFFA07B2B);  // gold
+  // Mastery levels
+  static const locked      = Color(0xFFC4B893);
+  static const novice      = Color(0xFFA07B2B);
   static const developing  = Color(0xFFA07B2B);
-  static const proficient  = Color(0xFF1F1B14);  // ink
+  static const proficient  = Color(0xFF111111);  // ink
   static const master      = Color(0xFF3E5A3B);  // green
 
   // Neutrals
   static const background      = Color(0xFFF6F1E4);  // aged cream paper
   static const surface         = Color(0xFFFCF8EC);  // bright paper
   static const surfaceVariant  = Color(0xFFEEE7D3);  // bg2
-  static const textPrimary     = Color(0xFF1F1B14);
-  static const textSecondary   = Color(0xFF4A4236);
-  static const textTertiary    = Color(0xFF7E7360);
-  static const border          = Color(0xFFD8CEB2);  // line
+  static const textPrimary     = Color(0xFF111111);
+  static const textSecondary   = Color(0xFF424242);
+  static const textTertiary    = Color(0xFF757575);
+  static const border          = Color(0xFFD8CEB2);
 
-  // Dark mode (Papier nuit — kept softer than the original deep blue dark)
-  static const darkBackground       = Color(0xFF1A1610);
-  static const darkSurface          = Color(0xFF24201A);
-  static const darkSurfaceVariant   = Color(0xFF2E2922);
-  static const darkTextPrimary      = Color(0xFFF0E4C8);
-  static const darkTextSecondary    = Color(0xFFA89E87);
-  static const darkBorder           = Color(0xFF3D362D);
+  // Dark mode — neutral grayscale.
+  static const darkBackground       = Color(0xFF121212);
+  static const darkSurface          = Color(0xFF1E1E1E);
+  static const darkSurfaceVariant   = Color(0xFF2A2A2A);
+  static const darkTextPrimary      = Color(0xFFF2F2F2);
+  static const darkTextSecondary    = Color(0xFFBDBDBD);
+  static const darkBorder           = Color(0xFF424242);
 }
 
 /// Papier — full Papier design vocabulary.
@@ -70,11 +69,11 @@ class Papier {
   static const bg3      = Color(0xFFE5DCC0);  // deepest (stamps/deckle)
   static const surface  = Color(0xFFFCF8EC);  // bright paper
 
-  // Ink shades
-  static const ink   = Color(0xFF1F1B14);  // oxidized ink (warm near-black)
-  static const ink2  = Color(0xFF4A4236);
-  static const ink3  = Color(0xFF7E7360);  // faded
-  static const ink4  = Color(0xFFA89E87);  // watermark
+  // Ink shades — neutral black/gray scale (was warm brown, hard to read).
+  static const ink   = Color(0xFF111111);  // primary text — near-black
+  static const ink2  = Color(0xFF424242);  // secondary
+  static const ink3  = Color(0xFF757575);  // tertiary / muted
+  static const ink4  = Color(0xFFA8A8A8);  // watermark / disabled
 
   // Rules
   static const line   = Color(0xFFD8CEB2);
@@ -90,11 +89,11 @@ class Papier {
   /// Engraving indigo — scientific graphs.
   static const indigo = Color(0xFF2D4963);
 
-  // Dark variant (Papier nuit, used in celebration screen and dark mode)
-  static const darkBg     = Color(0xFF1A1610);
-  static const darkInk    = Color(0xFFF0E4C8);
-  static const darkInk2   = Color(0xFFA89E87);
-  static const darkInk3   = Color(0xFF7E7360);
+  // Dark variant — neutral grayscale (was warm brown).
+  static const darkBg     = Color(0xFF121212);
+  static const darkInk    = Color(0xFFF2F2F2);  // primary text
+  static const darkInk2   = Color(0xFFBDBDBD);  // secondary
+  static const darkInk3   = Color(0xFF888888);  // tertiary
 
   static const radius = 6.0;
 }
@@ -352,7 +351,7 @@ class BacPrepTheme {
         primary: Papier.gold,
         onPrimary: Papier.darkBg,
         secondary: Papier.gold,
-        surface: Color(0xFF24201A),
+        surface: Color(0xFF1E1E1E),
         onSurface: Papier.darkInk,
         error: Color(0xFFD2745E),
       ),
@@ -374,12 +373,12 @@ class BacPrepTheme {
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(Papier.radius)),
-          side: BorderSide(color: Color(0xFF3D362D), width: 1),
+          side: BorderSide(color: Color(0xFF424242), width: 1),
         ),
-        color: Color(0xFF24201A),
+        color: Color(0xFF1E1E1E),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: Color(0xFF24201A),
+        backgroundColor: Color(0xFF1E1E1E),
         selectedItemColor: Papier.gold,
         unselectedItemColor: Papier.darkInk3,
         type: BottomNavigationBarType.fixed,
@@ -391,7 +390,7 @@ class BacPrepTheme {
         elevation: 0,
         titleTextStyle: PapierType.italic(fontSize: 20, color: Papier.darkInk),
       ),
-      dividerTheme: const DividerThemeData(color: Color(0xFF3D362D)),
+      dividerTheme: const DividerThemeData(color: Color(0xFF424242)),
     );
   }
 }
