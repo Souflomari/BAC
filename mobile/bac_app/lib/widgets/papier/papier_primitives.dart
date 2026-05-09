@@ -7,8 +7,16 @@ import '../../config/theme.dart';
 /// Masthead, ToCRow, ChapterHead, SmallCaps, Stamp.
 
 // ─── PaperGrain ─────────────────────────────────────────────
-// Subtle multiplicative noise overlay to fake fibre texture.
-// Cheaper than an SVG filter; applied via CustomPainter.
+// Subtle noise overlay to fake fibre texture.
+//
+// Performance note (2026-05-09 fix for landing-page tab crash):
+// the previous implementation rendered ~66k drawCircle calls per
+// paint at 1080p (2.5px grid × 20% fill) inside an `Opacity` widget
+// using `BlendMode.multiply`. The Opacity wrapper forced an offscreen
+// composite buffer; combined with the multiply blend, CanvasKit would
+// OOM Chrome tabs on lower-end machines after a few page loads.
+// Current version: 8px grid (~12× fewer ops), srcOver blend, alpha
+// baked into the paint color (no Opacity wrapper).
 class PaperGrain extends StatelessWidget {
   final double opacity;
   final int seed;
@@ -17,12 +25,9 @@ class PaperGrain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
-      child: Opacity(
-        opacity: opacity,
-        child: CustomPaint(
-          painter: _GrainPainter(seed: seed),
-          child: const SizedBox.expand(),
-        ),
+      child: CustomPaint(
+        painter: _GrainPainter(seed: seed, opacity: opacity),
+        child: const SizedBox.expand(),
       ),
     );
   }
@@ -30,29 +35,33 @@ class PaperGrain extends StatelessWidget {
 
 class _GrainPainter extends CustomPainter {
   final int seed;
-  _GrainPainter({required this.seed});
+  final double opacity;
+  _GrainPainter({required this.seed, required this.opacity});
 
   @override
   void paint(Canvas canvas, Size size) {
     final rnd = math.Random(seed);
-    final paint = Paint()..blendMode = BlendMode.multiply;
-    // Sparse noise grid — fast enough for a static decorative layer
-    const cell = 2.5;
-    for (double y = 0; y < size.height; y += cell) {
-      for (double x = 0; x < size.width; x += cell) {
+    final paint = Paint();
+    const cell = 8.0;
+    final maxX = size.width;
+    final maxY = size.height;
+    for (double y = 0; y < maxY; y += cell) {
+      for (double x = 0; x < maxX; x += cell) {
         final v = rnd.nextDouble();
-        // Bias toward darker speckles (only ~20% of cells get a dot)
-        if (v < 0.2) {
-          final intensity = (0.5 + rnd.nextDouble() * 0.5);
-          paint.color = const Color(0xFF1F1B14).withValues(alpha: intensity * 0.5);
-          canvas.drawCircle(Offset(x, y), 0.6, paint);
+        if (v < 0.25) {
+          final intensity = 0.5 + rnd.nextDouble() * 0.5;
+          paint.color = const Color(0xFF1F1B14).withValues(
+            alpha: intensity * 0.5 * opacity,
+          );
+          canvas.drawCircle(Offset(x, y), 0.9, paint);
         }
       }
     }
   }
 
   @override
-  bool shouldRepaint(covariant _GrainPainter oldDelegate) => oldDelegate.seed != seed;
+  bool shouldRepaint(covariant _GrainPainter oldDelegate) =>
+      oldDelegate.seed != seed || oldDelegate.opacity != opacity;
 }
 
 // ─── DoubleRule ─────────────────────────────────────────────
