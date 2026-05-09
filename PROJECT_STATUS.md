@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-09 (after integral run: defer-cleanup + tests + CI + docs)
+**Last updated:** 2026-05-09 (after Phase 1 textbook-depth solution expansion for all 160 exam questions)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -714,7 +714,74 @@ loose ends from previous runs and adding the production-grade layer
 
 ---
 
-## 16. If you're starting a fresh session
+## 16. 2026-05-09 — Solution depth expansion run (Phase 1 of 4 shipped)
+
+User feedback was that exam solution steps were too terse — typically
+80–150 chars per step, just enough to name the technique. Approved
+plan was to expand all step/explanation prose across four content
+surfaces to ~5× depth (400–700 chars per step, full textbook-style
+paragraphs).
+
+### Phase 1 — Exam question solutions (SHIPPED)
+- **Migration 023** (`UPDATE public.exam_questions`) overwrites the
+  answer JSONB for all 80 SMB exam questions inserted by 021.
+- **Migration 024** does the same for all 80 SMA questions from 022.
+- New encoders at `backend/seed/json_encode_exam_solutions_smb_v2.dart`
+  and `backend/seed/json_encode_exam_solutions_sma_v2.dart`.
+- Each step text now follows the rubric: name the situation → state
+  why naive approach fails → justify the chosen technique → walk
+  through the calculation in narrative form → conclude.
+- Per-question additions: corrigé-style `gradingNotes`, expanded
+  `commonMistakes[]` with explicit counter-examples, pattern-level
+  `tips[]`.
+- Total content authored: ~340 KB of pedagogical French prose,
+  hand-written context-aware for each question's specific
+  math/physics/chemistry topic.
+- Live in prod, verified by direct REST query.
+
+### Phase 2 — Try-it block solutions (DEFERRED)
+9 try-it blocks across both lesson encoders. Folded into Phase 3
+plan; not shipped this run.
+
+### Phase 3 — Lesson checkpoint explanations (DEFERRED)
+~271 checkpoint MCQ explanations across `json_encode_long_lessons.dart`
+(SMA, ~195 questions, ~3,000 lines of Dart) and
+`json_encode_long_lessons_smb.dart` (SMB, ~76 questions, ~1,400 lines).
+Surface-level rewrite would require fork-rewriting ~4,500 lines of
+existing encoder content with full-prose explanations. Deferred to a
+focused chapter-by-chapter sprint where each chapter's explanations
+get expanded together, preserving structural alignment with the
+lesson body.
+
+### Phase 4 — Quiz items expansion (DEFERRED)
+716 items across migrations 009/010/018. Most-recent SMA-specific
+items (migration 018, 129 items) would be Tier A; legacy items
+(587) Tier B. Deferred for the same reason as Phase 3 — bigger
+than a single-run autonomous sprint.
+
+### Why we stopped at Phase 1
+
+Phase 1 alone was already ~340 KB of new pedagogical prose
+hand-authored per-question. Ramming through Phase 3+4 in the same
+run would either degrade depth (3× instead of 5×) or risk shipping
+incomplete encoder forks. Phase 1 is the highest user-visible
+surface (the exam practice + results screens are the hero feature),
+so it's the right slice to ship first at full quality.
+
+### Honest disclaimer (carried over from previous content runs)
+
+Every expanded explanation in this run is a **credible v0
+pedagogical draft** authored by pattern. The math identities,
+formulas, and step ordering carry over verbatim from the
+user-validated terse versions, but the new explanatory prose
+between steps is freshly authored by an LLM, not a Moroccan Bac
+SME. Treat as reviewable starting material, not finished pedagogy.
+A future SME pass can rewrite specific explanations chapter by
+chapter; the encoder format makes this cheap.
+
+---
+
+## 17. If you're starting a fresh session
 
 1. Read this file in full.
 2. `git log --oneline -10` to see what's actually shipped.
