@@ -147,9 +147,12 @@
       }
     });
 
-    // Service worker update handling:
-    // When a new SW is waiting, activate it immediately and reload once
-    // so users always get the latest deploy without closing all tabs.
+    // Service worker update handling — aggressive cache-bust.
+    //
+    // Why: Chrome only checks SW updates every 24h by default, so users
+    // can stay on stale bundles for a full day after a deploy. We force
+    // an update check on every page load AND every 60 seconds while
+    // the page is open. When a new SW activates, we reload immediately.
     if ('serviceWorker' in navigator) {
       var _reloading = false;
 
@@ -161,19 +164,30 @@
       });
 
       navigator.serviceWorker.ready.then(function (reg) {
-        // Already waiting (page loaded after a deploy)
+        // 1. Force a fresh update check immediately on every page load.
+        try { reg.update(); } catch (e) {}
+
+        // 2. Already waiting (page loaded after a deploy) — activate now.
         if (reg.waiting) {
           reg.waiting.postMessage('skipWaiting');
         }
-        // New SW found after page load
+
+        // 3. New SW found after page load — activate as soon as installed.
         reg.addEventListener('updatefound', function () {
           var sw = reg.installing;
+          if (!sw) return;
           sw.addEventListener('statechange', function () {
             if (sw.state === 'installed' && navigator.serviceWorker.controller) {
               sw.postMessage('skipWaiting');
             }
           });
         });
+
+        // 4. Poll for updates every 60s while the app is open. Cheap —
+        //    the browser only fetches the SW script and compares bytes.
+        setInterval(function () {
+          try { reg.update(); } catch (e) {}
+        }, 60000);
       });
     }
   </script>
