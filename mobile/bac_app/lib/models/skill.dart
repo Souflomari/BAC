@@ -164,6 +164,10 @@ class Skill extends Equatable {
   /// can detect v2 (long-form) lessons via `lessonRaw?['version'] == 2`.
   final Map<String, dynamic>? lessonRaw;
 
+  /// Raw JSONB from `skills.exam_paper`. Optional topic-coherent Bac-paper
+  /// rendered below the lesson when present. See `models/exam_paper.dart`.
+  final Map<String, dynamic>? examPaperRaw;
+
   const Skill({
     required this.id,
     required this.topicId,
@@ -176,7 +180,10 @@ class Skill extends Equatable {
     this.displayOrder = 0,
     this.lessonCards,
     this.lessonRaw,
+    this.examPaperRaw,
   });
+
+  bool get hasExamPaper => examPaperRaw != null;
 
   bool get hasLesson =>
       (lessonCards != null && lessonCards!.isNotEmpty) || isLongLesson;
@@ -202,6 +209,12 @@ class Skill extends Equatable {
       }
     }
 
+    Map<String, dynamic>? rawExamPaper;
+    final examPaperJson = json['exam_paper'];
+    if (examPaperJson is Map<String, dynamic>) {
+      rawExamPaper = examPaperJson;
+    }
+
     return Skill(
       id: json['id'] as String,
       topicId: json['topic_id'] as String,
@@ -214,6 +227,7 @@ class Skill extends Equatable {
       displayOrder: json['display_order'] as int? ?? 0,
       lessonCards: cards,
       lessonRaw: rawLesson,
+      examPaperRaw: rawExamPaper,
     );
   }
 

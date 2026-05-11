@@ -4,8 +4,10 @@ import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
+import '../../models/exam_paper.dart';
 import '../../models/item.dart';
 import '../../models/lesson_v2.dart';
+import '../../widgets/exam_paper/exam_paper_view.dart';
 import '../../providers/lesson_progress_provider.dart';
 import '../../providers/progress_provider.dart';
 import '../../services/analytics_service.dart';
@@ -63,12 +65,14 @@ import '../../widgets/animations/concept_animation_widget.dart';
 class LongLessonScreen extends ConsumerStatefulWidget {
   final String skillId;
   final LessonV2 lesson;
+  final ExamPaper? examPaper;
   final String? practiceSkillId; // optional override for the "Pratiquer" CTA
 
   const LongLessonScreen({
     super.key,
     required this.skillId,
     required this.lesson,
+    this.examPaper,
     this.practiceSkillId,
   });
 
@@ -97,6 +101,12 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
       'skill_id': widget.skillId,
       'section_count': widget.lesson.sections.length,
     });
+    if (widget.examPaper != null) {
+      Analytics.event('exam_paper_opened', {
+        'skill_id': widget.skillId,
+        'exercice_count': widget.examPaper!.exercices.length,
+      });
+    }
   }
 
   void _scrollToSection(int index) {
@@ -248,26 +258,35 @@ class _LongLessonScreenState extends ConsumerState<LongLessonScreen> {
         ? _findMatchSections[_findCurrentMatch]
         : -1;
 
+    final hasExamPaper = widget.examPaper != null;
+    // Trailing slots: optional ExamPaperView (if present) + end-of-lesson row.
+    final trailingCount = hasExamPaper ? 2 : 1;
     final body = ListView.builder(
       padding: EdgeInsets.symmetric(
         horizontal: isWide ? 0 : 22,
         vertical: 24,
       ),
-      itemCount: l.sections.length + 1, // sections + end-of-lesson row
+      itemCount: l.sections.length + trailingCount,
       itemBuilder: (context, idx) {
-        if (idx == l.sections.length) return _buildEndOfLesson();
-        return KeyedSubtree(
-          key: _sectionKeys[idx],
-          child: _SectionView(
-            index: idx,
-            section: l.sections[idx],
-            isCompleted: completed.contains(idx),
-            onQuestionPassed: (b, q) => _onQuestionPassed(idx, b, q),
-            passedKeys: passed,
-            findMatch: matchSet.contains(idx),
-            findActive: idx == activeMatchSection,
-          ),
-        );
+        if (idx < l.sections.length) {
+          return KeyedSubtree(
+            key: _sectionKeys[idx],
+            child: _SectionView(
+              index: idx,
+              section: l.sections[idx],
+              isCompleted: completed.contains(idx),
+              onQuestionPassed: (b, q) => _onQuestionPassed(idx, b, q),
+              passedKeys: passed,
+              findMatch: matchSet.contains(idx),
+              findActive: idx == activeMatchSection,
+            ),
+          );
+        }
+        // After all sections: exam paper then end-of-lesson, or just end.
+        if (hasExamPaper && idx == l.sections.length) {
+          return ExamPaperView(paper: widget.examPaper!);
+        }
+        return _buildEndOfLesson();
       },
     );
 

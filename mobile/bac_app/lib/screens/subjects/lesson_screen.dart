@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../l10n/app_localizations.dart';
+import '../../models/exam_paper.dart';
 import '../../models/lesson_v2.dart';
 import '../../providers/progress_provider.dart';
 import '../../widgets/lesson_card_widget.dart';
@@ -90,9 +91,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
           if (skill.isLongLesson && skill.lessonRaw != null) {
             final lesson =
                 LessonV2.fromJson(widget.skillId, skill.lessonRaw!);
+            final examPaper = skill.examPaperRaw != null
+                ? ExamPaper.fromJson(widget.skillId, skill.examPaperRaw!)
+                : null;
             return LongLessonScreen(
               skillId: widget.skillId,
               lesson: lesson,
+              examPaper: examPaper,
             );
           }
 
