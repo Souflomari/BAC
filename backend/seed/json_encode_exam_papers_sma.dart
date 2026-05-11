@@ -2131,6 +2131,628 @@ Map<String, dynamic> _paperVectors3d() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperCounting() => _paper(
+      titleFr: 'Épreuve type — Dénombrement et probabilités',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Dénombrement (permutations, arrangements, combinaisons), probabilités élémentaires, conditionnelles, indépendance, loi binomiale.",
+      exercices: [
+        _ex(
+          1,
+          'Dénombrement',
+          5,
+          "Une classe compte 25 élèves : 14 filles et 11 garçons.",
+          [
+            _q(
+              1,
+              "De combien de façons peut-on former un groupe de 3 élèves ?",
+              2,
+              _sol([
+                _step(
+                  "**Combinaisons** (sans ordre, sans répétition) : \$\\binom{n}{k} = \\dfrac{n!}{k!(n-k)!}\$.",
+                ),
+                _step(
+                  "Application : \$\\binom{25}{3} = \\dfrac{25 \\cdot 24 \\cdot 23}{6} = \\dfrac{13800}{6} = 2300\$.",
+                  tipFr:
+                      "Pour \$\\binom{n}{k}\$ avec \$k\$ petit, simplifier en gardant les \$k\$ derniers facteurs du numérateur.",
+                ),
+              ], finalAnswerFr: r"$\binom{25}{3} = 2300$"),
+            ),
+            _q(
+              2,
+              "De combien de façons peut-on former un groupe de 3 élèves comprenant exactement 2 filles ?",
+              2,
+              _sol([
+                _step(
+                  "**Principe multiplicatif** : choisir 2 filles parmi 14 ET 1 garçon parmi 11.",
+                ),
+                _step(
+                  "Choix des filles : \$\\binom{14}{2} = 91\$. Choix du garçon : \$\\binom{11}{1} = 11\$.",
+                ),
+                _step(
+                  "Total : \$91 \\times 11 = 1001\$ groupes.",
+                ),
+              ], finalAnswerFr: r"$\binom{14}{2}\binom{11}{1} = 1001$"),
+            ),
+            _q(
+              3,
+              "De combien de façons peut-on aligner 5 élèves en file indienne ?",
+              1,
+              _sol([
+                _step(
+                  "**Arrangements** (avec ordre, sans répétition) : \$A_n^k = \\dfrac{n!}{(n-k)!}\$.",
+                ),
+                _step(
+                  "\$A_{25}^5 = 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21 = 6\\,375\\,600\$.",
+                ),
+              ], finalAnswerFr: r"$A_{25}^5 = 6\,375\,600$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Probabilité conditionnelle',
+          5,
+          "Une urne contient 5 boules rouges et 3 boules vertes. On tire deux boules **successivement et sans remise**.",
+          [
+            _q(
+              1,
+              "Quelle est la probabilité de tirer deux boules rouges ?",
+              2,
+              _sol([
+                _step(
+                  "Événements : \$R_1\$ = '1ère boule rouge', \$R_2\$ = '2ème boule rouge'. On cherche \$P(R_1 \\cap R_2)\$.",
+                ),
+                _step(
+                  "**Probabilité composée** : \$P(R_1 \\cap R_2) = P(R_1) \\cdot P(R_2 | R_1)\$.",
+                ),
+                _step(
+                  "\$P(R_1) = 5/8\$ (5 rouges sur 8 boules).",
+                ),
+                _step(
+                  "\$P(R_2 | R_1) = 4/7\$ (après tirage d'une rouge, il reste 4 rouges sur 7).",
+                ),
+                _step(
+                  "Donc \$P(R_1 \\cap R_2) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{20}{56} = \\dfrac{5}{14} \\approx 0{,}357\$.",
+                ),
+              ], finalAnswerFr: r"$P(RR) = 5/14$"),
+            ),
+            _q(
+              2,
+              "Probabilité de tirer une boule rouge puis une boule verte.",
+              2,
+              _sol([
+                _step(
+                  "\$P(R_1 \\cap V_2) = P(R_1) \\cdot P(V_2 | R_1)\$.",
+                ),
+                _step(
+                  "\$P(R_1) = 5/8\$, \$P(V_2 | R_1) = 3/7\$ (3 vertes restent sur 7 boules).",
+                ),
+                _step(
+                  "Donc \$P(R_1 \\cap V_2) = \\dfrac{5}{8} \\cdot \\dfrac{3}{7} = \\dfrac{15}{56} \\approx 0{,}268\$.",
+                ),
+              ], finalAnswerFr: r"$P(RV) = 15/56$"),
+            ),
+            _q(
+              3,
+              "Probabilité de tirer une boule rouge et une boule verte (dans n'importe quel ordre).",
+              1,
+              _sol([
+                _step(
+                  "Deux cas disjoints : RV ou VR. \$P = P(RV) + P(VR)\$.",
+                ),
+                _step(
+                  "\$P(VR) = \\dfrac{3}{8} \\cdot \\dfrac{5}{7} = \\dfrac{15}{56}\$. Donc \$P = 15/56 + 15/56 = 30/56 = 15/28 \\approx 0{,}536\$.",
+                ),
+              ], finalAnswerFr: r"$P = 15/28$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Loi binomiale',
+          5,
+          "On lance un dé équilibré à 6 faces 4 fois de suite. Soit \$X\$ le nombre de \"6\" obtenus.",
+          [
+            _q(
+              1,
+              "Justifier que \$X\$ suit une loi binomiale et préciser ses paramètres.",
+              2,
+              _sol([
+                _step(
+                  "**Schéma de Bernoulli** : on a 4 essais indépendants (les lancers d'un dé sont indépendants), chacun à 2 issues : succès = '6' (\$p = 1/6\$) ou échec = 'pas 6' (\$1 - p = 5/6\$). \$X\$ = nombre de succès.",
+                ),
+                _step(
+                  "\$X \\sim \\mathcal{B}(n, p)\$ avec \$n = 4\$ et \$p = 1/6\$.",
+                  tipFr:
+                      "Conditions binomiale : (1) répétitions indépendantes, (2) même proba à chaque essai, (3) deux issues seulement.",
+                ),
+              ], finalAnswerFr: r"$X \sim \mathcal{B}(4, 1/6)$"),
+            ),
+            _q(
+              2,
+              "Calculer \$P(X = 2)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Formule** : \$P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}\$.",
+                ),
+                _step(
+                  "Pour \$k = 2, n = 4, p = 1/6\$ : \$P(X = 2) = \\binom{4}{2} \\cdot (1/6)^2 \\cdot (5/6)^2\$.",
+                ),
+                _step(
+                  "Calcul : \$\\binom{4}{2} = 6\$, \$(1/6)^2 = 1/36\$, \$(5/6)^2 = 25/36\$. Produit : \$6 \\cdot 1/36 \\cdot 25/36 = 150/1296 = 25/216 \\approx 0{,}116\$.",
+                ),
+              ], finalAnswerFr: r"$P(X = 2) = 25/216 \approx 0{,}116$"),
+            ),
+            _q(
+              3,
+              "Calculer \$E(X)\$ et \$V(X)\$.",
+              1,
+              _sol([
+                _step(
+                  "**Loi binomiale** : \$E(X) = np\$, \$V(X) = np(1-p)\$.",
+                ),
+                _step(
+                  "\$E(X) = 4 \\cdot 1/6 = 2/3 \\approx 0{,}667\$. \$V(X) = 4 \\cdot 1/6 \\cdot 5/6 = 20/36 = 5/9 \\approx 0{,}556\$.",
+                ),
+              ], finalAnswerFr: r"$E(X) = 2/3$, $V(X) = 5/9$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Indépendance et compatibilité',
+          5,
+          "Soit \$A\$ et \$B\$ deux événements d'un univers fini avec \$P(A) = 0{,}4\$, \$P(B) = 0{,}3\$, et \$P(A \\cap B) = 0{,}12\$.",
+          [
+            _q(
+              1,
+              "Vérifier que \$A\$ et \$B\$ sont indépendants.",
+              2,
+              _sol([
+                _step(
+                  "**Critère d'indépendance** : \$A \\perp B \\iff P(A \\cap B) = P(A) \\cdot P(B)\$.",
+                ),
+                _step(
+                  "Calcul : \$P(A) \\cdot P(B) = 0{,}4 \\times 0{,}3 = 0{,}12\$.",
+                ),
+                _step(
+                  "\$P(A \\cap B) = 0{,}12 = P(A) \\cdot P(B)\$. Donc \$A\$ et \$B\$ sont **indépendants**.",
+                  tipFr:
+                      "Indépendance ≠ incompatibilité. Ici \$A\\cap B \\ne \\emptyset\$ donc \$A\$ et \$B\$ ne sont pas incompatibles, mais ils sont indépendants.",
+                ),
+              ], finalAnswerFr: r"$A \perp B$"),
+            ),
+            _q(
+              2,
+              "Calculer \$P(A \\cup B)\$.",
+              1,
+              _sol([
+                _step(
+                  "**Formule d'inclusion-exclusion** : \$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{,}4 + 0{,}3 - 0{,}12 = 0{,}58\$.",
+                ),
+              ], finalAnswerFr: r"$P(A \cup B) = 0{,}58$"),
+            ),
+            _q(
+              3,
+              "Calculer \$P(\\bar{A} \\cap B)\$ et \$P(A | B)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\bar{A} \\cap B\$ : événement '\$B\$ se produit mais pas \$A\$'. \$P(\\bar{A} \\cap B) = P(B) - P(A \\cap B) = 0{,}3 - 0{,}12 = 0{,}18\$.",
+                ),
+                _step(
+                  "\$P(A | B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}12}{0{,}3} = 0{,}4 = P(A)\$.",
+                ),
+                _step(
+                  "Conséquence de l'indépendance : \$P(A | B) = P(A)\$ — la connaissance de \$B\$ ne change pas la probabilité de \$A\$.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$P(\bar{A} \cap B) = 0{,}18$, $P(A|B) = 0{,}4$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDivisibility() => _paper(
+      titleFr: 'Épreuve type — Arithmétique et divisibilité',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Division euclidienne, congruences, PGCD, algorithme d'Euclide, théorème de Bézout. Outils centraux de l'arithmétique dans \$\\mathbb{Z}\$.",
+      exercices: [
+        _ex(
+          1,
+          'Division euclidienne',
+          4,
+          "Rappel : pour \$a \\in \\mathbb{Z}\$ et \$b \\in \\mathbb{N}^*\$, il existe un unique couple \$(q, r)\$ avec \$a = bq + r\$ et \$0 \\le r < b\$.",
+          [
+            _q(
+              1,
+              "Effectuer la division euclidienne de \$157\$ par \$11\$.",
+              1,
+              _sol([
+                _step(
+                  "On cherche \$q\$ tel que \$11q \\le 157 < 11(q+1)\$. Essai : \$11 \\times 14 = 154 \\le 157\$ ; \$11 \\times 15 = 165 > 157\$. Donc \$q = 14\$.",
+                ),
+                _step(
+                  "Reste : \$r = 157 - 154 = 3\$. Vérification : \$0 \\le 3 < 11\$ ✓.",
+                ),
+                _step(
+                  "Conclusion : \$157 = 11 \\times 14 + 3\$.",
+                ),
+              ], finalAnswerFr: r"$q = 14$, $r = 3$"),
+            ),
+            _q(
+              2,
+              "Donner le reste de \$2^{100}\$ modulo 7.",
+              3,
+              _sol([
+                _step(
+                  "Stratégie : calculer les petites puissances de 2 modulo 7 pour trouver un cycle. \$2^1 \\equiv 2\$, \$2^2 \\equiv 4\$, \$2^3 \\equiv 1\$ (car \$8 = 7 + 1\$).",
+                ),
+                _step(
+                  "**Cycle de longueur 3** : \$2^{3k} \\equiv 1\$, \$2^{3k+1} \\equiv 2\$, \$2^{3k+2} \\equiv 4 \\pmod{7}\$.",
+                ),
+                _step(
+                  "On divise \$100 = 3 \\times 33 + 1\$. Donc \$2^{100} = 2^{3 \\cdot 33 + 1} = (2^3)^{33} \\cdot 2^1 \\equiv 1^{33} \\cdot 2 \\equiv 2 \\pmod{7}\$.",
+                  tipFr:
+                      "Pour calculer une grande puissance modulo \$n\$ : chercher le **cycle** des puissances modulo \$n\$.",
+                ),
+              ], finalAnswerFr: r"$2^{100} \equiv 2 \pmod{7}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'PGCD et algorithme d\'Euclide',
+          5,
+          "On veut calculer \$\\gcd(252, 198)\$.",
+          [
+            _q(
+              1,
+              "Appliquer l'algorithme d'Euclide.",
+              3,
+              _sol([
+                _step(
+                  "**Algorithme d'Euclide** : \$\\gcd(a, b) = \\gcd(b, r)\$ où \$r\$ est le reste de la division de \$a\$ par \$b\$. On répète jusqu'à obtenir reste 0.",
+                ),
+                _step(
+                  "\$252 = 198 \\times 1 + 54\$ → \$\\gcd(252, 198) = \\gcd(198, 54)\$.",
+                ),
+                _step(
+                  "\$198 = 54 \\times 3 + 36\$ → \$\\gcd(198, 54) = \\gcd(54, 36)\$.",
+                ),
+                _step(
+                  "\$54 = 36 \\times 1 + 18\$ → \$\\gcd(54, 36) = \\gcd(36, 18)\$.",
+                ),
+                _step(
+                  "\$36 = 18 \\times 2 + 0\$ → \$\\gcd(36, 18) = 18\$.",
+                ),
+                _step(
+                  "Conclusion : \$\\gcd(252, 198) = 18\$.",
+                ),
+              ], finalAnswerFr: r"$\gcd(252, 198) = 18$"),
+            ),
+            _q(
+              2,
+              "En déduire deux entiers \$u, v\$ tels que \$252 u + 198 v = 18\$ (identité de Bézout).",
+              2,
+              _sol([
+                _step(
+                  "**Remontée de l'algorithme** : on exprime chaque reste comme combinaison linéaire de 252 et 198.",
+                ),
+                _step(
+                  "\$18 = 54 - 36 \\times 1 = 54 - (198 - 54 \\times 3) = 54 \\times 4 - 198\$.",
+                ),
+                _step(
+                  "Or \$54 = 252 - 198\$. Substitution : \$18 = (252 - 198) \\times 4 - 198 = 252 \\times 4 - 198 \\times 4 - 198 = 252 \\times 4 - 198 \\times 5\$.",
+                ),
+                _step(
+                  "Donc \$(u, v) = (4, -5)\$. Vérification : \$252 \\times 4 - 198 \\times 5 = 1008 - 990 = 18\$ ✓.",
+                  tipFr:
+                      "Le théorème de Bézout dit : \$\\gcd(a, b) = d \\iff \\exists u, v \\in \\mathbb{Z} : au + bv = d\$.",
+                ),
+              ], finalAnswerFr: r"$(u, v) = (4, -5)$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Nombres premiers et critères de divisibilité',
+          5,
+          "Soit \$n\$ un entier naturel.",
+          [
+            _q(
+              1,
+              "Démontrer que si \$n\$ est impair, alors \$n^2 + 1\$ est pair.",
+              2,
+              _sol([
+                _step(
+                  "\$n\$ impair signifie \$n = 2k + 1\$ pour un certain \$k \\in \\mathbb{N}\$.",
+                ),
+                _step(
+                  "\$n^2 + 1 = (2k+1)^2 + 1 = 4k^2 + 4k + 1 + 1 = 4k^2 + 4k + 2 = 2(2k^2 + 2k + 1)\$.",
+                ),
+                _step(
+                  "Comme \$2k^2 + 2k + 1 \\in \\mathbb{N}\$, \$n^2 + 1\$ est un multiple de 2, donc **pair**.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Démontrer que pour tout entier \$n\$, \$n^3 - n\$ est divisible par 6.",
+              3,
+              _sol([
+                _step(
+                  "Factorisation : \$n^3 - n = n(n^2 - 1) = n(n-1)(n+1)\$.",
+                ),
+                _step(
+                  "C'est le **produit de 3 entiers consécutifs** \$n-1, n, n+1\$.",
+                ),
+                _step(
+                  "**Divisibilité par 2** : parmi 3 entiers consécutifs, au moins un est pair. Donc le produit est divisible par 2.",
+                ),
+                _step(
+                  "**Divisibilité par 3** : parmi 3 entiers consécutifs, exactement un est divisible par 3. Donc le produit est divisible par 3.",
+                ),
+                _step(
+                  "Comme 2 et 3 sont premiers entre eux, le produit est divisible par \$2 \\times 3 = 6\$.",
+                  tipFr:
+                      "Pour montrer la divisibilité par \$pq\$ avec \$p, q\$ premiers entre eux : il suffit de montrer divisibilité par \$p\$ et par \$q\$ séparément.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Congruences et résolution d\'équations',
+          6,
+          "On cherche les solutions entières de l'équation \$5x \\equiv 3 \\pmod{11}\$.",
+          [
+            _q(
+              1,
+              "Trouver l'inverse de 5 modulo 11.",
+              3,
+              _sol([
+                _step(
+                  "On cherche \$y\$ tel que \$5y \\equiv 1 \\pmod{11}\$. Tester : \$5 \\times 1 = 5\$, \$5 \\times 2 = 10\$, \$5 \\times 3 = 15 \\equiv 4\$, ..., \$5 \\times 9 = 45 = 44 + 1 \\equiv 1 \\pmod{11}\$.",
+                ),
+                _step(
+                  "Donc \$5^{-1} \\equiv 9 \\pmod{11}\$.",
+                  tipFr:
+                      "Un entier \$a\$ admet un inverse modulo \$n\$ ssi \$\\gcd(a, n) = 1\$. Ici \$\\gcd(5, 11) = 1\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$5^{-1} \equiv 9 \pmod{11}$"),
+            ),
+            _q(
+              2,
+              "En déduire toutes les solutions de \$5x \\equiv 3 \\pmod{11}\$.",
+              3,
+              _sol([
+                _step(
+                  "On multiplie les deux membres par \$9 = 5^{-1}\$ : \$9 \\cdot 5x \\equiv 9 \\cdot 3 \\pmod{11}\$.",
+                ),
+                _step(
+                  "\$9 \\cdot 5 = 45 \\equiv 1 \\pmod{11}\$. \$9 \\cdot 3 = 27 = 22 + 5 \\equiv 5 \\pmod{11}\$.",
+                ),
+                _step(
+                  "Donc \$x \\equiv 5 \\pmod{11}\$. Solutions : \$x \\in \\{\\ldots, -6, 5, 16, 27, \\ldots\\}\$, soit \$x = 5 + 11k\$ pour \$k \\in \\mathbb{Z}\$.",
+                ),
+                _step(
+                  "Vérification : \$5 \\cdot 5 = 25 = 22 + 3 \\equiv 3 \\pmod{11}\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$x \equiv 5 \pmod{11}$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperNewtonLaws() => _paper(
+      titleFr: 'Épreuve type — Mécanique de Newton',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Les trois lois de Newton, application aux objets en équilibre, mouvement rectiligne uniformément varié, frottements. **Méthode** : système → bilan des forces → projection sur axes → équations du mouvement.",
+      exercices: [
+        _ex(
+          1,
+          'Bilan des forces et équilibre',
+          5,
+          "Un livre de masse \$m = 0{,}5\$ kg est posé sur une table horizontale. On prend \$g = 9{,}8\$ m/s².",
+          [
+            _q(
+              1,
+              "Faire le bilan des forces s'exerçant sur le livre.",
+              2,
+              _sol([
+                _step(
+                  "**Système** : le livre. Référentiel : terrestre (supposé galiléen).",
+                ),
+                _step(
+                  "**Forces** : (1) le **poids** \$\\vec{P}\$, vertical vers le bas, de norme \$P = mg = 0{,}5 \\times 9{,}8 = 4{,}9\$ N. (2) La **réaction normale** \$\\vec{R}\$ de la table, verticale vers le haut.",
+                  tipFr:
+                      "Bilan : toujours commencer par identifier les contacts (table → réaction) et l'action à distance (Terre → poids).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Le livre étant au repos, déterminer la norme de \$\\vec{R}\$.",
+              2,
+              _sol([
+                _step(
+                  "**1ère loi de Newton (inertie)** : à l'équilibre, \$\\sum \\vec{F} = \\vec{0}\$.",
+                ),
+                _step(
+                  "Projection sur l'axe vertical : \$R - P = 0\$, donc \$R = P = 4{,}9\$ N.",
+                ),
+                _step(
+                  "**Remarque** : \$\\vec{R}\$ et \$\\vec{P}\$ ne sont PAS un couple action/réaction (3ème loi). Ils s'exercent sur le même corps (le livre). Le couple action/réaction relie le poids du livre (livre → Terre) et le poids de la Terre (Terre → livre).",
+                  mistakeFr:
+                          "Confondre la 1ère loi (équilibre du livre = forces appliquées qui se compensent) avec la 3ème loi (action/réaction = forces réciproques entre 2 corps).",
+                ),
+              ], finalAnswerFr: r"$R = 4{,}9$ N"),
+            ),
+            _q(
+              3,
+              "On pose un second livre identique sur le premier. Déterminer la nouvelle réaction de la table.",
+              1,
+              _sol([
+                _step(
+                  "La table supporte maintenant 2 livres de masse totale \$2m = 1\$ kg.",
+                ),
+                _step(
+                  "Pour l'équilibre du système {2 livres} : \$R' = 2mg = 9{,}8\$ N.",
+                ),
+              ], finalAnswerFr: r"$R' = 9{,}8$ N"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Plan incliné sans frottement',
+          5,
+          "Un objet de masse \$m = 2\$ kg glisse sans frottement sur un plan incliné d'angle \$\\alpha = 30°\$ avec l'horizontale. On prend \$g = 10\$ m/s².",
+          [
+            _q(
+              1,
+              "Faire le bilan des forces. Projeter dans le repère (Ox parallèle au plan, descendant ; Oy perpendiculaire au plan).",
+              3,
+              _sol([
+                _step(
+                  "Forces : poids \$\\vec{P}\$ (vertical, vers le bas) et réaction normale \$\\vec{R}\$ (perpendiculaire au plan, sortante).",
+                ),
+                _step(
+                  "**Projection du poids** : \$P_x = mg\\sin\\alpha\$ (descendant le plan), \$P_y = -mg\\cos\\alpha\$ (vers le plan).",
+                ),
+                _step(
+                  "Réaction \$\\vec{R} = (0, R)\$ (uniquement selon Oy).",
+                  tipFr:
+                      "Sur un plan incliné : décomposer le poids en composante parallèle (\$mg\\sin\\alpha\$, fait glisser) et perpendiculaire (\$mg\\cos\\alpha\$, équilibrée par R).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$P_x = mg\sin\alpha$, $P_y = -mg\cos\alpha$"),
+            ),
+            _q(
+              2,
+              "Déterminer l'accélération \$a\$ de l'objet le long du plan.",
+              2,
+              _sol([
+                _step(
+                  "**2ème loi de Newton** : \$\\sum \\vec{F} = m\\vec{a}\$.",
+                ),
+                _step(
+                  "Projection sur Ox : \$mg\\sin\\alpha = ma\$, donc \$a = g\\sin\\alpha = 10 \\times 0{,}5 = 5\$ m/s².",
+                ),
+                _step(
+                  "Projection sur Oy : \$R - mg\\cos\\alpha = 0\$, donc \$R = mg\\cos\\alpha = 2 \\times 10 \\times \\sqrt{3}/2 = 10\\sqrt{3} \\approx 17{,}3\$ N.",
+                  tipFr:
+                      "Astuce : l'accélération sur plan incliné sans frottement ne dépend PAS de la masse — \$a = g\\sin\\alpha\$ seulement.",
+                ),
+              ], finalAnswerFr: r"$a = 5$ m/s², $R \approx 17{,}3$ N"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Mouvement rectiligne uniformément varié',
+          5,
+          "Une voiture part du repos et atteint 25 m/s en 10 secondes avec accélération constante.",
+          [
+            _q(
+              1,
+              "Calculer l'accélération et la distance parcourue.",
+              3,
+              _sol([
+                _step(
+                  "**MRUA** : \$v(t) = v_0 + at\$ et \$x(t) = x_0 + v_0 t + \\frac{1}{2} at^2\$.",
+                ),
+                _step(
+                  "Avec \$v_0 = 0\$ et \$v(10) = 25\$ m/s : \$a = (v - v_0)/t = 25/10 = 2{,}5\$ m/s².",
+                ),
+                _step(
+                  "Distance : \$x = \\frac{1}{2} a t^2 = 0{,}5 \\times 2{,}5 \\times 100 = 125\$ m.",
+                  tipFr:
+                      "Vérification : la vitesse moyenne d'un MRUA partant du repos est \$v_\\text{moy} = (0 + v_f)/2 = 12{,}5\$ m/s. Distance = 12,5 × 10 = 125 m ✓.",
+                ),
+              ], finalAnswerFr: r"$a = 2{,}5$ m/s², $d = 125$ m"),
+            ),
+            _q(
+              2,
+              "La voiture freine ensuite à accélération constante \$a_2 = -5\$ m/s². Combien de temps faut-il pour s'arrêter ? Quelle distance parcourt-elle pendant le freinage ?",
+              2,
+              _sol([
+                _step(
+                  "Au début du freinage : \$v_0 = 25\$ m/s. À l'arrêt : \$v = 0\$.",
+                ),
+                _step(
+                  "Temps : \$0 = 25 + (-5) t \\iff t = 5\$ s.",
+                ),
+                _step(
+                  "Distance : \$x = 25 \\times 5 + \\frac{1}{2}(-5)(25) = 125 - 62{,}5 = 62{,}5\$ m.",
+                  tipFr:
+                      "Formule sans temps : \$v^2 - v_0^2 = 2a(x - x_0)\$. Application : \$0 - 625 = 2(-5)x \\Rightarrow x = 62{,}5\$ m ✓.",
+                ),
+              ], finalAnswerFr: r"$t = 5$ s, $d_{\text{frein}} = 62{,}5$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Action — réaction',
+          5,
+          "Deux blocs \$A\$ (masse \$m_A = 3\$ kg) et \$B\$ (\$m_B = 2\$ kg) sont en contact sur un sol horizontal sans frottement. On applique une force horizontale \$\\vec{F}\$ sur \$A\$ de norme \$F = 20\$ N (pousse vers \$B\$).",
+          [
+            _q(
+              1,
+              "Déterminer l'accélération commune des deux blocs.",
+              2,
+              _sol([
+                _step(
+                  "On considère le système {A + B} (masse totale \$M = 5\$ kg). Seule force horizontale : \$\\vec{F}\$.",
+                ),
+                _step(
+                  "**2ème loi de Newton** : \$F = M a \\iff a = F/M = 20/5 = 4\$ m/s².",
+                ),
+              ], finalAnswerFr: r"$a = 4$ m/s²"),
+            ),
+            _q(
+              2,
+              "Déterminer la force exercée par \$A\$ sur \$B\$ (notée \$\\vec{F}_{A/B}\$).",
+              3,
+              _sol([
+                _step(
+                  "**Isoler le bloc \$B\$**. Forces sur \$B\$ : son poids, la réaction du sol (s'annulent verticalement), et \$\\vec{F}_{A/B}\$ (horizontale).",
+                ),
+                _step(
+                  "2ème loi sur \$B\$ : \$F_{A/B} = m_B \\cdot a = 2 \\times 4 = 8\$ N.",
+                ),
+                _step(
+                  "**3ème loi (action/réaction)** : \$B\$ exerce sur \$A\$ une force \$\\vec{F}_{B/A} = -\\vec{F}_{A/B}\$, de même norme 8 N, opposée.",
+                ),
+                _step(
+                  "**Vérification sur \$A\$** : forces horizontales : \$F\$ et \$F_{B/A}\$ (opposée). Équation : \$F - F_{B/A} = m_A a\$, soit \$20 - 8 = 3 \\times 4 = 12\$ ✓.",
+                  tipFr:
+                      "La force interne entre deux blocs en contact est toujours plus petite que la force externe — cohérent avec le partage de l'accélération.",
+                ),
+              ], finalAnswerFr: r"$F_{A/B} = 8$ N"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -2148,7 +2770,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'sma_ode_first_order': _paperOdeFirstOrder(),
   'sma_complex_basics': _paperComplexBasics(),
   'sma_vectors_3d': _paperVectors3d(),
-  // 23 SMA chapters remaining.
+  'sma_counting': _paperCounting(),
+  'sma_divisibility': _paperDivisibility(),
+  'sma_newton_laws': _paperNewtonLaws(),
+  // 20 SMA chapters remaining (13 physique + 7 chimie).
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
