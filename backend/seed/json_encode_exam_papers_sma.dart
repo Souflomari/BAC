@@ -1517,6 +1517,620 @@ Map<String, dynamic> _paperPrimitives() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperOdeFirstOrder() => _paper(
+      titleFr: 'Épreuve type — Équations différentielles',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Cette épreuve mobilise les **équations différentielles** d'ordre 1 et 2 du programme : \$y' = ay\$, \$y' = ay + b\$, \$y'' + \\omega^2 y = 0\$. Applications : désintégration, charge de condensateur, oscillateurs.",
+      exercices: [
+        _ex(
+          1,
+          'EDO d\'ordre 1 — résolution de référence',
+          5,
+          "On considère l'équation \$(E_1) : y' = 2y\$ et la condition initiale \$y(0) = 3\$.",
+          [
+            _q(
+              1,
+              "Donner la solution générale de \$(E_1)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Théorème** : la solution générale de \$y' = ay\$ est \$y(x) = C e^{ax}\$ avec \$C \\in \\mathbb{R}\$.",
+                ),
+                _step(
+                  "Justification : si \$y(x) = C e^{ax}\$, alors \$y'(x) = aC e^{ax} = ay\$ ✓.",
+                ),
+                _step(
+                  "Ici \$a = 2\$ : solution générale \$y(x) = C e^{2x}\$.",
+                ),
+              ], finalAnswerFr: r"$y(x) = C e^{2x}$"),
+            ),
+            _q(
+              2,
+              "Déterminer la solution particulière vérifiant \$y(0) = 3\$.",
+              1,
+              _sol([
+                _step(
+                  "Application de la condition initiale : \$y(0) = C e^0 = C = 3\$. Donc \$C = 3\$.",
+                ),
+                _step(
+                  "Solution unique : \$y(x) = 3 e^{2x}\$. Cette fonction croît exponentiellement.",
+                ),
+              ], finalAnswerFr: r"$y(x) = 3 e^{2x}$"),
+            ),
+            _q(
+              3,
+              "Calculer \$\\lim_{x \\to +\\infty} y(x)\$ et \$\\lim_{x \\to -\\infty} y(x)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\lim_{x \\to +\\infty} 3e^{2x} = +\\infty\$ (exponentielle croissante).",
+                ),
+                _step(
+                  "\$\\lim_{x \\to -\\infty} 3e^{2x} = 0^+\$ (asymptote horizontale \$y = 0\$).",
+                  tipFr:
+                      "Pour \$a > 0\$ dans \$y = Ce^{ax}\$, croissance vers \$+\\infty\$ ; pour \$a < 0\$, décroissance vers \$0\$.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\lim_{+\infty} = +\infty$, $\lim_{-\infty} = 0$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'EDO avec second membre — méthode',
+          5,
+          "On considère l'équation \$(E_2) : y' + y = 2\$ et la condition \$y(0) = 5\$.",
+          [
+            _q(
+              1,
+              "Trouver une solution particulière constante de \$(E_2)\$.",
+              1,
+              _sol([
+                _step(
+                  "On cherche \$y_p\$ constante, donc \$y_p' = 0\$. Reportons dans l'équation : \$0 + y_p = 2 \\iff y_p = 2\$.",
+                ),
+                _step(
+                  "Solution particulière constante : \$y_p(x) = 2\$.",
+                ),
+              ], finalAnswerFr: r"$y_p = 2$"),
+            ),
+            _q(
+              2,
+              "Donner la solution générale de l'équation homogène \$y' + y = 0\$.",
+              1,
+              _sol([
+                _step(
+                  "\$y' + y = 0 \\iff y' = -y\$. C'est de la forme \$y' = ay\$ avec \$a = -1\$.",
+                ),
+                _step(
+                  "Solution générale : \$y_h(x) = C e^{-x}\$, \$C \\in \\mathbb{R}\$.",
+                ),
+              ], finalAnswerFr: r"$y_h(x) = C e^{-x}$"),
+            ),
+            _q(
+              3,
+              "En déduire la solution générale de \$(E_2)\$, puis celle vérifiant \$y(0) = 5\$.",
+              3,
+              _sol([
+                _step(
+                  "**Principe de superposition** : solution générale = homogène + particulière. \$y(x) = y_h + y_p = C e^{-x} + 2\$.",
+                ),
+                _step(
+                  "Vérification : \$y' = -Ce^{-x}\$, \$y' + y = -Ce^{-x} + Ce^{-x} + 2 = 2\$ ✓.",
+                ),
+                _step(
+                  "Condition initiale : \$y(0) = C + 2 = 5 \\iff C = 3\$. Solution : \$y(x) = 3 e^{-x} + 2\$.",
+                ),
+                _step(
+                  "**Comportement asymptotique** : quand \$x \\to +\\infty\$, \$y \\to 2\$ (la solution converge vers la solution particulière constante). \$y = 2\$ est l'**équilibre**.",
+                  tipFr:
+                      "Pour \$y' + y = b\$, l'équilibre \$y = b\$ attire toutes les solutions (système stable).",
+                ),
+              ], finalAnswerFr: r"$y(x) = 3 e^{-x} + 2$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'EDO d\'ordre 2 — oscillateur harmonique',
+          5,
+          "Soit l'équation \$(E_3) : y'' + 9 y = 0\$. Conditions : \$y(0) = 2\$ et \$y'(0) = 0\$.",
+          [
+            _q(
+              1,
+              "Identifier la forme et la pulsation \$\\omega\$.",
+              1,
+              _sol([
+                _step(
+                  "Forme canonique de l'oscillateur harmonique : \$y'' + \\omega^2 y = 0\$. Identification : \$\\omega^2 = 9 \\iff \\omega = 3\$ rad/s (par convention positive).",
+                ),
+              ], finalAnswerFr: r"$\omega = 3$"),
+            ),
+            _q(
+              2,
+              "Donner la solution générale.",
+              1,
+              _sol([
+                _step(
+                  "Solution générale : \$y(x) = A \\cos(\\omega x) + B \\sin(\\omega x) = A\\cos(3x) + B\\sin(3x)\$ avec \$A, B \\in \\mathbb{R}\$.",
+                ),
+              ], finalAnswerFr: r"$y(x) = A\cos(3x) + B\sin(3x)$"),
+            ),
+            _q(
+              3,
+              "Déterminer \$A\$ et \$B\$ grâce aux conditions initiales.",
+              3,
+              _sol([
+                _step(
+                  "Condition 1 : \$y(0) = A\\cos(0) + B\\sin(0) = A = 2\$. Donc \$A = 2\$.",
+                ),
+                _step(
+                  "Pour exploiter \$y'(0)\$, on dérive : \$y'(x) = -3A\\sin(3x) + 3B\\cos(3x)\$.",
+                ),
+                _step(
+                  "Condition 2 : \$y'(0) = -3A \\cdot 0 + 3B \\cdot 1 = 3B = 0\$, donc \$B = 0\$.",
+                ),
+                _step(
+                  "Solution : \$y(x) = 2\\cos(3x)\$. **Période** \$T = 2\\pi/\\omega = 2\\pi/3\$ s. **Amplitude** = 2.",
+                  tipFr:
+                      "Pour \$y'' + \\omega^2 y = 0\$ : période \$T = 2\\pi/\\omega\$. Vrai en mécanique (pendule, ressort) et en électricité (LC).",
+                ),
+              ], finalAnswerFr: r"$y(x) = 2\cos(3x)$, $T = 2\pi/3$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — décroissance radioactive',
+          5,
+          "Le nombre \$N(t)\$ de noyaux d'un échantillon radioactif vérifie \$N'(t) = -\\lambda N(t)\$ avec \$N(0) = N_0\$ et \$\\lambda > 0\$ (constante radioactive).",
+          [
+            _q(
+              1,
+              "Donner \$N(t)\$ et démontrer que sa demi-vie est \$t_{1/2} = \\dfrac{\\ln 2}{\\lambda}\$.",
+              3,
+              _sol([
+                _step(
+                  "\$N' = -\\lambda N\$ → solution \$N(t) = N_0 e^{-\\lambda t}\$ (avec \$N(0) = N_0\$).",
+                ),
+                _step(
+                  "**Demi-vie** \$t_{1/2}\$ : durée pour que \$N\$ soit divisée par 2. On résout \$N(t_{1/2}) = N_0/2\$ : \$N_0 e^{-\\lambda t_{1/2}} = N_0 / 2\$.",
+                ),
+                _step(
+                  "Simplification : \$e^{-\\lambda t_{1/2}} = 1/2 \\iff -\\lambda t_{1/2} = \\ln(1/2) = -\\ln 2 \\iff t_{1/2} = \\ln(2)/\\lambda\$.",
+                ),
+                _step(
+                  "**Propriété remarquable** : \$t_{1/2}\$ ne dépend pas de \$N_0\$ — chaque demi-vie réduit la quantité d'un facteur 2, peu importe le point de départ.",
+                  tipFr:
+                      "Demi-vie indépendante de \$N_0\$ → caractéristique unique des cinétiques d'ordre 1.",
+                ),
+              ], finalAnswerFr: r"$N(t) = N_0 e^{-\lambda t}$, $t_{1/2} = \ln(2)/\lambda$"),
+            ),
+            _q(
+              2,
+              "Pour le carbone-14, \$t_{1/2} = 5730\$ ans. Au bout de \$3 t_{1/2}\$ quel pourcentage du \$N_0\$ initial reste-t-il ?",
+              2,
+              _sol([
+                _step(
+                  "Au bout de \$n\$ demi-vies, il reste \$N_0/2^n\$.",
+                ),
+                _step(
+                  "Pour \$n = 3\$ : \$N = N_0/2^3 = N_0/8 = 0{,}125 N_0\$, soit **12,5%**.",
+                ),
+                _step(
+                  "Application typique : datation au carbone-14 d'un échantillon archéologique. Après \$3 t_{1/2} = 17190\$ ans, il reste 12,5% du \$^{14}\$C initial — détectable mais déjà bien attenué.",
+                ),
+              ], finalAnswerFr: r"$N/N_0 = 1/8 = 12{,}5\%$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperComplexBasics() => _paper(
+      titleFr: 'Épreuve type — Nombres complexes',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Forme algébrique, module, argument, forme trigonométrique, conjugué, équations dans \$\\mathbb{C}\$. Rappel : \$i^2 = -1\$, \$|z|^2 = z\\bar{z}\$, \$\\arg(z_1 z_2) = \\arg z_1 + \\arg z_2\$.",
+      exercices: [
+        _ex(
+          1,
+          'Forme algébrique — opérations',
+          4,
+          "On donne \$z_1 = 3 + 2i\$ et \$z_2 = 1 - i\$.",
+          [
+            _q(
+              1,
+              "Calculer \$z_1 + z_2\$, \$z_1 z_2\$ et \$\\dfrac{z_1}{z_2}\$ sous forme algébrique.",
+              3,
+              _sol([
+                _step(
+                  "**Somme** : \$z_1 + z_2 = (3 + 1) + (2 - 1)i = 4 + i\$.",
+                ),
+                _step(
+                  "**Produit** : \$z_1 z_2 = (3 + 2i)(1 - i) = 3 - 3i + 2i - 2i^2 = 3 - i + 2 = 5 - i\$.",
+                ),
+                _step(
+                  "**Quotient** : on multiplie haut et bas par le conjugué de \$z_2\$, soit \$1 + i\$. \$\\dfrac{z_1}{z_2} = \\dfrac{(3+2i)(1+i)}{(1-i)(1+i)} = \\dfrac{3 + 3i + 2i + 2i^2}{1 - i^2} = \\dfrac{1 + 5i}{2} = \\dfrac{1}{2} + \\dfrac{5}{2}i\$.",
+                  tipFr:
+                      "Pour diviser : multiplier par le conjugué du dénominateur. \$z\\bar{z}\$ est toujours réel positif (\$= |z|^2\$).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$z_1+z_2 = 4+i$, $z_1 z_2 = 5-i$, $z_1/z_2 = 1/2 + 5i/2$"),
+            ),
+            _q(
+              2,
+              "Calculer \$|z_1|\$ et \$|z_2|\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z_1| = \\sqrt{3^2 + 2^2} = \\sqrt{13}\$. \$|z_2| = \\sqrt{1 + 1} = \\sqrt{2}\$.",
+                ),
+                _step(
+                  "**Vérification** : \$|z_1 z_2| = |z_1| \\cdot |z_2| = \\sqrt{13} \\cdot \\sqrt{2} = \\sqrt{26}\$. Direct : \$|5 - i| = \\sqrt{25 + 1} = \\sqrt{26}\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$|z_1| = \sqrt{13}$, $|z_2| = \sqrt{2}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Forme trigonométrique et Moivre',
+          6,
+          "On considère \$z = 1 + i\$.",
+          [
+            _qSubs(
+              1,
+              "Forme trigonométrique de \$z\$.",
+              3,
+              [
+                _sub(
+                  'a',
+                  "Calculer \$|z|\$ et \$\\arg(z)\$.",
+                  2,
+                  _sol([
+                    _step(
+                      "\$|z| = \\sqrt{1 + 1} = \\sqrt{2}\$.",
+                    ),
+                    _step(
+                      "Pour l'argument : \$\\cos\\theta = 1/\\sqrt{2}\$ et \$\\sin\\theta = 1/\\sqrt{2}\$. Les deux étant positifs, \$z\$ est dans le **premier quadrant** : \$\\theta = \\pi/4\$.",
+                      tipFr:
+                          "Toujours vérifier le quadrant : tan seul ne suffit pas (\$\\tan\\pi/4 = \\tan(\\pi/4 + \\pi)\$).",
+                    ),
+                  ], finalAnswerFr: r"$|z| = \sqrt{2}$, $\arg z = \pi/4$"),
+                ),
+                _sub(
+                  'b',
+                  "Écrire \$z\$ sous forme trigonométrique et exponentielle.",
+                  1,
+                  _sol([
+                    _step(
+                      "Forme trigonométrique : \$z = \\sqrt{2}(\\cos(\\pi/4) + i\\sin(\\pi/4))\$. Forme exponentielle : \$z = \\sqrt{2} e^{i\\pi/4}\$.",
+                    ),
+                  ],
+                      finalAnswerFr:
+                          r"$z = \sqrt{2} e^{i\pi/4}$"),
+                ),
+              ],
+            ),
+            _q(
+              2,
+              "Calculer \$z^4\$ en utilisant la formule de Moivre.",
+              3,
+              _sol([
+                _step(
+                  "**Formule de Moivre** : \$z^n = r^n e^{in\\theta}\$ pour \$z = re^{i\\theta}\$.",
+                ),
+                _step(
+                  "Application : \$z^4 = (\\sqrt{2})^4 e^{i \\cdot 4 \\cdot \\pi/4} = 4 \\cdot e^{i\\pi} = 4 \\cdot (-1) = -4\$.",
+                ),
+                _step(
+                  "**Vérification par développement direct** : \$z^2 = (1+i)^2 = 1 + 2i + i^2 = 2i\$. \$z^4 = (z^2)^2 = (2i)^2 = -4\$ ✓.",
+                  tipFr:
+                      "Pour des puissances élevées, Moivre est instantané ; le développement direct devient impraticable.",
+                ),
+              ], finalAnswerFr: r"$z^4 = -4$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          r"Équation du second degré dans $\mathbb{C}$",
+          5,
+          "On considère l'équation \$(E) : z^2 - 2z + 5 = 0\$.",
+          [
+            _q(
+              1,
+              "Calculer le discriminant \$\\Delta\$ et conclure sur l'existence de racines réelles.",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta = b^2 - 4ac = 4 - 20 = -16 < 0\$. L'équation n'a **pas de racines réelles**, mais admet deux racines complexes conjuguées dans \$\\mathbb{C}\$.",
+                ),
+              ], finalAnswerFr: r"$\Delta = -16 < 0$"),
+            ),
+            _q(
+              2,
+              "Résoudre \$(E)\$ dans \$\\mathbb{C}\$.",
+              3,
+              _sol([
+                _step(
+                  "Pour \$\\Delta < 0\$, on a \$\\sqrt{\\Delta} = \\pm i\\sqrt{-\\Delta} = \\pm i\\sqrt{16} = \\pm 4i\$.",
+                ),
+                _step(
+                  "Racines : \$z = \\dfrac{-b \\pm i\\sqrt{-\\Delta}}{2a} = \\dfrac{2 \\pm 4i}{2} = 1 \\pm 2i\$.",
+                ),
+                _step(
+                  "Donc \$S = \\{1 + 2i,\\, 1 - 2i\\}\$. Les deux racines sont **complexes conjuguées** — propriété générale d'une équation à coefficients réels.",
+                  tipFr:
+                      "Coefficients réels + \$\\Delta < 0\$ ⇒ racines conjuguées \$\\alpha \\pm i\\beta\$.",
+                ),
+              ], finalAnswerFr: r"$S = \{1 \pm 2i\}$"),
+            ),
+            _q(
+              3,
+              "Vérifier la somme et le produit des racines avec les formules de Viète.",
+              1,
+              _sol([
+                _step(
+                  "Somme : \$z_1 + z_2 = (1 + 2i) + (1 - 2i) = 2\$. Or \$-b/a = 2/1 = 2\$ ✓.",
+                ),
+                _step(
+                  "Produit : \$z_1 z_2 = (1 + 2i)(1 - 2i) = 1 + 4 = 5\$. Or \$c/a = 5\$ ✓.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application géométrique',
+          5,
+          "Dans le plan complexe, on considère \$A\$, \$B\$, \$C\$ d'affixes \$z_A = 1\$, \$z_B = 1 + i\\sqrt{3}\$, \$z_C = -1 + i\\sqrt{3}\$.",
+          [
+            _q(
+              1,
+              "Calculer les distances \$AB\$, \$BC\$, \$CA\$.",
+              3,
+              _sol([
+                _step(
+                  "\$AB = |z_B - z_A| = |i\\sqrt{3}| = \\sqrt{3}\$.",
+                ),
+                _step(
+                  "\$BC = |z_C - z_B| = |-2 + 0| = 2\$.",
+                ),
+                _step(
+                  "\$CA = |z_A - z_C| = |1 - (-1 + i\\sqrt{3})| = |2 - i\\sqrt{3}| = \\sqrt{4 + 3} = \\sqrt{7}\$.",
+                ),
+              ], finalAnswerFr: r"$AB = \sqrt{3}$, $BC = 2$, $CA = \sqrt{7}$"),
+            ),
+            _q(
+              2,
+              "Le triangle \$ABC\$ est-il isocèle ? Rectangle ? Quelconque ?",
+              2,
+              _sol([
+                _step(
+                  "Les trois côtés sont tous différents (\$\\sqrt{3}, 2, \\sqrt{7}\$), donc le triangle **n'est pas isocèle**.",
+                ),
+                _step(
+                  "**Test de Pythagore** : \$AB^2 + BC^2 = 3 + 4 = 7 = CA^2\$ ✓. Donc le triangle est **rectangle en \$B\$** (le côté \$CA\$ est l'hypoténuse).",
+                  tipFr:
+                      "Réciproque de Pythagore : si \$a^2 + b^2 = c^2\$, le triangle est rectangle avec hypoténuse \$c\$.",
+                ),
+                _step(
+                  "Conclusion : triangle **rectangle scalène** (rectangle non isocèle), aire \$= AB \\cdot BC / 2 = \\sqrt{3} \\cdot 2 / 2 = \\sqrt{3}\$.",
+                ),
+              ], finalAnswerFr: r"Triangle rectangle en $B$, aire = $\sqrt{3}$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperVectors3d() => _paper(
+      titleFr: 'Épreuve type — Géométrie dans l\'espace',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Vecteurs de \$\\mathbb{R}^3\$, produit scalaire, produit vectoriel, équation cartésienne d'un plan, distance point-plan, intersection droite-plan.",
+      exercices: [
+        _ex(
+          1,
+          'Vecteurs et produit scalaire',
+          4,
+          "Dans un repère orthonormé direct \$(O, \\vec{i}, \\vec{j}, \\vec{k})\$, on donne \$A(1, 2, 3)\$, \$B(4, 6, 3)\$, \$C(2, -1, 5)\$.",
+          [
+            _q(
+              1,
+              "Calculer les vecteurs \$\\vec{AB}\$ et \$\\vec{AC}\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\vec{AB} = B - A = (4-1, 6-2, 3-3) = (3, 4, 0)\$.",
+                ),
+                _step(
+                  "\$\\vec{AC} = C - A = (1, -3, 2)\$.",
+                ),
+              ], finalAnswerFr: r"$\vec{AB} = (3, 4, 0)$, $\vec{AC} = (1, -3, 2)$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\vec{AB} \\cdot \\vec{AC}\$ et déduire l'angle \$\\widehat{BAC}\$ (3 chiffres significatifs).",
+              3,
+              _sol([
+                _step(
+                  "**Produit scalaire** : \$\\vec{u} \\cdot \\vec{v} = u_x v_x + u_y v_y + u_z v_z\$. Application : \$\\vec{AB} \\cdot \\vec{AC} = 3 \\cdot 1 + 4 \\cdot (-3) + 0 \\cdot 2 = 3 - 12 + 0 = -9\$.",
+                ),
+                _step(
+                  "**Normes** : \$\\|\\vec{AB}\\| = \\sqrt{9 + 16 + 0} = 5\$ ; \$\\|\\vec{AC}\\| = \\sqrt{1 + 9 + 4} = \\sqrt{14}\$.",
+                ),
+                _step(
+                  "**Formule** : \$\\cos\\widehat{BAC} = \\dfrac{\\vec{AB} \\cdot \\vec{AC}}{\\|\\vec{AB}\\| \\|\\vec{AC}\\|} = \\dfrac{-9}{5\\sqrt{14}} \\approx -0{,}481\$.",
+                ),
+                _step(
+                  "Angle : \\widehat{BAC} = \\arccos(-0{,}481) \\approx 118{,}8°.",
+                  tipFr:
+                      "Produit scalaire négatif → angle obtus (> 90°). Cohérent ici.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\vec{AB} \cdot \vec{AC} = -9$, $\widehat{BAC} \approx 118{,}8°$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Produit vectoriel et aire',
+          5,
+          "On reprend \$A, B, C\$ comme à l'Exercice 1.",
+          [
+            _q(
+              1,
+              "Calculer \$\\vec{AB} \\wedge \\vec{AC}\$.",
+              3,
+              _sol([
+                _step(
+                  "**Produit vectoriel** : \$\\vec{u} \\wedge \\vec{v} = (u_y v_z - u_z v_y, u_z v_x - u_x v_z, u_x v_y - u_y v_x)\$.",
+                ),
+                _step(
+                  "Avec \$\\vec{AB} = (3, 4, 0)\$, \$\\vec{AC} = (1, -3, 2)\$ :\\nx-composante : \$4 \\cdot 2 - 0 \\cdot (-3) = 8\$.\\ny-composante : \$0 \\cdot 1 - 3 \\cdot 2 = -6\$.\\nz-composante : \$3 \\cdot (-3) - 4 \\cdot 1 = -13\$.",
+                ),
+                _step(
+                  "Donc \$\\vec{AB} \\wedge \\vec{AC} = (8, -6, -13)\$.",
+                ),
+                _step(
+                  "**Propriété** : ce vecteur est **perpendiculaire** à \$\\vec{AB}\$ et à \$\\vec{AC}\$ — c'est-à-dire normal au plan \$(ABC)\$.",
+                  tipFr:
+                      "Le produit vectoriel donne un vecteur normal au plan formé par les deux vecteurs initiaux.",
+                ),
+              ], finalAnswerFr: r"$\vec{AB} \wedge \vec{AC} = (8, -6, -13)$"),
+            ),
+            _q(
+              2,
+              "En déduire l'aire du triangle \$ABC\$.",
+              2,
+              _sol([
+                _step(
+                  "**Aire du triangle** = \$\\dfrac{1}{2} \\|\\vec{AB} \\wedge \\vec{AC}\\|\$.",
+                ),
+                _step(
+                  "Calcul : \$\\|(8, -6, -13)\\| = \\sqrt{64 + 36 + 169} = \\sqrt{269} \\approx 16{,}40\$.",
+                ),
+                _step(
+                  "Aire = \$\\sqrt{269}/2 \\approx 8{,}20\$ unités d'aire.",
+                ),
+              ], finalAnswerFr: r"Aire $= \sqrt{269}/2 \approx 8{,}20$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Équation cartésienne d\'un plan',
+          5,
+          "Soit le plan \$\\mathcal{P}\$ passant par \$A(1, 2, 3)\$ et de vecteur normal \$\\vec{n} = (2, 1, -1)\$.",
+          [
+            _q(
+              1,
+              "Donner une équation cartésienne de \$\\mathcal{P}\$.",
+              2,
+              _sol([
+                _step(
+                  "**Forme générale** : un plan de vecteur normal \$(a, b, c)\$ a pour équation \$ax + by + cz + d = 0\$.",
+                ),
+                _step(
+                  "Ici \$(a, b, c) = (2, 1, -1)\$, donc \$2x + y - z + d = 0\$.",
+                ),
+                _step(
+                  "On détermine \$d\$ en utilisant que \$A(1, 2, 3) \\in \\mathcal{P}\$ : \$2(1) + 2 - 3 + d = 0 \\iff 1 + d = 0 \\iff d = -1\$.",
+                ),
+                _step(
+                  "Équation : \$2x + y - z - 1 = 0\$.",
+                ),
+              ], finalAnswerFr: r"$2x + y - z - 1 = 0$"),
+            ),
+            _q(
+              2,
+              "Calculer la distance du point \$M(0, 0, 0)\$ au plan \$\\mathcal{P}\$.",
+              2,
+              _sol([
+                _step(
+                  "**Formule** : \$d(M_0, \\mathcal{P}) = \\dfrac{|a x_0 + b y_0 + c z_0 + d|}{\\sqrt{a^2 + b^2 + c^2}}\$.",
+                ),
+                _step(
+                  "Avec \$M = O(0,0,0)\$ et le plan \$2x + y - z - 1 = 0\$ : numérateur \$|0 + 0 + 0 - 1| = 1\$.",
+                ),
+                _step(
+                  "Dénominateur : \$\\sqrt{4 + 1 + 1} = \\sqrt{6}\$.",
+                ),
+                _step(
+                  "Distance : \$d = \\dfrac{1}{\\sqrt{6}} = \\dfrac{\\sqrt{6}}{6} \\approx 0{,}408\$.",
+                ),
+              ], finalAnswerFr: r"$d(O, \mathcal{P}) = \sqrt{6}/6 \approx 0{,}408$"),
+            ),
+            _q(
+              3,
+              "Le point \$N(2, 0, 3)\$ appartient-il à \$\\mathcal{P}\$ ?",
+              1,
+              _sol([
+                _step(
+                  "Tester : \$2(2) + 0 - 3 - 1 = 4 - 4 = 0\$ ✓. Donc \$N \\in \\mathcal{P}\$.",
+                ),
+              ], finalAnswerFr: r"Oui, $N \in \mathcal{P}$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Droite et plan — intersection',
+          6,
+          "Soit \$\\mathcal{D}\$ la droite passant par \$P(1, 1, 2)\$ et de vecteur directeur \$\\vec{u} = (2, -1, 1)\$. Soit \$\\mathcal{Q}\$ le plan d'équation \$x + 2y + z - 5 = 0\$.",
+          [
+            _q(
+              1,
+              "Donner une représentation paramétrique de \$\\mathcal{D}\$.",
+              2,
+              _sol([
+                _step(
+                  "**Forme paramétrique** : \$M(t) = P + t\\vec{u}\$. Soit \$\\{x = 1 + 2t,\\, y = 1 - t,\\, z = 2 + t\\}\$ pour \$t \\in \\mathbb{R}\$.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$x = 1 + 2t$, $y = 1 - t$, $z = 2 + t$"),
+            ),
+            _q(
+              2,
+              "Déterminer l'intersection \$\\mathcal{D} \\cap \\mathcal{Q}\$.",
+              4,
+              _sol([
+                _step(
+                  "On substitue les expressions paramétriques dans l'équation du plan : \$(1 + 2t) + 2(1 - t) + (2 + t) - 5 = 0\$.",
+                ),
+                _step(
+                  "Développement : \$1 + 2t + 2 - 2t + 2 + t - 5 = 0\$, soit \$0 + t = 0\$, donc \$t = 0\$.",
+                ),
+                _step(
+                  "Une seule solution \$t = 0\$ → la droite et le plan se coupent en un **point unique**.",
+                ),
+                _step(
+                  "Coordonnées : \$M = (1 + 0, 1 - 0, 2 + 0) = (1, 1, 2) = P\$. Vérification : \$1 + 2 + 2 - 5 = 0\$ ✓.",
+                  tipFr:
+                      "Trois cas : 1 point d'intersection (droite traverse le plan), aucun (droite parallèle au plan, non incluse), ou infinité (droite incluse dans le plan).",
+                ),
+              ], finalAnswerFr: r"$\mathcal{D} \cap \mathcal{Q} = \{P(1, 1, 2)\}$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -1531,7 +2145,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'sma_ln_basics': _paperLnBasics(),
   'sma_exp_basics': _paperExpBasics(),
   'sma_primitives': _paperPrimitives(),
-  // Other 26 SMA chapters appended in subsequent encoder edits.
+  'sma_ode_first_order': _paperOdeFirstOrder(),
+  'sma_complex_basics': _paperComplexBasics(),
+  'sma_vectors_3d': _paperVectors3d(),
+  // 23 SMA chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
