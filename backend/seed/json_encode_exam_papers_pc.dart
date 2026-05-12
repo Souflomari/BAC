@@ -1505,6 +1505,829 @@ Map<String, dynamic> _paperDerivApps() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperLnFunction() => _paper(
+      titleFr: 'Épreuve type — Fonction logarithme népérien',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Fonction \$\\ln\$ définie sur \$]0, +\\infty[\$, \$\\ln 1 = 0\$, \$\\ln e = 1\$. Propriétés : \$\\ln(ab) = \\ln a + \\ln b\$, \$(\\ln u)' = u'/u\$.",
+      exercices: [
+        _ex(
+          1,
+          'Propriétés algébriques et équations',
+          5,
+          "Rappel : \$\\ln(ab) = \\ln a + \\ln b\$, \$\\ln(a/b) = \\ln a - \\ln b\$, \$\\ln(a^n) = n \\ln a\$ pour \$a, b > 0\$.",
+          [
+            _q(
+              1,
+              "Simplifier \$A = \\ln 8 + \\ln 3 - 2 \\ln 2 - \\ln 6\$.",
+              2,
+              _sol([
+                _step(
+                  "Réécrire : \$2 \\ln 2 = \\ln 4\$ et regrouper. \$A = \\ln 8 - \\ln 4 + \\ln 3 - \\ln 6 = \\ln(8/4) + \\ln(3/6) = \\ln 2 + \\ln(1/2)\$.",
+                ),
+                _step(
+                  "\$\\ln(1/2) = -\\ln 2\$, donc \$A = \\ln 2 - \\ln 2 = 0\$.",
+                  tipFr:
+                      "Regrouper les \$\\ln\$ par somme/différence avant de calculer numériquement — souvent tout se simplifie.",
+                ),
+              ], finalAnswerFr: r"$A = 0$"),
+            ),
+            _q(
+              2,
+              "Résoudre dans \$\\mathbb{R}\$ : \$\\ln(2x - 1) = \\ln(x + 3)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Domaine** : \$2x - 1 > 0\$ et \$x + 3 > 0\$, soit \$x > 1/2\$ (plus restrictif).",
+                ),
+                _step(
+                  "Par injectivité de \$\\ln\$ : \$\\ln u = \\ln v \\iff u = v\$. \$2x - 1 = x + 3 \\iff x = 4\$.",
+                ),
+                _step(
+                  "\$x = 4 > 1/2\$ ✓ → \$S = \\{4\\}\$.",
+                  mistakeFr:
+                      "Toujours vérifier les conditions d'existence avant d'utiliser l'injectivité — une solution 'algébrique' peut être hors-domaine.",
+                ),
+              ], finalAnswerFr: r"$S = \{4\}$"),
+            ),
+            _q(
+              3,
+              "Résoudre \$\\ln(x^2 - 1) = \\ln 3 + \\ln(x + 1)\$.",
+              1,
+              _sol([
+                _step(
+                  "**Domaine** : \$x^2 - 1 > 0 \\iff x < -1\$ ou \$x > 1\$ ; \$x + 1 > 0 \\iff x > -1\$. Intersection : \$x > 1\$.",
+                ),
+                _step(
+                  "Équation : \$\\ln(x^2 - 1) - \\ln(x + 1) = \\ln 3 \\iff \\ln\\left(\\dfrac{x^2 - 1}{x + 1}\\right) = \\ln 3 \\iff \\ln(x - 1) = \\ln 3\$ (car \$(x^2-1)/(x+1) = x - 1\$).",
+                ),
+                _step(
+                  "Donc \$x - 1 = 3 \\iff x = 4 > 1\$ ✓. \$S = \\{4\\}\$.",
+                ),
+              ], finalAnswerFr: r"$S = \{4\}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Dérivation et étude',
+          5,
+          "Soit \$f(x) = x - \\ln x\$ sur \$]0, +\\infty[\$.",
+          [
+            _qSubs(
+              1,
+              "Étude de \$f\$.",
+              4,
+              [
+                _sub(
+                  'a',
+                  "Calculer \$f'(x)\$ et étudier son signe.",
+                  2,
+                  _sol([
+                    _step(
+                      "\$f'(x) = 1 - 1/x = \\dfrac{x - 1}{x}\$.",
+                    ),
+                    _step(
+                      "Sur \$]0, +\\infty[\$ : \$x > 0\$ → signe de \$f'\$ = signe de \$x - 1\$. \$f' < 0\$ sur \$]0, 1[\$, \$f' > 0\$ sur \$]1, +\\infty[\$, \$f'(1) = 0\$.",
+                    ),
+                  ], finalAnswerFr: r"$f'(x) = (x-1)/x$"),
+                ),
+                _sub(
+                  'b',
+                  "Tableau de variations et minimum.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$f\$ décroît sur \$]0, 1]\$, croît sur \$[1, +\\infty[\$. **Minimum global** en \$x = 1\$ : \$f(1) = 1 - \\ln 1 = 1\$.",
+                    ),
+                    _step(
+                      "**Conséquence** : pour tout \$x > 0\$, \$f(x) \\ge 1 \\iff x - \\ln x \\ge 1 \\iff \\ln x \\le x - 1\$. Inégalité classique.",
+                      tipFr:
+                          "L'inégalité \$\\ln x \\le x - 1\$ (égalité en 1) est très utile pour borner \$\\ln\$ par un polynôme.",
+                    ),
+                  ], finalAnswerFr: r"Min $f(1) = 1$; $\ln x \le x - 1$"),
+                ),
+                _sub(
+                  'c',
+                  "Limites aux bornes.",
+                  1,
+                  _sol([
+                    _step(
+                      "En \$0^+\$ : \$\\ln x \\to -\\infty\$ donc \$f(x) = x - \\ln x \\to 0 - (-\\infty) = +\\infty\$.",
+                    ),
+                    _step(
+                      "En \$+\\infty\$ : factoriser \$f(x) = x(1 - \\ln x / x)\$. Par croissances comparées, \$\\ln x / x \\to 0\$, donc \$f(x) \\to +\\infty\$.",
+                    ),
+                  ], finalAnswerFr: r"$+\infty$ aux deux bornes"),
+                ),
+              ],
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Composition',
+          5,
+          "Soit \$g(x) = \\ln(x^2 + 1)\$ sur \$\\mathbb{R}\$.",
+          [
+            _q(
+              1,
+              "Justifier le domaine.",
+              1,
+              _sol([
+                _step(
+                  "\$x^2 + 1 \\ge 1 > 0\$ pour tout \$x \\in \\mathbb{R}\$, donc \$\\ln(x^2 + 1)\$ est défini partout. \$\\mathcal D_g = \\mathbb{R}\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer \$g'(x)\$ et étudier les variations.",
+              2,
+              _sol([
+                _step(
+                  "**Règle** : \$(\\ln u)' = u'/u\$. Ici \$u = x^2 + 1\$, \$u' = 2x\$.",
+                ),
+                _step(
+                  "\$g'(x) = \\dfrac{2x}{x^2 + 1}\$. Dénominateur \$> 0\$, donc signe = signe de \$2x\$.",
+                ),
+                _step(
+                  "\$g\$ décroît sur \$]-\\infty, 0]\$, croît sur \$[0, +\\infty[\$. **Minimum** en \$x = 0\$ : \$g(0) = \\ln 1 = 0\$.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = 2x/(x^2+1)$; min $g(0) = 0$"),
+            ),
+            _q(
+              3,
+              "Limites en \$\\pm\\infty\$.",
+              2,
+              _sol([
+                _step(
+                  "Quand \$x \\to \\pm\\infty\$, \$x^2 + 1 \\to +\\infty\$ et \$\\ln t \\to +\\infty\$ quand \$t \\to +\\infty\$.",
+                ),
+                _step(
+                  "Par composition : \$\\lim_{\\pm\\infty} g = +\\infty\$.",
+                  tipFr:
+                      "\$g\$ est paire (\$g(-x) = g(x)\$) — mêmes valeurs et mêmes limites en \$\\pm\\infty\$.",
+                ),
+              ], finalAnswerFr: r"$\lim = +\infty$ aux deux bornes"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Inégalité',
+          5,
+          "Démontrer pour tout \$x > 0\$ : \$\\ln(1 + x) \\le x\$.",
+          [
+            _q(
+              1,
+              "Étudier la fonction \$h(x) = x - \\ln(1 + x)\$ sur \$]-1, +\\infty[\$.",
+              4,
+              _sol([
+                _step(
+                  "\$h(0) = 0 - \\ln 1 = 0\$.",
+                ),
+                _step(
+                  "\$h'(x) = 1 - \\dfrac{1}{1 + x} = \\dfrac{x}{1 + x}\$.",
+                ),
+                _step(
+                  "Sur \$]0, +\\infty[\$ : \$x > 0\$ et \$1 + x > 0\$ → \$h'(x) > 0\$. \$h\$ strictement croissante.",
+                ),
+                _step(
+                  "Donc pour \$x > 0\$ : \$h(x) > h(0) = 0 \\iff x - \\ln(1+x) > 0 \\iff \\ln(1 + x) < x\$ ✓.",
+                  tipFr:
+                      "Stratégie classique : pour montrer \$f < g\$ sur \$I\$, étudier \$g - f\$ et montrer qu'elle est strictement positive.",
+                ),
+              ], finalAnswerFr: r"$\ln(1+x) < x$ pour $x > 0$"),
+            ),
+            _q(
+              2,
+              "Application : encadrer \$\\ln 2\$.",
+              1,
+              _sol([
+                _step(
+                  "Avec \$x = 1\$ : \$\\ln 2 < 1\$. On peut aussi montrer \$\\ln(1+x) \\ge x - x^2/2\$ pour \$x \\ge 0\$, ce qui donne \$\\ln 2 \\ge 1/2\$. Encadrement \$1/2 < \\ln 2 < 1\$. Valeur exacte \$\\ln 2 \\approx 0{,}693\$.",
+                ),
+              ], finalAnswerFr: r"$0{,}5 < \ln 2 < 1$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperExpFunction() => _paper(
+      titleFr: 'Épreuve type — Fonction exponentielle',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Fonction \$\\exp(x) = e^x\$ : \$(e^x)' = e^x\$, \$e^x > 0\$ partout, \$e^0 = 1\$. Croissances comparées \$e^x \\gg x^n\$.",
+      exercices: [
+        _ex(
+          1,
+          'Propriétés algébriques',
+          5,
+          "Rappel : \$e^a \\cdot e^b = e^{a+b}\$, \$e^a/e^b = e^{a-b}\$, \$(e^a)^n = e^{na}\$, \$e^{-a} = 1/e^a\$.",
+          [
+            _q(
+              1,
+              "Simplifier \$A = \\dfrac{e^3 \\cdot e^{-1}}{e^4}\$.",
+              1,
+              _sol([
+                _step(
+                  "Numérateur : \$e^3 \\cdot e^{-1} = e^{3-1} = e^2\$.",
+                ),
+                _step(
+                  "Quotient : \$e^2 / e^4 = e^{2-4} = e^{-2}\$.",
+                ),
+              ], finalAnswerFr: r"$A = e^{-2}$"),
+            ),
+            _q(
+              2,
+              "Résoudre \$e^{2x} - 3 e^x + 2 = 0\$.",
+              3,
+              _sol([
+                _step(
+                  "**Astuce** : poser \$X = e^x\$ (\$X > 0\$). \$e^{2x} = X^2\$, l'équation devient \$X^2 - 3X + 2 = 0\$.",
+                ),
+                _step(
+                  "Discriminant : \$\\Delta = 9 - 8 = 1\$. Racines : \$X = 2\$ ou \$X = 1\$. Les deux sont positives ✓.",
+                ),
+                _step(
+                  "Retour à \$x\$ : \$e^x = 2 \\iff x = \\ln 2\$ ; \$e^x = 1 \\iff x = 0\$. \$S = \\{0, \\ln 2\\}\$.",
+                  tipFr:
+                      "Pour une équation polynomiale en \$e^x\$, substituer \$X = e^x\$ ramène à un polynôme classique.",
+                ),
+              ], finalAnswerFr: r"$S = \{0, \ln 2\}$"),
+            ),
+            _q(
+              3,
+              "Résoudre \$e^x \\ge 5\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\ln\$ étant strictement croissante, on applique \$\\ln\$ aux deux membres : \$e^x \\ge 5 \\iff x \\ge \\ln 5 \\approx 1{,}609\$.",
+                ),
+              ], finalAnswerFr: r"$x \ge \ln 5$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Étude de \$f(x) = x e^{-x}\$',
+          5,
+          "Soit \$f(x) = x e^{-x}\$ sur \$\\mathbb{R}\$.",
+          [
+            _q(
+              1,
+              "Calculer \$f'(x)\$ et étudier son signe.",
+              2,
+              _sol([
+                _step(
+                  "**Produit** : \$u = x\$ (\$u' = 1\$), \$v = e^{-x}\$ (\$v' = -e^{-x}\$).",
+                ),
+                _step(
+                  "\$f'(x) = 1 \\cdot e^{-x} + x \\cdot (-e^{-x}) = e^{-x}(1 - x)\$.",
+                ),
+                _step(
+                  "\$e^{-x} > 0\$ toujours → signe de \$f'\$ = signe de \$1 - x\$. \$f' > 0\$ sur \$]-\\infty, 1[\$, \$f' < 0\$ sur \$]1, +\\infty[\$.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = e^{-x}(1 - x)$"),
+            ),
+            _q(
+              2,
+              "Tableau de variations et extremum.",
+              1,
+              _sol([
+                _step(
+                  "\$f\$ croît sur \$]-\\infty, 1]\$, décroît sur \$[1, +\\infty[\$. **Maximum global** en \$x = 1\$ : \$f(1) = 1 \\cdot e^{-1} = 1/e \\approx 0{,}368\$.",
+                ),
+              ], finalAnswerFr: r"Max $f(1) = 1/e$"),
+            ),
+            _q(
+              3,
+              "Limites en \$\\pm\\infty\$.",
+              2,
+              _sol([
+                _step(
+                  "En \$-\\infty\$ : \$x \\to -\\infty\$ et \$e^{-x} \\to +\\infty\$ — produit (négatif) × (positif) → \$f \\to -\\infty\$.",
+                ),
+                _step(
+                  "En \$+\\infty\$ : \$f(x) = x/e^x\$. Par croissances comparées, \$\\lim x/e^x = 0\$. Donc \$f \\to 0\$.",
+                  tipFr:
+                      "**Croissances comparées** : \$\\lim_{x \\to +\\infty} x^n/e^x = 0\$ pour tout \$n\$. L'exponentielle domine toute puissance.",
+                ),
+              ], finalAnswerFr: r"$-\infty$ et $0$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Limites et croissances comparées',
+          5,
+          "Calculer les limites suivantes.",
+          [
+            _q(
+              1,
+              "\$\\lim_{x \\to +\\infty} \\dfrac{e^x}{x^3}\$.",
+              1,
+              _sol([
+                _step(
+                  "Croissances comparées : \$\\lim e^x / x^n = +\\infty\$. Donc limite = \$+\\infty\$.",
+                ),
+              ], finalAnswerFr: r"$+\infty$"),
+            ),
+            _q(
+              2,
+              "\$\\lim_{x \\to +\\infty} x^2 e^{-x}\$.",
+              2,
+              _sol([
+                _step(
+                  "Réécrire : \$x^2 e^{-x} = x^2/e^x\$. Forme \$\\infty/\\infty\$.",
+                ),
+                _step(
+                  "Par croissances comparées : \$\\lim x^2/e^x = 0\$. Donc limite = 0.",
+                ),
+              ], finalAnswerFr: r"$\lim = 0$"),
+            ),
+            _q(
+              3,
+              "\$\\lim_{x \\to 0} \\dfrac{e^x - 1}{x}\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$0/0\$. Reconnaître le **taux d'accroissement** de \$\\exp\$ en 0 : \$\\dfrac{e^x - e^0}{x - 0}\$. Sa limite quand \$x \\to 0\$ est \$\\exp'(0) = e^0 = 1\$.",
+                  tipFr:
+                      "**Limites usuelles** : \$\\lim_0 (e^x - 1)/x = 1\$, \$\\lim_0 \\sin x/x = 1\$, \$\\lim_0 \\ln(1+x)/x = 1\$.",
+                ),
+              ], finalAnswerFr: r"$\lim = 1$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Modèle de décroissance — radioactivité',
+          5,
+          "Une quantité \$Q(t)\$ vérifie \$Q(t) = Q_0 e^{-\\lambda t}\$ avec \$Q_0 = 100\$ et \$Q(2) = 60\$.",
+          [
+            _q(
+              1,
+              "Calculer la constante \$\\lambda\$.",
+              2,
+              _sol([
+                _step(
+                  "\$Q(2) = 100 e^{-2\\lambda} = 60 \\iff e^{-2\\lambda} = 0{,}6\$.",
+                ),
+                _step(
+                  "Appliquer \$\\ln\$ : \$-2\\lambda = \\ln(0{,}6)\$, donc \$\\lambda = -\\ln(0{,}6)/2 = \\ln(5/3)/2 \\approx 0{,}255\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda \approx 0{,}255$"),
+            ),
+            _q(
+              2,
+              "Déterminer la demi-vie \$t_{1/2}\$.",
+              2,
+              _sol([
+                _step(
+                  "\$Q(t_{1/2}) = Q_0/2 \\iff e^{-\\lambda t_{1/2}} = 1/2 \\iff -\\lambda t_{1/2} = -\\ln 2 \\iff t_{1/2} = \\ln 2 / \\lambda\$.",
+                ),
+                _step(
+                  "Avec \$\\lambda \\approx 0{,}255\$ : \$t_{1/2} \\approx 0{,}693/0{,}255 \\approx 2{,}72\$.",
+                  tipFr:
+                      "**Formule fondamentale** : \$t_{1/2} = \\ln 2 / \\lambda\$. Indépendante de \$Q_0\$ — caractéristique du matériau.",
+                ),
+              ], finalAnswerFr: r"$t_{1/2} \approx 2{,}72$"),
+            ),
+            _q(
+              3,
+              "Calculer \$\\lim_{t \\to +\\infty} Q(t)\$ et interpréter.",
+              1,
+              _sol([
+                _step(
+                  "Quand \$t \\to +\\infty\$, \$-\\lambda t \\to -\\infty\$, \$e^{-\\lambda t} \\to 0^+\$. Donc \$Q(t) \\to 0\$.",
+                ),
+                _step(
+                  "**Interprétation** : décroissance asymptotique — il reste toujours un peu de matière. Cohérent avec la radioactivité.",
+                ),
+              ], finalAnswerFr: r"$\lim Q = 0$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperPrimitives() => _paper(
+      titleFr: 'Épreuve type — Primitives',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Primitive : fonction \$F\$ telle que \$F' = f\$. Unicité à une constante près. Primitives usuelles + formes \$u'/u\$, \$u' u^n\$, \$u' e^u\$.",
+      exercices: [
+        _ex(
+          1,
+          'Primitives usuelles',
+          5,
+          "Donner une primitive de chaque fonction sur le domaine indiqué.",
+          [
+            _q(
+              1,
+              "\$f(x) = x^3 - 4x + 2\$ sur \$\\mathbb{R}\$.",
+              1,
+              _sol([
+                _step(
+                  "Linéarité et primitive de \$x^n\$ = \$x^{n+1}/(n+1)\$ (pour \$n \\ne -1\$).",
+                ),
+                _step(
+                  "\$F(x) = \\dfrac{x^4}{4} - 2 x^2 + 2 x + C\$. Vérif : \$F'(x) = x^3 - 4x + 2\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$F(x) = x^4/4 - 2x^2 + 2x + C$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = 1/x^2\$ sur \$]0, +\\infty[\$.",
+              1,
+              _sol([
+                _step(
+                  "\$g(x) = x^{-2}\$, primitive \$x^{-1}/(-1) = -1/x\$. \$G(x) = -1/x + C\$.",
+                ),
+              ], finalAnswerFr: r"$G(x) = -1/x + C$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = \\sin(2x) + \\cos(3x)\$ sur \$\\mathbb{R}\$.",
+              2,
+              _sol([
+                _step(
+                  "Pour \$\\sin(ax)\$, primitive \$-\\cos(ax)/a\$. Pour \$\\cos(ax)\$, primitive \$\\sin(ax)/a\$.",
+                ),
+                _step(
+                  "\$H(x) = -\\cos(2x)/2 + \\sin(3x)/3 + C\$. Vérif : \$H'(x) = \\sin(2x) \\cdot 1 + \\cos(3x) \\cdot 1\$ ✓.",
+                  tipFr:
+                      "Le facteur \$1/a\$ compense la dérivation interne — sans lui, la dérivée serait \$a\\sin(ax)\$ au lieu de \$\\sin(ax)\$.",
+                ),
+              ], finalAnswerFr: r"$H(x) = -\cos(2x)/2 + \sin(3x)/3 + C$"),
+            ),
+            _q(
+              4,
+              "\$k(x) = e^{3x + 1}\$ sur \$\\mathbb{R}\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive de \$e^{ax + b}\$ : \$e^{ax+b}/a\$. \$K(x) = e^{3x+1}/3 + C\$.",
+                ),
+              ], finalAnswerFr: r"$K(x) = e^{3x+1}/3 + C$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Primitive avec condition',
+          5,
+          "Soit \$f(x) = 3 x^2 - 6x + 5\$.",
+          [
+            _q(
+              1,
+              "Donner la forme générale des primitives.",
+              1,
+              _sol([
+                _step(
+                  "\$F(x) = x^3 - 3 x^2 + 5x + C\$ (où \$C \\in \\mathbb{R}\$).",
+                ),
+              ], finalAnswerFr: r"$F(x) = x^3 - 3x^2 + 5x + C$"),
+            ),
+            _q(
+              2,
+              "Trouver la primitive \$F\$ vérifiant \$F(1) = 0\$.",
+              2,
+              _sol([
+                _step(
+                  "Condition : \$F(1) = 1 - 3 + 5 + C = 3 + C = 0 \\Rightarrow C = -3\$.",
+                ),
+                _step(
+                  "Donc \$F(x) = x^3 - 3 x^2 + 5x - 3\$. Vérification : \$F(1) = 1 - 3 + 5 - 3 = 0\$ ✓.",
+                  tipFr:
+                      "Toute primitive a une **constante d'intégration libre**, fixée par une condition initiale (souvent \$F(x_0) = y_0\$).",
+                ),
+              ], finalAnswerFr: r"$F(x) = x^3 - 3x^2 + 5x - 3$"),
+            ),
+            _q(
+              3,
+              "Combien y a-t-il de primitives de \$f\$ ?",
+              2,
+              _sol([
+                _step(
+                  "Il y a une **infinité** de primitives, toutes différant d'une constante (la 'constante d'intégration'). Une condition \$F(x_0) = y_0\$ en sélectionne exactement une.",
+                ),
+                _step(
+                  "Mathématiquement : si \$F_1\$ et \$F_2\$ sont primitives de \$f\$ alors \$(F_1 - F_2)' = 0\$ donc \$F_1 - F_2 = \\text{const}\$.",
+                ),
+              ], finalAnswerFr: r"Infinité, à constante près"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Formes reconnaissables',
+          5,
+          "Calculer les primitives en reconnaissant \$u'/u\$, \$u' u^n\$ ou \$u' e^u\$.",
+          [
+            _q(
+              1,
+              "\$\\int \\dfrac{2x}{x^2 + 1}\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$u'/u\$ avec \$u = x^2 + 1\$ (et \$u' = 2x\$). Primitive : \$\\ln|u| + C\$.",
+                ),
+                _step(
+                  "Comme \$x^2 + 1 > 0\$, on omet la valeur absolue : \$\\ln(x^2 + 1) + C\$.",
+                ),
+              ], finalAnswerFr: r"$\ln(x^2+1) + C$"),
+            ),
+            _q(
+              2,
+              "\$\\int (2x + 1)^5\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$u' u^n\$ avec \$u = 2x + 1\$, \$u' = 2\$. Le facteur 2 manque — multiplier-diviser par 2.",
+                ),
+                _step(
+                  "\$(2x + 1)^5 = \\dfrac{1}{2} \\cdot 2 (2x+1)^5\$. Primitive : \$\\dfrac{1}{2} \\cdot \\dfrac{(2x+1)^6}{6} = \\dfrac{(2x+1)^6}{12} + C\$.",
+                ),
+              ], finalAnswerFr: r"$(2x+1)^6/12 + C$"),
+            ),
+            _q(
+              3,
+              "\$\\int x e^{x^2}\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Forme \$u' e^u\$ avec \$u = x^2\$, \$u' = 2x\$. Facteur 2 manquant : \$x e^{x^2} = \\dfrac{1}{2} \\cdot 2x \\cdot e^{x^2}\$.",
+                ),
+                _step(
+                  "Primitive : \$\\dfrac{1}{2} e^{x^2} + C\$. Vérif : \$\\dfrac{d}{dx}\\left(\\frac{1}{2} e^{x^2}\\right) = \\dfrac{1}{2} \\cdot 2x e^{x^2} = x e^{x^2}\$ ✓.",
+                  tipFr:
+                      "Pour \$u' e^u\$, la primitive est simplement \$e^u\$. Si le coefficient ne colle pas, ajuster par multiplication-division.",
+                ),
+              ], finalAnswerFr: r"$e^{x^2}/2 + C$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Intégration par parties (introduction)',
+          5,
+          "On rappelle : \$\\int u v' = [u v] - \\int u' v\$.",
+          [
+            _q(
+              1,
+              "Calculer \$\\int x \\cos x\\,dx\$.",
+              3,
+              _sol([
+                _step(
+                  "**Choix** : \$u = x\$ (devient simple en dérivant) et \$v' = \\cos x\$ (donc \$v = \\sin x\$).",
+                ),
+                _step(
+                  "Application : \$\\int x \\cos x\\,dx = x \\sin x - \\int 1 \\cdot \\sin x\\,dx = x \\sin x + \\cos x + C\$.",
+                ),
+                _step(
+                  "Vérification : \$(x \\sin x + \\cos x)' = \\sin x + x \\cos x - \\sin x = x \\cos x\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$x \sin x + \cos x + C$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\int \\ln x\\,dx\$ par IPP.",
+              2,
+              _sol([
+                _step(
+                  "Astuce : \$\\ln x = 1 \\cdot \\ln x\$. Poser \$u = \\ln x\$ (\$u' = 1/x\$) et \$v' = 1\$ (\$v = x\$).",
+                ),
+                _step(
+                  "\$\\int \\ln x\\,dx = x \\ln x - \\int (1/x) \\cdot x\\,dx = x \\ln x - \\int 1\\,dx = x \\ln x - x + C\$.",
+                  tipFr:
+                      "**Astuce célèbre** : pour intégrer \$\\ln\$, l'écrire \$1 \\cdot \\ln\$ et faire une IPP.",
+                ),
+              ], finalAnswerFr: r"$x \ln x - x + C$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperIntegralCalc() => _paper(
+      titleFr: 'Épreuve type — Calcul intégral',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Intégrale définie via Newton-Leibniz : \$\\int_a^b f = F(b) - F(a)\$. Propriétés : linéarité, Chasles, positivité. Aires et valeur moyenne.",
+      exercices: [
+        _ex(
+          1,
+          'Calculs directs',
+          5,
+          "Calculer les intégrales.",
+          [
+            _q(
+              1,
+              "\$\\int_0^2 (x^2 + 1)\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "Primitive : \$F(x) = x^3/3 + x\$.",
+                ),
+                _step(
+                  "\$\\int_0^2 = F(2) - F(0) = (8/3 + 2) - 0 = 8/3 + 6/3 = 14/3\$.",
+                ),
+              ], finalAnswerFr: r"$14/3$"),
+            ),
+            _q(
+              2,
+              "\$\\int_1^e \\dfrac{dx}{x}\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive : \$\\ln x\$. \$\\int = \\ln e - \\ln 1 = 1 - 0 = 1\$.",
+                  tipFr:
+                      "**Définition historique de \$e\$** : \$\\int_1^e dt/t = 1\$. \$e\$ est le réel dont le logarithme népérien vaut 1.",
+                ),
+              ], finalAnswerFr: r"$\int = 1$"),
+            ),
+            _q(
+              3,
+              "\$\\int_0^\\pi \\sin x\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive : \$-\\cos x\$. \$\\int = -\\cos\\pi - (-\\cos 0) = 1 + 1 = 2\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 2$"),
+            ),
+            _q(
+              4,
+              "\$\\int_0^1 e^x\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive : \$e^x\$. \$\\int = e^1 - e^0 = e - 1 \\approx 1{,}718\$.",
+                ),
+              ], finalAnswerFr: r"$\int = e - 1$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Propriétés (Chasles, linéarité)',
+          5,
+          "Utiliser les propriétés.",
+          [
+            _q(
+              1,
+              "Sachant \$\\int_0^3 f = 7\$ et \$\\int_3^5 f = 2\$, calculer \$\\int_0^5 f\$.",
+              1,
+              _sol([
+                _step(
+                  "**Relation de Chasles** : \$\\int_a^c = \\int_a^b + \\int_b^c\$. Donc \$\\int_0^5 = 7 + 2 = 9\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 9$"),
+            ),
+            _q(
+              2,
+              "Sachant \$\\int_0^1 f = 5\$ et \$\\int_0^1 g = 3\$, calculer \$\\int_0^1 (2f - 3g)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Linéarité** : \$\\int (\\alpha f + \\beta g) = \\alpha \\int f + \\beta \\int g\$.",
+                ),
+                _step(
+                  "\$\\int_0^1 (2f - 3g) = 2 \\cdot 5 - 3 \\cdot 3 = 10 - 9 = 1\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 1$"),
+            ),
+            _q(
+              3,
+              "Si \$\\int_2^5 f = 4\$, calculer \$\\int_5^2 f\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\int_a^b = -\\int_b^a\$. Donc \$\\int_5^2 f = -4\$.",
+                ),
+              ], finalAnswerFr: r"$-4$"),
+            ),
+            _q(
+              4,
+              "Positivité : si \$f \\ge 0\$ et \$f\$ continue non identiquement nulle sur \$[a, b]\$, que dire de \$\\int_a^b f\$ ?",
+              1,
+              _sol([
+                _step(
+                  "\$\\int_a^b f > 0\$ strictement. La continuité + positivité non triviale garantit une aire strictement positive.",
+                ),
+              ], finalAnswerFr: r"$\int > 0$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Aire entre deux courbes',
+          5,
+          "Soient \$f(x) = x^2 + 1\$ et \$g(x) = x + 3\$.",
+          [
+            _q(
+              1,
+              "Trouver les points d'intersection.",
+              2,
+              _sol([
+                _step(
+                  "\$f(x) = g(x) \\iff x^2 + 1 = x + 3 \\iff x^2 - x - 2 = 0 \\iff (x - 2)(x + 1) = 0\$.",
+                ),
+                _step(
+                  "Solutions : \$x = -1\$ et \$x = 2\$. Points : \$(-1, 2)\$ et \$(2, 5)\$.",
+                ),
+              ], finalAnswerFr: r"$x = -1$ et $x = 2$"),
+            ),
+            _q(
+              2,
+              "Calculer l'aire du domaine entre les deux courbes.",
+              3,
+              _sol([
+                _step(
+                  "Sur \$[-1, 2]\$, on compare : à \$x = 0\$, \$f(0) = 1\$ et \$g(0) = 3\$ → \$g \\ge f\$ sur l'intervalle.",
+                ),
+                _step(
+                  "\$A = \\int_{-1}^{2} (g - f)\\,dx = \\int_{-1}^{2} (x + 3 - x^2 - 1)\\,dx = \\int_{-1}^{2} (-x^2 + x + 2)\\,dx\$.",
+                ),
+                _step(
+                  "Primitive : \$-x^3/3 + x^2/2 + 2x\$. En 2 : \$-8/3 + 2 + 4 = -8/3 + 6 = 10/3\$. En -1 : \$1/3 + 1/2 - 2 = 2/6 + 3/6 - 12/6 = -7/6\$.",
+                ),
+                _step(
+                  "Différence : \$10/3 - (-7/6) = 20/6 + 7/6 = 27/6 = 9/2\$.",
+                  tipFr:
+                      "**Aire entre deux courbes** : \$\\int_a^b |f - g|\\,dx\$. En pratique, identifier laquelle est au-dessus puis ne pas mettre la valeur absolue.",
+                ),
+              ], finalAnswerFr: r"$A = 9/2$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Valeur moyenne',
+          5,
+          "Valeur moyenne : \$\\bar f = \\dfrac{1}{b - a} \\int_a^b f\$.",
+          [
+            _q(
+              1,
+              "Calculer la valeur moyenne de \$f(x) = x^2\$ sur \$[0, 2]\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\int_0^2 x^2\\,dx = [x^3/3]_0^2 = 8/3\$.",
+                ),
+                _step(
+                  "\$\\bar f = \\dfrac{1}{2 - 0} \\cdot \\dfrac{8}{3} = \\dfrac{4}{3}\$.",
+                ),
+                _step(
+                  "**Interprétation** : si on remplaçait \$f\$ par sa moyenne constante \$4/3\$ sur \$[0, 2]\$, l'aire totale serait identique : \$(4/3) \\times 2 = 8/3\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$\bar f = 4/3$"),
+            ),
+            _q(
+              2,
+              "Théorème de la moyenne : trouver \$c \\in [0, 2]\$ tel que \$f(c) = \\bar f\$.",
+              2,
+              _sol([
+                _step(
+                  "On cherche \$c^2 = 4/3\$, soit \$c = \\pm 2/\\sqrt 3\$. La valeur dans \$[0, 2]\$ : \$c = 2/\\sqrt 3 \\approx 1{,}155\$.",
+                ),
+                _step(
+                  "**Théorème de la moyenne** : si \$f\$ est continue sur \$[a, b]\$, il existe \$c \\in [a, b]\$ tel que \$f(c) = \\bar f\$. Conséquence du TVI.",
+                  tipFr:
+                      "Ce théorème garantit l'existence du point — utile pour les démonstrations, même si on ne sait pas calculer \$c\$ explicitement.",
+                ),
+              ], finalAnswerFr: r"$c = 2/\sqrt 3$"),
+            ),
+            _q(
+              3,
+              "Application physique : un mobile a vitesse \$v(t) = 3 t^2\$ m/s sur \$[0, 4]\$ secondes. Distance parcourue ?",
+              1,
+              _sol([
+                _step(
+                  "Distance = \$\\int_0^4 v(t)\\,dt = \\int_0^4 3 t^2\\,dt = [t^3]_0^4 = 64\$ m.",
+                ),
+                _step(
+                  "Vérification : vitesse moyenne = \$64/4 = 16\$ m/s. \$\\bar v = (1/4) \\int_0^4 3t^2 = 64/4 = 16\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$d = 64$ m"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -1519,7 +2342,12 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_continuity_tvi': _paperContinuityTvi(),
   'pc_deriv_rules': _paperDerivRules(),
   'pc_deriv_apps': _paperDerivApps(),
-  // Math — Batch 3-4: to come
+  // Math — Batch 3: ln/exp, primitives, integrals
+  'pc_ln_function': _paperLnFunction(),
+  'pc_exp_function': _paperExpFunction(),
+  'pc_primitives': _paperPrimitives(),
+  'pc_integral_calc': _paperIntegralCalc(),
+  // Math — Batch 4: to come
   // Physique-Chimie — Batches 5-10: to come
 };
 
