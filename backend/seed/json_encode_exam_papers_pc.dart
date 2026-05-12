@@ -5372,6 +5372,415 @@ Map<String, dynamic> _paperReactionSpeed() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperPhCalculation() => _paper(
+      titleFr: 'Épreuve type — pH et acides-bases',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "pH = -log[H₃O⁺]. À 25°C : \$K_e = [H_3O^+][OH^-] = 10^{-14}\$. Acide fort vs faible (\$K_a\$, pKa). Henderson-Hasselbalch : \$pH = pKa + \\log([A^-]/[HA])\$.",
+      exercices: [
+        _ex(
+          1,
+          'pH des solutions usuelles',
+          5,
+          "À 25°C, \$K_e = 10^{-14}\$.",
+          [
+            _q(
+              1,
+              "Solution d'acide chlorhydrique (acide fort) à \$C = 0{,}05\\,\\text{mol/L}\$. Calculer pH.",
+              2,
+              _sol([
+                _step(
+                  "**Acide fort** : dissociation totale. \$\\text{HCl} + \\text{H}_2\\text{O} \\to \\text{H}_3\\text{O}^+ + \\text{Cl}^-\$.",
+                ),
+                _step(
+                  "\$[\\text{H}_3\\text{O}^+] = C = 0{,}05\\,\\text{mol/L}\$.",
+                ),
+                _step(
+                  "\$pH = -\\log(0{,}05) = -\\log(5 \\times 10^{-2}) = 2 - \\log 5 \\approx 2 - 0{,}70 = 1{,}30\$.",
+                ),
+              ], finalAnswerFr: r"$pH \approx 1{,}3$"),
+            ),
+            _q(
+              2,
+              "Solution de soude (base forte) à \$C = 10^{-3}\\,\\text{mol/L}\$. Calculer pH.",
+              2,
+              _sol([
+                _step(
+                  "**Base forte** : \$\\text{NaOH} \\to \\text{Na}^+ + \\text{OH}^-\$, dissociation totale.",
+                ),
+                _step(
+                  "\$[\\text{OH}^-] = C = 10^{-3}\\,\\text{mol/L}\$. \$[\\text{H}_3\\text{O}^+] = K_e/[\\text{OH}^-] = 10^{-14}/10^{-3} = 10^{-11}\\,\\text{mol/L}\$.",
+                ),
+                _step(
+                  "\$pH = -\\log(10^{-11}) = 11\$. Solution **basique**.",
+                  tipFr:
+                      "Astuce : pH + pOH = 14 à 25°C. Pour une base forte de concentration C, \$pOH = -\\log C\$ et \$pH = 14 - pOH\$.",
+                ),
+              ], finalAnswerFr: r"$pH = 11$"),
+            ),
+            _q(
+              3,
+              "Effet d'une dilution × 100 d'une solution d'acide fort à pH = 2.",
+              1,
+              _sol([
+                _step(
+                  "\$[\\text{H}_3\\text{O}^+]\$ divisée par 100 → pH augmente de \$\\log 100 = 2\$ → nouveau pH = **4**.",
+                ),
+                _step(
+                  "**Attention** : si on dilue énormément (pH initial proche de 7), il faut tenir compte de l'autoprotolyse de l'eau — le pH ne peut pas dépasser 7 par dilution.",
+                ),
+              ], finalAnswerFr: r"pH = 4"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Acide faible',
+          5,
+          "L'acide éthanoïque (\$\\text{CH}_3\\text{COOH}\$, pKa = 4,75) en solution à \$C_0 = 10^{-2}\\,\\text{mol/L}\$.",
+          [
+            _q(
+              1,
+              "Écrire l'équilibre et exprimer \$K_a\$.",
+              2,
+              _sol([
+                _step(
+                  "Équilibre : \$\\text{CH}_3\\text{COOH} + \\text{H}_2\\text{O} \\rightleftharpoons \\text{CH}_3\\text{COO}^- + \\text{H}_3\\text{O}^+\$.",
+                ),
+                _step(
+                  "Constante d'acidité : \$K_a = \\dfrac{[\\text{CH}_3\\text{COO}^-][\\text{H}_3\\text{O}^+]}{[\\text{CH}_3\\text{COOH}]} = 10^{-pKa} \\approx 1{,}78 \\times 10^{-5}\$.",
+                ),
+              ], finalAnswerFr: r"$K_a \approx 1{,}78 \times 10^{-5}$"),
+            ),
+            _q(
+              2,
+              "Calculer le pH par la formule simplifiée \$pH \\approx \\frac{1}{2}(pKa - \\log C_0)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$pH \\approx \\dfrac{1}{2}(4{,}75 - \\log 10^{-2}) = \\dfrac{1}{2}(4{,}75 + 2) = \\dfrac{6{,}75}{2} \\approx 3{,}38\$.",
+                ),
+                _step(
+                  "**Condition de validité** : acide faiblement dissocié (taux de dissociation \$\\alpha \\ll 1\$). À vérifier après calcul.",
+                  tipFr:
+                      "Cette formule est une approximation. La forme exacte résout \$K_a = h^2/(C_0 - h)\$ où \$h = [\\text{H}_3\\text{O}^+]\$.",
+                ),
+              ], finalAnswerFr: r"$pH \approx 3{,}38$"),
+            ),
+            _q(
+              3,
+              "Taux de dissociation \$\\alpha = [\\text{A}^-]/C_0\$ et vérification de l'hypothèse.",
+              1,
+              _sol([
+                _step(
+                  "\$[\\text{H}_3\\text{O}^+] = 10^{-3{,}38} \\approx 4{,}2 \\times 10^{-4}\\,\\text{mol/L}\$. Pour un acide simple (négligeant l'autoprotolyse), \$[\\text{A}^-] \\approx [\\text{H}_3\\text{O}^+]\$.",
+                ),
+                _step(
+                  "\$\\alpha = 4{,}2 \\times 10^{-4}/10^{-2} \\approx 4{,}2\\%\$. \$\\alpha \\ll 1\$ ✓, l'approximation est valide.",
+                  tipFr:
+                      "**Loi d'Ostwald** : \$\\alpha\$ augmente quand \$C_0\$ diminue. Pour \$C_0 \\to 0\$, \$\\alpha \\to 1\$ (dissociation totale par dilution).",
+                ),
+              ], finalAnswerFr: r"$\alpha \approx 4{,}2\%$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Mélanges et tampons',
+          5,
+          "On prépare un mélange de \$\\text{CH}_3\\text{COOH}\$ et \$\\text{CH}_3\\text{COO}^-\\text{Na}^+\$ à concentrations égales \$[\\text{HA}] = [\\text{A}^-] = 0{,}1\\,\\text{mol/L}\$, pKa = 4,75.",
+          [
+            _q(
+              1,
+              "Calculer le pH par Henderson-Hasselbalch.",
+              2,
+              _sol([
+                _step(
+                  "**Henderson-Hasselbalch** : \$pH = pKa + \\log\\dfrac{[\\text{A}^-]}{[\\text{HA}]}\$.",
+                ),
+                _step(
+                  "Ici \$[\\text{A}^-] = [\\text{HA}]\$ → \$\\log 1 = 0\$ → \$pH = pKa = 4{,}75\$.",
+                ),
+              ], finalAnswerFr: r"$pH = 4{,}75$"),
+            ),
+            _q(
+              2,
+              "Que se passe-t-il si on ajoute une petite quantité d'acide fort ?",
+              2,
+              _sol([
+                _step(
+                  "**Effet tampon** : les ions \$\\text{H}_3\\text{O}^+\$ ajoutés réagissent avec \$\\text{A}^-\$ pour former \$\\text{HA}\$. Le rapport \$[\\text{A}^-]/[\\text{HA}]\$ diminue légèrement.",
+                ),
+                _step(
+                  "Le pH varie peu (logarithme d'un rapport peu modifié). C'est la propriété **tampon** : résistance aux variations de pH.",
+                  tipFr:
+                      "Tampons biologiques : sang (pH 7,4), liquide intracellulaire, sont maintenus par tampons phosphate et bicarbonate.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Quel mélange préparer pour avoir pH = 5,75 ?",
+              1,
+              _sol([
+                _step(
+                  "\$pH = pKa + \\log([\\text{A}^-]/[\\text{HA}]) = 5{,}75 \\iff \\log r = 1 \\iff r = 10\$.",
+                ),
+                _step(
+                  "Donc \$[\\text{A}^-] = 10 \\times [\\text{HA}]\$. Par exemple : 0,1 mol/L de base conjuguée + 0,01 mol/L d'acide.",
+                ),
+              ], finalAnswerFr: r"$[A^-]/[HA] = 10$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Diagramme de prédominance',
+          5,
+          "Le couple \$\\text{NH}_4^+/\\text{NH}_3\$ a pKa = 9,25.",
+          [
+            _q(
+              1,
+              "Tracer le diagramme de prédominance et identifier l'espèce majoritaire à pH = 7, 9, 11.",
+              3,
+              _sol([
+                _step(
+                  "**Règle** : \$pH < pKa \\Rightarrow [\\text{HA}] > [\\text{A}^-]\$ (acide majoritaire). \$pH > pKa \\Rightarrow [\\text{A}^-] > [\\text{HA}]\$ (base majoritaire).",
+                ),
+                _step(
+                  "Diagramme : | NH₄⁺ majo | pKa = 9,25 | NH₃ majo |",
+                ),
+                _step(
+                  "À pH = 7 (< 9,25) : \$\\text{NH}_4^+\$ majoritaire (~99%). À pH = 9 ≈ pKa : équilibre quasi-équivalent. À pH = 11 (> 9,25) : \$\\text{NH}_3\$ majoritaire (~98%).",
+                  tipFr:
+                      "À \$pKa \\pm 1\$, la forme majoritaire représente > 90%. À \$pKa \\pm 2\$, > 99%.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Pour quel pH le rapport \$[\\text{NH}_3]/[\\text{NH}_4^+] = 100\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$pH = pKa + \\log 100 = 9{,}25 + 2 = 11{,}25\$.",
+                ),
+                _step(
+                  "À ce pH, \$\\text{NH}_3\$ représente \$100/101 \\approx 99\\%\$ du couple.",
+                ),
+              ], finalAnswerFr: r"$pH = 11{,}25$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperTitration() => _paper(
+      titleFr: 'Épreuve type — Titrage acide-base',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "À l'équivalence : \$n_\\text{titrant} = n_\\text{titré}\$, soit \$C_b V_b = C_a V_a\$ (acide-base 1:1). Saut de pH brutal. Indicateurs colorés ou pH-métrie.",
+      exercices: [
+        _ex(
+          1,
+          'Dosage acide fort par base forte',
+          5,
+          "On dose un volume \$V_a = 20\\,\\text{mL}\$ d'acide chlorhydrique de concentration \$C_a\$ inconnue par de la soude \$C_b = 0{,}1\\,\\text{mol/L}\$. À l'équivalence, on a versé \$V_b^\\text{eq} = 25\\,\\text{mL}\$.",
+          [
+            _q(
+              1,
+              "Écrire la réaction de dosage.",
+              1,
+              _sol([
+                _step(
+                  "\$\\text{H}_3\\text{O}^+ + \\text{OH}^- \\to 2\\,\\text{H}_2\\text{O}\$. Réaction totale (constante \$\\sim 10^{14}\$).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer la concentration \$C_a\$.",
+              2,
+              _sol([
+                _step(
+                  "À l'équivalence : \$n(\\text{H}_3\\text{O}^+)_\\text{initial} = n(\\text{OH}^-)_\\text{versé}\$, soit \$C_a V_a = C_b V_b^\\text{eq}\$.",
+                ),
+                _step(
+                  "\$C_a = \\dfrac{C_b V_b^\\text{eq}}{V_a} = \\dfrac{0{,}1 \\times 25}{20} = 0{,}125\\,\\text{mol/L}\$.",
+                ),
+              ], finalAnswerFr: r"$C_a = 0{,}125$ mol/L"),
+            ),
+            _q(
+              3,
+              "Donner le pH initial, à la demi-équivalence, à l'équivalence et au-delà.",
+              2,
+              _sol([
+                _step(
+                  "**Initial** : acide fort, \$pH = -\\log 0{,}125 \\approx 0{,}9\$.",
+                ),
+                _step(
+                  "**Demi-équivalence** : moitié de l'acide neutralisé, \$pH\$ vers 1,5–2 (toujours dans la zone acide).",
+                ),
+                _step(
+                  "**Équivalence** : seuls Na⁺ et Cl⁻ en solution (sels neutres) → \$pH = 7\$ exactement.",
+                ),
+                _step(
+                  "**Au-delà** : excès de base forte, \$pH > 7\$ et croît rapidement.",
+                ),
+              ], finalAnswerFr: r"$pH_i \approx 0{,}9$, $pH_\text{eq} = 7$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Choix de l\'indicateur coloré',
+          5,
+          "Un indicateur change de couleur dans une zone de virage autour de son pKi.",
+          [
+            _q(
+              1,
+              "Indicateurs courants et zones de virage :",
+              2,
+              _sol([
+                _step(
+                  "**Hélianthine** : pH 3,1–4,4 (rouge → jaune).",
+                ),
+                _step(
+                  "**Bleu de bromothymol (BBT)** : pH 6,0–7,6 (jaune → bleu).",
+                ),
+                _step(
+                  "**Phénolphtaléine** : pH 8,2–10 (incolore → rose).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Quel indicateur pour doser HCl par NaOH ? Pourquoi ?",
+              2,
+              _sol([
+                _step(
+                  "Équivalence à pH = 7 (acide fort/base forte). **BBT** (6,0–7,6) est centré sur 7 — idéal.",
+                ),
+                _step(
+                  "Le saut de pH à l'équivalence est très brutal (de ~3 à ~11 en quelques gouttes), donc même hélianthine ou phénolphtaléine seraient acceptables. Mais BBT est le plus précis.",
+                ),
+              ], finalAnswerFr: r"BBT (zone 6–7,6)"),
+            ),
+            _q(
+              3,
+              "Pour doser CH₃COOH par NaOH (équivalence à pH ≈ 8,5) ?",
+              1,
+              _sol([
+                _step(
+                  "**Phénolphtaléine** (zone 8,2–10) — son virage encadre bien le pH d'équivalence ≈ 8,5.",
+                ),
+                _step(
+                  "Hélianthine serait inadaptée : elle vire **avant** l'équivalence → fausse détection.",
+                  mistakeFr:
+                      "Erreur classique : utiliser hélianthine pour acide faible + base forte. Le virage anticipe l'équivalence et fausse le titrage.",
+                ),
+              ], finalAnswerFr: r"Phénolphtaléine"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Dosage acide faible par base forte',
+          5,
+          "On dose \$V_a = 20\\,\\text{mL}\$ d'acide éthanoïque (pKa = 4,75) par NaOH 0,1 mol/L. \$V_b^\\text{eq} = 15\\,\\text{mL}\$.",
+          [
+            _q(
+              1,
+              "Calculer \$C_a\$.",
+              1,
+              _sol([
+                _step(
+                  "\$C_a = C_b V_b^\\text{eq}/V_a = 0{,}1 \\times 15/20 = 0{,}075\\,\\text{mol/L}\$.",
+                ),
+              ], finalAnswerFr: r"$C_a = 0{,}075$ mol/L"),
+            ),
+            _q(
+              2,
+              "À la demi-équivalence, pourquoi a-t-on \$pH = pKa\$ ?",
+              3,
+              _sol([
+                _step(
+                  "À \$V_b = V_b^\\text{eq}/2\$, la moitié de l'acide \$\\text{HA}\$ a été transformée en \$\\text{A}^-\$.",
+                ),
+                _step(
+                  "Donc \$n(\\text{HA}) = n(\\text{A}^-)\$, et en concentration aussi : \$[\\text{HA}] = [\\text{A}^-]\$.",
+                ),
+                _step(
+                  "Par Henderson-Hasselbalch : \$pH = pKa + \\log 1 = pKa = 4{,}75\$.",
+                  tipFr:
+                      "**Méthode de mesure du pKa** : tracer la courbe pH-V et lire pH à la demi-équivalence. C'est la technique standard en laboratoire.",
+                ),
+              ], finalAnswerFr: r"$pH = pKa = 4{,}75$"),
+            ),
+            _q(
+              3,
+              "Pourquoi le pH à l'équivalence n'est-il pas 7 ?",
+              1,
+              _sol([
+                _step(
+                  "À l'équivalence : tout l'acide est transformé en base conjuguée \$\\text{CH}_3\\text{COO}^-\$. Cette base réagit partiellement avec l'eau : \$\\text{A}^- + \\text{H}_2\\text{O} \\rightleftharpoons \\text{HA} + \\text{OH}^-\$.",
+                ),
+                _step(
+                  "Donc \$[\\text{OH}^-] > [\\text{H}_3\\text{O}^+]\$ → pH > 7. Typiquement 8,5–9 pour ce type de dosage.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Courbe pH-V et exploitations',
+          5,
+          "On dispose d'une courbe pH-volume expérimentale (suivi pH-métrique) pour un dosage d'acide inconnu.",
+          [
+            _q(
+              1,
+              "Comment repérer le volume équivalent \$V_b^\\text{eq}\$ ?",
+              3,
+              _sol([
+                _step(
+                  "**Méthode des tangentes** : tracer deux tangentes parallèles à la courbe, l'une avant l'équivalence, l'autre après. La parallèle équidistante coupe la courbe au point équivalent.",
+                ),
+                _step(
+                  "**Méthode de la dérivée** : tracer \$dpH/dV\$. Le maximum correspond au volume équivalent (point d'inflexion).",
+                ),
+                _step(
+                  "**Méthode du saut** : repérer le saut brutal de pH (de quelques unités sur quelques gouttes). Centre du saut ≈ équivalence.",
+                  tipFr:
+                      "La méthode de la dérivée est la plus précise pour un dosage automatisé (pH-mètre + ordinateur).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Comment savoir si l'acide est fort ou faible à partir de la courbe ?",
+              2,
+              _sol([
+                _step(
+                  "**pH initial** : acide fort → pH bas (~1–2 pour \$C \\approx 10^{-1}\$). Acide faible → pH plus élevé (~3–5 pour même C).",
+                ),
+                _step(
+                  "**Forme avant équivalence** : acide fort → croissance douce, presque linéaire. Acide faible → plateau-tampon autour de \$pH = pKa\$ à la demi-équivalence.",
+                ),
+                _step(
+                  "**pH à l'équivalence** : ~ 7 pour fort+forte, > 7 (~8,5–9) pour faible+forte.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -5413,6 +5822,9 @@ final Map<String, Map<String, dynamic>> _papers = {
   // Physique-Chimie — Batch 8: nuclear + kinetics
   'pc_radioactivity': _paperRadioactivity(),
   'pc_reaction_speed': _paperReactionSpeed(),
+  // Physique-Chimie — Batch 9: acid-base + titration
+  'pc_ph_calculation': _paperPhCalculation(),
+  'pc_titration': _paperTitration(),
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
