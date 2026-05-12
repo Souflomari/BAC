@@ -3309,6 +3309,539 @@ Map<String, dynamic> _paperRandomVariables() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperComplexBasicsSmb() => _paper(
+      titleFr: 'Épreuve type — Nombres complexes (bases)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Forme algébrique, module, conjugué, opérations, équations dans \$\\mathbb{C}\$.",
+      exercices: [
+        _ex(
+          1,
+          'Opérations algébriques',
+          5,
+          "Soit \$z_1 = 2 + 3i\$ et \$z_2 = 1 - i\$.",
+          [
+            _q(
+              1,
+              "Calculer \$z_1 + z_2\$, \$z_1 z_2\$, \$z_1/z_2\$.",
+              4,
+              _sol([
+                _step(
+                  "**Somme** : \$z_1 + z_2 = (2 + 1) + (3 - 1)i = 3 + 2i\$.",
+                ),
+                _step(
+                  "**Produit** : \$(2 + 3i)(1 - i) = 2 - 2i + 3i - 3i^2 = 2 + i + 3 = 5 + i\$.",
+                ),
+                _step(
+                  "**Quotient** (multiplier par conjugué) : \$\\dfrac{2+3i}{1-i} = \\dfrac{(2+3i)(1+i)}{(1-i)(1+i)} = \\dfrac{2 + 2i + 3i + 3i^2}{1+1} = \\dfrac{-1 + 5i}{2} = -1/2 + 5i/2\$.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$z_1+z_2 = 3+2i$, $z_1 z_2 = 5+i$, $z_1/z_2 = -1/2 + 5i/2$"),
+            ),
+            _q(
+              2,
+              "Calculer \$|z_1|\$ et \$|z_2|\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z_1| = \\sqrt{4 + 9} = \\sqrt{13}\$. \$|z_2| = \\sqrt{1 + 1} = \\sqrt 2\$.",
+                ),
+              ], finalAnswerFr: r"$|z_1| = \sqrt{13}$, $|z_2| = \sqrt 2$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Conjugué',
+          5,
+          "Propriétés du conjugué \$\\bar z\$.",
+          [
+            _q(
+              1,
+              "Calculer \$z + \\bar z\$ et \$z - \\bar z\$ pour \$z = a + bi\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\bar z = a - bi\$. Donc \$z + \\bar z = 2a = 2 \\text{Re}(z)\$. \$z - \\bar z = 2bi = 2i \\text{Im}(z)\$.",
+                ),
+                _step(
+                  "**Conséquence** : \$z \\in \\mathbb{R} \\iff z = \\bar z\$ ; \$z\$ imaginaire pur ssi \$z = -\\bar z\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer \$z \\bar z\$ pour \$z = a + bi\$.",
+              2,
+              _sol([
+                _step(
+                  "\$z \\bar z = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2\$.",
+                ),
+                _step(
+                  "**Propriété fondamentale** : \$z \\bar z = |z|^2\$ — toujours réel positif. C'est ce qui justifie le truc 'multiplier par le conjugué' pour rationaliser.",
+                ),
+              ], finalAnswerFr: r"$z \bar z = |z|^2$"),
+            ),
+            _q(
+              3,
+              "Pour \$z = 3 - 4i\$, calculer \$1/z\$ sous forme algébrique.",
+              1,
+              _sol([
+                _step(
+                  "\$1/z = \\bar z / (z \\bar z) = (3 + 4i)/(9 + 16) = (3 + 4i)/25 = 3/25 + 4i/25\$.",
+                ),
+              ], finalAnswerFr: r"$1/z = 3/25 + 4i/25$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Équation du second degré',
+          5,
+          "Résoudre dans \$\\mathbb{C}\$ : \$(E) : z^2 + 4z + 13 = 0\$.",
+          [
+            _q(
+              1,
+              "Calculer le discriminant.",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta = 16 - 52 = -36 < 0\$. Deux racines complexes conjuguées dans \$\\mathbb{C}\$.",
+                ),
+              ], finalAnswerFr: r"$\Delta = -36$"),
+            ),
+            _q(
+              2,
+              "Résoudre.",
+              3,
+              _sol([
+                _step(
+                  "\$\\sqrt\\Delta = \\pm 6i\$ (avec convention). Racines : \$z = (-4 \\pm 6i)/2 = -2 \\pm 3i\$.",
+                ),
+                _step(
+                  "Donc \$S = \\{-2 + 3i,\\, -2 - 3i\\}\$ — racines conjuguées.",
+                ),
+              ], finalAnswerFr: r"$S = \{-2 \pm 3i\}$"),
+            ),
+            _q(
+              3,
+              "Vérifier par Viète : somme = -4, produit = 13.",
+              1,
+              _sol([
+                _step(
+                  "Somme : \$(-2+3i) + (-2-3i) = -4 = -b/a\$ ✓. Produit : \$(-2)^2 - (3i)^2 = 4 + 9 = 13 = c/a\$ ✓.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Argument',
+          5,
+          "Soit \$z = -1 + i\\sqrt 3\$.",
+          [
+            _q(
+              1,
+              "Calculer \$|z|\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = \\sqrt{1 + 3} = 2\$.",
+                ),
+              ], finalAnswerFr: r"$|z| = 2$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\arg(z)\$.",
+              4,
+              _sol([
+                _step(
+                  "\$\\cos\\theta = -1/2\$, \$\\sin\\theta = \\sqrt 3/2\$. Partie réelle < 0, partie imaginaire > 0 → \$z\$ dans le **2ème quadrant**.",
+                ),
+                _step(
+                  "Cherchons \$\\theta\$ : \$\\sin\\theta = \\sqrt 3/2\$ pour \$\\theta = \\pi/3\$ ou \$\\theta = 2\\pi/3\$.",
+                ),
+                _step(
+                  "\$\\cos(\\pi/3) = 1/2\$, \$\\cos(2\\pi/3) = -1/2\$. Le second convient.",
+                ),
+                _step(
+                  "\$\\arg z = 2\\pi/3\$ (à \$2\\pi\\) près).",
+                  tipFr:
+                      "Vérifier les deux conditions (\$\\cos\\) ET \$\\sin\\)) pour identifier l'argument sans ambiguïté.",
+                ),
+              ], finalAnswerFr: r"$\arg z = 2\pi/3$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperComplexTrig() => _paper(
+      titleFr: 'Épreuve type — Forme trigonométrique et exponentielle',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Forme trigonométrique \$z = r(\\cos\\theta + i\\sin\\theta)\$, forme exponentielle \$z = re^{i\\theta}\$, formule de Moivre, racines n-ièmes.",
+      exercices: [
+        _ex(
+          1,
+          'Forme trigonométrique',
+          5,
+          "Mettre sous forme trigonométrique et exponentielle.",
+          [
+            _q(
+              1,
+              "\$z = 1 + i\$.",
+              2,
+              _sol([
+                _step(
+                  "\$|z| = \\sqrt 2\$. \$\\cos\\theta = 1/\\sqrt 2\$, \$\\sin\\theta = 1/\\sqrt 2\$, donc \$\\theta = \\pi/4\$.",
+                ),
+                _step(
+                  "Forme trig : \$z = \\sqrt 2 (\\cos(\\pi/4) + i\\sin(\\pi/4))\$. Forme exp : \$z = \\sqrt 2\\, e^{i\\pi/4}\$.",
+                ),
+              ], finalAnswerFr: r"$z = \sqrt 2 e^{i\pi/4}$"),
+            ),
+            _q(
+              2,
+              "\$z = -2\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = 2\$. \$\\arg z = \\pi\$ (axe réel négatif). Donc \$z = 2 e^{i\\pi}\$.",
+                ),
+                _step(
+                  "**Identité célèbre** : \$e^{i\\pi} = -1\$, ou \$e^{i\\pi} + 1 = 0\$ — la 'plus belle formule des maths' (Euler).",
+                ),
+              ], finalAnswerFr: r"$z = 2 e^{i\pi}$"),
+            ),
+            _q(
+              3,
+              "\$z = i\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = 1\$, \$\\arg z = \\pi/2\$. Donc \$z = e^{i\\pi/2}\$.",
+                ),
+                _step(
+                  "Forme cohérente : \$i^2 = (e^{i\\pi/2})^2 = e^{i\\pi} = -1\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$z = e^{i\pi/2}$"),
+            ),
+            _q(
+              4,
+              "\$z = -\\sqrt 3 + i\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = \\sqrt{3 + 1} = 2\$. Quadrant 2 (\$\\text{Re} < 0\$, \$\\text{Im} > 0\$).",
+                ),
+                _step(
+                  "\$\\cos\\theta = -\\sqrt 3/2\$, \$\\sin\\theta = 1/2\$ → \$\\theta = 5\\pi/6\$.",
+                ),
+              ], finalAnswerFr: r"$z = 2 e^{i 5\pi/6}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Formule de Moivre',
+          5,
+          "Utiliser \$(e^{i\\theta})^n = e^{in\\theta}\$.",
+          [
+            _q(
+              1,
+              "Calculer \$(1 + i)^8\$.",
+              3,
+              _sol([
+                _step(
+                  "\$1 + i = \\sqrt 2 e^{i\\pi/4}\$. Donc \$(1+i)^8 = (\\sqrt 2)^8 \\cdot e^{i \\cdot 8\\pi/4} = 16 \\cdot e^{i 2\\pi} = 16 \\cdot 1 = 16\$.",
+                ),
+                _step(
+                  "**Vérification** : \$(1+i)^2 = 2i\$. \$(2i)^4 = 16 i^4 = 16\$ ✓.",
+                  tipFr:
+                      "Pour des puissances élevées, la forme exponentielle est beaucoup plus rapide qu'un développement binomial.",
+                ),
+              ], finalAnswerFr: r"$(1+i)^8 = 16$"),
+            ),
+            _q(
+              2,
+              "Établir la formule du cosinus double : \$\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta\$.",
+              2,
+              _sol([
+                _step(
+                  "\$e^{i 2\\theta} = (e^{i\\theta})^2 = (\\cos\\theta + i\\sin\\theta)^2 = \\cos^2\\theta + 2i\\sin\\theta\\cos\\theta - \\sin^2\\theta\$.",
+                ),
+                _step(
+                  "Partie réelle : \$\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta\$. Partie imaginaire : \$\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\$.",
+                  tipFr:
+                      "Les identités trigonométriques classiques sont des conséquences directes de Moivre — pas besoin de les mémoriser séparément.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Racines n-ièmes',
+          5,
+          "Résoudre dans \$\\mathbb{C}\$ : \$z^3 = 1\$.",
+          [
+            _q(
+              1,
+              "Trouver les 3 racines cubiques de l'unité.",
+              4,
+              _sol([
+                _step(
+                  "1 = \$e^{i \\cdot 0}\$ (forme exp). Les racines cubiques satisfont \$z = r e^{i\\theta}\$ avec \$r^3 = 1\$ et \$3\\theta = 2k\\pi\$ pour \$k \\in \\mathbb{Z}\$.",
+                ),
+                _step(
+                  "\$r = 1\$, \$\\theta = 2k\\pi/3\$. Pour \$k = 0, 1, 2\$ : \$\\theta = 0, 2\\pi/3, 4\\pi/3\$.",
+                ),
+                _step(
+                  "Racines : \$z_0 = 1\$, \$z_1 = e^{i 2\\pi/3} = -1/2 + i\\sqrt 3/2\$, \$z_2 = e^{i 4\\pi/3} = -1/2 - i\\sqrt 3/2\$.",
+                ),
+                _step(
+                  "**Géométriquement** : 3 sommets d'un triangle équilatéral inscrit dans le cercle unité, espacés de \$2\\pi/3\$.",
+                  tipFr:
+                      "Les \\(n\\) racines n-ièmes de l'unité forment un polygone régulier à \\(n\\) sommets, espacés de \\(2\\pi/n\\).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$z = 1, -1/2 \pm i\sqrt 3/2$"),
+            ),
+            _q(
+              2,
+              "Somme et produit de ces racines.",
+              1,
+              _sol([
+                _step(
+                  "Somme = \$1 + (-1/2 + i\\sqrt 3/2) + (-1/2 - i\\sqrt 3/2) = 0\$.",
+                ),
+                _step(
+                  "Produit = \$1 \\cdot (-1/2)^2 + (\\sqrt 3/2)^2 = ... \$. Plus simplement, c'est \$(-1)^3 / 1 = -1\$ par Viète sur \$z^3 - 1 = 0\$. Mais on a \$1 \\cdot z_1 \\cdot z_2 = z_1 z_2\$. Pour deux conjugués : \$z_1 z_2 = |z_1|^2 = 1\$. Total : \$1 \\cdot 1 = 1\$. Hmm — par Viète sur \$z^3 - 1 = 0\$ = \$(z-1)(z^2 + z + 1) = 0\$. Produit des 3 racines = 1 (cstte / coeff dominant) = 1. Cohérent.",
+                ),
+                _step(
+                  "Donc somme = 0, produit = 1.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Linéarisation',
+          5,
+          "Linéariser \$\\cos^3\\theta\$ (exprimer en fonction de \$\\cos\$ d'angles multiples).",
+          [
+            _q(
+              1,
+              "Effectuer la linéarisation.",
+              5,
+              _sol([
+                _step(
+                  "**Formules d'Euler** : \$\\cos\\theta = (e^{i\\theta} + e^{-i\\theta})/2\$.",
+                ),
+                _step(
+                  "Cube : \$\\cos^3\\theta = \\dfrac{(e^{i\\theta} + e^{-i\\theta})^3}{8}\$.",
+                ),
+                _step(
+                  "Développer le cube : \$(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3\$. Avec \$a = e^{i\\theta}, b = e^{-i\\theta}\$ : \$a^3 = e^{i 3\\theta}\$, \$b^3 = e^{-i 3\\theta}\$, \$a^2 b = e^{i\\theta}\$, \$ab^2 = e^{-i\\theta}\$.",
+                ),
+                _step(
+                  "Somme : \$e^{i 3\\theta} + 3 e^{i\\theta} + 3 e^{-i\\theta} + e^{-i 3\\theta} = 2\\cos(3\\theta) + 6\\cos\\theta\$.",
+                ),
+                _step(
+                  "Donc \$\\cos^3\\theta = \\dfrac{2\\cos(3\\theta) + 6\\cos\\theta}{8} = \\dfrac{\\cos(3\\theta)}{4} + \\dfrac{3\\cos\\theta}{4}\$.",
+                  tipFr:
+                      "La linéarisation transforme une puissance de sin/cos en somme d'angles multiples — utile pour intégrer.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\cos^3\theta = \dfrac{\cos(3\theta) + 3\cos\theta}{4}$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperComplexGeometry() => _paper(
+      titleFr: 'Épreuve type — Complexes et géométrie',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Affixes, distances \$|z_B - z_A|\$, arguments \$\\arg(z_B - z_A)\$, transformations (translation, rotation, homothétie).",
+      exercices: [
+        _ex(
+          1,
+          'Distances et triangles',
+          5,
+          "Dans le plan complexe : \$A\$ d'affixe \$z_A = 1\$, \$B\$ d'affixe \$z_B = 1 + 2i\$, \$C\$ d'affixe \$z_C = 3\$.",
+          [
+            _q(
+              1,
+              "Calculer \$AB\$, \$BC\$, \$CA\$.",
+              3,
+              _sol([
+                _step(
+                  "\$AB = |z_B - z_A| = |2i| = 2\$.",
+                ),
+                _step(
+                  "\$BC = |z_C - z_B| = |2 - 2i| = \\sqrt{4 + 4} = 2\\sqrt 2\$.",
+                ),
+                _step(
+                  "\$CA = |z_A - z_C| = |-2| = 2\$.",
+                ),
+              ], finalAnswerFr: r"$AB = 2$, $BC = 2\sqrt 2$, $CA = 2$"),
+            ),
+            _q(
+              2,
+              "Nature du triangle \$ABC\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$AB = CA = 2\$ → triangle **isocèle** en \$A\$.",
+                ),
+                _step(
+                  "Test Pythagore : \$AB^2 + CA^2 = 4 + 4 = 8 = BC^2\$ ✓. Triangle **rectangle isocèle** en \$A\$.",
+                  tipFr:
+                      "Calculer toutes les longueurs et tester Pythagore donne en général la nature exacte (isocèle, équilatéral, rectangle, rectangle isocèle...).",
+                ),
+              ], finalAnswerFr: r"Rectangle isocèle en $A$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Angles entre vecteurs',
+          5,
+          "On considère \$A(1)\$, \$B(1+i)\$, \$C(2+i)\$.",
+          [
+            _q(
+              1,
+              "Calculer \$\\arg\\left(\\dfrac{z_C - z_B}{z_A - z_B}\\right)\$ et interpréter.",
+              4,
+              _sol([
+                _step(
+                  "\$z_C - z_B = (2 + i) - (1 + i) = 1\$. \$z_A - z_B = 1 - (1 + i) = -i\$.",
+                ),
+                _step(
+                  "Rapport : \$\\dfrac{1}{-i} = \\dfrac{i}{-i \\cdot i} = \\dfrac{i}{1} = i\$.",
+                ),
+                _step(
+                  "\$\\arg(i) = \\pi/2\$.",
+                ),
+                _step(
+                  "**Interprétation géométrique** : c'est l'angle orienté \\(\\widehat{BA, BC}\\) — l'angle au sommet B du triangle. Ici \$\\pi/2\$ → triangle **rectangle en B**.",
+                  tipFr:
+                      "Formule \\(\\widehat{(\\vec{BA}, \\vec{BC})} = \\arg\\left(\\dfrac{z_C - z_B}{z_A - z_B}\\right)\\) — outil puissant pour calculer des angles via les complexes.",
+                ),
+              ], finalAnswerFr: r"Angle = $\pi/2$ (rectangle en B)"),
+            ),
+            _q(
+              2,
+              "Le quotient \$\\dfrac{z_C - z_B}{z_A - z_B}\$ donne aussi le rapport \$\\dfrac{BC}{BA}\$. Vérifier.",
+              1,
+              _sol([
+                _step(
+                  "\$|z_C - z_B|/|z_A - z_B| = 1/1 = 1\$ ✓. Et |module du quotient| = |1/-i| = 1 ✓.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Transformations',
+          5,
+          "Identifier les transformations associées à diverses opérations sur \$z\$.",
+          [
+            _q(
+              1,
+              "\$z \\mapsto z + (3 + 2i)\$ : quelle transformation ?",
+              1,
+              _sol([
+                _step(
+                  "**Translation** de vecteur d'affixe \$3 + 2i\$, c'est-à-dire \$\\vec u = (3, 2)\$.",
+                ),
+              ], finalAnswerFr: r"Translation de $(3, 2)$"),
+            ),
+            _q(
+              2,
+              "\$z \\mapsto i z\$ : quelle transformation ?",
+              2,
+              _sol([
+                _step(
+                  "Multiplier par \$i = e^{i\\pi/2}\$ → **rotation d'angle \$\\pi/2\$** (et centre origine).",
+                ),
+                _step(
+                  "Vérification : appliqué à 1, donne \$i\$ — point (1,0) devient (0,1). Rotation de 90° dans le sens trigo.",
+                ),
+              ], finalAnswerFr: r"Rotation d'angle $\pi/2$ (centre O)"),
+            ),
+            _q(
+              3,
+              "\$z \\mapsto 2 z\$ : quelle transformation ?",
+              1,
+              _sol([
+                _step(
+                  "Multiplier par 2 (réel positif) → **homothétie de rapport 2** (centre origine). Les distances sont doublées, les directions préservées.",
+                ),
+              ], finalAnswerFr: r"Homothétie de rapport 2"),
+            ),
+            _q(
+              4,
+              "\$z \\mapsto 2 e^{i\\pi/3} z\$ : quelle transformation ?",
+              1,
+              _sol([
+                _step(
+                  "**Similitude directe** : rotation d'angle \$\\pi/3\$ ET homothétie de rapport 2 (centre origine). Combinaison des deux précédentes.",
+                ),
+              ], finalAnswerFr: r"Similitude (rot $\pi/3$ + homothétie ×2)"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Lieu géométrique',
+          5,
+          "Trouver l'ensemble des points \$M\$ d'affixe \$z\$ tels que \$|z - 1| = |z + i|\$.",
+          [
+            _q(
+              1,
+              "Interpréter géométriquement et trouver l'ensemble.",
+              5,
+              _sol([
+                _step(
+                  "\$|z - 1|\$ = distance de \$M\$ au point \$A\$ d'affixe 1. \$|z + i| = |z - (-i)|\$ = distance à \$B\$ d'affixe \$-i\$.",
+                ),
+                _step(
+                  "Équation \$MA = MB\$ caractérise la **médiatrice du segment [AB]**.",
+                ),
+                _step(
+                  "Trouver son équation : posons \$z = x + iy\$. \$|x + iy - 1| = |x + iy + i| \\iff (x-1)^2 + y^2 = x^2 + (y+1)^2\$.",
+                ),
+                _step(
+                  "Développer : \$x^2 - 2x + 1 + y^2 = x^2 + y^2 + 2y + 1 \\iff -2x = 2y \\iff y = -x\$.",
+                ),
+                _step(
+                  "**Conclusion** : la médiatrice est la droite \$y = -x\$ (passe par l'origine, perpendiculaire au segment de A(1, 0) à B(0, -1)).",
+                  tipFr:
+                      "Toujours convertir une équation complexe en équations cartésiennes (x, y) pour identifier les lieux géométriques (droite, cercle, etc.).",
+                ),
+              ], finalAnswerFr: r"Médiatrice : droite $y = -x$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -3328,7 +3861,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'prob_basic': _paperProbBasic(),
   'conditional_prob': _paperConditionalProb(),
   'random_variables': _paperRandomVariables(),
-  // 14 SMB chapters remaining.
+  'complex_basics': _paperComplexBasicsSmb(),
+  'complex_trig': _paperComplexTrig(),
+  'complex_geometry': _paperComplexGeometry(),
+  // 11 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
