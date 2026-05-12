@@ -5220,6 +5220,1307 @@ Map<String, dynamic> _paperKineticPotential() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperPhDefinition() => _paper(
+      titleFr: 'Épreuve type — pH et acides/bases',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Définition du pH, autoprotolyse de l'eau, acides forts/faibles, pKa, prédominance, dilution, mélanges. \$\\text{pH} = -\\log[H_3O^+]\$, \$K_e = [H_3O^+][OH^-] = 10^{-14}\$ à 25°C.",
+      exercices: [
+        _ex(
+          1,
+          'Calculs de pH élémentaires',
+          5,
+          "On considère plusieurs solutions à 25°C.",
+          [
+            _q(
+              1,
+              "Une solution d'acide chlorhydrique a \$[H_3O^+] = 5 \\times 10^{-3}\\,mol/L\$. Calculer son pH.",
+              2,
+              _sol([
+                _step(
+                  "**Définition** : \$\\text{pH} = -\\log_{10}[H_3O^+]\$.",
+                ),
+                _step(
+                  "\$\\text{pH} = -\\log(5 \\times 10^{-3}) = -(\\log 5 - 3) = 3 - \\log 5 \\approx 3 - 0{,}70 = 2{,}30\$.",
+                ),
+                _step(
+                  "Solution **acide forte** (pH < 3).",
+                ),
+              ], finalAnswerFr: r"$\text{pH} \approx 2{,}30$"),
+            ),
+            _q(
+              2,
+              "Une solution a pH = 9,5. Calculer \$[H_3O^+]\$ et \$[OH^-]\$.",
+              2,
+              _sol([
+                _step(
+                  "\$[H_3O^+] = 10^{-\\text{pH}} = 10^{-9{,}5} \\approx 3{,}16 \\times 10^{-10}\\,mol/L\$.",
+                ),
+                _step(
+                  "**Produit ionique** : \$[OH^-] = K_e/[H_3O^+] = 10^{-14}/10^{-9{,}5} = 10^{-4{,}5} \\approx 3{,}16 \\times 10^{-5}\\,mol/L\$.",
+                ),
+                _step(
+                  "Solution **basique** (pH > 7) : \$[OH^-] > [H_3O^+]\$.",
+                  tipFr:
+                      "Pour pH = 9,5 : pOH = 14 − 9,5 = 4,5. Donc \$[OH^-] = 10^{-4{,}5}\$ — calcul rapide.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$[H_3O^+] \approx 3{,}16 \times 10^{-10}$, $[OH^-] \approx 3{,}16 \times 10^{-5}$"),
+            ),
+            _q(
+              3,
+              "À 25°C, calculer le pH de l'eau pure.",
+              1,
+              _sol([
+                _step(
+                  "Dans l'eau pure : \$[H_3O^+] = [OH^-]\$ (neutralité). Avec \$K_e = 10^{-14}\$ : \$[H_3O^+]^2 = 10^{-14}\$.",
+                ),
+                _step(
+                  "Donc \$[H_3O^+] = 10^{-7}\\,mol/L\$ et \$\\text{pH} = 7\$. Eau pure = neutre à 25°C.",
+                ),
+              ], finalAnswerFr: r"pH = 7"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Acide fort, dilution',
+          5,
+          "Une solution d'acide nitrique \$\\text{HNO}_3\$ (acide fort) a une concentration initiale \$C_0 = 0{,}1\\,mol/L\$.",
+          [
+            _q(
+              1,
+              "Calculer le pH de la solution initiale.",
+              2,
+              _sol([
+                _step(
+                  "**Acide fort** : dissociation totale. \$\\text{HNO}_3 + H_2O \\to NO_3^- + H_3O^+\$. Donc \$[H_3O^+] = C_0 = 0{,}1\\,mol/L\$.",
+                ),
+                _step(
+                  "\$\\text{pH} = -\\log(0{,}1) = 1\$.",
+                ),
+              ], finalAnswerFr: r"pH = 1"),
+            ),
+            _q(
+              2,
+              "On dilue 10 mL de cette solution dans 90 mL d'eau. Calculer le nouveau pH.",
+              2,
+              _sol([
+                _step(
+                  "**Conservation de la quantité de matière** : \$C_1 V_1 = C_2 V_2 \\Rightarrow C_2 = C_1 V_1/V_2 = 0{,}1 \\times 10/100 = 0{,}01\\,mol/L\$.",
+                ),
+                _step(
+                  "\$\\text{pH}_2 = -\\log(0{,}01) = 2\$. Dilution × 10 → pH augmente de 1 (pour un acide fort).",
+                  tipFr:
+                      "Pour un acide fort : dilution × 10 → pH + 1. Vrai jusqu'à ce qu'on s'approche de pH 6 où l'autoprotolyse de l'eau ne peut plus être négligée.",
+                ),
+              ], finalAnswerFr: r"pH = 2"),
+            ),
+            _q(
+              3,
+              "Si on continue à diluer jusqu'à atteindre \$C = 10^{-8}\\,mol/L\$, quel est le pH ?",
+              1,
+              _sol([
+                _step(
+                  "Naïvement, pH = 8 — mais c'est impossible pour un acide ! Erreur due à la négligence de l'autoprotolyse de l'eau.",
+                ),
+                _step(
+                  "Avec autoprotolyse : il faut résoudre \$[H_3O^+]([H_3O^+] - C) = K_e\$. Pour \$C = 10^{-8}\$ : \$[H_3O^+] \\approx 1{,}05 \\times 10^{-7}\$, pH \\approx 6,98.",
+                  tipFr:
+                      "Une solution très diluée d'acide tend asymptotiquement vers pH = 7 (eau pure), jamais au-dessus.",
+                ),
+              ], finalAnswerFr: r"pH $\approx$ 6,98 (proche de 7)"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Acide faible et pKa',
+          5,
+          "L'acide acétique (\$\\text{CH}_3\\text{COOH}\$, pKa = 4,75) est un acide faible. On a une solution à \$C_0 = 0{,}1\\,mol/L\$.",
+          [
+            _q(
+              1,
+              "Écrire l'équation de dissociation et exprimer \$K_a\$.",
+              2,
+              _sol([
+                _step(
+                  "**Équation** : \$\\text{CH}_3\\text{COOH} + H_2O \\rightleftharpoons \\text{CH}_3\\text{COO}^- + H_3O^+\$.",
+                ),
+                _step(
+                  "**Constante d'acidité** : \$K_a = \\dfrac{[\\text{CH}_3\\text{COO}^-][H_3O^+]}{[\\text{CH}_3\\text{COOH}]}\$.",
+                ),
+                _step(
+                  "Avec pKa = 4,75 : \$K_a = 10^{-4{,}75} \\approx 1{,}78 \\times 10^{-5}\$. Très petit → acide faible.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer le pH de la solution.",
+              3,
+              _sol([
+                _step(
+                  "**Hypothèses simplificatrices** (acide faible peu dissocié) : \$[\\text{CH}_3\\text{COOH}] \\approx C_0\$ et \$[\\text{CH}_3\\text{COO}^-] \\approx [H_3O^+] = h\$ (électroneutralité).",
+                ),
+                _step(
+                  "\$K_a \\approx h^2/C_0 \\Rightarrow h = \\sqrt{K_a \\cdot C_0} = \\sqrt{1{,}78 \\times 10^{-5} \\times 0{,}1} = \\sqrt{1{,}78 \\times 10^{-6}} \\approx 1{,}33 \\times 10^{-3}\\,mol/L\$.",
+                ),
+                _step(
+                  "\$\\text{pH} = -\\log(1{,}33 \\times 10^{-3}) \\approx 2{,}88\$.",
+                ),
+                _step(
+                  "**Formule simplifiée** : pH \\approx (pKa - log C₀)/2 = (4,75 - log 0,1)/2 = (4,75 + 1)/2 = 2,87 ✓.",
+                  tipFr:
+                      "Validité de l'approximation : \$h/C_0 \\ll 1\$. Ici \$h/C_0 = 1{,}33\\%\$ ✓ (acide peu dissocié).",
+                ),
+              ], finalAnswerFr: r"pH $\approx$ 2,88"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Mélange tampon (Henderson-Hasselbalch)',
+          5,
+          "On prépare un mélange : 50 mL d'acide acétique 0,1 M + 50 mL d'acétate de sodium 0,1 M (acétate = base conjuguée).",
+          [
+            _q(
+              1,
+              "Calculer le pH du mélange.",
+              3,
+              _sol([
+                _step(
+                  "Volumes égaux, concentrations égales → après mélange, \$[\\text{CH}_3\\text{COOH}] = [\\text{CH}_3\\text{COO}^-] = 0{,}05\\,mol/L\$.",
+                ),
+                _step(
+                  "**Équation de Henderson-Hasselbalch** : \$\\text{pH} = \\text{pK}_a + \\log\\dfrac{[\\text{base}]}{[\\text{acide}]}\$.",
+                ),
+                _step(
+                  "Application : log(1/1) = 0, donc \$\\text{pH} = \\text{pK}_a = 4{,}75\$.",
+                  tipFr:
+                      "Pour [base] = [acide] : pH = pKa. C'est la **demi-équivalence** d'un dosage.",
+                ),
+              ], finalAnswerFr: r"pH = 4,75"),
+            ),
+            _q(
+              2,
+              "Pourquoi ce mélange est-il appelé 'solution tampon' ?",
+              2,
+              _sol([
+                _step(
+                  "**Propriété tampon** : la solution résiste aux variations de pH lors de l'ajout (modéré) d'acide ou de base.",
+                ),
+                _step(
+                  "Mécanisme : si on ajoute des \$H_3O^+\$, ils réagissent avec la base conjuguée pour reformer l'acide ; inversement pour \$OH^-\$. Le ratio acide/base ne varie que peu → pH stable.",
+                ),
+                _step(
+                  "**Applications** : régulation du pH sanguin (tampon \$HCO_3^-/H_2CO_3\$, pH ≈ 7,4), milieux de culture biologiques, électrochimie.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperTitrationCurve() => _paper(
+      titleFr: 'Épreuve type — Titrage acide-base',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Dosage acide-base, équivalence, indicateurs colorés, courbes pH-volume. Méthodes graphiques (tangentes, dérivée).",
+      exercices: [
+        _ex(
+          1,
+          'Dosage acide fort par base forte',
+          5,
+          "On dose 20 mL d'une solution de HCl de concentration inconnue \$C_a\$ par une solution de NaOH à \$C_b = 0{,}1\\,mol/L\$. On lit \$V_b^{eq} = 18\\,mL\$ à l'équivalence.",
+          [
+            _q(
+              1,
+              "Déterminer \$C_a\$.",
+              2,
+              _sol([
+                _step(
+                  "**À l'équivalence** : \$n(\\text{H}_3\\text{O}^+) = n(\\text{OH}^-)\$, c'est-à-dire \$C_a V_a = C_b V_b^{eq}\$.",
+                ),
+                _step(
+                  "Application : \$C_a = C_b V_b^{eq}/V_a = 0{,}1 \\times 18/20 = 0{,}09\\,mol/L\$.",
+                  tipFr:
+                      "L'équivalence dépend uniquement des quantités de matière, pas du fait que c'est un acide fort ou faible (pour des monoacides).",
+                ),
+              ], finalAnswerFr: r"$C_a = 0{,}09$ mol/L"),
+            ),
+            _q(
+              2,
+              "Quel est le pH à l'équivalence ?",
+              2,
+              _sol([
+                _step(
+                  "À l'équivalence d'un dosage **acide fort + base forte** : la solution contient seulement Cl⁻ et Na⁺ (sel neutre) dans l'eau.",
+                ),
+                _step(
+                  "Ces ions ne réagissent pas avec l'eau (acide et base conjugués trop faibles). Donc \$\\text{pH}_{eq} = 7\$.",
+                  tipFr:
+                      "pH à l'équivalence = 7 pour acide fort + base forte. Pour d'autres combinaisons : pH ≠ 7 (voir Exercice 2).",
+                ),
+              ], finalAnswerFr: r"pH = 7"),
+            ),
+            _q(
+              3,
+              "Quel indicateur coloré utiliser ?",
+              1,
+              _sol([
+                _step(
+                  "L'indicateur doit virer pour pH ≈ 7 (équivalence). **BBT (Bleu de Bromothymol)**, zone de virage 6,0–7,6 : idéal.",
+                ),
+                _step(
+                  "Phénolphtaléine (8,2–10) ou hélianthine (3,1–4,4) fonctionnent aussi grâce au saut très brutal à l'équivalence (de pH ~4 à pH ~10 en quelques gouttes).",
+                ),
+              ], finalAnswerFr: r"BBT (ou phénolphtaléine)"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Dosage acide faible par base forte',
+          5,
+          "On dose 20 mL d'acide acétique (\$pK_a = 4{,}75\$) inconnu par NaOH 0,1 M. \$V_b^{eq} = 15\\,mL\$.",
+          [
+            _q(
+              1,
+              "Déterminer la concentration \$C_a\$ d'acide acétique.",
+              2,
+              _sol([
+                _step(
+                  "Même relation à l'équivalence : \$C_a V_a = C_b V_b^{eq}\$.",
+                ),
+                _step(
+                  "\$C_a = 0{,}1 \\times 15/20 = 0{,}075\\,mol/L\$.",
+                ),
+              ], finalAnswerFr: r"$C_a = 0{,}075$ mol/L"),
+            ),
+            _q(
+              2,
+              "Le pH à l'équivalence est supérieur à 7. Justifier.",
+              3,
+              _sol([
+                _step(
+                  "À l'équivalence : seule la base conjuguée (\$\\text{CH}_3\\text{COO}^-\$) reste en solution. Elle réagit avec l'eau : \$\\text{CH}_3\\text{COO}^- + H_2O \\rightleftharpoons \\text{CH}_3\\text{COOH} + OH^-\$.",
+                ),
+                _step(
+                  "Cette réaction génère des \$OH^-\$, rendant la solution **basique** (pH > 7).",
+                ),
+                _step(
+                  "Valeur typique : pH éq \\approx 8,8 pour ce dosage.",
+                  tipFr:
+                      "Règle : équivalence (acide faible + base forte) → pH éq > 7. Inversement, (acide fort + base faible) → pH éq < 7.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Méthode des tangentes / dérivée',
+          5,
+          "Sur une courbe pH = f(V_b) d'un dosage acide faible.",
+          [
+            _q(
+              1,
+              "Décrire la méthode des tangentes pour repérer l'équivalence.",
+              3,
+              _sol([
+                _step(
+                  "**Méthode des tangentes** : tracer deux tangentes parallèles à la courbe pH=f(V), une avant et une après le saut, avec la même pente.",
+                ),
+                _step(
+                  "Tracer ensuite une droite parallèle à ces deux tangentes, située à égale distance entre elles.",
+                ),
+                _step(
+                  "L'intersection de cette droite médiane avec la courbe donne le point d'équivalence \$(V_b^{eq}, \\text{pH}_{eq})\$.",
+                  tipFr:
+                      "Méthode visuelle classique — fonctionne bien quand le saut est marqué. Pour un acide très faible, préférer la méthode de la dérivée.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Que représente le point où \$\\dfrac{d\\text{pH}}{dV_b}\$ est maximal ?",
+              2,
+              _sol([
+                _step(
+                  "La dérivée \$d\\text{pH}/dV_b\$ représente la pente de la courbe. Elle est maximale là où la courbe **change le plus vite** = au cœur du saut = à l'**équivalence**.",
+                ),
+                _step(
+                  "**Méthode de la dérivée** : tracer \$d\\text{pH}/dV_b\$ versus \$V_b\$ ; le maximum identifie précisément \$V_b^{eq}\$.",
+                ),
+                _step(
+                  "Avantage : précise même quand le saut visuel est faible (acide très faible, dosage en milieu non aqueux). Aujourd'hui automatisée par les pH-mètres numériques.",
+                ),
+              ], finalAnswerFr: r"Maximum de $dpH/dV$ = équivalence"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Demi-équivalence et pKa',
+          5,
+          "À la demi-équivalence d'un dosage acide faible / base forte, le pH a une propriété remarquable.",
+          [
+            _q(
+              1,
+              "Montrer qu'à la demi-équivalence, \$\\text{pH} = \\text{pK}_a\$.",
+              3,
+              _sol([
+                _step(
+                  "À la demi-équivalence (\$V_b = V_b^{eq}/2\$) : moitié de l'acide a été neutralisé. Soit \$n_0\$ la quantité initiale d'acide. Quantité de base ajoutée : \$n_0/2\$.",
+                ),
+                _step(
+                  "Donc \$[\\text{CH}_3\\text{COOH}] = n_0/2\$ et \$[\\text{CH}_3\\text{COO}^-] = n_0/2\$ — **concentrations égales**.",
+                ),
+                _step(
+                  "Henderson-Hasselbalch : \$\\text{pH} = \\text{pK}_a + \\log(1/1) = \\text{pK}_a\$. ✓",
+                  tipFr:
+                      "C'est LA méthode standard pour mesurer expérimentalement un pKa : faire un dosage, repérer la demi-équivalence, lire le pH = pKa.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Application numérique : sur la courbe de dosage de l'Exercice 2 (acide acétique), \$V_b^{eq} = 15\\,mL\$. Quelle valeur de pH lit-on à \$V_b = 7{,}5\\,mL\$ ?",
+              2,
+              _sol([
+                _step(
+                  "Demi-équivalence à \$V_b = 7{,}5\\,mL\$ : \$\\text{pH} = \\text{pK}_a = 4{,}75\$ (acide acétique).",
+                ),
+                _step(
+                  "**Vérification expérimentale** : on peut tracer la courbe complète, lire pH à \$V_b = 7{,}5\\,mL\$, et vérifier que c'est ~4,75. Cohérence permet de valider la mesure.",
+                ),
+              ], finalAnswerFr: r"pH = pKa = 4,75"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperReactionSpeed() => _paper(
+      titleFr: 'Épreuve type — Cinétique chimique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Vitesse de réaction, ordre de réaction, demi-vie, loi d'Arrhenius, catalyse. Facteurs : concentration, température, catalyseur.",
+      exercices: [
+        _ex(
+          1,
+          'Vitesse de réaction',
+          5,
+          "On suit la réaction \$2A \\to B + C\$ par mesure de \$[A]\$ au cours du temps. On obtient les valeurs : à \$t = 0\$, \$[A]_0 = 0{,}2\\,mol/L\$ ; à \$t = 10\\,s\$, \$[A] = 0{,}15\\,mol/L\$ ; à \$t = 30\\,s\$, \$[A] = 0{,}08\\,mol/L\$.",
+          [
+            _q(
+              1,
+              "Définir la vitesse de réaction et calculer sa valeur moyenne entre 0 et 10 s.",
+              3,
+              _sol([
+                _step(
+                  "**Vitesse volumique de réaction** : \$v = \\dfrac{1}{V}\\dfrac{d\\xi}{dt} = -\\dfrac{1}{\\nu_i}\\dfrac{d[X_i]}{dt}\$ pour un réactif.",
+                ),
+                _step(
+                  "Pour \$A\$ (coefficient 2) : \$v = -\\dfrac{1}{2}\\dfrac{d[A]}{dt}\$.",
+                ),
+                _step(
+                  "**Vitesse moyenne** entre 0 et 10 s : \$\\langle v \\rangle = -\\dfrac{1}{2} \\cdot \\dfrac{0{,}15 - 0{,}2}{10} = -\\dfrac{-0{,}05}{20} = 2{,}5 \\times 10^{-3}\\,mol \\cdot L^{-1} \\cdot s^{-1}\$.",
+                  tipFr:
+                      "Le signe \$-\$ assure que la vitesse est **positive** (un réactif disparaît, sa concentration diminue).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\langle v \rangle = 2{,}5 \times 10^{-3}$ mol/L/s"),
+            ),
+            _q(
+              2,
+              "Calculer la vitesse moyenne entre 10 et 30 s. Comparer.",
+              2,
+              _sol([
+                _step(
+                  "\$\\langle v \\rangle_{10-30} = -\\dfrac{1}{2} \\cdot \\dfrac{0{,}08 - 0{,}15}{20} = -\\dfrac{-0{,}07}{40} = 1{,}75 \\times 10^{-3}\\,mol/L/s\$.",
+                ),
+                _step(
+                  "**Observation** : la vitesse moyenne diminue avec le temps (2,5 × 10⁻³ → 1,75 × 10⁻³). C'est cohérent avec la **diminution de la concentration des réactifs** — moins de molécules → moins de chocs efficaces.",
+                ),
+              ], finalAnswerFr: r"$1{,}75 \times 10^{-3}$ mol/L/s (diminue)"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Ordre de réaction et demi-vie',
+          5,
+          "Une réaction d'ordre 1 par rapport au réactif A : \$-d[A]/dt = k[A]\$.",
+          [
+            _q(
+              1,
+              "Résoudre l'EDO et donner \$[A](t)\$.",
+              3,
+              _sol([
+                _step(
+                  "EDO \$-d[A]/dt = k[A]\$, soit \$d[A]/dt = -k[A]\$. C'est de la forme \$y' = ay\$ avec \$a = -k\$.",
+                ),
+                _step(
+                  "Solution générale : \$[A](t) = C e^{-kt}\$.",
+                ),
+                _step(
+                  "Condition initiale \$[A](0) = [A]_0\$ → \$C = [A]_0\$. Donc \$[A](t) = [A]_0 e^{-kt}\$.",
+                  tipFr:
+                      "Décroissance exponentielle — même forme que la désintégration radioactive et la décharge de condensateur.",
+                ),
+              ], finalAnswerFr: r"$[A](t) = [A]_0 e^{-kt}$"),
+            ),
+            _q(
+              2,
+              "Définir la demi-vie \$t_{1/2}\$ et la calculer en fonction de \$k\$.",
+              2,
+              _sol([
+                _step(
+                  "**Demi-vie** : durée au bout de laquelle \$[A]\$ est divisée par 2.",
+                ),
+                _step(
+                  "\$[A]_0 e^{-k t_{1/2}} = [A]_0/2 \\Rightarrow e^{-k t_{1/2}} = 1/2 \\Rightarrow t_{1/2} = \\ln(2)/k\$.",
+                ),
+                _step(
+                  "**Propriété remarquable** : pour une réaction d'ordre 1, la demi-vie est **indépendante de \$[A]_0\$**. Caractéristique unique de l'ordre 1.",
+                  tipFr:
+                      "C'est pour ça qu'on parle de demi-vie en radioactivité (toujours ordre 1) ou pharmacocinétique (souvent ordre 1).",
+                ),
+              ], finalAnswerFr: r"$t_{1/2} = \ln(2)/k$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Effet de la température (loi d\'Arrhenius)',
+          5,
+          "Pour une réaction donnée, la constante de vitesse vaut \$k = 1{,}5 \\times 10^{-3}\\,s^{-1}\$ à 25°C et \$k' = 6 \\times 10^{-3}\\,s^{-1}\$ à 45°C.",
+          [
+            _q(
+              1,
+              "Énoncer la loi d'Arrhenius et l'utiliser pour déterminer l'énergie d'activation \$E_a\$.",
+              3,
+              _sol([
+                _step(
+                  "**Loi d'Arrhenius** : \$k = A e^{-E_a/(RT)}\$ avec \$A\$ = facteur préexponentiel et \$E_a\$ = énergie d'activation.",
+                ),
+                _step(
+                  "**Ratio** : \$\\dfrac{k'}{k} = e^{-E_a/R \\cdot (1/T' - 1/T)}\$, soit \$\\ln(k'/k) = -E_a/R \\cdot (1/T' - 1/T) = E_a/R \\cdot (T' - T)/(T \\cdot T')\$.",
+                ),
+                _step(
+                  "Application : \$T = 298\\,K\$, \$T' = 318\\,K\$. \$\\ln(6/1{,}5) = \\ln 4 \\approx 1{,}386\$. \$(T' - T)/(T T') = 20/(298 \\times 318) \\approx 2{,}11 \\times 10^{-4}\\,K^{-1}\$.",
+                ),
+                _step(
+                  "\$E_a = R \\cdot \\ln(k'/k) / [(T' - T)/(T T')] = 8{,}314 \\times 1{,}386 / 2{,}11 \\times 10^{-4} \\approx 54600\\,J/mol \\approx 55\\,kJ/mol\$.",
+                  tipFr:
+                      "Règle empirique : +10°C → vitesse environ × 2 à × 4. Cohérent ici : +20°C → × 4.",
+                ),
+              ], finalAnswerFr: r"$E_a \approx 55$ kJ/mol"),
+            ),
+            _q(
+              2,
+              "Estimer la constante de vitesse à 100°C.",
+              2,
+              _sol([
+                _step(
+                  "\$T'' = 373\\,K\$. \$\\ln(k''/k) = (E_a/R)(1/T - 1/T'') = (54600/8{,}314)(1/298 - 1/373)\$.",
+                ),
+                _step(
+                  "\$1/298 - 1/373 = (373 - 298)/(298 \\times 373) = 75/111154 \\approx 6{,}75 \\times 10^{-4}\$.",
+                ),
+                _step(
+                  "\$\\ln(k''/k) = 6571 \\times 6{,}75 \\times 10^{-4} \\approx 4{,}43\$. \$k''/k \\approx e^{4{,}43} \\approx 84\$.",
+                ),
+                _step(
+                  "\$k'' \\approx 1{,}5 \\times 10^{-3} \\times 84 \\approx 0{,}126\\,s^{-1}\$. À 100°C, la vitesse est **84 fois plus grande** qu'à 25°C.",
+                ),
+              ], finalAnswerFr: r"$k_{100°C} \approx 0{,}126$ s⁻¹"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Catalyse',
+          5,
+          "Un catalyseur permet d'accélérer une réaction.",
+          [
+            _q(
+              1,
+              "Comment un catalyseur agit-il sur les paramètres de la réaction ?",
+              3,
+              _sol([
+                _step(
+                  "Un **catalyseur** abaisse l'**énergie d'activation** \$E_a\$ en proposant un chemin réactionnel alternatif (généralement via un intermédiaire avec le catalyseur).",
+                ),
+                _step(
+                  "Conséquence : \$k = A e^{-E_a/(RT)}\$ augmente (car \$E_a\$ plus petit) → **vitesse augmentée**.",
+                ),
+                _step(
+                  "**Mais** : le catalyseur **n'affecte pas l'équilibre** (ni la constante \$K\$, ni le rendement). Il accélère seulement l'atteinte de l'équilibre.",
+                  tipFr:
+                      "Catalyseur = accélérateur, pas un déplaceur d'équilibre. Pour déplacer l'équilibre : modifier T, ajouter/retirer un réactif, modifier la pression (gaz).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Donner un exemple industriel et un exemple biologique de catalyse.",
+              2,
+              _sol([
+                _step(
+                  "**Industriel** : platine/palladium dans les pots catalytiques (oxydation du CO et des hydrocarbures imbrûlés en CO₂ et H₂O). Permet aux gaz d'échappement d'être plus propres sans changer la chimie globale.",
+                ),
+                _step(
+                  "**Biologique** : enzymes (catalase, amylase, ATP synthase...). Une enzyme accélère sa réaction jusqu'à 10¹⁷ fois ! Exemple : sans la catalase, la décomposition de \$H_2O_2\$ prend des heures ; avec, c'est instantané.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperReversibleBasics() => _paper(
+      titleFr: 'Épreuve type — Réactions réversibles et équilibre',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Réactions réversibles, équilibre dynamique, principe de Le Chatelier, déplacement par modification des concentrations/pression/température.",
+      exercices: [
+        _ex(
+          1,
+          'Notion d\'équilibre dynamique',
+          5,
+          "Considérons la réaction réversible \$A + B \\rightleftharpoons C + D\$.",
+          [
+            _q(
+              1,
+              "Qu'est-ce qu'un équilibre dynamique ?",
+              2,
+              _sol([
+                _step(
+                  "**Équilibre dynamique** : état où la vitesse de la réaction directe (A + B → C + D) **égale** celle de la réaction inverse (C + D → A + B).",
+                ),
+                _step(
+                  "Au niveau macroscopique : les concentrations restent **constantes** au cours du temps.",
+                ),
+                _step(
+                  "Au niveau microscopique : les réactions continuent dans les deux sens — d'où 'dynamique'. Pas d'arrêt du mouvement moléculaire.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Quelle est la différence avec une réaction totale ?",
+              2,
+              _sol([
+                _step(
+                  "**Réaction totale** : la réaction directe se produit jusqu'à épuisement d'un réactif (limitant). \$K \\to \\infty\$ ou très grand.",
+                ),
+                _step(
+                  "**Réaction réversible** : la réaction atteint un équilibre AVANT épuisement, avec des concentrations finies de réactifs ET produits. \$K\$ fini.",
+                ),
+                _step(
+                  "**Cas limite** : pour \$K\$ très grand (>10⁴), on parle de réaction quasi-totale. Pour \$K\$ très petit (<10⁻⁴), réaction quasi-nulle.",
+                  tipFr:
+                      "Le sens 'spontané' à un instant donné dépend de \$Q_r\$ vs \$K\$, pas du fait que la réaction soit réversible ou non.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Un catalyseur modifie-t-il la position de l'équilibre ?",
+              1,
+              _sol([
+                _step(
+                  "**Non** : un catalyseur accélère les deux réactions (directe et inverse) du même facteur. L'équilibre est atteint plus vite, mais à la **même position**.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Quotient de réaction et constante d\'équilibre',
+          5,
+          "À 25°C, pour \$N_2(g) + 3 H_2(g) \\rightleftharpoons 2 NH_3(g)\$, \$K = 6{,}8 \\times 10^5\$. On a un mélange : \$[N_2] = 0{,}1\\,mol/L\$, \$[H_2] = 0{,}3\\,mol/L\$, \$[NH_3] = 0{,}5\\,mol/L\$.",
+          [
+            _q(
+              1,
+              "Calculer le quotient de réaction \$Q_r\$.",
+              2,
+              _sol([
+                _step(
+                  "**Quotient** : \$Q_r = \\dfrac{[NH_3]^2}{[N_2][H_2]^3} = \\dfrac{(0{,}5)^2}{0{,}1 \\times (0{,}3)^3} = \\dfrac{0{,}25}{0{,}1 \\times 0{,}027} = \\dfrac{0{,}25}{0{,}0027} \\approx 92{,}6\$.",
+                ),
+              ], finalAnswerFr: r"$Q_r \approx 92{,}6$"),
+            ),
+            _q(
+              2,
+              "Comparer à \$K\$ et prédire le sens d'évolution.",
+              2,
+              _sol([
+                _step(
+                  "\$Q_r \\approx 93 \\ll K \\approx 6{,}8 \\times 10^5\$.",
+                ),
+                _step(
+                  "**Critère** : \$Q_r < K\$ → la réaction évolue dans le **sens direct** (formation de plus de \$NH_3\$, consommation de \$N_2\$ et \$H_2\$) pour faire monter \$Q_r\$ jusqu'à \$K\$.",
+                ),
+                _step(
+                  "À l'équilibre final : \$Q_r = K\$ — les concentrations s'ajusteront en conséquence.",
+                  tipFr:
+                      "Si \$Q_r > K\$ : sens inverse. Si \$Q_r = K\$ : équilibre déjà atteint, pas d'évolution.",
+                ),
+              ], finalAnswerFr: r"$Q_r \ll K$ → sens direct"),
+            ),
+            _q(
+              3,
+              "Pourquoi cette réaction est-elle importante industriellement ?",
+              1,
+              _sol([
+                _step(
+                  "C'est le **procédé Haber-Bosch** pour la synthèse de l'ammoniac, base des engrais agricoles. Permet de nourrir la moitié de l'humanité — l'azote atmosphérique \$N_2\$ devient assimilable par les plantes via \$NH_3\$ → engrais nitrés.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Principe de Le Chatelier',
+          5,
+          "On considère l'équilibre \$CaCO_3(s) \\rightleftharpoons CaO(s) + CO_2(g)\$ (décomposition du calcaire). La réaction directe est endothermique.",
+          [
+            _q(
+              1,
+              "Énoncer le principe de Le Chatelier.",
+              2,
+              _sol([
+                _step(
+                  "**Principe de Le Chatelier** : tout système à l'équilibre, soumis à une perturbation, évolue dans le sens qui **atténue** cette perturbation.",
+                ),
+                _step(
+                  "Conséquences pratiques : ajouter un réactif → déplace vers les produits ; chauffer une réaction endothermique → déplace vers les produits (la réaction absorbe la chaleur ajoutée) ; comprimer une réaction qui réduit le nombre de moles gazeuses → déplace vers les produits.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Comment déplacer cet équilibre vers la formation de \$CaO\$ ?",
+              3,
+              _sol([
+                _step(
+                  "**Méthode 1 — Chauffer** : la réaction directe est endothermique. Augmenter T → déplace vers les produits (absorbe la chaleur). En pratique : on chauffe le calcaire à 900-1200°C pour le décarbonater.",
+                ),
+                _step(
+                  "**Méthode 2 — Évacuer \$CO_2\$** : éliminer un produit (ventilation, four ouvert) → \$Q_r\$ baisse → la réaction continue dans le sens direct pour réajuster.",
+                ),
+                _step(
+                  "**Méthode 3 — Diminuer la pression** : 1 mole de gaz à droite, 0 à gauche → diminuer P déplace vers la droite (plus de moles gazeuses).",
+                  tipFr:
+                      "Combiner plusieurs méthodes amplifie l'effet. C'est ce qu'on fait pour la fabrication de la chaux : haute température + four ouvert.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — équilibre acide-base',
+          5,
+          "Soit la dissociation de l'acide acétique : \$\\text{CH}_3\\text{COOH} + H_2O \\rightleftharpoons \\text{CH}_3\\text{COO}^- + H_3O^+\$. \$K_a = 1{,}78 \\times 10^{-5}\$ à 25°C.",
+          [
+            _q(
+              1,
+              "On ajoute de l'acétate de sodium (source de \$\\text{CH}_3\\text{COO}^-\$) à une solution d'acide acétique. Comment varie le pH ?",
+              3,
+              _sol([
+                _step(
+                  "Ajouter un produit (acétate) → fait monter \$Q_r\$ au-dessus de \$K\$. Le système réagit dans le **sens inverse** pour rétablir \$Q_r = K\$.",
+                ),
+                _step(
+                  "Conséquence : consommation d'\$H_3O^+\$ → \$[H_3O^+]\$ **diminue** → **pH augmente**.",
+                ),
+                _step(
+                  "**Effet d'ion commun** : ajouter un ion en commun avec une espèce de l'équilibre déplace celui-ci. Application : préparation d'une solution tampon.",
+                  tipFr:
+                      "L'effet d'ion commun (ici : \$\\text{CH}_3\\text{COO}^-\$ dans une solution d'acide acétique) réprime la dissociation de l'acide.",
+                ),
+              ], finalAnswerFr: r"pH augmente (effet d'ion commun)"),
+            ),
+            _q(
+              2,
+              "On ajoute des ions \$OH^-\$ (NaOH dilué). Comment évolue l'équilibre ?",
+              2,
+              _sol([
+                _step(
+                  "\$OH^-\$ réagit avec \$H_3O^+\$ : \$OH^- + H_3O^+ \\to 2 H_2O\$. Cela **consomme \$H_3O^+\$** dans le milieu.",
+                ),
+                _step(
+                  "\$Q_r\$ chute en-dessous de \$K\$ → la dissociation de l'acide acétique se poursuit (sens direct) pour reformer \$H_3O^+\$.",
+                ),
+                _step(
+                  "**Résultat net** : l'acide se dissocie davantage. Si l'on continue à ajouter \$OH^-\$, on finit par tout neutraliser → c'est le mécanisme du dosage acide faible / base forte.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperQrK() => _paper(
+      titleFr: r"Épreuve type — Quotient $Q_r$ et constante d'équilibre $K$",
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Quotient de réaction \$Q_r\$, constante d'équilibre \$K\$, prédiction du sens d'évolution, calculs de rendement.",
+      exercices: [
+        _ex(
+          1,
+          'Définition et expression',
+          5,
+          "Pour la réaction \$aA + bB \\rightleftharpoons cC + dD\$, on définit \$Q_r\$ et \$K\$ à un instant donné.",
+          [
+            _q(
+              1,
+              "Donner l'expression générale de \$Q_r\$ et le distinguer de \$K\$.",
+              3,
+              _sol([
+                _step(
+                  "**Quotient de réaction** : \$Q_r = \\dfrac{[C]^c [D]^d}{[A]^a [B]^b}\$ — peut être calculé à **tout instant** (à l'équilibre ou non).",
+                ),
+                _step(
+                  "**Constante d'équilibre** \$K\$ : valeur particulière de \$Q_r\$ **à l'équilibre**. Constante pour une réaction donnée, à T fixée.",
+                ),
+                _step(
+                  "Conditions importantes : les concentrations sont en **mol/L** ; pour les solides ou liquides purs, l'activité = 1 (n'apparaît pas dans l'expression).",
+                  tipFr:
+                      "\$Q_r\$ change avec les concentrations ; \$K\$ ne dépend que de la température.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Pour la réaction \$2 SO_2(g) + O_2(g) \\rightleftharpoons 2 SO_3(g)\$ à 700 K, \$K = 0{,}21\$. Que signifie cette valeur ?",
+              2,
+              _sol([
+                _step(
+                  "\$K = 0{,}21 < 1\$ → équilibre **plutôt déplacé vers les réactifs**. La conversion en SO₃ est partielle.",
+                ),
+                _step(
+                  "Pour favoriser la formation de SO₃ (catalyseur industriel), il faut soit augmenter la pression (réduit le nombre de moles gazeuses, 3 → 2), soit jouer sur la température. La réaction est exothermique donc baisser T augmente \$K\$ — mais ralentit la cinétique : compromis pratique à T = 400-500°C.",
+                  tipFr:
+                      "Pour l'industrie de l'acide sulfurique (procédé de contact), on optimise simultanément T (compromis cinétique/thermodynamique) et P.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Prédiction du sens d\'évolution',
+          5,
+          "Pour la réaction \$2 NO_2 \\rightleftharpoons N_2O_4\$ à 25°C, \$K = 5\\,\\text{L/mol}\$. Un mélange initial contient \$[NO_2] = 0{,}1\\,mol/L\$ et \$[N_2O_4] = 0{,}05\\,mol/L\$.",
+          [
+            _q(
+              1,
+              "Calculer \$Q_r\$ initial.",
+              2,
+              _sol([
+                _step(
+                  "\$Q_r = \\dfrac{[N_2O_4]}{[NO_2]^2} = \\dfrac{0{,}05}{(0{,}1)^2} = \\dfrac{0{,}05}{0{,}01} = 5\\,\\text{L/mol}\$.",
+                ),
+              ], finalAnswerFr: r"$Q_r = 5$"),
+            ),
+            _q(
+              2,
+              "Le système est-il à l'équilibre ?",
+              2,
+              _sol([
+                _step(
+                  "\$Q_r = K = 5\$ ✓ : le système **est déjà à l'équilibre**, aucune évolution ne se produira (sauf si on perturbe).",
+                ),
+                _step(
+                  "Cas test : si on ajoutait \$N_2O_4\$ jusqu'à \$[N_2O_4] = 0{,}1\\,mol/L\$, \$Q_r = 10 > K\$ → évolution dans le **sens inverse** (consommation de \$N_2O_4\$, production de \$NO_2\$).",
+                ),
+              ], finalAnswerFr: r"$Q_r = K$ : équilibre atteint"),
+            ),
+            _q(
+              3,
+              "Si on ajoute soudainement \$NO_2\$ jusqu'à \$[NO_2] = 0{,}2\\,mol/L\$, dans quel sens évolue la réaction ?",
+              1,
+              _sol([
+                _step(
+                  "Nouveau \$Q_r = 0{,}05 / (0{,}2)^2 = 0{,}05 / 0{,}04 = 1{,}25 < K = 5\$.",
+                ),
+                _step(
+                  "Donc évolution dans le **sens direct** (consommation de \$NO_2\$, formation de \$N_2O_4\$) pour faire monter \$Q_r\$ vers \$K\$.",
+                ),
+              ], finalAnswerFr: r"Sens direct ($Q_r < K$)"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Avancement et rendement',
+          5,
+          "Pour la réaction \$A \\rightleftharpoons B\$ avec \$K = 9\$. On part de \$[A]_0 = 1\\,mol/L\$, \$[B]_0 = 0\$.",
+          [
+            _q(
+              1,
+              "Calculer l'avancement \$x_{eq}\$ et \$[A]_{eq}\$, \$[B]_{eq}\$ à l'équilibre.",
+              4,
+              _sol([
+                _step(
+                  "À l'équilibre : \$[A] = 1 - x\$, \$[B] = x\$ (avec \$x\$ l'avancement volumique).",
+                ),
+                _step(
+                  "Loi d'équilibre : \$K = [B]/[A] = x/(1-x) = 9\$.",
+                ),
+                _step(
+                  "Résolution : \$x = 9(1 - x) = 9 - 9x \\Rightarrow 10x = 9 \\Rightarrow x = 0{,}9\\,mol/L\$.",
+                ),
+                _step(
+                  "Donc \$[A]_{eq} = 0{,}1\\,mol/L\$, \$[B]_{eq} = 0{,}9\\,mol/L\$. Le système est très déplacé vers les produits (cohérent avec \$K = 9\$ grand).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$x_{eq} = 0{,}9$, $[A]_{eq} = 0{,}1$, $[B]_{eq} = 0{,}9$"),
+            ),
+            _q(
+              2,
+              "Calculer le rendement \$\\eta\$.",
+              1,
+              _sol([
+                _step(
+                  "**Rendement** : \$\\eta = \\dfrac{x_{eq}}{x_{\\max}}\$ où \$x_{\\max}\$ est l'avancement maximal (cas où la réaction serait totale).",
+                ),
+                _step(
+                  "Ici \$x_{\\max} = [A]_0 = 1\\,mol/L\$. \$\\eta = 0{,}9/1 = 0{,}9 = 90\\%\$. Bon rendement.",
+                ),
+              ], finalAnswerFr: r"$\eta = 90\%$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Déplacement d\'équilibre — comment améliorer le rendement',
+          5,
+          "Pour la réaction \$A \\rightleftharpoons B + C\$ avec \$K = 0{,}1\$ (équilibre déplacé vers le réactif). Rendement initial : faible.",
+          [
+            _q(
+              1,
+              "Citer 3 méthodes pour augmenter le rendement (concentration de B formé).",
+              4,
+              _sol([
+                _step(
+                  "**Méthode 1 — Augmenter [A] initial** : ajouter plus de A déplace l'équilibre vers les produits (Le Chatelier).",
+                ),
+                _step(
+                  "**Méthode 2 — Éliminer B (ou C) au fur et à mesure** : diminue le numérateur de \$Q_r\$, déplace l'équilibre vers la droite pour le rééquilibrer. Méthode classique en chimie organique (distillation Dean-Stark pour éliminer l'eau d'une estérification, par exemple).",
+                ),
+                _step(
+                  "**Méthode 3 — Modifier la température** : si la réaction est endothermique, augmenter T augmente \$K\$. Si exothermique, baisser T.",
+                ),
+                _step(
+                  "**Limite** : le catalyseur **ne change pas** le rendement (\$K\$ constant à T fixée). Il aide juste à atteindre l'équilibre plus vite.",
+                  tipFr:
+                      "Combinaison classique : excès de réactif + élimination du produit + température optimisée + catalyseur (pour vitesse). C'est la recette industrielle.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Si on double \$[A]_0\$, le rendement augmente-t-il proportionnellement ?",
+              1,
+              _sol([
+                _step(
+                  "**Non** : le rendement n'est pas linéaire avec \$[A]_0\$. La résolution de l'équation d'équilibre \$x^2/(c_0 - x) = K\$ est non linéaire.",
+                ),
+                _step(
+                  "Pour \$K\$ très petit, on a \$x \\propto \\sqrt{c_0}\$ → rendement diminue quand \$c_0\$ augmente. Pour \$K\$ très grand, \$x \\to c_0\$ → rendement → 100% quasi-indépendamment.",
+                  tipFr:
+                      "Le rendement chimique est rarement intuitif — toujours calculer précisément via l'équation d'équilibre.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDaniellCellBasics() => _paper(
+      titleFr: 'Épreuve type — Pile Daniell et oxydoréduction',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Pile Daniell (Zn/Cu), oxydoréduction, demi-équations, potentiels standards, fem, sens spontané, électrolyse.",
+      exercices: [
+        _ex(
+          1,
+          'Structure et fonctionnement de la pile Daniell',
+          5,
+          "La pile Daniell est constituée d'une demi-pile Zn/Zn²⁺ (lame de zinc dans une solution de sulfate de zinc) et d'une demi-pile Cu/Cu²⁺ (lame de cuivre dans sulfate de cuivre), reliées par un pont salin.",
+          [
+            _q(
+              1,
+              "Écrire les demi-équations d'oxydoréduction à chaque électrode.",
+              3,
+              _sol([
+                _step(
+                  "**À l'anode (Zn)** : \$Zn(s) \\to Zn^{2+}(aq) + 2 e^-\$. Le zinc s'**oxyde** (perd des électrons).",
+                ),
+                _step(
+                  "**À la cathode (Cu)** : \$Cu^{2+}(aq) + 2 e^- \\to Cu(s)\$. Le cuivre se **réduit** (gagne des électrons).",
+                ),
+                _step(
+                  "**Bilan global** : \$Zn + Cu^{2+} \\to Zn^{2+} + Cu\$. Le zinc disparaît, le cuivre se dépose. Conservation de la charge et des éléments ✓.",
+                  tipFr:
+                      "Mémo : Oxydation à l'Anode (mots à voyelles), Réduction à la Cathode (mots à consonnes).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Dans quel sens circulent les électrons (dans le fil extérieur) et le courant ?",
+              2,
+              _sol([
+                _step(
+                  "**Électrons** : libérés à l'anode (Zn), partent dans le **circuit extérieur** vers la cathode (Cu).",
+                ),
+                _step(
+                  "**Sens conventionnel du courant** : opposé au sens des électrons. Donc le courant va de la cathode (Cu, pôle +) vers l'anode (Zn, pôle −) dans le **circuit extérieur**.",
+                ),
+                _step(
+                  "Dans le **pont salin** : les anions migrent vers l'anode (compense la charge \$Zn^{2+}\$ formée), les cations vers la cathode (compense la disparition de \$Cu^{2+}\$). Cette circulation interne ferme le circuit électrique.",
+                  tipFr:
+                      "Pour identifier l'anode et la cathode dans une pile : c'est le pôle **négatif** où a lieu l'oxydation.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'fem standard',
+          5,
+          "Potentiels standards à 25°C : \$E°(Cu^{2+}/Cu) = +0{,}34\\,V\$, \$E°(Zn^{2+}/Zn) = -0{,}76\\,V\$.",
+          [
+            _q(
+              1,
+              "Calculer la force électromotrice (fem) standard de la pile Daniell.",
+              2,
+              _sol([
+                _step(
+                  "**fem standard** : \$\\Delta E° = E°_{\\text{cathode}} - E°_{\\text{anode}} = E°(Cu^{2+}/Cu) - E°(Zn^{2+}/Zn) = 0{,}34 - (-0{,}76) = 1{,}10\\,V\$.",
+                ),
+                _step(
+                  "**Convention** : la cathode est l'électrode au potentiel le plus élevé. fem > 0 confirme que la réaction directe (Zn → Zn²⁺) est spontanée.",
+                ),
+              ], finalAnswerFr: r"$\Delta E° = 1{,}10$ V"),
+            ),
+            _q(
+              2,
+              "Si on inverse les rôles (Zn devient cathode, Cu devient anode), que se passe-t-il ?",
+              2,
+              _sol([
+                _step(
+                  "Cette configuration imposerait la réaction inverse : \$Zn^{2+} + Cu \\to Zn + Cu^{2+}\$. \$\\Delta E° = E°_{Zn} - E°_{Cu} = -1{,}10\\,V\$. **Non spontanée**.",
+                ),
+                _step(
+                  "Pour la forcer, il faudrait apporter de l'énergie électrique → c'est une **électrolyse**.",
+                  tipFr:
+                      "Le sens spontané d'une réaction redox est celui où la cathode est le couple au plus haut potentiel.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Que se passe-t-il quand on consomme entièrement le zinc ?",
+              1,
+              _sol([
+                _step(
+                  "**La pile est usée** : plus de réducteur disponible. La fem chute à zéro, plus de courant fourni.",
+                ),
+                _step(
+                  "On peut recharger la pile en faisant l'électrolyse inverse (en apportant de l'énergie électrique externe). C'est le principe de l'**accumulateur**.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Quantité d\'électricité et durée de vie',
+          5,
+          "On utilise une pile Daniell qui débite un courant constant \$I = 0{,}1\\,A\$ pendant \$t = 30\\,\\text{min}\$.",
+          [
+            _q(
+              1,
+              "Calculer la charge totale \$Q\$ traversant le circuit.",
+              2,
+              _sol([
+                _step(
+                  "\$Q = I \\cdot t = 0{,}1 \\times 30 \\times 60 = 180\\,C\$.",
+                ),
+              ], finalAnswerFr: r"$Q = 180$ C"),
+            ),
+            _q(
+              2,
+              "En déduire la quantité de matière de \$Zn\$ consommée et la masse correspondante. \$M(Zn) = 65{,}4\\,g/mol\$, \$F = 96500\\,C/mol\$.",
+              3,
+              _sol([
+                _step(
+                  "**Relation charge-matière** (faraday) : \$Q = n_e \\cdot F\$ où \$n_e\$ est la quantité d'électrons en moles, \$F = 96500\\,C/mol\$ (constante de Faraday).",
+                ),
+                _step(
+                  "\$n_e = Q/F = 180/96500 \\approx 1{,}87 \\times 10^{-3}\\,mol\$.",
+                ),
+                _step(
+                  "Demi-équation Zn → Zn²⁺ + 2e⁻ : pour 1 mol Zn, 2 mol e⁻. Donc \$n(Zn) = n_e/2 \\approx 9{,}33 \\times 10^{-4}\\,mol\$.",
+                ),
+                _step(
+                  "Masse : \$m(Zn) = n(Zn) \\cdot M(Zn) = 9{,}33 \\times 10^{-4} \\times 65{,}4 \\approx 0{,}061\\,g = 61\\,mg\$.",
+                  tipFr:
+                      "Loi de Faraday : la masse déposée/consommée est proportionnelle à la charge et au facteur \$M/(zF)\$ où z = nombre d'électrons échangés.",
+                ),
+              ], finalAnswerFr: r"$m(Zn) \approx 61$ mg"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Électrolyse — application',
+          5,
+          "On effectue l'électrolyse d'une solution de \$CuSO_4\$ entre deux électrodes inertes (graphite). On applique une tension extérieure suffisante pour forcer la réaction.",
+          [
+            _q(
+              1,
+              "Écrire les réactions aux deux électrodes.",
+              3,
+              _sol([
+                _step(
+                  "**À la cathode (pôle −)** : réduction. \$Cu^{2+} + 2 e^- \\to Cu(s)\$. On dépose du cuivre.",
+                ),
+                _step(
+                  "**À l'anode (pôle +)** : oxydation. \$2 H_2O \\to O_2(g) + 4 H^+ + 4 e^-\$. Dégagement d'oxygène.",
+                ),
+                _step(
+                  "**Note** : si l'anode était en cuivre, ce serait elle qui s'oxyderait à la place de l'eau (potentiel plus favorable). C'est ce qu'on fait pour purifier le cuivre industriellement (raffinage électrolytique).",
+                  tipFr:
+                      "Le choix de l'électrode change la réaction anodique : anode inerte → oxydation de l'eau, anode active → oxydation de l'électrode elle-même.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Quelle est l'utilité industrielle de l'électrolyse ?",
+              2,
+              _sol([
+                _step(
+                  "**Production de métaux** : aluminium (procédé Hall-Héroult), sodium, chlore. Production de \$H_2\$ par électrolyse de l'eau (renouvelable si l'électricité est verte).",
+                ),
+                _step(
+                  "**Galvanoplastie** : déposer une fine couche d'un métal sur un autre (chromage, dorure, nickel, etc.).",
+                ),
+                _step(
+                  "**Raffinage** : purification du cuivre, du zinc (gros volumes industriels).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperEsterificationMechanism() => _paper(
+      titleFr: 'Épreuve type — Estérification et hydrolyse',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Réaction estérification \$\\text{acide + alcool} \\rightleftharpoons \\text{ester + eau}\$, mécanisme, équilibre, rendement, catalyse, saponification.",
+      exercices: [
+        _ex(
+          1,
+          'Réaction d\'estérification',
+          5,
+          "On réalise l'estérification de l'acide acétique \$\\text{CH}_3\\text{COOH}\$ avec l'éthanol \$\\text{CH}_3\\text{CH}_2\\text{OH}\$.",
+          [
+            _q(
+              1,
+              "Écrire l'équation de la réaction.",
+              2,
+              _sol([
+                _step(
+                  "\$\\text{CH}_3\\text{COOH} + \\text{CH}_3\\text{CH}_2\\text{OH} \\rightleftharpoons \\text{CH}_3\\text{COO-CH}_2\\text{CH}_3 + H_2O\$.",
+                ),
+                _step(
+                  "Ester formé : **acétate d'éthyle** (\$\\text{CH}_3\\text{COOC}_2\\text{H}_5\$). Petit ester très répandu, odeur agréable de fruit.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Citer les caractéristiques principales de cette réaction.",
+              3,
+              _sol([
+                _step(
+                  "**Limitée** : équilibre atteint, rendement plafonné autour de **67%** pour mélange équimolaire (\$K \\approx 4\$).",
+                ),
+                _step(
+                  "**Lente** : à température ambiante sans catalyseur, plusieurs heures à plusieurs jours pour atteindre l'équilibre.",
+                ),
+                _step(
+                  "**Athermique** : ne libère ni n'absorbe de chaleur significative. Le rendement ne change pas avec T (mais la cinétique oui).",
+                  tipFr:
+                      "Pour améliorer le rendement, on déplace l'équilibre. Pour améliorer la vitesse, on chauffe ou on catalyse.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Amélioration du rendement',
+          5,
+          "On veut maximiser la quantité d'acétate d'éthyle produit.",
+          [
+            _q(
+              1,
+              "Citer 3 méthodes pour déplacer l'équilibre vers les produits.",
+              3,
+              _sol([
+                _step(
+                  "**Méthode 1 — Élimination de l'eau** : utiliser un appareil de Dean-Stark, qui distille en continu l'eau formée. Diminue \$[H_2O]\$ → \$Q_r\$ baisse → déplacement vers les produits.",
+                ),
+                _step(
+                  "**Méthode 2 — Excès d'un réactif** : utiliser un grand excès de l'alcool (par exemple). Loi de Le Chatelier → consommation accrue de l'acide carboxylique.",
+                ),
+                _step(
+                  "**Méthode 3 — Utilisation d'anhydride** : remplacer l'acide carboxylique par l'anhydride correspondant \$(\\text{CH}_3\\text{CO})_2 O\$. La réaction devient **totale** (pas réversible) car elle est très exothermique et l'anhydride est très réactif.",
+                  tipFr:
+                      "L'anhydride d'acide est la 'version dopée' de l'acide pour les estérifications : rendement quasi-100% en quelques heures.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Quel est le rôle du catalyseur \$H_2SO_4\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$H_2SO_4\$ concentré est un catalyseur acide. Il **accélère** la réaction (et la réaction inverse) mais ne déplace pas l'équilibre.",
+                ),
+                _step(
+                  "Mécanisme : protone le carbonyle de l'acide, rendant le carbone plus électrophile et favorisant l'attaque nucléophile par l'alcool.",
+                ),
+                _step(
+                  "**Conséquence** : avec catalyseur, on atteint l'équilibre (67%) en quelques heures au lieu de plusieurs jours.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Hydrolyse acide d\'un ester',
+          5,
+          "On hydrolyse l'acétate d'éthyle en milieu acide.",
+          [
+            _q(
+              1,
+              "Écrire l'équation et comparer à l'estérification.",
+              3,
+              _sol([
+                _step(
+                  "\$\\text{CH}_3\\text{COOC}_2\\text{H}_5 + H_2O \\rightleftharpoons \\text{CH}_3\\text{COOH} + C_2H_5OH\$.",
+                ),
+                _step(
+                  "**C'est la réaction inverse de l'estérification** — même équation, sens inverse. Mêmes propriétés : limitée, lente, athermique, catalysée par \$H_2SO_4\$.",
+                ),
+                _step(
+                  "Rendement à l'équilibre : 33% (l'inverse de 67%) pour un mélange initial ester + eau équimolaire. Cohérent avec \$K \\approx 4\$.",
+                  tipFr:
+                      "Estérification et hydrolyse acide sont la même réaction, parcourue dans des sens opposés selon les conditions initiales.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Comment déplacer cet équilibre vers les produits (hydrolyse complète) ?",
+              2,
+              _sol([
+                _step(
+                  "Pour favoriser l'hydrolyse, on peut **augmenter [H₂O] (excès d'eau)** ou **éliminer l'alcool/acide formé** (distillation).",
+                ),
+                _step(
+                  "Méthode plus radicale : utiliser un milieu **basique** (saponification, Exercice 4) — la base déprotone l'acide formé en carboxylate, déplaçant complètement l'équilibre.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Saponification',
+          5,
+          "On hydrolyse l'acétate d'éthyle en milieu basique (excès de NaOH).",
+          [
+            _q(
+              1,
+              "Écrire l'équation et expliquer pourquoi cette réaction est totale.",
+              3,
+              _sol([
+                _step(
+                  "\$\\text{CH}_3\\text{COOC}_2\\text{H}_5 + NaOH \\to \\text{CH}_3\\text{COO}^- Na^+ + C_2H_5OH\$. Produit : acétate de sodium (sel) + éthanol.",
+                ),
+                _step(
+                  "**Pourquoi totale** : la base \$OH^-\$ déprotone immédiatement tout acide carboxylique formé. \$\\text{CH}_3\\text{COOH} + OH^- \\to \\text{CH}_3\\text{COO}^- + H_2O\$ — réaction quasi-totale.",
+                ),
+                _step(
+                  "La concentration d'acide reste donc négligeable, la réaction inverse (re-estérification) ne peut pas se produire → équilibre est déplacé vers les produits jusqu'à conversion totale.",
+                  tipFr:
+                      "Saponification = hydrolyse basique des esters. Découverte historiquement pour fabriquer le savon à partir de corps gras (triglycérides).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Application industrielle : fabrication du savon. Décrire brièvement.",
+              2,
+              _sol([
+                _step(
+                  "**Matière première** : corps gras (triglycérides) — esters d'acides gras et de glycérol.",
+                ),
+                _step(
+                  "Saponification avec NaOH (soude caustique) ou KOH (potasse) : les triglycérides sont coupés en glycérol + 3 sels d'acides gras (carboxylates de sodium ou potassium) = **savons**.",
+                ),
+                _step(
+                  "Les carboxylates d'acides gras à longue chaîne ont une partie hydrophile (tête \$COO^-\$) et une partie hydrophobe (chaîne carbonée) — propriété **amphiphile** qui permet de dissoudre les graisses dans l'eau (nettoyage).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -5253,7 +6554,14 @@ final Map<String, Map<String, dynamic>> _papers = {
   'sma_b_field_basics': _paperBFieldBasics(),
   'sma_pendulum_simple': _paperPendulumSimple(),
   'sma_kinetic_potential': _paperKineticPotential(),
-  // 7 SMA chimie chapters remaining.
+  'sma_ph_definition': _paperPhDefinition(),
+  'sma_titration_curve': _paperTitrationCurve(),
+  'sma_reaction_speed': _paperReactionSpeed(),
+  'sma_reversible_basics': _paperReversibleBasics(),
+  'sma_qr_k': _paperQrK(),
+  'sma_daniell_cell_basics': _paperDaniellCellBasics(),
+  'sma_esterification_mechanism': _paperEsterificationMechanism(),
+  // All 32 SMA chapters now have full Bac-paper exam papers ✓
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
