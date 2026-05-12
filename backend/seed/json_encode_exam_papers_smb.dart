@@ -5215,6 +5215,535 @@ Map<String, dynamic> _paperRcRlCircuits() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperRlcOscillations() => _paper(
+      titleFr: 'Épreuve type — Oscillations RLC',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Circuit RLC en régime libre : trois régimes (pseudo-périodique, critique, apériodique), pulsation propre, conservation/dissipation d'énergie.",
+      exercices: [
+        _ex(
+          1,
+          'Circuit LC idéal',
+          5,
+          "Un circuit LC sans résistance : \$L = 1\\,H\$, \$C = 4\\,\\mu F\$. Condensateur initialement chargé à \$U_0 = 10\\,V\$.",
+          [
+            _q(
+              1,
+              "Calculer \$\\omega_0\$ et la période \$T_0\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{4 \\times 10^{-6}} = 1/(2 \\times 10^{-3}) = 500\\,rad/s\$.",
+                ),
+                _step(
+                  "\$T_0 = 2\\pi/\\omega_0 \\approx 12{,}57\\,ms\$. Fréquence \$f_0 \\approx 79{,}6\\,Hz\$.",
+                ),
+              ], finalAnswerFr: r"$\omega_0 = 500$ rad/s, $T_0 \approx 12{,}6$ ms"),
+            ),
+            _q(
+              2,
+              "Donner \$u_C(t)\$ et \$i(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "Solution de \$L \\ddot q + q/C = 0\$ : \$q(t) = Q_0\\cos(\\omega_0 t)\$ (avec \$Q_0 = C U_0\$, \$\\dot q(0) = 0\$).",
+                ),
+                _step(
+                  "\$u_C(t) = q/C = U_0 \\cos(\\omega_0 t) = 10\\cos(500 t)\\,V\$.",
+                ),
+                _step(
+                  "\$i(t) = dq/dt = -Q_0 \\omega_0 \\sin(\\omega_0 t) = -C U_0 \\omega_0 \\sin(\\omega_0 t) = -4 \\times 10^{-6} \\times 10 \\times 500 \\sin(500 t) = -0{,}02\\sin(500 t)\\,A\$.",
+                ),
+                _step(
+                  "**Amplitude du courant** : \$I_\\max = 0{,}02\\,A = 20\\,mA\$. Déphasage de \$\\pi/2\$ entre \$u_C\$ (cos) et \$i\$ (-sin = cos décalé).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$u_C = 10\cos(500t)$, $i = -0{,}02\sin(500t)$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Conservation de l\'énergie',
+          5,
+          "On reprend le circuit LC.",
+          [
+            _q(
+              1,
+              "Calculer l'énergie totale stockée.",
+              2,
+              _sol([
+                _step(
+                  "À \$t = 0\$, toute l'énergie est dans le condensateur : \$E_C = (1/2) C U_0^2 = 0{,}5 \\times 4 \\times 10^{-6} \\times 100 = 2 \\times 10^{-4}\\,J = 0{,}2\\,mJ\$.",
+                ),
+                _step(
+                  "Par conservation, \$E_{tot} = 0{,}2\\,mJ\$ à tout instant.",
+                ),
+              ], finalAnswerFr: r"$E_{tot} = 0{,}2$ mJ"),
+            ),
+            _q(
+              2,
+              "Quand \$u_C = 0\$, quel est le courant ?",
+              3,
+              _sol([
+                _step(
+                  "\$u_C = 0 \\Rightarrow E_C = 0\$. Par conservation, \$E_L = 0{,}2\\,mJ\$, soit \$(1/2) L i^2 = 2 \\times 10^{-4} \\Rightarrow i = \\sqrt{4 \\times 10^{-4}/1} = 0{,}02\\,A\$.",
+                ),
+                _step(
+                  "Cohérent avec \$I_\\max = 0{,}02\\,A\$ trouvé précédemment.",
+                ),
+              ], finalAnswerFr: r"$|i| = I_\max = 20$ mA"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Trois régimes (RLC réel)',
+          5,
+          "Maintenant on ajoute une résistance \$R\$.",
+          [
+            _q(
+              1,
+              "Donner le critère du régime selon \$R\$.",
+              3,
+              _sol([
+                _step(
+                  "Équation \$L\\ddot q + R\\dot q + q/C = 0\$. Discriminant \$\\Delta = R^2 - 4L/C\$.",
+                ),
+                _step(
+                  "**\$\\Delta < 0\$** : régime **pseudo-périodique** (oscillations amorties). C'est \$R < R_c = 2\\sqrt{L/C}\$.",
+                ),
+                _step(
+                  "**\$\\Delta = 0\$** : régime **critique** (\$R = R_c\$, retour le plus rapide sans oscillation).",
+                ),
+                _step(
+                  "**\$\\Delta > 0\$** : régime **apériodique** (\$R > R_c\$, retour lent sans oscillation).",
+                  tipFr:
+                      "\$R_c = 2\\sqrt{L/C}\$ est la résistance critique. Au seuil, le système retourne à l'équilibre le plus vite possible.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$R_c = 2\sqrt{L/C}$"),
+            ),
+            _q(
+              2,
+              "Calculer \$R_c\$ pour \$L = 1\\,H\$, \$C = 4\\,\\mu F\$.",
+              2,
+              _sol([
+                _step(
+                  "\$R_c = 2\\sqrt{L/C} = 2\\sqrt{1/(4 \\times 10^{-6})} = 2 \\times 500 = 1000\\,\\Omega = 1\\,k\\Omega\$.",
+                ),
+                _step(
+                  "Pour \$R < 1\\,k\\Omega\$ : oscillations amorties. Pour \$R > 1\\,k\\Omega\$ : retour exponentiel sans oscillation.",
+                ),
+              ], finalAnswerFr: r"$R_c = 1$ kΩ"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Décrément logarithmique',
+          5,
+          "En régime pseudo-périodique faiblement amorti, l'amplitude décroît selon \$A(t) = A_0 e^{-t/\\tau_a}\$.",
+          [
+            _q(
+              1,
+              "Si l'amplitude passe de \$5\\,V\$ à \$1\\,V\$ en 4 pseudo-périodes, calculer \$\\tau_a\$ sachant \$T \\approx T_0 = 12{,}57\\,ms\$.",
+              4,
+              _sol([
+                _step(
+                  "Durée : \$\\Delta t = 4 T \\approx 4 \\times 12{,}57 = 50{,}28\\,ms = 0{,}05028\\,s\$.",
+                ),
+                _step(
+                  "Ratio : \$A_1/A_0 = e^{-\\Delta t/\\tau_a} = 1/5\$. Donc \$\\tau_a = \\Delta t/\\ln 5 = 0{,}05028/1{,}609 \\approx 0{,}0312\\,s = 31{,}2\\,ms\$.",
+                ),
+                _step(
+                  "**Décrément logarithmique** : \$\\delta = T/\\tau_a \\approx 12{,}57/31{,}2 \\approx 0{,}403\$ — quantifie la dissipation par cycle.",
+                  tipFr:
+                      "Décrément logarithmique : utile pour mesurer la résistance équivalente d'un circuit ou les frottements d'un oscillateur mécanique.",
+                ),
+              ], finalAnswerFr: r"$\tau_a \approx 31{,}2$ ms"),
+            ),
+            _q(
+              2,
+              "À partir de quelle résistance R l'amortissement correspond-il à ce \$\\tau_a\$ ?",
+              1,
+              _sol([
+                _step(
+                  "Dans un RLC pseudo-périodique : \$\\tau_a = 2L/R\$ (constante d'amortissement).",
+                ),
+                _step(
+                  "\$R = 2L/\\tau_a = 2/0{,}0312 \\approx 64\\,\\Omega\$. Bien en-dessous de \$R_c = 1\\,k\\Omega\$ — amortissement faible.",
+                ),
+              ], finalAnswerFr: r"$R \approx 64$ Ω"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperAcidBase() => _paper(
+      titleFr: 'Épreuve type — Acides et bases',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Définition Brønsted, pH, acide fort/faible, pKa, dosage acide-base, indicateurs colorés.",
+      exercices: [
+        _ex(
+          1,
+          'pH et concentration',
+          5,
+          "Calculs de pH élémentaires.",
+          [
+            _q(
+              1,
+              "Solution d'acide fort à \$C = 0{,}05\\,mol/L\$. Calculer pH.",
+              2,
+              _sol([
+                _step(
+                  "Acide fort : dissocié totalement. \$[H_3O^+] = C = 0{,}05\\,mol/L\$.",
+                ),
+                _step(
+                  "\$pH = -\\log(0{,}05) = -\\log(5 \\times 10^{-2}) = 2 - \\log 5 \\approx 2 - 0{,}70 = 1{,}30\$.",
+                ),
+              ], finalAnswerFr: r"$pH \approx 1{,}3$"),
+            ),
+            _q(
+              2,
+              "Solution de pH = 10. Calculer \$[H_3O^+]\$ et \$[OH^-]\$.",
+              2,
+              _sol([
+                _step(
+                  "\$[H_3O^+] = 10^{-10}\\,mol/L\$. \$[OH^-] = K_e/[H_3O^+] = 10^{-14}/10^{-10} = 10^{-4}\\,mol/L\$.",
+                ),
+                _step(
+                  "Solution **basique** : \$[OH^-] \\gg [H_3O^+]\$. À 25°C, la base est dominante.",
+                ),
+              ], finalAnswerFr: r"$[H_3O^+] = 10^{-10}$, $[OH^-] = 10^{-4}$"),
+            ),
+            _q(
+              3,
+              "Dilution × 100 d'une solution acide à pH = 2. Nouveau pH ?",
+              1,
+              _sol([
+                _step(
+                  "Acide fort : dilution × 100 → \$[H_3O^+]\$ divisée par 100 → pH + 2 = **4**.",
+                ),
+              ], finalAnswerFr: r"pH = 4"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Acide faible',
+          5,
+          "L'acide éthanoïque (pKa = 4,75) à concentration \$C_0 = 0{,}01\\,mol/L\$.",
+          [
+            _q(
+              1,
+              "Calculer le pH (approximation acide faible peu dissocié).",
+              3,
+              _sol([
+                _step(
+                  "\$K_a = 10^{-4{,}75} \\approx 1{,}78 \\times 10^{-5}\$.",
+                ),
+                _step(
+                  "Formule rapide : \$pH \\approx (pKa - \\log C_0)/2 = (4{,}75 + 2)/2 = 3{,}375\$.",
+                ),
+                _step(
+                  "Valeur exacte : résoudre \$K_a = h^2/(C_0 - h)\$, ici \$h \\approx 4{,}2 \\times 10^{-4}\$, donc pH \\approx 3,38 ✓.",
+                  tipFr:
+                      "Approximation valable si \$h/C_0 \\ll 1\$ — ici \$\\sim 4\\%\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$pH \approx 3{,}38$"),
+            ),
+            _q(
+              2,
+              "Taux de dissociation \$\\alpha\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$\\alpha = h/C_0 = 4{,}2 \\times 10^{-4}/0{,}01 = 0{,}042 = 4{,}2\\%\$.",
+                ),
+                _step(
+                  "**Loi d'Ostwald** : \$\\alpha\$ augmente quand \$C_0\$ diminue. Pour une dilution très forte, \$\\alpha \\to 1\$.",
+                ),
+              ], finalAnswerFr: r"$\alpha \approx 4{,}2\%$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Dosage acide fort par base forte',
+          5,
+          "On dose 20 mL de HCl inconnu par NaOH à 0,1 mol/L. À l'équivalence, \$V_b^{eq} = 25\\,mL\$.",
+          [
+            _q(
+              1,
+              "Calculer \$C_a\$.",
+              2,
+              _sol([
+                _step(
+                  "Équivalence : \$C_a V_a = C_b V_b^{eq} \\Rightarrow C_a = 0{,}1 \\times 25/20 = 0{,}125\\,mol/L\$.",
+                ),
+              ], finalAnswerFr: r"$C_a = 0{,}125$ mol/L"),
+            ),
+            _q(
+              2,
+              "Calculer le pH initial et à l'équivalence.",
+              2,
+              _sol([
+                _step(
+                  "**Initial** : acide fort, \$pH = -\\log 0{,}125 \\approx 0{,}9\$.",
+                ),
+                _step(
+                  "**Équivalence** (acide fort + base forte) : pH = 7 (sel neutre).",
+                ),
+              ], finalAnswerFr: r"$pH_i = 0{,}9$, $pH_{eq} = 7$"),
+            ),
+            _q(
+              3,
+              "Indicateur coloré le plus adapté ?",
+              1,
+              _sol([
+                _step(
+                  "**BBT** (Bleu de Bromothymol, zone 6,0–7,6) — centré sur 7. Le saut très brutal à l'équivalence balaie largement cette zone.",
+                ),
+              ], finalAnswerFr: r"BBT"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Dosage acide faible par base forte',
+          5,
+          "On dose 20 mL d'acide acétique (pKa = 4,75) inconnu par NaOH 0,1 mol/L. \$V_b^{eq} = 15\\,mL\$.",
+          [
+            _q(
+              1,
+              "Calculer \$C_a\$.",
+              1,
+              _sol([
+                _step(
+                  "\$C_a = 0{,}1 \\times 15/20 = 0{,}075\\,mol/L\$.",
+                ),
+              ], finalAnswerFr: r"$C_a = 0{,}075$ mol/L"),
+            ),
+            _q(
+              2,
+              "Pourquoi le pH à l'équivalence n'est-il pas 7 ?",
+              2,
+              _sol([
+                _step(
+                  "À l'équivalence : seule la **base conjuguée** \$CH_3COO^-\$ reste en solution. Elle réagit avec l'eau pour donner \$OH^-\$.",
+                ),
+                _step(
+                  "Donc la solution est **basique**, pH > 7 (typiquement 8,5–9 pour ce cas).",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "À la demi-équivalence (\$V_b = 7{,}5\\,mL\$), quel est le pH ?",
+              2,
+              _sol([
+                _step(
+                  "**Propriété fondamentale** : à la demi-équivalence, \$[acide] = [base conjuguée]\$, donc par Henderson-Hasselbalch : \$pH = pKa = 4{,}75\$.",
+                ),
+                _step(
+                  "C'est ainsi qu'on mesure expérimentalement un pKa.",
+                  tipFr:
+                      "Demi-équivalence = pH = pKa. Méthode standard de mesure du pKa d'un acide faible inconnu.",
+                ),
+              ], finalAnswerFr: r"$pH = pKa = 4{,}75$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperRedox() => _paper(
+      titleFr: 'Épreuve type — Oxydoréduction',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Oxydants/réducteurs, couples redox, demi-équations, équilibrage, piles, électrolyse, applications industrielles.",
+      exercices: [
+        _ex(
+          1,
+          'Demi-équations',
+          5,
+          "Équilibrer les demi-équations.",
+          [
+            _q(
+              1,
+              "\$Fe^{2+} \\to Fe^{3+}\$ (en solution).",
+              2,
+              _sol([
+                _step(
+                  "Conservation des charges : à gauche +2, à droite +3. Différence : 1 électron à droite.",
+                ),
+                _step(
+                  "Demi-équation : \$Fe^{2+} \\to Fe^{3+} + e^-\$. **Oxydation** (perte d'électron).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "\$Cr_2O_7^{2-} + H^+ \\to Cr^{3+} + H_2O\$ en milieu acide.",
+              3,
+              _sol([
+                _step(
+                  "Équilibrage des éléments : 2 Cr à gauche, 1 à droite → coefficient 2 sur Cr^3+ : \$Cr_2O_7^{2-} + H^+ \\to 2 Cr^{3+} + H_2O\$.",
+                ),
+                _step(
+                  "Équilibrer O : 7 O à gauche, x à droite (dans H₂O). Coefficient 7 sur H₂O : \$Cr_2O_7^{2-} + H^+ \\to 2 Cr^{3+} + 7 H_2O\$.",
+                ),
+                _step(
+                  "Équilibrer H : 14 H à droite. Coefficient 14 sur H+ : \$Cr_2O_7^{2-} + 14 H^+ \\to 2 Cr^{3+} + 7 H_2O\$.",
+                ),
+                _step(
+                  "Équilibrer charges : à gauche \$-2 + 14 = +12\$, à droite \$+6\$. Différence 6 électrons à gauche : \$Cr_2O_7^{2-} + 14 H^+ + 6 e^- \\to 2 Cr^{3+} + 7 H_2O\$. **Réduction**.",
+                  tipFr:
+                      "Méthode : (1) éléments principaux, (2) O via H₂O, (3) H via H⁺, (4) charges via e⁻.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Réaction redox complète',
+          5,
+          "Mélange : ions \$Cu^{2+}\$ et zinc métallique.",
+          [
+            _q(
+              1,
+              "Écrire la demi-équation pour le couple \$Cu^{2+}/Cu\$ et \$Zn^{2+}/Zn\$.",
+              2,
+              _sol([
+                _step(
+                  "\$Cu^{2+} + 2 e^- \\to Cu\$ (réduction).",
+                ),
+                _step(
+                  "\$Zn \\to Zn^{2+} + 2 e^-\$ (oxydation).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Écrire le bilan global.",
+              2,
+              _sol([
+                _step(
+                  "Addition : \$Cu^{2+} + Zn \\to Cu + Zn^{2+}\$. Les électrons se simplifient.",
+                ),
+                _step(
+                  "**Réaction spontanée** car \$E°(Cu^{2+}/Cu) = +0{,}34 > E°(Zn^{2+}/Zn) = -0{,}76\$. Zn est plus réducteur que Cu.",
+                ),
+                _step(
+                  "**Vérification expérimentale** : tremper une lame de Zn dans une solution bleue de \$CuSO_4\$ → la lame se recouvre de Cu (rouge-brun), la solution se décolore (Cu²⁺ → Cu) tandis que \$Zn^{2+}\$ apparaît.",
+                ),
+              ], finalAnswerFr: r"$Cu^{2+} + Zn \to Cu + Zn^{2+}$"),
+            ),
+            _q(
+              3,
+              "Calculer la fem standard \$\\Delta E°\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta E° = E°(\\text{cathode}) - E°(\\text{anode}) = 0{,}34 - (-0{,}76) = 1{,}10\\,V\$. C'est la fem de la pile Daniell.",
+                ),
+              ], finalAnswerFr: r"$\Delta E° = 1{,}10$ V"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Pile et électricité',
+          5,
+          "Pile Daniell débitant 0,5 A pendant 1 h. \$M(Zn) = 65{,}4\\,g/mol\$. \$F = 96500\\,C/mol\$.",
+          [
+            _q(
+              1,
+              "Charge totale délivrée ?",
+              1,
+              _sol([
+                _step(
+                  "\$Q = I t = 0{,}5 \\times 3600 = 1800\\,C\$.",
+                ),
+              ], finalAnswerFr: r"$Q = 1800$ C"),
+            ),
+            _q(
+              2,
+              "Masse de Zn consommée et masse de Cu déposée.",
+              4,
+              _sol([
+                _step(
+                  "Quantité d'électrons : \$n_e = Q/F = 1800/96500 \\approx 0{,}01865\\,mol\$.",
+                ),
+                _step(
+                  "Pour Zn → Zn²⁺ + 2e⁻ : 2 mol e⁻ par mol Zn. Donc \$n(Zn) = n_e/2 \\approx 9{,}33 \\times 10^{-3}\\,mol\$. Masse : \$9{,}33 \\times 10^{-3} \\times 65{,}4 \\approx 0{,}610\\,g\$.",
+                ),
+                _step(
+                  "Pour Cu²⁺ + 2e⁻ → Cu : même stœchiométrie. \$n(Cu) = 9{,}33 \\times 10^{-3}\\,mol\$. Masse : \$\\approx 0{,}593\\,g\$ (avec \$M(Cu) = 63{,}5\$).",
+                ),
+                _step(
+                  "**Bilan** : Zn consommé (~0,61 g) et Cu déposé (~0,59 g) — la masse totale est conservée approximativement.",
+                  tipFr:
+                      "Lois de Faraday : 1 F = 96500 C = charge d'une mole d'électrons. Permet de relier directement charge et matière transformée.",
+                ),
+              ], finalAnswerFr: r"$m(Zn) \approx 0{,}61$ g, $m(Cu) \approx 0{,}59$ g"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — corrosion et protection',
+          5,
+          "La corrosion du fer (\$Fe \\to Fe^{2+}\$) est une réaction redox spontanée.",
+          [
+            _q(
+              1,
+              "Pourquoi le fer rouille-t-il dans l'humidité ?",
+              2,
+              _sol([
+                _step(
+                  "En présence d'eau et d'oxygène, le couple \$O_2/H_2O\$ (potentiel \$+1{,}23\\,V\$ en milieu acide) est suffisamment oxydant pour oxyder \$Fe \\to Fe^{2+}\$ (potentiel \$-0{,}44\\,V\$).",
+                ),
+                _step(
+                  "Réactions : \$Fe \\to Fe^{2+} + 2 e^-\$ (oxydation) et \$O_2 + 2 H_2O + 4 e^- \\to 4 OH^-\$ (réduction). Les ions Fe²⁺ s'oxydent ensuite en Fe³⁺ (rouille = oxydes hydratés de fer³+).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Comment protéger le fer ? Citer 3 méthodes.",
+              3,
+              _sol([
+                _step(
+                  "**1. Couche protectrice** : peinture, vernis, plastification — barrière physique contre l'oxygène et l'humidité.",
+                ),
+                _step(
+                  "**2. Galvanisation** (zincage) : recouvrir le fer d'une couche de zinc. Plus réducteur que le fer, le zinc s'oxyde **préférentiellement** → protection 'sacrificielle' tant qu'il reste du zinc.",
+                ),
+                _step(
+                  "**3. Protection cathodique** : connecter le fer à un métal **plus réducteur** (anode sacrificielle, ex : magnésium pour pipelines, zinc pour coques de bateau). Le métal sacrificiel s'oxyde à la place du fer.",
+                  tipFr:
+                      "Application industrielle majeure : la protection cathodique des pipelines pétroliers, des ponts, des coques navales sauve des milliards en infrastructures.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -5245,7 +5774,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'wave_properties': _paperWaveProperties(),
   'sound_light': _paperSoundLight(),
   'rc_rl_circuits': _paperRcRlCircuits(),
-  // 3 SMB chapters remaining.
+  'rlc_oscillations': _paperRlcOscillations(),
+  'acid_base': _paperAcidBase(),
+  'redox': _paperRedox(),
+  // All 32 SMB chapters complete ✓
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
