@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-12 (Bac-paper restructure run — Phases 0+1+2 SHIPPED, all 64 SMA+SMB chapters complete)
+**Last updated:** 2026-05-12 (Bac-paper restructure run — Phases 0+1+2+3.1+3.2 SHIPPED: 64 SMA+SMB papers + PC skill tree)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -895,11 +895,19 @@ codes, one notch lower mathematical sophistication than SMA).
 64/64 SMA+SMB chapters now have full Bac papers in skills.exam_paper.
 Verified in live DB (64 rows non-null).
 
-### Phases 3–6 (NOT YET STARTED)
+### Phase 3 — PC stream (PARTIALLY SHIPPED)
 
-- **Phase 3**: PC stream (schema-ready, content empty). Skill map JSON
-  + topic/skill seed migration 032 + lessons 033 + exam papers 034
-  + items 035. ~30 chapters.
+- **3.1 — Skill map** ([shared/skill_map_pc.json](shared/skill_map_pc.json)):
+  shipped. 28 PC skills under 15 topics (8 math + 7 physique-chimie).
+  Validates clean.
+- **3.2 — Skill seed** ([Migration 032](backend/supabase/migrations/032_seed_pc_skills.sql)):
+  shipped. PC users on onboarding → "Sciences Physiques" now see a
+  full subject tree. Topics + skills + 21 prerequisite edges +
+  31 minimal LessonV2 stub placeholders.
+- **3.3 — Full PC lessons** (migration 033): NOT STARTED.
+- **3.4 — PC exam papers** (migration 034): NOT STARTED. Same shape as
+  SMA/SMB papers (4-5 multi-part exercices each).
+- **3.5 — PC items** (migration 035): NOT STARTED.
 - **Phase 4**: SVT stream — same shape. Migrations 036–039. ~25 chapters
   including 12 novel bio/geo (génétique, évolution, immunité,
   tectonique, etc.) — requires SME review more than other chapters.
