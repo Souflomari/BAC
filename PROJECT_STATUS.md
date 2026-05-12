@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-09 (after Phase 1 textbook-depth solution expansion for all 160 exam questions)
+**Last updated:** 2026-05-12 (Bac-paper restructure run — Phase 0+1 shipped, Phase 2 in progress 5/32)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -820,7 +820,123 @@ chapter; the encoder format makes this cheap.
 
 ---
 
-## 17. If you're starting a fresh session
+## 17. 2026-05-11 — Bac-paper restructure run (IN PROGRESS, multi-session)
+
+User feedback: existing course structure (LessonV2 sections + checkpoints
++ try-it) was too granular and academic. Moroccan Bac students learn from
+real exam papers, not divided concept sections. **Every chapter should
+become a full topic-coherent Bac-style paper** with 4–5 multi-part
+exercices and fully-worked solutions. Plus build PC + SVT streams from
+scratch. Plus rebuild annales as proper multi-exercice structures.
+
+Scope: 64 existing chapters restructured (SMA + SMB) + ~55 new
+(PC + SVT) + 32 annales = **~150 full Bac papers**, each ~10 KB of
+worked solutions = realistically a 20+ hour autonomous run.
+Multi-session by necessity.
+
+### Phase 0 — Schema + frontend (SHIPPED, 2026-05-11)
+
+- **Migration 029**: `ALTER TABLE skills ADD COLUMN exam_paper JSONB`
+  + partial GIN index for fast NOT-NULL filter. Schema documented in
+  COLUMN comment.
+- **Frontend model** [exam_paper.dart](mobile/bac_app/lib/models/exam_paper.dart):
+  sealed-class shape (ExamPaper, Exercice, Question, Subpart,
+  QuestionSolution, SolutionStep) mirroring LessonV2.
+- **Widgets** [exam_paper_view.dart](mobile/bac_app/lib/widgets/exam_paper/exam_paper_view.dart):
+  full renderer with collapsible exercice cards, numbered Q1/Q2/Q3,
+  lettered a/b/c subparts, reuse of AnimatedSolution for stagger-fade
+  reveals. Papier-styled throughout.
+- **lesson_screen.dart + long_lesson_screen.dart**: detect exam_paper
+  presence and append ExamPaperView after LessonV2 sections (single
+  scroll). Analytics events fired: exam_paper_opened, exercice_expanded,
+  solution_revealed.
+- **skill.dart**: parses skills.exam_paper into examPaperRaw.
+
+### Phase 1 — SMA exam papers (SHIPPED, 32/32)
+
+[Migration 030](backend/supabase/migrations/030_exam_papers_sma.sql)
++ [encoder](backend/seed/json_encode_exam_papers_sma.dart) ships full
+topic-coherent Bac papers for all 32 SMA chapters:
+
+- **Math (11)**: sma_limit_def, sma_deriv_definition,
+  sma_sequences_review, sma_ln_basics, sma_exp_basics, sma_primitives,
+  sma_ode_first_order, sma_complex_basics, sma_vectors_3d, sma_counting,
+  sma_divisibility.
+- **Physique (14)**: sma_newton_laws, sma_rlc_regimes, sma_wave_basics,
+  sma_periodic_waves, sma_nuclear_radioactivity, sma_rc_charge_discharge,
+  sma_rl_establishment, sma_forced_oscillations, sma_am_basics,
+  sma_projectile_motion, sma_e_field_basics, sma_b_field_basics,
+  sma_pendulum_simple, sma_kinetic_potential.
+- **Chimie (7)**: sma_ph_definition, sma_titration_curve,
+  sma_reaction_speed, sma_reversible_basics, sma_qr_k,
+  sma_daniell_cell_basics, sma_esterification_mechanism.
+
+Each paper: 4–5 exercices, ~20 points total, ~90 min duration, multi-part
+questions with verified worked solutions at 023/024 depth (400–700 chars
+per step). ~7–11 KB JSONB each. Total: ~280 KB of pedagogical prose.
+
+### Phase 2 — SMB exam papers (IN PROGRESS, 5/32 as of 2026-05-12)
+
+[Migration 031](backend/supabase/migrations/031_exam_papers_smb.sql)
++ [encoder](backend/seed/json_encode_exam_papers_smb.dart) — same shape
+as SMA, unprefixed skill codes (arithmetic_seq, etc.), one notch lower
+mathematical sophistication.
+
+**Shipped (5/32)**: arithmetic_seq, geometric_seq, seq_convergence,
+limit_def, limit_calc.
+
+**Remaining (27)**: seq_recursive, seq_adjacent, continuity, tvi,
+deriv_basic, deriv_rules, deriv_apps, primitives, definite_integral,
+integral_apps, prob_basic, conditional_prob, random_variables,
+complex_basics, complex_trig, complex_geometry, ode_first_order,
+ode_second_order, kinematics, newtons_laws, energy, wave_properties,
+sound_light, rc_rl_circuits, rlc_oscillations, acid_base, redox.
+
+### Phases 3–6 (NOT YET STARTED)
+
+- **Phase 3**: PC stream (schema-ready, content empty). Skill map JSON
+  + topic/skill seed migration 032 + lessons 033 + exam papers 034
+  + items 035. ~30 chapters.
+- **Phase 4**: SVT stream — same shape. Migrations 036–039. ~25 chapters
+  including 12 novel bio/geo (génétique, évolution, immunité,
+  tectonique, etc.) — requires SME review more than other chapters.
+- **Phase 5**: Annales v2 (proper multi-exercice structure). Migrations
+  040 (SMB) + 041 (SMA) + 042 (PC) + 043 (SVT). Each Bac paper becomes
+  one exam_question row carrying the full multi-exercice JSONB.
+- **Phase 6**: Tests (exam_paper model + widget), PostHog events
+  (already wired but need verification), final PROJECT_STATUS update.
+
+### Continuation instructions (for the next session)
+
+When picking up this run:
+
+1. `cd f:/APP && git log --oneline -15` — see the latest commits
+   (look for "Phase X batch Y").
+2. Check DB state: `SELECT code, length(exam_paper::text) FROM skills
+   WHERE exam_paper IS NOT NULL ORDER BY code;`
+3. Continue authoring in
+   [json_encode_exam_papers_smb.dart](backend/seed/json_encode_exam_papers_smb.dart):
+   - Add a `_paperXxx()` function for each remaining chapter.
+   - Append to the `_papers` registry.
+   - Run encoder: `dart backend/seed/json_encode_exam_papers_smb.dart`.
+   - Apply: `supabase db query -f backend/supabase/migrations/031_exam_papers_smb.sql --linked`.
+   - Verify count, commit every 4–6 chapters.
+4. After SMB complete, start Phase 3 (PC stream): see Critical files
+   list in the approved plan at
+   `C:\Users\soufiane.lomari\.claude\plans\ok-for-now-we-mutable-quiche.md`.
+
+### Honest disclaimer
+
+Every exam paper authored in this run is a **v0 pedagogical draft**.
+Math/physics/chemistry solutions are verified against known formulas
+and identities (the run protocol requires 2-pass verification —
+draft + independent re-derivation). The SVT biology/geology chapters
+(Phase 4) will require an SME pass — those are entirely novel
+authoring with no validated source.
+
+---
+
+## 18. If you're starting a fresh session
 
 1. Read this file in full.
 2. `git log --oneline -10` to see what's actually shipped.
