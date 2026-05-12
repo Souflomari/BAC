@@ -11,7 +11,7 @@ This document is a single, self-contained handoff: read it top-to-bottom and you
 
 - **BacPrep** = Moroccan Baccalauréat exam prep app, Flutter web (Vercel) + Supabase. Live for SMA + SMB streams.
 - **Current multi-session run**: restructure all course content as full Bac-style exam papers (4–5 multi-part exercices each), build PC + SVT streams from scratch, restructure annales. Roughly 150 papers total target.
-- **Where we are**: schema + frontend done; 64/64 SMA+SMB papers shipped; PC skill tree shipped (browseable but content-empty); ~75 more papers + 25 chapters + 32 annales to author.
+- **Where we are**: schema + frontend done; 95/95 papers shipped across SMA/SMB/PC (32 + 32 + 31); PC content (papers) now full; PC lessons still stubs; ~25 SVT chapters + 32 annales to author.
 - **Resume by**: jumping to §10 (continuation playbook). Critical files are listed there.
 
 ---
@@ -250,7 +250,7 @@ Approved plan: `C:\Users\soufiane.lomari\.claude\plans\ok-for-now-we-mutable-qui
 | 3.1 | ✅ SHIPPED | — | PC skill map JSON validated |
 | 3.2 | ✅ SHIPPED | 032 | PC skill seed (15 topics, 31 skills, 21 prereqs, 31 stub lessons) |
 | 3.3 | ⏳ NOT STARTED | 033 (planned) | Full PC LessonV2 lessons |
-| 3.4 | ⏳ NOT STARTED | 034 (planned) | PC exam papers (~28 chapters) |
+| 3.4 | ✅ SHIPPED | 034 | PC exam papers (31 chapters — 15 math + 16 PC) |
 | 3.5 | ⏳ NOT STARTED | 035 (planned) | PC quiz items (~300 items) |
 | 4.1 | ⏳ NOT STARTED | — | SVT skill map JSON |
 | 4.2 | ⏳ NOT STARTED | 036 (planned) | SVT skill seed |
@@ -265,8 +265,8 @@ Approved plan: `C:\Users\soufiane.lomari\.claude\plans\ok-for-now-we-mutable-qui
 
 ### What's live in production right now
 
-- **64 full Bac papers** in `skills.exam_paper` (32 SMA + 32 SMB)
-- **PC skill tree** browseable (users on `sciences_physiques` see all subjects/topics/skills, but skills only have stub lessons + no exam papers yet)
+- **95 full Bac papers** in `skills.exam_paper` (32 SMA + 32 SMB + 31 PC)
+- **PC skill tree** browseable with full exam papers attached (lessons still stubs)
 - **`ExamPaperView` widget** renders below `LessonV2` content on `/lessons/:skillId` for any skill that has both `lesson` AND `exam_paper`
 
 ### Critical files in this run
@@ -367,9 +367,15 @@ cd f:/APP/backend && /c/Users/soufiane.lomari/supabase-cli/supabase.exe db query
 
 Expected: papers_in_db = 64 (32 SMA + 32 SMB), pc_topics = 15, pc_skills = 31.
 
-### Step 1 — Most likely next step: PC exam papers
+### Step 1 — Most likely next step: PC full lessons (Phase 3.3) OR SVT (Phase 4)
 
-Resume Phase 3.4. Create `backend/seed/json_encode_exam_papers_pc.dart` mirroring the SMA/SMB encoders. Author 28 PC papers (one per `pc_*` skill code). Output → `backend/supabase/migrations/034_exam_papers_pc.sql`.
+Phase 3.4 is ✅ DONE. The 31 PC skills now have full Bac papers. Two natural continuations:
+
+**Option A — Phase 3.3 (PC full lessons, migration 033)**: Upgrade the 31 minimal `LessonV2` stubs into full long-form lessons (concept → prerequisite → example_walkthrough → checkpoint sections). Encoder pattern : `backend/seed/json_encode_long_lessons.dart` (SMA shape).
+
+**Option B — Phase 4 (SVT stream)**: ~25 chapters including 12 novel bio/geo. Same recipe as PC : skill_map JSON → seed migration (036) → lessons (037) → exam papers (038) → items (039). The 12 bio/geo chapters (génétique, évolution, immunité, tectonique, etc.) need SME-grade verification — most novel authoring of this run.
+
+The remainder of this section (paragraphs below) describes the **PC exam papers playbook from before Phase 3.4 was completed**, kept here as a template for the SVT phase.
 
 PC skill codes to author papers for (full list, ordered by topic):
 

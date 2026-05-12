@@ -905,8 +905,15 @@ Verified in live DB (64 rows non-null).
   full subject tree. Topics + skills + 21 prerequisite edges +
   31 minimal LessonV2 stub placeholders.
 - **3.3 — Full PC lessons** (migration 033): NOT STARTED.
-- **3.4 — PC exam papers** (migration 034): NOT STARTED. Same shape as
-  SMA/SMB papers (4-5 multi-part exercices each).
+- **3.4 — PC exam papers** ([Migration 034](backend/supabase/migrations/034_exam_papers_pc.sql)):
+  **✅ COMPLETE**. All 31 PC chapters now have full Bac-style exam
+  papers in `skills.exam_paper` (15 math + 16 physique-chimie),
+  authored at SMB-equivalent depth in
+  [json_encode_exam_papers_pc.dart](backend/seed/json_encode_exam_papers_pc.dart)
+  (~6200 lines). PC chapters with no SMA/SMB equivalent (AM modulation,
+  radioactivity, reaction kinetics, pendulum, esterification, Daniell
+  cell) authored from scratch using domain references. DB verified:
+  95 total exam papers across all streams (32 SMA + 32 SMB + 31 PC).
 - **3.5 — PC items** (migration 035): NOT STARTED.
 - **Phase 4**: SVT stream — same shape. Migrations 036–039. ~25 chapters
   including 12 novel bio/geo (génétique, évolution, immunité,
