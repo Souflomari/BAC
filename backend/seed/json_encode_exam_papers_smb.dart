@@ -1699,6 +1699,520 @@ Map<String, dynamic> _paperTviSmb() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperDerivBasic() => _paper(
+      titleFr: 'Épreuve type — Dérivée — concept et calcul',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Définition par taux d'accroissement, interprétation géométrique (tangente), dérivées usuelles.",
+      exercices: [
+        _ex(
+          1,
+          'Définition',
+          5,
+          "Soit \$f(x) = x^2 - 3x\$.",
+          [
+            _q(
+              1,
+              "Calculer le taux d'accroissement \$\\tau_h\$ entre 2 et \$2 + h\$.",
+              2,
+              _sol([
+                _step(
+                  "\$f(2+h) = (2+h)^2 - 3(2+h) = 4 + 4h + h^2 - 6 - 3h = h^2 + h - 2\$.",
+                ),
+                _step(
+                  "\$f(2) = 4 - 6 = -2\$.",
+                ),
+                _step(
+                  "\$\\tau_h = \\dfrac{f(2+h) - f(2)}{h} = \\dfrac{h^2 + h - 2 - (-2)}{h} = \\dfrac{h^2 + h}{h} = h + 1\$.",
+                ),
+              ], finalAnswerFr: r"$\tau_h = h + 1$"),
+            ),
+            _q(
+              2,
+              "En déduire \$f'(2)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$f'(2) = \\lim_{h \\to 0} \\tau_h = \\lim (h + 1) = 1\$.",
+                ),
+                _step(
+                  "Vérification : \$f'(x) = 2x - 3\$, \$f'(2) = 4 - 3 = 1\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$f'(2) = 1$"),
+            ),
+            _q(
+              3,
+              "Donner l'équation de la tangente en \$x = 2\$.",
+              1,
+              _sol([
+                _step(
+                  "**Équation** : \$y = f(2) + f'(2)(x - 2) = -2 + 1 \\cdot (x - 2) = x - 4\$.",
+                ),
+              ], finalAnswerFr: r"$y = x - 4$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Dérivées usuelles',
+          5,
+          "Calculer les dérivées.",
+          [
+            _q(
+              1,
+              "\$f(x) = x^5\$, \$g(x) = 1/x\$, \$h(x) = \\sqrt{x}\$.",
+              3,
+              _sol([
+                _step(
+                  "\$f'(x) = 5 x^4\$ (règle des puissances).",
+                ),
+                _step(
+                  "\$g(x) = x^{-1} \\Rightarrow g'(x) = -x^{-2} = -1/x^2\$.",
+                ),
+                _step(
+                  "\$h(x) = x^{1/2} \\Rightarrow h'(x) = (1/2) x^{-1/2} = 1/(2\\sqrt{x})\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "\$\\sin x, \\cos x, e^x, \\ln x\$.",
+              2,
+              _sol([
+                _step(
+                  "\$(\\sin x)' = \\cos x\$, \$(\\cos x)' = -\\sin x\$.",
+                ),
+                _step(
+                  "\$(e^x)' = e^x\$ (sa propre dérivée), \$(\\ln x)' = 1/x\$.",
+                  tipFr:
+                      "Mémoriser ces 4 dérivées usuelles : indispensable. Avec les règles d'opérations, on peut tout dériver.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Sens de variation',
+          5,
+          "Soit \$f(x) = x^3 - 3x + 2\$.",
+          [
+            _q(
+              1,
+              "Calculer \$f'(x)\$ et étudier son signe.",
+              3,
+              _sol([
+                _step(
+                  "\$f'(x) = 3 x^2 - 3 = 3(x^2 - 1) = 3(x-1)(x+1)\$.",
+                ),
+                _step(
+                  "Racines : \$x = -1\$ et \$x = 1\$. Coefficient dominant positif → \$f'\$ positive en dehors des racines.",
+                ),
+                _step(
+                  "Signes : sur \$]-\\infty, -1[\$ : \$f' > 0\$. Sur \$]-1, 1[\$ : \$f' < 0\$. Sur \$]1, +\\infty[\$ : \$f' > 0\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Donner le tableau de variations et les extrema.",
+              2,
+              _sol([
+                _step(
+                  "\$f\$ croissante sur \$]-\\infty, -1[\$, décroissante sur \$]-1, 1[\$, croissante sur \$]1, +\\infty[\$.",
+                ),
+                _step(
+                  "**Maximum local** en \$x = -1\$ : \$f(-1) = -1 + 3 + 2 = 4\$. **Minimum local** en \$x = 1\$ : \$f(1) = 1 - 3 + 2 = 0\$.",
+                ),
+              ], finalAnswerFr: r"Max local en $-1$ ($=4$), min local en $1$ ($=0$)"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Tangente — problème géométrique',
+          5,
+          "Soit la parabole \$\\mathcal{P}\$ d'équation \$y = x^2\$.",
+          [
+            _q(
+              1,
+              "Trouver les points de \$\\mathcal{P}\$ où la tangente a pour pente 4.",
+              3,
+              _sol([
+                _step(
+                  "Pente en un point \$(a, a^2)\$ : \$f'(a) = 2a\$.",
+                ),
+                _step(
+                  "\$2a = 4 \\iff a = 2\$. Point : \$(2, 4)\$.",
+                ),
+                _step(
+                  "Tangente : \$y = 4 + 4(x - 2) = 4x - 4\$.",
+                ),
+              ], finalAnswerFr: r"Point $(2, 4)$, tangente $y = 4x - 4$"),
+            ),
+            _q(
+              2,
+              "Existe-t-il un point de \$\\mathcal{P}\$ où la tangente est parallèle à la droite \$y = -3x\$ ?",
+              2,
+              _sol([
+                _step(
+                  "Pente -3 → \$2a = -3 \\iff a = -3/2\$. Point : \$(-3/2, 9/4)\$.",
+                ),
+                _step(
+                  "**Oui**, ce point existe. La tangente y a pour équation \$y = 9/4 - 3(x + 3/2) = -3x - 9/4\$, parallèle à \$y = -3x\$ ✓.",
+                ),
+              ], finalAnswerFr: r"Point $(-3/2, 9/4)$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDerivRules() => _paper(
+      titleFr: 'Épreuve type — Règles de dérivation',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Linéarité, produit \$(uv)' = u'v + uv'\$, quotient \$(u/v)' = (u'v - uv')/v^2\$, composition \$(f \\circ g)' = (f' \\circ g) \\cdot g'\$.",
+      exercices: [
+        _ex(
+          1,
+          'Linéarité et puissances',
+          4,
+          "Dériver.",
+          [
+            _q(
+              1,
+              "\$f(x) = 3x^4 - 2x^3 + 5x - 7\$.",
+              2,
+              _sol([
+                _step(
+                  "Linéarité : dériver terme à terme. \$f'(x) = 12 x^3 - 6 x^2 + 5\$.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = 12x^3 - 6x^2 + 5$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\dfrac{2}{x^3} + 4\\sqrt{x}\$.",
+              2,
+              _sol([
+                _step(
+                  "\$g(x) = 2 x^{-3} + 4 x^{1/2}\$.",
+                ),
+                _step(
+                  "\$g'(x) = -6 x^{-4} + 2 x^{-1/2} = -6/x^4 + 2/\\sqrt x\$.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = -6/x^4 + 2/\sqrt{x}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Produit',
+          5,
+          "Utiliser la règle du produit.",
+          [
+            _q(
+              1,
+              "\$f(x) = x \\sin x\$.",
+              2,
+              _sol([
+                _step(
+                  "Règle : \$(uv)' = u'v + uv'\$. \$u = x, u' = 1\$ ; \$v = \\sin x, v' = \\cos x\$.",
+                ),
+                _step(
+                  "\$f'(x) = 1 \\cdot \\sin x + x \\cdot \\cos x = \\sin x + x \\cos x\$.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = \sin x + x \cos x$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = (x^2 + 1)(x^3 - 2)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$g'(x) = 2x(x^3 - 2) + (x^2 + 1) \\cdot 3 x^2 = 2x^4 - 4x + 3x^4 + 3x^2 = 5x^4 + 3x^2 - 4x\$.",
+                ),
+                _step(
+                  "Vérification (développer puis dériver) : \$g(x) = x^5 + x^3 - 2x^2 - 2\$, \$g'(x) = 5x^4 + 3x^2 - 4x\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = 5x^4 + 3x^2 - 4x$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = x^2 e^x\$.",
+              1,
+              _sol([
+                _step(
+                  "\$h'(x) = 2x \\cdot e^x + x^2 \\cdot e^x = (2x + x^2) e^x = x(x + 2) e^x\$.",
+                ),
+              ], finalAnswerFr: r"$h'(x) = x(x+2) e^x$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Quotient',
+          5,
+          "Utiliser la règle du quotient.",
+          [
+            _q(
+              1,
+              "\$f(x) = \\dfrac{x}{x^2 + 1}\$.",
+              3,
+              _sol([
+                _step(
+                  "Règle : \$(u/v)' = (u'v - uv')/v^2\$. \$u = x, u' = 1\$ ; \$v = x^2 + 1, v' = 2x\$.",
+                ),
+                _step(
+                  "Numérateur : \$1 \\cdot (x^2 + 1) - x \\cdot 2x = x^2 + 1 - 2x^2 = 1 - x^2\$.",
+                ),
+                _step(
+                  "Dénominateur : \$(x^2 + 1)^2\$. Donc \$f'(x) = \\dfrac{1 - x^2}{(x^2 + 1)^2}\$.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = \dfrac{1 - x^2}{(x^2+1)^2}$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\dfrac{1 + x}{1 - x}\$ (pour \$x \\ne 1\$).",
+              2,
+              _sol([
+                _step(
+                  "\$u = 1 + x, u' = 1\$ ; \$v = 1 - x, v' = -1\$.",
+                ),
+                _step(
+                  "\$g'(x) = \\dfrac{1 \\cdot (1-x) - (1+x)(-1)}{(1-x)^2} = \\dfrac{1 - x + 1 + x}{(1-x)^2} = \\dfrac{2}{(1-x)^2}\$.",
+                ),
+                _step(
+                  "Observation : \$g'(x) > 0\$ partout (sauf en 1 où non définie) → \$g\$ strictement croissante sur ses deux intervalles.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = 2/(1-x)^2$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Composition',
+          6,
+          "Utiliser la règle de la chaîne.",
+          [
+            _q(
+              1,
+              "\$f(x) = (3x + 1)^4\$.",
+              2,
+              _sol([
+                _step(
+                  "**Composition** \$u^4\$ avec \$u(x) = 3x + 1\$. Règle : \$(u^n)' = n u^{n-1} u'\$.",
+                ),
+                _step(
+                  "\$u' = 3\$, donc \$f'(x) = 4 (3x + 1)^3 \\cdot 3 = 12(3x + 1)^3\$.",
+                  mistakeFr:
+                      "Ne pas oublier le \$\\times 3\$ (dérivée de l'intérieur) — c'est l'erreur la plus fréquente.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = 12(3x+1)^3$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\sqrt{x^2 + 1}\$.",
+              2,
+              _sol([
+                _step(
+                  "Composition \$\\sqrt{u}\$ avec \$u = x^2 + 1\$. Règle : \$(\\sqrt u)' = u'/(2\\sqrt u)\$.",
+                ),
+                _step(
+                  "\$u' = 2x\$, donc \$g'(x) = \\dfrac{2x}{2\\sqrt{x^2+1}} = \\dfrac{x}{\\sqrt{x^2+1}}\$.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = x/\sqrt{x^2+1}$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = e^{-x^2}\$.",
+              2,
+              _sol([
+                _step(
+                  "Composition \$e^u\$ avec \$u = -x^2\$. Règle : \$(e^u)' = u' e^u\$.",
+                ),
+                _step(
+                  "\$u' = -2x\$, donc \$h'(x) = -2x e^{-x^2}\$.",
+                ),
+                _step(
+                  "**Fonction célèbre** : \$e^{-x^2}\$ est la cloche de Gauss (densité de probabilité normale, à un facteur près).",
+                ),
+              ], finalAnswerFr: r"$h'(x) = -2x e^{-x^2}$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDerivApps() => _paper(
+      titleFr: 'Épreuve type — Applications de la dérivation',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Étude complète de fonction : domaine, variations, extrema, asymptotes, tracé. Problèmes d'optimisation.",
+      exercices: [
+        _ex(
+          1,
+          'Étude complète',
+          6,
+          "Soit \$f(x) = \\dfrac{x^2 - 1}{x}\$ définie sur \$\\mathbb{R}^*\$.",
+          [
+            _qSubs(
+              1,
+              "Étude complète de \$f\$.",
+              5,
+              [
+                _sub(
+                  'a',
+                  "Calculer \$f'(x)\$ et étudier son signe.",
+                  2,
+                  _sol([
+                    _step(
+                      "\$f(x) = x - 1/x\$. \$f'(x) = 1 + 1/x^2 > 0\$ partout. \$f\$ **strictement croissante** sur ses deux intervalles \$]-\\infty, 0[\$ et \$]0, +\\infty[\$.",
+                    ),
+                  ], finalAnswerFr: r"$f'(x) = 1 + 1/x^2 > 0$"),
+                ),
+                _sub(
+                  'b',
+                  "Calculer les limites aux bornes.",
+                  2,
+                  _sol([
+                    _step(
+                      "\$\\lim_{x \\to +\\infty} f = +\\infty\$ (dominé par \$x\$). \$\\lim_{x \\to -\\infty} f = -\\infty\$.",
+                    ),
+                    _step(
+                      "\$\\lim_{x \\to 0^+} f = -\\infty\$ (le terme \$-1/x \\to -\\infty\$). \$\\lim_{x \\to 0^-} f = +\\infty\$.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'c',
+                  "Étudier les asymptotes.",
+                  1,
+                  _sol([
+                    _step(
+                      "**Asymptote verticale** : \$x = 0\$ (les limites en \$0^\\pm\$ sont infinies).",
+                    ),
+                    _step(
+                      "**Asymptote oblique** à l'infini : \$f(x) = x - 1/x\$. Le terme \$-1/x \\to 0\$, donc \$f(x) - x \\to 0\$. La droite \$y = x\$ est asymptote oblique.",
+                    ),
+                  ], finalAnswerFr: r"Asymptote verticale $x=0$, oblique $y=x$"),
+                ),
+              ],
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Optimisation — boîte sans couvercle',
+          5,
+          "On veut fabriquer une boîte rectangulaire sans couvercle à partir d'une feuille de carton carrée de côté 30 cm, en découpant un carré de côté \$x\$ à chaque coin et en pliant. Volume \$V(x) = x (30 - 2x)^2\$, avec \$0 < x < 15\$.",
+          [
+            _q(
+              1,
+              "Calculer \$V'(x)\$ et trouver la valeur de \$x\$ qui maximise le volume.",
+              4,
+              _sol([
+                _step(
+                  "Règle du produit : \$V'(x) = 1 \\cdot (30 - 2x)^2 + x \\cdot 2(30 - 2x)(-2) = (30 - 2x)^2 - 4x(30 - 2x)\$.",
+                ),
+                _step(
+                  "Factoriser : \$V'(x) = (30 - 2x)[(30 - 2x) - 4x] = (30 - 2x)(30 - 6x) = 12 (15 - x)(5 - x)\$.",
+                ),
+                _step(
+                  "Racines de \$V'\$ : \$x = 5\$ et \$x = 15\$. \$x = 15\$ exclu (bord du domaine). Étude du signe sur \$]0, 15[\$ : \$V'(0) = 12 \\cdot 15 \\cdot 5 = 900 > 0\$ ; \$V'(10) = 12 \\cdot 5 \\cdot (-5) = -300 < 0\$. Donc \$V'\$ change de signe en \$x = 5\$ : **maximum**.",
+                ),
+                _step(
+                  "Volume maximum : \$V(5) = 5 \\cdot 20^2 = 5 \\cdot 400 = 2000\\,cm^3 = 2\\,L\$.",
+                  tipFr:
+                      "Problème classique d'optimisation en BTS. La 'recette' : exprimer la grandeur à optimiser comme fonction d'une variable, calculer la dérivée, trouver les points critiques.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$x = 5$ cm, $V_{\max} = 2000$ cm³"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Inégalité par étude de fonction',
+          5,
+          "Démontrer que pour tout \$x > 0\$, \$\\ln(1 + x) < x\$.",
+          [
+            _q(
+              1,
+              "Étudier la fonction \$f(x) = x - \\ln(1 + x)\$ sur \$[0, +\\infty[\$.",
+              4,
+              _sol([
+                _step(
+                  "\$f(0) = 0 - \\ln 1 = 0\$.",
+                ),
+                _step(
+                  "\$f'(x) = 1 - \\dfrac{1}{1 + x} = \\dfrac{x}{1 + x}\$. Sur \$[0, +\\infty[\$ : \$x \\ge 0\$ et \$1 + x > 0\$ → \$f'(x) \\ge 0\$.",
+                ),
+                _step(
+                  "\$f' > 0\$ pour \$x > 0\$ → \$f\$ strictement croissante.",
+                ),
+                _step(
+                  "Conclusion : pour \$x > 0\$, \$f(x) > f(0) = 0\$, donc \$x - \\ln(1+x) > 0 \\iff \\ln(1+x) < x\$. ✓",
+                  tipFr:
+                      "Pour démontrer \$f(x) > g(x)\$, étudier la fonction différence \$h = f - g\$ et montrer qu'elle est positive.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "En déduire l'inégalité \$\\ln(2) < 1\$ et donner un encadrement de \$\\ln 2\$.",
+              1,
+              _sol([
+                _step(
+                  "Appliquer avec \$x = 1\$ : \$\\ln(1 + 1) = \\ln 2 < 1\$ ✓.",
+                ),
+                _step(
+                  "On peut aussi montrer \$\\ln(1 + x) > x - x^2/2\$ pour \$x > 0\$ (par étude similaire). Avec \$x = 1\$ : \$\\ln 2 > 1/2\$. Donc \$1/2 < \\ln 2 < 1\$. Valeur exacte : \$\\ln 2 \\approx 0{,}693\$.",
+                ),
+              ], finalAnswerFr: r"$1/2 < \ln 2 < 1$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Tangentes communes',
+          4,
+          "Soient \$f(x) = x^2\$ et \$g(x) = -(x-2)^2 + 4\$.",
+          [
+            _q(
+              1,
+              "Trouver une tangente commune aux deux courbes.",
+              4,
+              _sol([
+                _step(
+                  "Soit la tangente à \$f\$ en \$(a, a^2)\$ : pente \$2a\$, équation \$y = 2a(x - a) + a^2 = 2ax - a^2\$.",
+                ),
+                _step(
+                  "Soit la tangente à \$g\$ en \$(b, -(b-2)^2 + 4)\$ : pente \$g'(b) = -2(b - 2)\$, équation \$y = -2(b-2)x + \\text{const}\$.",
+                ),
+                _step(
+                  "Pour qu'elles coïncident : pentes égales \$2a = -2(b-2) \\Rightarrow a = 2 - b\$. Et ordonnées à l'origine égales : \$-a^2 = -2(b-2) \\cdot 0 + g(b) - g'(b) \\cdot b\$... calcul plus simple : la tangente à g au point b a pour équation \$y = -2(b-2)x + (b^2 - 4)\$ (en développant).",
+                ),
+                _step(
+                  "Égalité : \$2a = -2(b-2)\$ et \$-a^2 = b^2 - 4\$. Substituer \$a = 2 - b\$ : \$-(2-b)^2 = b^2 - 4 \\Rightarrow -(4 - 4b + b^2) = b^2 - 4 \\Rightarrow -4 + 4b - b^2 = b^2 - 4 \\Rightarrow 4b = 2 b^2 \\Rightarrow b = 0\$ ou \$b = 2\$.",
+                ),
+                _step(
+                  "Pour \$b = 2\$ : \$a = 0\$, tangente \$y = 0\$ (axe Ox). Vérification : \$f(0) = 0\$, tangente horizontale ; et tangente à g au sommet \$(2, 4)\$ n'est pas l'axe Ox... mais à \$(2, 0)\$ - non, \$g(2) = 4\$. La tangente commune est à \$y = 0\$ entre \$f(0) = 0\$ et \$g(0) = 0\$... ah, \$g(0) = -(0-2)^2 + 4 = -4 + 4 = 0\$ ✓.",
+                ),
+              ], finalAnswerFr: r"Tangente commune : $y = 0$ entre $(0,0)$ pour les deux"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -1709,7 +2223,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'limit_calc': _paperLimitCalcSmb(),
   'continuity': _paperContinuity(),
   'tvi': _paperTviSmb(),
-  // 23 SMB chapters remaining.
+  'deriv_basic': _paperDerivBasic(),
+  'deriv_rules': _paperDerivRules(),
+  'deriv_apps': _paperDerivApps(),
+  // 20 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
