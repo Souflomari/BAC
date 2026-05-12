@@ -5781,6 +5781,381 @@ Map<String, dynamic> _paperTitration() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperEsterification() => _paper(
+      titleFr: 'Épreuve type — Estérification et hydrolyse',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Réaction : \$\\text{R-COOH} + \\text{R'-OH} \\rightleftharpoons \\text{R-COO-R'} + \\text{H}_2\\text{O}\$. Lente, limitée, athermique. Hydrolyse = sens inverse. Saponification : ester + soude, totale.",
+      exercices: [
+        _ex(
+          1,
+          'Équation et caractéristiques',
+          5,
+          "On mélange \$n_0 = 1\\,\\text{mol}\$ d'acide éthanoïque et \$n_0 = 1\\,\\text{mol}\$ d'éthanol à 60°C.",
+          [
+            _q(
+              1,
+              "Écrire l'équation de l'estérification.",
+              2,
+              _sol([
+                _step(
+                  "\$\\text{CH}_3\\text{COOH} + \\text{CH}_3\\text{CH}_2\\text{OH} \\rightleftharpoons \\text{CH}_3\\text{COO-CH}_2\\text{CH}_3 + \\text{H}_2\\text{O}\$.",
+                ),
+                _step(
+                  "Produit : éthanoate d'éthyle (acétate d'éthyle) + eau.",
+                ),
+              ], finalAnswerFr: r"Acide + alcool $\rightleftharpoons$ ester + eau"),
+            ),
+            _q(
+              2,
+              "Caractéristiques fondamentales de cette réaction.",
+              2,
+              _sol([
+                _step(
+                  "**Lente** : à T ambiante, équilibre atteint en plusieurs semaines/mois. À 60°C avec catalyseur (H₂SO₄), plusieurs heures.",
+                ),
+                _step(
+                  "**Limitée** : équilibre chimique, ne va pas à 100%. Constante \$K \\approx 4\$ (peu favorable).",
+                ),
+                _step(
+                  "**Athermique** : \$\\Delta H \\approx 0\$ → la température ne déplace **pas** l'équilibre, mais accélère la cinétique (sans changer le rendement final).",
+                  tipFr:
+                      "Distinguer cinétique (T, catalyseur) et thermodynamique (équilibre). T accélère mais ne change pas le rendement ici.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Taux d'avancement final à partir de \$K \\approx 4\$ pour le mélange stoechiométrique.",
+              1,
+              _sol([
+                _step(
+                  "Tableau d'avancement : \$n_\\text{acide} = n_\\text{alcool} = 1 - \\xi\$ ; \$n_\\text{ester} = n_\\text{eau} = \\xi\$. \$K = \\xi^2/(1-\\xi)^2 = 4 \\iff \\xi/(1-\\xi) = 2 \\iff \\xi = 2/3\$.",
+                ),
+                _step(
+                  "Taux d'avancement final : \$\\xi/\\xi_\\text{max} = (2/3)/1 = 67\\%\$.",
+                ),
+              ], finalAnswerFr: r"$\xi = 2/3$ mol, 67%"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Facteurs déplaçant l\'équilibre',
+          5,
+          "On souhaite augmenter le rendement de l'estérification.",
+          [
+            _q(
+              1,
+              "Effet de la **température** ?",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta H \\approx 0\$ (athermique). **Aucun effet sur l'équilibre**. Mais T accélère l'atteinte de l'équilibre (cinétique).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Effet d'un **excès** d'un réactif ?",
+              3,
+              _sol([
+                _step(
+                  "**Loi de Le Chatelier** : ajouter un réactif déplace l'équilibre dans le sens de sa consommation (sens direct → plus d'ester).",
+                ),
+                _step(
+                  "Exemple : 1 mol acide + 2 mol alcool (excès alcool). Tableau : \$n_\\text{a} = 1-\\xi\$, \$n_\\text{al} = 2-\\xi\$, \$n_\\text{ester} = \\xi\$. \$K = \\xi^2/[(1-\\xi)(2-\\xi)] = 4\$.",
+                ),
+                _step(
+                  "Résolution : \$\\xi \\approx 0{,}85\$. Taux d'avancement de l'acide : 85% (vs 67% sans excès).",
+                  tipFr:
+                      "Mettre en excès le réactif **le moins cher** ou le plus facile à recycler. L'autre réactif est mieux consommé.",
+                ),
+              ], finalAnswerFr: r"Excès d'alcool → $\xi \approx 0{,}85$"),
+            ),
+            _q(
+              3,
+              "Effet d'éliminer un produit (eau) par distillation ?",
+              1,
+              _sol([
+                _step(
+                  "Déplacement de l'équilibre dans le sens direct (Le Chatelier). On peut atteindre des rendements > 95%.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Hydrolyse',
+          5,
+          "L'hydrolyse est la réaction inverse : \$\\text{ester} + \\text{H}_2\\text{O} \\rightleftharpoons \\text{acide} + \\text{alcool}\$.",
+          [
+            _q(
+              1,
+              "On part de 1 mol d'ester pur + 1 mol d'eau. État final ?",
+              3,
+              _sol([
+                _step(
+                  "Tableau : \$n_\\text{ester} = 1 - \\xi\$, \$n_\\text{eau} = 1 - \\xi\$, \$n_\\text{acide} = n_\\text{alcool} = \\xi\$.",
+                ),
+                _step(
+                  "K reste la même (équilibre est le même équilibre) : \$K = (1-\\xi)^2/\\xi^2\$... attention, K est défini pour le sens **estérification**. Pour l'hydrolyse, \$K' = 1/K = 0{,}25\$.",
+                ),
+                _step(
+                  "\$(1-\\xi)^2/\\xi^2 = 4 \\iff (1-\\xi)/\\xi = 2 \\iff \\xi = 1/3\$. Donc 33% d'avancement seulement — l'ester est plutôt stable thermodynamiquement.",
+                ),
+              ], finalAnswerFr: r"$\xi = 1/3$ mol, 33%"),
+            ),
+            _q(
+              2,
+              "Comparaison : estérification à partir de 1+1 mol → 67%. Hydrolyse à partir de 1+1 → 33%. Pourquoi cette différence ?",
+              2,
+              _sol([
+                _step(
+                  "Les deux directions atteignent **le même état d'équilibre** (au signe près) : 2/3 ester + 1/3 acide + 1/3 alcool + 2/3 eau.",
+                ),
+                _step(
+                  "Vu de l'estérification : 'on a converti 2/3' (avancement 67%). Vu de l'hydrolyse : 'on a converti 1/3 de l'ester' (avancement 33%). Le 2/3 + 1/3 = 1 mol total est l'état d'équilibre atteint par les deux directions.",
+                  tipFr:
+                      "Un équilibre chimique est indépendant de la direction de départ. Seules les concentrations initiales modifient l'état final atteint.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Saponification — réaction totale',
+          5,
+          "La saponification est la réaction d'un ester avec une base forte : \$\\text{R-COO-R'} + \\text{OH}^- \\to \\text{R-COO}^- + \\text{R'-OH}\$.",
+          [
+            _q(
+              1,
+              "Pourquoi cette réaction est-elle totale (contrairement à l'estérification) ?",
+              3,
+              _sol([
+                _step(
+                  "Le produit \$\\text{R-COO}^-\$ (ion carboxylate) est **stabilisé** par résonance — il est très peu basique. La réaction inverse n'a quasiment pas lieu.",
+                ),
+                _step(
+                  "K très grand (\$\\gg 10^4\$) → réaction quasiment totale dans le sens hydroxyde + ester → carboxylate + alcool.",
+                ),
+                _step(
+                  "**Conséquence pratique** : la saponification permet de récupérer 100% du carboxylate à partir de l'ester. Procédé industriel pour les savons (saponification des triglycérides par la soude).",
+                  tipFr:
+                      "La basicité de la fonction OH⁻ déplace l'équilibre vers la formation du carboxylate, qui ne se reforme pas en acide (pH élevé en milieu basique).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Application : hydrolyse basique du méthanoate d'éthyle. Produits ?",
+              2,
+              _sol([
+                _step(
+                  "\$\\text{HCOO-C}_2\\text{H}_5 + \\text{OH}^- \\to \\text{HCOO}^- + \\text{C}_2\\text{H}_5\\text{OH}\$.",
+                ),
+                _step(
+                  "Produits : ion méthanoate (formiate) et éthanol. Le méthanoate restera ion en milieu basique (pH > pKa de l'acide méthanoïque ≈ 3,75).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDaniellCell() => _paper(
+      titleFr: 'Épreuve type — Pile Daniell et oxydoréduction',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Pile Daniell : \$\\text{Zn} | \\text{Zn}^{2+} || \\text{Cu}^{2+} | \\text{Cu}\$. Oxydation à l'anode (-), réduction à la cathode (+). fem \$E \\approx 1{,}1\\,\\text{V}\$. Quantité d'électricité \$Q = I \\cdot t = n_e \\cdot F\$.",
+      exercices: [
+        _ex(
+          1,
+          'Demi-équations et bilan',
+          5,
+          "Pile Daniell : électrode de zinc plongée dans une solution de \$\\text{ZnSO}_4\$, électrode de cuivre dans une solution de \$\\text{CuSO}_4\$, jonction par pont salin.",
+          [
+            _q(
+              1,
+              "Identifier l'anode et la cathode ; écrire les demi-équations.",
+              3,
+              _sol([
+                _step(
+                  "Couples : \$\\text{Zn}^{2+}/\\text{Zn}\$ (pot. standard -0,76 V) et \$\\text{Cu}^{2+}/\\text{Cu}\$ (+0,34 V).",
+                ),
+                _step(
+                  "**Anode (-)** : oxydation (le pôle négatif libère des électrons). Le Zn (plus réducteur) s'oxyde : \$\\text{Zn} \\to \\text{Zn}^{2+} + 2\\,e^-\$.",
+                ),
+                _step(
+                  "**Cathode (+)** : réduction. Le Cu²⁺ se réduit : \$\\text{Cu}^{2+} + 2\\,e^- \\to \\text{Cu}\$.",
+                  tipFr:
+                      "Mnémo : la moitié-équation à l'anode = OX (oxydation) ; à la cathode = RED. À l'anode, les électrons sortent vers le circuit extérieur.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Réaction globale de fonctionnement.",
+              1,
+              _sol([
+                _step(
+                  "Sommer (les électrons s'éliminent) : \$\\text{Zn} + \\text{Cu}^{2+} \\to \\text{Zn}^{2+} + \\text{Cu}\$.",
+                ),
+              ], finalAnswerFr: r"$\text{Zn} + \text{Cu}^{2+} \to \text{Zn}^{2+} + \text{Cu}$"),
+            ),
+            _q(
+              3,
+              "Force électromotrice (fem) théorique de la pile.",
+              1,
+              _sol([
+                _step(
+                  "\$E = E_+^° - E_-^° = E°(\\text{Cu}^{2+}/\\text{Cu}) - E°(\\text{Zn}^{2+}/\\text{Zn}) = 0{,}34 - (-0{,}76) = 1{,}10\\,\\text{V}\$.",
+                ),
+                _step(
+                  "Cette valeur est théorique (concentrations 1 mol/L). En pratique, la tension dépend des concentrations (équation de Nernst — hors-programme Bac).",
+                ),
+              ], finalAnswerFr: r"$E \approx 1{,}10$ V"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Quantité d\'électricité',
+          5,
+          "La pile fonctionne avec un courant \$I = 100\\,\\text{mA}\$ pendant \$t = 1\\,\\text{heure}\$. \$F = 96500\\,\\text{C/mol}\$.",
+          [
+            _q(
+              1,
+              "Calculer la quantité d'électricité \$Q\$ et le nombre de moles d'électrons \$n_e\$.",
+              2,
+              _sol([
+                _step(
+                  "\$Q = I \\cdot t = 0{,}1 \\times 3600 = 360\\,\\text{C}\$.",
+                ),
+                _step(
+                  "\$n_e = Q/F = 360/96500 \\approx 3{,}73 \\times 10^{-3}\\,\\text{mol} \\approx 3{,}73\\,\\text{mmol}\$.",
+                ),
+              ], finalAnswerFr: r"$Q = 360$ C, $n_e \approx 3{,}73$ mmol"),
+            ),
+            _q(
+              2,
+              "Masse de Zn consommée et masse de Cu déposée. \$M(\\text{Zn}) = 65{,}4\\,\\text{g/mol}\$, \$M(\\text{Cu}) = 63{,}5\\,\\text{g/mol}\$.",
+              3,
+              _sol([
+                _step(
+                  "Stoechiométrie : pour 2 mol d'\$e^-\$, 1 mol de Zn consommé et 1 mol de Cu déposé.",
+                ),
+                _step(
+                  "\$n_\\text{Zn} = n_\\text{Cu} = n_e/2 = 1{,}87 \\times 10^{-3}\\,\\text{mol}\$.",
+                ),
+                _step(
+                  "\$m_\\text{Zn} = 1{,}87 \\times 10^{-3} \\times 65{,}4 \\approx 0{,}122\\,\\text{g} = 122\\,\\text{mg}\$.",
+                ),
+                _step(
+                  "\$m_\\text{Cu} = 1{,}87 \\times 10^{-3} \\times 63{,}5 \\approx 0{,}119\\,\\text{g} = 119\\,\\text{mg}\$.",
+                  tipFr:
+                      "Vérification : masses similaires (~120 mg) car Zn et Cu ont des masses molaires proches. À une heure d'usage modeste, la pile consomme peu de métal.",
+                ),
+              ], finalAnswerFr: r"$m_\text{Zn} \approx 122$ mg, $m_\text{Cu} \approx 119$ mg"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Pont salin et durée de vie',
+          5,
+          "Le pont salin contient une solution ionique (KCl, NH₄NO₃).",
+          [
+            _q(
+              1,
+              "Rôle du pont salin ?",
+              2,
+              _sol([
+                _step(
+                  "Il **ferme le circuit électrique** dans la solution : les cations migrent vers le compartiment qui s'enrichit en charge négative (cathode où Cu²⁺ disparaît), les anions vers celui qui s'enrichit en positive (anode où Zn²⁺ apparaît).",
+                ),
+                _step(
+                  "Sans pont salin, les charges s'accumuleraient → un champ électrique opposé bloquerait la pile rapidement.",
+                ),
+                _step(
+                  "**Maintient l'électroneutralité** dans chaque compartiment au cours du temps.",
+                  tipFr:
+                      "Sans pont salin, la pile fournit < 1 ms de courant. Avec, on peut tirer des heures de fonctionnement.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "La pile a 0,1 mol de Zn et 0,1 mol de Cu²⁺. Combien de temps peut-elle débiter \$I = 50\\,\\text{mA}\$ ?",
+              3,
+              _sol([
+                _step(
+                  "Quantité d'électrons disponible : \$n_e = 2 \\times \\min(n_\\text{Zn}, n_\\text{Cu²+}) = 0{,}2\\,\\text{mol}\$ (les deux réactifs sont stoechiométriques).",
+                ),
+                _step(
+                  "\$Q_\\text{total} = n_e F = 0{,}2 \\times 96500 = 19\\,300\\,\\text{C}\$.",
+                ),
+                _step(
+                  "Durée : \$t = Q/I = 19300/0{,}05 = 386\\,000\\,\\text{s} \\approx 107\\,\\text{h} \\approx 4{,}5\\,\\text{jours}\$.",
+                  tipFr:
+                      "Le facteur limitant est le **réactif en plus petite quantité**. Dans une pile commerciale, c'est souvent le métal actif.",
+                ),
+              ], finalAnswerFr: r"$t \approx 107$ h"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Électrolyse — opération inverse',
+          5,
+          "L'électrolyse est le procédé inverse : on impose un courant pour forcer une réaction non spontanée.",
+          [
+            _q(
+              1,
+              "Sur le couple Cu²⁺/Cu, comparer pile et électrolyse.",
+              3,
+              _sol([
+                _step(
+                  "**Pile (déchargée)** : Cu²⁺ + 2e⁻ → Cu spontanément à la cathode (+). Le Cu se dépose, on consomme du Cu²⁺.",
+                ),
+                _step(
+                  "**Électrolyse** : on impose un courant pour faire l'inverse — Cu → Cu²⁺ + 2e⁻ à l'anode. Le Cu se dissout, on produit du Cu²⁺.",
+                ),
+                _step(
+                  "Conventions inversées : en pile, anode = (-) ; en électrolyse, anode = (+) du générateur extérieur. Mais l'**oxydation reste à l'anode** dans les deux cas.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Applications industrielles de l'électrolyse.",
+              2,
+              _sol([
+                _step(
+                  "**Électrolyse de l'aluminium** : extraction Al à partir de Al₂O₃ (procédé Hall-Héroult). Coûteuse en énergie (~13 kWh/kg).",
+                ),
+                _step(
+                  "**Galvanoplastie** : dépôt de Cu, Ni, Cr, Au sur des surfaces pour protection ou décoration.",
+                ),
+                _step(
+                  "**Production de H₂** : électrolyse de l'eau (H₂O → H₂ + ½ O₂) — vecteur d'énergie verte si l'électricité est renouvelable.",
+                  tipFr:
+                      "Coût énergétique de l'électrolyse de l'eau : ~50 kWh/kg de H₂ produit. À comparer aux 33 kWh/kg énergétiquement contenu dans H₂ (efficacité ~66%).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -5825,6 +6200,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   // Physique-Chimie — Batch 9: acid-base + titration
   'pc_ph_calculation': _paperPhCalculation(),
   'pc_titration': _paperTitration(),
+  // Physique-Chimie — Batch 10: organic + electrochemistry
+  'pc_esterification': _paperEsterification(),
+  'pc_daniell_cell': _paperDaniellCell(),
+  // PC COMPLETE (31/31).
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
