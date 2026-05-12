@@ -3320,6 +3320,759 @@ Map<String, dynamic> _paperRlcRegimes() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperWaveBasics() => _paper(
+      titleFr: 'Épreuve type — Ondes mécaniques',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Ondes mécaniques progressives, célérité, longueur d'onde, retard, transversales vs longitudinales. **Relation centrale** : \$v = \\lambda f\$.",
+      exercices: [
+        _ex(
+          1,
+          'Notions de base',
+          5,
+          "On crée une onde transversale à l'extrémité d'une corde tendue avec une fréquence \$f = 50\\,Hz\$. La célérité de l'onde dans cette corde est \$v = 20\\,m/s\$.",
+          [
+            _q(
+              1,
+              "Calculer la période \$T\$ et la longueur d'onde \$\\lambda\$.",
+              2,
+              _sol([
+                _step(
+                  "**Période** : \$T = 1/f = 1/50 = 0{,}02\\,s = 20\\,ms\$.",
+                ),
+                _step(
+                  "**Relation fondamentale** : \$v = \\lambda f\$, donc \$\\lambda = v/f = 20/50 = 0{,}4\\,m = 40\\,cm\$.",
+                  tipFr:
+                      "Vérification dimensionnelle : m = (m/s) × s ✓. La longueur d'onde est la distance parcourue par l'onde en une période.",
+                ),
+              ], finalAnswerFr: r"$T = 20$ ms, $\lambda = 40$ cm"),
+            ),
+            _q(
+              2,
+              "Définir la double-périodicité d'une onde progressive.",
+              2,
+              _sol([
+                _step(
+                  "Une onde progressive est **doublement périodique** : (1) **en temps**, en un point fixe : la grandeur perturbée se reproduit identique tous les \$T\$ secondes. (2) **en espace**, à un instant fixe : la perturbation se reproduit tous les \$\\lambda\$ mètres.",
+                ),
+                _step(
+                  "Lien : \$\\lambda = vT\$ — la longueur d'onde est la distance parcourue par l'onde pendant une période.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "L'onde sur la corde est-elle transversale ou longitudinale ? Citer un exemple de chaque.",
+              1,
+              _sol([
+                _step(
+                  "Sur une corde, le mouvement des points est **perpendiculaire** à la direction de propagation (par exemple haut-bas alors que l'onde se propage horizontalement) → **transversale**.",
+                ),
+                _step(
+                  "Exemples : transversale = corde, lumière, vagues sur l'eau (mouvement vertical, propagation horizontale). Longitudinale = son (compressions/raréfactions dans la direction de propagation).",
+                  tipFr:
+                      "Une onde de surface (vagues) combine en réalité les deux composantes — mouvement quasi-circulaire des particules d'eau près de la surface.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Retard et propagation',
+          5,
+          "Une source ponctuelle \$S\$ émet une onde de célérité \$v\$. Un point \$M\$ est situé à la distance \$d = 1{,}5\\,m\$ de \$S\$. Le mouvement de \$S\$ est sinusoïdal : \$y_S(t) = A\\sin(2\\pi f t)\$ avec \$A = 2\\,cm\$, \$f = 100\\,Hz\$, \$v = 30\\,m/s\$.",
+          [
+            _q(
+              1,
+              "Calculer le retard \$\\tau\$ entre \$M\$ et \$S\$.",
+              2,
+              _sol([
+                _step(
+                  "**Retard** : temps mis par l'onde pour parcourir la distance \$d\$. \$\\tau = d/v = 1{,}5/30 = 0{,}05\\,s = 50\\,ms\$.",
+                ),
+              ], finalAnswerFr: r"$\tau = 50$ ms"),
+            ),
+            _q(
+              2,
+              "Donner l'expression de \$y_M(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Un point \$M\$ reproduit le mouvement de la source avec un retard temporel \$\\tau\$ : \$y_M(t) = y_S(t - \\tau)\$.",
+                ),
+                _step(
+                  "\$y_M(t) = A\\sin(2\\pi f (t - \\tau)) = 2 \\times 10^{-2} \\sin(200\\pi (t - 0{,}05))\\,m\$.",
+                  tipFr:
+                      "Convention : pour \$t < \\tau\$, le point \$M\$ est encore au repos (l'onde n'est pas encore arrivée).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$y_M(t) = A\sin(2\pi f(t - \tau))$"),
+            ),
+            _q(
+              3,
+              "Calculer le déphasage \$\\Delta\\varphi\$ entre \$M\$ et \$S\$ en fonction de \$\\lambda\$.",
+              1,
+              _sol([
+                _step(
+                  "Déphasage : \$\\Delta\\varphi = 2\\pi f \\tau = 2\\pi d/\\lambda\$ (avec \$\\lambda = v/f\$).",
+                ),
+                _step(
+                  "Application : \$\\lambda = 30/100 = 0{,}3\\,m\$. \$\\Delta\\varphi = 2\\pi \\times 1{,}5/0{,}3 = 10\\pi\$ rad.",
+                ),
+                _step(
+                  "Modulo \$2\\pi\$ : \$10\\pi = 5 \\times 2\\pi \\equiv 0\$ — \$M\$ et \$S\$ vibrent **en phase** (5 longueurs d'onde séparent les deux).",
+                ),
+              ], finalAnswerFr: r"$\Delta\varphi = 10\pi \equiv 0$ (en phase)"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Diffraction',
+          5,
+          "Une onde plane de longueur d'onde \$\\lambda = 2\\,cm\$ rencontre une fente de largeur \$a\$.",
+          [
+            _q(
+              1,
+              "Pour quelle valeur de \$a\$ la diffraction est-elle observable ?",
+              2,
+              _sol([
+                _step(
+                  "**Critère de diffraction** : observable quand \$a \\lesssim \\lambda\$, c'est-à-dire que la fente est de l'ordre de la longueur d'onde.",
+                ),
+                _step(
+                  "Pour \$\\lambda = 2\\,cm\$, diffraction nette si \$a \\lesssim 2\\,cm\$. Si \$a \\gg \\lambda\$ (par exemple \$a = 50\\,cm\$) : propagation rectiligne, pas de diffraction visible.",
+                ),
+              ], finalAnswerFr: r"$a \lesssim \lambda = 2$ cm"),
+            ),
+            _q(
+              2,
+              "Si \$a = 1\\,cm\$, calculer l'écart angulaire \$\\theta\$ entre la direction de propagation et le premier minimum de diffraction.",
+              3,
+              _sol([
+                _step(
+                  "**Formule** (pour une fente fine) : \$\\sin\\theta = \\lambda/a\$.",
+                ),
+                _step(
+                  "Application : \$\\sin\\theta = 2/1 = 2\$ — impossible (sin > 1) !",
+                ),
+                _step(
+                  "**Interprétation** : avec \$a < \\lambda\$, l'onde diffractée occupe tout le demi-espace en aval. Pas de minimum de diffraction visible — la fente se comporte comme une source ponctuelle.",
+                  tipFr:
+                      "Pour avoir des minima nets, il faut \$a > \\lambda\$. Avec \$a \\gg \\lambda\$, les minima sont très proches de la direction directe (\$\\theta\$ petit).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Réflexion et superposition',
+          5,
+          "Sur une corde, on superpose deux ondes sinusoïdales se propageant en sens contraires, de même fréquence et amplitude : \$y_1(x, t) = A\\sin(\\omega t - kx)\$ et \$y_2(x, t) = A\\sin(\\omega t + kx)\$.",
+          [
+            _q(
+              1,
+              "Montrer que la superposition donne une onde stationnaire \$y(x, t) = 2A\\sin(\\omega t)\\cos(kx)\$.",
+              3,
+              _sol([
+                _step(
+                  "**Formule trigo** : \$\\sin(p) + \\sin(q) = 2\\sin((p+q)/2)\\cos((p-q)/2)\$.",
+                ),
+                _step(
+                  "Avec \$p = \\omega t - kx\$ et \$q = \\omega t + kx\$ : \$(p+q)/2 = \\omega t\$, \$(p-q)/2 = -kx\$.",
+                ),
+                _step(
+                  "Donc \$y_1 + y_2 = 2A\\sin(\\omega t)\\cos(-kx) = 2A\\sin(\\omega t)\\cos(kx)\$ (\$\\cos\$ est paire).",
+                ),
+                _step(
+                  "**Caractérisation** : la dépendance en \$x\$ et en \$t\$ est **séparée** — c'est la signature d'une onde stationnaire. Pas de propagation, mais des points qui vibrent en place.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$y = 2A\sin(\omega t)\cos(kx)$"),
+            ),
+            _q(
+              2,
+              "Localiser les nœuds (points qui ne vibrent jamais) de l'onde stationnaire.",
+              2,
+              _sol([
+                _step(
+                  "Un point \$x_0\$ est un nœud si \$y(x_0, t) = 0\$ pour tout \$t\$. Cela impose \$\\cos(k x_0) = 0\$.",
+                ),
+                _step(
+                  "Solutions : \$k x_0 = \\pi/2 + n\\pi\$ pour \$n \\in \\mathbb{Z}\$, soit \$x_0 = (2n+1) \\dfrac{\\pi}{2k} = (2n+1) \\dfrac{\\lambda}{4}\$.",
+                ),
+                _step(
+                  "**Nœuds espacés de \$\\lambda/2\$** : positions \$\\lambda/4, 3\\lambda/4, 5\\lambda/4, \\ldots\$. Entre deux nœuds, un **ventre** (amplitude maximale) en \$x = n\\lambda/2\$.",
+                  tipFr:
+                      "Applications : ondes stationnaires dans une corde de guitare (longueur fixée, modes propres), résonateurs acoustiques, lasers (cavité optique).",
+                ),
+              ], finalAnswerFr: r"Nœuds en $x = (2n+1)\lambda/4$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperPeriodicWaves() => _paper(
+      titleFr: 'Épreuve type — Ondes périodiques (interférences, Doppler)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Interférences, fentes d'Young, effet Doppler, applications aux ondes sonores et lumineuses.",
+      exercices: [
+        _ex(
+          1,
+          'Interférences de deux sources synchrones',
+          5,
+          "Deux sources \$S_1\$ et \$S_2\$ émettent en phase une onde de fréquence \$f = 1000\\,Hz\$ dans un milieu où \$v = 340\\,m/s\$. Un point \$M\$ est à \$d_1 = 1{,}50\\,m\$ de \$S_1\$ et \$d_2 = 1{,}85\\,m\$ de \$S_2\$.",
+          [
+            _q(
+              1,
+              "Calculer la longueur d'onde \$\\lambda\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\lambda = v/f = 340/1000 = 0{,}34\\,m\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda = 34$ cm"),
+            ),
+            _q(
+              2,
+              "Calculer la différence de marche \$\\delta\$ en \$M\$. L'interférence est-elle constructive ou destructive ?",
+              3,
+              _sol([
+                _step(
+                  "**Différence de marche** : \$\\delta = |d_2 - d_1| = 0{,}35\\,m\$.",
+                ),
+                _step(
+                  "Rapport : \$\\delta/\\lambda = 0{,}35/0{,}34 \\approx 1{,}03\$.",
+                ),
+                _step(
+                  "**Critères** : \$\\delta = n\\lambda\$ → interférence constructive (amplitude max). \$\\delta = (n + 1/2)\\lambda\$ → destructive (amplitude min).",
+                ),
+                _step(
+                  "Ici \$\\delta/\\lambda \\approx 1{,}03 \\approx 1\$, proche de \$n = 1\$ : interférence **constructive** (presque parfaite — léger décalage).",
+                  tipFr:
+                      "Pour une interférence parfaite constructive, il faut \$\\delta\$ exactement multiple de \$\\lambda\$. Sinon, intermédiaire.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\delta = 35$ cm, $\delta/\lambda \approx 1$ → constructive"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          "Fentes d'Young (lumière)",
+          5,
+          "Dans une expérience d'Young, deux fentes distantes de \$a = 0{,}2\\,mm\$ sont éclairées par un laser de longueur d'onde \$\\lambda = 600\\,nm\$. L'écran est à \$D = 1\\,m\$.",
+          [
+            _q(
+              1,
+              "Calculer l'interfrange \$i\$.",
+              3,
+              _sol([
+                _step(
+                  "**Formule** : \$i = \\dfrac{\\lambda D}{a}\$.",
+                ),
+                _step(
+                  "Application : \$i = \\dfrac{600 \\times 10^{-9} \\times 1}{0{,}2 \\times 10^{-3}} = \\dfrac{6 \\times 10^{-7}}{2 \\times 10^{-4}} = 3 \\times 10^{-3}\\,m = 3\\,mm\$.",
+                ),
+                _step(
+                  "**Vérification dimensionnelle** : (m × m) / m = m ✓.",
+                ),
+              ], finalAnswerFr: r"$i = 3$ mm"),
+            ),
+            _q(
+              2,
+              "Si on remplace le laser rouge (\$\\lambda_r = 700\\,nm\$) par un laser bleu (\$\\lambda_b = 450\\,nm\$), comment varie l'interfrange ?",
+              2,
+              _sol([
+                _step(
+                  "\$i \\propto \\lambda\$ : un laser à plus courte longueur d'onde donne un interfrange plus petit.",
+                ),
+                _step(
+                  "Rapport : \$i_b/i_r = \\lambda_b/\\lambda_r = 450/700 \\approx 0{,}64\$. Si \$i_r = 3\\,mm\$, \$i_b \\approx 1{,}93\\,mm\$.",
+                  tipFr:
+                      "C'est pourquoi en lumière blanche, on observe des franges colorées : chaque couleur a son propre interfrange.",
+                ),
+              ], finalAnswerFr: r"$i_b/i_r \approx 0{,}64$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Effet Doppler',
+          5,
+          "Une ambulance émet un son de fréquence \$f_0 = 700\\,Hz\$. Vous êtes immobile sur le trottoir, l'ambulance s'approche à la vitesse \$v_s = 20\\,m/s\$. Célérité du son : \$v = 340\\,m/s\$.",
+          [
+            _q(
+              1,
+              "Calculer la fréquence \$f'\$ perçue par l'observateur immobile à l'approche.",
+              3,
+              _sol([
+                _step(
+                  "**Formule de Doppler** (source mobile, récepteur fixe, approche) : \$f' = f_0 \\dfrac{v}{v - v_s}\$.",
+                ),
+                _step(
+                  "Application : \$f' = 700 \\dfrac{340}{340 - 20} = 700 \\times \\dfrac{340}{320} = 700 \\times 1{,}0625 = 743{,}75\\,Hz\$.",
+                ),
+                _step(
+                  "Perception : son plus aigu (fréquence plus élevée) à l'approche.",
+                  tipFr:
+                      "Lorsque la source s'éloigne, \$f' = f_0 \\cdot v/(v + v_s)\$ — son plus grave.",
+                ),
+              ], finalAnswerFr: r"$f' \approx 744$ Hz"),
+            ),
+            _q(
+              2,
+              "Calculer la fréquence \$f''\$ perçue après le passage (l'ambulance s'éloigne).",
+              2,
+              _sol([
+                _step(
+                  "\$f'' = f_0 \\dfrac{v}{v + v_s} = 700 \\times \\dfrac{340}{360} \\approx 661\\,Hz\$.",
+                ),
+                _step(
+                  "**Écart** : \$f' - f'' \\approx 83\\,Hz\$ — bien audible, c'est le 'wah-wahh' caractéristique du Doppler. Applications : radar de vitesse, échographie médicale, expansion de l'univers (red shift).",
+                ),
+              ], finalAnswerFr: r"$f'' \approx 661$ Hz"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Cordes vibrantes',
+          5,
+          "Une corde de guitare de longueur \$L = 0{,}65\\,m\$ et de tension \$T\$ produit un fondamental à \$f_1 = 220\\,Hz\$ (note La₃). La célérité de l'onde sur la corde est \$v = \\sqrt{T/\\mu}\$ où \$\\mu\$ est la masse linéique.",
+          [
+            _q(
+              1,
+              "Déterminer la longueur d'onde \$\\lambda_1\$ et la célérité \$v\$ du fondamental.",
+              3,
+              _sol([
+                _step(
+                  "**Mode fondamental** d'une corde fixée aux deux extrémités : \$\\lambda_1 = 2L = 1{,}30\\,m\$ (un ventre entre deux nœuds, l'onde fait un aller-retour = \$\\lambda/2\$).",
+                ),
+                _step(
+                  "Célérité : \$v = \\lambda_1 f_1 = 1{,}30 \\times 220 = 286\\,m/s\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda_1 = 1{,}30$ m, $v = 286$ m/s"),
+            ),
+            _q(
+              2,
+              "Quelle fréquence \$f_2\$ produit la première harmonique (octave supérieure) ?",
+              2,
+              _sol([
+                _step(
+                  "**Harmoniques** d'une corde : \$f_n = n f_1\$ pour \$n = 1, 2, 3, \\ldots\$.",
+                ),
+                _step(
+                  "\$f_2 = 2 f_1 = 440\\,Hz\$ — c'est la note La₄ (octave au-dessus), le 'la' du diapason.",
+                  tipFr:
+                      "Pour produire l'octave, on appuie sur la corde à mi-chemin (frette 12 sur la guitare) — on raccourcit la longueur effective à \$L/2\$.",
+                ),
+              ], finalAnswerFr: r"$f_2 = 440$ Hz"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperNuclearRadioactivity() => _paper(
+      titleFr: 'Épreuve type — Radioactivité',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Désintégrations \$\\alpha\$, \$\\beta^-\$, \$\\beta^+\$, conservations (A, Z), loi exponentielle, demi-vie, datation.",
+      exercices: [
+        _ex(
+          1,
+          'Lois de désintégration',
+          4,
+          "On considère plusieurs désintégrations.",
+          [
+            _q(
+              1,
+              "Écrire la désintégration \$\\alpha\$ du \$^{226}_{88}\\text{Ra}\$.",
+              2,
+              _sol([
+                _step(
+                  "**Désintégration \$\\alpha\$** : émission d'un noyau d'hélium \$^4_2 \\text{He}\$. \$^A_Z X \\to ^{A-4}_{Z-2} Y + ^4_2 \\text{He}\$.",
+                ),
+                _step(
+                  "Application : \$^{226}_{88}\\text{Ra} \\to ^{222}_{86}\\text{Rn} + ^4_2\\text{He}\$. Le radium devient du radon (gaz noble, problème de santé publique dans les caves).",
+                  tipFr:
+                      "Conservation du nombre de nucléons A et du nombre de charge Z — toujours vérifier ces deux conservations.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$^{226}_{88}\text{Ra} \to ^{222}_{86}\text{Rn} + ^4_2\text{He}$"),
+            ),
+            _q(
+              2,
+              "Écrire la désintégration \$\\beta^-\$ du \$^{14}_6 C\$.",
+              2,
+              _sol([
+                _step(
+                  "**Désintégration \$\\beta^-\$** : un neutron se transforme en proton, émission d'un électron \$^0_{-1}e\$ : \$^A_Z X \\to ^A_{Z+1} Y + ^0_{-1}e + \\bar{\\nu}\$.",
+                ),
+                _step(
+                  "Application : \$^{14}_6\\text{C} \\to ^{14}_7\\text{N} + ^0_{-1}e + \\bar{\\nu}\$. Le carbone devient de l'azote — base de la datation au C-14.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Loi de décroissance',
+          5,
+          "Un échantillon de \$^{210}_{84}\\text{Po}\$ (polonium 210) a une activité initiale \$A_0 = 2 \\times 10^{10}\\,Bq\$. Demi-vie : \$t_{1/2} = 138\\,\\text{jours}\$.",
+          [
+            _q(
+              1,
+              "Calculer la constante de désintégration \$\\lambda\$.",
+              2,
+              _sol([
+                _step(
+                  "**Relation** : \$t_{1/2} = \\ln(2)/\\lambda\$, donc \$\\lambda = \\ln(2)/t_{1/2}\$.",
+                ),
+                _step(
+                  "\$\\lambda = 0{,}693/138 \\approx 5{,}02 \\times 10^{-3}\\,\\text{jour}^{-1}\$ (ou en secondes : \$/86400 \\approx 5{,}81 \\times 10^{-8}\\,s^{-1}\$).",
+                ),
+              ], finalAnswerFr: r"$\lambda \approx 5{,}02 \times 10^{-3}$ /jour"),
+            ),
+            _q(
+              2,
+              "Quelle activité reste-t-il après 1 an (365 jours) ?",
+              3,
+              _sol([
+                _step(
+                  "**Loi exponentielle** : \$A(t) = A_0 e^{-\\lambda t}\$.",
+                ),
+                _step(
+                  "Exposant : \$\\lambda t = 5{,}02 \\times 10^{-3} \\times 365 \\approx 1{,}83\$.",
+                ),
+                _step(
+                  "\$A(365) = 2 \\times 10^{10} \\times e^{-1{,}83} \\approx 2 \\times 10^{10} \\times 0{,}160 \\approx 3{,}2 \\times 10^9\\,Bq\$.",
+                ),
+                _step(
+                  "**Vérification** : 365 jours / 138 jours \$\\approx 2{,}64\$ demi-vies. Activité \$\\approx A_0/2^{2{,}64} \\approx A_0/6{,}24 \\approx 3{,}2 \\times 10^9\\,Bq\$ ✓.",
+                  tipFr:
+                      "\$A_0/2^n\$ où \$n = t/t_{1/2}\$ — méthode rapide quand on veut une estimation.",
+                ),
+              ], finalAnswerFr: r"$A(1\,\text{an}) \approx 3{,}2 \times 10^9$ Bq"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Datation au carbone-14',
+          6,
+          "Dans la nature, le rapport \$^{14}\\text{C}/^{12}\\text{C}\$ d'un organisme vivant est constant (renouvellement par échanges avec l'atmosphère). À sa mort, le \$^{14}\\text{C}\$ se désintègre selon \$t_{1/2} = 5730\\,\\text{ans}\$. Un échantillon archéologique a un rapport \$^{14}\\text{C}/^{12}\\text{C}\$ égal à 25% du rapport actuel.",
+          [
+            _q(
+              1,
+              "Calculer l'âge \$t\$ de l'échantillon.",
+              4,
+              _sol([
+                _step(
+                  "Le rapport est aussi proportionnel à l'activité (mêmes coefficients). On a \$A(t)/A_0 = 0{,}25\$.",
+                ),
+                _step(
+                  "**Loi** : \$A(t)/A_0 = e^{-\\lambda t} = 0{,}25\$. Avec \$\\lambda = \\ln 2/t_{1/2}\$, on a \$e^{-t \\ln 2 / 5730} = 0{,}25\$.",
+                ),
+                _step(
+                  "Application de \$\\ln\$ : \$-t\\ln 2/5730 = \\ln(0{,}25) = -\\ln 4 = -2\\ln 2\$. Donc \$t/5730 = 2\$, soit \$t = 2 t_{1/2} = 11460\\,\\text{ans}\$.",
+                ),
+                _step(
+                  "**Vérification intuitive** : 25% = 1/4 = 1/2² → 2 demi-vies écoulées → \$t = 2 \\times 5730 = 11460\\,\\text{ans}\$ ✓.",
+                  tipFr:
+                      "Quand le rapport est une puissance simple de 1/2 (1/2, 1/4, 1/8, 1/16), la datation est immédiate sans \$\\ln\$.",
+                ),
+              ], finalAnswerFr: r"$t = 11460$ ans"),
+            ),
+            _q(
+              2,
+              "Quelle est la limite de la datation au carbone-14 ?",
+              2,
+              _sol([
+                _step(
+                  "Après 10 demi-vies (\$\\approx 57300\\,\\text{ans}\$), il reste \$1/2^{10} = 1/1024 \\approx 0{,}1\\%\$ du \$^{14}\\text{C}\$ initial — quantité difficilement mesurable.",
+                ),
+                _step(
+                  "**Limite pratique** : datation utile jusqu'à environ 50 000 ans. Au-delà, on utilise d'autres méthodes (U-Pb pour les roches anciennes, K-Ar, etc.) basées sur des isotopes à demi-vie plus longue.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Énergie de liaison',
+          5,
+          "On compare deux noyaux : le deutérium \$^2_1\\text{H}\$ (masse \$2{,}01410\\,u\$) et l'hélium-4 \$^4_2\\text{He}\$ (masse \$4{,}00260\\,u\$). Masses : proton \$1{,}00728\\,u\$, neutron \$1{,}00866\\,u\$. \$1\\,u = 931{,}5\\,\\text{MeV}/c^2\$.",
+          [
+            _q(
+              1,
+              "Calculer le défaut de masse et l'énergie de liaison du deutérium.",
+              3,
+              _sol([
+                _step(
+                  "**Défaut de masse** \$\\Delta m\$ : somme des masses des nucléons libres − masse du noyau.",
+                ),
+                _step(
+                  "Deutérium = 1 proton + 1 neutron : somme = \$1{,}00728 + 1{,}00866 = 2{,}01594\\,u\$. Défaut : \$\\Delta m = 2{,}01594 - 2{,}01410 = 0{,}00184\\,u\$.",
+                ),
+                _step(
+                  "**Énergie de liaison** : \$E = \\Delta m c^2 = 0{,}00184 \\times 931{,}5 \\approx 1{,}71\\,\\text{MeV}\$. Par nucléon : \$1{,}71/2 = 0{,}856\\,\\text{MeV/nucléon}\$.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$E_l = 1{,}71$ MeV, $0{,}856$ MeV/nucléon"),
+            ),
+            _q(
+              2,
+              "Faire de même pour l'hélium-4 et comparer.",
+              2,
+              _sol([
+                _step(
+                  "Hélium-4 = 2 protons + 2 neutrons : somme = \$2 \\times 1{,}00728 + 2 \\times 1{,}00866 = 4{,}03188\\,u\$. Défaut : \$\\Delta m = 4{,}03188 - 4{,}00260 = 0{,}02928\\,u\$.",
+                ),
+                _step(
+                  "\$E_l = 0{,}02928 \\times 931{,}5 \\approx 27{,}3\\,\\text{MeV}\$. Par nucléon : \$27{,}3/4 \\approx 6{,}82\\,\\text{MeV/nucléon}\$.",
+                ),
+                _step(
+                  "**Conclusion** : l'hélium-4 est beaucoup plus stable que le deutérium (énergie de liaison par nucléon ~8× supérieure). C'est pour ça que les étoiles fusionnent l'hydrogène en hélium — gain énergétique énorme.",
+                  tipFr:
+                      "L'énergie de liaison par nucléon est maximale autour du \$^{56}\\text{Fe}\$ (~8,8 MeV/nucléon) — pic de la 'courbe d'Aston'.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"Hélium-4 : $6{,}82$ MeV/nucléon (~8× plus stable)"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperProjectileMotion() => _paper(
+      titleFr: 'Épreuve type — Mouvement d\'un projectile',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Chute libre, projectile (champ de pesanteur uniforme, sans frottement). Décomposition horizontale/verticale, trajectoire parabolique, portée et flèche.",
+      exercices: [
+        _ex(
+          1,
+          'Chute libre verticale',
+          4,
+          "Une bille de masse \$m = 100\\,g\$ tombe sans vitesse initiale depuis une hauteur \$h = 20\\,m\$. On néglige la résistance de l'air. \$g = 9{,}8\\,m/s^2\$.",
+          [
+            _q(
+              1,
+              "Calculer la durée de la chute.",
+              2,
+              _sol([
+                _step(
+                  "**MRUA vertical** : \$y(t) = h - \\frac{1}{2} g t^2\$ (axe Oy ascendant). Bille touche le sol quand \$y = 0\$.",
+                ),
+                _step(
+                  "\$0 = h - g t^2/2 \\iff t = \\sqrt{2h/g} = \\sqrt{40/9{,}8} \\approx 2{,}02\\,s\$.",
+                  tipFr:
+                      "La masse n'apparaît pas — en chute libre, tous les corps tombent à la même vitesse (Galilée, expérience de Pise).",
+                ),
+              ], finalAnswerFr: r"$t_{\text{chute}} \approx 2{,}02$ s"),
+            ),
+            _q(
+              2,
+              "Quelle est la vitesse au moment de l'impact ?",
+              2,
+              _sol([
+                _step(
+                  "**Vitesse** : \$v(t) = g t = 9{,}8 \\times 2{,}02 \\approx 19{,}8\\,m/s\$.",
+                ),
+                _step(
+                  "Conversion : \$19{,}8\\,m/s \\times 3{,}6 \\approx 71\\,km/h\$.",
+                ),
+                _step(
+                  "**Vérification énergétique** : \$E_p = mgh = 0{,}1 \\times 9{,}8 \\times 20 = 19{,}6\\,J\$. \$E_c = \\frac{1}{2}mv^2 = 0{,}05 \\times 392 \\approx 19{,}6\\,J\$ ✓ (conservation de l'énergie).",
+                ),
+              ], finalAnswerFr: r"$v \approx 19{,}8$ m/s ($\sim$71 km/h)"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Projectile : tir oblique',
+          6,
+          "Un projectile est lancé depuis le sol avec une vitesse initiale \$v_0 = 30\\,m/s\$ et un angle \$\\alpha = 45°\$ par rapport à l'horizontale. \$g = 10\\,m/s^2\$.",
+          [
+            _q(
+              1,
+              "Donner les équations horaires \$x(t)\$ et \$y(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Décomposition** : \$v_{0x} = v_0 \\cos\\alpha\$, \$v_{0y} = v_0 \\sin\\alpha\$.",
+                ),
+                _step(
+                  "Pour \$\\alpha = 45°\$ : \$v_{0x} = v_{0y} = 30/\\sqrt{2} \\approx 21{,}2\\,m/s\$.",
+                ),
+                _step(
+                  "Équations : \$x(t) = v_{0x} t = 21{,}2 t\$. \$y(t) = v_{0y} t - g t^2/2 = 21{,}2 t - 5 t^2\$.",
+                  tipFr:
+                      "Mouvement horizontal : MRU (aucune force, à frottement nul). Mouvement vertical : MRUA (poids vers le bas).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$x = 21{,}2 t$, $y = 21{,}2 t - 5 t^2$"),
+            ),
+            _q(
+              2,
+              "Calculer la portée \$x_p\$ (distance horizontale au point de chute).",
+              2,
+              _sol([
+                _step(
+                  "Le projectile retombe quand \$y = 0\$ (autre que \$t = 0\$). Résoudre \$21{,}2 t - 5 t^2 = 0 \\iff t(21{,}2 - 5t) = 0\$.",
+                ),
+                _step(
+                  "Solution non nulle : \$t = 21{,}2/5 = 4{,}24\\,s\$.",
+                ),
+                _step(
+                  "Portée : \$x_p = 21{,}2 \\times 4{,}24 \\approx 89{,}9\\,m\$.",
+                ),
+                _step(
+                  "**Formule générale** : \$x_p = v_0^2 \\sin(2\\alpha)/g\$. Pour \$\\alpha = 45°\$, \$\\sin 90° = 1\$ → portée **maximale** \$x_p = v_0^2/g = 900/10 = 90\\,m\$.",
+                  tipFr:
+                      "À sans frottement, la portée est maximale pour \$\\alpha = 45°\$. Avec frottement (cas réel), l'angle optimal est inférieur (~35-40°).",
+                ),
+              ], finalAnswerFr: r"$x_p \approx 90$ m"),
+            ),
+            _q(
+              3,
+              "Calculer la flèche \$h_{\\max}\$ (hauteur maximale atteinte).",
+              2,
+              _sol([
+                _step(
+                  "Au sommet, \$v_y = 0\$. \$v_y(t) = v_{0y} - g t = 0 \\iff t_{\\text{sommet}} = v_{0y}/g = 21{,}2/10 = 2{,}12\\,s\$.",
+                ),
+                _step(
+                  "Hauteur : \$h_{\\max} = y(2{,}12) = 21{,}2 \\times 2{,}12 - 5 \\times 4{,}50 \\approx 44{,}9 - 22{,}5 = 22{,}4\\,m\$.",
+                ),
+                _step(
+                  "**Formule** : \$h_{\\max} = v_0^2 \\sin^2\\alpha / (2g) = 900 \\times 0{,}5 / 20 = 22{,}5\\,m\$ (cohérent).",
+                ),
+              ], finalAnswerFr: r"$h_{\max} \approx 22{,}5$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Équation cartésienne de la trajectoire',
+          5,
+          "On reprend le projectile de l'Exercice 2.",
+          [
+            _q(
+              1,
+              "Exprimer \$y\$ en fonction de \$x\$ et montrer que la trajectoire est parabolique.",
+              3,
+              _sol([
+                _step(
+                  "On élimine \$t\$. De \$x = v_{0x} t\$ : \$t = x/v_{0x}\$.",
+                ),
+                _step(
+                  "Substitution : \$y = v_{0y} \\cdot (x/v_{0x}) - g \\cdot (x/v_{0x})^2 / 2 = (v_{0y}/v_{0x}) x - g x^2 / (2 v_{0x}^2)\$.",
+                ),
+                _step(
+                  "Avec \$v_{0y}/v_{0x} = \\tan\\alpha\$ et \$v_{0x} = v_0 \\cos\\alpha\$ : \$y = \\tan(\\alpha) x - \\dfrac{g x^2}{2 v_0^2 \\cos^2\\alpha}\$.",
+                ),
+                _step(
+                  "**Trajectoire parabolique** : \$y = ax + bx^2\$ avec \$a = \\tan\\alpha > 0\$ et \$b = -g/(2 v_0^2 \\cos^2\\alpha) < 0\$ — parabole concave vers le bas.",
+                  tipFr:
+                      "L'équation cartésienne permet de tracer la trajectoire indépendamment du temps.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$y = \tan(\alpha)x - \dfrac{gx^2}{2 v_0^2 \cos^2\alpha}$"),
+            ),
+            _q(
+              2,
+              "Application numérique : équation pour notre projectile.",
+              2,
+              _sol([
+                _step(
+                  "Avec \$\\alpha = 45°\$ : \$\\tan\\alpha = 1\$, \$\\cos^2\\alpha = 1/2\$. \$v_0^2 = 900\$.",
+                ),
+                _step(
+                  "\$y = x - \\dfrac{10 x^2}{2 \\times 900 \\times 0{,}5} = x - \\dfrac{10 x^2}{900} = x - \\dfrac{x^2}{90}\$.",
+                ),
+                _step(
+                  "Vérification : \$y = 0\$ pour \$x = 0\$ ou \$x = 90\$ (notre portée) ✓.",
+                ),
+              ], finalAnswerFr: r"$y = x - x^2/90$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Conservation d\'énergie',
+          5,
+          "On reprend le projectile.",
+          [
+            _q(
+              1,
+              "Calculer \$E_c\$ et \$E_p\$ au sommet de la trajectoire et comparer à l'énergie initiale.",
+              3,
+              _sol([
+                _step(
+                  "**Au lancement** : \$E_{c,0} = \\frac{1}{2} m v_0^2 = \\frac{1}{2} m \\times 900 = 450 m\\,J\$. \$E_{p,0} = 0\$. \$E_{m,0} = 450 m\\,J\$.",
+                ),
+                _step(
+                  "**Au sommet** : \$v_x = v_{0x} = 21{,}2\\,m/s\$ (conservé) et \$v_y = 0\$. Donc \$v = 21{,}2\\,m/s\$.",
+                ),
+                _step(
+                  "\$E_c = \\frac{1}{2} m \\times 21{,}2^2 \\approx 225 m\\,J\$. \$E_p = m g h_{\\max} = m \\times 10 \\times 22{,}5 = 225 m\\,J\$.",
+                ),
+                _step(
+                  "Total : \$E_m = 225 m + 225 m = 450 m\\,J = E_{m,0}\$ ✓. **Conservation parfaite** (pas de frottement).",
+                  tipFr:
+                      "Pour \$\\alpha = 45°\$, à l'instant du sommet, \$E_c = E_p\$ — partage exact moitié-moitié.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer la vitesse au point de chute (à \$x = x_p\$).",
+              2,
+              _sol([
+                _step(
+                  "Au point de chute, \$y = 0\$, donc \$E_p = 0\$. Par conservation, \$E_c = E_{m,0} = 450 m\$.",
+                ),
+                _step(
+                  "Vitesse : \$\\frac{1}{2} m v^2 = 450 m \\Rightarrow v = \\sqrt{900} = 30\\,m/s = v_0\$.",
+                ),
+                _step(
+                  "**Résultat remarquable** : la vitesse au point de chute égale la vitesse de lancement (sans frottement). L'angle est cependant inversé : descend à -45° par rapport à l'horizontale.",
+                  tipFr:
+                      "Symétrie de la trajectoire parabolique : aller et retour identiques (en énergie et vitesse), seulement inversés en signe vertical.",
+                ),
+              ], finalAnswerFr: r"$v_{\text{impact}} = v_0 = 30$ m/s"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -3343,7 +4096,11 @@ final Map<String, Map<String, dynamic>> _papers = {
   'sma_rc_charge_discharge': _paperRcChargeDischarge(),
   'sma_rl_establishment': _paperRlEstablishment(),
   'sma_rlc_regimes': _paperRlcRegimes(),
-  // 17 SMA chapters remaining (10 physique + 7 chimie).
+  'sma_wave_basics': _paperWaveBasics(),
+  'sma_periodic_waves': _paperPeriodicWaves(),
+  'sma_nuclear_radioactivity': _paperNuclearRadioactivity(),
+  'sma_projectile_motion': _paperProjectileMotion(),
+  // 13 SMA chapters remaining (6 physique + 7 chimie).
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
