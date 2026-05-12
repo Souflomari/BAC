@@ -967,13 +967,749 @@ Map<String, dynamic> _paperLimitCalcSmb() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperSeqRecursive() => _paper(
+      titleFr: 'Épreuve type — Suites récurrentes',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Suites définies par récurrence \$u_{n+1} = f(u_n)\$, point fixe, étude de la convergence par monotonie + bornes.",
+      exercices: [
+        _ex(
+          1,
+          'Récurrence simple',
+          5,
+          "Soit \$(u_n)\$ définie par \$u_0 = 0\$ et \$u_{n+1} = (u_n + 4)/2\$.",
+          [
+            _q(
+              1,
+              "Calculer \$u_1, u_2, u_3\$ et conjecturer la limite.",
+              2,
+              _sol([
+                _step(
+                  "\$u_1 = (0 + 4)/2 = 2\$. \$u_2 = (2 + 4)/2 = 3\$. \$u_3 = (3 + 4)/2 = 3{,}5\$.",
+                ),
+                _step(
+                  "La suite semble croître vers une limite proche de **4** : 0, 2, 3, 3.5, 3.75, ...",
+                ),
+              ], finalAnswerFr: r"Conjecture : $L = 4$"),
+            ),
+            _q(
+              2,
+              "Trouver le point fixe de \$f(x) = (x+4)/2\$.",
+              2,
+              _sol([
+                _step(
+                  "**Point fixe** : \$L = f(L) \\iff L = (L+4)/2 \\iff 2L = L + 4 \\iff L = 4\$. ✓ avec la conjecture.",
+                ),
+                _step(
+                  "Mais attention : trouver le point fixe ne prouve pas la convergence — il faut aussi vérifier que la suite y tend.",
+                  tipFr:
+                      "Le point fixe est un candidat-limite. Pour conclure, il faut montrer monotonie + bornes (théorème de la limite monotone).",
+                ),
+              ], finalAnswerFr: r"$L = 4$"),
+            ),
+            _q(
+              3,
+              "Montrer que \$(u_n)\$ est croissante et majorée par 4.",
+              1,
+              _sol([
+                _step(
+                  "Par récurrence : si \$u_n < 4\$, alors \$u_{n+1} = (u_n + 4)/2 < (4 + 4)/2 = 4\$. Donc \$u_n < 4\$ pour tout \$n\$ (majorée).",
+                ),
+                _step(
+                  "Croissance : \$u_{n+1} - u_n = (u_n + 4)/2 - u_n = (4 - u_n)/2 > 0\$ tant que \$u_n < 4\$. Donc croissante.",
+                ),
+                _step(
+                  "Croissante + majorée → converge (vers le point fixe \$L = 4\$).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Récurrence non linéaire',
+          5,
+          "Soit \$u_0 = 2\$ et \$u_{n+1} = \\sqrt{u_n + 6}\$.",
+          [
+            _qSubs(
+              1,
+              "Étude.",
+              4,
+              [
+                _sub(
+                  'a',
+                  "Trouver le point fixe.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$L = \\sqrt{L + 6} \\Rightarrow L^2 = L + 6 \\Rightarrow L^2 - L - 6 = 0\$. Discriminant 25, racines \$L = 3\$ ou \$L = -2\$.",
+                    ),
+                    _step(
+                      "Comme \$\\sqrt{\\cdot} \\ge 0\$, la limite (si elle existe) est \$\\ge 0\$. Donc \$L = 3\$.",
+                    ),
+                  ], finalAnswerFr: r"$L = 3$"),
+                ),
+                _sub(
+                  'b',
+                  "Montrer par récurrence que \$2 \\le u_n \\le 3\$.",
+                  2,
+                  _sol([
+                    _step(
+                      "Init : \$u_0 = 2\$ ✓. Hérédité : si \$2 \\le u_n \\le 3\$, alors \$8 \\le u_n + 6 \\le 9\$, donc \$\\sqrt{8} \\le u_{n+1} \\le 3\$. \$\\sqrt 8 \\approx 2{,}83 > 2\$ ✓.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'c',
+                  "Conclure sur la convergence.",
+                  1,
+                  _sol([
+                    _step(
+                      "Croissance : \$u_{n+1}^2 - u_n^2 = u_n + 6 - u_n^2 = -(u_n - 3)(u_n + 2)\$. Sur [2, 3], \$(u_n - 3) \\le 0\$ et \$(u_n + 2) > 0\$ → \$u_{n+1}^2 \\ge u_n^2\$ → \$u_{n+1} \\ge u_n\$. Croissante + majorée → converge vers L = 3.",
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+            _q(
+              2,
+              "Combien d'itérations sont nécessaires pour atteindre \$|u_n - 3| < 10^{-3}\$ ?",
+              1,
+              _sol([
+                _step(
+                  "Calcul itératif : u_0 = 2 (|err| = 1), u_1 ≈ 2.83 (|err| ≈ 0.17), u_2 ≈ 2.97 (|err| ≈ 0.03), u_3 ≈ 2.995 (|err| ≈ 0.005), u_4 ≈ 2.9992 (|err| ≈ 0.0008).",
+                ),
+                _step(
+                  "Donc dès \$n = 4\$, on a \$|u_n - 3| < 10^{-3}\$. Convergence rapide.",
+                ),
+              ], finalAnswerFr: r"$n = 4$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Suite arithmético-géométrique',
+          5,
+          "Soit \$(u_n)\$ telle que \$u_0 = 0\$ et \$u_{n+1} = 2 u_n + 3\$.",
+          [
+            _q(
+              1,
+              "Trouver le point fixe \$\\ell\$ et étudier \$v_n = u_n - \\ell\$.",
+              3,
+              _sol([
+                _step(
+                  "Point fixe : \$\\ell = 2\\ell + 3 \\iff -\\ell = 3 \\iff \\ell = -3\$.",
+                ),
+                _step(
+                  "Posons \$v_n = u_n + 3\$. Alors \$v_{n+1} = u_{n+1} + 3 = 2u_n + 3 + 3 = 2(u_n + 3) = 2 v_n\$. \$(v_n)\$ est **géométrique** de raison 2.",
+                ),
+                _step(
+                  "\$v_0 = u_0 + 3 = 3\$. Donc \$v_n = 3 \\cdot 2^n\$ et \$u_n = v_n - 3 = 3 \\cdot 2^n - 3\$.",
+                  tipFr:
+                      "Astuce arithmético-géométrique : passer à \$v_n = u_n - \\ell\$ rend la récurrence géométrique pure.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$u_n = 3 \cdot 2^n - 3$"),
+            ),
+            _q(
+              2,
+              "En déduire \$\\lim u_n\$.",
+              2,
+              _sol([
+                _step(
+                  "Quand \$n \\to \\infty\$, \$2^n \\to +\\infty\$, donc \$u_n \\to +\\infty\$.",
+                ),
+                _step(
+                  "Note : ici \$|q| = 2 > 1\$, donc la suite **diverge** vers \$+\\infty\$. Le point fixe \$\\ell = -3\$ est **répulsif** (la suite s'en éloigne).",
+                ),
+              ], finalAnswerFr: r"$\lim u_n = +\infty$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — modèle de population',
+          5,
+          "Une population de bactéries double chaque heure, mais 100 sont prélevées chaque heure pour analyse. À \$t = 0\$, population = 200.",
+          [
+            _q(
+              1,
+              "Modéliser la population \$P_n\$ après \$n\$ heures par une suite récurrente.",
+              2,
+              _sol([
+                _step(
+                  "\$P_0 = 200\$. Chaque heure : doublement (\$\\times 2\$) puis prélèvement (-100). Donc \$P_{n+1} = 2 P_n - 100\$.",
+                ),
+              ], finalAnswerFr: r"$P_{n+1} = 2 P_n - 100$, $P_0 = 200$"),
+            ),
+            _q(
+              2,
+              "Trouver l'expression explicite de \$P_n\$ et son comportement.",
+              3,
+              _sol([
+                _step(
+                  "Point fixe : \$\\ell = 2\\ell - 100 \\iff \\ell = 100\$. Posons \$Q_n = P_n - 100\$. Alors \$Q_{n+1} = P_{n+1} - 100 = 2 P_n - 100 - 100 = 2 P_n - 200 = 2(P_n - 100) = 2 Q_n\$.",
+                ),
+                _step(
+                  "\$(Q_n)\$ géométrique de raison 2, \$Q_0 = 100\$. Donc \$Q_n = 100 \\cdot 2^n\$ et \$P_n = 100 \\cdot 2^n + 100\$.",
+                ),
+                _step(
+                  "**Vérification** : \$P_0 = 100 + 100 = 200\$ ✓. \$P_1 = 200 + 100 = 300\$ ; or \$2 P_0 - 100 = 400 - 100 = 300\$ ✓.",
+                ),
+                _step(
+                  "Comportement : la population **explose exponentiellement**. Au bout de 10 heures, \$P_{10} = 100 \\cdot 1024 + 100 = 102\\,500\$ bactéries.",
+                ),
+              ], finalAnswerFr: r"$P_n = 100 (2^n + 1)$, explose"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperSeqAdjacent() => _paper(
+      titleFr: 'Épreuve type — Suites adjacentes',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Suites adjacentes : croissante + décroissante + différence nulle à l'infini → même limite. Outil de démonstration d'existence et d'encadrement.",
+      exercices: [
+        _ex(
+          1,
+          'Définition',
+          5,
+          "On dit que deux suites \$(a_n)\$ et \$(b_n)\$ sont **adjacentes** si \$(a_n)\$ est croissante, \$(b_n)\$ est décroissante, et \$b_n - a_n \\to 0\$.",
+          [
+            _q(
+              1,
+              "Énoncer le théorème des suites adjacentes.",
+              2,
+              _sol([
+                _step(
+                  "**Théorème** : si \$(a_n)\$ et \$(b_n)\$ sont adjacentes, alors elles convergent toutes deux vers la **même limite** \$\\ell\$.",
+                ),
+                _step(
+                  "De plus, pour tout \$n\$, \$a_n \\le \\ell \\le b_n\$. La limite est ainsi **encadrée** par les deux suites.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Vérifier que les suites \$a_n = 1 - 1/n\$ et \$b_n = 1 + 1/n\$ pour \$n \\ge 1\$ sont adjacentes.",
+              3,
+              _sol([
+                _step(
+                  "Monotonie : \$a_{n+1} - a_n = -1/(n+1) - (-1/n) = 1/n - 1/(n+1) > 0\$ → croissante ✓.",
+                ),
+                _step(
+                  "\$b_{n+1} - b_n = 1/(n+1) - 1/n < 0\$ → décroissante ✓.",
+                ),
+                _step(
+                  "Différence : \$b_n - a_n = 2/n \\to 0\$ ✓.",
+                ),
+                _step(
+                  "Limite commune : 1 (par calcul direct). Encadrement : \$a_n \\le 1 \\le b_n\$ pour tout \$n\$ ✓.",
+                ),
+              ], finalAnswerFr: r"Adjacentes, limite commune $= 1$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Application — encadrement de e',
+          5,
+          "On considère \$a_n = \\sum_{k=0}^{n} \\dfrac{1}{k!}\$ et \$b_n = a_n + \\dfrac{1}{n \\cdot n!}\$.",
+          [
+            _q(
+              1,
+              "Montrer que \$(a_n)\$ est croissante.",
+              2,
+              _sol([
+                _step(
+                  "\$a_{n+1} - a_n = \\dfrac{1}{(n+1)!} > 0\$ → strictement croissante.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Admettre que \$(b_n)\$ est décroissante et que \$b_n - a_n \\to 0\$. Conclure.",
+              3,
+              _sol([
+                _step(
+                  "\$(a_n)\$ croissante, \$(b_n)\$ décroissante, \$b_n - a_n = 1/(n n!) \\to 0\$ → **adjacentes**.",
+                ),
+                _step(
+                  "Elles convergent vers la même limite \$e = \\sum_{k=0}^\\infty 1/k!\$ (définition en série de l'exponentielle de Neper).",
+                ),
+                _step(
+                  "**Encadrement utile** : \$a_n \\le e \\le b_n\$. Par exemple \$a_5 = 1 + 1 + 1/2 + 1/6 + 1/24 + 1/120 \\approx 2{,}717\$ et \$b_5 \\approx 2{,}7183\$ — encadrement très précis.",
+                  tipFr:
+                      "Cette construction est la définition rigoureuse classique de \$e\$. Elle permet de calculer \$e\$ avec autant de précision qu'on veut.",
+                ),
+              ], finalAnswerFr: r"$\lim a_n = \lim b_n = e$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Suites construites par récurrence',
+          5,
+          "Soit \$a_0 = 1\$, \$b_0 = 2\$, et pour tout \$n\$ : \$a_{n+1} = \\sqrt{a_n b_n}\$ (moyenne géométrique), \$b_{n+1} = (a_n + b_n)/2\$ (moyenne arithmétique).",
+          [
+            _q(
+              1,
+              "Calculer \$a_1\$ et \$b_1\$. Conjecturer une relation.",
+              2,
+              _sol([
+                _step(
+                  "\$a_1 = \\sqrt{1 \\cdot 2} = \\sqrt{2} \\approx 1{,}414\$. \$b_1 = (1+2)/2 = 1{,}5\$.",
+                ),
+                _step(
+                  "Observation : \$a_1 < b_1\$. Plus généralement, **AM-GM inequality** : \$\\sqrt{ab} \\le (a+b)/2\$ avec égalité ssi \$a = b\$.",
+                ),
+              ], finalAnswerFr: r"$a_n \le b_n$ par AM-GM"),
+            ),
+            _q(
+              2,
+              "Admettre que \$(a_n)\$ est croissante et \$(b_n)\$ décroissante. Si \$b_n - a_n \\to 0\$, conclure.",
+              3,
+              _sol([
+                _step(
+                  "Suites adjacentes — convergent vers la même limite \$\\mu\$, appelée **moyenne arithmético-géométrique** de \$a_0\$ et \$b_0\$.",
+                ),
+                _step(
+                  "Pour \$a_0 = 1, b_0 = 2\$ : \$\\mu \\approx 1{,}4567\$. Cette quantité apparaît dans le calcul d'intégrales elliptiques (méthode de Gauss).",
+                  tipFr:
+                      "La moyenne arithmético-géométrique (AGM) converge extrêmement vite — utilisée historiquement pour calculer \$\\pi\$ avec haute précision (Brent-Salamin).",
+                ),
+              ], finalAnswerFr: r"Convergence vers $\mu \approx 1{,}457$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Critique du théorème',
+          5,
+          "Le théorème des suites adjacentes nécessite **3 conditions** ; sans l'une d'elles, la conclusion peut être fausse.",
+          [
+            _q(
+              1,
+              "Donner un exemple où \$(a_n)\$ croissante, \$(b_n)\$ décroissante, mais \$b_n - a_n\$ ne tend PAS vers 0. Montrer qu'elles n'ont pas la même limite.",
+              3,
+              _sol([
+                _step(
+                  "Exemple : \$a_n = 1 - 1/n\$ (croissante, limite 1) et \$b_n = 2 + 1/n\$ (décroissante, limite 2).",
+                ),
+                _step(
+                  "Différence : \$b_n - a_n = 1 + 2/n \\to 1 \\ne 0\$.",
+                ),
+                _step(
+                  "Limites différentes (1 et 2) → on ne peut pas conclure à une limite commune. Le théorème ne s'applique pas — il faut bien \$b_n - a_n \\to 0\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Donner un exemple où \$(a_n), (b_n)\$ ne sont pas adjacentes mais convergent vers la même limite. Cela contredit-il le théorème ?",
+              2,
+              _sol([
+                _step(
+                  "Exemple : \$a_n = (-1)^n / n\$ et \$b_n = 1/n\$. Toutes deux tendent vers 0.",
+                ),
+                _step(
+                  "Mais \$(a_n)\$ n'est pas monotone (alterne en signe). Le théorème ne s'applique pas, mais cela ne contredit rien : c'est une **implication** (adjacentes → même limite), pas une équivalence.",
+                  tipFr:
+                      "Le théorème donne une condition SUFFISANTE de convergence, pas nécessaire. Il y a d'autres façons d'avoir la même limite.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperContinuity() => _paper(
+      titleFr: 'Épreuve type — Continuité',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Définition de la continuité, prolongement par continuité, fonctions usuelles, opérations.",
+      exercices: [
+        _ex(
+          1,
+          'Définition et exemples',
+          4,
+          "On rappelle : \$f\$ est continue en \$a\$ ssi \$\\lim_{x \\to a} f(x) = f(a)\$.",
+          [
+            _q(
+              1,
+              "Étudier la continuité de \$f(x) = \\begin{cases} x + 1 & \\text{si } x \\le 2 \\\\ x^2 - 1 & \\text{si } x > 2 \\end{cases}\$ en \$x = 2\$.",
+              3,
+              _sol([
+                _step(
+                  "Valeur en 2 : \$f(2) = 2 + 1 = 3\$ (cas \$x \\le 2\$).",
+                ),
+                _step(
+                  "**Limite à gauche** : \$\\lim_{x \\to 2^-} f(x) = \\lim x + 1 = 3\$ ✓.",
+                ),
+                _step(
+                  "**Limite à droite** : \$\\lim_{x \\to 2^+} f(x) = \\lim x^2 - 1 = 4 - 1 = 3\$ ✓.",
+                ),
+                _step(
+                  "Les deux limites latérales valent \$f(2) = 3\$ → \$f\$ est **continue en 2**. La fonction se 'recolle' parfaitement à \$x = 2\$.",
+                  tipFr:
+                      "Pour une fonction définie par morceaux, vérifier la continuité aux 'points de raccord' = points où la définition change.",
+                ),
+              ], finalAnswerFr: r"Continue en 2"),
+            ),
+            _q(
+              2,
+              "Que dire si la définition était \$x^2 + 1\$ pour \$x > 2\$ ?",
+              1,
+              _sol([
+                _step(
+                  "Limite à droite : \$\\lim x^2 + 1 = 5 \\ne f(2) = 3\$. **Discontinuité** en 2 — saut de 2.",
+                ),
+              ], finalAnswerFr: r"Discontinue (saut)"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Prolongement par continuité',
+          5,
+          "Soit \$f(x) = \\dfrac{x^2 - 1}{x - 1}\$ définie sur \$\\mathbb{R} \\setminus \\{1\\}\$.",
+          [
+            _q(
+              1,
+              "Montrer qu'on peut prolonger \$f\$ par continuité en \$x = 1\$.",
+              3,
+              _sol([
+                _step(
+                  "\$f\$ n'est pas définie en 1 (dénominateur s'annule). Étudions la limite : \$\\dfrac{x^2 - 1}{x - 1} = \\dfrac{(x-1)(x+1)}{x-1} = x + 1\$ pour \$x \\ne 1\$.",
+                ),
+                _step(
+                  "Donc \$\\lim_{x \\to 1} f(x) = 2\$ existe et est finie.",
+                ),
+                _step(
+                  "**Prolongement par continuité** : définir \$\\tilde f(1) = 2\$ rend \$\\tilde f\$ continue en 1. La fonction prolongée est simplement \$x + 1\$ partout.",
+                  tipFr:
+                      "Quand une fonction a une discontinuité 'apparente' (forme \$0/0\$), on peut souvent la prolonger par continuité.",
+                ),
+              ], finalAnswerFr: r"$\tilde f(1) = 2$, continue partout"),
+            ),
+            _q(
+              2,
+              "Peut-on prolonger \$g(x) = 1/x\$ par continuité en \$x = 0\$ ?",
+              2,
+              _sol([
+                _step(
+                  "Limites latérales : \$\\lim_{0^+} 1/x = +\\infty\$ et \$\\lim_{0^-} 1/x = -\\infty\$.",
+                ),
+                _step(
+                  "Pas de limite finie en 0 → **impossible** de prolonger par continuité. La discontinuité de \$1/x\$ en 0 est essentielle (asymptote verticale).",
+                ),
+              ], finalAnswerFr: r"Non (pas de limite finie en 0)"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Continuité des fonctions usuelles',
+          5,
+          "Étudier la continuité des fonctions suivantes sur leur ensemble de définition.",
+          [
+            _q(
+              1,
+              "\$f(x) = \\sqrt{x}\$.",
+              1,
+              _sol([
+                _step(
+                  "Définie sur \$[0, +\\infty[\$. Continue sur cet intervalle (fonction usuelle).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\ln x\$.",
+              1,
+              _sol([
+                _step(
+                  "Définie sur \$]0, +\\infty[\$. Continue sur cet intervalle.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "\$h(x) = \\dfrac{1}{x^2 + 1}\$.",
+              1,
+              _sol([
+                _step(
+                  "\$x^2 + 1 > 0\$ pour tout \$x\$, donc \$h\$ est définie sur \$\\mathbb{R}\$. Continue partout (quotient de fonctions continues sans annulation du dénominateur).",
+                ),
+              ]),
+            ),
+            _q(
+              4,
+              "\$k(x) = \\dfrac{\\sin x}{x}\$ avec \$k(0) = 1\$.",
+              2,
+              _sol([
+                _step(
+                  "Sur \$\\mathbb{R}^*\$, continue (quotient de continues). En 0 : \$\\lim_{x \\to 0} \\sin x/x = 1 = k(0)\$ ✓.",
+                ),
+                _step(
+                  "**Continue sur \$\\mathbb{R}\$**. Cette fonction est célèbre — c'est la fonction 'sinc' utilisée en traitement du signal.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Opérations sur les fonctions continues',
+          6,
+          "On rappelle : somme/produit/quotient/composée de fonctions continues est continue (avec conditions classiques).",
+          [
+            _q(
+              1,
+              "Justifier la continuité de \$f(x) = \\sqrt{x^2 + 1}\$.",
+              2,
+              _sol([
+                _step(
+                  "\$x \\mapsto x^2 + 1\$ est polynômiale, continue sur \$\\mathbb{R}\$.",
+                ),
+                _step(
+                  "\$x^2 + 1 \\ge 1 > 0\$, donc \$\\sqrt{x^2 + 1}\$ est bien définie. \$\\sqrt{\\cdot}\$ est continue sur \$[0, +\\infty[\$.",
+                ),
+                _step(
+                  "Composée de continues sur leur image → **\$f\$ continue sur \$\\mathbb{R}\$**.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Continuité de \$g(x) = \\dfrac{x + 1}{x^2 - 4}\$. Préciser le domaine.",
+              2,
+              _sol([
+                _step(
+                  "Dénominateur \$x^2 - 4 = (x-2)(x+2) = 0 \\iff x = \\pm 2\$. Donc domaine = \$\\mathbb{R} \\setminus \\{-2, 2\\}\$.",
+                ),
+                _step(
+                  "Quotient de polynômes (continus) avec dénominateur non nul → \$g\$ est **continue sur \$\\mathbb{R} \\setminus \\{-2, 2\\}\$**.",
+                ),
+              ], finalAnswerFr: r"Continue sur $\mathbb{R} \setminus \{-2, 2\}$"),
+            ),
+            _q(
+              3,
+              "Que dire de la continuité de \$h(x) = e^{1/x}\$ sur \$\\mathbb{R}^*\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$x \\mapsto 1/x\$ continue sur \$\\mathbb{R}^*\$. \$\\exp\$ continue partout. Composée → \$h\$ continue sur \$\\mathbb{R}^*\$.",
+                ),
+                _step(
+                  "En 0 : pas de limite finie (\$\\lim_{0^+} e^{1/x} = +\\infty\$, \$\\lim_{0^-} e^{1/x} = 0\$). Pas prolongeable.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperTviSmb() => _paper(
+      titleFr: 'Épreuve type — Théorème des valeurs intermédiaires',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "TVI : \$f\$ continue sur \$[a, b]\$ et \$k\$ entre \$f(a)\$ et \$f(b)\$ → \$\\exists c \\in [a, b] : f(c) = k\$. Corollaire : \$f(a) f(b) < 0\$ → \$f\$ s'annule au moins une fois.",
+      exercices: [
+        _ex(
+          1,
+          'Application directe',
+          5,
+          "Montrer que les équations suivantes admettent au moins une solution dans l'intervalle indiqué.",
+          [
+            _q(
+              1,
+              "\$x^3 + x - 1 = 0\$ sur \$[0, 1]\$.",
+              3,
+              _sol([
+                _step(
+                  "Soit \$p(x) = x^3 + x - 1\$. \$p\$ est polynômiale donc **continue sur \$\\mathbb{R}\$**, en particulier sur \$[0, 1]\$.",
+                ),
+                _step(
+                  "Calcul : \$p(0) = -1 < 0\$, \$p(1) = 1 + 1 - 1 = 1 > 0\$.",
+                ),
+                _step(
+                  "0 est compris entre \$p(0) = -1\$ et \$p(1) = 1\$. Par le **TVI**, \$\\exists c \\in [0, 1] : p(c) = 0\$.",
+                ),
+                _step(
+                  "**Unicité** : \$p'(x) = 3x^2 + 1 > 0\$ partout → \$p\$ strictement croissante → unicité de la solution. \$c \\approx 0{,}682\$.",
+                  tipFr:
+                      "Pour montrer l'**unicité**, prouver la monotonie de \$f\$ via l'étude du signe de \$f'\$.",
+                ),
+              ], finalAnswerFr: r"$\exists ! c \in ]0, 1[$ avec $p(c) = 0$"),
+            ),
+            _q(
+              2,
+              "\$\\cos x = x\$ sur \$[0, \\pi/2]\$.",
+              2,
+              _sol([
+                _step(
+                  "Poser \$g(x) = \\cos x - x\$. Continue sur \$\\mathbb{R}\$ (différence de continues).",
+                ),
+                _step(
+                  "\$g(0) = 1 > 0\$, \$g(\\pi/2) = 0 - \\pi/2 \\approx -1{,}57 < 0\$. Changement de signe → par TVI, \$\\exists c : g(c) = 0 \\iff \\cos c = c\$. Numériquement \$c \\approx 0{,}739\$.",
+                ),
+              ], finalAnswerFr: r"$\exists c \in ]0, \pi/2[$ : $\cos c = c$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Méthode de dichotomie',
+          5,
+          "On veut approximer la solution \$\\alpha\$ de \$f(x) = x^2 - 2 = 0\$ sur \$[1, 2]\$.",
+          [
+            _q(
+              1,
+              "Justifier qu'une solution existe dans \$[1, 2]\$.",
+              1,
+              _sol([
+                _step(
+                  "\$f\$ continue, \$f(1) = -1 < 0\$, \$f(2) = 2 > 0\$. Par TVI, solution dans \$]1, 2[\$.",
+                ),
+                _step(
+                  "Bien sûr la solution est \$\\sqrt 2 \\approx 1{,}414\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Appliquer 3 étapes de dichotomie pour encadrer \$\\alpha\$.",
+              4,
+              _sol([
+                _step(
+                  "**Itération 1** : milieu \$m_1 = 1{,}5\$. \$f(1{,}5) = 0{,}25 > 0\$. Donc la solution est dans \$]1, 1{,}5[\$.",
+                ),
+                _step(
+                  "**Itération 2** : \$m_2 = 1{,}25\$. \$f(1{,}25) = -0{,}4375 < 0\$. Donc dans \$]1{,}25, 1{,}5[\$.",
+                ),
+                _step(
+                  "**Itération 3** : \$m_3 = 1{,}375\$. \$f(1{,}375) = -0{,}109 < 0\$. Donc dans \$]1{,}375, 1{,}5[\$.",
+                ),
+                _step(
+                  "Encadrement après 3 étapes : \$1{,}375 < \\sqrt 2 < 1{,}5\$. Précision : 0,125.",
+                  tipFr:
+                      "Dichotomie : à chaque étape, on divise l'intervalle par 2. Convergence linéaire — précision multipliée par 2 à chaque étape.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\alpha \in [1{,}375, 1{,}5]$ après 3 étapes"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'TVI pour équations transcendantes',
+          5,
+          "Soit \$f(x) = e^x + x - 5\$.",
+          [
+            _q(
+              1,
+              "Montrer que l'équation \$f(x) = 0\$ admet une **unique** solution dans \$\\mathbb{R}\$.",
+              4,
+              _sol([
+                _step(
+                  "**Existence** : \$f\$ est continue (somme de continues). \$f(0) = 1 + 0 - 5 = -4 < 0\$, \$f(2) = e^2 + 2 - 5 \\approx 4{,}39 > 0\$. TVI → solution dans \$]0, 2[\$.",
+                ),
+                _step(
+                  "**Unicité** : \$f'(x) = e^x + 1 > 0\$ partout (somme de positifs). \$f\$ strictement croissante → solution unique.",
+                ),
+                _step(
+                  "**Domaine** : \$\\lim_{-\\infty} f = -\\infty + (-\\infty) - 5 = -\\infty\$. \$\\lim_{+\\infty} f = +\\infty\$. Donc \$f\$ atteint toutes les valeurs réelles, et l'unique solution est dans \$\\mathbb{R}\$.",
+                  tipFr:
+                      "Combiner : (1) TVI pour l'existence, (2) monotonie stricte pour l'unicité, (3) extension du domaine via les limites aux bornes.",
+                ),
+              ], finalAnswerFr: r"$\exists ! \alpha \approx 1{,}306$"),
+            ),
+            _q(
+              2,
+              "Donner un encadrement de la solution à \$10^{-1}\$ près.",
+              1,
+              _sol([
+                _step(
+                  "Test \$f(1{,}3) = e^{1{,}3} + 1{,}3 - 5 \\approx 3{,}669 + 1{,}3 - 5 = -0{,}031 < 0\$. \$f(1{,}4) \\approx 4{,}055 + 1{,}4 - 5 = 0{,}455 > 0\$.",
+                ),
+                _step(
+                  "Donc \$\\alpha \\in ]1{,}3,\\, 1{,}4[\$.",
+                ),
+              ], finalAnswerFr: r"$\alpha \in ]1{,}3, 1{,}4[$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Limitations du TVI',
+          5,
+          "Le TVI donne l'existence, pas la valeur. Discuter ses limites.",
+          [
+            _q(
+              1,
+              "Pourquoi la condition 'continue sur \$[a, b]\$' est-elle essentielle ? Donner un contre-exemple.",
+              3,
+              _sol([
+                _step(
+                  "Contre-exemple : \$f(x) = 1/x\$ sur \$[-1, 1] \\setminus \\{0\\}\$. \$f(-1) = -1\$, \$f(1) = 1\$, 0 est entre les deux.",
+                ),
+                _step(
+                  "Pourtant, \$f\$ ne s'annule **jamais** sur ce domaine — la discontinuité en 0 fait que la courbe 'saute' \$-\\infty \\to +\\infty\$ sans passer par 0.",
+                ),
+                _step(
+                  "Conclusion : sans continuité, le TVI ne s'applique pas. La continuité est essentielle.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Le TVI donne-t-il l'unicité ?",
+              2,
+              _sol([
+                _step(
+                  "**Non** — il donne juste l'existence d'au moins un \$c\$. Si \$f\$ n'est pas monotone, il peut y avoir plusieurs solutions.",
+                ),
+                _step(
+                  "Exemple : \$f(x) = x^2 - 1\$ sur \$[-2, 2]\$. \$f(-2) = 3 > 0\$, \$f(2) = 3 > 0\$ — le TVI ne s'applique pas pour conclure à l'existence d'une racine ici (0 n'est pas entre 3 et 3). Mais en fait il y en a deux : \$x = \\pm 1\$. Le TVI ne les voit pas car les bornes sont du même signe.",
+                ),
+                _step(
+                  "Sur \$[-2, 0]\$ : \$f(-2) = 3\$, \$f(0) = -1\$ → TVI donne une racine dans \$[-2, 0]\$ (à savoir -1). Mais le TVI seul ne détecte pas l'autre racine.",
+                  tipFr:
+                      "Pour des fonctions non-monotones, découper l'intervalle en sous-intervalles monotones avant d'appliquer le TVI.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
   'seq_convergence': _paperSeqConvergence(),
+  'seq_recursive': _paperSeqRecursive(),
+  'seq_adjacent': _paperSeqAdjacent(),
   'limit_def': _paperLimitDefSmb(),
   'limit_calc': _paperLimitCalcSmb(),
-  // 27 SMB chapters remaining.
+  'continuity': _paperContinuity(),
+  'tvi': _paperTviSmb(),
+  // 23 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
