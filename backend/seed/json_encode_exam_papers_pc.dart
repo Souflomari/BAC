@@ -4966,6 +4966,412 @@ Map<String, dynamic> _paperAmModulation() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperRadioactivity() => _paper(
+      titleFr: 'Épreuve type — Radioactivité',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Désintégrations \$\\alpha\$, \$\\beta^-\$, \$\\beta^+\$. Loi de décroissance \$N(t) = N_0 e^{-\\lambda t}\$. Activité \$A = \\lambda N\$. Demi-vie \$t_{1/2} = \\ln 2/\\lambda\$.",
+      exercices: [
+        _ex(
+          1,
+          'Types de désintégrations',
+          5,
+          "On note un noyau \$\\,^A_Z X\$ avec \$A\$ = nombre de masse, \$Z\$ = numéro atomique.",
+          [
+            _q(
+              1,
+              "Donner l'équation de la désintégration \$\\alpha\$ du polonium 210 (\$^{210}_{84}\\text{Po}\$). Lois de conservation utilisées ?",
+              3,
+              _sol([
+                _step(
+                  "**Désintégration \$\\alpha\$** : émission d'un noyau d'hélium \$^4_2\\text{He}\$.",
+                ),
+                _step(
+                  "Conservation : \$A_X = A_Y + 4\$ (masse) et \$Z_X = Z_Y + 2\$ (charge).",
+                ),
+                _step(
+                  "Équation : \$^{210}_{84}\\text{Po} \\to ^{206}_{82}\\text{Pb} + ^4_2\\text{He}\$ (production de plomb 206).",
+                  tipFr:
+                      "Lois de Soddy : conservation simultanée du nombre de masse \$A\$ et de la charge électrique \$Z\$. À appliquer systématiquement.",
+                ),
+              ], finalAnswerFr: r"$^{210}_{84}\text{Po} \to ^{206}_{82}\text{Pb} + ^4_2\text{He}$"),
+            ),
+            _q(
+              2,
+              "Désintégration \$\\beta^-\$ du carbone 14 (\$^{14}_6\\text{C}\$).",
+              2,
+              _sol([
+                _step(
+                  "**\$\\beta^-\$** : émission d'un électron \$^0_{-1}\\text{e}\$ ; un neutron se transforme en proton. \$A\$ inchangé, \$Z\$ augmente de 1.",
+                ),
+                _step(
+                  "\$^{14}_6\\text{C} \\to ^{14}_7\\text{N} + ^0_{-1}\\text{e} + \\bar\\nu_e\$ (avec antineutrino, souvent omis au Bac).",
+                ),
+              ], finalAnswerFr: r"$^{14}_6\text{C} \to ^{14}_7\text{N} + ^0_{-1}\text{e}$"),
+            ),
+            _q(
+              3,
+              "Désintégration \$\\beta^+\$ du fluor 18 (\$^{18}_9\\text{F}\$).",
+              0,
+              _sol([
+                _step(
+                  "**\$\\beta^+\$** : émission d'un positron \$^0_{+1}\\text{e}\$ ; un proton se transforme en neutron. \$A\$ inchangé, \$Z\$ diminue de 1.",
+                ),
+                _step(
+                  "\$^{18}_9\\text{F} \\to ^{18}_8\\text{O} + ^0_{+1}\\text{e}\$. Le fluor 18 est utilisé en imagerie médicale (TEP — tomographie par émission de positrons).",
+                ),
+              ], finalAnswerFr: r"$^{18}_9\text{F} \to ^{18}_8\text{O} + ^0_{+1}\text{e}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Loi de décroissance',
+          5,
+          "Un échantillon contient \$N_0 = 10^{12}\$ noyaux radioactifs à \$t = 0\$. La demi-vie est \$t_{1/2} = 8\\,\\text{jours}\$.",
+          [
+            _q(
+              1,
+              "Calculer la constante de désintégration \$\\lambda\$.",
+              2,
+              _sol([
+                _step(
+                  "**Relation fondamentale** : \$t_{1/2} = \\ln 2 / \\lambda \\iff \\lambda = \\ln 2 / t_{1/2}\$.",
+                ),
+                _step(
+                  "\$\\lambda = 0{,}693/8 \\approx 0{,}0866\\,\\text{jour}^{-1}\$.",
+                ),
+                _step(
+                  "En SI : \$\\lambda \\approx 0{,}0866/(86400) \\approx 1{,}00 \\times 10^{-6}\\,\\text{s}^{-1}\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda \approx 0{,}087$ /jour"),
+            ),
+            _q(
+              2,
+              "Donner \$N(t)\$ et calculer \$N(24\\,\\text{jours})\$.",
+              2,
+              _sol([
+                _step(
+                  "\$N(t) = N_0 e^{-\\lambda t}\$. À \$t = 24\\,\\text{jours} = 3 \\times t_{1/2}\$ : \$N = N_0/2^3 = N_0/8 = 1{,}25 \\times 10^{11}\$.",
+                ),
+                _step(
+                  "Vérification : \$N(24) = 10^{12} \\times e^{-0{,}0866 \\times 24} = 10^{12} \\times e^{-2{,}08} \\approx 10^{12} \\times 0{,}125 = 1{,}25 \\times 10^{11}\$ ✓.",
+                  tipFr:
+                      "Méthode rapide : si \$t = n \\cdot t_{1/2}\$, alors \$N = N_0/2^n\$. Évite le calcul avec exponentielles.",
+                ),
+              ], finalAnswerFr: r"$N(24) = 1{,}25 \times 10^{11}$"),
+            ),
+            _q(
+              3,
+              "Combien de temps pour qu'il reste 1% des noyaux initiaux ?",
+              1,
+              _sol([
+                _step(
+                  "\$N/N_0 = 0{,}01 \\iff e^{-\\lambda t} = 0{,}01 \\iff t = \\ln 100/\\lambda = 4{,}605/0{,}0866 \\approx 53\\,\\text{jours}\$.",
+                ),
+                _step(
+                  "**Règle pratique** : il reste 1% après ~7 demi-vies (\$1/2^7 \\approx 0{,}008\$). Ici 53/8 ≈ 6,6 demi-vies. Cohérent.",
+                ),
+              ], finalAnswerFr: r"$t \approx 53$ jours"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Activité radioactive',
+          5,
+          "L'activité \$A\$ est le nombre de désintégrations par seconde. Unité : becquerel (1 Bq = 1 désint./s). \$A(t) = \\lambda N(t) = A_0 e^{-\\lambda t}\$.",
+          [
+            _q(
+              1,
+              "Calculer l'activité initiale \$A_0\$ de l'échantillon de l'exercice 2.",
+              2,
+              _sol([
+                _step(
+                  "\$A_0 = \\lambda N_0 = 1{,}00 \\times 10^{-6} \\times 10^{12} = 10^6\\,\\text{Bq} = 1\\,\\text{MBq}\$.",
+                  tipFr:
+                      "Toujours utiliser \$\\lambda\$ en s⁻¹ pour obtenir l'activité en Bq (désint./s). Ne pas mélanger jours et secondes !",
+                ),
+              ], finalAnswerFr: r"$A_0 = 10^6$ Bq = 1 MBq"),
+            ),
+            _q(
+              2,
+              "Activité après 24 jours.",
+              1,
+              _sol([
+                _step(
+                  "Même décroissance que \$N\$ : \$A(24) = A_0/2^3 = 125\\,\\text{kBq}\$.",
+                ),
+              ], finalAnswerFr: r"$A = 125$ kBq"),
+            ),
+            _q(
+              3,
+              "Pourquoi un radio-isotope à courte demi-vie est-il plus 'actif' à masse égale ?",
+              2,
+              _sol([
+                _step(
+                  "À masse égale (nombre de noyaux égal \$N\$), \$A = \\lambda N\$. \$\\lambda = \\ln 2/t_{1/2}\$ → \$A \\propto 1/t_{1/2}\$.",
+                ),
+                _step(
+                  "**Conséquence** : 1 mg de radium 226 (\$t_{1/2} \\approx 1600\\,\\text{ans}\$) est ~50 fois moins actif que 1 mg de cobalt 60 (\$t_{1/2} \\approx 5{,}3\\,\\text{ans}\$).",
+                  tipFr:
+                      "C'est pourquoi le tritium ou le radon (vies brèves) sont dangereux malgré leurs faibles quantités — leur activité spécifique est énorme.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — datation au carbone 14',
+          5,
+          "Le \$^{14}\\text{C}\$ est produit dans l'atmosphère par les rayons cosmiques. Sa concentration dans les organismes vivants est constante. À la mort, plus d'assimilation : \$N\$ décroît. \$t_{1/2} = 5730\\,\\text{ans}\$.",
+          [
+            _q(
+              1,
+              "On retrouve un os ancien dont l'activité spécifique en \$^{14}\\text{C}\$ est 25% de celle d'un os actuel. Âge ?",
+              4,
+              _sol([
+                _step(
+                  "\$A/A_0 = 0{,}25 = 1/4 = 1/2^2\$ → l'échantillon a vécu **2 demi-vies** après la mort.",
+                ),
+                _step(
+                  "Âge : \$t = 2 \\times t_{1/2} = 2 \\times 5730 = 11\\,460\\,\\text{ans}\$.",
+                ),
+                _step(
+                  "**Vérification par log** : \$t = -\\ln(0{,}25)/\\lambda = \\ln 4/\\lambda = 1{,}386 \\times 5730/0{,}693 \\approx 11\\,460\\,\\text{ans}\$ ✓.",
+                  tipFr:
+                      "Datation \$^{14}\\text{C}\$ : utilisable jusqu'à ~50 000 ans (8-9 demi-vies). Au-delà, l'activité résiduelle est trop faible pour mesurer.",
+                ),
+              ], finalAnswerFr: r"$t \approx 11\,460$ ans"),
+            ),
+            _q(
+              2,
+              "Limite supérieure de la méthode (en âge).",
+              1,
+              _sol([
+                _step(
+                  "Vers 10 demi-vies (~57 000 ans), \$A \\approx A_0/1024 < 0{,}1\\%\$ — sous le seuil de détection. Pratiquement : limite ~50 000 ans.",
+                ),
+                _step(
+                  "Pour des roches plus anciennes (millions d'années), on utilise d'autres couples : potassium-argon (\$t_{1/2} = 1{,}25 \\times 10^9\\) ans), uranium-plomb.",
+                ),
+              ], finalAnswerFr: r"~50 000 ans"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperReactionSpeed() => _paper(
+      titleFr: 'Épreuve type — Vitesse de réaction (cinétique chimique)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Vitesse volumique \$v = \\dfrac{1}{V} \\dfrac{d\\xi}{dt}\$ ou en fonction des concentrations. Facteurs cinétiques : température, concentration, catalyseur. Temps de demi-réaction \$t_{1/2}\$.",
+      exercices: [
+        _ex(
+          1,
+          'Définition et calcul',
+          5,
+          "On suit la réaction \$2 \\text{H}_2\\text{O}_2 \\to 2 \\text{H}_2\\text{O} + \\text{O}_2\$ (décomposition de l'eau oxygénée). À \$t = 0\$, \$[\\text{H}_2\\text{O}_2]_0 = 0{,}1\\,\\text{mol/L}\$.",
+          [
+            _q(
+              1,
+              "Définir la vitesse volumique \$v(t)\$ en fonction de \$[\\text{H}_2\\text{O}_2]\$.",
+              2,
+              _sol([
+                _step(
+                  "**Vitesse volumique** : \$v = \\dfrac{1}{V} \\dfrac{d\\xi}{dt}\$ avec \$\\xi\$ = avancement.",
+                ),
+                _step(
+                  "Pour un réactif R avec coefficient stoechiométrique \$\\nu_R\$ : \$v = -\\dfrac{1}{\\nu_R} \\dfrac{d[R]}{dt}\$.",
+                ),
+                _step(
+                  "Ici \$\\nu = 2\$ pour \$\\text{H}_2\\text{O}_2\$ : \$v = -\\dfrac{1}{2} \\dfrac{d[\\text{H}_2\\text{O}_2]}{dt}\$.",
+                  mistakeFr:
+                      "Ne pas oublier le signe **moins** pour un réactif (concentration qui décroît) et la division par le coefficient stoechiométrique.",
+                ),
+              ], finalAnswerFr: r"$v = -\dfrac{1}{2} \dfrac{d[H_2O_2]}{dt}$"),
+            ),
+            _q(
+              2,
+              "À \$t_1 = 30\\,\\text{s}\$, on mesure \$[\\text{H}_2\\text{O}_2] = 0{,}08\\,\\text{mol/L}\$ et la tangente locale a une pente de \$-1{,}2 \\times 10^{-3}\\,\\text{mol/(L·s)}\$. Calculer \$v(30\\,\\text{s})\$.",
+              2,
+              _sol([
+                _step(
+                  "\$v = -\\dfrac{1}{2} \\times (-1{,}2 \\times 10^{-3}) = 6 \\times 10^{-4}\\,\\text{mol/(L·s)}\$.",
+                ),
+                _step(
+                  "**Unités** : la vitesse volumique s'exprime en mol·L⁻¹·s⁻¹ (ou mol·L⁻¹·min⁻¹ selon le contexte).",
+                ),
+              ], finalAnswerFr: r"$v = 6 \times 10^{-4}$ mol/(L·s)"),
+            ),
+            _q(
+              3,
+              "Comment varie \$v\$ au cours du temps ? Pourquoi ?",
+              1,
+              _sol([
+                _step(
+                  "\$v\$ **diminue** au cours du temps : la concentration de réactif diminue (consommation), les chocs efficaces diminuent. À \$t \\to \\infty\$, \$v \\to 0\$ (réaction terminée).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Facteurs cinétiques',
+          5,
+          "Quatre facteurs principaux modifient la vitesse d'une réaction.",
+          [
+            _q(
+              1,
+              "Effet de la **température**.",
+              2,
+              _sol([
+                _step(
+                  "\$T \\nearrow\$ → \$v \\nearrow\$. Une augmentation de **10°C** double approximativement la vitesse (règle empirique de van't Hoff).",
+                ),
+                _step(
+                  "**Explication moléculaire** : agitation thermique accrue → fraction plus élevée de chocs assez énergétiques pour franchir la barrière d'activation \$E_a\$ (loi d'Arrhenius : \$k \\propto e^{-E_a/RT}\$).",
+                  tipFr:
+                      "Applications : réfrigération (ralentit la dégradation des aliments), cuisson (accélère les réactions de Maillard, etc.).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Effet de la **concentration** des réactifs.",
+              1,
+              _sol([
+                _step(
+                  "\$[R] \\nearrow\$ → \$v \\nearrow\$. Plus de molécules par unité de volume → plus de chocs par unité de temps. Pour une réaction d'ordre 1 : \$v = k[R]\$.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Effet d'un **catalyseur**.",
+              1,
+              _sol([
+                _step(
+                  "Le catalyseur **diminue \$E_a\$** sans être consommé. \$v \\nearrow\$ sans changer l'équilibre thermodynamique (juste la cinétique).",
+                ),
+                _step(
+                  "Exemples : MnO₂ pour décomposer H₂O₂, enzymes en biologie (vitesses multipliées par 10⁶ à 10¹²).",
+                ),
+              ]),
+            ),
+            _q(
+              4,
+              "Effet de la **surface de contact** (réactifs solides).",
+              1,
+              _sol([
+                _step(
+                  "Surface \$\\nearrow\$ → \$v \\nearrow\$. Pulvérisation, broyage augmentent la surface de contact réactif/milieu.",
+                ),
+                _step(
+                  "Exemple spectaculaire : poudre de fer dans l'air = combustion explosive ; bloc de fer = oxydation très lente (rouille).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Temps de demi-réaction',
+          5,
+          "Pour une réaction où un réactif est limitant : \$t_{1/2}\$ = durée pour atteindre \$[R] = [R]_0/2\$.",
+          [
+            _q(
+              1,
+              "Cas d'une réaction d'ordre 1 : \$v = k[R]\$. Déduire \$[R](t)\$ et \$t_{1/2}\$.",
+              3,
+              _sol([
+                _step(
+                  "Équation : \$d[R]/dt = -k[R]\$. Solution : \$[R](t) = [R]_0 e^{-k t}\$ (EDO du 1er ordre).",
+                ),
+                _step(
+                  "Temps de demi-réaction : \$[R](t_{1/2}) = [R]_0/2 \\iff e^{-k t_{1/2}} = 1/2 \\iff t_{1/2} = \\ln 2/k\$.",
+                ),
+                _step(
+                  "**Propriété remarquable** : \$t_{1/2}\$ est **indépendant** de \$[R]_0\$ pour une réaction d'ordre 1. Mêmes proportions, mêmes durées.",
+                  tipFr:
+                      "Analogie parfaite avec la radioactivité (qui est aussi une cinétique d'ordre 1) : même formule \$t_{1/2} = \\ln 2/\\lambda\$.",
+                ),
+              ], finalAnswerFr: r"$t_{1/2} = \ln 2/k$"),
+            ),
+            _q(
+              2,
+              "Si \$k = 0{,}01\\,\\text{s}^{-1}\$ pour une décomposition d'ordre 1, calculer \$t_{1/2}\$.",
+              2,
+              _sol([
+                _step(
+                  "\$t_{1/2} = \\ln 2/k = 0{,}693/0{,}01 \\approx 69{,}3\\,\\text{s}\$.",
+                ),
+                _step(
+                  "Au bout de \$5 t_{1/2} \\approx 347\\,\\text{s} \\approx 6\\,\\text{min}\$, il reste \$1/2^5 \\approx 3\\%\$ du réactif initial → réaction quasi-terminée.",
+                ),
+              ], finalAnswerFr: r"$t_{1/2} \approx 69$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Méthodes de suivi',
+          5,
+          "Comment suit-on l'évolution d'une concentration en cours de réaction ?",
+          [
+            _q(
+              1,
+              "Méthode **spectrophotométrique** (UV-visible).",
+              2,
+              _sol([
+                _step(
+                  "**Principe** : on mesure l'absorbance \$A\$ à une longueur d'onde où **un seul** participant absorbe. Loi de Beer-Lambert : \$A = \\varepsilon \\ell C\$ (linéaire avec la concentration).",
+                ),
+                _step(
+                  "**Applications** : suivi de réactions colorées (diiode, permanganate, complexes). Non-invasif (pas de prélèvement).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Méthode **conductimétrique**.",
+              2,
+              _sol([
+                _step(
+                  "**Principe** : on mesure la conductance \$G\$ de la solution. Si la réaction produit ou consomme des ions, \$G\$ varie : \$G = \\sigma S/\\ell\$ avec \$\\sigma = \\sum \\lambda_i c_i\$ (conductivité = somme pondérée par mobilités ioniques).",
+                ),
+                _step(
+                  "**Applications** : hydrolyses, dosages acide-base, précipitations.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Méthode **par dégagement gazeux** (volumétrique).",
+              1,
+              _sol([
+                _step(
+                  "Mesurer le volume de gaz produit en fonction du temps (ex : décomposition H₂O₂ → O₂). PV = nRT donne la quantité de matière.",
+                ),
+                _step(
+                  "Simple et peu coûteux, mais limité aux réactions à dégagement gazeux mesurable.",
+                  tipFr:
+                      "Critère de choix : adapter la méthode à la réaction. Coloré → spectro. Avec ions → conductimétrie. Gaz produit → volumétrie. pH variable → pHmétrie.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -5004,6 +5410,9 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_mechanical_waves': _paperMechanicalWaves(),
   'pc_diffraction_interference': _paperDiffractionInterference(),
   'pc_am_modulation': _paperAmModulation(),
+  // Physique-Chimie — Batch 8: nuclear + kinetics
+  'pc_radioactivity': _paperRadioactivity(),
+  'pc_reaction_speed': _paperReactionSpeed(),
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
