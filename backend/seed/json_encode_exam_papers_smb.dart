@@ -2759,6 +2759,556 @@ Map<String, dynamic> _paperIntegralApps() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperProbBasic() => _paper(
+      titleFr: 'Épreuve type — Probabilités',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Univers, événements, probabilité uniforme, opérations sur les événements, inclusion-exclusion.",
+      exercices: [
+        _ex(
+          1,
+          'Probabilité uniforme',
+          5,
+          "On lance simultanément 2 dés équilibrés à 6 faces. Univers : couples \$(i, j)\$ avec \$i, j \\in \\{1, \\ldots, 6\\}\$.",
+          [
+            _q(
+              1,
+              "Combien d'issues possibles ?",
+              1,
+              _sol([
+                _step(
+                  "**Principe multiplicatif** : 6 issues pour le 1er dé × 6 pour le 2ème = **36 issues** au total.",
+                ),
+              ], finalAnswerFr: r"36 issues"),
+            ),
+            _q(
+              2,
+              "Probabilité d'obtenir une somme de 7.",
+              2,
+              _sol([
+                _step(
+                  "**Cas favorables** : couples \$(i, j)\$ avec \$i + j = 7\$. Ce sont : \$(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\$ — soit **6 couples**.",
+                ),
+                _step(
+                  "Probabilité : \$P(\\text{somme = 7}) = 6/36 = 1/6 \\approx 0{,}167\$.",
+                  tipFr:
+                      "C'est la somme la plus probable au lancer de 2 dés. C'est pourquoi 7 est la 'cible' au craps.",
+                ),
+              ], finalAnswerFr: r"$P = 1/6$"),
+            ),
+            _q(
+              3,
+              "Probabilité d'obtenir au moins un 6.",
+              2,
+              _sol([
+                _step(
+                  "**Astuce** : passer au complémentaire. \"Au moins un 6\" = ¬\"aucun 6\".",
+                ),
+                _step(
+                  "P(aucun 6) : 5 issues hors 6 pour chaque dé, \$5 \\times 5 = 25\$ couples sans 6. P(aucun 6) = 25/36.",
+                ),
+                _step(
+                  "P(au moins un 6) = 1 - 25/36 = 11/36 \\approx 0{,}306.",
+                  tipFr:
+                      "Pour 'au moins un X', passer au complémentaire 'aucun X' simplifie souvent les calculs.",
+                ),
+              ], finalAnswerFr: r"$P = 11/36$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Inclusion-exclusion',
+          5,
+          "Dans une classe de 30 élèves : 18 suivent l'option math, 14 l'option physique, 8 les deux.",
+          [
+            _q(
+              1,
+              "Combien suivent au moins une des deux options ?",
+              2,
+              _sol([
+                _step(
+                  "**Formule d'inclusion-exclusion** : \$|A \\cup B| = |A| + |B| - |A \\cap B| = 18 + 14 - 8 = 24\$.",
+                ),
+                _step(
+                  "Vérification : 18 - 8 = 10 ne font que math, 14 - 8 = 6 ne font que physique, 8 font les deux. Total : \$10 + 6 + 8 = 24\$ ✓.",
+                ),
+              ], finalAnswerFr: r"24 élèves"),
+            ),
+            _q(
+              2,
+              "Combien ne suivent aucune des deux ?",
+              1,
+              _sol([
+                _step(
+                  "\$30 - 24 = 6\$ élèves ne suivent aucune option.",
+                ),
+              ], finalAnswerFr: r"6 élèves"),
+            ),
+            _q(
+              3,
+              "On tire un élève au hasard. Probabilité qu'il suive seulement l'option math (pas physique).",
+              2,
+              _sol([
+                _step(
+                  "\"Math seul\" = \"Math\" ET \"pas Physique\" = \\(|A \\setminus B|\\) = \\(|A| - |A \\cap B|\\) = 18 - 8 = 10.",
+                ),
+                _step(
+                  "\$P = 10/30 = 1/3 \\approx 0{,}333\$.",
+                ),
+              ], finalAnswerFr: r"$P = 1/3$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Tirages successifs avec remise',
+          5,
+          "Une urne contient 5 boules rouges et 3 boules vertes (8 boules). On tire 2 boules **avec remise**.",
+          [
+            _q(
+              1,
+              "Probabilité de tirer 2 rouges.",
+              2,
+              _sol([
+                _step(
+                  "**Avec remise** : les tirages sont **indépendants**. \$P(RR) = P(R) \\times P(R) = (5/8)^2 = 25/64\$.",
+                ),
+              ], finalAnswerFr: r"$P(RR) = 25/64$"),
+            ),
+            _q(
+              2,
+              "Probabilité de tirer 1 rouge et 1 verte (dans n'importe quel ordre).",
+              3,
+              _sol([
+                _step(
+                  "Deux cas disjoints : RV et VR.",
+                ),
+                _step(
+                  "P(RV) = (5/8)(3/8) = 15/64. P(VR) = (3/8)(5/8) = 15/64.",
+                ),
+                _step(
+                  "Total : \$P = 30/64 = 15/32 \\approx 0{,}469\$.",
+                ),
+              ], finalAnswerFr: r"$P = 15/32$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Tirages sans remise',
+          5,
+          "Même urne (5 rouges + 3 vertes), mais tirages **sans remise**.",
+          [
+            _q(
+              1,
+              "Probabilité de tirer 2 rouges.",
+              3,
+              _sol([
+                _step(
+                  "**Sans remise** : les tirages ne sont **pas indépendants**. P(R1) = 5/8. Sachant R1, P(R2|R1) = 4/7 (4 rouges restantes sur 7 boules).",
+                ),
+                _step(
+                  "P(RR) = P(R1) × P(R2|R1) = (5/8)(4/7) = 20/56 = **5/14 ≈ 0,357**.",
+                ),
+                _step(
+                  "**Comparaison avec remise** : 25/64 ≈ 0,391 > 5/14 ≈ 0,357. Sans remise, la probabilité de tirer 2 rouges est plus faible (la 1ère consomme une rouge).",
+                  tipFr:
+                      "Sans remise = dépendance entre tirages. Avec remise = indépendance.",
+                ),
+              ], finalAnswerFr: r"$P(RR) = 5/14$"),
+            ),
+            _q(
+              2,
+              "Probabilité de tirer 1 rouge et 1 verte.",
+              2,
+              _sol([
+                _step(
+                  "P(RV) = (5/8)(3/7) = 15/56. P(VR) = (3/8)(5/7) = 15/56.",
+                ),
+                _step(
+                  "Total : \$30/56 = 15/28 \\approx 0{,}536\$.",
+                ),
+              ], finalAnswerFr: r"$P = 15/28$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperConditionalProb() => _paper(
+      titleFr: 'Épreuve type — Probabilités conditionnelles',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Probabilité conditionnelle \$P(A|B) = P(A \\cap B)/P(B)\$, indépendance, formule des probabilités totales, formule de Bayes.",
+      exercices: [
+        _ex(
+          1,
+          'Probabilité conditionnelle',
+          5,
+          "Une famille a deux enfants. On note F = 'fille' et G = 'garçon'.",
+          [
+            _q(
+              1,
+              "Combien de configurations possibles (en ordre de naissance) ?",
+              1,
+              _sol([
+                _step(
+                  "4 configurations équiprobables : FF, FG, GF, GG.",
+                ),
+              ], finalAnswerFr: r"4 configurations"),
+            ),
+            _q(
+              2,
+              "Probabilité d'avoir 2 filles, sachant qu'au moins un enfant est une fille.",
+              3,
+              _sol([
+                _step(
+                  "**Définition** : \$P(A | B) = \\dfrac{P(A \\cap B)}{P(B)}\$.",
+                ),
+                _step(
+                  "A = \"2 filles\" = {FF}, B = \"au moins une fille\" = {FF, FG, GF}.",
+                ),
+                _step(
+                  "\$P(A) = 1/4\$. \$P(B) = 3/4\$. \$P(A \\cap B) = P(\\text{FF}) = 1/4\$.",
+                ),
+                _step(
+                  "\$P(A | B) = (1/4)/(3/4) = 1/3\$.",
+                  tipFr:
+                      "Résultat contre-intuitif ! La 'condition' \\(au moins une fille\\) réduit l'univers à 3 cas, dont 1 favorable. Différent de 1/2 (intuition naïve).",
+                ),
+              ], finalAnswerFr: r"$P = 1/3$"),
+            ),
+            _q(
+              3,
+              "Probabilité d'avoir 2 filles, sachant que l'aîné est une fille.",
+              1,
+              _sol([
+                _step(
+                  "Sous \"aîné fille\", univers = {FF, FG}, parmi lesquels FF est favorable. \$P = 1/2\$.",
+                ),
+                _step(
+                  "**Comparaison** : la conditionnalité change radicalement la réponse (1/3 vs 1/2) selon l'information disponible. C'est le 'paradoxe des deux enfants'.",
+                ),
+              ], finalAnswerFr: r"$P = 1/2$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Indépendance',
+          5,
+          "Soit A et B deux événements avec \$P(A) = 0{,}4\$, \$P(B) = 0{,}5\$, \$P(A \\cap B) = 0{,}2\$.",
+          [
+            _q(
+              1,
+              "Vérifier que A et B sont indépendants.",
+              2,
+              _sol([
+                _step(
+                  "**Critère** : A et B indépendants ssi \$P(A \\cap B) = P(A) P(B)\$.",
+                ),
+                _step(
+                  "Calcul : \$P(A) P(B) = 0{,}4 \\times 0{,}5 = 0{,}2 = P(A \\cap B)\$ ✓. Indépendants.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer \$P(A | B)\$ et \$P(B | A)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$P(A | B) = P(A \\cap B)/P(B) = 0{,}2/0{,}5 = 0{,}4 = P(A)\$.",
+                ),
+                _step(
+                  "\$P(B | A) = 0{,}2/0{,}4 = 0{,}5 = P(B)\$.",
+                ),
+                _step(
+                  "Cohérent : si A et B sont indépendants, alors \$P(A | B) = P(A)\$ — la connaissance de B ne change pas la probabilité de A.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Calculer \$P(A \\cup B)\$ et \$P(\\bar A \\cap \\bar B)\$.",
+              1,
+              _sol([
+                _step(
+                  "\$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{,}4 + 0{,}5 - 0{,}2 = 0{,}7\$.",
+                ),
+                _step(
+                  "\$P(\\bar A \\cap \\bar B) = P(\\overline{A \\cup B}) = 1 - 0{,}7 = 0{,}3\$ (lois de De Morgan).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Probabilités totales et Bayes',
+          5,
+          "Dans une usine, 3 machines produisent des pièces : M1 (40% de la production, 3% défectueuses), M2 (35%, 5%), M3 (25%, 2%).",
+          [
+            _q(
+              1,
+              "Probabilité qu'une pièce prise au hasard soit défectueuse.",
+              3,
+              _sol([
+                _step(
+                  "**Formule des probabilités totales** : \$P(D) = P(D | M_1) P(M_1) + P(D | M_2) P(M_2) + P(D | M_3) P(M_3)\$.",
+                ),
+                _step(
+                  "\$P(D) = 0{,}03 \\times 0{,}4 + 0{,}05 \\times 0{,}35 + 0{,}02 \\times 0{,}25 = 0{,}012 + 0{,}0175 + 0{,}005 = 0{,}0345 = 3{,}45\\%\$.",
+                ),
+              ], finalAnswerFr: r"$P(D) \approx 3{,}45\%$"),
+            ),
+            _q(
+              2,
+              "Une pièce est défectueuse. Probabilité qu'elle vienne de M2 ?",
+              2,
+              _sol([
+                _step(
+                  "**Formule de Bayes** : \$P(M_2 | D) = \\dfrac{P(D | M_2) P(M_2)}{P(D)} = \\dfrac{0{,}05 \\times 0{,}35}{0{,}0345} = \\dfrac{0{,}0175}{0{,}0345} \\approx 0{,}507\$.",
+                ),
+                _step(
+                  "Donc **environ 51%** des pièces défectueuses viennent de M2, alors que M2 ne produit que 35% du total. M2 a un taux de défaut élevé qui amplifie sa contribution aux défauts.",
+                  tipFr:
+                      "Bayes inverse la conditionnalité : connaître \\(D \\to ?\\) à partir de \\(? \\to D\\). Très puissant en diagnostic (médical, machine learning).",
+                ),
+              ], finalAnswerFr: r"$P(M_2 | D) \approx 0{,}507$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Arbre pondéré',
+          5,
+          "Un test médical détecte une maladie avec 95% de fiabilité (vrais positifs) mais a 4% de faux positifs. La maladie touche 1% de la population.",
+          [
+            _q(
+              1,
+              "Si le test est positif, probabilité d'être effectivement malade ?",
+              4,
+              _sol([
+                _step(
+                  "Notations : M = malade, T+ = test positif. Données : \$P(T+ | M) = 0{,}95\$, \$P(T+ | \\bar M) = 0{,}04\$, \$P(M) = 0{,}01\$.",
+                ),
+                _step(
+                  "Probabilités totales : \$P(T+) = P(T+|M) P(M) + P(T+|\\bar M) P(\\bar M) = 0{,}95 \\times 0{,}01 + 0{,}04 \\times 0{,}99 = 0{,}0095 + 0{,}0396 = 0{,}0491\$.",
+                ),
+                _step(
+                  "Bayes : \$P(M | T+) = \\dfrac{P(T+ | M) P(M)}{P(T+)} = \\dfrac{0{,}0095}{0{,}0491} \\approx 0{,}194\$.",
+                ),
+                _step(
+                  "**Résultat contre-intuitif** : avec un test positif, on n'a que **~19% de chance d'être réellement malade** ! Les faux positifs dominent à cause de la rareté de la maladie.",
+                  tipFr:
+                      "Cela motive le double-test (retest indépendant) ou des tests confirmatoires. Application en COVID, médecine prédictive, etc.",
+                ),
+              ], finalAnswerFr: r"$P(M | T+) \approx 19{,}4\%$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperRandomVariables() => _paper(
+      titleFr: 'Épreuve type — Variables aléatoires',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Variables aléatoires discrètes, loi de probabilité, espérance \$E(X) = \\sum x P(X=x)\$, variance, loi binomiale \$\\mathcal{B}(n, p)\$.",
+      exercices: [
+        _ex(
+          1,
+          'Loi de probabilité',
+          5,
+          "On lance un dé équilibré. Soit X = 'valeur du dé'.",
+          [
+            _q(
+              1,
+              "Donner la loi de probabilité de X.",
+              1,
+              _sol([
+                _step(
+                  "\$X\$ prend les valeurs 1, 2, 3, 4, 5, 6, chacune avec probabilité 1/6 (loi uniforme).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer \$E(X)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$E(X) = \\sum_{k=1}^6 k \\cdot P(X=k) = (1 + 2 + 3 + 4 + 5 + 6)/6 = 21/6 = 3{,}5\$.",
+                ),
+                _step(
+                  "**Interprétation** : sur un grand nombre de lancers, la moyenne tend vers 3,5. Pas une valeur du dé (les dés ne donnent que des entiers), mais une moyenne théorique.",
+                ),
+              ], finalAnswerFr: r"$E(X) = 3{,}5$"),
+            ),
+            _q(
+              3,
+              "Calculer \$V(X)\$ et l'écart-type \$\\sigma\$.",
+              2,
+              _sol([
+                _step(
+                  "**Formule de König** : \$V(X) = E(X^2) - (E(X))^2\$.",
+                ),
+                _step(
+                  "\$E(X^2) = \\sum k^2 / 6 = (1 + 4 + 9 + 16 + 25 + 36)/6 = 91/6 \\approx 15{,}17\$.",
+                ),
+                _step(
+                  "\$V(X) = 91/6 - (7/2)^2 = 91/6 - 49/4 = 182/12 - 147/12 = 35/12 \\approx 2{,}92\$.",
+                ),
+                _step(
+                  "\$\\sigma = \\sqrt{V} \\approx 1{,}71\$. Mesure la dispersion typique autour de la moyenne 3,5.",
+                ),
+              ], finalAnswerFr: r"$V \approx 2{,}92$, $\sigma \approx 1{,}71$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Loi binomiale',
+          5,
+          "Un examen comporte 20 QCM, chacune avec 4 réponses dont 1 correcte. Un candidat répond au hasard. Soit X = nombre de bonnes réponses.",
+          [
+            _q(
+              1,
+              "Justifier que \$X \\sim \\mathcal{B}(n, p)\$ et préciser \$n, p\$.",
+              2,
+              _sol([
+                _step(
+                  "**Schéma de Bernoulli** : \$n = 20\$ essais indépendants (questions), chacune à 2 issues (succès = bonne réponse, \$p = 1/4\$), \$X\$ = nombre de succès.",
+                ),
+                _step(
+                  "Conditions binomiale ✓ : \$X \\sim \\mathcal{B}(20, 1/4)\$.",
+                ),
+              ], finalAnswerFr: r"$X \sim \mathcal{B}(20, 1/4)$"),
+            ),
+            _q(
+              2,
+              "Calculer \$E(X)\$ et \$V(X)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Binomiale** : \$E(X) = np\$, \$V(X) = np(1-p)\$.",
+                ),
+                _step(
+                  "\$E(X) = 20 \\times 1/4 = 5\$. \$V(X) = 20 \\times 1/4 \\times 3/4 = 15/4 = 3{,}75\$. \$\\sigma \\approx 1{,}94\$.",
+                ),
+                _step(
+                  "**Interprétation** : en répondant au hasard, on obtient en moyenne 5/20 = 25% (cohérent avec 1 chance sur 4). Variance modeste → la plupart des candidats au hasard obtiennent entre 3 et 7.",
+                ),
+              ], finalAnswerFr: r"$E = 5$, $V = 3{,}75$"),
+            ),
+            _q(
+              3,
+              "Probabilité d'avoir exactement 10 bonnes réponses.",
+              1,
+              _sol([
+                _step(
+                  "\$P(X = 10) = \\binom{20}{10} (1/4)^{10} (3/4)^{10}\$.",
+                ),
+                _step(
+                  "\$\\binom{20}{10} = 184756\$. \$(1/4)^{10} = 9{,}54 \\times 10^{-7}\$. \$(3/4)^{10} \\approx 0{,}056\$.",
+                ),
+                _step(
+                  "Produit : \$P(X = 10) \\approx 184756 \\times 9{,}54 \\times 10^{-7} \\times 0{,}056 \\approx 0{,}0099 \\approx 1\\%\$.",
+                ),
+              ], finalAnswerFr: r"$P(X = 10) \approx 1\%$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Espérance d\'un jeu',
+          5,
+          "À un jeu, on gagne 10€ avec proba 0,1 ; on gagne 2€ avec proba 0,4 ; on perd 3€ avec proba 0,5.",
+          [
+            _q(
+              1,
+              "Calculer le gain espéré par partie.",
+              3,
+              _sol([
+                _step(
+                  "Soit \$X\$ le gain (positif ou négatif). \$E(X) = 10 \\times 0{,}1 + 2 \\times 0{,}4 + (-3) \\times 0{,}5\$.",
+                ),
+                _step(
+                  "\$E(X) = 1 + 0{,}8 - 1{,}5 = 0{,}3\\,€\$.",
+                ),
+                _step(
+                  "Le jeu est **favorable** (espérance positive). Sur le long terme, on gagne en moyenne 30 centimes par partie.",
+                ),
+              ], finalAnswerFr: r"$E(X) = 0{,}30$ €"),
+            ),
+            _q(
+              2,
+              "Quel doit être le coût d'entrée pour un jeu équitable ?",
+              2,
+              _sol([
+                _step(
+                  "**Jeu équitable** : espérance du gain net (gain - coût) = 0.",
+                ),
+                _step(
+                  "Si coût d'entrée = \$c\$, espérance nette = \$0{,}3 - c = 0\\,\\Rightarrow\\, c = 0{,}30\\,€\$.",
+                ),
+                _step(
+                  "En pratique, les casinos fixent un coût supérieur (jeu défavorable au joueur) — c'est leur marge. Pour ce jeu : coût > 0,30€ avantage le casino.",
+                ),
+              ], finalAnswerFr: r"$c = 0{,}30$ €"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Loi de Bernoulli et somme',
+          5,
+          "Soit \$X_1, X_2, \\ldots, X_n\$ des variables aléatoires de Bernoulli indépendantes de paramètre \$p\$.",
+          [
+            _q(
+              1,
+              "Que vaut \$S = X_1 + X_2 + \\dots + X_n\$ en termes de loi ?",
+              3,
+              _sol([
+                _step(
+                  "Chaque \$X_i\$ vaut 0 ou 1 avec \$P(X_i = 1) = p\$. La somme \$S = \\sum X_i\$ compte le nombre de '1' parmi les \$n\$.",
+                ),
+                _step(
+                  "C'est **exactement la définition d'une loi binomiale** : \$S \\sim \\mathcal{B}(n, p)\$.",
+                ),
+                _step(
+                  "Cette décomposition donne immédiatement : \$E(S) = \\sum E(X_i) = np\$, \$V(S) = \\sum V(X_i) = np(1-p)\$ (linéarité de l'espérance, additivité de la variance pour des v.a. indépendantes).",
+                  tipFr:
+                      "La binomiale est 'la somme de \\(n\\) Bernoulli'. Permet de prouver les formules d'espérance et variance sans calcul direct.",
+                ),
+              ], finalAnswerFr: r"$S \sim \mathcal{B}(n, p)$"),
+            ),
+            _q(
+              2,
+              "Application : si on tire 50 cartes avec remise dans un jeu de 52, espérance du nombre d'as obtenus ?",
+              2,
+              _sol([
+                _step(
+                  "Chaque tirage est une expérience de Bernoulli avec \$p = 4/52 = 1/13\$ (4 as sur 52 cartes).",
+                ),
+                _step(
+                  "Nombre d'as = somme de 50 Bernoulli → \$\\mathcal{B}(50, 1/13)\$. Espérance : \$np = 50/13 \\approx 3{,}85\$.",
+                ),
+              ], finalAnswerFr: r"$E \approx 3{,}85$ as"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -2775,7 +3325,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'primitives': _paperPrimitivesSmb(),
   'definite_integral': _paperDefiniteIntegral(),
   'integral_apps': _paperIntegralApps(),
-  // 17 SMB chapters remaining.
+  'prob_basic': _paperProbBasic(),
+  'conditional_prob': _paperConditionalProb(),
+  'random_variables': _paperRandomVariables(),
+  // 14 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
