@@ -4073,6 +4073,1153 @@ Map<String, dynamic> _paperProjectileMotion() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperForcedOscillations() => _paper(
+      titleFr: 'Épreuve type — Oscillations forcées et résonance',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Régime forcé d'un RLC série, impédance \$Z\$, résonance d'intensité, facteur de qualité \$Q\$, bande passante. Lien avec les filtres radio.",
+      exercices: [
+        _ex(
+          1,
+          'Impédance et résonance',
+          5,
+          "Circuit RLC série alimenté par un générateur sinusoïdal de pulsation \$\\omega\$. \$L = 0{,}1\\,H\$, \$C = 1\\,\\mu F\$, \$R = 50\\,\\Omega\$.",
+          [
+            _q(
+              1,
+              "Donner l'expression de l'impédance \$Z(\\omega)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Impédance d'un RLC série** : \$Z(\\omega) = \\sqrt{R^2 + (L\\omega - 1/(C\\omega))^2}\$.",
+                ),
+                _step(
+                  "Le terme \$X(\\omega) = L\\omega - 1/(C\\omega)\$ est la **réactance**. Elle est positive si \$\\omega > 1/\\sqrt{LC} = \\omega_0\$ (caractère inductif), négative si \$\\omega < \\omega_0\$ (caractère capacitif).",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer \$\\omega_0\$ et l'impédance à la résonance.",
+              2,
+              _sol([
+                _step(
+                  "\$\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{10^{-7}} = \\sqrt{10^7} \\approx 3162\\,rad/s\$.",
+                ),
+                _step(
+                  "À \$\\omega = \\omega_0\$ : \$L\\omega_0 = 1/(C\\omega_0)\$, donc \$X(\\omega_0) = 0\$ et \$Z(\\omega_0) = R = 50\\,\\Omega\$. **Impédance minimale**.",
+                ),
+                _step(
+                  "Pour une tension efficace \$U = 5\\,V\$, l'intensité efficace à la résonance vaut \$I_{\\max} = U/R = 5/50 = 0{,}1\\,A = 100\\,mA\$.",
+                  tipFr:
+                      "Phénomène de **résonance d'intensité** : à \$\\omega = \\omega_0\$, le circuit se comporte comme une résistance pure et l'intensité est maximale.",
+                ),
+              ], finalAnswerFr: r"$\omega_0 \approx 3162$ rad/s, $Z_{\min} = 50$ Ω"),
+            ),
+            _q(
+              3,
+              "Calculer le facteur de qualité \$Q\$ et la bande passante.",
+              1,
+              _sol([
+                _step(
+                  "**Facteur de qualité** : \$Q = L\\omega_0/R = 0{,}1 \\times 3162 / 50 \\approx 6{,}32\$.",
+                ),
+                _step(
+                  "**Bande passante** : \$\\Delta\\omega = \\omega_0/Q \\approx 500\\,rad/s\$ (largeur à \$Z = R\\sqrt 2\$).",
+                  tipFr:
+                      "\$Q\$ élevé = résonance aiguë et sélective, idéal pour un filtre radio. \$Q\$ faible = résonance large, peu sélective.",
+                ),
+              ], finalAnswerFr: r"$Q \approx 6{,}3$, $\Delta\omega \approx 500$ rad/s"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Sélectivité radio',
+          5,
+          "On veut isoler une station FM à \$f_0 = 100\\,MHz\$ de ses voisines à \$\\pm 100\\,kHz\$ (espacement standard).",
+          [
+            _q(
+              1,
+              "Quel facteur de qualité minimum faut-il ?",
+              3,
+              _sol([
+                _step(
+                  "Pour atténuer les voisines, on veut \$\\Delta f < 2 \\times 100\\,kHz = 200\\,kHz\$ (bande passante du tuner).",
+                ),
+                _step(
+                  "Or \$\\Delta f = f_0/Q\$, donc \$Q > f_0/\\Delta f = 10^8 / (2 \\times 10^5) = 500\$.",
+                ),
+                _step(
+                  "**Conclusion** : tuner avec \$Q > 500\$ pour bien séparer les stations.",
+                  tipFr:
+                      "En pratique, on combine plusieurs étages de filtrage en cascade pour atteindre des \$Q\$ équivalents très élevés.",
+                ),
+              ], finalAnswerFr: r"$Q_{\min} \approx 500$"),
+            ),
+            _q(
+              2,
+              "Si \$L = 10\\,nH\$, déduire \$C\$ et \$R\$.",
+              2,
+              _sol([
+                _step(
+                  "De \$\\omega_0 = 1/\\sqrt{LC}\$ : \$C = 1/(L\\omega_0^2)\$. \$\\omega_0 = 2\\pi f_0 = 6{,}28 \\times 10^8\\,rad/s\$. \$\\omega_0^2 \\approx 3{,}95 \\times 10^{17}\$.",
+                ),
+                _step(
+                  "\$C = 1/(10^{-8} \\times 3{,}95 \\times 10^{17}) = 2{,}53 \\times 10^{-10}\\,F = 253\\,pF\$.",
+                ),
+                _step(
+                  "De \$Q = L\\omega_0/R\$ : \$R = L\\omega_0/Q = 10^{-8} \\times 6{,}28 \\times 10^8 / 500 = 6{,}28/500 \\approx 12{,}6\\,m\\Omega\$.",
+                ),
+              ], finalAnswerFr: r"$C \approx 253$ pF, $R \approx 12{,}6$ mΩ"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Surtension à la résonance',
+          5,
+          "On reprend le circuit de l'Exercice 1.",
+          [
+            _q(
+              1,
+              "Calculer la tension aux bornes du condensateur \$U_C\$ à la résonance et comparer à la tension d'entrée \$U\$.",
+              3,
+              _sol([
+                _step(
+                  "À la résonance, l'intensité efficace est \$I_{\\max} = U/R\$. La tension efficace aux bornes du condensateur est \$U_C = I_{\\max}/(C\\omega_0) = U/(RC\\omega_0)\$.",
+                ),
+                _step(
+                  "Or \$RC\\omega_0 = R \\sqrt{C/L} \\cdot \\sqrt{LC} \\cdot \\omega_0\$... plus simplement : \$U_C = U \\cdot \\dfrac{1}{RC\\omega_0} = U \\cdot \\dfrac{L\\omega_0}{R} = Q \\cdot U\$.",
+                ),
+                _step(
+                  "**Surtension** : \$U_C = Q \\cdot U\$. Pour \$Q \\approx 6{,}3\$ et \$U = 5\\,V\$ : \$U_C \\approx 31{,}6\\,V\$. **La tension aux bornes du condensateur est \$Q\$ fois supérieure à la tension d'entrée**.",
+                  tipFr:
+                      "Cette surtension peut être destructrice pour des composants si \$Q\$ est très élevé ! Attention aux essais en TP.",
+                ),
+              ], finalAnswerFr: r"$U_C = Q \cdot U \approx 31{,}6$ V"),
+            ),
+            _q(
+              2,
+              "Que vaut la tension aux bornes de la bobine \$U_L\$ à la résonance ?",
+              2,
+              _sol([
+                _step(
+                  "À la résonance, \$L\\omega_0 = 1/(C\\omega_0)\$, donc \$U_L = U_C = Q \\cdot U\$.",
+                ),
+                _step(
+                  "**Phase** : \$U_L\$ et \$U_C\$ sont **en opposition de phase** (\$\\pi\$ rad). Leur somme s'annule, ce qui explique que la tension nette aux bornes de la bobine + condensateur est zéro et que tout reste tombe sur R.",
+                ),
+              ], finalAnswerFr: r"$U_L = U_C = Q \cdot U$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Analogie mécanique',
+          5,
+          "Un oscillateur mécanique (masse \$m\$, ressort \$k\$, frottement \$f\$) suit l'équation \$m\\ddot x + f\\dot x + kx = F_0\\cos(\\omega t)\$. Établir la correspondance avec le RLC série.",
+          [
+            _q(
+              1,
+              "Faire un tableau de correspondance entre grandeurs mécaniques et électriques.",
+              3,
+              _sol([
+                _step(
+                  "**Mécanique** : \$m\\ddot x + f\\dot x + kx = F_0\\cos(\\omega t)\$. **Électrique RLC** : \$L\\ddot q + R\\dot q + q/C = E\\cos(\\omega t)\$ (où \$i = \\dot q\$).",
+                ),
+                _step(
+                  "Correspondances : **position \$x\$** ↔ **charge \$q\$** ; **vitesse \$\\dot x\$** ↔ **courant \$i\$** ; **masse \$m\$** ↔ **inductance \$L\$** ; **frottement \$f\$** ↔ **résistance \$R\$** ; **raideur \$k\$** ↔ **\$1/C\$** ; **force motrice \$F_0\$** ↔ **tension \$E\$**.",
+                  tipFr:
+                      "Cette analogie permet de transposer toutes les notions (résonance, facteur Q, bande passante) entre les deux domaines.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Vérifier que la pulsation propre mécanique \$\\omega_0 = \\sqrt{k/m}\$ correspond bien à \$\\omega_0 = 1/\\sqrt{LC}\$.",
+              2,
+              _sol([
+                _step(
+                  "Mécanique : \$\\omega_0^2 = k/m\$. Électrique : \$\\omega_0^2 = (1/C)/L = 1/(LC)\$.",
+                ),
+                _step(
+                  "Avec la correspondance \$k \\leftrightarrow 1/C\$ et \$m \\leftrightarrow L\$ : \$(1/C)/L = 1/(LC)\$ ✓. La correspondance est cohérente.",
+                ),
+                _step(
+                  "**Implication pratique** : on peut étudier les résonances mécaniques en simulant un RLC (et vice versa). Les vibrations de bâtiments, ponts, ailes d'avion suivent les mêmes lois que les circuits LC.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperAmBasics() => _paper(
+      titleFr: 'Épreuve type — Modulation d\'amplitude (AM)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Principe de la modulation AM, taux de modulation, démodulation par détection d'enveloppe, filtres passe-bas. Application : radio AM.",
+      exercices: [
+        _ex(
+          1,
+          'Principe et formule de l\'AM',
+          5,
+          "Un signal modulant audio \$s(t) = A_m \\cos(2\\pi f_m t)\$ avec \$f_m = 1\\,kHz\$ module une porteuse \$p(t) = A_p \\cos(2\\pi f_p t)\$ avec \$f_p = 500\\,kHz\$.",
+          [
+            _q(
+              1,
+              "Donner l'expression d'un signal AM \$u_{AM}(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "**Principe AM** : on module l'amplitude de la porteuse par le signal audio. Forme : \$u_{AM}(t) = (A_p + k \\cdot s(t)) \\cos(2\\pi f_p t)\$ où \$k\$ est un coefficient de modulation.",
+                ),
+                _step(
+                  "Réécriture : \$u_{AM}(t) = A_p(1 + m\\cos(2\\pi f_m t))\\cos(2\\pi f_p t)\$ où \$m = k A_m / A_p\$ est le **taux de modulation** (sans dimension, entre 0 et 1 idéalement).",
+                ),
+                _step(
+                  "L'**enveloppe** du signal AM (variation lente) reproduit le signal audio. C'est ce qu'on extrait pour démoduler.",
+                  tipFr:
+                      "Différencier : signal audio (lent, ~kHz), porteuse (rapide, ~MHz), signal modulé (mixture des deux).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$u_{AM}(t) = A_p(1 + m\cos(2\pi f_m t))\cos(2\pi f_p t)$"),
+            ),
+            _q(
+              2,
+              "Que se passe-t-il si \$m > 1\$ ?",
+              2,
+              _sol([
+                _step(
+                  "Si \$m > 1\$ : **sur-modulation**. L'enveloppe \$1 + m\\cos(2\\pi f_m t)\$ devient négative pendant une partie du cycle audio.",
+                ),
+                _step(
+                  "**Conséquence** : la détection d'enveloppe (qui prend la valeur absolue) ne reproduit plus fidèlement le signal audio — il y a **distorsion** (clipping, harmoniques parasites).",
+                ),
+                _step(
+                  "**Critère** : pour éviter la sur-modulation, régler le taux \$m \\le 1\$. En pratique, on garde \$m \\le 0{,}8\$ pour une marge de sécurité.",
+                  mistakeFr:
+                      "Croire que plus le taux est élevé, meilleure est la réception — faux : sur-modulation = distorsion.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Spectre du signal AM',
+          5,
+          "On reprend le signal modulé.",
+          [
+            _q(
+              1,
+              "En développant le produit \$\\cos(2\\pi f_m t)\\cos(2\\pi f_p t)\$, déterminer les fréquences présentes dans le signal AM.",
+              3,
+              _sol([
+                _step(
+                  "**Identité trigo** : \$\\cos a \\cos b = \\dfrac{1}{2}(\\cos(a-b) + \\cos(a+b))\$.",
+                ),
+                _step(
+                  "Application : \$\\cos(2\\pi f_m t) \\cos(2\\pi f_p t) = \\dfrac{1}{2}(\\cos(2\\pi(f_p - f_m)t) + \\cos(2\\pi(f_p + f_m)t))\$.",
+                ),
+                _step(
+                  "Substitution dans \$u_{AM}\$ : \$u_{AM}(t) = A_p\\cos(2\\pi f_p t) + \\dfrac{m A_p}{2}[\\cos(2\\pi(f_p - f_m)t) + \\cos(2\\pi(f_p + f_m)t)]\$.",
+                ),
+                _step(
+                  "**Trois fréquences** : \$f_p = 500\\,kHz\$ (porteuse), \$f_p - f_m = 499\\,kHz\$ (bande latérale inférieure), \$f_p + f_m = 501\\,kHz\$ (bande latérale supérieure).",
+                  tipFr:
+                      "L'occupation spectrale d'un signal AM est \$2 f_m\$ — c'est pour ça que l'espacement des stations AM est typiquement 9 ou 10 kHz.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$f_p$, $f_p \pm f_m$ = 499, 500, 501 kHz"),
+            ),
+            _q(
+              2,
+              "Pourquoi utiliser une porteuse haute fréquence pour transporter un signal audio ?",
+              2,
+              _sol([
+                _step(
+                  "**Antennes** : l'efficacité d'une antenne dépend de sa taille relative à \$\\lambda\$. Pour un signal audio (\$\\lambda \\sim 100\\,km\$), il faudrait une antenne kilométrique. Avec une porteuse à 500 kHz (\$\\lambda = 600\\,m\$), antenne de taille raisonnable (~150 m pour un quart d'onde).",
+                ),
+                _step(
+                  "**Multiplexage** : on peut allouer des bandes de fréquences différentes aux différentes stations — sinon toutes les stations audio se mélangeraient sur la même bande de fréquences.",
+                ),
+                _step(
+                  "**Propagation** : les ondes radio se propagent bien dans l'atmosphère, contrairement aux ondes audio.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Démodulation par détection d\'enveloppe',
+          5,
+          "Le récepteur AM extrait l'enveloppe du signal modulé en deux étapes.",
+          [
+            _q(
+              1,
+              "Décrire le rôle de la diode et du condensateur dans un détecteur d'enveloppe.",
+              3,
+              _sol([
+                _step(
+                  "**Étape 1 — Diode** : le signal AM passe à travers une diode, qui ne laisse passer que les alternances positives (redresseur). Sortie : signal AM 'rectifié'.",
+                ),
+                _step(
+                  "**Étape 2 — Condensateur (filtre)** : le condensateur en parallèle (avec une résistance) lisse le signal rectifié. Il se charge rapidement (montées) puis se décharge lentement entre les pics de porteuse, suivant l'enveloppe.",
+                ),
+                _step(
+                  "**Sortie** : l'enveloppe du signal AM = signal audio reconstitué (à un facteur près).",
+                  tipFr:
+                      "Conditions pour le détecteur : \$\\tau = RC\$ entre \$1/f_p\$ (décharge plus lente que la porteuse) et \$1/f_m\$ (suit l'audio). Typiquement \$\\tau \\sim 10\\,\\mu s\$ pour AM.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Pourquoi un filtre passe-bas est-il nécessaire en aval ?",
+              2,
+              _sol([
+                _step(
+                  "Le détecteur d'enveloppe laisse subsister des résidus à la fréquence porteuse \$f_p\$ (et harmoniques) — petites ondulations sur le signal audio reconstitué.",
+                ),
+                _step(
+                  "Le **filtre passe-bas** (souvent un autre RC, avec \$f_c\$ entre \$f_m\$ et \$f_p\$) supprime ces résidus haute fréquence et ne garde que la partie audio (basse fréquence).",
+                ),
+                _step(
+                  "**Résultat final** : signal audio propre, prêt pour le haut-parleur.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — calcul de bande',
+          5,
+          "Une station AM émet un programme audio de bande passante \$0 - 5\\,kHz\$ sur une porteuse à 1 MHz.",
+          [
+            _q(
+              1,
+              "Quelle est la bande de fréquences occupée par le signal AM ?",
+              3,
+              _sol([
+                _step(
+                  "Le signal AM contient \$f_p\$ et \$f_p \\pm f_m\$ pour toutes les fréquences audio \$f_m \\in [0, 5\\,kHz]\$.",
+                ),
+                _step(
+                  "Bande : \$[f_p - f_{m,\\max}, f_p + f_{m,\\max}] = [995, 1005]\\,kHz\$. **Largeur** : \$2 f_{m,\\max} = 10\\,kHz\$.",
+                ),
+                _step(
+                  "Cohérent avec l'espacement standard des stations AM (~9-10 kHz dans les bandes ondes moyennes).",
+                ),
+              ], finalAnswerFr: r"$[995, 1005]$ kHz (largeur 10 kHz)"),
+            ),
+            _q(
+              2,
+              "Combien de stations différentes peut-on placer dans la bande 500 kHz – 1500 kHz ?",
+              2,
+              _sol([
+                _step(
+                  "Largeur disponible : \$1000\\,kHz\$. Largeur par station : \$10\\,kHz\$. Nombre max : \$1000/10 = 100\\,\\text{stations}\$.",
+                ),
+                _step(
+                  "**En pratique**, on ne remplit pas 100% de la bande — espace tampon de protection inter-stations, propagation et interférences. Typiquement 30-50 stations max coexistent.",
+                ),
+              ], finalAnswerFr: r"$\sim 100$ stations max"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperEFieldBasics() => _paper(
+      titleFr: 'Épreuve type — Champ électrique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Champ électrique uniforme, force électrique \$\\vec{F} = q\\vec{E}\$, énergie potentielle, déflexion entre deux plaques chargées.",
+      exercices: [
+        _ex(
+          1,
+          'Champ uniforme entre deux plaques',
+          5,
+          "Deux plaques métalliques parallèles, séparées de \$d = 5\\,cm\$, sont reliées à un générateur \$U = 1000\\,V\$. La plaque \$A\$ est au potentiel +U/2, la plaque \$B\$ à -U/2.",
+          [
+            _q(
+              1,
+              "Calculer le champ \$E\$ entre les plaques et sa direction.",
+              2,
+              _sol([
+                _step(
+                  "**Champ uniforme** entre deux plaques : \$E = U/d\$. Direction : de la plaque + vers la plaque −.",
+                ),
+                _step(
+                  "Application : \$E = 1000/0{,}05 = 20\\,000\\,V/m\$. Dirigé de \$A\$ (+) vers \$B\$ (−).",
+                  tipFr:
+                      "Toujours indiquer le sens du champ — il pointe vers les potentiels décroissants (du + vers le −).",
+                ),
+              ], finalAnswerFr: r"$E = 20$ kV/m, de A vers B"),
+            ),
+            _q(
+              2,
+              "Une charge \$q = +2\\,nC\$ est placée entre les plaques. Calculer la force qu'elle subit.",
+              2,
+              _sol([
+                _step(
+                  "**Force électrique** : \$\\vec{F} = q\\vec{E}\$.",
+                ),
+                _step(
+                  "Norme : \$F = q E = 2 \\times 10^{-9} \\times 20\\,000 = 4 \\times 10^{-5}\\,N = 40\\,\\mu N\$.",
+                ),
+                _step(
+                  "Direction : pour \$q > 0\$, force dans le sens de \$\\vec{E}\$ (de A vers B). Pour \$q < 0\$, force opposée (de B vers A).",
+                  tipFr:
+                      "Les charges positives sont 'poussées' dans le sens du champ ; les négatives sont 'attirées' vers la plaque positive.",
+                ),
+              ], finalAnswerFr: r"$F = 40$ μN, de A vers B"),
+            ),
+            _q(
+              3,
+              "Comparer cette force au poids de la charge si sa masse est \$m = 10^{-15}\\,kg\$.",
+              1,
+              _sol([
+                _step(
+                  "Poids : \$P = mg = 10^{-15} \\times 10 = 10^{-14}\\,N\$.",
+                ),
+                _step(
+                  "Rapport : \$F/P = 4 \\times 10^{-5} / 10^{-14} = 4 \\times 10^9\$. La force électrique est **4 milliards de fois plus grande** que le poids. Le poids est négligeable.",
+                ),
+              ], finalAnswerFr: r"$F/P \approx 4 \times 10^9$ : poids négligeable"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Mouvement d\'une charge entre les plaques',
+          5,
+          "Un électron (\$q = -e\$, \$m = 9{,}11 \\times 10^{-31}\\,kg\$) entre dans la région entre les plaques avec vitesse initiale \$v_0 = 10^7\\,m/s\$ horizontale, parallèle aux plaques. Le champ est vertical descendant (plaque haute +). Longueur des plaques : \$L = 4\\,cm\$. \$E = 20\\,kV/m\$.",
+          [
+            _q(
+              1,
+              "Calculer l'accélération subie par l'électron.",
+              2,
+              _sol([
+                _step(
+                  "Force : \$\\vec{F} = q\\vec{E} = -e \\vec{E}\$ — opposée à \$\\vec{E}\$, donc vers le haut (vers la plaque +).",
+                ),
+                _step(
+                  "Accélération : \$a = F/m = eE/m = 1{,}6 \\times 10^{-19} \\times 20000 / 9{,}11 \\times 10^{-31} \\approx 3{,}5 \\times 10^{15}\\,m/s^2\$.",
+                ),
+                _step(
+                  "**Vertigineux** : accélération de \$3{,}5 \\times 10^{15} g\$ ! C'est pourquoi les particules chargées atteignent rapidement des vitesses relativistes dans un accélérateur.",
+                ),
+              ], finalAnswerFr: r"$a \approx 3{,}5 \times 10^{15}$ m/s² (vers le haut)"),
+            ),
+            _q(
+              2,
+              "Calculer la durée de traversée des plaques.",
+              1,
+              _sol([
+                _step(
+                  "Mouvement horizontal : MRU avec \$v_x = v_0 = 10^7\\,m/s\$. Durée : \$t = L/v_0 = 0{,}04/10^7 = 4 \\times 10^{-9}\\,s = 4\\,ns\$.",
+                ),
+              ], finalAnswerFr: r"$t = 4$ ns"),
+            ),
+            _q(
+              3,
+              "Calculer la déviation verticale \$y\$ à la sortie des plaques.",
+              2,
+              _sol([
+                _step(
+                  "Mouvement vertical (à partir du repos en y) : \$y = \\frac{1}{2} a t^2\$.",
+                ),
+                _step(
+                  "Application : \$y = 0{,}5 \\times 3{,}5 \\times 10^{15} \\times (4 \\times 10^{-9})^2 = 0{,}5 \\times 3{,}5 \\times 10^{15} \\times 1{,}6 \\times 10^{-17} = 2{,}8 \\times 10^{-2}\\,m = 2{,}8\\,cm\$.",
+                ),
+                _step(
+                  "**Application** : c'est le principe de la déflexion dans un oscilloscope cathodique — modifier U module la position verticale du spot sur l'écran.",
+                  tipFr:
+                      "La déflexion est proportionnelle à \$U\$ — d'où le principe du tube cathodique : signaux faibles → mouvements visibles.",
+                ),
+              ], finalAnswerFr: r"$y = 2{,}8$ cm"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Énergie cinétique acquise',
+          5,
+          "Un proton (\$q = +e\$, \$m_p = 1{,}67 \\times 10^{-27}\\,kg\$) est accéléré entre deux électrodes soumises à une tension \$U = 1000\\,V\$. Il part du repos.",
+          [
+            _q(
+              1,
+              "Calculer le travail \$W\$ de la force électrique.",
+              2,
+              _sol([
+                _step(
+                  "**Travail dans un champ uniforme** : \$W = qU\$ (pour une charge passant de la plaque + à la plaque − dans le sens du champ).",
+                ),
+                _step(
+                  "Pour notre proton : \$W = e \\cdot U = 1{,}6 \\times 10^{-19} \\times 1000 = 1{,}6 \\times 10^{-16}\\,J\$.",
+                ),
+                _step(
+                  "**Unité pratique** : \$W = 1\\,keV = 10^3\\,eV\$. L'**électron-volt** est l'énergie acquise par un électron sous 1 V. Conversion : \$1\\,eV = 1{,}6 \\times 10^{-19}\\,J\$.",
+                  tipFr:
+                      "Pour les particules chargées, raisonner en eV évite les puissances de 10 : énergies typiques en physique du noyau sont en MeV ou GeV.",
+                ),
+              ], finalAnswerFr: r"$W = 1{,}6 \times 10^{-16}$ J = 1 keV"),
+            ),
+            _q(
+              2,
+              "En déduire la vitesse acquise par le proton.",
+              3,
+              _sol([
+                _step(
+                  "**Théorème de l'énergie cinétique** : \$\\Delta E_c = W\$. Le proton partant du repos, \$E_c = W = \\frac{1}{2}m_p v^2\$.",
+                ),
+                _step(
+                  "Résolution : \$v = \\sqrt{2 W/m_p} = \\sqrt{2 \\times 1{,}6 \\times 10^{-16}/1{,}67 \\times 10^{-27}}\$.",
+                ),
+                _step(
+                  "Calcul : \$2 \\times 1{,}6 / 1{,}67 \\approx 1{,}916\$. \$v = \\sqrt{1{,}916 \\times 10^{11}} \\approx 4{,}38 \\times 10^5\\,m/s = 438\\,km/s\$.",
+                ),
+                _step(
+                  "**Comparaison** : 438 km/s est rapide mais reste classique (\$v \\ll c\$, donc cinématique non-relativiste valable).",
+                ),
+              ], finalAnswerFr: r"$v \approx 438$ km/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Surface équipotentielle',
+          5,
+          "Dans une région où le champ électrique est uniforme \$\\vec{E} = E\\vec{u}_x\$ avec \$E = 100\\,V/m\$.",
+          [
+            _q(
+              1,
+              "Quelle est l'orientation des surfaces équipotentielles ?",
+              2,
+              _sol([
+                _step(
+                  "**Définition** : une surface équipotentielle est un ensemble de points au même potentiel \$V\$.",
+                ),
+                _step(
+                  "**Propriété** : le champ \$\\vec{E}\$ est **perpendiculaire** aux surfaces équipotentielles (et pointe vers les potentiels décroissants).",
+                ),
+                _step(
+                  "Avec \$\\vec{E}\$ parallèle à \$\\vec{u}_x\$, les surfaces équipotentielles sont **perpendiculaires à Ox** — c'est-à-dire des **plans parallèles au plan (Oy, Oz)**.",
+                ),
+              ], finalAnswerFr: r"Plans $\perp$ à $\vec{E}$ (plan (Oy, Oz))"),
+            ),
+            _q(
+              2,
+              "Calculer la différence de potentiel \$V_A - V_B\$ entre \$A(0, 0, 0)\$ et \$B(2\\,m, 0, 0)\$.",
+              3,
+              _sol([
+                _step(
+                  "**Relation** : \$V_A - V_B = \\int_A^B \\vec{E} \\cdot d\\vec{r} = E \\cdot \\Delta x\$ (chemin orienté de A vers B).",
+                ),
+                _step(
+                  "\$\\Delta x_{AB} = 2\\,m\$. Donc \$V_A - V_B = 100 \\times 2 = 200\\,V\$.",
+                ),
+                _step(
+                  "**Interprétation** : pour aller de A à B dans le sens du champ, on perd \$200\\,V\$ de potentiel — A est plus haut en potentiel que B.",
+                  tipFr:
+                      "Champ uniforme : différence de potentiel est simplement \$E \\times d\$ projeté sur le champ.",
+                ),
+              ], finalAnswerFr: r"$V_A - V_B = 200$ V"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperBFieldBasics() => _paper(
+      titleFr: 'Épreuve type — Champ magnétique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Champ magnétique uniforme, force de Lorentz \$\\vec{F} = q\\vec{v} \\wedge \\vec{B}\$, mouvement circulaire d'une charge, force de Laplace sur un conducteur.",
+      exercices: [
+        _ex(
+          1,
+          'Force de Lorentz',
+          5,
+          "Un proton entre dans un champ magnétique uniforme \$\\vec{B} = B\\vec{u}_z\$ avec \$B = 0{,}1\\,T\$ et vitesse \$\\vec{v} = v\\vec{u}_x\$ avec \$v = 10^6\\,m/s\$.",
+          [
+            _q(
+              1,
+              "Calculer la force magnétique subie par le proton.",
+              3,
+              _sol([
+                _step(
+                  "**Force de Lorentz** : \$\\vec{F} = q\\vec{v} \\wedge \\vec{B}\$. Pour un proton, \$q = +e\$.",
+                ),
+                _step(
+                  "Produit vectoriel : \$\\vec{u}_x \\wedge \\vec{u}_z = -\\vec{u}_y\$. Donc \$\\vec{F} = e v B (-\\vec{u}_y) = -e v B \\vec{u}_y\$.",
+                ),
+                _step(
+                  "Norme : \$F = e v B = 1{,}6 \\times 10^{-19} \\times 10^6 \\times 0{,}1 = 1{,}6 \\times 10^{-14}\\,N\$. Direction : selon \$-\\vec{u}_y\$ (perpendiculaire à \$\\vec{v}\$ et à \$\\vec{B}\$).",
+                  tipFr:
+                      "Règle de la main droite : pouce = \$\\vec v\$, index = \$\\vec B\$, majeur = \$\\vec v \\wedge \\vec B\$. Pour \$q > 0\$, \$\\vec F\$ va dans ce sens.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$F = 1{,}6 \times 10^{-14}$ N, sens $-\vec{u}_y$"),
+            ),
+            _q(
+              2,
+              "Quelle est la trajectoire suivie par le proton ? Calculer le rayon.",
+              2,
+              _sol([
+                _step(
+                  "La force est **toujours perpendiculaire à \$\\vec{v}\$**, donc elle ne fait pas varier le module de la vitesse — elle ne fait que courber la trajectoire. **Mouvement circulaire uniforme** dans le plan (Ox, Oy).",
+                ),
+                _step(
+                  "**Rayon** : \$qvB = mv^2/r \\Rightarrow r = mv/(qB)\$.",
+                ),
+                _step(
+                  "Application : \$r = 1{,}67 \\times 10^{-27} \\times 10^6 / (1{,}6 \\times 10^{-19} \\times 0{,}1) = 1{,}67 \\times 10^{-21}/1{,}6 \\times 10^{-20} \\approx 0{,}10\\,m = 10\\,cm\$.",
+                ),
+              ], finalAnswerFr: r"Cercle, $r \approx 10$ cm"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Spectromètre de masse',
+          5,
+          "Un spectromètre de masse utilise un champ magnétique \$B = 0{,}5\\,T\$ pour séparer des ions de même charge \$q = e\$ accélérés sous tension \$U = 5000\\,V\$, par leur masse.",
+          [
+            _q(
+              1,
+              "Donner la relation entre \$r\$, \$m\$, \$U\$ et \$B\$.",
+              3,
+              _sol([
+                _step(
+                  "**Étape 1 - Accélération** : énergie cinétique acquise \$eU = \\frac{1}{2}mv^2 \\Rightarrow v = \\sqrt{2eU/m}\$.",
+                ),
+                _step(
+                  "**Étape 2 - Trajectoire circulaire** : \$r = mv/(eB)\$.",
+                ),
+                _step(
+                  "Substitution : \$r = \\dfrac{m}{eB}\\sqrt{2eU/m} = \\dfrac{1}{B}\\sqrt{2mU/e}\$.",
+                ),
+                _step(
+                  "Donc \$r \\propto \\sqrt{m}\$ — le rayon est proportionnel à la racine de la masse. Des ions plus lourds décrivent un cercle plus grand → on les sépare.",
+                ),
+              ], finalAnswerFr: r"$r = \frac{1}{B}\sqrt{2mU/e}$"),
+            ),
+            _q(
+              2,
+              "Calculer le rayon pour un ion \$^{12}\\text{C}^+\$ (\$m = 12 u = 1{,}99 \\times 10^{-26}\\,kg\$).",
+              2,
+              _sol([
+                _step(
+                  "Calcul : \$r = \\dfrac{1}{0{,}5} \\sqrt{\\dfrac{2 \\times 1{,}99 \\times 10^{-26} \\times 5000}{1{,}6 \\times 10^{-19}}}\$.",
+                ),
+                _step(
+                  "Numérateur sous racine : \$2 \\times 1{,}99 \\times 5 \\times 10^{-23} = 1{,}99 \\times 10^{-22}\$. Diviser par \$1{,}6 \\times 10^{-19}\$ : \$1{,}24 \\times 10^{-3}\$. Racine : \$\\approx 3{,}53 \\times 10^{-2}\\,m^{1/2}\$. Multiplier par 2 (le \$1/B = 2\$) : \$r \\approx 7{,}06 \\times 10^{-2}\\,m \\approx 7{,}1\\,cm\$.",
+                  tipFr:
+                      "Les spectromètres de masse permettent de distinguer des isotopes (même Z, masses différentes) par les rayons différents → analyse précise.",
+                ),
+              ], finalAnswerFr: r"$r \approx 7{,}1$ cm"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Force de Laplace',
+          5,
+          "Un fil rectiligne de longueur \$L = 20\\,cm\$ parcouru par un courant \$I = 5\\,A\$ est placé perpendiculairement à un champ magnétique uniforme \$\\vec{B}\$, \$B = 0{,}2\\,T\$.",
+          [
+            _q(
+              1,
+              "Calculer la force de Laplace s'exerçant sur le fil.",
+              3,
+              _sol([
+                _step(
+                  "**Force de Laplace** : \$\\vec{F} = I \\vec{L} \\wedge \\vec{B}\$ où \$\\vec{L}\$ est dans le sens du courant.",
+                ),
+                _step(
+                  "Norme (\$\\vec{L} \\perp \\vec{B}\$) : \$F = I L B \\sin 90° = I L B = 5 \\times 0{,}2 \\times 0{,}2 = 0{,}2\\,N\$.",
+                ),
+                _step(
+                  "Direction : perpendiculaire au fil ET au champ. Sens : règle de la main droite (ou des trois doigts).",
+                  tipFr:
+                      "C'est cette force qui fait tourner un moteur électrique : un cadre conducteur dans un champ magnétique subit un couple proportionnel au courant.",
+                ),
+              ], finalAnswerFr: r"$F = 0{,}2$ N $\perp$ fil et $\perp \vec{B}$"),
+            ),
+            _q(
+              2,
+              "Application : moteur électrique. Si le fil est dans un cadre de \$N = 100\\,\\text{spires}\$ et qu'il subit un couple, comment la force de Laplace contribue-t-elle ?",
+              2,
+              _sol([
+                _step(
+                  "Chaque spire subit la même force \$F\$ : la force totale est \$N \\times F = 100 \\times 0{,}2 = 20\\,N\$.",
+                ),
+                _step(
+                  "Pour un cadre rotatif, deux côtés parallèles à l'axe subissent des forces opposées (couple) qui font tourner le cadre. La rotation est entretenue par un **collecteur** qui inverse le courant à chaque demi-tour pour maintenir le couple dans le même sens.",
+                ),
+                _step(
+                  "**Principe industriel** : tous les moteurs électriques DC reposent sur cette force de Laplace, démultipliée par le nombre de spires.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Travail nul de la force magnétique',
+          5,
+          "Démontrer que la force magnétique sur une charge ne change pas son énergie cinétique.",
+          [
+            _q(
+              1,
+              "Calculer le travail élémentaire \$\\delta W\$ de la force \$\\vec{F} = q\\vec{v} \\wedge \\vec{B}\$ pour un déplacement \$d\\vec{r}\$.",
+              3,
+              _sol([
+                _step(
+                  "Travail élémentaire : \$\\delta W = \\vec{F} \\cdot d\\vec{r}\$.",
+                ),
+                _step(
+                  "Or \$d\\vec{r} = \\vec{v}\\,dt\$. Donc \$\\delta W = \\vec{F} \\cdot \\vec{v}\\,dt = (q\\vec{v} \\wedge \\vec{B}) \\cdot \\vec{v}\\,dt\$.",
+                ),
+                _step(
+                  "**Propriété fondamentale du produit vectoriel** : \$\\vec{v} \\wedge \\vec{B}\$ est perpendiculaire à \$\\vec{v}\$. Donc le produit scalaire \$(\\vec{v} \\wedge \\vec{B}) \\cdot \\vec{v} = 0\$.",
+                ),
+                _step(
+                  "Conclusion : \$\\delta W = 0\$ à tout instant, donc \$W = 0\$ sur tout le mouvement. La force magnétique **ne change jamais l'énergie cinétique** d'une charge.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Quelle est la conséquence pratique pour le mouvement d'une charge dans un champ magnétique uniforme ?",
+              2,
+              _sol([
+                _step(
+                  "**\$E_c = \\text{cste} \\Rightarrow v = \\text{cste}\$** : le module de la vitesse est constant. Seule la direction change.",
+                ),
+                _step(
+                  "Trajectoire à vitesse constante avec courbure constante → **cercle** (ou hélice si \$\\vec v\$ a une composante parallèle à \$\\vec B\$).",
+                ),
+                _step(
+                  "**Implication** : pour accélérer une charge (lui donner plus d'énergie), on a besoin d'un champ électrique. Le champ magnétique sert à courber/diriger (cyclotron, synchrotron).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperPendulumSimple() => _paper(
+      titleFr: 'Épreuve type — Pendule simple',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Pendule simple : équation différentielle, petites oscillations, période \$T_0 = 2\\pi\\sqrt{L/g}\$, énergie mécanique.",
+      exercices: [
+        _ex(
+          1,
+          'Équation du mouvement',
+          5,
+          "Un pendule simple : masse ponctuelle \$m = 200\\,g\$ au bout d'un fil inextensible de longueur \$L = 0{,}5\\,m\$. Angle \$\\theta\$ avec la verticale. \$g = 10\\,m/s^2\$.",
+          [
+            _q(
+              1,
+              "Faire le bilan des forces et établir l'équation différentielle pour \$\\theta(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "Forces : poids \$\\vec{P}\$ (vertical) et tension du fil \$\\vec{T}\$ (radiale).",
+                ),
+                _step(
+                  "Projection sur la tangente à la trajectoire (axe orthogonal à \$\\vec{T}\$, sens d'oscillation positif) : la composante tangentielle du poids vaut \$-mg\\sin\\theta\$ (force de rappel).",
+                ),
+                _step(
+                  "2ème loi de Newton sur la tangente : \$m L \\ddot\\theta = -mg\\sin\\theta\$ (l'accélération tangentielle est \$L\\ddot\\theta\$ pour une trajectoire circulaire de rayon L).",
+                ),
+                _step(
+                  "Simplification : \$\\ddot\\theta + \\dfrac{g}{L} \\sin\\theta = 0\$. **Équation non linéaire** (à cause du \$\\sin\\theta\$).",
+                  tipFr:
+                      "Cette équation n'a pas de solution analytique en fonctions élémentaires — il faut l'approximation des petites oscillations.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\ddot\theta + \dfrac{g}{L}\sin\theta = 0$"),
+            ),
+            _q(
+              2,
+              "Pour les petites oscillations (\$\\theta \\ll 1\\,rad\$), on a \$\\sin\\theta \\approx \\theta\$. Donner l'équation linéarisée.",
+              2,
+              _sol([
+                _step(
+                  "Approximation : \$\\sin\\theta \\approx \\theta\$ pour \$\\theta\$ petit (en radians).",
+                ),
+                _step(
+                  "Équation linéarisée : \$\\ddot\\theta + \\omega_0^2 \\theta = 0\$ avec \$\\omega_0 = \\sqrt{g/L}\$.",
+                ),
+                _step(
+                  "**Validité** : précision <1% pour \$|\\theta| < 0{,}3\\,rad \\approx 17°\$. Au-delà, l'approximation fait apparaître une erreur croissante.",
+                  tipFr:
+                      "Pour \$\\theta = 30°\$, \$\\sin(30°) = 0{,}5\$ alors que \$\\theta = 0{,}524\\,rad\$ — erreur de ~5%.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$\ddot\theta + \omega_0^2 \theta = 0$, $\omega_0 = \sqrt{g/L}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Période et fréquence',
+          5,
+          "Pour le pendule de l'Exercice 1 (\$L = 0{,}5\\,m\$, \$g = 10\\,m/s^2\$).",
+          [
+            _q(
+              1,
+              "Calculer la période propre \$T_0\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\omega_0 = \\sqrt{g/L} = \\sqrt{10/0{,}5} = \\sqrt{20} \\approx 4{,}47\\,rad/s\$.",
+                ),
+                _step(
+                  "**Période** : \$T_0 = 2\\pi/\\omega_0 = 2\\pi/4{,}47 \\approx 1{,}41\\,s\$.",
+                ),
+                _step(
+                  "**Remarque** : la période ne dépend NI de la masse, NI de l'amplitude (dans la limite des petites oscillations). Elle ne dépend que de \$L\$ et \$g\$.",
+                  tipFr:
+                      "Cette indépendance vis-à-vis de la masse fut découverte par Galilée — un événement historique en physique.",
+                ),
+              ], finalAnswerFr: r"$T_0 \approx 1{,}41$ s"),
+            ),
+            _q(
+              2,
+              "Si on double la longueur \$L\$, comment varie \$T_0\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$T_0 \\propto \\sqrt{L}\$. Doubler \$L\$ → \$T_0\$ multiplié par \$\\sqrt{2} \\approx 1{,}414\$.",
+                ),
+                _step(
+                  "Pour quadrupler la période, il faudrait multiplier \$L\$ par 16. Pour la diviser par 2 : \$L\$ divisé par 4.",
+                ),
+              ], finalAnswerFr: r"$T_0$ × $\sqrt{2}$"),
+            ),
+            _q(
+              3,
+              "Sur la Lune (\$g_{Lune} = 1{,}62\\,m/s^2\$), quelle serait la période du même pendule ?",
+              1,
+              _sol([
+                _step(
+                  "\$T_{Lune}/T_{Terre} = \\sqrt{g_{Terre}/g_{Lune}} = \\sqrt{10/1{,}62} \\approx 2{,}48\$.",
+                ),
+                _step(
+                  "\$T_{Lune} \\approx 1{,}41 \\times 2{,}48 \\approx 3{,}50\\,s\$. Sur la Lune, gravité plus faible → mouvements plus lents — cohérent avec les vidéos des astronautes Apollo.",
+                ),
+              ], finalAnswerFr: r"$T_{Lune} \approx 3{,}5$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Conservation de l\'énergie',
+          5,
+          "Le pendule est lâché avec un angle initial \$\\theta_0 = 0{,}2\\,rad\$ (sans vitesse initiale). On néglige les frottements.",
+          [
+            _q(
+              1,
+              "Calculer l'énergie mécanique initiale.",
+              2,
+              _sol([
+                _step(
+                  "À l'instant initial : \$v = 0\$ donc \$E_c = 0\$. Toute l'énergie est en \$E_p\$.",
+                ),
+                _step(
+                  "**Hauteur** par rapport au point bas : \$h_0 = L(1 - \\cos\\theta_0) \\approx L \\theta_0^2/2\$ pour \$\\theta_0\$ petit.",
+                ),
+                _step(
+                  "\$h_0 \\approx 0{,}5 \\times 0{,}04 / 2 = 0{,}01\\,m = 1\\,cm\$. Énergie : \$E_m = m g h_0 = 0{,}2 \\times 10 \\times 0{,}01 = 0{,}02\\,J = 20\\,mJ\$.",
+                ),
+              ], finalAnswerFr: r"$E_m = 20$ mJ"),
+            ),
+            _q(
+              2,
+              "Calculer la vitesse au passage par la position d'équilibre.",
+              3,
+              _sol([
+                _step(
+                  "Au point bas (\$\\theta = 0\$) : \$h = 0\$ donc \$E_p = 0\$. Conservation : toute l'énergie est en \$E_c\$.",
+                ),
+                _step(
+                  "\$\\frac{1}{2} m v^2 = E_m \\Rightarrow v = \\sqrt{2 E_m / m} = \\sqrt{2 \\times 0{,}02 / 0{,}2} = \\sqrt{0{,}2} \\approx 0{,}447\\,m/s\$.",
+                ),
+                _step(
+                  "**Vérification** : pour \$\\theta_0\$ petit, \$v_{\\max} = \\omega_0 L \\theta_0 = 4{,}47 \\times 0{,}5 \\times 0{,}2 = 0{,}447\\,m/s\$ ✓.",
+                  tipFr:
+                      "L'énergie mécanique reste constante (sans frottement). Les conversions \$E_p \\leftrightarrow E_c\$ rythment le mouvement.",
+                ),
+              ], finalAnswerFr: r"$v_{\max} \approx 0{,}447$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Pendule amorti',
+          5,
+          "Dans la réalité, le pendule subit des frottements (air, articulation). On observe que son amplitude se réduit de 10% après chaque oscillation complète.",
+          [
+            _q(
+              1,
+              "Définir le facteur de qualité \$Q\$ du pendule.",
+              2,
+              _sol([
+                _step(
+                  "**Facteur de qualité** : \$Q = 2\\pi \\times \\dfrac{E_m}{|\\Delta E_m|}\$ par période, où \$|\\Delta E_m|\$ est l'énergie perdue par cycle.",
+                ),
+                _step(
+                  "L'énergie est proportionnelle à l'amplitude au carré. Si l'amplitude diminue de 10% (\$A' = 0{,}9 A\$), alors \$E' = 0{,}81 E\$, perte de 19% par cycle.",
+                ),
+                _step(
+                  "\$Q = 2\\pi / 0{,}19 \\approx 33\$. C'est un Q modéré — entre un système très amorti et un oscillateur idéal.",
+                  tipFr:
+                      "Q très élevé pour un quartz (\$Q \\sim 10^5\$), modéré pour une corde de guitare (\$Q \\sim 1000\$), faible pour un pendule physique réel (\$Q \\sim 100\$).",
+                ),
+              ], finalAnswerFr: r"$Q \approx 33$"),
+            ),
+            _q(
+              2,
+              "Au bout de combien d'oscillations l'amplitude est-elle divisée par 2 ?",
+              3,
+              _sol([
+                _step(
+                  "On veut \$0{,}9^n = 0{,}5\$, soit \$n \\ln(0{,}9) = \\ln(0{,}5) \\Rightarrow n = \\ln(0{,}5)/\\ln(0{,}9) = -0{,}693/-0{,}105 \\approx 6{,}58\$.",
+                ),
+                _step(
+                  "Donc après **environ 7 oscillations**, l'amplitude initiale est divisée par 2.",
+                ),
+                _step(
+                  "**Durée** : 7 × \$T_0\$ = 7 × 1,41 ≈ 9,9 s. Pour ce pendule, il faut une dizaine de secondes pour que l'amplitude soit divisée par 2 — assez rapide.",
+                ),
+              ], finalAnswerFr: r"$\sim 7$ oscillations ($\sim 10$ s)"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperKineticPotential() => _paper(
+      titleFr: 'Épreuve type — Énergie cinétique et potentielle',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Énergie cinétique \$E_c = \\frac{1}{2}mv^2\$, énergie potentielle de pesanteur \$E_p = mgh\$, théorème de l'énergie cinétique, conservation de l'énergie mécanique.",
+      exercices: [
+        _ex(
+          1,
+          'Calcul d\'énergies',
+          5,
+          "Une voiture de masse \$m = 1200\\,kg\$ se déplace à vitesse \$v = 72\\,km/h\$ sur une route plate. Elle gravit ensuite une côte de hauteur \$h = 30\\,m\$. \$g = 10\\,m/s^2\$.",
+          [
+            _q(
+              1,
+              "Calculer l'énergie cinétique initiale.",
+              2,
+              _sol([
+                _step(
+                  "Conversion : \$v = 72\\,km/h = 72 \\times 1000/3600 = 20\\,m/s\$.",
+                ),
+                _step(
+                  "\$E_c = \\frac{1}{2}mv^2 = 0{,}5 \\times 1200 \\times 400 = 240\\,000\\,J = 240\\,kJ\$.",
+                  tipFr:
+                      "Toujours convertir les km/h en m/s avant un calcul en J (système SI).",
+                ),
+              ], finalAnswerFr: r"$E_c = 240$ kJ"),
+            ),
+            _q(
+              2,
+              "Calculer l'énergie potentielle gagnée en haut de la côte (par rapport au bas).",
+              1,
+              _sol([
+                _step(
+                  "\$E_p = mgh = 1200 \\times 10 \\times 30 = 360\\,000\\,J = 360\\,kJ\$.",
+                ),
+              ], finalAnswerFr: r"$E_p = 360$ kJ"),
+            ),
+            _q(
+              3,
+              "Si la voiture monte la côte sans utiliser son moteur (juste son inertie), à quelle vitesse arrive-t-elle en haut ?",
+              2,
+              _sol([
+                _step(
+                  "Conservation de l'énergie mécanique (en négligeant frottements) : \$E_{m,bas} = E_{m,haut}\$.",
+                ),
+                _step(
+                  "Or \$E_{c,bas} = 240\\,kJ < 360\\,kJ = E_{p,haut\\,potentiel}\$. L'énergie cinétique initiale est **insuffisante** pour atteindre le sommet à vitesse non nulle !",
+                ),
+                _step(
+                  "La voiture s'arrêterait avant : la hauteur atteinte serait \$h_{\\max} = E_c/(mg) = 240000/12000 = 20\\,m\$. Plus haut, il faut le moteur.",
+                  tipFr:
+                      "Vérifier d'abord si l'énergie initiale est suffisante pour atteindre la hauteur cible — sinon, le mouvement s'arrête avant.",
+                ),
+              ], finalAnswerFr: r"S'arrête à $h_{\max} = 20$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Théorème de l\'énergie cinétique',
+          5,
+          "Une boîte de masse \$m = 50\\,kg\$ glisse depuis le repos sur un plan incliné d'angle \$\\alpha = 30°\$ et de longueur \$L = 5\\,m\$. Coefficient de frottement \$\\mu = 0{,}2\$. \$g = 10\\,m/s^2\$.",
+          [
+            _q(
+              1,
+              "Calculer le travail du poids et des frottements.",
+              3,
+              _sol([
+                _step(
+                  "**Travail du poids** : \$W_P = mgh = mg L\\sin\\alpha = 50 \\times 10 \\times 5 \\times 0{,}5 = 1250\\,J\$ (moteur).",
+                ),
+                _step(
+                  "**Réaction normale** : \$R = mg\\cos\\alpha = 50 \\times 10 \\times \\sqrt 3/2 \\approx 433\\,N\$. Force de frottement : \$f = \\mu R \\approx 0{,}2 \\times 433 \\approx 86{,}6\\,N\$.",
+                ),
+                _step(
+                  "**Travail du frottement** : \$W_f = -f L = -86{,}6 \\times 5 \\approx -433\\,J\$ (résistant). Le signe négatif vient du fait que la force est opposée au déplacement.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$W_P = 1250$ J, $W_f \approx -433$ J"),
+            ),
+            _q(
+              2,
+              "Calculer la vitesse en bas du plan incliné.",
+              2,
+              _sol([
+                _step(
+                  "**Théorème de l'énergie cinétique** : \$\\Delta E_c = W_{\\text{total}} = W_P + W_f\$.",
+                ),
+                _step(
+                  "\$\\Delta E_c = 1250 - 433 = 817\\,J\$ (gain d'énergie cinétique).",
+                ),
+                _step(
+                  "\$\\frac{1}{2}mv^2 = 817 \\Rightarrow v = \\sqrt{2 \\times 817 / 50} = \\sqrt{32{,}7} \\approx 5{,}72\\,m/s\$.",
+                ),
+                _step(
+                  "**Comparaison** : sans frottement, \$v = \\sqrt{2 g h} = \\sqrt{50} = 7{,}07\\,m/s\$. Les frottements réduisent la vitesse de 19%.",
+                  tipFr:
+                      "Le TEC est puissant — il convertit un problème dynamique (forces, accélérations) en un problème scalaire d'énergie.",
+                ),
+              ], finalAnswerFr: r"$v \approx 5{,}72$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Énergie potentielle de ressort',
+          5,
+          "Un ressort de raideur \$k = 200\\,N/m\$ est comprimé de \$x = 10\\,cm\$ depuis sa position d'équilibre. À l'autre bout du ressort, une masse \$m = 100\\,g\$. On libère le système.",
+          [
+            _q(
+              1,
+              "Calculer l'énergie potentielle élastique initiale.",
+              2,
+              _sol([
+                _step(
+                  "**Énergie potentielle d'un ressort** : \$E_p = \\frac{1}{2} k x^2\$ (où \$x\$ est l'écart à l'équilibre).",
+                ),
+                _step(
+                  "Application : \$E_p = 0{,}5 \\times 200 \\times (0{,}1)^2 = 0{,}5 \\times 200 \\times 0{,}01 = 1\\,J\$.",
+                  tipFr:
+                      "Le facteur \$x^2\$ rend l'énergie sensible à la compression — doubler la compression quadruple l'énergie.",
+                ),
+              ], finalAnswerFr: r"$E_p = 1$ J"),
+            ),
+            _q(
+              2,
+              "Si l'on néglige les frottements, quelle est la vitesse maximale atteinte par la masse ?",
+              3,
+              _sol([
+                _step(
+                  "Conservation de l'énergie : \$E_p^{\\text{ressort}} = E_c^{\\text{masse}}\$ à la position d'équilibre du ressort (où le ressort exerce zéro force).",
+                ),
+                _step(
+                  "\$\\frac{1}{2}mv^2 = 1\\,J \\Rightarrow v = \\sqrt{2/m} = \\sqrt{2/0{,}1} = \\sqrt{20} \\approx 4{,}47\\,m/s\$.",
+                ),
+                _step(
+                  "**Pulsation propre du système** : \$\\omega_0 = \\sqrt{k/m} = \\sqrt{2000} \\approx 44{,}7\\,rad/s\$. \$v_{\\max} = \\omega_0 \\times x \\approx 4{,}47\\,m/s\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$v_{\max} \approx 4{,}47$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — looping',
+          5,
+          "Une bille glisse sans frottement le long d'une piste qui se termine par un looping de rayon \$R = 1\\,m\$. À quelle hauteur minimale doit-on lâcher la bille pour qu'elle complète le looping sans tomber ?",
+          [
+            _q(
+              1,
+              "Au sommet du looping, quelle est la vitesse minimale pour rester en contact avec la piste ?",
+              3,
+              _sol([
+                _step(
+                  "**Au sommet** : bille en mouvement circulaire. Forces vers le centre : poids \$\\vec{P}\$ (vers le bas = vers le centre ici) + réaction normale \$\\vec{R}\$ (vers le centre).",
+                ),
+                _step(
+                  "2ème loi de Newton : \$P + R = mv^2/R\$ (somme des forces vers le centre = force centripète).",
+                ),
+                _step(
+                  "**Limite** : la bille perd contact quand \$R = 0\$. À cette limite, \$mg = mv_{\\min}^2/R \\Rightarrow v_{\\min} = \\sqrt{gR}\$.",
+                ),
+                _step(
+                  "Avec \$g = 10\\,m/s^2\$ et \$R = 1\\,m\$ : \$v_{\\min} = \\sqrt{10} \\approx 3{,}16\\,m/s\$.",
+                  tipFr:
+                      "Au sommet d'un looping, le poids fournit naturellement la force centripète. Pas besoin d'appui de la piste si \$v\$ est suffisante.",
+                ),
+              ], finalAnswerFr: r"$v_{\min,\text{sommet}} = \sqrt{gR} \approx 3{,}16$ m/s"),
+            ),
+            _q(
+              2,
+              "En déduire la hauteur de lâcher minimale.",
+              2,
+              _sol([
+                _step(
+                  "Conservation de l'énergie entre point de lâcher (hauteur \$h\$, v=0) et sommet du looping (hauteur \$2R\$, \$v = v_{\\min}\$).",
+                ),
+                _step(
+                  "\$mgh = mg(2R) + \\frac{1}{2}m v_{\\min}^2 = mg(2R) + \\frac{1}{2}m gR = mg(2R + R/2) = \\frac{5}{2}mgR\$.",
+                ),
+                _step(
+                  "Donc \$h_{\\min} = 2{,}5 R = 2{,}5\\,m\$.",
+                  tipFr:
+                      "Règle utile : pour un looping, la hauteur de lâcher minimale est 2.5 fois le rayon du looping.",
+                ),
+              ], finalAnswerFr: r"$h_{\min} = 2{,}5 R = 2{,}5$ m"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -4100,7 +5247,13 @@ final Map<String, Map<String, dynamic>> _papers = {
   'sma_periodic_waves': _paperPeriodicWaves(),
   'sma_nuclear_radioactivity': _paperNuclearRadioactivity(),
   'sma_projectile_motion': _paperProjectileMotion(),
-  // 13 SMA chapters remaining (6 physique + 7 chimie).
+  'sma_forced_oscillations': _paperForcedOscillations(),
+  'sma_am_basics': _paperAmBasics(),
+  'sma_e_field_basics': _paperEFieldBasics(),
+  'sma_b_field_basics': _paperBFieldBasics(),
+  'sma_pendulum_simple': _paperPendulumSimple(),
+  'sma_kinetic_potential': _paperKineticPotential(),
+  // 7 SMA chimie chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
