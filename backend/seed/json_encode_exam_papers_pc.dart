@@ -2328,6 +2328,773 @@ Map<String, dynamic> _paperIntegralCalc() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperComplexAlgebra() => _paper(
+      titleFr: 'Épreuve type — Nombres complexes (forme algébrique)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Forme algébrique \$z = a + bi\$ avec \$i^2 = -1\$. Module \$|z| = \\sqrt{a^2 + b^2}\$, conjugué \$\\bar z = a - bi\$, \$z \\bar z = |z|^2\$.",
+      exercices: [
+        _ex(
+          1,
+          'Opérations algébriques',
+          5,
+          "Soit \$z_1 = 2 + 3i\$ et \$z_2 = 1 - i\$.",
+          [
+            _q(
+              1,
+              "Calculer \$z_1 + z_2\$, \$z_1 \\cdot z_2\$, \$z_1/z_2\$.",
+              4,
+              _sol([
+                _step(
+                  "**Somme** : \$(2 + 1) + (3 - 1)i = 3 + 2i\$.",
+                ),
+                _step(
+                  "**Produit** : \$(2 + 3i)(1 - i) = 2 - 2i + 3i - 3i^2 = 2 + i + 3 = 5 + i\$ (utiliser \$i^2 = -1\$).",
+                ),
+                _step(
+                  "**Quotient** : multiplier numérateur et dénominateur par le conjugué \$\\bar z_2 = 1 + i\$.",
+                ),
+                _step(
+                  "\$\\dfrac{2 + 3i}{1 - i} = \\dfrac{(2 + 3i)(1 + i)}{(1 - i)(1 + i)} = \\dfrac{2 + 2i + 3i + 3i^2}{1 + 1} = \\dfrac{-1 + 5i}{2} = -\\dfrac{1}{2} + \\dfrac{5}{2} i\$.",
+                  tipFr:
+                      "Pour diviser deux complexes, toujours multiplier par le conjugué du dénominateur — ça rationalise (résultat avec dénominateur réel).",
+                ),
+              ], finalAnswerFr: r"$3+2i$, $5+i$, $-1/2 + 5i/2$"),
+            ),
+            _q(
+              2,
+              "Calculer \$|z_1|\$ et \$|z_2|\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z_1| = \\sqrt{2^2 + 3^2} = \\sqrt{13}\$. \$|z_2| = \\sqrt{1 + 1} = \\sqrt 2\$.",
+                ),
+              ], finalAnswerFr: r"$\sqrt{13}$ et $\sqrt 2$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Conjugué',
+          5,
+          "Pour \$z = a + bi\$, le conjugué est \$\\bar z = a - bi\$.",
+          [
+            _q(
+              1,
+              "Démontrer \$z + \\bar z = 2 \\text{Re}(z)\$ et \$z - \\bar z = 2i \\text{Im}(z)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$z + \\bar z = (a + bi) + (a - bi) = 2a = 2 \\text{Re}(z)\$.",
+                ),
+                _step(
+                  "\$z - \\bar z = (a + bi) - (a - bi) = 2bi = 2i \\text{Im}(z)\$.",
+                ),
+                _step(
+                  "**Conséquences** : \$z \\in \\mathbb{R} \\iff z = \\bar z\$ ; \$z\$ imaginaire pur \$\\iff z = -\\bar z\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Montrer que \$z \\bar z = |z|^2\$.",
+              1,
+              _sol([
+                _step(
+                  "\$z \\bar z = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |z|^2\$.",
+                  tipFr:
+                      "Cette identité fondamentale justifie la technique 'multiplier par le conjugué' pour rationaliser \$1/z\$.",
+                ),
+              ], finalAnswerFr: r"$z \bar z = |z|^2 \in \mathbb{R}^+$"),
+            ),
+            _q(
+              3,
+              "Calculer \$1/z\$ pour \$z = 3 - 4i\$.",
+              2,
+              _sol([
+                _step(
+                  "\$1/z = \\dfrac{\\bar z}{z \\bar z} = \\dfrac{3 + 4i}{|z|^2} = \\dfrac{3 + 4i}{9 + 16} = \\dfrac{3 + 4i}{25} = \\dfrac{3}{25} + \\dfrac{4}{25} i\$.",
+                ),
+                _step(
+                  "Vérification : \$z \\cdot (1/z) = (3 - 4i)(3/25 + 4i/25) = (9 + 12i - 12i + 16)/25 = 25/25 = 1\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$1/z = 3/25 + 4i/25$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Équation du second degré',
+          5,
+          "Résoudre \$(E) : z^2 + 4z + 13 = 0\$ dans \$\\mathbb{C}\$.",
+          [
+            _q(
+              1,
+              "Calculer le discriminant.",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta = b^2 - 4ac = 16 - 52 = -36\$. \$\\Delta < 0\$ → deux racines complexes conjuguées.",
+                ),
+              ], finalAnswerFr: r"$\Delta = -36$"),
+            ),
+            _q(
+              2,
+              "Résoudre.",
+              3,
+              _sol([
+                _step(
+                  "Pour \$\\Delta < 0\$ : racines \$z = \\dfrac{-b \\pm i\\sqrt{-\\Delta}}{2a}\$. Ici \$\\sqrt{-\\Delta} = \\sqrt{36} = 6\$.",
+                ),
+                _step(
+                  "\$z = \\dfrac{-4 \\pm 6i}{2} = -2 \\pm 3i\$.",
+                ),
+                _step(
+                  "\$S = \\{-2 + 3i,\\, -2 - 3i\\}\$ — racines conjuguées.",
+                  tipFr:
+                      "Pour un trinôme à coefficients **réels**, les racines complexes vont toujours par paire de conjugués.",
+                ),
+              ], finalAnswerFr: r"$S = \{-2 \pm 3i\}$"),
+            ),
+            _q(
+              3,
+              "Vérification par Viète.",
+              1,
+              _sol([
+                _step(
+                  "Somme \$z_1 + z_2 = (-2 + 3i) + (-2 - 3i) = -4 = -b/a\$ ✓. Produit \$z_1 z_2 = (-2)^2 - (3i)^2 = 4 + 9 = 13 = c/a\$ ✓.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Module et argument',
+          5,
+          "Soit \$z = -1 + i \\sqrt 3\$.",
+          [
+            _q(
+              1,
+              "Calculer \$|z|\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = \\sqrt{(-1)^2 + (\\sqrt 3)^2} = \\sqrt{1 + 3} = 2\$.",
+                ),
+              ], finalAnswerFr: r"$|z| = 2$"),
+            ),
+            _q(
+              2,
+              "Déterminer un argument \$\\theta\$ de \$z\$ (à \$2\\pi\$ près).",
+              3,
+              _sol([
+                _step(
+                  "\$\\cos\\theta = \\text{Re}(z)/|z| = -1/2\$. \$\\sin\\theta = \\text{Im}(z)/|z| = \\sqrt 3/2\$.",
+                ),
+                _step(
+                  "Re < 0 et Im > 0 → \$z\$ dans le **2ème quadrant**. Les valeurs \$\\cos\\theta = -1/2\$ et \$\\sin\\theta = \\sqrt 3/2\$ correspondent à \$\\theta = 2\\pi/3\$.",
+                ),
+                _step(
+                  "Donc \$\\arg z = 2\\pi/3\$ (à \$2\\pi\$ près).",
+                  mistakeFr:
+                      "Une seule équation (\$\\cos\\theta\$ ou \$\\sin\\theta\$) ne suffit pas — il faut les deux pour identifier le quadrant et donc l'angle sans ambiguïté.",
+                ),
+              ], finalAnswerFr: r"$\arg z = 2\pi/3$"),
+            ),
+            _q(
+              3,
+              "Représenter \$z\$ dans le plan complexe.",
+              1,
+              _sol([
+                _step(
+                  "Point d'affixe \$z\$ : coordonnées \$(-1, \\sqrt 3) \\approx (-1, 1{,}73)\$. Sur le cercle de rayon 2 centré en O, dans le 2ème quadrant.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperComplexTrig() => _paper(
+      titleFr: 'Épreuve type — Forme trigonométrique et formule de Moivre',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Forme trigonométrique \$z = r(\\cos\\theta + i\\sin\\theta)\$, forme exponentielle \$z = r e^{i\\theta}\$, formule de Moivre \$(e^{i\\theta})^n = e^{in\\theta}\$, racines n-ièmes.",
+      exercices: [
+        _ex(
+          1,
+          'Passage à la forme exponentielle',
+          5,
+          "Mettre chaque complexe sous forme exponentielle.",
+          [
+            _q(
+              1,
+              "\$z = 1 + i\$.",
+              2,
+              _sol([
+                _step(
+                  "\$|z| = \\sqrt 2\$. \$\\cos\\theta = 1/\\sqrt 2\$, \$\\sin\\theta = 1/\\sqrt 2\$ → \$\\theta = \\pi/4\$.",
+                ),
+                _step(
+                  "Forme exponentielle : \$z = \\sqrt 2\\, e^{i\\pi/4}\$.",
+                ),
+              ], finalAnswerFr: r"$z = \sqrt 2\, e^{i\pi/4}$"),
+            ),
+            _q(
+              2,
+              "\$z = -2\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = 2\$, \$\\arg z = \\pi\$ (axe réel négatif). Donc \$z = 2 e^{i\\pi}\$.",
+                ),
+                _step(
+                  "**Identité d'Euler** : \$e^{i\\pi} = -1\$, soit \$e^{i\\pi} + 1 = 0\$ — souvent appelée la plus belle formule des mathématiques.",
+                ),
+              ], finalAnswerFr: r"$z = 2 e^{i\pi}$"),
+            ),
+            _q(
+              3,
+              "\$z = i\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = 1\$, \$\\arg z = \\pi/2\$ → \$z = e^{i\\pi/2}\$.",
+                ),
+                _step(
+                  "Cohérent avec \$i^2 = e^{i\\pi} = -1\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$z = e^{i\pi/2}$"),
+            ),
+            _q(
+              4,
+              "\$z = -\\sqrt 3 + i\$.",
+              1,
+              _sol([
+                _step(
+                  "\$|z| = \\sqrt{3 + 1} = 2\$. \$\\cos\\theta = -\\sqrt 3/2\$, \$\\sin\\theta = 1/2\$ → \$\\theta = 5\\pi/6\$.",
+                ),
+                _step(
+                  "\$z = 2 e^{i 5\\pi/6}\$.",
+                ),
+              ], finalAnswerFr: r"$z = 2 e^{i 5\pi/6}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Formule de Moivre',
+          5,
+          "Utiliser \$(e^{i\\theta})^n = e^{i n\\theta}\$.",
+          [
+            _q(
+              1,
+              "Calculer \$(1 + i)^{10}\$.",
+              3,
+              _sol([
+                _step(
+                  "\$1 + i = \\sqrt 2\\, e^{i\\pi/4}\$.",
+                ),
+                _step(
+                  "\$(1 + i)^{10} = (\\sqrt 2)^{10} \\cdot e^{i \\cdot 10\\pi/4} = 2^5 \\cdot e^{i 5\\pi/2} = 32 \\cdot e^{i\\pi/2}\$ (car \$5\\pi/2 = 2\\pi + \\pi/2\$).",
+                ),
+                _step(
+                  "\$e^{i\\pi/2} = i\$. Donc \$(1+i)^{10} = 32 i\$.",
+                  tipFr:
+                      "Pour des puissances élevées, la forme exponentielle est beaucoup plus rapide que le développement binomial.",
+                ),
+              ], finalAnswerFr: r"$(1+i)^{10} = 32i$"),
+            ),
+            _q(
+              2,
+              "Établir l'identité \$\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta\$.",
+              2,
+              _sol([
+                _step(
+                  "\$e^{i 2\\theta} = (e^{i\\theta})^2 = (\\cos\\theta + i\\sin\\theta)^2 = \\cos^2\\theta + 2i\\sin\\theta\\cos\\theta + (i\\sin\\theta)^2\$.",
+                ),
+                _step(
+                  "\$(i\\sin\\theta)^2 = -\\sin^2\\theta\$. Donc \$e^{i 2\\theta} = (\\cos^2\\theta - \\sin^2\\theta) + 2i\\sin\\theta\\cos\\theta\$.",
+                ),
+                _step(
+                  "Identifier parties réelle et imaginaire : \$\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta\$ et \$\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\$.",
+                  tipFr:
+                      "Les identités trigonométriques classiques sont des conséquences directes de Moivre — pas besoin de les mémoriser séparément.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Racines n-ièmes',
+          5,
+          "Résoudre \$z^3 = 1\$ dans \$\\mathbb{C}\$.",
+          [
+            _q(
+              1,
+              "Trouver les 3 racines cubiques de l'unité.",
+              4,
+              _sol([
+                _step(
+                  "\$1 = e^{i \\cdot 0}\$. Cherchons \$z = r e^{i\\theta}\$ avec \$r^3 = 1\$ et \$3\\theta \\equiv 0 \\pmod{2\\pi}\$.",
+                ),
+                _step(
+                  "\$r = 1\$ (réel positif), \$\\theta = 2k\\pi/3\$ pour \$k = 0, 1, 2\$.",
+                ),
+                _step(
+                  "\$z_0 = e^{i \\cdot 0} = 1\$ ; \$z_1 = e^{i 2\\pi/3} = -1/2 + i\\sqrt 3/2\$ ; \$z_2 = e^{i 4\\pi/3} = -1/2 - i\\sqrt 3/2\$.",
+                ),
+                _step(
+                  "**Géométriquement** : les 3 racines forment un **triangle équilatéral** inscrit dans le cercle unité, sommets espacés de \$2\\pi/3\$.",
+                  tipFr:
+                      "Les \$n\$ racines n-ièmes de l'unité forment un polygone régulier à \$n\$ sommets sur le cercle unité, espacés de \$2\\pi/n\$.",
+                ),
+              ], finalAnswerFr: r"$\{1,\, -1/2 \pm i\sqrt 3/2\}$"),
+            ),
+            _q(
+              2,
+              "Vérifier que la somme des 3 racines vaut 0.",
+              1,
+              _sol([
+                _step(
+                  "Somme : \$1 + (-1/2 + i\\sqrt 3/2) + (-1/2 - i\\sqrt 3/2) = 1 - 1 + 0 = 0\$ ✓.",
+                ),
+                _step(
+                  "Cohérent avec Viète : pour \$z^3 - 1 = 0\$, somme des racines = \$-(\\text{coeff de }z^2)/(\\text{coeff dominant}) = -0/1 = 0\$.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — équation \$z^n = a\$',
+          5,
+          "Résoudre \$z^4 = -16\$.",
+          [
+            _q(
+              1,
+              "Mettre \$-16\$ sous forme exponentielle.",
+              1,
+              _sol([
+                _step(
+                  "\$-16 = 16 \\cdot (-1) = 16 e^{i\\pi}\$.",
+                ),
+              ], finalAnswerFr: r"$-16 = 16 e^{i\pi}$"),
+            ),
+            _q(
+              2,
+              "Trouver les 4 racines.",
+              4,
+              _sol([
+                _step(
+                  "\$z = r e^{i\\theta}\$ avec \$r^4 = 16\$ et \$4\\theta \\equiv \\pi \\pmod{2\\pi}\$.",
+                ),
+                _step(
+                  "\$r = 2\$ (réelle positive). \$\\theta = \\pi/4 + k\\pi/2\$ pour \$k = 0, 1, 2, 3\$ : \$\\theta = \\pi/4, 3\\pi/4, 5\\pi/4, 7\\pi/4\$.",
+                ),
+                _step(
+                  "Racines : \$z_k = 2 e^{i(\\pi/4 + k\\pi/2)}\$. En forme algébrique : \$z_0 = \\sqrt 2(1 + i)\$, \$z_1 = \\sqrt 2(-1 + i)\$, \$z_2 = \\sqrt 2(-1 - i)\$, \$z_3 = \\sqrt 2(1 - i)\$.",
+                ),
+                _step(
+                  "Vérification : \$z_0^4 = (\\sqrt 2(1+i))^4 = (\\sqrt 2)^4 (1+i)^4 = 4 \\cdot (2i)^2 = 4 \\cdot (-4) = -16\$ ✓.",
+                  tipFr:
+                      "**Méthode générale** pour \$z^n = a\$ avec \$a = |a| e^{i\\alpha}\$ : \$n\$ racines \$z_k = |a|^{1/n} e^{i(\\alpha + 2k\\pi)/n}\$.",
+                ),
+              ], finalAnswerFr: r"$z_k = 2 e^{i(\pi/4 + k\pi/2)}$, $k=0..3$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperOdeFirstOrder() => _paper(
+      titleFr: 'Épreuve type — Équations différentielles du 1er ordre',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "EDO \$y' = ay\$ → \$y = C e^{ax}\$. EDO \$y' = ay + b\$ → solution = homogène + particulière. Applications : refroidissement, charge RC, désintégration.",
+      exercices: [
+        _ex(
+          1,
+          'EDO homogène',
+          5,
+          "Soit \$(E) : y' = 3y\$.",
+          [
+            _q(
+              1,
+              "Donner la solution générale.",
+              2,
+              _sol([
+                _step(
+                  "**Théorème** : la solution générale de \$y' = ay\$ est \$y(x) = C e^{ax}\$, \$C \\in \\mathbb{R}\$.",
+                ),
+                _step(
+                  "Ici \$a = 3\$ : \$y(x) = C e^{3x}\$.",
+                ),
+              ], finalAnswerFr: r"$y(x) = C e^{3x}$"),
+            ),
+            _q(
+              2,
+              "Solution vérifiant \$y(0) = 2\$.",
+              2,
+              _sol([
+                _step(
+                  "\$y(0) = C = 2\$. Donc \$y(x) = 2 e^{3x}\$.",
+                ),
+              ], finalAnswerFr: r"$y(x) = 2 e^{3x}$"),
+            ),
+            _q(
+              3,
+              "À quel instant \$y\$ atteint-elle 100 ?",
+              1,
+              _sol([
+                _step(
+                  "\$2 e^{3x} = 100 \\iff e^{3x} = 50 \\iff x = \\dfrac{\\ln 50}{3} \\approx 1{,}30\$.",
+                ),
+              ], finalAnswerFr: r"$x \approx 1{,}30$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'EDO avec second membre constant',
+          5,
+          "Soit \$(E) : y' = -2y + 10\$.",
+          [
+            _q(
+              1,
+              "Trouver une solution particulière constante \$y_p\$.",
+              1,
+              _sol([
+                _step(
+                  "\$y_p\$ constante → \$y_p' = 0\$. \$0 = -2 y_p + 10 \\iff y_p = 5\$.",
+                ),
+              ], finalAnswerFr: r"$y_p = 5$"),
+            ),
+            _q(
+              2,
+              "Solution générale de l'équation homogène \$y' = -2y\$.",
+              1,
+              _sol([
+                _step(
+                  "\$y_h(x) = C e^{-2x}\$.",
+                ),
+              ], finalAnswerFr: r"$y_h = C e^{-2x}$"),
+            ),
+            _q(
+              3,
+              "Donner la solution générale de \$(E)\$, puis la solution avec \$y(0) = 8\$.",
+              3,
+              _sol([
+                _step(
+                  "**Principe de superposition** : \$y = y_h + y_p = C e^{-2x} + 5\$.",
+                ),
+                _step(
+                  "\$y(0) = C + 5 = 8 \\iff C = 3\$. Donc \$y(x) = 3 e^{-2x} + 5\$.",
+                ),
+                _step(
+                  "**Comportement asymptotique** : \$\\lim_{+\\infty} y = 5\$ — la solution tend vers l'équilibre \$y_p\$. Le terme transitoire \$3 e^{-2x}\$ s'atténue.",
+                  tipFr:
+                      "Pour une EDO linéaire à coeffs constants, la solution = transitoire (terme en \$e^{at}\$) + régime permanent (solution particulière).",
+                ),
+              ], finalAnswerFr: r"$y(x) = 3 e^{-2x} + 5$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Loi de Newton — refroidissement',
+          5,
+          "Un café à 80°C est posé dans une pièce à 20°C. La température \$T(t)\$ vérifie \$T'(t) = -k(T - 20)\$ avec \$k > 0\$.",
+          [
+            _q(
+              1,
+              "Résoudre l'EDO avec \$T(0) = 80\$.",
+              3,
+              _sol([
+                _step(
+                  "Poser \$\\theta = T - 20\$ (écart à l'ambiance). \$\\theta' = T' = -k(T - 20) = -k\\theta\$.",
+                ),
+                _step(
+                  "Solution : \$\\theta(t) = C e^{-kt}\$. Condition initiale : \$\\theta(0) = T(0) - 20 = 60 = C\$.",
+                ),
+                _step(
+                  "Retour à T : \$T(t) = 20 + 60 e^{-kt}\$.",
+                ),
+              ], finalAnswerFr: r"$T(t) = 20 + 60 e^{-kt}$"),
+            ),
+            _q(
+              2,
+              "Si \$T(5) = 50\$°C, déterminer \$k\$ et la 'demi-vie thermique'.",
+              2,
+              _sol([
+                _step(
+                  "\$T(5) = 50 \\iff 20 + 60 e^{-5k} = 50 \\iff e^{-5k} = 1/2 \\iff -5k = -\\ln 2 \\iff k = \\dfrac{\\ln 2}{5} \\approx 0{,}139\\,\\text{min}^{-1}\$.",
+                ),
+                _step(
+                  "Demi-vie thermique : \$t_{1/2} = \\ln 2 / k = 5\$ minutes. L'écart à l'ambiance est divisé par 2 toutes les 5 min.",
+                  tipFr:
+                      "**Loi de Newton du refroidissement** : structure identique à la désintégration radioactive et à la décharge RC (toutes des cinétiques d'ordre 1).",
+                ),
+              ], finalAnswerFr: r"$k \approx 0{,}139$/min"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Désintégration radioactive',
+          5,
+          "Le nombre de noyaux \$N(t)\$ d'un isotope vérifie \$N'(t) = -\\lambda N(t)\$. À \$t = 0\$, \$N_0 = 10^{12}\$ noyaux ; demi-vie 8 jours.",
+          [
+            _q(
+              1,
+              "Donner l'expression de \$N(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "EDO de référence \$N' = -\\lambda N\$ → \$N(t) = N_0 e^{-\\lambda t} = 10^{12} e^{-\\lambda t}\$.",
+                ),
+                _step(
+                  "Demi-vie \$t_{1/2}\$ : \$N(t_{1/2}) = N_0/2 \\iff e^{-\\lambda t_{1/2}} = 1/2 \\iff \\lambda = \\ln 2 / t_{1/2}\$.",
+                ),
+                _step(
+                  "Avec \$t_{1/2} = 8\$ jours : \$\\lambda = \\ln 2 / 8 \\approx 0{,}0866\\,\\text{jour}^{-1}\$.",
+                ),
+              ], finalAnswerFr: r"$N(t) = 10^{12} e^{-\lambda t}$, $\lambda = \ln 2/8$"),
+            ),
+            _q(
+              2,
+              "Au bout de combien de temps reste-t-il 1% des noyaux initiaux ?",
+              2,
+              _sol([
+                _step(
+                  "\$N(t)/N_0 = 0{,}01 \\iff e^{-\\lambda t} = 0{,}01 \\iff t = -\\ln(0{,}01)/\\lambda = \\ln 100 / \\lambda\$.",
+                ),
+                _step(
+                  "\$\\ln 100 \\approx 4{,}605\$. \$t \\approx 4{,}605 / 0{,}0866 \\approx 53\\,\\text{jours}\$, soit environ 6,6 demi-vies (\\(53/8\\)).",
+                ),
+                _step(
+                  "**Vérification** : après \$n\$ demi-vies, il reste \$1/2^n\$ ; \$1/2^7 \\approx 0{,}008\$, ce qui est cohérent avec ≈ 1% à \$n \\approx 6{,}6\$.",
+                  tipFr:
+                      "**Règle de chiffre** : il reste 1% après ≈ 7 demi-vies (\$1/2^7 = 1/128 \\approx 0{,}8\\%\$). Utile pour estimer rapidement.",
+                ),
+              ], finalAnswerFr: r"$t \approx 53$ jours"),
+            ),
+            _q(
+              3,
+              "Calculer \$\\lim_{t \\to +\\infty} N(t)\$ et interpréter.",
+              1,
+              _sol([
+                _step(
+                  "\$\\lim_{+\\infty} e^{-\\lambda t} = 0\$ donc \$\\lim N(t) = 0\$. La désintégration est asymptotiquement complète mais ne touche jamais 0 mathématiquement.",
+                ),
+              ], finalAnswerFr: r"$\lim N = 0$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperProbBinomial() => _paper(
+      titleFr: 'Épreuve type — Loi binomiale',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Schéma de Bernoulli (n essais identiques indépendants à 2 issues, succès \$p\$), loi binomiale \$\\mathcal B(n, p)\$. Espérance \$E = np\$, variance \$V = np(1-p)\$.",
+      exercices: [
+        _ex(
+          1,
+          'Schéma de Bernoulli',
+          5,
+          "Un examen comporte 20 QCM, chacune à 4 réponses dont 1 correcte. Un candidat répond au hasard. Soit X = nombre de bonnes réponses.",
+          [
+            _q(
+              1,
+              "Justifier que \$X \\sim \\mathcal B(n, p)\$ et préciser \$n, p\$.",
+              2,
+              _sol([
+                _step(
+                  "**Schéma de Bernoulli** : \$n\$ essais identiques, indépendants, à 2 issues 'succès/échec', succès de probabilité \$p\$ constante.",
+                ),
+                _step(
+                  "Ici : \$n = 20\$ questions, indépendantes, succès = 'bonne réponse' avec \$p = 1/4\$. Donc \$X \\sim \\mathcal B(20, 1/4)\$.",
+                ),
+              ], finalAnswerFr: r"$X \sim \mathcal B(20, 1/4)$"),
+            ),
+            _q(
+              2,
+              "Calculer \$E(X)\$ et \$V(X)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Formules binomiales** : \$E(X) = np\$, \$V(X) = np(1-p)\$.",
+                ),
+                _step(
+                  "\$E(X) = 20 \\times 1/4 = 5\$. \$V(X) = 20 \\times 1/4 \\times 3/4 = 15/4 = 3{,}75\$. \$\\sigma = \\sqrt V \\approx 1{,}94\$.",
+                ),
+                _step(
+                  "**Interprétation** : en répondant au hasard, on attend en moyenne 5/20 (= 25% = \$p\$). La plupart des candidats au hasard obtiennent entre \$E - 2\\sigma \\approx 1\$ et \$E + 2\\sigma \\approx 9\$ bonnes réponses.",
+                ),
+              ], finalAnswerFr: r"$E = 5$, $V = 3{,}75$"),
+            ),
+            _q(
+              3,
+              "Calculer \$P(X = 10)\$.",
+              1,
+              _sol([
+                _step(
+                  "**Formule** : \$P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}\$.",
+                ),
+                _step(
+                  "\$P(X = 10) = \\binom{20}{10} (1/4)^{10} (3/4)^{10} \\approx 184756 \\times 9{,}54 \\cdot 10^{-7} \\times 0{,}0563 \\approx 0{,}0099 \\approx 1\\%\$.",
+                ),
+              ], finalAnswerFr: r"$P(X = 10) \approx 1\%$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Bernoulli somme = binomiale',
+          5,
+          "Soient \$X_1, \\ldots, X_n\$ des Bernoulli indépendantes de paramètre \$p\$.",
+          [
+            _q(
+              1,
+              "Que vaut \$S = X_1 + X_2 + \\dots + X_n\$ en termes de loi ?",
+              3,
+              _sol([
+                _step(
+                  "Chaque \$X_i\$ vaut 0 ou 1, avec \$P(X_i = 1) = p\$. La somme \$S\$ compte le nombre de '1' parmi les \$n\$ tirages.",
+                ),
+                _step(
+                  "C'est **exactement la définition** d'une variable binomiale : \$S \\sim \\mathcal B(n, p)\$.",
+                ),
+                _step(
+                  "**Conséquence immédiate** : \$E(S) = \\sum E(X_i) = n \\cdot p\$ (linéarité). \$V(S) = \\sum V(X_i) = n \\cdot p(1-p)\$ (indépendance).",
+                  tipFr:
+                      "La binomiale n'est rien d'autre qu'une somme de \$n\$ Bernoulli. Cette décomposition permet de retrouver les formules d'espérance/variance sans calcul direct.",
+                ),
+              ], finalAnswerFr: r"$S \sim \mathcal B(n, p)$"),
+            ),
+            _q(
+              2,
+              "Application : on tire 50 cartes **avec remise** dans un jeu de 52. Espérance du nombre d'as obtenus.",
+              2,
+              _sol([
+                _step(
+                  "Chaque tirage = Bernoulli avec \$p = 4/52 = 1/13\$ (4 as parmi 52 cartes).",
+                ),
+                _step(
+                  "Nombre d'as = somme de 50 Bernoulli indépendantes → \$\\mathcal B(50, 1/13)\$. Espérance : \$E = np = 50/13 \\approx 3{,}85\$.",
+                  mistakeFr:
+                      "Sans remise, les tirages ne seraient plus indépendants (\$p\$ changerait à chaque tirage). La binomiale s'applique seulement avec remise.",
+                ),
+              ], finalAnswerFr: r"$E \approx 3{,}85$ as"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Probabilités cumulées',
+          5,
+          "Dans une usine, 2% des pièces sont défectueuses. On contrôle un lot de 100 pièces. Soit \$D\$ le nombre de défectueuses.",
+          [
+            _q(
+              1,
+              "Justifier \$D \\sim \\mathcal B(100,\\, 0{,}02)\$ et calculer \$E(D)\$, \$\\sigma(D)\$.",
+              2,
+              _sol([
+                _step(
+                  "Modèle : chaque pièce est indépendamment défectueuse avec proba 0,02. Le contrôle = 100 tirages indépendants.",
+                ),
+                _step(
+                  "\$E(D) = 100 \\times 0{,}02 = 2\$. \$V(D) = 100 \\times 0{,}02 \\times 0{,}98 = 1{,}96\$, \$\\sigma \\approx 1{,}40\$.",
+                ),
+              ], finalAnswerFr: r"$E = 2$, $\sigma \approx 1{,}40$"),
+            ),
+            _q(
+              2,
+              "Calculer \$P(D = 0)\$ — probabilité qu'aucune pièce ne soit défectueuse.",
+              2,
+              _sol([
+                _step(
+                  "\$P(D = 0) = \\binom{100}{0} \\cdot 0{,}02^0 \\cdot 0{,}98^{100} = 0{,}98^{100}\$.",
+                ),
+                _step(
+                  "\$0{,}98^{100} = e^{100 \\ln 0{,}98} \\approx e^{100 \\times (-0{,}0202)} = e^{-2{,}02} \\approx 0{,}133\$.",
+                ),
+                _step(
+                  "Donc \$P(D = 0) \\approx 13\\%\$. Plutôt faible — un lot 'parfait' est rare avec un taux de défaut de 2%.",
+                ),
+              ], finalAnswerFr: r"$P(D=0) \approx 0{,}133$"),
+            ),
+            _q(
+              3,
+              "Calculer \$P(D \\le 1)\$ — au plus 1 défectueuse.",
+              1,
+              _sol([
+                _step(
+                  "\$P(D \\le 1) = P(D = 0) + P(D = 1)\$. \$P(D = 1) = \\binom{100}{1} \\cdot 0{,}02 \\cdot 0{,}98^{99} = 100 \\times 0{,}02 \\times 0{,}98^{99}\$.",
+                ),
+                _step(
+                  "\$0{,}98^{99} \\approx 0{,}136\$. Donc \$P(D = 1) \\approx 2 \\times 0{,}136 = 0{,}271\$. Total : \$P(D \\le 1) \\approx 0{,}133 + 0{,}271 = 0{,}404\$.",
+                ),
+              ], finalAnswerFr: r"$P(D \le 1) \approx 0{,}40$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Espérance de jeu',
+          5,
+          "Un jeu : on gagne 10 DH avec proba 0,1 ; 2 DH avec proba 0,4 ; on perd 3 DH avec proba 0,5.",
+          [
+            _q(
+              1,
+              "Calculer l'espérance de gain par partie.",
+              3,
+              _sol([
+                _step(
+                  "Soit \$G\$ le gain (positif ou négatif). \$E(G) = \\sum g \\cdot P(G = g)\$.",
+                ),
+                _step(
+                  "\$E(G) = 10 \\times 0{,}1 + 2 \\times 0{,}4 + (-3) \\times 0{,}5 = 1 + 0{,}8 - 1{,}5 = 0{,}3\\,\\text{DH}\$.",
+                ),
+                _step(
+                  "Jeu **favorable** (espérance > 0). Sur le long terme, on gagne en moyenne 0,30 DH par partie.",
+                ),
+              ], finalAnswerFr: r"$E(G) = 0{,}30$ DH"),
+            ),
+            _q(
+              2,
+              "Quel doit être le coût d'entrée \$c\$ pour un jeu équitable ?",
+              2,
+              _sol([
+                _step(
+                  "**Jeu équitable** : espérance du gain net \$G - c\$ nulle, soit \$E(G) - c = 0 \\iff c = E(G) = 0{,}30\$ DH.",
+                ),
+                _step(
+                  "En pratique, un casino fixerait \$c > 0{,}30\$ pour avoir une espérance favorable à la maison — c'est leur marge.",
+                  tipFr:
+                      "Loi des grands nombres : sur un grand nombre de parties, la moyenne empirique converge vers \$E(G)\$ — d'où l'importance de cette grandeur pour évaluer un jeu.",
+                ),
+              ], finalAnswerFr: r"$c = 0{,}30$ DH"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -2347,8 +3114,12 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_exp_function': _paperExpFunction(),
   'pc_primitives': _paperPrimitives(),
   'pc_integral_calc': _paperIntegralCalc(),
-  // Math — Batch 4: to come
-  // Physique-Chimie — Batches 5-10: to come
+  // Math — Batch 4: complex algebra, complex trig, ODE, binomial
+  'pc_complex_algebra': _paperComplexAlgebra(),
+  'pc_complex_trig': _paperComplexTrig(),
+  'pc_ode_first_order': _paperOdeFirstOrder(),
+  'pc_prob_binomial': _paperProbBinomial(),
+  // Math COMPLETE (15/15). Physique-Chimie — Batches 5-10: to come
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
