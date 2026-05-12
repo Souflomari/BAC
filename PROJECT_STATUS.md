@@ -1,6 +1,6 @@
 # BacPrep — Project Status & Session Handoff
 
-**Last updated:** 2026-05-12 (Bac-paper restructure run — Phase 0+1 shipped, Phase 2 in progress 5/32)
+**Last updated:** 2026-05-12 (Bac-paper restructure run — Phases 0+1+2 SHIPPED, all 64 SMA+SMB chapters complete)
 **Current state of prod:** https://bacapp.vercel.app (Flutter web on Vercel)
 
 This document is a self-contained snapshot for any new conversation that
@@ -875,22 +875,25 @@ Each paper: 4–5 exercices, ~20 points total, ~90 min duration, multi-part
 questions with verified worked solutions at 023/024 depth (400–700 chars
 per step). ~7–11 KB JSONB each. Total: ~280 KB of pedagogical prose.
 
-### Phase 2 — SMB exam papers (IN PROGRESS, 5/32 as of 2026-05-12)
+### Phase 2 — SMB exam papers (SHIPPED, 32/32)
 
 [Migration 031](backend/supabase/migrations/031_exam_papers_smb.sql)
-+ [encoder](backend/seed/json_encode_exam_papers_smb.dart) — same shape
-as SMA, unprefixed skill codes (arithmetic_seq, etc.), one notch lower
-mathematical sophistication.
++ [encoder](backend/seed/json_encode_exam_papers_smb.dart) ships full
+topic-coherent Bac papers for all 32 SMB chapters (unprefixed skill
+codes, one notch lower mathematical sophistication than SMA).
 
-**Shipped (5/32)**: arithmetic_seq, geometric_seq, seq_convergence,
-limit_def, limit_calc.
+- **Math (23)**: arithmetic_seq, geometric_seq, seq_convergence,
+  seq_recursive, seq_adjacent, limit_def, limit_calc, continuity, tvi,
+  deriv_basic, deriv_rules, deriv_apps, primitives, definite_integral,
+  integral_apps, prob_basic, conditional_prob, random_variables,
+  complex_basics, complex_trig, complex_geometry, ode_first_order,
+  ode_second_order.
+- **Physique (7)**: kinematics, newtons_laws, energy, wave_properties,
+  sound_light, rc_rl_circuits, rlc_oscillations.
+- **Chimie (2)**: acid_base, redox.
 
-**Remaining (27)**: seq_recursive, seq_adjacent, continuity, tvi,
-deriv_basic, deriv_rules, deriv_apps, primitives, definite_integral,
-integral_apps, prob_basic, conditional_prob, random_variables,
-complex_basics, complex_trig, complex_geometry, ode_first_order,
-ode_second_order, kinematics, newtons_laws, energy, wave_properties,
-sound_light, rc_rl_circuits, rlc_oscillations, acid_base, redox.
+64/64 SMA+SMB chapters now have full Bac papers in skills.exam_paper.
+Verified in live DB (64 rows non-null).
 
 ### Phases 3–6 (NOT YET STARTED)
 
