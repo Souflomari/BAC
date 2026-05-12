@@ -2213,6 +2213,552 @@ Map<String, dynamic> _paperDerivApps() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperPrimitivesSmb() => _paper(
+      titleFr: 'Épreuve type — Primitives',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Définition (\$F' = f\$), calcul, unicité à une constante près, primitives usuelles.",
+      exercices: [
+        _ex(
+          1,
+          'Primitives usuelles',
+          5,
+          "Donner une primitive sur l'intervalle indiqué.",
+          [
+            _q(
+              1,
+              "\$f(x) = x^3 - 4x + 2\$ sur \$\\mathbb{R}\$.",
+              2,
+              _sol([
+                _step(
+                  "Linéarité de l'intégration. Pour \$x^n\$ (\$n \\ne -1\$) : primitive = \$x^{n+1}/(n+1)\$.",
+                ),
+                _step(
+                  "\$F(x) = x^4/4 - 2x^2 + 2x + C\$. Vérification : \$F'(x) = x^3 - 4x + 2\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$F(x) = x^4/4 - 2x^2 + 2x + C$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = 1/x^2\$ sur \$]0, +\\infty[\$.",
+              1,
+              _sol([
+                _step(
+                  "\$g(x) = x^{-2}\$, primitive \$x^{-1}/(-1) = -1/x + C\$. Vérification : \$(-1/x)' = 1/x^2\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$G(x) = -1/x + C$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = \\sin(2x)\$ sur \$\\mathbb{R}\$.",
+              1,
+              _sol([
+                _step(
+                  "Composition : essayer \$H(x) = -\\cos(2x)/2\$. Vérification : \$H'(x) = -(-\\sin 2x) \\cdot 2 / 2 = \\sin 2x\$ ✓.",
+                  tipFr:
+                      "Pour \$\\sin(ax)\$, primitive \$-\\cos(ax)/a\$. Pour \$\\cos(ax)\$, primitive \$\\sin(ax)/a\$. Le facteur \$1/a\$ compense la dérivation de l'argument.",
+                ),
+              ], finalAnswerFr: r"$H(x) = -\cos(2x)/2 + C$"),
+            ),
+            _q(
+              4,
+              "\$k(x) = e^{3x + 1}\$ sur \$\\mathbb{R}\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive \$K(x) = e^{3x+1}/3 + C\$. Vérification : \$K'(x) = 3 e^{3x+1}/3 = e^{3x+1}\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$K(x) = e^{3x+1}/3 + C$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Primitive vérifiant une condition',
+          5,
+          "Soit \$f(x) = 3 x^2 - 6x + 5\$.",
+          [
+            _q(
+              1,
+              "Trouver la primitive \$F\$ telle que \$F(1) = 0\$.",
+              3,
+              _sol([
+                _step(
+                  "Forme générale : \$F(x) = x^3 - 3 x^2 + 5x + C\$.",
+                ),
+                _step(
+                  "Condition : \$F(1) = 1 - 3 + 5 + C = 3 + C = 0 \\Rightarrow C = -3\$.",
+                ),
+                _step(
+                  "Primitive : \$F(x) = x^3 - 3 x^2 + 5x - 3\$.",
+                  tipFr:
+                      "Toute primitive a une **constante d'intégration** libre — fixée par une condition supplémentaire.",
+                ),
+              ], finalAnswerFr: r"$F(x) = x^3 - 3x^2 + 5x - 3$"),
+            ),
+            _q(
+              2,
+              "Vérifier le résultat.",
+              2,
+              _sol([
+                _step(
+                  "\$F'(x) = 3x^2 - 6x + 5 = f(x)\$ ✓.",
+                ),
+                _step(
+                  "\$F(1) = 1 - 3 + 5 - 3 = 0\$ ✓.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Reconnaître une dérivée',
+          5,
+          "Calculer les primitives suivantes en reconnaissant la forme \$u'/u\$ ou \$u' u^n\$.",
+          [
+            _q(
+              1,
+              "\$\\int \\dfrac{2x}{x^2 + 1}\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "On reconnaît la forme \$u'/u\$ avec \$u(x) = x^2 + 1\$. La primitive est \$\\ln|u| + C = \\ln(x^2 + 1) + C\$ (valeur absolue inutile car \$x^2 + 1 > 0\$).",
+                ),
+                _step(
+                  "Vérification : \$(\\ln(x^2+1))' = (2x)/(x^2+1)\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$\ln(x^2 + 1) + C$"),
+            ),
+            _q(
+              2,
+              "\$\\int (2x + 1)^5\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$u' u^n\$ ? On a \$u = 2x + 1\$, \$u' = 2\$. Mais le facteur 2 manque. Réécrire : \$(2x+1)^5 = (1/2) \\cdot 2 \\cdot (2x+1)^5\$.",
+                ),
+                _step(
+                  "Primitive : \$(1/2) \\cdot (2x+1)^6/6 = (2x+1)^6/12 + C\$.",
+                ),
+                _step(
+                  "Vérification : \$\\dfrac{d}{dx}\\left[(2x+1)^6/12\\right] = \\dfrac{6(2x+1)^5 \\cdot 2}{12} = (2x+1)^5\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$(2x+1)^6/12 + C$"),
+            ),
+            _q(
+              3,
+              "\$\\int x e^{x^2}\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Forme \$u' e^u\$ ? \$u = x^2\$, \$u' = 2x\$. Donc \$x e^{x^2} = (1/2) \\cdot 2 x \\cdot e^{x^2}\$. Primitive : \$(1/2) e^{x^2} + C\$.",
+                ),
+              ], finalAnswerFr: r"$e^{x^2}/2 + C$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Intégration par parties (notion)',
+          5,
+          "On admet la formule : \$\\int u v' = [uv] - \\int u' v\$.",
+          [
+            _q(
+              1,
+              "Calculer \$\\int x \\cos x\\,dx\$.",
+              3,
+              _sol([
+                _step(
+                  "**Choix LIATE** : \$u = x\$ (devient \$u' = 1\$, plus simple) ; \$v' = \\cos x\$ (donc \$v = \\sin x\$).",
+                ),
+                _step(
+                  "Application : \$\\int x \\cos x\\,dx = x \\sin x - \\int 1 \\cdot \\sin x\\,dx = x \\sin x - (-\\cos x) + C = x \\sin x + \\cos x + C\$.",
+                ),
+                _step(
+                  "Vérification : \$(x \\sin x + \\cos x)' = \\sin x + x \\cos x - \\sin x = x \\cos x\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$x \sin x + \cos x + C$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\int \\ln x\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "Astuce : \$\\ln x = 1 \\cdot \\ln x\$. Poser \$u = \\ln x\$ (donc \$u' = 1/x\$) et \$v' = 1\$ (donc \$v = x\$).",
+                ),
+                _step(
+                  "\$\\int \\ln x\\,dx = x \\ln x - \\int (1/x) \\cdot x\\,dx = x \\ln x - x + C\$.",
+                  tipFr:
+                      "Astuce célèbre : pour intégrer \$\\ln\$, l'écrire \$1 \\cdot \\ln\$ et faire une IPP.",
+                ),
+              ], finalAnswerFr: r"$x \ln x - x + C$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDefiniteIntegral() => _paper(
+      titleFr: 'Épreuve type — Intégrale définie',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Définition par primitives (Newton-Leibniz), propriétés (linéarité, Chasles, positivité), aire algébrique.",
+      exercices: [
+        _ex(
+          1,
+          'Calculs directs',
+          5,
+          "Calculer.",
+          [
+            _q(
+              1,
+              "\$\\int_0^2 (x^2 + 1)\\,dx\$.",
+              2,
+              _sol([
+                _step(
+                  "Primitive : \$F(x) = x^3/3 + x\$.",
+                ),
+                _step(
+                  "\$\\int_0^2 = F(2) - F(0) = (8/3 + 2) - 0 = 8/3 + 6/3 = 14/3\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 14/3$"),
+            ),
+            _q(
+              2,
+              "\$\\int_1^e \\dfrac{1}{x}\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive : \$\\ln x\$. \$\\int = \\ln e - \\ln 1 = 1 - 0 = 1\$.",
+                  tipFr:
+                      "Définition historique de \$e\$ : \$\\int_1^e 1/t\\,dt = 1\$. C'est-à-dire \$e\$ est le nombre dont le logarithme népérien vaut 1.",
+                ),
+              ], finalAnswerFr: r"$\int = 1$"),
+            ),
+            _q(
+              3,
+              "\$\\int_0^{\\pi} \\sin x\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Primitive : \$-\\cos x\$. \$\\int = -\\cos\\pi + \\cos 0 = 1 + 1 = 2\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 2$"),
+            ),
+            _q(
+              4,
+              "\$\\int_{-1}^1 |x|\\,dx\$.",
+              1,
+              _sol([
+                _step(
+                  "Décomposer : \$\\int_{-1}^0 -x\\,dx + \\int_0^1 x\\,dx = [-x^2/2]_{-1}^0 + [x^2/2]_0^1 = 1/2 + 1/2 = 1\$.",
+                ),
+                _step(
+                  "Vérification géométrique : deux triangles isocèles de base 1 et hauteur 1 → aire totale = 1 ✓.",
+                ),
+              ], finalAnswerFr: r"$\int = 1$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Propriétés',
+          5,
+          "Utiliser les propriétés (linéarité, Chasles, etc.).",
+          [
+            _q(
+              1,
+              "Sachant que \$\\int_0^3 f = 7\$ et \$\\int_3^5 f = 2\$, calculer \$\\int_0^5 f\$.",
+              1,
+              _sol([
+                _step(
+                  "**Relation de Chasles** : \$\\int_0^5 f = \\int_0^3 f + \\int_3^5 f = 7 + 2 = 9\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 9$"),
+            ),
+            _q(
+              2,
+              "Sachant que \$\\int_0^1 f = 5\$ et \$\\int_0^1 g = 3\$, calculer \$\\int_0^1 (2f - 3g)\$.",
+              2,
+              _sol([
+                _step(
+                  "**Linéarité** : \$\\int_0^1 (2f - 3g) = 2 \\int f - 3 \\int g = 2 \\times 5 - 3 \\times 3 = 10 - 9 = 1\$.",
+                ),
+              ], finalAnswerFr: r"$\int = 1$"),
+            ),
+            _q(
+              3,
+              "Inverser les bornes : \$\\int_5^2 f\$ si \$\\int_2^5 f = 4\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\int_a^b = -\\int_b^a\$. Donc \$\\int_5^2 f = -4\$.",
+                ),
+              ], finalAnswerFr: r"$-4$"),
+            ),
+            _q(
+              4,
+              "Positivité : si \$f \\ge 0\$ sur \$[a, b]\$, que dire de \$\\int_a^b f\$ ?",
+              1,
+              _sol([
+                _step(
+                  "\$\\int_a^b f \\ge 0\$. Plus fort : si \$f\$ continue et \$f \\ge 0\$ et non identiquement nulle, alors \$\\int > 0\$.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Aire d\'un domaine',
+          5,
+          "Calculer l'aire des domaines indiqués.",
+          [
+            _q(
+              1,
+              "Aire entre \$y = x^2\$ et l'axe Ox sur \$[0, 2]\$.",
+              2,
+              _sol([
+                _step(
+                  "\$A = \\int_0^2 x^2\\,dx = [x^3/3]_0^2 = 8/3\$ unités d'aire.",
+                ),
+              ], finalAnswerFr: r"$A = 8/3$"),
+            ),
+            _q(
+              2,
+              "Aire entre \$y = x^2\$ et \$y = x\$ sur \$[0, 1]\$.",
+              3,
+              _sol([
+                _step(
+                  "Sur \$[0, 1]\$, \$x \\ge x^2\$ (la droite est au-dessus). \$A = \\int_0^1 (x - x^2)\\,dx\$.",
+                ),
+                _step(
+                  "\$\\int = [x^2/2 - x^3/3]_0^1 = 1/2 - 1/3 = 1/6\$.",
+                ),
+                _step(
+                  "**Vérification** : à mi-chemin, \$x = 1/2\$, la droite est en 0,5 et la parabole en 0,25 — différence 0,25. Aire moyenne sur [0,1] = quelques dixièmes — cohérent avec 1/6 ≈ 0,167.",
+                ),
+              ], finalAnswerFr: r"$A = 1/6$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Valeur moyenne',
+          5,
+          "Définition : valeur moyenne de \$f\$ sur \$[a, b]\$ = \$\\bar f = \\dfrac{1}{b - a} \\int_a^b f\$.",
+          [
+            _q(
+              1,
+              "Calculer la valeur moyenne de \$f(x) = x^2\$ sur \$[0, 2]\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\int_0^2 x^2\\,dx = 8/3\$ (Exercice 3). \$\\bar f = (8/3)/(2 - 0) = 4/3\$.",
+                ),
+                _step(
+                  "**Interprétation** : si on remplaçait \$f\$ par une fonction constante de valeur \$4/3\$ sur \$[0, 2]\$, l'aire sous la courbe serait identique : \$4/3 \\times 2 = 8/3\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$\bar f = 4/3$"),
+            ),
+            _q(
+              2,
+              "Théorème de la moyenne : si \$f\$ continue sur \$[a, b]\$, \$\\exists c \\in [a, b]\$ tel que \$f(c) = \\bar f\$. Trouver \$c\$ pour l'exemple précédent.",
+              3,
+              _sol([
+                _step(
+                  "On cherche \$c\$ tel que \$c^2 = 4/3 \\iff c = \\pm 2/\\sqrt 3\$. La valeur dans \$[0, 2]\$ est \$c = 2/\\sqrt 3 \\approx 1{,}155\$.",
+                ),
+                _step(
+                  "**Vérification** : \$c \\in [0, 2]\$ ✓ et \$f(c) = 4/3 = \\bar f\$ ✓.",
+                ),
+                _step(
+                  "**Théorème de la moyenne** = conséquence du TVI : la valeur moyenne est atteinte au moins une fois.",
+                  tipFr:
+                      "Le théorème de la moyenne est puissant — il garantit l'existence d'un point précis où \$f\$ atteint sa moyenne.",
+                ),
+              ], finalAnswerFr: r"$c = 2/\sqrt{3}$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperIntegralApps() => _paper(
+      titleFr: 'Épreuve type — Applications de l\'intégration',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Aires entre courbes, volumes de révolution (notion), calcul de longueurs, intégrale et probabilités continues.",
+      exercices: [
+        _ex(
+          1,
+          'Aire entre deux courbes',
+          5,
+          "Soient \$f(x) = x^2 + 1\$ et \$g(x) = x + 3\$.",
+          [
+            _q(
+              1,
+              "Trouver les points d'intersection des deux courbes.",
+              2,
+              _sol([
+                _step(
+                  "Égalité : \$x^2 + 1 = x + 3 \\iff x^2 - x - 2 = 0 \\iff (x-2)(x+1) = 0\$. Solutions : \$x = -1\$ et \$x = 2\$.",
+                ),
+                _step(
+                  "Points : \$(-1, 2)\$ et \$(2, 5)\$.",
+                ),
+              ], finalAnswerFr: r"$(-1, 2)$ et $(2, 5)$"),
+            ),
+            _q(
+              2,
+              "Sur \$[-1, 2]\$, laquelle des deux courbes est au-dessus ? Calculer l'aire entre elles.",
+              3,
+              _sol([
+                _step(
+                  "Test en \$x = 0\$ : \$f(0) = 1\$, \$g(0) = 3\$. Donc \$g \\ge f\$ sur \$[-1, 2]\$ (la droite est au-dessus de la parabole entre les intersections).",
+                ),
+                _step(
+                  "\$A = \\int_{-1}^2 (g - f)\\,dx = \\int_{-1}^2 (x + 3 - x^2 - 1)\\,dx = \\int_{-1}^2 (-x^2 + x + 2)\\,dx\$.",
+                ),
+                _step(
+                  "Primitive : \$F(x) = -x^3/3 + x^2/2 + 2x\$.",
+                ),
+                _step(
+                  "\$A = F(2) - F(-1) = (-8/3 + 2 + 4) - (1/3 + 1/2 - 2) = (-8/3 + 6) - (1/3 - 3/2) = (10/3) - (2/6 - 9/6) = 10/3 + 7/6 = 20/6 + 7/6 = 27/6 = 9/2\$.",
+                ),
+              ], finalAnswerFr: r"$A = 9/2$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Volume de révolution (notion)',
+          5,
+          "On fait tourner la courbe \$y = \\sqrt{x}\$ autour de l'axe Ox sur \$[0, 4]\$, formant un solide de révolution.",
+          [
+            _q(
+              1,
+              "Donner la formule du volume.",
+              2,
+              _sol([
+                _step(
+                  "**Formule** : \$V = \\pi \\int_a^b [f(x)]^2\\,dx\$ (volume engendré par la rotation autour de Ox).",
+                ),
+                _step(
+                  "Intuition : on découpe le solide en disques infinitésimaux d'épaisseur \$dx\$ et de rayon \$f(x)\$, d'aire \$\\pi f(x)^2\$. Intégration → volume total.",
+                ),
+              ], finalAnswerFr: r"$V = \pi \int_a^b f^2\,dx$"),
+            ),
+            _q(
+              2,
+              "Calculer ce volume.",
+              3,
+              _sol([
+                _step(
+                  "\$V = \\pi \\int_0^4 (\\sqrt x)^2\\,dx = \\pi \\int_0^4 x\\,dx = \\pi [x^2/2]_0^4 = \\pi \\cdot 8 = 8\\pi\\,\\text{unités}^3\$.",
+                ),
+                _step(
+                  "**Forme du solide** : paraboloïde de révolution — comme un bol (la courbe \$y = \\sqrt x\$ est une demi-parabole, tournée donne un paraboloïde).",
+                ),
+              ], finalAnswerFr: r"$V = 8\pi$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Calcul de l\'énergie via une intégrale',
+          5,
+          "Un courant variable \$i(t) = 5 e^{-2t}\$ traverse une résistance \$R = 10\\,\\Omega\$. Énergie dissipée par effet Joule : \$E = R \\int_0^\\infty i^2(t)\\,dt\$.",
+          [
+            _q(
+              1,
+              "Calculer l'énergie totale dissipée.",
+              4,
+              _sol([
+                _step(
+                  "\$i^2(t) = 25 e^{-4t}\$.",
+                ),
+                _step(
+                  "Primitive de \$e^{-4t}\$ : \$-e^{-4t}/4\$.",
+                ),
+                _step(
+                  "\$\\int_0^\\infty e^{-4t}\\,dt = [-e^{-4t}/4]_0^\\infty = 0 - (-1/4) = 1/4\$.",
+                ),
+                _step(
+                  "Énergie : \$E = R \\times 25 \\times 1/4 = 10 \\times 25/4 = 62{,}5\\,J\$.",
+                ),
+              ], finalAnswerFr: r"$E = 62{,}5$ J"),
+            ),
+            _q(
+              2,
+              "L'intégrale \$\\int_0^\\infty\$ est-elle un calcul rigoureux ?",
+              1,
+              _sol([
+                _step(
+                  "**C'est une intégrale impropre** : \$\\int_0^\\infty f = \\lim_{T \\to \\infty} \\int_0^T f\$. Elle converge ici car \$e^{-4t}\$ décroît assez vite.",
+                ),
+                _step(
+                  "Plus généralement : \$\\int_0^\\infty e^{-\\alpha t}\\,dt = 1/\\alpha\$ pour \$\\alpha > 0\$ — résultat utile en physique (RC, RL, désintégration).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Lien dérivée-intégrale',
+          5,
+          "On considère \$F(x) = \\int_0^x e^{-t^2}\\,dt\$.",
+          [
+            _q(
+              1,
+              "Quelle est la dérivée de \$F\$ ?",
+              2,
+              _sol([
+                _step(
+                  "**Théorème fondamental du calcul** : si \$F(x) = \\int_a^x f(t)\\,dt\$, alors \$F'(x) = f(x)\$.",
+                ),
+                _step(
+                  "Application : \$F'(x) = e^{-x^2}\$.",
+                  tipFr:
+                      "C'est ce théorème qui établit le lien fondamental dérivation ↔ intégration. Newton-Leibniz est sa conséquence.",
+                ),
+              ], finalAnswerFr: r"$F'(x) = e^{-x^2}$"),
+            ),
+            _q(
+              2,
+              "Étudier les variations de \$F\$.",
+              3,
+              _sol([
+                _step(
+                  "\$F'(x) = e^{-x^2} > 0\$ pour tout \$x\$. Donc \$F\$ **strictement croissante** sur \$\\mathbb{R}\$.",
+                ),
+                _step(
+                  "\$F(0) = 0\$. Pour \$x > 0\$ : \$F(x) > 0\$. Pour \$x < 0\$ : \$F(x) < 0\$.",
+                ),
+                _step(
+                  "**Limites** : on admet \$\\int_0^\\infty e^{-t^2}\\,dt = \\sqrt\\pi/2 \\approx 0{,}886\$. Donc \$\\lim_{+\\infty} F = \\sqrt\\pi/2\$ et \$\\lim_{-\\infty} F = -\\sqrt\\pi/2\$.",
+                ),
+                _step(
+                  "Cette fonction est liée à la **fonction d'erreur** \$\\text{erf}(x) = (2/\\sqrt\\pi) F(x)\$, omniprésente en probabilités et physique statistique.",
+                  tipFr:
+                      "\$\\int e^{-t^2}\$ ne s'exprime pas avec des fonctions élémentaires — elle définit une nouvelle fonction (erf).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -2226,7 +2772,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'deriv_basic': _paperDerivBasic(),
   'deriv_rules': _paperDerivRules(),
   'deriv_apps': _paperDerivApps(),
-  // 20 SMB chapters remaining.
+  'primitives': _paperPrimitivesSmb(),
+  'definite_integral': _paperDefiniteIntegral(),
+  'integral_apps': _paperIntegralApps(),
+  // 17 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
