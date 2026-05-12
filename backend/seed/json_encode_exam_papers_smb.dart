@@ -3842,6 +3842,705 @@ Map<String, dynamic> _paperComplexGeometry() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperOdeFirstOrderSmb() => _paper(
+      titleFr: 'Épreuve type — EDO du 1er ordre',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Équations du type \$y' = ay\$, \$y' = ay + b\$, applications à la désintégration, la charge de condensateur, le refroidissement.",
+      exercices: [
+        _ex(
+          1,
+          'Résolution de référence',
+          5,
+          "Soit \$(E_1) : y' = 3y\$.",
+          [
+            _q(
+              1,
+              "Donner la solution générale.",
+              2,
+              _sol([
+                _step(
+                  "**Théorème** : \$y' = ay\$ admet pour solution générale \$y(x) = C e^{ax}\$, \$C \\in \\mathbb{R}\$.",
+                ),
+                _step(
+                  "Ici \$a = 3\$ : \$y(x) = C e^{3x}\$.",
+                ),
+              ], finalAnswerFr: r"$y(x) = C e^{3x}$"),
+            ),
+            _q(
+              2,
+              "Solution vérifiant \$y(0) = 2\$.",
+              2,
+              _sol([
+                _step(
+                  "\$y(0) = C = 2\$. Donc \$y(x) = 2 e^{3x}\$.",
+                ),
+              ], finalAnswerFr: r"$y(x) = 2 e^{3x}$"),
+            ),
+            _q(
+              3,
+              "À quel instant \$y\$ atteindra 100 ?",
+              1,
+              _sol([
+                _step(
+                  "\$2 e^{3x} = 100 \\iff e^{3x} = 50 \\iff x = \\ln(50)/3 \\approx 1{,}30\$.",
+                ),
+              ], finalAnswerFr: r"$x \approx 1{,}30$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'EDO avec second membre',
+          5,
+          "Soit \$(E_2) : y' = -2y + 10\$.",
+          [
+            _q(
+              1,
+              "Trouver une solution particulière constante.",
+              1,
+              _sol([
+                _step(
+                  "\$y_p\$ constante → \$y_p' = 0\$. \$0 = -2 y_p + 10 \\iff y_p = 5\$.",
+                ),
+              ], finalAnswerFr: r"$y_p = 5$"),
+            ),
+            _q(
+              2,
+              "Solution générale de l'équation homogène \$y' = -2y\$.",
+              1,
+              _sol([
+                _step(
+                  "\$y_h = C e^{-2x}\$.",
+                ),
+              ], finalAnswerFr: r"$y_h = C e^{-2x}$"),
+            ),
+            _q(
+              3,
+              "Solution générale de \$(E_2)\$, puis solution vérifiant \$y(0) = 8\$.",
+              3,
+              _sol([
+                _step(
+                  "**Principe de superposition** : \$y = y_h + y_p = C e^{-2x} + 5\$.",
+                ),
+                _step(
+                  "\$y(0) = C + 5 = 8 \\Rightarrow C = 3\$. Solution : \$y(x) = 3 e^{-2x} + 5\$.",
+                ),
+                _step(
+                  "**Comportement** : \$\\lim_{+\\infty} y = 5\$ (convergence vers l'équilibre). \$y = 5\$ est attractif.",
+                ),
+              ], finalAnswerFr: r"$y(x) = 3 e^{-2x} + 5$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Application — refroidissement (loi de Newton)',
+          5,
+          "Un café à 80°C est laissé dans une pièce à 20°C. La température \$T(t)\$ vérifie l'EDO : \$T'(t) = -k(T - T_{\\text{amb}})\$ avec \$T_{\\text{amb}} = 20\$°C et \$k > 0\$.",
+          [
+            _q(
+              1,
+              "Résoudre l'EDO avec \$T(0) = 80\$.",
+              3,
+              _sol([
+                _step(
+                  "Poser \$\\theta = T - 20\$. Alors \$\\theta' = T' = -k(T - 20) = -k\\theta\$ → \$\\theta' = -k\\theta\$.",
+                ),
+                _step(
+                  "Solution : \$\\theta(t) = C e^{-kt}\$. CI : \$\\theta(0) = T(0) - 20 = 60 = C\$. Donc \$\\theta(t) = 60 e^{-kt}\$.",
+                ),
+                _step(
+                  "Retour à T : \$T(t) = 20 + 60 e^{-kt}\$.",
+                ),
+              ], finalAnswerFr: r"$T(t) = 20 + 60 e^{-kt}$"),
+            ),
+            _q(
+              2,
+              "Si après 5 minutes le café est à 50°C, calculer \$k\$.",
+              2,
+              _sol([
+                _step(
+                  "\$T(5) = 50 \\iff 20 + 60 e^{-5k} = 50 \\iff e^{-5k} = 1/2 \\iff k = \\ln 2/5 \\approx 0{,}139\\,\\text{min}^{-1}\$.",
+                ),
+                _step(
+                  "**Demi-vie thermique** : \$t_{1/2} = \\ln 2/k = 5\\,\\text{min}\$. La température excédentaire (au-dessus de 20°C) est divisée par 2 toutes les 5 minutes.",
+                  tipFr:
+                      "Loi de Newton du refroidissement : structure identique à la désintégration radioactive (cinétique d'ordre 1).",
+                ),
+              ], finalAnswerFr: r"$k \approx 0{,}139$ /min"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Modèle d\'évolution démographique',
+          5,
+          "La population \$P(t)\$ d'une ville évolue selon \$P'(t) = 0{,}02 P(t)\$ (croissance de 2% par an).",
+          [
+            _q(
+              1,
+              "Si \$P(0) = 100\\,000\$, donner \$P(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Solution : \$P(t) = 100000 \\times e^{0{,}02 t}\$.",
+                ),
+              ], finalAnswerFr: r"$P(t) = 100000 e^{0{,}02 t}$"),
+            ),
+            _q(
+              2,
+              "Calculer \$P(10)\$, \$P(50)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$P(10) = 100000 \\times e^{0{,}2} \\approx 122140\$.",
+                ),
+                _step(
+                  "\$P(50) = 100000 \\times e^1 \\approx 271828\$. La population a presque triplé en 50 ans.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "En combien d'années la population aura-t-elle doublé ?",
+              1,
+              _sol([
+                _step(
+                  "\$e^{0{,}02 t} = 2 \\iff t = \\ln 2/0{,}02 \\approx 34{,}66\\,\\text{ans}\$.",
+                ),
+                _step(
+                  "**Règle de 72** : doublement \\approx \\(72/(\\text{taux \\%}) = 72/2 = 36\\) ans — proche de 34,66.",
+                ),
+              ], finalAnswerFr: r"$t \approx 35$ ans"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperOdeSecondOrder() => _paper(
+      titleFr: 'Épreuve type — EDO du 2nd ordre (oscillateurs)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Équation \$y'' + \\omega^2 y = 0\$ (oscillateur harmonique), solutions sinusoïdales, applications mécanique et électricité.",
+      exercices: [
+        _ex(
+          1,
+          'Résolution de référence',
+          5,
+          "Soit \$(E) : y'' + 4y = 0\$.",
+          [
+            _q(
+              1,
+              "Identifier la pulsation et donner la solution générale.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$y'' + \\omega^2 y = 0\$ avec \$\\omega^2 = 4\$, donc \$\\omega = 2\\,\\text{rad/s}\$.",
+                ),
+                _step(
+                  "**Solution générale** : \$y(t) = A\\cos(2t) + B\\sin(2t)\$ pour \$A, B \\in \\mathbb{R}\$.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$y(t) = A\cos(2t) + B\sin(2t)$"),
+            ),
+            _q(
+              2,
+              "Donner la solution avec \$y(0) = 3\$ et \$y'(0) = 0\$.",
+              3,
+              _sol([
+                _step(
+                  "\$y(0) = A\\cos 0 + B\\sin 0 = A = 3\$. Donc \$A = 3\$.",
+                ),
+                _step(
+                  "\$y'(t) = -2A\\sin(2t) + 2B\\cos(2t)\$. \$y'(0) = 2B = 0 \\Rightarrow B = 0\$.",
+                ),
+                _step(
+                  "Solution : \$y(t) = 3\\cos(2t)\$. Oscillation pure, amplitude 3, période \$T = 2\\pi/\\omega = \\pi\$ s.",
+                ),
+              ], finalAnswerFr: r"$y(t) = 3\cos(2t)$, $T = \pi$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Pendule simple — petites oscillations',
+          5,
+          "Un pendule de longueur \$L\$ : \$\\theta'' + (g/L)\\theta = 0\$ (petites oscillations).",
+          [
+            _q(
+              1,
+              "Donner la pulsation propre et la période.",
+              2,
+              _sol([
+                _step(
+                  "Identification : \$\\omega_0^2 = g/L \\Rightarrow \\omega_0 = \\sqrt{g/L}\$.",
+                ),
+                _step(
+                  "Période : \$T_0 = 2\\pi/\\omega_0 = 2\\pi\\sqrt{L/g}\$.",
+                ),
+              ], finalAnswerFr: r"$T_0 = 2\pi\sqrt{L/g}$"),
+            ),
+            _q(
+              2,
+              "Pour un pendule de 1 m sur Terre (\$g = 9{,}81\$), calculer \$T_0\$.",
+              1,
+              _sol([
+                _step(
+                  "\$T_0 = 2\\pi\\sqrt{1/9{,}81} \\approx 2\\pi \\times 0{,}319 \\approx 2{,}006\\,s\$. Soit environ 2 secondes — la 'seconde de pendule' historique correspond à \\(L \\approx 1\\) m.",
+                ),
+              ], finalAnswerFr: r"$T_0 \approx 2$ s"),
+            ),
+            _q(
+              3,
+              "Sur la Lune (\$g \\approx 1{,}62\$), recalculer \$T_0\$.",
+              2,
+              _sol([
+                _step(
+                  "\$T_{Lune}/T_{Terre} = \\sqrt{g_{Terre}/g_{Lune}} = \\sqrt{9{,}81/1{,}62} \\approx 2{,}46\$.",
+                ),
+                _step(
+                  "\$T_{Lune} \\approx 2 \\times 2{,}46 \\approx 4{,}9\\,s\$. Pendule beaucoup plus lent.",
+                ),
+              ], finalAnswerFr: r"$T_{Lune} \approx 4{,}9$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Forme \$A\\cos(\\omega t + \\varphi)\$',
+          5,
+          "On a \$y(t) = 3\\cos(2t) + 4\\sin(2t)\$.",
+          [
+            _q(
+              1,
+              "Écrire \$y\$ sous la forme \$R\\cos(\\omega t + \\varphi)\$.",
+              4,
+              _sol([
+                _step(
+                  "**Identité** : \$A\\cos\\theta + B\\sin\\theta = R\\cos(\\theta - \\varphi)\$ avec \$R = \\sqrt{A^2 + B^2}\$ et \$\\tan\\varphi = B/A\$.",
+                ),
+                _step(
+                  "Application : \$R = \\sqrt{9 + 16} = 5\$.",
+                ),
+                _step(
+                  "\$\\tan\\varphi = 4/3\$, et \$\\cos\\varphi = 3/5 > 0\$, \$\\sin\\varphi = 4/5 > 0\$ → \$\\varphi \\approx 0{,}927\\,rad\\) (≈ 53°).",
+                ),
+                _step(
+                  "Donc \$y(t) = 5\\cos(2t - 0{,}927)\$. Amplitude 5, phase 0,927 rad.",
+                  tipFr:
+                      "Cette forme amplitude-phase est très utile pour identifier amplitude et déphasage d'un signal.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$y(t) = 5\cos(2t - 0{,}927)$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Circuit LC',
+          5,
+          "Dans un circuit LC sans résistance, la charge \$q(t)\$ vérifie \$L q'' + q/C = 0\$.",
+          [
+            _q(
+              1,
+              "Identifier la pulsation propre \$\\omega_0\$.",
+              2,
+              _sol([
+                _step(
+                  "Réécriture : \$q'' + q/(LC) = 0\$. Forme \$y'' + \\omega^2 y = 0\$ avec \$\\omega^2 = 1/(LC)\$.",
+                ),
+                _step(
+                  "\$\\omega_0 = 1/\\sqrt{LC}\$. Période : \$T_0 = 2\\pi\\sqrt{LC}\$.",
+                ),
+              ], finalAnswerFr: r"$\omega_0 = 1/\sqrt{LC}$"),
+            ),
+            _q(
+              2,
+              "Pour \$L = 10\\,mH\$, \$C = 100\\,\\mu F\$ : calculer \$T_0\$.",
+              2,
+              _sol([
+                _step(
+                  "\$LC = 10^{-2} \\times 10^{-4} = 10^{-6}\$. \$\\sqrt{LC} = 10^{-3}\\,s\$.",
+                ),
+                _step(
+                  "\$T_0 = 2\\pi \\times 10^{-3} \\approx 6{,}28\\,ms\$. Fréquence : \$f_0 = 1/T_0 \\approx 159\\,Hz\$.",
+                ),
+              ], finalAnswerFr: r"$T_0 \approx 6{,}28$ ms"),
+            ),
+            _q(
+              3,
+              "Énergie : conservation entre les formes électrique et magnétique.",
+              1,
+              _sol([
+                _step(
+                  "À chaque instant, \$E_C(t) + E_L(t) = E_0\$ (constante). Énergie oscille entre le condensateur (\$E_C = q^2/(2C)\$) et la bobine (\$E_L = Li^2/2\$).",
+                ),
+                _step(
+                  "Analogue parfait du pendule sans frottement : énergie potentielle (gravitationnelle) ↔ énergie cinétique.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperKinematics() => _paper(
+      titleFr: 'Épreuve type — Cinématique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Position, vitesse, accélération. MRU, MRUA, équations horaires, application à la chute libre.",
+      exercices: [
+        _ex(
+          1,
+          'Vitesse et accélération',
+          5,
+          "Un mobile a pour position \$x(t) = 2 t^3 - 9 t^2 + 12 t + 1\$ (en mètres, t en secondes).",
+          [
+            _q(
+              1,
+              "Calculer la vitesse \$v(t)\$ et l'accélération \$a(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "**Vitesse** = dérivée de la position : \$v(t) = x'(t) = 6 t^2 - 18 t + 12 = 6(t^2 - 3t + 2) = 6(t-1)(t-2)\$ m/s.",
+                ),
+                _step(
+                  "**Accélération** = dérivée de la vitesse : \$a(t) = v'(t) = 12 t - 18 = 6(2t - 3)\$ m/s².",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$v = 6(t-1)(t-2)$, $a = 6(2t-3)$"),
+            ),
+            _q(
+              2,
+              "À quels instants le mobile est-il à l'arrêt ?",
+              2,
+              _sol([
+                _step(
+                  "\$v(t) = 0 \\iff t = 1\$ ou \$t = 2\$ secondes.",
+                ),
+                _step(
+                  "Entre 0 et 1 : \$v > 0\$ → mouvement progressif. Entre 1 et 2 : \$v < 0\$ → mouvement rétrograde. Après 2 s : \$v > 0\$ à nouveau.",
+                ),
+              ], finalAnswerFr: r"$t = 1$ s et $t = 2$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'MRUA — chute libre',
+          5,
+          "On lâche une pierre du haut d'une falaise (sans vitesse initiale). Elle touche le sol après 4 s. \$g = 9{,}8\\,m/s^2\$.",
+          [
+            _q(
+              1,
+              "Quelle est la hauteur de la falaise ?",
+              2,
+              _sol([
+                _step(
+                  "**MRUA** : \$h = (1/2) g t^2 = 0{,}5 \\times 9{,}8 \\times 16 = 78{,}4\\,m\$.",
+                ),
+              ], finalAnswerFr: r"$h = 78{,}4$ m"),
+            ),
+            _q(
+              2,
+              "Quelle est la vitesse de la pierre à l'impact ?",
+              2,
+              _sol([
+                _step(
+                  "\$v = g t = 9{,}8 \\times 4 = 39{,}2\\,m/s\$. Soit \$\\approx 141\\,km/h\$ — très rapide !",
+                ),
+                _step(
+                  "**Vérification énergétique** : \$mgh = (1/2)mv^2\$ → \$v = \\sqrt{2 g h} = \\sqrt{2 \\times 9{,}8 \\times 78{,}4} = \\sqrt{1537} \\approx 39{,}2\\,m/s\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$v \approx 39{,}2$ m/s"),
+            ),
+            _q(
+              3,
+              "Quelle distance a-t-elle parcourue durant la 3ème seconde ?",
+              1,
+              _sol([
+                _step(
+                  "Distance entre \$t = 2\$ et \$t = 3\$ : \$\\Delta h = (1/2) g (3^2 - 2^2) = 0{,}5 \\times 9{,}8 \\times 5 = 24{,}5\\,m\$.",
+                ),
+                _step(
+                  "**Remarque** : pendant la 1ère seconde elle parcourt 4,9 m, la 2ème 14,7 m, la 3ème 24,5 m — distances croissantes selon les nombres impairs (1, 3, 5, 7...) × 4,9.",
+                ),
+              ], finalAnswerFr: r"$\Delta h = 24{,}5$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Démarrage et freinage',
+          5,
+          "Une voiture démarre du repos avec accélération constante \$a_1 = 3\\,m/s^2\$ pendant 8 s. Elle roule ensuite à vitesse constante 10 s. Puis freine avec décélération \$a_2 = -4\\,m/s^2\$ jusqu'à l'arrêt.",
+          [
+            _q(
+              1,
+              "Vitesse maximale atteinte ?",
+              1,
+              _sol([
+                _step(
+                  "Phase 1 : \$v = a_1 t = 3 \\times 8 = 24\\,m/s = 86{,}4\\,km/h\$.",
+                ),
+              ], finalAnswerFr: r"$v_{\max} = 24$ m/s"),
+            ),
+            _q(
+              2,
+              "Distance parcourue durant la phase de freinage.",
+              3,
+              _sol([
+                _step(
+                  "Phase 3 : vitesse passe de 24 à 0 m/s avec \$a = -4\$. Durée : \$t_3 = -v_0/a = 24/4 = 6\\,s\$.",
+                ),
+                _step(
+                  "Distance : \$d_3 = v_0 t + (1/2) a t^2 = 24 \\times 6 - 0{,}5 \\times 4 \\times 36 = 144 - 72 = 72\\,m\$.",
+                ),
+                _step(
+                  "Vérification énergétique : \$v^2 - v_0^2 = 2 a d \\Rightarrow d = (0 - 576)/(-8) = 72\\,m\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$d_3 = 72$ m"),
+            ),
+            _q(
+              3,
+              "Distance totale parcourue.",
+              1,
+              _sol([
+                _step(
+                  "Phase 1 : \$d_1 = (1/2) a_1 t_1^2 = 0{,}5 \\times 3 \\times 64 = 96\\,m\$.",
+                ),
+                _step(
+                  "Phase 2 : \$d_2 = v t_2 = 24 \\times 10 = 240\\,m\$.",
+                ),
+                _step(
+                  "Phase 3 : 72 m. **Total : 96 + 240 + 72 = 408 m**.",
+                ),
+              ], finalAnswerFr: r"$d_{tot} = 408$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Mouvement parabolique',
+          5,
+          "Un projectile est lancé avec \$v_0 = 25\\,m/s\$ à un angle \$\\alpha = 30°\$ au-dessus de l'horizontale.",
+          [
+            _q(
+              1,
+              "Calculer la portée \$x_p\$.",
+              3,
+              _sol([
+                _step(
+                  "Composantes : \$v_{0x} = v_0\\cos\\alpha = 25 \\times \\sqrt 3/2 \\approx 21{,}65\\,m/s\$ ; \$v_{0y} = v_0\\sin\\alpha = 12{,}5\\,m/s\$.",
+                ),
+                _step(
+                  "Durée du vol : \$t_p = 2 v_{0y}/g = 25/9{,}81 \\approx 2{,}55\\,s\$.",
+                ),
+                _step(
+                  "Portée : \$x_p = v_{0x} \\times t_p \\approx 21{,}65 \\times 2{,}55 \\approx 55{,}2\\,m\$.",
+                ),
+                _step(
+                  "Formule : \$x_p = v_0^2 \\sin(2\\alpha)/g = 625 \\times \\sin 60°/9{,}81 = 625 \\times 0{,}866/9{,}81 \\approx 55{,}2\\,m\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$x_p \approx 55{,}2$ m"),
+            ),
+            _q(
+              2,
+              "Hauteur maximale atteinte.",
+              2,
+              _sol([
+                _step(
+                  "Au sommet, \$v_y = 0\$. \$h_{\\max} = v_{0y}^2/(2g) = 156{,}25/19{,}62 \\approx 7{,}97\\,m\$.",
+                ),
+                _step(
+                  "Formule : \$h_{\\max} = v_0^2\\sin^2\\alpha/(2g) = 625 \\times 0{,}25/19{,}62 \\approx 7{,}97\\,m\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$h_{\max} \approx 8$ m"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperNewtonsLawsSmb() => _paper(
+      titleFr: 'Épreuve type — Lois de Newton (SMB)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Trois lois de Newton, équilibre, frottements, plans inclinés, principe d'action-réaction.",
+      exercices: [
+        _ex(
+          1,
+          'Équilibre statique',
+          5,
+          "Une caisse de 50 kg est suspendue par deux cordes à 30° de la verticale chacune.",
+          [
+            _q(
+              1,
+              "Faire le bilan des forces sur la caisse.",
+              2,
+              _sol([
+                _step(
+                  "Forces : poids \$\\vec P\$ (vers le bas, \$P = mg = 50 \\times 10 = 500\\,N\$). Deux tensions \$\\vec T_1, \\vec T_2\$ (selon les cordes, vers le haut + écart). Par symétrie \$T_1 = T_2 = T\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer la tension dans chaque corde.",
+              3,
+              _sol([
+                _step(
+                  "**Équilibre vertical** : \$2 T \\cos 30° = P\$, soit \$2T \\times \\sqrt 3/2 = 500\$, donc \$T = 500/\\sqrt 3 \\approx 289\\,N\$.",
+                ),
+                _step(
+                  "**Composantes horizontales** : les deux tensions ont des composantes opposées \$T \\sin 30°\$, qui s'annulent ✓.",
+                ),
+                _step(
+                  "**Observation** : si les cordes étaient plus inclinées (angle \\(\\to 90°\\)), la tension exploserait — \\(\\lim T = \\infty\\). C'est pourquoi des cordes presque horizontales sont très contraignantes.",
+                  tipFr:
+                      "À chaque fois qu'on tend une corde, on multiplie les contraintes — physique pertinente pour les ponts suspendus, les téléphériques.",
+                ),
+              ], finalAnswerFr: r"$T \approx 289$ N"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Plan incliné avec frottement',
+          5,
+          "Un bloc de 10 kg est posé sur un plan incliné à 25°. Coefficient de frottement statique \$\\mu_s = 0{,}5\$.",
+          [
+            _q(
+              1,
+              "Le bloc glisse-t-il spontanément ?",
+              3,
+              _sol([
+                _step(
+                  "Composante du poids selon le plan : \$P_x = mg\\sin\\alpha = 10 \\times 10 \\times 0{,}423 = 42{,}3\\,N\$ (tirant le bloc vers le bas).",
+                ),
+                _step(
+                  "Réaction normale : \$R = mg\\cos\\alpha = 100 \\times 0{,}906 = 90{,}6\\,N\$. Force de frottement statique max : \$f_{\\max} = \\mu_s R = 0{,}5 \\times 90{,}6 = 45{,}3\\,N\$.",
+                ),
+                _step(
+                  "Comparaison : \$P_x = 42{,}3 < f_{\\max} = 45{,}3\$. Le frottement suffit à compenser → **le bloc ne glisse pas**.",
+                  tipFr:
+                      "Critère d'équilibre : \$\\tan\\alpha < \\mu_s\$. Pour \$\\mu_s = 0{,}5\$, angle critique \$\\alpha_c = \\arctan 0{,}5 \\approx 26{,}6°\$. Ici 25° < 26,6° ✓.",
+                ),
+              ], finalAnswerFr: r"Non, le bloc reste statique"),
+            ),
+            _q(
+              2,
+              "À partir de quel angle commence-t-il à glisser ?",
+              2,
+              _sol([
+                _step(
+                  "Au seuil : \$\\tan\\alpha_c = \\mu_s\$. \$\\alpha_c = \\arctan(0{,}5) \\approx 26{,}57°\$.",
+                ),
+                _step(
+                  "Au-delà, la composante du poids dépasse la friction max et le bloc accélère.",
+                ),
+              ], finalAnswerFr: r"$\alpha_c \approx 26{,}6°$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Système avec poulie',
+          5,
+          "Deux blocs (5 kg et 3 kg) sont reliés par une corde passant sur une poulie idéale. Le bloc lourd descend.",
+          [
+            _q(
+              1,
+              "Déterminer l'accélération du système et la tension de la corde.",
+              4,
+              _sol([
+                _step(
+                  "Bloc 1 (5 kg, descend) : \$m_1 g - T = m_1 a\$, soit \$50 - T = 5a\$.",
+                ),
+                _step(
+                  "Bloc 2 (3 kg, monte) : \$T - m_2 g = m_2 a\$, soit \$T - 30 = 3a\$.",
+                ),
+                _step(
+                  "Sommer : \$50 - 30 = 8a \\Rightarrow a = 2{,}5\\,m/s^2\$.",
+                ),
+                _step(
+                  "Tension : \$T = 30 + 3 \\times 2{,}5 = 37{,}5\\,N\$.",
+                  tipFr:
+                      "Vérification : \$T < m_1 g\$ (bloc 1 descend) ET \$T > m_2 g\$ (bloc 2 monte). Ici \$30 < 37{,}5 < 50\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$a = 2{,}5$ m/s², $T = 37{,}5$ N"),
+            ),
+            _q(
+              2,
+              "Vitesse du système après 2 s, partant du repos.",
+              1,
+              _sol([
+                _step(
+                  "\$v = at = 2{,}5 \\times 2 = 5\\,m/s\$.",
+                ),
+              ], finalAnswerFr: r"$v = 5$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Mouvement circulaire uniforme',
+          5,
+          "Un satellite tourne autour de la Terre à altitude \$h = 400\\,km\$ (orbite ISS). Rayon terrestre \$R_T = 6400\\,km\$. \$g_0 = 9{,}81\\,m/s^2\$ au sol.",
+          [
+            _q(
+              1,
+              "Calculer la gravité \$g\$ à cette altitude.",
+              2,
+              _sol([
+                _step(
+                  "Loi de gravitation : \$g \\propto 1/r^2\$. \$g/g_0 = (R_T/(R_T + h))^2 = (6400/6800)^2 \\approx 0{,}886\$.",
+                ),
+                _step(
+                  "\$g \\approx 9{,}81 \\times 0{,}886 \\approx 8{,}69\\,m/s^2\$.",
+                ),
+                _step(
+                  "Donc \$g\$ à 400 km est encore ~89% de \$g_0\$ — ce n'est pas le 'zéro gravité' qu'on imagine, mais la 'chute libre permanente' du satellite (orbite).",
+                ),
+              ], finalAnswerFr: r"$g \approx 8{,}69$ m/s²"),
+            ),
+            _q(
+              2,
+              "Calculer la vitesse orbitale.",
+              3,
+              _sol([
+                _step(
+                  "**Mouvement circulaire uniforme** : la force centripète = gravité. \$m g = m v^2/r \\Rightarrow v = \\sqrt{g r}\$ avec \$r = R_T + h\$.",
+                ),
+                _step(
+                  "\$v = \\sqrt{8{,}69 \\times 6{,}8 \\times 10^6} = \\sqrt{5{,}91 \\times 10^7} \\approx 7690\\,m/s \\approx 27\\,700\\,km/h\$.",
+                ),
+                _step(
+                  "Période de révolution : \$T = 2\\pi r/v = 2\\pi \\times 6{,}8 \\times 10^6 / 7690 \\approx 5556\\,s \\approx 92{,}6\\,\\text{min}\$. L'ISS fait un tour de Terre en ~93 min.",
+                  tipFr:
+                      "Toujours vérifier numériquement les ordres de grandeur — la vitesse orbitale (~28000 km/h) et la période (~90 min) sont des valeurs classiques en physique spatiale.",
+                ),
+              ], finalAnswerFr: r"$v \approx 7690$ m/s, $T \approx 93$ min"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -3864,7 +4563,11 @@ final Map<String, Map<String, dynamic>> _papers = {
   'complex_basics': _paperComplexBasicsSmb(),
   'complex_trig': _paperComplexTrig(),
   'complex_geometry': _paperComplexGeometry(),
-  // 11 SMB chapters remaining.
+  'ode_first_order': _paperOdeFirstOrderSmb(),
+  'ode_second_order': _paperOdeSecondOrder(),
+  'kinematics': _paperKinematics(),
+  'newtons_laws': _paperNewtonsLawsSmb(),
+  // 7 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
