@@ -755,6 +755,756 @@ Map<String, dynamic> _paperSeqRecursive() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperLimitCalc() => _paper(
+      titleFr: 'Épreuve type — Calcul de limites',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Limites en un point et à l'infini, formes indéterminées, factorisation, quantités conjuguées, croissances comparées.",
+      exercices: [
+        _ex(
+          1,
+          'Limites par calcul direct',
+          5,
+          "Calculer les limites suivantes en justifiant la méthode.",
+          [
+            _q(
+              1,
+              "\$\\lim_{x \\to 2}(x^3 - 2x^2 + 1)\$.",
+              1,
+              _sol([
+                _step(
+                  "Polynôme continu sur \$\\mathbb{R}\$ → substitution directe : \$8 - 8 + 1 = 1\$.",
+                ),
+              ], finalAnswerFr: r"$\lim = 1$"),
+            ),
+            _q(
+              2,
+              "\$\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x - 3}\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$0/0\$ (numérateur et dénominateur s'annulent en 3). Factoriser : \$x^2 - 9 = (x-3)(x+3)\$.",
+                ),
+                _step(
+                  "\$\\dfrac{(x-3)(x+3)}{x-3} = x + 3 \\to 6\$ quand \$x \\to 3\$.",
+                  tipFr:
+                      "Forme \$0/0\$ avec polynômes : factoriser par \$(x - a)\$ pour faire apparaître une simplification.",
+                ),
+              ], finalAnswerFr: r"$\lim = 6$"),
+            ),
+            _q(
+              3,
+              "\$\\lim_{x \\to 1} \\dfrac{x^3 - 1}{x^2 - 1}\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$0/0\$. \$x^3 - 1 = (x-1)(x^2 + x + 1)\$ ; \$x^2 - 1 = (x-1)(x+1)\$.",
+                ),
+                _step(
+                  "Fraction : \$\\dfrac{x^2 + x + 1}{x + 1}\$ pour \$x \\ne 1\$.",
+                ),
+                _step(
+                  "Limite en 1 : \$\\dfrac{1 + 1 + 1}{1 + 1} = \\dfrac{3}{2}\$.",
+                ),
+              ], finalAnswerFr: r"$\lim = 3/2$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Quantité conjuguée',
+          5,
+          "Calculer ces limites par la technique du conjugué.",
+          [
+            _q(
+              1,
+              "\$\\lim_{x \\to 0} \\dfrac{\\sqrt{1 + x} - 1}{x}\$.",
+              3,
+              _sol([
+                _step(
+                  "Forme \$0/0\$. Multiplier haut et bas par la quantité conjuguée \$\\sqrt{1+x} + 1\$.",
+                ),
+                _step(
+                  "\$\\dfrac{(\\sqrt{1+x} - 1)(\\sqrt{1+x} + 1)}{x(\\sqrt{1+x} + 1)} = \\dfrac{(1 + x) - 1}{x(\\sqrt{1+x} + 1)} = \\dfrac{x}{x(\\sqrt{1+x} + 1)} = \\dfrac{1}{\\sqrt{1+x} + 1}\$.",
+                ),
+                _step(
+                  "Limite en 0 : \$\\dfrac{1}{\\sqrt 1 + 1} = \\dfrac{1}{2}\$.",
+                  tipFr:
+                      "Multiplier par le conjugué \$(a + b)\$ d'une expression \$(a - b)\$ donne \$a^2 - b^2\$ — fait disparaître les racines.",
+                ),
+              ], finalAnswerFr: r"$\lim = 1/2$"),
+            ),
+            _q(
+              2,
+              "\$\\lim_{x \\to +\\infty}\\sqrt{x^2 + x} - x\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme \$\\infty - \\infty\$. Conjuguée : multiplier par \$(\\sqrt{x^2+x} + x)/(\\sqrt{x^2+x} + x)\$.",
+                ),
+                _step(
+                  "Numérateur : \$(x^2 + x) - x^2 = x\$. Dénominateur : \$\\sqrt{x^2 + x} + x\$. Pour \$x \\to +\\infty\$, \$\\sqrt{x^2 + x} \\sim x\$, donc dénominateur \$\\sim 2x\$.",
+                ),
+                _step(
+                  "Limite : \$\\dfrac{x}{2x} = \\dfrac{1}{2}\$.",
+                ),
+              ], finalAnswerFr: r"$\lim = 1/2$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Limites à l\'infini et croissances comparées',
+          5,
+          "Étudier le comportement asymptotique.",
+          [
+            _q(
+              1,
+              "\$\\lim_{x \\to +\\infty} \\dfrac{3x^2 - x + 1}{x^2 + 2}\$.",
+              2,
+              _sol([
+                _step(
+                  "Quotient de polynômes de **même degré 2**. Factoriser \$x^2\$ en haut et en bas : \$\\dfrac{x^2(3 - 1/x + 1/x^2)}{x^2(1 + 2/x^2)} \\to \\dfrac{3}{1} = 3\$.",
+                ),
+                _step(
+                  "**Règle pratique** : pour un quotient de polynômes de même degré, limite = rapport des coefficients dominants.",
+                ),
+              ], finalAnswerFr: r"$\lim = 3$"),
+            ),
+            _q(
+              2,
+              "\$\\lim_{x \\to +\\infty} \\dfrac{\\ln x}{x}\$ et \$\\lim_{x \\to +\\infty} \\dfrac{e^x}{x^{10}}\$.",
+              2,
+              _sol([
+                _step(
+                  "**Croissances comparées** : à l'infini, l'exponentielle l'emporte sur toute puissance, qui l'emporte sur \$\\ln\$.",
+                ),
+                _step(
+                  "Donc \$\\lim \\dfrac{\\ln x}{x} = 0\$ et \$\\lim \\dfrac{e^x}{x^{10}} = +\\infty\$.",
+                  tipFr:
+                      "Hiérarchie universelle : \$e^x \\gg x^n \\gg \\ln x\$ à l'infini. Elle décide qui 'gagne' dans toute forme indéterminée \$\\infty/\\infty\$.",
+                ),
+              ], finalAnswerFr: r"$0$ et $+\infty$"),
+            ),
+            _q(
+              3,
+              "\$\\lim_{x \\to 0^+} x \\ln x\$.",
+              1,
+              _sol([
+                _step(
+                  "Forme \$0 \\cdot (-\\infty)\$. Changement de variable \$u = 1/x\$ (\$u \\to +\\infty\$ quand \$x \\to 0^+\$) : \$x \\ln x = (1/u) \\ln(1/u) = -\\ln u / u \\to 0\$ par croissances comparées.",
+                ),
+              ], finalAnswerFr: r"$\lim = 0$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Asymptotes',
+          5,
+          "Soit \$f(x) = \\dfrac{x^2 + 1}{x - 1}\$ définie sur \$\\mathbb{R} \\setminus \\{1\\}\$.",
+          [
+            _q(
+              1,
+              "Calculer les limites de \$f\$ en \$1^+\$, \$1^-\$, \$+\\infty\$, \$-\\infty\$.",
+              2,
+              _sol([
+                _step(
+                  "En 1 : numérateur \$\\to 2 > 0\$, dénominateur \$\\to 0\$. Signe à droite : \$x - 1 > 0\$ → \$f \\to +\\infty\$. Signe à gauche : \$x - 1 < 0\$ → \$f \\to -\\infty\$.",
+                ),
+                _step(
+                  "À \$\\pm \\infty\$ : numérateur degré 2, dénominateur degré 1 → \$f \\to \\pm \\infty\$ (numérateur l'emporte).",
+                ),
+              ], finalAnswerFr: r"$\pm\infty$ en 1; $\pm\infty$ à $\pm\infty$"),
+            ),
+            _q(
+              2,
+              "Effectuer la division euclidienne pour écrire \$f(x) = ax + b + c/(x-1)\$.",
+              2,
+              _sol([
+                _step(
+                  "Division : \$x^2 + 1 = (x - 1)(x + 1) + 2\$ (car \$(x-1)(x+1) = x^2 - 1\$ et reste = \$1 - (-1) = 2\$).",
+                ),
+                _step(
+                  "Donc \$f(x) = x + 1 + \\dfrac{2}{x - 1}\$.",
+                ),
+              ], finalAnswerFr: r"$f(x) = x + 1 + 2/(x-1)$"),
+            ),
+            _q(
+              3,
+              "En déduire l'asymptote oblique en \$\\pm\\infty\$.",
+              1,
+              _sol([
+                _step(
+                  "Quand \$x \\to \\pm\\infty\$, \$\\dfrac{2}{x-1} \\to 0\$, donc \$f(x) - (x + 1) \\to 0\$.",
+                ),
+                _step(
+                  "La droite \$y = x + 1\$ est **asymptote oblique** à la courbe de \$f\$ en \$\\pm\\infty\$.",
+                  tipFr:
+                      "Asymptote oblique : la partie polynômiale après division euclidienne donne l'équation de l'asymptote. Le reste tend vers 0.",
+                ),
+              ], finalAnswerFr: r"$y = x + 1$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperContinuityTvi() => _paper(
+      titleFr: 'Épreuve type — Continuité et théorème des valeurs intermédiaires',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Continuité (\$\\lim_a f = f(a)\$), prolongement par continuité, TVI (\$f\$ continue sur \$[a,b]\$ + signes opposés → racine).",
+      exercices: [
+        _ex(
+          1,
+          'Continuité par morceaux',
+          5,
+          "Soit \$f(x) = \\begin{cases} x^2 + 1 & \\text{si } x \\le 1 \\\\ ax + b & \\text{si } x > 1 \\end{cases}\$.",
+          [
+            _q(
+              1,
+              "Déterminer \$a, b\$ pour que \$f\$ soit continue et dérivable en \$x = 1\$.",
+              4,
+              _sol([
+                _step(
+                  "**Continuité en 1** : \$\\lim_{1^-} f = 1^2 + 1 = 2\$ et \$f(1) = 2\$. Limite à droite : \$\\lim_{1^+} ax + b = a + b\$. Égalité : \$a + b = 2\$.",
+                ),
+                _step(
+                  "**Dérivabilité en 1** : les dérivées à gauche et à droite doivent coïncider. À gauche : \$f'(x) = 2x\$ donc \$f'_g(1) = 2\$. À droite : \$f'(x) = a\$, donc \$a = 2\$.",
+                ),
+                _step(
+                  "Avec \$a = 2\$ et \$a + b = 2\$ : \$b = 0\$. Donc \$f(x) = 2x\$ pour \$x > 1\$.",
+                  tipFr:
+                      "Pour 'recoller' deux morceaux avec dérivabilité, deux conditions : (1) mêmes valeurs (continuité), (2) mêmes pentes (dérivabilité).",
+                ),
+              ], finalAnswerFr: r"$a = 2$, $b = 0$"),
+            ),
+            _q(
+              2,
+              "Avec ces valeurs, vérifier la continuité et la dérivabilité.",
+              1,
+              _sol([
+                _step(
+                  "\$\\lim_{1^-} f = 2\$, \$\\lim_{1^+} f = 2 \\cdot 1 + 0 = 2\$, \$f(1) = 2\$ ✓ continue. \$f'_g(1) = 2\$, \$f'_d(1) = 2\$ ✓ dérivable.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Prolongement par continuité',
+          5,
+          "Étudier la possibilité de prolonger par continuité.",
+          [
+            _q(
+              1,
+              "\$f(x) = \\dfrac{x^2 - 4}{x - 2}\$ en \$x = 2\$.",
+              3,
+              _sol([
+                _step(
+                  "\$f\$ n'est pas définie en 2 (dénominateur s'annule). Calcul de la limite : \$\\dfrac{x^2 - 4}{x - 2} = \\dfrac{(x-2)(x+2)}{x - 2} = x + 2\$ pour \$x \\ne 2\$.",
+                ),
+                _step(
+                  "\$\\lim_{x \\to 2} f(x) = 4\$ existe et est finie.",
+                ),
+                _step(
+                  "**Prolongement par continuité** : \$\\tilde f(2) = 4\$. La fonction prolongée est simplement \$x + 2\$ partout, continue sur \$\\mathbb{R}\$.",
+                  tipFr:
+                      "Discontinuité 'apparente' (forme \$0/0\$) → prolongeable. Discontinuité 'essentielle' (limites infinies ou limites latérales différentes) → non-prolongeable.",
+                ),
+              ], finalAnswerFr: r"$\tilde f(2) = 4$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\dfrac{1}{x^2}\$ en \$x = 0\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\lim_{x \\to 0} 1/x^2 = +\\infty\$ (des deux côtés). Pas de limite finie.",
+                ),
+                _step(
+                  "**Impossible** de prolonger par continuité — la discontinuité est essentielle (asymptote verticale).",
+                ),
+              ], finalAnswerFr: r"Non prolongeable"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'TVI — existence et unicité',
+          5,
+          "Soit \$f(x) = x^3 + 2x - 5\$.",
+          [
+            _qSubs(
+              1,
+              "Étude de l'équation \$f(x) = 0\$.",
+              4,
+              [
+                _sub(
+                  'a',
+                  "Justifier que l'équation admet au moins une solution dans \$[1, 2]\$.",
+                  2,
+                  _sol([
+                    _step(
+                      "\$f\$ est polynômiale → **continue sur \$\\mathbb{R}\$**, en particulier sur \$[1, 2]\$.",
+                    ),
+                    _step(
+                      "\$f(1) = 1 + 2 - 5 = -2 < 0\$ et \$f(2) = 8 + 4 - 5 = 7 > 0\$. Signes opposés → par **TVI**, \$\\exists \\alpha \\in [1, 2] : f(\\alpha) = 0\$.",
+                    ),
+                  ], finalAnswerFr: r"$\exists \alpha \in [1, 2]$"),
+                ),
+                _sub(
+                  'b',
+                  "Montrer l'unicité.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$f'(x) = 3x^2 + 2 > 0\$ pour tout \$x\$ (somme de positifs). Donc \$f\$ est **strictement croissante** sur \$\\mathbb{R}\$ → la solution est unique.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'c',
+                  "Donner un encadrement à \$10^{-1}\$ près.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$f(1{,}3) = 2{,}197 + 2{,}6 - 5 = -0{,}203 < 0\$. \$f(1{,}4) = 2{,}744 + 2{,}8 - 5 = 0{,}544 > 0\$. Donc \$\\alpha \\in ]1{,}3,\\, 1{,}4[\$.",
+                    ),
+                  ], finalAnswerFr: r"$\alpha \in ]1{,}3,\, 1{,}4[$"),
+                ),
+              ],
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Équation transcendante',
+          5,
+          "Soit \$g(x) = e^x + x - 3\$.",
+          [
+            _q(
+              1,
+              "Montrer que \$g(x) = 0\$ admet une unique solution \$\\alpha\$ dans \$\\mathbb{R}\$.",
+              3,
+              _sol([
+                _step(
+                  "**Existence** : \$g\$ est continue (somme de continues). \$g(0) = 1 + 0 - 3 = -2 < 0\$ ; \$g(1) = e + 1 - 3 \\approx 0{,}72 > 0\$. TVI sur \$[0, 1]\$ → solution.",
+                ),
+                _step(
+                  "**Unicité** : \$g'(x) = e^x + 1 > 0\$ partout → \$g\$ strictement croissante → solution unique.",
+                ),
+                _step(
+                  "**Domaine global** : \$\\lim_{-\\infty} g = 0 - \\infty - 3 = -\\infty\$ ; \$\\lim_{+\\infty} g = +\\infty\$. \$g\$ atteint toute valeur réelle, l'unique solution est dans \$\\mathbb{R}\$.",
+                ),
+              ], finalAnswerFr: r"$\exists ! \alpha \approx 0{,}79$"),
+            ),
+            _q(
+              2,
+              "Donner un encadrement de \$\\alpha\$ à \$10^{-2}\$ près par dichotomie.",
+              2,
+              _sol([
+                _step(
+                  "On part de \$[0, 1]\$. Milieu \$0{,}5\$ : \$g(0{,}5) = e^{0{,}5} + 0{,}5 - 3 \\approx 1{,}649 - 2{,}5 = -0{,}851 < 0\$ → \$\\alpha \\in ]0{,}5, 1[\$.",
+                ),
+                _step(
+                  "Milieu \$0{,}75\$ : \$g(0{,}75) \\approx 2{,}117 + 0{,}75 - 3 = -0{,}133 < 0\$ → \$\\alpha \\in ]0{,}75, 1[\$.",
+                ),
+                _step(
+                  "Milieu \$0{,}875\$ : \$g(0{,}875) \\approx 2{,}399 + 0{,}875 - 3 = 0{,}274 > 0\$ → \$\\alpha \\in ]0{,}75, 0{,}875[\$. Milieu \$0{,}8125\$ : \$g \\approx 2{,}253 + 0{,}8125 - 3 = 0{,}066 > 0\$ → \$\\alpha \\in ]0{,}75, 0{,}8125[\$. Encore quelques étapes : \$\\alpha \\approx 0{,}79\$.",
+                  tipFr:
+                      "**Dichotomie** : précision divisée par 2 à chaque étape. Pour \$10^{-2}\$ partant de longueur 1, il faut environ 7 itérations.",
+                ),
+              ], finalAnswerFr: r"$\alpha \approx 0{,}79$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDerivRules() => _paper(
+      titleFr: 'Épreuve type — Règles de dérivation',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Linéarité, produit \$(uv)' = u'v + uv'\$, quotient \$(u/v)' = (u'v - uv')/v^2\$, composition \$(f \\circ g)' = (f' \\circ g) \\cdot g'\$.",
+      exercices: [
+        _ex(
+          1,
+          'Dérivées usuelles et linéarité',
+          5,
+          "Calculer la dérivée de chaque fonction.",
+          [
+            _q(
+              1,
+              "\$f(x) = 3x^4 - 2x^3 + 5x - 7\$.",
+              1,
+              _sol([
+                _step(
+                  "Linéarité — dériver terme à terme : \$f'(x) = 12 x^3 - 6 x^2 + 5\$.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = 12x^3 - 6x^2 + 5$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\dfrac{2}{x^3} + 4 \\sqrt x\$ (sur \$]0, +\\infty[\$).",
+              2,
+              _sol([
+                _step(
+                  "Réécrire en puissances : \$g(x) = 2 x^{-3} + 4 x^{1/2}\$.",
+                ),
+                _step(
+                  "\$g'(x) = 2 \\cdot (-3) x^{-4} + 4 \\cdot (1/2) x^{-1/2} = -\\dfrac{6}{x^4} + \\dfrac{2}{\\sqrt x}\$.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = -6/x^4 + 2/\sqrt x$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = \\cos x + 2 \\sin x\$.",
+              2,
+              _sol([
+                _step(
+                  "\$(\\cos x)' = -\\sin x\$ et \$(\\sin x)' = \\cos x\$. Linéarité : \$h'(x) = -\\sin x + 2 \\cos x\$.",
+                ),
+              ], finalAnswerFr: r"$h'(x) = -\sin x + 2\cos x$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Produit et quotient',
+          5,
+          "Appliquer les règles \$(uv)'\$ et \$(u/v)'\$.",
+          [
+            _q(
+              1,
+              "\$f(x) = x \\sin x\$.",
+              1,
+              _sol([
+                _step(
+                  "**Produit** : \$u = x\$, \$u' = 1\$ ; \$v = \\sin x\$, \$v' = \\cos x\$.",
+                ),
+                _step(
+                  "\$f'(x) = 1 \\cdot \\sin x + x \\cdot \\cos x = \\sin x + x \\cos x\$.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = \sin x + x \cos x$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = (x^2 + 1)(2x - 3)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$g'(x) = 2x \\cdot (2x - 3) + (x^2 + 1) \\cdot 2 = 4x^2 - 6x + 2x^2 + 2 = 6x^2 - 6x + 2\$.",
+                ),
+                _step(
+                  "Vérification (développer \$g\$ puis dériver) : \$g(x) = 2x^3 - 3x^2 + 2x - 3\$, \$g'(x) = 6x^2 - 6x + 2\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = 6x^2 - 6x + 2$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = \\dfrac{x}{x^2 + 1}\$.",
+              2,
+              _sol([
+                _step(
+                  "**Quotient** : \$u = x\$, \$u' = 1\$ ; \$v = x^2 + 1\$, \$v' = 2x\$.",
+                ),
+                _step(
+                  "\$(u/v)' = (u'v - uv')/v^2 = \\dfrac{1 \\cdot (x^2 + 1) - x \\cdot 2x}{(x^2 + 1)^2} = \\dfrac{x^2 + 1 - 2x^2}{(x^2+1)^2} = \\dfrac{1 - x^2}{(x^2+1)^2}\$.",
+                  mistakeFr:
+                      "Ne pas oublier le signe **moins** au milieu : \$u'v - uv'\$ (et pas \$u'v + uv'\$).",
+                ),
+              ], finalAnswerFr: r"$h'(x) = (1 - x^2)/(x^2+1)^2$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Composition (règle de la chaîne)',
+          5,
+          "Appliquer \$(f \\circ g)' = (f' \\circ g) \\cdot g'\$.",
+          [
+            _q(
+              1,
+              "\$f(x) = (3x + 1)^4\$.",
+              2,
+              _sol([
+                _step(
+                  "Composition \$u^4\$ avec \$u(x) = 3x + 1\$. Règle : \$(u^n)' = n u^{n-1} u'\$.",
+                ),
+                _step(
+                  "\$u' = 3\$, donc \$f'(x) = 4 (3x + 1)^3 \\cdot 3 = 12(3x + 1)^3\$.",
+                  mistakeFr:
+                      "Erreur fréquente : oublier le \$\\times u' = \\times 3\$. La dérivée de l'intérieur est essentielle.",
+                ),
+              ], finalAnswerFr: r"$f'(x) = 12(3x+1)^3$"),
+            ),
+            _q(
+              2,
+              "\$g(x) = \\sqrt{x^2 + 1}\$.",
+              2,
+              _sol([
+                _step(
+                  "Composition \$\\sqrt u\$ avec \$u = x^2 + 1\$. Règle : \$(\\sqrt u)' = u' / (2 \\sqrt u)\$.",
+                ),
+                _step(
+                  "\$u' = 2x\$, donc \$g'(x) = \\dfrac{2x}{2\\sqrt{x^2 + 1}} = \\dfrac{x}{\\sqrt{x^2 + 1}}\$.",
+                ),
+              ], finalAnswerFr: r"$g'(x) = x/\sqrt{x^2+1}$"),
+            ),
+            _q(
+              3,
+              "\$h(x) = \\sin(2x + \\pi/3)\$.",
+              1,
+              _sol([
+                _step(
+                  "Composition \$\\sin u\$ avec \$u = 2x + \\pi/3\$. \$u' = 2\$.",
+                ),
+                _step(
+                  "\$h'(x) = \\cos(2x + \\pi/3) \\cdot 2 = 2 \\cos(2x + \\pi/3)\$.",
+                ),
+              ], finalAnswerFr: r"$h'(x) = 2 \cos(2x + \pi/3)$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Tangentes',
+          5,
+          "Soit \$f(x) = x^3 - 3x^2 + 2\$.",
+          [
+            _q(
+              1,
+              "Donner l'équation de la tangente \$T\$ à la courbe en \$x_0 = 1\$.",
+              3,
+              _sol([
+                _step(
+                  "Équation de la tangente : \$y = f'(x_0)(x - x_0) + f(x_0)\$.",
+                ),
+                _step(
+                  "\$f(1) = 1 - 3 + 2 = 0\$. \$f'(x) = 3x^2 - 6x\$, donc \$f'(1) = 3 - 6 = -3\$.",
+                ),
+                _step(
+                  "Donc \$T : y = -3(x - 1) + 0 = -3x + 3\$.",
+                ),
+              ], finalAnswerFr: r"$T : y = -3x + 3$"),
+            ),
+            _q(
+              2,
+              "En quels points la tangente est-elle horizontale ?",
+              2,
+              _sol([
+                _step(
+                  "Tangente horizontale \$\\iff\$ pente nulle \$\\iff f'(x) = 0 \\iff 3x^2 - 6x = 0 \\iff 3x(x - 2) = 0\$.",
+                ),
+                _step(
+                  "Solutions : \$x = 0\$ (\$f(0) = 2\$) et \$x = 2\$ (\$f(2) = 8 - 12 + 2 = -2\$). Tangentes horizontales aux points \$(0, 2)\$ et \$(2, -2)\$.",
+                  tipFr:
+                      "Les tangentes horizontales correspondent aux **extrema locaux** ; ici \$f(0) = 2\$ est un max local et \$f(2) = -2\$ un min local.",
+                ),
+              ], finalAnswerFr: r"$(0, 2)$ et $(2, -2)$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDerivApps() => _paper(
+      titleFr: 'Épreuve type — Applications de la dérivation',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Étude de variations, extrema, optimisation, démonstration d'inégalités via étude de fonction.",
+      exercices: [
+        _ex(
+          1,
+          'Étude de variations',
+          5,
+          "Soit \$f(x) = x^3 - 3x + 1\$ définie sur \$\\mathbb{R}\$.",
+          [
+            _q(
+              1,
+              "Calculer \$f'(x)\$, étudier son signe et dresser le tableau de variations.",
+              3,
+              _sol([
+                _step(
+                  "\$f'(x) = 3x^2 - 3 = 3(x^2 - 1) = 3(x - 1)(x + 1)\$.",
+                ),
+                _step(
+                  "Signe de \$f'\$ : \$f'(x) > 0\$ sur \$]-\\infty, -1[\$ ; \$f'(x) < 0\$ sur \$]-1, 1[\$ ; \$f'(x) > 0\$ sur \$]1, +\\infty[\$.",
+                ),
+                _step(
+                  "Variations : \$f\$ **croissante** sur \$]-\\infty, -1]\$, **décroissante** sur \$[-1, 1]\$, **croissante** sur \$[1, +\\infty[\$.",
+                ),
+              ], finalAnswerFr: r"Max local en $-1$, min local en $1$"),
+            ),
+            _q(
+              2,
+              "Donner les extrema locaux et leurs valeurs.",
+              2,
+              _sol([
+                _step(
+                  "**Maximum local** en \$x = -1\$ : \$f(-1) = -1 + 3 + 1 = 3\$.",
+                ),
+                _step(
+                  "**Minimum local** en \$x = 1\$ : \$f(1) = 1 - 3 + 1 = -1\$.",
+                  tipFr:
+                      "À un extremum local d'une fonction dérivable : la tangente est horizontale, donc \$f'\$ s'annule en changeant de signe.",
+                ),
+              ], finalAnswerFr: r"$f(-1) = 3$, $f(1) = -1$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Optimisation — boîte à volume maximal',
+          5,
+          "Une feuille de carton carrée de côté 30 cm. On découpe un carré de côté \$x\$ à chaque coin, puis on plie pour former une boîte sans couvercle. Volume : \$V(x) = x(30 - 2x)^2\$ pour \$0 < x < 15\$.",
+          [
+            _q(
+              1,
+              "Calculer \$V'(x)\$ et trouver la valeur de \$x\$ qui maximise \$V\$.",
+              4,
+              _sol([
+                _step(
+                  "**Produit** : \$V'(x) = 1 \\cdot (30 - 2x)^2 + x \\cdot 2(30 - 2x)(-2) = (30 - 2x)^2 - 4x(30 - 2x)\$.",
+                ),
+                _step(
+                  "Factoriser par \$(30 - 2x)\$ : \$V'(x) = (30 - 2x)[(30 - 2x) - 4x] = (30 - 2x)(30 - 6x) = 12(15 - x)(5 - x)\$.",
+                ),
+                _step(
+                  "Racines : \$x = 5\$ et \$x = 15\$ (exclu). Sur \$]0, 5[\$ : \$V'(0) = 12 \\cdot 15 \\cdot 5 = 900 > 0\$. Sur \$]5, 15[\$ : \$V'(10) = 12 \\cdot 5 \\cdot (-5) = -300 < 0\$. \$V'\$ s'annule en \$x = 5\$ en changeant de signe → **maximum**.",
+                ),
+                _step(
+                  "Volume maximum : \$V(5) = 5 \\cdot 20^2 = 5 \\cdot 400 = 2000\\,\\text{cm}^3 = 2\\,\\text{L}\$.",
+                  tipFr:
+                      "Recette d'optimisation : (1) exprimer la grandeur à optimiser, (2) délimiter le domaine, (3) dériver, (4) trouver les points critiques, (5) vérifier le signe de la dérivée.",
+                ),
+              ], finalAnswerFr: r"$x = 5$ cm, $V_{\max} = 2000$ cm³"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Inégalité par étude de fonction',
+          5,
+          "Démontrer que pour tout \$x > 0\$, \$\\ln(1 + x) < x\$.",
+          [
+            _qSubs(
+              1,
+              "Étude de la fonction \$f(x) = x - \\ln(1 + x)\$.",
+              4,
+              [
+                _sub(
+                  'a',
+                  "Donner le domaine de \$f\$ et calculer \$f(0)\$.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$\\ln(1 + x)\$ définie pour \$1 + x > 0 \\iff x > -1\$. Domaine : \$]-1, +\\infty[\$.",
+                    ),
+                    _step(
+                      "\$f(0) = 0 - \\ln 1 = 0\$.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'b',
+                  "Calculer \$f'(x)\$ et étudier son signe sur \$]0, +\\infty[\$.",
+                  2,
+                  _sol([
+                    _step(
+                      "\$f'(x) = 1 - \\dfrac{1}{1 + x} = \\dfrac{(1 + x) - 1}{1 + x} = \\dfrac{x}{1 + x}\$.",
+                    ),
+                    _step(
+                      "Sur \$]0, +\\infty[\$ : \$x > 0\$ et \$1 + x > 0\$, donc \$f'(x) > 0\$.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'c',
+                  "Conclure.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$f\$ est strictement croissante sur \$[0, +\\infty[\$ avec \$f(0) = 0\$. Donc pour \$x > 0\$, \$f(x) > 0 \\iff x - \\ln(1 + x) > 0 \\iff \\ln(1 + x) < x\$ ✓.",
+                      tipFr:
+                          "Pour démontrer une inégalité \$g(x) < h(x)\$, étudier la fonction différence \$h - g\$ et montrer qu'elle est positive.",
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Étude complète',
+          5,
+          "Soit \$f(x) = \\dfrac{x^2 - 1}{x}\$ définie sur \$\\mathbb{R}^*\$.",
+          [
+            _qSubs(
+              1,
+              "Étude complète.",
+              5,
+              [
+                _sub(
+                  'a',
+                  "Calculer \$f'(x)\$ et étudier son signe.",
+                  2,
+                  _sol([
+                    _step(
+                      "Réécrire : \$f(x) = x - 1/x\$. Donc \$f'(x) = 1 + 1/x^2\$.",
+                    ),
+                    _step(
+                      "\$f'(x) = 1 + 1/x^2 > 0\$ partout sur \$\\mathbb{R}^*\$ → \$f\$ **strictement croissante** sur chacun de ses intervalles \$]-\\infty, 0[\$ et \$]0, +\\infty[\$.",
+                    ),
+                  ], finalAnswerFr: r"$f$ strictement croissante sur $\mathbb{R}^*$"),
+                ),
+                _sub(
+                  'b',
+                  "Calculer les limites aux bornes.",
+                  2,
+                  _sol([
+                    _step(
+                      "À \$\\pm \\infty\$ : \$f(x) = x - 1/x \\to \\pm \\infty\$ (terme dominant \$x\$).",
+                    ),
+                    _step(
+                      "En \$0^+\$ : \$f(x) = x - 1/x \\to 0 - (+\\infty) = -\\infty\$. En \$0^-\$ : \$-1/x \\to +\\infty\$, donc \$f \\to +\\infty\$.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'c',
+                  "Donner les asymptotes.",
+                  1,
+                  _sol([
+                    _step(
+                      "**Verticale** : \$x = 0\$ (limites infinies).",
+                    ),
+                    _step(
+                      "**Oblique** en \$\\pm \\infty\$ : \$f(x) - x = -1/x \\to 0\$, donc la droite \$y = x\$ est asymptote oblique.",
+                      tipFr:
+                          "Asymptote oblique \$y = ax + b\$ \$\\iff f(x) - (ax + b) \\to 0\$ en \$\\pm\\infty\$.",
+                    ),
+                  ], finalAnswerFr: r"V: $x = 0$; O: $y = x$"),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -764,7 +1514,12 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_arithmetic_geom_seq': _paperArithmeticGeomSeq(),
   'pc_seq_convergence': _paperSeqConvergence(),
   'pc_seq_recursive': _paperSeqRecursive(),
-  // Math — Batch 2-4: to come
+  // Math — Batch 2: limits, continuity, derivation
+  'pc_limit_calc': _paperLimitCalc(),
+  'pc_continuity_tvi': _paperContinuityTvi(),
+  'pc_deriv_rules': _paperDerivRules(),
+  'pc_deriv_apps': _paperDerivApps(),
+  // Math — Batch 3-4: to come
   // Physique-Chimie — Batches 5-10: to come
 };
 
