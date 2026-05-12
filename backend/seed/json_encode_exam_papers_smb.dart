@@ -4541,6 +4541,680 @@ Map<String, dynamic> _paperNewtonsLawsSmb() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperEnergy() => _paper(
+      titleFr: 'Épreuve type — Énergie mécanique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Énergie cinétique, potentielle (pesanteur, élastique), conservation de l'énergie mécanique, théorème de l'énergie cinétique.",
+      exercices: [
+        _ex(
+          1,
+          'Calculs élémentaires',
+          5,
+          "Un cycliste de 70 kg roule à 36 km/h sur une route plate.",
+          [
+            _q(
+              1,
+              "Calculer son énergie cinétique.",
+              2,
+              _sol([
+                _step(
+                  "Conversion : \$v = 36/3{,}6 = 10\\,m/s\$.",
+                ),
+                _step(
+                  "\$E_c = (1/2) m v^2 = 0{,}5 \\times 70 \\times 100 = 3500\\,J = 3{,}5\\,kJ\$.",
+                ),
+              ], finalAnswerFr: r"$E_c = 3{,}5$ kJ"),
+            ),
+            _q(
+              2,
+              "Le cycliste monte une côte de 50 m. Quelle énergie potentielle gagne-t-il ?",
+              1,
+              _sol([
+                _step(
+                  "\$E_p = mgh = 70 \\times 10 \\times 50 = 35000\\,J = 35\\,kJ\$.",
+                ),
+              ], finalAnswerFr: r"$E_p = 35$ kJ"),
+            ),
+            _q(
+              3,
+              "Si le cycliste utilise toute son énergie cinétique pour monter (sans pédaler), quelle hauteur peut-il atteindre ?",
+              2,
+              _sol([
+                _step(
+                  "Conservation : \$E_c = E_p \\iff mgh = 3500 \\Rightarrow h = 3500/(70 \\times 10) = 5\\,m\$.",
+                ),
+                _step(
+                  "Seulement 5 m. Pour gravir 50 m, il faut fournir le reste (~32 kJ) en pédalant, soit l'équivalent de 9 fois son énergie cinétique initiale.",
+                ),
+              ], finalAnswerFr: r"$h = 5$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Conservation sur toboggan',
+          5,
+          "Un enfant de 25 kg glisse sans frottement depuis le haut d'un toboggan de 4 m de hauteur, partant du repos.",
+          [
+            _q(
+              1,
+              "Vitesse en bas du toboggan ?",
+              3,
+              _sol([
+                _step(
+                  "Conservation : \$E_m^{haut} = E_m^{bas} \\iff mgh = (1/2) m v^2\$.",
+                ),
+                _step(
+                  "Simplification : \$v = \\sqrt{2 g h} = \\sqrt{2 \\times 10 \\times 4} = \\sqrt{80} \\approx 8{,}94\\,m/s\$.",
+                ),
+                _step(
+                  "Soit \$\\approx 32\\,km/h\$. Indépendant de la masse ! C'est pourquoi un adulte et un enfant arrivent à la même vitesse.",
+                  tipFr:
+                      "Conservation de l'énergie → la masse se simplifie. Mêmes résultats pour tous, indépendamment du poids.",
+                ),
+              ], finalAnswerFr: r"$v \approx 8{,}94$ m/s"),
+            ),
+            _q(
+              2,
+              "Si en réalité il y a un peu de frottement et l'enfant arrive à 7 m/s, quelle énergie a été dissipée ?",
+              2,
+              _sol([
+                _step(
+                  "Énergie disponible : \$E_m^{haut} = mgh = 25 \\times 10 \\times 4 = 1000\\,J\$.",
+                ),
+                _step(
+                  "Énergie cinétique réelle : \$E_c^{bas} = 0{,}5 \\times 25 \\times 49 = 612{,}5\\,J\$.",
+                ),
+                _step(
+                  "Énergie dissipée par frottement : \$\\Delta E = 1000 - 612{,}5 = 387{,}5\\,J\$ (38,7% de l'énergie initiale convertie en chaleur).",
+                ),
+              ], finalAnswerFr: r"$\Delta E = 387{,}5$ J"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Ressort et énergie élastique',
+          5,
+          "Un ressort de raideur \$k = 500\\,N/m\$ est comprimé de 10 cm puis libéré, propulsant une bille de 0,2 kg.",
+          [
+            _q(
+              1,
+              "Énergie potentielle élastique stockée ?",
+              2,
+              _sol([
+                _step(
+                  "\$E_p = (1/2) k x^2 = 0{,}5 \\times 500 \\times 0{,}01 = 2{,}5\\,J\$.",
+                ),
+              ], finalAnswerFr: r"$E_p = 2{,}5$ J"),
+            ),
+            _q(
+              2,
+              "Vitesse maximale de la bille (à la position d'équilibre) ?",
+              3,
+              _sol([
+                _step(
+                  "Conservation : \$(1/2) k x^2 = (1/2) m v^2 \\Rightarrow v = x \\sqrt{k/m}\$.",
+                ),
+                _step(
+                  "\$v = 0{,}1 \\times \\sqrt{500/0{,}2} = 0{,}1 \\times \\sqrt{2500} = 0{,}1 \\times 50 = 5\\,m/s\$.",
+                ),
+                _step(
+                  "**Lien avec la pulsation** : \$\\omega = \\sqrt{k/m}\\) → \$v_{\\max} = x \\omega\$ (oscillateur harmonique).",
+                ),
+              ], finalAnswerFr: r"$v = 5$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'TEC en présence de plusieurs forces',
+          5,
+          "Une caisse de 30 kg est tirée sur le sol horizontal par une force \$F = 100\\,N\$ pendant 5 m. Coefficient de frottement \$\\mu = 0{,}2\$.",
+          [
+            _q(
+              1,
+              "Calculer le travail de \$F\$ et du frottement.",
+              3,
+              _sol([
+                _step(
+                  "Travail de \$F\$ (parallèle au mouvement) : \$W_F = F \\cdot d = 100 \\times 5 = 500\\,J\$.",
+                ),
+                _step(
+                  "Réaction normale : \$R = mg = 300\\,N\$. Frottement : \$f = \\mu R = 60\\,N\$. Travail du frottement (opposé au mouvement) : \$W_f = -f d = -300\\,J\$.",
+                ),
+                _step(
+                  "Travail du poids et de la réaction : 0 (perpendiculaires au mouvement horizontal).",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$W_F = 500$ J, $W_f = -300$ J"),
+            ),
+            _q(
+              2,
+              "Vitesse finale (partant du repos) ?",
+              2,
+              _sol([
+                _step(
+                  "**TEC** : \$\\Delta E_c = W_{tot} = 500 - 300 = 200\\,J\$.",
+                ),
+                _step(
+                  "\$(1/2) m v^2 = 200 \\Rightarrow v = \\sqrt{400/30} \\approx 3{,}65\\,m/s\$.",
+                ),
+              ], finalAnswerFr: r"$v \approx 3{,}65$ m/s"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperWaveProperties() => _paper(
+      titleFr: 'Épreuve type — Propriétés des ondes',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Ondes transversales/longitudinales, célérité, longueur d'onde, fréquence, période, milieux de propagation.",
+      exercices: [
+        _ex(
+          1,
+          'Vocabulaire et relations',
+          5,
+          "Une onde mécanique se propage le long d'une corde avec célérité \$v = 30\\,m/s\$, fréquence \$f = 60\\,Hz\$.",
+          [
+            _q(
+              1,
+              "Calculer \$T\$ et \$\\lambda\$.",
+              2,
+              _sol([
+                _step(
+                  "Période : \$T = 1/f = 1/60 \\approx 16{,}7\\,ms\$.",
+                ),
+                _step(
+                  "Longueur d'onde : \$\\lambda = v/f = 30/60 = 0{,}5\\,m\$.",
+                ),
+              ], finalAnswerFr: r"$T \approx 16{,}7$ ms, $\lambda = 0{,}5$ m"),
+            ),
+            _q(
+              2,
+              "Distance entre deux maxima consécutifs sur la corde ?",
+              1,
+              _sol([
+                _step(
+                  "C'est exactement \$\\lambda = 0{,}5\\,m\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda = 0{,}5$ m"),
+            ),
+            _q(
+              3,
+              "Si on double \$f\$, comment varie \$\\lambda\$ (\$v\$ inchangée) ?",
+              2,
+              _sol([
+                _step(
+                  "\$\\lambda = v/f \\Rightarrow \\lambda\$ divisée par 2. Nouveau \$\\lambda = 0{,}25\\,m\$.",
+                ),
+                _step(
+                  "Vrai pour toute onde : \$\\lambda \\propto 1/f\$ à célérité constante. Lien fondamental.",
+                ),
+              ], finalAnswerFr: r"$\lambda$ divisée par 2"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Types d\'ondes',
+          5,
+          "Différencier les ondes selon leur nature.",
+          [
+            _q(
+              1,
+              "Le son est-il une onde transversale ou longitudinale ?",
+              2,
+              _sol([
+                _step(
+                  "**Longitudinale** : les compressions/raréfactions de l'air se font **parallèlement à la direction de propagation**. Les molécules d'air oscillent dans la direction de l'onde.",
+                ),
+                _step(
+                  "Contre-exemple : une corde vibre **transversalement** — chaque point oscille perpendiculairement à la corde.",
+                ),
+              ], finalAnswerFr: r"Longitudinale"),
+            ),
+            _q(
+              2,
+              "Le son se propage-t-il dans le vide ?",
+              1,
+              _sol([
+                _step(
+                  "**Non** — le son nécessite un milieu matériel (gaz, liquide, solide) pour propager les compressions/raréfactions.",
+                ),
+                _step(
+                  "Contraste : la **lumière** (onde électromagnétique) se propage dans le vide. C'est pourquoi on voit le soleil mais on n'entend pas les explosions solaires.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Comparer les célérités : son dans l'air, dans l'eau, dans l'acier.",
+              2,
+              _sol([
+                _step(
+                  "Air (20°C) : \$v \\approx 340\\,m/s\$. Eau : \$v \\approx 1500\\,m/s\$. Acier : \$v \\approx 5000\\,m/s\$.",
+                ),
+                _step(
+                  "**Règle** : plus le milieu est **rigide** (lien intermoléculaire fort), plus la célérité est élevée. Solide > liquide > gaz.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Retard et déphasage',
+          5,
+          "Une source S émet une onde de fréquence \$f = 200\\,Hz\$, célérité 340 m/s. Un récepteur M est à \$d = 5{,}1\\,m\$.",
+          [
+            _q(
+              1,
+              "Calculer le retard \$\\tau\$ entre S et M.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = d/v = 5{,}1/340 = 0{,}015\\,s = 15\\,ms\$.",
+                ),
+              ], finalAnswerFr: r"$\tau = 15$ ms"),
+            ),
+            _q(
+              2,
+              "Calculer le déphasage en radians.",
+              3,
+              _sol([
+                _step(
+                  "\$\\Delta\\varphi = 2\\pi f \\tau = 2\\pi \\times 200 \\times 0{,}015 = 6\\pi\\,rad\$.",
+                ),
+                _step(
+                  "Modulo \$2\\pi\$ : \$6\\pi = 3 \\times 2\\pi \\equiv 0\$. M et S vibrent **en phase** (3 longueurs d'onde séparent les deux).",
+                ),
+                _step(
+                  "**Vérification** : \$d/\\lambda = 5{,}1/1{,}7 = 3\$ → entier → en phase ✓.",
+                  tipFr:
+                      "Deux points sont en phase si la distance entre eux est un multiple entier de \$\\lambda\$, en opposition de phase si c'est un multiple impair de \$\\lambda/2\$.",
+                ),
+              ], finalAnswerFr: r"En phase ($6\pi \equiv 0$)"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Onde stationnaire sur corde',
+          5,
+          "Une corde de longueur \$L = 1\\,m\$, fixée aux deux extrémités, vibre selon son mode fondamental.",
+          [
+            _q(
+              1,
+              "Quelle longueur d'onde correspond au mode fondamental ?",
+              2,
+              _sol([
+                _step(
+                  "Mode fondamental : un ventre au milieu, deux nœuds aux extrémités. La longueur \$L = \\lambda/2\$, donc \$\\lambda = 2 L = 2\\,m\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda = 2$ m"),
+            ),
+            _q(
+              2,
+              "Si la fréquence fondamentale est 220 Hz, quelle est la célérité ?",
+              1,
+              _sol([
+                _step(
+                  "\$v = \\lambda f = 2 \\times 220 = 440\\,m/s\$.",
+                ),
+              ], finalAnswerFr: r"$v = 440$ m/s"),
+            ),
+            _q(
+              3,
+              "Quelle est la fréquence de l'harmonique 3 (\$f_3 = 3 f_1\$) et sa longueur d'onde ?",
+              2,
+              _sol([
+                _step(
+                  "\$f_3 = 3 \\times 220 = 660\\,Hz\$. \$\\lambda_3 = v/f_3 = 440/660 = 2/3\\,m\$.",
+                ),
+                _step(
+                  "Géométriquement : 3 ventres entre les nœuds (3 demi-longueurs d'onde occupent les 1 m), \$L = 3\\lambda/2 \\Rightarrow \\lambda = 2/3\\) ✓.",
+                ),
+              ], finalAnswerFr: r"$f_3 = 660$ Hz, $\lambda_3 = 2/3$ m"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperSoundLight() => _paper(
+      titleFr: 'Épreuve type — Son et lumière',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Propagation du son et de la lumière, intensité acoustique, diffraction, interférences, spectre électromagnétique.",
+      exercices: [
+        _ex(
+          1,
+          'Intensité acoustique',
+          5,
+          "Intensité acoustique \$I\$ en W/m², niveau sonore \$L = 10\\log(I/I_0)\$ avec \$I_0 = 10^{-12}\\,W/m^2\$.",
+          [
+            _q(
+              1,
+              "Calculer le niveau d'une conversation normale (\$I = 10^{-6}\\,W/m^2\$).",
+              2,
+              _sol([
+                _step(
+                  "\$L = 10\\log(10^{-6}/10^{-12}) = 10\\log(10^6) = 10 \\times 6 = 60\\,\\text{dB}\$.",
+                ),
+                _step(
+                  "Échelle typique : chuchotement 30 dB, conversation 60 dB, trafic urbain 80 dB, marteau-piqueur 100 dB, seuil de douleur 120 dB.",
+                ),
+              ], finalAnswerFr: r"$L = 60$ dB"),
+            ),
+            _q(
+              2,
+              "Si on double l'intensité \$I\$, de combien augmente \$L\$ ?",
+              2,
+              _sol([
+                _step(
+                  "Nouveau niveau : \$L' = 10\\log(2I/I_0) = 10\\log 2 + 10\\log(I/I_0) = 10 \\times 0{,}301 + L \\approx L + 3\\,\\text{dB}\$.",
+                ),
+                _step(
+                  "Doubler l'intensité = +3 dB. Multiplier par 10 = +10 dB. Échelle logarithmique → +20 dB correspond à \$\\times 100\$ en intensité.",
+                  tipFr:
+                      "C'est pourquoi un concert (110 dB) est subjectivement '2 fois plus fort' qu'une rue passante (80 dB) malgré une intensité 1000 fois supérieure — notre perception est aussi logarithmique.",
+                ),
+              ], finalAnswerFr: r"$+3$ dB"),
+            ),
+            _q(
+              3,
+              "Quelle intensité correspond à 100 dB (concert) ?",
+              1,
+              _sol([
+                _step(
+                  "\$100 = 10\\log(I/I_0) \\Rightarrow I/I_0 = 10^{10} \\Rightarrow I = 10^{-2}\\,W/m^2 = 10\\,mW/m^2\$.",
+                ),
+              ], finalAnswerFr: r"$I = 10^{-2}$ W/m²"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Diffraction',
+          5,
+          "Un laser de longueur d'onde 632 nm (rouge) traverse une fente de largeur \$a = 0{,}1\\,mm\$. Distance à l'écran : 2 m.",
+          [
+            _q(
+              1,
+              "Calculer la demi-largeur \$\\ell\$ de la tache centrale sur l'écran.",
+              4,
+              _sol([
+                _step(
+                  "**Diffraction par une fente** : 1er minimum à \$\\theta = \\lambda/a\$ (en radians, petit angle).",
+                ),
+                _step(
+                  "\$\\theta = 6{,}32 \\times 10^{-7}/10^{-4} = 6{,}32 \\times 10^{-3}\\,rad\$.",
+                ),
+                _step(
+                  "Demi-largeur sur l'écran : \$\\ell = D \\tan\\theta \\approx D \\theta = 2 \\times 6{,}32 \\times 10^{-3} \\approx 1{,}26 \\times 10^{-2}\\,m = 12{,}6\\,mm\$.",
+                ),
+                _step(
+                  "Largeur totale : \$2\\ell \\approx 25\\,mm = 2{,}5\\,cm\$. Beaucoup plus grande que la fente initiale (0,1 mm) — la diffraction étale la lumière.",
+                  tipFr:
+                      "Plus la fente est étroite, plus la tache diffractée est large. Inverse du sens commun !",
+                ),
+              ], finalAnswerFr: r"$\ell \approx 12{,}6$ mm"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Interférences (Young)',
+          5,
+          "Deux fentes distantes de \$a = 0{,}2\\,mm\$, écran à \$D = 1{,}5\\,m\$, laser à \$\\lambda = 500\\,nm\$.",
+          [
+            _q(
+              1,
+              "Calculer l'interfrange \$i\$.",
+              2,
+              _sol([
+                _step(
+                  "\$i = \\lambda D/a = 5 \\times 10^{-7} \\times 1{,}5/(2 \\times 10^{-4}) = 3{,}75 \\times 10^{-3}\\,m = 3{,}75\\,mm\$.",
+                ),
+              ], finalAnswerFr: r"$i = 3{,}75$ mm"),
+            ),
+            _q(
+              2,
+              "Si on remplace par un laser rouge (\$\\lambda = 700\\,nm\$), comment varie \$i\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$i \\propto \\lambda\$. Nouveau \$i = 3{,}75 \\times 700/500 = 5{,}25\\,mm\$.",
+                ),
+                _step(
+                  "**Conséquence** : si la lumière est blanche (somme de couleurs), chaque longueur d'onde donne ses propres franges → spectre coloré sur l'écran.",
+                ),
+              ], finalAnswerFr: r"$i = 5{,}25$ mm"),
+            ),
+            _q(
+              3,
+              "Calculer la position du 5ème ordre brillant.",
+              1,
+              _sol([
+                _step(
+                  "\$x_5 = 5 i = 5 \\times 3{,}75 = 18{,}75\\,mm\$ depuis le centre.",
+                ),
+              ], finalAnswerFr: r"$x_5 \approx 18{,}75$ mm"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Spectre électromagnétique',
+          5,
+          "Classer par fréquence croissante : radio FM (100 MHz), micro-ondes (2,45 GHz), infrarouge (300 THz), visible vert (600 THz), UV (10^15 Hz), rayons X (10^18 Hz), rayons γ (10^21 Hz).",
+          [
+            _q(
+              1,
+              "Pour chaque catégorie, calculer la longueur d'onde \$\\lambda\$ dans le vide.",
+              3,
+              _sol([
+                _step(
+                  "\$\\lambda = c/f\$ avec \$c = 3 \\times 10^8\\,m/s\$.",
+                ),
+                _step(
+                  "Radio FM : 3 m. Micro-ondes : 12,2 cm. Infrarouge : 1 μm. Visible vert : 500 nm. UV : 300 nm. Rayons X : 0,3 nm. Rayons γ : 0,3 pm.",
+                ),
+                _step(
+                  "**Échelle vertigineuse** : sur 14 ordres de grandeur, de l'antenne radio à l'échelle du noyau atomique.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Quelles applications pour chaque bande ?",
+              2,
+              _sol([
+                _step(
+                  "Radio : télécommunications (FM, TV). Micro-ondes : Wi-Fi, four micro-ondes. Infrarouge : télécommandes, vision nocturne. Visible : vision humaine. UV : stérilisation, fluorescence. Rayons X : médical, contrôle. Gamma : médecine nucléaire, astrophysique.",
+                ),
+                _step(
+                  "**Énergie du photon** \$E = h f\$ : plus la fréquence est haute, plus le photon est énergétique. C'est pour ça que UV/X/γ sont dangereux (ionisants) et que radio/micro-ondes ne le sont pas.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperRcRlCircuits() => _paper(
+      titleFr: 'Épreuve type — Circuits RC et RL',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Régimes transitoires : charge/décharge d'un condensateur (RC), établissement/rupture du courant dans une bobine (RL). Constante de temps, énergie stockée.",
+      exercices: [
+        _ex(
+          1,
+          'Charge d\'un condensateur',
+          5,
+          "Circuit série : \$E = 12\\,V\$, \$R = 1\\,k\\Omega\$, \$C = 470\\,\\mu F\$. À \$t = 0\\), on ferme l'interrupteur (\$u_C(0) = 0\$).",
+          [
+            _q(
+              1,
+              "Calculer la constante de temps \$\\tau\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = RC = 10^3 \\times 470 \\times 10^{-6} = 0{,}47\\,s = 470\\,ms\$.",
+                ),
+              ], finalAnswerFr: r"$\tau = 470$ ms"),
+            ),
+            _q(
+              2,
+              "Donner \$u_C(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Solution classique : \$u_C(t) = E(1 - e^{-t/\\tau}) = 12(1 - e^{-t/0{,}47})\$ V.",
+                ),
+              ], finalAnswerFr: r"$u_C(t) = 12(1 - e^{-t/0{,}47})$"),
+            ),
+            _q(
+              3,
+              "Au bout de combien de temps \$u_C\$ atteint-il 95% de \$E\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$1 - e^{-t/\\tau} = 0{,}95 \\iff e^{-t/\\tau} = 0{,}05 \\iff t = \\tau \\ln 20 \\approx 3\\tau\$.",
+                ),
+                _step(
+                  "\$t \\approx 3 \\times 0{,}47 = 1{,}41\\,s\$.",
+                ),
+                _step(
+                  "**Règle pratique** : à \$5\\tau \\approx 2{,}35\\,s\$, on a \$> 99\\%\$. Le régime est 'établi' au-delà.",
+                ),
+              ], finalAnswerFr: r"$t \approx 1{,}4$ s ($3\tau$)"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Décharge et énergie',
+          5,
+          "Le condensateur précédent est chargé à 12 V. On le décharge dans une résistance \$R' = 2\\,k\\Omega\$.",
+          [
+            _q(
+              1,
+              "Donner \$u_C(t)\$ pour la décharge.",
+              2,
+              _sol([
+                _step(
+                  "Constante de temps : \$\\tau' = R'C = 2000 \\times 470 \\times 10^{-6} = 0{,}94\\,s\$.",
+                ),
+                _step(
+                  "\$u_C(t) = U_0 e^{-t/\\tau'} = 12 e^{-t/0{,}94}\\,V\$.",
+                ),
+              ], finalAnswerFr: r"$u_C(t) = 12 e^{-t/0{,}94}$"),
+            ),
+            _q(
+              2,
+              "Énergie initialement stockée et énergie dissipée à long terme.",
+              3,
+              _sol([
+                _step(
+                  "\$E_C^{init} = (1/2) C U_0^2 = 0{,}5 \\times 470 \\times 10^{-6} \\times 144 \\approx 33{,}8\\,mJ\$.",
+                ),
+                _step(
+                  "**Toute** cette énergie est dissipée par effet Joule dans R' à long terme (\$u_C \\to 0\$, \$E_C \\to 0\$, conservation).",
+                ),
+                _step(
+                  "Vérification : \$\\int_0^\\infty R' i^2\\,dt\$ avec \$i = -C\\,du_C/dt\$... le calcul donne bien 33,8 mJ.",
+                  tipFr:
+                      "Pour une décharge, 100% de l'énergie part en Joule. Pour une charge, 50% Joule + 50% stockée — c'est un résultat universel.",
+                ),
+              ], finalAnswerFr: r"$E_J \approx 33{,}8$ mJ"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Établissement du courant (RL)',
+          5,
+          "Circuit RL série : \$E = 6\\,V\$, \$R = 30\\,\\Omega\$, \$L = 0{,}1\\,H\$. À \$t = 0\$, on ferme.",
+          [
+            _q(
+              1,
+              "Calculer \$\\tau\$ et \$I_\\max\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\tau = L/R = 0{,}1/30 \\approx 3{,}33\\,ms\$.",
+                ),
+                _step(
+                  "\$I_\\max = E/R = 6/30 = 0{,}2\\,A = 200\\,mA\$.",
+                ),
+              ], finalAnswerFr: r"$\tau \approx 3{,}33$ ms, $I_\max = 200$ mA"),
+            ),
+            _q(
+              2,
+              "Donner \$i(t)\$ et \$u_L(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "\$i(t) = I_\\max(1 - e^{-t/\\tau}) = 0{,}2 (1 - e^{-t/0{,}00333})\\,A\$.",
+                ),
+                _step(
+                  "\$u_L(t) = L\\,di/dt = E e^{-t/\\tau} = 6 e^{-t/0{,}00333}\\,V\$. Au temps initial, \$u_L = E = 6\\,V\$ (toute la tension est absorbée par la bobine, car elle s'oppose à la variation).",
+                ),
+                _step(
+                  "Au régime établi : \$u_L \\to 0\$ (la bobine devient un court-circuit), \$i \\to I_\\max\$.",
+                  tipFr:
+                      "Symétrie RC/RL : \$u_C\$ pour le condensateur joue le rôle de \$i\$ pour la bobine. Les deux atteignent leur état d'équilibre exponentiellement.",
+                ),
+              ],
+                  finalAnswerFr:
+                      r"$i(t) = 0{,}2(1 - e^{-t/3{,}33ms})$, $u_L = 6 e^{-t/3{,}33ms}$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Mesure de C par décharge',
+          5,
+          "On observe qu'un condensateur (R = 10 kΩ) se décharge de 12 V à 6 V en 2 secondes.",
+          [
+            _q(
+              1,
+              "Que représente ce temps ? Calculer \$\\tau\$ et \$C\$.",
+              4,
+              _sol([
+                _step(
+                  "Décharge : \$u_C = 12 e^{-t/\\tau}\$. \$u_C = 6 \\iff e^{-t/\\tau} = 1/2 \\iff t = \\tau \\ln 2\$.",
+                ),
+                _step(
+                  "C'est la **demi-vie de décharge** \$t_{1/2}\$. Donc \$\\tau = 2/\\ln 2 \\approx 2{,}885\\,s\$.",
+                ),
+                _step(
+                  "\$C = \\tau/R = 2{,}885/10000 \\approx 2{,}88 \\times 10^{-4}\\,F = 288\\,\\mu F\$.",
+                  tipFr:
+                      "Méthode standard de mesure : chronométrer la chute de 100% à 50% donne \$t_{1/2}\$, d'où \$\\tau\$ et \$C\$.",
+                ),
+              ], finalAnswerFr: r"$C \approx 288$ μF"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 final Map<String, Map<String, dynamic>> _papers = {
   'arithmetic_seq': _paperArithmeticSeq(),
   'geometric_seq': _paperGeometricSeq(),
@@ -4567,7 +5241,11 @@ final Map<String, Map<String, dynamic>> _papers = {
   'ode_second_order': _paperOdeSecondOrder(),
   'kinematics': _paperKinematics(),
   'newtons_laws': _paperNewtonsLawsSmb(),
-  // 7 SMB chapters remaining.
+  'energy': _paperEnergy(),
+  'wave_properties': _paperWaveProperties(),
+  'sound_light': _paperSoundLight(),
+  'rc_rl_circuits': _paperRcRlCircuits(),
+  // 3 SMB chapters remaining.
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
