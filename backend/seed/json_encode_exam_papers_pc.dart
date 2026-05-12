@@ -3096,6 +3096,755 @@ Map<String, dynamic> _paperProbBinomial() => _paper(
     );
 
 // ============================================================================
+// PC Papers — Physique-Chimie (16 chapters)
+// ============================================================================
+
+Map<String, dynamic> _paperNewtonLaws() => _paper(
+      titleFr: 'Épreuve type — Lois de Newton',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Trois lois : 1ère (inertie), 2ème \$\\sum \\vec F = m \\vec a\$, 3ème (action-réaction). Applications : équilibre, plan incliné, poulies, mouvement circulaire.",
+      exercices: [
+        _ex(
+          1,
+          'Équilibre statique',
+          5,
+          "Une caisse de 50 kg est suspendue par deux cordes formant chacune un angle de 30° avec la verticale. Prendre \$g = 10\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Faire le bilan des forces sur la caisse.",
+              1,
+              _sol([
+                _step(
+                  "Forces : poids \$\\vec P\$ vertical descendant (\$P = mg = 500\\,\\text{N}\$). Tensions \$\\vec T_1\$ et \$\\vec T_2\$ le long des cordes, vers le haut. Par symétrie, \$T_1 = T_2 = T\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Calculer la tension dans chaque corde.",
+              3,
+              _sol([
+                _step(
+                  "**1ère loi de Newton** (équilibre) : \$\\sum \\vec F = \\vec 0\$.",
+                ),
+                _step(
+                  "Projection sur la verticale : \$2 T \\cos 30° - P = 0\$. Soit \$2 T \\cdot \\dfrac{\\sqrt 3}{2} = 500\$, donc \$T = \\dfrac{500}{\\sqrt 3} \\approx 289\\,\\text{N}\$.",
+                ),
+                _step(
+                  "Projection horizontale : les composantes \$\\pm T \\sin 30°\$ s'annulent ✓.",
+                  tipFr:
+                      "Quand l'angle des cordes \$\\to 90°\$ (cordes horizontales), \$\\cos \\to 0\$ et \$T \\to \\infty\$. C'est pourquoi tendre une corde demande des forces énormes.",
+                ),
+              ], finalAnswerFr: r"$T \approx 289$ N"),
+            ),
+            _q(
+              3,
+              "Si l'angle passe à 60°, quelle est la nouvelle tension ?",
+              1,
+              _sol([
+                _step(
+                  "\$T = P/(2\\cos 60°) = 500/(2 \\times 0{,}5) = 500\\,\\text{N}\$. La tension a augmenté de 73% en doublant l'écartement.",
+                ),
+              ], finalAnswerFr: r"$T = 500$ N"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Plan incliné avec frottement',
+          5,
+          "Un bloc de 10 kg est posé sur un plan incliné à \$\\alpha = 25°\$. Coefficient de frottement statique \$\\mu_s = 0{,}5\$, \$g = 10\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Le bloc glisse-t-il spontanément ?",
+              3,
+              _sol([
+                _step(
+                  "Composante du poids selon le plan (qui tire le bloc vers le bas) : \$P_\\parallel = mg \\sin\\alpha = 10 \\times 10 \\times \\sin 25° \\approx 42{,}3\\,\\text{N}\$.",
+                ),
+                _step(
+                  "Réaction normale : \$R = mg \\cos\\alpha = 100 \\times \\cos 25° \\approx 90{,}6\\,\\text{N}\$. Frottement statique maximal : \$f_\\text{max} = \\mu_s R = 0{,}5 \\times 90{,}6 \\approx 45{,}3\\,\\text{N}\$.",
+                ),
+                _step(
+                  "Comparaison : \$P_\\parallel \\approx 42{,}3 < f_\\text{max} \\approx 45{,}3\$. Le frottement compense exactement → **le bloc reste statique**.",
+                  tipFr:
+                      "**Critère d'équilibre sur plan incliné** : \$\\tan\\alpha < \\mu_s\$. Ici \$\\tan 25° \\approx 0{,}466 < 0{,}5\$ ✓.",
+                ),
+              ], finalAnswerFr: r"Non, équilibre"),
+            ),
+            _q(
+              2,
+              "Calculer l'angle critique \$\\alpha_c\$ à partir duquel le bloc glisse.",
+              2,
+              _sol([
+                _step(
+                  "Au seuil : \$\\tan\\alpha_c = \\mu_s \\iff \\alpha_c = \\arctan(\\mu_s) = \\arctan(0{,}5) \\approx 26{,}57°\$.",
+                ),
+                _step(
+                  "Au-delà, la composante du poids dépasse la friction maximale et le bloc accélère.",
+                ),
+              ], finalAnswerFr: r"$\alpha_c \approx 26{,}6°$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Système avec poulie',
+          5,
+          "Deux blocs de masses \$m_1 = 5\\,\\text{kg}\$ et \$m_2 = 3\\,\\text{kg}\$ sont reliés par un fil inextensible passant sur une poulie sans frottement. Le bloc lourd descend.",
+          [
+            _q(
+              1,
+              "Déterminer l'accélération du système et la tension du fil.",
+              4,
+              _sol([
+                _step(
+                  "**2ème loi de Newton** sur chaque bloc, en orientant positivement le sens du mouvement.",
+                ),
+                _step(
+                  "Bloc 1 (5 kg, descend) : \$m_1 g - T = m_1 a \\iff 50 - T = 5a\$.",
+                ),
+                _step(
+                  "Bloc 2 (3 kg, monte) : \$T - m_2 g = m_2 a \\iff T - 30 = 3a\$.",
+                ),
+                _step(
+                  "Sommer : \$50 - 30 = 8a \\Rightarrow a = 2{,}5\\,\\text{m/s}^2\$. Tension : \$T = 30 + 3 \\times 2{,}5 = 37{,}5\\,\\text{N}\$.",
+                  tipFr:
+                      "Vérification : \$T < m_1 g\$ (le bloc 1 descend) et \$T > m_2 g\$ (le bloc 2 monte). Ici \$30 < 37{,}5 < 50\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$a = 2{,}5$ m/s², $T = 37{,}5$ N"),
+            ),
+            _q(
+              2,
+              "Vitesse du système après 2 s, partant du repos.",
+              1,
+              _sol([
+                _step(
+                  "Mouvement uniformément accéléré : \$v = a t = 2{,}5 \\times 2 = 5\\,\\text{m/s}\$.",
+                ),
+              ], finalAnswerFr: r"$v = 5$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Mouvement circulaire uniforme',
+          5,
+          "Un satellite tourne autour de la Terre à altitude \$h = 400\\,\\text{km}\$ (ISS). \$R_T = 6400\\,\\text{km}\$, \$g_0 = 9{,}81\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Gravité \$g\$ à cette altitude.",
+              2,
+              _sol([
+                _step(
+                  "Loi de gravitation : \$g \\propto 1/r^2\$. \$g/g_0 = (R_T/(R_T + h))^2 = (6400/6800)^2 \\approx 0{,}886\$.",
+                ),
+                _step(
+                  "\$g \\approx 9{,}81 \\times 0{,}886 \\approx 8{,}69\\,\\text{m/s}^2\$. Encore 89% de \$g_0\$ — l'apesanteur orbitale n'est pas une absence de gravité mais une chute libre permanente.",
+                ),
+              ], finalAnswerFr: r"$g \approx 8{,}69$ m/s²"),
+            ),
+            _q(
+              2,
+              "Vitesse orbitale et période de révolution.",
+              3,
+              _sol([
+                _step(
+                  "**Mouvement circulaire uniforme** : la gravité fournit la force centripète. \$m g = m v^2 / r \\Rightarrow v = \\sqrt{g r}\$ avec \$r = R_T + h = 6{,}8 \\times 10^6\\,\\text{m}\$.",
+                ),
+                _step(
+                  "\$v = \\sqrt{8{,}69 \\times 6{,}8 \\times 10^6} \\approx 7690\\,\\text{m/s} \\approx 27\\,700\\,\\text{km/h}\$.",
+                ),
+                _step(
+                  "Période : \$T = 2\\pi r / v = 2\\pi \\times 6{,}8 \\times 10^6 / 7690 \\approx 5556\\,\\text{s} \\approx 92{,}6\\,\\text{min}\$. L'ISS fait un tour de Terre en ~93 min.",
+                  tipFr:
+                      "Valeurs à retenir : vitesse orbitale ~28000 km/h, période ~90 min pour les orbites basses. Ordres de grandeur classiques.",
+                ),
+              ], finalAnswerFr: r"$v \approx 7690$ m/s, $T \approx 93$ min"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperProjectile() => _paper(
+      titleFr: 'Épreuve type — Mouvement d\'un projectile',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Chute libre (\$y = \\frac{1}{2} g t^2\$), tir parabolique (séparation des composantes \$x, y\$), portée, hauteur maximale.",
+      exercices: [
+        _ex(
+          1,
+          'Chute libre',
+          5,
+          "Une pierre est lâchée du haut d'une falaise sans vitesse initiale. Elle touche le sol après 4 s. \$g = 9{,}8\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Hauteur de la falaise.",
+              2,
+              _sol([
+                _step(
+                  "**MRUA en chute libre** : \$h = \\dfrac{1}{2} g t^2 = 0{,}5 \\times 9{,}8 \\times 16 = 78{,}4\\,\\text{m}\$.",
+                ),
+              ], finalAnswerFr: r"$h = 78{,}4$ m"),
+            ),
+            _q(
+              2,
+              "Vitesse à l'impact.",
+              2,
+              _sol([
+                _step(
+                  "\$v = g t = 9{,}8 \\times 4 = 39{,}2\\,\\text{m/s} \\approx 141\\,\\text{km/h}\$.",
+                ),
+                _step(
+                  "Vérification énergétique : \$mgh = \\frac{1}{2} m v^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{2 \\times 9{,}8 \\times 78{,}4} \\approx 39{,}2\\,\\text{m/s}\$ ✓.",
+                  tipFr:
+                      "Deux approches : cinématique (\$v = g t\$) ou énergétique (\$v = \\sqrt{2 g h}\$). Donnent le même résultat — utile pour double-vérification.",
+                ),
+              ], finalAnswerFr: r"$v \approx 39{,}2$ m/s"),
+            ),
+            _q(
+              3,
+              "Distance parcourue durant la 3ème seconde.",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta h = h(3) - h(2) = \\frac{1}{2} g (9 - 4) = 0{,}5 \\times 9{,}8 \\times 5 = 24{,}5\\,\\text{m}\$.",
+                ),
+                _step(
+                  "**Observation** : les distances parcourues à chaque seconde sont proportionnelles aux nombres impairs (4,9 m, 14,7 m, 24,5 m, 34,3 m ...) — propriété galiléenne de la chute libre.",
+                ),
+              ], finalAnswerFr: r"$\Delta h = 24{,}5$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Tir parabolique — équations horaires',
+          5,
+          "Un projectile est lancé avec vitesse initiale \$v_0 = 25\\,\\text{m/s}\$ à un angle \$\\alpha = 30°\$ au-dessus de l'horizontale. \$g = 9{,}81\\,\\text{m/s}^2\$, origine au point de lancement.",
+          [
+            _qSubs(
+              1,
+              "Équations horaires.",
+              4,
+              [
+                _sub(
+                  'a',
+                  "Donner les composantes initiales \$v_{0x}, v_{0y}\$.",
+                  1,
+                  _sol([
+                    _step(
+                      "\$v_{0x} = v_0 \\cos\\alpha = 25 \\times \\dfrac{\\sqrt 3}{2} \\approx 21{,}65\\,\\text{m/s}\$.",
+                    ),
+                    _step(
+                      "\$v_{0y} = v_0 \\sin\\alpha = 25 \\times 0{,}5 = 12{,}5\\,\\text{m/s}\$.",
+                    ),
+                  ], finalAnswerFr: r"$v_{0x} \approx 21{,}65$, $v_{0y} = 12{,}5$"),
+                ),
+                _sub(
+                  'b',
+                  "Équations horaires \$x(t), y(t)\$.",
+                  2,
+                  _sol([
+                    _step(
+                      "**Axe x (horizontal, sans force)** : MRU, \$x(t) = v_{0x} t \\approx 21{,}65\\,t\$.",
+                    ),
+                    _step(
+                      "**Axe y (vertical, poids)** : MRUA, \$y(t) = v_{0y} t - \\dfrac{1}{2} g t^2 = 12{,}5\\,t - 4{,}905\\,t^2\$.",
+                    ),
+                  ]),
+                ),
+                _sub(
+                  'c',
+                  "Trouver l'équation de la trajectoire \$y(x)\$.",
+                  1,
+                  _sol([
+                    _step(
+                      "De \$x = v_{0x} t\$ : \$t = x/v_{0x}\$. Substituer dans \$y(t)\$ :",
+                    ),
+                    _step(
+                      "\$y = v_{0y} \\dfrac{x}{v_{0x}} - \\dfrac{g}{2} \\dfrac{x^2}{v_{0x}^2} = x \\tan\\alpha - \\dfrac{g x^2}{2 v_0^2 \\cos^2\\alpha}\$.",
+                    ),
+                    _step(
+                      "C'est une **parabole** — d'où le nom 'tir parabolique'.",
+                      tipFr:
+                          "Forme générale : \$y = (\\tan\\alpha) x - \\dfrac{g}{2 v_0^2 \\cos^2\\alpha} x^2\$. À mémoriser.",
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Portée et hauteur maximale',
+          5,
+          "Mêmes données qu'à l'Ex 2.",
+          [
+            _q(
+              1,
+              "Calculer la portée \$x_p\$ (distance horizontale atteinte au retour au sol).",
+              3,
+              _sol([
+                _step(
+                  "Durée totale du vol : \$y(t_p) = 0\\) avec \$t_p > 0\\), soit \$t_p (v_{0y} - g t_p/2) = 0 \\Rightarrow t_p = 2 v_{0y}/g = 25/9{,}81 \\approx 2{,}55\\,\\text{s}\$.",
+                ),
+                _step(
+                  "Portée : \$x_p = v_{0x} \\cdot t_p \\approx 21{,}65 \\times 2{,}55 \\approx 55{,}2\\,\\text{m}\$.",
+                ),
+                _step(
+                  "**Formule synthétique** : \$x_p = \\dfrac{v_0^2 \\sin(2\\alpha)}{g} = \\dfrac{625 \\times \\sin 60°}{9{,}81} \\approx 55{,}2\\,\\text{m}\$ ✓.",
+                  tipFr:
+                      "Portée maximale pour \$\\sin(2\\alpha) = 1 \\iff \\alpha = 45°\$. Au-delà ou en deçà, la portée diminue.",
+                ),
+              ], finalAnswerFr: r"$x_p \approx 55{,}2$ m"),
+            ),
+            _q(
+              2,
+              "Hauteur maximale.",
+              2,
+              _sol([
+                _step(
+                  "Au sommet : \$v_y = 0 \\iff t_s = v_{0y}/g \\approx 1{,}274\\,\\text{s}\$.",
+                ),
+                _step(
+                  "Hauteur : \$h_\\text{max} = y(t_s) = v_{0y}^2/(2g) = 156{,}25/19{,}62 \\approx 7{,}97\\,\\text{m}\$.",
+                ),
+                _step(
+                  "Ou avec la formule : \$h_\\text{max} = \\dfrac{v_0^2 \\sin^2\\alpha}{2g} \\approx 7{,}97\\,\\text{m}\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$h_\text{max} \approx 8$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Tir horizontal',
+          5,
+          "Un ballon est lancé horizontalement à 15 m/s du haut d'une tour de 80 m. \$g = 10\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Durée de chute.",
+              1,
+              _sol([
+                _step(
+                  "Chute libre verticale (\$v_{0y} = 0\$) : \$h = \\dfrac{1}{2} g t^2 \\iff t = \\sqrt{2 h /g} = \\sqrt{160/10} = 4\\,\\text{s}\$.",
+                ),
+              ], finalAnswerFr: r"$t = 4$ s"),
+            ),
+            _q(
+              2,
+              "Distance horizontale au sol (portée).",
+              2,
+              _sol([
+                _step(
+                  "Mouvement horizontal uniforme : \$x = v_0 t = 15 \\times 4 = 60\\,\\text{m}\$.",
+                ),
+              ], finalAnswerFr: r"$x = 60$ m"),
+            ),
+            _q(
+              3,
+              "Vitesse à l'impact (module et angle).",
+              2,
+              _sol([
+                _step(
+                  "À l'impact : \$v_x = 15\\,\\text{m/s}\$ (inchangé), \$v_y = g t = 40\\,\\text{m/s}\$.",
+                ),
+                _step(
+                  "Module : \$v = \\sqrt{v_x^2 + v_y^2} = \\sqrt{225 + 1600} = \\sqrt{1825} \\approx 42{,}7\\,\\text{m/s}\$.",
+                ),
+                _step(
+                  "Angle avec l'horizontale : \$\\beta = \\arctan(v_y/v_x) = \\arctan(40/15) \\approx 69{,}4°\$ — quasi-vertical.",
+                ),
+              ], finalAnswerFr: r"$v \approx 42{,}7$ m/s, $\beta \approx 69°$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperEnergyMechanical() => _paper(
+      titleFr: 'Épreuve type — Énergie mécanique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Énergies cinétique \$E_c = \\frac{1}{2} m v^2\$, potentielle pesanteur \$E_p = mgh\$, élastique \$E_{pe} = \\frac{1}{2} k x^2\$. Conservation \$E_m = E_c + E_p\$ en absence de frottement.",
+      exercices: [
+        _ex(
+          1,
+          'Calculs élémentaires',
+          5,
+          "Un cycliste de 70 kg roule à 36 km/h sur route plate. \$g = 10\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Calculer son énergie cinétique.",
+              2,
+              _sol([
+                _step(
+                  "Conversion : \$v = 36/3{,}6 = 10\\,\\text{m/s}\$.",
+                ),
+                _step(
+                  "\$E_c = \\dfrac{1}{2} m v^2 = 0{,}5 \\times 70 \\times 100 = 3500\\,\\text{J} = 3{,}5\\,\\text{kJ}\$.",
+                ),
+              ], finalAnswerFr: r"$E_c = 3{,}5$ kJ"),
+            ),
+            _q(
+              2,
+              "Énergie potentielle gagnée en montant une côte de 50 m.",
+              1,
+              _sol([
+                _step(
+                  "\$\\Delta E_p = m g \\Delta h = 70 \\times 10 \\times 50 = 35\\,000\\,\\text{J} = 35\\,\\text{kJ}\$.",
+                ),
+              ], finalAnswerFr: r"$\Delta E_p = 35$ kJ"),
+            ),
+            _q(
+              3,
+              "Hauteur atteinte si toute l'énergie cinétique est convertie en énergie potentielle.",
+              2,
+              _sol([
+                _step(
+                  "Conservation : \$E_c \\to E_p \\iff mgh = 3500 \\Rightarrow h = \\dfrac{3500}{700} = 5\\,\\text{m}\$.",
+                ),
+                _step(
+                  "Pour gravir 50 m, il faut donc fournir \$35 - 3{,}5 = 31{,}5\\,\\text{kJ}\$ supplémentaires (en pédalant).",
+                ),
+              ], finalAnswerFr: r"$h = 5$ m"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Conservation sur toboggan',
+          5,
+          "Un enfant de 25 kg glisse depuis le haut d'un toboggan de hauteur 4 m, partant du repos. \$g = 10\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "En absence de frottement, vitesse en bas.",
+              3,
+              _sol([
+                _step(
+                  "Conservation de l'énergie mécanique : \$E_m^\\text{haut} = E_m^\\text{bas}\$, soit \$mgh = \\dfrac{1}{2} m v^2\$.",
+                ),
+                _step(
+                  "Simplification : \$v = \\sqrt{2 g h} = \\sqrt{2 \\times 10 \\times 4} = \\sqrt{80} \\approx 8{,}94\\,\\text{m/s} \\approx 32\\,\\text{km/h}\$.",
+                ),
+                _step(
+                  "**Résultat indépendant de la masse** — un adulte et un enfant arrivent à la même vitesse. La masse se simplifie dans l'équation.",
+                  tipFr:
+                      "C'est le même principe que la chute libre — toutes les masses tombent à la même vitesse en absence d'air (Galilée à Pise).",
+                ),
+              ], finalAnswerFr: r"$v \approx 8{,}94$ m/s"),
+            ),
+            _q(
+              2,
+              "Si avec frottement l'enfant arrive à 7 m/s, énergie dissipée.",
+              2,
+              _sol([
+                _step(
+                  "Énergie initiale : \$E_m^\\text{haut} = mgh = 25 \\times 10 \\times 4 = 1000\\,\\text{J}\$.",
+                ),
+                _step(
+                  "Énergie cinétique finale : \$E_c^\\text{bas} = 0{,}5 \\times 25 \\times 49 = 612{,}5\\,\\text{J}\$.",
+                ),
+                _step(
+                  "Énergie dissipée par frottement : \$\\Delta E = 1000 - 612{,}5 = 387{,}5\\,\\text{J}\$ — soit 38,7% de l'énergie initiale convertie en chaleur.",
+                ),
+              ], finalAnswerFr: r"$\Delta E = 387{,}5$ J"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Ressort — énergie élastique',
+          5,
+          "Un ressort de raideur \$k = 500\\,\\text{N/m}\$ est comprimé de \$x = 10\\,\\text{cm}\$, puis libéré pour propulser une bille de masse \$m = 0{,}2\\,\\text{kg}\$ horizontalement.",
+          [
+            _q(
+              1,
+              "Énergie potentielle élastique stockée.",
+              2,
+              _sol([
+                _step(
+                  "\$E_{pe} = \\dfrac{1}{2} k x^2 = 0{,}5 \\times 500 \\times (0{,}1)^2 = 2{,}5\\,\\text{J}\$.",
+                ),
+              ], finalAnswerFr: r"$E_{pe} = 2{,}5$ J"),
+            ),
+            _q(
+              2,
+              "Vitesse maximale de la bille.",
+              3,
+              _sol([
+                _step(
+                  "Conservation (sans frottement) : \$\\dfrac{1}{2} k x^2 = \\dfrac{1}{2} m v^2 \\Rightarrow v = x \\sqrt{\\dfrac{k}{m}}\$.",
+                ),
+                _step(
+                  "\$v = 0{,}1 \\times \\sqrt{500/0{,}2} = 0{,}1 \\times \\sqrt{2500} = 0{,}1 \\times 50 = 5\\,\\text{m/s}\$.",
+                ),
+                _step(
+                  "**Lien avec la pulsation propre** : \$\\omega_0 = \\sqrt{k/m}\$. Donc \$v_\\text{max} = x \\omega_0\$ (vitesse maximale d'un oscillateur harmonique d'amplitude \$x\$).",
+                  tipFr:
+                      "\$\\omega_0 = \\sqrt{k/m}\$ apparaît partout en oscillations : ressort, pendule, RLC. La formule structurale est universelle.",
+                ),
+              ], finalAnswerFr: r"$v = 5$ m/s"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Théorème de l\'énergie cinétique avec frottement',
+          5,
+          "Une caisse de 30 kg est tirée sur un sol horizontal par une force \$F = 100\\,\\text{N}\$ pendant \$d = 5\\,\\text{m}\$. Coefficient de frottement \$\\mu = 0{,}2\$, \$g = 10\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Travaux de \$F\$ et du frottement.",
+              3,
+              _sol([
+                _step(
+                  "**Travail de \$F\$** (parallèle au mouvement) : \$W_F = F \\cdot d = 100 \\times 5 = 500\\,\\text{J}\$.",
+                ),
+                _step(
+                  "**Frottement** : réaction normale \$R = mg = 300\\,\\text{N}\$ ; force de frottement \$f = \\mu R = 60\\,\\text{N}\$, opposée au mouvement.",
+                ),
+                _step(
+                  "Travail du frottement : \$W_f = -f \\cdot d = -300\\,\\text{J}\$ (négatif, force opposée).",
+                ),
+                _step(
+                  "Travaux du poids et de la réaction normale : nuls (perpendiculaires au déplacement horizontal).",
+                ),
+              ], finalAnswerFr: r"$W_F = 500$ J, $W_f = -300$ J"),
+            ),
+            _q(
+              2,
+              "Vitesse finale, partant du repos.",
+              2,
+              _sol([
+                _step(
+                  "**Théorème de l'énergie cinétique** : \$\\Delta E_c = \\sum W_\\text{ext} = 500 - 300 = 200\\,\\text{J}\$.",
+                ),
+                _step(
+                  "\$\\dfrac{1}{2} m v^2 = 200 \\Rightarrow v = \\sqrt{400/30} \\approx 3{,}65\\,\\text{m/s}\$.",
+                ),
+              ], finalAnswerFr: r"$v \approx 3{,}65$ m/s"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperPendulum() => _paper(
+      titleFr: 'Épreuve type — Pendule pesant et pendule élastique',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Pendule simple : période \$T = 2\\pi\\sqrt{L/g}\$. Pendule élastique : \$T = 2\\pi\\sqrt{m/k}\$. Équation différentielle \$\\theta'' + \\omega_0^2 \\theta = 0\$ pour petites oscillations.",
+      exercices: [
+        _ex(
+          1,
+          'Pendule simple',
+          5,
+          "Un pendule simple est constitué d'une masse \$m = 200\\,\\text{g}\$ suspendue à un fil inextensible de longueur \$L = 1\\,\\text{m}\$. On l'écarte d'un petit angle \$\\theta_0\$ puis on lâche. \$g = 9{,}81\\,\\text{m/s}^2\$.",
+          [
+            _q(
+              1,
+              "Établir l'équation différentielle du mouvement pour de petites oscillations.",
+              3,
+              _sol([
+                _step(
+                  "Forces : poids \$\\vec P\$ et tension \$\\vec T\$ du fil. Projection sur la tangente à la trajectoire (axe \$\\theta\$) : seule la composante tangentielle du poids agit, soit \$-mg \\sin\\theta\$ (rappel vers la verticale).",
+                ),
+                _step(
+                  "**2ème loi de Newton sur l'axe tangentiel** : \$m L \\theta'' = -mg \\sin\\theta\$ (accélération tangentielle \$= L\\theta''\$ pour un cercle).",
+                ),
+                _step(
+                  "**Approximation des petites oscillations** : \$\\sin\\theta \\approx \\theta\$ (rad). L'équation devient : \$\\theta'' + \\dfrac{g}{L} \\theta = 0\$.",
+                  tipFr:
+                      "L'approximation \$\\sin\\theta \\approx \\theta\$ est valable pour \$|\\theta| < 0{,}2\\,\\text{rad} \\approx 12°\$ avec erreur < 1%. Au-delà, le pendule devient anharmonique.",
+                ),
+              ], finalAnswerFr: r"$\theta'' + (g/L) \theta = 0$"),
+            ),
+            _q(
+              2,
+              "Identifier la pulsation propre \$\\omega_0\$ et la période \$T_0\$.",
+              2,
+              _sol([
+                _step(
+                  "Forme canonique \$\\theta'' + \\omega_0^2 \\theta = 0\$ avec \$\\omega_0^2 = g/L\$.",
+                ),
+                _step(
+                  "\$\\omega_0 = \\sqrt{g/L} = \\sqrt{9{,}81/1} \\approx 3{,}13\\,\\text{rad/s}\$.",
+                ),
+                _step(
+                  "Période : \$T_0 = \\dfrac{2\\pi}{\\omega_0} = 2\\pi\\sqrt{\\dfrac{L}{g}} = 2\\pi\\sqrt{1/9{,}81} \\approx 2{,}01\\,\\text{s}\$.",
+                  tipFr:
+                      "**Isochronisme** : la période est indépendante de l'amplitude (en petites oscillations) ET indépendante de la masse. C'est l'observation de Galilée.",
+                ),
+              ], finalAnswerFr: r"$\omega_0 \approx 3{,}13$ rad/s, $T_0 \approx 2$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Pendule élastique',
+          5,
+          "Une masse \$m = 0{,}5\\,\\text{kg}\$ est accrochée à un ressort horizontal de raideur \$k = 50\\,\\text{N/m}\$, sur un support sans frottement. On l'écarte de \$x_0 = 5\\,\\text{cm}\$ puis on lâche.",
+          [
+            _q(
+              1,
+              "Établir l'équation différentielle.",
+              2,
+              _sol([
+                _step(
+                  "Seule force horizontale (autre que la normale verticale) : force de rappel du ressort \$F = -k x\$ (loi de Hooke).",
+                ),
+                _step(
+                  "2ème loi : \$m x'' = -k x \\Rightarrow x'' + \\dfrac{k}{m} x = 0\$.",
+                ),
+              ], finalAnswerFr: r"$x'' + (k/m) x = 0$"),
+            ),
+            _q(
+              2,
+              "Pulsation, période, fréquence.",
+              2,
+              _sol([
+                _step(
+                  "\$\\omega_0 = \\sqrt{k/m} = \\sqrt{50/0{,}5} = \\sqrt{100} = 10\\,\\text{rad/s}\$.",
+                ),
+                _step(
+                  "Période : \$T_0 = 2\\pi/\\omega_0 = 2\\pi/10 \\approx 0{,}628\\,\\text{s}\$. Fréquence : \$f = 1/T \\approx 1{,}59\\,\\text{Hz}\$.",
+                ),
+              ], finalAnswerFr: r"$\omega_0 = 10$ rad/s, $T \approx 0{,}63$ s"),
+            ),
+            _q(
+              3,
+              "Solution générale \$x(t)\$ avec conditions initiales \$x(0) = x_0\$ et \$x'(0) = 0\$.",
+              1,
+              _sol([
+                _step(
+                  "Solution générale : \$x(t) = A \\cos(\\omega_0 t) + B \\sin(\\omega_0 t)\$.",
+                ),
+                _step(
+                  "CI : \$x(0) = A = x_0 = 0{,}05\\,\\text{m}\$. \$x'(0) = B \\omega_0 = 0 \\Rightarrow B = 0\$.",
+                ),
+                _step(
+                  "Donc \$x(t) = 0{,}05 \\cos(10\\,t)\$ (en mètres).",
+                ),
+              ], finalAnswerFr: r"$x(t) = 0{,}05 \cos(10 t)$"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Énergie d\'un oscillateur',
+          5,
+          "Reprenons le pendule élastique de l'exercice 2.",
+          [
+            _q(
+              1,
+              "Calculer l'énergie mécanique \$E_m\$ totale (constante).",
+              2,
+              _sol([
+                _step(
+                  "À \$t = 0\$ : vitesse nulle, position \$x_0 = 0{,}05\\,\\text{m}\$. Toute l'énergie est potentielle élastique.",
+                ),
+                _step(
+                  "\$E_m = E_{pe} = \\dfrac{1}{2} k x_0^2 = 0{,}5 \\times 50 \\times (0{,}05)^2 = 0{,}0625\\,\\text{J} = 62{,}5\\,\\text{mJ}\$.",
+                ),
+              ], finalAnswerFr: r"$E_m = 62{,}5$ mJ"),
+            ),
+            _q(
+              2,
+              "Vitesse maximale (au passage par la position d'équilibre).",
+              2,
+              _sol([
+                _step(
+                  "À \$x = 0\$ : énergie potentielle nulle, donc \$E_m = E_c = \\dfrac{1}{2} m v_\\text{max}^2\$.",
+                ),
+                _step(
+                  "\$v_\\text{max} = \\sqrt{2 E_m / m} = \\sqrt{0{,}125/0{,}5} = \\sqrt{0{,}25} = 0{,}5\\,\\text{m/s}\$.",
+                ),
+                _step(
+                  "Vérification : \$v_\\text{max} = x_0 \\omega_0 = 0{,}05 \\times 10 = 0{,}5\\,\\text{m/s}\$ ✓.",
+                  tipFr:
+                      "Pour un oscillateur harmonique : \$v_\\text{max} = x_\\text{max} \\cdot \\omega_0\$. Identité utile pour relier amplitudes et vitesses.",
+                ),
+              ], finalAnswerFr: r"$v_\text{max} = 0{,}5$ m/s"),
+            ),
+            _q(
+              3,
+              "Vérifier que \$E_c + E_{pe}\$ est constante en tout point.",
+              1,
+              _sol([
+                _step(
+                  "À position quelconque \$x\$, vitesse \$v\$ : \$E_c + E_{pe} = \\frac{1}{2} m v^2 + \\frac{1}{2} k x^2\$. Conservation : valeur = \$E_m = \\frac{1}{2} k x_0^2\$ (initiale).",
+                ),
+                _step(
+                  "Échange continu : à \$x = 0\$, tout est cinétique ; aux extrémités, tout est potentiel. Caractéristique des oscillations harmoniques sans frottement.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Pendule pesant — petites oscillations',
+          5,
+          "Un pendule pesant est un solide pouvant tourner autour d'un axe fixe horizontal, ne passant pas par son centre de gravité. La période s'écrit \$T = 2\\pi \\sqrt{J_\\Delta/(mgd)}\$ avec \$J_\\Delta\$ moment d'inertie, \$d\$ distance axe-centre de gravité.",
+          [
+            _q(
+              1,
+              "Application : tige homogène de masse 1 kg et longueur 60 cm, suspendue à un bout. \$J = \\frac{1}{3} m L^2\$, \$d = L/2\$. Calculer T.",
+              4,
+              _sol([
+                _step(
+                  "Données : \$m = 1\\,\\text{kg}\$, \$L = 0{,}6\\,\\text{m}\$, \$d = L/2 = 0{,}3\\,\\text{m}\$.",
+                ),
+                _step(
+                  "\$J = \\dfrac{1}{3} m L^2 = \\dfrac{1}{3} \\times 1 \\times 0{,}36 = 0{,}12\\,\\text{kg}\\cdot\\text{m}^2\$.",
+                ),
+                _step(
+                  "\$T = 2\\pi \\sqrt{\\dfrac{J}{m g d}} = 2\\pi \\sqrt{\\dfrac{0{,}12}{1 \\times 9{,}81 \\times 0{,}3}} = 2\\pi \\sqrt{0{,}0408} \\approx 2\\pi \\times 0{,}202 \\approx 1{,}27\\,\\text{s}\$.",
+                ),
+                _step(
+                  "**Comparaison avec un pendule simple** de longueur 60 cm : \$T_\\text{simple} = 2\\pi\\sqrt{0{,}6/9{,}81} \\approx 1{,}55\\,\\text{s}\$. Le pendule pesant oscille **plus vite** car sa masse est concentrée plus haut.",
+                  tipFr:
+                      "**Longueur équivalente** \$L_\\text{eq} = J/(m d)\$ donne la longueur du pendule simple de même période. Pour la tige : \$L_\\text{eq} = 0{,}12/0{,}3 = 0{,}4\\,\\text{m}\$.",
+                ),
+              ], finalAnswerFr: r"$T \approx 1{,}27$ s"),
+            ),
+            _q(
+              2,
+              "Fréquence et nombre d'oscillations en 1 minute.",
+              1,
+              _sol([
+                _step(
+                  "\$f = 1/T \\approx 0{,}787\\,\\text{Hz}\$. Nombre d'oscillations en 60 s : \$N = 60/T \\approx 47\\,\\text{oscillations}\$.",
+                ),
+              ], finalAnswerFr: r"$f \approx 0{,}79$ Hz, $N \approx 47$"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+// ============================================================================
 // Registry & main
 // ============================================================================
 
@@ -3119,7 +3868,12 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_complex_trig': _paperComplexTrig(),
   'pc_ode_first_order': _paperOdeFirstOrder(),
   'pc_prob_binomial': _paperProbBinomial(),
-  // Math COMPLETE (15/15). Physique-Chimie — Batches 5-10: to come
+  // Math COMPLETE (15/15).
+  // Physique-Chimie — Batch 5: mechanics
+  'pc_newton_laws': _paperNewtonLaws(),
+  'pc_projectile': _paperProjectile(),
+  'pc_energy_mechanical': _paperEnergyMechanical(),
+  'pc_pendulum': _paperPendulum(),
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
