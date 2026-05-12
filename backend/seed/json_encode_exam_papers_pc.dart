@@ -4399,6 +4399,573 @@ Map<String, dynamic> _paperRlcOscillations() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperMechanicalWaves() => _paper(
+      titleFr: 'Épreuve type — Ondes mécaniques',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Onde mécanique = propagation d'une perturbation dans un milieu, sans transport de matière. Célérité \$v\$, longueur d'onde \$\\lambda = v T = v/f\$. Transversale vs longitudinale.",
+      exercices: [
+        _ex(
+          1,
+          'Vocabulaire et relations fondamentales',
+          5,
+          "Une onde se propage le long d'une corde tendue avec célérité \$v = 30\\,\\text{m/s}\$, fréquence \$f = 60\\,\\text{Hz}\$.",
+          [
+            _q(
+              1,
+              "Calculer la période \$T\$ et la longueur d'onde \$\\lambda\$.",
+              2,
+              _sol([
+                _step(
+                  "**Période** : \$T = 1/f = 1/60 \\approx 16{,}7\\,\\text{ms}\$.",
+                ),
+                _step(
+                  "**Longueur d'onde** : \$\\lambda = v T = v/f = 30/60 = 0{,}5\\,\\text{m}\$.",
+                ),
+              ], finalAnswerFr: r"$T \approx 16{,}7$ ms, $\lambda = 0{,}5$ m"),
+            ),
+            _q(
+              2,
+              "Que représente \$\\lambda\$ géométriquement sur la corde ?",
+              1,
+              _sol([
+                _step(
+                  "Distance entre **deux maxima consécutifs** (ou deux points dans le même état de vibration) à un instant donné, soit \$\\lambda = 0{,}5\\,\\text{m}\$.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Si on double la fréquence (\$v\$ inchangée), comment varie \$\\lambda\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$\\lambda = v/f\$ → si \$f\$ est doublée, \$\\lambda\$ est **divisée par 2** : \$\\lambda' = 0{,}25\\,\\text{m}\$.",
+                ),
+                _step(
+                  "Relation fondamentale : \$\\lambda \\propto 1/f\$ à célérité constante. Vraie pour toute onde dans un milieu donné.",
+                  tipFr:
+                      "La célérité dépend du milieu (tension de la corde, densité). La fréquence est imposée par la source. \$\\lambda\$ s'ajuste pour satisfaire \$\\lambda = v/f\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda$ divisée par 2"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Types d\'ondes',
+          5,
+          "Comparer ondes transversales et longitudinales.",
+          [
+            _q(
+              1,
+              "Le son est-il transversal ou longitudinal ? Justifier.",
+              2,
+              _sol([
+                _step(
+                  "**Longitudinal** : dans l'air, les molécules oscillent **parallèlement à la direction de propagation**, créant des compressions/raréfactions.",
+                ),
+                _step(
+                  "**Contre-exemple** : une corde vibre **transversalement** — chaque point se déplace perpendiculairement à la corde.",
+                ),
+              ], finalAnswerFr: r"Longitudinale"),
+            ),
+            _q(
+              2,
+              "Le son se propage-t-il dans le vide ?",
+              1,
+              _sol([
+                _step(
+                  "**Non** — les ondes mécaniques nécessitent un milieu matériel. Sans matière à comprimer, pas de propagation.",
+                ),
+                _step(
+                  "Contraste : la **lumière** (onde électromagnétique) se propage dans le vide → on voit le soleil sans entendre les explosions solaires.",
+                ),
+              ]),
+            ),
+            _q(
+              3,
+              "Célérité du son dans différents milieux.",
+              2,
+              _sol([
+                _step(
+                  "Air (20°C) : \$v \\approx 340\\,\\text{m/s}\$. Eau : \$v \\approx 1500\\,\\text{m/s}\$. Acier : \$v \\approx 5000\\,\\text{m/s}\$.",
+                ),
+                _step(
+                  "**Règle** : célérité ↑ avec rigidité du milieu. Solide > liquide > gaz. \$v_\\text{son} \\propto \\sqrt{K/\\rho}\$ (\$K\$ = module de compression, \$\\rho\$ = densité).",
+                  tipFr:
+                      "Application : les baleines communiquent à grande distance dans l'eau grâce à la célérité élevée (1500 m/s contre 340 dans l'air).",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Retard et déphasage',
+          5,
+          "Une source S émet une onde de fréquence \$f = 200\\,\\text{Hz}\$ dans l'air (célérité 340 m/s). Un récepteur M est à distance \$d = 5{,}1\\,\\text{m}\$.",
+          [
+            _q(
+              1,
+              "Retard \$\\tau\$ entre S et M.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = d/v = 5{,}1/340 = 0{,}015\\,\\text{s} = 15\\,\\text{ms}\$.",
+                ),
+              ], finalAnswerFr: r"$\tau = 15$ ms"),
+            ),
+            _q(
+              2,
+              "Déphasage \$\\Delta\\varphi\$ entre S et M en radians, modulo \$2\\pi\$.",
+              3,
+              _sol([
+                _step(
+                  "\$\\Delta\\varphi = 2\\pi f \\tau = 2\\pi \\times 200 \\times 0{,}015 = 6\\pi\\,\\text{rad}\$.",
+                ),
+                _step(
+                  "Modulo \$2\\pi\$ : \$6\\pi = 3 \\times 2\\pi \\equiv 0\$. Les deux points sont **en phase**.",
+                ),
+                _step(
+                  "**Vérification** : \$\\lambda = v/f = 340/200 = 1{,}7\\,\\text{m}\$. \$d/\\lambda = 5{,}1/1{,}7 = 3\$ (entier) → en phase ✓.",
+                  tipFr:
+                      "**Critère synthétique** : en phase si \$d\$ est un multiple entier de \$\\lambda\$, en opposition de phase si multiple impair de \$\\lambda/2\$.",
+                ),
+              ], finalAnswerFr: r"En phase ($\Delta\varphi \equiv 0$)"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Onde stationnaire sur corde fixée',
+          5,
+          "Une corde de longueur \$L = 1\\,\\text{m}\$ est fixée à ses deux extrémités. On l'excite dans son mode fondamental.",
+          [
+            _q(
+              1,
+              "Longueur d'onde du mode fondamental.",
+              2,
+              _sol([
+                _step(
+                  "Mode fondamental = un seul ventre au milieu, nœuds aux extrémités fixes.",
+                ),
+                _step(
+                  "Donc \$L = \\lambda/2 \\iff \\lambda = 2 L = 2\\,\\text{m}\$.",
+                ),
+              ], finalAnswerFr: r"$\lambda_1 = 2$ m"),
+            ),
+            _q(
+              2,
+              "Si \$f_1 = 220\\,\\text{Hz}\$, célérité sur la corde ?",
+              1,
+              _sol([
+                _step(
+                  "\$v = \\lambda_1 f_1 = 2 \\times 220 = 440\\,\\text{m/s}\$.",
+                ),
+              ], finalAnswerFr: r"$v = 440$ m/s"),
+            ),
+            _q(
+              3,
+              "Fréquence et longueur d'onde du 3ème harmonique (\$f_3 = 3 f_1\$).",
+              2,
+              _sol([
+                _step(
+                  "\$f_3 = 3 \\times 220 = 660\\,\\text{Hz}\$. \$\\lambda_3 = v/f_3 = 440/660 = 2/3\\,\\text{m}\$.",
+                ),
+                _step(
+                  "Géométriquement : 3 ventres sur la corde, \$L = 3 \\lambda_3 / 2\$ ✓.",
+                  tipFr:
+                      "Sur une corde fixée aux 2 bouts : \$f_n = n \\cdot f_1\$ (harmoniques entiers). Cette série produit la sonorité 'musicale' des instruments à cordes.",
+                ),
+              ], finalAnswerFr: r"$f_3 = 660$ Hz, $\lambda_3 = 2/3$ m"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperDiffractionInterference() => _paper(
+      titleFr: 'Épreuve type — Diffraction et interférences',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Diffraction par une fente : \$\\theta \\approx \\lambda/a\$. Interférences de Young (deux fentes) : interfrange \$i = \\lambda D/a\$. Conditions : ondes cohérentes, monochromatiques.",
+      exercices: [
+        _ex(
+          1,
+          'Diffraction par une fente',
+          5,
+          "Un laser de longueur d'onde \$\\lambda = 632\\,\\text{nm}\$ (rouge) traverse une fente de largeur \$a = 0{,}1\\,\\text{mm}\$. L'écran est à \$D = 2\\,\\text{m}\$.",
+          [
+            _q(
+              1,
+              "Calculer l'angle \$\\theta\$ du 1er minimum de diffraction.",
+              2,
+              _sol([
+                _step(
+                  "**Formule** : 1er minimum à \$\\sin\\theta = \\lambda/a\$ (pour petits angles : \$\\theta \\approx \\lambda/a\$ en rad).",
+                ),
+                _step(
+                  "\$\\theta \\approx 6{,}32 \\times 10^{-7} / 10^{-4} = 6{,}32 \\times 10^{-3}\\,\\text{rad} \\approx 0{,}36°\$.",
+                ),
+              ], finalAnswerFr: r"$\theta \approx 6{,}32 \times 10^{-3}$ rad"),
+            ),
+            _q(
+              2,
+              "Demi-largeur \$\\ell\$ et largeur totale \$L\$ de la tache centrale sur l'écran.",
+              2,
+              _sol([
+                _step(
+                  "\$\\ell = D \\tan\\theta \\approx D \\theta = 2 \\times 6{,}32 \\times 10^{-3} \\approx 1{,}26 \\times 10^{-2}\\,\\text{m} = 12{,}6\\,\\text{mm}\$.",
+                ),
+                _step(
+                  "Largeur totale : \$L = 2\\ell \\approx 25\\,\\text{mm} = 2{,}5\\,\\text{cm}\$. Bien plus large que la fente initiale (0,1 mm) !",
+                ),
+              ], finalAnswerFr: r"$L \approx 2{,}5$ cm"),
+            ),
+            _q(
+              3,
+              "Si on réduit la fente à \$a' = 0{,}05\\,\\text{mm}\$, comment varie la tache ?",
+              1,
+              _sol([
+                _step(
+                  "\$\\theta \\propto 1/a\$. Donc \$\\theta\$ double, et la tache double aussi : \$L' = 5\\,\\text{cm}\$.",
+                ),
+                _step(
+                  "**Contre-intuitif** : plus la fente est étroite, plus la tache diffractée est large. Au contraire du sens commun.",
+                  tipFr:
+                      "Conséquence pratique : pour obtenir une image nette (objectif microscope, photographie), il faut une **grande** ouverture, pas une petite — sinon la diffraction limite la résolution.",
+                ),
+              ], finalAnswerFr: r"$L'$ double"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Interférences à deux ondes (Young)',
+          5,
+          "Deux fentes de Young espacées de \$a = 0{,}2\\,\\text{mm}\$, écran à \$D = 1{,}5\\,\\text{m}\$, laser à \$\\lambda = 500\\,\\text{nm}\$ (vert).",
+          [
+            _q(
+              1,
+              "Calculer l'interfrange \$i\$.",
+              2,
+              _sol([
+                _step(
+                  "**Formule** : \$i = \\lambda D / a\$ (distance entre deux franges brillantes consécutives).",
+                ),
+                _step(
+                  "\$i = 5 \\times 10^{-7} \\times 1{,}5 / (2 \\times 10^{-4}) = 3{,}75 \\times 10^{-3}\\,\\text{m} = 3{,}75\\,\\text{mm}\$.",
+                ),
+              ], finalAnswerFr: r"$i = 3{,}75$ mm"),
+            ),
+            _q(
+              2,
+              "Position de la 5ème frange brillante (par rapport à la frange centrale).",
+              1,
+              _sol([
+                _step(
+                  "Frange brillante d'ordre \$k\$ : \$x_k = k \\cdot i\$. Pour \$k = 5\$ : \$x_5 = 5 \\times 3{,}75 = 18{,}75\\,\\text{mm}\$.",
+                ),
+              ], finalAnswerFr: r"$x_5 = 18{,}75$ mm"),
+            ),
+            _q(
+              3,
+              "On change le laser pour du rouge (\$\\lambda' = 700\\,\\text{nm}\$). Comment varie \$i\$ ?",
+              2,
+              _sol([
+                _step(
+                  "\$i \\propto \\lambda\$. Nouvel interfrange : \$i' = 3{,}75 \\times 700/500 = 5{,}25\\,\\text{mm}\$.",
+                ),
+                _step(
+                  "**Conséquence pour lumière blanche** : chaque couleur produit ses propres franges, donc l'écran présente un spectre coloré (sauf à l'ordre 0 où toutes coïncident — frange blanche centrale).",
+                  tipFr:
+                      "L'analyse spectroscopique exploite cette propriété : interférences sélectives → mesure précise de \$\\lambda\$ et donc identification de l'élément chimique émetteur.",
+                ),
+              ], finalAnswerFr: r"$i' = 5{,}25$ mm"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Conditions d\'interférence',
+          5,
+          "Discuter les conditions pour observer des interférences nettes.",
+          [
+            _q(
+              1,
+              "Pourquoi utilise-t-on un **laser** plutôt qu'une ampoule classique ?",
+              3,
+              _sol([
+                _step(
+                  "**Cohérence temporelle** : un laser émet une lumière (quasi-)monochromatique — une seule longueur d'onde bien définie. Une ampoule émet un spectre large.",
+                ),
+                _step(
+                  "**Cohérence spatiale** : les rayons d'un laser sont quasi-parallèles, depuis la même source ponctuelle. Une ampoule émet dans toutes les directions, depuis un filament étendu.",
+                ),
+                _step(
+                  "**Conséquence** : avec une ampoule, les déphasages varient aléatoirement → les franges s'effacent. Avec un laser, les franges sont stables.",
+                  tipFr:
+                      "Avant l'invention du laser (1960), on utilisait des sources spectralement filtrées (lampe sodium + fente fine) pour obtenir une cohérence suffisante.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Si on bouche une fente de Young, que voit-on sur l'écran ?",
+              2,
+              _sol([
+                _step(
+                  "Plus d'interférences (une seule source) — on observe la **figure de diffraction** d'une seule fente : tache centrale large + taches latérales décroissantes.",
+                ),
+                _step(
+                  "Les franges fines disparaissent. Démonstration que les interférences viennent bien de **deux** sources qui se superposent.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Mesure d\'une longueur d\'onde',
+          5,
+          "On observe les interférences de Young avec \$a = 0{,}3\\,\\text{mm}\$ et \$D = 2\\,\\text{m}\$. La distance entre la 1ère et la 10ème frange brillante (situées du même côté) est mesurée à \$L = 36\\,\\text{mm}\$.",
+          [
+            _q(
+              1,
+              "Déduire l'interfrange.",
+              2,
+              _sol([
+                _step(
+                  "Entre la 1ère et la 10ème frange : il y a **9 interfranges**. \$L = 9 i \\iff i = 36/9 = 4\\,\\text{mm}\$.",
+                  mistakeFr:
+                      "Erreur classique : compter 10 intervalles au lieu de 9. Entre la frange n°1 et la frange n°10, il y a 10 - 1 = 9 intervalles.",
+                ),
+              ], finalAnswerFr: r"$i = 4$ mm"),
+            ),
+            _q(
+              2,
+              "En déduire la longueur d'onde du laser.",
+              3,
+              _sol([
+                _step(
+                  "\$i = \\lambda D / a \\iff \\lambda = a i / D\$.",
+                ),
+                _step(
+                  "\$\\lambda = (3 \\times 10^{-4}) \\times (4 \\times 10^{-3}) / 2 = 6 \\times 10^{-7}\\,\\text{m} = 600\\,\\text{nm}\$.",
+                ),
+                _step(
+                  "Domaine du visible (380-780 nm), couleur **orange-jaune** (proche du sodium 589 nm).",
+                  tipFr:
+                      "Méthode classique de spectroscopie : interféromètre + mesure d'interfrange → \$\\lambda\$. Précision en \$\\mu\\text{m}\$ atteignable avec optique fine.",
+                ),
+              ], finalAnswerFr: r"$\lambda = 600$ nm (orange)"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperAmModulation() => _paper(
+      titleFr: 'Épreuve type — Modulation d\'amplitude (AM)',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Modulation AM : signal modulé \$u(t) = [A + s(t)] \\cos(2\\pi f_p t)\$ avec porteuse \$f_p\$ et signal informatif \$s(t)\$. Taux de modulation \$m = S_\\text{max}/A\$. Démodulation par détection d'enveloppe (diode + RC).",
+      exercices: [
+        _ex(
+          1,
+          'Principe de la modulation',
+          5,
+          "Une porteuse sinusoïdale \$u_p(t) = A \\cos(2\\pi f_p t)\$ avec \$A = 5\\,\\text{V}\$ et \$f_p = 100\\,\\text{kHz}\$. Signal informatif \$s(t) = S_0 \\cos(2\\pi f_s t)\$ avec \$S_0 = 2\\,\\text{V}\$ et \$f_s = 1\\,\\text{kHz}\$.",
+          [
+            _q(
+              1,
+              "Donner l'expression du signal modulé en amplitude \$u(t) = [A + s(t)] \\cos(2\\pi f_p t)\$.",
+              2,
+              _sol([
+                _step(
+                  "\$u(t) = [5 + 2\\cos(2\\pi \\cdot 1000\\,t)] \\cos(2\\pi \\cdot 10^5\\,t)\$, en volts.",
+                ),
+                _step(
+                  "L'amplitude de la porteuse \$\\cos(2\\pi f_p t)\$ varie au rythme du signal \$s(t)\$. L'enveloppe du signal modulé est \$A + s(t)\$.",
+                ),
+              ], finalAnswerFr: r"$u(t) = [5 + 2\cos(2\pi \cdot 10^3 t)] \cos(2\pi \cdot 10^5 t)$"),
+            ),
+            _q(
+              2,
+              "Calculer le taux de modulation \$m = S_0/A\$.",
+              1,
+              _sol([
+                _step(
+                  "\$m = 2/5 = 0{,}4 = 40\\%\$.",
+                ),
+              ], finalAnswerFr: r"$m = 0{,}4$"),
+            ),
+            _q(
+              3,
+              "Condition de bonne modulation et conséquence si \$m > 1\$.",
+              2,
+              _sol([
+                _step(
+                  "**Condition** : \$m < 1\$ (soit \$S_0 < A\$). L'enveloppe \$A + s(t)\$ reste positive → l'information est récupérable.",
+                ),
+                _step(
+                  "Si \$m > 1\$ : surmodulation. L'enveloppe devient négative par moments → la diode du démodulateur ne suit plus → **distorsion** du signal récupéré.",
+                  tipFr:
+                      "En radio AM commerciale, \$m \\approx 0{,}3-0{,}5\$ typiquement pour garantir une bonne qualité audio.",
+                ),
+              ], finalAnswerFr: r"$m < 1$ requis"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Spectre du signal modulé',
+          5,
+          "Le signal modulé \$u(t) = [A + S_0\\cos(2\\pi f_s t)]\\cos(2\\pi f_p t)\$ peut être développé.",
+          [
+            _q(
+              1,
+              "Développer \$u(t)\$ en somme de cosinus de fréquences pures.",
+              3,
+              _sol([
+                _step(
+                  "\$u(t) = A\\cos(2\\pi f_p t) + S_0\\cos(2\\pi f_s t)\\cos(2\\pi f_p t)\$.",
+                ),
+                _step(
+                  "Identité : \$\\cos a \\cos b = \\frac{1}{2}[\\cos(a - b) + \\cos(a + b)]\$.",
+                ),
+                _step(
+                  "Donc \$u(t) = A\\cos(2\\pi f_p t) + \\dfrac{S_0}{2}\\cos[2\\pi(f_p - f_s) t] + \\dfrac{S_0}{2}\\cos[2\\pi(f_p + f_s) t]\$.",
+                ),
+              ], finalAnswerFr: r"3 raies : $f_p$, $f_p \pm f_s$"),
+            ),
+            _q(
+              2,
+              "Identifier les fréquences présentes pour \$f_p = 100\\,\\text{kHz}\$, \$f_s = 1\\,\\text{kHz}\$.",
+              1,
+              _sol([
+                _step(
+                  "Trois raies spectrales : **99 kHz**, **100 kHz**, **101 kHz**.",
+                ),
+                _step(
+                  "**Largeur de bande** : 2 kHz (de 99 à 101). Le signal AM occupe 2 fois la bande passante de \$s(t)\$.",
+                ),
+              ], finalAnswerFr: r"99, 100, 101 kHz"),
+            ),
+            _q(
+              3,
+              "Pourquoi cette propriété est-elle importante pour la radio ?",
+              1,
+              _sol([
+                _step(
+                  "Les stations radio occupent chacune une bande étroite (~10 kHz pour la voix). On peut les **espacer** sur le spectre sans qu'elles se chevauchent : France Info à 105,5 MHz, Europe 1 à 106,2 MHz, etc.",
+                ),
+                _step(
+                  "Un récepteur sélectionne **une seule** station par un filtre accordé à sa fréquence \$f_p\$, puis démodule.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Démodulation par détection d\'enveloppe',
+          5,
+          "Le démodulateur AM le plus simple : une **diode** (redresse) + un **filtre RC passe-bas** (lisse).",
+          [
+            _q(
+              1,
+              "Rôle de chaque composant.",
+              3,
+              _sol([
+                _step(
+                  "**Diode** : passante uniquement aux alternances positives → ne laisse passer que les pics positifs du signal modulé. Élimine les oscillations négatives.",
+                ),
+                _step(
+                  "**Condensateur C** : se charge sur chaque pic positif (à travers la diode passante) et se décharge lentement pendant l'alternance négative (diode bloquée, décharge via R).",
+                ),
+                _step(
+                  "**Résistance R** : règle la constante de temps de décharge \$\\tau = RC\$.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Condition sur \$\\tau = RC\$.",
+              2,
+              _sol([
+                _step(
+                  "On veut suivre l'enveloppe (qui oscille à \$f_s\$) mais filtrer les oscillations rapides (à \$f_p\$).",
+                ),
+                _step(
+                  "**Critère** : \$T_p \\ll \\tau \\ll T_s\$, soit \$\\dfrac{1}{f_p} \\ll RC \\ll \\dfrac{1}{f_s}\$.",
+                ),
+                _step(
+                  "Avec \$f_p = 100\\,\\text{kHz}\$ (\$T_p = 10\\,\\mu\\text{s}\$) et \$f_s = 1\\,\\text{kHz}\$ (\$T_s = 1\\,\\text{ms}\$) : \$10\\,\\mu\\text{s} \\ll RC \\ll 1\\,\\text{ms}\$. Par exemple \$RC = 100\\,\\mu\\text{s}\$ convient.",
+                  tipFr:
+                      "Si \$\\tau\$ trop petit : ondulation HF résiduelle. Si \$\\tau\$ trop grand : l'enveloppe BF est lissée et perdue.",
+                ),
+              ], finalAnswerFr: r"$T_p \ll RC \ll T_s$"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Choix des composants',
+          5,
+          "On dispose de \$f_p = 540\\,\\text{kHz}\$ (porteuse GO de Radio Bleue), signal vocal jusqu'à \$f_s^\\text{max} = 5\\,\\text{kHz}\$. Choisir \$C\$ si \$R = 10\\,\\text{k}\\Omega\$.",
+          [
+            _q(
+              1,
+              "Calculer les périodes \$T_p\$ et \$T_s^\\text{min}\$.",
+              1,
+              _sol([
+                _step(
+                  "\$T_p = 1/540\\,000 \\approx 1{,}85\\,\\mu\\text{s}\$. \$T_s^\\text{min} = 1/5000 = 200\\,\\mu\\text{s}\$.",
+                ),
+              ], finalAnswerFr: r"$T_p \approx 1{,}85$ μs, $T_s \approx 200$ μs"),
+            ),
+            _q(
+              2,
+              "Choisir \$\\tau = RC\$ dans la fenêtre admissible et en déduire \$C\$.",
+              3,
+              _sol([
+                _step(
+                  "Fenêtre : \$1{,}85\\,\\mu\\text{s} \\ll \\tau \\ll 200\\,\\mu\\text{s}\$. Choix raisonnable : \$\\tau \\approx 20\\,\\mu\\text{s}\$ (un ordre de grandeur de chaque limite).",
+                ),
+                _step(
+                  "\$C = \\tau/R = 20 \\times 10^{-6} / 10^4 = 2\\,\\text{nF}\$.",
+                ),
+                _step(
+                  "Vérifications : \$1{,}85\\,\\mu\\text{s} \\ll 20\\,\\mu\\text{s}\$ (rapport ~10) ✓ ; \$20\\,\\mu\\text{s} \\ll 200\\,\\mu\\text{s}\$ (rapport 10) ✓. La voix sera bien démodulée sans résidu HF ni perte de fréquence audio.",
+                ),
+              ], finalAnswerFr: r"$C = 2$ nF"),
+            ),
+            _q(
+              3,
+              "Conséquence d'un \$C\$ 100 fois trop grand (\$C = 200\\,\\text{nF}\$).",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = 2\\,\\text{ms} = 10 \\times T_s^\\text{min}\$ — bien trop grand. Le condensateur ne se décharge plus assez vite pour suivre l'enveloppe BF.",
+                ),
+                _step(
+                  "**Conséquence** : les variations rapides du signal audio (consonnes, attaque des mots) sont aplaties → son grave et bouché. Distorsion clairement audible.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -4433,6 +5000,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_rc_circuit': _paperRcCircuit(),
   'pc_rl_circuit': _paperRlCircuit(),
   'pc_rlc_oscillations': _paperRlcOscillations(),
+  // Physique-Chimie — Batch 7: waves + AM
+  'pc_mechanical_waves': _paperMechanicalWaves(),
+  'pc_diffraction_interference': _paperDiffractionInterference(),
+  'pc_am_modulation': _paperAmModulation(),
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
