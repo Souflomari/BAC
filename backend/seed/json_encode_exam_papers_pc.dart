@@ -3844,6 +3844,561 @@ Map<String, dynamic> _paperPendulum() => _paper(
       ],
     );
 
+Map<String, dynamic> _paperRcCircuit() => _paper(
+      titleFr: 'Épreuve type — Dipôle RC',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Charge \$u_C(t) = E(1 - e^{-t/\\tau})\$ et décharge \$u_C(t) = U_0 e^{-t/\\tau}\$ avec \$\\tau = RC\$. Énergie stockée \$\\frac{1}{2} C u_C^2\$.",
+      exercices: [
+        _ex(
+          1,
+          'Charge d\'un condensateur',
+          5,
+          "Circuit série : générateur idéal \$E = 12\\,\\text{V}\$, \$R = 1\\,\\text{k}\\Omega\$, \$C = 470\\,\\mu\\text{F}\$. À \$t = 0\$ on ferme l'interrupteur, condensateur initialement déchargé.",
+          [
+            _q(
+              1,
+              "Établir l'équation différentielle vérifiée par \$u_C(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Loi des mailles : \$E = u_R + u_C = R i + u_C\$. Avec \$i = C\\,du_C/dt\$ : \$E = RC \\dfrac{du_C}{dt} + u_C\$.",
+                ),
+                _step(
+                  "Forme canonique : \$\\dfrac{du_C}{dt} + \\dfrac{1}{RC} u_C = \\dfrac{E}{RC}\$, ou \$\\tau \\dfrac{du_C}{dt} + u_C = E\$ avec \$\\tau = RC\$.",
+                ),
+              ], finalAnswerFr: r"$\tau \dfrac{du_C}{dt} + u_C = E$"),
+            ),
+            _q(
+              2,
+              "Calculer la constante de temps \$\\tau\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = RC = 10^3 \\times 470 \\times 10^{-6} = 0{,}47\\,\\text{s} = 470\\,\\text{ms}\$.",
+                  tipFr:
+                      "Vérification dimensionnelle : \$[\\tau] = \\Omega \\cdot \\text{F} = \\text{V/A} \\cdot \\text{C/V} = \\text{C/A} = \\text{s}\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$\tau = 470$ ms"),
+            ),
+            _q(
+              3,
+              "Donner \$u_C(t)\$.",
+              1,
+              _sol([
+                _step(
+                  "Solution : \$u_C(t) = E(1 - e^{-t/\\tau}) = 12(1 - e^{-t/0{,}47})\\,\\text{V}\$.",
+                ),
+                _step(
+                  "Limites : \$u_C(0) = 0\$ ✓ ; \$\\lim_{+\\infty} u_C = E = 12\\,\\text{V}\$ (régime permanent).",
+                ),
+              ], finalAnswerFr: r"$u_C(t) = 12(1 - e^{-t/0{,}47})$"),
+            ),
+            _q(
+              4,
+              "Au bout de combien de temps \$u_C\$ atteint-il 95% de \$E\$ ?",
+              1,
+              _sol([
+                _step(
+                  "\$1 - e^{-t/\\tau} = 0{,}95 \\iff t = \\tau \\ln 20 \\approx 3\\tau \\approx 1{,}41\\,\\text{s}\$.",
+                ),
+                _step(
+                  "**Règles pratiques** : \$3\\tau\$ → 95% ; \$5\\tau\$ → 99,3% ; le régime est considéré 'établi' au-delà de \$5\\tau\$.",
+                ),
+              ], finalAnswerFr: r"$t \approx 3\tau \approx 1{,}4$ s"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Décharge',
+          5,
+          "Le condensateur est chargé à \$U_0 = 12\\,\\text{V}\$. On le décharge dans une résistance \$R' = 2\\,\\text{k}\\Omega\$.",
+          [
+            _q(
+              1,
+              "Équation différentielle et solution \$u_C(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "Maille (sans générateur) : \$0 = R' i + u_C\$ avec \$i = C\\,du_C/dt\$. Donc \$R'C \\dfrac{du_C}{dt} + u_C = 0\$.",
+                ),
+                _step(
+                  "Solution : \$u_C(t) = U_0 e^{-t/\\tau'}\$ avec \$\\tau' = R'C\$.",
+                ),
+                _step(
+                  "\$\\tau' = 2000 \\times 470 \\times 10^{-6} = 0{,}94\\,\\text{s}\$. Donc \$u_C(t) = 12 e^{-t/0{,}94}\\,\\text{V}\$.",
+                ),
+              ], finalAnswerFr: r"$u_C(t) = 12 e^{-t/0{,}94}$"),
+            ),
+            _q(
+              2,
+              "Énergie initialement stockée puis dissipée par effet Joule.",
+              2,
+              _sol([
+                _step(
+                  "Énergie initiale : \$E_C^\\text{init} = \\dfrac{1}{2} C U_0^2 = 0{,}5 \\times 470 \\times 10^{-6} \\times 144 \\approx 33{,}8\\,\\text{mJ}\$.",
+                ),
+                _step(
+                  "À long terme, \$u_C \\to 0\$ donc \$E_C \\to 0\$. **Toute** l'énergie initiale est dissipée par effet Joule dans \$R'\$ (conservation).",
+                  tipFr:
+                      "**Décharge** : 100% Joule. **Charge** : 50% Joule + 50% stockée dans \$C\$ — résultat universel, indépendant de \$R\$ et \$C\$.",
+                ),
+              ], finalAnswerFr: r"$E_J \approx 33{,}8$ mJ"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Mesure de C par chronométrage',
+          5,
+          "Un condensateur inconnu est associé à \$R = 10\\,\\text{k}\\Omega\$. On observe que \$u_C\$ passe de 12 V à 6 V en 2 secondes lors d'une décharge.",
+          [
+            _q(
+              1,
+              "Que représente la durée de 2 s ?",
+              2,
+              _sol([
+                _step(
+                  "\$u_C\$ divisé par 2 → \$e^{-t/\\tau} = 1/2 \\iff t = \\tau \\ln 2\$.",
+                ),
+                _step(
+                  "C'est le **temps de demi-décharge** : \$t_{1/2} = \\tau \\ln 2\$. Analogue à la demi-vie radioactive.",
+                ),
+              ], finalAnswerFr: r"$t_{1/2} = \tau \ln 2$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\tau\$ puis \$C\$.",
+              3,
+              _sol([
+                _step(
+                  "\$\\tau = t_{1/2}/\\ln 2 = 2/0{,}693 \\approx 2{,}885\\,\\text{s}\$.",
+                ),
+                _step(
+                  "\$C = \\tau/R = 2{,}885/10\\,000 \\approx 2{,}88 \\times 10^{-4}\\,\\text{F} \\approx 288\\,\\mu\\text{F}\$.",
+                  tipFr:
+                      "Méthode standard de mesure : chronométrer la chute à mi-amplitude donne directement \$\\tau\$ (sans formule complexe).",
+                ),
+              ], finalAnswerFr: r"$C \approx 288$ μF"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — flash photographique',
+          5,
+          "Un flash utilise un condensateur \$C = 1000\\,\\mu\\text{F}\$ chargé à \$U_0 = 300\\,\\text{V}\$ qui se décharge en \$\\Delta t \\approx 1\\,\\text{ms}\$ à travers le tube éclair.",
+          [
+            _q(
+              1,
+              "Énergie disponible pour l'éclair.",
+              2,
+              _sol([
+                _step(
+                  "\$E = \\dfrac{1}{2} C U_0^2 = 0{,}5 \\times 10^{-3} \\times 90\\,000 = 45\\,\\text{J}\$.",
+                ),
+              ], finalAnswerFr: r"$E = 45$ J"),
+            ),
+            _q(
+              2,
+              "Puissance moyenne pendant l'éclair.",
+              2,
+              _sol([
+                _step(
+                  "\$P_\\text{moy} = E/\\Delta t = 45/10^{-3} = 45\\,000\\,\\text{W} = 45\\,\\text{kW}\$.",
+                ),
+                _step(
+                  "**45 kW pendant 1 ms** — puissance crête énorme. C'est ce qui permet l'éclair intense pour figer le mouvement en photographie.",
+                  tipFr:
+                      "Principe identique pour les défibrillateurs cardiaques : on stocke lentement (charges au secteur), on décharge instantanément (kJ en quelques ms).",
+                ),
+              ], finalAnswerFr: r"$P \approx 45$ kW"),
+            ),
+            _q(
+              3,
+              "Résistance équivalente du tube pour avoir \$\\tau = 1\\,\\text{ms}\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = R_\\text{tube} \\cdot C \\iff R_\\text{tube} = \\tau/C = 10^{-3}/10^{-3} = 1\\,\\Omega\$. Très faible — c'est un plasma conducteur.",
+                ),
+              ], finalAnswerFr: r"$R \approx 1$ Ω"),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperRlCircuit() => _paper(
+      titleFr: 'Épreuve type — Dipôle RL',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Établissement \$i(t) = I_\\text{max}(1 - e^{-t/\\tau})\$ et rupture \$i(t) = I_0 e^{-t/\\tau}\$ avec \$\\tau = L/R\$. Énergie magnétique \$\\frac{1}{2} L i^2\$.",
+      exercices: [
+        _ex(
+          1,
+          'Établissement du courant',
+          5,
+          "Circuit série : \$E = 6\\,\\text{V}\$, \$R = 30\\,\\Omega\$, bobine \$L = 0{,}1\\,\\text{H}\$ (résistance interne négligeable). À \$t = 0\$ on ferme.",
+          [
+            _q(
+              1,
+              "Établir l'équation différentielle pour \$i(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Loi des mailles : \$E = u_R + u_L = R i + L \\dfrac{di}{dt}\$.",
+                ),
+                _step(
+                  "Forme : \$L \\dfrac{di}{dt} + R i = E\$, ou \$\\dfrac{di}{dt} + \\dfrac{R}{L} i = \\dfrac{E}{L}\$. Avec \$\\tau = L/R\$ : \$\\tau \\dfrac{di}{dt} + i = I_\\text{max}\$ avec \$I_\\text{max} = E/R\$.",
+                ),
+              ], finalAnswerFr: r"$\tau di/dt + i = I_\text{max}$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\tau\$ et \$I_\\text{max}\$.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau = L/R = 0{,}1/30 \\approx 3{,}33\\,\\text{ms}\$. \$I_\\text{max} = E/R = 6/30 = 0{,}2\\,\\text{A} = 200\\,\\text{mA}\$.",
+                  tipFr:
+                      "Vérification dimensionnelle : \$[L/R] = \\text{H}/\\Omega = (\\text{V}\\cdot\\text{s/A})/(\\text{V/A}) = \\text{s}\$ ✓.",
+                ),
+              ], finalAnswerFr: r"$\tau \approx 3{,}33$ ms, $I_\text{max} = 200$ mA"),
+            ),
+            _q(
+              3,
+              "Donner \$i(t)\$ et \$u_L(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Solution : \$i(t) = I_\\text{max}(1 - e^{-t/\\tau}) = 0{,}2(1 - e^{-t/0{,}00333})\\,\\text{A}\$.",
+                ),
+                _step(
+                  "Tension bobine : \$u_L = L\\,di/dt = L \\cdot I_\\text{max}/\\tau \\cdot e^{-t/\\tau} = E e^{-t/\\tau} = 6 e^{-t/0{,}00333}\\,\\text{V}\$.",
+                ),
+                _step(
+                  "À \$t = 0\$ : \$i = 0\$ et \$u_L = E = 6\\,\\text{V}\$ (toute la tension est absorbée par la bobine). À l'infini : \$i = I_\\text{max}\$, \$u_L = 0\$ (la bobine se comporte comme un fil).",
+                  tipFr:
+                      "**Comportements asymptotiques** : à l'instant initial, la bobine s'oppose au courant (\$u_L\$ max) ; en régime permanent, elle est invisible (\$u_L = 0\$).",
+                ),
+              ], finalAnswerFr: r"$i = 0{,}2(1 - e^{-t/\tau})$, $u_L = 6 e^{-t/\tau}$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Rupture du courant',
+          5,
+          "Après le régime établi, on bascule un interrupteur qui isole \$E\$ et ferme le circuit \$(L, R)\$.",
+          [
+            _q(
+              1,
+              "Donner l'équation différentielle et la solution \$i(t)\$.",
+              3,
+              _sol([
+                _step(
+                  "Maille (sans générateur) : \$0 = R i + L\\,di/dt \\iff \\dfrac{di}{dt} + \\dfrac{R}{L} i = 0\$.",
+                ),
+                _step(
+                  "Solution : \$i(t) = I_0 e^{-t/\\tau}\$ avec \$I_0 = I_\\text{max} = 0{,}2\\,\\text{A}\$ (continuité du courant dans la bobine).",
+                ),
+                _step(
+                  "\$i(t) = 0{,}2 e^{-t/0{,}00333}\\,\\text{A}\$.",
+                ),
+              ], finalAnswerFr: r"$i(t) = 0{,}2 e^{-t/\tau}$"),
+            ),
+            _q(
+              2,
+              "Énergie stockée puis dissipée.",
+              2,
+              _sol([
+                _step(
+                  "Énergie stockée à \$t = 0\$ (instant de bascule) : \$E_L = \\dfrac{1}{2} L I_0^2 = 0{,}5 \\times 0{,}1 \\times 0{,}04 = 2 \\times 10^{-3}\\,\\text{J} = 2\\,\\text{mJ}\$.",
+                ),
+                _step(
+                  "À long terme, \$i \\to 0\$, \$E_L \\to 0\$. Conservation : 2 mJ dissipés par effet Joule dans R.",
+                ),
+              ], finalAnswerFr: r"$E_J = 2$ mJ"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'Symétrie RC vs RL',
+          5,
+          "Comparer les comportements transitoires des circuits RC et RL.",
+          [
+            _q(
+              1,
+              "Compléter le tableau d'analogies.",
+              4,
+              _sol([
+                _step(
+                  "| Grandeur | Circuit RC | Circuit RL |",
+                ),
+                _step(
+                  "| Quantité qui ne saute pas | \$u_C\$ (charge) | \$i\$ (flux magnétique) |",
+                ),
+                _step(
+                  "| Constante de temps | \$\\tau = RC\$ | \$\\tau = L/R\$ |",
+                ),
+                _step(
+                  "| Énergie stockée | \$\\frac{1}{2} C u_C^2\$ (électrique) | \$\\frac{1}{2} L i^2\$ (magnétique) |",
+                ),
+                _step(
+                  "| À t=0 en régime initial | \$u_C\$ continu | \$i\$ continu |",
+                ),
+                _step(
+                  "| À l'infini en charge | \$u_C \\to E\$, \$i \\to 0\$ | \$i \\to E/R\$, \$u_L \\to 0\$ |",
+                  tipFr:
+                      "Les deux circuits sont **mathématiquement équivalents** : équations différentielles linéaires du 1er ordre avec même structure. Seules les variables physiques diffèrent.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Application — protection contre les surtensions',
+          5,
+          "À la rupture d'un circuit RL, si on coupe brutalement (ouverture d'interrupteur), \$di/dt\$ devient très grand → \$u_L = L\\,di/dt\$ peut produire une étincelle.",
+          [
+            _q(
+              1,
+              "Pourquoi cette surtension apparaît-elle ?",
+              3,
+              _sol([
+                _step(
+                  "La bobine veut maintenir son courant (\$i\$ ne peut pas sauter). Si on ouvre brutalement le circuit, \$i\$ chute en \$\\Delta t\$ très petit, donc \$di/dt = -i_0/\\Delta t\$ très grand en valeur absolue.",
+                ),
+                _step(
+                  "\$u_L = L\\,di/dt\$ devient énorme — peut atteindre des centaines de volts pour ionisation de l'air → étincelle (arc électrique).",
+                ),
+                _step(
+                  "**Conséquences** : usure des contacts, parasites électromagnétiques, danger pour les semiconducteurs avoisinants.",
+                ),
+              ]),
+            ),
+            _q(
+              2,
+              "Solution pratique : diode de roue libre.",
+              2,
+              _sol([
+                _step(
+                  "On place une **diode** en parallèle avec la bobine, polarisée en inverse (bloquante) en fonctionnement normal.",
+                ),
+                _step(
+                  "À l'ouverture, le courant \$i\$ continue à circuler à travers la diode (qui devient passante grâce à la tension induite). L'énergie est dissipée progressivement, sans pic de tension.",
+                  tipFr:
+                      "Diode de roue libre : présente sur tout relais, moteur DC, alimentation à découpage — composant invisible mais critique.",
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ],
+    );
+
+Map<String, dynamic> _paperRlcOscillations() => _paper(
+      titleFr: 'Épreuve type — Oscillations RLC libres',
+      subtitleFr: '4 exercices · 1h30 · sur 20 points',
+      durationMinutes: 90,
+      totalPoints: 20,
+      introFr:
+          "Régime libre du RLC série : trois régimes selon \$R\$ vs \$R_c = 2\\sqrt{L/C}\$ (pseudo-périodique, critique, apériodique). Pulsation propre \$\\omega_0 = 1/\\sqrt{LC}\$.",
+      exercices: [
+        _ex(
+          1,
+          'Circuit LC idéal',
+          5,
+          "Un circuit LC sans résistance : \$L = 1\\,\\text{H}\$, \$C = 4\\,\\mu\\text{F}\$. Condensateur initialement chargé à \$U_0 = 10\\,\\text{V}\$, \$i(0) = 0\$.",
+          [
+            _q(
+              1,
+              "Établir l'équation différentielle vérifiée par \$u_C(t)\$.",
+              2,
+              _sol([
+                _step(
+                  "Maille : \$u_C + u_L = 0 \\iff u_C + L\\,di/dt = 0\$. Avec \$i = -C\\,du_C/dt\$ (orientation), \$di/dt = -C\\,d^2 u_C/dt^2\$.",
+                ),
+                _step(
+                  "Donc \$u_C - LC\\,\\dfrac{d^2 u_C}{dt^2} = 0 \\iff \\dfrac{d^2 u_C}{dt^2} + \\dfrac{1}{LC} u_C = 0\$.",
+                ),
+                _step(
+                  "Forme canonique de l'oscillateur harmonique : \$u_C'' + \\omega_0^2 u_C = 0\$ avec \$\\omega_0 = 1/\\sqrt{LC}\$.",
+                ),
+              ], finalAnswerFr: r"$u_C'' + \omega_0^2 u_C = 0$"),
+            ),
+            _q(
+              2,
+              "Calculer \$\\omega_0\$, période \$T_0\$ et fréquence \$f_0\$.",
+              2,
+              _sol([
+                _step(
+                  "\$\\omega_0 = 1/\\sqrt{LC} = 1/\\sqrt{4 \\times 10^{-6}} = 1/(2 \\times 10^{-3}) = 500\\,\\text{rad/s}\$.",
+                ),
+                _step(
+                  "\$T_0 = 2\\pi/\\omega_0 \\approx 12{,}57\\,\\text{ms}\$. \$f_0 = 1/T_0 \\approx 79{,}6\\,\\text{Hz}\$.",
+                ),
+              ], finalAnswerFr: r"$\omega_0 = 500$ rad/s, $T_0 \approx 12{,}6$ ms"),
+            ),
+            _q(
+              3,
+              "Solution \$u_C(t)\$ et courant \$i(t)\$.",
+              1,
+              _sol([
+                _step(
+                  "Solution générale : \$u_C(t) = A\\cos(\\omega_0 t) + B\\sin(\\omega_0 t)\$. CI : \$u_C(0) = U_0 = A\$ ; \$i(0) = -C\\,u_C'(0) = -C B\\omega_0 = 0 \\Rightarrow B = 0\$.",
+                ),
+                _step(
+                  "Donc \$u_C(t) = U_0\\cos(\\omega_0 t) = 10\\cos(500\\,t)\\,\\text{V}\$. Courant : \$i(t) = -C u_C' = C U_0 \\omega_0 \\sin(\\omega_0 t) = 0{,}02\\sin(500 t)\\,\\text{A}\$.",
+                ),
+              ], finalAnswerFr: r"$u_C = 10\cos(500t)$, $i = 0{,}02\sin(500t)$"),
+            ),
+          ],
+        ),
+        _ex(
+          2,
+          'Conservation de l\'énergie',
+          5,
+          "On reprend le circuit LC précédent.",
+          [
+            _q(
+              1,
+              "Énergie totale stockée.",
+              2,
+              _sol([
+                _step(
+                  "À \$t = 0\$ : \$i = 0\$ donc \$E_L = 0\$ ; tout est dans le condensateur : \$E_C = \\dfrac{1}{2} C U_0^2 = 0{,}5 \\times 4 \\times 10^{-6} \\times 100 = 2 \\times 10^{-4}\\,\\text{J} = 0{,}2\\,\\text{mJ}\$.",
+                ),
+                _step(
+                  "Par conservation (pas de R) : \$E_\\text{tot} = E_C + E_L = 0{,}2\\,\\text{mJ}\$ à tout instant.",
+                ),
+              ], finalAnswerFr: r"$E_\text{tot} = 0{,}2$ mJ"),
+            ),
+            _q(
+              2,
+              "Quand \$u_C = 0\$, quel est le courant ? Vérifier la conservation.",
+              3,
+              _sol([
+                _step(
+                  "À cet instant : \$E_C = 0\$, donc \$E_L = E_\\text{tot} = 0{,}2\\,\\text{mJ}\$.",
+                ),
+                _step(
+                  "\$\\dfrac{1}{2} L i^2 = 2 \\times 10^{-4} \\iff |i| = \\sqrt{4 \\times 10^{-4}/1} = 0{,}02\\,\\text{A} = 20\\,\\text{mA}\$.",
+                ),
+                _step(
+                  "Cohérent avec l'amplitude \$I_\\text{max} = 0{,}02\\,\\text{A}\$ trouvée précédemment. **L'énergie oscille entre \$C\$ (électrique) et \$L\$ (magnétique)** sans perte.",
+                  tipFr:
+                      "Analogue mécanique : oscillateur ressort-masse — l'énergie oscille entre cinétique et potentielle élastique, sans amortissement.",
+                ),
+              ], finalAnswerFr: r"$|i| = I_\text{max} = 20$ mA"),
+            ),
+          ],
+        ),
+        _ex(
+          3,
+          'RLC réel — trois régimes',
+          5,
+          "On ajoute une résistance \$R\$ en série dans le circuit.",
+          [
+            _q(
+              1,
+              "Donner le critère de régime selon \$R\$.",
+              3,
+              _sol([
+                _step(
+                  "Équation : \$L\\,d^2 q/dt^2 + R\\,dq/dt + q/C = 0\$. Équation caractéristique : \$L r^2 + R r + 1/C = 0\$.",
+                ),
+                _step(
+                  "Discriminant : \$\\Delta = R^2 - 4L/C\$. **Trois cas** :",
+                ),
+                _step(
+                  "**\$\\Delta < 0\$** (\$R < R_c = 2\\sqrt{L/C}\$) : régime **pseudo-périodique** (oscillations amorties exponentiellement).",
+                ),
+                _step(
+                  "**\$\\Delta = 0\$** (\$R = R_c\$) : régime **critique** (retour le plus rapide sans oscillation).",
+                ),
+                _step(
+                  "**\$\\Delta > 0\$** (\$R > R_c\$) : régime **apériodique** (retour lent sans oscillation, somme de deux exponentielles).",
+                ),
+              ], finalAnswerFr: r"Critère: $R$ vs $R_c = 2\sqrt{L/C}$"),
+            ),
+            _q(
+              2,
+              "Calculer \$R_c\$ pour \$L = 1\\,\\text{H}\$, \$C = 4\\,\\mu\\text{F}\$.",
+              2,
+              _sol([
+                _step(
+                  "\$R_c = 2\\sqrt{L/C} = 2\\sqrt{1/(4 \\times 10^{-6})} = 2 \\times 500 = 1000\\,\\Omega = 1\\,\\text{k}\\Omega\$.",
+                ),
+                _step(
+                  "Pour \$R < 1\\,\\text{k}\\Omega\$ : oscillations amorties. Pour \$R > 1\\,\\text{k}\\Omega\$ : retour exponentiel sans oscillation.",
+                  tipFr:
+                      "\$R_c\$ est la résistance critique. **Au seuil**, le système revient à l'équilibre le plus rapidement possible — utilisé en suspension automobile (amortisseurs réglés au critique).",
+                ),
+              ], finalAnswerFr: r"$R_c = 1$ kΩ"),
+            ),
+          ],
+        ),
+        _ex(
+          4,
+          'Décrément logarithmique',
+          5,
+          "En régime pseudo-périodique faiblement amorti, l'amplitude décroît selon \$A(t) = A_0 e^{-t/\\tau_a}\$ avec \$\\tau_a = 2L/R\$.",
+          [
+            _q(
+              1,
+              "Si l'amplitude passe de 5 V à 1 V en 4 pseudo-périodes, calculer \$\\tau_a\$ (avec \$T \\approx T_0 \\approx 12{,}57\\,\\text{ms}\$).",
+              3,
+              _sol([
+                _step(
+                  "Durée totale : \$\\Delta t = 4 T \\approx 4 \\times 12{,}57 = 50{,}28\\,\\text{ms}\$.",
+                ),
+                _step(
+                  "Rapport : \$A_1/A_0 = e^{-\\Delta t/\\tau_a} = 1/5 \\iff \\tau_a = \\Delta t / \\ln 5 = 0{,}05028/1{,}609 \\approx 31{,}2\\,\\text{ms}\$.",
+                ),
+              ], finalAnswerFr: r"$\tau_a \approx 31{,}2$ ms"),
+            ),
+            _q(
+              2,
+              "En déduire la résistance \$R\$ correspondante.",
+              1,
+              _sol([
+                _step(
+                  "\$\\tau_a = 2L/R \\iff R = 2L/\\tau_a = 2/0{,}0312 \\approx 64\\,\\Omega\$.",
+                ),
+                _step(
+                  "\$R \\ll R_c = 1\\,\\text{k}\\Omega\$, cohérent avec un amortissement faible (oscillations bien visibles avant disparition).",
+                ),
+              ], finalAnswerFr: r"$R \approx 64$ Ω"),
+            ),
+            _q(
+              3,
+              "Décrément logarithmique \$\\delta = T/\\tau_a\$ et nombre d'oscillations significatives.",
+              1,
+              _sol([
+                _step(
+                  "\$\\delta = T/\\tau_a \\approx 12{,}57/31{,}2 \\approx 0{,}403\$. Quantifie la dissipation par cycle.",
+                ),
+                _step(
+                  "Nombre d'oscillations 'visibles' (\$A > A_0/e^3 \\approx 5\\%\$ initial) : \$3\\tau_a/T \\approx 3 \\times 31{,}2/12{,}57 \\approx 7\\,\\text{oscillations}\$ avant amortissement complet.",
+                  tipFr:
+                      "Décrément logarithmique : utilisé en mesure de viscosité (oscillation amortie d'un pendule torsionel), caractérisation de matériaux.",
+                ),
+              ], finalAnswerFr: r"$\delta \approx 0{,}40$, ~7 oscillations"),
+            ),
+          ],
+        ),
+      ],
+    );
+
 // ============================================================================
 // Registry & main
 // ============================================================================
@@ -3874,6 +4429,10 @@ final Map<String, Map<String, dynamic>> _papers = {
   'pc_projectile': _paperProjectile(),
   'pc_energy_mechanical': _paperEnergyMechanical(),
   'pc_pendulum': _paperPendulum(),
+  // Physique-Chimie — Batch 6: electricity
+  'pc_rc_circuit': _paperRcCircuit(),
+  'pc_rl_circuit': _paperRlCircuit(),
+  'pc_rlc_oscillations': _paperRlcOscillations(),
 };
 
 String _sqlEscape(String s) => s.replaceAll("'", "''");
