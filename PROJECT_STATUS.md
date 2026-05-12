@@ -904,7 +904,10 @@ Verified in live DB (64 rows non-null).
   shipped. PC users on onboarding → "Sciences Physiques" now see a
   full subject tree. Topics + skills + 21 prerequisite edges +
   31 minimal LessonV2 stub placeholders.
-- **3.3 — Full PC lessons** (migration 033): NOT STARTED.
+- **3.3 — Full PC lessons** ([Migration 033](backend/supabase/migrations/033_long_lessons_pc.sql)):
+  **✅ COMPLETE**. All 31 PC stub lessons upgraded to full LessonV2 content
+  (concept + example_walkthrough sections, paragraphs, formulas, examples,
+  checkpoints with 3 mcq each). Encoder: [json_encode_long_lessons_pc.dart](backend/seed/json_encode_long_lessons_pc.dart).
 - **3.4 — PC exam papers** ([Migration 034](backend/supabase/migrations/034_exam_papers_pc.sql)):
   **✅ COMPLETE**. All 31 PC chapters now have full Bac-style exam
   papers in `skills.exam_paper` (15 math + 16 physique-chimie),
@@ -915,9 +918,13 @@ Verified in live DB (64 rows non-null).
   cell) authored from scratch using domain references. DB verified:
   95 total exam papers across all streams (32 SMA + 32 SMB + 31 PC).
 - **3.5 — PC items** (migration 035): NOT STARTED.
-- **Phase 4**: SVT stream — same shape. Migrations 036–039. ~25 chapters
-  including 12 novel bio/geo (génétique, évolution, immunité,
-  tectonique, etc.) — requires SME review more than other chapters.
+- **Phase 4 — SVT stream**: **✅ SHIPPED in full** (migrations 036–039).
+  - 4.1 [shared/skill_map_svt.json](shared/skill_map_svt.json): 25 skills, 12 topics, 9 prereqs across math/PC/SVT.
+  - 4.2 [Migration 036](backend/supabase/migrations/036_seed_svt_skills.sql): seed skills + topics + prereqs + stub lessons.
+  - 4.3 [Migration 037](backend/supabase/migrations/037_long_lessons_svt.sql): full v2 lessons for all 25 SVT chapters. 12 bio/geo novel.
+  - 4.4 [Migration 038](backend/supabase/migrations/038_exam_papers_svt.sql): 25 SVT exam papers in `skills.exam_paper`.
+  - 4.5 [Migration 039](backend/supabase/migrations/039_items_svt.sql): 200 quiz items (mcq + numeric).
+  - **CRITICAL: bio/geo content (12 chapters across 4 sub-phases) authored from first principles** — REQUIRES SME PASS before declaring SVT ship-quality.
 - **Phase 5**: Annales v2 (proper multi-exercice structure). Migrations
   040 (SMB) + 041 (SMA) + 042 (PC) + 043 (SVT). Each Bac paper becomes
   one exam_question row carrying the full multi-exercice JSONB.

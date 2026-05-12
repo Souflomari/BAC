@@ -11,7 +11,7 @@ This document is a single, self-contained handoff: read it top-to-bottom and you
 
 - **BacPrep** = Moroccan Baccalauréat exam prep app, Flutter web (Vercel) + Supabase. Live for SMA + SMB streams.
 - **Current multi-session run**: restructure all course content as full Bac-style exam papers (4–5 multi-part exercices each), build PC + SVT streams from scratch, restructure annales. Roughly 150 papers total target.
-- **Where we are**: schema + frontend done; 95/95 papers shipped across SMA/SMB/PC (32 + 32 + 31); PC content (papers) now full; PC lessons still stubs; ~25 SVT chapters + 32 annales to author.
+- **Where we are**: schema + frontend done; 120/120 papers shipped across SMA/SMB/PC/SVT (32 + 32 + 31 + 25); PC + SVT lessons full; SVT items shipped; ~32 annales restructures remain. SVT bio/geo content requires SME review.
 - **Resume by**: jumping to §10 (continuation playbook). Critical files are listed there.
 
 ---
@@ -249,14 +249,14 @@ Approved plan: `C:\Users\soufiane.lomari\.claude\plans\ok-for-now-we-mutable-qui
 | 2 | ✅ SHIPPED | 031 | All 32 SMB exam papers |
 | 3.1 | ✅ SHIPPED | — | PC skill map JSON validated |
 | 3.2 | ✅ SHIPPED | 032 | PC skill seed (15 topics, 31 skills, 21 prereqs, 31 stub lessons) |
-| 3.3 | ⏳ NOT STARTED | 033 (planned) | Full PC LessonV2 lessons |
+| 3.3 | ✅ SHIPPED | 033 | Full PC LessonV2 lessons (31 chapters) |
 | 3.4 | ✅ SHIPPED | 034 | PC exam papers (31 chapters — 15 math + 16 PC) |
 | 3.5 | ⏳ NOT STARTED | 035 (planned) | PC quiz items (~300 items) |
-| 4.1 | ⏳ NOT STARTED | — | SVT skill map JSON |
-| 4.2 | ⏳ NOT STARTED | 036 (planned) | SVT skill seed |
-| 4.3 | ⏳ NOT STARTED | 037 (planned) | SVT lessons (incl. 12 novel bio/geo) |
-| 4.4 | ⏳ NOT STARTED | 038 (planned) | SVT exam papers (~25 chapters) |
-| 4.5 | ⏳ NOT STARTED | 039 (planned) | SVT items |
+| 4.1 | ✅ SHIPPED | — | SVT skill map JSON (25 skills, 12 topics) |
+| 4.2 | ✅ SHIPPED | 036 | SVT skill seed |
+| 4.3 | ✅ SHIPPED | 037 | SVT full lessons (25 chapters, incl. 12 novel bio/geo) |
+| 4.4 | ✅ SHIPPED | 038 | SVT exam papers (25 chapters) |
+| 4.5 | ✅ SHIPPED | 039 | SVT items (200 items) |
 | 5.1 | ⏳ NOT STARTED | 040 (planned) | SMB annales v2 (multi-exercice restructure) |
 | 5.2 | ⏳ NOT STARTED | 041 (planned) | SMA annales v2 |
 | 5.3 | ⏳ NOT STARTED | 042 (planned) | PC annales (new) |
@@ -265,9 +265,11 @@ Approved plan: `C:\Users\soufiane.lomari\.claude\plans\ok-for-now-we-mutable-qui
 
 ### What's live in production right now
 
-- **95 full Bac papers** in `skills.exam_paper` (32 SMA + 32 SMB + 31 PC)
-- **PC skill tree** browseable with full exam papers attached (lessons still stubs)
+- **120 full Bac papers** in `skills.exam_paper` (32 SMA + 32 SMB + 31 PC + 25 SVT)
+- **All four streams browseable** with full v2 lessons and exam papers attached
+- **200 SVT quiz items** in `items` table (mcq + numeric, tagged `bac_style`)
 - **`ExamPaperView` widget** renders below `LessonV2` content on `/lessons/:skillId` for any skill that has both `lesson` AND `exam_paper`
+- **SVT bio/geo content** authored from first principles — requires SME pass before declaring ship-quality (see §12 known issues)
 
 ### Critical files in this run
 
