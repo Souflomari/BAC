@@ -581,6 +581,10 @@ INSERT INTO skills (id, topic_id, code, name_fr, name_ar, difficulty_level, exam
 -- ============================================================
 
 -- SKILL PREREQUISITES
+-- NOTE: The 73 edges in the three INSERT blocks that follow (lines 584-710)
+-- are also versioned in supabase/migrations/041_recover_smb_humanities_prereqs.sql.
+-- Going forward, prereq edges belong in numbered migrations, not in this file.
+-- Any drift between these blocks and migration 041 is a bug — keep them in sync.
 INSERT INTO skill_prerequisites (skill_id, prerequisite_skill_id) VALUES
   -- Geometric requires arithmetic
   ('33333333-0000-0000-0000-000000000002', '33333333-0000-0000-0000-000000000001'),
