@@ -1,0 +1,72 @@
+flowchart TD
+    REPO[/"Existing MVP repo"/]
+    SRC[/"Cadres de reference +<br/>official MEN exam PDFs"/]
+    HUMAN(["Soufiane: reviews batched digest,<br/>sets the good-enough bar"])
+    ADR[["Decisions log (ADR)"]]
+
+    subgraph SETUP["SETUP - done once"]
+        AUDIT["Codebase audit + schema reconciliation:<br/>can the live data model adopt the DAG?"]
+        DOCS[["Grounding docs:<br/>architecture, conventions,<br/>known issues, migration verdict"]]
+        AUDIT --> DOCS
+    end
+
+    subgraph BUILD["BUILD AGENTS - one pass per vertical slice (one notion, end-to-end)"]
+        CURR["bac-curriculum<br/>domain authority"]
+        EXAM["exam-ingestion<br/>PDF to structured data"]
+        PED["pedagogy-auditor<br/>well-taught? maths / PC / SVT"]
+        SUPA["supabase-architect<br/>schema, RLS, migrations"]
+        LM["learner-model<br/>designs diagnosis + scheduler logic"]
+        FRONT["nextjs-frontend<br/>analyze then improve"]
+    end
+
+    DAG[["Curriculum DAG:<br/>notions, prerequisite edges = hypotheses,<br/>misconceptions, objective types"]]
+    EXAMDB[["Tagged exam corpus"]]
+    SCHEMA[["DB schema + migrations,<br/>mastery overlay, SR state"]]
+    BACKLOG[["Scored backlog: severity x reach x effort"]]
+
+    subgraph RUNTIME["RUNTIME - runs in production"]
+        APP(["Student using the app"])
+        PLM[["Per-student learner model:<br/>weakness map over the DAG"]]
+        SCHED["Adaptive scheduler:<br/>retrievability + prerequisites + exam weight"]
+        TELEM[["Telemetry: readiness pass rates,<br/>stalls, notion-to-exam-success"]]
+    end
+
+    REPO --> AUDIT
+    DOCS -.->|context| BUILD
+    BUILD -.->|append| ADR
+    ADR -.->|read| BUILD
+
+    SRC --> CURR
+    SRC --> EXAM
+    EXAM -->|"questions to tag"| CURR
+    EXAM --> EXAMDB
+    CURR -->|"notion tags"| EXAMDB
+    CURR --> DAG
+    EXAMDB -.->|"exam frequency"| DAG
+
+    DAG -->|"taxonomy schema"| SUPA
+    DAG -.->|"notion identity"| PED
+    DAG -->|"DAG + prerequisites"| LM
+    EXAMDB -.->|"data shape"| SUPA
+    SUPA --> SCHEMA
+    PED --> BACKLOG
+    PED -.->|"schema field requests"| CURR
+
+    SCHEMA -->|"schema to read"| FRONT
+    BACKLOG -->|"fix and build"| FRONT
+    LM -->|"diagnosis + scheduler logic"| FRONT
+
+    CURR -.->|"proposes notions"| HUMAN
+    HUMAN -.->|"confirms, batched"| CURR
+
+    FRONT ==> APP
+    LM ==>|builds| PLM
+    LM ==>|builds| SCHED
+    APP ==> TELEM
+    TELEM ==> PLM
+    PLM ==> SCHED
+    SCHED ==>|"what to study today"| APP
+
+    TELEM ==>|"aggregate signal"| LM
+    LM ==>|"unsupported edges"| CURR
+    LM ==>|"weak explanations"| PED
