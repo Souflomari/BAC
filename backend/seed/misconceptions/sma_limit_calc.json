@@ -1,17 +1,18 @@
 {
-  "_doc": "Per-skill misconception authoring template. Per ADR 0008: one JSON file per skill, named <skills.code>.json, lives under backend/seed/misconceptions/. The encoder projects the canonical four fields {id, label, description, contradicts_principle} into skills.common_misconceptions JSONB and emits a versioned UPDATE migration. The encoder also injects an explicit label_ar: null per bac-curriculum rule 5 in ADR 0008. The seed file itself omits label_ar — the FR-only authoring path stays clean.",
+  "_doc": "Per-skill misconception authoring template. Per ADR 0008: one JSON file per skill, named <skills.code>.json, lives under backend/seed/misconceptions/. The encoder projects the canonical five fields {id, label, description, contradicts_principle, distinguishing_mcq_stem} into skills.common_misconceptions JSONB and emits a versioned UPDATE migration. The encoder also injects an explicit label_ar: null per bac-curriculum rule 5 in ADR 0008. The seed file itself omits label_ar — the FR-only authoring path stays clean. schema_version 2 (per ADR 0009): distinguishing_mcq_stem is a structured object, not a free-text string — step 3 (distractor tagging) reads distractor_choice_label programmatically.",
 
   "skill_code": "sma_limit_calc",
   "skill_name_fr": "Calcul de limites",
   "subject_code": "math",
   "stream": "sciences_maths_a",
-  "schema_version": 1,
+  "schema_version": 2,
 
   "authored": {
     "lead": "pedagogy-auditor",
     "validated_by": "bac-curriculum",
     "date": "2026-05-16",
-    "adr_refs": ["0007", "0008"]
+    "schema_v2_date": "2026-05-16",
+    "adr_refs": ["0007", "0008", "0009"]
   },
 
   "misconceptions": [
@@ -25,7 +26,13 @@
         "Cornu (1991) — Limits, in Advanced Mathematical Thinking, Tall ed., pp.153–166",
         "Bac SMA session normale 2023, exercice 2 (forme canonique de cet obstacle : lim(x→1) (x²−1)/(x−1))"
       ],
-      "distinguishing_mcq_stem": "lim(x→2) (x²−4)/(x−2) = ?  Choix : A) 4 ; B) 0 ; C) la limite n'existe pas ; D) 1.  L'élève portant ce modèle choisit B (0/0 traité comme 0) ou C (0/0 traité comme indéfini). La réponse correcte est A par factorisation."
+      "distinguishing_mcq_stem": {
+        "stem_text": "lim(x→2) (x²−4)/(x−2) = ?  Choix : A) 4 ; B) 0 ; C) la limite n'existe pas ; D) 1.",
+        "distractor_choice_label": "B",
+        "distractor_rationale": "L'élève portant ce modèle substitue x=2, obtient 0/0, et traite 0/0 comme la valeur 0 (par analogie avec 0×k=0). Le choix C est une variante secondaire du même modèle (0/0 traité comme indéfini) — diagnostiquement, B est le déclencheur primaire.",
+        "correct_choice_label": "A",
+        "correct_rationale": "Factorisation : (x²−4)/(x−2) = (x+2)(x−2)/(x−2) = x+2 pour x≠2, donc la limite est 4."
+      }
     },
 
     {
@@ -38,7 +45,13 @@
         "Williams (1991) — Models of limit held by college calculus students, Journal for Research in Mathematics Education 22(3):219–236 ; modèle persiste après enseignement",
         "Cadre de référence SM-A 2006 — l'unité « Limites et continuité » distingue explicitement limite et valeur en un point dans ses objectifs"
       ],
-      "distinguishing_mcq_stem": "Soit f définie par f(x) = x+3 pour x ≠ 1 et f(1) = 7. Que vaut lim(x→1) f(x) ?  Choix : A) 4 ; B) 7 ; C) 1 ; D) la limite n'existe pas.  L'élève portant ce modèle choisit B (la valeur de f au point). La confusion 0/0 ne se déclenche pas ici car il n'y a pas de forme indéterminée — le stem est diagnostiquement distinct du précédent."
+      "distinguishing_mcq_stem": {
+        "stem_text": "Soit f définie par f(x) = x+3 pour x ≠ 1 et f(1) = 7. Que vaut lim(x→1) f(x) ?  Choix : A) 4 ; B) 7 ; C) 1 ; D) la limite n'existe pas.",
+        "distractor_choice_label": "B",
+        "distractor_rationale": "L'élève portant ce modèle renvoie f(1)=7 directement, confondant la limite avec la valeur de la fonction au point. La confusion 0/0 ne se déclenche pas ici car il n'y a pas de forme indéterminée — le stem est diagnostiquement distinct de M1.",
+        "correct_choice_label": "A",
+        "correct_rationale": "Pour x≠1 la fonction vaut x+3 ; la limite en 1 est donc 1+3=4, indépendamment de la valeur f(1)=7."
+      }
     },
 
     {
@@ -51,7 +64,13 @@
         "Monaghan (1991) — Problems with the language of limits, For the Learning of Mathematics 11(3):20–24 ; ∞ − ∞ identifié comme la forme induisant le plus fréquemment la réponse « zéro » chez les lycéens",
         "Bac SMA session normale 2022, exercice sur les branches infinies — forme √(x²+1) − x"
       ],
-      "distinguishing_mcq_stem": "lim(x→+∞) (x² − x) = ?  Choix : A) +∞ ; B) 0 ; C) −∞ ; D) 1.  L'élève portant ce modèle choisit B (∞−∞ = 0). La réponse correcte est A : factoriser x → x(x−1), terme dominant x², la limite est +∞. Ne déclenche aucun des deux modèles précédents : pas de quotient, pas de valeur en un point."
+      "distinguishing_mcq_stem": {
+        "stem_text": "lim(x→+∞) (x² − x) = ?  Choix : A) +∞ ; B) 0 ; C) −∞ ; D) 1.",
+        "distractor_choice_label": "B",
+        "distractor_rationale": "L'élève portant ce modèle voit « ∞ − ∞ » et conclut 0 par analogie avec l'arithmétique. Ne déclenche aucun des deux modèles précédents : pas de quotient (M1 ne s'applique pas), pas de valeur en un point fini (M2 ne s'applique pas).",
+        "correct_choice_label": "A",
+        "correct_rationale": "Factorisation par le terme dominant : x²−x = x(x−1) ; pour x→+∞ le facteur x→+∞ et (x−1)→+∞, donc le produit tend vers +∞."
+      }
     },
 
     {
@@ -63,7 +82,13 @@
         "Artigue (1991) — Analysis, in Advanced Mathematical Thinking, Tall ed., pp.167–198 ; mémorisation des limites fondamentales sans la structure sous-jacente documentée comme obstacle de procédurisation",
         "Bac SMA sessions 2021 et 2023 — fautes de ce type observables sur sin(x²)/x et sin(√x)/√x dans les exercices de calcul de limites"
       ],
-      "distinguishing_mcq_stem": "lim(x→0) sin(x²)/x = ?  Choix : A) 0 ; B) 1 ; C) 2 ; D) la limite n'existe pas.  L'élève portant ce modèle répond C (« le 2 passe devant ») ou B (« sin sur x = 1 toujours »). La réponse correcte est A : sin(x²)/x = x · sin(x²)/x², et sin(x²)/x² → 1, donc la limite vaut 0 · 1 = 0."
+      "distinguishing_mcq_stem": {
+        "stem_text": "lim(x→0) sin(x²)/x = ?  Choix : A) 0 ; B) 1 ; C) 2 ; D) la limite n'existe pas.",
+        "distractor_choice_label": "C",
+        "distractor_rationale": "L'élève portant le modèle de linéarité confond sin(x²) avec sin(2x) — il traite l'exposant 2 dans x² comme un coefficient qui « passe devant », par analogie incorrecte avec la règle sin(ax)/x → a. Le choix B (=1) est une variante (« sin sur x = 1 toujours »), mais C est le déclencheur primaire et distingue ce modèle des autres dans le set : aucun des trois modèles précédents ne produit C sur ce stem. (Per ADR 0009 : revision de la rationale après pushback de bac-curriculum sur l'ambiguïté du label « le 2 passe devant ».)",
+        "correct_choice_label": "A",
+        "correct_rationale": "Réécriture par substitution u = x² : sin(x²)/x = x · sin(x²)/x² ; quand x → 0, x² → 0 et sin(x²)/x² → 1 (limite fondamentale appliquée correctement), donc le produit tend vers 0 · 1 = 0."
+      }
     }
   ],
 
@@ -71,12 +96,26 @@
     "filter_criteria": "Per ADR 0008 §'4-criteria filter'. Each misconception must be (a) a named misunderstanding (wrong model), not a procedural error; (b) contradicted by a named principle in contradicts_principle; (c) distinguishable from every other misconception in this set via at least one MCQ stem only it would lead to; (d) supported by named math-education literature, the Moroccan SM-A cadre de référence, or a Bac-paper year/session citation. 'Common student error' alone fails (d).",
 
     "candidates_cut": [
-      "« La limite d'une somme est la somme des limites, même quand les limites individuelles n'existent pas » — belongs on sma_limit_ops (Opérations sur les limites), not sma_limit_calc. Moving it here would dilute the diagnosis target.",
-      "« Une limite infinie signifie que la fonction n'a aucune propriété utile » — belongs on sma_asymptotes / sma_continuity, where the distinction between 'limite infinie' and 'pas de limite' is the central object."
+      {
+        "summary": "« La limite d'une somme est la somme des limites, même quand les limites individuelles n'existent pas »",
+        "proposed_id_elsewhere": "mc.math.sma_limit_ops.somme-limites-inexistantes",
+        "belongs_on": "sma_limit_ops",
+        "cut_reason": "skill-attribution",
+        "filter_result": "passes all four — wrong model not procedural, contradicted by 'théorèmes opératoires ont conditions d'existence', distinguishable on sin(x)-style stems, supported by Cornu 1991 + cadre SM-A 2006 + Bac SMA 2019/2021",
+        "borderline": false
+      },
+      {
+        "summary": "« Une limite infinie signifie que la fonction n'a aucune propriété utile (pas d'asymptote, pas de comportement régulier) »",
+        "proposed_id_elsewhere": "mc.math.sma_asymptotes.limite-infinie-sans-asymptote",
+        "belongs_on": "sma_asymptotes",
+        "cut_reason": "skill-attribution",
+        "filter_result": "passes all four — wrong model, contradicted by 'limite infinie compatible avec asymptote oblique / branche parabolique', distinguishable on branches-infinies stems, supported by Sierpinska 1987 + cadre + Bac SMA 2022",
+        "borderline": false
+      }
     ],
 
     "authoring_order_for_teaching": "M2 (limite = valeur en a) fires earliest in a student's encounter with limits and is the most-cited obstacle. M1 (0/0) is the first computational obstacle. M3 (∞−∞) arrives when limits at infinity are worked. M4 (sin(ax)/x linearity) presupposes the fundamental trig limit has been taught.",
 
-    "close_to_the_line": "M4 (linéarité des limites fondamentales) is the most fragile on criterion (c): in the simple case sin(3x)/x it returns the correct answer 3 — only non-linear stems like sin(x²)/x expose the misconception. Distractor tagging on existing items (next step in this vertical slice) MUST include at least one non-linear stem for M4 to be diagnostically visible."
+    "close_to_the_line": "M4 (linéarité des limites fondamentales) is the most fragile on criterion (c): in the simple case sin(3x)/x it returns the correct answer 3 — only non-linear stems like sin(x²)/x expose the misconception. Distractor tagging on existing items (step 3) MUST include at least one non-linear stem for M4 to be diagnostically visible. The distinguishing_mcq_stem for M4 is exactly such a stem."
   }
 }
