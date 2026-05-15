@@ -356,13 +356,31 @@ below.
       step 3 ever needs to tag row 1, the script's check needs to
       switch to a "default on any untagged row" assertion).
 
-- [ ] **PowerShell double-application investigation.** The
+- [x] **PowerShell double-application investigation.** ~~The
       `'Y' | & supabase db push` construction applies the migration
-      twice. Idempotent migrations make this cosmetic, but the
-      script's contract is "apply pending migrations to staging" not
-      "apply each pending migration twice". Investigate
-      `--include-all`, redirection, or a single-shot mode for the CLI.
-      Script v3 candidate.
+      twice.~~ **Resolved 2026-05-16, script v2.1.** Root cause was
+      not double-application — it was double-LOGGING.
+      `Invoke-Native` wrote each output line to `$logFile` via its
+      own foreach, *then* returned `$output` to the caller scriptblock.
+      `Invoke-Step` received that returned array and logged each line
+      AGAIN via its own foreach. Two log writes per line, read as
+      "applied twice."
+      Confirmed by `supabase migration list --linked` showing migration
+      044 as exactly one row, not two. Confirmed again post-fix by a
+      fresh branch-test no-op run: log contains one
+      `Initialising login role` line vs. two before, and `migration
+      list` still shows 044 once.
+      Fix: success-path logging removed from `Invoke-Native`;
+      Invoke-Step remains the single source of truth for command
+      output in the log. Failure-path logging stays in `Invoke-Native`
+      (because the throw skips the return and Invoke-Step's catch
+      never iterates `$output` — without this branch, command error
+      context would never reach the log on failure).
+      Script header bumped to v2.1; the contract is documented above
+      the `Invoke-Native` body so the next maintainer doesn't undo it.
+      Other PS scripts in the repo (`backend/setup-database.ps1`,
+      `mobile/bac_app/deploy.ps1`) audited — neither uses the wrapper
+      pattern, so no further fix scope.
 
 - [ ] **bac-curriculum + pedagogy-auditor handoff protocol.** This
       stage surfaced a substantive disagreement (string vs structured

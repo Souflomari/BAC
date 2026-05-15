@@ -109,6 +109,16 @@ populates it) and `status` (`proposed` | `validated`).
 - IDs are immutable once `status: validated`. Renaming = new ID + deprecation,
   never an in-place edit — downstream DB rows and spaced-repetition state key
   off these IDs.
+- For multi-agent schema decisions where content-shape and machine-read-shape
+  diverge, defer to the agent that reads the field downstream — typically
+  `pedagogy-auditor` for content-tagging fields, `learner-model` for state
+  fields. Your authority is content correctness, cadre fit, and ID
+  immutability. A field can be content-valid in your sense and still be
+  machine-insufficient for the consumer who parses it; trust the consumer to
+  catch that. Derived from ADR 0009 — `distinguishing_mcq_stem` was approved
+  here as a prose string but had to be restructured into a typed object once
+  step 3's encoder needs were surfaced. Route shape questions to the
+  consumer before locking in.
 
 # Do NOT
 

@@ -4,9 +4,14 @@
   Supabase CLI link to prod. Mandatory pre-flight before any `supabase db push`
   against production, per ADR 0005.
 
-  Script version: 2 — adds four misconception-schema sanity checks
-  (added 2026-05-16, ADR 0007 Stage 1 vertical-slice follow-up). See
-  ADR 0005 §"Operational rules" for the rule changes that landed with v2.
+  Script version: 2.1 (2026-05-16). v2 added four misconception-schema
+  sanity checks (ADR 0007 Stage 1 vertical-slice follow-up). v2.1 fixes
+  the double-logging bug in Invoke-Native that read as "double migration
+  application" in ADR 0009 §B's branch-test log; root cause: Invoke-Native
+  logged the output AND returned it to Invoke-Step which logged it again.
+  Fix: success-path logging stays in Invoke-Step only; failure path still
+  logs in Invoke-Native so error context survives. See ADR 0009 §Pending
+  → resolved.
 
 .DESCRIPTION
   Path-A branch-test workflow (Free tier; the project does not support managed
@@ -109,6 +114,20 @@ function Invoke-Step {
 # temporarily setting $ErrorActionPreference = 'Continue' and rely solely on
 # the exit code. Pass args as an array to avoid PowerShell's parameter binder
 # consuming `--flag-name` tokens.
+#
+# Logging contract (fixed in v2.1, per ADR 0009 §Pending → resolved):
+#   - On SUCCESS, Invoke-Native does NOT write to $logFile. The returned
+#     $output array is logged once by the caller (Invoke-Step's
+#     `foreach ($line in $result)` block). Earlier versions logged here
+#     AND in Invoke-Step, producing two copies of every supabase output
+#     line — which read as "migration applied twice" but was actually
+#     "applied once, logged twice" (confirmed against `supabase migration
+#     list --linked`: migration 044 shows one row, not two).
+#   - On FAILURE, Invoke-Native logs $output itself before throwing, so the
+#     command's error message survives. Without this branch, Invoke-Step's
+#     `catch` block would see the throw but never iterate $output (the
+#     throw skips the `return $output`), and the actual error context
+#     would never reach $logFile.
 function Invoke-Native {
   param(
     [Parameter(Mandatory)][string]$Exe,
@@ -124,8 +143,14 @@ function Invoke-Native {
       $output = & $Exe @ExeArgs 2>&1
     }
     $exit = $LASTEXITCODE
-    foreach ($line in $output) { Add-Content -Path $logFile -Value "          $line" -Encoding utf8 }
-    if ($exit -ne 0) { throw "$Exe exited with code $exit. See log." }
+    if ($exit -ne 0) {
+      # Failure path: log here because Invoke-Step's catch won't iterate
+      # the returned output (we throw instead of returning).
+      foreach ($line in $output) { Add-Content -Path $logFile -Value "          $line" -Encoding utf8 }
+      throw "$Exe exited with code $exit. See log."
+    }
+    # Success path: Invoke-Step logs $output via its own foreach. Do not
+    # duplicate here.
     return $output
   } finally {
     $ErrorActionPreference = $oldEAP

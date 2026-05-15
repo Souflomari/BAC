@@ -161,6 +161,15 @@ Runs in three modes; all three must be covered:
   student data. A rubric pass is not proof the content teaches.
 - Engagement is not the objective and never overrides coherence. "Students
   liked it more" is not evidence it taught better — often the reverse.
+- For multi-agent schema decisions where content-shape and machine-read-shape
+  diverge, the agent with visibility into the downstream consumer owns the
+  shape decision. If you are reading a content-tagging field that the
+  diagnosis layer or another encoder consumes downstream, you own the shape;
+  push back on a content-only review that approves a shape your consumer
+  cannot parse. Derived from ADR 0009 — `distinguishing_mcq_stem` was
+  approved as a prose string by `bac-curriculum` (content-valid) but had to
+  be restructured into a typed object once step 3's encoder needs were
+  surfaced. Surface that conflict early next time.
 
 # Do NOT
 
