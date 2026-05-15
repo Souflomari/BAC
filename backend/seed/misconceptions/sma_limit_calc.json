@@ -1,0 +1,82 @@
+{
+  "_doc": "Per-skill misconception authoring template. Per ADR 0008: one JSON file per skill, named <skills.code>.json, lives under backend/seed/misconceptions/. The encoder projects the canonical four fields {id, label, description, contradicts_principle} into skills.common_misconceptions JSONB and emits a versioned UPDATE migration. The encoder also injects an explicit label_ar: null per bac-curriculum rule 5 in ADR 0008. The seed file itself omits label_ar — the FR-only authoring path stays clean.",
+
+  "skill_code": "sma_limit_calc",
+  "skill_name_fr": "Calcul de limites",
+  "subject_code": "math",
+  "stream": "sciences_maths_a",
+  "schema_version": 1,
+
+  "authored": {
+    "lead": "pedagogy-auditor",
+    "validated_by": "bac-curriculum",
+    "date": "2026-05-16",
+    "adr_refs": ["0007", "0008"]
+  },
+
+  "misconceptions": [
+    {
+      "id": "mc.math.sma_limit_calc.forme-indeterminee-valeur-nulle",
+      "label": "« 0/0 = 0 (ou 1, ou n'existe pas) »",
+      "description": "L'élève croit qu'une expression de la forme 0/0 a une valeur fixe et déterminée — généralement 0, ou 1, ou « n'existe pas » — plutôt qu'une forme dont la valeur dépend de la façon dont le numérateur et le dénominateur tendent vers zéro. Face à lim(x→2) (x²−4)/(x−2), l'élève substitue x=2, obtient 0/0, et conclut soit que la limite vaut 0, soit qu'elle n'existe pas, sans chercher à lever la forme indéterminée. Ce modèle traite 0/0 comme une valeur arithmétique ordinaire et non comme un signal qu'une technique de calcul est requise.",
+      "contradicts_principle": "Toute forme indéterminée doit être levée avant de conclure : la substitution directe ne suffit pas, et la valeur de la limite dépend du comportement comparatif des termes. La forme indéterminée n'est pas une valeur — c'est un signal que factorisation, conjugué ou équivalents sont nécessaires.",
+      "evidence": [
+        "Tall & Vinner (1981) — Concept image and concept definition in mathematics with particular reference to limits and continuity, Educational Studies in Mathematics 12:151–169",
+        "Cornu (1991) — Limits, in Advanced Mathematical Thinking, Tall ed., pp.153–166",
+        "Bac SMA session normale 2023, exercice 2 (forme canonique de cet obstacle : lim(x→1) (x²−1)/(x−1))"
+      ],
+      "distinguishing_mcq_stem": "lim(x→2) (x²−4)/(x−2) = ?  Choix : A) 4 ; B) 0 ; C) la limite n'existe pas ; D) 1.  L'élève portant ce modèle choisit B (0/0 traité comme 0) ou C (0/0 traité comme indéfini). La réponse correcte est A par factorisation."
+    },
+
+    {
+      "id": "mc.math.sma_limit_calc.limite-egale-valeur-point",
+      "label": "« La limite en a est la valeur de la fonction en a »",
+      "description": "L'élève croit que lim(x→a) f(x) s'obtient toujours par substitution f(a), et confond systématiquement la limite avec la valeur de la fonction au point. Conséquence opératoire : pour une fonction définie par morceaux dont la valeur en a diffère de la limite, l'élève renvoie la valeur de la fonction au lieu de la limite. Ce modèle est distinct de la confusion 0/0 — l'élève peut calculer correctement les formes indéterminées tout en tenant ce modèle pour les cas sans indétermination.",
+      "contradicts_principle": "La limite en a décrit le comportement de la fonction au voisinage de a, non sa valeur en a. La substitution directe n'est valide que si f est continue en a — c'est une propriété à vérifier, non un acquis universel. Les deux quantités peuvent différer (fonctions par morceaux, prolongement par continuité), et la limite peut exister même si f n'est pas définie en a.",
+      "evidence": [
+        "Tall & Vinner (1981), ibid. — l'obstacle le plus cité dans la littérature sur les limites, premier dans leur taxinomie",
+        "Williams (1991) — Models of limit held by college calculus students, Journal for Research in Mathematics Education 22(3):219–236 ; modèle persiste après enseignement",
+        "Cadre de référence SM-A 2006 — l'unité « Limites et continuité » distingue explicitement limite et valeur en un point dans ses objectifs"
+      ],
+      "distinguishing_mcq_stem": "Soit f définie par f(x) = x+3 pour x ≠ 1 et f(1) = 7. Que vaut lim(x→1) f(x) ?  Choix : A) 4 ; B) 7 ; C) 1 ; D) la limite n'existe pas.  L'élève portant ce modèle choisit B (la valeur de f au point). La confusion 0/0 ne se déclenche pas ici car il n'y a pas de forme indéterminée — le stem est diagnostiquement distinct du précédent."
+    },
+
+    {
+      "id": "mc.math.sma_limit_calc.infini-moins-infini-nul",
+      "label": "« ∞ − ∞ = 0 (les infinis s'annulent) »",
+      "description": "L'élève traite ∞ comme un nombre ordinaire et conclut que ∞ − ∞ = 0 (ou parfois ∞/∞ = 1) par analogie avec l'arithmétique des réels : « si on soustrait quelque chose à lui-même, on obtient 0 ». Se manifeste sur des limites comme lim(x→+∞) (√(x²+x) − x) ou lim(x→+∞) (x² − x) : l'élève voit « ∞ − ∞ » et conclut 0 sans réécrire l'expression. Distinct du modèle 0/0 — la forme indéterminée est différente, la technique de levée aussi (factorisation du terme dominant, conjugué).",
+      "contradicts_principle": "∞ n'est pas un réel : les formes ∞ − ∞ et ∞ / ∞ sont indéterminées et requièrent une réécriture qui révèle la vitesse relative des deux termes — factorisation du terme dominant pour les polynômes, multiplication par le conjugué pour les radicaux.",
+      "evidence": [
+        "Sierpinska (1987) — Humanities students and epistemological obstacles related to limits, Educational Studies in Mathematics 18:371–397 ; traitement de ∞ comme nombre ordinaire (« actual infinity » vs « potential infinity ») comme obstacle épistémologique distinct",
+        "Monaghan (1991) — Problems with the language of limits, For the Learning of Mathematics 11(3):20–24 ; ∞ − ∞ identifié comme la forme induisant le plus fréquemment la réponse « zéro » chez les lycéens",
+        "Bac SMA session normale 2022, exercice sur les branches infinies — forme √(x²+1) − x"
+      ],
+      "distinguishing_mcq_stem": "lim(x→+∞) (x² − x) = ?  Choix : A) +∞ ; B) 0 ; C) −∞ ; D) 1.  L'élève portant ce modèle choisit B (∞−∞ = 0). La réponse correcte est A : factoriser x → x(x−1), terme dominant x², la limite est +∞. Ne déclenche aucun des deux modèles précédents : pas de quotient, pas de valeur en un point."
+    },
+
+    {
+      "id": "mc.math.sma_limit_calc.limite-fondamentale-linearite",
+      "label": "« sin(ax)/x = a par linéarité de la limite »",
+      "description": "L'élève a mémorisé lim(x→0) sin(x)/x = 1 et applique une règle de linéarité implicite : « puisque sin(x)/x → 1, alors sin(ax)/x → a, et sin(ax)/(bx) → a/b — la limite se distribue sur les constantes ». Le résultat est souvent numériquement correct dans les cas simples (lim sin(3x)/x = 3 est juste), mais le raisonnement est faux. L'élève ne passe pas par la substitution u = ax et ne comprend pas pourquoi la constante apparaît. Devient visible quand la forme s'écarte du linéaire : lim(x→0) sin(x²)/x ou lim(x→0) x/sin(x).",
+      "contradicts_principle": "La limite fondamentale lim sin(u)/u = 1 quand u → 0 requiert que l'argument du sinus et le dénominateur soient le même infiniment petit. La technique correcte consiste à identifier cet infiniment petit (u = ax), à substituer, et à faire apparaître sin(u)/u explicitement. La « linéarité » est une heuristique qui donne la bonne réponse dans les cas simples mais n'est pas un raisonnement valide.",
+      "evidence": [
+        "Artigue (1991) — Analysis, in Advanced Mathematical Thinking, Tall ed., pp.167–198 ; mémorisation des limites fondamentales sans la structure sous-jacente documentée comme obstacle de procédurisation",
+        "Bac SMA sessions 2021 et 2023 — fautes de ce type observables sur sin(x²)/x et sin(√x)/√x dans les exercices de calcul de limites"
+      ],
+      "distinguishing_mcq_stem": "lim(x→0) sin(x²)/x = ?  Choix : A) 0 ; B) 1 ; C) 2 ; D) la limite n'existe pas.  L'élève portant ce modèle répond C (« le 2 passe devant ») ou B (« sin sur x = 1 toujours »). La réponse correcte est A : sin(x²)/x = x · sin(x²)/x², et sin(x²)/x² → 1, donc la limite vaut 0 · 1 = 0."
+    }
+  ],
+
+  "authoring_notes": {
+    "filter_criteria": "Per ADR 0008 §'4-criteria filter'. Each misconception must be (a) a named misunderstanding (wrong model), not a procedural error; (b) contradicted by a named principle in contradicts_principle; (c) distinguishable from every other misconception in this set via at least one MCQ stem only it would lead to; (d) supported by named math-education literature, the Moroccan SM-A cadre de référence, or a Bac-paper year/session citation. 'Common student error' alone fails (d).",
+
+    "candidates_cut": [
+      "« La limite d'une somme est la somme des limites, même quand les limites individuelles n'existent pas » — belongs on sma_limit_ops (Opérations sur les limites), not sma_limit_calc. Moving it here would dilute the diagnosis target.",
+      "« Une limite infinie signifie que la fonction n'a aucune propriété utile » — belongs on sma_asymptotes / sma_continuity, where the distinction between 'limite infinie' and 'pas de limite' is the central object."
+    ],
+
+    "authoring_order_for_teaching": "M2 (limite = valeur en a) fires earliest in a student's encounter with limits and is the most-cited obstacle. M1 (0/0) is the first computational obstacle. M3 (∞−∞) arrives when limits at infinity are worked. M4 (sin(ax)/x linearity) presupposes the fundamental trig limit has been taught.",
+
+    "close_to_the_line": "M4 (linéarité des limites fondamentales) is the most fragile on criterion (c): in the simple case sin(3x)/x it returns the correct answer 3 — only non-linear stems like sin(x²)/x expose the misconception. Distractor tagging on existing items (next step in this vertical slice) MUST include at least one non-linear stem for M4 to be diagnostically visible."
+  }
+}
