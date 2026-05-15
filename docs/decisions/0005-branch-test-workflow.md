@@ -1,12 +1,15 @@
 # ADR 0005 — Branch-test workflow (Path A: second Supabase project)
 
-**Status.** Accepted, 2026-05-15.
+**Status.** Accepted, 2026-05-15. Amended 2026-05-16 (script v2 — see §"Amendments").
 **Owner.** supabase-architect.
 **Related.**
 - [ADR 0003](0003-out-of-band-prerequisites-recovery.md) — established the
   branch-test rule that this ADR makes operational.
 - [ADR 0004](0004-sma-prereq-backfill.md) — documented the second
   consecutive skip and called for K-2 resolution.
+- [ADR 0007](0007-misconception-schema.md) — first real-use firing of
+  the script + the operational rule for `pg_policies.roles` recorded in
+  §"Amendments → 2026-05-16" below.
 - `docs/grounding/known-issues.md` K-2 (no branch-tested deploy workflow,
   sev-1 before the first expand-contract migration).
 
@@ -217,6 +220,19 @@ recording for any future native-exe orchestration in PS:
   on 401 responses** if the script is non-interactive. Use
   `Invoke-RestMethod` everywhere; it doesn't.
 
+And one rule that surfaced on the first real-use firing of the script,
+on the SQL side rather than the PowerShell side (ADR 0007 §"Branch
+test — first real-use firing"):
+
+- **`pg_policies.roles` is `name[]`, not `text[]`.** Any DO `$verify$`
+  block that asserts policy role membership with
+  `roles @> ARRAY['authenticated']` fails on
+  Postgres 17 / Supabase with `operator does not exist: name[] @>
+  text[]`. The cast `roles::text[] @> ARRAY['authenticated']` resolves
+  the operator. Same rule applies for any future verify block that
+  joins or filters on `pg_policies.roles`. ADR 0007 §supabase-architect
+  has the full incident record.
+
 ### Usage
 
 Before any `supabase db push` against prod that touches a curriculum
@@ -271,11 +287,60 @@ someone else pushed to staging):
    live outside the repo, but a hook to enforce this lives in K-2's
    follow-up.
 
+### Amendments — 2026-05-16 (script v2)
+
+After the first real-use firing of the script (ADR 0007's misconception
+migration), the v1 suite proved adequate as a *baseline-drift* gate but
+left the per-migration-artifact validation (was the new column actually
+created with the right default? do the new indexes exist?) to each
+migration's own `DO $verify$` block. ADR 0007 §"Canonical sanity-check
+additions" laid out what the suite should grow to cover. Script v2
+adds those checks for the misconception schema.
+
+**Four checks added** (run after the v1 read-path / RLS / baseline
+checks, so a failure here is the same "do not push" signal):
+
+| # | Check | Means |
+|---|---|---|
+| D | anon write denied on `user_misconception_states` (RLS proof) | Migration 043's RLS + INSERT policy actually fires for anon. |
+| D-bis | anon SELECT on `user_misconception_states` returns `[]` | The SELECT policy's `auth.uid() = user_id` correctly filters anon (where `auth.uid()` is NULL) to zero rows. |
+| E | `skills.common_misconceptions` default round-trips as `[]` | The `[]::jsonb` default in migration 043 survives a write/read cycle. Drift means out-of-band content authoring. |
+| F | `items.distractor_misconceptions` default round-trips as `{}` | Same shape for items.distractor_misconceptions. |
+| G | All four misconception indexes exist in `pg_indexes` | `idx_skills_common_misconceptions_gin`, `idx_items_distractor_misconceptions_gin`, `idx_user_misconception_states_active`, `idx_user_misconception_states_misconception`. |
+
+(D and D-bis are listed as a single "check D" in the user's spec but
+ship as two distinct Invoke-Step blocks in the script because they
+test orthogonal RLS behaviours — write-denied vs read-filtered.)
+
+**New script dependency: `psql`.** Check G needs to read `pg_indexes`,
+which PostgREST doesn't expose. The script now resolves `psql.exe` from:
+
+- `Get-Command psql` (PATH lookup)
+- `~/.cache/pgtools/pgsql/bin/psql.exe` (the portable PG client tools
+  installed for the staging bootstrap; see §Bootstrap above)
+- `C:/Program Files/PostgreSQL/{17,18}/bin/psql.exe` (winget install)
+
+If `psql` is **not** found, the script logs a `WARN` and *skips* check G
+rather than failing — every other misconception check still fires via
+REST, so staging is still substantially validated. Operators who want
+the index check enforced must put `psql` on PATH.
+
+**Refactor: `Assert-AnonDenied` helper.** Both RLS-proof checks share
+the same PS 5.1 / PS 7+ exception-shape variance the original
+`subjects` check discovered. A single helper now wraps the
+`401|403`-or-message pattern; both call sites collapse to one line.
+
+**Script version: 2.** Recorded in the script's `.SYNOPSIS` header
+("Script version: 2") and referenced by the date and ADR link. Any
+future amendment to the suite increments this number and lands a
+matching amendment block here.
+
 ## Consequences
 
 - **K-2 closed for additive curriculum-table migrations.** Future
-  prereq/skill/topic/badge migrations can be branch-tested in ≤ 10
-  seconds via a single script invocation.
+  prereq/skill/topic/badge migrations can be branch-tested in ≤ 11
+  seconds via a single script invocation (v2 timing: ~11s vs v1's
+  ~10s; the index check adds ~1s of psql round-trip).
 - **K-2 not yet closed for expand-contract migrations.** This script
   doesn't validate data-shape changes that drop/rename columns. The
   first expand-contract migration will need an additional
@@ -317,3 +382,11 @@ someone else pushed to staging):
       DB; the K-3 anti-pattern is only half-closed (ADR 0003 captured
       the prereq portion). A follow-up should backfill the rest into
       versioned migrations.
+
+- [ ] **Suite checks for non-misconception schemas.** Script v2 added
+      four checks specific to migration 043's schema. Future migrations
+      that introduce comparable invariants (new RLS-enforced tables,
+      new JSONB columns with defaults, new compound indexes) should
+      grow the suite the same way — at the time the migration ships,
+      not retroactively. Each addition increments the script version
+      and lands an Amendment block here.

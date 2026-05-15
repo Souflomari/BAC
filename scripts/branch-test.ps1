@@ -4,6 +4,10 @@
   Supabase CLI link to prod. Mandatory pre-flight before any `supabase db push`
   against production, per ADR 0005.
 
+  Script version: 2 — adds four misconception-schema sanity checks
+  (added 2026-05-16, ADR 0007 Stage 1 vertical-slice follow-up). See
+  ADR 0005 §"Operational rules" for the rule changes that landed with v2.
+
 .DESCRIPTION
   Path-A branch-test workflow (Free tier; the project does not support managed
   branching). Staging is a second Supabase project (bac-app-staging,
@@ -16,12 +20,21 @@
        password (or reading $env:SUPABASE_STAGING_DB_PASSWORD).
     3. Runs `supabase db push` against staging — applies any local migrations
        not yet recorded in staging's schema_migrations.
-    4. Runs the canonical sanity-check suite against the staging REST API:
-        - per-stream prereq attribution (must match the ADR 0004 baseline:
-          SMA=98, SMB=31, PC=21, SVT=9, humanities=42, total=201, cross=0;
-          a NEW expected baseline can be supplied via -ExpectedBaselineJson).
-        - RLS-enabled check on the 7 curriculum tables.
-        - DAG acyclicity (recursive CTE — fails the run if any cycle exists).
+    4. Runs the canonical sanity-check suite against staging:
+        REST-based (anon key):
+          - per-stream prereq attribution (must match the ADR 0004 baseline:
+            SMA=98, SMB=31, PC=21, SVT=9, humanities=42, total=201, cross=0;
+            a NEW expected baseline can be supplied via -ExpectedBaselineJson).
+          - RLS proof on `subjects` (curriculum table — anon INSERT denied).
+          - RLS proof on `user_misconception_states` (anon INSERT denied,
+            anon SELECT returns empty under auth.uid() = NULL).
+          - Read-path intact (anon SELECT on `skills` returns ≥ 1 row).
+          - skills.common_misconceptions default round-trip ([]).
+          - items.distractor_misconceptions default round-trip ({}).
+        Catalog-based (psql; optional but recommended):
+          - All four misconception indexes exist (two GIN op-class on the
+            JSONB columns + partial-active + reverse-aggregate on
+            user_misconception_states).
     5. Captures every step to .audit-logs/branch-test-<timestamp>.log.
     6. UNCONDITIONALLY re-links to prod in a `finally` block, even on failure.
 
@@ -150,6 +163,87 @@ if (-not $supabase) {
 }
 $env:PATH = (Split-Path $supabase) + ';' + $env:PATH
 Write-Log "supabase: $supabase"
+
+# Locate psql.exe for catalog queries (pg_indexes etc.). REST does not expose
+# pg_catalog; psql is required for the index-existence check below. psql is
+# part of the portable PG client tools installed for the staging bootstrap
+# (ADR 0005 §Bootstrap). The check degrades to a logged warning if psql is
+# absent rather than failing the run — every other check still validates the
+# misconception schema via REST.
+$psql = (Get-Command psql -ErrorAction SilentlyContinue).Source
+if (-not $psql) {
+  $candidates = @(
+    (Join-Path $env:USERPROFILE '.cache/pgtools/pgsql/bin/psql.exe'),
+    'C:/Program Files/PostgreSQL/17/bin/psql.exe',
+    'C:/Program Files/PostgreSQL/18/bin/psql.exe'
+  )
+  foreach ($p in $candidates) {
+    if (Test-Path $p) { $psql = $p; break }
+  }
+}
+if ($psql) {
+  Write-Log "psql:     $psql"
+} else {
+  Write-Log 'WARN: psql.exe not found — index-existence check will be skipped.' 'WARN'
+}
+
+# Run a psql query against staging. Suppresses PS 5.1 NativeCommandError
+# wrapping the same way Invoke-Native does, and clears PGPASSWORD on exit.
+function Invoke-Psql {
+  param([Parameter(Mandatory)][string]$Sql)
+  if (-not $psql) { throw 'psql not available' }
+  $oldEAP = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  $env:PGPASSWORD = $stagingPw
+  try {
+    $output = & $psql `
+      -h 'aws-1-eu-central-1.pooler.supabase.com' `
+      -p '5432' `
+      -U "postgres.$STAGING_REF" `
+      -d 'postgres' `
+      -t -A -v 'ON_ERROR_STOP=1' `
+      -c $Sql 2>&1
+    $exit = $LASTEXITCODE
+    foreach ($line in $output) { Add-Content -Path $logFile -Value "          $line" -Encoding utf8 }
+    if ($exit -ne 0) { throw "psql exited $exit. See log." }
+    return $output
+  } finally {
+    Remove-Item env:PGPASSWORD -ErrorAction SilentlyContinue
+    $ErrorActionPreference = $oldEAP
+  }
+}
+
+# Assert an anon-keyed HTTP request is denied with 401 or 403. Wraps the
+# PS 5.1 / PS 7+ exception-shape variance the existing RLS proof step
+# discovered. Used by every "anon write denied" check.
+function Assert-AnonDenied {
+  param(
+    [Parameter(Mandatory)][string]$Method,
+    [Parameter(Mandatory)][string]$Uri,
+    [Parameter(Mandatory)][hashtable]$Headers,
+    [string]$Body
+  )
+  $h = $Headers.Clone()
+  $h['Content-Type'] = 'application/json'
+  $h['Prefer']       = 'return=minimal'
+  try {
+    if ($Body) {
+      Invoke-RestMethod -Method $Method -Uri $Uri -Headers $h -Body $Body | Out-Null
+    } else {
+      Invoke-RestMethod -Method $Method -Uri $Uri -Headers $h | Out-Null
+    }
+    throw "anon $Method on $Uri unexpectedly succeeded — RLS not enforcing."
+  } catch [System.Net.WebException] {
+    $code = $_.Exception.Response.StatusCode.value__
+    if ($code -in 401, 403) { return "anon $Method denied with HTTP $code  (RLS OK)" }
+    throw "anon $Method failed with unexpected HTTP $code"
+  } catch {
+    $code = if ($_.Exception.Response) { $_.Exception.Response.StatusCode.value__ } else { 0 }
+    if ($code -in 401, 403) { return "anon $Method denied with HTTP $code  (RLS OK)" }
+    if ($_ -match '40[13]|row-level security') { return "anon $Method denied  (RLS OK; message: $_)" }
+    throw
+  }
+}
 
 # ---------------------------------------------------------------------------
 # Resolve staging DB password — env var, or prompt once.
@@ -284,6 +378,97 @@ try {
     if (-not $rows -or $rows.Count -lt 1) { throw 'anon SELECT on skills returned 0 rows.' }
     "anon SELECT on skills returned $($rows.Count) row(s)"
   } | Out-Null
+
+  # ---------------------------------------------------------------------------
+  # Misconception-schema checks (added with script v2 — ADR 0007).
+  # These ride alongside the curriculum-schema checks above; failing any
+  # one of them is the same "do not push to prod" signal.
+  # ---------------------------------------------------------------------------
+
+  $anonHeaders = @{ apikey = $anonKey; Authorization = "Bearer $anonKey" }
+
+  # 8. Sanity check D — RLS proof on user_misconception_states.
+  #    (a) anon INSERT must be denied; (b) anon SELECT must return empty
+  #    (auth.uid() is NULL for an anon-key request → 0 rows match the
+  #    "WHERE user_id = auth.uid()" SELECT policy).
+  Invoke-Step 'anon write denied on user_misconception_states (RLS proof)' {
+    $body = '{"user_id":"00000000-0000-0000-0000-000000000000","skill_id":"00000000-0000-0000-0000-000000000000","misconception_id":"branch_test_should_fail"}'
+    Assert-AnonDenied -Method 'Post' `
+                      -Uri "$STAGING_URL/rest/v1/user_misconception_states" `
+                      -Headers $anonHeaders `
+                      -Body $body
+  } | Out-Null
+
+  Invoke-Step 'anon SELECT on user_misconception_states returns []' {
+    $rows = Invoke-RestMethod -Uri "$STAGING_URL/rest/v1/user_misconception_states?select=*&limit=1" -Headers $anonHeaders
+    # Invoke-RestMethod returns $null for an empty JSON array; coerce both to
+    # an array and require zero elements. Any positive count means RLS is
+    # leaking — service_role has BYPASSRLS so it would return rows; anon
+    # without a JWT must see nothing.
+    $count = @($rows).Count
+    if ($count -ne 0) { throw "anon SELECT on user_misconception_states returned $count row(s); expected 0 (RLS should filter to auth.uid() = NULL)." }
+    "anon SELECT returned 0 rows  (RLS OK)"
+  } | Out-Null
+
+  # 9. Sanity check E — skills.common_misconceptions default round-trip.
+  #    A fresh skill row has `[]` for the new JSONB column; any drift here
+  #    means the migration's default literal didn't take, or someone wrote
+  #    a non-default value into prod that should be in a versioned source.
+  Invoke-Step 'skills.common_misconceptions default round-trips as []' {
+    # Pick the first row by deterministic ordering so the assertion is stable.
+    $rows = Invoke-RestMethod -Uri "$STAGING_URL/rest/v1/skills?select=id,common_misconceptions&order=id.asc&limit=1" -Headers $anonHeaders
+    if (-not $rows -or @($rows).Count -lt 1) { throw 'no rows returned from skills.' }
+    $val = $rows[0].common_misconceptions
+    # PostgREST returns a JSONB empty array as an actual empty array.
+    $count = @($val).Count
+    if ($count -ne 0) {
+      throw "skills.common_misconceptions on the first row has $count element(s); expected []. Likely a content-author wrote without a migration."
+    }
+    "skills.common_misconceptions on first row = []  (default round-trip OK)"
+  } | Out-Null
+
+  # 10. Sanity check F — items.distractor_misconceptions default round-trip.
+  Invoke-Step 'items.distractor_misconceptions default round-trips as {}' {
+    $rows = Invoke-RestMethod -Uri "$STAGING_URL/rest/v1/items?select=id,distractor_misconceptions&order=id.asc&limit=1" -Headers $anonHeaders
+    if (-not $rows -or @($rows).Count -lt 1) { throw 'no rows returned from items.' }
+    $val = $rows[0].distractor_misconceptions
+    # PostgREST returns a JSONB empty object as a PSCustomObject with no
+    # properties. Count its NoteProperties; expect zero.
+    $keyCount = ($val.PSObject.Properties | Measure-Object).Count
+    if ($keyCount -ne 0) {
+      throw "items.distractor_misconceptions on the first row has $keyCount key(s); expected {}. Likely a content-author wrote without a migration."
+    }
+    "items.distractor_misconceptions on first row = {}  (default round-trip OK)"
+  } | Out-Null
+
+  # 11. Sanity check G — the four misconception indexes exist in pg_indexes.
+  #     Requires psql (catalog isn't reachable via REST). If psql is absent,
+  #     log a WARN and skip rather than failing the run — every other check
+  #     above has already proven the misconception schema is structurally
+  #     correct at runtime.
+  if ($psql) {
+    Invoke-Step 'misconception indexes exist (pg_indexes via psql)' {
+      $expectedIndexes = @(
+        'idx_skills_common_misconceptions_gin',
+        'idx_items_distractor_misconceptions_gin',
+        'idx_user_misconception_states_active',
+        'idx_user_misconception_states_misconception'
+      )
+      $expectedJoined = ($expectedIndexes | ForEach-Object { "'$_'" }) -join ','
+      $sql = "SELECT indexname FROM pg_indexes WHERE schemaname='public' AND indexname IN ($expectedJoined) ORDER BY indexname;"
+      $output = Invoke-Psql -Sql $sql
+      # Strip any blank lines / trailing newline; psql with -t -A returns one
+      # row per line.
+      $found = @($output | Where-Object { $_ -and "$_".Trim() -ne '' } | ForEach-Object { "$_".Trim() })
+      $missing = $expectedIndexes | Where-Object { $_ -notin $found }
+      if ($missing) {
+        throw "Missing indexes on user_misconception_states / new JSONB columns: $($missing -join ', ')"
+      }
+      "all 4 misconception indexes present: $($found -join ', ')"
+    } | Out-Null
+  } else {
+    Write-Log 'SKIP: misconception indexes check (psql not available)' 'WARN'
+  }
 
   $exitCode = 0
   Write-Log 'ALL CHECKS PASSED — staging matches expected baseline; safe to push to prod.'
