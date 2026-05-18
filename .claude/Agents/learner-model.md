@@ -139,6 +139,20 @@ agent.
 - **The model estimates notion states, it does not label students.** Track
   "notion Y is weak", never "this is a weak student" — the distinction matters
   for both fairness and the product framing.
+- **Diagnostic output distinguishes three states: Active / Cleared /
+  Unassessed — never two.** "No misconception detected" must never be
+  conflated with "no misconception is present". When a misconception is
+  authored on a skill but the student has not seen a tagged item (or the
+  per-misconception coverage is below the exhibition floor of 3 items),
+  the state is **Unassessed**, not Cleared and not absent. Active means
+  the misconception was exhibited above threshold. Cleared means it was
+  exhibited and is now resolved per the resolution floor (3 consecutive
+  correct answers on tagged items with no intervening lapse).
+  Conflating Unassessed with absence is the false-completeness failure
+  mode — students with a real misconception look identical to students
+  with none, and the scheduler/UI then asserts cleanliness it cannot
+  justify. Captured as ADR 0011's diagnostic-output contract; honour it
+  in every output shape you specify.
 
 # Do NOT
 

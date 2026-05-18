@@ -441,6 +441,87 @@ exam-ingestion agent's pipeline output lands in `bac_exams +
 exam_questions`; the synthetic papers were authored to give every skill
 a practice surface without waiting for real-PDF ingestion.
 
+### 5.5 Bank topology — two parallel item banks per scientific subject
+
+**The structural fact that hid for five ADRs:** items and misconceptions
+for the same conceptual skill live on **two different `skills.id` rows**,
+keyed by stream.
+
+For every scientific-subject skill (math, physics, svt), the seed flow
+produced two skill rows:
+
+- The **unprefixed row** (e.g. `skills.code = 'limit_calc'`,
+  `id = 33333333-0000-0000-0000-000000000007`). Created by
+  `seed_data.sql` early in the project's life, predates the `sma_`
+  prefix convention. Serves **SM-B students** (whose unit "Calcul de
+  limites" is the same content as SM-A's). All ~916 items shipped via
+  migrations 009 / 010 / 018 / 039 attach to **these unprefixed UUIDs**
+  (see migration 009 line 1+: `SELECT '44444444-…','33333333-0000-…'`).
+
+- The **SMA-prefixed row** (e.g. `skills.code = 'sma_limit_calc'`,
+  `id = 33333333-aaaa-0000-0000-000000000002`). Created by `json_encode_sma.dart`
+  (mig 012) when the SMA-prefix convention landed. Serves **SM-A students**.
+  Carries no items — the bank under it is empty. ADR-tracked
+  artifacts under SMA (`common_misconceptions` from migration 045,
+  authored misconceptions from `backend/seed/misconceptions/*.json`)
+  attach here.
+
+Same dual-row structure for `pc_*` (mig 032) and `svt_*` (mig 036),
+though the misconception layer has only been authored on SMA so far.
+
+**Why this matters at the data-model level.** A naïve query
+"give me the misconceptions on the limits skill, joined with the items
+that diagnose them" hits NULL on every join — the misconceptions are on
+row A, the items are on row B, the FK is satisfied by either but the
+two never meet. The skill-attribution mismatch is invisible to
+RLS, to migration safety, and to ordinary SELECT queries that hit one
+side only. It became visible only when ADR 0011's coverage audit asked
+"what items diagnose these misconceptions?" and the answer was zero.
+
+**Why this is the right model (per ADR 0011 §"Skill attribution
+decision: option (a)").** SM-A and SM-B carry separate cadres de
+référence; the same mathematical content is examined under different
+rules, with different difficulty bands, in different exam formats.
+Treating them as one skill would couple two distinct examined surfaces
+through shared diagnostic state — contaminating per-user state across
+filières that should be tracked independently. Treating them as two
+parallel banks is the correct attribution; the data model already
+reflects it, the audit just hadn't surfaced it.
+
+**Operational rules.** When authoring content for a scientific-subject
+skill, the agent must explicitly choose which row it attaches to:
+
+1. **Misconceptions, distractor-tagged items, and any
+   misconception-driven authoring** attach to the **SMA-prefixed row**
+   (`code` starts with `sma_`, `id` in the `33333333-aaaa-…` range).
+   This is where the diagnostic surface for SM-A students lives.
+2. **The legacy item bank** on the unprefixed row continues to serve
+   SM-B students. Don't migrate, don't duplicate, don't merge. SMB
+   misconception authoring is its own future workstream (post-MVP)
+   that lands its own per-skill JSON files on the unprefixed `code`.
+3. **PC and SVT** mirror the SMA pattern — items on the `pc_` / `svt_`
+   prefixed rows, paired with the unprefixed rows that the legacy
+   bank attaches to.
+
+**How to tell which row you're on:**
+
+```sql
+SELECT id, code FROM public.skills
+WHERE code IN ('limit_calc', 'sma_limit_calc');
+-- limit_calc      33333333-0000-0000-0000-000000000007  ← legacy / SM-B items
+-- sma_limit_calc  33333333-aaaa-0000-0000-000000000002  ← SMA misconceptions
+```
+
+The `sma_` / `pc_` / `svt_` prefix in `code` is the canonical signal of
+intent. UUID family (`33333333-0000-…` vs `33333333-aaaa-…` /
+`-cccc-…` / `-dddd-…`) is the canonical signal of which stream the row
+serves.
+
+ADR 0008's misconception ID format (`mc.<subjects.code>.<skills.code>.<short-label>`)
+is keyed off the SMA-prefixed `code`, which is what makes the
+diagnostic surface SMA-specific by construction. Any future SMB
+misconception authoring will use the unprefixed `code` in its IDs.
+
 ---
 
 ## 6. Authoring pipeline
