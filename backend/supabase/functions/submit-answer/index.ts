@@ -13,6 +13,9 @@ import {
   computeXp,
   applyHintPenalty,
 } from '../_shared/srs.ts';
+import {
+  classifyMisconceptionEvent,
+} from '../_shared/misconception_event.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -94,10 +97,12 @@ serve(async (req: Request) => {
       .eq('skill_id', skill_id)
       .single();
 
-    // Fetch item for difficulty
+    // Fetch item — SRS needs difficulty + explanation; the misconception
+    // path needs item_type, skill_id (re-derived for the FK round-trip
+    // per ADR 0011), and distractor_misconceptions.
     const { data: item } = await supabase
       .from('items')
-      .select('difficulty_level, explanation')
+      .select('id, item_type, skill_id, difficulty_level, explanation, distractor_misconceptions')
       .eq('id', item_id)
       .single();
 
@@ -188,6 +193,93 @@ serve(async (req: Request) => {
 
     // Update user total XP (atomic increment)
     await supabase.rpc('increment_xp', { p_user_id: user.id, p_xp: xpEarned });
+
+    // ---- Misconception write path (ADR 0013) ----
+    //
+    // Dual-client pattern: userClient (above) carries the JWT and gates
+    // reads/writes via RLS. For misconceptions, we use a separate
+    // adminClient (service_role) because:
+    //   - the write target is record_misconception_exhibited (RPC,
+    //     migration 047), which is granted ONLY to service_role to
+    //     prevent authenticated users from inflating exhibited_count
+    //     by calling the RPC directly.
+    //   - RLS on user_misconception_states is the read-side guard;
+    //     this function is the write-side guard. ADR 0007 §learner-model.
+    //
+    // user.id is the JWT-verified subject from userClient.auth.getUser().
+    // It is NOT taken from the request body — that would let a caller
+    // write state for another user.
+    if (item) {
+      // Re-fetch the parent skill's common_misconceptions for the
+      // existence-validation read (ADR 0013 §bac-curriculum). Using the
+      // userClient is fine — skills has a public-read RLS policy (mig 040)
+      // so RLS doesn't block; the data is non-PII.
+      const { data: skillRow } = await supabase
+        .from('skills')
+        .select('id, common_misconceptions')
+        .eq('id', item.skill_id)
+        .single();
+
+      const outcome = classifyMisconceptionEvent({
+        item: {
+          id: item.id,
+          skill_id: item.skill_id,
+          item_type: item.item_type,
+          distractor_misconceptions: item.distractor_misconceptions,
+        },
+        skill: skillRow,
+        user_answer,
+        is_correct,
+      });
+
+      if (outcome.kind === 'event') {
+        // adminClient is scoped narrowly to this call. SUPABASE_SERVICE_ROLE_KEY
+        // is the staging/prod-specific deployed env var; the function does
+        // not inspect it beyond passing it to createClient.
+        const adminClient = createClient(
+          Deno.env.get('SUPABASE_URL') ?? '',
+          Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+        );
+        const { error: rpcError } = await adminClient.rpc(
+          'record_misconception_exhibited',
+          {
+            p_user_id: user.id,             // JWT-verified, NOT body-derived
+            p_skill_id: outcome.skill_id,   // == item.skill_id, validated
+                                            // against skill.common_misconceptions
+            p_misconception_id: outcome.misconception_id,
+          },
+        );
+        if (rpcError) {
+          // Log but do not 5xx the whole answer submission — the user's
+          // SRS state was already updated; failing the response would
+          // hide a successful answer behind a diagnostic-layer hiccup.
+          console.error(JSON.stringify({
+            event: 'misconception_rpc_error',
+            item_id: item.id,
+            skill_id: outcome.skill_id,
+            misconception_id: outcome.misconception_id,
+            session_id,
+            message: rpcError.message,
+          }));
+        }
+      } else if (outcome.kind === 'phantom_tag') {
+        // Phantom tag — application-layer guard caught a stale or typo'd
+        // misconception_id in items.distractor_misconceptions. Log with
+        // the payload bac-curriculum specified in ADR 0013 §3 (no user_id
+        // — PII). Authors triage from item_id + candidate_misconception_id.
+        console.error(JSON.stringify({ ...outcome.log, session_id }));
+      } else if (outcome.kind === 'deprecated') {
+        // Forward-compat: future migration adds deprecated_at to
+        // misconception entries. Log as warning, no write.
+        console.warn(JSON.stringify({ ...outcome.log, session_id }));
+      } else if (outcome.kind === 'skill_mismatch') {
+        // Structural integrity violation: item.skill_id resolves to a
+        // different skill row than the one fetched, or the fetch
+        // returned null. Log and skip.
+        console.error(JSON.stringify({ ...outcome.log, session_id }));
+      }
+      // outcome.kind === 'no_event' is the silent path — no log, no write.
+    }
 
     // Check for newly earned badges
     const badgesEarned = await checkBadges(supabase, user.id, newMastery, newStreak, newAttempts);
