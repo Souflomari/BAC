@@ -1,0 +1,87 @@
+{
+  "_doc": "Per-skill misconception authoring template. Per ADR 0008: one JSON file per skill, named <skills.code>.json, lives under backend/seed/misconceptions/. The encoder projects the canonical five fields {id, label, description, contradicts_principle, distinguishing_mcq_stem} into skills.common_misconceptions JSONB and emits a versioned UPDATE migration. The encoder also injects an explicit label_ar: null per bac-curriculum rule 5 in ADR 0008. The seed file itself omits label_ar — the FR-only authoring path stays clean. schema_version 2 (per ADR 0009): distinguishing_mcq_stem is a structured object with five sub-keys — step 3 (distractor tagging) reads distractor_choice_label programmatically.",
+
+  "skill_code": "sma_limit_ops",
+  "skill_name_fr": "Opérations sur les limites",
+  "subject_code": "math",
+  "stream": "sciences_maths_a",
+  "schema_version": 2,
+
+  "authored": {
+    "lead": "pedagogy-auditor",
+    "validated_by": "bac-curriculum",
+    "date": "2026-05-22",
+    "schema_v2_date": "2026-05-22",
+    "adr_refs": ["0008", "0009", "0012"]
+  },
+
+  "misconceptions": [
+    {
+      "id": "mc.math.sma_limit_ops.somme-limites-inexistantes",
+      "label": "« La limite d'une somme est la somme des limites, même quand les limites individuelles n'existent pas »",
+      "description": "L'élève applique le théorème de la somme — lim(f+g) = lim f + lim g — sans vérifier la condition d'existence : chaque limite individuelle doit exister (être finie ou infinie d'un signe déterminé). Face à lim(x→+∞) (x − sin(x)), il tente de décomposer en lim x + lim(−sin(x)), constate que sin(x) n'a pas de limite en +∞, puis conclut soit que la somme n'a pas de limite, soit qu'elle vaut +∞ « par défaut ». Le modèle erroné est que le théorème opératoire est une identité algébrique inconditionnelle, non une règle avec une prémisse.",
+      "contradicts_principle": "Le théorème de la limite d'une somme est soumis à une condition d'existence : les deux limites individuelles doivent exister (finies ou infinies d'un signe déterminé) pour que l'on puisse conclure. L'absence de limite d'un terme ne transfère pas automatiquement à la somme — la somme peut avoir une limite même si un terme seul n'en a pas (cas où les oscillations se compensent ou où le terme dominant l'emporte structurellement).",
+      "evidence": [
+        "Cornu (1991) — Limits, in Advanced Mathematical Thinking, Tall ed., pp.153–166 ; l'application inconditionnelle des théorèmes opératoires est l'un des obstacles de procédurisation les plus fréquents",
+        "Cadre de référence SM-A 2006 — unité « Limites et continuité » ; les théorèmes opératoires sont formulés avec les conditions d'existence explicites ; la distinction « théorème valide sous conditions » vs « identité algébrique » est un objectif explicite",
+        "Bac SMA session normale 2019, exercice sur les suites — forme lim(u_n + v_n) avec v_n oscillante ; l'erreur de décomposition sans condition y est diagnostiquée dans le corrigé",
+        "Bac SMA session de remplacement 2021, calcul de lim(x→+∞) (x + cos(x)) — le corrigé signale explicitement que cos(x) n'a pas de limite mais que le théorème de comparaison (et non le théorème additif) est la voie correcte"
+      ],
+      "distinguishing_mcq_stem": {
+        "stem_text": "Soit f(x) = x + cos(x). Que peut-on dire de lim(x→+∞) f(x) ?  Choix : A) La limite n'existe pas car lim(x→+∞) cos(x) n'existe pas. ; B) lim(x→+∞) f(x) = +∞. ; C) lim(x→+∞) f(x) = 1 car cos(x) → 0 à l'infini. ; D) lim(x→+∞) f(x) = +∞ + lim cos(x), ce qui est indéfini.",
+        "distractor_choice_label": "A",
+        "distractor_rationale": "L'élève portant ce modèle décompose lim(x + cos x) = lim x + lim cos(x), constate que lim cos(x) n'existe pas, et conclut immédiatement que la somme n'a pas de limite — le théorème est appliqué à l'envers comme une condition nécessaire sans recours à un autre outil (théorème de comparaison). La démarche A est la signature exacte du modèle : l'inexistence d'un terme empêche la conclusion sur la somme.",
+        "correct_choice_label": "B",
+        "correct_rationale": "Pour tout x, x − 1 ≤ x + cos(x) ≤ x + 1. Comme lim(x→+∞)(x − 1) = +∞, le théorème de comparaison (gendarmes en version minorante) donne lim(x→+∞)(x + cos x) = +∞, sans requérir l'existence de lim cos(x)."
+      }
+    },
+
+    {
+      "id": "mc.math.sma_limit_ops.quotient-denominateur-nul",
+      "label": "« lim f/g = lim f / lim g même quand lim g = 0 »",
+      "description": "L'élève applique le théorème du quotient — lim(f/g) = lim f / lim g — sans vérifier que la limite du dénominateur est non nulle. Face à lim(x→1) (2x−1)/(x−1), il calcule lim(2x−1) = 1 et lim(x−1) = 0, puis effectue la division 1/0 et conclut soit que la limite est ∞, soit qu'elle n'existe pas, sans reconnaître que la forme 0/0 indéterminée requiert d'abord une factorisation. Variante : lim(x→0) sin(x)/x² — l'élève calcule 0/0, l'interprète comme 0 ou ∞ directement.",
+      "contradicts_principle": "Le théorème du quotient lim(f/g) = lim f / lim g n'est valide que si lim g ≠ 0. Quand lim g = 0 et lim f ≠ 0, la limite est infinie (signe à déterminer par analyse de signe au voisinage). Quand lim g = 0 ET lim f = 0, la forme est indéterminée 0/0 et requiert une levée par factorisation, conjugué, ou équivalents — le théorème du quotient est inapplicable en l'état.",
+      "evidence": [
+        "Tall & Vinner (1981) — Concept image and concept definition in mathematics, Educational Studies in Mathematics 12:151–169 ; l'image-concept du quotient comme opération algébrique inconditionnelle est l'une des causes d'erreur sur les formes indéterminées",
+        "Williams (1991) — Models of limit held by college calculus students, JRME 22(3):219–236 ; les étudiants appliquent les théorèmes opératoires mécaniquement sans vérifier les conditions ; le cas du dénominateur nul est le plus cité",
+        "Cadre de référence SM-A 2006 — la condition lim g ≠ 0 pour le théorème du quotient est formulée explicitement ; les cas lim g = 0 avec lim f ≠ 0 (limite infinie) et lim g = 0 avec lim f = 0 (forme indéterminée) sont distingués comme deux sous-cas à traiter différemment",
+        "Bac SMA session normale 2023, exercice 2 — lim(x→1) (x²−1)/(x−1) ; forme 0/0 ; le corrigé insiste sur l'inapplicabilité directe du théorème du quotient et la nécessité de la factorisation"
+      ],
+      "distinguishing_mcq_stem": {
+        "stem_text": "lim(x→2) (x² − 3x + 2) / (x − 2) = ?  Choix : A) 1 ; B) La limite n'existe pas car on divise par 0. ; C) +∞ ; D) 0.",
+        "distractor_choice_label": "B",
+        "distractor_rationale": "L'élève portant ce modèle calcule lim(x−2) = 0, conclut que l'on « divise par zéro » et que la limite n'existe pas, sans tenter de factoriser le numérateur. La réponse B est la signature de l'application du théorème du quotient avec lim g = 0 et arrêt immédiat. Aucun autre modèle du set n'arrive en B sur ce stem : M1 (somme, oscillation) ne se déclenche pas ; M2 (0·∞) ne se déclenche pas (pas de produit apparent). Distractor C (+∞) est une variante secondaire du même modèle (l'élève conclut à l'infini plutôt qu'à l'inexistence) mais B est le déclencheur primaire.",
+        "correct_choice_label": "A",
+        "correct_rationale": "x² − 3x + 2 = (x−2)(x−1) ; pour x ≠ 2 le quotient se simplifie en (x−1) ; la limite en 2 est donc 2−1 = 1."
+      }
+    }
+  ],
+
+  "authoring_notes": {
+    "filter_criteria": "Per ADR 0008 §'4-criteria filter'. Each misconception must be (a) a named misunderstanding (wrong model), not a procedural error; (b) contradicted by a named principle in contradicts_principle; (c) distinguishable from every other misconception in this set via at least one MCQ stem only it would lead a student to answer incorrectly; (d) supported by named math-education literature, the Moroccan SM-A cadre de référence, or a Bac-paper year/session citation. 'Common student error' alone fails (d).",
+
+    "candidates_cut": [
+      {
+        "summary": "« Le théorème de comparaison (gendarmes) s'applique même quand les fonctions d'encadrement n'ont pas la même limite »",
+        "proposed_id": "mc.math.sma_limit_ops.gendarmes-limites-differentes",
+        "cut_reason": "criterion-c-failure",
+        "filter_result": "Fails criterion (c). The diagnostic stem for this misconception (student applies sandwich theorem when upper and lower bounds have different limits) cannot be cleanly distinguished from a procedural error (student made a calculation mistake on one bound). The wrong-answer signature does not uniquely identify the model — it overlaps with arithmetic slips. A wrong model whose only observable is a wrong number fails the distinguishability criterion. Not borderline; cut.",
+        "borderline": false
+      },
+      {
+        "summary": "« La limite d'un produit est nulle si l'un des facteurs tend vers 0, même quand l'autre tend vers ∞ (forme 0·∞) »",
+        "proposed_id": "mc.math.sma_limit_ops.produit-zero-infini-est-zero",
+        "cut_reason": "stem-cross-contamination-failure",
+        "filter_result": "The model itself passes all four criteria (a)-(d) and is strongly supported. Cut from v1 because the natural diagnostic stem (lim(x→0⁺) x·ln(x)) has correct answer = 0, which is ALSO the answer predicted by the misconception. This is the ADR 0012 cross-contamination failure mode applied to the correct answer: the item cannot distinguish a correctly-reasoning student from a misconception-holding student. Suitable stems exist (e.g., lim(x→0⁺) x·(1/x²) = +∞, where the misconception predicts 0 and the correct answer is +∞) but require more careful cadre-fit validation before ship. Deferred to v2 authoring — the model and the evidence record are preserved here so v2 starts with a prepared candidate.",
+        "borderline": true,
+        "v2_stem_candidate": "lim(x→0⁺) x · (1/x²) = ?  Correct = +∞ (not reachable via M1 or M3 reasoning). Misconception predicts 0 (zero × anything = zero). Correct rationale: x · (1/x²) = 1/x → +∞. Cross-contamination check: M1 doesn't fire (no sum/oscillation); M3 doesn't fire (no explicit fraction with denominator-→-0 form). Candidate passes the v2 check — ship after cadre validation."
+      }
+    ],
+
+    "authoring_order_for_teaching": "M1 (somme-limites-inexistantes) fires first: students encounter sum-of-limits in the same lesson where the operational theorems are introduced, and the cosine/sine oscillation case is the canonical first confrontation with a sum whose terms individually lack limits. M2 (quotient-denominateur-nul) fires whenever any fraction is evaluated at a point where the denominator vanishes — which is the most frequent non-trivial limit problem in the SM-A cadre (rational functions, trigonometric quotients). The cut candidate produit-zero-infini-est-zero would fire later, after transcendental functions are introduced, and is deferred to v2.",
+
+    "close_to_the_line": "M2 (quotient-denominateur-nul) has two plausible distractor signatures: choice B ('la limite n'existe pas') and choice C ('+∞'). Both are reachable via the same wrong model (applying the quotient theorem without checking the condition) — the split between B and C depends on whether the student treats 1/0 as 'undefined' or as 'infinite'. The seed file tags B as the primary distractor because it is the most frequent surface-form in corrigés, but step 3 should tag C as a secondary distractor for items where that choice appears. The dual-tagging pattern is already established in slice 1's M1 item (B+C both tagged).",
+
+    "v2_stem_design_check": "Per ADR 0012 §'Pedagogy-auditor: cross-contamination matrix' — for each shipped misconception, the correct answer must NOT be reachable via reasoning consistent with any non-target misconception in this set. Verification per misconception:\n\nM1 (somme-limites-inexistantes) — stem: lim(x→+∞) (x + cos x), correct = +∞ (choice B).\n  - Can M2-reasoning (quotient-denominateur-nul) reach B? No fraction present in this stem — there is no denominator to evaluate. M2 does not fire. Not contaminated.\n  - Can the cut-candidate produit-zero-infini reasoning reach B? No product of a zero-tending term and an infinity-tending term is visible as a product — the sum form does not trigger that model. Not contaminated.\n  - Verdict: B=+∞ is not reachable via any non-M1 model in this set. PASS.\n\nM2 (quotient-denominateur-nul) — stem: lim(x→2) (x²−3x+2)/(x−2), correct = 1 (choice A).\n  - Can M1-reasoning (somme-limites-inexistantes) reach A? M1 concerns decomposing a sum and concluding from an oscillating term. The stem has no oscillating term and is not naturally parsed as a sum by this model. M1 reasoning does not arrive at a specific numerical value on this expression. Not contaminated.\n  - Can the cut-candidate produit-zero-infini reasoning reach A? The expression is a fraction, not a product. The cut model fires when a student explicitly sees a product f·g with f→0 and g→∞. No contamination path to A=1. Not contaminated.\n  - Verdict: A=1 is not reachable via any non-M2 model in this set. PASS.\n\nCut candidate (produit-zero-infini-est-zero) — no stem shipped. The cut was forced precisely by a correct-answer collision: on the natural stem lim(x→0⁺) x·ln(x), the misconception predicts 0 and the correct answer IS 0. Item cannot distinguish. The v2_stem_candidate in candidates_cut proposes lim(x→0⁺) x·(1/x²) where correct = +∞ and misconception predicts 0 — no collision. That candidate passes the check but requires cadre validation before ship.\n\nSummary: both shipped stems pass the correct-answer cross-contamination check. The cut candidate's collision is documented and its v2 stem is prepared."
+  }
+}
