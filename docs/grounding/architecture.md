@@ -441,75 +441,172 @@ exam-ingestion agent's pipeline output lands in `bac_exams +
 exam_questions`; the synthetic papers were authored to give every skill
 a practice surface without waiting for real-PDF ingestion.
 
-### 5.5 Bank topology — two parallel item banks per scientific subject
+### 5.5 Bank topology — per-skill, not universal
 
-**The structural fact that hid for five ADRs:** items and misconceptions
-for the same conceptual skill live on **two different `skills.id` rows**,
-keyed by stream.
+**The structural fact that hid for five ADRs:** for SOME scientific-
+subject skills, items and misconceptions live on two different
+`skills.id` rows keyed by stream. For OTHER skills, only the
+SMA-prefixed row exists. The pattern is **per-skill**, not universal —
+treating it as a universal rule was the error in earlier framings of
+this section (slice 2 surfaced the gap; slice 3 confirmed it).
 
-For every scientific-subject skill (math, physics, svt), the seed flow
-produced two skill rows:
+Three topology shapes exist in the current schema. Every scientific-
+subject skill falls into exactly one:
 
-- The **unprefixed row** (e.g. `skills.code = 'limit_calc'`,
-  `id = 33333333-0000-0000-0000-000000000007`). Created by
-  `seed_data.sql` early in the project's life, predates the `sma_`
-  prefix convention. Serves **SM-B students** (whose unit "Calcul de
-  limites" is the same content as SM-A's). All ~916 items shipped via
-  migrations 009 / 010 / 018 / 039 attach to **these unprefixed UUIDs**
-  (see migration 009 line 1+: `SELECT '44444444-…','33333333-0000-…'`).
+#### Shape A — dual-bank (legacy SMB row + SMA-prefixed row)
 
-- The **SMA-prefixed row** (e.g. `skills.code = 'sma_limit_calc'`,
-  `id = 33333333-aaaa-0000-0000-000000000002`). Created by `json_encode_sma.dart`
-  (mig 012) when the SMA-prefix convention landed. Serves **SM-A students**.
-  Carries no items — the bank under it is empty. ADR-tracked
-  artifacts under SMA (`common_misconceptions` from migration 045,
-  authored misconceptions from `backend/seed/misconceptions/*.json`)
-  attach here.
+The skill exists as **two rows**: an unprefixed row from the early
+`seed_data.sql` (predates the `sma_` prefix convention) and an
+SMA-prefixed row from `json_encode_sma.dart` (migration 012, when the
+convention landed).
 
-Same dual-row structure for `pc_*` (mig 032) and `svt_*` (mig 036),
-though the misconception layer has only been authored on SMA so far.
+**Example:** `limit_calc`.
 
-**Why this matters at the data-model level.** A naïve query
-"give me the misconceptions on the limits skill, joined with the items
-that diagnose them" hits NULL on every join — the misconceptions are on
-row A, the items are on row B, the FK is satisfied by either but the
-two never meet. The skill-attribution mismatch is invisible to
-RLS, to migration safety, and to ordinary SELECT queries that hit one
-side only. It became visible only when ADR 0011's coverage audit asked
-"what items diagnose these misconceptions?" and the answer was zero.
+| | unprefixed (SMB students) | SMA-prefixed (SMA students) |
+|---|---|---|
+| `code` | `limit_calc` | `sma_limit_calc` |
+| `id` | `33333333-0000-0000-0000-000000000007` | `33333333-aaaa-0000-0000-000000000002` |
+| Items | 8 (mig 009 ships them) | 4 (mig 046 ships them) |
+| Misconceptions | none yet | 4 (mig 045 ships them) |
 
-**Why this is the right model (per ADR 0011 §"Skill attribution
-decision: option (a)").** SM-A and SM-B carry separate cadres de
-référence; the same mathematical content is examined under different
-rules, with different difficulty bands, in different exam formats.
-Treating them as one skill would couple two distinct examined surfaces
-through shared diagnostic state — contaminating per-user state across
-filières that should be tracked independently. Treating them as two
-parallel banks is the correct attribution; the data model already
-reflects it, the audit just hadn't surfaced it.
+ADR 0011's FK-semantic-mismatch was discovered on this shape: an early
+plan would have tagged the unprefixed-row items with misconception IDs
+encoded against the SMA-prefixed row, breaking the join. The Path B
+choice (author new items on the SMA-prefixed row) closed it.
 
-**Operational rules.** When authoring content for a scientific-subject
-skill, the agent must explicitly choose which row it attaches to:
+#### Shape B — SMA-only, SM-B genuinely omits the skill
 
-1. **Misconceptions, distractor-tagged items, and any
-   misconception-driven authoring** attach to the **SMA-prefixed row**
-   (`code` starts with `sma_`, `id` in the `33333333-aaaa-…` range).
-   This is where the diagnostic surface for SM-A students lives.
-2. **The legacy item bank** on the unprefixed row continues to serve
-   SM-B students. Don't migrate, don't duplicate, don't merge. SMB
-   misconception authoring is its own future workstream (post-MVP)
-   that lands its own per-skill JSON files on the unprefixed `code`.
-3. **PC and SVT** mirror the SMA pattern — items on the `pc_` / `svt_`
-   prefixed rows, paired with the unprefixed rows that the legacy
-   bank attaches to.
+The skill exists **only as the SMA-prefixed row**. SM-B's cadre does
+not treat this as a distinct examinable skill, so `seed_data.sql`
+never created an unprefixed twin.
 
-**How to tell which row you're on:**
+**Example:** `sma_limit_ops` ("Opérations sur les limites").
+
+| | unprefixed | SMA-prefixed |
+|---|---|---|
+| `code` | `limit_ops` | `sma_limit_ops` |
+| Row exists? | **NO** | YES |
+| `id` | n/a | `33333333-aaaa-0000-0000-000000000003` |
+| Items | n/a | 0 (slice 2 ships them via mig 049) |
+| Misconceptions | n/a | 2 (slice 2 ships them) |
+
+Verified by bac-curriculum during slice 2: SM-B does not treat the
+operational-theorems-with-conditions layer as a distinct objective.
+SM-B items that involve quotient with `lim g = 0` are handled as
+calculation mechanics under the (unprefixed) `limit_calc`, not as a
+separate skill. The single-bank topology is cadre-correct.
+
+#### Shape C — SMA-only, SM-B folds the topic into a broader skill
+
+The skill exists **only as the SMA-prefixed row**, AND the topic IS
+covered in SM-B's cadre — but folded into a wider skill rather than
+named distinctly.
+
+**Example:** `sma_asymptotes` ("Branches infinies et asymptotes").
+
+| | unprefixed | SMA-prefixed |
+|---|---|---|
+| `code` | `asymptotes` | `sma_asymptotes` |
+| Row exists? | **NO** | YES |
+| `id` | n/a | `33333333-aaaa-0000-0000-000000000006` |
+| Items | n/a | 0 (slice 3 design pending) |
+| Misconceptions | n/a | 4 (slice 3 ships them) |
+
+Verified by bac-curriculum during slice 3: SM-B does treat asymptotes
+topically, but the content is folded into a broader "étude de
+fonctions" skill in the SM-B curriculum. There is no unprefixed
+`asymptotes` row, but not because SM-B ignores the topic. Practical
+consequence is the same as Shape B for our purposes (single-bank,
+single skill row, no dual-attribution decision needed), but the
+underlying reason differs.
+
+#### Why Shapes B and C produce the same data shape
+
+For data-model purposes (which UUID does an item live on, which row
+do misconceptions attach to), Shapes B and C are indistinguishable:
+both have a single SMA-prefixed row and no unprefixed twin. The
+distinction matters only for **content strategy**: a future SMB
+misconception layer (post-MVP) would need to author against the
+folded broader skill on the SMB side for Shape-C skills, but would
+have no place to author for Shape-B skills (SM-B doesn't have the
+skill at all).
+
+#### Why even Shape A is the right model
+
+(Per ADR 0011 §"Skill attribution decision: option (a)".) SM-A and
+SM-B carry separate cadres de référence; the same mathematical content
+is examined under different rules, with different difficulty bands, in
+different exam formats. Treating one row across two filières would
+couple two distinct examined surfaces through shared diagnostic state
+— contaminating per-user state across filières that should be tracked
+independently. Two parallel banks (Shape A) is the correct attribution
+where SMB has the same skill; one bank (Shapes B and C) is the correct
+attribution where SMB doesn't.
+
+#### Failure mode for naïve queries (preserved from prior wording)
+
+A naïve query "give me the misconceptions on the limits skill, joined
+with the items that diagnose them" hits NULL on every join under
+Shape A — the misconceptions are on row A, the items are on row B,
+the FK is satisfied by either but the two never meet. The
+skill-attribution mismatch is invisible to RLS, to migration safety,
+and to ordinary SELECT queries that hit one side only. ADR 0011's
+coverage audit was the first query that asked the cross-side question
+and surfaced the gap.
+
+#### Operational rules — when authoring content for a scientific-subject skill
+
+**First, identify the shape.** Run:
 
 ```sql
 SELECT id, code FROM public.skills
-WHERE code IN ('limit_calc', 'sma_limit_calc');
--- limit_calc      33333333-0000-0000-0000-000000000007  ← legacy / SM-B items
--- sma_limit_calc  33333333-aaaa-0000-0000-000000000002  ← SMA misconceptions
+WHERE code IN ('<unprefixed>', '<sma_unprefixed>',
+               '<pc_unprefixed>', '<svt_unprefixed>');
+```
+
+- Both rows returned → Shape A. Choose attribution per the rule
+  below.
+- Only the prefixed row returned → Shape B or C. Single-row
+  attribution; no choice needed.
+
+Then:
+
+1. **Misconceptions, distractor-tagged items, and any
+   misconception-driven authoring** attach to the **prefixed row**
+   (`sma_*`, `pc_*`, `svt_*`). This is where the diagnostic surface
+   for the prefix's filière lives.
+2. **Under Shape A:** the legacy item bank on the unprefixed row
+   continues to serve SM-B students unchanged. Don't migrate, don't
+   duplicate, don't merge. SMB misconception authoring is its own
+   future workstream that authors against the unprefixed `code` (when
+   the time comes).
+3. **Under Shape B:** SMB has no analogous content. No SMB twin to
+   author. Cross-filière diagnostic concerns are out of scope.
+4. **Under Shape C:** SMB has the broader skill. A future SMB
+   misconception layer would author against THAT broader skill's
+   `code`, not against a separate "asymptotes-twin" row that doesn't
+   exist. Cross-filière diagnostic ambiguity is real but deferred to
+   the SMB authoring slice.
+
+ADR 0008's misconception ID format (`mc.<subjects.code>.<skills.code>.<short-label>`)
+is keyed off the SMA-prefixed `code` for all current authoring, which
+makes the diagnostic surface SMA-specific by construction. SMB
+misconception authoring (deferred) will use the appropriate `code` for
+the shape — unprefixed twin for Shape A, broader-skill code for
+Shape C, n/a for Shape B.
+
+#### How to tell which row you're on
+
+```sql
+SELECT id, code FROM public.skills
+WHERE code IN ('limit_calc', 'sma_limit_calc',     -- Shape A
+               'sma_limit_ops',                     -- Shape B (no twin)
+               'sma_asymptotes');                   -- Shape C (no twin)
+-- Returns:
+--   limit_calc       33333333-0000-0000-0000-000000000007  ← Shape A, SMB
+--   sma_limit_calc   33333333-aaaa-0000-0000-000000000002  ← Shape A, SMA
+--   sma_limit_ops    33333333-aaaa-0000-0000-000000000003  ← Shape B
+--   sma_asymptotes   33333333-aaaa-0000-0000-000000000006  ← Shape C
 ```
 
 The `sma_` / `pc_` / `svt_` prefix in `code` is the canonical signal of
@@ -517,10 +614,14 @@ intent. UUID family (`33333333-0000-…` vs `33333333-aaaa-…` /
 `-cccc-…` / `-dddd-…`) is the canonical signal of which stream the row
 serves.
 
-ADR 0008's misconception ID format (`mc.<subjects.code>.<skills.code>.<short-label>`)
-is keyed off the SMA-prefixed `code`, which is what makes the
-diagnostic surface SMA-specific by construction. Any future SMB
-misconception authoring will use the unprefixed `code` in its IDs.
+#### What's next for this section
+
+A full enumeration of every scientific-subject skill by shape (the
+roughly 100 SMA skills, 32 SMB-only skills, etc.) is a downstream
+content-audit task — not in this revision. When that audit runs, this
+section grows a per-skill shape table. For now, the three documented
+examples above are the canonical cases; future skills resolve into
+one of the three shapes via the operational `SELECT id, code …` query.
 
 ### 5.6 UUID allocation registry — deterministic-UUID ranges by migration
 
