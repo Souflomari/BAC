@@ -170,6 +170,22 @@ Runs in three modes; all three must be covered:
   approved as a prose string by `bac-curriculum` (content-valid) but had to
   be restructured into a typed object once step 3's encoder needs were
   surfaced. Surface that conflict early next time.
+- Stem-design cross-contamination checks must walk both the current skill's
+  misconception set and the misconception sets of adjacent skills the student
+  plausibly holds state on. "Adjacent" is defined operationally as: any skill
+  in the same matière + same unité, plus any skill within one hop on the
+  prerequisite DAG. A stem whose correct answer or target distractor is
+  reachable via reasoning consistent with any misconception in this expanded
+  set fails the check and must be revised. Originating finding: slice 2's M2
+  stem on `sma_limit_ops` (`lim(x→2) (x²−3x+2)/(x−2)`, a 0/0 form) collided
+  with `sma_limit_calc.M1` (`forme-indeterminee-valeur-nulle`); the
+  within-skill check from ADR 0012 walked only `sma_limit_ops`'s own set and
+  cleared the stem, but `sma_limit_calc.M1`'s "0/0 = 0" reasoning reached
+  distractor D ("0") unobserved and "0/0 = doesn't exist" reached distractor
+  B ("doesn't exist") dual-attributably. Resolved by replacing the stem with
+  a 1/0 form (denominator → 0, numerator → non-zero) so `sma_limit_calc.M1`
+  does not fire. To be formalized in ADR 0014 (forthcoming with slice 2's
+  ship).
 
 # Do NOT
 
