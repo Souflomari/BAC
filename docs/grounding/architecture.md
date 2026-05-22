@@ -522,6 +522,41 @@ is keyed off the SMA-prefixed `code`, which is what makes the
 diagnostic surface SMA-specific by construction. Any future SMB
 misconception authoring will use the unprefixed `code` in its IDs.
 
+### 5.6 UUID allocation registry — deterministic-UUID ranges by migration
+
+UUIDs in this codebase follow deterministic patterns (see §5.5 above for
+the per-table prefix conventions). Within a single table the UUIDs are
+further structured by **batch**, so author-time choice of a new UUID
+range can't accidentally collide with a prior batch. This registry is
+the canonical record. Update it when a migration allocates a new range.
+
+For `public.items`, the family pattern is `44444444-<table>-<batch>-0000-<seq>`
+where `<table>` mirrors the stream prefix on the parent skill's UUID:
+
+| Range | Owner | Purpose | Status |
+|---|---|---|---|
+| `44444444-0000-0000-0000-001…` (legacy) | mig 009 / 010 / 018 / 027 / 039 | The pre-prefix item bank attached to unprefixed `limit_calc` / `arithmetic_seq` / etc. | Closed; serves SMB students. |
+| `44444444-aaaa-0000-0000-001..081` | **migration 018** | 129 SMA-specific items (pre-misconception framework). | **Closed** — do not reuse. |
+| `44444444-aaaa-0001-0000-001..004` | **migration 046** | 4 misconception-driven items on `sma_limit_calc`. | **Closed** — do not reuse. |
+| `44444444-aaaa-0002-0000-*` | **reserved for slice 2** | Misconception-driven items on `sma_limit_ops` / `sma_asymptotes` (whichever ships first). | Reserved; allocated by slice 2's items migration. |
+| `44444444-aaaa-0003-0000-*` | reserved | Next misconception-driven batch on a third SMA skill. | Reserved. |
+| `44444444-cccc-…` family | PC items | (To be registered when first PC misconception items ship.) | Future. |
+| `44444444-dddd-…` family | SVT items | (To be registered when first SVT misconception items ship.) | Future. |
+
+**Discipline:** before authoring any new INSERT into `public.items` (or
+any table with deterministic-UUID conventions), grep this registry plus
+the prior migration files for the chosen range. The verify block's
+post-state-cardinality assertion (see
+`.claude/agents/supabase-architect.md` Hard Rules) is the safety net,
+but the grep is the cheap up-front check that avoids the rollback.
+
+**Why the third segment is the batch boundary (not the fourth):** the
+`-aaaa-` segment is already overloaded as the stream identifier; if the
+batch counter lived in the fourth segment instead, a sequential-by-
+default UUID generator could easily collide across batches. Putting the
+batch counter at the third segment forces a deliberate choice — `0000`
+for legacy, `0001` for the first misconception-driven batch, etc.
+
 ---
 
 ## 6. Authoring pipeline

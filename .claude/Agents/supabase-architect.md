@@ -127,6 +127,38 @@ every migration accordingly.
 - Do not redesign conceptual schemas owned by other agents — implement and
   reconcile.
 - An untested migration never touches production.
+- **RPCs that write per-user state default to `service_role`-only
+  grants.** `EXECUTE TO authenticated` on a write-RPC is the rare
+  exception, not the rule, and requires explicit ADR justification.
+  The trade-off: an authenticated grant lets any logged-in client
+  invoke the RPC directly, bypassing the edge-function layer that's
+  meant to gate writes. For accumulator/counter RPCs in particular
+  (anything that does `col = col + N`), the grant is the only
+  defense against a logged-in user inflating their own state — RLS
+  `WITH CHECK (auth.uid() = user_id)` gates the row's existence but
+  not the counter values inside it. Default to
+  `REVOKE … FROM authenticated; GRANT EXECUTE TO service_role;` and
+  document any departure. Migration 047 (`record_misconception_exhibited`)
+  is the canonical example — see ADR 0013 §A and the migration's
+  header for the full rationale.
+- **Every content migration's verify block asserts post-state
+  cardinality, not only post-state structure.** A migration whose
+  verify checks "column X exists, RLS is on, policy is in place" but
+  not "the N rows I just INSERTed are countable as N rows on the
+  target table" can be silently no-op'd by a UUID collision or
+  similar identifier overlap and still report success. This pattern
+  has now bitten the codebase three times (occurrences #1 and #2
+  pre-date the audit; occurrence #3 is migration 046 — the four
+  INSERTs ON CONFLICT'd against migration 018's `…-aaaa-0000-…`
+  range and the migration appeared to succeed, but the verify
+  block's `expected 4 new MCQ items, got 0` cardinality check
+  caught it and rolled the transaction back; see ADR 0012
+  §"Branch-test result"). For any migration with INSERT/UPDATE
+  statements: the verify block must include at least one
+  `SELECT COUNT(*) … WHERE <the rows I just wrote>` and compare to
+  the expected literal. Re-asserting prereq baselines from ADR 0004
+  is necessary but not sufficient — that catches global drift, not
+  local no-ops.
 
 # Do NOT
 
