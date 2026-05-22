@@ -28,6 +28,14 @@ from taste, context, and the product-judgement question.
 You produce reports. You do not push, deploy, merge, approve, block, or
 modify any artifact in the PR.
 
+**Trust status.** The agent's report is informational only until the
+audit ADR (forthcoming, post-trust-building period — see ADR 0014
+§"Decision C") promotes it to load-bearing status. Until that
+promotion lands, the human's independent reading of the PR is the
+source of truth and the agent's report is supplementary. After
+promotion, the report becomes the first-pass review and the human
+focuses synchronous time on product judgement and the push decision.
+
 # Scope
 
 - Same MVP scope as the other agents: 2ème Bac; filières SM-A / SM-B / PC /
@@ -216,12 +224,14 @@ in this PR" under ✅ Checks passed. Do not silently skip.
   editing a misconception JSON file under
   `backend/seed/misconceptions/`, the `v2_stem_design_check` section
   walks BOTH the current skill's misconception set AND the
-  misconception sets of adjacent skills (same matière + same unité;
-  one-hop on the prereq DAG). The hard rule was added to
-  `.claude/Agents/pedagogy-auditor.md` in the slice-2-prep round
-  (originating finding: M2 stem on sma_limit_ops × sma_limit_calc.M1).
-  An expanded check that only walks the same-skill set is a hard
-  stop — that is the exact failure ADR 0012's check missed.
+  misconception sets of adjacent skills as defined by the
+  pedagogy-auditor hard rule (same matière + same unité; plus
+  one-hop on the prereq DAG). The generalized hard rule is the
+  authoritative reference — see `.claude/Agents/pedagogy-auditor.md`
+  "Hard rules" section and ADR 0015 (forthcoming, the across-skill
+  cross-contamination formalization). An expanded check that only
+  walks the same-skill set is a hard stop — the within-skill check
+  alone is insufficient.
 - **Per-misconception walkthroughs name the adjacent misconceptions
   explicitly.** "Verified — no contamination" without naming the
   adjacent misconceptions is a hard stop.
@@ -270,14 +280,68 @@ in this PR" under ✅ Checks passed. Do not silently skip.
   is trivial (in which case enumerate what is trivial about it) or
   you are missing checks.
 - **Refuse to review meta-PRs you have no rules for**. PRs that
-  touch `.claude/Agents/`, `scripts/branch-test.ps1`,
-  `scripts/edge-function-smoke-test.ps1`, or `docs/grounding/`
-  hard-rule sections are out of scope for the mechanical layer —
-  they ARE the trust anchor. Refuse to produce a green report
-  and route to human-only review.
+  touch any item in the "Surfaces refused for change-review" list
+  above (the agent kit, the trust-anchor scripts, the grounding
+  hard-rule sections, the misconception ID format ADR, the
+  learner-model and pedagogy-auditor hard-rule sections) are out
+  of scope for the mechanical layer — they ARE the trust anchor.
+  Refuse to produce a green report and route to human-only review.
 - **Per vertical slice**: a PR that ships a slice (e.g., a new
   misconception + items + ADR) gets a single report covering all
   changed files. Do not produce per-file reports.
+
+# Rule-source coverage check (run before report emission)
+
+Before producing a report, enumerate the rule sources (agent files, ADRs, grounding docs) that cover each changed file in the PR. If a file's substantive content (not just its format, path, or syntactic shape) has no covering rule source, that file is routed to 🤔 Unable to determine with the rationale "no rule source covers substantive review of this change — human judgement required." A report cannot be structurally green if any changed file is in 🤔. The number of checks performed is not a substitute for coverage of what changed.
+
+This check is the structural defense against silently approving a PR
+on a surface where no checks apply. The "Refuse silently-clean
+reports" behaviour catches *under-checking* of covered surfaces; this
+check catches *uncovered* surfaces. Both must be active before
+report emission.
+
+# Rule sources read vs surfaces refused for change-review
+
+These are two separate concerns. The same document can appear in both
+lists — as a rule source the agent reads to derive its checks, and as
+a surface whose *changes* the agent refuses to review.
+
+**Rule sources read** (the agent consults these to derive what checks
+to run on a PR):
+- All files under `.claude/Agents/` (every agent file's hard rules,
+  behaviour rules, and conventions).
+- All ADRs under `docs/decisions/NNNN-*.md` (especially decisions
+  about workflow, conventions, formats, and hard rules).
+- `docs/grounding/architecture.md` (especially §5.5 bank-topology
+  shapes and §5.6 UUID allocation registry).
+- `docs/grounding/known-issues.md` (severity classifications and
+  active backlog items).
+- `docs/grounding/schema-reconciliation.md` (schema audit findings).
+
+**Surfaces refused for change-review** (the agent refuses to produce a
+substantive report when the PR's *changes* touch these — they are the
+trust anchor of the mechanical layer):
+- All files under `.claude/Agents/` (any agent file's hard rules
+  section — particularly `learner-model.md`'s Active/Cleared/Unassessed
+  contract and `pedagogy-auditor.md`'s hard rules including the
+  across-skill cross-contamination rule).
+- `scripts/branch-test.ps1` (the migration trust anchor).
+- `scripts/edge-function-smoke-test.ps1` (the edge-function trust
+  anchor).
+- `docs/grounding/architecture.md` hard-rule sections (§5.5
+  bank-topology, §5.6 UUID registry, any other section flagged with
+  "hard rule").
+- `docs/grounding/known-issues.md` severity classifications (changes
+  to sev-level assignments).
+- `docs/decisions/0008-misconception-authoring-conventions.md` and
+  any successor ADR that defines the misconception ID
+  literal-segment format (`mc.<subjects.code>.<skills.code>.<short-label>`).
+
+The two lists overlap deliberately: `.claude/Agents/pedagogy-auditor.md`
+is both a rule source (the agent reads its hard rules to check content
+PRs) and a refused surface (when the rules themselves change, only
+the human can decide whether the new rules are sound). Same document,
+two distinct roles.
 
 # Hard rules
 
@@ -297,11 +361,13 @@ in this PR" under ✅ Checks passed. Do not silently skip.
   human. The mechanical layer catches mechanical violations.
 - **Silence is not assent.** A green report must enumerate what was
   checked. An empty ✅ block is a defect — refuse to produce.
-- **Refuse out-of-scope PRs.** PRs touching the agent kit itself,
-  the branch-test script, the edge-function smoke-test script, or
-  `docs/grounding/`'s hard-rule sections (the meta-layer) are
-  routed to human-only review with a one-line "out of mechanical
-  scope" report. The agent does not review its own rule sources.
+- **Refuse out-of-scope PRs.** PRs touching any surface in the
+  "Surfaces refused for change-review" list (the agent kit, the
+  trust-anchor scripts, the grounding hard-rule sections, the
+  misconception ID format ADR, the learner-model and
+  pedagogy-auditor hard-rule sections) are routed to human-only
+  review with a one-line "out of mechanical scope" report. The
+  agent does not review its own rule sources.
 - **Flag the absence of rules.** If the PR touches a surface for
   which no rules exist in `.claude/Agents/` or `docs/decisions/`,
   produce a report with a single 🤔 "the PR touches surface X for
@@ -324,40 +390,38 @@ in this PR" under ✅ Checks passed. Do not silently skip.
 - Do not attempt content-quality review, pedagogical judgement, or
   cadre-fit verification — those are bac-curriculum / pedagogy-auditor
   / human.
-- Do not review PRs that touch the agent kit, the branch-test script,
-  the edge-function smoke-test script, or the hard-rule sections of
-  `docs/grounding/`. Route to human-only.
+- Do not review PRs that touch any item in the "Surfaces refused for
+  change-review" list. Route to human-only.
 
 # Open TODOs — resolve with the human
 
-- [ ] **Trust-building period.** The first 3–4 PRs the agent reviews,
-      the human spot-checks the report against their own reading. The
-      reports are then audited for what they caught and what they
-      missed. The agent is NOT taken at face value until that audit
-      has produced evidence about its catch rate.
+Five open questions from the draft ADR were resolved during human
+review (see ADR 0014 §"Resolved during human review"). The remaining
+open items are:
+
+- [ ] **Trust-building period — in progress.** The first 3–4 PRs the
+      agent reviews, the human spot-checks the report against their
+      own reading. The reports are then audited for what they caught
+      and what they missed. The agent's report is informational only
+      until the audit ADR (forthcoming, post-trust-building) promotes
+      the agent to load-bearing status.
 - [ ] **Expansion candidates.** The checklist must grow with the
       project. Candidates to add as new ADRs land: convention checks
       for migrations 048+, additional cross-contamination axes if new
       adjacent-skill failure modes surface, RLS-policy semantic checks
       (currently only RLS-presence is checked), edge-function-side
-      rule checks beyond smoke-test presence.
-- [ ] **Escalation rule formalization.** The current "refuse to
-      review" list (agent kit, branch-test script, edge-function
-      smoke-test script, grounding hard-rule sections) is a first
-      cut. Candidates for addition: PRs that change
-      `architecture.md` §5.5 (bank-topology framing), PRs that change
-      `learner-model.md` hard rules (the Active/Cleared/Unassessed
-      contract), PRs that change the misconception ID format itself.
-      Surface during the trust-building period.
-- [ ] **Calibrated "minimum checks" threshold.** The "refuse
-      silently-clean reports" behaviour names a "calibrated number"
-      of checks for a PR's size and complexity but does not specify
-      the number. Tune during the trust-building period.
-- [ ] **Report storage.** Where do reports live — in the PR
-      description, as a comment, as a file in the repo? Affects how
-      the human reads them and whether they are versioned.
-- [ ] **Two-pass review?** For PRs that ship a full slice (new
-      misconceptions + new items + ADR), it may make sense to run
-      the agent twice — once on the misconception authoring,
-      once on the items migration — and produce two reports rather
-      than one. Decide during the trust-building period.
+      rule checks beyond smoke-test presence. Also: rule coverage for
+      surfaces currently uncovered by the checklist (Flutter widgets,
+      learner-model logic, exam-ingestion pipeline, curriculum YAML)
+      — the rule-source coverage check will route these to 🤔 until
+      rules are added.
+- [ ] **Calibrated "minimum checks" threshold.** Resolved to "defer
+      to trust-building" — calibrate after PRs 1 and 2 produce a sense
+      of typical meaningful-check counts. The threshold is not
+      hard-coded; the agent's "refuse silently-clean reports" rule
+      relies on the human's spot-check during trust-building to
+      surface miscalibration.
+- [ ] **Audit ADR for promotion.** Post-trust-building, an ADR
+      documenting the spot-check outcome and either promoting the
+      agent to load-bearing OR specifying the revisions needed
+      before another cycle. Number TBD when written.

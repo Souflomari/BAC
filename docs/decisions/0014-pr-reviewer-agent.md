@@ -1,7 +1,10 @@
 # ADR 0014 — pr-reviewer agent
 
-**Status.** Draft, 2026-05-23. Pending human review of the agent file
-before the agent is treated as active in the workflow.
+**Status.** Draft, 2026-05-23 (revised same day after human review
+resolved 5 open questions — see §"Resolved during human review").
+Pending the trust-building period (3–4 supervised PRs + a
+post-trust-building audit ADR) before the agent is treated as
+load-bearing in the workflow.
 **Owner.** human (workflow design); the agent itself is a self-contained
 artifact under `.claude/Agents/pr-reviewer.md`.
 **Related.**
@@ -24,16 +27,16 @@ artifact under `.claude/Agents/pr-reviewer.md`.
 - All existing agent files under `.claude/Agents/` — the rules the
   pr-reviewer enforces are derived from them.
 
-> ⚠️ **Numbering note.** A prior commit on this branch (`b38011b`,
+> **Numbering resolution.** A prior commit on this branch (`b38011b`,
 > the across-skill cross-contamination fix) cites "ADR 0014
-> (forthcoming)" for the new pedagogy-auditor hard rule. This ADR
-> takes 0014 per the human's explicit instruction in the originating
-> prompt. The across-skill cross-contamination rule will need to land
-> under a different number (likely 0015) when slice 2 ships, and the
-> citations in `.claude/Agents/pedagogy-auditor.md` and
-> `backend/seed/misconceptions/sma_limit_ops.json` must be updated in
-> a follow-up commit. Surfaced as an open question — not resolved in
-> this ADR.
+> (forthcoming)" for the new pedagogy-auditor hard rule. Per the
+> human review of this ADR, the pr-reviewer agent keeps ADR 0014; the
+> across-skill cross-contamination rule renumbers to **ADR 0015**.
+> Citations in `.claude/Agents/pedagogy-auditor.md` and
+> `backend/seed/misconceptions/sma_limit_ops.json`'s
+> `v2_stem_design_check` are updated to "ADR 0015 (forthcoming)" in
+> a follow-up commit on this branch. See §"Resolved during human
+> review" §1 below.
 
 ---
 
@@ -156,31 +159,36 @@ informational.
 ## Decision D — Escalation rules (refuse to review)
 
 The pr-reviewer refuses to produce a substantive report on PRs that
-touch the meta-layer it itself runs against:
+touch the meta-layer it itself runs against. Per the human review
+(see §"Resolved during human review" §5), the three trust-building
+candidates are promoted to active. The full active list:
 
-- `.claude/Agents/*.md` — the agent kit itself.
+- `.claude/Agents/*.md` — the agent kit itself, **explicitly
+  including** `learner-model.md`'s hard rules (the
+  Active/Cleared/Unassessed contract) and `pedagogy-auditor.md`'s
+  hard rules (including the across-skill cross-contamination rule
+  formalized in ADR 0015 forthcoming).
 - `scripts/branch-test.ps1` — the migration trust anchor.
 - `scripts/edge-function-smoke-test.ps1` — the edge-function
   trust anchor.
 - `docs/grounding/architecture.md` hard-rule sections, including
   §5.5 (bank-topology) and §5.6 (UUID registry).
 - `docs/grounding/known-issues.md` severity classifications.
+- `docs/decisions/0008-misconception-authoring-conventions.md` and
+  any successor ADR that defines the misconception ID literal-segment
+  format (`mc.<subjects.code>.<skills.code>.<short-label>`).
 
 For PRs touching these surfaces, the agent emits a one-line
 "out of mechanical scope — routed to human-only review" report
 and stops. The agent does not review the rule sources from which
 its own checks derive.
 
-Additional escalation candidates to consider during trust-building:
-
-- PRs that change `learner-model.md`'s hard rules (the
-  Active/Cleared/Unassessed contract).
-- PRs that change the misconception ID format (ADR 0008's literal
-  segment definition).
-- PRs that change `pedagogy-auditor.md`'s hard rules (including the
-  across-skill cross-contamination rule added in slice 2 prep).
-
-These are TODO items, not yet active.
+The distinction between **rule sources read** (the agent consults
+these to derive checks) and **surfaces refused for change-review**
+(the agent refuses to review changes to these) is documented in the
+agent file's "Rule sources read vs surfaces refused for change-review"
+section. Same document can appear in both lists; the two roles are
+separate and explicit.
 
 ## Consequences
 
@@ -222,32 +230,81 @@ These are TODO items, not yet active.
 - The three-agent review protocol (pedagogy-auditor authors,
   bac-curriculum validates, supabase-architect maps) is unchanged.
 
-## Open questions (to resolve before promotion to active)
+## Resolved during human review
 
-These are flagged in the agent file's TODOs and reproduced here for
-ADR-level visibility:
+The five open questions raised in the draft were resolved during the
+human review session that produced this revision. Listed in the order
+they were raised; each carries the resolution and the rationale.
 
-- **Numbering conflict.** This ADR takes 0014; the across-skill
-  cross-contamination rule (committed in `b38011b` on this branch)
-  cites "ADR 0014 (forthcoming)". One of the two must renumber.
-  Recommendation: the across-skill rule renumbers to 0015 when
-  slice 2 ships, and the citations in pedagogy-auditor.md and
-  sma_limit_ops.json's v2_stem_design_check are updated to ADR 0015
-  in a follow-up commit. Needs human confirmation.
-- **Report storage.** Reports as PR comments, PR description
-  appendices, or repo-tracked files? Affects how the human reads
-  them, whether they are versioned with the PR, and whether they
-  can be referenced from ADRs after the fact.
-- **Calibrated minimum-checks threshold.** The "refuse
-  silently-clean reports" rule names a calibrated threshold but
-  does not specify the number. Tune during the trust-building
-  period.
-- **Two-pass review for slice PRs.** For a PR shipping a full slice
-  (misconceptions JSON + items migration + ADR), one report or two?
-  Decide during the trust-building period.
-- **Escalation list expansion.** Which additional surfaces beyond
-  the four named in Decision D should route to human-only review?
-  Candidates listed under Decision D — confirm during trust-building.
+1. **ADR numbering collision.** *Question:* this ADR takes 0014; the
+   across-skill cross-contamination rule (committed in `b38011b` on
+   this branch) cites "ADR 0014 (forthcoming)". *Resolution:* the
+   pr-reviewer ADR keeps 0014. The across-skill cross-contamination
+   rule renumbers to **ADR 0015**. Citations in
+   `.claude/Agents/pedagogy-auditor.md` and
+   `backend/seed/misconceptions/sma_limit_ops.json`'s
+   `v2_stem_design_check` are updated to "ADR 0015 (forthcoming)" in
+   a follow-up commit on this branch (separate from the agent
+   refinement commit). *Rationale:* the pr-reviewer agent is the
+   load-bearing artifact for ongoing workflow; the across-skill rule
+   will be formalized when slice 2 ships and its ADR fits naturally
+   one number later in sequence.
+
+2. **Report storage.** *Question:* reports as PR comments, PR
+   description appendices, or repo-tracked files? *Resolution:*
+   **repo-tracked under `.audit-logs/pr-reviews/<PR-number>-<short-slug>.md`**.
+   *Rationale:* reports become part of the durable project record
+   alongside branch-test logs in the same directory; they survive PR
+   closure (PR comments are lossy when a PR is force-pushed or
+   closed); they can be grep'd later for "what did the agent say about
+   migrations 048+"; and they don't require an `origin` remote (the
+   slice-2-prep-report.md surfaced that the local clone has no remote
+   configured — repo-tracked storage works without one).
+
+3. **Calibrated minimum-checks threshold.** *Question:* the "refuse
+   silently-clean reports" rule names a calibrated threshold but does
+   not specify the number. *Resolution:* **explicitly deferred to the
+   trust-building period.** The threshold will be calibrated after
+   PRs 1 and 2 produce a sense of typical meaningful-check counts.
+   *Rationale:* the right number depends on the empirical distribution
+   of checks per PR in this codebase, which is unknown until real PRs
+   run through the agent. A hard-coded threshold now would either be
+   too lax (lets silent reports through) or too strict (forces
+   meaningless padding). Trust-building produces the data.
+
+4. **Reports per PR — one or two for slice PRs?** *Question:* for a
+   PR shipping a full slice (misconceptions JSON + items migration +
+   ADR), one report covering all changed files or one per logical
+   layer? *Resolution:* **one report per PR, regardless of how many
+   logical layers.** *Rationale:* the PR is the unit of merge and
+   the unit of review; splitting reports invites cross-layer issues
+   to be missed (e.g., the items migration references a misconception
+   in the JSON — a per-layer report would catch each in isolation but
+   miss the cross-reference); the four-section structure
+   (✅ / ⚠️ / 🛑 / 🤔) already provides intra-report organization
+   sufficient for the human to navigate.
+
+5. **Escalation list expansion.** *Question:* which additional
+   surfaces beyond the four named in the draft Decision D should
+   route to human-only review? *Resolution:* **the three
+   trust-building candidates are promoted to active.** Decision D
+   above now explicitly includes:
+   - `learner-model.md`'s Active/Cleared/Unassessed contract;
+   - `pedagogy-auditor.md`'s hard rules (including the across-skill
+     cross-contamination rule);
+   - `docs/decisions/0008-misconception-authoring-conventions.md`
+     and any successor ADR defining the misconception ID format.
+
+   *Rationale:* these three surfaces are load-bearing for the
+   agent's own checks. A change to ADR 0008's ID format invalidates
+   the agent's cross-reference consistency checks; a change to
+   `learner-model.md`'s Active/Cleared/Unassessed contract changes
+   what the misconception-write path is supposed to record; a change
+   to `pedagogy-auditor.md`'s hard rules changes what the agent
+   verifies against content PRs. The mechanical layer cannot review
+   changes to the rules that define what mechanical means — promoting
+   them to refused at this stage avoids waiting for the trust-building
+   period to discover this in practice.
 
 ## Retractions and Corrections
 
