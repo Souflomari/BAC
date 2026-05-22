@@ -184,8 +184,9 @@ Runs in three modes; all three must be covered:
   distractor D ("0") unobserved and "0/0 = doesn't exist" reached distractor
   B ("doesn't exist") dual-attributably. Resolved by replacing the stem with
   a 1/0 form (denominator → 0, numerator → non-zero) so `sma_limit_calc.M1`
-  does not fire. To be formalized in ADR 0014 (forthcoming with slice 2's
-  ship).
+  does not fire. To be formalized in ADR 0015 (forthcoming with slice 2's
+  ship; ADR 0014 was claimed by the pr-reviewer agent — see ADR 0014
+  §"Resolved during human review" §1 for the renumbering rationale).
 
 # Do NOT
 
