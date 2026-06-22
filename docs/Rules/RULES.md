@@ -219,6 +219,11 @@ frontend (Next.js, per ADR 0016).
   retired Flutter frontend. Preserved: the Supabase backend and auth, the
   misconception schema and framework, the pedagogy and cadre knowledge, the
   ADR trail, and the vision.
+- **Flutter is retired (ADR 0016) — delete, don't patch.** The `mobile/`
+  Flutter app and its CI workflow are a dead platform. The one-off `intl`
+  downgrade to unblock CI was acceptable once; going forward, when the Flutter
+  workflow or `mobile/` dir next causes friction, **`git rm` it** rather than
+  spending effort patching a platform that is being removed.
 - **Mine before wiping.** Nothing is deleted until the old version has been
   checked for anything worth recovering. Git history makes the wipe safe —
   nothing is ever truly lost once it's in history — but the recovery pass

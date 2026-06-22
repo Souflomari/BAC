@@ -42,7 +42,13 @@ A single structured spec file at `content/<subject>/<notion>/spec.md` containing
 1. Scope + prerequisite placement, bounded to the bac.
 2. The misconception inventory — each with: id, the wrong model, how it manifests, the correct model, the confrontation strategy.
 3. The ramp — rungs, where scaffolding fades, which rung confronts which misconception, which past-bac items, which fresh variations.
-4. Media / interactive callouts — only what the concept genuinely needs (e.g. RLC: oscilloscope-trace read, energy-exchange animation, a Falstad embed; probability: tree diagrams, sample-space visuals).
+4. Media / interactive callouts — only what the concept genuinely needs, and **every callout MUST specify a `type` and a `tool`** drawn from the visual-sourcing taxonomy (ADR 0017):
+   - `atmospheric/illustrative` (hooks, scene-setting) → **Gemini** (gemini-image MCP, DESIGN-BIBLE style preamble)
+   - `structural/labelled` (probability trees, circuit schematics, geometric figures, SVT schemas) → **coded SVG + KaTeX**, never Gemini
+   - `manipulable` (drag-the-point, RLC sandbox) → **embed** (GeoGebra / Desmos / Falstad / PhET), don't rebuild
+   - `motion explanation` (hardest concepts) → **Manim**
+
+   *Rationale: enforced because the first media smoke test proved Gemini holds the DESIGN-BIBLE aesthetic but cannot render exact structure or correct labels.* (E.g. RLC: oscilloscope-trace read → `manipulable`/embed, energy-exchange → `motion`/Manim; probability: tree diagram → `structural`/coded SVG + KaTeX.)
 5. Explicit build specs addressed to content-author and to item-author.
 
 ## Working rules
