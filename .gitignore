@@ -60,3 +60,9 @@ backend/supabase/.temp/
 # catch the server's optional local config and default image output dir.
 .gemini-image-mcp.json
 /gemini-images/
+
+# docs/build/ is DOCUMENTATION (e.g. the content pipeline), not Flutter build
+# output — re-include it after the broad **/build/ rule above would otherwise
+# swallow it. (Directory must be negated before its contents.)
+!docs/build/
+!docs/build/**
