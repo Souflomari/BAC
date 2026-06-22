@@ -53,3 +53,10 @@ backend/supabase/.temp/
 
 # Local analysis dump (DB-derived; not project source) — per migration decision
 /sma_stems.json
+
+# Gemini image MCP — local artifacts.
+# The API key is supplied ONLY via the ${GEMINI_API_KEY} environment variable
+# (see .mcp.json) and must never be written to a tracked file. These patterns
+# catch the server's optional local config and default image output dir.
+.gemini-image-mcp.json
+/gemini-images/
