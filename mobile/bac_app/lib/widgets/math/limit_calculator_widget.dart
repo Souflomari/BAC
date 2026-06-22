@@ -24,7 +24,6 @@ class LimitCalculatorWidget extends StatefulWidget {
 class _LimitCalculatorWidgetState extends State<LimitCalculatorWidget> {
   final _answerController = TextEditingController();
   bool _hasSubmitted = false;
-  double _variableValue = 0;
   List<double> _computedValues = [];
 
   @override
@@ -36,10 +35,8 @@ class _LimitCalculatorWidgetState extends State<LimitCalculatorWidget> {
   void _computeValues() {
     final config = widget.item.simConfig;
     final limitType = config['type'] as String? ?? 'polynomial';
-    final approach = config['approach'] as String? ?? 'infinity';
 
     _computedValues = [];
-    _variableValue = approach == 'infinity' ? double.infinity : (config['point'] as num?)?.toDouble() ?? 0;
 
     switch (limitType) {
       case 'exponential':
@@ -315,7 +312,6 @@ class _LimitPainter extends CustomPainter {
     final minVal = filteredValues.reduce((a, b) => a < b ? a : b);
     final range = maxVal - minVal;
     final displayRange = range > 0 ? range * 1.2 : maxVal * 2;
-    final centerY = size.height - 30 - (maxVal - (maxVal + minVal) / 2) * (size.height - 40) / displayRange;
 
     final stepX = (size.width - 60) / (filteredValues.length - 1).clamp(1, 20);
 

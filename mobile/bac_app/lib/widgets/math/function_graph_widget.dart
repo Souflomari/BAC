@@ -417,10 +417,6 @@ class _GraphPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = BacPrepColors.textTertiary
-      ..strokeWidth = 1;
-
     final gridPaint = Paint()
       ..color = BacPrepColors.border.withValues(alpha: 0.5)
       ..strokeWidth = 0.5;

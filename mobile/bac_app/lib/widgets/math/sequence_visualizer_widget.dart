@@ -390,7 +390,6 @@ class _SequencePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (sequence.isEmpty) return;
 
-    final paint = Paint()..color = BacPrepColors.textTertiary;
     final axisPaint = Paint()
       ..color = BacPrepColors.textSecondary
       ..strokeWidth = 1.5;

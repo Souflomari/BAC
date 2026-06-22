@@ -27,7 +27,6 @@ class _MotionSimulatorWidgetState extends State<MotionSimulatorWidget>
   double _initialPosition = 0;
   double _initialVelocity = 5;
   double _acceleration = 0;
-  double _currentTime = 0;
   double _animationTime = 0;
   bool _isPlaying = false;
   String _scenario = 'constantVelocity';

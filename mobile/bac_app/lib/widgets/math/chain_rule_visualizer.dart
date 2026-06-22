@@ -26,8 +26,6 @@ class _ChainRuleVisualizerState extends State<ChainRuleVisualizer>
   late Animation<double> _animation;
 
   int _currentStep = 0;
-  bool _showIntermediate = true;
-  bool _showComposition = true;
 
   final _answerController = TextEditingController();
   bool _hasSubmitted = false;

@@ -507,7 +507,6 @@ class _WaveSimulatorPainter extends CustomPainter {
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
 
-    final centerAngle = math.pi / 2;
     for (double angle = -0.4; angle <= 0.4; angle += 0.1) {
       final endX = screenX;
       final endY1 = source1Y + math.tan(angle) * (screenX - source.dx);

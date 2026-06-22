@@ -24,7 +24,6 @@ class RLCSimulatorWidget extends StatefulWidget {
 class _RLCSimulatorWidgetState extends State<RLCSimulatorWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
 
   double _inductance = 0.5;
   double _capacitance = 100;
@@ -62,7 +61,6 @@ class _RLCSimulatorWidgetState extends State<RLCSimulatorWidget>
     final R = _resistance;
     final L = _inductance;
     final C = _capacitance * 1e-6;
-    final criticalR = 2 * math.sqrt(L / C);
     final R2 = R * R;
     final discriminant = R2 - 4 * L / C;
 

@@ -24,7 +24,6 @@ class ProjectileSimulatorWidget extends StatefulWidget {
 class _ProjectileSimulatorWidgetState extends State<ProjectileSimulatorWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
 
   double _initialVelocity = 20;
   double _launchAngle = 45;

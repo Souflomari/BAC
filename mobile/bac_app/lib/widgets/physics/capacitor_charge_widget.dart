@@ -24,7 +24,6 @@ class CapacitorChargeWidget extends StatefulWidget {
 class _CapacitorChargeWidgetState extends State<CapacitorChargeWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
 
   double _capacitance = 100;
   double _voltage = 12;

@@ -572,7 +572,6 @@ class _SequencePainter extends CustomPainter {
     final path = Path();
     for (int i = 0; i < (terms.length * animationValue).ceil(); i++) {
       final x = 20 + i * stepX;
-      final normalized = (terms[i] - minVal) / displayRange;
       final y = centerY - (terms[i] - (maxVal + minVal) / 2) * scale;
 
       if (i == 0) {

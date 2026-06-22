@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../../config/theme.dart';
 import '../../models/item.dart';
@@ -429,7 +428,6 @@ class _DerivativeGraphPainter extends CustomPainter {
     }
 
     if (showTangent) {
-      final tangentY0 = function(showTangentAt);
       final tangentPaint = Paint()
         ..color = BacPrepColors.success
         ..strokeWidth = 2

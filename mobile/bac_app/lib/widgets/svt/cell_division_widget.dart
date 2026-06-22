@@ -510,7 +510,7 @@ class _CellDivisionPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     double cellWidth, cellHeight;
-    double chromOffsetX = 0, chromOffsetY = 0;
+    double chromOffsetY = 0;
     double separation = 0;
 
     switch (currentPhase) {

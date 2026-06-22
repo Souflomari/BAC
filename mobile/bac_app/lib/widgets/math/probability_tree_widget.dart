@@ -30,7 +30,6 @@ class _ProbabilityTreeWidgetState extends State<ProbabilityTreeWidget>
   double _pBgivenA = 0.7;
   double _pBgivenNotA = 0.4;
 
-  bool _highlightPath = false;
   int _highlightedNode = -1;
   bool _showCalculations = true;
 
