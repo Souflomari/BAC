@@ -29,9 +29,10 @@ Read the right document for the task at hand:
 
 - **`docs/product/VISION.md`** — *why and what.* The product vision. The
   north star the whole project serves. Read before any product decision.
-- **`docs/RULES.md`** — *how we work.* The build discipline and rules of
-  work. **[STATUS: not yet written — being defined. Until it exists, the
-  production-safety non-negotiables below apply.]**
+- **`docs/Rules/RULES.md`** — *how we work.* The build discipline,
+  operating procedure, safety non-negotiables, and cadence. Authority
+  order: VISION → RULES → agents. A living document that evolves as the
+  build is figured out.
 - **`.claude/agents/*.md`** — *who does what.* The specialist subagents.
   Loaded per task. **[STATUS: roster under revision to match the locked
   vision and pending architecture decisions — see "Open decisions" below.]**
@@ -98,10 +99,11 @@ incidents.
 These are known-unresolved and block a clean resumption. Do not paper
 over them.
 
-1. **The rules of work (`docs/RULES.md`).** The build discipline — cadence,
-   how agents operate, whether the prior "vertical slice" model survives,
-   how the generative-content pipeline runs — is being redefined and is
-   not yet written.
+1. **The rules of work — RESOLVED.** Written and now living at
+   `docs/Rules/RULES.md` (the two-kinds-of-work split, the human gate,
+   cadence and working loop, the multi-model architecture, and the
+   documentation/rebuild discipline). A living document that continues to
+   evolve as the build is figured out.
 2. **The frontend architecture.** Flutter-on-Vercel today; a hybrid
    (Next.js shell + Flutter practice) was discussed but never built or
    recorded. The agent roster references a `nextjs-frontend` shell agent
