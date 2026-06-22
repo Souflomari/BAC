@@ -1,22 +1,36 @@
+# ============================================================
 # Secrets — never commit
+# ============================================================
 .env
-.env.local
-.env.production
+.env.*
+# keep the committed template (negation must come AFTER .env.*)
+!.env.example
 *.token
 .supabase_token*
+*.pem
+*.key
+*.p12
+*.keystore
+service-account*.json
 
 # Vercel
 .vercel/
 .vercel
 
-# Flutter/Dart build artifacts
+# Flutter / Dart build artifacts
 **/build/
 **/.dart_tool/
+**/.pub-cache/
 **/.flutter-plugins-dependencies
 **/.flutter-plugins
 **/pubspec.lock.bak
 
-# IDE
+# JS / Node build output
+node_modules/
+dist/
+.next/
+
+# IDE / editor
 .idea/
 *.iml
 .vscode/
@@ -26,13 +40,16 @@
 # Logs
 *.log
 
-# Node
-node_modules/
-
 # Python
 *.pyc
 __pycache__/
 
-# Supabase local
+# Supabase local artifacts
 backend/supabase/.branches/
 backend/supabase/.temp/
+# root-level Supabase CLI cache (machine-specific) — note the leading slash
+# so this does NOT match the tracked backend/supabase/ directory
+/supabase/
+
+# Local analysis dump (DB-derived; not project source) — per migration decision
+/sma_stems.json

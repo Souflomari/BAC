@@ -15,11 +15,20 @@ if ($supabaseCmd) {
     
     # Run migrations
     Write-Host "Pushing migrations..." -ForegroundColor Cyan
-    supabase db push --db-url "postgresql://postgres:__REMOVED__@localhost:54322/postgres"
+    # DB connection string is read from the SUPABASE_DB_URL environment variable.
+    # Never hard-code credentials. For local dev, use the value from `supabase status`, e.g.:
+    #   $env:SUPABASE_DB_URL = "postgresql://postgres:<password>@localhost:54322/postgres"
+    $dbUrl = $env:SUPABASE_DB_URL
+    if (-not $dbUrl) {
+        Write-Host '[!] SUPABASE_DB_URL is not set. Set it first, e.g.:' -ForegroundColor Red
+        Write-Host '    $env:SUPABASE_DB_URL = "postgresql://postgres:<password>@localhost:54322/postgres"' -ForegroundColor Yellow
+        exit 1
+    }
+    supabase db push --db-url $dbUrl
     
     # Run seed data
     Write-Host "Running seed data..." -ForegroundColor Cyan
-    supabase db seed --db-url "postgresql://postgres:__REMOVED__@localhost:54322/postgres" --file "seed_setup.sql"
+    supabase db seed --db-url $dbUrl --file "seed_setup.sql"
     
 } elseif ($psqlCmd) {
     Write-Host "[2] Using psql directly..." -ForegroundColor Yellow
