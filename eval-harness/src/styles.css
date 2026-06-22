@@ -1,0 +1,233 @@
+/*
+  DESIGN-BIBLE v0.3 (PROVISIONAL) tokens — disposable eval harness.
+  Calm, tinted-neutral, single restrained blue accent, no pure black/white,
+  soft geometry, bounded 65ch reading column. Learning-core only: no streaks,
+  XP, timers, or peripheral chrome.
+*/
+:root {
+  /* tinted-neutral surfaces (cool, never pure white) */
+  --bg: #eef1f6;
+  --surface: #f8fafc;
+  --surface-variant: #e7ecf3;
+  --border: #d3dae6;
+
+  /* text at three levels (never pure black) */
+  --text-primary: #222a37;
+  --text-secondary: #4b566a;
+  --text-tertiary: #717c90;
+
+  /* the single restrained blue accent */
+  --accent: #3e5c86;
+  --accent-strong: #324c70;
+  --accent-soft: rgba(62, 92, 134, 0.1);
+  --accent-line: rgba(62, 92, 134, 0.28);
+
+  /* muted semantic colors (meaning, not decoration) */
+  --success: #2f6b50;
+  --success-soft: rgba(47, 107, 80, 0.1);
+  --error: #a14a44;
+  --error-soft: rgba(161, 74, 68, 0.1);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --space: 8px;
+  --measure: 65ch;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, "Inter", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* bounded, centered reading/working column */
+.reading-column {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: calc(var(--space) * 8) calc(var(--space) * 3) calc(var(--space) * 12);
+}
+
+.loading { color: var(--text-tertiary); }
+
+/* prose */
+h1, h2, h3 { line-height: 1.25; font-weight: 600; color: var(--text-primary); }
+h1 { font-size: 1.9rem; margin: 0 0 calc(var(--space) * 3); }
+h2 {
+  font-size: 1.35rem;
+  margin: calc(var(--space) * 6) 0 calc(var(--space) * 2);
+}
+h3 {
+  font-size: 1.1rem;
+  margin: calc(var(--space) * 4) 0 calc(var(--space) * 1.5);
+  color: var(--text-secondary);
+}
+p, li { color: var(--text-primary); }
+p { margin: calc(var(--space) * 2) 0; }
+a { color: var(--accent); }
+strong { font-weight: 600; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: calc(var(--space) * 6) 0;
+}
+
+blockquote {
+  margin: calc(var(--space) * 3) 0;
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 3);
+  border-left: 3px solid var(--accent-line);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-secondary);
+}
+
+code {
+  background: var(--surface-variant);
+  padding: 1px 5px;
+  border-radius: 6px;
+  font-size: 0.92em;
+}
+
+/* the coded SVG arbre pondéré, inline */
+.figure {
+  margin: calc(var(--space) * 4) auto;
+  padding: calc(var(--space) * 2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.figure svg { max-width: 100%; height: auto; }
+.figure figcaption {
+  margin-top: var(--space);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+/* practice items — interactive, calm, one card at a time */
+.practice-head {
+  margin: calc(var(--space) * 8) 0 calc(var(--space) * 2);
+}
+.item {
+  margin: calc(var(--space) * 3) 0;
+  padding: calc(var(--space) * 3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.item__rung {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space);
+}
+.item__stem { margin: 0 0 calc(var(--space) * 2); }
+
+.choices { display: flex; flex-direction: column; gap: var(--space); }
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--space) * 1.5);
+  width: 100%;
+  text-align: left;
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.choice:hover:not(:disabled) { border-color: var(--accent-line); }
+.choice:disabled { cursor: default; }
+.choice__mark {
+  flex: none;
+  width: 1.4em;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+.choice--correct {
+  border-color: var(--success);
+  background: var(--success-soft);
+}
+.choice--correct .choice__mark { color: var(--success); }
+.choice--wrong {
+  border-color: var(--error);
+  background: var(--error-soft);
+}
+.choice--wrong .choice__mark { color: var(--error); }
+
+/* numeric input */
+.numeric { display: flex; gap: var(--space); align-items: center; }
+.numeric input {
+  font: inherit;
+  padding: calc(var(--space) * 1.25) calc(var(--space) * 1.5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  width: 9rem;
+}
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: calc(var(--space) * 1.25) calc(var(--space) * 2.5);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #f6f8fb;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+.btn:hover { background: var(--accent-strong); }
+.btn:disabled { background: var(--text-tertiary); cursor: default; }
+
+/* immediate per-action feedback */
+.feedback {
+  margin-top: calc(var(--space) * 2);
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border-radius: var(--radius-sm);
+  font-size: 0.96rem;
+}
+.feedback--correct { background: var(--success-soft); color: var(--success); }
+.feedback--wrong { background: var(--error-soft); color: var(--error); }
+.feedback__why {
+  display: block;
+  margin-top: var(--space);
+  color: var(--text-secondary);
+}
+.feedback__mc {
+  display: block;
+  margin-top: var(--space);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+.solution {
+  margin-top: calc(var(--space) * 2);
+  padding-top: calc(var(--space) * 2);
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+/* a soft, non-alarming notice (used for missing-content state) */
+.notice {
+  padding: calc(var(--space) * 3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+}
+
+.katex { font-size: 1.05em; }

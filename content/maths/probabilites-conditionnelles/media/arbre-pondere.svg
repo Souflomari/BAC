@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" role="img"
+     aria-label="Arbre pondéré : racine vers A et A barre, puis vers B et B barre, quatre feuilles avec leurs produits.">
+  <style>
+    .apt-edge   { stroke: #3e5c86; stroke-width: 2; fill: none; opacity: .65; }
+    .apt-node   { fill: #e7ecf3; stroke: #c2cbda; stroke-width: 1.5; }
+    .apt-root   { fill: #dfe6f1; stroke: #b4c0d6; stroke-width: 1.5; }
+    .apt-leaf   { fill: #f8fafc; stroke: #d3dae6; stroke-width: 1.5; }
+    .apt-leafB  { fill: #f8fafc; stroke: #3e5c86; stroke-width: 1.75; }
+    .apt-nlabel { font: 600 18px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #222a37; }
+    .apt-elabel { font: 500 14px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #324c70; }
+    .apt-leaftop{ font: 600 14px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #2a3340; }
+    .apt-leafval{ font: 600 14px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #4b566a; }
+    .apt-cap    { font: 500 13px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #717c90; }
+    .apt-tag    { font: 600 11px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #3e5c86; }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- edges (drawn first; nodes drawn over the ends) -->
+  <line class="apt-edge" x1="62" y1="235" x2="330" y2="130"/>
+  <line class="apt-edge" x1="62" y1="235" x2="330" y2="340"/>
+  <line class="apt-edge" x1="330" y1="130" x2="660" y2="70"/>
+  <line class="apt-edge" x1="330" y1="130" x2="660" y2="180"/>
+  <line class="apt-edge" x1="330" y1="340" x2="660" y2="300"/>
+  <line class="apt-edge" x1="330" y1="340" x2="660" y2="410"/>
+
+  <!-- edge labels (beside their edge) -->
+  <text class="apt-elabel" x="188" y="166">P(A) = 0,6</text>
+  <text class="apt-elabel" x="188" y="306">P(A&#x0305;) = 0,4</text>
+  <text class="apt-elabel" x="500" y="88">P(B|A) = 0,5</text>
+  <text class="apt-elabel" x="500" y="168">P(B&#x0305;|A) = 0,5</text>
+  <text class="apt-elabel" x="500" y="312">P(B|A&#x0305;) = 0,2</text>
+  <text class="apt-elabel" x="500" y="392">P(B&#x0305;|A&#x0305;) = 0,8</text>
+
+  <!-- root -->
+  <rect class="apt-root" x="34" y="216" width="56" height="38" rx="11"/>
+  <text class="apt-nlabel" x="62" y="241">&#x3A9;</text>
+
+  <!-- level-1 nodes -->
+  <rect class="apt-node" x="306" y="111" width="48" height="38" rx="11"/>
+  <text class="apt-nlabel" x="330" y="136">A</text>
+  <rect class="apt-node" x="306" y="321" width="48" height="38" rx="11"/>
+  <text class="apt-nlabel" x="330" y="346">A&#x0305;</text>
+
+  <!-- leaves: the two B-leaves carry the accent stroke (support "sum the B-leaves = P(B)") -->
+  <g>
+    <rect class="apt-leafB" x="586" y="48" width="156" height="44" rx="12"/>
+    <text class="apt-leaftop" x="664" y="68">A &#x2229; B</text>
+    <text class="apt-leafval" x="664" y="84">= 0,6 &#xD7; 0,5 = 0,30</text>
+    <text class="apt-tag" x="664" y="40">feuille B</text>
+  </g>
+  <g>
+    <rect class="apt-leaf" x="586" y="158" width="156" height="44" rx="12"/>
+    <text class="apt-leaftop" x="664" y="178">A &#x2229; B&#x0305;</text>
+    <text class="apt-leafval" x="664" y="194">= 0,6 &#xD7; 0,5 = 0,30</text>
+  </g>
+  <g>
+    <rect class="apt-leafB" x="586" y="278" width="156" height="44" rx="12"/>
+    <text class="apt-leaftop" x="664" y="298">A&#x0305; &#x2229; B</text>
+    <text class="apt-leafval" x="664" y="314">= 0,4 &#xD7; 0,2 = 0,08</text>
+    <text class="apt-tag" x="664" y="270">feuille B</text>
+  </g>
+  <g>
+    <rect class="apt-leaf" x="586" y="388" width="156" height="44" rx="12"/>
+    <text class="apt-leaftop" x="664" y="408">A&#x0305; &#x2229; B&#x0305;</text>
+    <text class="apt-leafval" x="664" y="424">= 0,4 &#xD7; 0,8 = 0,32</text>
+  </g>
+
+  <!-- caption: the two readings of the tree -->
+  <text class="apt-cap" x="400" y="456">
+    Le long d'une branche on multiplie · P(B) = 0,30 + 0,08 = 0,38 (somme des feuilles où B se produit)
+  </text>
+</svg>

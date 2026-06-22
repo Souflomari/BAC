@@ -1,0 +1,1537 @@
+notion: probabilites-conditionnelles
+skill_code: sma_prob_conditionnelle   # proposed; supabase-architect reconciles at step 7
+
+misconceptions:
+  - id: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+    label: "« P(A|B) et P(B|A) sont la même chose »"
+    description: "L'élève traite la probabilité conditionnelle comme symétrique : il lit $P(B|A)$ et $P(A|B)$ comme interchangeables, car « la probabilité de A et B ensemble » lui semble indépendante de l'ordre, comme $A \\cap B$. La barre est lue « et » au lieu de « sachant que »."
+    contradicts_principle: "$P(B|A) = \\dfrac{P(A \\cap B)}{P(A)}$ et $P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}$ partagent le même numérateur mais ont des dénominateurs différents. Elles sont égales seulement si $P(A)=P(B)$. L'événement conditionneur est le dénominateur — « sachant B » signifie restreindre l'univers à $B$ puis mesurer $A$ à l'intérieur."
+
+  - id: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+    label: "« P(A|B) = P(A∩B) »"
+    description: "L'élève confond la probabilité conditionnelle avec la probabilité conjointe — il omet la division par $P(B)$. « Sachant B » et « et B » s'effondrent en une seule idée : les deux semblent signifier « A et B se réalisent »."
+    contradicts_principle: "La probabilité conditionnelle renormalise à l'événement conditionneur : $P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}$. La conjointe $P(A \\cap B)$ est mesurée dans l'univers entier $\\Omega$ ; la conditionnelle est mesurée dans l'univers restreint $B$. Diviser par $P(B)$ est l'acte qui réduit l'univers à $B$."
+
+  - id: mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+    label: "« Indépendants = incompatibles »"
+    description: "L'élève fusionne les deux relations introduites successivement dans le cours. « Indépendant » (sans influence) et « incompatible / disjoint » (ne peuvent se réaliser ensemble) sont entendus comme des synonymes de « séparés, sans lien »."
+    contradicts_principle: "Ce sont des notions opposées. Incompatibles : $A \\cap B = \\emptyset$, donc $P(A \\cap B)=0$. Savoir que $A$ est réalisé signifie que $B$ ne peut pas l'être — c'est une influence maximale, l'opposé de l'indépendance. Indépendants : $P(A \\cap B)=P(A) \\cdot P(B)$. Deux événements de probabilité non nulle ne peuvent pas être à la fois incompatibles et indépendants."
+
+  - id: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+    label: "« Indépendants ⇒ P(A∩B) = 0 »"
+    description: "L'élève croit que l'indépendance signifie que les événements ne se chevauchent pas, donc $P(A \\cap B)=0$. C'est une conséquence opératoire séparable de la fusion conceptuelle M3 : un élève peut tenir M4 (« les choses indépendantes ne se croisent pas ») même s'il est flou sur le mot « incompatible »."
+    contradicts_principle: "Des événements indépendants de probabilité non nulle doivent se chevaucher : $P(A \\cap B)=P(A) \\cdot P(B) \\neq 0$. L'indépendance concerne la valeur du chevauchement (elle est égale au produit), pas l'absence de chevauchement."
+
+  - id: mc.math.sma_prob_conditionnelle.independant-somme
+    label: "« Indépendants ⇒ P(A∩B) = P(A) + P(B) »"
+    description: "L'élève connaît l'idée qu'il existe une formule pour l'indépendance, mais récupère la mauvaise opération — il additionne au lieu de multiplier. L'addition vient d'une contamination par la formule des événements incompatibles $P(A \\cup B)=P(A)+P(B)$ : le « + » de l'union se propage sur l'intersection."
+    contradicts_principle: "Pour des événements indépendants, l'intersection se multiplie : $P(A \\cap B)=P(A) \\cdot P(B)$. L'addition s'applique à l'union d'événements incompatibles. Deux opérations différentes, deux relations différentes, deux opérations ensemblistes différentes ($\\cap$ vs $\\cup$). De plus, $P(A \\cap B) \\leq \\min(P(A), P(B))$ toujours — une somme qui dépasse chaque terme est absurde."
+
+  - id: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+    label: "« On additionne le long d'une branche : P(A∩B) = P(A) + P(B|A) »"
+    description: "En lisant un arbre pondéré, l'élève additionne les deux probabilités des arêtes le long d'un chemin racine-à-feuille au lieu de les multiplier. La représentation visuelle « descendre deux étapes » se lit comme « accumuler / additionner », à la façon dont des distances s'additionnent."
+    contradicts_principle: "Le long d'une branche, on multiplie (la règle composée $P(A \\cap B)=P(A) \\cdot P(B|A)$ est exactement « la chaîne des étapes conditionnelles ») ; entre les branches / sur les feuilles, on additionne (la somme des probabilités totales). Multiplier en descendant, additionner en travers. Le produit est juste car chaque arête est une proportion conditionnelle de ce qui est arrivé au nœud au-dessus."
+
+  - id: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+    label: "« Probabilités totales sans pondérer : P(B) = P(B|A) + P(B|Ā) »"
+    description: "En appliquant la loi des probabilités totales, l'élève somme directement les probabilités conditionnelles, oubliant de pondérer chacune par la probabilité de sa branche. La structure $P(B)=\\sum\\ldots$ est mémorisée, mais le facteur $P(A_i) \\cdot$ est oublié."
+    contradicts_principle: "$P(B)=P(A) \\cdot P(B|A)+P(\\bar{A}) \\cdot P(B|\\bar{A})$ — chaque conditionnelle est pondérée par la fréquence de sa branche. On ne peut pas faire la moyenne de deux taux sans pondérer par la taille de la population. Et les poids doivent provenir d'une partition ($A \\cup \\bar{A}=\\Omega$, $A \\cap \\bar{A}=\\emptyset$, somme des $P(A_i)=1$)."
+
+  - id: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+    label: "« Lecture inverse de l'arbre : mauvais dénominateur pour P(A|B) »"
+    description: "En lisant l'arbre à rebours pour obtenir $P(A|B)$, l'élève divise la feuille favorable par le mauvais dénominateur — typiquement $P(A)$ (la branche en avant qu'il a descendue) au lieu de $P(B)$ (la somme de toutes les feuilles où $B$ se réalise). Il normalise par rapport à la cause au lieu de l'effet observé."
+    contradicts_principle: "$P(A|B)=\\dfrac{P(A \\cap B)}{P(B)}$, et $P(B)$ doit être assemblé à partir de l'arbre entier par la loi des probabilités totales ($P(B)=P(A \\cap B)+P(\\bar{A} \\cap B)$, la somme de chaque feuille où $B$ se réalise). Le dénominateur est l'événement observé $B$ (toutes les façons dont il a pu se produire), pas le seul chemin en question."
+
+items:
+
+  # ── M1 · transpose-conditionnel ─────────────────────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M1-1
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, depistage_medical]
+    stem: >
+      Une maladie touche $1\,\%$ de la population. Un test détecte $95\,\%$ des
+      malades : $P(T^+|M)=0{,}95$. Il donne aussi $10\,\%$ de faux positifs :
+      $P(T^+|\bar{M})=0{,}10$. Une personne est testée positive.
+      Quelle est $P(M|T^+)$, la probabilité qu'elle soit réellement malade ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 0{,}09$"
+        correct: true
+      - id: B
+        text: "$0{,}95$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: []
+        feedback: >
+          Ce choix confond $P(M|T^+)$ avec $P(T^+|M)=0{,}95$, qui est la
+          sensibilité du test — la probabilité d'un test positif sachant qu'on
+          est malade. On cherche l'inverse : la probabilité d'être malade sachant
+          que le test est positif. Ce sont deux conditionnelles différentes car
+          leurs dénominateurs sont différents ($P(T^+)$ vs $P(M)$). Modèle
+          erroné : « $P(A|B)$ et $P(B|A)$ sont la même chose. »
+      - id: C
+        text: "$0{,}50$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix ignore toute l'information numérique et suppose une
+          probabilité « fifty-fifty ». Il ne correspond à aucun calcul structuré.
+      - id: D
+        text: "$0{,}01$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne simplement $P(M)=0{,}01$, la prévalence de la
+          maladie, sans tenir compte du résultat du test. Il ignore l'information
+          apportée par le test positif.
+    correct_feedback: >
+      On construit l'arbre : $P(M \cap T^+)=0{,}01 \times 0{,}95=0{,}0095$ et
+      $P(\bar{M} \cap T^+)=0{,}99 \times 0{,}10=0{,}099$. Donc
+      $P(T^+)=0{,}0095+0{,}099=0{,}1085$. Puis
+      $P(M|T^+)=\tfrac{0{,}0095}{0{,}1085}\approx 0{,}09$. La plupart des
+      positifs viennent de la grande population saine, ce qui dilue fortement
+      la valeur prédictive positive.
+    solution: |
+      **Données :** $P(M)=0{,}01$, $P(\bar{M})=0{,}99$, $P(T^+|M)=0{,}95$,
+      $P(T^+|\bar{M})=0{,}10$.
+
+      **Étape 1 — Calculer les feuilles de l'arbre :**
+      $$P(M \cap T^+) = P(M) \times P(T^+|M) = 0{,}01 \times 0{,}95 = 0{,}0095$$
+      $$P(\bar{M} \cap T^+) = P(\bar{M}) \times P(T^+|\bar{M}) = 0{,}99 \times 0{,}10 = 0{,}099$$
+
+      **Étape 2 — Probabilités totales (assembler $P(T^+)$) :**
+      $$P(T^+) = 0{,}0095 + 0{,}099 = 0{,}1085$$
+
+      **Étape 3 — Lecture inverse (sachant $T^+$, remonter vers $M$) :**
+      $$P(M|T^+) = \frac{P(M \cap T^+)}{P(T^+)} = \frac{0{,}0095}{0{,}1085} \approx 0{,}0875 \approx 0{,}09$$
+
+      Le résultat est $\approx 9\,\%$, très loin de la sensibilité $95\,\%$. La
+      grande majorité des tests positifs viennent des $99\,\%$ de personnes
+      saines, même si le taux de faux positifs n'est que $10\,\%$.
+
+  # Variant 2 — M1 : contexte urne (sans inversée notée explicitement)
+  - id: PC-M1-2
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, depistage_medical]
+    stem: >
+      Un laboratoire fabrique des vaccins par deux procédés. Le procédé $A$
+      produit $70\,\%$ des lots ; $2\,\%$ de ses lots sont défectueux :
+      $P(D|A)=0{,}02$. Le procédé $B$ produit $30\,\%$ des lots ; $5\,\%$ de
+      ses lots sont défectueux : $P(D|B)=0{,}05$. Un lot défectueux est
+      découvert. Quelle est la probabilité qu'il provienne du procédé $A$,
+      c'est-à-dire $P(A|D)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}02$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(D|A)=0{,}02$, la probabilité qu'un lot du
+          procédé $A$ soit défectueux — l'inverse de ce qui est demandé.
+          $P(A|D)$ et $P(D|A)$ ont le même numérateur $P(A \cap D)$ mais des
+          dénominateurs différents ($P(D)$ vs $P(A)$). Modèle erroné :
+          « $P(A|B)$ et $P(B|A)$ sont la même chose. »
+      - id: B
+        text: "$\\approx 0{,}48$"
+        correct: true
+      - id: C
+        text: "$0{,}70$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        also_reveals: [mc.math.sma_prob_conditionnelle.transpose-conditionnel]
+        feedback: >
+          Ce choix retourne $P(A)=0{,}70$, la proportion du procédé $A$ dans la
+          production totale — il ignore l'information apportée par le fait que le
+          lot soit défectueux. Le dénominateur doit être $P(D)$, pas $P(A)$.
+          Modèle erroné : mauvais dénominateur dans la lecture inverse.
+      - id: D
+        text: "$0{,}05$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(D|B)=0{,}05$, le taux de défectueux du procédé
+          $B$ — il ne correspond à aucun calcul lié à ce qui est demandé.
+    correct_feedback: >
+      $P(D)=0{,}70 \times 0{,}02 + 0{,}30 \times 0{,}05 = 0{,}014+0{,}015=0{,}029$.
+      Puis $P(A|D)=\tfrac{0{,}014}{0{,}029}\approx 0{,}483$.
+    solution: |
+      **Données :** $P(A)=0{,}70$, $P(B)=0{,}30$, $P(D|A)=0{,}02$, $P(D|B)=0{,}05$.
+
+      **Étape 1 — Feuilles de l'arbre :**
+      $$P(A \cap D) = 0{,}70 \times 0{,}02 = 0{,}014$$
+      $$P(B \cap D) = 0{,}30 \times 0{,}05 = 0{,}015$$
+
+      **Étape 2 — Probabilités totales :**
+      $$P(D) = 0{,}014 + 0{,}015 = 0{,}029$$
+
+      **Étape 3 — Lecture inverse :**
+      $$P(A|D) = \frac{P(A \cap D)}{P(D)} = \frac{0{,}014}{0{,}029} = \frac{14}{29} \approx 0{,}483$$
+
+  # Variant 3 — M1 : filtre anti-spam, contexte différent
+  - id: PC-M1-3
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variation_fraiche]
+    stem: >
+      Un filtre anti-spam analyse les courriels. $20\,\%$ des courriels reçus
+      sont des spams. Le filtre détecte $90\,\%$ des spams (il les classe
+      « spam ») : $P(C|S)=0{,}90$. Il classe aussi incorrectement $5\,\%$ des
+      courriels légitimes comme spam : $P(C|\bar{S})=0{,}05$. Un courriel est
+      classé « spam » par le filtre. Quelle est la probabilité qu'il soit
+      réellement un spam, c'est-à-dire $P(S|C)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}90$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(C|S)=0{,}90$, la sensibilité du filtre — la
+          probabilité qu'un spam soit classé spam. On cherche $P(S|C)$, la
+          probabilité inverse : qu'un courriel classé spam soit réellement un
+          spam. Ce sont deux conditionnelles distinctes. Modèle erroné :
+          « $P(A|B)$ et $P(B|A)$ sont la même chose. »
+      - id: B
+        text: "$0{,}20$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(S)=0{,}20$, la prévalence des spams, sans
+          tenir compte du classement du filtre.
+      - id: C
+        text: "$\\approx 0{,}82$"
+        correct: true
+      - id: D
+        text: "$0{,}05$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(C|\bar{S})=0{,}05$, le taux de faux positifs du
+          filtre sur les courriels légitimes — ce n'est pas ce qui est demandé.
+    correct_feedback: >
+      $P(C)=0{,}20 \times 0{,}90 + 0{,}80 \times 0{,}05 = 0{,}18+0{,}04=0{,}22$.
+      $P(S|C)=\tfrac{0{,}18}{0{,}22}=\tfrac{9}{11}\approx 0{,}818$.
+    solution: |
+      **Données :** $P(S)=0{,}20$, $P(\bar{S})=0{,}80$, $P(C|S)=0{,}90$,
+      $P(C|\bar{S})=0{,}05$.
+
+      **Étape 1 — Feuilles :**
+      $$P(S \cap C) = 0{,}20 \times 0{,}90 = 0{,}18$$
+      $$P(\bar{S} \cap C) = 0{,}80 \times 0{,}05 = 0{,}04$$
+
+      **Étape 2 — Probabilités totales :**
+      $$P(C) = 0{,}18 + 0{,}04 = 0{,}22$$
+
+      **Étape 3 — Lecture inverse :**
+      $$P(S|C) = \frac{0{,}18}{0{,}22} = \frac{9}{11} \approx 0{,}818$$
+
+  # ── M2 · conditionnelle-egale-intersection ──────────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M2-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, definition]
+    stem: >
+      On donne $P(A \cap B)=0{,}3$ et $P(B)=0{,}5$.
+      Que vaut $P(A|B)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}6$"
+        correct: true
+      - id: B
+        text: "$0{,}3$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(A \cap B)=0{,}3$ sans diviser par $P(B)$. La
+          probabilité conjointe et la probabilité conditionnelle ont le même
+          numérateur mais des dénominateurs différents : la conjointe rapporte à
+          $\Omega$ entier, la conditionnelle rapporte uniquement à $B$. Il faut
+          diviser par $P(B)=0{,}5$ pour restreindre l'univers. Modèle erroné :
+          « $P(A|B) = P(A \cap B)$. »
+      - id: C
+        text: "$0{,}8$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix additionne $P(A \cap B)+P(B)=0{,}3+0{,}5=0{,}8$. L'addition
+          n'a pas de sens ici ; la définition est $P(A|B)=P(A \cap B)/P(B)$.
+      - id: D
+        text: "$0{,}15$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix calcule $P(A \cap B) \times P(B) = 0{,}3 \times 0{,}5=0{,}15$,
+          un produit au lieu d'un quotient. On divise, on ne multiplie pas.
+    correct_feedback: >
+      $P(A|B) = \dfrac{P(A \cap B)}{P(B)} = \dfrac{0{,}3}{0{,}5} = 0{,}6$.
+      « Sachant $B$ » signifie restreindre l'univers à $B$ : on divise
+      le numérateur $P(A \cap B)$ par la taille de ce nouvel univers $P(B)$.
+    solution: |
+      **Application directe de la définition :**
+      $$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{0{,}3}{0{,}5} = 0{,}6$$
+
+      **Vérification de cohérence :** $0{,}6 > 0{,}3 = P(A \cap B)$, ce qui
+      est normal car on a restreint l'univers à $B$ (qui est plus petit que
+      $\Omega$), donc la proportion augmente.
+
+  # Variant 2 — M2 : contexte classe / sportifs
+  - id: PC-M2-2
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, definition]
+    stem: >
+      Dans une classe, $60\,\%$ des élèves sont sportifs ($P(S)=0{,}6$) et
+      $24\,\%$ sont à la fois sportifs et membres du club de maths
+      ($P(S \cap M)=0{,}24$). Quelle est la probabilité qu'un élève soit
+      membre du club de maths, sachant qu'il est sportif, c'est-à-dire
+      $P(M|S)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}24$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(S \cap M)=0{,}24$, la fraction de toute la classe
+          qui est à la fois sportive et membre du club. Mais on cherche la
+          fraction des sportifs qui sont au club — il faut ramener l'univers aux
+          sportifs, donc diviser par $P(S)=0{,}6$. Modèle erroné :
+          « $P(M|S) = P(S \cap M)$. »
+      - id: B
+        text: "$0{,}40$"
+        correct: true
+      - id: C
+        text: "$0{,}84$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix additionne $P(S)+P(S \cap M)=0{,}6+0{,}24=0{,}84$. La
+          définition requiert une division, pas une addition.
+      - id: D
+        text: "$0{,}144$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix multiplie $P(S) \times P(S \cap M) = 0{,}6 \times 0{,}24$.
+          On divise $P(S \cap M)$ par $P(S)$, on ne les multiplie pas.
+    correct_feedback: >
+      $P(M|S) = \dfrac{P(S \cap M)}{P(S)} = \dfrac{0{,}24}{0{,}6} = 0{,}4$.
+      Parmi les $60\,\%$ de sportifs, $24\,\%$ de la classe entière sont aussi
+      au club — soit $40\,\%$ des sportifs.
+    solution: |
+      **On restreint l'univers aux sportifs :**
+      $$P(M|S) = \frac{P(S \cap M)}{P(S)} = \frac{0{,}24}{0{,}6} = 0{,}40$$
+
+  # Variant 3 — M2 : nombres différents, contexte production
+  - id: PC-M2-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, definition]
+    stem: >
+      Une usine produit des pièces. On sait que $P(B)=0{,}4$ (probabilité que
+      la pièce provienne de la machine $B$) et $P(B \cap D)=0{,}12$ (probabilité
+      qu'une pièce provienne de $B$ et soit défectueuse). Que vaut $P(D|B)$,
+      la probabilité qu'une pièce soit défectueuse sachant qu'elle vient de $B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}52$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix additionne $P(B)+P(B \cap D)=0{,}4+0{,}12=0{,}52$. La
+          définition de la probabilité conditionnelle requiert une division.
+      - id: B
+        text: "$0{,}12$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(B \cap D)=0{,}12$ directement. C'est la
+          probabilité qu'une pièce soit simultanément de $B$ et défectueuse —
+          mesurée dans l'univers entier. On cherche la proportion de défectueux
+          parmi les pièces de $B$ seulement, donc on divise par $P(B)=0{,}4$.
+          Modèle erroné : « $P(D|B) = P(B \cap D)$. »
+      - id: C
+        text: "$0{,}30$"
+        correct: true
+      - id: D
+        text: "$0{,}048$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix multiplie $P(B) \times P(B \cap D)=0{,}4 \times 0{,}12$.
+          On divise, on ne multiplie pas.
+    correct_feedback: >
+      $P(D|B) = \dfrac{P(B \cap D)}{P(B)} = \dfrac{0{,}12}{0{,}4} = 0{,}30$.
+    solution: |
+      $$P(D|B) = \frac{P(B \cap D)}{P(B)} = \frac{0{,}12}{0{,}4} = 0{,}30$$
+
+  # ── M3 · independant-egale-incompatible ─────────────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M3-1
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      $A$ et $B$ sont deux événements avec $P(A)=0{,}4$, $P(B)=0{,}5$ et
+      $P(A \cap B)=0$. Laquelle de ces affirmations est vraie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$A$ et $B$ sont incompatibles mais PAS indépendants."
+        correct: true
+      - id: B
+        text: "$A$ et $B$ sont indépendants car ils n'ont aucun lien."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+        also_reveals: []
+        feedback: >
+          « Aucun lien » est la définition intuitive fausse de l'indépendance.
+          Si $P(A \cap B)=0$ alors $P(B|A)=0 \neq 0{,}5=P(B)$ : savoir que $A$
+          est réalisé modifie totalement la probabilité de $B$ (elle devient 0).
+          C'est l'influence maximale — l'opposé de l'indépendance. Modèle
+          erroné : « indépendants = incompatibles. »
+      - id: C
+        text: "$A$ et $B$ sont à la fois incompatibles et indépendants."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+        also_reveals: []
+        feedback: >
+          C'est la fusion littérale des deux notions. Si $P(A)>0$ et $P(B)>0$,
+          des événements incompatibles ne peuvent jamais être indépendants :
+          $P(A \cap B)=0 \neq P(A) \cdot P(B)=0{,}2$. Modèle erroné :
+          « indépendants = incompatibles. »
+      - id: D
+        text: "$A$ et $B$ sont indépendants car $P(A \\cap B)=0$."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: [mc.math.sma_prob_conditionnelle.independant-egale-incompatible]
+        feedback: >
+          Ce raisonnement inverse : il conclut à l'indépendance parce que
+          l'intersection est nulle. C'est exactement l'opposé — si
+          $P(A \cap B)=0 \neq P(A) \cdot P(B)=0{,}2$, les événements sont
+          dépendants (incompatibles). Modèle erroné : M4 (indépendants ⇒
+          $P(A \cap B)=0$) doublé de la confusion M3.
+    correct_feedback: >
+      $P(A \cap B)=0$ signifie que $A$ et $B$ sont incompatibles (ils ne peuvent
+      pas se réaliser ensemble). L'indépendance exigerait $P(A \cap B)=P(A) \cdot
+      P(B)=0{,}2 \neq 0$ : ils sont donc dépendants. Incompatibilité et
+      indépendance sont des notions opposées.
+    solution: |
+      **Test d'incompatibilité :** $P(A \cap B)=0$ ✓ → $A$ et $B$ sont incompatibles.
+
+      **Test d'indépendance :** $P(A) \cdot P(B) = 0{,}4 \times 0{,}5 = 0{,}2 \neq 0 = P(A \cap B)$ → ils ne sont PAS indépendants.
+
+      **Conclusion :** $A$ et $B$ sont incompatibles mais pas indépendants.
+
+      **Principe clé :** si $P(A)>0$ et $P(B)>0$, des événements incompatibles
+      sont toujours dépendants, car $P(B|A)=0 \neq P(B)$.
+
+  # Variant 2 — M3 : dé à 6 faces, contexte différent
+  - id: PC-M3-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      On lance un dé équilibré à 6 faces. Soit $A=\{2\}$ (obtenir un 2) et
+      $B=\{5\}$ (obtenir un 5). Sachant que $A$ s'est réalisé, que vaut
+      $P(B|A)$ ? Que peut-on conclure sur l'indépendance de $A$ et $B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$P(B|A) = \\dfrac{1}{6}$, donc $A$ et $B$ sont indépendants."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+        also_reveals: []
+        feedback: >
+          Si on a obtenu un 2, il est impossible d'avoir obtenu un 5 sur le même
+          lancer : $P(B|A)=0$, pas $\tfrac{1}{6}$. $A$ et $B$ sont incompatibles
+          (disjoints), ce qui les rend fortement dépendants, pas indépendants.
+          Modèle erroné : « incompatibles = indépendants. »
+      - id: B
+        text: "$P(B|A) = 0$, donc $A$ et $B$ sont indépendants."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+        also_reveals: []
+        feedback: >
+          $P(B|A)=0$ est juste, mais la conclusion est fausse. $P(B|A)=0 \neq
+          \tfrac{1}{6}=P(B)$ : savoir que $A$ est réalisé a changé la
+          probabilité de $B$ (de $\tfrac{1}{6}$ à $0$). C'est de la dépendance,
+          pas de l'indépendance. Modèle erroné : confondre « aucune coréalisation
+          possible » avec « aucune influence ».
+      - id: C
+        text: "$P(B|A) = 0$, donc $A$ et $B$ sont dépendants (incompatibles)."
+        correct: true
+      - id: D
+        text: "$P(B|A) = \\dfrac{1}{6}$, donc $A$ et $B$ sont dépendants."
+        correct: false
+        misconception: null
+        feedback: >
+          $P(B|A) \neq \tfrac{1}{6}$. Si on a obtenu un 2, la probabilité
+          d'avoir obtenu un 5 est $0$, pas $\tfrac{1}{6}$.
+    correct_feedback: >
+      $A \cap B = \emptyset$, donc $P(B|A)=0$. Or $P(B)=\tfrac{1}{6} \neq 0$.
+      Connaître $A$ change radicalement la probabilité de $B$ : ils sont
+      dépendants (incompatibles). L'incompatibilité est l'opposé de
+      l'indépendance.
+    solution: |
+      **$A \cap B = \{2\} \cap \{5\} = \emptyset$** : les événements sont incompatibles.
+
+      $$P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{0}{1/6} = 0$$
+
+      **Test d'indépendance :** $P(B|A) = 0 \neq \dfrac{1}{6} = P(B)$ → dépendants.
+
+      Les événements incompatibles (de probabilité non nulle) sont toujours
+      dépendants : savoir que l'un s'est réalisé exclut totalement l'autre.
+
+  # Variant 3 — M3 : deux urnes, contexte structurellement différent
+  - id: PC-M3-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      On considère deux événements $A$ et $B$ tels que $P(A)=0{,}3$,
+      $P(B)=0{,}4$ et $P(A \cup B)=0{,}7$. Calculer $P(A \cap B)$ puis
+      déterminer si $A$ et $B$ sont indépendants ou incompatibles.
+    type: mcq
+    choices:
+      - id: A
+        text: "$P(A \\cap B)=0$ ; $A$ et $B$ sont incompatibles et indépendants."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+        also_reveals: []
+        feedback: >
+          $P(A \cap B) = P(A)+P(B)-P(A \cup B) = 0{,}3+0{,}4-0{,}7=0$. Le
+          calcul de $P(A \cap B)=0$ est correct : $A$ et $B$ sont bien
+          incompatibles. Mais ils ne sont pas indépendants : $P(A) \cdot P(B)=
+          0{,}12 \neq 0$. Incompatibilité et indépendance sont des notions
+          opposées. Modèle erroné : « incompatibles = indépendants ».
+      - id: B
+        text: "$P(A \\cap B)=0$ ; $A$ et $B$ sont incompatibles mais PAS indépendants."
+        correct: true
+      - id: C
+        text: "$P(A \\cap B)=0{,}12$ ; $A$ et $B$ sont indépendants."
+        correct: false
+        misconception: null
+        feedback: >
+          $P(A \cap B) = P(A)+P(B)-P(A \cup B) = 0{,}3+0{,}4-0{,}7=0$, pas
+          $0{,}12$. Le calcul de l'intersection est incorrect ici.
+      - id: D
+        text: "$P(A \\cap B)=0{,}12$ ; $A$ et $B$ sont dépendants."
+        correct: false
+        misconception: null
+        feedback: >
+          $P(A \cap B) = 0{,}3+0{,}4-0{,}7=0 \neq 0{,}12$. Le calcul est
+          incorrect.
+    correct_feedback: >
+      $P(A \cap B)=P(A)+P(B)-P(A \cup B)=0{,}3+0{,}4-0{,}7=0$ : $A$ et $B$
+      sont incompatibles. Test d'indépendance : $P(A) \cdot P(B)=0{,}12 \neq 0$,
+      donc ils ne sont pas indépendants.
+    solution: |
+      **Calcul de $P(A \cap B)$ par la formule de l'union :**
+      $$P(A \cap B) = P(A)+P(B)-P(A \cup B) = 0{,}3+0{,}4-0{,}7 = 0$$
+
+      → $A$ et $B$ sont incompatibles ($A \cap B = \emptyset$).
+
+      **Test d'indépendance :**
+      $$P(A) \cdot P(B) = 0{,}3 \times 0{,}4 = 0{,}12 \neq 0 = P(A \cap B)$$
+
+      → $A$ et $B$ ne sont PAS indépendants.
+
+      **Conclusion :** incompatibles et dépendants — les deux propriétés ne
+      peuvent pas coexister pour des événements de probabilité non nulle.
+
+  # ── M4 · independant-implique-intersection-nulle ────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M4-1
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      $A$ et $B$ sont deux événements indépendants avec $P(A)=0{,}4$ et
+      $P(B)=0{,}5$. Que vaut $P(A \cap B)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}2$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: []
+        feedback: >
+          Ce choix suppose que des événements indépendants ne se chevauchent
+          pas, donc $P(A \cap B)=0$. Mais l'indépendance porte sur la valeur du
+          chevauchement (elle égale le produit $P(A) \cdot P(B)$), pas sur
+          l'absence de chevauchement. Exemple : lancer deux pièces —
+          « pile au 1er lancer » et « pile au 2e lancer » sont indépendants, et
+          on peut obtenir deux piles. Modèle erroné : « indépendants ⇒
+          $P(A \cap B)=0$. »
+      - id: C
+        text: "$0{,}9$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-somme
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $P(A)+P(B)=0{,}4+0{,}5=0{,}9$. L'addition
+          s'applique à l'union d'événements incompatibles, pas à l'intersection
+          d'événements indépendants. Pour des indépendants, on multiplie.
+          Modèle erroné : « indépendants ⇒ $P(A \cap B)=P(A)+P(B)$. »
+      - id: D
+        text: "$0{,}1$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $|P(A)-P(B)|=|0{,}4-0{,}5|=0{,}1$, une différence
+          qui n'a pas de signification probabiliste ici. La formule de
+          l'indépendance est $P(A \cap B)=P(A) \cdot P(B)$.
+    correct_feedback: >
+      Par définition de l'indépendance : $P(A \cap B)=P(A) \cdot P(B) =
+      0{,}4 \times 0{,}5 = 0{,}2$. L'intersection n'est pas nulle — les deux
+      événements peuvent se réaliser ensemble, et ils le font avec probabilité
+      $0{,}2$.
+    solution: |
+      **Définition de l'indépendance :**
+      $$A \text{ et } B \text{ indépendants} \iff P(A \cap B) = P(A) \cdot P(B)$$
+
+      **Application :**
+      $$P(A \cap B) = 0{,}4 \times 0{,}5 = 0{,}2$$
+
+      **Vérification de cohérence :** $0{,}2 \leq \min(0{,}4; 0{,}5)=0{,}4$ ✓
+      (l'intersection ne peut dépasser ni l'un ni l'autre des événements).
+
+  # Variant 2 — M4 : deux pièces, contexte concret
+  - id: PC-M4-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      On lance deux pièces de monnaie équilibrées. Soit $A$ = « la première
+      pièce tombe sur pile » et $B$ = « la deuxième pièce tombe sur pile ».
+      $A$ et $B$ sont indépendants avec $P(A)=P(B)=\tfrac{1}{2}$.
+      Quelle est $P(A \cap B)$, la probabilité d'obtenir deux piles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{4}$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: []
+        feedback: >
+          Obtenir deux piles est clairement possible ! L'indépendance ne
+          signifie pas que les événements ne peuvent pas se co-réaliser — elle
+          signifie que la réalisation de l'un n'influence pas l'autre. On peut
+          obtenir pile-pile avec probabilité $\tfrac{1}{2} \times \tfrac{1}{2}=
+          \tfrac{1}{4}$. Modèle erroné : « indépendants ⇒ $P(A \cap B)=0$. »
+      - id: C
+        text: "$1$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-somme
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $\tfrac{1}{2}+\tfrac{1}{2}=1$, ce qui est
+          absurde : obtenir deux piles n'est pas certain. L'addition s'applique
+          à l'union d'événements incompatibles ; pour des indépendants on
+          multiplie. Modèle erroné : addition au lieu de multiplication.
+      - id: D
+        text: "$\\dfrac{1}{2}$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(A)$ ou $P(B)$ sans calculer l'intersection. La
+          probabilité d'obtenir deux piles est inférieure à celle d'obtenir
+          pile au premier lancer seulement.
+    correct_feedback: >
+      $P(A \cap B) = P(A) \cdot P(B) = \tfrac{1}{2} \times \tfrac{1}{2} =
+      \tfrac{1}{4}$. On peut tout à fait obtenir deux piles — c'est même
+      l'un des 4 résultats équiprobables de l'expérience.
+    solution: |
+      **Univers :** $\{(P,P),\,(P,F),\,(F,P),\,(F,F)\}$, équiprobable.
+      $$P(A \cap B) = P(\{(P,P)\}) = \frac{1}{4}$$
+
+      **Par la formule d'indépendance :**
+      $$P(A \cap B) = P(A) \cdot P(B) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \checkmark$$
+
+  # Variant 3 — M4 : probabilités différentes, contexte production
+  - id: PC-M4-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      Deux machines $M_1$ et $M_2$ fonctionnent de façon indépendante. La
+      probabilité que $M_1$ tombe en panne dans la journée est $0{,}3$, et
+      celle de $M_2$ est $0{,}2$. Quelle est la probabilité que les deux
+      machines tombent en panne le même jour ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}06$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: []
+        feedback: >
+          Ce choix suppose que des machines indépendantes ne peuvent pas tomber
+          en panne le même jour. L'indépendance signifie seulement que la panne
+          de l'une n'influence pas l'autre — les deux peuvent très bien tomber
+          en panne simultanément avec probabilité $0{,}3 \times 0{,}2=0{,}06$.
+          Modèle erroné : « indépendants ⇒ $P(A \cap B)=0$. »
+      - id: C
+        text: "$0{,}5$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-somme
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $0{,}3+0{,}2=0{,}5$. L'addition donne la
+          probabilité de l'union (quand les événements sont incompatibles) —
+          ici ils ne le sont pas, et on cherche l'intersection d'événements
+          indépendants, qui se multiplie. Modèle erroné.
+      - id: D
+        text: "$0{,}44$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce résultat ne correspond à aucune opération probabiliste élémentaire
+          sur ces données. La probabilité que les deux tombent en panne est
+          $P(P_1) \times P(P_2) = 0{,}3 \times 0{,}2$.
+    correct_feedback: >
+      $P(P_1 \cap P_2) = P(P_1) \cdot P(P_2) = 0{,}3 \times 0{,}2 = 0{,}06$
+      par indépendance. Les pannes simultanées sont rares (6 %) mais possibles.
+    solution: |
+      $$P(P_1 \cap P_2) = P(P_1) \cdot P(P_2) = 0{,}3 \times 0{,}2 = 0{,}06$$
+
+  # ── M5 · independant-somme ──────────────────────────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M5-1
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      $A$ et $B$ sont deux événements indépendants avec $P(A)=0{,}4$ et
+      $P(B)=0{,}5$. Que vaut $P(A \cap B)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}2$"
+        correct: true
+      - id: B
+        text: "$0{,}9$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-somme
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $P(A)+P(B)=0{,}4+0{,}5=0{,}9$. C'est la formule
+          de l'union d'événements incompatibles qui a été appliquée à
+          l'intersection. Pour des événements indépendants, l'intersection se
+          multiplie. De plus, $0{,}9 > P(B)=0{,}5$ : une intersection ne peut
+          dépasser aucun de ses membres. Modèle erroné : « indépendants ⇒
+          $P(A \cap B)=P(A)+P(B)$. »
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: []
+        feedback: >
+          Ce choix suppose que des événements indépendants ne se croisent pas.
+          $P(A \cap B)=P(A) \cdot P(B)=0{,}2 \neq 0$. Modèle erroné :
+          « indépendants ⇒ $P(A \cap B)=0$. »
+      - id: D
+        text: "$0{,}45$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne la moyenne $(0{,}4+0{,}5)/2=0{,}45$, qui n'a pas
+          de sens probabiliste ici. Pour des indépendants : $P(A \cap B)=P(A)
+          \cdot P(B)$.
+    correct_feedback: >
+      $P(A \cap B)=P(A) \cdot P(B)=0{,}4 \times 0{,}5=0{,}2$. La multiplication
+      est correcte, et $0{,}2 \leq \min(0{,}4; 0{,}5)$ — cohérent.
+    solution: |
+      $$P(A \cap B) = P(A) \cdot P(B) = 0{,}4 \times 0{,}5 = 0{,}2$$
+
+      **Sanity-check :** $P(A \cap B)=0{,}2 \leq \min(P(A),P(B))=0{,}4$ ✓.
+      La valeur $0{,}9$ (choix B) dépasserait $P(B)=0{,}5$, ce qui est impossible
+      pour une intersection.
+
+  # Variant 2 — M5 : probabilités différentes, contexte tirage
+  - id: PC-M5-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      On tire avec remise une bille d'une urne contenant $3$ billes rouges et
+      $7$ billes bleues, puis on recommence. Soit $R_1$ = « bille rouge au
+      premier tirage » et $R_2$ = « bille rouge au second tirage ». $R_1$ et
+      $R_2$ sont indépendants. Quelle est la probabilité d'obtenir une bille
+      rouge aux deux tirages ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{3}{5}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-somme
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $\tfrac{3}{10}+\tfrac{3}{10}=\tfrac{6}{10}=
+          \tfrac{3}{5}$. L'addition de probabilités s'applique à l'union
+          d'événements incompatibles ; ici on cherche l'intersection
+          d'événements indépendants, qui se multiplie. De plus,
+          $\tfrac{3}{5} > \tfrac{3}{10}=P(R_1)$ : absurde, car la probabilité
+          de deux événements simultanés ne peut dépasser l'un d'eux. Modèle
+          erroné : addition au lieu de multiplication.
+      - id: B
+        text: "$\\dfrac{9}{100}$"
+        correct: true
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: []
+        feedback: >
+          Obtenir deux billes rouges est parfaitement possible dans une urne qui
+          contient des billes rouges. L'indépendance (grâce au remise) ne
+          signifie pas l'impossibilité de co-réalisation. Modèle erroné.
+      - id: D
+        text: "$\\dfrac{3}{10}$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(R_1)=\tfrac{3}{10}$ sans calculer l'intersection.
+          La probabilité d'obtenir rouge aux deux tirages est strictement
+          inférieure à celle d'obtenir rouge à un seul tirage.
+    correct_feedback: >
+      $P(R_1 \cap R_2)=P(R_1) \cdot P(R_2)=\tfrac{3}{10} \times \tfrac{3}{10}=
+      \tfrac{9}{100}=0{,}09$. La multiplication est la bonne opération pour
+      l'intersection d'événements indépendants.
+    solution: |
+      $$P(R_1) = \frac{3}{10}, \quad P(R_2) = \frac{3}{10}$$
+      $$P(R_1 \cap R_2) = P(R_1) \cdot P(R_2) = \frac{3}{10} \times \frac{3}{10} = \frac{9}{100}$$
+
+  # Variant 3 — M5 : vérification d'indépendance à rebours
+  - id: PC-M5-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, independance]
+    stem: >
+      On donne $P(A)=0{,}6$, $P(B)=0{,}3$ et $P(A \cap B)=0{,}18$.
+      Un élève affirme : « $A$ et $B$ ne sont pas indépendants car
+      $P(A \cap B) \neq P(A)+P(B)=0{,}9$. »
+      Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non — la bonne formule est $P(A \\cap B)=P(A) \\cdot P(B)$, et ici $0{,}6 \\times 0{,}3 = 0{,}18 = P(A \\cap B)$, donc $A$ et $B$ sont indépendants."
+        correct: true
+      - id: B
+        text: "Oui — $P(A \\cap B) \\neq P(A)+P(B)$ confirme qu'ils ne sont pas indépendants."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-somme
+        also_reveals: []
+        feedback: >
+          L'élève applique la mauvaise formule. L'indépendance se teste avec la
+          multiplication, pas l'addition : $P(A \cap B) \stackrel{?}{=} P(A)
+          \cdot P(B)$. Ici $0{,}6 \times 0{,}3=0{,}18=P(A \cap B)$, donc ils
+          sont bien indépendants. L'addition ($P(A)+P(B)=0{,}9$) s'applique à
+          l'union d'incompatibles. Modèle erroné.
+      - id: C
+        text: "Non — $A$ et $B$ sont indépendants car $P(A \\cap B)=0$."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        also_reveals: []
+        feedback: >
+          $P(A \cap B)=0{,}18 \neq 0$. Et même si l'intersection était nulle,
+          cela signifierait incompatibilité, pas indépendance. Modèle erroné.
+      - id: D
+        text: "Oui — $0{,}18 < 0{,}9$ confirme que l'intersection est plus petite que la somme, donc ils sont dépendants."
+        correct: false
+        misconception: null
+        feedback: >
+          Il est toujours vrai que $P(A \cap B) \leq P(A)+P(B)$ (pour tout $A$
+          et $B$), mais cela n'a rien à voir avec l'indépendance. Le critère
+          est $P(A \cap B) = P(A) \cdot P(B)$.
+    correct_feedback: >
+      La formule de l'indépendance est $P(A \cap B)=P(A) \cdot P(B)=0{,}6
+      \times 0{,}3=0{,}18$. Or $P(A \cap B)=0{,}18$ : l'égalité est vérifiée,
+      $A$ et $B$ sont indépendants.
+    solution: |
+      **Test d'indépendance :**
+      $$P(A) \cdot P(B) = 0{,}6 \times 0{,}3 = 0{,}18 = P(A \cap B) \checkmark$$
+
+      → $A$ et $B$ sont indépendants.
+
+      L'élève a utilisé la formule de l'union des incompatibles ($P(A)+P(B)$)
+      au lieu du produit. Ces deux formules n'ont rien à voir l'une avec l'autre.
+
+  # ── M6 · arbre-additionne-branche ───────────────────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M6-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, arbre_pondere]
+    stem: >
+      Sur un arbre de probabilités pondéré : $P(A)=0{,}6$ et $P(B|A)=0{,}4$.
+      Que vaut $P(A \cap B)$, la probabilité de la feuille « $A$ puis $B$ » ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}24$"
+        correct: true
+      - id: B
+        text: "$1{,}0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $P(A)+P(B|A)=0{,}6+0{,}4=1{,}0$. Le résultat
+          $1{,}0$ devrait alerter : une feuille d'arbre ne peut pas avoir une
+          probabilité égale à l'univers entier. Le long d'une branche, on
+          multiplie : chaque arête donne la proportion de ce qui est arrivé au
+          nœud précédent. « $40\,\%$ de ceux qui ont fait $A$ » = $40\,\% \times
+          60\,\% = 24\,\%$ de tout le monde. Modèle erroné : « on additionne
+          le long d'une branche. »
+      - id: C
+        text: "$0{,}2$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix correspond à la différence $P(A)-P(B|A)=0{,}6-0{,}4=0{,}2$,
+          qui n'a pas de sens probabiliste sur un arbre. Le long d'une branche,
+          on multiplie : $P(A) \times P(B|A)$.
+      - id: D
+        text: "$0{,}5$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce résultat ($\approx$ la moyenne de $0{,}6$ et $0{,}4$) n'est pas une
+          opération définie sur l'arbre pour cette feuille. On multiplie les
+          probabilités des arêtes.
+    correct_feedback: >
+      $P(A \cap B)=P(A) \times P(B|A)=0{,}6 \times 0{,}4=0{,}24$. Le long
+      d'une branche, on multiplie (règle composée). Additionner donnerait
+      $1{,}0$, une probabilité impossible pour une feuille.
+    solution: |
+      **Règle composée (multiplication le long de la branche) :**
+      $$P(A \cap B) = P(A) \times P(B|A) = 0{,}6 \times 0{,}4 = 0{,}24$$
+
+      **Pourquoi on multiplie :** $P(B|A)=0{,}4$ est la proportion de $B$
+      parmi ceux qui ont fait $A$ (soit $60\,\%$ de l'univers). La proportion
+      de $B$ dans tout l'univers vaut $40\,\%$ de ces $60\,\%$ = $0{,}4 \times
+      0{,}6 = 0{,}24$.
+
+  # Variant 2 — M6 : arbre avec probabilités différentes
+  - id: PC-M6-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, arbre_pondere]
+    stem: >
+      Un arbre pondéré comporte deux branches. On donne $P(A)=0{,}7$ et
+      $P(B|A)=0{,}3$. Quelle est la valeur de la feuille $A \cap B$ de cet
+      arbre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}21$"
+        correct: true
+      - id: B
+        text: "$1{,}0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        also_reveals: []
+        feedback: >
+          $0{,}7+0{,}3=1{,}0$ est le résultat de l'addition des deux arêtes,
+          ce qui dépasse la probabilité du sommet $A$ ($0{,}7$). Un résultat
+          de probabilité $1{,}0$ pour une feuille signifie que l'événement est
+          certain — impossible ici. On multiplie le long d'une branche :
+          $0{,}7 \times 0{,}3 = 0{,}21$. Modèle erroné : « additionner le long
+          d'une branche. »
+      - id: C
+        text: "$0{,}4$"
+        correct: false
+        misconception: null
+        feedback: >
+          $0{,}7-0{,}3=0{,}4$ est une différence qui n'est pas une opération
+          de l'arbre. La feuille vaut $P(A) \times P(B|A)$.
+      - id: D
+        text: "$0{,}3$"
+        correct: false
+        misconception: null
+        feedback: >
+          $0{,}3 = P(B|A)$, la probabilité conditionnelle seule, sans tenir
+          compte de la première branche $P(A)=0{,}7$. On multiplie les deux
+          arêtes.
+    correct_feedback: >
+      $P(A \cap B) = P(A) \times P(B|A) = 0{,}7 \times 0{,}3 = 0{,}21$.
+    solution: |
+      $$P(A \cap B) = 0{,}7 \times 0{,}3 = 0{,}21$$
+
+  # Variant 3 — M6 : arbre à 4 feuilles, demande une feuille spécifique
+  - id: PC-M6-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, arbre_pondere]
+    stem: >
+      Un arbre pondéré a deux niveaux. $P(A)=0{,}5$, $P(\bar{A})=0{,}5$,
+      $P(B|\bar{A})=0{,}6$. Que vaut $P(\bar{A} \cap B)$, la probabilité de la
+      feuille « $\bar{A}$ puis $B$ » ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}30$"
+        correct: true
+      - id: B
+        text: "$1{,}1$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        also_reveals: []
+        feedback: >
+          $0{,}5+0{,}6=1{,}1 > 1$ : une probabilité supérieure à $1$ est
+          impossible. C'est le signal que vous avez additionné les arêtes au
+          lieu de les multiplier. Tout résultat $> 1$ sur une feuille révèle
+          cette erreur. La règle : multiplier en descendant. Modèle erroné :
+          « additionner le long d'une branche. »
+      - id: C
+        text: "$0{,}10$"
+        correct: false
+        misconception: null
+        feedback: >
+          $|0{,}6-0{,}5|=0{,}1$, une différence sans signification ici.
+      - id: D
+        text: "$0{,}6$"
+        correct: false
+        misconception: null
+        feedback: >
+          $0{,}6=P(B|\bar{A})$, la probabilité conditionnelle seule. On doit
+          pondérer par $P(\bar{A})=0{,}5$.
+    correct_feedback: >
+      $P(\bar{A} \cap B) = P(\bar{A}) \times P(B|\bar{A}) = 0{,}5 \times
+      0{,}6 = 0{,}30$.
+    solution: |
+      $$P(\bar{A} \cap B) = P(\bar{A}) \times P(B|\bar{A}) = 0{,}5 \times 0{,}6 = 0{,}30$$
+
+  # ── M7 · totales-sans-ponderation ───────────────────────────────────────────
+  # Canonical (spec's distinguishing stem)
+  - id: PC-M7-1
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, probabilites_totales]
+    stem: >
+      On donne : $P(A)=0{,}6$, $P(B|A)=0{,}5$, $P(\bar{A})=0{,}4$,
+      $P(B|\bar{A})=0{,}2$.
+      Que vaut $P(B)$ par la formule des probabilités totales ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}38$"
+        correct: true
+      - id: B
+        text: "$0{,}7$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix additionne directement $P(B|A)+P(B|\bar{A})=0{,}5+0{,}2=
+          0{,}7$ sans pondérer par les poids des branches. Or $0{,}7$ est en
+          dehors de l'intervalle $[0{,}2\,;\,0{,}5]$ des taux partiels : $P(B)$
+          doit nécessairement se trouver entre les deux taux. On pondère chaque
+          conditionnel par la probabilité de sa branche : $0{,}6 \times 0{,}5 +
+          0{,}4 \times 0{,}2 = 0{,}38$. Modèle erroné : « probabilités totales
+          sans pondérer. »
+      - id: C
+        text: "$0{,}35$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule la moyenne simple $(0{,}5+0{,}2)/2=0{,}35$, une
+          variante du même modèle erroné : on fait la moyenne non pondérée des
+          taux conditionnels. Il faut pondérer par $P(A)=0{,}6$ et
+          $P(\bar{A})=0{,}4$, qui ne sont pas égaux (sinon la moyenne simple
+          serait juste). Modèle erroné : absence de pondération.
+      - id: D
+        text: "$0{,}10$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce résultat ($= P(B|A) - P(B|\bar{A}) = 0{,}3$ ou $0{,}5-0{,}4=0{,}1$)
+          ne correspond à aucune formule probabiliste valide ici.
+    correct_feedback: >
+      $P(B)=P(A) \cdot P(B|A)+P(\bar{A}) \cdot P(B|\bar{A}) = 0{,}6 \times
+      0{,}5 + 0{,}4 \times 0{,}2 = 0{,}30 + 0{,}08 = 0{,}38$. Le résultat
+      $0{,}38$ est bien compris entre $0{,}2$ et $0{,}5$, cohérent.
+    solution: |
+      **Loi des probabilités totales :**
+      $$P(B) = P(A) \cdot P(B|A) + P(\bar{A}) \cdot P(B|\bar{A})$$
+      $$= 0{,}6 \times 0{,}5 + 0{,}4 \times 0{,}2$$
+      $$= 0{,}30 + 0{,}08 = 0{,}38$$
+
+      **Vérification :** $0{,}2 \leq 0{,}38 \leq 0{,}5$ ✓ (compris entre les
+      deux taux partiels).
+
+  # Variant 2 — M7 : contexte deux usines, branches inégales
+  - id: PC-M7-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, probabilites_totales]
+    stem: >
+      Une entreprise a deux fournisseurs. Le fournisseur $F_1$ livre $30\,\%$
+      des pièces ($P(F_1)=0{,}3$) avec un taux de défauts de $4\,\%$ :
+      $P(D|F_1)=0{,}04$. Le fournisseur $F_2$ livre les $70\,\%$ restants
+      ($P(F_2)=0{,}7$) avec un taux de défauts de $1\,\%$ :
+      $P(D|F_2)=0{,}01$. Quelle est la probabilité $P(D)$ qu'une pièce
+      choisie au hasard soit défectueuse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0{,}019$"
+        correct: true
+      - id: B
+        text: "$0{,}05$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $P(D|F_1)+P(D|F_2)=0{,}04+0{,}01=0{,}05$ sans
+          pondérer. Mais $F_2$ livre $70\,\%$ des pièces — son taux de défaut,
+          plus faible, pèse bien davantage. La somme non pondérée traite les
+          deux fournisseurs comme si chacun livrait $50\,\%$. Modèle erroné :
+          « probabilités totales sans pondérer. »
+      - id: C
+        text: "$0{,}025$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule la moyenne simple $(0{,}04+0{,}01)/2=0{,}025$, ce
+          qui revient à supposer que les deux fournisseurs ont un poids égal.
+          Or $F_1$ livre $30\,\%$ et $F_2$ $70\,\%$ — les poids sont très
+          différents. Modèle erroné : absence de pondération.
+      - id: D
+        text: "$0{,}04$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(D|F_1)$, le taux de défaut du seul fournisseur
+          $F_1$, en ignorant entièrement $F_2$.
+    correct_feedback: >
+      $P(D)=0{,}3 \times 0{,}04 + 0{,}7 \times 0{,}01=0{,}012+0{,}007=0{,}019$.
+      Le résultat $0{,}019$ est bien compris entre $0{,}01$ et $0{,}04$.
+    solution: |
+      $$P(D) = P(F_1) \cdot P(D|F_1) + P(F_2) \cdot P(D|F_2)$$
+      $$= 0{,}3 \times 0{,}04 + 0{,}7 \times 0{,}01$$
+      $$= 0{,}012 + 0{,}007 = 0{,}019$$
+
+  # Variant 3 — M7 : contexte météo, trois branches -> simplifié à deux
+  - id: PC-M7-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, probabilites_totales]
+    stem: >
+      Lors d'un examen, $40\,\%$ des candidats ont suivi une préparation
+      intensive ($P(I)=0{,}4$). Parmi eux, $80\,\%$ réussissent :
+      $P(R|I)=0{,}8$. Parmi ceux qui n'ont pas suivi cette préparation
+      ($P(\bar{I})=0{,}6$), $50\,\%$ réussissent : $P(R|\bar{I})=0{,}5$.
+      Quelle est la probabilité $P(R)$ qu'un candidat pris au hasard
+      réussisse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1{,}3$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix additionne $0{,}8+0{,}5=1{,}3 > 1$, une probabilité
+          impossible. Dès qu'un résultat dépasse $1$, on sait qu'on a
+          additionné sans pondérer. La probabilité totale d'un événement ne
+          peut jamais dépasser 1. Modèle erroné : « probabilités totales sans
+          pondérer. »
+      - id: B
+        text: "$0{,}62$"
+        correct: true
+      - id: C
+        text: "$0{,}65$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.totales-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule la moyenne simple $(0{,}8+0{,}5)/2=0{,}65$, ce qui
+          suppose que les deux groupes sont de même taille. Or les préparés sont
+          $40\,\%$ et les non-préparés $60\,\%$ — il faut pondérer. Modèle
+          erroné.
+      - id: D
+        text: "$0{,}80$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne uniquement $P(R|I)=0{,}8$, le taux de succès des
+          candidats préparés, en ignorant les $60\,\%$ de candidats non préparés.
+    correct_feedback: >
+      $P(R)=0{,}4 \times 0{,}8 + 0{,}6 \times 0{,}5 = 0{,}32+0{,}30=0{,}62$.
+      Le résultat $0{,}62$ est compris entre $0{,}5$ et $0{,}8$, cohérent.
+    solution: |
+      $$P(R) = P(I) \cdot P(R|I) + P(\bar{I}) \cdot P(R|\bar{I})$$
+      $$= 0{,}4 \times 0{,}8 + 0{,}6 \times 0{,}5$$
+      $$= 0{,}32 + 0{,}30 = 0{,}62$$
+
+  # ── M8 · rebours-mauvais-denominateur ───────────────────────────────────────
+  # Canonical (spec's distinguishing stem) — deux machines
+  - id: PC-M8-1
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, lecture_inverse, deux_machines]
+    stem: >
+      Une usine possède deux machines. $M_1$ fabrique $60\,\%$ des pièces avec
+      un taux de pièces défectueuses de $5\,\%$ : $P(D|M_1)=0{,}05$. $M_2$
+      fabrique $40\,\%$ des pièces avec $3\,\%$ de défectueux :
+      $P(D|M_2)=0{,}03$. On prélève au hasard une pièce défectueuse.
+      Quelle est la probabilité qu'elle provienne de $M_1$, c'est-à-dire
+      $P(M_1|D)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{5}{7}$"
+        correct: true
+      - id: B
+        text: "$0{,}05$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: [mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur]
+        feedback: >
+          Ce choix retourne $P(D|M_1)=0{,}05$, la probabilité qu'une pièce de
+          $M_1$ soit défectueuse — c'est le conditionnel inverse de ce qui est
+          demandé. Deux modèles erronés convergent ici : M1 (lire
+          $P(D|M_1)$ comme $P(M_1|D)$) et M8 (oublier de calculer le bon
+          dénominateur $P(D)$). On cherche $P(M_1|D)=P(M_1 \cap D)/P(D)$.
+      - id: C
+        text: "$0{,}6$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(M_1)=0{,}6$, la part de production de $M_1$,
+          ignorant l'information apportée par le défaut. C'est utiliser $P(M_1)$
+          comme dénominateur au lieu de $P(D)$. « Sachant $D$ » impose de
+          restreindre l'univers à $D$ entier — la somme de toutes les feuilles
+          où $D$ se réalise. Modèle erroné : mauvais dénominateur dans la
+          lecture inverse.
+      - id: D
+        text: "$0{,}03$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce choix retourne $P(D|M_2)=0{,}03$, le taux de défaut de $M_2$, qui
+          n'est pas lié à $P(M_1|D)$.
+    correct_feedback: >
+      $P(M_1 \cap D)=0{,}60 \times 0{,}05=0{,}030$. $P(M_2 \cap D)=0{,}40
+      \times 0{,}03=0{,}012$. $P(D)=0{,}030+0{,}012=0{,}042$. Donc
+      $P(M_1|D)=\tfrac{0{,}030}{0{,}042}=\tfrac{5}{7}\approx 0{,}71$.
+    solution: |
+      **Étape 1 — Feuilles de l'arbre :**
+      $$P(M_1 \cap D) = 0{,}60 \times 0{,}05 = 0{,}030$$
+      $$P(M_2 \cap D) = 0{,}40 \times 0{,}03 = 0{,}012$$
+
+      **Étape 2 — Assembler $P(D)$ (dénominateur correct) :**
+      $$P(D) = P(M_1 \cap D) + P(M_2 \cap D) = 0{,}030 + 0{,}012 = 0{,}042$$
+
+      **Étape 3 — Lecture inverse :**
+      $$P(M_1|D) = \frac{P(M_1 \cap D)}{P(D)} = \frac{0{,}030}{0{,}042} = \frac{5}{7} \approx 0{,}714$$
+
+      Le dénominateur est $P(D)=0{,}042$, pas $P(M_1)=0{,}60$ ni $P(D|M_1)=0{,}05$.
+
+  # Variant 2 — M8 : contexte dépistage médical (re-habillage du hook R0)
+  - id: PC-M8-2
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, lecture_inverse, depistage_medical, bac_style]
+    stem: >
+      Dans une population, $2\,\%$ des individus ont une maladie $M$ :
+      $P(M)=0{,}02$. Un test de dépistage donne un résultat positif pour
+      $98\,\%$ des malades : $P(T^+|M)=0{,}98$. Il donne aussi un résultat
+      positif pour $3\,\%$ des personnes saines : $P(T^+|\bar{M})=0{,}03$.
+      Un individu testé positif se présente. Calculer $P(M|T^+)$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 0{,}40$"
+        correct: true
+      - id: B
+        text: "$0{,}98$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: [mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur]
+        feedback: >
+          Retourner $P(T^+|M)=0{,}98$ confond la sensibilité du test (probabilité
+          d'un positif chez les malades) avec la valeur prédictive positive
+          (probabilité d'être malade sachant qu'on est positif). Deux modèles
+          erronés : M1 (transposition du conditionnel) et M8 (oubli du bon
+          dénominateur $P(T^+)$).
+      - id: C
+        text: "$0{,}02$"
+        correct: false
+        misconception: null
+        feedback: >
+          Retourner $P(M)=0{,}02$ ignore l'information apportée par le test
+          positif. La prévalence est le point de départ, pas la réponse.
+      - id: D
+        text: "$0{,}02 \\times 0{,}98 = 0{,}0196$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        also_reveals: [mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection]
+        feedback: >
+          Ce choix calcule $P(M \cap T^+)$ mais omet de diviser par $P(T^+)$.
+          C'est la feuille favorable de l'arbre, pas la probabilité conditionnelle.
+          Il faut diviser par la somme de toutes les feuilles où $T^+$ apparaît.
+          Modèle erroné : mauvais dénominateur + confusion conjointe/conditionnelle.
+    correct_feedback: >
+      $P(M \cap T^+)=0{,}02 \times 0{,}98=0{,}0196$. $P(\bar{M} \cap T^+)=
+      0{,}98 \times 0{,}03=0{,}0294$. $P(T^+)=0{,}0196+0{,}0294=0{,}049$.
+      $P(M|T^+)=\tfrac{0{,}0196}{0{,}049}=0{,}4$.
+    solution: |
+      **Étape 1 — Feuilles :**
+      $$P(M \cap T^+) = 0{,}02 \times 0{,}98 = 0{,}0196$$
+      $$P(\bar{M} \cap T^+) = 0{,}98 \times 0{,}03 = 0{,}0294$$
+
+      **Étape 2 — $P(T^+)$ (dénominateur correct) :**
+      $$P(T^+) = 0{,}0196 + 0{,}0294 = 0{,}049$$
+
+      **Étape 3 — Lecture inverse :**
+      $$P(M|T^+) = \frac{0{,}0196}{0{,}049} = 0{,}40$$
+
+  # Variant 3 — M8 : deux urnes, contexte frais
+  - id: PC-M8-3
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, lecture_inverse, urne, variation_fraiche]
+    stem: >
+      On dispose de deux urnes. L'urne $U_1$ contient $4$ boules rouges et
+      $6$ boules bleues. L'urne $U_2$ contient $7$ boules rouges et $3$ boules
+      bleues. On choisit une urne au hasard avec la même probabilité
+      ($P(U_1)=P(U_2)=0{,}5$), puis on tire une boule au hasard dans l'urne
+      choisie. La boule tirée est rouge. Quelle est la probabilité que cette
+      boule provienne de $U_1$, c'est-à-dire $P(U_1|R)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{4}{11}$"
+        correct: true
+      - id: B
+        text: "$0{,}5$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $P(U_1)=0{,}5$, la probabilité de choisir $U_1$
+          avant de tirer la boule, sans tenir compte de la couleur rouge
+          observée. Le dénominateur de $P(U_1|R)$ doit être $P(R)$, la
+          probabilité d'obtenir rouge quelle que soit l'urne, et non $P(U_1)$.
+          Modèle erroné : mauvais dénominateur dans la lecture inverse.
+      - id: C
+        text: "$0{,}4$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: [mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur]
+        feedback: >
+          Ce choix retourne $P(R|U_1)=\tfrac{4}{10}=0{,}4$, la probabilité de
+          tirer rouge dans $U_1$ — l'inverse de ce qui est demandé. On cherche
+          $P(U_1|R)$, pas $P(R|U_1)$. Modèles erronés : transposition et
+          mauvais dénominateur.
+      - id: D
+        text: "$\\dfrac{4}{10}+\\dfrac{7}{10}=\\dfrac{11}{10}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        also_reveals: []
+        feedback: >
+          Ce choix additionne les probabilités des boules rouges dans chaque
+          urne, aboutissant à une valeur $>1$, ce qui est impossible. Il
+          additionne le long des branches au lieu de multiplier, et confond
+          ensuite la somme avec $P(U_1|R)$. Modèle erroné : additionner
+          le long d'une branche.
+    correct_feedback: >
+      $P(U_1 \cap R)=0{,}5 \times 0{,}4=0{,}2$. $P(U_2 \cap R)=0{,}5 \times
+      0{,}7=0{,}35$. $P(R)=0{,}2+0{,}35=0{,}55$. $P(U_1|R)=\tfrac{0{,}2}
+      {0{,}55}=\tfrac{4}{11}\approx 0{,}364$.
+    solution: |
+      **Étape 1 — Feuilles de l'arbre :**
+      $$P(U_1 \cap R) = P(U_1) \times P(R|U_1) = 0{,}5 \times \frac{4}{10} = 0{,}20$$
+      $$P(U_2 \cap R) = P(U_2) \times P(R|U_2) = 0{,}5 \times \frac{7}{10} = 0{,}35$$
+
+      **Étape 2 — $P(R)$ (dénominateur correct) :**
+      $$P(R) = 0{,}20 + 0{,}35 = 0{,}55$$
+
+      **Étape 3 — Lecture inverse :**
+      $$P(U_1|R) = \frac{P(U_1 \cap R)}{P(R)} = \frac{0{,}20}{0{,}55} = \frac{4}{11} \approx 0{,}364$$
+
+coverage_summary:
+  total_items: 24
+  per_misconception:
+    mc.math.sma_prob_conditionnelle.transpose-conditionnel: 3          # PC-M1-1, PC-M1-2, PC-M1-3
+    mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection: 3  # PC-M2-1, PC-M2-2, PC-M2-3
+    mc.math.sma_prob_conditionnelle.independant-egale-incompatible: 3   # PC-M3-1, PC-M3-2, PC-M3-3
+    mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle: 3  # PC-M4-1, PC-M4-2, PC-M4-3
+    mc.math.sma_prob_conditionnelle.independant-somme: 3               # PC-M5-1, PC-M5-2, PC-M5-3
+    mc.math.sma_prob_conditionnelle.arbre-additionne-branche: 3        # PC-M6-1, PC-M6-2, PC-M6-3
+    mc.math.sma_prob_conditionnelle.totales-sans-ponderation: 3        # PC-M7-1, PC-M7-2, PC-M7-3
+    mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur: 3    # PC-M8-1, PC-M8-2, PC-M8-3
+  floor_met: true   # all 8 misconceptions have exactly 3 items >= floor of 3
+
+  dual_tagged_distractors:
+    # M4 <-> M5 family: "0" and "0,9" on independence-overlap stems
+    - item: PC-M4-1
+      choice: C
+      text: "$0{,}9$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-somme        # primary for M5 items
+      note: >
+        On M4's canonical stem, choice C (0,9 = P(A)+P(B)) is reachable by the
+        M5 wrong model (sum instead of product). Tagged as secondary M5 via the
+        misconception field. M4's primary trigger is choice B (0).
+    - item: PC-M5-1
+      choice: C
+      text: "$0$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle  # primary for M4 items
+      note: >
+        On M5's canonical stem, choice C (0) is reachable by the M4 wrong model
+        (no-overlap belief). Tagged secondary M4. M5's primary trigger is choice B (0,9).
+    - item: PC-M4-2
+      choice: C
+      text: "$1$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-somme
+      note: >
+        On the two-coin stem, choice C (1/2 + 1/2 = 1) is reachable by M5
+        (addition instead of multiplication). Dual-tagged.
+    - item: PC-M4-3
+      choice: C
+      text: "$0{,}5$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-somme
+      note: >
+        On the two-machines breakdown stem, choice C (0,3+0,2=0,5) is
+        reachable by M5. Dual-tagged.
+    - item: PC-M5-2
+      choice: C
+      text: "$0$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+      note: >
+        On the two-draws urn stem, choice C (0) is reachable by M4.
+        Dual-tagged.
+    - item: PC-M5-3
+      choice: C
+      text: "indépendants car $P(A \\cap B)=0$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+      note: >
+        On the verification stem, choice C ("P(A∩B)=0 → independent") is
+        reachable by M4. Dual-tagged.
+
+    # M1 <-> M8 family: the un-reversed conditional
+    - item: PC-M8-1
+      choice: B
+      text: "$0{,}05$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        - mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+      note: >
+        Returning P(D|M1)=0,05 on a reversal item is reachable by both M1
+        (reads the given forward conditional as the answer) and M8 (forgets to
+        form P(D) as denominator). Dual-tagged to both; primary trigger of M8-1
+        is choice C (returning P(M1)=0,6, the prior-as-denominator value unique
+        to M8).
+    - item: PC-M8-2
+      choice: B
+      text: "$0{,}98$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        - mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+      note: >
+        Returning P(T+|M)=0,98 on the screening reversal is the M1/M8 shared
+        distractor. Primary trigger of M8-2 is choice D (returns P(M∩T+)
+        without dividing by P(T+), the missing-denominator signature of M8).
+    - item: PC-M8-3
+      choice: C
+      text: "$0{,}4$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        - mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+      note: >
+        Returning P(R|U1)=0,4 on the two-urns reversal item is the M1/M8
+        shared distractor. Dual-tagged to both.
+
+    # M1-2: choice C also reveals M8
+    - item: PC-M1-2
+      choice: C
+      text: "$0{,}70$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        - mc.math.sma_prob_conditionnelle.transpose-conditionnel
+      note: >
+        Returning P(A)=0,70 on a reversal item touches both M8 (wrong
+        denominator, using P(A) instead of P(D)) and M1 (prior read as
+        posterior). Dual-tagged.
+
+    # M8-2 choice D also reveals M2
+    - item: PC-M8-2
+      choice: D
+      text: "$0{,}02 \\times 0{,}98 = 0{,}0196$"
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        - mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+      note: >
+        Stopping at the joint P(M∩T+) without dividing reveals both M8
+        (wrong/missing denominator in reversal) and M2 (treating the joint
+        as the conditional). Dual-tagged.
+
+    # M3-1 choice D also reveals M4
+    - item: PC-M3-1
+      choice: D
+      text: "$A$ et $B$ sont indépendants car $P(A \\cap B)=0$."
+      attributes_to:
+        - mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle
+        - mc.math.sma_prob_conditionnelle.independant-egale-incompatible
+      note: >
+        This choice embeds both the M4 wrong model (P(A∩B)=0 → independent)
+        and the M3 fusion (incompatible=independent). Dual-tagged to M4 and M3.
