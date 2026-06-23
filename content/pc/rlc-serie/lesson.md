@@ -6,17 +6,25 @@
 
 Imagine qu'on charge complètement un condensateur — on lui donne une réserve d'énergie — puis on le connecte directement à une bobine, sans source de tension, sans piles. Le circuit est fermé. Le condensateur commence à se décharger.
 
-Avant de lire la suite, prends trente secondes et pose-toi la question : **que va faire la tension $u_C(t)$ aux bornes du condensateur ?**
-
-La plupart des élèves qui arrivent à ce chapitre ont une réponse claire en tête : « la tension descend progressivement vers zéro, comme dans un circuit RC qu'on a vu juste avant. »
-
 [[figure:rlc-schema]]
 
-Maintenant voilà ce qui se passe vraiment.
+Avant de lire la suite, prends trente secondes et pose-toi vraiment la question : **que va faire la tension $u_C(t)$ aux bornes du condensateur ?**
 
-La tension ne descend pas vers zéro et ne s'y arrête pas. Elle descend, passe par zéro, **remonte de l'autre côté**, redescend, repasse par zéro, remonte encore — et ainsi de suite. Le condensateur se vide, mais l'énergie ne disparaît pas : elle **traverse** dans la bobine, et la bobine la **renvoie** vers le condensateur, dans l'autre sens. Ça oscille.
+Engage-toi : c'est une décharge, tu l'as vue dans le circuit RC juste avant — qu'est-ce que tu prédis ?
 
-C'est un balancement. Un pendule électrique.
+La plupart des élèves qui arrivent ici ont une réponse nette : « la tension descend progressivement vers zéro, comme dans le RC. Elle s'amortit et c'est fini. »
+
+C'est ta prédiction ? Bien. Garde-la.
+
+Maintenant regarde le panneau « périodique » de la figure ci-dessous — c'est la trace réelle de $u_C(t)$ pour ce circuit.
+
+[[figure:regimes-uc]]
+
+La tension ne descend pas vers zéro et ne s'y arrête pas. Elle descend, passe par zéro, **remonte de l'autre côté**, redescend, repasse par zéro, remonte encore — et ainsi de suite. Ce n'est pas une décharge. C'est une oscillation.
+
+Ta prédiction et la réalité vont dans des directions opposées. C'est précisément ça qu'on va comprendre.
+
+Le condensateur se vide, mais l'énergie ne disparaît pas : elle **traverse** dans la bobine, et la bobine la **renvoie** vers le condensateur, dans l'autre sens. Ça oscille. C'est un balancement — un pendule électrique.
 
 Et voilà les deux questions qu'on va porter tout au long de cette leçon :
 
@@ -109,15 +117,23 @@ $$L\frac{d^2q}{dt^2} + \frac{q}{C} = 0$$
 
 C'est l'**équation différentielle du circuit LC idéal**. Remarquons quelque chose d'essentiel : **R n'apparaît nulle part dans cette équation.** On n'a pas posé $R = 0$ par simplification après coup — R n'est tout simplement pas dans l'équation d'un circuit sans résistance. Donc la période des oscillations ne peut pas dépendre de R.
 
-### Identifier la solution
+### Chercher la solution — on devine, puis on vérifie
 
-On connaît le type de cette équation. Elle dit que la dérivée seconde de $q$ est proportionnelle à $-q$. C'est exactement la structure des oscillations harmoniques. La solution est :
+Regardons l'équation qu'on vient d'obtenir :
+
+$$L\frac{d^2q}{dt^2} + \frac{q}{C} = 0 \implies \frac{d^2q}{dt^2} = -\frac{1}{LC}\,q$$
+
+Elle dit que la dérivée seconde de $q$ est proportionnelle à $-q$. Autrement dit : la fonction et sa dérivée seconde ont le même module, mais des signes opposés.
+
+Quelle fonction se comporte comme ça ? On cherche une $f(t)$ telle que $f'' = -k \cdot f$ pour une constante positive $k$. La réponse, on la connaît depuis les fonctions trigonométriques : $\cos$ et $\sin$ ont exactement cette propriété — $(\cos)'' = -\cos$, $(\sin)'' = -\sin$.
+
+On pose donc l'hypothèse — c'est une supposition, pas une certitude encore — que la solution a la forme :
 
 $$q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$$
 
-où $Q_{max}$ est la charge maximale et $\varphi$ est la phase initiale (fixée par les conditions initiales).
+où $Q_{max}$ est la charge maximale et $\varphi$ est la phase initiale (fixée par les conditions initiales). Maintenant on vérifie que ce cosinus vérifie réellement l'équation, et on en déduit ce que vaut $T_0$.
 
-**Vérification rapide.** On calcule la dérivée seconde :
+**Vérification.** On calcule la dérivée seconde :
 
 $$\frac{d^2q}{dt^2} = -\left(\frac{2\pi}{T_0}\right)^2 Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right) = -\frac{4\pi^2}{T_0^2}\, q$$
 
@@ -137,7 +153,7 @@ $$T_0^2 = 4\pi^2 LC$$
 
 $$\boxed{T_0 = 2\pi\sqrt{LC}}$$
 
-C'est la **période propre** du circuit. Elle ne dépend que de $L$ et de $C$. R n'y figure pas.
+L'hypothèse est confirmée : le cosinus est bien une solution, et la substitution nous a offert en prime la valeur de $T_0$. C'est la **période propre** du circuit. Elle ne dépend que de $L$ et de $C$. R n'y figure pas — et ce n'est pas un hasard : R n'était tout simplement pas dans l'équation idéale, donc il ne peut pas apparaître dans $T_0$.
 
 ### Déduire $i(t)$
 
@@ -171,25 +187,29 @@ Un quart de période plus tard, toute cette énergie est dans la bobine : $E_L =
 
 On a dit « $R$ négligeable ». Qu'est-ce qui se passe quand on tient compte de la résistance ? Et d'abord, quel est le rôle de R dans un circuit oscillant ?
 
-Avant de voir la réponse, voici la question à se poser honnêtement : **si on supprime complètement la résistance du circuit (on imagine $R \to 0$), que penses-tu qu'il arrive aux oscillations ?**
+Voici la question à se poser honnêtement, avant de voir quoi que ce soit : **si on supprime complètement la résistance du circuit — on imagine $R \to 0$ — que penses-tu qu'il arrive aux oscillations ?**
+
+Engage-toi : est-ce qu'elles s'arrêtent, s'affaiblissent, ou se maintiennent ?
+
+La réponse que beaucoup d'élèves donnent : « ça s'arrête, parce que plus rien ne les entretient. » C'est une prédiction naturelle — R est le composant le plus visible dans un circuit en courant continu, c'est lui qui « consomme ». Si R disparaît, les oscillations s'éteignent.
+
+Garde cette prédiction. Maintenant, on regarde ce que disent les données.
 
 [[embed:rlc-sandbox]]
 
-La réponse que beaucoup d'élèves donnent : « ça s'arrête, parce que plus rien ne les entretient. » C'est une prédiction naturelle — R est le composant le plus visible dans un circuit en courant continu, c'est lui qui « consomme ».
+Si le simulateur n'est pas accessible, voici trois instantanés mesurés sur le même circuit ($L = 0{,}1\ \text{H}$, $C = 10\ \mu\text{F}$, $T_0 \approx 6{,}28\ \text{ms}$ dans les trois cas) :
 
-Mais c'est exactement l'inverse de ce qui se passe.
+- **$R \approx 0\ \Omega$ :** la courbe $u_C(t)$ est une sinusoïde parfaite, à amplitude constante, qui ne s'amortit jamais. Régime **périodique**.
+- **$R \approx 5\ \Omega$ :** la courbe oscille, mais les pics diminuent progressivement. La tension finit par s'éteindre. Régime **pseudo-périodique**.
+- **$R \approx 200\ \Omega$ :** la courbe redescend vers zéro sans jamais repartir de l'autre côté. Pas d'oscillation du tout. Régime **apériodique**.
 
-**Quand $R \to 0$, les oscillations deviennent parfaites et ne s'amortissent plus jamais.** La sinusoïde est indéfiniment maintenue, à amplitude constante. Le circuit LC idéal oscille pour toujours.
+Regarde le premier instantané : $R \approx 0$ donne une sinusoïde parfaite qui ne meurt jamais. C'est exactement l'opposé de ce que la prédiction annonçait. Quand on enlève R, les oscillations ne s'arrêtent pas — elles deviennent parfaites et durent indéfiniment.
 
-Maintenant, qu'arrive-t-il quand on augmente $R$ ? Les oscillations s'amortissent **plus vite** — les pics deviennent de plus en plus petits à chaque cycle, et la courbe meurt d'autant plus rapidement que R est grande.
+Et regardons les suivants : plus R augmente, plus les oscillations s'amortissent vite, jusqu'à ce qu'elles disparaissent complètement (régime apériodique).
 
-L'effet de R n'est pas de « nourrir » les oscillations — c'est de les **freiner**. À chaque passage de courant, la résistance dissipe de l'énergie sous forme de chaleur : c'est l'**effet Joule**, avec une puissance $P = Ri^2 > 0$. Cette puissance est toujours positive — R prend toujours de l'énergie, jamais n'en donne. C'est un frein, pas un moteur.
+La prédiction et la réalité sont à l'envers. Voilà pourquoi cette question est importante.
 
-Ce que l'expérience confirme :
-
-- R faible → amortissement lent, de nombreuses oscillations visibles.
-- R plus grande → amortissement rapide, peu d'oscillations.
-- R encore plus grande → plus d'oscillations du tout : la tension revient au zéro sans jamais repartir de l'autre côté.
+**R ne nourrit pas les oscillations — R les freine.** À chaque passage de courant, la résistance dissipe de l'énergie sous forme de chaleur : c'est l'**effet Joule**, avec une puissance $P = Ri^2 > 0$. Cette puissance est toujours positive — R prend toujours de l'énergie, jamais n'en donne. C'est un frein, pas un moteur.
 
 Et si on change $L$ ou $C$ (avec $R$ fixée), c'est la **période** des oscillations qui change — pas l'amortissement. C'est $L$ et $C$ qui fixent le rythme. $R$ ne fait que contrôler à quelle vitesse les oscillations disparaissent.
 
@@ -247,6 +267,16 @@ L'énergie est dissipée trop rapidement pour que le transfert $C \to L \to C$ a
 
 Dans le cas réel où la résistance n'est pas négligeable, on va écrire l'équation qui gouverne le circuit. Et on va faire quelque chose d'important : **établir cette équation, puis s'arrêter**.
 
+Mais avant d'écrire quoi que ce soit, une question à se poser honnêtement.
+
+On a vu que dans le cas idéal, la solution est $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$. Maintenant on ajoute R. **Est-ce que ce cosinus idéal vérifie encore l'équation amortie ?**
+
+Prends position : oui ou non, et pourquoi ?
+
+La réponse intuitive : « R n'est qu'un frein, il ralentit l'amplitude mais ne change pas la forme — donc le cosinus devrait encore marcher. » C'est une prédiction raisonnable.
+
+On va la tester par le calcul. Voilà le révélateur.
+
 ### Établir l'équation différentielle
 
 On reprend la loi des mailles dans le circuit RLC série complet :
@@ -267,25 +297,25 @@ $$\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}$$
 
 C'est l'**équation différentielle du circuit RLC amorti**.
 
-### Vérifier que la solution idéale ne fonctionne plus
+### Tester la prédiction : le cosinus idéal vérifie-t-il l'équation amortie ?
 
-Voici la question naturelle qu'on se pose : est-ce que la solution du cas idéal, $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$, vérifie encore cette équation ?
+Voici le calcul qui répond à la question qu'on a posée au début. On prend $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$ et on le substitue dans l'équation amortie qu'on vient d'établir. Si la prédiction est juste, tout doit s'annuler.
 
-On essaie. On calcule les dérivées :
+On calcule les dérivées — mêmes dérivées que dans le cas idéal, car la forme du cosinus n'a pas changé :
 
 $$\frac{dq}{dt} = -\frac{2\pi Q_{max}}{T_0}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right)$$
 
 $$\frac{d^2q}{dt^2} = -\frac{4\pi^2 Q_{max}}{T_0^2}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right) = -\frac{4\pi^2}{T_0^2}\,q$$
 
-On substitue dans l'équation amortie :
+On substitue dans $L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0$ :
 
 $$L\left(-\frac{4\pi^2}{T_0^2}\,q\right) + R\left(-\frac{2\pi Q_{max}}{T_0}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right)\right) + \frac{q}{C} = 0$$
 
-Le premier et le troisième termes se compensent (c'est exactement ce qui se passait dans le cas idéal). Mais le deuxième terme — le terme $R\frac{dq}{dt}$ — laisse un **reste** :
+Le premier et le troisième termes se compensent — c'est exactement ce qui se passait dans le cas idéal, et c'est ce qui avait donné $T_0 = 2\pi\sqrt{LC}$. Mais le deuxième terme — le terme $R\frac{dq}{dt}$, qui n'existait pas dans le cas idéal — laisse un reste qu'on ne peut pas annuler :
 
 $$-\frac{2\pi R Q_{max}}{T_0}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right) \neq 0$$
 
-Ce terme ne s'annule pas. Le cosinus idéal **ne vérifie pas** l'équation amortie. La présence du terme $R\frac{dq}{dt}$ change fondamentalement la nature de l'équation : une sinusoïde d'amplitude constante n'est plus solution.
+Ce reste ne s'annule jamais — il vaut quelque chose à chaque instant où $\sin \neq 0$. La prédiction était fausse : le cosinus idéal **ne vérifie pas** l'équation amortie. C'est le terme $R\,q'$ qui fait la rupture — il introduit un $\sin$ dans une équation qui ne contient que des $\cos$ et des $q$, et rien ne peut absorber ce résidu. Une sinusoïde d'amplitude constante n'est plus solution dès que R est non nulle.
 
 ### La règle, formulée clairement
 
@@ -414,3 +444,129 @@ On a ouvert cette leçon avec deux questions : **où va l'énergie, et qu'est-ce
 - L'énergie **ne disparaît pas** — elle passe du condensateur à la bobine et revient, à chaque oscillation.
 - Ce qui l'arrête, c'est **R** : la résistance dissipe une partie de l'énergie à chaque cycle par effet Joule. Plus R est grande, plus l'amortissement est rapide.
 - Pour l'entretenir, on **compense exactement cette perte** avec un générateur $u_G = k \cdot i$ réglé à $k = R$ — et les oscillations reprennent, libres et indéfinies, à la période propre $T_0 = 2\pi\sqrt{LC}$.
+
+---
+
+## R8 — Exercice de type bac (synthèse — à sourcer)
+
+> **Note de provenance :** cet exercice est un exercice de synthèse de style bac, construit pour couvrir les savoir-faire de la notion. Il n'est pas tiré d'un sujet national réel identifié. Il est labellisé **à sourcer** : avant d'être présenté à un élève comme un sujet bac, il devra être remplacé ou validé par un vrai sujet national avec année et session. (Règle ADR 0019.)
+
+### Mise en situation
+
+Un condensateur de capacité $C = 10\ \mu\text{F}$ est chargé sous une tension $U_0 = 6\ \text{V}$. À $t = 0$, on le connecte à une bobine d'inductance $L = 0{,}1\ \text{H}$ et de résistance interne $r = 5\ \Omega$. Le circuit est fermé. On observe à l'oscilloscope la tension $u_C(t)$ aux bornes du condensateur.
+
+L'oscillogramme montre des oscillations dont l'amplitude décroît progressivement. On mesure deux maxima successifs : le premier à $t_1 = 3\ \text{ms}$ et le deuxième à $t_2 = 9{,}4\ \text{ms}$.
+
+**Partie 1 — Identifier le régime et établir l'équation différentielle**
+
+**Question 1.** Quel régime d'oscillations observe-t-on ? Justifier en s'appuyant sur la description de l'oscillogramme.
+
+*Raisonnement expert.* On lit la description : amplitude qui décroît, mais oscillations présentes. C'est la signature du régime pseudo-périodique — ni le régime périodique (amplitude constante), ni le régime apériodique (pas d'oscillations). La justification tient en deux lignes : oscillations présentes + amplitude décroissante.
+
+**Question 2.** Établir l'équation différentielle vérifiée par la charge $q(t)$.
+
+*Raisonnement expert.* On écrit la loi des mailles dans le circuit série complet. La bobine a une résistance interne $r$, donc sa tension est $u_L = L\frac{d^2q}{dt^2} + r\frac{dq}{dt}$. Il n'y a pas de résistance extérieure séparée ici — c'est $r$ qui joue le rôle de la résistance d'amortissement.
+
+Loi des mailles :
+
+$$u_C + u_L = 0$$
+
+$$\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = 0$$
+
+$$\boxed{L\frac{d^2q}{dt^2} + r\frac{dq}{dt} + \frac{q}{C} = 0}$$
+
+On s'arrête là pour le cas amorti. On n'essaie pas de résoudre cette équation en forme fermée.
+
+**Partie 2 — Exploiter l'oscillogramme**
+
+**Question 3.** Mesurer la pseudo-période $T$ à partir de l'oscillogramme.
+
+*Raisonnement expert.* On repère deux maxima consécutifs et on soustrait leurs coordonnées temporelles :
+
+$$T = t_2 - t_1 = 9{,}4\ \text{ms} - 3\ \text{ms} = 6{,}4\ \text{ms}$$
+
+**Question 4.** Calculer la période propre $T_0$ du circuit et comparer à $T$.
+
+*Raisonnement expert.* On utilise la formule du cas idéal — c'est la seule formule analytique qu'on a. On calcule $LC$ :
+
+$$LC = 0{,}1 \times 10 \times 10^{-6} = 10^{-6}\ \text{s}^2 \implies \sqrt{LC} = 10^{-3}\ \text{s}$$
+
+$$T_0 = 2\pi\sqrt{LC} = 2\pi \times 10^{-3} \approx 6{,}28\ \text{ms}$$
+
+L'écart entre $T = 6{,}4\ \text{ms}$ et $T_0 \approx 6{,}28\ \text{ms}$ est d'environ 2 %. L'amortissement est faible, donc l'approximation $T \approx T_0$ est valide.
+
+**Partie 3 — Bilan énergétique**
+
+**Question 5.** Calculer l'énergie totale du circuit à $t = 0$. Où est-elle stockée ? Que devient-elle au bout d'un quart de pseudo-période ?
+
+*Raisonnement expert.* À $t = 0$, le condensateur est chargé à $U_0$ et le courant est nul — la bobine ne stocke rien encore.
+
+$$E(0) = E_C(0) + E_L(0) = \frac{1}{2}C U_0^2 + 0 = \frac{1}{2} \times 10^{-5} \times 36 = 1{,}8 \times 10^{-4}\ \text{J}$$
+
+Toute l'énergie est dans le condensateur.
+
+Un quart de pseudo-période plus tard, $u_C \approx 0$ et le courant est maximal : l'énergie est essentiellement dans la bobine. Mais comme le régime est amorti, $E(T/4) < E(0)$ — une partie a été dissipée par effet Joule dans $r$.
+
+**Question 6.** Expliquer pourquoi les oscillations s'amortissent. Quel rôle joue $r$ ?
+
+*Raisonnement expert.* À chaque cycle, la résistance $r$ dissipe de l'énergie sous forme de chaleur — effet Joule, puissance $P = r\,i^2 > 0$. Cette puissance est toujours positive : $r$ ne peut que prélever de l'énergie, jamais en restituer. L'énergie totale $E_C + E_L$ diminue donc à chaque oscillation, et l'amplitude décroît.
+
+**Partie 4 — Entretien des oscillations**
+
+**Question 7.** On ajoute au circuit un générateur délivrant $u_G(t) = k \cdot i(t)$. Établir la nouvelle équation différentielle et déterminer la valeur de $k$ qui permet d'entretenir des oscillations sinusoïdales.
+
+*Raisonnement expert.* La loi des mailles avec le générateur :
+
+$$u_C + u_L = u_G$$
+
+$$\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = k\frac{dq}{dt}$$
+
+$$L\frac{d^2q}{dt^2} + (r - k)\frac{dq}{dt} + \frac{q}{C} = 0$$
+
+On cherche $k$ tel que le terme d'amortissement disparaisse : il faut $r - k = 0$, donc $k = r$.
+
+Avec $k = r$, l'équation devient $L\frac{d^2q}{dt^2} + \frac{q}{C} = 0$ — l'équation du circuit idéal. Les oscillations sont sinusoïdales, à amplitude constante, à la période propre $T_0 = 2\pi\sqrt{LC}$. Le générateur compense exactement la perte Joule à chaque cycle ; il ne fixe pas la fréquence.
+
+$$\boxed{k = r = 5\ \Omega}$$
+
+[[figure:regimes-uc]]
+
+---
+
+## R9 — Variation fraîche
+
+> Même structure profonde que R8, enrobage différent. Le but est que tu ne puisses pas mémoriser la solution — tu dois reconnaître quelle procédure s'applique.
+
+### Mise en situation
+
+Un circuit comporte une bobine d'inductance $L = 0{,}4\ \text{H}$ (résistance interne négligeable) et un condensateur de capacité $C = 10\ \mu\text{F}$, en série avec un conducteur ohmique de résistance $R = 8\ \Omega$. Le condensateur est chargé à $U_0 = 4\ \text{V}$ puis le circuit est fermé à $t = 0$.
+
+**Question 1.** Calculer $T_0$ pour ce circuit.
+
+$$\sqrt{LC} = \sqrt{0{,}4 \times 10^{-5}} = \sqrt{4 \times 10^{-6}} = 2 \times 10^{-3}\ \text{s}$$
+
+$$T_0 = 2\pi \times 2 \times 10^{-3} \approx 12{,}6\ \text{ms}$$
+
+**Question 2.** Établir l'équation différentielle vérifiée par $q(t)$ dans ce circuit.
+
+*La démarche est identique à R8, mais les valeurs changent.* Loi des mailles : $u_C + u_L + u_R = 0$, donc :
+
+$$L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0$$
+
+$$0{,}4\,\frac{d^2q}{dt^2} + 8\,\frac{dq}{dt} + \frac{q}{10^{-5}} = 0$$
+
+On établit et on s'arrête.
+
+**Question 3.** On mesure sur l'oscillogramme une pseudo-période $T = 12{,}8\ \text{ms}$. L'approximation $T \approx T_0$ est-elle valide ?
+
+L'écart : $|T - T_0| / T_0 \approx |12{,}8 - 12{,}6| / 12{,}6 \approx 1{,}6\ \%$. Oui, l'amortissement est faible, l'approximation est valide.
+
+**Question 4.** Quelle est l'énergie initiale du circuit ? Où est-elle un quart de pseudo-période plus tard ?
+
+$$E(0) = \frac{1}{2}C U_0^2 = \frac{1}{2} \times 10^{-5} \times 16 = 8 \times 10^{-5}\ \text{J}$$
+
+Un quart de pseudo-période plus tard : essentiellement dans la bobine (moins une fraction dissipée par Joule dans R). Le transfert $C \to L$ a eu lieu, mais l'énergie totale a diminué.
+
+**Question 5.** On souhaite entretenir les oscillations avec un générateur $u_G = k \cdot i$. Quelle valeur de $k$ faut-il choisir ? Quelle sera alors la période des oscillations entretenues ?
+
+$k = R = 8\ \Omega$. La période reste $T_0 = 2\pi\sqrt{LC} \approx 12{,}6\ \text{ms}$ — fixée par $L$ et $C$, pas par $k$.

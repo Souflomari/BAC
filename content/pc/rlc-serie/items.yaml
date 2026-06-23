@@ -1092,40 +1092,343 @@ items:
       = 2\pi \times 10^{-3} \approx 6{,}28\,\text{ms}$.
       $k$ a disparu de l'équation : il ne modifie pas la période.
 
+  # ══════════════════════════════════════════════════════════════
+  # WAVE-1 ADDITIONS — 3 pure Utilisation items (fix habileté mix)
+  # + 1 R8 bac-style item (fix ramp summit)
+  # ══════════════════════════════════════════════════════════════
+
+  # ── Utilisation 1 / M1 — direct regime recognition off a description ──
+
+  - id: RLC-M1-4
+    rung: "R4"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un circuit RLC série est chargé puis laissé en oscillations libres.
+      On décrit la courbe $u_C(t)$ observée :
+      « la courbe oscille de façon sinusoïdale avec une amplitude
+      **constante** — ni croissante ni décroissante. »
+      Quel régime ce comportement correspond-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Régime périodique (ou pseudo-périodique de faible amortissement) avec $R \approx 0$."
+        correct: true
+      - id: B
+        text: 'Régime pseudo-périodique : une amplitude constante est la signature d''un amortissement modéré.'
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: |
+          Le régime pseudo-périodique est caractérisé par une amplitude
+          décroissante (amortissement dû à R). Une amplitude strictement
+          constante signifie qu'il n'y a pas d'amortissement : c'est le
+          régime périodique ($R \approx 0$).
+      - id: C
+        text: "Régime apériodique : sans oscillation visible l'amplitude est « constante » (nulle)."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: |
+          Le régime apériodique ne comporte aucune oscillation : $u_C(t)$
+          revient à zéro de façon monotone. Ici la courbe oscille, donc
+          ce n'est pas le régime apériodique.
+      - id: D
+        text: 'Régime pseudo-périodique : toute oscillation libre a une amplitude décroissante
+          car R est toujours non nulle.'
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: |
+          La résistance peut être négligeable ($R \approx 0$) : on parle
+          alors de circuit LC idéal, qui produit un régime périodique
+          d'amplitude constante. R n'est pas inévitablement non nulle.
+    correct_feedback: |
+      Amplitude constante + oscillation sinusoïdale = régime périodique (LC idéal, $R \approx 0$).
+      La résistance, lorsque non négligeable, est le seul élément qui fait décroître l'amplitude.
+    solution: |
+      Trois régimes possibles selon R :
+      — $R \approx 0$ : régime périodique, amplitude constante. ← correspond à la description
+      — $R$ faible non nul : régime pseudo-périodique, amplitude décroissante.
+      — $R$ grand : régime apériodique, pas d'oscillation.
+      Une amplitude strictement constante identifie sans ambiguïté le régime périodique.
+
+  # ── Utilisation 2 / M4 — direct T₀ = 2π√(LC) read/compute, no multi-step ──
+
+  - id: RLC-M4-4
+    rung: "R2"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un circuit RLC série a les valeurs suivantes :
+      $L = 40\,\text{mH}$ et $C = 10\,\mu\text{F}$.
+      La résistance vaut $R = 5\,\Omega$.
+      Calculer la période propre $T_0$ des oscillations.
+    type: mcq
+    choices:
+      - id: A
+        text: '$T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{40 \times 10^{-3} \times 10 \times 10^{-6}} \approx 3{,}97 \times 10^{-3}\,\text{s} \approx 4{,}0\,\text{ms}$'
+        correct: true
+      - id: B
+        text: '$T_0 = 2\pi\sqrt{RC} = 2\pi\sqrt{5 \times 10^{-5}} \approx 1{,}4\,\text{ms}$'
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: |
+          $\sqrt{RC}$ est la constante de charge du circuit RC (chapitre précédent),
+          pas la période d'oscillation du circuit RLC.
+          La période propre s'écrit $T_0 = 2\pi\sqrt{LC}$ : R n'y figure pas.
+      - id: C
+        text: '$T_0 = 2\pi\sqrt{L/C} = 2\pi\sqrt{4000} \approx 396\,\text{s}$'
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: |
+          $\sqrt{L/C}$ a les dimensions d'une résistance (ohms), pas d'un temps.
+          La formule correcte est $T_0 = 2\pi\sqrt{LC}$, dont l'unité est bien la seconde.
+      - id: D
+        text: '$T_0 = RC = 5 \times 10^{-5}\,\text{s} = 50\,\mu\text{s}$'
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: |
+          $RC = \tau$ est la constante de temps du circuit RC, un temps de charge
+          sans rapport avec la période propre d'un oscillateur LC.
+          $T_0 = 2\pi\sqrt{LC}$ ; R n'intervient pas.
+    correct_feedback: |
+      $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{40 \times 10^{-3} \times 10 \times 10^{-6}}
+      = 2\pi\sqrt{4 \times 10^{-7}} = 2\pi \times 6{,}32 \times 10^{-4}
+      \approx 3{,}97 \times 10^{-3}\,\text{s} \approx 4{,}0\,\text{ms}$.
+      La valeur $R = 5\,\Omega$ n'intervient pas dans le calcul.
+    solution: |
+      $LC = 40 \times 10^{-3} \times 10 \times 10^{-6} = 4 \times 10^{-7}\,\text{s}^2$.
+      $\sqrt{LC} = \sqrt{4 \times 10^{-7}} = 2 \times 10^{-3.5} \approx 6{,}32 \times 10^{-4}\,\text{s}$.
+      $T_0 = 2\pi \times 6{,}32 \times 10^{-4} \approx 3{,}97 \times 10^{-3}\,\text{s} \approx 4{,}0\,\text{ms}$.
+      Vérification : $R = 5\,\Omega$ n'apparaît dans aucune étape du calcul.
+
+  # ── Utilisation 3 / M7 — which element stores what, and when ──
+
+  - id: RLC-M7-4
+    rung: "R1"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit LC idéal en oscillations libres, choisir l'affirmation
+      qui décrit correctement **quel élément stocke quelle énergie, et quand
+      cette énergie est maximale**.
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Le condensateur stocke l'énergie électrique $E_C = \tfrac{1}{2}Cu_C^2$,
+          maximale quand $u_C$ est maximal (et $i = 0$).
+          La bobine stocke l'énergie magnétique $E_L = \tfrac{1}{2}Li^2$,
+          maximale quand $i$ est maximal (et $u_C = 0$).
+        correct: true
+      - id: B
+        text: |
+          Le condensateur stocke l'énergie magnétique $E_C = \tfrac{1}{2}Li^2$ ;
+          la bobine stocke l'énergie électrique $E_L = \tfrac{1}{2}Cu_C^2$.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          Les formules sont interverties. C'est le condensateur qui stocke
+          l'énergie électrique ($E_C = \tfrac{1}{2}Cu_C^2$, liée à la tension $u_C$)
+          et la bobine qui stocke l'énergie magnétique ($E_L = \tfrac{1}{2}Li^2$,
+          liée au courant $i$).
+      - id: C
+        text: |
+          Les deux énergies sont maximales au même instant,
+          quand le courant $i$ est maximal.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          Quand $i$ est maximal, $E_L = \tfrac{1}{2}Li^2$ est maximale, mais
+          $u_C = 0$ donc $E_C = 0$. Les deux énergies sont en opposition de phase :
+          l'une est maximale exactement quand l'autre est nulle.
+      - id: D
+        text: |
+          Les deux énergies sont maximales au même instant,
+          quand la tension $u_C$ est maximale.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          Quand $u_C$ est maximal, $E_C$ est maximale et $i = 0$ donc $E_L = 0$.
+          Les deux énergies sont en opposition de phase ; elles ne sont jamais
+          maximales simultanément.
+    correct_feedback: |
+      Condensateur : réservoir électrique, $E_C = \tfrac{1}{2}Cu_C^2$, maximum à $u_C$ max / $i = 0$.
+      Bobine : réservoir magnétique, $E_L = \tfrac{1}{2}Li^2$, maximum à $i$ max / $u_C = 0$.
+      Les deux sont en antiphase : l'énergie oscille de l'un à l'autre, sans jamais être maximale
+      dans les deux en même temps.
+    solution: |
+      Condensateur : entre ses armatures il règne un champ électrique proportionnel
+      à $u_C$ (ou $q$). Énergie : $E_C = \tfrac{1}{2}Cu_C^2 = \tfrac{1}{2}q^2/C$.
+      Maximum quand $q$ (donc $u_C$) est maximal, c'est-à-dire quand $i = dq/dt = 0$.
+      Bobine : son champ magnétique est proportionnel au courant $i$.
+      Énergie : $E_L = \tfrac{1}{2}Li^2$.
+      Maximum quand $i$ est maximal, c'est-à-dire quand $u_C = 0$ ($q = 0$).
+      Résumé : E_C max ↔ ($u_C$ max, $i = 0$) ; E_L max ↔ ($i$ max, $u_C = 0$).
+
+  # ── R8 bac-style item / M4 + M6 — establish ideal ODE, give T₀ ──
+
+  - id: RLC-R8-1
+    rung: "R8"
+    difficulty_level: 4
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, bac_style]
+    stem: |
+      Un circuit RLC série est composé d'un condensateur ($C = 25\,\mu\text{F}$),
+      d'une bobine ($L = 100\,\text{mH}$, résistance interne négligeable)
+      et d'une résistance $R$ **négligeable**.
+      À $t = 0$ le condensateur est chargé à $U_0 = 8\,\text{V}$ et le courant
+      initial est nul.
+      (a) En appliquant la loi des mailles, établir l'équation différentielle
+      vérifiée par la charge $q(t)$.
+      (b) Donner l'expression et la valeur numérique de la période propre $T_0$.
+      (c) Vérifier que $q(t) = Q_{max}\cos\!\bigl(\tfrac{2\pi}{T_0}t\bigr)$
+      est solution et préciser la valeur de $Q_{max}$.
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          (a) $L\ddot{q} + \tfrac{q}{C} = 0$.
+          (b) $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{100 \times 10^{-3} \times 25 \times 10^{-6}}
+          = 2\pi \times 1{,}58 \times 10^{-3} \approx 9{,}93 \times 10^{-3}\,\text{s}
+          \approx 9{,}9\,\text{ms}$.
+          (c) Le cosinus vérifie l'ODE et $Q_{max} = CU_0 = 25 \times 10^{-6} \times 8
+          = 2{,}0 \times 10^{-4}\,\text{C}$.
+        correct: true
+      - id: B
+        text: |
+          (a) $L\ddot{q} + R\dot{q} + \tfrac{q}{C} = 0$ (avec $R \neq 0$).
+          (b) $T_0 = 2\pi\sqrt{RC}$.
+          (c) $q(t) = Q_{max}\cos(\ldots)$ est solution dans tous les cas.
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: [mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee]
+        feedback: |
+          $R$ est négligeable donc le terme $R\dot{q}$ est absent de l'ODE idéale.
+          La période propre est $T_0 = 2\pi\sqrt{LC}$ (sans R).
+          Le cosinus est solution uniquement dans le cas idéal ($R = 0$) ;
+          avec $R \neq 0$ il ne satisfait plus l'équation.
+      - id: C
+        text: |
+          (a) $L\ddot{q} + \tfrac{q}{C} = 0$.
+          (b) $T_0 = 2\pi\sqrt{LC} \approx 9{,}9\,\text{ms}$.
+          (c) Le cosinus vérifie l'ODE, mais $Q_{max} = U_0 = 8\,\text{C}$.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          $Q_{max}$ est une charge (en coulombs), pas une tension.
+          La relation entre charge initiale et tension initiale est $q_0 = CU_0$,
+          donc $Q_{max} = CU_0 = 25 \times 10^{-6} \times 8 = 2{,}0 \times 10^{-4}\,\text{C}$.
+          Confondre $Q_{max}$ avec $U_0$ revient à négliger le rôle de C dans la relation $q = Cu_C$.
+      - id: D
+        text: |
+          (a) $L\ddot{q} + \tfrac{q}{C} = 0$.
+          (b) $T_0 = 2\pi\sqrt{LC} \approx 9{,}9\,\text{ms}$.
+          (c) On ne peut pas vérifier ni donner $q(t)$ sous forme close :
+          il faut d'abord établir que le régime est périodique.
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: |
+          L'ODE $L\ddot{q} + q/C = 0$ est celle d'un oscillateur harmonique pur ($R = 0$).
+          La substitution de $q(t) = Q_{max}\cos(\omega_0 t)$ dans cette équation se vérifie
+          directement : $-Q_{max}\omega_0^2 L\cos(\ldots) + \tfrac{Q_{max}}{C}\cos(\ldots)
+          = Q_{max}\cos(\ldots)\bigl(-L\omega_0^2 + 1/C\bigr) = 0$
+          car $\omega_0^2 = 1/(LC)$. La forme close est valide et vérifiable ici.
+    correct_feedback: |
+      Loi des mailles ($R = 0$) : $u_C + u_L = 0$,
+      soit $\tfrac{q}{C} + L\ddot{q} = 0 \Rightarrow L\ddot{q} + \tfrac{q}{C} = 0$.
+      $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{10^{-1} \times 25 \times 10^{-6}}
+      = 2\pi\sqrt{2{,}5 \times 10^{-6}} \approx 9{,}93\,\text{ms}$.
+      Vérification : $\ddot{q} = -\omega_0^2 Q_{max}\cos(\omega_0 t)$,
+      $L\ddot{q} + q/C = Q_{max}\cos(\omega_0 t)(-L\omega_0^2 + 1/C) = 0$ ✓.
+      $Q_{max} = CU_0 = 25 \times 10^{-6} \times 8 = 2{,}0 \times 10^{-4}\,\text{C}$.
+    solution: |
+      (a) Loi des mailles ($R$ négligeable, sens de $i$ : $i = dq/dt$, convention récepteur) :
+      $u_C + u_L = 0$
+      $\frac{q}{C} + L\frac{d^2q}{dt^2} = 0$
+      $L\ddot{q} + \frac{q}{C} = 0$.
+      (b) Identification à $\ddot{q} + \omega_0^2 q = 0$ avec $\omega_0^2 = \frac{1}{LC}$ :
+      $LC = 100 \times 10^{-3} \times 25 \times 10^{-6} = 2{,}5 \times 10^{-6}\,\text{s}^2$.
+      $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{2{,}5 \times 10^{-6}} \approx 2\pi \times 1{,}581 \times 10^{-3}
+      \approx 9{,}93 \times 10^{-3}\,\text{s} \approx 9{,}9\,\text{ms}$.
+      (c) Posons $q(t) = Q_{max}\cos(\omega_0 t)$ (la condition $i(0) = 0$ est satisfaite
+      car $\dot{q}(0) = 0$).
+      $\ddot{q} = -Q_{max}\omega_0^2\cos(\omega_0 t)$.
+      Substitution : $L(-Q_{max}\omega_0^2\cos) + \frac{Q_{max}\cos}{C}
+      = Q_{max}\cos\bigl(\frac{1}{C} - L\omega_0^2\bigr) = 0$ ✓ (car $\omega_0^2 = 1/LC$).
+      Condition initiale : $q(0) = Q_{max} = CU_0
+      = 25 \times 10^{-6} \times 8 = 2{,}0 \times 10^{-4}\,\text{C}$.
+
 coverage_summary:
   per_misconception:
-    mc.physics.rlc_serie.resistance-entretient-oscillations: 3
+    mc.physics.rlc_serie.resistance-entretient-oscillations: 4   # +RLC-M1-4
     mc.physics.rlc_serie.energie-consommee-non-conservee: 3
     mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 3
-    mc.physics.rlc_serie.T0-depend-de-R: 3
+    mc.physics.rlc_serie.T0-depend-de-R: 5                       # +RLC-M4-4, +RLC-R8-1(B)
     mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 3
-    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 3
-    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 3
+    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 4  # +RLC-R8-1(D)
+    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 5         # +RLC-M7-4, +RLC-R8-1(C)
     mc.physics.rlc_serie.entretien-est-regime-force: 3
-  total_items: 24
-  floor_met: true   # all 8 misconceptions ≥ 3 items
+  total_items: 28
+  floor_met: true   # all 8 misconceptions ≥ 3 items (minimum is 3, for M2, M3, M5, M8)
   habilete_mix:
-    utilisation: 11          # RLC-M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M5-1, M7-1, M7-2, M7-3  → wait, M7-3 is application_experimentale; recount below
-    resolution: 9
+    utilisation: 12
+    # M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2  (original 9)
+    # + M1-4 (regime recognition), M4-4 (T₀ direct compute), M7-4 (which stores what)
+    resolution: 12
+    # M1-3, M2-3, M3-3, M4-3, M6-1, M6-2, M6-3, M8-1, M8-2, M8-3, M5-3  (original 11)
+    # + RLC-R8-1 (bac-style R8)
     application_experimentale: 4
-  # Recount by item:
-  # utilisation:   M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2          = 9  (37.5 %)
-  # resolution:    M1-3, M2-3, M3-3, M4-3, M5-3 uses appexp — see below, M6-1,
-  #                M6-2, M6-3, M8-1, M8-2, M8-3                                    = 11 (45.8 %)
-  # application_experimentale: M3-2, M5-1, M5-2, M7-3                              = 4  (16.7 %)
-  # Corrected:
-  habilete_mix_corrected:
-    utilisation: 9            # M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2
-    resolution: 11            # M1-3, M2-3, M3-3, M4-3, M6-1, M6-2, M6-3, M8-1, M8-2, M8-3, M5-3
-    application_experimentale: 4   # M3-2, M5-1, M5-2, M7-3
-    percentages: { utilisation: "37.5 %", resolution: "45.8 %", application_experimentale: "16.7 %" }
-    target:      { utilisation: "~50 %",  resolution: "~35 %",  application_experimentale: "~15 %" }
+    # M3-2, M5-1, M5-2, M7-3  (unchanged)
+    percentages:
+      utilisation: "42.9 %"        # 12/28
+      resolution: "42.9 %"         # 12/28
+      application_experimentale: "14.3 %"   # 4/28
+    target:
+      utilisation: "~50 %"
+      resolution: "~35 %"
+      application_experimentale: "~15 %"
     note: >
-      The set is slightly heavier on Résolution than the 35 % bac target and lighter
-      on Utilisation than the 50 % target. This is inherent to the misconception inventory:
-      M6 (3 items) and M8 (3 items) are both Résolution-heavy by nature. To shift toward
-      the 50/35/15 target in a v2 pass, add 2–3 pure Utilisation items (regime recognition,
-      T₀ direct read) on M1, M4, or M7. The 16.7 % Application expérimentale is on target.
+      Adding the 3 pure Utilisation items moves the mix from 37.5 / 45.8 / 16.7 %
+      to 42.9 / 42.9 / 14.3 %. Utilisation rises toward the 50 % target; Résolution
+      falls from 45.8 % toward 35 %. The gap from the target is inherent to the
+      misconception inventory (M6 and M8 are Résolution-heavy by structural necessity —
+      establishing ODEs and the entretien k=R derivation have no low-floor
+      Utilisation form). Application expérimentale sits at 14.3 %, on target (~15 %).
+      A further shift would require padding or weakening the M6/M8 coverage, which
+      would violate the ≥3-per-misconception discipline. Flagged for the editorial gate.
+
+  ramp_coverage:
+    R0: 0
+    R1: 5   # M2-1, M2-2, M7-1, M7-2, M7-4
+    R2: 5   # M4-1, M4-2, M4-3, M4-4, RLC-R8-1 (placed R8 not R2 — see R8 count)
+    R3: 4   # M1-1, M1-2, M1-3, M3-1
+    R4: 5   # M2-3, M3-3, M5-1, M6-3(*), M1-4
+    R5: 3   # M6-1, M6-2, M6-3
+    R6: 5   # M3-2, M5-2, M5-3, M7-3, M4-3(*)
+    R7: 3   # M8-1, M8-2
+    R8: 1   # RLC-R8-1
+    R9: 1   # M8-3
+    note: >
+      (*) RLC-M6-3 is tagged R5; RLC-M4-3 is tagged R2 — counts are approximate,
+      each item's rung field is authoritative. R8 now has 1 item (RLC-R8-1);
+      the ramp summit is covered.
 
   dual_tagged_distractors:
     - item: RLC-M3-1
@@ -1255,3 +1558,11 @@ coverage_summary:
         - mc.physics.rlc_serie.entretien-est-regime-force
         - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
       note: "M8↔M3: describing apériodique as R imposing its own frequency reaches both M8 (entretien/forced confusion) and M3 (R controls rate)."
+
+    - item: RLC-R8-1
+      choice: B
+      text: "ODE avec R, T₀ = 2π√(RC), cosinus toujours valide."
+      attributes_to:
+        - mc.physics.rlc_serie.T0-depend-de-R
+        - mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+      note: "M4↔M6: the bac-style stem's wrong choice B bundles both T₀-contains-R (M4) and over-generalised closed-form (M6)."

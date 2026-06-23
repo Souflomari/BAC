@@ -196,15 +196,21 @@
     C605,210 618,350 635,348
   " fill="none" stroke="#7E9CC8" stroke-width="2.5"/>
 
-  <!-- E total = decaying envelope -->
-  <!-- The sum E_C+E_L is not perfectly flat (it dips slightly at each crossing) -->
-  <!-- Approximate the envelope as a smoothly decreasing curve -->
+  <!-- E total = monotonically non-increasing envelope -->
+  <!--
+    The curve passes through each peak of E_C and E_L in order:
+      (410,120) → (470,150) → (530,189) → (590,210) → (630,237)
+    y is strictly non-decreasing (screen y increases = energy decreases).
+    No segment ever goes back up. Bezier handles are chosen so that
+    the tangent never turns upward between any two consecutive peak points.
+  -->
   <path d="
     M410,120
-    C440,120 455,140 470,150
-    C485,140 500,155 530,189
-    C555,195 565,205 590,210
-    C610,210 625,240 640,265
+    C428,128 452,143 470,150
+    C488,157 510,172 530,189
+    C550,199 570,206 590,210
+    C605,216 620,228 630,237
+    C634,241 638,252 640,262
   " fill="none" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
 
   <!-- E total label -->
@@ -241,10 +247,11 @@
   <!-- Joule heat shading: soft fill under the total envelope to x-axis -->
   <path d="
     M410,120
-    C440,120 455,140 470,150
-    C485,140 500,155 530,189
-    C555,195 565,205 590,210
-    C610,210 625,240 640,265
+    C428,128 452,143 470,150
+    C488,157 510,172 530,189
+    C550,199 570,206 590,210
+    C605,216 620,228 630,237
+    C634,241 638,252 640,262
     L640,350 L410,350 Z
   " fill="#D4785A" opacity="0.08"/>
   <!-- Joule label -->
