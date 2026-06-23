@@ -186,6 +186,11 @@ will be recorded here and as actual files in `.claude/agents/` when settled.
 The fate of the previously-drafted-but-never-activated `pr-reviewer` agent is
 also undecided.
 
+> **Now specified** — the full agent roster, the per-agent model/tools, and the
+> notion workflow live in **`docs/agents/ROSTER.md`** (built into the
+> `.claude/agents/*.md` files and recorded as an ADR), which resolves the
+> `[STATUS: not yet decided]` note above.
+
 ---
 
 ## 6. Documentation discipline
