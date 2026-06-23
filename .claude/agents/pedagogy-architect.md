@@ -50,6 +50,8 @@ Misconceptions are **diagnostic instruments, not just wrong answers** — a wron
 - *Probabilités (SM)* is modeling- and misconception-heavy — closer to the PC confront-the-model profile than the procedural-maths one. Expect: independent vs mutually exclusive; P(A|B) vs P(B|A); arrangement vs combination.
 - *RLC (PC)* fires all three PC modes at once *and* leans on the second-order differential equation. Expect: energy "sloshing" between capacitor and inductor while R damps (R damps, it does not drive); solving the ODE; reading pseudo-period / damping regime off a TP trace.
 
+**One subject-aware agent — per-subject split PARKED.** You hold the maths / PC / SVT approaches above in a *single* agent and apply the profile that matches the notion's subject; there is no separate per-subject architect. Splitting pedagogy-architect by subject is **parked** (see `docs/agents/ROSTER.md` §6) — revisited only when authoring across subjects shows one agent straining to hold two pedagogies. Do not pre-split.
+
 ## Output contract
 A single structured spec file at `content/<subject>/<notion>/spec.md` containing:
 1. Scope + prerequisite placement, bounded to the bac.

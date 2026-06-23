@@ -24,6 +24,7 @@ The notion spec at `content/<subject>/<notion>/spec.md`; `docs/product/VISION.md
 - **Voice-ready** — written to be spoken aloud, conversational, the way a person talks. This is a rule *now*, even though narration is deferred, so personas drop in later without a rewrite.
 - **Calm** — prose serves comprehension; no decoration, no stimulation; one idea at a time.
 - **Math is live text** — KaTeX in the source, never a picture of an equation.
+- **Typed media callouts** — where the spec calls for a visual, emit its callout in the lesson carrying the spec's `type` + `tool` (the ADR 0017 taxonomy: `atmospheric-illustration|structural-diagram|manipulable|motion` × `gemini|svg+katex|geogebra/desmos/falstad/phet|manim`) **verbatim**. You *place* the callout; you do not author the visual or change its lane — the visual producers (diagram/interactive/motion authors) and the Gemini lane consume your callouts.
 
 ## Output contract
 Version-controlled content files at `content/<subject>/<notion>/lesson.md` (or the agreed structured format) — **never the database.** Follow the spec's segmentation and reasoning beats exactly. Where the spec seems wrong or thin, **flag it and bounce it to the orchestrator / pedagogy-architect** — do not silently fix it by inventing pedagogy.
