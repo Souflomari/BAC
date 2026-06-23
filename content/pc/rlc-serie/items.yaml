@@ -1388,31 +1388,33 @@ coverage_summary:
   total_items: 28
   floor_met: true   # all 8 misconceptions ≥ 3 items (minimum is 3, for M2, M3, M5, M8)
   habilete_mix:
+    # Authoritative counts: derived from each item's own `habilete:` field.
     utilisation: 12
     # M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2  (original 9)
     # + M1-4 (regime recognition), M4-4 (T₀ direct compute), M7-4 (which stores what)
-    resolution: 12
-    # M1-3, M2-3, M3-3, M4-3, M6-1, M6-2, M6-3, M8-1, M8-2, M8-3, M5-3  (original 11)
+    resolution: 11
+    # M1-3, M2-3, M3-3, M4-3, M6-1, M6-2, M6-3, M8-1, M8-2, M8-3  (original 10)
     # + RLC-R8-1 (bac-style R8)
-    application_experimentale: 4
-    # M3-2, M5-1, M5-2, M7-3  (unchanged)
+    application_experimentale: 5
+    # M3-2, M5-1, M5-2, M5-3, M7-3
     percentages:
       utilisation: "42.9 %"        # 12/28
-      resolution: "42.9 %"         # 12/28
-      application_experimentale: "14.3 %"   # 4/28
+      resolution: "39.3 %"         # 11/28
+      application_experimentale: "17.9 %"   # 5/28
     target:
       utilisation: "~50 %"
       resolution: "~35 %"
       application_experimentale: "~15 %"
     note: >
       Adding the 3 pure Utilisation items moves the mix from 37.5 / 45.8 / 16.7 %
-      to 42.9 / 42.9 / 14.3 %. Utilisation rises toward the 50 % target; Résolution
+      to 42.9 / 39.3 / 17.9 %. Utilisation rises toward the 50 % target; Résolution
       falls from 45.8 % toward 35 %. The gap from the target is inherent to the
       misconception inventory (M6 and M8 are Résolution-heavy by structural necessity —
       establishing ODEs and the entretien k=R derivation have no low-floor
-      Utilisation form). Application expérimentale sits at 14.3 %, on target (~15 %).
-      A further shift would require padding or weakening the M6/M8 coverage, which
-      would violate the ≥3-per-misconception discipline. Flagged for the editorial gate.
+      Utilisation form). Application expérimentale sits at 17.9 %, just above the
+      ~15 % target. A further shift toward 50/35/15 would require padding or weakening
+      the M6/M8 coverage, which would violate the ≥3-per-misconception discipline.
+      Flagged for the editorial gate.
 
   ramp_coverage:
     R0: 0
