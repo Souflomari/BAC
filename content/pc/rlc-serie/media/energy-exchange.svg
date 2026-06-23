@@ -1,0 +1,266 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 460" width="680" height="460" font-family="'Segoe UI', system-ui, sans-serif">
+
+  <!-- Background -->
+  <rect width="680" height="460" rx="8" fill="#F5F3EF"/>
+
+  <!-- Title -->
+  <text x="340" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">Échanges d'énergie dans le circuit RLC</text>
+
+  <!--
+    TWO PANELS side by side.
+    Panel 1 (left): Cas idéal LC (R = 0) — E_C + E_L = constante
+    Panel 2 (right): Cas amorti (R ≠ 0) — E_C + E_L décroit (Joule)
+    Each panel: width=290, content area width=250, height=340
+    Left panel origin: x=40, y=40
+    Right panel origin: x=360, y=40
+    Axes origin (bottom-left of plot): left=(90,350), right=(410,350)
+    Plot width=240, height=270 (y from 80 to 350)
+  -->
+
+  <!-- =============================================================== -->
+  <!-- PANEL 1 — Idéal LC (R ≈ 0) : énergie conservée                 -->
+  <!-- =============================================================== -->
+
+  <!-- Panel background -->
+  <rect x="38" y="38" width="296" height="378" rx="6" fill="#EDEAE5"/>
+
+  <!-- Panel title -->
+  <text x="186" y="58" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas idéal  (R ≈ 0)</text>
+  <text x="100" y="73" font-size="10.5" fill="#3E5C86">E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="#6B6B72"> + E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = constante</tspan></tspan></text>
+
+  <!-- Axes — left panel -->
+  <!-- x-axis at y=350 from x=90 to x=320 -->
+  <line x1="90" y1="350" x2="320" y2="350" stroke="#8A8A92" stroke-width="1.5"/>
+  <polygon points="320,350 309,345 309,355" fill="#8A8A92"/>
+  <!-- y-axis at x=90 from y=350 to y=85 -->
+  <line x1="90" y1="350" x2="90" y2="85" stroke="#8A8A92" stroke-width="1.5"/>
+  <polygon points="90,85 85,96 95,96" fill="#8A8A92"/>
+
+  <!-- Axis labels -->
+  <text x="323" y="354" font-size="11" fill="#6B6B72">t</text>
+  <text x="83" y="84" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
+  <text x="83" y="352" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
+
+  <!-- E_max tick on y-axis -->
+  <line x1="86" y1="120" x2="94" y2="120" stroke="#8A8A92" stroke-width="1.2"/>
+  <text x="82" y="126" text-anchor="end" font-size="9.5" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
+
+  <!--
+    Period P = 120px (one full oscillation of E_C and E_L).
+    E_C = E_max * cos²(πt/T₀)  — starts at max, drops to 0, back to max each T₀
+    E_L = E_max * sin²(πt/T₀)  — starts at 0, rises to max, drops to 0 each T₀
+    Their half-period in energy is T₀/2.
+    E_max = 230 units (y=120 → 230px above x-axis at y=350 = y=120)
+    E_L and E_C are antiphase cosine-squared curves.
+    Origin x=90, period P=120px, 2 full energy cycles visible (240px → x=330 but clip at 320).
+
+    E_C: starts at y=120 (max), goes to y=350 (0) at x=90+60=150, back to y=120 at x=210, etc.
+    E_L: starts at y=350 (0), goes to y=120 (max) at x=150, back to y=350 at x=210, etc.
+
+    Using cubic bezier: cos² shape:
+    E_C nodes: (90,120)→(150,350)→(210,120)→(270,350)→(315,214) [partial]
+    E_L nodes: (90,350)→(150,120)→(210,350)→(270,120)→(315,214) [partial]
+  -->
+
+  <!-- E_C curve (blue accent) — ½q²/C — starts at maximum -->
+  <path d="
+    M90,120
+    C105,120 120,350 150,350
+    C180,350 195,120 210,120
+    C225,120 240,350 270,350
+    C285,350 300,214 315,214
+  " fill="none" stroke="#3E5C86" stroke-width="2.5"/>
+
+  <!-- E_L curve (lighter blue) — ½Li² — starts at zero -->
+  <path d="
+    M90,350
+    C120,350 135,120 150,120
+    C165,120 180,350 210,350
+    C240,350 255,120 270,120
+    C285,120 300,214 315,214
+  " fill="none" stroke="#7E9CC8" stroke-width="2.5"/>
+
+  <!-- E total = horizontal line at y=120 (constant) -->
+  <line x1="90" y1="120" x2="315" y2="120" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
+
+  <!-- Labels for curves — integrated beside the curves -->
+  <!-- E_C label near first peak (x≈90, y≈120) -->
+  <text x="96" y="113" font-size="11" font-style="italic" fill="#3E5C86">E<tspan dy="4" font-size="8">C</tspan><tspan dy="-4" font-size="9.5"> = ½q²/C</tspan></text>
+
+  <!-- E_L label near first peak of E_L (x≈150, y≈120) -->
+  <text x="156" y="113" font-size="11" font-style="italic" fill="#7E9CC8">E<tspan dy="4" font-size="8">L</tspan><tspan dy="-4" font-size="9.5"> = ½Li²</tspan></text>
+
+  <!-- E total label beside the flat line -->
+  <text x="228" y="114" font-size="10" fill="#5A7A4A">E = E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E<tspan dy="3" font-size="8">L</tspan></tspan></text>
+
+  <!--
+    Mark special instants:
+    — t₁: x=90 → u_C max, i=0 → all in C, E_L=0
+    — t₂: x=150 → u_C=0, i max → all in L, E_C=0
+    — t₃: x=210 → u_C max (opposite sign), i=0 → all back in C
+  -->
+
+  <!-- Instant markers: vertical dashed lines -->
+  <line x1="90" y1="120" x2="90" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="150" y1="120" x2="150" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="210" y1="120" x2="210" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="270" y1="120" x2="270" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Instant labels on x-axis -->
+  <!-- t=0: u_C max, i=0 -->
+  <circle cx="90" cy="350" r="3" fill="#3E5C86"/>
+  <text x="90" y="370" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> max</tspan></text>
+  <text x="90" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
+
+  <!-- t=T₀/4: u_C=0, i max -->
+  <circle cx="150" cy="350" r="3" fill="#7E9CC8"/>
+  <text x="150" y="370" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
+  <text x="150" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i max</text>
+
+  <!-- t=T₀/2: u_C min (−), i=0 -->
+  <circle cx="210" cy="350" r="3" fill="#3E5C86"/>
+  <text x="210" y="370" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> min</tspan></text>
+  <text x="210" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
+
+  <!-- t=3T₀/4: u_C=0, i max (−) -->
+  <circle cx="270" cy="350" r="3" fill="#7E9CC8"/>
+  <text x="270" y="370" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
+  <text x="270" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i max</text>
+
+  <!-- T₀ bracket under x-axis -->
+  <line x1="90" y1="393" x2="210" y2="393" stroke="#8A8A92" stroke-width="1.3"/>
+  <line x1="90" y1="389" x2="90" y2="397" stroke="#8A8A92" stroke-width="1.3"/>
+  <line x1="210" y1="389" x2="210" y2="397" stroke="#8A8A92" stroke-width="1.3"/>
+  <text x="150" y="406" text-anchor="middle" font-size="10" font-style="italic" fill="#6B6B72">T<tspan dy="3" font-size="7.5">0</tspan></text>
+
+
+  <!-- =============================================================== -->
+  <!-- PANEL 2 — Amorti (R ≠ 0) : énergie dissipée par Joule          -->
+  <!-- =============================================================== -->
+
+  <!-- Panel background -->
+  <rect x="358" y="38" width="296" height="378" rx="6" fill="#EDEAE5"/>
+
+  <!-- Panel title -->
+  <text x="506" y="58" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas amorti  (R ≠ 0)</text>
+  <text x="418" y="73" font-size="10.5" fill="#6B6B72">E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> → 0  (effet Joule)</tspan></tspan></text>
+
+  <!-- Axes — right panel -->
+  <line x1="410" y1="350" x2="640" y2="350" stroke="#8A8A92" stroke-width="1.5"/>
+  <polygon points="640,350 629,345 629,355" fill="#8A8A92"/>
+  <line x1="410" y1="350" x2="410" y2="85" stroke="#8A8A92" stroke-width="1.5"/>
+  <polygon points="410,85 405,96 415,96" fill="#8A8A92"/>
+
+  <text x="643" y="354" font-size="11" fill="#6B6B72">t</text>
+  <text x="403" y="84" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
+  <text x="403" y="352" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
+
+  <!-- E_max tick -->
+  <line x1="406" y1="120" x2="414" y2="120" stroke="#8A8A92" stroke-width="1.2"/>
+  <text x="402" y="126" text-anchor="end" font-size="9.5" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
+
+  <!--
+    Damped energy curves:
+    Same antiphase shape but envelope decays exponentially.
+    Period P=120px, decay: amplitude reduces by ~30% each half-period.
+
+    E_C peaks:
+      peak 1 at x=410: A1=230 → y=120
+      peak 2 at x=530: A2=161 → y=189
+      peak 3 at x=650 (off edge, partial): A3=113 → y=237
+    E_L peaks:
+      peak 1 at x=470: A1=200 → y=150
+      peak 2 at x=590: A2=140 → y=210
+
+    E_C (blue): cos² shape with decaying envelope
+    E_L (lighter blue): sin² shape with decaying envelope
+    E_total (sum): should oscillate slightly around a decaying envelope
+  -->
+
+  <!-- E_C curve — damped, starts at max -->
+  <path d="
+    M410,120
+    C425,120 438,350 470,350
+    C502,350 515,189 530,189
+    C545,189 558,350 580,350
+    C602,350 615,237 630,237
+    C637,237 640,280 640,320
+  " fill="none" stroke="#3E5C86" stroke-width="2.5"/>
+
+  <!-- E_L curve — damped, starts at zero -->
+  <path d="
+    M410,350
+    C442,350 455,150 470,150
+    C485,150 498,350 530,350
+    C562,350 575,210 590,210
+    C605,210 618,350 635,348
+  " fill="none" stroke="#7E9CC8" stroke-width="2.5"/>
+
+  <!-- E total = decaying envelope -->
+  <!-- The sum E_C+E_L is not perfectly flat (it dips slightly at each crossing) -->
+  <!-- Approximate the envelope as a smoothly decreasing curve -->
+  <path d="
+    M410,120
+    C440,120 455,140 470,150
+    C485,140 500,155 530,189
+    C555,195 565,205 590,210
+    C610,210 625,240 640,265
+  " fill="none" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
+
+  <!-- E total label -->
+  <text x="540" y="174" font-size="10" fill="#5A7A4A">E = E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E<tspan dy="3" font-size="8">L</tspan></tspan></text>
+  <text x="540" y="188" font-size="9" fill="#5A7A4A">décroit → Joule</text>
+
+  <!-- Labels for curves -->
+  <text x="416" y="113" font-size="11" font-style="italic" fill="#3E5C86">E<tspan dy="4" font-size="8">C</tspan></text>
+  <text x="476" y="143" font-size="11" font-style="italic" fill="#7E9CC8">E<tspan dy="4" font-size="8">L</tspan></text>
+
+  <!-- Instant markers: x=410, x=470, x=530, x=590 -->
+  <line x1="410" y1="120" x2="410" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="470" y1="150" x2="470" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="530" y1="189" x2="530" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="590" y1="210" x2="590" y2="360" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Instant labels -->
+  <circle cx="410" cy="350" r="3" fill="#3E5C86"/>
+  <text x="410" y="370" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> max</tspan></text>
+  <text x="410" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
+
+  <circle cx="470" cy="350" r="3" fill="#7E9CC8"/>
+  <text x="470" y="370" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
+  <text x="470" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i max</text>
+
+  <circle cx="530" cy="350" r="3" fill="#3E5C86"/>
+  <text x="530" y="370" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> min</tspan></text>
+  <text x="530" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
+
+  <circle cx="590" cy="350" r="3" fill="#7E9CC8"/>
+  <text x="590" y="370" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
+  <text x="590" y="382" text-anchor="middle" font-size="8.5" fill="#6B6B72">i max</text>
+
+  <!-- Joule heat shading: soft fill under the total envelope to x-axis -->
+  <path d="
+    M410,120
+    C440,120 455,140 470,150
+    C485,140 500,155 530,189
+    C555,195 565,205 590,210
+    C610,210 625,240 640,265
+    L640,350 L410,350 Z
+  " fill="#D4785A" opacity="0.08"/>
+  <!-- Joule label -->
+  <text x="530" y="310" text-anchor="middle" font-size="9.5" fill="#C06040" font-style="italic">énergie dissipée</text>
+  <text x="530" y="323" text-anchor="middle" font-size="9.5" fill="#C06040" font-style="italic">par effet Joule (R)</text>
+
+  <!-- ============================================================ -->
+  <!-- Bottom legend -->
+  <!-- ============================================================ -->
+  <line x1="80" y1="432" x2="110" y2="432" stroke="#3E5C86" stroke-width="2.5"/>
+  <text x="115" y="436" font-size="10.5" fill="#3E5C86">E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="#2A2A2E"> = ½q²/C</tspan></text>
+
+  <line x1="235" y1="432" x2="265" y2="432" stroke="#7E9CC8" stroke-width="2.5"/>
+  <text x="270" y="436" font-size="10.5" fill="#7E9CC8">E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="#2A2A2E"> = ½Li²</tspan></text>
+
+  <line x1="390" y1="432" x2="420" y2="432" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="425" y="436" font-size="10.5" fill="#5A7A4A">E = E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> (total)</tspan></tspan></text>
+
+</svg>

@@ -1,0 +1,1257 @@
+notion: rlc-serie
+skill_code: rlc_serie
+
+misconceptions:
+  - id: mc.physics.rlc_serie.resistance-entretient-oscillations
+    label: "« C'est la résistance qui entretient (ou crée) les oscillations »"
+    description: "L'élève croit que R est l'élément actif qui alimente ou maintient les oscillations ; supprimer R stopperait tout."
+    contradicts_principle: "Dans les oscillations libres, aucun élément n'alimente le circuit : l'énergie placée initialement sur C oscille entre C et L. R ne fait que dissiper (effet Joule) ; R→0 donne un régime périodique parfait."
+
+  - id: mc.physics.rlc_serie.energie-consommee-non-conservee
+    label: "« L'énergie est consommée / disparaît, elle ne s'échange pas »"
+    description: "L'élève pense que l'énergie se dépense et disparaît à chaque instant, sans voir le transfert conservatif entre C et L."
+    contradicts_principle: "Dans le cas idéal (R négligeable) l'énergie totale $E = E_C + E_L$ est constante ; elle oscille entre les deux réservoirs. Avec R ≠ 0, l'énergie diminue mais est convertie en chaleur par effet Joule — elle ne disparaît pas."
+
+  - id: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+    label: "« Plus R est grande, plus le circuit oscille vite (R agit sur la fréquence) »"
+    description: "L'élève confond l'amortissement d'amplitude (régi par R) avec la fréquence des oscillations (régie par L et C)."
+    contradicts_principle: "R gouverne l'amortissement (vitesse de décroissance), pas la fréquence. La période propre $T_0 = 2\\pi\\sqrt{LC}$ ne dépend que de L et C."
+
+  - id: mc.physics.rlc_serie.T0-depend-de-R
+    label: "« La période propre $T_0$ dépend de R (ex. $T_0 = 2\\pi\\sqrt{RC}$) »"
+    description: "L'élève importe la constante de temps $\\tau = RC$ du chapitre RC précédent et l'utilise comme période propre."
+    contradicts_principle: "$T_0 = 2\\pi\\sqrt{LC}$ ne contient que L et C. $\\sqrt{RC}$ est la constante de charge τ, pas une période d'oscillation."
+
+  - id: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+    label: "« La pseudo-période (cas amorti) est exactement égale à $T_0$, ou bien il n'en existe pas »"
+    description: "L'élève soit affirme que la pseudo-période mesurée vaut exactement $2\\pi\\sqrt{LC}$ quel que soit l'amortissement, soit nie toute notion de période sur une trace amortie."
+    contradicts_principle: "La pseudo-période T existe (espacement régulier des pics) et vaut approximativement $T_0$ pour un faible amortissement. Ce n'est pas une égalité exacte ; on la mesure sur le graphe, on ne la calcule pas à partir de R."
+
+  - id: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+    label: "« Le cas amorti a une solution sinusoïdale fermée $q(t)=Q_{max}\\cos(\\ldots)$ comme le cas idéal »"
+    description: "L'élève généralise la solution du cas idéal au cas amorti, en écrivant un cosinus sans facteur d'amortissement."
+    contradicts_principle: "En régime amorti on établit l'équation différentielle $L\\ddot{q} + R\\dot{q} + q/C = 0$ et on s'arrête là. La forme fermée sinusoïdale pure n'est valide que pour R ≈ 0. Substituer le cosinus idéal dans l'équation amortie laisse un reste non nul."
+
+  - id: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+    label: "« Le condensateur et la bobine stockent la même chose / on confond leurs rôles »"
+    description: "L'élève intervertit les expressions d'énergie ou place les deux maxima d'énergie au même instant."
+    contradicts_principle: "$E_C = \\frac{1}{2}\\frac{q^2}{C}$ est maximale quand $u_C$ est maximal ($i = 0$) ; $E_L = \\frac{1}{2}Li^2$ est maximale quand $i$ est maximal ($u_C = 0$). Les deux sont en opposition de phase dans le cas idéal."
+
+  - id: mc.physics.rlc_serie.entretien-est-regime-force
+    label: "« L'entretien des oscillations, c'est imposer une fréquence de l'extérieur (régime forcé) »"
+    description: "L'élève confond entretien (compensation de la perte Joule) et régime forcé (fréquence imposée par un générateur extérieur)."
+    contradicts_principle: "Le générateur d'entretien délivre $u_G = k \\cdot i$ et compense exactement la perte Joule ($k = R$). L'ODE devient $L\\ddot{q} + q/C = 0$ : le circuit oscille librement à sa propre période $T_0 = 2\\pi\\sqrt{LC}$. Le générateur ne fixe pas de fréquence."
+
+items:
+
+  # ══════════════════════════════════════════════════════════════
+  # M1 — resistance-entretient-oscillations (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M1-1
+    rung: "R3"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit RLC série en oscillations libres, on diminue progressivement
+      la résistance $R$ jusqu'à la rendre négligeable ($R \to 0$).
+      Que deviennent les oscillations de $u_C(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles persistent sans s'amortir : le circuit entre en régime périodique."
+        correct: true
+      - id: B
+        text: "Elles s'arrêtent car plus rien ne les entretient."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: "Ce raisonnement suppose que R est le moteur des oscillations. Or R ne fait que dissiper l'énergie par effet Joule ; supprimer R supprime l'amortissement, pas les oscillations."
+      - id: C
+        text: "Elles s'amortissent plus vite."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "C'est l'inverse : moins de R signifie moins d'amortissement, pas plus. L'amortissement est proportionnel à la puissance dissipée $P = Ri^2$."
+      - id: D
+        text: "Leur période $T_0$ augmente fortement."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "La période propre $T_0 = 2\\pi\\sqrt{LC}$ ne dépend que de L et C ; modifier R ne la change pas."
+    correct_feedback: "Sans résistance le circuit est idéal (LC pur) : l'énergie oscille indéfiniment entre C et L, donnant un régime périodique parfait."
+    solution: |
+      L'énergie initiale $E_0 = \frac{1}{2}CU_0^2$ est stockée sur le condensateur.
+      Elle s'échange entre $E_C = \frac{1}{2}\frac{q^2}{C}$ et $E_L = \frac{1}{2}Li^2$
+      sans perte si $R = 0$.
+      L'équation différentielle pour $R = 0$ est $L\ddot{q} + \frac{q}{C} = 0$,
+      de solution $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$
+      avec $T_0 = 2\pi\sqrt{LC}$.
+      La résistance n'alimente rien : elle dissipe. Son absence donne un régime périodique.
+
+  - id: RLC-M1-2
+    rung: "R3"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      On charge un condensateur ($C = 10\,\mu\text{F}$) à $U_0 = 6\,\text{V}$,
+      puis on le connecte à une bobine ($L = 0{,}1\,\text{H}$) **sans résistance**.
+      Quel élément « fournit » l'énergie qui fait osciller le circuit ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucun élément extérieur : l'énergie initiale du condensateur s'échange entre C et L."
+        correct: true
+      - id: B
+        text: "La résistance (effet Joule)."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: "Il n'y a pas de résistance dans ce circuit. Et même si elle existait, R ne fournirait rien : elle ne ferait que dissiper de l'énergie."
+      - id: C
+        text: "La bobine, car $E_L = \\frac{1}{2}Li^2$ est l'énergie motrice."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "La bobine stocke de l'énergie magnétique, mais elle ne la crée pas. Elle reçoit l'énergie du condensateur et la lui renvoie."
+      - id: D
+        text: "Le circuit puise l'énergie dans le champ magnétique terrestre."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "Non : l'unique source d'énergie est la charge initiale du condensateur."
+    correct_feedback: "L'oscillation est autoentretenue par l'échange d'énergie entre les deux réservoirs (C et L). Aucun élément actif n'est nécessaire."
+    solution: |
+      Énergie initiale : $E_0 = \frac{1}{2}CU_0^2 = \frac{1}{2} \times 10^{-5} \times 36
+      = 1{,}8 \times 10^{-4}\,\text{J}$.
+      Cette énergie passe de C à L puis de L à C indéfiniment (cas idéal).
+      Aucun élément n'en injecte : c'est la charge initiale qui alimente tout.
+
+  - id: RLC-M1-3
+    rung: "R3"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un circuit RLC série est en régime pseudo-périodique.
+      Un élève affirme : « Pour que les oscillations durent plus longtemps,
+      il faut **augmenter** $R$ afin de mieux les entretenir. »
+      Cette affirmation est-elle correcte ? Justifiez en termes énergétiques.
+    type: mcq
+    choices:
+      - id: A
+        text: "Non. Augmenter $R$ accélère la dissipation d'énergie ($P = Ri^2$) et rend l'amortissement plus rapide ; pour prolonger les oscillations il faut **diminuer** $R$."
+        correct: true
+      - id: B
+        text: "Oui. Une plus grande résistance fournit plus d'énergie aux oscillations."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: "R ne fournit jamais d'énergie : la puissance dissipée par R est $P = Ri^2 \\geq 0$, toujours positive, donc toujours perdue en chaleur."
+      - id: C
+        text: "Oui. Une plus grande résistance augmente la fréquence et les oscillations semblent plus nombreuses."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "R n'agit pas sur la fréquence. Augmenter R amplifie l'amortissement ; les oscillations meurent plus vite, pas plus vite en fréquence."
+      - id: D
+        text: "Non. R n'a aucun effet sur les oscillations libres."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "R a bien un effet : elle dissipe de l'énergie et détermine la rapidité d'amortissement, voire le régime (apériodique si R trop grande)."
+    correct_feedback: "R est le frein énergétique : $P_{Joule} = Ri^2$ retire de l'énergie à chaque oscillation. Moins R est grande, plus les oscillations persistent."
+    solution: |
+      Bilan énergétique sur une demi-période :
+      $\Delta E = -\int_0^{T/2} R\,i^2\,dt < 0$.
+      Plus $R$ est grande, plus $|\Delta E|$ est grand, plus l'enveloppe décroît vite.
+      Pour prolonger les oscillations → réduire $R$.
+      (Pour les entretenir indéfiniment → utiliser un générateur d'entretien $u_G = k\,i$
+      avec $k = R$, qui **compense** exactement cette perte.)
+
+  # ══════════════════════════════════════════════════════════════
+  # M2 — energie-consommee-non-conservee (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M2-1
+    rung: "R1"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit LC idéal (résistance négligeable), à l'instant où la tension
+      $u_C$ aux bornes du condensateur est **nulle**, où se trouve l'énergie du circuit ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Entièrement emmagasinée dans la bobine : $E_L = \\frac{1}{2}Li^2$ est maximale."
+        correct: true
+      - id: B
+        text: "Elle a été entièrement consommée, il n'en reste plus."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "L'énergie ne disparaît pas : dans le cas idéal elle est conservée. Quand $u_C = 0$, le condensateur est vide mais le courant $i$ est maximal, donc toute l'énergie est dans la bobine."
+      - id: C
+        text: "Entièrement dans le condensateur : $E_C = \\frac{1}{2}Cu_C^2$ est maximale."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "Si $u_C = 0$, alors $E_C = \\frac{1}{2}C \\times 0 = 0$. L'énergie n'est pas dans le condensateur à cet instant."
+      - id: D
+        text: "Répartie également entre C et L."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "La répartition égale n'a rien de particulier ici. Quand $u_C = 0$ exactement, toute l'énergie est dans L ($E_C = 0$)."
+    correct_feedback: "Quand $u_C = 0$, le condensateur est déchargé ($q = 0$, $E_C = 0$) mais $i$ est à son maximum : toute l'énergie est magnétique, dans la bobine."
+    solution: |
+      Conservation de l'énergie (cas idéal) :
+      $E = E_C + E_L = \frac{1}{2}\frac{q^2}{C} + \frac{1}{2}Li^2 = \text{constante}$.
+      À $u_C = 0$ : $q = Cu_C = 0$, donc $E_C = 0$.
+      Par conservation : $E_L = E - 0 = E$ (maximum).
+      L'énergie a migré entièrement de C vers L.
+
+  - id: RLC-M2-2
+    rung: "R1"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un condensateur ($C = 10\,\mu\text{F}$, $U_0 = 6\,\text{V}$) est connecté à une bobine
+      ($L = 0{,}1\,\text{H}$, $R \approx 0$). L'énergie initiale est
+      $E_0 = 1{,}8 \times 10^{-4}\,\text{J}$.
+      Un quart de période plus tard ($t = T_0/4$), quelle est la valeur de $E_L$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_L = 1{,}8 \\times 10^{-4}\\,\\text{J}$ (tout dans la bobine)."
+        correct: true
+      - id: B
+        text: "$E_L = 0$ (l'énergie a été dissipée entre $t = 0$ et $t = T_0/4$)."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "Avec $R \\approx 0$ il n'y a pas de dissipation. L'énergie n'est pas consommée ; elle passe intégralement du condensateur dans la bobine en un quart de période."
+      - id: C
+        text: "$E_L = 9{,}0 \\times 10^{-5}\\,\\text{J}$ (moitié-moitié)."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "La répartition moitié-moitié n'est pas l'état à $t = T_0/4$. À ce moment précis le condensateur est entièrement vide et toute l'énergie est dans la bobine."
+      - id: D
+        text: "$E_L = 1{,}8 \\times 10^{-4}\\,\\text{J}$ seulement si $L$ est très grand."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "La valeur de $L$ détermine la période, pas la conservation de l'énergie. Quelle que soit la valeur de $L$, $E_L = E_0$ à $t = T_0/4$ (cas idéal)."
+    correct_feedback: "À $t = T_0/4$ le condensateur est entièrement déchargé. Par conservation : $E_L = E_0 = 1{,}8 \\times 10^{-4}\\,\\text{J}$."
+    solution: |
+      Cas idéal : $E = E_C + E_L = E_0 = 1{,}8 \times 10^{-4}\,\text{J}$ à tout instant.
+      À $t = T_0/4$ : $u_C = 0 \Rightarrow E_C = \frac{1}{2}C \times 0 = 0$.
+      Donc $E_L = E_0 - E_C = 1{,}8 \times 10^{-4} - 0 = 1{,}8 \times 10^{-4}\,\text{J}$.
+
+  - id: RLC-M2-3
+    rung: "R4"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit RLC série en régime pseudo-périodique, l'amplitude des oscillations
+      de $u_C(t)$ diminue progressivement. Quelle affirmation décrit correctement
+      le devenir de l'énergie totale $E = E_C + E_L$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E$ diminue car une partie est convertie en chaleur dans R par effet Joule ($P = Ri^2$). L'échange C↔L continue à chaque oscillation."
+        correct: true
+      - id: B
+        text: "$E$ diminue car les composants consomment et détruisent l'énergie."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "L'énergie ne se détruit pas. Elle est convertie en chaleur spécifiquement dans R. C et L ne consomment rien ; ils stockent et restituent."
+      - id: C
+        text: "$E$ reste constante : seule l'amplitude de $u_C$ change, pas l'énergie totale."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "La conservation de l'énergie totale n'est vraie que pour $R = 0$. Avec $R \\neq 0$, la dissipation Joule fait diminuer $E$ à chaque oscillation."
+      - id: D
+        text: "$E$ est nulle à chaque instant où $u_C = 0$, donc l'énergie disparaît périodiquement."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: [mc.physics.rlc_serie.confusion-roles-C-L-stockage]
+        feedback: "Quand $u_C = 0$, l'énergie n'est pas nulle : elle est entièrement dans la bobine ($E_L = \\frac{1}{2}Li^2$, $i$ maximal à cet instant)."
+    correct_feedback: "R dissipe de l'énergie à chaque passage de courant (effet Joule). L'énergie totale décroît progressivement, mais l'échange C↔L se poursuit jusqu'à extinction."
+    solution: |
+      Bilan : $\frac{dE}{dt} = -Ri^2 \leq 0$.
+      L'énergie décroît à un rythme proportionnel à $Ri^2$.
+      À chaque instant elle se répartit entre $E_C = \frac{1}{2}q^2/C$ et $E_L = \frac{1}{2}Li^2$
+      (l'échange continue), mais la somme diminue car R prélève constamment de la chaleur.
+
+  # ══════════════════════════════════════════════════════════════
+  # M3 — plus-de-R-oscille-plus-vite (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M3-1
+    rung: "R3"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit RLC série, on augmente la résistance $R$ en gardant $L$ et $C$
+      constants. Comment évolue le comportement de $u_C(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les oscillations s'amortissent plus rapidement (l'amplitude décroît plus vite)."
+        correct: true
+      - id: B
+        text: "Les oscillations deviennent plus rapides (période plus courte)."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "R n'agit pas sur la fréquence. La pseudo-période reste voisine de $T_0 = 2\\pi\\sqrt{LC}$ (qui ne dépend que de L et C). R accélère la décroissance d'amplitude."
+      - id: C
+        text: "La période propre $T_0$ augmente."
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "$T_0 = 2\\pi\\sqrt{LC}$ est indépendante de R. Modifier R ne change pas L ni C, donc $T_0$ est inchangée."
+      - id: D
+        text: "Rien ne change : R n'a aucune influence sur les oscillations libres."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "R a une influence réelle : elle détermine le taux d'amortissement (vitesse de décroissance de l'amplitude) et peut conduire au régime apériodique."
+    correct_feedback: "Augmenter R amplifie l'effet Joule et accélère la perte d'énergie : les oscillations s'amortissent plus vite, sans changer de fréquence."
+    solution: |
+      L'équation du circuit : $L\ddot{q} + R\dot{q} + \frac{q}{C} = 0$.
+      Le terme $R\dot{q}$ est le terme dissipatif.
+      Plus $R$ est grand, plus ce terme pèse → amortissement plus fort.
+      La fréquence propre $\omega_0 = 1/\sqrt{LC}$ ne fait pas apparaître $R$ :
+      la fréquence est inchangée.
+
+  - id: RLC-M3-2
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Sur un oscillogramme d'un circuit RLC série, on observe un régime pseudo-périodique
+      avec une pseudo-période $T \approx 6{,}3\,\text{ms}$ et une amplitude qui diminue
+      de moitié en 4 oscillations.
+      On double ensuite la valeur de $R$ (L et C sont inchangés).
+      Que devient la pseudo-période mesurée sur le nouvel oscillogramme ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste approximativement $6{,}3\\,\\text{ms}$ (seul l'amortissement change)."
+        correct: true
+      - id: B
+        text: "Elle diminue de moitié, environ $3{,}15\\,\\text{ms}$ (oscillations plus rapides)."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "Doubler R ne divise pas la pseudo-période. R n'agit que sur l'amortissement (les pics disparaissent plus vite) ; la pseudo-période reste $T \\approx T_0 = 2\\pi\\sqrt{LC}$."
+      - id: C
+        text: "Elle double, environ $12{,}6\\,\\text{ms}$ (oscillations plus lentes)."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "R n'agit pas sur la pseudo-période. Même en doublant R, la pseudo-période reste voisine de $T_0 = 2\\pi\\sqrt{LC}$."
+      - id: D
+        text: "Elle ne peut plus être mesurée : le circuit est nécessairement apériodique."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "Doubler R augmente l'amortissement, mais n'implique pas nécessairement le régime apériodique. Si l'amortissement initial est faible, le régime peut rester pseudo-périodique."
+    correct_feedback: "La pseudo-période est gouvernée par L et C ($T \\approx T_0 = 2\\pi\\sqrt{LC}$). Doubler R accélère l'extinction des oscillations sans modifier leur espacement temporel."
+    solution: |
+      $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{0{,}1 \times 10^{-5}}
+      = 2\pi \times 10^{-3} \approx 6{,}28\,\text{ms}$.
+      La pseudo-période mesurée $T \approx T_0$ pour un faible amortissement.
+      Doubler $R$ double le taux de dissipation Joule mais ne modifie pas $L$ ni $C$,
+      donc ne modifie pas $T_0$ ni la pseudo-période mesurée.
+
+  - id: RLC-M3-3
+    rung: "R4"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un circuit RLC série est initialement en régime pseudo-périodique.
+      On augmente progressivement $R$.
+      À partir d'une valeur critique de $R$, on observe que $u_C(t)$ revient vers
+      zéro **sans osciller**.
+      Comment appelle-t-on ce régime, et comment la fréquence des oscillations
+      a-t-elle évolué juste avant cette transition ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Régime apériodique. Juste avant la transition, la pseudo-période était restée approximativement constante (seule l'amplitude avait diminué plus vite)."
+        correct: true
+      - id: B
+        text: "Régime apériodique. Juste avant la transition, les oscillations s'étaient accélérées progressivement."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "Les oscillations ne s'accélèrent pas quand R augmente. La pseudo-période reste voisine de $T_0$ (fixée par L et C) jusqu'à ce que le circuit passe directement au régime apériodique."
+      - id: C
+        text: "Régime critique. La fréquence a doublé juste avant la disparition des oscillations."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "Il n'y a pas d'accélération progressive de la fréquence. L'amortissement croît, mais la pseudo-période reste quasi-constante."
+      - id: D
+        text: "Régime forcé. La résistance impose alors sa propre fréquence."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: []
+        feedback: "Il n'y a pas de régime forcé ici. R dissipe ; elle n'impose aucune fréquence. Le régime obtenu (sans oscillation) est le régime apériodique."
+    correct_feedback: "En augmentant R, la pseudo-période reste proche de $T_0$ pendant que l'amplitude décroît de plus en plus vite, jusqu'au régime apériodique (plus d'oscillation)."
+    solution: |
+      La pseudo-période $T \approx T_0 = 2\pi\sqrt{LC}$ est quasiment indépendante de R
+      (dans le cadre du programme : on mesure T sur le graphe, on ne la calcule pas en fonction de R).
+      Augmenter R → amortissement plus fort → amplitude décroît plus vite.
+      Au-delà d'une valeur critique → régime apériodique : pas d'oscillation,
+      $u_C(t)$ revient à zéro monotonement.
+
+  # ══════════════════════════════════════════════════════════════
+  # M4 — T0-depend-de-R (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M4-1
+    rung: "R2"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit RLC série en régime peu amorti, quelle est l'expression
+      de la période propre $T_0$ des oscillations ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 = 2\\pi\\sqrt{LC}$"
+        correct: true
+      - id: B
+        text: "$T_0 = 2\\pi\\sqrt{RC}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "$\\sqrt{RC}$ est la constante de charge $\\tau$ du circuit RC (étudié au chapitre précédent) : c'est un temps de charge, pas une période d'oscillation. $T_0$ ne contient pas R."
+      - id: C
+        text: "$T_0 = 2\\pi\\sqrt{L/C}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "$\\sqrt{L/C}$ a les dimensions d'une résistance (ohms), pas d'un temps. La bonne formule est $\\sqrt{LC}$, de dimension seconde."
+      - id: D
+        text: "$T_0 = RC$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "$RC = \\tau$ est la constante de temps du circuit RC. Ce n'est pas une période d'oscillation ; de plus, R n'entre pas dans $T_0$."
+    correct_feedback: "$T_0 = 2\\pi\\sqrt{LC}$ : seuls L et C déterminent la période propre. R n'y figure pas."
+    solution: |
+      De l'équation du circuit idéal ($R = 0$) :
+      $L\ddot{q} + \frac{q}{C} = 0$, soit $\ddot{q} + \frac{1}{LC}q = 0$.
+      C'est un oscillateur harmonique de pulsation $\omega_0 = \frac{1}{\sqrt{LC}}$,
+      d'où $T_0 = \frac{2\pi}{\omega_0} = 2\pi\sqrt{LC}$.
+      R n'est pas entré dans le calcul : $T_0$ est indépendante de R.
+
+  - id: RLC-M4-2
+    rung: "R2"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un circuit RLC série a $L = 0{,}1\,\text{H}$, $C = 10\,\mu\text{F}$,
+      $R = 50\,\Omega$.
+      Quelle est la valeur de la période propre $T_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 = 2\\pi\\sqrt{LC} \\approx 6{,}28\\,\\text{ms}$"
+        correct: true
+      - id: B
+        text: "$T_0 = 2\\pi\\sqrt{RC} = 2\\pi\\sqrt{50 \\times 10^{-5}} \\approx 14\\,\\text{ms}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "Ce calcul utilise R à la place de L, en confondant $T_0$ avec la constante de temps RC. $T_0 = 2\\pi\\sqrt{LC}$ ; R ne joue aucun rôle dans la période propre."
+      - id: C
+        text: "$T_0 = RC = 50 \\times 10^{-5} = 5 \\times 10^{-4}\\,\\text{s}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "$RC = 5 \\times 10^{-4}\\,\\text{s}$ est la constante de temps du circuit RC, pas la période d'oscillation. $T_0 = 2\\pi\\sqrt{LC} \\approx 6{,}28\\,\\text{ms}$."
+      - id: D
+        text: "$T_0 = 2\\pi\\sqrt{RLC} \\approx 22\\,\\text{ms}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "R n'entre dans aucune formule de $T_0$. La période propre est $2\\pi\\sqrt{LC}$, indépendante de R."
+    correct_feedback: "$T_0 = 2\\pi\\sqrt{LC} = 2\\pi\\sqrt{0{,}1 \\times 10^{-5}} = 2\\pi \\times 10^{-3} \\approx 6{,}28\\,\\text{ms}$. La valeur de $R = 50\\,\\Omega$ n'intervient pas."
+    solution: |
+      $\sqrt{LC} = \sqrt{0{,}1 \times 10 \times 10^{-6}} = \sqrt{10^{-6}} = 10^{-3}\,\text{s}$.
+      $T_0 = 2\pi \times 10^{-3} \approx 6{,}28 \times 10^{-3}\,\text{s} = 6{,}28\,\text{ms}$.
+      Vérification dimensionnelle : $[LC] = \text{H} \cdot \text{F} = \Omega\cdot\text{s} \cdot \text{A/V}
+      = \text{s}^2$ → $\sqrt{LC}$ est bien un temps.
+
+  - id: RLC-M4-3
+    rung: "R2"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      On dispose de deux circuits RLC série :
+      - Circuit 1 : $L_1 = 0{,}1\,\text{H}$, $C_1 = 10\,\mu\text{F}$, $R_1 = 10\,\Omega$.
+      - Circuit 2 : $L_2 = 0{,}1\,\text{H}$, $C_2 = 10\,\mu\text{F}$, $R_2 = 100\,\Omega$.
+      Comparez leurs périodes propres $T_{0,1}$ et $T_{0,2}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_{0,1} = T_{0,2}$ : les deux circuits ont la même période propre car $L$ et $C$ sont identiques."
+        correct: true
+      - id: B
+        text: "$T_{0,2} > T_{0,1}$ : plus R est grande, plus la période est longue."
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "$T_0 = 2\\pi\\sqrt{LC}$ ne dépend pas de R. Les deux circuits ont les mêmes L et C, donc exactement la même $T_0$."
+      - id: C
+        text: "$T_{0,2} < T_{0,1}$ : plus R est grande, plus la période est courte."
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "Ni dans un sens ni dans l'autre : $T_0$ est indépendante de R. Les deux $T_0$ sont égales."
+      - id: D
+        text: "La comparaison est impossible car le circuit 2 est apériodique."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "Même si le circuit 2 est apériodique, la période propre $T_0 = 2\\pi\\sqrt{LC}$ reste définie et identique pour les deux circuits. $T_0$ est une propriété de L et C, indépendamment du régime."
+    correct_feedback: "$T_0 = 2\\pi\\sqrt{L_1C_1} = 2\\pi\\sqrt{L_2C_2} \\approx 6{,}28\\,\\text{ms}$ pour les deux circuits. R n'entre pas dans la formule."
+    solution: |
+      $T_{0,1} = 2\pi\sqrt{L_1 C_1} = 2\pi\sqrt{0{,}1 \times 10^{-5}} \approx 6{,}28\,\text{ms}$.
+      $T_{0,2} = 2\pi\sqrt{L_2 C_2} = 2\pi\sqrt{0{,}1 \times 10^{-5}} \approx 6{,}28\,\text{ms}$.
+      $T_{0,1} = T_{0,2}$ : R ne figure pas dans $T_0$.
+      (Le circuit 2 est probablement apériodique, mais cela ne change pas $T_0$.)
+
+  # ══════════════════════════════════════════════════════════════
+  # M5 — pseudo-periode-egale-periode-propre (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M5-1
+    rung: "R4"
+    difficulty_level: 2
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Sur l'oscillogramme d'un régime pseudo-périodique, on mesure le temps entre
+      deux maximums successifs de $u_C$.
+      Cette grandeur (la pseudo-période $T$) :
+    type: mcq
+    choices:
+      - id: A
+        text: "existe et vaut approximativement $T_0 = 2\\pi\\sqrt{LC}$ pour un faible amortissement."
+        correct: true
+      - id: B
+        text: "n'existe pas, car l'amplitude qui diminue empêche de parler de période."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "La pseudo-période existe bien : l'espacement entre deux pics consécutifs est régulier, même si leur hauteur diminue. On peut toujours mesurer cet intervalle."
+      - id: C
+        text: "est exactement égale à $2\\pi\\sqrt{LC}$ quel que soit l'amortissement."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "$T \\approx T_0$ est une approximation valable pour un faible amortissement, pas une égalité exacte. Pour un amortissement fort, l'écart peut être significatif."
+      - id: D
+        text: "augmente d'une oscillation à la suivante."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "L'espacement entre deux pics consécutifs (la pseudo-période) reste constant tout au long du régime pseudo-périodique. C'est l'amplitude qui décroît, pas la période."
+    correct_feedback: "La pseudo-période T existe (espacement régulier des pics) et est approximativement égale à $T_0$ pour un faible amortissement. On la mesure sur le graphe."
+    solution: |
+      En régime pseudo-périodique, les instants des maxima successifs sont
+      $t_1, t_2, t_3, \ldots$ avec $t_{n+1} - t_n = T$ constant.
+      On mesure $T$ sur l'oscillogramme.
+      Pour un faible amortissement : $T \approx T_0 = 2\pi\sqrt{LC}$.
+      (Dans le cadre du programme, on ne calcule pas T en fonction de R,
+      on le lit sur le graphe.)
+
+  - id: RLC-M5-2
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Un oscillogramme montre 5 maxima de $u_C(t)$ en régime pseudo-périodique.
+      Les instants des maxima sont : $t_1 = 1{,}0\,\text{ms}$, $t_2 = 7{,}3\,\text{ms}$,
+      $t_3 = 13{,}6\,\text{ms}$, $t_4 = 19{,}9\,\text{ms}$, $t_5 = 26{,}2\,\text{ms}$.
+      Quelle est la valeur de la pseudo-période $T$ mesurée sur ce graphe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T \\approx 6{,}3\\,\\text{ms}$ (intervalle constant entre deux maxima successifs)."
+        correct: true
+      - id: B
+        text: "Il est impossible de déterminer $T$ car l'amplitude des maxima est décroissante."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "La pseudo-période se mesure sur l'espacement temporel entre les maxima, pas sur leur amplitude. L'espacement est ici constant ($\\approx 6{,}3\\,\\text{ms}$) : T est parfaitement mesurable."
+      - id: C
+        text: "$T$ vaut exactement $2\\pi\\sqrt{LC}$ quel que soit le résultat mesuré."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: [mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee]
+        feedback: "La mesure graphique prime. $T \\approx T_0$ est une approximation valable pour faible amortissement, pas un résultat calculé qui s'impose à la mesure."
+      - id: D
+        text: "$T$ varie de $6{,}3\\,\\text{ms}$ à $6{,}2\\,\\text{ms}$ au fil des oscillations."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "L'espacement est constant à $6{,}3\\,\\text{ms}$ : $t_2-t_1 = t_3-t_2 = t_4-t_3 = t_5-t_4 = 6{,}3\\,\\text{ms}$. La pseudo-période ne change pas."
+    correct_feedback: "$T = t_2 - t_1 = 7{,}3 - 1{,}0 = 6{,}3\\,\\text{ms}$ (vérifiable sur chaque intervalle consécutif)."
+    solution: |
+      $t_2 - t_1 = 6{,}3\,\text{ms}$
+      $t_3 - t_2 = 6{,}3\,\text{ms}$
+      $t_4 - t_3 = 6{,}3\,\text{ms}$
+      $t_5 - t_4 = 6{,}3\,\text{ms}$
+      L'espacement est régulier : $T = 6{,}3\,\text{ms}$.
+      On peut aussi utiliser $T = (t_5 - t_1)/4 = 25{,}2/4 = 6{,}3\,\text{ms}$.
+
+  - id: RLC-M5-3
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Pour un circuit RLC série ($L = 0{,}4\,\text{H}$, $C = 10\,\mu\text{F}$,
+      $R = 30\,\Omega$), on mesure graphiquement la pseudo-période sur l'oscillogramme :
+      $T_{mes} = 12{,}7\,\text{ms}$.
+      On calcule par ailleurs $T_0 = 2\pi\sqrt{LC}$.
+      Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 \\approx 12{,}6\\,\\text{ms}$ et $T_{mes} \\approx T_0$ : la légère différence est normale pour un faible amortissement."
+        correct: true
+      - id: B
+        text: "$T_{mes}$ devrait être exactement $T_0$ ; la différence ($0{,}1\\,\\text{ms}$) est une erreur de mesure à corriger."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "La pseudo-période $T$ n'est pas rigoureusement égale à $T_0$ ; la formule $T \\approx T_0$ est une approximation valable pour faible amortissement. L'écart de $0{,}1\\,\\text{ms}$ est physiquement attendu."
+      - id: C
+        text: "On devrait avoir $T_{mes} = 2\\pi\\sqrt{RC} \\approx 14\\,\\text{ms}$ car R entre dans la pseudo-période."
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: [mc.physics.rlc_serie.pseudo-periode-egale-periode-propre]
+        feedback: "$\\sqrt{RC}$ est la constante de temps du circuit RC, pas la pseudo-période. $T \\approx T_0 = 2\\pi\\sqrt{LC}$ ; R n'y apparaît pas."
+      - id: D
+        text: "$T_{mes}$ ne peut pas être mesurée sur ce graphe car $R \\neq 0$."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "La pseudo-période se mesure quel que soit R (tant que le régime est pseudo-périodique). $R \\neq 0$ ne supprime pas la possibilité de mesurer l'espacement entre deux pics."
+    correct_feedback: "$T_0 = 2\\pi\\sqrt{0{,}4 \\times 10^{-5}} = 2\\pi \\times 2 \\times 10^{-3} \\approx 12{,}6\\,\\text{ms}$. La mesure $12{,}7\\,\\text{ms}$ en est une approximation correcte."
+    solution: |
+      $\sqrt{LC} = \sqrt{0{,}4 \times 10 \times 10^{-6}} = \sqrt{4 \times 10^{-6}}
+      = 2 \times 10^{-3}\,\text{s}$.
+      $T_0 = 2\pi \times 2 \times 10^{-3} \approx 12{,}57\,\text{ms}$.
+      $T_{mes} = 12{,}7\,\text{ms} \approx T_0$ : cohérent avec $T \approx T_0$ pour faible amortissement.
+      L'écart de $\approx 0{,}1\,\text{ms}$ est attendu et ne constitue pas une erreur.
+
+  # ══════════════════════════════════════════════════════════════
+  # M6 — cas-amorti-solution-sinusoidale-fermee (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M6-1
+    rung: "R5"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Pour un circuit RLC série avec une résistance $R$ non négligeable
+      (régime pseudo-périodique), quelle affirmation est correcte
+      concernant la charge $q(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On établit l'équation différentielle $L\\ddot{q} + R\\dot{q} + q/C = 0$, mais on ne donne pas de solution $q(t)$ sous forme close ; on décrit le régime qualitativement et expérimentalement."
+        correct: true
+      - id: B
+        text: "$q(t) = Q_{max}\\cos\\!\\left(\\frac{2\\pi t}{T_0} + \\varphi\\right)$ avec $T_0 = 2\\pi\\sqrt{LC}$, comme dans le cas idéal."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: "Ce cosinus est la solution du cas idéal ($R = 0$). Substitué dans l'équation amortie, il laisse un reste $R\\dot{q} \\neq 0$, donc il ne la satisfait pas. En régime amorti, on établit l'équation et on s'arrête là."
+      - id: C
+        text: "$q(t) = Q_{max}\\,e^{-t/\\tau}$ (exponentielle décroissante pure)."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: "Une exponentielle pure décrit le régime apériodique ou une charge RC, pas le régime pseudo-périodique. De plus, donner une forme close pour le régime amorti dépasse le cadre du programme."
+      - id: D
+        text: "$q(t)$ est constante : le circuit ne peut pas osciller si $R \\neq 0$."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "Le circuit oscille bien ($R$ non négligeable → régime pseudo-périodique). $q(t)$ n'est pas constante ; elle oscille avec une amplitude décroissante."
+    correct_feedback: "En régime amorti, on établit l'ODE et on s'arrête là — le cadre du programme ne demande pas de la résoudre. Le régime est décrit qualitativement (forme amortie) et expérimentalement (mesure de T sur le graphe)."
+    solution: |
+      L'équation du circuit (loi des mailles, $R \neq 0$) :
+      $u_C + u_L + u_R = 0$
+      $\frac{q}{C} + L\ddot{q} + R\dot{q} = 0$
+      soit $L\ddot{q} + R\dot{q} + \frac{q}{C} = 0$.
+      Vérification que le cosinus idéal ne convient pas :
+      posons $q(t) = Q_{max}\cos(\omega_0 t + \varphi)$,
+      $\dot{q} = -Q_{max}\omega_0\sin(\omega_0 t + \varphi)$.
+      Le terme $R\dot{q} = -RQ_{max}\omega_0\sin(\ldots) \neq 0$ :
+      le reste ne s'annule pas → le cosinus simple n'est pas solution.
+      Conclusion : on établit l'ODE et on lit le reste sur l'expérience.
+
+  - id: RLC-M6-2
+    rung: "R5"
+    difficulty_level: 4
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un élève substitue $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$
+      dans l'équation $L\ddot{q} + R\dot{q} + \frac{q}{C} = 0$ (avec $R \neq 0$).
+      Il obtient un « reste » après substitution.
+      Que conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ce cosinus n'est pas solution de l'équation amortie ; on ne peut pas écrire $q(t)$ sous forme close dans le cadre du programme."
+        correct: true
+      - id: B
+        text: "L'élève a fait une erreur de calcul : avec les bons coefficients le reste devrait être nul."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: "Il n'y a pas d'erreur de calcul. Le terme $R\\dot{q}$ introduit un sinus qui ne peut pas s'annuler avec les termes en cosinus. Le cosinus simple n'est structurellement pas solution de l'ODE amortie."
+      - id: C
+        text: "Le reste est nul si on choisit $\\varphi = \\pi/2$."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: "Changer $\\varphi$ ne supprime pas le terme $R\\dot{q}$ qui oscille en sinus. Quelle que soit la valeur de $\\varphi$, un cosinus simple ne satisfait pas l'ODE amortie."
+      - id: D
+        text: "L'équation est fausse : il faudrait ajouter un terme $\\frac{dR}{dt}$."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "L'équation $L\\ddot{q} + R\\dot{q} + q/C = 0$ est correcte (R est constant). Le problème vient du cosinus proposé, qui ne convient pas comme solution."
+    correct_feedback: "Le reste non nul démontre que le cosinus simple n'est pas solution de l'ODE amortie. C'est la raison pour laquelle le programme s'arrête à l'établissement de l'équation pour le cas amorti."
+    solution: |
+      Substitution de $q = Q_{max}\cos(\omega_0 t + \varphi)$ :
+      $\dot{q} = -Q_{max}\omega_0\sin(\omega_0 t + \varphi)$
+      $\ddot{q} = -Q_{max}\omega_0^2\cos(\omega_0 t + \varphi)$
+      Avec $\omega_0^2 = 1/(LC)$ :
+      $L\ddot{q} + \frac{q}{C}
+      = -\frac{Q_{max}}{C}\cos(\ldots) + \frac{Q_{max}}{C}\cos(\ldots) = 0$ ✓
+      mais $R\dot{q} = -RQ_{max}\omega_0\sin(\omega_0 t + \varphi) \neq 0$.
+      Reste total = $-RQ_{max}\omega_0\sin(\omega_0 t+\varphi) \neq 0$ : le cosinus
+      n'est pas solution.
+
+  - id: RLC-M6-3
+    rung: "R5"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Pour un circuit RLC série en régime pseudo-périodique, un élève écrit :
+      « $q(t) = Q_{max}\cos(2\pi t/T_0 + \varphi)$, donc la pseudo-période
+      vaut exactement $T_0 = 2\pi\sqrt{LC}$. »
+      Que penser de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est incorrect : cette forme close sinusoïdale n'est valide que pour $R \\approx 0$. En régime amorti, on ne résout pas l'ODE ; $T \\approx T_0$ est une approximation, pas une identité."
+        correct: true
+      - id: B
+        text: "Il est correct : le cosinus est toujours la solution de l'ODE RLC, amorti ou non."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: [mc.physics.rlc_serie.pseudo-periode-egale-periode-propre]
+        feedback: "Le cosinus simple ne satisfait pas l'ODE amortie (il laisse un reste $R\\dot{q} \\neq 0$). Il n'est valable que pour $R = 0$."
+      - id: C
+        text: "Il est partiellement correct : la forme est juste mais l'amplitude $Q_{max}$ doit être remplacée par une exponentielle décroissante."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: "Donner une expression de la solution amortie (même avec une enveloppe exponentielle) dépasse le cadre du programme. En régime amorti, on établit l'ODE et on s'arrête là."
+      - id: D
+        text: "Il est correct : l'approximation $T \\approx T_0$ est toujours une égalité exacte."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: [mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee]
+        feedback: "$T \\approx T_0$ est une approximation valable pour faible amortissement, jamais une égalité exacte. La pseudo-période s'obtient par mesure graphique."
+    correct_feedback: "La forme $q(t) = Q_{max}\\cos(\\ldots)$ est réservée au cas idéal ($R = 0$). Pour $R \\neq 0$ : on établit l'ODE, on s'arrête, et on mesure T sur l'oscillogramme."
+    solution: |
+      Le cosinus simple ne vérifie pas $L\ddot{q} + R\dot{q} + q/C = 0$
+      (reste $= R\dot{q} \neq 0$).
+      La forme close correcte pour le cas amorti implique une enveloppe
+      exponentielle, ce qui sort du programme.
+      Règle du cadre : cas idéal → on résout ; cas amorti → on établit l'ODE
+      et on décrit qualitativement + on lit $T$ sur le graphe.
+
+  # ══════════════════════════════════════════════════════════════
+  # M7 — confusion-roles-C-L-stockage (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M7-1
+    rung: "R1"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit RLC série, quelles sont les expressions correctes des énergies
+      emmagasinées par le condensateur et par la bobine ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Condensateur : $E_C = \\frac{1}{2}\\frac{q^2}{C}$ (maximale quand $u_C$ est maximal) ; bobine : $E_L = \\frac{1}{2}Li^2$ (maximale quand $i$ est maximal)."
+        correct: true
+      - id: B
+        text: "Condensateur : $E_C = \\frac{1}{2}Li^2$ ; bobine : $E_L = \\frac{1}{2}Cu_C^2$."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "Les formules sont interverties. L'énergie électrique est stockée dans le condensateur ($E_C = \\frac{1}{2}Cu_C^2$) ; l'énergie magnétique est stockée dans la bobine ($E_L = \\frac{1}{2}Li^2$)."
+      - id: C
+        text: "Les deux énergies sont maximales au même instant."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "Dans le cas idéal, $E_C$ et $E_L$ sont en opposition de phase : quand l'une est maximale, l'autre est nulle. Elles ne sont jamais maximales simultanément."
+      - id: D
+        text: "$E_C$ et $E_L$ sont toujours égales à chaque instant."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "$E_C$ et $E_L$ oscillent en opposition de phase et ne sont égales qu'à deux instants par période (croisement des deux courbes). Elles ne sont pas constamment égales."
+    correct_feedback: "$E_C = \\frac{1}{2}Cu_C^2 = \\frac{1}{2}q^2/C$ dépend de la charge du condensateur ; $E_L = \\frac{1}{2}Li^2$ dépend du courant dans la bobine. Ces deux réservoirs sont en opposition de phase."
+    solution: |
+      Condensateur : stocke l'énergie électrique entre ses armatures.
+      $E_C = \frac{1}{2}Cu_C^2 = \frac{1}{2}\frac{q^2}{C}$.
+      Maximum quand $u_C$ max ($q$ max), c'est-à-dire quand $i = 0$.
+      Bobine : stocke l'énergie magnétique dans son champ.
+      $E_L = \frac{1}{2}Li^2$.
+      Maximum quand $i$ max, c'est-à-dire quand $u_C = 0$ ($q = 0$).
+      Les deux sont en antiphase dans le cas idéal.
+
+  - id: RLC-M7-2
+    rung: "R1"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans un circuit LC idéal, à l'instant $t = 0$, le condensateur est chargé
+      à $U_0$ et le courant est nul ($i = 0$).
+      Un demi-période plus tard ($t = T_0/2$), le condensateur est de nouveau
+      chargé à $U_0$ (en sens inverse). Quel est alors le courant $i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$i = 0$ : aux instants de charge maximale du condensateur, le courant est nul."
+        correct: true
+      - id: B
+        text: "$i$ est maximal : le courant est maximal quand le condensateur est chargé au maximum."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "C'est l'inverse : quand $|u_C|$ est maximal, $E_C = \\frac{1}{2}Cu_C^2$ est maximale, donc $E_L = \\frac{1}{2}Li^2 = 0$, ce qui implique $i = 0$."
+      - id: C
+        text: "$i$ est quelconque : il n'y a pas de lien entre la charge du condensateur et l'intensité du courant."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "Le lien est direct (conservation de l'énergie) : $E_C + E_L = E_0$ à tout instant. Quand $E_C = E_0$ (condensateur au maximum), $E_L = 0$ donc $i = 0$."
+      - id: D
+        text: "$i = I_0/2$ (la moitié de l'intensité maximale)."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "À la charge maximale du condensateur ($|u_C| = U_0$), toute l'énergie est électrique et $i = 0$, pas $I_0/2$."
+    correct_feedback: "Aux instants où $|u_C|$ est maximal, le condensateur détient toute l'énergie ($E_C = E_0$, $E_L = 0$), ce qui impose $i = 0$."
+    solution: |
+      À $t = T_0/2$ : $u_C = -U_0$ (tension inversée, même amplitude).
+      $E_C = \frac{1}{2}C(-U_0)^2 = \frac{1}{2}CU_0^2 = E_0$.
+      Conservation : $E_L = E_0 - E_C = E_0 - E_0 = 0$.
+      $E_L = \frac{1}{2}Li^2 = 0 \Rightarrow i = 0$.
+
+  - id: RLC-M7-3
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      On trace simultanément $E_C(t)$ et $E_L(t)$ pour un circuit LC idéal.
+      L'observation montre que lorsque $E_C$ est nulle, $E_L$ est à son maximum.
+      Quelle grandeur physique est alors à son maximum ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le courant $i$ : $E_L = \\frac{1}{2}Li^2$ est maximal quand $i$ est maximal."
+        correct: true
+      - id: B
+        text: "La tension $u_C$ : quand $E_C = 0$, c'est que $u_C$ est à son maximum."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "$E_C = \\frac{1}{2}Cu_C^2 = 0 \\Leftrightarrow u_C = 0$, pas $u_C$ maximal. La grandeur maximale est le courant $i$ (stocké dans la bobine via $E_L = \\frac{1}{2}Li^2$)."
+      - id: C
+        text: "La charge $q$ du condensateur : quand $E_C = 0$, $q$ est maximale."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "$E_C = \\frac{1}{2}q^2/C = 0 \\Leftrightarrow q = 0$. La charge est nulle quand $E_C = 0$, pas maximale."
+      - id: D
+        text: "La résistance consomme toute l'énergie à cet instant."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "Le circuit est idéal ($R = 0$) ; il n'y a pas de dissipation. Quand $E_C = 0$, toute l'énergie est magnétique dans la bobine."
+    correct_feedback: "Quand $E_C = 0$, $u_C = q = 0$ : le condensateur est vide. Par conservation, $E_L = E_0$, soit $\\frac{1}{2}Li^2 = E_0$ : le courant $i$ est à son maximum."
+    solution: |
+      $E_L = \frac{1}{2}Li^2$ est maximale $\Leftrightarrow$ $i$ est maximal.
+      Vérification par conservation : $E_C + E_L = E_0$.
+      $E_C = 0 \Rightarrow E_L = E_0 \Rightarrow \frac{1}{2}Li^2 = E_0
+      \Rightarrow i = i_{max} = \sqrt{2E_0/L}$.
+      C'est le courant qui circule au maximum quand le condensateur est vide.
+
+  # ══════════════════════════════════════════════════════════════
+  # M8 — entretien-est-regime-force (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M8-1
+    rung: "R7"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, entretien]
+    stem: |
+      On entretient les oscillations d'un circuit RLC à l'aide d'un générateur
+      délivrant une tension $u_G(t) = k \cdot i(t)$.
+      Quel est le rôle de ce dispositif et que vaut la période des oscillations
+      entretenues ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il compense l'énergie dissipée par effet Joule ; les oscillations se font à la période propre $T_0 = 2\\pi\\sqrt{LC}$."
+        correct: true
+      - id: B
+        text: "Il impose sa propre fréquence au circuit (régime forcé) : la période dépend du générateur."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: []
+        feedback: "Ce générateur ne fixe pas de fréquence : $u_G = ki$ est proportionnel au courant existant. Avec $k = R$, il annule le terme d'amortissement et le circuit oscille à sa propre $T_0 = 2\\pi\\sqrt{LC}$."
+      - id: C
+        text: "Il augmente la résistance effective du circuit, amplifiant l'amortissement."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "Avec $k = R$ le générateur annule exactement R (terme $(R-k) = 0$). Il ne l'augmente pas ; il le compense."
+      - id: D
+        text: "Il rend la période dépendante de $k$ : $T = 2\\pi\\sqrt{LC} \\cdot f(k)$."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: [mc.physics.rlc_serie.T0-depend-de-R]
+        feedback: "Avec $k = R$, l'ODE devient $L\\ddot{q} + q/C = 0$ : $k$ a disparu de l'équation. La période est $T_0 = 2\\pi\\sqrt{LC}$, indépendante de $k$."
+    correct_feedback: "Le générateur $u_G = ki$ avec $k = R$ compense exactement la dissipation Joule ($R-k = 0$). L'ODE redevient $L\\ddot{q} + q/C = 0$ : oscillation libre à $T_0 = 2\\pi\\sqrt{LC}$."
+    solution: |
+      Loi des mailles avec le générateur :
+      $u_C + u_L + u_R - u_G = 0$
+      $\frac{q}{C} + L\ddot{q} + R\dot{q} - k\dot{q} = 0$
+      $L\ddot{q} + (R-k)\dot{q} + \frac{q}{C} = 0$.
+      Avec $k = R$ : $(R-k) = 0$ → $L\ddot{q} + \frac{q}{C} = 0$.
+      C'est l'ODE du circuit LC idéal : $T = T_0 = 2\pi\sqrt{LC}$.
+      Le générateur choisit combien d'énergie restituer (via $k = R$),
+      pas à quelle fréquence osciller.
+
+  - id: RLC-M8-2
+    rung: "R7"
+    difficulty_level: 3
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, entretien]
+    stem: |
+      Dans un circuit RLC entretenu par un générateur $u_G = k \cdot i$,
+      on choisit $k = R = 20\,\Omega$.
+      Quelle est la condition sur $k$ pour que les oscillations soient entretenues
+      (ni amorties ni amplifiées), et comment appelle-t-on ce rôle du générateur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$k = R$ : le générateur compense exactement la perte Joule, restituant à chaque cycle l'énergie dissipée par $R$."
+        correct: true
+      - id: B
+        text: "$k = R$ : le générateur impose alors la fréquence de résonance du circuit."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: []
+        feedback: "La condition $k = R$ annule l'amortissement et restaure l'oscillation libre à $T_0 = 2\\pi\\sqrt{LC}$. Il ne s'agit pas d'une résonance forcée : aucune fréquence extérieure n'est imposée."
+      - id: C
+        text: "$k = 1/R$ : le générateur doit être l'inverse de R pour compenser son effet."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "La condition correcte est $k = R$ (même unité : $\\Omega$ = V/A). Cela annule directement le terme $(R - k)$ dans l'ODE, pas $1/R$."
+      - id: D
+        text: "$k = 0$ : sans apport extérieur d'énergie les oscillations persistent d'elles-mêmes."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: "Avec $k = 0$, le générateur est absent et $R > 0$ : les oscillations s'amortissent. Il faut $k = R$ pour compenser l'effet Joule de R."
+    correct_feedback: "La condition $k = R$ annule le terme dissipatif $(R - k)\\dot{q} = 0$ dans l'ODE. Le circuit se comporte comme un LC idéal et oscille à $T_0 = 2\\pi\\sqrt{LC}$ sans amortissement."
+    solution: |
+      ODE entretenue : $L\ddot{q} + (R-k)\dot{q} + q/C = 0$.
+      Oscillation entretenue sans amortissement ↔ $(R-k) = 0$ ↔ $k = R$.
+      Avec $R = 20\,\Omega$ : $k = 20\,\text{V/A}$.
+      Rôle physique : chaque cycle le générateur injecte exactement l'énergie
+      $\Delta E_{Joule} = \int_0^T Ri^2\,dt$ perdue dans R.
+      Ce n'est pas un régime forcé : la fréquence est $T_0 = 2\pi\sqrt{LC}$,
+      déterminée par L et C seuls.
+
+  - id: RLC-M8-3
+    rung: "R9"
+    difficulty_level: 4
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, entretien]
+    stem: |
+      Un circuit RLC série ($L = 0{,}1\,\text{H}$, $C = 10\,\mu\text{F}$,
+      $R = 50\,\Omega$) est entretenu par un générateur $u_G(t) = k \cdot i(t)$
+      avec $k = 50\,\text{V/A}$.
+      Un élève affirme : « La période des oscillations entretenues est différente
+      de $T_0 = 2\pi\sqrt{LC}$ car le générateur modifie le circuit. »
+      Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non. Avec $k = R = 50\\,\\Omega$, l'ODE devient $L\\ddot{q} + q/C = 0$ : la période est exactement $T_0 = 2\\pi\\sqrt{LC} \\approx 6{,}28\\,\\text{ms}$."
+        correct: true
+      - id: B
+        text: "Oui. Le générateur impose sa propre dynamique ; la période change."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: []
+        feedback: "Non : $u_G = k \\cdot i$ est proportionnel au courant du circuit, pas à un signal extérieur autonome. Avec $k = R$, il annule l'amortissement sans introduire aucune nouvelle fréquence."
+      - id: C
+        text: "Oui. La période devient $T_0' = 2\\pi\\sqrt{LC} \\cdot (1 + k/R)$."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: [mc.physics.rlc_serie.T0-depend-de-R]
+        feedback: "Cette formule est inventée. Avec $k = R$, l'ODE réduite est $L\\ddot{q} + q/C = 0$, dont la solution a la période $T_0 = 2\\pi\\sqrt{LC}$. Aucun facteur correctif."
+      - id: D
+        text: "Oui. Pour que les oscillations soient entretenues, il faut $k > R$, ce qui amplifie la fréquence."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: "La condition d'entretien est $k = R$ (ni amorti ni amplifié). Avec $k > R$, $(R-k) < 0$ et les oscillations **s'amplifient** (énergie ajoutée > perdue). La fréquence reste $T_0 = 2\\pi\\sqrt{LC}$ dans tous les cas."
+    correct_feedback: "Avec $k = R = 50\\,\\Omega$ : $(R - k) = 0$. L'ODE est $L\\ddot{q} + q/C = 0$, celle du LC idéal. $T_0 = 2\\pi\\sqrt{0{,}1 \\times 10^{-5}} \\approx 6{,}28\\,\\text{ms}$."
+    solution: |
+      Substitution de $k = R = 50\,\Omega$ :
+      $L\ddot{q} + (R - k)\dot{q} + \frac{q}{C} = 0$
+      $L\ddot{q} + 0 \cdot \dot{q} + \frac{q}{C} = 0$
+      $L\ddot{q} + \frac{q}{C} = 0$ ← ODE du LC idéal.
+      $\omega_0 = 1/\sqrt{LC}$, $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{10^{-6}}
+      = 2\pi \times 10^{-3} \approx 6{,}28\,\text{ms}$.
+      $k$ a disparu de l'équation : il ne modifie pas la période.
+
+coverage_summary:
+  per_misconception:
+    mc.physics.rlc_serie.resistance-entretient-oscillations: 3
+    mc.physics.rlc_serie.energie-consommee-non-conservee: 3
+    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 3
+    mc.physics.rlc_serie.T0-depend-de-R: 3
+    mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 3
+    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 3
+    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 3
+    mc.physics.rlc_serie.entretien-est-regime-force: 3
+  total_items: 24
+  floor_met: true   # all 8 misconceptions ≥ 3 items
+  habilete_mix:
+    utilisation: 11          # RLC-M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M5-1, M7-1, M7-2, M7-3  → wait, M7-3 is application_experimentale; recount below
+    resolution: 9
+    application_experimentale: 4
+  # Recount by item:
+  # utilisation:   M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2          = 9  (37.5 %)
+  # resolution:    M1-3, M2-3, M3-3, M4-3, M5-3 uses appexp — see below, M6-1,
+  #                M6-2, M6-3, M8-1, M8-2, M8-3                                    = 11 (45.8 %)
+  # application_experimentale: M3-2, M5-1, M5-2, M7-3                              = 4  (16.7 %)
+  # Corrected:
+  habilete_mix_corrected:
+    utilisation: 9            # M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2
+    resolution: 11            # M1-3, M2-3, M3-3, M4-3, M6-1, M6-2, M6-3, M8-1, M8-2, M8-3, M5-3
+    application_experimentale: 4   # M3-2, M5-1, M5-2, M7-3
+    percentages: { utilisation: "37.5 %", resolution: "45.8 %", application_experimentale: "16.7 %" }
+    target:      { utilisation: "~50 %",  resolution: "~35 %",  application_experimentale: "~15 %" }
+    note: >
+      The set is slightly heavier on Résolution than the 35 % bac target and lighter
+      on Utilisation than the 50 % target. This is inherent to the misconception inventory:
+      M6 (3 items) and M8 (3 items) are both Résolution-heavy by nature. To shift toward
+      the 50/35/15 target in a v2 pass, add 2–3 pure Utilisation items (regime recognition,
+      T₀ direct read) on M1, M4, or M7. The 16.7 % Application expérimentale is on target.
+
+  dual_tagged_distractors:
+    - item: RLC-M3-1
+      choice: C
+      text: "La période propre $T_0$ augmente."
+      attributes_to:
+        - mc.physics.rlc_serie.T0-depend-de-R
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M3↔M4 co-attribution: 'R changes T₀' is reachable by both the rate model (M3) and the formula model (M4)."
+
+    - item: RLC-M4-2
+      choice: D
+      text: "$T_0 = 2\\pi\\sqrt{RLC}$"
+      attributes_to:
+        - mc.physics.rlc_serie.T0-depend-de-R
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M4↔M3: including R in the T₀ formula is reachable by both the formula error (M4) and the rate confusion (M3)."
+
+    - item: RLC-M4-3
+      choice: B
+      text: "$T_{0,2} > T_{0,1}$: plus R est grande, plus la période est longue."
+      attributes_to:
+        - mc.physics.rlc_serie.T0-depend-de-R
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M4↔M3: behavioural claim about T₀ increasing with R reachable by both misconceptions."
+
+    - item: RLC-M4-3
+      choice: C
+      text: "$T_{0,2} < T_{0,1}$: plus R est grande, plus la période est courte."
+      attributes_to:
+        - mc.physics.rlc_serie.T0-depend-de-R
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M4↔M3: same co-attribution, other direction of the claimed R↔period relationship."
+
+    - item: RLC-M5-1
+      choice: D
+      text: "La pseudo-période augmente d'une oscillation à la suivante."
+      attributes_to:
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M5↔M3: 'spacing changes per oscillation' is reachable by M5 (confused about what pseudo-période is) and by M3 (decay read as frequency change)."
+
+    - item: RLC-M5-2
+      choice: D
+      text: "$T$ varie de $6{,}3$ ms à $6{,}2$ ms au fil des oscillations."
+      attributes_to:
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M5↔M3: changing pseudo-période reachable by both M5 (spacing changes) and M3 (amplitude decay read as frequency drift)."
+
+    - item: RLC-M5-2
+      choice: C
+      text: "$T$ vaut exactement $2\\pi\\sqrt{LC}$ quel que soit le résultat mesuré."
+      attributes_to:
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        - mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+      note: "M5↔M6: over-generalising the ideal solution to the damped case produces both the 'exactly equals T₀' belief (M5) and the closed-form sinusoid belief (M6)."
+
+    - item: RLC-M5-3
+      choice: C
+      text: "On devrait avoir $T_{mes} = 2\\pi\\sqrt{RC}$."
+      attributes_to:
+        - mc.physics.rlc_serie.T0-depend-de-R
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+      note: "M4↔M5: applying the RC formula to the pseudo-période is reachable by M4 (T₀ contains R) and M5 (pseudo-période conflated with T₀ but with wrong formula)."
+
+    - item: RLC-M6-3
+      choice: B
+      text: "Le cosinus est toujours la solution, amorti ou non."
+      attributes_to:
+        - mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+      note: "M6↔M5: asserting the ideal cosine solves the damped ODE simultaneously implies T = T₀ exactly (M5 signature)."
+
+    - item: RLC-M6-3
+      choice: D
+      text: "L'approximation $T \\approx T_0$ est toujours une égalité exacte."
+      attributes_to:
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        - mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+      note: "M5↔M6: 'T = T₀ exactly' is the M5 primary belief and also co-reachable via M6's over-generalisation of the ideal solution."
+
+    - item: RLC-M2-3
+      choice: D
+      text: "$E$ est nulle à chaque instant où $u_C = 0$."
+      attributes_to:
+        - mc.physics.rlc_serie.energie-consommee-non-conservee
+        - mc.physics.rlc_serie.confusion-roles-C-L-stockage
+      note: "M2↔M7: 'E = 0 when u_C = 0' combines the energy-consumed belief (M2) with the failure to see that E_L holds all energy when E_C = 0 (M7)."
+
+    - item: RLC-M7-3
+      choice: D
+      text: "La résistance consomme toute l'énergie à cet instant."
+      attributes_to:
+        - mc.physics.rlc_serie.energie-consommee-non-conservee
+        - mc.physics.rlc_serie.confusion-roles-C-L-stockage
+      note: "M2↔M7: attributing the energy to R-consumption when it is actually in the bobine touches both the consumed-energy model (M2) and the C/L storage confusion (M7)."
+
+    - item: RLC-M8-1
+      choice: D
+      text: "Il rend la période dépendante de $k$."
+      attributes_to:
+        - mc.physics.rlc_serie.entretien-est-regime-force
+        - mc.physics.rlc_serie.T0-depend-de-R
+      note: "M8↔M4: 'period depends on k/generator' is the entretien-flavoured cousin of 'T₀ depends on R' (M4)."
+
+    - item: RLC-M8-3
+      choice: C
+      text: "La période devient $T_0' = 2\\pi\\sqrt{LC} \\cdot (1 + k/R)$."
+      attributes_to:
+        - mc.physics.rlc_serie.entretien-est-regime-force
+        - mc.physics.rlc_serie.T0-depend-de-R
+      note: "M8↔M4: inventing a period formula dependent on k/R is reachable by both M8 (forced-regime confusion) and M4 (T₀ formula error)."
+
+    - item: RLC-M8-3
+      choice: D
+      text: "Avec $k > R$, la fréquence est amplifiée."
+      attributes_to:
+        - mc.physics.rlc_serie.entretien-est-regime-force
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M8↔M3: attributing a frequency increase to k > R crosses both the forced-regime belief (M8) and the R-controls-rate belief (M3)."
+
+    - item: RLC-M3-3
+      choice: D
+      text: "Régime forcé : la résistance impose alors sa propre fréquence."
+      attributes_to:
+        - mc.physics.rlc_serie.entretien-est-regime-force
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+      note: "M8↔M3: describing apériodique as R imposing its own frequency reaches both M8 (entretien/forced confusion) and M3 (R controls rate)."

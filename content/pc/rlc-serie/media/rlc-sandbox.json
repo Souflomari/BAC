@@ -1,0 +1,53 @@
+{
+  "tool": "falstad",
+  "title_fr": "Oscillations libres d'un circuit RLC série",
+  "caption_fr": "Glisse R, L, C : observe les trois régimes, la trace u_C(t) et l'échange d'énergie C↔L. Mets R≈0 pour le régime non amorti.",
+  "url": "https://www.falstad.com/circuit/circuitjs.html",
+  "url_note": "No encoded ctz provided — see circuit_import_text below. Load via File → Import From Text in CircuitJS, or append ?ctz= with the LZString-compressed form of circuit_import_text (requires a JavaScript LZString.compressToBase64 step the renderer must perform). The plain netlist is the authoritative source.",
+  "circuit_import_text": "$ 1 0.000001 10.166243562989031 64 50 50\nr 192 160 384 160 0 5.0\nl 384 160 384 352 0 0.1 0\nc 384 352 192 352 0 0.000010 6.0\ns 192 352 192 160 0 0 false\nO 192 160 192 112 1\nO 384 352 432 352 1\n",
+  "circuit_import_text_notes": [
+    "$ 1 ... : header — timestep 1 µs; simulation speed factor 10.17; viewport 64×50 grid units at 50 px/unit.",
+    "r 192 160 → 384 160 : resistor R = 5 Ω on the top rail (horizontal). Drag this value to explore regimes.",
+    "l 384 160 → 384 352 : inductor L = 0.1 H on the right rail (vertical). Initial current = 0 A (capacitor discharged into L, not L into nothing).",
+    "c 384 352 → 192 352 : capacitor C = 10 µF on the bottom rail (horizontal). Initial voltage = 6.0 V (condensateur préchargé).",
+    "s 192 352 → 192 160 : normally-open switch K on the left rail (vertical). Student clicks to close — starts the free discharge oscillation.",
+    "O lines: voltage output probes (label-only nodes, Falstad type O flag 1 = no current drawn). Optional; remove if they cause import warnings — the student can add scope probes by right-clicking any component."
+  ],
+  "component_values": {
+    "R_default_ohm": 5.0,
+    "R_range_ohm": [0.1, 200.0],
+    "L_henry": 0.1,
+    "C_farad": 1e-5,
+    "U0_initial_voltage_V": 6.0,
+    "T0_computed_ms": 6.28,
+    "omega0_rad_per_s": 1000,
+    "E_C_max_joule": 1.8e-4,
+    "notes": "T₀ = 2π√(LC) = 2π√(0.1 × 10⁻⁵) = 2π × 10⁻³ s ≈ 6.28 ms. ω₀ = 1/√(LC) = 1000 rad/s. E_C(max) = ½ × 10⁻⁵ × 36 = 1.8 × 10⁻⁴ J. These match the spec §5 worked-number seeds exactly."
+  },
+  "params_exposed": ["R", "L", "C"],
+  "param_manipulation_guide": {
+    "R": "Change by right-clicking the resistor component → Edit → set resistance. R→0.1 Ω: near-undamped sinusoid (régime périodique). R≈5 Ω: lightly damped (pseudo-périodique, default). R≈63 Ω: critically damped threshold (2√(L/C) = 2×√(0.1/10⁻⁵) = 2×100 = 200 Ω — actual critical value; use this as the apériodique demo). R→200+ Ω: apériodique (no oscillation). Dragging R does NOT change the peak spacing (T₀ fixed by L and C) — only the decay rate changes. This is the R3 confrontation.",
+    "L": "Change by right-clicking the inductor → Edit. Increasing L increases T₀ = 2π√(LC). Decreasing L speeds up the oscillation. Demonstrates M3/M4: period depends on L, not R.",
+    "C": "Change by right-clicking the capacitor → Edit. Same effect as L on T₀. Also changes the initial stored energy E_C = ½CU₀²."
+  },
+  "scope_setup_instructions": "After importing, right-click the capacitor and select 'View Voltage in Scope' to see u_C(t). Right-click the inductor and select 'View Voltage in Scope' to see u_L(t). Right-click anywhere on the wire to 'View Current'. The scope shows live traces; adjust the simulation speed slider (bottom) so the full oscillation is visible. For the energy view, right-click the capacitor scope trace and select 'Show Power' — this gives ½Cu² proportional energy. The C↔L antiphase exchange is visible when both C voltage and L current are scoped simultaneously.",
+  "pedagogy_wiring": {
+    "R3_predict_then_reveal": "Before the student touches the slider: 'Prédit ce qui se passe quand R→0.' M1 student predicts oscillation stops. Close switch → observe damped trace. Then lower R to 0.1 Ω → perfect sinusoid. Then raise R to 200 Ω → apériodique. The embed IS this confrontation.",
+    "M2_M7_energy": "Scope u_C(t) on capacitor AND current on a wire. When u_C is maximal, current is zero (all energy in C). When u_C is zero, current is maximal (all energy in L). The antiphase is directly visible on the dual-trace scope.",
+    "M3_M4_period": "Hold R fixed, drag L or C — period changes visibly. Then hold L and C fixed, drag R — period does not change, only decay rate changes.",
+    "placement": "Engine of rung R3 (predict-then-reveal on R). Revisited at R4 (three regimes), R6 (trace-reading, measure pseudo-période off scope). Calm core — no reward animation, no score, no engagement theater."
+  },
+  "behaviour_ref": "mobile/bac_app/lib/widgets/physics/rlc_simulator_widget.dart (behaviour only, not code — retired Flutter widget; ADR 0016)",
+  "boundary": "free oscillations + entretien only — NO forced/driven-frequency sweep, NO résonance curve, NO impédance readout",
+  "boundary_compliance_notes": [
+    "The netlist contains NO AC voltage source, NO function generator, NO driven-frequency element. The only source is the pre-charged capacitor (initial condition U₀=6 V) — free oscillation only.",
+    "The switch K starts open. Closing it initiates free discharge. There is no external periodic driving force.",
+    "Falstad's CircuitJS does expose an AC source element in its component palette — but none is placed in this circuit. The renderer/teacher must not add one.",
+    "If entretien is to be demonstrated (rung R7), replace R with a dependent voltage source delivering u_G = k·i (a VCVS in Falstad, gain = k). Set k = R_value to cancel damping. This is a SEPARATE configuration, not included here — it involves no frequency sweep and no résonance; it restores the free undamped regime at T₀.",
+    "The analytic damped solution (exp(−αt)·cos(ω_D·t)) is computed internally by Falstad for display — this is fine: the spec allows DISPLAYING the damped trace (qualitative/experimental view). The LESSON must not derive or formularise it (LIMITE 1). The embed is a viewing instrument; the derivation boundary is the lesson author's responsibility.",
+    "No impédance, no phaseur, no AC power readout is present or accessible in this configuration."
+  ],
+  "fallback_note": "If this embed is not wired in time: C1 (static traces, svg+katex) + C3 (energy diagram, svg+katex) with 3 pre-set parameter snapshots (R≈0 / R=5Ω / R=200Ω) carry the load for R3/R4/R6. The manipulable is the intended primary; degradation is graceful per spec §3.",
+  "spec_ref": "content/pc/rlc-serie/spec.md §3 callout C2",
+  "adr_ref": "ADR 0017 (media taxonomy — embed of mature tool, do not rebuild)"
+}

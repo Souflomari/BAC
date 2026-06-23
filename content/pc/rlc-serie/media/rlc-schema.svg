@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="560" height="340" font-family="'Segoe UI', system-ui, sans-serif">
+
+  <!-- Background -->
+  <rect width="560" height="340" rx="8" fill="#F5F3EF"/>
+
+  <!-- Title -->
+  <text x="280" y="28" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">Circuit RLC série — convention récepteur</text>
+
+  <!--
+    Series loop topology (clockwise from top-left):
+    K (switch) — top wire left
+    C (capacitor) — left wire vertical
+    L + r (inductor) — bottom wire
+    R (resistor) — right wire vertical
+    Corners at: TL(80,55) TR(480,55) BR(480,265) BL(80,265)
+  -->
+
+  <!-- Wire segments -->
+  <!-- Top: K switch from TL to TR -->
+  <line x1="80" y1="55" x2="200" y2="55" stroke="#4A4A52" stroke-width="2"/>
+  <line x1="265" y1="55" x2="480" y2="55" stroke="#4A4A52" stroke-width="2"/>
+  <!-- Right wire: TR down to BR -->
+  <line x1="480" y1="55" x2="480" y2="135" stroke="#4A4A52" stroke-width="2"/>
+  <line x1="480" y1="195" x2="480" y2="265" stroke="#4A4A52" stroke-width="2"/>
+  <!-- Bottom: BR to BL (inductor L in center) -->
+  <line x1="80" y1="265" x2="185" y2="265" stroke="#4A4A52" stroke-width="2"/>
+  <line x1="355" y1="265" x2="480" y2="265" stroke="#4A4A52" stroke-width="2"/>
+  <!-- Left wire: BL up to TL (capacitor C in center) -->
+  <line x1="80" y1="265" x2="80" y2="175" stroke="#4A4A52" stroke-width="2"/>
+  <line x1="80" y1="115" x2="80" y2="55" stroke="#4A4A52" stroke-width="2"/>
+
+  <!-- ===== K — Interrupteur (switch) top center ===== -->
+  <!-- Switch open: two terminals + gap + lever -->
+  <circle cx="200" cy="55" r="3" fill="#4A4A52"/>
+  <circle cx="265" cy="55" r="3" fill="#4A4A52"/>
+  <!-- Lever angled open -->
+  <line x1="200" y1="55" x2="258" y2="38" stroke="#4A4A52" stroke-width="2" stroke-linecap="round"/>
+  <!-- K label -->
+  <text x="232" y="34" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">K</text>
+
+  <!-- ===== C — Condensateur (capacitor) left wire vertical ===== -->
+  <!-- Two horizontal plates centered at (80, 145) -->
+  <line x1="55" y1="115" x2="105" y2="115" stroke="#3E5C86" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="55" y1="175" x2="105" y2="175" stroke="#3E5C86" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- C label -->
+  <text x="40" y="150" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">C</text>
+
+  <!-- u_C label with arrow on left side -->
+  <!-- Brace/arrow indicating u_C across the capacitor plates -->
+  <line x1="20" y1="119" x2="20" y2="171" stroke="#3E5C86" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="20,119 16,130 24,130" fill="#3E5C86"/>
+  <text x="13" y="150" text-anchor="middle" font-size="11" font-style="italic" fill="#3E5C86">u<tspan dy="4" font-size="8">C</tspan></text>
+
+  <!-- ===== L + r — Bobine (inductor) bottom wire horizontal ===== -->
+  <!-- Coil symbol: series of bumps between x=185 and x=355 at y=265 -->
+  <!-- 4 arcs for the inductor coil -->
+  <path d="M185,265 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+  <path d="M215,265 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+  <path d="M245,265 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+  <path d="M275,265 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+  <!-- r: small rectangle for internal resistance after coil -->
+  <rect x="313" y="256" width="30" height="18" rx="2" fill="#F5F3EF" stroke="#2A2A2E" stroke-width="1.8"/>
+  <text x="328" y="268.5" text-anchor="middle" font-size="11" font-style="italic" fill="#2A2A2E">r</text>
+
+  <!-- L label above coil -->
+  <text x="260" y="252" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">L</text>
+
+  <!-- u_L label below, with arrow -->
+  <line x1="185" y1="290" x2="343" y2="290" stroke="#7E9CC8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="185,290 196,286 196,294" fill="#7E9CC8"/>
+  <text x="264" y="310" text-anchor="middle" font-size="11" font-style="italic" fill="#7E9CC8">u<tspan dy="4" font-size="8">L</tspan></text>
+
+  <!-- ===== R — Résistance (resistor) right wire vertical ===== -->
+  <!-- Rectangle symbol centered at (480, 165) -->
+  <rect x="462" y="135" width="36" height="60" rx="3" fill="#F5F3EF" stroke="#2A2A2E" stroke-width="2"/>
+  <!-- R label inside -->
+  <text x="480" y="169" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">R</text>
+
+  <!-- u_R label with arrow on right side -->
+  <line x1="520" y1="139" x2="520" y2="191" stroke="#7E9CC8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="520,139 516,150 524,150" fill="#7E9CC8"/>
+  <text x="534" y="162" text-anchor="middle" font-size="11" font-style="italic" fill="#7E9CC8">u<tspan dy="4" font-size="8">R</tspan></text>
+
+  <!-- ===== Current i — arrow on top wire, pointing clockwise ===== -->
+  <!-- Arrow on top wire from left toward right (clockwise flow) -->
+  <line x1="330" y1="55" x2="370" y2="55" stroke="#3E5C86" stroke-width="2"/>
+  <polygon points="370,55 358,50 358,60" fill="#3E5C86"/>
+  <text x="350" y="44" text-anchor="middle" font-size="13" font-style="italic" fill="#3E5C86">i</text>
+
+  <!-- ===== Corner dots for clarity ===== -->
+  <circle cx="80" cy="55" r="3" fill="#4A4A52"/>
+  <circle cx="480" cy="55" r="3" fill="#4A4A52"/>
+  <circle cx="480" cy="265" r="3" fill="#4A4A52"/>
+  <circle cx="80" cy="265" r="3" fill="#4A4A52"/>
+
+  <!-- Loop direction hint (small curved arrow at center, optional — omitted for coherence) -->
+
+  <!-- Caption note — loi des mailles -->
+  <text x="280" y="332" text-anchor="middle" font-size="11" fill="#6B6B72">u<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + u<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> + u<tspan dy="3" font-size="8">r</tspan><tspan dy="-3"> + u<tspan dy="3" font-size="8">R</tspan><tspan dy="-3"> = 0</tspan></tspan></tspan></tspan></text>
+
+</svg>
