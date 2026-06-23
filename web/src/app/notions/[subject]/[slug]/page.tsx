@@ -24,9 +24,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
 import { PageShell } from "@/components/ui/PageShell";
-import { LessonRenderer } from "@/components/notion/LessonRenderer";
-import { MediaDiagram } from "@/components/notion/MediaDiagram";
-import { EmbedPanel } from "@/components/notion/EmbedPanel";
+import { NotionBody } from "@/components/notion/NotionBody";
 import { ItemsSection } from "@/components/notion/ItemsSection";
 import { cn } from "@/lib/utils";
 
@@ -114,8 +112,14 @@ export default function NotionPage({
     notFound();
   }
 
-  const { meta, lessonMd, itemsData, mediaSvgs, embed } = notion;
-  const svgEntries = Object.entries(mediaSvgs);
+  const { meta, lessonMd, itemsData, mediaSvgs, mediaEmbeds } = notion;
+
+  // Determine if the page is completely empty (no lesson, no items, no media)
+  const hasAnyContent =
+    !!lessonMd ||
+    !!itemsData ||
+    Object.keys(mediaSvgs).length > 0 ||
+    Object.keys(mediaEmbeds).length > 0;
 
   return (
     <PageShell width="reading">
@@ -158,9 +162,19 @@ export default function NotionPage({
 
       {/* ── Learning core ─────────────────────────────────────────────────── */}
       <div id="lesson-content">
-        {/* Lesson prose + live math */}
         {lessonMd ? (
-          <LessonRenderer markdown={lessonMd} />
+          /*
+           * NotionBody splits lessonMd on [[figure:slug]] / [[embed:slug]]
+           * markers and renders prose, diagrams, and embeds in authored order.
+           * Every marker occurrence is rendered — repeated markers render
+           * repeated components, each with a unique React key.
+           * Unknown slugs silently render nothing (no crash, no literal text).
+           */
+          <NotionBody
+            lessonMd={lessonMd}
+            mediaSvgs={mediaSvgs}
+            mediaEmbeds={mediaEmbeds}
+          />
         ) : (
           <div
             className={cn(
@@ -173,27 +187,11 @@ export default function NotionPage({
           </div>
         )}
 
-        {/* SVG diagrams — rendered after lesson prose */}
-        {svgEntries.length > 0 && (
-          <div className="mt-8 space-y-4" aria-label="Diagrammes">
-            {svgEntries.map(([filename, svg]) => (
-              <MediaDiagram
-                key={filename}
-                svg={svg}
-                label={filename.replace(/\.svg$/, "").replace(/-/g, " ")}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Interactive embed (or graceful placeholder) */}
-        <EmbedPanel embed={embed} />
-
-        {/* MCQ items */}
+        {/* MCQ items — always rendered after the lesson body */}
         {itemsData && <ItemsSection itemsData={itemsData} />}
 
-        {/* Fallback: notion directory exists but both lesson and items absent */}
-        {!itemsData && !lessonMd && svgEntries.length === 0 && (
+        {/* Fallback: notion directory exists but all content is absent */}
+        {!hasAnyContent && (
           <div
             className={cn(
               "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",

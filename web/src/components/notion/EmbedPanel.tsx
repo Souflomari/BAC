@@ -2,7 +2,7 @@
  * EmbedPanel
  *
  * Renders an interactive embed (GeoGebra, Desmos, PhET, Falstad, etc.) from
- * the embed.json descriptor, or a graceful placeholder if the descriptor is
+ * a normalized EmbedDescriptor, or a graceful placeholder if the descriptor is
  * absent or the URL is not present.
  *
  * ADR-0017 taxonomy: "Manipulable" visuals are embeds — don't rebuild.
@@ -11,6 +11,14 @@
  *
  * This is a client component because the iframe load state is tracked
  * to show a loading indicator without a content layout shift.
+ *
+ * Security: third-party iframe is sandboxed (allow-scripts allow-same-origin
+ * allow-popups). No browser storage (no localStorage/sessionStorage/cookies)
+ * anywhere in this component.
+ *
+ * Accessibility: caption text below the iframe; external fallback link always
+ * present so the embed is usable even if the iframe is blocked. Fade/shimmer
+ * respects prefers-reduced-motion.
  */
 
 "use client";
@@ -123,14 +131,22 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
     ? `${(embed.aspectRatio * 100).toFixed(2)}%`
     : "56.25%";
 
+  // Tool label for the section heading: normalize to display-friendly form
+  const toolLabel =
+    embed.type === "falstad"
+      ? "Falstad CircuitJS"
+      : embed.type
+        ? embed.type.charAt(0).toUpperCase() + embed.type.slice(1)
+        : "Interactif";
+
   return (
     <div className={cn("my-10", className)}>
-      {/* Section label */}
+      {/* Section label — muted, never flashy */}
       <p
         className="mb-3 text-caption font-medium text-[var(--color-text-tertiary)] uppercase tracking-widest"
         aria-hidden="true"
       >
-        {embed.type ?? "Interactif"}
+        {toolLabel}
       </p>
 
       {/* Aspect-ratio container — avoids layout shift as iframe loads */}
@@ -145,7 +161,9 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
         )}
         style={{ paddingBottom: aspectPercent }}
       >
-        {/* Loading shimmer — shown until iframe fires onLoad */}
+        {/* Loading shimmer — shown until iframe fires onLoad.
+            motion: animate-pulse is suppressed by prefers-reduced-motion via
+            Tailwind's motion-safe: variant (falls back to static opacity). */}
         {!loaded && (
           <div
             className={cn(
@@ -158,7 +176,10 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 rounded-full bg-[var(--color-border-soft)] animate-pulse"
+                  className={cn(
+                    "w-1.5 h-1.5 rounded-full bg-[var(--color-border-soft)]",
+                    "motion-safe:animate-pulse"
+                  )}
                   style={{ animationDelay: `${i * 200}ms` }}
                 />
               ))}
@@ -168,19 +189,52 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
 
         <iframe
           src={embed.url}
-          title={embed.title ?? "Interactif"}
-          allow="fullscreen"
+          title={embed.title ?? toolLabel}
+          // Third-party iframe sandbox: allow scripts (embed logic), same-origin
+          // (Falstad self-references), popups (share/help links).
+          // allow-forms is intentionally omitted — not needed and reduces surface.
+          sandbox="allow-scripts allow-same-origin allow-popups"
+          loading="lazy"
           className={cn(
             "absolute inset-0 w-full h-full border-0",
-            // Fade in once loaded — DESIGN-BIBLE §5: motion serves comprehension
-            "transition-opacity duration-[250ms] ease-out",
+            // Fade in once loaded — respects prefers-reduced-motion
+            "motion-safe:transition-opacity motion-safe:duration-[250ms] motion-safe:ease-out",
             loaded ? "opacity-100" : "opacity-0"
           )}
           onLoad={() => setLoaded(true)}
-          // Touch targets for in-iframe interaction are the embed's own concern.
-          // We ensure the iframe itself is keyboard-reachable.
+          // The iframe itself must be keyboard-reachable
           tabIndex={0}
         />
+      </div>
+
+      {/* Caption and external fallback — always rendered below the iframe */}
+      <div className="mt-3 flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between">
+        {embed.caption && (
+          <p
+            className={cn(
+              "text-caption text-[var(--color-text-tertiary)]",
+              "max-w-[56ch] leading-relaxed"
+            )}
+          >
+            {embed.caption}
+          </p>
+        )}
+        {/* Graceful external fallback — visible always, not just on iframe failure */}
+        <a
+          href={embed.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "shrink-0 text-caption font-medium",
+            "text-[#3E5C86] hover:text-[#7E9CC8]",
+            "transition-colors duration-[150ms]",
+            "rounded focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
+            // Push to right when caption is also present
+            embed.caption ? "sm:ml-4" : ""
+          )}
+        >
+          Ouvrir dans un nouvel onglet ↗
+        </a>
       </div>
     </div>
   );

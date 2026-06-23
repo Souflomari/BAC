@@ -86,12 +86,18 @@ export interface NotionItems {
 export interface EmbedDescriptor {
   /** The kind of embed: "geogebra" | "desmos" | "falstad" | "phet" | "custom" */
   type: string;
-  /** The URL to embed in an <iframe> */
+  /** The URL to embed in an <iframe> (the full ?ctz= share URL for Falstad) */
   url: string;
   /** Accessible title for the iframe */
   title?: string;
   /** Suggested aspect ratio as a fraction, e.g. 0.5625 for 16:9 */
   aspectRatio?: number;
+  /** Base URL without query string (Falstad: url_base) */
+  urlBase?: string;
+  /** French caption displayed below the embed */
+  caption?: string;
+  /** Raw netlist text — circuit_import_text fallback if URL fails */
+  circuitImportText?: string;
 }
 
 export interface NotionContent {
@@ -102,7 +108,16 @@ export interface NotionContent {
   itemsData: NotionItems | null;
   /** Map of filename → raw SVG string for media/*.svg */
   mediaSvgs: Record<string, string>;
-  /** Parsed embed.json, or null if absent */
+  /**
+   * Map of slug → EmbedDescriptor for every media/*.json file.
+   * Key is the basename without extension, e.g. "rlc-sandbox".
+   * Used by the inline [[embed:slug]] markers.
+   */
+  mediaEmbeds: Record<string, EmbedDescriptor>;
+  /**
+   * Parsed embed.json at the notion root, or null if absent.
+   * Legacy field — prefer mediaEmbeds for inline markers.
+   */
   embed: EmbedDescriptor | null;
 }
 
@@ -227,25 +242,60 @@ export function loadNotion(id: string): NotionContent | null {
     }
   }
 
-  // ── media/*.svg ──
+  // ── media/*.svg and media/*.json ──
   const mediaSvgs: Record<string, string> = {};
+  const mediaEmbeds: Record<string, EmbedDescriptor> = {};
   const mediaDir = path.join(dir, "media");
   if (dirExists(mediaDir)) {
-    const files = safeReadDir(mediaDir).filter((f) => f.endsWith(".svg"));
-    for (const file of files) {
+    const files = safeReadDir(mediaDir);
+
+    // SVGs — keyed by filename (e.g. "rlc-schema.svg")
+    for (const file of files.filter((f) => f.endsWith(".svg"))) {
       const svg = safeReadFile(path.join(mediaDir, file));
       if (svg) mediaSvgs[file] = svg;
     }
+
+    // JSON embed descriptors — keyed by basename slug (e.g. "rlc-sandbox")
+    for (const file of files.filter((f) => f.endsWith(".json"))) {
+      const raw = safeReadFile(path.join(mediaDir, file));
+      if (!raw) continue;
+      try {
+        const parsed = JSON.parse(raw);
+        // Require at least a url field — malformed/missing → skip, never throw
+        if (!parsed || typeof parsed.url !== "string") continue;
+
+        const slug_key = file.replace(/\.json$/, "");
+        mediaEmbeds[slug_key] = {
+          type: parsed.tool ?? parsed.type ?? "custom",
+          url: parsed.url,
+          title: parsed.title_fr ?? parsed.title ?? undefined,
+          aspectRatio: parsed.aspectRatio ?? undefined,
+          urlBase: parsed.url_base ?? undefined,
+          caption: parsed.caption_fr ?? parsed.caption ?? undefined,
+          circuitImportText: parsed.circuit_import_text ?? undefined,
+        };
+      } catch {
+        // Malformed JSON — skip silently, never crash the page
+      }
+    }
   }
 
-  // ── embed.json ──
+  // ── embed.json (legacy, notion root) ──
   let embed: EmbedDescriptor | null = null;
   const embedRaw = safeReadFile(path.join(dir, "embed.json"));
   if (embedRaw) {
     try {
       const parsed = JSON.parse(embedRaw);
       if (parsed && typeof parsed.url === "string") {
-        embed = parsed as EmbedDescriptor;
+        embed = {
+          type: parsed.tool ?? parsed.type ?? "custom",
+          url: parsed.url,
+          title: parsed.title_fr ?? parsed.title ?? undefined,
+          aspectRatio: parsed.aspectRatio ?? undefined,
+          urlBase: parsed.url_base ?? undefined,
+          caption: parsed.caption_fr ?? parsed.caption ?? undefined,
+          circuitImportText: parsed.circuit_import_text ?? undefined,
+        };
       }
     } catch {
       embed = null;
@@ -256,5 +306,5 @@ export function loadNotion(id: string): NotionContent | null {
   const title = extractTitle(lessonMd, slug);
   const meta: NotionMeta = { id, subject, slug, title };
 
-  return { meta, lessonMd, itemsData, mediaSvgs, embed };
+  return { meta, lessonMd, itemsData, mediaSvgs, mediaEmbeds, embed };
 }
