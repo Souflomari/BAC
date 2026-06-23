@@ -38,6 +38,32 @@ is sourced by its *kind*, per this taxonomy:
 The DESIGN-BIBLE style preamble is appended verbatim to *every* Gemini brief
 (mandatory), so even atmospheric generation stays inside the visual language.
 
+## Mechanism for the Gemini lane
+
+Media generation runs via an MCP server (`@jimothy-snicket/gemini-image-mcp`),
+invoked by the **orchestrator only**, under cost caps **`MAX_REQUESTS_PER_HOUR=15`**
+and **`MAX_COST_PER_HOUR=3`**. The API key is supplied via an **environment
+variable and is NEVER committed**. The live MCP config is deliberately kept
+**off the work PC** and is stood up only when a real generated visual is actually
+needed.
+
+**This ADR documents the decision only.** It creates no live `.mcp.json`, adds no
+secret, and wires up no running server. Standing up the lane is a separate, gated
+act performed when an atmospheric visual is genuinely required.
+
+## Provisional agent roster (recorded, NOT locked)
+
+Written down here so it exists in the record, but explicitly **PROVISIONAL** —
+pending slice validation; RULES §5 still carries the open `[STATUS: not yet
+decided]` on the roster, and this ADR does not override that.
+
+- **orchestrator** — the main Opus session
+- **pedagogy-architect** — Opus
+- **content-author** — Sonnet
+- **item-author** — Sonnet
+- **supabase-architect** — Opus; the **sole holder of Bash access**
+- **Gemini media lane** — via the MCP server described above
+
 ## Evidence
 
 Two media smoke tests — commit `9ba0977` (initial generation) and the
