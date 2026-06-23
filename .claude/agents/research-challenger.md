@@ -1,6 +1,6 @@
 ---
 name: research-challenger
-description: Use to adversarially scrutinize research-lead's DERIVED boundary layer — the limites and exclusions. For each derived item it asks "does the cadre actually support this boundary, or is it being asserted?" and flags over-reaches and omissions. Read-only: emits a challenge report, never edits the boundary. The Sonnet attacker of the triangulated grounding lane.
+description: Use to adversarially scrutinize research-lead's DERIVED boundary layer — the limites and exclusions — asking for each whether the cadre actually supports the boundary or it is merely being asserted, and flagging over-reaches and omissions. Read-only — emits a challenge report, never edits the boundary. The Sonnet attacker of the triangulated grounding lane.
 tools: Read, Grep, Glob
 model: sonnet
 ---
