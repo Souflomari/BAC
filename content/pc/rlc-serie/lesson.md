@@ -4,9 +4,13 @@
 
 ## R0 — Accroche : le balancement électrique
 
+[[video:balancement]]
+
 Imagine qu'on charge complètement un condensateur — on lui donne une réserve d'énergie — puis on le connecte directement à une bobine, sans source de tension, sans piles. Le circuit est fermé. Le condensateur commence à se décharger.
 
 [[figure:rlc-schema]]
+
+> *Rendu progressif — Étape 1 : la boucle nue.* Juste le condensateur et la bobine en série, l'interrupteur K. Pas encore de flèche de courant, pas d'étiquettes de tension. Une seule idée : un condensateur chargé, connecté à une bobine, rien d'autre.
 
 Avant de lire la suite, prends trente secondes et pose-toi vraiment la question : **que va faire la tension $u_C(t)$ aux bornes du condensateur ?**
 
@@ -16,9 +20,11 @@ La plupart des élèves qui arrivent ici ont une réponse nette : « la tension 
 
 C'est ta prédiction ? Bien. Garde-la.
 
-Maintenant regarde le panneau « périodique » de la figure ci-dessous — c'est la trace réelle de $u_C(t)$ pour ce circuit.
+Maintenant regarde la trace ci-dessous — c'est la courbe réelle de $u_C(t)$ pour ce circuit, régime périodique.
 
 [[figure:regimes-uc]]
+
+> *Rendu progressif — Étape 1 : le panneau périodique seul.* Une sinusoïde parfaite, à amplitude constante. Les panneaux pseudo-périodique et apériodique n'apparaissent pas encore.
 
 La tension ne descend pas vers zéro et ne s'y arrête pas. Elle descend, passe par zéro, **remonte de l'autre côté**, redescend, repasse par zéro, remonte encore — et ainsi de suite. Ce n'est pas une décharge. C'est une oscillation.
 
@@ -42,9 +48,23 @@ Avant les équations, comprendre le mécanisme. Parce que le mécanisme, une foi
 
 On part d'un circuit LC idéal — condensateur, bobine, et pour l'instant on suppose la résistance négligeable, $R \approx 0$. On reviendra sur R plus tard.
 
-[[figure:energy-exchange]]
+[[figure:rlc-schema]]
+
+> *Rendu progressif — Étape 2 : on ajoute le courant.* Le courant $i$ et sa flèche de direction apparaissent dans la boucle. Une seule idée : on ferme K, le courant circule.
+
+### Avant de parler d'énergie : qu'est-ce que le courant, exactement ?
+
+On utilise $i = \frac{dq}{dt}$ depuis le chapitre condensateur, mais ça vaut la peine de s'arrêter un instant sur ce que ça dit.
+
+[[figure:origin-i]]
+
+Le courant $i$, c'est la vitesse à laquelle la charge passe par un point du circuit. Si tu imagines les porteurs de charge comme une foule qui franchit une porte : $i$ mesure combien de charge passe par cette porte chaque seconde. La charge totale qui a franchi la porte jusqu'à l'instant $t$, c'est $q(t)$. Donc le débit instantané — la vitesse à laquelle $q$ augmente ou diminue — c'est $\frac{dq}{dt}$. Voilà pourquoi $i = \frac{dq}{dt}$ : ce n'est pas une convention arbitraire, c'est la définition même du courant comme flux de charge. Quand le condensateur se décharge, $q$ diminue, donc $i = \frac{dq}{dt}$ est négatif — le courant sort dans le sens inverse de la convention. L'équation dit exactement ça.
 
 ### Un cycle, narré pas à pas
+
+[[motion:energy-pendulum]]
+
+> *Animation : l'échange d'énergie sur une période.* Les barres $E_C$ et $E_L$ se remplissent en alternance — quand l'une est pleine, l'autre est vide. La somme $E_C + E_L$ reste une ligne plate dans le cas idéal. Une seconde passe avec R non nulle : l'enveloppe totale descend lentement, sans que l'échange s'arrête. Rendu progressif de secours : la figure statique D2.3, quatre étapes avec bouton d'avancement.
 
 **Instant initial.** Le condensateur est chargé à la tension maximale $U_0$. Toute l'énergie du circuit est stockée dans le condensateur sous forme d'énergie électrique :
 
@@ -95,13 +115,38 @@ Les deux éléments ne stockent pas la même chose, et leurs maxima se produisen
 
 Maintenant qu'on a le mécanisme, on va le traduire en langage mathématique. L'objectif : trouver l'équation qui gouverne $q(t)$, puis en déduire la période propre $T_0$.
 
-### Écrire la loi des mailles
+[[figure:rlc-schema]]
+
+> *Rendu progressif — Étape 3 : on ajoute les tensions.* Les tensions $u_C$ et $u_L$ sont étiquetées sur leurs composants respectifs, la convention récepteur est marquée. Une seule idée : ce sont les deux tensions qu'on va écrire dans la loi des mailles.
+
+### Ce que dit $u_C = \frac{q}{C}$ — et pourquoi c'est vrai
+
+[[figure:origin-uc]]
+
+Un condensateur stocke de la charge sur ses armatures. Plus on empile de charge $q$ entre les deux plaques, plus elles se repoussent fort — et cette répulsion se manifeste comme une tension $u_C$ entre les armatures. La relation est simple : double la charge, tu doubles la tension. C'est une proportionnalité directe. Le coefficient de proportionnalité, c'est $\frac{1}{C}$, où $C$ mesure la capacité du condensateur à accumuler de la charge pour une tension donnée — un grand $C$ signifie qu'il faut beaucoup de charge pour n'obtenir qu'une petite tension. On écrit $q = C \cdot u_C$, ce qui donne, en isolant la tension : $u_C = \frac{q}{C}$. C'est la définition même de la capacité, traduite en termes de la charge instantanée $q(t)$.
+
+### Ce que dit $u_L = L\frac{di}{dt}$ — et pourquoi c'est vrai
+
+[[figure:origin-uL]]
+
+Une bobine s'oppose aux changements de courant — c'est son caractère fondamental. Si le courant varie lentement, la bobine réagit peu ; si le courant change brusquement, la bobine résiste fort. Ce qu'elle mesure, c'est le **taux de variation** du courant : $\frac{di}{dt}$. Plus ce taux est élevé, plus la bobine pousse en sens inverse — c'est une inertie pour le courant, exactement comme la masse est une inertie pour le mouvement. La tension aux bornes de la bobine est donc proportionnelle à ce taux de variation : $u_L = L\frac{di}{dt}$, où $L$ est l'inductance, qui mesure la force de cette opposition. Une grande inductance résiste beaucoup aux changements rapides ; une petite inductance laisse varier le courant plus facilement. Il n'y a pas de flux intégral à connaître ici : l'idée est celle d'une inertie électrique.
+
+### Écrire la loi des mailles, terme par terme
+
+[[motion:loi-des-mailles-build]]
+
+> *Animation — construction terme à terme sur le schéma (cas idéal, 4 étapes) :*
+> *Étape 1 — la boucle, $u_C$ en surbrillance sur le condensateur.* L'équation montre : $u_C$.
+> *Étape 2 — $u_L$ apparaît sur la bobine.* L'équation montre : $u_C + u_L = 0$ (boucle série sans source → la somme est nulle).
+> *Étape 3 — on substitue les relations constitutives.* $u_C \to q/C$, $u_L \to L\,d^2q/dt^2$ (via $i = dq/dt$). L'équation montre : $\frac{q}{C} + L\frac{d^2q}{dt^2} = 0$.
+> *Étape 4 — réordonnancement + l'absence de R.* $L\frac{d^2q}{dt^2} + \frac{q}{C} = 0$. Le schéma montre explicitement qu'il n'y a pas de résistance dans cette boucle — R est absent du circuit et absent de l'équation. Ce n'est pas un oubli : c'est la physique du circuit idéal.
+> Rendu de secours : le schéma statique complet avec l'équation finale, et un bouton pour parcourir les quatre étapes manuellement.
 
 Dans le circuit LC idéal ($R = 0$, ou plus précisément $R$ négligeable), la loi des mailles donne :
 
 $$u_C + u_L = 0$$
 
-On connaît les deux expressions depuis les chapitres précédents :
+On connaît les deux expressions — on vient d'en expliquer l'origine :
 
 $$u_C = \frac{q}{C} \qquad \text{et} \qquad u_L = L\frac{di}{dt}$$
 
@@ -181,6 +226,10 @@ $$E = \frac{1}{2}C U_0^2 = \frac{1}{2} \times 10^{-5} \times 36 = 1{,}8 \times 1
 
 Un quart de période plus tard, toute cette énergie est dans la bobine : $E_L = 1{,}8 \times 10^{-4}\ \text{J}$, $E_C = 0$.
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r2-m4]]
+
 ---
 
 ## R3 — R est le frein, pas le moteur
@@ -194,6 +243,10 @@ Engage-toi : est-ce qu'elles s'arrêtent, s'affaiblissent, ou se maintiennent ?
 La réponse que beaucoup d'élèves donnent : « ça s'arrête, parce que plus rien ne les entretient. » C'est une prédiction naturelle — R est le composant le plus visible dans un circuit en courant continu, c'est lui qui « consomme ». Si R disparaît, les oscillations s'éteignent.
 
 Garde cette prédiction. Maintenant, on regarde ce que disent les données.
+
+[[figure:rlc-schema]]
+
+> *Rendu progressif — Étape 4 : la résistance R apparaît dans la boucle.* $u_R$ est étiquetée sur R. Une seule idée : on ajoute maintenant le composant qui n'était pas là dans le circuit idéal.
 
 [[embed:rlc-sandbox]]
 
@@ -215,15 +268,23 @@ Et si on change $L$ ou $C$ (avec $R$ fixée), c'est la **période** des oscillat
 
 R est le frein. Rien d'autre.
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r3-m1]]
+
 ---
 
 ## R4 — Les trois régimes
 
 En fonction de la valeur de $R$, on observe trois comportements qualitativement différents. Ces trois comportements s'appellent les **trois régimes** des oscillations libres.
 
-[[figure:regimes-uc]]
+[[motion:regime-traces-forming]]
 
-[[figure:energy-exchange]]
+> *Animation — les trois courbes se tracent de gauche à droite, dans l'ordre R croissant :* d'abord la sinusoïde parfaite (périodique, R ≈ 0) qui se dessine indéfiniment ; puis la sinusoïde amortie (pseudo-périodique, R modérée) dont les pics se dessinent avec un espacement régulier mais une hauteur qui décroît — on voit clairement que le *rythme* ne change pas, seule l'*amplitude* décroît ; enfin la courbe apériodique (R grande) qui revient à zéro sans rebond. Rendu de secours : les trois panneaux statiques de la figure D2.2, avec bouton d'avancement.
+
+[[motion:energy-pendulum]]
+
+> *Animation — deuxième passage, avec R non nulle :* l'échange $E_C \leftrightarrow E_L$ continue à chaque cycle, mais l'enveloppe totale $E_C + E_L$ descend lentement — de l'énergie part en chaleur dans R à chaque oscillation. L'enveloppe décroît qualitativement ; aucune formule d'enveloppe n'apparaît. Rendu de secours : étapes 3 et 4 de la figure statique D2.3.
 
 ### Régime périodique (R négligeable)
 
@@ -261,6 +322,10 @@ L'énergie est dissipée trop rapidement pour que le transfert $C \to L \to C$ a
 | $R$ modérée | Pseudo-périodique | Oscillations amorties, amplitude décroissante |
 | $R$ grande | Apériodique | Retour monotone à zéro, pas d'oscillations |
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r4-m5]]
+
 ---
 
 ## R5 — Le cas amorti : établir l'équation, et s'arrêter là
@@ -278,6 +343,13 @@ La réponse intuitive : « R n'est qu'un frein, il ralentit l'amplitude mais ne 
 On va la tester par le calcul. Voilà le révélateur.
 
 ### Établir l'équation différentielle
+
+[[motion:loi-des-mailles-build]]
+
+> *Animation — construction terme à terme sur le schéma (cas amorti, 5 étapes) :*
+> *Étapes 1–3 : identiques au cas idéal* — $u_C$ s'allume sur le condensateur, $u_L$ sur la bobine, on substitue $q/C$ et $L\,d^2q/dt^2$.
+> *Étape 4 — la résistance R apparaît dans le circuit.* Sa tension $u_R = R\,dq/dt$ s'ajoute à l'équation. L'équation montre : $L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0$.
+> *Étape 5 — on teste le cosinus idéal.* Le terme $R\,dq/dt$ laisse un résidu en $\sin$ qui ne peut pas s'annuler. L'animation s'arrête là — elle ne résout pas l'équation amortie. Rendu de secours : le schéma amorti statique avec l'équation complète et le résidu mis en évidence, avec bouton d'avancement.
 
 On reprend la loi des mailles dans le circuit RLC série complet :
 
@@ -379,9 +451,11 @@ Sur la courbe expérimentale, on mesure deux maxima successifs à $t_1 = 3\ \tex
 
 $$T = 9{,}4 - 3 = 6{,}4\ \text{ms}$$
 
-L'écart avec $T_0 \approx 6{,}28\ \text{ms}$ est faible — environ 2 %. L'amortissement est bien faible, l'approximation $T \approx T_0$ est valide.
+L'écart avec $T_0 \approx 6{,}28\ \text{ms}$ est d'environ 2 %. L'amortissement est bien faible, l'approximation $T \approx T_0$ est valide.
 
 [[figure:regimes-uc]]
+
+> *Rendu progressif — Étape 2 : le panneau pseudo-périodique seul, annoté pour la mesure.* Deux maxima successifs sont marqués, le segment $T = t_{n+1} - t_n$ est mis en évidence. Une seule idée : voici comment lire $T$ sur une trace réelle.
 
 ---
 
@@ -444,6 +518,10 @@ On a ouvert cette leçon avec deux questions : **où va l'énergie, et qu'est-ce
 - L'énergie **ne disparaît pas** — elle passe du condensateur à la bobine et revient, à chaque oscillation.
 - Ce qui l'arrête, c'est **R** : la résistance dissipe une partie de l'énergie à chaque cycle par effet Joule. Plus R est grande, plus l'amortissement est rapide.
 - Pour l'entretenir, on **compense exactement cette perte** avec un générateur $u_G = k \cdot i$ réglé à $k = R$ — et les oscillations reprennent, libres et indéfinies, à la période propre $T_0 = 2\pi\sqrt{LC}$.
+
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r7-m8]]
 
 ---
 

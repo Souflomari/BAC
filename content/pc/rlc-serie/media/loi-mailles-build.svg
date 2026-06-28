@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" width="620" height="420"
+     font-family="'Segoe UI', system-ui, sans-serif">
+  <!--
+    loi-mailles-build.svg — Loi des mailles construite terme à terme sur le schéma
+    Static fallback for the M-3 loi-des-mailles-build motion.
+
+    The schematic occupies the left 55% (~340px wide).
+    The equation zone occupies the right 45%.
+
+    step-1 : schéma LC + surlignage condensateur ; equation montre « u_C »
+    step-2 : + surlignage bobine ; equation « u_C + u_L = 0 »
+    step-3 : substitution des relations constitutives → « q/C + L·d²q/dt² = 0 »
+    step-4 : réordonnée + point pédagogique « R absent » → « L·q″ + q/C = 0 »
+    step-5 : + résistance R + u_R visibles ; term R·q′ apparaît (cas amorti R5)
+
+    Circuit topology — same series loop as rlc-schema.svg:
+      K top-centre; C left-vertical; L bottom-horizontal; (R right-vertical, step-5 only)
+      Corners: TL(60,65) TR(330,65) BR(330,230) BL(60,230)
+      C plates at (60,120) and (60,175)
+      L coil x=130..310 at y=230
+      R rect x=330,y=120 to x=330,y=180 (step-5 only)
+
+    Palette: bg #F5F3EF, panel #EDEAE5, wire #4A4A52, C-accent #3E5C86,
+             L-accent #7E9CC8, R-accent #8A6A3A, highlight-fill #3E5C86 op.12,
+             text #2A2A2E, secondary #6B6B72, equation-zone bg #EAE8E2
+  -->
+
+  <!-- ── Background ─────────────────────────────────────────── -->
+  <rect width="620" height="420" rx="8" fill="#F5F3EF"/>
+
+  <!-- ── Schematic panel ──────────────────────────────────────── -->
+  <rect x="18" y="30" width="360" height="260" rx="6" fill="#EDEAE5"/>
+
+  <!-- ── Equation panel ────────────────────────────────────────── -->
+  <rect x="392" y="30" width="210" height="260" rx="6" fill="#EAE8E2"/>
+  <text x="497" y="50" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B72">Loi des mailles</text>
+
+  <!-- ── Shared circuit wires (always visible in all steps) ────── -->
+  <g id="circuit-base">
+    <!-- Top wire: TL→K-left -->
+    <line x1="60" y1="65" x2="158" y2="65" stroke="#4A4A52" stroke-width="2"/>
+    <!-- Top wire: K-right→TR -->
+    <line x1="218" y1="65" x2="330" y2="65" stroke="#4A4A52" stroke-width="2"/>
+    <!-- Right wire: TR→BR (steps 1-4 unbroken; step-5 broken for R) -->
+    <line x1="330" y1="65" x2="330" y2="230" stroke="#4A4A52" stroke-width="2"/>
+    <!-- Bottom: BR→coil-right -->
+    <line x1="310" y1="230" x2="330" y2="230" stroke="#4A4A52" stroke-width="2"/>
+    <!-- Bottom: coil-left→BL -->
+    <line x1="60" y1="230" x2="130" y2="230" stroke="#4A4A52" stroke-width="2"/>
+    <!-- Left: BL→C-bottom -->
+    <line x1="60" y1="230" x2="60" y2="175" stroke="#4A4A52" stroke-width="2"/>
+    <!-- Left: C-top→TL -->
+    <line x1="60" y1="120" x2="60" y2="65" stroke="#4A4A52" stroke-width="2"/>
+
+    <!-- Corner dots -->
+    <circle cx="60" cy="65" r="2.5" fill="#4A4A52"/>
+    <circle cx="330" cy="65" r="2.5" fill="#4A4A52"/>
+    <circle cx="330" cy="230" r="2.5" fill="#4A4A52"/>
+    <circle cx="60" cy="230" r="2.5" fill="#4A4A52"/>
+
+    <!-- Switch K -->
+    <circle cx="158" cy="65" r="2.5" fill="#4A4A52"/>
+    <circle cx="218" cy="65" r="2.5" fill="#4A4A52"/>
+    <line x1="158" y1="65" x2="212" y2="50" stroke="#4A4A52" stroke-width="2" stroke-linecap="round"/>
+    <text x="188" y="46" text-anchor="middle" font-size="12" font-style="italic" fill="#2A2A2E">K</text>
+
+    <!-- Condensateur C — plates at y=120 and y=175, centred on x=60 -->
+    <line x1="36" y1="120" x2="84" y2="120" stroke="#3E5C86" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="36" y1="175" x2="84" y2="175" stroke="#3E5C86" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="22" y="151" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">C</text>
+
+    <!-- Bobine L — 4 half-arcs from x=130 to x=310 at y=230 -->
+    <path d="M130,230 a22.5,14 0 0,1 45,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+    <path d="M175,230 a22.5,14 0 0,1 45,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+    <path d="M220,230 a22.5,14 0 0,1 45,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+    <path d="M265,230 a22.5,14 0 0,1 45,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+    <text x="220" y="218" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">L</text>
+
+    <!-- Current i arrow on top wire, right of K -->
+    <!-- (added in step-1 so it is always visible once the circuit appears) -->
+    <line x1="252" y1="65" x2="288" y2="65" stroke="#3E5C86" stroke-width="2"/>
+    <polygon points="288,65 276,60 276,70" fill="#3E5C86"/>
+    <text x="270" y="56" text-anchor="middle" font-size="13" font-style="italic" fill="#3E5C86">i</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 1 — Highlight condensateur C ; equation: u_C
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Soft highlight rectangle around the C plates -->
+    <rect x="28" y="110" width="72" height="74" rx="5" fill="#3E5C86" fill-opacity="0.13" stroke="#3E5C86" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <!-- u_C tension arrow on left of capacitor -->
+    <line x1="14" y1="124" x2="14" y2="171" stroke="#3E5C86" stroke-width="1.4" stroke-dasharray="4,3"/>
+    <polygon points="14,124 10,135 18,135" fill="#3E5C86"/>
+    <text x="6" y="152" text-anchor="middle" font-size="12" font-style="italic" fill="#3E5C86">
+      u<tspan dy="4" font-size="8.5">C</tspan>
+    </text>
+
+    <!-- Equation zone — step 1 content -->
+    <text x="497" y="106" text-anchor="middle" font-size="13" font-style="italic" fill="#3E5C86">u<tspan dy="4" font-size="9">C</tspan></text>
+    <text x="497" y="140" text-anchor="middle" font-size="9.5" fill="#6B6B72">tension aux bornes</text>
+    <text x="497" y="153" text-anchor="middle" font-size="9.5" fill="#6B6B72">du condensateur</text>
+
+    <!-- Step caption -->
+    <text x="310" y="320" text-anchor="middle" font-size="10.5" fill="#6B6B72">
+      Étape 1 — le condensateur : sa tension u<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> entre dans la loi des mailles.</tspan>
+    </text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 2 — + Highlight bobine L ; equation: u_C + u_L = 0
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Soft highlight around coil -->
+    <rect x="122" y="218" width="196" height="26" rx="5" fill="#7E9CC8" fill-opacity="0.15" stroke="#7E9CC8" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <!-- u_L tension arrow below coil -->
+    <line x1="130" y1="248" x2="310" y2="248" stroke="#7E9CC8" stroke-width="1.4" stroke-dasharray="4,3"/>
+    <polygon points="130,248 141,244 141,252" fill="#7E9CC8"/>
+    <text x="222" y="263" text-anchor="middle" font-size="12" font-style="italic" fill="#7E9CC8">
+      u<tspan dy="4" font-size="8.5">L</tspan>
+    </text>
+
+    <!-- Equation zone — step 2 content -->
+    <text x="497" y="106" text-anchor="middle" font-size="13" fill="#2A2A2E">
+      <tspan font-style="italic" fill="#3E5C86">u<tspan dy="4" font-size="9">C</tspan></tspan>
+      <tspan dy="-4" fill="#2A2A2E"> + </tspan>
+      <tspan font-style="italic" fill="#7E9CC8">u<tspan dy="4" font-size="9">L</tspan></tspan>
+      <tspan dy="-4" fill="#2A2A2E"> = 0</tspan>
+    </text>
+    <text x="497" y="128" text-anchor="middle" font-size="9.5" fill="#6B6B72">boucle série sans source</text>
+
+    <!-- Caption -->
+    <text x="310" y="320" text-anchor="middle" font-size="10.5" fill="#6B6B72">
+      Étape 2 — la bobine s'ajoute : u<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + u<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = 0 (loi des mailles).</tspan></tspan>
+    </text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 3 — Substitution constitutive relations
+       u_C → q/C  ;  u_L → L·d²q/dt²  (via i=dq/dt)
+       equation: q/C + L·d²q/dt² = 0
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Equation zone -->
+    <!-- Line 1: u_C = q/C -->
+    <text x="406" y="90" font-size="10" fill="#3E5C86">
+      <tspan font-style="italic">u<tspan dy="3" font-size="7.5">C</tspan></tspan>
+      <tspan dy="-3" fill="#6B6B72"> = q/C</tspan>
+    </text>
+    <!-- Line 2: u_L = L·d²q/dt² -->
+    <text x="406" y="108" font-size="10" fill="#7E9CC8">
+      <tspan font-style="italic">u<tspan dy="3" font-size="7.5">L</tspan></tspan>
+      <tspan dy="-3" fill="#6B6B72"> = L·d²q/dt²</tspan>
+    </text>
+
+    <!-- Arrow showing substitution -->
+    <text x="497" y="134" text-anchor="middle" font-size="10" fill="#8A8A92">↓ substitution</text>
+
+    <!-- Result equation -->
+    <text x="406" y="155" font-size="12" fill="#2A2A2E">
+      q/C + L·d²q/dt² = 0
+    </text>
+
+    <!-- Caption -->
+    <text x="310" y="336" text-anchor="middle" font-size="10.5" fill="#6B6B72">
+      Étape 3 — on substitue q/C et L·d²q/dt² dans la loi des mailles.
+    </text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 4 — Réordonner ; R absent (M4 beat)
+       L·q″ + q/C = 0  — R n'apparaît pas
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Equation zone — final ideal ODE -->
+    <text x="497" y="190" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">L·q″ + q/C = 0</text>
+
+    <!-- "R absent" annotation box -->
+    <rect x="400" y="202" width="190" height="52" rx="4" fill="#3E5C86" fill-opacity="0.10" stroke="#3E5C86" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="495" y="220" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">R n'apparaît pas.</text>
+    <text x="495" y="234" text-anchor="middle" font-size="9.5" fill="#3E5C86">Donc T₀ ne dépend pas de R.</text>
+    <text x="495" y="246" text-anchor="middle" font-size="9.5" fill="#3E5C86">T₀ = 2π√(LC) uniquement.</text>
+
+    <!-- Caption -->
+    <text x="310" y="352" text-anchor="middle" font-size="10.5" fill="#6B6B72">
+      Étape 4 — R est physiquement absent de la boucle idéale : il ne peut pas figurer dans T₀.
+    </text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 5 — Résistance R ajoutée (cas amorti, R5)
+       Adds R to the right wire and the R·q′ residue term
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-5">
+    <!-- Erase the unbroken right wire with bg -->
+    <rect x="320" y="110" width="20" height="80" fill="#EDEAE5"/>
+    <!-- Re-draw stub wires around R -->
+    <line x1="330" y1="65" x2="330" y2="110" stroke="#4A4A52" stroke-width="2"/>
+    <line x1="330" y1="190" x2="330" y2="230" stroke="#4A4A52" stroke-width="2"/>
+
+    <!-- Resistor rectangle -->
+    <rect x="314" y="110" width="32" height="80" rx="3" fill="#EDEAE5" stroke="#8A6A3A" stroke-width="2"/>
+    <!-- Soft highlight around R -->
+    <rect x="308" y="104" width="44" height="92" rx="5" fill="#8A6A3A" fill-opacity="0.10" stroke="#8A6A3A" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="330" y="155" text-anchor="middle" font-size="13" font-style="italic" fill="#8A6A3A">R</text>
+
+    <!-- u_R tension arrow on right side of resistor -->
+    <line x1="370" y1="114" x2="370" y2="186" stroke="#8A6A3A" stroke-width="1.4" stroke-dasharray="4,3"/>
+    <polygon points="370,114 366,125 374,125" fill="#8A6A3A"/>
+    <text x="384" y="154" text-anchor="middle" font-size="12" font-style="italic" fill="#8A6A3A">
+      u<tspan dy="4" font-size="8.5">R</tspan>
+    </text>
+
+    <!-- Equation zone — mask step-4 equation then draw damped ODE -->
+    <rect x="395" y="175" width="210" height="24" fill="#EAE8E2"/>
+    <text x="497" y="190" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">L·q″ + R·q′ + q/C = 0</text>
+
+    <!-- "R·q′ residue" annotation — this term stays, won't cancel -->
+    <rect x="400" y="202" width="190" height="52" rx="4" fill="#8A6A3A" fill-opacity="0.10" stroke="#8A6A3A" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="495" y="220" text-anchor="middle" font-size="10" font-weight="600" fill="#8A6A3A">Le terme R·q′ subsiste.</text>
+    <text x="495" y="234" text-anchor="middle" font-size="9.5" fill="#8A6A3A">Le cosinus idéal ne vérifie</text>
+    <text x="495" y="246" text-anchor="middle" font-size="9.5" fill="#8A6A3A">pas cette équation.</text>
+
+    <!-- Caption -->
+    <text x="310" y="352" text-anchor="middle" font-size="10.5" fill="#6B6B72">
+      Étape 5 (cas amorti) — R s'ajoute ; le terme R·q′ ne s'annule pas : on s'arrête là.
+    </text>
+  </g>
+
+  <!-- Step indicator row -->
+  <text x="18" y="408" font-size="10" fill="#8A8A92">
+    Étapes : 1 circuit · 2 loi des mailles · 3 substitution · 4 ODE idéale · 5 cas amorti
+  </text>
+
+</svg>
