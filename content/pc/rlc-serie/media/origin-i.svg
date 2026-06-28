@@ -1,102 +1,130 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 190" width="400" height="190"
-     font-family="'Segoe UI', system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 200" width="420" height="200"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Origine de la relation i = dq/dt : le courant est la vitesse d'écoulement de la charge">
+  <title>Pourquoi i = dq/dt ?</title>
   <!--
     origin-i.svg — Origine de i = dq/dt
-    Current as the flow-rate of charge through a cross-section of wire.
+    Deux panneaux côte à côte :
+      GAUCHE  : fil en coupe avec charges en mouvement à travers une section S
+      DROITE  : raisonnement limite Δq/Δt → dq/dt
 
-    Layout:
-    LEFT side: a wire cross-section with charge "blobs" moving through it
-    RIGHT side: the time-rate relation i = dq/dt shown graphically
-
-    Pedagogical idea: i IS the rate at which q changes.
-    Charges leaving the capacitor plate per second = i.
-    The integral form q = ∫i dt is intentionally omitted (heavier than the
-    origin-intuition register; not needed here).
-
-    Palette: bg transparent, panel #EDEAE5, charge #3E5C86, wire #4A4A52,
-             accent arrow #3E5C86, secondary #7E9CC8, text #2A2A2E, muted #6B6B72
+    Palette : var(--figure-*) CSS vars. Fond transparent.
+    Largeur 420px, hauteur 200px.
   -->
 
-  <!-- ── Background: transparent (app surface shows through) ──── -->
+  <defs>
+    <linearGradient id="panel-grad-i" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="var(--figure-surface)" stop-opacity="1"/>
+      <stop offset="100%" stop-color="var(--figure-grid)"    stop-opacity="0.16"/>
+    </linearGradient>
+  </defs>
 
-  <!-- ── Heading ──────────────────────────────────────────────── -->
-  <text x="200" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">
+  <!-- ── Titre ──────────────────────────────────────────── -->
+  <text x="210" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
     Pourquoi i = dq/dt ?
   </text>
 
-  <!-- ════════════════════════════════════════════════════════
-       LEFT PANEL — Wire cross-section with flowing charges
-       ════════════════════════════════════════════════════════ -->
-  <rect x="14" y="30" width="186" height="148" rx="5" fill="#EDEAE5"/>
+  <!-- ══════════════════════════════════════════════════════
+       PANNEAU GAUCHE — Fil en coupe avec charges
+       x=12..204, y=30..192
+       ══════════════════════════════════════════════════════ -->
+  <rect x="12" y="30" width="192" height="162" rx="7"
+        fill="url(#panel-grad-i)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- Wire tube (horizontal) — top and bottom edges -->
-  <line x1="30"  y1="76"  x2="196" y2="76"  stroke="#4A4A52" stroke-width="2"/>
-  <line x1="30"  y1="126" x2="196" y2="126" stroke="#4A4A52" stroke-width="2"/>
-  <!-- Left end cap -->
-  <line x1="30" y1="76" x2="30" y2="126" stroke="#4A4A52" stroke-width="2"/>
-  <!-- Small arrows showing continuation right -->
-  <text x="194" y="104" font-size="14" fill="#4A4A52">→</text>
+  <!-- Tube du fil (bords haut et bas) -->
+  <line x1="30"  y1="78"  x2="200" y2="78"
+        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="30"  y1="126" x2="200" y2="126"
+        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Extrémité gauche (bouchon) -->
+  <line x1="30" y1="78" x2="30" y2="126"
+        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Flèche continuation à droite -->
+  <text x="197" y="107" font-size="13" fill="var(--figure-ink)">→</text>
 
-  <!-- Cross-section measurement line (vertical dashed) at x=110 -->
-  <line x1="110" y1="66" x2="110" y2="136" stroke="#3E5C86" stroke-width="1.6" stroke-dasharray="5,3"/>
-  <!-- Cross-section label -->
-  <text x="110" y="62" text-anchor="middle" font-size="9" fill="#3E5C86">section S</text>
+  <!-- Section de mesure S (tirets verticaux à x=108) -->
+  <line x1="108" y1="67" x2="108" y2="137"
+        stroke="var(--figure-accent)" stroke-width="1.6"
+        stroke-dasharray="5,3" stroke-linecap="round"/>
+  <text x="108" y="63" text-anchor="middle"
+        font-size="9" font-weight="500" fill="var(--figure-accent)">section S</text>
 
-  <!-- Charge blobs (positive, moving right) — at various x positions -->
-  <!-- Group 1: past the cross-section (right side) — already through -->
-  <circle cx="136" cy="88"  r="7" fill="#3E5C86" fill-opacity="0.8"/>
-  <text x="136" y="92" text-anchor="middle" font-size="9" fill="#F5F3EF" font-weight="600">+</text>
-  <circle cx="162" cy="114" r="7" fill="#3E5C86" fill-opacity="0.8"/>
-  <text x="162" y="118" text-anchor="middle" font-size="9" fill="#F5F3EF" font-weight="600">+</text>
+  <!-- Charges + passées (droite de S — plus opaques, "déjà passées") -->
+  <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
+  <text x="138" y="94" text-anchor="middle" font-size="10"
+        fill="var(--figure-surface)" font-weight="700">+</text>
+  <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
+  <text x="164" y="118" text-anchor="middle" font-size="10"
+        fill="var(--figure-surface)" font-weight="700">+</text>
 
-  <!-- Group 2: approaching / crossing (left side) -->
-  <circle cx="80"  cy="100" r="7" fill="#3E5C86" fill-opacity="0.5"/>
-  <text x="80" y="104" text-anchor="middle" font-size="9" fill="#F5F3EF" font-weight="600">+</text>
-  <circle cx="55"  cy="86"  r="7" fill="#3E5C86" fill-opacity="0.35"/>
-  <text x="55" y="90" text-anchor="middle" font-size="9" fill="#F5F3EF" font-weight="600">+</text>
-  <circle cx="44"  cy="114" r="7" fill="#3E5C86" fill-opacity="0.25"/>
-  <text x="44" y="118" text-anchor="middle" font-size="9" fill="#F5F3EF" font-weight="600">+</text>
+  <!-- Charges + approchant (gauche de S — moins opaques) -->
+  <circle cx="80"  cy="102" r="7.5" fill="var(--figure-accent)" fill-opacity="0.52"/>
+  <text x="80" y="106" text-anchor="middle" font-size="10"
+        fill="var(--figure-surface)" font-weight="700">+</text>
+  <circle cx="56"  cy="87"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.34"/>
+  <text x="56" y="91" text-anchor="middle" font-size="10"
+        fill="var(--figure-surface)" font-weight="700">+</text>
+  <circle cx="44"  cy="116" r="7.5" fill="var(--figure-accent)" fill-opacity="0.22"/>
+  <text x="44" y="120" text-anchor="middle" font-size="10"
+        fill="var(--figure-surface)" font-weight="700">+</text>
 
-  <!-- Motion arrows on the charges -->
-  <line x1="88" y1="100" x2="100" y2="100" stroke="#3E5C86" stroke-width="1.4"/>
-  <polygon points="100,100 94,97 94,103" fill="#3E5C86"/>
-  <line x1="63" y1="86" x2="75" y2="86" stroke="#3E5C86" stroke-width="1.4"/>
-  <polygon points="75,86 69,83 69,89" fill="#3E5C86"/>
+  <!-- Petites flèches de mouvement sur les charges approchantes -->
+  <line x1="89" y1="102" x2="99" y2="102"
+        stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
+  <polygon points="99,102 92,98.5 92,105.5" fill="var(--figure-accent)"/>
+  <line x1="65" y1="87" x2="75" y2="87"
+        stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
+  <polygon points="75,87 68,83.5 68,90.5" fill="var(--figure-accent)"/>
 
-  <!-- i arrow overall (bulk current direction) -->
-  <line x1="34" y1="148" x2="190" y2="148" stroke="#3E5C86" stroke-width="2.2"/>
-  <polygon points="190,148 180,144 180,152" fill="#3E5C86"/>
-  <text x="112" y="164" text-anchor="middle" font-size="13" font-style="italic" fill="#3E5C86">i</text>
+  <!-- Flèche i globale (sens du courant) -->
+  <line x1="30" y1="148" x2="190" y2="148"
+        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="190,148 179,143.5 179,152.5" fill="var(--figure-accent)"/>
+  <!-- Label i directement sous la flèche -->
+  <text x="110" y="164" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-accent)">i</text>
 
-  <!-- "Δq charges pass S in Δt" annotation -->
-  <text x="107" y="176" text-anchor="middle" font-size="9.5" fill="#6B6B72">Δq charges passent S en Δt</text>
+  <!-- Caption -->
+  <text x="110" y="181" text-anchor="middle"
+        font-size="9.5" fill="var(--figure-ink-soft)">Δq charges passent S en Δt</text>
 
-  <!-- ════════════════════════════════════════════════════════
-       RIGHT PANEL — Time-rate relation i = dq/dt
-       ════════════════════════════════════════════════════════ -->
-  <rect x="210" y="30" width="176" height="148" rx="5" fill="#EDEAE5"/>
+  <!-- ══════════════════════════════════════════════════════
+       PANNEAU DROIT — Raisonnement limite
+       x=216..408, y=30..192
+       ══════════════════════════════════════════════════════ -->
+  <rect x="216" y="30" width="192" height="162" rx="7"
+        fill="url(#panel-grad-i)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- Relation derivation, step by step -->
-  <text x="298" y="58" text-anchor="middle" font-size="10.5" fill="#6B6B72">charge Δq en temps Δt :</text>
+  <!-- Étape 1 : définition du flux -->
+  <text x="312" y="58" text-anchor="middle"
+        font-size="10.5" fill="var(--figure-ink-soft)">charge Δq en temps Δt :</text>
 
   <!-- i = Δq/Δt -->
-  <text x="298" y="82" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">
-    i = Δq / Δt
-  </text>
+  <text x="312" y="83" text-anchor="middle"
+        font-size="14" font-style="italic" fill="var(--figure-ink)">i = Δq / Δt</text>
 
-  <!-- "à la limite Δt→0" -->
-  <text x="298" y="104" text-anchor="middle" font-size="9.5" fill="#6B6B72">à la limite Δt → 0 :</text>
+  <!-- Séparateur discret -->
+  <line x1="240" y1="96" x2="384" y2="96"
+        stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="4,4"/>
 
-  <!-- i = dq/dt (formula, larger, highlighted) -->
-  <rect x="232" y="112" width="132" height="32" rx="4" fill="#3E5C86" fill-opacity="0.12"/>
-  <text x="298" y="133" text-anchor="middle" font-size="14" font-style="italic" fill="#3E5C86">
-    i = dq/dt
-  </text>
+  <!-- Limite Δt→0 -->
+  <text x="312" y="114" text-anchor="middle"
+        font-size="10" fill="var(--figure-ink-soft)">à la limite Δt → 0 :</text>
 
-  <!-- Intuition lines -->
-  <text x="298" y="158" text-anchor="middle" font-size="9.5" fill="#6B6B72">i = vitesse d'écoulement</text>
-  <text x="298" y="171" text-anchor="middle" font-size="9.5" fill="#6B6B72">de la charge q</text>
+  <!-- Boîte formule -->
+  <rect x="238" y="120" width="148" height="34" rx="5"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="312" y="142" text-anchor="middle"
+        font-size="15" font-style="italic" fill="var(--figure-accent)">i = dq/dt</text>
 
-  <!-- Note: q = ∫i dt intentionally omitted (heavier than this register) -->
+  <!-- Interprétation -->
+  <text x="312" y="170" text-anchor="middle"
+        font-size="9.5" fill="var(--figure-ink-soft)">i = vitesse d'écoulement</text>
+  <text x="312" y="183" text-anchor="middle"
+        font-size="9.5" fill="var(--figure-ink-soft)">de la charge q</text>
 
 </svg>

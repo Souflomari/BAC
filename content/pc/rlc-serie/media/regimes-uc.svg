@@ -1,205 +1,271 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 414" width="620" height="414"
-     font-family="'Segoe UI', system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 432" width="640" height="432"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les trois régimes de u_C(t) — périodique, pseudo-périodique, apériodique">
+  <title>Courbes u_C(t) — les trois régimes</title>
   <!--
-    regimes-uc.svg — Les trois régimes de u_C(t), progressive 3-step reveal
-    step-1 : périodique seul      (R ≈ 0, sinusoïde parfaite)
-    step-2 : + pseudo-périodique  (R modérée, amplitude décroissante, T marqué)
-    step-3 : + apériodique        (R grande, retour monotone)
+    regimes-uc.svg — Trois régimes de u_C(t), révélation cumulative 3 étapes.
+    step-1 : périodique  (R ≈ 0 — sinusoïde parfaite)
+    step-2 : + pseudo-périodique  (amplitude décroissante, T marqué)
+    step-3 : + apériodique  (retour monotone)
 
-    Three EQUAL panels stacked top→bottom, each exactly 120px tall, 6px gap:
-      Panel 1 : y=34..154   axis_y=94   amplitude=32px
-      Panel 2 : y=160..280  axis_y=220  amplitude decays from 36px
-      Panel 3 : y=286..406  axis_y=338  monotone from U₀ at y=306
+    §0.4 : pas de formule d'amortissement, pas de formule de pseudo-période,
+           espacement des pics égaux à l'œil.
 
-    ViewBox: 620×414
-    Plot x range: 100..590 (490px), period = 120px → ~4 periods visible
+    Trois panneaux empilés verticalement, chacun 128px de haut, 8px d'écart :
+      Panneau 1 : y=42..170   axis_y=106  amplitude=34px
+      Panneau 2 : y=178..306  axis_y=242  amplitude décroissante depuis 36px
+      Panneau 3 : y=314..432  axis_y=370  monotone depuis U₀ à y=338
 
-    Renderer crops the viewBox height to show steps 1..N with no empty space
-    because each step-N group sits exactly in its own 120px band.
-
-    T bracket appears ONLY on pseudo-périodique panel (step-2).
-    T₀ bracket appears on périodique panel (step-1).
-
-    Palette: bg transparent, panel bg #EDEAE5, accent-dark #3E5C86,
-             accent-light #7E9CC8, text-primary #2A2A2E,
-             text-secondary #6B6B72, axis #8A8A92
+    Plage x du tracé : 104..604 (500px). Période = 125px → ~4 périodes visibles.
+    Couleurs de régime : var(--figure-regime-periodic/pseudo/aperiodic)
+    Fond des panneaux : var(--figure-surface) + stroke var(--figure-grid)
+    Axes : var(--figure-grid) ; labels : var(--figure-ink-soft)
   -->
 
-  <!-- ── Background: transparent (app surface shows through) ──── -->
-
-  <!-- ── Shared heading ─────────────────────────────────────────── -->
-  <text x="310" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">
+  <!-- Titre partagé -->
+  <text x="320" y="28" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
     Courbes u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3">(t) — les trois régimes</tspan>
   </text>
 
-  <!-- ════════════════════════════════════════════════════════
-       STEP 1 — Régime PÉRIODIQUE (R ≈ 0)
-       Panel band: y=34..154  (120px)  axis_y=94  amplitude=32px
-       peaks y=62, troughs y=126
-       ════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Régime PÉRIODIQUE  (R ≈ 0)
+       Panneau : y=42..170  axis_y=106  amplitude=34px
+       Pics : y=72, creux : y=140
+       ══════════════════════════════════════════════════════ -->
   <g id="step-1">
-    <!-- Panel background -->
-    <rect x="86" y="34" width="516" height="120" rx="5" fill="#EDEAE5"/>
+    <!-- Fond du panneau -->
+    <rect x="88" y="42" width="536" height="128" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
     <!-- Axes -->
-    <line x1="100" y1="94" x2="590" y2="94" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="590,94 580,89 580,99" fill="#8A8A92"/>
-    <line x1="100" y1="148" x2="100" y2="40" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="100,40 95,51 105,51" fill="#8A8A92"/>
-    <!-- Axis labels -->
-    <text x="595" y="98" font-size="11" fill="#6B6B72">t</text>
-    <text x="91" y="40" text-anchor="end" font-size="11" font-style="italic" fill="#6B6B72">u<tspan dy="3" font-size="8">C</tspan></text>
-    <text x="92" y="98" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <!-- U₀ tick -->
-    <line x1="96" y1="62" x2="104" y2="62" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="90" y="66" text-anchor="end" font-size="9.5" fill="#8A8A92">U₀</text>
+    <line x1="104" y1="106" x2="604" y2="106"
+          stroke="var(--figure-grid)" stroke-width="1.4"/>
+    <polygon points="604,106 592,101.5 592,110.5" fill="var(--figure-grid)"/>
+    <line x1="104" y1="162" x2="104" y2="48"
+          stroke="var(--figure-grid)" stroke-width="1.4"/>
+    <polygon points="104,48 99.5,59 108.5,59" fill="var(--figure-grid)"/>
 
-    <!-- Undamped sinusoid: amplitude=32, period=120px, axis_y=94 -->
+    <!-- Labels d'axes -->
+    <text x="610" y="110" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="96" y="48" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="96" y="110" text-anchor="end" font-size="10"
+          fill="var(--figure-grid)">0</text>
+
+    <!-- Repère U₀ -->
+    <line x1="100" y1="72" x2="108" y2="72"
+          stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <text x="94" y="76" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">U₀</text>
+
+    <!-- Sinusoïde parfaite — amplitude=34px, période=125px, axis_y=106 -->
+    <!-- pics y=72, creux y=140 -->
     <path d="
-      M100,94
-      C108,75 122,62 130,62
-      C138,62 152,75 160,94
-      C168,114 182,126 190,126
-      C198,126 212,114 220,94
-      C228,75 242,62 250,62
-      C258,62 272,75 280,94
-      C288,114 302,126 310,126
-      C318,126 332,114 340,94
-      C348,75 362,62 370,62
-      C378,62 392,75 400,94
-      C408,114 422,126 430,126
-      C438,126 452,114 460,94
-      C468,75 482,62 490,62
-      C498,62 512,75 520,94
-      C528,114 542,126 550,126
-      C558,126 572,114 580,94
-    " fill="none" stroke="#3E5C86" stroke-width="2.2"/>
+      M104,106
+      C113,83 128,72 141.5,72
+      C155,72 170,83 179,106
+      C188,129 203,140 216.5,140
+      C230,140 245,129 254,106
+      C263,83 278,72 291.5,72
+      C305,72 320,83 329,106
+      C338,129 353,140 366.5,140
+      C380,140 395,129 404,106
+      C413,83 428,72 441.5,72
+      C455,72 470,83 479,106
+      C488,129 503,140 516.5,140
+      C530,140 545,129 554,106
+      C563,83 578,72 591.5,72
+      C598,72 604,78 604,84
+    " fill="none"
+      stroke="var(--figure-regime-periodic)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Regime label chip -->
-    <rect x="430" y="40" width="168" height="20" rx="4" fill="#3E5C86" fill-opacity="0.12"/>
-    <text x="514" y="54" text-anchor="middle" font-size="11" font-weight="600" fill="#3E5C86">Périodique  (R ≈ 0)</text>
+    <!-- Chip de régime -->
+    <rect x="440" y="48" width="176" height="22" rx="5"
+          fill="var(--figure-regime-periodic)" fill-opacity="0.12"/>
+    <text x="528" y="63" text-anchor="middle"
+          font-size="11" font-weight="600"
+          fill="var(--figure-regime-periodic)">Périodique  (R ≈ 0)</text>
 
-    <!-- T₀ bracket between first two peaks: x=130 and x=250, at y=149 (inside panel bottom) -->
-    <line x1="130" y1="149" x2="250" y2="149" stroke="#3E5C86" stroke-width="1.5"/>
-    <line x1="130" y1="145" x2="130" y2="153" stroke="#3E5C86" stroke-width="1.5"/>
-    <line x1="250" y1="145" x2="250" y2="153" stroke="#3E5C86" stroke-width="1.5"/>
-    <text x="190" y="145" text-anchor="middle" font-size="11" font-style="italic" fill="#3E5C86">
-      T<tspan dy="4" font-size="8">0</tspan>
+    <!-- Accolade T₀ entre les deux premiers pics (x=141.5 et x=291.5), y=157 -->
+    <line x1="141.5" y1="153" x2="291.5" y2="153"
+          stroke="var(--figure-regime-periodic)" stroke-width="1.6"/>
+    <line x1="141.5" y1="148" x2="141.5" y2="158"
+          stroke="var(--figure-regime-periodic)" stroke-width="1.6"/>
+    <line x1="291.5" y1="148" x2="291.5" y2="158"
+          stroke="var(--figure-regime-periodic)" stroke-width="1.6"/>
+    <!-- Label T₀ -->
+    <text x="216.5" y="150" text-anchor="middle"
+          font-size="11" font-style="italic"
+          fill="var(--figure-regime-periodic)">T<tspan
+          dy="4" font-size="8">0</tspan>
     </text>
   </g><!-- /step-1 -->
 
-  <!-- ════════════════════════════════════════════════════════
-       STEP 2 — Régime PSEUDO-PÉRIODIQUE (R modérée)
-       Panel band: y=160..280  (120px)  axis_y=220
-       Peak amplitudes (above axis): 36,26,18,12,8,5 px
-       ════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Régime PSEUDO-PÉRIODIQUE  (R modérée)
+       Panneau : y=178..306  axis_y=242
+       Pics (au-dessus) y: 206, 218, 227, 233, 237, 239
+       Creux (en dessous) y: 270, 260, 253, 248, 245
+       Espacement des pics = 125px (idem périodique — §0.4)
+       ══════════════════════════════════════════════════════ -->
   <g id="step-2">
-    <!-- Panel background -->
-    <rect x="86" y="160" width="516" height="120" rx="5" fill="#EDEAE5"/>
+    <!-- Fond du panneau -->
+    <rect x="88" y="178" width="536" height="128" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
     <!-- Axes -->
-    <line x1="100" y1="220" x2="590" y2="220" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="590,220 580,215 580,225" fill="#8A8A92"/>
-    <line x1="100" y1="274" x2="100" y2="166" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="100,166 95,177 105,177" fill="#8A8A92"/>
-    <text x="595" y="224" font-size="11" fill="#6B6B72">t</text>
-    <text x="91" y="165" text-anchor="end" font-size="11" font-style="italic" fill="#6B6B72">u<tspan dy="3" font-size="8">C</tspan></text>
-    <text x="92" y="224" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <!-- U₀ tick (first peak = 36px above axis_y=220 → y=184) -->
-    <line x1="96" y1="184" x2="104" y2="184" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="90" y="188" text-anchor="end" font-size="9.5" fill="#8A8A92">U₀</text>
+    <line x1="104" y1="242" x2="604" y2="242"
+          stroke="var(--figure-grid)" stroke-width="1.4"/>
+    <polygon points="604,242 592,237.5 592,246.5" fill="var(--figure-grid)"/>
+    <line x1="104" y1="298" x2="104" y2="184"
+          stroke="var(--figure-grid)" stroke-width="1.4"/>
+    <polygon points="104,184 99.5,195 108.5,195" fill="var(--figure-grid)"/>
+    <text x="610" y="246" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="96" y="184" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="96" y="246" text-anchor="end" font-size="10"
+          fill="var(--figure-grid)">0</text>
+
+    <!-- Repère U₀ (premier pic = 36px au-dessus de 242 → y=206) -->
+    <line x1="100" y1="206" x2="108" y2="206"
+          stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <text x="94" y="210" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">U₀</text>
 
     <!--
-      Damped sinusoid — period 120px, amplitude decays each half-period.
-      axis_y=220; peaks y=184,194,202,208,212,215; troughs y=246,238,232,228,225
+      Sinusoïde amortie.
+      axis_y=242 ; pics au-dessus: 206 (−36), 218 (−24), 228 (−14), 234 (−8), 238 (−4)
+      creux en dessous: 270 (+28), 260 (+18), 253 (+11), 248 (+6), 245 (+3)
+      Espacement x des pics : 104, 229, 354, 479, 604 → pas de 125px (§0.4)
     -->
     <path d="
-      M100,220
-      C110,199 122,184 130,184
-      C138,184 150,199 160,220
-      C170,241 182,246 190,246
-      C198,246 210,235 220,220
-      C230,205 242,194 250,194
-      C258,194 270,205 280,220
-      C290,235 302,238 310,238
-      C318,238 330,230 340,220
-      C350,210 362,202 370,202
-      C378,202 390,210 400,220
-      C410,230 422,232 430,232
-      C438,232 450,227 460,220
-      C470,213 482,208 490,208
-      C498,208 510,213 520,220
-      C530,227 542,228 550,228
-      C558,228 570,225 580,220
-    " fill="none" stroke="#3E5C86" stroke-width="2.2"/>
+      M104,242
+      C115,216 128,206 141.5,206
+      C155,206 168,220 179,242
+      C190,264 203,270 216.5,270
+      C230,270 243,258 254,242
+      C265,226 278,218 291.5,218
+      C305,218 318,228 329,242
+      C340,256 353,261 366.5,261
+      C380,261 393,253 404,242
+      C415,231 428,228 441.5,228
+      C455,228 468,234 479,242
+      C490,250 503,252 516.5,252
+      C530,252 543,247 554,242
+      C565,237 578,235 591.5,235
+      C598,235 604,238 604,241
+    " fill="none"
+      stroke="var(--figure-regime-pseudo)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Decaying envelope (upper and lower, qualitative dashes) -->
-    <path d="M100,220 C200,174 400,199 580,217" fill="none" stroke="#7E9CC8" stroke-width="1.2" stroke-dasharray="5,4"/>
-    <path d="M100,220 C200,266 400,241 580,223" fill="none" stroke="#7E9CC8" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <!-- Enveloppe décroissante (haut et bas, tirets discrets) -->
+    <path d="M104,242 C220,194 420,228 604,240"
+          fill="none"
+          stroke="var(--figure-regime-pseudo)" stroke-width="1.2"
+          stroke-dasharray="6,4" stroke-linecap="round" fill-opacity="0"/>
+    <path d="M104,242 C220,290 420,256 604,244"
+          fill="none"
+          stroke="var(--figure-regime-pseudo)" stroke-width="1.2"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
 
-    <!-- Regime label -->
-    <rect x="388" y="166" width="210" height="20" rx="4" fill="#3E5C86" fill-opacity="0.12"/>
-    <text x="493" y="180" text-anchor="middle" font-size="11" font-weight="600" fill="#3E5C86">Pseudo-périodique</text>
+    <!-- Chip de régime -->
+    <rect x="392" y="184" width="220" height="22" rx="5"
+          fill="var(--figure-regime-pseudo)" fill-opacity="0.12"/>
+    <text x="502" y="199" text-anchor="middle"
+          font-size="11" font-weight="600"
+          fill="var(--figure-regime-pseudo)">Pseudo-périodique  (R modérée)</text>
 
     <!--
-      T bracket — ONLY on pseudo-périodique panel.
-      Between first two peaks: x=130 (y=184) and x=250 (y=194).
-      Bracket line at y=272 (inside panel bottom y=280).
-      Vertical dashed drops from peaks down to bracket.
+      Accolade T entre les deux premiers pics (x=141.5 et x=291.5), y=294.
+      Drops verticaux en tirets depuis les pics.
     -->
-    <line x1="130" y1="184" x2="130" y2="271" stroke="#7E9CC8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="250" y1="194" x2="250" y2="271" stroke="#7E9CC8" stroke-width="1" stroke-dasharray="3,3"/>
-    <!-- Bracket -->
-    <line x1="130" y1="273" x2="250" y2="273" stroke="#3E5C86" stroke-width="2"/>
-    <line x1="130" y1="269" x2="130" y2="277" stroke="#3E5C86" stroke-width="2"/>
-    <line x1="250" y1="269" x2="250" y2="277" stroke="#3E5C86" stroke-width="2"/>
-    <!-- T label with accent background -->
-    <rect x="179" y="266" width="22" height="15" rx="3" fill="#3E5C86"/>
-    <text x="190" y="277" text-anchor="middle" font-size="11" font-style="italic" font-weight="600" fill="#F5F3EF">T</text>
-    <!-- T ≈ T₀ note: inside panel -->
-    <text x="285" y="277" font-size="9.5" fill="#6B6B72">
-      (T ≈ T<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3"> pour faible amortissement)</tspan>
+    <line x1="141.5" y1="206" x2="141.5" y2="291"
+          stroke="var(--figure-regime-pseudo)" stroke-width="1"
+          stroke-dasharray="3,3" stroke-linecap="round"/>
+    <line x1="291.5" y1="218" x2="291.5" y2="291"
+          stroke="var(--figure-regime-pseudo)" stroke-width="1"
+          stroke-dasharray="3,3" stroke-linecap="round"/>
+    <!-- Barre de l'accolade -->
+    <line x1="141.5" y1="293" x2="291.5" y2="293"
+          stroke="var(--figure-regime-pseudo)" stroke-width="2"/>
+    <line x1="141.5" y1="288" x2="141.5" y2="298"
+          stroke="var(--figure-regime-pseudo)" stroke-width="2"/>
+    <line x1="291.5" y1="288" x2="291.5" y2="298"
+          stroke="var(--figure-regime-pseudo)" stroke-width="2"/>
+    <!-- Pastille T avec fond accent -->
+    <rect x="203" y="285" width="26" height="17" rx="4"
+          fill="var(--figure-regime-pseudo)"/>
+    <text x="216" y="297" text-anchor="middle"
+          font-size="11" font-style="italic" font-weight="600"
+          fill="var(--figure-surface)">T</text>
+    <!-- Note T ≈ T₀ -->
+    <text x="332" y="298" font-size="9.5"
+          fill="var(--figure-ink-soft)">(T ≈ T<tspan
+          dy="3" font-size="7.5">0</tspan><tspan
+          dy="-3"> si faible amortissement)</tspan>
     </text>
   </g><!-- /step-2 -->
 
-  <!-- ════════════════════════════════════════════════════════
-       STEP 3 — Régime APÉRIODIQUE (R grande)
-       Panel band: y=286..406  (120px)  axis_y=338
-       U₀ at y=306, monotone decay asymptoting to y=338
-       ════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Régime APÉRIODIQUE  (R grande)
+       Panneau : y=314..432  axis_y=370
+       U₀ à y=334, retour monotone vers 370
+       ══════════════════════════════════════════════════════ -->
   <g id="step-3">
-    <!-- Panel background -->
-    <rect x="86" y="286" width="516" height="120" rx="5" fill="#EDEAE5"/>
+    <!-- Fond du panneau -->
+    <rect x="88" y="314" width="536" height="118" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
     <!-- Axes -->
-    <line x1="100" y1="338" x2="590" y2="338" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="590,338 580,333 580,343" fill="#8A8A92"/>
-    <line x1="100" y1="396" x2="100" y2="292" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="100,292 95,303 105,303" fill="#8A8A92"/>
-    <text x="595" y="342" font-size="11" fill="#6B6B72">t</text>
-    <text x="91" y="291" text-anchor="end" font-size="11" font-style="italic" fill="#6B6B72">u<tspan dy="3" font-size="8">C</tspan></text>
-    <text x="92" y="342" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <!-- U₀ tick -->
-    <line x1="96" y1="306" x2="104" y2="306" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="90" y="310" text-anchor="end" font-size="9.5" fill="#8A8A92">U₀</text>
+    <line x1="104" y1="370" x2="604" y2="370"
+          stroke="var(--figure-grid)" stroke-width="1.4"/>
+    <polygon points="604,370 592,365.5 592,374.5" fill="var(--figure-grid)"/>
+    <line x1="104" y1="424" x2="104" y2="320"
+          stroke="var(--figure-grid)" stroke-width="1.4"/>
+    <polygon points="104,320 99.5,331 108.5,331" fill="var(--figure-grid)"/>
+    <text x="610" y="374" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="96" y="320" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="96" y="374" text-anchor="end" font-size="10"
+          fill="var(--figure-grid)">0</text>
 
-    <!-- Monotonic exponential-style decay from (100,306) asymptoting to y=338 -->
+    <!-- Repère U₀ -->
+    <line x1="100" y1="334" x2="108" y2="334"
+          stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <text x="94" y="338" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">U₀</text>
+
+    <!-- Décroissance monotone exponentielle (commence en (104,334), asymptote y=370) -->
     <path d="
-      M100,306
-      C122,306 140,315 165,323
-      C195,329 225,334 265,336
-      C318,337.5 380,338 450,338
-      C505,338.2 548,338.4 580,338.5
-    " fill="none" stroke="#3E5C86" stroke-width="2.2"/>
+      M104,334
+      C128,334 148,343 176,352
+      C210,360 246,366 290,368
+      C350,369.5 420,370 500,370.1
+      C555,370.2 588,370.3 604,370.3
+    " fill="none"
+      stroke="var(--figure-regime-aperiodic)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Regime label -->
-    <rect x="380" y="292" width="215" height="20" rx="4" fill="#3E5C86" fill-opacity="0.12"/>
-    <text x="488" y="306" text-anchor="middle" font-size="11" font-weight="600" fill="#3E5C86">Apériodique  (R grande)</text>
+    <!-- Chip de régime -->
+    <rect x="384" y="320" width="228" height="22" rx="5"
+          fill="var(--figure-regime-aperiodic)" fill-opacity="0.12"/>
+    <text x="498" y="335" text-anchor="middle"
+          font-size="11" font-weight="600"
+          fill="var(--figure-regime-aperiodic)">Apériodique  (R grande)</text>
 
-    <!-- Structural annotation inside panel (labels the curve behaviour) -->
-    <text x="290" y="362" text-anchor="middle" font-size="10" fill="#6B6B72" font-style="italic">
-      retour monotone vers 0, sans oscillation
-    </text>
+    <!-- Annotation comportement -->
+    <text x="300" y="396" text-anchor="middle"
+          font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">retour monotone vers 0, sans oscillation</text>
   </g><!-- /step-3 -->
 
 </svg>
