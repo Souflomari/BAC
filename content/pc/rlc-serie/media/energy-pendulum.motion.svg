@@ -1,362 +1,415 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520" width="680" height="520"
-     font-family="'Segoe UI', system-ui, sans-serif"
-     aria-label="Échanges d'énergie entre le condensateur et la bobine, en antiphase"
-     data-motion-steps="5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Échanges d'énergie entre le condensateur et la bobine, en antiphase">
 
   <!--
-    M-1 energy-pendulum.motion.svg  (v2 — click-to-advance)
+    energy-pendulum.motion.svg  (v4 — replace layout fix)
     ─────────────────────────────────────────────────────────────────────────
-    STEP CONTRACT (renderer drives visibility)
-      step-1  E_C full / E_L empty  (t = 0, initial state)
-      step-2  mid-transfer arrow C → L
-      step-3  E_L full / E_C empty  (t = T/4)
-      step-4  Total-energy flat line appears (ideal, conserved)
-      step-5  Damped panel: envelope shrinks qualitatively (effet Joule)
+    Engine: MotionStage.tsx (GSAP fill verb for energy bars).
 
-    CUMULATIVE: showing step N means steps 1..N are all visible.
-    The renderer sets display:none on steps > current; reveals on click.
+    LAYOUT MODEL: replace
+      Slots:
+        circuit-state-slot  — one label inside the left panel at a time.
+                               beat-0: circuit-state-0 (visible on load)
+                               beat-1: circuit-state-1 replaces circuit-state-0
+                               beat-2: circuit-state-2 replaces circuit-state-1
+        annot-slot          — one annotation row at a time (bottom panel).
+                               beat-0: annot-0 (visible on load)
+                               beat-1: annot-1 replaces annot-0
+                               beat-2: annot-2 replaces annot-1
+        ec-label-slot       — value label on E_C bar.
+                               beat-0: label-ec-max (visible on load)
+                               beat-1: label-ec-zero replaces label-ec-max
+        el-label-slot       — value label on E_L bar.
+                               beat-0: label-el-zero (visible on load)
+                               beat-1: label-el-max replaces label-el-zero
 
-    ENTRANCE TRANSITION
-      Each step group has opacity:0 by default and transitions to opacity:1
-      when display switches from none to block (the renderer adds the
-      .step-visible class, which sets opacity:1 with a 350ms ease-out).
-      The autoplay timeline is REMOVED; no animation fires on page load.
+    BEATS
+      beat-0 (settled on load): t=0 — E_C bar FULL, E_L bar EMPTY.
+             circuit-state-0 and annot-0 visible. label-ec-max and
+             label-el-zero visible.
+      beat-1 (Suivant):  t=T/4 — antiphase transfer.
+             bar-ec-cover grows DOWN (fill from:"up") visually empties E_C.
+             bar-el grows UP (fill from:"down" = default bottom) fills E_L.
+             Replace: circuit-state-0 exits / circuit-state-1 enters.
+             Replace: annot-0 exits / annot-1 enters.
+             Replace: label-ec-max exits / label-ec-zero enters.
+             Replace: label-el-zero exits / label-el-max enters.
+      beat-2 (Suivant): Conservation insight.
+             Replace: circuit-state-1 exits / circuit-state-2 enters.
+             Replace: annot-1 exits / annot-2 enters.
+             etotal-group fades in.
 
-    REDUCED-MOTION
-      @media (prefers-reduced-motion: reduce): all step groups are
-      display:block and opacity:1 — the full final state is shown statically.
-      No transition runs.
+    BAR MECHANICS (E_C "draining"):
+      #bar-ec        — always present, full height, var(--figure-energy-C).
+                       Never animated — chrome, always visible.
+      #bar-ec-cover  — same-sized rect in var(--figure-surface), painted ON TOP
+                       of bar-ec (later in SVG order). At beat-0: scaleY=0 via
+                       authored transform + setPre. In beat-1: scaleY grows 0→1
+                       from top (from:"up"), covering bar-ec — visually "empties".
+                       label-ec-max is painted BEFORE the cover in SVG order, so
+                       the cover also paints over it (and the replace exit fades it
+                       via autoAlpha for robustness). label-ec-zero is painted AFTER
+                       the cover, so it is always on top.
 
-    BOUNDARY (§0.4)
-      Damped envelope: qualitative only. No e^{-αt} formula, no coefficient.
+    BOUNDARY §0.4: free LC exchange only. No damping, no e^{-αt}, no coefficient.
+    PALETTE: var(--figure-energy-C) / var(--figure-energy-L) for bars.
 
-    PALETTE
-      Background  #F5F3EF    Panel bg   #EDEAE5
-      EC curve    #3E5C86    EL curve   #7E9CC8
-      Total line  #5A7A4A    Text       #2A2A2E
-      Muted       #8A8A92    Secondary  #6B6B72
-      Joule tint  #C06040    Heat fill  #D4785A @8%
+    NO-FLASH CONTRACT:
+      Elements entering at beat i≥1 are authored opacity="0".
+      Beat-0 elements are authored visible.
+      setPre is idempotent with this.
   -->
 
-  <defs>
-    <style>
-      /* ── Step entrance: elements fade in when their step group is shown ── */
-      /* The renderer removes display:none and adds .step-visible class.      */
-      /* We use a CSS transition on opacity so the entrance is gentle (350ms). */
-      [id^="step-"] {
-        /* Groups start hidden; renderer shows them by removing display:none */
-      }
-      .step-enter {
-        opacity: 0;
-        transition: opacity 350ms ease-out;
-      }
-      .step-visible .step-enter {
-        opacity: 1;
-      }
+  <!-- ── Background ────────────────────────────────────────────────────── -->
+  <rect width="680" height="520" rx="8" fill="var(--figure-surface)"/>
 
-      /* Curves: draw-in via stroke-dashoffset transition when step shown.    */
-      /* The renderer adds .step-visible to the parent step group.            */
-      .curve-enter {
-        transition: stroke-dashoffset 380ms ease-out, opacity 350ms ease-out;
-        opacity: 0;
-      }
-      .step-visible .curve-enter {
-        opacity: 1;
-        stroke-dashoffset: 0 !important;
-      }
-
-      /* ── Reduced-motion: show all steps fully, no transition ───────────── */
-      @media (prefers-reduced-motion: reduce) {
-        [id^="step-"] {
-          display: block !important;
-          opacity: 1 !important;
-        }
-        .step-enter {
-          opacity: 1 !important;
-          transition: none !important;
-        }
-        .curve-enter {
-          opacity: 1 !important;
-          stroke-dashoffset: 0 !important;
-          transition: none !important;
-        }
-      }
-    </style>
-  </defs>
-
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- BACKGROUND + CHROME (always visible, not part of any step)           -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <rect width="680" height="520" rx="8" fill="#F5F3EF"/>
-
-  <text x="340" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">
-    Échanges d'énergie dans le circuit RLC
+  <!-- Title -->
+  <text x="340" y="26" text-anchor="middle"
+        font-size="13" font-weight="600" fill="var(--figure-ink)">
+    Échanges d'énergie dans le circuit LC
   </text>
-  <text x="340" y="44" text-anchor="middle" font-size="10.5" fill="#8A8A92">
-    Cas idéal (R ≈ 0)  →  puis cas amorti (R ≠ 0, qualitatif)
+  <text x="340" y="44" text-anchor="middle"
+        font-size="10.5" fill="var(--figure-ink-soft)">
+    Cas idéal (R ≈ 0) — condensateur et bobine en antiphase
   </text>
 
-  <!-- Shared legend (always visible) -->
-  <line x1="68"  y1="478" x2="98"  y2="478" stroke="#3E5C86" stroke-width="2.5"/>
-  <text x="103" y="482" font-size="10.5" fill="#3E5C86">E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="#2A2A2E"> = ½q²/C  (condensateur)</tspan></text>
 
-  <line x1="310" y1="478" x2="340" y2="478" stroke="#7E9CC8" stroke-width="2.5"/>
-  <text x="345" y="482" font-size="10.5" fill="#7E9CC8">E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="#2A2A2E"> = ½Li²  (bobine)</tspan></text>
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LEFT PANEL — Circuit state (always visible chrome)
+       Shows the LC loop with state indicators.
+       ══════════════════════════════════════════════════════════════════════ -->
 
-  <line x1="520" y1="478" x2="550" y2="478" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
-  <text x="555" y="482" font-size="10.5" fill="#5A7A4A">E total</text>
+  <rect x="32" y="56" width="296" height="278" rx="6"
+        fill="var(--figure-grid)" opacity="0.22"/>
 
-  <text x="340" y="500" text-anchor="middle" font-size="9" fill="#8A8A92" font-style="italic">
-    Amortissement représenté qualitativement — aucun coefficient numérique
+  <!-- Panel label -->
+  <text x="180" y="78" text-anchor="middle"
+        font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Circuit LC (R ≈ 0)
   </text>
 
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- PASS 1 PANEL SHELL (axes + static labels — always visible once       -->
-  <!-- step-1 reveals; we include it inside step-1)                         -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- Simple LC loop schematic — always visible -->
+  <!-- Top wire -->
+  <line x1="80" y1="130" x2="280" y2="130"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Bottom wire -->
+  <line x1="80" y1="270" x2="280" y2="270"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Left wire (capacitor side) -->
+  <line x1="80" y1="130" x2="80" y2="185"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="80" y1="215" x2="80" y2="270"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Right wire (inductor side) -->
+  <line x1="280" y1="130" x2="280" y2="240"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="280" y1="270" x2="280" y2="270"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
 
-  <!-- ════════════════════════════════════════════
-       STEP 1 — E_C full / E_L empty (t = 0)
-       Shows: ideal panel background, axes, E_C
-       curve at maximum, E_L curve at zero (flat
-       on the axis), t=0 marker highlighted.
-       ════════════════════════════════════════════ -->
-  <g id="step-1" class="step-visible">
-    <!-- Panel bg -->
-    <rect x="38" y="54" width="296" height="235" rx="6" fill="#EDEAE5"/>
+  <!-- Capacitor symbol (left) -->
+  <line x1="55" y1="185" x2="105" y2="185"
+        stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="55" y1="215" x2="105" y2="215"
+        stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <text x="48" y="204" text-anchor="middle"
+        font-size="14" font-style="italic" font-weight="600"
+        fill="var(--figure-energy-C)">C</text>
 
-    <!-- Panel header -->
-    <text x="186" y="75" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas idéal  (R ≈ 0)</text>
+  <!-- Inductor symbol (bottom, coil arcs) -->
+  <path d="M140,270 a12,12 0 0,0 24,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M164,270 a12,12 0 0,0 24,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M188,270 a12,12 0 0,0 24,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="215" y="285" font-size="14" font-style="italic" font-weight="600"
+        fill="var(--figure-energy-L)">L</text>
 
-    <!-- Badge -->
-    <rect x="44" y="60" width="46" height="16" rx="3" fill="#3E5C86" opacity="0.15"/>
-    <text x="67" y="72" text-anchor="middle" font-size="9.5" font-weight="600" fill="#3E5C86">Passe 1</text>
+  <!-- Current arrow on top wire -->
+  <line x1="155" y1="130" x2="195" y2="130"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <polygon points="195,130 183,125 183,135" fill="var(--figure-ink-soft)"/>
+  <text x="175" y="120" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink-soft)">i</text>
 
-    <!-- Axes -->
-    <line x1="90" y1="260" x2="316" y2="260" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="316,260 305,255 305,265" fill="#8A8A92"/>
-    <line x1="90" y1="260" x2="90" y2="98" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="90,98 85,109 95,109" fill="#8A8A92"/>
-    <text x="320" y="264" font-size="11" fill="#6B6B72">t</text>
-    <text x="83" y="96" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
-    <text x="83" y="263" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <line x1="86" y1="132" x2="94" y2="132" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="82" y="138" text-anchor="end" font-size="9" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
+  <!-- Corner nodes -->
+  <circle cx="80"  cy="130" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="280" cy="130" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="80"  cy="270" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="280" cy="270" r="3" fill="var(--figure-ink-soft)"/>
 
-    <!-- Key instant markers -->
-    <line x1="90"  y1="132" x2="90"  y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="140" y1="132" x2="140" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="190" y1="132" x2="190" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="240" y1="132" x2="240" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+  <!--
+    CIRCUIT-STATE SLOT — exactly ONE group visible at a time.
+    beat-0: circuit-state-0 visible (no opacity attr = 1).
+    beat-1: circuit-state-1 enters (replace: circuit-state-0 exits).
+    beat-2: circuit-state-2 enters (replace: circuit-state-1 exits).
+    All positioned at the same y-band inside the left panel.
+  -->
 
-    <!-- x-axis labels -->
-    <circle cx="90"  cy="260" r="2.5" fill="#3E5C86"/>
-    <text x="90"  y="275" text-anchor="middle" font-size="8.5" fill="#3E5C86">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> max</tspan></text>
-    <text x="90"  y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i = 0</text>
-
-    <circle cx="140" cy="260" r="2.5" fill="#7E9CC8"/>
-    <text x="140" y="275" text-anchor="middle" font-size="8.5" fill="#7E9CC8">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> = 0</tspan></text>
-    <text x="140" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i max</text>
-
-    <circle cx="190" cy="260" r="2.5" fill="#3E5C86"/>
-    <text x="190" y="275" text-anchor="middle" font-size="8.5" fill="#3E5C86">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> min</tspan></text>
-    <text x="190" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i = 0</text>
-
-    <circle cx="240" cy="260" r="2.5" fill="#7E9CC8"/>
-    <text x="240" y="275" text-anchor="middle" font-size="8.5" fill="#7E9CC8">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> = 0</tspan></text>
-    <text x="240" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i max</text>
-
-    <!-- T₀ bracket -->
-    <line x1="90"  y1="250" x2="190" y2="250" stroke="#8A8A92" stroke-width="1.2"/>
-    <line x1="90"  y1="246" x2="90"  y2="254" stroke="#8A8A92" stroke-width="1.2"/>
-    <line x1="190" y1="246" x2="190" y2="254" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="140" y="248" text-anchor="middle" font-size="10" font-style="italic" fill="#6B6B72">T<tspan dy="3" font-size="7.5">0</tspan></text>
-
-    <!-- EC curve (ideal) — full curve, dash-reveal entrance -->
-    <path class="curve-enter"
-      style="stroke-dasharray:505 505; stroke-dashoffset:505;"
-      d="M90,132 C105,132 120,260 140,260 C160,260 175,132 190,132
-         C205,132 220,260 240,260 C260,260 275,132 290,132 C300,132 310,196 314,196"
-      fill="none" stroke="#3E5C86" stroke-width="2.5" stroke-linejoin="round"/>
-
-    <!-- EC label -->
-    <text class="step-enter" x="96" y="125" font-size="11" font-style="italic" fill="#3E5C86">
-      E<tspan dy="4" font-size="8">C</tspan><tspan dy="-4" font-size="9.5"> = ½q²/C</tspan>
+  <!-- State indicator: beat-0 label (condensateur chargé) — visible on load -->
+  <g id="circuit-state-0">
+    <rect x="92" y="150" width="176" height="50" rx="5"
+          fill="var(--figure-energy-C)" opacity="0.12"/>
+    <text x="180" y="169" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-energy-C)">
+      t = 0
     </text>
+    <text x="180" y="184" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-energy-C)">
+      condensateur chargé à U₀
+    </text>
+    <text x="180" y="197" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">courant i = 0</text>
+  </g>
 
-    <!-- State annotation for step 1 -->
-    <text class="step-enter" x="186" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">
-      t = 0 : E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = 0</tspan>
+  <!-- State indicator: beat-1 — authored opacity="0" (pre-state for replace enter) -->
+  <g id="circuit-state-1" opacity="0">
+    <rect x="92" y="150" width="176" height="50" rx="5"
+          fill="var(--figure-energy-L)" opacity="0.12"/>
+    <text x="180" y="169" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-energy-L)">
+      t = T/4
+    </text>
+    <text x="180" y="184" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-energy-L)">
+      bobine pleine — condensateur vide
+    </text>
+    <text x="180" y="197" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">courant i = i<tspan dy="3" font-size="7">max</tspan></text>
+  </g>
+
+  <!-- State indicator: beat-2 — authored opacity="0" (pre-state for replace enter) -->
+  <g id="circuit-state-2" opacity="0">
+    <rect x="92" y="150" width="176" height="50" rx="5"
+          fill="var(--figure-ink-soft)" opacity="0.10"/>
+    <text x="180" y="172" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-ink)">
+      Énergie conservée
+    </text>
+    <text x="180" y="190" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">
+      E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7">L</tspan><tspan dy="-3"> = constante</tspan>
     </text>
   </g>
 
-  <!-- ════════════════════════════════════════════
-       STEP 2 — Mid-transfer: arrow C → L
-       Adds: transfer arrow, E_L curve starting
-       to rise (partial), mid-point marker.
-       ════════════════════════════════════════════ -->
-  <g id="step-2" style="display:none">
-    <!-- Transfer arrow (C → L) -->
-    <g class="step-enter">
-      <defs>
-        <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
-          <polygon points="0,0 8,3 0,6" fill="#7E9CC8"/>
-        </marker>
-      </defs>
-      <!-- Curved arrow from capacitor region toward inductor region -->
-      <path d="M115,196 Q186,310 255,196"
-            fill="none" stroke="#7E9CC8" stroke-width="2"
-            stroke-dasharray="6,3"
-            marker-end="url(#arr-blue)"/>
-      <text x="186" y="318" text-anchor="middle" font-size="10" font-weight="600" fill="#7E9CC8">
-        transfert C → L
-      </text>
-    </g>
 
-    <!-- Halfway state annotation -->
-    <text class="step-enter" x="186" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#6B6B72">
-      t = T/4 : E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> et E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> s'échangent</tspan>
+  <!-- ══════════════════════════════════════════════════════════════════════
+       RIGHT PANEL — Energy bars
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="362" y="56" width="286" height="278" rx="6"
+        fill="var(--figure-grid)" opacity="0.22"/>
+
+  <text x="505" y="78" text-anchor="middle"
+        font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Réserves d'énergie
+  </text>
+
+  <!-- E_max reference line + label -->
+  <line x1="378" y1="108" x2="632" y2="108"
+        stroke="var(--figure-ink-soft)" stroke-width="1"
+        stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="638" y="112" font-size="9" fill="var(--figure-ink-soft)">E<tspan dy="3" font-size="7">max</tspan></text>
+
+  <!-- ── E_C bar column ────────────────────────────────────────────────── -->
+  <!-- Bar container outline -->
+  <rect x="398" y="108" width="100" height="190" rx="5"
+        fill="none"
+        stroke="var(--figure-energy-C)"
+        stroke-width="1.5"
+        opacity="0.30"/>
+
+  <!-- Bar fill — full at beat-0.
+       No tween here → setPre never touches this rect.
+       Chrome: visible at beat-0 and always underneath. -->
+  <rect id="bar-ec"
+        x="398" y="108" width="100" height="190" rx="5"
+        fill="var(--figure-energy-C)"
+        opacity="0.72"/>
+
+  <!--
+    EC-LABEL SLOT — exactly ONE label visible at a time.
+    beat-0: label-ec-max ("MAX") visible, painted BEFORE the cover so the
+            cover can also hide it visually once it grows.
+            The replace exit via autoAlpha is the authoritative hide.
+    beat-1: label-ec-zero ("0") enters, replacing label-ec-max.
+            Painted AFTER the cover so it is always on top of it.
+  -->
+
+  <!-- "MAX" label — visible at beat-0. Painted before bar-ec-cover so cover
+       can paint on top of it. Replace exit at beat-1 sets autoAlpha:0. -->
+  <text id="label-ec-max" x="448" y="210" text-anchor="middle"
+        font-size="13" font-weight="600"
+        fill="var(--figure-surface)">MAX</text>
+
+  <!-- Cover rect — grows from top in beat-1, covering bar-ec AND label-ec-max.
+       Positioned AFTER them in SVG order so it paints on top.
+       Has a fill tween with from:"up" → setPre sets scaleY:0.
+       Authored with transform="scale(1,0)" so no-JS fallback also hides it. -->
+  <rect id="bar-ec-cover"
+        x="398" y="108" width="100" height="190" rx="5"
+        fill="var(--figure-surface)"
+        opacity="1"
+        transform="scale(1,0)"
+        style="transform-origin: 50% 0%; transform-box: fill-box;"/>
+
+  <!-- "0" label — appears AFTER bar-ec-cover in SVG order, so it paints
+       on top of the cover. Fades in at beat-1 via replace enter. -->
+  <text id="label-ec-zero" x="448" y="210" text-anchor="middle"
+        font-size="13" font-weight="600"
+        fill="var(--figure-energy-C)" opacity="0">0</text>
+
+  <text x="448" y="316" text-anchor="middle"
+        font-size="11" font-style="italic"
+        fill="var(--figure-energy-C)">
+    E<tspan dy="3" font-size="8">C</tspan>
+  </text>
+  <text x="448" y="330" text-anchor="middle"
+        font-size="9" fill="var(--figure-ink-soft)">condensateur</text>
+
+  <!-- ── E_L bar column ────────────────────────────────────────────────── -->
+  <!-- Bar container outline -->
+  <rect x="520" y="108" width="100" height="190" rx="5"
+        fill="none"
+        stroke="var(--figure-energy-L)"
+        stroke-width="1.5"
+        opacity="0.30"/>
+
+  <!-- Bar fill — empty at beat-0, filled in beat-1.
+       Has a fill tween → engine setPre sets scaleY:0.
+       Authored collapsed so no-JS fallback shows empty bar. -->
+  <rect id="bar-el"
+        x="520" y="108" width="100" height="190" rx="5"
+        fill="var(--figure-energy-L)"
+        opacity="0.72"
+        transform="scale(1,0)"
+        style="transform-origin: 50% 100%; transform-box: fill-box;"/>
+
+  <!--
+    EL-LABEL SLOT — exactly ONE label visible at a time.
+    beat-0: label-el-zero ("0") visible at beat-0.
+            Replace exit at beat-1 fades it out via autoAlpha.
+    beat-1: label-el-max ("MAX") enters, replacing label-el-zero.
+            fill="var(--figure-surface)" — sits on top of the filled bar.
+  -->
+
+  <!-- "0" shown at beat-0 (above empty bar) — replace exits at beat-1 -->
+  <text id="label-el-zero" x="570" y="210" text-anchor="middle"
+        font-size="13" font-weight="600"
+        fill="var(--figure-energy-L)" opacity="0.5">0</text>
+
+  <!-- "MAX" shown in beat-1 (authored opacity=0, enters via replace) -->
+  <text id="label-el-max" x="570" y="210" text-anchor="middle"
+        font-size="13" font-weight="600"
+        fill="var(--figure-surface)" opacity="0">MAX</text>
+
+  <text x="570" y="316" text-anchor="middle"
+        font-size="11" font-style="italic"
+        fill="var(--figure-energy-L)">
+    E<tspan dy="3" font-size="8">L</tspan>
+  </text>
+  <text x="570" y="330" text-anchor="middle"
+        font-size="9" fill="var(--figure-ink-soft)">bobine</text>
+
+  <!-- Total energy horizontal marker — fades in at beat-2 -->
+  <g id="etotal-group" opacity="0">
+    <line x1="378" y1="108" x2="632" y2="108"
+          stroke="var(--figure-ink-soft)"
+          stroke-width="2"
+          stroke-dasharray="8,4"/>
+    <rect x="434" y="86" width="140" height="20" rx="4"
+          fill="var(--figure-ink-soft)" opacity="0.10"/>
+    <text x="504" y="100" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      E total = constante
     </text>
   </g>
 
-  <!-- ════════════════════════════════════════════
-       STEP 3 — E_L full / E_C empty (t = T/4)
-       Adds: E_L curve (full), updated state label.
-       ════════════════════════════════════════════ -->
-  <g id="step-3" style="display:none">
-    <!-- EL curve (ideal) -->
-    <path class="curve-enter"
-      style="stroke-dasharray:505 505; stroke-dashoffset:505;"
-      d="M90,260 C110,260 125,132 140,132 C155,132 170,260 190,260
-         C210,260 225,132 240,132 C255,132 270,260 290,260 C300,260 310,196 314,196"
-      fill="none" stroke="#7E9CC8" stroke-width="2.5" stroke-linejoin="round"/>
 
-    <text class="step-enter" x="146" y="125" font-size="11" font-style="italic" fill="#7E9CC8">
-      E<tspan dy="4" font-size="8">L</tspan><tspan dy="-4" font-size="9.5"> = ½Li²</tspan>
+  <!-- ══════════════════════════════════════════════════════════════════════
+       ANNOTATION SLOT — exactly ONE annotation group visible at a time.
+       All groups occupy the same y-band (y=344–432). Replace mechanism
+       ensures only the current beat's group is visible.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="32" y="344" width="616" height="88" rx="6"
+        fill="var(--figure-grid)" opacity="0.16"/>
+
+  <!-- beat-0 annotation (visible on load — no opacity attr) -->
+  <g id="annot-0">
+    <text x="340" y="368" text-anchor="middle"
+          font-size="12" font-weight="600" fill="var(--figure-energy-C)">
+      t = 0 : E<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8.5">max</tspan><tspan dy="-3">,   E</tspan><tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = 0</tspan>
     </text>
-
-    <text class="step-enter" x="186" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#7E9CC8">
-      t = T/4 : E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = 0</tspan>
+    <text x="340" y="386" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      Condensateur chargé à U₀ — courant nul, bobine ne stocke rien
     </text>
-  </g>
-
-  <!-- ════════════════════════════════════════════
-       STEP 4 — Total energy flat line (ideal)
-       Adds: E_total dashed line + label.
-       ════════════════════════════════════════════ -->
-  <g id="step-4" style="display:none">
-    <!-- Total flat line -->
-    <line class="step-enter"
-      x1="90" y1="132" x2="314" y2="132"
-      stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
-
-    <text class="step-enter" x="200" y="127" font-size="9.5" fill="#5A7A4A">
-      E = E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan>
-    </text>
-
-    <!-- Sub-caption -->
-    <text class="step-enter" x="186" y="89" text-anchor="middle" font-size="10" fill="#5A7A4A">
-      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = constante  (R = 0, aucune perte)</tspan>
+    <text x="340" y="410" text-anchor="middle"
+          font-size="10.5" font-style="italic" fill="var(--figure-ink)">
+      E = ½C·U₀²     i = 0
     </text>
   </g>
 
-  <!-- ════════════════════════════════════════════
-       STEP 5 — Damped panel (R ≠ 0, qualitative)
-       Adds: the second (right) panel with
-       shrinking envelope and Joule annotation.
-       No formula, no coefficient. Boundary held.
-       ════════════════════════════════════════════ -->
-  <g id="step-5" style="display:none">
-    <!-- Panel bg -->
-    <rect class="step-enter" x="358" y="54" width="296" height="235" rx="6" fill="#EDEAE5"/>
-
-    <!-- Panel header -->
-    <text class="step-enter" x="506" y="75" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas amorti  (R ≠ 0)</text>
-
-    <!-- Badge -->
-    <g class="step-enter">
-      <rect x="364" y="60" width="46" height="16" rx="3" fill="#C06040" opacity="0.15"/>
-      <text x="387" y="72" text-anchor="middle" font-size="9.5" font-weight="600" fill="#C06040">Passe 2</text>
-    </g>
-
-    <!-- Axes -->
-    <line class="step-enter" x1="410" y1="260" x2="636" y2="260" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon class="step-enter" points="636,260 625,255 625,265" fill="#8A8A92"/>
-    <line class="step-enter" x1="410" y1="260" x2="410" y2="98" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon class="step-enter" points="410,98 405,109 415,109" fill="#8A8A92"/>
-    <text class="step-enter" x="640" y="264" font-size="11" fill="#6B6B72">t</text>
-    <text class="step-enter" x="403" y="96" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
-    <text class="step-enter" x="403" y="263" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <line class="step-enter" x1="406" y1="132" x2="414" y2="132" stroke="#8A8A92" stroke-width="1.2"/>
-    <text class="step-enter" x="402" y="138" text-anchor="end" font-size="9" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
-
-    <!-- Instant markers (damped panel) -->
-    <line class="step-enter" x1="410" y1="132" x2="410" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line class="step-enter" x1="460" y1="150" x2="460" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line class="step-enter" x1="510" y1="168" x2="510" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line class="step-enter" x1="560" y1="180" x2="560" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-
-    <circle class="step-enter" cx="410" cy="260" r="2.5" fill="#3E5C86"/>
-    <circle class="step-enter" cx="460" cy="260" r="2.5" fill="#7E9CC8"/>
-    <circle class="step-enter" cx="510" cy="260" r="2.5" fill="#3E5C86"/>
-    <circle class="step-enter" cx="560" cy="260" r="2.5" fill="#7E9CC8"/>
-
-    <!-- EC curve (damped) -->
-    <path class="curve-enter"
-      style="stroke-dasharray:490 490; stroke-dashoffset:490;"
-      d="M410,132 C425,132 438,260 460,260 C482,260 495,168 510,168
-         C525,168 538,260 556,260 C574,260 585,196 600,196
-         C610,196 618,228 624,240"
-      fill="none" stroke="#3E5C86" stroke-width="2.5" stroke-linejoin="round"/>
-
-    <!-- EL curve (damped) -->
-    <path class="curve-enter"
-      style="stroke-dasharray:490 490; stroke-dashoffset:490;"
-      d="M410,260 C432,260 445,150 460,150 C475,150 488,260 510,260
-         C532,260 545,180 560,180 C575,180 588,260 604,258
-         C612,257 620,252 624,248"
-      fill="none" stroke="#7E9CC8" stroke-width="2.5" stroke-linejoin="round"/>
-
-    <!-- Envelope (total shrinking) -->
-    <path class="step-enter"
-      d="M410,132 C430,138 448,146 460,150 C478,157 494,164 510,168
-         C530,174 546,178 560,180 C578,186 592,192 600,196
-         C610,200 618,222 624,234"
-      fill="none" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
-
-    <!-- Joule heat fill (soft qualitative shading) -->
-    <path class="step-enter"
-      d="M410,132 C430,138 448,146 460,150 C478,157 494,164 510,168
-         C530,174 546,178 560,180 C578,186 592,192 600,196
-         C610,200 618,222 624,234
-         L624,260 L410,260 Z"
-      fill="#D4785A" opacity="0.08"/>
-
-    <!-- Curve labels -->
-    <text class="step-enter" x="416" y="125" font-size="11" font-style="italic" fill="#3E5C86">
-      E<tspan dy="4" font-size="8">C</tspan>
+  <!-- beat-1 annotation (authored opacity="0" — replace enters at beat-1) -->
+  <g id="annot-1" opacity="0">
+    <text x="340" y="368" text-anchor="middle"
+          font-size="12" font-weight="600" fill="var(--figure-energy-L)">
+      t = T/4 : E<tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8.5">max</tspan><tspan dy="-3">,   E</tspan><tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> = 0</tspan>
     </text>
-    <text class="step-enter" x="466" y="143" font-size="11" font-style="italic" fill="#7E9CC8">
-      E<tspan dy="4" font-size="8">L</tspan>
+    <text x="340" y="386" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      Condensateur vide — courant maximal, toute l'énergie dans la bobine
     </text>
-
-    <!-- Envelope label -->
-    <text class="step-enter" x="525" y="163" font-size="9.5" fill="#5A7A4A">
-      E total décroît
-    </text>
-    <text class="step-enter" x="520" y="152" font-size="9" fill="#5A7A4A">
-      E = E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7">L</tspan>
-    </text>
-
-    <!-- Sub-caption -->
-    <text class="step-enter" x="506" y="89" text-anchor="middle" font-size="10" fill="#6B6B72">
-      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> décroît → effet Joule</tspan>
-    </text>
-
-    <!-- Joule annotation -->
-    <text class="step-enter" x="500" y="308" text-anchor="middle" font-size="9" fill="#C06040" font-style="italic">
-      énergie dissipée par effet Joule (R)
+    <text x="340" y="410" text-anchor="middle"
+          font-size="10.5" font-style="italic" fill="var(--figure-ink)">
+      E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = 0     E = ½L·i</tspan><tspan dy="-3" font-size="8">max</tspan><tspan dy="3">²</tspan>
     </text>
   </g>
+
+  <!-- beat-2 annotation (authored opacity="0" — replace enters at beat-2) -->
+  <g id="annot-2" opacity="0">
+    <text x="340" y="368" text-anchor="middle"
+          font-size="12" font-weight="600" fill="var(--figure-ink)">
+      E<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = constante</tspan>
+    </text>
+    <text x="340" y="386" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      L'énergie oscille entre les deux — aucune perte (R = 0)
+    </text>
+    <text x="340" y="410" text-anchor="middle"
+          font-size="10.5" font-style="italic" fill="var(--figure-ink)">
+      ½C·u<tspan dy="3" font-size="8">C</tspan><tspan dy="-3">² + ½L·i² = ½C·U₀²  (conservée)</tspan>
+    </text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER — Legend + boundary note
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <line x1="36"  y1="456" x2="66"  y2="456"
+        stroke="var(--figure-energy-C)" stroke-width="2.5"/>
+  <text x="71" y="460" font-size="10.5"
+        fill="var(--figure-energy-C)">
+    E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="var(--figure-ink)"> condensateur</tspan>
+  </text>
+
+  <line x1="240" y1="456" x2="270" y2="456"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="275" y="460" font-size="10.5"
+        fill="var(--figure-energy-L)">
+    E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="var(--figure-ink)"> bobine</tspan>
+  </text>
+
+  <text x="340" y="485" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    Cas idéal — amortissement non représenté. Aucun coefficient affiché (§0.4).
+  </text>
+  <text x="340" y="499" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> et E</tspan><tspan dy="3" font-size="7">L</tspan><tspan dy="-3"> en opposition de phase : quand l'une est maximale, l'autre est nulle.</tspan>
+  </text>
 
 </svg>
