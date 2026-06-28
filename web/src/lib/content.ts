@@ -23,6 +23,7 @@
 import fs from "fs";
 import path from "path";
 import yaml from "js-yaml";
+import { parseMotionSpec, type MotionSpec } from "./motion-spec";
 
 // ── Path helpers ──────────────────────────────────────────────────────────────
 
@@ -146,6 +147,13 @@ export interface NotionContent {
    * These carry their own CSS animations and prefers-reduced-motion blocks.
    */
   motionSvgs: Record<string, string>;
+  /**
+   * Declarative beat specs — media/*.motion.json, keyed by base slug
+   * (e.g. "energy-pendulum"). Parsed + validated via parseMotionSpec.
+   * When a motion slug has a spec, the real-motion engine (MotionStage)
+   * renders it; absent → the legacy stepped MotionDiagram is used.
+   */
+  motionSpecs: Record<string, MotionSpec>;
   /**
    * Map of slug → EmbedDescriptor for every media/*.json file.
    * Key is the basename without extension, e.g. "rlc-sandbox".
@@ -301,6 +309,7 @@ export function loadNotion(id: string): NotionContent | null {
   // ── media/*.svg (figures), media/*.motion.svg (animations), media/*.json ──
   const mediaSvgs: Record<string, string> = {};
   const motionSvgs: Record<string, string> = {};
+  const motionSpecs: Record<string, MotionSpec> = {};
   const mediaEmbeds: Record<string, EmbedDescriptor> = {};
   const mediaDir = path.join(dir, "media");
   if (dirExists(mediaDir)) {
@@ -321,8 +330,24 @@ export function loadNotion(id: string): NotionContent | null {
       }
     }
 
-    // JSON embed descriptors — keyed by basename slug (e.g. "rlc-sandbox")
-    for (const file of files.filter((f) => f.endsWith(".json"))) {
+    // Beat specs — media/*.motion.json — parsed for the real-motion engine.
+    // Keyed by base slug ("energy-pendulum.motion.json" → "energy-pendulum").
+    // Loaded BEFORE the embed-JSON loop so these files are not mis-read as
+    // embed descriptors (they carry no `url`, so they'd be skipped anyway —
+    // but routing them explicitly keeps intent clear).
+    for (const file of files.filter((f) => f.endsWith(".motion.json"))) {
+      const raw = safeReadFile(path.join(mediaDir, file));
+      if (!raw) continue;
+      const spec = parseMotionSpec(raw);
+      if (spec) {
+        const motionSlug = file.replace(/\.motion\.json$/, "");
+        motionSpecs[motionSlug] = spec;
+      }
+    }
+
+    // JSON embed descriptors — keyed by basename slug (e.g. "rlc-sandbox").
+    // Skip *.motion.json (already handled above as beat specs).
+    for (const file of files.filter((f) => f.endsWith(".json") && !f.endsWith(".motion.json"))) {
       const raw = safeReadFile(path.join(mediaDir, file));
       if (!raw) continue;
       try {
@@ -373,5 +398,5 @@ export function loadNotion(id: string): NotionContent | null {
   const title = extractTitle(lessonMd, slug);
   const meta: NotionMeta = { id, subject, slug, title };
 
-  return { meta, lessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, mediaEmbeds, embed };
+  return { meta, lessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
 }

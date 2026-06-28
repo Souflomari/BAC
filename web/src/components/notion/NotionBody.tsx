@@ -34,9 +34,11 @@
  */
 
 import type { EmbedDescriptor, CheckpointItem as CheckpointItemType } from "@/lib/content";
+import type { MotionSpec } from "@/lib/motion-spec";
 import { LessonRenderer } from "./LessonRenderer";
 import { MediaDiagramFigure } from "./MediaDiagram";
 import { MotionDiagram } from "./MotionDiagram";
+import { MotionStage } from "./MotionStage";
 import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
 
@@ -168,6 +170,12 @@ interface NotionBodyProps {
    * Keyed by slug without ".motion.svg" (e.g. "energy-pendulum").
    */
   motionSvgs: Record<string, string>;
+  /**
+   * Declarative beat specs — media/*.motion.json, keyed by base slug.
+   * When a motion slug has a spec, the real-motion engine (MotionStage)
+   * renders it; otherwise the legacy stepped MotionDiagram is used.
+   */
+  motionSpecs: Record<string, MotionSpec>;
   /** Map of slug → EmbedDescriptor for every media/*.json file. */
   mediaEmbeds: Record<string, EmbedDescriptor>;
   /** Checkpoint items keyed by id. */
@@ -178,6 +186,7 @@ export function NotionBody({
   lessonMd,
   mediaSvgs,
   motionSvgs,
+  motionSpecs,
   mediaEmbeds,
   checkpoints,
 }: NotionBodyProps) {
@@ -245,6 +254,20 @@ export function NotionBody({
         if (seg.kind === "motion") {
           const svg = motionSvgs[seg.slug];
           if (!svg) return null; // Unknown slug — silent no-op
+
+          // Real-motion engine when a beat spec exists; else legacy stepped
+          // renderer (graceful: not every motion slug has been converted yet).
+          const spec = motionSpecs[seg.slug];
+          if (spec) {
+            return (
+              <MotionStage
+                key={`motion-${seg.slug}-${i}`}
+                svg={svg}
+                spec={spec}
+                label={figureAriaLabel(seg.slug)}
+              />
+            );
+          }
 
           return (
             <MotionDiagram

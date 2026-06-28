@@ -130,6 +130,7 @@ export default function NotionPage({
     checkpoints,
     mediaSvgs,
     motionSvgs,
+    motionSpecs,
     mediaEmbeds,
   } = notion;
 
@@ -212,6 +213,7 @@ export default function NotionPage({
               lessonMd={lessonMd}
               mediaSvgs={mediaSvgs}
               motionSvgs={motionSvgs}
+              motionSpecs={motionSpecs}
               mediaEmbeds={mediaEmbeds}
               checkpoints={checkpoints}
             />
