@@ -25,6 +25,48 @@ import rehypeKatex from "rehype-katex";
 import type { NotionItem, NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+// ── SVG icons — inline, no emoji, keyboard-safe (§9) ─────────────────────────
+function IconCorrect({ className }: { className?: string }) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M2 7l3.5 3.5L12 3"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function IconIncorrect({ className }: { className?: string }) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M3 3l8 8M11 3l-8 8"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 // ── Math-aware text renderer ──────────────────────────────────────────────────
 // Used for stem and choice text — both may contain KaTeX delimiters.
 function MathText({
@@ -196,7 +238,9 @@ function ChoiceButton({
               )}
               aria-hidden="true"
             >
-              {state === "selected-correct" ? "✓ correct" : "✗ incorrect"}
+              {state === "selected-correct"
+                ? <><IconCorrect /> correct</>
+                : <><IconIncorrect /> incorrect</>}
             </span>
           )}
         </span>
@@ -330,9 +374,9 @@ export function McqItem({ item, index }: McqItemProps) {
           role="status"
           aria-live="polite"
         >
-          {/* Icon + text: never color alone (§9) */}
-          <span aria-hidden="true" className="text-base leading-none">
-            {isCorrect ? "✓" : "✗"}
+          {/* SVG icon + text: never color alone (§9) */}
+          <span aria-hidden="true" className="flex-shrink-0">
+            {isCorrect ? <IconCorrect /> : <IconIncorrect />}
           </span>
           <span>
             {isCorrect

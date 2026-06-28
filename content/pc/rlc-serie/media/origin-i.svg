@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 190" width="400" height="190"
      font-family="'Segoe UI', system-ui, sans-serif">
   <!--
     origin-i.svg — Origine de i = dq/dt
-    Current as the flow-rate of charge through a cross-section of wire:
-    how much charge passes a point per second.
+    Current as the flow-rate of charge through a cross-section of wire.
 
     Layout:
     LEFT side: a wire cross-section with charge "blobs" moving through it
     RIGHT side: the time-rate relation i = dq/dt shown graphically
 
-    Pedagogical idea: i is not a separate quantity — it IS the rate at which
-    q changes. Charges leaving the capacitor plate per second = i.
+    Pedagogical idea: i IS the rate at which q changes.
+    Charges leaving the capacitor plate per second = i.
+    The integral form q = ∫i dt is intentionally omitted (heavier than the
+    origin-intuition register; not needed here).
 
-    Palette: bg #F5F3EF, panel #EDEAE5, charge #3E5C86, wire #4A4A52,
+    Palette: bg transparent, panel #EDEAE5, charge #3E5C86, wire #4A4A52,
              accent arrow #3E5C86, secondary #7E9CC8, text #2A2A2E, muted #6B6B72
   -->
 
-  <!-- ── Background ─────────────────────────────────────────── -->
-  <rect width="400" height="200" rx="8" fill="#F5F3EF"/>
+  <!-- ── Background: transparent (app surface shows through) ──── -->
 
   <!-- ── Heading ──────────────────────────────────────────────── -->
   <text x="200" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">
@@ -27,14 +27,13 @@
   <!-- ════════════════════════════════════════════════════════
        LEFT PANEL — Wire cross-section with flowing charges
        ════════════════════════════════════════════════════════ -->
-  <rect x="14" y="30" width="186" height="156" rx="5" fill="#EDEAE5"/>
+  <rect x="14" y="30" width="186" height="148" rx="5" fill="#EDEAE5"/>
 
   <!-- Wire tube (horizontal) — top and bottom edges -->
   <line x1="30"  y1="76"  x2="196" y2="76"  stroke="#4A4A52" stroke-width="2"/>
   <line x1="30"  y1="126" x2="196" y2="126" stroke="#4A4A52" stroke-width="2"/>
   <!-- Left end cap -->
   <line x1="30" y1="76" x2="30" y2="126" stroke="#4A4A52" stroke-width="2"/>
-  <!-- Right: leave open (wire continues beyond panel) -->
   <!-- Small arrows showing continuation right -->
   <text x="194" y="104" font-size="14" fill="#4A4A52">→</text>
 
@@ -75,7 +74,7 @@
   <!-- ════════════════════════════════════════════════════════
        RIGHT PANEL — Time-rate relation i = dq/dt
        ════════════════════════════════════════════════════════ -->
-  <rect x="210" y="30" width="176" height="156" rx="5" fill="#EDEAE5"/>
+  <rect x="210" y="30" width="176" height="148" rx="5" fill="#EDEAE5"/>
 
   <!-- Relation derivation, step by step -->
   <text x="298" y="58" text-anchor="middle" font-size="10.5" fill="#6B6B72">charge Δq en temps Δt :</text>
@@ -88,19 +87,16 @@
   <!-- "à la limite Δt→0" -->
   <text x="298" y="104" text-anchor="middle" font-size="9.5" fill="#6B6B72">à la limite Δt → 0 :</text>
 
-  <!-- i = dq/dt (formula, larger) -->
+  <!-- i = dq/dt (formula, larger, highlighted) -->
   <rect x="232" y="112" width="132" height="32" rx="4" fill="#3E5C86" fill-opacity="0.12"/>
   <text x="298" y="133" text-anchor="middle" font-size="14" font-style="italic" fill="#3E5C86">
     i = dq/dt
   </text>
 
-  <!-- Intuition line -->
-  <text x="298" y="160" text-anchor="middle" font-size="9.5" fill="#6B6B72">i = vitesse d'écoulement</text>
-  <text x="298" y="173" text-anchor="middle" font-size="9.5" fill="#6B6B72">de la charge q</text>
+  <!-- Intuition lines -->
+  <text x="298" y="158" text-anchor="middle" font-size="9.5" fill="#6B6B72">i = vitesse d'écoulement</text>
+  <text x="298" y="171" text-anchor="middle" font-size="9.5" fill="#6B6B72">de la charge q</text>
 
-  <!-- Consequence for the capacitor -->
-  <text x="298" y="188" text-anchor="middle" font-size="9" fill="#3E5C86">
-    → sur le condensateur : q = ∫i dt
-  </text>
+  <!-- Note: q = ∫i dt intentionally omitted (heavier than this register) -->
 
 </svg>

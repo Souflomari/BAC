@@ -35,7 +35,7 @@
 
 import type { EmbedDescriptor, CheckpointItem as CheckpointItemType } from "@/lib/content";
 import { LessonRenderer } from "./LessonRenderer";
-import { MediaDiagram } from "./MediaDiagram";
+import { MediaDiagramFigure } from "./MediaDiagram";
 import { MotionDiagram } from "./MotionDiagram";
 import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
@@ -202,6 +202,7 @@ export function NotionBody({
           const trimmed = seg.md.trim();
           if (!trimmed) return null;
           return (
+            // notion-prose: max-width 65ch + mx-auto (centered in content band)
             <div key={i} className="notion-prose">
               <LessonRenderer markdown={trimmed} />
             </div>
@@ -229,8 +230,9 @@ export function NotionBody({
           }
 
           return (
-            <MediaDiagram
+            <MediaDiagramFigure
               key={`${seg.slug}-${i}`}
+              slug={seg.slug}
               svg={svg}
               label={figureAriaLabel(seg.slug)}
               visibleSteps={visibleSteps}

@@ -25,6 +25,22 @@ import rehypeKatex from "rehype-katex";
 import type { CheckpointItem as CheckpointItemType, NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+// ── SVG icons — inline, no emoji (§9) ────────────────────────────────────────
+function IconCorrect({ className }: { className?: string }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={className}>
+      <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+function IconIncorrect({ className }: { className?: string }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={className}>
+      <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
 // ── Math-aware text renderer ──────────────────────────────────────────────────
 function MathText({
   children,
@@ -171,7 +187,9 @@ function CheckpointChoiceButton({
               )}
               aria-hidden="true"
             >
-              {state === "selected-correct" ? "✓ correct" : "✗ incorrect"}
+              {state === "selected-correct"
+                ? <><IconCorrect /> correct</>
+                : <><IconIncorrect /> incorrect</>}
             </span>
           )}
         </span>
@@ -303,8 +321,8 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
           role="status"
           aria-live="polite"
         >
-          <span aria-hidden="true" className="text-base leading-none">
-            {isCorrect ? "✓" : "✗"}
+          <span aria-hidden="true" className="flex-shrink-0">
+            {isCorrect ? <IconCorrect /> : <IconIncorrect />}
           </span>
           <span>
             {isCorrect

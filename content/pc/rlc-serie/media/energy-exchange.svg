@@ -13,28 +13,12 @@
     Origin (0,E=0) at bottom-left: (80,290)
     E_max at y=50 (i.e. 240px above axis)
 
-    Energy curves are cos²/sin² shapes (half-period in energy = T₀/2).
-    Period of u_C → T₀ corresponds to energy period T₀/2.
-    We use energy half-period P_E = 120px so full energy period = 240px.
-    Peaks of E_C at x=80, 200, 320, 440, 560
-    Peaks of E_L at x=140, 260, 380, 500
-    (Every 60px is a quarter energy period = T₀/8)
-
-    E_max = 240px above axis → peak y = 290-240 = 50
-    So E_C peak y=50, trough y=290; E_L peak y=50, trough y=290
-
-    Bezier cubic for cos² shape: from (x_peak, 50) to (x_peak+120, 50) via (x_mid, 290)
-    Using symmetric handles: from peak (xp,50): cp1=(xp+40,50) cp2=(xp+80,290), end=(xp+120,290)
-    Actually use simpler: M(x,50) C(x+35,50)(x+85,290)(x+120,290) for fall segment
-    and M(x,290) C(x+35,290)(x+85,50)(x+120,50) for rise segment.
-
-    Palette: bg #F5F3EF, panel #EDEAE5, E_C #3E5C86, E_L #7E9CC8,
+    Palette: bg transparent, panel #EDEAE5, E_C #3E5C86, E_L #7E9CC8,
              E_total (ideal) #5A7A4A, E_total (damped) #B06040,
              instant markers #B0ADA8, text #2A2A2E, secondary #6B6B72, axis #8A8A92
   -->
 
-  <!-- ── Background ─────────────────────────────────────────── -->
-  <rect width="620" height="412" rx="8" fill="#F5F3EF"/>
+  <!-- ── Background: transparent (app surface shows through) ──── -->
   <!-- Plot panel -->
   <rect x="76" y="46" width="488" height="252" rx="6" fill="#EDEAE5"/>
 
@@ -53,10 +37,6 @@
   <line x1="76" y1="50" x2="84" y2="50" stroke="#8A8A92" stroke-width="1.2"/>
   <text x="71" y="54" text-anchor="end" font-size="9.5" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
 
-  <!-- ── Instant markers on x-axis (always visible once step-2 is reached) ──
-       Placed at: x=80 (u_C max,i=0), x=140 (u_C=0,i max), x=200 (u_C max−,i=0), x=260 (u_C=0,i max)
-       These will be added in step-2 group.  Pre-draw the x-axis tick circles here as part of step-2. -->
-
   <!-- ════════════════════════════════════════════════════════
        STEP 1 — E_C seule
        ════════════════════════════════════════════════════════ -->
@@ -65,26 +45,7 @@
       E_C = E_max · cos²(π·t/T₀)
       Starts at max (x=80,y=50), falls to 0 at x=140 (y=290),
       rises back to max at x=200 (y=50), etc.
-      Bezier segments (each 120px wide, alternating):
-        Fall: M(xp,50) C(xp+35,50)(xp+85,290)(xp+120,290)
-        Rise: M(xp,290) C(xp+35,290)(xp+85,50)(xp+120,50)
-      Peaks at x=80,200,320,440; valleys at x=140,260,380,500
     -->
-    <path d="
-      M80,50
-      C115,50 165,290 200,290
-      M200,290
-      C235,290 285,50 320,50
-      M320,50
-      C355,50 405,290 440,290
-      M440,290
-      C475,290 525,50 560,50
-    " fill="none" stroke="#3E5C86" stroke-width="2.5"
-       stroke-linejoin="round"/>
-    <!-- Actually paint as one continuous path to avoid gaps -->
-
-    <!-- E_C as one continuous path using the correct cos² bezier -->
-    <!-- Redrawn as continuous: -->
     <path d="
       M80,50
       C115,50 125,290 140,290
@@ -101,11 +62,6 @@
     <text x="88" y="44" font-size="11" font-style="italic" fill="#3E5C86">
       E<tspan dy="4" font-size="8">C</tspan><tspan dy="-4" font-size="9.5"> = ½q²/C</tspan>
     </text>
-
-    <!-- Caption -->
-    <text x="310" y="322" text-anchor="middle" font-size="10.5" fill="#6B6B72">
-      L'énergie du condensateur E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> oscille entre 0 et E<tspan dy="3" font-size="8">max</tspan><tspan dy="-3">.</tspan></tspan>
-    </text>
   </g><!-- /step-1 -->
 
   <!-- ════════════════════════════════════════════════════════
@@ -114,9 +70,7 @@
   <g id="step-2">
     <!--
       E_L = E_max · sin²(π·t/T₀) = antiphase of E_C
-      Starts at 0 (x=80,y=290), rises to max at x=140 (y=50),
-      falls back to 0 at x=200 (y=290), etc.
-      Peaks (E_L max) at x=140,260,380,500; valleys at x=80,200,320,440,560
+      Starts at 0 (x=80,y=290), rises to max at x=140 (y=50), etc.
     -->
     <path d="
       M80,290
@@ -136,13 +90,13 @@
     </text>
 
     <!-- ── Instant markers ── -->
-    <!-- x=80: u_C max, i=0 (E_C at peak, E_L=0) -->
+    <!-- x=80: u_C max, i=0 -->
     <line x1="80" y1="50" x2="80" y2="298" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
     <circle cx="80" cy="290" r="3" fill="#3E5C86"/>
     <text x="80" y="310" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> max</tspan></text>
     <text x="80" y="320" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
 
-    <!-- x=140: u_C=0, i max (E_L at peak, E_C=0) -->
+    <!-- x=140: u_C=0, i max -->
     <line x1="140" y1="50" x2="140" y2="298" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
     <circle cx="140" cy="290" r="3" fill="#7E9CC8"/>
     <text x="140" y="310" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
@@ -165,11 +119,6 @@
     <line x1="80" y1="330" x2="80" y2="338" stroke="#8A8A92" stroke-width="1.3"/>
     <line x1="200" y1="330" x2="200" y2="338" stroke="#8A8A92" stroke-width="1.3"/>
     <text x="140" y="348" text-anchor="middle" font-size="10" font-style="italic" fill="#6B6B72">T<tspan dy="3" font-size="7.5">0</tspan></text>
-
-    <!-- Caption -->
-    <text x="310" y="370" text-anchor="middle" font-size="10.5" fill="#6B6B72">
-      E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> et E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> s'échangent en antiphase : quand l'un est plein, l'autre est vide.</tspan></tspan>
-    </text>
   </g><!-- /step-2 -->
 
   <!-- ════════════════════════════════════════════════════════
@@ -183,11 +132,6 @@
     <text x="390" y="44" font-size="10" fill="#5A7A4A">
       E = E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = constante</tspan></tspan>
     </text>
-
-    <!-- Caption -->
-    <text x="310" y="386" text-anchor="middle" font-size="10.5" fill="#6B6B72">
-      Cas idéal (R = 0) : l'énergie totale est conservée — elle se déplace, elle ne disparaît pas.
-    </text>
   </g><!-- /step-3 -->
 
   <!-- ════════════════════════════════════════════════════════
@@ -195,23 +139,7 @@
        NO e^{-αt}, NO damping coefficient — purely qualitative
        ════════════════════════════════════════════════════════ -->
   <g id="step-4">
-    <!--
-      Overwrite the flat E_total line with a decreasing envelope.
-      The envelope passes through the successive peaks of E_C and E_L:
-      (80,50) → (140,66) → (200,84) → (260,100) → (320,116) → (380,130) → …
-      (Qualitative — the envelope simply decreases, no formula on screen.)
-      We draw it as a smooth bezier from (80,50) curving down to (560,260).
-      The antiphase exchange STILL HAPPENS inside — we show that by also
-      drawing slightly-damped E_C and E_L curves.
-
-      To keep this qualitative and boundary-safe:
-      - We draw the envelope only as a decreasing smooth curve (no formula labels).
-      - We add a "→ chaleur dans R (effet Joule)" caption.
-      - We do NOT draw exact damped E_C/E_L curves (that would imply a formula);
-        instead we replace the flat-line E_total with the decreasing envelope.
-    -->
-
-    <!-- Mask (erase) the flat green dashed line from step-3 with bg rect -->
+    <!-- Mask (erase) the flat green dashed line from step-3 -->
     <rect x="79" y="44" width="484" height="13" fill="#EDEAE5"/>
 
     <!-- Decreasing E_total envelope: qualitative smooth decay -->
@@ -229,20 +157,15 @@
       L560,290 L80,290 Z
     " fill="#D4785A" fill-opacity="0.07"/>
 
-    <!-- New E_total label -->
+    <!-- Labelling -->
     <text x="440" y="198" font-size="10" fill="#B06040">E → 0</text>
     <text x="440" y="211" font-size="9.5" fill="#B06040">effet Joule (R)</text>
-
-    <!-- Caption -->
-    <text x="310" y="386" text-anchor="middle" font-size="10.5" fill="#6B6B72">
-      Avec R : l'énergie totale diminue — convertie en chaleur dans R par effet Joule.
-    </text>
 
     <!-- "énergie dissipée" annotation inside fill area -->
     <text x="400" y="262" text-anchor="middle" font-size="9" fill="#B06040" font-style="italic">énergie dissipée dans R</text>
   </g><!-- /step-4 -->
 
-  <!-- ── Legend (two rows to avoid overflow in 620px viewBox) ── -->
+  <!-- ── Legend (two rows) ── -->
   <g id="legend">
     <!-- Row 1: E_C and E_L -->
     <line x1="80" y1="384" x2="106" y2="384" stroke="#3E5C86" stroke-width="2.5"/>

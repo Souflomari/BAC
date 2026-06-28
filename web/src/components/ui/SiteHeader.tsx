@@ -5,13 +5,14 @@
  *
  * The top navigation bar. Minimal — DESIGN-BIBLE §0: the learning core is
  * sacred, the periphery is where chrome lives. The header is periphery:
- * a wordmark and the single navigation affordance.
+ * a wordmark, the font-size stepper (§9 a11y floor), and the nav link.
  *
  * No streaks, no XP, no notification bells here. Just orientation.
  */
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { FontSizeStepper } from "./FontSizeStepper";
 
 interface SiteHeaderProps {
   className?: string;
@@ -24,8 +25,6 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         "sticky top-0 z-40 w-full",
         "border-b border-[var(--color-border-subtle)]",
         "bg-[var(--color-surface-base)]",
-        // Subtle backdrop blur for depth without heavy shadow.
-        // Use explicit rgba since CSS variable opacity modifier isn't available.
         "supports-[backdrop-filter]:backdrop-blur-sm",
         className
       )}
@@ -55,21 +54,26 @@ export function SiteHeader({ className }: SiteHeaderProps) {
           </span>
         </Link>
 
-        {/* Right-side nav — kept intentionally minimal */}
-        <nav aria-label="Navigation principale">
-          <Link
-            href="/"
-            className={cn(
-              "text-body-sm font-medium",
-              "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
-              "transition-colors duration-[150ms] ease-out",
-              "rounded px-2 py-1",
-              "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
-            )}
-          >
-            Notions
-          </Link>
-        </nav>
+        {/* Right-side: font stepper + nav */}
+        <div className="flex items-center gap-4">
+          {/* A−/A/A+ text size control — §9 floor item */}
+          <FontSizeStepper />
+
+          <nav aria-label="Navigation principale">
+            <Link
+              href="/"
+              className={cn(
+                "text-body-sm font-medium",
+                "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                "transition-colors duration-[150ms] ease-out",
+                "rounded px-2 py-1",
+                "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
+              )}
+            >
+              Notions
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );

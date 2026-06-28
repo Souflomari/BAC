@@ -9,17 +9,22 @@
  * animated SVG diagrams, inline checkpoints, the interactive embed, and the
  * MCQ items section.
  *
- * Layout (design brief #1 — "use the width; look finished"):
+ * Layout (DESIGN-BIBLE §4 — calm, symmetric):
  *   - Outer band: max-w-notion (~1140px), centered, generous horizontal padding.
- *   - Left margin rail (56px): sticky section label + subtle vertical line.
- *     Shows "where am I" through the lesson rungs. Desktop only (≥900px).
- *   - Right content column: prose bounded at ~65ch; figures/motion/embeds/
- *     checkpoints break out to the full content column width (notion-wide-band).
+ *   - Left margin rail (56px): sticky rung list (R0–R7…) with scroll-spy.
+ *     Desktop only (≥900px); quiet/muted, keyboard-focusable.
+ *   - Right content column: prose centered at ~65ch within the column;
+ *     figures/motion/embeds/checkpoints break out to the full content column.
  *   - On narrow screens: collapses to single column, rail disappears.
  *
+ * Fixes applied (#4, #5, #9):
+ *   - Prose centered (not left-anchored) within the content column.
+ *   - MarginRail is a real sticky rung list with scroll-spy (not a hollow label).
+ *   - Checkpoint clones filtered from end bank via buildCheckpointCloneIds.
+ *
  * Server component: all file I/O and markdown parsing happens on the server.
- * Interactive parts (EmbedPanel, CheckpointItem, MotionDiagram) are client
- * components hydrated in the browser.
+ * Interactive parts (EmbedPanel, CheckpointItem, MotionDiagram, MarginRail)
+ * are client components hydrated in the browser.
  *
  * DESIGN-BIBLE §0: no engagement theater.
  * DESIGN-BIBLE §7: one primary thing per screen.
@@ -31,7 +36,8 @@ import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
-import { ItemsSection } from "@/components/notion/ItemsSection";
+import { ItemsSection, buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
+import { MarginRail } from "@/components/notion/MarginRail";
 import { cn } from "@/lib/utils";
 
 // ── Static params ─────────────────────────────────────────────────────────────
@@ -104,41 +110,6 @@ function Breadcrumb({
   );
 }
 
-// ── Margin rail — section label indicator ────────────────────────────────────
-// Shows the subject as a rotated vertical label in the margin. Calm and subtle.
-// Desktop only — hidden on narrow screens via CSS (notion-rail class).
-function MarginRail({ subject }: { subject: string }) {
-  return (
-    <aside
-      className="notion-rail"
-      aria-hidden="true"
-    >
-      <div
-        className={cn(
-          "flex flex-col items-center gap-3 pt-2",
-          "text-caption font-medium text-[var(--color-text-tertiary)] uppercase tracking-widest",
-          "select-none"
-        )}
-      >
-        {/* Rotated subject label */}
-        <span
-          style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
-          className="opacity-60"
-        >
-          {subjectLabel(subject)}
-        </span>
-        {/* Subtle dot accent */}
-        <span
-          className={cn(
-            "w-1 h-1 rounded-full",
-            "bg-[#3E5C86] opacity-30"
-          )}
-        />
-      </div>
-    </aside>
-  );
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function NotionPage({
   params,
@@ -161,6 +132,10 @@ export default function NotionPage({
     motionSvgs,
     mediaEmbeds,
   } = notion;
+
+  // Build the set of end-bank item ids that are cloned as inline checkpoints.
+  // These are filtered out of the end bank to prevent duplicate questions (#9).
+  const checkpointCloneIds = buildCheckpointCloneIds(checkpoints);
 
   const hasAnyContent =
     !!lessonMd ||
@@ -189,42 +164,48 @@ export default function NotionPage({
       {/* Breadcrumb — sits above the two-column grid, full width */}
       <Breadcrumb subject={meta.subject} title={meta.title} />
 
-      {/* Page heading — full band, above the content grid */}
-      <header className="mb-10 notion-prose">
-        <p
-          className={cn(
-            "mb-2 text-caption font-medium uppercase tracking-widest",
-            "text-[var(--color-text-tertiary)]"
-          )}
-        >
-          {subjectLabel(meta.subject)}
-        </p>
-        <h1
-          className={cn(
-            "text-h1 font-semibold text-[var(--color-text-primary)]"
-          )}
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          {meta.title}
-        </h1>
-      </header>
-
       {/* ── Two-column layout: margin rail + content ─────────────────────── */}
       <div className="notion-page-grid">
-        {/* Left rail — desktop only, hidden on narrow screens */}
-        <MarginRail subject={meta.subject} />
-
-        {/* Spacer column (desktop only) — the 24px gap between rail and content */}
-        {/* This is the implicit grid gap — no extra div needed */}
+        {/*
+         * Left rail — desktop only, hidden on narrow screens.
+         * MarginRail is a client component with IntersectionObserver scroll-spy.
+         * Falls back to null if no R-rungs detected.
+         */}
+        {lessonMd ? (
+          <MarginRail lessonMd={lessonMd} />
+        ) : (
+          <div className="notion-rail" aria-hidden="true" />
+        )}
 
         {/* Content column */}
         <div id="lesson-content" className="notion-content">
+          {/* Page heading — centered within the prose measure (#4 fix) */}
+          <header className="mb-10 notion-prose">
+            <p
+              className={cn(
+                "mb-2 text-caption font-medium uppercase tracking-widest",
+                "text-[var(--color-text-tertiary)]"
+              )}
+            >
+              {subjectLabel(meta.subject)}
+            </p>
+            <h1
+              className={cn(
+                "text-h1 font-semibold text-[var(--color-text-primary)]"
+              )}
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              {meta.title}
+            </h1>
+          </header>
+
           {lessonMd ? (
             /*
              * NotionBody splits lessonMd on all [[type:slug]] markers and renders
              * prose, diagrams, animations, embeds, and checkpoints in authored order.
-             * Prose segments are wrapped in notion-prose (~65ch); wide-band elements
-             * (figures, motion, embeds, checkpoints) use the full content column.
+             * Prose segments are wrapped in notion-prose (~65ch) and centered within
+             * the content column (#4 fix); wide-band elements (figures, motion,
+             * embeds, checkpoints) use the full content column.
              * Unknown slugs render nothing; no [[…]] literal ever reaches the DOM.
              */
             <NotionBody
@@ -249,7 +230,10 @@ export default function NotionPage({
           {/* MCQ items — always rendered after the lesson body */}
           {itemsData && (
             <div className="mt-16">
-              <ItemsSection itemsData={itemsData} />
+              <ItemsSection
+                itemsData={itemsData}
+                checkpointCloneIds={checkpointCloneIds}
+              />
             </div>
           )}
 

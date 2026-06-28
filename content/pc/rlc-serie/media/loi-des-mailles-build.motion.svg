@@ -294,29 +294,19 @@
   <g class="eq-s3">
     <circle cx="400" cy="195" r="10" fill="#3E5C86" opacity="0.15"/>
     <text x="400" y="199" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">3</text>
-    <!-- q/C -->
-    <text x="420" y="193" font-size="13" fill="#2A2A2E">
+    <!-- prefix: q/C + L · -->
+    <text x="420" y="196" font-size="13" fill="#2A2A2E">
       <tspan font-style="italic" fill="#3E5C86">q</tspan><tspan fill="#2A2A2E">/</tspan><tspan font-style="italic" fill="#3E5C86">C</tspan>
-      <tspan fill="#2A2A2E"> + </tspan>
-      <tspan font-style="italic" fill="#7E9CC8">L</tspan>
-    </text>
-    <!-- d²q/dt² fraction (stacked) -->
-    <text x="524" y="186" font-size="10" fill="#2A2A2E">d²</text>
-    <tspan/>
-    <text x="520" y="186" text-anchor="start" font-size="10" fill="#7E9CC8">d²</text>
-    <text x="520" y="186" font-size="10" fill="#7E9CC8">d²</text>
-    <!-- Use tspan layout for the fraction inline -->
-    <text x="416" y="193" font-size="13" fill="#2A2A2E">
-      <tspan font-style="italic" fill="#3E5C86">q</tspan><tspan>/</tspan><tspan font-style="italic" fill="#3E5C86">C</tspan>
       <tspan fill="#2A2A2E"> + </tspan>
       <tspan font-style="italic" fill="#7E9CC8">L</tspan>
       <tspan fill="#2A2A2E"> · </tspan>
     </text>
-    <!-- d²q/dt² rendered as inline text, upright -->
-    <text x="530" y="186" font-size="10" fill="#7E9CC8">d²q</text>
-    <line x1="529" y1="190" x2="555" y2="190" stroke="#7E9CC8" stroke-width="1"/>
-    <text x="530" y="200" font-size="10" fill="#7E9CC8">dt²</text>
-    <text x="558" y="193" font-size="13" fill="#2A2A2E"> = 0</text>
+    <!-- d²q/dt² as a single stacked fraction: numerator d²q, bar, denominator dt² -->
+    <text x="510" y="190" font-size="10" fill="#7E9CC8">d²q</text>
+    <line x1="509" y1="193" x2="533" y2="193" stroke="#7E9CC8" stroke-width="1"/>
+    <text x="510" y="203" font-size="10" fill="#7E9CC8">dt²</text>
+    <!-- suffix: = 0 -->
+    <text x="537" y="196" font-size="13" fill="#2A2A2E"> = 0</text>
   </g>
   <text class="cap-s3 eq-caption" x="420" y="215" font-size="10" fill="#6B6B72">
     substitution : u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> = q/C ,  i = dq/dt ,  u</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = L·di/dt</tspan>
