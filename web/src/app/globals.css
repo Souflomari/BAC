@@ -238,6 +238,75 @@ body {
   font-size: 1em; /* inherit — don't grow math relative to prose */
 }
 
+/* ── Notion page layout — use the width (design brief #1) ──────────────────── */
+/*
+ * The notion page uses a two-column layout on desktop:
+ *   - Left margin rail (section label / progress) — 64px, fixed, subtle
+ *   - Right: prose + full-band figures in the content column
+ *
+ * Prose stays at ~65ch; figures/embeds/motion break out to the full band.
+ * On narrow screens the rail collapses and the page is single-column.
+ */
+
+/* The outer page grid: rail + content */
+.notion-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 900px) {
+  .notion-page-grid {
+    /* rail: 56px  gap: 24px  content: rest */
+    grid-template-columns: 56px 24px 1fr;
+  }
+}
+
+/* The margin rail — section label + subtle vertical line */
+.notion-rail {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .notion-rail {
+    display: block;
+    grid-column: 1;
+    /* Sticky so it stays visible while the lesson scrolls */
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    /* Visual: subtle vertical line on the right edge */
+    border-right: 1px solid var(--color-border-subtle);
+    padding-right: 12px;
+  }
+}
+
+/* The content column — prose and wide-band elements live here */
+.notion-content {
+  min-width: 0; /* prevent grid blowout */
+}
+
+@media (min-width: 900px) {
+  .notion-content {
+    grid-column: 3;
+  }
+}
+
+/* Prose segment — bounded at ~65ch for comfortable reading */
+.notion-prose {
+  max-width: 65ch;
+}
+
+/*
+ * Wide-band element — figures, motion, embeds, checkpoints.
+ * These "break out" beyond the prose measure to the full content band.
+ * On narrow screens they stay single-column (max-width: 100%).
+ */
+.notion-wide-band {
+  /* No max-width constraint — fills the content column */
+  width: 100%;
+}
+
 /* ── Scrollbar — subtle, tinted ─────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;

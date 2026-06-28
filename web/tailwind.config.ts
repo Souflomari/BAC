@@ -85,9 +85,10 @@ const config: Config = {
       // ── Reading column ──────────────────────────────────────────────────────
       maxWidth: {
         reading: "65ch",
-        content: "72ch",  // slightly wider for items with choices
-        wide:    "90ch",  // for embed + prose side-by-side
+        content: "72ch",   // slightly wider for items with choices
+        wide:    "90ch",   // for embed + prose side-by-side
         page:    "1280px",
+        notion:  "1140px", // notion page outer band — prose + wide-band figures
       },
 
       // ── Border radius ───────────────────────────────────────────────────────

@@ -120,7 +120,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
 
   if (!embed || !embed.url) {
     return (
-      <div className={cn("my-10", className)}>
+      <div className={cn("my-10 notion-wide-band", className)}>
         <EmbedPlaceholder />
       </div>
     );
@@ -140,7 +140,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
         : "Interactif";
 
   return (
-    <div className={cn("my-10", className)}>
+    <div className={cn("my-10 notion-wide-band", className)}>
       {/* Section label — muted, never flashy */}
       <p
         className="mb-3 text-caption font-medium text-[var(--color-text-tertiary)] uppercase tracking-widest"
@@ -219,7 +219,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             {embed.caption}
           </p>
         )}
-        {/* Graceful external fallback — visible always, not just on iframe failure */}
+        {/* Graceful external fallback — always visible, not just on iframe failure */}
         <a
           href={embed.url}
           target="_blank"
@@ -236,6 +236,23 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           Ouvrir dans un nouvel onglet ↗
         </a>
       </div>
+
+      {/*
+       * CC-BY attribution — MUST render visibly when present (ADR 0021 §4).
+       * PhET requires this; verbatim string from the embed descriptor.
+       */}
+      {embed.attribution && (
+        <p
+          className={cn(
+            "mt-3 pt-3",
+            "border-t border-[var(--color-border-subtle)]",
+            "text-caption text-[var(--color-text-tertiary)]",
+            "leading-relaxed"
+          )}
+        >
+          {embed.attribution}
+        </p>
+      )}
     </div>
   );
 }

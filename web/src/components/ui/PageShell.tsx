@@ -13,8 +13,16 @@ import { cn } from "@/lib/utils";
 
 interface PageShellProps {
   children: React.ReactNode;
-  /** Width variant for the main content area. Default is "reading" (65ch). */
-  width?: "reading" | "content" | "wide" | "page";
+  /**
+   * Width variant for the main content area.
+   * - "reading"  65ch  — default narrow prose column
+   * - "content"  72ch  — slightly wider (items with choices)
+   * - "wide"     90ch  — embed + prose side-by-side
+   * - "notion"   1140px — notion page outer band; prose stays ~65ch inside,
+   *                       figures/embeds/motion break to the full band
+   * - "page"     1280px — full page width
+   */
+  width?: "reading" | "content" | "wide" | "notion" | "page";
   className?: string;
 }
 
@@ -27,6 +35,7 @@ export function PageShell({
     reading: "max-w-reading",
     content: "max-w-content",
     wide:    "max-w-wide",
+    notion:  "max-w-notion",
     page:    "max-w-page",
   }[width];
 

@@ -2,22 +2,28 @@
  * Notion page — /notions/[subject]/[slug]
  *
  * URL maps directly to the content directory structure:
- *   /notions/maths/probabilites-conditionnelles
- *   → content/maths/probabilites-conditionnelles/
+ *   /notions/pc/rlc-serie
+ *   → content/pc/rlc-serie/
  *
  * Renders one notion: lesson (markdown + live KaTeX), inline SVG diagrams,
- * the interactive embed (or a graceful placeholder), and the MCQ items.
+ * animated SVG diagrams, inline checkpoints, the interactive embed, and the
+ * MCQ items section.
  *
- * This is a server component: all file I/O and markdown parsing happens on
- * the server. The interactive parts (EmbedPanel, McqItem) are client
- * components imported here and hydrated in the browser.
+ * Layout (design brief #1 — "use the width; look finished"):
+ *   - Outer band: max-w-notion (~1140px), centered, generous horizontal padding.
+ *   - Left margin rail (56px): sticky section label + subtle vertical line.
+ *     Shows "where am I" through the lesson rungs. Desktop only (≥900px).
+ *   - Right content column: prose bounded at ~65ch; figures/motion/embeds/
+ *     checkpoints break out to the full content column width (notion-wide-band).
+ *   - On narrow screens: collapses to single column, rail disappears.
  *
- * DESIGN-BIBLE §7: the learning core is sacred.
- * - One idea at a time
- * - No engagement theater
- * - Math as live KaTeX text, never images (§3)
- * - Immediate per-action feedback (in McqItem)
- * - Full keyboard navigability (§9)
+ * Server component: all file I/O and markdown parsing happens on the server.
+ * Interactive parts (EmbedPanel, CheckpointItem, MotionDiagram) are client
+ * components hydrated in the browser.
+ *
+ * DESIGN-BIBLE §0: no engagement theater.
+ * DESIGN-BIBLE §7: one primary thing per screen.
+ * DESIGN-BIBLE §9: keyboard, focus, contrast, reduced-motion, touch targets.
  */
 
 import type { Metadata } from "next";
@@ -29,7 +35,6 @@ import { ItemsSection } from "@/components/notion/ItemsSection";
 import { cn } from "@/lib/utils";
 
 // ── Static params ─────────────────────────────────────────────────────────────
-// Pre-render all known notions at build time.
 export function generateStaticParams() {
   const notions = listNotions();
   return notions.map((n) => ({
@@ -72,7 +77,7 @@ function Breadcrumb({
   return (
     <nav
       aria-label="Fil d'Ariane"
-      className="mb-10 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-tertiary)]"
+      className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-tertiary)]"
     >
       <a
         href="/"
@@ -99,6 +104,41 @@ function Breadcrumb({
   );
 }
 
+// ── Margin rail — section label indicator ────────────────────────────────────
+// Shows the subject as a rotated vertical label in the margin. Calm and subtle.
+// Desktop only — hidden on narrow screens via CSS (notion-rail class).
+function MarginRail({ subject }: { subject: string }) {
+  return (
+    <aside
+      className="notion-rail"
+      aria-hidden="true"
+    >
+      <div
+        className={cn(
+          "flex flex-col items-center gap-3 pt-2",
+          "text-caption font-medium text-[var(--color-text-tertiary)] uppercase tracking-widest",
+          "select-none"
+        )}
+      >
+        {/* Rotated subject label */}
+        <span
+          style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
+          className="opacity-60"
+        >
+          {subjectLabel(subject)}
+        </span>
+        {/* Subtle dot accent */}
+        <span
+          className={cn(
+            "w-1 h-1 rounded-full",
+            "bg-[#3E5C86] opacity-30"
+          )}
+        />
+      </div>
+    </aside>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function NotionPage({
   params,
@@ -112,18 +152,28 @@ export default function NotionPage({
     notFound();
   }
 
-  const { meta, lessonMd, itemsData, mediaSvgs, mediaEmbeds } = notion;
+  const {
+    meta,
+    lessonMd,
+    itemsData,
+    checkpoints,
+    mediaSvgs,
+    motionSvgs,
+    mediaEmbeds,
+  } = notion;
 
-  // Determine if the page is completely empty (no lesson, no items, no media)
   const hasAnyContent =
     !!lessonMd ||
     !!itemsData ||
     Object.keys(mediaSvgs).length > 0 ||
+    Object.keys(motionSvgs).length > 0 ||
     Object.keys(mediaEmbeds).length > 0;
 
   return (
-    <PageShell width="reading">
-      {/* Skip-to-content link for keyboard users (DESIGN-BIBLE §9) */}
+    // "notion" width: max-w-notion (~1140px) — the outer page band.
+    // Prose stays ~65ch inside; figures/embeds break to the full band.
+    <PageShell width="notion">
+      {/* Skip-to-content for keyboard users (DESIGN-BIBLE §9) */}
       <a
         href="#lesson-content"
         className={cn(
@@ -136,12 +186,11 @@ export default function NotionPage({
         Aller au contenu de la leçon
       </a>
 
-      {/* Breadcrumb */}
+      {/* Breadcrumb — sits above the two-column grid, full width */}
       <Breadcrumb subject={meta.subject} title={meta.title} />
 
-      {/* Page heading — outside the bounded lesson column so the title
-          can breathe at page width before the column clamps in */}
-      <header className="mb-10">
+      {/* Page heading — full band, above the content grid */}
+      <header className="mb-10 notion-prose">
         <p
           className={cn(
             "mb-2 text-caption font-medium uppercase tracking-widest",
@@ -160,48 +209,63 @@ export default function NotionPage({
         </h1>
       </header>
 
-      {/* ── Learning core ─────────────────────────────────────────────────── */}
-      <div id="lesson-content">
-        {lessonMd ? (
-          /*
-           * NotionBody splits lessonMd on [[figure:slug]] / [[embed:slug]]
-           * markers and renders prose, diagrams, and embeds in authored order.
-           * Every marker occurrence is rendered — repeated markers render
-           * repeated components, each with a unique React key.
-           * Unknown slugs silently render nothing (no crash, no literal text).
-           */
-          <NotionBody
-            lessonMd={lessonMd}
-            mediaSvgs={mediaSvgs}
-            mediaEmbeds={mediaEmbeds}
-          />
-        ) : (
-          <div
-            className={cn(
-              "rounded-xl border border-dashed border-[var(--color-border-subtle)]",
-              "px-8 py-10 text-center",
-              "text-body-sm text-[var(--color-text-tertiary)]"
-            )}
-          >
-            Leçon en cours de préparation.
-          </div>
-        )}
+      {/* ── Two-column layout: margin rail + content ─────────────────────── */}
+      <div className="notion-page-grid">
+        {/* Left rail — desktop only, hidden on narrow screens */}
+        <MarginRail subject={meta.subject} />
 
-        {/* MCQ items — always rendered after the lesson body */}
-        {itemsData && <ItemsSection itemsData={itemsData} />}
+        {/* Spacer column (desktop only) — the 24px gap between rail and content */}
+        {/* This is the implicit grid gap — no extra div needed */}
 
-        {/* Fallback: notion directory exists but all content is absent */}
-        {!hasAnyContent && (
-          <div
-            className={cn(
-              "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",
-              "px-8 py-10 text-center",
-              "text-body-sm text-[var(--color-text-tertiary)]"
-            )}
-          >
-            Contenu en cours de préparation.
-          </div>
-        )}
+        {/* Content column */}
+        <div id="lesson-content" className="notion-content">
+          {lessonMd ? (
+            /*
+             * NotionBody splits lessonMd on all [[type:slug]] markers and renders
+             * prose, diagrams, animations, embeds, and checkpoints in authored order.
+             * Prose segments are wrapped in notion-prose (~65ch); wide-band elements
+             * (figures, motion, embeds, checkpoints) use the full content column.
+             * Unknown slugs render nothing; no [[…]] literal ever reaches the DOM.
+             */
+            <NotionBody
+              lessonMd={lessonMd}
+              mediaSvgs={mediaSvgs}
+              motionSvgs={motionSvgs}
+              mediaEmbeds={mediaEmbeds}
+              checkpoints={checkpoints}
+            />
+          ) : (
+            <div
+              className={cn(
+                "rounded-xl border border-dashed border-[var(--color-border-subtle)]",
+                "px-8 py-10 text-center",
+                "text-body-sm text-[var(--color-text-tertiary)]"
+              )}
+            >
+              Leçon en cours de préparation.
+            </div>
+          )}
+
+          {/* MCQ items — always rendered after the lesson body */}
+          {itemsData && (
+            <div className="mt-16">
+              <ItemsSection itemsData={itemsData} />
+            </div>
+          )}
+
+          {/* Fallback: notion directory exists but all content is absent */}
+          {!hasAnyContent && (
+            <div
+              className={cn(
+                "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",
+                "px-8 py-10 text-center",
+                "text-body-sm text-[var(--color-text-tertiary)]"
+              )}
+            >
+              Contenu en cours de préparation.
+            </div>
+          )}
+        </div>
       </div>
     </PageShell>
   );

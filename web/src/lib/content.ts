@@ -4,10 +4,13 @@
  * File-based content loader for notion files.
  *
  * Content lives at: <repo-root>/content/<subject>/<notion-slug>/
- *   lesson.md      — lesson prose (markdown + KaTeX delimiters)
- *   items.yaml     — MCQ items + misconceptions map
- *   media/*.svg    — structural/labelled SVG diagrams
- *   embed.json     — optional embed descriptor (GeoGebra, Desmos, PhET, …)
+ *   lesson.md           — lesson prose (markdown + KaTeX delimiters)
+ *   items.yaml          — MCQ items + misconceptions map
+ *   checkpoints.yaml    — in-lesson checkpoint items (formative, calm-core)
+ *   media/*.svg         — static structural/labelled SVG diagrams (figures)
+ *   media/*.motion.svg  — animated SVG diagrams (carry their own CSS animation)
+ *   media/*.json        — embed descriptors (PhET, GeoGebra, Desmos, Falstad, …)
+ *   embed.json          — optional legacy embed descriptor at notion root
  *
  * All reads use `fs` against the filesystem; nothing fetches from Supabase.
  * The content/ dir is a sibling of web/, so paths resolve via process.cwd()
@@ -98,6 +101,27 @@ export interface EmbedDescriptor {
   caption?: string;
   /** Raw netlist text — circuit_import_text fallback if URL fails */
   circuitImportText?: string;
+  /**
+   * CC-BY / attribution string — MUST be rendered visibly when present.
+   * Required for PhET per ADR 0021 §4.
+   */
+  attribution?: string;
+}
+
+/**
+ * A single checkpoint item (from checkpoints.yaml).
+ * Shares the same MCQ structure as NotionItem but is formative-only:
+ * no score, no streak, no tally. Lives inside the lesson body.
+ */
+export type CheckpointItem = NotionItem;
+
+/**
+ * Parsed checkpoints.yaml top-level shape.
+ */
+export interface NotionCheckpoints {
+  notion: string;
+  skill_code?: string;
+  checkpoints: CheckpointItem[];
 }
 
 export interface NotionContent {
@@ -106,8 +130,22 @@ export interface NotionContent {
   lessonMd: string | null;
   /** Parsed items.yaml */
   itemsData: NotionItems | null;
-  /** Map of filename → raw SVG string for media/*.svg */
+  /**
+   * Checkpoint items keyed by id, from checkpoints.yaml.
+   * Used by [[checkpoint:<id>]] markers in the lesson.
+   */
+  checkpoints: Record<string, CheckpointItem>;
+  /**
+   * Static figure SVGs — media/*.svg EXCLUDING *.motion.svg.
+   * Keyed by filename (e.g. "rlc-schema.svg").
+   */
   mediaSvgs: Record<string, string>;
+  /**
+   * Animated SVG diagrams — media/*.motion.svg, keyed by their base slug
+   * (the part before ".motion.svg", e.g. "energy-pendulum").
+   * These carry their own CSS animations and prefers-reduced-motion blocks.
+   */
+  motionSvgs: Record<string, string>;
   /**
    * Map of slug → EmbedDescriptor for every media/*.json file.
    * Key is the basename without extension, e.g. "rlc-sandbox".
@@ -242,17 +280,45 @@ export function loadNotion(id: string): NotionContent | null {
     }
   }
 
-  // ── media/*.svg and media/*.json ──
+  // ── checkpoints.yaml ──
+  const checkpoints: Record<string, CheckpointItem> = {};
+  const checkpointsRaw = safeReadFile(path.join(dir, "checkpoints.yaml"));
+  if (checkpointsRaw) {
+    try {
+      const parsed = yaml.load(checkpointsRaw) as NotionCheckpoints | null;
+      if (parsed && Array.isArray(parsed.checkpoints)) {
+        for (const cp of parsed.checkpoints) {
+          if (cp && typeof cp.id === "string") {
+            checkpoints[cp.id] = cp as CheckpointItem;
+          }
+        }
+      }
+    } catch {
+      // Malformed YAML — treat as absent, never crash the page
+    }
+  }
+
+  // ── media/*.svg (figures), media/*.motion.svg (animations), media/*.json ──
   const mediaSvgs: Record<string, string> = {};
+  const motionSvgs: Record<string, string> = {};
   const mediaEmbeds: Record<string, EmbedDescriptor> = {};
   const mediaDir = path.join(dir, "media");
   if (dirExists(mediaDir)) {
     const files = safeReadDir(mediaDir);
 
-    // SVGs — keyed by filename (e.g. "rlc-schema.svg")
     for (const file of files.filter((f) => f.endsWith(".svg"))) {
       const svg = safeReadFile(path.join(mediaDir, file));
-      if (svg) mediaSvgs[file] = svg;
+      if (!svg) continue;
+
+      if (file.endsWith(".motion.svg")) {
+        // Motion SVG — key is the slug without ".motion.svg"
+        // e.g. "energy-pendulum.motion.svg" → key "energy-pendulum"
+        const motionSlug = file.replace(/\.motion\.svg$/, "");
+        motionSvgs[motionSlug] = svg;
+      } else {
+        // Static figure SVG — keyed by full filename (e.g. "rlc-schema.svg")
+        mediaSvgs[file] = svg;
+      }
     }
 
     // JSON embed descriptors — keyed by basename slug (e.g. "rlc-sandbox")
@@ -273,6 +339,7 @@ export function loadNotion(id: string): NotionContent | null {
           urlBase: parsed.url_base ?? undefined,
           caption: parsed.caption_fr ?? parsed.caption ?? undefined,
           circuitImportText: parsed.circuit_import_text ?? undefined,
+          attribution: parsed.attribution ?? undefined,
         };
       } catch {
         // Malformed JSON — skip silently, never crash the page
@@ -306,5 +373,5 @@ export function loadNotion(id: string): NotionContent | null {
   const title = extractTitle(lessonMd, slug);
   const meta: NotionMeta = { id, subject, slug, title };
 
-  return { meta, lessonMd, itemsData, mediaSvgs, mediaEmbeds, embed };
+  return { meta, lessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, mediaEmbeds, embed };
 }
