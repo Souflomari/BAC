@@ -107,7 +107,8 @@ function NotionCard({
         "hover:shadow-soft",
         "transition-all duration-[150ms] ease-out",
         // Focus
-        "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
+        // Focus ring — migrated to .focus-ring utility
+        "focus-ring"
       )}
     >
       {/* Subject label */}

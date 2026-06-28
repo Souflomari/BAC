@@ -47,7 +47,8 @@ export default function NotFound() {
             "text-body-sm font-medium",
             "hover:bg-[#344d73]",
             "transition-colors duration-[150ms] ease-out",
-            "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
+            // Focus ring — migrated to .focus-ring utility
+            "focus-ring"
           )}
         >
           Retour aux notions

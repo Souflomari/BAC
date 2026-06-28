@@ -9,13 +9,19 @@
  * NO celebratory animation. Per-choice feedback names the wrong model
  * on a wrong pick (diagnostic, not just "incorrect"). Immediate, per-action.
  *
- * Reuses the same visual MCQ logic as McqItem. Wrapped in a distinctive
- * "Vérifie ta compréhension" surface so the student knows it is a checkpoint,
- * not a section heading.
+ * Phase 4 craft additions:
+ * - Correct/incorrect indicator uses a CSS stroke-dashoffset reveal:
+ *   the check or cross path strokes on over ~300ms (one-shot, no loop).
+ *   Reduced-motion: the path is immediately at full dashoffset = 0
+ *   (end state, no animation). Color-not-alone: icon + color + text.
+ * - shadow-elevation-2 on the card container (per token spec).
+ * - Option rows: shadow-elevation-1 at rest → elevation-2 on hover;
+ *   active/pressed: scale 0.99 + elevation-0 (pressed-in feel).
+ * - Focus rings migrated to .focus-ring utility.
  *
  * No browser storage — state is local React state only.
- * Keyboard navigable; focus states match McqItem's ring standard.
- * Math in stems/choices rendered via KaTeX (remark-math + rehype-katex).
+ * Keyboard navigable; .focus-ring on all interactive elements.
+ * Math in stems/choices rendered via KaTeX.
  */
 
 import { useState, useId } from "react";
@@ -25,7 +31,94 @@ import rehypeKatex from "rehype-katex";
 import type { CheckpointItem as CheckpointItemType, NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-// ── SVG icons — inline, no emoji (§9) ────────────────────────────────────────
+// ── Animated stroke icons ─────────────────────────────────────────────────────
+//
+// The check/cross path is drawn via CSS stroke-dashoffset animation.
+// On mount (when `animate` becomes true) the dash offset transitions from
+// the full path length to 0, stroking the path on.
+//
+// Path lengths (approximate, ViewBox 0 0 14 14):
+//   check "M2 7l3.5 3.5L12 3" ≈ 14px → pathLength="14"
+//   cross two-diag             ≈ 11.3 + 11.3 = uses pathLength="12" per segment
+//
+// We use SVG pathLength="1" and strokeDasharray="1" so the animation is
+// unit-independent and works at any size. The transition-duration matches
+// the 300ms spec. Reduced-motion: globals.css collapses all transitions to
+// 0.01ms so the icon appears instantly in its final drawn state.
+
+function AnimatedCheckIcon({ animate, className }: { animate: boolean; className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M2.5 8.5L6 12L13.5 4"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        pathLength="1"
+        style={{
+          strokeDasharray: 1,
+          strokeDashoffset: animate ? 0 : 1,
+          transition: animate
+            ? "stroke-dashoffset 300ms cubic-bezier(0.2, 0, 0, 1)"
+            : "none",
+        }}
+      />
+    </svg>
+  );
+}
+
+function AnimatedCrossIcon({ animate, className }: { animate: boolean; className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M4 4L12 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        pathLength="1"
+        style={{
+          strokeDasharray: 1,
+          strokeDashoffset: animate ? 0 : 1,
+          transition: animate
+            ? "stroke-dashoffset 300ms cubic-bezier(0.2, 0, 0, 1)"
+            : "none",
+        }}
+      />
+      <path
+        d="M12 4L4 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        pathLength="1"
+        style={{
+          strokeDasharray: 1,
+          // Slight stagger: second arm starts at 150ms delay
+          strokeDashoffset: animate ? 0 : 1,
+          transition: animate
+            ? "stroke-dashoffset 300ms 150ms cubic-bezier(0.2, 0, 0, 1)"
+            : "none",
+        }}
+      />
+    </svg>
+  );
+}
+
+// ── Small static icons for inline use (non-animated, summary row) ─────────────
 function IconCorrect({ className }: { className?: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={className}>
@@ -112,27 +205,36 @@ function CheckpointChoiceButton({
           "rounded-lg",
           "border",
           "text-body font-regular",
-          "transition-all duration-[150ms] ease-out",
+          // Transition: all properties for smooth correctness reveal
+          "transition-all duration-[250ms] ease-between",
           "min-h-[48px]",
-          "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
+          // Focus ring — migrated to .focus-ring utility
+          "focus-ring",
+          // Elevation at rest → elevated on hover; pressed: flat
           state === "idle" && !isRevealedCorrect && [
             "bg-[var(--color-surface-base)]",
             "border-[var(--color-border-subtle)]",
             "text-[var(--color-text-primary)]",
+            "shadow-elevation-1",
+            "hover:shadow-elevation-2",
             "hover:border-[var(--color-border-soft)]",
             "hover:bg-[var(--color-accent-subtle)]",
+            "active:shadow-elevation-0",
+            "active:scale-[0.99]",
             "cursor-pointer",
           ],
           state === "selected-correct" && [
             "bg-[var(--color-success-subtle)]",
             "border-[var(--color-success)]",
             "text-[var(--color-text-primary)]",
+            "shadow-elevation-0",
             "cursor-default",
           ],
           state === "selected-incorrect" && [
             "bg-[var(--color-error-subtle)]",
             "border-[var(--color-error)]",
             "text-[var(--color-text-primary)]",
+            "shadow-elevation-0",
             "cursor-default",
           ],
           isRevealedCorrect && [
@@ -140,6 +242,7 @@ function CheckpointChoiceButton({
             "border-[var(--color-success)]",
             "text-[var(--color-text-primary)]",
             "opacity-80",
+            "shadow-elevation-0",
             "cursor-default",
           ],
           answered && !isSelected && !isRevealedCorrect && [
@@ -147,6 +250,7 @@ function CheckpointChoiceButton({
             "cursor-default",
             "bg-[var(--color-surface-base)]",
             "border-[var(--color-border-subtle)]",
+            "shadow-elevation-0",
           ]
         )}
       >
@@ -156,7 +260,7 @@ function CheckpointChoiceButton({
             "flex-shrink-0 flex items-center justify-center",
             "w-6 h-6 rounded-sm mt-0.5",
             "text-caption font-semibold",
-            "transition-colors duration-[150ms]",
+            "transition-colors duration-[250ms] ease-between",
             state === "idle" && !isRevealedCorrect && [
               "bg-[var(--color-border-subtle)]",
               "text-[var(--color-text-secondary)]",
@@ -174,7 +278,7 @@ function CheckpointChoiceButton({
           {label}
         </span>
 
-        {/* Choice text */}
+        {/* Choice text + animated correctness indicator */}
         <span className="flex-1 min-w-0">
           <MathText>{choice.text}</MathText>
           {isSelected && answered && (
@@ -188,8 +292,18 @@ function CheckpointChoiceButton({
               aria-hidden="true"
             >
               {state === "selected-correct"
-                ? <><IconCorrect /> correct</>
-                : <><IconIncorrect /> incorrect</>}
+                ? (
+                  <>
+                    <AnimatedCheckIcon animate={true} />
+                    <span>correct</span>
+                  </>
+                )
+                : (
+                  <>
+                    <AnimatedCrossIcon animate={true} />
+                    <span>incorrect</span>
+                  </>
+                )}
             </span>
           )}
         </span>
@@ -249,10 +363,11 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
   return (
     <div
       className={cn(
-        // Distinctive surface — slightly inset feel to signal "pause and check"
         "rounded-xl",
         "border border-[var(--color-border-soft)]",
         "bg-[var(--color-accent-subtle)]",
+        // elevation-2 — checkpoint card (per TOKENS.md §6.3)
+        "shadow-elevation-2",
         "p-6 md:p-8",
       )}
       aria-label="Vérifie ta compréhension"
@@ -264,9 +379,9 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
             "inline-flex items-center",
             "px-2.5 py-0.5",
             "rounded-full",
-            "bg-[#3E5C86] bg-opacity-10",
-            "border border-[#3E5C86] border-opacity-20",
-            "text-caption font-medium text-[#3E5C86]",
+            "bg-accent/10",
+            "border border-accent/20",
+            "text-caption font-medium text-accent",
             "uppercase tracking-wide"
           )}
           aria-hidden="true"

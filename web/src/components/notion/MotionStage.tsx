@@ -440,7 +440,8 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
     "bg-[var(--color-surface-raised)]",
     "hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-soft)]",
     "transition-colors duration-[150ms]",
-    "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
+    // Focus ring — migrated to .focus-ring utility
+    "focus-ring",
     "disabled:opacity-40 disabled:cursor-not-allowed"
   );
 
@@ -453,6 +454,8 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           "relative w-full overflow-hidden rounded-xl",
           "bg-[var(--color-surface-raised)]",
           "border border-[var(--color-border-subtle)]",
+          // elevation-1 — figure panel at rest (per TOKENS.md §6.3)
+          "shadow-elevation-1",
           // The SVG renders at its true aspect within the wide band — the old
           // max-height cap is DROPPED (it was the source of clipping/overlap).
           "[&_svg]:w-full [&_svg]:h-auto [&_svg]:block"

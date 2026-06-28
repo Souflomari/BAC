@@ -101,7 +101,8 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "rounded",
               "text-caption font-semibold",
               "transition-colors duration-[150ms]",
-              "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
+              // Focus ring — migrated to .focus-ring utility
+              "focus-ring",
               isActive
                 ? [
                     "bg-[var(--color-surface-base)]",

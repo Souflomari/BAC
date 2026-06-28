@@ -11,11 +11,17 @@
  * - Keyboard navigable (§9)
  * - Color never conveys meaning alone — paired with icons and text (§2, §9)
  *
- * State is local to the component — no localStorage, no cookies. The
- * session state layer (when built) will sit above this, not inside it.
+ * Phase 4 craft additions:
+ * - Correct/incorrect indicator: animated stroke-dashoffset reveal over 300ms
+ *   (one-shot check/cross draw-on). Reduced-motion: instant end-state.
+ * - shadow-elevation-2 on the card container.
+ * - Option rows: shadow-elevation-1 at rest → elevation-2 on hover;
+ *   active/pressed: scale 0.99, elevation-0 (tactile press feedback).
+ * - Focus rings migrated to .focus-ring utility.
+ * - Transition on correctness reveal: 250ms ease-between.
  *
- * Math in stems and choices is rendered via KaTeX through the inline
- * approach: we render them as ReactMarkdown with remark-math + rehype-katex.
+ * State is local to the component — no localStorage, no cookies.
+ * Math in stems and choices is rendered via KaTeX.
  */
 
 import { useState, useId } from "react";
@@ -25,7 +31,86 @@ import rehypeKatex from "rehype-katex";
 import type { NotionItem, NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-// ── SVG icons — inline, no emoji, keyboard-safe (§9) ─────────────────────────
+// ── Animated stroke icons ─────────────────────────────────────────────────────
+//
+// pathLength="1" + strokeDasharray="1" makes the animation unit-independent.
+// When animate=true, strokeDashoffset transitions from 1 → 0, drawing the path.
+// Reduced-motion: globals.css collapses all transitions to 0.01ms, so the icon
+// appears immediately in its final drawn state without any special branching.
+
+function AnimatedCheckIcon({ animate, className }: { animate: boolean; className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M2.5 8.5L6 12L13.5 4"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        pathLength="1"
+        style={{
+          strokeDasharray: 1,
+          strokeDashoffset: animate ? 0 : 1,
+          transition: animate
+            ? "stroke-dashoffset 300ms cubic-bezier(0.2, 0, 0, 1)"
+            : "none",
+        }}
+      />
+    </svg>
+  );
+}
+
+function AnimatedCrossIcon({ animate, className }: { animate: boolean; className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M4 4L12 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        pathLength="1"
+        style={{
+          strokeDasharray: 1,
+          strokeDashoffset: animate ? 0 : 1,
+          transition: animate
+            ? "stroke-dashoffset 300ms cubic-bezier(0.2, 0, 0, 1)"
+            : "none",
+        }}
+      />
+      <path
+        d="M12 4L4 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        pathLength="1"
+        style={{
+          strokeDasharray: 1,
+          strokeDashoffset: animate ? 0 : 1,
+          // Second arm staggered 150ms for a natural sequential draw
+          transition: animate
+            ? "stroke-dashoffset 300ms 150ms cubic-bezier(0.2, 0, 0, 1)"
+            : "none",
+        }}
+      />
+    </svg>
+  );
+}
+
+// ── Small static icons for the summary row ────────────────────────────────────
 function IconCorrect({ className }: { className?: string }) {
   return (
     <svg
@@ -68,7 +153,6 @@ function IconIncorrect({ className }: { className?: string }) {
 }
 
 // ── Math-aware text renderer ──────────────────────────────────────────────────
-// Used for stem and choice text — both may contain KaTeX delimiters.
 function MathText({
   children,
   className,
@@ -82,7 +166,6 @@ function MathText({
         remarkPlugins={[remarkMath]}
         rehypePlugins={[[rehypeKatex, { strict: false, trust: false }]]}
         components={{
-          // Unwrap the default <p> wrapper so inline math stays inline
           p: ({ children }) => <span>{children}</span>,
         }}
       >
@@ -124,7 +207,6 @@ function ChoiceButton({
     state = choice.correct ? "selected-correct" : "selected-incorrect";
   }
 
-  // After answering, reveal which answer is correct even if not selected
   const isRevealedCorrect = answered && choice.correct && !isSelected;
 
   return (
@@ -144,19 +226,23 @@ function ChoiceButton({
           "border",
           // Typography
           "text-body font-regular",
-          // Transition — DESIGN-BIBLE §5: micro 100–200ms
-          "transition-all duration-[150ms] ease-out",
+          // Transition — 250ms ease-between for correctness reveals
+          "transition-all duration-[250ms] ease-between",
           // Touch target ≥ 48px (§9)
           "min-h-[48px]",
-          // Focus ring (§9)
-          "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
-          // Idle state
+          // Focus ring — migrated to .focus-ring utility
+          "focus-ring",
+          // Idle state: elevation-1 at rest, elevation-2 on hover, flat on press
           state === "idle" && !isRevealedCorrect && [
             "bg-[var(--color-surface-raised)]",
             "border-[var(--color-border-subtle)]",
             "text-[var(--color-text-primary)]",
+            "shadow-elevation-1",
+            "hover:shadow-elevation-2",
             "hover:border-[var(--color-border-soft)]",
             "hover:bg-[var(--color-accent-subtle)]",
+            "active:shadow-elevation-0",
+            "active:scale-[0.99]",
             "cursor-pointer",
           ],
           // Selected & correct
@@ -164,6 +250,7 @@ function ChoiceButton({
             "bg-[var(--color-success-subtle)]",
             "border-[var(--color-success)]",
             "text-[var(--color-text-primary)]",
+            "shadow-elevation-0",
             "cursor-default",
           ],
           // Selected & incorrect
@@ -171,6 +258,7 @@ function ChoiceButton({
             "bg-[var(--color-error-subtle)]",
             "border-[var(--color-error)]",
             "text-[var(--color-text-primary)]",
+            "shadow-elevation-0",
             "cursor-default",
           ],
           // After answering: reveal correct answer (unselected)
@@ -179,6 +267,7 @@ function ChoiceButton({
             "border-[var(--color-success)]",
             "text-[var(--color-text-primary)]",
             "opacity-80",
+            "shadow-elevation-0",
             "cursor-default",
           ],
           // After answering: non-selected, non-correct — dim
@@ -187,6 +276,7 @@ function ChoiceButton({
             "cursor-default",
             "bg-[var(--color-surface-raised)]",
             "border-[var(--color-border-subtle)]",
+            "shadow-elevation-0",
           ]
         )}
       >
@@ -196,7 +286,7 @@ function ChoiceButton({
             "flex-shrink-0 flex items-center justify-center",
             "w-6 h-6 rounded-sm mt-0.5",
             "text-caption font-semibold",
-            "transition-colors duration-[150ms]",
+            "transition-colors duration-[250ms] ease-between",
             state === "idle" && !isRevealedCorrect && [
               "bg-[var(--color-border-subtle)]",
               "text-[var(--color-text-secondary)]",
@@ -227,7 +317,7 @@ function ChoiceButton({
         <span className="flex-1 min-w-0">
           <MathText>{choice.text}</MathText>
 
-          {/* State icon — pairs with color so meaning is never conveyed by color alone (§9) */}
+          {/* Animated correctness indicator — color + icon + text (never color alone §9) */}
           {isSelected && answered && (
             <span
               className={cn(
@@ -239,8 +329,18 @@ function ChoiceButton({
               aria-hidden="true"
             >
               {state === "selected-correct"
-                ? <><IconCorrect /> correct</>
-                : <><IconIncorrect /> incorrect</>}
+                ? (
+                  <>
+                    <AnimatedCheckIcon animate={true} />
+                    <span>correct</span>
+                  </>
+                )
+                : (
+                  <>
+                    <AnimatedCrossIcon animate={true} />
+                    <span>incorrect</span>
+                  </>
+                )}
             </span>
           )}
         </span>
@@ -292,7 +392,6 @@ export function McqItem({ item, index }: McqItemProps) {
   function handleSelect(choiceId: string) {
     if (answered) return;
     setSelectedId(choiceId);
-    // Immediate feedback — reveal answer the moment a choice is made
     setAnswered(true);
   }
 
@@ -306,7 +405,8 @@ export function McqItem({ item, index }: McqItemProps) {
         "border border-[var(--color-border-subtle)]",
         "bg-[var(--color-surface-raised)]",
         "p-6 md:p-8",
-        "shadow-subtle"
+        // elevation-2 — raised interactive card (per TOKENS.md §6.3)
+        "shadow-elevation-2"
       )}
     >
       {/* Item header */}
@@ -332,7 +432,6 @@ export function McqItem({ item, index }: McqItemProps) {
             "flex-1 min-w-0",
             "text-body-lg text-[var(--color-text-primary)]",
             "leading-[1.6]",
-            // KaTeX within the stem should render inline with prose
             "[&_.katex-display]:my-3"
           )}
         >
@@ -394,9 +493,10 @@ export function McqItem({ item, index }: McqItemProps) {
               "cursor-pointer select-none",
               "text-body-sm font-medium text-[var(--color-text-secondary)]",
               "hover:text-[var(--color-text-primary)]",
-              "transition-colors duration-[150ms]",
-              "py-1",
-              "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2 rounded"
+              "transition-colors duration-[150ms] ease-enter",
+              "py-1 rounded",
+              // Focus ring — migrated to .focus-ring utility
+              "focus-ring"
             )}
           >
             Voir la solution complète
@@ -409,7 +509,6 @@ export function McqItem({ item, index }: McqItemProps) {
               "border border-[var(--color-border-subtle)]",
               "text-body-sm text-[var(--color-text-primary)]",
               "prose-lesson",
-              // Override prose-lesson max-width inside this panel
               "max-w-none",
               "[&_.katex-display]:my-2"
             )}

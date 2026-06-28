@@ -90,7 +90,8 @@ function Breadcrumb({
         className={cn(
           "hover:text-[var(--color-text-secondary)]",
           "transition-colors duration-[150ms]",
-          "rounded focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
+          // Focus ring — migrated to .focus-ring utility
+          "rounded focus-ring"
         )}
       >
         Notions

@@ -233,8 +233,8 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
     "hover:text-[var(--color-text-primary)]",
     "hover:border-[var(--color-border-soft)]",
     "transition-colors duration-[150ms]",
-    // Visible focus ring — DESIGN-BIBLE §9
-    "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
+    // Focus ring — migrated to .focus-ring utility (DESIGN-BIBLE §9)
+    "focus-ring",
     "disabled:opacity-40 disabled:cursor-not-allowed"
   );
 
@@ -250,6 +250,8 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
           "rounded-xl",
           "bg-[var(--color-surface-raised)]",
           "border border-[var(--color-border-subtle)]",
+          // elevation-1 — figure panel at rest (per TOKENS.md §6.3)
+          "shadow-elevation-1",
           // Cap the display area so a tall, sparsely-populated canvas at early
           // steps never opens a full-height void. The SVG scales proportionally
           // (w-auto + max-w-full) so the aspect ratio is always preserved; the

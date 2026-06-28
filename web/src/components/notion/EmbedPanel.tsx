@@ -182,7 +182,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               "text-caption font-medium",
               "text-[#3E5C86] hover:text-[#7E9CC8]",
               "transition-colors duration-[150ms]",
-              "rounded focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
+              // Focus ring — migrated to .focus-ring utility
+              "rounded focus-ring"
             )}
           >
             Ouvrir dans un nouvel onglet ↗
@@ -203,7 +204,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               "hover:border-[#3E5C86]",
               "hover:bg-[var(--color-accent-subtle)]",
               "transition-colors duration-[150ms]",
-              "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
+              // Focus ring — migrated to .focus-ring utility
+              "focus-ring",
               "min-h-[44px]" // touch target §9
             )}
           >
@@ -227,7 +229,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
                 "text-caption font-medium",
                 "text-[#3E5C86] hover:text-[#7E9CC8]",
                 "transition-colors duration-[150ms]",
-                "rounded focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2"
+                // Focus ring — migrated to .focus-ring utility
+                "rounded focus-ring"
               )}
             >
               Ouvrir dans un nouvel onglet ↗
@@ -241,7 +244,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               "rounded-xl",
               "border border-[var(--color-border-subtle)]",
               "bg-[var(--color-surface-raised)]",
-              "shadow-soft"
+              // elevation-2 — mounted iframe panel (raised interactive surface, per TOKENS.md §6.3)
+              "shadow-elevation-2"
             )}
             style={{ paddingBottom: aspectPercent }}
           >
