@@ -94,8 +94,10 @@ export function FontSizeStepper({ className }: { className?: string }) {
             aria-pressed={isActive}
             className={cn(
               "inline-flex items-center justify-center",
-              "w-8 h-8",       // 32px visual; touch area extended by padding
-              "min-h-[44px] px-2", // actual touch target ≥ 44px via negative margin / line-height
+              // Touch target floor: DESIGN-BIBLE §9 / F1 fix — ≥44px both axes.
+              // w-8/h-8 (32px) removed; min-w/min-h enforce the floor while
+              // keeping the visual footprint compact.
+              "min-w-[44px] min-h-[44px] px-2",
               "rounded",
               "text-caption font-semibold",
               "transition-colors duration-[150ms]",

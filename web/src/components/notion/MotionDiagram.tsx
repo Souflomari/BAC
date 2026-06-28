@@ -250,8 +250,17 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
           "rounded-xl",
           "bg-[var(--color-surface-raised)]",
           "border border-[var(--color-border-subtle)]",
-          // SVG fills the container width and scales height proportionally
-          "[&>div>svg]:w-full [&>div>svg]:h-auto"
+          // Cap the display area so a tall, sparsely-populated canvas at early
+          // steps never opens a full-height void. The SVG scales proportionally
+          // (w-auto + max-w-full) so the aspect ratio is always preserved; the
+          // 460px cap is wide enough for landscape SVGs (≤2:1 ratio) to remain
+          // legible while keeping controls/caption near the figure.
+          // DESIGN-BIBLE §9 / VC-1 fix: bound the motion panel height.
+          "[&>div>svg]:max-h-[460px]",
+          "[&>div>svg]:w-auto",
+          "[&>div>svg]:max-w-full",
+          "[&>div>svg]:h-auto",
+          "[&>div>svg]:block"
         )}
       >
         {/*
@@ -260,8 +269,11 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
           dangerouslySetInnerHTML and updates the DOM. No CSS animation
           autoplay is triggered by this diff; the SVG's own transition rules
           (if any) handle per-element reveal on re-render.
+          The inner div is centered so the SVG (which may be narrower than the
+          container at the 460px cap) sits in the middle of the panel.
         */}
         <div
+          className="flex justify-center"
           dangerouslySetInnerHTML={{ __html: svgContent }}
           aria-hidden="true"
         />
