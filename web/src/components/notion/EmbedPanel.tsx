@@ -89,10 +89,11 @@ function EmbedPlaceholder() {
         <line x1="14" y1="20" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="28" y1="20" x2="26" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
-      <p className="text-body-sm text-[var(--color-text-tertiary)] font-medium">
+      {/* #1: small text in placeholder promoted to secondary for contrast floor */}
+      <p className="text-body-sm text-[var(--color-text-secondary)] font-medium">
         Interactif à venir
       </p>
-      <p className="text-caption text-[var(--color-text-tertiary)] max-w-[36ch]">
+      <p className="text-caption text-[var(--color-text-secondary)] max-w-[36ch]">
         Un outil interactif sera disponible ici pour explorer ce concept en
         manipulation directe.
       </p>
@@ -128,9 +129,10 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
 
   return (
     <div className={cn("my-10 notion-wide-band", className)}>
-      {/* Section label — muted, never flashy */}
+      {/* Section label — muted, never flashy.
+          #1: 12px uppercase label promoted to secondary for 4.5:1 floor. */}
       <p
-        className="mb-3 text-caption font-medium text-[var(--color-text-tertiary)] uppercase tracking-widest"
+        className="mb-3 text-caption font-medium text-[var(--color-text-secondary)] uppercase tracking-widest"
         aria-hidden="true"
       >
         {toolLabel}
@@ -167,7 +169,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               Bac à sable interactif
             </p>
             {embed.caption && (
-              <p className="text-caption text-[var(--color-text-tertiary)] max-w-[48ch] leading-relaxed">
+              // #1: caption at 12px must pass 4.5:1 — promoted from tertiary to secondary
+              <p className="text-caption text-[var(--color-text-secondary)] max-w-[48ch] leading-relaxed">
                 {embed.caption.slice(0, 120)}{embed.caption.length > 120 ? "…" : ""}
               </p>
             )}
@@ -206,7 +209,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               "transition-colors duration-[150ms]",
               // Focus ring — migrated to .focus-ring utility
               "focus-ring",
-              "min-h-[44px]" // touch target §9
+              "min-h-[48px]" // §9 touch target: 48px (raised from 44px per audit finding #2)
             )}
           >
             {/* Play icon */}
@@ -249,8 +252,11 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             )}
             style={{ paddingBottom: aspectPercent }}
           >
-            {/* Loading shimmer — shown until iframe fires onLoad.
-                Visible text label "Chargement de l'interactif…" satisfies §9. */}
+            {/* Loading state — shown until iframe fires onLoad.
+                #4 fix: looping animate-pulse dots are the only ambient loop in the
+                core, banned by MOTION-CHOREOGRAPHY §4. Replaced with a static label
+                and a non-animating border indicator. Reduced-motion: already safe
+                (no animation to suppress). */}
             {!loaded && (
               <div
                 className={cn(
@@ -258,22 +264,19 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
                   "bg-[var(--color-surface-raised)]"
                 )}
               >
-                {/* Visible loading label — not aria-hidden */}
-                <p className="text-caption text-[var(--color-text-tertiary)]">
+                {/* Non-animating spinner ring — one visual element, no looping */}
+                <div
+                  className={cn(
+                    "w-8 h-8 rounded-full",
+                    "border-2 border-[var(--color-border-subtle)]",
+                    "border-t-[var(--color-text-secondary)]"
+                  )}
+                  aria-hidden="true"
+                />
+                {/* Visible loading label — not aria-hidden; satisfies §9 */}
+                <p className="text-caption text-[var(--color-text-secondary)]">
                   Chargement de l&apos;interactif…
                 </p>
-                <div className="flex gap-1.5" aria-hidden="true">
-                  {[0, 1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className={cn(
-                        "w-1.5 h-1.5 rounded-full bg-[var(--color-border-soft)]",
-                        "motion-safe:animate-pulse"
-                      )}
-                      style={{ animationDelay: `${i * 200}ms` }}
-                    />
-                  ))}
-                </div>
               </div>
             )}
 
@@ -292,12 +295,12 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             />
           </div>
 
-          {/* Caption below the iframe */}
+          {/* Caption below the iframe — #1: 12px text promoted to secondary for 4.5:1 */}
           {embed.caption && (
             <div className="mt-3">
               <p
                 className={cn(
-                  "text-caption text-[var(--color-text-tertiary)]",
+                  "text-caption text-[var(--color-text-secondary)]",
                   "max-w-[56ch] leading-relaxed"
                 )}
               >
@@ -309,13 +312,14 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           {/*
            * CC-BY attribution — MUST render visibly when the iframe is shown.
            * PhET requires this; verbatim string from the embed descriptor.
+           * #1: promoted from tertiary to secondary (12px must pass 4.5:1)
            */}
           {embed.attribution && (
             <p
               className={cn(
                 "mt-3 pt-3",
                 "border-t border-[var(--color-border-subtle)]",
-                "text-caption text-[var(--color-text-tertiary)]",
+                "text-caption text-[var(--color-text-secondary)]",
                 "leading-relaxed"
               )}
             >

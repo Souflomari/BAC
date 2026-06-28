@@ -45,7 +45,7 @@
   </text>
   <text x="340" y="43" text-anchor="middle"
         font-size="10" fill="var(--figure-ink-soft)">
-    Mêmes conditions initiales — seule R augmente (R₁ &lt; R₂ &lt; R₃)
+    Mêmes conditions initiales — seule R augmente : R ≈ 0 → R modérée → R grande
   </text>
 
   <!-- Footer footnotes (always visible) -->
@@ -144,14 +144,14 @@
     T<tspan dy="3" font-size="7.5">0</tspan>
   </text>
 
-  <!-- "Périodique (R ≈ 0)" badge — ONE group faded as a unit (matches p2-badge/p3-badge pattern).
-       The bg has opacity="0.12" internally; fading the GROUP from 0→1 preserves that relative
-       opacity, so the bg stays a soft tint and never goes solid. -->
+  <!-- "Périodique (R ≈ 0)" badge — placed in the sub-bracket gutter (y=167–181)
+       to avoid the sinusoid's right-side peaks. Clear of panel-2 boundary at y=184.
+       Matches p2-badge/p3-badge fade pattern. -->
   <g id="p1-badge" opacity="0">
-    <rect x="448" y="58" width="184" height="22" rx="4"
+    <rect x="380" y="167" width="196" height="18" rx="4"
           fill="var(--figure-accent)" opacity="0.12"/>
-    <text x="540" y="73" text-anchor="middle"
-          font-size="11.5" font-weight="600"
+    <text x="478" y="179" text-anchor="middle"
+          font-size="11" font-weight="600"
           fill="var(--figure-regime-periodic)">
       Périodique (R ≈ 0)
     </text>

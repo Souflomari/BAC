@@ -225,6 +225,37 @@ body {
   }
 }
 
+/* ── Sticky header clearance — scroll-margin-top (#3 fix) ──────────────────── */
+/*
+ * The SiteHeader is sticky at top: 0, height ~56px (h-14 = 3.5rem = 56px).
+ * When anchor links or IntersectionObserver-driven jumps bring a heading or
+ * figure container to the top of the viewport, the sticky header occludes
+ * the first line. scroll-margin-top adds a clearance buffer so the browser
+ * always stops with the element below the header.
+ *
+ * Using 64px (4rem): 56px header + 8px breathing room.
+ * This is a CSS-only fix — no JS required; works with native anchor #links
+ * and with the MarginRail's href="#rung-id" click navigation.
+ *
+ * Applied to:
+ *   - .prose-lesson h2/h3 (rung headings with id= from rehype-slug)
+ *   - .notion-wide-band figure containers (MotionStage, MediaDiagram, EmbedPanel)
+ */
+.prose-lesson h2,
+.prose-lesson h3 {
+  scroll-margin-top: 4rem; /* 64px — header height (56px) + 8px buffer */
+}
+
+/*
+ * Wide-band figure/embed containers — the outer <figure> or <div> that carries
+ * the .notion-wide-band class. When these scroll near the top on anchor-link
+ * navigation (e.g., MarginRail clicks), the sticky header would occlude the
+ * figure's own title text. scroll-margin-top clears it.
+ */
+.notion-wide-band {
+  scroll-margin-top: 4rem;
+}
+
 /* ── Prose styles — bounded reading column ──────────────────────────────────── */
 /* Applied to .prose-lesson — the lesson markdown container.
    DESIGN-BIBLE §3: 65ch max, 1.5 line-height, heading hierarchy by scale+weight only.

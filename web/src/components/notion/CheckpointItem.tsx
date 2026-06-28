@@ -210,7 +210,9 @@ function CheckpointChoiceButton({
           "min-h-[48px]",
           // Focus ring — migrated to .focus-ring utility
           "focus-ring",
-          // Elevation at rest → elevated on hover; pressed: flat
+          // Elevation at rest → elevated on hover; pressed: flat.
+          // #6: accent-wash on hover removed (calm-load — reading/thinking surface).
+          // Elevation lift + border change + active:scale remain for tactile feedback.
           state === "idle" && !isRevealedCorrect && [
             "bg-[var(--color-surface-base)]",
             "border-[var(--color-border-subtle)]",
@@ -218,7 +220,6 @@ function CheckpointChoiceButton({
             "shadow-elevation-1",
             "hover:shadow-elevation-2",
             "hover:border-[var(--color-border-soft)]",
-            "hover:bg-[var(--color-accent-subtle)]",
             "active:shadow-elevation-0",
             "active:scale-[0.99]",
             "cursor-pointer",
@@ -270,7 +271,8 @@ function CheckpointChoiceButton({
             isRevealedCorrect && ["bg-[var(--color-success)]", "text-white"],
             answered && !isSelected && !isRevealedCorrect && [
               "bg-[var(--color-border-subtle)]",
-              "text-[var(--color-text-tertiary)]",
+              // #1: 12px letter badge text — promoted from tertiary to secondary
+              "text-[var(--color-text-secondary)]",
             ]
           )}
           aria-hidden="true"

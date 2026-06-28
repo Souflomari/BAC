@@ -6,7 +6,7 @@
 >
 > **Token references:** `docs/design/TOKENS.md` for all values.
 > **Focus utility:** `.focus-ring` class (see §Focus Ring below).
-> **Floor:** ≥44px touch target height on all interactive elements.
+> **Floor:** ≥48px touch target height on all interactive elements.
 > **Color-not-alone rule:** correctness states always pair color with
 > icon or text — never color alone (DESIGN-BIBLE §2, §9).
 
@@ -85,7 +85,7 @@ validated the token set and after MotionStage is built (Phase 2).
 ### 2.1 Primary Button (accent-filled)
 
 Used for: submit, confirm, primary CTA on landing pages.
-Touch target: min-height 44px.
+Touch target: min-height 48px.
 
 | State | Background | Text | Border | Shadow | Transition |
 |---|---|---|---|---|---|
@@ -134,12 +134,19 @@ These are Secondary Buttons (§2.2) with the following additions.
 | active | Brief 100ms scale-down (scale 0.97) to give tactile press feedback — `ease-leave` |
 
 **Step indicator** (`Étape N / N`):
-- Text: `text-tertiary`, `text-caption`, `tabular-nums`
+- Text: `text-secondary`, `body-sm`, `tabular-nums` (functional UI text — must
+  clear the 4.5:1 contrast floor, so secondary not tertiary)
 - `aria-live="polite" aria-atomic="true"` — screen reader announces on change
 - No interactive state (it is display-only)
 
-**Reduced-motion mode:** controls are hidden; a static notice appears in
-`text-tertiary italic` — "Vue statique — mouvement réduit activé."
+**Reduced-motion mode:** the controls STAY VISIBLE and the student still drives
+the reveal — each "Suivant"/"Précédent"/"Recommencer" SEEKS the beat-spec
+timeline instantly to its settled state (zero animation), so the click-to-advance
+learning interaction (the term-by-term equation build, the regime reveal) is
+preserved for exactly the users §9 protects. The engine branches on a
+`reduced` flag (it does not hide the controls). [Corrected — an earlier draft
+said "controls hidden + static notice"; that would strip the interaction from
+reduced-motion users and is wrong.]
 
 ---
 
@@ -148,7 +155,7 @@ These are Secondary Buttons (§2.2) with the following additions.
 ### 4.1 MCQ option (before answer)
 
 Each option is a `<button>` wrapping the option text.
-Touch target: full card height ≥44px.
+Touch target: full card height ≥48px.
 
 | State | Background | Border | Text | Shadow |
 |---|---|---|---|---|
@@ -185,7 +192,7 @@ The card that wraps the question, options, and feedback.
 
 ## 5. Margin Rail Rungs
 
-Small sticky anchor links in the left rail. Touch target: ≥44px height per rung.
+Small sticky anchor links in the left rail. Touch target: ≥48px height per rung.
 
 | State | Indicator | Text | Transition |
 |---|---|---|---|
@@ -269,8 +276,8 @@ These apply to every interactive surface without exception.
 
 | Requirement | Value | Notes |
 |---|---|---|
-| Touch target height | ≥44px | All buttons and links; use `min-h-[44px]` |
-| Touch target width | ≥44px | Icon-only buttons: also `min-w-[44px]` |
+| Touch target height | ≥48px | All buttons and links; use `min-h-[48px]` |
+| Touch target width | ≥48px | Icon-only buttons: also `min-w-[48px]` |
 | Contrast — body text | ≥4.5:1 | WCAG 2.2 AA |
 | Contrast — large text / UI | ≥3:1 | WCAG 2.2 AA |
 | Focus ring | 2px solid `#3E5C86`, 2px offset | Via `.focus-ring` or global catch-all |

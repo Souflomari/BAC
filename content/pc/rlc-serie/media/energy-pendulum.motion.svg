@@ -237,11 +237,12 @@
             Painted AFTER the cover so it is always on top of it.
   -->
 
-  <!-- "MAX" label — visible at beat-0. Painted before bar-ec-cover so cover
+  <!-- "MAX" label — visible at beat-0. Positioned ABOVE the bar cap (y≈104,
+       just above the bar top at y=108). Painted before bar-ec-cover so cover
        can paint on top of it. Replace exit at beat-1 sets autoAlpha:0. -->
-  <text id="label-ec-max" x="448" y="210" text-anchor="middle"
-        font-size="13" font-weight="600"
-        fill="var(--figure-surface)">MAX</text>
+  <text id="label-ec-max" x="448" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
+        fill="var(--figure-energy-C)">MAX</text>
 
   <!-- Cover rect — grows from top in beat-1, covering bar-ec AND label-ec-max.
        Positioned AFTER them in SVG order so it paints on top.
@@ -255,9 +256,10 @@
         style="transform-origin: 50% 0%; transform-box: fill-box;"/>
 
   <!-- "0" label — appears AFTER bar-ec-cover in SVG order, so it paints
-       on top of the cover. Fades in at beat-1 via replace enter. -->
-  <text id="label-ec-zero" x="448" y="210" text-anchor="middle"
-        font-size="13" font-weight="600"
+       on top of the cover. Positioned ABOVE the bar top (y≈103). Fades in
+       at beat-1 via replace enter. -->
+  <text id="label-ec-zero" x="448" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
         fill="var(--figure-energy-C)" opacity="0">0</text>
 
   <text x="448" y="316" text-anchor="middle"
@@ -294,15 +296,17 @@
             fill="var(--figure-surface)" — sits on top of the filled bar.
   -->
 
-  <!-- "0" shown at beat-0 (above empty bar) — replace exits at beat-1 -->
-  <text id="label-el-zero" x="570" y="210" text-anchor="middle"
-        font-size="13" font-weight="600"
+  <!-- "0" shown at beat-0 — positioned ABOVE the bar top (y≈103).
+       replace exits at beat-1. -->
+  <text id="label-el-zero" x="570" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
         fill="var(--figure-energy-L)" opacity="0.5">0</text>
 
-  <!-- "MAX" shown in beat-1 (authored opacity=0, enters via replace) -->
-  <text id="label-el-max" x="570" y="210" text-anchor="middle"
-        font-size="13" font-weight="600"
-        fill="var(--figure-surface)" opacity="0">MAX</text>
+  <!-- "MAX" shown in beat-1 (authored opacity=0, enters via replace).
+       Positioned ABOVE the bar top (y≈103) so it clears the filled bar. -->
+  <text id="label-el-max" x="570" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
+        fill="var(--figure-energy-L)" opacity="0">MAX</text>
 
   <text x="570" y="316" text-anchor="middle"
         font-size="11" font-style="italic"
@@ -340,15 +344,20 @@
   <g id="annot-0">
     <text x="340" y="368" text-anchor="middle"
           font-size="12" font-weight="600" fill="var(--figure-energy-C)">
-      t = 0 : E<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8.5">max</tspan><tspan dy="-3">,   E</tspan><tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = 0</tspan>
+      t = 0 : E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = 0</tspan>
     </text>
     <text x="340" y="386" text-anchor="middle"
           font-size="10" fill="var(--figure-ink-soft)">
       Condensateur chargé à U₀ — courant nul, bobine ne stocke rien
     </text>
-    <text x="340" y="410" text-anchor="middle"
-          font-size="10.5" font-style="italic" fill="var(--figure-ink)">
-      E = ½C·U₀²     i = 0
+    <!-- Two-column formula row: left = capacitor energy, right = current -->
+    <text x="220" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-energy-C)">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> = ½C·U₀²</tspan>
+    </text>
+    <text x="400" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">
+      i = 0
     </text>
   </g>
 
@@ -356,15 +365,20 @@
   <g id="annot-1" opacity="0">
     <text x="340" y="368" text-anchor="middle"
           font-size="12" font-weight="600" fill="var(--figure-energy-L)">
-      t = T/4 : E<tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8.5">max</tspan><tspan dy="-3">,   E</tspan><tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> = 0</tspan>
+      t = T/4 : E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = 0</tspan>
     </text>
     <text x="340" y="386" text-anchor="middle"
           font-size="10" fill="var(--figure-ink-soft)">
       Condensateur vide — courant maximal, toute l'énergie dans la bobine
     </text>
-    <text x="340" y="410" text-anchor="middle"
-          font-size="10.5" font-style="italic" fill="var(--figure-ink)">
-      E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = 0     E = ½L·i</tspan><tspan dy="-3" font-size="8">max</tspan><tspan dy="3">²</tspan>
+    <!-- Two-column formula row: left = E_C = 0, right = E_L = ½L·i²_max -->
+    <text x="180" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-energy-C)">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> = 0</tspan>
+    </text>
+    <text x="360" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-energy-L)">
+      E<tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = ½L·i</tspan><tspan dy="3" font-size="7.5">max</tspan><tspan dy="-3">²</tspan>
     </text>
   </g>
 
@@ -372,7 +386,7 @@
   <g id="annot-2" opacity="0">
     <text x="340" y="368" text-anchor="middle"
           font-size="12" font-weight="600" fill="var(--figure-ink)">
-      E<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = constante</tspan>
+      E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = constante</tspan>
     </text>
     <text x="340" y="386" text-anchor="middle"
           font-size="10" fill="var(--figure-ink-soft)">
@@ -380,7 +394,7 @@
     </text>
     <text x="340" y="410" text-anchor="middle"
           font-size="10.5" font-style="italic" fill="var(--figure-ink)">
-      ½C·u<tspan dy="3" font-size="8">C</tspan><tspan dy="-3">² + ½L·i² = ½C·U₀²  (conservée)</tspan>
+      ½C·u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3">² + ½L·i² = ½C·U₀²  (conservée)</tspan>
     </text>
   </g>
 

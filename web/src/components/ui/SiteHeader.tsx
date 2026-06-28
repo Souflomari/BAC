@@ -39,25 +39,32 @@ interface SiteHeaderProps {
 function GlyphMark({ className }: { className?: string }) {
   return (
     <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
+      width="20"
+      height="16"
+      viewBox="0 0 20 16"
       fill="none"
       aria-hidden="true"
       focusable="false"
       className={className}
     >
       {/*
-        Two arcs forming a calm oscillation shape.
-        Top arc: rises from left baseline, peaks, returns to midline.
-        Bottom arc: continues below midline, rises back — a single damped beat.
-        The two arcs share a clean midpoint at x=11, creating bilateral symmetry
-        and making it read as a quiet monogram at 22px.
+        #10 fix: A deliberate single-stroke oscillation mark.
+
+        The previous 22×22 viewBox placed the path along the vertical center,
+        making it read as a stray underline — too close in weight to the
+        hairline dividers in the header.
+
+        Fix: constrain the viewBox to 20×16, aligning the wave to the
+        cap-height of the "BAC" text (roughly 12-14px). Stroke weight raised
+        to 2px so it reads as intentional at 20px render size. The waveform
+        is a single clean S-curve — one damped half-beat — which is on-theme
+        (RLC oscillation, Maroc bac physique) and reads as an abstract mark.
+        Not animated, currentColor, aria-hidden.
       */}
       <path
-        d="M3 11 C3 4.5, 8 4.5, 11 11 C14 17.5, 19 17.5, 19 11"
+        d="M1 8 C1 2, 6 2, 10 8 C14 14, 19 14, 19 8"
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
         fill="none"
       />
@@ -92,8 +99,12 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         "transition-[box-shadow,background-color,border-color] duration-200 ease-between",
         scrolled
           ? [
-              // Floating state: more opaque surface-raised, elevation-3, no hairline
-              "bg-[var(--color-surface-raised)]/95",
+              // Floating state: fully opaque surface-raised + elevation-3.
+              // #3 fix: /95 opacity was ghosting content beneath the sticky header;
+              // fully opaque background ensures no content bleed-through.
+              // backdrop-blur retained for browsers that support it as a layered
+              // refinement, but the solid bg-surface-raised is the primary separator.
+              "bg-[var(--color-surface-raised)]",
               "supports-[backdrop-filter]:backdrop-blur-md",
               "shadow-elevation-3",
               "border-b border-transparent",
@@ -128,8 +139,9 @@ export function SiteHeader({ className }: SiteHeaderProps) {
           >
             BAC
           </span>
+          {/* #1: decorative but visible at 14px — promoted to secondary for contrast */}
           <span
-            className="hidden sm:inline text-body-sm text-[var(--color-text-tertiary)] font-medium"
+            className="hidden sm:inline text-body-sm text-[var(--color-text-secondary)] font-medium"
             aria-hidden="true"
           >
             · sciences

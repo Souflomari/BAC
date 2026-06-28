@@ -94,10 +94,8 @@ export function FontSizeStepper({ className }: { className?: string }) {
             aria-pressed={isActive}
             className={cn(
               "inline-flex items-center justify-center",
-              // Touch target floor: DESIGN-BIBLE §9 / F1 fix — ≥44px both axes.
-              // w-8/h-8 (32px) removed; min-w/min-h enforce the floor while
-              // keeping the visual footprint compact.
-              "min-w-[44px] min-h-[44px] px-2",
+              // §9 touch target: 48px (raised from 44px per audit finding #2)
+              "min-w-[48px] min-h-[48px] px-2",
               "rounded",
               "text-caption font-semibold",
               "transition-colors duration-[150ms]",
@@ -110,8 +108,10 @@ export function FontSizeStepper({ className }: { className?: string }) {
                     "shadow-subtle",
                   ]
                 : [
-                    "text-[var(--color-text-tertiary)]",
-                    "hover:text-[var(--color-text-secondary)]",
+                    // #1: inactive step button at caption size — must pass 4.5:1.
+                    // Promoted from tertiary to secondary.
+                    "text-[var(--color-text-secondary)]",
+                    "hover:text-[var(--color-text-primary)]",
                     "hover:bg-[var(--color-surface-base)]",
                   ]
             )}

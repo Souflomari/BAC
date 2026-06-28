@@ -47,7 +47,8 @@ export function ItemsSection({ itemsData, checkpointCloneIds }: ItemsSectionProp
           "rounded-xl",
           "border border-dashed border-[var(--color-border-subtle)]",
           "px-8 py-10 text-center",
-          "text-body-sm text-[var(--color-text-tertiary)]"
+          // #1: informational text at 14px — promoted to secondary
+          "text-body-sm text-[var(--color-text-secondary)]"
         )}
       >
         Aucun exercice disponible pour cette notion.

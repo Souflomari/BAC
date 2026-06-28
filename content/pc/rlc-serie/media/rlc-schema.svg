@@ -21,6 +21,12 @@
     step-4 : + résistance R et u_R  (à partir de R3)
 
     Palette: var(--figure-*) CSS vars throughout — dark-mode works for free.
+    Role-color convention (matching the motion clips):
+      C (condensateur) : --figure-energy-C  (blue)
+      L (bobine)       : --figure-energy-L  (teal-green)
+      i (courant)      : --figure-accent
+      R / u_R          : --figure-ink-soft
+
     Layout — boucle série, sens horaire :
       K  : fil du haut, centre  (x=195..265, y=64)
       C  : fil gauche, vertical  (x=72, y=118..194)
@@ -81,36 +87,36 @@
           font-size="13" font-style="italic" fill="var(--figure-ink)">K</text>
 
     <!-- ── Condensateur C (fil gauche, vertical) ─────────── -->
-    <!-- Plaque haute (+) -->
+    <!-- Plaque haute (+) — energy-C -->
     <line x1="46" y1="118" x2="98" y2="118"
-          stroke="var(--figure-accent)" stroke-width="3" stroke-linecap="round"/>
-    <!-- Plaque basse (−) -->
+          stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Plaque basse (−) — energy-C, polarity distinguished by glyph -->
     <line x1="46" y1="194" x2="98" y2="194"
-          stroke="var(--figure-ink-soft)" stroke-width="3" stroke-linecap="round"/>
-    <!-- Signe + et − discrets -->
+          stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Signe + (plaque haute) — figure-ink for contrast on energy-C plate -->
     <text x="60" y="113" text-anchor="middle"
-          font-size="9" font-weight="700" fill="var(--figure-accent)">+</text>
+          font-size="9" font-weight="700" fill="var(--figure-ink)">+</text>
+    <!-- Signe − (plaque basse) — figure-ink for contrast -->
     <text x="60" y="202" text-anchor="middle"
-          font-size="9" font-weight="700" fill="var(--figure-ink-soft)">−</text>
+          font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
 
-    <!-- Étiquette C à l'intérieur de la boucle (droite des plaques) -->
+    <!-- Étiquette C — energy-C -->
     <text x="108" y="162" text-anchor="start"
-          font-size="13" font-style="italic" fill="var(--figure-ink)">C</text>
+          font-size="13" font-style="italic" fill="var(--figure-energy-C)">C</text>
 
-    <!-- ── Bobine L (fil du bas, horizontal) ─────────────── -->
+    <!-- ── Bobine L (fil du bas, horizontal) — energy-L ─── -->
     <!-- 4 demi-cercles réguliers, x=170..370, y=256 -->
-    <!-- Chaque arc couvre 50px : centres à 195, 245, 295, 345 -->
     <path d="M170,256 a25,18 0 0,1 50,0"
-          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
     <path d="M220,256 a25,18 0 0,1 50,0"
-          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
     <path d="M270,256 a25,18 0 0,1 50,0"
-          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
     <path d="M320,256 a25,18 0 0,1 50,0"
-          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
-    <!-- Étiquette L au-dessus de la bobine -->
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Étiquette L — energy-L -->
     <text x="270" y="240" text-anchor="middle"
-          font-size="13" font-style="italic" fill="var(--figure-ink)">L</text>
+          font-size="13" font-style="italic" fill="var(--figure-energy-L)">L</text>
 
   </g><!-- /step-1 -->
 
@@ -132,26 +138,26 @@
        ══════════════════════════════════════════════════════ -->
   <g id="step-3">
     <!-- u_C : flèche en tirets, à gauche des plaques, pointant vers le bas -->
-    <!-- (convention récepteur : + en haut = plaque +) -->
+    <!-- (convention récepteur : + en haut = plaque +) — energy-C -->
     <line x1="32" y1="124" x2="32" y2="188"
-          stroke="var(--figure-accent)" stroke-width="1.6"
+          stroke="var(--figure-energy-C)" stroke-width="1.6"
           stroke-dasharray="5,3" stroke-linecap="round"/>
-    <polygon points="32,188 27.5,176 36.5,176" fill="var(--figure-accent)"/>
+    <polygon points="32,188 27.5,176 36.5,176" fill="var(--figure-energy-C)"/>
     <!-- Étiquette u_C à gauche -->
     <text x="18" y="162" text-anchor="middle"
-          font-size="12" font-style="italic" fill="var(--figure-accent)">u<tspan
+          font-size="12" font-style="italic" fill="var(--figure-energy-C)">u<tspan
           dy="4" font-size="8.5" font-style="italic">C</tspan>
     </text>
 
     <!-- u_L : flèche en tirets sous la bobine, pointant vers la gauche -->
-    <!-- (convention récepteur : sens opposé au courant) -->
+    <!-- (convention récepteur : sens opposé au courant) — energy-L -->
     <line x1="170" y1="275" x2="368" y2="275"
-          stroke="var(--figure-ink-soft)" stroke-width="1.6"
+          stroke="var(--figure-energy-L)" stroke-width="1.6"
           stroke-dasharray="5,3" stroke-linecap="round"/>
-    <polygon points="170,275 182,270.5 182,279.5" fill="var(--figure-ink-soft)"/>
+    <polygon points="170,275 182,270.5 182,279.5" fill="var(--figure-energy-L)"/>
     <!-- Étiquette u_L sous la flèche -->
     <text x="270" y="293" text-anchor="middle"
-          font-size="12" font-style="italic" fill="var(--figure-ink-soft)">u<tspan
+          font-size="12" font-style="italic" fill="var(--figure-energy-L)">u<tspan
           dy="4" font-size="8.5" font-style="italic">L</tspan>
     </text>
   </g><!-- /step-3 -->
@@ -160,6 +166,18 @@
        STEP 4 — + résistance R et u_R
        ══════════════════════════════════════════════════════ -->
   <g id="step-4">
+    <!-- Titre mis à jour : Circuit RLC série (R est maintenant présent).
+         Un rect de masquage efface le titre step-1 avant de poser le nouveau
+         titre — les deux <text> sont simultanément dans le DOM quand step-4
+         est visible, SVG peint en ordre document (dernier = dessus). -->
+    <rect x="120" y="10" width="320" height="20"
+          fill="var(--figure-surface)"/>
+    <text x="280" y="26" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Circuit RLC série
+    </text>
+
     <!-- Masquer le fil droit continu de step-1 dans la zone de R
          en posant un rect à la couleur du fond SVG (transparent = bg app).
          On redessine les deux tronçons autour de R. -->

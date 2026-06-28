@@ -10,25 +10,13 @@
 
     Palette : var(--figure-*) CSS vars. Fond transparent.
     Largeur : 420px, hauteur 252px.
-  -->
 
-  <defs>
-    <!-- Dégradé subtil pour les panneaux (élévation légère) -->
-    <linearGradient id="panel-grad-uc" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="var(--figure-surface)" stop-opacity="1"/>
-      <stop offset="100%" stop-color="var(--figure-grid)"    stop-opacity="0.18"/>
-    </linearGradient>
-    <!-- Dégradé armature positive -->
-    <linearGradient id="plate-pos" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="var(--figure-accent)"      stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="var(--figure-accent)"      stop-opacity="1"/>
-    </linearGradient>
-    <!-- Dégradé armature négative -->
-    <linearGradient id="plate-neg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="var(--figure-ink-soft)"    stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="var(--figure-ink-soft)"    stop-opacity="1"/>
-    </linearGradient>
-  </defs>
+    Panneaux : --figure-surface fond + --figure-grid bordure (surface conçue, pas wireframe)
+    Axe 0 : --figure-ink-soft (lisible, cohérent avec regimes-uc)
+    Armature + : --figure-accent  (polarité positive)
+    Armature − : --figure-ink-soft (polarité négative)
+    Subscripts : dy="4" uniforme pour u_C partout
+  -->
 
   <!-- ── Titre ──────────────────────────────────────────── -->
   <text x="210" y="22" text-anchor="middle"
@@ -42,7 +30,7 @@
        x=14..212, y=34..242
        ══════════════════════════════════════════════════════ -->
   <rect x="14" y="34" width="198" height="208" rx="7"
-        fill="url(#panel-grad-uc)"
+        fill="var(--figure-surface)"
         stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- Armature gauche (+) — plaque épaisse, accent -->
@@ -52,7 +40,7 @@
   <rect x="142" y="54" width="11" height="126" rx="2"
         fill="var(--figure-ink-soft)"/>
 
-  <!-- Signes +/− sur les armatures -->
+  <!-- Signes +/− sur les armatures (polarité) -->
   <text x="78" y="50" text-anchor="middle"
         font-size="9" font-weight="700" fill="var(--figure-accent)">+</text>
   <text x="148" y="50" text-anchor="middle"
@@ -88,7 +76,7 @@
         stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
   <polygon points="142,192 133.5,187.5 133.5,196.5" fill="var(--figure-accent)"/>
   <polygon points="83,192 91.5,187.5 91.5,196.5"  fill="var(--figure-accent)"/>
-  <!-- Label u_C directement sur la flèche -->
+  <!-- Label u_C directement sur la flèche — subscript dy uniforme -->
   <text x="113" y="209" text-anchor="middle"
         font-size="12" font-style="italic" fill="var(--figure-accent)">u<tspan
         dy="4" font-size="8.5">C</tspan>
@@ -111,16 +99,16 @@
        x=222..408, y=34..242
        ══════════════════════════════════════════════════════ -->
   <rect x="222" y="34" width="186" height="208" rx="7"
-        fill="url(#panel-grad-uc)"
+        fill="var(--figure-surface)"
         stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- Axes -->
   <line x1="244" y1="210" x2="392" y2="210"
-        stroke="var(--figure-grid)" stroke-width="1.4" stroke-linecap="round"/>
-  <polygon points="392,210 382,205.5 382,214.5" fill="var(--figure-grid)"/>
+        stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+  <polygon points="392,210 382,205.5 382,214.5" fill="var(--figure-ink-soft)"/>
   <line x1="244" y1="210" x2="244" y2="52"
-        stroke="var(--figure-grid)" stroke-width="1.4" stroke-linecap="round"/>
-  <polygon points="244,52 239.5,63 248.5,63" fill="var(--figure-grid)"/>
+        stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+  <polygon points="244,52 239.5,63 248.5,63" fill="var(--figure-ink-soft)"/>
 
   <!-- Labels d'axes -->
   <text x="398" y="214" font-size="11" font-style="italic"
@@ -128,7 +116,7 @@
   <text x="236" y="52" text-anchor="end" font-size="11" font-style="italic"
         fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
   <text x="236" y="214" text-anchor="end" font-size="9.5"
-        fill="var(--figure-grid)">0</text>
+        fill="var(--figure-ink-soft)">0</text>
 
   <!-- Droite u_C = q/C — de (244,210) vers (384,68) -->
   <line x1="244" y1="210" x2="384" y2="68"

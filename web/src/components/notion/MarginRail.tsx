@@ -187,10 +187,9 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                 href={rung.href}
                 title={rung.title}
                 className={cn(
-                  // ≥44px effective touch target: py-2.5 gives 10px*2=20px +
-                  // the content height (~20px) = ≥40px; we pad to min-h-[44px].
+                  // §9 touch target: 48px (raised from 44px per audit finding #2)
                   "group relative flex items-center gap-2",
-                  "min-h-[44px] py-2 pr-2 rounded-sm",
+                  "min-h-[48px] py-2 pr-2 rounded-sm",
                   "text-caption font-medium",
                   // Transition for color changes
                   "transition-colors duration-[150ms] ease-enter",
@@ -198,7 +197,9 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                   "focus-ring",
                   isActive
                     ? "text-accent"
-                    : "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)]"
+                    // #1: idle rung label is 12px functional text — must pass 4.5:1.
+                    // Promoted from tertiary to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1).
+                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 )}
               >
                 {/* Rung node on the spine */}
@@ -219,9 +220,8 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                       ? [
                           "w-2.5 h-2.5",
                           "bg-accent",
-                          // Subtle outer ring for the active node
-                          "ring-2 ring-accent/20 ring-offset-1",
-                          "ring-offset-[var(--color-surface-base)]",
+                          // Ring halo removed: size-step + accent fill alone say "you are here"
+                          // (calm-load audit finding #5 — three emphasis channels is over-recruited)
                           "scale-100 opacity-100",
                         ]
                       : isRead

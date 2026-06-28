@@ -167,7 +167,8 @@ export function MediaDiagram({
         <figcaption
           className={cn(
             "mt-3 px-2",
-            "text-caption text-[var(--color-text-tertiary)]",
+            // #9: explanatory prose at body-sm (14px), #1: secondary color for 4.5:1
+            "text-body-sm text-[var(--color-text-secondary)]",
             "leading-relaxed",
             "max-w-[65ch]" // cap caption width
           )}
@@ -243,7 +244,8 @@ export function MediaDiagramFigure({
         <figcaption
           className={cn(
             "mt-3 px-2",
-            "text-caption text-[var(--color-text-tertiary)]",
+            // #9: explanatory prose at body-sm (14px), #1: secondary color for 4.5:1
+            "text-body-sm text-[var(--color-text-secondary)]",
             "leading-relaxed",
             "max-w-[65ch]"
           )}

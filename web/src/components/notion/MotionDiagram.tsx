@@ -222,8 +222,8 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
   const btnBase = cn(
     "inline-flex items-center gap-1.5",
     "px-3 py-2",
-    // Touch target floor: DESIGN-BIBLE §9 — ≥44px
-    "min-h-[44px] min-w-[44px]",
+    // §9 touch target: 48px (raised from 44px per audit finding #2)
+    "min-h-[48px] min-w-[48px]",
     "rounded-md",
     "text-caption font-medium",
     // Resting: text-secondary (calm, not primary)
@@ -305,10 +305,11 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
             <span className="hidden sm:inline">Précédent</span>
           </button>
 
-          {/* Step indicator — politely announced to screen readers on change */}
+          {/* Step indicator — functional UI text, politely announced on change.
+              #1: promoted from tertiary to secondary (12px must pass 4.5:1) */}
           <span
             className={cn(
-              "text-caption text-[var(--color-text-tertiary)]",
+              "text-caption text-[var(--color-text-secondary)]",
               "tabular-nums select-none",
               "min-w-[6ch] text-center"
             )}
@@ -342,12 +343,12 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
         </div>
       )}
 
-      {/* Reduced-motion notice (in place of controls) */}
+      {/* Reduced-motion notice (in place of controls) — #1: promoted to secondary */}
       {hasSteps && reducedMotion && (
         <p
           className={cn(
             "mt-2",
-            "text-caption text-[var(--color-text-tertiary)]",
+            "text-caption text-[var(--color-text-secondary)]",
             "italic"
           )}
         >
@@ -355,12 +356,13 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
         </p>
       )}
 
-      {/* Figure caption — label shown below controls, capped at 65ch */}
+      {/* Figure caption — label shown below controls, capped at 65ch.
+          #9: body-sm (14px) for explanatory prose; #1: secondary for contrast */}
       {label && (
         <figcaption
           className={cn(
             "mt-2",
-            "text-caption text-[var(--color-text-tertiary)]",
+            "text-body-sm text-[var(--color-text-secondary)]",
             "text-center max-w-[65ch] mx-auto"
           )}
         >

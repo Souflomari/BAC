@@ -83,7 +83,7 @@ function Breadcrumb({
   return (
     <nav
       aria-label="Fil d'Ariane"
-      className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-tertiary)]"
+      className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-secondary)]"
     >
       <a
         href="/"
@@ -97,7 +97,7 @@ function Breadcrumb({
         Notions
       </a>
       <span aria-hidden="true">›</span>
-      <span className="text-[var(--color-text-tertiary)]">
+      <span className="text-[var(--color-text-secondary)]">
         {subjectLabel(subject)}
       </span>
       <span aria-hidden="true">›</span>
@@ -183,10 +183,11 @@ export default function NotionPage({
         <div id="lesson-content" className="notion-content">
           {/* Page heading — centered within the prose measure (#4 fix) */}
           <header className="mb-10 notion-prose">
+            {/* #1: subject label at 12px caption — promoted to secondary for 4.5:1 */}
             <p
               className={cn(
                 "mb-2 text-caption font-medium uppercase tracking-widest",
-                "text-[var(--color-text-tertiary)]"
+                "text-[var(--color-text-secondary)]"
               )}
             >
               {subjectLabel(meta.subject)}
@@ -223,7 +224,8 @@ export default function NotionPage({
               className={cn(
                 "rounded-xl border border-dashed border-[var(--color-border-subtle)]",
                 "px-8 py-10 text-center",
-                "text-body-sm text-[var(--color-text-tertiary)]"
+                // #1: informational text at 14px — promoted to secondary
+                "text-body-sm text-[var(--color-text-secondary)]"
               )}
             >
               Leçon en cours de préparation.
@@ -246,7 +248,8 @@ export default function NotionPage({
               className={cn(
                 "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",
                 "px-8 py-10 text-center",
-                "text-body-sm text-[var(--color-text-tertiary)]"
+                // #1: informational text at 14px — promoted to secondary
+                "text-body-sm text-[var(--color-text-secondary)]"
               )}
             >
               Contenu en cours de préparation.

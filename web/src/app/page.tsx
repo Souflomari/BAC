@@ -116,7 +116,8 @@ function NotionCard({
         className={cn(
           "inline-block mb-2",
           "text-caption font-medium",
-          "text-[var(--color-text-tertiary)]",
+          // #1: subject label at 12px caption — promoted to secondary for 4.5:1
+          "text-[var(--color-text-secondary)]",
           "uppercase tracking-widest"
         )}
       >
@@ -140,7 +141,8 @@ function NotionCard({
       <span
         className={cn(
           "mt-3 flex items-center gap-1",
-          "text-body-sm font-medium text-[var(--color-text-tertiary)]",
+          // #1: 14px body-sm + aria-hidden but still visible — promoted to secondary
+          "text-body-sm font-medium text-[var(--color-text-secondary)]",
           "group-hover:text-accent",
           "transition-colors duration-[150ms] ease-out"
         )}

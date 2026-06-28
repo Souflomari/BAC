@@ -14,14 +14,14 @@
 
     Palette : var(--figure-*) CSS vars. Fond transparent.
     Largeur 480px, hauteur 240px.
-  -->
 
-  <defs>
-    <linearGradient id="panel-grad-ul" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="var(--figure-surface)" stop-opacity="1"/>
-      <stop offset="100%" stop-color="var(--figure-grid)"    stop-opacity="0.16"/>
-    </linearGradient>
-  </defs>
+    Panneaux : --figure-surface fond + --figure-grid bordure
+    Axe 0 / arrowheads : --figure-ink-soft
+    "pente = di/dt" : ancré sur le triangle Δt/Δi, pas sur l'axe
+    "u_L ∝ di/dt" : ancré par une ligne de repère discrète vers la bobine
+    ↓ ASCII remplacé par polygon dessiné
+    Subscripts : dy="4" uniforme pour u_L
+  -->
 
   <!-- ── Titre ──────────────────────────────────────────── -->
   <text x="240" y="20" text-anchor="middle"
@@ -35,99 +35,111 @@
        x=12..290, y=30..232
        ══════════════════════════════════════════════════════ -->
   <rect x="12" y="30" width="278" height="202" rx="7"
-        fill="url(#panel-grad-ul)"
+        fill="var(--figure-surface)"
         stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- ── Sous-panneau bobine (haut gauche) ── -->
+  <!-- ── Sous-panneau bobine (haut) ── -->
   <!-- Fil entrant à gauche -->
-  <line x1="20"  y1="108" x2="50"  y2="108"
+  <line x1="20"  y1="100" x2="50"  y2="100"
         stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
   <!-- Fil sortant à droite (vers bord panneau) -->
-  <line x1="170" y1="108" x2="282" y2="108"
+  <line x1="170" y1="100" x2="282" y2="100"
         stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- Corps de la bobine — 4 arcs, x=50..170, y=108 -->
-  <path d="M50,108  a15,12 0 0,1 30,0"
+  <!-- Corps de la bobine — 4 arcs, x=50..170, y=100 -->
+  <path d="M50,100  a15,12 0 0,1 30,0"
         fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M80,108  a15,12 0 0,1 30,0"
+  <path d="M80,100  a15,12 0 0,1 30,0"
         fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M110,108 a15,12 0 0,1 30,0"
+  <path d="M110,100 a15,12 0 0,1 30,0"
         fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M140,108 a15,12 0 0,1 30,0"
+  <path d="M140,100 a15,12 0 0,1 30,0"
         fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
 
   <!-- Étiquette L au-dessus de la bobine -->
-  <text x="110" y="92" text-anchor="middle"
+  <text x="110" y="84" text-anchor="middle"
         font-size="13" font-style="italic" fill="var(--figure-ink)">L</text>
 
   <!-- Flèche courant i → (croissant, entrant à gauche) -->
-  <line x1="22" y1="128" x2="62" y2="128"
+  <line x1="22" y1="120" x2="62" y2="120"
         stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="62,128 52,123.5 52,132.5" fill="var(--figure-accent)"/>
-  <text x="40" y="144" text-anchor="middle"
+  <polygon points="62,120 52,115.5 52,124.5" fill="var(--figure-accent)"/>
+  <text x="40" y="136" text-anchor="middle"
         font-size="11" font-style="italic" fill="var(--figure-accent)">i ↑</text>
-  <text x="40" y="156" text-anchor="middle"
+  <text x="40" y="148" text-anchor="middle"
         font-size="9" fill="var(--figure-ink-soft)">(croissant)</text>
 
-  <!-- Flèche d'opposition ← (bobine résiste, couleur figure-ink-soft) -->
-  <line x1="172" y1="128" x2="128" y2="128"
+  <!-- Flèche d'opposition ← (bobine résiste) -->
+  <line x1="172" y1="120" x2="128" y2="120"
         stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="128,128 138,123.5 138,132.5" fill="var(--figure-ink-soft)"/>
-  <text x="156" y="144" text-anchor="middle"
+  <polygon points="128,120 138,115.5 138,124.5" fill="var(--figure-ink-soft)"/>
+  <text x="156" y="136" text-anchor="middle"
         font-size="9.5" fill="var(--figure-ink-soft)">opposition</text>
-  <text x="156" y="156" text-anchor="middle"
+  <text x="156" y="148" text-anchor="middle"
         font-size="9.5" fill="var(--figure-ink-soft)">au changement</text>
 
+  <!--
+    Lien conceptuel u_L ∝ di/dt : ancré sous la bobine, à gauche,
+    avec une ligne de repère discrète pointant vers le fil de la bobine
+    [finding 6 — anchor floating labels].
+  -->
+  <!-- Ligne de repère : du label vers le fil de sortie de la bobine -->
+  <line x1="220" y1="88" x2="210" y2="101"
+        stroke="var(--figure-ink-soft)" stroke-width="0.9"
+        stroke-dasharray="3,2" stroke-linecap="round"/>
+  <text x="224" y="86" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">u<tspan
+        dy="3" font-size="7.5">L</tspan><tspan dy="-3"> ∝ di/dt</tspan>
+  </text>
+
   <!-- ── Mini-graphe i(t) (bas du panneau gauche) ── -->
-  <!-- Fond de sous-zone implicite : pas de rect supplémentaire, on intègre les axes -->
-  <!-- Axes mini -->
-  <line x1="32"  y1="210" x2="190" y2="210"
-        stroke="var(--figure-grid)" stroke-width="1.2" stroke-linecap="round"/>
-  <polygon points="190,210 181,206.5 181,213.5" fill="var(--figure-grid)"/>
-  <line x1="32"  y1="210" x2="32"  y2="172"
-        stroke="var(--figure-grid)" stroke-width="1.2" stroke-linecap="round"/>
-  <polygon points="32,172 27.5,181 36.5,181" fill="var(--figure-grid)"/>
+  <!-- Zone graphe : axes de y=165..215, x=32..200 -->
+  <!-- Axes mini — ink-soft -->
+  <line x1="32"  y1="208" x2="200" y2="208"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+  <polygon points="200,208 191,204.5 191,211.5" fill="var(--figure-ink-soft)"/>
+  <line x1="32"  y1="208" x2="32"  y2="168"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+  <polygon points="32,168 27.5,177 36.5,177" fill="var(--figure-ink-soft)"/>
 
   <!-- Labels axes mini -->
-  <text x="196" y="214" font-size="10" font-style="italic"
+  <text x="206" y="212" font-size="10" font-style="italic"
         fill="var(--figure-ink-soft)">t</text>
-  <text x="25"  y="172" text-anchor="end" font-size="10" font-style="italic"
+  <text x="28"  y="168" text-anchor="end" font-size="10" font-style="italic"
         fill="var(--figure-ink-soft)">i</text>
-  <text x="25"  y="214" text-anchor="end" font-size="9.5"
-        fill="var(--figure-grid)">0</text>
+  <text x="28"  y="212" text-anchor="end" font-size="9.5"
+        fill="var(--figure-ink-soft)">0</text>
 
-  <!-- i(t) croissant — droite de (32,210) à (182,177) -->
-  <line x1="32" y1="210" x2="182" y2="177"
+  <!-- i(t) croissant — droite de (32,208) à (192,174) -->
+  <line x1="32" y1="208" x2="192" y2="174"
         stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
 
   <!-- Triangle Δt/Δi pour montrer la pente = di/dt -->
-  <line x1="90"  y1="197" x2="140" y2="197"
+  <!-- Triangle : x=90..150, horizontal à y=197, vertical à x=150 de 197 à 184 -->
+  <line x1="90"  y1="196" x2="150" y2="196"
         stroke="var(--figure-ink-soft)" stroke-width="1.2"
         stroke-dasharray="3,2" stroke-linecap="round"/>
-  <line x1="140" y1="197" x2="140" y2="184"
+  <line x1="150" y1="196" x2="150" y2="183"
         stroke="var(--figure-ink-soft)" stroke-width="1.2"
         stroke-dasharray="3,2" stroke-linecap="round"/>
-  <text x="115"  y="208" text-anchor="middle"
+  <text x="120"  y="206" text-anchor="middle"
         font-size="8.5" fill="var(--figure-ink-soft)">Δt</text>
-  <text x="150"  y="191" text-anchor="start"
+  <text x="158"  y="190" text-anchor="start"
         font-size="8.5" fill="var(--figure-ink-soft)">Δi</text>
 
-  <!-- Label pente = di/dt -->
-  <text x="210" y="214" text-anchor="middle"
-        font-size="9.5" fill="var(--figure-ink-soft)">pente = di/dt</text>
-
-  <!-- Lien conceptuel : plus di/dt est grand → u_L est grand -->
-  <text x="151" y="170" text-anchor="middle"
-        font-size="9" fill="var(--figure-ink-soft)">u<tspan
-        dy="3" font-size="7.5">L</tspan><tspan dy="-3"> ∝ di/dt</tspan>
-  </text>
+  <!--
+    "pente = di/dt" ancré à côté du sommet du triangle (x=150, y=183),
+    pas sur l'axe — claire association avec le triangle [finding 6].
+  -->
+  <text x="156" y="180" text-anchor="start"
+        font-size="8.5" fill="var(--figure-ink-soft)">pente = di/dt</text>
 
   <!-- ══════════════════════════════════════════════════════
        PANNEAU DROIT — Proportionnalité → formule
        x=302..468, y=30..232
        ══════════════════════════════════════════════════════ -->
   <rect x="302" y="30" width="166" height="202" rx="7"
-        fill="url(#panel-grad-ul)"
+        fill="var(--figure-surface)"
         stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- Étape 1 -->
@@ -146,9 +158,10 @@
   <text x="385" y="108" text-anchor="middle"
         font-size="10" fill="var(--figure-ink-soft)">de la bobine</text>
 
-  <!-- Flèche vers bas -->
-  <text x="385" y="130" text-anchor="middle"
-        font-size="13" fill="var(--figure-ink-soft)">↓</text>
+  <!-- Flèche vers bas — dessinée (pas de glyphe ASCII ↓) -->
+  <line x1="385" y1="116" x2="385" y2="132"
+        stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="385,132 380.5,122 389.5,122" fill="var(--figure-ink-soft)"/>
 
   <!-- Boîte formule -->
   <rect x="312" y="140" width="146" height="36" rx="5"

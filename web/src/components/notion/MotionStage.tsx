@@ -161,6 +161,9 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
   const [animating, setAnimating] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [ready, setReady] = useState(false);
+  // Refs for the mq listener so we can remove it on cleanup
+  const mqRef = useRef<MediaQueryList | null>(null);
+  const mqHandlerRef = useRef<((e: MediaQueryListEvent) => void) | null>(null);
 
   const figureLabel = label ?? spec.label ?? spec.slug;
   const captionId = useId();
@@ -189,8 +192,16 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
     root.innerHTML = svg;
 
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    mqRef.current = mq;
     const isReduced = mq.matches;
     setReduced(isReduced);
+
+    // Live listener — respects OS setting toggled mid-session (#7 fix).
+    // Controls stay visible and advances remain functional; only the
+    // animation vs. instant-seek branch changes.
+    const handleMqChange = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mqHandlerRef.current = handleMqChange;
+    mq.addEventListener("change", handleMqChange);
 
     (async () => {
       // Dynamic import — keeps GSAP out of the server bundle.
@@ -398,6 +409,10 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
       const playing = playingRef.current as TweenLike | null;
       if (playing) playing.kill();
       tlRef.current = null;
+      // Remove the live reduced-motion listener
+      if (mqRef.current && mqHandlerRef.current) {
+        mqRef.current.removeEventListener("change", mqHandlerRef.current);
+      }
     };
     // Build once per (svg, spec) identity.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -462,7 +477,8 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
 
   const btnBase = cn(
     "inline-flex items-center gap-1.5 px-3 py-2",
-    "min-h-[44px] min-w-[44px] rounded-md",
+    // §9 touch target: 48px (raised from 44px per audit finding #2)
+    "min-h-[48px] min-w-[48px] rounded-md",
     "text-caption font-medium",
     "text-[var(--color-text-secondary)]",
     "border border-[var(--color-border-subtle)]",
@@ -517,12 +533,15 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           aria-label="Étape précédente"
         >
           <IconPrev />
-          <span className="hidden sm:inline">Précédent</span>
+          {/* #8: keep labels visible on mobile — footer flex-wraps so width is fine */}
+          <span>Précédent</span>
         </button>
 
+        {/* Step indicator — functional UI text: must pass 4.5:1.
+            Promoted from tertiary (#1 fix) to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1) */}
         <span
           className={cn(
-            "text-caption text-[var(--color-text-tertiary)]",
+            "text-caption text-[var(--color-text-secondary)]",
             "tabular-nums select-none min-w-[6ch] text-center"
           )}
           aria-live="polite"
@@ -542,23 +561,28 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           {atLast ? (
             <>
               <IconReset />
-              <span className="hidden sm:inline">Recommencer</span>
+              {/* #8: Recommencer label always visible — appears only at last beat,
+                  width is fine; bare icon alone is not self-evident */}
+              <span>Recommencer</span>
             </>
           ) : (
             <>
-              <span className="hidden sm:inline">Suivant</span>
+              {/* #8: keep Suivant label visible on mobile */}
+              <span>Suivant</span>
               <IconNext />
             </>
           )}
         </button>
       </div>
 
-      {/* Per-beat caption — announced politely, replaces in place (one slot). */}
+      {/* Per-beat caption — announced politely, replaces in place (one slot).
+          #9: rendered at body-sm (14px) — explanatory prose, not metadata.
+          #1: promoted to secondary color for 4.5:1 contrast floor. */}
       {currentCaption && (
         <figcaption
           id={captionId}
           className={cn(
-            "mt-2 text-caption text-[var(--color-text-tertiary)]",
+            "mt-2 text-body-sm text-[var(--color-text-secondary)]",
             "text-center max-w-[65ch] mx-auto"
           )}
           aria-live="polite"
