@@ -216,6 +216,15 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
       const hasDraw = !!gsap.plugins?.drawSVG;
       const hasMorph = !!gsap.plugins?.morphSVG;
 
+      // `fill` is animated by tweening the rect's GEOMETRY ATTRIBUTES
+      // (height/y or width/x), NOT a CSS/SVG scale transform. Scale transforms
+      // on SVG fight any authored transform-box/transform-origin and proved
+      // unreliable (bars half-filled or not at all); animating the attributes
+      // is exact and origin-free. We stash each rect's full authored geometry
+      // here because setPre collapses the attribute to its zero state.
+      const fillGeom = new Map<Element, { W: number; H: number; X: number; Y: number }>();
+      const numAttr = (n: Element, a: string) => parseFloat(n.getAttribute(a) || "0");
+
       // ── 1. Pre-state: hide / reset every animated target across ALL beats. ──
       // Idempotent with the authored SVG (later-beat elements authored hidden),
       // so this does not flash.
@@ -225,17 +234,31 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         switch (tw.verb) {
           case "draw":
           case "trace":
-            if (hasDraw) gsap.set(nodes, { drawSVG: "0%" });
+            // Force the stroke VISIBLE (override any authored no-JS opacity:0);
+            // DrawSVG hides it via stroke-dashoffset, not opacity. Without this,
+            // the curve "draws" to 100% but stays opacity:0 — invisible.
+            if (hasDraw) gsap.set(nodes, { drawSVG: "0%", autoAlpha: 1 });
             else gsap.set(nodes, { autoAlpha: 0 });
             break;
           case "fill": {
-            const origin =
-              tw.from === "left" ? "0% 50%"
-              : tw.from === "right" ? "100% 50%"
-              : tw.from === "up" ? "50% 0%"
-              : "50% 100%"; // default: grow up from bottom
-            const axis = tw.from === "left" || tw.from === "right" ? "scaleX" : "scaleY";
-            gsap.set(nodes, { [axis]: 0, transformOrigin: origin });
+            const horizontal = tw.from === "left" || tw.from === "right";
+            nodes.forEach((n) => {
+              const r = n as HTMLElement;
+              // Drop any authored transform / fill-box so only the attr tween acts.
+              n.removeAttribute("transform");
+              r.style.transformBox = "";
+              r.style.transformOrigin = "";
+              r.style.transform = "";
+              const g = { W: numAttr(n, "width"), H: numAttr(n, "height"), X: numAttr(n, "x"), Y: numAttr(n, "y") };
+              fillGeom.set(n, g);
+              gsap.set(n, { autoAlpha: 1 });
+              if (horizontal) {
+                gsap.set(n, { attr: { width: 0, x: tw.from === "right" ? g.X + g.W : g.X } });
+              } else {
+                // "up" → grow DOWN (top edge fixed); default/"down" → grow UP (bottom edge fixed)
+                gsap.set(n, { attr: { height: 0, y: tw.from === "up" ? g.Y : g.Y + g.H } });
+              }
+            });
             break;
           }
           case "assemble": {
@@ -279,8 +302,14 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
             else tl.to(nodes, { autoAlpha: 1, duration, ease }, pos);
             break;
           case "fill": {
-            const axis = tw.from === "left" || tw.from === "right" ? "scaleX" : "scaleY";
-            tl.to(nodes, { [axis]: 1, duration, ease }, pos);
+            const horizontal = tw.from === "left" || tw.from === "right";
+            nodes.forEach((n) => {
+              const g = fillGeom.get(n);
+              if (!g) return;
+              tl.to(n, horizontal
+                ? { attr: { width: g.W, x: g.X }, duration, ease }
+                : { attr: { height: g.H, y: g.Y }, duration, ease }, pos);
+            });
             break;
           }
           case "assemble": {
