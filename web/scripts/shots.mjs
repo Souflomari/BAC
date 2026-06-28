@@ -28,6 +28,8 @@
  */
 
 import { chromium } from "playwright-core";
+import { spawn } from "node:child_process";
+import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -37,10 +39,14 @@ function arg(name, fallback) {
   const i = argv.indexOf(`--${name}`);
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
 }
-const BASE_URL = process.env.BASE_URL || arg("base", "http://localhost:3000");
+// SERVE_PORT (env) → the harness spawns its own `next start` on that port,
+// waits for readiness, and kills it on exit. This is the reliable path in the
+// sandbox (where pkill/ps are restricted and a bash-backgrounded server dies
+// silently): the server is OUR child, so we can manage and kill it.
+const SERVE_PORT = process.env.SERVE_PORT ? Number(process.env.SERVE_PORT) : null;
+let BASE_URL = process.env.BASE_URL || arg("base", "http://localhost:3000");
 const SLUG = arg("slug", "pc/rlc-serie");
 const OUT = arg("out", "shots");
-const URL = `${BASE_URL}/notions/${SLUG}`;
 
 const VIEWPORTS = {
   desktop: { width: 1280, height: 900 },
@@ -85,10 +91,51 @@ async function settle(page, ms = 450) {
   await page.waitForTimeout(ms);
 }
 
+// ── Optional self-managed server ─────────────────────────────────────────────
+function waitForReady(url, timeoutMs = 45000) {
+  const deadline = Date.now() + timeoutMs;
+  return new Promise((resolve, reject) => {
+    const tick = () => {
+      const req = http.get(url, (res) => {
+        res.resume();
+        resolve(true);
+      });
+      req.on("error", () => {
+        if (Date.now() > deadline) reject(new Error("server not ready in time"));
+        else setTimeout(tick, 500);
+      });
+    };
+    tick();
+  });
+}
+
+let server = null;
+async function startServer() {
+  if (!SERVE_PORT) return;
+  console.log(`[shots] starting next start -p ${SERVE_PORT} …`);
+  server = spawn("node_modules/.bin/next", ["start", "-p", String(SERVE_PORT)], {
+    cwd: process.cwd(),
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  server.stdout.on("data", (d) => process.stdout.write(`[next] ${d}`));
+  server.stderr.on("data", (d) => process.stdout.write(`[next:err] ${d}`));
+  BASE_URL = `http://localhost:${SERVE_PORT}`;
+  await waitForReady(`${BASE_URL}/notions/${SLUG}`);
+  console.log(`[shots] server ready at ${BASE_URL}`);
+}
+function stopServer() {
+  if (server && !server.killed) {
+    try { server.kill("SIGKILL"); } catch { /* ignore */ }
+  }
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 const exe = findChromium();
+await startServer();
+// Recompute URL in case the server overrode BASE_URL.
+const TARGET = `${BASE_URL}/notions/${SLUG}`;
 console.log(`[shots] chromium: ${exe}`);
-console.log(`[shots] target:   ${URL}`);
+console.log(`[shots] target:   ${TARGET}`);
 console.log(`[shots] out:      ${outDir}`);
 
 const browser = await chromium.launch({ executablePath: exe });
@@ -102,7 +149,7 @@ try {
       reducedMotion: "no-preference",
     });
     const page = await context.newPage();
-    await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
+    await page.goto(TARGET, { waitUntil: "networkidle", timeout: 60000 });
     await settle(page, 800);
 
     for (const theme of ["light", "dark"]) {
@@ -150,7 +197,8 @@ try {
 
           // Step through up to 8 beats (guard against runaway).
           for (let beat = 0; beat < 8; beat++) {
-            await settle(page, 300);
+            // Long enough for a 0.6–0.9s draw/trace to fully settle before the shot.
+            await settle(page, 1300);
             const name = `clip-${f}-${label}-${theme}-beat-${beat}`;
             await fig.screenshot({ path: shotPath(name) });
             shots.push(name);
@@ -176,4 +224,5 @@ try {
   for (const s of shots) console.log(`         ${s}.png`);
 } finally {
   await browser.close();
+  stopServer();
 }

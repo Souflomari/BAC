@@ -73,14 +73,15 @@ interface TimelineLike {
   kill(): void;
   pause(): TimelineLike;
   seek(pos: string | number): TimelineLike;
+  time(t: number): TimelineLike;
   duration(): number;
   addLabel(label: string, position?: string | number): TimelineLike;
   to(targets: unknown, vars: Vars, position?: string | number): TimelineLike;
-  tweenTo(position: string | number, vars?: Vars): TweenLike;
 }
 interface GsapLike {
   registerPlugin(...args: unknown[]): void;
   set(targets: unknown, vars: Vars): void;
+  to(targets: unknown, vars: Vars): TweenLike;
   timeline(vars?: Vars): TimelineLike;
   plugins?: Record<string, unknown>;
 }
@@ -152,7 +153,8 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
   // render cycle never re-creates them.
   const tlRef = useRef<unknown>(null);
   const gsapRef = useRef<unknown>(null);
-  const playingRef = useRef<unknown>(null); // active tweenTo tween, if any
+  const playingRef = useRef<unknown>(null); // active advance tween, if any
+  const settleTimesRef = useRef<number[]>([]); // absolute timeline time of each beat's settle point
 
   const totalBeats = spec.beats.length;
   const [currentBeat, setCurrentBeat] = useState(0);
@@ -163,11 +165,28 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
   const figureLabel = label ?? spec.label ?? spec.slug;
   const captionId = useId();
 
+  // Aspect ratio from "minX minY w h" → "w / h", to reserve container space
+  // before the SVG is injected client-side (avoids layout shift).
+  const aspectRatio = (() => {
+    const p = spec.viewBox?.trim().split(/[\s,]+/).map(Number);
+    if (p && p.length === 4 && p[2] > 0 && p[3] > 0) return `${p[2]} / ${p[3]}`;
+    return undefined;
+  })();
+
   // ── Build the timeline once, after the SVG is in the DOM ───────────────────
   useEffect(() => {
     let cancelled = false;
     const root = stageRef.current;
     if (!root) return;
+
+    // Inject the SVG IMPERATIVELY (not via React's dangerouslySetInnerHTML).
+    // React owns the JSX-described DOM; if it also managed this innerHTML it
+    // would re-inject the SVG on the next re-render (e.g. when currentBeat
+    // changes), replacing the very nodes GSAP is animating with fresh authored
+    // ones — the timeline would then animate detached nodes and nothing would
+    // visibly move. By injecting here and leaving the container empty in JSX,
+    // React never touches the SVG subtree and GSAP's targets stay attached.
+    root.innerHTML = svg;
 
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const isReduced = mq.matches;
@@ -221,6 +240,12 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           }
           case "assemble": {
             const kids = nodes.flatMap((n) => Array.from(n.children));
+            // The GROUP is forced visible (overriding any authored no-JS
+            // opacity="0"); its CHILDREN carry the staggered entrance. Group
+            // visibility is then toggled OFF only by a `replace` directive — so
+            // each property (group.autoAlpha, children.autoAlpha) is touched by
+            // at most one timeline tween, avoiding seek-order ambiguity.
+            gsap.set(nodes, { autoAlpha: 1 });
             gsap.set(kids.length ? kids : nodes, { autoAlpha: 0, y: 6 });
             break;
           }
@@ -260,6 +285,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           }
           case "assemble": {
             const kids = nodes.flatMap((n) => Array.from(n.children));
+            // Stagger the children in (the group is already visible from setPre).
             tl.to(kids.length ? kids : nodes, {
               autoAlpha: 1,
               y: 0,
@@ -292,6 +318,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
 
       const tl = gsap.timeline({ paused: true });
       tl.addLabel("settle--1", 0); // notional "before beat 0"
+      const settleTimes: number[] = [];
       spec.beats.forEach((beat, i) => {
         const beatStart = tl.duration();
 
@@ -303,7 +330,10 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         // seeking back re-reveals it deterministically.
         const exits = (spec.replaces ?? []).filter((r) => r.beat === beat.id && r.exit);
         for (const r of exits) {
-          const exitNodes = sel(r.exit as string);
+          // `exit` is an element id; replace directives carry bare ids (no "#"),
+          // so normalise before selecting (a bare id would be read as a tag).
+          const target = /^[#.]/.test(r.exit as string) ? (r.exit as string) : `#${r.exit}`;
+          const exitNodes = sel(target);
           if (exitNodes.length) {
             tl.to(exitNodes, { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, beatStart);
           }
@@ -319,11 +349,13 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         // label then coincides with the previous settle point — harmless
         // (there is nothing to reveal), and seeking to either lands correctly.
         tl.addLabel(`settle-${i}`);
+        settleTimes[i] = tl.duration(); // absolute time of this beat's settle
       });
 
       tl.pause();
       tl.seek("settle-0"); // beat 0 shown settled, no animation
       tlRef.current = tl;
+      settleTimesRef.current = settleTimes;
       if (!cancelled) {
         setCurrentBeat(0);
         setReady(true);
@@ -348,20 +380,36 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
 
   function goTo(target: number, instant: boolean) {
     const tl = tlRef.current as TimelineLike | null;
+    const gsap = gsapRef.current as GsapLike | null;
     if (!tl) return;
     const playing = playingRef.current as TweenLike | null;
     if (playing) playing.kill();
 
-    if (instant || reduced) {
-      tl.pause();
-      tl.seek(`settle-${target}`);
+    const times = settleTimesRef.current;
+    const toT = times[target] ?? 0;
+
+    if (instant || reduced || !gsap) {
+      tl.time(toT);
       setCurrentBeat(target);
       return;
     }
+
+    // Animate the playhead by tweening a plain proxy object and driving
+    // tl.time() on each update. This is what tweenTo() does internally but is
+    // robust on a PAUSED timeline (tweenTo's own tween can fail to tick on a
+    // paused parent). A normal gsap.to on a proxy always autoplays + completes.
+    const fromT = times[currentBeat] ?? 0;
+    const proxy = { t: fromT };
     setAnimating(true);
-    const tween = tl.tweenTo(`settle-${target}`, {
+    const tween = gsap.to(proxy, {
+      t: toT,
+      duration: Math.max(0.2, Math.abs(toT - fromT)),
       ease: "none",
+      onUpdate: () => {
+        tl.time(proxy.t);
+      },
       onComplete: () => {
+        tl.time(toT);
         setAnimating(false);
         playingRef.current = null;
       },
@@ -410,10 +458,14 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           "[&_svg]:w-full [&_svg]:h-auto [&_svg]:block"
         )}
       >
+        {/* The SVG is injected imperatively in the effect (see note there);
+            this container stays empty in JSX so React never re-injects it.
+            aspectRatio (from the spec viewBox) reserves space to avoid layout
+            shift before the client-side injection paints. */}
         <div
           ref={stageRef}
-          className="flex justify-center"
-          dangerouslySetInnerHTML={{ __html: svg }}
+          className="flex justify-center [&>svg]:w-full"
+          style={aspectRatio ? { aspectRatio } : undefined}
           aria-hidden="true"
         />
       </div>
