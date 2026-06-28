@@ -5,6 +5,12 @@
 
    Philosophy (§2): tinted neutrals, never pure black/white; single restrained
    blue accent; dark mode first-class; semantic colors only for meaning.
+
+   ADR 0022 additions (2026):
+   - 5-step elevation scale (--elevation-0 … --elevation-4)
+   - Measure tokens (--measure-prose, --measure-wide)
+   - Canonical figure palette (--figure-*)
+   - Shared .focus-ring component class (@layer components)
    ───────────────────────────────────────────────────────────────────────────── */
 
 /* KaTeX stylesheet — math rendered as live text, never images (DESIGN-BIBLE §3).
@@ -42,6 +48,46 @@
   --color-warning-subtle:  #FFF8E6;
   --color-error:           #8B2020;
   --color-error-subtle:    #FDF0F0;
+
+  /* ── Elevation scale (ADR 0022) ───────────────────────────────────────────
+     5-step tinted drop-shadow ramp. Blue-tinted (rgba 30,45,70) stays
+     coherent with the tinted-neutral philosophy. Larger N = more lifted.
+     Light: progressive drop-shadow enlargement + softening. */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px -1px rgba(30,45,70,.06), 0 1px 3px 0 rgba(30,45,70,.05);
+  --elevation-2: 0 2px 4px -2px rgba(30,45,70,.06), 0 4px 12px 0 rgba(30,45,70,.08);
+  --elevation-3: 0 4px 8px -3px rgba(30,45,70,.08), 0 8px 24px -2px rgba(30,45,70,.10);
+  --elevation-4: 0 8px 16px -4px rgba(30,45,70,.10), 0 16px 40px -4px rgba(30,45,70,.14);
+
+  /* ── Measure tokens (ADR 0022) ────────────────────────────────────────────
+     Canonical line-length controls. Prose uses --measure-prose; the tailwind
+     maxWidth.reading mirrors this value but --measure-prose is the source of
+     truth (consumed directly by .prose-lesson and .notion-prose). */
+  --measure-prose: 65ch;
+  --measure-wide:  72ch;
+
+  /* ── Figure palette (ADR 0022) ────────────────────────────────────────────
+     Unified with app tokens. Replaces the drifted warm palette (#F5F3EF
+     background / #2A2A2E ink) that motion SVGs had adopted. These are the
+     canonical values that motion-author's SVGs MUST use from Phase 2 onward.
+     Role colors are color-blind distinguishable (Okabe-Ito safe subset,
+     shifted to match the blue accent family). */
+
+  /* Figure surfaces and ink */
+  --figure-surface:       #FAFBFC;   /* hair off surface-raised; figures read as the same family */
+  --figure-ink:           #1A2332;   /* = --color-text-primary */
+  --figure-ink-soft:      #4A5568;   /* = --color-text-secondary */
+  --figure-grid:          #E4E7ED;   /* = --color-border-subtle */
+  --figure-accent:        #3E5C86;   /* = brand accent */
+
+  /* Energy role colors — two stores (C and L) must be distinct and distinguishable */
+  --figure-energy-C:      #3E7BC2;   /* capacitor energy — blue (accent-adjacent, muted) */
+  --figure-energy-L:      #2D7A5F;   /* inductor energy — teal-green (safe C/B-blind contrast) */
+
+  /* Régime role colors — three regime traces */
+  --figure-regime-periodic:       #3E5C86;   /* périodique — brand blue */
+  --figure-regime-pseudo:         #8B5E3C;   /* pseudo-périodique — warm brown (safe, distinct) */
+  --figure-regime-aperiodic:      #5C3E86;   /* apériodique — purple (third hue, distinct) */
 }
 
 /* ── Dark mode tokens ───────────────────────────────────────────────────────── */
@@ -68,6 +114,38 @@
   --color-warning-subtle:  #2B2000;
   --color-error:           #F87171;
   --color-error-subtle:    #2B0F0F;
+
+  /* ── Dark elevation (ADR 0022) ────────────────────────────────────────────
+     Layered-luminance approach: depth reads as lighter edges, not black blobs.
+     Each step adds: (a) a soft dark drop shadow (rgba 0,0,0), and
+     (b) a subtle top inset hairline (rgba 255,255,255,.04) that mimics a
+     slightly lighter top edge — the core of dark-mode "luminance elevation."
+     The inset hairline compound works in CSS box-shadow as a second value. */
+  --elevation-0: none;
+  --elevation-1: 0 1px 3px 0 rgba(0,0,0,.18), inset 0 1px 0 0 rgba(255,255,255,.04);
+  --elevation-2: 0 2px 6px 0 rgba(0,0,0,.22), inset 0 1px 0 0 rgba(255,255,255,.05);
+  --elevation-3: 0 4px 16px 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,255,255,.06);
+  --elevation-4: 0 8px 28px 0 rgba(0,0,0,.36), inset 0 1px 0 0 rgba(255,255,255,.08);
+
+  /* Measure tokens do not change in dark mode */
+
+  /* ── Dark figure palette (ADR 0022) ──────────────────────────────────────
+     Figures adopt the dark UI surface family — same visual world, not a
+     separate warm warm-paper world. */
+  --figure-surface:       #1C2230;   /* = --color-surface-raised dark */
+  --figure-ink:           #E8ECF2;   /* = --color-text-primary dark */
+  --figure-ink-soft:      #9AAABF;   /* = --color-text-secondary dark */
+  --figure-grid:          #2A3245;   /* = --color-border-subtle dark */
+  --figure-accent:        #7E9CC8;   /* lighter accent for dark — same as accent.light */
+
+  /* Energy role colors — lightened for dark-mode legibility */
+  --figure-energy-C:      #6BA3D9;   /* capacitor — lighter blue */
+  --figure-energy-L:      #52A882;   /* inductor — lighter teal-green */
+
+  /* Régime role colors — dark variants */
+  --figure-regime-periodic:       #7E9CC8;   /* périodique — lighter brand blue */
+  --figure-regime-pseudo:         #C49A6C;   /* pseudo-périodique — lighter warm brown */
+  --figure-regime-aperiodic:      #9B7EC8;   /* apériodique — lighter purple */
 }
 
 /* ── Base typography ────────────────────────────────────────────────────────── */
@@ -93,6 +171,8 @@ body {
 }
 
 /* ── Focus ring — visible, clear (DESIGN-BIBLE §9) ─────────────────────────── */
+/* Global catch-all: applied to every focusable element that does not already
+   carry its own .focus-ring class or a bespoke override. Keep this rule. */
 :focus-visible {
   outline: 2px solid #3E5C86;
   outline-offset: 2px;
@@ -111,14 +191,49 @@ body {
   }
 }
 
+/* ── Component classes (ADR 0022) ───────────────────────────────────────────── */
+@layer components {
+  /*
+   * .focus-ring — shared focus utility (ADR 0022, DESIGN-BIBLE §9)
+   *
+   * Replace the ad-hoc Tailwind utility chain:
+   *   focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2
+   * with a single class: `focus-ring`
+   *
+   * MIGRATION: do NOT migrate existing ad-hoc usages in this phase (Phase 1).
+   * The ad-hoc pattern is listed in docs/design/COMPONENT-STATES.md §Migration.
+   * Migrate file-by-file in a later pass once design critics have validated
+   * this token set. The global :focus-visible catch-all above already provides
+   * parity for anything that doesn't carry the class explicitly.
+   *
+   * Files to migrate (grepped 2026-06-28):
+   *   src/app/not-found.tsx
+   *   src/app/notions/[subject]/[slug]/page.tsx
+   *   src/app/page.tsx
+   *   src/components/notion/EmbedPanel.tsx       (3 occurrences)
+   *   src/components/notion/CheckpointItem.tsx
+   *   src/components/ui/SiteHeader.tsx           (2 occurrences)
+   *   src/components/notion/McqItem.tsx          (2 occurrences)
+   *   src/components/ui/FontSizeStepper.tsx
+   *   src/components/notion/MarginRail.tsx
+   *   src/components/notion/MotionDiagram.tsx
+   */
+  .focus-ring:focus-visible {
+    outline: 2px solid #3E5C86;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
 /* ── Prose styles — bounded reading column ──────────────────────────────────── */
 /* Applied to .prose-lesson — the lesson markdown container.
-   DESIGN-BIBLE §3: 65ch max, 1.5 line-height, heading hierarchy by scale+weight only. */
+   DESIGN-BIBLE §3: 65ch max, 1.5 line-height, heading hierarchy by scale+weight only.
+   ADR 0022: max-width now consumes --measure-prose (canonical source). */
 .prose-lesson {
   color: var(--color-text-primary);
   font-size: 1.0625rem; /* 17px — kinder for long sessions */
   line-height: 1.6;
-  max-width: 65ch;
+  max-width: var(--measure-prose);
 }
 
 .prose-lesson h1,
@@ -308,9 +423,10 @@ body {
  * This is the #4 fix: prose is no longer left-anchored under the rail.
  * mx-auto centers the 65ch column in the remaining space of the content band,
  * giving symmetric left/right margins in the reading area.
+ * ADR 0022: max-width now consumes --measure-prose (canonical source).
  */
 .notion-prose {
-  max-width: 65ch;
+  max-width: var(--measure-prose);
   margin-left: auto;
   margin-right: auto;
 }
