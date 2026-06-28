@@ -52,8 +52,7 @@ This is the spine of correctness; the review gate (§D6) bounces any drift.
 The reviewer's remark (brief #4, #5): *equations are asserted, not visibly derived* — and
 specifically *where does `u_C = q/C` come from?* The wave-1 lesson asserts `u_C=q/C`,
 `i=dq/dt`, `u_L=L·di/dt` as "known from RC/RL" (lesson R2 lines 104–108). The design pass keeps
-that brevity for the *full* re-derivation (we do NOT re-teach RC/RL) but adds a **brief
-intuition reveal** for each constitutive relation and **builds the loi des mailles term-by-term on
+that brevity for the *full* re-derivation (we do NOT re-teach RC/RL) but adds a **fuller intuition explanation** (editorial: *go deeper on origins*) for each constitutive relation and **builds the loi des mailles term-by-term on
 a labelled schematic** at R2.
 
 ### D1.1 — R2: the loi-des-mailles term-by-term build (the central derive-with-figure beat)
@@ -82,22 +81,27 @@ student sees *what each symbol is on the circuit* as it enters the equation.
   M4 confusion (R in the period) are both *spatial* confusions. Seeing `u_C` sit on the condensateur
   and `R` be physically absent from the ideal loop is the cleanest confrontation.
 
-### D1.2 — Origin of `u_C = q/C`, `i = dq/dt`, `u_L = L·di/dt` — intuition shown, not re-taught
+### D1.2 — Origin of `u_C = q/C`, `i = dq/dt`, `u_L = L·di/dt` — explained properly (editorial: GO DEEPER)
 
-The reviewer wants the *intuition* shown (Crash-Course/TED register), **briefly**, without
-re-teaching the RC/RL chapters. These are **micro-reveals**, one or two sentences + one small visual
-each, attached at first use (R1 for `i=dq/dt`; R2 for `u_C=q/C` and `u_L=L·di/dt`). They are
-**not** new rungs and **not** worked derivations — they are "remember *why* this is true" chips.
+**Editorial decision (Phase B gate): GO DEEPER on origins.** The reviewer chose a fuller treatment over
+brief chips — the student should actually understand *where each relation comes from*, in a
+Crash-Course/TED register, even if that lightly revisits the RC/RL idea. So these are **short
+explanatory passages** (≈3–5 sentences + a small dedicated visual each), not one-liners — but still
+**bounded**: explain the *origin intuition* of each relation, do **not** re-derive the entire RC/RL
+chapters or turn R2 into a full capacitor/inductor lesson.
 
-| Relation | Where (first use) | The one-breath intuition (FR register, content-author writes) | Visual support |
+| Relation | Where (first use) | What to explain (FR, Crash-Course/TED register; content-author writes the fuller version) | Visual support |
 |---|---|---|---|
-| `u_C = q/C` | R2 | « Plus on entasse de charge `q` sur les armatures, plus la tension monte — proportionnellement. `C` (la capacité) est juste le facteur de proportionnalité : `q = C·u_C`, donc `u_C = q/C`. » | A tiny capacitor with charge accumulating on the plates, `u_C` rising in step. `type: structural-diagram` / `tool: svg+katex` — part of the D2.1 `rlc-schema` decomposition, NOT a separate figure. |
-| `i = dq/dt` | R1 | « Le courant, c'est le débit de charge : combien de charge passe par seconde. Mathématiquement, c'est la vitesse de variation de `q` : `i = dq/dt`. » | Inline KaTeX + a soft arrow on the loop showing charge flowing off the plate; reuse the R1 schematic. No standalone figure. |
-| `u_L = L·di/dt` | R2 | « La bobine s'oppose aux *variations* de courant : plus le courant change vite, plus elle réagit fort. La tension à ses bornes est proportionnelle à la vitesse de variation du courant : `u_L = L·di/dt`. » | Inline; optionally one frame of the loi-des-mailles build where the bobine is highlighted as "the one that reacts to *change*". No standalone figure. |
+| `u_C = q/C` | R2 | A capacitor *stores charge*; the more charge `q` packed on the plates, the harder they push back — that push is the tension `u_C`. Make the proportionality felt (double the charge → double the tension), name `C` as the constant of proportionality (charge held per volt), arrive at `q = C·u_C` ⇒ `u_C = q/C`. Concrete, a few sentences. | A **dedicated** capacitor visual: charge accumulating on the plates, `u_C` rising in step (short coded reveal/animation welcome). `type: structural-diagram` / `tool: svg+katex` (+ optional `css` motion). |
+| `i = dq/dt` | R1 | Current as the *flow rate of charge* — how much charge passes a point per second — and why that is exactly the rate of change of `q`: `i = dq/dt`. Anchor it physically (a crowd through a doorway per second). A few sentences. | Inline KaTeX + a soft animated arrow on the loop showing charge leaving the plate; may reuse the R1 schematic, but give the idea its own moment. |
+| `u_L = L·di/dt` | R2 | Self-induction at intuition level: a coil *opposes changes* in current (inertia for current); the faster the current changes, the harder it pushes back, so its tension is proportional to the *rate of change* of current: `u_L = L·di/dt`, with `L` the strength of that opposition. A few sentences; **no flux integrals**. | A small dedicated visual: current ramping and the coil reacting (short coded reveal). |
 
-**Hard rule for content-author (D1.2):** these are **recall-with-intuition**, not derivations. Each
-is ≤2 sentences. Do **not** expand into a mini-lesson on capacitors/inductors — that violates the
-"do not re-teach RC/RL" rule in `spec.md §4`. If a chip starts to grow into a paragraph, cut it back.
+**Rule for content-author (D1.2, updated per the editorial "go deeper" decision):** give each relation a
+genuine **origin explanation** — a short passage (≈3–5 sentences), Crash-Course/TED register, with its
+own small visual — so a struggling student understands *why* it is true, not just that it is. Still
+**bounded**: explain the relation's origin intuition only; do **not** re-derive the full RC/RL chapters,
+introduce flux integrals, or turn R2 into a prerequisite lesson. Depth on *origin intuition* — not scope
+creep into RC/RL.
 
 ### D1.3 — R5: the verification, shown on the same figure family
 
@@ -384,7 +388,9 @@ still applies in full):
 - **Progressive figures are reveals of the SAME content (D2), not shallower figures:** depth and all
   labels survive; only per-moment density drops. The consolidation table (R4) and full labelled R2
   build still show everything, once the student has met each piece.
-- **Origin chips (D1.2) are ≤2 sentences each** and do **not** re-teach RC/RL (spec §4 rule held).
+- **Origin explanations (D1.2)** genuinely explain where each relation comes from (Crash-Course/TED
+  register, per the editorial *go deeper* decision) with a small dedicated visual each; still
+  **bounded** — origin intuition only, **not** a full RC/RL re-derivation or flux integrals.
 - **Checkpoints (D4) are calm-core formative probes:** 2–4 total, immediate model-naming feedback, **no
   score/streak/tally/animation**; the end-bank ≥3-per-misconception floor is **unchanged** and not
   reduced by checkpoints; clones are labelled so coverage isn't double-counted.
@@ -404,17 +410,16 @@ still applies in full):
 
 ## D7. Open items for the human (design-pass editorial gate)
 
-1. ⚠ **Manim revisit (M-1).** `spec.md §3` declined a Manim energy clip; this addendum commissions it,
-   scoped to the *read* energy diagram (not the manipulated C2). Confirm this narrow revisit is right,
-   or hold M-1 and rely on the PhET interactive + static D2.3 reveal.
-2. ⚠ **Checkpoint count/placement (D4).** 4 checkpoints after R2/R3/R4/R7 proposed. Confirm the count
-   (2–4) and that R5 is rightly checkpoint-free (boundary beat → end bank), and R0/R1 rightly
-   uninterrupted.
-3. ⚠ **Veo budget (V-1 / V-2).** One mood clip (V-1, R0 balancement) proposed; V-2 (entretien "seau
-   percé") held. Confirm one is enough, or release V-2.
-4. ⚠ **`u_C=q/C` chip depth (D1.2).** Confirm the ≤2-sentence intuition register is right and does not
-   need a fuller derivation (the human knows where PC students actually need more on the constitutive
-   relations).
+1. ✅ **RESOLVED (editorial gate): Manim revisit (M-1).** Confirmed by the human's "Both" tooling answer
+   (Q3) + ADR 0021, which supersede `spec.md §3`'s "no Manim". Coded motion (Manim/CSS) is sanctioned,
+   scoped to the *read* figures (not the manipulated C2). Build M-1/M-2/M-3.
+2. ✅ **RESOLVED (editorial gate): Checkpoint count/placement (D4).** Confirmed **4 checkpoints** after
+   R2/R3/R4/R7; R5 rightly checkpoint-free (boundary beat → end bank); R0/R1 rightly uninterrupted.
+3. ✅ **RESOLVED (editorial gate): Veo budget.** **One** mood clip (V-1, R0 balancement); **V-2 held**,
+   not built (release only if the editorial re-review finds the entretien intuition doesn't land).
+4. ✅ **RESOLVED (editorial gate): origin depth (D1.2).** The human chose **go deeper on origins** —
+   fuller Crash-Course/TED explanations (≈3–5 sentences + a dedicated visual each), bounded to origin
+   intuition (no full RC/RL re-derivation, no flux integrals). D1.2 updated accordingly.
 5. **PhET fit (cross-ref ADR 0021 / brief #6).** The interactive swap (Falstad → PhET POC) is the
    interactive-author's task; flagged here only because the C2 references in `spec.md §3/§7` predate
    ADR 0021. supabase/frontend boundary-guard config for the PhET embed is confirmed at render (Phase D).
