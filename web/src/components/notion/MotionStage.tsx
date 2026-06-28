@@ -294,6 +294,21 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
       tl.addLabel("settle--1", 0); // notional "before beat 0"
       spec.beats.forEach((beat, i) => {
         const beatStart = tl.duration();
+
+        // `replace` layout: at this beat's START, fade OUT whatever element
+        // currently occupies a slot, concurrently with the new entrant
+        // animating in. One slot, one tenant — this is the structural cure for
+        // the "writing over writing" vertical pile-up. The exit element was a
+        // prior beat's entrant (already visible at this point on the timeline);
+        // seeking back re-reveals it deterministically.
+        const exits = (spec.replaces ?? []).filter((r) => r.beat === beat.id && r.exit);
+        for (const r of exits) {
+          const exitNodes = sel(r.exit as string);
+          if (exitNodes.length) {
+            tl.to(exitNodes, { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, beatStart);
+          }
+        }
+
         let cursor = beatStart;
         for (const tw of beat.tweens) {
           const pos = tw.at != null ? beatStart + tw.at : cursor;
