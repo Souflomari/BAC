@@ -1,28 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520" width="680" height="520"
      font-family="'Segoe UI', system-ui, sans-serif"
-     aria-label="Animation : échanges d'énergie E_C et E_L en antiphase dans le circuit RLC">
+     aria-label="Animation : échanges d'énergie E_C et E_L en antiphase dans le circuit RLC"
+     data-motion-steps="5">
 
   <!--
-    M-1 energy-pendulum.motion.svg
+    M-1 energy-pendulum.motion.svg  (v2 — click-to-advance)
     ─────────────────────────────────────────────────────────────────────────
-    PURPOSE   Show EC and EL trading places in strict antiphase over one
-              period (ideal pass), then a second pass with a qualitatively
-              shrinking total envelope (damped, R present). No e^{-αt}
-              formula, no damping coefficient on screen (§0.4 / D0).
+    STEP CONTRACT (renderer drives visibility)
+      step-1  E_C full / E_L empty  (t = 0, initial state)
+      step-2  mid-transfer arrow C → L
+      step-3  E_L full / E_C empty  (t = T/4)
+      step-4  Total-energy flat line appears (ideal, conserved)
+      step-5  Damped panel: envelope shrinks qualitatively (effet Joule)
 
-    STRUCTURE
-      Pass 1 (ideal, t = 0 → 4 s):  EC fills ↔ EL fills, total flat.
-      Pass 2 (damped, t = 4 → 8 s): same exchange but total shrinks slowly.
-      Each pass uses stroke-dashoffset animation to draw the curves.
+    CUMULATIVE: showing step N means steps 1..N are all visible.
+    The renderer sets display:none on steps > current; reveals on click.
 
-    REDUCED-MOTION SAFETY
-      Under @media (prefers-reduced-motion: reduce) all SMIL animations are
-      paused at end state (fill="freeze") and all CSS animations are replaced
-      with animation: none — the SVG then shows the fully-built static state
-      (both panels complete), which is the D2.3 static figure floor.
-      A CSS class .rmfinal forces opacity:1 on every element under that query.
+    ENTRANCE TRANSITION
+      Each step group has opacity:0 by default and transitions to opacity:1
+      when display switches from none to block (the renderer adds the
+      .step-visible class, which sets opacity:1 with a 350ms ease-out).
+      The autoplay timeline is REMOVED; no animation fires on page load.
 
-    PALETTE (matches existing static SVGs)
+    REDUCED-MOTION
+      @media (prefers-reduced-motion: reduce): all step groups are
+      display:block and opacity:1 — the full final state is shown statically.
+      No transition runs.
+
+    BOUNDARY (§0.4)
+      Damped envelope: qualitative only. No e^{-αt} formula, no coefficient.
+
+    PALETTE
       Background  #F5F3EF    Panel bg   #EDEAE5
       EC curve    #3E5C86    EL curve   #7E9CC8
       Total line  #5A7A4A    Text       #2A2A2E
@@ -31,196 +39,117 @@
   -->
 
   <defs>
-    <!-- Clip mask: reveals curves left-to-right as stroke-dashoffset animates -->
-    <!-- Not needed — we use stroke-dasharray/offset directly on the paths -->
-
-    <!-- Reduced-motion: freeze all animated elements to final state via CSS -->
     <style>
-      /* ── Reduced-motion override ─────────────────────────────────────── */
+      /* ── Step entrance: elements fade in when their step group is shown ── */
+      /* The renderer removes display:none and adds .step-visible class.      */
+      /* We use a CSS transition on opacity so the entrance is gentle (350ms). */
+      [id^="step-"] {
+        /* Groups start hidden; renderer shows them by removing display:none */
+      }
+      .step-enter {
+        opacity: 0;
+        transition: opacity 350ms ease-out;
+      }
+      .step-visible .step-enter {
+        opacity: 1;
+      }
+
+      /* Curves: draw-in via stroke-dashoffset transition when step shown.    */
+      /* The renderer adds .step-visible to the parent step group.            */
+      .curve-enter {
+        transition: stroke-dashoffset 380ms ease-out, opacity 350ms ease-out;
+        opacity: 0;
+      }
+      .step-visible .curve-enter {
+        opacity: 1;
+        stroke-dashoffset: 0 !important;
+      }
+
+      /* ── Reduced-motion: show all steps fully, no transition ───────────── */
       @media (prefers-reduced-motion: reduce) {
-        .anim-curve   { animation: none !important; stroke-dashoffset: 0 !important; }
-        .anim-label   { animation: none !important; opacity: 1 !important; }
-        .anim-line    { animation: none !important; opacity: 1 !important; }
-        .anim-fill    { animation: none !important; opacity: 0.08 !important; }
-        .anim-badge   { animation: none !important; opacity: 1 !important; }
-        .pass2-panel  { animation: none !important; opacity: 1 !important; }
-        .pass1-panel  { animation: none !important; opacity: 1 !important; }
-      }
-
-      /* ── Pass 1 panel fade-in ────────────────────────────────────────── */
-      .pass1-panel {
-        opacity: 0;
-        animation: fadeIn 0.5s ease-out 0.2s forwards;
-      }
-      /* ── Pass 2 panel fade-in (after pass 1 completes at ~4 s) ───────── */
-      .pass2-panel {
-        opacity: 0;
-        animation: fadeIn 0.5s ease-out 4.2s forwards;
-      }
-
-      /* ── EC curve draw — pass 1 (ideal) ─────────────────────────────── */
-      /* Path length ≈ 505 px (one full period, ideal).
-         Draws over 3 s starting at t=0.5 s */
-      .ec1-curve {
-        stroke-dasharray: 505 505;
-        stroke-dashoffset: 505;
-        animation: drawEC1 3s ease-in-out 0.5s forwards;
-      }
-      /* ── EL curve draw — pass 1 (ideal) ─────────────────────────────── */
-      /* Starts 0.1 s after EC to make the antiphase visible as reveal */
-      .el1-curve {
-        stroke-dasharray: 505 505;
-        stroke-dashoffset: 505;
-        animation: drawEL1 3s ease-in-out 0.6s forwards;
-      }
-      /* ── Total flat line — pass 1 ────────────────────────────────────── */
-      .total1-line {
-        opacity: 0;
-        animation: fadeIn 0.6s ease-out 2.5s forwards;
-      }
-      /* ── Labels — pass 1 ─────────────────────────────────────────────── */
-      .label-ec1 { opacity:0; animation: fadeIn 0.4s ease-out 1.2s forwards; }
-      .label-el1 { opacity:0; animation: fadeIn 0.4s ease-out 1.8s forwards; }
-      .label-tot1{ opacity:0; animation: fadeIn 0.4s ease-out 2.8s forwards; }
-      .badge-p1  { opacity:0; animation: fadeIn 0.4s ease-out 0.5s forwards; }
-
-      /* ── EC curve draw — pass 2 (damped) ────────────────────────────── */
-      .ec2-curve {
-        stroke-dasharray: 490 490;
-        stroke-dashoffset: 490;
-        animation: drawEC2 3s ease-in-out 4.7s forwards;
-      }
-      /* ── EL curve draw — pass 2 (damped) ────────────────────────────── */
-      .el2-curve {
-        stroke-dasharray: 490 490;
-        stroke-dashoffset: 490;
-        animation: drawEL2 3s ease-in-out 4.8s forwards;
-      }
-      /* ── Envelope (total shrinking) — pass 2 ────────────────────────── */
-      .total2-env {
-        opacity: 0;
-        animation: fadeIn 0.6s ease-out 6.5s forwards;
-      }
-      /* ── Joule label + heat fill — pass 2 ───────────────────────────── */
-      .label-joule { opacity:0; animation: fadeIn 0.5s ease-out 7s forwards; }
-      .heat-fill   { opacity:0; animation: heatFill 0.8s ease-out 7s forwards; }
-      .badge-p2    { opacity:0; animation: fadeIn 0.4s ease-out 4.5s forwards; }
-      .label-ec2   { opacity:0; animation: fadeIn 0.4s ease-out 5.3s forwards; }
-      .label-el2   { opacity:0; animation: fadeIn 0.4s ease-out 5.9s forwards; }
-      .label-tot2  { opacity:0; animation: fadeIn 0.4s ease-out 6.8s forwards; }
-
-      /* ── Keyframes ───────────────────────────────────────────────────── */
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-      @keyframes heatFill {
-        from { opacity: 0; }
-        to   { opacity: 0.08; }
-      }
-      @keyframes drawEC1 {
-        from { stroke-dashoffset: 505; }
-        to   { stroke-dashoffset: 0;   }
-      }
-      @keyframes drawEL1 {
-        from { stroke-dashoffset: 505; }
-        to   { stroke-dashoffset: 0;   }
-      }
-      @keyframes drawEC2 {
-        from { stroke-dashoffset: 490; }
-        to   { stroke-dashoffset: 0;   }
-      }
-      @keyframes drawEL2 {
-        from { stroke-dashoffset: 490; }
-        to   { stroke-dashoffset: 0;   }
+        [id^="step-"] {
+          display: block !important;
+          opacity: 1 !important;
+        }
+        .step-enter {
+          opacity: 1 !important;
+          transition: none !important;
+        }
+        .curve-enter {
+          opacity: 1 !important;
+          stroke-dashoffset: 0 !important;
+          transition: none !important;
+        }
       }
     </style>
   </defs>
 
   <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- BACKGROUND                                                            -->
+  <!-- BACKGROUND + CHROME (always visible, not part of any step)           -->
   <!-- ══════════════════════════════════════════════════════════════════════ -->
   <rect width="680" height="520" rx="8" fill="#F5F3EF"/>
 
-  <!-- Title -->
   <text x="340" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">
     Échanges d'énergie dans le circuit RLC
   </text>
-
-  <!-- Sequence indicator -->
   <text x="340" y="44" text-anchor="middle" font-size="10.5" fill="#8A8A92">
-    Passe 1 : cas idéal (R ≈ 0)  →  Passe 2 : cas amorti (R ≠ 0, qualitative)
+    Cas idéal (R ≈ 0)  →  puis cas amorti (R ≠ 0, qualitatif)
+  </text>
+
+  <!-- Shared legend (always visible) -->
+  <line x1="68"  y1="478" x2="98"  y2="478" stroke="#3E5C86" stroke-width="2.5"/>
+  <text x="103" y="482" font-size="10.5" fill="#3E5C86">E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="#2A2A2E"> = ½q²/C  (condensateur)</tspan></text>
+
+  <line x1="310" y1="478" x2="340" y2="478" stroke="#7E9CC8" stroke-width="2.5"/>
+  <text x="345" y="482" font-size="10.5" fill="#7E9CC8">E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="#2A2A2E"> = ½Li²  (bobine)</tspan></text>
+
+  <line x1="520" y1="478" x2="550" y2="478" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="555" y="482" font-size="10.5" fill="#5A7A4A">E total</text>
+
+  <text x="340" y="500" text-anchor="middle" font-size="9" fill="#8A8A92" font-style="italic">
+    Amortissement représenté qualitativement — aucun coefficient numérique
   </text>
 
   <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- PASS 1 — IDEAL (R ≈ 0) : E_C + E_L = constante                      -->
-  <!-- Panel: x=38 y=54 w=296 h=230                                         -->
-  <!-- Plot origin (axis corner): x=90, y=260  Plot width=240 height=185    -->
+  <!-- PASS 1 PANEL SHELL (axes + static labels — always visible once       -->
+  <!-- step-1 reveals; we include it inside step-1)                         -->
   <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g class="pass1-panel">
+
+  <!-- ════════════════════════════════════════════
+       STEP 1 — E_C full / E_L empty (t = 0)
+       Shows: ideal panel background, axes, E_C
+       curve at maximum, E_L curve at zero (flat
+       on the axis), t=0 marker highlighted.
+       ════════════════════════════════════════════ -->
+  <g id="step-1" class="step-visible">
     <!-- Panel bg -->
     <rect x="38" y="54" width="296" height="235" rx="6" fill="#EDEAE5"/>
 
     <!-- Panel header -->
     <text x="186" y="75" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas idéal  (R ≈ 0)</text>
 
-    <!-- Sub-caption (appears with total line) -->
-    <text class="label-tot1 anim-label" x="186" y="89" text-anchor="middle" font-size="10" fill="#5A7A4A">
-      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = constante</tspan>
-    </text>
-
     <!-- Badge -->
-    <g class="badge-p1 anim-badge">
-      <rect x="44" y="60" width="46" height="16" rx="3" fill="#3E5C86" opacity="0.15"/>
-      <text x="67" y="72" text-anchor="middle" font-size="9.5" font-weight="600" fill="#3E5C86">Passe 1</text>
-    </g>
+    <rect x="44" y="60" width="46" height="16" rx="3" fill="#3E5C86" opacity="0.15"/>
+    <text x="67" y="72" text-anchor="middle" font-size="9.5" font-weight="600" fill="#3E5C86">Passe 1</text>
 
     <!-- Axes -->
-    <!-- x-axis -->
     <line x1="90" y1="260" x2="316" y2="260" stroke="#8A8A92" stroke-width="1.5"/>
     <polygon points="316,260 305,255 305,265" fill="#8A8A92"/>
-    <!-- y-axis -->
     <line x1="90" y1="260" x2="90" y2="98" stroke="#8A8A92" stroke-width="1.5"/>
     <polygon points="90,98 85,109 95,109" fill="#8A8A92"/>
-    <!-- Axis labels -->
     <text x="320" y="264" font-size="11" fill="#6B6B72">t</text>
     <text x="83" y="96" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
     <text x="83" y="263" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <!-- E_max tick -->
     <line x1="86" y1="132" x2="94" y2="132" stroke="#8A8A92" stroke-width="1.2"/>
     <text x="82" y="138" text-anchor="end" font-size="9" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
 
-    <!--
-      EC ideal: cos² shape, period = 200px (half-energy-period = 100px)
-      EC nodes: (90,132)→(140,260)→(190,132)→(240,260)→(290,132)→partial
-      EL nodes: (90,260)→(140,132)→(190,260)→(240,132)→(290,260)→partial
-      Path length for dasharray: ~505px each
-    -->
-
-    <!-- EC curve (ideal) -->
-    <path class="ec1-curve anim-curve"
-      d="M90,132 C105,132 120,260 140,260 C160,260 175,132 190,132
-         C205,132 220,260 240,260 C260,260 275,132 290,132 C300,132 310,196 314,196"
-      fill="none" stroke="#3E5C86" stroke-width="2.5" stroke-linejoin="round"/>
-
-    <!-- EL curve (ideal) -->
-    <path class="el1-curve anim-curve"
-      d="M90,260 C110,260 125,132 140,132 C155,132 170,260 190,260
-         C210,260 225,132 240,132 C255,132 270,260 290,260 C300,260 310,196 314,196"
-      fill="none" stroke="#7E9CC8" stroke-width="2.5" stroke-linejoin="round"/>
-
-    <!-- Total flat line (ideal) — appears after curves mostly drawn -->
-    <line class="total1-line anim-line"
-      x1="90" y1="132" x2="314" y2="132"
-      stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
-
-    <!-- Key instant markers (static, shown from start so axes read) -->
+    <!-- Key instant markers -->
     <line x1="90"  y1="132" x2="90"  y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
     <line x1="140" y1="132" x2="140" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
     <line x1="190" y1="132" x2="190" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
     <line x1="240" y1="132" x2="240" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
 
-    <!-- Instant labels on x-axis -->
+    <!-- x-axis labels -->
     <circle cx="90"  cy="260" r="2.5" fill="#3E5C86"/>
     <text x="90"  y="275" text-anchor="middle" font-size="8.5" fill="#3E5C86">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> max</tspan></text>
     <text x="90"  y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i = 0</text>
@@ -243,155 +172,191 @@
     <line x1="190" y1="246" x2="190" y2="254" stroke="#8A8A92" stroke-width="1.2"/>
     <text x="140" y="248" text-anchor="middle" font-size="10" font-style="italic" fill="#6B6B72">T<tspan dy="3" font-size="7.5">0</tspan></text>
 
-    <!-- Curve labels -->
-    <text class="label-ec1 anim-label" x="96" y="125" font-size="11" font-style="italic" fill="#3E5C86">
+    <!-- EC curve (ideal) — full curve, dash-reveal entrance -->
+    <path class="curve-enter"
+      style="stroke-dasharray:505 505; stroke-dashoffset:505;"
+      d="M90,132 C105,132 120,260 140,260 C160,260 175,132 190,132
+         C205,132 220,260 240,260 C260,260 275,132 290,132 C300,132 310,196 314,196"
+      fill="none" stroke="#3E5C86" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- EC label -->
+    <text class="step-enter" x="96" y="125" font-size="11" font-style="italic" fill="#3E5C86">
       E<tspan dy="4" font-size="8">C</tspan><tspan dy="-4" font-size="9.5"> = ½q²/C</tspan>
     </text>
-    <text class="label-el1 anim-label" x="146" y="125" font-size="11" font-style="italic" fill="#7E9CC8">
-      E<tspan dy="4" font-size="8">L</tspan><tspan dy="-4" font-size="9.5"> = ½Li²</tspan>
-    </text>
-    <text class="label-tot1 anim-label" x="200" y="127" font-size="9.5" fill="#5A7A4A">
-      E = E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan>
+
+    <!-- State annotation for step 1 -->
+    <text class="step-enter" x="186" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">
+      t = 0 : E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = 0</tspan>
     </text>
   </g>
-  <!-- /pass1-panel -->
 
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- PASS 2 — DAMPED (R ≠ 0) : total envelope shrinks qualitatively       -->
-  <!-- Panel: x=358 y=54 w=296 h=235                                        -->
-  <!-- Plot origin: x=410, y=260  Plot width=240 height=185                 -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g class="pass2-panel">
-    <!-- Panel bg -->
-    <rect x="358" y="54" width="296" height="235" rx="6" fill="#EDEAE5"/>
+  <!-- ════════════════════════════════════════════
+       STEP 2 — Mid-transfer: arrow C → L
+       Adds: transfer arrow, E_L curve starting
+       to rise (partial), mid-point marker.
+       ════════════════════════════════════════════ -->
+  <g id="step-2" style="display:none">
+    <!-- Transfer arrow (C → L) -->
+    <g class="step-enter">
+      <defs>
+        <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0,0 8,3 0,6" fill="#7E9CC8"/>
+        </marker>
+      </defs>
+      <!-- Curved arrow from capacitor region toward inductor region -->
+      <path d="M115,196 Q186,310 255,196"
+            fill="none" stroke="#7E9CC8" stroke-width="2"
+            stroke-dasharray="6,3"
+            marker-end="url(#arr-blue)"/>
+      <text x="186" y="318" text-anchor="middle" font-size="10" font-weight="600" fill="#7E9CC8">
+        transfert C → L
+      </text>
+    </g>
 
-    <!-- Panel header -->
-    <text x="506" y="75" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas amorti  (R ≠ 0)</text>
+    <!-- Halfway state annotation -->
+    <text class="step-enter" x="186" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#6B6B72">
+      t = T/4 : E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> et E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> s'échangent</tspan>
+    </text>
+  </g>
 
-    <!-- Sub-caption -->
-    <text class="label-tot2 anim-label" x="506" y="89" text-anchor="middle" font-size="10" fill="#6B6B72">
-      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> décroît → effet Joule</tspan>
+  <!-- ════════════════════════════════════════════
+       STEP 3 — E_L full / E_C empty (t = T/4)
+       Adds: E_L curve (full), updated state label.
+       ════════════════════════════════════════════ -->
+  <g id="step-3" style="display:none">
+    <!-- EL curve (ideal) -->
+    <path class="curve-enter"
+      style="stroke-dasharray:505 505; stroke-dashoffset:505;"
+      d="M90,260 C110,260 125,132 140,132 C155,132 170,260 190,260
+         C210,260 225,132 240,132 C255,132 270,260 290,260 C300,260 310,196 314,196"
+      fill="none" stroke="#7E9CC8" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <text class="step-enter" x="146" y="125" font-size="11" font-style="italic" fill="#7E9CC8">
+      E<tspan dy="4" font-size="8">L</tspan><tspan dy="-4" font-size="9.5"> = ½Li²</tspan>
     </text>
 
+    <text class="step-enter" x="186" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#7E9CC8">
+      t = T/4 : E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = 0</tspan>
+    </text>
+  </g>
+
+  <!-- ════════════════════════════════════════════
+       STEP 4 — Total energy flat line (ideal)
+       Adds: E_total dashed line + label.
+       ════════════════════════════════════════════ -->
+  <g id="step-4" style="display:none">
+    <!-- Total flat line -->
+    <line class="step-enter"
+      x1="90" y1="132" x2="314" y2="132"
+      stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
+
+    <text class="step-enter" x="200" y="127" font-size="9.5" fill="#5A7A4A">
+      E = E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan>
+    </text>
+
+    <!-- Sub-caption -->
+    <text class="step-enter" x="186" y="89" text-anchor="middle" font-size="10" fill="#5A7A4A">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = constante  (R = 0, aucune perte)</tspan>
+    </text>
+  </g>
+
+  <!-- ════════════════════════════════════════════
+       STEP 5 — Damped panel (R ≠ 0, qualitative)
+       Adds: the second (right) panel with
+       shrinking envelope and Joule annotation.
+       No formula, no coefficient. Boundary held.
+       ════════════════════════════════════════════ -->
+  <g id="step-5" style="display:none">
+    <!-- Panel bg -->
+    <rect class="step-enter" x="358" y="54" width="296" height="235" rx="6" fill="#EDEAE5"/>
+
+    <!-- Panel header -->
+    <text class="step-enter" x="506" y="75" text-anchor="middle" font-size="12" font-weight="600" fill="#2A2A2E">Cas amorti  (R ≠ 0)</text>
+
     <!-- Badge -->
-    <g class="badge-p2 anim-badge">
+    <g class="step-enter">
       <rect x="364" y="60" width="46" height="16" rx="3" fill="#C06040" opacity="0.15"/>
       <text x="387" y="72" text-anchor="middle" font-size="9.5" font-weight="600" fill="#C06040">Passe 2</text>
     </g>
 
     <!-- Axes -->
-    <line x1="410" y1="260" x2="636" y2="260" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="636,260 625,255 625,265" fill="#8A8A92"/>
-    <line x1="410" y1="260" x2="410" y2="98" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="410,98 405,109 415,109" fill="#8A8A92"/>
-    <text x="640" y="264" font-size="11" fill="#6B6B72">t</text>
-    <text x="403" y="96" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
-    <text x="403" y="263" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <line x1="406" y1="132" x2="414" y2="132" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="402" y="138" text-anchor="end" font-size="9" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
+    <line class="step-enter" x1="410" y1="260" x2="636" y2="260" stroke="#8A8A92" stroke-width="1.5"/>
+    <polygon class="step-enter" points="636,260 625,255 625,265" fill="#8A8A92"/>
+    <line class="step-enter" x1="410" y1="260" x2="410" y2="98" stroke="#8A8A92" stroke-width="1.5"/>
+    <polygon class="step-enter" points="410,98 405,109 415,109" fill="#8A8A92"/>
+    <text class="step-enter" x="640" y="264" font-size="11" fill="#6B6B72">t</text>
+    <text class="step-enter" x="403" y="96" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">E</text>
+    <text class="step-enter" x="403" y="263" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
+    <line class="step-enter" x1="406" y1="132" x2="414" y2="132" stroke="#8A8A92" stroke-width="1.2"/>
+    <text class="step-enter" x="402" y="138" text-anchor="end" font-size="9" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
 
-    <!--
-      Damped EC: same antiphase, but peaks decay qualitatively.
-      EC peaks: x=410 y=132(A=128); x=510 y=168(A=92); x=610 y=196(A=64)
-      EL peaks: x=460 y=150(A=110); x=560 y=180(A=80); partial at x=620
-      Path length ≈ 490 px
-    -->
+    <!-- Instant markers (damped panel) -->
+    <line class="step-enter" x1="410" y1="132" x2="410" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <line class="step-enter" x1="460" y1="150" x2="460" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <line class="step-enter" x1="510" y1="168" x2="510" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <line class="step-enter" x1="560" y1="180" x2="560" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <circle class="step-enter" cx="410" cy="260" r="2.5" fill="#3E5C86"/>
+    <circle class="step-enter" cx="460" cy="260" r="2.5" fill="#7E9CC8"/>
+    <circle class="step-enter" cx="510" cy="260" r="2.5" fill="#3E5C86"/>
+    <circle class="step-enter" cx="560" cy="260" r="2.5" fill="#7E9CC8"/>
 
     <!-- EC curve (damped) -->
-    <path class="ec2-curve anim-curve"
+    <path class="curve-enter"
+      style="stroke-dasharray:490 490; stroke-dashoffset:490;"
       d="M410,132 C425,132 438,260 460,260 C482,260 495,168 510,168
          C525,168 538,260 556,260 C574,260 585,196 600,196
          C610,196 618,228 624,240"
       fill="none" stroke="#3E5C86" stroke-width="2.5" stroke-linejoin="round"/>
 
     <!-- EL curve (damped) -->
-    <path class="el2-curve anim-curve"
+    <path class="curve-enter"
+      style="stroke-dasharray:490 490; stroke-dashoffset:490;"
       d="M410,260 C432,260 445,150 460,150 C475,150 488,260 510,260
          C532,260 545,180 560,180 C575,180 588,260 604,258
          C612,257 620,252 624,248"
       fill="none" stroke="#7E9CC8" stroke-width="2.5" stroke-linejoin="round"/>
 
-    <!-- Envelope / total (monotonically decreasing dashed) — appears late -->
-    <path class="total2-env anim-line"
+    <!-- Envelope (total shrinking) -->
+    <path class="step-enter"
       d="M410,132 C430,138 448,146 460,150 C478,157 494,164 510,168
          C530,174 546,178 560,180 C578,186 592,192 600,196
          C610,200 618,222 624,234"
       fill="none" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
 
-    <!-- Joule heat fill (soft, qualitative shading) -->
-    <path class="heat-fill anim-fill"
+    <!-- Joule heat fill (soft qualitative shading) -->
+    <path class="step-enter"
       d="M410,132 C430,138 448,146 460,150 C478,157 494,164 510,168
          C530,174 546,178 560,180 C578,186 592,192 600,196
          C610,200 618,222 624,234
          L624,260 L410,260 Z"
-      fill="#D4785A" opacity="0"/>
-
-    <!-- Instant markers (static) -->
-    <line x1="410" y1="132" x2="410" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="460" y1="150" x2="460" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="510" y1="168" x2="510" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-    <line x1="560" y1="180" x2="560" y2="268" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
-
-    <circle cx="410" cy="260" r="2.5" fill="#3E5C86"/>
-    <text x="410" y="275" text-anchor="middle" font-size="8.5" fill="#3E5C86">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> max</tspan></text>
-    <text x="410" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i = 0</text>
-
-    <circle cx="460" cy="260" r="2.5" fill="#7E9CC8"/>
-    <text x="460" y="275" text-anchor="middle" font-size="8.5" fill="#7E9CC8">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> = 0</tspan></text>
-    <text x="460" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i max</text>
-
-    <circle cx="510" cy="260" r="2.5" fill="#3E5C86"/>
-    <text x="510" y="275" text-anchor="middle" font-size="8.5" fill="#3E5C86">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> min</tspan></text>
-    <text x="510" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i = 0</text>
-
-    <circle cx="560" cy="260" r="2.5" fill="#7E9CC8"/>
-    <text x="560" y="275" text-anchor="middle" font-size="8.5" fill="#7E9CC8">u<tspan dy="3" font-size="6.5">C</tspan><tspan dy="-3"> = 0</tspan></text>
-    <text x="560" y="285" text-anchor="middle" font-size="8" fill="#6B6B72">i max</text>
+      fill="#D4785A" opacity="0.08"/>
 
     <!-- Curve labels -->
-    <text class="label-ec2 anim-label" x="416" y="125" font-size="11" font-style="italic" fill="#3E5C86">
+    <text class="step-enter" x="416" y="125" font-size="11" font-style="italic" fill="#3E5C86">
       E<tspan dy="4" font-size="8">C</tspan>
     </text>
-    <text class="label-el2 anim-label" x="466" y="143" font-size="11" font-style="italic" fill="#7E9CC8">
+    <text class="step-enter" x="466" y="143" font-size="11" font-style="italic" fill="#7E9CC8">
       E<tspan dy="4" font-size="8">L</tspan>
     </text>
 
-    <!-- Envelope label + Joule annotation -->
-    <text class="label-joule anim-label" x="525" y="163" font-size="9.5" fill="#5A7A4A">
+    <!-- Envelope label -->
+    <text class="step-enter" x="525" y="163" font-size="9.5" fill="#5A7A4A">
       E total décroît
     </text>
-    <text class="label-joule anim-label" x="500" y="308" text-anchor="middle" font-size="9" fill="#C06040" font-style="italic">
-      énergie dissipée par effet Joule (R)
-    </text>
-    <text class="label-tot2 anim-label" x="520" y="152" font-size="9" fill="#5A7A4A">
+    <text class="step-enter" x="520" y="152" font-size="9" fill="#5A7A4A">
       E = E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7">L</tspan>
     </text>
+
+    <!-- Sub-caption -->
+    <text class="step-enter" x="506" y="89" text-anchor="middle" font-size="10" fill="#6B6B72">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> décroît → effet Joule</tspan>
+    </text>
+
+    <!-- Joule annotation -->
+    <text class="step-enter" x="500" y="308" text-anchor="middle" font-size="9" fill="#C06040" font-style="italic">
+      énergie dissipée par effet Joule (R)
+    </text>
   </g>
-  <!-- /pass2-panel -->
-
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- SHARED LEGEND (bottom, always visible)                                -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <line x1="68"  y1="478" x2="98"  y2="478" stroke="#3E5C86" stroke-width="2.5"/>
-  <text x="103" y="482" font-size="10.5" fill="#3E5C86">E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="#2A2A2E"> = ½q²/C  (condensateur)</tspan></text>
-
-  <line x1="310" y1="478" x2="340" y2="478" stroke="#7E9CC8" stroke-width="2.5"/>
-  <text x="345" y="482" font-size="10.5" fill="#7E9CC8">E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="#2A2A2E"> = ½Li²  (bobine)</tspan></text>
-
-  <line x1="520" y1="478" x2="550" y2="478" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="7,4"/>
-  <text x="555" y="482" font-size="10.5" fill="#5A7A4A">E total</text>
-
-  <!-- Boundary note (§0.4 — no formula, qualitative only) -->
-  <text x="340" y="500" text-anchor="middle" font-size="9" fill="#8A8A92" font-style="italic">
-    Amortissement représenté qualitativement — aucun coefficient numérique
-  </text>
-
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- REDUCED-MOTION FALLBACK NOTE (visible only when CSS is disabled)     -->
-  <!-- Hidden in normal flow via opacity 0 with CSS, but present for        -->
-  <!-- accessibility tree                                                    -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- (The reduced-motion freeze is handled entirely by CSS overrides       -->
-  <!--  above — no separate fallback element needed; SVG shows final state.) -->
 
 </svg>

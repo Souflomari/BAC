@@ -1,36 +1,51 @@
 /**
  * MotionDiagram
  *
- * Renders an animated SVG diagram inline (from media/*.motion.svg).
+ * Renders a stepped motion SVG diagram inline (from media/*.motion.svg).
  *
- * The motion SVGs carry their own CSS animations and a
- * `@media (prefers-reduced-motion: reduce)` block that freezes all
- * animations to their final (fully-built) state — the static figure is
- * the fallback already baked into the SVG.
+ * Learner-paced step control (click-to-advance, never autoplay):
  *
- * Learner-paced step control:
- * When the motion SVG has step groups (id="step-1", "step-2", …), the
- * component exposes ← Étape précédente / Rejouer / Étape suivante → controls
- * so the student can walk the reveal at their own pace (fix #7).
- * The step count is detected by scanning id="step-N" in the SVG string.
+ * The motion SVG is structured into discrete <g id="step-1"> … <g id="step-N">
+ * groups where step N means steps 1..N are cumulatively visible. On load only
+ * step 1 is shown. The student clicks "Suivant ▸" to reveal the next step,
+ * and "◂ Précédent" to go back. At the last step "Suivant" becomes
+ * "Recommencer" and resets to step 1. There is NO autoplay, NO
+ * scroll-into-view trigger, NO timer.
  *
- * Under prefers-reduced-motion: defaults to the stepped static view (step 1)
- * with prev/next controls only — autoplay is not triggered. The "Rejouer"
- * button is replaced by a static view label.
+ * Step visibility:
+ * Steps beyond `currentStep` have `style="display:none"` injected into their
+ * <g> tag at the SVG string level (same approach as MediaDiagramFigure), so
+ * each instance is independent and no document-wide <style> tag is needed.
  *
- * Touch targets: all controls ≥ 44px hit area.
- * Resting text: text-secondary (contrast-safe).
+ * Fallback for legacy clips (no step groups):
+ * If the SVG carries no id="step-N" groups, it is rendered whole. No controls
+ * are shown. This prevents breakage of older assets.
  *
+ * prefers-reduced-motion:
+ * When the OS reports reduced-motion preference, ALL step groups are shown at
+ * once (fully revealed, static). Controls are hidden — there is nothing to
+ * advance through.
+ *
+ * Controls:
+ * - "◂ Précédent" button — disabled at step 1
+ * - "Étape N / Total" indicator — aria-live polite
+ * - "Suivant ▸" button — at last step becomes "Recommencer" (resets to step 1)
+ * All buttons are real <button>s, keyboard-focusable, min 44×44px hit area,
+ * visible focus ring, resting text-secondary.
+ *
+ * No browser storage — state is in-memory React only.
+ *
+ * DESIGN-BIBLE §3: math rendered, not imaged.
  * DESIGN-BIBLE §5: motion serves comprehension, never decoration.
- * DESIGN-BIBLE §6: full-width band — these are "wide-band" elements.
- * DESIGN-BIBLE §9: keyboard-reachable, focus ring, reduced-motion safe.
+ * DESIGN-BIBLE §6: full-width wide-band element.
+ * DESIGN-BIBLE §9: keyboard, focus ring, contrast, reduced-motion, touch ≥44px.
  *
- * This is a CLIENT component because it needs useState/useEffect.
+ * CLIENT component — needs useState/useEffect.
  */
 
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface MotionDiagramProps {
@@ -41,9 +56,9 @@ interface MotionDiagramProps {
   className?: string;
 }
 
-// ── Step detection ────────────────────────────────────────────────────────────
-// Count how many id="step-N" groups exist in the SVG string.
-// Returns 0 if no step groups found (SVG has no stepped structure).
+// ── Step detection ─────────────────────────────────────────────────────────────
+// Scans the SVG string for id="step-N" attributes. Returns the highest N found,
+// or 0 if no step groups are present (legacy/unstepped SVG).
 function detectStepCount(svg: string): number {
   let max = 0;
   const re = /\bid="step-(\d+)"/g;
@@ -55,41 +70,94 @@ function detectStepCount(svg: string): number {
   return max;
 }
 
-// ── Step visibility (same logic as MediaDiagramFigure) ────────────────────────
-function applyStepVisibility(svg: string, visibleSteps: number): string {
-  const STEP_UPPER_BOUND = 10;
-  let result = svg;
-  for (let n = visibleSteps + 1; n <= STEP_UPPER_BOUND; n++) {
-    result = result.replace(
-      new RegExp(`(<g[^>]*\\bid="step-${n}"[^>]*)>`, "g"),
-      `$1 style="display:none">`
-    );
-  }
-  return result;
+// ── Step visibility patching ───────────────────────────────────────────────────
+// Sets the visibility state of each <g id="step-N"> group.
+// The motion SVGs reveal a step via the `.step-visible` CLASS — children carry
+// `.step-enter` (opacity 0) and fade in only when their parent group has
+// `.step-visible`. So merely removing display:none is not enough; a shown step
+// must carry the class, and a hidden step must carry display:none. We rewrite the
+// whole opening tag (the step tags carry only id + one of class/style), so this
+// also normalises away the SVG's baked default state (step-1 visible, rest hidden).
+// Safe on SVGs with no step groups — the regex simply finds no matches.
+function applyStepVisibility(svg: string, visibleUpTo: number): string {
+  return svg.replace(
+    /<g\s+id="step-(\d+)"[^>]*>/g,
+    (_full, num: string) => {
+      const k = parseInt(num, 10);
+      return k <= visibleUpTo
+        ? `<g id="step-${num}" class="step-visible">`
+        : `<g id="step-${num}" style="display:none">`;
+    }
+  );
 }
 
-// ── Inline SVG icons (no emoji, keyboard-safe) ────────────────────────────────
+// ── Icons (inline SVG, no emoji, keyboard-safe) ───────────────────────────────
 function IconPrev() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M9 3L5 7L9 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M9 3L5 7L9 11"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 function IconNext() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M5 3L9 7L5 11"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function IconReplay() {
+function IconReset() {
   return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-      <path d="M2 6a4 4 0 1 1 .8 2.4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M2 9V6.5H4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 13 13"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M2.5 6.5a4 4 0 1 1 .7 2.2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2.5 9.5V7H5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -98,73 +166,74 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
   const totalSteps = detectStepCount(svg);
   const hasSteps = totalSteps > 0;
 
-  // replayKey forces React to remount the SVG, restarting CSS animations.
-  const [replayKey, setReplayKey] = useState(0);
-  // currentStep: 0 = full autoplay (all steps visible / animated), 1..N = stepped
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  // reducedMotion: detected via matchMedia; if true default to step 1 (static)
+  // currentStep: always starts at 1 (step 1 visible only on load).
+  // Range: [1, totalSteps]. Clamped when totalSteps changes (shouldn't happen,
+  // but safe). For no-step SVGs, this state is unused.
+  const [currentStep, setCurrentStep] = useState<number>(1);
+
+  // reducedMotion: true when the OS signals prefers-reduced-motion: reduce.
+  // Under this preference, all steps are shown at once (static full reveal).
   const [reducedMotion, setReducedMotion] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Detect prefers-reduced-motion on mount (client-only)
+  // Detect prefers-reduced-motion on mount (client only — matchMedia is not
+  // available during SSR). Listen for changes (user can flip the setting).
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mq.matches);
-    // Under reduced motion, start at step 1 (static view) not autoplay
-    if (mq.matches && hasSteps) {
-      setCurrentStep(1);
-    }
-    const handler = (e: MediaQueryListEvent) => {
-      setReducedMotion(e.matches);
-      if (e.matches && hasSteps) setCurrentStep(1);
-    };
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
-  }, [hasSteps]);
-
-  const handleReplay = useCallback(() => {
-    setCurrentStep(0); // back to full autoplay
-    setReplayKey((k) => k + 1);
-    requestAnimationFrame(() => {
-      containerRef.current?.querySelector<HTMLElement>("[data-replay-svg]")?.focus();
-    });
   }, []);
 
-  const handlePrev = useCallback(() => {
-    setCurrentStep((s) => Math.max(1, s === 0 ? 1 : s - 1));
-  }, []);
-
-  const handleNext = useCallback(() => {
-    setCurrentStep((s) => {
-      if (s === 0) return 1; // if in autoplay, jump to step 1
-      return Math.min(totalSteps, s + 1);
-    });
-  }, [totalSteps]);
-
-  // Compute which SVG content to render
-  const svgContent = (() => {
-    if (currentStep > 0 && hasSteps) {
-      return applyStepVisibility(svg, currentStep);
+  // Clamp currentStep to valid range whenever totalSteps changes.
+  useEffect(() => {
+    if (hasSteps) {
+      setCurrentStep((s) => Math.min(Math.max(s, 1), totalSteps));
     }
-    return svg;
+  }, [totalSteps, hasSteps]);
+
+  // Compute the SVG string to render:
+  // - reduced-motion: full SVG (all steps visible, no hiding)
+  // - stepped: hide groups beyond currentStep
+  // - no steps: raw SVG unchanged
+  const svgContent: string = (() => {
+    if (!hasSteps) return svg;
+    if (reducedMotion) return svg; // all steps visible, static
+    return applyStepVisibility(svg, currentStep);
   })();
 
-  // In stepped mode (currentStep > 0), we show a static div (no remount trick needed)
-  const isSteppedMode = currentStep > 0;
+  const atFirst = currentStep === 1;
+  const atLast = currentStep === totalSteps;
 
+  function handlePrev() {
+    setCurrentStep((s) => Math.max(1, s - 1));
+  }
+
+  function handleNext() {
+    if (atLast) {
+      // Recommencer — reset to step 1
+      setCurrentStep(1);
+    } else {
+      setCurrentStep((s) => Math.min(totalSteps, s + 1));
+    }
+  }
+
+  // Shared button styles: calm, secondary resting state, full accessibility floor.
   const btnBase = cn(
     "inline-flex items-center gap-1.5",
     "px-3 py-2",
-    "min-h-[44px] min-w-[44px]", // touch target floor §9
+    // Touch target floor: DESIGN-BIBLE §9 — ≥44px
+    "min-h-[44px] min-w-[44px]",
     "rounded-md",
     "text-caption font-medium",
+    // Resting: text-secondary (calm, not primary)
     "text-[var(--color-text-secondary)]",
     "border border-[var(--color-border-subtle)]",
     "bg-[var(--color-surface-raised)]",
     "hover:text-[var(--color-text-primary)]",
     "hover:border-[var(--color-border-soft)]",
     "transition-colors duration-[150ms]",
+    // Visible focus ring — DESIGN-BIBLE §9
     "focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2",
     "disabled:opacity-40 disabled:cursor-not-allowed"
   );
@@ -174,101 +243,113 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
       aria-label={label}
       className={cn("my-10 notion-wide-band", className)}
     >
-      {/* SVG wrapper — full width, soft raised surface */}
+      {/* SVG display area */}
       <div
-        ref={containerRef}
         className={cn(
           "relative w-full overflow-hidden",
           "rounded-xl",
           "bg-[var(--color-surface-raised)]",
           "border border-[var(--color-border-subtle)]",
+          // SVG fills the container width and scales height proportionally
           "[&>div>svg]:w-full [&>div>svg]:h-auto"
         )}
       >
-        {isSteppedMode ? (
-          // Static stepped view — no CSS animation running
-          <div
-            dangerouslySetInnerHTML={{ __html: svgContent }}
-            aria-hidden="true"
-          />
-        ) : (
-          // Autoplay — remounted on replay via key
-          <div
-            key={replayKey}
-            data-replay-svg=""
-            dangerouslySetInnerHTML={{ __html: svgContent }}
-            aria-hidden="true"
-          />
-        )}
+        {/*
+          Static div — no remount key needed. The SVG string itself changes
+          (step visibility patched at string level) so React diffs the
+          dangerouslySetInnerHTML and updates the DOM. No CSS animation
+          autoplay is triggered by this diff; the SVG's own transition rules
+          (if any) handle per-element reveal on re-render.
+        */}
+        <div
+          dangerouslySetInnerHTML={{ __html: svgContent }}
+          aria-hidden="true"
+        />
       </div>
 
-      {/* Controls row */}
-      <div className="mt-3 flex items-center gap-2 flex-wrap">
-        {/* Prev/Next step controls — shown when the SVG has step groups */}
-        {hasSteps && (
-          <>
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={currentStep === 1}
-              className={btnBase}
-              aria-label="Étape précédente"
-            >
-              <IconPrev />
-              <span className="hidden sm:inline">Précédent</span>
-            </button>
-
-            {/* Step indicator */}
-            <span
-              className="text-caption text-[var(--color-text-tertiary)] tabular-nums min-w-[4ch] text-center select-none"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {currentStep === 0
-                ? "Auto"
-                : `${currentStep} / ${totalSteps}`}
-            </span>
-
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={currentStep === totalSteps}
-              className={btnBase}
-              aria-label="Étape suivante"
-            >
-              <span className="hidden sm:inline">Suivant</span>
-              <IconNext />
-            </button>
-          </>
-        )}
-
-        {/* Spacer — push replay to the right */}
-        <div className="flex-1" aria-hidden="true" />
-
-        {/* Replay button — only when animation is not suppressed */}
-        {!reducedMotion && (
+      {/*
+        Controls row — shown only when:
+        (a) the SVG has step groups, AND
+        (b) reduced-motion is NOT active (under reduced-motion all steps are
+            visible at once; there is nothing to step through).
+      */}
+      {hasSteps && !reducedMotion && (
+        <div
+          className="mt-3 flex items-center gap-2 flex-wrap"
+          role="group"
+          aria-label={label ? `Contrôles : ${label}` : "Contrôles de l'animation"}
+        >
+          {/* ◂ Précédent */}
           <button
             type="button"
-            onClick={handleReplay}
+            onClick={handlePrev}
+            disabled={atFirst}
             className={btnBase}
-            aria-label="Rejouer l'animation depuis le début"
+            aria-label="Étape précédente"
           >
-            <IconReplay />
-            Rejouer
+            <IconPrev />
+            <span className="hidden sm:inline">Précédent</span>
           </button>
-        )}
 
-        {/* Reduced-motion static label */}
-        {reducedMotion && (
-          <span className="text-caption text-[var(--color-text-tertiary)] italic">
-            Vue statique (mouvement réduit)
+          {/* Step indicator — politely announced to screen readers on change */}
+          <span
+            className={cn(
+              "text-caption text-[var(--color-text-tertiary)]",
+              "tabular-nums select-none",
+              "min-w-[6ch] text-center"
+            )}
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {`Étape ${currentStep} / ${totalSteps}`}
           </span>
-        )}
-      </div>
 
-      {/* Figure caption — label displayed below controls */}
+          {/* Suivant ▸ — becomes Recommencer at the last step */}
+          <button
+            type="button"
+            onClick={handleNext}
+            className={btnBase}
+            aria-label={
+              atLast ? "Recommencer depuis l'étape 1" : "Étape suivante"
+            }
+          >
+            {atLast ? (
+              <>
+                <IconReset />
+                <span className="hidden sm:inline">Recommencer</span>
+              </>
+            ) : (
+              <>
+                <span className="hidden sm:inline">Suivant</span>
+                <IconNext />
+              </>
+            )}
+          </button>
+        </div>
+      )}
+
+      {/* Reduced-motion notice (in place of controls) */}
+      {hasSteps && reducedMotion && (
+        <p
+          className={cn(
+            "mt-2",
+            "text-caption text-[var(--color-text-tertiary)]",
+            "italic"
+          )}
+        >
+          Vue statique — mouvement réduit activé.
+        </p>
+      )}
+
+      {/* Figure caption — label shown below controls, capped at 65ch */}
       {label && (
-        <figcaption className="mt-2 text-caption text-[var(--color-text-tertiary)] text-center max-w-[65ch] mx-auto">
+        <figcaption
+          className={cn(
+            "mt-2",
+            "text-caption text-[var(--color-text-tertiary)]",
+            "text-center max-w-[65ch] mx-auto"
+          )}
+        >
           {label}
         </figcaption>
       )}

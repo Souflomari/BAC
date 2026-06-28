@@ -1,115 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 480" width="680" height="480"
      font-family="'Segoe UI', system-ui, sans-serif"
-     aria-label="Animation : les trois traces u_C(t) se tracent de gauche à droite">
+     aria-label="Animation : les trois traces u_C(t) se révèlent une par une selon le régime"
+     data-motion-steps="3">
 
   <!--
-    M-2 regime-traces-forming.motion.svg
+    M-2 regime-traces-forming.motion.svg  (v2 — click-to-advance)
     ─────────────────────────────────────────────────────────────────────────
-    PURPOSE   Each u_C(t) trace draws itself left-to-right.
-              Key pedagogical contrast (M3):
-              – Pseudo-périodique peaks SHRINK while their SPACING stays equal.
-              – This separation of "decay rate" from "oscillation rate" is the
-                visual that static panels cannot easily convey.
-              Traces appear in sequence: périodique → pseudo-périodique →
-              apériodique (matching lesson order R3/R4).
+    STEP CONTRACT (renderer drives visibility)
+      step-1  Périodique trace only (R ≈ 0, undamped sinusoid)
+      step-2  + Pseudo-périodique (peaks shrink, spacing stays equal)
+      step-3  + Apériodique (monotonic return, no oscillation)
 
-    STRUCTURE
-      Panel 1 (périodique):    draws t = 0.5 → 3.5 s  (3 s draw)
-      Panel 2 (pseudo-pério):  draws t = 4   → 7   s  (3 s draw)
-      Panel 3 (apériodique):   draws t = 7.5 → 9.5 s  (2 s draw)
-      Each panel fades in just before its draw starts.
+    CUMULATIVE: each step adds to the picture already shown.
+    Renderer sets display:none on steps > current; reveals one per click.
 
-    REDUCED-MOTION SAFETY
-      Under @media (prefers-reduced-motion: reduce) all animations are
-      cancelled and all curves are shown fully (stroke-dashoffset: 0,
-      opacity: 1). The SVG becomes a static three-panel figure equivalent
-      to regimes-uc.svg (the D2.2 static floor).
+    ENTRANCE TRANSITION
+      Per-element .step-enter fades in (opacity 0→1, 350ms) when the
+      renderer adds .step-visible to the parent step group.
+      Curve paths also draw in via stroke-dashoffset transition (380ms).
+      NO autoplay timeline. Nothing fires on page load.
+
+    REDUCED-MOTION
+      @media (prefers-reduced-motion: reduce): all step groups display:block,
+      opacity:1, all transitions suppressed — full static figure.
 
     BOUNDARY (§0.4)
-      Pseudo-période spacing is EQUAL by eye (same pixel gap between peaks).
-      No formula for T as f(R,L,C). No résonance language. No damping coeff.
+      Pseudo-période spacing shown equal by eye (same pixel gap, 100px).
+      No formula for T. No damping coefficient displayed.
 
-    PALETTE   matches existing static SVGs (see energy-exchange.svg)
+    PALETTE  matches existing static SVGs
   -->
 
   <defs>
     <style>
-      /* ── Reduced-motion: cancel all, show final state ───────────────── */
+      /* ── Entrance transitions ───────────────────────────────────────── */
+      .step-enter {
+        opacity: 0;
+        transition: opacity 350ms ease-out;
+      }
+      .step-visible .step-enter {
+        opacity: 1;
+      }
+
+      .curve-enter {
+        opacity: 0;
+        transition: stroke-dashoffset 380ms ease-out, opacity 350ms ease-out;
+      }
+      .step-visible .curve-enter {
+        opacity: 1;
+        stroke-dashoffset: 0 !important;
+      }
+
+      /* ── Reduced-motion: all steps shown, no transition ────────────── */
       @media (prefers-reduced-motion: reduce) {
-        .trace-p  { animation: none !important; stroke-dashoffset: 0 !important; }
-        .trace-pp { animation: none !important; stroke-dashoffset: 0 !important; }
-        .trace-ap { animation: none !important; stroke-dashoffset: 0 !important; }
-        .panel-p  { animation: none !important; opacity: 1 !important; }
-        .panel-pp { animation: none !important; opacity: 1 !important; }
-        .panel-ap { animation: none !important; opacity: 1 !important; }
-        .lbl-p    { animation: none !important; opacity: 1 !important; }
-        .lbl-pp   { animation: none !important; opacity: 1 !important; }
-        .lbl-ap   { animation: none !important; opacity: 1 !important; }
-        .env-pp   { animation: none !important; opacity: 1 !important; }
-        .brk-pp   { animation: none !important; opacity: 1 !important; }
-      }
-
-      /* ── Panel fade-ins ─────────────────────────────────────────────── */
-      .panel-p  { opacity:0; animation: fadeIn 0.4s ease-out 0.2s  forwards; }
-      .panel-pp { opacity:0; animation: fadeIn 0.4s ease-out 3.8s  forwards; }
-      .panel-ap { opacity:0; animation: fadeIn 0.4s ease-out 7.3s  forwards; }
-
-      /* ── Trace draws ─────────────────────────────────────────────────── */
-      /* Path lengths:
-           périodique    ≈ 600 px (full undamped sinusoid across 510 px width)
-           pseudo-pério  ≈ 580 px (damped sinusoid)
-           apériodique   ≈ 520 px (monotonic exponential) */
-      .trace-p {
-        stroke-dasharray: 600 600;
-        stroke-dashoffset: 600;
-        animation: drawP 3s ease-in-out 0.5s forwards;
-      }
-      .trace-pp {
-        stroke-dasharray: 580 580;
-        stroke-dashoffset: 580;
-        animation: drawPP 3s ease-in-out 4s forwards;
-      }
-      .trace-ap {
-        stroke-dasharray: 520 520;
-        stroke-dashoffset: 520;
-        animation: drawAP 2s ease-in-out 7.5s forwards;
-      }
-
-      /* ── Labels ──────────────────────────────────────────────────────── */
-      .lbl-p  { opacity:0; animation: fadeIn 0.4s ease-out 1s    forwards; }
-      .lbl-pp { opacity:0; animation: fadeIn 0.4s ease-out 4.5s  forwards; }
-      .lbl-ap { opacity:0; animation: fadeIn 0.4s ease-out 8s    forwards; }
-
-      /* ── Envelope dashes on pseudo-pério (appear after curve mostly drawn) */
-      .env-pp { opacity:0; animation: fadeIn 0.5s ease-out 6s forwards; }
-
-      /* ── T bracket on pseudo-pério (the key contrast annotation) ───── */
-      .brk-pp { opacity:0; animation: fadeIn 0.5s ease-out 6.5s forwards; }
-
-      /* ── Keyframes ───────────────────────────────────────────────────── */
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-      @keyframes drawP {
-        from { stroke-dashoffset: 600; }
-        to   { stroke-dashoffset: 0;   }
-      }
-      @keyframes drawPP {
-        from { stroke-dashoffset: 580; }
-        to   { stroke-dashoffset: 0;   }
-      }
-      @keyframes drawAP {
-        from { stroke-dashoffset: 520; }
-        to   { stroke-dashoffset: 0;   }
+        [id^="step-"] {
+          display: block !important;
+          opacity: 1 !important;
+        }
+        .step-enter {
+          opacity: 1 !important;
+          transition: none !important;
+        }
+        .curve-enter {
+          opacity: 1 !important;
+          stroke-dashoffset: 0 !important;
+          transition: none !important;
+        }
       }
     </style>
   </defs>
 
-  <!-- Background -->
+  <!-- Background + title (always visible) -->
   <rect width="680" height="480" rx="8" fill="#F5F3EF"/>
 
-  <!-- Title -->
   <text x="340" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">
     Les trois régimes de u<tspan dy="3" font-size="9">C</tspan><tspan dy="-3" font-size="13">(t)</tspan>
   </text>
@@ -117,12 +80,21 @@
     Même conditions initiales — seule R augmente (R₁ &lt; R₂ &lt; R₃)
   </text>
 
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- PANEL 1 — Périodique (R ≈ 0, undamped sinusoid)                   -->
-  <!-- Panel bg: x=90 y=52 w=548 h=110                                    -->
-  <!-- Axis origin: (110, 107)  width=510 height=88                        -->
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <g class="panel-p">
+  <!-- Bottom notes (always visible) -->
+  <text x="340" y="456" text-anchor="middle" font-size="10.5" fill="#6B6B72">
+    T (espacement entre maxima) constant — indépendant de R à cet ordre d'approximation
+  </text>
+  <text x="340" y="470" text-anchor="middle" font-size="9.5" fill="#8A8A92" font-style="italic">
+    Aucun coefficient d'amortissement affiché (§0.4)
+  </text>
+
+  <!-- ════════════════════════════════════════════
+       STEP 1 — Périodique (R ≈ 0)
+       Panel 1 panel bg, axes, full undamped
+       sinusoid, T₀ bracket, regime badge.
+       ════════════════════════════════════════════ -->
+  <g id="step-1" class="step-visible">
+    <!-- Panel bg -->
     <rect x="90" y="52" width="548" height="114" rx="5" fill="#EDEAE5"/>
 
     <!-- Axes -->
@@ -134,14 +106,12 @@
     <text x="103" y="57" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">u</text>
     <text x="108" y="64" font-size="8" fill="#6B6B72">C</text>
     <text x="100" y="111" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <!-- U₀ tick -->
     <line x1="106" y1="69" x2="114" y2="69" stroke="#8A8A92" stroke-width="1.2"/>
     <text x="100" y="73" text-anchor="end" font-size="10" fill="#8A8A92">U₀</text>
 
-    <!-- Undamped sinusoid: amplitude 38px, period 100px, centered at y=107
-         Full-width sinusoid x=110→620, y=107−38·sin(2π(x−110)/100)
-         Using same bezier approximation as regimes-uc.svg -->
-    <path class="trace-p"
+    <!-- Undamped sinusoid -->
+    <path class="curve-enter"
+      style="stroke-dasharray:600 600; stroke-dashoffset:600;"
       d="M110,107
          C117,84 123,69 130,69
          C137,69 143,84 150,107
@@ -180,47 +150,46 @@
     </text>
 
     <!-- Regime label badge -->
-    <g class="lbl-p">
+    <g class="step-enter">
       <rect x="453" y="57" width="170" height="22" rx="4" fill="#3E5C86" opacity="0.12"/>
       <text x="538" y="72" text-anchor="middle" font-size="11.5" font-weight="600" fill="#3E5C86">
         Périodique (R ≈ 0)
       </text>
     </g>
   </g>
-  <!-- /panel-p -->
+  <!-- /step-1 -->
 
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- PANEL 2 — Pseudo-périodique (R modérée, decaying oscillation)     -->
-  <!-- Panel bg: x=90 y=180 w=548 h=120                                   -->
-  <!-- Axis origin: (110, 237)  same width                                 -->
-  <!-- KEY POINT: peak SPACING stays equal (=T₀), peak HEIGHT decays.     -->
-  <!-- Peaks at x=130,230,330,430,530 (spacing=100px, constant).           -->
-  <!-- Amplitudes: 38,28,20,14,10 px (qualitative decay).                  -->
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <g class="panel-pp">
-    <rect x="90" y="180" width="548" height="120" rx="5" fill="#EDEAE5"/>
+  <!-- ════════════════════════════════════════════
+       STEP 2 — + Pseudo-périodique (R modérée)
+       Adds panel 2: damped oscillation with
+       SAME 100px peak spacing, decaying heights.
+       Adds decaying envelope + T-spacing annotation
+       (the key pedagogical contrast).
+       ════════════════════════════════════════════ -->
+  <g id="step-2" style="display:none">
+    <!-- Panel bg -->
+    <rect class="step-enter" x="90" y="180" width="548" height="120" rx="5" fill="#EDEAE5"/>
 
     <!-- Axes -->
-    <line x1="110" y1="237" x2="625" y2="237" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="625,237 614,232 614,242" fill="#8A8A92"/>
-    <line x1="110" y1="293" x2="110" y2="187" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="110,187 105,198 115,198" fill="#8A8A92"/>
-    <text x="628" y="241" font-size="11" fill="#6B6B72">t</text>
-    <text x="103" y="185" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">u</text>
-    <text x="108" y="192" font-size="8" fill="#6B6B72">C</text>
-    <text x="100" y="241" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <line x1="106" y1="199" x2="114" y2="199" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="100" y="203" text-anchor="end" font-size="10" fill="#8A8A92">U₀</text>
+    <line class="step-enter" x1="110" y1="237" x2="625" y2="237" stroke="#8A8A92" stroke-width="1.5"/>
+    <polygon class="step-enter" points="625,237 614,232 614,242" fill="#8A8A92"/>
+    <line class="step-enter" x1="110" y1="293" x2="110" y2="187" stroke="#8A8A92" stroke-width="1.5"/>
+    <polygon class="step-enter" points="110,187 105,198 115,198" fill="#8A8A92"/>
+    <text class="step-enter" x="628" y="241" font-size="11" fill="#6B6B72">t</text>
+    <text class="step-enter" x="103" y="185" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">u</text>
+    <text class="step-enter" x="108" y="192" font-size="8" fill="#6B6B72">C</text>
+    <text class="step-enter" x="100" y="241" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
+    <line class="step-enter" x1="106" y1="199" x2="114" y2="199" stroke="#8A8A92" stroke-width="1.2"/>
+    <text class="step-enter" x="100" y="203" text-anchor="end" font-size="10" fill="#8A8A92">U₀</text>
 
     <!--
-      Damped sinusoid — SAME 100px period as panel 1 — peaks only change height.
-      Peak (pos) at x=130: y=237−38=199; trough at x=180: y=237+38=275
-      Peak (pos) at x=230: y=237−28=209; trough at x=280: y=237+28=265
-      Peak (pos) at x=330: y=237−20=217; trough at x=380: y=237+20=257
-      Peak (pos) at x=430: y=237−14=223; trough at x=480: y=237+14=251
-      Peak (pos) at x=530: y=237−10=227; approaches 237 at x=620
+      Damped sinusoid — SAME 100px period as panel 1.
+      Peak spacing stays equal (100px); amplitude decays qualitatively.
+      Peaks at x=130,230,330,430,530 (spacing constant).
+      Amplitudes: 38,28,20,14,10 px (qualitative).
     -->
-    <path class="trace-pp"
+    <path class="curve-enter"
+      style="stroke-dasharray:580 580; stroke-dashoffset:580;"
       d="M110,237
          C117,217 123,199 130,199
          C137,199 143,217 150,237
@@ -249,21 +218,19 @@
          C597,231 610,234 620,237"
       fill="none" stroke="#3E5C86" stroke-width="2.2" stroke-linejoin="round"/>
 
-    <!-- Decaying envelope dashes (appear after curve mostly drawn) -->
-    <path class="env-pp"
+    <!-- Decaying envelope dashes -->
+    <path class="step-enter"
       d="M110,237 Q200,182 620,233"
       fill="none" stroke="#7E9CC8" stroke-width="1.2" stroke-dasharray="5,4"/>
-    <path class="env-pp"
+    <path class="step-enter"
       d="M110,237 Q200,287 620,241"
       fill="none" stroke="#7E9CC8" stroke-width="1.2" stroke-dasharray="5,4"/>
 
     <!--
       KEY CONTRAST ANNOTATION:
-      T bracket between peaks 1 and 2 (x=130 and x=230) → spacing = T₀
-      An arrow labelled "même espacement" below
+      T bracket between peaks 1 and 2 (x=130, x=230) → spacing = T₀
     -->
-    <g class="brk-pp">
-      <!-- Vertical drops from peaks to bracket line -->
+    <g class="step-enter">
       <line x1="130" y1="199" x2="130" y2="296" stroke="#7E9CC8" stroke-width="1" stroke-dasharray="3,3"/>
       <line x1="230" y1="209" x2="230" y2="296" stroke="#7E9CC8" stroke-width="1" stroke-dasharray="3,3"/>
       <line x1="330" y1="217" x2="330" y2="296" stroke="#7E9CC8" stroke-width="1" stroke-dasharray="3,3"/>
@@ -276,44 +243,46 @@
       <!-- Second T bracket (130→330, showing equal spacing) -->
       <line x1="230" y1="299" x2="330" y2="299" stroke="#3E5C86" stroke-width="1.5" stroke-dasharray="4,3"/>
       <line x1="330" y1="295" x2="330" y2="303" stroke="#3E5C86" stroke-width="1.5"/>
-      <!-- Annotation: même espacement T — hauteur seule diminue -->
+      <!-- Key pedagogical annotation -->
       <text x="340" y="312" text-anchor="middle" font-size="9.5" fill="#6B6B72">
         espacement T constant — amplitude seule décroît
       </text>
     </g>
 
     <!-- Regime label badge -->
-    <g class="lbl-pp">
+    <g class="step-enter">
       <rect x="387" y="185" width="228" height="22" rx="4" fill="#3E5C86" opacity="0.12"/>
       <text x="501" y="200" text-anchor="middle" font-size="11.5" font-weight="600" fill="#3E5C86">
         Pseudo-périodique  (R modérée)
       </text>
     </g>
   </g>
-  <!-- /panel-pp -->
+  <!-- /step-2 -->
 
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- PANEL 3 — Apériodique (R grande, monotonic return)                -->
-  <!-- Panel bg: x=90 y=325 w=548 h=112                                   -->
-  <!-- Axis origin: (110, 382)                                             -->
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <g class="panel-ap">
-    <rect x="90" y="325" width="548" height="112" rx="5" fill="#EDEAE5"/>
+  <!-- ════════════════════════════════════════════
+       STEP 3 — + Apériodique (R grand)
+       Adds panel 3: monotonic exponential return,
+       no oscillation at all.
+       ════════════════════════════════════════════ -->
+  <g id="step-3" style="display:none">
+    <!-- Panel bg -->
+    <rect class="step-enter" x="90" y="325" width="548" height="112" rx="5" fill="#EDEAE5"/>
 
     <!-- Axes -->
-    <line x1="110" y1="382" x2="625" y2="382" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="625,382 614,377 614,387" fill="#8A8A92"/>
-    <line x1="110" y1="430" x2="110" y2="332" stroke="#8A8A92" stroke-width="1.5"/>
-    <polygon points="110,332 105,343 115,343" fill="#8A8A92"/>
-    <text x="628" y="386" font-size="11" fill="#6B6B72">t</text>
-    <text x="103" y="330" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">u</text>
-    <text x="108" y="337" font-size="8" fill="#6B6B72">C</text>
-    <text x="100" y="386" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
-    <line x1="106" y1="342" x2="114" y2="342" stroke="#8A8A92" stroke-width="1.2"/>
-    <text x="100" y="346" text-anchor="end" font-size="10" fill="#8A8A92">U₀</text>
+    <line class="step-enter" x1="110" y1="382" x2="625" y2="382" stroke="#8A8A92" stroke-width="1.5"/>
+    <polygon class="step-enter" points="625,382 614,377 614,387" fill="#8A8A92"/>
+    <line class="step-enter" x1="110" y1="430" x2="110" y2="332" stroke="#8A8A92" stroke-width="1.5"/>
+    <polygon class="step-enter" points="110,332 105,343 115,343" fill="#8A8A92"/>
+    <text class="step-enter" x="628" y="386" font-size="11" fill="#6B6B72">t</text>
+    <text class="step-enter" x="103" y="330" text-anchor="middle" font-size="11" font-style="italic" fill="#6B6B72">u</text>
+    <text class="step-enter" x="108" y="337" font-size="8" fill="#6B6B72">C</text>
+    <text class="step-enter" x="100" y="386" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
+    <line class="step-enter" x1="106" y1="342" x2="114" y2="342" stroke="#8A8A92" stroke-width="1.2"/>
+    <text class="step-enter" x="100" y="346" text-anchor="end" font-size="10" fill="#8A8A92">U₀</text>
 
-    <!-- Monotonic exponential decay (same start point as other panels) -->
-    <path class="trace-ap"
+    <!-- Monotonic exponential decay -->
+    <path class="curve-enter"
+      style="stroke-dasharray:520 520; stroke-dashoffset:520;"
       d="M110,342
          C130,342 145,348 170,356
          C200,363 230,369 270,374
@@ -321,26 +290,17 @@
          C510,381.6 560,381.9 620,382"
       fill="none" stroke="#3E5C86" stroke-width="2.2" stroke-linejoin="round"/>
 
-    <!-- Regime label badge -->
-    <g class="lbl-ap">
+    <!-- Regime label badge + "Pas d'oscillation" -->
+    <g class="step-enter">
       <rect x="420" y="330" width="200" height="22" rx="4" fill="#3E5C86" opacity="0.12"/>
       <text x="520" y="345" text-anchor="middle" font-size="11.5" font-weight="600" fill="#3E5C86">
         Apériodique (R grand)
       </text>
-      <!-- "Pas d'oscillation" -->
       <text x="280" y="404" text-anchor="middle" font-size="10" fill="#6B6B72" font-style="italic">
         retour monotone vers 0, sans oscillation
       </text>
     </g>
   </g>
-  <!-- /panel-ap -->
-
-  <!-- Bottom note -->
-  <text x="340" y="456" text-anchor="middle" font-size="10.5" fill="#6B6B72">
-    T (espacement entre maxima) constant — indépendant de R à cet ordre d'approximation
-  </text>
-  <text x="340" y="470" text-anchor="middle" font-size="9.5" fill="#8A8A92" font-style="italic">
-    Aucun coefficient d'amortissement affiché (§0.4)
-  </text>
+  <!-- /step-3 -->
 
 </svg>
