@@ -316,19 +316,17 @@
   <text x="570" y="330" text-anchor="middle"
         font-size="9" fill="var(--figure-ink-soft)">bobine</text>
 
-  <!-- Total energy horizontal marker — fades in at beat-2 -->
-  <g id="etotal-group" opacity="0">
-    <line x1="378" y1="108" x2="632" y2="108"
-          stroke="var(--figure-ink-soft)"
-          stroke-width="2"
-          stroke-dasharray="8,4"/>
-    <rect x="434" y="86" width="140" height="20" rx="4"
-          fill="var(--figure-ink-soft)" opacity="0.10"/>
-    <text x="504" y="100" text-anchor="middle"
-          font-size="10" fill="var(--figure-ink-soft)">
-      E total = constante
-    </text>
-  </g>
+  <!--
+    Conservation marker (beat-2): the "E_C + E_L = constante" point is already
+    made twice at beat-2 — the left-panel "Énergie conservée" state box and the
+    bottom equation row — and the bars panel has no clear band for a third
+    instance (cap-labels at y=103, axis labels at y=316). A redundant pill here
+    only collided with one or the other, so it is dropped. The group is kept
+    (empty) so the beat-2 `#etotal-group` fade target still resolves as a
+    harmless no-op; the conservation reveal is carried by the left box + the
+    equation row. (calm-load: less is more.)
+  -->
+  <g id="etotal-group" opacity="0"></g>
 
 
   <!-- ══════════════════════════════════════════════════════════════════════
