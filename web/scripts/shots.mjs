@@ -215,6 +215,23 @@ try {
             }
           }
         }
+
+        // 4. Each STATIC figure (a <figure aria-label> WITHOUT a controls group):
+        //    rlc-schema, regimes-uc, origin-*, checkpoints. One shot each.
+        const statics = page.locator('figure[aria-label]:not(:has([role="group"]))');
+        const sc = await statics.count();
+        for (let s = 0; s < sc; s++) {
+          const f2 = statics.nth(s);
+          await f2.scrollIntoViewIfNeeded();
+          await settle(page, 200);
+          let label = `fig-${s}`;
+          try {
+            const al = await f2.getAttribute("aria-label");
+            if (al) label = al.replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40).toLowerCase();
+          } catch { /* keep default */ }
+          const name = `static-${s}-${label}-${theme}`;
+          try { await f2.screenshot({ path: shotPath(name) }); shots.push(name); } catch { /* skip unrenderable */ }
+        }
       }
     }
     await context.close();

@@ -1,366 +1,476 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="760" height="600"
-     font-family="'Segoe UI', system-ui, sans-serif"
-     aria-label="Construction de la loi des mailles, terme par terme"
-     data-motion-steps="5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Construction de la loi des mailles, terme par terme">
 
   <!--
-    M-3 loi-des-mailles-build.motion.svg  (v2 — click-to-advance)
+    loi-des-mailles-build.motion.svg  (v3 — MotionStage engine, ADR 0022)
     ─────────────────────────────────────────────────────────────────────────
-    STEP CONTRACT (renderer drives visibility — cumulative)
-      step-1  Circuit schematic + u_C highlighted; equation shows "u_C"
-      step-2  + u_L highlighted; equation adds "+ u_L = 0"
-      step-3  + Substitute → "q/C + L·d²q/dt² = 0"
-      step-4  + Reorder → "L·q'' + q/C = 0"  +  "R n'apparaît pas" note
-      step-5  + R appears on schematic; damped ODE "L·q'' + R·q' + q/C = 0";
-               R·q' residue shown; ARRÊT badge. (BOUNDARY held — no solution)
+    Engine: MotionStage.tsx (assemble + fade verbs; replace layout model).
 
-    CUMULATIVE: each step adds to everything already shown.
-    Renderer sets display:none on steps > current; reveals one per click.
+    LAYOUT MODEL: replace
+      The circuit schematic lives in the left column (reserved, never replaced).
+      The right column holds ONE equation slot (#eq-slot) that is occupied by
+      exactly one equation form at a time — each beat fades the prior out and
+      assembles the new one in.
 
-    ENTRANCE TRANSITION
-      Per-element .step-enter fades in (opacity 0→1, 350ms ease-out) when
-      renderer adds .step-visible to the parent step group.
-      NO autoplay timeline. Nothing fires on page load.
+    Regions:
+      chrome:     { x:0,   y:0,   w:760, h:54  }  title (always)
+      schematic:  { x:0,   y:54,  w:370, h:460 }  circuit (always, beat-0 settled)
+      eq-slot:    { x:380, y:54,  w:370, h:460 }  one equation occupant at a time
+      footer:     { x:0,   y:514, w:760, h:60  }  boundary note (always)
 
-    REDUCED-MOTION
-      @media (prefers-reduced-motion: reduce): all step groups display:block,
-      opacity:1, all transitions suppressed — full static figure.
+    BEATS
+      beat-0 (settled on load): circuit schematic + "u_C + u_L = 0" (#eq-a) assembled.
+             All later equation forms at opacity:0.
+      beat-1: substitute u_C = q/C and u_L = L·d²q/dt². #eq-a fades out (pulse-settle
+              to 0), #eq-b assembles in. Circuit: C and L highlighted.
+      beat-2: reorder → "L·q'' + q/C = 0". #eq-b → #eq-c (replace). "R n'apparaît pas"
+              verdict fades in below.
+      beat-3: full RLC ODE. R appears on schematic. #eq-c → #eq-d (replace). ARRÊT
+              note fades in.
 
-    BOUNDARY (§0.4)
-      step-5 STOPS at the R·q' residue. No damped ODE solution.
-      No damping coefficient. ARRÊT badge makes the stop explicit.
+    ASSEMBLE VERB: each equation group has its terms as DIRECT CHILD elements
+    so the engine's `kids = Array.from(n.children)` correctly staggers them.
+    Each child is a <g> containing the visual term (text + any fraction lines).
 
-    LAYOUT
-      Left column  (x=20…360):   RLC circuit schematic
-      Right column (x=380…740):  equation build, step by step
-      Divider at x=375.
+    REPLACE: prior equation fades out via pulse-settle (peak:0, settleTo:0)
+    before new one assembles. Authored explicitly — the `replaces` array is
+    bookkeeping only in the current engine.
 
-    PALETTE  matches existing static SVGs
+    BOUNDARY §0.4: beat-3 ends at the RLC ODE. No solution to the damped
+    equation. ARRÊT badge makes the stop explicit. No damping coefficient.
+
+    PALETTE: var(--figure-*) tokens throughout.
   -->
 
-  <defs>
-    <style>
-      /* ── Entrance transitions ───────────────────────────────────────── */
-      .step-enter {
-        opacity: 0;
-        transition: opacity 350ms ease-out;
-      }
-      .step-visible .step-enter {
-        opacity: 1;
-      }
+  <!-- ── Background ──────────────────────────────────────────────────────── -->
+  <rect width="760" height="600" rx="8" fill="var(--figure-surface)"/>
 
-      /* Component highlight rects: pulse briefly bright then settle dim   */
-      .hl-enter {
-        opacity: 0;
-        transition: opacity 350ms ease-out;
-      }
-      .step-visible .hl-enter {
-        opacity: 0.25;
-      }
-
-      /* ── Reduced-motion: all steps shown, no transition ────────────── */
-      @media (prefers-reduced-motion: reduce) {
-        [id^="step-"] {
-          display: block !important;
-          opacity: 1 !important;
-        }
-        .step-enter {
-          opacity: 1 !important;
-          transition: none !important;
-        }
-        .hl-enter {
-          opacity: 0.25 !important;
-          transition: none !important;
-        }
-      }
-    </style>
-  </defs>
-
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- CHROME (always visible)                                               -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <rect width="760" height="600" rx="8" fill="#F5F3EF"/>
-
-  <text x="380" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#2A2A2E">
+  <!-- Title -->
+  <text x="380" y="26" text-anchor="middle"
+        font-size="13" font-weight="600" fill="var(--figure-ink)">
     Loi des mailles — construction terme par terme
   </text>
-  <text x="380" y="43" text-anchor="middle" font-size="10" fill="#8A8A92">
-    Cas idéal (R absente, étapes 1–4)  →  puis cas amorti (R présente, étape 5, résidu → arrêt)
+  <text x="380" y="43" text-anchor="middle"
+        font-size="10" fill="var(--figure-ink-soft)">
+    Cas idéal (R absente, étapes 1–3)  →  puis cas amorti (R présente, étape 4 — arrêt)
   </text>
 
   <!-- Column divider -->
-  <line x1="375" y1="55" x2="375" y2="585" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="374" y1="54" x2="374" y2="520"
+        stroke="var(--figure-grid)" stroke-width="1" stroke-dasharray="4,4"/>
 
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- STEP 1 — Circuit schematic + u_C highlighted; equation: "u_C"        -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g id="step-1" class="step-visible">
+  <!-- Footer boundary note (always visible) -->
+  <rect x="20" y="522" width="720" height="56" rx="5"
+        fill="var(--figure-grid)" opacity="0.20"/>
+  <text x="380" y="542" text-anchor="middle"
+        font-size="10" fill="var(--figure-ink-soft)">
+    §0.4 — L'équation amortie est établie et on s'arrête là. Aucune solution fermée au programme.
+  </text>
+  <text x="380" y="558" text-anchor="middle"
+        font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">
+    Résidu R·q' non annulable → le cosinus idéal ne vérifie pas l'équation amortie.
+  </text>
+  <text x="380" y="572" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    Aucun coefficient d'amortissement affiché.
+  </text>
 
-    <!-- ── RLC SCHEMATIC (shared across all steps) ─────────────────────── -->
-    <g class="step-enter">
 
-      <!-- Wire segments -->
-      <!-- Top wire (K switch): 30→155 gap 210→340 -->
-      <line x1="30"  y1="70"  x2="155" y2="70"  stroke="#4A4A52" stroke-width="2"/>
-      <line x1="210" y1="70"  x2="340" y2="70"  stroke="#4A4A52" stroke-width="2"/>
-      <!-- Right wire: 340,70 → 340,145 (top) and 340,215 → 340,300 (bottom) -->
-      <line x1="340" y1="70"  x2="340" y2="145" stroke="#4A4A52" stroke-width="2"/>
-      <line x1="340" y1="215" x2="340" y2="300" stroke="#4A4A52" stroke-width="2"/>
-      <!-- Bottom wire (L inductor): 30,300 → 140 gap (coil) 260,300 → 340,300 -->
-      <line x1="30"  y1="300" x2="140" y2="300" stroke="#4A4A52" stroke-width="2"/>
-      <line x1="260" y1="300" x2="340" y2="300" stroke="#4A4A52" stroke-width="2"/>
-      <!-- Left wire (C capacitor): 30,300 → 30,195 gap (plates) 30,115 → 30,70 -->
-      <line x1="30"  y1="300" x2="30"  y2="195" stroke="#4A4A52" stroke-width="2"/>
-      <line x1="30"  y1="115" x2="30"  y2="70"  stroke="#4A4A52" stroke-width="2"/>
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LEFT COLUMN — Circuit schematic (always visible chrome)
+       The schematic is beat-0 settled content — all elements visible.
+       ══════════════════════════════════════════════════════════════════════ -->
 
-      <!-- Corner dots -->
-      <circle cx="30"  cy="70"  r="3" fill="#4A4A52"/>
-      <circle cx="340" cy="70"  r="3" fill="#4A4A52"/>
-      <circle cx="340" cy="300" r="3" fill="#4A4A52"/>
-      <circle cx="30"  cy="300" r="3" fill="#4A4A52"/>
+  <rect x="12" y="58" width="356" height="450" rx="6"
+        fill="var(--figure-grid)" opacity="0.18"/>
 
-      <!-- K — Switch (top center) -->
-      <circle cx="155" cy="70" r="3" fill="#4A4A52"/>
-      <circle cx="210" cy="70" r="3" fill="#4A4A52"/>
-      <line x1="155" y1="70" x2="203" y2="52" stroke="#4A4A52" stroke-width="2" stroke-linecap="round"/>
-      <text x="183" y="48" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">K</text>
+  <!-- Circuit label -->
+  <text x="190" y="80" text-anchor="middle"
+        font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Circuit LC série (cas idéal)
+  </text>
 
-      <!-- C — Condensateur (left wire) -->
-      <line x1="5"  y1="115" x2="55" y2="115" stroke="#3E5C86" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="5"  y1="195" x2="55" y2="195" stroke="#3E5C86" stroke-width="2.5" stroke-linecap="round"/>
-      <text x="68" y="160" text-anchor="start" font-size="13" font-style="italic" fill="#2A2A2E">C</text>
-      <!-- u_C label with dashed arrow -->
-      <line x1="-10" y1="119" x2="-10" y2="191" stroke="#3E5C86" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <polygon points="-10,119 -14,130 -6,130" fill="#3E5C86"/>
-      <text x="-18" y="157" text-anchor="middle" font-size="11" font-style="italic" fill="#3E5C86">
-        u<tspan dy="4" font-size="8">C</tspan>
-      </text>
+  <!-- Schematic wires -->
+  <!-- Top wire -->
+  <line x1="50"  y1="140" x2="340" y2="140"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Right wire (with gap for R in beat-3) -->
+  <line id="wire-right-top" x1="340" y1="140" x2="340" y2="230"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line id="wire-right-bot" x1="340" y1="310" x2="340" y2="390"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Bottom wire -->
+  <line x1="50"  y1="390" x2="340" y2="390"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Left wire with gap for capacitor -->
+  <line x1="50"  y1="140" x2="50"  y2="220"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="50"  y1="280" x2="50"  y2="390"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
 
-      <!-- L — Bobine (bottom wire) -->
-      <path d="M140,300 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
-      <path d="M170,300 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
-      <path d="M200,300 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
-      <path d="M230,300 a15,15 0 0,1 30,0" fill="none" stroke="#2A2A2E" stroke-width="2"/>
-      <text x="200" y="287" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">L</text>
-      <!-- u_L label below coil -->
-      <line x1="140" y1="322" x2="260" y2="322" stroke="#7E9CC8" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <polygon points="140,322 151,318 151,326" fill="#7E9CC8"/>
-      <text x="200" y="338" text-anchor="middle" font-size="11" font-style="italic" fill="#7E9CC8">
-        u<tspan dy="4" font-size="8">L</tspan>
-      </text>
+  <!-- Corner dots -->
+  <circle cx="50"  cy="140" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="340" cy="140" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="340" cy="390" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="50"  cy="390" r="3" fill="var(--figure-ink-soft)"/>
 
-      <!-- Current i — arrow on top wire -->
-      <line x1="255" y1="70" x2="295" y2="70" stroke="#3E5C86" stroke-width="2"/>
-      <polygon points="295,70 283,65 283,75" fill="#3E5C86"/>
-      <text x="275" y="58" text-anchor="middle" font-size="13" font-style="italic" fill="#3E5C86">i</text>
-    </g>
+  <!-- Switch K (top, left of center) -->
+  <circle cx="140" cy="140" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="210" cy="140" r="3" fill="var(--figure-ink-soft)"/>
+  <line x1="140" y1="140" x2="205" y2="122"
+        stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+  <text x="180" y="115" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink)">K</text>
 
-    <!-- Highlight C (soft blue glow) -->
-    <rect class="hl-enter" x="-2" y="107" width="62" height="96" rx="6" fill="#3E5C86"/>
+  <!-- Capacitor C (left wire) -->
+  <line x1="22" y1="220" x2="78" y2="220"
+        stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="22" y1="280" x2="78" y2="280"
+        stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <text x="95" y="255" text-anchor="start"
+        font-size="14" font-style="italic" font-weight="600"
+        fill="var(--figure-energy-C)">C</text>
 
-    <!-- ── RIGHT: Pass 1 badge + Step 1 equation ────────────────────────── -->
-    <g class="step-enter">
-      <rect x="390" y="56" width="100" height="20" rx="4" fill="#3E5C86" opacity="0.12"/>
-      <text x="440" y="70" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">
-        Passe 1 — idéal
-      </text>
-    </g>
+  <!-- u_C label with arrow -->
+  <line x1="14" y1="224" x2="14" y2="276"
+        stroke="var(--figure-energy-C)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="14,224 10,236 18,236" fill="var(--figure-energy-C)"/>
+  <text x="6" y="254" text-anchor="middle"
+        font-size="11" font-style="italic" fill="var(--figure-energy-C)">
+    u<tspan dy="4" font-size="8">C</tspan>
+  </text>
 
-    <!-- Step 1 chip + equation -->
-    <g class="step-enter">
-      <circle cx="400" cy="105" r="10" fill="#3E5C86" opacity="0.15"/>
-      <text x="400" y="109" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">1</text>
-      <text x="420" y="109" font-size="14" font-style="italic" fill="#3E5C86">
-        u<tspan dy="4" font-size="10">C</tspan>
-      </text>
-    </g>
-    <text class="step-enter" x="420" y="126" font-size="10" fill="#6B6B72">
-      tension aux bornes du condensateur
+  <!-- Inductor L (bottom wire, coil arcs) -->
+  <path d="M148,390 a14,14 0 0,0 28,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M176,390 a14,14 0 0,0 28,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M204,390 a14,14 0 0,0 28,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="220" y="378" text-anchor="middle"
+        font-size="14" font-style="italic" font-weight="600"
+        fill="var(--figure-energy-L)">L</text>
+
+  <!-- u_L label below coil -->
+  <line x1="148" y1="412" x2="260" y2="412"
+        stroke="var(--figure-energy-L)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="148,412 160,408 160,416" fill="var(--figure-energy-L)"/>
+  <text x="204" y="428" text-anchor="middle"
+        font-size="11" font-style="italic" fill="var(--figure-energy-L)">
+    u<tspan dy="4" font-size="8">L</tspan>
+  </text>
+
+  <!-- Current i arrow on top wire -->
+  <line x1="254" y1="140" x2="294" y2="140"
+        stroke="var(--figure-accent)" stroke-width="2"/>
+  <polygon points="294,140 282,135 282,145" fill="var(--figure-accent)"/>
+  <text x="274" y="128" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-accent)">i</text>
+
+  <!-- Component highlight rects (for beat-1 C and L emphasis) -->
+  <!-- C highlight (beat-1) -->
+  <rect id="hl-C" x="16" y="210" width="92" height="80" rx="6"
+        fill="var(--figure-energy-C)" opacity="0"/>
+  <!-- L highlight (beat-1) -->
+  <rect id="hl-L" x="140" y="378" width="130" height="56" rx="6"
+        fill="var(--figure-energy-L)" opacity="0"/>
+
+  <!-- Resistor R (beat-3 — appears on right wire, authored at opacity:0) -->
+  <g id="resistor-R" opacity="0">
+    <rect x="320" y="232" width="38" height="76" rx="4"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-ink-soft)"
+          stroke-width="2"/>
+    <text x="339" y="274" text-anchor="middle"
+          font-size="14" font-style="italic"
+          fill="var(--figure-ink)">R</text>
+    <!-- u_R label -->
+    <line x1="365" y1="236" x2="365" y2="304"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <polygon points="365,236 361,248 369,248" fill="var(--figure-ink-soft)"/>
+    <text x="374" y="274" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">
+      u<tspan dy="4" font-size="8">R</tspan>
     </text>
   </g>
-  <!-- /step-1 -->
+  <!-- R highlight (beat-3) -->
+  <rect id="hl-R" x="316" y="228" width="48" height="84" rx="6"
+        fill="var(--figure-ink-soft)" opacity="0"/>
 
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- STEP 2 — + u_L highlighted; equation: "u_C + u_L = 0"               -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g id="step-2" style="display:none">
+  <!-- "Circuit LC" badge in schematic (beat-0) -->
+  <rect x="100" y="454" width="180" height="28" rx="5"
+        fill="var(--figure-accent)" opacity="0.10"/>
+  <text id="badge-lc" x="190" y="472" text-anchor="middle"
+        font-size="10.5" font-weight="600" fill="var(--figure-accent)">
+    Passe 1 — circuit idéal (R ≈ 0)
+  </text>
 
-    <!-- Highlight L (soft teal glow around coil) -->
-    <rect class="hl-enter" x="134" y="283" width="132" height="46" rx="6" fill="#7E9CC8"/>
-
-    <!-- Step 2 chip + equation -->
-    <g class="step-enter">
-      <circle cx="400" cy="158" r="10" fill="#7E9CC8" opacity="0.18"/>
-      <text x="400" y="162" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">2</text>
-      <text x="420" y="162" font-size="14" fill="#2A2A2E">
-        <tspan font-style="italic" fill="#3E5C86">u<tspan dy="4" font-size="10">C</tspan></tspan>
-        <tspan dy="-4" font-size="14" fill="#2A2A2E"> + </tspan>
-        <tspan font-style="italic" fill="#7E9CC8">u<tspan dy="4" font-size="10">L</tspan></tspan>
-        <tspan dy="-4" fill="#2A2A2E" font-size="14"> = 0</tspan>
-      </text>
-    </g>
-    <text class="step-enter" x="420" y="178" font-size="10" fill="#6B6B72">
-      boucle série sans source → somme des tensions = 0
+  <!-- "Circuit RLC" label (beat-3, opacity:0) — positioned below badge-lc -->
+  <g id="badge-rlc" opacity="0">
+    <rect x="75" y="484" width="238" height="24" rx="5"
+          fill="var(--figure-ink-soft)" opacity="0.12"/>
+    <text x="194" y="500" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-ink-soft)">
+      Passe 2 — circuit amorti (R présente)
     </text>
   </g>
-  <!-- /step-2 -->
 
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- STEP 3 — Substitute → "q/C + L·d²q/dt² = 0"                         -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g id="step-3" style="display:none">
-    <g class="step-enter">
-      <circle cx="400" cy="215" r="10" fill="#3E5C86" opacity="0.15"/>
-      <text x="400" y="219" text-anchor="middle" font-size="10" font-weight="600" fill="#3E5C86">3</text>
-      <!-- q/C + L · -->
-      <text x="420" y="216" font-size="13" fill="#2A2A2E">
-        <tspan font-style="italic" fill="#3E5C86">q</tspan><tspan fill="#2A2A2E">/</tspan><tspan font-style="italic" fill="#3E5C86">C</tspan>
-        <tspan fill="#2A2A2E"> + </tspan>
-        <tspan font-style="italic" fill="#7E9CC8">L</tspan>
-        <tspan fill="#2A2A2E"> · </tspan>
-      </text>
-      <!-- d²q/dt² fraction -->
-      <text x="510" y="210" font-size="10" fill="#7E9CC8">d²q</text>
-      <line x1="509" y1="213" x2="533" y2="213" stroke="#7E9CC8" stroke-width="1"/>
-      <text x="510" y="223" font-size="10" fill="#7E9CC8">dt²</text>
-      <!-- = 0 -->
-      <text x="537" y="216" font-size="13" fill="#2A2A2E"> = 0</text>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       RIGHT COLUMN — Equation slot (replace model)
+       ONE equation form occupies the slot at any given beat.
+       Each form is a <g> whose DIRECT CHILDREN are the terms/rows —
+       the assemble verb staggers these children.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="382" y="58" width="360" height="450" rx="6"
+        fill="var(--figure-grid)" opacity="0.18"/>
+
+  <!-- Slot header — step indicator -->
+  <text id="slot-header" x="562" y="80" text-anchor="middle"
+        font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">
+    Équation en cours de construction
+  </text>
+
+  <!-- ── EQ-A: "u_C + u_L = 0"  (beat-0, settled on load) ──────────────── -->
+  <!-- Direct children: one per logical line/group. assemble staggers them. -->
+  <g id="eq-a">
+    <!-- child 1: step label -->
+    <g>
+      <circle cx="404" cy="120" r="11" fill="var(--figure-energy-C)" opacity="0.18"/>
+      <text x="404" y="124" text-anchor="middle"
+            font-size="10.5" font-weight="600" fill="var(--figure-energy-C)">1</text>
     </g>
-    <text class="step-enter" x="420" y="238" font-size="10" fill="#6B6B72">
-      substitution : u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> = q/C ,  i = dq/dt ,  u</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = L·di/dt</tspan>
-    </text>
+    <!-- child 2: loi des mailles label -->
+    <g>
+      <text x="424" y="116" font-size="10.5" fill="var(--figure-ink-soft)">
+        Loi des mailles (boucle sans source) :
+      </text>
+    </g>
+    <!-- child 3: the equation itself -->
+    <g>
+      <text x="424" y="148" font-size="20" font-style="italic" fill="var(--figure-ink)">
+        <tspan fill="var(--figure-energy-C)">u</tspan><tspan dy="5" font-size="12" fill="var(--figure-energy-C)">C</tspan>
+        <tspan dy="-5" font-size="20" fill="var(--figure-ink)"> + </tspan>
+        <tspan fill="var(--figure-energy-L)">u</tspan><tspan dy="5" font-size="12" fill="var(--figure-energy-L)">L</tspan>
+        <tspan dy="-5" font-size="20" fill="var(--figure-ink)"> = 0</tspan>
+      </text>
+    </g>
+    <!-- child 4: explanatory note -->
+    <g>
+      <text x="424" y="172" font-size="10" fill="var(--figure-ink-soft)">
+        Somme des tensions nulles — boucle LC série
+      </text>
+    </g>
   </g>
-  <!-- /step-3 -->
 
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- STEP 4 — Reorder → "L·q'' + q/C = 0"  +  "R n'apparaît pas"         -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g id="step-4" style="display:none">
-    <g class="step-enter">
-      <circle cx="400" cy="272" r="10" fill="#5A7A4A" opacity="0.18"/>
-      <text x="400" y="276" text-anchor="middle" font-size="10" font-weight="600" fill="#5A7A4A">4</text>
-      <text x="420" y="276" font-size="14" font-style="italic" fill="#2A2A2E">
-        <tspan fill="#7E9CC8">L</tspan><tspan fill="#2A2A2E"> · </tspan><tspan fill="#7E9CC8">q</tspan><tspan fill="#2A2A2E">'' + </tspan><tspan fill="#3E5C86">q</tspan><tspan fill="#2A2A2E">/</tspan><tspan fill="#3E5C86">C</tspan><tspan fill="#2A2A2E"> = 0</tspan>
+  <!-- ── EQ-B: substitute u_C = q/C, u_L = L·d²q/dt² (beat-1) ─────────── -->
+  <g id="eq-b" opacity="0">
+    <!-- child 1: step label -->
+    <g>
+      <circle cx="404" cy="120" r="11" fill="var(--figure-accent)" opacity="0.18"/>
+      <text x="404" y="124" text-anchor="middle"
+            font-size="10.5" font-weight="600" fill="var(--figure-accent)">2</text>
+    </g>
+    <!-- child 2: substitution label -->
+    <g>
+      <text x="424" y="116" font-size="10.5" fill="var(--figure-ink-soft)">
+        Substitution des expressions physiques :
       </text>
     </g>
-    <text class="step-enter" x="420" y="293" font-size="10" fill="#6B6B72">
-      équation du cas idéal — T₀ = 2π√(LC)
-    </text>
+    <!-- child 3: u_C = q/C -->
+    <g>
+      <text x="424" y="148" font-size="16" font-style="italic">
+        <tspan fill="var(--figure-energy-C)">u<tspan dy="4" font-size="10">C</tspan></tspan>
+        <tspan dy="-4" fill="var(--figure-ink)"> = </tspan>
+        <tspan fill="var(--figure-energy-C)">q</tspan>
+        <tspan fill="var(--figure-ink)">/</tspan>
+        <tspan fill="var(--figure-energy-C)">C</tspan>
+      </text>
+    </g>
+    <!-- child 4: u_L = L · d²q/dt² (fraction rendered as stacked text) -->
+    <g>
+      <text x="424" y="186" font-size="16" font-style="italic">
+        <tspan fill="var(--figure-energy-L)">u<tspan dy="4" font-size="10">L</tspan></tspan>
+        <tspan dy="-4" fill="var(--figure-ink)"> = </tspan>
+        <tspan fill="var(--figure-energy-L)">L</tspan>
+        <tspan fill="var(--figure-ink)"> · </tspan>
+      </text>
+      <!-- d²q/dt² as stacked fraction -->
+      <text x="544" y="178" font-size="11" font-style="italic"
+            fill="var(--figure-energy-L)">d²q</text>
+      <line x1="542" y1="182" x2="568" y2="182"
+            stroke="var(--figure-energy-L)" stroke-width="1"/>
+      <text x="542" y="193" font-size="11" font-style="italic"
+            fill="var(--figure-energy-L)">dt²</text>
+    </g>
+    <!-- child 5: resulting equation -->
+    <g>
+      <text x="424" y="228" font-size="10.5" fill="var(--figure-ink-soft)">
+        → en substituant dans u<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + u</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = 0 :</tspan>
+      </text>
+    </g>
+    <!-- child 6: q/C + L d²q/dt² = 0 -->
+    <g>
+      <text x="424" y="260" font-size="16" font-style="italic"
+            fill="var(--figure-energy-C)">q</text>
+      <text x="436" y="260" font-size="16"
+            fill="var(--figure-ink)">/</text>
+      <text x="444" y="260" font-size="16" font-style="italic"
+            fill="var(--figure-energy-C)">C</text>
+      <text x="458" y="260" font-size="16"
+            fill="var(--figure-ink)"> + </text>
+      <text x="482" y="260" font-size="16" font-style="italic"
+            fill="var(--figure-energy-L)">L</text>
+      <text x="493" y="260" font-size="16"
+            fill="var(--figure-ink)"> · </text>
+      <text x="508" y="253" font-size="11" font-style="italic"
+            fill="var(--figure-energy-L)">d²q</text>
+      <line x1="506" y1="256" x2="532" y2="256"
+            stroke="var(--figure-energy-L)" stroke-width="1"/>
+      <text x="506" y="267" font-size="11" font-style="italic"
+            fill="var(--figure-energy-L)">dt²</text>
+      <text x="534" y="260" font-size="16"
+            fill="var(--figure-ink)"> = 0</text>
+    </g>
+  </g>
 
-    <!-- "R n'apparaît pas" callout box -->
-    <g class="step-enter">
-      <rect x="395" y="303" width="340" height="38" rx="5" fill="#5A7A4A" opacity="0.08"/>
-      <text x="565" y="318" text-anchor="middle" font-size="10.5" font-weight="600" fill="#5A7A4A">
+  <!-- ── EQ-C: "L·q'' + q/C = 0" — reordered, canonical (beat-2) ──────── -->
+  <g id="eq-c" opacity="0">
+    <!-- child 1: step label -->
+    <g>
+      <circle cx="404" cy="120" r="11" fill="var(--figure-energy-L)" opacity="0.18"/>
+      <text x="404" y="124" text-anchor="middle"
+            font-size="10.5" font-weight="600" fill="var(--figure-energy-L)">3</text>
+    </g>
+    <!-- child 2: reorder label -->
+    <g>
+      <text x="424" y="116" font-size="10.5" fill="var(--figure-ink-soft)">
+        Forme canonique (terme L en premier) :
+      </text>
+    </g>
+    <!-- child 3: L·d²q/dt² + q/C = 0 -->
+    <g>
+      <text x="424" y="170" font-size="19" font-style="italic"
+            fill="var(--figure-energy-L)">L</text>
+      <text x="438" y="163" font-size="12" font-style="italic"
+            fill="var(--figure-energy-L)">d²q</text>
+      <line x1="436" y1="166" x2="464" y2="166"
+            stroke="var(--figure-energy-L)" stroke-width="1.2"/>
+      <text x="436" y="178" font-size="12" font-style="italic"
+            fill="var(--figure-energy-L)">dt²</text>
+      <text x="468" y="170" font-size="19" fill="var(--figure-ink)"> + </text>
+      <text x="496" y="170" font-size="19" font-style="italic"
+            fill="var(--figure-energy-C)">q</text>
+      <text x="510" y="170" font-size="19" fill="var(--figure-ink)">/</text>
+      <text x="520" y="170" font-size="19" font-style="italic"
+            fill="var(--figure-energy-C)">C</text>
+      <text x="536" y="170" font-size="19" fill="var(--figure-ink)"> = 0</text>
+    </g>
+    <!-- child 4: result label -->
+    <g>
+      <text x="424" y="208" font-size="10" fill="var(--figure-ink-soft)">
+        Équation du cas idéal — T₀ = 2π√(LC)
+      </text>
+    </g>
+    <!-- child 5: "R n'apparaît pas" verdict -->
+    <g id="verdict-no-R">
+      <rect x="420" y="228" width="308" height="50" rx="5"
+            fill="var(--figure-energy-L)" opacity="0.08"/>
+      <text x="574" y="248" text-anchor="middle"
+            font-size="10.5" font-weight="600"
+            fill="var(--figure-energy-L)">
         R n'apparaît pas dans cette équation
       </text>
-      <text x="565" y="334" text-anchor="middle" font-size="10" fill="#5A7A4A">
+      <text x="574" y="264" text-anchor="middle"
+            font-size="10" fill="var(--figure-energy-L)">
         → la période T₀ est indépendante de R
       </text>
     </g>
+  </g>
 
-    <!-- "R absente" annotation on the schematic right wire -->
-    <g class="step-enter">
-      <rect x="346" y="152" width="72" height="20" rx="4" fill="#D4785A" opacity="0.15"/>
-      <text x="382" y="166" text-anchor="middle" font-size="9.5" font-style="italic" fill="#C06040">
-        R absente
+  <!-- ── EQ-D: full RLC ODE "L·q'' + R·q' + q/C = 0" (beat-3) ──────────── -->
+  <g id="eq-d" opacity="0">
+    <!-- child 1: step label -->
+    <g>
+      <circle cx="404" cy="120" r="11" fill="var(--figure-ink-soft)" opacity="0.22"/>
+      <text x="404" y="124" text-anchor="middle"
+            font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">4</text>
+    </g>
+    <!-- child 2: label -->
+    <g>
+      <text x="424" y="116" font-size="10.5" fill="var(--figure-ink-soft)">
+        Avec R présente — loi des mailles RLC :
       </text>
-      <text x="382" y="178" text-anchor="middle" font-size="8.5" fill="#C06040">
-        → T₀ sans R
+    </g>
+    <!-- child 3: u_C + u_L + u_R = 0 -->
+    <g>
+      <text x="424" y="154" font-size="16" font-style="italic" fill="var(--figure-ink)">
+        <tspan fill="var(--figure-energy-C)">u<tspan dy="4" font-size="10">C</tspan></tspan>
+        <tspan dy="-4"> + </tspan>
+        <tspan fill="var(--figure-energy-L)">u<tspan dy="4" font-size="10">L</tspan></tspan>
+        <tspan dy="-4"> + </tspan>
+        <tspan fill="var(--figure-ink-soft)">u<tspan dy="4" font-size="10">R</tspan></tspan>
+        <tspan dy="-4"> = 0</tspan>
+      </text>
+    </g>
+    <!-- child 4: L·q'' + R·q' + q/C = 0 -->
+    <g>
+      <text x="424" y="200" font-size="17" font-style="italic"
+            fill="var(--figure-energy-L)">L</text>
+      <text x="438" y="193" font-size="11" font-style="italic"
+            fill="var(--figure-energy-L)">d²q</text>
+      <line x1="436" y1="196" x2="462" y2="196"
+            stroke="var(--figure-energy-L)" stroke-width="1"/>
+      <text x="436" y="207" font-size="11" font-style="italic"
+            fill="var(--figure-energy-L)">dt²</text>
+      <text x="465" y="200" font-size="17" fill="var(--figure-ink)"> + </text>
+      <text x="489" y="200" font-size="17" font-style="italic"
+            fill="var(--figure-ink-soft)">R</text>
+      <text x="500" y="193" font-size="11" font-style="italic"
+            fill="var(--figure-ink-soft)">dq</text>
+      <line x1="500" y1="196" x2="516" y2="196"
+            stroke="var(--figure-ink-soft)" stroke-width="1"/>
+      <text x="500" y="207" font-size="11" font-style="italic"
+            fill="var(--figure-ink-soft)">dt</text>
+      <text x="520" y="200" font-size="17" fill="var(--figure-ink)"> + </text>
+      <text x="545" y="200" font-size="17" font-style="italic"
+            fill="var(--figure-energy-C)">q</text>
+      <text x="558" y="200" font-size="17" fill="var(--figure-ink)">/</text>
+      <text x="567" y="200" font-size="17" font-style="italic"
+            fill="var(--figure-energy-C)">C</text>
+      <text x="582" y="200" font-size="17" fill="var(--figure-ink)"> = 0</text>
+    </g>
+    <!-- child 5: the R·q' residue note -->
+    <g>
+      <text x="424" y="238" font-size="10" fill="var(--figure-ink-soft)">
+        Le terme <tspan font-style="italic">R·dq/dt</tspan> ne s'annule pas — résidu non nul.
+      </text>
+    </g>
+    <!-- child 6: ARRÊT badge -->
+    <g>
+      <rect x="420" y="256" width="316" height="62" rx="6"
+            fill="var(--figure-ink-soft)" opacity="0.08"/>
+      <rect x="420" y="256" width="316" height="62" rx="6"
+            fill="none"
+            stroke="var(--figure-ink-soft)"
+            stroke-width="1.5"
+            stroke-dasharray="5,3"/>
+      <text x="578" y="278" text-anchor="middle"
+            font-size="11.5" font-weight="600"
+            fill="var(--figure-ink)">
+        ARRÊT — on établit l'équation et on s'arrête.
+      </text>
+      <text x="578" y="296" text-anchor="middle"
+            font-size="9.5" fill="var(--figure-ink-soft)">
+        Résoudre l'équation amortie dépasse le programme.
+      </text>
+      <text x="578" y="310" text-anchor="middle"
+            font-size="9.5" fill="var(--figure-ink-soft)">
+        Les trois régimes se décrivent qualitativement.
       </text>
     </g>
   </g>
-  <!-- /step-4 -->
-
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <!-- STEP 5 — Damped: R appears on schematic; full damped ODE;            -->
-  <!--           R·q' residue; ARRÊT badge. (BOUNDARY: no solution)         -->
-  <!-- ══════════════════════════════════════════════════════════════════════ -->
-  <g id="step-5" style="display:none">
-
-    <!-- Separator line between pass 1 and pass 2 equations -->
-    <line class="step-enter" x1="390" y1="355" x2="740" y2="355" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="6,4"/>
-
-    <!-- Pass 2 badge -->
-    <g class="step-enter">
-      <rect x="390" y="361" width="130" height="20" rx="4" fill="#C06040" opacity="0.12"/>
-      <text x="455" y="375" text-anchor="middle" font-size="10" font-weight="600" fill="#C06040">
-        Passe 2 — amorti
-      </text>
-    </g>
-
-    <!-- Resistor R on the schematic right wire (appears now for the first time) -->
-    <g class="step-enter">
-      <rect x="322" y="145" width="36" height="60" rx="3" fill="#F5F3EF" stroke="#2A2A2E" stroke-width="2"/>
-      <text x="340" y="174" text-anchor="middle" font-size="13" font-style="italic" fill="#2A2A2E">R</text>
-      <!-- u_R label -->
-      <line x1="368" y1="149" x2="368" y2="201" stroke="#7E9CC8" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <polygon points="368,149 364,160 372,160" fill="#7E9CC8"/>
-      <text x="384" y="178" text-anchor="middle" font-size="11" font-style="italic" fill="#7E9CC8">
-        u<tspan dy="4" font-size="8">R</tspan>
-      </text>
-    </g>
-
-    <!-- Highlights for all three components (pass 2) -->
-    <rect class="hl-enter" x="-2"  y="107" width="62"  height="96" rx="6" fill="#3E5C86"/>
-    <rect class="hl-enter" x="134" y="283" width="132" height="46" rx="6" fill="#7E9CC8"/>
-    <rect class="hl-enter" x="316" y="138" width="52"  height="74" rx="6" fill="#C06040"/>
-
-    <!-- Damped Step R1: u_C + u_L + u_R = 0 -->
-    <g class="step-enter">
-      <circle cx="400" cy="400" r="10" fill="#C06040" opacity="0.15"/>
-      <text x="400" y="404" text-anchor="middle" font-size="10" font-weight="600" fill="#C06040">1</text>
-      <text x="420" y="404" font-size="14" fill="#2A2A2E">
-        <tspan font-style="italic" fill="#3E5C86">u<tspan dy="4" font-size="10">C</tspan></tspan>
-        <tspan dy="-4" fill="#2A2A2E"> + </tspan>
-        <tspan font-style="italic" fill="#7E9CC8">u<tspan dy="4" font-size="10">L</tspan></tspan>
-        <tspan dy="-4" fill="#2A2A2E"> + </tspan>
-        <tspan font-style="italic" fill="#C06040">u<tspan dy="4" font-size="10">R</tspan></tspan>
-        <tspan dy="-4" fill="#2A2A2E"> = 0</tspan>
-      </text>
-    </g>
-    <text class="step-enter" x="420" y="420" font-size="10" fill="#6B6B72">
-      R présente dans la boucle → u<tspan dy="3" font-size="7.5">R</tspan><tspan dy="-3"> = R·i = R·q' apparaît</tspan>
-    </text>
-
-    <!-- Damped Step R2: L·q'' + R·q' + q/C = 0 -->
-    <g class="step-enter">
-      <circle cx="400" cy="448" r="10" fill="#C06040" opacity="0.15"/>
-      <text x="400" y="452" text-anchor="middle" font-size="10" font-weight="600" fill="#C06040">2</text>
-      <text x="420" y="452" font-size="14" font-style="italic" fill="#2A2A2E">
-        <tspan fill="#7E9CC8">L</tspan><tspan fill="#2A2A2E">·</tspan><tspan fill="#7E9CC8">q</tspan><tspan fill="#2A2A2E">'' + </tspan><tspan fill="#C06040">R</tspan><tspan fill="#2A2A2E">·</tspan><tspan fill="#C06040">q</tspan><tspan fill="#2A2A2E">' + </tspan><tspan fill="#3E5C86">q</tspan><tspan fill="#2A2A2E">/</tspan><tspan fill="#3E5C86">C</tspan><tspan fill="#2A2A2E"> = 0</tspan>
-      </text>
-    </g>
-    <text class="step-enter" x="420" y="468" font-size="10" fill="#6B6B72">
-      équation différentielle amortie — résidu R·q' non nul
-    </text>
-
-    <!-- Damped Step R3: R·q' residue → ARRÊT -->
-    <g class="step-enter">
-      <circle cx="400" cy="496" r="10" fill="#C06040" opacity="0.25"/>
-      <text x="400" y="500" text-anchor="middle" font-size="10" font-weight="600" fill="#C06040">3</text>
-      <text x="420" y="490" font-size="12" fill="#6B6B72">
-        si  q = Q·cos(…)  alors  R·q' =
-      </text>
-      <text x="420" y="506" font-size="13" font-weight="600" fill="#C06040" font-style="italic">
-        −R·Q·(2π/T₀)·sin(…)  ≠ 0
-      </text>
-    </g>
-    <text class="step-enter" x="420" y="523" font-size="10" fill="#6B6B72">
-      le cosinus idéal ne vérifie pas l'équation amortie
-    </text>
-
-    <!-- ARRÊT badge (the hard boundary marker) -->
-    <g class="step-enter">
-      <rect x="390" y="533" width="345" height="52" rx="6" fill="#C06040" opacity="0.10"/>
-      <rect x="390" y="533" width="345" height="52" rx="6" fill="none" stroke="#C06040" stroke-width="1.5" stroke-dasharray="5,3"/>
-      <text x="563" y="554" text-anchor="middle" font-size="12" font-weight="600" fill="#C06040">
-        ARRÊT — on établit l'équation et on s'arrête là.
-      </text>
-      <text x="563" y="571" text-anchor="middle" font-size="10" fill="#C06040">
-        Résidu R·q' non annulable → pas de solution fermée au programme.
-      </text>
-    </g>
-  </g>
-  <!-- /step-5 -->
 
 </svg>

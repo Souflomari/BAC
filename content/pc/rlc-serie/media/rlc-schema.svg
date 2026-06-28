@@ -2,6 +2,17 @@
      font-family="'IBM Plex Sans', system-ui, sans-serif"
      aria-label="Schéma du circuit RLC série — révélation progressive en 4 étapes">
   <title>Circuit RLC série</title>
+
+  <!-- Dégradés partagés — hors des step-groups pour rester accessibles quelle que soit la visibilité -->
+  <defs>
+    <!-- Dégradé corps résistance (utilisé par step-4) -->
+    <linearGradient id="r-body-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="var(--figure-surface)"/>
+      <stop offset="45%"  stop-color="var(--figure-grid)"/>
+      <stop offset="100%" stop-color="var(--figure-surface)"/>
+    </linearGradient>
+  </defs>
+
   <!--
     rlc-schema.svg — Circuit RLC série, 4 progressive steps
     step-1 : boucle LC nue + interrupteur K  (R absent — délibéré)
@@ -70,24 +81,6 @@
           font-size="13" font-style="italic" fill="var(--figure-ink)">K</text>
 
     <!-- ── Condensateur C (fil gauche, vertical) ─────────── -->
-    <!-- Dégradé subtil pour une légère profondeur sur les plaques -->
-    <defs>
-      <linearGradient id="plate-grad-pos" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="var(--figure-accent)" stop-opacity="0.7"/>
-        <stop offset="100%" stop-color="var(--figure-accent)" stop-opacity="1"/>
-      </linearGradient>
-      <linearGradient id="plate-grad-neg" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="var(--figure-ink-soft)" stop-opacity="0.7"/>
-        <stop offset="100%" stop-color="var(--figure-ink-soft)" stop-opacity="1"/>
-      </linearGradient>
-      <!-- Dégradé corps résistance -->
-      <linearGradient id="r-body-grad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%"   stop-color="var(--figure-surface)"/>
-        <stop offset="45%"  stop-color="var(--figure-grid)"/>
-        <stop offset="100%" stop-color="var(--figure-surface)"/>
-      </linearGradient>
-    </defs>
-
     <!-- Plaque haute (+) -->
     <line x1="46" y1="118" x2="98" y2="118"
           stroke="var(--figure-accent)" stroke-width="3" stroke-linecap="round"/>
