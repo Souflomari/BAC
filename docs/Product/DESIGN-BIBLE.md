@@ -83,7 +83,15 @@ from the first page a student lands on to the deepest practice screen.
 
 ## 2. Color
 
-**Philosophy: calm, low-stimulation, tinted-neutral, single restrained accent.**
+**Philosophy: calm, low-stimulation, WARM tinted-neutral, single signature accent.**
+
+> **Updated by ADR 0023 (warm-editorial).** The palette is now an explicitly
+> **warm** set — ivory/cream surfaces and warm near-black ink in light, a warm
+> charcoal (faint brown undertone) in dark — replacing the earlier cool
+> blue-gray. The single accent is now a deliberate **signature hue (deep teal),
+> chosen from live direction studies**, promoted to a CSS variable so it themes
+> centrally. Concrete ramps live in `docs/design/TOKENS.md`. Everything below
+> still holds; the values just got warm and the accent got a signature.
 
 - **Never pure black or pure white.** Every surface, border, and text color
   carries a faint tint (a trace of warmth or of the brand hue). Pure `#FFFFFF`
@@ -135,6 +143,14 @@ from the first page a student lands on to the deepest practice screen.
 Type is the single most important craft element in this product, because the
 product is *deeply* text-heavy — the décortiquer, the exposed reasoning, the
 explanations are the heart, and they are read, at length, on a desktop screen.
+
+> **Updated by ADR 0023 (editorial pairing).** A **reading serif (Source Serif 4)**
+> now carries lesson **prose and headings** — warmth and scholarship, like a fine
+> textbook. **IBM Plex Sans** is kept for **UI chrome, labels, controls, and
+> figure/math labels** (the unambiguous-figures requirement below applies to the
+> sans, which is where digits and variables are read). KaTeX still owns math. The
+> serif/sans split is the new rule; the bullet below about "one excellent sans"
+> now means "one excellent sans *for chrome*, one reading serif *for prose*."
 
 - **The measure (line length) is 60–70 characters for prose.** This is the
   readability sweet spot and it matters enormously for long-form explanation.

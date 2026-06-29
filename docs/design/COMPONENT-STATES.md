@@ -1,8 +1,13 @@
 # Component States — Interaction Reference
 
-> **Authority:** ADR 0022. This document defines the concrete interaction
-> states for every interactive surface in the product. Critics and authors
-> in later phases use this as the checkable bar for "premium" micro-craft.
+> **Authority:** ADR 0022, updated by **ADR 0023** (warm-editorial). This
+> document defines the concrete interaction states for every interactive surface.
+> Critics and authors use it as the checkable bar for "premium" micro-craft.
+>
+> **ADR 0023 deltas:** the focus ring is the **accent CSS variable** at **6px**
+> radius (was hardcoded `#3E5C86` / 4px); cards are **shadow-first** (the
+> `elevation-1/2` hairline ring replaces drawn borders); a single **`.btn-primary`**
+> is the one confident accent action per surface (see §Primary Button).
 >
 > **Token references:** `docs/design/TOKENS.md` for all values.
 > **Focus utility:** `.focus-ring` class (see §Focus Ring below).
@@ -37,9 +42,9 @@ applicable ones.
 
 ```css
 .focus-ring:focus-visible {
-  outline: 2px solid #3E5C86;   /* accent color */
+  outline: 2px solid var(--color-accent);   /* signature teal, ADR 0023 */
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 ```
 
@@ -82,19 +87,21 @@ validated the token set and after MotionStage is built (Phase 2).
 
 ## 2. Buttons and Primary Controls
 
-### 2.1 Primary Button (accent-filled)
+### 2.1 Primary Button — `.btn-primary` (the ONE accent action, ADR 0023)
 
-Used for: submit, confirm, primary CTA on landing pages.
-Touch target: min-height 48px.
+Concrete CSS class in `globals.css` (`@layer components`). Used **sparingly** —
+only the genuine primary action of a surface (e.g. "open the interactive
+sandbox"); every other control stays quiet (ghost/secondary). Deep-teal fill;
+on-accent text (warm-white in light, **deep teal** `#11302C` in dark — the dark
+accent is light, so white would fail contrast). Touch target: min-height 48px.
 
 | State | Background | Text | Border | Shadow | Transition |
 |---|---|---|---|---|---|
-| rest | `accent` (#3E5C86) | `text-on-accent` (#FFF) | none | `elevation-0` | — |
-| hover | `accent` + 8% white overlay (~#4A6C99) | `text-on-accent` | none | `elevation-1` | 150ms `ease-enter` |
-| focus-visible | `accent` | `text-on-accent` | `.focus-ring` outline | `elevation-1` | 150ms |
-| active | `accent` - 10% (~#344E74) | `text-on-accent` | none | `elevation-0` (pressed in) | 100ms `ease-leave` |
+| rest | `accent` (`#1F6F6B` / dark `#5FB6AE`) | `text-on-accent` | none | `elevation-2` | — |
+| hover | `accent-strong` (`#185C58` / dark `#7FC8C0`) | `text-on-accent` | none | `elevation-3` | 150ms `ease-between` |
+| focus-visible | `accent` | `text-on-accent` | `:focus-visible` outline | `elevation-2` | 150ms |
+| active | `accent-strong` | `text-on-accent` | none | `elevation-1` (pressed in) | 150ms |
 | disabled | `accent` at 40% opacity | `text-on-accent` at 40% | none | none | — |
-| loading | `accent` | spinner + label | none | `elevation-0` | — |
 
 ### 2.2 Secondary Button (border + surface)
 

@@ -1,8 +1,15 @@
 # Design Tokens — Canonical Reference
 
-> **Authority:** ADR 0022. This document discharges the DESIGN-BIBLE appendix's
-> explicitly-deferred "concrete tokens — the first concrete step of building the
-> UI, not yet settled." It is the single source of truth for every token.
+> **Authority:** ADR 0022, **re-tuned warm by ADR 0023.** This document
+> discharges the DESIGN-BIBLE appendix's deferred "concrete tokens." It is the
+> single source of truth for every token.
+>
+> **ADR 0023 (warm-editorial) changed the VALUES below, not the structure:** the
+> palette is now warm ivory/charcoal with a **deep-teal signature accent** (was
+> cool blue-gray); typography is an **editorial serif + Plex sans pairing** (was
+> sans-only); `elevation-1/2` lead with a faint hairline **ring** for shadow-first
+> cards; semantics are muted (not neon). The scale/mechanism (5-step elevation,
+> easing curves, figure `var(--figure-*)` indirection) is unchanged.
 >
 > **Implementation:** `web/src/app/globals.css` (CSS custom properties) and
 > `web/tailwind.config.ts` (Tailwind mappings to those vars). All component
@@ -15,65 +22,81 @@
 
 ## 1. Color Palette
 
+> **ADR 0023 — warm-editorial palette.** All values below are the warm ramps.
+
 ### 1.1 Surface (light / dark)
 
 | Token | Light hex | Dark hex | Usage |
 |---|---|---|---|
-| `--color-surface-base` | `#F5F6F8` | `#14181F` | Page background |
-| `--color-surface-raised` | `#FAFBFC` | `#1C2230` | Cards, panels, raised elements |
-| `--color-surface-overlay` | `#FFFFFF` | `#242B3B` | Modals, tooltips, overlays |
+| `--color-surface-base` | `#F4EFE6` | `#1A1612` | Page background (warm ivory / charcoal) |
+| `--color-surface-raised` | `#FBF7F0` | `#231E18` | Cards, panels, raised elements |
+| `--color-surface-overlay` | `#FFFDF8` | `#2C261F` | Modals, tooltips, overlays |
 
 ### 1.2 Border
 
 | Token | Light hex | Dark hex | Usage |
 |---|---|---|---|
-| `--color-border-subtle` | `#E4E7ED` | `#2A3245` | Very faint dividers, figure grids |
-| `--color-border-soft` | `#CDD3DE` | `#3A4560` | Visible borders, blockquote rules |
+| `--color-border-subtle` | `#E6DECF` | `#352E26` | Very faint dividers, figure grids |
+| `--color-border-soft` | `#D2C6B2` | `#473E33` | Visible borders, blockquote rules |
+
+> Note: ADR 0023's **shadow-first cards** drop most drawn borders; the
+> `elevation-1/2` hairline ring carries the edge. Borders remain for interactive
+> option rows (state-semantic) and dashed "empty/placeholder" affordances.
 
 ### 1.3 Text
 
 | Token | Light hex | Dark hex | Usage |
 |---|---|---|---|
-| `--color-text-primary` | `#1A2332` | `#E8ECF2` | Body, headings, all primary reading text |
-| `--color-text-secondary` | `#4A5568` | `#9AAABF` | Captions, labels, secondary information |
-| `--color-text-tertiary` | `#7A8899` | `#5E7289` | Metadata, step indicators, placeholders |
-| `--color-text-on-accent` | `#FFFFFF` | `#FFFFFF` | Text on accent-colored backgrounds |
+| `--color-text-primary` | `#2A2018` | `#EFE8DC` | Body, headings, all primary reading text |
+| `--color-text-secondary` | `#5C5043` | `#B5A893` | Captions, labels, secondary information |
+| `--color-text-tertiary` | `#8A7E6E` | `#7E7264` | Metadata, quiet separators (large/UI/decorative only — below 4.5:1) |
+| `--color-text-on-accent` | `#FFFDF8` | `#11302C` | Text on the accent fill (DARK is deep teal: the dark accent is light, so white would fail) |
 
-### 1.4 Accent
-
-| Token | Value | Usage |
-|---|---|---|
-| `accent.DEFAULT` | `#3E5C86` | Primary CTA, links, focus rings, key marks |
-| `accent.light` | `#7E9CC8` | Lighter variant for dark-mode figures |
-| `--color-accent-subtle` | `#EBF0F8` / `#1E2E46` (dark) | Hover background tint on accent targets |
-
-**Rule:** one accent, used sparingly. It marks the primary action or the one
-thing that matters. Never decorative.
-
-### 1.5 Semantic
+### 1.4 Accent — signature deep teal (CSS variables)
 
 | Token | Light | Dark | Usage |
 |---|---|---|---|
-| `--color-success` | `#2D6A4F` | `#4ADE80` | Correct answer, positive feedback |
-| `--color-success-subtle` | `#EAF4EE` | `#0F2B1A` | Background of correct feedback |
-| `--color-warning` | `#7D5A00` | `#FCD34D` | Caution states |
-| `--color-warning-subtle` | `#FFF8E6` | `#2B2000` | Background of warning states |
-| `--color-error` | `#8B2020` | `#F87171` | Incorrect answer, error states |
-| `--color-error-subtle` | `#FDF0F0` | `#2B0F0F` | Background of error states |
+| `--color-accent` (`accent.DEFAULT`) | `#1F6F6B` | `#5FB6AE` | Links, focus rings, eyebrows, the one primary action, key marks |
+| `--color-accent-strong` (`accent.strong`) | `#185C58` | `#7FC8C0` | Hover / active (darkens in light, brightens in dark) |
+| `--color-accent-light` (`accent.light`) | `#5FB6AE` | `#5FB6AE` | Lighter contexts; dark-mode `--figure-accent` |
+| `--color-accent-subtle` (`accent.subtle`) | `#E4F0EE` | `#16312F` | Very light tint for hover backgrounds |
+
+**Rule:** one **signature** accent, used sparingly, **promoted to a CSS variable**
+(ADR 0023) so it themes centrally. It marks the primary action or the one thing
+that matters per surface — never decorative, never a region wash.
+
+### 1.5 Semantic — muted, never neon (ADR 0023)
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `--color-success` | `#3F6B4E` | `#7FB890` | Correct answer, positive feedback |
+| `--color-success-subtle` | `#E8F0E6` | `#16271B` | Background of correct feedback |
+| `--color-warning` | `#8A6A1E` | `#E0BE6E` | Caution states |
+| `--color-warning-subtle` | `#F6EEDA` | `#2A2110` | Background of warning states |
+| `--color-error` | `#9A3B2E` | `#E08C7E` | Incorrect answer, error states |
+| `--color-error-subtle` | `#F6E6E1` | `#2C1611` | Background of error states |
 
 **Rule:** semantic colors always paired with an icon, label, or shape — never
-color alone conveys meaning (DESIGN-BIBLE §2, §9).
+color alone conveys meaning (DESIGN-BIBLE §2, §9). The signature teal accent is
+deliberately separated from these hues so a teal mark never reads as a warning.
 
 ---
 
 ## 2. Typography
 
-### 2.1 Typefaces
+### 2.1 Typefaces — editorial pairing (ADR 0023)
 
-| Role | Font | Tailwind key |
-|---|---|---|
-| UI + body + math prose | IBM Plex Sans | `font-sans` |
-| Inline code, code blocks | IBM Plex Mono | `font-mono` |
+| Role | Font | Tailwind key | CSS var |
+|---|---|---|---|
+| **Lesson prose + ALL headings** | **Source Serif 4** | `font-serif` | `--font-reading-serif` |
+| UI chrome, labels, controls, figure + math labels | IBM Plex Sans | `font-sans` | `--font-ibm-plex-sans` |
+| Inline code, code blocks | IBM Plex Mono | `font-mono` | `--font-ibm-plex-mono` |
+
+The reading serif carries warmth/scholarship for the heavy reading load. Plex
+Sans keeps the unambiguous figures (1/l/I/0) where digits and variables are read
+— chrome and inside figures. Headings **outside** `.prose-lesson` (notion
+masthead `h1`, home `h1`, items `h2`, not-found) take an explicit `font-serif`.
+KaTeX keeps its own math fonts.
 
 ### 2.2 Type scale
 
@@ -99,7 +122,12 @@ The `--font-scale` CSS var is controlled by FontSizeStepper (values: 0.9375 / 1 
 |---|---|---|
 | `regular` | 400 | Body, secondary labels |
 | `medium` | 500 | UI elements, h4 |
-| `semibold` | 600 | Headings h1–h3, strong, button labels |
+| `semibold` | 600 | In-prose headings, strong, button labels |
+| `bold` | 700 | Serif display/masthead headings (ADR 0023) |
+
+> ADR 0023 tightened tracking on display/heading sizes (display `-0.03em`, h1
+> `-0.022em`, h2 `-0.018em`) and loosened it on captions / uppercase eyebrows
+> (`+0.02em` / `0.14em`). See `tailwind.config.ts` `fontSize`.
 
 ### 2.4 Measure tokens
 
@@ -179,29 +207,35 @@ prohibited. The calm-load critic treats any overshoot as a blocking issue.
 5-step scale (ADR 0022). Tailwind classes: `shadow-elevation-0` … `shadow-elevation-4`.
 Values live in `--elevation-N` CSS vars in `:root` (light) and `.dark` (dark).
 
-### 6.1 Light mode — tinted blue-gray drop shadows
+### 6.1 Light mode — WARM-tinted drops; 1/2 lead with a hairline RING (ADR 0023)
+
+`elevation-1/2` start with `0 0 0 1px rgba(60,45,30,.0N)` so shadow-first cards
+drop their borders and still hold a crisp edge on the low-contrast ivory.
 
 | Level | CSS var value | Tailwind class | Usage |
 |---|---|---|---|
-| 0 | `none` | `shadow-elevation-0` | Flat (no lift). Inline SVG elements, flush table rows. |
-| 1 | `0 1px 2px -1px rgba(30,45,70,.06), 0 1px 3px 0 rgba(30,45,70,.05)` | `shadow-elevation-1` | Figure panels, cards at rest. Also aliased as `shadow-subtle`. |
-| 2 | `0 2px 4px -2px rgba(30,45,70,.06), 0 4px 12px 0 rgba(30,45,70,.08)` | `shadow-elevation-2` | Checkpoints, raised interactive cards. Also aliased as `shadow-soft`. |
-| 3 | `0 4px 8px -3px rgba(30,45,70,.08), 0 8px 24px -2px rgba(30,45,70,.10)` | `shadow-elevation-3` | Site header after scroll (floating). Dropdowns at rest. |
-| 4 | `0 8px 16px -4px rgba(30,45,70,.10), 0 16px 40px -4px rgba(30,45,70,.14)` | `shadow-elevation-4` | Modals, overlays, popovers. |
+| 0 | `none` | `shadow-elevation-0` | Flat (no lift). Inline SVG elements, flush rows. |
+| 1 | `0 0 0 1px rgba(60,45,30,.05), 0 1px 2px -1px rgba(60,45,30,.08), 0 2px 6px 0 rgba(60,45,30,.06)` | `shadow-elevation-1` | Figure/motion/embed panels, cards at rest, stepper track. |
+| 2 | `0 0 0 1px rgba(60,45,30,.06), 0 2px 4px -2px rgba(60,45,30,.08), 0 8px 20px -2px rgba(60,45,30,.10)` | `shadow-elevation-2` | Checkpoint + MCQ cards, primary button, lifted stepper thumb. |
+| 3 | `0 6px 12px -4px rgba(60,45,30,.10), 0 14px 34px -4px rgba(60,45,30,.14)` | `shadow-elevation-3` | Site header after scroll (floating). |
+| 4 | `0 10px 22px -6px rgba(60,45,30,.12), 0 24px 56px -8px rgba(60,45,30,.18)` | `shadow-elevation-4` | Modals, overlays, popovers. |
 
-### 6.2 Dark mode — layered luminance (not heavy black blobs)
+> The legacy `shadow-subtle` / `shadow-soft` aliases still carry the OLD cool
+> values — prefer the warm `elevation-N` names in new code.
 
-In dark mode, elevation reads as a subtle lighter top-edge hairline (`inset 0 1px 0 0
-rgba(255,255,255,.0N)`) plus a soft dark drop. The hairline mimics the physics of a
-slightly lighter facing surface. Larger N = more hairline opacity + larger drop.
+### 6.2 Dark mode — layered luminance + a warm perimeter ring (ADR 0023)
+
+Dark elevation = a warm top-edge **inset** hairline (`inset 0 1px 0 0
+rgba(255,250,240,.0N)`, a lit top edge) + a soft dark drop; `1/2` add a warm
+**perimeter ring** so shadow-first cards hold their edge on the warm charcoal.
 
 | Level | CSS var value (dark) |
 |---|---|
 | 0 | `none` |
-| 1 | `0 1px 3px 0 rgba(0,0,0,.18), inset 0 1px 0 0 rgba(255,255,255,.04)` |
-| 2 | `0 2px 6px 0 rgba(0,0,0,.22), inset 0 1px 0 0 rgba(255,255,255,.05)` |
-| 3 | `0 4px 16px 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,255,255,.06)` |
-| 4 | `0 8px 28px 0 rgba(0,0,0,.36), inset 0 1px 0 0 rgba(255,255,255,.08)` |
+| 1 | `0 0 0 1px rgba(255,250,240,.05), 0 1px 3px 0 rgba(0,0,0,.24), inset 0 1px 0 0 rgba(255,250,240,.05)` |
+| 2 | `0 0 0 1px rgba(255,250,240,.06), 0 2px 8px 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,250,240,.06)` |
+| 3 | `0 6px 20px 0 rgba(0,0,0,.34), inset 0 1px 0 0 rgba(255,250,240,.07)` |
+| 4 | `0 10px 32px 0 rgba(0,0,0,.42), inset 0 1px 0 0 rgba(255,250,240,.09)` |
 
 ### 6.3 Usage guide
 
@@ -221,45 +255,51 @@ remove them; new code should prefer the `elevation-N` names.
 
 ## 7. Figure Role Palette
 
-Canonical colors for all motion/figure SVGs authored from Phase 2 onward (ADR 0022).
-This replaces the drifted warm palette (`#F5F3EF` / `#2A2A2E`) the first-pass SVGs used.
+Canonical colors for all motion/figure SVGs. **ADR 0023 re-tuned these warm** to
+match the ivory/charcoal world (the surface/ink follow the warm UI family; the
+energy/régime role hues stay Okabe-Ito-distinguishable and INDEPENDENT of the
+signature accent, so the accent can change without breaking figures).
 
-**All figures must use these CSS vars.** Hard-coded colors in SVG files are forbidden
-after Phase 2. The SVG elements reference `var(--figure-*)` so dark-mode just works.
+**All figures must use these CSS vars.** Hard-coded colors in SVG files are
+forbidden. The SVG elements reference `var(--figure-*)` so re-tuning here re-skins
+every figure with zero per-file edits; dark-mode just works.
 
-### 7.1 Surface and ink
+### 7.1 Surface and ink (warm UI family)
 
 | CSS var | Light value | Dark value | Usage |
 |---|---|---|---|
-| `--figure-surface` | `#FAFBFC` | `#1C2230` | Figure background / container fill |
-| `--figure-ink` | `#1A2332` | `#E8ECF2` | Primary labels, axis text, strokes |
-| `--figure-ink-soft` | `#4A5568` | `#9AAABF` | Secondary labels, tick marks, units |
-| `--figure-grid` | `#E4E7ED` | `#2A3245` | Grid lines, axis guides |
-| `--figure-accent` | `#3E5C86` | `#7E9CC8` | Emphasis, pointers, active curve segments |
+| `--figure-surface` | `#FBF7F0` | `#231E18` | Figure background / container fill (= surface-raised) |
+| `--figure-ink` | `#2A2018` | `#EFE8DC` | Primary labels, axis text, strokes |
+| `--figure-ink-soft` | `#5C5043` | `#B5A893` | Secondary labels, tick marks, units |
+| `--figure-grid` | `#E6DECF` | `#352E26` | Grid lines, axis guides |
+| `--figure-accent` | `var(--color-accent)` `#1F6F6B` | `var(--color-accent-light)` `#5FB6AE` | Emphasis, pointers, active curve segments (follows the signature) |
 
 ### 7.2 Energy role colors
 
-Color-blind distinguishable (Okabe-Ito safe subset, shifted to the blue family).
-Blue vs. teal-green: distinguishable under protanopia, deuteranopia, tritanopia.
+Color-blind distinguishable. Slate-blue (denim) vs. teal-green: distinguishable
+under protanopia, deuteranopia, tritanopia. The denim was desaturated from a
+cobalt (ADR 0023 converge) so it harmonizes with the warm world while keeping the
+blue hue for distinction.
 
 | CSS var | Light | Dark | Physical role |
 |---|---|---|---|
-| `--figure-energy-C` | `#3E7BC2` | `#6BA3D9` | Capacitor energy $E_C = \frac{q^2}{2C}$ |
-| `--figure-energy-L` | `#2D7A5F` | `#52A882` | Inductor energy $E_L = \frac{Li^2}{2}$ |
+| `--figure-energy-C` | `#4C6088` | `#7E93BE` | Capacitor energy $E_C = \frac{q^2}{2C}$ (slate-blue) |
+| `--figure-energy-L` | `#3C7A5E` | `#5FA886` | Inductor energy $E_L = \frac{Li^2}{2}$ (teal-green) |
 
 The two bars/areas in an energy-exchange animation MUST use these two vars — never
 ad-hoc colors.
 
 ### 7.3 Regime role colors
 
-Three regimes must be simultaneously distinguishable (three-hue strategy: blue /
-warm-brown / purple — safe under common color-vision deficiencies).
+Three regimes must be simultaneously distinguishable (three-hue strategy:
+slate-blue / warm-brown / muted plum — safe under common color-vision
+deficiencies).
 
 | CSS var | Light | Dark | Regime |
 |---|---|---|---|
-| `--figure-regime-periodic` | `#3E5C86` | `#7E9CC8` | Régime périodique (undamped oscillation) |
-| `--figure-regime-pseudo` | `#8B5E3C` | `#C49A6C` | Régime pseudo-périodique (underdamped) |
-| `--figure-regime-aperiodic` | `#5C3E86` | `#9B7EC8` | Régime apériodique (overdamped) |
+| `--figure-regime-periodic` | `#4C6088` | `#7E93BE` | Régime périodique (undamped oscillation) |
+| `--figure-regime-pseudo` | `#9A6B3C` | `#C49A6C` | Régime pseudo-périodique (underdamped) |
+| `--figure-regime-aperiodic` | `#6E4A86` | `#A98BD0` | Régime apériodique (overdamped) |
 
 When all three traces appear on one axis, the reading order (top-to-bottom or
 legend order) must be: périodique → pseudo → apériodique (matches increasing
@@ -272,12 +312,15 @@ damping, natural physical progression).
 | What you're building | Tokens to reach for |
 |---|---|
 | Page background | `bg-surface-base` |
-| Card / panel | `bg-surface-raised shadow-elevation-1` |
+| Card / panel (shadow-first, no border) | `bg-surface-raised shadow-elevation-1` |
 | Modal / overlay | `bg-surface-overlay shadow-elevation-4` |
-| Prose body text | `.prose-lesson` class (includes `max-width: var(--measure-prose)`) |
+| Prose body text + headings | `.prose-lesson` (serif, `max-width: var(--measure-prose)`) |
+| Heading outside prose | `font-serif text-h1/display font-bold` |
 | Secondary label | `text-text-secondary text-caption` |
-| Accent button | `bg-accent text-text-onAccent` |
-| Focus ring | `.focus-ring` class (or global `:focus-visible` catch-all) |
+| Eyebrow (the ONE per surface) | accent hairline `<span class="h-px w-6 bg-accent/60">` + `uppercase tracking-[0.14em] text-accent` |
+| **The one** primary action | `.btn-primary` (deep-teal fill, `text-on-accent`, elevation-2 → hover accent-strong) — used sparingly |
+| Quiet / secondary control | ghost: `text-text-secondary border-border-soft` or text-only |
+| Focus ring | `.focus-ring` class (or global `:focus-visible` catch-all) — 2px accent, 6px radius |
 | Success state | `text-success bg-success-subtle` + icon |
 | Error state | `text-error bg-error-subtle` + icon |
 | Figure container | `bg-figure-surface` with `--figure-*` vars on SVG children |
