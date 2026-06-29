@@ -145,7 +145,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             "flex flex-col items-center justify-center gap-4",
             "w-full rounded-xl",
             "bg-[var(--color-surface-raised)]",
-            "border border-[var(--color-border-subtle)]",
+            // Shadow-first panel (ADR 0023): elevation-1 hairline ring, no border.
+            "shadow-elevation-1",
             "px-8 py-14",
             "text-center"
           )}
@@ -183,7 +184,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             rel="noopener noreferrer"
             className={cn(
               "text-caption font-medium",
-              "text-accent hover:text-accent-light",
+              "text-accent hover:text-accent-strong",
               "transition-colors duration-[150ms]",
               // Focus ring — migrated to .focus-ring utility
               "rounded focus-ring"
@@ -196,20 +197,11 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             type="button"
             onClick={() => setIframeMounted(true)}
             className={cn(
-              "inline-flex items-center gap-2",
-              "px-5 py-2.5",
-              "rounded-lg",
-              "text-body-sm font-medium",
-              "text-[var(--color-text-secondary)]",
-              "border border-[var(--color-border-soft)]",
-              "bg-[var(--color-surface-raised)]",
-              "hover:text-[var(--color-text-primary)]",
-              "hover:border-accent",
-              "hover:bg-[var(--color-accent-subtle)]",
-              "transition-colors duration-[150ms]",
-              // Focus ring — migrated to .focus-ring utility
-              "focus-ring",
-              "min-h-[48px]" // §9 touch target: 48px (raised from 44px per audit finding #2)
+              // The one confident primary action of this panel (ADR 0023
+              // .btn-primary). The calm opt-in is unchanged — the heavy iframe
+              // still mounts only on click; this just makes THE action legible.
+              "btn-primary",
+              "focus-ring"
             )}
           >
             {/* Play icon */}
@@ -230,7 +222,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               rel="noopener noreferrer"
               className={cn(
                 "text-caption font-medium",
-                "text-accent hover:text-accent-light",
+                "text-accent hover:text-accent-strong",
                 "transition-colors duration-[150ms]",
                 // Focus ring — migrated to .focus-ring utility
                 "rounded focus-ring"
@@ -245,9 +237,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             className={cn(
               "relative w-full overflow-hidden",
               "rounded-xl",
-              "border border-[var(--color-border-subtle)]",
               "bg-[var(--color-surface-raised)]",
-              // elevation-2 — mounted iframe panel (raised interactive surface, per TOKENS.md §6.3)
+              // Shadow-first panel (ADR 0023): elevation-2 hairline ring, no border.
               "shadow-elevation-2"
             )}
             style={{ paddingBottom: aspectPercent }}

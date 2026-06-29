@@ -366,9 +366,9 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
     <div
       className={cn(
         "rounded-xl",
-        "border border-[var(--color-border-soft)]",
         "bg-[var(--color-accent-subtle)]",
-        // elevation-2 — checkpoint card (per TOKENS.md §6.3)
+        // Shadow-first card (ADR 0023): elevation-2 hairline ring holds the edge;
+        // the drawn border is dropped.
         "shadow-elevation-2",
         "p-6 md:p-8",
       )}

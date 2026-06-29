@@ -498,8 +498,8 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         className={cn(
           "relative w-full overflow-hidden rounded-xl",
           "bg-[var(--color-surface-raised)]",
-          "border border-[var(--color-border-subtle)]",
-          // elevation-1 — figure panel at rest (per TOKENS.md §6.3)
+          // Shadow-first card (ADR 0023): elevation-1 hairline ring holds the
+          // edge; the drawn border is dropped.
           "shadow-elevation-1",
           // The SVG renders at its true aspect within the wide band — the old
           // max-height cap is DROPPED (it was the source of clipping/overlap).

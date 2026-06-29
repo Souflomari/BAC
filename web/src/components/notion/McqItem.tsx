@@ -404,10 +404,10 @@ export function McqItem({ item, index }: McqItemProps) {
     <div
       className={cn(
         "rounded-xl",
-        "border border-[var(--color-border-subtle)]",
         "bg-[var(--color-surface-raised)]",
         "p-6 md:p-8",
-        // elevation-2 — raised interactive card (per TOKENS.md §6.3)
+        // Shadow-first card (ADR 0023): elevation-2 hairline ring holds the edge;
+        // the drawn border is dropped.
         "shadow-elevation-2"
       )}
     >

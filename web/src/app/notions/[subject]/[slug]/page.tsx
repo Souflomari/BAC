@@ -88,7 +88,7 @@ function Breadcrumb({
       <a
         href="/"
         className={cn(
-          "hover:text-[var(--color-text-secondary)]",
+          "hover:text-accent",
           "transition-colors duration-[150ms]",
           // Focus ring — migrated to .focus-ring utility
           "rounded focus-ring"
@@ -96,13 +96,13 @@ function Breadcrumb({
       >
         Notions
       </a>
-      <span aria-hidden="true">›</span>
+      <span aria-hidden="true" className="text-[var(--color-text-tertiary)]">›</span>
       <span className="text-[var(--color-text-secondary)]">
         {subjectLabel(subject)}
       </span>
-      <span aria-hidden="true">›</span>
+      <span aria-hidden="true" className="text-[var(--color-text-tertiary)]">›</span>
       <span
-        className="text-[var(--color-text-secondary)] font-medium truncate max-w-[28ch]"
+        className="text-[var(--color-text-primary)] font-medium truncate max-w-[28ch]"
         aria-current="page"
       >
         {title}
@@ -157,7 +157,7 @@ export default function NotionPage({
           "sr-only focus:not-sr-only",
           "focus:fixed focus:top-4 focus:left-4 focus:z-50",
           "focus:px-4 focus:py-2 focus:rounded-lg",
-          "focus:bg-accent focus:text-white focus:text-body-sm focus:font-medium"
+          "focus:bg-accent focus:text-[var(--color-text-on-accent)] focus:text-body-sm focus:font-medium"
         )}
       >
         Aller au contenu de la leçon

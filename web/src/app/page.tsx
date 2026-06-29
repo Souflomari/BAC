@@ -99,14 +99,12 @@ function NotionCard({
       className={cn(
         "group block",
         "px-6 py-5 rounded-xl",
-        "border border-[var(--color-border-subtle)]",
         "bg-[var(--color-surface-raised)]",
-        "shadow-subtle",
-        // Hover — gentle lift in luminance, no jump
-        "hover:border-[var(--color-border-soft)]",
-        "hover:shadow-soft",
+        // Shadow-first card (ADR 0023): elevation-1 hairline ring at rest;
+        // lifts to elevation-2 on hover — confident, never a jump.
+        "shadow-elevation-1",
+        "hover:shadow-elevation-2 hover:-translate-y-px",
         "transition-all duration-[150ms] ease-out",
-        // Focus
         // Focus ring — migrated to .focus-ring utility
         "focus-ring"
       )}

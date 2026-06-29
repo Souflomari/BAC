@@ -154,7 +154,9 @@ export function MediaDiagram({
           "overflow-hidden",
           "rounded-xl",
           "bg-[var(--color-surface-raised)]",
-          "border border-[var(--color-border-subtle)]",
+          // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
+          // edge; no drawn border. Reads as lifted, not boxed-in.
+          "shadow-elevation-1",
           "[&>svg]:w-full [&>svg]:h-auto",
           // Full width in the band (default)
           "w-full"
@@ -227,7 +229,9 @@ export function MediaDiagramFigure({
           "overflow-hidden",
           "rounded-xl",
           "bg-[var(--color-surface-raised)]",
-          "border border-[var(--color-border-subtle)]",
+          // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
+          // edge; no drawn border. Reads as lifted, not boxed-in.
+          "shadow-elevation-1",
           "[&>svg]:w-full [&>svg]:h-auto",
           isStructural
             ? // Structural: cap to natural size, center in band

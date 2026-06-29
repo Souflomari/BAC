@@ -75,7 +75,9 @@ export function FontSizeStepper({ className }: { className?: string }) {
       className={cn(
         "flex items-center gap-0.5",
         "rounded-md",
-        "border border-[var(--color-border-subtle)]",
+        // Shadow-first segmented control (ADR 0023): elevation-1 hairline ring
+        // defines the track; the active thumb lifts within it.
+        "shadow-elevation-1",
         "bg-[var(--color-surface-raised)]",
         "p-0.5",
         className
@@ -103,9 +105,11 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "focus-ring",
               isActive
                 ? [
-                    "bg-[var(--color-surface-base)]",
+                    // Lifted "selected" thumb: lightest surface + soft drop, so the
+                    // active segment reads as raised within the track.
+                    "bg-[var(--color-surface-overlay)]",
                     "text-[var(--color-text-primary)]",
-                    "shadow-subtle",
+                    "shadow-elevation-1",
                   ]
                 : [
                     // #1: inactive step button at caption size — must pass 4.5:1.
