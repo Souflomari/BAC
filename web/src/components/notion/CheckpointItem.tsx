@@ -366,31 +366,29 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
     <div
       className={cn(
         "rounded-xl",
-        "bg-[var(--color-accent-subtle)]",
-        // Shadow-first card (ADR 0023): elevation-2 hairline ring holds the edge;
-        // the drawn border is dropped.
+        // Neutral raised surface — NOT an accent wash (ADR 0023 converge): the
+        // accent leads in exactly one place per surface, so the checkpoint reads
+        // as a distinct lifted card (elevation-2 ring), with the accent confined
+        // to its eyebrow. Matches the MCQ card's material; fixes dark separation.
+        "bg-[var(--color-surface-raised)]",
         "shadow-elevation-2",
         "p-6 md:p-8",
       )}
       aria-label="Vérifie ta compréhension"
     >
-      {/* Checkpoint badge — calm, not flashy */}
-      <div className="flex items-center gap-2 mb-4">
-        <span
-          className={cn(
-            "inline-flex items-center",
-            "px-2.5 py-0.5",
-            "rounded-full",
-            "bg-accent/10",
-            "border border-accent/20",
-            "text-caption font-medium text-accent",
-            "uppercase tracking-wide"
-          )}
-          aria-hidden="true"
-        >
-          Vérifie ta compréhension
-        </span>
-      </div>
+      {/* Checkpoint eyebrow — unified with the masthead eyebrow language:
+          accent hairline rule + tracked small-caps. One eyebrow system across
+          the product (ADR 0023 converge); the pill is gone. */}
+      <p
+        className={cn(
+          "mb-4 flex items-center gap-2.5",
+          "text-caption font-medium uppercase tracking-[0.14em] text-accent"
+        )}
+        aria-hidden="true"
+      >
+        <span className="inline-block h-px w-6 bg-accent/60" />
+        Vérifie ta compréhension
+      </p>
 
       {/* Stem */}
       <div

@@ -105,11 +105,12 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "focus-ring",
               isActive
                 ? [
-                    // Lifted "selected" thumb: lightest surface + soft drop, so the
-                    // active segment reads as raised within the track.
+                    // Lifted "selected" thumb: lightest surface + a stronger drop
+                    // (elevation-2) than the track (elevation-1), so the active
+                    // segment clearly reads as raised within the control.
                     "bg-[var(--color-surface-overlay)]",
                     "text-[var(--color-text-primary)]",
-                    "shadow-elevation-1",
+                    "shadow-elevation-2",
                   ]
                 : [
                     // #1: inactive step button at caption size — must pass 4.5:1.
