@@ -99,13 +99,11 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         "transition-[box-shadow,background-color,border-color] duration-200 ease-between",
         scrolled
           ? [
-              // Floating state: fully opaque surface-raised + elevation-3.
-              // #3 fix: /95 opacity was ghosting content beneath the sticky header;
-              // fully opaque background ensures no content bleed-through.
-              // backdrop-blur retained for browsers that support it as a layered
-              // refinement, but the solid bg-surface-raised is the primary separator.
-              "bg-[var(--color-surface-raised)]",
-              "supports-[backdrop-filter]:backdrop-blur-md",
+              // Floating state: frosted glass (ADR 0023 polish). .header-glass is
+              // translucent + blur where backdrop-filter is supported (reads as
+              // "glass lifted"), with an opaque fallback so there is never legible
+              // bleed-through. elevation-3 carries the float.
+              "header-glass",
               "shadow-elevation-3",
               "border-b border-transparent",
             ]

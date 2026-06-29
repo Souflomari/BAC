@@ -45,6 +45,7 @@
   --color-accent-strong:  #185C58;   /* hover / active */
   --color-accent-light:   #5FB6AE;   /* lighter contexts + dark mode */
   --color-accent-subtle:  #E4F0EE;   /* very light tint for hover backgrounds */
+  --focus-halo:           rgba(31,111,107,.18);  /* accent @18% — focus jewel halo */
 
   /* Semantic — muted, warm-shifted (intentional, never neon) */
   --color-success:         #3F6B4E;
@@ -115,6 +116,7 @@
   --color-accent-strong:   #7FC8C0;
   --color-accent-light:    #5FB6AE;
   --color-accent-subtle:   #16312F;
+  --focus-halo:            rgba(95,182,174,.22);  /* lighter accent @22% on charcoal */
 
   --color-success:         #7FB890;   /* muted, not neon */
   --color-success-subtle:  #16271B;
@@ -182,6 +184,9 @@ body {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 6px;
+  /* Jewel halo — a soft accent ring just outside the crisp outline (ADR 0023
+     polish). Theme-aware via --focus-halo so it reads on ivory AND charcoal. */
+  box-shadow: 0 0 0 4px var(--focus-halo);
 }
 
 /* ── Reduced motion (DESIGN-BIBLE §5, §9) ──────────────────────────────────── */
@@ -227,6 +232,7 @@ body {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
     border-radius: 6px;
+    box-shadow: 0 0 0 4px var(--focus-halo);
   }
 
   /*
@@ -264,6 +270,27 @@ body {
   }
   .btn-primary:active {
     box-shadow: var(--elevation-1);
+  }
+  /* Keep the button's lift AND show the jewel halo on focus (the global
+     :focus-visible box-shadow would otherwise replace the elevation). */
+  .btn-primary:focus-visible {
+    box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
+  }
+}
+
+/* ── Frosted-glass header (scrolled state, ADR 0023 polish) ────────────────── */
+/* Opaque fallback first (no bleed-through if backdrop-filter is unsupported);
+   where supported, a translucent surface + blur reads as "glass lifted." The
+   blur smears any content behind into an indistinct frost, so there is no
+   legible ghosting (the concern the older fully-opaque state guarded against). */
+.header-glass {
+  background-color: var(--color-surface-raised);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header-glass {
+    background-color: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    backdrop-filter: blur(12px) saturate(1.4);
   }
 }
 
@@ -329,6 +356,20 @@ body {
 .prose-lesson h2 { font-size: 1.375rem; margin-top: 2.75em; letter-spacing: -0.018em; } /* more air above major breaks */
 .prose-lesson h3 { font-size: 1.125rem; }
 .prose-lesson h4 { font-size: 1rem; }
+
+/* Rung tag — the "R0" prefix on a section heading, demoted to a quiet tabular
+   SANS label so the serif title alone competes with nothing (ADR 0023 polish).
+   Neutral, never accent — the accent leads only at the masthead eyebrow. */
+.prose-lesson h2 .rung-tag {
+  font-family: var(--font-ibm-plex-sans), system-ui, sans-serif;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-tertiary);
+  margin-right: 0.7em;
+  vertical-align: 0.16em; /* lift to sit against the serif cap height */
+}
 
 .prose-lesson p {
   margin-top: 0;

@@ -163,9 +163,6 @@ export default function NotionPage({
         Aller au contenu de la leçon
       </a>
 
-      {/* Breadcrumb — sits above the two-column grid, full width */}
-      <Breadcrumb subject={meta.subject} title={meta.title} />
-
       {/* ── Two-column layout: margin rail + content ─────────────────────── */}
       <div className="notion-page-grid">
         {/*
@@ -181,6 +178,13 @@ export default function NotionPage({
 
         {/* Content column */}
         <div id="lesson-content" className="notion-content">
+          {/* Breadcrumb — inside the content column, on the centered-prose spine,
+              so breadcrumb + eyebrow + title share ONE left edge (ADR 0023
+              polish: a single masthead spine, the rail is margin furniture). */}
+          <div className="notion-prose">
+            <Breadcrumb subject={meta.subject} title={meta.title} />
+          </div>
+
           {/* Page heading — centered within the prose measure (#4 fix).
               ADR 0023 heading anchor: the page's single accent moment — an
               accent eyebrow (subject label tinted + a short accent hairline)
