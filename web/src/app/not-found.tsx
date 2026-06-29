@@ -20,7 +20,7 @@ export default function NotFound() {
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <span
           className={cn(
-            "text-display font-semibold",
+            "font-serif text-display font-bold",
             "text-[var(--color-border-soft)]",
             "select-none"
           )}
@@ -30,7 +30,7 @@ export default function NotFound() {
         </span>
         <h1
           className={cn(
-            "mt-4 text-h2 font-semibold text-[var(--color-text-primary)]"
+            "mt-4 font-serif text-h2 font-bold text-[var(--color-text-primary)]"
           )}
         >
           Page introuvable

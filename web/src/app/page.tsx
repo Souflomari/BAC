@@ -187,9 +187,8 @@ export default function HomePage() {
       <header className="mb-12">
         <h1
           className={cn(
-            "text-display font-semibold text-[var(--color-text-primary)]",
+            "font-serif text-display font-bold text-[var(--color-text-primary)]",
           )}
-          style={{ letterSpacing: "-0.025em" }}
         >
           Notions
         </h1>

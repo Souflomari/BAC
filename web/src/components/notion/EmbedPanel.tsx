@@ -183,7 +183,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             rel="noopener noreferrer"
             className={cn(
               "text-caption font-medium",
-              "text-[#3E5C86] hover:text-[#7E9CC8]",
+              "text-accent hover:text-accent-light",
               "transition-colors duration-[150ms]",
               // Focus ring — migrated to .focus-ring utility
               "rounded focus-ring"
@@ -204,7 +204,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               "border border-[var(--color-border-soft)]",
               "bg-[var(--color-surface-raised)]",
               "hover:text-[var(--color-text-primary)]",
-              "hover:border-[#3E5C86]",
+              "hover:border-accent",
               "hover:bg-[var(--color-accent-subtle)]",
               "transition-colors duration-[150ms]",
               // Focus ring — migrated to .focus-ring utility
@@ -230,7 +230,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               rel="noopener noreferrer"
               className={cn(
                 "text-caption font-medium",
-                "text-[#3E5C86] hover:text-[#7E9CC8]",
+                "text-accent hover:text-accent-light",
                 "transition-colors duration-[150ms]",
                 // Focus ring — migrated to .focus-ring utility
                 "rounded focus-ring"

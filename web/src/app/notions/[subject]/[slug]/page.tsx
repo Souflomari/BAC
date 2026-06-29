@@ -181,22 +181,29 @@ export default function NotionPage({
 
         {/* Content column */}
         <div id="lesson-content" className="notion-content">
-          {/* Page heading — centered within the prose measure (#4 fix) */}
+          {/* Page heading — centered within the prose measure (#4 fix).
+              ADR 0023 heading anchor: the page's single accent moment — an
+              accent eyebrow (subject label tinted + a short accent hairline)
+              over a serif h1. Quiet everywhere else; this is the masthead. */}
           <header className="mb-10 notion-prose">
-            {/* #1: subject label at 12px caption — promoted to secondary for 4.5:1 */}
+            {/* Accent eyebrow — subject label in the signature accent, with a
+                short hairline rule. The one place the accent leads on the page. */}
             <p
               className={cn(
-                "mb-2 text-caption font-medium uppercase tracking-widest",
-                "text-[var(--color-text-secondary)]"
+                "mb-3 flex items-center gap-2.5 text-caption font-medium uppercase",
+                "tracking-[0.14em] text-accent"
               )}
             >
+              <span
+                aria-hidden="true"
+                className="inline-block h-px w-6 bg-accent/60"
+              />
               {subjectLabel(meta.subject)}
             </p>
             <h1
               className={cn(
-                "text-h1 font-semibold text-[var(--color-text-primary)]"
+                "font-serif text-h1 font-bold text-[var(--color-text-primary)]"
               )}
-              style={{ letterSpacing: "-0.02em" }}
             >
               {meta.title}
             </h1>

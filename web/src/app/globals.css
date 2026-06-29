@@ -21,131 +21,130 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Light mode tokens ──────────────────────────────────────────────────────── */
+/* ── Light mode tokens (ADR 0023 — warm editorial) ──────────────────────────── */
 :root {
-  /* Surfaces — brand-tinted off-white, never pure #FFFFFF */
-  --color-surface-base:    #F5F6F8;   /* page background: cool tinted near-white */
-  --color-surface-raised:  #FAFBFC;   /* cards, panels: slightly lighter */
-  --color-surface-overlay: #FFFFFF;   /* modals — one step above raised */
+  /* Surfaces — warm ivory/cream, never pure white; confident luminance steps */
+  --color-surface-base:    #F4EFE6;   /* warm ivory page */
+  --color-surface-raised:  #FBF7F0;   /* warm cream card — clearly lifted from base */
+  --color-surface-overlay: #FFFDF8;   /* near-paper white, warm — modals */
 
-  /* Borders */
-  --color-border-subtle:   #E4E7ED;   /* very faint tinted divider */
-  --color-border-soft:     #CDD3DE;   /* slightly more visible borders */
+  /* Borders — warm */
+  --color-border-subtle:   #E6DECF;   /* warm faint divider */
+  --color-border-soft:     #D2C6B2;   /* warm visible border */
 
-  /* Text — three levels, none pure #000000 */
-  --color-text-primary:   #1A2332;   /* near-black, deep blue-tinted */
-  --color-text-secondary: #4A5568;   /* mid-dark, readable secondary */
-  --color-text-tertiary:  #7A8899;   /* light, captions, metadata */
-  --color-text-on-accent: #FFFFFF;   /* text on accent buttons */
+  /* Text — warm near-black ink, three levels (none pure #000) */
+  --color-text-primary:   #2A2018;   /* warm near-black */
+  --color-text-secondary: #5C5043;   /* warm mid-brown, ≥4.5:1 on ivory */
+  --color-text-tertiary:  #8A7E6E;   /* warm taupe — captions/metadata (large/UI only) */
+  --color-text-on-accent: #FFFDF8;   /* warm white on accent */
 
-  /* Accent (single, restrained) */
-  --color-accent-subtle:  #EBF0F8;   /* very light tint for hover backgrounds */
+  /* Accent — single signature hue, promoted to CSS vars so studies + rollout
+     swap centrally. Default = deep teal; the FINAL hue is chosen via the
+     Phase-0 direction studies (indigo / teal / terracotta). */
+  --color-accent:         #1F6F6B;   /* signature */
+  --color-accent-strong:  #185C58;   /* hover / active */
+  --color-accent-light:   #5FB6AE;   /* lighter contexts + dark mode */
+  --color-accent-subtle:  #E4F0EE;   /* very light tint for hover backgrounds */
 
-  /* Semantic — success, warning, error */
-  --color-success:         #2D6A4F;
-  --color-success-subtle:  #EAF4EE;
-  --color-warning:         #7D5A00;
-  --color-warning-subtle:  #FFF8E6;
-  --color-error:           #8B2020;
-  --color-error-subtle:    #FDF0F0;
+  /* Semantic — muted, warm-shifted (intentional, never neon) */
+  --color-success:         #3F6B4E;
+  --color-success-subtle:  #E8F0E6;
+  --color-warning:         #8A6A1E;
+  --color-warning-subtle:  #F6EEDA;
+  --color-error:           #9A3B2E;
+  --color-error-subtle:    #F6E6E1;
 
-  /* ── Elevation scale (ADR 0022) ───────────────────────────────────────────
-     5-step tinted drop-shadow ramp. Blue-tinted (rgba 30,45,70) stays
-     coherent with the tinted-neutral philosophy. Larger N = more lifted.
-     Light: progressive drop-shadow enlargement + softening. */
+  /* ── Elevation scale (ADR 0023) ───────────────────────────────────────────
+     Warm-tinted (rgba 60,45,30), slightly deeper drops that genuinely lift —
+     the audit found the old cool/tiny shadows read flat. Larger N = more air. */
   --elevation-0: none;
-  --elevation-1: 0 1px 2px -1px rgba(30,45,70,.06), 0 1px 3px 0 rgba(30,45,70,.05);
-  --elevation-2: 0 2px 4px -2px rgba(30,45,70,.06), 0 4px 12px 0 rgba(30,45,70,.08);
-  --elevation-3: 0 4px 8px -3px rgba(30,45,70,.08), 0 8px 24px -2px rgba(30,45,70,.10);
-  --elevation-4: 0 8px 16px -4px rgba(30,45,70,.10), 0 16px 40px -4px rgba(30,45,70,.14);
+  --elevation-1: 0 1px 2px -1px rgba(60,45,30,.08), 0 2px 6px 0 rgba(60,45,30,.06);
+  --elevation-2: 0 2px 4px -2px rgba(60,45,30,.08), 0 8px 20px -2px rgba(60,45,30,.10);
+  --elevation-3: 0 6px 12px -4px rgba(60,45,30,.10), 0 14px 34px -4px rgba(60,45,30,.14);
+  --elevation-4: 0 10px 22px -6px rgba(60,45,30,.12), 0 24px 56px -8px rgba(60,45,30,.18);
 
-  /* ── Measure tokens (ADR 0022) ────────────────────────────────────────────
-     Canonical line-length controls. Prose uses --measure-prose; the tailwind
-     maxWidth.reading mirrors this value but --measure-prose is the source of
-     truth (consumed directly by .prose-lesson and .notion-prose). */
+  /* ── Measure tokens ───────────────────────────────────────────────────────
+     Canonical line-length controls. --measure-prose is the source of truth. */
   --measure-prose: 65ch;
   --measure-wide:  72ch;
 
-  /* ── Figure palette (ADR 0022) ────────────────────────────────────────────
-     Unified with app tokens. Replaces the drifted warm palette (#F5F3EF
-     background / #2A2A2E ink) that motion SVGs had adopted. These are the
-     canonical values that motion-author's SVGs MUST use from Phase 2 onward.
-     Role colors are color-blind distinguishable (Okabe-Ito safe subset,
-     shifted to match the blue accent family). */
+  /* ── Figure palette (ADR 0023 — warm world) ───────────────────────────────
+     All SVG figures reference these; re-tuning here re-skins every figure with
+     zero per-file edits. Energy/régime role hues stay Okabe-Ito-distinguishable
+     and are INDEPENDENT of the signature accent (stable across accent choices). */
 
-  /* Figure surfaces and ink */
-  --figure-surface:       #FAFBFC;   /* hair off surface-raised; figures read as the same family */
-  --figure-ink:           #1A2332;   /* = --color-text-primary */
-  --figure-ink-soft:      #4A5568;   /* = --color-text-secondary */
-  --figure-grid:          #E4E7ED;   /* = --color-border-subtle */
-  --figure-accent:        #3E5C86;   /* = brand accent */
+  /* Figure surfaces and ink — the warm UI family */
+  --figure-surface:       #FBF7F0;   /* = surface-raised */
+  --figure-ink:           #2A2018;   /* = text-primary */
+  --figure-ink-soft:      #5C5043;   /* = text-secondary */
+  --figure-grid:          #E6DECF;   /* = border-subtle */
+  --figure-accent:        var(--color-accent);   /* follows the signature */
 
-  /* Energy role colors — two stores (C and L) must be distinct and distinguishable */
-  --figure-energy-C:      #3E7BC2;   /* capacitor energy — blue (accent-adjacent, muted) */
-  --figure-energy-L:      #2D7A5F;   /* inductor energy — teal-green (safe C/B-blind contrast) */
+  /* Energy role colors — two stores (C, L), distinct + warm */
+  --figure-energy-C:      #3E6FA8;   /* capacitor — warm blue */
+  --figure-energy-L:      #3C7A5E;   /* inductor — warm teal-green */
 
-  /* Régime role colors — three regime traces */
-  --figure-regime-periodic:       #3E5C86;   /* périodique — brand blue */
-  --figure-regime-pseudo:         #8B5E3C;   /* pseudo-périodique — warm brown (safe, distinct) */
-  --figure-regime-aperiodic:      #5C3E86;   /* apériodique — purple (third hue, distinct) */
+  /* Régime role colors — three distinct warmed hues */
+  --figure-regime-periodic:       #3E6FA8;   /* périodique — warm blue */
+  --figure-regime-pseudo:         #9A6B3C;   /* pseudo-périodique — warm brown */
+  --figure-regime-aperiodic:      #6E4A86;   /* apériodique — muted plum */
 }
 
 /* ── Dark mode tokens ───────────────────────────────────────────────────────── */
 /* Activated by .dark class on <html> (controlled by ThemeProvider).
    DESIGN-BIBLE §2: soft near-black (not #000), depth via layered luminance. */
 .dark {
-  --color-surface-base:    #14181F;   /* deep tinted charcoal, not pure black */
-  --color-surface-raised:  #1C2230;   /* slightly lighter = elevated */
-  --color-surface-overlay: #242B3B;   /* one more step up */
+  --color-surface-base:    #1A1612;   /* warm charcoal, faint brown undertone (not pure black) */
+  --color-surface-raised:  #231E18;   /* clearly lifted */
+  --color-surface-overlay: #2C261F;   /* one more step up */
 
-  --color-border-subtle:   #2A3245;
-  --color-border-soft:     #3A4560;
+  --color-border-subtle:   #352E26;
+  --color-border-soft:     #473E33;
 
-  --color-text-primary:    #E8ECF2;   /* off-white, not pure #FFFFFF */
-  --color-text-secondary:  #9AAABF;
-  --color-text-tertiary:   #5E7289;
-  --color-text-on-accent:  #FFFFFF;
+  --color-text-primary:    #EFE8DC;   /* warm off-white */
+  --color-text-secondary:  #B5A893;   /* warm, ≥4.5:1 on charcoal */
+  --color-text-tertiary:   #7E7264;   /* warm taupe */
+  --color-text-on-accent:  #FFFDF8;
 
-  --color-accent-subtle:   #1E2E46;
+  --color-accent:          #5FB6AE;   /* lighter signature for dark (default = teal) */
+  --color-accent-strong:   #7FC8C0;
+  --color-accent-light:    #5FB6AE;
+  --color-accent-subtle:   #16312F;
 
-  --color-success:         #4ADE80;
-  --color-success-subtle:  #0F2B1A;
-  --color-warning:         #FCD34D;
-  --color-warning-subtle:  #2B2000;
-  --color-error:           #F87171;
-  --color-error-subtle:    #2B0F0F;
+  --color-success:         #7FB890;   /* muted, not neon */
+  --color-success-subtle:  #16271B;
+  --color-warning:         #E0BE6E;
+  --color-warning-subtle:  #2A2110;
+  --color-error:           #E08C7E;
+  --color-error-subtle:    #2C1611;
 
-  /* ── Dark elevation (ADR 0022) ────────────────────────────────────────────
-     Layered-luminance approach: depth reads as lighter edges, not black blobs.
-     Each step adds: (a) a soft dark drop shadow (rgba 0,0,0), and
-     (b) a subtle top inset hairline (rgba 255,255,255,.04) that mimics a
-     slightly lighter top edge — the core of dark-mode "luminance elevation."
-     The inset hairline compound works in CSS box-shadow as a second value. */
+  /* ── Dark elevation (ADR 0023) ────────────────────────────────────────────
+     Layered-luminance preserved: a soft dark drop + a WARM-tinted top inset
+     hairline (rgba 255,250,240) that reads as a lighter top edge. Slightly
+     larger drops than before so cards read as lifted on warm charcoal. */
   --elevation-0: none;
-  --elevation-1: 0 1px 3px 0 rgba(0,0,0,.18), inset 0 1px 0 0 rgba(255,255,255,.04);
-  --elevation-2: 0 2px 6px 0 rgba(0,0,0,.22), inset 0 1px 0 0 rgba(255,255,255,.05);
-  --elevation-3: 0 4px 16px 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,255,255,.06);
-  --elevation-4: 0 8px 28px 0 rgba(0,0,0,.36), inset 0 1px 0 0 rgba(255,255,255,.08);
+  --elevation-1: 0 1px 3px 0 rgba(0,0,0,.24), inset 0 1px 0 0 rgba(255,250,240,.05);
+  --elevation-2: 0 2px 8px 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,250,240,.06);
+  --elevation-3: 0 6px 20px 0 rgba(0,0,0,.34), inset 0 1px 0 0 rgba(255,250,240,.07);
+  --elevation-4: 0 10px 32px 0 rgba(0,0,0,.42), inset 0 1px 0 0 rgba(255,250,240,.09);
 
   /* Measure tokens do not change in dark mode */
 
-  /* ── Dark figure palette (ADR 0022) ──────────────────────────────────────
-     Figures adopt the dark UI surface family — same visual world, not a
-     separate warm warm-paper world. */
-  --figure-surface:       #1C2230;   /* = --color-surface-raised dark */
-  --figure-ink:           #E8ECF2;   /* = --color-text-primary dark */
-  --figure-ink-soft:      #9AAABF;   /* = --color-text-secondary dark */
-  --figure-grid:          #2A3245;   /* = --color-border-subtle dark */
-  --figure-accent:        #7E9CC8;   /* lighter accent for dark — same as accent.light */
+  /* ── Dark figure palette (ADR 0023 — warm world) ─────────────────────────── */
+  --figure-surface:       #231E18;   /* = surface-raised dark */
+  --figure-ink:           #EFE8DC;   /* = text-primary dark */
+  --figure-ink-soft:      #B5A893;   /* = text-secondary dark */
+  --figure-grid:          #352E26;   /* = border-subtle dark */
+  --figure-accent:        var(--color-accent-light);
 
-  /* Energy role colors — lightened for dark-mode legibility */
-  --figure-energy-C:      #6BA3D9;   /* capacitor — lighter blue */
-  --figure-energy-L:      #52A882;   /* inductor — lighter teal-green */
+  /* Energy role colors — lightened warm variants */
+  --figure-energy-C:      #6B9DD0;   /* capacitor — lighter warm blue */
+  --figure-energy-L:      #5FA886;   /* inductor — lighter teal-green */
 
-  /* Régime role colors — dark variants */
-  --figure-regime-periodic:       #7E9CC8;   /* périodique — lighter brand blue */
+  /* Régime role colors — lighter warm variants */
+  --figure-regime-periodic:       #6B9DD0;   /* périodique — lighter warm blue */
   --figure-regime-pseudo:         #C49A6C;   /* pseudo-périodique — lighter warm brown */
-  --figure-regime-aperiodic:      #9B7EC8;   /* apériodique — lighter purple */
+  --figure-regime-aperiodic:      #A98BD0;   /* apériodique — lighter plum */
 }
 
 /* ── Base typography ────────────────────────────────────────────────────────── */
@@ -174,9 +173,9 @@ body {
 /* Global catch-all: applied to every focusable element that does not already
    carry its own .focus-ring class or a bespoke override. Keep this rule. */
 :focus-visible {
-  outline: 2px solid #3E5C86;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 /* ── Reduced motion (DESIGN-BIBLE §5, §9) ──────────────────────────────────── */
@@ -219,9 +218,9 @@ body {
    *   src/components/notion/MotionDiagram.tsx
    */
   .focus-ring:focus-visible {
-    outline: 2px solid #3E5C86;
+    outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 }
 
@@ -262,9 +261,13 @@ body {
    ADR 0022: max-width now consumes --measure-prose (canonical source). */
 .prose-lesson {
   color: var(--color-text-primary);
+  /* Editorial reading serif (ADR 0023) — warmth + scholarship for long study */
+  font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
   font-size: 1.0625rem; /* 17px — kinder for long sessions */
-  line-height: 1.6;
+  line-height: 1.65;    /* serif reads comfortably a touch tighter than sans */
   max-width: var(--measure-prose);
+  hanging-punctuation: first last; /* progressive enhancement (Safari) — craft signal */
+  text-wrap: pretty;               /* avoid orphans/rivers where supported */
 }
 
 .prose-lesson h1,
@@ -272,17 +275,17 @@ body {
 .prose-lesson h3,
 .prose-lesson h4 {
   color: var(--color-text-primary);
-  font-weight: 600;
+  font-weight: 600; /* serif headings inherit the reading serif from .prose-lesson */
   margin-top: 2em;
   margin-bottom: 0.5em;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  line-height: 1.25;
+  letter-spacing: -0.015em; /* optically tighter on the serif display sizes */
 }
 
-.prose-lesson h1 { font-size: 1.75rem; }
-.prose-lesson h2 { font-size: 1.375rem; margin-top: 2.5em; }
+.prose-lesson h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.022em; }
+.prose-lesson h2 { font-size: 1.375rem; margin-top: 2.75em; letter-spacing: -0.018em; } /* more air above major breaks */
 .prose-lesson h3 { font-size: 1.125rem; }
-.prose-lesson h4 { font-size: 1rem; font-weight: 500; }
+.prose-lesson h4 { font-size: 1rem; }
 
 .prose-lesson p {
   margin-top: 0;
@@ -337,7 +340,7 @@ body {
 }
 
 .prose-lesson blockquote {
-  border-left: 3px solid var(--color-border-soft);
+  border-left: 2px solid var(--color-accent);
   padding-left: 1.25rem;
   margin-left: 0;
   color: var(--color-text-secondary);
@@ -471,21 +474,27 @@ body {
   width: 100%;
 }
 
-/* ── Scrollbar — subtle, tinted ─────────────────────────────────────────────── */
+/* ── Scrollbar — refined floating thumb (warm, inset) ───────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-surface-base);
+  background: transparent;
 }
 
+/* The 2px surface-colored border + padding-box clip makes the thumb float with
+   a small gap on each side — a quiet craft signal in long-form reading. */
 ::-webkit-scrollbar-thumb {
   background: var(--color-border-soft);
-  border-radius: 3px;
+  border: 2px solid var(--color-surface-base);
+  background-clip: padding-box;
+  border-radius: 7px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-tertiary);
+  border: 2px solid var(--color-surface-base);
+  background-clip: padding-box;
 }

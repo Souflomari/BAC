@@ -30,10 +30,12 @@ const config: Config = {
           tertiary:   "var(--color-text-tertiary)",
           onAccent:   "var(--color-text-on-accent)",
         },
-        // Single restrained accent: brand-tinted blue
+        // Single signature accent — promoted to CSS vars (ADR 0023) so the
+        // direction studies + rollout swap it centrally.
         accent: {
-          DEFAULT: "#3E5C86",
-          light:   "#7E9CC8",
+          DEFAULT: "var(--color-accent)",
+          strong:  "var(--color-accent-strong)",   // hover / active
+          light:   "var(--color-accent-light)",
           subtle:  "var(--color-accent-subtle)",   // very light tint for hovers
         },
         // Semantic
@@ -68,26 +70,31 @@ const config: Config = {
       // ── Typography ──────────────────────────────────────────────────────────
       // DESIGN-BIBLE §3: IBM Plex Sans, body ≥ 16px, 65ch reading column,
       // line-height 1.5, two weights.
+      // ADR 0023 — editorial pairing: serif for reading prose + headings,
+      // sans for UI chrome/labels/math labels, mono for code.
       fontFamily: {
-        sans: ["var(--font-ibm-plex-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-ibm-plex-mono)", "ui-monospace", "monospace"],
+        serif: ["var(--font-reading-serif)", "Georgia", "Times New Roman", "serif"],
+        sans:  ["var(--font-ibm-plex-sans)", "system-ui", "sans-serif"],
+        mono:  ["var(--font-ibm-plex-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
-        "caption": ["0.75rem",  { lineHeight: "1.5", letterSpacing: "0.01em" }],
+        // Tracking: looser on small (caption), tighter on display sizes (ADR 0023).
+        "caption": ["0.75rem",  { lineHeight: "1.5", letterSpacing: "0.02em" }],
         "body-sm": ["0.875rem", { lineHeight: "1.5" }],
         "body":    ["1rem",     { lineHeight: "1.5" }],
         "body-lg": ["1.0625rem",{ lineHeight: "1.6" }], // 17px — kinder over long sessions
         "lead":    ["1.125rem", { lineHeight: "1.55" }],
-        "h4":      ["1.125rem", { lineHeight: "1.4", letterSpacing: "-0.01em" }],
-        "h3":      ["1.25rem",  { lineHeight: "1.35", letterSpacing: "-0.01em" }],
-        "h2":      ["1.5rem",   { lineHeight: "1.3",  letterSpacing: "-0.015em" }],
-        "h1":      ["1.875rem", { lineHeight: "1.2",  letterSpacing: "-0.02em" }],
-        "display": ["2.25rem",  { lineHeight: "1.15", letterSpacing: "-0.025em" }],
+        "h4":      ["1.125rem", { lineHeight: "1.4",  letterSpacing: "-0.01em" }],
+        "h3":      ["1.25rem",  { lineHeight: "1.35", letterSpacing: "-0.012em" }],
+        "h2":      ["1.5rem",   { lineHeight: "1.3",  letterSpacing: "-0.018em" }],
+        "h1":      ["1.875rem", { lineHeight: "1.18", letterSpacing: "-0.022em" }],
+        "display": ["2.25rem",  { lineHeight: "1.12", letterSpacing: "-0.03em" }],
       },
       fontWeight: {
         regular:  "400",
         medium:   "500",
         semibold: "600",
+        bold:     "700", // serif display headings (ADR 0023)
       },
 
       // ── Spacing — 8-pt grid ─────────────────────────────────────────────────
@@ -185,7 +192,7 @@ const config: Config = {
       // delivery mechanism. These ring tokens back the global :focus-visible
       // catch-all and any bespoke Tailwind ring usage.
       ringColor: {
-        focus: "#3E5C86",
+        focus: "var(--color-accent)",
       },
       ringOffsetWidth: {
         DEFAULT: "2px",

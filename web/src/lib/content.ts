@@ -205,6 +205,25 @@ function extractTitle(lessonMd: string | null, slug: string): string {
   return match ? match[1].trim() : slug;
 }
 
+/**
+ * Strip a leading H1 (and an immediately-following thematic break) from the
+ * prose that gets rendered. The page header already renders this title as the
+ * masthead anchor (ADR 0023), so leaving it in the prose duplicates the title
+ * and emits a second <h1> on the page — an accessibility defect. The title is
+ * still extracted from the RAW markdown via extractTitle before this runs, so
+ * stripping it here is render-only and never loses the title.
+ */
+function stripLeadingTitle(lessonMd: string | null): string | null {
+  if (!lessonMd) return lessonMd;
+  // Remove a leading H1 line, then any blank lines, then an optional `---`
+  // thematic break and its trailing blank lines. Only the FIRST H1 at the very
+  // top is removed; in-body headings are untouched.
+  return lessonMd.replace(
+    /^\s*#\s+.+\r?\n+(?:(?:---|\*\*\*|___)[ \t]*\r?\n+)?/,
+    ""
+  );
+}
+
 // ── Public API ────────────────────────────────────────────────────────────────
 
 /**
@@ -395,8 +414,11 @@ export function loadNotion(id: string): NotionContent | null {
   }
 
   // ── meta ──
+  // Extract the title from the RAW markdown, THEN strip the leading H1 so the
+  // rendered prose doesn't duplicate the masthead (ADR 0023 heading anchor).
   const title = extractTitle(lessonMd, slug);
   const meta: NotionMeta = { id, subject, slug, title };
+  const renderedLessonMd = stripLeadingTitle(lessonMd);
 
-  return { meta, lessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
 }
