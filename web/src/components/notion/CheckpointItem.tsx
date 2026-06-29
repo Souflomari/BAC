@@ -29,6 +29,7 @@ import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import type { CheckpointItem as CheckpointItemType, NotionChoice } from "@/lib/content";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/utils";
 
 // ── Animated stroke icons ─────────────────────────────────────────────────────
@@ -376,19 +377,12 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
       )}
       aria-label="Vérifie ta compréhension"
     >
-      {/* Checkpoint eyebrow — unified with the masthead eyebrow language:
-          accent hairline rule + tracked small-caps. One eyebrow system across
-          the product (ADR 0023 converge); the pill is gone. */}
-      <p
-        className={cn(
-          "mb-4 flex items-center gap-2.5",
-          "text-caption font-medium uppercase tracking-[0.14em] text-accent"
-        )}
-        aria-hidden="true"
-      >
-        <span className="inline-block h-px w-6 bg-accent/60" />
+      {/* Checkpoint eyebrow — the shared Eyebrow component (one eyebrow language
+          across the product, ADR 0023). Decorative: the card carries its own
+          aria-label, so the eyebrow is hidden from assistive tech. */}
+      <Eyebrow className="mb-4" decorative>
         Vérifie ta compréhension
-      </p>
+      </Eyebrow>
 
       {/* Stem */}
       <div

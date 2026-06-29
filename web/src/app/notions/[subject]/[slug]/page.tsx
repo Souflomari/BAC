@@ -38,6 +38,7 @@ import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
 import { ItemsSection, buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/utils";
 
 // ── Static params ─────────────────────────────────────────────────────────────
@@ -190,20 +191,9 @@ export default function NotionPage({
               accent eyebrow (subject label tinted + a short accent hairline)
               over a serif h1. Quiet everywhere else; this is the masthead. */}
           <header className="mb-10 notion-prose">
-            {/* Accent eyebrow — subject label in the signature accent, with a
-                short hairline rule. The one place the accent leads on the page. */}
-            <p
-              className={cn(
-                "mb-3 flex items-center gap-2.5 text-caption font-medium uppercase",
-                "tracking-[0.14em] text-accent"
-              )}
-            >
-              <span
-                aria-hidden="true"
-                className="inline-block h-px w-6 bg-accent/60"
-              />
-              {subjectLabel(meta.subject)}
-            </p>
+            {/* Accent eyebrow — subject label in the signature accent (shared
+                Eyebrow component, the product's one eyebrow language). */}
+            <Eyebrow className="mb-3">{subjectLabel(meta.subject)}</Eyebrow>
             <h1
               className={cn(
                 "font-serif text-h1 font-bold text-[var(--color-text-primary)]"

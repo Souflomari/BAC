@@ -271,11 +271,16 @@ body {
   .btn-primary:active {
     box-shadow: var(--elevation-1);
   }
-  /* Keep the button's lift AND show the jewel halo on focus (the global
-     :focus-visible box-shadow would otherwise replace the elevation). */
-  .btn-primary:focus-visible {
-    box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
-  }
+}
+
+/* Primary-button focus — UNLAYERED on purpose so it beats the unlayered global
+   :focus-visible (which is what makes a layered rule lose regardless of
+   specificity). Matches the focus outline to the button's own 10px radius
+   (was inheriting the global 6px → tighter corners) and keeps the elevation
+   lift composed with the jewel halo (the global would otherwise replace it). */
+.btn-primary:focus-visible {
+  border-radius: 10px;
+  box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
 }
 
 /* ── Frosted-glass header (scrolled state, ADR 0023 polish) ────────────────── */
