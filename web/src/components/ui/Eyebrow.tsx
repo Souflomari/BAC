@@ -1,11 +1,13 @@
 /**
  * Eyebrow
  *
- * The product's ONE eyebrow language (ADR 0023): an accent hairline rule + a
- * tracked small-caps label in the signature accent. Used for the page masthead
- * (subject label) and the checkpoint ("Vérifie ta compréhension"). Extracted so
- * the two are provably the same component — identical tracking, weight, and
- * hairline — never a near-miss.
+ * The product's ONE eyebrow language (ADR 0023/0024): a hairline rule + a
+ * tracked small-caps label. Two tones, ONE component, so every tracked-caps
+ * label in the product resolves to a single source of truth:
+ *   - tone="accent" (default): the signature-accent hairline + accent caps —
+ *     the one accent moment on a surface (masthead subject, checkpoint).
+ *   - tone="muted": a neutral hairline + tertiary caps — quiet labels that must
+ *     NOT add an accent (home notion-card subject, embed tool label).
  *
  * The hairline span is always decorative (aria-hidden). Set `decorative` when
  * the WHOLE eyebrow is redundant for assistive tech (e.g. the checkpoint card
@@ -20,21 +22,31 @@ export function Eyebrow({
   children,
   className,
   decorative = false,
+  tone = "accent",
 }: {
   children: ReactNode;
   className?: string;
   decorative?: boolean;
+  tone?: "accent" | "muted";
 }) {
+  const muted = tone === "muted";
   return (
     <p
       aria-hidden={decorative || undefined}
       className={cn(
         "flex items-center gap-2.5",
-        "text-caption font-medium uppercase tracking-[0.14em] text-accent",
+        "text-caption font-medium uppercase tracking-[0.14em]",
+        muted ? "text-[var(--color-text-tertiary)]" : "text-accent",
         className
       )}
     >
-      <span aria-hidden="true" className="inline-block h-px w-6 bg-accent/60" />
+      <span
+        aria-hidden="true"
+        className={cn(
+          "inline-block h-px w-6",
+          muted ? "bg-[var(--color-border-soft)]" : "bg-accent/60"
+        )}
+      />
       {children}
     </p>
   );

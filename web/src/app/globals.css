@@ -28,6 +28,15 @@
   --color-surface-raised:  #FBF7F0;   /* warm cream card — clearly lifted from base */
   --color-surface-overlay: #FFFDF8;   /* near-paper white, warm — modals */
 
+  /* Surface-container tonal ladder (ADR 0024 — M3 tone-based surfaces, warm).
+     Elevation reads through TONE as well as shadow: a higher tier sits on a
+     lighter warm surface. base ≤ low ≤ container(=raised) ≤ high ≤ highest. */
+  --color-surface-container-lowest:  #F1EBE0;  /* recessed wells */
+  --color-surface-container-low:     #F7F2E9;  /* gently raised */
+  --color-surface-container:         #FBF7F0;  /* = raised (cards at rest) */
+  --color-surface-container-high:    #FEFAF4;  /* elevation-2 cards step up in tone */
+  --color-surface-container-highest: #FFFDF8;  /* overlays/modals */
+
   /* Borders — warm */
   --color-border-subtle:   #E6DECF;   /* warm faint divider */
   --color-border-soft:     #D2C6B2;   /* warm visible border */
@@ -46,14 +55,28 @@
   --color-accent-light:   #5FB6AE;   /* lighter contexts + dark mode */
   --color-accent-subtle:  #E4F0EE;   /* very light tint for hover backgrounds */
   --focus-halo:           rgba(31,111,107,.18);  /* accent @18% — focus jewel halo */
+  --focus-radius:         6px;  /* default; large surfaces raise it to match their host radius */
 
   /* Semantic — muted, warm-shifted (intentional, never neon) */
   --color-success:         #3F6B4E;
   --color-success-subtle:  #E8F0E6;
+  --color-on-success:      #FFFDF8;  /* on the light success fill (light mode) */
   --color-warning:         #8A6A1E;
   --color-warning-subtle:  #F6EEDA;
   --color-error:           #9A3B2E;
   --color-error-subtle:    #F6E6E1;
+  --color-on-error:        #FFFDF8;  /* on the light error fill (light mode) */
+
+  /* ── Interaction state-layer model (ADR 0024 — one feedback language) ───────
+     A neutral on-surface overlay (M3 state layers) applied UNIFORMLY via the
+     .state-layer utility, so every interactive control responds identically in
+     spirit. Neutral (text-color) wash, not accent — the accent still leads in
+     exactly one place per surface. Focus stays the ring+halo (not an overlay). */
+  --state-color:    var(--color-text-primary);  /* neutral darken/lighten */
+  --state-hover:    0.06;
+  --state-pressed:  0.10;
+  --state-dragged:  0.16;
+  --state-disabled: 0.38;  /* the single dimmed/inert opacity */
 
   /* ── Elevation scale (ADR 0023) ───────────────────────────────────────────
      Warm-tinted (rgba 60,45,30), slightly deeper drops that genuinely lift —
@@ -102,6 +125,13 @@
   --color-surface-raised:  #231E18;   /* clearly lifted */
   --color-surface-overlay: #2C261F;   /* one more step up */
 
+  /* Surface-container tonal ladder — dark (lighter warm steps express depth) */
+  --color-surface-container-lowest:  #15110D;
+  --color-surface-container-low:     #1E1914;
+  --color-surface-container:         #231E18;  /* = raised */
+  --color-surface-container-high:    #2A241D;  /* elevation-2 cards step up */
+  --color-surface-container-highest: #322B23;
+
   --color-border-subtle:   #352E26;
   --color-border-soft:     #473E33;
 
@@ -120,10 +150,12 @@
 
   --color-success:         #7FB890;   /* muted, not neon */
   --color-success-subtle:  #16271B;
+  --color-on-success:      #112019;   /* dark text on the LIGHT dark-mode success fill */
   --color-warning:         #E0BE6E;
   --color-warning-subtle:  #2A2110;
   --color-error:           #E08C7E;
   --color-error-subtle:    #2C1611;
+  --color-on-error:        #2C1611;   /* dark text on the LIGHT dark-mode error fill */
 
   /* ── Dark elevation (ADR 0023) ────────────────────────────────────────────
      Layered-luminance preserved: a soft dark drop + a WARM-tinted top inset
@@ -183,7 +215,9 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  border-radius: 6px;
+  /* Radius tracks the host (ADR 0024): elements with a larger corner set
+     --focus-radius so the outline's rounding matches, instead of a fixed 6px. */
+  border-radius: var(--focus-radius, 6px);
   /* Jewel halo — a soft accent ring just outside the crisp outline (ADR 0023
      polish). Theme-aware via --focus-halo so it reads on ivory AND charcoal. */
   box-shadow: 0 0 0 4px var(--focus-halo);
@@ -231,8 +265,41 @@ body {
   .focus-ring:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-    border-radius: 6px;
+    border-radius: var(--focus-radius, 6px);
     box-shadow: 0 0 0 4px var(--focus-halo);
+  }
+
+  /*
+   * .state-layer — ONE interaction-feedback language (ADR 0024).
+   *
+   * An M3-style neutral on-surface overlay (a ::after wash of --state-color)
+   * whose opacity steps on hover/pressed, applied uniformly to every
+   * interactive control so chrome and content respond identically in spirit.
+   * Neutral by default (text color), NOT accent — the accent still leads in
+   * exactly one place per surface. Focus is the ring+halo (not an overlay).
+   * Honors reduced-motion via the global transition-duration override.
+   */
+  .state-layer { position: relative; }
+  .state-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--state-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .state-layer:hover::after { opacity: var(--state-hover); }
+  .state-layer:active::after { opacity: var(--state-pressed); }
+  /* Keep the overlay from sitting above text/icons: children must be positioned. */
+  .state-layer > * { position: relative; z-index: 1; }
+
+  /* .state-disabled — the single dimmed/inert treatment (one opacity, ADR 0024).
+     Replaces the ad-hoc opacity-40/50/80 scattered across components. */
+  .state-disabled {
+    opacity: var(--state-disabled);
+    pointer-events: none;
   }
 
   /*
@@ -281,6 +348,31 @@ body {
 .btn-primary:focus-visible {
   border-radius: 10px;
   box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
+}
+
+/* ── M3 transition patterns (ADR 0024) — no-overshoot, token-built ─────────────
+   Calm enter animations on mount. The curve cubic-bezier(0.2,0,0,1) is a pure
+   decelerate (stays within [0,1] — never bounces/overshoots, per DESIGN-BIBLE §5).
+   reduced-motion collapses animation-duration globally, so these no-op safely. */
+@keyframes fade-through-in {  /* unrelated view changes (route/page entry) */
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.motion-fade-through { animation: fade-through-in 280ms cubic-bezier(0.2, 0, 0, 1) both; }
+
+@keyframes shared-axis-x-in {  /* peer navigation along the x-axis */
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.motion-shared-axis-x { animation: shared-axis-x-in 280ms cubic-bezier(0.2, 0, 0, 1) both; }
+
+@keyframes container-transform-in {  /* expand-in-place (e.g. the embed sandbox opening) */
+  from { opacity: 0; transform: scale(0.94) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.motion-container-transform {
+  animation: container-transform-in 300ms cubic-bezier(0.2, 0, 0, 1) both;
+  transform-origin: center top;
 }
 
 /* ── Frosted-glass header (scrolled state, ADR 0023 polish) ────────────────── */
@@ -357,10 +449,15 @@ body {
   letter-spacing: -0.015em; /* optically tighter on the serif display sizes */
 }
 
+/* Tracking is reconciled with the chrome type-scale tokens (tailwind.config
+   fontSize) — same optical ramp, so the serif "reading" scale and the sans
+   "chrome" scale don't diverge for the same role (ADR 0024). The prose scale is
+   an intentional second scale (serif, reading-tuned sizes); only the tracking
+   is shared, role-for-role. */
 .prose-lesson h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.022em; }
 .prose-lesson h2 { font-size: 1.375rem; margin-top: 2.75em; letter-spacing: -0.018em; } /* more air above major breaks */
-.prose-lesson h3 { font-size: 1.125rem; }
-.prose-lesson h4 { font-size: 1rem; }
+.prose-lesson h3 { font-size: 1.125rem; letter-spacing: -0.012em; }
+.prose-lesson h4 { font-size: 1rem; letter-spacing: -0.01em; }
 
 /* Rung tag — the "R0" prefix on a section heading, demoted to a quiet tabular
    SANS label so the serif title alone competes with nothing (ADR 0023 polish).
@@ -489,32 +586,44 @@ body {
  * On narrow screens the rail collapses and the page is single-column.
  */
 
-/* The outer page grid: rail + content */
+/* The outer page grid: rail + content.
+ * ADR 0024 — adaptive window-size classes (M3 600 / 840):
+ *   compact  (<600)   single column, no rail
+ *   medium   (600–839) a NARROWER rail appears (the real tablet layout)
+ *   expanded (≥840)   the full rail + gap
+ * (Was a single bespoke 900px breakpoint that gave the whole 600–899 band the
+ *  bare compact layout — the audit's named medium/tablet gap.)
+ */
 .notion-page-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
 }
 
-@media (min-width: 900px) {
+/* medium (tablet) — narrow rail */
+@media (min-width: 600px) {
   .notion-page-grid {
-    /* rail: 64px  gap: 32px  content: rest */
-    grid-template-columns: 64px 32px 1fr;
+    grid-template-columns: 52px 20px 1fr;
     align-items: start;
+  }
+}
+
+/* expanded (desktop) — full rail + gap */
+@media (min-width: 840px) {
+  .notion-page-grid {
+    grid-template-columns: 64px 32px 1fr;
   }
 }
 
 /*
  * The margin rail — quiet sticky rung list.
- * Hidden on mobile; shown on desktop as a sticky left fixture.
- * The MarginRail client component renders an <ol> of R-rung anchor links
- * with an IntersectionObserver scroll-spy (#5 fix).
+ * Hidden on compact; shown from medium up as a sticky left fixture.
  */
 .notion-rail {
   display: none;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 600px) {
   .notion-rail {
     display: block;
     grid-column: 1;
@@ -535,7 +644,7 @@ body {
   min-width: 0; /* prevent grid blowout */
 }
 
-@media (min-width: 900px) {
+@media (min-width: 600px) {
   .notion-content {
     grid-column: 3;
   }

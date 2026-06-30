@@ -9,6 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // ── Adaptive window-size classes (ADR 0024 — M3 breakpoints) ────────────
+      // Added alongside Tailwind's defaults (sm/md/lg/xl). Use bp-medium /
+      // bp-expanded for per-window-class gutters + layout, keyed to M3's 600/840.
+      screens: {
+        "bp-medium": "600px",
+        "bp-expanded": "840px",
+      },
+
       // ── Design-token color palette ─────────────────────────────────────────
       // DESIGN-BIBLE §2: tinted neutrals, never pure black/white, single
       // restrained blue accent.
@@ -18,6 +26,13 @@ const config: Config = {
           base:    "var(--color-surface-base)",    // page background
           raised:  "var(--color-surface-raised)",  // cards, panels
           overlay: "var(--color-surface-overlay)", // modals, tooltips
+          // Surface-container tonal ladder (ADR 0024 — M3 tone-based surfaces).
+          // Tone steps with elevation: a higher tier sits on a lighter warm surface.
+          "container-lowest":  "var(--color-surface-container-lowest)",
+          "container-low":     "var(--color-surface-container-low)",
+          container:           "var(--color-surface-container)",
+          "container-high":    "var(--color-surface-container-high)",
+          "container-highest": "var(--color-surface-container-highest)",
         },
         border: {
           subtle: "var(--color-border-subtle)",
@@ -38,10 +53,12 @@ const config: Config = {
           light:   "var(--color-accent-light)",
           subtle:  "var(--color-accent-subtle)",   // very light tint for hovers
         },
-        // Semantic
+        // Semantic — DEFAULT is the fill; `on` is the text/icon color that sits ON
+        // that fill (dark in dark-mode, where the fills are light — ADR 0024 a11y).
         success: {
           DEFAULT: "var(--color-success)",
           subtle:  "var(--color-success-subtle)",
+          on:      "var(--color-on-success)",
         },
         warning: {
           DEFAULT: "var(--color-warning)",
@@ -50,6 +67,7 @@ const config: Config = {
         error: {
           DEFAULT: "var(--color-error)",
           subtle:  "var(--color-error-subtle)",
+          on:      "var(--color-on-error)",
         },
         // Figure palette — consumed by figure containers and SVG wrappers.
         // The actual SVG elements reference these via CSS vars; see globals.css.
