@@ -165,7 +165,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
     "transition-colors duration-micro",
     // Focus ring — migrated to .focus-ring utility (DESIGN-BIBLE §9)
     "focus-ring",
-    "disabled:opacity-40 disabled:cursor-not-allowed"
+    "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
   );
 
   return (

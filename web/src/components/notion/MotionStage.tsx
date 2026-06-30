@@ -487,7 +487,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
     "transition-colors duration-micro",
     // Focus ring — migrated to .focus-ring utility
     "focus-ring",
-    "disabled:opacity-40 disabled:cursor-not-allowed"
+    "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
   );
 
   const currentCaption = spec.beats[currentBeat]?.caption;
