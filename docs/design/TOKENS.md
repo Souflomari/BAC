@@ -1,15 +1,21 @@
 # Design Tokens — Canonical Reference
 
-> **Authority:** ADR 0022, **re-tuned warm by ADR 0023.** This document
-> discharges the DESIGN-BIBLE appendix's deferred "concrete tokens." It is the
-> single source of truth for every token.
+> **Authority:** ADR 0022 → ADR 0023 (warm-editorial) → **ADR 0024 (Hybrid-Material
+> mechanisms — current).** This document discharges the DESIGN-BIBLE appendix's
+> deferred "concrete tokens." It is the single source of truth for every token.
 >
-> **ADR 0023 (warm-editorial) changed the VALUES below, not the structure:** the
-> palette is now warm ivory/charcoal with a **deep-teal signature accent** (was
-> cool blue-gray); typography is an **editorial serif + Plex sans pairing** (was
-> sans-only); `elevation-1/2` lead with a faint hairline **ring** for shadow-first
-> cards; semantics are muted (not neon). The scale/mechanism (5-step elevation,
-> easing curves, figure `var(--figure-*)` indirection) is unchanged.
+> **ADR 0024 (Hybrid-Material) ADDED these token families:** a **surface-container
+> tonal ladder** (§1.1) so depth reads through tone + shadow; **interaction
+> state-layer** tokens (§1.6) — one neutral hover/pressed wash for every control;
+> semantic **on-colors** (§1.5); a **`--measure-lead`** token (§2.4); motion **CSS
+> vars** mirroring the tailwind curves + an `enter`/`emphasized` duration pair
+> (§5); and re-tuned **dark elevation** (warm ring on all 4 steps; §6.2). The
+> focus ring radius now **tracks the host** (§4).
+>
+> **ADR 0023 (warm-editorial) changed the VALUES, not the structure:** warm
+> ivory/charcoal palette + a **deep-teal signature accent**; an **editorial serif
+> + Plex sans pairing**; `elevation-1/2` lead with a hairline **ring**; muted
+> semantics.
 >
 > **Implementation:** `web/src/app/globals.css` (CSS custom properties) and
 > `web/tailwind.config.ts` (Tailwind mappings to those vars). All component
@@ -29,8 +35,23 @@
 | Token | Light hex | Dark hex | Usage |
 |---|---|---|---|
 | `--color-surface-base` | `#F4EFE6` | `#1A1612` | Page background (warm ivory / charcoal) |
-| `--color-surface-raised` | `#FBF7F0` | `#231E18` | Cards, panels, raised elements |
+| `--color-surface-raised` | `#FBF7F0` | `#231E18` | Cards, panels, raised elements (= `container`) |
 | `--color-surface-overlay` | `#FFFDF8` | `#2C261F` | Modals, tooltips, overlays |
+
+#### 1.1b Surface-container tonal ladder (ADR 0024 — M3 tone-based surfaces)
+
+Depth reads through **tone** as well as shadow: a higher tier sits on a lighter
+warm surface. `base ≤ lowest ≤ low ≤ container(=raised) ≤ high ≤ highest`. Tone
+and shadow must **agree** — a raised (elevation-1+) chip is toned at or above its
+host, never below it (the CheckpointItem fix, ADR 0024).
+
+| Token | Light hex | Dark hex | Usage |
+|---|---|---|---|
+| `--color-surface-container-lowest` | `#F1EBE0` | `#15110D` | Recessed wells (code blocks `pre`) |
+| `--color-surface-container-low` | `#F7F2E9` | `#1E1914` | Gently raised (stepper track) |
+| `--color-surface-container` | `#FBF7F0` | `#231E18` | Cards at rest (= `surface-raised`) |
+| `--color-surface-container-high` | `#FEFAF4` | `#2A241D` | Elevation-2 cards step up in tone (MCQ / checkpoint) |
+| `--color-surface-container-highest` | `#FFFDF8` | `#322B23` | Overlays / modals |
 
 ### 1.2 Border
 
@@ -75,10 +96,33 @@ that matters per surface — never decorative, never a region wash.
 | `--color-warning-subtle` | `#F6EEDA` | `#2A2110` | Background of warning states |
 | `--color-error` | `#9A3B2E` | `#E08C7E` | Incorrect answer, error states |
 | `--color-error-subtle` | `#F6E6E1` | `#2C1611` | Background of error states |
+| `--color-on-success` | `#FFFDF8` | `#112019` | Text/glyph on a FILLED success chip (dark = deep green: the dark success fill is light) |
+| `--color-on-error` | `#FFFDF8` | `#2C1611` | Text/glyph on a FILLED error chip (dark = deep rust) |
 
 **Rule:** semantic colors always paired with an icon, label, or shape — never
 color alone conveys meaning (DESIGN-BIBLE §2, §9). The signature teal accent is
 deliberately separated from these hues so a teal mark never reads as a warning.
+The **on-colors** (ADR 0024) are for a letter/icon sitting ON a filled
+success/error chip — in dark mode the fills are light, so white-on-fill fails;
+the on-color is a dark ink instead.
+
+### 1.6 Interaction state-layer (ADR 0024 — the one feedback language)
+
+One neutral on-surface overlay (`.state-layer` `::after`) whose opacity steps with
+interaction, applied UNIFORMLY to every interactive control so chrome and content
+respond identically. Neutral (text-color) wash, **not** accent — the accent still
+leads in exactly one place per surface. See COMPONENT-STATES.md §0.4.
+
+| Token | Value | Meaning |
+|---|---|---|
+| `--state-color` | `var(--color-text-primary)` | The neutral wash color (darkens light / lightens dark) |
+| `--state-hover` | `0.06` | Hover overlay opacity |
+| `--state-pressed` | `0.10` | Pressed (`:active`) overlay opacity — **~10% is the hard ceiling** (above it the wash mutes content) |
+| `--state-dragged` | `0.16` | **RESERVED** — no draggable surfaces today; kept for scale completeness |
+| `--state-disabled` | `0.38` | The single dimmed/inert opacity (`.state-disabled`); replaces ad-hoc `opacity-40/50/80` |
+
+Focus is **not** a state-layer — it stays the accent ring + jewel halo (§4).
+`.btn-primary` carries its own on-accent overlay (hover 8% / active 12%).
 
 ---
 
@@ -135,10 +179,13 @@ The `--font-scale` CSS var is controlled by FontSizeStepper (values: 0.9375 / 1 
 |---|---|---|
 | `--measure-prose` | `65ch` | **Canonical prose line length.** Used by `.prose-lesson` and `.notion-prose`. |
 | `--measure-wide` | `72ch` | Wider prose (items with options, intro cards). |
+| `--measure-lead` | `52ch` | Standfirst / intro lead — tighter than body (ADR 0024); Tailwind `max-w-lead`. |
+| `--measure-list` | `42rem` | Home notion-card column — one cap per spine (ADR 0024); Tailwind `max-w-list`. |
 
 `--measure-prose` is the source of truth. The Tailwind `maxWidth.reading: "65ch"` and
-`maxWidth.content: "72ch"` mirror it but are secondary. Components that set prose width
-must use `var(--measure-prose)` (or the CSS classes), not hard-coded `65ch`.
+`maxWidth.content: "72ch"` mirror it but are secondary. Every measure cap resolves to
+a token — components must use `var(--measure-*)` (or the Tailwind `max-w-*` aliases),
+not hard-coded `ch` values (ADR 0024 — no magic measures).
 
 ---
 

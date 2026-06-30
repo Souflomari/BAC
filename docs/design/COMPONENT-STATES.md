@@ -1,19 +1,76 @@
 # Component States — Interaction Reference
 
-> **Authority:** ADR 0022, updated by **ADR 0023** (warm-editorial). This
-> document defines the concrete interaction states for every interactive surface.
-> Critics and authors use it as the checkable bar for "premium" micro-craft.
+> **Authority:** ADR 0022 → ADR 0023 (warm-editorial) → **ADR 0024 (the
+> state-layer model — current).** This document defines the concrete interaction
+> states for every interactive surface. Critics and authors use it as the
+> checkable bar for "premium" micro-craft.
 >
-> **ADR 0023 deltas:** the focus ring is the **accent CSS variable** at **6px**
-> radius (was hardcoded `#3E5C86` / 4px); cards are **shadow-first** (the
-> `elevation-1/2` hairline ring replaces drawn borders); a single **`.btn-primary`**
-> is the one confident accent action per surface (see §Primary Button).
+> **ADR 0024 deltas (READ FIRST — these supersede the per-component hover columns
+> below where they conflict):** hover/pressed feedback is now ONE neutral
+> `.state-layer` wash on every interactive control (not per-component
+> `accent-subtle` washes); disabled is the single `.state-disabled` treatment
+> (`--state-disabled .38`, was 40%); the focus ring radius **tracks the host**
+> (`--focus-radius`: 8px on rounded-md/rounded chrome, 12px on `.btn-primary`,
+> 16px on cards) rather than a flat 6px; the two motion engines share one
+> `TransportButton`. See **§0.4** below.
+>
+> **ADR 0023 deltas:** the focus ring is the **accent CSS variable** (was
+> hardcoded `#3E5C86`); cards are **shadow-first** (the `elevation-1/2` hairline
+> ring replaces drawn borders); a single **`.btn-primary`** is the one confident
+> accent action per surface (see §Primary Button).
 >
 > **Token references:** `docs/design/TOKENS.md` for all values.
 > **Focus utility:** `.focus-ring` class (see §Focus Ring below).
 > **Floor:** ≥48px touch target height on all interactive elements.
 > **Color-not-alone rule:** correctness states always pair color with
 > icon or text — never color alone (DESIGN-BIBLE §2, §9).
+
+---
+
+## 0.4 The state-layer interaction model (ADR 0024 — the one feedback language)
+
+This is the **current authority** for hover/pressed/disabled feedback. Where an
+older per-component table below still says "hover: `accent-subtle`", read it as
+**superseded by the neutral state-layer wash** described here — the accent no
+longer washes interactive surfaces on hover (it leads in exactly one place per
+surface; the wash is neutral).
+
+**`.state-layer`** — add to any interactive element. A neutral on-surface
+`::after` overlay (`background: --state-color` = text-primary) whose opacity
+steps with interaction. `position: relative` + `border-radius: inherit` are
+handled by the utility; content reads through the low-opacity wash, so no child
+z-index juggling is needed.
+
+| State | Overlay opacity | Token |
+|---|---|---|
+| rest | 0 | — |
+| hover | **6%** | `--state-hover: 0.06` |
+| pressed (`:active`) | **10%** | `--state-pressed: 0.10` |
+| dragged | 16% (**reserved** — no draggable surfaces today) | `--state-dragged: 0.16` |
+
+**~10% is the hard ceiling** for the neutral wash — above it the overlay starts
+to mute the content reading through it. The overlay transitions on
+`--duration-micro --ease-between`. **Never a ripple.**
+
+**`.state-disabled`** — the single dimmed/inert treatment: `opacity:
+var(--state-disabled)` (0.38) + `pointer-events: none`. Replaces the scattered
+`opacity-40/50/80`.
+
+**Focus is NOT a state-layer.** Focus stays the accent ring + jewel halo
+(`:focus-visible`), with the radius matched to the host via `--focus-radius`
+(see §1).
+
+**`.btn-primary`** carries its own on-accent state-layer (`::after`,
+`background: --color-text-on-accent`, hover 8% / active 12%) so the one filled
+action shares the vocabulary; its hover does NOT also leap elevation (two cues —
+overlay + fill-shift; elevation only drops on press).
+
+**Coverage (every interactive control carries `.state-layer`):** home notion
+cards, MCQ + checkpoint option rows, the `TransportButton` (both motion engines),
+the FontSizeStepper thumbs (incl. the active thumb), SiteHeader wordmark + nav,
+EmbedPanel external links, the McqItem "Voir la solution complète" `<summary>`,
+and `.btn-primary`. A new interactive component MUST adopt `.state-layer` rather
+than inventing a hover treatment — this is a component-quality gate (ADR 0024).
 
 ---
 
@@ -44,7 +101,8 @@ applicable ones.
 .focus-ring:focus-visible {
   outline: 2px solid var(--color-accent);   /* signature teal, ADR 0023 */
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: var(--focus-radius, 6px);  /* tracks the host, ADR 0024 */
+  box-shadow: 0 0 0 4px var(--focus-halo);  /* jewel halo, ADR 0023 polish */
 }
 ```
 
@@ -52,6 +110,14 @@ Usage: add `focus-ring` to any interactive element's class list. The class
 applies the ring only on `:focus-visible` (keyboard / assistive-technology
 focus) — it does not appear on mouse click, preserving the clean visual for
 mouse users while ensuring keyboard navigators always see a clear indicator.
+
+**Host-matched radius (ADR 0024).** The outline rounds to `--focus-radius` so its
+corners track the host's own corner instead of a flat 6px. Set it per control to
+the host's radius: **8px** on `rounded-md`/`rounded` (8px) chrome (transport
+buttons, FontSizeStepper, SiteHeader wordmark + nav, EmbedPanel links, McqItem
+summary) via `[--focus-radius:8px]`; **12px** on `.btn-primary` (radius `lg`);
+**16px** on cards (radius `xl`) via `[--focus-radius:16px]`. The default (6px)
+applies where no host override is set.
 
 The **global catch-all** `html :focus-visible { ... }` in `globals.css`
 applies the same styling to every focusable element that does not carry an

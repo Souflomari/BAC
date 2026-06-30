@@ -16,6 +16,18 @@
 > the cognitive science of flow, cognitive load, and attention, and (4)
 > adjacent masters of calm, focused design. The research artifact is the
 > evidence base; this is the decision.
+>
+> **ADR 0024 (Hybrid-Material) — current system layer.** The warm-editorial
+> identity (ADR 0023) now sits on a Google/Material-grade *mechanism* layer:
+> a single `.state-layer` interaction model (one neutral hover/pressed wash for
+> every control — see `docs/design/COMPONENT-STATES.md` §0.4), a
+> surface-container tonal ladder (depth through tone + shadow), formal M3
+> window-size classes (compact/medium/expanded), one `Icon` system, and
+> French-aware content rules. It was graded front-by-front to **18–19/20 on all
+> 13 fronts** against `docs/design/GOOGLE-AUDIT-RUBRIC.md`
+> (scorecard: `docs/design/AUDIT-SCORECARD.md`). The hard line held throughout:
+> adopted mechanisms that leaked **autoplay/engagement-theater were removed** —
+> the protected calm core (§0) wins over any Material mechanism.
 
 ---
 
