@@ -51,6 +51,7 @@
 import { useEffect, useRef, useState, useId } from "react";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
+import { TransportButton } from "./TransportButton";
 import type { MotionSpec, BeatTween } from "@/lib/motion-spec";
 
 interface MotionStageProps {
@@ -452,24 +453,6 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
     }
   }
 
-  const btnBase = cn(
-    "inline-flex items-center gap-1.5 px-3 py-2",
-    // §9 touch target: 48px (raised from 44px per audit finding #2)
-    "min-h-[48px] min-w-[48px] rounded-md",
-    "text-caption font-medium",
-    "text-[var(--color-text-secondary)]",
-    "border border-[var(--color-border-subtle)]",
-    "bg-[var(--color-surface-raised)]",
-    "hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-soft)]",
-    "transition-colors duration-micro",
-    // One interaction-feedback language (ADR 0024): neutral state-layer wash —
-    // the same hover/pressed overlay every interactive surface carries.
-    "state-layer",
-    // Focus ring — migrated to .focus-ring utility
-    "focus-ring",
-    "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
-  );
-
   const currentCaption = spec.beats[currentBeat]?.caption;
 
   return (
@@ -505,17 +488,15 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         role="group"
         aria-label={`Contrôles : ${figureLabel}`}
       >
-        <button
-          type="button"
+        <TransportButton
           onClick={handlePrev}
           disabled={!ready || atFirst || animating}
-          className={btnBase}
           aria-label="Étape précédente"
         >
           <Icon name="chevron-left" size={14} />
           {/* #8: keep labels visible on mobile — footer flex-wraps so width is fine */}
           <span>Précédent</span>
-        </button>
+        </TransportButton>
 
         {/* Step indicator — functional UI text: must pass 4.5:1.
             Promoted from tertiary (#1 fix) to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1) */}
@@ -530,12 +511,10 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           {`Étape ${currentBeat + 1} / ${totalBeats}`}
         </span>
 
-        <button
-          type="button"
+        <TransportButton
           onClick={handleNext}
           disabled={!ready || animating}
-          className={btnBase}
-          aria-label={atLast ? "Recommencer depuis l'étape 1" : "Étape suivante"}
+          aria-label={atLast ? "Recommencer depuis l’étape 1" : "Étape suivante"}
           aria-describedby={currentCaption ? captionId : undefined}
         >
           {atLast ? (
@@ -552,7 +531,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
               <Icon name="chevron-right" size={14} />
             </>
           )}
-        </button>
+        </TransportButton>
       </div>
 
       {/* Per-beat caption — announced politely, replaces in place (one slot).

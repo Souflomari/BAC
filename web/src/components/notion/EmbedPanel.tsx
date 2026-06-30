@@ -154,8 +154,12 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               "text-caption font-medium",
               "text-accent hover:text-accent-strong",
               "transition-colors duration-micro",
-              // Focus ring — migrated to .focus-ring utility
-              "rounded focus-ring"
+              // Neutral state-layer wash so this external link shares the one
+              // hover/pressed feedback language (ADR 0024); the text-color shift
+              // stays the secondary cue. Padding gives the wash room; -mx keeps
+              // the text edge aligned. 8px focus ring matches the rounded host.
+              "state-layer rounded px-1.5 py-1 -mx-1.5",
+              "focus-ring [--focus-radius:8px]"
             )}
           >
             Ouvrir dans un nouvel onglet

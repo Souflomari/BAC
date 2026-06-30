@@ -103,13 +103,17 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "rounded",
               "text-caption font-semibold",
               "transition-colors duration-micro",
-              // Focus ring — migrated to .focus-ring utility
-              "focus-ring",
+              // Focus ring — 8px to match the rounded (8px) host (ADR 0024)
+              "focus-ring [--focus-radius:8px]",
               isActive
                 ? [
                     // Lifted "selected" thumb: lightest surface + a stronger drop
                     // (elevation-2) than the track (elevation-1), so the active
-                    // segment clearly reads as raised within the control.
+                    // segment clearly reads as raised within the control. It also
+                    // carries the neutral state-layer so re-pressing the active
+                    // step gives the same hover/pressed feedback as every control
+                    // (ADR 0024 — one feedback language, no dead interactive).
+                    "state-layer",
                     "bg-[var(--color-surface-overlay)]",
                     "text-[var(--color-text-primary)]",
                     "shadow-elevation-2",

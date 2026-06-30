@@ -22,6 +22,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { frenchTypography } from "@/lib/frenchTypography";
 import { FontSizeStepper } from "./FontSizeStepper";
 
 interface SiteHeaderProps {
@@ -128,9 +129,9 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             // the content hover language (ADR 0024). -mx/-px pad the overlay out
             // around the wordmark; focus stays the ring+halo.
             "rounded state-layer -mx-2 px-2 py-1",
-            "focus-ring"
+            "focus-ring [--focus-radius:8px]"
           )}
-          aria-label="Retour à l'accueil"
+          aria-label={frenchTypography("Retour à l'accueil")}
         >
           {/* Geometric glyph — oscillation arc in accent color */}
           <GlyphMark className="text-accent flex-shrink-0" />
@@ -165,7 +166,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
                 "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
                 "transition-colors duration-micro ease-enter",
                 "rounded px-2 py-1",
-                "focus-ring"
+                "focus-ring [--focus-radius:8px]"
               )}
             >
               Notions

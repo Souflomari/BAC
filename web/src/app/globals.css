@@ -74,8 +74,10 @@
      exactly one place per surface. Focus stays the ring+halo (not an overlay). */
   --state-color:    var(--color-text-primary);  /* neutral darken/lighten */
   --state-hover:    0.06;
-  --state-pressed:  0.10;
-  --state-dragged:  0.16;
+  --state-pressed:  0.10;  /* ~10% is the hard ceiling for the neutral wash: above it the
+                              overlay starts to mute the content reading through it. */
+  --state-dragged:  0.16;  /* RESERVED — this product has no draggable surfaces today;
+                              kept so the scale is complete if a drag control ever lands. */
   --state-disabled: 0.38;  /* the single dimmed/inert opacity */
 
   /* ── Motion tokens (ADR 0024) — one source of truth for CSS motion ──────────
@@ -171,16 +173,18 @@
   --color-error-subtle:    #2C1611;
   --color-on-error:        #2C1611;   /* dark text on the LIGHT dark-mode error fill */
 
-  /* ── Dark elevation (ADR 0023) ────────────────────────────────────────────
+  /* ── Dark elevation (ADR 0023/0024) ───────────────────────────────────────
      Layered-luminance preserved: a soft dark drop + a WARM-tinted top inset
-     hairline (rgba 255,250,240) that reads as a lighter top edge. elevation-1/2
-     add a faint warm perimeter RING so shadow-first cards hold their edge on the
-     warm charcoal (the dark counterpart of the light hairline ring). */
+     hairline (rgba 255,250,240) that reads as a lighter top edge. The warm
+     perimeter RING is now on ALL FOUR steps (was 1/2 only) so the shadow-first
+     card edge is consistent at every depth on the warm charcoal. The 1→2 drop
+     delta is widened (offset/blur/alpha) so adjacent tiers read as distinct
+     steps, not near-twins. */
   --elevation-0: none;
-  --elevation-1: 0 0 0 1px rgba(255,250,240,.05), 0 1px 3px 0 rgba(0,0,0,.24), inset 0 1px 0 0 rgba(255,250,240,.05);
-  --elevation-2: 0 0 0 1px rgba(255,250,240,.06), 0 2px 8px 0 rgba(0,0,0,.28), inset 0 1px 0 0 rgba(255,250,240,.06);
-  --elevation-3: 0 6px 20px 0 rgba(0,0,0,.34), inset 0 1px 0 0 rgba(255,250,240,.07);
-  --elevation-4: 0 10px 32px 0 rgba(0,0,0,.42), inset 0 1px 0 0 rgba(255,250,240,.09);
+  --elevation-1: 0 0 0 1px rgba(255,250,240,.05), 0 1px 2px 0 rgba(0,0,0,.22), inset 0 1px 0 0 rgba(255,250,240,.05);
+  --elevation-2: 0 0 0 1px rgba(255,250,240,.06), 0 3px 10px 0 rgba(0,0,0,.32), inset 0 1px 0 0 rgba(255,250,240,.06);
+  --elevation-3: 0 0 0 1px rgba(255,250,240,.07), 0 6px 20px 0 rgba(0,0,0,.36), inset 0 1px 0 0 rgba(255,250,240,.07);
+  --elevation-4: 0 0 0 1px rgba(255,250,240,.09), 0 12px 32px 0 rgba(0,0,0,.44), inset 0 1px 0 0 rgba(255,250,240,.09);
 
   /* Measure tokens do not change in dark mode */
 
@@ -338,8 +342,8 @@ body {
     justify-content: center;
     gap: 0.5rem;
     min-height: 48px;
-    padding: 0 1.25rem;
-    border-radius: 10px;
+    padding: 0 1.5rem; /* 24px — on the 8 dp grid (was 20px) */
+    border-radius: 12px; /* = radius lg (was an off-scale 10px) */
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-text-on-accent);
@@ -349,8 +353,10 @@ body {
                 box-shadow var(--duration-micro) var(--ease-between);
   }
   /* The same state-layer language as every other control — an on-accent overlay
-     so the primary action's hover/press shares the one feedback vocabulary
-     (the fill-color shift + elevation stay as the secondary cue). */
+     so the primary action's hover/press shares the one feedback vocabulary. The
+     fill-color shift is the secondary cue. Calm-load (ADR 0024): the hover does
+     NOT also leap elevation — two cues (overlay + fill) on the one already-loud
+     filled-teal element, not three. Elevation only DROPS on press (tactile). */
   .btn-primary::after {
     content: "";
     position: absolute;
@@ -363,7 +369,6 @@ body {
   }
   .btn-primary:hover {
     background-color: var(--color-accent-strong);
-    box-shadow: var(--elevation-3);
   }
   .btn-primary:hover::after { opacity: 0.08; }
   .btn-primary:active {
@@ -374,11 +379,11 @@ body {
 
 /* Primary-button focus — UNLAYERED on purpose so it beats the unlayered global
    :focus-visible (which is what makes a layered rule lose regardless of
-   specificity). Matches the focus outline to the button's own 10px radius
+   specificity). Matches the focus outline to the button's own 12px (lg) radius
    (was inheriting the global 6px → tighter corners) and keeps the elevation
    lift composed with the jewel halo (the global would otherwise replace it). */
 .btn-primary:focus-visible {
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
 }
 
@@ -545,7 +550,7 @@ body {
   background-color: var(--color-surface-container-lowest);
   border: 1px solid var(--color-border-subtle);
   border-radius: 8px;
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.5rem; /* 16/24px — on the 8 dp grid (was 20px horizontal) */
   overflow-x: auto;
   margin-bottom: 1.5em;
 }

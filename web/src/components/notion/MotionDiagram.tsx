@@ -48,6 +48,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
+import { TransportButton } from "./TransportButton";
 
 interface MotionDiagramProps {
   /** Raw SVG string loaded from media/<slug>.motion.svg */
@@ -148,28 +149,6 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
     }
   }
 
-  // Shared button styles: calm, secondary resting state, full accessibility floor.
-  const btnBase = cn(
-    "inline-flex items-center gap-1.5",
-    "px-3 py-2",
-    // §9 touch target: 48px (raised from 44px per audit finding #2)
-    "min-h-[48px] min-w-[48px]",
-    "rounded-md",
-    "text-caption font-medium",
-    // Resting: text-secondary (calm, not primary)
-    "text-[var(--color-text-secondary)]",
-    "border border-[var(--color-border-subtle)]",
-    "bg-[var(--color-surface-raised)]",
-    "hover:text-[var(--color-text-primary)]",
-    "hover:border-[var(--color-border-soft)]",
-    "transition-colors duration-micro",
-    // One interaction-feedback language (ADR 0024): neutral state-layer wash.
-    "state-layer",
-    // Focus ring — migrated to .focus-ring utility (DESIGN-BIBLE §9)
-    "focus-ring",
-    "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
-  );
-
   return (
     <figure
       aria-label={label}
@@ -223,19 +202,17 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
         <div
           className="mt-3 flex items-center gap-2 flex-wrap"
           role="group"
-          aria-label={label ? `Contrôles : ${label}` : "Contrôles de l'animation"}
+          aria-label={label ? `Contrôles : ${label}` : "Contrôles de l’animation"}
         >
           {/* ◂ Précédent */}
-          <button
-            type="button"
+          <TransportButton
             onClick={handlePrev}
             disabled={atFirst}
-            className={btnBase}
             aria-label="Étape précédente"
           >
             <Icon name="chevron-left" size={14} />
             <span className="hidden sm:inline">Précédent</span>
-          </button>
+          </TransportButton>
 
           {/* Step indicator — functional UI text, politely announced on change.
               #1: promoted from tertiary to secondary (12px must pass 4.5:1) */}
@@ -252,12 +229,10 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
           </span>
 
           {/* Suivant ▸ — becomes Recommencer at the last step */}
-          <button
-            type="button"
+          <TransportButton
             onClick={handleNext}
-            className={btnBase}
             aria-label={
-              atLast ? "Recommencer depuis l'étape 1" : "Étape suivante"
+              atLast ? "Recommencer depuis l’étape 1" : "Étape suivante"
             }
           >
             {atLast ? (
@@ -271,7 +246,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
                 <Icon name="chevron-right" size={14} />
               </>
             )}
-          </button>
+          </TransportButton>
         </div>
       )}
 

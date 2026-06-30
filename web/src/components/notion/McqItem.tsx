@@ -136,13 +136,19 @@ export function McqItem({ item, index }: McqItemProps) {
         <details className="mt-4">
           <summary
             className={cn(
-              "cursor-pointer select-none",
+              // inline-flex + w-fit so the neutral state-layer wash hugs the
+              // text (not the full details width); the default disclosure
+              // triangle is hidden so it doesn't collide with the padded wash.
+              "inline-flex w-fit items-center",
+              "cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden",
               "text-body-sm font-medium text-[var(--color-text-secondary)]",
               "hover:text-[var(--color-text-primary)]",
               "transition-colors duration-micro ease-enter",
-              "py-1 rounded",
-              // Focus ring — migrated to .focus-ring utility
-              "focus-ring"
+              // The one neutral hover/pressed feedback language (ADR 0024); the
+              // text-color shift is the secondary cue. -mx keeps the text edge
+              // aligned. 8px focus ring matches the rounded host.
+              "state-layer rounded px-1.5 py-1 -mx-1.5",
+              "focus-ring [--focus-radius:8px]"
             )}
           >
             Voir la solution complète

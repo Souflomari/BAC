@@ -113,11 +113,16 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
             selectedId={selectedId}
             onSelect={handleSelect}
             feedbackId={`${itemId}-cp-choice-${choice.id}-fb`}
-            idleSurface="bg-[var(--color-surface-base)]"
+            // Tone/shadow agreement (ADR 0024): the checkpoint is now a card
+            // (container-high + elevation-2), identical to the MCQ card — so its
+            // option rows read on the same RAISED tone (surface-raised) as the
+            // MCQ rows, not the page BASE tone. An elevation-1 chip toned at the
+            // page base contradicted its own lift; surface-raised resolves it.
+            idleSurface="bg-[var(--color-surface-raised)]"
             disabledExtra={[
               // The single dimmed/inert treatment (ADR 0024) replaces opacity-50.
               "cursor-default",
-              "bg-[var(--color-surface-base)]",
+              "bg-[var(--color-surface-raised)]",
               "border-[var(--color-border-subtle)]",
               "shadow-elevation-0",
             ]}

@@ -35,6 +35,7 @@
 
 import type { EmbedDescriptor, CheckpointItem as CheckpointItemType } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
+import { frenchTypography } from "@/lib/frenchTypography";
 import { LessonRenderer } from "./LessonRenderer";
 import { MediaDiagramFigure } from "./MediaDiagram";
 import { MotionDiagram } from "./MotionDiagram";
@@ -67,7 +68,10 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
 };
 
 function figureAriaLabel(slug: string): string {
-  return FIGURE_ARIA_LABELS[slug] ?? slug.replace(/-/g, " ");
+  // Route through frenchTypography so the screen-reader-announced layer carries
+  // the same curly apostrophe / narrow-no-break-space orthotypography as the
+  // visible copy (ADR 0024 content pass — the announced layer must not regress).
+  return frenchTypography(FIGURE_ARIA_LABELS[slug] ?? slug.replace(/-/g, " "));
 }
 
 // ── Step caption map: (slug × stepNumber) → caption text ─────────────────────

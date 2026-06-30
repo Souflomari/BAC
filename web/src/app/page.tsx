@@ -51,7 +51,7 @@ function EmptyState() {
       <Icon
         name="empty-doc"
         size={48}
-        className="mb-5 text-[var(--color-border-soft)]"
+        className="mb-6 text-[var(--color-border-soft)]"
       />
       <h2 className="text-h3 font-semibold text-[var(--color-text-primary)] mb-2">
         Aucune notion disponible
@@ -178,7 +178,7 @@ export default function HomePage() {
               <h2
                 id={`subject-${subject}`}
                 className={cn(
-                  "mb-5 pb-3",
+                  "mb-6 pb-3",
                   "border-b border-[var(--color-border-subtle)]",
                   "text-h3 font-semibold text-[var(--color-text-secondary)]"
                 )}
