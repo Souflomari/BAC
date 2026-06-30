@@ -232,7 +232,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
     "bg-[var(--color-surface-raised)]",
     "hover:text-[var(--color-text-primary)]",
     "hover:border-[var(--color-border-soft)]",
-    "transition-colors duration-[150ms]",
+    "transition-colors duration-micro",
     // Focus ring — migrated to .focus-ring utility (DESIGN-BIBLE §9)
     "focus-ring",
     "disabled:opacity-40 disabled:cursor-not-allowed"

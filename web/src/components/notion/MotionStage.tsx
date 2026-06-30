@@ -484,7 +484,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
     "border border-[var(--color-border-subtle)]",
     "bg-[var(--color-surface-raised)]",
     "hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-soft)]",
-    "transition-colors duration-[150ms]",
+    "transition-colors duration-micro",
     // Focus ring — migrated to .focus-ring utility
     "focus-ring",
     "disabled:opacity-40 disabled:cursor-not-allowed"

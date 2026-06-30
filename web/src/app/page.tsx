@@ -172,7 +172,8 @@ export default function HomePage() {
       ) : (
         <div className="space-y-12">
           {subjects.map((subject) => (
-            <section key={subject} aria-labelledby={`subject-${subject}`}>
+            <section key={subject} aria-labelledby={`subject-${subject}`} className="max-w-list">
+
               {/* Subject heading */}
               <h2
                 id={`subject-${subject}`}
@@ -186,11 +187,11 @@ export default function HomePage() {
               </h2>
 
               {/* Notion cards — single column for calm, each card its own row.
-                  Capped at a comfortable measure so cards don't sprawl wide at
-                  the expanded window size. */}
+                  Width is governed by the section's max-w-list so the heading
+                  rule and the cards share ONE right edge (ADR 0024). */}
               <ul
                 role="list"
-                className="space-y-3 max-w-2xl"
+                className="space-y-3"
                 aria-label={`Notions de ${subjectLabel(subject)}`}
               >
                 {bySubject[subject].map((n) => (

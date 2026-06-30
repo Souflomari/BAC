@@ -117,7 +117,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         className
       )}
     >
-      <div className="mx-auto max-w-page flex h-14 items-center justify-between px-6 md:px-8">
+      <div className="mx-auto max-w-page flex h-14 items-center justify-between px-4 bp-medium:px-6 bp-expanded:px-8">
         {/* Wordmark — glyph mark + "BAC" */}
         <Link
           href="/"

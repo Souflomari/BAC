@@ -94,6 +94,7 @@
      Canonical line-length controls. --measure-prose is the source of truth. */
   --measure-prose: 65ch;
   --measure-wide:  72ch;
+  --measure-list:  42rem;  /* home notion-card column — one cap per spine (ADR 0024) */
 
   /* ── Figure palette (ADR 0023 — warm world) ───────────────────────────────
      All SVG figures reference these; re-tuning here re-skins every figure with
@@ -511,7 +512,9 @@ body {
 }
 
 .prose-lesson pre {
-  background-color: var(--color-surface-raised);
+  /* Recessed code well — the lowest rung of the surface-container tonal ladder
+     (ADR 0024): a code block reads as inset BELOW the page, not lifted above it. */
+  background-color: var(--color-surface-container-lowest);
   border: 1px solid var(--color-border-subtle);
   border-radius: 8px;
   padding: 1rem 1.25rem;
@@ -572,8 +575,20 @@ body {
   overflow-y: hidden;
 }
 
+/* KaTeX harmonization with the reading serif (ADR 0024).
+   KaTeX keeps its own metrics-correct math fonts for symbols/variables (it must —
+   they carry the layout metrics), but two things are tuned so inline math sits
+   WITH the serif prose rather than colliding with it:
+   1. a small optical-size bump (KaTeX's Computer Modern runs visually small next
+      to Source Serif 4's larger x-height), and
+   2. text-mode atoms (\text{…}, words/units inside math) inherit the reading
+      serif so prose-language inside math matches the surrounding body. */
 .prose-lesson .katex {
-  font-size: 1em; /* inherit — don't grow math relative to prose */
+  font-size: 1.04em;
+}
+.prose-lesson .katex .mord.text,
+.prose-lesson .katex .textrm {
+  font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
 }
 
 /* ── Notion page layout — use the width (design brief #1) ──────────────────── */

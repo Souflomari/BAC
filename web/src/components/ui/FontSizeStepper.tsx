@@ -76,9 +76,11 @@ export function FontSizeStepper({ className }: { className?: string }) {
         "flex items-center gap-0.5",
         "rounded-md",
         // Shadow-first segmented control (ADR 0023): elevation-1 hairline ring
-        // defines the track; the active thumb lifts within it.
+        // defines the track; the active thumb lifts within it. The track sits on
+        // a recessed container-low tone (ADR 0024 tonal ladder) so the lifted
+        // overlay-toned thumb reads as raised in tone as well as shadow.
         "shadow-elevation-1",
-        "bg-[var(--color-surface-raised)]",
+        "bg-[var(--color-surface-container-low)]",
         "p-0.5",
         className
       )}
