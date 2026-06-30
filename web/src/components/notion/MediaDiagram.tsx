@@ -34,6 +34,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { frenchTypography } from "@/lib/frenchTypography";
 
 interface MediaDiagramProps {
   /** Raw SVG string loaded from media/*.svg */
@@ -175,7 +176,7 @@ export function MediaDiagram({
             "max-w-[65ch]" // cap caption width
           )}
         >
-          {stepCaption}
+          {frenchTypography(stepCaption)}
         </figcaption>
       )}
     </figure>
@@ -254,7 +255,7 @@ export function MediaDiagramFigure({
             "max-w-[65ch]"
           )}
         >
-          {stepCaption}
+          {frenchTypography(stepCaption)}
         </figcaption>
       )}
     </figure>

@@ -43,6 +43,7 @@
 import { useState } from "react";
 import type { EmbedDescriptor } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { frenchTypography } from "@/lib/frenchTypography";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ExternalLinkIcon, InteractiveIcon, PlayIcon } from "@/components/ui/Icon";
 
@@ -66,31 +67,9 @@ function EmbedPlaceholder() {
       role="img"
       aria-label="Interactif non disponible pour cette notion"
     >
-      {/* Visual placeholder — simple, calm, never flashy */}
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-        aria-hidden="true"
-        className="text-[var(--color-border-soft)]"
-      >
-        <rect
-          x="4"
-          y="4"
-          width="32"
-          height="32"
-          rx="8"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeDasharray="4 3"
-        />
-        <circle cx="20" cy="20" r="6" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="20" y1="14" x2="20" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="20" y1="28" x2="20" y2="26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="14" y1="20" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="28" y1="20" x2="26" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
+      {/* Visual placeholder — shared interactive glyph, simple, calm, never flashy.
+          Same glyph as the opt-in state so both embed states draw alike. */}
+      <InteractiveIcon size={40} className="text-[var(--color-border-soft)]" />
       {/* #1: small text in placeholder promoted to secondary for contrast floor */}
       <p className="text-body-sm text-[var(--color-text-secondary)] font-medium">
         Interactif à venir
@@ -160,7 +139,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             {embed.caption && (
               // #1: caption at 12px must pass 4.5:1 — promoted from tertiary to secondary
               <p className="text-caption text-[var(--color-text-secondary)] max-w-[48ch] leading-relaxed">
-                {embed.caption.slice(0, 120)}{embed.caption.length > 120 ? "…" : ""}
+                {frenchTypography(embed.caption.slice(0, 120))}{embed.caption.length > 120 ? "…" : ""}
               </p>
             )}
           </div>
@@ -288,7 +267,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
                   "max-w-[56ch] leading-relaxed"
                 )}
               >
-                {embed.caption}
+                {frenchTypography(embed.caption)}
               </p>
             </div>
           )}

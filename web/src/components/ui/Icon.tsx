@@ -53,7 +53,9 @@ export type IconName =
   | "external-link"
   | "interactive"
   | "empty-doc"
-  | "chevron-right";
+  | "chevron-right"
+  | "chevron-left"
+  | "reset";
 
 const GLYPHS: Record<IconName, Glyph> = {
   // check — from the animated/static checkmark (orig 16-box "M2.5 8.5L6 12L13.5 4",
@@ -107,6 +109,22 @@ const GLYPHS: Record<IconName, Glyph> = {
 
   // chevron-right — breadcrumb separator (replaces the "›" text character).
   "chevron-right": { kind: "stroke", d: "M9 6 L15 12 L9 18" },
+
+  // chevron-left — horizontal mirror of chevron-right (the "‹" direction), for the
+  // MotionDiagram transport's step-back control. Same single-stroke caret geometry.
+  "chevron-left": { kind: "stroke", d: "M15 6 L9 12 L15 18" },
+
+  // reset — circular replay/restart arrow for the MotionDiagram transport. A ~300°
+  // open ring (gap at the top) closed by an arrowhead, so the loop reads as
+  // "restart". Drawn on the 24 grid in the shared stroke language.
+  reset: {
+    kind: "stroke",
+    d: [
+      "M19.07 7.5 A8 8 0 1 0 20 12",
+      "M19.07 7.5 L14.5 7",
+      "M19.07 7.5 L19.5 2.5",
+    ],
+  },
 };
 
 // ── Shared SVG attribute helpers ───────────────────────────────────────────────
@@ -185,6 +203,8 @@ export const ExternalLinkIcon = (p: NamedIconProps) => <Icon name="external-link
 export const InteractiveIcon = (p: NamedIconProps) => <Icon name="interactive" {...p} />;
 export const EmptyDocIcon = (p: NamedIconProps) => <Icon name="empty-doc" {...p} />;
 export const ChevronRightIcon = (p: NamedIconProps) => <Icon name="chevron-right" {...p} />;
+export const ChevronLeftIcon = (p: NamedIconProps) => <Icon name="chevron-left" {...p} />;
+export const ResetIcon = (p: NamedIconProps) => <Icon name="reset" {...p} />;
 
 // ── ResultIcon — the shared animated correctness indicator ───────────────────────
 //

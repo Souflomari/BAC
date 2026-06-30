@@ -18,6 +18,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
+import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import { cn } from "@/lib/utils";
@@ -73,7 +74,7 @@ export function LessonRenderer({ markdown, className }: LessonRendererProps) {
       )}
     >
       <ReactMarkdown
-        remarkPlugins={[remarkMath, remarkGfm]}
+        remarkPlugins={[remarkMath, remarkGfm, remarkFrenchTypography]}
         rehypePlugins={[
           rehypeSlug,
           [rehypeKatex, { strict: false, trust: false }],

@@ -47,6 +47,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { Icon } from "@/components/ui/Icon";
 
 interface MotionDiagramProps {
   /** Raw SVG string loaded from media/<slug>.motion.svg */
@@ -88,77 +89,6 @@ function applyStepVisibility(svg: string, visibleUpTo: number): string {
         ? `<g id="step-${num}" class="step-visible">`
         : `<g id="step-${num}" style="display:none">`;
     }
-  );
-}
-
-// ── Icons (inline SVG, no emoji, keyboard-safe) ───────────────────────────────
-function IconPrev() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        d="M9 3L5 7L9 11"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconNext() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        d="M5 3L9 7L5 11"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconReset() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 13 13"
-      fill="none"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        d="M2.5 6.5a4 4 0 1 1 .7 2.2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M2.5 9.5V7H5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
 
@@ -301,7 +231,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
             className={btnBase}
             aria-label="Étape précédente"
           >
-            <IconPrev />
+            <Icon name="chevron-left" size={14} />
             <span className="hidden sm:inline">Précédent</span>
           </button>
 
@@ -330,13 +260,13 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
           >
             {atLast ? (
               <>
-                <IconReset />
+                <Icon name="reset" size={13} />
                 <span className="hidden sm:inline">Recommencer</span>
               </>
             ) : (
               <>
                 <span className="hidden sm:inline">Suivant</span>
-                <IconNext />
+                <Icon name="chevron-right" size={14} />
               </>
             )}
           </button>
