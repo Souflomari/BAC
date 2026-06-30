@@ -81,7 +81,7 @@ function NotionCard({
       href={`/notions/${encodeURIComponent(subject)}/${encodeURIComponent(slug)}`}
       className={cn(
         "group block",
-        "px-6 py-5 rounded-xl",
+        "px-6 py-6 rounded-xl",
         "bg-[var(--color-surface-raised)]",
         // Shadow-first card (ADR 0023): elevation-1 hairline ring at rest;
         // lifts to elevation-2 on hover — confident, never a jump.
@@ -158,7 +158,7 @@ export default function HomePage() {
         </h1>
         <p
           className={cn(
-            "mt-4 text-lead text-[var(--color-text-secondary)] max-w-[52ch]"
+            "mt-4 text-lead text-[var(--color-text-secondary)] max-w-lead"
           )}
         >
           Chaque notion est enseignée jusqu’au bout — décortiquée, illustrée,

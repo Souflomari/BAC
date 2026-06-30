@@ -163,6 +163,8 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
     "hover:text-[var(--color-text-primary)]",
     "hover:border-[var(--color-border-soft)]",
     "transition-colors duration-micro",
+    // One interaction-feedback language (ADR 0024): neutral state-layer wash.
+    "state-layer",
     // Focus ring — migrated to .focus-ring utility (DESIGN-BIBLE §9)
     "focus-ring",
     "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"

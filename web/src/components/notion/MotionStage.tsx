@@ -50,6 +50,7 @@
 
 import { useEffect, useRef, useState, useId } from "react";
 import { cn } from "@/lib/utils";
+import { Icon } from "@/components/ui/Icon";
 import type { MotionSpec, BeatTween } from "@/lib/motion-spec";
 
 interface MotionStageProps {
@@ -121,30 +122,6 @@ const FADE_TRAVEL = 12; // px an element translates in from its `from` direction
 function safeEase(ease: string | undefined, fallback: string): string {
   if (ease && ALLOWED_EASES.has(ease)) return ease;
   return fallback;
-}
-
-// ── Icons (inline SVG, no emoji) ─────────────────────────────────────────────
-function IconPrev() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
-      <path d="M9 3L5 7L9 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function IconNext() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
-      <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function IconReset() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" focusable="false">
-      <path d="M2.5 6.5a4 4 0 1 1 .7 2.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M2.5 9.5V7H5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
 }
 
 export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
@@ -485,6 +462,9 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
     "bg-[var(--color-surface-raised)]",
     "hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-soft)]",
     "transition-colors duration-micro",
+    // One interaction-feedback language (ADR 0024): neutral state-layer wash —
+    // the same hover/pressed overlay every interactive surface carries.
+    "state-layer",
     // Focus ring — migrated to .focus-ring utility
     "focus-ring",
     "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
@@ -532,7 +512,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           className={btnBase}
           aria-label="Étape précédente"
         >
-          <IconPrev />
+          <Icon name="chevron-left" size={14} />
           {/* #8: keep labels visible on mobile — footer flex-wraps so width is fine */}
           <span>Précédent</span>
         </button>
@@ -560,7 +540,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         >
           {atLast ? (
             <>
-              <IconReset />
+              <Icon name="reset" size={13} />
               {/* #8: Recommencer label always visible — appears only at last beat,
                   width is fine; bare icon alone is not self-evident */}
               <span>Recommencer</span>
@@ -569,7 +549,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
             <>
               {/* #8: keep Suivant label visible on mobile */}
               <span>Suivant</span>
-              <IconNext />
+              <Icon name="chevron-right" size={14} />
             </>
           )}
         </button>

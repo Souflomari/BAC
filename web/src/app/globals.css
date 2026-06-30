@@ -78,6 +78,18 @@
   --state-dragged:  0.16;
   --state-disabled: 0.38;  /* the single dimmed/inert opacity */
 
+  /* ── Motion tokens (ADR 0024) — one source of truth for CSS motion ──────────
+     The CSS motion layer (.state-layer, .btn-primary, .motion-* keyframes, the
+     Icon draw-on) reads these so durations/eases don't drift into raw literals.
+     Mirrors the tailwind transitionDuration/timingFunction tokens for the CSS
+     side. No bounce/overshoot — ease-emphasized is a pure decelerate. */
+  --ease-emphasized:    cubic-bezier(0.2, 0, 0, 1);   /* premium decelerate, no overshoot */
+  --ease-between:       cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-micro:     150ms;
+  --duration-standard:  250ms;
+  --duration-enter:     280ms;   /* fade-through view entry */
+  --duration-emphasized: 300ms;  /* container-transform expand-in-place */
+
   /* ── Elevation scale (ADR 0023) ───────────────────────────────────────────
      Warm-tinted (rgba 60,45,30), slightly deeper drops that genuinely lift —
      the audit found the old cool/tiny shadows read flat. Larger N = more air.
@@ -94,6 +106,7 @@
      Canonical line-length controls. --measure-prose is the source of truth. */
   --measure-prose: 65ch;
   --measure-wide:  72ch;
+  --measure-lead:  52ch;   /* standfirst / intro lead — tighter than body (ADR 0024) */
   --measure-list:  42rem;  /* home notion-card column — one cap per spine (ADR 0024) */
 
   /* ── Figure palette (ADR 0023 — warm world) ───────────────────────────────
@@ -289,12 +302,14 @@ body {
     background: var(--state-color);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity var(--duration-micro) var(--ease-between);
   }
   .state-layer:hover::after { opacity: var(--state-hover); }
   .state-layer:active::after { opacity: var(--state-pressed); }
-  /* Keep the overlay from sitting above text/icons: children must be positioned. */
-  .state-layer > * { position: relative; z-index: 1; }
+  /* The overlay sits over the surface at a low opacity (M3 state-layer): content
+     shows through the 6–10% wash, so no child z-index juggling is needed and the
+     layer applies uniformly to buttons (icon + text), cards, links, and the
+     filled primary action alike. */
 
   /* .state-disabled — the single dimmed/inert treatment (one opacity, ADR 0024).
      Replaces the ad-hoc opacity-40/50/80 scattered across components. */
@@ -317,6 +332,7 @@ body {
    * global :focus-visible (accent outline reads against the fill via offset).
    */
   .btn-primary {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -329,16 +345,31 @@ body {
     color: var(--color-text-on-accent);
     background-color: var(--color-accent);
     box-shadow: var(--elevation-2);
-    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--duration-micro) var(--ease-between),
+                box-shadow var(--duration-micro) var(--ease-between);
+  }
+  /* The same state-layer language as every other control — an on-accent overlay
+     so the primary action's hover/press shares the one feedback vocabulary
+     (the fill-color shift + elevation stay as the secondary cue). */
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--color-text-on-accent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-micro) var(--ease-between);
   }
   .btn-primary:hover {
     background-color: var(--color-accent-strong);
     box-shadow: var(--elevation-3);
   }
+  .btn-primary:hover::after { opacity: 0.08; }
   .btn-primary:active {
     box-shadow: var(--elevation-1);
   }
+  .btn-primary:active::after { opacity: 0.12; }
 }
 
 /* Primary-button focus — UNLAYERED on purpose so it beats the unlayered global
@@ -351,28 +382,25 @@ body {
   box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
 }
 
-/* ── M3 transition patterns (ADR 0024) — no-overshoot, token-built ─────────────
-   Calm enter animations on mount. The curve cubic-bezier(0.2,0,0,1) is a pure
-   decelerate (stays within [0,1] — never bounces/overshoots, per DESIGN-BIBLE §5).
-   reduced-motion collapses animation-duration globally, so these no-op safely. */
+/* ── M3 transition patterns (ADR 0024) — no-overshoot, token-driven ────────────
+   Calm enter animations on mount, timed from the duration + ease-emphasized
+   motion tokens (pure decelerate within [0,1] — never bounces, per DESIGN-BIBLE
+   §5). reduced-motion collapses animation-duration globally, so these no-op safely.
+   (shared-axis is intentionally NOT defined: this guided-primary product has no
+   peer-axis navigation to apply it to — the two patterns below are the applicable
+   ones. fade-through = view entry; container-transform = expand-in-place.) */
 @keyframes fade-through-in {  /* unrelated view changes (route/page entry) */
   from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
 }
-.motion-fade-through { animation: fade-through-in 280ms cubic-bezier(0.2, 0, 0, 1) both; }
-
-@keyframes shared-axis-x-in {  /* peer navigation along the x-axis */
-  from { opacity: 0; transform: translateX(24px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-.motion-shared-axis-x { animation: shared-axis-x-in 280ms cubic-bezier(0.2, 0, 0, 1) both; }
+.motion-fade-through { animation: fade-through-in var(--duration-enter) var(--ease-emphasized) both; }
 
 @keyframes container-transform-in {  /* expand-in-place (e.g. the embed sandbox opening) */
   from { opacity: 0; transform: scale(0.94) translateY(6px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 .motion-container-transform {
-  animation: container-transform-in 300ms cubic-bezier(0.2, 0, 0, 1) both;
+  animation: container-transform-in var(--duration-emphasized) var(--ease-emphasized) both;
   transform-origin: center top;
 }
 
@@ -615,10 +643,10 @@ body {
   gap: 0;
 }
 
-/* medium (tablet) — narrow rail */
+/* medium (tablet) — narrow rail. Gutter on the 8 dp grid (24, not 20). */
 @media (min-width: 600px) {
   .notion-page-grid {
-    grid-template-columns: 52px 20px 1fr;
+    grid-template-columns: 52px 24px 1fr;
     align-items: start;
   }
 }

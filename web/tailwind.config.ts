@@ -129,6 +129,7 @@ const config: Config = {
         reading: "65ch",
         content: "72ch",   // slightly wider for items with choices
         wide:    "90ch",   // for embed + prose side-by-side
+        lead:    "var(--measure-lead)", // standfirst / intro lead — tighter than body
         list:    "var(--measure-list)", // home notion-card column (one cap per spine)
         page:    "1280px",
         notion:  "1140px", // notion page outer band — prose + wide-band figures
