@@ -206,16 +206,17 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           </div>
 
           {/* Aspect-ratio container — avoids layout shift.
-              ADR 0024: expand-in-place container-transform on mount;
-              elevation-2 surface steps UP in tone (container-high). */}
+              elevation-2 surface steps UP in tone (container-high).
+              No entrance animation: the sandbox simply appears on the learner's
+              click — a scale/translate flourish on mount reads as autoplay and the
+              protected calm core prefers less (ADR 0024 calm-core pass). */}
           <div
             className={cn(
               "relative w-full overflow-hidden",
               "rounded-xl",
               "bg-surface-container-high",
               // Shadow-first panel (ADR 0023): elevation-2 hairline ring, no border.
-              "shadow-elevation-2",
-              "motion-container-transform"
+              "shadow-elevation-2"
             )}
             style={{ paddingBottom: aspectPercent }}
           >

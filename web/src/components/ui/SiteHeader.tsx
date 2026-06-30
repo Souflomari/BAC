@@ -103,9 +103,11 @@ export function SiteHeader({ className }: SiteHeaderProps) {
               // Floating state: frosted glass (ADR 0023 polish). .header-glass is
               // translucent + blur where backdrop-filter is supported (reads as
               // "glass lifted"), with an opaque fallback so there is never legible
-              // bleed-through. elevation-3 carries the float.
+              // bleed-through. elevation-2 carries the float — a calm one-step lift
+              // from rest (was elevation-3: a 0→3 leap on scroll read as loud, ADR
+              // 0024 calm-core pass).
               "header-glass",
-              "shadow-elevation-3",
+              "shadow-elevation-2",
               "border-b border-transparent",
             ]
           : [

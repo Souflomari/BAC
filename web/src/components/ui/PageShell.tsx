@@ -47,8 +47,12 @@ export function PageShell({
         id="main-content"
         className={cn(
           "flex-1 w-full mx-auto",
-          // Page entry fades through — no-overshoot calm enter (ADR 0024)
-          "motion-fade-through",
+          // No page-entry animation: a scale/fade on every mount is unsolicited
+          // autoplay motion, which the protected identity forbids (learner-paced,
+          // no autoplay). The page simply appears — calmer and correct. (ADR 0024
+          // calm-core pass: the adopted M3 fade-through pattern is NOT applied to
+          // route/mount events; it would only be sanctioned for a learner-triggered
+          // transition, of which there is none today.)
           // Per-window-class gutter scale (ADR 0024, M3 600/840): the gutter
           // grows with the window class — 16px compact / 24px medium / 32px expanded
           "px-4 bp-medium:px-6 bp-expanded:px-8",

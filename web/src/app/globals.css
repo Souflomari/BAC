@@ -81,16 +81,16 @@
   --state-disabled: 0.38;  /* the single dimmed/inert opacity */
 
   /* ── Motion tokens (ADR 0024) — one source of truth for CSS motion ──────────
-     The CSS motion layer (.state-layer, .btn-primary, .motion-* keyframes, the
-     Icon draw-on) reads these so durations/eases don't drift into raw literals.
-     Mirrors the tailwind transitionDuration/timingFunction tokens for the CSS
-     side. No bounce/overshoot — ease-emphasized is a pure decelerate. */
-  --ease-emphasized:    cubic-bezier(0.2, 0, 0, 1);   /* premium decelerate, no overshoot */
+     The CSS motion layer (.state-layer, .btn-primary, the Icon draw-on) reads
+     these so durations/eases don't drift into raw literals. Mirrors the tailwind
+     transitionDuration/timingFunction tokens for the CSS side. No bounce/overshoot.
+     (The enter/emphasized duration pair + the --ease-emphasized CSS var were
+     dropped with the mount-triggered M3 transition patterns — see the calm-core
+     note below the elevation block. The tailwind `ease-emphasized` utility is a
+     separate def and still serves the GSAP-adjacent CSS in MarginRail.) */
   --ease-between:       cubic-bezier(0.4, 0, 0.2, 1);
   --duration-micro:     150ms;
   --duration-standard:  250ms;
-  --duration-enter:     280ms;   /* fade-through view entry */
-  --duration-emphasized: 300ms;  /* container-transform expand-in-place */
 
   /* ── Elevation scale (ADR 0023) ───────────────────────────────────────────
      Warm-tinted (rgba 60,45,30), slightly deeper drops that genuinely lift —
@@ -387,27 +387,17 @@ body {
   box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
 }
 
-/* ── M3 transition patterns (ADR 0024) — no-overshoot, token-driven ────────────
-   Calm enter animations on mount, timed from the duration + ease-emphasized
-   motion tokens (pure decelerate within [0,1] — never bounces, per DESIGN-BIBLE
-   §5). reduced-motion collapses animation-duration globally, so these no-op safely.
-   (shared-axis is intentionally NOT defined: this guided-primary product has no
-   peer-axis navigation to apply it to — the two patterns below are the applicable
-   ones. fade-through = view entry; container-transform = expand-in-place.) */
-@keyframes fade-through-in {  /* unrelated view changes (route/page entry) */
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
-.motion-fade-through { animation: fade-through-in var(--duration-enter) var(--ease-emphasized) both; }
-
-@keyframes container-transform-in {  /* expand-in-place (e.g. the embed sandbox opening) */
-  from { opacity: 0; transform: scale(0.94) translateY(6px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
-}
-.motion-container-transform {
-  animation: container-transform-in var(--duration-emphasized) var(--ease-emphasized) both;
-  transform-origin: center top;
-}
+/* ── M3 transition patterns — REMOVED (ADR 0024 calm-core pass) ─────────────────
+   fade-through and container-transform were adopted in the Hybrid pass, but the
+   only places they could attach were MOUNT/route events (page entry, embed open),
+   where they read as unsolicited AUTOPLAY motion — the calm-load adversary (the
+   blocking guardian of the protected identity) flagged both. The protected
+   "learner-paced, no autoplay/scroll-trigger" identity WINS over the adopted
+   mechanism: there is no genuinely learner-triggered transition to apply them to
+   today, so the keyframes/classes are removed rather than left as dead CSS. If a
+   real learner-initiated expand control ever lands, container-transform is the
+   sanctioned pattern (gated on the explicit user action, never on mount).
+   (shared-axis was likewise never built: no peer-axis navigation exists.) */
 
 /* ── Frosted-glass header (scrolled state, ADR 0023 polish) ────────────────── */
 /* Opaque fallback first (no bleed-through if backdrop-filter is unsupported);
@@ -420,8 +410,12 @@ body {
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .header-glass {
     background-color: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
-    -webkit-backdrop-filter: blur(12px) saturate(1.4);
-    backdrop-filter: blur(12px) saturate(1.4);
+    /* saturate kept near-neutral (1.05, was 1.4): a strong saturate pumps the
+       palette in the strip abutting the reading column on scroll — a calm-core
+       color leak the adversary flagged (ADR 0024). The blur carries the "glass"
+       read; the saturation does not need to. */
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+    backdrop-filter: blur(12px) saturate(1.05);
   }
 }
 
