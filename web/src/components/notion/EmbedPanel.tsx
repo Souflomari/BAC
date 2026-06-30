@@ -43,6 +43,8 @@
 import { useState } from "react";
 import type { EmbedDescriptor } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { ExternalLinkIcon, InteractiveIcon, PlayIcon } from "@/components/ui/Icon";
 
 interface EmbedPanelProps {
   embed: EmbedDescriptor | null;
@@ -131,12 +133,9 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
     <div className={cn("my-10 notion-wide-band", className)}>
       {/* Section label — muted, never flashy.
           #1: 12px uppercase label promoted to secondary for 4.5:1 floor. */}
-      <p
-        className="mb-3 text-caption font-medium text-[var(--color-text-secondary)] uppercase tracking-widest"
-        aria-hidden="true"
-      >
+      <Eyebrow tone="muted" decorative className="mb-3">
         {toolLabel}
-      </p>
+      </Eyebrow>
 
       {!iframeMounted ? (
         /* ── Opt-in state: show quiet button to open the sandbox ── */
@@ -152,18 +151,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           )}
         >
           {/* Icon — circuit/interactive hint */}
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-            aria-hidden="true"
-            className="text-[var(--color-border-soft)]"
-          >
-            <rect x="3" y="3" width="30" height="30" rx="6" stroke="currentColor" strokeWidth="1.5"/>
-            <circle cx="18" cy="18" r="5" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M18 8v3M18 25v3M8 18h3M25 18h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
+          <InteractiveIcon size={36} className="text-[var(--color-border-soft)]" />
 
           <div className="flex flex-col gap-1">
             <p className="text-body-sm font-medium text-[var(--color-text-secondary)]">
@@ -183,14 +171,16 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
+              "inline-flex items-center gap-1.5",
               "text-caption font-medium",
               "text-accent hover:text-accent-strong",
-              "transition-colors duration-[150ms]",
+              "transition-colors duration-micro",
               // Focus ring — migrated to .focus-ring utility
               "rounded focus-ring"
             )}
           >
-            Ouvrir dans un nouvel onglet ↗
+            Ouvrir dans un nouvel onglet
+            <ExternalLinkIcon size={14} />
           </a>
 
           <button
@@ -205,9 +195,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             )}
           >
             {/* Play icon */}
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 2l9 5-9 5V2z" fill="currentColor"/>
-            </svg>
+            <PlayIcon size={14} />
             Ouvrir le bac à sable interactif
           </button>
         </div>
@@ -221,25 +209,30 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
+                "inline-flex items-center gap-1.5",
                 "text-caption font-medium",
                 "text-accent hover:text-accent-strong",
-                "transition-colors duration-[150ms]",
+                "transition-colors duration-micro",
                 // Focus ring — migrated to .focus-ring utility
                 "rounded focus-ring"
               )}
             >
-              Ouvrir dans un nouvel onglet ↗
+              Ouvrir dans un nouvel onglet
+              <ExternalLinkIcon size={14} />
             </a>
           </div>
 
-          {/* Aspect-ratio container — avoids layout shift */}
+          {/* Aspect-ratio container — avoids layout shift.
+              ADR 0024: expand-in-place container-transform on mount;
+              elevation-2 surface steps UP in tone (container-high). */}
           <div
             className={cn(
               "relative w-full overflow-hidden",
               "rounded-xl",
-              "bg-[var(--color-surface-raised)]",
+              "bg-surface-container-high",
               // Shadow-first panel (ADR 0023): elevation-2 hairline ring, no border.
-              "shadow-elevation-2"
+              "shadow-elevation-2",
+              "motion-container-transform"
             )}
             style={{ paddingBottom: aspectPercent }}
           >
@@ -252,7 +245,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               <div
                 className={cn(
                   "absolute inset-0 flex flex-col items-center justify-center gap-3",
-                  "bg-[var(--color-surface-raised)]"
+                  "bg-surface-container-high"
                 )}
               >
                 {/* Non-animating spinner ring — one visual element, no looping */}
@@ -266,7 +259,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
                 />
                 {/* Visible loading label — not aria-hidden; satisfies §9 */}
                 <p className="text-caption text-[var(--color-text-secondary)]">
-                  Chargement de l&apos;interactif…
+                  Chargement de l’interactif…
                 </p>
               </div>
             )}
@@ -278,7 +271,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
               loading="lazy"
               className={cn(
                 "absolute inset-0 w-full h-full border-0",
-                "motion-safe:transition-opacity motion-safe:duration-[250ms] motion-safe:ease-out",
+                "motion-safe:transition-opacity motion-safe:duration-standard motion-safe:ease-out",
                 loaded ? "opacity-100" : "opacity-0"
               )}
               onLoad={() => setLoaded(true)}

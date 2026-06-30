@@ -96,7 +96,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         // The motion-reduce media query in globals.css collapses all transitions
         // to 0.01ms, so the end-state is applied instantly for reduced-motion
         // users without any special branching here.
-        "transition-[box-shadow,background-color,border-color] duration-200 ease-between",
+        "transition-[box-shadow,background-color,border-color] duration-standard ease-between",
         scrolled
           ? [
               // Floating state: frosted glass (ADR 0023 polish). .header-glass is
@@ -124,7 +124,11 @@ export function SiteHeader({ className }: SiteHeaderProps) {
           className={cn(
             "flex items-center gap-2",
             "text-[var(--color-text-primary)] no-underline",
-            "rounded focus-ring"
+            // Neutral state-layer wash on the rounded hit-area so chrome shares
+            // the content hover language (ADR 0024). -mx/-px pad the overlay out
+            // around the wordmark; focus stays the ring+halo.
+            "rounded state-layer -mx-2 px-2 py-1",
+            "focus-ring"
           )}
           aria-label="Retour à l'accueil"
         >
@@ -156,8 +160,10 @@ export function SiteHeader({ className }: SiteHeaderProps) {
               href="/"
               className={cn(
                 "text-body-sm font-medium",
-                "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
-                "transition-colors duration-[150ms] ease-enter",
+                // Neutral state-layer wash leads; the text-color shift stays as
+                // a secondary cue (ADR 0024). Both share the calm micro timing.
+                "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                "transition-colors duration-micro ease-enter",
                 "rounded px-2 py-1",
                 "focus-ring"
               )}

@@ -100,7 +100,7 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "min-w-[48px] min-h-[48px] px-2",
               "rounded",
               "text-caption font-semibold",
-              "transition-colors duration-[150ms]",
+              "transition-colors duration-micro",
               // Focus ring — migrated to .focus-ring utility
               "focus-ring",
               isActive
@@ -117,7 +117,9 @@ export function FontSizeStepper({ className }: { className?: string }) {
                     // Promoted from tertiary to secondary.
                     "text-[var(--color-text-secondary)]",
                     "hover:text-[var(--color-text-primary)]",
-                    "hover:bg-[var(--color-surface-base)]",
+                    // ADR 0024: ghost hover via the uniform neutral state-layer
+                    // (replaces the bespoke hover:bg-surface-base wash).
+                    "state-layer",
                   ]
             )}
           >

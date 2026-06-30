@@ -39,6 +39,7 @@ import { NotionBody } from "@/components/notion/NotionBody";
 import { ItemsSection, buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 // ── Static params ─────────────────────────────────────────────────────────────
@@ -83,7 +84,7 @@ function Breadcrumb({
 }) {
   return (
     <nav
-      aria-label="Fil d'Ariane"
+      aria-label="Fil d’Ariane"
       className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-secondary)]"
     >
       <a
@@ -97,11 +98,11 @@ function Breadcrumb({
       >
         Notions
       </a>
-      <span aria-hidden="true" className="text-[var(--color-text-tertiary)]">›</span>
+      <Icon name="chevron-right" size={16} className="text-[var(--color-text-tertiary)]" />
       <span className="text-[var(--color-text-secondary)]">
         {subjectLabel(subject)}
       </span>
-      <span aria-hidden="true" className="text-[var(--color-text-tertiary)]">›</span>
+      <Icon name="chevron-right" size={16} className="text-[var(--color-text-tertiary)]" />
       <span
         className="text-[var(--color-text-primary)] font-medium truncate max-w-[28ch]"
         aria-current="page"

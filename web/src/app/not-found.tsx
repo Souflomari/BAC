@@ -36,21 +36,9 @@ export default function NotFound() {
           Page introuvable
         </h1>
         <p className="mt-3 text-body text-[var(--color-text-secondary)] max-w-[40ch]">
-          Cette page n&apos;existe pas ou a été déplacée.
+          Cette page n’existe pas ou a été déplacée.
         </p>
-        <Link
-          href="/"
-          className={cn(
-            "mt-8 inline-flex items-center gap-2",
-            "px-5 py-3 rounded-lg",
-            "bg-accent text-white",
-            "text-body-sm font-medium",
-            "hover:bg-[#344d73]",
-            "transition-colors duration-[150ms] ease-out",
-            // Focus ring — migrated to .focus-ring utility
-            "focus-ring"
-          )}
-        >
+        <Link href="/" className={cn("mt-8", "btn-primary")}>
           Retour aux notions
         </Link>
       </div>

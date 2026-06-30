@@ -13,6 +13,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listNotions } from "@/lib/content";
 import { PageShell } from "@/components/ui/PageShell";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -46,36 +48,17 @@ function EmptyState() {
       aria-label="Aucune notion disponible"
     >
       {/* Calm placeholder icon */}
-      <svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
-        fill="none"
-        aria-hidden="true"
+      <Icon
+        name="empty-doc"
+        size={48}
         className="mb-5 text-[var(--color-border-soft)]"
-      >
-        <rect
-          x="6"
-          y="8"
-          width="36"
-          height="32"
-          rx="6"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M15 18h18M15 24h14M15 30h10"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
+      />
       <h2 className="text-h3 font-semibold text-[var(--color-text-primary)] mb-2">
         Aucune notion disponible
       </h2>
       <p className="text-body text-[var(--color-text-secondary)] max-w-[42ch]">
         Le contenu arrive bientôt. Les notions apparaîtront ici une fois
-        qu&apos;elles auront été préparées.
+        qu’elles auront été préparées.
       </p>
     </div>
   );
@@ -104,23 +87,17 @@ function NotionCard({
         // lifts to elevation-2 on hover — confident, never a jump.
         "shadow-elevation-1",
         "hover:shadow-elevation-2 hover:-translate-y-px",
-        "transition-all duration-[150ms] ease-out",
-        // Focus ring — migrated to .focus-ring utility
-        "focus-ring"
+        "transition-all duration-micro ease-out",
+        // One interaction-feedback language (ADR 0024): neutral state-layer wash.
+        "state-layer",
+        // Focus ring — migrated to .focus-ring utility; match the rounded-xl corner.
+        "focus-ring [--focus-radius:16px]"
       )}
     >
-      {/* Subject label */}
-      <span
-        className={cn(
-          "inline-block mb-2",
-          "text-caption font-medium",
-          // #1: subject label at 12px caption — promoted to secondary for 4.5:1
-          "text-[var(--color-text-secondary)]",
-          "uppercase tracking-widest"
-        )}
-      >
+      {/* Subject label — quiet tracked-caps eyebrow (no accent) */}
+      <Eyebrow tone="muted" className="mb-2">
         {subjectLabel(subject)}
-      </span>
+      </Eyebrow>
 
       {/* Notion title */}
       <h3
@@ -129,7 +106,7 @@ function NotionCard({
           "text-[var(--color-text-primary)]",
           "leading-snug",
           "group-hover:text-accent",
-          "transition-colors duration-[150ms] ease-out"
+          "transition-colors duration-micro ease-out"
         )}
       >
         {title}
@@ -142,27 +119,16 @@ function NotionCard({
           // #1: 14px body-sm + aria-hidden but still visible — promoted to secondary
           "text-body-sm font-medium text-[var(--color-text-secondary)]",
           "group-hover:text-accent",
-          "transition-colors duration-[150ms] ease-out"
+          "transition-colors duration-micro ease-out"
         )}
         aria-hidden="true"
       >
         Ouvrir
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 14 14"
-          fill="none"
-          aria-hidden="true"
-          className="mt-px translate-x-0 group-hover:translate-x-1 transition-transform duration-[150ms] ease-out"
-        >
-          <path
-            d="M3 7h8M8 4l3 3-3 3"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Icon
+          name="arrow-right"
+          size={14}
+          className="mt-px translate-x-0 group-hover:translate-x-1 transition-transform duration-micro ease-out"
+        />
       </span>
     </Link>
   );
@@ -195,7 +161,7 @@ export default function HomePage() {
             "mt-4 text-lead text-[var(--color-text-secondary)] max-w-[52ch]"
           )}
         >
-          Chaque notion est enseignée jusqu&apos;au bout — décortiquée, illustrée,
+          Chaque notion est enseignée jusqu’au bout — décortiquée, illustrée,
           exercée.
         </p>
       </header>
@@ -219,10 +185,12 @@ export default function HomePage() {
                 {subjectLabel(subject)}
               </h2>
 
-              {/* Notion cards — single column for calm, each card its own row */}
+              {/* Notion cards — single column for calm, each card its own row.
+                  Capped at a comfortable measure so cards don't sprawl wide at
+                  the expanded window size. */}
               <ul
                 role="list"
-                className="space-y-3"
+                className="space-y-3 max-w-2xl"
                 aria-label={`Notions de ${subjectLabel(subject)}`}
               >
                 {bySubject[subject].map((n) => (

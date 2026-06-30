@@ -47,8 +47,11 @@ export function PageShell({
         id="main-content"
         className={cn(
           "flex-1 w-full mx-auto",
-          // Horizontal padding — generous on desktop, comfortable on mobile
-          "px-6 md:px-8",
+          // Page entry fades through — no-overshoot calm enter (ADR 0024)
+          "motion-fade-through",
+          // Per-window-class gutter scale (ADR 0024, M3 600/840): the gutter
+          // grows with the window class — 16px compact / 24px medium / 32px expanded
+          "px-4 bp-medium:px-6 bp-expanded:px-8",
           // Vertical rhythm: 8-pt grid, top padding generous (§4)
           "py-12 md:py-16",
           maxWidthClass,

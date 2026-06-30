@@ -68,7 +68,7 @@ export function ItemsSection({ itemsData, checkpointCloneIds }: ItemsSectionProp
         </h2>
         <p className="mt-2 text-body text-[var(--color-text-secondary)]">
           {items.length} question{items.length > 1 ? "s" : ""} — réponds
-          directement, le résultat s&apos;affiche immédiatement.
+          directement, le résultat s’affiche immédiatement.
         </p>
       </div>
 

@@ -30,127 +30,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import type { NotionItem, NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
-
-// ── Animated stroke icons ─────────────────────────────────────────────────────
-//
-// pathLength="1" + strokeDasharray="1" makes the animation unit-independent.
-// When animate=true, strokeDashoffset transitions from 1 → 0, drawing the path.
-// Reduced-motion: globals.css collapses all transitions to 0.01ms, so the icon
-// appears immediately in its final drawn state without any special branching.
-
-function AnimatedCheckIcon({ animate, className }: { animate: boolean; className?: string }) {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M2.5 8.5L6 12L13.5 4"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        pathLength="1"
-        style={{
-          strokeDasharray: 1,
-          strokeDashoffset: animate ? 0 : 1,
-          transition: animate
-            ? "stroke-dashoffset 300ms cubic-bezier(0.2, 0, 0, 1)"
-            : "none",
-        }}
-      />
-    </svg>
-  );
-}
-
-function AnimatedCrossIcon({ animate, className }: { animate: boolean; className?: string }) {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M4 4L12 12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        pathLength="1"
-        style={{
-          strokeDasharray: 1,
-          strokeDashoffset: animate ? 0 : 1,
-          transition: animate
-            ? "stroke-dashoffset 300ms cubic-bezier(0.2, 0, 0, 1)"
-            : "none",
-        }}
-      />
-      <path
-        d="M12 4L4 12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        pathLength="1"
-        style={{
-          strokeDasharray: 1,
-          strokeDashoffset: animate ? 0 : 1,
-          // Second arm staggered 150ms for a natural sequential draw
-          transition: animate
-            ? "stroke-dashoffset 300ms 150ms cubic-bezier(0.2, 0, 0, 1)"
-            : "none",
-        }}
-      />
-    </svg>
-  );
-}
-
-// ── Small static icons for the summary row ────────────────────────────────────
-function IconCorrect({ className }: { className?: string }) {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M2 7l3.5 3.5L12 3"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconIncorrect({ className }: { className?: string }) {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M3 3l8 8M11 3l-8 8"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+import { ResultIcon } from "@/components/ui/Icon";
 
 // ── Math-aware text renderer ──────────────────────────────────────────────────
 function MathText({
@@ -226,16 +106,19 @@ function ChoiceButton({
           "border",
           // Typography
           "text-body font-regular",
-          // Transition — 250ms ease-between for correctness reveals
-          "transition-all duration-[250ms] ease-between",
+          // Transition — 250ms (standard) ease-between for correctness reveals
+          "transition-all duration-standard ease-between",
           // Touch target ≥ 48px (§9)
           "min-h-[48px]",
-          // Focus ring — migrated to .focus-ring utility
-          "focus-ring",
+          // Focus ring — migrated to .focus-ring utility; match the rounded-lg
+          // (12px) corner so the outline rounds with the host (ADR 0024).
+          "focus-ring [--focus-radius:12px]",
           // Idle state: elevation-1 at rest, elevation-2 on hover, flat on press.
           // #6: accent-wash on hover removed (calm-load — reading/thinking surface).
-          // Elevation lift + border change + active:scale remain for tactile feedback.
+          // .state-layer provides the ONE neutral hover/pressed feedback language;
+          // elevation lift + border change + active:scale remain for tactility.
           state === "idle" && !isRevealedCorrect && [
+            "state-layer",
             "bg-[var(--color-surface-raised)]",
             "border-[var(--color-border-subtle)]",
             "text-[var(--color-text-primary)]",
@@ -262,19 +145,19 @@ function ChoiceButton({
             "shadow-elevation-0",
             "cursor-default",
           ],
-          // After answering: reveal correct answer (unselected)
+          // After answering: reveal correct answer (unselected) — keep its
+          // success colors fully lit (it is the answer to read), not dimmed.
           isRevealedCorrect && [
             "bg-[var(--color-success-subtle)]",
             "border-[var(--color-success)]",
             "text-[var(--color-text-primary)]",
-            "opacity-80",
             "shadow-elevation-0",
             "cursor-default",
           ],
-          // After answering: non-selected, non-correct — dim
+          // After answering: non-selected, non-correct — the single inert
+          // dimmed treatment (.state-disabled = one opacity + inert).
           answered && !isSelected && !isRevealedCorrect && [
-            "opacity-50",
-            "cursor-default",
+            "state-disabled",
             "bg-[var(--color-surface-raised)]",
             "border-[var(--color-border-subtle)]",
             "shadow-elevation-0",
@@ -287,22 +170,25 @@ function ChoiceButton({
             "flex-shrink-0 flex items-center justify-center",
             "w-6 h-6 rounded-sm mt-0.5",
             "text-caption font-semibold",
-            "transition-colors duration-[250ms] ease-between",
+            "transition-colors duration-standard ease-between",
             state === "idle" && !isRevealedCorrect && [
               "bg-[var(--color-border-subtle)]",
               "text-[var(--color-text-secondary)]",
             ],
+            // On-semantic text: a letter on a FILLED success/error chip uses the
+            // on-color (dark-mode contrast fix — text-white fails where the dark
+            // success/error fills are light).
             state === "selected-correct" && [
               "bg-[var(--color-success)]",
-              "text-white",
+              "text-success-on",
             ],
             state === "selected-incorrect" && [
               "bg-[var(--color-error)]",
-              "text-white",
+              "text-error-on",
             ],
             isRevealedCorrect && [
               "bg-[var(--color-success)]",
-              "text-white",
+              "text-success-on",
             ],
             answered && !isSelected && !isRevealedCorrect && [
               "bg-[var(--color-border-subtle)]",
@@ -333,13 +219,13 @@ function ChoiceButton({
               {state === "selected-correct"
                 ? (
                   <>
-                    <AnimatedCheckIcon animate={true} />
+                    <ResultIcon kind="correct" animate size={16} />
                     <span>correct</span>
                   </>
                 )
                 : (
                   <>
-                    <AnimatedCrossIcon animate={true} />
+                    <ResultIcon kind="incorrect" animate size={16} />
                     <span>incorrect</span>
                   </>
                 )}
@@ -404,7 +290,9 @@ export function McqItem({ item, index }: McqItemProps) {
     <div
       className={cn(
         "rounded-xl",
-        "bg-[var(--color-surface-raised)]",
+        // Surface-container tonal ladder (ADR 0024): an elevation-2 card steps UP
+        // in tone (container-high), not the at-rest raised tone.
+        "bg-surface-container-high",
         "p-6 md:p-8",
         // Shadow-first card (ADR 0023): elevation-2 hairline ring holds the edge;
         // the drawn border is dropped.
@@ -477,7 +365,9 @@ export function McqItem({ item, index }: McqItemProps) {
         >
           {/* SVG icon + text: never color alone (§9) */}
           <span aria-hidden="true" className="flex-shrink-0">
-            {isCorrect ? <IconCorrect /> : <IconIncorrect />}
+            {isCorrect
+              ? <ResultIcon kind="correct" size={14} />
+              : <ResultIcon kind="incorrect" size={14} />}
           </span>
           <span>
             {isCorrect
@@ -495,7 +385,7 @@ export function McqItem({ item, index }: McqItemProps) {
               "cursor-pointer select-none",
               "text-body-sm font-medium text-[var(--color-text-secondary)]",
               "hover:text-[var(--color-text-primary)]",
-              "transition-colors duration-[150ms] ease-enter",
+              "transition-colors duration-micro ease-enter",
               "py-1 rounded",
               // Focus ring — migrated to .focus-ring utility
               "focus-ring"

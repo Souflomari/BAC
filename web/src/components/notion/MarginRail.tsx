@@ -191,8 +191,12 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                   "group relative flex items-center gap-2",
                   "min-h-[48px] py-2 pr-2 rounded-sm",
                   "text-caption font-medium",
+                  // Unified neutral interaction wash on the rounded hit-area
+                  // (ADR 0024 state-layer). The dot/text-color active+hover
+                  // treatment remains the secondary channel.
+                  "state-layer",
                   // Transition for color changes
-                  "transition-colors duration-[150ms] ease-enter",
+                  "transition-colors duration-micro ease-enter",
                   // Focus ring — migrated from ad-hoc pattern
                   "focus-ring",
                   isActive
@@ -212,7 +216,7 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                     // transition on transform+opacity with emphasized ease.
                     // The CSS global reduced-motion rule will collapse this to
                     // 0.01ms, so no-transition in reduced-motion contexts.
-                    "transition-all duration-[250ms]",
+                    "transition-all duration-standard",
                     // Tailwind can't express cubic-bezier directly in class,
                     // so we use the Tailwind token name from tailwind.config.ts
                     "ease-emphasized",
@@ -266,7 +270,7 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                     "opacity-0 -translate-x-1",
                     "group-hover:opacity-100 group-hover:translate-x-0",
                     "group-focus-visible:opacity-100 group-focus-visible:translate-x-0",
-                    "transition-[opacity,transform] duration-[150ms] ease-enter",
+                    "transition-[opacity,transform] duration-micro ease-enter",
                     // Cap the tooltip at a reasonable width for long titles
                     "max-w-[28ch] truncate"
                   )}
