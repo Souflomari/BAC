@@ -289,3 +289,62 @@ per the rule, silence is the failure mode.
   MOTION-CHOREOGRAPHY.md's `fill` entry with the pre-baked-bars +
   cross-fade workaround pattern — a hard-won constraint now findable by a
   cold author instead of re-discovered.
+
+## 7. Day-7 — the portability test (record + handoff skeleton)
+
+**Executor honesty (§13):** the dispatch names Sonnet 4.8; this harness
+exposes model aliases (sonnet/opus/haiku), documents the current Sonnet as
+**Sonnet 5**, and offers no 4.8 ID. The test ran pinned to the `sonnet`
+alias. If the alias resolves newer than 4.8, the test is *easier* than the
+target claim — the verdicts below carry that caveat and never claim more
+than "the sonnet-alias executor, cold."
+
+**Method notes:** briefs committed before any run (`day7:` commit); article
+(a) ran delete-and-rebuild in the working tree with the authored version
+preserved in HEAD (same non-destructive guarantee the dispatch's worktree
+suggestion serves — no node_modules in a fresh worktree, so the executor
+could not have run the build there); runs sequential (shared tree, .next
+contention); acceptance rows in dom-truth committed red before the runs.
+Spec-drift fix applied BEFORE the test (PAGE-ANATOMY home anatomy was
+pre-Day-6 — a stale spec would mismeasure the executor, so calibrating the
+instrument is not coaching).
+
+**Blind-pair answer key (SEALED — not in the report):** *(filled when the
+pairs are committed)*
+
+**Spec-bug log (questions the docs should have answered):** *(filled per
+article as runs land)*
+
+### Handoff skeleton (next dispatch fills this in)
+
+1. **Open gates (owner decisions pending):**
+   - spec.md validation for the RLC re-spec (pedagogy-architect output
+     never human-validated — RULES §2 gate).
+   - **R8 bac sourcing (audit C2, BLOCKING):** `exercises.yaml
+     r8-bac.sourcing.status = unsourced` — notion NOT DONE until the
+     owner's real sujets arrive. Do not fake it.
+   - A3 / B1 / C1 + Day-6 taste calls (ordinals, boundary rule, covers,
+     R0-commit pattern, attempt-first register): all FABLE-DECIDED /
+     OWNER-REVIEW-PENDING — owner laptop review confirms or overrides;
+     specs carry the swap points.
+   - Production-sync verification (CLAUDE.md non-negotiable) — untouched
+     all week by design; still open.
+2. **Consolidated ADR for the week** (one document, next number free in
+   docs/decisions/): bible amendments 1–6 + §11–13, TOKENS v2
+   (display-lg tier), template v2 (measurable boxes + display-math +
+   motion-decision), the component set (Derivation, AttemptFirstExercise,
+   Cover/COVER-SPEC, LessonEnd, masthead band), the instrument suite
+   (dom-truth self-syncing battery + shots harnesses), rendered-truth +
+   deployed-truth discipline, the U1 root-cause rule, honest-state rule.
+   Retractions section present even if empty.
+3. **RULES/ROSTER pointer updates:** RULES.md gains pointers to the day7
+   briefs dir as the dispatch template; agent roster revision (CLAUDE.md
+   open decision #3) folds in what the week proved: motion-author works
+   from beat-spec + choreography docs; content agents build to template-v2
+   boxes; critics check boxes with citations.
+4. **The "how not to regress this" one-pager for Opus 4.8:** the ~10
+   invariants that, if violated, silently rot the product (U1 classGroups
+   rule; rendered-truth/§13; honest-state; attempt-first pre-commit DOM
+   guard; derivation pre-reveal guard; counter-scope invariant; tokens
+   only; calm budget/count limits; append-only migrations; production
+   human-gate) — each with its dom-truth row or doc anchor.
