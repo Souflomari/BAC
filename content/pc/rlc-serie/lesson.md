@@ -4,27 +4,27 @@
 
 ## R0 — Accroche : le balancement électrique
 
-[[video:balancement]]
-
 Imagine qu'on charge complètement un condensateur — on lui donne une réserve d'énergie — puis on le connecte directement à une bobine, sans source de tension, sans piles. Le circuit est fermé. Le condensateur commence à se décharger.
 
 [[figure:rlc-schema]]
 
-Avant de lire la suite, prends trente secondes et pose-toi vraiment la question : **que va faire la tension $u_C(t)$ aux bornes du condensateur ?**
+Avant de lire la suite, prends trente secondes et pose-toi vraiment la question : **que va faire la tension $u_C(t)$ aux bornes du condensateur ?** C'est une décharge, et tu viens de voir le circuit RC — alors engage-toi vraiment : choisis une réponse avant de continuer.
 
-Engage-toi : c'est une décharge, tu l'as vue dans le circuit RC juste avant — qu'est-ce que tu prédis ?
+[[checkpoint:cp-r0-predict]]
 
-La plupart des élèves qui arrivent ici ont une réponse nette : « la tension descend progressivement vers zéro, comme dans le RC. Elle s'amortit et c'est fini. »
-
-C'est ta prédiction ? Bien. Garde-la.
-
-Maintenant regarde la trace ci-dessous — c'est la courbe réelle de $u_C(t)$ pour ce circuit, régime périodique.
+Maintenant regarde la trace réelle de $u_C(t)$ pour ce circuit, en régime périodique.
 
 [[figure:regimes-uc]]
 
 La tension ne descend pas vers zéro et ne s'y arrête pas. Elle descend, passe par zéro, **remonte de l'autre côté**, redescend, repasse par zéro, remonte encore — et ainsi de suite. Ce n'est pas une décharge. C'est une oscillation.
 
-Ta prédiction et la réalité vont dans des directions opposées. C'est précisément ça qu'on va comprendre.
+Si tu avais prédit la décharge du RC, ta prédiction et la réalité vont dans des directions opposées — et c'est précisément cet écart qu'on va comprendre. Si tu avais vu juste, la vraie question commence maintenant : **pourquoi** ça oscille ?
+
+<!-- SLOT D'AMÉLIORATION (jamais bloquant — audit C5) : clip « balancement »
+     à insérer ici quand l'asset vidéo existera. Le hook fonctionne sans lui ;
+     le marqueur ci-dessous est ignoré silencieusement tant que l'asset manque. -->
+
+[[video:balancement]]
 
 Le condensateur se vide, mais l'énergie ne disparaît pas : elle **traverse** dans la bobine, et la bobine la **renvoie** vers le condensateur, dans l'autre sens. Ça oscille. C'est un balancement — un pendule électrique.
 
@@ -100,6 +100,14 @@ Voilà ce que font le condensateur et la bobine, séparément et ensemble :
 - La **bobine** stocke l'énergie magnétique $E_L = \frac{1}{2}L i^2$. Cette énergie est maximale quand $i$ est maximal — c'est-à-dire quand $u_C = 0$.
 
 Les deux éléments ne stockent pas la même chose, et leurs maxima se produisent à des instants différents — toujours décalés d'un quart de période.
+
+### Arrête-toi — qui stocke quoi, à quel instant ?
+
+Avant de passer aux équations, fige l'image mentale, parce que c'est ici qu'un modèle faux s'installe silencieusement. Beaucoup d'élèves retiennent « le condensateur et la bobine stockent l'énergie » — et placent les deux maxima **au même instant**, comme deux réservoirs qui se rempliraient ensemble.
+
+Teste ce modèle avant de le croire : au quart de période, le condensateur est vide — $u_C = 0$, donc $E_C = 0$. Si les deux maxima étaient simultanés, l'énergie de la bobine devrait être nulle à cet instant aussi. L'énergie totale vaudrait… zéro. Elle serait passée où ?
+
+Le modèle « deux réservoirs ensemble » se contredit tout seul : si l'énergie est conservée, quand l'un est vide, l'autre est **plein**. $E_C = \frac{1}{2}C u_C^2$ est maximale quand $u_C$ est maximale (et $i = 0$) ; $E_L = \frac{1}{2}L i^2$ est maximale quand $i$ est maximal (et $u_C = 0$). Les deux maxima sont en opposition de phase — c'est exactement ce que l'animation te montrait : les deux barres ne montent jamais ensemble.
 
 ---
 
@@ -497,131 +505,17 @@ Vérifie ta compréhension.
 
 ## R8 — Exercice de type bac
 
-<!-- AUTHORING DEBT — À SOURCER (ADR 0019, audit C2 — ne PAS supprimer ce
-     commentaire tant que la dette n'est pas soldée) : cet exercice est une
-     synthèse de style bac construite pour couvrir les savoir-faire de la
-     notion. Il n'est PAS tiré d'un sujet national réel identifié. Avant
-     d'être présenté à un élève comme un sujet bac, il doit être remplacé ou
-     validé par un vrai sujet national avec année et session. Ce statut était
-     auparavant affiché dans le titre et une note visibles par l'élève
-     (audit U3 : les drapeaux d'autorat ne se rendent jamais côté élève). -->
+<!-- Provenance / dette de sourcing : voir exercises.yaml (r8-bac.sourcing) et
+     la case bloquante du template v2 — sommet non sourcé = notion non terminée. -->
 
-### Mise en situation
-
-Un condensateur de capacité $C = 10\ \mu\text{F}$ est chargé sous une tension $U_0 = 6\ \text{V}$. À $t = 0$, on le connecte à une bobine d'inductance $L = 0{,}1\ \text{H}$ (résistance interne négligeable) en série avec un conducteur ohmique de résistance $R = 5\ \Omega$. Le circuit est fermé. On observe à l'oscilloscope la tension $u_C(t)$ aux bornes du condensateur.
-
-L'oscillogramme montre des oscillations dont l'amplitude décroît progressivement. On mesure deux maxima successifs : le premier à $t_1 = 3\ \text{ms}$ et le deuxième à $t_2 = 9{,}4\ \text{ms}$.
-
-**Partie 1 — Identifier le régime et établir l'équation différentielle**
-
-**Question 1.** Quel régime d'oscillations observe-t-on ? Justifier en s'appuyant sur la description de l'oscillogramme.
-
-*Raisonnement expert.* On lit la description : amplitude qui décroît, mais oscillations présentes. C'est la signature du régime pseudo-périodique — ni le régime périodique (amplitude constante), ni le régime apériodique (pas d'oscillations). La justification tient en deux lignes : oscillations présentes + amplitude décroissante.
-
-**Question 2.** Établir l'équation différentielle vérifiée par la charge $q(t)$.
-
-*Raisonnement expert.* On écrit la loi des mailles dans le circuit série complet. La bobine est idéale (résistance interne négligeable), donc sa tension est $u_L = L\frac{d^2q}{dt^2}$. Le conducteur ohmique contribue $u_R = R\frac{dq}{dt}$.
-
-Loi des mailles :
-
-$$u_C + u_L + u_R = 0$$
-
-$$\frac{q}{C} + L\frac{d^2q}{dt^2} + R\frac{dq}{dt} = 0$$
-
-$$\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}$$
-
-On s'arrête là pour le cas amorti. On n'essaie pas de résoudre cette équation en forme fermée.
-
-**Partie 2 — Exploiter l'oscillogramme**
-
-**Question 3.** Mesurer la pseudo-période $T$ à partir de l'oscillogramme.
-
-*Raisonnement expert.* On repère deux maxima consécutifs et on soustrait leurs coordonnées temporelles :
-
-$$T = t_2 - t_1 = 9{,}4\ \text{ms} - 3\ \text{ms} = 6{,}4\ \text{ms}$$
-
-**Question 4.** Calculer la période propre $T_0$ du circuit et comparer à $T$.
-
-*Raisonnement expert.* On utilise la formule du cas idéal — c'est la seule formule analytique qu'on a. On calcule $LC$ :
-
-$$LC = 0{,}1 \times 10 \times 10^{-6} = 10^{-6}\ \text{s}^2 \implies \sqrt{LC} = 10^{-3}\ \text{s}$$
-
-$$T_0 = 2\pi\sqrt{LC} = 2\pi \times 10^{-3} \approx 6{,}28\ \text{ms}$$
-
-L'écart entre $T = 6{,}4\ \text{ms}$ et $T_0 \approx 6{,}28\ \text{ms}$ est d'environ 2 %. L'amortissement est faible, donc l'approximation $T \approx T_0$ est valide.
-
-**Partie 3 — Bilan énergétique**
-
-**Question 5.** Calculer l'énergie totale du circuit à $t = 0$. Où est-elle stockée ? Que devient-elle au bout d'un quart de pseudo-période ?
-
-*Raisonnement expert.* À $t = 0$, le condensateur est chargé à $U_0$ et le courant est nul — la bobine ne stocke rien encore.
-
-$$E(0) = E_C(0) + E_L(0) = \frac{1}{2}C U_0^2 + 0 = \frac{1}{2} \times 10^{-5} \times 36 = 1{,}8 \times 10^{-4}\ \text{J}$$
-
-Toute l'énergie est dans le condensateur.
-
-Un quart de pseudo-période plus tard, $u_C \approx 0$ et le courant est maximal : l'énergie est essentiellement dans la bobine. Mais comme le régime est amorti, $E(T/4) < E(0)$ — une partie a été dissipée par effet Joule dans $R$.
-
-**Question 6.** Expliquer pourquoi les oscillations s'amortissent. Quel rôle joue $R$ ?
-
-*Raisonnement expert.* À chaque cycle, la résistance $R$ dissipe de l'énergie sous forme de chaleur — effet Joule, puissance $P = R\,i^2 > 0$. Cette puissance est toujours positive : $R$ ne peut que prélever de l'énergie, jamais en restituer. L'énergie totale $E_C + E_L$ diminue donc à chaque oscillation, et l'amplitude décroît.
-
-**Partie 4 — Entretien des oscillations**
-
-**Question 7.** On ajoute au circuit un générateur délivrant $u_G(t) = k \cdot i(t)$. Établir la nouvelle équation différentielle et déterminer la valeur de $k$ qui permet d'entretenir des oscillations sinusoïdales.
-
-*Raisonnement expert.* La loi des mailles avec le générateur :
-
-$$u_C + u_L + u_R = u_G$$
-
-$$\frac{q}{C} + L\frac{d^2q}{dt^2} + R\frac{dq}{dt} = k\frac{dq}{dt}$$
-
-$$L\frac{d^2q}{dt^2} + (R - k)\frac{dq}{dt} + \frac{q}{C} = 0$$
-
-On cherche $k$ tel que le terme d'amortissement disparaisse : il faut $R - k = 0$, donc $k = R$.
-
-Avec $k = R$, l'équation devient $L\frac{d^2q}{dt^2} + \frac{q}{C} = 0$ — l'équation du circuit idéal. Les oscillations sont sinusoïdales, à amplitude constante, à la période propre $T_0 = 2\pi\sqrt{LC}$. Le générateur compense exactement la perte Joule à chaque cycle ; il ne fixe pas la fréquence.
-
-$$\boxed{k = R = 5\ \Omega}$$
+À toi. Ce qui suit est un exercice complet de type bac — sept questions, quatre parties, le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien. L'oscillogramme dont parle l'énoncé est la trace ci-dessous.
 
 [[figure:regimes-uc]]
+
+[[exercise:r8-bac]]
 
 ---
 
 ## R9 — Variation fraîche
 
-> Même structure profonde que R8, enrobage différent. Le but est que tu ne puisses pas mémoriser la solution — tu dois reconnaître quelle procédure s'applique.
-
-### Mise en situation
-
-Un circuit comporte une bobine d'inductance $L = 0{,}4\ \text{H}$ (résistance interne négligeable) et un condensateur de capacité $C = 10\ \mu\text{F}$, en série avec un conducteur ohmique de résistance $R = 8\ \Omega$. Le condensateur est chargé à $U_0 = 4\ \text{V}$ puis le circuit est fermé à $t = 0$.
-
-**Question 1.** Calculer $T_0$ pour ce circuit.
-
-$$\sqrt{LC} = \sqrt{0{,}4 \times 10^{-5}} = \sqrt{4 \times 10^{-6}} = 2 \times 10^{-3}\ \text{s}$$
-
-$$T_0 = 2\pi \times 2 \times 10^{-3} \approx 12{,}6\ \text{ms}$$
-
-**Question 2.** Établir l'équation différentielle vérifiée par $q(t)$ dans ce circuit.
-
-*La démarche est identique à R8, mais les valeurs changent.* Loi des mailles : $u_C + u_L + u_R = 0$, donc :
-
-$$L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0$$
-
-$$0{,}4\,\frac{d^2q}{dt^2} + 8\,\frac{dq}{dt} + \frac{q}{10^{-5}} = 0$$
-
-On établit et on s'arrête.
-
-**Question 3.** On mesure sur l'oscillogramme une pseudo-période $T = 12{,}8\ \text{ms}$. L'approximation $T \approx T_0$ est-elle valide ?
-
-L'écart : $|T - T_0| / T_0 \approx |12{,}8 - 12{,}6| / 12{,}6 \approx 1{,}6\ \%$. Oui, l'amortissement est faible, l'approximation est valide.
-
-**Question 4.** Quelle est l'énergie initiale du circuit ? Où est-elle un quart de pseudo-période plus tard ?
-
-$$E(0) = \frac{1}{2}C U_0^2 = \frac{1}{2} \times 10^{-5} \times 16 = 8 \times 10^{-5}\ \text{J}$$
-
-Un quart de pseudo-période plus tard : essentiellement dans la bobine (moins une fraction dissipée par Joule dans R). Le transfert $C \to L$ a eu lieu, mais l'énergie totale a diminué.
-
-**Question 5.** On souhaite entretenir les oscillations avec un générateur $u_G = k \cdot i$. Quelle valeur de $k$ faut-il choisir ? Quelle sera alors la période des oscillations entretenues ?
-
-$k = R = 8\ \Omega$. La période reste $T_0 = 2\pi\sqrt{LC} \approx 12{,}6\ \text{ms}$ — fixée par $L$ et $C$, pas par $k$.
+[[exercise:r9-variation]]

@@ -170,3 +170,34 @@ as slop.
 - dom-truth battery v2: drive one interaction for post-answer states.
 - The Eyebrow component has no live instances; re-audit its place in the
   system on Day 4 (keep in library vs retire).
+
+## 5. Day-5 additions
+
+**Record correction (deployed-truth discipline, applied to ourselves):** the
+Day-4 report claimed dom-truth was hardened (unique port + process-group
+kill). **It was not** — the shell cell carrying that edit killed itself
+(`pkill -f "next-server"` matched its own command line) before the edit ran,
+and the follow-up verification passed for an unrelated reason (the orphans had
+just died). The hardening was applied FOR REAL on Day 5 and verified (run
+green, zero leftover servers). The Day-4 commit message overclaims this one
+item; this entry is the correction. This exact failure class is why the
+deployed-truth clause now exists in DESIGN-BIBLE §13: an issued command is not
+an applied change; a push is not a deployment.
+
+**Day-5 content-systems decisions:**
+- The attempt-first commit mechanic v1 is a self-declared attempt gate (button
+  after paper work) — honest about what a static page can know; an mcq-commit
+  question type is spec'd as the natural extension (PAGE-ANATOMY... no:
+  AttemptFirstExercise header comment) but not built.
+- The R0 hook now commits through `cp-r0-predict` (M2 primary); the video slot
+  is an enhancement comment (C5 closed). R1 gained the M7 prose rupture
+  (EXEMPLARS.md §2). R8/R9 render through AttemptFirstExercise (C1 closed —
+  dom-truth guards "no printed solutions").
+- **C2 remains open BY DESIGN:** `exercises.yaml r8-bac.sourcing.status =
+  unsourced` and template v2's blocking box mean the RLC notion is NOT DONE
+  until the owner's real bac sources arrive. Nothing was faked.
+- Per-notion filière metadata (content-meta file) still deferred — carried to
+  the handoff list.
+- OWNER-REVIEW-PENDING set unchanged: A3 / B1 / C1 + now the R0-commit
+  checkpoint pattern and the attempt-first component register (content-side
+  taste calls made under the same delegation).

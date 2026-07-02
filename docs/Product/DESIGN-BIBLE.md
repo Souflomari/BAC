@@ -515,6 +515,15 @@ missed it cited source as evidence (finding U8).
 - Gestalt (does the page read as designed?) is judged on full-page renders
   against named references, by a human or a fresh-context judge — never by
   the author of the change grading their own compliance (the U8 lesson).
+- **Deployed truth (Day-5 amendment, the Day-4.5 lesson):** nothing is
+  described as "live" or "deployed" without a verified fetch of the deployed
+  URL or explicit owner confirmation — a push event, a CI notification, or a
+  platform "Ready" status is NOT evidence of what a user would see. When the
+  deployment cannot be verified from the working environment, the report
+  language is exactly: **"pushed, deployment unverified."** The same
+  discipline applies inward: a claimed code change is verified by re-reading
+  the file or re-running the instrument, not by the fact that an edit command
+  was issued.
 - Per-surface **primary element** table (amendment #4 — §7's rule made
   checkable): home → the session card's filled action; notion (lesson) → the
   embed's `btn-primary` (mid-lesson) with the masthead band as the display

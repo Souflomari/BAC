@@ -123,6 +123,30 @@ export interface EmbedDescriptor {
 export type CheckpointItem = NotionItem;
 
 /**
+ * Attempt-first exercise (exercises.yaml — Day-5 content systems, audit C1).
+ * The student commits to an attempt before `reasoning` is revealed; the
+ * component never renders reasoning into the DOM pre-commit.
+ */
+export interface ExerciseQuestion {
+  id: string;
+  /** Optional part divider label ("Partie 1 — …"), rendered when it changes. */
+  part?: string;
+  /** Question stem (markdown + KaTeX). Always visible. */
+  stem: string;
+  /** Expert reasoning (markdown + KaTeX). Rendered ONLY after the commit. */
+  reasoning: string;
+}
+
+export interface NotionExercise {
+  id: string;
+  title: string;
+  intro?: string;
+  questions: ExerciseQuestion[];
+  // NOTE: the authoring-side `sourcing` block in exercises.yaml is
+  // deliberately NOT loaded — it must never reach the student DOM (audit U3).
+}
+
+/**
  * Parsed checkpoints.yaml top-level shape.
  */
 export interface NotionCheckpoints {
@@ -142,6 +166,8 @@ export interface NotionContent {
    * Used by [[checkpoint:<id>]] markers in the lesson.
    */
   checkpoints: Record<string, CheckpointItem>;
+  /** Attempt-first exercises keyed by id, from exercises.yaml. */
+  exercises: Record<string, NotionExercise>;
   /**
    * Static figure SVGs — media/*.svg EXCLUDING *.motion.svg.
    * Keyed by filename (e.g. "rlc-schema.svg").
@@ -369,6 +395,43 @@ export function loadNotion(id: string): NotionContent | null {
     }
   }
 
+  // ── exercises.yaml (attempt-first, Day-5 — audit C1) ──
+  const exercises: Record<string, NotionExercise> = {};
+  const exercisesRaw = safeReadFile(path.join(dir, "exercises.yaml"));
+  if (exercisesRaw) {
+    try {
+      const parsed = yaml.load(exercisesRaw) as {
+        exercises?: Array<{
+          id?: string;
+          title?: string;
+          intro?: string;
+          questions?: Array<{ id?: string; part?: string; stem?: string; reasoning?: string }>;
+        }>;
+      } | null;
+      if (parsed && Array.isArray(parsed.exercises)) {
+        for (const ex of parsed.exercises) {
+          if (!ex || typeof ex.id !== "string" || !Array.isArray(ex.questions)) continue;
+          const questions: ExerciseQuestion[] = [];
+          for (const q of ex.questions) {
+            if (q && typeof q.id === "string" && typeof q.stem === "string" && typeof q.reasoning === "string") {
+              questions.push({ id: q.id, part: q.part, stem: q.stem, reasoning: q.reasoning });
+            }
+          }
+          if (questions.length > 0) {
+            exercises[ex.id] = {
+              id: ex.id,
+              title: typeof ex.title === "string" ? ex.title : ex.id,
+              intro: typeof ex.intro === "string" ? ex.intro : undefined,
+              questions,
+            };
+          }
+        }
+      }
+    } catch {
+      // Malformed YAML — treat as absent, never crash the page
+    }
+  }
+
   // ── media/*.svg (figures), media/*.motion.svg (animations), media/*.json ──
   const mediaSvgs: Record<string, string> = {};
   const motionSvgs: Record<string, string> = {};
@@ -468,5 +531,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(lessonMd);
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
 }

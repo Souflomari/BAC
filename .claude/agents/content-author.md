@@ -16,7 +16,7 @@ Design pedagogy or invent the misconception inventory / ramp — that is the spe
 ## Inputs
 The notion spec at `content/<subject>/<notion>/spec.md`; `docs/product/VISION.md` (the teaching standard) and `docs/product/DESIGN-BIBLE.md` (how content is presented — math as live KaTeX, calm, integrated text+visual).
 
-## The standard (from VISION.md)
+## BUILD TO TEMPLATE V2 (docs/pipeline/NOTION-TEMPLATE-V2.md): its per-rung boxes are your acceptance criteria (predict-commit-confront with a REAL commit; mechanism-why; reasoning-annotation on 100% of worked steps; tu/on voice; orthotypography). Summit exercises are authored in exercises.yaml (attempt-first), NEVER as printed solutions in prose. Imitate docs/pipeline/EXEMPLARS.md. The standard (from VISION.md)
 - **Hook** — open by making the student care: the real problem the idea solves, momentum not a definition.
 - **Décortiquer** — concept fully apart, plain language, patient, one piece at a time; concrete before abstract; analogy and real-world parallel throughout; make the **mechanism obvious** (the why-it-is-true, not just the what); each segment checked before moving on. The student never gets lost because the explanation never skips the step where they would.
 - **Worked examples** — expert *thinking* shown, reasoning exposed at every step ("we got 0/0, the signal something cancels, so we look for a common factor"), not printed solutions. Build how an expert *decides*.

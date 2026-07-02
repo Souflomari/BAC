@@ -33,7 +33,7 @@
  * DESIGN-BIBLE §7: one primary thing per screen; prose and media interleave as authored.
  */
 
-import type { EmbedDescriptor, CheckpointItem as CheckpointItemType } from "@/lib/content";
+import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { LessonRenderer } from "./LessonRenderer";
@@ -42,6 +42,7 @@ import { MotionDiagram } from "./MotionDiagram";
 import { MotionStage } from "./MotionStage";
 import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
+import { AttemptFirstExercise } from "./AttemptFirstExercise";
 
 // ── Stepped figure configuration ─────────────────────────────────────────────
 // Slugs listed here have step groups (id="step-1"…"step-N") in their SVG.
@@ -102,7 +103,7 @@ function stepCaption(slug: string, step: number): string | undefined {
 //   [[checkpoint:cp-r3-m1]]
 // So we use a broader character class for the id part: [a-zA-Z0-9_-]+
 const MARKER_LINE_RE =
-  /^\s*\[\[(figure|motion|embed|checkpoint|video):([a-zA-Z0-9_-]+)\]\]\s*$/;
+  /^\s*\[\[(figure|motion|embed|checkpoint|video|exercise):([a-zA-Z0-9_-]+)\]\]\s*$/;
 
 // ── Segment types ─────────────────────────────────────────────────────────────
 
@@ -112,6 +113,7 @@ type MotionSegment     = { kind: "motion";     slug: string };
 type EmbedSegment      = { kind: "embed";      slug: string };
 type CheckpointSegment = { kind: "checkpoint"; id: string };
 type VideoSegment      = { kind: "video";      slug: string };
+type ExerciseSegment   = { kind: "exercise";   slug: string };
 
 type Segment =
   | ProseSegment
@@ -119,7 +121,8 @@ type Segment =
   | MotionSegment
   | EmbedSegment
   | CheckpointSegment
-  | VideoSegment;
+  | VideoSegment
+  | ExerciseSegment;
 
 /**
  * Split lesson markdown into an ordered list of prose and marker segments.
@@ -146,6 +149,7 @@ function splitIntoSegments(markdown: string): Segment[] {
         case "embed":      segments.push({ kind: "embed",      slug: id }); break;
         case "checkpoint": segments.push({ kind: "checkpoint", id });        break;
         case "video":      segments.push({ kind: "video",      slug: id }); break;
+        case "exercise":   segments.push({ kind: "exercise",   slug: id }); break;
       }
     } else {
       proseLines.push(line);
@@ -164,6 +168,8 @@ function splitIntoSegments(markdown: string): Segment[] {
 interface NotionBodyProps {
   /** Raw lesson markdown sourced from lesson.md */
   lessonMd: string;
+  /** Attempt-first exercises keyed by id, from exercises.yaml. */
+  exercises?: Record<string, NotionExercise>;
   /**
    * Static figure SVGs — media/*.svg (excluding *.motion.svg).
    * Keyed by filename (e.g. "rlc-schema.svg").
@@ -188,6 +194,7 @@ interface NotionBodyProps {
 
 export function NotionBody({
   lessonMd,
+  exercises,
   mediaSvgs,
   motionSvgs,
   motionSpecs,
@@ -319,6 +326,14 @@ export function NotionBody({
           // This satisfies the "omit gracefully, never show a placeholder error"
           // requirement without blocking the build.
           return null;
+        }
+
+        // Attempt-first exercise (Day-5, audit C1): question → commit →
+        // reasoning unlocks. Unknown slug → silent no-op like every marker.
+        if (seg.kind === "exercise") {
+          const ex = exercises?.[seg.slug];
+          if (!ex) return null;
+          return <AttemptFirstExercise key={`ex-${i}`} exercise={ex} />;
         }
 
         return null;

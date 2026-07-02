@@ -29,7 +29,10 @@ import { fileURLToPath } from "url";
 import path from "path";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const PORT = 3124;
+// Unique port per run — a fixed port raced ORPHANED servers from prior runs
+// (killing the npx wrapper orphans the next-server child; the detached spawn +
+// process-group kill below fixes the orphaning itself).
+const PORT = 3200 + (process.pid % 500);
 const BASE = `http://localhost:${PORT}`;
 
 // ── Expectations, derived from the token sources ──────────────────────────────
@@ -122,6 +125,10 @@ const BATTERY = [
   { name: "footer = C1 contents", page: NOTION, sel: "footer", text: "cadre de référence", present: true },
   { name: "B1 primary action present", page: "/", sel: "main a[class*='btn-primary']", text: "Commencer", present: true },
   { name: "HONEST STATE: no fabricated progress", page: "/", sel: "main", notText: /en cours|Reprendre|vu récemment|Ensuite/, absentSel: "[role='progressbar']" },
+  // ── Day-5 attempt-first summit (audit C1): reasoning NEVER in DOM pre-commit ──
+  { name: "R8 is attempt-first (no printed solutions)", page: NOTION, sel: "[data-exercise='r8-bac']", present: true, notText: /Raisonnement expert/ },
+  { name: "R9 is attempt-first (no printed solutions)", page: NOTION, sel: "[data-exercise='r9-variation']", present: true, notText: /Raisonnement expert/ },
+  { name: "hook commits via checkpoint (C5)", page: NOTION, sel: "div[aria-label*='Vérifie']", present: true },
   // ── Day-3 rail: labels never ellipsize ──
   { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
 ];
@@ -133,7 +140,9 @@ function fail(msg) {
   return 1;
 }
 
-const server = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: WEB, stdio: "ignore" });
+// detached → own process group, so the finally-block kill reaches the actual
+// next-server child, not just the npx wrapper (orphan prevention).
+const server = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: WEB, stdio: "ignore", detached: true });
 try {
   await new Promise((r) => setTimeout(r, 4000));
   const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
@@ -319,5 +328,9 @@ try {
   console.log(`\n━━ dom-truth: ${checks} checks, ${failures} failure(s) ━━`);
   process.exitCode = failures > 0 ? 1 : 0;
 } finally {
-  server.kill();
+  try {
+    process.kill(-server.pid, "SIGTERM"); // kill the whole process group
+  } catch {
+    server.kill();
+  }
 }

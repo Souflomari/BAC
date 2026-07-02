@@ -1,0 +1,176 @@
+# Attempt-first exercises (Day-5 content systems — audit C1 fix).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — audit U3): while
+# status != sourced, the notion is NOT DONE (template v2 blocking box, audit
+# C2). Real bac sourcing requires the owner's sources; do not fake a
+# year/session.
+
+notion: rlc-serie
+
+exercises:
+  - id: r8-bac
+    title: "Exercice de type bac"
+    sourcing:
+      status: unsourced
+      required_for_done: true
+      note: >-
+        Exercice de synthèse de style bac construit pour couvrir les
+        savoir-faire de la notion. PAS tiré d'un sujet national identifié.
+        Avant présentation comme sujet bac : remplacer ou valider par un vrai
+        sujet national avec année et session (ADR 0019).
+    intro: |-
+      Un condensateur de capacité $C = 10\ \mu\text{F}$ est chargé sous une tension $U_0 = 6\ \text{V}$. À $t = 0$, on le connecte à une bobine d'inductance $L = 0{,}1\ \text{H}$ (résistance interne négligeable) en série avec un conducteur ohmique de résistance $R = 5\ \Omega$. Le circuit est fermé. On observe à l'oscilloscope la tension $u_C(t)$ aux bornes du condensateur.
+
+      L'oscillogramme montre des oscillations dont l'amplitude décroît progressivement. On mesure deux maxima successifs : le premier à $t_1 = 3\ \text{ms}$ et le deuxième à $t_2 = 9{,}4\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Identifier le régime et établir l'équation différentielle"
+        stem: |-
+          Quel régime d'oscillations observe-t-on ? Justifier en s'appuyant sur la description de l'oscillogramme.
+        reasoning: |-
+          On lit la description : amplitude qui décroît, mais oscillations présentes. C'est la signature du régime pseudo-périodique — ni le régime périodique (amplitude constante), ni le régime apériodique (pas d'oscillations). La justification tient en deux lignes : oscillations présentes + amplitude décroissante.
+      - id: q2
+        stem: |-
+          Établir l'équation différentielle vérifiée par la charge $q(t)$.
+        reasoning: |-
+          On écrit la loi des mailles dans le circuit série complet. La bobine est idéale (résistance interne négligeable), donc sa tension est $u_L = L\frac{d^2q}{dt^2}$. Le conducteur ohmique contribue $u_R = R\frac{dq}{dt}$.
+
+          Loi des mailles :
+
+          $$u_C + u_L + u_R = 0$$
+
+          $$\frac{q}{C} + L\frac{d^2q}{dt^2} + R\frac{dq}{dt} = 0$$
+
+          $$\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}$$
+
+          On s'arrête là pour le cas amorti. On n'essaie pas de résoudre cette équation en forme fermée.
+      - id: q3
+        part: "Partie 2 — Exploiter l'oscillogramme"
+        stem: |-
+          Mesurer la pseudo-période $T$ à partir de l'oscillogramme.
+        reasoning: |-
+          On repère deux maxima consécutifs et on soustrait leurs coordonnées temporelles :
+
+          $$T = t_2 - t_1 = 9{,}4\ \text{ms} - 3\ \text{ms} = 6{,}4\ \text{ms}$$
+      - id: q4
+        stem: |-
+          Calculer la période propre $T_0$ du circuit et comparer à $T$.
+        reasoning: |-
+          On utilise la formule du cas idéal — c'est la seule formule analytique qu'on a. On calcule $LC$ :
+
+          $$LC = 0{,}1 \times 10 \times 10^{-6} = 10^{-6}\ \text{s}^2 \implies \sqrt{LC} = 10^{-3}\ \text{s}$$
+
+          $$T_0 = 2\pi\sqrt{LC} = 2\pi \times 10^{-3} \approx 6{,}28\ \text{ms}$$
+
+          L'écart entre $T = 6{,}4\ \text{ms}$ et $T_0 \approx 6{,}28\ \text{ms}$ est d'environ 2 %. L'amortissement est faible, donc l'approximation $T \approx T_0$ est valide.
+      - id: q5
+        part: "Partie 3 — Bilan énergétique"
+        stem: |-
+          Calculer l'énergie totale du circuit à $t = 0$. Où est-elle stockée ? Que devient-elle au bout d'un quart de pseudo-période ?
+        reasoning: |-
+          À $t = 0$, le condensateur est chargé à $U_0$ et le courant est nul — la bobine ne stocke rien encore.
+
+          $$E(0) = E_C(0) + E_L(0) = \frac{1}{2}C U_0^2 + 0 = \frac{1}{2} \times 10^{-5} \times 36 = 1{,}8 \times 10^{-4}\ \text{J}$$
+
+          Toute l'énergie est dans le condensateur.
+
+          Un quart de pseudo-période plus tard, $u_C \approx 0$ et le courant est maximal : l'énergie est essentiellement dans la bobine. Mais comme le régime est amorti, $E(T/4) < E(0)$ — une partie a été dissipée par effet Joule dans $R$.
+      - id: q6
+        stem: |-
+          Expliquer pourquoi les oscillations s'amortissent. Quel rôle joue $R$ ?
+        reasoning: |-
+          À chaque cycle, la résistance $R$ dissipe de l'énergie sous forme de chaleur — effet Joule, puissance $P = R\,i^2 > 0$. Cette puissance est toujours positive : $R$ ne peut que prélever de l'énergie, jamais en restituer. L'énergie totale $E_C + E_L$ diminue donc à chaque oscillation, et l'amplitude décroît.
+      - id: q7
+        part: "Partie 4 — Entretien des oscillations"
+        stem: |-
+          On ajoute au circuit un générateur délivrant $u_G(t) = k \cdot i(t)$. Établir la nouvelle équation différentielle et déterminer la valeur de $k$ qui permet d'entretenir des oscillations sinusoïdales.
+        reasoning: |-
+          La loi des mailles avec le générateur :
+
+          $$u_C + u_L + u_R = u_G$$
+
+          $$\frac{q}{C} + L\frac{d^2q}{dt^2} + R\frac{dq}{dt} = k\frac{dq}{dt}$$
+
+          $$L\frac{d^2q}{dt^2} + (R - k)\frac{dq}{dt} + \frac{q}{C} = 0$$
+
+          On cherche $k$ tel que le terme d'amortissement disparaisse : il faut $R - k = 0$, donc $k = R$.
+
+          Avec $k = R$, l'équation devient $L\frac{d^2q}{dt^2} + \frac{q}{C} = 0$ — l'équation du circuit idéal. Les oscillations sont sinusoïdales, à amplitude constante, à la période propre $T_0 = 2\pi\sqrt{LC}$. Le générateur compense exactement la perte Joule à chaque cycle ; il ne fixe pas la fréquence.
+
+          $$\boxed{k = R = 5\ \Omega}$$
+
+  # ── R9 — the EXEMPLAR (Day-5 gold standard for the Sonnet portability test):
+  # same deep structure as R8, different dressing, and Raisonnement expert on
+  # EVERY question (template v2: reasoning-annotation on 100% of worked steps —
+  # the pre-rewrite R9 printed bare computations for Q1/Q3/Q4/Q5).
+  - id: r9-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est R8 (une fois sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent. Le but est que tu ne puisses pas mémoriser la solution — tu dois reconnaître quelle procédure s'applique.
+
+      Un circuit comporte une bobine d'inductance $L = 0{,}4\ \text{H}$ (résistance interne négligeable) et un condensateur de capacité $C = 10\ \mu\text{F}$, en série avec un conducteur ohmique de résistance $R = 8\ \Omega$. Le condensateur est chargé à $U_0 = 4\ \text{V}$ puis le circuit est fermé à $t = 0$.
+    questions:
+      - id: q1
+        stem: |-
+          Calculer $T_0$ pour ce circuit.
+        reasoning: |-
+          Avant de calculer, le réflexe : $T_0$ ne dépend que de $L$ et $C$ — si tu as pensé à utiliser $R = 8\ \Omega$ ici, c'est le modèle « $T_0$ dépend de R » qui parle, et il est faux ($R$ n'est pas dans l'équation idéale, donc il ne peut pas être dans $T_0$).
+
+          $$\sqrt{LC} = \sqrt{0{,}4 \times 10^{-5}} = \sqrt{4 \times 10^{-6}} = 2 \times 10^{-3}\ \text{s}$$
+
+          $$T_0 = 2\pi\sqrt{LC} = 2\pi \times 2 \times 10^{-3} \approx 12{,}6\ \text{ms}$$
+
+          Remarque de méthode : $LC = 0{,}4 \times 10^{-5} = 4 \times 10^{-6}$ — regrouper en $4 \times 10^{-6}$ AVANT la racine rend le calcul mental possible ($\sqrt{4 \times 10^{-6}} = 2 \times 10^{-3}$). C'est le geste qu'attend un correcteur.
+      - id: q2
+        stem: |-
+          Établir l'équation différentielle vérifiée par $q(t)$ dans ce circuit.
+        reasoning: |-
+          La démarche est identique à l'exercice précédent — c'est exactement le point : reconnaître que l'habillage a changé mais pas la procédure. Loi des mailles sur la boucle complète (trois dipôles, convention récepteur) :
+
+          $$u_C + u_L + u_R = 0 \implies L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0$$
+
+          Avec les valeurs :
+
+          $$0{,}4\,\frac{d^2q}{dt^2} + 8\,\frac{dq}{dt} + \frac{q}{10^{-5}} = 0$$
+
+          On établit et on s'arrête — résoudre cette équation en forme fermée est hors programme, et tenter le cosinus idéal ici serait le modèle faux « le cas amorti a une solution sinusoïdale » (on l'a testé et réfuté dans la leçon).
+      - id: q3
+        stem: |-
+          On mesure sur l'oscillogramme une pseudo-période $T = 12{,}8\ \text{ms}$. L'approximation $T \approx T_0$ est-elle valide ?
+        reasoning: |-
+          Le raisonnement attendu : comparer l'écart relatif, pas les valeurs brutes — « 0,2 ms » ne veut rien dire seul ; 1,6 % veut dire quelque chose.
+
+          $$\frac{|T - T_0|}{T_0} \approx \frac{|12{,}8 - 12{,}6|}{12{,}6} \approx 1{,}6\ \%$$
+
+          Oui : l'écart est faible, donc l'amortissement est faible et l'approximation $T \approx T_0$ est valide. (Le sens de l'écart est aussi cohérent : l'amortissement ALLONGE légèrement la pseudo-période, donc $T$ un peu au-dessus de $T_0$ est attendu.)
+      - id: q4
+        stem: |-
+          Quelle est l'énergie initiale du circuit ? Où est-elle un quart de pseudo-période plus tard ?
+        reasoning: |-
+          À $t = 0$ le courant est nul (on vient de fermer le circuit) : toute l'énergie est électrique, dans le condensateur — c'est le réflexe « qui stocke quoi, à quel instant ».
+
+          $$E(0) = \frac{1}{2}C U_0^2 = \frac{1}{2} \times 10^{-5} \times 16 = 8 \times 10^{-5}\ \text{J}$$
+
+          Un quart de pseudo-période plus tard, $u_C \approx 0$ et $i$ est maximal : l'énergie est essentiellement magnétique, dans la bobine. « Essentiellement », pas « exactement » : le régime est amorti, une fraction est déjà partie en chaleur dans $R$ — le transfert $C \to L$ a eu lieu, mais l'énergie totale a diminué.
+      - id: q5
+        stem: |-
+          On souhaite entretenir les oscillations avec un générateur $u_G = k \cdot i$. Quelle valeur de $k$ faut-il choisir ? Quelle sera alors la période des oscillations entretenues ?
+        reasoning: |-
+          Le piège classique ici est de croire que le générateur impose sa fréquence (ce serait un régime forcé). L'entretien fait autre chose : il compense exactement la dissipation. On cherche donc $k$ qui annule le terme d'amortissement dans la loi des mailles :
+
+          $$L\frac{d^2q}{dt^2} + (R - k)\frac{dq}{dt} + \frac{q}{C} = 0 \implies k = R = 8\ \Omega$$
+
+          L'équation redevient celle du circuit idéal, donc la période est la période PROPRE du circuit :
+
+          $$T_0 = 2\pi\sqrt{LC} \approx 12{,}6\ \text{ms}$$
+
+          — fixée par $L$ et $C$, pas par $k$. Le générateur rembourse la dette Joule ; il ne dirige pas l'oscillation.

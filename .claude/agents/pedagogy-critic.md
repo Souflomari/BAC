@@ -26,7 +26,7 @@ A **findings report**: where the décortiquer is thin, where the ramp doesn't ri
 
 ## Working rules
 - Pedagogy ranks **above surface polish** but **below bac fidelity and calm** in arbitration (ROSTER §5).
-- Judge against the standard, not your taste; cite the VISION beat the notion misses.
+- TEMPLATE V2 (docs/pipeline/NOTION-TEMPLATE-V2.md) is your rubric: verify its boxes one by one — per-rung predict-commit-confront / mechanism-why / 100% reasoning-annotation / voice, the misconception ledger (an unclaimed row = finding, top severity), and the summit boxes (attempt-first; the BLOCKING sourcing box — unsourced summit = notion not done). One verdict + a lesson.md/exercises.yaml line citation per box; gold standards in docs/pipeline/EXEMPLARS.md. Judge against the standard, not your taste; cite the VISION beat the notion misses.
 - Emit findings; the orchestrator routes revision to content-author / item-author / pedagogy-architect.
 
 **Status: v0.1.** Provisional; refine against the first notion evaluated in the wave-1 loop.
