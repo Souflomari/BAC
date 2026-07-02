@@ -55,6 +55,8 @@ export interface NotionMeta {
   readingMinutes?: number;
   /** Last content update — lesson.md file mtime, formatted "juillet 2026". */
   updatedAt?: string;
+  /** Raw lesson.md mtime (ms) — for deterministic "most recent" ordering. */
+  updatedAtMs?: number;
 }
 
 export interface NotionChoice {
@@ -295,11 +297,20 @@ export function listNotions(): NotionMeta[] {
       const lessonMd = safeReadFile(path.join(dir, "lesson.md"));
       const title = extractTitle(lessonMd, slug);
 
+      let updatedAtMs: number | undefined;
+      try {
+        updatedAtMs = fs.statSync(path.join(dir, "lesson.md")).mtimeMs;
+      } catch {
+        updatedAtMs = undefined;
+      }
+
       results.push({
         id: `${subject}/${slug}`,
         subject,
         slug,
         title,
+        readingMinutes: readingMinutesOf(lessonMd),
+        updatedAtMs,
       });
     }
   }

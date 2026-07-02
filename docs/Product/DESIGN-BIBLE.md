@@ -25,7 +25,14 @@
 > window-size classes (compact/medium/expanded), one `Icon` system, and
 > French-aware content rules. It was graded front-by-front to **18–19/20 on all
 > 13 fronts** against `docs/design/GOOGLE-AUDIT-RUBRIC.md`
-> (scorecard: `docs/design/AUDIT-SCORECARD.md`). The hard line held throughout:
+> (scorecard: `docs/design/AUDIT-SCORECARD.md`). **Scorecard-authority note
+> (Day-4 amendment #6):** those scores were produced by an instrument that
+> verified class names and token files, never computed styles — it missed the
+> entire type hierarchy rendering at 16px (audit finding U1/U8,
+> `docs/audits/fable-ui-content-audit.md`). Keep the scorecard as a record of
+> mechanism adoption; do NOT cite it as evidence of rendered quality. Rendered
+> claims answer to §13 (rendered truth) and `web/scripts/dom-truth.mjs`.
+> The hard line held throughout:
 > adopted mechanisms that leaked **autoplay/engagement-theater were removed** —
 > the protected calm core (§0) wins over any Material mechanism.
 
@@ -195,6 +202,15 @@ explanations are the heart, and they are read, at length, on a desktop screen.
   (regular, medium/semibold) carry almost everything. Headings are larger and
   slightly heavier; they are not colored, boxed, or ornamented. Restraint in
   type is part of the calm.
+- **Restraint governs COUNT, not amplitude — the display tier.** [Day-4
+  amendment #2, audit U2.] The scale includes a true display voice
+  (`display` 36px, `display-lg` 56px — TOKENS.md §2.2): every core surface
+  gets **exactly one** display-voice moment (the notion masthead band, the
+  home h1) and everything else stays on the restrained scale. A page whose
+  largest voice is a section label reads undesigned, not calm — the Day-1
+  audit's "typography without hierarchy" finding was partly this rule's old
+  wording, which suppressed amplitude instead of count. One loud, confident
+  typographic moment per surface IS the calm reading of drama.
 
 ---
 
@@ -417,6 +433,93 @@ Before shipping any screen, component, or generated visual, ask:
    centered — not sprawling full-width?**
 
 If a decision passes all eight, it belongs in the product.
+
+---
+
+## 11. Page anatomy and composition (Day-4 amendment #1 — audit U3/U4)
+
+A page is a composed artifact, not a stack of correct components. The Day-1
+audit's "app projected on a website" verdict traced largely to this section
+not existing. Rules; component-level build specs live in
+`docs/design/PAGE-ANATOMY-SPECS.md`.
+
+- **The shared spine.** Header wordmark, content column, rail, and footer
+  share ONE left edge by construction: `PageShell` builds a single container
+  class (max-width + responsive padding) and header/main/footer all consume
+  it. Page width is decided in exactly one place (the `width` prop). A
+  surface that bypasses `PageShell` must reproduce the spine and is suspect
+  by default. (Verified by dom-truth `spine:` checks, ±0.5px.)
+- **Masthead treatment per surface type.** A *lesson* surface opens with the
+  masthead BAND: full-bleed `surface-container-low` plane, bottom hairline,
+  breadcrumb → `display-lg` serif title (measure-capped ~26ch) → metadata
+  line (level · reading time · updated), all on the spine. A *periphery*
+  surface (home) opens with a `display` serif h1 + lead on the spine — no
+  band. Utility surfaces (404) use `display` scale, centered allowed. The
+  band is the page's one display moment — never two bands per page.
+  [FABLE-DECIDED / OWNER-REVIEW-PENDING — Set A pick A3.]
+- **Every page ends.** The footer (quiet colophon: identity line, one nav
+  link, cadre note — Set C pick C1) is mandatory on every surface; a page
+  that just stops is a defect (dom-truth guards presence). Engagement never
+  lives in the footer; the lesson's session-close moment is the `LessonEnd`
+  component ON the lesson surface, above the footer.
+- **Section rhythm.** A section boundary changes more than a gap: heading
+  scale step + hairline where the content family changes (home library), or
+  band-tone change (masthead → reading surface). Uniform card-stacks are the
+  smell this rule exists to prevent — a panel is reserved for genuinely
+  interactive or stateful content (MCQ, checkpoint, embed, motion); flowing
+  content is NOT boxed.
+- **No doubled labels within a viewport.** The same word may not appear as
+  two adjacent labels in different styles (breadcrumb + eyebrow; section
+  heading + card eyebrow — both were live defects). Checklist rule; dom-truth
+  guards the two killed instances.
+- **No internal vocabulary on student surfaces.** Spec rung codes (R0…),
+  authoring flags ("à sourcer"), phase names, agent names: never rendered.
+  Machine needs use data attributes (`data-rung`), not visible text.
+- **Full-bleed permissions.** Full-bleed (viewport-edge) treatment is
+  permitted for: the masthead band, and nothing else today. Any new full-bleed
+  moment is an owner decision — it spends the page's calm budget.
+
+## 12. Web-native texture (Day-4 amendment #3 — audit U5)
+
+The product is a website; it must feel native to the medium. The shipped set
+(all dom-truth-guarded where assertable):
+
+- **Text selection** is themed: `::selection` = `--color-accent-subtle` wash.
+- **Heading anchors:** every prose h2/h3 carries a hover-revealed § link to
+  its stable slug id — students can deep-link any section.
+- **Masthead metadata line:** level chip · reading time (word count / 180 wpm)
+  · "mis à jour" date (lesson mtime, month + year only — day-level precision
+  would fake an editorial cadence). Honesty rule: metadata states only
+  computable facts.
+- **Print stylesheet:** chrome hidden, single column, ink-on-paper, no page
+  breaks inside figures — bac students print revision material.
+- **The page ends** (footer — see §11).
+- Deliberately NOT adopted: scroll-triggered effects, sticky share bars,
+  reading-progress bars (the rail already carries position), and anything the
+  calm core forbids (§0/§5).
+
+## 13. Rendered truth (Day-4 amendment #5 — audit U1/U8)
+
+**A visual claim is verified only against the rendered DOM — computed styles
+and measured screenshots — never against source class names or token files.**
+The entire type hierarchy once rendered at 16px for five audit rounds while
+class names and tokens looked perfect (finding U1); the instrument that
+missed it cited source as evidence (finding U8).
+
+- The standing instrument is `web/scripts/dom-truth.mjs` (`npm run dom-truth`):
+  computed-style battery, expectations derived from the token sources, exits
+  non-zero on violation. It runs green before any visual work is called done.
+- Adding a custom key to `tailwind.config.ts` REQUIRES registering it in the
+  `cn()` classGroups (`web/src/lib/utils.ts`) in the same commit — unregistered
+  keys are silently deleted by tailwind-merge (the U1 mechanism).
+- Gestalt (does the page read as designed?) is judged on full-page renders
+  against named references, by a human or a fresh-context judge — never by
+  the author of the change grading their own compliance (the U8 lesson).
+- Per-surface **primary element** table (amendment #4 — §7's rule made
+  checkable): home → the session card's filled action; notion (lesson) → the
+  embed's `btn-primary` (mid-lesson) with the masthead band as the display
+  moment; 404 → the return link. Exactly one filled accent action per
+  surface; a second is a defect.
 
 ---
 

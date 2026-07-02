@@ -100,20 +100,67 @@ surface (a `LessonEnd` component, Day-4/5), not to the global footer.
 
 ---
 
-## 3. Provisional-freeze valve — ACTIVATED (owner phone-only; no picks by EOD)
+## 3. Decision status — FABLE-DECIDED / OWNER-REVIEW-PENDING (Day-4 update)
 
-Per the Day-3 dispatch's valve C, the recommendations above are
-**provisionally adopted** so the Day-4 rebuild is not blocked:
+Day 4's dispatch converted the valve into **explicit owner delegation**: the
+picks are Fable's, taken and built, and are recorded as **FABLE-DECIDED /
+OWNER-REVIEW-PENDING — never "owner-approved."** The U8 lesson is the reason
+for the wording: validation the author grants itself is not validation. The
+owner's laptop review remains the gate before any of these is called done.
 
-| Set | Provisional | Swap cost if overridden |
-|---|---|---|
-| A | **A3** | one prop default (`NotionPageView.mastheadVariant`) + inlining the chosen class branch; variants stay in code until the pick |
-| B | **B1** | promote `/options/home/b1` anatomy into `/` (mock data → real state); B2/B3 pages remain until the pick |
-| C | **C1** | `SiteFooter` already IS C1; C2 override = one component edit |
+| Set | Decision | Status | Built (Day 4) | Swap cost if overridden |
+|---|---|---|---|---|
+| A | **A3** — 56px `display-lg` masthead band | FABLE-DECIDED / OWNER-REVIEW-PENDING | Default on all notion pages, both themes verified | `NotionPageView.mastheadVariant` default; a1/a2 still live at `/options/masthead/*` |
+| B | **B1** — session-first home | FABLE-DECIDED / OWNER-REVIEW-PENDING | Promoted to `/` under the honest-state rule (see below) | b2/b3 still live at `/options/home/*` |
+| C | **C1** — quiet colophon | FABLE-DECIDED / OWNER-REVIEW-PENDING | Site-wide footer; C2's handoff refiled as `LessonEnd` (built) | C2 at `/options/end/c2`; one component edit |
 
-**Every one of these is OWNER-OVERRIDABLE — nothing is "done" until the
-owner's picks land (the editorial gate, RULES §2, stands).** The `/options/*`
-routes and this ledger section are deleted once picks are in.
+**Revision window (used: no).** Day-4's rebuild did not contradict any
+stitched mock; no pick was revised. One finish-note executed as planned: the
+A3 band's masthead sits on the page spine (not the centered prose measure).
+
+**The honest-state rule (owner directive, Day 4).** Home fabricates nothing:
+the shipped state is the truthful first visit ("Aujourd'hui — commencer
+<the most recently updated notion>"), the `SessionState` contract
+(`web/src/lib/session.ts`) only produces `resume` from real persisted state
+(which does not exist yet), and dom-truth carries an explicit honest-state
+guard (no "en cours"/"Reprendre"/progressbar on home today).
+
+## 3b. Gestalt pass v1 (Day 4) — verdict and loss list
+
+**Reference set (named):** m3.material.io article/docs pages, docs.stripe.com,
+web.dev articles — the three "designed documentation" anatomies the audit's
+"Google-grade" bar implies. **Instrument limitation (ledgered):** live
+reference captures failed — the environment's egress proxy resets browser
+traffic to external hosts (`ERR_CONNECTION_RESET`, tried direct + proxied).
+The comparison ran against these references' well-documented anatomies from
+model knowledge; the owner's eye on the real preview is the external referee
+until reference captures are possible (Day-6 note for the portability test).
+
+**Verdict, answered straight:** the notion page now reads *designed* — the
+band + display title + metadata + worded TOC + spine is the same structural
+anatomy those references use, executed in our identity; dark holds. Home
+reads *ordered and honest* but thinner than designed — one card + a short
+list is anatomy without abundance; it will read fully designed only when real
+content volume (more notions, real state) fills the contract. Nothing reads
+as slop.
+
+**Loss list (Day-5+ work, none blocking):**
+1. Figure-internal typography — bold sans titles inside content SVGs
+   ("Pourquoi i = dq/dt ?") compete with the app's figcaption system
+   (audit U3 residual; content-asset fix, goes with Day-5 content work).
+2. Dark masthead band's tonal step is near-invisible (hairline carries it) —
+   acceptable; consider widening the dark `container-low` step with the
+   light-ladder spread item from the R4 scorecard.
+3. Home session card inner hierarchy slightly flat; "Ta session" h1 +
+   "AUJOURD'HUI" eyebrow have a mild semantic echo — copy polish.
+4. Trailing whitespace between library and footer at low content counts —
+   resolves with content volume; revisit only if owner flags it.
+5. Header nav "Notions" + breadcrumb "Notions" render twice in the notion
+   fold — chrome vs breadcrumb, not a doubled label per §11's rule, but
+   noted for the owner's eye.
+6. Gestalt iteration executed this round: metadata line breathing under the
+   display title (mt-3 → mt-4). Items 1–5 deliberately NOT executed (one-
+   iteration budget).
 
 ## 4. Deferred / new items
 

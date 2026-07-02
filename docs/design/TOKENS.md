@@ -154,8 +154,9 @@ KaTeX keeps its own math fonts.
 | `h4` | 1.125rem (18px) | 1.4 | -0.01em | Subsection labels |
 | `h3` | 1.25rem (20px) | 1.35 | -0.01em | Section headers |
 | `h2` | 1.5rem (24px) | 1.3 | -0.015em | Major section breaks |
-| `h1` | 1.875rem (30px) | 1.2 | -0.02em | Page / notion title |
-| `display` | 2.25rem (36px) | 1.15 | -0.025em | Hero / splash only |
+| `h1` | 1.875rem (30px) | 1.2 | -0.02em | Page / notion title (non-band surfaces) |
+| `display` | 2.25rem (36px) | 1.15 | -0.025em | Periphery h1 (home), 404 hero |
+| `display-lg` | 3.5rem (56px) | 1.06 | -0.03em | **The masthead-band tier** (Day-4 freeze, Set A = A3; FABLE-DECIDED / OWNER-REVIEW-PENDING). Exactly ONE display-voice moment per surface (DESIGN-BIBLE §3/§11); never in chrome. Title measure-capped ~26ch. |
 
 All rem values are relative to `html { font-size: calc(16px * var(--font-scale, 1)) }`.
 The `--font-scale` CSS var is controlled by FontSizeStepper (values: 0.9375 / 1 / 1.125).
@@ -172,6 +173,17 @@ The `--font-scale` CSS var is controlled by FontSizeStepper (values: 0.9375 / 1 
 > ADR 0023 tightened tracking on display/heading sizes (display `-0.03em`, h1
 > `-0.022em`, h2 `-0.018em`) and loosened it on captions / uppercase eyebrows
 > (`+0.02em` / `0.14em`). See `tailwind.config.ts` `fontSize`.
+>
+> **Masthead band (Day-4 freeze — DESIGN-BIBLE §11, spec
+> PAGE-ANATOMY-SPECS.md):** full-bleed `--color-surface-container-low` plane,
+> `border-b` subtle hairline, `py-12` (48px) vertical padding, content on the
+> page spine; carries the `display-lg` title + the metadata line
+> (`text-body-sm`, secondary, `mt-4`). Notion/lesson surfaces only.
+>
+> **twMerge registration rule (audit U1 — enforced by dom-truth):** every
+> custom `fontSize` key here MUST also be registered in the `font-size`
+> classGroup in `web/src/lib/utils.ts` in the same commit, or tailwind-merge
+> silently deletes it at runtime.
 
 ### 2.4 Measure tokens
 

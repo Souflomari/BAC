@@ -40,6 +40,7 @@ const twMerge = extendTailwindMerge({
             "h2",
             "h1",
             "display",
+            "display-lg",
           ],
         },
       ],

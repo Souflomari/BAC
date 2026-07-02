@@ -1,32 +1,33 @@
 /**
  * NotionPageView — the notion page's full render, extracted from the route so
- * the masthead OPTION VARIANTS (Day-3 set A) render the real page, not a mock.
+ * the masthead option variants (Day-3 set A) render the real page, not a mock.
  *
- * `mastheadVariant` (default "a1") exists ONLY while the owner's Set-A decision
- * is pending; once picked, the winner is inlined and the prop + option routes
- * are deleted (swap-cheap by construction — one prop, three class branches).
+ * DAY-4 FREEZE (Set A = A3, FABLE-DECIDED / OWNER-REVIEW-PENDING — ledger
+ * docs/audits/fable-day3-ledger.md): the DEFAULT masthead is now the A3
+ * masthead BAND — text-display-lg (56px) serif title in a full-bleed
+ * surface-container-low band with a bottom hairline, breadcrumb + title +
+ * metadata aligned to the page SPINE (not the centered prose measure — the
+ * band is chapter furniture, it spans the page's structural edge). a1/a2
+ * remain as option variants for the owner's laptop review; if overridden,
+ * swap = change the default below. Spec: docs/design/PAGE-ANATOMY-SPECS.md.
  *
- *   a1 — control: text-h1 (30px) masthead on the prose spine.
- *   a2 — ~44px, tightened tracking/leading; same anatomy as a1.
- *   a3 — ~56px display in a full-bleed masthead BAND (surface-container-low,
- *        bottom hairline); breadcrumb/title/metadata stay on the page spine.
- *
- * The masthead itself (all variants):
+ * The masthead anatomy (all variants):
  *   breadcrumb (nav) → serif title → METADATA LINE (level chip · reading time ·
- *   updated date — audit amendment #3). The old accent Eyebrow is gone: it
- *   duplicated the breadcrumb's subject one line above (audit U3, doubled
- *   labels). The masthead's accent moment is now decided by Set A.
+ *   updated date — audit amendment #3). No eyebrow (U3 doubled-label kill).
+ *
+ * Page end: LessonEnd (the Set-C C2 refile) — the session-close handoff.
  *
  * Server component.
  */
 
 import { notFound } from "next/navigation";
-import { loadNotion } from "@/lib/content";
+import { loadNotion, listNotions } from "@/lib/content";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
 import { ItemsSection, buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
 import { Icon } from "@/components/ui/Icon";
+import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
 
 export type MastheadVariant = "a1" | "a2" | "a3";
@@ -87,7 +88,7 @@ function MastheadMeta({
   if (readingMinutes) parts.push(`${readingMinutes} min de lecture`);
   if (updatedAt) parts.push(`mis à jour ${updatedAt}`);
   return (
-    <p className="mt-3 text-body-sm text-[var(--color-text-secondary)]">
+    <p className="mt-4 text-body-sm text-[var(--color-text-secondary)]">
       {parts.join("  ·  ")}
     </p>
   );
@@ -96,7 +97,7 @@ function MastheadMeta({
 // ── Page view ─────────────────────────────────────────────────────────────────
 export function NotionPageView({
   id,
-  mastheadVariant = "a1",
+  mastheadVariant = "a3",
 }: {
   id: string;
   mastheadVariant?: MastheadVariant;
@@ -117,6 +118,13 @@ export function NotionPageView({
 
   const checkpointCloneIds = buildCheckpointCloneIds(checkpoints);
 
+  // LessonEnd next-suggestion: deterministic + honest — the most recently
+  // updated OTHER notion (interleaving another subject beats repeating this
+  // one). No fabricated ordering; if no other notion exists, LessonEnd offers
+  // only the return-home path.
+  const others = listNotions().filter((n) => n.id !== id);
+  const nextNotion = others.length > 0 ? others[0] : null;
+
   const hasAnyContent =
     !!lessonMd ||
     !!itemsData ||
@@ -128,15 +136,16 @@ export function NotionPageView({
   const titleClass = {
     a1: "text-h1",
     a2: "text-[2.75rem] leading-[1.1] tracking-[-0.026em]",
-    a3: "text-[3.5rem] leading-[1.06] tracking-[-0.03em]",
+    a3: "text-display-lg max-w-[26ch]", // frozen display tier (TOKENS v2); measure-capped
   }[mastheadVariant];
 
+  const onSpine = mastheadVariant === "a3"; // band variant: masthead on the page spine
   const masthead = (
     <>
-      <div className="notion-prose">
+      <div className={onSpine ? undefined : "notion-prose"}>
         <Breadcrumb subject={meta.subject} title={meta.title} />
       </div>
-      <header className={cn("notion-prose", mastheadVariant === "a3" ? "mb-0" : "mb-10")}>
+      <header className={cn(onSpine ? "mb-0" : "notion-prose mb-10")}>
         <h1
           className={cn(
             "font-serif font-bold text-[var(--color-text-primary)]",
@@ -173,6 +182,7 @@ export function NotionPageView({
           spine (margin/padding cancel-out). Grid content starts under it. */}
       {mastheadVariant === "a3" && (
         <div
+          data-band="masthead"
           className={cn(
             "-mt-12 md:-mt-16 mb-12 py-12",
             "mx-[calc(50%-50vw)] px-[calc(50vw-50%)]",
@@ -228,6 +238,9 @@ export function NotionPageView({
               />
             </div>
           )}
+
+          {/* Session-close handoff (bible §8; Set-C C2 refile, Day-4 build) */}
+          {hasAnyContent && <LessonEnd next={nextNotion} />}
 
           {/* Fallback: notion directory exists but all content is absent */}
           {!hasAnyContent && (

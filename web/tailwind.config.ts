@@ -107,6 +107,10 @@ const config: Config = {
         "h2":      ["1.5rem",   { lineHeight: "1.3",  letterSpacing: "-0.018em" }],
         "h1":      ["1.875rem", { lineHeight: "1.18", letterSpacing: "-0.022em" }],
         "display": ["2.25rem",  { lineHeight: "1.12", letterSpacing: "-0.03em" }],
+        // Display-LG — the masthead-band tier (Day-4 freeze, Set A pick A3):
+        // the ONE display-voice moment a lesson surface gets. Never in chrome,
+        // never more than once per surface (DESIGN-BIBLE page-anatomy section).
+        "display-lg": ["3.5rem", { lineHeight: "1.06", letterSpacing: "-0.03em" }],
       },
       fontWeight: {
         regular:  "400",

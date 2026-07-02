@@ -76,11 +76,11 @@ const GRID_UNIT = 4; // TOKENS.md §3 — Tailwind scale: 1 unit = 4px (p-6 = 24
 const NOTION = "/notions/pc/rlc-serie";
 const BATTERY = [
   // ── U1 table (the audit's measured victims) ──
-  { name: "notion masthead h1", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "h1", lineHeight: true, weight: "700", family: "Source Serif", colorVar: "--color-text-primary" },
-  { name: "home h1", page: "/", sel: "h1", text: "Notions", fontKey: "display", weight: "700", family: "Source Serif" },
-  { name: "home lead", page: "/", sel: "header p", text: "Chaque notion", fontKey: "lead" },
-  { name: "home section h2", page: "/", sel: "section h2", text: "Mathématiques", fontKey: "h3", weight: "600" },
-  { name: "home card title h3", page: "/", sel: "h3", text: "Oscillations", fontKey: "h4", weight: "600" },
+  { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Source Serif", colorVar: "--color-text-primary" },
+  { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Source Serif" },
+  { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
+  { name: "home session-card h2 (B1 primary)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h2", weight: "700", family: "Source Serif" },
+  { name: "home library row title", page: "/", sel: "section[aria-label='Toutes les notions'] a span", text: "Oscillations", fontKey: "lead", family: "Source Serif" },
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
@@ -99,13 +99,12 @@ const BATTERY = [
   { name: "motion figcaption", page: NOTION, sel: "figcaption", fontKey: "body-sm" },
   // TODO(post-answer states): the solution <summary> and correctness rows only
   // exist after answering an item — battery v2 should drive one interaction.
-  { name: "card 'Ouvrir' row", page: "/", sel: "a span", text: "Ouvrir", fontKey: "body-sm", weight: "500" },
   // ── de-jargon guards (audit U3, Day-2/3 items) ──
   { name: "rail resting label is a word, not a code", page: NOTION, sel: ".notion-rail a", text: "Accroche", fontKey: "caption", notText: /^R\d+/ },
   { name: "no authoring flags rendered", page: NOTION, sel: "h2", text: "Exercice de type bac", notText: /à sourcer|synthèse —/ },
   { name: "prose headings carry no R-codes", page: NOTION, sel: ".prose-lesson h2[data-rung]", notText: /^R\d/ },
   // ── representative spacing (TOKENS.md §3: 8-pt grid) ──
-  { name: "home card padding = p-6 (24px)", page: "/", sel: "a[href*='notions']", text: "Oscillations", pad: 6 },
+  { name: "session card padding = p-8 (32px)", page: "/", sel: "section[aria-label*='session'] > div", pad: 8 },
   // ── breadcrumb stays designed size ──
   { name: "breadcrumb", page: NOTION, sel: "nav[aria-label*='Fil']", fontKey: "body-sm" },
   // ── Day-3 web-native texture invariants (audit amendment #3) ──
@@ -117,6 +116,12 @@ const BATTERY = [
   // ── Day-3 shared spine: wordmark and content column share a left edge ──
   { name: "spine: header aligns with main", page: NOTION, sel: "header > div", alignWith: "main" },
   { name: "spine: footer aligns with main", page: NOTION, sel: "footer > div", alignWith: "main" },
+  // ── Day-4 frozen anatomy (A3 band, B1 honest state, C1 footer, LessonEnd) ──
+  { name: "masthead band present (A3)", page: NOTION, sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
+  { name: "LessonEnd present", page: NOTION, sel: "[data-lesson-end]", text: "Et maintenant", present: true },
+  { name: "footer = C1 contents", page: NOTION, sel: "footer", text: "cadre de référence", present: true },
+  { name: "B1 primary action present", page: "/", sel: "main a[class*='btn-primary']", text: "Commencer", present: true },
+  { name: "HONEST STATE: no fabricated progress", page: "/", sel: "main", notText: /en cours|Reprendre|vu récemment|Ensuite/, absentSel: "[role='progressbar']" },
   // ── Day-3 rail: labels never ellipsize ──
   { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
 ];
@@ -166,6 +171,17 @@ try {
           varColor = getComputedStyle(probe).color;
           probe.remove();
         }
+        // Background var equality (bands/tonal surfaces)
+        let bg = null, varBg = null;
+        if (s.bgVar) {
+          bg = cs.backgroundColor;
+          const probe = document.createElement("span");
+          probe.style.backgroundColor = `var(${s.bgVar})`;
+          document.body.appendChild(probe);
+          varBg = getComputedStyle(probe).backgroundColor;
+          probe.remove();
+        }
+        const absentFound = s.absentSel ? !!document.querySelector(s.absentSel) : false;
         // ::selection background (chromium supports pseudo-element arg)
         let selectionBg = null;
         let selectionVarBg = null;
@@ -201,6 +217,9 @@ try {
           varColor,
           selectionBg,
           selectionVarBg,
+          bg,
+          varBg,
+          absentFound,
           align,
           overflowing: el.scrollWidth > el.clientWidth + 1,
           padding: [cs.paddingTop, cs.paddingRight, cs.paddingBottom, cs.paddingLeft],
@@ -277,6 +296,16 @@ try {
         else if (Math.abs(r.align.left - r.align.otherLeft) > 0.5 || r.align.pad !== r.align.otherPad) {
           failures += fail(`spine broken: left ${r.align.left} vs ${r.align.otherLeft}, pad ${r.align.pad} vs ${r.align.otherPad}`);
         } else console.log(`  ✓ spine aligned (left ${r.align.left}px, pad ${r.align.pad})`);
+      }
+      if (spec.bgVar) {
+        checks++;
+        if (r.bg !== r.varBg) failures += fail(`background ${r.bg} ≠ var(${spec.bgVar}) = ${r.varBg}`);
+        else console.log(`  ✓ background = var(${spec.bgVar})`);
+      }
+      if (spec.absentSel) {
+        checks++;
+        if (r.absentFound) failures += fail(`forbidden element present: ${spec.absentSel}`);
+        else console.log(`  ✓ absent: ${spec.absentSel}`);
       }
       if (spec.noOverflow) {
         checks++;

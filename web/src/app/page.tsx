@@ -1,23 +1,30 @@
 /**
- * Home page — lists available notions.
+ * Home page — the SESSION-FIRST front door (Day-4 freeze, Set B = B1,
+ * FABLE-DECIDED / OWNER-REVIEW-PENDING — ledger docs/audits/fable-day3-ledger.md).
  *
- * DESIGN-BIBLE §8 (periphery): the home screen is periphery, not learning core.
- * It invites the student in. It should be calm, clear, and lead directly to
- * the work — not a busy dashboard or a marketing page.
+ * DESIGN-BIBLE §8 (periphery) + VISION (guided-primary): the app LEADS — home
+ * opens on today's session, the page's ONE primary element (the only filled
+ * accent action on the surface). The library is quiet rows below.
  *
- * Empty state: zero notions (content/ absent or empty) → calm "no notions yet"
- * message, never a crash.
+ * THE HONEST-STATE RULE: no fabricated progress, ever. Until per-student
+ * persistence exists (production-lane, human-gated), the truthful first-visit
+ * state renders: "today's session — start <the most recently updated notion>".
+ * The session element branches on the SessionState contract (lib/session.ts),
+ * so real resume states light up with zero markup changes.
+ *
+ * Empty state: zero notions → calm "no notions yet" message, never a crash.
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listNotions } from "@/lib/content";
+import { getTodaySession } from "@/lib/session";
 import { PageShell } from "@/components/ui/PageShell";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Notions",
+  title: "Ta session",
 };
 
 // ── Subject display names ──────────────────────────────────────────────────────
@@ -30,6 +37,10 @@ const SUBJECT_LABELS: Record<string, string> = {
 
 function subjectLabel(subject: string): string {
   return SUBJECT_LABELS[subject] ?? subject;
+}
+
+function notionHref(subject: string, slug: string): string {
+  return `/notions/${encodeURIComponent(subject)}/${encodeURIComponent(slug)}`;
 }
 
 // ── Empty state ───────────────────────────────────────────────────────────────
@@ -46,7 +57,6 @@ function EmptyState() {
       role="status"
       aria-label="Aucune notion disponible"
     >
-      {/* Calm placeholder icon */}
       <Icon
         name="empty-doc"
         size={48}
@@ -63,79 +73,75 @@ function EmptyState() {
   );
 }
 
-// ── Notion card ───────────────────────────────────────────────────────────────
-function NotionCard({
-  id,
-  title,
-  subject,
-  slug,
-}: {
-  id: string;
-  title: string;
-  subject: string;
-  slug: string;
-}) {
-  return (
-    <Link
-      href={`/notions/${encodeURIComponent(subject)}/${encodeURIComponent(slug)}`}
-      className={cn(
-        "group block",
-        "px-6 py-6 rounded-xl",
-        "bg-[var(--color-surface-raised)]",
-        // Shadow-first card (ADR 0023): elevation-1 hairline ring at rest;
-        // lifts to elevation-2 on hover — confident, never a jump.
-        "shadow-elevation-1",
-        "hover:shadow-elevation-2 hover:-translate-y-px",
-        "transition-all duration-micro ease-out",
-        // One interaction-feedback language (ADR 0024): neutral state-layer wash.
-        "state-layer",
-        // Focus ring — migrated to .focus-ring utility; match the rounded-xl corner.
-        "focus-ring [--focus-radius:16px]"
-      )}
-    >
-      {/* No subject eyebrow: the section heading directly above this card
-          already names the subject — the same word twice in one viewport was
-          audit finding U3 (doubled labels). The card leads with its title. */}
-      {/* Notion title */}
-      <h3
-        className={cn(
-          "text-h4 font-semibold",
-          "text-[var(--color-text-primary)]",
-          "leading-snug",
-          "group-hover:text-accent",
-          "transition-colors duration-micro ease-out"
-        )}
-      >
-        {title}
-      </h3>
+// ── THE primary element: the session card ─────────────────────────────────────
+// Branches on the SessionState contract. Today only "start" can occur (honest
+// first-visit); "resume" renders the same anatomy with position + progress —
+// from REAL state only, when persistence lands.
+function SessionCard() {
+  const session = getTodaySession();
+  if (!session) return null;
 
-      {/* Subtle arrow — direction cue */}
-      <span
+  const { notion } = session;
+
+  return (
+    <section aria-label="La session du jour" className="max-w-list">
+      <div
         className={cn(
-          "mt-3 flex items-center gap-1",
-          // #1: 14px body-sm + aria-hidden but still visible — promoted to secondary
-          "text-body-sm font-medium text-[var(--color-text-secondary)]",
-          "group-hover:text-accent",
-          "transition-colors duration-micro ease-out"
+          "rounded-xl px-8 py-8",
+          "bg-surface-container-high shadow-elevation-2"
         )}
-        aria-hidden="true"
       >
-        Ouvrir
-        <Icon
-          name="arrow-right"
-          size={14}
-          className="mt-px translate-x-0 group-hover:translate-x-1 transition-transform duration-micro ease-out"
-        />
-      </span>
-    </Link>
+        <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          Aujourd’hui · {subjectLabel(notion.subject)}
+        </p>
+        <h2 className="mt-2 font-serif text-h2 font-bold text-[var(--color-text-primary)]">
+          {notion.title}
+        </h2>
+        <p className="mt-2 text-body text-[var(--color-text-secondary)]">
+          {session.kind === "start" ? (
+            <>
+              Nouvelle notion — on la prend depuis le début
+              {notion.readingMinutes ? ` (≈ ${notion.readingMinutes} min de lecture)` : ""}.
+            </>
+          ) : (
+            <>
+              Reprise à « {session.position} » — section {session.step} sur{" "}
+              {session.totalSteps}.
+            </>
+          )}
+        </p>
+
+        {/* Progress renders ONLY from real resume state — never fabricated. */}
+        {session.kind === "resume" && (
+          <div
+            className="mt-5 h-1 rounded-full bg-[var(--color-border-subtle)]"
+            role="progressbar"
+            aria-valuenow={Math.round((session.step / session.totalSteps) * 100)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Progression dans la notion"
+          >
+            <div
+              className="h-1 rounded-full bg-accent"
+              style={{ width: `${(session.step / session.totalSteps) * 100}%` }}
+            />
+          </div>
+        )}
+
+        <Link
+          href={notionHref(notion.subject, notion.slug)}
+          className={cn("mt-6 btn-primary focus-ring")}
+        >
+          {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
+          <Icon name="arrow-right" size={14} />
+        </Link>
+      </div>
+    </section>
   );
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
-export default function HomePage() {
-  const notions = listNotions();
-
-  // Group by subject
+// ── The library — quiet rows under subject headings (B1 anatomy) ─────────────
+function Library({ notions }: { notions: ReturnType<typeof listNotions> }) {
   const bySubject: Record<string, typeof notions> = {};
   for (const n of notions) {
     (bySubject[n.subject] ??= []).push(n);
@@ -143,68 +149,76 @@ export default function HomePage() {
   const subjects = Object.keys(bySubject).sort();
 
   return (
+    <section aria-label="Toutes les notions" className="mt-16 max-w-list">
+      <h2 className="mb-2 pb-3 border-b border-[var(--color-border-subtle)] text-h4 font-semibold text-[var(--color-text-secondary)]">
+        Toutes les notions
+      </h2>
+      <div className="space-y-8 mt-6">
+        {subjects.map((subject) => (
+          <section key={subject} aria-labelledby={`subject-${subject}`}>
+            <h3
+              id={`subject-${subject}`}
+              className="mb-1 text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]"
+            >
+              {subjectLabel(subject)}
+            </h3>
+            <ul
+              role="list"
+              className="divide-y divide-[var(--color-border-subtle)]"
+              aria-label={`Notions de ${subjectLabel(subject)}`}
+            >
+              {bySubject[subject].map((n) => (
+                <li key={n.id}>
+                  <Link
+                    href={notionHref(n.subject, n.slug)}
+                    className={cn(
+                      "group flex items-baseline justify-between gap-4 py-3.5 px-2 -mx-2 rounded",
+                      "state-layer focus-ring [--focus-radius:8px]"
+                    )}
+                  >
+                    <span className="font-serif text-lead text-[var(--color-text-primary)]">
+                      {n.title}
+                    </span>
+                    {/* No state words — nothing implies history we don't have
+                        (honest-state rule). Reading time is a real fact. */}
+                    {n.readingMinutes && (
+                      <span className="text-caption text-[var(--color-text-secondary)] flex-shrink-0 tabular-nums">
+                        {n.readingMinutes} min
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+export default function HomePage() {
+  const notions = listNotions();
+
+  return (
     <PageShell width="content">
-      {/* Page header */}
-      <header className="mb-12">
-        <h1
-          className={cn(
-            "font-serif text-display font-bold text-[var(--color-text-primary)]",
-          )}
-        >
-          Notions
+      <header className="mb-10">
+        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+          Ta session
         </h1>
-        <p
-          className={cn(
-            "mt-4 text-lead text-[var(--color-text-secondary)] max-w-lead"
-          )}
-        >
-          Chaque notion est enseignée jusqu’au bout — décortiquée, illustrée,
-          exercée.
+        <p className="mt-4 text-lead text-[var(--color-text-secondary)] max-w-lead">
+          Deux heures calmes, une notion à fond. Voilà par où commencer.
         </p>
       </header>
 
-      {/* Content */}
       {notions.length === 0 ? (
         <EmptyState />
       ) : (
-        <div className="space-y-12">
-          {subjects.map((subject) => (
-            <section key={subject} aria-labelledby={`subject-${subject}`} className="max-w-list">
-
-              {/* Subject heading */}
-              <h2
-                id={`subject-${subject}`}
-                className={cn(
-                  "mb-6 pb-3",
-                  "border-b border-[var(--color-border-subtle)]",
-                  "text-h3 font-semibold text-[var(--color-text-secondary)]"
-                )}
-              >
-                {subjectLabel(subject)}
-              </h2>
-
-              {/* Notion cards — single column for calm, each card its own row.
-                  Width is governed by the section's max-w-list so the heading
-                  rule and the cards share ONE right edge (ADR 0024). */}
-              <ul
-                role="list"
-                className="space-y-3"
-                aria-label={`Notions de ${subjectLabel(subject)}`}
-              >
-                {bySubject[subject].map((n) => (
-                  <li key={n.id}>
-                    <NotionCard
-                      id={n.id}
-                      title={n.title}
-                      subject={n.subject}
-                      slug={n.slug}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+        <>
+          <SessionCard />
+          <Library notions={notions} />
+        </>
       )}
     </PageShell>
   );
