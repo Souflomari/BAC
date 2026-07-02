@@ -315,6 +315,34 @@ pairs are committed)*
 **Spec-bug log (questions the docs should have answered):** *(filled per
 article as runs land)*
 
+### Article (a) — LessonEnd rebuild: gap analysis
+
+Committed as produced (`day7(a)` commit). Invariants: ALL green (dom-truth
+LessonEnd rows, build, tokens, state-layer/focus-ring, honest-state).
+Divergence table vs the Day-4 authored version:
+
+| # | Divergence | Class | Canon decision |
+|---|---|---|---|
+| 1 | Aside wrapped in `.notion-prose` (measure-capped) vs full content column | substantive (visible layout) | **Executor's call adopted** — argued correctly from bible §10; the authored full-width aside was the weaker call. Spec now states it. |
+| 2 | Title ABOVE context line (spec's literal listing order) vs authored context-line-first | cosmetic, caused by MY spec ambiguity | **Authored order stays canon** (house eyebrow-then-title grammar, matches session card). Spec now numbers the order explicitly. |
+| 3 | `truncate` on the recommendation title | substantive-minor (hides wayfinding words) | **Rejected** — Day-3 never-ellipsize rule was ledger-only, not in any spec; generalized into PAGE-ANATOMY ground rules. |
+| 4 | Hover cue: title→accent (library-card cue) vs authored arrow-translate | cosmetic | **Executor's adopted** (one feedback language with the shelf). Spec states it. |
+| 5 | Row metrics px-6/py-6/rounded-xl/focus-16 vs px-4/py-4/rounded-lg/focus-12 | cosmetic (both on-grid) | **Executor's adopted as-shipped;** spec states one set to kill the ambiguity. |
+| 6 | `aria-label="Et maintenant"` + decorative Eyebrow vs "Fin de la leçon" + raw `<p>` | cosmetic (a11y-better) | **Executor's adopted** — no double announcement; shared Eyebrow = the one eyebrow language. Also resolves the §4 deferred item "Eyebrow has no live instances": it now has one — KEEP. |
+| 7 | `philo` added to local subject map | improvement | Adopted. |
+
+**Spec bugs logged (tightened in PAGE-ANATOMY-SPECS same day):** measure
+treatment unstated (the sharpest gap — executor's words: "technically
+compliant but sprawling with no signal something's missing"); element order
+listed in the wrong order in the spec's own prose; C2-refile visual delta
+(boxed band → flowing row) asserted but never reconciled; null-`next`
+behavior unspecified; never-ellipsize rule not generalized beyond the rail.
+**Verdict: FAITHFUL on every stated invariant; where the spec was silent
+the executor reasoned from the bible rather than inventing — the failure
+mode the week was built against (silent plausible drift) did not occur.**
+The committed component diverges from the TIGHTENED spec on rows 2–3; the
+post-tightening re-run tests convergence.
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**

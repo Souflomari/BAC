@@ -11,9 +11,11 @@
 > hex/px outside the token set); any new custom Tailwind key must be
 > registered in `web/src/lib/utils.ts` classGroups in the same commit (U1
 > rule); every interactive element carries `.state-layer` + `.focus-ring`
-> with a host-matched `--focus-radius` (COMPONENT-STATES.md §0.4); verify with
-> `npm run build && npm run dom-truth` — green before shots, shots before
-> claims (DESIGN-BIBLE §13).
+> with a host-matched `--focus-radius` (COMPONENT-STATES.md §0.4);
+> **wayfinding and title text never ellipsizes — wrap** (Day-3 rail rule,
+> generalized Day 7: a truncated title hides exactly the words a student
+> navigates by); verify with `npm run build && npm run dom-truth` — green
+> before shots, shots before claims (DESIGN-BIBLE §13).
 
 ---
 
@@ -89,11 +91,31 @@ container and the invariants stay.
 decision refiled C2's handoff here). One clear next recommendation, quiet
 register.
 
-**Anatomy.** `<aside data-lesson-end mt-20 pt-8 border-t subtle>` →
-caps-caption label "Et maintenant" → ONE recommendation row (state-layer,
-serif h3 title, caption context line "Changer de matière — <subject>", accent
-arrow; NOT a filled button — the surface's one `btn-primary` belongs to the
-embed) → quiet "Retour aux notions" link.
+**Anatomy (tightened Day 7 — the portability test hit every ambiguity in
+the previous wording).** `<aside data-lesson-end aria-label="Et maintenant"
+class="notion-prose mt-20 pt-8 border-t subtle">` — the aside IS
+measure-capped (`.notion-prose`, same reading column as the prose above;
+the close is the column's last word, not a full-width band — bible §10).
+Inside, in this exact order:
+
+1. Caps-caption label "Et maintenant" — the shared `Eyebrow` component
+   (`tone="muted" decorative` — the aside's aria-label already names the
+   region; don't announce twice).
+2. ONE recommendation row, rendered only when `next` is non-null: a plain
+   `state-layer` link row (`-mx-6 px-6 py-6 rounded-xl`, focus-radius 16) —
+   caption context line "Changer de matière — <subject display label>"
+   ABOVE the serif h3 title (the house eyebrow-then-title grammar, as on
+   the session card); accent `arrow-right` icon (20px) right-aligned.
+   Hover cue: title colors to accent (the library-card cue); the arrow
+   stays static. NOT a filled button (the surface's one `btn-primary`
+   belongs to the embed); NOT a boxed card (§11 section-rhythm reserves
+   panels for stateful content — the C2 option-set mock's boxed band was
+   deliberately dropped in the refile, this is the reconciliation the
+   spec previously left unstated). Titles WRAP, never ellipsize
+   (wayfinding words are never truncated — house rule, see ground rules).
+3. Quiet "Retour aux notions" link to `/` — always present, including
+   when `next` is null (the null case renders label + return link only,
+   no substitute content, no apology copy).
 
 **Data contract (HONEST-STATE RULE).** `next: NotionMeta | null`, computed
 deterministically by the caller (today: most recently updated OTHER notion —
