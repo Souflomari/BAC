@@ -261,3 +261,31 @@ recorded below when the authoring agent lands. R5 (algebra test) and R6
 (oscillogram reading) are static-suffices: R5's object is an equation
 contradiction, R6's is a measurement procedure on a frozen trace — records
 per the rule, silence is the failure mode.
+
+**Motion outcome (agent landed, verified rendered):**
+- `amortissement-energie` (4 beats, R3): circuit-with-R + energy bars whose
+  TOTAL visibly shrinks under a dashed E_max reference while E_C ↔ E_L keep
+  swapping; cumulative heat marks at R; honest "hauteurs qualitatives, aucun
+  coefficient (§0.4)" footnote. `entretien-compensation` (3 beats, R7):
+  decayed trace joins a constant-amplitude trace with phase continuity at a
+  "générateur activé" marker; the k = R badge; no pseudo-period formula
+  (§0.4). Both specs machine-checked (beat-0 settled, eases in the allowed
+  set, durations ≤ 0.85 s) and dom-truth-guarded (presence of both figures —
+  an unknown slug is a SILENT no-op in NotionBody, so presence is the only
+  rendered proof the marker wired up). The authoring agent had no Bash and
+  said so (honest report); the build + rendered verification ran here.
+- **Two rendered-truth catches static checks missed:** the generator's
+  "générateur d'entretien" label sat at the SVG top edge and read as a
+  continuation of the figure subtitle; after the first fix the right wire
+  struck through the u_G = k·i relation. Both repositioned beside the glyph
+  (left-anchored, clear of the wire) and re-verified from re-shot renders —
+  exactly the failure class §13 exists for.
+- **R4 stacked-motions fix applied** (finding 3 above): the
+  `energy-pendulum` replay removed from R4 with an explanatory comment;
+  `regime-traces-forming` stays as R4's single on-point motion.
+- **Engine constraint encoded:** the agent discovered `fill` is single-shot
+  per element (MotionStage stashes then collapses the geometry; a second
+  `fill` on the same id animates to nothing). Written into
+  MOTION-CHOREOGRAPHY.md's `fill` entry with the pre-baked-bars +
+  cross-fade workaround pattern — a hard-won constraint now findable by a
+  cold author instead of re-discovered.

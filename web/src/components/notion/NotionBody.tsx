@@ -63,6 +63,8 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "energy-pendulum":     "Animation : échanges d'énergie E_C et E_L en antiphase",
   "regime-traces-forming": "Animation : les trois régimes se tracent de gauche à droite",
   "loi-des-mailles-build": "Animation : construction terme à terme de la loi des mailles",
+  "amortissement-energie": "Animation : l'échange d'énergie continue mais l'énergie totale diminue, dissipée dans R",
+  "entretien-compensation": "Animation : le générateur d'entretien compense la perte Joule sans imposer la fréquence",
   "origin-uc":           "Origine de la relation u_C = q/C",
   "origin-i":            "Origine de la relation i = dq/dt",
   "origin-uL":           "Origine de la relation u_L = L di/dt",

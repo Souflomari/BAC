@@ -47,6 +47,14 @@ dimension (height or width, depending on orientation).
 **Ease:** `power2.out`.
 **Duration:** 400–700ms, scaling with final magnitude.
 **End state:** bar/area at its target value, stable.
+**Constraint — SINGLE-SHOT per element (engine limitation, found Day 6):**
+`MotionStage` stashes the element's *current* DOM geometry as the animate-to
+target the first time it prepares a `fill` tween, then collapses the element
+to zero. A second `fill` tween on the same id in a later beat re-reads the
+already-collapsed geometry and silently animates to nothing. If a bar must
+change value across several beats, author one pre-baked bar per beat and
+cross-fade them (the `replaces` mechanism) — see
+`amortissement-energie.motion.json` for the pattern.
 
 ### `trace`
 

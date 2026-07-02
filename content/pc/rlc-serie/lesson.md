@@ -237,6 +237,8 @@ La prédiction et la réalité sont à l'envers. Voilà pourquoi cette question 
 
 **R ne nourrit pas les oscillations — R les freine.** À chaque passage de courant, la résistance dissipe de l'énergie sous forme de chaleur : c'est l'**effet Joule**, avec une puissance $P = Ri^2 > 0$. Cette puissance est toujours positive — R prend toujours de l'énergie, jamais n'en donne. C'est un frein, pas un moteur.
 
+[[motion:amortissement-energie]]
+
 Et si on change $L$ ou $C$ (avec $R$ fixée), c'est la **période** des oscillations qui change — pas l'amortissement. C'est $L$ et $C$ qui fixent le rythme. $R$ ne fait que contrôler à quelle vitesse les oscillations disparaissent.
 
 R est le frein. Rien d'autre.
@@ -253,7 +255,11 @@ En fonction de la valeur de $R$, on observe trois comportements qualitativement 
 
 [[motion:regime-traces-forming]]
 
-[[motion:energy-pendulum]]
+<!-- Le rappel [[motion:energy-pendulum]] a été retiré ici (Day-6,
+     followability) : deux lecteurs empilés sans prose entre eux, et le
+     rejeu de l'échange idéal (R1) est hors-sujet dans le rung des régimes —
+     R3 porte désormais amortissement-energie, qui montre l'échange AVEC la
+     décroissance. Une seule animation par idée. -->
 
 ### Régime périodique (R négligeable)
 
@@ -432,6 +438,8 @@ La question suivante est naturelle : peut-on **compenser** cette perte, et ainsi
 Oui. On ajoute au circuit un **dispositif d'entretien** — un générateur spécial qui restitue exactement l'énergie perdue par effet Joule à chaque cycle. Ni plus, ni moins.
 
 ### Comment fonctionne ce dispositif
+
+[[motion:entretien-compensation]]
 
 Ce générateur délivre une tension $u_G(t)$ proportionnelle au courant instantané :
 

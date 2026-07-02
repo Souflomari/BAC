@@ -142,6 +142,11 @@ const BATTERY = [
   { name: "rung counter resets on the content column", page: NOTION, sel: ".notion-content", cssProp: "counter-reset", cssExpect: "rung" },
   { name: "prose containers do NOT reset the rung counter", page: NOTION, sel: ".prose-lesson", cssProp: "counter-reset", cssExpect: "^none$" },
   { name: "rung headings increment the counter", page: NOTION, sel: ".prose-lesson h2[data-rung]", cssProp: "counter-increment", cssExpect: "rung" },
+  // ── Day-6 motion coverage: the two commissioned figures resolve to real
+  //    MotionStage instances (an unknown slug is a SILENT no-op in NotionBody —
+  //    presence is the only rendered proof the marker wired up). ──
+  { name: "R3 motion present (amortissement-energie)", page: NOTION, sel: "figure[aria-label*='dissipée dans R']", present: true },
+  { name: "R7 motion present (entretien-compensation)", page: NOTION, sel: "figure[aria-label*='compense la perte Joule']", present: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────
