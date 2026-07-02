@@ -39,8 +39,20 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
 interface RungDef {
-  label: string;    // e.g. "R0"
+  label: string;    // internal rung code, e.g. "R0" — used for h2 matching/keys, NEVER displayed (audit U3: no spec jargon in student chrome)
   title: string;    // e.g. "Accroche : le balancement électrique"
+  shortTitle: string; // resting rail label, e.g. "Accroche" — title cut at " : " / " ("
+}
+
+/**
+ * Derive the short resting label from a rung title: the part before " : " or
+ * " (" reads as the section's name ("Accroche", "Le cas amorti"); titles with
+ * neither stay whole and truncate in CSS. Also keeps raw KaTeX ($T_0$) out of
+ * the rail — the dollar-bearing tails sit after these separators.
+ */
+function shortTitleOf(title: string): string {
+  const cut = title.split(" : ")[0].split(" (")[0].trim();
+  return cut.length > 0 ? cut : title;
 }
 
 interface MarginRailProps {
@@ -68,7 +80,7 @@ function extractRungDefs(markdown: string): RungDef[] {
     const sepMatch = fullText.match(/^R\d+\s*[-—]\s*(.+)$/);
     const title = sepMatch ? sepMatch[1].trim() : fullText;
 
-    rungs.push({ label, title });
+    rungs.push({ label, title, shortTitle: shortTitleOf(title) });
   }
 
   return rungs;
@@ -244,8 +256,18 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                   aria-hidden="true"
                 />
 
-                {/* Rung label — short (R0, R1, …) */}
-                <span className="leading-none tabular-nums flex-shrink-0">{rung.label}</span>
+                {/* Rung label — the human section name (audit U3: the R-codes
+                    are spec vocabulary and never render; wayfinding is words).
+                    Text shows from the expanded rail (176px) up; the medium
+                    rail (52px) is dots-only with the full title on hover. */}
+                <span
+                  className={cn(
+                    "hidden bp-expanded:block",
+                    "leading-tight min-w-0 truncate"
+                  )}
+                >
+                  {rung.shortTitle}
+                </span>
 
                 {/*
                   Hover-reveal title: positioned absolutely so it never shifts

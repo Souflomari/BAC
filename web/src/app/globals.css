@@ -650,10 +650,13 @@ body {
   }
 }
 
-/* expanded (desktop) — full rail + gap */
+/* expanded (desktop) — full rail + gap. 176px so the rail carries the human
+   section names at rest (audit U3 de-jargon: R-codes never render; a 64px rail
+   could only fit codes). Width is a Day-2 mechanical enablement — the rail's
+   final proportions are a Day-3 taste decision. */
 @media (min-width: 840px) {
   .notion-page-grid {
-    grid-template-columns: 64px 32px 1fr;
+    grid-template-columns: 176px 32px 1fr;
   }
 }
 

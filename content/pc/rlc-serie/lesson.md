@@ -495,9 +495,16 @@ Vérifie ta compréhension.
 
 ---
 
-## R8 — Exercice de type bac (synthèse — à sourcer)
+## R8 — Exercice de type bac
 
-> **Note de provenance :** cet exercice est un exercice de synthèse de style bac, construit pour couvrir les savoir-faire de la notion. Il n'est pas tiré d'un sujet national réel identifié. Il est labellisé **à sourcer** : avant d'être présenté à un élève comme un sujet bac, il devra être remplacé ou validé par un vrai sujet national avec année et session. (Règle ADR 0019.)
+<!-- AUTHORING DEBT — À SOURCER (ADR 0019, audit C2 — ne PAS supprimer ce
+     commentaire tant que la dette n'est pas soldée) : cet exercice est une
+     synthèse de style bac construite pour couvrir les savoir-faire de la
+     notion. Il n'est PAS tiré d'un sujet national réel identifié. Avant
+     d'être présenté à un élève comme un sujet bac, il doit être remplacé ou
+     validé par un vrai sujet national avec année et session. Ce statut était
+     auparavant affiché dans le titre et une note visibles par l'élève
+     (audit U3 : les drapeaux d'autorat ne se rendent jamais côté élève). -->
 
 ### Mise en situation
 
