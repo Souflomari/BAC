@@ -565,6 +565,28 @@ h3:hover .heading-anchor,
    batch — spec rung codes never render student-side; the code lives in a
    data-rung attribute for the rail's matching. See LessonRenderer.tsx.) */
 
+/* Section numbers (Day-6 followability — the in-lesson position affordance).
+   The rail is desktop-only; on compact a tired student has NO position sense
+   in a 25-minute lesson. Rung headings carry a muted ordinal ("3 · Le
+   mécanisme") via a CSS counter — human numbering, not the R-codes (§11: no
+   internal vocabulary; numbers are reader-facing chapter sense). The counter
+   resets on .notion-content (the whole content column) because markers split
+   the prose into several .prose-lesson containers — resetting per container
+   would restart the count at every figure. MarginRail mirrors the same
+   numbers, so the rail and the page tell one map. */
+.notion-content {
+  counter-reset: rung;
+}
+.prose-lesson h2[data-rung] {
+  counter-increment: rung;
+}
+.prose-lesson h2[data-rung]::before {
+  content: counter(rung) " · ";
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
 .prose-lesson p {
   margin-top: 0;
   margin-bottom: 1.25em;
@@ -653,10 +675,17 @@ h3:hover .heading-anchor,
   border-bottom: none;
 }
 
+/* Rung boundary (Day-6 followability, §11 section rhythm). Authored `---`
+   between rungs. The full-width hairline read as a Wikipedia table border and
+   was nearly invisible at reading speed; a SHORT centered rule with more air
+   is less ink but a clearer "chapter pause" — the boundary reads as rhythm,
+   not as furniture. (The lesson's leading h1+--- never reaches the renderer —
+   stripLeadingTitle in lib/content.ts — so this styles rung breaks only.) */
 .prose-lesson hr {
   border: none;
-  border-top: 1px solid var(--color-border-subtle);
-  margin: 2.5em 0;
+  border-top: 2px solid var(--color-border-soft);
+  width: 3rem;
+  margin: 4em auto;
 }
 
 /* KaTeX inline and display math */

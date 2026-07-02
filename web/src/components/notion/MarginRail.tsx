@@ -262,7 +262,12 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                 {/* Never truncate (Day-3 fallout fix): the 208px rail fits every
                     current name; an unusually long future name wraps to a
                     second line rather than ellipsizing wayfinding words. */}
+                {/* The ordinal mirrors the in-prose heading counter (Day-6
+                    followability) — rail and page tell one map. Human 1-based
+                    numbering, never the R-codes. */}
                 <span className="hidden bp-expanded:block leading-tight min-w-0">
+                  <span className="tabular-nums">{i + 1}</span>
+                  {" · "}
                   {rung.shortTitle}
                 </span>
 

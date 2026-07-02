@@ -135,6 +135,13 @@ const BATTERY = [
   { name: "covers present on home shelf", page: "/", sel: "[data-cover='rlc-serie']", present: true },
   // ── Day-3 rail: labels never ellipsize ──
   { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
+  // ── Day-6 followability: section ordinals. The fragile invariant is counter
+  //    SCOPE — reset must live on the whole content column; markers split the
+  //    prose into several .prose-lesson containers, so a per-container reset
+  //    would restart numbering at every figure. cssExpect = regex source. ──
+  { name: "rung counter resets on the content column", page: NOTION, sel: ".notion-content", cssProp: "counter-reset", cssExpect: "rung" },
+  { name: "prose containers do NOT reset the rung counter", page: NOTION, sel: ".prose-lesson", cssProp: "counter-reset", cssExpect: "^none$" },
+  { name: "rung headings increment the counter", page: NOTION, sel: ".prose-lesson h2[data-rung]", cssProp: "counter-increment", cssExpect: "rung" },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────
@@ -222,6 +229,8 @@ try {
         }
         out.push({
           name: s.name,
+          // Arbitrary computed property probe (e.g. counter-reset scoping)
+          cssPropVal: s.cssProp ? cs.getPropertyValue(s.cssProp) : null,
           fontSize: cs.fontSize,
           lineHeight: cs.lineHeight,
           fontWeight: cs.fontWeight,
@@ -324,6 +333,12 @@ try {
         checks++;
         if (r.overflowing) failures += fail(`label overflows its box ("${r.textHead.slice(0, 32)}…")`);
         else console.log(`  ✓ no truncation`);
+      }
+      if (spec.cssProp) {
+        checks++;
+        const re = new RegExp(spec.cssExpect);
+        if (!re.test(r.cssPropVal ?? "")) failures += fail(`${spec.cssProp}: "${r.cssPropVal}" does not match ${re}`);
+        else console.log(`  ✓ ${spec.cssProp}: ${r.cssPropVal}`);
       }
     }
   }

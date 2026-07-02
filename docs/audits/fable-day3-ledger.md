@@ -201,3 +201,63 @@ an applied change; a push is not a deployment.
 - OWNER-REVIEW-PENDING set unchanged: A3 / B1 / C1 + now the R0-commit
   checkpoint pattern and the attempt-first component register (content-side
   taste calls made under the same delegation).
+
+## 6. Day-6 additions (richness iteration)
+
+**Followability pass — the tired-student read of the full RLC lesson.**
+Method: one uninterrupted read of `lesson.md` as rendered order, asking only
+"where do I get lost?" Findings and what was done about each:
+
+1. **No position sense off-desktop.** The rail is desktop-only; on compact a
+   student 20 minutes into the lesson has no idea whether they're at section
+   3 of 10 or 8 of 10. **Change:** rung headings now carry a muted ordinal
+   ("3 · Le mécanisme") via a CSS counter (`globals.css`, counter reset on
+   `.notion-content` because markers split the prose into several
+   `.prose-lesson` containers). The rail mirrors the same numbers — rail and
+   page tell one map. This RESOLVES the §4 deferred item "Section numbering
+   in prose headings" — status FABLE-DECIDED / OWNER-REVIEW-PENDING.
+   Reasoning: human 1-based numbers, never the R-codes (§11 no internal
+   vocabulary); a number is the cheapest honest position affordance — no
+   progress theater, no fabricated "80% done" claims, works with zero JS.
+2. **Rung boundaries read as furniture, not rhythm.** The `---` breaks
+   rendered as full-width 1px hairlines — the exact grammar of a Wikipedia
+   table border, nearly invisible at reading speed. **Change:** short
+   centered rule (3rem, border-soft, 4em air) — LESS ink, clearer "chapter
+   pause" (§11 section rhythm). The lesson's leading `# h1 + ---` never
+   reaches the renderer (stripLeadingTitle), so this styles rung breaks only.
+3. **R4 opens with two stacked motion players** (`regime-traces-forming`
+   then `energy-pendulum`) with zero prose between — a tired student doesn't
+   know which to play or why the second is there (it replays R1's ideal
+   exchange inside the *regimes* rung). Deferred until the motion-author
+   agent lands (it is editing lesson.md concurrently — two writers on one
+   file is how conflicts happen); fix in chunk C.
+4. **R5's algebra test kept as narrated block math, NOT migrated to the
+   Derivation component.** Considered and rejected: each step there carries a
+   full prose paragraph (the misconception rupture is the narration, not the
+   algebra); the Derivation note field is a one-liner "why this move" layer
+   and would compress the lesson's centerpiece. Display-math discipline is
+   already satisfied (one transformation per line, prose between). The
+   component is for *procedural* multi-step algebra (R2 verification, R8/R9
+   solution steps), not for staged ruptures.
+
+**Gestalt notes vs the expanded reference set (Imprint, Brilliant).** Live
+captures of both remain blocked by the egress proxy (ledgered Day 4 —
+instrument limitation, judged from model knowledge, LOW confidence vs a
+rendered comparison): the Day-6 home shelf moves us from "index of links"
+(Wikipedia grammar) toward the reference grammar both apps share — content as
+covered *objects* on a shelf, one motif per cover, flat vector in a bounded
+palette. Where we still differ deliberately: their covers are illustrative
+scenes; ours are single subject-true motifs (§6 zero-seductive-detail — a
+scene invites browsing-as-entertainment). Where we genuinely lag: cover-motif
+variety (2 notions share the pc curve family today; fine at 2, thin at 20 —
+the per-notion specialization path in COVER-SPEC is the answer, starter set
+proves it with rlc-serie).
+
+**Motion coverage (the motion-decision rule applied to RLC):** R3 teaches
+energy *dissipating over time* and R7 teaches *compensation per cycle* — both
+dynamic relationships, neither had a motion figure; both commissioned through
+the beat engine (`amortissement-energie`, `entretien-compensation`) — outcome
+recorded below when the authoring agent lands. R5 (algebra test) and R6
+(oscillogram reading) are static-suffices: R5's object is an equation
+contradiction, R6's is a measurement procedure on a frozen trace — records
+per the rule, silence is the failure mode.
