@@ -147,6 +147,12 @@ const BATTERY = [
   //    presence is the only rendered proof the marker wired up). ──
   { name: "R3 motion present (amortissement-energie)", page: NOTION, sel: "figure[aria-label*='dissipée dans R']", present: true },
   { name: "R7 motion present (entretien-compensation)", page: NOTION, sel: "figure[aria-label*='compense la perte Joule']", present: true },
+  // ── Day-7 portability-test acceptance (instruments FIRST: these rows were
+  //    committed with the briefs, red until each article lands) ──
+  { name: "DAY7(b): rc-charge notion renders with masthead band", page: "/notions/pc/rc-charge", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
+  { name: "DAY7(b): rc-charge rung section renders", page: "/notions/pc/rc-charge", sel: ".prose-lesson h2[data-rung]", present: true, notText: /^R\d/ },
+  { name: "DAY7(c): i-de-t derivation present, step 1 only", page: NOTION, sel: "[data-derivation='i-de-t']", present: true, absentSel: "[data-derivation='i-de-t'] [data-step='2']" },
+  { name: "DAY7(d): rc-charge cover on home shelf", page: "/", sel: "[data-cover='rc-charge']", present: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────

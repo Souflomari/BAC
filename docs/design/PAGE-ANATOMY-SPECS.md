@@ -115,13 +115,19 @@ totalSteps)`. **`resume` requires real persisted state and is NEVER
 constructed today** — the honest first-visit `start` state (most recently
 updated notion) is the shipped design, not a placeholder.
 
-**Anatomy.** Card (`bg-surface-container-high shadow-elevation-2 px-8 py-8`,
-p-8 = 32px): caps eyebrow "Aujourd'hui · <subject>" → serif h2 title →
-truthful line (start: "Nouvelle notion — on la prend depuis le début (≈ N min
-de lecture)." / resume: position + fraction) → progress bar ONLY in resume →
-`btn-primary` ("Commencer la session" / "Reprendre la session"). Below: the
-library (subject caps labels + serif rows + real reading times; NO state
-words without real state).
+**Anatomy (Day-6 revision — covers landed).** Card
+(`bg-surface-container-high shadow-elevation-2 rounded-xl overflow-hidden`,
+`bp-medium:grid-cols-[1fr_240px]`): left cell `px-8 py-8` (32px) with caps
+eyebrow "Aujourd'hui · <subject>" → serif h2 title → truthful line (start:
+"Nouvelle notion — on la prend depuis le début (≈ N min de lecture)." /
+resume: position + fraction) → progress bar ONLY in resume → `btn-primary`
+("Commencer la session" / "Reprendre la session"); right cell (hidden on
+compact): the suggested notion's `Cover` as an absolute-fill side panel
+(art only — the session copy leads; COVER-SPEC placement rules). Below: the
+library as a COVER SHELF (per subject: caps label + 2-up grid at bp-medium of
+cover cards — `aspect-[8/5]` Cover on `surface-raised shadow-elevation-1`,
+hover elevation-2, serif lead title + real reading minutes below the art; NO
+state words without real state).
 
 **Invariants (dom-truth).** Session h2 at text-h2 serif; card p-8;
 `btn-primary` with "Commencer" present; **honest-state guard**: home contains
