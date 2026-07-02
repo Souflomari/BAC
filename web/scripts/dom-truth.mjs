@@ -107,7 +107,7 @@ const BATTERY = [
   { name: "no authoring flags rendered", page: NOTION, sel: "h2", text: "Exercice de type bac", notText: /à sourcer|synthèse —/ },
   { name: "prose headings carry no R-codes", page: NOTION, sel: ".prose-lesson h2[data-rung]", notText: /^R\d/ },
   // ── representative spacing (TOKENS.md §3: 8-pt grid) ──
-  { name: "session card padding = p-8 (32px)", page: "/", sel: "section[aria-label*='session'] > div", pad: 8 },
+  { name: "session card padding = p-8 (32px)", page: "/", sel: "section[aria-label*='session'] > div > div", pad: 8 },
   // ── breadcrumb stays designed size ──
   { name: "breadcrumb", page: NOTION, sel: "nav[aria-label*='Fil']", fontKey: "body-sm" },
   // ── Day-3 web-native texture invariants (audit amendment #3) ──
@@ -131,6 +131,8 @@ const BATTERY = [
   { name: "hook commits via checkpoint (C5)", page: NOTION, sel: "div[aria-label*='Vérifie']", present: true },
   // ── Day-6 stepped derivations (§7): later steps NOT in DOM pre-reveal ──
   { name: "R2 derivation present, step 1 only", page: NOTION, sel: "[data-derivation='verification-cosinus']", present: true, absentSel: "[data-derivation='verification-cosinus'] [data-step='2']" },
+  // ── Day-6 covers (COVER-SPEC): the shelf is illustrated ──
+  { name: "covers present on home shelf", page: "/", sel: "[data-cover='rlc-serie']", present: true },
   // ── Day-3 rail: labels never ellipsize ──
   { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
 ];

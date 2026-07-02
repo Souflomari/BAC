@@ -21,6 +21,7 @@ import { listNotions } from "@/lib/content";
 import { getTodaySession } from "@/lib/session";
 import { PageShell } from "@/components/ui/PageShell";
 import { Icon } from "@/components/ui/Icon";
+import { Cover } from "@/components/covers/Cover";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -87,10 +88,12 @@ function SessionCard() {
     <section aria-label="La session du jour" className="max-w-list">
       <div
         className={cn(
-          "rounded-xl px-8 py-8",
-          "bg-surface-container-high shadow-elevation-2"
+          "rounded-xl overflow-hidden",
+          "bg-surface-container-high shadow-elevation-2",
+          "bp-medium:grid bp-medium:grid-cols-[1fr_240px]"
         )}
       >
+        <div className="px-8 py-8">
         <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
           Aujourd’hui · {subjectLabel(notion.subject)}
         </p>
@@ -135,6 +138,17 @@ function SessionCard() {
           {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
           <Icon name="arrow-right" size={14} />
         </Link>
+        </div>
+
+        {/* The suggested notion's cover — side panel, art only (COVER-SPEC:
+            the session copy leads; the cover is mood). Hidden on compact. */}
+        <div className="hidden bp-medium:block relative">
+          <Cover
+            subject={notion.subject}
+            slug={notion.slug}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
@@ -162,9 +176,12 @@ function Library({ notions }: { notions: ReturnType<typeof listNotions> }) {
             >
               {subjectLabel(subject)}
             </h3>
+            {/* The SHELF (Day-6, COVER-SPEC): cover cards, not index rows —
+                the owner's "Wikipedia home" fix. No state words (honest-state
+                rule); reading time is a real fact. */}
             <ul
               role="list"
-              className="divide-y divide-[var(--color-border-subtle)]"
+              className="grid gap-4 bp-medium:grid-cols-2"
               aria-label={`Notions de ${subjectLabel(subject)}`}
             >
               {bySubject[subject].map((n) => (
@@ -172,20 +189,26 @@ function Library({ notions }: { notions: ReturnType<typeof listNotions> }) {
                   <Link
                     href={notionHref(n.subject, n.slug)}
                     className={cn(
-                      "group flex items-baseline justify-between gap-4 py-3.5 px-2 -mx-2 rounded",
-                      "state-layer focus-ring [--focus-radius:8px]"
+                      "group block rounded-xl overflow-hidden",
+                      "bg-[var(--color-surface-raised)] shadow-elevation-1",
+                      "hover:shadow-elevation-2 hover:-translate-y-px",
+                      "transition-all duration-micro ease-out",
+                      "state-layer focus-ring [--focus-radius:16px]"
                     )}
                   >
-                    <span className="font-serif text-lead text-[var(--color-text-primary)]">
-                      {n.title}
-                    </span>
-                    {/* No state words — nothing implies history we don't have
-                        (honest-state rule). Reading time is a real fact. */}
-                    {n.readingMinutes && (
-                      <span className="text-caption text-[var(--color-text-secondary)] flex-shrink-0 tabular-nums">
-                        {n.readingMinutes} min
+                    <div className="aspect-[8/5] overflow-hidden border-b border-[var(--color-border-subtle)]">
+                      <Cover subject={n.subject} slug={n.slug} />
+                    </div>
+                    <div className="px-5 py-4">
+                      <span className="block font-serif text-lead leading-snug text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro">
+                        {n.title}
                       </span>
-                    )}
+                      {n.readingMinutes && (
+                        <span className="mt-1 block text-caption text-[var(--color-text-secondary)] tabular-nums">
+                          {n.readingMinutes} min de lecture
+                        </span>
+                      )}
+                    </div>
                   </Link>
                 </li>
               ))}
