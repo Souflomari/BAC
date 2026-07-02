@@ -135,6 +135,21 @@ export interface ExerciseQuestion {
   stem: string;
   /** Expert reasoning (markdown + KaTeX). Rendered ONLY after the commit. */
   reasoning: string;
+  /** Optional stepped derivation rendered (Derivation, bare) after `reasoning`. */
+  steps?: DerivationStep[];
+}
+
+export interface DerivationStep {
+  /** ONE transformation, KaTeX (rendered as display math). */
+  math: string;
+  /** The expert-decision layer for this move — why this step. */
+  note?: string | null;
+}
+
+export interface NotionDerivation {
+  id: string;
+  title?: string;
+  steps: DerivationStep[];
 }
 
 export interface NotionExercise {
@@ -168,6 +183,8 @@ export interface NotionContent {
   checkpoints: Record<string, CheckpointItem>;
   /** Attempt-first exercises keyed by id, from exercises.yaml. */
   exercises: Record<string, NotionExercise>;
+  /** Stepped derivations keyed by id, from derivations.yaml. */
+  derivations: Record<string, NotionDerivation>;
   /**
    * Static figure SVGs — media/*.svg EXCLUDING *.motion.svg.
    * Keyed by filename (e.g. "rlc-schema.svg").
@@ -414,7 +431,16 @@ export function loadNotion(id: string): NotionContent | null {
           const questions: ExerciseQuestion[] = [];
           for (const q of ex.questions) {
             if (q && typeof q.id === "string" && typeof q.stem === "string" && typeof q.reasoning === "string") {
-              questions.push({ id: q.id, part: q.part, stem: q.stem, reasoning: q.reasoning });
+              const qq = q as typeof q & { steps?: Array<{ math?: string; note?: string | null }> };
+              const steps: DerivationStep[] = [];
+              if (Array.isArray(qq.steps)) {
+                for (const st of qq.steps) {
+                  if (st && typeof st.math === "string") {
+                    steps.push({ math: st.math, note: typeof st.note === "string" ? st.note : null });
+                  }
+                }
+              }
+              questions.push({ id: q.id, part: q.part, stem: q.stem, reasoning: q.reasoning, steps: steps.length > 0 ? steps : undefined });
             }
           }
           if (questions.length > 0) {
@@ -424,6 +450,33 @@ export function loadNotion(id: string): NotionContent | null {
               intro: typeof ex.intro === "string" ? ex.intro : undefined,
               questions,
             };
+          }
+        }
+      }
+    } catch {
+      // Malformed YAML — treat as absent, never crash the page
+    }
+  }
+
+  // ── derivations.yaml (stepped derivations, Day-6 — DESIGN-BIBLE §7) ──
+  const derivations: Record<string, NotionDerivation> = {};
+  const derivationsRaw = safeReadFile(path.join(dir, "derivations.yaml"));
+  if (derivationsRaw) {
+    try {
+      const parsed = yaml.load(derivationsRaw) as {
+        derivations?: Array<{ id?: string; title?: string; steps?: Array<{ math?: string; note?: string | null }> }>;
+      } | null;
+      if (parsed && Array.isArray(parsed.derivations)) {
+        for (const d of parsed.derivations) {
+          if (!d || typeof d.id !== "string" || !Array.isArray(d.steps)) continue;
+          const steps: DerivationStep[] = [];
+          for (const st of d.steps) {
+            if (st && typeof st.math === "string") {
+              steps.push({ math: st.math, note: typeof st.note === "string" ? st.note : null });
+            }
+          }
+          if (steps.length > 0) {
+            derivations[d.id] = { id: d.id, title: typeof d.title === "string" ? d.title : undefined, steps };
           }
         }
       }
@@ -531,5 +584,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(lessonMd);
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
 }

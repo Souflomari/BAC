@@ -38,6 +38,18 @@
 - [ ] **Voice** — tu/on tutor register; zero detached academic passive ("il
   est établi que…"); imperatives welcome; written to be spoken (VISION
   L236-238).
+- [ ] **Display-math discipline (Day-6 amendment)** — any derivation of ≥2
+  transformations is BLOCK math, ONE transformation per line; inline math is
+  reserved for symbols and single expressions; chained `a = b = c = d`
+  one-liners are a template failure. Derivations of ≥3 steps with a reasoning
+  layer render through the `Derivation` component (`derivations.yaml` +
+  `[[derivation:<id>]]`, or `steps:` on an exercise question) — learner-paced,
+  one move per step, per-step "why this move" note.
+- [ ] **Motion-decision rule (Day-6 amendment)** — the rung teaches a DYNAMIC
+  relationship (something evolves in time) → it carries a motion figure
+  through the beat engine, OR the spec records an explicit static-suffices
+  justification. Silence is a failure; "the engine exists, the asset is debt"
+  is recorded, not ignored.
 - [ ] **French orthotypography** — flows through the frenchTypography pipeline
   (curly apostrophes, U+202F); no hardcoded ASCII apostrophes in new copy.
 

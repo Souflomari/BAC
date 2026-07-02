@@ -169,25 +169,9 @@ $$q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$$
 
 où $Q_{max}$ est la charge maximale et $\varphi$ est la phase initiale (fixée par les conditions initiales). Maintenant on vérifie que ce cosinus vérifie réellement l'équation, et on en déduit ce que vaut $T_0$.
 
-**Vérification.** On calcule la dérivée seconde :
+**Vérification — pas à pas.** Avance chaque transformation toi-même ; à chaque étape, la note te dit pourquoi c'est le bon geste.
 
-$$\frac{d^2q}{dt^2} = -\left(\frac{2\pi}{T_0}\right)^2 Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right) = -\frac{4\pi^2}{T_0^2}\, q$$
-
-On substitue dans l'équation différentielle :
-
-$$L \cdot \left(-\frac{4\pi^2}{T_0^2}\,q\right) + \frac{q}{C} = 0$$
-
-$$q\left(\frac{1}{C} - \frac{4\pi^2 L}{T_0^2}\right) = 0$$
-
-Pour que cette équation soit vérifiée pour tout $t$ (c'est-à-dire pour tout $q \neq 0$), il faut que le terme entre parenthèses soit nul :
-
-$$\frac{1}{C} = \frac{4\pi^2 L}{T_0^2}$$
-
-D'où :
-
-$$T_0^2 = 4\pi^2 LC$$
-
-$$\boxed{T_0 = 2\pi\sqrt{LC}}$$
+[[derivation:verification-cosinus]]
 
 L'hypothèse est confirmée : le cosinus est bien une solution, et la substitution nous a offert en prime la valeur de $T_0$. C'est la **période propre** du circuit. Elle ne dépend que de $L$ et de $C$. R n'y figure pas — et ce n'est pas un hasard : R n'était tout simplement pas dans l'équation idéale, donc il ne peut pas apparaître dans $T_0$.
 

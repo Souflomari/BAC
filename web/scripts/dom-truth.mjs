@@ -129,6 +129,8 @@ const BATTERY = [
   { name: "R8 is attempt-first (no printed solutions)", page: NOTION, sel: "[data-exercise='r8-bac']", present: true, notText: /Raisonnement expert/ },
   { name: "R9 is attempt-first (no printed solutions)", page: NOTION, sel: "[data-exercise='r9-variation']", present: true, notText: /Raisonnement expert/ },
   { name: "hook commits via checkpoint (C5)", page: NOTION, sel: "div[aria-label*='Vérifie']", present: true },
+  // ── Day-6 stepped derivations (§7): later steps NOT in DOM pre-reveal ──
+  { name: "R2 derivation present, step 1 only", page: NOTION, sel: "[data-derivation='verification-cosinus']", present: true, absentSel: "[data-derivation='verification-cosinus'] [data-step='2']" },
   // ── Day-3 rail: labels never ellipsize ──
   { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
 ];

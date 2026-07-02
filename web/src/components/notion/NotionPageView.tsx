@@ -111,6 +111,7 @@ export function NotionPageView({
     itemsData,
     checkpoints,
     exercises,
+    derivations,
     mediaSvgs,
     motionSvgs,
     motionSpecs,
@@ -213,6 +214,7 @@ export function NotionPageView({
             <NotionBody
               lessonMd={lessonMd}
               exercises={exercises}
+              derivations={derivations}
               mediaSvgs={mediaSvgs}
               motionSvgs={motionSvgs}
               motionSpecs={motionSpecs}

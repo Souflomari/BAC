@@ -33,7 +33,7 @@
  * DESIGN-BIBLE §7: one primary thing per screen; prose and media interleave as authored.
  */
 
-import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise } from "@/lib/content";
+import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { LessonRenderer } from "./LessonRenderer";
@@ -43,6 +43,7 @@ import { MotionStage } from "./MotionStage";
 import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
+import { Derivation } from "./Derivation";
 
 // ── Stepped figure configuration ─────────────────────────────────────────────
 // Slugs listed here have step groups (id="step-1"…"step-N") in their SVG.
@@ -103,7 +104,7 @@ function stepCaption(slug: string, step: number): string | undefined {
 //   [[checkpoint:cp-r3-m1]]
 // So we use a broader character class for the id part: [a-zA-Z0-9_-]+
 const MARKER_LINE_RE =
-  /^\s*\[\[(figure|motion|embed|checkpoint|video|exercise):([a-zA-Z0-9_-]+)\]\]\s*$/;
+  /^\s*\[\[(figure|motion|embed|checkpoint|video|exercise|derivation):([a-zA-Z0-9_-]+)\]\]\s*$/;
 
 // ── Segment types ─────────────────────────────────────────────────────────────
 
@@ -114,6 +115,7 @@ type EmbedSegment      = { kind: "embed";      slug: string };
 type CheckpointSegment = { kind: "checkpoint"; id: string };
 type VideoSegment      = { kind: "video";      slug: string };
 type ExerciseSegment   = { kind: "exercise";   slug: string };
+type DerivationSegment = { kind: "derivation"; slug: string };
 
 type Segment =
   | ProseSegment
@@ -122,7 +124,8 @@ type Segment =
   | EmbedSegment
   | CheckpointSegment
   | VideoSegment
-  | ExerciseSegment;
+  | ExerciseSegment
+  | DerivationSegment;
 
 /**
  * Split lesson markdown into an ordered list of prose and marker segments.
@@ -150,6 +153,7 @@ function splitIntoSegments(markdown: string): Segment[] {
         case "checkpoint": segments.push({ kind: "checkpoint", id });        break;
         case "video":      segments.push({ kind: "video",      slug: id }); break;
         case "exercise":   segments.push({ kind: "exercise",   slug: id }); break;
+        case "derivation": segments.push({ kind: "derivation", slug: id }); break;
       }
     } else {
       proseLines.push(line);
@@ -170,6 +174,8 @@ interface NotionBodyProps {
   lessonMd: string;
   /** Attempt-first exercises keyed by id, from exercises.yaml. */
   exercises?: Record<string, NotionExercise>;
+  /** Stepped derivations keyed by id, from derivations.yaml. */
+  derivations?: Record<string, NotionDerivation>;
   /**
    * Static figure SVGs — media/*.svg (excluding *.motion.svg).
    * Keyed by filename (e.g. "rlc-schema.svg").
@@ -195,6 +201,7 @@ interface NotionBodyProps {
 export function NotionBody({
   lessonMd,
   exercises,
+  derivations,
   mediaSvgs,
   motionSvgs,
   motionSpecs,
@@ -334,6 +341,13 @@ export function NotionBody({
           const ex = exercises?.[seg.slug];
           if (!ex) return null;
           return <AttemptFirstExercise key={`ex-${i}`} exercise={ex} />;
+        }
+
+        // Stepped derivation (Day-6, §7): learner-paced worked math.
+        if (seg.kind === "derivation") {
+          const d = derivations?.[seg.slug];
+          if (!d) return null;
+          return <Derivation key={`dv-${i}`} id={d.id} title={d.title} steps={d.steps} />;
         }
 
         return null;

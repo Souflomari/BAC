@@ -38,16 +38,13 @@ exercises:
           Établir l'équation différentielle vérifiée par la charge $q(t)$.
         reasoning: |-
           On écrit la loi des mailles dans le circuit série complet. La bobine est idéale (résistance interne négligeable), donc sa tension est $u_L = L\frac{d^2q}{dt^2}$. Le conducteur ohmique contribue $u_R = R\frac{dq}{dt}$.
-
-          Loi des mailles :
-
-          $$u_C + u_L + u_R = 0$$
-
-          $$\frac{q}{C} + L\frac{d^2q}{dt^2} + R\frac{dq}{dt} = 0$$
-
-          $$\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}$$
-
-          On s'arrête là pour le cas amorti. On n'essaie pas de résoudre cette équation en forme fermée.
+        steps:
+          - math: 'u_C + u_L + u_R = 0'
+            note: "La loi des mailles sur la boucle complète — trois dipôles, convention récepteur."
+          - math: '\frac{q}{C} + L\frac{d^2q}{dt^2} + R\frac{dq}{dt} = 0'
+            note: "On remplace chaque tension par son expression en $q$ — le geste qui transforme un schéma en équation."
+          - math: '\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}'
+            note: "On ordonne par dérivée décroissante — la forme attendue. On s'arrête là pour le cas amorti : on n'essaie pas de résoudre en forme fermée."
       - id: q3
         part: "Partie 2 — Exploiter l'oscillogramme"
         stem: |-
@@ -134,15 +131,14 @@ exercises:
         stem: |-
           Établir l'équation différentielle vérifiée par $q(t)$ dans ce circuit.
         reasoning: |-
-          La démarche est identique à l'exercice précédent — c'est exactement le point : reconnaître que l'habillage a changé mais pas la procédure. Loi des mailles sur la boucle complète (trois dipôles, convention récepteur) :
-
-          $$u_C + u_L + u_R = 0 \implies L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0$$
-
-          Avec les valeurs :
-
-          $$0{,}4\,\frac{d^2q}{dt^2} + 8\,\frac{dq}{dt} + \frac{q}{10^{-5}} = 0$$
-
-          On établit et on s'arrête — résoudre cette équation en forme fermée est hors programme, et tenter le cosinus idéal ici serait le modèle faux « le cas amorti a une solution sinusoïdale » (on l'a testé et réfuté dans la leçon).
+          La démarche est identique à l'exercice précédent — c'est exactement le point : reconnaître que l'habillage a changé mais pas la procédure.
+        steps:
+          - math: 'u_C + u_L + u_R = 0'
+            note: "Loi des mailles sur la boucle complète (trois dipôles, convention récepteur)."
+          - math: 'L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0'
+            note: "Chaque tension remplacée par son expression en $q$ — même geste que dans la leçon. Un seul $\\implies$ par ligne : chaque transformation se lit seule."
+          - math: '0{,}4\,\frac{d^2q}{dt^2} + 8\,\frac{dq}{dt} + \frac{q}{10^{-5}} = 0'
+            note: "Avec les valeurs. On établit et on s'arrête — résoudre en forme fermée est hors programme, et tenter le cosinus idéal ici serait le modèle faux « le cas amorti a une solution sinusoïdale » (testé et réfuté dans la leçon)."
       - id: q3
         stem: |-
           On mesure sur l'oscillogramme une pseudo-période $T = 12{,}8\ \text{ms}$. L'approximation $T \approx T_0$ est-elle valide ?

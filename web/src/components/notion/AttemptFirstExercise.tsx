@@ -30,9 +30,10 @@ import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
 import rehypeKatex from "rehype-katex";
-import type { NotionExercise } from "@/lib/content";
+import type { NotionExercise, DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
+import { Derivation } from "./Derivation";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose). */
 function MdBlock({ children, className }: { children: string; className?: string }) {
@@ -53,11 +54,15 @@ function Question({
   part,
   stem,
   reasoning,
+  steps,
+  qid,
 }: {
   index: number;
   part?: string;
   stem: string;
   reasoning: string;
+  steps?: DerivationStep[];
+  qid: string;
 }) {
   const [revealed, setRevealed] = useState(false);
 
@@ -121,6 +126,9 @@ function Question({
                   Raisonnement expert
                 </p>
                 <MdBlock>{reasoning}</MdBlock>
+                {/* Multi-step algebra renders as a stepped Derivation (template
+                    v2 display-math rule) — the student paces the transformations. */}
+                {steps && <Derivation id={`${qid}-steps`} steps={steps} bare />}
               </div>
             )}
           </div>
@@ -155,10 +163,12 @@ export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise })
         {exercise.questions.map((q, i) => (
           <Question
             key={q.id}
+            qid={q.id}
             index={i + 1}
             part={q.part}
             stem={q.stem}
             reasoning={q.reasoning}
+            steps={q.steps}
           />
         ))}
       </div>
