@@ -27,6 +27,13 @@ import { FontSizeStepper } from "./FontSizeStepper";
 
 interface SiteHeaderProps {
   className?: string;
+  /**
+   * The page's spine container class (max-width + responsive padding), built
+   * by PageShell and shared with <main> and the footer so the wordmark aligns
+   * with the content column by construction (Day-3 shared-spine decision).
+   * Falls back to the widest band for standalone use.
+   */
+  container?: string;
 }
 
 /**
@@ -73,7 +80,7 @@ function GlyphMark({ className }: { className?: string }) {
   );
 }
 
-export function SiteHeader({ className }: SiteHeaderProps) {
+export function SiteHeader({ className, container }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -120,7 +127,14 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         className
       )}
     >
-      <div className="mx-auto max-w-page flex h-14 items-center justify-between px-4 bp-medium:px-6 bp-expanded:px-8">
+      <div
+        className={cn(
+          // The shared spine: identical container to <main>/<footer> (passed by
+          // PageShell) so the wordmark sits on the content column's left edge.
+          container ?? "mx-auto max-w-page px-4 bp-medium:px-6 bp-expanded:px-8 w-full",
+          "flex h-14 items-center justify-between"
+        )}
+      >
         {/* Wordmark — glyph mark + "BAC" */}
         <Link
           href="/"

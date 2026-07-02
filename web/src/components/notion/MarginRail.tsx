@@ -27,15 +27,15 @@
  * - Current rung highlighted
  * - Desktop only (900px+)
  *
- * No browser storage — active state is ephemeral React state from
- * IntersectionObserver, reset on page navigation.
+ * No browser storage — active state is ephemeral React state from a
+ * rAF-throttled scroll listener, reset on page navigation.
  *
- * CLIENT component for IntersectionObserver and DOM queries.
+ * CLIENT component for scroll tracking and DOM queries.
  */
 
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
 interface RungDef {
@@ -47,7 +47,7 @@ interface RungDef {
 /**
  * Derive the short resting label from a rung title: the part before " : " or
  * " (" reads as the section's name ("Accroche", "Le cas amorti"); titles with
- * neither stay whole and truncate in CSS. Also keeps raw KaTeX ($T_0$) out of
+ * neither stay whole (and wrap if ever too long). Also keeps raw KaTeX ($T_0$) out of
  * the rail — the dollar-bearing tails sit after these separators.
  */
 function shortTitleOf(title: string): string {
@@ -95,56 +95,55 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
   const rungDefs = useMemo(() => extractRungDefs(lessonMd), [lessonMd]);
   const [resolvedRungs, setResolvedRungs] = useState<ResolvedRung[]>([]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     if (rungDefs.length === 0) return;
 
-    const allH2 = Array.from(document.querySelectorAll<HTMLElement>("h2"));
-
+    // Rung headings are matched by the data-rung attribute LessonRenderer sets
+    // (the visible R-code was removed from student-facing render — audit U3 —
+    // so textContent matching is no longer possible or desirable).
     const resolved: ResolvedRung[] = rungDefs.map((def) => {
-      const el = allH2.find((h) => {
-        const text = h.textContent?.trim() ?? "";
-        return text.startsWith(def.label);
-      }) ?? null;
-
+      const el = document.querySelector<HTMLElement>(
+        `h2[data-rung="${def.label}"]`
+      );
       const href = el?.id ? `#${el.id}` : "#";
       return { ...def, el, href };
     });
 
     setResolvedRungs(resolved);
 
-    observerRef.current?.disconnect();
+    const els = resolved.filter((r) => r.el);
+    if (els.length === 0) return;
 
-    const observableEls = resolved
-      .map((r) => r.el)
-      .filter(Boolean) as HTMLElement[];
-
-    if (observableEls.length === 0) return;
-
-    observerRef.current = new IntersectionObserver(
-      () => {
-        let found: string | null = null;
-        for (const r of resolved) {
-          if (!r.el) continue;
-          const rect = r.el.getBoundingClientRect();
-          if (rect.top <= window.innerHeight * 0.4) {
-            found = r.label;
-          }
-        }
-        setActiveLabel(found);
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -60% 0px",
-        threshold: 0,
+    // Scroll-spy (Day-3 fallout fix — the IntersectionObserver version only
+    // recomputed on threshold crossings and visibly lagged a section behind).
+    // Deterministic rule, evaluated on every scroll frame (rAF-throttled):
+    // the active rung is the LAST heading whose top has passed the reading
+    // line (header 56px + one line of breathing room). Passive listener;
+    // cheap (≤10 getBoundingClientRect per frame, only while scrolling).
+    const READING_LINE = 96;
+    let ticking = false;
+    function computeActive() {
+      ticking = false;
+      let found: string | null = null;
+      for (const r of els) {
+        if (r.el!.getBoundingClientRect().top <= READING_LINE) found = r.label;
+        else break; // headings are in document order — first miss ends it
       }
-    );
-
-    observableEls.forEach((el) => observerRef.current!.observe(el));
-
+      setActiveLabel(found ?? els[0].label);
+    }
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(computeActive);
+      }
+    }
+    computeActive();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
     return () => {
-      observerRef.current?.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, [rungDefs]);
 
@@ -260,12 +259,10 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                     are spec vocabulary and never render; wayfinding is words).
                     Text shows from the expanded rail (176px) up; the medium
                     rail (52px) is dots-only with the full title on hover. */}
-                <span
-                  className={cn(
-                    "hidden bp-expanded:block",
-                    "leading-tight min-w-0 truncate"
-                  )}
-                >
+                {/* Never truncate (Day-3 fallout fix): the 208px rail fits every
+                    current name; an unusually long future name wraps to a
+                    second line rather than ellipsizing wayfinding words. */}
+                <span className="hidden bp-expanded:block leading-tight min-w-0">
                   {rung.shortTitle}
                 </span>
 

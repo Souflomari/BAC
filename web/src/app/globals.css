@@ -241,6 +241,80 @@ body {
   box-shadow: 0 0 0 4px var(--focus-halo);
 }
 
+/* ── Text selection — the one visual every reader touches (audit U5) ────────── */
+/* Warm accent-subtle wash instead of browser-default blue on ivory; text keeps
+   its own color (both accent-subtle tones hold ≥4.5:1 against text-primary). */
+::selection {
+  background-color: var(--color-accent-subtle);
+  color: inherit;
+}
+
+/* ── Heading anchors (audit U5 — web-native texture) ────────────────────────── */
+/* The § link appears on heading hover/focus; invisible otherwise. Accent on
+   hover of the anchor itself; never steals the heading's resting calm. */
+.heading-anchor {
+  margin-left: 0.45em;
+  font-family: var(--font-ibm-plex-sans), system-ui, sans-serif;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity var(--duration-micro) var(--ease-between),
+              color var(--duration-micro) var(--ease-between);
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+}
+.heading-anchor:hover {
+  color: var(--color-accent);
+}
+
+/* ── Print stylesheet (audit U5 — bac students print revision material) ─────── */
+@media print {
+  /* Chrome off: header, rail, font stepper, embeds' interactive shell, footer nav */
+  header[class],
+  .notion-rail,
+  footer[class] {
+    display: none !important;
+  }
+  /* Ink on paper — drop the warm washes and shadows */
+  :root {
+    --color-surface-base: #ffffff;
+    --color-surface-raised: #ffffff;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  * {
+    box-shadow: none !important;
+  }
+  /* Single column: the rail grid collapses; prose uses the page */
+  .notion-page-grid {
+    display: block;
+  }
+  .notion-prose,
+  .prose-lesson {
+    max-width: 100% !important;
+  }
+  /* Figures stay within the page; no clipped panels */
+  figure,
+  svg {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  /* Anchors are meaningless on paper */
+  .heading-anchor {
+    display: none !important;
+  }
+}
+
 /* ── Reduced motion (DESIGN-BIBLE §5, §9) ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -487,19 +561,9 @@ body {
 .prose-lesson h3 { font-size: 1.125rem; letter-spacing: -0.012em; }
 .prose-lesson h4 { font-size: 1rem; letter-spacing: -0.01em; }
 
-/* Rung tag — the "R0" prefix on a section heading, demoted to a quiet tabular
-   SANS label so the serif title alone competes with nothing (ADR 0023 polish).
-   Neutral, never accent — the accent leads only at the masthead eyebrow. */
-.prose-lesson h2 .rung-tag {
-  font-family: var(--font-ibm-plex-sans), system-ui, sans-serif;
-  font-size: 0.62em;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-text-tertiary);
-  margin-right: 0.7em;
-  vertical-align: 0.16em; /* lift to sit against the serif cap height */
-}
+/* (The old .rung-tag "R0" heading prefix was removed in the Day-3 de-jargon
+   batch — spec rung codes never render student-side; the code lives in a
+   data-rung attribute for the rail's matching. See LessonRenderer.tsx.) */
 
 .prose-lesson p {
   margin-top: 0;
@@ -650,13 +714,13 @@ body {
   }
 }
 
-/* expanded (desktop) — full rail + gap. 176px so the rail carries the human
-   section names at rest (audit U3 de-jargon: R-codes never render; a 64px rail
-   could only fit codes). Width is a Day-2 mechanical enablement — the rail's
-   final proportions are a Day-3 taste decision. */
+/* expanded (desktop) — full rail + gap. 208px (26 grid units) fits the longest
+   current section name ("L'entretien des oscillations", 28ch at 12px ≈ 175px +
+   dot/gap/padding) without truncation — Day-3 fallout fix: labels never
+   ellipsize; a rare longer future title wraps to a second line instead. */
 @media (min-width: 840px) {
   .notion-page-grid {
-    grid-template-columns: 176px 32px 1fr;
+    grid-template-columns: 208px 32px 1fr;
   }
 }
 
@@ -681,6 +745,12 @@ body {
     padding-right: 12px;
     /* Overflow visible so the dot indicator can spill slightly */
     overflow: visible;
+    /* Optical alignment with the content column's first line (Day-3 fallout
+       fix): the first rung link centers its 12px label in a 48px touch target
+       (label center ≈ 24px from rail top) while the breadcrumb's 14px line
+       centers ≈ 10px from content top. -14px pulls the first label onto the
+       breadcrumb's optical line without shrinking the touch target. */
+    margin-top: -14px;
   }
 }
 

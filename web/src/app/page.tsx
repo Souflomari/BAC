@@ -13,7 +13,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listNotions } from "@/lib/content";
 import { PageShell } from "@/components/ui/PageShell";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
@@ -94,11 +93,9 @@ function NotionCard({
         "focus-ring [--focus-radius:16px]"
       )}
     >
-      {/* Subject label — quiet tracked-caps eyebrow (no accent) */}
-      <Eyebrow tone="muted" className="mb-2">
-        {subjectLabel(subject)}
-      </Eyebrow>
-
+      {/* No subject eyebrow: the section heading directly above this card
+          already names the subject — the same word twice in one viewport was
+          audit finding U3 (doubled labels). The card leads with its title. */}
       {/* Notion title */}
       <h3
         className={cn(

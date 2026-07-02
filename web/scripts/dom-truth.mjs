@@ -87,8 +87,11 @@ const BATTERY = [
   { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Source Serif" },
   { name: "items h2", page: NOTION, sel: "h2", text: "Exercices", fontKey: "h2", weight: "700", family: "Source Serif" },
   // ── code-verified unmeasured victims from the audit ──
-  { name: "masthead eyebrow (accent tone)", page: NOTION, sel: "header p, p", text: "Physique-Chimie", fontKey: "caption", colorVar: "--color-accent" },
-  { name: "home card eyebrow (muted tone)", page: "/", sel: "a p", text: "Physique-Chimie", fontKey: "caption", colorVar: "--color-text-secondary" },
+  // (The two Eyebrow instances measured on Day 2 were REMOVED in the Day-3
+  // doubled-label kill (audit U3) — the masthead eyebrow duplicated the
+  // breadcrumb, the card eyebrow duplicated the section heading. The Eyebrow
+  // component remains in the library; when it regains a live instance, add it
+  // back to the battery.)
   { name: "MCQ stem", page: NOTION, sel: "[class*='text-body-lg']", fontKey: "body-lg" },
   // li scoping: the header FontSizeStepper buttons also carry aria-pressed
   { name: "MCQ choice row", page: NOTION, sel: "li button[aria-pressed]", fontKey: "body", weight: "400" },
@@ -97,13 +100,25 @@ const BATTERY = [
   // TODO(post-answer states): the solution <summary> and correctness rows only
   // exist after answering an item — battery v2 should drive one interaction.
   { name: "card 'Ouvrir' row", page: "/", sel: "a span", text: "Ouvrir", fontKey: "body-sm", weight: "500" },
-  // ── de-jargon guards (audit U3, Day-2 items) ──
+  // ── de-jargon guards (audit U3, Day-2/3 items) ──
   { name: "rail resting label is a word, not a code", page: NOTION, sel: ".notion-rail a", text: "Accroche", fontKey: "caption", notText: /^R\d+/ },
   { name: "no authoring flags rendered", page: NOTION, sel: "h2", text: "Exercice de type bac", notText: /à sourcer|synthèse —/ },
+  { name: "prose headings carry no R-codes", page: NOTION, sel: ".prose-lesson h2[data-rung]", notText: /^R\d/ },
   // ── representative spacing (TOKENS.md §3: 8-pt grid) ──
   { name: "home card padding = p-6 (24px)", page: "/", sel: "a[href*='notions']", text: "Oscillations", pad: 6 },
   // ── breadcrumb stays designed size ──
   { name: "breadcrumb", page: NOTION, sel: "nav[aria-label*='Fil']", fontKey: "body-sm" },
+  // ── Day-3 web-native texture invariants (audit amendment #3) ──
+  { name: "footer exists (page ends)", page: NOTION, sel: "footer", present: true },
+  { name: "footer exists on home", page: "/", sel: "footer", present: true },
+  { name: "heading anchors present", page: NOTION, sel: ".prose-lesson h2 a.heading-anchor", present: true },
+  { name: "masthead metadata line", page: NOTION, sel: "header p", text: "min de lecture", fontKey: "body-sm" },
+  { name: "::selection is the warm wash", page: NOTION, sel: ".prose-lesson", selectionVar: "--color-accent-subtle" },
+  // ── Day-3 shared spine: wordmark and content column share a left edge ──
+  { name: "spine: header aligns with main", page: NOTION, sel: "header > div", alignWith: "main" },
+  { name: "spine: footer aligns with main", page: NOTION, sel: "footer > div", alignWith: "main" },
+  // ── Day-3 rail: labels never ellipsize ──
+  { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────
@@ -151,6 +166,31 @@ try {
           varColor = getComputedStyle(probe).color;
           probe.remove();
         }
+        // ::selection background (chromium supports pseudo-element arg)
+        let selectionBg = null;
+        let selectionVarBg = null;
+        if (s.selectionVar) {
+          selectionBg = getComputedStyle(el, "::selection").backgroundColor;
+          const probe = document.createElement("span");
+          probe.style.backgroundColor = `var(${s.selectionVar})`;
+          document.body.appendChild(probe);
+          selectionVarBg = getComputedStyle(probe).backgroundColor;
+          probe.remove();
+        }
+        // Spine alignment: left edge + padding-left vs another element
+        let align = null;
+        if (s.alignWith) {
+          const other = document.querySelector(s.alignWith);
+          if (other) {
+            const oc = getComputedStyle(other);
+            align = {
+              left: el.getBoundingClientRect().left,
+              otherLeft: other.getBoundingClientRect().left,
+              pad: cs.paddingLeft,
+              otherPad: oc.paddingLeft,
+            };
+          }
+        }
         out.push({
           name: s.name,
           fontSize: cs.fontSize,
@@ -159,6 +199,10 @@ try {
           fontFamily: cs.fontFamily,
           color: cs.color,
           varColor,
+          selectionBg,
+          selectionVarBg,
+          align,
+          overflowing: el.scrollWidth > el.clientWidth + 1,
           padding: [cs.paddingTop, cs.paddingRight, cs.paddingBottom, cs.paddingLeft],
           textHead: (el.textContent || "").trim().slice(0, 60),
           rootFont: root.fontSize,
@@ -217,6 +261,27 @@ try {
         const re = new RegExp(spec.notText.source ?? spec.notText);
         if (re.test(r.textHead)) failures += fail(`text "${r.textHead}" matches forbidden ${re}`);
         else console.log(`  ✓ text clean ("${r.textHead.slice(0, 32)}…")`);
+      }
+      if (spec.present) {
+        checks++;
+        console.log(`  ✓ present`);
+      }
+      if (spec.selectionVar) {
+        checks++;
+        if (r.selectionBg !== r.selectionVarBg) failures += fail(`::selection bg ${r.selectionBg} ≠ var(${spec.selectionVar}) = ${r.selectionVarBg}`);
+        else console.log(`  ✓ ::selection = var(${spec.selectionVar})`);
+      }
+      if (spec.alignWith) {
+        checks++;
+        if (!r.align) failures += fail(`alignWith target "${spec.alignWith}" not found`);
+        else if (Math.abs(r.align.left - r.align.otherLeft) > 0.5 || r.align.pad !== r.align.otherPad) {
+          failures += fail(`spine broken: left ${r.align.left} vs ${r.align.otherLeft}, pad ${r.align.pad} vs ${r.align.otherPad}`);
+        } else console.log(`  ✓ spine aligned (left ${r.align.left}px, pad ${r.align.pad})`);
+      }
+      if (spec.noOverflow) {
+        checks++;
+        if (r.overflowing) failures += fail(`label overflows its box ("${r.textHead.slice(0, 32)}…")`);
+        else console.log(`  ✓ no truncation`);
       }
     }
   }

@@ -51,6 +51,10 @@ export interface NotionMeta {
   slug: string;
   /** Display title — extracted from the first H1 of lesson.md, or the slug. */
   title: string;
+  /** Estimated reading time in minutes (word count / 180 wpm, French prose). */
+  readingMinutes?: number;
+  /** Last content update — lesson.md file mtime, formatted "juillet 2026". */
+  updatedAt?: string;
 }
 
 export interface NotionChoice {
@@ -237,6 +241,35 @@ function stripLeadingTitle(lessonMd: string | null): string | null {
  * A notion is considered present if its directory exists, regardless of
  * which files it contains — the individual loaders handle missing pieces.
  */
+
+// ── Masthead metadata (audit amendment #3 — web-native texture) ───────────────
+
+/** Estimated reading minutes for a lesson: words / 180 wpm (French prose reads
+ *  slower than English; 180 is the conservative convention), min 1. Markdown
+ *  markers and [[callouts]] count as words — the error is a rounding noise. */
+function readingMinutesOf(lessonMd: string | null): number | undefined {
+  if (!lessonMd) return undefined;
+  const words = lessonMd.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 180));
+}
+
+const FRENCH_MONTHS = [
+  "janvier", "février", "mars", "avril", "mai", "juin",
+  "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+];
+
+/** "mise à jour" date from the lesson file's mtime — month + year is honest
+ *  (day-level precision would suggest an editorial cadence we don't have). */
+function updatedAtOf(dir: string): string | undefined {
+  try {
+    const st = fs.statSync(path.join(dir, "lesson.md"));
+    const d = st.mtime;
+    return `${FRENCH_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  } catch {
+    return undefined;
+  }
+}
+
 export function listNotions(): NotionMeta[] {
   const root = contentRoot();
   if (!dirExists(root)) return [];
@@ -417,7 +450,11 @@ export function loadNotion(id: string): NotionContent | null {
   // Extract the title from the RAW markdown, THEN strip the leading H1 so the
   // rendered prose doesn't duplicate the masthead (ADR 0023 heading anchor).
   const title = extractTitle(lessonMd, slug);
-  const meta: NotionMeta = { id, subject, slug, title };
+  const meta: NotionMeta = {
+    id, subject, slug, title,
+    readingMinutes: readingMinutesOf(lessonMd),
+    updatedAt: updatedAtOf(dir),
+  };
   const renderedLessonMd = stripLeadingTitle(lessonMd);
 
   return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };

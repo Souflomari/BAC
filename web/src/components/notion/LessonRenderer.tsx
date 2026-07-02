@@ -40,28 +40,61 @@ function flattenText(node: ReactNode): string {
 }
 
 /**
- * Rung heading renderer (ADR 0023 polish — resolve the masthead double-title).
+ * Hover heading anchor (audit U5 — web-native texture): a § link that appears
+ * on heading hover/focus so a student can copy a deep link to any section.
+ * The id comes from rehype-slug (stable — computed from the SOURCE heading
+ * text, so stripping the rendered R-tag does not change existing anchors).
+ */
+function HeadingAnchor({ id }: { id?: string }) {
+  if (!id) return null;
+  return (
+    <a
+      href={`#${id}`}
+      className="heading-anchor focus-ring"
+      aria-label="Lien direct vers cette section"
+    >
+      §
+    </a>
+  );
+}
+
+/**
+ * Rung heading renderer.
  *
- * Lesson rungs are authored as `## R0 — Title`. Rendered naively, the serif
- * "R0 — Title" competes with the serif masthead title for "which is THE title"
- * within one fold. Here the "R0" prefix is demoted to a quiet tabular-SANS tag
- * (.rung-tag) and only the human title stays serif — so the masthead reads as
- * the title and rungs read as numbered sections. The h2 keeps its slug `id`
- * (for MarginRail anchors + scroll-margin); textContent still starts with "R0"
- * so the rail's rung matcher is unaffected.
+ * Lesson rungs are authored as `## R0 — Title`. The R-codes are the pedagogy
+ * spec's internal rung vocabulary — students never see them (audit U3, Day-3
+ * batch): the rendered heading is the human title alone. The code moves to a
+ * `data-rung` attribute, which is what MarginRail matches on (the previous
+ * textContent-startsWith matching died with the visible tag). The h2 keeps its
+ * slug `id` for anchors + scroll-margin, and gains the hover § anchor.
  */
 function RungHeading({ children, ...props }: ComponentPropsWithoutRef<"h2">) {
   const text = flattenText(children);
   const m = text.match(/^(R\d+)\s*[—–-]\s*([\s\S]+)$/);
   if (m) {
     return (
-      <h2 {...props}>
-        <span className="rung-tag" aria-hidden="true">{m[1]}</span>
+      <h2 {...props} data-rung={m[1]}>
         {m[2]}
+        <HeadingAnchor id={props.id} />
       </h2>
     );
   }
-  return <h2 {...props}>{children}</h2>;
+  return (
+    <h2 {...props}>
+      {children}
+      <HeadingAnchor id={props.id} />
+    </h2>
+  );
+}
+
+/** h3 — same hover anchor, no rung semantics. */
+function SubHeading({ children, ...props }: ComponentPropsWithoutRef<"h3">) {
+  return (
+    <h3 {...props}>
+      {children}
+      <HeadingAnchor id={props.id} />
+    </h3>
+  );
 }
 
 export function LessonRenderer({ markdown, className }: LessonRendererProps) {
@@ -79,7 +112,7 @@ export function LessonRenderer({ markdown, className }: LessonRendererProps) {
           rehypeSlug,
           [rehypeKatex, { strict: false, trust: false }],
         ]}
-        components={{ h2: RungHeading }}
+        components={{ h2: RungHeading, h3: SubHeading }}
       >
         {markdown}
       </ReactMarkdown>
