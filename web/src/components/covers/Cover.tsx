@@ -116,6 +116,11 @@ export function Cover({
       role="img"
       aria-hidden="true"
       data-cover={slug ?? subject}
+      /* data-motif = the RESOLVED motif (≠ data-cover when a notion falls
+         back to its subject default). dom-truth asserts on this — presence
+         of data-cover alone can't distinguish a real per-notion motif from
+         the fallback (Day-7 instrument fix). */
+      data-motif={id}
       className={cn("block w-full h-auto", className)}
       style={{ backgroundColor: "var(--color-surface-container-low)" }}
     >

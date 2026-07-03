@@ -38,20 +38,39 @@
 - [ ] **Voice** — tu/on tutor register; zero detached academic passive ("il
   est établi que…"); imperatives welcome; written to be spoken (VISION
   L236-238).
-- [ ] **Display-math discipline (Day-6 amendment)** — any derivation of ≥2
-  transformations is BLOCK math, ONE transformation per line; inline math is
-  reserved for symbols and single expressions; chained `a = b = c = d`
-  one-liners are a template failure. Derivations of ≥3 steps with a reasoning
-  layer render through the `Derivation` component (`derivations.yaml` +
-  `[[derivation:<id>]]`, or `steps:` on an exercise question) — learner-paced,
-  one move per step, per-step "why this move" note.
+- [ ] **Display-math discipline (Day-6 amendment; boundary tightened Day 7 —
+  the portability test showed the old "≥3 steps → component" wording
+  contradicts the practiced corpus)** — any derivation of ≥2 transformations
+  is BLOCK math, ONE transformation per line; inline math is reserved for
+  symbols and single expressions; chained `a = b = c = d` one-liners are a
+  template failure. **Which multi-step math goes through the `Derivation`
+  component** (`derivations.yaml` + `[[derivation:<id>]]`, or `steps:` on an
+  exercise question — learner-paced, one move per step, per-step "why this
+  move" note) **vs narrated block math is decided by the math's ROLE, not its
+  step count:**
+  - **Component:** procedural verification and solution algebra — the student
+    gains by advancing move-by-move, and each move's note is a one-line
+    expert decision (exemplars: `verification-cosinus` in RLC R2; R8/R9
+    solution steps).
+  - **Narrated blocks:** equation-ESTABLISHMENT that is the rung's argument
+    spine, where the prose BETWEEN blocks carries the teaching (exemplars:
+    RLC R2 « loi des mailles, terme par terme »; RLC R5's rupture — the Day-6
+    ledger decision that deliberately kept R5 out of the component).
+  A ≥3-step derivation in neither register (unnarrated AND uncomponentized)
+  fails the box.
 - [ ] **Motion-decision rule (Day-6 amendment)** — the rung teaches a DYNAMIC
   relationship (something evolves in time) → it carries a motion figure
   through the beat engine, OR the spec records an explicit static-suffices
   justification. Silence is a failure; "the engine exists, the asset is debt"
   is recorded, not ignored.
-- [ ] **French orthotypography** — flows through the frenchTypography pipeline
-  (curly apostrophes, U+202F); no hardcoded ASCII apostrophes in new copy.
+- [ ] **French orthotypography (wording fixed Day 7 — the old box
+  contradicted the practiced convention)** — the box checks the RENDERED
+  output (curly apostrophes, U+202F before double punctuation), and the path
+  there differs by surface: **markdown sources are written with plain ASCII
+  apostrophes** and flow through the remarkFrenchTypography pipeline, which
+  converts at render (both existing lessons follow this — never hand-type
+  U+202F in markdown); **TSX chrome strings bypass the pipeline** and must
+  hand-type the curly apostrophe (’) directly.
 
 ## B. The misconception ledger (whole notion — an unclaimed row is a failure)
 

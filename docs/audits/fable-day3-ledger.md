@@ -343,6 +343,30 @@ mode the week was built against (silent plausible drift) did not occur.**
 The committed component diverges from the TIGHTENED spec on rows 2–3; the
 post-tightening re-run tests convergence.
 
+### Article (b) — RC-charge mechanism section: gap analysis
+
+Committed as produced (`day7(b)` commit). Physics verified sound (the
+constant-rate reductio is internally valid: the naive model grants finite-
+time arrival at u_C = E, where mailles + Ohm force i = 0 against the
+model's own constant i ≠ 0; the loop mechanism, reservoir analogy, Ω·F = s
+check, and the honest "τ is a scale, not a stopping instant" framing are
+all correct and cadre-safe). Boxes: voice / mechanism-why /
+reasoning-annotation / display-math all checkable at the cited lines.
+dom-truth DAY7(b) rows green (masthead band, rung section renders, no
+R-codes). Divergences and findings:
+
+| # | Finding | Class | Outcome |
+|---|---|---|---|
+| 1 | ODE establishment authored as narrated block math, not the Derivation component, despite the template box's literal "≥3 steps → component" | faithful-to-CORPUS, divergent from the box's letter | **Template spec bug.** The practiced boundary (RLC R2 mailles narrated; verification componentized; Day-6 R5 decision) was never encoded. Display-math box tightened: component vs narrated decided by the math's ROLE (verification/solution vs establishment spine). |
+| 2 | ASCII apostrophes in source, pipeline converts | faithful (matches both existing lessons) | **Template + brief bug:** the orthotypography box said "no hardcoded ASCII apostrophes," contradicting the practiced convention. Box rewritten (markdown = ASCII + pipeline; TSX chrome = hand-typed curly). Brief (b) carried the same wrong phrasing — left as-run for the record. |
+| 3 | Invented the misconception to rupture (constant-rate/robinet) absent any spec/ledger for the notion; staged it properly (voice → test → break) and FLAGGED it as needing pedagogy-architect confirmation vs alternatives (u_C continuity at t=0) | honest judgment under missing spec | Recorded: rc-charge misconception inventory is pedagogy-architect debt; the invented target is plausible but unconfirmed. |
+| 4 | Prerequisite-boundary question: is « le condensateur » (i=dq/dt, q=Cu_C) assumed known or to be taught? Executor chose one-line rappel and asked | **spec bug (the sharpest of article b)** | Section-level briefs must state prerequisite assumptions. Encoded in day7-briefs/README (dispatch template rule). |
+| 5 | Near-verbatim reuse of RLC's R1 opener cadence ("Avant les équations, comprendre le mécanisme…") | cosmetic | Exemplar-imitation working as intended; watch at scale (10 notions opening identically would read formulaic — noted for the coherence-critic's brief, not a rule yet). |
+
+**Verdict: FAITHFUL — tutoring-grade section, correct physics, honest
+handling of every gap it hit. The two real bugs it exposed are TEMPLATE
+bugs (box letter vs corpus practice), both tightened same-day.**
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**

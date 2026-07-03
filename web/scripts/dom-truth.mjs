@@ -152,7 +152,10 @@ const BATTERY = [
   { name: "DAY7(b): rc-charge notion renders with masthead band", page: "/notions/pc/rc-charge", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
   { name: "DAY7(b): rc-charge rung section renders", page: "/notions/pc/rc-charge", sel: ".prose-lesson h2[data-rung]", present: true, notText: /^R\d/ },
   { name: "DAY7(c): i-de-t derivation present, step 1 only", page: NOTION, sel: "[data-derivation='i-de-t']", present: true, absentSel: "[data-derivation='i-de-t'] [data-step='2']" },
-  { name: "DAY7(d): rc-charge cover on home shelf", page: "/", sel: "[data-cover='rc-charge']", present: true },
+  // (d): data-motif must be the notion's OWN motif — the pc fallback also
+  // carries data-cover='rc-charge', which made the original presence-only
+  // row go green before the article ran (instrument bug, fixed Day 7).
+  { name: "DAY7(d): rc-charge cover has its own motif", page: "/", sel: "[data-cover='rc-charge'][data-motif='rc-charge']", present: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────

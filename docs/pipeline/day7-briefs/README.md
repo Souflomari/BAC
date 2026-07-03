@@ -26,6 +26,11 @@ Standing constraints carried by every brief (from RULES.md / DESIGN-BIBLE):
   claims only from rendered evidence; state "unverified" for anything not
   verified.
 - **Honest state:** no fabricated progress, sourcing, or student knowledge.
+- **Content briefs state prerequisite assumptions** (added Day 7 — article
+  (b) hit this): a section-level brief must say what the student is assumed
+  to already know (which chapter/section owns each prerequisite relation),
+  or the executor cannot distinguish a legitimate one-line "rappel" from
+  re-teaching another section's content.
 - **Do not commit** — leave work in the tree and end with a report
   (deliverables, decisions made, and any questions the docs failed to
   answer). The dispatching session verifies, measures, and commits.
