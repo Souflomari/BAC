@@ -1,0 +1,374 @@
+notion: liberation-energie-matiere-organique
+skill_code: svt_liberation_energie
+misconceptions: []
+items:
+  - id: LIB-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: svt_liberation_energie
+    tags: [atp, monnaie_energetique]
+    stem: >
+      Pourquoi dit-on que l'ATP est la « monnaie énergétique » de la cellule
+      plutôt qu'une réserve d'énergie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Parce que l'ATP est produit et hydrolysé en continu selon les
+          besoins immédiats de la cellule, sans être stocké en grande
+          quantité — contrairement au glucose ou aux lipides, qui sont de
+          véritables réserves.
+        correct: true
+      - id: B
+        text: "Parce que l'ATP contient, par molécule, plus d'énergie que le glucose."
+        correct: false
+        feedback: >
+          C'est l'inverse : le glucose emmagasine bien plus d'énergie totale
+          que l'ATP. L'ATP n'est qu'un intermédiaire qui délivre cette
+          énergie par petites unités immédiatement utilisables — ce n'est pas
+          parce qu'il en contient plus, c'est parce qu'il circule en continu.
+      - id: C
+        text: >
+          Parce que la cellule stocke de grandes quantités d'ATP en réserve
+          pour les moments de forte demande.
+        correct: false
+        feedback: >
+          C'est exactement l'erreur à éviter ici : une cellule ne stocke
+          jamais l'ATP en grande quantité. À chaque instant, la quantité
+          présente reste très faible ; c'est la vitesse de régénération
+          (hydrolyse puis reformation continue) qui couvre les besoins, pas
+          un stock accumulé.
+      - id: D
+        text: >
+          Parce qu'une molécule d'ATP ne peut être utilisée qu'une seule
+          fois avant d'être définitivement détruite.
+        correct: false
+        feedback: >
+          L'ATP n'est pas détruit : son hydrolyse donne de l'ADP + $P_i$, qui
+          sont ensuite reformés en ATP grâce à l'énergie extraite du glucose.
+          C'est précisément ce cycle continu charge/décharge qui justifie
+          l'image de la « monnaie » — une pièce qui circule, pas qui
+          disparaît.
+    correct_feedback: >
+      L'ATP n'est jamais accumulé en grande quantité : il est hydrolysé et
+      régénéré en continu, au rythme des besoins de la cellule. C'est ce
+      cycle permanent — pas une grande réserve — qui en fait une monnaie
+      d'échange énergétique.
+    solution: |
+      **Ce qui distingue l'ATP d'une réserve :** le glucose (et les lipides)
+      sont de vraies réserves, stockables en grande quantité. L'ATP, lui, est
+      produit puis hydrolysé aussitôt selon la demande — la quantité présente
+      à un instant donné reste minime.
+
+      **Conséquence :** un organisme régénère, en une journée, l'équivalent
+      de plusieurs dizaines de kilogrammes d'ATP, alors que la quantité
+      présente à un instant donné ne pèse que quelques dizaines de grammes —
+      la preuve d'un recyclage permanent, pas d'un stockage.
+
+  - id: LIB-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: svt_liberation_energie
+    tags: [glycolyse, bilan_atp]
+    stem: >
+      La glycolyse transforme une molécule de glucose (6 carbones) en deux
+      molécules de pyruvate (3 carbones chacune), dans le cytoplasme. Elle
+      produit 4 ATP par phosphorylation directe. Pourquoi son bilan NET
+      n'est-il pourtant que de 2 ATP ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Parce que la cellule investit 2 ATP dans les toutes premières
+          réactions de la glycolyse (pour rendre le glucose réactif), avant
+          que les étapes suivantes n'en produisent 4 : le gain réel est donc
+          $4 - 2 = 2$ ATP.
+        correct: true
+      - id: B
+        text: "Parce que la glycolyse ne consomme aucun ATP : elle n'en produit."
+        correct: false
+        feedback: >
+          C'est l'oubli précis que ce rung corrige : les premières réactions
+          de la glycolyse investissent 2 ATP pour phosphoryler le glucose et
+          le rendre réactif, avant que les étapes suivantes n'en produisent
+          4. Sans cet investissement, il n'y aurait pas de bilan net de 2 —
+          il faut compter les deux sens.
+      - id: C
+        text: >
+          Parce que ces 2 ATP proviennent en réalité de la chaîne
+          respiratoire, présente aussi dans le cytoplasme.
+        correct: false
+        feedback: >
+          La chaîne respiratoire n'est pas dans le cytoplasme : elle est sur
+          la membrane interne de la mitochondrie (R4). Les ATP de la
+          glycolyse viennent de la phosphorylation au niveau du substrat, un
+          mécanisme direct qui ne fait intervenir ni chaîne respiratoire ni
+          dioxygène.
+      - id: D
+        text: >
+          Parce qu'il faut compter les 2 $NADH,H^+$ produits comme des ATP
+          directement utilisables.
+        correct: false
+        feedback: >
+          Un $NADH,H^+$ n'est pas de l'ATP : c'est un transporteur
+          d'électrons, dont le potentiel énergétique ne devient de l'ATP
+          qu'après passage par la chaîne respiratoire (R4), et seulement en
+          présence de dioxygène. Les compter directement comme de l'ATP est
+          l'erreur signalée dans ce rung.
+    correct_feedback: >
+      Le bilan net résulte d'une soustraction : 4 ATP produits moins 2 ATP
+      investis au départ pour amorcer la coupure du glucose. C'est ce solde,
+      +2 ATP, qui constitue le vrai gain énergétique de la glycolyse.
+    solution: |
+      **Investissement puis production :** les premières réactions
+      phosphorylent le glucose (coût : 2 ATP) ; les réactions suivantes, une
+      fois le glucose scindé en deux fragments à 3 carbones, produisent 4 ATP
+      par phosphorylation au niveau du substrat.
+
+      **Bilan net :** $4 - 2 = 2$ ATP par glucose, plus 2 $NADH,H^+$ (qui ne
+      deviendront de l'ATP que via la chaîne respiratoire, R4-R5).
+
+  - id: LIB-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_liberation_energie
+    tags: [cycle_de_krebs, oxydation_complete]
+    stem: >
+      En comptant le $CO_2$ libéré à partir d'une molécule de glucose
+      (oxydation des deux pyruvates + deux tours du cycle de Krebs), combien
+      de molécules de $CO_2$ sont produites au total, et que révèle ce
+      chiffre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          6 $CO_2$ au total (2 lors de l'oxydation des deux pyruvates + 4 au
+          cours des deux tours du cycle de Krebs), soit exactement les 6
+          carbones initialement présents dans le glucose : la respiration
+          réalise donc une oxydation complète du glucose.
+        correct: true
+      - id: B
+        text: >
+          2 $CO_2$ au total, car un seul des deux pyruvates issus de la
+          glycolyse est réellement oxydé dans la matrice.
+        correct: false
+        feedback: >
+          Les deux pyruvates issus d'un même glucose subissent chacun le même
+          sort : chacun est oxydé en acétyle (avec libération d'un $CO_2$)
+          puis entre dans un tour du cycle de Krebs. Il faut donc compter les
+          deux, pas un seul.
+      - id: C
+        text: "6 $CO_2$, mais tous libérés pendant la glycolyse, avant l'entrée dans la mitochondrie."
+        correct: false
+        feedback: >
+          La glycolyse ne libère aucun $CO_2$ (R2) : elle coupe le glucose en
+          deux pyruvates sans perte de carbone. Le $CO_2$ n'apparaît qu'à
+          partir de l'oxydation du pyruvate et du cycle de Krebs, dans la
+          matrice mitochondriale.
+      - id: D
+        text: >
+          4 $CO_2$, car les deux carbones qui entrent dans le cycle sous
+          forme de groupement acétyle ne sont jamais libérés.
+        correct: false
+        feedback: >
+          Ce compte oublie les 2 $CO_2$ libérés plus tôt, lors de
+          l'oxydation des deux pyruvates en acétyle (avant même l'entrée
+          dans le cycle). En les ajoutant aux 4 $CO_2$ du cycle de Krebs, on
+          retrouve bien 6, pas 4.
+    correct_feedback: >
+      2 $CO_2$ (oxydation des pyruvates) + 4 $CO_2$ (deux tours du cycle de
+      Krebs) = 6 $CO_2$, exactement le nombre de carbones du glucose de
+      départ. C'est la signature d'une oxydation complète — tout le contraire
+      de ce qui se passe en fermentation (R6).
+    solution: |
+      **Traçage des carbones :** glucose (6 C) → 2 pyruvate (3 C chacun, sans
+      perte, R2) → oxydation de chaque pyruvate (1 $CO_2$ chacun, soit 2 au
+      total) → 2 tours du cycle de Krebs (2 $CO_2$ par tour, soit 4 au
+      total).
+
+      **Bilan :** $2 + 4 = 6$ $CO_2$ — la totalité des 6 carbones du glucose
+      initial. Rien ne reste : c'est une oxydation complète.
+
+  - id: LIB-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_liberation_energie
+    tags: [chaine_respiratoire, role_dioxygene]
+    stem: >
+      Sur la membrane interne de la mitochondrie, quel est le rôle exact du
+      dioxygène dans la chaîne respiratoire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Le dioxygène est l'accepteur final des électrons transportés le
+          long de la chaîne respiratoire ; en se combinant aux électrons et
+          aux ions $H^+$, il forme de l'eau, ce qui permet à la chaîne de
+          continuer à fonctionner.
+        correct: true
+      - id: B
+        text: "Le dioxygène fournit directement les électrons qui alimentent la chaîne respiratoire."
+        correct: false
+        feedback: >
+          Les électrons proviennent des coenzymes réduits ($NADH,H^+$ et
+          $FADH_2$), chargés lors de la glycolyse et du cycle de Krebs — pas
+          du dioxygène. Le dioxygène intervient tout à la fin, comme
+          accepteur, jamais comme fournisseur d'électrons.
+      - id: C
+        text: >
+          Le dioxygène est utilisé directement par l'ATP synthase pour
+          fabriquer les molécules d'ATP.
+        correct: false
+        feedback: >
+          L'ATP synthase est actionnée par le flux d'ions $H^+$ à travers la
+          membrane interne, pas par le dioxygène. Le rôle du dioxygène est
+          indirect : en acceptant les électrons en bout de chaîne, il permet
+          au pompage de $H^+$ (donc, indirectement, à l'ATP synthase) de
+          continuer à fonctionner.
+      - id: D
+        text: >
+          Le dioxygène traverse la membrane interne pour rejoindre la
+          matrice, où il réagit directement avec le glucose.
+        correct: false
+        feedback: >
+          Le glucose est déjà entièrement dégradé bien avant la chaîne
+          respiratoire (glycolyse puis cycle de Krebs, R2-R3) : il ne reste
+          plus de glucose à ce stade. Le dioxygène réagit avec les électrons
+          et les ions $H^+$ sortis de la chaîne, pas avec le glucose.
+    correct_feedback: >
+      Le dioxygène ferme la chaîne en acceptant les électrons et en formant de
+      l'eau. Sans cet accepteur final, la chaîne se bloquerait entièrement, et
+      avec elle toute la phosphorylation oxydative.
+    solution: |
+      **Rôle du dioxygène :** accepteur final des électrons en bout de
+      chaîne respiratoire : $O_2 + 4e^- + 4H^+ \rightarrow 2H_2O$.
+
+      **Pourquoi c'est indispensable :** sans lui, les électrons
+      s'accumuleraient, la chaîne se bloquerait, le pompage de $H^+$
+      s'arrêterait, et l'ATP synthase n'aurait plus de gradient à exploiter.
+
+  - id: LIB-5
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: svt_liberation_energie
+    tags: [fermentation, acide_lactique]
+    stem: >
+      Pendant un sprint intense, les muscles produisent de l'acide lactique
+      même si l'air ambiant contient une quantité normale de dioxygène.
+      Quelle est l'explication correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          L'apport d'O2 aux fibres musculaires ne suit pas assez vite la
+          demande énergétique très élevée de l'effort intense ; les cellules
+          musculaires basculent alors vers la fermentation lactique pour
+          régénérer rapidement le $NAD^+$ nécessaire à la poursuite de la
+          glycolyse.
+        correct: true
+      - id: B
+        text: >
+          L'air ambiant ne contient jamais assez de dioxygène pour un effort
+          intense, quelle que soit la vitesse de la respiration pulmonaire.
+        correct: false
+        feedback: >
+          Ce n'est pas une question de quantité de dioxygène dans l'air (elle
+          ne change pas), mais de la vitesse à laquelle ce dioxygène peut
+          être acheminé et utilisé par les mitochondries des fibres
+          musculaires en pleine action — exactement le point du R0.
+      - id: C
+        text: >
+          La fermentation lactique remplace complètement la respiration
+          cellulaire dans toutes les cellules du corps pendant un effort
+          intense.
+        correct: false
+        feedback: >
+          Seules les fibres musculaires directement sollicitées, dont
+          l'apport en O2 ne suit plus la demande, basculent vers la
+          fermentation lactique. Ce n'est pas un basculement généralisé à
+          « toutes les cellules du corps ».
+      - id: D
+        text: >
+          L'acide lactique est un déchet produit uniquement par des
+          bactéries présentes dans le muscle, pas par les cellules
+          musculaires elles-mêmes.
+        correct: false
+        feedback: >
+          C'est l'erreur classique signalée en R6 : la fermentation lactique
+          n'est pas réservée aux micro-organismes. Les cellules musculaires
+          humaines la réalisent elles-mêmes, ponctuellement, quand l'apport
+          en dioxygène ne suit plus la demande.
+    correct_feedback: >
+      La fermentation lactique prend le relais quand l'apport en O2 ne peut
+      plus suivre la demande d'ATP : elle régénère le $NAD^+$ nécessaire à la
+      poursuite de la glycolyse, au prix d'un bilan énergétique bien plus
+      faible que la respiration.
+    solution: |
+      **Ce qui déclenche la fermentation :** la demande d'ATP dépasse ce que
+      l'apport en O2 permet de soutenir par la chaîne respiratoire.
+
+      **Ce qu'elle accomplit :** elle régénère le $NAD^+$ consommé par la
+      glycolyse, lui permettant de continuer (2 ATP nets par glucose), au
+      prix de l'accumulation locale d'acide lactique — responsable de la
+      sensation de brûlure.
+
+  - id: LIB-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: svt_liberation_energie
+    tags: [comparaison, respiration_fermentation]
+    stem: >
+      La respiration cellulaire et la fermentation partent toutes deux du
+      même glucose, mais leurs bilans en ATP net sont très différents
+      (environ 36 à 38 ATP contre 2 ATP par glucose). Quelle est
+      l'explication correcte de cet écart ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          La fermentation s'arrête après la glycolyse (2 ATP nets, par
+          phosphorylation directe), sans faire appel ni au cycle de Krebs ni
+          à la chaîne respiratoire : l'essentiel de l'énergie chimique du
+          glucose reste alors emmagasiné dans le produit formé (acide
+          lactique ou éthanol), au lieu d'être extrait sous forme d'ATP.
+        correct: true
+      - id: B
+        text: "La fermentation détruit une partie du glucose sous forme de chaleur avant même la glycolyse."
+        correct: false
+        feedback: >
+          La glycolyse elle-même est identique dans les deux voies (R2) : ce
+          qui diffère, c'est ce qui se passe APRÈS, pas une perte de glucose
+          en amont.
+      - id: C
+        text: >
+          La fermentation utilise le même cycle de Krebs que la respiration,
+          mais avec un rendement deux fois plus faible.
+        correct: false
+        feedback: >
+          La fermentation n'utilise pas du tout le cycle de Krebs — c'est
+          précisément pour cela que son bilan s'arrête à 2 ATP. Le cycle de
+          Krebs et la chaîne respiratoire exigent tous deux la présence de
+          dioxygène (R3-R4, R6).
+      - id: D
+        text: >
+          La fermentation nécessite davantage d'étapes biochimiques que la
+          respiration, ce qui consomme plus d'ATP au départ.
+        correct: false
+        feedback: >
+          C'est l'inverse : la fermentation est une voie plus COURTE que la
+          respiration (elle s'arrête après la glycolyse), pas plus longue.
+          L'écart de bilan vient d'étapes qui manquent à la fermentation
+          (Krebs, chaîne respiratoire), pas d'un coût supplémentaire.
+    correct_feedback: >
+      L'écart entre 2 ATP et ~36-38 ATP ne vient pas d'un « coût » de la
+      fermentation, mais de ce qu'elle n'accède pas aux étapes qui produisent
+      l'essentiel de l'ATP (cycle de Krebs, chaîne respiratoire) — ces étapes
+      exigent toutes deux le dioxygène comme accepteur final des électrons.
+    solution: |
+      **Ce qui manque à la fermentation :** le cycle de Krebs (matrice) et la
+      chaîne respiratoire / phosphorylation oxydative (membrane interne),
+      tous deux dépendants du dioxygène (R3-R5).
+
+      **Conséquence :** la fermentation se limite au bilan de la glycolyse
+      seule (2 ATP nets), alors que la respiration complète extrait, via ces
+      étapes supplémentaires, environ 36 à 38 ATP par glucose.
