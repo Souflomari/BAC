@@ -1,0 +1,297 @@
+notion: transformations-lentes-rapides
+skill_code: pc_transformations_lentes_rapides
+misconceptions: []
+
+items:
+  - id: TLR-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Une transformation chimique se termine en quelques dixièmes de seconde,
+      indiscernable à l'oeil nu même avec un chronomètre usuel. Comment la
+      qualifie-t-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rapide"
+        correct: true
+      - id: B
+        text: "Lente"
+        correct: false
+        feedback: >
+          C'est l'inverse du critère : une transformation est dite lente
+          quand son évolution est justement mesurable par nos moyens usuels
+          (oeil, chronomètre), pas quand elle leur échappe.
+      - id: C
+        text: "Ni lente ni rapide : ce critère ne s'applique qu'à certaines réactions"
+        correct: false
+        feedback: >
+          Le critère du temps de réaction s'applique à toute transformation
+          chimique : il compare sa durée à ce que nos moyens d'observation
+          usuels peuvent distinguer, quelle que soit la nature de la réaction.
+      - id: D
+        text: >-
+          Cela dépend uniquement de la famille chimique de la réaction
+          (oxydoréduction, précipitation, acide-base...)
+        correct: false
+        feedback: >
+          La famille chimique ne fixe pas la vitesse à elle seule : une même
+          famille (l'oxydoréduction, par exemple) contient aussi bien la
+          rouille, très lente, que la combustion, quasi instantanée.
+    correct_feedback: >
+      Une durée trop courte pour être suivie par nos moyens usuels
+      d'observation définit une transformation rapide, quelle que soit sa
+      famille chimique.
+    solution: |
+      Le critère « rapide / lente » compare la durée réelle de la
+      transformation à ce qu'un chronomètre ou un oeil humain peuvent
+      distinguer — pas à la nature chimique de la réaction. Une durée de
+      quelques dixièmes de seconde échappe à ces moyens usuels : la
+      transformation est rapide.
+
+  - id: TLR-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Les couples oxydant/réducteur $S_2O_8^{2-}/SO_4^{2-}$ et $I_2/I^-$
+      interviennent dans une réaction. Quelle est l'équation globale
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$S_2O_8^{2-} + 2I^- \\rightarrow 2SO_4^{2-} + I_2$"
+        correct: true
+      - id: B
+        text: "$S_2O_8^{2-} + I_2 \\rightarrow 2SO_4^{2-} + 2I^-$"
+        correct: false
+        feedback: >
+          Cette écriture inverse les rôles : elle fait du diiode $I_2$ un
+          réactif et de l'ion iodure $I^-$ un produit, alors que c'est
+          l'inverse. C'est l'ion iodure qui est oxydé en diiode, pas le
+          contraire.
+      - id: C
+        text: "$S_2O_8^{2-} + I^- \\rightarrow 2SO_4^{2-} + I_2$"
+        correct: false
+        feedback: >
+          Le nombre d'électrons échangés n'est pas respecté : la demi-équation
+          de l'iodure, $2I^- \rightarrow I_2 + 2e^-$, exige deux ions iodure
+          pour un diiode, pas un seul. L'équation n'est pas équilibrée en
+          éléments.
+      - id: D
+        text: "$S_2O_8^{2-} + 2e^- + 2I^- \\rightarrow 2SO_4^{2-} + I_2 + 2e^-$"
+        correct: false
+        feedback: >
+          Les électrons échangés doivent s'annuler lors de la combinaison des
+          deux demi-équations, puisqu'aucun électron ne reste libre en
+          solution : ils ne doivent apparaître ni à gauche ni à droite de
+          l'équation globale.
+    correct_feedback: >
+      L'ion iodure (réducteur) cède 2 électrons que l'ion peroxodisulfate
+      (oxydant) capte : en additionnant les deux demi-équations, les électrons
+      s'annulent exactement.
+    solution: |
+      Réduction : $S_2O_8^{2-} + 2e^- \rightarrow 2SO_4^{2-}$.
+      Oxydation : $2I^- \rightarrow I_2 + 2e^-$.
+      Les deux couples échangent chacun 2 électrons : en additionnant membre à
+      membre, les électrons s'annulent, ce qui donne
+      $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$.
+
+  - id: TLR-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Toutes choses égales par ailleurs, qu'observe-t-on si on augmente la
+      concentration initiale des réactifs d'une transformation lente, à
+      température inchangée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La transformation se termine plus rapidement."
+        correct: true
+      - id: B
+        text: "La durée de la transformation ne change pas."
+        correct: false
+        feedback: >
+          La concentration des réactifs est l'un des deux facteurs cinétiques
+          mis en évidence expérimentalement dans cette leçon : elle change
+          bien la durée de la transformation.
+      - id: C
+        text: "La transformation se termine plus lentement."
+        correct: false
+        feedback: >
+          C'est l'effet inverse de celui observé expérimentalement : augmenter
+          la concentration des réactifs accélère la transformation, elle ne la
+          ralentit pas.
+      - id: D
+        text: "La transformation change de nature chimique."
+        correct: false
+        feedback: >
+          Changer une concentration ne change pas les réactifs ni les produits
+          de la réaction, seulement la durée qu'elle met à se terminer : c'est
+          toujours la même équation chimique.
+    correct_feedback: >
+      C'est un fait établi expérimentalement : plus les concentrations
+      initiales des réactifs sont élevées, plus la transformation se termine
+      rapidement.
+    solution: |
+      En comparant deux expériences identiques sauf pour la concentration
+      d'un réactif, on observe que la transformation la plus concentrée se
+      termine en premier. C'est l'un des deux facteurs cinétiques du
+      chapitre, avec la température.
+
+  - id: TLR-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Pourquoi conserve-t-on les aliments au réfrigérateur, c'est-à-dire au
+      froid ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que la baisse de température ralentit les transformations
+          chimiques de dégradation.
+        correct: true
+      - id: B
+        text: "Parce que le froid détruit chimiquement les espèces réactives."
+        correct: false
+        feedback: >
+          Le froid ne détruit rien chimiquement : les espèces réactives
+          restent présentes. C'est la vitesse à laquelle elles réagissent qui
+          diminue, pas leur quantité.
+      - id: C
+        text: "Parce que le froid diminue la concentration des espèces réactives."
+        correct: false
+        feedback: >
+          La température et la concentration sont deux facteurs cinétiques
+          distincts : refroidir un aliment ne change pas les quantités de
+          matière qu'il contient, seulement l'agitation thermique des
+          espèces.
+      - id: D
+        text: "Le froid n'a aucun effet ; c'est l'emballage qui protège les aliments."
+        correct: false
+        feedback: >
+          La température est justement l'un des deux facteurs cinétiques
+          établis dans cette leçon : elle a un effet réel et mesurable sur la
+          vitesse des transformations, indépendamment de tout emballage.
+    correct_feedback: >
+      Le froid ralentit les transformations chimiques de dégradation, exactement
+      comme il ralentit la réaction entre peroxodisulfate et iodure étudiée
+      dans cette leçon.
+    solution: |
+      La température est un facteur cinétique : l'abaisser diminue l'agitation
+      thermique des espèces réactives, donc le nombre de chocs efficaces par
+      unité de temps, donc ralentit la transformation — ici, la dégradation
+      chimique de l'aliment.
+
+  - id: TLR-5
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Qu'est-ce qui définit un choc efficace entre deux entités réactives, à
+      l'échelle microscopique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une orientation relative favorable ET une énergie suffisante lors du choc."
+        correct: true
+      - id: B
+        text: "N'importe quelle rencontre entre les deux entités réactives."
+        correct: false
+        feedback: >
+          Si tout choc suffisait, seule la fréquence des rencontres — donc
+          uniquement la concentration — contrôlerait la vitesse. Cela
+          n'explique pas l'effet marqué de la température observé
+          expérimentalement, qui change peu cette fréquence mais change
+          beaucoup la vitesse.
+      - id: C
+        text: "Une énergie suffisante lors du choc, l'orientation ne comptant pas."
+        correct: false
+        feedback: >
+          L'orientation relative des entités au moment du choc compte aussi :
+          un choc très énergétique mais mal orienté ne permet pas le
+          réarrangement chimique nécessaire.
+      - id: D
+        text: "Une orientation favorable, l'énergie du choc ne comptant pas."
+        correct: false
+        feedback: >
+          L'énergie du choc compte aussi : un choc bien orienté mais trop
+          « mou » ne fournit pas l'énergie nécessaire pour rompre et former
+          les liaisons du réarrangement chimique.
+    correct_feedback: >
+      Les deux conditions sont nécessaires ensemble : orientation favorable
+      et énergie suffisante. C'est ce qui distingue un choc efficace d'une
+      simple rencontre.
+    solution: |
+      Un choc efficace exige à la fois une orientation relative favorable des
+      entités et une énergie suffisante lors de la rencontre. Ni l'une ni
+      l'autre condition seule ne suffit à expliquer les faits expérimentaux
+      établis en R3, notamment l'effet marqué de la température.
+
+  - id: TLR-6
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      En quoi le mécanisme par lequel la température accélère une
+      transformation diffère-t-il de celui de la concentration ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La température augmente à la fois la fréquence des chocs et la
+          proportion de chocs suffisamment énergétiques, alors que la
+          concentration n'augmente que leur fréquence.
+        correct: true
+      - id: B
+        text: >-
+          La concentration et la température agissent exactement de la même
+          façon : toutes deux n'augmentent que la fréquence des chocs.
+        correct: false
+        feedback: >
+          Si les deux facteurs n'agissaient que sur la fréquence des chocs,
+          l'effet de la température ne serait pas plus marqué que celui de la
+          concentration à variation comparable — or on observe le contraire :
+          la température a un effet cumulé, sur la fréquence ET l'énergie des
+          chocs.
+      - id: C
+        text: >-
+          La température n'a aucun effet sur la fréquence des chocs, elle
+          n'agit que sur leur énergie.
+        correct: false
+        feedback: >
+          Augmenter la température augmente aussi la vitesse de déplacement
+          des entités, donc la fréquence de leurs rencontres — pas seulement
+          l'énergie de chaque choc.
+      - id: D
+        text: >-
+          La concentration augmente l'énergie de chaque choc, la température
+          n'augmente que leur fréquence.
+        correct: false
+        feedback: >
+          C'est l'inverse : augmenter la concentration ne change pas
+          l'agitation ni l'énergie des entités individuelles, seulement leur
+          nombre par unité de volume, donc la fréquence des rencontres.
+    correct_feedback: >
+      La température cumule deux effets — plus de chocs par seconde et une
+      plus grande proportion d'entre eux suffisamment énergétiques — ce qui
+      explique pourquoi son effet sur la vitesse est souvent particulièrement
+      marqué.
+    solution: |
+      Augmenter la concentration augmente uniquement le nombre d'entités par
+      unité de volume, donc la fréquence des chocs. Augmenter la température
+      augmente à la fois cette fréquence (les entités se déplacent plus vite)
+      et la proportion de chocs assez énergétiques pour être efficaces. Les
+      deux effets de la température se cumulent, contrairement à celui de la
+      concentration.

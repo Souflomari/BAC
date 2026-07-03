@@ -1,0 +1,326 @@
+notion: ondes-mecaniques-progressives
+skill_code: pc_ondes_mecaniques_progressives
+misconceptions: []
+
+items:
+  - id: OMP-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    stem: >
+      Qu'est-ce qui caractérise, avant tout, une onde mécanique progressive ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La propagation d'une perturbation dans un milieu matériel, avec
+          transport d'énergie mais sans transport de matière.
+        correct: true
+      - id: B
+        text: >-
+          La propagation d'une perturbation avec transport de matière, mais
+          sans transport d'énergie.
+        correct: false
+        feedback: >
+          C'est exactement l'inverse. Chaque point du milieu revient à sa
+          position de repos une fois la perturbation passée (pas de transport
+          de matière) ; c'est l'énergie de la perturbation qui, elle, avance
+          de proche en proche.
+      - id: C
+        text: >-
+          Un phénomène qui, comme la lumière, n'a besoin d'aucun milieu
+          matériel pour se propager.
+        correct: false
+        feedback: >
+          C'est le contraire : une onde MÉCANIQUE a justement besoin d'un
+          milieu matériel déformable et élastique (corde, eau, air, solide)
+          pour exister. Se passer de tout milieu est le propre des ondes
+          électromagnétiques, pas des ondes mécaniques.
+      - id: D
+        text: >-
+          Un phénomène où chaque point du milieu, une fois atteint, se
+          déplace définitivement dans le sens de la propagation.
+        correct: false
+        feedback: >
+          Un point du milieu oscille autour de sa position de repos et y
+          revient une fois la perturbation passée : il ne se déplace jamais
+          définitivement dans le sens de propagation. C'est la perturbation
+          qui avance, pas la matière.
+    correct_feedback: >
+      Une onde mécanique progressive transporte de l'énergie de proche en
+      proche dans un milieu matériel, sans jamais transporter la matière
+      elle-même : chaque point oscille sur place puis revient à sa position
+      de repos.
+    solution: |
+      Une onde mécanique progressive nécessite un milieu matériel déformable
+      et élastique. La perturbation se propage de point en point : chaque
+      point est écarté par son voisin (il reçoit de l'énergie), puis rappelé
+      vers sa position de repos par l'élasticité du milieu (il n'y a donc pas
+      de déplacement net de matière). L'énergie, elle, continue son chemin
+      vers le point suivant. D'où : transport d'énergie, sans transport de
+      matière.
+
+  - id: OMP-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    stem: >
+      Un bouchon de liège flotte sur un étang. Une vague créée au loin
+      atteint le bouchon, qui se met à osciller verticalement puis revient,
+      la vague passée, à peu près à sa position initiale. Quelle affirmation
+      décrit correctement ce qui s'est passé ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'eau sous le bouchon a oscillé sur place, en relayant le mouvement
+          à l'eau suivante ; le bouchon a reçu de l'énergie, sans être
+          entraîné vers le bord.
+        correct: true
+      - id: B
+        text: >-
+          L'eau qui portait le bouchon a été transportée jusqu'à lui depuis
+          le point d'impact de la perturbation.
+        correct: false
+        feedback: >
+          Si l'eau elle-même avait voyagé jusqu'au bouchon, celui-ci aurait
+          dérivé vers le bord en suivant ce courant. Or il revient à sa
+          position initiale : c'est la perturbation qui a voyagé, pas l'eau.
+      - id: C
+        text: >-
+          Le bouchon n'a reçu aucune énergie : il a seulement bougé sous
+          l'effet du vent au moment du passage de la vague.
+        correct: false
+        feedback: >
+          Le bouchon monte et descend précisément parce que l'onde lui
+          transmet de l'énergie mécanique en le faisant osciller — ce n'est
+          pas un effet du vent, c'est l'effet direct de l'onde qui transporte
+          de l'énergie sans transporter de matière.
+      - id: D
+        text: >-
+          Puisque le bouchon revient à sa position initiale, on peut dire
+          qu'aucune énergie n'a été transmise jusqu'à lui.
+        correct: false
+        feedback: >
+          Revenir à sa position initiale ne veut pas dire « n'avoir rien
+          reçu » : le bouchon a bel et bien monté et redescendu, ce qui exige
+          de l'énergie. Cette énergie a ensuite continué son chemin vers les
+          points suivants — elle n'a pas disparu, elle est passée.
+    correct_feedback: >
+      Le bouchon oscille parce que l'eau sous lui oscille, relayant la
+      perturbation (et l'énergie qu'elle porte) vers les points suivants,
+      sans qu'aucune matière n'ait vraiment voyagé jusqu'à lui.
+    solution: |
+      Le mécanisme de proche en proche : chaque molécule d'eau, une fois
+      écartée par sa voisine, est rappelée vers sa position de repos par
+      cohésion, après avoir transmis le mouvement (et l'énergie) à la
+      molécule suivante. Le bouchon suit fidèlement ce mouvement local :
+      il oscille, reçoit de l'énergie, mais ne dérive pas, parce que l'eau
+      qui le porte ne dérive pas non plus.
+
+  - id: OMP-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    stem: >
+      Sur une corde tendue horizontalement, on secoue une extrémité
+      verticalement, vers le haut puis vers le bas. Quel est le type de
+      l'onde qui se propage le long de la corde ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Transversale."
+        correct: true
+      - id: B
+        text: "Longitudinale."
+        correct: false
+        feedback: >
+          Longitudinale voudrait dire que les points de la corde se
+          déplacent dans la même direction que la propagation (horizontale).
+          Ici, chaque point se déplace verticalement : c'est perpendiculaire
+          à la propagation, donc transversale.
+      - id: C
+        text: "À la fois transversale et longitudinale."
+        correct: false
+        feedback: >
+          Les deux catégories sont définies par la comparaison entre une
+          seule direction de déplacement et la direction de propagation :
+          pour une onde donnée, cette comparaison donne un seul résultat, pas
+          les deux à la fois.
+      - id: D
+        text: "On ne peut pas le dire sans connaître la célérité de l'onde."
+        correct: false
+        feedback: >
+          Le type de l'onde (transversale ou longitudinale) se détermine en
+          comparant la direction du déplacement de la matière à la direction
+          de propagation. La célérité n'entre pas dans ce critère.
+    correct_feedback: >
+      Les points de la corde se déplacent verticalement, perpendiculairement
+      à la direction de propagation qui est horizontale : c'est le critère
+      même d'une onde transversale.
+    solution: |
+      Direction du déplacement des points de la corde : verticale.
+      Direction de propagation : horizontale, le long de la corde.
+      Les deux directions sont perpendiculaires, donc l'onde est
+      transversale.
+
+  - id: OMP-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    stem: >
+      De quoi dépend la célérité d'une onde mécanique se propageant dans un
+      milieu donné (une corde tendue, par exemple) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Uniquement des propriétés du milieu (nature, état) — pas de la
+          forme ni de l'amplitude de la perturbation créée à la source.
+        correct: true
+      - id: B
+        text: >-
+          Principalement de l'amplitude de la perturbation : plus la
+          perturbation créée à la source est grande, plus l'onde va vite.
+        correct: false
+        feedback: >
+          La célérité ne dépend pas de l'amplitude de la perturbation :
+          qu'on crée une perturbation ample ou discrète, dans le même milieu,
+          l'onde voyage toujours à la même vitesse. Seul le milieu fixe la
+          célérité.
+      - id: C
+        text: >-
+          De la distance déjà parcourue depuis la source : plus l'onde s'est
+          déjà éloignée, plus elle va vite.
+        correct: false
+        feedback: >
+          Ceci confond la célérité (fixée par le milieu, constante) avec le
+          retard (qui, lui, dépend bien de la distance parcourue via
+          $\tau = d/v$). La célérité elle-même ne change pas avec la
+          distance dans un milieu homogène.
+      - id: D
+        text: >-
+          Du temps écoulé depuis le début de la perturbation : l'onde
+          accélère à mesure qu'elle avance.
+        correct: false
+        feedback: >
+          Dans un milieu homogène, la célérité reste constante au cours du
+          temps : rien dans le mécanisme de propagation de proche en proche
+          ne fait « accélérer » l'onde à mesure qu'elle avance.
+    correct_feedback: >
+      La célérité est une propriété du milieu — sa rigidité et son inertie —
+      jamais de la source : la même onde, dans le même milieu, voyage
+      toujours à la même vitesse, quelle que soit la perturbation créée.
+    solution: |
+      La célérité $v$ est fixée par la force de rappel et l'inertie du
+      milieu, qui déterminent la vitesse à laquelle la perturbation se
+      relaie de proche en proche. Ni l'amplitude, ni la forme de la
+      perturbation à la source, ni la distance déjà parcourue, ni le temps
+      écoulé ne modifient cette valeur : $v$ reste la même tant que le
+      milieu ne change pas.
+
+  - id: OMP-5
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    stem: >
+      Une source $S$ vibre, et un point $M$ du milieu, situé à une distance
+      $d$ de $S$, reproduit son mouvement avec un retard $\tau = d/v$.
+      Quelle relation relie correctement $y_M(t)$ et $y_S(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y_M(t) = y_S(t - \\tau)$"
+        correct: true
+      - id: B
+        text: "$y_M(t) = y_S(t) - \\tau$"
+        correct: false
+        feedback: >
+          Ici, $\\tau$ (un temps) est soustrait à une élongation $y_S(t)$ (une
+          longueur) : les deux grandeurs n'ont pas la même dimension, cette
+          expression n'a pas de sens physique. Le retard doit s'appliquer à
+          l'instant considéré, pas à l'élongation.
+      - id: C
+        text: "$y_M(t) = y_S(t + \\tau)$"
+        correct: false
+        feedback: >
+          Cette expression ferait bouger $M$ AVANT $S$ (à l'instant $t$, on
+          lirait ce que $S$ fera plus tard, à $t+\\tau$) : ça viole la
+          causalité, $M$ ne peut reproduire que ce que $S$ a DÉJÀ fait.
+      - id: D
+        text: "$y_M(t) = v \\cdot y_S(t - \\tau)$"
+        correct: false
+        feedback: >
+          Rien ne justifie de multiplier l'élongation par la célérité $v$ :
+          $M$ reproduit le même mouvement que $S$, à l'identique, seulement
+          décalé dans le temps — pas amplifié ou réduit par un facteur $v$.
+    correct_feedback: >
+      $M$ rejoue, à l'instant $t$, exactement ce que $S$ a fait à l'instant
+      $t - \tau$ : la même forme de mouvement, seulement retardée de $\tau$.
+    solution: |
+      Si $S$ effectue un mouvement à un instant $t'$, ce mouvement apparaît
+      en $M$ à l'instant $t = t' + \tau$ (le temps que la perturbation mette
+      $\tau$ pour parcourir la distance $d$). En isolant $t'$ :
+      $t' = t - \tau$. Le mouvement que $M$ affiche à l'instant $t$ est donc
+      celui que $S$ affichait à $t - \tau$, d'où $y_M(t) = y_S(t - \tau)$.
+
+  - id: OMP-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    stem: >
+      Une onde sonore, émise par une petite source ponctuelle dans l'air,
+      se propage. Quelle affirmation la décrit correctement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une onde longitudinale (compressions et dilatations de l'air
+          dans la direction de propagation) qui a besoin d'un milieu
+          matériel : elle ne se propage pas dans le vide.
+        correct: true
+      - id: B
+        text: >-
+          C'est une onde transversale, exactement comme celle d'une corde.
+        correct: false
+        feedback: >
+          Le son se propage par des compressions et des dilatations de
+          l'air DANS la direction de propagation, pas perpendiculairement à
+          elle : c'est une onde longitudinale, pas transversale.
+      - id: C
+        text: >-
+          Elle se propage aussi bien dans le vide que dans l'air, comme la
+          lumière.
+        correct: false
+        feedback: >
+          Le son est une onde MÉCANIQUE : il a besoin d'un milieu matériel
+          (air, eau, solide) pour se propager, et ne se propage pas dans le
+          vide. C'est justement ce qui le distingue d'une onde
+          électromagnétique comme la lumière.
+      - id: D
+        text: >-
+          Elle se propage uniquement selon une seule direction de l'espace,
+          comme une onde sur une corde.
+        correct: false
+        feedback: >
+          Une petite source dans l'air est reliée à des voisins dans toutes
+          les directions de l'espace : le son se propage dans les trois
+          dimensions, avec un front d'onde sphérique — pas selon une seule
+          direction comme sur une corde.
+    correct_feedback: >
+      Le son est une onde mécanique longitudinale, qui exige un milieu
+      matériel et se propage dans les trois dimensions de l'espace à partir
+      d'une source ponctuelle.
+    solution: |
+      Le son se propage par compressions/dilatations successives de l'air,
+      dans la même direction que la propagation : onde longitudinale. Comme
+      toute onde mécanique, elle nécessite un milieu matériel élastique et
+      ne se propage pas dans le vide. Une petite source étant reliée à des
+      voisins dans toutes les directions de l'espace, le front d'onde est
+      une sphère qui s'agrandit : onde à trois dimensions.
