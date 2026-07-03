@@ -1,32 +1,24 @@
 /**
  * LessonEnd — the lesson surface's session-close handoff.
  *
- * Spec: docs/design/PAGE-ANATOMY-SPECS.md §LessonEnd (purpose, anatomy, data
- * contract, invariants). Governed by DESIGN-BIBLE §8 (the periphery — gentle
- * return: "one clear what-to-study-next, not a feed of options") and §11
- * (page anatomy: "every page ends... the lesson's session-close moment is the
- * LessonEnd component ON the lesson surface, above the footer" — the footer
- * itself stays a quiet colophon, no engagement mechanics).
+ * Spec: docs/design/PAGE-ANATOMY-SPECS.md §LessonEnd (anatomy, data contract,
+ * invariants) — read that section before touching this file. Governed also by
+ * DESIGN-BIBLE §8 (periphery: one clear "what's next", never a feed of
+ * options) and §11 (page anatomy: the lesson's session-close moment lives
+ * HERE, not in the footer — SiteFooter stays a quiet colophon).
  *
- * Renders ONE clear next recommendation in a quiet register. Deliberately NOT
- * a filled button: DESIGN-BIBLE §13's primary-element table reserves the
- * notion surface's one `.btn-primary` for the embed — a second filled accent
- * action here would be a defect. The recommendation is a plain `.state-layer`
- * row, not a boxed card: §11's section-rhythm rule reserves panels for
- * genuinely interactive/stateful content (MCQ, checkpoint, embed, motion) and
- * flowing content is NOT boxed. The whole handoff is measure-capped to the
- * same reading column as the lesson prose above it (`.notion-prose`) so the
- * close reads as the column's own last word, not a full-width band.
+ * Anatomy (in order): a caps-caption "Et maintenant" label (shared Eyebrow,
+ * muted + decorative — the aside's aria-label already names the region) →
+ * ONE recommendation row, rendered only when `next` is non-null (a plain
+ * state-layer link row, NOT a filled button and NOT a boxed card — the
+ * surface's one btn-primary belongs to the embed, and flowing content here
+ * is not panel-boxed per §11 section-rhythm) → a quiet "Retour aux notions"
+ * link, always present.
  *
- * HONEST-STATE RULE (the data contract). `next` is computed deterministically
- * by the caller (NotionPageView: today, the most recently updated OTHER
- * notion — interleaving beats repeating the same subject) and handed in as
- * `NotionMeta | null`. This component never invents an ordering, never
- * fabricates student state, and renders no `role="progressbar"` — no real
- * per-student state exists yet. When per-student state lands (production-lane,
- * human-gated), the same slot renders the personalized next step; this markup
- * contract does not change. When `next` is null (no other notion exists),
- * only the quiet "Retour aux notions" path renders.
+ * HONEST-STATE RULE: `next` is computed deterministically by the caller
+ * (NotionPageView — today: most recently updated OTHER notion). This
+ * component never fabricates ordering, progress, or student state, and never
+ * renders a progressbar.
  */
 
 import Link from "next/link";
@@ -34,84 +26,46 @@ import type { NotionMeta } from "@/lib/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
+import { subjectLabel, notionHref } from "@/lib/subjects";
 
-// Subject display labels — mirrors the map kept in app/page.tsx and
-// components/notion/NotionPageView.tsx. No shared lib export exists yet for
-// this small display map (each surface currently keeps its own copy); kept
-// local here rather than reaching into a sibling page/view module.
-const SUBJECT_LABELS: Record<string, string> = {
-  maths: "Mathématiques",
-  pc: "Physique-Chimie",
-  svt: "Sciences de la Vie et de la Terre",
-  philo: "Philosophie",
-};
-
-function subjectLabel(subject: string): string {
-  return SUBJECT_LABELS[subject] ?? subject;
-}
-
-function notionHref(subject: string, slug: string): string {
-  return `/notions/${encodeURIComponent(subject)}/${encodeURIComponent(slug)}`;
-}
-
+// ── Subject display labels (mirrors NotionPageView's notion-surface map) ──────
 export function LessonEnd({ next }: { next: NotionMeta | null }) {
   return (
     <aside
       data-lesson-end
       aria-label="Et maintenant"
-      className={cn(
-        "notion-prose",
-        "mt-20 pt-8 border-t border-[var(--color-border-subtle)]"
-      )}
+      className="notion-prose mt-20 pt-8 border-t border-[var(--color-border-subtle)]"
     >
-      {/* Caps-caption label. Decorative: the <aside>'s aria-label already
-          names this region, so the visible label is not announced twice. */}
-      <Eyebrow tone="muted" decorative>
-        Et maintenant
-      </Eyebrow>
+      <Eyebrow tone="muted" decorative>Et maintenant</Eyebrow>
 
-      {/* ONE recommendation — a quiet state-layer row, not a filled button
-          (the surface's one .btn-primary belongs to the embed). Honest-state:
-          renders only when the caller found a real other notion to suggest. */}
+      {/* ONE recommendation — rendered only from real, deterministic caller
+          state. No substitute content, no apology copy when next is null. */}
       {next && (
         <Link
           href={notionHref(next.subject, next.slug)}
           className={cn(
             "group mt-4 flex items-center justify-between gap-6",
-            "-mx-6 rounded-xl px-6 py-6",
+            "-mx-6 px-6 py-6 rounded-xl",
             "state-layer focus-ring [--focus-radius:16px]"
           )}
         >
-          <span className="min-w-0 flex-1">
-            <span
-              className={cn(
-                "block truncate font-serif text-h3 font-semibold",
-                "text-[var(--color-text-primary)]",
-                "transition-colors duration-micro group-hover:text-accent"
-              )}
-            >
-              {next.title}
-            </span>
-            <span className="mt-1 block text-caption text-[var(--color-text-secondary)]">
+          <span className="min-w-0">
+            <span className="block text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
               Changer de matière — {subjectLabel(next.subject)}
             </span>
+            <span className="mt-2 block font-serif text-h3 font-semibold text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro">
+              {next.title}
+            </span>
           </span>
-          <Icon
-            name="arrow-right"
-            size={20}
-            className="flex-shrink-0 text-accent"
-          />
+          <Icon name="arrow-right" size={20} className="flex-shrink-0 text-accent" />
         </Link>
       )}
 
-      {/* Quiet return path — always present, independent of whether a
-          recommendation exists. */}
       <Link
         href="/"
         className={cn(
-          "mt-6 inline-flex items-center gap-1.5",
-          "text-body-sm font-medium",
-          "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+          "mt-6 inline-block",
+          "text-body-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
           "transition-colors duration-micro ease-enter",
           "state-layer rounded px-2 py-1 -mx-2",
           "focus-ring [--focus-radius:8px]"

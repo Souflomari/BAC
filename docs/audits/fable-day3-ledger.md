@@ -309,8 +309,19 @@ Spec-drift fix applied BEFORE the test (PAGE-ANATOMY home anatomy was
 pre-Day-6 — a stale spec would mismeasure the executor, so calibrating the
 instrument is not coaching).
 
-**Blind-pair answer key (SEALED — not in the report):** *(filled when the
-pairs are committed)*
+**Blind-pair answer key (SEALED — not in the report):**
+`web/shots/day7/blind/` — pair-cover: **A = executor (rc-charge), B =
+authored (rlc-serie)**; pair-derivation: **A = authored
+(verification-cosinus), B = executor (i-de-t)**; pair-prose: **A =
+executor (RC mechanism paragraph), B = authored (RLC R3 paragraph)**.
+A/B assignment was coin-flipped per pair before shooting; both sides of
+each pair shot with identical treatment (same viewport, element
+screenshots; height differences are natural content length).
+*Blindness caveat:* the owner has already seen the authored cover and
+derivation in Day-6 evidence, and the prose pairs are from different
+topics — his guesses test whether the LANGUAGE diverges to the eye, not
+pure authorship anonymity. Where his eye catches a difference, capture
+what he saw — that observation outranks the checklist.
 
 **Spec-bug log (questions the docs should have answered):** *(filled per
 article as runs land)*
@@ -406,6 +417,34 @@ motif-specific row. Findings:
 REASONING (not just execution) met the bar; the brief's
 acceptance-instrument pointer (added after article c) demonstrably worked:
 the executor ran the exact row and reported it green.**
+
+### Article (a) RE-RUN — post-tightening convergence test
+
+Same brief, fresh cold session, against the TIGHTENED spec. Result:
+**both previously-divergent rows converged** — element order now
+caption-above-title, no `truncate` (title wraps). Every previously-pinned
+choice reproduced (notion-prose cap, Eyebrow+aria, row metrics, hover cue,
+static arrow). Build green; dom-truth 68/68. The re-run then surfaced a
+FINER layer of ambiguity, resolved sensibly and tightened same-day:
+
+- Row caption: second `Eyebrow` instance vs plain session-card caption —
+  executor chose plain (right, via §11 doubling logic); spec now states it.
+- "serif h3 title": element vs type-scale — executor chose span-at-scale
+  (right, library-card convention); spec now states it.
+- Internal rhythm (label→row, row→return) unpinned — executor chose
+  mt-4/mt-6 on-grid; spec now pins them.
+- Subject-map duplication (its 4th flag across both runs) — and the re-run
+  PROVED the drift risk by mirroring NotionPageView's philo-less copy,
+  silently dropping v1's philo fix. **Closed in code, not just spec:**
+  `web/src/lib/subjects.ts` is now the one home (labels + notionHref);
+  page.tsx / NotionPageView / LessonEnd consume it; spec names it.
+
+**Convergence pattern worth recording for the handoff:** each tightening
+pass eliminates the previous run's divergences and exposes a strictly
+finer layer. Two passes took LessonEnd from "faithful with 7 divergences"
+to "faithful with rhythm-level micro-choices." The spec-tightening loop
+CONVERGES — this, more than any single verdict, is the portability
+result.
 
 ### Handoff skeleton (next dispatch fills this in)
 

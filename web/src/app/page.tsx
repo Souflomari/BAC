@@ -19,6 +19,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listNotions } from "@/lib/content";
 import { getTodaySession } from "@/lib/session";
+import { subjectLabel, notionHref } from "@/lib/subjects";
 import { PageShell } from "@/components/ui/PageShell";
 import { Icon } from "@/components/ui/Icon";
 import { Cover } from "@/components/covers/Cover";
@@ -27,22 +28,6 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Ta session",
 };
-
-// ── Subject display names ──────────────────────────────────────────────────────
-const SUBJECT_LABELS: Record<string, string> = {
-  maths:  "Mathématiques",
-  pc:     "Physique-Chimie",
-  svt:    "Sciences de la Vie et de la Terre",
-  philo:  "Philosophie",
-};
-
-function subjectLabel(subject: string): string {
-  return SUBJECT_LABELS[subject] ?? subject;
-}
-
-function notionHref(subject: string, slug: string): string {
-  return `/notions/${encodeURIComponent(subject)}/${encodeURIComponent(slug)}`;
-}
 
 // ── Empty state ───────────────────────────────────────────────────────────────
 function EmptyState() {

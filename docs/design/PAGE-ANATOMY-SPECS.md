@@ -101,21 +101,30 @@ Inside, in this exact order:
 1. Caps-caption label "Et maintenant" — the shared `Eyebrow` component
    (`tone="muted" decorative` — the aside's aria-label already names the
    region; don't announce twice).
-2. ONE recommendation row, rendered only when `next` is non-null: a plain
-   `state-layer` link row (`-mx-6 px-6 py-6 rounded-xl`, focus-radius 16) —
-   caption context line "Changer de matière — <subject display label>"
-   ABOVE the serif h3 title (the house eyebrow-then-title grammar, as on
-   the session card); accent `arrow-right` icon (20px) right-aligned.
-   Hover cue: title colors to accent (the library-card cue); the arrow
-   stays static. NOT a filled button (the surface's one `btn-primary`
-   belongs to the embed); NOT a boxed card (§11 section-rhythm reserves
-   panels for stateful content — the C2 option-set mock's boxed band was
+2. ONE recommendation row (`mt-4` under the label), rendered only when
+   `next` is non-null: a plain `state-layer` link row (`-mx-6 px-6 py-6
+   rounded-xl`, focus-radius 16) — caption context line "Changer de
+   matière — <subject display label>" ABOVE the serif h3 title (the house
+   eyebrow-then-title grammar, as on the session card; the caption is
+   PLAIN session-card-style caption text, NOT a second `Eyebrow` instance
+   — two hairline-caption motifs in one aside is instrumentation
+   doubling); the title is a SPAN at the h3 type scale (`font-serif
+   text-h3 font-semibold`, `mt-2` under the caption), not a semantic
+   `<h3>` — link-embedded titles are not document headings (library-card
+   convention); accent `arrow-right` icon (20px) right-aligned. Subject
+   labels and the href come from `web/src/lib/subjects.ts` (the ONE home
+   of the subject map — do not re-declare it locally). Hover cue: title
+   colors to accent (the library-card cue); the arrow stays static. NOT
+   a filled button (the surface's one `btn-primary` belongs to the
+   embed); NOT a boxed card (§11 section-rhythm reserves panels for
+   stateful content — the C2 option-set mock's boxed band was
    deliberately dropped in the refile, this is the reconciliation the
    spec previously left unstated). Titles WRAP, never ellipsize
    (wayfinding words are never truncated — house rule, see ground rules).
-3. Quiet "Retour aux notions" link to `/` — always present, including
-   when `next` is null (the null case renders label + return link only,
-   no substitute content, no apology copy).
+3. Quiet "Retour aux notions" link to `/` (`mt-6`) — always present,
+   including when `next` is null (the null case renders label + return
+   link only, no substitute content, no apology copy). Style: the
+   SiteFooter quiet-nav-link recipe, focus-radius 8.
 
 **Data contract (HONEST-STATE RULE).** `next: NotionMeta | null`, computed
 deterministically by the caller (today: most recently updated OTHER notion —

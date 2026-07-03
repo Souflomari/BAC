@@ -29,20 +29,13 @@ import { MarginRail } from "@/components/notion/MarginRail";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
+import { subjectLabel } from "@/lib/subjects";
+
+export { subjectLabel };
 
 export type MastheadVariant = "a1" | "a2" | "a3";
 
 // ── Subject display labels ────────────────────────────────────────────────────
-const SUBJECT_LABELS: Record<string, string> = {
-  maths: "Mathématiques",
-  pc:    "Physique-Chimie",
-  svt:   "Sciences de la Vie et de la Terre",
-};
-
-export function subjectLabel(s: string): string {
-  return SUBJECT_LABELS[s] ?? s;
-}
-
 // ── Breadcrumb ────────────────────────────────────────────────────────────────
 function Breadcrumb({ subject, title }: { subject: string; title: string }) {
   return (
