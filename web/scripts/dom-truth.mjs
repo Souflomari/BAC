@@ -23,7 +23,7 @@
  */
 
 import { chromium } from "playwright-core";
-import { spawn } from "child_process";
+import { spawn, execSync } from "child_process";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
@@ -550,6 +550,29 @@ try {
       else console.log(`  ✓ no overflow, spine holds (left ${Math.round(r.mainLeft)}px)${p !== "/" ? (r.band ? ", band present" : "") : ""}`);
     }
     await wp.close();
+  }
+
+  // (Day-8.5) BUILD STAMP: the footer answers "which version am I looking
+  // at?" — the question behind two deployment-truth incidents. Asserts the
+  // stamp exists AND matches this checkout's HEAD: a mismatch means the
+  // .next build is stale relative to the tree you think you're verifying
+  // (the standing loop is build → verify → commit, so equality holds).
+  {
+    console.log(`\n[/] SWEEP: build stamp present + matches HEAD`);
+    let headSha = null;
+    try {
+      headSha = execSync("git rev-parse --short HEAD", { encoding: "utf8" }).trim();
+    } catch { /* git unavailable — format-only check below */ }
+    await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    const stamp = await page.evaluate(() =>
+      (document.querySelector("footer [data-build-stamp]")?.textContent || "").trim()
+    );
+    checks++;
+    const m = stamp.match(/v\.\s+([0-9a-f]{7,}|inconnu)/);
+    if (!m) failures += fail(`stamp missing or malformed: "${stamp}"`);
+    else if (headSha && m[1] !== headSha && m[1] !== "inconnu")
+      failures += fail(`stamp ${m[1]} ≠ HEAD ${headSha} — the .next build is stale, rebuild before verifying`);
+    else console.log(`  ✓ stamp "${stamp}"${headSha ? ` == HEAD ${headSha}` : " (format only, no git)"}`);
   }
 
   // (F7) KaTeX accessibility parity: every formula ships MathML.

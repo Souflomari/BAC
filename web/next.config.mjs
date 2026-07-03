@@ -1,5 +1,28 @@
+import { execSync } from "node:child_process";
+
+// ── Build stamp (Day-8.5 — deployment truth, the permanent fix) ──────────────
+// Twice in one week the owner could not tell WHICH version he was looking at
+// (Day-4.5, mooted when the symptom self-resolved; Day-8, during his review
+// window). The stamp answers that question forever: the footer colophon
+// renders the short commit SHA + build date, injected here at BUILD time.
+// On Vercel, VERCEL_GIT_COMMIT_SHA is provided; locally we ask git. If both
+// fail (tarball build), the stamp says "inconnu" rather than lying.
+function buildSha() {
+  const vercel = process.env.VERCEL_GIT_COMMIT_SHA;
+  if (vercel) return vercel.slice(0, 7);
+  try {
+    return execSync("git rev-parse --short HEAD", { encoding: "utf8" }).trim();
+  } catch {
+    return "inconnu";
+  }
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXT_PUBLIC_BUILD_SHA: buildSha(),
+    NEXT_PUBLIC_BUILD_DATE: new Date().toISOString().slice(0, 10),
+  },
   // ESM-only packages in the unified markdown/math pipeline need transpilation
   // so Next.js's webpack/SWC can bundle them without "require of ES module" errors.
   transpilePackages: [

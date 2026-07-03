@@ -587,6 +587,51 @@ since Day 3; no instrument looked at heading text WITH math. Fixed
 (heading innerText carries no underscore artifact; R2 heading contains a
 real .katex). Battery: **106 checks, 0 failures.**
 
+## 10. Day-8.5 — deployment truth, closed as a class
+
+Second occurrence: the owner cannot see Day-8 work live, during his review
+window (first occurrence Day 4.5, mooted when the symptom self-resolved).
+Findings, each measured:
+
+1. **Clean-checkout build proof — PASS.** Fresh git worktree of `d8acef7`,
+   `npm ci` + `next build` from `web/` (the Vercel way): exit 0, all 23
+   pages generated, `/options/wide/*` m1–m3 + w1–w3 in the route list.
+   Nothing load-bearing is gitignored; zero `process.env` reads in app
+   code; no engines pin (Node default aligns); no case-sensitivity traps.
+   The commit Vercel received builds clean → the cause is ACCESS-side
+   (which URL / alias / protection), not build-side.
+2. **Vercel-side inspection — NOT REACHABLE.** No Vercel CLI installed, no
+   auth; per the dispatch, stated and stopped — no inference from push
+   events. What the webhook metadata alone shows (platform report, not
+   verified): rootDirectory "web"; two URL families — the branch URL
+   (`bac-git-claude-vibrant-fermi-…`) while Building and `bac-pink` when
+   Ready.
+3. **Config audit:** no `vercel.json`, no `.vercel/` — the project is
+   configured entirely dashboard-side (invisible from the repo). This
+   asymmetry is WHY the class recurs: the repo cannot prove what the
+   dashboard does. The build stamp closes the loop from the other side.
+4. **The permanent fix — the build stamp.** Footer colophon now renders
+   "· v. <short-sha> · <date>", injected at build (next.config.mjs:
+   VERCEL_GIT_COMMIT_SHA on Vercel / git locally / "inconnu"). dom-truth
+   asserts presence AND stamp==HEAD (mismatch = stale build — itself
+   signal). Battery: **107 checks, 0 failures.** From the next deployment
+   on, "which version am I looking at?" is answered by the page itself.
+
+**Diagnosis matrix (keyed to the owner's dashboard answer; staged fixes
+execute on receipt):** see the Day-8.5 report — recorded identically
+there and here: (a) old-version → owner is on the production domain or a
+pinned alias; fix = confirm the URL he uses; production only updates on
+PR merge (owner-gated), bac-pink should track the branch — if it doesn't,
+re-alias in the dashboard (owner action; no settings changes from here).
+(b) blank page → runtime JS error; fix = his browser console text, then
+targeted repro (clean build renders locally, so likely extension/network
+local to him). (c) Vercel-404 → deployment not found/expired link; fix =
+open the PR's latest Ready link. (d) auth-wall → Deployment Protection on
+previews; fix = dashboard toggle or bypass link (owner action). (e)
+options-routes-404-only → deployment predates d8acef7; fix = confirm the
+footer stamp on what he sees (the stamp exists for exactly this) and
+redeploy/wait for the d8acef7+ build.
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**

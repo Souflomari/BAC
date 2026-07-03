@@ -86,7 +86,13 @@ OWNER-REVIEW-PENDING.]
 **Anatomy.** `<footer mt-24 border-t subtle>` → spine container `py-10` →
 row 1: identity line ("**BAC** · sciences — préparer le bac marocain,
 calmement.") + nav with ONE link (Notions); row 2 (`mt-4`, caption):
-"© <year> — contenu aligné sur le cadre de référence national."
+"© <year> — contenu aligné sur le cadre de référence national." followed by
+the **build stamp** (`[data-build-stamp]`, Day-8.5): "· v. <short-sha> ·
+<yyyy-mm-dd>", injected at build time via `next.config.mjs`
+(VERCEL_GIT_COMMIT_SHA on Vercel, `git rev-parse` locally, "inconnu" if
+neither). It answers "which version am I looking at?" — the question
+behind two deployment-truth incidents. dom-truth asserts presence AND
+SHA-matches-HEAD (a mismatch = stale build).
 
 **Invariants.** Footer present on every surface; contains "cadre de
 référence"; inner container on the spine. NO engagement mechanics, no link

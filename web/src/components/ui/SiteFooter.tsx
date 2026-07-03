@@ -51,6 +51,15 @@ export function SiteFooter({ container }: { container: string }) {
         <p className="mt-4 text-caption text-[var(--color-text-secondary)]">
           © {new Date().getFullYear()} — contenu aligné sur le cadre de référence
           national.
+          {/* Build stamp (Day-8.5 deployment truth): commit + build date,
+              injected at build time (next.config.mjs). Answers "which
+              version am I looking at?" — the question behind two incidents.
+              Quiet by design; a computable fact, per the metadata honesty
+              rule. dom-truth asserts presence + SHA match. */}
+          <span data-build-stamp className="ml-2 tabular-nums opacity-70">
+            · v. {process.env.NEXT_PUBLIC_BUILD_SHA} ·{" "}
+            {process.env.NEXT_PUBLIC_BUILD_DATE}
+          </span>
         </p>
       </div>
     </footer>
