@@ -24,3 +24,15 @@ derivations:
         note: null
       - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
         note: "L'hypothèse est confirmée — et la substitution nous a offert en prime la valeur de $T_0$. Remarque : $R$ n'y figure pas, et ce n'est pas un hasard — il n'était pas dans l'équation idéale."
+
+  - id: i-de-t
+    title: "Dériver i(t) — le cosinus composé"
+    steps:
+      - math: 'q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
+        note: "Le point de départ : c'est la solution qu'on vient de confirmer. Il ne reste qu'à dériver une fois — c'est la définition posée en R1, $i = \\frac{dq}{dt}$."
+      - math: 'i(t) = \frac{dq}{dt} = -Q_{max}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right) \cdot \frac{d}{dt}\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
+        note: "Dériver un cosinus composé : d'abord le cosinus extérieur — ça donne $-\\sin$ du même argument — PUIS multiplier par la dérivée de l'intérieur (la règle de la chaîne). Le réflexe fautif classique : s'arrêter après le $-\\sin$ et oublier ce second facteur — ça efface le $\\frac{2\\pi}{T_0}$ et fausse l'amplitude du courant."
+      - math: '\frac{d}{dt}\!\left(\frac{2\pi t}{T_0} + \varphi\right) = \frac{2\pi}{T_0}'
+        note: "L'intérieur, c'est $\\frac{2\\pi}{T_0}\\cdot t + \\varphi$ : linéaire en $t$ (sa dérivée est le coefficient $\\frac{2\\pi}{T_0}$), plus $\\varphi$ — une CONSTANTE, fixée une fois pour toutes par les conditions initiales, dont la dérivée est nulle. Deuxième réflexe fautif : essayer de « dériver $\\varphi$ », ou le faire disparaître à tort."
+      - math: '\boxed{i(t) = -\frac{2\pi Q_{max}}{T_0}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right)}'
+        note: "On réinjecte ce facteur dans l'expression du départ. Le courant est sinusoïdal, à la même période $T_0$ que $q(t)$ — mais c'est un sinus là où $q(t)$ est un cosinus. L'amplitude du courant, $i_{max} = \\frac{2\\pi Q_{max}}{T_0}$, se lit directement sur le facteur de tête."

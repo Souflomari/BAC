@@ -177,9 +177,11 @@ L'hypothèse est confirmée : le cosinus est bien une solution, et la substituti
 
 ### Déduire $i(t)$
 
-On dérive $q(t)$ par rapport au temps :
+Il ne reste qu'à dériver $q(t)$ une fois — c'est la définition posée en R1, $i = \frac{dq}{dt}$. Le cosinus qu'on vient de confirmer est une fonction composée (un facteur linéaire du temps à l'intérieur), et c'est précisément là que la plupart des erreurs de dérivation se glissent. Avance chaque transformation toi-même ; la note te dit à chaque étape où est le piège.
 
-$$i(t) = \frac{dq}{dt} = -\frac{2\pi Q_{max}}{T_0}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right)$$
+[[derivation:i-de-t]]
+
+Le courant est donc lui aussi sinusoïdal, à la période $T_0$ — mais déphasé : un sinus là où $q(t)$ est un cosinus, exactement le décalage d'un quart de période qu'on a observé en R1 entre les maxima de $E_C$ et de $E_L$. L'amplitude du courant se lit directement sur le facteur de tête, $i_{max} = \frac{2\pi Q_{max}}{T_0}$.
 
 ### Exemple numérique
 

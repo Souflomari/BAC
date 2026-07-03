@@ -367,6 +367,27 @@ R-codes). Divergences and findings:
 handling of every gap it hit. The two real bugs it exposed are TEMPLATE
 bugs (box letter vs corpus practice), both tightened same-day.**
 
+### Article (c) — i-de-t derivation: gap analysis
+
+Committed as produced (`day7(c)` commit). Math verified correct (chain rule
+staged as symbolic-outer → evaluate-inner → substitute; the boxed result
+matches R5's reused derivative and the corpus's i_max convention). Both
+wrong-reflex layers are real student errors placed at the exact steps they
+occur. The prose weld is better than the original: the closing paragraph
+ties the sinus/cosinus quadrature back to R1's quarter-period energy
+observation — cross-rung coherence the bare formula never had. dom-truth:
+present + step-2-absent both green; build green. Divergences and findings:
+
+| # | Finding | Class | Outcome |
+|---|---|---|---|
+| 1 | `i_{max}` (lowercase) over the brief's `I_max` | faithful (to corpus) — the BRIEF was wrong | Brief bug noted; the brief's own "keep the lesson's existing notation" clause resolved the conflict correctly. Left as-run. |
+| 2 | Step 1 restates q(t) as an anchor step (0 transformations) | faithful — mirrors `verification-cosinus`'s opening-step pattern | None. The exemplar carried the convention; this is exemplar-transfer working. |
+| 3 | Executor found the pre-authored DAY7(c) acceptance row only by grepping the id "out of caution" | **dispatch-protocol bug (the sharpest of article c)** | A brief that names a machine-checked deliverable must POINT AT the check. Encoded in day7-briefs/README: acceptance sections name their dom-truth rows. The executor's stated failure mode is exact: a different id would have shipped green-looking with the row permanently red. |
+
+**Verdict: FAITHFUL — component contract, corpus conventions, and physics
+all held; the one real bug is in the dispatch protocol, tightened
+same-day.**
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**

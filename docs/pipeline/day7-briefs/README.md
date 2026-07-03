@@ -31,6 +31,12 @@ Standing constraints carried by every brief (from RULES.md / DESIGN-BIBLE):
   to already know (which chapter/section owns each prerequisite relation),
   or the executor cannot distinguish a legitimate one-line "rappel" from
   re-teaching another section's content.
+- **Briefs point at their acceptance instruments** (added Day 7 — article
+  (c) hit this): when a machine check exists for the named deliverable
+  (a dom-truth row keyed to the exact id/slug), the brief's acceptance
+  section names it and requires it green. Otherwise a cold executor can
+  tick manually-reasoned boxes, pick a different id, and leave the real
+  check permanently red — green-looking work, silently unmeasured.
 - **Do not commit** — leave work in the tree and end with a report
   (deliverables, decisions made, and any questions the docs failed to
   answer). The dispatching session verifies, measures, and commits.
