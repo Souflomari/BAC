@@ -1,0 +1,329 @@
+notion: noyaux-masse-energie
+skill_code: pc_noyaux_masse_energie
+misconceptions: []
+
+items:
+  - id: NME-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un noyau atomique, une fois ses nucléons assemblés, a une masse
+      comparée à la somme des masses de ses nucléons pris séparément (le
+      proton et le neutron isolés). Que peut-on affirmer, pour n'importe
+      quel noyau stable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Sa masse est strictement inférieure à la somme des masses des
+          nucléons séparés.
+        correct: true
+      - id: B
+        text: >-
+          Sa masse est strictement supérieure à la somme des masses des
+          nucléons séparés.
+        correct: false
+        feedback: >
+          C'est l'inverse : assembler les nucléons libère de l'énergie
+          (via l'interaction forte), et par $E=mc^2$ cette énergie libérée
+          correspond à une perte de masse, pas à un gain. Le noyau assemblé
+          est toujours plus léger.
+      - id: C
+        text: "Sa masse est exactement égale à la somme des masses des nucléons séparés."
+        correct: false
+        feedback: >
+          Ce serait le cas si l'assemblage ne mettait en jeu aucune
+          énergie de liaison — or c'est précisément l'énergie de liaison,
+          jamais nulle pour un noyau réellement lié, qui crée cet écart de
+          masse.
+      - id: D
+        text: >-
+          Ça dépend du noyau : certains noyaux sont plus lourds, d'autres
+          plus légers que la somme de leurs nucléons séparés.
+        correct: false
+        feedback: >
+          Le défaut de masse $\Delta m = Zm_p + Nm_n - m_{\text{noyau}}$
+          est positif pour tout noyau lié, sans exception — c'est une
+          conséquence directe du fait que l'assemblage libère de l'énergie,
+          quel que soit le noyau.
+    correct_feedback: >
+      Le défaut de masse est toujours positif pour un noyau lié : le noyau
+      assemblé pèse toujours moins lourd que ses nucléons pris séparément.
+    solution: |
+      Assembler des nucléons libres en un noyau, sous l'effet de
+      l'interaction forte, libère de l'énergie. Par l'équivalence
+      masse-énergie ($E = mc^2$), cette énergie libérée correspond à une
+      diminution de la masse du système : $\Delta m = Zm_p + Nm_n -
+      m_{\text{noyau}} > 0$ pour tout noyau lié.
+
+  - id: NME-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un noyau stable, livré à lui-même, va-t-il spontanément libérer, au
+      cours du temps, son énergie de liaison $E_l$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non — $E_l$ est l'énergie qu'il faudrait fournir de l'extérieur
+          pour casser le noyau, pas une énergie que le noyau contient
+          prête à s'échapper.
+        correct: true
+      - id: B
+        text: >-
+          Oui, un peu à chaque instant, comme une pile qui se décharge
+          lentement.
+        correct: false
+        feedback: >
+          $E_l$ n'est pas une réserve d'énergie que le noyau relâche
+          spontanément : c'est le prix à payer pour le dissocier. Un noyau
+          stable ne se dissocie pas tout seul, donc il ne « rend » rien.
+      - id: C
+        text: "Oui, mais seulement si le noyau est chauffé."
+        correct: false
+        feedback: >
+          La chaleur (l'agitation thermique) ne mobilise pas l'énergie de
+          liaison nucléaire : il faudrait des énergies d'un tout autre
+          ordre de grandeur (des MeV par nucléon) pour dissocier un noyau,
+          bien au-delà de ce qu'apporte l'agitation thermique ordinaire.
+      - id: D
+        text: >-
+          Impossible à savoir sans connaître la constante radioactive
+          $\lambda$ du noyau.
+        correct: false
+        feedback: >
+          $\lambda$ (chapitre précédent) gouverne une désintégration
+          radioactive spontanée d'un noyau instable vers un autre noyau —
+          un phénomène différent de l'énergie de liaison, qui, elle, mesure
+          la solidité de l'assemblage des nucléons et ne se « libère »
+          jamais spontanément pour un noyau stable.
+    correct_feedback: >
+      $E_l$ est l'énergie qu'il faut fournir pour dissocier le noyau, pas
+      une énergie qu'il libère de lui-même : un noyau stable reste stable
+      indéfiniment, sans rien relâcher.
+    solution: |
+      $E_l$ est définie comme l'énergie à fournir pour séparer le noyau en
+      ses nucléons isolés (ou, de façon équivalente, l'énergie libérée
+      lors de sa formation à partir de ces nucléons). Un noyau stable, une
+      fois formé, ne se dissocie pas spontanément : il n'y a donc rien à
+      « libérer » de nouveau sans apport d'énergie extérieur.
+
+  - id: NME-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Le noyau X a une énergie de liaison totale $E_l$ deux fois plus
+      grande que celle du noyau Y. Peut-on en conclure que X est plus
+      stable, nucléon pour nucléon, que Y ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non, pas nécessairement : il faut comparer $E_l/A$, pas $E_l$
+          brute, car X peut simplement avoir beaucoup plus de nucléons que
+          Y.
+        correct: true
+      - id: B
+        text: "Oui, une énergie de liaison totale plus grande signifie toujours un noyau plus stable."
+        correct: false
+        feedback: >
+          $E_l$ totale grandit presque automatiquement avec la taille du
+          noyau (plus de nucléons, plus de liaisons à casser) — elle ne
+          mesure pas, à elle seule, la solidité de chaque liaison. C'est
+          $E_l/A$, l'énergie de liaison par nucléon, qui compare
+          honnêtement deux noyaux de tailles différentes.
+      - id: C
+        text: >-
+          Non, on ne peut rien conclure du tout sans connaître le rapport
+          $N/Z$ de chaque noyau.
+        correct: false
+        feedback: >
+          Le rapport $N/Z$ (chapitre précédent) renseigne sur la stabilité
+          d'un noyau vis-à-vis d'une désintégration radioactive — une
+          notion différente. La comparaison demandée ici porte sur
+          l'énergie de liaison par nucléon, qu'on peut très bien évaluer
+          sans connaître $N/Z$.
+      - id: D
+        text: >-
+          Oui, car $E_l$ est proportionnelle à $A$, donc $E_l/A$ serait
+          aussi deux fois plus grand pour X.
+        correct: false
+        feedback: >
+          $E_l$ n'est pas simplement proportionnelle à $A$ : c'est
+          exactement pour ça que la courbe d'Aston n'est pas une droite,
+          mais monte puis redescend. Rien ne permet de déduire $E_l/A$ à
+          partir de $E_l$ seule sans connaître $A$ pour chaque noyau.
+    correct_feedback: >
+      C'est $E_l/A$, l'énergie de liaison par nucléon, qui mesure
+      honnêtement la stabilité — pas l'énergie de liaison totale, qui
+      grandit avec la taille du noyau.
+    solution: |
+      $E_l$ totale dépend à la fois de la solidité des liaisons ET du
+      nombre de nucléons. Pour comparer deux noyaux de tailles
+      différentes, il faut diviser par $A$ : $E_l/A$ mesure ce que chaque
+      nucléon, en moyenne, doit à sa liaison avec ses voisins,
+      indépendamment de la taille totale du noyau.
+
+  - id: NME-4
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      D'après la courbe d'Aston (énergie de liaison par nucléon $E_l/A$ en
+      fonction de $A$, croissante puis décroissante avec un maximum vers
+      $A \approx 60$), pourquoi la fusion de deux noyaux légers libère-t-elle
+      de l'énergie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que le noyau formé, plus lourd, a un $E_l/A$ plus grand
+          que les noyaux légers de départ : il se rapproche du maximum de
+          la courbe.
+        correct: true
+      - id: B
+        text: >-
+          Parce qu'un noyau plus lourd contient toujours plus de neutrons,
+          ce qui le stabilise automatiquement contre la radioactivité.
+        correct: false
+        feedback: >
+          C'est confondre deux notions différentes : le rapport $N/Z$
+          (chapitre précédent) gouverne la stabilité contre la
+          désintégration radioactive, pas l'énergie de liaison par
+          nucléon. C'est bien $E_l/A$, pas $N/Z$, qui explique l'énergie
+          libérée ici.
+      - id: C
+        text: >-
+          Parce que la fusion, comme la fission, libère toujours de
+          l'énergie, quels que soient les noyaux en jeu.
+        correct: false
+        feedback: >
+          Faux en général : fusionner deux noyaux déjà proches du maximum
+          de la courbe (ou au-delà) n'en libérerait pas. C'est la position
+          des noyaux sur la courbe d'Aston, pas le simple fait de
+          fusionner, qui détermine si de l'énergie est libérée.
+      - id: D
+        text: >-
+          Parce que les noyaux légers ont un $E_l/A$ plus grand que les
+          noyaux lourds, donc fusionner les en rapproche du bas de la
+          courbe.
+        correct: false
+        feedback: >
+          C'est l'inverse : les noyaux très légers ont un $E_l/A$ plus
+          PETIT (la courbe grimpe depuis les petits $A$). C'est justement
+          parce qu'ils sont bas sur la courbe que les rapprocher du
+          maximum, en fusionnant, libère de l'énergie.
+    correct_feedback: >
+      La fusion rapproche des noyaux légers du sommet de la courbe
+      d'Aston : leur $E_l/A$ augmente, donc de l'énergie est libérée.
+    solution: |
+      Un système évolue spontanément vers un état de moindre énergie,
+      c'est-à-dire vers un $E_l/A$ plus grand sur la courbe d'Aston. Deux
+      noyaux légers, situés sur la partie montante de la courbe (avant le
+      maximum vers $A \approx 60$), forment par fusion un noyau plus
+      lourd et plus proche du maximum : son $E_l/A$ est plus grand que
+      celui des noyaux de départ, donc de l'énergie est libérée.
+
+  - id: NME-5
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un noyau a un défaut de masse $\Delta m = 0{,}010\ \text{u}$. Quelle
+      est, en ordre de grandeur, l'énergie de liaison correspondante ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Environ $9{,}3\\ \\text{MeV}$."
+        correct: true
+      - id: B
+        text: "Environ $9{,}3\\ \\text{eV}$."
+        correct: false
+        feedback: >
+          C'est un facteur $10^6$ trop petit : le facteur de conversion
+          $1\ \text{u} \approx 931{,}5\ \text{MeV}/c^2$ est exprimé en MeV,
+          pas en eV.
+      - id: C
+        text: "Environ $0{,}010\\ \\text{MeV}$."
+        correct: false
+        feedback: >
+          Ce choix oublie de multiplier $\Delta m$ par le facteur de
+          conversion $931{,}5$ — il traite la valeur en $\text{u}$ comme si
+          elle était déjà une énergie en MeV.
+      - id: D
+        text: "Environ $931{,}5\\ \\text{MeV}$."
+        correct: false
+        feedback: >
+          C'est l'énergie équivalente à $1\ \text{u}$ tout entier, pas à
+          $\Delta m = 0{,}010\ \text{u}$. Il faut multiplier $931{,}5$ par
+          la valeur réelle de $\Delta m$, pas l'utiliser telle quelle.
+    correct_feedback: >
+      $E_l = \Delta m \times 931{,}5 = 0{,}010 \times 931{,}5 \approx
+      9{,}3\ \text{MeV}$.
+    solution: |
+      $E_l = \Delta m \, c^2$, et le facteur de conversion établi au R1
+      donne directement $E_l \text{(MeV)} = \Delta m \text{(u)} \times
+      931{,}5$. Ici : $E_l = 0{,}010 \times 931{,}5 \approx 9{,}3\ \text{MeV}$.
+
+  - id: NME-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Dans une réaction nucléaire, on calcule $\Delta m = m_{\text{produits}}
+      - m_{\text{réactifs}} = +0{,}05\ \text{u}$ (positif). Que peut-on en
+      conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Cette réaction ne peut pas se produire spontanément : il
+          faudrait au contraire lui fournir de l'énergie.
+        correct: true
+      - id: B
+        text: "Cette réaction libère de l'énergie, comme toute réaction nucléaire."
+        correct: false
+        feedback: >
+          Un $\Delta m$ positif signifie que les produits sont plus lourds
+          que les réactifs — c'est l'inverse d'une libération d'énergie,
+          qui exige $\Delta m < 0$ (des produits plus légers que les
+          réactifs).
+      - id: C
+        text: >-
+          Le signe de $\Delta m$ n'a pas d'importance : seule sa valeur
+          absolue compte pour calculer l'énergie mise en jeu.
+        correct: false
+        feedback: >
+          La valeur absolue donne bien l'énergie mise en jeu, mais le
+          signe indique si cette énergie est libérée ou doit être
+          fournie — une information qu'on ne peut pas ignorer pour savoir
+          si la réaction est possible spontanément.
+      - id: D
+        text: "Cette réaction est nécessairement une fission, jamais une fusion."
+        correct: false
+        feedback: >
+          Le signe de $\Delta m$ renseigne sur le sens du transfert
+          d'énergie, pas sur la nature fission/fusion de la réaction :
+          une fusion mal choisie, entre noyaux déjà très proches du
+          maximum de la courbe d'Aston, pourrait tout aussi bien donner
+          $\Delta m > 0$.
+    correct_feedback: >
+      $\Delta m > 0$ signifie des produits plus lourds que les réactifs :
+      la réaction consommerait de l'énergie plutôt que d'en libérer, donc
+      elle ne se produit pas spontanément.
+    solution: |
+      $\Delta m = m_{\text{produits}} - m_{\text{réactifs}}$. Si $\Delta m
+      < 0$, les produits sont plus légers : de l'énergie $|\Delta m| c^2$
+      est libérée. Si $\Delta m > 0$, comme ici, les produits sont plus
+      lourds : la réaction demanderait un apport d'énergie extérieur pour
+      avoir lieu, elle ne se produit donc pas spontanément.

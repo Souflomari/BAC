@@ -1,0 +1,340 @@
+notion: soi-non-soi
+skill_code: svt_soi_non_soi
+misconceptions: []
+items:
+  - id: SNS-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: svt_soi_non_soi
+    tags: [soi_non_soi, tolerance_immunitaire]
+    stem: >
+      Pourquoi le système immunitaire d'un individu ne réagit-il pas contre
+      les molécules du soi de ce même individu, alors qu'il est parfaitement
+      capable de les détecter ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que, dès la vie embryonnaire, les cellules immunitaires capables de réagir contre les molécules déjà présentes dans l'organisme sont éliminées ou neutralisées : c'est la tolérance immunitaire."
+        correct: true
+      - id: B
+        text: "Parce que les molécules du soi ne portent aucun antigène et sont donc invisibles pour les cellules immunitaires."
+        correct: false
+        feedback: >
+          C'est l'inverse : les molécules du soi (CMH, marqueurs sanguins)
+          sont bel et bien détectables — c'est justement ce qui permet, par
+          exemple, à une greffe ou à une transfusion incompatible d'être
+          repérée par le système immunitaire d'un AUTRE individu. Ce n'est
+          pas leur invisibilité qui explique la tolérance, mais un
+          apprentissage précoce à ne pas y réagir.
+      - id: C
+        text: "Parce que le non-soi n'existe pas encore à la naissance, donc il n'y a rien à distinguer du soi à ce stade."
+        correct: false
+        feedback: >
+          Le non-soi (agents pathogènes, greffons éventuels) peut se
+          présenter à tout âge, y compris très tôt après la naissance. La
+          tolérance ne repose pas sur l'absence de non-soi, mais sur
+          l'élimination précoce des cellules immunitaires qui auraient
+          réagi contre le soi lui-même.
+      - id: D
+        text: "Parce que le soi et le non-soi sont deux catégories fixées une fois pour toutes, indépendamment de tout apprentissage du système immunitaire."
+        correct: false
+        feedback: >
+          La tolérance montre au contraire que la non-réaction contre le
+          soi résulte d'un processus actif (l'élimination des cellules
+          immunitaires auto-réactives pendant la vie embryonnaire), pas
+          d'une catégorie figée dès le départ.
+    correct_feedback: >
+      La tolérance immunitaire, mise en place pendant la vie embryonnaire,
+      élimine les cellules immunitaires qui auraient réagi contre les
+      molécules du soi déjà présentes. C'est ce processus actif, et non une
+      absence de détection, qui explique que l'organisme ne s'attaque pas
+      lui-même.
+    solution: |
+      **Ce qu'il faut écarter :** les molécules du soi sont bien détectables
+      (le CMH et les marqueurs sanguins le prouvent dès qu'ils changent
+      d'organisme, R2-R4) — la tolérance n'est donc pas une question
+      d'invisibilité.
+
+      **Le mécanisme réel :** pendant la vie embryonnaire, les cellules
+      immunitaires capables de réagir contre les molécules déjà présentes
+      dans l'organisme sont éliminées ou neutralisées. Le système immunitaire
+      « apprend » ainsi, tôt, à tolérer ce qui compose l'organisme lui-même.
+
+  - id: SNS-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: svt_soi_non_soi
+    tags: [antigene_anticorps, specificite]
+    stem: >
+      On ajoute un sérum contenant des anticorps anti-A à quatre échantillons
+      d'hématies, de groupes O, A, B et AB respectivement. On observe une
+      agglutination uniquement avec les échantillons des groupes A et AB.
+      Quel principe explique le mieux ce résultat ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Chaque anticorps reconnaît spécifiquement un antigène précis (ici l'antigène A) : seules les hématies qui portent cet antigène sont agglutinées, quel que soit le groupe d'origine du sérum."
+        correct: true
+      - id: B
+        text: "Les anticorps se lient à n'importe quelle hématie étrangère au sérum utilisé, sans lien avec un antigène particulier."
+        correct: false
+        feedback: >
+          Si c'était le cas, les quatre échantillons (O, A, B, AB) auraient
+          tous été agglutinés par le sérum anti-A, puisque tous sont
+          « étrangers » au sérum. Ce n'est pas ce qu'on observe : seuls A et
+          AB réagissent, parce que seuls A et AB portent l'antigène A —
+          preuve d'une reconnaissance spécifique, pas générale.
+      - id: C
+        text: "Antigène et anticorps désignent la même chose ; l'agglutination se produit simplement quand deux « antigènes » identiques se rencontrent."
+        correct: false
+        feedback: >
+          Antigène et anticorps sont deux entités différentes et
+          complémentaires : l'antigène est la molécule reconnue (ici, porté
+          par les hématies), l'anticorps est la molécule qui la reconnaît
+          spécifiquement (ici, dans le sérum). Ce ne sont pas des synonymes.
+      - id: D
+        text: "L'agglutination dépend uniquement du groupe sanguin d'origine du sérum, indépendamment de l'antigène réellement présent sur les hématies testées."
+        correct: false
+        feedback: >
+          Le résultat observé dépend précisément de la présence ou de
+          l'absence de l'antigène A sur les hématies testées (A et AB
+          réagissent, O et B non) — c'est la présence de l'antigène cible qui
+          détermine la réaction, pas une propriété générale du sérum.
+    correct_feedback: >
+      L'anticorps anti-A ne se lie qu'à l'antigène A : c'est le principe
+      clé-serrure. Seules les hématies porteuses de cet antigène précis (A et
+      AB) sont agglutinées ; O et B, qui n'en portent pas, ne réagissent pas.
+    solution: |
+      **Observation :** agglutination avec A et AB, pas avec O et B.
+
+      **Interprétation :** l'anticorps anti-A ne reconnaît que l'antigène A.
+      A et AB portent cet antigène ; O n'en porte aucun, B ne porte que
+      l'antigène B. Seuls les échantillons portant la cible spécifique de
+      l'anticorps réagissent — la reconnaissance antigène-anticorps est
+      spécifique, jamais générale.
+
+  - id: SNS-3
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_soi_non_soi
+    tags: [cmh, greffe, jumeaux]
+    stem: >
+      Un patient a besoin d'une greffe de rein. Deux donneurs se présentent :
+      son frère jumeau monozygote, et un donneur non apparenté dont le groupe
+      sanguin ABO est identique au sien. Lequel de ces deux donneurs présente
+      a priori le risque de rejet le plus faible, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le frère jumeau monozygote, car il partage un patrimoine génétique identique au patient, donc des molécules de CMH strictement identiques, reconnues comme du soi à 100 %."
+        correct: true
+      - id: B
+        text: "Le donneur non apparenté, car un groupe sanguin ABO identique garantit à lui seul une compatibilité complète pour la greffe d'organe."
+        correct: false
+        feedback: >
+          La compatibilité ABO concerne les hématies (transfusions) et ne
+          renseigne en rien sur la compatibilité du CMH, qui gouverne le
+          risque de rejet d'un greffon d'organe. Ce sont deux systèmes de
+          marqueurs du soi indépendants : un donneur ABO-compatible peut
+          très bien avoir un CMH totalement différent de celui du receveur.
+      - id: C
+        text: "Les deux donneurs présentent le même risque, puisque le rejet de greffe ne dépend pas des molécules du CMH."
+        correct: false
+        feedback: >
+          C'est au contraire le CMH, extrêmement polymorphe et quasiment
+          unique à chaque individu (sauf vrais jumeaux), qui gouverne la
+          reconnaissance du greffon comme soi ou non-soi. Les deux donneurs
+          ne sont donc pas équivalents.
+      - id: D
+        text: "Le frère jumeau, mais uniquement parce que les jumeaux ont automatiquement le même groupe sanguin ABO l'un que l'autre."
+        correct: false
+        feedback: >
+          Le partage du groupe ABO n'est pas systématique entre jumeaux
+          monozygotes pour la conclusion recherchée ici : ce qui rend le
+          risque de rejet quasi nul, c'est l'identité de leur CMH (issue d'un
+          patrimoine génétique identique), pas leur groupe sanguin.
+    correct_feedback: >
+      Le CMH, et non le groupe sanguin ABO, gouverne le risque de rejet d'un
+      greffon d'organe. Les vrais jumeaux, génétiquement identiques,
+      partagent un CMH strictement identique : le greffon est reconnu comme
+      du soi à 100 % par le système immunitaire du receveur.
+    solution: |
+      **Ce qui gouverne le rejet de greffe :** la compatibilité du CMH, pas
+      la compatibilité ABO (qui concerne les transfusions).
+
+      **Le frère jumeau monozygote** partage, par construction, un
+      patrimoine génétique identique à celui du patient — donc des
+      molécules de CMH strictement identiques. Risque de rejet lié au CMH :
+      quasi nul.
+
+      **Le donneur non apparenté**, même ABO-compatible, porte presque
+      certainement un CMH différent : ses cellules seront détectées comme
+      non-soi, avec un risque de rejet nettement plus élevé.
+
+  - id: SNS-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [groupe_sanguin, abo, transfusion]
+    stem: >
+      Une personne de groupe sanguin B peut-elle recevoir, sans risque, une
+      transfusion de sang du groupe A ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non, car son plasma contient l'anticorps anti-A, qui reconnaîtra spécifiquement l'antigène A porté par les hématies du donneur et provoquera une agglutination."
+        correct: true
+      - id: B
+        text: "Oui, car les hématies du donneur (groupe A) ne portent pas l'antigène B, donc rien ne peut réagir avec le plasma du receveur."
+        correct: false
+        feedback: >
+          C'est regarder le mauvais antigène. La réaction ne vient pas de
+          l'antigène B (absent chez le donneur), mais de l'antigène A que
+          les hématies du donneur portent bel et bien — et que l'anticorps
+          anti-A du receveur reconnaît spécifiquement.
+      - id: C
+        text: "Oui, car le système ABO ne concerne que les greffes d'organes, pas les transfusions sanguines."
+        correct: false
+        feedback: >
+          C'est l'inverse : le système ABO est précisément le système de
+          marqueurs qui conditionne la compatibilité des transfusions
+          sanguines. La compatibilité des greffes d'organes dépend, elle,
+          du CMH (R3) — un système différent.
+      - id: D
+        text: "Non, mais uniquement à cause du facteur Rhésus, le système ABO n'étant pas concerné dans ce cas."
+        correct: false
+        feedback: >
+          Le facteur Rhésus n'est pas en cause ici : le problème vient
+          directement du système ABO — l'anticorps anti-A du receveur (groupe
+          B) reconnaît l'antigène A porté par les hématies du donneur. Ce
+          risque existe indépendamment de tout facteur Rhésus.
+    correct_feedback: >
+      Le plasma d'un individu de groupe B contient l'anticorps anti-A. Les
+      hématies transfusées du groupe A portent l'antigène A : la
+      reconnaissance spécifique anticorps-antigène provoque une
+      agglutination — la transfusion est incompatible.
+    solution: |
+      **Antigènes et anticorps en présence :** hématies du donneur (groupe
+      A) portent l'antigène A ; plasma du receveur (groupe B) contient
+      l'anticorps anti-A.
+
+      **Conséquence :** l'anti-A du receveur reconnaît spécifiquement
+      l'antigène A du donneur (principe clé-serrure, R2) et provoque une
+      agglutination des hématies transfusées — transfusion incompatible et
+      dangereuse.
+
+  - id: SNS-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [rhesus, anticorps_immun, transfusion]
+    stem: >
+      Un individu Rhésus négatif reçoit, par erreur, une première
+      transfusion de sang Rhésus positif. Aucune réaction grave n'est
+      observée sur le moment. Peut-on en conclure qu'il pourra recevoir sans
+      risque du sang Rhésus positif à l'avenir ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : cette première exposition a pu sensibiliser son organisme (production d'anticorps anti-D dans les semaines suivantes), rendant une seconde exposition à du sang Rh+ dangereuse."
+        correct: true
+      - id: B
+        text: "Oui, car l'absence de réaction immédiate prouve qu'il ne produira jamais d'anticorps anti-D."
+        correct: false
+        feedback: >
+          C'est confondre l'absence de réaction immédiate avec une absence
+          définitive de risque. Contrairement aux agglutinines du système
+          ABO (présentes dès la naissance), l'anticorps anti-D est un
+          anticorps « immun » : il n'apparaît qu'après une exposition à
+          l'antigène D, et sa production prend du temps — ce qui explique
+          l'absence de réaction visible lors de cette première exposition.
+      - id: C
+        text: "Oui, car le système Rhésus ne concerne que les greffes d'organes, pas les transfusions sanguines."
+        correct: false
+        feedback: >
+          Le système Rhésus, comme le système ABO, est un système de
+          marqueurs des hématies : il concerne directement les transfusions
+          sanguines, pas les greffes d'organes (qui dépendent du CMH, R3).
+      - id: D
+        text: "Non, car le sang Rh+ transfusé contient toujours des anticorps qui attaquent directement le receveur."
+        correct: false
+        feedback: >
+          Le risque ne vient pas d'anticorps apportés par le sang du
+          donneur, mais de l'anticorps anti-D que LE RECEVEUR peut
+          développer après avoir été exposé à l'antigène D porté par les
+          hématies transfusées.
+    correct_feedback: >
+      L'anti-D est un anticorps immun : il n'existe pas naturellement chez
+      un individu Rh-, mais peut apparaître après une première exposition à
+      l'antigène D. L'absence de réaction immédiate ne dit rien sur le
+      risque d'une exposition future, une fois l'organisme sensibilisé.
+    solution: |
+      **Différence avec le système ABO :** les agglutinines anti-A/anti-B
+      sont naturellement présentes dès les premiers mois de vie ; l'anticorps
+      anti-D, lui, n'apparaît qu'après une exposition à l'antigène D — c'est
+      un anticorps « immun », pas « naturel ».
+
+      **Conséquence :** la première exposition Rh+ peut sensibiliser
+      l'organisme sans réaction visible immédiate (le temps que l'anti-D se
+      forme) ; une seconde exposition à du sang Rh+ déclenchera, elle, une
+      agglutination franche.
+
+  - id: SNS-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [soi_modifie, non_soi, cellule_infectee]
+    stem: >
+      Une cellule infectée par un virus, ou une cellule devenue cancéreuse,
+      peut être reconnue et ciblée par le système immunitaire de l'organisme
+      auquel elle appartient génétiquement. Pourquoi, alors qu'elle provient
+      bien du soi de cet individu ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que l'infection ou la transformation cancéreuse modifie les molécules que la cellule présente à sa surface, qui ne correspondent plus à la signature habituelle du soi : on parle de « soi modifié »."
+        correct: true
+      - id: B
+        text: "Parce qu'une cellule infectée ou cancéreuse devient génétiquement étrangère à l'organisme, donc automatiquement du non-soi au sens strict."
+        correct: false
+        feedback: >
+          Le patrimoine génétique de la cellule ne change pas de propriétaire
+          : elle reste, génétiquement, une cellule DE l'organisme. Ce qui
+          change, c'est le profil moléculaire qu'elle affiche à sa surface —
+          pas son origine génétique.
+      - id: C
+        text: "Parce que le système immunitaire attaque systématiquement toute cellule infectée ou anormale, sans aucune reconnaissance moléculaire précise."
+        correct: false
+        feedback: >
+          Cela contredirait le principe de spécificité vu au R2 : la
+          reconnaissance repose toujours sur des molécules précises
+          (fragments viraux, molécules anormales issues de mutations)
+          affichées à la surface de la cellule, pas sur une attaque
+          générale et non ciblée.
+      - id: D
+        text: "Parce qu'une cellule infectée ou cancéreuse perd entièrement ses molécules de CMH, ce qui la rend invisible et donc automatiquement éliminée."
+        correct: false
+        feedback: >
+          Ce n'est pas le mécanisme décrit ici : la cellule affiche des
+          molécules ANORMALES ou ÉTRANGÈRES (fragments viraux, molécules
+          mutées) plutôt que de perdre toute molécule de surface — c'est
+          cette signature modifiée, détectable, qui la fait reconnaître
+          comme non conforme au soi habituel.
+    correct_feedback: >
+      Une cellule infectée ou cancéreuse reste génétiquement « soi », mais
+      affiche à sa surface des molécules anormales (fragments viraux,
+      molécules mutées) qui ne correspondent plus à la signature habituelle
+      du soi. C'est cette signature modifiée — le « soi modifié » — qui la
+      rend détectable comme non-soi.
+    solution: |
+      **Ce qui ne change pas :** l'origine génétique de la cellule — elle
+      appartient toujours à l'organisme.
+
+      **Ce qui change :** les molécules affichées à sa surface (fragments
+      viraux pour une cellule infectée, molécules anormales issues de
+      mutations pour une cellule cancéreuse).
+
+      **Conséquence :** cette signature moléculaire modifiée ne correspond
+      plus au répertoire habituel du soi ; le système immunitaire la traite
+      comme du non-soi, alors même que la cellule provient génétiquement de
+      l'individu — c'est le principe du « soi modifié ».

@@ -1,0 +1,281 @@
+notion: suivi-temporel-vitesse
+skill_code: pc_suivi_temporel_vitesse
+misconceptions: []
+
+items:
+  - id: STV-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    stem: >
+      Lors d'un suivi temporel par titrage, pourquoi bloque-t-on (« trempe »)
+      chaque prélèvement avant de le doser ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Pour ralentir fortement la réaction dans l'échantillon prélevé, afin
+          que sa composition ne change plus pendant le temps nécessaire au
+          dosage.
+        correct: true
+      - id: B
+        text: "Pour rendre le changement de couleur à l'équivalence plus facile à repérer."
+        correct: false
+        feedback: >
+          La trempe ne vise pas le repérage de l'équivalence (une question de
+          choix d'indicateur) : elle vise à bloquer cinétiquement l'échantillon.
+          Sans elle, la réaction continuerait pendant le dosage et fausserait
+          la mesure de l'avancement à l'instant du prélèvement.
+      - id: C
+        text: "Parce qu'un dosage ne peut se faire qu'à froid, quelle que soit la réaction étudiée."
+        correct: false
+        feedback: >
+          Ce n'est pas une règle générale du dosage : c'est spécifique au
+          suivi temporel d'une transformation encore en cours, où l'échantillon
+          prélevé doit être figé pour représenter fidèlement l'instant du
+          prélèvement.
+      - id: D
+        text: "Pour éviter que le prélèvement ne réagisse avec l'air ambiant."
+        correct: false
+        feedback: >
+          Le risque ici n'est pas une réaction parasite avec l'air, mais la
+          poursuite de la transformation étudiée elle-même dans l'échantillon,
+          pendant toute la durée du dosage.
+    correct_feedback: >
+      La trempe combine dilution et refroidissement : elle actionne les deux
+      facteurs cinétiques du chapitre précédent (concentration, température)
+      dans le sens qui ralentit, jusqu'à figer l'avancement de l'échantillon.
+    solution: |
+      Un dosage prend du temps. Sans blocage, la réaction continuerait dans
+      l'échantillon prélevé et le résultat du dosage ne représenterait plus
+      l'avancement au moment du prélèvement. La trempe (dilution brutale +
+      refroidissement) abaisse fortement concentration et température dans
+      l'échantillon, donc sa vitesse de réaction, donc son avancement reste
+      pratiquement figé pendant le dosage.
+
+  - id: STV-2
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    stem: >
+      Quelle méthode de suivi temporel exploite directement le fait qu'une
+      transformation chimique dégage un gaz ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le suivi manométrique (mesure de pression) ou la mesure du volume de gaz dégagé."
+        correct: true
+      - id: B
+        text: "La conductimétrie."
+        correct: false
+        feedback: >
+          La conductimétrie suit la variation de la conductivité globale de
+          la solution, liée aux ions consommés ou formés — elle ne concerne
+          pas directement un gaz dégagé.
+      - id: C
+        text: "La spectrophotométrie."
+        correct: false
+        feedback: >
+          La spectrophotométrie exploite une espèce colorée en solution (loi
+          de Beer-Lambert) ; elle ne mesure rien sur un gaz dégagé.
+      - id: D
+        text: "Le titrage."
+        correct: false
+        feedback: >
+          Le titrage est une méthode chimique générale, applicable à toute
+          transformation par prélèvement et dosage. Elle ne s'appuie pas
+          spécifiquement sur le dégagement gazeux, contrairement au suivi
+          manométrique ou volumétrique.
+    correct_feedback: >
+      Quand une réaction libère un gaz, la quantité de gaz formé est
+      directement liée à l'avancement : mesurer sa pression (volume fermé) ou
+      son volume (pression constante) suit donc directement la réaction.
+    solution: |
+      Une réaction qui dégage un gaz produit une quantité de gaz
+      proportionnelle à l'avancement x. Mesurer la pression dans une enceinte
+      à volume constant, ou le volume de gaz recueilli à pression constante,
+      donne donc une grandeur qui varie de façon monotone avec x : c'est
+      exactement la condition nécessaire à tout suivi temporel.
+
+  - id: STV-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    stem: >
+      Quelle est l'expression correcte de la vitesse volumique de réaction $v$,
+      à partir de l'avancement $x(t)$ et du volume $V$ du mélange réactionnel
+      (supposé constant) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v = \\dfrac{1}{V}\\dfrac{dx}{dt}$"
+        correct: true
+      - id: B
+        text: "$v = \\dfrac{dx}{dt}$"
+        correct: false
+        feedback: >
+          Cette expression dépend de la quantité totale de matière en jeu,
+          donc de la taille de l'échantillon — pas d'une grandeur comparable
+          d'une expérience à l'autre. Il manque la division par $V$.
+      - id: C
+        text: "$v = V\\dfrac{dx}{dt}$"
+        correct: false
+        feedback: >
+          Multiplier par $V$ au lieu de diviser accentue encore la dépendance
+          à la taille de l'échantillon, à l'opposé de l'effet recherché.
+      - id: D
+        text: "$v = \\dfrac{1}{V}\\dfrac{dV}{dt}$"
+        correct: false
+        feedback: >
+          Cette expression ne fait même pas intervenir l'avancement $x$ : ce
+          n'est pas la vitesse volumique de réaction.
+    correct_feedback: >
+      $v = \dfrac{1}{V}\dfrac{dx}{dt}$, en $\text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$ :
+      la pente de la tangente à $x(t)$, divisée par le volume.
+    solution: |
+      La vitesse volumique de réaction se définit à partir de la dérivée de
+      l'avancement par rapport au temps, divisée par le volume du mélange :
+      $v = \dfrac{1}{V}\dfrac{dx}{dt}$. La division par $V$ rend $v$
+      indépendante de la taille de l'échantillon.
+
+  - id: STV-4
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    stem: >
+      On réalise deux fois la même réaction, avec les mêmes concentrations
+      initiales, mais dans un volume total deux fois plus grand pour la
+      seconde. Que peut-on dire de $dx/dt$ et de $v$ dans les deux expériences,
+      à un instant correspondant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $dx/dt$ est environ deux fois plus grande dans le grand volume, mais
+          $v$ est sensiblement la même dans les deux cas.
+        correct: true
+      - id: B
+        text: "$v$ est environ deux fois plus grande dans le grand volume."
+        correct: false
+        feedback: >
+          C'est justement pour éviter cette dépendance à la taille de
+          l'échantillon qu'on divise par $V$ dans la définition de $v$ : $v$
+          ne double pas.
+      - id: C
+        text: "$dx/dt$ est la même dans les deux expériences."
+        correct: false
+        feedback: >
+          Le grand volume contient environ deux fois plus d'entités
+          réactives (mêmes concentrations, volume double), donc environ deux
+          fois plus de quantité de matière réagit par seconde : $dx/dt$
+          n'est pas conservée.
+      - id: D
+        text: "$v$ et $dx/dt$ sont tous deux environ deux fois plus grands dans le grand volume."
+        correct: false
+        feedback: >
+          $dx/dt$ double bien, mais $v$ — la vitesse volumique — est
+          construite justement pour ne pas dépendre de la taille de
+          l'échantillon : elle reste sensiblement la même.
+    correct_feedback: >
+      À concentrations égales, la fréquence des chocs efficaces par unité de
+      volume est la même dans les deux expériences : $v$ ne change pas, même
+      si $dx/dt$ double avec la quantité totale de matière.
+    solution: |
+      Le volume double avec les mêmes concentrations initiales : il y a deux
+      fois plus d'entités réactives en tout, donc dx/dt est environ deux fois
+      plus grande. Mais les concentrations, donc la fréquence des chocs
+      efficaces par unité de volume, sont identiques : v, qui divise par V,
+      reste sensiblement la même dans les deux expériences.
+
+  - id: STV-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    stem: >
+      Comment évolue la vitesse volumique de réaction $v(t)$ au cours d'une
+      transformation chimique lente typique, entre le début et la fin ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v(t)$ est maximale au tout début et diminue continûment, en tendant vers zéro quand la réaction s'achève."
+        correct: true
+      - id: B
+        text: "$v(t)$ reste constante du début à la fin."
+        correct: false
+        feedback: >
+          Une vitesse constante donnerait une courbe $x(t)$ en ligne droite.
+          Or les mesures montrent une courbe qui ralentit nettement : la
+          pente diminue au fil du temps.
+      - id: C
+        text: "$v(t)$ augmente continûment jusqu'à la fin de la réaction."
+        correct: false
+        feedback: >
+          C'est l'inverse de ce qu'on observe : la pente de $x(t)$ diminue
+          avec le temps, elle n'augmente pas.
+      - id: D
+        text: "$v(t)$ diminue d'abord, puis augmente à nouveau en fin de réaction."
+        correct: false
+        feedback: >
+          Une transformation lente typique, sans intervention extérieure, ne
+          montre pas ce rebond : $x(t)$ reste concave (sa pente ne fait que
+          diminuer) du début jusqu'à la fin.
+    correct_feedback: >
+      Les réactifs sont consommés au fil de la réaction : leurs concentrations
+      chutent, donc les chocs efficaces se raréfient, donc $v(t)$ diminue sans
+      cesse, d'un maximum au départ vers zéro à la fin.
+    solution: |
+      Au fur et à mesure que la réaction avance, les quantités de réactifs
+      restants diminuent, donc leurs concentrations diminuent, donc la
+      fréquence des chocs efficaces par unité de temps diminue. v(t) est donc
+      maximale tout au début (v0) et décroît continûment vers zéro à mesure
+      que la transformation s'achève.
+
+  - id: STV-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    stem: >
+      Comment définit-on le temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'instant où l'avancement $x(t)$ atteint la moitié de sa valeur maximale $x_{max}$."
+        correct: true
+      - id: B
+        text: "L'instant où la moitié de la durée totale de la réaction s'est écoulée."
+        correct: false
+        feedback: >
+          Puisque la vitesse n'est pas constante (elle est plus grande au
+          début), l'avancement ne progresse pas linéairement avec le temps :
+          x atteint la moitié de $x_{max}$ bien avant que la moitié de la
+          durée totale ne soit écoulée.
+      - id: C
+        text: "L'instant où la vitesse volumique $v(t)$ vaut la moitié de sa valeur initiale $v(0)$."
+        correct: false
+        feedback: >
+          $t_{1/2}$ se définit à partir de la courbe d'avancement $x(t)$, pas
+          à partir de la courbe de vitesse $v(t)$ : ces deux courbes
+          atteignent « la moitié » de leur échelle à des instants différents
+          en général.
+      - id: D
+        text: "L'instant où la transformation est totalement terminée, c'est-à-dire où $x(t) = x_{max}$."
+        correct: false
+        feedback: >
+          Cela décrit la fin de la réaction (avancement maximal atteint), pas
+          sa moitié. $t_{1/2}$ correspond à $x = x_{max}/2$, un instant bien
+          antérieur à la fin de la transformation.
+    correct_feedback: >
+      $t_{1/2}$ est l'instant où $x(t_{1/2}) = x_{max}/2$ : comme $x(t)$
+      croît continûment sans jamais reculer, cet instant existe et est unique.
+    solution: |
+      x(t) croît continûment de 0 à x_max sans jamais redescendre : elle
+      traverse donc une seule fois la valeur x_max/2. Cet instant est, par
+      définition, le temps de demi-réaction t_1/2. Graphiquement : on repère
+      x_max (le plateau), on calcule sa moitié, et on lit l'abscisse du point
+      où la courbe atteint cette valeur.

@@ -1,0 +1,297 @@
+notion: denombrement
+skill_code: maths_denombrement
+misconceptions: []
+items:
+  - id: DENOMB-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["principe-multiplicatif", "principe-additif"]
+    stem: >
+      Un restaurant propose 4 entrées et 3 plats. Combien de menus complets
+      (une entrée et un plat) peut-on composer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$12$"
+        correct: true
+      - id: B
+        text: "$7$"
+        correct: false
+        feedback: >
+          Tu as additionné $4+3=7$ au lieu de multiplier. L'énoncé demande une
+          entrée ET un plat — deux choix qui se combinent l'un avec l'autre,
+          pas une alternative entre deux familles séparées. Le mot "et"
+          signale le principe multiplicatif, pas le principe additif.
+      - id: C
+        text: "$4$"
+        correct: false
+        feedback: >
+          Ce choix ne retient que le nombre d'entrées, en oubliant que chaque
+          entrée peut être associée à n'importe lequel des 3 plats. Il faut
+          compter TOUTES les combinaisons entrée-plat, pas seulement les
+          entrées.
+      - id: D
+        text: "$3$"
+        correct: false
+        feedback: >
+          Ce choix ne retient que le nombre de plats, en oubliant les entrées.
+          Un menu complet exige de choisir les deux à la fois : il faut
+          combiner les 4 entrées avec les 3 plats, pas garder un seul des deux
+          nombres.
+    correct_feedback: >
+      Chaque entrée peut être associée à n'importe lequel des 3 plats : c'est
+      le principe multiplicatif, $4 \times 3 = 12$. Un arbre des choix le
+      confirme : 4 branches "entrée", chacune prolongée par 3 branches
+      "plat".
+    solution: |
+      **Ce qu'on cherche :** un menu = une entrée ET un plat, deux choix qui
+      se combinent — le principe multiplicatif s'applique.
+      $$4 \times 3 = 12$$
+      Il y a 12 menus complets possibles.
+
+  - id: DENOMB-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["p-liste", "tirage-avec-remise"]
+    stem: >
+      Un digicode utilise 3 chiffres parmi 0 à 9, avec répétition autorisée
+      (par exemple 000, 118 ou 999 sont tous des codes valides). Combien de
+      codes différents existe-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1\\,000$"
+        correct: true
+      - id: B
+        text: "$720$"
+        correct: false
+        feedback: >
+          Ce résultat ($10 \times 9 \times 8$) suppose qu'un chiffre déjà
+          utilisé ne peut plus resservir — c'est le calcul d'un arrangement
+          SANS répétition. Mais l'énoncé autorise explicitement la
+          répétition : chaque position a bien $10$ choix, pas un de moins à
+          chaque étape.
+      - id: C
+        text: "$30$"
+        correct: false
+        feedback: >
+          Ce choix additionne $10+10+10=30$ au lieu de multiplier. Les trois
+          positions du code se combinent TOUTES ensemble (1ère position ET
+          2e ET 3e) : c'est le principe multiplicatif, pas le principe
+          additif.
+      - id: D
+        text: "$10$"
+        correct: false
+        feedback: >
+          Ce choix ne compte que les possibilités d'UNE seule position, en
+          oubliant qu'il y a 3 positions indépendantes à combiner.
+    correct_feedback: >
+      Chaque position a 10 choix indépendants, et la répétition est permise
+      (donc rien ne change d'une position à l'autre) : c'est une p-liste,
+      $10^3 = 1\,000$.
+    solution: |
+      **Ce qu'on cherche :** un tirage successif AVEC remise (répétition
+      autorisée) sur 3 positions : une p-liste avec $n=10$, $p=3$.
+      $$10^3 = 1\,000$$
+      Il y a 1 000 codes possibles.
+
+  - id: DENOMB-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["arrangement", "tirage-sans-remise", "ordre"]
+    stem: >
+      Dans une course de 6 chevaux, on veut prédire le tiercé exact (quel
+      cheval arrive 1er, quel cheval arrive 2e, quel cheval arrive 3e, dans
+      cet ordre). Combien de tiercés différents sont possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$120$"
+        correct: true
+      - id: B
+        text: "$20$"
+        correct: false
+        feedback: >
+          Ce résultat est $\binom{6}{3}$, une combinaison — elle compte les
+          groupes de 3 chevaux SANS les ordonner. Mais l'énoncé distingue
+          1er, 2e et 3e : ce sont trois rôles différents, donc l'ordre
+          compte. Il faut un arrangement $A_6^3$, pas une combinaison.
+      - id: C
+        text: "$216$"
+        correct: false
+        feedback: >
+          Ce résultat ($6^3$) traite le tirage comme s'il y avait remise —
+          comme si un même cheval pouvait être classé deux fois. Mais un
+          cheval déjà classé 1er ne peut plus être classé 2e : le nombre de
+          choix diminue à chaque étape, ce n'est pas une p-liste.
+      - id: D
+        text: "$720$"
+        correct: false
+        feedback: >
+          Ce résultat est $6!$, le nombre de façons de ranger les 6 chevaux
+          en entier. Mais on ne classe que les 3 premiers, pas les 6 : il
+          faut $6 \times 5 \times 4$, pas $6 \times 5 \times 4 \times 3 \times
+          2 \times 1$.
+    correct_feedback: >
+      L'ordre compte (1er ≠ 2e ≠ 3e) et un cheval classé ne peut plus l'être
+      une seconde fois : c'est un arrangement, $A_6^3 = 6 \times 5 \times 4 =
+      120$.
+    solution: |
+      **Ce qu'on cherche :** un tirage sans remise, ordonné (3 rôles
+      distincts) parmi 6 chevaux : $A_6^3$.
+      $$A_6^3 = 6 \times 5 \times 4 = 120$$
+      Il y a 120 tiercés possibles.
+
+  - id: DENOMB-4
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["permutation", "factorielle"]
+    stem: >
+      Combien de façons différentes y a-t-il de ranger 5 livres distincts,
+      côte à côte, sur une étagère ayant exactement 5 places ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$120$"
+        correct: true
+      - id: B
+        text: "$20$"
+        correct: false
+        feedback: >
+          Ce résultat ($5 \times 4$) s'arrête après seulement deux facteurs,
+          comme s'il n'y avait que 2 places à remplir. Il y a bien 5 places :
+          il faut poursuivre le produit jusqu'au bout, $5 \times 4 \times 3
+          \times 2 \times 1$.
+      - id: C
+        text: "$3\\,125$"
+        correct: false
+        feedback: >
+          Ce résultat ($5^5$) suppose qu'on pourrait reposer un livre déjà
+          placé à une autre place (comme un tirage avec remise). Mais un
+          livre, une fois posé, ne peut pas être posé une deuxième fois
+          ailleurs : ranger 5 livres distincts est une permutation, pas une
+          p-liste.
+      - id: D
+        text: "$24$"
+        correct: false
+        feedback: >
+          Ce résultat est $4!$, comme si une des 5 places ne comptait pas.
+          Il y a bien 5 places à remplir avec 5 livres distincts : le produit
+          doit avoir 5 facteurs, pas 4.
+    correct_feedback: >
+      On range TOUS les livres : c'est une permutation de 5 éléments,
+      $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.
+    solution: |
+      **Ce qu'on cherche :** ranger la totalité des 5 livres, aucun n'est
+      laissé de côté — une permutation de 5 éléments.
+      $$5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$$
+      Il y a 120 rangements possibles.
+
+  - id: DENOMB-5
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["combinaison", "tirage-simultane"]
+    stem: >
+      Un jury de 4 personnes doit être formé à partir de 10 candidats, sans
+      distinction de rôle entre les 4 membres. Combien de jurys différents
+      peut-on former ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$210$"
+        correct: true
+      - id: B
+        text: "$5\\,040$"
+        correct: false
+        feedback: >
+          Ce résultat est l'arrangement $A_{10}^4 = 10 \times 9 \times 8
+          \times 7$, qui distingue l'ordre des 4 personnes. Mais un jury
+          "sans distinction de rôle" ne distingue aucun ordre : chaque groupe
+          de 4 est compté $4!=24$ fois dans cet arrangement. Il faut diviser
+          par $4!$ pour ne compter chaque jury qu'une seule fois.
+      - id: C
+        text: "$40$"
+        correct: false
+        feedback: >
+          Ce résultat ($10 \times 4$) traite la situation comme deux choix
+          indépendants à enchaîner. Mais il s'agit d'un seul tirage
+          simultané d'un groupe de 4 parmi 10 — pas de deux étapes séparées à
+          multiplier.
+      - id: D
+        text: "$10\\,000$"
+        correct: false
+        feedback: >
+          Ce résultat ($10^4$) suppose qu'un même candidat pourrait être
+          choisi plusieurs fois pour le jury, comme dans une p-liste avec
+          répétition. Mais chaque candidat ne peut faire partie du jury
+          qu'une seule fois.
+    correct_feedback: >
+      Un jury sans rôles distincts est un tirage simultané : une combinaison.
+      $\binom{10}{4} = \dfrac{A_{10}^4}{4!} = \dfrac{5\,040}{24} = 210$.
+    solution: |
+      **Ce qu'on cherche :** 4 personnes choisies parmi 10, sans ordre — une
+      combinaison.
+      $$A_{10}^4 = 10 \times 9 \times 8 \times 7 = 5\,040$$
+      $$\binom{10}{4} = \frac{5\,040}{4!} = \frac{5\,040}{24} = 210$$
+      Il y a 210 jurys possibles.
+
+  - id: DENOMB-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_denombrement
+    tags: ["probabilite", "equiprobabilite", "combinaison"]
+    stem: >
+      Une urne contient 4 boules blanches et 6 boules noires, indiscernables
+      au toucher. On tire simultanément 2 boules. Quelle est la probabilité
+      d'obtenir 2 boules blanches ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{2}{15}$"
+        correct: true
+      - id: B
+        text: "$6$"
+        correct: false
+        feedback: >
+          $\binom{4}{2}=6$ est bien le nombre de cas FAVORABLES, mais une
+          probabilité n'est jamais un cardinal seul — c'est toujours un
+          rapport. Il manque la division par le nombre total de tirages
+          possibles, $\binom{10}{2}=45$.
+      - id: C
+        text: "$\\dfrac{4}{25}$"
+        correct: false
+        feedback: >
+          Ce calcul ($\frac{4}{10} \times \frac{4}{10}$) suppose qu'on remet
+          la première boule blanche avant de tirer la deuxième — un tirage
+          avec remise. Mais un tirage SIMULTANÉ de 2 boules ne permet pas de
+          tirer deux fois la même boule : il faut compter avec des
+          combinaisons, pas des puissances.
+      - id: D
+        text: "$\\dfrac{6}{15}$"
+        correct: false
+        feedback: >
+          Le dénominateur utilisé ici, $\binom{6}{2}=15$, est le nombre de
+          façons de choisir 2 boules NOIRES — il n'a aucun rapport avec le
+          dénominateur correct. Le dénominateur d'une probabilité par
+          équiprobabilité est toujours le nombre total de tirages possibles
+          dans TOUTE l'urne, $\binom{10}{2}=45$, pas un sous-groupe.
+    correct_feedback: >
+      $\text{card}(\Omega)=\binom{10}{2}=45$ et
+      $\text{card}(E)=\binom{4}{2}=6$, donc $P(E)=\dfrac{6}{45}=\dfrac{2}{15}$.
+    solution: |
+      **Ce qu'on cherche :** un tirage simultané (donc des combinaisons),
+      puis le rapport des cardinaux (équiprobabilité).
+
+      **Univers :** choisir 2 boules parmi les 10 de l'urne.
+      $$\text{card}(\Omega) = \binom{10}{2} = \frac{10 \times 9}{2 \times 1} = 45$$
+
+      **Événement favorable :** 2 boules parmi les 4 blanches.
+      $$\text{card}(E) = \binom{4}{2} = \frac{4 \times 3}{2 \times 1} = 6$$
+
+      **Probabilité :**
+      $$P(E) = \frac{6}{45} = \frac{2}{15} \approx 0{,}133$$

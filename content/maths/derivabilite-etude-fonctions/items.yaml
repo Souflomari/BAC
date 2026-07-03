@@ -1,0 +1,282 @@
+notion: derivabilite-etude-fonctions
+skill_code: maths_derivabilite_etude_fonctions
+misconceptions: []
+items:
+  - id: DERIVFCT-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["nombre-derive", "taux-accroissement"]
+    stem: >
+      Soit $f(x) = x^2$. En utilisant la définition du nombre dérivé comme
+      limite du taux d'accroissement, quelle est la valeur de $f'(3)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$9$"
+        correct: false
+        feedback: >
+          $9$, c'est $f(3)$ — la valeur de la fonction en $3$ — pas $f'(3)$.
+          Le nombre dérivé n'est pas la valeur de la fonction : il faut former
+          le taux d'accroissement $\frac{f(3+h)-f(3)}{h}$ et en prendre la
+          limite, pas simplement évaluer $f$ en $3$.
+      - id: C
+        text: "$3$"
+        correct: false
+        feedback: >
+          Tu perds un facteur $2$ en route. Le taux d'accroissement de $x^2$
+          en $a$ donne $2a+h$ après simplification (car
+          $(a+h)^2-a^2 = 2ah+h^2$), pas $a+h$ : il faut développer
+          complètement $(a+h)^2$ avant de simplifier par $h$.
+      - id: D
+        text: "La limite n'existe pas, car $\\frac{f(3+h)-f(3)}{h}$ donne $\\frac{0}{0}$ quand $h=0$."
+        correct: false
+        feedback: >
+          La forme $\frac{0}{0}$ n'apparaît que si on remplace $h$ par $0$
+          AVANT de simplifier. Il faut d'abord développer et simplifier
+          l'expression (elle devient $6+h$ ici) : une fois simplifiée, il n'y
+          a plus aucun problème à faire tendre $h$ vers $0$.
+    correct_feedback: >
+      Exact : $\frac{f(3+h)-f(3)}{h} = \frac{(3+h)^2-9}{h} = \frac{6h+h^2}{h}
+      = 6+h$ (pour $h \neq 0$), et $\lim_{h \to 0}(6+h) = 6$.
+    solution: |
+      $$\frac{f(3+h)-f(3)}{h} = \frac{(3+h)^2-9}{h} = \frac{9+6h+h^2-9}{h} = \frac{6h+h^2}{h} = 6+h \quad (h \neq 0)$$
+      $$f'(3) = \lim_{h \to 0} (6+h) = 6$$
+
+  - id: DERIVFCT-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["derivabilite-laterale", "point-anguleux"]
+    stem: >
+      Soit $f(x) = |x-2|$. Que peut-on dire de la dérivabilité de $f$ en
+      $x=2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f$ n'est pas dérivable en $2$, car les nombres dérivés à gauche et à droite sont différents ($-1$ et $1$)."
+        correct: true
+      - id: B
+        text: "$f$ est dérivable en $2$, car $f$ est continue en $2$."
+        correct: false
+        feedback: >
+          La continuité est nécessaire mais jamais suffisante pour la
+          dérivabilité : elle garantit seulement l'absence de saut. Ici, la
+          courbe fait un point anguleux en $2$ (un angle), ce qui empêche
+          l'existence d'une tangente unique, même si $f$ ne « saute » pas.
+      - id: C
+        text: "$f$ n'est pas dérivable en $2$, car $f(2)$ n'existe pas."
+        correct: false
+        feedback: >
+          $f(2) = |2-2| = 0$ est parfaitement défini. Le problème n'est pas
+          l'existence de $f(2)$, mais le fait que la pente calculée à gauche
+          et à droite de $2$ ne coïncide pas.
+      - id: D
+        text: "$f$ est dérivable en $2$ avec $f'(2)=0$, car $2$ est un minimum de $f$."
+        correct: false
+        feedback: >
+          Qu'un minimum soit atteint en $2$ ne garantit pas une tangente là :
+          ça supposerait implicitement que la courbe est « lisse » autour du
+          minimum. Ici, elle forme un angle — un minimum atteint en un point
+          anguleux n'a pas de nombre dérivé à cet endroit.
+    correct_feedback: >
+      Confirmé : pour $h>0$, $\frac{f(2+h)-f(2)}{h} = \frac{h}{h}=1$ ; pour
+      $h<0$, $\frac{f(2+h)-f(2)}{h} = \frac{-h}{h}=-1$. Les deux nombres
+      dérivés latéraux ($1$ et $-1$) diffèrent, donc $f$ n'est pas dérivable
+      en $2$, malgré sa continuité en ce point.
+    solution: |
+      Pour $h>0$ : $f(2+h)-f(2) = |h| = h$, donc $\frac{f(2+h)-f(2)}{h} = 1$.
+
+      Pour $h<0$ : $f(2+h)-f(2) = |h| = -h$, donc $\frac{f(2+h)-f(2)}{h} = -1$.
+
+      $$f'_d(2) = 1 \neq -1 = f'_g(2)$$
+
+      Les nombres dérivés latéraux diffèrent : $f$ n'est pas dérivable en $2$
+      (point anguleux), bien qu'elle y soit continue.
+
+  - id: DERIVFCT-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["regle-du-produit"]
+    stem: >
+      Soit $f(x) = (2x+1)(x^2-3)$. Quelle est $f'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6x^2+2x-6$"
+        correct: true
+      - id: B
+        text: "$4x$"
+        correct: false
+        feedback: >
+          Tu as calculé $u'(x) \times v'(x) = 2 \times 2x = 4x$ : le produit
+          des dérivées. La dérivée d'un produit n'est PAS le produit des
+          dérivées — la règle correcte est $u'v+uv'$, avec deux termes, pas
+          $u' \times v'$.
+      - id: C
+        text: "$2x^2-6$"
+        correct: false
+        feedback: >
+          Tu n'as gardé que le terme $u'v = 2(x^2-3)$ et oublié le second
+          terme $uv' = (2x+1)(2x)$. La règle du produit a toujours deux
+          termes : $u'v+uv'$.
+      - id: D
+        text: "$6x^2-2x-6$"
+        correct: false
+        feedback: >
+          Erreur de signe dans le développement de $(2x+1)(2x) = 4x^2+2x$ (le
+          terme du milieu est $+2x$, pas $-2x$) : reprends le développement
+          terme à terme avant de rassembler avec $u'v=2x^2-6$.
+    correct_feedback: >
+      Bien vu : avec $u=2x+1$ ($u'=2$) et $v=x^2-3$ ($v'=2x$),
+      $f'(x)=u'v+uv' = 2(x^2-3)+(2x+1)(2x) = (2x^2-6)+(4x^2+2x) = 6x^2+2x-6$.
+    solution: |
+      $u(x)=2x+1 \Rightarrow u'(x)=2$ ; $v(x)=x^2-3 \Rightarrow v'(x)=2x$.
+      $$f'(x) = u'(x)v(x)+u(x)v'(x) = 2(x^2-3) + (2x+1)(2x)$$
+      $$f'(x) = (2x^2-6)+(4x^2+2x) = 6x^2+2x-6$$
+
+  - id: DERIVFCT-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["derivee-composee", "u-puissance-n"]
+    stem: >
+      Soit $g(x) = (3x-1)^4$. Quelle est $g'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$12(3x-1)^3$"
+        correct: true
+      - id: B
+        text: "$4(3x-1)^3$"
+        correct: false
+        feedback: >
+          Tu as oublié de multiplier par $u'(x)$, la dérivée de l'intérieur
+          $u(x)=3x-1$. La règle $(u^n)' = n \times u' \times u^{n-1}$ exige ce
+          facteur supplémentaire — ici $u'(x)=3$ — pas seulement
+          $n \times u^{n-1}$.
+      - id: C
+        text: "$12x(3x-1)^3$"
+        correct: false
+        feedback: >
+          Il y a un $x$ en trop : ce n'est pas $u'(x)=3x$, mais $u'(x)=3$
+          (une constante), puisque $u(x)=3x-1$ a pour dérivée $3$, pas $3x$.
+      - id: D
+        text: "$12(3x-1)^4$"
+        correct: false
+        feedback: >
+          L'exposant reste à $4$ au lieu de baisser à $3$. La règle
+          $(u^n)'$ fait TOUJOURS baisser l'exposant d'une unité :
+          $n \times u' \times u^{n-1}$, avec $n-1=3$ ici.
+    correct_feedback: >
+      Exact : avec $u(x)=3x-1$ ($u'(x)=3$) et $n=4$,
+      $g'(x) = 4 \times u'(x) \times u(x)^3 = 4 \times 3 \times (3x-1)^3 = 12(3x-1)^3$.
+    solution: |
+      $u(x) = 3x-1 \Rightarrow u'(x) = 3$.
+      $$g'(x) = 4 \times u'(x) \times u(x)^{3} = 4 \times 3 \times (3x-1)^3 = 12(3x-1)^3$$
+
+  - id: DERIVFCT-5
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["signe-f-prime", "extremum-local"]
+    stem: >
+      Soit $f(x)=x^3$. On calcule $f'(x)=3x^2$, donc $f'(0)=0$. Peut-on
+      conclure que $f$ admet un extremum local en $x=0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : $f'(x) \\geq 0$ des deux côtés de $0$ (pas de changement de signe), donc $f$ est strictement croissante sur $\\mathbb{R}$, sans extremum en $0$."
+        correct: true
+      - id: B
+        text: "Oui, car $f'(0)=0$ signifie automatiquement un extremum local."
+        correct: false
+        feedback: >
+          $f'(a)=0$ signale seulement un CANDIDAT à l'extremum, jamais une
+          conclusion à lui seul. Ici $f'(x)=3x^2 \geq 0$ partout, sans jamais
+          changer de signe autour de $0$ : $f$ continue de croître en
+          traversant $0$, donc il n'y a pas d'extremum. Il faut toujours
+          vérifier le changement de signe de $f'$, pas juste son annulation.
+      - id: C
+        text: "Oui, c'est un minimum local, car $f'(x) \\geq 0$ signifie que $f$ « s'arrête de descendre » en $0$."
+        correct: false
+        feedback: >
+          $f$ ne descend jamais ici ($f'(x) \geq 0$ sur tout $\mathbb{R}$) :
+          il n'y a donc rien dont elle « s'arrêterait ». Un minimum exige que
+          $f'$ soit négative avant $0$ puis positive après — ce n'est pas le
+          cas, le signe est le même (positif) des deux côtés.
+      - id: D
+        text: "On ne peut rien dire sans calculer $f''(0)$."
+        correct: false
+        feedback: >
+          Au niveau du programme, la méthode fiable pour un extremum local
+          est le changement de signe de $f'$, pas $f''$ — d'ailleurs
+          $f''(x)=6x$ donne $f''(0)=0$ ici aussi, un test qui ne trancherait
+          même pas. Vérifier le signe de $f'$ autour de $0$ suffit à conclure
+          qu'il n'y a pas d'extremum.
+    correct_feedback: >
+      Correct : $f'(x)=3x^2$ ne change jamais de signe (elle est positive ou
+      nulle partout), donc $f$ est strictement croissante sur $\mathbb{R}$
+      tout entier, y compris autour de $0$. $f'(0)=0$ correspond ici à une
+      tangente horizontale passagère, pas à un extremum.
+    solution: |
+      $f'(x) = 3x^2 \geq 0$ pour tout $x$, et $f'(x)>0$ dès que $x \neq 0$.
+      Le signe de $f'$ est identique (positif) de part et d'autre de $0$ : il
+      ne change pas. Donc $f$ est strictement croissante sur $\mathbb{R}$, y
+      compris en $0$ : il n'y a pas d'extremum local en $0$, malgré
+      $f'(0)=0$. La règle : $f'(a)=0$ est un candidat, le changement de signe
+      de $f'$ autour de $a$ est ce qui confirme (ou infirme) l'extremum.
+
+  - id: DERIVFCT-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["concavite", "point-inflexion"]
+    stem: >
+      Soit $f(x)=x^3-3x$ (la fonction étudiée dans la leçon), avec
+      $f''(x)=6x$. En quel point la courbe de $f$ admet-elle un point
+      d'inflexion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "En $x=0$, car $f''$ s'annule et change de signe en $0$."
+        correct: true
+      - id: B
+        text: "En $x=-1$ et $x=1$, car ce sont les points où $f'(x)=0$."
+        correct: false
+        feedback: >
+          $x=-1$ et $x=1$ sont les points où $f'$ s'annule — ce sont les
+          candidats aux EXTREMUMS locaux (R4), pas au point d'inflexion. Le
+          point d'inflexion se cherche avec $f''$, pas $f'$ : ce sont deux
+          conditions différentes, sur deux dérivées différentes.
+      - id: C
+        text: "En $x=0$, car $f(0)=0$."
+        correct: false
+        feedback: >
+          Que $f(0)=0$ (que $0$ soit une racine de $f$) n'a aucun rapport
+          avec le point d'inflexion — c'est une coïncidence ici, pas le
+          critère. Le critère du point d'inflexion est le changement de
+          signe de $f''$, pas l'annulation de $f$.
+      - id: D
+        text: "Il n'y a pas de point d'inflexion, car $f''(x)=6x$ ne s'annule qu'en un seul point."
+        correct: false
+        feedback: >
+          Un seul zéro de $f''$ suffit parfaitement, à condition que $f''$
+          change bien de signe à cet endroit — c'est exactement ce qui se
+          passe en $0$ ($f''<0$ avant, $f''>0$ après). Il n'est pas
+          nécessaire d'avoir plusieurs zéros : un point d'inflexion est
+          justement défini par UN changement de signe de $f''$.
+    correct_feedback: >
+      Oui : $f''(x)=6x$ est négative pour $x<0$ (concave) et positive pour
+      $x>0$ (convexe) — elle change bien de signe en $x=0$, qui est bien dans
+      le domaine de $f$. Le point d'inflexion est donc $(0, f(0)) = (0,0)$.
+    solution: |
+      $$f''(x) = 6x$$
+      $f''(x)<0$ sur $]-\infty,0[$ (concave) et $f''(x)>0$ sur $]0,+\infty[$
+      (convexe) : $f''$ change de signe en $x=0$, qui appartient au domaine
+      $\mathbb{R}$ de $f$. C'est donc un point d'inflexion, de coordonnées
+      $(0, f(0)) = (0, 0)$.
