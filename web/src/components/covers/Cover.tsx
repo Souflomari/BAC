@@ -13,7 +13,7 @@
 
 import { cn } from "@/lib/utils";
 
-type MotifId = "maths" | "pc" | "svt" | "rlc-serie";
+type MotifId = "maths" | "pc" | "svt" | "rlc-serie" | "rc-charge";
 
 /** One accent hue per cover, from the FIGURE palette only (COVER-SPEC). */
 const ACCENT: Record<MotifId, string> = {
@@ -21,6 +21,7 @@ const ACCENT: Record<MotifId, string> = {
   pc: "var(--figure-accent)",
   svt: "var(--figure-energy-L)",
   "rlc-serie": "var(--figure-accent)",
+  "rc-charge": "var(--figure-accent)",
 };
 
 function Motif({ id }: { id: MotifId }) {
@@ -91,11 +92,24 @@ function Motif({ id }: { id: MotifId }) {
           />
         </g>
       );
+    case "rc-charge":
+      // The step-response charge curve: a monotonic rise that flattens
+      // toward a ceiling it never touches (dashed) — the notion's whole
+      // point (the lesson opens by refuting the straight-ramp-then-stop
+      // guess). No oscillation: unlike the subject default, this curve
+      // never crosses back over itself.
+      return (
+        <g fill="none" strokeLinecap="round">
+          <path d="M32 56 H288" stroke={grid} strokeWidth="2.5" strokeDasharray="6 6" />
+          <path d="M32 160 C 84 68, 168 64, 280 64" stroke={accent} strokeWidth="3.5" />
+        </g>
+      );
   }
 }
 
 export function coverMotif(subject: string, slug?: string): MotifId {
   if (slug === "rlc-serie") return "rlc-serie";
+  if (slug === "rc-charge") return "rc-charge";
   if (subject === "maths" || subject === "pc" || subject === "svt") return subject;
   return "pc";
 }

@@ -51,8 +51,15 @@
   in the band at low emphasis (right-aligned, ≤40% width, opacity ≤ 0.6);
   NEVER behind the title text (legibility), never animated. Not shipped by
   default — an owner-reviewable enhancement.
-- Every rendered cover carries `data-cover="<subject|notion-slug>"`
-  (dom-truth: covers present on home).
+- Every rendered cover carries TWO attributes (rule completed Day 7 — the
+  split previously lived only in a Cover.tsx code comment, a real spec gap):
+  `data-cover="<subject|notion-slug>"` (what the card is FOR) and
+  `data-motif="<resolved motif id>"` (what actually RENDERED — differs from
+  data-cover when a notion falls back to its subject default). dom-truth
+  asserts on the pair: presence of data-cover alone cannot distinguish a
+  real per-notion motif from the fallback. A new per-notion cover is DONE
+  when `[data-cover='<slug>'][data-motif='<slug>']` renders on the home
+  shelf.
 
 ## Provenance & the Gemini lane
 

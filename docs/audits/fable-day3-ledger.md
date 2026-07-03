@@ -388,6 +388,25 @@ present + step-2-absent both green; build green. Divergences and findings:
 all held; the one real bug is in the dispatch protocol, tightened
 same-day.**
 
+### Article (d) — rc-charge cover: gap analysis
+
+Committed as produced (`day7(d)` commit). Verified rendered both themes on
+the home shelf next to the authored covers: same stroke band (2.5/3.5),
+figure-palette vars only, dark mode by construction, composition on the
+spec's geometry. dom-truth 68/68 green including the tightened
+motif-specific row. Findings:
+
+| # | Finding | Class | Outcome |
+|---|---|---|---|
+| 1 | Motif choice: asymptotic rise to a DASHED CEILING, deliberately breaking the pc oscillation family ("subject-generic but notion-false") | faithful — and the strongest design reasoning of the four articles: it read the lesson before choosing, and the ceiling encodes the notion's one non-negotiable fact (approached, never reached) | Adopted as-is. The reasoning pattern (read the lesson; find the one visual fact the notion cannot lose) belongs in COVER-SPEC's language section for the Gemini lane — carried to the consolidated ADR list. |
+| 2 | data-motif contract lived only in a Cover.tsx code comment, not in COVER-SPEC's placement rules — executor flagged that a spec-only reader would ship dom-truth-red work | **spec bug (found by the executor, real)** | COVER-SPEC placement rules now state the data-cover / data-motif split and the done-condition selector. |
+| 3 | Reused `--figure-accent` (pc hue) for the new pc notion | faithful — COVER-SPEC's per-subject accent table implies it | None. |
+
+**Verdict: FAITHFUL — and the first article where the executor's design
+REASONING (not just execution) met the bar; the brief's
+acceptance-instrument pointer (added after article c) demonstrably worked:
+the executor ran the exact row and reported it green.**
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**
