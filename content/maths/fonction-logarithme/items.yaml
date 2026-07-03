@@ -1,0 +1,278 @@
+notion: fonction-logarithme
+skill_code: maths_fonction_logarithme
+misconceptions: []
+items:
+  - id: LOG-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_fonction_logarithme
+    tags: ["domaine-de-definition"]
+    stem: >
+      Quel est l'ensemble de définition de la fonction $f(x) = \ln(3-x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$]-\\infty, 3[$"
+        correct: true
+      - id: B
+        text: "$\\mathbb{R}$"
+        correct: false
+        feedback: >
+          Tu confonds le domaine de $\ln$ tout seul avec celui de la fonction
+          composée $\ln(3-x)$. Il faut que l'INTÉRIEUR, $3-x$, soit
+          strictement positif — ce n'est pas vrai pour tout $x$ réel.
+      - id: C
+        text: "$]0, +\\infty[$"
+        correct: false
+        feedback: >
+          Tu as gardé le domaine de $\ln$ lui-même ($]0,+\infty[$) au lieu de
+          résoudre la condition sur l'intérieur $3-x>0$. Il faut résoudre
+          cette inéquation en $x$, pas recopier le domaine standard de $\ln$.
+      - id: D
+        text: "$]3, +\\infty[$"
+        correct: false
+        feedback: >
+          Erreur de sens en résolvant l'inéquation $3-x>0$ : isoler $x$ en
+          divisant par un nombre négatif inverse le sens de l'inégalité. La
+          bonne résolution donne $x<3$, pas $x>3$.
+    correct_feedback: >
+      Exactement : il faut $3-x>0$, c'est-à-dire $x<3$. L'ensemble de
+      définition est $]-\infty,3[$.
+    solution: |
+      Il faut que l'intérieur du logarithme soit strictement positif :
+      $$3-x>0$$
+      $$x<3$$
+      Donc $D_f = \,]-\infty,3[$.
+
+  - id: LOG-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_logarithme
+    tags: ["proprietes-algebriques", "puissance"]
+    stem: >
+      Sachant que $\ln(2) \approx 0{,}693$, quelle est la valeur exacte de
+      $\ln(8)$ en fonction de $\ln(2)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\ln(2)$"
+        correct: true
+      - id: B
+        text: "$8\\ln(2)$"
+        correct: false
+        feedback: >
+          Tu as multiplié $\ln(2)$ par $8$ au lieu de reconnaître que
+          $8=2^3$. La propriété $\ln(a^n)=n\ln(a)$ utilise l'EXPOSANT comme
+          coefficient, pas le nombre lui-même.
+      - id: C
+        text: "$\\ln(2)+3$"
+        correct: false
+        feedback: >
+          Tu as ajouté $3$ à $\ln(2)$, comme si $\ln(a^n)$ devenait
+          $\ln(a)+n$. La bonne propriété transforme la puissance en produit
+          ($n\times\ln(a)$), pas en somme avec l'exposant.
+      - id: D
+        text: "$2\\ln(2)$"
+        correct: false
+        feedback: >
+          Tu as compté $8$ comme $2^2$ (donc utilisé l'exposant $2$), alors
+          que $8=2^3$. Vérifie la décomposition en puissance de $2$ avant
+          d'appliquer la propriété.
+    correct_feedback: >
+      Oui : $8=2^3$, donc $\ln(8)=\ln(2^3)=3\ln(2)$, ce qui donne environ
+      $3\times0{,}693=2{,}079$.
+    solution: |
+      $$8 = 2^3$$
+      $$\ln(8) = \ln(2^3) = 3\ln(2)$$
+
+  - id: LOG-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_logarithme
+    tags: ["proprietes-algebriques", "misconception-somme-produit"]
+    stem: >
+      Pour tous réels $a>0$ et $b>0$, quelle égalité est toujours vraie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\ln(a+b) = \\ln(a)+\\ln(b)$"
+        correct: false
+        feedback: >
+          C'est la confusion la plus fréquente sur ce chapitre : la
+          propriété qui transforme une opération en somme concerne le
+          PRODUIT $ab$, pas la somme $a+b$. Teste avec $a=b=1$ :
+          $\ln(1+1)=\ln(2)\approx0{,}693$, alors que $\ln(1)+\ln(1)=0$ — les
+          deux ne coïncident pas.
+      - id: B
+        text: "$\\ln(ab) = \\ln(a)+\\ln(b)$"
+        correct: true
+      - id: C
+        text: "$\\ln(ab) = \\ln(a)\\times\\ln(b)$"
+        correct: false
+        feedback: >
+          Le produit $a\times b$ à l'intérieur du logarithme ne devient pas
+          un produit de logarithmes à l'extérieur — il devient une SOMME.
+          C'est tout l'intérêt de la propriété : transformer une
+          multiplication en addition, pas garder une multiplication.
+      - id: D
+        text: "$\\ln(a)-\\ln(b) = \\ln(a-b)$"
+        correct: false
+        feedback: >
+          La propriété du quotient donne $\ln(a)-\ln(b)=\ln\!\left(\frac{a}{b}\right)$
+          (un quotient à l'intérieur), pas $\ln(a-b)$ (une différence à
+          l'intérieur). Différence à l'extérieur correspond à quotient à
+          l'intérieur, jamais à différence à l'intérieur.
+    correct_feedback: >
+      Exactement : $\ln(ab)=\ln(a)+\ln(b)$ est la propriété centrale du
+      chapitre, celle qui transforme un produit en somme.
+    solution: |
+      La propriété du produit, valable pour tous $a>0$ et $b>0$ :
+      $$\ln(ab) = \ln(a) + \ln(b)$$
+
+  - id: LOG-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_fonction_logarithme
+    tags: ["derivee", "ln-u"]
+    stem: >
+      Quelle est la dérivée de $f(x) = \ln(2x^2+1)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x) = \\dfrac{4x}{2x^2+1}$"
+        correct: true
+      - id: B
+        text: "$f'(x) = \\dfrac{1}{2x^2+1}$"
+        correct: false
+        feedback: >
+          Tu as oublié de multiplier par la dérivée de l'intérieur. La
+          formule est $(\ln u)' = \frac{u'}{u}$, pas $\frac1u$ — ici
+          $u'(x)=4x$ ne doit pas disparaître.
+      - id: C
+        text: "$f'(x) = 4x$"
+        correct: false
+        feedback: >
+          Tu as calculé $u'(x)=4x$ (correct) mais oublié de diviser par
+          $u(x)=2x^2+1$. La dérivée d'un logarithme composé est un
+          quotient, pas juste le numérateur.
+      - id: D
+        text: "$f'(x) = \\dfrac{2x}{2x^2+1}$"
+        correct: false
+        feedback: >
+          Erreur de dérivation de l'intérieur : $u(x)=2x^2+1$ a pour
+          dérivée $u'(x)=4x$ (le facteur $2$ se multiplie par l'exposant
+          $2$ de $x^2$), pas $2x$.
+    correct_feedback: >
+      Oui : avec $u(x)=2x^2+1$ et $u'(x)=4x$,
+      $(\ln u)'(x) = \frac{u'(x)}{u(x)} = \frac{4x}{2x^2+1}$.
+    solution: |
+      $u(x) = 2x^2+1$, donc $u'(x) = 4x$ :
+      $$f'(x) = \frac{u'(x)}{u(x)} = \frac{4x}{2x^2+1}$$
+
+  - id: LOG-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "croissances-comparees"]
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{\ln(x)}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0$"
+        correct: true
+      - id: B
+        text: "$+\\infty$"
+        correct: false
+        feedback: >
+          Tu as vu que le numérateur ET le dénominateur tendent vers
+          $+\infty$ et conclu que le rapport explose aussi — mais
+          $\frac{\infty}{\infty}$ est une forme indéterminée, elle ne se lit
+          pas directement. Ici, $x$ grossit beaucoup plus vite que $\ln(x)$,
+          donc le rapport s'écrase vers $0$, pas l'inverse.
+      - id: C
+        text: "$1$"
+        correct: false
+        feedback: >
+          Un rapport de deux quantités qui tendent toutes deux vers
+          $+\infty$ ne vaut pas automatiquement $1$ — ça dépend de LAQUELLE
+          grossit plus vite. Ici $\ln(x)$ grossit infiniment plus lentement
+          que $x$, donc le rapport tend vers $0$, pas vers $1$.
+      - id: D
+        text: >-
+          La limite n'existe pas, car $\dfrac{\infty}{\infty}$ est une forme
+          indéterminée non levée
+        correct: false
+        feedback: >
+          C'est vrai que $\frac{\infty}{\infty}$ est une forme
+          indéterminée — mais "indéterminée" veut dire qu'il faut un calcul
+          supplémentaire pour trancher, pas que la limite n'existe pas. Le
+          résultat de croissances comparées lève précisément cette
+          indétermination : la limite existe et vaut $0$.
+    correct_feedback: >
+      Exactement : c'est le résultat de croissances comparées — $\ln(x)$
+      grossit infiniment plus lentement que $x$, donc leur rapport tend
+      vers $0$.
+    solution: |
+      C'est le résultat de croissances comparées (démontré via l'inégalité
+      $\ln(t)\leq t-1$ appliquée à $\sqrt{x}$, puis le théorème des
+      gendarmes) :
+      $$\lim_{x \to +\infty} \frac{\ln(x)}{x} = 0$$
+
+  - id: LOG-6
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_fonction_logarithme
+    tags: ["equations", "domaine"]
+    stem: >
+      Quel est l'ensemble des solutions de l'équation
+      $\ln(x+2) + \ln(x) = \ln(3)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\{1\\}$"
+        correct: true
+      - id: B
+        text: "$\\{-3, 1\\}$"
+        correct: false
+        feedback: >
+          Tu as bien résolu l'équation polynomiale $x^2+2x-3=0$ (qui donne
+          $-3$ et $1$), mais tu as oublié de revenir au domaine de départ :
+          il fallait $x+2>0$ ET $x>0$, donc $x>0$. La valeur $-3$ ne
+          vérifie pas cette condition et doit être rejetée.
+      - id: C
+        text: "$\\{-3\\}$"
+        correct: false
+        feedback: >
+          Tu as gardé la mauvaise racine : $-3$ ne vérifie pas la condition
+          de domaine $x>0$ (nécessaire pour que $\ln(x)$ existe), alors que
+          $1$ la vérifie. C'est $1$ qu'il faut conserver, pas $-3$.
+      - id: D
+        text: "$\\left\\{\\dfrac12\\right\\}$"
+        correct: false
+        feedback: >
+          Tu as regroupé $\ln(x+2)+\ln(x)$ en $\ln(2x+2)$ (une SOMME à
+          l'intérieur), alors que la propriété du produit donne
+          $\ln\big((x+2)\times x\big)$ (un PRODUIT à l'intérieur). Cette
+          confusion somme/produit mène à une équation, et une solution,
+          complètement différentes.
+    correct_feedback: >
+      Oui : le domaine impose $x>0$, l'équation se ramène à
+      $x^2+2x-3=0$ dont les racines sont $-3$ et $1$, et seule $1$
+      respecte le domaine.
+    solution: |
+      Domaine : il faut $x+2>0$ (soit $x>-2$) et $x>0$ ; les deux ensemble
+      donnent $x>0$.
+
+      Sur ce domaine, regroupe le membre de gauche :
+      $$\ln(x+2) + \ln(x) = \ln\big((x+2)x\big)$$
+
+      L'équation devient $\ln\big((x+2)x\big) = \ln(3)$, donc par
+      injectivité :
+      $$(x+2)x = 3$$
+      $$x^2 + 2x - 3 = 0$$
+
+      Discriminant $\Delta = 4+12=16$, racines $x=\dfrac{-2-4}{2}=-3$ ou
+      $x=\dfrac{-2+4}{2}=1$.
+
+      Seule $x=1$ vérifie le domaine $x>0$ : $\mathcal{S} = \{1\}$.
