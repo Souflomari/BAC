@@ -134,7 +134,11 @@
 }
 
 /* ── Dark mode tokens ───────────────────────────────────────────────────────── */
-/* Activated by .dark class on <html> (controlled by ThemeProvider).
+/* Activated by the .dark class on <html>. Set pre-paint by THEME_BOOT in
+   layout.tsx (stored choice wins, else OS prefers-color-scheme) and toggled
+   by ThemeToggle in the header. (July-2026 audit F4: this block existed with
+   NO activation path — the comment above used to name a ThemeProvider that
+   was never built. dom-truth now exercises the real toggle.)
    DESIGN-BIBLE §2: soft near-black (not #000), depth via layered luminance. */
 .dark {
   --color-surface-base:    #1A1612;   /* warm charcoal, faint brown undertone (not pure black) */

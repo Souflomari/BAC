@@ -273,6 +273,22 @@ function stripLeadingTitle(lessonMd: string | null): string | null {
   );
 }
 
+/**
+ * Strip authoring comments (`<!-- … -->`) from lesson markdown BEFORE it can
+ * reach any renderer. External-audit finding 5.1 (July 2026): three internal
+ * enhancement-slot comments rendered as student-visible text — react-markdown
+ * without rehype-raw does not silently drop raw-HTML nodes, so an HTML
+ * comment in markdown is NOT a safe annotation channel. This loader-level
+ * strip makes the channel safe BY CONSTRUCTION: authors keep writing
+ * `<!-- … -->` (NOTION-TEMPLATE-V2 §E), and nothing downstream can render
+ * what no longer exists. dom-truth guards the CLASS (no authoring lexicon in
+ * any page's rendered text), not just these instances.
+ */
+function stripAuthoringComments(lessonMd: string | null): string | null {
+  if (!lessonMd) return lessonMd;
+  return lessonMd.replace(/<!--[\s\S]*?-->/g, "");
+}
+
 // ── Public API ────────────────────────────────────────────────────────────────
 
 /**
@@ -294,7 +310,11 @@ function stripLeadingTitle(lessonMd: string | null): string | null {
  *  markers and [[callouts]] count as words — the error is a rounding noise. */
 function readingMinutesOf(lessonMd: string | null): number | undefined {
   if (!lessonMd) return undefined;
-  const words = lessonMd.split(/\s+/).filter(Boolean).length;
+  // Authoring comments never render (stripAuthoringComments) — they don't
+  // count as reading either (honest metadata: computable facts only).
+  const words = (stripAuthoringComments(lessonMd) as string)
+    .split(/\s+/)
+    .filter(Boolean).length;
   return Math.max(1, Math.round(words / 180));
 }
 
@@ -582,7 +602,7 @@ export function loadNotion(id: string): NotionContent | null {
     readingMinutes: readingMinutesOf(lessonMd),
     updatedAt: updatedAtOf(dir),
   };
-  const renderedLessonMd = stripLeadingTitle(lessonMd);
+  const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 
   return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
 }

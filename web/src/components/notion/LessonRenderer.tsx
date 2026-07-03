@@ -87,8 +87,22 @@ function RungHeading({ children, ...props }: ComponentPropsWithoutRef<"h2">) {
   );
 }
 
-/** h3 — same hover anchor, no rung semantics. */
+/** h3 — same hover anchor; ALSO strips a leading R-code (July-2026 external
+ * audit, residual class 3: the maths notion authors its rungs at h3, and the
+ * U3 de-jargon strip only covered h2 — an instance fix that missed the
+ * heading-level sibling). The code moves to data-rung, same as h2; slug ids
+ * are computed from source text, so anchors are unchanged. */
 function SubHeading({ children, ...props }: ComponentPropsWithoutRef<"h3">) {
+  const text = flattenText(children);
+  const m = text.match(/^(R\d+)\s*[—–-]\s*([\s\S]+)$/);
+  if (m) {
+    return (
+      <h3 {...props} data-rung={m[1]}>
+        {m[2]}
+        <HeadingAnchor id={props.id} />
+      </h3>
+    );
+  }
   return (
     <h3 {...props}>
       {children}

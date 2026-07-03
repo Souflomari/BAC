@@ -35,16 +35,55 @@ const ibmPlexMono = IBM_Plex_Mono({
   preload: false,
 });
 
-// ── Metadata ──────────────────────────────────────────────────────────────────
+// ── Metadata (head pack: July-2026 external-audit F5) ─────────────────────────
+// Icons come from the app-router convention files (src/app/icon.svg +
+// apple-icon.png). metadataBase = the deployed preview domain — swap when a
+// production domain is decided (owner call). robots stays noindex: private
+// during build; the og/canonical set is in place for when indexing opens.
+const SITE_URL = "https://bac-pink.vercel.app";
+const SITE_DESCRIPTION =
+  "Un tuteur patient, omniscient, infiniment disponible — préparation bac sciences au Maroc.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "BAC — préparation · sciences",
     template: "%s · BAC",
   },
-  description:
-    "Un tuteur patient, omniscient, infiniment disponible — préparation bac sciences au Maroc.",
+  description: SITE_DESCRIPTION,
   robots: { index: false, follow: false }, // private during build
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "BAC · sciences",
+    title: "BAC — préparation · sciences",
+    description: SITE_DESCRIPTION,
+    locale: "fr_MA",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "BAC · sciences — deux heures calmes, une notion à fond." }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BAC — préparation · sciences",
+    description: SITE_DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
+
+// Site-level JSON-LD (per-notion LearningResource lives on the notion page).
+const SITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "BAC · sciences",
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: "fr",
+};
+
+// No-flash theme boot (bible §2 + July-2026 audit F4): parser-blocking, first
+// child of <body>, so the .dark class is set before any content paints.
+// Explicit stored choice wins; otherwise the OS preference. Kept as a plain
+// string — it must run before React exists.
+const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
 
 // ── Root layout ───────────────────────────────────────────────────────────────
 export default function RootLayout({
@@ -55,12 +94,18 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      // Default to light; ThemeToggle will add/remove the "dark" class.
-      // Starting without the class avoids a flash-of-dark on first paint.
+      // The "dark" class is set pre-paint by THEME_BOOT (first child of
+      // <body>) and toggled by ThemeToggle; the server always renders
+      // without it, so suppressHydrationWarning covers the class mismatch.
       suppressHydrationWarning
       className={`${readingSerif.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable}`}
     >
       <body>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
+        />
         {children}
       </body>
     </html>

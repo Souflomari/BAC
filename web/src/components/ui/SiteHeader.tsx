@@ -24,6 +24,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { FontSizeStepper } from "./FontSizeStepper";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface SiteHeaderProps {
   className?: string;
@@ -171,6 +172,10 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
         <div className="flex items-center gap-4">
           {/* A−/A/A+ text size control — §9 floor item */}
           <FontSizeStepper />
+
+          {/* Light/dark toggle — bible §2 (OS default + manual control);
+              July-2026 audit F4: the dark tokens were unreachable before. */}
+          <ThemeToggle />
 
           <nav aria-label="Navigation principale">
             <Link

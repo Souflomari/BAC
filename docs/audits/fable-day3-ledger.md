@@ -446,6 +446,82 @@ to "faithful with rhythm-level micro-choices." The spec-tightening loop
 CONVERGES — this, more than any single verdict, is the portability
 result.
 
+## 8. Final batch — the external-audit event (2026-07-03)
+
+An independent design audit of the deployed preview arrived
+(`docs/audits/external-design-audit-2026-07.md`). §13 applied to inbound
+claims: every finding was measured before fixing (5-agent measurement
+fan-out against the built site; full numbers in the triage table,
+`docs/HANDOFF.md` §1). Verdicts: 5.1 leak CONFIRMED-undercounted (5
+fragments, 2 mechanisms — react-markdown v9 renders raw nodes as literal
+text; plus one AUTHORED note in the maths ramp table); 5.2 measure REFUTED
+as stated (the audit measured the 1076px grid, body prose = 65.0ch) but
+the sweep found two real bypasses (Derivation notes ~94ch, items intro
+~87ch); 5.3 contrast REFUTED (worst in-scope 6.57:1); 5.6 dark CONFIRMED
+and worse (no activation path at all); 5.4 head CONFIRMED in full; 5.5
+breadcrumb CONFIRMED (visual-only); math-a11y REFUTED (487/487 MathML).
+
+**Instrument confessions (recorded, not excused):**
+- All week's "verified both themes" claims were true of a harness-forced
+  `.dark` class no user could reach. The audit's fresh eye, not our
+  battery, caught it. → the §13 three-legs rule.
+- dom-truth's `notText` guards tested only the first 60 characters of an
+  element's text — the honest-state and attempt-first guards were
+  silently shallow. Found while building the class guard; all notText
+  rows now test full text.
+- The first version of the measure sweep flagged card BOXES as text lines
+  and the first contrast sweep was defeated by its own persistence fix
+  (the dark choice survives navigation — evidence the feature works,
+  recorded as a sweep-sequencing lesson).
+
+**Fixes (all rendered-verified, battery at 99 checks green):**
+stripAuthoringComments at load + maths note edited out + case-aware
+lexicon class-guard on every page; measure caps (Derivation ol at
+--measure-prose, items intro at --measure-wide) + permanent ≤75ch sweep;
+permanent contrast rows both themes via REAL user paths (persisted-boot +
+toggle round-trip); ThemeToggle + pre-paint boot script (bible §2
+satisfied: OS default + persisted manual choice; chrome preferences may
+persist — ADR 0025 §2.11; FontSizeStepper non-persistence recorded as
+debt); head pack (icon.svg/apple-icon/og.png/OG/twitter/canonical/JSON-LD
+site+notion); breadcrumb title attr; rail aria-current; KaTeX parity
+sweep (finding: already accessible — do not "fix").
+
+**Structural amendments:** bible §13 "guards target classes, not
+instances" + the three-legs corollary; template v2 §E annotation channel;
+RULES fresh-session section (dispatch-brief protocol + three legs);
+ADR 0025 (the consolidated week, incl. Retractions).
+
+**Adversarial verification round (the classes-not-instances lesson,
+demonstrated INSIDE the fix batch):** a fresh-eye refuter was sent against
+the fixed build with orders to break the claim "no internal authoring text
+renders." It did: my named fixes all held, but FIVE residual leak classes
+the first lexicon never imagined were rendering — (1) a full reviewer
+note in a markdown BLOCKQUOTE in the maths notion (a third mechanism:
+authored visible markdown, neither comment nor incidental note); (2) raw
+`[[ARBRE_PONDERE]]` placeholder tokens ×3 (uppercase non-marker form falls
+through the marker regex as prose); (3) R-codes in 11 maths h3 headings +
+7 ramp-table cells (the U3 de-jargon strip was h2-only — itself an
+instance fix that missed a sibling); (4) internal spec citations
+"(§0.4)" painted in all five motion SVGs' rendered footnotes (my own
+Day-6 authoring); (5) dangling "en R1/R2" cross-refs in rlc prose and a
+derivation note pointing at labels no student can see. ALL FIVE fixed:
+note → stripped comment; placeholders → proper silent slots (+ C5 debt
+recorded: the maths prose references a tree figure that doesn't exist —
+diagram-author lane); h3 renderer now strips R-codes like h2; ramp table
+renumbered 1–7; SVG citations removed (honest scope notes kept); prose
+refs rewritten to visible referents. Lexicon guard expanded to the new
+classes (`[[`, `§\d`, "Note de validation", `R\d —`) — with the innerText
+fix so the RSC script payload (which legitimately carries raw markdown)
+isn't false-flagged. Battery: 99 checks, 0 failures.
+
+**Verification honesty:** the second refuter (dark/no-flash/head/measure)
+died on a session rate-limit before reporting. Its entire scope is covered
+mechanically (toggle round-trip + persistence, head presence rows, measure
+sweep — all green) and by my own rendered checks (dark-via-toggle
+screenshot in `web/shots/day8-audit/report/`), but no independent agent
+re-verified those specific claims: recorded as-is rather than claimed
+otherwise.
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**

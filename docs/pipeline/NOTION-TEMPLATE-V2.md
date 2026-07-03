@@ -117,6 +117,17 @@ For EVERY misconception in the spec's inventory, exactly one of:
 - [ ] Every `[[marker]]` in lesson.md resolves to an existing asset OR is an
   explicitly-commented enhancement slot.
 - [ ] Structural diagrams coded (ADR 0017); math live KaTeX, never imaged.
+- [ ] **Authoring-annotation channel (July-2026 external-audit fix — a
+  guard-class failure):** internal notes in lesson.md are written as HTML
+  comments (`<!-- … -->`) and are STRIPPED AT LOAD by
+  `stripAuthoringComments` in `web/src/lib/content.ts` — they cannot render
+  by construction. Never rely on the renderer to hide them: react-markdown
+  without rehype-raw renders raw-HTML nodes as text (three enhancement-slot
+  comments shipped as student-visible prose before this rule). dom-truth
+  guards the CLASS: no page's rendered text may contain the authoring
+  lexicon (TODO/FIXME/SLOT/À SOURCER/À FAIRE/AMÉLIORATION/asset-pending).
+  New internal-note vocabulary must be added to that lexicon guard in the
+  same commit.
 
 ## Critic protocol
 

@@ -29,7 +29,7 @@ derivations:
     title: "Dériver i(t) — le cosinus composé"
     steps:
       - math: 'q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
-        note: "Le point de départ : c'est la solution qu'on vient de confirmer. Il ne reste qu'à dériver une fois — c'est la définition posée en R1, $i = \\frac{dq}{dt}$."
+        note: "Le point de départ : c'est la solution qu'on vient de confirmer. Il ne reste qu'à dériver une fois — c'est la définition du courant posée au début de la leçon, $i = \\frac{dq}{dt}$."
       - math: 'i(t) = \frac{dq}{dt} = -Q_{max}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right) \cdot \frac{d}{dt}\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
         note: "Dériver un cosinus composé : d'abord le cosinus extérieur — ça donne $-\\sin$ du même argument — PUIS multiplier par la dérivée de l'intérieur (la règle de la chaîne). Le réflexe fautif classique : s'arrêter après le $-\\sin$ et oublier ce second facteur — ça efface le $\\frac{2\\pi}{T_0}$ et fausse l'amplitude du courant."
       - math: '\frac{d}{dt}\!\left(\frac{2\pi t}{T_0} + \varphi\right) = \frac{2\pi}{T_0}'

@@ -270,6 +270,19 @@ human re-explaining the guardrails each time. Specifically:
   anomalies before proceeding rather than working around them.
 - **Stay in lane.** Each agent owns a scope and routes rather than reaching
   outside it (roster forthcoming, §5).
+- **Dispatch work with a brief, not a re-explanation.** The template and the
+  protocol rules (point at governing docs, never restate them; name the
+  machine acceptance rows; state prerequisite assumptions; executor reports
+  decisions + unanswered questions; the dispatcher verifies, measures, and
+  commits) live in `docs/pipeline/day7-briefs/README.md` — written and then
+  validated by the July-2026 portability test (ADR 0025 §2.10): a question
+  the pointed-at docs should have answered is a SPEC BUG — log it, answer
+  minimally, tighten the doc.
+- **The QA loop has three legs, none optional** (DESIGN-BIBLE §13,
+  July-2026 amendment): dom-truth (mechanical, self-syncing), gestalt
+  against named references (taste), and a PERIODIC INDEPENDENT FRESH-EYE
+  AUDIT of the deployed site — every in-repo instrument sees only what it
+  was told to see, and only the third leg sees what users actually reach.
 
 ---
 

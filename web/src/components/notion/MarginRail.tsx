@@ -197,6 +197,9 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
               <a
                 href={rung.href}
                 title={rung.title}
+                // Active rung exposed to AT, not only by color (July-2026
+                // audit F3 side-finding: color-swap was the sole signal).
+                aria-current={isActive ? "location" : undefined}
                 className={cn(
                   // §9 touch target: 48px (raised from 44px per audit finding #2)
                   "group relative flex items-center gap-2",

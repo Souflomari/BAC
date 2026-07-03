@@ -118,7 +118,12 @@ L'outil central de cette notion, c'est l'**arbre pondéré**. Il dessine visuell
 
 Voici comment le lire. Prenons un exemple concret : dans une classe, 60 % des élèves pratiquent un sport collectif ($P(A) = 0{,}6$). Parmi les sportifs, 50 % jouent au football ($P(B|A) = 0{,}5$). Parmi les non-sportifs, 20 % jouent quand même au football ($P(B|\bar{A}) = 0{,}2$).
 
-[[ARBRE_PONDERE]]
+<!-- SLOT D'AMÉLIORATION : figure arbre pondéré (diagram-author, ADR 0017 —
+     schéma structurel = SVG codé). Le marqueur ci-dessous est un no-op
+     silencieux tant que media/arbre-pondere.svg n'existe pas. La prose
+     adjacente référence l'arbre : dette C5 notée au HANDOFF. -->
+
+[[figure:arbre-pondere]]
 
 **Comment lire cet arbre :**
 
@@ -257,7 +262,12 @@ $$\boxed{P(B) = P(A) \cdot P(B|A) + P(\bar{A}) \cdot P(B|\bar{A})}$$
 
 C'est la **formule des probabilités totales**.
 
-[[ARBRE_PONDERE]]
+<!-- SLOT D'AMÉLIORATION : figure arbre pondéré (diagram-author, ADR 0017 —
+     schéma structurel = SVG codé). Le marqueur ci-dessous est un no-op
+     silencieux tant que media/arbre-pondere.svg n'existe pas. La prose
+     adjacente référence l'arbre : dette C5 notée au HANDOFF. -->
+
+[[figure:arbre-pondere]]
 
 **Application avec nos chiffres :** $P(A) = 0{,}6$, $P(B|A) = 0{,}5$, $P(\bar{A}) = 0{,}4$, $P(B|\bar{A}) = 0{,}2$.
 
@@ -305,7 +315,12 @@ $$P(A|B) = P_B(A) = \frac{P(A \cap B)}{P(B)} = \frac{P(A \cap B)}{P(A \cap B) + 
 3. La feuille qui nous intéresse est $A \cap B$.
 4. Diviser : $P(A|B) = \frac{P(A \cap B)}{P(B)}$.
 
-[[ARBRE_PONDERE]]
+<!-- SLOT D'AMÉLIORATION : figure arbre pondéré (diagram-author, ADR 0017 —
+     schéma structurel = SVG codé). Le marqueur ci-dessous est un no-op
+     silencieux tant que media/arbre-pondere.svg n'existe pas. La prose
+     adjacente référence l'arbre : dette C5 notée au HANDOFF. -->
+
+[[figure:arbre-pondere]]
 
 **Application :** $P(A \cap B) = 0{,}30$, $P(\bar{A} \cap B) = 0{,}08$, donc $P(B) = 0{,}38$.
 
@@ -363,7 +378,7 @@ L'erreur intuitive de 95 % était de confondre $P(T^+|M)$ avec $P(M|T^+)$ — la
 
 ## Exemples travaillés
 
-### Exemple 1 — R1 : Appliquer la définition
+### Exemple 1 — Appliquer la définition
 
 **Énoncé.** Dans un club sportif, $P(\text{football}) = 0{,}38$ et $P(\text{sport collectif} \cap \text{football}) = 0{,}30$. On tire un membre au hasard parmi les sportifs collectifs ($P(\text{sport collectif}) = 0{,}60$). Calculer $P(\text{football} \mid \text{sport collectif})$ et $P(\text{sport collectif} \mid \text{football})$.
 
@@ -381,7 +396,7 @@ $$P(\text{sport collectif} \mid \text{football}) = \frac{P(\text{sport collectif
 
 ---
 
-### Exemple 2 — R2 : Construire et lire un arbre
+### Exemple 2 — Construire et lire un arbre
 
 **Énoncé.** Une urne contient 4 boules rouges et 6 boules bleues. On tire deux boules **sans remise**. Calculer la probabilité que les deux boules soient de la même couleur.
 
@@ -414,7 +429,7 @@ $$P(\text{même couleur}) = \frac{2}{15} + \frac{1}{3} = \frac{2}{15} + \frac{5}
 
 ---
 
-### Exemple 3 — R3 : Tester l'indépendance
+### Exemple 3 — Tester l'indépendance
 
 **Énoncé.** On lance un dé à 6 faces équilibré. Soit $A$ = « le résultat est pair » et $B$ = « le résultat est inférieur ou égal à 3 ». Ces deux événements sont-ils indépendants ?
 
@@ -444,7 +459,7 @@ Donc $A$ et $B$ **ne sont pas indépendants**.
 
 ---
 
-### Exemple 4 — R4 : Probabilités totales avec deux machines
+### Exemple 4 — Probabilités totales avec deux machines
 
 **Énoncé.** Une usine fabrique des pièces avec deux machines. La machine $M_1$ produit **60 %** des pièces et a un taux de défaut de **5 %**. La machine $M_2$ produit **40 %** des pièces et a un taux de défaut de **3 %**. On tire une pièce au hasard dans la production. Quelle est la probabilité qu'elle soit défectueuse ?
 
@@ -468,7 +483,7 @@ Si on avait additionné sans pondérer : $0{,}05 + 0{,}03 = 0{,}08$ — une vale
 
 ---
 
-### Exemple 5 — R5 : Lecture inverse complète
+### Exemple 5 — Lecture inverse complète
 
 **Énoncé.** On reprend l'usine de l'exemple 4. On tire une pièce défectueuse. Quelle est la probabilité qu'elle vienne de la machine $M_1$ ?
 
@@ -509,14 +524,17 @@ Le tableau ci-dessous donne la progression. Chaque palier augmente la demande en
 
 | Palier | Type de travail | Ce qu'on développe |
 |--|--|--|
-| **R1** — Définition | Exemple guidé, tous les pas montrés | Lire la formule $P_A(B) = P(A \cap B)/P(A)$ et comprendre ce qu'elle fait (restreindre l'univers). |
-| **R2** — Règle du produit et arbre | Exercice guidé (arbre pré-dessiné, à compléter) | Remplir les feuilles d'un arbre en multipliant le long des branches. Détecter l'erreur d'addition. |
-| **R3** — Indépendance | Confronter la contradiction | Distinguer indépendants et incompatibles. Utiliser le critère $P(A \cap B) = P(A) \cdot P(B)$ pour tester. |
-| **R4** — Probabilités totales | Travaillé puis guidé | Assembler $P(B)$ à partir des feuilles de l'arbre. Vérifier par encadrement. |
-| **R5** — Lecture inverse | Peu d'aide, tu conduis | Identifier les feuilles $B$, former $P(B)$, calculer $P(A|B)$ en divisant par $P(B)$. |
-| **R6** — Questions de bac authentiques | Sans aide | Reconnaître quelle procédure s'applique sur des questions réelles de l'examen national. *(Questions à sourcer — voir note spec §2 R6.)* |
-| **R7** — Variations inédites | Sans aide | Appliquer la même logique sur des contextes jamais vus : filtre anti-spam, deux fournisseurs, tirage dans des ensembles différents. Ce que le bac teste vraiment : reconnaître la structure quand le problème est habillé différemment. |
+| **1.** Définition | Exemple guidé, tous les pas montrés | Lire la formule $P_A(B) = P(A \cap B)/P(A)$ et comprendre ce qu'elle fait (restreindre l'univers). |
+| **2.** Règle du produit et arbre | Exercice guidé (arbre pré-dessiné, à compléter) | Remplir les feuilles d'un arbre en multipliant le long des branches. Détecter l'erreur d'addition. |
+| **3.** Indépendance | Confronter la contradiction | Distinguer indépendants et incompatibles. Utiliser le critère $P(A \cap B) = P(A) \cdot P(B)$ pour tester. |
+| **4.** Probabilités totales | Travaillé puis guidé | Assembler $P(B)$ à partir des feuilles de l'arbre. Vérifier par encadrement. |
+| **5.** Lecture inverse | Peu d'aide, tu conduis | Identifier les feuilles $B$, former $P(B)$, calculer $P(A|B)$ en divisant par $P(B)$. |
+| **6.** Questions de bac authentiques | Sans aide | Reconnaître quelle procédure s'applique sur des questions réelles de l'examen national. |
+| **7.** Variations inédites | Sans aide | Appliquer la même logique sur des contextes jamais vus : filtre anti-spam, deux fournisseurs, tirage dans des ensembles différents. Ce que le bac teste vraiment : reconnaître la structure quand le problème est habillé différemment. |
 
 ---
 
-> **Note de validation (⚠ pour la relecture humaine) :** Deux questions de notation et de périmètre restent ouvertes, conformément au spec §7. (1) Le cadre SM nomme-t-il « théorème de Bayes » explicitement, ou uniquement la lecture inverse de l'arbre ? Si oui, R5 peut se clore par une phrase qui nomme la formule comme résumé de ce que l'arbre fait déjà — mais le mécanisme reste l'arbre. (2) Quelle notation est primaire dans les manuels SM : $P_A(B)$ ou $P(B|A)$ ? Cette leçon utilise les deux à égalité ; l'ordre d'introduction peut être ajusté après confirmation.
+<!-- NOTE DE VALIDATION (relecture humaine) — déplacée en commentaire le
+     2026-07-03 : elle rendait côté élève (audit externe, classe résiduelle 1).
+     **Note de validation (⚠ pour la relecture humaine) :** Deux questions de notation et de périmètre restent ouvertes, conformément au spec §7. (1) Le cadre SM nomme-t-il « théorème de Bayes » explicitement, ou uniquement la lecture inverse de l'arbre ? Si oui, R5 peut se clore par une phrase qui nomme la formule comme résumé de ce que l'arbre fait déjà — mais le mécanisme reste l'arbre. (2) Quelle notation est primaire dans les manuels SM : $P_A(B)$ ou $P(B|A)$ ? Cette leçon utilise les deux à égalité ; l'ordre d'introduction peut être ajusté après confirmation.
+-->

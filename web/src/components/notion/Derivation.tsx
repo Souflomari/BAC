@@ -98,7 +98,17 @@ export function Derivation({
         </p>
       )}
 
-      <ol className="mt-1" aria-label={title ?? "Dérivation pas à pas"}>
+      {/* Steps are RUNNING TEXT (math + notes) — measure-capped like all
+          long-form prose (July-2026 external-audit F2: this card was the one
+          genuine 90ch+ bypass of the reading measure; the wide card may stay
+          wide, the text inside it may not). */}
+      <ol
+        // --measure-prose (not -wide): the per-step NOTES render at 14px, and
+        // 75ch of 14px ≈ 630px — a 72ch-of-16px container (≈691px) still
+        // over-measures them (caught by the dom-truth sweep on first run).
+        className="mt-1 max-w-[var(--measure-prose)]"
+        aria-label={title ?? "Dérivation pas à pas"}
+      >
         {steps.slice(0, shown).map((step, i) => {
           const isCurrent = !reduced && i === shown - 1;
           return (

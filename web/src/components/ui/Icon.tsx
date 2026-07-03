@@ -55,7 +55,9 @@ export type IconName =
   | "empty-doc"
   | "chevron-right"
   | "chevron-left"
-  | "reset";
+  | "reset"
+  | "sun"
+  | "moon";
 
 const GLYPHS: Record<IconName, Glyph> = {
   // check — from the animated/static checkmark (orig 16-box "M2.5 8.5L6 12L13.5 4",
@@ -124,6 +126,23 @@ const GLYPHS: Record<IconName, Glyph> = {
       "M19.07 7.5 L14.5 7",
       "M19.07 7.5 L19.5 2.5",
     ],
+  },
+
+  // sun / moon — the ThemeToggle pair (July-2026 audit F4). Same stroke
+  // language: sun = disc + 8 short rays on the 24 grid; moon = a single
+  // crescent path (outer arc + inner return arc).
+  sun: {
+    kind: "stroke",
+    d: [
+      "M12 8 A4 4 0 1 1 11.99 8",
+      "M12 2 V4.5", "M12 19.5 V22", "M2 12 H4.5", "M19.5 12 H22",
+      "M4.9 4.9 L6.7 6.7", "M17.3 17.3 L19.1 19.1",
+      "M19.1 4.9 L17.3 6.7", "M6.7 17.3 L4.9 19.1",
+    ],
+  },
+  moon: {
+    kind: "stroke",
+    d: "M20 14.5 A8.5 8.5 0 1 1 9.5 4 A7 7 0 0 0 20 14.5 Z",
   },
 };
 

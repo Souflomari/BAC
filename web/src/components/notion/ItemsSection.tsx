@@ -66,7 +66,8 @@ export function ItemsSection({ itemsData, checkpointCloneIds }: ItemsSectionProp
         >
           Exercices
         </h2>
-        <p className="mt-2 text-body text-[var(--color-text-secondary)]">
+        {/* Running text: measure-capped (July-2026 audit F2 sweep). */}
+        <p className="mt-2 text-body text-[var(--color-text-secondary)] max-w-[var(--measure-wide)]">
           {items.length} question{items.length > 1 ? "s" : ""} — réponds
           directement, le résultat s’affiche immédiatement.
         </p>

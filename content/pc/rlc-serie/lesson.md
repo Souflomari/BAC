@@ -177,11 +177,11 @@ L'hypothèse est confirmée : le cosinus est bien une solution, et la substituti
 
 ### Déduire $i(t)$
 
-Il ne reste qu'à dériver $q(t)$ une fois — c'est la définition posée en R1, $i = \frac{dq}{dt}$. Le cosinus qu'on vient de confirmer est une fonction composée (un facteur linéaire du temps à l'intérieur), et c'est précisément là que la plupart des erreurs de dérivation se glissent. Avance chaque transformation toi-même ; la note te dit à chaque étape où est le piège.
+Il ne reste qu'à dériver $q(t)$ une fois — c'est la définition du courant posée au début de la leçon, $i = \frac{dq}{dt}$. Le cosinus qu'on vient de confirmer est une fonction composée (un facteur linéaire du temps à l'intérieur), et c'est précisément là que la plupart des erreurs de dérivation se glissent. Avance chaque transformation toi-même ; la note te dit à chaque étape où est le piège.
 
 [[derivation:i-de-t]]
 
-Le courant est donc lui aussi sinusoïdal, à la période $T_0$ — mais déphasé : un sinus là où $q(t)$ est un cosinus, exactement le décalage d'un quart de période qu'on a observé en R1 entre les maxima de $E_C$ et de $E_L$. L'amplitude du courant se lit directement sur le facteur de tête, $i_{max} = \frac{2\pi Q_{max}}{T_0}$.
+Le courant est donc lui aussi sinusoïdal, à la période $T_0$ — mais déphasé : un sinus là où $q(t)$ est un cosinus, exactement le décalage d'un quart de période qu'on a observé dans le pendule d'énergie entre les maxima de $E_C$ et de $E_L$. L'amplitude du courant se lit directement sur le facteur de tête, $i_{max} = \frac{2\pi Q_{max}}{T_0}$.
 
 ### Exemple numérique
 
@@ -265,7 +265,7 @@ En fonction de la valeur de $R$, on observe trois comportements qualitativement 
 
 ### Régime périodique (R négligeable)
 
-La résistance est si faible qu'on peut la négliger. Les oscillations se maintiennent indéfiniment, sans amortissement. La courbe $u_C(t)$ est une sinusoïde parfaite de période $T_0 = 2\pi\sqrt{LC}$. C'est le cas idéal qu'on a étudié en R2.
+La résistance est si faible qu'on peut la négliger. Les oscillations se maintiennent indéfiniment, sans amortissement. La courbe $u_C(t)$ est une sinusoïde parfaite de période $T_0 = 2\pi\sqrt{LC}$. C'est le cas idéal qu'on a étudié en établissant l'équation différentielle.
 
 L'énergie totale $E_C + E_L$ reste constante — aucune perte.
 

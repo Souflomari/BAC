@@ -529,6 +529,22 @@ missed it cited source as evidence (finding U8).
   embed's `btn-primary` (mid-lesson) with the masthead band as the display
   moment; 404 → the return link. Exactly one filled accent action per
   surface; a second is a defect.
+- **Guards target CLASSES, not instances (July-2026 amendment — the
+  external-audit lesson).** An independent audit of the deployed site found
+  three authoring comments rendering as student-visible text while dom-truth
+  ran green: the battery guarded specific *instances* of internal vocabulary
+  (the R-codes, two known flags) but nobody had stated the *class* — "no
+  page's rendered text contains authoring-marker lexicon." When a guard is
+  written, name the failure CLASS it protects against and assert the class
+  (every page, every theme where applicable), not the instance that prompted
+  it; an instance-guard silently licenses every sibling it doesn't mention.
+  Corollary — **every instrument sees only what it was told to see:** the QA
+  loop therefore has three legs, none optional: dom-truth (mechanical,
+  self-syncing), gestalt against named references (taste), and a periodic
+  independent fresh-eye audit of the DEPLOYED site (what neither in-repo
+  instrument was told to look for — and the only leg that sees what users
+  actually reach: the same audit revealed "verified both themes" claims were
+  true of a harness-forced state no real user could activate).
 
 ---
 

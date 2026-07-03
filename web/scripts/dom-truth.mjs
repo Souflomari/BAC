@@ -156,6 +156,45 @@ const BATTERY = [
   // carries data-cover='rc-charge', which made the original presence-only
   // row go green before the article ran (instrument bug, fixed Day 7).
   { name: "DAY7(d): rc-charge cover has its own motif", page: "/", sel: "[data-cover='rc-charge'][data-motif='rc-charge']", present: true },
+  // ── July-2026 external audit F1 — the CLASS guard (bible §13 amendment:
+  //    guards target classes, not instances). No page's rendered text may
+  //    contain authoring-marker lexicon. Three enhancement-slot comments
+  //    shipped as visible prose while the instance-guards ran green; the
+  //    structural fix is stripAuthoringComments (lib/content.ts), this row
+  //    asserts the CLASS on every audited page. New internal vocabulary →
+  //    extend AUTHORING_LEXICON in the same commit. ──
+  //    Case notes (from the measurement pass): "à sourcer" leaked in
+  //    LOWERCASE (authoring vocabulary in any case — a lesson never says it);
+  //    "À FAIRE" stays uppercase-only because lowercase "à faire" is
+  //    ordinary French ("continue à faire circuler…" — measured false
+  //    positive).
+  //    Second expansion (post-fix adversarial verification found five
+  //    residual CLASSES the first lexicon missed): rendered marker literals
+  //    ("[["), internal spec citations ("§0.4"), reviewer notes in
+  //    blockquotes ("Note de validation"), and the R-code label form
+  //    ("R3 —") in headings/cells the h2-only strip didn't cover.
+  ...["/", NOTION, "/notions/pc/rc-charge", "/notions/maths/probabilites-conditionnelles", "/nonexistent-xyz"].map((p) => ({
+    name: `no authoring lexicon in rendered text (${p})`,
+    page: p,
+    sel: "body",
+    notText: /TODO|FIXME|SLOT D|AMÉLIORATION|[Àà] [Ss]ourcer|À FAIRE|asset-pending|jamais bloquant|voir note spec|<!--|\[\[|§\d|[Nn]ote de validation|\bR\d+ —/,
+  })),
+  // ── July-2026 F5 — the head pack renders (metadata API output) ──
+  { name: "head: favicon link", page: "/", sel: "link[rel='icon']", present: true },
+  { name: "head: apple-touch icon", page: "/", sel: "link[rel='apple-touch-icon']", present: true },
+  { name: "head: og:title", page: "/", sel: "meta[property='og:title']", present: true },
+  { name: "head: og:image", page: "/", sel: "meta[property='og:image']", present: true },
+  { name: "head: twitter:card", page: "/", sel: "meta[name='twitter:card']", present: true },
+  { name: "head: canonical", page: "/", sel: "link[rel='canonical']", present: true },
+  { name: "head: site JSON-LD", page: "/", sel: "script[type='application/ld+json']", present: true },
+  { name: "head: notion canonical", page: NOTION, sel: "link[rel='canonical']", present: true },
+  { name: "head: notion JSON-LD (LearningResource)", page: NOTION, sel: "script[type='application/ld+json']", present: true },
+  // ── July-2026 F4 — the theme toggle exists (interaction exercised in the
+  //    sweeps section below: the REAL user path, not a forced class) ──
+  { name: "theme toggle present in header", page: "/", sel: "header [data-theme-toggle]", present: true },
+  // ── July-2026 F7 — KaTeX accessibility (refuted-claim made permanent:
+  //    every formula ships MathML; parity asserted in the sweeps section) ──
+  { name: "KaTeX MathML present", page: NOTION, sel: ".katex .katex-mathml", present: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────
@@ -260,6 +299,12 @@ try {
           overflowing: el.scrollWidth > el.clientWidth + 1,
           padding: [cs.paddingTop, cs.paddingRight, cs.paddingBottom, cs.paddingLeft],
           textHead: (el.textContent || "").trim().slice(0, 60),
+          // FULL VISIBLE text for notText guards (July-2026 fixes: notText
+          // previously tested only the first 60 chars; and it must be
+          // innerText, not textContent — the RSC <script> payload carries
+          // raw markdown ("## R0 —", "[[figure:…]]") that never renders,
+          // and textContent would flag it).
+          textFull: ((el.innerText ?? el.textContent) || "").trim().slice(0, 200000),
           rootFont: root.fontSize,
         });
       }
@@ -314,8 +359,11 @@ try {
       if (spec.notText) {
         checks++;
         const re = new RegExp(spec.notText.source ?? spec.notText);
-        if (re.test(r.textHead)) failures += fail(`text "${r.textHead}" matches forbidden ${re}`);
-        else console.log(`  ✓ text clean ("${r.textHead.slice(0, 32)}…")`);
+        const m = re.exec(r.textFull ?? r.textHead);
+        if (m) {
+          const at = Math.max(0, m.index - 30);
+          failures += fail(`forbidden text ${re} found: "…${(r.textFull ?? "").slice(at, m.index + m[0].length + 30)}…"`);
+        } else console.log(`  ✓ text clean ("${r.textHead.slice(0, 32)}…")`);
       }
       if (spec.present) {
         checks++;
@@ -355,6 +403,127 @@ try {
         else console.log(`  ✓ ${spec.cssProp}: ${r.cssPropVal}`);
       }
     }
+  }
+
+  // ══ SWEEPS (July-2026 external-audit instruments — class-level, per §13) ══
+
+  // (F2) Prose measure: NO running-text paragraph renders wider than 75ch of
+  // its OWN font, on any audited content page. "Running text" = >100 chars
+  // (block-box labels like a 4-char eyebrow legitimately fill wide bands).
+  for (const p of [NOTION, "/notions/pc/rc-charge", "/notions/maths/probabilites-conditionnelles"]) {
+    console.log(`\n[${p}] SWEEP: prose measure ≤75ch (running text)`);
+    await page.goto(`${BASE}${p}`, { waitUntil: "networkidle" });
+    const offenders = await page.evaluate(() => {
+      const out = [];
+      for (const el of document.querySelectorAll(".notion-content p, .notion-content li")) {
+        // Running text = the element's OWN text runs (direct text nodes +
+        // inline children) are long. A structured card <li> aggregates lots
+        // of textContent but is a BOX, not a text line — measuring its width
+        // would flag the card, not the typography (first sweep version did).
+        let direct = 0;
+        for (const n of el.childNodes) {
+          if (n.nodeType === Node.TEXT_NODE) direct += n.textContent.trim().length;
+          else if (n.nodeType === Node.ELEMENT_NODE && getComputedStyle(n).display.startsWith("inline"))
+            direct += (n.textContent || "").trim().length;
+        }
+        if (direct <= 100) continue;
+        const probe = document.createElement("span");
+        probe.style.cssText = "position:absolute;visibility:hidden;width:75ch";
+        probe.style.font = getComputedStyle(el).font;
+        el.appendChild(probe);
+        const cap = probe.getBoundingClientRect().width;
+        probe.remove();
+        const w = el.getBoundingClientRect().width;
+        if (w > cap + 1) out.push(`${Math.round(w)}px > ${Math.round(cap)}px (75ch): "${(el.textContent || "").trim().slice(0, 40)}…"`);
+      }
+      return out;
+    });
+    checks++;
+    if (offenders.length) failures += fail(`over-measure running text:\n      ${offenders.join("\n      ")}`);
+    else console.log(`  ✓ all running text ≤ 75ch of its own font`);
+  }
+
+  // (F3 + F4) Contrast in BOTH themes, dark reached through the REAL toggle
+  // (never a forced class — the forced-class habit hid F4 for four days).
+  const CONTRAST_TARGETS = [
+    { page: NOTION, sel: "figcaption", label: "figcaption" },
+    { page: NOTION, sel: "[data-band='masthead'] p", label: "masthead metadata" },
+    { page: NOTION, sel: ".notion-rail a span[class*='bp-expanded']", label: "rail idle label" },
+    { page: NOTION, sel: "footer p", label: "footer" },
+    { page: "/", sel: "section[aria-label='Toutes les notions'] a span[class*='caption']", label: "shelf caption" },
+  ];
+  const lum = `(c)=>{const [r,g,b]=c.match(/\\d+(\\.\\d+)?/g).map(Number);const f=(v)=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)}`;
+  for (const theme of ["light", "dark"]) {
+    for (const t of CONTRAST_TARGETS) {
+      console.log(`\n[${t.page}] SWEEP: contrast ${t.label} (${theme})`);
+      await page.goto(`${BASE}${t.page}`, { waitUntil: "networkidle" });
+      // Reach the theme through the USER paths: the persisted-choice boot
+      // script (set storage, reload). The first sweep version blind-clicked
+      // the toggle and was defeated by its own persistence — the dark choice
+      // survives navigation, so a click on an already-dark page went light.
+      await page.evaluate((want) => localStorage.setItem("bac-theme", want), theme);
+      await page.reload({ waitUntil: "networkidle" });
+      const r = await page.evaluate(({ sel, lumSrc }) => {
+        const L = eval(lumSrc);
+        const el = document.querySelector(sel);
+        if (!el) return { missing: true };
+        const fg = getComputedStyle(el).color;
+        let node = el, bg = "rgb(255,255,255)";
+        while (node) {
+          const b = getComputedStyle(node).backgroundColor;
+          if (b && !b.includes("0, 0, 0, 0") && b !== "transparent") { bg = b; break; }
+          node = node.parentElement;
+        }
+        const [l1, l2] = [L(fg), L(bg)];
+        return { fg, bg, ratio: (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05), darkOn: document.documentElement.classList.contains("dark") };
+      }, { sel: t.sel, lumSrc: lum });
+      checks++;
+      if (r.missing) { failures += fail(`element not found: ${t.sel}`); continue; }
+      if (theme === "dark" && !r.darkOn) { failures += fail("toggle did not activate dark theme"); continue; }
+      if (r.ratio < 4.5) failures += fail(`contrast ${r.ratio.toFixed(2)}:1 < 4.5:1 (${r.fg} on ${r.bg})`);
+      else console.log(`  ✓ ${r.ratio.toFixed(2)}:1 (${r.fg} on ${r.bg})`);
+    }
+  }
+
+  // (F4) The toggle round-trips: dark on click, back to light on second click,
+  // and the boot script honors the persisted choice on reload.
+  {
+    console.log(`\n[/] SWEEP: theme toggle round-trip + persistence`);
+    await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    // Clean slate: the contrast sweep left a persisted choice behind.
+    await page.evaluate(() => localStorage.removeItem("bac-theme"));
+    await page.reload({ waitUntil: "networkidle" });
+    const bgLight = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    await page.click("header [data-theme-toggle]");
+    await page.waitForTimeout(150);
+    const bgDark = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    await page.reload({ waitUntil: "networkidle" });
+    const persisted = await page.evaluate(() => ({
+      dark: document.documentElement.classList.contains("dark"),
+      stored: localStorage.getItem("bac-theme"),
+    }));
+    await page.click("header [data-theme-toggle]");
+    await page.waitForTimeout(150);
+    const backLight = await page.evaluate(() => !document.documentElement.classList.contains("dark"));
+    checks++;
+    if (bgLight === bgDark) failures += fail(`toggle changed nothing (bg stayed ${bgLight})`);
+    else if (!persisted.dark || persisted.stored !== "dark") failures += fail(`choice not persisted across reload (stored=${persisted.stored}, dark=${persisted.dark})`);
+    else if (!backLight) failures += fail("second click did not return to light");
+    else console.log(`  ✓ dark reachable (${bgLight} → ${bgDark}), persisted, reversible`);
+    await page.evaluate(() => localStorage.removeItem("bac-theme"));
+  }
+
+  // (F7) KaTeX accessibility parity: every formula ships MathML.
+  {
+    console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);
+    await page.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
+    const k = await page.evaluate(() => ({
+      total: document.querySelectorAll(".katex").length,
+      mathml: document.querySelectorAll(".katex > .katex-mathml").length,
+    }));
+    checks++;
+    if (k.total === 0 || k.total !== k.mathml) failures += fail(`MathML parity broken: ${k.mathml}/${k.total}`);
+    else console.log(`  ✓ ${k.mathml}/${k.total} formulas carry MathML`);
   }
 
   await browser.close();

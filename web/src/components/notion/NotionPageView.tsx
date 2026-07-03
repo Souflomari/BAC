@@ -59,6 +59,10 @@ function Breadcrumb({ subject, title }: { subject: string; title: string }) {
       <span
         className="text-[var(--color-text-primary)] font-medium truncate max-w-[28ch]"
         aria-current="page"
+        // The 28ch cap ellipsizes long titles VISUALLY (the DOM text — and
+        // so the accessible name — stays complete); title= restores the
+        // sighted hover affordance (July-2026 audit F6).
+        title={title}
       >
         {title}
       </span>
