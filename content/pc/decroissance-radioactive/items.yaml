@@ -1,0 +1,415 @@
+notion: decroissance-radioactive
+skill_code: decroissance_radioactive
+
+misconceptions:
+  - id: mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons
+    label: "« Des isotopes ont le même nombre de neutrons, mais des Z différents »"
+    description: "L'élève inverse le rôle de Z et N : il croit que ce qui définit des isotopes, c'est un nombre de neutrons partagé, pas un nombre de protons partagé."
+    contradicts_principle: "Des isotopes partagent le même Z (donc le même élément chimique) et diffèrent par N (donc par A). Z est ce qui définit l'élément ; N peut varier librement entre isotopes."
+
+  - id: mc.physics.decroissance_radioactive.isotope-confond-isobare
+    label: "« Des isotopes ont le même nombre de nucléons A, réparti différemment »"
+    description: "L'élève confond isotopes (même Z, A différent) et isobares (même A, Z différent) — deux notions qui se ressemblent par le nom mais qui ne partagent pas la même grandeur conservée."
+    contradicts_principle: "Isotopes = même Z, N (donc A) différent. Ce que décrit la question — même A réparti différemment entre Z et N — correspond à des isobares, pas des isotopes."
+
+  - id: mc.physics.decroissance_radioactive.element-defini-par-masse
+    label: "« Deux noyaux de masse différente sont deux éléments chimiques différents »"
+    description: "L'élève fait dépendre l'identité chimique de la masse du noyau (A) plutôt que de son nombre de protons (Z)."
+    contradicts_principle: "L'élément chimique est entièrement déterminé par Z (nombre de protons, donc d'électrons). Deux noyaux de même Z sont le même élément quelle que soit leur masse — ce sont des isotopes, pas des éléments distincts."
+
+  - id: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
+    label: "« Un noyau avec très peu de nucléons est forcément stable »"
+    description: "L'élève fait dépendre la stabilité de la seule taille du noyau (A), en ignorant le rapport N/Z."
+    contradicts_principle: "Le tritium (3 nucléons, N/Z = 2) est instable malgré sa petite taille : c'est l'écart du rapport N/Z par rapport à la vallée de stabilité qui gouverne l'instabilité, pas le nombre brut de nucléons."
+
+  - id: mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z
+    label: "« Seul le nombre de protons Z décide de la stabilité, le nombre de neutrons n'entre pas en jeu »"
+    description: "L'élève ignore le rôle du rapport N/Z et attribue l'instabilité uniquement à Z."
+    contradicts_principle: "La stabilité dépend de la position du couple (N, Z) par rapport à la vallée de stabilité — un même Z peut donner un isotope stable ou instable selon N (ex. carbone 12 stable, carbone 14 instable, même Z=6)."
+
+  - id: mc.physics.decroissance_radioactive.conservation-Z-oubliee
+    label: "« Dans une désintégration α, seul A change ; Z reste celui du père »"
+    description: "L'élève applique la conservation du nombre de nucléons mais oublie que la particule alpha emporte aussi 2 charges positives, donc que Z du fils doit diminuer de 2."
+    contradicts_principle: "Les deux lois de Soddy s'appliquent ensemble : conservation de A ET conservation de Z. Une particule alpha emporte 4 nucléons ET 2 charges positives — le noyau fils a donc A-4 ET Z-2, pas seulement A-4."
+
+  - id: mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta
+    label: "« Une désintégration α ne change que Z, comme une désintégration β »"
+    description: "L'élève généralise le comportement de β (A inchangé, Z modifié) à la désintégration α, en oubliant que la particule alpha emporte des nucléons."
+    contradicts_principle: "Contrairement à β (A inchangé), la désintégration α emporte 4 nucléons : A ET Z diminuent tous les deux (de 4 et de 2 respectivement)."
+
+  - id: mc.physics.decroissance_radioactive.sens-conservation-inverse
+    label: "« Le noyau fils a plus de nucléons et de charge que le père »"
+    description: "L'élève additionne au lieu de soustraire : il traite la particule émise comme si elle s'ajoutait au père plutôt que d'en être retranchée."
+    contradicts_principle: "Le noyau père SE TRANSFORME en noyau fils PLUS la particule émise : le fils a nécessairement moins de nucléons et/ou moins de charge que le père, jamais plus."
+
+  - id: mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta
+    label: "« Le rayonnement γ modifie Z, comme une désintégration β »"
+    description: "L'élève traite l'émission γ comme une désintégration à part entière qui transformerait le noyau, avec un changement de Z."
+    contradicts_principle: "Le rayonnement γ correspond à la désexcitation d'un noyau déjà formé (même Z, même A) : il libère de l'énergie sous forme de photon, sans changer la composition du noyau."
+
+  - id: mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha
+    label: "« Le rayonnement γ modifie A, comme une désintégration α »"
+    description: "L'élève traite l'émission γ comme s'il s'agissait d'une désintégration alpha supplémentaire, avec perte de nucléons."
+    contradicts_principle: "Le rayonnement γ ne change ni A ni Z : c'est une relaxation énergétique d'un noyau déjà dans sa composition finale, pas une transformation nucléaire."
+
+  - id: mc.physics.decroissance_radioactive.gamma-change-isotope
+    label: "« Après γ, le noyau devient un isotope différent du même élément »"
+    description: "L'élève pense que γ modifie N (donc A), produisant un isotope différent, alors que la composition ne change pas du tout."
+    contradicts_principle: "L'émission γ ne change ni N ni Z ni A : le noyau après émission est identique en composition au noyau avant — seule son énergie interne diminue."
+
+  - id: mc.physics.decroissance_radioactive.noyau-vieillit
+    label: "« Un noyau plus âgé a plus de chances de se désintégrer bientôt »"
+    description: "L'élève applique un modèle d'usure (comme un objet mécanique) à un noyau atomique, en supposant que la probabilité de désintégration augmente avec l'âge du noyau."
+    contradicts_principle: "La désintégration radioactive est un processus sans mémoire : la probabilité de désintégration par unité de temps ne dépend pas de l'âge du noyau, seulement de la nature de l'isotope (constante λ)."
+
+  - id: mc.physics.decroissance_radioactive.noyau-fraicheur-instable
+    label: "« Un noyau qui vient de se former est plus instable qu'un noyau plus ancien »"
+    description: "L'élève inverse le modèle d'usure : il suppose qu'un noyau 'récent' est plus réactif ou plus instable qu'un noyau ancien."
+    contradicts_principle: "Le caractère sans mémoire de la désintégration radioactive interdit toute dépendance à l'âge du noyau, dans un sens comme dans l'autre : la probabilité de désintégration par unité de temps est la même, quel que soit l'âge."
+
+  - id: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+    label: "« La constante radioactive λ dépend de la température ou de la pression »"
+    description: "L'élève transpose au noyau une propriété des réactions chimiques, dont la vitesse dépend des conditions extérieures."
+    contradicts_principle: "λ est une propriété intrinsèque du noyau (caractéristique de l'isotope), indépendante de la température, de la pression, ou de l'état chimique — contrairement à la vitesse d'une réaction chimique."
+
+  - id: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
+    label: "« Après n demi-vies, il reste N0/n (division linéaire) »"
+    description: "L'élève traite les demi-vies successives comme des soustractions égales (une division linéaire par le nombre de demi-vies) au lieu d'une division par 2 répétée (géométrique)."
+    contradicts_principle: "Chaque demi-vie divise la quantité restante par 2, pas par un montant fixe : après n demi-vies, il reste N0/2^n, une décroissance géométrique, pas N0/n."
+
+  - id: mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale
+    label: "« Après un nombre entier de demi-vies, l'échantillon est totalement désintégré »"
+    description: "L'élève confond demi-vie et durée de vie totale : il pense qu'après n demi-vies, il ne reste plus aucun noyau."
+    contradicts_principle: "N(t) = N0 e^{-λt} ne s'annule jamais exactement : après n demi-vies il reste N0/2^n, une quantité non nulle aussi petite soit-elle, pas zéro."
+
+  - id: mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle
+    label: "« On peut écrire N(t) = N0 e^{-t}, sans passer par λ »"
+    description: "L'élève omet la constante radioactive λ dans l'exposant, en mélangeant les unités : il traite le temps t comme s'il était déjà sans dimension."
+    contradicts_principle: "L'exposant d'une exponentielle doit être sans dimension : λt est sans dimension parce que λ est en (unité de temps)^{-1}. Écrire e^{-t} directement est dimensionnellement incorrect et ignore la constante caractéristique de l'isotope."
+
+items:
+
+  # ══════════════════════════════════════════════════════════════
+  # R1 — structure du noyau, isotopes, stabilité
+  # ══════════════════════════════════════════════════════════════
+
+  - id: DECRO-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: decroissance_radioactive
+    tags: [isotopes, structure_noyau]
+    stem: >
+      Les noyaux $^{12}_{6}\text{C}$ et $^{14}_{6}\text{C}$ sont deux isotopes
+      du carbone. Qu'est-ce qui est nécessairement vrai pour deux isotopes d'un
+      même élément ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ils ont le même nombre de protons Z, mais un nombre de neutrons N (donc un nombre de masse A) différent."
+        correct: true
+      - id: B
+        text: "Ils ont le même nombre de neutrons N, mais un nombre de protons Z différent."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons
+        feedback: >
+          C'est l'inverse : ce qui définit des isotopes, c'est un Z partagé
+          (même élément chimique), pas un N partagé. Le nombre de neutrons est
+          justement ce qui varie entre isotopes.
+      - id: C
+        text: "Ils ont le même nombre total de nucléons A, réparti différemment entre protons et neutrons."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.isotope-confond-isobare
+        feedback: >
+          Ça, c'est la définition d'isobares (même A, Z différent), pas
+          d'isotopes. Deux isotopes ont le même Z et un A différent — c'est
+          l'inverse de ce que propose cette réponse.
+      - id: D
+        text: "Ils appartiennent à deux éléments chimiques différents, puisque leur masse diffère."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.element-defini-par-masse
+        feedback: >
+          L'identité chimique d'un élément est fixée par Z (le nombre de
+          protons), pas par la masse A. Le carbone 12 et le carbone 14 ont le
+          même Z=6 : ce sont bien le même élément chimique, le carbone.
+    correct_feedback: >
+      Exactement : le Z partagé (6 protons) fait des deux noyaux le même
+      élément chimique ; c'est le nombre de neutrons — donc A — qui les
+      distingue.
+    solution: |
+      $^{12}_{6}\text{C}$ : $Z=6$, $A=12$, donc $N = A - Z = 6$ neutrons.
+      $^{14}_{6}\text{C}$ : $Z=6$, $A=14$, donc $N = A - Z = 8$ neutrons.
+      Même $Z=6$ → même élément (le carbone). $N$ différent (6 contre 8) →
+      isotopes différents du même élément.
+
+  - id: DECRO-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: [stabilite, misconception_driven]
+    stem: >
+      Le tritium $^{3}_{1}\text{H}$ (1 proton, 2 neutrons — seulement 3
+      nucléons) est un noyau instable et radioactif, alors que l'uranium 238,
+      beaucoup plus lourd, est lui aussi instable. Qu'est-ce que cette
+      comparaison montre sur ce qui gouverne la stabilité d'un noyau ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'instabilité dépend du rapport N/Z par rapport à la vallée de stabilité, pas du nombre total de nucléons à lui seul — un noyau léger peut être instable si N/Z s'écarte trop de la zone stable."
+        correct: true
+      - id: B
+        text: "C'est impossible : un noyau de seulement 3 nucléons est forcément stable."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
+        feedback: >
+          Le tritium existe bel et bien et il est instable (radioactif β⁻) :
+          la règle « petit noyau = forcément stable » ne tient pas. Son
+          rapport N/Z = 2 est trop déséquilibré pour sa taille, même minuscule.
+      - id: C
+        text: "L'instabilité ne dépend que du nombre de protons Z ; le nombre de neutrons n'a pas d'influence."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z
+        feedback: >
+          Si seul Z comptait, tous les isotopes d'un même élément (même Z)
+          seraient également stables ou instables. Or le carbone 12 (Z=6,
+          N=6) est stable et le carbone 14 (Z=6, N=8) ne l'est pas : c'est
+          bien le nombre de neutrons, via le rapport N/Z, qui fait la
+          différence.
+      - id: D
+        text: "En réalité seul l'uranium 238 est instable ; le tritium, trop léger, est nécessairement stable."
+        correct: false
+        feedback: >
+          Le tritium est un fait expérimental établi : il est bien instable
+          (désintégration β⁻ vers l'hélium 3), malgré sa légèreté. On ne peut
+          pas écarter une observation réelle au nom d'une règle de taille.
+    correct_feedback: >
+      Le tritium prouve qu'un noyau léger n'est pas automatiquement stable :
+      ce qui compte, c'est où se situe le couple (N, Z) par rapport à la
+      vallée de stabilité, pas la taille brute du noyau.
+    solution: |
+      Le tritium a $N/Z = 2/1 = 2$ : beaucoup trop de neutrons pour un noyau
+      aussi léger (comparé à $^1_1\text{H}$, $N/Z=0$, et $^2_1\text{H}$,
+      $N/Z=1$, tous deux stables). L'écart au rapport N/Z optimal rend le
+      tritium instable malgré ses 3 nucléons seulement. L'uranium 238 est
+      instable pour une raison différente (noyau trop lourd pour qu'aucun
+      équilibre N/Z ne compense la répulsion électrique cumulée). Les deux
+      cas confirment : c'est le rapport N/Z par rapport à la vallée de
+      stabilité qui gouverne l'instabilité, pas le nombre brut de nucléons.
+
+  # ══════════════════════════════════════════════════════════════
+  # R2 — désintégrations et lois de Soddy
+  # ══════════════════════════════════════════════════════════════
+
+  - id: DECRO-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: [alpha, soddy, misconception_driven]
+    stem: |
+      Un noyau de radium $^{226}_{88}\text{Ra}$ émet une particule alpha
+      $^{4}_{2}\text{He}$. Quel est le noyau fils obtenu ?
+    type: mcq
+    choices:
+      - id: A
+        text: '$^{222}_{86}\text{Rn}$ (A diminue de 4, Z diminue de 2).'
+        correct: true
+      - id: B
+        text: '$^{222}_{90}\text{Rn}$ (A diminue de 4, Z inchangé).'
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.conservation-Z-oubliee
+        feedback: >
+          A est bien correctement diminué de 4, mais Z a été laissé inchangé :
+          la particule alpha emporte aussi 2 charges positives. Il faut
+          appliquer les DEUX lois de conservation, pas seulement celle des
+          nucléons.
+      - id: C
+        text: '$^{226}_{86}\text{Rn}$ (A inchangé, Z diminue de 2).'
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta
+        feedback: >
+          Ce résultat traite la désintégration alpha comme une désintégration
+          beta (A inchangé). Mais une particule alpha emporte 4 nucléons : A
+          DOIT diminuer de 4, tout comme Z diminue de 2.
+      - id: D
+        text: '$^{230}_{90}\text{Th}$ (A et Z augmentent).'
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.sens-conservation-inverse
+        feedback: >
+          Le noyau fils est obtenu en RETRANCHANT la particule émise du père,
+          pas en l'ajoutant. A et Z du fils sont nécessairement inférieurs à
+          ceux du père dans une désintégration alpha.
+    correct_feedback: >
+      Conservation de A : $226 = A' + 4 \Rightarrow A' = 222$. Conservation de
+      Z : $88 = Z' + 2 \Rightarrow Z' = 86$, soit le radon.
+    solution: |
+      On pose $^{226}_{88}\text{Ra} \rightarrow \ ^{A'}_{Z'}\text{Y} + \ ^{4}_{2}\text{He}$.
+      Conservation du nombre de nucléons : $226 = A' + 4 \Rightarrow A' = 222$.
+      Conservation de la charge : $88 = Z' + 2 \Rightarrow Z' = 86$.
+      $Z'=86$ correspond au radon : le noyau fils est $^{222}_{86}\text{Rn}$.
+
+  - id: DECRO-4
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: decroissance_radioactive
+    tags: [gamma, misconception_driven]
+    stem: >
+      Après une désintégration β⁻, un noyau fils est parfois formé dans un
+      état excité et émet ensuite un rayonnement γ pour revenir à son état
+      fondamental. Quel est l'effet de cette émission γ sur Z et A du noyau ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucun effet sur Z ni sur A : seule l'énergie interne du noyau diminue."
+        correct: true
+      - id: B
+        text: "Z diminue de 1, comme dans une désintégration β⁻ supplémentaire."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta
+        feedback: >
+          Le rayonnement γ n'est pas une désintégration β supplémentaire : il
+          ne change pas Z. C'est une désexcitation d'un noyau déjà formé,
+          pas une nouvelle transformation nucléaire.
+      - id: C
+        text: "A diminue de 4, comme dans une désintégration α."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha
+        feedback: >
+          Le rayonnement γ n'emporte aucun nucléon — A ne change pas. Ce
+          n'est pas une désintégration alpha supplémentaire : c'est un
+          simple photon émis par un noyau déjà dans sa composition finale.
+      - id: D
+        text: "Le noyau devient un isotope différent du même élément."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-isotope
+        feedback: >
+          Un isotope différent supposerait un N (donc un A) différent. Le
+          rayonnement γ ne change ni N, ni Z, ni A : le noyau après émission
+          a exactement la même composition qu'avant, juste moins d'énergie
+          interne.
+    correct_feedback: >
+      C'est exact : γ signale une perte d'énergie, pas une transformation.
+      Le noyau après émission γ a rigoureusement la même composition qu'avant.
+    solution: |
+      Le rayonnement γ correspond à $^{A}_{Z}\text{Y}^{*} \rightarrow \ ^{A}_{Z}\text{Y} + \gamma$ :
+      même $A$, même $Z$ des deux côtés. Le noyau excité $Y^{*}$ et le noyau
+      relaxé $Y$ sont le même noyau, dans deux états d'énergie différents.
+      γ n'est jamais la cause première d'une désintégration : il accompagne,
+      en second temps, une désintégration α ou β qui a laissé le noyau fils
+      dans un état excité.
+
+  # ══════════════════════════════════════════════════════════════
+  # R3 — caractère aléatoire, loi de décroissance
+  # ══════════════════════════════════════════════════════════════
+
+  - id: DECRO-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: [aleatoire, sans_memoire, misconception_driven]
+    stem: >
+      Deux noyaux de carbone 14, strictement identiques, existent depuis des
+      durées très différentes : l'un vient de se former, l'autre existe depuis
+      3000 ans. Le caractère aléatoire et « sans mémoire » de la désintégration
+      radioactive implique quoi pour leurs probabilités de se désintégrer dans
+      la seconde qui vient ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux noyaux ont exactement la même probabilité de se désintégrer dans la seconde qui vient : l'âge du noyau n'intervient pas."
+        correct: true
+      - id: B
+        text: "Le noyau âgé de 3000 ans a une probabilité plus élevée de se désintégrer bientôt, comme une ampoule usée qui a plus de chances de griller."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.noyau-vieillit
+        feedback: >
+          C'est le modèle de l'usure mécanique, qui ne s'applique pas ici :
+          un noyau radioactif ne « s'use » pas avec le temps. Sa probabilité
+          de désintégration par unité de temps est la même, quel que soit
+          son âge — c'est ce que veut dire « sans mémoire ».
+      - id: C
+        text: "Le noyau qui vient de se former a une probabilité plus élevée, car il est encore instable au sens frais du terme."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.noyau-fraicheur-instable
+        feedback: >
+          Ceci inverse le modèle de l'usure, mais reste une dépendance à
+          l'âge — et toute dépendance à l'âge est exclue par le caractère
+          sans mémoire de la désintégration radioactive.
+      - id: D
+        text: "On ne peut rien dire sans connaître la température et la pression de l'échantillon."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          La constante radioactive λ est une propriété intrinsèque du noyau,
+          indépendante des conditions extérieures (température, pression,
+          liaison chimique) — contrairement à la vitesse d'une réaction
+          chimique. Ces informations ne changeraient rien à la réponse.
+    correct_feedback: >
+      Exactement : la désintégration radioactive est sans mémoire. La
+      probabilité de désintégration par unité de temps, λ, ne dépend que de
+      la nature du noyau (l'isotope), jamais de son âge ni de son
+      environnement.
+    solution: |
+      La désintégration radioactive est spontanée, aléatoire et sans mémoire :
+      la probabilité qu'un noyau donné se désintègre dans un petit intervalle
+      $dt$ vaut $\lambda \, dt$, où $\lambda$ est une constante caractéristique
+      de l'isotope — elle ne dépend ni de l'âge du noyau, ni des conditions
+      extérieures. C'est cette propriété, appliquée à un grand nombre de
+      noyaux indépendants, qui donne la loi collective
+      $N(t) = N_0 e^{-\lambda t}$.
+
+  # ══════════════════════════════════════════════════════════════
+  # R4 — demi-vie, décroissance géométrique
+  # ══════════════════════════════════════════════════════════════
+
+  - id: DECRO-6
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: decroissance_radioactive
+    tags: [demi_vie, calcul, misconception_driven]
+    stem: >
+      Un échantillon contient initialement $N_0$ noyaux radioactifs d'un
+      isotope de demi-vie $t_{1/2} = 8$ jours. Combien de noyaux n'ont pas
+      encore désintégré après 24 jours ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$N_0/8$, car 24 jours représentent exactement 3 demi-vies, et $2^3 = 8$."
+        correct: true
+      - id: B
+        text: "$N_0/3$, car on a compté 3 demi-vies, donc on divise par 3."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
+        feedback: >
+          Chaque demi-vie divise la population restante PAR 2, pas par un
+          montant fixe qu'on additionne. Ce n'est pas linéaire (diviser par
+          le nombre de demi-vies) mais géométrique (diviser par 2, autant de
+          fois qu'il y a de demi-vies) : $N_0/2^3 = N_0/8$, pas $N_0/3$.
+      - id: C
+        text: "$0$, car après un nombre entier de demi-vies, l'échantillon est totalement désintégré."
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale
+        feedback: >
+          La demi-vie n'est pas une durée de vie totale : $N(t) = N_0
+          e^{-\lambda t}$ ne s'annule jamais exactement, quel que soit le
+          nombre de demi-vies écoulées. Il reste toujours une quantité non
+          nulle, ici $N_0/8$.
+      - id: D
+        text: '$N_0 \, e^{-24}$, en appliquant directement l''exposant en jours.'
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle
+        feedback: >
+          L'exposant d'une exponentielle doit être sans dimension : il faut
+          $e^{-\lambda t}$, avec $\lambda = \ln 2 / t_{1/2}$, pas $e^{-t}$
+          directement. Le temps $t$ seul, en jours, n'est pas une quantité
+          sans dimension.
+    correct_feedback: >
+      24 jours, c'est $24/8 = 3$ demi-vies : la population restante est
+      divisée par 2, trois fois de suite, soit $N_0/2^3 = N_0/8$.
+    solution: |
+      $t_{1/2} = 8$ jours, donc $\lambda = \dfrac{\ln 2}{8} \approx 0{,}0866\ \text{jour}^{-1}$.
+      $24$ jours $= 3 \times t_{1/2}$, donc après 3 demi-vies successives :
+
+      $$\frac{N(24)}{N_0} = \left(\frac{1}{2}\right)^3 = \frac{1}{8}$$
+
+      Vérification par la formule directe :
+      $N(24) = N_0 e^{-\lambda \times 24} = N_0 e^{-0{,}0866 \times 24} = N_0 e^{-2{,}08} \approx N_0/8$.
+      Les deux méthodes s'accordent : il reste $N_0/8$.

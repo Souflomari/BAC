@@ -1,0 +1,281 @@
+notion: dipole-rl
+skill_code: pc_dipole_rl
+misconceptions: []
+
+items:
+  - id: RL-1
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    stem: >
+      À l'instant où on ferme l'interrupteur d'un circuit série (générateur idéal $E$,
+      résistance totale $R$, bobine $(r, L)$), quelle est la valeur du courant $i$
+      juste après la fermeture, à $t = 0^+$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$i(0^+) = 0$"
+        correct: true
+      - id: B
+        text: "$i(0^+) = E/R$, comme si la bobine n'existait pas"
+        correct: false
+        feedback: >
+          Le courant à travers une bobine ne peut pas sauter instantanément : un
+          saut exigerait une tension infinie aux bornes de la bobine
+          ($u = ri + L\,di/dt$), ce qu'un générateur de f.é.m. finie $E$ ne peut
+          pas fournir.
+      - id: C
+        text: "$i(0^+) = E/r$"
+        correct: false
+        feedback: >
+          Cette valeur ignore la résistance $R_0$ du reste du circuit, et surtout
+          suppose à tort un établissement instantané du courant.
+      - id: D
+        text: "$i(0^+)$ est indéterminé, on ne peut rien en dire"
+        correct: false
+        feedback: >
+          Le courant est parfaitement déterminé : la continuité du courant dans
+          une bobine impose $i(0^+) = i(0^-) = 0$, puisque le circuit était
+          ouvert avant $t=0$.
+    correct_feedback: >
+      Le courant dans une bobine est une grandeur continue : il vaut $0$ juste
+      après la fermeture, exactement comme juste avant, puisque le circuit
+      était ouvert.
+    solution: |
+      Le courant qui traverse une bobine ne peut varier que continûment. Un
+      saut instantané de $i$ correspondrait à $di/dt$ infini à cet instant,
+      donc à une tension $u = ri + L\,di/dt$ infinie aux bornes de la bobine —
+      ce qu'aucun générateur de f.é.m. finie ne peut fournir.
+      Avant $t=0$, le circuit est ouvert : $i(0^-) = 0$.
+      Par continuité : $i(0^+) = i(0^-) = 0$.
+
+  - id: RL-2
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_dipole_rl
+    tags: []
+    stem: >
+      En régime permanent (courant $i$ constant, établi depuis longtemps) dans
+      un circuit comportant une bobine $(r, L)$, que vaut la tension $u$ à ses
+      bornes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u = ri$, exactement comme pour un simple résistor"
+        correct: true
+      - id: B
+        text: "$u = L\\,di/dt$ uniquement"
+        correct: false
+        feedback: >
+          Ce terme est nul en régime permanent, puisque le courant est
+          constant : $di/dt = 0$.
+      - id: C
+        text: "$u = 0$ : une bobine ne laisse jamais paraître de tension en régime établi"
+        correct: false
+        feedback: >
+          La bobine a une résistance interne $r$ non nulle : en régime permanent
+          elle se comporte comme un résistor ordinaire, $u = ri$, pas comme un
+          fil sans résistance.
+      - id: D
+        text: "$u = ri + L\\,I_{max}$"
+        correct: false
+        feedback: >
+          $L$ ne se multiplie jamais directement par le courant : il se
+          multiplie par $di/dt$, qui est nul en régime permanent. Ce choix
+          mélange les deux termes de la relation caractéristique.
+    correct_feedback: >
+      Dès que $di/dt = 0$, le terme inductif disparaît : la bobine, en régime
+      permanent, se comporte comme un simple résistor de résistance $r$.
+    solution: |
+      Relation caractéristique : $u = ri + L\,di/dt$.
+      En régime permanent, $i$ est constant, donc $di/dt = 0$.
+      Il reste $u = ri$ : la bobine se comporte alors comme une résistance
+      ordinaire $r$, sans opposition supplémentaire liée à $L$.
+
+  - id: RL-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    stem: >
+      Quelle est l'expression correcte de la constante de temps d'un dipôle
+      RL, et quelle est son unité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau = L/R$, exprimée en secondes"
+        correct: true
+      - id: B
+        text: "$\\tau = R/L$, exprimée en secondes"
+        correct: false
+        feedback: >
+          C'est l'inverse de la bonne formule ; $R/L$ a d'ailleurs la dimension
+          de l'inverse d'un temps ($\text{s}^{-1}$), pas d'un temps.
+      - id: C
+        text: "$\\tau = RC$, comme pour le dipôle RC"
+        correct: false
+        feedback: >
+          Cette formule vient du chapitre RC, où le paramètre est une capacité
+          $C$, pas une inductance $L$. Le dipôle RL n'a pas de condensateur :
+          $\tau = L/R$.
+      - id: D
+        text: "$\\tau = L/R$, exprimée en henry"
+        correct: false
+        feedback: >
+          Le henry est l'unité de l'inductance $L$, pas celle de $\tau$. Le
+          rapport $L/R$ a la dimension d'un temps (la seconde), comme le
+          confirme l'analyse dimensionnelle $\text{V}\cdot\text{s}/\text{A}$
+          divisé par $\text{V}/\text{A}$.
+    correct_feedback: >
+      $\tau = L/R$ est homogène à un temps ($\text{H}/\Omega = \text{s}$) :
+      c'est la durée caractéristique de l'établissement du courant.
+    solution: |
+      $[L] = \text{V}\cdot\text{s}/\text{A}$ (issu de $u_L = L\,di/dt$).
+      $[R] = \text{V}/\text{A}$ (loi d'Ohm).
+      $[L]/[R] = \text{s}$ : le rapport $L/R$ est homogène à un temps.
+      C'est cette combinaison, et aucune autre, qui annule exactement le reste
+      exponentiel lors de la vérification de la solution $i(t)$.
+
+  - id: RL-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    stem: >
+      Quelle est l'expression correcte de l'énergie emmagasinée dans une
+      bobine d'inductance $L$ parcourue par un courant $i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_L = \\frac{1}{2}Li^2$"
+        correct: true
+      - id: B
+        text: "$E_L = Li$"
+        correct: false
+        feedback: >
+          Cette expression n'est même pas homogène à une énergie. L'énergie
+          stockée se retrouve en reconnaissant que la puissance reçue par la
+          bobine, $Li\,di/dt$, est la dérivée par rapport au temps de
+          $\frac12 Li^2$.
+      - id: C
+        text: "$E_L = \\frac{1}{2}ri^2$"
+        correct: false
+        feedback: >
+          Cette expression est une puissance dissipée par effet Joule dans la
+          résistance interne — de l'énergie perdue, pas stockée. L'énergie
+          emmagasinée par la bobine ne dépend que de $L$ et $i$.
+      - id: D
+        text: "$E_L = \\frac{1}{2}Cu^2$"
+        correct: false
+        feedback: >
+          C'est l'énergie stockée dans un condensateur (chapitre RC), pas dans
+          une bobine. Une bobine ne stocke pas d'énergie via une capacité $C$
+          qu'elle n'a pas.
+    correct_feedback: >
+      $E_L = \frac12 Li^2$ : elle croît avec le carré du courant établi, et se
+      retrouve en reconnaissant $Li\,di/dt$ comme la dérivée de $\frac12 Li^2$
+      dans le bilan de puissance du circuit.
+    solution: |
+      Bilan de puissance : $Ei = Ri^2 + Li\,di/dt$.
+      $Ri^2$ est dissipé par effet Joule.
+      $Li\,di/dt = \dfrac{d}{dt}\left(\dfrac12 Li^2\right)$ : c'est la
+      puissance reçue par la bobine, donc $\dfrac12 Li^2$ est l'énergie
+      qu'elle accumule.
+
+  - id: RL-5
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_dipole_rl
+    tags: []
+    stem: >
+      Sur un oscillogramme enregistrant $i(t)$ lors de l'établissement du
+      courant dans un circuit RL, on a repéré la valeur asymptotique
+      $I_{max}$. Comment repère-t-on graphiquement l'instant $t = \tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est l'instant où $i(t)$ atteint environ $0{,}63 \\times I_{max}$."
+        correct: true
+      - id: B
+        text: "C'est l'instant où $i(t)$ atteint $I_{max}$ pour la première fois."
+        correct: false
+        feedback: >
+          $i(t)$ ne fait que se rapprocher de $I_{max}$ sans jamais l'atteindre
+          exactement en un temps fini : $i(t) = I_{max}(1-e^{-t/\tau})$ tend
+          vers $I_{max}$ mais ne l'égale jamais strictement.
+      - id: C
+        text: "C'est l'instant où $i(t)$ atteint $0{,}5 \\times I_{max}$."
+        correct: false
+        feedback: >
+          $50\%$ de $I_{max}$ correspond à un instant différent de $\tau$ : il
+          faudrait résoudre $1-e^{-t/\tau} = 0{,}5$, ce qui donne
+          $t = \tau\ln 2 \approx 0{,}69\,\tau$, pas $\tau$.
+      - id: D
+        text: "C'est l'instant où la pente de $i(t)$ devient négative."
+        correct: false
+        feedback: >
+          La pente de $i(t)$ reste positive tout au long de l'établissement du
+          courant : le courant croît continûment vers $I_{max}$, elle ne
+          devient jamais négative dans cette phase.
+    correct_feedback: >
+      $1-e^{-1}\approx 0{,}63$ : à $t=\tau$, le courant a parcouru $63\%$ du
+      chemin vers $I_{max}$. C'est la lecture graphique la plus directe.
+    solution: |
+      $i(\tau) = I_{max}(1-e^{-\tau/\tau}) = I_{max}(1-e^{-1})$
+      $\approx I_{max} \times 0{,}632$.
+      On repère donc, sur l'oscillogramme, l'instant où la courbe atteint
+      $63\%$ de son asymptote : cet instant est $\tau$.
+
+  - id: RL-6
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    stem: >
+      Pourquoi le courant traversant une bobine ne peut-il pas s'établir
+      instantanément lors de la fermeture d'un interrupteur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'un saut instantané de courant imposerait une tension
+          infinie aux bornes de la bobine ($u = ri + L\,di/dt$), que le
+          générateur ne peut pas fournir.
+        correct: true
+      - id: B
+        text: >-
+          Parce que la résistance interne $r$ de la bobine est toujours très
+          élevée et limite fortement le courant.
+        correct: false
+        feedback: >
+          Ce n'est pas $r$ qui empêche le saut instantané : $r$ se comporte
+          comme une résistance ordinaire, qui n'empêche elle-même aucun saut.
+          C'est le terme $L\,di/dt$, lié à la variation du courant, qui est
+          en cause.
+      - id: C
+        text: >-
+          Parce que le courant doit d'abord « remplir » physiquement les
+          spires de la bobine, comme un réservoir se remplit d'eau.
+        correct: false
+        feedback: >
+          Cette image confond la bobine avec un condensateur qui stockerait de
+          la charge. La bobine ne stocke pas de charge électrique ; elle
+          s'oppose aux variations rapides du courant via l'auto-induction.
+      - id: D
+        text: "Parce que la loi d'Ohm ne s'applique pas du tout aux bobines."
+        correct: false
+        feedback: >
+          La loi d'Ohm s'applique bien à la partie résistive de la bobine
+          ($ri$). Ce qui est nouveau, c'est le terme additionnel $L\,di/dt$,
+          pas une absence de la loi d'Ohm.
+    correct_feedback: >
+      Le terme $L\,di/dt$ deviendrait infini pour une variation instantanée de
+      courant, ce qu'aucun générateur réel ne peut fournir : le courant dans
+      une bobine varie donc toujours continûment.
+    solution: |
+      Un saut instantané de $i$ signifierait $di/dt \to \infty$ à cet instant.
+      La relation $u = ri + L\,di/dt$ donnerait alors $u \to \infty$.
+      Un générateur idéal de f.é.m. finie $E$ ne peut fournir une tension
+      infinie à aucun dipôle du circuit : le saut est donc impossible.
+      Conclusion : $i$ varie continûment à travers une bobine.

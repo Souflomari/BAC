@@ -1,0 +1,349 @@
+notion: suites-numeriques
+skill_code: sma_suites_numeriques   # proposé — à confirmer par supabase-architect
+
+misconceptions: []
+
+items:
+
+  - id: SUITES-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: sma_suites_numeriques
+    tags: [recurrence]
+    stem: >
+      Un élève veut démontrer par récurrence que, pour tout entier $n$,
+      $u_n < 10$, sachant que $u_{n+1} = 0{,}5\,u_n + 3$. Il rédige
+      seulement : « Supposons $u_n < 10$. Alors
+      $u_{n+1} = 0{,}5\,u_n+3 < 0{,}5\times 10+3 = 8 < 10$. Donc c'est vrai
+      pour tout $n$. » Que manque-t-il à cette rédaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien : l'hérédité qu'il a rédigée suffit à conclure."
+        correct: false
+        feedback: >
+          L'hérédité montre seulement une implication conditionnelle : « si
+          c'est vrai à un rang, ça reste vrai au suivant ». Sans vérifier que
+          la propriété démarre vraie quelque part (l'initialisation), rien ne
+          garantit que le premier domino tombe — la chaîne entière peut être
+          vide de sens.
+      - id: B
+        text: "Il manque la vérification de l'initialisation (le rang de départ)."
+        correct: true
+      - id: C
+        text: "Il manque de vérifier l'hérédité séparément pour chaque valeur de $n$."
+        correct: false
+        feedback: >
+          C'est l'inverse de ce que demande la récurrence : l'hérédité se
+          démontre UNE fois, pour un rang $n$ quelconque fixé, pas rang par
+          rang. Vérifier « chaque $n$ séparément » reviendrait à faire une
+          infinité de vérifications — exactement ce que la récurrence permet
+          d'éviter.
+      - id: D
+        text: "Il manque de calculer $u_1$, $u_2$, $u_3$ pour vérifier numériquement."
+        correct: false
+        feedback: >
+          Calculer quelques termes ne prouve rien pour l'infinité des rangs
+          restants — une suite peut très bien vérifier une inégalité sur ses
+          dix premiers termes puis cesser de la vérifier ensuite. C'est
+          précisément le problème que le raisonnement par récurrence est fait
+          pour résoudre, pas une étape qui le complète.
+    correct_feedback: >
+      La rédaction ne contient que l'étape d'hérédité. Il manque
+      l'initialisation : vérifier que $u_0 < 10$ (ou le premier rang
+      concerné). Sans elle, l'hérédité est une implication vraie mais qui ne
+      démarre jamais — comme une chaîne de dominos dont on ne pousse jamais
+      le premier.
+    solution: |
+      Le raisonnement par récurrence a deux étapes obligatoires :
+
+      **1. Initialisation** — vérifier que la propriété est vraie au premier
+      rang concerné (ici, $n=0$ : il faudrait vérifier $u_0 < 10$).
+
+      **2. Hérédité** — montrer que, pour un rang $n$ fixé quelconque,
+      $u_n < 10 \Rightarrow u_{n+1} < 10$.
+
+      L'élève n'a rédigé que la seconde étape. Une hérédité vraie sans
+      initialisation ne prouve rien : elle dit seulement « si c'est vrai à un
+      rang, ça reste vrai au suivant », sans jamais garantir que c'est vrai
+      quelque part pour démarrer la chaîne.
+
+  - id: SUITES-2
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: sma_suites_numeriques
+    tags: [bornee, monotonie]
+    stem: >
+      On sait qu'une suite $(u_n)$ est bornée : pour tout $n$,
+      $2 \leq u_n \leq 8$. Que peut-on en conclure sur son sens de variation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est croissante, car elle reste bornée par le haut."
+        correct: false
+        feedback: >
+          Être majorée ne dit rien sur le sens de variation. Une suite bornée
+          peut très bien osciller entre 2 et 8 sans jamais se stabiliser dans
+          un sens précis — la borne supérieure ne force aucune croissance.
+      - id: B
+        text: "Elle est décroissante, car elle reste bornée par le bas."
+        correct: false
+        feedback: >
+          Même erreur symétrique : être minorée ne force pas la décroissance.
+          Une suite peut rester au-dessus de 2 tout en montant, descendant, ou
+          en oscillant.
+      - id: C
+        text: "On ne peut rien conclure sur la monotonie : être bornée n'a aucun lien direct avec le sens de variation."
+        correct: true
+      - id: D
+        text: "Elle est nécessairement constante, puisqu'elle ne peut ni dépasser 8 ni descendre sous 2."
+        correct: false
+        feedback: >
+          Rester entre deux bornes n'oblige pas une suite à être constante :
+          elle peut très bien varier tant qu'elle reste dans l'intervalle
+          $[2\,;\,8]$, par exemple en oscillant entre plusieurs valeurs.
+    correct_feedback: >
+      Bornée est une propriété sur les VALEURS de la suite (elle reste dans
+      un intervalle) ; monotone est une propriété sur la VARIATION d'un
+      terme à l'autre. Ce sont deux notions indépendantes : il faut étudier
+      le signe de $u_{n+1}-u_n$ séparément pour connaître le sens de
+      variation.
+    solution: |
+      Être bornée signifie seulement que tous les termes restent dans un
+      intervalle fixe — ici $[2\,;\,8]$. Ça ne donne aucune information sur
+      la comparaison entre termes consécutifs. Une suite bornée peut être
+      croissante, décroissante, constante, ou ni l'un ni l'autre (par exemple
+      si elle oscille). Pour connaître le sens de variation, il faut étudier
+      séparément le signe de $u_{n+1}-u_n$ (ou le quotient, si les termes
+      sont strictement positifs).
+
+  - id: SUITES-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [limite, suite_geometrique]
+    stem: >
+      Soit $(u_n)$ définie par $u_n = 5 \times (-0{,}8)^n$. Que vaut
+      $\lim\limits_{n \to +\infty} u_n$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0$"
+        correct: true
+      - id: B
+        text: "Elle n'a pas de limite, car la raison $q=-0{,}8$ est négative."
+        correct: false
+        feedback: >
+          Le signe négatif de $q$ ne suffit pas à empêcher la convergence.
+          Seule la condition $q \leq -1$ empêche $(q^n)$ d'avoir une limite.
+          Ici $-1 < -0{,}8 < 1$ : la condition $|q|<1$ est vérifiée, donc
+          $(-0{,}8)^n \to 0$ malgré le signe qui alterne à chaque terme.
+      - id: C
+        text: "$+\\infty$"
+        correct: false
+        feedback: >
+          $(-0{,}8)^n$ tendrait vers l'infini si $|q|>1$, ce qui n'est pas le
+          cas ici : $|-0{,}8| = 0{,}8 < 1$. Les puissances d'un nombre de
+          valeur absolue inférieure à 1 tendent vers 0, pas vers l'infini.
+      - id: D
+        text: "$5$"
+        correct: false
+        feedback: >
+          $5$ est la valeur de $u_0$ (le terme initial), pas la limite. La
+          limite dépend du comportement de $q^n$ quand $n \to +\infty$, pas
+          seulement du premier terme.
+    correct_feedback: >
+      Ici $q = -0{,}8$ vérifie $-1 < q < 1$ (peu importe le signe), donc
+      $\lim\limits_{n\to+\infty} q^n = 0$, et par suite
+      $\lim\limits_{n\to+\infty} 5 \times (-0{,}8)^n = 5 \times 0 = 0$.
+    solution: |
+      **Condition à vérifier :** $-1 < q < 1$ ?
+
+      $$q = -0{,}8 \quad \Rightarrow \quad -1 < -0{,}8 < 1 \ \checkmark$$
+
+      La condition est vérifiée (le signe de $q$ n'entre pas en jeu ici,
+      seule sa valeur absolue compte : $|-0{,}8|=0{,}8<1$). Donc :
+
+      $$\lim_{n\to+\infty} (-0{,}8)^n = 0 \quad \Rightarrow \quad \lim_{n\to+\infty} 5\times(-0{,}8)^n = 0$$
+
+      La suite oscille de signe (termes alternativement positifs et
+      négatifs) mais son amplitude se rétrécit vers 0 à chaque étape.
+
+  - id: SUITES-4
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [gendarmes, comparaison]
+    stem: >
+      Pour tout $n \geq 1$, on a $1 - \dfrac{1}{n} \leq w_n \leq 3 -
+      \dfrac{1}{n}$. Un élève affirme : « Par le théorème des gendarmes,
+      $w_n \to 1$. » A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, le théorème des gendarmes garantit que $w_n \\to 1$."
+        correct: false
+        feedback: >
+          Le théorème des gendarmes exige que les DEUX bornes convergent vers
+          la MÊME limite. Ici la borne inférieure tend vers 1 mais la borne
+          supérieure tend vers 3 — ce ne sont pas les mêmes limites. Le
+          théorème ne peut donc pas être invoqué pour affirmer que
+          $w_n \to 1$.
+      - id: B
+        text: "Non : les deux bornes ne convergent pas vers la même limite (1 et 3), donc le théorème des gendarmes ne s'applique pas ici."
+        correct: true
+      - id: C
+        text: "Oui, car les deux bornes convergent (l'une vers 1, l'autre vers 3), et c'est suffisant pour appliquer le théorème."
+        correct: false
+        feedback: >
+          Le fait que les deux bornes convergent ne suffit pas : il faut
+          qu'elles convergent vers la MÊME valeur. Ici elles convergent vers
+          des valeurs différentes (1 et 3), donc l'hypothèse du théorème des
+          gendarmes n'est pas remplie.
+      - id: D
+        text: "Non, car il faudrait que les trois suites soient strictement positives."
+        correct: false
+        feedback: >
+          La positivité des suites n'est pas une condition du théorème des
+          gendarmes. La vraie condition manquante ici, c'est que les deux
+          bornes doivent converger vers la même limite — ce qui n'est pas le
+          cas.
+    correct_feedback: >
+      Le théorème des gendarmes exige un encadrement dont les deux bornes
+      convergent vers la MÊME limite. Ici, $1-\frac{1}{n} \to 1$ mais
+      $3-\frac{1}{n} \to 3$ : les limites diffèrent, donc on ne peut pas
+      conclure que $w_n \to 1$ par ce théorème (on sait seulement, si $w_n$
+      converge, que sa limite est comprise entre 1 et 3).
+    solution: |
+      **Vérification des limites des deux bornes :**
+
+      $$\lim_{n\to+\infty}\left(1-\frac{1}{n}\right) = 1 \qquad \lim_{n\to+\infty}\left(3-\frac{1}{n}\right) = 3$$
+
+      Les deux bornes convergent, mais vers des valeurs DIFFÉRENTES (1 et
+      3). Le théorème des gendarmes exige que les deux bornes tendent vers
+      la même limite pour pouvoir conclure sur $w_n$. Cette condition
+      n'étant pas remplie, on ne peut rien affirmer sur la valeur exacte
+      (ni même l'existence) de $\lim w_n$ à partir de ce seul encadrement.
+
+  - id: SUITES-5
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: sma_suites_numeriques
+    tags: [suite_recurrente, point_fixe]
+    stem: >
+      Une suite $(u_n)$ vérifie $u_{n+1} = \dfrac{1}{4}u_n + 6$ et $u_0 = 0$.
+      On admet qu'elle converge vers une limite $L$. Un élève écrit
+      directement : « $L=6$, car c'est le minorant que j'ai utilisé pour
+      prouver la convergence. » Que penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est correct : le minorant utilisé pour prouver la convergence est toujours la limite."
+        correct: false
+        feedback: >
+          Le théorème de la limite monotone donne l'EXISTENCE d'une limite,
+          pas sa valeur. Le minorant utilisé n'est en général qu'un plancher
+          que la suite ne franchit pas — souvent différent de la vraie
+          limite. Ici, le minorant $0$ (ou tout autre minorant choisi) n'a
+          aucune raison d'être la limite exacte.
+      - id: B
+        text: "C'est incorrect : il faut résoudre $L = f(L)$, ce qui donne ici $L=8$, pas $6$."
+        correct: true
+      - id: C
+        text: "C'est incorrect : la limite ne peut jamais être calculée, seule son existence peut être prouvée."
+        correct: false
+        feedback: >
+          C'est une sur-correction. Une fois la convergence établie (par le
+          théorème de la limite monotone), on PEUT calculer la valeur exacte
+          de la limite en résolvant $L=f(L)$ — c'est justement la méthode du
+          point fixe, à condition que $f$ soit continue.
+      - id: D
+        text: "C'est correct, car $u_0=0$ et la suite converge vers sa valeur initiale."
+        correct: false
+        feedback: >
+          Rien ne garantit qu'une suite converge vers son terme initial — ici
+          $u_0=0$ n'a aucun rapport avec la valeur de la limite, qui se
+          calcule en résolvant l'équation du point fixe.
+    correct_feedback: >
+      Pour trouver la valeur de $L$, il faut résoudre $L = f(L)$ avec
+      $f(x)=\frac{1}{4}x+6$ : $L = \frac{1}{4}L+6 \Rightarrow \frac{3}{4}L=6
+      \Rightarrow L=8$. Le nombre $6$ qui apparaît dans l'énoncé est le terme
+      constant de $f$, pas la limite de la suite.
+    solution: |
+      **Résoudre le point fixe :**
+
+      $$L = \frac{1}{4}L + 6$$
+
+      $$L - \frac{1}{4}L = 6$$
+
+      $$\frac{3}{4}L = 6$$
+
+      $$L = 8$$
+
+      La limite vaut $8$, pas $6$. Le nombre $6$ est seulement le terme
+      constant ajouté à chaque étape par $f$ — il ne coïncide avec la limite
+      que par coïncidence numérique dans certains exemples, jamais par
+      principe. La valeur exacte de la limite s'obtient uniquement en
+      résolvant l'équation du point fixe $L=f(L)$, une fois la convergence
+      déjà établie par ailleurs.
+
+  - id: SUITES-6
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: sma_suites_numeriques
+    tags: [suites_adjacentes]
+    stem: >
+      On considère $u_n = n$ et $v_n = n + \dfrac{1}{n+1}$. On calcule
+      $v_n - u_n = \dfrac{1}{n+1} \to 0$. Peut-on conclure que $(u_n)$ et
+      $(v_n)$ sont adjacentes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car l'écart entre les deux suites tend vers 0."
+        correct: false
+        feedback: >
+          L'écart qui tend vers 0 n'est qu'une des trois conditions requises
+          pour l'adjacence. Ici, ni $(u_n)$ ni $(v_n)$ ne convergent — elles
+          tendent toutes les deux vers $+\infty$ — donc elles ne peuvent pas
+          être adjacentes, quel que soit le comportement de leur écart.
+      - id: B
+        text: "Non : $(u_n)$ et $(v_n)$ ne convergent même pas — elles tendent toutes les deux vers $+\\infty$ — donc elles ne peuvent pas être adjacentes malgré un écart qui tend vers 0."
+        correct: true
+      - id: C
+        text: "Oui, car $(u_n)$ est croissante et $(v_n)$ est décroissante."
+        correct: false
+        feedback: >
+          C'est factuellement faux ici : $(v_n)$ est elle aussi croissante
+          (elle tend vers $+\infty$ avec $n$), pas décroissante. Vérifier
+          réellement le sens de variation de chaque suite — plutôt que de le
+          supposer — aurait révélé que la deuxième condition de la
+          définition n'est pas remplie.
+      - id: D
+        text: "Non, car il faudrait que les deux suites soient positives."
+        correct: false
+        feedback: >
+          La positivité n'est pas une condition de la définition des suites
+          adjacentes. La vraie raison pour laquelle elles ne sont pas
+          adjacentes, c'est qu'aucune des deux ne converge (ni ne décroît,
+          pour $(v_n)$).
+    correct_feedback: >
+      « L'écart tend vers 0 » n'est qu'une des trois conditions. Ici,
+      $(u_n)$ et $(v_n)$ tendent toutes les deux vers $+\infty$ : aucune des
+      deux ne converge, donc elles ne peuvent pas être adjacentes — même si
+      leur écart tend bien vers 0. Adjacentes exige aussi qu'une suite
+      croisse, que l'autre décroisse, et qu'elles convergent effectivement.
+    solution: |
+      **Vérification des trois conditions :**
+
+      1. $(u_n)$ croissante ? $u_n=n$ est bien croissante. ✓
+      2. $(v_n)$ décroissante ? $v_n = n + \frac{1}{n+1}$ est en réalité
+         CROISSANTE (le terme $n$ domine largement $\frac{1}{n+1}$, qui
+         décroît vers 0 mais ne suffit pas à faire décroître $v_n$
+         globalement). ✗
+      3. $v_n - u_n = \frac{1}{n+1} \to 0$. ✓
+
+      La deuxième condition échoue : $(v_n)$ n'est pas décroissante. Les
+      deux suites tendent en fait toutes les deux vers $+\infty$ — un écart
+      qui tend vers 0 entre deux suites ne garantit ni leur convergence, ni
+      leur adjacence, si la monotonie requise (l'une croissante, l'autre
+      décroissante) n'est pas vérifiée.

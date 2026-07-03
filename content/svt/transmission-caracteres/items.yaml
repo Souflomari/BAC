@@ -1,0 +1,287 @@
+notion: transmission-caracteres
+skill_code: svt_transmission_caracteres
+misconceptions: []
+items:
+  - id: TC-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: svt_transmission_caracteres
+    tags: [vocabulaire, genotype_phenotype]
+    stem: >
+      Deux souris ont exactement le même phénotype (pelage gris). L'une a pour
+      génotype $G//G$, l'autre $G//g$. Que peut-on affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Leur phénotype est identique, mais leur génotype diffère : l'allèle dominant $G$ masque la présence de l'allèle récessif $g$ chez l'hétérozygote."
+        correct: true
+      - id: B
+        text: "Elles ont nécessairement le même génotype, puisqu'elles ont le même phénotype."
+        correct: false
+        feedback: >
+          C'est l'erreur inverse de ce que montre la leçon : le même phénotype
+          peut correspondre à deux génotypes différents dès qu'un allèle est
+          dominant. Un individu homozygote ($G//G$) et un hétérozygote
+          ($G//g$) sont phénotypiquement indiscernables, parce que $G$
+          masque $g$ dans les deux cas. Observer le phénotype ne permet donc
+          jamais de conclure seul sur le génotype.
+      - id: C
+        text: "La souris $G//g$ doit avoir un pelage différent de la souris $G//G$, car elle porte deux allèles différents."
+        correct: false
+        feedback: >
+          C'est oublier ce que fait la dominance : porter deux allèles
+          différents ne produit pas un phénotype intermédiaire ou mélangé —
+          un seul des deux allèles (le dominant) s'exprime, et masque
+          complètement l'autre. $G//g$ est donc grise, exactement comme
+          $G//G$.
+      - id: D
+        text: "Le phénotype désigne ici les allèles portés, et le génotype désigne l'aspect visible du pelage."
+        correct: false
+        feedback: >
+          C'est une inversion des deux définitions. Le génotype est la paire
+          d'allèles portée par l'individu (son patrimoine génétique) ; le
+          phénotype est l'aspect observable qui en résulte (ici, la couleur
+          réelle du pelage).
+    correct_feedback: >
+      Le génotype (la paire d'allèles réellement portée) et le phénotype
+      (l'aspect visible) sont deux informations distinctes. Dès qu'un allèle
+      domine l'autre, un homozygote dominant et un hétérozygote partagent le
+      même phénotype tout en ayant des génotypes différents — c'est
+      exactement le piège que révèle le test-cross (R5).
+    solution: |
+      **Génotype vs phénotype :** le génotype est la composition allélique
+      réelle ($G//G$ ou $G//g$) ; le phénotype est ce qu'on observe
+      (gris, dans les deux cas, puisque $G$ domine $g$).
+
+      **Conséquence :** l'observation du phénotype seul ne permet jamais de
+      distinguer un homozygote dominant d'un hétérozygote. Il faut un outil
+      supplémentaire (le test-cross, R5) pour lever cette ambiguïté.
+
+  - id: TC-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: svt_transmission_caracteres
+    tags: [monohybridisme, premiere_loi_mendel]
+    stem: >
+      On croise une lignée pure de pois à graines jaunes ($J//J$) avec une
+      lignée pure à graines vertes ($j//j$), sachant que jaune est dominant
+      sur vert. Quel est le phénotype attendu chez la totalité des graines F1 ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Toutes jaunes, car chaque F1 reçoit un allèle $J$ du parent jaune et un allèle $j$ du parent vert, et $J$ domine $j$."
+        correct: true
+      - id: B
+        text: "Toutes vertes, car le caractère vert masque le caractère jaune chez l'hybride."
+        correct: false
+        feedback: >
+          L'énoncé précise que jaune est dominant sur vert — c'est donc
+          l'allèle $J$ qui s'exprime chez l'hétérozygote $J//j$, jamais
+          l'inverse. Un allèle récessif ne peut jamais masquer un allèle
+          dominant.
+      - id: C
+        text: "La moitié jaunes, la moitié vertes, car chaque parent ne transmet qu'un type de gamète et le mélange donne 50 % - 50 %."
+        correct: false
+        feedback: >
+          Ce rapport 1:1 n'apparaît pas ici. Chaque parent, étant homozygote,
+          ne produit qu'UN SEUL type de gamète ($J$ pour l'un, $j$ pour
+          l'autre) : il n'y a donc qu'une seule combinaison possible dans
+          l'échiquier, pas deux. Le rapport 50-50 est celui d'un test-cross
+          (R5), pas celui d'un croisement de deux lignées pures.
+      - id: D
+        text: "$\\frac{3}{4}$ jaunes et $\\frac{1}{4}$ vertes, comme pour un croisement F1 $\\times$ F1."
+        correct: false
+        feedback: >
+          Ce rapport 3:1 est celui de la génération F2 (croisement de deux
+          hétérozygotes, R3), pas celui de la F1. Ici, on croise deux lignées
+          PURES (P), qui ne produisent chacune qu'un seul type de gamète — le
+          résultat est donc uniforme, pas un mélange de proportions.
+    correct_feedback: >
+      Chaque parent homozygote ne transmet qu'un seul type d'allèle : le
+      parent jaune ne transmet que $J$, le parent vert que $j$. Toute la F1
+      est donc $J//j$, et comme $J$ domine $j$, 100 % de la F1 est jaune —
+      la première loi de Mendel (uniformité des hybrides de F1).
+    solution: |
+      **Gamètes des parents (homozygotes) :** le parent $J//J$ ne produit
+      que des gamètes $J$ ; le parent $j//j$ ne produit que des gamètes $j$.
+
+      **Échiquier (une seule case) :** $J \times j \rightarrow J//j$.
+
+      **Phénotype :** $J$ domine $j$, donc 100 % de la F1 est jaune, bien que
+      génétiquement hétérozygote.
+
+  - id: TC-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_transmission_caracteres
+    tags: [monohybridisme, deuxieme_loi_mendel, echiquier]
+    stem: >
+      On croise deux souris grises hétérozygotes ($G//g \times G//g$).
+      Quelle fraction des petits attend-on avec un pelage blanc ($g//g$) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{1}{4}$"
+        correct: true
+      - id: B
+        text: "$\\frac{1}{2}$"
+        correct: false
+        feedback: >
+          Ce chiffre correspond à la proportion de gamètes $g$ produits par
+          UN SEUL parent, pas à la proportion de petits blancs. Pour obtenir
+          un petit blanc, il faut que les DEUX parents transmettent chacun
+          leur gamète $g$ au même œuf — deux événements indépendants de
+          probabilité $\frac{1}{2}$ chacun, qu'on multiplie : $\frac{1}{2}
+          \times \frac{1}{2} = \frac{1}{4}$, pas $\frac{1}{2}$.
+      - id: C
+        text: "$0$, car les deux parents sont gris."
+        correct: false
+        feedback: >
+          C'est le piège du R1 : un parent au phénotype gris peut être
+          hétérozygote et porter, sans le montrer, l'allèle $g$. Le
+          phénotype des parents ne détermine pas à lui seul le phénotype de
+          toute la descendance — c'est justement ce que montre l'échiquier
+          F1 $\times$ F1.
+      - id: D
+        text: "$\\frac{3}{4}$"
+        correct: false
+        feedback: >
+          $\frac{3}{4}$ est la fraction de petits GRIS (le phénotype
+          dominant, obtenu par $G//G$ ou $G//g$), pas la fraction de
+          petits blancs. Le phénotype récessif n'apparaît que dans la classe
+          $g//g$, qui est la plus petite des quatre cases de l'échiquier :
+          $\frac{1}{4}$.
+    correct_feedback: >
+      Un petit blanc doit être $g//g$ : il doit recevoir l'allèle $g$ de
+      SA mère ET de SON père. Chaque parent hétérozygote transmet $g$ avec
+      une probabilité $\frac{1}{2}$, et les deux transmissions sont
+      indépendantes : $\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$.
+    solution: |
+      **Gamètes des parents ($G//g$ chacun) :** $\frac12$ de gamètes $G$,
+      $\frac12$ de gamètes $g$.
+
+      **Échiquier (4 cases) :** $\frac14$ $G//G$, $\frac24$ $G//g$,
+      $\frac14$ $g//g$.
+
+      **Phénotypes :** $G//G$ et $G//g$ sont gris ($\frac34$ au total) ;
+      seul $g//g$ est blanc ($\frac14$).
+
+  - id: TC-4
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: svt_transmission_caracteres
+    tags: [dihybridisme, genes_independants, echiquier]
+    stem: >
+      Deux drosophiles doubles hétérozygotes ($C//c \, ; \, L//l$) sont
+      croisées entre elles, les deux gènes étant indépendants (corps gris $C$
+      dominant sur noir $c$ ; ailes longues $L$ dominantes sur vestigiales
+      $l$). Quelle est la probabilité d'obtenir une mouche au corps noir ET
+      aux ailes vestigiales (les deux caractères récessifs) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{1}{16}$"
+        correct: true
+      - id: B
+        text: "$\\frac{1}{2}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'une addition : $\frac{1}{4} + \frac{1}{4} =
+          \frac{1}{2}$. Mais on cherche la probabilité que DEUX caractères
+          récessifs apparaissent EN MÊME TEMPS chez le même individu — deux
+          événements indépendants qu'il faut multiplier, pas additionner :
+          $\frac{1}{4} \times \frac{1}{4} = \frac{1}{16}$.
+      - id: C
+        text: "$\\frac{1}{8}$"
+        correct: false
+        feedback: >
+          Ce calcul mélange une fraction de génotype ($\frac{1}{4}$, la
+          probabilité d'être $c//c$) avec une fraction de gamète
+          ($\frac{1}{2}$). Pour CHAQUE caractère pris séparément, la
+          probabilité du phénotype récessif chez la F2 est $\frac{1}{4}$ (pas
+          $\frac{1}{2}$) ; il faut multiplier $\frac{1}{4} \times
+          \frac{1}{4}$.
+      - id: D
+        text: "$\\frac{3}{16}$"
+        correct: false
+        feedback: >
+          $\frac{3}{16}$ est la probabilité d'une classe MIXTE (un caractère
+          récessif et l'autre dominant, par exemple noir ET ailes longues),
+          pas celle de la classe où LES DEUX caractères sont récessifs. La
+          classe doublement récessive est la plus petite des quatre :
+          $\frac{1}{4} \times \frac{1}{4} = \frac{1}{16}$.
+    correct_feedback: >
+      Les deux gènes étant indépendants, on multiplie les deux probabilités
+      monohybrides : $P(c//c) = \frac{1}{4}$ et $P(l//l) = \frac{1}{4}$,
+      donc $P(c//c \, ; \, l//l) = \frac{1}{4} \times \frac{1}{4} =
+      \frac{1}{16}$ — la plus petite des quatre classes du rapport $9:3:3:1$.
+    solution: |
+      **Rapport monohybride pour chaque gène séparément (R3) :**
+      $$P(\text{corps noir}) = \frac{1}{4} \qquad P(\text{ailes vestigiales}) = \frac{1}{4}$$
+
+      **Indépendance des deux gènes (R4) — on multiplie :**
+      $$P(\text{noir et vestigiales}) = \frac{1}{4} \times \frac{1}{4} = \frac{1}{16}$$
+
+      **Vérification :** les quatre classes du dihybridisme totalisent
+      $\frac{9}{16}+\frac{3}{16}+\frac{3}{16}+\frac{1}{16}=1$ ; $\frac{1}{16}$
+      est bien la plus petite, cohérent avec le fait qu'elle exige les DEUX
+      caractères récessifs simultanément.
+
+  - id: TC-5
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_transmission_caracteres
+    tags: [test_cross, croisement_test]
+    stem: >
+      On réalise un test-cross : une souris au pelage gris (phénotype
+      dominant), de génotype inconnu, est croisée avec une souris blanche
+      testeur ($g//g$). Sur les petits obtenus, on observe environ 50 % de
+      petits gris et 50 % de petits blancs. Que peut-on en conclure sur le
+      génotype de la souris grise testée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est hétérozygote ($G//g$) : un parent homozygote ($G//G$) n'aurait donné que des petits gris (100 %)."
+        correct: true
+      - id: B
+        text: "Elle est homozygote ($G//G$), puisqu'elle est phénotypiquement grise."
+        correct: false
+        feedback: >
+          C'est retomber dans le piège que le test-cross sert justement à
+          éviter : le phénotype gris seul ne permet pas de conclure sur le
+          génotype (R1). C'est la RÉPARTITION des phénotypes chez les petits
+          — pas l'apparence du parent testé — qui révèle son génotype réel.
+          Ici, la répartition 50-50 signe précisément l'hétérozygotie.
+      - id: C
+        text: "On ne peut rien conclure, car le partenaire testeur devrait lui aussi être gris."
+        correct: false
+        feedback: >
+          C'est l'inverse du principe du test-cross : le testeur doit être
+          homozygote RÉCESSIF, précisément pour ne transmettre qu'un seul
+          type de gamète et ne rien ajouter d'ambigu au croisement. Un
+          testeur gris pourrait lui-même être hétérozygote et brouiller la
+          lecture des résultats.
+      - id: D
+        text: "Elle est hétérozygote, mais le partenaire blanc a aussi transmis un allèle gris caché."
+        correct: false
+        feedback: >
+          C'est impossible par construction : un individu homozygote
+          récessif ($g//g$) ne porte que l'allèle $g$ sur ses deux
+          chromosomes — il ne peut transmettre que $g$, jamais un allèle
+          $G$ qu'il ne possède pas.
+    correct_feedback: >
+      Le testeur ($g//g$) ne transmet que des gamètes $g$ : toute la
+      variation observée vient donc du parent testé. Un rapport 50-50 chez
+      les petits signifie que ce parent produit deux types de gamètes ($G$
+      et $g$) à parts égales — ce qui n'est possible que s'il est
+      hétérozygote ($G//g$).
+    solution: |
+      **Si la souris grise est $G//G$ :** elle ne produit que des gamètes
+      $G$ → 100 % des petits sont $G//g$ (gris).
+
+      **Si la souris grise est $G//g$ :** elle produit $\frac12$ de
+      gamètes $G$ et $\frac12$ de gamètes $g$ → $\frac12$ des petits sont
+      $G//g$ (gris), $\frac12$ sont $g//g$ (blancs).
+
+      **Conclusion :** le rapport observé (environ 50-50) correspond au
+      second cas : la souris testée est hétérozygote.

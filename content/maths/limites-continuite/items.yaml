@@ -1,0 +1,290 @@
+notion: limites-continuite
+skill_code: maths_limites_continuite
+misconceptions: []
+items:
+  - id: LIMCONT-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-en-un-point", "limites-laterales"]
+    stem: >
+      Soit $f$ définie par $f(x) = 3x - 1$ si $x < 2$ et $f(x) = x^2$ si
+      $x \geq 2$. Que peut-on dire de $\lim_{x \to 2} f(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La limite n'existe pas, car les limites à gauche et à droite sont différentes ($5 \\neq 4$)."
+        correct: true
+      - id: B
+        text: "$\\lim_{x \\to 2} f(x) = 4$, car $f(2) = 4$."
+        correct: false
+        feedback: >
+          Tu confonds la valeur $f(2)$ (l'image du point) avec la limite en ce
+          point. L'existence d'une limite se vérifie en étudiant le
+          comportement de $f$ quand $x$ s'approche de $2$ des deux côtés — pas
+          en relisant simplement la formule qui définit $f(2)$.
+      - id: C
+        text: "$\\lim_{x \\to 2} f(x) = 5$, car on approche par la gauche seulement."
+        correct: false
+        feedback: >
+          Tu n'as calculé que la limite à gauche ($3(2)-1=5$) et tu l'as prise
+          pour LA limite. Une limite bilatérale exige de vérifier aussi la
+          limite à droite — ici elle vaut $4$, donc différente, et la
+          conclusion change complètement.
+      - id: D
+        text: "$\\lim_{x \\to 2} f(x) = 4{,}5$, car on fait la moyenne des deux limites latérales."
+        correct: false
+        feedback: >
+          Il n'existe aucune règle qui autorise à "faire la moyenne" de deux
+          limites latérales différentes. Quand elles diffèrent, la conclusion
+          est simplement que la limite n'existe pas — il n'y a pas de valeur
+          de compromis à calculer.
+    correct_feedback: >
+      Exactement : la limite à gauche vaut $\lim_{x\to 2^-}(3x-1)=5$, la limite
+      à droite vaut $\lim_{x\to 2^+} x^2 = 4$. Comme $5 \neq 4$, la limite en
+      $2$ n'existe pas — même si $f(2)=4$ est parfaitement défini par
+      ailleurs.
+    solution: |
+      **Limite à gauche** (formule $x<2$) :
+      $$\lim_{x \to 2^{-}} (3x-1) = 3(2)-1 = 5$$
+      **Limite à droite** (formule $x \geq 2$) :
+      $$\lim_{x \to 2^{+}} x^2 = 2^2 = 4$$
+      Les deux limites latérales sont différentes ($5 \neq 4$), donc
+      $\lim_{x \to 2} f(x)$ n'existe pas.
+
+  - id: LIMCONT-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["operations-sur-les-limites", "forme-indeterminee"]
+    stem: >
+      Parmi les quatre situations suivantes (avec $x \to +\infty$), laquelle
+      correspond à une **forme indéterminée** ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\lim f = 3$ et $\\lim g = +\\infty$ ; on calcule $\\lim (f+g)$."
+        correct: false
+        feedback: >
+          Ce n'est pas une forme indéterminée : "nombre fini plus l'infini"
+          donne toujours l'infini ($3+\infty=+\infty$). Le simple fait qu'un
+          $\infty$ apparaisse dans le calcul ne rend pas automatiquement la
+          situation indéterminée.
+      - id: B
+        text: "$\\lim f = +\\infty$ et $\\lim g = -\\infty$ ; on calcule $\\lim (f+g)$."
+        correct: true
+      - id: C
+        text: "$\\lim f = 0$ et $\\lim g = 5$ ; on calcule $\\lim (f \\times g)$."
+        correct: false
+        feedback: >
+          Ce n'est pas une forme indéterminée : $g$ tend vers un nombre fini
+          ($5$), pas vers l'infini. $0 \times 5 = 0$ directement. La forme
+          indéterminée $0 \times \infty$ exige que l'AUTRE facteur tende
+          vraiment vers l'infini, pas vers un nombre fini.
+      - id: D
+        text: "$\\lim f = 2$ et $\\lim g = 0^{+}$ ; on calcule $\\lim (f/g)$."
+        correct: false
+        feedback: >
+          Ce n'est pas la forme indéterminée $\frac{0}{0}$ : le numérateur
+          tend vers $2$, pas vers $0$. C'est le cas "nombre non nul divisé par
+          $0$", qui donne un résultat infini (ici $+\infty$, vu le signe donné)
+          — une limite infinie déterminée, pas une forme indéterminée.
+    correct_feedback: >
+      Oui : additionner $+\infty$ et $-\infty$ met en jeu deux infinis de
+      signes opposés, et c'est précisément le cas où la règle générale ne
+      suffit pas — il faut retravailler l'expression (voir R3) avant de
+      conclure.
+    solution: |
+      Les quatre formes indéterminées du programme sont : $+\infty-\infty$,
+      $0 \times \infty$, $\frac{0}{0}$, $\frac{\infty}{\infty}$. Seule la
+      situation B ($+\infty$ additionné à $-\infty$) correspond à l'une
+      d'elles. Les trois autres se résolvent directement par les tableaux du
+      R2.
+
+  - id: LIMCONT-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["forme-indeterminee", "factorisation"]
+    stem: >
+      Calculer $\lim_{x \to 3} \dfrac{x^2 - 9}{x - 3}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        feedback: >
+          Tu as sans doute lu la forme $\frac{0}{0}$ obtenue en remplaçant $x$
+          par $3$ directement, et conclu "$0$" par réflexe. Une forme
+          $\frac{0}{0}$ n'est pas égale à $0$ — c'est un signal qu'il faut
+          factoriser avant de conclure quoi que ce soit.
+      - id: C
+        text: "La limite n'existe pas, car on divise par $0$ en $x=3$."
+        correct: false
+        feedback: >
+          Tu confonds "la fonction n'est pas définie en $3$" (vrai) avec "la
+          limite n'existe pas quand $x$ s'approche de $3$" (faux ici).
+          Justement, factoriser permet de voir ce qui se passe tout PRÈS de
+          $3$, sans jamais évaluer EN $3$.
+      - id: D
+        text: "$3$"
+        correct: false
+        feedback: >
+          Erreur de factorisation : $x^2-9 = (x-3)(x+3)$, pas $(x-3) \times x$.
+          En simplifiant par $(x-3)$, il reste $x+3$ — pas $x$ seul — et c'est
+          $x+3$ qu'il faut évaluer en $3$.
+    correct_feedback: >
+      Bien vu : $x^2-9=(x-3)(x+3)$, on simplifie par $(x-3)$ car $x \neq 3$
+      pendant le calcul de la limite, il reste $x+3$, et $\lim_{x\to 3}(x+3)=6$.
+    solution: |
+      $$\frac{x^2-9}{x-3} = \frac{(x-3)(x+3)}{x-3} = x+3 \quad (x \neq 3)$$
+      $$\lim_{x \to 3} (x+3) = 6$$
+
+  - id: LIMCONT-4
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["forme-indeterminee", "quotient-conjugue"]
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{\sqrt{x+4}-2}{x}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{4}$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        feedback: >
+          Tu as substitué directement dans la forme $\frac{0}{0}$ et conclu
+          "$0$". Une forme $\frac{0}{0}$ signale qu'il faut retravailler
+          l'expression (ici, multiplier par le conjugué) avant de pouvoir
+          conclure — elle ne vaut jamais $0$ par défaut.
+      - id: C
+        text: "$1$"
+        correct: false
+        feedback: >
+          Tu as sans doute multiplié le numérateur par le conjugué
+          ($\sqrt{x+4}+2$) mais oublié de multiplier aussi le dénominateur par
+          la même quantité. Le conjugué doit multiplier haut ET bas, sinon
+          l'expression change de valeur.
+      - id: D
+        text: "$\\dfrac{1}{2}$"
+        correct: false
+        feedback: >
+          C'est le résultat d'un autre exemple de la leçon
+          ($\lim_{x\to 0}\frac{\sqrt{x+1}-1}{x}$), recopié sans refaire le
+          calcul avec les nouvelles valeurs. Ici la fonction est différente
+          ($\sqrt{x+4}-2$, pas $\sqrt{x+1}-1$) : il faut reprendre la
+          technique du conjugué depuis le début avec ces nombres précis.
+    correct_feedback: >
+      Exact : en multipliant par le conjugué $\sqrt{x+4}+2$ (haut et bas), le
+      numérateur devient $(x+4)-4=x$, qui se simplifie avec le $x$ du
+      dénominateur, et il reste $\frac{1}{\sqrt{x+4}+2}$, qui vaut
+      $\frac{1}{4}$ en $x=0$.
+    solution: |
+      $$\frac{\sqrt{x+4}-2}{x} = \frac{(\sqrt{x+4}-2)(\sqrt{x+4}+2)}{x(\sqrt{x+4}+2)}$$
+      $$= \frac{(x+4)-4}{x(\sqrt{x+4}+2)} = \frac{x}{x(\sqrt{x+4}+2)}$$
+      $$= \frac{1}{\sqrt{x+4}+2} \quad (x \neq 0)$$
+      $$\lim_{x \to 0} \frac{1}{\sqrt{x+4}+2} = \frac{1}{2+2} = \frac{1}{4}$$
+
+  - id: LIMCONT-5
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["continuite"]
+    stem: >
+      Soit $g$ définie par $g(x) = x^2+1$ si $x \leq 1$ et $g(x) = 3x-1$ si
+      $x>1$. La fonction $g$ est-elle continue en $x=1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car $g(1) = 2$ et les limites à gauche et à droite valent toutes les deux $2$."
+        correct: true
+      - id: B
+        text: "Non, car $g$ est définie par deux formules différentes de part et d'autre de $1$."
+        correct: false
+        feedback: >
+          Le simple fait qu'une fonction change de formule en un point ne la
+          rend pas automatiquement discontinue là. Ce qui compte, c'est si les
+          valeurs se raccordent (valeur, limite à gauche, limite à droite
+          toutes égales) — et ici, il se trouve qu'elles se raccordent.
+      - id: C
+        text: "On ne peut pas savoir sans calculer la dérivée de $g$ en $1$."
+        correct: false
+        feedback: >
+          La continuité se vérifie avec la définition
+          $\lim_{x\to a} f(x) = f(a)$ — elle ne nécessite aucun calcul de
+          dérivée. La dérivabilité est une notion différente, plus exigeante,
+          qui n'est pas requise ici.
+      - id: D
+        text: "Non, car $g(1)$ n'est défini que par une seule des deux formules, donc la limite n'existe pas."
+        correct: false
+        feedback: >
+          Que $g(1)$ provienne d'une seule formule (celle valable pour
+          $x \leq 1$) n'empêche pas de calculer les deux limites latérales
+          séparément à partir de chaque branche. Ici, les deux limites
+          latérales existent et coïncident avec $g(1)$ — rien n'empêche la
+          continuité.
+    correct_feedback: >
+      Confirmé : $g(1)=1^2+1=2$, $\lim_{x\to 1^-}(x^2+1)=2$, et
+      $\lim_{x\to 1^+}(3x-1)=2$. Les trois quantités valent $2$ : les trois
+      conditions de la continuité sont réunies.
+    solution: |
+      $$g(1) = 1^2+1 = 2$$
+      $$\lim_{x \to 1^{-}} (x^2+1) = 1^2+1 = 2$$
+      $$\lim_{x \to 1^{+}} (3x-1) = 3(1)-1 = 2$$
+      Les trois valeurs coïncident ($2=2=2$), donc $g$ est continue en $1$.
+
+  - id: LIMCONT-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "existence-de-solution"]
+    stem: >
+      Une fonction $h$ est continue sur $[1,5]$, avec $h(1) = 2$ et
+      $h(5) = -3$. Que peut-on affirmer avec certitude grâce au théorème des
+      valeurs intermédiaires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'équation $h(x) = 0$ admet au moins une solution dans $]1,5[$."
+        correct: true
+      - id: B
+        text: "L'équation $h(x) = 0$ admet exactement une solution dans $]1,5[$."
+        correct: false
+        feedback: >
+          Le TVI garantit l'existence, jamais l'unicité, sauf information
+          supplémentaire. Ici, aucune monotonie stricte de $h$ n'est donnée —
+          on ne peut donc affirmer que l'existence d'au moins une solution,
+          pas son unicité.
+      - id: C
+        text: "L'équation $h(x) = 4$ admet au moins une solution dans $]1,5[$."
+        correct: false
+        feedback: >
+          Le TVI ne s'applique qu'aux valeurs $k$ comprises ENTRE $h(1)$ et
+          $h(5)$. Ici $h(1)=2$ et $h(5)=-3$, donc $k$ doit être compris entre
+          $-3$ et $2$. La valeur $4$ n'est pas dans cet intervalle : le
+          théorème ne dit rien sur $h(x)=4$.
+      - id: D
+        text: "On ne peut rien affirmer, car on ne connaît pas $h(3)$."
+        correct: false
+        feedback: >
+          C'est justement l'intérêt du théorème : il ne nécessite de connaître
+          $f$ qu'aux deux bornes de l'intervalle (plus sa continuité) pour
+          garantir un résultat sur l'intérieur, sans jamais évaluer $h$ en un
+          point intermédiaire.
+    correct_feedback: >
+      Oui : $0$ est bien compris entre $h(5)=-3$ et $h(1)=2$, et $h$ est
+      continue sur $[1,5]$. Le corollaire du TVI garantit donc au moins une
+      solution à $h(x)=0$ dans $]1,5[$ — sans rien affirmer de plus sur son
+      unicité.
+    solution: |
+      $h$ est continue sur $[1,5]$, $h(1)=2>0$ et $h(5)=-3<0$ : les signes
+      sont opposés, donc $0$ est compris entre les deux valeurs. Par le
+      corollaire du théorème des valeurs intermédiaires, l'équation $h(x)=0$
+      admet au moins une solution dans $]1,5[$. Rien n'est dit sur l'unicité,
+      faute d'information sur la monotonie de $h$.
