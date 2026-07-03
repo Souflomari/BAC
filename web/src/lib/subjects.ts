@@ -14,7 +14,13 @@ export const SUBJECT_LABELS: Record<string, string> = {
   pc: "Physique-Chimie",
   svt: "Sciences de la Vie et de la Terre",
   philo: "Philosophie",
+  si: "Sciences de l'ingénieur",
 };
+
+/** Route to a subject's chapter index (Day-9 site skeleton). */
+export function subjectHref(subject: string): string {
+  return `/matieres/${encodeURIComponent(subject)}`;
+}
 
 /** Display label for a subject slug; unknown slugs render as themselves. */
 export function subjectLabel(subject: string): string {

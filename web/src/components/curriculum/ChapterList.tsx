@@ -1,0 +1,132 @@
+/**
+ * ChapterList — a subject's units → chapters (Day-9 site skeleton).
+ *
+ * The honest map of a matière: every chapter of the programme is listed;
+ * built ones link to their notion and show reading time, un-built ones render
+ * as a calm "À venir" row (no fabricated availability — the honest-state rule
+ * at the catalogue level). Units are the programme's own groupings (cadre for
+ * PC; standard program elsewhere).
+ */
+
+import Link from "next/link";
+import { notionHref } from "@/lib/subjects";
+import { Icon } from "@/components/ui/Icon";
+import { cn } from "@/lib/utils";
+
+export interface ChapterView {
+  slug: string;
+  title: string;
+  available: boolean;
+  minutes?: number;
+}
+
+export interface UnitView {
+  title: string;
+  chapters: ChapterView[];
+}
+
+function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterView }) {
+  const inner = (
+    <>
+      <span className="min-w-0 flex-1">
+        <span
+          className={cn(
+            "block text-body",
+            chapter.available
+              ? "text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro"
+              : "text-[var(--color-text-secondary)]"
+          )}
+        >
+          {chapter.title}
+        </span>
+        {chapter.available && chapter.minutes != null && (
+          <span className="mt-0.5 block text-caption text-[var(--color-text-secondary)] tabular-nums">
+            {chapter.minutes} min de lecture
+          </span>
+        )}
+      </span>
+      {chapter.available ? (
+        <span className="flex flex-shrink-0 items-center gap-2">
+          <span className="rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-0.5 text-caption font-medium text-accent">
+            Disponible
+          </span>
+          <Icon
+            name="arrow-right"
+            size={16}
+            className="text-accent translate-x-0 group-hover:translate-x-1 transition-transform duration-micro ease-out"
+          />
+        </span>
+      ) : (
+        <span className="flex-shrink-0 rounded-full border border-[var(--color-border-subtle)] px-2.5 py-0.5 text-caption font-medium text-[var(--color-text-tertiary)]">
+          À venir
+        </span>
+      )}
+    </>
+  );
+
+  if (chapter.available) {
+    return (
+      <li>
+        <Link
+          href={notionHref(subject, chapter.slug)}
+          className={cn(
+            "group flex items-center justify-between gap-4",
+            "rounded-lg px-4 py-3.5 -mx-4",
+            "state-layer focus-ring [--focus-radius:12px]"
+          )}
+        >
+          {inner}
+        </Link>
+      </li>
+    );
+  }
+
+  return (
+    <li
+      className="flex items-center justify-between gap-4 px-4 py-3.5 -mx-4"
+      aria-disabled="true"
+    >
+      {inner}
+    </li>
+  );
+}
+
+export function ChapterList({ subject, units }: { subject: string; units: UnitView[] }) {
+  if (units.length === 0) {
+    return (
+      <div
+        role="status"
+        className={cn(
+          "flex flex-col items-center justify-center rounded-2xl py-20 text-center",
+          "border border-dashed border-[var(--color-border-subtle)]",
+          "bg-[var(--color-surface-raised)]"
+        )}
+      >
+        <Icon name="empty-doc" size={44} className="mb-5 text-[var(--color-border-soft)]" />
+        <h2 className="mb-1 text-h4 font-semibold text-[var(--color-text-primary)]">
+          Programme à venir
+        </h2>
+        <p className="max-w-[44ch] text-body-sm text-[var(--color-text-secondary)]">
+          Les chapitres de cette matière seront ajoutés prochainement.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-10">
+      {units.map((unit) => (
+        <section key={unit.title} aria-label={unit.title}>
+          <h2 className="mb-2 pb-2 border-b border-[var(--color-border-subtle)] text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+            {unit.title}
+          </h2>
+          <ul role="list" className="divide-y divide-[var(--color-border-subtle)]">
+            {unit.chapters.map((c) => (
+              <ChapterRow key={c.slug} subject={subject} chapter={c} />
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}

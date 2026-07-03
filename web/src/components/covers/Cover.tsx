@@ -13,13 +13,16 @@
 
 import { cn } from "@/lib/utils";
 
-type MotifId = "maths" | "pc" | "svt" | "rlc-serie" | "rc-charge";
+type MotifId = "maths" | "pc" | "svt" | "philo" | "si" | "rlc-serie" | "rc-charge";
 
 /** One accent hue per cover, from the FIGURE palette only (COVER-SPEC). */
 const ACCENT: Record<MotifId, string> = {
   maths: "var(--figure-energy-C)",
   pc: "var(--figure-accent)",
   svt: "var(--figure-energy-L)",
+  // Day-9 site skeleton: two new SUBJECT motifs for the dashboard grid.
+  philo: "var(--figure-energy-C)",
+  si: "var(--figure-accent)",
   "rlc-serie": "var(--figure-accent)",
   "rc-charge": "var(--figure-accent)",
 };
@@ -72,6 +75,41 @@ function Motif({ id }: { id: MotifId }) {
           <path d="M144 140 L172 122 M139 112 L164 96 M133 84 L152 72" stroke={grid} strokeWidth="2.5" />
         </g>
       );
+    case "philo":
+      // An open book — two facing pages meeting at a spine. Scholarship,
+      // one calm motif; the page rules echo the reading-serif texture.
+      return (
+        <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path
+            d="M160 148 C132 130, 92 128, 64 138 L64 66 C92 56, 132 58, 160 76 Z"
+            stroke={accent}
+            strokeWidth="3.5"
+            fill="var(--color-surface-container-lowest)"
+          />
+          <path
+            d="M160 148 C188 130, 228 128, 256 138 L256 66 C228 56, 188 58, 160 76 Z"
+            stroke={accent}
+            strokeWidth="3.5"
+            fill="var(--color-surface-container-lowest)"
+          />
+          <path d="M160 76 L160 148" stroke={ink} strokeWidth="2.5" />
+          <path d="M84 84 L140 96 M84 104 L140 116 M180 96 L236 84 M180 116 L236 104" stroke={grid} strokeWidth="2" />
+        </g>
+      );
+    case "si":
+      // A gear — the engineering-sciences mark (SM-B). One cog, calm.
+      return (
+        <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="160" cy="100" r="34" stroke={accent} strokeWidth="3.5" />
+          <circle cx="160" cy="100" r="13" stroke={ink} strokeWidth="3" />
+          <g stroke={accent} strokeWidth="3.5">
+            <path d="M160 52 L160 40 M160 160 L160 148" />
+            <path d="M208 100 L220 100 M100 100 L112 100" />
+            <path d="M194 66 L202 58 M118 142 L126 134" />
+            <path d="M194 134 L202 142 M118 58 L126 66" />
+          </g>
+        </g>
+      );
     case "rlc-serie":
       // The notion cover: damped trace + minimal C and L glyphs beneath.
       return (
@@ -110,7 +148,12 @@ function Motif({ id }: { id: MotifId }) {
 export function coverMotif(subject: string, slug?: string): MotifId {
   if (slug === "rlc-serie") return "rlc-serie";
   if (slug === "rc-charge") return "rc-charge";
-  if (subject === "maths" || subject === "pc" || subject === "svt") return subject;
+  if (
+    subject === "maths" || subject === "pc" || subject === "svt" ||
+    subject === "philo" || subject === "si"
+  ) {
+    return subject;
+  }
   return "pc";
 }
 

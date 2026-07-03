@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { FontSizeStepper } from "./FontSizeStepper";
 import { ThemeToggle } from "./ThemeToggle";
+import { FiliereBadge } from "./FiliereBadge";
 
 interface SiteHeaderProps {
   className?: string;
@@ -168,8 +169,11 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           </span>
         </Link>
 
-        {/* Right-side: font stepper + nav */}
-        <div className="flex items-center gap-4">
+        {/* Right-side: filière badge + font stepper + theme + nav */}
+        <div className="flex items-center gap-3 bp-medium:gap-4">
+          {/* Filière affordance (Day-9): current stream / choose-your-stream. */}
+          <FiliereBadge />
+
           {/* A−/A/A+ text size control — §9 floor item */}
           <FontSizeStepper />
 

@@ -83,7 +83,7 @@ const BATTERY = [
   { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Source Serif" },
   { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
   { name: "home session-card h2 (B1 primary)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h2", weight: "700", family: "Source Serif" },
-  { name: "home library row title", page: "/", sel: "section[aria-label='Toutes les notions'] a span", text: "Oscillations", fontKey: "lead", family: "Source Serif" },
+  { name: "home shelf row title", page: "/", sel: "section[aria-label='Notions disponibles'] a span", text: "Oscillations", fontKey: "lead", family: "Source Serif" },
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
@@ -203,6 +203,17 @@ const BATTERY = [
   //    R2 heading carries a real .katex child. ──
   { name: "R2 heading renders live math (no flattened TeX)", page: NOTION, sel: "h2[data-rung='R2']", notText: /_|T0T/, present: true },
   { name: "R2 heading contains a KaTeX element", page: NOTION, sel: "h2[data-rung='R2'] .katex", present: true },
+  // ── Day-9 site skeleton (dashboard → matière → chapitre) ──
+  { name: "D9 dashboard: subject grid present", page: "/", sel: "section[aria-label='Tes matières']", present: true },
+  { name: "D9 dashboard: subject card title (serif)", page: "/", sel: "section[aria-label='Tes matières'] a span", text: "Mathématiques", fontKey: "lead", family: "Source Serif" },
+  { name: "D9 dashboard: honest counts, no fabricated progress", page: "/", sel: "section[aria-label='Tes matières']", notText: /en cours|% terminé|complété|Reprendre|maîtrisé/ },
+  { name: "D9 subject page: masthead band", page: "/matieres/pc", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
+  { name: "D9 subject page: h1 display-lg serif", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display-lg", weight: "700", family: "Source Serif" },
+  { name: "D9 subject page: available chapter links to notion", page: "/matieres/pc", sel: "a[href='/notions/pc/rlc-serie']", present: true },
+  { name: "D9 subject page: un-built chapters render honest 'À venir'", page: "/matieres/pc", sel: "main", present: true, text: "À venir" },
+  { name: "D9 subject page: footer ends the page", page: "/matieres/pc", sel: "footer", text: "cadre de référence", present: true },
+  { name: "D9 stub subject: honest 'à venir' empty state", page: "/matieres/si", sel: "[role='status']", text: "Programme à venir", present: true },
+  { name: "D9 onboarding: filière cards present", page: "/commencer", sel: "button[aria-pressed]", text: "Sciences", present: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────
@@ -458,7 +469,7 @@ try {
     { page: NOTION, sel: "[data-band='masthead'] p", label: "masthead metadata" },
     { page: NOTION, sel: ".notion-rail a span[class*='bp-expanded']", label: "rail idle label" },
     { page: NOTION, sel: "footer p", label: "footer" },
-    { page: "/", sel: "section[aria-label='Toutes les notions'] a span[class*='caption']", label: "shelf caption" },
+    { page: "/", sel: "section[aria-label='Notions disponibles'] a span[class*='caption']", label: "shelf caption" },
   ];
   const lum = `(c)=>{const [r,g,b]=c.match(/\\d+(\\.\\d+)?/g).map(Number);const f=(v)=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)}`;
   for (const theme of ["light", "dark"]) {

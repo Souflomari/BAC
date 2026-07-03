@@ -30,7 +30,8 @@ import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
 import { Cover } from "@/components/covers/Cover";
-import { subjectLabel } from "@/lib/subjects";
+import { subjectLabel, subjectHref } from "@/lib/subjects";
+import { Breadcrumb as SharedBreadcrumb } from "@/components/ui/Breadcrumb";
 import { MarginNotes, type MarginNote } from "./MarginNotes";
 import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
 
@@ -38,38 +39,18 @@ export { subjectLabel };
 
 export type MastheadVariant = "a1" | "a2" | "a3";
 
-// ── Subject display labels ────────────────────────────────────────────────────
-// ── Breadcrumb ────────────────────────────────────────────────────────────────
+// ── Breadcrumb (Day-9: now the shared component; the notion crumb goes
+//    Accueil › <matière index> › <notion>, so the subject segment LINKS to
+//    the subject's chapter list — real wayfinding up the tree). ──
 function Breadcrumb({ subject, title }: { subject: string; title: string }) {
   return (
-    <nav
-      aria-label="Fil d’Ariane"
-      className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-secondary)]"
-    >
-      <a
-        href="/"
-        className={cn(
-          "hover:text-accent",
-          "transition-colors duration-micro",
-          "rounded focus-ring"
-        )}
-      >
-        Notions
-      </a>
-      <Icon name="chevron-right" size={16} className="text-[var(--color-text-tertiary)]" />
-      <span className="text-[var(--color-text-secondary)]">{subjectLabel(subject)}</span>
-      <Icon name="chevron-right" size={16} className="text-[var(--color-text-tertiary)]" />
-      <span
-        className="text-[var(--color-text-primary)] font-medium truncate max-w-[28ch]"
-        aria-current="page"
-        // The 28ch cap ellipsizes long titles VISUALLY (the DOM text — and
-        // so the accessible name — stays complete); title= restores the
-        // sighted hover affordance (July-2026 audit F6).
-        title={title}
-      >
-        {title}
-      </span>
-    </nav>
+    <SharedBreadcrumb
+      segments={[
+        { label: "Accueil", href: "/" },
+        { label: subjectLabel(subject), href: subjectHref(subject) },
+        { label: title },
+      ]}
+    />
   );
 }
 
