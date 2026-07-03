@@ -226,6 +226,18 @@ every screen internally consistent.
   layout feels like it has "enough" space, it usually needs more. Generous
   whitespace is what lets a single idea breathe and is most of what makes the
   product feel calm and premium.
+- **Composed space vs dead space (Day-8 amendment — the owner's
+  wide-viewport review).** The rule above is about QUANTITY; this one is
+  about STRUCTURE. Open space reads calm only when the composition HOLDS it:
+  anchored (an element on one side gives the emptiness a referent), balanced
+  (voids symmetric about the content axis), or bounded (a visible plane edge
+  makes the emptiness "outside"). Space that is merely LEFT OVER — a
+  full-bleed plane 38% occupied, an off-axis column with one fat margin —
+  reads unfinished, not elegant (measured live: the owner circled every such
+  region at 1920px). Filling is still forbidden; composing is mandatory.
+  Test: at every viewport tier, can you say which element holds each open
+  region? If no element holds it, the composition — not the content — is
+  incomplete.
 - **A bounded, centered working column.** Content does not sprawl across the
   full desktop width. A central column (for reading and for most practice)
   holds the focus; the surrounding space is calm margin. This is the desktop
@@ -478,6 +490,21 @@ not existing. Rules; component-level build specs live in
 - **Full-bleed permissions.** Full-bleed (viewport-edge) treatment is
   permitted for: the masthead band, and nothing else today. Any new full-bleed
   moment is an owner decision — it spends the page's calm budget.
+- **Viewport-tier composition (Day-8 amendment).** Every surface has an
+  explicit answer at each tier — 1280 (design base) / 1536 (wide) / 1920
+  (owner's monitor class) — for §4's composed-space test. The tiers are
+  instrumented (dom-truth wide battery + the shot matrices; §13 amendment
+  #3). At 1280 the shipped compositions hold as designed. At ≥1536, the
+  open regions each need a holder: the masthead band's flanks (Set-M
+  candidates: cover-in-band / bounded band / watermark) and the content
+  column's right margin (Set-W candidates: margin notes / symmetric
+  re-center + earned full-bleed / key-formula rail) — **owner picks
+  pending (Day-8 option sets, `/options/wide/*`); the chosen rules get
+  written HERE and specced in PAGE-ANATOMY-SPECS on pick.** Standing
+  regardless of pick: prose measure never grows with the viewport; a
+  periphery surface (home) that narrows to a ribbon at wide tiers is a
+  composition failure (614px dead gutters measured per side at 1920 —
+  the fix rides the picked strategy).
 
 ## 12. Web-native texture (Day-4 amendment #3 — audit U5)
 
@@ -545,6 +572,16 @@ missed it cited source as evidence (finding U8).
   instrument was told to look for — and the only leg that sees what users
   actually reach: the same audit revealed "verified both themes" claims were
   true of a harness-forced state no real user could activate).
+- **Verification conditions span the OWNER'S actual conditions (July-2026
+  amendment #3 — the wide-viewport lesson).** Three instrument confessions
+  in one week share a root: the harness verified conditions the user never
+  has (forced theme class) or missed conditions the user always has (a
+  ~2000px monitor, while every check ran at 1280px — the owner found dead
+  zones the whole battery was blind to). The rule: theme via the real
+  controls; the deployed URL when verifiable; and a PERMANENT viewport
+  battery of 1280 / 1536 / 1920 for both dom-truth's composition tier and
+  the shot matrices. A check that passes only under conditions the owner
+  doesn't use is not a pass.
 
 ---
 

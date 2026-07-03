@@ -195,6 +195,14 @@ const BATTERY = [
   // ── July-2026 F7 — KaTeX accessibility (refuted-claim made permanent:
   //    every formula ships MathML; parity asserted in the sweeps section) ──
   { name: "KaTeX MathML present", page: NOTION, sel: ".katex .katex-mathml", present: true },
+  // ── Day-8: headings with math render MATH, not flattened TeX artifacts.
+  //    The Day-3 rung strip rendered flattenText(children) — "$T_0$" in the
+  //    R2 heading shipped as literal "T0T_0T0" for five days; no instrument
+  //    looked at heading TEXT with math. Class guard: rendered heading text
+  //    never contains an underscore (the TeX-annotation signature), and the
+  //    R2 heading carries a real .katex child. ──
+  { name: "R2 heading renders live math (no flattened TeX)", page: NOTION, sel: "h2[data-rung='R2']", notText: /_|T0T/, present: true },
+  { name: "R2 heading contains a KaTeX element", page: NOTION, sel: "h2[data-rung='R2'] .katex", present: true },
 ];
 
 // ── Runner ────────────────────────────────────────────────────────────────────
@@ -511,6 +519,37 @@ try {
     else if (!backLight) failures += fail("second click did not return to light");
     else console.log(`  ✓ dark reachable (${bgLight} → ${bgDark}), persisted, reversible`);
     await page.evaluate(() => localStorage.removeItem("bac-theme"));
+  }
+
+  // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
+  // ~2000px; everything above ran at 1280 and was blind to his dead zones.
+  // Structural assertions at 1536/1920 (composition assertions land with the
+  // owner's Set-M/Set-W picks — this tier is the harness they plug into).
+  for (const width of [1536, 1920]) {
+    const wp = await browser.newPage({ viewport: { width, height: 1000 } });
+    for (const p of ["/", NOTION]) {
+      console.log(`\n[${p}] WIDE ${width}px: structure`);
+      await wp.goto(`${BASE}${p}`, { waitUntil: "networkidle" });
+      const r = await wp.evaluate(() => {
+        const main = document.querySelector("main");
+        const headerInner = document.querySelector("header > div, header nav")?.parentElement === document.querySelector("header")
+          ? document.querySelector("header > div")
+          : document.querySelector("header");
+        return {
+          hOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+          mainLeft: main ? main.getBoundingClientRect().left : null,
+          headerLeft: headerInner ? headerInner.getBoundingClientRect().left : null,
+          band: !!document.querySelector("[data-band='masthead']"),
+        };
+      });
+      checks++;
+      if (r.hOverflow) failures += fail(`horizontal overflow at ${width}px`);
+      else if (r.mainLeft == null) failures += fail("main not found");
+      else if (r.headerLeft != null && Math.abs(r.mainLeft - r.headerLeft) > 0.5)
+        failures += fail(`spine broken at ${width}px: main ${r.mainLeft} vs header ${r.headerLeft}`);
+      else console.log(`  ✓ no overflow, spine holds (left ${Math.round(r.mainLeft)}px)${p !== "/" ? (r.band ? ", band present" : "") : ""}`);
+    }
+    await wp.close();
   }
 
   // (F7) KaTeX accessibility parity: every formula ships MathML.

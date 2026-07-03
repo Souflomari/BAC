@@ -66,6 +66,18 @@ a1 (30px control) and a2 (44px) renderable at `/options/masthead/*` until the
 owner's laptop review; override = change the default. After sign-off: inline
 the winner, delete the prop + `/options` tree + this paragraph.
 
+**Wide-tier composition (Day-8 — OWNER PICKS PENDING).** At ≥1536px the
+band's flanks and the content column's right margin need holders (bible §4
+composed-space test; measured at 1920: band 38.3% occupied, 422px void per
+flank, 528px right of prose). Candidates render at `/options/wide/[v]`
+(`wideOption` prop on NotionPageView): Set M = m1 cover-in-band (COVER-SPEC
+tie-in promoted to presence) / m2 bounded band / m3 motif watermark; Set W =
+w1 margin notes (`MarginNotes`, needs an authored channel if picked) / w2
+`notionWide` PageShell width + earned full-bleed / w3 key-formula rail
+(`KeyFormulaRail`, needs an authored formula field if picked). On pick:
+inline the winner, spec it here, add its dom-truth wide-tier assertions,
+delete the losing candidates + this paragraph's candidate list.
+
 ## SiteFooter — quiet colophon (`web/src/components/ui/SiteFooter.tsx`)
 
 **Purpose.** Every page ends (DESIGN-BIBLE §11). [Set C = C1;

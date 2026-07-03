@@ -15,6 +15,9 @@ const config: Config = {
       screens: {
         "bp-medium": "600px",
         "bp-expanded": "840px",
+        // Wide desktop tier (Day-8 owner review: composition rules exist per
+        // viewport tier — 1280 / 1536 / 1920; bible §11).
+        "bp-wide": "1536px",
       },
 
       // ── Design-token color palette ─────────────────────────────────────────

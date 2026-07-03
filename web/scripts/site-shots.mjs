@@ -40,6 +40,11 @@ const BREAKPOINTS = [
   { name: "compact", width: 390, height: 780 },
   { name: "medium", width: 800, height: 1040 },
   { name: "expanded", width: 1280, height: 860 },
+  // Wide tiers (July-2026 §13 amendment #3: verification conditions span the
+  // owner's actual conditions — his monitor is ~2000px; every check before
+  // this ran at 1280 and was blind to the dead zones he circled).
+  { name: "wide", width: 1536, height: 900 },
+  { name: "ultrawide", width: 1920, height: 1000 },
 ];
 // Per-route extra scroll-stops (deviceIndependent y) to show layout reflow below the fold.
 const SCROLL_STOPS = {

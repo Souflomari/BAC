@@ -522,6 +522,71 @@ screenshot in `web/shots/day8-audit/report/`), but no independent agent
 re-verified those specific claims: recorded as-is rather than claimed
 otherwise.
 
+## 9. Day-8 — wide-viewport composition (owner review, ~2000px monitor)
+
+**Instrument confession #3 (encoded first, bible §13 amendment #3):** every
+check all week ran at 1280px; the owner's monitor is ~2000px. The battery
+now carries a permanent wide tier (1536/1920 structural rows; site-shots
+gained wide/ultrawide viewports). His annotated screenshot arrived INLINE
+and was not persisted by the harness — the file could not be committed;
+the four circled regions are transcribed below as measurements. If the
+original should be archived, re-attach it (intended path:
+docs/audits/owner-wide-viewport-annotations.png).
+
+**The BEFORE numbers at 1920 (both themes identical;
+`web/shots/day8-wide/measurements.json` + before-shots):**
+
+| Region (owner's circle) | Measured |
+|---|---|
+| Band occupancy | title block 1076×209 in a 1920×306 full-bleed plane = **38.3%** |
+| Band flank voids | **422px each side** inside the band |
+| Left gutter | 390px to container; rail at 422px |
+| Right of content / of prose | **422px / 528px** |
+| Home at 1920 | main = **691px wide** (max-w-content); **614px dead gutter per side**; the page reads as a ribbon |
+| 404 at 1920 | centered utility block; voids symmetric (acceptable under §4's balanced clause — held, not dead; no fix needed) |
+
+**Option sets (live at `/options/wide/m1..m3, w1..w3`; stitched
+comparisons both themes in `web/shots/day8-wide/report/`):** built as
+prop-driven variants of the REAL page (`wideOption` on NotionPageView);
+W-mocks use verbatim lesson content, hand-anchored — a pick converts the
+channel to authored content (template-v2 field), stated in the route file.
+
+**Recommendations (FABLE-RECOMMENDED — the owner picks; no provisional
+adoption this round):**
+- **Set M → M1 (cover-in-band).** It completes the band with the notion's
+  OWN identity — the Day-6 cover language reused, not new noise; dark mode
+  works by construction (the cover's background var equals the band's, so
+  only the motif reads); it makes shelf→lesson visually continuous; and it
+  implements COVER-SPEC's existing masthead tie-in clause (promoted from
+  ≤0.6 echo to full presence — the clause gets updated on pick). M2 demotes
+  the A3 display moment to a card and forfeits the full-bleed chapter
+  furniture that the external audit praised as deployed; M3 holds the space
+  but adds nothing and reads accidental at some crops.
+- **Set W → W3 now (key-formula rail), W1 as the deep second.** W3 is
+  sparse, real content, calm, and cheap to make real (one authored formula
+  per rung). W1 (margin notes) is the richest long-session pattern and the
+  best fit for the "pourquoi ce geste" layer, but it requires an authored
+  margin-note channel per notion — worth doing deliberately, possibly ON
+  TOP of W3 later; picking it today means content-pipeline work per notion.
+  **W2 recommended AGAINST, with the measured reason:** current figures are
+  design-capped (680–880px), so at 1920 nothing earns the extra width —
+  the demo shows a wider band with the same content sizes; the strategy
+  only pays after a figure-width pass that no other goal demands.
+
+**Home/404 sweep:** 404 passes §4's balanced test. Home fails at wide tiers
+(the ribbon) — the fix follows the picked Set-W grammar (e.g., W3's
+composition logic would let the shelf go 3-up inside a wider content shell;
+decided with the picks, not before).
+
+**Collateral catch (rendered evidence, again):** the W1 option shot exposed
+a LIVE production bug — the R2 heading rendered "trouver T0T_0T0": the
+Day-3 rung-strip rendered flattenText(children), destroying KaTeX heading
+children (MathML text + TeX annotation + HTML concatenated). Student-visible
+since Day 3; no instrument looked at heading text WITH math. Fixed
+(stripRungPrefix preserves children; flattenText deleted); class-guarded
+(heading innerText carries no underscore artifact; R2 heading contains a
+real .katex). Battery: **106 checks, 0 failures.**
+
 ### Handoff skeleton (next dispatch fills this in)
 
 1. **Open gates (owner decisions pending):**

@@ -29,7 +29,10 @@ import { MarginRail } from "@/components/notion/MarginRail";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
+import { Cover } from "@/components/covers/Cover";
 import { subjectLabel } from "@/lib/subjects";
+import { MarginNotes, type MarginNote } from "./MarginNotes";
+import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
 
 export { subjectLabel };
 
@@ -92,12 +95,25 @@ function MastheadMeta({
 }
 
 // ── Page view ─────────────────────────────────────────────────────────────────
+/** Day-8 wide-viewport option candidates (owner review pending; rendered
+ *  only by /options/wide/[v] — the default surface is unchanged):
+ *  Set M composes the masthead band (m1 cover-in-band · m2 bounded band ·
+ *  m3 watermark); Set W composes the wide content region (w1 margin notes ·
+ *  w2 symmetric re-center + earned full-bleed · w3 key-formula rail). */
+export type WideOption = "m1" | "m2" | "m3" | "w1" | "w2" | "w3";
+
 export function NotionPageView({
   id,
   mastheadVariant = "a3",
+  wideOption,
+  marginNotes,
+  keyFormulas,
 }: {
   id: string;
   mastheadVariant?: MastheadVariant;
+  wideOption?: WideOption;
+  marginNotes?: MarginNote[];
+  keyFormulas?: KeyFormula[];
 }) {
   const notion = loadNotion(id);
   if (!notion) notFound();
@@ -162,7 +178,7 @@ export function NotionPageView({
   );
 
   return (
-    <PageShell width="notion">
+    <PageShell width={wideOption === "w2" ? "notionWide" : "notion"}>
       {/* Skip-to-content for keyboard users (DESIGN-BIBLE §9) */}
       <a
         href="#lesson-content"
@@ -184,14 +200,52 @@ export function NotionPageView({
           data-band="masthead"
           className={cn(
             "-mt-12 md:-mt-16 mb-12 py-12",
-            "mx-[calc(50%-50vw)] px-[calc(50vw-50%)]",
+            // Set-M2 candidate: the band is BOUNDED to the content width —
+            // page background outside, the wide-viewport void becomes honest
+            // margin instead of empty band interior. All other variants keep
+            // the shipped full-bleed plane.
+            wideOption === "m2"
+              ? "rounded-xl px-8 border border-[var(--color-border-subtle)]"
+              : "mx-[calc(50%-50vw)] px-[calc(50vw-50%)] border-b border-[var(--color-border-subtle)]",
             "bg-[var(--color-surface-container-low)]",
-            "border-b border-[var(--color-border-subtle)]"
+            // Set-M3 candidate needs a clipping context for its watermark.
+            wideOption === "m3" && "relative overflow-hidden"
           )}
         >
-          {/* Inside the band the masthead spans the notion band, not the prose
-              column — the width is part of the A3 statement. */}
-          <div>{masthead}</div>
+          {/* Set-M1 candidate: the notion's cover motif composes the band's
+              right region at the wide tier (COVER-SPEC masthead tie-in,
+              promoted from echo to presence — Imprint grammar). Dark mode by
+              construction: the cover's own background var equals the band's,
+              so only the motif reads. Never behind the title (grid cell). */}
+          {wideOption === "m1" ? (
+            <div className="bp-wide:grid bp-wide:grid-cols-[1fr_400px] bp-wide:items-center bp-wide:gap-12">
+              <div>{masthead}</div>
+              <div className="hidden bp-wide:block" aria-hidden="true">
+                <Cover
+                  subject={meta.subject}
+                  slug={meta.slug}
+                  className="max-h-[220px] w-auto ml-auto"
+                />
+              </div>
+            </div>
+          ) : wideOption === "m3" ? (
+            <>
+              {/* Set-M3 candidate: a faint oversized motif watermark holds the
+                  band's right region — typographic composition, no new
+                  information, clipped by the band. */}
+              <div
+                aria-hidden="true"
+                className="hidden bp-wide:block absolute -right-16 -top-24 w-[720px] opacity-[0.14] pointer-events-none"
+              >
+                <Cover subject={meta.subject} slug={meta.slug} className="!bg-transparent" />
+              </div>
+              <div className="relative">{masthead}</div>
+            </>
+          ) : (
+            /* Inside the band the masthead spans the notion band, not the
+               prose column — the width is part of the A3 statement. */
+            <div>{masthead}</div>
+          )}
         </div>
       )}
 
@@ -203,8 +257,12 @@ export function NotionPageView({
           <div className="notion-rail" aria-hidden="true" />
         )}
 
-        {/* Content column */}
-        <div id="lesson-content" className="notion-content">
+        {/* Content column. Set-W1/W3 candidates anchor their right-margin
+            channel to this column (absolute, outside the container, in the
+            wide-tier void the owner circled). */}
+        <div id="lesson-content" className={cn("notion-content", (wideOption === "w1" || wideOption === "w3") && "relative")}>
+          {wideOption === "w1" && marginNotes && <MarginNotes notes={marginNotes} />}
+          {wideOption === "w3" && keyFormulas && <KeyFormulaRail formulas={keyFormulas} />}
           {mastheadVariant !== "a3" && masthead}
 
           {lessonMd ? (

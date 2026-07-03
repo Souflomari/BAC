@@ -14,6 +14,7 @@
  * happens on the server, so KaTeX output is in the initial HTML.
  */
 
+import { Children } from "react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -28,16 +29,6 @@ interface LessonRendererProps {
   className?: string;
 }
 
-/** Flatten a React children tree to its plain text (rung titles are plain). */
-function flattenText(node: ReactNode): string {
-  if (typeof node === "string") return node;
-  if (typeof node === "number") return String(node);
-  if (Array.isArray(node)) return node.map(flattenText).join("");
-  if (node && typeof node === "object" && "props" in node) {
-    return flattenText((node as { props: { children?: ReactNode } }).props.children);
-  }
-  return "";
-}
 
 /**
  * Hover heading anchor (audit U5 — web-native texture): a § link that appears
@@ -59,6 +50,27 @@ function HeadingAnchor({ id }: { id?: string }) {
 }
 
 /**
+ * Strip a leading "R<n> — " rung code from a heading's children while
+ * PRESERVING the original child nodes (Day-8 fix: the previous version
+ * rendered flattenText(children) — which destroyed KaTeX children, so
+ * `## R2 — … et trouver $T_0$` rendered as literal "T0T_0T0" (MathML text +
+ * TeX annotation + HTML text concatenated). Live student-visible defect
+ * from Day 3 until today; caught only in a rendered option shot — §13.)
+ * The prefix, when present, is always at the start of the FIRST text child;
+ * later children (math spans, emphasis) pass through untouched.
+ */
+function stripRungPrefix(
+  children: ReactNode
+): { rung: string; rest: ReactNode[] } | null {
+  const arr = Children.toArray(children);
+  const first = arr[0];
+  if (typeof first !== "string") return null;
+  const m = first.match(/^(R\d+)\s*[—–-]\s*([\s\S]*)$/);
+  if (!m) return null;
+  return { rung: m[1], rest: [m[2], ...arr.slice(1)] };
+}
+
+/**
  * Rung heading renderer.
  *
  * Lesson rungs are authored as `## R0 — Title`. The R-codes are the pedagogy
@@ -69,12 +81,11 @@ function HeadingAnchor({ id }: { id?: string }) {
  * slug `id` for anchors + scroll-margin, and gains the hover § anchor.
  */
 function RungHeading({ children, ...props }: ComponentPropsWithoutRef<"h2">) {
-  const text = flattenText(children);
-  const m = text.match(/^(R\d+)\s*[—–-]\s*([\s\S]+)$/);
-  if (m) {
+  const stripped = stripRungPrefix(children);
+  if (stripped) {
     return (
-      <h2 {...props} data-rung={m[1]}>
-        {m[2]}
+      <h2 {...props} data-rung={stripped.rung}>
+        {stripped.rest}
         <HeadingAnchor id={props.id} />
       </h2>
     );
@@ -90,15 +101,13 @@ function RungHeading({ children, ...props }: ComponentPropsWithoutRef<"h2">) {
 /** h3 — same hover anchor; ALSO strips a leading R-code (July-2026 external
  * audit, residual class 3: the maths notion authors its rungs at h3, and the
  * U3 de-jargon strip only covered h2 — an instance fix that missed the
- * heading-level sibling). The code moves to data-rung, same as h2; slug ids
- * are computed from source text, so anchors are unchanged. */
+ * heading-level sibling). Children preserved (same Day-8 fix as h2). */
 function SubHeading({ children, ...props }: ComponentPropsWithoutRef<"h3">) {
-  const text = flattenText(children);
-  const m = text.match(/^(R\d+)\s*[—–-]\s*([\s\S]+)$/);
-  if (m) {
+  const stripped = stripRungPrefix(children);
+  if (stripped) {
     return (
-      <h3 {...props} data-rung={m[1]}>
-        {m[2]}
+      <h3 {...props} data-rung={stripped.rung}>
+        {stripped.rest}
         <HeadingAnchor id={props.id} />
       </h3>
     );

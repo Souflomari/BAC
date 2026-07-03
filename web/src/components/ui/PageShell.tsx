@@ -34,7 +34,7 @@ interface PageShellProps {
    *                       figures/embeds/motion break to the full band
    * - "page"     1280px — full page width
    */
-  width?: "reading" | "content" | "wide" | "notion" | "page";
+  width?: "reading" | "content" | "wide" | "notion" | "notionWide" | "page";
   className?: string;
 }
 
@@ -48,6 +48,9 @@ export function PageShell({
     content: "max-w-content",
     wide:    "max-w-wide",
     notion:  "max-w-notion",
+    // Set-W2 candidate (Day-8): the notion band may widen at the wide tier;
+    // prose stays 65ch inside — only figures/motion earn the extra width.
+    notionWide: "max-w-notion bp-wide:max-w-[1400px]",
     page:    "max-w-page",
   }[width];
 
