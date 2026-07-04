@@ -1,0 +1,320 @@
+notion: controle-catalyse
+skill_code: pc_controle_catalyse
+misconceptions: []
+
+items:
+  - id: CTC-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On mélange $n_0(S_2O_8^{2-}) = 6{,}0\ \text{mmol}$ et
+      $n_0(I^-) = 8{,}0\ \text{mmol}$ pour la réaction totale
+      $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$. Quel est le réactif
+      limitant, et quel est $x_{max}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$I^-$ est limitant ; $x_{max} = 4{,}0\\ \\text{mmol}$"
+        correct: true
+      - id: B
+        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 6{,}0\\ \\text{mmol}$"
+        correct: false
+        feedback: >
+          Ce choix compare les quantités initiales brutes ($6{,}0$ contre
+          $8{,}0\ \text{mmol}$) sans tenir compte des coefficients
+          stoechiométriques. Il faut comparer $n_0(S_2O_8^{2-})/1 = 6{,}0$ à
+          $n_0(I^-)/2 = 4{,}0\ \text{mmol}$ : c'est ce dernier rapport, plus
+          petit, qui désigne le réactif limitant - ici $I^-$, pas
+          $S_2O_8^{2-}$.
+      - id: C
+        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 3{,}0\\ \\text{mmol}$"
+        correct: false
+        feedback: >
+          Ce résultat vient de diviser $n_0(S_2O_8^{2-})$ par $2$ - mais le
+          coefficient $2$ appartient à $I^-$ dans l'équation, pas à
+          $S_2O_8^{2-}$ (coefficient $1$). Chaque quantité initiale se divise
+          par SON propre coefficient, jamais par celui de l'autre réactif.
+      - id: D
+        text: "$I^-$ est limitant ; $x_{max} = 8{,}0\\ \\text{mmol}$"
+        correct: false
+        feedback: >
+          $I^-$ est bien le réactif limitant, mais $x_{max}$ n'est pas sa
+          quantité initiale brute : il faut diviser $n_0(I^-)=8{,}0$ par son
+          coefficient $2$, ce qui donne $x_{max}=4{,}0\ \text{mmol}$, pas
+          $8{,}0$.
+    correct_feedback: >
+      On compare $n_0(S_2O_8^{2-})/1 = 6{,}0\ \text{mmol}$ et
+      $n_0(I^-)/2 = 4{,}0\ \text{mmol}$ : le plus petit rapport, $4{,}0$,
+      appartient à $I^-$, qui est donc le réactif limitant.
+      $x_{max} = 4{,}0\ \text{mmol}$.
+    solution: |
+      **Comparaison des rapports quantité initiale / coefficient :**
+      $$\frac{n_0(S_2O_8^{2-})}{1} = 6{,}0\ \text{mmol}$$
+      $$\frac{n_0(I^-)}{2} = \frac{8{,}0}{2} = 4{,}0\ \text{mmol}$$
+
+      Le plus petit rapport ($4{,}0\ \text{mmol}$) appartient à $I^-$ : c'est
+      lui le réactif limitant, et $x_{max} = 4{,}0\ \text{mmol}$.
+
+  - id: CTC-2
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On mélange $n_0(S_2O_8^{2-}) = 2{,}0\ \text{mmol}$ et
+      $n_0(I^-) = 20\ \text{mmol}$ pour la même réaction
+      $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$ (totale). Quel est le
+      réactif limitant, et quel est $x_{max}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 2{,}0\\ \\text{mmol}$"
+        correct: true
+      - id: B
+        text: "$I^-$ est limitant ; $x_{max} = 10\\ \\text{mmol}$"
+        correct: false
+        feedback: >
+          $I^-$ est ici en large excès : son rapport,
+          $n_0(I^-)/2 = 10\ \text{mmol}$, est très supérieur à celui de
+          $S_2O_8^{2-}$, $n_0(S_2O_8^{2-})/1 = 2{,}0\ \text{mmol}$. Ce n'est
+          jamais le réactif dont le rapport est le plus GRAND qui est
+          limitant.
+      - id: C
+        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 1{,}0\\ \\text{mmol}$"
+        correct: false
+        feedback: >
+          Ce résultat divise $n_0(S_2O_8^{2-})$ par $2$ - mais le coefficient
+          de $S_2O_8^{2-}$ dans l'équation vaut $1$, pas $2$ (c'est le
+          coefficient de $I^-$). Le rapport correct pour $S_2O_8^{2-}$ est
+          simplement $n_0(S_2O_8^{2-})/1 = 2{,}0\ \text{mmol}$.
+      - id: D
+        text: "Les deux réactifs sont limitants à la fois ; $x_{max}$ ne peut pas être déterminé."
+        correct: false
+        feedback: >
+          Un seul réactif limitant existe dès que les deux rapports diffèrent
+          - ici $2{,}0\ \text{mmol}$ contre $10\ \text{mmol}$, deux valeurs
+          nettement différentes. $x_{max}$ est parfaitement déterminé : c'est
+          le plus petit des deux rapports.
+    correct_feedback: >
+      $n_0(S_2O_8^{2-})/1 = 2{,}0\ \text{mmol}$ est nettement plus petit que
+      $n_0(I^-)/2 = 10\ \text{mmol}$ : $S_2O_8^{2-}$ est le réactif limitant,
+      $x_{max} = 2{,}0\ \text{mmol}$.
+    solution: |
+      $$\frac{n_0(S_2O_8^{2-})}{1} = 2{,}0\ \text{mmol}, \qquad \frac{n_0(I^-)}{2} = \frac{20}{2} = 10\ \text{mmol}$$
+
+      $S_2O_8^{2-}$ a le plus petit rapport : il est limitant, et
+      $x_{max} = 2{,}0\ \text{mmol}$.
+
+  - id: CTC-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un élève affirme : « En ajoutant un catalyseur à une transformation
+      totale, on obtient davantage de produit à la fin, car le catalyseur
+      aide la réaction à aller plus loin. » Cette affirmation est-elle
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non - un catalyseur accélère la réaction sans changer sa quantité finale de produit, qui reste fixée par la quantité initiale du réactif limitant."
+        correct: true
+      - id: B
+        text: "Oui - un catalyseur permet à la réaction de consommer une plus grande fraction du réactif limitant."
+        correct: false
+        feedback: >
+          Un catalyseur ouvre un chemin réactionnel différent, mais il ne
+          change ni les quantités de matière en jeu ni l'énergie des
+          réactifs et des produits. La quantité de réactif limitant
+          consommée à la fin reste fixée par la stoechiométrie, pas par la
+          présence ou non d'un catalyseur.
+      - id: C
+        text: "Oui - un catalyseur transforme une partie du réactif limitant en produit supplémentaire, en plus du mécanisme normal."
+        correct: false
+        feedback: >
+          Un catalyseur est, par définition, intégralement régénéré : il ne
+          reste jamais incorporé dans un produit, et il n'ouvre aucune voie
+          de transformation supplémentaire au-delà de ce que permettent les
+          quantités initiales. Il facilite l'accès à l'état final, il n'en
+          crée pas un autre.
+      - id: D
+        text: "Non, mais seulement parce que le catalyseur finit par se consommer lui-même avant la fin de la réaction."
+        correct: false
+        feedback: >
+          Un catalyseur n'est jamais consommé - s'il l'était, il ne
+          répondrait pas à la définition d'un catalyseur. La vraie raison
+          pour laquelle la quantité finale ne change pas est structurelle :
+          le catalyseur ne déplace ni l'énergie des réactifs, ni celle des
+          produits, seulement la hauteur du chemin entre les deux.
+    correct_feedback: >
+      Un catalyseur ouvre un chemin réactionnel d'énergie d'activation plus
+      basse, mais ne déplace ni l'énergie des réactifs ni celle des produits.
+      La quantité finale de produit reste donc fixée par la quantité initiale
+      du réactif limitant, exactement comme sans catalyseur - seul le temps
+      pour l'atteindre change.
+    solution: |
+      Un catalyseur accélère une transformation en abaissant l'énergie
+      d'activation, sans jamais changer l'énergie des réactifs ni des
+      produits. La quantité finale de produit obtenue - fixée par le
+      réactif limitant - est donc rigoureusement identique avec ou sans
+      catalyseur ; seule la vitesse pour l'atteindre change.
+
+  - id: CTC-4
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Pour l'estérification
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$, catalysée
+      par l'acide sulfurique $H_2SO_4$, un élève affirme : « En ajoutant plus
+      d'acide sulfurique, on déplace l'équilibre vers la droite et on obtient
+      plus d'ester. » Que peut-on répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Faux - $H_2SO_4$ est un catalyseur : il accélère l'établissement de l'équilibre dans les deux sens, mais ne change ni la constante d'équilibre $K$ ni la quantité d'ester obtenue à l'équilibre."
+        correct: true
+      - id: B
+        text: "Vrai - un catalyseur accélère seulement la réaction directe (l'estérification), ce qui favorise la formation d'ester."
+        correct: false
+        feedback: >
+          Un véritable catalyseur accélère la réaction directe ET la
+          réaction inverse (l'hydrolyse) dans les mêmes proportions - le
+          chemin qu'il ouvre se parcourt dans les deux sens. S'il
+          n'accélérait qu'un seul sens, il déplacerait effectivement
+          l'équilibre - mais alors il ne s'agirait plus d'un simple
+          catalyseur.
+      - id: C
+        text: "Vrai - plus de catalyseur signifie plus de chocs efficaces menant au produit, donc plus de rendement à l'équilibre."
+        correct: false
+        feedback: >
+          Plus de catalyseur accélère l'ARRIVÉE à l'équilibre dans les deux
+          sens, pas sa POSITION. Le rendement à l'équilibre (le taux
+          d'avancement final) dépend de $K$ et des quantités initiales des
+          réactifs, jamais de la quantité de catalyseur présente.
+      - id: D
+        text: "Faux, mais seulement parce qu'il y a déjà assez de catalyseur - en ajouter davantage aurait un effet inverse et ferait reculer la réaction."
+        correct: false
+        feedback: >
+          Il n'existe aucun effet de « surdose » qui ferait reculer une
+          réaction catalysée. La vraie raison est structurelle : $K$ ne
+          dépend que de la réaction et de la température, jamais de la
+          quantité de catalyseur, quelle qu'elle soit.
+    correct_feedback: >
+      $H_2SO_4$ accélère l'estérification ET l'hydrolyse dans les mêmes
+      proportions, ce qui ne change ni $K$ ni la quantité d'ester présente
+      une fois l'équilibre atteint - seulement le temps pour l'atteindre.
+    solution: |
+      Un catalyseur ouvre un chemin réactionnel emprunté dans les deux sens :
+      la vitesse directe et la vitesse inverse sont multipliées par le même
+      facteur. L'égalité de ces deux vitesses - qui définit l'équilibre - se
+      produit donc pour le même rapport de concentrations qu'en l'absence de
+      catalyseur, c'est-à-dire pour la même valeur de $K$. Ajouter du
+      $H_2SO_4$ fait atteindre l'équilibre plus vite, jamais un équilibre
+      différent.
+
+  - id: CTC-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un catalyseur solide, sous forme de grains, est placé dans un réacteur
+      traversé par un flux gazeux de réactifs. Comment qualifie-t-on cette
+      catalyse, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Hétérogène, car le catalyseur (solide) et les réactifs (gaz) ne sont pas dans la même phase - la réaction se produit à la surface des grains."
+        correct: true
+      - id: B
+        text: "Homogène, car le catalyseur est une espèce chimique différente des réactifs, comme dans tous les cas de catalyse."
+        correct: false
+        feedback: >
+          Être une espèce chimique différente des réactifs est vrai de TOUS
+          les catalyseurs, homogènes comme hétérogènes - ce n'est pas le
+          critère de classement. Ce qui distingue homogène et hétérogène,
+          c'est uniquement la phase du catalyseur par rapport à celle des
+          réactifs.
+      - id: C
+        text: "Enzymatique, car un catalyseur solide agit comme une enzyme en offrant une surface spécifique aux réactifs."
+        correct: false
+        feedback: >
+          Un catalyseur enzymatique est un catalyseur biologique (une
+          protéine), une catégorie à part de celle des solides industriels
+          inertes. Offrir une surface de réaction ne suffit pas à rendre une
+          catalyse enzymatique - il faut un catalyseur biologique et une
+          spécificité de type substrat-enzyme.
+      - id: D
+        text: "Homogène, car le catalyseur reste chimiquement inchangé tout au long de la réaction."
+        correct: false
+        feedback: >
+          Rester chimiquement inchangé est vrai de tout catalyseur, qu'il
+          soit homogène ou hétérogène - ce n'est pas non plus le critère.
+          Ici, le catalyseur (solide) et les réactifs (gaz) sont dans des
+          phases différentes : c'est donc une catalyse hétérogène, pas
+          homogène.
+    correct_feedback: >
+      Le catalyseur solide et les réactifs gazeux occupent des phases
+      différentes : la catalyse est hétérogène, et la réaction se produit à
+      la surface des grains (adsorption puis réaction).
+    solution: |
+      Le critère de classement homogène / hétérogène porte uniquement sur la
+      phase : ici, catalyseur solide et réactifs gazeux sont dans des phases
+      différentes, donc la catalyse est hétérogène. C'est exactement le
+      principe du pot catalytique automobile.
+
+  - id: CTC-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On veut obtenir une plus grande quantité de produit à la fin d'une
+      transformation totale, sans se soucier du temps que cela prendra.
+      Quel levier choisir ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Augmenter la quantité initiale du réactif limitant."
+        correct: true
+      - id: B
+        text: "Ajouter un catalyseur adapté à la réaction."
+        correct: false
+        feedback: >
+          Un catalyseur ne change que la vitesse à laquelle l'état final est
+          atteint - jamais la quantité finale de produit, qui reste fixée
+          par le réactif limitant. Ce levier ne répond pas à l'objectif
+          annoncé (plus de produit).
+      - id: C
+        text: "Augmenter la température du mélange."
+        correct: false
+        feedback: >
+          La température est un facteur cinétique : elle change la vitesse
+          de la transformation (davantage de chocs efficaces par seconde),
+          pas la quantité finale de produit d'une transformation totale, qui
+          reste fixée par le réactif limitant.
+      - id: D
+        text: "Diminuer la quantité initiale du réactif en excès."
+        correct: false
+        feedback: >
+          Réduire le réactif en excès ne peut qu'égaler ou faire chuter
+          $x_{max}$ - au mieux sans effet, au pire ce réactif devient à son
+          tour limitant, ce qui ferait DIMINUER la quantité finale de
+          produit, pas l'augmenter.
+    correct_feedback: >
+      Seule une quantité initiale plus grande du réactif limitant augmente
+      $x_{max}$, donc la quantité finale de produit - c'est le contrôle par
+      un réactif vu en R1. Catalyseur et température ne jouent que sur la
+      vitesse.
+    solution: |
+      Pour une transformation totale, $x_{max}$ est fixé par la quantité
+      initiale du réactif limitant (divisée par son coefficient). Catalyseur
+      et température sont des leviers cinétiques : ils changent la vitesse
+      d'accès à l'état final, jamais l'état final lui-même. Seule une
+      augmentation de la quantité initiale du réactif limitant augmente
+      réellement la quantité de produit obtenue.

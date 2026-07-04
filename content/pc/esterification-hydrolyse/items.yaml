@@ -1,0 +1,333 @@
+notion: esterification-hydrolyse
+skill_code: pc_esterification_hydrolyse
+misconceptions: []
+
+items:
+
+  # ── confondre accélérer (catalyseur) et déplacer l'équilibre (canonique) ────
+  - id: EH-1
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    stem: >
+      Deux flacons contiennent le même mélange équimolaire d'acide éthanoïque
+      et d'éthanol (estérification simple, $K=4$). Le flacon A est laissé à
+      température ambiante, sans catalyseur ; le flacon B reçoit quelques
+      gouttes d'acide sulfurique concentré comme catalyseur. Une fois les deux
+      flacons stabilisés, comment se comparent les taux d'avancement finaux
+      $\tau_A$ et $\tau_B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau_A = \\tau_B \\approx 66{,}7\\,\\%$ ; seul le temps nécessaire pour atteindre l'équilibre diffère entre les deux flacons."
+        correct: true
+      - id: B
+        text: "$\\tau_B > \\tau_A$, car le catalyseur favorise la formation de l'ester."
+        correct: false
+        feedback: >
+          Un catalyseur acide accélère l'estérification ET l'hydrolyse, dans
+          les mêmes proportions - il ne favorise aucun des deux sens plus que
+          l'autre. Le rapport de leurs vitesses, qui fixe la position de
+          l'équilibre, reste inchangé : $\tau_B$ vaut la même chose que
+          $\tau_A$, atteint simplement plus vite.
+      - id: C
+        text: "$\\tau_B > \\tau_A$, car le catalyseur déplace l'équilibre vers la droite."
+        correct: false
+        feedback: >
+          Un catalyseur n'apparaît jamais dans l'expression de la constante
+          d'équilibre $K$ : il n'a aucune prise sur la position de
+          l'équilibre, seulement sur la vitesse à laquelle le système
+          l'atteint. « Déplacer l'équilibre » et « accélérer la réaction »
+          sont deux effets différents, et le catalyseur ne produit que le
+          second.
+      - id: D
+        text: "On ne peut pas comparer $\\tau_A$ et $\\tau_B$ sans connaître le temps exact mis par chaque flacon pour se stabiliser."
+        correct: false
+        feedback: >
+          Le temps mis pour atteindre l'équilibre n'entre pour rien dans la
+          composition de cet équilibre : $\tau$ ne dépend que de $K$ (donc de
+          la réaction et de la température), jamais de la vitesse à laquelle
+          on y arrive.
+    correct_feedback: >
+      Le catalyseur accélère l'estérification et l'hydrolyse à parts égales :
+      il ne change ni $K$ ni $\tau$, seulement le temps nécessaire pour
+      atteindre le même équilibre. $\tau_A = \tau_B \approx 2/3$.
+    solution: |
+      Un catalyseur ouvre un chemin réactionnel qui demande moins d'énergie,
+      pour les DEUX réactions à la fois (estérification et hydrolyse). Il
+      accélère donc les deux vitesses dans les mêmes proportions, sans changer
+      leur rapport - qui est justement ce qui fixe $K$. Le catalyseur ne
+      figure dans aucune expression de $K$ ou de $Q_r$ : il n'a aucun effet
+      sur la position de l'équilibre.
+
+      **Conclusion :** $\tau_A = \tau_B \approx 66{,}7\,\%$. Seule la durée
+      pour atteindre l'équilibre diffère (plusieurs jours contre environ une
+      heure).
+
+  # ── confondre accélérer (chauffage) et déplacer l'équilibre (variant) ───────
+  - id: EH-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    stem: >
+      Le même mélange équimolaire (acide + alcool, $K=4$) est chauffé à
+      reflux dans un flacon C, sans catalyseur, plutôt que laissé à
+      température ambiante comme dans le flacon A ($\tau_A \approx 66{,}7\,\%$).
+      Une fois l'équilibre atteint dans le flacon C, comment se compare
+      $\tau_C$ à $\tau_A$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau_C \\approx \\tau_A \\approx 66{,}7\\,\\%$ : le chauffage accélère l'estérification et l'hydrolyse dans les mêmes proportions, et la réaction est quasi athermique."
+        correct: true
+      - id: B
+        text: "$\\tau_C > \\tau_A$, car la chaleur apportée favorise la formation des produits."
+        correct: false
+        feedback: >
+          Le chauffage est un facteur cinétique : il augmente la fréquence et
+          l'énergie des chocs entre entités, dans les deux sens à la fois.
+          Comme l'estérification (et l'hydrolyse) sont des réactions quasi
+          athermiques, chauffer ne déplace quasiment pas $K$ - la chaleur
+          apportée n'avantage pas la formation des produits plus que celle
+          des réactifs.
+      - id: C
+        text: "$\\tau_C < \\tau_A$, car chauffer favorise toujours la réaction inverse."
+        correct: false
+        feedback: >
+          Rien n'indique ici que l'hydrolyse serait favorisée par la chaleur :
+          l'estérification est une réaction quasi athermique, donc sa
+          constante d'équilibre $K$ varie très peu avec la température, dans
+          un sens comme dans l'autre. Le chauffage reste, dans ce cas, un
+          levier essentiellement cinétique.
+      - id: D
+        text: "Impossible à dire sans connaître précisément la vitesse de chacune des deux réactions, directe et inverse."
+        correct: false
+        feedback: >
+          La vitesse de chaque réaction détermine le temps mis pour atteindre
+          l'équilibre, pas sa position. Ici, la question porte sur $\tau$ à
+          l'équilibre, qui ne dépend que de $K$ - et $K$ change à peine avec
+          la température pour une réaction quasi athermique.
+    correct_feedback: >
+      Chauffer accélère les deux sens de la réaction à la fois (chocs
+      efficaces plus fréquents et plus énergétiques), sans avantager l'un des
+      deux sens plus que l'autre pour une réaction quasi athermique.
+      $\tau_C \approx \tau_A \approx 2/3$.
+    solution: |
+      Le chauffage augmente l'agitation thermique des molécules, donc la
+      fréquence des chocs ET la proportion de chocs suffisamment
+      énergétiques - pour l'estérification comme pour l'hydrolyse à la fois.
+      Comme la réaction dégage ou absorbe très peu de chaleur (elle est
+      qualifiée d'athermique), sa constante d'équilibre $K$ ne varie
+      quasiment pas avec la température.
+
+      **Conclusion :** $\tau_C \approx \tau_A \approx 66{,}7\,\%$. Le
+      chauffage raccourcit fortement le temps nécessaire pour atteindre
+      l'équilibre, sans en changer la composition.
+
+  # ── mal identifier ester vs acide/alcool dans l'équation (canonique) ────────
+  - id: EH-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    stem: >
+      Dans l'équation
+      $CH_3CH_2COOH + CH_3OH \rightleftharpoons CH_3CH_2COOCH_3 + H_2O$,
+      quelle espèce est l'ester ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$CH_3CH_2COOCH_3$"
+        correct: true
+      - id: B
+        text: "$CH_3CH_2COOH$"
+        correct: false
+        feedback: >
+          C'est l'acide propanoïque : il porte le groupe $-COOH$ seul, pas le
+          groupe ester $-COO-$ relié à deux chaînes carbonées. C'est un
+          réactif de l'estérification (et un produit de l'hydrolyse), pas
+          l'ester.
+      - id: C
+        text: "$CH_3OH$"
+        correct: false
+        feedback: >
+          C'est le méthanol : il porte le groupe hydroxyle $-OH$ seul, sans
+          groupe ester. C'est l'alcool de cette réaction, pas l'ester formé.
+      - id: D
+        text: "$H_2O$"
+        correct: false
+        feedback: >
+          C'est l'eau, le sous-produit de l'estérification (et le réactif de
+          l'hydrolyse) - toujours $H_2O$, jamais l'espèce organique formée.
+    correct_feedback: >
+      L'ester est la seule espèce qui porte le groupe $-COO-$ entre deux
+      chaînes carbonées : ici, $CH_3CH_2COOCH_3$ (propanoate de méthyle).
+    solution: |
+      Le repère ne varie jamais : l'ester est la molécule qui contient le
+      groupe ester $-COO-$ pris en sandwich entre un radical issu de l'acide
+      et un radical issu de l'alcool. $CH_3CH_2COOH$ est l'acide (groupe
+      $-COOH$ seul), $CH_3OH$ est l'alcool (groupe $-OH$ seul), $H_2O$ est
+      l'eau. Seul $CH_3CH_2COOCH_3$ correspond à la définition de l'ester.
+
+  # ── quel geste améliore vraiment le rendement (canonique) ───────────────────
+  - id: EH-4
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    stem: >
+      Pour améliorer réellement le rendement d'une estérification - c'est-à-dire
+      augmenter le taux d'avancement final $\tau$ - lequel des gestes
+      suivants fonctionne ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Verser, dès le départ, un excès de l'un des deux réactifs."
+        correct: true
+      - id: B
+        text: "Ajouter davantage de catalyseur acide."
+        correct: false
+        feedback: >
+          Le catalyseur accélère l'estérification et l'hydrolyse à parts
+          égales : il n'apparaît dans aucune expression de $K$, donc il ne
+          change jamais $\tau$, quelle que soit la quantité utilisée.
+      - id: C
+        text: "Chauffer le mélange plus fort."
+        correct: false
+        feedback: >
+          Chauffer est un facteur cinétique : ça accélère l'atteinte de
+          l'équilibre, mais la réaction étant quasi athermique, $K$ (et donc
+          $\tau$) ne change quasiment pas avec la température.
+      - id: D
+        text: "Attendre plus longtemps que le mélange se stabilise."
+        correct: false
+        feedback: >
+          Une fois l'équilibre atteint, $\tau$ ne bouge plus : attendre
+          encore ne change rien à la composition du mélange, qui est déjà
+          stabilisée.
+    correct_feedback: >
+      Un excès de réactif augmente le dénominateur de $Q_r$ dès le mélange
+      initial : $Q_{r,i}$ part en dessous de $K$, ce qui pousse le système à
+      avancer davantage dans le sens direct - c'est un déplacement réel de
+      l'équilibre, contrairement au catalyseur, au chauffage, ou au temps
+      d'attente.
+    solution: |
+      Trois des quatre choix (catalyseur, chauffage, attente) jouent sur la
+      VITESSE d'atteindre l'équilibre, pas sur sa position - $\tau$ reste
+      identique dans les trois cas. Seul l'excès de réactif change la
+      composition initiale du système, donc $Q_{r,i}$, ce qui déplace
+      réellement l'équilibre et augmente $\tau$ (le rung R5 le montre
+      numériquement : $66{,}7\,\%$ sans excès contre $84{,}5\,\%$ avec un
+      excès d'alcool, pour $K=4$).
+
+  # ── élimination de l'eau et confusion K/Qr (variant) ─────────────────────────
+  - id: EH-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    stem: >
+      On retire, par distillation et au fur et à mesure de sa formation, une
+      partie de l'eau produite par une estérification en cours. Quel est
+      l'effet de ce geste sur le système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r$ diminue en dessous de $K$, ce qui relance la réaction dans le sens direct : la conversion de l'acide augmente."
+        correct: true
+      - id: B
+        text: "Aucun effet : puisque $K$ ne change jamais à température fixée, retirer de l'eau ne peut rien changer à l'issue de la réaction."
+        correct: false
+        feedback: >
+          C'est confondre $K$ (qui reste fixe, à température constante) et
+          $Q_r$ (qui varie dès que les concentrations changent, y compris
+          parce qu'on en a retiré une partie à la main). Retirer de l'eau
+          déséquilibre $Q_r$ par rapport à $K$, ce qui relance la réaction -
+          même si $K$, lui, ne bouge pas.
+      - id: C
+        text: "$K$ diminue, ce qui relance la réaction dans le sens direct."
+        correct: false
+        feedback: >
+          C'est $Q_r$ qui varie ici, pas $K$. $K$ ne dépend que de la réaction
+          et de la température, jamais d'une manipulation comme le retrait
+          d'un produit du mélange.
+      - id: D
+        text: "La réaction accélère, mais la quantité finale d'ester obtenue n'est pas modifiée."
+        correct: false
+        feedback: >
+          C'est confondre vitesse et position de l'équilibre. Ici, c'est
+          justement la position de l'équilibre qui se déplace : retirer de
+          l'eau force le système à en reformer une partie, ce qui consomme
+          davantage d'acide et d'alcool et augmente la quantité finale
+          d'ester.
+    correct_feedback: >
+      Retirer de l'eau diminue le numérateur de $Q_r$ instantanément :
+      $Q_{r,i}$ passe en dessous de $K$, et le système réagit dans le sens
+      direct pour s'en rapprocher de nouveau - ce qui consomme davantage
+      d'acide et d'alcool. Répété en continu, ce geste permet d'approcher une
+      conversion quasi totale.
+    solution: |
+      $$Q_r = \frac{[ester][eau]}{[acide][alcool]}$$
+
+      Retirer de l'eau diminue $[eau]$, donc diminue $Q_r$ à cet instant :
+      $Q_{r,i} < K$. D'après le critère d'évolution, le système évolue alors
+      dans le sens direct (estérification) pour reformer une partie de l'eau
+      retirée et rejoindre $K$ à nouveau - ce qui consomme, au passage, de
+      l'acide et de l'alcool supplémentaires. $K$ lui-même ne change pas : ce
+      n'est pas lui qui bouge, c'est le rapport $Q_r/K$ qu'on vient de
+      déséquilibrer.
+
+  # ── nomenclature d'un ester (variant) ────────────────────────────────────────
+  - id: EH-6
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    stem: >
+      Quel est le nom de l'ester formé par réaction entre l'acide méthanoïque
+      $HCOOH$ et le propan-1-ol $CH_3CH_2CH_2OH$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Méthanoate de propyle"
+        correct: true
+      - id: B
+        text: "Propanoate de méthyle"
+        correct: false
+        feedback: >
+          Ce nom inverse les deux radicaux : « propanoate de méthyle »
+          correspondrait à un ester formé à partir de l'acide propanoïque et
+          du méthanol - l'inverse des réactifs donnés dans cet énoncé. Le
+          radical qui précède « -oate » vient toujours de l'acide, celui qui
+          suit « de » vient toujours de l'alcool.
+      - id: C
+        text: "Propyloate de méthanyle"
+        correct: false
+        feedback: >
+          Ces suffixes n'existent pas. La règle est fixe : le radical de
+          l'acide (terminaison « -oïque » remplacée par « -oate ») suivi de
+          « de » puis du radical de l'alcool (terminaison « -yle ») - jamais
+          l'inverse des suffixes.
+      - id: D
+        text: "Méthanol de propanoïque"
+        correct: false
+        feedback: >
+          Ce choix recopie simplement les noms des deux réactifs de départ,
+          sans appliquer la règle de nomenclature de l'ester (radical en
+          « -oate » suivi de « de » et du radical en « -yle »).
+    correct_feedback: >
+      L'acide méthanoïque donne le radical « méthanoate » ; le propan-1-ol
+      donne le radical « propyle ». L'ester $HCOOCH_2CH_2CH_3$ s'appelle donc
+      méthanoate de propyle.
+    solution: |
+      **Étape 1 - radical de l'acide :** acide méthanoïque $\rightarrow$
+      « méthanoate » (terminaison « -oïque » remplacée par « -oate »).
+
+      **Étape 2 - radical de l'alcool :** propan-1-ol $\rightarrow$
+      « propyle » (terminaison « -yle »).
+
+      **Étape 3 - assembler :** « méthanoate » + « de » + « propyle » =
+      **méthanoate de propyle**, correspondant à la molécule
+      $HCOOCH_2CH_2CH_3$.

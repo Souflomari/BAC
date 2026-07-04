@@ -1,0 +1,385 @@
+notion: propagation-onde-lumineuse
+skill_code: pc_propagation_onde_lumineuse
+misconceptions: []
+
+items:
+  - id: POL-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Le Soleil est distant de la Terre de plus de 150 millions de
+      kilomètres, séparés par le vide quasi parfait de l'espace
+      interplanétaire. Pourtant, sa lumière nous parvient chaque jour, alors
+      qu'un son émis dans le vide ne nous parviendrait jamais. Que peut-on en
+      conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La lumière est une onde électromagnétique : elle n'a besoin
+          d'aucun milieu matériel pour se propager, contrairement à une onde
+          mécanique comme le son.
+        correct: true
+      - id: B
+        text: >-
+          Il existe forcément une matière invisible qui remplit tout
+          l'espace, sans laquelle la lumière n'aurait rien qui puisse vibrer
+          pour se propager.
+        correct: false
+        feedback: >
+          Cette idée d'un support invisible (l'« éther lumineux ») a
+          réellement été proposée dans l'histoire des sciences, avant d'être
+          abandonnée : aucune expérience n'a jamais mis en évidence une telle
+          matière. La lumière n'a besoin d'aucun support pour se propager —
+          c'est justement ce qui la distingue d'une onde mécanique.
+      - id: C
+        text: >-
+          Le son, comme la lumière, se propage très bien à travers le vide :
+          les deux sont des ondes, donc les deux ont les mêmes propriétés de
+          propagation.
+        correct: false
+        feedback: >
+          C'est faux : le son est une onde MÉCANIQUE, qui a absolument besoin
+          d'un milieu matériel (air, eau, solide) pour se propager — il ne
+          franchit jamais le vide. Toutes les ondes ne se comportent pas de
+          la même façon vis-à-vis du vide ; c'est précisément la différence
+          entre onde mécanique et onde électromagnétique.
+      - id: D
+        text: >-
+          La lumière ne se propage pas réellement : elle est perçue
+          instantanément partout dès qu'elle est émise, sans traverser de
+          distance.
+        correct: false
+        feedback: >
+          La lumière se propage bel et bien, à une vitesse très grande mais
+          finie ($c \approx 3\times10^8\ \text{m/s}$) : la lumière d'une
+          étoile met réellement du temps — parfois des années — à nous
+          parvenir. Ce n'est pas instantané, seulement extrêmement rapide.
+    correct_feedback: >
+      La lumière est une onde électromagnétique : ce qui oscille, ce sont des
+      champs électrique et magnétique qui s'entretiennent mutuellement, sans
+      nécessiter aucune matière relais. C'est pour cette raison qu'elle
+      traverse le vide parfaitement, contrairement à une onde mécanique comme
+      le son.
+    solution: |
+      Une onde mécanique (le son, une vague, une onde sur une corde) se
+      propage parce qu'un milieu matériel relaie la perturbation de proche en
+      proche : sans matière, rien ne peut être déplacé, donc rien ne peut se
+      propager.
+
+      La lumière est une onde électromagnétique : ce qui se propage, ce sont
+      des champs électrique et magnétique qui s'entretiennent l'un l'autre
+      (la variation de l'un engendre l'autre), sans avoir besoin d'aucun
+      support matériel. C'est pourquoi la lumière traverse le vide de
+      l'espace exactement comme elle traverse l'air, alors qu'un son émis
+      dans le vide ne peut être entendu par personne.
+
+  - id: POL-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Dans un verre d'indice de réfraction $n = 1{,}5$, la lumière s'y
+      propage à une vitesse $v$. Sachant que $n = c/v$ avec
+      $c \approx 3\times10^8\ \text{m/s}$, que peut-on affirmer sur $v$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v \\approx 2\\times10^8\\ \\text{m/s}$, une valeur inférieure à $c$."
+        correct: true
+      - id: B
+        text: "$v \\approx 4{,}5\\times10^8\\ \\text{m/s}$, une valeur supérieure à $c$."
+        correct: false
+        feedback: >
+          Ce calcul multiplie $n$ par $c$ au lieu de diviser : $v = c/n$, pas
+          $v = n \times c$. De plus, aucun milieu matériel ne peut faire
+          voyager la lumière plus vite que dans le vide — un résultat
+          $v > c$ signale toujours une erreur de calcul.
+      - id: C
+        text: >-
+          $v = c = 3\times10^8\ \text{m/s}$, car la vitesse de la lumière est
+          une constante universelle qui ne change jamais, quel que soit le
+          milieu.
+        correct: false
+        feedback: >
+          $c$ est la vitesse de la lumière DANS LE VIDE, et c'est elle qui
+          est une constante universelle. Dans un milieu matériel, la lumière
+          interagit avec les atomes du milieu et se propage à une vitesse $v$
+          réduite — c'est exactement pour mesurer cette réduction qu'on
+          définit l'indice $n = c/v$.
+      - id: D
+        text: "Cette situation est impossible : un indice de réfraction ne peut jamais dépasser $1$."
+        correct: false
+        feedback: >
+          C'est l'inverse : l'indice de réfraction d'un milieu transparent
+          vérifie toujours $n \geq 1$, le vide ($n=1$) étant le cas le plus
+          rapide possible pour la lumière. Une valeur $n = 1{,}5$ est tout à
+          fait courante pour un verre ordinaire ; c'est $n < 1$ qui serait
+          physiquement impossible, car cela impliquerait $v > c$.
+    correct_feedback: >
+      $v = c/n = (3\times10^8)/1{,}5 \approx 2\times10^8\ \text{m/s}$. Cette
+      valeur est bien inférieure à $c$, comme l'exige $n \geq 1$ pour tout
+      milieu matériel.
+    solution: |
+      **Isoler $v$ dans $n = c/v$ :**
+      $$v = \frac{c}{n} = \frac{3\times10^8}{1{,}5} = 2\times10^8\ \text{m/s}$$
+
+      **Vérification de cohérence :** $2\times10^8\ \text{m/s} < 3\times10^8\ \text{m/s} = c$ ✓.
+      Un résultat $v > c$ aurait immédiatement signalé une erreur, puisque
+      $n \geq 1$ toujours (aucun milieu ne peut dépasser la vitesse de la
+      lumière dans le vide).
+
+  - id: POL-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Le phénomène de diffraction de la lumière par une fente ou un fil
+      devient observable lorsque :
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          la largeur de l'ouverture est du même ordre de grandeur que la
+          longueur d'onde de la lumière utilisée.
+        correct: true
+      - id: B
+        text: >-
+          la largeur de l'ouverture est très supérieure à la longueur d'onde
+          (par exemple une ouverture large comme une porte).
+        correct: false
+        feedback: >
+          C'est l'inverse : dans la formule $\theta = \lambda/a$, une
+          ouverture $a$ beaucoup plus grande que $\lambda$ donne un écart
+          angulaire $\theta$ minuscule, imperceptible. La diffraction se
+          manifeste précisément quand l'ouverture est PETITE, comparable à
+          $\lambda$ — jamais quand elle est grande.
+      - id: C
+        text: >-
+          la fréquence de la lumière utilisée est suffisamment élevée,
+          indépendamment de la taille de l'ouverture.
+        correct: false
+        feedback: >
+          La diffraction n'est pas une question de fréquence seule : c'est
+          une comparaison entre deux longueurs, la dimension $a$ de
+          l'ouverture et la longueur d'onde $\lambda$ de la lumière. Sans
+          cette comparaison des deux échelles, la condition de diffraction
+          n'est pas évaluée.
+      - id: D
+        text: "on utilise nécessairement un laser, jamais de la lumière blanche ordinaire."
+        correct: false
+        feedback: >
+          La diffraction est un phénomène ondulatoire général : toute
+          lumière diffracte dès que la condition sur les tailles ($a$
+          comparable à $\lambda$) est remplie, y compris la lumière blanche
+          (chaque longueur d'onde qui la compose diffracte alors selon son
+          propre angle). Le laser est seulement pratique car il est
+          monochromatique, ce qui donne une figure de diffraction plus
+          nette — ce n'est pas une condition nécessaire au phénomène
+          lui-même.
+    correct_feedback: >
+      La diffraction devient sensible seulement quand la dimension de
+      l'ouverture (ou de l'obstacle) est comparable à la longueur d'onde —
+      typiquement une fraction de millimètre pour la lumière visible. Une
+      ouverture beaucoup plus grande donne un écart angulaire négligeable.
+    solution: |
+      La diffraction résulte de la comparaison entre deux longueurs : la
+      dimension $a$ de l'ouverture (ou de l'obstacle) et la longueur d'onde
+      $\lambda$ de la lumière. Quand $a$ est du même ordre de grandeur que
+      $\lambda$ (pour la lumière visible : de l'ordre du dixième de
+      millimètre ou moins), l'écart angulaire $\theta = \lambda/a$ devient
+      assez grand pour être observé. Une ouverture beaucoup plus large (mm,
+      cm, une porte) donne un $\theta$ trop petit pour être perceptible :
+      c'est le régime de l'optique géométrique.
+
+  - id: POL-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un faisceau laser de longueur d'onde $\lambda = 600\ \text{nm}$
+      traverse une fente fine de largeur $a = 0{,}2\ \text{mm}$. En utilisant
+      $\theta = \lambda/a$, quel est l'écart angulaire $\theta$ obtenu par
+      diffraction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\theta = 3\\times10^{-3}\\ \\text{rad}$"
+        correct: true
+      - id: B
+        text: "$\\theta \\approx 333\\ \\text{rad}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'avoir calculé $a/\lambda$ au lieu de
+          $\lambda/a$ : la fraction a été inversée. Un écart angulaire de
+          $333\ \text{rad}$ n'a d'ailleurs aucun sens physique (cela
+          représenterait des dizaines de tours complets) — un $\theta$ aussi
+          énorme aurait dû alerter.
+      - id: C
+        text: "$\\theta = 3\\times10^{-6}\\ \\text{rad}$"
+        correct: false
+        feedback: >
+          Cette valeur vient d'un oubli de conversion d'unité : $a = 0{,}2\ \text{mm}$
+          n'a pas été convertie en mètres avant la division (on a divisé par
+          $0{,}2$ au lieu de $2\times10^{-4}\ \text{m}$). Il faut toujours
+          exprimer $\lambda$ et $a$ dans la même unité, ici le mètre.
+      - id: D
+        text: "$\\theta = 3\\times10^{-3}\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Le calcul numérique est correct, mais $\theta$ est un écart
+          ANGULAIRE (en radians), pas une longueur : la formule
+          $\theta = \lambda/a$ divise une longueur par une longueur, ce qui
+          donne un nombre sans dimension (un angle en radians), jamais un
+          résultat exprimé en mètres.
+    correct_feedback: >
+      $\theta = \lambda/a = (6\times10^{-7})/(2\times10^{-4}) = 3\times10^{-3}\ \text{rad}$,
+      après conversion de $\lambda$ et $a$ en mètres. C'est un angle très
+      petit, cohérent avec l'approximation des petits angles utilisée par la
+      formule.
+    solution: |
+      **Conversion des unités :**
+      $$\lambda = 600\ \text{nm} = 6\times10^{-7}\ \text{m}, \qquad a = 0{,}2\ \text{mm} = 2\times10^{-4}\ \text{m}$$
+
+      **Application de la formule :**
+      $$\theta = \frac{\lambda}{a} = \frac{6\times10^{-7}}{2\times10^{-4}} = 3\times10^{-3}\ \text{rad}$$
+
+  - id: POL-5
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Une radiation lumineuse rouge a une longueur d'onde dans le vide
+      $\lambda_0 = 660\ \text{nm}$. Elle pénètre dans un verre d'indice
+      $n = 1{,}5$. Que peut-on dire de sa longueur d'onde à l'intérieur du
+      verre, et de la couleur perçue ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda = 440\ \text{nm}$ à l'intérieur du verre, mais la couleur
+          perçue reste rouge, car c'est la fréquence — invariante — qui
+          détermine la couleur, pas la valeur numérique de $\lambda$.
+        correct: true
+      - id: B
+        text: >-
+          $\lambda$ reste égale à $660\ \text{nm}$ dans le verre : la
+          longueur d'onde d'une radiation ne change jamais, quel que soit le
+          milieu traversé.
+        correct: false
+        feedback: >
+          C'est la fréquence qui ne change jamais en changeant de milieu, pas
+          la longueur d'onde. $\lambda = v/\nu$ dépend de la vitesse de
+          propagation $v$, qui change avec le milieu ($v = c/n$) : donc
+          $\lambda$ change aussi, et vaut $\lambda_0/n$ dans un milieu
+          d'indice $n$.
+      - id: C
+        text: >-
+          $\lambda = 440\ \text{nm}$ à l'intérieur du verre, et la lumière
+          est donc perçue comme bleue tant qu'elle reste dans le verre.
+        correct: false
+        feedback: >
+          La valeur de $\lambda$ a bien diminué à $440\ \text{nm}$, mais la
+          couleur perçue ne dépend pas de la valeur numérique de $\lambda$
+          dans le milieu traversé : elle dépend de la fréquence $\nu$, qui
+          n'a pas changé. La lumière reste rouge, même si sa longueur d'onde
+          locale correspond numériquement à une valeur du bleu dans le vide.
+      - id: D
+        text: "$\\lambda = 990\\ \\text{nm}$ à l'intérieur du verre, car $\\lambda = n \\times \\lambda_0$."
+        correct: false
+        feedback: >
+          La relation est $\lambda = \lambda_0/n$ (on divise), pas
+          $\lambda_0 \times n$ (on ne multiplie pas) : puisque $n \geq 1$
+          toujours, la longueur d'onde DIMINUE dans un milieu matériel, elle
+          n'augmente jamais. Multiplier donnerait une longueur d'onde plus
+          grande dans le verre que dans le vide, ce qui est physiquement
+          faux.
+    correct_feedback: >
+      $\lambda = \lambda_0/n = 660/1{,}5 = 440\ \text{nm}$ à l'intérieur du
+      verre. Mais la fréquence $\nu = c/\lambda_0$ ne change pas en changeant
+      de milieu : c'est elle qui fixe la couleur perçue, donc la lumière
+      reste rouge.
+    solution: |
+      **Longueur d'onde dans le verre :**
+      $$\lambda = \frac{\lambda_0}{n} = \frac{660}{1{,}5} = 440\ \text{nm}$$
+
+      **Ce qui ne change pas — la fréquence :** $\nu = c/\lambda_0$ est fixée
+      par la source et reste la même dans tous les milieux traversés. C'est
+      $\nu$, invariante, qui détermine la couleur perçue par l'œil — jamais
+      la valeur numérique de $\lambda$ dans tel ou tel milieu. La radiation
+      reste donc rouge, bien que sa longueur d'onde ait numériquement
+      diminué jusqu'à $440\ \text{nm}$, une valeur qui correspondrait au bleu
+      si elle était mesurée dans le vide.
+
+  - id: POL-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un faisceau de lumière blanche traverse un prisme de verre. Pour ce
+      verre, on mesure $n_{rouge} = 1{,}510$ et $n_{violet} = 1{,}530$.
+      Quelle affirmation décrit correctement la déviation de ces deux
+      couleurs par le prisme ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le violet est dévié plus fortement que le rouge, car
+          $n_{violet} > n_{rouge}$ : un indice plus grand rapproche le rayon
+          réfracté de la normale, donc l'écarte davantage de sa direction
+          initiale.
+        correct: true
+      - id: B
+        text: >-
+          Le rouge est dévié plus fortement que le violet, car le rouge a
+          une plus grande longueur d'onde.
+        correct: false
+        feedback: >
+          C'est l'indice $n$, pas directement la longueur d'onde, qui
+          gouverne la déviation par la loi de Descartes. Et ici
+          $n_{rouge} < n_{violet}$ : c'est donc le violet, avec le plus
+          grand indice, qui est dévié le plus fortement — pas le rouge.
+      - id: C
+        text: >-
+          Rouge et violet sont déviés de façon identique, car l'indice $n$
+          d'un verre ne dépend pas de la couleur de la lumière.
+        correct: false
+        feedback: >
+          C'est l'inverse : $n$ dépend légèrement de la couleur (ici
+          $1{,}510$ pour le rouge contre $1{,}530$ pour le violet), et c'est
+          précisément cette petite différence qui fait que le prisme sépare
+          les couleurs. Si $n$ était identique pour toutes les couleurs, un
+          prisme ne pourrait jamais disperser la lumière blanche.
+      - id: D
+        text: >-
+          On ne peut rien conclure sans connaître les longueurs d'onde
+          exactes du rouge et du violet.
+        correct: false
+        feedback: >
+          Les indices $n_{rouge}$ et $n_{violet}$ suffisent : la loi de
+          Descartes ($\sin i_1 = n \sin r$) compare directement les deux
+          déviations à partir de ces deux valeurs de $n$, sans qu'il soit
+          nécessaire de connaître les longueurs d'onde en nanomètres.
+    correct_feedback: >
+      Puisque $n_{violet} > n_{rouge}$, le rayon violet est réfracté plus
+      près de la normale : il est donc dévié plus fortement que le rouge.
+      C'est cette petite différence d'indice, dépendante de la couleur, qui
+      permet au prisme de disperser la lumière blanche en un spectre.
+    solution: |
+      **Loi de Descartes, une fois par couleur :** un indice $n$ plus grand
+      rapproche le rayon réfracté de la normale, donc l'écarte davantage de
+      sa direction incidente — c'est une déviation plus forte.
+
+      **Comparaison :** $n_{violet} = 1{,}530 > n_{rouge} = 1{,}510$, donc le
+      violet est dévié plus fortement que le rouge.
+
+      **Conséquence :** c'est cette dépendance de $n$ envers la couleur,
+      même faible, qui sépare spatialement les différentes couleurs de la
+      lumière blanche à la sortie du prisme — le phénomène de dispersion.

@@ -1,0 +1,377 @@
+notion: ondes-em-modulation
+skill_code: pc_ondes_em_modulation
+misconceptions: []
+
+items:
+  - id: OEM-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Pourquoi ne peut-on pas rayonner efficacement, avec une antenne de
+      quelques mètres, un signal audio dont la fréquence est de quelques
+      kHz ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que l'antenne devrait mesurer plusieurs dizaines à
+          centaines de kilomètres pour rayonner efficacement une onde de
+          cette fréquence, alors qu'une porteuse à quelques centaines de
+          kHz permet une antenne de quelques dizaines de mètres.
+        correct: true
+      - id: B
+        text: "Parce qu'un signal basse fréquence ne contient pas assez d'énergie électrique pour être rayonné."
+        correct: false
+        feedback: >
+          Ce n'est pas une question de quantité d'énergie : c'est une
+          question de taille d'antenne comparée à la longueur d'onde
+          $\lambda = c/f$. Un signal basse fréquence a une longueur d'onde
+          énorme (des centaines de km), bien trop grande pour n'importe
+          quelle antenne raisonnable, quelle que soit l'énergie électrique
+          disponible.
+      - id: C
+        text: "Parce que les ondes sonores ne peuvent physiquement pas se transformer en ondes électromagnétiques."
+        correct: false
+        feedback: >
+          N'importe quel signal électrique, quelle que soit son origine,
+          peut en principe être rayonné sous forme d'onde électromagnétique.
+          Le problème n'est pas une impossibilité de conversion : c'est que
+          l'antenne serait beaucoup trop petite comparée à la longueur
+          d'onde de ce signal basse fréquence pour le rayonner efficacement.
+      - id: D
+        text: "Parce qu'une porteuse haute fréquence transporte plus d'information par seconde qu'un signal basse fréquence."
+        correct: false
+        feedback: >
+          Ce n'est pas une question de débit d'information : la porteuse ne
+          transporte, seule, aucune information (son amplitude est
+          constante). Le vrai problème est l'efficacité du rayonnement, liée
+          à la taille de l'antenne comparée à la longueur d'onde.
+    correct_feedback: >
+      Un signal à quelques kHz a une longueur d'onde de plusieurs centaines
+      de km ($\lambda=c/f$) : aucune antenne raisonnable ne peut le rayonner
+      efficacement. Une porteuse à quelques centaines de kHz a une longueur
+      d'onde bien plus courte (quelques centaines de mètres), compatible
+      avec une antenne réaliste.
+    solution: |
+      Une antenne ne rayonne efficacement une onde de fréquence $f$ que si
+      sa taille est de l'ordre d'une fraction non négligeable de la
+      longueur d'onde $\lambda = c/f$ (typiquement $\lambda/4$).
+
+      Pour $f = 1\ \text{kHz}$ : $\lambda = c/f = 3{,}00\times10^{8}/10^{3}
+      = 3{,}00\times10^{5}\ \text{m} = 300\ \text{km}$. Le quart de cette
+      longueur, $75\ \text{km}$, est une taille d'antenne impossible.
+
+      Pour $f_p = 900\ \text{kHz}$ : $\lambda \approx 333\ \text{m}$, soit
+      un quart d'onde d'environ $83\ \text{m}$ — une taille réaliste.
+
+      C'est pour ça qu'on ne rayonne jamais un signal audio directement :
+      on le fait porter par une porteuse haute fréquence, qui se rayonne
+      efficacement, elle.
+
+  - id: OEM-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Dans une tension modulée en amplitude, $s(t) = (U_0 + s_m(t))\cos(2\pi
+      f_p t)$, qu'est-ce qui varie au rythme du signal informatif basse
+      fréquence $s_m(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'amplitude instantanée de l'oscillation rapide, $U_0 + s_m(t)$."
+        correct: true
+      - id: B
+        text: "La fréquence de l'oscillation rapide, $f_p$."
+        correct: false
+        feedback: >
+          En modulation d'AMPLITUDE, $f_p$ reste rigoureusement constante :
+          $\cos(2\pi f_p t)$ oscille toujours à la même fréquence. Faire
+          varier la fréquence au rythme du signal, c'est une technique
+          différente (la modulation de fréquence, FM), qui n'est pas
+          étudiée ici.
+      - id: C
+        text: "La phase de l'oscillation, $\\varphi$."
+        correct: false
+        feedback: >
+          Aucun terme de phase ne dépend de $s_m(t)$ dans cette expression :
+          rien ne fait tourner ou décaler la phase de l'oscillation au
+          rythme du signal informatif. C'est l'amplitude, pas la phase, qui
+          varie.
+      - id: D
+        text: "L'amplitude de la porteuse $U_0$ elle-même, qui varierait dans le temps."
+        correct: false
+        feedback: >
+          $U_0$ est une constante fixée par l'émetteur, elle ne varie
+          jamais dans le temps. C'est le terme ajouté $s_m(t)$ qui varie ;
+          $U_0$ ne fait que décaler l'amplitude instantanée vers le haut,
+          sans changer lui-même.
+    correct_feedback: >
+      L'amplitude instantanée $U_0+s_m(t)$ suit fidèlement les hauts et les
+      bas du signal informatif, décalée de $U_0$. La fréquence de
+      l'oscillation rapide, $f_p$, ne change jamais : c'est elle qui permet
+      à l'antenne de rayonner efficacement (R1), pas elle qui porte
+      l'information.
+    solution: |
+      $$s(t) = \big(U_0 + s_m(t)\big)\cos(2\pi f_p t)$$
+
+      Le facteur $\cos(2\pi f_p t)$ oscille toujours à la même fréquence
+      $f_p$ : c'est l'oscillation rapide, nécessaire au rayonnement.
+
+      Le facteur $\big(U_0+s_m(t)\big)$ varie lentement, au rythme de
+      $s_m(t)$ : c'est l'amplitude instantanée, qui porte l'information.
+
+      L'enveloppe de $s(t)$ (la courbe qui relie les sommets de
+      l'oscillation rapide) dessine exactement $U_0+s_m(t)$ : l'information
+      voyage dans l'amplitude, jamais dans la fréquence.
+
+  - id: OEM-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Un signal audio de fréquence $2\ \text{kHz}$ est transmis grâce à une
+      porteuse de fréquence $1\ \text{MHz}$. Laquelle de ces deux fréquences
+      est celle de la porteuse, celle qui doit rester très supérieure à
+      l'autre pour permettre une bonne modulation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $1\ \text{MHz}$ : c'est la fréquence haute, celle de l'oscillation
+          rapide qui permet le rayonnement efficace ; la condition $f_p \gg
+          f_{signal}$ doit être vérifiée.
+        correct: true
+      - id: B
+        text: >-
+          $2\ \text{kHz}$ : c'est elle qui doit être très supérieure à
+          l'autre, puisque c'est elle qui porte l'information.
+        correct: false
+        feedback: >
+          C'est l'inverse des rôles : le signal informatif $f_{signal}$ est
+          la fréquence BASSE (ici $2\ \text{kHz}$), et c'est la porteuse
+          $f_p$ (ici $1\ \text{MHz}$, la haute fréquence) qui doit rester
+          très supérieure à elle — pas le contraire. « Porter
+          l'information » ne veut pas dire « être la plus grande fréquence ».
+      - id: C
+        text: "Les deux jouent le même rôle : il n'y a pas de porteuse à proprement parler ici."
+        correct: false
+        feedback: >
+          Les deux fréquences ne sont pas symétriques : $f_p$ est fixe,
+          haute, et sert uniquement de support de rayonnement (elle ne
+          transporte rien seule) ; $f_{signal}$ est basse et variable, c'est
+          elle qui porte l'information. Il y a bien une porteuse, distincte
+          du signal.
+      - id: D
+        text: >-
+          $1\ \text{MHz}$, mais elle doit rester proche de $2\ \text{kHz}$
+          pour que la modulation fonctionne.
+        correct: false
+        feedback: >
+          C'est le contraire de la condition de bonne modulation. Il faut
+          $f_p \gg f_{signal}$ : un grand écart entre les deux fréquences
+          (ici un rapport de $500$), pas une proximité. Si $f_p$ était
+          proche de $f_{signal}$, l'enveloppe ne pourrait plus se dessiner
+          clairement.
+    correct_feedback: >
+      $f_p=1\ \text{MHz}$ est la porteuse : la fréquence haute et fixe qui
+      permet le rayonnement. $f_{signal}=2\ \text{kHz}$ est le signal
+      informatif, basse fréquence. Le rapport $f_p/f_{signal}=500$ vérifie
+      largement $f_p \gg f_{signal}$.
+    solution: |
+      La porteuse est, par définition, la fréquence haute et fixe qui
+      autorise un rayonnement efficace (R1) ; le signal informatif est la
+      fréquence basse, celle qui varie et porte le message.
+
+      Ici $f_p = 1\ \text{MHz} = 10^{6}\ \text{Hz}$ et
+      $f_{signal}=2\ \text{kHz}=2\times10^{3}\ \text{Hz}$.
+
+      $$\frac{f_p}{f_{signal}} = \frac{10^{6}}{2\times10^{3}} = 500$$
+
+      $500 \gg 1$ : la condition $f_p \gg f_{signal}$ est largement
+      vérifiée, avec $f_p$ (et non $f_{signal}$) comme fréquence dominante.
+
+  - id: OEM-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Une porteuse d'amplitude $U_0 = 4\ \text{V}$ est modulée par un signal
+      d'amplitude maximale $S_m = 6\ \text{V}$. Que peut-on dire du taux de
+      modulation, et de la modulation obtenue ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m = S_m/U_0 = 1{,}5$ : $m>1$, il y a surmodulation."
+        correct: true
+      - id: B
+        text: "$m = U_0/S_m \\approx 0{,}67$ : $m<1$, la modulation est bonne."
+        correct: false
+        feedback: >
+          Le taux de modulation se définit comme $m=S_m/U_0$ (le signal
+          rapporté à la porteuse), pas l'inverse. En inversant le rapport,
+          ce choix masque justement la surmodulation réelle : ici
+          $S_m=6\ \text{V} > U_0=4\ \text{V}$, donc $m=6/4=1{,}5>1$.
+      - id: C
+        text: "$m = S_m - U_0 = 2$ : une valeur positive signifie une bonne modulation."
+        correct: false
+        feedback: >
+          Le taux de modulation est un rapport sans dimension, $m=S_m/U_0$,
+          pas une différence de tensions. Cette soustraction n'a aucun sens
+          physique ici et ne permet pas de juger d'une éventuelle
+          surmodulation.
+      - id: D
+        text: >-
+          $m = S_m/U_0 = 1{,}5$, et $m>1$ signifie une modulation
+          particulièrement bonne : plus $m$ est grand, mieux c'est.
+        correct: false
+        feedback: >
+          Le calcul de $m$ est juste, mais la conclusion est inversée. La
+          condition de bonne modulation est $m<1$ : au-delà, l'amplitude
+          instantanée $U_0+s_m(t)$ deviendrait négative à certains instants,
+          ce qui déforme le signal — c'est exactement la surmodulation,
+          pas une modulation « meilleure ».
+    correct_feedback: >
+      $m = S_m/U_0 = 6/4 = 1{,}5 > 1$ : c'est une surmodulation.
+      L'amplitude instantanée $U_0+s_m(t)$ deviendrait négative quand
+      $s_m(t)$ approche son minimum $-6\ \text{V}$, ce qui déforme
+      l'enveloppe.
+    solution: |
+      $$m = \frac{S_m}{U_0} = \frac{6}{4} = 1{,}5$$
+
+      $m > 1$ : c'est une surmodulation. Au pire instant, l'amplitude
+      instantanée vaudrait $U_0 - S_m = 4 - 6 = -2\ \text{V}$, une valeur
+      négative impossible pour une amplitude réelle : l'oscillation rapide
+      change alors brutalement de phase, et l'enveloppe ne reproduit plus
+      fidèlement le signal informatif.
+
+  - id: OEM-5
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Sur un oscillogramme, l'enveloppe d'une tension modulée en amplitude
+      ne reste pas une courbe lisse : à intervalles réguliers, l'oscillation
+      rapide semble changer brutalement de phase, comme si l'amplitude
+      essayait de devenir négative. Que peut-on en conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le signal est surmodulé : $S_m \\geq U_0$, l'amplitude
+          instantanée $U_0+s_m(t)$ atteint zéro ou deviendrait négative à
+          ces instants.
+        correct: true
+      - id: B
+        text: >-
+          C'est le signe que la fréquence de la porteuse $f_p$ n'est pas
+          suffisamment élevée par rapport à celle du signal.
+        correct: false
+        feedback: >
+          Cette condition ($f_p \gg f_{signal}$) concerne la lisibilité de
+          l'enveloppe (assez d'oscillations rapides par cycle pour la
+          dessiner), pas son signe. Le changement brutal de phase à
+          amplitude nulle est la signature caractéristique d'un problème
+          différent : la surmodulation ($m\geq 1$).
+      - id: C
+        text: "C'est normal : toute modulation d'amplitude produit ce changement de phase à chaque cycle du signal."
+        correct: false
+        feedback: >
+          Non : dans une bonne modulation ($m<1$), l'amplitude instantanée
+          reste toujours strictement positive, et l'enveloppe reste une
+          courbe lisse, sans aucun changement de phase. Ce comportement
+          n'apparaît que dans le cas anormal de la surmodulation.
+      - id: D
+        text: "Cela signifie que le récepteur n'est pas correctement accordé sur la fréquence de la porteuse."
+        correct: false
+        feedback: >
+          Un mauvais accord du circuit oscillant affaiblirait ou ferait
+          disparaître le signal reçu, mais ne provoquerait pas ce
+          changement de phase caractéristique. Celui-ci vient d'un défaut
+          de modulation à l'émission (surmodulation), pas d'un problème
+          d'accord à la réception.
+    correct_feedback: >
+      Un changement brutal de phase de l'oscillation rapide, exactement là
+      où l'amplitude formelle croiserait zéro, est la signature d'une
+      surmodulation : $S_m \geq U_0$, donc $m\geq 1$.
+    solution: |
+      Dans une bonne modulation ($m<1$), $U_0+s_m(t)$ reste toujours
+      strictement positif : l'enveloppe est une courbe lisse, sans
+      changement de phase.
+
+      Si $S_m \geq U_0$ (donc $m\geq 1$), l'amplitude formelle
+      $U_0+s_m(t)$ atteint zéro puis deviendrait négative à certains
+      instants. Comme une amplitude réelle ne peut pas être négative,
+      l'oscillation rapide change alors brutalement de phase à cet instant
+      précis : c'est exactement ce que décrit l'énoncé. C'est la signature
+      graphique de la surmodulation.
+
+  - id: OEM-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Dans un récepteur radio AM, à quoi sert de régler le condensateur
+      variable $C$ du circuit oscillant (bobine + condensateur) placé juste
+      après l'antenne ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À ajuster la fréquence propre $f_0 = 1/(2\pi\sqrt{LC})$ du
+          circuit pour qu'elle coïncide avec la fréquence porteuse $f_p$ de
+          la station voulue, ce qui privilégie cette station parmi toutes
+          celles captées par l'antenne.
+        correct: true
+      - id: B
+        text: >-
+          À modifier directement la fréquence porteuse $f_p$ émise par la
+          station, pour l'accorder à celle du récepteur.
+        correct: false
+        feedback: >
+          Le récepteur n'a aucune action sur l'émetteur, situé à des
+          kilomètres de distance : $f_p$ est fixée par la station
+          elle-même et reste ce qu'elle est. C'est la fréquence propre
+          $f_0$ du RÉCEPTEUR qu'on ajuste en réglant $C$, jamais $f_p$.
+      - id: C
+        text: "À amplifier également toutes les porteuses reçues par l'antenne, sans en privilégier aucune."
+        correct: false
+        feedback: >
+          C'est l'inverse du rôle du circuit accordé, qui est justement
+          sélectif : il privilégie fortement une fréquence (celle proche de
+          $f_0$) et répond beaucoup moins aux autres, il ne les traite pas
+          toutes également.
+      - id: D
+        text: >-
+          À filtrer directement le signal informatif $s_m(t)$ pour le
+          séparer de la porteuse, avant toute démodulation.
+        correct: false
+        feedback: >
+          Cette étape-là, c'est la démodulation (détection de crête, R4),
+          qui intervient après le circuit accordé. Le circuit accordé, lui,
+          sélectionne une porteuse parmi plusieurs : il ne touche pas encore
+          au signal informatif à l'intérieur.
+    correct_feedback: >
+      Régler $C$ change la fréquence propre $f_0=1/(2\pi\sqrt{LC})$ du
+      circuit bouchon. Quand $f_0$ coïncide avec $f_p$ d'une station, le
+      circuit répond fortement à cette station et beaucoup plus faiblement
+      aux autres : c'est l'accord qui réalise la sélection.
+    solution: |
+      L'antenne capte, superposées, les porteuses de toutes les stations en
+      même temps. Le circuit oscillant (bobine + condensateur variable),
+      placé juste après l'antenne, a sa propre fréquence propre
+      $f_0=1/(2\pi\sqrt{LC})$ — la même expression que celle établie dans
+      le chapitre RLC pour les oscillations libres.
+
+      En réglant $C$, on ajuste $f_0$. Quand $f_0=f_p$ (la porteuse de la
+      station voulue), le circuit privilégie fortement cette fréquence et
+      répond beaucoup moins aux autres : c'est ainsi qu'on sélectionne une
+      station parmi toutes celles reçues, sans agir en rien sur
+      l'émetteur lui-même.

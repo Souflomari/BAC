@@ -1,0 +1,375 @@
+notion: ondes-mecaniques-periodiques
+skill_code: pc_ondes_mecaniques_periodiques
+misconceptions: []
+
+items:
+  - id: OMPP-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale]
+    stem: >
+      Sur une corde parcourue par une onde progressive périodique
+      sinusoïdale, on veut mesurer la période $T$ de la source. Sur quel
+      type de graphique doit-on la lire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Sur un graphique donnant l'élongation d'UN SEUL point de la corde
+          en fonction du temps $t$ (un oscillogramme).
+        correct: true
+      - id: B
+        text: >-
+          Sur une photographie de la corde entière à un instant donné,
+          montrant l'élongation en fonction de la position $x$.
+        correct: false
+        feedback: >
+          Ce graphique donne la longueur d'onde $\lambda$ (la répétition
+          spatiale du motif), pas la période $T$. $T$ se lit sur l'évolution
+          d'un seul point au cours du temps, pas sur une photo de tout le
+          milieu figée à un instant donné.
+      - id: C
+        text: >-
+          Sur un graphique donnant la célérité $c$ en fonction du temps.
+        correct: false
+        feedback: >
+          La célérité ne se mesure pas ainsi : dans un milieu homogène, $c$
+          reste constante, elle ne se lit pas sur un graphique en fonction du
+          temps. La période, elle, se lit sur l'évolution temporelle de
+          l'élongation d'un point fixe.
+      - id: D
+        text: >-
+          Peu importe : $T$ et $\lambda$ se lisent sur le même graphique, ce
+          sont la même grandeur exprimée dans deux unités différentes.
+        correct: false
+        feedback: >
+          $T$ et $\lambda$ ne sont pas la même grandeur mesurée dans deux
+          unités : l'une est une durée (secondes), lue sur l'évolution
+          temporelle d'UN point ; l'autre est une distance (mètres), lue sur
+          une photographie de TOUT le milieu à un instant donné. Elles sont
+          liées par $\lambda = cT$, mais elles décrivent deux répétitions
+          différentes — temporelle pour $T$, spatiale pour $\lambda$ — et se
+          lisent sur deux graphiques différents.
+    correct_feedback: >
+      La période $T$ caractérise la répétition dans le TEMPS : elle se lit en
+      suivant un seul point du milieu au cours du temps, jamais sur une
+      photographie instantanée de tout le milieu (qui donne $\lambda$, la
+      répétition spatiale).
+    solution: |
+      La période temporelle $T$ décrit combien de temps il faut à UN point
+      fixe du milieu pour reproduire son propre mouvement : elle se lit sur
+      un graphique élongation-en-fonction-du-temps pour ce point (un
+      oscillogramme). La longueur d'onde $\lambda$, elle, décrit la
+      répétition spatiale du motif à un instant donné : elle se lit sur une
+      photographie de tout le milieu (élongation en fonction de la
+      position). Les deux graphiques, et les deux grandeurs, sont distincts ;
+      ils sont reliés par $\lambda = cT$.
+
+  - id: OMPP-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale]
+    stem: >
+      Une photographie instantanée d'une corde, parcourue par une onde
+      progressive périodique sinusoïdale, montre des bosses espacées
+      régulièrement de $40\ \text{cm}$. Que représente cette distance de
+      $40\ \text{cm}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La longueur d'onde $\lambda$, une distance qui caractérise la
+          répétition spatiale du motif.
+        correct: true
+      - id: B
+        text: "La période $T$, exprimée ici en centimètres au lieu de secondes."
+        correct: false
+        feedback: >
+          $T$ est une durée : elle ne peut pas s'exprimer en centimètres,
+          quelle que soit la convention choisie — une durée et une distance
+          n'ont pas la même dimension physique. La distance lue sur une
+          photographie instantanée, c'est la longueur d'onde $\lambda$, pas
+          la période changée d'unité.
+      - id: C
+        text: >-
+          Le retard $\tau$ entre la source et le point le plus éloigné
+          visible sur la photo.
+        correct: false
+        feedback: >
+          Le retard $\tau$ est aussi une durée (il se calcule par
+          $\tau = d/c$), pas une distance ; il ne se lit pas comme un
+          espacement entre deux bosses sur une photo. L'espacement régulier
+          entre bosses identiques, c'est la longueur d'onde $\lambda$.
+      - id: D
+        text: >-
+          La distance totale parcourue par l'onde depuis le début de
+          l'expérience.
+        correct: false
+        feedback: >
+          Cette distance totale grandit sans cesse à mesure que l'onde
+          avance ; elle n'a rien de fixe. Ce qui reste constant et se répète,
+          c'est l'espacement entre deux bosses identiques consécutives — la
+          longueur d'onde $\lambda$ — indépendamment de la distance totale
+          déjà parcourue par l'onde.
+    correct_feedback: >
+      L'espacement régulier entre deux bosses identiques, lu sur une
+      photographie instantanée de tout le milieu, est par définition la
+      longueur d'onde $\lambda$ : la période spatiale de l'onde.
+    solution: |
+      Une photographie instantanée fige le milieu à un instant donné : elle
+      révèle la répétition SPATIALE du motif, c'est-à-dire la distance après
+      laquelle la forme de la perturbation se reproduit identique à
+      elle-même. Cette distance est la longueur d'onde $\lambda = 40\ \text{cm}$.
+      La période $T$ (une durée) et le retard $\tau$ (une durée aussi) ne se
+      lisent jamais sur ce type de graphique.
+
+  - id: OMPP-3
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [frequence, milieu_de_propagation]
+    stem: >
+      Une onde progressive périodique sinusoïdale, produite par un vibreur de
+      fréquence $f = 25\ \text{Hz}$, se propage d'abord dans une corde fine
+      (célérité $c_1 = 10\ \text{m/s}$) puis continue son chemin dans une
+      corde plus épaisse attachée bout à bout (célérité
+      $c_2 = 6\ \text{m/s}$). Que peut-on affirmer sur la fréquence de l'onde
+      une fois dans la corde épaisse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle vaut encore $25\ \text{Hz}$ : c'est le vibreur, la source, qui
+          impose la fréquence, quelle que soit la corde traversée.
+        correct: true
+      - id: B
+        text: >-
+          Elle vaut $25 \times (6/10) = 15\ \text{Hz}$, car la fréquence
+          change proportionnellement à la célérité.
+        correct: false
+        feedback: >
+          Il n'existe pas de proportionnalité entre $f$ et $c$ : la
+          fréquence est fixée uniquement par la source (le vibreur), elle ne
+          se « recalcule » jamais en fonction de la célérité du milieu
+          traversé. Ce qui change proportionnellement à $c$ à fréquence fixée,
+          c'est la longueur d'onde $\lambda = c/f$ — pas $f$ elle-même.
+      - id: C
+        text: >-
+          Elle ne peut pas être déterminée sans connaître la longueur d'onde
+          dans chaque corde.
+        correct: false
+        feedback: >
+          Pas besoin de $\lambda$ pour connaître $f$ : la fréquence est
+          entièrement fixée à la source et se conserve dans tout milieu que
+          l'onde traverse ensuite — c'est le mécanisme même de la
+          propagation de proche en proche, où chaque point ne fait que
+          relayer, jamais reprogrammer, le rythme déjà imposé par le vibreur.
+      - id: D
+        text: >-
+          Elle devient nulle : le changement brusque de corde interrompt la
+          vibration périodique.
+        correct: false
+        feedback: >
+          Un changement de milieu modifie la célérité (et donc la longueur
+          d'onde), mais n'interrompt jamais le relais de la vibration
+          périodique déjà lancée par la source : chaque point continue de
+          reproduire, à son tour, le même mouvement à la même fréquence.
+    correct_feedback: >
+      La fréquence est une signature de la source, pas du milieu : tout point
+      du milieu — quelle que soit la corde, fine ou épaisse — vibre à
+      exactement la fréquence imposée par le vibreur. Seule la célérité (et
+      donc la longueur d'onde) dépend du milieu traversé.
+    solution: |
+      Le mécanisme établi en R1 : $y_M(t+T) = y_M(t)$ pour tout point $M$
+      atteint par l'onde, où $T$ est la période DE LA SOURCE — ce résultat ne
+      fait intervenir nulle part les propriétés du milieu. Changer de corde
+      change $c$, donc change $\lambda = c/f$, mais ne touche pas à $f$, qui
+      reste $25\ \text{Hz}$ dans les deux cordes.
+
+  - id: OMPP-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [frequence, milieu_de_propagation, son, hauteur]
+    stem: >
+      Un diapason vibre à une fréquence $f = 440\ \text{Hz}$, imposée par la
+      vibration mécanique de ses branches métalliques. Le son qu'il émet se
+      propage d'abord dans l'air ($c \approx 340\ \text{m/s}$) puis pénètre
+      dans l'eau ($c \approx 1500\ \text{m/s}$). Que devient la fréquence du
+      son, et donc sa hauteur perçue, en passant de l'air à l'eau ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles restent inchangées : $440\ \text{Hz}$, imposés par la
+          vibration de la source, jamais par le milieu de propagation.
+        correct: true
+      - id: B
+        text: "Le son devient plus aigu, car il va plus vite dans l'eau."
+        correct: false
+        feedback: >
+          Ce choix confond la célérité $c$ (fixée par le milieu, et qui
+          augmente bien ici) avec la fréquence $f$ (fixée par la source, et
+          qui ne change pas). Le fait que le son avance plus vite dans l'eau
+          ne change en rien le nombre de vibrations par seconde que produit
+          le diapason — ce qui change, c'est sa longueur d'onde
+          ($\lambda = c/f$ augmente avec $c$, à $f$ fixée).
+      - id: C
+        text: >-
+          Le son devient plus grave, car un milieu plus dense ralentit les
+          vibrations.
+        correct: false
+        feedback: >
+          Un changement de milieu peut modifier la célérité (ici elle
+          augmente, l'eau ne « ralentit » pas ce son), mais il ne modifie pas
+          la vibration de la source elle-même : la fréquence — et donc la
+          hauteur perçue — reste fixée par le diapason, pas par le milieu de
+          propagation traversé.
+      - id: D
+        text: >-
+          On ne peut pas savoir sans connaître la longueur d'onde du son
+          dans l'eau.
+        correct: false
+        feedback: >
+          La fréquence est déterminée entièrement par la vibration de la
+          source, indépendamment du milieu qu'elle traverse ensuite (R1) :
+          pas besoin de connaître $\lambda$ dans l'eau pour savoir que $f$
+          reste $440\ \text{Hz}$. C'est au contraire $\lambda$ qui se déduit
+          de $f$ (fixée) et de $c$ (propre au milieu), jamais l'inverse ici.
+    correct_feedback: >
+      La fréquence, et donc la hauteur perçue, sont une signature de la
+      source : elles ne dépendent jamais du milieu de propagation traversé.
+      Seule la longueur d'onde change, car $c$ change avec le milieu.
+    solution: |
+      $f = 440\ \text{Hz}$ dans l'air comme dans l'eau : la fréquence est
+      fixée par la vibration mécanique des branches du diapason, pas par le
+      milieu. Ce qui change, c'est $\lambda$ :
+      $$\lambda_{air} = \frac{340}{440} \approx 0{,}77\ \text{m}, \qquad
+      \lambda_{eau} = \frac{1500}{440} \approx 3{,}41\ \text{m}$$
+      La hauteur perçue (liée à $f$) reste identique ; seul le « pas » spatial
+      de l'onde (liée à $c$) change.
+
+  - id: OMPP-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, retard, calcul]
+    stem: >
+      Une onde progressive périodique sinusoïdale de période
+      $T = 0{,}1\ \text{s}$ et de longueur d'onde $\lambda = 0{,}4\ \text{m}$
+      se propage le long d'une corde. Deux points $M_1$ et $M_2$ de la corde
+      sont distants de $d = 0{,}6\ \text{m}$. Quel est le déphasage
+      $\Delta\varphi$ entre $M_1$ et $M_2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\Delta\\varphi = 3\\pi\\ \\text{rad}$"
+        correct: true
+      - id: B
+        text: "$\\Delta\\varphi = \\dfrac{d}{\\lambda} = 1{,}5\\ \\text{rad}$"
+        correct: false
+        feedback: >
+          Ce calcul oublie le facteur $2\pi$. Le rapport $d/\lambda = 1{,}5$
+          compte seulement combien de longueurs d'onde séparent les deux
+          points — un nombre pur, pas encore un angle. Il faut le multiplier
+          par $2\pi$ (un tour complet par longueur d'onde) pour obtenir le
+          déphasage : $\Delta\varphi = 2\pi \times 1{,}5 = 3\pi\ \text{rad}$.
+      - id: C
+        text: "$\\Delta\\varphi = \\dfrac{d}{T} = 6\\ \\text{rad}$"
+        correct: false
+        feedback: >
+          Ce calcul mélange une distance $d$ (en mètres) et une période $T$
+          (en secondes) : le rapport $d/T$ n'a pas la dimension d'un angle,
+          c'est dimensionnellement incohérent. Le déphasage se calcule avec
+          la longueur d'onde $\lambda$ (une distance) au dénominateur, jamais
+          avec la période $T$ (une durée) : $\Delta\varphi = 2\pi d/\lambda$.
+      - id: D
+        text: "$\\Delta\\varphi = 2\\pi \\times \\dfrac{T}{d} \\approx 1{,}05\\ \\text{rad}$"
+        correct: false
+        feedback: >
+          Ce calcul inverse le rapport (et utilise en plus $T$ à la place de
+          $\lambda$). Le déphasage se construit à partir de la fraction de
+          longueur d'onde parcourue, $d/\lambda$, et non l'inverse : plus $d$
+          est grand par rapport à $\lambda$, plus le déphasage est grand,
+          jamais l'inverse.
+    correct_feedback: >
+      $\Delta\varphi = 2\pi d/\lambda = 2\pi \times 0{,}6/0{,}4 = 2\pi \times
+      1{,}5 = 3\pi\ \text{rad}$. Le facteur $2\pi$ convertit le nombre de
+      longueurs d'onde ($d/\lambda$) en un angle.
+    solution: |
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 0{,}6}{0{,}4} = 2\pi \times 1{,}5 = 3\pi\ \text{rad}$$
+      $3\pi = 2\pi + \pi$ : c'est un multiple entier de $2\pi$ plus $\pi$,
+      donc un multiple impair de $\pi$ — les deux points vibrent en
+      opposition de phase.
+
+  - id: OMPP-6
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, retard, calcul, concordance_opposition]
+    stem: >
+      Une onde progressive périodique se propage le long d'une corde à la
+      célérité $c = 4\ \text{m/s}$, avec une période $T = 0{,}2\ \text{s}$
+      (donc $\lambda = cT = 0{,}8\ \text{m}$). Un point $M$ est situé à
+      $d = 2\ \text{m}$ de la source $S$. Quel est le retard $\tau$ entre $S$
+      et $M$, et que peut-on en conclure sur leur relation de phase ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = 0{,}5\ \text{s}$, ce qui correspond à $2{,}5$ périodes : $M$
+          vibre en opposition de phase avec $S$.
+        correct: true
+      - id: B
+        text: >-
+          $\tau = c/d = 2\ \text{s}$, ce qui correspond à $10$ périodes : $M$
+          vibre en concordance de phase avec $S$.
+        correct: false
+        feedback: >
+          Ce calcul inverse le rapport : le retard est une distance DIVISÉE
+          par une célérité, $\tau = d/c$, pas $c/d$. De plus, $c/d$ n'a même
+          pas la dimension d'un temps ici. Avec $\tau = d/c = 2/4 =
+          0{,}5\ \text{s}$, on obtient $2{,}5$ périodes, pas $10$.
+      - id: C
+        text: >-
+          $\tau = d \times c = 8\ \text{s}$, ce qui correspond à $40$
+          périodes : $M$ vibre en concordance de phase avec $S$.
+        correct: false
+        feedback: >
+          Le retard se calcule en DIVISANT la distance par la célérité,
+          $\tau = d/c$ — pas en les multipliant. Un produit $d \times c$ a la
+          dimension de $\text{m}^2/\text{s}$, pas d'une durée : ce résultat
+          ne peut pas être un retard.
+      - id: D
+        text: >-
+          $\tau = 0{,}5\ \text{s}$, ce qui correspond à $2{,}5$ périodes : $M$
+          vibre en concordance de phase avec $S$, car $2{,}5$ est un nombre
+          entier de demi-périodes.
+        correct: false
+        feedback: >
+          Le retard $\tau = 0{,}5\ \text{s}$ et le compte de $2{,}5$ périodes
+          sont corrects, mais la conclusion sur la phase est inversée : $2{,}5$
+          périodes, c'est $2$ périodes entières (pendant lesquelles $S$
+          reproduit son mouvement à l'identique) PLUS une demi-période
+          supplémentaire — ce qui place $M$ à l'opposé exact du cycle de $S$,
+          pas au même point du cycle. Un nombre entier de périodes donne la
+          concordance ; un nombre entier de périodes plus une demi-période
+          donne l'opposition.
+    correct_feedback: >
+      $\tau = d/c = 2/4 = 0{,}5\ \text{s}$, soit $\tau/T = 0{,}5/0{,}2 =
+      2{,}5$ périodes : deux périodes entières plus une demi-période. $M$
+      vibre donc en opposition de phase avec $S$.
+    solution: |
+      **Retard :**
+      $$\tau = \frac{d}{c} = \frac{2}{4} = 0{,}5\ \text{s}$$
+
+      **Nombre de périodes :**
+      $$\frac{\tau}{T} = \frac{0{,}5}{0{,}2} = 2{,}5$$
+
+      **Vérification par le déphasage :**
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 2}{0{,}8} = 5\pi\ \text{rad}$$
+
+      $5\pi = 4\pi + \pi$ : un multiple entier de $2\pi$ plus $\pi$, donc un
+      multiple impair de $\pi$ — opposition de phase confirmée.
