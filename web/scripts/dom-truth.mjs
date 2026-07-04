@@ -210,7 +210,17 @@ const BATTERY = [
   { name: "D9 subject page: masthead band", page: "/matieres/pc", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
   { name: "D9 subject page: h1 display-lg serif", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display-lg", weight: "700", family: "Source Serif" },
   { name: "D9 subject page: available chapter links to notion", page: "/matieres/pc", sel: "a[href='/notions/pc/rlc-serie']", present: true },
-  { name: "D9 subject page: un-built chapters render honest 'À venir'", page: "/matieres/pc", sel: "main", present: true, text: "À venir" },
+  // D9.5 content-fill completed every PC chapter (25/25) — /matieres/pc no
+  // longer has an un-built chapter to render "À venir" against, so the
+  // per-chapter honest-empty-state assertion that lived here (checked at D9,
+  // when only rc-charge/rlc-serie existed) is currently unobservable on any
+  // live page: maths/pc/svt/philo are all content-complete, and the si stub
+  // has zero chapters (a different code path — tested below, line ~215).
+  // ChapterList.tsx still renders the "À venir" branch in source; if a future
+  // curriculum addition leaves a chapter un-built, add a targeted assertion
+  // back here against that specific chapter. Until then, assert the honest
+  // state that's actually true: full completion, no stray pending-language.
+  { name: "D9 subject page: fully-built subject shows no stale 'À venir'", page: "/matieres/pc", sel: "main", present: true, notText: /À venir/ },
   { name: "D9 subject page: footer ends the page", page: "/matieres/pc", sel: "footer", text: "cadre de référence", present: true },
   { name: "D9 stub subject: honest 'à venir' empty state", page: "/matieres/si", sel: "[role='status']", text: "Programme à venir", present: true },
   { name: "D9 onboarding: filière cards present", page: "/commencer", sel: "button[aria-pressed]", text: "Sciences", present: true },
