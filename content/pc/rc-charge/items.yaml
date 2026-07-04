@@ -1,0 +1,288 @@
+notion: rc-charge
+skill_code: pc_rc_charge
+misconceptions: []
+
+items:
+  - id: RC-1
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      On ferme l'interrupteur à $t=0$ sur un circuit série (générateur idéal $E$,
+      résistance $R$, condensateur $C$ initialement déchargé). Que vaut la tension
+      $u_C$ aux bornes du condensateur juste après la fermeture, à $t = 0^+$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u_C(0^+) = 0$"
+        correct: true
+      - id: B
+        text: "$u_C(0^+) = E$ : le condensateur se charge instantanément."
+        correct: false
+        feedback: >
+          C'est le modèle « le condensateur se remplit d'un coup », que la leçon
+          réfute. La tension d'un condensateur est continue : $u_C = q/C$, et la
+          charge $q$ ne peut pas apparaître instantanément avec un courant fini.
+          $u_C$ part donc de $0$ et grimpe progressivement vers $E$.
+      - id: C
+        text: "$u_C(0^+) = E/2$, la tension se partage également au départ."
+        correct: false
+        feedback: >
+          Il n'y a aucun partage « à parts égales » : à $t=0^+$, le condensateur
+          est encore vide ($u_C=0$) et c'est toute la tension $E$ qui tombe sur la
+          résistance ($u_R = E$), pas la moitié.
+      - id: D
+        text: "$u_C(0^+)$ est indéterminée tant que la charge n'est pas finie."
+        correct: false
+        feedback: >
+          Elle est parfaitement déterminée : la continuité de $u_C$ impose
+          $u_C(0^+) = u_C(0^-) = 0$, puisque le condensateur était déchargé avant
+          la fermeture.
+    correct_feedback: >
+      La tension du condensateur est continue : elle vaut $0$ juste après la
+      fermeture, exactement comme juste avant, puis grimpe progressivement vers
+      $E$. Elle ne saute jamais.
+    solution: |
+      La tension d'un condensateur ne peut varier que continûment : $u_C = q/C$,
+      et faire sauter $q$ instantanément exigerait un courant infini
+      ($i = dq/dt$), impossible dans un circuit à résistance non nulle.
+      Avant $t=0$, le condensateur est déchargé : $u_C(0^-) = 0$.
+      Par continuité : $u_C(0^+) = u_C(0^-) = 0$.
+
+  - id: RC-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Dans ce même circuit RC (générateur $E$, résistance $R$, condensateur
+      initialement déchargé), que vaut l'intensité du courant $i$ juste après la
+      fermeture, à $t = 0^+$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$i(0^+) = E/R$, sa valeur maximale."
+        correct: true
+      - id: B
+        text: "$i(0^+) = 0$ : le courant part de zéro et croît ensuite."
+        correct: false
+        feedback: >
+          C'est confondre le courant avec la tension du condensateur. C'est $u_C$
+          qui part de zéro (elle est continue) ; le courant, lui, est discontinu
+          et part au contraire de son maximum. À $t=0^+$, $u_C=0$, donc toute la
+          tension $E$ est aux bornes de $R$ : $i = E/R$.
+      - id: C
+        text: "$i(0^+) = E/R$ mais atteint seulement après un court délai."
+        correct: false
+        feedback: >
+          Il n'y a pas de délai : le courant saute immédiatement à $E/R$ à
+          l'instant de la fermeture (il est discontinu), puis décroît. Ce n'est
+          pas une montée progressive vers $E/R$.
+      - id: D
+        text: "$i(0^+) = E/(2R)$."
+        correct: false
+        feedback: >
+          Ce facteur $1/2$ ne correspond à rien ici. À $t=0^+$, $u_C=0$ et la loi
+          des mailles donne $u_R = E - u_C = E$, donc $i = u_R/R = E/R$, sans
+          aucun facteur $1/2$.
+    correct_feedback: >
+      À $t=0^+$, le condensateur vide n'oppose aucune tension : toute la f.é.m.
+      $E$ est aux bornes de $R$, donc le courant est à son maximum, $i(0^+)=E/R$.
+      Il décroîtra ensuite vers $0$.
+    solution: |
+      À $t=0^+$, $u_C = 0$ (continuité, condensateur déchargé).
+      Loi des mailles : $u_R = E - u_C = E$.
+      Loi d'Ohm : $i = u_R/R = E/R$.
+      C'est la valeur maximale du courant ; ensuite $i(t) = (E/R)\,e^{-t/\tau}$
+      décroît vers $0$. Le courant est donc discontinu à $t=0$ (il passe de
+      $i(0^-)=0$ à $E/R$), alors que $u_C$ reste continue.
+
+  - id: RC-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Le régime permanent est atteint (le condensateur est chargé depuis
+      longtemps sous l'échelon $E$). Que valent alors $u_C$ et $i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u_C \\to E$ et $i \\to 0$."
+        correct: true
+      - id: B
+        text: "$u_C \\to 0$ et $i \\to E/R$."
+        correct: false
+        feedback: >
+          C'est l'état de départ, pas l'état final. En régime permanent, le
+          condensateur est chargé ($u_C = E$) et bloque le courant continu
+          ($i=0$) — l'inverse exact de l'instant $t=0^+$.
+      - id: C
+        text: "$u_C \\to E/2$ et $i \\to 0$ : la charge s'arrête à mi-hauteur."
+        correct: false
+        feedback: >
+          Rien n'arrête la charge à $E/2$. La solution $u_C(t)=E(1-e^{-t/\tau})$
+          tend vers $E$, pas vers $E/2$ ; le condensateur se charge jusqu'à la
+          pleine tension du générateur.
+      - id: D
+        text: "$u_C \\to E$ et $i \\to E/R$ : les deux se stabilisent à leur maximum."
+        correct: false
+        feedback: >
+          Le courant ne se stabilise pas à $E/R$ : une fois $u_C = E$, la loi des
+          mailles donne $u_R = E - u_C = 0$, donc $i = 0$. Un condensateur chargé
+          ne laisse plus passer de courant continu.
+    correct_feedback: >
+      En régime permanent $u_C = E$ (condensateur chargé à la tension du
+      générateur) et $i = 0$ (plus aucun courant continu ne le traverse) :
+      exactement le miroir de l'instant initial.
+    solution: |
+      Solution : $u_C(t) = E(1-e^{-t/\tau})$ et $i(t) = (E/R)\,e^{-t/\tau}$.
+      Quand $t \gg \tau$, $e^{-t/\tau} \to 0$ :
+      $u_C \to E$ et $i \to 0$.
+      Physiquement : le condensateur chargé impose $u_C = E$, donc $u_R = 0$ et
+      le courant s'annule — il se comporte comme un interrupteur ouvert vis-à-vis
+      du continu.
+
+  - id: RC-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Quelle est l'expression de la constante de temps d'un dipôle RC, et quelle
+      est son unité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau = RC$, exprimée en secondes."
+        correct: true
+      - id: B
+        text: "$\\tau = R/C$, exprimée en secondes."
+        correct: false
+        feedback: >
+          Ce n'est pas le bon groupement. L'analyse dimensionnelle le confirme :
+          c'est le produit $RC$ qui donne une seconde ($\Omega \times F = s$),
+          pas le quotient $R/C$.
+      - id: C
+        text: "$\\tau = L/R$, comme pour un circuit avec bobine."
+        correct: false
+        feedback: >
+          C'est la constante de temps du dipôle RL, où le paramètre est une
+          inductance $L$. Le circuit RC n'a pas de bobine : sa constante de temps
+          est $\tau = RC$.
+      - id: D
+        text: "$\\tau = RC$, exprimée en farads."
+        correct: false
+        feedback: >
+          Le farad est l'unité de la capacité $C$, pas de $\tau$. Le produit $RC$
+          a la dimension d'un temps : $\Omega \times F = (V/A)\times(A\cdot s/V)
+          = s$.
+    correct_feedback: >
+      $\tau = RC$ est homogène à un temps ($\Omega \times F = s$) : c'est la durée
+      caractéristique de la charge — $63\,\%$ de $E$ atteints à $t=\tau$.
+    solution: |
+      $[R] = V/A$ (loi d'Ohm), $[C] = A\cdot s/V$ (de $q = Cu$, soit $C = q/u$).
+      $[RC] = (V/A)\times(A\cdot s/V) = s$ : le produit $RC$ est homogène à un
+      temps. C'est aussi le groupement qui, lors de la vérification de la
+      solution, annule exactement le résidu exponentiel de l'équation
+      différentielle.
+
+  - id: RC-5
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Comment la tension $u_C$ atteint-elle sa valeur finale $E$ lors de la
+      charge d'un condensateur sous un échelon de tension ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Progressivement, en se rapprochant de $E$ de plus en plus lentement :
+          environ $63\%$ à $t=\tau$, plus de $99\%$ à $t\approx 5\tau$, sans
+          jamais sauter.
+        correct: true
+      - id: B
+        text: >-
+          Instantanément : dès la fermeture, $u_C$ saute à $E$.
+        correct: false
+        feedback: >
+          C'est le modèle « le condensateur se charge d'un coup », impossible :
+          un saut de $u_C$ exigerait un courant infini. La tension monte au
+          contraire continûment, sur une durée fixée par $\tau = RC$.
+      - id: C
+        text: >-
+          En ligne droite, à débit constant, jusqu'à ce que $u_C = E$, puis la
+          charge s'arrête net.
+        correct: false
+        feedback: >
+          C'est le modèle « verre qu'on remplit au robinet » réfuté en R1 : il se
+          contredit lui-même, car un courant constant tombant brutalement à zéro
+          quand $u_C = E$ est incompatible. La montée n'est pas une droite, elle
+          décélère : $u_C(t) = E(1-e^{-t/\tau})$.
+      - id: D
+        text: >-
+          Elle dépasse $E$, puis redescend et se stabilise à $E$.
+        correct: false
+        feedback: >
+          Il n'y a aucun dépassement dans un dipôle RC soumis à un échelon :
+          $u_C(t) = E(1-e^{-t/\tau})$ croît de façon monotone vers $E$ sans jamais
+          le franchir (le dépassement demanderait $E - u_C < 0$, donc un courant
+          négatif, qui ne se produit pas pendant la charge).
+    correct_feedback: >
+      La charge est une approche exponentielle qui décélère : $u_C$ franchit
+      $63\%$ du chemin en une constante de temps, puis se rapproche de $E$ de plus
+      en plus lentement, sans saut ni dépassement.
+    solution: |
+      $u_C(t) = E\left(1 - e^{-t/\tau}\right)$ croît continûment vers $E$.
+      À $t=\tau$ : $u_C = E(1-e^{-1}) \approx 0{,}63\,E$.
+      À $t=5\tau$ : $u_C = E(1-e^{-5}) \approx 0{,}99\,E$ — régime permanent
+      pratiquement atteint.
+      La montée est rapide au début (pente $E/\tau$), puis de plus en plus lente :
+      ni saut instantané, ni droite à débit constant, ni dépassement.
+
+  - id: RC-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Quelle est l'expression de l'énergie emmagasinée dans un condensateur de
+      capacité $C$ lorsque la tension à ses bornes vaut $u_C$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_C = \\frac{1}{2}Cu_C^2$"
+        correct: true
+      - id: B
+        text: "$E_C = Cu_C$"
+        correct: false
+        feedback: >
+          $Cu_C$ est la charge $q$ stockée, pas une énergie (ce n'est même pas
+          homogène à des joules). L'énergie se retrouve en reconnaissant la
+          puissance reçue $u_C\,C\,du_C/dt$ comme la dérivée de $\frac12 Cu_C^2$.
+      - id: C
+        text: "$E_C = \\frac{1}{2}Li^2$"
+        correct: false
+        feedback: >
+          C'est l'énergie magnétique stockée dans une bobine (chapitre RL). Un
+          condensateur ne stocke pas d'énergie via une inductance $L$ qu'il n'a
+          pas : son énergie est électrique, $\frac12 Cu_C^2$.
+      - id: D
+        text: "$E_C = \\frac{1}{2}Ri^2$"
+        correct: false
+        feedback: >
+          $\frac12 Ri^2$ n'a pas de sens comme énergie stockée : $Ri^2$ est une
+          puissance dissipée par effet Joule dans la résistance — de l'énergie
+          perdue en chaleur, pas emmagasinée dans le condensateur.
+    correct_feedback: >
+      $E_C = \frac12 Cu_C^2$ : elle croît avec le carré de la tension, et se
+      retrouve en reconnaissant la puissance reçue $u_C\,C\,\frac{du_C}{dt}$ comme
+      la dérivée de $\frac12 Cu_C^2$.
+    solution: |
+      Puissance reçue par le condensateur : $p = u_C\,i = u_C\,C\dfrac{du_C}{dt}$.
+      Or $\dfrac{d}{dt}\left(\dfrac12 Cu_C^2\right) = Cu_C\dfrac{du_C}{dt} = p$.
+      Donc l'énergie emmagasinée est $E_C = \dfrac12 Cu_C^2$.
+      Une fois le condensateur chargé ($u_C = E$) : $E_C = \dfrac12 CE^2$.
