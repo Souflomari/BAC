@@ -1,0 +1,313 @@
+notion: reactions-acido-basiques
+skill_code: pc_reactions_acido_basiques
+misconceptions: []
+
+items:
+
+  # ── pH faible = base (canonique) ────────────────────────────────────────────
+  - id: RAB-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Une solution aqueuse, à $25\,^\circ\text{C}$, a un pH mesuré de $3$. Que
+      peut-on affirmer sur cette solution ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est acide"
+        correct: true
+      - id: B
+        text: "Elle est basique"
+        correct: false
+        feedback: >
+          C'est l'inverse : $\text{pH} = 3 < 7$. Un pH petit ne signifie pas
+          « peu d'acidité » — il signifie, à cause du signe moins dans
+          $\text{pH} = -\log[H_3O^+]$, que $[H_3O^+]$ est grand. Un pH bas va
+          avec une acidité forte, pas avec une base.
+      - id: C
+        text: "Elle est neutre"
+        correct: false
+        feedback: >
+          La neutralité correspond à $\text{pH} = 7$ à $25\,^\circ\text{C}$
+          (là où $[H_3O^+] = [HO^-]$), pas à $\text{pH} = 3$.
+      - id: D
+        text: "On ne peut rien dire sans connaître la concentration apportée"
+        correct: false
+        feedback: >
+          Le pH seul suffit à classer une solution en acide, neutre ou
+          basique : c'est précisément l'intérêt du critère « pH comparé à
+          $7$ » — nul besoin de connaître par ailleurs la concentration
+          apportée.
+    correct_feedback: >
+      $\text{pH} = 3 < 7$ : la solution est acide, par définition de la
+      classification à $25\,^\circ\text{C}$.
+    solution: |
+      **Critère de classification à $25\,^\circ\text{C}$ :**
+      $$\text{pH} < 7 \implies \text{acide} \qquad \text{pH} = 7 \implies \text{neutre} \qquad \text{pH} > 7 \implies \text{basique}$$
+
+      Ici $\text{pH} = 3 < 7$ : la solution est **acide**. Un pH petit
+      correspond à une concentration $[H_3O^+]$ grande — à cause du signe
+      moins dans $\text{pH} = -\log[H_3O^+]$ — donc à une acidité marquée,
+      jamais à une base.
+
+  # ── pH faible = base (variant : comparaison de deux solutions) ─────────────
+  - id: RAB-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Deux solutions aqueuses ont pour pH respectifs $2$ et $9$. Laquelle est
+      la plus acide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Celle de pH 2"
+        correct: true
+      - id: B
+        text: "Celle de pH 9, car un nombre de pH plus grand indique une acidité plus grande"
+        correct: false
+        feedback: >
+          C'est l'inverse du sens de variation du pH. $\text{pH} =
+          -\log[H_3O^+]$ : le signe moins fait qu'un $[H_3O^+]$ grand donne un
+          pH **petit**. La solution de $\text{pH} = 2$ a $[H_3O^+] =
+          10^{-2}\ \text{mol/L}$, un million de fois plus que celle de
+          $\text{pH} = 9$ ($[H_3O^+] = 10^{-9}\ \text{mol/L}$) : c'est elle la
+          plus acide.
+      - id: C
+        text: "Les deux solutions sont également acides, seul le nombre affiché change"
+        correct: false
+        feedback: >
+          Le pH mesure directement $[H_3O^+]$ (via un logarithme) : deux pH
+          différents correspondent à deux concentrations en $H_3O^+$
+          différentes, donc à deux acidités réellement différentes — pas à un
+          simple changement d'affichage.
+      - id: D
+        text: "Impossible de comparer sans connaître les concentrations apportées"
+        correct: false
+        feedback: >
+          Le pH est déjà, par construction, une mesure directe de
+          $[H_3O^+]$ : comparer deux pH revient à comparer deux acidités
+          réelles, sans avoir besoin d'autre donnée.
+    correct_feedback: >
+      $\text{pH} = 2 \Rightarrow [H_3O^+] = 10^{-2}\ \text{mol/L}$ ;
+      $\text{pH} = 9 \Rightarrow [H_3O^+] = 10^{-9}\ \text{mol/L}$. La première
+      solution contient un million de fois plus d'ions $H_3O^+$ : elle est la
+      plus acide, malgré son pH « plus petit ».
+    solution: |
+      $$[H_3O^+]_{(\text{pH}=2)} = 10^{-2}\ \text{mol/L} \qquad [H_3O^+]_{(\text{pH}=9)} = 10^{-9}\ \text{mol/L}$$
+
+      Le rapport des deux concentrations vaut $10^{7}$ : la solution de
+      $\text{pH} = 2$ est un million de fois plus concentrée en $H_3O^+$.
+      Un pH petit signale une concentration en $H_3O^+$ grande — donc une
+      acidité forte — jamais une base.
+
+  # ── confondre KA et pKA (canonique) ─────────────────────────────────────────
+  - id: RAB-3
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Le couple 1 a pour constante d'acidité $K_A = 1{,}0 \times 10^{-3}$. Le
+      couple 2 a pour $pK_A = 6$. Lequel des deux acides est le plus fort ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le couple 1, car son pKA (3) est inférieur à celui du couple 2 (6)"
+        correct: true
+      - id: B
+        text: "Le couple 2, car son pKA (6) est un nombre plus grand que le KA du couple 1 (0,001)"
+        correct: false
+        feedback: >
+          Ce choix compare directement un $pK_A$ à un $K_A$ — deux grandeurs
+          différentes, reliées par un logarithme et un signe moins, qu'on ne
+          peut pas comparer telles quelles. Il faut d'abord convertir : ici,
+          $K_A = 10^{-3}$ correspond à $pK_A = 3$. Et un $pK_A$ plus grand
+          signale un acide plus faible, pas plus fort.
+      - id: C
+        text: "Le couple 2, car un couple décrit par KA est toujours plus fort qu'un couple décrit par pKA"
+        correct: false
+        feedback: >
+          $K_A$ et $pK_A$ ne décrivent pas deux catégories différentes de
+          couples : ce sont deux façons d'exprimer la même propriété d'un même
+          couple, liées par $pK_A = -\log K_A$. Tout couple a les deux.
+      - id: D
+        text: "Impossible de comparer sans connaître le KA du couple 2"
+        correct: false
+        feedback: >
+          Le $pK_A$ du couple 2 donne déjà accès à son $K_A$ : $K_A = 10^{-pK_A}
+          = 10^{-6}$. Aucune donnée supplémentaire n'est nécessaire.
+    correct_feedback: >
+      Le couple 1 ($K_A = 10^{-3}$) a pour $pK_A = 3$. Le couple 2 a
+      $pK_A = 6$. $3 < 6$ : le couple 1 a le $pK_A$ le plus petit, donc le
+      $K_A$ le plus grand — c'est l'acide le plus fort.
+    solution: |
+      **Convertir le couple 1 en pKA, pour comparer sur la même grandeur :**
+      $$pK_{A,1} = -\log(1{,}0 \times 10^{-3}) = 3$$
+
+      **Comparaison :** $pK_{A,1} = 3 < pK_{A,2} = 6$.
+
+      Un $pK_A$ plus petit correspond à un $K_A$ plus grand (relation
+      inversée par le logarithme et le signe moins), donc à un acide qui cède
+      plus facilement son proton : le couple 1 est le plus fort.
+
+  # ── confondre KA et pKA (variant : sens de variation) ───────────────────────
+  - id: RAB-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Le $pK_A$ d'un couple acide/base augmente (à température constante).
+      Que devient sa constante d'acidité $K_A$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "KA diminue"
+        correct: true
+      - id: B
+        text: "KA augmente aussi, puisque KA et pKA décrivent la même force dans le même sens"
+        correct: false
+        feedback: >
+          $pK_A = -\log K_A$ contient un logarithme et un signe moins : les
+          deux grandeurs varient en sens **opposés**, exactement comme
+          $[H_3O^+]$ et le pH. $pK_A$ qui augmente signale $K_A$ qui diminue,
+          pas l'inverse.
+      - id: C
+        text: "KA reste inchangé, seul le pKA affiché change"
+        correct: false
+        feedback: >
+          $pK_A$ est calculé directement à partir de $K_A$ : les deux ne
+          peuvent pas varier indépendamment l'un de l'autre. Si $pK_A$
+          change, c'est que $K_A$ a changé.
+      - id: D
+        text: "On ne peut pas savoir sans connaître la valeur exacte de la température"
+        correct: false
+        feedback: >
+          Le sens de variation entre $K_A$ et $pK_A$ (inverse l'un de
+          l'autre) découle uniquement de la définition $pK_A = -\log K_A$ :
+          il est valable à n'importe quelle température fixée, sans qu'on ait
+          besoin de connaître sa valeur précise.
+    correct_feedback: >
+      $pK_A = -\log K_A$ : le logarithme, combiné au signe moins, inverse le
+      sens de variation. $pK_A$ qui augmente signifie $K_A$ qui diminue.
+    solution: |
+      $$pK_A = -\log K_A$$
+
+      Le logarithme est une fonction croissante, mais le signe moins devant
+      inverse le résultat : quand $K_A$ diminue, $-\log K_A$ augmente. Donc
+      $pK_A$ qui augmente correspond bien à $K_A$ qui diminue — un acide qui
+      cède moins facilement son proton, donc plus faible.
+
+  # ── confondre acide fort / concentré (canonique) ────────────────────────────
+  - id: RAB-5
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Un élève affirme : « Cette solution a un pH très bas, donc l'acide
+      qu'elle contient est forcément un acide fort. » Cette affirmation
+      est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : un acide faible mais très concentré peut aussi donner un pH bas, sans être un acide fort"
+        correct: true
+      - id: B
+        text: "Oui : un pH bas est toujours la preuve que l'acide dissous est un acide fort"
+        correct: false
+        feedback: >
+          Le pH dépend à la fois de la force de l'acide (son $K_A$) et de la
+          concentration apportée $c$ : un acide faible pris à très forte
+          concentration peut produire beaucoup de $H_3O^+$ en valeur absolue,
+          et donc un pH bas, sans que sa réaction avec l'eau devienne pour
+          autant quasi totale. Force et concentration sont deux grandeurs
+          indépendantes.
+      - id: C
+        text: "Non, car un acide fort a toujours un pH proche de 7"
+        correct: false
+        feedback: >
+          Un acide fort donne au contraire un pH d'autant plus bas que sa
+          concentration est élevée ($[H_3O^+] \approx c$) : rien n'oblige son
+          pH à rester proche de $7$.
+      - id: D
+        text: "Oui, mais seulement si la concentration est inférieure à 10⁻² mol/L"
+        correct: false
+        feedback: >
+          Aucune condition sur la concentration ne transforme ce raisonnement
+          en argument valide : la force d'un acide (son $K_A$) ne dépend pas
+          de la concentration à laquelle on l'a dissous, à aucun seuil
+          particulier.
+    correct_feedback: >
+      La force d'un acide est une propriété de sa nature chimique ($K_A$,
+      fixé à température donnée) ; la concentration est une quantité qu'on
+      choisit en dissolvant. Un acide faible très concentré peut donner un pH
+      bas sans que sa réaction avec l'eau soit quasi totale.
+    solution: |
+      Le pH dépend de $[H_3O^+]_{eq}$, qui dépend à la fois de $K_A$ (la
+      force du couple) et de $c$ (la concentration apportée). Une
+      concentration élevée peut, à elle seule, produire beaucoup de $H_3O^+$
+      même pour un acide faible dont le taux d'avancement final $\tau$ reste
+      petit. Un pH bas ne prouve donc pas, à lui seul, qu'un acide est fort :
+      il faudrait connaître $\tau$ (ou $K_A$) pour trancher, pas seulement le
+      pH.
+
+  # ── confondre acide fort / concentré (variant : même c, pH différents) ─────
+  - id: RAB-6
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Deux solutions d'acides différents ont exactement la même concentration
+      apportée, $c = 5{,}0 \times 10^{-3}\ \text{mol/L}$. La première a un pH
+      de $2{,}3$, la seconde un pH de $3{,}9$. Lequel des deux acides est le
+      plus fort ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Celui de la première solution (pH 2,3) : à concentration égale, un pH plus bas signale une réaction avec l'eau plus avancée"
+        correct: true
+      - id: B
+        text: "Aucun des deux : la force est forcément identique, puisque la concentration apportée est la même"
+        correct: false
+        feedback: >
+          La concentration apportée est bien la même dans les deux béchers,
+          mais le pH mesuré est différent — c'est justement le signe que les
+          deux acides ne réagissent pas dans les mêmes proportions avec
+          l'eau. La force ($K_A$) est une propriété du couple, indépendante
+          de la concentration : à $c$ égale, deux $K_A$ différents donnent
+          deux pH différents.
+      - id: C
+        text: "Celui de la seconde solution (pH 3,9), car son pH plus proche de la neutralité montre un acide mieux maîtrisé"
+        correct: false
+        feedback: >
+          « Proche de la neutralité » ne signale pas un acide plus fort, mais
+          l'inverse : à concentration égale, un pH plus proche de $7$
+          signifie moins de $H_3O^+$ produit, donc une réaction avec l'eau
+          moins avancée — un acide plus faible.
+      - id: D
+        text: "Impossible à dire sans connaître le volume de chacune des deux solutions"
+        correct: false
+        feedback: >
+          Le pH est déjà une grandeur intensive (indépendante du volume) : à
+          concentration apportée égale, comparer deux pH revient directement
+          à comparer deux forces d'acide, sans besoin de connaître un volume.
+    correct_feedback: >
+      À concentration apportée égale, l'acide qui produit le plus de
+      $H_3O^+$ — donc celui dont le pH est le plus bas — est celui dont la
+      réaction avec l'eau est la plus avancée : c'est l'acide le plus fort.
+    solution: |
+      $$[H_3O^+]_{(\text{pH}=2{,}3)} = 10^{-2{,}3} \approx 5{,}0\times10^{-3}\ \text{mol/L} \approx c$$
+      $$[H_3O^+]_{(\text{pH}=3{,}9)} = 10^{-3{,}9} \approx 1{,}3\times10^{-4}\ \text{mol/L} \ll c$$
+
+      La première solution a $[H_3O^+]_{eq}$ pratiquement égale à $c$ : sa
+      réaction avec l'eau est quasi totale, $\tau \approx 1$ — un acide fort.
+      La seconde n'a produit qu'une petite fraction de $c$ en $H_3O^+$ :
+      $\tau$ est petit — un acide faible. La concentration apportée, elle,
+      était identique dans les deux cas : c'est bien la force de l'acide, pas
+      sa concentration, qui explique l'écart de pH.
