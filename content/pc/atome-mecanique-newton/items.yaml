@@ -1,0 +1,387 @@
+notion: atome-mecanique-newton
+skill_code: pc_atome_mecanique_newton
+misconceptions: []
+
+items:
+
+  # ── Confondre force de Coulomb et force gravitationnelle ──────────────────
+  - id: AMN-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_atome_mecanique_newton
+    tags: [force_coulomb, force_gravitationnelle, comparaison]
+    stem: >
+      Un élève affirme : « c'est la force gravitationnelle qui maintient
+      l'électron en orbite autour du noyau, exactement comme pour un
+      satellite autour de la Terre. » Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : la force électrostatique de Coulomb domine très largement la
+          force gravitationnelle à cette échelle (facteur d'environ
+          $10^{39}$) ; c'est elle qui retient l'électron.
+        correct: true
+      - id: B
+        text: "Oui : les deux particules ont une masse, donc la gravitation s'applique en premier."
+        correct: false
+        feedback: >
+          La gravitation existe bien entre l'électron et le noyau, mais elle
+          est totalement négligeable face à la force électrostatique
+          (environ $10^{39}$ fois plus faible). Ce n'est pas parce qu'une
+          interaction existe qu'elle domine le mouvement : il faut comparer
+          les ordres de grandeur, pas seulement constater la présence d'une
+          masse.
+      - id: C
+        text: >-
+          Oui : la force électrostatique ne s'applique qu'à des charges
+          libres, pas à des particules liées dans un atome.
+        correct: false
+        feedback: >
+          La force électrostatique s'applique dès que deux charges sont en
+          présence, liées ou non. Rien ne la désactive à l'intérieur d'un
+          atome — c'est au contraire elle qui y domine entièrement.
+      - id: D
+        text: >-
+          Aucune des deux ne s'applique : seule une force nucléaire retient
+          l'électron autour du noyau.
+        correct: false
+        feedback: >
+          L'interaction nucléaire forte agit entre nucléons, à très courte
+          portée, à l'intérieur du noyau — elle n'a aucune action sur
+          l'électron, situé bien au-delà de sa portée. C'est la force
+          électrostatique de Coulomb qui retient l'électron.
+    correct_feedback: >
+      Le calcul du rapport des deux forces (R1) montre que la force de
+      Coulomb l'emporte sur la gravitation d'un facteur d'environ $10^{39}$
+      entre l'électron et le proton : la gravitation est présente mais
+      totalement négligeable à cette échelle.
+    solution: |
+      **Les deux expressions :**
+      $$F_G = G\frac{m_e m_p}{r^2} \qquad F_C = k\frac{e^2}{r^2}$$
+
+      **Calcul du rapport (indépendant de $r$, car les deux forces varient en $1/r^2$) :**
+      $$\frac{F_C}{F_G} = \frac{k e^2}{G\,m_e m_p} \approx 2{,}3 \times 10^{39}$$
+
+      La force électrostatique domine si largement que la gravitation peut
+      être ignorée dans ce modèle : c'est elle qui joue le rôle de force
+      centripète.
+
+  - id: AMN-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [force_coulomb, force_gravitationnelle, ordre_de_grandeur]
+    stem: >
+      On donne $G \approx 6{,}67 \times 10^{-11}\ \text{N}\cdot\text{m}^2\cdot\text{kg}^{-2}$,
+      $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$,
+      $m_e \approx 9{,}1 \times 10^{-31}\ \text{kg}$,
+      $m_p \approx 1{,}67 \times 10^{-27}\ \text{kg}$,
+      $e \approx 1{,}6 \times 10^{-19}\ \text{C}$. Que peut-on dire des ordres
+      de grandeur de $F_C$ (force de Coulomb) et $F_G$ (force gravitationnelle)
+      entre un électron et un proton, à une distance $r$ quelconque ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$F_C$ est environ $10^{39}$ fois plus grande que $F_G$, quelle que soit la valeur de $r$."
+        correct: true
+      - id: B
+        text: "$F_C$ et $F_G$ sont du même ordre de grandeur, car les deux forces varient en $1/r^2$."
+        correct: false
+        feedback: >
+          Varier de la même façon avec $r$ (en $1/r^2$) ne veut pas dire
+          avoir la même valeur : ce sont les constantes ($k$ et $G$) et les
+          grandeurs multipliées (charges contre masses) qui fixent
+          l'intensité de chaque force, et elles sont radicalement
+          différentes ici.
+      - id: C
+        text: "$F_G$ est plus grande que $F_C$, car la masse du proton est très supérieure à celle de l'électron."
+        correct: false
+        feedback: >
+          Le rapport des masses ($m_p/m_e \approx 1836$) reste bien plus
+          petit que l'écart entre les deux forces (facteur $10^{39}$). C'est
+          l'inverse : $F_C$ domine très largement $F_G$.
+      - id: D
+        text: >-
+          On ne peut pas comparer les deux forces sans connaître la valeur
+          précise de $r$.
+        correct: false
+        feedback: >
+          Le rapport $F_C/F_G$ ne dépend pas de $r$ : les deux forces
+          contiennent le même facteur $1/r^2$, qui se simplifie exactement
+          dans le rapport. Le résultat ($\approx 10^{39}$) est valable à
+          n'importe quelle distance.
+    correct_feedback: >
+      $\dfrac{F_C}{F_G} = \dfrac{k e^2}{G\,m_e m_p} \approx 2{,}3 \times
+      10^{39}$, un rapport indépendant de $r$ puisque les deux forces varient
+      de la même façon avec la distance.
+    solution: |
+      $$\frac{F_C}{F_G} = \frac{k\,e^2 / r^2}{G\,m_e m_p / r^2} = \frac{k e^2}{G\,m_e m_p}$$
+
+      Le facteur $1/r^2$ se simplifie : le rapport ne dépend que des
+      constantes et des grandeurs des particules, pas de la distance.
+
+      $$\frac{F_C}{F_G} = \frac{9{,}0 \times 10^{9} \times (1{,}6\times 10^{-19})^2}{6{,}67\times 10^{-11} \times 9{,}1\times 10^{-31} \times 1{,}67\times 10^{-27}} \approx 2{,}3 \times 10^{39}$$
+
+  # ── Mal appliquer la condition de mouvement circulaire uniforme ───────────
+  - id: AMN-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_atome_mecanique_newton
+    tags: [mouvement_circulaire_uniforme, acceleration_centripete]
+    stem: >
+      Dans le modèle planétaire, l'électron effectue un mouvement circulaire
+      uniforme autour du noyau. Que peut-on dire de son vecteur accélération
+      $\vec{a}_G$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec{a}_G \neq \vec{0}$ : elle est purement normale (centripète),
+          de norme $v^2/r$, car la direction de $\vec{v}_G$ change à chaque
+          instant même si sa norme reste constante.
+        correct: true
+      - id: B
+        text: "$\\vec{a}_G = \\vec{0}$, car le mouvement est uniforme, donc la vitesse ne change pas."
+        correct: false
+        feedback: >
+          « Uniforme » ne veut dire que la NORME de la vitesse reste
+          constante — pas que le vecteur vitesse lui-même reste constant. Sa
+          direction change à chaque instant puisque l'électron tourne, ce qui
+          suffit à produire une accélération non nulle.
+      - id: C
+        text: >-
+          $\vec{a}_G \neq \vec{0}$, mais elle est purement tangentielle,
+          dans le sens du mouvement.
+        correct: false
+        feedback: >
+          C'est l'inverse : puisque le mouvement est uniforme (norme de $v$
+          constante), la composante TANGENTIELLE de l'accélération est
+          nulle. La composante non nulle est la composante NORMALE
+          (centripète), liée au changement de direction, pas de norme.
+      - id: D
+        text: >-
+          $\vec{a}_G$ change de norme à chaque instant, en plus de changer de
+          direction.
+        correct: false
+        feedback: >
+          La norme de $\vec{a}_G$ vaut $v^2/r$ : puisque $v$ et $r$ sont
+          constants dans ce mouvement circulaire uniforme, la norme de
+          l'accélération est elle aussi constante. Seule sa direction tourne
+          avec l'électron, pas sa norme.
+    correct_feedback: >
+      Le vecteur vitesse change de direction à chaque instant (même à norme
+      constante) : l'accélération est non nulle, purement centripète, de
+      norme $a_N = v^2/r$, dirigée vers le noyau.
+    solution: |
+      En mouvement circulaire uniforme, l'accélération se décompose en une
+      composante tangentielle et une composante normale :
+      $$a_T = \frac{dv}{dt} = 0 \quad (\text{norme de } v \text{ constante})$$
+      $$a_N = \frac{v^2}{r} \neq 0 \quad (\text{la direction de } \vec{v} \text{ change})$$
+      « Uniforme » qualifie la norme de la vitesse, pas le vecteur vitesse
+      dans son ensemble : un vecteur qui tourne n'est pas un vecteur
+      constant, même si sa longueur ne change pas.
+
+  - id: AMN-4
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [mouvement_circulaire_uniforme, deuxieme_loi_newton]
+    stem: >
+      Un élève écrit, pour l'électron en mouvement circulaire uniforme
+      autour du noyau : $\sum \vec{F}_{ext} = \vec{0}$, « car "uniforme"
+      signifie qu'il n'y a pas de force en plus de l'équilibre ». Cette
+      équation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $\sum \vec{F}_{ext} = m_e\,\vec{a}_G \neq \vec{0}$, car
+          $\vec{a}_G$ est non nulle (centripète) même si le mouvement est
+          uniforme ; c'est justement la force de Coulomb qui joue ce rôle.
+        correct: true
+      - id: B
+        text: >-
+          Oui : « uniforme » veut dire vitesse constante, donc accélération
+          nulle, donc somme des forces nulle par la deuxième loi.
+        correct: false
+        feedback: >
+          « Uniforme » porte sur la norme de la vitesse, pas sur le vecteur
+          vitesse entier. Ici la direction de $\vec{v}_G$ change en
+          permanence, donc $\vec{a}_G \neq \vec{0}$, et la deuxième loi
+          impose alors $\sum \vec{F}_{ext} \neq \vec{0}$.
+      - id: C
+        text: >-
+          Oui, car la force de Coulomb et le poids de l'électron se
+          compensent exactement.
+        correct: false
+        feedback: >
+          Le poids de l'électron n'intervient nulle part dans ce modèle : à
+          cette échelle, seule la force électrostatique de Coulomb compte
+          (la gravitation est négligeable, d'un facteur $10^{39}$). Il n'y a
+          pas de compensation poids/Coulomb ici.
+      - id: D
+        text: >-
+          Non, mais seulement parce qu'il faudrait aussi inclure la force
+          gravitationnelle du noyau dans le bilan.
+        correct: false
+        feedback: >
+          La conclusion (l'équation est fausse) est correcte, mais la
+          raison ne l'est pas : la gravitation est négligeable ici, elle
+          n'est pas la force manquante. C'est l'accélération centripète, non
+          nulle, qui rend $\sum \vec{F}_{ext} = \vec{0}$ incorrect — pas
+          l'oubli d'une force supplémentaire.
+    correct_feedback: >
+      Le mouvement est uniforme (norme de $v$ constante) mais pas rectiligne :
+      la direction de $\vec{v}_G$ change à chaque instant, donc
+      $\vec{a}_G = v^2/r \neq \vec{0}$, et la deuxième loi de Newton impose
+      $\sum \vec{F}_{ext} = m_e\vec{a}_G \neq \vec{0}$ — c'est précisément la
+      force de Coulomb qui fournit cette accélération centripète.
+    solution: |
+      Le principe d'inertie ($\sum \vec{F}_{ext} = \vec{0}$) s'applique
+      seulement quand $\vec{v}_G$ est constant EN VECTEUR (même norme, même
+      direction, même sens). Ici la norme de $\vec{v}_G$ est constante mais
+      la direction tourne en permanence, donc $\vec{v}_G$ n'est pas constant
+      et $\vec{a}_G \neq \vec{0}$ :
+      $$\sum \vec{F}_{ext} = m_e\,\vec{a}_G = m_e\frac{v^2}{r} \neq \vec{0}$$
+      Cette force résultante non nulle est exactement la force de Coulomb,
+      dirigée vers le centre.
+
+  # ── Croire que le modèle classique explique tout correctement ─────────────
+  - id: AMN-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [limites_mecanique_newton, rayonnement, paradoxe]
+    stem: >
+      Que prédit la mécanique de Newton, complétée par l'électromagnétisme
+      classique, pour un électron en mouvement circulaire autour du noyau
+      dans le modèle planétaire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'électron, charge en accélération permanente, devrait rayonner de
+          l'énergie électromagnétique en continu et s'effondrer sur le
+          noyau en un temps extrêmement court.
+        correct: true
+      - id: B
+        text: >-
+          L'électron reste indéfiniment sur son orbite, exactement comme une
+          planète autour du Soleil, sans aucune perte d'énergie.
+        correct: false
+        feedback: >
+          C'est ce que prédit la mécanique SEULE (R2), mais ce n'est pas la
+          prédiction complète. Une charge en accélération (comme l'électron
+          en orbite) rayonne de l'énergie d'après l'électromagnétisme : elle
+          ne peut donc pas rester indéfiniment sur une orbite à rayon
+          constant. Croire que le calcul mécanique de R2 suffit à expliquer
+          la stabilité de l'atome, c'est ignorer cet ingrédient
+          supplémentaire.
+      - id: C
+        text: >-
+          L'électron s'échapperait du noyau, car la force de Coulomb
+          diminue avec le temps.
+        correct: false
+        feedback: >
+          La force de Coulomb ne dépend que de la distance $r$, pas du
+          temps directement : elle ne « diminue » pas toute seule. C'est la
+          perte d'énergie par rayonnement qui fait diminuer $r$ (donc
+          augmenter la force), pas l'inverse.
+      - id: D
+        text: >-
+          La mécanique de Newton prédit directement la quantification des
+          niveaux d'énergie observée expérimentalement.
+        correct: false
+        feedback: >
+          C'est l'inverse : rien dans la deuxième loi de Newton ni dans la
+          force de Coulomb ne prédit une quantification. Ces lois
+          autoriseraient un continuum d'orbites et d'énergies — c'est
+          précisément leur limite, pas une réussite supplémentaire.
+    correct_feedback: >
+      Une charge accélérée rayonne de l'énergie électromagnétique (fait
+      admis de l'électromagnétisme). L'électron en orbite, en accélération
+      centripète permanente, devrait donc perdre de l'énergie en continu et
+      s'effondrer sur le noyau presque instantanément — en contradiction
+      frontale avec la stabilité observée de la matière.
+    solution: |
+      Le calcul de R2 (mécanique seule) donne une orbite parfaitement
+      stable : rien n'y force $r$ à changer.
+
+      Mais l'électron est une charge en accélération centripète permanente
+      ($a_N = v^2/r \neq 0$). Un résultat de l'électromagnétisme (admis,
+      non démontré ici) affirme que toute charge accélérée rayonne de
+      l'énergie. Cette énergie est prélevée sur l'orbite : $r$ devrait donc
+      diminuer en continu, jusqu'à un effondrement en un temps extrêmement
+      bref.
+
+      Ce n'est pas ce qu'on observe : la matière est stable. La mécanique de
+      Newton, même combinée à l'électromagnétisme classique, ne résout pas
+      cette contradiction — c'est la limite centrale de ce chapitre.
+
+  - id: AMN-6
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [limites_mecanique_newton, quantification]
+    stem: >
+      Quelle affirmation décrit correctement une limite de la mécanique de
+      Newton à l'échelle de l'atome ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle ne permet pas d'expliquer pourquoi l'énergie de l'atome est
+          quantifiée, ni pourquoi l'atome ne s'effondre pas.
+        correct: true
+      - id: B
+        text: >-
+          Elle prédit exactement les niveaux d'énergie observés : il n'y a
+          donc aucune limite à signaler.
+        correct: false
+        feedback: >
+          C'est l'inverse : la mécanique de Newton et la force de Coulomb,
+          seules, n'imposent aucune restriction sur les valeurs possibles de
+          $r$ ou de l'énergie — un continuum, pas des niveaux discrets. C'est
+          précisément ce qu'elles ne peuvent pas expliquer.
+      - id: C
+        text: >-
+          Elle ne s'applique qu'aux objets macroscopiques comme les
+          satellites, jamais à une particule chargée comme l'électron.
+        correct: false
+        feedback: >
+          Ce n'est pas vrai : R2 applique justement la deuxième loi de
+          Newton à l'électron, avec la force de Coulomb, et obtient un
+          résultat cohérent (une vitesse et une période bien définies). La
+          limite ne porte pas sur le fait d'appliquer la loi à une charge,
+          mais sur l'impossibilité d'expliquer la quantification de
+          l'énergie et la stabilité réelle de l'atome.
+      - id: D
+        text: >-
+          Elle prédit que l'atome devrait être stable indéfiniment, sans
+          aucune perte d'énergie, ce qui est confirmé par l'expérience.
+        correct: false
+        feedback: >
+          C'est le sens inverse du paradoxe : la mécanique, combinée à
+          l'électromagnétisme classique, prédit au contraire un effondrement
+          rapide de l'électron sur le noyau (perte d'énergie par
+          rayonnement), pas une stabilité parfaite. C'est cette prédiction
+          d'instabilité qui contredit l'observation, pas une prédiction de
+          stabilité confirmée.
+    correct_feedback: >
+      La limite précise à retenir : la mécanique de Newton (et
+      l'électromagnétisme classique) ne permettent pas d'expliquer la
+      quantification des niveaux d'énergie de l'atome, ni sa stabilité
+      réelle — un cadre différent (la physique quantique) est nécessaire.
+    solution: |
+      Deux faits à distinguer nettement :
+      - la mécanique de Newton CALCULE correctement une orbite à rayon
+        fixe (R2) — ce n'est pas là que se situe la limite ;
+      - elle ne peut pas expliquer pourquoi l'énergie de l'atome est
+        quantifiée (niveaux discrets, pas un continuum), ni pourquoi
+        l'atome ne s'effondre pas malgré le rayonnement attendu d'une
+        charge accélérée.
+
+      C'est cette impossibilité d'expliquer la quantification et la
+      stabilité réelle, pas une erreur de calcul, qui constitue la limite
+      de la mécanique de Newton évoquée dans ce chapitre.

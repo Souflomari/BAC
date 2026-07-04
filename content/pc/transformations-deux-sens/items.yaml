@@ -1,0 +1,348 @@
+notion: transformations-deux-sens
+skill_code: pc_transformations_deux_sens
+misconceptions: []
+
+items:
+
+  # ── croire que toute réaction va jusqu'au bout (canonique) ──────────────────
+  - id: TDS-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Un élève mélange de l'acide éthanoïque et de l'éthanol avec un
+      catalyseur, et laisse le mélange réagir plusieurs jours. Un test
+      chimique révèle qu'il reste, dans le mélange final, une quantité
+      détectable d'acide éthanoïque et d'éthanol, aux côtés de l'ester et de
+      l'eau formés. L'élève affirme : « Il suffit d'attendre encore plus
+      longtemps, et tout l'acide et l'alcool finiront par disparaître. »
+      Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non - la coexistence durable d'acide, d'alcool, d'ester et d'eau signale une transformation non totale (limitée) ; attendre plus longtemps ne fera pas disparaître le reste d'acide et d'alcool."
+        correct: true
+      - id: B
+        text: "Oui - toute réaction chimique finit toujours par consommer entièrement ses réactifs si on lui laisse assez de temps."
+        correct: false
+        feedback: >
+          C'est l'erreur centrale à éviter dans ce chapitre : croire qu'une
+          réaction va nécessairement jusqu'au bout si on attend assez
+          longtemps. Ici, l'ester et l'eau déjà formés peuvent eux-mêmes
+          réagir pour redonner de l'acide et de l'alcool (la réaction
+          inverse, l'hydrolyse) : les deux sens coexistent en permanence, quel
+          que soit le temps écoulé. Le temps seul ne fait pas disparaître un
+          réactif dans une transformation non totale.
+      - id: C
+        text: "Oui, mais seulement si on ajoute encore du catalyseur - le temps seul ne suffit jamais."
+        correct: false
+        feedback: >
+          Un catalyseur accélère la vitesse à laquelle le mélange atteint son
+          état stabilisé - il ne change rien à la composition de cet état. Le
+          mélange resterait, même avec plus de catalyseur, un mélange où
+          acide et alcool coexistent avec ester et eau : la transformation
+          reste non totale.
+      - id: D
+        text: "Non, car il faudrait changer complètement d'équation chimique pour que la réaction devienne totale."
+        correct: false
+        feedback: >
+          Ce n'est pas l'équation qu'il faut changer, mais les conditions
+          physiques du système (par exemple, retirer l'un des produits au fur
+          et à mesure qu'il se forme). Rien n'oblige à changer d'équation :
+          c'est justement parce que l'ester et l'eau restent en contact avec
+          l'acide et l'alcool que la réaction inverse reste possible.
+    correct_feedback: >
+      Tant que l'acide, l'alcool, l'ester et l'eau restent mélangés dans le
+      même ballon, la réaction inverse (l'hydrolyse) reste possible et
+      régénère de l'acide et de l'alcool au même rythme que l'estérification
+      en consomme. Cette transformation est non totale : attendre plus
+      longtemps ne change rien à ce fait.
+    solution: |
+      Une transformation n'est pas automatiquement totale du simple fait
+      qu'on lui laisse du temps. Ici, les quatre espèces (acide, alcool,
+      ester, eau) coexistent en contact permanent dans le même mélange : rien
+      n'empêche l'ester et l'eau de réagir en sens inverse pour redonner de
+      l'acide et de l'alcool. C'est cette coexistence des deux sens qui rend
+      la transformation non totale (limitée), quelle que soit la durée
+      d'attente.
+
+  # ── croire que toute réaction va jusqu'au bout (variant, ammoniac) ──────────
+  - id: TDS-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      On dissout de l'ammoniac gazeux $NH_3$ dans de l'eau. Une partie des
+      molécules $NH_3$ réagit avec l'eau pour donner des ions $NH_4^+$ et
+      $HO^-$, mais une quantité importante de $NH_3$ intact subsiste dans la
+      solution, même après un temps très long. Quelle affirmation est
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cette transformation est limitée : ni l'ammoniac ni l'eau ne disparaissent totalement, quel que soit le temps écoulé."
+        correct: true
+      - id: B
+        text: "Comme pour toute réaction, il suffit d'attendre assez longtemps pour que tout le $NH_3$ finisse par réagir."
+        correct: false
+        feedback: >
+          Ce n'est pas vrai pour toutes les réactions : certaines, comme
+          celle-ci, sont non totales par nature - les deux sens (direct et
+          inverse) coexistent en permanence, donc le $NH_3$ ne peut pas
+          disparaître totalement, même après un temps très long.
+      - id: C
+        text: "Puisque des ions $NH_4^+$ se sont formés, on peut affirmer que la réaction est totale."
+        correct: false
+        feedback: >
+          Former du produit ne suffit pas à rendre une transformation totale
+          - il faut, en plus, qu'au moins un réactif de départ ait totalement
+          disparu. Ici, l'ammoniac reste détectable en quantité importante :
+          la formation d'ions $NH_4^+$ et le caractère non total coexistent
+          très bien.
+      - id: D
+        text: "On ne peut rien conclure, car l'ammoniac est une base et non un acide."
+        correct: false
+        feedback: >
+          La nature acide ou basique de l'espèce ne détermine pas, à elle
+          seule, si la réaction est totale ou limitée. Le critère est le
+          même pour toutes les familles de réactions : est-ce qu'un réactif
+          de départ disparaît totalement, ou coexiste-t-il durablement avec
+          les produits ?
+    correct_feedback: >
+      Le $NH_3$ intact qui subsiste indéfiniment, aux côtés des ions $NH_4^+$
+      et $HO^-$ formés, montre que les deux sens de la réaction coexistent :
+      la transformation est limitée, et ce n'est pas une question de temps
+      d'attente.
+    solution: |
+      La transformation $NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$ est
+      non totale : une fraction seulement des molécules $NH_3$ réagit, et le
+      reste subsiste indéfiniment, quel que soit le temps écoulé. Ce n'est
+      pas une question de patience - c'est une propriété de la réaction
+      elle-même, qui se traduit par la double flèche dans son écriture.
+
+  # ── confondre la double flèche avec une réaction lente (canonique) ──────────
+  - id: TDS-3
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Un élève voit l'équation
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$ et
+      affirme : « La double flèche signifie que cette réaction est lente. »
+      Que penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : la double flèche indique que la transformation est non totale (les deux sens coexistent), pas qu'elle est lente ou rapide - la vitesse est une question complètement différente."
+        correct: true
+      - id: B
+        text: "Elle est vraie : une double flèche signale toujours une transformation lente, jamais rapide."
+        correct: false
+        feedback: >
+          C'est confondre deux questions indépendantes. La double flèche
+          renseigne uniquement sur le caractère totale ou non totale d'une
+          transformation, jamais sur sa vitesse. De nombreuses réactions
+          non totales s'installent au contraire très rapidement.
+      - id: C
+        text: "Elle est vraie, mais seulement pour les réactions organiques comme l'estérification."
+        correct: false
+        feedback: >
+          La double flèche a la même signification quelle que soit la
+          famille chimique de la réaction (organique, acido-basique,
+          précipitation...) : elle signale un caractère non total, jamais une
+          vitesse. Restreindre la règle à un seul type de réaction ne la
+          rend pas vraie pour autant.
+      - id: D
+        text: "Elle est fausse, car la double flèche signifie en réalité que la réaction est instantanée."
+        correct: false
+        feedback: >
+          Ce choix remplace une affirmation fausse sur la vitesse par une
+          autre affirmation fausse sur la vitesse. La double flèche ne dit
+          rien du tout sur la vitesse, ni dans un sens ni dans l'autre : elle
+          concerne uniquement le fait que les deux sens de la réaction
+          coexistent.
+    correct_feedback: >
+      La double flèche est un symbole de direction et de complétude (les
+      deux sens coexistent, aucun réactif ne disparaît totalement), pas un
+      symbole de vitesse. Rapide/lente et totale/limitée sont deux questions
+      séparées.
+    solution: |
+      La double flèche $\rightleftharpoons$ signale uniquement qu'une
+      transformation est non totale : le sens direct et le sens inverse
+      coexistent, et aucun réactif de départ ne disparaît complètement. Elle
+      ne renseigne en rien sur la vitesse de la réaction. Une transformation
+      peut très bien être à la fois rapide et non totale (beaucoup de
+      réactions acido-basiques), ou au contraire lente et totale (la rouille
+      d'un clou en fer).
+
+  # ── confondre la double flèche avec une réaction lente (variant) ───────────
+  - id: TDS-4
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Un élève remarque que certaines réactions rapides s'écrivent avec une
+      flèche simple $\rightarrow$, et en déduit une règle générale : « Une
+      flèche simple signale toujours une réaction rapide, et une double
+      flèche $\rightleftharpoons$ signale toujours une réaction lente. »
+      Cette généralisation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non - une transformation totale peut tout à fait être lente (la rouille, par exemple), et une transformation limitée peut être quasi instantanée ; la vitesse et le caractère totale/limitée sont deux propriétés indépendantes d'une réaction."
+        correct: true
+      - id: B
+        text: "Si, cette règle est toujours vraie : c'est justement ce qui distingue les deux notations."
+        correct: false
+        feedback: >
+          Le type de flèche ne renseigne jamais sur la vitesse. Il existe des
+          transformations totales qui prennent des mois (la rouille d'un clou
+          en fer), et des transformations non totales qui s'installent en une
+          fraction de seconde. La flèche décrit uniquement si un réactif
+          disparaît totalement ou non.
+      - id: C
+        text: "Non, mais seulement dans un sens : une flèche simple peut être lente, mais une double flèche signale toujours une réaction lente."
+        correct: false
+        feedback: >
+          Les deux moitiés de la règle sont fausses, pas une seule. Une
+          transformation non totale peut très bien s'installer quasi
+          instantanément - de nombreuses réactions acido-basiques atteignent
+          leur état stabilisé, avec réactifs et produits coexistant, en une
+          fraction de seconde.
+      - id: D
+        text: "On ne peut rien dire sans connaître la formule chimique exacte des réactifs."
+        correct: false
+        feedback: >
+          Il n'est pas nécessaire de connaître la formule exacte : le critère
+          qui décide entre flèche simple et double flèche est le même pour
+          toute réaction (un réactif disparaît-il totalement ou non), et il
+          ne dépend jamais de la vitesse ni de la nature précise des
+          réactifs.
+    correct_feedback: >
+      Le type de flèche décrit le caractère totale ou limité d'une
+      transformation, jamais sa vitesse. Les deux questions - rapide/lente et
+      totale/limitée - varient indépendamment l'une de l'autre.
+    solution: |
+      Rien n'impose de lien entre le type de flèche et la vitesse d'une
+      réaction. Une transformation totale peut être lente (la rouille) ou
+      rapide (une précipitation) ; une transformation limitée (non totale)
+      peut, elle aussi, être lente ou rapide. Le type de flèche ne dépend
+      que d'une seule chose : est-ce qu'un réactif de départ disparaît
+      totalement, ou coexiste-t-il durablement avec les produits ?
+
+  # ── croire qu'une transformation limitée signifie « rien ne se passe » (canonique) ──
+  - id: TDS-5
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Un élève regarde l'équation
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$,
+      accompagnée de la mention « transformation non totale », et conclut :
+      « Donc, dans ce mélange, il ne s'est presque rien passé. » Que penser
+      de cette conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : une quantité notable d'ester et d'eau se forme réellement ; « non totale » signifie seulement que la transformation s'arrête avant que l'acide et l'alcool aient totalement disparu, pas qu'elle n'a pas eu lieu."
+        correct: true
+      - id: B
+        text: "Elle est vraie : une transformation non totale, par définition, ne produit aucun changement observable."
+        correct: false
+        feedback: >
+          « Non totale » ne veut pas dire « rien ne se passe » : ça veut dire
+          que la transformation s'arrête avant que l'un des réactifs ait
+          totalement disparu. Ici, une quantité tout à fait mesurable d'ester
+          et d'eau s'est formée - assez pour dégager une odeur fruitée nette.
+          Les deux réactions, directe et inverse, se sont bel et bien
+          produites.
+      - id: C
+        text: "Elle est vraie seulement si le mélange n'a pas été chauffé."
+        correct: false
+        feedback: >
+          Le chauffage change la vitesse à laquelle le mélange atteint son
+          état stabilisé, pas le fait qu'un produit s'y forme réellement.
+          Même sans chauffage - plus lentement - de l'ester et de l'eau
+          finiraient par apparaître en quantité détectable.
+      - id: D
+        text: "Elle est fausse, mais seulement parce qu'il y a un catalyseur dans le mélange."
+        correct: false
+        feedback: >
+          Le catalyseur accélère la réaction, il ne crée pas, à lui seul, la
+          formation de produit : sans catalyseur, la même transformation se
+          produirait tout aussi réellement, simplement plus lentement. Ce
+          n'est donc pas le catalyseur qui rend la conclusion fausse.
+    correct_feedback: >
+      Une transformation non totale produit bel et bien des produits, en
+      quantité réelle et mesurable - elle s'arrête seulement avant que l'un
+      des réactifs de départ ait totalement disparu. « Non totale » et
+      « rien ne se passe » sont deux idées très différentes.
+    solution: |
+      Dans le mélange acide + alcool, une quantité notable d'ester et d'eau
+      s'est bel et bien formée - suffisante pour être détectée par l'odeur ou
+      mesurée en laboratoire. La transformation a réellement eu lieu et
+      produit quelque chose de concret. « Non totale » décrit uniquement le
+      fait qu'elle s'arrête avant que l'acide et l'alcool aient totalement
+      disparu - ce n'est en rien une absence de réaction.
+
+  # ── croire qu'une transformation limitée signifie « rien ne se passe » (variant, ammoniac) ──
+  - id: TDS-6
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Dans une solution où de l'ammoniac $NH_3$ a été dissous dans l'eau, on
+      mesure qu'une fraction seulement des molécules $NH_3$ a réagi avec
+      l'eau pour donner $NH_4^+$ et $HO^-$ ; le reste de $NH_3$ demeure
+      intact. Un élève en conclut que « puisque la transformation est
+      limitée, elle n'a en réalité presque pas eu lieu ». Que peut-on
+      répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est faux : une quantité réellement mesurable de $NH_4^+$ et de $HO^-$ s'est formée ; la transformation a bien eu lieu et a produit ces ions - elle s'est seulement arrêtée avant de convertir tout le $NH_3$."
+        correct: true
+      - id: B
+        text: "C'est vrai : si $NH_3$ n'a pas totalement disparu, on peut considérer que la transformation ne s'est presque pas produite."
+        correct: false
+        feedback: >
+          Le fait qu'il reste du $NH_3$ intact ne veut pas dire que rien ne
+          s'est produit : des ions $NH_4^+$ et $HO^-$, absents au départ, sont
+          apparus en quantité mesurable. La transformation limitée a bien eu
+          lieu - elle s'est seulement arrêtée avant la disparition complète
+          du $NH_3$.
+      - id: C
+        text: "C'est faux, mais uniquement parce que $NH_3$ est une base forte qui réagit toujours complètement avec l'eau."
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est précisément parce que $NH_3$ ne réagit
+          qu'en partie avec l'eau que la transformation est limitée. Si
+          $NH_3$ réagissait toujours complètement, la transformation serait
+          totale, pas limitée.
+      - id: D
+        text: "C'est vrai seulement si la quantité de $NH_4^+$ formée est plus petite que celle de $NH_3$ restant."
+        correct: false
+        feedback: >
+          Comparer les quantités relatives de produit et de réactif restant
+          ne dit rien sur le fait qu'une transformation a eu lieu ou non.
+          Même si $NH_4^+$ reste minoritaire par rapport au $NH_3$ restant, sa
+          présence en quantité non nulle prouve que la transformation s'est
+          bel et bien produite.
+    correct_feedback: >
+      La présence d'ions $NH_4^+$ et $HO^-$, absents au départ et détectables
+      à l'arrivée, prouve que la transformation s'est réellement produite.
+      « Limitée » décrit seulement le fait qu'elle s'arrête avant que le
+      $NH_3$ ait totalement disparu.
+    solution: |
+      Une transformation limitée reste une transformation réelle : elle
+      produit une quantité mesurable de nouvelles espèces ($NH_4^+$ et
+      $HO^-$ ici), qui n'existaient pas au départ. Ce qui la distingue d'une
+      transformation totale, c'est uniquement le fait qu'elle s'arrête avant
+      que le réactif de départ ($NH_3$) ait totalement disparu - pas le fait
+      qu'elle n'aurait presque pas eu lieu.

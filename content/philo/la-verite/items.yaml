@@ -1,0 +1,335 @@
+notion: la-verite
+skill_code: philo_la_verite
+misconceptions: []
+
+items:
+  - id: VERITE-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [correspondance, aristote, adequation]
+    stem: >
+      Selon la théorie de la correspondance défendue par Aristote, qu'est-ce
+      qui fait qu'un énoncé comme « il pleut » est vrai ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il existe une adéquation entre cet énoncé et la réalité : l'énoncé est vrai si, et seulement si, il pleut effectivement -- indépendamment de la conviction de celui qui le prononce ou de l'accord des autres à son sujet."
+        correct: true
+      - id: B
+        text: "L'énoncé s'intègre sans contradiction à l'ensemble des autres énoncés que je tiens déjà pour vrais."
+        correct: false
+        feedback: >
+          C'est le critère de la théorie de la COHÉRENCE (R3), pas celui de
+          la correspondance : Aristote exige une adéquation avec le réel
+          lui-même, pas seulement un accord interne entre énoncés.
+      - id: C
+        text: "La personne qui prononce cet énoncé en est absolument certaine, sans le moindre doute."
+        correct: false
+        feedback: >
+          C'est confondre certitude et vérité (R6) : une conviction, aussi
+          totale soit-elle, ne garantit jamais, à elle seule, que l'énoncé
+          auquel elle s'attache est vrai.
+      - id: D
+        text: "Un grand nombre de personnes s'accordent à dire que c'est le cas."
+        correct: false
+        feedback: >
+          L'accord du plus grand nombre n'est ni la correspondance avec le
+          réel, ni même la cohérence logique d'un système -- un consensus,
+          même large, peut parfaitement se tromper collectivement.
+    correct_feedback: >
+      Pour Aristote, un énoncé est vrai s'il y a adéquation entre ce qu'il
+      affirme et ce qui est réellement le cas -- une correspondance qui ne
+      dépend ni de la conviction de celui qui parle, ni de l'accord du plus
+      grand nombre.
+    solution: |
+      **Le critère :** l'adéquation -- un accord exact entre ce que l'énoncé
+      affirme et ce qui est réellement le cas.
+
+      **Pourquoi il semble si naturel :** le discours doit se plier au réel,
+      et non l'inverse -- c'est le réel qui rend l'énoncé vrai ou faux.
+
+      **Sa limite (R2) :** vérifier cette adéquation exige toujours de
+      comparer l'énoncé à une autre pensée, une autre perception -- on ne
+      sort jamais complètement de la pensée pour la vérifier de l'extérieur.
+
+  - id: VERITE-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [coherence, correspondance, ptolemee]
+    stem: >
+      Le modèle géocentrique de Ptolémée -- la Terre immobile au centre de
+      l'univers, avec des épicycles ajustés pour rendre compte des
+      trajectoires observées -- est resté en usage pendant plus de mille
+      ans, remarquablement cohérent et prédictif. Que montre cet exemple, à
+      propos de la théorie de la cohérence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'un système d'énoncés peut être parfaitement cohérent -- sans la moindre contradiction interne -- et pourtant rigoureusement faux : la cohérence interne ne garantit jamais, à elle seule, la correspondance avec le réel."
+        correct: true
+      - id: B
+        text: "Que la cohérence et la correspondance désignent, en réalité, exactement le même critère de vérité, appliqué à deux domaines différents."
+        correct: false
+        feedback: >
+          Ce sont deux critères distincts, qui peuvent se dissocier -- c'est
+          précisément ce que montre l'exemple : un système cohérent
+          (Ptolémée) qui ne correspond pourtant pas au réel.
+      - id: C
+        text: "Que Ptolémée avait raison, puisque son modèle a permis de faire des prédictions astronomiques exactes pendant des siècles."
+        correct: false
+        feedback: >
+          Prédire correctement pendant longtemps n'établit pas qu'une
+          théorie est vraie -- la Terre n'est pas immobile au centre de
+          l'univers, malgré la cohérence et l'utilité prédictive, un temps,
+          du modèle de Ptolémée.
+      - id: D
+        text: "Que la cohérence interne d'un système est un critère inutile, sans aucune valeur pour juger de la vérité d'un énoncé."
+        correct: false
+        feedback: >
+          La leçon ne rejette pas la cohérence comme sans valeur -- elle en
+          montre seulement la limite : cohérent ne veut pas dire
+          automatiquement vrai, pas que la cohérence ne compte pour rien.
+    correct_feedback: >
+      La cohérence est un critère accessible sans sortir de la pensée, mais
+      elle ne suffit pas : un système peut être parfaitement cohérent,
+      comme le modèle de Ptolémée, et pourtant rigoureusement faux.
+    solution: |
+      **Le critère de cohérence :** un énoncé est tenu pour vrai s'il
+      s'intègre sans contradiction à un système d'autres énoncés déjà
+      admis -- un critère purement interne, qui n'exige pas de sortir de la
+      pensée.
+
+      **Sa limite :** le modèle de Ptolémée était d'une remarquable
+      cohérence mathématique, prédictif pendant plus de mille ans -- et
+      pourtant faux. Un système peut être cohérent et pourtant ne pas
+      correspondre au réel.
+
+  - id: VERITE-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [bachelard, obstacle_epistemologique, rupture]
+    stem: >
+      Que désigne précisément un « obstacle épistémologique », au sens que
+      lui donne Bachelard ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un obstacle interne, logé dans l'esprit de celui qui cherche à connaître -- une habitude de pensée, une évidence spontanée (l'opinion, le sens commun) -- qu'il faut activement rompre pour construire une connaissance scientifique, et non un simple manque de données ou de moyens matériels."
+        correct: true
+      - id: B
+        text: "Un manque de données ou d'instruments qui empêche, provisoirement, d'accéder à la vérité, et que l'accumulation de nouvelles observations suffit à résorber."
+        correct: false
+        feedback: >
+          C'est confondre l'obstacle épistémologique (interne, une manière
+          de penser à rompre) avec un obstacle purement matériel ou
+          pratique -- celui-là se résout en accumulant plus de données dans
+          le même sens, ce que Bachelard juge précisément insuffisant.
+      - id: C
+        text: "La théorie scientifique concurrente qu'il faut réfuter par l'expérience avant d'établir la sienne."
+        correct: false
+        feedback: >
+          Un obstacle épistémologique n'est pas une théorie rivale
+          extérieure -- c'est une résistance interne à l'esprit du
+          chercheur lui-même, une évidence trop vite acceptée.
+      - id: D
+        text: "La difficulté à faire cohabiter deux systèmes d'énoncés également cohérents mais incompatibles."
+        correct: false
+        feedback: >
+          C'est la limite de la théorie de la cohérence (R3), un problème
+          distinct -- pas ce que Bachelard nomme obstacle épistémologique,
+          qui désigne une résistance interne à la connaissance, pas une
+          simple incompatibilité entre deux systèmes cohérents.
+    correct_feedback: >
+      Un obstacle épistémologique est une résistance interne, logée dans
+      l'esprit -- une évidence spontanée comme l'opinion ou le sens commun
+      -- que la connaissance scientifique doit activement rompre, non un
+      simple manque de moyens matériels.
+    solution: |
+      **Le geste bachelardien :** la vérité scientifique n'est jamais une
+      lecture immédiate du réel -- elle se construit CONTRE des
+      représentations spontanées.
+
+      **L'obstacle épistémologique :** interne, pas externe -- une habitude
+      de pensée, une évidence trop vite acceptée (l'opinion, le sens
+      commun), qu'il faut rompre plutôt que confirmer par plus
+      d'observations.
+
+      **La rupture épistémologique :** on connaît toujours CONTRE une
+      connaissance antérieure, en surmontant ce qui, dans l'esprit
+      lui-même, fait obstacle à la connaissance.
+
+  - id: VERITE-4
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [descartes, doute_methodique, cogito]
+    stem: >
+      Au terme du doute méthodique le plus radical -- y compris l'hypothèse
+      d'un malin génie capable de tromper jusque dans les raisonnements les
+      plus simples --, qu'est-ce qui, selon Descartes, résiste absolument à
+      ce doute ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le fait même de douter est déjà un acte de pensée -- ce qui prouve, sans faille possible, qu'il existe un sujet pensant qui l'accomplit : « je pense, donc je suis »."
+        correct: true
+      - id: B
+        text: "L'existence du monde extérieur et la fiabilité des sens, puisque le doute, une fois poussé à son terme, finit par les confirmer."
+        correct: false
+        feedback: >
+          C'est l'inverse : le doute cartésien met précisément en question
+          la fiabilité des sens et l'existence certaine du monde extérieur
+          -- établir cela avec certitude exige, chez Descartes, un tout
+          autre travail, non abordé dans cette leçon.
+      - id: C
+        text: "Rien ne résiste à ce doute : Descartes conclut qu'aucune certitude n'est jamais possible."
+        correct: false
+        feedback: >
+          C'est confondre le doute MÉTHODIQUE de Descartes, un outil
+          provisoire au service d'une certitude à trouver, avec un
+          scepticisme qui conclurait qu'on ne peut jamais rien savoir --
+          Descartes trouve au contraire, avec le cogito, une certitude
+          indubitable.
+      - id: D
+        text: "La vérité des raisonnements mathématiques les plus simples, comme « deux et trois font cinq », qui échappe à toute remise en question."
+        correct: false
+        feedback: >
+          C'est précisément ce que l'hypothèse du malin génie soumet, elle
+          aussi, au doute -- le cogito ne porte pas sur le contenu de telle
+          ou telle pensée (même mathématique), mais sur le simple fait
+          qu'il y ait une pensée.
+    correct_feedback: >
+      Même si tout le reste est douteux, l'acte même de douter prouve
+      qu'il existe une pensée, donc un sujet pensant qui existe : « je
+      pense, donc je suis » -- la première certitude absolument
+      indubitable.
+    solution: |
+      **L'escalade du doute :** les sens (déjà trompeurs), puis la
+      distinction veille/rêve, puis les vérités mathématiques elles-mêmes
+      (hypothèse du malin génie).
+
+      **Ce qui résiste :** douter est un acte de pensée -- donc il existe un
+      sujet pensant. « Je pense, donc je suis » (Discours de la méthode,
+      1637).
+
+      **La limite à ne pas dépasser :** le cogito garantit seulement
+      l'existence du sujet pensant, pas la vérité du contenu de telle ou
+      telle pensée particulière.
+
+  - id: VERITE-5
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [certitude, verite, temoignage]
+    stem: >
+      Deux témoins, également sincères et sûrs d'eux, donnent des versions
+      opposées et incompatibles d'un même événement. Que peut-on en
+      conclure, à la lumière de la distinction entre certitude et vérité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'être certain, même totalement et sincèrement, ne garantit jamais qu'on est dans le vrai : la certitude est un état subjectif du sujet qui affirme, la vérité une propriété de l'énoncé lui-même, et les deux peuvent parfaitement se dissocier."
+        correct: true
+      - id: B
+        text: "Que les deux témoignages sont également vrais, chacun selon la vérité propre à celui qui l'énonce."
+        correct: false
+        feedback: >
+          Les deux énoncés sont mutuellement exclusifs sur un fait précis
+          -- ils ne peuvent pas être vrais tous les deux à la fois ; dire
+          « chacun sa vérité » ici confond la sincérité de la conviction
+          avec la vérité de l'énoncé.
+      - id: C
+        text: "Que le témoin le plus certain de lui a nécessairement raison, puisque le doute serait, lui, le signe d'un souvenir moins fiable."
+        correct: false
+        feedback: >
+          C'est exactement l'erreur que ce rung dénonce : le DEGRÉ de
+          certitude d'un témoin ne garantit rien quant à la vérité de son
+          témoignage -- des témoins sincères et sûrs d'eux se sont déjà
+          trompés, y compris ensemble.
+      - id: D
+        text: "Qu'aucun des deux témoignages ne peut être vrai, puisque la présence d'un désaccord prouve qu'aucune vérité n'existe sur cette question."
+        correct: false
+        feedback: >
+          Le désaccord entre deux opinions ne prouve pas l'absence de
+          vérité -- il prouve seulement qu'au moins l'un des deux témoins
+          se trompe ; le fait lui-même (ce qui s'est réellement passé)
+          reste déterminé, même si on peine à l'établir avec certitude.
+    correct_feedback: >
+      La certitude est un état subjectif ; la vérité, une propriété de
+      l'énoncé. Les deux peuvent parfaitement se dissocier -- être certain
+      ne garantit jamais d'être dans le vrai.
+    solution: |
+      **Deux plans distincts :** la certitude (psychologique, subjective,
+      variable) et la vérité (propriété de l'énoncé, indépendante de la
+      conviction de celui qui l'affirme).
+
+      **L'erreur la plus fréquente :** juger « qui a raison » au seul degré
+      d'assurance de chacun, plutôt qu'à ce qui correspond effectivement
+      aux faits.
+
+      **L'exception qui confirme la règle :** le cogito de Descartes (R5)
+      est remarquable précisément parce qu'il fait coïncider certitude et
+      vérité -- un cas unique, pas la norme.
+
+  - id: VERITE-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [popper, falsifiabilite, science]
+    stem: >
+      Selon le critère de falsifiabilité de Popper, pourquoi une théorie
+      compatible avec absolument n'importe quelle observation possible, et
+      qu'on peut toujours ajuster après coup pour absorber toute objection,
+      n'est-elle pas une théorie scientifique digne de ce nom ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'une théorie scientifique doit interdire certains résultats observables, de sorte qu'une observation future puisse, en principe, la contredire et la réfuter -- une théorie qu'aucune observation ne pourrait jamais mettre en défaut ne prend aucun risque, et ne peut donc jamais être mise sérieusement à l'épreuve."
+        correct: true
+      - id: B
+        text: "Parce qu'une théorie scientifique doit être prouvée définitivement vraie par un nombre suffisant d'observations qui la confirment."
+        correct: false
+        feedback: >
+          C'est l'inverse de la logique de Popper : aucun nombre
+          d'observations confirmantes ne prouve jamais une loi générale
+          définitivement vraie -- c'est justement pour cela qu'il faut un
+          autre critère, la falsifiabilité, plutôt que l'accumulation de
+          confirmations.
+      - id: C
+        text: "Parce qu'une théorie scientifique doit être fréquemment réfutée par l'expérience pour progresser."
+        correct: false
+        feedback: >
+          C'est confondre « falsifiable » (qui pourrait en principe être
+          réfutée par une observation) avec « fréquemment réfutée » -- une
+          théorie falsifiable et solidement corroborée peut résister, avec
+          succès, à de nombreux tests sérieux, sans jamais avoir été
+          réfutée.
+      - id: D
+        text: "Parce qu'une théorie qui explique n'importe quel résultat observable est, au contraire, plus puissante et donc plus scientifique qu'une théorie plus limitée."
+        correct: false
+        feedback: >
+          C'est exactement l'erreur que Popper dénonce : une théorie
+          capable d'absorber n'importe quelle observation sans jamais être
+          mise en défaut ne prend aucun risque testable -- ce n'est pas une
+          force, mais un signe qu'elle n'est peut-être pas authentiquement
+          scientifique.
+    correct_feedback: >
+      Une théorie scientifique doit être falsifiable : elle doit interdire
+      certains résultats observables, de sorte qu'une observation future
+      puisse, en principe, la réfuter. Une théorie compatible avec tout
+      résultat possible ne prend aucun risque testable.
+    solution: |
+      **Le problème préalable :** aucune accumulation de confirmations ne
+      prouve définitivement une loi générale vraie -- il suffit d'un seul
+      contre-exemple pour la réfuter.
+
+      **Le critère de démarcation :** une théorie est scientifique si elle
+      est falsifiable -- si une observation pourrait, en principe, la
+      contredire.
+
+      **La conclusion :** une vérité scientifique n'est jamais « prouvée
+      vraie » définitivement -- seulement non-encore-réfutée, corroborée
+      par les tests les plus sérieux, toujours révisable.
