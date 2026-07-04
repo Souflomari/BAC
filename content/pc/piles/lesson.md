@@ -2,23 +2,25 @@
 
 ---
 
-## R0 — Accroche : le même réactif, deux façons de réagir
+## R0 — Accroche : de la chaleur gaspillée au courant récupéré
 
-Plonge, dans un tube à essai, une lame de zinc dans une solution bleue de sulfate de cuivre (des ions $Cu^{2+}$). Regarde ce qui se passe : la couleur bleue pâlit peu à peu, un dépôt rougeâtre de cuivre métallique se forme sur la lame de zinc, et si tu poses la main sur le tube, tu sens qu'il devient tiède. La réaction chimique
+Tu connais déjà cette réaction. Au chapitre sur l'évolution spontanée d'un système, tu l'as vue se produire toute seule, par simple contact, quand une lame de zinc plonge dans une solution d'ions $Cu^{2+}$ :
 
-$$Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$$
+$$Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$$
 
-a bien eu lieu - mais toute l'énergie qu'elle a libérée est partie en chaleur, dans le tube, sans que tu puisses rien en faire.
+Tu y avais établi qu'elle est bien spontanée, et tu avais constaté qu'elle libère son énergie sous forme de chaleur - une énergie bien réelle, mais dissipée sur place, dans le récipient, impossible à récupérer pour faire quoi que ce soit d'utile.
 
-Maintenant, imagine une deuxième expérience, avec exactement les mêmes espèces chimiques. Cette fois, tu places la lame de zinc dans un bécher contenant une solution de sulfate de zinc, et la lame de cuivre dans un bécher séparé contenant une solution de sulfate de cuivre. Tu relies les deux lames par un fil électrique - en passant par un ampèremètre - et tu relies les deux solutions par un pont salin.
+Cette leçon part exactement de ce constat, avec une ambition différente : et si, au lieu de laisser cette énergie filer en chaleur, on la récoltait sous forme de courant électrique - de quoi allumer une diode, faire tourner un petit moteur ?
 
-Avant de lire la suite, prends position : à ton avis, est-ce que cette même réaction va se produire dans ce montage séparé ? Et si oui, qu'est-ce qui va changer par rapport au tube à essai ?
+Voici le montage qu'on va étudier, et il change une seule chose - décisive. Cette fois, on ne met plus le zinc et les ions $Cu^{2+}$ dans le même récipient. On place la lame de zinc dans un bécher contenant une solution de sulfate de zinc, et la lame de cuivre dans un bécher séparé contenant une solution de sulfate de cuivre. On relie les deux lames par un fil électrique - en passant par un ampèremètre - et on relie les deux solutions par un pont salin. Les deux réactifs ne se touchent plus.
 
-Voici ce qu'on observe : l'ampèremètre dévie. Un courant électrique circule dans le fil. Tu peux même, avec ce montage, allumer une petite diode électroluminescente - quelque chose que le tube à essai ne t'a jamais permis de faire.
+Avant de lire la suite, prends position : à ton avis, cette même réaction va-t-elle encore se produire, maintenant que le zinc et les ions $Cu^{2+}$ sont séparés dans deux béchers distincts, sans aucun contact direct ? Et si oui, qu'est-ce que cette séparation change, par rapport au contact direct que tu avais observé ?
 
-Chimiquement, c'est très exactement la même réaction que dans le tube à essai : le zinc cède des électrons, les ions $Cu^{2+}$ les captent. Mais cette fois, au lieu de se dissiper en chaleur au point de contact, l'énergie libérée traverse le circuit extérieur sous forme de courant électrique - c'est de l'énergie électrique récupérable, utilisable.
+Voici ce qu'on observe : l'ampèremètre dévie. Un courant électrique circule dans le fil. Avec ce montage, tu peux allumer une petite diode électroluminescente, ou faire tourner un moteur miniature - précisément l'énergie que le contact direct, lui, laissait échapper en chaleur.
 
-Si tu avais prédit que rien ne changerait entre les deux montages, cet écart - un tube qui chauffe contre un montage qui allume une diode - est justement ce qu'on va comprendre. Si tu avais deviné qu'un courant apparaîtrait, la vraie question commence maintenant : pourquoi seule la séparation physique des deux réactifs rend cette énergie récupérable ? Comment savoir, avant même de brancher quoi que ce soit, quelle lame va céder ses électrons et laquelle va les recevoir ? Comment nommer les deux bornes, dans quel sens circule vraiment le courant, et pourquoi ce montage - comme le tube à essai avant lui - finira-t-il, lui aussi, par s'arrêter ?
+Chimiquement, c'est très exactement la même réaction que par contact direct : le zinc cède des électrons, les ions $Cu^{2+}$ les captent. Mais cette fois, au lieu de sauter d'une espèce à l'autre au point de contact et de s'y dissiper en chaleur, les électrons sont forcés de faire le tour par le fil - et ce trajet organisé, dirigé, c'est du courant électrique récupérable, utilisable.
+
+Si tu avais prédit que la séparation empêcherait toute réaction, l'écart est justement ce qu'on va comprendre : la réaction se produit bel et bien, mais son énergie change de chemin. Et si tu avais deviné qu'un courant apparaîtrait, la vraie question commence maintenant : pourquoi faut-il séparer physiquement les deux réactifs pour rendre cette énergie récupérable ? Comment savoir, avant même de brancher quoi que ce soit, quelle lame va céder ses électrons et laquelle va les recevoir ? Comment nommer les deux bornes, dans quel sens circule vraiment le courant, et pourquoi ce montage finira-t-il, lui aussi, par s'arrêter ?
 
 C'est tout l'objet de cette leçon : comprendre ce qu'est une pile, comment elle transforme spontanément de l'énergie chimique en énergie électrique, et comment prédire chacun de ses comportements par le calcul plutôt que par la mémorisation.
 
@@ -28,7 +30,7 @@ C'est tout l'objet de cette leçon : comprendre ce qu'est une pile, comment elle
 
 ### Ce qui se passe, réellement, dans le tube à essai
 
-Reprends la réaction de l'accroche : $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$. C'est une réaction d'oxydoréduction - un transfert d'électrons entre deux couples oxydant/réducteur, ici $Zn^{2+}/Zn$ et $Cu^{2+}/Cu$. Dans le tube à essai, ce transfert a lieu au contact direct : un ion $Cu^{2+}$ vient se coller contre la surface du zinc, et les deux électrons cédés par un atome de zinc sautent directement, sur une distance de quelques couches atomiques, jusqu'à cet ion. Ce saut libère de l'énergie - et comme il se produit très localement, en un point de contact, cette énergie se dissipe immédiatement sous forme d'agitation thermique. Aucune direction privilégiée, aucun trajet organisé : juste de la chaleur.
+Reprends la réaction de l'accroche : $Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$. C'est une réaction d'oxydoréduction - un transfert d'électrons entre deux couples oxydant/réducteur, ici $Zn^{2+}/Zn$ et $Cu^{2+}/Cu$. Dans le tube à essai, ce transfert a lieu au contact direct : un ion $Cu^{2+}$ vient se coller contre la surface du zinc, et les deux électrons cédés par un atome de zinc sautent directement, sur une distance de quelques couches atomiques, jusqu'à cet ion. Ce saut libère de l'énergie - et comme il se produit très localement, en un point de contact, cette énergie se dissipe immédiatement sous forme d'agitation thermique. Aucune direction privilégiée, aucun trajet organisé : juste de la chaleur.
 
 ### L'idée : empêcher le contact direct, forcer un détour
 
@@ -52,25 +54,21 @@ Retiens la règle de construction : une pile, c'est deux demi-piles (deux couple
 
 ## R2 — Prédire le sens spontané : comparer $Q_{r,i}$ et $K$
 
-Tu as vu, dans le chapitre sur l'état d'équilibre, l'outil qui prédit dans quel sens un système chimique va évoluer spontanément : on calcule le quotient de réaction à l'instant considéré, $Q_{r,i}$, et on le compare à la constante d'équilibre $K$ de la réaction. Une pile n'échappe pas à cette règle - c'est même exactement cet outil qui va nous dire, avant tout branchement, quelle électrode va céder des électrons et laquelle va les recevoir.
+Comment savoir, avant tout branchement, quelle électrode va céder des électrons et laquelle va les recevoir ? La réponse ne demande aucun outil nouveau. Tu as établi, au chapitre sur l'évolution spontanée d'un système, le critère qui tranche le sens d'évolution de n'importe quelle transformation : on calcule le quotient de réaction à l'instant considéré, $Q_{r,i}$, on le compare à la constante d'équilibre $K$ de la réaction, et l'écart entre les deux donne le sens. On ne le redémontre pas ici - on l'applique à la réaction de la pile.
 
 ### L'expression de $Q_r$ pour la pile Daniell
 
-Pour la réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$ :
+Pour la réaction $Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$, c'est la même expression qu'au chapitre sur l'évolution spontanée :
 
 $$Q_r = \frac{[Zn^{2+}]}{[Cu^{2+}]}$$
 
-Comme tu l'as vu dans le chapitre sur l'état d'équilibre, un solide pur n'a pas de concentration qui varie réellement au cours de la réaction - il n'apparaît donc pas dans $Q_r$. Le zinc métallique et le cuivre métallique, tous deux solides, sont logés dans cette même catégorie : seules les espèces dissoutes, $Zn^{2+}$ et $Cu^{2+}$, entrent dans l'expression de $Q_r$.
+Les deux métaux, $Zn$ et $Cu$, sont des solides purs : ils n'apparaissent pas dans $Q_r$ (règle vue au chapitre sur l'état d'équilibre). Seules les espèces dissoutes, $Zn^{2+}$ et $Cu^{2+}$, y figurent.
 
 ### Le critère, appliqué à la pile
 
-Rappel du critère (chapitre état d'équilibre) : on compare $Q_{r,i}$, calculé avec les concentrations à l'instant considéré, à $K$, la constante d'équilibre de la réaction à cette température.
+Comme établi au chapitre sur l'évolution spontanée d'un système, on compare $Q_{r,i}$ à $K$ : $Q_{r,i} < K$ donne le sens direct, $Q_{r,i} > K$ le sens inverse, $Q_{r,i} = K$ un système déjà à l'équilibre. On applique ce verdict tel quel à la pile. Tant que $Q_{r,i} < K$, la réaction évolue dans le sens direct : le zinc est oxydé, les ions $Cu^{2+}$ sont réduits, et c'est précisément cette évolution qui débite le courant. Le jour où $Q_{r,i}$ rejoint $K$, l'évolution nette cesse et la pile ne débite plus de courant utile - on y reviendra au rung sur l'usure.
 
-- Si $Q_{r,i} < K$ : le système évolue dans le sens direct - ici, le zinc est oxydé ($Zn \to Zn^{2+}+2e^-$) et les ions $Cu^{2+}$ sont réduits ($Cu^{2+}+2e^- \to Cu$).
-- Si $Q_{r,i} > K$ : le système évolue dans le sens inverse - le cuivre serait oxydé et les ions $Zn^{2+}$ réduits.
-- Si $Q_{r,i} = K$ : le système est déjà à l'équilibre, plus aucune évolution nette, donc plus de courant utile.
-
-C'est ce critère, et rien d'autre, qui détermine laquelle des deux électrodes cède ses électrons et laquelle les reçoit. Ce n'est pas une règle à mémoriser électrode par électrode : c'est une conséquence du calcul.
+C'est ce critère, et rien d'autre, qui décide laquelle des deux électrodes cède ses électrons et laquelle les reçoit : une conséquence du calcul, pas une règle à mémoriser électrode par électrode.
 
 ### Exemple travaillé
 
@@ -246,7 +244,7 @@ On réalise une pile Daniell avec une demi-pile $Zn^{2+}/Zn$ ($V = 100\ \text{mL
 
 $$Zn^{2+} + 2\,e^- \rightleftharpoons Zn \qquad\qquad Cu^{2+} + 2\,e^- \rightleftharpoons Cu$$
 
-$$Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$$
+$$Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$$
 
 **2) Calcule $Q_{r,i}$ à l'instant initial, compare-le à $K$, et déduis-en le sens d'évolution spontané : quelle espèce est oxydée, quelle espèce est réduite ?**
 
