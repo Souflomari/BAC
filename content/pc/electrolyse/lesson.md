@@ -198,9 +198,9 @@ $$4\,H^+ + 4\,e^- \rightleftharpoons 2\,H_2$$
 
 $$2\,H_2O \rightleftharpoons O_2 + 4\,H^+ + 4\,e^-$$
 
-Les $4\,H^+$ et les $4\,e^-$ s'annulent exactement dans la somme, et il reste le bilan global :
+Les $4\,H^+$ et les $4\,e^-$ s'annulent exactement dans la somme, et il reste le bilan global (écrit avec une flèche simple, comme il est d'usage pour une équation bilan) :
 
-$$2\,H_2O \rightleftharpoons 2\,H_2 + O_2$$
+$$2\,H_2O \rightarrow 2\,H_2 + O_2$$
 
 L'eau ne se décompose jamais spontanément en dihydrogène et dioxygène gazeux dans les conditions ordinaires - c'est précisément une transformation non spontanée, qu'on force ici grâce au générateur.
 
