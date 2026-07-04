@@ -1,0 +1,388 @@
+notion: lois-de-newton
+skill_code: pc_lois_newton
+misconceptions: []
+
+items:
+  - id: LDN-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, force_mouvement]
+    stem: >
+      Un palet glisse sur une glace parfaitement lisse (frottements négligés),
+      en ligne droite, à vitesse constante de $3\ \text{m/s}$, longtemps après
+      qu'on a cessé de le pousser. Que vaut la somme vectorielle des forces
+      extérieures qui s'exercent sur le palet pendant ce trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\sum \\vec{F}_{ext} = \\vec{0}$"
+        correct: true
+      - id: B
+        text: >-
+          $\sum \vec{F}_{ext}$ est non nulle, dirigée vers l'avant, dans le
+          sens du mouvement.
+        correct: false
+        feedback: >
+          Ce choix suppose qu'une vitesse non nulle exige une force dans sa
+          propre direction pour se maintenir. Or un vecteur vitesse constant
+          ne réclame aucune force : c'est sa VARIATION, pas son existence,
+          qui a besoin d'une cause. Ici $\vec{v}_G$ ne change ni en norme ni
+          en direction, donc $\vec{a}_G = \vec{0}$, donc par la deuxième loi
+          $\sum \vec{F}_{ext} = \vec{0}$.
+      - id: C
+        text: >-
+          $\sum \vec{F}_{ext}$ est non nulle, dirigée vers l'arrière, pour
+          freiner progressivement le palet jusqu'à l'arrêt.
+        correct: false
+        feedback: >
+          L'énoncé précise que la vitesse reste constante sur tout le trajet
+          étudié : il n'y a ici aucun ralentissement à expliquer. Une force
+          résultante non nulle produirait justement un changement de vitesse,
+          ce qui contredit l'observation.
+      - id: D
+        text: >-
+          $\sum \vec{F}_{ext}$ est non nulle, et sa norme est proportionnelle
+          à la vitesse du palet.
+        correct: false
+        feedback: >
+          Il n'existe aucune loi reliant directement force et vitesse de
+          cette façon. La deuxième loi de Newton relie la force à
+          l'ACCÉLÉRATION ($\sum \vec{F}_{ext} = m\vec{a}_G$), pas à la
+          vitesse elle-même. Une vitesse constante correspond à une
+          accélération nulle, donc à une force résultante nulle, quelle que
+          soit la valeur de cette vitesse.
+    correct_feedback: >
+      Un vecteur vitesse constant signifie une accélération nulle. Par la
+      deuxième loi de Newton, $\sum \vec{F}_{ext} = m\vec{a}_G = \vec{0}$.
+      C'est exactement le principe d'inertie : aucune force n'est nécessaire
+      pour maintenir un mouvement rectiligne uniforme.
+    solution: |
+      **Ce qui est observé :** $\vec{v}_G$ constant (même norme, même
+      direction) sur tout le trajet.
+
+      **Ce que ça implique :** $\vec{a}_G = \dfrac{d\vec{v}_G}{dt} = \vec{0}$.
+
+      **Par la deuxième loi de Newton :**
+      $$\sum \vec{F}_{ext} = m\,\vec{a}_G = \vec{0}$$
+
+      Aucune force résultante n'est nécessaire pour qu'un solide continue en
+      ligne droite à vitesse constante — c'est le mouvement lui-même qui ne
+      demande rien, seul un changement de mouvement demanderait une force.
+
+  - id: LDN-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, force_mouvement]
+    stem: >
+      Un élève lance un chariot d'un coup de main sur un sol horizontal
+      parfaitement lisse (frottements négligés), puis lâche prise. Le chariot
+      continue alors à rouler en ligne droite, à vitesse quasiment constante,
+      sur une longue distance. Qu'est-ce qui fait avancer le chariot après que
+      la main l'a quitté ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien : aucune force n'est nécessaire pour qu'il continue, tant
+          qu'aucune force ne s'y oppose (principe d'inertie).
+        correct: true
+      - id: B
+        text: >-
+          Une force résiduelle transmise par la main au moment du lancer, qui
+          s'épuise progressivement pendant que le chariot avance.
+        correct: false
+        feedback: >
+          C'est l'idée d'un « élan » qui s'userait avec la distance parcourue
+          — une intuition ancienne, mais elle ne correspond à aucune force
+          réelle mesurable après le lâcher. Une fois la main retirée, plus
+          aucune force horizontale n'est exercée par elle sur le chariot : le
+          mouvement se poursuit seul, par inertie, sans qu'aucune force ne
+          « s'épuise ».
+      - id: C
+        text: >-
+          La réaction normale du sol, qui pousse le chariot vers l'avant.
+        correct: false
+        feedback: >
+          La réaction normale du sol est perpendiculaire au sol, donc
+          verticale ici — elle ne peut avoir aucune composante horizontale
+          vers l'avant. Elle équilibre le poids, elle ne propulse rien.
+      - id: D
+        text: >-
+          Son propre poids, qui posséderait une composante horizontale vers
+          l'avant.
+        correct: false
+        feedback: >
+          Le poids est toujours vertical, dirigé vers le bas — sur un sol
+          horizontal, il n'a aucune composante horizontale. Il ne peut donc
+          pas expliquer une avancée horizontale du chariot.
+    correct_feedback: >
+      Une fois lancé, sans frottement ni force horizontale supplémentaire, le
+      chariot n'a besoin d'aucune force pour continuer à vitesse constante :
+      c'est exactement le principe d'inertie. Ce qui aurait besoin d'une force,
+      c'est un changement de sa vitesse — pas son maintien.
+    solution: |
+      Après le lâcher, aucune force horizontale ne s'exerce plus sur le
+      chariot (frottements négligés). D'après le principe d'inertie, un
+      solide soumis à une somme de forces nulle garde un vecteur vitesse
+      constant. Le chariot continue donc en ligne droite, à vitesse
+      constante, sans qu'aucune force ne soit nécessaire pour l'entretenir.
+      L'idée d'une force qui « s'épuiserait » avec la distance ne correspond
+      à aucune force physique identifiable une fois le contact avec la main
+      terminé.
+
+  - id: LDN-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, masse_inertie]
+    stem: >
+      On applique la même force horizontale $\sum F_{ext} = 20\ \text{N}$ à
+      deux chariots initialement immobiles, de masses $m_A = 10\ \text{kg}$
+      et $m_B = 40\ \text{kg}$ (frottements négligés dans les deux cas). Que
+      peut-on dire de leurs accélérations $a_A$ et $a_B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a_A = 2{,}0\ \text{m/s}^2$ et $a_B = 0{,}5\ \text{m/s}^2$ : le
+          chariot A accélère quatre fois plus vite que B.
+        correct: true
+      - id: B
+        text: >-
+          $a_A = a_B$, car la force appliquée est la même dans les deux cas.
+        correct: false
+        feedback: >
+          Ce choix ignore le rôle de la masse dans la deuxième loi. La force
+          est identique, mais $a = F/m$ : à force égale, un solide plus
+          massif (ici $m_B$, quatre fois plus grand que $m_A$) accélère
+          proportionnellement moins. Une même force ne produit pas le même
+          effet sur des masses différentes.
+      - id: C
+        text: >-
+          $a_B > a_A$, car le chariot B, plus lourd, accélère davantage sous
+          l'effet de la même force.
+        correct: false
+        feedback: >
+          C'est l'inverse de ce que dit la deuxième loi : la masse mesure
+          l'inertie, c'est-à-dire la résistance à changer de vitesse. Plus un
+          solide est massif, moins il accélère pour une même force, il
+          n'accélère pas davantage.
+      - id: D
+        text: >-
+          On ne peut rien dire des accélérations sans connaître les vitesses
+          initiales des deux chariots.
+        correct: false
+        feedback: >
+          L'accélération, à un instant donné, ne dépend que de la force
+          résultante et de la masse ($a = \sum F_{ext}/m$) — pas de la
+          vitesse à cet instant. Les deux chariots partent d'ailleurs du
+          repos ici, mais même avec des vitesses initiales différentes, le
+          calcul de $a$ à partir de $F$ et $m$ resterait inchangé.
+    correct_feedback: >
+      $a_A = F/m_A = 20/10 = 2{,}0\ \text{m/s}^2$ et
+      $a_B = F/m_B = 20/40 = 0{,}5\ \text{m/s}^2$. Le rapport des
+      accélérations est exactement l'inverse du rapport des masses : la
+      masse est la mesure de l'inertie d'un solide.
+    solution: |
+      **Deuxième loi de Newton appliquée à chaque chariot séparément :**
+      $$a_A = \frac{F}{m_A} = \frac{20}{10} = 2{,}0\ \text{m}\cdot\text{s}^{-2}$$
+      $$a_B = \frac{F}{m_B} = \frac{20}{40} = 0{,}5\ \text{m}\cdot\text{s}^{-2}$$
+
+      Le rapport $a_A/a_B = 4$ correspond exactement au rapport inverse des
+      masses $m_B/m_A = 4$ : à force égale, l'accélération est inversement
+      proportionnelle à la masse.
+
+  - id: LDN-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [troisieme_loi, action_reaction]
+    stem: >
+      Un livre est posé, immobile, sur une table horizontale. Il est soumis à
+      deux forces : son poids $\vec{P}$ et la réaction normale de la table
+      $\vec{N}$, avec $\vec{P} + \vec{N} = \vec{0}$. Quelle est la force qui
+      forme réellement une paire d'action-réaction (troisième loi de Newton)
+      avec $\vec{N}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le poids $\vec{P}$ du livre, puisque $\vec{P} = -\vec{N}$.
+        correct: false
+        feedback: >
+          $\vec{P}$ et $\vec{N}$ ont bien même norme et sens opposés, mais
+          elles s'exercent toutes les deux SUR LE MÊME CORPS (le livre) :
+          c'est un équilibre (conséquence du principe d'inertie), pas une
+          paire d'action-réaction. Une paire action-réaction relie toujours
+          deux forces exercées sur deux corps DIFFÉRENTS.
+      - id: B
+        text: >-
+          La force exercée par le livre sur la table, réciproque exacte de
+          $\vec{N}$.
+        correct: true
+      - id: C
+        text: >-
+          Aucune force : la réaction normale n'a pas de réciproque tant que
+          le livre reste immobile.
+        correct: false
+        feedback: >
+          La troisième loi s'applique à TOUTE interaction, que les corps
+          soient immobiles ou non — elle ne dépend d'aucune condition de
+          mouvement ou d'équilibre. La réaction normale a bien une
+          réciproque, à chaque instant.
+      - id: D
+        text: >-
+          La force de frottement entre le livre et la table.
+        correct: false
+        feedback: >
+          Rien dans l'énoncé n'indique de frottement (le livre est
+          simplement posé, immobile, sans tendance à glisser). Et même s'il y
+          en avait un, le frottement serait une force distincte, pas la
+          réciproque de la réaction normale.
+    correct_feedback: >
+      La réciproque d'une force s'exerce toujours sur l'AUTRE corps de
+      l'interaction. $\vec{N}$ est exercée par la table sur le livre ; sa
+      réciproque, exercée par le livre sur la table, est
+      $\vec{N}_{livre \to table} = -\vec{N}_{table \to livre}$ — une force qui
+      agit sur la table, pas sur le livre.
+    solution: |
+      **Ce qu'il ne faut pas confondre :** $\vec{P}$ et $\vec{N}$ s'exercent
+      toutes deux sur le livre et s'annulent parce que le livre est immobile
+      (principe d'inertie) — ce n'est PAS une paire d'action-réaction.
+
+      **La vraie paire de $\vec{N}$ :** la troisième loi relie deux forces
+      exercées sur deux corps différents, issues d'une seule interaction.
+      L'interaction ici est celle entre la table et le livre : la table
+      exerce $\vec{N}_{table \to livre}$ sur le livre, et le livre exerce en
+      retour $\vec{N}_{livre \to table} = -\vec{N}_{table \to livre}$ sur la
+      table. C'est cette dernière force, exercée SUR LA TABLE, qui est la
+      réciproque cherchée.
+
+  - id: LDN-5
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [chute_libre, masse_poids]
+    stem: >
+      On lâche, au même instant et sans vitesse initiale, depuis la même
+      hauteur, une bille en acier de masse $200\ \text{g}$ et une bille en
+      plastique de masse $20\ \text{g}$, sur Terre, en négligeant les
+      frottements de l'air. Laquelle touche le sol en premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La bille en acier, car elle est plus lourde, donc elle tombe plus
+          vite.
+        correct: false
+        feedback: >
+          C'est la confusion classique entre masse et poids. En chute libre,
+          $\vec{P} = m\vec{a}_G$ donne $m\vec{g} = m\vec{a}_G$, donc
+          $\vec{a}_G = \vec{g}$ : la masse se simplifie ENTIÈREMENT de
+          l'équation. Un objet plus lourd n'a ni plus ni moins d'accélération
+          en chute libre — le poids plus grand est exactement compensé par
+          une inertie plus grande.
+      - id: B
+        text: >-
+          Les deux billes touchent le sol exactement au même instant, car
+          $\vec{a}_G = \vec{g}$ ne dépend pas de la masse.
+        correct: true
+      - id: C
+        text: >-
+          La bille en plastique, car elle est plus légère et subit donc moins
+          de résistance.
+        correct: false
+        feedback: >
+          L'énoncé précise que les frottements de l'air sont négligés : il
+          n'y a donc aucune résistance différente entre les deux billes ici.
+          Sans cette hypothèse, la forme et la masse pourraient jouer sur la
+          résistance de l'air, mais ce n'est pas le cas étudié.
+      - id: D
+        text: >-
+          Impossible à déterminer sans connaître le poids exact de chaque
+          bille.
+        correct: false
+        feedback: >
+          C'est l'inverse : la valeur du poids de chaque bille n'est pas
+          nécessaire, car elle disparaît du résultat. $\vec{a}_G = \vec{g}$ ne
+          dépend ni de la masse ni du poids de l'objet qui tombe — c'est
+          justement ce qui rend la réponse déterminable sans ces valeurs.
+    correct_feedback: >
+      En chute libre, $\vec{P} = m\vec{a}_G$ avec $\vec{P} = m\vec{g}$ donne
+      $\vec{a}_G = \vec{g}$ : la masse se simplifie complètement. Les deux
+      billes ont donc la même accélération, la même vitesse à chaque instant,
+      et touchent le sol exactement en même temps.
+    solution: |
+      **Deuxième loi appliquée à la chute libre (seul le poids agit) :**
+      $$\vec{P} = m\,\vec{a}_G \quad \Longrightarrow \quad m\,\vec{g} = m\,\vec{a}_G \quad \Longrightarrow \quad \vec{a}_G = \vec{g}$$
+
+      La masse $m$ disparaît de l'équation : l'accélération de chute libre ne
+      dépend ni de la masse ni du poids de l'objet. Les deux billes,
+      lâchées ensemble depuis la même hauteur, ont donc rigoureusement la
+      même accélération à chaque instant — elles touchent le sol au même
+      moment, malgré leurs masses très différentes.
+
+  - id: LDN-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: [plan_incline, methode, projection]
+    stem: >
+      Un solide de masse $m = 2{,}0\ \text{kg}$ glisse sans vitesse initiale
+      sur un plan incliné d'angle $\alpha = 30°$ par rapport à l'horizontale.
+      Les frottements exercent une force de norme $f = 3{,}0\ \text{N}$,
+      opposée au sens de la descente. On prend $g \approx 9{,}8\ \text{m/s}^2$
+      et $\sin 30° = 0{,}5$. Quelle est la valeur de l'accélération $a_G$ du
+      solide, dans le sens de la descente ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_G \\approx 3{,}4\\ \\text{m/s}^2$"
+        correct: true
+      - id: B
+        text: "$a_G \\approx 4{,}9\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $g\sin\alpha$ seul, sans avoir soustrait
+          le terme de frottement $f/m$. Le bilan des forces projeté sur l'axe
+          de la descente est $mg\sin\alpha - f = ma_G$ : le frottement doit
+          être retranché, pas oublié.
+      - id: C
+        text: "$a_G \\approx 6{,}4\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $g\sin\alpha + f/m$ : le frottement a été
+          AJOUTÉ au lieu d'être soustrait. Or le frottement s'oppose au
+          mouvement (à la descente) : sa composante selon l'axe de la
+          descente est négative, donc elle se retranche de la composante
+          motrice du poids, elle ne s'y ajoute pas.
+      - id: D
+        text: "$a_G \\approx 7{,}0\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'une confusion entre $\sin\alpha$ et
+          $\cos\alpha$ dans la projection du poids : c'est
+          $mg\sin\alpha$ (et non $mg\cos\alpha$) qui donne la composante du
+          poids le long du plan, celle qui entraîne le solide vers le bas de
+          la pente. $mg\cos\alpha$ est la composante perpendiculaire, celle
+          qui équilibre la réaction normale $N$.
+    correct_feedback: >
+      Projection selon l'axe de la descente : $mg\sin\alpha - f = ma_G$, donc
+      $a_G = g\sin\alpha - f/m = 9{,}8 \times 0{,}5 - 3{,}0/2{,}0 = 4{,}9 -
+      1{,}5 = 3{,}4\ \text{m/s}^2$.
+    solution: |
+      **Projection de la deuxième loi selon l'axe de la descente :**
+      $$mg\sin\alpha - f = m\,a_G$$
+
+      **Isoler $a_G$ :**
+      $$a_G = g\sin\alpha - \frac{f}{m}$$
+
+      **Application numérique :**
+      $$a_G = 9{,}8 \times 0{,}5 - \frac{3{,}0}{2{,}0} = 4{,}9 - 1{,}5 = 3{,}4\ \text{m}\cdot\text{s}^{-2}$$
+
+      Le frottement réduit l'accélération motrice due au poids
+      ($g\sin\alpha = 4{,}9\ \text{m/s}^2$) d'une quantité $f/m = 1{,}5\
+      \text{m/s}^2$ — jamais l'inverse, car il s'oppose toujours au
+      mouvement.

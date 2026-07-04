@@ -1,0 +1,466 @@
+# Calcul intégral
+
+---
+
+## R0 — Accroche : la distance qu'une courbe de vitesse ne te donne pas directement
+
+Une voiture accélère. Son compteur de vitesse instantanée $v(t)$, en mètres par seconde, obéit à la loi $v(t) = t^2$ sur les deux premières secondes ($t$ en secondes, $t \in [0,2]$). Elle démarre à l'arrêt ($v(0)=0$) et sa vitesse grandit de plus en plus vite.
+
+**Question : quelle distance a-t-elle parcourue entre $t=0$ et $t=2\ \text{s}$ ?**
+
+Tu connais déjà le principe : sur un graphique vitesse-temps, la distance parcourue est **l'aire sous la courbe** de $v(t)$. Si $v(t)$ était constante, ce serait un rectangle — base $\times$ hauteur. Si $v(t)$ était une droite (accélération constante), ce serait un triangle — tu saurais faire le calcul avec les formules de géométrie du collège.
+
+Mais ici, $v(t)=t^2$ trace une parabole, pas une droite. Aucun découpage en rectangles ou en triangles ne donne le contour exact de cette région. Avant de lire la suite, prends position quand même : à vue d'oeil, penses-tu que cette distance est plus proche de $1\ \text{m}$, de $2$ à $3\ \text{m}$, ou de plus de $4\ \text{m}$ ? Engage-toi sur une réponse avant de continuer.
+
+Le problème est là depuis toujours : on sait calculer une aire quand le contour est fait de droites. On ne sait pas encore quoi faire quand le contour est une courbe. C'est exactement l'outil que cette leçon construit — et on va résoudre cette voiture, avec la valeur exacte, dès le prochain rung.
+
+---
+
+## R1 — Le mécanisme : de l'aire à la primitive
+
+### Le lien qu'on va utiliser
+
+Tu sais déjà ce qu'est une primitive : $F$ est une primitive de $f$ sur un intervalle si $F'=f$ sur cet intervalle. Voici le fait qui fonde tout ce chapitre.
+
+**Définition.** Soit $f$ une fonction continue sur un segment $[a,b]$, et soit $F$ une primitive de $f$ sur $[a,b]$. L'**intégrale de $f$ entre $a$ et $b$** est le nombre :
+
+$$\int_a^b f(x)\,\mathrm{d}x = F(b) - F(a)$$
+
+On note aussi $F(b)-F(a) = \big[F(x)\big]_a^b$. Le nombre $a$ est la **borne inférieure**, $b$ la **borne supérieure**.
+
+### Pourquoi le choix de la primitive n'a aucune importance
+
+Une objection immédiate : une fonction $f$ a une infinité de primitives (elles diffèrent toutes d'une constante). Si tu choisis une primitive différente, tu risques d'obtenir un résultat différent — et alors la définition ne voudrait rien dire.
+
+Regarde pourquoi ce risque ne se réalise jamais. Soit $G$ une autre primitive de $f$ sur $[a,b]$. Alors $F'=G'=f$, donc $(G-F)'=0$ sur $[a,b]$ : une fonction de dérivée nulle sur un intervalle est constante (chapitre "Dérivation"), donc $G-F$ est égale à une constante $C$ :
+
+$$G(x) = F(x) + C \quad \text{pour tout } x \in [a,b]$$
+
+Calcule maintenant ce que ça donne pour $G(b)-G(a)$ :
+
+$$G(b) - G(a) = \big(F(b)+C\big) - \big(F(a)+C\big)$$
+
+$$G(b) - G(a) = F(b) - F(a)$$
+
+La constante $C$ s'annule exactement dans la soustraction. Peu importe la primitive choisie, $F(b)-F(a)$ donne toujours le même nombre. C'est ce qui rend la définition cohérente : $\int_a^b f(x)\,\mathrm{d}x$ ne dépend pas d'un choix arbitraire, il ne dépend que de $f$, $a$ et $b$.
+
+### L'interprétation en aire
+
+On admet, comme pour toute fonction continue positive, le fait suivant : si $f$ est continue et $f \geq 0$ sur $[a,b]$, alors $\int_a^b f(x)\,\mathrm{d}x$ est exactement l'**aire** de la région délimitée par la courbe de $f$, l'axe des abscisses, et les droites d'équations $x=a$ et $x=b$. Cette aire est exprimée dans une unité appelée **unité d'aire**, notée u.a. — l'aire du carré de côté $1$ dans le repère choisi. (On revient sur la conversion en cm² au rung R8, quand ça compte vraiment.)
+
+### Résoudre l'accroche
+
+Reviens à la voiture du R0 : $v(t)=t^2$ sur $[0,2]$. La distance parcourue est $\int_0^2 t^2\,\mathrm{d}t$. Une primitive de $t \mapsto t^2$ est $F(t) = \dfrac{t^3}{3}$ (tu la connais depuis le chapitre "Primitives").
+
+$$\int_0^2 t^2\,\mathrm{d}t = F(2) - F(0) = \frac{2^3}{3} - \frac{0^3}{3}$$
+
+$$\int_0^2 t^2\,\mathrm{d}t = \frac{8}{3}$$
+
+La distance exacte est $\dfrac{8}{3} \approx 2{,}67\ \text{m}$. Si ta prédiction du R0 se situait entre $2$ et $3\ \text{m}$, tu avais vu juste : la courbe $t^2$ démarre lentement, donc l'aire sous elle est plus proche de $0$ que ne le serait un triangle de même hauteur finale (qui donnerait $\frac12 \times 2 \times 4 = 4$).
+
+### Un deuxième exemple : une primitive que tu connais déjà
+
+Le chapitre "Fonction logarithme" a défini $\ln$ comme l'unique primitive de $t \mapsto \dfrac1t$ sur $\left]0,+\infty\right[$ qui s'annule en $1$. Applique directement la définition de l'intégrale à cette primitive, pour $x>0$ :
+
+$$\int_1^x \frac{1}{t}\,\mathrm{d}t = \ln(x) - \ln(1)$$
+
+Et $\ln(1)=0$ par définition, donc :
+
+$$\int_1^x \frac{1}{t}\,\mathrm{d}t = \ln(x)$$
+
+Ce n'est pas une coïncidence ni un nouveau calcul à apprendre : c'est exactement ce que dit la définition de ce rung, appliquée à une primitive que tu connais déjà depuis un autre chapitre. L'intégrale et la primitive, ce sont deux regards sur le même objet.
+
+### L'erreur à repérer ici
+
+Une confusion fréquente à ce stade : penser qu'il faut « la bonne » primitive, celle qui vérifie une condition particulière (par exemple $F(0)=0$), et que choisir une autre primitive changerait le résultat. Ce n'est pas vrai — on vient de le démontrer : la constante s'annule toujours. Prends n'importe quelle primitive, la moins compliquée à écrire, et applique $F(b)-F(a)$.
+
+---
+
+## R2 — La linéarité de l'intégrale
+
+### Le mécanisme
+
+Tu calcules déjà des primitives terme par terme — une primitive de $3x^2-4x+5$, tu la trouves en primitivant chaque morceau séparément. Voici pourquoi ce geste, que tu fais sans y penser, est légitime.
+
+Soient $f$ et $g$ deux fonctions continues sur $[a,b]$, de primitives respectives $F$ et $G$. Alors $F+G$ est une primitive de $f+g$, puisque $(F+G)'=F'+G'=f+g$. Applique la définition du R1 à cette primitive :
+
+$$\int_a^b \big(f(x)+g(x)\big)\,\mathrm{d}x = \big(F(b)+G(b)\big) - \big(F(a)+G(a)\big)$$
+
+$$\int_a^b \big(f(x)+g(x)\big)\,\mathrm{d}x = \big(F(b)-F(a)\big) + \big(G(b)-G(a)\big)$$
+
+$$\int_a^b \big(f(x)+g(x)\big)\,\mathrm{d}x = \int_a^b f(x)\,\mathrm{d}x + \int_a^b g(x)\,\mathrm{d}x$$
+
+Même raisonnement pour un facteur constant : $(kF)' = kF' = kf$, donc $kF$ est une primitive de $kf$, d'où :
+
+$$\int_a^b k\,f(x)\,\mathrm{d}x = k\int_a^b f(x)\,\mathrm{d}x \qquad (k \in \mathbb{R})$$
+
+$$\boxed{\int_a^b \big(f+g\big)(x)\,\mathrm{d}x = \int_a^b f(x)\,\mathrm{d}x + \int_a^b g(x)\,\mathrm{d}x \qquad \text{et} \qquad \int_a^b k f(x)\,\mathrm{d}x = k \int_a^b f(x)\,\mathrm{d}x}$$
+
+C'est la **linéarité de l'intégrale**. Elle dit exactement pourquoi primitiver terme par terme fonctionne : chaque terme peut être traité séparément, puis on additionne (ou on soustrait) les résultats.
+
+### Exemple travaillé
+
+Calcule $\displaystyle\int_0^2 \big(3x^2-4x+5\big)\,\mathrm{d}x$ de deux façons, pour vérifier que la linéarité donne bien le même résultat que la primitive globale.
+
+**Ce qu'on cherche et pourquoi ce geste :** on va d'abord traiter chaque terme séparément (en s'appuyant sur la linéarité qu'on vient d'établir), puis vérifier avec la primitive combinée $F(x)=x^3-2x^2+5x$ — les deux méthodes doivent coïncider.
+
+**Terme par terme :**
+
+$$\int_0^2 3x^2\,\mathrm{d}x = 3\left[\frac{x^3}{3}\right]_0^2 = 3\times\frac{8}{3} = 8$$
+
+$$\int_0^2 4x\,\mathrm{d}x = 4\left[\frac{x^2}{2}\right]_0^2 = 4\times 2 = 8$$
+
+$$\int_0^2 5\,\mathrm{d}x = 5\big[x\big]_0^2 = 5\times 2 = 10$$
+
+Par linéarité :
+
+$$\int_0^2 \big(3x^2-4x+5\big)\,\mathrm{d}x = 8 - 8 + 10 = 10$$
+
+**Vérification avec la primitive globale** $F(x)=x^3-2x^2+5x$ :
+
+$$F(2) = 8-8+10 = 10 \qquad F(0) = 0$$
+
+$$\int_0^2 \big(3x^2-4x+5\big)\,\mathrm{d}x = F(2)-F(0) = 10$$
+
+Les deux méthodes donnent $10$. C'est exactement ce que garantit la linéarité : découper en morceaux plus simples ne change pas le résultat, à condition de bien recombiner par addition et multiplication par $k$ — jamais par une autre opération.
+
+---
+
+## R3 — La relation de Chasles
+
+### Une convention nécessaire d'abord
+
+Jusqu'ici, on a toujours écrit $\int_a^b$ en supposant $a \leq b$. Pour que ce qui suit marche pour n'importe quel réel $c$ — pas seulement les $c$ situés entre $a$ et $b$ — on adopte deux conventions, qui découlent directement de la définition $F(b)-F(a)$ :
+
+$$\int_a^a f(x)\,\mathrm{d}x = 0 \qquad \text{et} \qquad \int_b^a f(x)\,\mathrm{d}x = -\int_a^b f(x)\,\mathrm{d}x$$
+
+La première est immédiate : $F(a)-F(a)=0$. La deuxième aussi : $F(a)-F(b) = -\big(F(b)-F(a)\big)$.
+
+### Le mécanisme
+
+Soit $f$ continue sur un intervalle contenant $a$, $b$ et $c$ (trois réels quelconques, dans n'importe quel ordre), et $F$ une primitive de $f$. Écris $F(b)-F(a)$ en faisant apparaître $F(c)$ au passage — un simple ajout et retrait qui ne change rien à la valeur :
+
+$$F(b) - F(a) = \big(F(b) - F(c)\big) + \big(F(c) - F(a)\big)$$
+
+Traduis chaque parenthèse en intégrale, grâce à la définition du R1 :
+
+$$\boxed{\int_a^b f(x)\,\mathrm{d}x = \int_a^c f(x)\,\mathrm{d}x + \int_c^b f(x)\,\mathrm{d}x}$$
+
+C'est la **relation de Chasles**. Elle est vraie pour n'importe quel $c$ — y compris un $c$ situé en dehors du segment $[a,b]$ — précisément parce que les conventions ci-dessus donnent un sens à $\int_c^b$ et $\int_a^c$ dans tous les cas.
+
+### Exemple travaillé
+
+On te donne $\displaystyle\int_0^5 f(x)\,\mathrm{d}x = 12$ et $\displaystyle\int_0^2 f(x)\,\mathrm{d}x = 5$. Calcule $\displaystyle\int_2^5 f(x)\,\mathrm{d}x$, sans connaître l'expression de $f$.
+
+**Ce qu'on cherche et pourquoi ce geste :** on ne connaît pas $f$, donc impossible de chercher une primitive. Le seul outil disponible ici est la relation de Chasles, appliquée en $c=2$, qui relie les trois intégrales entre elles sans jamais avoir besoin de $f$ explicitement.
+
+$$\int_0^5 f(x)\,\mathrm{d}x = \int_0^2 f(x)\,\mathrm{d}x + \int_2^5 f(x)\,\mathrm{d}x$$
+
+$$12 = 5 + \int_2^5 f(x)\,\mathrm{d}x$$
+
+$$\int_2^5 f(x)\,\mathrm{d}x = 7$$
+
+C'est tout l'intérêt de Chasles dans les exercices : elle relie des intégrales entre elles par une simple relation additive, même quand $f$ reste une fonction abstraite — c'est aussi l'outil qu'on utilisera au R8 pour découper une aire à l'endroit où une courbe change de signe.
+
+---
+
+## R4 — Positivité et comparaison
+
+### Le mécanisme de la positivité
+
+**Propriété.** Si $f$ est continue et $f \geq 0$ sur $[a,b]$ (avec $a \leq b$), alors $\displaystyle\int_a^b f(x)\,\mathrm{d}x \geq 0$.
+
+**Pourquoi c'est vrai :** soit $F$ une primitive de $f$ sur $[a,b]$. Comme $F'=f\geq 0$ sur tout l'intervalle, $F$ est **croissante** sur $[a,b]$ (chapitre "Dérivation" : dérivée positive $\Rightarrow$ fonction croissante). Une fonction croissante vérifie $F(b) \geq F(a)$ dès que $b \geq a$. Donc :
+
+$$\int_a^b f(x)\,\mathrm{d}x = F(b) - F(a) \geq 0$$
+
+Ce n'est pas qu'une histoire d'aire (« une aire ne peut pas être négative ») : c'est une conséquence directe du sens de variation de la primitive.
+
+### Le mécanisme de la comparaison
+
+**Propriété.** Si $f \leq g$ sur $[a,b]$ (avec $a \leq b$), alors $\displaystyle\int_a^b f(x)\,\mathrm{d}x \leq \int_a^b g(x)\,\mathrm{d}x$.
+
+**Pourquoi c'est vrai :** $f \leq g$ signifie $g-f \geq 0$ sur $[a,b]$. Applique la positivité à la fonction $g-f$ :
+
+$$\int_a^b \big(g(x)-f(x)\big)\,\mathrm{d}x \geq 0$$
+
+Par linéarité (R2), le membre de gauche se sépare :
+
+$$\int_a^b g(x)\,\mathrm{d}x - \int_a^b f(x)\,\mathrm{d}x \geq 0$$
+
+$$\int_a^b f(x)\,\mathrm{d}x \leq \int_a^b g(x)\,\mathrm{d}x$$
+
+La comparaison n'est donc pas une nouvelle règle indépendante : c'est la positivité, appliquée à la différence, combinée à la linéarité.
+
+### Exemple travaillé
+
+Sans calculer $\displaystyle\int_0^1 x^2\,\mathrm{d}x$ directement, encadre-la à l'aide de la comparaison.
+
+**Ce qu'on cherche et pourquoi ce geste :** on cherche deux fonctions faciles à intégrer qui encadrent $x^2$ sur $[0,1]$. Sur cet intervalle précis, $0 \leq x \leq 1$, donc $x^2 \leq x$ (multiplier une inégalité entre nombres de $[0,1]$ par $x \geq 0$ ne change pas son sens) — vérifie-le directement : $x - x^2 = x(1-x) \geq 0$ pour $x \in [0,1]$, car les deux facteurs sont positifs sur cet intervalle. On a donc l'encadrement $0 \leq x^2 \leq x$ sur $[0,1]$.
+
+Par positivité (borne du bas) et par comparaison (borne du haut) :
+
+$$0 \leq \int_0^1 x^2\,\mathrm{d}x \leq \int_0^1 x\,\mathrm{d}x$$
+
+Calcule la borne de droite : $\displaystyle\int_0^1 x\,\mathrm{d}x = \left[\frac{x^2}{2}\right]_0^1 = \frac12$. Donc $0 \leq \displaystyle\int_0^1 x^2\,\mathrm{d}x \leq \dfrac12$.
+
+**Vérification :** la valeur exacte est $\displaystyle\int_0^1 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^1 = \dfrac13$. On a bien $0 \leq \dfrac13 \leq \dfrac12$ — l'encadrement tient.
+
+---
+
+## R5 — L'inégalité de la moyenne
+
+### Le mécanisme
+
+**Propriété (inégalité de la moyenne).** Si $f$ est continue sur $[a,b]$ (avec $a \leq b$) et si, pour tout $x \in [a,b]$, $m \leq f(x) \leq M$ (deux constantes), alors :
+
+$$m(b-a) \leq \int_a^b f(x)\,\mathrm{d}x \leq M(b-a)$$
+
+**Pourquoi c'est vrai :** applique deux fois la comparaison du R4, une fois à $m \leq f(x)$, une fois à $f(x) \leq M$ — en traitant $m$ et $M$ comme des fonctions constantes. Une primitive de la fonction constante $x \mapsto m$ est $x \mapsto mx$, donc :
+
+$$\int_a^b m\,\mathrm{d}x = m(b-a) \qquad \text{et} \qquad \int_a^b M\,\mathrm{d}x = M(b-a)$$
+
+La comparaison $m \leq f \leq M$ donne alors directement, en intégrant chaque membre :
+
+$$m(b-a) \leq \int_a^b f(x)\,\mathrm{d}x \leq M(b-a)$$
+
+Une conséquence utile de la même idée, appliquée à $|f|$ : si $|f(x)| \leq M$ sur $[a,b]$, alors $\left|\displaystyle\int_a^b f(x)\,\mathrm{d}x\right| \leq M(b-a)$ (on applique l'encadrement ci-dessus à $m=-M$).
+
+### Exemple travaillé
+
+Encadre $\displaystyle\int_0^1 e^x\,\mathrm{d}x$ sans la calculer, à l'aide de l'inégalité de la moyenne, puis compare à la valeur exacte.
+
+**Ce qu'on cherche et pourquoi ce geste :** on a besoin du minimum et du maximum de $e^x$ sur $[0,1]$. La fonction exponentielle est strictement croissante (chapitre "Fonction exponentielle"), donc sur $[0,1]$ son minimum est atteint en $x=0$ et son maximum en $x=1$ :
+
+$$e^0 \leq e^x \leq e^1 \quad \text{pour } x \in [0,1] \qquad \text{c'est-à-dire} \qquad 1 \leq e^x \leq e$$
+
+Applique l'inégalité de la moyenne avec $m=1$, $M=e$, $b-a=1$ :
+
+$$1 \times 1 \leq \int_0^1 e^x\,\mathrm{d}x \leq e \times 1$$
+
+$$1 \leq \int_0^1 e^x\,\mathrm{d}x \leq e$$
+
+**Vérification :** la valeur exacte est $\displaystyle\int_0^1 e^x\,\mathrm{d}x = \big[e^x\big]_0^1 = e - 1 \approx 1{,}718$. On a bien $1 \leq e-1 \leq e$ (puisque $e \approx 2{,}718$) — l'encadrement est cohérent, et il donne une estimation rapide de la valeur, sans même calculer $e-1$.
+
+---
+
+## R6 — La valeur moyenne d'une fonction
+
+### Le mécanisme
+
+Reprends l'inégalité de la moyenne du R5 : $m(b-a) \leq \displaystyle\int_a^b f(x)\,\mathrm{d}x \leq M(b-a)$. Divise les trois membres par $b-a>0$ :
+
+$$m \leq \frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x \leq M$$
+
+Ce nombre coincé entre $m$ et $M$ a un nom : c'est la **valeur moyenne** de $f$ sur $[a,b]$.
+
+**Définition.** La valeur moyenne de $f$ sur $[a,b]$ est le réel :
+
+$$\boxed{\mu = \frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x}$$
+
+**L'image à garder :** $\mu$ est la hauteur du rectangle de largeur $(b-a)$ dont l'aire est **exactement égale** à l'aire sous la courbe de $f$ sur $[a,b]$ (quand $f \geq 0$). C'est un aplatissement : on remplace une courbe qui monte et qui descend par une seule hauteur constante, choisie pour que l'aire totale ne change pas. Et comme on vient de le montrer, cette hauteur est toujours coincée entre le minimum $m$ et le maximum $M$ de $f$ sur l'intervalle — elle ne peut pas être plus extrême que la fonction elle-même.
+
+### Exemple travaillé
+
+Calcule la valeur moyenne de $f(x)=x^2$ sur $[0,3]$.
+
+**Ce qu'on cherche et pourquoi ce geste :** appliquer directement la définition — calculer d'abord l'intégrale, puis diviser par la longueur de l'intervalle.
+
+$$\int_0^3 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^3 = \frac{27}{3} = 9$$
+
+$$\mu = \frac{1}{3-0}\times 9 = 3$$
+
+La valeur moyenne de $x^2$ sur $[0,3]$ est $3$. Un rectangle de largeur $3$ et de hauteur $3$ a une aire de $9$ — exactement la même aire que sous la parabole entre $0$ et $3$.
+
+**Vérification de cohérence :** sur $[0,3]$, $f$ varie de $m=f(0)=0$ à $M=f(3)=9$. On a bien $0 \leq 3 \leq 9$ : la valeur moyenne est coincée entre le minimum et le maximum, comme le garantit le mécanisme.
+
+---
+
+## R7 — L'intégration par parties
+
+### D'où vient la formule
+
+Toutes les propriétés vues jusqu'ici viennent de la définition et de la linéarité. Celle-ci vient d'ailleurs : de la règle de dérivation d'un produit, que tu connais depuis le chapitre "Dérivation".
+
+Soient $u$ et $v$ deux fonctions dérivables sur $[a,b]$, à dérivées $u'$ et $v'$ continues. La règle du produit donne, pour tout $x \in [a,b]$ :
+
+$$(uv)'(x) = u'(x)v(x) + u(x)v'(x)$$
+
+Cette égalité est vraie **pour tout** $x$ de $[a,b]$ ; intègre les deux membres entre $a$ et $b$ (par linéarité, le membre de droite se sépare en deux intégrales) :
+
+$$\int_a^b (uv)'(x)\,\mathrm{d}x = \int_a^b u'(x)v(x)\,\mathrm{d}x + \int_a^b u(x)v'(x)\,\mathrm{d}x$$
+
+Le membre de gauche se calcule directement : $uv$ est elle-même une primitive de $(uv)'$, donc $\displaystyle\int_a^b (uv)'(x)\,\mathrm{d}x = \big[u(x)v(x)\big]_a^b$. Remplace :
+
+$$\big[u(x)v(x)\big]_a^b = \int_a^b u'(x)v(x)\,\mathrm{d}x + \int_a^b u(x)v'(x)\,\mathrm{d}x$$
+
+Isole le terme en $v'$ — c'est souvent lui qui est difficile à intégrer directement :
+
+$$\boxed{\int_a^b u(x)v'(x)\,\mathrm{d}x = \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x}$$
+
+C'est l'**intégration par parties (IPP)**. Elle ne fait pas disparaître la difficulté : elle **l'échange**. Un produit $u \cdot v'$ difficile à intégrer devient un produit $u' \cdot v$, plus facile, au prix d'un terme de bord $[uv]_a^b$. Le jeu entier de l'IPP consiste à choisir $u$ (dont la dérivée $u'$ doit être plus simple que $u$) et $v'$ (dont une primitive $v$ doit être facile à trouver).
+
+### Exemple travaillé 1
+
+Calcule $\displaystyle\int_0^1 x\,e^x\,\mathrm{d}x$.
+
+**Ce qu'on cherche et pourquoi ce geste :** il faut choisir quel facteur dériver et quel facteur primitiver. Si on dérive $x$, on obtient $1$ — plus simple. Si on dérive $e^x$, on obtient encore $e^x$ — ça ne simplifie rien. Le bon choix est donc $u=x$ (car $u'=1$ est plus simple que $u$) et $v'=e^x$ (dont une primitive $v=e^x$ est immédiate). Le mauvais réflexe serait de poser $u=e^x$ et $v'=x$ : on obtiendrait $v=\frac{x^2}{2}$, ce qui complique l'intégrale suivante au lieu de la simplifier.
+
+Avec $u=x$ ($u'=1$) et $v'=e^x$ ($v=e^x$) :
+
+$$\int_0^1 x\,e^x\,\mathrm{d}x = \big[x\,e^x\big]_0^1 - \int_0^1 1\cdot e^x\,\mathrm{d}x$$
+
+$$= \big(1\cdot e^1 - 0\cdot e^0\big) - \big[e^x\big]_0^1$$
+
+$$= e - (e-1)$$
+
+$$= 1$$
+
+### Exemple travaillé 2
+
+Calcule $\displaystyle\int_1^e \ln(x)\,\mathrm{d}x$.
+
+**Ce qu'on cherche et pourquoi ce geste :** ici, il n'y a pas de produit visible — seulement $\ln(x)$. Le geste classique : écrire $\ln(x) = 1 \times \ln(x)$, et poser $u=\ln(x)$ (car $u'=\frac1x$ est plus simple que $\ln(x)$ lui-même) et $v'=1$ (dont la primitive la plus simple est $v=x$).
+
+Avec $u=\ln(x)$ ($u'=\frac1x$) et $v'=1$ ($v=x$) :
+
+$$\int_1^e \ln(x)\,\mathrm{d}x = \big[x\ln(x)\big]_1^e - \int_1^e x\cdot\frac1x\,\mathrm{d}x$$
+
+$$= \big[x\ln(x)\big]_1^e - \int_1^e 1\,\mathrm{d}x$$
+
+$$= \big(e\ln(e) - 1\ln(1)\big) - \big[x\big]_1^e$$
+
+$$= (e - 0) - (e-1)$$
+
+$$= 1$$
+
+Les deux exemples tombent sur $1$ — pas par miracle, juste parce que les nombres ont été choisis pour rester lisibles ; ce qui compte, c'est la méthode : boundary term moins l'intégrale du produit dérivé-primitivé.
+
+---
+
+## R8 — Calculer des aires : sous une courbe, entre deux courbes, et les unités d'aire
+
+### Le piège : l'intégrale signée n'est pas toujours l'aire
+
+Tout ce qu'on a vu au R1 suppose $f \geq 0$. Dès que $f$ change de signe sur l'intervalle, $\displaystyle\int_a^b f(x)\,\mathrm{d}x$ n'est **plus** l'aire — les parties où $f<0$ soustraient de la valeur au lieu d'ajouter, alors qu'une aire est toujours positive. La méthode : repérer les intervalles où $f \geq 0$ et ceux où $f \leq 0$ (typiquement en cherchant les racines de $f$), utiliser Chasles (R3) pour découper, et prendre la valeur absolue de chaque morceau négatif.
+
+### Exemple travaillé : une courbe qui change de signe
+
+Calcule l'aire de la région délimitée par la courbe de $f(x)=x^2-4$, l'axe des abscisses, et les droites $x=0$ et $x=3$.
+
+**Ce qu'on cherche et pourquoi ce geste :** avant d'intégrer quoi que ce soit, il faut savoir où $f$ change de signe. $f(x)=0 \iff x^2=4 \iff x=2$ (seule racine dans $[0,3]$, puisque $x=-2$ n'y est pas). Teste un point de chaque côté : $f(0)=-4<0$ et $f(3)=5>0$. Donc $f \leq 0$ sur $[0,2]$ et $f \geq 0$ sur $[2,3]$ — la courbe traverse l'axe en $x=2$.
+
+Une primitive de $f$ est $F(x) = \dfrac{x^3}{3}-4x$.
+
+$$F(0)=0 \qquad F(2) = \frac83-8 = -\frac{16}{3} \qquad F(3) = 9-12 = -3$$
+
+Sur $[0,2]$, $f \leq 0$, donc l'aire de ce morceau est l'**opposé** de l'intégrale :
+
+$$\text{aire}_{[0,2]} = -\int_0^2 f(x)\,\mathrm{d}x = -\big(F(2)-F(0)\big) = -\left(-\frac{16}{3}\right) = \frac{16}{3}$$
+
+Sur $[2,3]$, $f \geq 0$, donc l'aire de ce morceau est directement l'intégrale :
+
+$$\text{aire}_{[2,3]} = \int_2^3 f(x)\,\mathrm{d}x = F(3)-F(2) = -3-\left(-\frac{16}{3}\right) = \frac{7}{3}$$
+
+Par Chasles, l'aire totale est la somme de ces deux morceaux — **jamais** leur différence, puisqu'une aire s'accumule :
+
+$$\text{aire totale} = \frac{16}{3}+\frac{7}{3} = \frac{23}{3}\ \text{u.a.}$$
+
+**L'erreur à repérer :** si tu avais calculé directement $\displaystyle\int_0^3 f(x)\,\mathrm{d}x = F(3)-F(0) = -3$, tu aurais obtenu un nombre **négatif** — ce n'est déjà pas une aire. Et si tu avais pris la valeur absolue de ce résultat global, $|-3|=3$, ce n'est **toujours pas** la bonne aire ($\frac{23}{3} \approx 7{,}67 \neq 3$) : la partie positive et la partie négative se sont annulées partiellement dans l'intégrale globale avant que tu ne prennes la valeur absolue. Il faut découper **avant** de prendre les valeurs absolues, pas après.
+
+### Aire entre deux courbes
+
+Pour l'aire entre les courbes de $f$ et de $g$ sur $[a,b]$, le même principe s'applique à leur différence : l'aire est $\displaystyle\int_a^b |f(x)-g(x)|\,\mathrm{d}x$, ce qui, en pratique, demande de déterminer d'abord le signe de $f-g$ (souvent en résolvant $f(x)=g(x)$ pour trouver les points d'intersection, puis en testant un point de chaque sous-intervalle).
+
+**Exemple travaillé.** Calcule l'aire de la région comprise entre les courbes de $f(x)=x$ et $g(x)=x^2$, entre leurs deux points d'intersection.
+
+**Ce qu'on cherche et pourquoi ce geste :** trouver d'abord où les deux courbes se croisent, puis déterminer laquelle est au-dessus sur l'intervalle entre ces points.
+
+$$f(x)=g(x) \iff x=x^2 \iff x(1-x)=0 \iff x=0 \text{ ou } x=1$$
+
+Sur $[0,1]$, teste un point, par exemple $x=0{,}5$ : $f(0{,}5)=0{,}5$ et $g(0{,}5)=0{,}25$, donc $f \geq g$ sur $[0,1]$ (vérifie-le en général : $x-x^2=x(1-x) \geq 0$ pour $x \in [0,1]$, comme au R4). Comme le signe de $f-g$ ne change pas sur $[0,1]$, l'aire s'obtient directement, sans découpage :
+
+$$\text{aire} = \int_0^1 \big(x-x^2\big)\,\mathrm{d}x = \left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1 = \frac12-\frac13$$
+
+$$\text{aire} = \frac16\ \text{u.a.}$$
+
+### Les unités d'aire, converties en cm²
+
+L'unité d'aire (u.a.) dépend du repère choisi : c'est l'aire du rectangle de côtés $1$ (une unité sur l'axe des abscisses) et $1$ (une unité sur l'axe des ordonnées). Si un exercice précise que le repère est gradué à raison de $2\ \text{cm}$ par unité sur chaque axe, alors :
+
+$$1\ \text{u.a.} = 2\ \text{cm} \times 2\ \text{cm} = 4\ \text{cm}^2$$
+
+Pour l'exemple précédent, l'aire réelle serait $\dfrac16 \times 4 = \dfrac23\ \text{cm}^2$. Le réflexe : ne jamais convertir avant d'avoir fini le calcul en unités d'aire — l'intégrale donne toujours un nombre en u.a., et la conversion vers cm² (ou toute autre unité de longueur) vient à la toute fin, en multipliant par le produit des deux échelles du repère.
+
+---
+
+## R9 — Pour t'entraîner
+
+Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — un exercice d'entraînement construit pour cette leçon), qui combine l'intégration par parties, l'aire sous une courbe, et la valeur moyenne.
+
+### Exercice travaillé
+
+Soit $f$ la fonction définie sur $\left]0,+\infty\right[$ par $f(x) = x\ln(x)$.
+
+**1.** Calcule, à l'aide d'une intégration par parties, $\displaystyle\int_1^e f(x)\,\mathrm{d}x$.
+
+**2.** Justifie que $f \geq 0$ sur $[1,e]$, puis déduis-en l'aire de la région délimitée par la courbe de $f$, l'axe des abscisses, et les droites $x=1$ et $x=e$.
+
+**3.** Calcule la valeur moyenne de $f$ sur $[1,e]$.
+
+**Raisonnement à voix haute.**
+
+**1.** **Ce qu'on cherche et pourquoi ce geste :** $x\ln(x)$ est un produit ; on dérive le facteur qui se simplifie ($\ln(x)$, dont la dérivée $\frac1x$ est plus simple) et on primitive l'autre ($x$, dont une primitive immédiate est $\frac{x^2}{2}$). Pose $u=\ln(x)$ ($u'=\frac1x$) et $v'=x$ ($v=\frac{x^2}{2}$) :
+
+$$\int_1^e x\ln(x)\,\mathrm{d}x = \left[\frac{x^2}{2}\ln(x)\right]_1^e - \int_1^e \frac{x^2}{2}\times\frac1x\,\mathrm{d}x$$
+
+$$= \left[\frac{x^2}{2}\ln(x)\right]_1^e - \int_1^e \frac{x}{2}\,\mathrm{d}x$$
+
+Le terme de bord : en $x=e$, $\frac{e^2}{2}\ln(e) = \frac{e^2}{2}$ (car $\ln(e)=1$) ; en $x=1$, $\frac12\ln(1)=0$ (car $\ln(1)=0$). Donc le terme de bord vaut $\frac{e^2}{2}$.
+
+L'intégrale restante : $\displaystyle\int_1^e \frac{x}{2}\,\mathrm{d}x = \left[\frac{x^2}{4}\right]_1^e = \frac{e^2}{4}-\frac14$.
+
+$$\int_1^e x\ln(x)\,\mathrm{d}x = \frac{e^2}{2} - \left(\frac{e^2}{4}-\frac14\right) = \frac{e^2}{4}+\frac14$$
+
+$$\int_1^e x\ln(x)\,\mathrm{d}x = \frac{e^2+1}{4}$$
+
+**2.** **Ce qu'on cherche et pourquoi ce geste :** avant de parler d'aire, il faut vérifier que $f$ ne change pas de signe sur $[1,e]$ — sinon il faudrait découper comme au R8. Sur $[1,e]$, $x>0$ toujours, et $\ln(x) \geq 0$ car $\ln$ est croissante et $\ln(1)=0$ (chapitre "Fonction logarithme"), donc $x \geq 1 \Rightarrow \ln(x) \geq 0$. Un produit de deux facteurs positifs est positif : $f(x)=x\ln(x) \geq 0$ sur tout $[1,e]$. Pas de changement de signe, donc pas de découpage à faire : l'aire est directement l'intégrale calculée en 1.
+
+$$\text{aire} = \frac{e^2+1}{4}\ \text{u.a.}$$
+
+**3.** **Ce qu'on cherche et pourquoi ce geste :** appliquer la définition du R6 — diviser l'intégrale déjà calculée par la longueur de l'intervalle, $e-1$.
+
+$$\mu = \frac{1}{e-1}\int_1^e f(x)\,\mathrm{d}x = \frac{e^2+1}{4(e-1)}$$
+
+### À toi de jouer
+
+**(a)** Calcule, à l'aide d'une intégration par parties, $\displaystyle\int_0^1 (x+1)\,e^x\,\mathrm{d}x$.
+
+**(b)** Calcule l'aire de la région délimitée par les courbes d'équations $y=x^2$ et $y=-x^2+4x$ (commence par trouver leurs points d'intersection, et détermine laquelle des deux courbes est au-dessus entre ces points).
+
+<!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus par
+     cet auteur :
+     (1) skill_code proposé : `maths_calcul_integral`, même convention que
+     `maths_fonction_logarithme` déjà présente dans le corpus. À confirmer
+     contre une éventuelle convention de préfixe par filière (le corpus
+     contient aussi des skill_code préfixés `sma_`) avant intégration en base.
+     (2) Cette leçon suppose que le chapitre "Fonctions primitives" précède
+     "Calcul intégral" dans la progression (ordre standard marocain :
+     logarithme -> exponentielle -> primitives -> calcul intégral), et que
+     l'élève maîtrise déjà les primitives usuelles (polynômes, 1/x -> ln,
+     e^x, sin/cos). Le dossier `content/maths/primitives/` n'existe pas
+     encore dans ce corpus — la continuité de voix/notation a été vérifiée
+     contre `fonction-logarithme` (qui admet lui-même l'existence des
+     primitives) plutôt que contre un chapitre "Primitives" propre. À
+     confirmer que cet ordre correspond bien à la progression réelle du
+     produit.
+     (3) Terminologie "inégalité de la moyenne" (R5) : à confirmer qu'elle
+     correspond au nom utilisé dans les manuels marocains SM (certains
+     manuels français distinguent "inégalité de la moyenne" de la version
+     stricte avec valeur absolue ; ici les deux formes sont présentées comme
+     une seule propriété avec son corollaire).
+     (4) Bornes de difficulté des items.yaml : les 6 items couvrent R1, R2,
+     R4, R6, R7, R8 ; R3 (Chasles) et R5 (inégalité de la moyenne) ne sont
+     pas couverts par un item dédié — laissé à la discrétion de la relecture
+     pédagogique, le format 4-6 items du brief étant déjà atteint.
+-->

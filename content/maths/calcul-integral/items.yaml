@@ -1,0 +1,307 @@
+notion: calcul-integral
+skill_code: maths_calcul_integral   # proposed; supabase-architect reconciles at step 7
+misconceptions: []
+
+items:
+
+  - id: CI-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_integrale, definition]
+    stem: >
+      Soit $f(x) = x^2$ sur $[1,3]$. Pour calculer $\int_1^3 f(x)\,\mathrm{d}x$,
+      un élève utilise la primitive $F(x) = \dfrac{x^3}{3} + 5$ au lieu de
+      $\dfrac{x^3}{3}$. Que vaut le résultat obtenu avec cette primitive ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{26}{3}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{41}{3}$"
+        correct: false
+        feedback: >
+          Ce choix ajoute $5$ au résultat final, comme si la constante ne
+          disparaissait pas. Mais $F(3)-F(1) = \left(9+5\right) -
+          \left(\tfrac13+5\right)$ : les deux $5$ s'annulent dans la
+          soustraction, exactement comme démontré au R1. Le résultat ne
+          dépend jamais de la constante choisie pour la primitive.
+      - id: C
+        text: "$-\\dfrac{26}{3}$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $F(1)-F(3)$ au lieu de $F(3)-F(1)$ :
+          l'ordre des bornes a été inversé. L'intégrale $\int_1^3$ se calcule
+          toujours borne du haut moins borne du bas.
+      - id: D
+        text: "$14$"
+        correct: false
+        feedback: >
+          $14$ est la valeur de $F(3)$ seule — la soustraction de $F(1)$ a
+          été complètement oubliée. Une intégrale $\int_a^b f$ n'est jamais
+          la valeur d'une primitive en un seul point, c'est toujours une
+          différence $F(b)-F(a)$.
+    correct_feedback: >
+      La constante ajoutée à une primitive s'annule toujours dans la
+      soustraction $F(b)-F(a)$ : $\left(9+5\right)-\left(\tfrac13+5\right) =
+      9-\tfrac13 = \tfrac{26}{3}$, exactement le même résultat qu'avec la
+      primitive $\tfrac{x^3}{3}$ seule.
+    solution: |
+      **Avec $F(x)=\dfrac{x^3}{3}$ :**
+      $$\int_1^3 x^2\,\mathrm{d}x = F(3)-F(1) = 9 - \frac13 = \frac{26}{3}$$
+
+      **Avec $F(x)=\dfrac{x^3}{3}+5$ :**
+      $$F(3)-F(1) = \left(9+5\right) - \left(\frac13+5\right) = 9 - \frac13 = \frac{26}{3}$$
+
+      Les deux calculs donnent exactement le même nombre : la constante $+5$
+      s'annule dans la soustraction, quel que soit son rôle.
+
+  - id: CI-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [linearite]
+    stem: >
+      On donne $\int_0^2 f(x)\,\mathrm{d}x = 5$ et $\int_0^2 g(x)\,\mathrm{d}x
+      = 3$. Que vaut $\int_0^2 \big(3f(x)-2g(x)\big)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$9$"
+        correct: true
+      - id: B
+        text: "$2$"
+        correct: false
+        feedback: >
+          Ce choix calcule $5-3=2$, en ignorant complètement les coefficients
+          $3$ et $2$. La linéarité dit que chaque intégrale doit d'abord être
+          multipliée par son propre coefficient avant de combiner :
+          $3\times 5 - 2\times 3$, pas $5-3$.
+      - id: C
+        text: "$21$"
+        correct: false
+        feedback: >
+          Ce choix calcule $3\times 5 + 2\times 3 = 21$ : le signe moins
+          entre les deux termes a été remplacé par un plus. L'expression
+          demandée est une différence, $3f-2g$, pas une somme.
+      - id: D
+        text: "$-9$"
+        correct: false
+        feedback: >
+          Ce choix calcule $2\times 3 - 3\times 5 = -9$ : les deux termes ont
+          été inversés. Le premier terme de l'expression $3f-2g$ correspond
+          au coefficient de $f$ ($3\times 5$), pas à celui de $g$.
+    correct_feedback: >
+      Par linéarité, $\int_0^2 (3f-2g)(x)\,\mathrm{d}x = 3\int_0^2 f(x)\,
+      \mathrm{d}x - 2\int_0^2 g(x)\,\mathrm{d}x = 3\times 5 - 2\times 3 =
+      15-6=9$.
+    solution: |
+      **Linéarité (R2) :**
+      $$\int_0^2 \big(3f(x)-2g(x)\big)\,\mathrm{d}x = 3\int_0^2 f(x)\,\mathrm{d}x - 2\int_0^2 g(x)\,\mathrm{d}x$$
+
+      **Application numérique :**
+      $$3\times 5 - 2\times 3 = 15-6 = 9$$
+
+  - id: CI-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [positivite, comparaison]
+    stem: >
+      Pour tout $x \in [1,4]$, on a $0 \leq f(x) \leq g(x)$, et
+      $\int_1^4 g(x)\,\mathrm{d}x = 10$. Que peut-on affirmer avec certitude
+      sur $\int_1^4 f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0 \\leq \\int_1^4 f(x)\\,\\mathrm{d}x \\leq 10$"
+        correct: true
+      - id: B
+        text: "$\\int_1^4 f(x)\\,\\mathrm{d}x = 10$"
+        correct: false
+        feedback: >
+          $f \leq g$ ne veut pas dire $f=g$ : on sait seulement que $f$ reste
+          en dessous de $g$, pas qu'elle lui est égale. Rien dans l'énoncé ne
+          permet de conclure à une égalité exacte des deux intégrales.
+      - id: C
+        text: "$\\int_1^4 f(x)\\,\\mathrm{d}x \\geq 10$"
+        correct: false
+        feedback: >
+          C'est l'inégalité inversée. Puisque $f \leq g$ sur tout
+          l'intervalle, la comparaison du R4 donne $\int_1^4 f \leq \int_1^4
+          g = 10$, pas l'inverse.
+      - id: D
+        text: "On ne peut rien affirmer, car le signe de $f$ n'est pas garanti."
+        correct: false
+        feedback: >
+          L'énoncé donne justement $0 \leq f(x)$ sur tout l'intervalle : le
+          signe de $f$ est garanti positif. Combinée à $f \leq g$, la
+          positivité et la comparaison du R4 suffisent pour encadrer
+          $\int_1^4 f$ entre $0$ et $10$.
+    correct_feedback: >
+      Par positivité, $\int_1^4 f(x)\,\mathrm{d}x \geq 0$ (car $f \geq 0$).
+      Par comparaison, $\int_1^4 f(x)\,\mathrm{d}x \leq \int_1^4 g(x)\,
+      \mathrm{d}x = 10$ (car $f \leq g$). Les deux bornes combinées donnent
+      l'encadrement.
+    solution: |
+      **Positivité (R4) :** $f \geq 0$ sur $[1,4]$, donc
+      $$\int_1^4 f(x)\,\mathrm{d}x \geq 0$$
+
+      **Comparaison (R4) :** $f \leq g$ sur $[1,4]$, donc
+      $$\int_1^4 f(x)\,\mathrm{d}x \leq \int_1^4 g(x)\,\mathrm{d}x = 10$$
+
+      **Conclusion :** $0 \leq \int_1^4 f(x)\,\mathrm{d}x \leq 10$.
+
+  - id: CI-4
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [valeur_moyenne]
+    stem: >
+      On donne $\int_2^5 f(x)\,\mathrm{d}x = 12$. Quelle est la valeur
+      moyenne de $f$ sur $[2,5]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4$"
+        correct: true
+      - id: B
+        text: "$12$"
+        correct: false
+        feedback: >
+          Ce choix oublie complètement de diviser par la longueur de
+          l'intervalle. La valeur moyenne n'est pas l'intégrale elle-même,
+          c'est l'intégrale divisée par $b-a$.
+      - id: C
+        text: "$2{,}4$"
+        correct: false
+        feedback: >
+          Ce choix divise par $5$ (la borne supérieure seule) au lieu de
+          $b-a=5-2=3$ (la longueur de l'intervalle). Le dénominateur de la
+          valeur moyenne est toujours une longueur, jamais une borne isolée.
+      - id: D
+        text: "$36$"
+        correct: false
+        feedback: >
+          Ce choix multiplie $12$ par $3$ au lieu de diviser. La définition
+          de la valeur moyenne est $\mu = \dfrac{1}{b-a}\int_a^b f(x)\,
+          \mathrm{d}x$ — une division, pas une multiplication par $(b-a)$.
+    correct_feedback: >
+      $\mu = \dfrac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x = \dfrac{1}{5-2}\times
+      12 = \dfrac{12}{3} = 4$.
+    solution: |
+      **Définition (R6) :**
+      $$\mu = \frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x = \frac{1}{5-2}\times 12$$
+
+      $$\mu = \frac{12}{3} = 4$$
+
+  - id: CI-5
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [integration_par_parties]
+    stem: >
+      Pour calculer $\int_0^1 x\,e^{2x}\,\mathrm{d}x$ par intégration par
+      parties, quel choix de $u$ et $v'$ est le plus efficace ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u=x$ et $v'=e^{2x}$"
+        correct: true
+      - id: B
+        text: "$u=e^{2x}$ et $v'=x$"
+        correct: false
+        feedback: >
+          Dériver $e^{2x}$ redonne $2e^{2x}$ : ça ne simplifie rien, la
+          fonction exponentielle reste aussi compliquée après dérivation.
+          En plus, primitiver $x$ donne $\tfrac{x^2}{2}$, qui complique le
+          produit au lieu de le simplifier. Le facteur à dériver doit
+          devenir PLUS simple, pas rester identique.
+      - id: C
+        text: "$u=x\\,e^{2x}$ et $v'=1$"
+        correct: false
+        feedback: >
+          Prendre le produit entier comme $u$ ne sépare rien : dériver
+          $x\,e^{2x}$ (règle du produit) redonne une expression aussi
+          compliquée que celle de départ, voire plus. L'IPP n'a d'intérêt
+          que si on sépare les deux facteurs du produit d'origine.
+      - id: D
+        text: "L'intégration par parties ne s'applique pas ici, car il n'y a qu'un seul terme."
+        correct: false
+        feedback: >
+          $x\,e^{2x}$ est bien un produit de deux fonctions différentes,
+          $x$ et $e^{2x}$ — exactement la situation où l'IPP s'applique. Ce
+          n'est pas parce que l'expression s'écrit sans signe $\times$
+          explicite qu'il n'y a pas de produit.
+    correct_feedback: >
+      Avec $u=x$, $u'=1$ est plus simple que $u$ — c'est le signal que
+      $u=x$ est le bon choix. Et $v'=e^{2x}$ se primitive facilement en
+      $v=\tfrac12 e^{2x}$. Le terme en $v'$ disparaît au profit d'un terme
+      en $u'\cdot v$ plus simple, exactement le mécanisme du R7.
+    solution: |
+      **Choix : $u=x$ ($u'=1$), $v'=e^{2x}$ ($v=\tfrac12 e^{2x}$).**
+
+      L'IPP transforme le produit $x \cdot e^{2x}$ (où $x$ ne se simplifie
+      qu'en disparaissant par dérivation) en un terme de bord moins
+      $\int \tfrac12 e^{2x}\,\mathrm{d}x$, une intégrale immédiate. Le choix
+      inverse ($u=e^{2x}$) ne simplifie jamais rien, car dériver
+      l'exponentielle la reproduit à l'identique.
+
+  - id: CI-6
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [aires, changement_de_signe]
+    stem: >
+      La courbe de $f(x)=x^2-4$ change de signe sur $[0,3]$ (racine en
+      $x=2$) : $f \leq 0$ sur $[0,2]$ et $f \geq 0$ sur $[2,3]$. Quelle est
+      la bonne démarche pour calculer l'AIRE (et non l'intégrale signée)
+      entre la courbe et l'axe des abscisses sur $[0,3]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Calculer directement $\\int_0^3 f(x)\\,\\mathrm{d}x$ et prendre ce nombre comme l'aire."
+        correct: false
+        feedback: >
+          $\int_0^3 f(x)\,\mathrm{d}x = -3$ : la partie où $f \leq 0$
+          soustrait de la valeur au lieu de s'ajouter à l'aire. Ce nombre
+          n'est même pas positif — ce ne peut pas être une aire.
+      - id: B
+        text: "Calculer $\\int_0^3 f(x)\\,\\mathrm{d}x$, puis prendre sa valeur absolue."
+        correct: false
+        feedback: >
+          $\left|\int_0^3 f(x)\,\mathrm{d}x\right| = |-3| = 3$, mais l'aire
+          réelle vaut $\tfrac{23}{3}\approx 7{,}67$. Prendre la valeur
+          absolue APRÈS avoir tout additionné ne corrige pas l'annulation
+          partielle qui a déjà eu lieu entre la partie négative et la partie
+          positive.
+      - id: C
+        text: "Découper en $[0,2]$ et $[2,3]$, calculer $-\\int_0^2 f(x)\\,\\mathrm{d}x$ et $\\int_2^3 f(x)\\,\\mathrm{d}x$ séparément, puis additionner."
+        correct: true
+      - id: D
+        text: "Calculer $-\\int_0^3 f(x)\\,\\mathrm{d}x$ directement, en supposant que la courbe entière est sous l'axe."
+        correct: false
+        feedback: >
+          $f$ n'est PAS sous l'axe sur tout l'intervalle : elle est positive
+          sur $[2,3]$. Traiter tout l'intervalle comme s'il était
+          uniformément négatif ignore le changement de signe en $x=2$.
+    correct_feedback: >
+      Il faut découper au point où $f$ change de signe (Chasles, R3),
+      prendre l'opposé de l'intégrale là où $f \leq 0$, garder l'intégrale
+      telle quelle là où $f \geq 0$, puis additionner :
+      $\tfrac{16}{3}+\tfrac{7}{3} = \tfrac{23}{3}$ u.a. — exactement le
+      calcul fait au R8.
+    solution: |
+      **Découpage à la racine $x=2$ (Chasles, R3) :**
+
+      Sur $[0,2]$, $f \leq 0$ : $\text{aire}_{[0,2]} = -\int_0^2 f(x)\,\mathrm{d}x = \dfrac{16}{3}$
+
+      Sur $[2,3]$, $f \geq 0$ : $\text{aire}_{[2,3]} = \int_2^3 f(x)\,\mathrm{d}x = \dfrac{7}{3}$
+
+      **Aire totale (somme, jamais différence) :**
+      $$\text{aire} = \frac{16}{3}+\frac{7}{3} = \frac{23}{3}\ \text{u.a.}$$
+
+      À comparer aux deux pièges : l'intégrale directe donne $-3$ (signée,
+      pas une aire), et sa valeur absolue donne $3$ (toujours faux, car
+      l'annulation a déjà eu lieu avant la valeur absolue).
