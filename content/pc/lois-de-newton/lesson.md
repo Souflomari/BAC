@@ -280,7 +280,7 @@ Remarque : ni $t_{sol}$ ni $v_G(t_{sol})$ ne dépendent de la masse de l'objet l
 
 ## R7 — Application : solide sur un plan incliné, avec frottement
 
-On reprend la méthode de R5, sur un cas plus riche : un solide de masse $m = 1{,}0\ \text{kg}$ glisse, sans vitesse initiale, sur un plan incliné faisant un angle $\alpha = 30°$ avec l'horizontale. Les frottements exercent une force $\vec{f}$, de norme $f = 2{,}0\ \text{N}$, opposée au sens de la descente. On prend $g \approx 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
+On reprend la méthode de R5, sur un cas plus riche : un solide de masse $m = 1{,}0\ \text{kg}$ glisse, sans vitesse initiale, sur un plan incliné faisant un angle $\alpha = 30^\circ$ avec l'horizontale. Les frottements exercent une force $\vec{f}$, de norme $f = 2{,}0\ \text{N}$, opposée au sens de la descente. On prend $g \approx 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
 
 ### Bilan des forces et repère
 
@@ -292,7 +292,7 @@ On reprend la méthode de R5, sur un cas plus riche : un solide de masse $m = 1{
 
 Le poids $\vec{P}$ est toujours vertical, mais le repère qu'on vient de choisir est incliné par rapport à la verticale — d'où la nécessité de décomposer $\vec{P}$ selon $Ox$ et $Oy$.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* pour vérifier que la décomposition est dans le bon sens, regarde les deux cas extrêmes. Si $\alpha \to 0°$ (le plan devient horizontal), le poids ne doit avoir AUCUNE composante le long du plan, et toute sa norme doit se retrouver perpendiculairement : c'est bien ce que donnent $\sin 0° = 0$ et $\cos 0° = 1$. Si $\alpha \to 90°$ (le plan devient vertical, une chute libre le long d'une paroi), le poids doit se retrouver ENTIÈREMENT le long du plan : $\sin 90° = 1$ et $\cos 90° = 0$ confirment ça aussi. C'est ce test aux deux extrêmes qui fixe, sans ambiguïté, que la composante le long du plan est $mg\sin\alpha$ et la composante perpendiculaire est $mg\cos\alpha$ — pas l'inverse.
+*Ce qu'on cherche ici, et pourquoi ce geste :* pour vérifier que la décomposition est dans le bon sens, regarde les deux cas extrêmes. Si $\alpha \to 0^\circ$ (le plan devient horizontal), le poids ne doit avoir AUCUNE composante le long du plan, et toute sa norme doit se retrouver perpendiculairement : c'est bien ce que donnent $\sin 0^\circ = 0$ et $\cos 0^\circ = 1$. Si $\alpha \to 90^\circ$ (le plan devient vertical, une chute libre le long d'une paroi), le poids doit se retrouver ENTIÈREMENT le long du plan : $\sin 90^\circ = 1$ et $\cos 90^\circ = 0$ confirment ça aussi. C'est ce test aux deux extrêmes qui fixe, sans ambiguïté, que la composante le long du plan est $mg\sin\alpha$ et la composante perpendiculaire est $mg\cos\alpha$ — pas l'inverse.
 
 $$P_x = mg\sin\alpha \qquad P_y = -mg\cos\alpha$$
 
@@ -308,7 +308,7 @@ $$-mg\cos\alpha + N = 0$$
 
 $$N = mg\cos\alpha$$
 
-$$N = 1{,}0 \times 9{,}8 \times \cos 30° \approx 1{,}0 \times 9{,}8 \times 0{,}87 \approx 8{,}5\ \text{N}$$
+$$N = 1{,}0 \times 9{,}8 \times \cos 30^\circ \approx 1{,}0 \times 9{,}8 \times 0{,}87 \approx 8{,}5\ \text{N}$$
 
 **Projection sur $Ox$ :** le frottement s'oppose à la descente, donc sa composante selon $Ox$ (orienté dans le sens de la descente) est $-f$.
 
@@ -316,7 +316,7 @@ $$mg\sin\alpha - f = m\,a_{G,x}$$
 
 $$a_{G,x} = g\sin\alpha - \frac{f}{m}$$
 
-$$a_{G,x} = 9{,}8 \times \sin 30° - \frac{2{,}0}{1{,}0} = 9{,}8 \times 0{,}5 - 2{,}0 = 4{,}9 - 2{,}0 = 2{,}9\ \text{m}\cdot\text{s}^{-2}$$
+$$a_{G,x} = 9{,}8 \times \sin 30^\circ - \frac{2{,}0}{1{,}0} = 9{,}8 \times 0{,}5 - 2{,}0 = 4{,}9 - 2{,}0 = 2{,}9\ \text{m}\cdot\text{s}^{-2}$$
 
 Le solide accélère bien dans le sens de la descente ($a_{G,x} > 0$), parce que la composante motrice du poids ($4{,}9\ \text{N}$, en divisant par $m=1{,}0$ kg cela donne $4{,}9\ \text{m}\cdot\text{s}^{-2}$) l'emporte sur le frottement résistant. Si le frottement avait été plus grand que $mg\sin\alpha$, on aurait trouvé $a_{G,x} < 0$ : le solide, s'il était déjà en mouvement, aurait décéléré ; s'il partait du repos, il ne se serait tout simplement pas mis en mouvement — le frottement statique aurait suffi à le retenir, un cas qui sort du cadre de ce chapitre mais qu'il est utile de savoir reconnaître.
 
