@@ -226,7 +226,7 @@ $y_M(t) = 0$ pour $t < 300\ \text{ms}$ ; puis $y_M$ croît linéairement de $0$ 
 
 $$\tau' = \frac{d'}{v} = \frac{0{,}9}{2} = 0{,}45\ \text{s} = 450\ \text{ms}$$
 
-**6) Un camarade affirme : « l'eau — pardon, la corde — se déplace de $S$ jusqu'à $M$, c'est ça une onde. » Commente cette affirmation.**
+**6) Un camarade affirme : « la corde se déplace de $S$ jusqu'à $M$, c'est ça une onde. » Commente cette affirmation.**
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* c'est exactement la confusion levée en R1 — il faut la nommer précisément, pas juste dire que c'est faux.
 

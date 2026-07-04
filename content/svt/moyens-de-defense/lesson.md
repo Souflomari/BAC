@@ -221,7 +221,7 @@ Si les anticorps détruisaient directement les bactéries au contact, on observe
 
 ### Le problème laissé en suspens au R5
 
-On vient de établir un fait important : une fois qu'un virus est entré à l'intérieur d'une cellule de l'organisme, aucun anticorps circulant ne peut plus l'atteindre. Pourtant, une cellule infectée par un virus qui s'y multiplie représente un vrai danger — elle va produire et libérer de nouvelles particules virales, qui iront infecter d'autres cellules. Comment l'organisme s'en débarrasse-t-il, si les anticorps ne peuvent rien contre elle ?
+On vient d'établir un fait important : une fois qu'un virus est entré à l'intérieur d'une cellule de l'organisme, aucun anticorps circulant ne peut plus l'atteindre. Pourtant, une cellule infectée par un virus qui s'y multiplie représente un vrai danger — elle va produire et libérer de nouvelles particules virales, qui iront infecter d'autres cellules. Comment l'organisme s'en débarrasse-t-il, si les anticorps ne peuvent rien contre elle ?
 
 ### Le mécanisme : reconnaître, puis détruire la cellule elle-même
 

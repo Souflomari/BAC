@@ -334,7 +334,7 @@ $$= (e - 0) - (e-1)$$
 
 $$= 1$$
 
-Les deux exemples tombent sur $1$ — pas par miracle, juste parce que les nombres ont été choisis pour rester lisibles ; ce qui compte, c'est la méthode : boundary term moins l'intégrale du produit dérivé-primitivé.
+Les deux exemples tombent sur $1$ — pas par miracle, juste parce que les nombres ont été choisis pour rester lisibles ; ce qui compte, c'est la méthode : le terme de bord moins l'intégrale du produit dérivé-primitivé.
 
 ---
 

@@ -149,7 +149,7 @@ Une lumière **monochromatique** est constituée d'une seule longueur d'onde $\l
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* avant de faire le moindre calcul, il faut distinguer clairement deux grandeurs qu'on confond facilement — la fréquence $\nu$ et la longueur d'onde $\lambda$ — car elles ne se comportent pas du tout de la même façon quand la lumière change de milieu.
 
-La fréquence $\nu$ d'une radiation lumineuse est imposée par la source qui l'émet : c'est le rythme auquel les champs électrique et magnétique oscillent. Ce rythme ne change pas quand la lumière franchit une interface et passe d'un milieu à un autre : la fréquence $\nu$ est **invariante**, la même dans le vide et dans n'importe quel milieu traversé.
+La fréquence $\nu$ d'une radiation lumineuse — c'est la même grandeur que la fréquence notée $f$ dans les chapitres sur les ondes mécaniques ; pour la lumière, on la note traditionnellement $\nu$ (lettre grecque « nu ») — est imposée par la source qui l'émet : c'est le rythme auquel les champs électrique et magnétique oscillent. Ce rythme ne change pas quand la lumière franchit une interface et passe d'un milieu à un autre : la fréquence $\nu$ est **invariante**, la même dans le vide et dans n'importe quel milieu traversé.
 
 La longueur d'onde, elle, est liée à la vitesse de propagation par la relation $\lambda = v/\nu$. Or $v$ change d'un milieu à l'autre (R2), donc $\lambda$ change aussi. Dans un milieu d'indice $n$, où $v = c/n$, la longueur d'onde devient :
 
@@ -173,7 +173,7 @@ Numériquement, $440\ \text{nm}$ correspond, dans le tableau ci-dessus, à une l
 
 ## R5 — La dispersion de la lumière par un prisme
 
-### Ce que change, à peine, la couleur, sur l'indice
+### Pourquoi l'indice dépend, très légèrement, de la couleur
 
 On a vu (R2) que l'indice de réfraction $n$ d'un milieu transparent caractérise à quel point ce milieu ralentit la lumière. Ce qu'on a passé sous silence jusqu'ici : $n$ dépend, très légèrement, de la longueur d'onde $\lambda_0$ de la lumière qui traverse le milieu. Pour la plupart des verres, l'indice est un peu plus grand pour le violet (petite $\lambda_0$) que pour le rouge (grande $\lambda_0$) :
 

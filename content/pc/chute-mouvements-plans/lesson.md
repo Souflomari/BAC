@@ -307,7 +307,7 @@ Un lancer deux fois plus rapide monte quatre fois plus haut et va quatre fois pl
 
 On change complètement de contexte : au lieu d'un projectile dans l'air, on étudie une particule chargée — de charge $q$ et de masse $m$ — qui pénètre, avec une vitesse horizontale $\vec{v}_0$, dans la région comprise entre deux plaques parallèles créant un **champ électrique uniforme** $\vec{E}$, orienté verticalement, perpendiculaire à $\vec{v}_0$.
 
-Dans cette région, la seule force qui agit sur la particule est la **force électrique** $\vec{F} = q\vec{E}$ (le poids de la particule est negligeable devant cette force électrique, pour les charges et les champs mis en jeu ici — une hypothèse standard pour ce genre de particule). La deuxième loi de Newton donne :
+Dans cette région, la seule force qui agit sur la particule est la **force électrique** $\vec{F} = q\vec{E}$ (le poids de la particule est négligeable devant cette force électrique, pour les charges et les champs mis en jeu ici — une hypothèse standard pour ce genre de particule). La deuxième loi de Newton donne :
 
 $$q\vec{E} = m\,\vec{a}$$
 

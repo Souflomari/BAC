@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : la promesse tenue
 
-Reviens un instant sur le ballon du chapitre précédent. Acide éthanoïque et éthanol, quelques gouttes d'acide sulfurique, chauffage doux à reflux pendant plusieurs heures. L'odeur fruitée de l'ester se dégage, puis se stabilise - et un test chimique, effectué à cet instant, révèle qu'il reste, indéfiniment, une quantité détectable d'acide éthanoïque et d'éthanol, aux côtés de l'ester et de l'eau formés :
+Reviens un instant sur le ballon du chapitre sur les transformations dans les deux sens. Acide éthanoïque et éthanol, quelques gouttes d'acide sulfurique, chauffage doux à reflux pendant plusieurs heures. L'odeur fruitée de l'ester se dégage, puis se stabilise - et un test chimique, effectué à cet instant, révèle qu'il reste, indéfiniment, une quantité détectable d'acide éthanoïque et d'éthanol, aux côtés de l'ester et de l'eau formés :
 
 $$CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$$
 
@@ -83,7 +83,7 @@ Puisque acide, alcool, ester et eau sont mélangés en une seule phase liquide h
 
 $$Q_r = \frac{[ester][eau]}{[acide][alcool]}$$
 
-À l'équilibre, $Q_r$ se fige à la constante d'équilibre $K$ de cette réaction, à cette température : $Q_{r,eq} = K$. Comme dans le chapitre précédent, $K$ ne dépend que de la réaction et de la température - jamais des quantités initiales choisies. C'est cette propriété de $K$ qui va nous permettre, au rung suivant, de chiffrer précisément jusqu'où va une estérification.
+À l'équilibre, $Q_r$ se fige à la constante d'équilibre $K$ de cette réaction, à cette température : $Q_{r,eq} = K$. Comme dans le chapitre sur l'état d'équilibre, $K$ ne dépend que de la réaction et de la température - jamais des quantités initiales choisies. C'est cette propriété de $K$ qui va nous permettre, au rung suivant, de chiffrer précisément jusqu'où va une estérification.
 
 ---
 
@@ -230,7 +230,7 @@ Si on retire l'eau (ou l'ester) en continu, au fur et à mesure de sa formation,
 
 ### Teste l'idée avant de la croire : « retirer un produit ne change rien, puisque $K$ ne bouge pas »
 
-Une dernière confusion, qui mérite d'être affrontée directement : puisque $K$ reste rigoureusement fixe (à température constante, comme tu l'as vu au chapitre précédent), on pourrait croire que retirer de l'eau ou de l'ester du mélange ne change rien à l'issue de la réaction, « puisque $K$ ne change pas ».
+Une dernière confusion, qui mérite d'être affrontée directement : puisque $K$ reste rigoureusement fixe (à température constante, comme tu l'as vu au chapitre sur l'état d'équilibre), on pourrait croire que retirer de l'eau ou de l'ester du mélange ne change rien à l'issue de la réaction, « puisque $K$ ne change pas ».
 
 C'est confondre $K$ (qui ne bouge jamais) et $Q_r$ (qui bouge à chaque instant, dès que les concentrations changent - y compris parce qu'on en a retiré une partie à la main). Retirer un produit ne touche pas à $K$ : il déséquilibre $Q_r$ par rapport à $K$, et c'est précisément cet écart qui relance la réaction dans le sens direct. $K$ fixe où l'équilibre se rétablira ; ce n'est pas la même chose que « rien ne peut plus bouger ».
 
@@ -248,15 +248,15 @@ C'est confondre $K$ (qui ne bouge jamais) et $Q_r$ (qui bouge à chaque instant,
 
 ### Exercice de type bac (original - entraînement, non un sujet officiel)
 
-On étudie l'estérification entre l'acide butanoïque $CH_3CH_2CH_2COOH$ et le propan-1-ol $CH_3CH_2CH_2OH$, en mélange équimolaire, à une température donnée.
+On étudie l'estérification entre l'acide éthanoïque $CH_3COOH$ et le propan-1-ol $CH_3CH_2CH_2OH$, en mélange équimolaire, à une température donnée.
 
 **1) Écris l'équation de cette réaction, en faisant apparaître les groupes fonctionnels en jeu, et donne le nom de l'ester formé.**
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on applique la règle du rung R1 - repérer le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool, puis construire le nom à partir des deux radicaux.
 
-$$CH_3CH_2CH_2COOH + CH_3CH_2CH_2OH \rightleftharpoons CH_3CH_2CH_2COOCH_2CH_2CH_3 + H_2O$$
+$$CH_3COOH + CH_3CH_2CH_2OH \rightleftharpoons CH_3COOCH_2CH_2CH_3 + H_2O$$
 
-L'acide butanoïque donne le radical « butanoate » ; le propan-1-ol donne le radical « propyle ». L'ester formé s'appelle **butanoate de propyle**.
+L'acide éthanoïque donne le radical « éthanoate » ; le propan-1-ol donne le radical « propyle ». L'ester formé s'appelle **éthanoate de propyle**.
 
 **2) On part de $n_0 = 0{,}20\ \text{mol}$ d'acide et $0{,}20\ \text{mol}$ d'alcool, volume du mélange supposé constant. Une fois l'équilibre atteint, on mesure $n(ester)_{eq} = 0{,}133\ \text{mol}$. Calcule le taux d'avancement final $\tau$, puis la constante d'équilibre $K$. Ce résultat est-il cohérent avec celui du rung R3 ?**
 
@@ -270,23 +270,23 @@ $$K = \frac{n(ester)_{eq}\, n(eau)_{eq}}{n(acide)_{eq}\, n(alcool)_{eq}} = \frac
 
 $\tau \approx 0{,}665 \approx 2/3$ et $K \approx 3{,}9 \approx 4$ (l'écart vient uniquement des arrondis de mesure) : ce couple acide/alcool, tous deux à chaîne linéaire et en quantités égales, se comporte bien comme l'estérification simple du rung R3.
 
-**3) Un camarade affirme : « Si on ajoute un peu d'acide sulfurique concentré à ce mélange à l'équilibre, on va récupérer davantage de butanoate de propyle une fois que le mélange se sera de nouveau stabilisé. » A-t-il raison ? Justifie à partir du mécanisme du rung R4.**
+**3) Un camarade affirme : « Si on ajoute un peu d'acide sulfurique concentré à ce mélange à l'équilibre, on va récupérer davantage d'éthanoate de propyle une fois que le mélange se sera de nouveau stabilisé. » A-t-il raison ? Justifie à partir du mécanisme du rung R4.**
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on distingue explicitement ce qui change la vitesse de ce qui change la position de l'équilibre.
 
-Non, il a tort. L'acide sulfurique est un catalyseur : il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans changer le rapport de leurs vitesses - donc sans changer $K$, ni la composition à l'équilibre. Le mélange retrouvera le même $\tau \approx 2/3$ qu'avant, simplement plus vite. La quantité finale de butanoate de propyle ne changera pas.
+Non, il a tort. L'acide sulfurique est un catalyseur : il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans changer le rapport de leurs vitesses - donc sans changer $K$, ni la composition à l'équilibre. Le mélange retrouvera le même $\tau \approx 2/3$ qu'avant, simplement plus vite. La quantité finale d'éthanoate de propyle ne changera pas.
 
-**4) Sans refaire le calcul complet, prédis si partir d'un excès de propan-1-ol (à quantité d'acide butanoïque inchangée) donnerait un $\tau$ plus grand, plus petit, ou égal à celui de la question 2. Justifie uniquement à partir du critère $Q_r/K$.**
+**4) Sans refaire le calcul complet, prédis si partir d'un excès de propan-1-ol (à quantité d'acide éthanoïque inchangée) donnerait un $\tau$ plus grand, plus petit, ou égal à celui de la question 2. Justifie uniquement à partir du critère $Q_r/K$.**
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on transpose le raisonnement du rung R5 sans refaire toute l'algèbre.
 
 Un excès d'alcool augmente le dénominateur $[acide][alcool]$ de $Q_r$ dès le mélange initial : $Q_{r,i}$ part d'une valeur plus basse que $K$, ce qui pousse le système à avancer davantage dans le sens direct (estérification) pour le rejoindre. Le taux d'avancement de l'acide, réactif limitant, serait donc **plus grand** que celui de la question 2 - exactement comme au rung R5, où l'excès d'alcool avait fait passer $\tau$ de $66{,}7\,\%$ à $84{,}5\,\%$.
 
-**5) Propose une modification expérimentale, autre qu'un excès de réactif, qui permettrait d'approcher une conversion quasi totale de l'acide butanoïque. Justifie avec le critère $Q_r/K$.**
+**5) Propose une modification expérimentale, autre qu'un excès de réactif, qui permettrait d'approcher une conversion quasi totale de l'acide éthanoïque. Justifie avec le critère $Q_r/K$.**
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on mobilise le deuxième levier du rung R5, distinct de l'excès de réactif.
 
-Éliminer l'eau (ou l'ester) au fur et à mesure de sa formation - par exemple par distillation - diminue continuellement le numérateur de $Q_r$, ce qui maintient $Q_{r,i} < K$ tout au long de la réaction : le système est perpétuellement relancé dans le sens direct et ne peut jamais atteindre un vrai palier d'équilibre avec le réactif restant. On peut ainsi approcher une conversion quasi totale de l'acide butanoïque, bien au-delà du $\tau \approx 2/3$ obtenu à composition constante.
+Éliminer l'eau (ou l'ester) au fur et à mesure de sa formation - par exemple par distillation - diminue continuellement le numérateur de $Q_r$, ce qui maintient $Q_{r,i} < K$ tout au long de la réaction : le système est perpétuellement relancé dans le sens direct et ne peut jamais atteindre un vrai palier d'équilibre avec le réactif restant. On peut ainsi approcher une conversion quasi totale de l'acide éthanoïque, bien au-delà du $\tau \approx 2/3$ obtenu à composition constante.
 
 ### À toi
 
