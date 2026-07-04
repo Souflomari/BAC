@@ -1,0 +1,373 @@
+notion: genetique-populations
+skill_code: svt_genetique_pop
+misconceptions: []
+items:
+  - id: GP-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [frequence_allelique, frequence_genotypique, comptage]
+    stem: >
+      Dans une population de 200 individus, on a determine le genotype exact
+      de chacun pour un gene a deux alleles $A$ (dominant) et $a$ (recessif) :
+      100 individus $A//A$, 60 individus $A//a$, 40 individus $a//a$.
+      Quelle est la frequence de l'allele $a$, notee $q$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$q = 0{,}35$"
+        correct: true
+      - id: B
+        text: "$q = 0{,}20$"
+        correct: false
+        feedback: >
+          Ce choix retourne $f(a//a) = 40/200 = 0{,}20$ : c'est la frequence
+          GENOTYPIQUE des individus homozygotes recessifs, pas la frequence
+          ALLELIQUE. Elle oublie tous les exemplaires de $a$ caches dans les
+          60 heterozygotes. Une frequence allelique compte des exemplaires de
+          gene (il y en a $2 \times 200 = 400$ au total dans la population),
+          pas des individus.
+      - id: C
+        text: "$q = 0{,}30$"
+        correct: false
+        feedback: >
+          Ce choix retourne $f(A//a) = 60/200 = 0{,}30$, la frequence
+          genotypique des heterozygotes, confondue avec la frequence
+          allelique de $a$. Un heterozygote ne porte qu'UN SEUL exemplaire de
+          $a$ (l'autre est $A$) : il doit compter pour une moitie dans le
+          calcul de $q$, pas pour un individu entier.
+      - id: D
+        text: "$q = 0{,}70$"
+        correct: false
+        feedback: >
+          Ce choix calcule $(2 \times 40 + 60)/200 = 140/200$ : le numerateur
+          (le compte des exemplaires de $a$) est correct, mais le denominateur
+          est faux. Chaque individu est diploide et porte DEUX exemplaires du
+          gene : le nombre total d'exemplaires en circulation dans la
+          population est $2N = 400$, pas $N = 200$.
+    correct_feedback: >
+      Compte des exemplaires de $a$ : $2 \times 40 + 60 = 140$. Nombre total
+      d'exemplaires du gene dans la population : $2 \times 200 = 400$. Donc
+      $q = 140/400 = 0{,}35$. Chaque heterozygote compte pour un demi-exemplaire
+      de $a$, jamais pour un individu entier.
+    solution: |
+      **Compte des exemplaires de l'allele $a$ :**
+      $$\text{compte}(a) = 2 \times n_{a//a} + n_{A//a} = 2 \times 40 + 60 = 140$$
+
+      **Nombre total d'exemplaires du gene (chaque individu en porte deux) :**
+      $$2N = 2 \times 200 = 400$$
+
+      **Frequence allelique :**
+      $$q = \frac{140}{400} = 0{,}35$$
+
+      **Verification :** $p = (2 \times 100 + 60)/400 = 260/400 = 0{,}65$, et
+      $p + q = 0{,}65 + 0{,}35 = 1$. Coherent.
+
+  - id: GP-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [frequence_allelique, frequence_genotypique, hardy_weinberg]
+    stem: >
+      Dans une population en equilibre de Hardy-Weinberg, la frequence du
+      genotype $a//a$ est $f(a//a) = 0{,}09$. Un eleve affirme que la
+      frequence de l'allele $a$ est donc, elle aussi, $0{,}09$. A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, puisqu'un individu $a//a$ ne porte que l'allele $a$, la frequence du genotype est directement celle de l'allele."
+        correct: false
+        feedback: >
+          C'est confondre une frequence genotypique et une frequence
+          allelique. $f(a//a) = q^2$ (la probabilite qu'un individu recoive
+          $a$ ET de sa mere ET de son pere, deux evenements independants) —
+          ce n'est pas $q$ lui-meme. Ici $q^2 = 0{,}09$ donne
+          $q = \sqrt{0{,}09} = 0{,}3$, une valeur bien plus grande que
+          $0{,}09$.
+      - id: B
+        text: "Non : $f(a//a) = q^2$, donc $q = \\sqrt{0{,}09} = 0{,}3$."
+        correct: true
+      - id: C
+        text: "Non, la frequence de l'allele est $1 - 0{,}09 = 0{,}91$."
+        correct: false
+        feedback: >
+          Ce calcul confond le complement de $f(a//a)$ avec $p$. Mais
+          $1 - f(a//a)$ regroupe les individus $A//A$ ET $A//a$ ensemble —
+          ce n'est ni $p$ ni $q$. La bonne relation est $f(a//a) = q^2$, pas
+          $f(a//a) = 1 - q$.
+      - id: D
+        text: "Non, la frequence de l'allele est $0{,}09/2 = 0{,}045$."
+        correct: false
+        feedback: >
+          Diviser par 2 est le bon reflexe pour la contribution d'un
+          HETEROZYGOTE a une frequence allelique (il ne porte qu'un demi
+          exemplaire de chaque allele) — mais $a//a$ est un HOMOZYGOTE, qui
+          porte deux exemplaires entiers de $a$. La relation correcte ici
+          passe par la racine carree : $q = \sqrt{f(a//a)}$, pas par une
+          division par 2.
+    correct_feedback: >
+      Sous Hardy-Weinberg, $f(a//a) = q^2$ (deux tirages independants de
+      l'allele $a$ dans le pool genique). Pour remonter a $q$, on prend la
+      racine carree : $q = \sqrt{0{,}09} = 0{,}3$.
+    solution: |
+      **Relation de Hardy-Weinberg :** $f(a//a) = q^2$.
+
+      **Remontee vers $q$ :**
+      $$q = \sqrt{f(a//a)} = \sqrt{0{,}09} = 0{,}3$$
+
+      **Pourquoi ce n'est pas $0{,}09$ directement :** $f(a//a)$ est le carre
+      de $q$, pas $q$ lui-meme — le genotype homozygote recessif exige de
+      recevoir l'allele $a$ deux fois, une fois de chaque parent,
+      independamment.
+
+  - id: GP-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [equilibre, persistance_allele]
+    stem: >
+      Dans une population de grand effectif, en panmixie, sans migration ni
+      mutation ni selection, la frequence de l'allele recessif $a$ est
+      $q = 0{,}1$ a une generation donnee. Les individus $a//a$ ne
+      representent qu'une petite minorite ($1\,\%$ de la population). Que
+      peut-on predire pour la frequence de l'allele $a$ dans les generations
+      suivantes, tant que ces conditions restent verifiees ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste egale a $0{,}1$ : un allele recessif rare a l'etat homozygote ne disparait pas de lui-meme sous ces conditions."
+        correct: true
+      - id: B
+        text: "Elle diminue progressivement, car les individus $a//a$ sont peu nombreux et transmettent donc peu de copies de l'allele."
+        correct: false
+        feedback: >
+          C'est oublier ou vit la quasi-totalite de l'allele $a$ : sous
+          Hardy-Weinberg, la plupart de ses exemplaires sont caches dans des
+          heterozygotes $A//a$ parfaitement sains, pas dans les rares
+          homozygotes $a//a$. Ces porteurs se reproduisent normalement et
+          transmettent leur exemplaire de $a$ tout aussi efficacement que
+          n'importe quel autre allele — la rarete du genotype homozygote ne
+          reduit en rien la transmission de l'allele.
+      - id: C
+        text: "Elle finit par atteindre zero apres un nombre suffisant de generations, car l'allele dominant est plus avantageux."
+        correct: false
+        feedback: >
+          Rien, dans l'enonce, ne donne un avantage de survie ou de
+          reproduction a l'allele dominant — c'est justement l'absence de
+          selection qui est supposee ici. La dominance concerne uniquement
+          l'EXPRESSION du phenotype, pas un avantage biologique : sans
+          selection, aucun allele n'est favorise.
+      - id: D
+        text: "On ne peut rien dire sans connaitre la taille exacte de la population."
+        correct: false
+        feedback: >
+          L'enonce precise deja que la population est de grand effectif et
+          que les trois autres conditions de Hardy-Weinberg sont verifiees —
+          c'est exactement ce qui permet de conclure avec certitude que la
+          frequence allelique reste constante, sans avoir besoin d'un
+          effectif precis au-dela de « suffisamment grand ».
+    correct_feedback: >
+      Sous les conditions de Hardy-Weinberg, on demontre que la frequence
+      allelique de la generation suivante, $p'$ (ou $q'$), est egale a celle
+      de depart : $p' = p^2 + pq = p(p+q) = p$. La frequence allelique ne
+      derive donc pas, meme si l'allele est rare a l'etat homozygote.
+    solution: |
+      **Ce que garantit l'equilibre de Hardy-Weinberg :** en partant des
+      proportions genotypiques $p^2$, $2pq$, $q^2$, la frequence allelique de
+      la generation suivante se recalcule ainsi :
+      $$q' = q^2 + \frac{1}{2}(2pq) = q^2 + pq = q(q+p) = q$$
+
+      **Conclusion :** $q$ reste egal a $0{,}1$, indefiniment, tant que les
+      quatre conditions restent verifiees. La rarete du genotype homozygote
+      $a//a$ ne traduit aucune tendance a la disparition de l'allele : la
+      quasi-totalite de ses exemplaires est simplement invisible, protegee
+      dans des heterozygotes sains.
+
+  - id: GP-4
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [selection_naturelle, persistance_allele]
+    stem: >
+      Une maladie genetique recessive et mortelle avant l'age de la
+      reproduction touche les individus $a//a$. La selection naturelle
+      elimine donc systematiquement ce genotype a chaque generation. Un eleve
+      en conclut que l'allele $a$ va disparaitre rapidement (en quelques
+      generations) de la population. A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : la selection n'elimine que les homozygotes $a//a$, jamais les heterozygotes $A//a$, ou l'allele reste protege et se transmet normalement — l'allele $a$ decline donc tres lentement, jamais en quelques generations seulement."
+        correct: true
+      - id: B
+        text: "Oui, puisque la selection elimine cet allele directement et completement des qu'un individu $a//a$ apparait."
+        correct: false
+        feedback: >
+          La selection naturelle agit sur des GENOTYPES (ou des phenotypes),
+          pas sur des alleles isoles. Elle n'atteint que les rares $a//a$ ;
+          l'immense majorite des exemplaires de $a$, cachee dans des
+          heterozygotes phenotypiquement sains, echappe totalement a cette
+          selection et continue a se transmettre generation apres
+          generation.
+      - id: C
+        text: "Non, car la selection naturelle ne peut jamais faire baisser la frequence d'un allele."
+        correct: false
+        feedback: >
+          C'est une sur-correction fausse : la selection contre un genotype
+          FAIT reellement baisser, generation apres generation, la frequence
+          de l'allele associe — ce n'est pas nul, seulement tres lent, parce
+          que les heterozygotes protegent la majeure partie du stock de
+          l'allele a chaque generation.
+      - id: D
+        text: "Oui, et cette disparition sera d'autant plus rapide que l'allele est deja rare."
+        correct: false
+        feedback: >
+          C'est l'inverse : plus $q$ est petit, plus la quasi-totalite des
+          exemplaires de $a$ se trouve deja cachee dans des heterozygotes
+          proteges (puisque $q^2$ s'ecrase plus vite que $q$) — la selection
+          contre les rares $a//a$ mord donc sur une part de plus en plus
+          petite du stock total, et l'elimination ralentit a mesure que
+          l'allele devient rare, elle ne s'accelere pas.
+    correct_feedback: >
+      La selection ne « voit » que le phenotype des $a//a$ ; les heterozygotes
+      restent invisibles et se reproduisent normalement, transmettant leur
+      exemplaire de $a$ sans obstacle. La frequence $q$ diminue reellement au
+      fil des generations sous une vraie selection, mais tres lentement — et
+      de plus en plus lentement a mesure qu'elle devient petite.
+    solution: |
+      **Ce que la selection atteint reellement :** seuls les individus
+      $a//a$ sont elimines avant reproduction. Les heterozygotes $A//a$, bien
+      que porteurs de l'allele, sont phenotypiquement indiscernables des
+      $A//A$ et ne sont donc jamais elimines par cette selection.
+
+      **Consequence sur le stock de l'allele :** des que $q$ devient petit,
+      la quasi-totalite des exemplaires de $a$ vit dans des heterozygotes
+      ($2pq$, qui decroit beaucoup moins vite que $q^2$ quand $q$ diminue).
+      La selection ne mord donc que sur une fraction de plus en plus reduite
+      du stock total — le declin de $q$ ralentit progressivement, sans
+      jamais atteindre zero en un temps court.
+
+  - id: GP-5
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [conditions_hw, derive_genetique, petit_effectif]
+    stem: >
+      Dans un petit elevage isole de 8 couples reproducteurs, la frequence de
+      l'allele $a$ est $q = 0{,}4$. En appliquant $q^2$, un eleve predit que
+      $16\,\%$ des descendants seront $a//a$ a la generation suivante — mais
+      il observe en realite $28\,\%$. Quelle est l'explication la plus
+      probable ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'effectif de la population est trop petit pour que le modele de Hardy-Weinberg s'applique de facon fiable : les fluctuations d'echantillonnage (derive genetique) expliquent l'ecart."
+        correct: true
+      - id: B
+        text: "Le calcul $q^2$ est incorrect ; il fallait utiliser $2q$."
+        correct: false
+        feedback: >
+          $q^2$ EST la formule correcte pour la frequence genotypique des
+          homozygotes recessifs sous Hardy-Weinberg — le probleme n'est pas
+          dans l'arithmetique, il est dans le fait que l'une des CONDITIONS
+          du modele (ici, le grand effectif) n'est pas verifiee dans ce petit
+          elevage.
+      - id: C
+        text: "C'est impossible : une fois calculee, une frequence genotypique ne peut jamais differer de la prediction theorique."
+        correct: false
+        feedback: >
+          C'est nier la realite : les populations reelles, en particulier les
+          petites, s'ecartent frequemment de la prediction de Hardy-Weinberg
+          — c'est justement cet ecart, compare a la prediction theorique, qui
+          sert de diagnostic pour reperer qu'une condition est violee.
+      - id: D
+        text: "L'ecart prouve qu'une mutation a eu lieu entre les deux generations."
+        correct: false
+        feedback: >
+          Une mutation isolee ne deplace $p$ et $q$ que d'une quantite
+          minuscule a chaque generation — elle ne peut pas, a elle seule,
+          produire un ecart de cette ampleur (de $16\,\%$ a $28\,\%$) en une
+          seule generation. Avec seulement 8 couples reproducteurs, la
+          derive genetique (fluctuation d'echantillonnage) est une
+          explication bien plus probable.
+    correct_feedback: >
+      Avec seulement 8 couples reproducteurs, la condition de grand effectif
+      n'est pas verifiee : les proportions reellement transmises peuvent
+      s'ecarter de $p$ et $q$ par pur effet d'echantillonnage aleatoire. C'est
+      la signature de la derive genetique, pas une erreur de calcul.
+    solution: |
+      **Le calcul $q^2 = 0{,}4^2 = 0{,}16$ est arithmetiquement correct** — ce
+      n'est pas la ou se situe le probleme.
+
+      **Ce que revele l'ecart :** la prediction de Hardy-Weinberg suppose un
+      pool genique assez grand pour que les tirages de gametes reproduisent
+      fidelement les proportions $p$ et $q$. Avec seulement 8 couples (un
+      tout petit nombre de gametes reellement unis), un ecart marque par
+      rapport a la prediction theorique est attendu par simple fluctuation
+      d'echantillonnage — c'est exactement la derive genetique, detaillee au
+      R5.
+
+  - id: GP-6
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [conditions_hw, panmixie]
+    stem: >
+      Dans une population de plantes, chaque individu s'autofeconde
+      systematiquement (son pollen ne feconde jamais que ses propres ovules,
+      et jamais ceux d'une autre plante). Un eleve veut predire les
+      frequences genotypiques de la generation suivante a partir de $p$ et
+      $q$ avec la formule $p^2 + 2pq + q^2$. Est-ce valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : l'autofecondation systematique viole la condition de panmixie (union au hasard des gametes dans tout le pool genique), sur laquelle repose la formule."
+        correct: true
+      - id: B
+        text: "Oui, la formule s'applique a toute population sexuee, quel que soit son mode de reproduction."
+        correct: false
+        feedback: >
+          C'est appliquer Hardy-Weinberg sans verifier ses conditions.
+          L'echiquier qui donne $p^2 + 2pq + q^2$ suppose qu'un gamete peut
+          s'unir avec N'IMPORTE QUEL AUTRE gamete du pool genique de la
+          population. L'autofecondation systematique impose exactement le
+          contraire : chaque gamete ne peut s'unir qu'avec un gamete du MEME
+          individu — ce n'est plus un tirage au hasard dans le pool commun.
+      - id: C
+        text: "Oui, a condition de remplacer $p$ et $q$ par les frequences genotypiques observees."
+        correct: false
+        feedback: >
+          Cette reponse confond de nouveau frequence allelique et frequence
+          genotypique : $p$ et $q$ sont deja des frequences d'ALLELES, pas de
+          genotypes, et les substituer par des frequences genotypiques ne
+          resout pas le vrai probleme ici, qui est l'absence de panmixie, pas
+          un mauvais choix de variable.
+      - id: D
+        text: "Non, car $p$ et $q$ n'existent pas chez les plantes qui s'autofecondent."
+        correct: false
+        feedback: >
+          Les frequences alleliques $p$ et $q$ existent dans n'importe quelle
+          population diploide, quel que soit son mode de reproduction — ce
+          n'est pas leur existence qui est en cause, c'est la condition de
+          panmixie (necessaire pour que $p^2 + 2pq + q^2$ predise
+          correctement les genotypes) qui n'est pas respectee ici.
+    correct_feedback: >
+      La formule de Hardy-Weinberg repose sur l'union AU HASARD des gametes
+      dans tout le pool genique de la population. L'autofecondation
+      systematique restreint chaque union a un seul individu : ce n'est plus
+      un tirage aleatoire dans le pool commun, donc la formule ne s'applique
+      pas telle quelle.
+    solution: |
+      **Ce que suppose l'echiquier du R2 :** n'importe quel gamete peut
+      s'unir avec n'importe quel autre gamete de la population entiere,
+      sans preference liee au genotype ou a l'identite du partenaire.
+
+      **Ce que fait l'autofecondation systematique :** elle restreint chaque
+      union de gametes a un seul et meme individu — l'union n'est plus un
+      tirage dans le pool genique commun.
+
+      **Consequence :** la condition de panmixie est violee, et la
+      prediction $p^2 + 2pq + q^2$ ne peut pas s'appliquer sans
+      modification a une population qui s'autofeconde systematiquement (en
+      realite, l'autofecondation repetee augmente au contraire la proportion
+      d'homozygotes au fil des generations, au detriment des heterozygotes).
