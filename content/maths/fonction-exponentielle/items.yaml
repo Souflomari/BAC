@@ -1,0 +1,283 @@
+notion: fonction-exponentielle
+skill_code: maths_fonction_exponentielle
+misconceptions: []
+items:
+  - id: EXP-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["signe", "domaine"]
+    stem: >
+      Pour $x$ très négatif (par exemple $x=-1000$), que peut-on affirmer sur
+      $e^x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^x$ reste strictement positif, mais devient extrêmement proche de $0$."
+        correct: true
+      - id: B
+        text: "$e^x$ devient négatif."
+        correct: false
+        feedback: >
+          $e^x$ est TOUJOURS strictement positif, quel que soit le réel $x$ —
+          c'est la définition même de $\exp$ comme réciproque de $\ln$ (son
+          image est $]0,+\infty[$, jamais un nombre négatif). Aussi négatif
+          que soit $x$, $e^x$ se rapproche de $0$ sans jamais le franchir.
+      - id: C
+        text: "$e^x$ devient nul (égal à $0$)."
+        correct: false
+        feedback: >
+          $0$ n'est pas dans l'image de $\exp$ : il n'existe aucun réel $x$
+          tel que $e^x=0$, exactement parce que $\ln(0)$ n'existe pas — il
+          n'y a rien à « défaire » pour $y=0$. $e^x$ s'approche de $0$ sans
+          jamais l'atteindre.
+      - id: D
+        text: "$e^x$ n'est pas défini pour $x$ très négatif."
+        correct: false
+        feedback: >
+          C'est $\ln$ qui a un domaine restreint ($]0,+\infty[$), pas $\exp$.
+          $\exp$ est définie sur $\mathbb{R}$ tout entier, sans aucune
+          restriction — c'est justement ce qui la distingue de $\ln$.
+    correct_feedback: >
+      Exactement : $e^x>0$ pour tout réel $x$ (rien n'y échappe), et quand
+      $x\to-\infty$, $e^x\to0$ sans jamais atteindre $0$ — c'est l'asymptote
+      horizontale $y=0$ de la courbe de $\exp$.
+    solution: |
+      **Fait fondamental (R1) :** $\exp(x)>0$ pour tout réel $x$, car
+      l'image de $\exp$ est $]0,+\infty[$ (c'est le domaine de $\ln$).
+
+      **Comportement en $-\infty$ (R4) :** $\displaystyle\lim_{x\to-\infty} e^x = 0$,
+      mais cette limite n'est jamais atteinte : $e^x$ reste strictement
+      positif à chaque instant, aussi petit soit-il.
+
+  - id: EXP-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["proprietes-algebriques", "somme-produit"]
+    stem: >
+      Pour tous réels $a$ et $b$, quelle égalité est toujours vraie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^{a+b} = e^a + e^b$"
+        correct: false
+        feedback: >
+          C'est la confusion la plus fréquente sur ce chapitre : la
+          propriété qui transforme une SOMME d'exposants en produit
+          concerne le produit $e^a\times e^b$, pas la somme $e^a+e^b$. Teste
+          avec $a=b=0$ : $e^{0+0}=e^0=1$, alors que $e^0+e^0=1+1=2$ — les
+          deux ne coïncident pas.
+      - id: B
+        text: "$e^{a+b} = e^a \\times e^b$"
+        correct: true
+      - id: C
+        text: "$e^{a}\\times e^{b} = e^{a\\times b}$"
+        correct: false
+        feedback: >
+          Ici, ce sont les EXPOSANTS qui s'additionnent quand les facteurs
+          se multiplient ($e^a\times e^b=e^{a+b}$) — pas les arguments $a$ et
+          $b$ qui se multiplient entre eux à l'intérieur d'un nouvel
+          exposant. C'est l'inverse de la bonne règle.
+      - id: D
+        text: "$e^{a}-e^{b} = e^{a-b}$"
+        correct: false
+        feedback: >
+          Une DIFFÉRENCE d'exponentielles n'est pas l'exponentielle d'une
+          différence. La propriété analogue à $a-b$ concerne le quotient :
+          $\dfrac{e^a}{e^b}=e^{a-b}$ (grâce à $e^{-b}=\frac{1}{e^b}$), pas la
+          soustraction $e^a-e^b$.
+    correct_feedback: >
+      Exactement : $e^{a+b}=e^a\times e^b$ est la propriété centrale du
+      chapitre — elle transforme une somme d'exposants en produit, exactement
+      l'inverse de ce que fait $\ln$ sur un produit.
+    solution: |
+      **Propriété (produit), établie au R2 :** pour tous réels $a$ et $b$ :
+      $$e^{a+b} = e^a \times e^b$$
+      Elle se démontre en comparant les logarithmes des deux membres et en
+      utilisant l'injectivité de $\ln$.
+
+  - id: EXP-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["proprietes-algebriques", "oppose"]
+    stem: >
+      Pour tout réel $a$, que vaut $e^{-a}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-e^a$"
+        correct: false
+        feedback: >
+          Ce choix change le SIGNE du résultat au lieu de prendre son
+          inverse. Mais $e^{-a}$, comme n'importe quelle valeur de $\exp$,
+          reste toujours strictement positif (R1) — ce n'est jamais
+          l'opposé (négatif) de $e^a$. La propriété de l'opposé porte sur
+          l'exposant, pas sur le signe du résultat.
+      - id: B
+        text: "$\\dfrac{1}{e^a}$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{1}{-e^a}$"
+        correct: false
+        feedback: >
+          Ce choix cumule deux erreurs : il prend bien l'inverse, mais y
+          ajoute aussi un signe négatif. Le résultat serait négatif — or
+          $e^{-a}>0$ toujours (R1), quelle que soit la valeur de $a$. La
+          bonne réponse ne comporte aucun signe négatif.
+      - id: D
+        text: "$e^a$"
+        correct: false
+        feedback: >
+          Ce choix ignore complètement le signe négatif de l'exposant, comme
+          si $e^{-a}$ et $e^a$ étaient la même chose. Un exposant négatif
+          signifie « prendre l'inverse », pas « ignorer le signe ».
+    correct_feedback: >
+      Exactement : $e^a\times e^{-a}=e^{a+(-a)}=e^0=1$, donc en divisant par
+      $e^a$ (jamais nul), $e^{-a}=\dfrac{1}{e^a}$.
+    solution: |
+      **Démonstration (R2) :** applique la propriété du produit à $a$ et
+      $-a$ :
+      $$e^a \times e^{-a} = e^{a+(-a)} = e^0 = 1$$
+      Comme $e^a\neq0$ (toujours strictement positif), on divise les deux
+      membres par $e^a$ :
+      $$e^{-a} = \frac{1}{e^a}$$
+
+  - id: EXP-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["derivee", "exp-u"]
+    stem: >
+      Quelle est la dérivée de $f(x) = e^{3x^2+1}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x) = 6x\\,e^{3x^2+1}$"
+        correct: true
+      - id: B
+        text: "$f'(x) = e^{3x^2+1}$"
+        correct: false
+        feedback: >
+          Tu as oublié de multiplier par la dérivée de l'intérieur. La
+          formule est $(e^u)'=u'e^u$, pas $e^u$ tout seul — ici
+          $u'(x)=6x$ ne doit pas disparaître.
+      - id: C
+        text: "$f'(x) = 6x$"
+        correct: false
+        feedback: >
+          Tu as calculé $u'(x)=6x$ (correct) mais oublié de multiplier par
+          $e^{u(x)}=e^{3x^2+1}$. La dérivée d'une exponentielle composée est
+          un produit, pas seulement le facteur $u'$.
+      - id: D
+        text: "$f'(x) = 3x^2\\,e^{3x^2+1}$"
+        correct: false
+        feedback: >
+          Erreur de dérivation de l'intérieur : $u(x)=3x^2+1$ a pour dérivée
+          $u'(x)=6x$ (le facteur $3$ se multiplie par l'exposant $2$ de
+          $x^2$), pas $3x^2$ — tu as recopié $u(x)$ au lieu de calculer
+          $u'(x)$.
+    correct_feedback: >
+      Oui : avec $u(x)=3x^2+1$ et $u'(x)=6x$,
+      $(e^u)'(x) = u'(x)e^{u(x)} = 6x\,e^{3x^2+1}$.
+    solution: |
+      $u(x) = 3x^2+1$, donc $u'(x) = 6x$ :
+      $$f'(x) = u'(x)\,e^{u(x)} = 6x\,e^{3x^2+1}$$
+
+  - id: EXP-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["limites", "croissances-comparees"]
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{e^x}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        feedback: >
+          C'est le résultat de croissances comparées pour $\ln$, pas pour
+          $\exp$ — tu as inversé le sens. Ici, $e^x$ grossit infiniment plus
+          VITE que $x$ (pas plus lentement) : leur rapport explose vers
+          $+\infty$, il ne s'écrase pas vers $0$.
+      - id: C
+        text: "$1$"
+        correct: false
+        feedback: >
+          Un rapport de deux quantités qui tendent toutes deux vers
+          $+\infty$ ne vaut pas automatiquement $1$ — ça dépend de LAQUELLE
+          grossit plus vite. Ici $e^x$ grossit infiniment plus vite que $x$,
+          donc le rapport diverge vers $+\infty$, pas vers $1$.
+      - id: D
+        text: >-
+          La limite n'existe pas, car $\dfrac{\infty}{\infty}$ est une forme
+          indéterminée non levée
+        correct: false
+        feedback: >
+          C'est vrai que $\frac{\infty}{\infty}$ est une forme
+          indéterminée — mais « indéterminée » veut dire qu'il faut un calcul
+          supplémentaire pour trancher, pas que la limite n'existe pas. Le
+          résultat de croissances comparées lève précisément cette
+          indétermination : la limite existe et vaut $+\infty$.
+    correct_feedback: >
+      Exactement : c'est le résultat de croissances comparées pour $\exp$ —
+      $e^x$ grossit infiniment plus vite que $x$, donc leur rapport diverge
+      vers $+\infty$ (le sens opposé de ce qui se passait pour $\ln(x)/x$).
+    solution: |
+      C'est le résultat de croissances comparées (démontré via l'inégalité
+      $e^t\geq t+1$ appliquée à $t=x/2$, puis élévation au carré et
+      comparaison) :
+      $$\lim_{x \to +\infty} \frac{e^x}{x} = +\infty$$
+
+  - id: EXP-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["equations", "passage-par-ln"]
+    stem: >
+      Résous dans $\mathbb{R}$ l'équation $e^{x+1} = 3$. Que vaut $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x = \\ln(3)-1$"
+        correct: true
+      - id: B
+        text: "$x = 2$ (car $x+1=3$)"
+        correct: false
+        feedback: >
+          Tu as traité $e^{x+1}=3$ comme si c'était directement $x+1=3$, en
+          « effaçant » le $e$ sans rien faire d'autre. Mais $e^{x+1}=3$ ne
+          dit pas que l'exposant vaut $3$ — il faut appliquer $\ln$ aux deux
+          membres pour « défaire » l'exponentielle : $\ln(e^{x+1})=\ln(3)$,
+          donc $x+1=\ln(3)$, pas $x+1=3$.
+      - id: C
+        text: "$x = \\ln(3)+1$"
+        correct: false
+        feedback: >
+          L'égalité $\ln(3)=x+1$ est correcte, mais l'isolement de $x$
+          comporte une erreur de signe : il faut SOUSTRAIRE $1$ des deux
+          côtés ($x=\ln(3)-1$), pas l'ajouter.
+      - id: D
+        text: "$x = \\ln(2)$"
+        correct: false
+        feedback: >
+          Ce choix confond $\ln(3)-1$ (la bonne expression, où l'on
+          soustrait $1$ APRÈS avoir pris le logarithme) avec $\ln(3-1)=\ln(2)$
+          (où l'on soustrait $1$ À L'INTÉRIEUR du logarithme, avant de le
+          calculer). Ce sont deux quantités différentes : $\ln(3)-1\neq\ln(2)$.
+    correct_feedback: >
+      Exactement : $e^{x+1}=3 \iff x+1=\ln(3)$ (en appliquant $\ln$ aux deux
+      membres, tous deux strictement positifs) $\iff x=\ln(3)-1$.
+    solution: |
+      **Puisque $3>0$**, $3$ est bien dans l'image de $\exp$ : une solution
+      existe. On applique $\ln$ aux deux membres (identité fondamentale du
+      R1, $\ln(e^t)=t$) :
+      $$e^{x+1} = 3 \iff \ln\big(e^{x+1}\big) = \ln(3)$$
+      $$\iff x+1 = \ln(3)$$
+      $$\iff x = \ln(3)-1$$
+      $$\mathcal{S} = \{\ln(3)-1\}$$
