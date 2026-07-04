@@ -157,25 +157,33 @@ $$dN = -\lambda \, N(t) \, dt$$
 
 (le signe moins traduit que $N$ *diminue*). Remarque ce que dit cette équation : plus il y a de noyaux présents, plus il y a de désintégrations par seconde en valeur absolue — pas parce que les noyaux restants deviennent plus instables avec le temps, mais simplement parce qu'il y a plus de noyaux pour tenter leur chance.
 
-### Résoudre l'équation
+### Poser la solution, puis la vérifier
 
 On réécrit l'équation précédente sous forme différentielle :
 
 $$\frac{dN}{dt} = -\lambda N$$
 
-On sépare les variables — $N$ d'un côté, $t$ de l'autre :
+C'est une équation différentielle : elle relie la fonction inconnue $N(t)$ à sa propre dérivée. Plutôt que de la résoudre à partir de rien, on procède comme on l'a fait pour le dipôle RL et le circuit RLC — on **pose la solution qu'on attend, puis on vérifie qu'elle satisfait bien l'équation.** Ce que dit l'équation guide la supposition : la dérivée de $N$ est proportionnelle à $-N$, donc la fonction et sa dérivée ont la même forme, au signe et au facteur près. Une seule famille de fonctions se comporte ainsi — les exponentielles. On pose donc l'hypothèse, une supposition qu'on va confirmer et non une certitude déjà acquise, que la solution est :
 
-$$\frac{dN}{N} = -\lambda \, dt$$
+$$N(t) = N_0 \, e^{-\lambda t}$$
 
-On intègre les deux membres entre l'instant initial $t=0$ (où $N = N_0$) et l'instant $t$ (où $N = N(t)$) :
+où $N_0$ est le nombre de noyaux présents à l'instant pris comme origine.
 
-$$\ln N(t) - \ln N_0 = -\lambda t$$
+**Vérifions d'abord qu'elle satisfait l'équation différentielle.** On dérive cette fonction par rapport au temps — c'est la dérivée d'une exponentielle, qui fait descendre le facteur $-\lambda$ :
 
-Ce qui se réécrit :
+$$\frac{dN}{dt} = -\lambda \, N_0 \, e^{-\lambda t}$$
 
-$$\ln\!\left(\frac{N(t)}{N_0}\right) = -\lambda t$$
+Or le produit $N_0 \, e^{-\lambda t}$ n'est rien d'autre que $N(t)$ lui-même. La dérivée se réécrit donc :
 
-On isole $N(t)$ en passant à l'exponentielle des deux membres :
+$$\frac{dN}{dt} = -\lambda \, N(t)$$
+
+C'est exactement l'équation différentielle de départ : la fonction posée la vérifie, à chaque instant $t$.
+
+**Vérifions ensuite la condition initiale.** À l'instant $t = 0$ :
+
+$$N(0) = N_0 \, e^{0} = N_0$$
+
+On retrouve bien le nombre de noyaux présents au départ. L'hypothèse est confirmée sur les deux fronts — l'équation différentielle *et* la condition initiale — donc on peut encadrer le résultat :
 
 $$\boxed{N(t) = N_0 \, e^{-\lambda t}}$$
 
