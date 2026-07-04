@@ -222,42 +222,49 @@ items:
     skill_code: pc_chute_plans
     tags: []
     stem: >
-      Une particule chargee penetre avec une vitesse horizontale dans un champ
-      electrique uniforme $\vec E$ perpendiculaire a cette vitesse (frottements
-      et poids negliges). Quelle est la nature de sa trajectoire ?
+      Une particule chargee penetre avec une vitesse $\vec v_0$ dans un champ
+      magnetique uniforme $\vec B$ perpendiculaire a $\vec v_0$ (poids neglige).
+      Quelle est la nature de son mouvement dans le champ ?
     type: mcq
     choices:
       - id: A
-        text: "Parabolique, par analogie avec le projectile dans le champ de pesanteur"
+        text: "Circulaire uniforme : la force de Lorentz, perpendiculaire a la vitesse, ne change pas la norme de la vitesse et courbe la trajectoire en cercle"
         correct: true
       - id: B
-        text: "Rectiligne, dans la direction de la vitesse initiale"
+        text: "Parabolique, comme un projectile dans le champ de pesanteur"
         correct: false
         feedback: >
-          La force electrique $\vec F = q\vec E$ est constante et perpendiculaire
-          a $\vec v_0$ : elle courbe la trajectoire, exactement comme le poids
-          courbe celle d'un projectile. Ce n'est pas rectiligne.
+          C'est confondre la force de Lorentz avec une force constante comme le
+          poids. La force $\vec F = q\vec v\wedge\vec B$ n'a pas une direction
+          fixe : elle reste perpendiculaire a une vitesse qui tourne. Une force
+          de norme constante toujours perpendiculaire a $\vec v$ donne un
+          cercle, pas une parabole.
       - id: C
-        text: "Circulaire"
+        text: "Rectiligne accelere : la force communique de la vitesse a la particule"
         correct: false
         feedback: >
-          Une force CONSTANTE (en direction et valeur) donne une parabole, pas
-          un cercle. Un mouvement circulaire demanderait une force toujours
-          dirigee vers un centre.
+          La force de Lorentz est perpendiculaire a $\vec v$ : elle ne travaille
+          pas, donc la norme de la vitesse ne change pas ($dv/dt = 0$). Elle
+          devie la particule sans l'accelerer ni la ralentir.
       - id: D
-        text: "Sinusoidale"
+        text: "Rectiligne uniforme : aucune force ne devie la particule"
         correct: false
         feedback: >
-          Il n'y a pas de force de rappel oscillante ici, juste une force
-          constante. La trajectoire est une parabole, comme pour la pesanteur.
+          Comme $\vec B \perp \vec v_0$, la force $\vec F = q\vec v\wedge\vec B$
+          n'est pas nulle (sa norme vaut $|q|\,v_0\,B$) : elle courbe bel et
+          bien la trajectoire. Le mouvement n'est pas rectiligne.
     correct_feedback: >
-      Oui : $\vec F = q\vec E$ constante joue le role du poids. Mouvement
-      uniforme sur un axe, uniformement accelere sur l'autre : la trajectoire
-      est une parabole.
+      Oui : $\vec F = q\vec v\wedge\vec B$ est toujours perpendiculaire a
+      $\vec v$. Sa composante tangentielle etant nulle, la norme $v = v_0$ reste
+      constante ; sa composante normale courbe la trajectoire en un cercle de
+      rayon $R = \dfrac{m\,v_0}{|q|\,B}$. C'est un mouvement circulaire uniforme.
     solution: |
-      La force $\vec F = q\vec E$ est constante et perpendiculaire a $\vec v_0$,
-      tout comme le poids $m\vec g$ l'est pour un projectile lance
-      horizontalement. On retrouve :
-      - un mouvement uniforme selon $\vec v_0$ ;
-      - un mouvement uniformement accelere selon $\vec E$.
-      La combinaison donne une trajectoire parabolique.
+      Bilan : seule la force de Lorentz $\vec F = q\vec v\wedge\vec B$ agit
+      (poids neglige), toujours perpendiculaire a $\vec v$. On projette la 2e loi
+      dans la base de Freinet.
+      Sur la tangente (la force n'a pas de composante tangentielle) :
+      $$m\frac{dv}{dt} = 0 \implies v = v_0 = \text{constante}$$
+      Sur la normale, avec $F = |q|\,v_0\,B$ et $a_N = v_0^2 / R$ :
+      $$m\frac{v_0^2}{R} = |q|\,v_0\,B \implies R = \frac{m\,v_0}{|q|\,B}$$
+      Vitesse de norme constante et rayon constant : mouvement circulaire
+      uniforme.

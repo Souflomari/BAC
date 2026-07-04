@@ -2,175 +2,197 @@
 
 ---
 
-## R0 — Accroche : deux leviers, une seule question à trancher d'abord
+## R0 — Accroche : le parfumeur pressé
 
-Reprends la réaction qui t'a servi de fil rouge dans les deux chapitres précédents : les ions peroxodisulfate $S_2O_8^{2-}$ et les ions iodure $I^-$, qui réagissent lentement pour donner des ions sulfate et du diiode $I_2$ :
+Reviens au chimiste-parfumeur du chapitre estérification et hydrolyse. Il fabrique un ester odorant en mélangeant un acide carboxylique et un alcool :
 
-$$S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$$
+$$CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$$
 
-Imagine un chimiste qui a besoin, pour la suite de son travail, d'obtenir davantage de diiode à partir d'un mélange comme celui-ci - et si possible, plus vite. Deux élèves, Amine et Sofia, lui soumettent chacun une idée.
+Et il a buté sur deux murs. Le premier : c'est **lent** — plusieurs jours à température ambiante pour atteindre l'état final. Le second, plus frustrant encore : c'est **limité** — même en attendant indéfiniment, il ne convertit qu'environ deux tiers de son acide en ester ($\tau \approx 2/3$), parce que la réaction inverse, l'hydrolyse, ronge une partie de ce qu'il produit. La double flèche de l'équation dit exactement ça : tout seul, ça n'ira jamais jusqu'au bout.
 
-Amine propose d'augmenter, avant de mélanger, la quantité initiale d'ions peroxodisulfate.
+Le chapitre précédent lui a donné des leviers pour déplacer cet équilibre sans le résoudre (verser un réactif en excès, éliminer l'eau au fur et à mesure). Ce chapitre-ci en ouvre un tout autre, plus radical : **et si on remplaçait carrément l'un des ingrédients par un cousin plus réactif ?**
 
-Sofia propose plutôt de ne toucher à aucune quantité, mais d'ajouter une petite quantité d'ions fer (III), $Fe^{3+}$, qu'elle a repérés dans un manuel comme catalyseur de cette réaction.
+Voici l'idée qu'on va tester. Au lieu de partir de l'acide éthanoïque, on part de son **anhydride** — une molécule de la même famille, mais bien plus mordante. Avant de lire la suite, prends position. En remplaçant l'acide par son anhydride, à ton avis :
 
-Avant de lire la suite, prends position, en une phrase pour chacune des deux propositions : est-ce que le geste d'Amine va changer la quantité FINALE de diiode obtenue ? Et celui de Sofia ? Ou est-ce que les deux reviennent, au fond, exactement au même effet - juste deux façons différentes d'aider la réaction ?
+- (a) on retombe sur le même équilibre limité à $\tau \approx 2/3$, juste atteint plus vite ;
+- (b) on obtient un peu plus d'ester, mais ça reste un équilibre ;
+- (c) la réaction devient rapide **et** totale — tout l'alcool y passe.
 
-Beaucoup d'élèves répondent que les deux propositions doivent faire à peu près la même chose : ajouter plus de réactif ou ajouter un catalyseur, dans les deux cas on donne un coup de pouce à la réaction, donc dans les deux cas on doit obtenir plus de produit. C'est une prédiction naturelle - et elle est fausse pour l'une des deux propositions, entièrement vraie pour l'autre. Cette leçon te donne de quoi trancher, avec certitude, laquelle est laquelle - et pourquoi.
-
----
-
-## R1 — Le mécanisme : le réactif limitant fixe l'avancement final
-
-### Rappel express : le tableau d'avancement
-
-Tu as déjà construit un tableau d'avancement, au chapitre suivi temporel d'une transformation, pour calculer un avancement final $x_{max}$. Reviens sur ce geste, en insistant cette fois sur ce qui, précisément, fixe cette valeur.
-
-Pour une transformation totale d'équation $aA + bB \rightarrow cC + dD$, le tableau donne, à l'avancement $x$ :
-
-| | $A$ | $B$ | $C$ | $D$ |
-|---|---|---|---|---|
-| État initial | $n_0(A)$ | $n_0(B)$ | $0$ | $0$ |
-| À l'avancement $x$ | $n_0(A) - ax$ | $n_0(B) - bx$ | $cx$ | $dx$ |
-
-L'avancement ne peut pas grandir indéfiniment : dès que la quantité d'un réactif atteint zéro, la réaction s'arrête - il n'y a plus assez de cette espèce pour continuer. Le réactif qui s'annule EN PREMIER, quand $x$ augmente, s'appelle le **réactif limitant**. Pour le repérer, on compare, pour chaque réactif, le rapport de sa quantité initiale à son coefficient stoechiométrique - le plus petit de ces deux rapports désigne le réactif limitant, et fixe directement l'avancement final :
-
-$$x_{max} = \min\left(\frac{n_0(A)}{a}, \frac{n_0(B)}{b}\right)$$
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on ne compare jamais les quantités initiales brutes entre elles - on divise chacune par SON coefficient stoechiométrique avant de comparer. C'est ce rapport, pas la quantité brute, qui dit combien de fois la réaction peut consommer entièrement chaque réactif.
-
-### Exemple travaillé : reprendre le fil rouge
-
-Reprends les quantités de l'expérience du chapitre précédent : $n_0(S_2O_8^{2-}) = 5{,}0\ \text{mmol}$, $n_0(I^-) = 40\ \text{mmol}$ (l'iodure est en large excès), dans un volume $V = 100\ \text{mL}$ constant.
-
-$$\frac{n_0(S_2O_8^{2-})}{1} = 5{,}0\ \text{mmol}$$
-
-$$\frac{n_0(I^-)}{2} = \frac{40}{2} = 20\ \text{mmol}$$
-
-Le plus petit des deux rapports est $5{,}0\ \text{mmol}$, celui de $S_2O_8^{2-}$ : c'est donc lui le réactif limitant, et :
-
-$$x_{max} = 5{,}0\ \text{mmol}$$
-
-C'est exactement la valeur que tu avais trouvée au chapitre précédent - rien de nouveau ici, seulement le geste posé plus consciemment : comparer des rapports, pas des quantités brutes.
-
-### Et si on change la quantité initiale du réactif limitant ?
-
-Voici la question qui nous intéresse vraiment dans ce chapitre : que se passe-t-il sur $x_{max}$ si on double la quantité initiale de $S_2O_8^{2-}$, sans toucher à celle d'iodure ? Reprends le même calcul avec $n_0'(S_2O_8^{2-}) = 10{,}0\ \text{mmol}$, $n_0(I^-) = 40\ \text{mmol}$ inchangé :
-
-$$\frac{n_0'(S_2O_8^{2-})}{1} = 10{,}0\ \text{mmol}$$
-
-$$\frac{n_0(I^-)}{2} = 20\ \text{mmol}$$
-
-$S_2O_8^{2-}$ reste le réactif limitant (son rapport, $10{,}0\ \text{mmol}$, reste le plus petit), donc :
-
-$$x_{max}' = 10{,}0\ \text{mmol}$$
-
-L'avancement final a exactement doublé, tout comme la quantité initiale qu'on a doublée. Voilà ce qu'on appelle **contrôler une transformation par un réactif** : changer volontairement la quantité initiale du réactif limitant pour changer, dans les mêmes proportions, la quantité finale de produit obtenu. C'est, très précisément, ce que proposait Amine dans l'accroche - et sa proposition, elle, change bel et bien la quantité finale de diiode.
-
-Une prudence à garder en tête : cette proportionnalité ne dure que tant que le réactif qu'on augmente reste limitant. Pousse l'augmentation assez loin, et à un moment, c'est l'autre réactif qui prendra le relais comme facteur limitant - $x_{max}$ cessera alors d'augmenter proportionnellement, et plafonnera. Tu retrouveras cette bascule dans l'exercice de fin de chapitre.
+Engage-toi sur une des trois avant de continuer. Puis on tranche — et on verra pourquoi un simple changement de réactif peut réussir ce qu'aucun réglage de température ne fera jamais. Ensuite, une fois l'ester fabriqué, on apprendra à le défaire proprement — jusqu'au savon.
 
 ---
 
-## R2 — Le mécanisme du catalyseur : un chemin plus rapide, pas une autre arrivée
+## R1 — Contrôle par un réactif : passer à l'anhydride d'acide
 
-### Ce qu'est un catalyseur, précisément
+### L'idée : un réactif plus réactif
 
-Un **catalyseur** est une espèce chimique qui accélère une réaction sans être consommée : elle intervient dans le déroulement microscopique de la réaction, mais elle en ressort intacte, en quantité et en nature chimique rigoureusement identiques à ce qu'elle était au départ. On l'écrit généralement au-dessus (ou à côté) de la flèche de l'équation - jamais parmi les réactifs, jamais parmi les produits, puisqu'elle n'appartient ni vraiment à l'un ni vraiment à l'autre camp.
+« Contrôler une transformation par un réactif », dans ce chapitre, ne veut pas dire jouer sur les quantités — ça, c'était le déplacement d'équilibre du chapitre précédent. Ça veut dire quelque chose de plus direct : **remplacer un réactif de départ par un autre, chimiquement plus réactif, qui mène au même produit mais par une réaction plus favorable.** Pour fabriquer un ester, le réactif plus réactif que l'acide carboxylique, c'est son **anhydride d'acide**.
 
-### L'image du col de montagne
+### Reconnaître un anhydride d'acide
 
-Imagine l'énergie du système - réactifs, puis produits - comme l'altitude d'un chemin de montagne. Les réactifs se trouvent à une certaine altitude ; les produits, plus loin sur le chemin, à une autre altitude. Cette différence d'altitude ne dépend que de la nature chimique des réactifs et des produits eux-mêmes - jamais du chemin emprunté pour aller de l'un à l'autre.
+Un anhydride d'acide dérive d'un acide carboxylique : imagine qu'on prend deux molécules d'acide $R-COOH$, qu'on leur retire une molécule d'eau, et qu'on soude les deux restes par un atome d'oxygène. Le groupe caractéristique qui en résulte est le groupe **anhydride**, $-CO-O-CO-$ :
 
-Mais entre les deux, il faut franchir un col : un point du chemin plus haut que le départ ET que l'arrivée. La hauteur de ce col au-dessus des réactifs porte un nom : l'**énergie d'activation**, notée $E_a$. C'est l'énergie qu'il faut, ne serait-ce que transitoirement, pour amorcer la transformation. Plus ce col est haut, moins il y a, à une température donnée, de chocs entre entités réactives suffisamment énergétiques pour le franchir - donc moins de chocs efficaces (le critère vu au chapitre transformations lentes et rapides), donc une réaction plus lente.
+$$R-CO-O-CO-R$$
 
-Un catalyseur agit UNIQUEMENT sur la hauteur de ce col : il ouvre, entre les mêmes réactifs et les mêmes produits, un chemin différent - un tunnel, pas un pont plus haut - dont le point culminant est plus bas que celui du chemin non catalysé. Son énergie d'activation $E_a'$ est donc plus petite que $E_a$. À température égale, une plus grande proportion des chocs franchit désormais ce col abaissé : plus de chocs efficaces par seconde, donc une transformation plus rapide.
+Par exemple, l'anhydride éthanoïque, $CH_3-CO-O-CO-CH_3$ (qu'on écrit aussi $(CH_3CO)_2O$), dérive de deux molécules d'acide éthanoïque. C'est le quatrième des groupes caractéristiques au programme, aux côtés de l'hydroxyle $-OH$, du carboxyle $-CO_2H$ et de l'ester $-CO_2R$.
 
-### Ce que le tunnel ne change jamais
+### L'équation générale : anhydride + alcool
 
-Regarde bien les deux extrémités du chemin : le tunnel ne déplace ni le point de départ (l'énergie des réactifs) ni le point d'arrivée (l'énergie des produits) - seulement le chemin suivi entre les deux, et la hauteur de son point culminant. Réactifs et produits restent les mêmes espèces chimiques, avec la même énergie, qu'on emprunte le chemin catalysé ou non.
+Quand un anhydride d'acide rencontre un alcool, il se comporte comme l'acide dont il dérive, mais en plus vif : le groupe $-OH$ de l'alcool se fixe, un ester se forme, et le second morceau de l'anhydride repart sous forme d'acide carboxylique. L'équation générale s'écrit :
 
-Deux conséquences directes, qui ne sont jamais celles qu'on croit spontanément :
+$$R-CO-O-CO-R + R'-OH \rightarrow R-CO-O-R' + R-COOH$$
 
-- La quantité finale de produit formé ne change pas. Elle reste fixée, comme tu viens de le voir en R1, par la quantité initiale du réactif limitant - un catalyseur n'ajoute et ne retranche aucune matière, il ne fait que faciliter le passage.
-- Pour une transformation qui n'est pas totale (celle vue au chapitre état d'équilibre d'un système chimique, par exemple), la constante d'équilibre $K$ ne change pas non plus. $K$ ne dépend que de la réaction elle-même et de la température - jamais du chemin microscopique par lequel le système l'atteint.
+Regarde bien les deux différences avec l'estérification classique du chapitre précédent :
 
-### Pourquoi, plus précisément, un catalyseur ne peut pas déplacer un équilibre
+- **Une seule flèche, pas une double.** La réaction est **totale** : elle avance jusqu'à épuisement du réactif limitant, sans réaction inverse qui viendrait la ronger. Pas de plafond à $\tau \approx 2/3$ ici — on va jusqu'à $\tau = 1$.
+- **Le sous-produit n'est pas de l'eau, mais un acide carboxylique.** Aucune eau n'est formée pour réhydrolyser l'ester : c'est l'une des raisons pour lesquelles rien ne fait marche arrière.
 
-Voici l'argument qui rend ce deuxième point solide, et pas simplement affirmé : un véritable catalyseur accélère la réaction directe ET la réaction inverse, dans les mêmes proportions - le tunnel qu'il ouvre se parcourt dans les deux sens à la fois. Or l'équilibre, c'est exactement l'instant où la vitesse directe égale la vitesse inverse. Si le catalyseur multiplie les deux vitesses par le même facteur, leur égalité continue à se produire pour le même rapport de concentrations qu'avant - donc pour la même valeur de $K$. Un tunnel emprunté seulement dans un sens changerait la position de l'équilibre, c'est vrai - mais alors, ce ne serait plus un catalyseur au sens propre : ce serait autre chose, qui privilégierait une des deux réactions sur l'autre.
+Et cette réaction est **rapide** : là où l'acide demandait des jours, l'anhydride réagit en quelques minutes, souvent sans même chauffer. Deux qualités d'un coup : **rapide et totale.** C'est la réponse à l'accroche — la proposition (c) était la bonne.
+
+Concrètement, sur le couple du parfumeur — anhydride éthanoïque et éthanol :
+
+$$CH_3-CO-O-CO-CH_3 + C_2H_5OH \rightarrow CH_3-CO-O-C_2H_5 + CH_3COOH$$
+
+Il récupère l'éthanoate d'éthyle, exactement le même ester qu'avant, mais vite et en totalité, accompagné d'acide éthanoïque au lieu d'eau.
+
+### Chiffrer le gain : le rendement
+
+Pour comparer honnêtement les deux voies, on utilise le **rendement** $\eta$ d'une transformation : le rapport de la quantité de produit réellement obtenue à la quantité maximale qu'on obtiendrait si la réaction était totale.
+
+$$\eta = \frac{n_{\text{obtenu}}}{n_{\text{max}}}$$
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* le dénominateur est toujours la quantité que donnerait une réaction totale — c'est la référence idéale à laquelle on compare la réalité, quel que soit le chemin choisi. Un rendement de $100\,\%$ signifie « rien perdu par rapport à l'idéal totale ».
+
+**Exemple travaillé.** On veut produire de l'éthanoate d'éthyle à partir de $n_0 = 0{,}50\ \text{mol}$ d'éthanol.
+
+- *Par la voie de l'anhydride (rapide et totale)*, avec l'anhydride éthanoïque en léger excès (l'éthanol est alors le réactif limitant) : la réaction consomme tout l'éthanol, donc $n(\text{ester}) = 0{,}50\ \text{mol}$. C'est aussi la quantité maximale théorique, d'où :
+
+$$\eta_{\text{anhydride}} = \frac{0{,}50}{0{,}50} = 1 = 100\,\%$$
+
+- *Par la voie de l'acide (lente et limitée)*, en partant de $0{,}50\ \text{mol}$ d'acide éthanoïque et $0{,}50\ \text{mol}$ d'éthanol (estérification simple, $\tau \approx 2/3$) : la réaction plafonne à $n(\text{ester}) = \tau \, n_0 = \tfrac{2}{3} \times 0{,}50 \approx 0{,}33\ \text{mol}$, pour la même quantité maximale théorique $0{,}50\ \text{mol}$ :
+
+$$\eta_{\text{acide}} = \frac{0{,}33}{0{,}50} \approx 0{,}67 = 67\,\%$$
+
+Changer de réactif fait passer le rendement de $67\,\%$ à $100\,\%$ — et en un temps bien plus court. Voilà, très précisément, ce qu'on appelle **contrôler une transformation par un réactif** : ne pas régler les conditions, mais choisir un réactif de départ intrinsèquement plus efficace.
+
+---
+
+## R2 — Le catalyseur : accélérer sans déplacer
+
+### Ce qu'est un catalyseur, et ses deux rôles
+
+Un **catalyseur** est une espèce chimique qui **accélère** une réaction sans être consommée : il participe au déroulement de la transformation, mais il en ressort intact, en même quantité et de même nature qu'au départ. On l'écrit au-dessus de la flèche de l'équation, jamais parmi les réactifs ni parmi les produits — puisqu'il n'appartient ni à l'un ni à l'autre camp.
+
+Le programme lui reconnaît deux rôles, qu'il faut savoir nommer :
+
+- un rôle **accélérateur** : il augmente la vitesse de la réaction ;
+- un rôle **sélectif** : lorsque plusieurs réactions concurrentes sont possibles à partir des mêmes réactifs, un catalyseur donné peut n'en accélérer qu'une seule, et orienter ainsi le système vers le produit voulu plutôt qu'un autre. (Les enzymes, qu'on verra au rung suivant, poussent cette sélectivité à l'extrême.)
+
+### Ce qu'un catalyseur ne change jamais : l'état final
+
+Voici le point le plus important, et le plus contre-intuitif. Un catalyseur accélère — mais il ne change **ni la quantité finale de produit d'une réaction totale, ni la constante d'équilibre $K$ d'une réaction limitée.** Il change *quand* on arrive à l'état final, jamais *où* se trouve cet état final.
+
+Pour une transformation totale, c'est presque évident : le catalyseur n'apporte et ne retranche aucune matière, donc la quantité de produit reste fixée par le réactif limitant, avec ou sans lui.
+
+Pour une transformation limitée — un équilibre —, l'affirmation est plus délicate. Et c'est là qu'il faut un vrai argument, pas une simple affirmation.
+
+### Pourquoi un catalyseur ne peut pas déplacer un équilibre
+
+Reviens à ce qu'est un équilibre, vu au chapitre état d'équilibre : c'est l'instant où la **vitesse de la réaction directe** devient égale à la **vitesse de la réaction inverse**. Les deux réactions continuent, mais à vitesses égales — si bien que les quantités n'évoluent plus.
+
+Maintenant, la propriété clé d'un catalyseur : il accélère la réaction directe **et** la réaction inverse, et il les multiplie **par le même facteur**. Le même catalyseur qui aide $A + B$ à donner $C + D$ aide tout autant $C + D$ à redonner $A + B$ : c'est le même chemin, parcouru dans les deux sens.
+
+Suis la conséquence, pas à pas. Sans catalyseur, l'équilibre s'établit quand :
+
+$$v_{\text{directe}} = v_{\text{inverse}}$$
+
+Ajoute le catalyseur : chaque vitesse est multipliée par le même facteur $\alpha > 1$. La condition d'équilibre devient :
+
+$$\alpha \, v_{\text{directe}} = \alpha \, v_{\text{inverse}}$$
+
+C'est **la même égalité** — on peut diviser les deux membres par $\alpha$ et retomber exactement sur la précédente. Elle est donc vérifiée pour **le même rapport de concentrations** qu'avant, c'est-à-dire pour la même valeur de $Q_r$ à l'équilibre — donc le même $K$. Le catalyseur fait converger les deux vitesses vers leur égalité plus rapidement, mais il ne déplace pas le point où cette égalité se produit.
+
+Retiens la formule qui résume tout : un catalyseur qui n'accélérerait qu'un seul sens déplacerait l'équilibre — mais alors ce ne serait plus un catalyseur. Un vrai catalyseur agit sur les deux sens à la fois, dans les mêmes proportions, et c'est précisément pour ça qu'il laisse $K$ intact.
 
 ### Teste l'idée avant de la croire : « un catalyseur améliore le rendement »
 
-Reviens sur la proposition de Sofia dans l'accroche. Si le $Fe^{3+}$ qu'elle veut ajouter changeait la quantité finale de diiode, cela voudrait dire une chose précise : que le chemin catalysé mène à une altitude d'arrivée différente de celle du chemin normal - autrement dit, que $Fe^{3+}$ transforme une partie de $S_2O_8^{2-}$ ou de $I^-$ en autre chose que $SO_4^{2-}$ et $I_2$, ou fait apparaître du produit au-delà de ce que permet le réactif limitant. Rien de tout ça n'est ce que fait un catalyseur, par définition : il n'est ni consommé, ni transformé, et il ne crée pas de matière à partir de rien.
-
-Sofia obtiendra donc, avec les quantités de l'expérience de R1, exactement les mêmes $5{,}0\ \text{mmol}$ de diiode qu'Amine sans catalyseur - mais en un temps bien plus court que les quarante minutes mesurées au chapitre précédent. Voilà ce qui distingue enfin les deux propositions de l'accroche : celle d'Amine change la quantité finale ; celle de Sofia ne change que le temps pour l'atteindre.
+Reprends le parfumeur du R0, resté sur la voie de l'acide (lente, limitée à $\tau \approx 2/3$). Il se dit : « je vais ajouter plus de catalyseur acide, ça poussera la réaction plus loin. » Faux — et tu sais maintenant l'argumenter. Le catalyseur accélère l'estérification et l'hydrolyse dans les mêmes proportions ; le rapport de leurs vitesses ne bouge pas, donc l'équilibre se rétablit au même $\tau \approx 2/3$, simplement atteint plus vite. Pour dépasser les deux tiers, il lui faut un autre type de levier : soit déplacer l'équilibre (excès d'un réactif, élimination d'un produit — chapitre précédent), soit changer de réactif (l'anhydride — rung R1). Le catalyseur, lui, ne fait gagner que du temps.
 
 ---
 
 ## R3 — Les trois visages de la catalyse : homogène, hétérogène, enzymatique
 
+On sait maintenant ce que fait un catalyseur ; reste à voir sous quelles formes il se présente. On en distingue trois grandes familles, selon la **phase** qu'occupe le catalyseur par rapport à celle des réactifs.
+
 ### Catalyse homogène : même phase que les réactifs
 
-Un catalyseur est dit **homogène** quand il se trouve dans la même phase que les réactifs - le plus souvent, dissous dans la même solution qu'eux. C'est le cas des ions $Fe^{3+}$ de l'accroche : dissous dans la même solution aqueuse que $S_2O_8^{2-}$ et $I^-$, ils accélèrent la réaction en deux étapes rapides qui, additionnées, redonnent exactement l'équation bilan, sans que $Fe^{3+}$ (régénéré) n'apparaisse jamais dans ce bilan.
+Un catalyseur est dit **homogène** quand il se trouve dans la même phase que les réactifs — le plus souvent, dissous dans la même solution qu'eux. C'est le cas des ions $Fe^{3+}$ que l'on peut ajouter à un mélange d'ions peroxodisulfate $S_2O_8^{2-}$ et d'ions iodure $I^-$ : dissous dans la même solution aqueuse que les réactifs, ils accélèrent la réaction en deux étapes rapides qui, additionnées, redonnent exactement l'équation bilan, sans que $Fe^{3+}$ (régénéré) n'apparaisse jamais dans ce bilan.
 
-Tu as croisé un autre exemple sans t'y attarder, au chapitre transformations dans les deux sens : l'estérification de l'acide éthanoïque et de l'éthanol, réalisée avec quelques gouttes d'acide sulfurique comme catalyseur. L'acide sulfurique $H_2SO_4$, dissous dans le même mélange liquide que les réactifs organiques, est lui aussi un catalyseur homogène.
+Tu as croisé un autre exemple sans t'y attarder, au chapitre estérification et hydrolyse : l'estérification de l'acide éthanoïque et de l'éthanol, réalisée avec quelques gouttes d'acide sulfurique comme catalyseur. L'acide sulfurique $H_2SO_4$, dissous dans le même mélange liquide que les réactifs organiques, est lui aussi un catalyseur homogène.
 
 ### Catalyse hétérogène : une phase différente, une réaction de surface
 
-Un catalyseur est dit **hétérogène** quand il se trouve dans une phase différente de celle des réactifs - le plus souvent un solide, en contact avec des réactifs gazeux ou en solution. La réaction catalysée se produit alors à la SURFACE du catalyseur solide : les molécules réactives s'y fixent temporairement (on dit qu'elles s'adsorbent), y réagissent, puis les produits formés s'en détachent, libérant la surface pour de nouvelles molécules.
+Un catalyseur est dit **hétérogène** quand il se trouve dans une phase différente de celle des réactifs — le plus souvent un solide, en contact avec des réactifs gazeux ou en solution. La réaction catalysée se produit alors à la SURFACE du catalyseur solide : les molécules réactives s'y fixent temporairement (on dit qu'elles s'adsorbent), y réagissent, puis les produits formés s'en détachent, libérant la surface pour de nouvelles molécules.
 
-L'exemple le plus concret : le pot catalytique automobile, un bloc de céramique recouvert de platine, de palladium et de rhodium métalliques, solides. Les gaz d'échappement - monoxyde de carbone, oxydes d'azote, hydrocarbures imbrûlés, tous gazeux - traversent ce bloc et réagissent à la surface des métaux pour donner du dioxyde de carbone, du diazote et de l'eau, bien moins polluants.
+L'exemple le plus concret : le pot catalytique automobile, un bloc de céramique recouvert de platine, de palladium et de rhodium métalliques, solides. Les gaz d'échappement — monoxyde de carbone, oxydes d'azote, hydrocarbures imbrûlés, tous gazeux — traversent ce bloc et réagissent à la surface des métaux pour donner du dioxyde de carbone, du diazote et de l'eau, bien moins polluants.
 
 ### Teste-toi : homogène ou hétérogène ?
 
-Le platine du pot catalytique et les gaz d'échappement : deux phases clairement différentes - un solide, des gaz. C'est un catalyseur hétérogène. Et c'est précisément parce qu'il est hétérogène - donc solide, donc physiquement séparable du flux gazeux - qu'on peut le laisser en place, des années durant, sans jamais avoir à le récupérer ni à le remplacer à chaque trajet : seule sa surface travaille, au contact de ce qui la traverse.
+Le platine du pot catalytique et les gaz d'échappement : deux phases clairement différentes — un solide, des gaz. C'est un catalyseur hétérogène. Et c'est précisément parce qu'il est hétérogène — donc solide, donc physiquement séparable du flux gazeux — qu'on peut le laisser en place, des années durant, sans jamais avoir à le récupérer ni à le remplacer à chaque trajet : seule sa surface travaille, au contact de ce qui la traverse.
 
-Une confusion à éviter : un catalyseur n'est pas hétérogène simplement parce qu'il s'agit d'une espèce chimique différente des réactifs - TOUS les catalyseurs, homogènes ou hétérogènes, sont des espèces différentes des réactifs, sinon on ne pourrait pas les distinguer d'eux. Ce qui tranche entre homogène et hétérogène, c'est uniquement la PHASE : dissous avec les réactifs (homogène) ou dans une phase séparée, typiquement solide (hétérogène) - jamais la nature chimique du catalyseur en elle-même.
+Une confusion à éviter : un catalyseur n'est pas hétérogène simplement parce qu'il s'agit d'une espèce chimique différente des réactifs — TOUS les catalyseurs, homogènes ou hétérogènes, sont des espèces différentes des réactifs, sinon on ne pourrait pas les distinguer d'eux. Ce qui tranche entre homogène et hétérogène, c'est uniquement la PHASE : dissous avec les réactifs (homogène) ou dans une phase séparée, typiquement solide (hétérogène) — jamais la nature chimique du catalyseur en elle-même.
 
 ### Catalyse enzymatique : le catalyseur du vivant
 
-Une **enzyme** est un catalyseur biologique, une protéine produite par les cellules vivantes. Elle agit selon exactement le même mécanisme que tout catalyseur : elle ouvre, pour une réaction chimique précise, un chemin d'énergie d'activation plus basse, sans jamais changer l'état final. Ce qui la distingue des catalyseurs chimiques usuels, c'est son extrême spécificité : une enzyme donnée ne catalyse en général qu'une seule réaction, sur un seul type de molécule (son substrat), grâce à une forme géométrique qui s'ajuste précisément à cette molécule - une clé qui n'ouvre qu'une seule serrure. C'est ce qui permet à des milliers de réactions différentes de se dérouler côte à côte, sans se gêner, dans une seule cellule vivante, chacune pilotée par son enzyme propre, à une température de l'ordre de $37\,^\circ\text{C}$ - là où un catalyseur chimique industriel exige souvent des conditions bien plus dures (haute température, haute pression) pour un résultat comparable.
+Une **enzyme** est un catalyseur biologique, une protéine produite par les cellules vivantes. Elle agit comme tout catalyseur : elle accélère une réaction chimique précise sans jamais en changer l'état final, et elle en ressort intacte. Ce qui la distingue des catalyseurs chimiques usuels, c'est son extrême **spécificité** : une enzyme donnée ne catalyse en général qu'une seule réaction, sur un seul type de molécule (son substrat), grâce à une forme géométrique qui s'ajuste précisément à cette molécule — une clé qui n'ouvre qu'une seule serrure. C'est la sélectivité poussée à son comble. Elle permet à des milliers de réactions différentes de se dérouler côte à côte, sans se gêner, dans une seule cellule vivante, chacune pilotée par son enzyme propre, à une température de l'ordre de $37\,^\circ\text{C}$ — là où un catalyseur chimique industriel exige souvent des conditions bien plus dures (haute température, haute pression) pour un résultat comparable.
 
-Exemple purement chimique : l'amylase salivaire catalyse l'hydrolyse de l'amidon, une grosse molécule, en molécules de glucose bien plus petites - une réaction d'hydrolyse, de la même famille que celle rencontrée pour les esters, mais ici accélérée par une enzyme plutôt que par un acide.
+Exemple concret : l'amylase salivaire catalyse l'hydrolyse de l'amidon, une grosse molécule, en molécules de sucre bien plus petites — une réaction d'hydrolyse, de la même famille que celle qu'on va rencontrer pour les esters au rung suivant, mais ici accélérée par une enzyme plutôt que par un acide ou une base.
 
 ---
 
-## R4 — L'autocatalyse : quand un produit catalyse sa propre formation
+## R4 — L'hydrolyse basique et la saponification
 
-### Une réaction où le produit devient acteur
+Jusqu'ici, on a fabriqué des esters. On sait aussi, du chapitre précédent, comment les défaire : leur hydrolyse **en milieu acide** est la réaction inverse de l'estérification — lente, et **limitée** (c'est le même équilibre, lu à l'envers). Il existe une autre façon d'hydrolyser un ester, qui change tout : l'hydrolyse **en milieu basique**.
 
-Dans tous les exemples précédents, le catalyseur était apporté depuis l'extérieur, dès le départ. Un cas particulier mérite qu'on s'y arrête : et si un PRODUIT de la réaction, une fois formé, se mettait lui-même à catalyser la réaction qui l'a produit ?
+### L'hydrolyse basique d'un ester est totale
 
-Prends la réaction, en milieu acide, entre les ions permanganate $MnO_4^-$ (violets, oxydants) et l'ion oxalate $C_2O_4^{2-}$ (réducteur, incolore), qui donne des ions manganèse (II) $Mn^{2+}$ (incolores) et du dioxyde de carbone :
+En présence d'ions hydroxyde $HO^-$, un ester ne redonne pas l'acide carboxylique, mais l'**ion carboxylate** correspondant $R-COO^-$, accompagné de l'alcool :
 
-$$MnO_4^- + 8H^+ + 5e^- \rightarrow Mn^{2+} + 4H_2O \qquad \text{(réduction)}$$
+$$R-CO-O-R' + HO^- \rightarrow R-COO^- + R'-OH$$
 
-$$C_2O_4^{2-} \rightarrow 2CO_2 + 2e^- \qquad \text{(oxydation)}$$
+Par exemple, pour l'éthanoate d'éthyle :
 
-Les deux demi-équations échangent respectivement $5$ et $2$ électrons ; pour les combiner, on multiplie la première par $2$ et la seconde par $5$, afin d'égaler les $10$ électrons échangés :
+$$CH_3-CO-O-C_2H_5 + HO^- \rightarrow CH_3-COO^- + C_2H_5-OH$$
 
-$$2MnO_4^- + 16H^+ + 5C_2O_4^{2-} \rightarrow 2Mn^{2+} + 8H_2O + 10CO_2$$
+Et cette réaction, contrairement à l'hydrolyse acide, est **totale**. Voici pourquoi, sans quitter le cadre : en milieu acide, l'hydrolyse redonne l'acide carboxylique $R-COOH$, qui peut aussitôt re-réagir avec l'alcool (l'estérification, en sens inverse) — d'où l'équilibre. En milieu basique, le produit n'est pas l'acide, mais sa base conjuguée, l'ion carboxylate $R-COO^-$. Or le carboxylate ne s'estérifie pas : il n'existe pas de réaction inverse pour reconstituer l'ester. Rien ne fait marche arrière, donc la réaction va jusqu'au bout. **Hydrolyse acide : limitée. Hydrolyse basique : totale.**
 
-### Ce qu'on observe : ni une vitesse constante, ni une vitesse qui ne fait que chuter
+### La saponification : hydrolyser un corps gras
 
-Verse ces deux solutions ensemble et regarde la teinte violette du permanganate. D'abord, presque rien ne semble se passer : la couleur reste violette pendant un temps notable, comme si la réaction hésitait à démarrer. Puis, assez brusquement, la décoloration s'accélère nettement - la teinte violette disparaît de plus en plus vite. Enfin, vers la fin, la décoloration ralentit de nouveau, jusqu'à l'arrêt complet.
+Applique cette hydrolyse basique non pas à un petit ester, mais à un **corps gras**. Un corps gras (une huile, une graisse) est un **triglycéride** : un triester du glycérol — une molécule de glycérol dont les trois groupes $-OH$ sont estérifiés par trois longues chaînes d'acides gras. Sa formule, en notant $R$ les longues chaînes carbonées :
 
-Voici, à titre d'illustration, la durée mesurée pour décolorer chaque quart successif de la quantité initiale de permanganate, dans une expérience type :
+$$C_3H_5(O-CO-R)_3$$
 
-| Tranche décolorée | $0 \to 25\,\%$ | $25 \to 50\,\%$ | $50 \to 75\,\%$ | $75 \to 100\,\%$ |
-|---|---|---|---|---|
-| Durée | $90\ \text{s}$ | $25\ \text{s}$ | $20\ \text{s}$ | $70\ \text{s}$ |
+Hydrolyse ce triester en milieu basique (par de la soude, $Na^+ + HO^-$) : les trois fonctions ester sont hydrolysées d'un coup, et on récupère trois ions carboxylate à longue chaîne, plus le glycérol libéré :
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* une vitesse constante donnerait quatre durées égales, quart après quart. Une vitesse qui ne ferait QUE diminuer, comme celle établie au chapitre précédent, donnerait quatre durées croissantes du début à la fin. Ici, ni l'un ni l'autre : la deuxième tranche va plus vite que la première, la troisième plus vite encore, puis la quatrième ralentit nettement. La vitesse de cette réaction n'a pas seulement diminué au cours du temps - elle a d'abord AUGMENTÉ.
+$$C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$$
 
-### Pourquoi : deux effets qui s'affrontent
+Cette réaction porte un nom : la **saponification**. Ses deux produits sont :
 
-Au tout premier instant, il n'existe encore aucun ion $Mn^{2+}$ dans le mélange : la réaction ne peut se produire que par son chemin non catalysé, lent - malgré des concentrations en réactifs maximales à cet instant, la vitesse de départ reste faible. Mais chaque trace de $Mn^{2+}$ formée agit, à son tour, comme catalyseur pour les molécules encore présentes : elle ouvre pour elles un chemin réactionnel plus rapide. Plus il se forme de $Mn^{2+}$, plus le mélange devient auto-catalytique, plus la réaction s'accélère elle-même - un emballement progressif, qui explique la deuxième et la troisième tranche du tableau.
+- le **savon** : l'ensemble des ions carboxylate à longue chaîne $R-COO^-$ (associés aux ions $Na^+$ apportés par la soude) ;
+- le **glycérol** $C_3H_5(OH)_3$, aussi appelé propane-1,2,3-triol.
 
-Puis, à mesure que $MnO_4^-$ et $C_2O_4^{2-}$ s'épuisent, l'effet inverse - la raréfaction des chocs efficaces par manque de réactifs, déjà rencontrée au chapitre transformations lentes et rapides - finit par l'emporter sur l'effet catalytique croissant : la vitesse retombe, jusqu'à s'annuler quand la transformation s'achève. C'est la quatrième tranche, plus longue de nouveau.
+Comme toute hydrolyse basique, la saponification est **lente mais totale** — c'est pour ça qu'on l'emploie pour fabriquer le savon depuis des siècles : tout le corps gras finit par être transformé.
 
-### Le contraste à retenir
+### La structure d'un savon : une tête et une queue
 
-Compare cette allure à celle établie au chapitre suivi temporel d'une transformation : là-bas, $v(t)$ ne faisait que diminuer, continûment, dès le tout premier instant jusqu'à la fin - parce qu'aucun mécanisme catalytique ne s'ajoutait à la simple raréfaction des réactifs. Ici, deux effets s'opposent en cours de route : l'auto-catalyse (qui pousse $v$ à monter) et l'épuisement des réactifs (qui pousse $v$ à descendre) - et le premier l'emporte d'abord, avant que le second ne prenne le dessus. La courbe $v(t)$ dessine une bosse, pas une pente uniformément décroissante.
+Regarde de près un ion du savon, $R-COO^-$, avec $R$ une longue chaîne carbonée (souvent quinze à dix-sept atomes de carbone). Il a deux bouts qui ne se ressemblent pas du tout :
+
+- La **tête**, le groupe carboxylate $-COO^-$ : c'est un groupe porteur d'une **charge électrique**. Comme l'eau est un solvant polaire, cette tête ionique est attirée par l'eau — on la dit **hydrophile** (« qui aime l'eau »).
+- La **queue**, la longue chaîne carbonée $R$ : une suite d'atomes de carbone et d'hydrogène, sans charge, qui n'a aucune affinité pour l'eau mais se mélange volontiers aux graisses et aux huiles — on la dit **hydrophobe** (« qui fuit l'eau »), ou lipophile.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* pour reconnaître la partie hydrophile et la partie hydrophobe d'un ion carboxylate à longue chaîne, on ne regarde jamais la taille, mais la **charge**. Le bout qui porte la charge $-COO^-$ est toujours l'hydrophile ; la longue chaîne carbonée neutre est toujours l'hydrophobe.
+
+C'est cette double personnalité qui explique le pouvoir lavant du savon. Face à une tache de gras dans l'eau, chaque ion oriente sa queue hydrophobe vers le gras (où elle se plaît) et sa tête hydrophile vers l'eau (où elle se plaît aussi). Les ions savon entourent ainsi les petites gouttes de gras, tête tournée vers l'eau, et les emportent au rinçage. Une molécule qui a un pied dans chaque camp — voilà la relation structure-propriété au cœur du savon.
 
 ---
 
@@ -178,65 +200,68 @@ Compare cette allure à celle établie au chapitre suivi temporel d'une transfor
 
 ### Récapitulatif express
 
-| Levier actionné | Effet sur $x_{max}$ (ou sur $K$) | Effet sur la vitesse |
+| Levier | Ce qu'il change | Ce qu'il ne change pas |
 |---|---|---|
-| Quantité initiale du réactif limitant | Change $x_{max}$, dans les mêmes proportions (tant qu'il reste limitant) | Peut aussi changer, mais ce n'est pas son rôle principal ici |
-| Catalyseur | Ne change ni $x_{max}$, ni $K$ | Accélère la réaction (abaisse $E_a$), dans les deux sens si la réaction est réversible |
+| **Changer de réactif** (acide → anhydride) | Rend la réaction rapide ET totale ($\tau = 1$, rendement $\approx 100\,\%$) | — |
+| **Catalyseur** | La vitesse (rôle accélérateur et sélectif) | Ni $x_{max}$, ni $K$, ni le rendement à l'équilibre |
+| **Hydrolyse basique / saponification** | Rend l'hydrolyse totale (au lieu de limitée en milieu acide) | — |
 
-- Le **réactif limitant** est celui dont le rapport quantité initiale / coefficient stoechiométrique est le plus petit ; il fixe $x_{max}$, et changer sa quantité initiale change $x_{max}$ proportionnellement - tant qu'il reste limitant.
-- Un **catalyseur** ouvre un chemin réactionnel d'énergie d'activation plus basse, sans jamais changer l'énergie des réactifs ni des produits : il accélère la réaction sans changer ni la quantité finale de produit, ni (pour une transformation réversible) la constante d'équilibre $K$.
-- Trois catégories de catalyse : **homogène** (même phase que les réactifs), **hétérogène** (phase différente, réaction de surface), **enzymatique** (catalyseur biologique, extrêmement spécifique).
-- L'**autocatalyse** : un produit de la réaction catalyse sa propre formation - la vitesse augmente d'abord, avant de diminuer, contrairement au cas général où elle ne fait que diminuer.
-- Pour choisir son levier : si l'objectif est d'obtenir PLUS de produit, il faut jouer sur les quantités initiales de réactifs - jamais sur un catalyseur, qui en est structurellement incapable. Si l'objectif est d'obtenir la même quantité de produit plus vite, un catalyseur est le bon levier.
+- **Contrôle par un réactif** = remplacer l'acide carboxylique par son **anhydride d'acide**. La réaction anhydride + alcool $\rightarrow$ ester + acide carboxylique est **rapide et totale** (une seule flèche), là où acide + alcool est lente et limitée à $\tau \approx 2/3$.
+- Un **catalyseur** accélère sans déplacer l'état final : il multiplie les vitesses directe et inverse par le même facteur, donc $K$ et le rendement à l'équilibre restent inchangés — seul le temps pour les atteindre diminue. Ses deux rôles : **accélérateur** et **sélectif**.
+- Trois types de catalyse : **homogène** (catalyseur et réactifs dans la même phase), **hétérogène** (phases différentes, réaction de surface), **enzymatique** (catalyseur biologique, extrêmement spécifique).
+- L'**hydrolyse basique** d'un ester (ester + $HO^-$ $\rightarrow$ carboxylate + alcool) est **totale**, contrairement à l'hydrolyse acide, limitée. Appliquée à un corps gras, c'est la **saponification** : triglycéride + $HO^-$ $\rightarrow$ savon ($R-COO^-$) + glycérol.
+- Un ion de savon $R-COO^-$ est **amphiphile** : tête $-COO^-$ **hydrophile** (chargée), longue queue carbonée **hydrophobe** — d'où son pouvoir lavant.
 
 ### Exercice de type bac (original — entraînement, non un sujet officiel)
 
-On étudie la réaction, totale, entre les ions peroxodisulfate $S_2O_8^{2-}$ et les ions iodure $I^-$ :
+**Partie A — Synthèse par l'anhydride.** On veut préparer de l'éthanoate d'éthyle. On dispose d'anhydride éthanoïque $(CH_3CO)_2O$ et d'éthanol $C_2H_5OH$.
 
-$$S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$$
+**1) Écris l'équation de la réaction entre l'anhydride éthanoïque et l'éthanol. Nomme l'ester formé et l'autre produit.**
 
-On réalise trois expériences, dans un volume $V = 100\ \text{mL}$ constant à chaque fois :
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique l'équation générale du rung R1 — un anhydride donne un ester et un acide carboxylique, avec une seule flèche.
 
-- **Expérience A** : $n_0(S_2O_8^{2-}) = 3{,}0\ \text{mmol}$, $n_0(I^-) = 8{,}0\ \text{mmol}$, sans catalyseur.
-- **Expérience B** : $n_0(S_2O_8^{2-}) = 6{,}0\ \text{mmol}$, $n_0(I^-) = 8{,}0\ \text{mmol}$ (seule la quantité de peroxodisulfate a changé par rapport à A), sans catalyseur.
-- **Expérience C** : mêmes quantités initiales que l'expérience A, mais avec quelques gouttes de solution de $Fe^{3+}$ ajoutées au mélange.
+$$(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$$
 
-**1) Dresser le tableau d'avancement de l'expérience A, identifier le réactif limitant, et calculer $x_{max,A}$.**
+L'ester formé est l'**éthanoate d'éthyle** ; l'autre produit est l'**acide éthanoïque** (pas de l'eau).
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* comparer les deux rapports quantité initiale / coefficient, pas les quantités brutes.
+**2) On introduit $n_0 = 0{,}20\ \text{mol}$ d'éthanol et l'anhydride en excès. Quelle quantité d'ester obtient-on ? Quel est le rendement ?**
 
-$$\frac{n_0(S_2O_8^{2-})}{1} = 3{,}0\ \text{mmol}$$
+*Ce qu'on cherche ici, et pourquoi ce geste :* la réaction étant rapide et totale, le réactif limitant (l'éthanol, l'anhydride étant en excès) est intégralement consommé — on n'a aucun équilibre à résoudre.
 
-$$\frac{n_0(I^-)}{2} = \frac{8{,}0}{2} = 4{,}0\ \text{mmol}$$
+L'éthanol est limitant et entièrement consommé, donc $n(\text{ester}) = 0{,}20\ \text{mol}$. La quantité maximale théorique est la même, $0{,}20\ \text{mol}$ :
 
-Le plus petit rapport est celui de $S_2O_8^{2-}$ : c'est le réactif limitant, et $x_{max,A} = 3{,}0\ \text{mmol}$.
+$$\eta = \frac{0{,}20}{0{,}20} = 1 = 100\,\%$$
 
-**2) Dans l'expérience B, la quantité initiale de peroxodisulfate a doublé par rapport à A. Identifier le réactif limitant de B, calculer $x_{max,B}$, et comparer à $x_{max,A}$.**
+**3) Un camarade propose plutôt de partir d'acide éthanoïque et d'éthanol en quantités égales ($0{,}20\ \text{mol}$ chacun), avec quelques gouttes d'acide sulfurique. Obtiendra-t-il autant d'ester ? Justifie en distinguant vitesse et état final.**
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* refaire le même test de comparaison qu'en question 1, sans supposer d'avance que c'est toujours le même réactif qui limite.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on sépare explicitement ce qui change la vitesse (le catalyseur) de ce qui change la position de l'état final (le choix du réactif).
 
-$$\frac{n_0(S_2O_8^{2-})}{1} = 6{,}0\ \text{mmol}$$
+Non. L'acide sulfurique n'est qu'un catalyseur : il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans déplacer l'équilibre. Le mélange plafonne donc à $\tau \approx 2/3$, soit $n(\text{ester}) \approx \tfrac{2}{3} \times 0{,}20 \approx 0{,}13\ \text{mol}$ ($\eta \approx 67\,\%$) — moins que par l'anhydride, malgré le catalyseur. Le catalyseur ne fait qu'atteindre plus vite ce même état final limité ; seul le changement de réactif rendait la réaction totale.
 
-$$\frac{n_0(I^-)}{2} = 4{,}0\ \text{mmol}$$
+**Partie B — Défaire l'ester : la saponification.** On chauffe à reflux un corps gras (triglycéride) avec de la soude concentrée.
 
-Cette fois, le plus petit rapport est celui de $I^-$ : c'est lui qui est devenu limitant, et $x_{max,B} = 4{,}0\ \text{mmol}$.
+**4) Écris l'équation générale de la saponification d'un triglycéride $C_3H_5(O-CO-R)_3$ par les ions $HO^-$. Nomme les deux produits.**
 
-L'avancement final n'a PAS doublé (il serait passé à $6{,}0\ \text{mmol}$ si $S_2O_8^{2-}$ était resté limitant) : il n'a gagné que $1{,}0\ \text{mmol}$, parce qu'au-delà d'un certain point, c'est l'iodure qui plafonne désormais la réaction. Augmenter encore la quantité de peroxodisulfate, sans toucher à celle d'iodure, ne changerait plus rien à $x_{max}$.
+*Ce qu'on cherche ici, et pourquoi ce geste :* un triglycéride porte trois fonctions ester ; il faut donc trois ions $HO^-$ pour les hydrolyser toutes, ce qui libère trois carboxylates et un glycérol.
 
-**3) Quel est l'avancement final $x_{max,C}$ de l'expérience C ? Justifier sans nouveau calcul, puis indiquer l'effet observable de l'ajout de $Fe^{3+}$.**
+$$C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$$
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* mobiliser directement le mécanisme du catalyseur vu en R2, plutôt que refaire un tableau d'avancement.
+Les deux produits sont le **savon** (les ions carboxylate à longue chaîne $R-COO^-$) et le **glycérol** $C_3H_5(OH)_3$.
 
-$Fe^{3+}$ est un catalyseur : il ne change ni les quantités de réactifs, ni l'énergie des réactifs et des produits, donc pas non plus l'avancement final. $x_{max,C} = x_{max,A} = 3{,}0\ \text{mmol}$, exactement. L'effet observable est uniquement cinétique : la teinte jaune-brune du diiode apparaît et se stabilise beaucoup plus vite qu'en expérience A, sans que la quantité finale de diiode obtenue ne change.
+**5) Cette hydrolyse basique est-elle limitée ou totale ? En quoi diffère-t-elle de l'hydrolyse acide du même ester ?**
 
-**4) Identifier le type de catalyse mis en jeu dans l'expérience C, et justifier.**
+*Ce qu'on cherche ici, et pourquoi ce geste :* le critère décisif est la présence ou l'absence d'une réaction inverse, qui dépend du produit formé (acide ou carboxylate).
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* le critère de classification est la phase du catalyseur par rapport à celle des réactifs, jamais sa nature chimique.
+Elle est **totale**. L'hydrolyse acide redonne l'acide carboxylique $R-COOH$, qui peut se réestérifier — la réaction est donc limitée par un équilibre. L'hydrolyse basique donne l'ion carboxylate $R-COO^-$, qui ne s'estérifie pas : sans réaction inverse, la transformation va jusqu'au bout.
 
-Les ions $Fe^{3+}$ sont dissous dans la même solution aqueuse que $S_2O_8^{2-}$ et $I^-$ : catalyseur et réactifs partagent la même phase. C'est donc une catalyse **homogène**.
+**6) Sur l'ion carboxylate $R-COO^-$ du savon obtenu, identifie la partie hydrophile et la partie hydrophobe, et explique en une phrase le pouvoir lavant.**
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on classe les deux bouts par la charge, pas par la taille.
+
+La tête $-COO^-$, chargée, est **hydrophile** ; la longue chaîne carbonée $R$, neutre, est **hydrophobe**. Le pouvoir lavant vient de cette double affinité : la queue hydrophobe plonge dans la tache de gras tandis que la tête hydrophile reste tournée vers l'eau, si bien que les ions savon enrobent les gouttes de gras et les emportent au rinçage.
 
 ### À toi
 
-**Variation 1.** Un chimiste réalise une transformation totale d'équation $A + B \rightarrow C$ (coefficients stoechiométriques tous égaux à $1$), en mélangeant $n_0(A) = 2{,}0\ \text{mol}$ et $n_0(B) = 1{,}0\ \text{mol}$. Il veut obtenir davantage de $C$, sans changer la nature de la réaction ni chercher à l'accélérer. Identifie le réactif limitant de ce mélange, propose une modification qui augmenterait réellement la quantité finale de $C$ obtenue, et explique pourquoi ajouter un catalyseur ne résoudrait pas son problème.
+**Variation 1.** On fait réagir l'anhydride éthanoïque $(CH_3CO)_2O$ avec du méthanol $CH_3OH$ (l'anhydride en excès, $n_0(\text{méthanol}) = 0{,}10\ \text{mol}$). Écris l'équation, nomme l'ester formé, puis calcule la quantité d'ester obtenue et le rendement, sachant que la réaction est rapide et totale. Compare au rendement qu'on obtiendrait par la voie de l'acide éthanoïque + méthanol en quantités égales ($\tau \approx 2/3$), et dis en une phrase pourquoi un catalyseur ne comblerait pas l'écart.
 
-**Variation 2.** Une usine fait circuler en continu un mélange gazeux de réactifs à travers un réacteur rempli de grains d'un catalyseur solide. Identifie le type de catalyse mis en jeu (homogène, hétérogène ou enzymatique) en justifiant à l'aide de la notion de phase, puis indique, à l'aide du mécanisme du catalyseur vu en R2, si ces grains doivent en principe être remplacés après chaque utilisation ou s'ils peuvent resservir pour de nombreux cycles de réaction.
+**Variation 2.** Un savon est fabriqué par saponification d'une huile végétale ; l'ion carboxylate obtenu est $C_{17}H_{35}-COO^-$. (a) Un élève affirme : « la saponification est un équilibre, comme l'estérification ». Corrige-le en une phrase, en t'appuyant sur le produit formé. (b) Identifie la partie hydrophile et la partie hydrophobe de cet ion, et indique lequel des deux bouts va se planter dans une tache de gras.

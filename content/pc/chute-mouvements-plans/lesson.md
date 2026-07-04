@@ -10,7 +10,7 @@ Avant de lire la suite, prends position, vraiment, sur une seule question : pend
 
 Beaucoup de raisonnements naturels penchent pour la première réponse : on voit le ballon ralentir en montant (ça, c'est vrai, mais c'est sa vitesse *verticale*), et on généralise cette impression à tout le mouvement, y compris à l'horizontale. C'est une confusion qui mérite d'être testée directement, pas supposée.
 
-Garde ta réponse en tête. Cette leçon va construire, morceau par morceau, exactement les outils qu'il faut pour trancher cette question avec un calcul, pas avec une impression — et pour répondre ensuite à des questions voisines : jusqu'où va le ballon (sa **portée**) ? Jusqu'à quelle hauteur monte-t-il (sa **flèche**) ? Et qu'est-ce qui changerait si on lançait, à la place du ballon, une petite particule chargée entre deux plaques électriques ?
+Garde ta réponse en tête. Cette leçon va construire, morceau par morceau, exactement les outils qu'il faut pour trancher cette question avec un calcul, pas avec une impression — et pour répondre ensuite à des questions voisines : jusqu'où va le ballon (sa **portée**) ? Jusqu'à quelle hauteur monte-t-il (sa **flèche**) ? Et qu'est-ce qui changerait si on lançait, à la place du ballon, une petite particule chargée dans un champ magnétique ?
 
 On commence par le cas le plus simple : un mouvement qui n'a qu'une seule direction.
 
@@ -301,65 +301,94 @@ Un lancer deux fois plus rapide monte quatre fois plus haut et va quatre fois pl
 
 ---
 
-## R6 — L'analogie électrique : une particule chargée dans un champ uniforme
+## R6 — La même méthode, une force d'un nouveau genre : la particule chargée dans un champ magnétique
 
-### Le même mécanisme, une autre force
+### Une force qui ne travaille pas
 
-On change complètement de contexte : au lieu d'un projectile dans l'air, on étudie une particule chargée — de charge $q$ et de masse $m$ — qui pénètre, avec une vitesse horizontale $\vec{v}_0$, dans la région comprise entre deux plaques parallèles créant un **champ électrique uniforme** $\vec{E}$, orienté verticalement, perpendiculaire à $\vec{v}_0$.
+On change complètement de contexte : au lieu d'un projectile dans l'air, on envoie une particule chargée — de charge $q$ et de masse $m$ — avec une vitesse initiale $\vec{v}_0$ de norme $v_0$, dans une région où règne un **champ magnétique uniforme** $\vec{B}$. On se place dans le seul cas au programme : $\vec{B}$ **perpendiculaire** à $\vec{v}_0$. Le poids de la particule est négligé devant la force magnétique (hypothèse standard pour ce genre de particule, très légère et très rapide).
 
-Dans cette région, la seule force qui agit sur la particule est la **force électrique** $\vec{F} = q\vec{E}$ (le poids de la particule est négligeable devant cette force électrique, pour les charges et les champs mis en jeu ici — une hypothèse standard pour ce genre de particule). La deuxième loi de Newton donne :
+La méthode, elle, ne change pas : bilan des forces, deuxième loi de Newton, projection. Mais la force, cette fois, est d'un genre qu'on n'a encore jamais rencontré dans cette leçon — c'est la **force de Lorentz** :
 
-$$q\vec{E} = m\,\vec{a}$$
+$$\vec{F} = q\,\vec{v}\wedge\vec{B}$$
 
-$$\vec{a} = \frac{q\vec{E}}{m}$$
+Le symbole $\wedge$ désigne un **produit vectoriel**, et c'est lui qui fait toute la différence. Pour ce cours, retiens deux propriétés qui suffisent à tout déduire :
 
-Arrête-toi sur cette dernière ligne et compare-la à celle du rung 2 : $\vec{a}_G = \vec{g}$. La forme est identique — un vecteur accélération **constant**, imposé par une force elle-même constante — mais il y a une différence essentielle, qu'il ne faut pas manquer : en chute libre, la masse $m$ **disparaissait** de l'équation, parce que le poids lui-même vaut $m\vec{g}$ (proportionnel à $m$), et cette masse se simplifiait avec le $m$ de $\vec{a}_G = \sum\vec{F}_{ext}/m$. Ici, la force électrique $q\vec{E}$ **ne dépend pas de $m$** — elle dépend de la charge $q$. La masse ne se simplifie donc **pas** : $\vec{a} = q\vec{E}/m$ dépend à la fois de la charge et de la masse de la particule, par leur rapport $q/m$. Deux particules de même charge mais de masses différentes, dans le même champ, subiraient des accélérations différentes — contrairement à deux masses différentes en chute libre, qui subissent rigoureusement la même accélération $\vec{g}$.
+- **la direction** : $\vec{v}\wedge\vec{B}$ est, par construction, **perpendiculaire à $\vec{v}$** — à chaque instant. La force de Lorentz est donc toujours perpendiculaire à la vitesse, jamais dans son prolongement. Compare-la au poids d'un projectile, qui gardait une direction fixe (vers le bas) : la force de Lorentz, elle, change de direction à chaque instant pour rester perpendiculaire à une vitesse qui, elle-même, tourne.
+- **la valeur** : comme $\vec{B}\perp\vec{v}$, la norme du produit vectoriel se réduit à $v\,B$, donc la force a pour norme
 
-### Projeter et retrouver les mêmes équations
+$$F = |q|\,v\,B$$
 
-On choisit $Ox$ selon $\vec{v}_0$ (le long des plaques) et $Oy$ selon $\vec{E}$ (perpendiculaire aux plaques), origine à l'entrée du champ. Le champ $\vec{E}$ est purement selon $Oy$, donc, exactement comme au rung 2 :
+### La règle du sens de la force
 
-$$a_x = 0 \qquad \text{et} \qquad a_y = \frac{qE}{m}$$
+Pour trouver le sens de $\vec{v}\wedge\vec{B}$, sers-toi de ta main droite : pointe les doigts dans le sens de $\vec{v}$, puis referme-les vers $\vec{B}$ en balayant le plus petit angle entre les deux ; le pouce tendu donne alors le sens de $\vec{v}\wedge\vec{B}$. La force $\vec{F} = q\,\vec{v}\wedge\vec{B}$ pointe dans **ce** sens si la charge est positive ($q > 0$), et dans le sens **opposé** si la charge est négative ($q < 0$). C'est le seul endroit où le signe de la charge intervient : il décide de quel côté la trajectoire va se courber.
 
-(le signe de $a_y$ dépend du signe de $q$ et du sens choisi pour $\vec{E}$ ; on prend ici le cas où cette composante est positive, pour fixer les idées). La particule entre avec une vitesse purement horizontale ($v_{0y} = 0$, contrairement au tir incliné du rung 2), ce qui donne, par la même méthode de primitivation :
+### Première conséquence : la norme de la vitesse ne change pas
 
-$$v_x(t) = v_0 \qquad (\text{constante, exactement comme au rung 2})$$
+Voici le point qui rend ce mouvement complètement différent de celui du projectile. Décompose l'accélération dans la base de Freinet, comme au chapitre des lois de Newton — une composante tangentielle (le long de la vitesse) et une composante normale (perpendiculaire, tournée vers l'intérieur de la courbe, où $R$ désigne le rayon de courbure) :
 
-$$v_y(t) = \frac{qE}{m}\,t$$
+$$\vec{a} = \frac{dv}{dt}\,\vec{u}_T + \frac{v^2}{R}\,\vec{u}_N$$
 
-$$x(t) = v_0\,t$$
+La deuxième loi de Newton, $\vec{F} = m\vec{a}$, se projette sur ces deux directions. Or la force de Lorentz est **purement normale** : perpendiculaire à $\vec{v}$, elle n'a **aucune** composante tangentielle. La projection sur la tangente $\vec{u}_T$ donne donc :
 
-$$y(t) = \frac{1}{2}\cdot\frac{qE}{m}\,t^2$$
+$$m\,\frac{dv}{dt} = 0$$
 
-En éliminant le temps ($t = x/v_0$) comme au rung 3, on obtient la trajectoire à l'intérieur du champ :
+$$\frac{dv}{dt} = 0$$
 
-$$y(x) = \frac{qE}{2mv_0^2}\,x^2$$
+Autrement dit, la **norme** de la vitesse ne varie pas : $v(t) = v_0$ à chaque instant. La force de Lorentz ne fait que **dévier** la particule, sans jamais l'accélérer ni la ralentir. (Une autre façon de le dire, si tu as déjà croisé la notion de travail : une force constamment perpendiculaire au déplacement ne travaille pas, donc ne change pas l'énergie cinétique, donc pas la norme de la vitesse.)
 
-C'est encore une parabole — mais cette fois sans terme linéaire en $x$ (parce que $v_{0y} = 0$ ici) : c'est une demi-parabole partant de l'entrée du champ avec une tangente horizontale, exactement le cas particulier $\alpha = 0^\circ$ du rung 3 (vérifie : $\tan 0^\circ = 0$ annule bien le premier terme de l'équation générale de trajectoire).
+### Deuxième conséquence : un mouvement circulaire uniforme
 
-### Exemple travaillé : la déviation à la sortie du champ
+Reprends la projection de la deuxième loi, cette fois sur la direction normale $\vec{u}_N$. La force vaut $F = |q|\,v_0\,B$ (avec $v = v_0$, qu'on vient d'établir), et la composante normale de l'accélération vaut $v_0^2/R$ :
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule la déviation verticale d'une particule à la sortie des plaques — la grandeur que ce genre de dispositif sert justement à mesurer ou à provoquer.
+$$m\,\frac{v_0^2}{R} = |q|\,v_0\,B$$
 
-Une particule de charge $q = 1{,}6\times 10^{-19}\ \text{C}$ et de masse $m = 9{,}1\times 10^{-31}\ \text{kg}$ entre avec une vitesse horizontale $v_0 = 1{,}0\times 10^{7}\ \text{m/s}$ dans un champ uniforme $E = 1{,}0\times 10^{4}\ \text{V/m}$, entre des plaques de longueur $L = 5{,}0\times 10^{-2}\ \text{m}$.
+On isole $R$ :
 
-**Accélération :**
+$$R = \frac{m\,v_0}{|q|\,B}$$
 
-$$a = \frac{qE}{m} = \frac{1{,}6\times 10^{-19}\times 1{,}0\times 10^{4}}{9{,}1\times 10^{-31}} \approx 1{,}76\times 10^{15}\ \text{m/s}^2$$
+Regarde ce résultat : $m$, $v_0$, $|q|$ et $B$ sont tous **constants**, donc $R$ l'est aussi. Le rayon de courbure ne change pas le long du trajet. Or une trajectoire de rayon de courbure constant, parcourue à une vitesse de norme constante, c'est très exactement un **mouvement circulaire uniforme** : la particule décrit un cercle de rayon
 
-**Durée de traversée des plaques** (le mouvement horizontal n'est pas affecté par le champ, exactement comme $v_x$ ne l'était pas au rung 2) :
+$$R = \frac{m\,v_0}{|q|\,B}$$
 
-$$t_{sortie} = \frac{L}{v_0} = \frac{5{,}0\times 10^{-2}}{1{,}0\times 10^{7}} = 5{,}0\times 10^{-9}\ \text{s}$$
+à la vitesse constante $v_0$. Mesure l'écart avec le projectile : là, la trajectoire était une **parabole** ouverte, et l'objet finissait par retomber ; ici, c'est un **cercle**, que la particule parcourrait indéfiniment tant qu'elle reste dans le champ. Même méthode, même deuxième loi — mais une force d'une tout autre nature, et donc un mouvement d'une tout autre nature.
 
-**Déviation verticale à la sortie :**
+Regarde enfin ce que dit la forme $R = \dfrac{m}{|q|}\cdot\dfrac{v_0}{B}$ : à champ $B$ et vitesse $v_0$ fixés, plus la particule est lourde (grand $m$), plus son cercle est large ; plus elle est chargée (grand $|q|$), ou plus le champ est fort (grand $B$), plus son cercle est serré.
 
-$$y_{sortie} = \frac{1}{2}\,a\,t_{sortie}^2 = \frac{1}{2}\times 1{,}76\times 10^{15}\times (5{,}0\times 10^{-9})^2$$
+### La déflexion magnétique
 
-$$y_{sortie} \approx \frac{1}{2}\times 1{,}76\times 10^{15}\times 2{,}5\times 10^{-17}$$
+En pratique, le champ magnétique n'occupe souvent qu'une **région limitée** de l'espace — un couloir de largeur $\ell$ que la particule traverse. Tant qu'elle y est, elle suit son arc de cercle ; dès qu'elle en sort, plus aucune force ne l'infléchit (le poids est négligé) et elle repart en **ligne droite**, mais dans une direction qui a tourné. Cette déviation de la direction du mouvement, c'est la **déflexion magnétique**.
 
-$$y_{sortie} \approx 2{,}2\times 10^{-2}\ \text{m} \approx 2{,}2\ \text{cm}$$
+De combien la direction a-t-elle tourné ? Place l'entrée dans le champ à l'origine, $\vec{v}_0$ horizontale, et le centre $C$ du cercle à la distance $R$ perpendiculairement à $\vec{v}_0$. Quand la particule a avancé d'une distance horizontale $\ell$ (la largeur du champ), elle a parcouru un arc dont l'angle au centre $\theta$ vérifie une relation géométrique simple :
 
-La particule ressort déviée d'environ $2{,}2\ \text{cm}$ par rapport à sa trajectoire d'entrée — un calcul qui suit très exactement la même méthode que celle du projectile (bilan des forces, deuxième loi, projection sur deux axes, primitivations, élimination du temps), appliquée à une force différente.
+$$\sin\theta = \frac{\ell}{R}$$
+
+et cet angle $\theta$ est aussi celui dont a tourné le vecteur vitesse. Tout est de nouveau contenu dans $R$ : plus $R$ est petit (champ fort, particule peu massive ou très chargée, vitesse faible), plus l'arc est serré et plus la déflexion $\theta$ est grande.
+
+### Exemple travaillé : rayon et déflexion d'un électron
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule le rayon du cercle décrit par un électron dans un champ magnétique, puis de combien il ressort dévié — les deux grandeurs que ce genre de dispositif sert à contrôler. On garde exactement la même méthode que pour le projectile (bilan, deuxième loi, projection), appliquée à la force de Lorentz.
+
+Un électron, de charge de valeur $|q| = 1{,}6\times 10^{-19}\ \text{C}$ et de masse $m = 9{,}1\times 10^{-31}\ \text{kg}$, entre avec une vitesse $v_0 = 1{,}0\times 10^{7}\ \text{m/s}$ perpendiculaire à un champ magnétique uniforme $B = 1{,}0\times 10^{-3}\ \text{T}$. Le champ occupe un couloir de largeur $\ell = 2{,}0\times 10^{-2}\ \text{m}$.
+
+**Norme de la force de Lorentz :**
+
+$$F = |q|\,v_0\,B = 1{,}6\times 10^{-19}\times 1{,}0\times 10^{7}\times 1{,}0\times 10^{-3}$$
+
+$$F \approx 1{,}6\times 10^{-15}\ \text{N}$$
+
+**Rayon du cercle :**
+
+$$R = \frac{m\,v_0}{|q|\,B} = \frac{9{,}1\times 10^{-31}\times 1{,}0\times 10^{7}}{1{,}6\times 10^{-19}\times 1{,}0\times 10^{-3}}$$
+
+$$R = \frac{9{,}1\times 10^{-24}}{1{,}6\times 10^{-22}} \approx 5{,}7\times 10^{-2}\ \text{m} \approx 5{,}7\ \text{cm}$$
+
+**Déflexion à la sortie du couloir :** comme $\ell = 2{,}0\ \text{cm}$ est inférieur à $R \approx 5{,}7\ \text{cm}$, la particule traverse bien le champ et en ressort. L'angle de déviation vérifie :
+
+$$\sin\theta = \frac{\ell}{R} = \frac{2{,}0}{5{,}7} \approx 0{,}35$$
+
+$$\theta \approx 21^\circ$$
+
+Et la vitesse à la sortie ? Elle vaut toujours $v_0 = 1{,}0\times 10^{7}\ \text{m/s}$ — rigoureusement la même qu'à l'entrée. C'est toute la signature d'un champ magnétique : il a **dévié** l'électron de $21^\circ$ sans lui ajouter ni lui retirer la moindre vitesse. La même méthode que pour le projectile — bilan des forces, deuxième loi, projection dans un bon repère — mais appliquée à une force qui, elle, ne travaille jamais.
 
 ---
 
@@ -372,7 +401,7 @@ La particule ressort déviée d'environ $2{,}2\ \text{cm}$ par rapport à sa tra
 - En éliminant le temps entre $x(t)$ et $y(t)$, on obtient l'équation de la trajectoire, une **parabole** : $y(x) = \tan\alpha \cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$.
 - La **flèche** $f = \dfrac{v_0^2\sin^2\alpha}{2g}$ est une hauteur (au sommet, où $v_y=0$) ; la **portée** $D = \dfrac{v_0^2\sin(2\alpha)}{g}$ est une distance horizontale (au sol, à l'arrivée). Ce ne sont jamais le même nombre.
 - À $v_0$ fixé, la portée est maximale pour $\alpha = 45^\circ$ ; deux angles complémentaires donnent la même portée. À $\alpha$ fixé, $f$ et $D$ varient comme $v_0^2$.
-- Une particule chargée dans un champ électrique uniforme suit la même méthode — mais $\vec{a} = q\vec{E}/m$ dépend, cette fois, de la masse (par le rapport $q/m$), contrairement à la chute libre.
+- Une particule chargée qui entre dans un champ magnétique uniforme (avec $\vec{B}\perp\vec{v}_0$) subit la force de Lorentz $\vec{F} = q\,\vec{v}\wedge\vec{B}$, toujours perpendiculaire à la vitesse : elle ne travaille pas, la **norme de la vitesse reste constante** ($v = v_0$), et le mouvement est **circulaire uniforme** de rayon $R = \dfrac{m\,v_0}{|q|\,B}$. La déflexion à la traversée d'un couloir de champ de largeur $\ell$ vérifie $\sin\theta = \dfrac{\ell}{R}$.
 
 ### Exercice de type bac (original — entraînement, non un sujet officiel)
 
@@ -410,4 +439,4 @@ La flèche vaut environ $5{,}1\ \text{m}$ (une hauteur), la portée environ $35{
 
 **Variation 1.** Le même joueur reprend son tir, mais cette fois avec un angle complémentaire de celui de l'exercice précédent, c'est-à-dire $\sin\alpha' \approx 0{,}87$ et $\cos\alpha' = 0{,}50$, à la même vitesse $v_0 = 20\ \text{m/s}$. Sans reprendre tout le calcul depuis le début, indique si la portée de ce nouveau tir est plus grande, plus petite, ou égale à celle de l'exercice précédent, et justifie ta réponse à partir de la formule $D = v_0^2\sin(2\alpha)/g$ établie en R5. Indique aussi, en le justifiant, lequel des deux tirs (celui de l'exercice ou celui-ci) a la flèche la plus grande.
 
-**Variation 2.** Une particule de charge $q$ et de masse $m$, animée d'une vitesse horizontale $v_0$, pénètre dans un champ électrique uniforme $\vec{E}$ perpendiculaire à $v_0$, entre deux plaques de longueur $L$ (méthode du rung 6). Sans reprendre le calcul numérique, explique en une ou deux phrases ce qui arriverait à la déviation $y_{sortie} = \dfrac{qE}{2mv_0^2}L^2$ si on utilisait, à la place, une particule de même charge $q$ mais de masse deux fois plus grande — puis ce qui arriverait si on doublait plutôt la vitesse d'entrée $v_0$, toutes les autres grandeurs restant égales.
+**Variation 2.** Une particule de charge $q$ et de masse $m$, animée d'une vitesse initiale de norme $v_0$ perpendiculaire à un champ magnétique uniforme $\vec{B}$, décrit dans ce champ un cercle de rayon $R = \dfrac{m\,v_0}{|q|\,B}$ (méthode du rung 6). Sans reprendre de calcul numérique, réponds à deux questions. (a) Que devient ce rayon si on double la valeur du champ $B$, toutes les autres grandeurs restant égales ? (b) Pendant tout son trajet dans le champ, la norme de la vitesse de la particule augmente-t-elle, diminue-t-elle, ou reste-t-elle constante — et pour quelle raison de fond, liée à la direction de la force de Lorentz ?

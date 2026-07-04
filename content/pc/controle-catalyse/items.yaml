@@ -9,160 +9,102 @@ items:
     skill_code: pc_controle_catalyse
     tags: []
     stem: >
-      On mélange $n_0(S_2O_8^{2-}) = 6{,}0\ \text{mmol}$ et
-      $n_0(I^-) = 8{,}0\ \text{mmol}$ pour la réaction totale
-      $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$. Quel est le réactif
-      limitant, et quel est $x_{max}$ ?
+      On veut synthétiser l'éthanoate d'éthyle par deux voies : (voie 1)
+      acide éthanoïque + éthanol ; (voie 2) anhydride éthanoïque + éthanol.
+      Laquelle des affirmations est correcte ?
     type: mcq
     choices:
       - id: A
-        text: "$I^-$ est limitant ; $x_{max} = 4{,}0\\ \\text{mmol}$"
+        text: "La voie de l'anhydride est rapide et totale ; celle de l'acide est lente et limitée ($\\tau \\approx 2/3$)."
         correct: true
       - id: B
-        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 6{,}0\\ \\text{mmol}$"
+        text: "Les deux voies sont limitées par un même équilibre ; l'anhydride ne fait que l'atteindre plus vite."
         correct: false
         feedback: >
-          Ce choix compare les quantités initiales brutes ($6{,}0$ contre
-          $8{,}0\ \text{mmol}$) sans tenir compte des coefficients
-          stoechiométriques. Il faut comparer $n_0(S_2O_8^{2-})/1 = 6{,}0$ à
-          $n_0(I^-)/2 = 4{,}0\ \text{mmol}$ : c'est ce dernier rapport, plus
-          petit, qui désigne le réactif limitant - ici $I^-$, pas
-          $S_2O_8^{2-}$.
+          C'est confondre les deux réactions. Acide + alcool est un équilibre
+          (double flèche, limité à $\tau \approx 2/3$), mais anhydride + alcool
+          est une réaction TOTALE (une seule flèche) : elle va jusqu'à
+          épuisement du réactif limitant, il n'y a pas d'équilibre à son terme.
       - id: C
-        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 3{,}0\\ \\text{mmol}$"
+        text: "La voie de l'acide est totale ; celle de l'anhydride est limitée par un équilibre."
         correct: false
         feedback: >
-          Ce résultat vient de diviser $n_0(S_2O_8^{2-})$ par $2$ - mais le
-          coefficient $2$ appartient à $I^-$ dans l'équation, pas à
-          $S_2O_8^{2-}$ (coefficient $1$). Chaque quantité initiale se divise
-          par SON propre coefficient, jamais par celui de l'autre réactif.
+          Les deux caractères sont inversés. C'est l'acide + alcool qui est
+          lente et limitée (équilibre), et l'anhydride + alcool qui est rapide
+          et totale — c'est justement pour ça qu'on change de réactif.
       - id: D
-        text: "$I^-$ est limitant ; $x_{max} = 8{,}0\\ \\text{mmol}$"
+        text: "Les deux voies donnent la même quantité finale d'ester ; seul le sous-produit (eau ou acide) change."
         correct: false
         feedback: >
-          $I^-$ est bien le réactif limitant, mais $x_{max}$ n'est pas sa
-          quantité initiale brute : il faut diviser $n_0(I^-)=8{,}0$ par son
-          coefficient $2$, ce qui donne $x_{max}=4{,}0\ \text{mmol}$, pas
-          $8{,}0$.
+          Le sous-produit change bien (eau pour l'acide, acide carboxylique
+          pour l'anhydride), mais la quantité finale d'ester n'est pas la même :
+          la voie de l'acide plafonne à $\tau \approx 2/3$ (rendement $\approx
+          67\,\%$), la voie de l'anhydride atteint $\tau = 1$ (rendement
+          $\approx 100\,\%$).
     correct_feedback: >
-      On compare $n_0(S_2O_8^{2-})/1 = 6{,}0\ \text{mmol}$ et
-      $n_0(I^-)/2 = 4{,}0\ \text{mmol}$ : le plus petit rapport, $4{,}0$,
-      appartient à $I^-$, qui est donc le réactif limitant.
-      $x_{max} = 4{,}0\ \text{mmol}$.
+      Anhydride + alcool est rapide et totale ($\tau = 1$) ; acide + alcool est
+      lente et limitée par un équilibre ($\tau \approx 2/3$). C'est tout
+      l'intérêt de contrôler la synthèse en changeant de réactif.
     solution: |
-      **Comparaison des rapports quantité initiale / coefficient :**
-      $$\frac{n_0(S_2O_8^{2-})}{1} = 6{,}0\ \text{mmol}$$
-      $$\frac{n_0(I^-)}{2} = \frac{8{,}0}{2} = 4{,}0\ \text{mmol}$$
+      **Voie de l'acide :** $CH_3COOH + C_2H_5OH \rightleftharpoons
+      CH_3COOC_2H_5 + H_2O$ — double flèche, lente et limitée à
+      $\tau \approx 2/3$.
 
-      Le plus petit rapport ($4{,}0\ \text{mmol}$) appartient à $I^-$ : c'est
-      lui le réactif limitant, et $x_{max} = 4{,}0\ \text{mmol}$.
+      **Voie de l'anhydride :** $(CH_3CO)_2O + C_2H_5OH \rightarrow
+      CH_3COOC_2H_5 + CH_3COOH$ — une seule flèche, rapide et totale.
+
+      Changer de réactif (l'anhydride au lieu de l'acide) rend la réaction à
+      la fois plus rapide et complète : c'est le contrôle par un réactif.
 
   - id: CTC-2
     rung: "R1"
-    difficulty_level: 2
-    skill_code: pc_controle_catalyse
-    tags: []
-    stem: >
-      On mélange $n_0(S_2O_8^{2-}) = 2{,}0\ \text{mmol}$ et
-      $n_0(I^-) = 20\ \text{mmol}$ pour la même réaction
-      $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$ (totale). Quel est le
-      réactif limitant, et quel est $x_{max}$ ?
-    type: mcq
-    choices:
-      - id: A
-        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 2{,}0\\ \\text{mmol}$"
-        correct: true
-      - id: B
-        text: "$I^-$ est limitant ; $x_{max} = 10\\ \\text{mmol}$"
-        correct: false
-        feedback: >
-          $I^-$ est ici en large excès : son rapport,
-          $n_0(I^-)/2 = 10\ \text{mmol}$, est très supérieur à celui de
-          $S_2O_8^{2-}$, $n_0(S_2O_8^{2-})/1 = 2{,}0\ \text{mmol}$. Ce n'est
-          jamais le réactif dont le rapport est le plus GRAND qui est
-          limitant.
-      - id: C
-        text: "$S_2O_8^{2-}$ est limitant ; $x_{max} = 1{,}0\\ \\text{mmol}$"
-        correct: false
-        feedback: >
-          Ce résultat divise $n_0(S_2O_8^{2-})$ par $2$ - mais le coefficient
-          de $S_2O_8^{2-}$ dans l'équation vaut $1$, pas $2$ (c'est le
-          coefficient de $I^-$). Le rapport correct pour $S_2O_8^{2-}$ est
-          simplement $n_0(S_2O_8^{2-})/1 = 2{,}0\ \text{mmol}$.
-      - id: D
-        text: "Les deux réactifs sont limitants à la fois ; $x_{max}$ ne peut pas être déterminé."
-        correct: false
-        feedback: >
-          Un seul réactif limitant existe dès que les deux rapports diffèrent
-          - ici $2{,}0\ \text{mmol}$ contre $10\ \text{mmol}$, deux valeurs
-          nettement différentes. $x_{max}$ est parfaitement déterminé : c'est
-          le plus petit des deux rapports.
-    correct_feedback: >
-      $n_0(S_2O_8^{2-})/1 = 2{,}0\ \text{mmol}$ est nettement plus petit que
-      $n_0(I^-)/2 = 10\ \text{mmol}$ : $S_2O_8^{2-}$ est le réactif limitant,
-      $x_{max} = 2{,}0\ \text{mmol}$.
-    solution: |
-      $$\frac{n_0(S_2O_8^{2-})}{1} = 2{,}0\ \text{mmol}, \qquad \frac{n_0(I^-)}{2} = \frac{20}{2} = 10\ \text{mmol}$$
-
-      $S_2O_8^{2-}$ a le plus petit rapport : il est limitant, et
-      $x_{max} = 2{,}0\ \text{mmol}$.
-
-  - id: CTC-3
-    rung: "R2"
     difficulty_level: 3
     skill_code: pc_controle_catalyse
     tags: []
     stem: >
-      Un élève affirme : « En ajoutant un catalyseur à une transformation
-      totale, on obtient davantage de produit à la fin, car le catalyseur
-      aide la réaction à aller plus loin. » Cette affirmation est-elle
-      correcte ?
+      Quelle est l'équation correcte de la réaction de l'anhydride éthanoïque
+      $(CH_3CO)_2O$ avec l'éthanol $C_2H_5OH$ ?
     type: mcq
     choices:
       - id: A
-        text: "Non - un catalyseur accélère la réaction sans changer sa quantité finale de produit, qui reste fixée par la quantité initiale du réactif limitant."
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightarrow CH_3COOC_2H_5 + CH_3COOH$"
         correct: true
       - id: B
-        text: "Oui - un catalyseur permet à la réaction de consommer une plus grande fraction du réactif limitant."
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightleftharpoons CH_3COOC_2H_5 + H_2O$"
         correct: false
         feedback: >
-          Un catalyseur ouvre un chemin réactionnel différent, mais il ne
-          change ni les quantités de matière en jeu ni l'énergie des
-          réactifs et des produits. La quantité de réactif limitant
-          consommée à la fin reste fixée par la stoechiométrie, pas par la
-          présence ou non d'un catalyseur.
+          C'est l'équation de l'estérification par l'ACIDE (double flèche, eau
+          en sous-produit), recopiée à tort pour l'anhydride. Un anhydride
+          réagit par une seule flèche (totale) et libère un acide carboxylique,
+          pas de l'eau.
       - id: C
-        text: "Oui - un catalyseur transforme une partie du réactif limitant en produit supplémentaire, en plus du mécanisme normal."
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightarrow CH_3COOC_2H_5 + H_2O$"
         correct: false
         feedback: >
-          Un catalyseur est, par définition, intégralement régénéré : il ne
-          reste jamais incorporé dans un produit, et il n'ouvre aucune voie
-          de transformation supplémentaire au-delà de ce que permettent les
-          quantités initiales. Il facilite l'accès à l'état final, il n'en
-          crée pas un autre.
+          Le sens (flèche unique, totale) est bon, mais le sous-produit est
+          faux : un anhydride ne libère pas d'eau. Son second morceau repart
+          en acide carboxylique — ici l'acide éthanoïque $CH_3COOH$.
       - id: D
-        text: "Non, mais seulement parce que le catalyseur finit par se consommer lui-même avant la fin de la réaction."
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightarrow 2\\,CH_3COOC_2H_5$"
         correct: false
         feedback: >
-          Un catalyseur n'est jamais consommé - s'il l'était, il ne
-          répondrait pas à la définition d'un catalyseur. La vraie raison
-          pour laquelle la quantité finale ne change pas est structurelle :
-          le catalyseur ne déplace ni l'énergie des réactifs, ni celle des
-          produits, seulement la hauteur du chemin entre les deux.
+          L'équation n'est pas conservée : l'anhydride ne fournit qu'un seul
+          groupe ester à l'alcool ; son autre moitié devient de l'acide
+          éthanoïque. On obtient une molécule d'ester et une molécule d'acide,
+          pas deux esters.
     correct_feedback: >
-      Un catalyseur ouvre un chemin réactionnel d'énergie d'activation plus
-      basse, mais ne déplace ni l'énergie des réactifs ni celle des produits.
-      La quantité finale de produit reste donc fixée par la quantité initiale
-      du réactif limitant, exactement comme sans catalyseur - seul le temps
-      pour l'atteindre change.
+      L'anhydride cède un groupe acyle à l'alcool (formation de l'ester) et
+      son autre moitié repart en acide carboxylique : $(CH_3CO)_2O + C_2H_5OH
+      \rightarrow CH_3COOC_2H_5 + CH_3COOH$, une seule flèche.
     solution: |
-      Un catalyseur accélère une transformation en abaissant l'énergie
-      d'activation, sans jamais changer l'énergie des réactifs ni des
-      produits. La quantité finale de produit obtenue - fixée par le
-      réactif limitant - est donc rigoureusement identique avec ou sans
-      catalyseur ; seule la vitesse pour l'atteindre change.
+      Un anhydride $R-CO-O-CO-R$ réagit avec un alcool $R'-OH$ selon
+      $$R-CO-O-CO-R + R'-OH \rightarrow R-CO-O-R' + R-COOH$$
+      Avec $R = CH_3$ et $R' = C_2H_5$ :
+      $$(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$$
+      Une seule flèche (totale), et un acide carboxylique en sous-produit —
+      jamais de l'eau.
 
-  - id: CTC-4
+  - id: CTC-3
     rung: "R2"
     difficulty_level: 4
     skill_code: pc_controle_catalyse
@@ -176,48 +118,47 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Faux - $H_2SO_4$ est un catalyseur : il accélère l'établissement de l'équilibre dans les deux sens, mais ne change ni la constante d'équilibre $K$ ni la quantité d'ester obtenue à l'équilibre."
+        text: "Faux — $H_2SO_4$ est un catalyseur : il accélère l'établissement de l'équilibre dans les deux sens, sans changer ni $K$ ni la quantité d'ester à l'équilibre."
         correct: true
       - id: B
-        text: "Vrai - un catalyseur accélère seulement la réaction directe (l'estérification), ce qui favorise la formation d'ester."
+        text: "Vrai — un catalyseur accélère seulement la réaction directe (l'estérification), ce qui favorise la formation d'ester."
         correct: false
         feedback: >
-          Un véritable catalyseur accélère la réaction directe ET la
-          réaction inverse (l'hydrolyse) dans les mêmes proportions - le
-          chemin qu'il ouvre se parcourt dans les deux sens. S'il
-          n'accélérait qu'un seul sens, il déplacerait effectivement
-          l'équilibre - mais alors il ne s'agirait plus d'un simple
+          Un véritable catalyseur accélère la réaction directe ET la réaction
+          inverse (l'hydrolyse) dans les mêmes proportions — c'est le même
+          chemin, parcouru dans les deux sens. S'il n'accélérait qu'un seul
+          sens, il déplacerait l'équilibre — mais alors ce ne serait plus un
           catalyseur.
       - id: C
-        text: "Vrai - plus de catalyseur signifie plus de chocs efficaces menant au produit, donc plus de rendement à l'équilibre."
+        text: "Vrai — plus de catalyseur signifie plus de chocs efficaces menant au produit, donc un meilleur rendement à l'équilibre."
         correct: false
         feedback: >
-          Plus de catalyseur accélère l'ARRIVÉE à l'équilibre dans les deux
-          sens, pas sa POSITION. Le rendement à l'équilibre (le taux
-          d'avancement final) dépend de $K$ et des quantités initiales des
-          réactifs, jamais de la quantité de catalyseur présente.
+          Plus de catalyseur accélère l'ARRIVÉE à l'équilibre, dans les deux
+          sens, mais pas sa POSITION. Le rendement à l'équilibre dépend de $K$
+          et des quantités initiales, jamais de la quantité de catalyseur.
       - id: D
-        text: "Faux, mais seulement parce qu'il y a déjà assez de catalyseur - en ajouter davantage aurait un effet inverse et ferait reculer la réaction."
+        text: "Faux, mais seulement parce qu'il y a déjà assez de catalyseur — en ajouter davantage ferait reculer la réaction."
         correct: false
         feedback: >
           Il n'existe aucun effet de « surdose » qui ferait reculer une
-          réaction catalysée. La vraie raison est structurelle : $K$ ne
-          dépend que de la réaction et de la température, jamais de la
-          quantité de catalyseur, quelle qu'elle soit.
+          réaction catalysée. La vraie raison est structurelle : $K$ ne dépend
+          que de la réaction et de la température, jamais de la quantité de
+          catalyseur présente.
     correct_feedback: >
-      $H_2SO_4$ accélère l'estérification ET l'hydrolyse dans les mêmes
-      proportions, ce qui ne change ni $K$ ni la quantité d'ester présente
-      une fois l'équilibre atteint - seulement le temps pour l'atteindre.
+      $H_2SO_4$ multiplie les vitesses directe et inverse par le même facteur,
+      donc l'égalité des deux vitesses (l'équilibre) se produit pour le même
+      rapport de concentrations qu'avant — même $K$, même quantité d'ester.
+      Seul le temps pour l'atteindre change.
     solution: |
-      Un catalyseur ouvre un chemin réactionnel emprunté dans les deux sens :
-      la vitesse directe et la vitesse inverse sont multipliées par le même
-      facteur. L'égalité de ces deux vitesses - qui définit l'équilibre - se
-      produit donc pour le même rapport de concentrations qu'en l'absence de
-      catalyseur, c'est-à-dire pour la même valeur de $K$. Ajouter du
-      $H_2SO_4$ fait atteindre l'équilibre plus vite, jamais un équilibre
-      différent.
+      À l'équilibre, la vitesse directe égale la vitesse inverse. Un
+      catalyseur multiplie ces deux vitesses par le même facteur $\alpha$ :
+      l'égalité $\alpha\,v_{\text{directe}} = \alpha\,v_{\text{inverse}}$ est
+      la même que $v_{\text{directe}} = v_{\text{inverse}}$ (on divise par
+      $\alpha$). Elle est donc vérifiée pour le même rapport de concentrations,
+      c'est-à-dire le même $K$. Ajouter du $H_2SO_4$ fait atteindre l'équilibre
+      plus vite, jamais un équilibre différent.
 
-  - id: CTC-5
+  - id: CTC-4
     rung: "R3"
     difficulty_level: 3
     skill_code: pc_controle_catalyse
@@ -229,92 +170,134 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Hétérogène, car le catalyseur (solide) et les réactifs (gaz) ne sont pas dans la même phase - la réaction se produit à la surface des grains."
+        text: "Hétérogène, car le catalyseur (solide) et les réactifs (gaz) ne sont pas dans la même phase — la réaction se produit à la surface des grains."
         correct: true
       - id: B
         text: "Homogène, car le catalyseur est une espèce chimique différente des réactifs, comme dans tous les cas de catalyse."
         correct: false
         feedback: >
           Être une espèce chimique différente des réactifs est vrai de TOUS
-          les catalyseurs, homogènes comme hétérogènes - ce n'est pas le
-          critère de classement. Ce qui distingue homogène et hétérogène,
-          c'est uniquement la phase du catalyseur par rapport à celle des
-          réactifs.
+          les catalyseurs, homogènes comme hétérogènes — ce n'est pas le
+          critère de classement. Ce qui distingue homogène et hétérogène, c'est
+          uniquement la phase du catalyseur par rapport à celle des réactifs.
       - id: C
         text: "Enzymatique, car un catalyseur solide agit comme une enzyme en offrant une surface spécifique aux réactifs."
         correct: false
         feedback: >
           Un catalyseur enzymatique est un catalyseur biologique (une
-          protéine), une catégorie à part de celle des solides industriels
-          inertes. Offrir une surface de réaction ne suffit pas à rendre une
-          catalyse enzymatique - il faut un catalyseur biologique et une
+          protéine). Offrir une surface de réaction ne suffit pas à rendre une
+          catalyse enzymatique — il faut un catalyseur biologique et une
           spécificité de type substrat-enzyme.
       - id: D
         text: "Homogène, car le catalyseur reste chimiquement inchangé tout au long de la réaction."
         correct: false
         feedback: >
-          Rester chimiquement inchangé est vrai de tout catalyseur, qu'il
-          soit homogène ou hétérogène - ce n'est pas non plus le critère.
-          Ici, le catalyseur (solide) et les réactifs (gaz) sont dans des
-          phases différentes : c'est donc une catalyse hétérogène, pas
-          homogène.
+          Rester chimiquement inchangé est vrai de tout catalyseur, qu'il soit
+          homogène ou hétérogène — ce n'est pas non plus le critère. Ici,
+          catalyseur (solide) et réactifs (gaz) sont dans des phases
+          différentes : la catalyse est hétérogène.
     correct_feedback: >
       Le catalyseur solide et les réactifs gazeux occupent des phases
-      différentes : la catalyse est hétérogène, et la réaction se produit à
-      la surface des grains (adsorption puis réaction).
+      différentes : la catalyse est hétérogène, et la réaction se produit à la
+      surface des grains (adsorption, réaction, puis désorption).
     solution: |
       Le critère de classement homogène / hétérogène porte uniquement sur la
       phase : ici, catalyseur solide et réactifs gazeux sont dans des phases
       différentes, donc la catalyse est hétérogène. C'est exactement le
       principe du pot catalytique automobile.
 
-  - id: CTC-6
-    rung: "R5"
+  - id: CTC-5
+    rung: "R4"
     difficulty_level: 3
     skill_code: pc_controle_catalyse
     tags: []
     stem: >
-      On veut obtenir une plus grande quantité de produit à la fin d'une
-      transformation totale, sans se soucier du temps que cela prendra.
-      Quel levier choisir ?
+      On chauffe un corps gras (triglycéride) avec de la soude : c'est une
+      saponification. Quelle affirmation est correcte ?
     type: mcq
     choices:
       - id: A
-        text: "Augmenter la quantité initiale du réactif limitant."
+        text: "C'est une hydrolyse basique totale, qui donne un savon (ions carboxylate à longue chaîne) et du glycérol."
         correct: true
       - id: B
-        text: "Ajouter un catalyseur adapté à la réaction."
+        text: "C'est un équilibre, comme l'estérification : on n'hydrolyse jamais tout le corps gras."
         correct: false
         feedback: >
-          Un catalyseur ne change que la vitesse à laquelle l'état final est
-          atteint - jamais la quantité finale de produit, qui reste fixée
-          par le réactif limitant. Ce levier ne répond pas à l'objectif
-          annoncé (plus de produit).
+          C'est confondre hydrolyse acide et hydrolyse basique. L'hydrolyse
+          ACIDE est un équilibre (limitée) ; l'hydrolyse BASIQUE forme l'ion
+          carboxylate $R-COO^-$, qui ne se réestérifie pas — sans réaction
+          inverse, elle est totale.
       - id: C
-        text: "Augmenter la température du mélange."
+        text: "Elle produit un acide gras $R-COOH$ et du glycérol."
         correct: false
         feedback: >
-          La température est un facteur cinétique : elle change la vitesse
-          de la transformation (davantage de chocs efficaces par seconde),
-          pas la quantité finale de produit d'une transformation totale, qui
-          reste fixée par le réactif limitant.
+          En milieu basique, le produit n'est pas l'acide $R-COOH$ mais sa
+          base conjuguée, l'ion carboxylate $R-COO^-$ (le savon). C'est
+          d'ailleurs parce que le carboxylate ne se réestérifie pas que la
+          réaction est totale.
       - id: D
-        text: "Diminuer la quantité initiale du réactif en excès."
+        text: "Elle produit un ester et de l'eau, comme une estérification."
         correct: false
         feedback: >
-          Réduire le réactif en excès ne peut qu'égaler ou faire chuter
-          $x_{max}$ - au mieux sans effet, au pire ce réactif devient à son
-          tour limitant, ce qui ferait DIMINUER la quantité finale de
-          produit, pas l'augmenter.
+          C'est l'inverse d'une estérification : une saponification DÉFAIT les
+          fonctions ester du corps gras. Elle ne forme pas d'ester ni d'eau,
+          mais des ions carboxylate (le savon) et du glycérol.
     correct_feedback: >
-      Seule une quantité initiale plus grande du réactif limitant augmente
-      $x_{max}$, donc la quantité finale de produit - c'est le contrôle par
-      un réactif vu en R1. Catalyseur et température ne jouent que sur la
-      vitesse.
+      La saponification est l'hydrolyse basique, totale, d'un triglycéride :
+      $C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$ — savon
+      (carboxylates) et glycérol.
     solution: |
-      Pour une transformation totale, $x_{max}$ est fixé par la quantité
-      initiale du réactif limitant (divisée par son coefficient). Catalyseur
-      et température sont des leviers cinétiques : ils changent la vitesse
-      d'accès à l'état final, jamais l'état final lui-même. Seule une
-      augmentation de la quantité initiale du réactif limitant augmente
-      réellement la quantité de produit obtenue.
+      $$C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$$
+      Les trois fonctions ester du triglycéride sont hydrolysées en milieu
+      basique. Le produit est l'ion carboxylate $R-COO^-$ (le savon), pas
+      l'acide : comme le carboxylate ne se réestérifie pas, il n'y a pas de
+      réaction inverse et la transformation est totale — contrairement à
+      l'hydrolyse acide, limitée.
+
+  - id: CTC-6
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans un ion de savon $C_{17}H_{35}-COO^-$, quelle partie est hydrophile
+      et quelle partie est hydrophobe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La tête $-COO^-$ (chargée) est hydrophile ; la longue chaîne $C_{17}H_{35}$ est hydrophobe."
+        correct: true
+      - id: B
+        text: "La longue chaîne $C_{17}H_{35}$ est hydrophile car elle est grande ; la tête $-COO^-$ est hydrophobe."
+        correct: false
+        feedback: >
+          Le critère n'est pas la taille, mais la charge. La longue chaîne
+          carbonée, neutre, fuit l'eau (hydrophobe) ; c'est la tête chargée
+          $-COO^-$ qui est attirée par l'eau (hydrophile). Les deux rôles sont
+          ici inversés.
+      - id: C
+        text: "Les deux parties sont hydrophiles, puisque le savon se dissout dans l'eau."
+        correct: false
+        feedback: >
+          Si tout l'ion était hydrophile, le savon n'aurait aucun pouvoir
+          lavant. C'est justement sa double personnalité qui compte : une tête
+          hydrophile ($-COO^-$) ET une queue hydrophobe (la chaîne carbonée).
+      - id: D
+        text: "La tête $-COO^-$ est hydrophobe car elle provient d'un acide gras."
+        correct: false
+        feedback: >
+          L'origine (un acide gras) ne décide pas de l'affinité pour l'eau ;
+          la charge, si. Le groupe $-COO^-$ porte une charge et est donc
+          hydrophile ; c'est la longue chaîne carbonée neutre qui est
+          hydrophobe.
+    correct_feedback: >
+      On classe par la charge : la tête $-COO^-$, chargée, est hydrophile ; la
+      longue chaîne carbonée $C_{17}H_{35}$, neutre, est hydrophobe. Cette
+      double affinité fait le pouvoir lavant du savon.
+    solution: |
+      Un ion carboxylate à longue chaîne est amphiphile. Le groupe $-COO^-$
+      porte une charge électrique : attiré par l'eau (solvant polaire), il est
+      **hydrophile**. La longue chaîne $C_{17}H_{35}$, faite de carbone et
+      d'hydrogène sans charge, n'a aucune affinité pour l'eau mais se mêle aux
+      graisses : elle est **hydrophobe**. La queue plonge dans le gras, la tête
+      reste dans l'eau — d'où le lavage.
