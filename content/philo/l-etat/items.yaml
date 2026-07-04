@@ -15,9 +15,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle confond le gouvernement (l'équipe qui exerce le pouvoir exécutif à un moment donné, et qui change avec les élections) et l'État (l'appareil permanent -- lois, administration, justice, territoire -- qui subsiste à travers ces changements)."
-        correct: true
-      - id: B
         text: "Elle confond l'État et la société : ce sont les rapports entre individus qui ont changé, pas l'appareil politique."
         correct: false
         feedback: >
@@ -25,7 +22,7 @@ items:
           rapports entre individus) n'est pas non plus ce dont parle la
           phrase. L'erreur porte précisément sur la confusion entre
           gouvernement (ce qui change) et État (ce qui subsiste).
-      - id: C
+      - id: B
         text: "Elle confond l'État et la nation : un changement de gouvernement modifierait, selon cette lecture, le sentiment d'appartenance collective du pays."
         correct: false
         feedback: >
@@ -33,6 +30,9 @@ items:
           commune) n'est pas non plus en cause dans cette phrase, et ne
           change évidemment pas au rythme des élections. L'erreur porte sur
           gouvernement et État, pas sur nation et État.
+      - id: C
+        text: "Elle confond le gouvernement, qui change avec les élections, et l'État, l'appareil permanent qui subsiste à travers ces changements."
+        correct: true
       - id: D
         text: "Il n'y a aucune confusion : gouvernement et État sont, en philosophie politique, deux noms pour la même réalité."
         correct: false
@@ -72,9 +72,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle confond deux auteurs et deux oeuvres distinctes : c'est Hobbes qui écrit le Léviathan (1651) et y décrit l'état de nature comme une guerre de tous contre tous ; Rousseau, dans Du contrat social (1762), défend au contraire une image bien plus paisible de l'état de nature."
-        correct: true
-      - id: B
         text: "Elle confond Hobbes et Locke : c'est en réalité Locke qui est l'auteur du Léviathan."
         correct: false
         feedback: >
@@ -82,8 +79,11 @@ items:
           description de l'état de nature. Locke propose au contraire un
           état de nature plus mesuré, gouverné en partie par la raison, très
           différent de la guerre de tous contre tous de Hobbes.
+      - id: B
+        text: "Elle confond deux auteurs : le Léviathan et la guerre de tous contre tous sont de Hobbes, non de Rousseau, qui défend dans Du contrat social un état de nature bien plus paisible."
+        correct: true
       - id: C
-        text: "L'affirmation est globalement exacte : seul le titre de l'oeuvre est mal orthographié, le reste de l'attribution est correct."
+        text: "L'affirmation est globalement exacte : seul le titre de l'oeuvre serait légèrement mal orthographié, et tout le reste de l'attribution de l'oeuvre comme de la thèse resterait parfaitement correct."
         correct: false
         feedback: >
           Ce n'est pas une simple coquille de titre : c'est l'attribution
@@ -127,10 +127,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Chez Locke, des droits naturels (vie, liberté, propriété) existent déjà avant tout contrat, et le pouvoir politique n'est légitime qu'à condition de les protéger -- il reste révocable si cette confiance est trahie. Chez Hobbes, les droits naissent du contrat lui-même, et le pouvoir souverain est quasiment irrévocable."
-        correct: true
-      - id: B
-        text: "Locke pense que l'état de nature est encore plus violent que ne le décrit Hobbes, ce qui justifie un pouvoir souverain plus fort encore."
+        text: "Locke penserait que l'état de nature est encore plus violent et plus dangereux que ne le décrit déjà Hobbes, ce qui justifierait à ses yeux l'institution d'un pouvoir souverain encore plus fort et plus absolu."
         correct: false
         feedback: >
           C'est l'inverse : l'état de nature de Locke est un état d'égalité
@@ -138,7 +135,7 @@ items:
           violent que la guerre de tous contre tous de Hobbes. Ce n'est
           d'ailleurs pas la violence qui pousse à en sortir chez Locke, mais
           l'insécurité de droits déjà existants.
-      - id: C
+      - id: B
         text: "Locke, comme Hobbes, soutient que le pouvoir souverain doit être absolu et non révocable une fois le contrat conclu."
         correct: false
         feedback: >
@@ -147,7 +144,7 @@ items:
           confiance conditionnel, révocable si le gouvernement trahit sa
           mission de protection des droits -- ce qui ouvre un droit de
           résistance que Hobbes refuse.
-      - id: D
+      - id: C
         text: "Locke nie l'existence de tout état de nature antérieur à l'État."
         correct: false
         feedback: >
@@ -155,6 +152,9 @@ items:
           propose seulement un portrait très différent de celui de Hobbes :
           un état d'égalité et de liberté où des droits naturels existent
           déjà, mais restent fragiles faute de juge et de force communs.
+      - id: D
+        text: "Chez Locke, des droits naturels préexistent au contrat et le pouvoir reste révocable s'il ne les protège pas ; chez Hobbes, les droits naissent du contrat et le pouvoir souverain est quasi irrévocable."
+        correct: true
     correct_feedback: >
       Pour Locke, l'État protège des droits naturels préexistants et son
       pouvoir reste conditionnel et révocable. Pour Hobbes, les droits
@@ -186,7 +186,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La volonté générale vise l'intérêt commun de la communauté en tant que telle ; la volonté de tous n'est que la somme des volontés particulières, c'est-à-dire des intérêts privés juxtaposés, qui peuvent parfaitement se neutraliser sans jamais viser le bien commun."
+        text: "La volonté générale vise l'intérêt commun de la communauté ; la volonté de tous n'est que la somme des intérêts particuliers, qui peuvent se neutraliser sans jamais viser le bien commun."
         correct: true
       - id: B
         text: "Ce sont deux expressions synonymes que Rousseau emploie indifféremment pour désigner le résultat d'un vote majoritaire."
@@ -198,7 +198,7 @@ items:
           majorité peut parfaitement exprimer une volonté de tous sans
           exprimer la volonté générale.
       - id: C
-        text: "La volonté générale désigne la volonté personnelle du souverain, séparée de celle des sujets, comme chez Hobbes."
+        text: "La volonté générale désignerait la volonté personnelle et privée du souverain, nettement séparée de celle des simples sujets qu'il gouverne, exactement comme chez Hobbes lorsque tous transfèrent leur droit au Léviathan."
         correct: false
         feedback: >
           C'est confondre Rousseau et Hobbes. Chez Rousseau, il n'existe pas
@@ -243,9 +243,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'un pouvoir qui ne repose que sur la force ne produit qu'une soumission qui dure exactement aussi longtemps que cette force s'exerce -- dès qu'elle faiblit, l'obéissance cesse, faute d'avoir jamais été reconnue comme un devoir véritable."
-        correct: true
-      - id: B
         text: "Parce que le plus fort devrait, selon Rousseau, chercher à accroître encore sa force pour dominer plus durablement ses sujets."
         correct: false
         feedback: >
@@ -253,7 +250,7 @@ items:
           d'augmenter la force, mais montre que la force seule, aussi
           grande soit-elle, ne peut jamais suffire à fonder un pouvoir
           durable -- elle doit se convertir en droit reconnu comme légitime.
-      - id: C
+      - id: B
         text: "Parce que cette formule concerne exclusivement la puissance économique d'un État, pas son autorité politique."
         correct: false
         feedback: >
@@ -261,6 +258,9 @@ items:
           général -- la différence entre être forcé d'obéir et être dans
           l'obligation d'obéir -- pas spécifiquement sur des rapports de
           puissance économique.
+      - id: C
+        text: "Parce qu'un pouvoir fondé sur la seule force n'obtient qu'une soumission qui dure autant qu'elle : sitôt la force affaiblie, l'obéissance cesse, faute d'avoir été un devoir reconnu."
+        correct: true
       - id: D
         text: "Parce qu'elle justifie qu'un souverain, une fois son monopole de la violence légitime établi au sens de Weber, puisse en abuser indéfiniment sans que cela remette en cause sa légitimité."
         correct: false
@@ -303,9 +303,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle efface une différence décisive : Marx envisage de s'emparer de l'État, le temps d'une phase transitoire, en vue de sa disparition progressive une fois les classes abolies, tandis que les anarchistes rejettent toute concentration de pouvoir étatique, y compris révolutionnaire, et veulent l'abolir d'emblée."
-        correct: true
-      - id: B
         text: "Elle manque le fait que Marx défend en réalité l'État de droit, alors que les anarchistes le rejettent."
         correct: false
         feedback: >
@@ -315,6 +312,9 @@ items:
           l'anarchisme -- ni Marx ni les anarchistes ne défendent cette
           position, qui vise à encadrer l'État plutôt qu'à le transformer
           économiquement ou à l'abolir.
+      - id: B
+        text: "Elle efface une différence décisive : Marx veut s'emparer de l'État pour une phase transitoire, avant sa disparition une fois les classes abolies, quand les anarchistes veulent l'abolir d'emblée."
+        correct: true
       - id: C
         text: "Elle manque le fait que les anarchistes veulent au contraire un État plus fort, capable de mieux protéger les travailleurs."
         correct: false
@@ -324,7 +324,7 @@ items:
           quel qu'en soit le titulaire, tend à se retourner en domination --
           d'où leur volonté d'abolir l'État plutôt que de le renforcer.
       - id: D
-        text: "Elle manque le fait que Marx considère l'État comme une institution éternelle, contrairement aux anarchistes qui en annoncent la fin."
+        text: "Elle manque le fait que Marx considérerait l'État comme une institution éternelle et proprement indépassable, tout à l'opposé des anarchistes, qui seraient alors les seuls à en annoncer la disparition future."
         correct: false
         feedback: >
           Marx, lui aussi, anticipe la disparition de l'État -- mais par une

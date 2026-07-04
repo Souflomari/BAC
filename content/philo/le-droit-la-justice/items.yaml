@@ -17,17 +17,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle peut être parfaitement légale (aucune règle en vigueur n'a été enfreinte) tout en restant discutable du point de vue de la justice (le silence de la loi sur ce produit peut être jugé injuste) -- le droit positif n'est pas automatiquement identique à la justice."
-        correct: true
-      - id: B
-        text: "Elle est nécessairement juste, puisqu'un tribunal ne peut, par définition, rendre une décision injuste tant qu'il applique correctement le droit en vigueur."
+        text: "Elle est nécessairement juste, puisqu'un tribunal ne saurait, par définition même de sa fonction, rendre une seule décision injuste aussi longtemps qu'il se contente d'appliquer correctement le droit positif en vigueur."
         correct: false
         feedback: >
           C'est confondre légalité et justice : appliquer correctement une
           règle en vigueur garantit que la décision est légale, pas qu'elle
           est juste -- le contenu même de la règle (ou son silence) peut,
           lui, rester discutable du point de vue de la justice.
-      - id: C
+      - id: B
         text: "Elle est en réalité illégale, car aucune décision qui laisse un dommage sans réparation ne peut être conforme au droit."
         correct: false
         feedback: >
@@ -36,7 +33,7 @@ items:
           règle en vigueur n'avait été violée. Nier cette possibilité revient
           à effacer, par principe, l'écart entre droit et justice que la leçon
           cherche justement à mettre en évidence.
-      - id: D
+      - id: C
         text: "La question ne se pose pas : « légal » et « juste » désignent, en philosophie du droit, exactement la même propriété sous deux noms différents."
         correct: false
         feedback: >
@@ -45,6 +42,9 @@ items:
           contenu -- une loi (ou son silence) peut être légale sans être
           jugée juste, précisément parce que ces deux notions ne coïncident
           pas nécessairement.
+      - id: D
+        text: "Elle peut être légale, aucune règle en vigueur n'ayant été enfreinte, tout en restant discutable du point de vue de la justice : droit positif et justice ne coïncident pas automatiquement."
+        correct: true
     correct_feedback: >
       Le tribunal n'a commis aucune erreur de droit : sa décision est
       parfaitement légale. Mais le sentiment d'injustice porte sur le contenu
@@ -74,10 +74,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le droit positif désigne les lois effectivement posées par une autorité et en vigueur à un moment et un lieu donnés, donc variables ; le droit naturel désigne des principes de justice universels, valables selon cette tradition indépendamment de toute loi écrite."
-        correct: true
-      - id: B
-        text: "Le droit naturel désigne les lois de la nature physique, comme la loi de la gravitation, appliquées par analogie au droit."
+        text: "Le droit naturel désignerait les lois de la nature physique, comme la loi de la gravitation ou celle de la chute des corps, purement et simplement transposées par analogie au domaine du droit et de la justice."
         correct: false
         feedback: >
           C'est confondre deux emplois différents du mot « loi ». Une loi
@@ -85,7 +82,7 @@ items:
           au sens jusnaturaliste, prescrit des principes de justice que
           l'autorité politique devrait respecter -- ce n'est pas une loi de
           la nature au sens scientifique.
-      - id: C
+      - id: B
         text: "Le droit positif est universel et immuable, tandis que le droit naturel varie d'un pays et d'une époque à l'autre."
         correct: false
         feedback: >
@@ -93,6 +90,9 @@ items:
           jusnaturaliste présente comme universel et valable indépendamment
           des lois écrites ; c'est le droit positif qui est contingent et
           varie effectivement d'un pays et d'une époque à l'autre.
+      - id: C
+        text: "Le droit positif, ce sont les lois posées par une autorité et en vigueur ici et maintenant, donc variables ; le droit naturel, des principes de justice universels valables sans loi écrite."
+        correct: true
       - id: D
         text: "Ce sont deux expressions synonymes employées indifféremment pour désigner les lois écrites d'un pays."
         correct: false
@@ -128,16 +128,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Sa conformité procédurale à la norme supérieure qui l'habilite, dans la hiérarchie des normes -- indépendamment de son contenu moral."
-        correct: true
-      - id: B
-        text: "Sa conformité à des principes moraux universels valables indépendamment des lois écrites."
+        text: "Sa conformité à des principes moraux universels, valables par eux-mêmes indépendamment des lois écrites et de toute autorité politique qui viendrait les poser."
         correct: false
         feedback: >
           C'est le critère jusnaturaliste, exactement l'inverse de la thèse
           de Kelsen. Le positivisme juridique sépare précisément le droit de
           la morale : la validité d'une norme se juge sur sa conformité
           procédurale, jamais sur son contenu moral.
+      - id: B
+        text: "Sa conformité procédurale à la norme supérieure qui l'habilite, dans la hiérarchie des normes -- indépendamment de son contenu moral."
+        correct: true
       - id: C
         text: "Le fait qu'elle soit majoritairement approuvée par l'opinion publique au moment de son adoption."
         correct: false
@@ -187,9 +187,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le remboursement relève de la justice commutative (égalité arithmétique stricte, indépendante du statut des parties) ; la répartition de la bourse relève de la justice distributive (égalité proportionnelle au mérite et au besoin)."
-        correct: true
-      - id: B
         text: "Les deux relèvent de la justice distributive, puisque les deux situations impliquent de traiter plusieurs personnes."
         correct: false
         feedback: >
@@ -197,8 +194,8 @@ items:
           deux formes de justice, mais le TYPE de rapport en jeu : un échange
           strict entre deux parties (le remboursement) relève de la justice
           commutative, pas distributive.
-      - id: C
-        text: "Le remboursement relève de la justice distributive (proportionnelle au mérite du débiteur) ; la bourse relève de la justice commutative (égalité stricte entre tous les candidats)."
+      - id: B
+        text: "Le remboursement relèverait de la justice distributive (proportionnelle au mérite et à la situation du débiteur) ; la bourse, elle, relèverait de la justice commutative (égalité stricte et identique entre tous les candidats)."
         correct: false
         feedback: >
           C'est inverser exactement les deux catégories -- la confusion la
@@ -206,7 +203,7 @@ items:
           dette est un échange qui exige une égalité stricte (commutative) ;
           une bourse répartie selon le mérite et le besoin exige une
           proportionnalité (distributive).
-      - id: D
+      - id: C
         text: "Aristote ne distingue pas plusieurs formes de justice comme égalité : il n'existe, chez lui, qu'une seule notion de justice, applicable indifféremment à toute situation."
         correct: false
         feedback: >
@@ -214,6 +211,9 @@ items:
           précisément deux formes d'égalité -- arithmétique (commutative) et
           proportionnelle (distributive) -- réservées chacune à un type de
           situation différent.
+      - id: D
+        text: "Le remboursement relève de la justice commutative (égalité arithmétique stricte, quel que soit le statut des parties) ; la bourse relève de la justice distributive (égalité proportionnelle au mérite et au besoin)."
+        correct: true
     correct_feedback: >
       La justice commutative applique une égalité stricte, indépendante des
       personnes, aux rapports d'échange ou de réparation. La justice
@@ -246,10 +246,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'ignorant quelle place ils occuperont eux-mêmes dans la société une fois le voile levé, les participants sont rationnellement conduits à choisir des principes qu'ils accepteraient même dans la position la moins avantagée -- ce qui protège en priorité le sort des plus désavantagés."
+        text: "Parce qu'ignorant la place qu'ils occuperont une fois le voile levé, les participants choisissent rationnellement des principes acceptables même dans la pire position -- d'où la priorité donnée aux plus désavantagés."
         correct: true
       - id: B
-        text: "Parce que le voile d'ignorance dissimule aux citoyens, une fois la société en place, l'existence même des inégalités sociales qui subsistent autour d'eux."
+        text: "Parce que le voile d'ignorance dissimulerait en permanence aux citoyens, une fois la société bien en place et les principes appliqués, l'existence même des profondes inégalités sociales et économiques qui subsistent malgré tout autour d'eux."
         correct: false
         feedback: >
           Le voile d'ignorance ne porte que sur la situation hypothétique de
@@ -304,17 +304,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Une loi peut respecter parfaitement la procédure requise pour être produite (légalité) sans être reconnue comme fondée ou méritant l'obéissance (légitimité), si son contenu viole des principes de justice jugés supérieurs -- comme le montre, par exemple, le débat né des lois formellement valides mais jugées criminelles après coup."
-        correct: true
-      - id: B
-        text: "C'est impossible : une loi légale, du seul fait qu'elle a été votée dans les formes, est nécessairement reconnue comme légitime par tous ceux qu'elle gouverne."
+        text: "C'est impossible : une loi légale, du seul fait qu'elle aurait été votée et promulguée dans les formes prescrites, serait nécessairement reconnue comme pleinement légitime par l'ensemble de ceux qu'elle prétend gouverner."
         correct: false
         feedback: >
           C'est précisément l'écart que la leçon établit qui est ici nié : la
           légalité (conformité procédurale) et la légitimité (reconnaissance
           comme fondée) sont deux propriétés distinctes, qui coïncident
           souvent mais pas toujours.
-      - id: C
+      - id: B
         text: "C'est impossible dans l'autre sens : une loi légitime est forcément illégale, puisque la légitimité s'oppose par nature à toute procédure formelle."
         correct: false
         feedback: >
@@ -323,6 +320,9 @@ items:
           L'écart possible entre les deux ne signifie pas qu'elles
           s'opposent systématiquement, seulement qu'elles ne coïncident pas
           nécessairement.
+      - id: C
+        text: "Une loi peut respecter parfaitement la procédure requise (légalité) sans être reconnue comme fondée ni méritant l'obéissance (légitimité), si son contenu viole des principes de justice jugés supérieurs."
+        correct: true
       - id: D
         text: "La légitimité d'une loi se mesure uniquement à sa popularité dans les sondages d'opinion au moment de son vote."
         correct: false
