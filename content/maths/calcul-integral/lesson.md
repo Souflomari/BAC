@@ -424,7 +424,7 @@ $$\int_1^e x\ln(x)\,\mathrm{d}x = \frac{e^2}{2} - \left(\frac{e^2}{4}-\frac14\ri
 
 $$\int_1^e x\ln(x)\,\mathrm{d}x = \frac{e^2+1}{4}$$
 
-**2.** **Ce qu'on cherche et pourquoi ce geste :** avant de parler d'aire, il faut vérifier que $f$ ne change pas de signe sur $[1,e]$ — sinon il faudrait découper comme au R8. Sur $[1,e]$, $x>0$ toujours, et $\ln(x) \geq 0$ car $\ln$ est croissante et $\ln(1)=0$ (chapitre "Fonction logarithme"), donc $x \geq 1 \Rightarrow \ln(x) \geq 0$. Un produit de deux facteurs positifs est positif : $f(x)=x\ln(x) \geq 0$ sur tout $[1,e]$. Pas de changement de signe, donc pas de découpage à faire : l'aire est directement l'intégrale calculée en 1.
+**2.** **Ce qu'on cherche et pourquoi ce geste :** avant de parler d'aire, il faut vérifier que $f$ ne change pas de signe sur $[1,e]$ — sinon il faudrait découper comme au R8. Sur $[1,e]$, $x>0$ toujours, et $\ln(x) \geq 0$ car $\ln$ est croissante et $\ln(1)=0$ (chapitre "Fonction logarithme"), donc $x \geq 1 \Rightarrow \ln(x) \geq 0$. Un produit de deux facteurs positifs est positif : $f(x)=x\ln(x) \geq 0$ sur tout $[1,e]$. Pas de changement de signe, donc aucun découpage n'est nécessaire : l'aire est directement l'intégrale calculée en 1.
 
 $$\text{aire} = \frac{e^2+1}{4}\ \text{u.a.}$$
 
