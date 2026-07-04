@@ -1,0 +1,389 @@
+notion: aspects-energetiques
+skill_code: pc_energie
+misconceptions: []
+
+items:
+  - id: AE-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [travail_poids, chemin]
+    stem: >
+      Une bille de masse $m = 0{,}20\ \text{kg}$ descend, sans frottement,
+      une piste incurvée entre un point de départ $A$ et un point d'arrivée
+      $B$. La dénivelée entre $A$ et $B$ vaut $h = 4{,}0\ \text{m}$, mais la
+      longueur réelle du chemin suivi (le long de la piste incurvée) vaut
+      $s = 6{,}0\ \text{m}$. On prend $g \approx 9{,}8\ \text{m/s}^2$. Que
+      vaut le travail du poids $W(\vec F)$ entre $A$ et $B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 7{,}8\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$\\approx 11{,}8\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat vient du calcul $mgs$, en utilisant la longueur du
+          chemin ($s = 6{,}0\ \text{m}$) au lieu de la dénivelée. Le travail
+          du poids ne dépend que de la différence d'altitude entre le départ
+          et l'arrivée, jamais de la longueur ni de la forme du chemin
+          parcouru : ici seule la dénivelée $h = 4{,}0\ \text{m}$ compte.
+      - id: C
+        text: "$\\approx 3{,}9\\ \\text{J}$ (deux fois moins qu'en chute libre directe, car le chemin est deux fois plus long)"
+        correct: false
+        feedback: >
+          Ce choix suppose qu'un chemin plus long "dilue" le travail du
+          poids sur une plus grande distance. C'est l'inverse d'une erreur
+          fréquente, mais la même confusion : la longueur du chemin
+          n'intervient pas du tout dans $W(\vec F)$, ni pour l'augmenter ni
+          pour le diminuer. Seule la dénivelée $h$ compte.
+      - id: D
+        text: "$\\approx 39\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce nombre correspond à $gh$ seul, sans multiplier par la masse
+          $m = 0{,}20\ \text{kg}$. Le travail du poids est $W(\vec F) = mgh$ :
+          il manque le facteur $m$, et le résultat n'a d'ailleurs pas les
+          bonnes unités pour une énergie sans lui.
+    correct_feedback: >
+      $W(\vec F) = mgh = 0{,}20 \times 9{,}8 \times 4{,}0 \approx 7{,}8\ \text{J}$.
+      Le travail du poids ne dépend que de la dénivelée $h$ entre $A$ et
+      $B$ — la longueur réelle du chemin ($6{,}0\ \text{m}$ ici) n'entre
+      jamais dans le calcul.
+    solution: |
+      **Le travail du poids ne dépend que de l'altitude de départ et
+      d'arrivée**, jamais du chemin suivi (établi en R3) :
+      $$W(\vec P)_{A \to B} = mg\,(z_A - z_B) = mgh$$
+
+      **Application numérique**, avec $h = 4{,}0\ \text{m}$ (la dénivelée,
+      pas la longueur du chemin $s = 6{,}0\ \text{m}$) :
+      $$W(\vec P) = 0{,}20 \times 9{,}8 \times 4{,}0 \approx 7{,}8\ \text{J}$$
+
+      La longueur $s = 6{,}0\ \text{m}$ donnée dans l'énoncé est une
+      information non pertinente pour ce calcul — elle ne sert qu'à tester
+      si on sait ignorer la longueur du chemin.
+
+  - id: AE-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_poids, chemin]
+    stem: >
+      Un solide de masse $m$ descend, sans frottement, une dénivelée
+      $h = 2{,}5\ \text{m}$, une fois via une rampe rectiligne, une fois
+      via une rampe en forme de S (même dénivelé $h$, même masse, mais un
+      chemin plus long et beaucoup plus sinueux). Compare le travail du
+      poids sur les deux rampes, entre le départ et l'arrivée.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il est exactement le même sur les deux rampes, car il ne dépend
+          que de la dénivelée $h$, pas de la forme du chemin.
+        correct: true
+      - id: B
+        text: >-
+          Il est plus grand sur la rampe en S, car le poids a plus de temps
+          et plus de distance pour agir sur un chemin plus long.
+        correct: false
+        feedback: >
+          Le travail du poids ne dépend ni du temps mis à parcourir le
+          chemin, ni de la longueur de ce chemin — seulement de la
+          différence d'altitude $z_A - z_B$. Un chemin deux fois plus long
+          ne donne pas un travail deux fois plus grand : la formule
+          $W(\vec F) = mg(z_A - z_B)$ ne contient aucune longueur de chemin.
+      - id: C
+        text: >-
+          Il est plus petit sur la rampe en S, car les virages successifs
+          annulent une partie du travail du poids.
+        correct: false
+        feedback: >
+          Les détours horizontaux de la rampe en S ne retranchent rien : à
+          chaque instant, seule la composante verticale du déplacement
+          contribue au travail du poids (la composante horizontale lui est
+          perpendiculaire, donc ne travaille jamais). Les allers-retours
+          horizontaux s'annulent dans la somme, mais ils ne "coûtent" ni ne
+          "font gagner" de travail au poids.
+      - id: D
+        text: >-
+          Impossible à comparer sans connaître la forme exacte de chaque
+          rampe.
+        correct: false
+        feedback: >
+          La formule $W(\vec F) = mg(z_A - z_B)$ ne demande de connaître que
+          les altitudes de départ et d'arrivée, jamais la forme du chemin.
+          On peut donc comparer les deux travaux sans rien savoir de plus
+          sur la forme des rampes.
+    correct_feedback: >
+      Le travail du poids est $mgh$ dans les deux cas, car il ne dépend que
+      de la dénivelée $h = 2{,}5\ \text{m}$ — identique pour les deux
+      rampes. La forme du chemin (rectiligne ou en S) ne change rien.
+    solution: |
+      **Le mécanisme (R3) :** décompose n'importe quel chemin entre $A$ et
+      $B$ en petits déplacements rectilignes. Sur chacun, seule la
+      composante verticale contribue au travail du poids (la composante
+      horizontale lui est perpendiculaire). En sommant sur tout le chemin,
+      les altitudes intermédiaires s'annulent deux à deux : il ne reste que
+      la dénivelée totale $h$.
+
+      **Conclusion :** $W(\vec P) = mgh$ pour les deux rampes — le
+      résultat est rigoureusement identique, malgré la longueur et la
+      forme très différentes des deux chemins.
+
+  - id: AE-3
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [energie_cinetique, energie_mecanique]
+    stem: >
+      Une bille glisse sans frottement sur une piste. Son énergie
+      mécanique vaut $E_m = 6{,}0\ \text{J}$, constante tout au long du
+      mouvement (référence d'altitude prise au point le plus bas de la
+      piste). Au sommet de la piste, la bille est instantanément immobile
+      ($v = 0$). Quelle est son énergie cinétique $E_c$ en ce point ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_c = 0\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$E_c = 6{,}0\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce choix confond $E_c$ avec $E_m$. C'est la SOMME
+          $E_c + E_{pp}$ qui vaut $6{,}0\ \text{J}$ partout, pas $E_c$
+          toute seule. Au sommet, $v = 0$ impose $E_c = \frac12 m v^2 = 0$
+          — les $6{,}0\ \text{J}$ y sont entièrement sous forme d'énergie
+          potentielle $E_{pp}$.
+      - id: C
+        text: >-
+          On ne peut pas savoir sans connaître la masse de la bille.
+        correct: false
+        feedback: >
+          $E_c = \frac12 m v^2$ : avec $v = 0$, ce produit est nul quelle
+          que soit la valeur de $m$. La masse n'est donc pas nécessaire
+          ici — $v = 0$ suffit à conclure $E_c = 0$.
+      - id: D
+        text: >-
+          $E_c = 3{,}0\ \text{J}$, la moitié de l'énergie mécanique, répartie
+          également entre $E_c$ et $E_{pp}$.
+        correct: false
+        feedback: >
+          Il n'existe aucune règle de partage à 50/50 entre $E_c$ et
+          $E_{pp}$ : leur répartition dépend de la vitesse et de l'altitude
+          à chaque instant, pas d'une proportion fixe. Ici, $v = 0$ impose
+          $E_c = 0$ exactement, pas la moitié de $E_m$.
+    correct_feedback: >
+      Au sommet, $v = 0$ donc $E_c = \frac12 m v^2 = 0\ \text{J}$. Toute
+      l'énergie mécanique $E_m = 6{,}0\ \text{J}$ y est stockée sous forme
+      d'énergie potentielle de pesanteur : $E_c$ et $E_m$ ne sont jamais la
+      même grandeur, sauf par coïncidence numérique.
+    solution: |
+      **Ce qui est donné :** $E_m = E_c + E_{pp} = 6{,}0\ \text{J}$,
+      constante (pas de frottement). Au sommet, $v = 0$.
+
+      **Calcul direct de $E_c$ au sommet :**
+      $$E_c = \frac{1}{2} m v^2 = \frac{1}{2} m \times 0^2 = 0\ \text{J}$$
+
+      **Conséquence pour $E_{pp}$ :** puisque $E_m = E_c + E_{pp}$ est
+      constante et vaut $6{,}0\ \text{J}$, et que $E_c = 0$ au sommet,
+      $E_{pp} = 6{,}0\ \text{J}$ en ce point. $E_c$ et $E_m$ ne coïncident
+      qu'au hasard des instants, jamais par définition.
+
+  - id: AE-4
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_cinetique, energie_mecanique, energie_potentielle]
+    stem: >
+      Une bille de masse $m = 0{,}20\ \text{kg}$ part du repos au sommet
+      d'une piste sans frottement. Son énergie mécanique, constante tout
+      au long du mouvement, vaut $E_m = 4{,}9\ \text{J}$ (référence
+      d'altitude au point le plus bas de la piste, $z = 0$). On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quelle est la vitesse de la bille
+      quand elle atteint l'altitude $z = 1{,}0\ \text{m}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 5{,}4\\ \\text{m/s}$"
+        correct: true
+      - id: B
+        text: "$7{,}0\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient de $v = \sqrt{2 E_m / m}$, en confondant
+          $E_c$ avec $E_m$ tout entière. Il faut d'abord soustraire
+          l'énergie potentielle $E_{pp} = mgz$ à cette altitude : la bonne
+          relation est $E_c = E_m - E_{pp}$, pas $E_c = E_m$.
+      - id: C
+        text: "$\\approx 2{,}4\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat oublie de diviser par la masse dans
+          $E_c = \frac12 m v^2$ : il correspond à $v = \sqrt{2 E_c}$ au
+          lieu de $v = \sqrt{2 E_c / m}$. La masse doit apparaître au
+          dénominateur sous la racine.
+      - id: D
+        text: "$\\approx 6{,}9\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'un calcul de $E_{pp}$ sans le facteur $g$
+          (soit $E_{pp} = mz$ au lieu de $E_{pp} = mgz$). L'énergie
+          potentielle de pesanteur contient bien $g$ : oublier ce facteur
+          fausse la valeur de $E_{pp}$ soustraite à $E_m$.
+    correct_feedback: >
+      $E_{pp} = mgz = 0{,}20 \times 9{,}8 \times 1{,}0 \approx 1{,}96\ \text{J}$,
+      donc $E_c = E_m - E_{pp} \approx 2{,}94\ \text{J}$, et
+      $v = \sqrt{2 E_c / m} \approx 5{,}4\ \text{m/s}$.
+    solution: |
+      **Énergie potentielle à $z = 1{,}0\ \text{m}$ :**
+      $$E_{pp} = mgz = 0{,}20 \times 9{,}8 \times 1{,}0 \approx 1{,}96\ \text{J}$$
+
+      **Énergie cinétique à cette altitude** (par $E_m = E_c + E_{pp}$,
+      $E_m$ constante car pas de frottement) :
+      $$E_c = E_m - E_{pp} \approx 4{,}9 - 1{,}96 \approx 2{,}94\ \text{J}$$
+
+      **Vitesse :**
+      $$v = \sqrt{\frac{2 E_c}{m}} = \sqrt{\frac{2 \times 2{,}94}{0{,}20}} \approx 5{,}4\ \text{m/s}$$
+
+      $E_c$ n'est jamais directement égale à $E_m$ dès que l'altitude n'est
+      pas nulle : il faut toujours soustraire $E_{pp}$ au préalable.
+
+  - id: AE-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement, tec]
+    stem: >
+      Un solide de masse $m = 1{,}0\ \text{kg}$ part sans vitesse initiale
+      et glisse sur un plan incliné d'angle $\alpha = 30^\circ$
+      ($\sin\alpha = 0{,}5$), sur une distance $d = 2{,}0\ \text{m}$ le
+      long du plan. Un frottement de norme $f = 2{,}0\ \text{N}$, opposé au
+      mouvement, s'exerce pendant toute la descente. On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quelle est la vitesse du solide
+      après avoir parcouru cette distance $d$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 3{,}4\\ \\text{m/s}$"
+        correct: true
+      - id: B
+        text: "$\\approx 4{,}4\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat oublie le travail du frottement dans le bilan : il
+          correspond à $v = \sqrt{2gd\sin\alpha}$, comme si l'énergie
+          mécanique était conservée. Or il y a bien un frottement ici — sa
+          contribution $W(\vec f) = -f \times d$ doit être retranchée du
+          travail du poids, pas ignorée.
+      - id: C
+        text: "$\\approx 5{,}3\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat ajoute le travail du frottement au lieu de le
+          soustraire. Le frottement s'oppose toujours au mouvement : son
+          travail est nécessairement négatif, $W(\vec f) = -f \times d$,
+          jamais positif.
+      - id: D
+        text: "$\\approx 5{,}6\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat utilise $mgd$ (la distance $d$ le long du plan)
+          au lieu de $mgd\sin\alpha$ (la dénivelée réelle) pour le travail
+          du poids. Seule la composante verticale du déplacement compte
+          pour $W(\vec P)$ ; il ne faut pas confondre $d$, la distance
+          parcourue le long du plan, avec $h = d\sin\alpha$, la dénivelée.
+    correct_feedback: >
+      $W(\vec P) = mgd\sin\alpha = 9{,}8\ \text{J}$, $W(\vec N) = 0$,
+      $W(\vec f) = -f d = -4{,}0\ \text{J}$. Le TEC donne
+      $E_c = 9{,}8 - 4{,}0 = 5{,}8\ \text{J}$, donc
+      $v = \sqrt{2 \times 5{,}8 / 1{,}0} \approx 3{,}4\ \text{m/s}$ —
+      exactement ce que confirme la 2e loi de Newton par une méthode
+      indépendante.
+    solution: |
+      **Travail du poids :**
+      $$W(\vec P) = mgd\sin\alpha = 1{,}0 \times 9{,}8 \times 2{,}0 \times 0{,}5 = 9{,}8\ \text{J}$$
+
+      **Travail de la réaction normale :** $W(\vec N) = 0$ (perpendiculaire
+      au déplacement).
+
+      **Travail du frottement :**
+      $$W(\vec f) = -f \times d = -2{,}0 \times 2{,}0 = -4{,}0\ \text{J}$$
+
+      **TEC entre le départ (repos) et le point à $d$ :**
+      $$E_c = W(\vec P) + W(\vec N) + W(\vec f) = 9{,}8 + 0 - 4{,}0 = 5{,}8\ \text{J}$$
+
+      **Vitesse :**
+      $$v = \sqrt{\frac{2 \times 5{,}8}{1{,}0}} \approx 3{,}4\ \text{m/s}$$
+
+      Ce résultat est celui obtenu en R5 par la 2e loi de Newton
+      ($a_{G,x} = 2{,}9\ \text{m/s}^2$, puis $v^2 = 2 a_{G,x} d$) : les deux
+      méthodes s'accordent exactement.
+
+  - id: AE-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement]
+    stem: >
+      Un solide de masse $m = 0{,}50\ \text{kg}$ descend une piste avec
+      frottement. Entre le point $A$ (départ) et le point $B$, son
+      altitude diminue de $\Delta z = 1{,}2\ \text{m}$, et le travail des
+      frottements entre $A$ et $B$ vaut $W(\vec f) = -1{,}0\ \text{J}$. On
+      prend $g \approx 9{,}8\ \text{m/s}^2$. Quelle est la variation
+      d'énergie mécanique $\Delta E_m = E_{m,B} - E_{m,A}$ entre $A$ et
+      $B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\Delta E_m = -1{,}0\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$\\Delta E_m = 0\\ \\text{J}$, car l'énergie mécanique se conserve toujours"
+        correct: false
+        feedback: >
+          L'énergie mécanique ne se conserve QUE en l'absence de
+          frottement. Ici, un frottement agit et dissipe de l'énergie : sa
+          contribution ne doit pas être oubliée dans le bilan.
+          $\Delta E_m$ est exactement égale au travail du frottement, pas à
+          zéro.
+      - id: C
+        text: "$\\Delta E_m \\approx 4{,}9\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat correspond en réalité à $\Delta E_c$ (la variation
+          d'énergie cinétique, obtenue en ajoutant le travail du poids et
+          celui du frottement), pas à $\Delta E_m$. La variation de
+          l'énergie MÉCANIQUE est plus simple : elle est égale au seul
+          travail du frottement, puisque le travail du poids est déjà
+          "absorbé" dans la variation de $E_{pp}$.
+      - id: D
+        text: "$\\Delta E_m = +1{,}0\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Le travail du frottement est toujours résistant (négatif) : il
+          ne peut jamais AUGMENTER l'énergie mécanique. Le signe correct
+          est celui de $W(\vec f)$ lui-même, soit $-1{,}0\ \text{J}$, pas
+          $+1{,}0\ \text{J}$.
+    correct_feedback: >
+      $\Delta E_m = W(\vec f) = -1{,}0\ \text{J}$ : la variation de
+      l'énergie mécanique est exactement égale au travail du frottement,
+      quelle que soit la dénivelée — le travail du poids est déjà pris en
+      compte dans la variation de $E_{pp}$, il ne réapparaît pas dans
+      $\Delta E_m$.
+    solution: |
+      **Le résultat général établi en R4 :** quand les forces qui
+      s'exercent sont le poids, une réaction qui ne travaille pas, et un
+      frottement, le TEC donne $\Delta E_c = -\Delta E_{pp} + W(\vec f)$,
+      donc :
+      $$\Delta E_m = \Delta E_c + \Delta E_{pp} = W(\vec f)$$
+
+      **Application ici :**
+      $$\Delta E_m = W(\vec f) = -1{,}0\ \text{J}$$
+
+      Le travail du poids ($mg\Delta z \approx 5{,}88\ \text{J}$) n'entre
+      PAS dans ce calcul : il est déjà comptabilisé dans la variation de
+      $E_{pp}$, qui fait partie de $E_m$. Ce qui reste dans $\Delta E_m$,
+      c'est uniquement l'effet des forces qui ne sont ni le poids ni une
+      réaction perpendiculaire au mouvement — ici, le frottement.

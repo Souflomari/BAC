@@ -1,0 +1,373 @@
+notion: evolution-spontanee
+skill_code: pc_evolution_spontanee
+misconceptions: []
+
+items:
+
+  # ── se tromper sur le sens de comparaison Qr,i vs K (canonique) ─────────────
+  - id: ES-1
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_evolution_spontanee
+    tags: []
+    stem: >
+      Pour la réaction $Fe + 2\,Ag^+ \rightleftharpoons Fe^{2+} + 2\,Ag$, à une
+      température donnée, $K \approx 4{,}0\times10^{15}$. Dans un mélange qui
+      vient d'être préparé, on calcule $Q_{r,i} = 3{,}0\times10^{2}$. Quelle
+      est la bonne conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_{r,i} \\ll K$ : le système évolue dans le sens direct - le fer s'oxyde, les ions $Ag^+$ se réduisent."
+        correct: true
+      - id: B
+        text: "$Q_{r,i} \\ll K$ : le système évolue dans le sens inverse, puisque $Q_{r,i}$ est bien plus petit que $K$."
+        correct: false
+        feedback: >
+          C'est l'inverse. Un $Q_{r,i}$ petit signifie qu'il y a, à cet
+          instant, proportionnellement peu de produits et beaucoup de
+          réactifs par rapport à ce que l'équilibre exige : c'est la réaction
+          directe qui l'emporte alors, et $Q_r$ grimpe vers $K$. « Petit »
+          n'annonce jamais un recul - ça annonce que la réaction directe a
+          encore beaucoup de chemin à faire pour rejoindre $K$, donc qu'elle
+          avance.
+      - id: C
+        text: "Le système est déjà à l'équilibre, puisque $Q_{r,i}$ est une valeur bien définie à cet instant."
+        correct: false
+        feedback: >
+          $Q_r$ est calculable à n'importe quel instant d'une transformation,
+          pas seulement à l'équilibre - avoir une valeur numérique ne signifie
+          pas que le système est stabilisé. L'équilibre correspond
+          précisément au cas particulier où $Q_r$ cesse de varier et devient
+          égal à $K$ ; ici, $Q_{r,i}=3{,}0\times10^2 \neq K$, donc ce n'est
+          pas encore le cas.
+      - id: D
+        text: "La valeur de $K$ annoncée doit être fausse, puisque $Q_{r,i} \\neq K$ pour ce mélange."
+        correct: false
+        feedback: >
+          $Q_r$ et $K$ ne sont censés être égaux QU'À L'ÉQUILIBRE. Tant que la
+          transformation n'a pas atteint son état final, $Q_r$ prend
+          n'importe quelle valeur différente de $K$ - ce n'est pas une
+          contradiction, c'est le fonctionnement normal du quotient de
+          réaction en cours de transformation.
+    correct_feedback: >
+      $Q_{r,i} = 3{,}0\times10^2 \ll K \approx 4{,}0\times10^{15}$ : le
+      critère d'évolution impose un sens direct - $Q_r$ va augmenter jusqu'à
+      rejoindre $K$, valeur qu'il n'atteindra qu'à l'équilibre.
+    solution: |
+      $Q_r$ et $K$ ne sont pas la même chose : $Q_r$ se calcule à tout
+      instant à partir des concentrations présentes, alors que $K$ est LA
+      valeur particulière que prend $Q_r$ une fois l'équilibre atteint.
+      Ici, $Q_{r,i} = 3{,}0\times10^2 < K \approx 4{,}0\times10^{15}$ :
+      d'après le critère d'évolution, le système évolue dans le sens direct
+      (le fer s'oxyde, les ions $Ag^+$ se réduisent), et $Q_r$ va augmenter
+      progressivement jusqu'à devenir égal à $K$.
+
+  # ── se tromper sur le sens de comparaison Qr,i vs K (variant, Qr,i > K) ─────
+  - id: ES-2
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_evolution_spontanee
+    tags: []
+    stem: >
+      Pour la réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$,
+      $K \approx 1{,}8\times10^{37}$. On prépare un mélange très concentré en
+      $Zn^{2+}$ et extrêmement dilué en $Cu^{2+}$, tel que
+      $Q_{r,i} \approx 1{,}0\times10^{39}$. Que va-t-il se passer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_{r,i} > K$ : le système évolue dans le sens inverse - c'est le cuivre métallique qui cède des électrons aux ions $Zn^{2+}$."
+        correct: true
+      - id: B
+        text: "$Q_{r,i} > K$ : le système évolue dans le sens direct, car $Q_{r,i}$ est une très grande valeur, donc la réaction \"avance beaucoup\"."
+        correct: false
+        feedback: >
+          Une grande valeur de $Q_{r,i}$ ne signifie pas que la réaction
+          directe avance : elle signifie qu'il y a déjà, à cet instant,
+          proportionnellement plus de produits que ce que l'équilibre
+          autorise. C'est alors la réaction INVERSE qui l'emporte, pour faire
+          redescendre $Q_r$ vers $K$. « Grand » n'est pas synonyme de
+          « avance dans le sens direct ».
+      - id: C
+        text: "Le zinc reste forcément le réducteur qui cède ses électrons, quelle que soit la valeur de $Q_{r,i}$, car c'est sa propriété chimique fixe."
+        correct: false
+        feedback: >
+          Aucun couple n'a de rôle fixé une fois pour toutes : c'est
+          uniquement la comparaison $Q_{r,i}$ face à $K$, à l'instant
+          considéré, qui décide quel sens l'emporte. Avec un $K$ aussi grand
+          pour ce couple, le sens direct est presque toujours observé en
+          pratique - mais ce n'est pas une propriété intrinsèque et
+          absolue du zinc, c'est la conséquence du calcul pour les
+          concentrations habituellement rencontrées.
+      - id: D
+        text: "Une telle situation est impossible : $Q_{r,i}$ ne peut jamais dépasser $K$."
+        correct: false
+        feedback: >
+          $Q_r$ peut prendre n'importe quelle valeur selon les concentrations
+          choisies au départ - rien n'empêche $Q_{r,i}$ de dépasser $K$ si le
+          mélange initial est suffisamment déséquilibré (ici, très concentré
+          en produit, très dilué en réactif). C'est justement ce déséquilibre
+          qui impose alors le sens inverse.
+    correct_feedback: >
+      $Q_{r,i} \approx 1{,}0\times10^{39} > K \approx 1{,}8\times10^{37}$ : le
+      critère impose le sens inverse. Ce serait alors le cuivre métallique qui
+      céderait ses électrons aux ions $Zn^{2+}$ - la même réaction, gouvernée
+      par le même $K$, mais évoluant dans l'autre sens pour cet état initial
+      précis.
+    solution: |
+      Le critère ne connaît qu'une règle : comparer $Q_{r,i}$ à $K$.
+      $$Q_{r,i} \approx 1{,}0\times10^{39} > K \approx 1{,}8\times10^{37}$$
+      Puisque $Q_{r,i} > K$, le système évolue dans le sens inverse de
+      l'équation écrite : le cuivre métallique s'oxyde, les ions $Zn^{2+}$ se
+      réduisent. Ce résultat ne contredit pas le rung 2 (où le sens direct
+      était trouvé) : c'est la même réaction, mais un état initial très
+      différent (ici, presque aucun $Cu^{2+}$ disponible) qui bascule le
+      verdict du critère.
+
+  # ── croire qu'une transformation spontanée dégage toujours de la chaleur visible (canonique) ──
+  - id: ES-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_evolution_spontanee
+    tags: []
+    stem: >
+      Un élève plonge une pointe de fer de quelques milligrammes dans une
+      goutte de solution très diluée de sulfate de cuivre. La réaction
+      $Fe + Cu^{2+} \rightleftharpoons Fe^{2+} + Cu$ se produit bel et bien
+      ($Q_{r,i} \ll K$), mais aucune élévation de température n'est
+      perceptible au toucher. Que peut-on en conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la transformation reste spontanée (le critère $Q_{r,i}<K$ est vérifié) sans que cela implique une chaleur perceptible - cela dépend aussi de la quantité de matière qui réagit."
+        correct: true
+      - id: B
+        text: "Que la transformation n'est en réalité pas spontanée, puisqu'une transformation spontanée dégage toujours une chaleur qu'on peut sentir."
+        correct: false
+        feedback: >
+          La spontanéité se juge uniquement sur la comparaison $Q_{r,i}$ face
+          à $K$ - une comparaison de concentrations, pas une mesure de
+          chaleur. Ici $Q_{r,i}\ll K$, donc la réaction est bien spontanée. Le
+          fait qu'elle ne chauffe pas perceptiblement vient d'ailleurs : la
+          quantité de matière mise en jeu (quelques milligrammes, une goutte)
+          est trop faible pour libérer une énergie totale perceptible.
+      - id: C
+        text: "Que le critère $Q_{r,i}$ face à $K$ ne s'applique pas ici, puisqu'il n'y a pas de dégagement de chaleur détectable."
+        correct: false
+        feedback: >
+          Le critère $Q_{r,i}$ face à $K$ s'applique à toute réaction, quelle
+          que soit la chaleur qu'elle dégage : il ne contient aucune grandeur
+          thermique. Le confondre avec une condition sur la chaleur, c'est
+          mélanger deux choses séparées - le critère de sens d'évolution, et
+          la quantité d'énergie effectivement libérée.
+      - id: D
+        text: "Que la réaction s'est arrêtée avant même de commencer, faute d'énergie suffisante pour démarrer."
+        correct: false
+        feedback: >
+          Rien n'indique un arrêt : le dépôt de cuivre et la disparition
+          progressive de la couleur bleue (si on pouvait les observer sur une
+          si petite quantité) montreraient que la réaction avance bien,
+          conformément à $Q_{r,i}\ll K$. Une faible quantité de matière limite
+          l'énergie totale libérée, elle n'empêche pas la réaction de se
+          produire.
+    correct_feedback: >
+      Le critère de spontanéité ($Q_{r,i}<K$) et la chaleur perceptible sont
+      deux choses séparées. Ici, la réaction est bien spontanée ; c'est la
+      faible quantité de matière qui réagit qui rend l'élévation de
+      température trop petite pour être sentie.
+    solution: |
+      Le critère de spontanéité ne porte que sur les concentrations :
+      $Q_{r,i} \ll K$ ici, donc la réaction se produit bien dans le sens
+      direct. La chaleur perçue, elle, dépend de l'énergie totale libérée,
+      qui dépend directement de la quantité de matière qui réagit. Avec
+      quelques milligrammes de fer et une goutte de solution diluée, cette
+      quantité est trop faible pour produire une élévation de température
+      détectable au toucher - sans que cela remette en cause, en rien, le
+      caractère spontané de la transformation.
+
+  # ── croire qu'une transformation spontanée dégage toujours de la chaleur visible (variant, contraste avec le détour forcé) ──
+  - id: ES-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_evolution_spontanee
+    tags: []
+    stem: >
+      La réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$ chauffe
+      nettement un tube à essai où le zinc est en contact direct avec la
+      solution de sulfate de cuivre. Si on force ces mêmes électrons à
+      emprunter un circuit électrique extérieur au lieu du contact direct
+      (réactifs séparés, reliés par un fil), que peut-on prédire sur la
+      chaleur dégagée, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle sera beaucoup plus faible, car une grande partie de l'énergie libérée emprunte alors le circuit sous forme électrique plutôt que de se dissiper sur place en chaleur - la réaction chimique et son critère de spontanéité restent pourtant identiques."
+        correct: true
+      - id: B
+        text: "Elle sera la même, car une transformation spontanée dégage toujours la même quantité de chaleur, quel que soit le montage utilisé."
+        correct: false
+        feedback: >
+          La quantité de chaleur dégagée dépend du chemin emprunté par
+          l'énergie libérée, pas seulement de la réaction elle-même. Séparer
+          les réactifs et forcer un détour par un circuit détourne une
+          grande partie de cette énergie sous forme électrique : la même
+          transformation, avec le même critère $Q_{r,i}<K$, peut donc
+          dégager des quantités de chaleur très différentes selon le montage.
+      - id: C
+        text: "La réaction ne sera plus spontanée du tout, puisqu'elle ne peut plus libérer de chaleur directement au point de contact."
+        correct: false
+        feedback: >
+          La spontanéité ne dépend que de $Q_{r,i}$ face à $K$, qui ne change
+          pas selon que les réactifs sont en contact direct ou séparés : ce
+          sont les mêmes espèces, la même équation, le même $K$. Empêcher le
+          contact direct change seulement le chemin de l'énergie libérée -
+          jamais le verdict de spontanéité.
+      - id: D
+        text: "Il n'y aura plus aucune énergie libérée du tout, puisque le circuit électrique capte la totalité de l'énergie de la réaction."
+        correct: false
+        feedback: >
+          Le circuit ne capte jamais la totalité de l'énergie libérée : une
+          partie continue à se dissiper localement en chaleur (les
+          conducteurs eux-mêmes s'échauffent un peu, par exemple). "Beaucoup
+          moins de chaleur perceptible" n'est pas la même chose que "aucune
+          énergie du tout".
+    correct_feedback: >
+      Séparer les réactifs et forcer un détour dévie une grande partie de
+      l'énergie libérée vers le circuit électrique : la chaleur dégagée aux
+      points de réaction chute nettement, même si la réaction chimique et son
+      critère de spontanéité ($Q_{r,i}<K$) restent rigoureusement les mêmes.
+    solution: |
+      Ce qui définit la spontanéité, c'est uniquement $Q_{r,i}$ face à $K$ -
+      une comparaison de concentrations, identique que les réactifs soient en
+      contact direct ou séparés. Ce qui change, c'est le CHEMIN emprunté par
+      l'énergie libérée : au contact direct, elle se dissipe localement en
+      agitation thermique (chaleur) ; dans un montage à détour forcé, une
+      grande partie de cette même énergie emprunte le circuit extérieur sous
+      forme électrique, et beaucoup moins se dissipe sur place. La chaleur
+      perçue chute donc nettement, sans que la transformation chimique
+      sous-jacente ne change en rien.
+
+  # ── confondre transfert direct et pile (canonique) ──────────────────────────
+  - id: ES-5
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_evolution_spontanee
+    tags: []
+    stem: >
+      On plonge directement une lame de zinc dans une solution de sulfate de
+      cuivre, dans un seul et même bécher, sans fil ni compartiments séparés.
+      La réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$ s'y produit
+      bel et bien. Peut-on qualifier ce montage de « pile » ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non - il n'y a ni séparation physique des réactifs, ni courant mesurable dans un circuit extérieur ; c'est un transfert direct d'électrons, pas une pile."
+        correct: true
+      - id: B
+        text: "Oui, puisqu'il s'agit d'une réaction d'oxydoréduction, et qu'une pile est définie par la présence d'une oxydoréduction."
+        correct: false
+        feedback: >
+          La présence d'une oxydoréduction ne suffit pas à définir une pile.
+          Ce qui distingue une pile d'un simple contact direct, c'est la
+          séparation physique des réactifs et l'existence d'un courant
+          mesurable dans un circuit extérieur. Ici, le zinc et les ions
+          $Cu^{2+}$ sont dans le même bécher, en contact : les électrons
+          sautent directement de l'un à l'autre, sans passer par aucun fil.
+      - id: C
+        text: "Non, car le zinc et le cuivre ne forment pas des couples oxydant/réducteur valides pour construire une pile."
+        correct: false
+        feedback: >
+          Le couple $Zn^{2+}/Zn$ et le couple $Cu^{2+}/Cu$ sont au contraire
+          les couples classiquement utilisés pour construire une pile (la
+          pile Daniell). La bonne raison pour laquelle ce montage-ci n'est
+          pas une pile n'est pas la nature des couples : c'est l'absence de
+          séparation physique des réactifs et de circuit extérieur mesurable.
+      - id: D
+        text: "Oui, car la réaction dégage de la chaleur, ce qui est la signature caractéristique d'une pile en fonctionnement."
+        correct: false
+        feedback: >
+          Dégager de la chaleur est au contraire la signature d'un transfert
+          direct, PAS d'une pile : une pile en fonctionnement dévie une
+          grande partie de l'énergie libérée vers un courant électrique
+          exploitable, précisément parce que les réactifs y sont séparés.
+    correct_feedback: >
+      Ce montage met en jeu un contact direct entre le zinc et les ions
+      $Cu^{2+}$, dans le même récipient : aucun fil, aucun circuit extérieur,
+      donc aucun courant mesurable. Ce n'est pas une pile, même si la réaction
+      d'oxydoréduction s'y produit bel et bien.
+    solution: |
+      Le test qui distingue transfert direct et pile n'est jamais « y a-t-il
+      une oxydoréduction ? » mais « les réactifs sont-ils physiquement
+      séparés, avec un courant mesurable dans un circuit extérieur ? ». Ici,
+      le zinc et les ions $Cu^{2+}$ sont dans le même bécher : les électrons
+      passent directement de l'un à l'autre, sur quelques couches atomiques,
+      sans emprunter aucun fil. Aucun ampèremètre ne mesurerait de courant
+      dans ce montage. Ce n'est donc pas une pile, même si c'est très
+      exactement la même réaction, gouvernée par le même $K$, que celle
+      qu'on retrouverait dans un montage en pile.
+
+  # ── confondre transfert direct et pile (variant, comparaison de deux montages) ──
+  - id: ES-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_evolution_spontanee
+    tags: []
+    stem: >
+      Deux montages A et B mettent en jeu exactement la même réaction
+      $Fe + 2\,Ag^+ \rightleftharpoons Fe^{2+} + 2\,Ag$ et la même valeur de
+      $K$. Dans le montage A, le fer et les ions $Ag^+$ sont dans des
+      compartiments séparés reliés par un fil et une jonction ; un
+      ampèremètre y dévie. Dans le montage B, le fer est plongé directement
+      dans la solution d'ions $Ag^+$, dans le même récipient. Que peut-on
+      affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "A est une pile (détour forcé, courant mesurable) ; B est un transfert direct (pas de circuit extérieur, pas de courant mesurable) - bien que la réaction chimique et son critère de spontanéité soient identiques dans les deux cas."
+        correct: true
+      - id: B
+        text: "A et B sont tous deux des piles, puisque la même réaction spontanée s'y produit dans les deux cas."
+        correct: false
+        feedback: >
+          Le fait qu'il s'agisse de la même réaction spontanée, avec le même
+          $K$, ne suffit pas à faire de B une pile. Dans B, les réactifs sont
+          en contact direct, dans le même récipient : aucun fil ni circuit
+          extérieur n'existe pour y mesurer un courant. Seul A, où les
+          réactifs sont physiquement séparés et reliés par un circuit,
+          mérite le nom de pile.
+      - id: C
+        text: "Seul B est une véritable réaction chimique ; dans A, il ne s'agit que d'un phénomène purement électrique, sans réaction chimique sous-jacente."
+        correct: false
+        feedback: >
+          Une pile n'est pas un phénomène « purement électrique » détaché de
+          la chimie : c'est exactement la même transformation chimique
+          (le même transfert d'électrons entre le fer et les ions $Ag^+$),
+          seulement forcée à emprunter un circuit plutôt qu'un contact
+          direct. Le courant mesuré dans A EST la trace électrique de cette
+          réaction chimique, pas un phénomène séparé.
+      - id: D
+        text: "On ne peut rien affirmer sans connaître la valeur de $K$ pour chaque montage séparément."
+        correct: false
+        feedback: >
+          $K$ ne dépend que de la réaction et de la température (chapitre
+          état d'équilibre) - jamais de la façon dont les réactifs sont
+          disposés dans l'espace. A et B partagent donc nécessairement la
+          même valeur de $K$, puisque c'est la même réaction à la même
+          température ; ce qui distingue les deux montages, c'est la
+          séparation physique des réactifs, pas $K$.
+    correct_feedback: >
+      Le montage A sépare physiquement les réactifs et force un détour par un
+      circuit mesurable : c'est une pile. Le montage B met les réactifs en
+      contact direct, sans circuit extérieur : c'est un transfert direct.
+      Même réaction, même $K$, même critère de spontanéité - seul le montage
+      change la façon dont l'énergie libérée circule.
+    solution: |
+      Le critère qui distingue A et B n'est jamais la nature de la réaction
+      (identique dans les deux cas) mais la disposition physique des
+      réactifs : séparés et reliés par un circuit (A, une pile, courant
+      mesurable) contre en contact direct dans le même récipient (B, un
+      transfert direct, aucun courant mesurable). $K$ reste rigoureusement le
+      même dans les deux montages, puisqu'il ne dépend que de la réaction et
+      de la température, jamais de la façon dont on organise les réactifs
+      dans l'espace.

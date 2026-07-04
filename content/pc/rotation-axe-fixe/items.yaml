@@ -1,0 +1,415 @@
+notion: rotation-axe-fixe
+skill_code: pc_rotation_axe_fixe
+misconceptions: []
+
+items:
+  - id: ROT-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, bras_de_levier]
+    stem: >
+      On pousse une porte lourde, toujours perpendiculairement à la porte
+      (donc tangentiellement), avec une force de même intensité $F$, dans
+      deux essais : essai 1, à $d_1 = 0{,}80\ \text{m}$ des gonds (près de la
+      poignée) ; essai 2, à $d_2 = 0{,}10\ \text{m}$ des gonds (près des
+      gonds). Que peut-on dire de l'effet de rotation obtenu dans les deux
+      essais ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'essai 1 produit un moment huit fois plus grand que l'essai 2,
+          car $d_1/d_2 = 8$.
+        correct: true
+      - id: B
+        text: >-
+          Les deux essais produisent le même effet de rotation, puisque la
+          force $F$ est la même dans les deux cas.
+        correct: false
+        feedback: >
+          Ce choix confond la force elle-même avec son moment. Une force ne
+          fait pas tourner « à elle seule » : son effet de rotation est
+          $\mathcal{M}_\Delta(\vec F) = d \cdot F$, où $d$ est le bras de
+          levier. Même intensité $F$, mais des distances $d$ différentes,
+          donnent des moments différents — ici huit fois plus grand pour
+          l'essai 1. Modèle erroné : « ce qui compte, c'est la force, pas où
+          elle s'applique. »
+      - id: C
+        text: >-
+          L'essai 2 produit un effet plus grand, car pousser près des gonds
+          demande plus d'effort, donc plus de force.
+        correct: false
+        feedback: >
+          Ce choix inverse le principe du levier. La question compare deux
+          essais où la force $F$ appliquée est déjà fixée comme identique ;
+          dans la réalité, c'est justement PARCE QU'il faudrait plus de force
+          près des gonds pour obtenir le même moment que pousser y est plus
+          difficile — pas parce que, à force égale, ça produirait un effet
+          plus grand. À $F$ égale, c'est l'essai avec le plus grand bras de
+          levier qui l'emporte.
+      - id: D
+        text: "On ne peut rien dire sans connaître la masse de la porte."
+        correct: false
+        feedback: >
+          Le moment d'une force appliquée, $\mathcal{M}_\Delta(\vec F) = d
+          \cdot F$, ne dépend que de la distance à l'axe et de l'intensité de
+          la force — pas de la masse du solide. La masse interviendra plus
+          tard, dans le moment d'inertie $J_\Delta$, pour savoir COMMENT la
+          porte répond à ce moment (son accélération angulaire) — mais pas
+          pour calculer le moment lui-même.
+    correct_feedback: >
+      $\mathcal{M}_\Delta(\vec F) = d \cdot F$ : à force égale, le moment est
+      proportionnel au bras de levier $d$. Ici $d_1/d_2 = 0{,}80/0{,}10 = 8$,
+      donc l'essai 1 produit un moment huit fois plus grand — c'est le
+      principe même du levier.
+    solution: |
+      **Moment de chaque essai (formule générale) :**
+      $$\mathcal{M}_\Delta(\vec F)_1 = d_1 \times F \qquad \mathcal{M}_\Delta(\vec F)_2 = d_2 \times F$$
+
+      **Rapport des deux moments :**
+      $$\frac{\mathcal{M}_\Delta(\vec F)_1}{\mathcal{M}_\Delta(\vec F)_2} = \frac{d_1}{d_2} = \frac{0{,}80}{0{,}10} = 8$$
+
+      Le moment de l'essai 1 (poussée sur la poignée, loin des gonds) est
+      huit fois plus grand que celui de l'essai 2 (poussée près des gonds),
+      pour une force de même intensité. C'est pour cela qu'il est tellement
+      plus facile d'ouvrir une porte en poussant sur la poignée qu'en
+      poussant près des gonds.
+
+  - id: ROT-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, bras_de_levier]
+    stem: >
+      Un technicien exerce une force très intense $F = 500\ \text{N}$,
+      tangentielle, exactement sur l'axe de rotation d'une roue (donc à une
+      distance $d = 0$ de cet axe). Que peut-on dire de l'effet de cette
+      force sur la rotation de la roue ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le moment de cette force par rapport à l'axe est nul : elle ne
+          fait pas tourner la roue, quelle que soit son intensité.
+        correct: true
+      - id: B
+        text: >-
+          Une force aussi intense produit forcément un grand moment, donc la
+          roue accélère fortement.
+        correct: false
+        feedback: >
+          Ce choix confond l'intensité d'une force avec son moment. Le
+          moment vaut $\mathcal{M}_\Delta(\vec F) = d \cdot F$ ; ici $d = 0$,
+          donc $\mathcal{M}_\Delta(\vec F) = 0$, quelle que soit la valeur de
+          $F$ — même $500\ \text{N}$. Une force réelle et intense peut donc
+          avoir un effet de rotation strictement nul. Modèle erroné :
+          « grande force = grand effet de rotation », en oubliant le bras de
+          levier.
+      - id: C
+        text: "Le moment vaut $F = 500\\ \\text{N}\\cdot\\text{m}$."
+        correct: false
+        feedback: >
+          Ce choix lit directement la valeur de la force comme si c'était
+          déjà un moment — au passage, en confondant même les unités (le
+          newton, unité de force, avec le newton-mètre, unité de moment). Le
+          moment se calcule par $d \cdot F$, jamais en recopiant $F$ ; ici il
+          vaut $0 \times 500 = 0\ \text{N}\cdot\text{m}$.
+      - id: D
+        text: >-
+          Il est impossible d'appliquer une force exactement sur l'axe, la
+          question n'a pas de sens.
+        correct: false
+        feedback: >
+          C'est physiquement tout à fait possible (une force peut s'exercer
+          sur l'axe lui-même, par exemple par frottement dans un palier). Le
+          point important n'est pas de savoir si la situation est réalisable,
+          mais ce qui arrive au moment de la force quand le bras de levier
+          $d$ vaut $0$ : il s'annule, quelle que soit l'intensité de la
+          force.
+    correct_feedback: >
+      $\mathcal{M}_\Delta(\vec F) = d \cdot F = 0 \times 500 = 0\ \text{N}\cdot\text{m}$.
+      Une force appliquée exactement sur l'axe a toujours un bras de levier
+      nul, donc un moment nul : elle ne fait tourner le solide en aucune
+      façon, aussi intense soit-elle.
+    solution: |
+      **Formule du moment :**
+      $$\mathcal{M}_\Delta(\vec F) = d \cdot F$$
+
+      **Application, avec $d = 0$ :**
+      $$\mathcal{M}_\Delta(\vec F) = 0 \times 500 = 0\ \text{N}\cdot\text{m}$$
+
+      Le moment est nul quelle que soit la valeur de $F$, parce que le bras
+      de levier est nul. C'est exactement pour cette raison que la réaction
+      d'un axe sur un solide (qui s'applique toujours sur l'axe lui-même) a
+      un moment nul par rapport à cet axe, et disparaît systématiquement des
+      équations de rotation.
+
+  - id: ROT-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, repartition_masse]
+    stem: >
+      Deux systèmes ont exactement la même masse totale $m = 4{,}0\ \text{kg}$
+      et tournent autour du même axe $\Delta$. Le système 1 est une tige
+      homogène de longueur $L = 2{,}0\ \text{m}$ (axe perpendiculaire passant
+      par le milieu). Le système 2 est constitué de deux masses ponctuelles
+      de $2{,}0\ \text{kg}$ chacune, fixées aux deux extrémités d'une tige
+      sans masse de même longueur $2{,}0\ \text{m}$. Comparer les moments
+      d'inertie $J_1$ et $J_2$ des deux systèmes par rapport à $\Delta$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J_2 = 3\,J_1$ : même masse totale, mais $J_\Delta$ très différent,
+          car la masse du système 2 est concentrée loin de l'axe.
+        correct: true
+      - id: B
+        text: >-
+          $J_1 = J_2$, car les deux systèmes ont la même masse totale et la
+          même longueur.
+        correct: false
+        feedback: >
+          Ce choix suppose que $J_\Delta$ ne dépend que de la masse totale
+          (et de l'encombrement), pas de sa répartition. Or $J_\Delta =
+          \sum_i m_i d_i^2$ : chaque masse compte au carré de sa distance à
+          l'axe. Concentrer la même masse aux extrémités (loin de l'axe) au
+          lieu de l'étaler uniformément (dont une bonne partie reste près de
+          l'axe) change radicalement $J_\Delta$, même à masse et longueur
+          totales égales. Modèle erroné : « même masse ⇒ même $J_\Delta$. »
+      - id: C
+        text: >-
+          $J_1 > J_2$, car la tige homogène est un solide continu, donc plus
+          « lourde » à faire tourner.
+        correct: false
+        feedback: >
+          La continuité de la matière n'entre pour rien dans $J_\Delta$ :
+          seule compte la distribution de la masse par rapport à l'axe,
+          $\sum_i m_i d_i^2$. Le calcul donne l'inverse de ce que ce choix
+          affirme : c'est le système avec la masse concentrée loin de l'axe
+          (le système 2) qui a le $J_\Delta$ le plus grand.
+      - id: D
+        text: >-
+          Il est impossible de comparer les deux sans connaître le matériau
+          des tiges.
+        correct: false
+        feedback: >
+          Le matériau n'intervient que par la masse totale, déjà donnée et
+          identique dans les deux systèmes. $J_\Delta$ ne dépend que des
+          masses et de leurs distances à l'axe — pas de la nature du
+          matériau en tant que telle.
+    correct_feedback: >
+      $J_1 = \tfrac{1}{12}mL^2 = \tfrac{1}{12}\times 4{,}0\times 4{,}0
+      \approx 1{,}33\ \text{kg}\cdot\text{m}^2$. $J_2 = 2 \times 2{,}0 \times
+      1{,}0^2 = 4{,}0\ \text{kg}\cdot\text{m}^2$ (chaque masse ponctuelle est
+      à $d = L/2 = 1{,}0\ \text{m}$ de l'axe). $J_2/J_1 = 3{,}0$ : même masse
+      totale, même longueur, mais un $J_\Delta$ trois fois plus grand pour le
+      système où la masse est concentrée aux extrémités.
+    solution: |
+      **Système 1 — tige homogène (valeur usuelle, R3) :**
+      $$J_1 = \frac{1}{12}mL^2 = \frac{1}{12}\times 4{,}0\times 2{,}0^2 = \frac{1}{12}\times 16 \approx 1{,}33\ \text{kg}\cdot\text{m}^2$$
+
+      **Système 2 — deux masses ponctuelles à $d = L/2 = 1{,}0\ \text{m}$ de l'axe :**
+      $$J_2 = 2 \times m_{point} \times d^2 = 2 \times 2{,}0 \times 1{,}0^2 = 4{,}0\ \text{kg}\cdot\text{m}^2$$
+
+      **Comparaison :**
+      $$\frac{J_2}{J_1} = \frac{4{,}0}{1{,}33} = 3{,}0$$
+
+      Même masse totale ($4{,}0\ \text{kg}$), même longueur ($2{,}0\ \text{m}$),
+      mais $J_2$ vaut trois fois $J_1$ : la répartition de la masse par
+      rapport à l'axe, pas seulement sa quantité, détermine $J_\Delta$.
+
+  - id: ROT-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, repartition_masse, additivite]
+    stem: >
+      Sur un tourniquet (portique rotatif), on fixe deux valises identiques,
+      de masse $m = 5{,}0\ \text{kg}$ chacune, mais à des distances
+      différentes de l'axe $\Delta$ : la valise A à $d_A = 0{,}20\ \text{m}$,
+      la valise B à $d_B = 1{,}0\ \text{m}$. Comparer la contribution de
+      chaque valise au moment d'inertie total du tourniquet.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La valise B contribue $25$ fois plus que la valise A au moment
+          d'inertie, bien qu'elles aient la même masse.
+        correct: true
+      - id: B
+        text: >-
+          Les deux valises contribuent de façon identique, puisqu'elles ont
+          la même masse.
+        correct: false
+        feedback: >
+          Ce choix suppose qu'à masse égale, la contribution à $J_\Delta$ est
+          forcément la même, quelle que soit la position. Mais la
+          contribution d'une masse ponctuelle est $m\,d^2$, pas $m$ tout
+          seul : la distance à l'axe compte, et elle compte au carré. Modèle
+          erroné : « même masse ⇒ même contribution à $J_\Delta$. »
+      - id: C
+        text: >-
+          La valise B contribue $5$ fois plus, car elle est $5$ fois plus
+          loin de l'axe.
+        correct: false
+        feedback: >
+          Ce choix repère bien que la distance joue un rôle, mais suppose une
+          dépendance linéaire en $d$. La contribution est $m\,d^2$ : une
+          distance $5$ fois plus grande donne un facteur $5^2 = 25$, pas $5$.
+          C'est précisément cette dépendance en $d^2$ (et non en $d$) qui
+          rend la répartition de la masse si déterminante.
+      - id: D
+        text: >-
+          La valise A contribue plus, car elle est plus proche de l'axe,
+          donc plus « stable ».
+        correct: false
+        feedback: >
+          Cette réponse inverse le sens de la relation et invoque une notion
+          (la « stabilité ») qui n'entre pas dans la définition de
+          $J_\Delta$. Être plus proche de l'axe RÉDUIT la contribution d'une
+          masse au moment d'inertie ($d^2$ plus petit), ça ne l'augmente pas.
+    correct_feedback: >
+      Contribution de A : $m\,d_A^2 = 5{,}0\times 0{,}20^2 = 0{,}20\
+      \text{kg}\cdot\text{m}^2$. Contribution de B : $m\,d_B^2 = 5{,}0\times
+      1{,}0^2 = 5{,}0\ \text{kg}\cdot\text{m}^2$. Rapport : $5{,}0/0{,}20 =
+      25$. Même masse, mais une contribution $25$ fois plus grande pour la
+      valise la plus éloignée — la dépendance en $d^2$, pas en $d$.
+    solution: |
+      **Contribution de chaque valise, $m\,d^2$ :**
+      $$J_A = m\,d_A^2 = 5{,}0 \times 0{,}20^2 = 0{,}20\ \text{kg}\cdot\text{m}^2$$
+      $$J_B = m\,d_B^2 = 5{,}0 \times 1{,}0^2 = 5{,}0\ \text{kg}\cdot\text{m}^2$$
+
+      **Rapport :**
+      $$\frac{J_B}{J_A} = \frac{5{,}0}{0{,}20} = 25$$
+
+      La distance est multipliée par $5$ ($d_B/d_A = 1{,}0/0{,}20 = 5$), et la
+      contribution est multipliée par $5^2 = 25$ — la signature de la
+      dépendance en $d^2$ de $J_\Delta = \sum_i m_i d_i^2$.
+
+  - id: ROT-5
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [vitesse_angulaire, vitesse_lineaire]
+    stem: >
+      Un disque tourne à une vitesse angulaire constante $\omega = 4{,}0\
+      \text{rad/s}$ autour de son axe de symétrie. Deux points sont repérés
+      sur le disque : le point $A$ à $d_A = 0{,}10\ \text{m}$ de l'axe, le
+      point $B$ à $d_B = 0{,}40\ \text{m}$ de l'axe. Comparer les vitesses
+      linéaires $v_A$ et $v_B$ de ces deux points.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v_A = 0{,}40\ \text{m/s}$ et $v_B = 1{,}6\ \text{m/s}$ : les deux
+          points ont la même vitesse angulaire mais des vitesses linéaires
+          différentes.
+        correct: true
+      - id: B
+        text: >-
+          $v_A = v_B = 4{,}0\ \text{m/s}$, puisque les deux points
+          appartiennent au même disque tournant à $\omega = 4{,}0\
+          \text{rad/s}$.
+        correct: false
+        feedback: >
+          Ce choix recopie directement la valeur numérique de $\omega$ (en
+          rad/s) comme si c'était déjà une vitesse en m/s pour chaque point.
+          $\omega$ est la même pour tout le disque, mais la vitesse
+          LINÉAIRE d'un point dépend de sa distance à l'axe : $v = d\,\omega$.
+          Confondre les deux revient à confondre une vitesse angulaire avec
+          une vitesse linéaire — deux grandeurs différentes, avec des unités
+          différentes.
+      - id: C
+        text: >-
+          $v_A = 0{,}10\ \text{m/s}$ et $v_B = 0{,}40\ \text{m/s}$, en lisant
+          directement la distance à l'axe comme une vitesse.
+        correct: false
+        feedback: >
+          Ce choix lit les distances elles-mêmes comme si elles étaient des
+          vitesses, en oubliant complètement $\omega$. La relation correcte
+          est $v = d\,\omega$ : il faut multiplier chaque distance par la
+          vitesse angulaire commune, pas se contenter de la distance seule.
+      - id: D
+        text: >-
+          On ne peut pas comparer $v_A$ et $v_B$ sans connaître le rayon
+          total du disque.
+        correct: false
+        feedback: >
+          Le rayon total du disque n'est pas nécessaire ici : seules comptent
+          la distance de chaque point à l'axe et la vitesse angulaire
+          commune $\omega$, via $v = d\,\omega$.
+    correct_feedback: >
+      $v = d\,\omega$ : $v_A = 0{,}10 \times 4{,}0 = 0{,}40\ \text{m/s}$ et
+      $v_B = 0{,}40 \times 4{,}0 = 1{,}6\ \text{m/s}$. Même $\omega$ pour tout
+      le disque, mais des vitesses linéaires différentes selon la distance à
+      l'axe — le point le plus loin va toujours plus vite.
+    solution: |
+      **Relation entre vitesse linéaire et vitesse angulaire :**
+      $$v = d\,\omega$$
+
+      **Point A :**
+      $$v_A = d_A \times \omega = 0{,}10 \times 4{,}0 = 0{,}40\ \text{m/s}$$
+
+      **Point B :**
+      $$v_B = d_B \times \omega = 0{,}40 \times 4{,}0 = 1{,}6\ \text{m/s}$$
+
+      $\omega = 4{,}0\ \text{rad/s}$ est commune à tout le disque, y compris
+      au centre ($d=0$, donc $v=0$ là) ; seule la vitesse linéaire varie
+      d'un point à l'autre, proportionnellement à sa distance à l'axe.
+
+  - id: ROT-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [vitesse_angulaire, vitesse_lineaire]
+    stem: >
+      Une roue de vélo de rayon $R = 0{,}35\ \text{m}$ tourne à une vitesse
+      angulaire $\omega = 20\ \text{rad/s}$. Quelle est la vitesse linéaire
+      d'un point situé sur le pneu, au bord de la roue ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v = 7{,}0\\ \\text{m/s}$"
+        correct: true
+      - id: B
+        text: "$v = 20\\ \\text{m/s}$, car c'est la valeur de $\\omega$."
+        correct: false
+        feedback: >
+          Ce choix reprend la valeur numérique de $\omega$ (en rad/s) et la
+          rebaptise vitesse en m/s. Ce sont deux grandeurs différentes, aux
+          unités différentes : il faut multiplier $\omega$ par le rayon $R$
+          pour obtenir la vitesse linéaire du bord, $v = R\,\omega$ — jamais
+          lire $\omega$ directement comme une vitesse.
+      - id: C
+        text: "$v = 0{,}35\\ \\text{m/s}$, car c'est le rayon de la roue."
+        correct: false
+        feedback: >
+          Ce choix prend le rayon lui-même comme si c'était la vitesse,
+          en oubliant complètement $\omega$. La vitesse du point au bord est
+          $v = R\,\omega$, pas $R$ seul.
+      - id: D
+        text: "On ne peut pas savoir sans connaître la masse de la roue."
+        correct: false
+        feedback: >
+          La masse n'intervient pas dans cette relation purement
+          cinématique. Elle compterait pour le moment d'inertie $J_\Delta$
+          (donc pour la dynamique de la roue), mais pas pour calculer la
+          vitesse linéaire d'un point à partir de $\omega$ et de sa distance
+          à l'axe.
+    correct_feedback: >
+      $v = R\,\omega = 0{,}35 \times 20 = 7{,}0\ \text{m/s}$. La vitesse
+      angulaire $\omega$ (en rad/s) et la vitesse linéaire $v$ (en m/s) sont
+      deux grandeurs distinctes, reliées par la distance à l'axe — ici le
+      rayon $R$, puisqu'on regarde un point du bord.
+    solution: |
+      **Relation entre vitesse linéaire et vitesse angulaire, au bord de la roue :**
+      $$v = R\,\omega$$
+
+      **Application numérique :**
+      $$v = 0{,}35 \times 20 = 7{,}0\ \text{m/s}$$
+
+      $\omega = 20\ \text{rad/s}$ décrit la rotation de toute la roue ; $v =
+      7{,}0\ \text{m/s}$ est la vitesse linéaire du seul point situé au bord,
+      à la distance $R$ de l'axe.

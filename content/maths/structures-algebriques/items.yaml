@@ -1,0 +1,339 @@
+notion: structures-algebriques
+skill_code: maths_structures_alg
+
+misconceptions:
+  - id: mc.math.structures_algebriques.neutre-vs-symetrique
+    label: "« Le symétrique d'un élément, c'est l'élément neutre »"
+    description: "L'élève confond deux rôles distincts : le neutre $e$ (un seul élément, fixé pour tout $E$, qui ne change rien à personne) et le symétrique $x'$ d'un élément $x$ (un élément qui dépend de $x$, et qui, combiné à $x$, ramène au neutre). Face à la question « quel est le symétrique de $x$ ? », l'élève répond « $e$ » au lieu de chercher l'élément qui, combiné à $x$, donne $e$."
+    contradicts_principle: "Par définition, $x'$ est symétrique de $x$ si $x \\star x' = x' \\star x = e$. Sauf cas particulier où $x=e$ lui-même, $x' \\neq e$ : par exemple dans $(\\mathbb{Z}/4\\mathbb{Z},+)$, le symétrique de $1$ est $3$ (car $1+3=4\\equiv 0$), pas $0$ (car $1+0=1\\neq 0$)."
+
+  - id: mc.math.structures_algebriques.axiome-oublie
+    label: "« Trois propriétés sur quatre suffisent pour conclure qu'on a un groupe »"
+    description: "L'élève vérifie une partie des quatre axiomes du groupe (typiquement loi interne, associativité, neutre) et conclut directement à l'existence d'un groupe, sans vérifier que CHAQUE élément possède un symétrique — ou suppose cette existence automatique dès qu'il y a un neutre."
+    contradicts_principle: "Un groupe exige les QUATRE axiomes simultanément : loi interne, associativité, existence d'un neutre, ET existence d'un symétrique pour CHAQUE élément de $E$. L'existence d'un neutre ne garantit rien sur les symétriques : dans $(\\mathbb{Z}/4\\mathbb{Z},\\times)$, il y a bien un neutre ($1$), mais $2$ n'a aucun symétrique ($2\\times k$ ne vaut jamais $1$) — donc ce n'est pas un groupe malgré les trois premiers axiomes vérifiés."
+
+  - id: mc.math.structures_algebriques.groupe-anneau
+    label: "« Un anneau, c'est deux lois qui sont chacune un groupe » / « un anneau est automatiquement un corps »"
+    description: "L'élève surcharge la définition de l'anneau en exigeant pour la seconde loi ($\\times$) les mêmes propriétés que pour la première ($+$) — en particulier un symétrique pour chaque élément — ou conclut qu'un anneau est nécessairement un corps sans vérifier l'inversibilité de tous les éléments non nuls pour $\\times$."
+    contradicts_principle: "Un anneau $(E,+,\\times)$ exige que $(E,+)$ soit un groupe commutatif, mais demande seulement à $\\times$ d'être associative et distributive par rapport à $+$ — rien n'exige de symétrique pour $\\times$. Passer de l'anneau au corps exige une condition strictement plus forte, ajoutée à part : que TOUT élément non nul ait un symétrique pour $\\times$. $(\\mathbb{Z},+,\\times)$ est un anneau mais pas un corps, précisément parce que $2$ n'a pas de symétrique pour $\\times$ dans $\\mathbb{Z}$."
+
+items:
+
+  # ── neutre-vs-symetrique ─────────────────────────────────────────────
+  - id: SA-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique]
+    stem: >
+      Dans $(\mathbb{Z}/5\mathbb{Z}, +)$, quel est le symétrique de $2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $0$ est le neutre de $(\mathbb{Z}/5\mathbb{Z},+)$ — pas le symétrique
+          de $2$. Le symétrique de $2$ est l'élément $x$ tel que $2+x \equiv 0
+          \pmod 5$ : $2+0=2 \neq 0$, donc $0$ ne convient pas. Modèle erroné :
+          « le symétrique d'un élément, c'est le neutre ».
+      - id: C
+        text: "$2$"
+        correct: false
+        feedback: >
+          $2+2=4 \not\equiv 0 \pmod 5$ : $2$ n'est pas son propre symétrique
+          ici (ce n'est vrai que pour certains éléments, pas pour tous — il
+          faut vérifier, pas supposer).
+      - id: D
+        text: "$5$"
+        correct: false
+        feedback: >
+          $5$ n'est même pas un élément de $\mathbb{Z}/5\mathbb{Z} = \{0,1,2,3,4\}$ :
+          un symétrique doit appartenir à l'ensemble $E$ lui-même.
+    correct_feedback: >
+      $2+3=5 \equiv 0 \pmod 5$ : le symétrique de $2$ est bien $3$, distinct
+      du neutre $0$.
+    solution: |
+      Le neutre de $(\mathbb{Z}/5\mathbb{Z},+)$ est $0$. On cherche $x$ tel que :
+      $$2 + x \equiv 0 \pmod 5$$
+      $x=3$ convient, car $2+3=5\equiv 0 \pmod 5$. Le symétrique de $2$ est $3$.
+
+  - id: SA-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique]
+    stem: >
+      On munit $E=\{e,a,b\}$ d'une loi $\star$ dont le neutre est $e$, et dont
+      la table est donnée ci-dessous :
+
+      | $\star$ | $e$ | $a$ | $b$ |
+      |---|---|---|---|
+      | $e$ | $e$ | $a$ | $b$ |
+      | $a$ | $a$ | $b$ | $e$ |
+      | $b$ | $b$ | $e$ | $a$ |
+
+      Quel est le symétrique de $a$ pour cette loi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$b$"
+        correct: true
+      - id: B
+        text: "$e$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $e$ est le neutre de la loi — pas le symétrique de $a$. Sur la
+          table, $a \star e = a \neq e$ : combiner $a$ avec le neutre ne
+          ramène pas au neutre, ça redonne $a$. Modèle erroné : « le
+          symétrique d'un élément, c'est le neutre ».
+      - id: C
+        text: "$a$"
+        correct: false
+        feedback: >
+          Sur la table, $a \star a = b \neq e$ : $a$ n'est pas son propre
+          symétrique ici. Il faut lire la ligne de $a$ jusqu'à trouver la
+          case qui contient $e$.
+      - id: D
+        text: "Il n'existe pas de symétrique pour $a$"
+        correct: false
+        feedback: >
+          Regarde bien la ligne de $a$ dans la table : $a \star b = e$. Le
+          symétrique existe bel et bien, c'est $b$.
+    correct_feedback: >
+      Sur la ligne de $a$, la case sous la colonne $b$ contient $e$ : donc
+      $a \star b = e$, et par symétrie de la table $b \star a = e$ aussi.
+      Le symétrique de $a$ est $b$, pas le neutre $e$.
+    solution: |
+      On cherche, dans la ligne de $a$, la colonne où apparaît le neutre $e$.
+      La table donne $a \star b = e$ (et on vérifie $b \star a = e$ aussi).
+      Le symétrique de $a$ est donc $b$.
+
+  # ── axiome-oublie ─────────────────────────────────────────────────────
+  - id: SA-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, axiomes_groupe]
+    stem: >
+      On munit $E=\{0,1,2,3\}$ de la multiplication modulo $4$, c'est-à-dire
+      $(\mathbb{Z}/4\mathbb{Z}, \times)$. Cette loi est interne, associative,
+      et possède un élément neutre ($1$). Peut-on en conclure que
+      $(E,\times)$ est un groupe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : il faut encore vérifier que chaque élément possède un symétrique, et $2$ n'en a pas."
+        correct: true
+      - id: B
+        text: "Oui : les trois propriétés vérifiées suffisent à définir un groupe."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          Un groupe exige QUATRE axiomes, pas trois : loi interne,
+          associativité, neutre, ET symétrique pour chaque élément. Ici $2
+          \times 0 = 0$, $2\times1=2$, $2\times2=0$, $2\times3=2$ — jamais
+          $1$. $2$ n'a pas de symétrique : la quatrième condition échoue.
+          Modèle erroné : « trois propriétés sur quatre suffisent ».
+      - id: C
+        text: "Oui : dès qu'il existe un neutre, chaque élément est automatiquement son propre symétrique."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        also_reveals: [mc.math.structures_algebriques.neutre-vs-symetrique]
+        feedback: >
+          L'existence d'un neutre ne garantit rien sur les symétriques —
+          ce sont deux axiomes séparés, à vérifier séparément. Ici $2\times2=0
+          \neq 1$ : $2$ n'est pas son propre symétrique, et n'en a aucun
+          autre non plus. Modèle erroné : confondre l'existence du neutre
+          avec l'existence automatique des symétriques.
+      - id: D
+        text: "Non : la loi n'est pas interne sur $E$."
+        correct: false
+        feedback: >
+          La loi EST bien interne : toutes les cases de la table de $\times$
+          modulo $4$ restent dans $\{0,1,2,3\}$. Le problème n'est pas là —
+          il est dans l'axiome du symétrique.
+    correct_feedback: >
+      Trois axiomes vérifiés ne suffisent pas : il faut vérifier les quatre.
+      Ici $2$ n'a pas de symétrique pour $\times$ ($2\times k$ ne vaut jamais
+      $1$ pour $k \in \{0,1,2,3\}$), donc $(\mathbb{Z}/4\mathbb{Z},\times)$
+      n'est pas un groupe — bien que ce soit, avec $+$, un anneau.
+    solution: |
+      On teste si $2$ possède un symétrique, en parcourant sa ligne de table :
+      $$2\times 0=0, \quad 2\times1=2, \quad 2\times2=0, \quad 2\times3=2$$
+      Le résultat $1$ (celui du neutre) n'apparaît jamais. $2$ n'a donc pas
+      de symétrique pour $\times$ : le quatrième axiome du groupe échoue, et
+      $(\mathbb{Z}/4\mathbb{Z},\times)$ n'est pas un groupe, malgré la loi
+      interne, l'associativité et l'existence d'un neutre.
+
+  - id: SA-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, axiomes_groupe]
+    stem: >
+      Sur une table de loi donnée pour un ensemble $E$ à $4$ éléments, un
+      élève vérifie que la loi est interne, qu'elle est commutative (la
+      table est symétrique par rapport à sa diagonale), et qu'il existe un
+      élément neutre. Il conclut que $(E,\star)$ est un groupe. Que lui
+      manque-t-il pour que sa conclusion soit valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Vérifier que la loi est associative, ET que chaque élément possède un symétrique — la commutativité n'est pas un des axiomes du groupe."
+        correct: true
+      - id: B
+        text: "Rien : ces trois propriétés suffisent à définir un groupe."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          La commutativité n'est même pas un des quatre axiomes du groupe —
+          un groupe peut très bien ne pas être commutatif. Les vrais
+          axiomes manquants ici sont l'associativité et l'existence d'un
+          symétrique pour chaque élément. Modèle erroné : « trois
+          propriétés lues sur la table suffisent ».
+      - id: C
+        text: "Vérifier que la loi est associative ; l'existence des symétriques est automatique dès qu'il y a un neutre."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          L'existence d'un symétrique pour chaque élément est un axiome à
+          part entière, indépendant du neutre — il n'est jamais
+          automatique. Il faut le vérifier explicitement, élément par
+          élément, en cherchant dans chaque ligne si le neutre apparaît.
+      - id: D
+        text: "Vérifier que $E$ est un ensemble fini."
+        correct: false
+        feedback: >
+          La finitude de $E$ n'est pas une condition du groupe : des
+          groupes infinis existent (par exemple $(\mathbb{Z}, +)$). Ce
+          n'est pas ce qui manque ici.
+    correct_feedback: >
+      Un groupe exige quatre axiomes précis : loi interne, associativité,
+      neutre, symétrique pour chaque élément. La commutativité n'en fait
+      pas partie (elle définit le groupe COMMUTATIF, une propriété en plus).
+      Ici, associativité et symétriques restent à vérifier avant de conclure.
+    solution: |
+      Les quatre axiomes du groupe sont : loi interne, associativité,
+      existence d'un neutre, existence d'un symétrique pour CHAQUE élément.
+      L'élève n'a vérifié que la loi interne et le neutre — la
+      commutativité, qu'il a vérifiée, n'est pas un axiome du groupe (c'est
+      une propriété additionnelle, celle du groupe commutatif). Il lui
+      manque donc de vérifier l'associativité et l'existence d'un
+      symétrique pour chacun des quatre éléments.
+
+  # ── groupe-anneau ─────────────────────────────────────────────────────
+  - id: SA-5
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, anneau]
+    stem: >
+      Laquelle de ces affirmations définit correctement la structure
+      d'anneau $(E, +, \times)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(E,+)$ est un groupe commutatif, $\\times$ est associative, et $\\times$ est distributive par rapport à $+$."
+        correct: true
+      - id: B
+        text: "$(E,+)$ et $(E,\\times)$ sont tous les deux des groupes commutatifs."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Un anneau n'exige PAS que $\times$ forme un groupe : ça
+          obligerait chaque élément, y compris le neutre $0$ de $+$, à
+          avoir un symétrique pour $\times$ — impossible, car $0 \times x
+          = 0$ ne vaut jamais $1$. Seule $(E,+)$ doit être un groupe
+          commutatif ; $\times$ n'a besoin que d'associativité et de
+          distributivité. Modèle erroné : « un anneau, ce sont deux
+          groupes ».
+      - id: C
+        text: "$(E,+,\\times)$ est un groupe pour une loi combinée $+$ et $\\times$ appliquées ensemble."
+        correct: false
+        feedback: >
+          Il n'existe pas de « loi combinée » de ce genre dans la
+          définition de l'anneau : $+$ et $\times$ restent deux lois
+          distinctes, chacune avec ses propres exigences.
+      - id: D
+        text: "$\\times$ est une loi de groupe, et $+$ ne sert qu'à définir la distributivité."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          C'est l'inverse de la définition : c'est $+$ qui doit être un
+          groupe commutatif (avec un neutre $0$ et un symétrique pour
+          chaque élément), pas $\times$. Exiger que $\times$ soit une loi
+          de groupe reviendrait à exiger l'inversibilité de tous les
+          éléments pour $\times$ — c'est la définition du CORPS, pas de
+          l'anneau.
+    correct_feedback: >
+      C'est exactement la définition : $(E,+)$ groupe commutatif,
+      $\times$ associative, et $\times$ distributive par rapport à $+$
+      (à gauche et à droite). Rien n'exige de symétrique pour $\times$.
+    solution: |
+      **Définition de l'anneau $(E,+,\times)$ :**
+      1. $(E,+)$ est un groupe commutatif (neutre $0$).
+      2. $\times$ est associative sur $E$.
+      3. $\times$ est distributive par rapport à $+$ :
+      $$x \times (y+z) = x\times y + x \times z, \qquad (y+z)\times x = y\times x + z \times x$$
+      Aucune exigence de symétrique pour $\times$ : c'est ce qui distingue
+      l'anneau du corps (R6).
+
+  - id: SA-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, corps]
+    stem: >
+      $(\mathbb{Z}, +, \times)$ est un anneau. Est-ce aussi un corps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non, car certains éléments non nuls de $\\mathbb{Z}$ (par exemple $2$) n'ont pas de symétrique pour $\\times$ dans $\\mathbb{Z}$."
+        correct: true
+      - id: B
+        text: "Oui, car $(\\mathbb{Z},+,\\times)$ vérifie déjà tous les axiomes d'un anneau."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Vérifier les axiomes de l'anneau ne suffit pas pour conclure
+          qu'on a un corps : le corps ajoute une exigence strictement plus
+          forte, l'inversibilité de TOUS les éléments non nuls pour
+          $\times$. $2 \in \mathbb{Z}$ est non nul et n'a pas de symétrique
+          pour $\times$ dans $\mathbb{Z}$ : la condition supplémentaire
+          échoue. Modèle erroné : « un anneau est automatiquement un
+          corps ».
+      - id: C
+        text: "Non, car $(\\mathbb{Z},+)$ n'est pas un groupe commutatif."
+        correct: false
+        feedback: >
+          $(\mathbb{Z},+)$ EST un groupe commutatif (neutre $0$, symétrique
+          de $x$ égal à $-x$, commutatif) — ce n'est pas là que ça bloque.
+          Le problème est spécifique à la seconde loi $\times$.
+      - id: D
+        text: "Oui, car $2$ possède un symétrique pour $\\times$, à savoir $\\frac{1}{2}$."
+        correct: false
+        feedback: >
+          $\frac{1}{2}$ n'appartient pas à $\mathbb{Z}$ : le symétrique
+          doit se trouver DANS l'ensemble $E$ étudié, pas dans un ensemble
+          plus grand qui le contient. Comme aucun entier ne vérifie
+          $2x=1$, $2$ n'a pas de symétrique pour $\times$ dans $\mathbb{Z}$.
+    correct_feedback: >
+      Exact : $(\mathbb{Z},+,\times)$ est un anneau, mais pas un corps,
+      car $2$ (entre autres) n'a pas de symétrique pour $\times$ dans
+      $\mathbb{Z}$ — la seule valeur candidate, $\frac{1}{2}$, n'est pas
+      un entier.
+    solution: |
+      $(\mathbb{Z},+,\times)$ est bien un anneau (R5). Pour être un corps,
+      il faudrait en plus que tout entier non nul ait un symétrique pour
+      $\times$ dans $\mathbb{Z}$. Prenons $2$ : l'équation $2x=1$ n'a pas
+      de solution entière (la seule solution réelle est $x=\frac{1}{2}
+      \notin \mathbb{Z}$). Donc $2$ n'a pas de symétrique pour $\times$
+      dans $\mathbb{Z}$, et $(\mathbb{Z},+,\times)$ n'est **pas** un corps
+      — contrairement à $(\mathbb{Q},+,\times)$, où tout rationnel non nul
+      $\frac{a}{b}$ a pour symétrique $\frac{b}{a}$.
