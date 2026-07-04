@@ -1,0 +1,319 @@
+notion: nombres-complexes-2
+skill_code: maths_complexes_trigo
+misconceptions: []
+items:
+  - id: NBCOMPLEX2-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: ["argument", "quadrant"]
+    stem: >
+      Quel est un argument de $z = -\sqrt3 + i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{5\\pi}{6}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{\\pi}{6}$"
+        correct: false
+        feedback: >
+          Tu as trouvé le bon angle de référence ($\tan$ vaut $1/\sqrt3$
+          en valeur absolue) mais tu as oublié de vérifier le signe de
+          $\cos\theta$ ET $\sin\theta$ séparément. Ici $a=-\sqrt3<0$ et
+          $b=1>0$ : le point est dans le demi-plan gauche, donc l'argument
+          n'est pas l'angle de référence $\pi/6$ lui-même, mais $\pi$
+          moins cet angle.
+      - id: C
+        text: "$-\\dfrac{\\pi}{6}$"
+        correct: false
+        feedback: >
+          Ce choix placerait le point dans le quadrant où $a>0$ et $b<0$.
+          Mais ici $a=-\sqrt3<0$ (partie réelle négative) et $b=1>0$
+          (partie imaginaire positive) : les deux signes sont à l'opposé
+          de ce que suppose cette réponse.
+      - id: D
+        text: "$\\dfrac{7\\pi}{6}$"
+        correct: false
+        feedback: >
+          Cet angle correspond à $\cos\theta<0$ ET $\sin\theta<0$ — c'est
+          le quadrant où les DEUX coordonnées sont négatives. Ici
+          $b=1>0$ : la partie imaginaire est positive, pas négative.
+          Vérifie les deux signes séparément, pas seulement celui de $a$.
+    correct_feedback: >
+      $r=|z|=\sqrt{3+1}=2$, donc $\cos\theta=-\dfrac{\sqrt3}{2}$ et
+      $\sin\theta=\dfrac12$. Ces deux valeurs correspondent à
+      $\theta=\dfrac{5\pi}{6}$ : l'angle de référence est $\pi/6$, mais
+      comme $\cos\theta<0$ et $\sin\theta>0$, le point est dans le
+      deuxième quadrant, donc $\theta = \pi - \pi/6 = 5\pi/6$.
+    solution: |
+      **Étape 1 — module :**
+      $$r = |z| = \sqrt{(-\sqrt3)^2+1^2} = \sqrt{3+1} = 2$$
+
+      **Étape 2 — cosinus et sinus :**
+      $$\cos\theta = \frac{-\sqrt3}{2}, \qquad \sin\theta = \frac{1}{2}$$
+
+      **Étape 3 — identifier le quadrant puis l'angle :** $\cos\theta<0$
+      et $\sin\theta>0$ place $M$ dans le deuxième quadrant. L'angle de
+      référence, dont le cosinus et le sinus valent $\sqrt3/2$ et $1/2$
+      en valeur absolue, est $\pi/6$. Dans le deuxième quadrant, l'angle
+      vaut $\pi$ moins cet angle de référence :
+      $$\theta = \pi - \frac{\pi}{6} = \frac{5\pi}{6}$$
+
+  - id: NBCOMPLEX2-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: ["produit", "module", "argument"]
+    stem: >
+      On donne $z = 2e^{i\pi/3}$ et $z' = 3e^{i\pi/6}$. Quelle est la
+      forme exponentielle de $zz'$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6e^{i\\pi/2}$"
+        correct: true
+      - id: B
+        text: "$5e^{i\\pi/2}$"
+        correct: false
+        feedback: >
+          L'argument est correct, mais le module est faux : tu as
+          additionné les modules ($2+3=5$) au lieu de les multiplier. Pour
+          un produit, les modules se MULTIPLIENT ($2\times3=6$) — c'est
+          la même règle que pour les arguments qui, eux, s'additionnent ;
+          les deux opérations ne sont pas interchangeables.
+      - id: C
+        text: "$6e^{i\\pi/6}$"
+        correct: false
+        feedback: >
+          Le module est correct, mais l'argument est faux : tu as
+          soustrait les arguments ($\pi/3-\pi/6$) au lieu de les
+          additionner. La soustraction des arguments correspond à un
+          QUOTIENT, pas à un produit. Pour $zz'$, les arguments
+          s'additionnent : $\pi/3+\pi/6$.
+      - id: D
+        text: "$6e^{i\\pi/3}$"
+        correct: false
+        feedback: >
+          Tu as multiplié correctement les modules, mais oublié
+          d'ajouter l'argument de $z'$ : ce choix ne garde que
+          l'argument de $z$ seul ($\pi/3$), comme si $z'$ n'apportait
+          rien à la direction du produit. Il faut ajouter les DEUX
+          arguments : $\pi/3+\pi/6$.
+    correct_feedback: >
+      Les modules se multiplient : $2\times3=6$. Les arguments
+      s'additionnent : $\pi/3+\pi/6 = 2\pi/6+\pi/6 = \pi/2$. Donc
+      $zz' = 6e^{i\pi/2}$.
+    solution: |
+      **Règle du produit (R2) :**
+      $$|zz'| = |z|\times|z'| = 2\times3 = 6$$
+      $$\arg(zz') = \arg(z)+\arg(z') = \frac{\pi}{3}+\frac{\pi}{6} = \frac{2\pi}{6}+\frac{\pi}{6} = \frac{\pi}{2}$$
+      $$zz' = 6e^{i\pi/2}$$
+
+  - id: NBCOMPLEX2-3
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["moivre", "puissance"]
+    stem: >
+      Soit $z = 2e^{i\pi/6}$. Quelle est la forme exponentielle de $z^3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$8e^{i\\pi/2}$"
+        correct: true
+      - id: B
+        text: "$6e^{i\\pi/2}$"
+        correct: false
+        feedback: >
+          L'argument est correct, mais le module est faux : tu as
+          multiplié le module par $3$ ($2\times3=6$) au lieu de
+          l'ÉLEVER à la puissance $3$ ($2^3=8$). La formule de Moivre
+          élève le module à la puissance $n$ ; multiplier par $n$ est la
+          règle du produit répété, pas celle de la puissance.
+      - id: C
+        text: "$8e^{i\\pi/18}$"
+        correct: false
+        feedback: >
+          Le module est correct, mais l'argument est faux : tu as
+          DIVISÉ l'argument par $3$ ($\pi/6\div3=\pi/18$) au lieu de le
+          MULTIPLIER par $3$. Diviser l'argument correspondrait à
+          chercher une racine, pas à calculer une puissance. La formule
+          de Moivre dit $\arg(z^n)=n\arg(z)$.
+      - id: D
+        text: "$8e^{i\\pi/6}$"
+        correct: false
+        feedback: >
+          Tu as bien élevé le module à la puissance $3$, mais tu as
+          laissé l'argument inchangé, comme si élever à la puissance ne
+          touchait que le module. La formule de Moivre multiplie AUSSI
+          l'argument par $3$ : $\arg(z^3)=3\times\pi/6=\pi/2$.
+    correct_feedback: >
+      Formule de Moivre : le module s'élève à la puissance $3$
+      ($2^3=8$), et l'argument se multiplie par $3$
+      ($3\times\pi/6=\pi/2$). Donc $z^3 = 8e^{i\pi/2}$.
+    solution: |
+      **Formule de Moivre (R3) :**
+      $$|z^3| = |z|^3 = 2^3 = 8$$
+      $$\arg(z^3) = 3\arg(z) = 3\times\frac{\pi}{6} = \frac{\pi}{2}$$
+      $$z^3 = 8e^{i\pi/2}$$
+
+  - id: NBCOMPLEX2-4
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["racines-n-iemes", "unite"]
+    stem: >
+      Quelles sont les solutions, dans $\mathbb{C}$, de l'équation
+      $z^4 = 1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1,\\ i,\\ -1,\\ -i$"
+        correct: true
+      - id: B
+        text: "$1$ et $-1$ seulement"
+        correct: false
+        feedback: >
+          Cette réponse ne cherche des solutions que parmi les nombres
+          RÉELS, comme si l'équation vivait dans $\mathbb{R}$. Mais on
+          résout dans $\mathbb{C}$ : une équation $z^n=1$ a exactement
+          $n$ solutions complexes distinctes (les racines n-ièmes de
+          l'unité), pas seulement les solutions réelles évidentes.
+      - id: C
+        text: "$1$ et $i$ seulement"
+        correct: false
+        feedback: >
+          L'équation $z^4=1$ a exactement $4$ solutions distinctes
+          (une pour chaque $k=0,1,2,3$ dans $z_k=e^{i2k\pi/4}$), pas
+          $2$. Tu t'es arrêté trop tôt : il manque les racines
+          correspondant à $k=2$ et $k=3$, soit $-1$ et $-i$.
+      - id: D
+        text: "$1,\\ e^{i\\pi/4},\\ e^{i\\pi/2},\\ e^{i3\\pi/4}$"
+        correct: false
+        feedback: >
+          L'écart entre deux racines consécutives doit être
+          $\dfrac{2\pi}{n}=\dfrac{2\pi}{4}=\dfrac{\pi}{2}$, pas $\pi/4$.
+          Ces valeurs correspondraient à un pas deux fois trop petit
+          (comme pour les racines 8-ièmes de l'unité). Vérifie d'ailleurs
+          que $(e^{i\pi/4})^4=e^{i\pi}=-1\neq1$ : ce n'est pas une
+          solution de $z^4=1$.
+    correct_feedback: >
+      Les racines 4-ièmes de l'unité sont $z_k=e^{i2k\pi/4}$ pour
+      $k=0,1,2,3$, soit $e^{i0}=1$, $e^{i\pi/2}=i$, $e^{i\pi}=-1$,
+      $e^{i3\pi/2}=-i$.
+    solution: |
+      **Écriture $z=\rho e^{i\alpha}$ et Moivre :** $z^4=1$ équivaut à
+      $\rho^4=1$ (donc $\rho=1$, car $\rho\geq0$ réel) et
+      $4\alpha\equiv0\ [2\pi]$, donc $\alpha=\dfrac{2k\pi}{4}$.
+
+      **Les 4 solutions, pour $k=0,1,2,3$ :**
+      $$z_0=e^{i0}=1 \qquad z_1=e^{i\pi/2}=i \qquad z_2=e^{i\pi}=-1 \qquad z_3=e^{i3\pi/2}=-i$$
+
+  - id: NBCOMPLEX2-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["rotation", "homothetie", "geometrie"]
+    stem: >
+      La transformation qui à $M$ d'affixe $z$ associe $M'$ d'affixe
+      $z' = 2i\,z$ est la composée, centrée en $O$, de quelle rotation et
+      quelle homothétie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rotation d'angle $\\pi/2$ et homothétie de rapport $2$"
+        correct: true
+      - id: B
+        text: "Rotation d'angle $\\pi/2$ et homothétie de rapport $2i$"
+        correct: false
+        feedback: >
+          Le rapport d'une homothétie est toujours un nombre RÉEL — ici
+          $|2i|=2$. Le nombre complexe $2i$ tout entier code à la fois
+          la rotation ET l'homothétie ; ce n'est pas lui-même le
+          "rapport". Le rapport, c'est le module, $2$ ; l'angle, c'est
+          l'argument, $\pi/2$.
+      - id: C
+        text: "Rotation d'angle $2$ (en radians) et homothétie de rapport $\\pi/2$"
+        correct: false
+        feedback: >
+          Les rôles sont inversés : c'est l'ARGUMENT de $2i$ qui donne
+          l'angle de rotation ($\pi/2$, pas $2$), et le MODULE de $2i$
+          qui donne le rapport d'homothétie ($2$, pas $\pi/2$). Le module
+          est un réel positif qui mesure une distance, pas un angle.
+      - id: D
+        text: "Rotation d'angle $\\pi$ et homothétie de rapport $2$"
+        correct: false
+        feedback: >
+          Multiplier $i$ par le réel positif $2$ ne change pas son
+          argument : $\arg(2i) = \arg(2)+\arg(i) = 0+\pi/2 = \pi/2$, pas
+          $\pi$. Multiplier par un réel positif change seulement le
+          module (l'agrandissement), jamais l'argument (la direction).
+    correct_feedback: >
+      $2i = 2e^{i\pi/2}$ : le module est $2$ (rapport de l'homothétie),
+      l'argument est $\pi/2$ (angle de la rotation). Les deux
+      transformations sont centrées en $O$.
+    solution: |
+      **Forme exponentielle de $c=2i$ :**
+      $$|2i| = 2, \qquad \arg(2i) = \frac{\pi}{2}$$
+
+      D'après le R5, la transformation $z'=cz$ est la composée d'une
+      rotation de centre $O$ et d'angle $\arg(c)=\pi/2$, et d'une
+      homothétie de centre $O$ et de rapport $|c|=2$.
+
+  - id: NBCOMPLEX2-6
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["triangle", "configuration", "rapport-complexe"]
+    stem: >
+      $A$, $B$, $C$ ont pour affixes respectives $z_A=0$, $z_B=2$,
+      $z_C=1+i\sqrt3$. On calcule
+      $\dfrac{z_C-z_A}{z_B-z_A} = \dfrac12+i\dfrac{\sqrt3}{2} = e^{i\pi/3}$.
+      Qu'en déduit-on sur la nature du triangle $ABC$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le triangle $ABC$ est équilatéral"
+        correct: true
+      - id: B
+        text: "Le triangle $ABC$ est rectangle en $A$"
+        correct: false
+        feedback: >
+          Un triangle est rectangle en $A$ quand le rapport est
+          imaginaire PUR (argument $\pm\pi/2$), pas pour n'importe quel
+          argument non nul. Ici l'argument vaut $\pi/3$, pas $\pi/2$ :
+          l'angle en $A$ est de $60°$, pas de $90°$.
+      - id: C
+        text: "Les points $A$, $B$, $C$ sont alignés"
+        correct: false
+        feedback: >
+          L'alignement correspond à un rapport RÉEL (argument $0$ ou
+          $\pi$). Ici le rapport $\frac12+i\frac{\sqrt3}{2}$ a une partie
+          imaginaire non nulle : ce n'est pas un réel, donc les trois
+          points ne sont pas alignés.
+      - id: D
+        text: "Le triangle est isocèle en $A$, mais on ne peut rien dire de plus"
+        correct: false
+        feedback: >
+          Le module donne bien $AB=AC$ (isocèle en $A$), mais cette
+          réponse ignore l'information de l'argument. Un triangle isocèle
+          en $A$ dont l'angle au sommet $A$ vaut $\pi/3$ (soit $60°$) a
+          forcément ses deux autres angles égaux à $(\pi-\pi/3)/2=\pi/3$
+          aussi : les trois angles valent $60°$, donc il est équilatéral.
+          Il faut combiner module ET argument, pas s'arrêter au module
+          seul.
+    correct_feedback: >
+      Le module vaut $1$ ($AB=AC$, isocèle en $A$), et l'argument vaut
+      $\pi/3$ (angle en $A$ égal à $60°$). Un triangle isocèle dont
+      l'angle au sommet vaut $60°$ a ses trois angles égaux à $60°$ :
+      il est équilatéral.
+    solution: |
+      **Lecture du rapport $w=\dfrac{z_C-z_A}{z_B-z_A}=e^{i\pi/3}$ :**
+      $$|w| = 1 \implies AB = AC \ (\text{isocèle en } A)$$
+      $$\arg(w) = \frac{\pi}{3} \implies \text{angle en } A = 60°$$
+
+      **Conclusion :** un triangle isocèle en $A$ avec un angle de $60°$
+      au sommet $A$ a ses deux autres angles égaux à
+      $(180°-60°)/2=60°$ chacun. Les trois angles valent $60°$ : le
+      triangle est équilatéral.
