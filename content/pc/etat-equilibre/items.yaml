@@ -1,0 +1,330 @@
+notion: etat-equilibre
+skill_code: pc_etat_equilibre
+misconceptions: []
+
+items:
+
+  # ── équilibre = réaction arrêtée (canonique) ────────────────────────────────
+  - id: EE-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    stem: >
+      Un système chimique atteint un état d'équilibre : ses concentrations
+      cessent de varier. Que peut-on affirmer sur les réactions directe et
+      inverse à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles se produisent toutes les deux, à la même vitesse l'une que l'autre."
+        correct: true
+      - id: B
+        text: "Elles se sont toutes les deux arrêtées : plus aucune transformation ne se produit."
+        correct: false
+        feedback: >
+          C'est confondre l'arrêt de l'évolution OBSERVABLE des concentrations
+          avec l'arrêt des réactions elles-mêmes. À l'équilibre, la réaction
+          directe et la réaction inverse continuent toutes les deux, sans
+          discontinuer : c'est justement parce qu'elles se produisent à la
+          même vitesse que leur effet net s'annule. Un équilibre chimique est
+          dynamique, jamais un arrêt.
+      - id: C
+        text: "Seule la réaction directe continue ; la réaction inverse ne s'est jamais produite."
+        correct: false
+        feedback: >
+          Si seule la réaction directe continuait, les produits continueraient
+          à s'accumuler et les concentrations ne cesseraient pas de varier.
+          Pour que le bilan net soit nul, il faut que les deux réactions,
+          directe ET inverse, se produisent, à la même vitesse.
+      - id: D
+        text: "La réaction directe s'est arrêtée ; seule la réaction inverse continue."
+        correct: false
+        feedback: >
+          Même erreur que le choix précédent, dans l'autre sens : si seule la
+          réaction inverse continuait, les produits seraient consommés sans
+          être reformés, et les concentrations varieraient encore. Les deux
+          réactions doivent coexister, à vitesses égales, pour que rien ne
+          bouge macroscopiquement.
+    correct_feedback: >
+      Un état d'équilibre est dynamique : la réaction directe et la réaction
+      inverse se produisent en permanence, toutes les deux, à la même vitesse.
+      Leur effet net s'annule, mais aucune des deux ne s'arrête.
+    solution: |
+      À l'équilibre, la vitesse de la réaction directe est égale à la vitesse
+      de la réaction inverse. Chaque seconde, autant de produit se forme
+      (réaction directe) qu'il s'en consomme en sens inverse (réaction
+      inverse) : le bilan net est nul, donc les concentrations globales ne
+      bougent plus. Mais microscopiquement, les deux réactions n'ont jamais
+      cessé de se produire.
+
+  # ── équilibre = réaction arrêtée (variant, expérience de perturbation) ──────
+  - id: EE-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    stem: >
+      Un mélange d'ions $Fe^{3+}$ et $SCN^-$ atteint un équilibre : sa couleur
+      rouge (due au complexe $FeSCN^{2+}$) cesse de s'intensifier. On ajoute
+      alors, sans changer le volume, une pincée supplémentaire de $SCN^-$
+      solide : la couleur s'intensifie de nouveau. Que montre cette
+      observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la réaction n'était pas terminée : les ions Fe3+ restants étaient toujours capables de réagir."
+        correct: true
+      - id: B
+        text: "Que la réaction était bien terminée, et que l'ajout de SCN- déclenche une toute nouvelle réaction, sans rapport avec la première."
+        correct: false
+        feedback: >
+          C'est la même équation qui se poursuit, pas une nouvelle réaction :
+          rien ne distingue chimiquement les ions Fe3+ présents avant et après
+          l'ajout. S'ils réagissent de nouveau, c'est que la réaction directe
+          de l'équation d'origine n'avait pas cessé d'être possible - elle
+          était seulement compensée par la réaction inverse avant l'ajout.
+      - id: C
+        text: "Que la couleur observée avant l'ajout n'était pas un vrai équilibre, puisqu'un équilibre ne peut jamais être perturbé."
+        correct: false
+        feedback: >
+          C'est l'inverse qui est vrai : un état d'équilibre est précisément
+          un état qui PEUT être perturbé et qui évolue alors vers un nouvel
+          équilibre - c'est ce qu'on vient d'observer. Ce n'est pas parce que
+          l'ajout de SCN- change les choses que l'état de départ n'était pas
+          un équilibre ; c'en était bien un, tant qu'on ne le perturbait pas.
+      - id: D
+        text: "Que l'ajout de SCN- a fait disparaître le Fe3+ déjà présent, sans nouvelle réaction."
+        correct: false
+        feedback: >
+          Rien ne fait « disparaître » du Fe3+ par simple ajout de SCN- sans
+          réaction : c'est justement la réaction directe (Fe3+ + SCN- donnant
+          davantage de complexe) qui consomme du Fe3+ ici, et c'est elle que
+          l'intensification de couleur révèle.
+    correct_feedback: >
+      Si la réaction avait vraiment cessé (dans les deux sens), les ions Fe3+
+      restants seraient inertes et l'ajout de SCN- ne changerait rien. La
+      couleur qui s'intensifie de nouveau prouve que la réaction directe était
+      toujours possible : l'équilibre précédent n'était pas un arrêt, mais un
+      point où les deux réactions se compensaient.
+    solution: |
+      L'ajout de SCN- élève instantanément [SCN-] sans changer [Fe3+] ni
+      [FeSCN2+]. Si le système était vraiment figé (aucune réaction
+      possible), rien ne devrait se passer. Or la couleur s'intensifie :
+      la réaction directe reprend, ce qui prouve que les ions Fe3+ étaient
+      toujours disponibles et réactifs avant même l'ajout - l'équilibre
+      précédent était dynamique, pas un arrêt.
+
+  # ── confondre Qr et K (canonique) ────────────────────────────────────────────
+  - id: EE-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    stem: >
+      Pour la réaction $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$ à une
+      température donnée, $K \approx 1{,}9 \times 10^3$. Dans un mélange qui
+      n'a pas encore atteint l'équilibre, on calcule $Q_r = 400$ à un instant
+      donné. Que peut-on affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r$ va augmenter, car $Q_{r,i} < K$ : le système évolue dans le sens direct."
+        correct: true
+      - id: B
+        text: "Le système est déjà à l'équilibre, puisque $Q_r$ a une valeur bien définie à cet instant."
+        correct: false
+        feedback: >
+          $Q_r$ est calculable à N'IMPORTE QUEL instant d'une transformation,
+          pas seulement à l'équilibre - avoir une valeur numérique ne signifie
+          pas que le système est stabilisé. L'équilibre correspond
+          précisément au cas particulier où $Q_r$ cesse de varier et devient
+          égal à $K$ ; ici, $Q_r = 400 \neq K \approx 1{,}9\times10^3$, donc ce
+          n'est pas encore le cas.
+      - id: C
+        text: "La valeur de $K$ annoncée doit être fausse, puisque $Q_r \\neq K$ pour ce mélange."
+        correct: false
+        feedback: >
+          $Q_r$ et $K$ ne sont censés être égaux QU'À L'ÉQUILIBRE. Tant que la
+          transformation n'a pas atteint son état final, $Q_r$ prend
+          n'importe quelle valeur différente de $K$ - ce n'est absolument pas
+          une contradiction, c'est le fonctionnement normal du quotient de
+          réaction en cours de transformation.
+      - id: D
+        text: "$Q_r$ restera égal à $400$, car cette valeur définit déjà la constante d'équilibre de cette réaction."
+        correct: false
+        feedback: >
+          $400$ n'est que la valeur de $Q_r$ à CET instant précis, pas la
+          constante d'équilibre : $K$ est déjà connu ($\approx 1{,}9\times10^3$)
+          et il ne dépend pas de l'instant choisi. $Q_r$, lui, va continuer
+          à évoluer (ici, à augmenter) jusqu'à rejoindre cette valeur fixe.
+    correct_feedback: >
+      $Q_{r,i} = 400 < K \approx 1{,}9\times10^3$ : le critère d'évolution
+      impose un sens direct - $Q_r$ va augmenter jusqu'à rejoindre $K$, valeur
+      qu'il n'atteindra qu'à l'équilibre.
+    solution: |
+      $Q_r$ et $K$ ne sont pas la même chose : $Q_r$ se calcule à tout
+      instant à partir des concentrations présentes, alors que $K$ est LA
+      valeur particulière que prend $Q_r$ une fois l'équilibre atteint.
+      Ici, $Q_{r,i} = 400 < K \approx 1{,}9\times10^3$ : d'après le critère
+      d'évolution, le système évolue dans le sens direct, et $Q_r$ va
+      augmenter progressivement jusqu'à devenir égal à $K$.
+
+  # ── confondre Qr et K (variant, distinction conceptuelle directe) ───────────
+  - id: EE-4
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    stem: >
+      Quelle affirmation décrit correctement la différence entre le quotient
+      de réaction $Q_r$ et la constante d'équilibre $K$ d'une réaction donnée,
+      à température fixée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qr peut être calculé à tout instant de la transformation à partir des concentrations présentes ; K est la valeur particulière de Qr une fois l'équilibre atteint."
+        correct: true
+      - id: B
+        text: "Qr et K désignent exactement la même grandeur, sous deux noms différents."
+        correct: false
+        feedback: >
+          Ce sont deux grandeurs liées mais distinctes : $Q_r$ varie au cours
+          du temps (il suit l'avancement de la transformation), alors que $K$
+          est une valeur fixe, propre à la réaction et à la température,
+          atteinte seulement à l'équilibre. Confondre les deux, c'est perdre
+          l'information la plus utile de $Q_r$ : sa capacité à suivre où en
+          est le système avant l'équilibre.
+      - id: C
+        text: "K varie au cours du temps comme Qr, mais plus lentement."
+        correct: false
+        feedback: >
+          $K$ ne varie pas du tout au cours d'une transformation donnée (à
+          température fixée) : c'est $Q_r$ seul qui évolue, en se rapprochant
+          progressivement de $K$. $K$ est une constante - c'est même son nom.
+      - id: D
+        text: "Qr est une constante fixée par la réaction, alors que K varie selon l'instant où on l'évalue."
+        correct: false
+        feedback: >
+          C'est l'inverse exact de la réalité : c'est $Q_r$ qui varie selon
+          l'instant considéré (il dépend des concentrations présentes à cet
+          instant), et $K$ qui est fixe, déterminé uniquement par la réaction
+          et la température.
+    correct_feedback: >
+      $Q_r$ suit la transformation à chaque instant ; $K$ est la valeur figée
+      que $Q_r$ atteint quand l'équilibre s'installe : $Q_{r,eq} = K$.
+    solution: |
+      $Q_r$ est un outil de suivi : il se recalcule à chaque instant, à partir
+      des concentrations telles qu'elles sont alors, et il change de valeur
+      tant que la réaction avance. $K$ est le point d'arrivée de ce suivi :
+      la valeur unique que $Q_r$ atteint et conserve une fois l'équilibre
+      installé, fixée par la réaction et la température, jamais par l'instant
+      d'observation.
+
+  # ── K dépend de l'état initial (canonique) ──────────────────────────────────
+  - id: EE-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    stem: >
+      Deux expériences étudient la même réaction
+      $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$, à la même température,
+      mais avec des concentrations initiales différentes. L'expérience 1
+      atteint un taux d'avancement final $\tau_1 = 0{,}60$ ; l'expérience 2
+      atteint $\tau_2 = 0{,}79$. Que peut-on en conclure sur les constantes
+      d'équilibre $K_1$ et $K_2$ de ces deux expériences ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$K_1 = K_2$ : la constante d'équilibre ne dépend que de la réaction et de la température, pas des concentrations initiales, même si $\\tau$ diffère."
+        correct: true
+      - id: B
+        text: "$K_1 \\neq K_2$, car des taux d'avancement différents signalent forcément des constantes d'équilibre différentes."
+        correct: false
+        feedback: >
+          $\tau$ dépend bien de l'état initial (des quantités choisies au
+          départ), mais $K$ n'en dépend pas : c'est justement ce qui rend
+          possible d'avoir deux $\tau$ différents pour une seule et même
+          valeur de $K$. Un $\tau$ différent ne prouve rien sur $K$.
+      - id: C
+        text: "$K_2 > K_1$, car l'expérience 2 a un taux d'avancement plus élevé, donc une réaction plus favorisée."
+        correct: false
+        feedback: >
+          Un $\tau$ plus élevé dans l'expérience 2 ne vient pas d'un $K$ plus
+          grand ici : il vient du fait que les concentrations initiales de
+          l'expérience 2 sont moins équilibrées entre les deux réactifs (l'un
+          est plus en excès que dans l'expérience 1), ce qui pousse davantage
+          le réactif limitant à réagir, à $K$ strictement identique.
+      - id: D
+        text: "On ne peut rien conclure sans connaître les concentrations initiales exactes des deux expériences."
+        correct: false
+        feedback: >
+          C'est justement l'inverse : le principe central de ce rung est que
+          $K$ ne dépend PAS des concentrations initiales - donc, pour une même
+          réaction à une même température, $K_1 = K_2$ quelles que soient ces
+          concentrations, sans même avoir besoin de les connaître.
+    correct_feedback: >
+      $K$ est fixé par la réaction et la température, jamais par les
+      concentrations de départ : $K_1 = K_2$, même si $\tau_1 \neq \tau_2$.
+    solution: |
+      $\tau$ mesure jusqu'où va la réaction dans les conditions PARTICULIÈRES
+      d'une expérience donnée (il dépend des quantités initiales choisies).
+      $K$, lui, décrit la réaction elle-même, indépendamment de la façon dont
+      on l'a préparée : deux expériences sur la même réaction, à la même
+      température, donnent toujours la même valeur de $K$, même si leurs
+      concentrations initiales - et donc leurs $\tau$ - diffèrent.
+
+  # ── K dépend de l'état initial (variant, dilution) ──────────────────────────
+  - id: EE-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    stem: >
+      On dilue un mélange à l'équilibre par un facteur $f=10$. Immédiatement
+      après la dilution (avant toute nouvelle réaction), comment ont changé
+      $Q_r$ et $K$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qr a changé (il s'écarte de sa valeur à l'équilibre) ; K, lui, n'a pas changé - c'est justement cet écart qui va faire évoluer le système vers un nouvel équilibre."
+        correct: true
+      - id: B
+        text: "K a changé, car diluer le mélange change la quantité de matière disponible pour réagir."
+        correct: false
+        feedback: >
+          $K$ ne dépend que de la réaction et de la température, jamais de la
+          quantité de matière ou du volume utilisés - diluer ne change donc
+          jamais $K$. C'est $Q_r$, calculé avec les nouvelles concentrations
+          diluées, qui s'écarte momentanément de $K$.
+      - id: C
+        text: "Qr et K ont tous les deux changé dans les mêmes proportions, donc le système reste à l'équilibre."
+        correct: false
+        feedback: >
+          $K$ ne change jamais lors d'une dilution (à température constante).
+          Seul $Q_r$ change - et il ne change pas dans les mêmes proportions
+          que $K$ « resterait » puisque $K$, précisément, ne bouge pas du
+          tout. C'est cet écart entre le nouveau $Q_r$ et $K$ qui prouve que
+          le système n'est plus à l'équilibre.
+      - id: D
+        text: "Ni Qr ni K n'ont changé, puisque diluer ne fait que rajouter de l'eau, qui n'entre pas dans l'expression de Qr."
+        correct: false
+        feedback: >
+          Même si l'eau n'apparaît pas dans $Q_r$, diluer divise TOUTES les
+          concentrations des espèces qui, elles, apparaissent dans $Q_r$ - donc
+          $Q_r$ change bel et bien (il est multiplié par une puissance du
+          facteur de dilution). Seul $K$ reste inchangé.
+    correct_feedback: >
+      Diluer change instantanément les concentrations, donc $Q_r$ ; mais $K$,
+      fixé par la réaction et la température, ne bouge jamais. L'écart entre
+      le nouveau $Q_{r,i}$ et $K$ est ce qui déclenche l'évolution vers un
+      nouvel équilibre.
+    solution: |
+      Diviser toutes les concentrations par le facteur de dilution $f$
+      multiplie $Q_r$ par $f^{(a+b)-(c+d)}$ (les exposants de l'équation) :
+      $Q_r$ change donc immédiatement, avant même que la réaction n'ait eu le
+      temps de répondre. $K$, en revanche, ne dépend que de la réaction et de
+      la température - il reste rigoureusement le même. C'est parce que
+      $Q_{r,i} \neq K$ juste après la dilution que le système se remet à
+      évoluer, vers un nouvel équilibre où $Q_r$ rejoindra de nouveau $K$.
