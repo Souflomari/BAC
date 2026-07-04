@@ -1,0 +1,253 @@
+notion: arithmetique
+skill_code: maths_arithmetique
+misconceptions: []
+items:
+  - id: AR-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: []
+    stem: >
+      Dans la division euclidienne de $250$ par $7$, quel est le reste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+      - id: B
+        text: "$35$"
+        correct: false
+        feedback: >
+          $35$ est le quotient, pas le reste. Tu as trouve le bon nombre de
+          fois que $7$ tient dans $250$, mais la question demande ce qui
+          reste apres : $250 = 7 \times 35 + 5$.
+      - id: C
+        text: "$6$"
+        correct: false
+        feedback: >
+          Presque : recompte. $7 \times 35 = 245$, et $250 - 245 = 5$, pas $6$.
+      - id: D
+        text: "$0$"
+        correct: false
+        feedback: >
+          Le reste ne serait $0$ que si $7$ divisait exactement $250$. Or
+          $250 = 7 \times 35 + 5$ : il reste $5$, donc $7 \nmid 250$.
+    correct_feedback: >
+      Exact : $250 = 7 \times 35 + 5$ avec $0 \le 5 < 7$. Le reste est bien
+      l'unique entier de $\{0,\dots,6\}$ qui rend l'egalite vraie.
+    solution: |
+      On cherche le plus grand multiple de $7$ inferieur ou egal a $250$.
+      $$7 \times 35 = 245$$
+      $$250 - 245 = 5$$
+      Comme $0 \le 5 < 7$, la division euclidienne s'ecrit $250 = 7 \times 35 + 5$ :
+      quotient $35$, reste $5$.
+
+  - id: AR-2
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: []
+    stem: >
+      Quel est le reste de la division de $2^{2023}$ par $3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        feedback: >
+          Tu as sans doute pris $(-1)^{2023} = 1$. Mais $2023$ est impair,
+          donc $(-1)^{2023} = -1 \equiv 2 \pmod 3$, pas $1$.
+      - id: C
+        text: "$0$"
+        correct: false
+        feedback: >
+          $3$ ne divise jamais une puissance de $2$ (ils n'ont aucun facteur
+          premier commun), donc le reste ne peut pas etre $0$.
+      - id: D
+        text: "$3$"
+        correct: false
+        feedback: >
+          Un reste modulo $3$ est toujours dans $\{0,1,2\}$ : il ne peut pas
+          valoir $3$.
+    correct_feedback: >
+      Bien vu : $2 \equiv -1 \pmod 3$, donc $2^{2023} \equiv (-1)^{2023} = -1
+      \equiv 2 \pmod 3$. La congruence transforme une grosse puissance en un
+      calcul immediat.
+    solution: |
+      On remplace $2$ par un representant plus commode modulo $3$ :
+      $$2 \equiv -1 \pmod 3$$
+      $$2^{2023} \equiv (-1)^{2023} \pmod 3$$
+      $$(-1)^{2023} = -1 \equiv 2 \pmod 3$$
+      Le reste est donc $2$.
+
+  - id: AR-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: []
+    stem: >
+      Quel est $\mathrm{PGCD}(48, 36)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$12$"
+        correct: true
+      - id: B
+        text: "$144$"
+        correct: false
+        feedback: >
+          $144$ est le PPCM (plus petit multiple commun), pas le PGCD. Le PGCD
+          est un DIVISEUR commun : il ne peut pas etre plus grand que $36$.
+      - id: C
+        text: "$6$"
+        correct: false
+        feedback: >
+          $6$ divise bien $48$ et $36$, mais ce n'est pas le PLUS GRAND :
+          $12$ les divise aussi ($48 = 12 \times 4$, $36 = 12 \times 3$).
+      - id: D
+        text: "$4$"
+        correct: false
+        feedback: >
+          $4$ divise $48$ et $36$, mais pas le plus grand : $12$ marche encore.
+    correct_feedback: >
+      Exact. Par l'algorithme d'Euclide : $48 = 36 \times 1 + 12$, puis
+      $36 = 12 \times 3 + 0$. Le dernier reste non nul, $12$, est le PGCD.
+    solution: |
+      Algorithme d'Euclide :
+      $$48 = 36 \times 1 + 12$$
+      $$36 = 12 \times 3 + 0$$
+      Le dernier reste non nul est $12$, donc $\mathrm{PGCD}(48,36) = 12$.
+
+  - id: AR-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: []
+    stem: >
+      Les entiers $8$ et $15$ sont-ils premiers, premiers entre eux, les deux,
+      ou aucun des deux ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Premiers entre eux, mais aucun des deux n'est un nombre premier"
+        correct: true
+      - id: B
+        text: "Tous les deux sont des nombres premiers"
+        correct: false
+        feedback: >
+          Ni $8$ ni $15$ n'est premier : $8 = 2^3$ et $15 = 3 \times 5$. Etre
+          premier (un seul entier, deux diviseurs) n'a rien a voir avec etre
+          premiers ENTRE EUX (une paire, PGCD $= 1$).
+      - id: C
+        text: "Ni premiers, ni premiers entre eux"
+        correct: false
+        feedback: >
+          Ils ne sont pas premiers, d'accord. Mais $\mathrm{PGCD}(8,15) = 1$
+          (aucun facteur commun : $2^3$ contre $3 \times 5$), donc ils SONT
+          premiers entre eux.
+      - id: D
+        text: "Premiers entre eux, et tous les deux premiers"
+        correct: false
+        feedback: >
+          Ils sont premiers entre eux, mais $8 = 2^3$ n'est pas un nombre
+          premier (il a plus de deux diviseurs).
+    correct_feedback: >
+      Exactement le piege a eviter : "premier" qualifie UN entier (deux
+      diviseurs), "premiers entre eux" qualifie une PAIRE (PGCD $= 1$). Ici
+      $8 = 2^3$ et $15 = 3\times5$ n'ont aucun facteur commun.
+    solution: |
+      Deux notions distinctes :
+      - $8 = 2^3$ n'est pas premier ; $15 = 3 \times 5$ non plus.
+      - Leurs decompositions n'ont aucun facteur premier commun, donc
+      $$\mathrm{PGCD}(8, 15) = 1$$
+      ce qui signifie qu'ils sont premiers ENTRE EUX. Les deux proprietes
+      sont independantes.
+
+  - id: AR-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: []
+    stem: >
+      On sait que $7 \mid 5n$ (l'entier $7$ divise $5n$). Quel theoreme permet
+      de conclure directement que $7 \mid n$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le theoreme de Gauss, car $\\mathrm{PGCD}(7, 5) = 1$"
+        correct: true
+      - id: B
+        text: "Rien : on ne peut pas conclure"
+        correct: false
+        feedback: >
+          On peut conclure. Comme $7 \mid 5n$ et que $7$ est premier avec $5$,
+          le theoreme de Gauss donne exactement $7 \mid n$.
+      - id: C
+        text: "Le theoreme de Bezout, car il existe $u, v$ tels que $7u + 5v = 1$"
+        correct: false
+        feedback: >
+          Bezout garantit l'existence de $u, v$ avec $7u + 5v = 1$ (c'est
+          l'ingredient), mais c'est le theoreme de GAUSS qui enonce la
+          conclusion "$a \mid bc$ et $a \wedge b = 1 \Rightarrow a \mid c$".
+      - id: D
+        text: "Parce que $5$ est un nombre premier"
+        correct: false
+        feedback: >
+          Ce qui compte n'est pas que $5$ soit premier, mais que $7$ et $5$
+          soient premiers ENTRE EUX. Gauss s'applique des que
+          $\mathrm{PGCD}(7,5) = 1$, meme si les nombres n'etaient pas premiers.
+    correct_feedback: >
+      C'est precisement le theoreme de Gauss : si $a \mid bc$ et
+      $\mathrm{PGCD}(a,b) = 1$, alors $a \mid c$. Ici $a = 7$, $b = 5$,
+      $c = n$, et $7 \wedge 5 = 1$.
+    solution: |
+      Theoreme de Gauss : si $a \mid bc$ et $\mathrm{PGCD}(a, b) = 1$, alors
+      $a \mid c$. Ici $a = 7$, $b = 5$, $c = n$. Comme $\mathrm{PGCD}(7, 5) = 1$,
+      de $7 \mid 5n$ on deduit $7 \mid n$.
+
+  - id: AR-6
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: []
+    stem: >
+      L'equation $6x + 4y = 5$ admet-elle des solutions dans $\mathbb{Z}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non, car $\\mathrm{PGCD}(6, 4) = 2$ ne divise pas $5$"
+        correct: true
+      - id: B
+        text: "Oui, car $6$ et $4$ sont tous les deux pairs"
+        correct: false
+        feedback: >
+          Justement : $6x + 4y$ est toujours PAIR (multiple de $2$), alors que
+          $5$ est impair. L'egalite est donc impossible dans $\mathbb{Z}$.
+      - id: C
+        text: "Oui, il suffit de prendre $x$ et $y$ assez grands"
+        correct: false
+        feedback: >
+          La taille de $x, y$ n'y change rien : le membre de gauche reste un
+          multiple de $\mathrm{PGCD}(6,4) = 2$, donc toujours pair, jamais
+          egal a $5$.
+      - id: D
+        text: "Non, car $6$ et $4$ ne sont pas premiers entre eux"
+        correct: false
+        feedback: >
+          Le fait qu'ils ne soient pas premiers entre eux n'interdit pas a lui
+          seul les solutions. Le critere exact est : il y a des solutions
+          si et seulement si $\mathrm{PGCD}(6,4) = 2$ DIVISE le second membre
+          $5$. Ici $2 \nmid 5$, d'ou l'impossibilite.
+    correct_feedback: >
+      Exact. L'equation $ax + by = c$ a des solutions entieres si et seulement
+      si $\mathrm{PGCD}(a,b) \mid c$. Ici $\mathrm{PGCD}(6,4) = 2$ et
+      $2 \nmid 5$, donc aucune solution.
+    solution: |
+      Critere d'existence : $ax + by = c$ a des solutions dans $\mathbb{Z}^2$
+      si et seulement si $\mathrm{PGCD}(a, b) \mid c$.
+      $$\mathrm{PGCD}(6, 4) = 2$$
+      Or $2$ ne divise pas $5$ (qui est impair). Donc l'equation n'a aucune
+      solution entiere : tout $6x + 4y$ est pair, jamais egal a $5$.

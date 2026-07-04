@@ -1,0 +1,263 @@
+notion: chute-mouvements-plans
+skill_code: pc_chute_plans
+misconceptions: []
+items:
+  - id: CMP-1
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un projectile est lance dans le champ de pesanteur, frottements de l'air
+      negliges. Que devient la composante horizontale $v_x$ de sa vitesse
+      pendant le vol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste constante, car aucune force horizontale n'agit sur le projectile"
+        correct: true
+      - id: B
+        text: "Elle diminue progressivement jusqu'a s'annuler"
+        correct: false
+        feedback: >
+          Rien ne freine horizontalement : les frottements sont negliges et le
+          poids est vertical. Sur l'axe horizontal, $a_x = 0$, donc $v_x$ ne
+          diminue pas.
+      - id: C
+        text: "Elle augmente, entrainee par la chute"
+        correct: false
+        feedback: >
+          La chute agit sur la composante VERTICALE. Les deux mouvements sont
+          independants : le poids etant vertical, il ne modifie pas $v_x$.
+      - id: D
+        text: "Elle s'annule au sommet de la trajectoire"
+        correct: false
+        feedback: >
+          C'est $v_y$ qui s'annule au sommet, pas $v_x$. Au sommet la vitesse
+          est purement horizontale et vaut justement $v_x = v_{0x}$.
+    correct_feedback: >
+      Exact : sur l'axe horizontal la 2e loi donne $a_x = 0$, donc
+      $v_x = v_{0x}$ reste constante tout le vol. C'est ce qui rend les deux
+      axes independants.
+    solution: |
+      Bilan : seul le poids $\vec P = m\vec g$ agit, et il est vertical.
+      Projection de la 2e loi sur l'axe horizontal :
+      $$m a_x = 0$$
+      $$a_x = 0 \implies v_x = v_{0x} = \text{constante}$$
+      Le mouvement horizontal est uniforme ; seul l'axe vertical subit $g$.
+
+  - id: CMP-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Au sommet de sa trajectoire (la fleche), quelle est la vitesse du
+      projectile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Horizontale et non nulle, egale a $v_{0x}$"
+        correct: true
+      - id: B
+        text: "Nulle"
+        correct: false
+        feedback: >
+          Au sommet, seule la composante VERTICALE $v_y$ s'annule. La
+          composante horizontale $v_x = v_{0x}$ subsiste : la vitesse totale
+          n'est donc pas nulle.
+      - id: C
+        text: "Verticale, dirigee vers le bas"
+        correct: false
+        feedback: >
+          Juste apres le sommet la vitesse aura une composante verticale vers
+          le bas, mais AU sommet $v_y = 0$ : la vitesse y est purement
+          horizontale.
+      - id: D
+        text: "Maximale sur toute la trajectoire"
+        correct: false
+        feedback: >
+          C'est au contraire ou la vitesse est MINIMALE (il ne reste que
+          $v_x$). Elle est maximale au depart et a l'arrivee au sol.
+    correct_feedback: >
+      Oui : au sommet $v_y = 0$ mais $v_x = v_{0x} \neq 0$. La vitesse y est
+      horizontale et minimale, jamais nulle.
+    solution: |
+      Le sommet est defini par $v_y = 0$ (la montee s'arrete, la descente
+      commence). Mais l'axe horizontal reste uniforme :
+      $$v_x = v_{0x} = v_0\cos\alpha \neq 0$$
+      La vitesse au sommet vaut donc $v_{0x}$, horizontale.
+
+  - id: CMP-3
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Deux billes de masses differentes sont lancees avec exactement la meme
+      vitesse initiale (meme valeur, meme angle), frottements negliges. Que
+      peut-on dire de leurs trajectoires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles sont identiques, car l'acceleration $\\vec a = \\vec g$ ne depend pas de la masse"
+        correct: true
+      - id: B
+        text: "La bille la plus lourde retombe plus vite et va moins loin"
+        correct: false
+        feedback: >
+          C'est l'intuition trompeuse. La 2e loi donne $m\vec a = m\vec g$,
+          d'ou $\vec a = \vec g$ : la masse se simplifie. Meme acceleration,
+          meme trajectoire.
+      - id: C
+        text: "La bille la plus legere va plus loin"
+        correct: false
+        feedback: >
+          Sans frottements, la masse n'intervient pas : $\vec a = \vec g$ pour
+          les deux. Les trajectoires se superposent exactement.
+      - id: D
+        text: "On ne peut pas savoir sans connaitre les masses"
+        correct: false
+        feedback: >
+          On peut : justement parce que $\vec a = \vec g$ est independant de
+          la masse, la valeur des masses n'a aucune importance ici.
+    correct_feedback: >
+      Exact. $m\vec a = m\vec g \Rightarrow \vec a = \vec g$ : la masse
+      disparait. Memes conditions initiales et meme acceleration donnent la
+      meme trajectoire.
+    solution: |
+      2e loi, le poids etant la seule force :
+      $$m\vec a = m\vec g$$
+      $$\vec a = \vec g$$
+      L'acceleration ne depend pas de $m$. A conditions initiales egales, les
+      deux billes suivent la meme trajectoire.
+
+  - id: CMP-4
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Dans l'etude d'un tir, comment definit-on la PORTEE ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La distance horizontale entre le point de lancement et le point de retour au sol"
+        correct: true
+      - id: B
+        text: "La hauteur maximale atteinte par le projectile"
+        correct: false
+        feedback: >
+          Ca, c'est la FLECHE (hauteur du sommet). La portee est une distance
+          HORIZONTALE, mesuree au sol.
+      - id: C
+        text: "La longueur totale de la trajectoire parcourue"
+        correct: false
+        feedback: >
+          La portee n'est pas la longueur de l'arc parabolique, mais la
+          distance horizontale entre le depart et l'arrivee au sol.
+      - id: D
+        text: "La vitesse du projectile au moment de l'impact"
+        correct: false
+        feedback: >
+          Une portee est une distance (en metres), pas une vitesse. Ne
+          confonds pas la grandeur avec sa dimension.
+    correct_feedback: >
+      Oui : la portee est la distance horizontale sol-a-sol. A ne pas
+      confondre avec la fleche, qui est la hauteur maximale (verticale).
+    solution: |
+      Deux grandeurs a distinguer :
+      - la FLECHE : hauteur maximale (verticale) atteinte au sommet, ou
+      $v_y = 0$ ;
+      - la PORTEE : distance horizontale entre le lancement et le retour au
+      sol ($y = 0$ de nouveau).
+
+  - id: CMP-5
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Pour une vitesse initiale $v_0$ donnee (sol horizontal, frottements
+      negliges), pour quel angle de lancement la portee est-elle maximale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$45^\\circ$"
+        correct: true
+      - id: B
+        text: "$90^\\circ$"
+        correct: false
+        feedback: >
+          A $90^\circ$ le tir est vertical : la portee est nulle (le projectile
+          retombe au point de depart). C'est un maximum de FLECHE, pas de
+          portee.
+      - id: C
+        text: "$30^\\circ$"
+        correct: false
+        feedback: >
+          $30^\circ$ donne une portee, mais pas la plus grande : $\sin(2\alpha)
+          = \sin 60^\circ < 1$. Le maximum de $\sin(2\alpha)$ est atteint pour
+          $2\alpha = 90^\circ$.
+      - id: D
+        text: "$60^\\circ$"
+        correct: false
+        feedback: >
+          $60^\circ$ donne la meme portee que $30^\circ$ (angles
+          complementaires : $\sin 120^\circ = \sin 60^\circ$), mais pas le
+          maximum, atteint a $45^\circ$.
+    correct_feedback: >
+      Exact : la portee vaut $D = \dfrac{v_0^2 \sin(2\alpha)}{g}$, maximale
+      quand $\sin(2\alpha) = 1$, soit $2\alpha = 90^\circ$, donc
+      $\alpha = 45^\circ$.
+    solution: |
+      La portee sur sol horizontal s'ecrit :
+      $$D = \frac{v_0^2 \sin(2\alpha)}{g}$$
+      Elle est maximale lorsque $\sin(2\alpha) = 1$ :
+      $$2\alpha = 90^\circ \implies \alpha = 45^\circ$$
+
+  - id: CMP-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Une particule chargee penetre avec une vitesse horizontale dans un champ
+      electrique uniforme $\vec E$ perpendiculaire a cette vitesse (frottements
+      et poids negliges). Quelle est la nature de sa trajectoire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parabolique, par analogie avec le projectile dans le champ de pesanteur"
+        correct: true
+      - id: B
+        text: "Rectiligne, dans la direction de la vitesse initiale"
+        correct: false
+        feedback: >
+          La force electrique $\vec F = q\vec E$ est constante et perpendiculaire
+          a $\vec v_0$ : elle courbe la trajectoire, exactement comme le poids
+          courbe celle d'un projectile. Ce n'est pas rectiligne.
+      - id: C
+        text: "Circulaire"
+        correct: false
+        feedback: >
+          Une force CONSTANTE (en direction et valeur) donne une parabole, pas
+          un cercle. Un mouvement circulaire demanderait une force toujours
+          dirigee vers un centre.
+      - id: D
+        text: "Sinusoidale"
+        correct: false
+        feedback: >
+          Il n'y a pas de force de rappel oscillante ici, juste une force
+          constante. La trajectoire est une parabole, comme pour la pesanteur.
+    correct_feedback: >
+      Oui : $\vec F = q\vec E$ constante joue le role du poids. Mouvement
+      uniforme sur un axe, uniformement accelere sur l'autre : la trajectoire
+      est une parabole.
+    solution: |
+      La force $\vec F = q\vec E$ est constante et perpendiculaire a $\vec v_0$,
+      tout comme le poids $m\vec g$ l'est pour un projectile lance
+      horizontalement. On retrouve :
+      - un mouvement uniforme selon $\vec v_0$ ;
+      - un mouvement uniformement accelere selon $\vec E$.
+      La combinaison donne une trajectoire parabolique.
