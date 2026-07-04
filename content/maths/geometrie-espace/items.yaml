@@ -1,0 +1,311 @@
+notion: geometrie-espace
+skill_code: maths_geometrie_espace   # proposed; supabase-architect reconciles at integration
+misconceptions: []
+
+items:
+
+  # ── R2 · produit scalaire dans l'espace ─────────────────────────────────────
+  - id: GE-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_geometrie_espace
+    tags: [produit_scalaire, coordonnees]
+    stem: >
+      On donne $\vec{u}(3,1,-2)$ et $\vec{v}(2,-3,1)$. Que vaut
+      $\vec{u}\cdot\vec{v}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$"
+        correct: true
+      - id: B
+        text: "$2$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'une addition terme à terme des coordonnées,
+          $(3+2)+(1-3)+(-2+1)=2$, au lieu d'une multiplication coordonnée par
+          coordonnée suivie d'une somme des produits. Le produit scalaire
+          n'est jamais une addition de coordonnées : on calcule
+          $x x' + y y' + z z'$, trois produits qu'on additionne ensuite —
+          pas trois sommes.
+      - id: C
+        text: "$6$"
+        correct: false
+        feedback: >
+          Ce choix ne calcule que le premier terme, $3\times2=6$, et oublie
+          d'ajouter les deux autres produits $yy'=1\times(-3)$ et
+          $zz'=(-2)\times1$. Le produit scalaire est la somme des TROIS
+          produits coordonnée par coordonnée, jamais un seul.
+      - id: D
+        text: "$5$"
+        correct: false
+        feedback: >
+          On retrouve ce nombre en oubliant le signe du dernier terme :
+          $(-2)\times1=-2$, pas $+2$. Ici $6-3+2=5$ au lieu de $6-3-2=1$ —
+          il faut respecter le signe de chaque coordonnée, y compris quand
+          les deux facteurs du produit ont des signes différents.
+    correct_feedback: >
+      $\vec{u}\cdot\vec{v} = 3\times2 + 1\times(-3) + (-2)\times1 = 6-3-2 = 1$.
+      On multiplie coordonnée par coordonnée, puis on additionne les trois
+      produits — jamais les coordonnées elles-mêmes.
+    solution: |
+      **Application directe de l'expression analytique (R2) :**
+      $$\vec{u}\cdot\vec{v} = xx'+yy'+zz' = 3\times2 + 1\times(-3) + (-2)\times1$$
+      $$\vec{u}\cdot\vec{v} = 6 - 3 - 2 = 1$$
+
+  # ── R3 · produit vectoriel : norme = aire ───────────────────────────────────
+  - id: GE-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [produit_vectoriel, aire]
+    stem: >
+      Soit $O$, $A$, $B$ trois points avec $\overrightarrow{OA}=\vec{u}(2,0,0)$
+      et $\overrightarrow{OB}=\vec{v}(1,2,0)$. Quelle est l'aire du triangle
+      $OAB$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2$"
+        correct: true
+      - id: B
+        text: "$4$"
+        correct: false
+        feedback: >
+          $\|\vec{u}\wedge\vec{v}\|=4$ est bien calculé, mais c'est l'aire du
+          PARALLÉLOGRAMME construit sur $\vec{u}$ et $\vec{v}$, pas celle du
+          triangle. Le triangle $OAB$ n'en occupe que la moitié : il manque
+          la division par $2$.
+      - id: C
+        text: "$1$"
+        correct: false
+        feedback: >
+          Ce résultat vient du produit SCALAIRE $\vec{u}\cdot\vec{v}=2$,
+          divisé par $2$ — c'est-à-dire confondre le produit scalaire (un
+          nombre lié à l'angle entre les vecteurs) avec le produit vectoriel
+          (dont la norme mesure une aire). Une aire se lit sur
+          $\|\vec{u}\wedge\vec{v}\|$, jamais sur $\vec{u}\cdot\vec{v}$.
+      - id: D
+        text: "$8$"
+        correct: false
+        feedback: >
+          Ce choix correspond à $\|\vec{u}\wedge\vec{v}\|^2/2 = 16/2=8$ : la
+          norme au carré a été utilisée à la place de la norme elle-même — la
+          racine carrée a été oubliée dans le calcul de
+          $\|\vec{u}\wedge\vec{v}\|=\sqrt{0^2+0^2+4^2}=4$.
+    correct_feedback: >
+      $\vec{u}\wedge\vec{v}=(0,0,4)$, donc $\|\vec{u}\wedge\vec{v}\|=4$ :
+      c'est l'aire du parallélogramme. Le triangle $OAB$ en occupe la
+      moitié : aire $=2$.
+    solution: |
+      **Produit vectoriel :**
+      $$\vec{u}\wedge\vec{v} = (0\times0-0\times2,\ 0\times1-2\times0,\ 2\times2-0\times1) = (0,0,4)$$
+
+      **Norme = aire du parallélogramme :**
+      $$\|\vec{u}\wedge\vec{v}\| = \sqrt{0^2+0^2+4^2} = 4$$
+
+      **Aire du triangle = moitié du parallélogramme :**
+      $$\text{aire}(OAB) = \frac{4}{2} = 2$$
+
+  # ── R4 · produit mixte et volume du tétraèdre ───────────────────────────────
+  - id: GE-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [produit_mixte, volume, tetraedre]
+    stem: >
+      Un tétraèdre $OABC$ trirectangle en $O$ a pour arêtes
+      $\overrightarrow{OA}(2,0,0)$, $\overrightarrow{OB}(0,2,0)$,
+      $\overrightarrow{OC}(0,0,3)$. Sachant que le produit mixte
+      $[\overrightarrow{OA},\overrightarrow{OB},\overrightarrow{OC}]$ vaut
+      $12$, quel est le volume du tétraèdre $OABC$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2$"
+        correct: true
+      - id: B
+        text: "$12$"
+        correct: false
+        feedback: >
+          $12$ est le volume du PARALLÉLÉPIPÈDE construit sur les trois
+          arêtes (la valeur absolue du produit mixte), pas celui du
+          tétraèdre. Le tétraèdre n'en occupe que le sixième : il manque le
+          facteur $\frac16$.
+      - id: C
+        text: "$6$"
+        correct: false
+        feedback: >
+          Ce résultat applique seulement un facteur $\frac12$ (comme si on
+          ne prenait que l'aire du triangle de base) mais oublie le facteur
+          $\frac13$ propre au volume d'une pyramide. Les deux facteurs se
+          combinent : $\frac12\times\frac13=\frac16$, pas $\frac12$ seul.
+      - id: D
+        text: "$4$"
+        correct: false
+        feedback: >
+          Ce résultat applique seulement un facteur $\frac13$ (le facteur
+          pyramide) mais oublie que la base est un TRIANGLE, la moitié du
+          parallélogramme — d'où le facteur global $\frac16$
+          ($\frac12\times\frac13$), pas $\frac13$ seul.
+    correct_feedback: >
+      Le volume du tétraèdre vaut $\frac16$ de la valeur absolue du produit
+      mixte : $\frac16\times12=2$.
+    solution: |
+      **Formule du volume à partir du produit mixte (R4) :**
+      $$V_{OABC} = \frac{1}{6}\left|[\overrightarrow{OA},\overrightarrow{OB},\overrightarrow{OC}]\right| = \frac{1}{6}\times12 = 2$$
+
+  # ── R6 · vecteur normal à un plan ───────────────────────────────────────────
+  - id: GE-4
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_geometrie_espace
+    tags: [plan, vecteur_normal, equation_cartesienne]
+    stem: >
+      Un plan $\mathcal P$ a pour équation cartésienne
+      $3x+2y-z+4=0$. Quel est un vecteur normal à $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\vec{n}(3,2,-1)$"
+        correct: true
+      - id: B
+        text: "$\\vec{n}(3,2,4)$"
+        correct: false
+        feedback: >
+          Ce choix prend la constante $d=4$ de l'équation comme troisième
+          composante du vecteur normal, à la place du coefficient de $z$
+          (qui est $-1$, puisque l'équation s'écrit
+          $3x+2y+(-1)z+4=0$). $d$ ne fait pas partie du vecteur normal : il
+          ne code que la position du plan, pas sa direction perpendiculaire.
+      - id: C
+        text: "$\\vec{n}(0,-2,-4)$"
+        correct: false
+        feedback: >
+          Ce vecteur est bien lié au plan, mais autrement : c'est un vecteur
+          directeur d'une droite CONTENUE dans le plan (obtenu à partir de
+          deux points du plan), pas le vecteur normal. Un vecteur qui vit
+          DANS le plan est orthogonal à la normale, pas égal à elle — ce
+          sont deux objets géométriques opposés.
+      - id: D
+        text: "$\\vec{n}(3,2,1)$"
+        correct: false
+        feedback: >
+          Erreur de signe sur la composante de $z$ : l'équation est
+          $3x+2y-z+4=0$, donc le coefficient de $z$ est $-1$, pas $+1$. Le
+          vecteur normal doit conserver ce signe négatif :
+          $\vec{n}(3,2,-1)$.
+    correct_feedback: >
+      Dans une équation $ax+by+cz+d=0$, le vecteur normal a pour coordonnées
+      les coefficients $(a,b,c)$ — jamais la constante $d$. Ici :
+      $\vec{n}(3,2,-1)$.
+    solution: |
+      **Lecture directe de l'équation $ax+by+cz+d=0$ (R6) :**
+      $$3x+2y+(-1)z+4=0 \implies \vec{n}(3,2,-1)$$
+
+  # ── R7 · positions relatives droite/droite ──────────────────────────────────
+  - id: GE-5
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [positions_relatives, droites_gauches]
+    stem: >
+      La droite $d_1$ passe par $A(0,0,0)$ avec pour vecteur directeur
+      $\vec{u_1}(1,1,0)$ ; la droite $d_2$ passe par $B(1,0,1)$ avec pour
+      vecteur directeur $\vec{u_2}(0,1,1)$. On vérifie que
+      $\vec{u_1}$ et $\vec{u_2}$ ne sont pas colinéaires, et que le système
+      obtenu en cherchant un point commun n'a pas de solution. Quelle est la
+      position relative de $d_1$ et $d_2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$d_1$ et $d_2$ sont non coplanaires (gauches) : directions non colinéaires, et aucun point commun."
+        correct: true
+      - id: B
+        text: "$d_1$ et $d_2$ sont sécantes, puisque leurs directions ne sont pas colinéaires."
+        correct: false
+        feedback: >
+          C'est vrai dans le plan : deux droites non parallèles s'y coupent
+          toujours. Mais dans l'espace, ce n'est plus automatique — il existe
+          une troisième dimension dans laquelle deux droites peuvent se
+          croiser sans jamais se toucher. Ici, la résolution du système ne
+          donne AUCUNE solution commune : les droites ne sont pas sécantes,
+          elles sont non coplanaires.
+      - id: C
+        text: "$d_1$ et $d_2$ sont parallèles, puisque leurs vecteurs directeurs sont proportionnels."
+        correct: false
+        feedback: >
+          $\vec{u_1}(1,1,0)$ et $\vec{u_2}(0,1,1)$ ne sont pas proportionnels
+          (aucun réel $k$ ne vérifie $1=0\times k$) : les deux droites n'ont
+          pas la même direction, donc elles ne peuvent pas être parallèles.
+      - id: D
+        text: "$d_1$ et $d_2$ sont confondues."
+        correct: false
+        feedback: >
+          Deux droites confondues doivent au minimum avoir des vecteurs
+          directeurs colinéaires — condition qui échoue déjà ici
+          ($\vec{u_1}$ et $\vec{u_2}$ ne sont pas proportionnels). Des
+          droites non parallèles ne peuvent jamais être confondues.
+    correct_feedback: >
+      Directions non colinéaires (pas parallèles) et système sans solution
+      (pas de point commun) : c'est exactement la signature des droites non
+      coplanaires — la troisième dimension leur permet de se croiser « en
+      apparence » sans jamais se toucher réellement.
+    solution: |
+      **Test de parallélisme :** $\vec{u_1}(1,1,0)$ et $\vec{u_2}(0,1,1)$ ne
+      sont pas colinéaires → $d_1$ et $d_2$ ne sont pas parallèles.
+
+      **Recherche d'un point commun**, en paramétrant $d_1:(t,t,0)$ et
+      $d_2:(1,s,1+s)$ :
+      $$t=1,\qquad t=s,\qquad 0=1+s$$
+
+      La première équation donne $s=1$ (via $t=1=s$), la troisième donne
+      $s=-1$ : contradiction, aucune solution commune.
+
+      **Conclusion :** ni parallèles, ni sécantes → $d_1$ et $d_2$ sont
+      **non coplanaires**.
+
+  # ── R8 · distance d'un point à un plan ──────────────────────────────────────
+  - id: GE-6
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [distance, plan]
+    stem: >
+      Le plan $\mathcal P$ a pour équation $x+2y+2z-3=0$. Quelle est la
+      distance du point $M(1,1,1)$ au plan $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{2}{3}$"
+        correct: true
+      - id: B
+        text: "$2$"
+        correct: false
+        feedback: >
+          Ce choix garde le numérateur $|1+2+2-3|=2$ mais oublie de diviser
+          par $\|\vec{n}\|=\sqrt{1^2+2^2+2^2}=3$. Le numérateur seul n'est
+          pas une distance : il faut le rapporter à la norme du vecteur
+          normal.
+      - id: C
+        text: "$\\dfrac{2}{5}$"
+        correct: false
+        feedback: >
+          Ce choix divise par la SOMME des coefficients, $1+2+2=5$, au lieu
+          de la norme $\sqrt{1^2+2^2+2^2}=3$. La formule utilise
+          $\sqrt{a^2+b^2+c^2}$ (la norme du vecteur normal), jamais
+          $a+b+c$.
+      - id: D
+        text: "$-\\dfrac{2}{3}$"
+        correct: false
+        feedback: >
+          Une distance est toujours positive ou nulle. Le signe de
+          $ax_0+by_0+cz_0+d$ dépend du côté du plan où se trouve le point —
+          c'est pour ça que la formule impose une valeur absolue au
+          numérateur.
+    correct_feedback: >
+      $d(M,\mathcal P) = \dfrac{|1\times1+2\times1+2\times1-3|}{\sqrt{1^2+2^2+2^2}}
+      = \dfrac{|2|}{3} = \dfrac{2}{3}$.
+    solution: |
+      **Application de la formule (R8) :**
+      $$d(M,\mathcal P) = \frac{|x_0+2y_0+2z_0-3|}{\sqrt{1^2+2^2+2^2}} = \frac{|1+2+2-3|}{\sqrt9} = \frac{2}{3}$$
