@@ -204,7 +204,7 @@ $$Q = I\,\Delta t = 0{,}150 \times 7200 = 1080\ \text{C}$$
 
 $$n(e^-) = \frac{Q}{F} = \frac{1080}{9{,}65\times10^{4}} \approx 1{,}12\times10^{-2}\ \text{mol}$$
 
-À l'anode, le zinc s'oxyde selon $Zn \to Zn^{2+} + 2\,e^-$ : chaque atome de zinc consommé libère deux électrons, donc :
+À l'anode, le zinc s'oxyde ; la demi-équation du couple $Zn^{2+}/Zn$ s'écrit avec la double flèche $Zn^{2+} + 2\,e^- \rightleftharpoons Zn$, lue ici dans le sens de l'oxydation. Chaque atome de zinc consommé libère deux électrons, donc :
 
 $$n(Zn) = \frac{n(e^-)}{2} \approx 5{,}6\times10^{-3}\ \text{mol}$$
 
