@@ -1,0 +1,326 @@
+notion: equations-differentielles
+skill_code: maths_equations_differentielles   # proposed; supabase-architect reconciles at step 7
+
+misconceptions: []
+
+items:
+
+  # ── R1 · y'=ay : la famille complète, pas une fonction isolée ───────────────
+  - id: EQDIFF-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_equations_differentielles
+    tags: [y_ay, famille_solutions]
+    stem: >
+      Quel est l'ensemble des solutions sur $\mathbb{R}$ de l'équation
+      différentielle $y' = 3y$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = Ce^{3x}$, $C \\in \\mathbb{R}$ quelconque"
+        correct: true
+      - id: B
+        text: "$y(x) = e^{3x}$"
+        correct: false
+        feedback: >
+          Ce choix oublie qu'il existe une famille entière de solutions, pas
+          une seule fonction isolée : pour tout réel $C$, $x \mapsto Ce^{3x}$
+          vérifie aussi $y'=3y$ (vérifie-le : sa dérivée est $3Ce^{3x}=3y$).
+          $e^{3x}$ n'est qu'UN membre de cette famille, celui où $C=1$ — rien
+          dans l'équation n'impose $C=1$ plutôt qu'une autre valeur.
+      - id: C
+        text: "$y(x) = Ce^{-3x}$, $C \\in \\mathbb{R}$"
+        correct: false
+        feedback: >
+          Erreur de signe sur l'exposant. Vérifie : la dérivée de $Ce^{-3x}$
+          est $-3Ce^{-3x} = -3y(x)$, ce qui vérifierait $y'=-3y$, pas
+          $y'=3y$. La règle $y'=ay \iff y=Ce^{ax}$ garde le signe de $a$ tel
+          quel dans l'exposant, elle ne l'inverse pas.
+      - id: D
+        text: "$y(x) = 3x + C$"
+        correct: false
+        feedback: >
+          Ce choix traite l'équation comme si elle s'écrivait $y'=3$ (une
+          primitive d'une constante), en ignorant que le membre de droite
+          dépend de $y$ lui-même, pas seulement de $x$. Vérifie : la dérivée
+          de $3x+C$ est $3$, une constante — alors que $3y(x)=3(3x+C)=9x+3C$
+          varie avec $x$. Les deux ne coïncident pas.
+    correct_feedback: >
+      $y'=ay$ (ici $a=3$) a pour ensemble de solutions COMPLET les fonctions
+      $x \mapsto Ce^{ax}$, pour $C \in \mathbb{R}$ quelconque — pas une
+      fonction isolée, une famille entière indexée par $C$.
+    solution: |
+      **Vérification qu'une famille marche :** pour $y(x)=Ce^{3x}$,
+      $$y'(x) = 3Ce^{3x} = 3\,y(x)$$
+      quel que soit $C \in \mathbb{R}$ : chaque valeur de $C$ donne une solution.
+
+      **Complétude (pourquoi il n'y en a pas d'autres) :** en posant
+      $z(x)=y(x)e^{-3x}$ pour une solution $y$ quelconque, on calcule
+      $z'(x)=e^{-3x}(y'(x)-3y(x))=0$, donc $z$ est constante — ce qui redonne
+      exactement $y(x)=Ce^{3x}$. Aucune autre forme n'est possible.
+
+  # ── R2 · y'=ay+b : le palier est -b/a, pas b ─────────────────────────────────
+  - id: EQDIFF-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [y_ay_b, solution_particuliere]
+    stem: >
+      Quelle est la solution générale sur $\mathbb{R}$ de
+      $y' = -2y + 6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = Ce^{-2x} + 3$"
+        correct: true
+      - id: B
+        text: "$y(x) = Ce^{-2x} + 6$"
+        correct: false
+        feedback: >
+          Ce choix recopie $b=6$ tel quel comme palier, au lieu de calculer
+          $-b/a$. Vérifie : si $y(x)=Ce^{-2x}+6$, alors $y'(x)=-2Ce^{-2x}$,
+          mais $-2y(x)+6 = -2Ce^{-2x}-12+6=-2Ce^{-2x}-6$ — les deux membres
+          diffèrent de $6$, ils ne coïncident jamais. Le palier n'est pas
+          $b$, c'est $-b/a$.
+      - id: C
+        text: "$y(x) = Ce^{-2x} - 3$"
+        correct: false
+        feedback: >
+          Le palier calculé a le mauvais signe : $-b/a = -6/(-2) = 3$, pas
+          $-3$. Vérifie : si $y(x)=Ce^{-2x}-3$, alors $-2y(x)+6 =
+          -2Ce^{-2x}+6+6=-2Ce^{-2x}+12 \neq y'(x)=-2Ce^{-2x}$ (l'écart
+          persiste, $12\neq 0$).
+      - id: D
+        text: "$y(x) = Ce^{-2x}$"
+        correct: false
+        feedback: >
+          Ce choix oublie complètement la solution particulière constante
+          — il ne traite que la partie homogène, comme si $b=0$. Or ici
+          $b=6\neq 0$ : sans le palier $+3$, $y'(x)=-2Ce^{-2x}$ ne peut
+          jamais égaler $-2y(x)+6=-2Ce^{-2x}+6$ (écart constant de $6$).
+    correct_feedback: >
+      Le palier est $y_p=-b/a=-6/(-2)=3$ (une fonction constante $y=3$
+      vérifie bien $0=-2\times 3+6$). La solution générale est le palier
+      plus la famille homogène du R1 : $y(x)=Ce^{-2x}+3$.
+    solution: |
+      **Étape 1 — solution constante (palier) :**
+      $$y_p = -\frac{b}{a} = -\frac{6}{-2} = 3$$
+
+      **Étape 2 — ramener au cas $y'=ay$ :** en posant $z=y-y_p$, on montre
+      $z'=-2z$ (R2), donc $z(x)=Ce^{-2x}$.
+
+      **Étape 3 — solution générale :**
+      $$y(x) = Ce^{-2x} + 3, \qquad C \in \mathbb{R}$$
+
+  # ── R3 · condition initiale en x0 ≠ 0 ─────────────────────────────────────────
+  - id: EQDIFF-3
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [condition_initiale, y_ay]
+    stem: >
+      La solution de $y' = 2y$ qui vérifie $y(1) = 6$ s'écrit, pour tout
+      $x \in \mathbb{R}$ :
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = 6e^{2(x-1)}$"
+        correct: true
+      - id: B
+        text: "$y(x) = 6e^{2x}$"
+        correct: false
+        feedback: >
+          Ce choix traite la condition $y(1)=6$ comme si elle était donnée
+          en $x_0=0$ — il pose $C=6$ directement sans résoudre
+          $Ce^{2\times 1}=6$. Or $e^{2}\neq 1$ : il faut d'abord isoler $C$
+          via $C=6e^{-2}$, pas court-circuiter cette étape.
+      - id: C
+        text: "$y(x) = 6e^{2x-1}$"
+        correct: false
+        feedback: >
+          Erreur dans le décalage de l'exposant : on a $C=6e^{-2}$, donc
+          l'exposant correct est $2x-2$ (soit $2(x-1)$), pas $2x-1$. Le
+          décalage doit être $a\times x_0 = 2\times 1=2$, pas $x_0=1$ tout
+          seul — il manque le facteur $a$.
+      - id: D
+        text: "$y(x) = 3e^{2x}$"
+        correct: false
+        feedback: >
+          Ce choix calcule $C = 6/2 = 3$, en divisant la valeur $6$ par le
+          coefficient $a=2$ — mais $C$ se trouve en résolvant
+          $Ce^{2\times 1}=6$ (une relation EXPONENTIELLE), pas en divisant
+          linéairement par $a$.
+    correct_feedback: >
+      La solution générale est $y(x)=Ce^{2x}$ (R1, $a=2$). La condition
+      $y(1)=6$ donne $Ce^{2}=6$, donc $C=6e^{-2}$, et
+      $y(x)=6e^{-2}e^{2x}=6e^{2(x-1)}$.
+    solution: |
+      **Étape 1 — solution générale :**
+      $$y(x) = Ce^{2x}$$
+
+      **Étape 2 — utiliser la condition initiale en $x_0=1$ :**
+      $$y(1) = Ce^{2} = 6 \implies C = 6e^{-2}$$
+
+      **Étape 3 — reporter :**
+      $$y(x) = 6e^{-2}\,e^{2x} = 6\,e^{2x-2} = 6\,e^{2(x-1)}$$
+
+  # ── R4 · y''+ω²y=0 : reconnaître ω, pas ω² ───────────────────────────────────
+  - id: EQDIFF-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [oscillateur, forme_generale]
+    stem: >
+      Les solutions sur $\mathbb{R}$ de l'équation différentielle
+      $y'' + 9y = 0$ sont les fonctions :
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = A\\cos(3x) + B\\sin(3x)$, $A, B \\in \\mathbb{R}$"
+        correct: true
+      - id: B
+        text: "$y(x) = A\\cos(9x) + B\\sin(9x)$, $A, B \\in \\mathbb{R}$"
+        correct: false
+        feedback: >
+          Ce choix utilise directement le coefficient $9$ comme pulsation,
+          en oubliant de prendre sa racine carrée. Ici $\omega^2=9$, donc
+          $\omega=\sqrt{9}=3$ — c'est $\omega$ qui apparaît dans $\cos(\omega
+          x)$ et $\sin(\omega x)$, pas $\omega^2$.
+      - id: C
+        text: "$y(x) = Ae^{3x} + Be^{-3x}$, $A, B \\in \\mathbb{R}$"
+        correct: false
+        feedback: >
+          Ce choix confond avec une équation de la forme $y''-9y=0$ (sans le
+          signe $+$), qui admettrait effectivement des solutions
+          exponentielles. Le signe $+$ dans $y''+9y=0$ change complètement
+          la nature des solutions : vérifie que $e^{3x}$ donne
+          $y''=9e^{3x}=9y$, pas $y''=-9y$ — $e^{3x}$ ne vérifie pas notre
+          équation.
+      - id: D
+        text: "$y(x) = A\\cos(3x)$"
+        correct: false
+        feedback: >
+          Ce choix oublie le terme en $\sin(3x)$. La solution générale a
+          DEUX constantes ($A$ et $B$), car l'équation est du second ordre
+          — une seule constante ne peut pas satisfaire deux conditions
+          initiales indépendantes ($y(0)$ et $y'(0)$).
+    correct_feedback: >
+      $\omega^2=9$ donne $\omega=3$ (car $\omega>0$ par convention). Les
+      solutions de $y''+\omega^2y=0$ sont $A\cos(\omega x)+B\sin(\omega x)$ —
+      ici $A\cos(3x)+B\sin(3x)$.
+    solution: |
+      **Identifier $\omega$ :**
+      $$\omega^2 = 9 \implies \omega = 3$$
+
+      **Solution générale (R4) :**
+      $$y(x) = A\cos(3x) + B\sin(3x), \qquad A,B \in \mathbb{R}$$
+
+  # ── R4 · déterminer A et B (ne pas oublier le facteur ω) ────────────────────
+  - id: EQDIFF-5
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [oscillateur, condition_initiale]
+    stem: >
+      On considère l'équation $y'' + 4y = 0$. Quelle est la solution qui
+      vérifie $y(0) = 2$ et $y'(0) = 6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = 2\\cos(2x) + 3\\sin(2x)$"
+        correct: true
+      - id: B
+        text: "$y(x) = 2\\cos(2x) + 6\\sin(2x)$"
+        correct: false
+        feedback: >
+          Ce choix pose $B=y'(0)=6$ directement, en oubliant de diviser par
+          $\omega=2$. Vérifie : avec $B=6$, $y'(x)=-4\sin(2x)+12\cos(2x)$,
+          donc $y'(0)=12 \neq 6$ — ça contredit la condition de départ. La
+          bonne relation est $B=y'(0)/\omega$.
+      - id: C
+        text: "$y(x) = 3\\cos(2x) + 2\\sin(2x)$"
+        correct: false
+        feedback: >
+          Les rôles de $A$ et $B$ sont inversés. $A$ est TOUJOURS fixé par
+          $y(0)$ (car $\sin(0)=0$ annule le terme en $B$ à $x=0$) : ici
+          $A=y(0)=2$, pas $3$. C'est $B$, pas $A$, qui dépend de $y'(0)$.
+      - id: D
+        text: "$y(x) = 2\\cos(2x) - 3\\sin(2x)$"
+        correct: false
+        feedback: >
+          Erreur de signe sur $B$. La dérivée est
+          $y'(x)=-2A\sin(2x)+2B\cos(2x)$ : à $x=0$, seul le terme en $B$
+          survit ($y'(0)=2B$), sans signe négatif — le signe moins de la
+          dérivée du cosinus ne s'applique qu'au terme en $A$, pas à celui
+          en $B$.
+    correct_feedback: >
+      $\omega=2$ (car $\omega^2=4$). $A=y(0)=2$. $B=y'(0)/\omega=6/2=3$. La
+      solution est $y(x)=2\cos(2x)+3\sin(2x)$.
+    solution: |
+      **Identifier $\omega$ :** $\omega^2=4 \implies \omega=2$.
+
+      **Déterminer $A$ (via $y(0)$) :**
+      $$A = y(0) = 2$$
+
+      **Déterminer $B$ (via $y'(0)$, sans oublier $\omega$) :**
+      $$y'(0) = B\omega \implies B = \frac{y'(0)}{\omega} = \frac{6}{2} = 3$$
+
+      **Solution :**
+      $$y(x) = 2\cos(2x) + 3\sin(2x)$$
+
+  # ── R5 · application RC : le palier de charge n'est pas 0 ───────────────────
+  - id: EQDIFF-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [application_physique, rc, solution_particuliere]
+    stem: >
+      Un condensateur de capacité $C_0$ se charge à travers une résistance
+      $R$, sous une tension constante $E$. La tension à ses bornes vérifie
+      $R C_0\, u_C' + u_C = E$. Quelle est la solution constante (le
+      palier) de cette équation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u_{C,p} = E$"
+        correct: true
+      - id: B
+        text: "$u_{C,p} = -E$"
+        correct: false
+        feedback: >
+          Erreur de signe : après avoir écrit l'équation sous la forme
+          $u_C'=au_C+b$ avec $a=-1/(RC_0)$ et $b=E/(RC_0)$, le palier est
+          $-b/a$ (avec le signe moins devant la fraction), pas $b/a$. Ici
+          $-b/a = -\big(E/(RC_0)\big)\big/\big(-1/(RC_0)\big) = E$, pas
+          $-E$.
+      - id: C
+        text: "$u_{C,p} = E/(RC_0)$"
+        correct: false
+        feedback: >
+          Ce choix recopie $b=E/(RC_0)$ tel quel, sans diviser par $a$ (et
+          sans le signe). Le palier d'une équation $y'=ay+b$ est
+          $-b/a$, jamais $b$ directement — recopier $b$ ignore le rôle de
+          $a$ dans la formule.
+      - id: D
+        text: "$u_{C,p} = 0$"
+        correct: false
+        feedback: >
+          Ce choix suppose que le condensateur tend toujours vers $0$,
+          comme dans une DÉCHARGE ($b=0$, pas de générateur). Mais ici on
+          charge le condensateur : le générateur impose $E\neq 0$, ce qui
+          déplace le palier loin de $0$, exactement jusqu'à $E$ — confondre
+          charge et décharge fait perdre de vue que la présence d'une
+          source change l'équilibre.
+    correct_feedback: >
+      En écrivant l'équation sous la forme $u_C'=au_C+b$ avec
+      $a=-1/(RC_0)$, $b=E/(RC_0)$, le palier vaut $-b/a=E$ — la tension de
+      régime permanent, celle imposée par le générateur.
+    solution: |
+      **Réécrire sous la forme $y'=ay+b$ :**
+      $$u_C' = -\frac{1}{RC_0}\,u_C + \frac{E}{RC_0}$$
+
+      **Palier :**
+      $$u_{C,p} = -\frac{b}{a} = -\frac{E/(RC_0)}{-1/(RC_0)} = E$$
+
+      Cohérent avec le résultat physique connu : en régime permanent, le
+      condensateur chargé atteint la tension du générateur, $E$.

@@ -1,0 +1,352 @@
+notion: systemes-oscillants
+skill_code: pc_systemes_oscillants
+misconceptions: []
+
+items:
+  - id: SO-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_simple, isochronisme, amplitude]
+    stem: >
+      Un pendule simple de longueur $L$ oscille au voisinage d'un lieu où
+      l'intensité de la pesanteur vaut $g$. On le lâche une première fois avec
+      un angle de $5^\circ$, une seconde fois avec un angle de $12^\circ$ (les
+      deux restent dans le domaine des petites oscillations). Que peut-on dire
+      de la période propre $T_0$ dans les deux cas ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0$ est la même dans les deux cas."
+        correct: true
+      - id: B
+        text: >-
+          $T_0$ est plus grande pour l'angle de $12^\circ$, car le trajet
+          parcouru à chaque aller-retour est plus long.
+        correct: false
+        feedback: >
+          Ce choix suppose que la période dépend de la distance parcourue,
+          donc de l'amplitude. Mais $T_0 = 2\pi\sqrt{L/g}$ : l'amplitude
+          $\theta_m$ n'apparaît nulle part dans cette formule, parce qu'elle
+          n'apparaît pas non plus dans l'équation linéarisée
+          $\ddot{\theta} + (g/L)\theta = 0$ obtenue avec l'approximation des
+          petites oscillations ($\sin\theta \approx \theta$). Un trajet plus
+          long est parcouru... à une vitesse angulaire proportionnellement
+          plus grande, et les deux effets se compensent exactement.
+      - id: C
+        text: >-
+          $T_0$ est plus petite pour l'angle de $12^\circ$, car la vitesse
+          moyenne du pendule est plus grande.
+        correct: false
+        feedback: >
+          Même erreur que le choix précédent, dans l'autre sens : la vitesse
+          moyenne est effectivement plus grande pour un lâcher à $12^\circ$,
+          mais ça ne change pas la durée d'un aller-retour, parce que le
+          trajet à parcourir est proportionnellement plus long lui aussi.
+          $T_0 = 2\pi\sqrt{L/g}$ ne contient aucune trace de l'amplitude.
+      - id: D
+        text: "On ne peut pas savoir sans connaître la masse du pendule."
+        correct: false
+        feedback: >
+          La masse n'intervient pas non plus : elle se simplifie complètement
+          dans l'établissement de l'équation du pendule simple (des deux
+          côtés de $mL\ddot{\theta} = -mg\sin\theta$), donc elle ne peut pas
+          réapparaître dans $T_0 = 2\pi\sqrt{L/g}$, qui ne dépend que de $L$
+          et $g$.
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{L/g}$ : seules $L$ et $g$ figurent dans cette formule.
+      Ni la masse ni l'amplitude n'y apparaissent — c'est l'isochronisme des
+      petites oscillations, une conséquence directe du fait qu'aucune des deux
+      ne figure dans l'équation différentielle linéarisée.
+    solution: |
+      **Équation du pendule simple, petites oscillations :**
+      $$\ddot{\theta} + \frac{g}{L}\theta = 0 \quad \Longrightarrow \quad T_0 = 2\pi\sqrt{\frac{L}{g}}$$
+
+      **Lecture de la formule :** seules $L$ et $g$ y figurent. Ni la masse
+      $m$ (simplifiée dès l'établissement de l'équation), ni l'amplitude
+      $\theta_m$ (absente de l'équation linéarisée elle-même) ne peuvent donc
+      influencer $T_0$, quel que soit l'angle de lâcher — tant qu'on reste
+      dans le domaine des petites oscillations où $\sin\theta \approx \theta$.
+
+  - id: SO-2
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_simple, isochronisme, masse]
+    stem: >
+      Deux pendules simples ont la même longueur de fil $L$ : le premier porte
+      une bille de masse $50\ \text{g}$, le second une bille de masse
+      $200\ \text{g}$ (quatre fois plus lourde). Lâchés du même petit angle,
+      au même instant : lequel des deux effectue son premier aller-retour le
+      plus vite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux effectuent l'aller-retour dans le même temps."
+        correct: true
+      - id: B
+        text: >-
+          La bille de $200\ \text{g}$ met moins de temps, car elle est plus
+          lourde et tombe plus vite.
+        correct: false
+        feedback: >
+          C'est la même confusion masse/poids qu'en chute libre : un objet
+          plus lourd ne « tombe » pas plus vite, et un pendule plus lourd
+          n'oscille pas plus vite non plus. Dans
+          $mL\ddot{\theta} = -mg\sin\theta$, la masse $m$ se simplifie des
+          deux côtés — elle ne joue aucun rôle dans le mouvement du pendule
+          simple, quelle que soit sa valeur.
+      - id: C
+        text: >-
+          La bille de $50\ \text{g}$ met moins de temps, car elle est plus
+          légère et réagit plus vite au rappel.
+        correct: false
+        feedback: >
+          Une masse plus faible n'accélère pas « plus vite au rappel » ici :
+          la force de rappel $-mg\sin\theta$ est elle-même proportionnelle à
+          $m$, donc le rapport force/masse (l'accélération angulaire) ne
+          dépend pas de $m$. La masse se simplifie complètement de
+          l'équation du mouvement.
+      - id: D
+        text: >-
+          Cela dépend de la matière dont sont faites les billes (acier,
+          plomb...).
+        correct: false
+        feedback: >
+          La nature du matériau n'intervient que par la masse (et éventuellement
+          la résistance de l'air, négligée ici), et la masse s'annule
+          complètement dans l'équation $\ddot{\theta} + (g/L)\theta = 0$. Seules
+          $L$ et $g$ déterminent $T_0$ ; la composition des billes n'a aucun
+          effet.
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{L/g}$ ne dépend pas de la masse : elle a été simplifiée
+      dès l'établissement de l'équation, des deux côtés de
+      $mL\ddot{\theta} = -mg\sin\theta$. Deux pendules simples de même
+      longueur ont toujours la même période, quelle que soit leur masse.
+    solution: |
+      **Établissement de l'équation :**
+      $$mL\ddot{\theta} = -mg\sin\theta \quad \Longrightarrow \quad \ddot{\theta} = -\frac{g}{L}\sin\theta$$
+
+      La masse $m$ disparaît par simplification avant même l'approximation
+      des petites oscillations. Donc :
+      $$T_0 = 2\pi\sqrt{\frac{L}{g}}$$
+
+      ne contient pas $m$ : les deux pendules, même longueur, ont exactement
+      la même période propre, quelle que soit la masse de leur bille.
+
+  - id: SO-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pulsation, frequence, definitions]
+    stem: >
+      Un oscillateur harmonique a une période propre $T_0 = 0{,}20\ \text{s}$.
+      Que vaut sa pulsation propre $\omega_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\omega_0 \\approx 31{,}4\\ \\text{rad/s}$"
+        correct: true
+      - id: B
+        text: "$\\omega_0 = 5\\ \\text{rad/s}$"
+        correct: false
+        feedback: >
+          Ce nombre, c'est $f_0 = 1/T_0 = 5\ \text{Hz}$ — la fréquence, pas la
+          pulsation. Ce choix confond les deux grandeurs : $\omega_0$ (en
+          rad/s) et $f_0$ (en Hz) ne sont égales que si on multiplie par le
+          facteur $2\pi$ manquant ici : $\omega_0 = 2\pi f_0 = 2\pi \times 5
+          \approx 31{,}4\ \text{rad/s}$.
+      - id: C
+        text: "$\\omega_0 = 0{,}20\\ \\text{rad/s}$"
+        correct: false
+        feedback: >
+          Ce choix recopie directement la valeur de $T_0$ comme si
+          $\omega_0 = T_0$. Ce sont deux grandeurs différentes, reliées par
+          $\omega_0 = 2\pi/T_0$ — il faut diviser $2\pi$ par $T_0$, pas
+          confondre les deux valeurs numériques.
+      - id: D
+        text: "$\\omega_0 \\approx 6{,}28\\ \\text{rad/s}$"
+        correct: false
+        feedback: >
+          $6{,}28 \approx 2\pi$ : ce choix s'arrête après avoir calculé « les
+          radians d'un cycle complet », mais oublie de diviser par $T_0$ pour
+          obtenir un RYTHME (des radians par seconde). $\omega_0 = 2\pi/T_0$,
+          pas $2\pi$ tout court — le résultat doit dépendre de la durée du
+          cycle.
+    correct_feedback: >
+      $\omega_0 = \dfrac{2\pi}{T_0} = \dfrac{2\pi}{0{,}20} \approx
+      31{,}4\ \text{rad/s}$. Le facteur $2\pi$ est incontournable pour passer
+      d'une durée (ou d'une fréquence) à une pulsation.
+    solution: |
+      $$\omega_0 = \frac{2\pi}{T_0} = \frac{2\pi}{0{,}20} \approx 31{,}4\ \text{rad/s}$$
+
+      **Vérification :** $f_0 = 1/T_0 = 5\ \text{Hz}$, et
+      $\omega_0 = 2\pi f_0 = 2\pi \times 5 \approx 31{,}4\ \text{rad/s}$ ✓ — les
+      deux méthodes donnent le même résultat, mais $5$ et $31{,}4$ ne sont pas
+      interchangeables : l'un est une fréquence, l'autre une pulsation.
+
+  - id: SO-4
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pulsation, frequence, definitions]
+    stem: >
+      Un pendule de torsion a une pulsation propre $\omega_0 = 4\pi\
+      \text{rad/s}$. Quelle est sa fréquence propre $f_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f_0 = 2\\ \\text{Hz}$"
+        correct: true
+      - id: B
+        text: "$f_0 = 4\\pi\\ \\text{Hz}$"
+        correct: false
+        feedback: >
+          Ce choix recopie la valeur numérique de $\omega_0$ (en rad/s) et la
+          renomme « Hz » sans aucune conversion. $\omega_0$ compte des
+          radians par seconde, une unité d'angle ; $f_0$ compte des cycles
+          par seconde. Il faut diviser par $2\pi$ pour passer de l'un à
+          l'autre : $f_0 = \omega_0/(2\pi)$.
+      - id: C
+        text: "$f_0 = 4\\ \\text{Hz}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'une division par $\pi$ au lieu de $2\pi$ — la
+          moitié du bon facteur a été oubliée. La relation exacte est
+          $f_0 = \omega_0/(2\pi)$, pas $\omega_0/\pi$.
+      - id: D
+        text: "$f_0 = 0{,}5\\ \\text{Hz}$"
+        correct: false
+        feedback: >
+          $0{,}5\ \text{s}$ est la valeur de la PÉRIODE $T_0 = 2\pi/\omega_0$,
+          pas de la fréquence. $T_0$ et $f_0$ sont reliées par
+          $f_0 = 1/T_0$ : ici $T_0 = 0{,}5\ \text{s}$ donne bien
+          $f_0 = 1/0{,}5 = 2\ \text{Hz}$, pas $0{,}5\ \text{Hz}$ — les deux
+          grandeurs ont été interverties.
+    correct_feedback: >
+      $f_0 = \dfrac{\omega_0}{2\pi} = \dfrac{4\pi}{2\pi} = 2\ \text{Hz}$. Le
+      pendule effectue deux oscillations complètes chaque seconde.
+    solution: |
+      $$f_0 = \frac{\omega_0}{2\pi} = \frac{4\pi}{2\pi} = 2\ \text{Hz}$$
+
+      **Recoupement :** $T_0 = 2\pi/\omega_0 = 2\pi/4\pi = 0{,}5\ \text{s}$, et
+      $f_0 = 1/T_0 = 1/0{,}5 = 2\ \text{Hz}$ ✓.
+
+  - id: SO-5
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [equation_differentielle, mecanisme, pendule_elastique]
+    stem: >
+      Un solide de masse $m$ est accroché à un ressort horizontal de raideur
+      $k$, sans frottement, sur un banc horizontal. Quelle est l'équation
+      différentielle vérifiée par $x(t)$, l'écart algébrique à l'équilibre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\ddot{x} + \\dfrac{k}{m}x = 0$"
+        correct: true
+      - id: B
+        text: "$\\ddot{x} - \\dfrac{k}{m}x = 0$"
+        correct: false
+        feedback: >
+          Erreur de signe : cette équation décrirait un écart qui s'emballe
+          exponentiellement, jamais une oscillation. La force de rappel du
+          ressort est $\vec{F}_{rappel} = -kx\,\vec{u}$ (le signe « $-$ » est
+          essentiel — elle ramène toujours vers l'équilibre) ; oublier ce
+          signe en projetant la deuxième loi de Newton change complètement la
+          nature du mouvement obtenu.
+      - id: C
+        text: "$m\\ddot{x} + kx = mg$"
+        correct: false
+        feedback: >
+          Ce choix ajoute un terme $mg$ comme si le poids agissait le long de
+          l'axe du mouvement. Mais le ressort est horizontal : le poids et la
+          réaction normale du banc se compensent verticalement (comme pour la
+          caisse tirée sur le sol, chapitre précédent) et n'apparaissent pas
+          du tout dans l'équation horizontale. Seule la force de rappel du
+          ressort agit selon $(Ox)$.
+      - id: D
+        text: "$\\dot{x} + \\dfrac{k}{m}x = 0$"
+        correct: false
+        feedback: >
+          Ce choix utilise la dérivée première (la vitesse) au lieu de la
+          dérivée seconde (l'accélération). La deuxième loi de Newton relie
+          la force à l'ACCÉLÉRATION, $\sum\vec{F}_{ext} = m\vec{a}_G$, donc à
+          $\ddot{x}$ — pas à $\dot{x}$. Une équation en $\dot{x}$ décrirait un
+          phénomène amorti sans inertie, pas un oscillateur mécanique sans
+          frottement.
+    correct_feedback: >
+      La deuxième loi de Newton, projetée sur l'axe du mouvement, donne
+      $-kx = m\ddot{x}$, soit $\ddot{x} + (k/m)x = 0$ : c'est l'équation de
+      l'oscillateur harmonique, dont la solution est
+      $x(t) = X_m\cos(\omega_0 t + \varphi)$ avec $\omega_0 = \sqrt{k/m}$.
+    solution: |
+      **Bilan des forces :** poids $\vec{P}$, réaction normale $\vec{N}$
+      (verticales, se compensent), force de rappel $\vec{F}_{rappel}=-kx\,\vec{u}$
+      (horizontale, seule force agissant selon $(Ox)$).
+
+      **Deuxième loi, projetée sur $(Ox)$ :**
+      $$-kx = m\ddot{x}$$
+      $$\ddot{x} + \frac{k}{m}x = 0$$
+
+  - id: SO-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [energie, mecanisme, pendule_elastique]
+    stem: >
+      Pour un pendule élastique horizontal sans frottement, à quel endroit de
+      la trajectoire l'énergie cinétique $E_c$ du solide est-elle maximale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Au passage par la position d'équilibre ($x=0$)."
+        correct: true
+      - id: B
+        text: >-
+          Au moment où l'écart $x$ est maximal (aux extrémités du mouvement).
+        correct: false
+        feedback: >
+          Aux extrémités, le solide s'arrête un instant pour repartir en sens
+          inverse : $\dot{x}=0$, donc $E_c=0$ à cet endroit précisément — c'est
+          l'énergie potentielle élastique qui y est maximale, pas l'énergie
+          cinétique. Ce choix confond le point d'écart maximal avec le point de
+          vitesse maximale ; ce sont deux instants opposés, décalés d'un quart
+          de période.
+      - id: C
+        text: >-
+          $E_c$ est constante tout au long du mouvement ; seule $E_{pe}$ varie.
+        correct: false
+        feedback: >
+          Si $E_c$ restait constante pendant que $E_{pe}$ varie, leur somme
+          $E_m = E_c + E_{pe}$ ne serait pas constante — ce qui contredirait
+          la conservation de l'énergie mécanique établie dans la leçon. En
+          réalité, $E_c$ ET $E_{pe}$ varient toutes les deux au cours du temps,
+          en s'échangeant l'une dans l'autre, de sorte que leur somme reste
+          fixe.
+      - id: D
+        text: >-
+          Cela dépend de la phase à l'origine $\varphi$, donc ça change d'une
+          expérience à l'autre.
+        correct: false
+        feedback: >
+          L'INSTANT où $E_c$ est maximale dépend bien de $\varphi$ (cela se
+          produit chaque fois que $x(t)=0$, ce qui arrive à des instants
+          différents selon le lancer) — mais l'ENDROIT sur la trajectoire, lui,
+          ne change jamais : c'est toujours la position d'équilibre. La
+          question porte sur le lieu, pas sur l'instant.
+    correct_feedback: >
+      À l'équilibre, $E_{pe} = \frac{1}{2}kx^2 = 0$ puisque $x=0$ ; toute
+      l'énergie mécanique y est donc cinétique. C'est là, et seulement là, que
+      la vitesse — et donc $E_c$ — est maximale.
+    solution: |
+      **Aux extrémités ($x=\pm X_m$) :** $\dot{x}=0 \Rightarrow E_c = 0$,
+      $E_{pe} = \frac{1}{2}kX_m^2$ (maximale).
+
+      **À l'équilibre ($x=0$) :** $E_{pe}=0$, donc, par conservation de
+      $E_m = E_c+E_{pe}$ :
+      $$E_c = E_m = \frac{1}{2}kX_m^2 \quad (\text{maximale})$$
+
+      $E_c$ et $E_{pe}$ sont donc maximales en des points opposés de la
+      trajectoire, jamais au même endroit.
