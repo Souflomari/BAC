@@ -8,42 +8,54 @@ items:
     skill_code: svt_dysfonctionnements_immunitaires
     tags: []
     stem: >
-      Quel type d'immunite la vaccination confere-t-elle ?
+      Quel type d'immunité la vaccination confère-t-elle ?
     type: mcq
     choices:
       - id: A
-        text: "Une immunite active et durable, car elle provoque la formation de cellules memoire"
+        text: "Une immunité active et durable, car c'est l'organisme du vacciné lui-même qui produit sa réponse et conserve des lymphocytes mémoire"
         correct: true
       - id: B
-        text: "Une immunite passive et immediate, car on injecte directement des anticorps"
+        text: "Une immunité passive et immédiate, car on injecte directement des anticorps"
         correct: false
         feedback: >
-          Ca, c'est la serotherapie. La vaccination n'injecte pas d'anticorps
-          tout prets : elle expose l'organisme a un antigene inoffensif pour
-          qu'il fabrique LUI-MEME sa reponse et sa memoire.
+          Ça, c'est la sérothérapie, pas la vaccination. Le vaccin n'injecte
+          aucun anticorps tout prêt : il apporte seulement un antigène rendu
+          inoffensif, et c'est l'organisme du vacciné qui sélectionne,
+          multiplie et différencie lui-même ses lymphocytes B et T pour
+          fabriquer SA propre réponse et SA propre mémoire. D'où une immunité
+          ACTIVE, pas passive.
       - id: C
-        text: "Une immunite qui agit des l'injection, sans delai"
+        text: "Une immunité qui agit dès l'injection, sans délai"
         correct: false
         feedback: >
-          Non : la reponse vaccinale demande plusieurs jours (le temps de la
-          selection clonale et de la production). C'est la serotherapie qui
-          agit immediatement.
+          Non : comme toute réponse primaire, la réponse vaccinale exige
+          d'abord la sélection puis l'expansion du clone de lymphocytes
+          spécifiques de l'antigène injecté, ce qui prend plusieurs jours à
+          quelques semaines. Seule la sérothérapie, qui apporte des anticorps
+          déjà tout faits, agit sans délai dès l'injection.
       - id: D
-        text: "Une protection definitive contre toutes les maladies"
+        text: "Une protection définitive contre toutes les maladies"
         correct: false
         feedback: >
-          Un vaccin protege contre UN agent precis (celui dont il porte
-          l'antigene), et souvent des rappels sont necessaires. Il n'immunise
-          pas contre tout.
+          Un vaccin protège contre UN agent précis (celui dont il porte
+          l'antigène), pas contre toutes les maladies, et des rappels sont
+          parfois nécessaires pour maintenir une population suffisante de
+          lymphocytes mémoire. Il n'immunise ni contre tout, ni forcément à
+          vie sans entretien.
     correct_feedback: >
-      Exact : le vaccin fait produire par l'organisme lui-meme des lymphocytes
-      memoire (immunite active), d'ou une protection differee mais durable.
+      Exact : le vaccin fait produire par l'organisme lui-même des
+      lymphocytes B et T mémoire (immunité active), d'où une protection
+      différée le temps de la réponse primaire, mais durable grâce à cette
+      mémoire.
     solution: |
-      La vaccination introduit un antigene rendu inoffensif. L'organisme monte
-      une reponse adaptative primaire et conserve des lymphocytes memoire.
-      Lors d'un contact ulterieur avec le vrai agent, la reponse secondaire est
-      rapide et intense. C'est une immunite ACTIVE (l'organisme fabrique sa
-      reponse) et DURABLE (grace a la memoire).
+      La vaccination introduit un antigène rendu inoffensif (agent atténué,
+      inactivé, ou simple fragment). L'organisme monte une réponse adaptative
+      primaire (sélection clonale, expansion, différenciation en plasmocytes
+      et en lymphocytes T cytotoxiques) et conserve des lymphocytes B et T
+      mémoire. Lors d'un contact ultérieur avec le véritable agent, la
+      réponse secondaire, appuyée sur cette mémoire, est rapide et intense.
+      C'est une immunité ACTIVE (l'organisme fabrique lui-même sa réponse) et
+      DURABLE (grâce à la mémoire).
 
   - id: DI-2
     rung: "R5"
@@ -51,43 +63,52 @@ items:
     skill_code: svt_dysfonctionnements_immunitaires
     tags: []
     stem: >
-      La serotherapie consiste a injecter directement des anticorps prets a
-      l'emploi. Quelle immunite obtient-on ?
+      La sérothérapie consiste à injecter directement des anticorps prêts à
+      l'emploi. Quelle immunité obtient-on ?
     type: mcq
     choices:
       - id: A
-        text: "Immediate mais de courte duree (passive), car le patient ne fabrique ni ces anticorps ni de cellules memoire"
+        text: "Immédiate mais de courte durée (immunité passive), car le patient reçoit des anticorps déjà fabriqués par un autre organisme, sans sélectionner ni activer lui-même le moindre lymphocyte, et ne constitue donc aucune cellule mémoire"
         correct: true
       - id: B
-        text: "Differee mais durable, comme un vaccin"
+        text: "Différée mais durable, comme un vaccin"
         correct: false
         feedback: >
-          C'est l'inverse. Les anticorps injectes agissent tout de suite, mais
-          comme le patient ne les produit pas lui-meme et ne garde pas de
-          memoire, la protection disparait quand ils sont degrades.
+          C'est l'inverse de la réalité. Les anticorps injectés agissent tout
+          de suite, sans le délai d'une réponse primaire ; mais comme le
+          patient ne les produit pas lui-même et ne développe aucune cellule
+          mémoire, ils sont progressivement dégradés et éliminés : la
+          protection s'efface en quelques semaines, contrairement à celle
+          d'un vaccin, différée mais durable.
       - id: C
-        text: "Durable, car les anticorps injectes se multiplient dans l'organisme"
+        text: "Durable, car les anticorps injectés se multiplient dans l'organisme"
         correct: false
         feedback: >
-          Les anticorps ne se multiplient pas (ce sont des molecules, pas des
-          cellules). Ils sont progressivement elimines, d'ou une protection
-          breve.
+          Les anticorps sont des molécules, pas des cellules vivantes : ils
+          ne se multiplient jamais dans l'organisme receveur. Au contraire,
+          ils sont progressivement reconnus comme étrangers et éliminés,
+          d'où une protection brève et non renouvelée.
       - id: D
-        text: "Aucune : injecter des anticorps ne sert a rien"
+        text: "Aucune : injecter des anticorps ne sert à rien"
         correct: false
         feedback: >
-          Au contraire, c'est tres utile en URGENCE (venin, toxine) : les
-          anticorps neutralisent immediatement la cible. Simplement, l'effet
-          ne dure pas.
+          Au contraire, c'est justement ce qui rend la sérothérapie précieuse
+          en URGENCE (venin, toxine) : les anticorps injectés neutralisent,
+          agglutinent ou marquent la cible dès leur arrivée, sans attendre la
+          lente sélection clonale d'une réponse primaire. Simplement, cette
+          protection ne dure pas, faute de mémoire.
     correct_feedback: >
-      Oui : anticorps tout prets = action immediate, mais sans production ni
-      memoire propre au patient, donc protection passive et breve.
+      Oui : des anticorps tout prêts agissent immédiatement, mais comme ils
+      ne sont ni produits ni renouvelés par le patient, et qu'aucune mémoire
+      ne se constitue, la protection reste passive et brève.
     solution: |
-      En serotherapie, on apporte des anticorps deja fabriques (par un autre
-      organisme). Ils neutralisent l'antigene DES l'injection : action
-      immediate. Mais le patient ne les produit pas et ne developpe pas de
-      cellules memoire ; les anticorps sont degrades en quelques semaines. La
-      protection est donc PASSIVE et COURTE.
+      En sérothérapie, on apporte des anticorps déjà fabriqués par un autre
+      organisme. Ils neutralisent l'antigène dès l'injection : action
+      immédiate, sans délai de sélection clonale. Mais le patient ne les
+      produit pas lui-même et ne développe aucune cellule mémoire ; ces
+      anticorps étrangers sont progressivement dégradés et éliminés en
+      quelques semaines. La protection est donc PASSIVE et COURTE, à
+      l'opposé de la vaccination.
 
   - id: DI-3
     rung: "R6"
@@ -95,42 +116,53 @@ items:
     skill_code: svt_dysfonctionnements_immunitaires
     tags: []
     stem: >
-      Une personne vient d'etre mordue par un serpent venimeux et sa vie est en
-      danger immediat. Quelle approche est adaptee ?
+      Une personne vient d'être mordue par un serpent venimeux et sa vie est
+      en danger immédiat. Quelle approche est adaptée ?
     type: mcq
     choices:
       - id: A
-        text: "La serotherapie, car son action est immediate"
+        text: "La sérothérapie, car elle apporte des anticorps déjà prêts, actifs dès l'injection, sans le délai qu'exigerait une réponse produite par l'organisme lui-même"
         correct: true
       - id: B
-        text: "La vaccination, car elle protege durablement"
+        text: "La vaccination, car elle protège durablement"
         correct: false
         feedback: >
-          Une vaccination mettrait plusieurs jours a agir : bien trop tard face
-          a un venin qui agit en quelques minutes ou heures. Il faut une action
-          IMMEDIATE, donc la serotherapie.
+          Une vaccination déclencherait une réponse primaire, qui exige
+          plusieurs jours de sélection puis d'expansion clonale avant de
+          produire des anticorps en quantité efficace : bien trop tard face
+          à un venin qui agit en quelques minutes ou heures. Il faut ici une
+          action IMMÉDIATE, donc la sérothérapie, quitte à ce que sa
+          protection soit brève.
       - id: C
-        text: "Attendre que l'organisme fabrique lui-meme ses anticorps"
+        text: "Attendre que l'organisme fabrique lui-même ses anticorps"
         correct: false
         feedback: >
-          La reponse adaptative primaire est trop lente pour une urgence
-          vitale. On apporte des anticorps deja prets (serotherapie).
+          Attendre reviendrait à laisser s'installer une réponse primaire,
+          bien trop lente (plusieurs jours) pour une urgence vitale. Il faut
+          apporter des anticorps déjà prêts depuis l'extérieur
+          (sérothérapie) plutôt que d'attendre que le patient les fabrique
+          lui-même.
       - id: D
-        text: "Un vaccin suivi immediatement d'un rappel"
+        text: "Un vaccin suivi immédiatement d'un rappel"
         correct: false
         feedback: >
-          Meme avec rappel, la production d'anticorps par l'organisme prend du
-          temps. En urgence, seule la serotherapie agit assez vite.
+          Même enchaînés, un vaccin puis un rappel exigent que l'organisme du
+          patient sélectionne et différencie ses propres lymphocytes, ce qui
+          prend du temps — le rappel n'est rapide que si une mémoire est déjà
+          installée depuis une primo-vaccination antérieure. En urgence
+          immédiate, seule l'injection d'anticorps tout faits (sérothérapie)
+          agit assez vite.
     correct_feedback: >
-      Exact : face a une urgence (venin, toxine), on injecte des anticorps deja
-      prets pour neutraliser tout de suite. La vaccination, lente, est
-      preventive, pas curative en urgence.
+      Exact : face à une urgence vitale (venin, toxine), on injecte des
+      anticorps déjà prêts pour neutraliser tout de suite la cible. La
+      vaccination, plus lente à agir, reste un outil préventif, pas curatif
+      en urgence immédiate.
     solution: |
-      Le choix depend du DELAI d'action requis. Un venin agit vite : il faut
-      neutraliser la toxine immediatement. Seule la serotherapie (anticorps
-      prets a l'emploi, immunite passive) offre cette action immediate. La
-      vaccination est preventive et lente : inadaptee a une urgence deja
-      declaree.
+      Le choix dépend du DÉLAI d'action requis. Un venin agit vite : il faut
+      neutraliser la toxine immédiatement. Seule la sérothérapie (anticorps
+      prêts à l'emploi, immunité passive) offre cette action immédiate. La
+      vaccination est préventive et lente à s'installer (le temps d'une
+      réponse primaire) : elle est inadaptée à une urgence déjà déclarée.
 
   - id: DI-4
     rung: "R2"
@@ -138,41 +170,51 @@ items:
     skill_code: svt_dysfonctionnements_immunitaires
     tags: []
     stem: >
-      Qu'est-ce qui caracterise une maladie auto-immune ?
+      Qu'est-ce qui caractérise une maladie auto-immune ?
     type: mcq
     choices:
       - id: A
-        text: "Une rupture de la tolerance au soi : le systeme immunitaire attaque les propres molecules de l'organisme"
+        text: "Une rupture de la tolérance au soi : un clone de lymphocytes auto-réactifs, qui aurait dû être éliminé ou rester silencieux, s'active et attaque les propres molécules ou cellules de l'organisme"
         correct: true
       - id: B
-        text: "Une reaction exageree du systeme immunitaire face a une substance etrangere inoffensive"
+        text: "Une réaction exagérée du système immunitaire face à une substance étrangère inoffensive"
         correct: false
         feedback: >
-          Ca, c'est une ALLERGIE (reaction excessive a un allergene EXTERIEUR).
-          Dans une maladie auto-immune, la cible n'est pas exterieure : c'est
-          le soi.
+          Ça, c'est une ALLERGIE : une réaction excessive dirigée contre un
+          allergène EXTÉRIEUR et normalement inoffensif (pollen, venin,
+          aliment). Dans une maladie auto-immune, la cible n'est pas un
+          intrus extérieur : c'est une molécule ou une cellule du soi
+          lui-même.
       - id: C
         text: "Une destruction des lymphocytes T4 par un virus"
         correct: false
         feedback: >
-          C'est le mecanisme du SIDA (deficit immunitaire du au VIH), pas une
-          maladie auto-immune. Ici il n'y a pas d'agression du soi par
-          lui-meme.
+          C'est le mécanisme du SIDA (déficit immunitaire dû au VIH, qui
+          détruit spécifiquement les LT4), pas celui d'une maladie
+          auto-immune. Ici, il n'y a ni virus ni perte de lymphocytes : le
+          système reste fonctionnel, mais il se trompe de cible en
+          s'attaquant au soi.
       - id: D
-        text: "Une incapacite totale a produire des anticorps"
+        text: "Une incapacité totale à produire des anticorps"
         correct: false
         feedback: >
-          Une maladie auto-immune n'est pas un DEFICIT : le systeme fonctionne
-          (parfois trop), mais il se trompe de cible en s'attaquant au soi.
+          Une maladie auto-immune n'est pas un DÉFICIT de production : le
+          système immunitaire fonctionne, parfois même avec excès
+          (auto-anticorps, lymphocytes T cytotoxiques actifs), mais il se
+          trompe de cible en s'attaquant aux molécules ou cellules du soi.
     correct_feedback: >
-      Oui : le probleme est une perte de la tolerance au soi. Le systeme, qui
-      devrait epargner les molecules du soi, les prend pour cibles.
+      Oui : le problème est une perte de la tolérance au soi. Un clone
+      auto-réactif qui aurait dû rester silencieux ou être éliminé s'active
+      et prend pour cible les molécules ou cellules propres à l'organisme.
     solution: |
-      Normalement, le systeme immunitaire tolere le soi (les marqueurs CMH et
-      molecules propres). Dans une maladie auto-immune, cette tolerance est
-      rompue : des lymphocytes ou auto-anticorps s'attaquent aux cellules ou
-      molecules de l'organisme lui-meme (ex. diabete de type 1, polyarthrite
-      rhumatoide).
+      Normalement, la tolérance immunitaire élimine ou neutralise, dès le
+      développement, les lymphocytes capables de reconnaître une molécule du
+      soi. Dans une maladie auto-immune, cette tolérance est rompue : un
+      clone de lymphocytes auto-réactifs survit, est activé, et s'attaque aux
+      cellules ou molécules de l'organisme lui-même — par exemple les
+      lymphocytes T cytotoxiques qui détruisent les cellules β du pancréas
+      (diabète de type 1), ou des auto-anticorps qui s'accumulent dans les
+      articulations (polyarthrite rhumatoïde).
 
   - id: DI-5
     rung: "R2"
@@ -185,39 +227,49 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La cible de la reaction : un element etranger inoffensif pour l'allergie, une molecule du soi pour l'auto-immunite"
+        text: "La cible de la réaction : un élément étranger inoffensif pour l'allergie, une molécule du soi pour l'auto-immunité"
         correct: true
       - id: B
-        text: "L'allergie touche les enfants, l'auto-immunite les adultes"
+        text: "L'allergie touche les enfants, l'auto-immunité les adultes"
         correct: false
         feedback: >
-          L'age n'est pas le critere. Les deux peuvent survenir a tout age. La
-          difference de fond est la NATURE de la cible attaquee.
+          L'âge n'est pas le critère : les deux peuvent survenir à tout âge
+          (on peut devenir allergique adulte, ou développer un diabète de
+          type 1 enfant). La différence de fond est la NATURE de la cible
+          attaquée, pas l'âge du patient.
       - id: C
-        text: "L'allergie est genetique, l'auto-immunite est infectieuse"
+        text: "L'allergie est génétique, l'auto-immunité est infectieuse"
         correct: false
         feedback: >
-          Ni l'une ni l'autre n'est "infectieuse", et les deux ont des
-          composantes de terrain. Le vrai critere est la cible : allergene
-          exterieur contre molecule du soi.
+          Ni l'une ni l'autre n'est « infectieuse » à proprement parler, et
+          les deux peuvent avoir une composante de terrain (génétique ou
+          autre). Le vrai critère qui les sépare est la cible de la
+          réaction : un allergène extérieur pour l'une, une molécule du soi
+          pour l'autre.
       - id: D
-        text: "L'allergie detruit les lymphocytes, l'auto-immunite les active"
+        text: "L'allergie détruit les lymphocytes, l'auto-immunité les active"
         correct: false
         feedback: >
-          Aucune des deux ne se resume a cela. Toutes deux sont des reponses
-          MAL DIRIGEES ; ce qui les separe, c'est CONTRE QUOI elles se
-          dirigent : le non-soi inoffensif ou le soi.
+          Aucune des deux ne se résume à cela : l'allergie, comme
+          l'auto-immunité, repose au contraire sur l'ACTIVATION de
+          lymphocytes (production d'IgE par des plasmocytes pour l'allergie ;
+          lymphocytes ou auto-anticorps pour l'auto-immunité). Ce qui les
+          sépare, c'est CONTRE QUOI cette activation se dirige : le non-soi
+          inoffensif, ou le soi.
     correct_feedback: >
-      Exact : les deux sont des dysfonctionnements par exces/erreur, mais
-      l'allergie vise un allergene EXTERIEUR inoffensif, l'auto-immunite vise
-      le SOI.
+      Exact : les deux sont des dysfonctionnements par excès ou erreur de
+      ciblage, mais l'allergie vise un allergène EXTÉRIEUR inoffensif, tandis
+      que l'auto-immunité vise le SOI, par rupture de tolérance.
     solution: |
-      Les deux sont des reponses immunitaires inappropriees, mais leur CIBLE
-      differe :
-      - allergie : reaction exageree contre un allergene EXTERIEUR et
-      normalement inoffensif (pollen, aliment) ;
-      - maladie auto-immune : agression des molecules ou cellules du SOI, par
-      rupture de la tolerance.
+      Les deux sont des réponses immunitaires inappropriées, mais leur CIBLE
+      diffère :
+      - allergie : réaction exagérée contre un allergène EXTÉRIEUR et
+      normalement inoffensif (pollen, venin, aliment), via des IgE fixées sur
+      des mastocytes qui libèrent brutalement de l'histamine lors d'un
+      contact ultérieur ;
+      - maladie auto-immune : agression des molécules ou cellules du SOI,
+      par rupture de la tolérance immunitaire normalement acquise dès le
+      développement.
 
   - id: DI-6
     rung: "R3"
@@ -225,40 +277,54 @@ items:
     skill_code: svt_dysfonctionnements_immunitaires
     tags: []
     stem: >
-      Pourquoi l'infection par le VIH conduit-elle a un effondrement des
-      defenses immunitaires ?
+      Pourquoi l'infection par le VIH conduit-elle à un effondrement des
+      défenses immunitaires ?
     type: mcq
     choices:
       - id: A
-        text: "Il infecte et detruit les lymphocytes T4, desorganisant la cooperation de toute la reponse immunitaire"
+        text: "Il reconnaît spécifiquement le récepteur CD4 porté par les lymphocytes T4, les infecte puis les détruit, désorganisant ainsi la coordination de toute la réponse adaptative"
         correct: true
       - id: B
-        text: "Il detruit directement tous les globules blancs de l'organisme"
+        text: "Il détruit directement tous les globules blancs de l'organisme"
         correct: false
         feedback: >
-          Le VIH cible specifiquement les LT4 (porteurs du recepteur qu'il
-          reconnait), pas indistinctement tous les leucocytes. C'est la perte
-          des LT4, chefs d'orchestre, qui paralyse le reste.
+          Le VIH ne détruit pas indifféremment tous les globules blancs : il
+          reconnaît spécifiquement le récepteur CD4, porté par les seuls
+          lymphocytes T4. C'est la perte progressive de cette population
+          précise — les coordinateurs de la réponse adaptative — qui
+          paralyse le reste, pas une destruction généralisée et immédiate de
+          toutes les cellules immunitaires.
       - id: C
-        text: "Il empeche uniquement la phagocytose"
+        text: "Il empêche uniquement la phagocytose"
         correct: false
         feedback: >
-          Le probleme n'est pas la phagocytose (immunite innee) mais la
-          destruction des LT4, qui coordonnent les reponses adaptatives
-          humorale et cellulaire.
+          Le problème n'est pas la phagocytose (un mécanisme de l'immunité
+          innée que le VIH ne cible pas) mais la destruction des LT4, qui
+          coordonnent normalement la différenciation des lymphocytes B en
+          plasmocytes et des lymphocytes T8 en lymphocytes T cytotoxiques. Ce
+          sont les deux voies de la réponse ADAPTATIVE qui s'effondrent, pas
+          la phagocytose.
       - id: D
         text: "Il fabrique des anticorps contre l'organisme"
         correct: false
         feedback: >
-          Le VIH ne fabrique pas d'anticorps : c'est un virus. Il detruit les
-          LT4 auxiliaires, sans lesquels la coordination immunitaire s'effondre.
+          Le VIH ne fabrique aucun anticorps : c'est un virus, pas une
+          cellule immunitaire ; confondre les deux mécanismes reviendrait à
+          confondre le VIH avec une maladie auto-immune. Le VIH détruit les
+          lymphocytes T4 auxiliaires, et c'est la perte de leur signal de
+          coordination qui effondre la coopération entre lymphocytes B et
+          T8.
     correct_feedback: >
-      Oui : les LT4 sont les coordinateurs de la reponse adaptative. En les
-      detruisant, le VIH prive humoral et cellulaire de leur chef d'orchestre,
-      d'ou les infections opportunistes du stade SIDA.
+      Oui : les LT4 coordonnent la réponse adaptative. En les détruisant, le
+      VIH prive les voies humorale et cellulaire de leur signal de
+      coordination, d'où les infections opportunistes qui caractérisent le
+      stade SIDA.
     solution: |
-      Le VIH infecte les lymphocytes T4 auxiliaires, cellules qui activent et
-      coordonnent a la fois la reponse humorale (LB) et la reponse cellulaire
-      (LT8). En detruisant progressivement les LT4, le virus desorganise toute
-      la cooperation cellulaire : au stade SIDA, l'organisme ne se defend plus
-      contre des agents habituellement benins (infections opportunistes).
+      Le VIH reconnaît le récepteur CD4 porté par les lymphocytes T4
+      auxiliaires, cellules qui coordonnent normalement la différenciation
+      des lymphocytes B en plasmocytes et des lymphocytes T8 en lymphocytes T
+      cytotoxiques. En détruisant progressivement les LT4 pendant plusieurs
+      années, le virus désorganise cette coopération cellulaire ; au stade
+      SIDA, l'organisme ne peut plus contenir des infections dites
+      opportunistes (ou certains cancers), qui deviennent la cause réelle et
+      indirecte de la mortalité.
