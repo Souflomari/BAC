@@ -15,9 +15,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle confond l'aprésentation (un accès seulement indirect, par analogie avec mon propre corps vécu, à une conscience que je ne perçois jamais elle-même) avec une perception directe de la conscience d'autrui -- ce que Husserl exclut explicitement : je ne perçois jamais directement que son corps."
-        correct: true
-      - id: B
         text: "Elle confond Husserl et Sartre : c'est la honte, pas l'aprésentation, qui permettrait un accès direct à la conscience d'autrui."
         correct: false
         feedback: >
@@ -26,7 +23,7 @@ items:
           donne pas non plus un accès direct à la conscience d'autrui -- elle
           révèle seulement que j'existe comme objet regardé, pas ce que
           l'autre pense en son for intérieur.
-      - id: C
+      - id: B
         text: "Elle manque le fait que Husserl nie toute possibilité d'attribuer une vie intérieure à autrui, qui resterait, pour lui, un pur objet parmi les objets du monde."
         correct: false
         feedback: >
@@ -35,8 +32,11 @@ items:
           comment autrui m'apparaît comme un alter ego, un semblable, et non
           comme une chose. Le problème des autres consciences n'est pas nié,
           mais il n'aboutit pas non plus à un pur objet sans vie intérieure.
+      - id: C
+        text: "Elle confond l'aprésentation (un accès seulement indirect à une conscience que je ne perçois jamais elle-même) avec une perception directe de la conscience d'autrui -- ce que Husserl exclut : je ne perçois directement que son corps."
+        correct: true
       - id: D
-        text: "Elle manque le fait que, pour Husserl, autrui n'est pas vraiment un « autre » moi-même mais purement et simplement moi-même, sans aucune différence."
+        text: "Elle manque le fait que, pour Husserl, autrui n'est pas vraiment un « autre » moi-même mais purement et simplement moi-même, un moi rigoureusement identique au mien, sans la moindre différence de perspective ni de vécu qui lui appartiendrait en propre."
         correct: false
         feedback: >
           L'alter ego husserlien reste littéralement un AUTRE moi-même :
@@ -72,7 +72,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'une reconnaissance obtenue d'un être qu'on ne reconnaît soi-même pas comme un égal ne vaut presque rien -- comme chercher l'admiration d'un miroir qu'on aurait soi-même jugé sans valeur : seule une reconnaissance mutuelle satisferait pleinement une conscience de soi."
+        text: "Parce qu'une reconnaissance obtenue d'un être qu'on ne reconnaît pas soi-même comme un égal ne vaut presque rien : seule une reconnaissance mutuelle satisferait pleinement une conscience de soi."
         correct: true
       - id: B
         text: "Parce que le maître, en réalité, perd physiquement le combat contre l'esclave, ce qui rend sa position intenable."
@@ -91,7 +91,7 @@ items:
           conscience de lui-même plus autonome et plus durable que celle du
           maître, précisément parce qu'il continue d'agir sur le monde.
       - id: D
-        text: "Parce que la dialectique du maître et de l'esclave décrit avant tout un rapport historique de domination économique, sans portée sur la conscience de soi en général."
+        text: "Parce que la dialectique du maître et de l'esclave décrit avant tout un rapport historique et social de domination économique entre les classes, sans réelle portée sur la structure de la conscience de soi en général."
         correct: false
         feedback: >
           Réduire la dialectique à une simple leçon sur la domination
@@ -130,9 +130,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'on peut ressentir cette honte même sans aucun risque réel de sanction -- elle naît de la simple reconnaissance, immédiate et non réfléchie, que j'existe, à cet instant, comme l'objet du regard d'un autre."
-        correct: true
-      - id: B
         text: "Parce que, dans cette scène précise, la personne qui surprend le voyeur est une autorité particulièrement sévère, ce qui rend la peur de la sanction hors de propos."
         correct: false
         feedback: >
@@ -141,8 +138,8 @@ items:
           façon même si le pas dans le couloir n'appartenait, en réalité, à
           personne -- ce qui montre que ce n'est pas la sanction qui est en
           cause.
-      - id: C
-        text: "Parce que Sartre nie que la honte soit un sentiment réellement vécu : ce serait, chez lui, une pure construction intellectuelle, sans dimension affective."
+      - id: B
+        text: "Parce que Sartre nie que la honte soit un sentiment réellement vécu : ce serait, chez lui, une pure construction intellectuelle et abstraite, entièrement dépourvue de la moindre dimension affective ou émotionnelle."
         correct: false
         feedback: >
           Sartre décrit au contraire la honte comme un sentiment vécu et
@@ -150,7 +147,7 @@ items:
           il ne la réduit pas à une opération purement intellectuelle, il en
           isole seulement l'origine structurelle (le fait d'être objet du
           regard), pas son caractère affectif.
-      - id: D
+      - id: C
         text: "Parce que la honte, chez Sartre, exprime avant tout le désir d'obtenir la reconnaissance et l'approbation de l'autre, comme chez Hegel."
         correct: false
         feedback: >
@@ -159,6 +156,9 @@ items:
           la honte sartrienne n'est pas une recherche d'approbation, c'est
           la découverte subie, immédiate, que j'existe comme objet pour un
           regard qui me précède.
+      - id: D
+        text: "Parce qu'on peut ressentir cette honte même sans aucun risque réel de sanction -- elle naît de la simple reconnaissance immédiate que j'existe, à cet instant, comme l'objet du regard d'un autre."
+        correct: true
     correct_feedback: >
       La honte peut surgir même en l'absence totale de risque de sanction :
       elle révèle simplement que j'existe, pour un autre, comme l'objet de
@@ -189,16 +189,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le sens structurel de la formule : être dépendant du regard d'un autre pour savoir ce que je suis, sans jamais pouvoir en reprendre le contrôle -- illustré par des personnages enfermés sans miroir dans Huis clos -- et non une plainte de bon sens sur la fréquentation d'autrui, ni une invitation à la solitude."
-        correct: true
-      - id: B
-        text: "Elle manque le fait que Sartre recommande, au contraire, de chercher systématiquement à dominer le regard de l'autre avant qu'il ne me regarde le premier."
+        text: "Elle manque le fait que Sartre recommande, au contraire, de chercher systématiquement à dominer et à devancer le regard de l'autre, afin de le fixer comme objet avant même qu'il ne puisse me regarder et me figer le premier dans ce duel des consciences."
         correct: false
         feedback: >
           Sartre décrit un conflit structurel entre deux libertés qui
           alternent entre regarder et être regardé -- il n'en tire aucune
           recommandation de « dominer l'autre en premier » ; ce serait
           prendre une description ontologique pour un conseil stratégique.
+      - id: B
+        text: "Elle manque le sens structurel de la formule : dépendre du regard d'un autre pour savoir qui je suis, sans jamais pouvoir en reprendre le contrôle -- et non une plainte sur la fréquentation d'autrui, ni un appel à la solitude."
+        correct: true
       - id: C
         text: "Elle manque le fait que cette formule appartient en réalité à Hegel, dans sa description du maître et de l'esclave."
         correct: false
@@ -246,9 +246,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le regard sartrien objective autrui et menace ma liberté, engendrant un conflit entre deux consciences ; le visage lévinassien, au contraire, ne m'objective ni ne me menace -- il commande une responsabilité asymétrique qui précède tout choix de ma part."
-        correct: true
-      - id: B
         text: "Le visage et le regard sont, chez Levinas comme chez Sartre, deux mots pour désigner exactement le même phénomène de conflit entre consciences."
         correct: false
         feedback: >
@@ -256,7 +253,7 @@ items:
           même intuition (autrui n'est pas un simple objet), mais en tirent
           des conséquences opposées -- conflit et menace pour la liberté chez
           Sartre, responsabilité et appel éthique chez Levinas.
-      - id: C
+      - id: B
         text: "C'est le regard, chez Sartre, qui fonde une responsabilité asymétrique envers autrui ; c'est le visage, chez Levinas, qui engendre un conflit des libertés."
         correct: false
         feedback: >
@@ -264,8 +261,11 @@ items:
           regard qui objective et engendre le conflit des libertés (R4) ;
           chez Levinas, c'est le visage qui fonde une responsabilité
           asymétrique, sans conflit de pouvoir (R5).
+      - id: C
+        text: "Le regard sartrien objective autrui et menace ma liberté, engendrant un conflit entre deux consciences ; le visage lévinassien, lui, ne m'objective ni ne me menace : il commande une responsabilité asymétrique qui précède tout choix."
+        correct: true
       - id: D
-        text: "Les deux concepts désignent, chez l'un comme chez l'autre, uniquement l'apparence physique du visage -- sa forme, ses traits, indépendamment de toute portée philosophique."
+        text: "Les deux concepts désignent, chez l'un comme chez l'autre, uniquement l'apparence physique et extérieure du visage -- sa forme, ses traits, la couleur des yeux ou de la peau --, indépendamment de toute portée proprement philosophique ou éthique."
         correct: false
         feedback: >
           Ni Sartre ni Levinas ne s'arrêtent à l'apparence physique : le
@@ -304,7 +304,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le mot exact de la formule kantienne : traiter l'humanité JAMAIS SIMPLEMENT comme un moyen -- ce qui autorise d'utiliser autrui comme moyen dans certains échanges, à condition de le traiter EN MEME TEMPS comme une fin, jamais de le réduire à un pur instrument."
+        text: "Elle manque le mot exact de la formule kantienne : JAMAIS SIMPLEMENT comme un moyen -- ce qui autorise d'utiliser autrui comme moyen, à condition de le traiter EN MEME TEMPS comme une fin, jamais de le réduire à un pur instrument."
         correct: true
       - id: B
         text: "Elle manque le fait que Kant autorise, au contraire, de traiter autrui uniquement comme un moyen dès lors que cela reste légal."
@@ -325,7 +325,7 @@ items:
           propre responsabilité asymétrique sur un concept différent, le
           visage (R5), sans faire appel à cette formule.
       - id: D
-        text: "Elle manque le fait que ce principe ne s'applique, chez Kant, qu'aux relations avec des inconnus, et non avec les personnes que je connais bien."
+        text: "Elle manque le fait que ce principe ne s'appliquerait, chez Kant, qu'aux seules relations avec des inconnus croisés une seule fois, et jamais aux personnes proches que je connais et fréquente de longue date, au quotidien et en qui j'ai toute confiance."
         correct: false
         feedback: >
           La formule kantienne vise explicitement « la personne de tout

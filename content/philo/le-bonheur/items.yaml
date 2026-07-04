@@ -14,9 +14,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que la richesse est un moyen recherché en vue d'autre chose (ce qu'elle permet d'acheter), et ne satisfait donc pas au critère de finalité que doit remplir le souverain bien."
-        correct: true
-      - id: B
         text: "Parce que la richesse dépend presque entièrement du hasard et des circonstances, et ne dépend donc pas de nous."
         correct: false
         feedback: >
@@ -24,7 +21,7 @@ items:
           dépend pas), pas l'argument d'Aristote. Aristote raisonne ici sur
           la nature même de la richesse comme moyen, jamais comme fin -- pas
           sur ce qui, en elle, dépendrait ou non de notre volonté.
-      - id: C
+      - id: B
         text: "Parce que la richesse procure un plaisir, et le plaisir, selon Aristote, est un mal moral qu'il faut éviter."
         correct: false
         feedback: >
@@ -32,8 +29,11 @@ items:
           seulement comme critère ULTIME du bonheur, parce qu'il est commun
           à l'homme et aux animaux, pas parce qu'il serait un mal moral à
           fuir.
+      - id: C
+        text: "Parce que la richesse est un moyen recherché en vue d'autre chose, et ne satisfait donc pas au critère de finalité du souverain bien."
+        correct: true
       - id: D
-        text: "Parce que la richesse n'est accessible qu'à une minorité de personnes, ce qui la rend injuste comme fondement du bonheur."
+        text: "Parce que la richesse n'est accessible qu'à une minorité de personnes, ce qui la rend injuste et socialement inégalitaire, et donc irrecevable comme fondement du bonheur."
         correct: false
         feedback: >
           Ce n'est pas l'argument d'Aristote : il ne s'agit pas d'une
@@ -70,9 +70,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le fait qu'Épicure identifie le plaisir véritable non à l'intensité des sensations, mais à l'ataraxie -- l'absence de trouble durable --, obtenue par un calcul qui limite les désirs aux désirs naturels et nécessaires."
-        correct: true
-      - id: B
         text: "Elle manque le fait qu'Épicure, en réalité, condamne tout plaisir comme moralement suspect."
         correct: false
         feedback: >
@@ -80,6 +77,9 @@ items:
           lui, le principe et la fin même de la vie heureuse -- il ne le
           condamne jamais. Ce qu'il redéfinit, c'est CE QUE le mot "plaisir"
           désigne, pas sa valeur.
+      - id: B
+        text: "Elle manque le fait que le plaisir véritable, chez Épicure, est l'ataraxie -- l'absence durable de trouble --, non l'intensité des sensations, d'où la limite qu'il met aux désirs."
+        correct: true
       - id: C
         text: "Elle manque le fait qu'Épicure est en réalité un eudémoniste, pour qui seule la vertu compte, indépendamment du plaisir."
         correct: false
@@ -90,7 +90,7 @@ items:
           indépendante de lui, comme chez les eudémonistes (Aristote, les
           stoïciens).
       - id: D
-        text: "Elle manque le fait qu'Épicure recommande de satisfaire indifféremment tous les désirs, naturels ou non, du moment qu'ils procurent une sensation agréable."
+        text: "Elle manque le fait qu'Épicure recommande de satisfaire indifféremment tous les désirs, naturels ou non, du moment qu'ils procurent une sensation agréable, sans jamais opérer le moindre tri entre eux."
         correct: false
         feedback: >
           C'est ignorer précisément le tri qu'Épicure demande d'opérer entre
@@ -130,9 +130,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'hédonisme fait du plaisir le critère et la fin du bonheur ; l'eudémonisme fait du bonheur une fin qui repose sur la raison et la vertu, sans l'identifier au plaisir."
-        correct: true
-      - id: B
         text: "L'hédonisme et l'eudémonisme désignent la même doctrine, sous deux noms différents forgés par des traducteurs différents."
         correct: false
         feedback: >
@@ -140,14 +137,14 @@ items:
           question (en quoi consiste le bonheur ?) avec des critères
           incompatibles -- le plaisir pour l'un, la vertu et la raison,
           indépendamment du plaisir, pour l'autre.
-      - id: C
+      - id: B
         text: "L'hédonisme est la doctrine des stoïciens ; l'eudémonisme est celle d'Épicure."
         correct: false
         feedback: >
           C'est inverser les attributions. Les stoïciens sont eudémonistes
           (ils radicalisent même la position d'Aristote : seule la vertu
           compte) ; Épicure est l'hédoniste de cette leçon.
-      - id: D
+      - id: C
         text: "L'hédonisme juge les actions à leurs conséquences sur la société entière ; l'eudémonisme juge les actions à la pureté de l'intention individuelle."
         correct: false
         feedback: >
@@ -156,6 +153,9 @@ items:
           distinction hédonisme/eudémonisme, qui porte sur CE QUI CONSTITUE
           le bonheur (le plaisir, ou la raison et la vertu), pas sur le
           critère de jugement moral d'une action.
+      - id: D
+        text: "L'hédonisme fait du plaisir le critère du bonheur ; l'eudémonisme le fait reposer sur la raison et la vertu, sans l'identifier au plaisir."
+        correct: true
     correct_feedback: >
       L'hédonisme (Épicure) identifie le bonheur au plaisir, redéfini comme
       absence de trouble. L'eudémonisme (Aristote, les stoïciens) fait
@@ -185,7 +185,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Régler son désir exclusivement sur ce qui dépend de nous (nos jugements, nos actions propres) et accueillir avec égalité d'âme ce qui ne dépend pas de nous."
+        text: "Régler son désir seulement sur ce qui dépend de nous -- jugements, actions propres -- et accueillir le reste avec égalité d'âme."
         correct: true
       - id: B
         text: "Ne plus rien désirer du tout, ni agir sur rien, pour éviter toute déception possible."
@@ -204,7 +204,7 @@ items:
           qui dépend de nous et ce qui n'en dépend pas -- pas sur un calcul
           de plaisirs et de douleurs.
       - id: D
-        text: "Essayer de maîtriser autant que possible les circonstances extérieures, pour qu'elles produisent toujours le résultat souhaité."
+        text: "Essayer de maîtriser autant que possible les circonstances extérieures et le cours des choses, pour qu'ils produisent toujours, quoi qu'il arrive, le résultat souhaité."
         correct: false
         feedback: >
           C'est l'inverse de la doctrine : les stoïciens enseignent à cesser
@@ -238,9 +238,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le bonheur ne peut fonder la morale, car il est trop indéterminé pour produire une loi universelle ; agir moralement rend seulement digne d'être heureux, sans garantir de l'être."
-        correct: true
-      - id: B
         text: "Pour Kant, le bonheur est le but ultime de la morale, à condition de le mériter d'abord par la vertu."
         correct: false
         feedback: >
@@ -249,7 +246,7 @@ items:
           moralité d'une action ne dépend jamais de sa capacité à produire du
           bonheur : le bonheur mérité n'est qu'une conséquence espérée,
           jamais le fondement, de l'action morale.
-      - id: C
+      - id: B
         text: "Pour Kant, rechercher le bonheur est immoral, et le sage doit y renoncer entièrement."
         correct: false
         feedback: >
@@ -257,8 +254,11 @@ items:
           qu'il puisse FONDER la morale. Rien, chez lui, n'interdit de
           rechercher son propre bonheur -- ce qui est exclu, c'est de faire
           de cette recherche le critère du bien agir.
+      - id: C
+        text: "Trop indéterminé pour produire une loi universelle, le bonheur ne peut fonder la morale ; agir moralement rend seulement digne d'être heureux, sans garantir de l'être."
+        correct: true
       - id: D
-        text: "Pour Kant, comme pour les utilitaristes, une action est morale si elle produit, au final, le plus de bonheur possible pour le plus grand nombre."
+        text: "Pour Kant, comme pour les utilitaristes, une action est morale si elle produit, au final, le plus de bonheur possible pour le plus grand nombre, ses conséquences seules décidant de sa valeur."
         correct: false
         feedback: >
           C'est la position utilitariste, que Kant rejette précisément : il
@@ -295,9 +295,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le bonheur intégral et durable est structurellement difficile à atteindre -- par la nature même du désir (Schopenhauer) ou par le prix qu'exige la vie en société (Freud) -- mais cela n'exclut pas des satisfactions réelles et momentanées."
-        correct: true
-      - id: B
         text: "Aucune forme de satisfaction n'est jamais possible, et il ne sert donc à rien de chercher à être heureux."
         correct: false
         feedback: >
@@ -305,6 +302,9 @@ items:
           thèse porte sur la difficulté structurelle d'un bonheur INTÉGRAL et
           définitif, pas sur l'impossibilité de toute satisfaction, même
           partielle et momentanée.
+      - id: B
+        text: "Le bonheur intégral et durable est structurellement difficile à atteindre -- par la nature du désir (Schopenhauer) ou le prix de la vie sociale (Freud) --, sans exclure des satisfactions réelles et momentanées."
+        correct: true
       - id: C
         text: "Le bonheur est parfaitement accessible à qui sait maîtriser ses désirs, comme le soutiennent également les stoïciens."
         correct: false
@@ -315,7 +315,7 @@ items:
           collective -- demeure, quel que soit le degré de maîtrise qu'on en
           a).
       - id: D
-        text: "Le problème qu'ils posent ne concerne que la vie en société ; un individu parfaitement isolé du monde social atteindrait, selon eux, un bonheur complet."
+        text: "Le problème qu'ils posent ne concerne que la vie en société ; un individu parfaitement isolé du monde social atteindrait, selon eux, un bonheur complet et sans la moindre ombre, la structure du désir n'y jouant alors aucun rôle."
         correct: false
         feedback: >
           Cela ignore l'argument de Schopenhauer, qui porte sur la structure

@@ -14,16 +14,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "« Individu » désigne une simple unité numérique -- cet être-ci et non un autre -- sans rien impliquer par elle-même quant à la raison ou aux droits ; « personne » désigne un statut plus exigeant, celui d'un sujet capable de se représenter lui-même dans le temps et reconnu digne de droits et de responsabilité."
-        correct: true
-      - id: B
-        text: "Les deux mots sont de simples synonymes : tout individu est une personne, et toute distinction entre eux relève d'une subtilité sans portée philosophique réelle."
+        text: "Les deux mots sont de purs synonymes, interchangeables dans n'importe quel contexte : tout individu est immédiatement une personne, et toute distinction que l'on voudrait tracer entre eux relève d'une subtilité verbale sans portée philosophique réelle."
         correct: false
         feedback: >
           Ce n'est pas ce que la leçon établit : « personne » désigne un
           statut supplémentaire, qui suppose un critère précis (cf. R2), pas
           un synonyme automatique d'« individu ». Confondre les deux revient
           à effacer la question même que la leçon pose.
+      - id: B
+        text: "« Individu » désigne une simple unité numérique -- cet être-ci et non un autre --, sans rien impliquer quant à la raison ou aux droits ; « personne » désigne un statut plus exigeant, celui d'un sujet reconnu digne de droits et de responsabilité."
+        correct: true
       - id: C
         text: "« Personne » désigne uniquement le fait, purement biologique, d'appartenir à l'espèce humaine, indépendamment de toute autre considération."
         correct: false
@@ -66,17 +66,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Être un être raisonnable, capable de se donner à lui-même sa propre loi (autonomie) -- ce qui lui confère une dignité, une valeur absolue sans équivalent, à la différence des choses qui n'ont qu'un prix, toujours remplaçables par un équivalent."
-        correct: true
-      - id: B
-        text: "Posséder, comme toute chose de grande valeur, un prix particulièrement élevé, qui la distingue des objets ordinaires."
+        text: "Posséder, comme toute chose de grande valeur sur un marché, un prix particulièrement élevé, bien supérieur à celui des objets ordinaires, qui suffirait à le distinguer de ces derniers et à fonder son statut de personne."
         correct: false
         feedback: >
           C'est confondre dignité et prix -- Kant oppose justement les deux :
           ce qui a un prix reste, par définition, remplaçable par un
           équivalent ; la dignité désigne au contraire une valeur qui
           n'admet aucun équivalent, quel que soit son montant.
-      - id: C
+      - id: B
         text: "Être capable de se souvenir de ses états passés et d'étendre sa conscience jusqu'à eux."
         correct: false
         feedback: >
@@ -85,7 +82,7 @@ items:
           qui fait qu'un être MÉRITE le respect dû à une personne, pas ce
           qui fait que ce même être reste, dans le temps, un seul et même
           sujet.
-      - id: D
+      - id: C
         text: "Appartenir, par sa seule naissance, à telle famille ou tel groupe social reconnu comme respectable."
         correct: false
         feedback: >
@@ -93,6 +90,9 @@ items:
           statut fondé sur la nature raisonnable de l'être -- exactement
           l'inverse du critère kantien, universel, qui vaut pour tout être
           raisonnable indépendamment de sa naissance.
+      - id: D
+        text: "Être un être raisonnable, capable de se donner à lui-même sa propre loi (autonomie) -- ce qui lui confère une dignité, valeur absolue sans équivalent, à la différence des choses, qui n'ont qu'un prix."
+        correct: true
     correct_feedback: >
       Kant fonde le statut de personne sur la seule nature raisonnable de
       l'être -- sa capacité d'autonomie -- qui lui confère une dignité sans
@@ -122,7 +122,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le point central de Locke : ce n'est pas la continuité du corps qui fonde, selon lui, l'identité personnelle, mais la continuité de la conscience -- la mémoire qui relie mes états passés à mon état présent -- une conscience qui peut se maintenir même si le corps change entièrement."
+        text: "Elle manque le point central de Locke : ce n'est pas la continuité du corps qui fonde l'identité personnelle, mais la continuité de la conscience -- la mémoire qui relie mes états passés à mon présent."
         correct: true
       - id: B
         text: "Elle manque le fait que Locke fonde en réalité l'identité personnelle sur le même critère que Kant : être un être raisonnable, une fin en soi."
@@ -133,7 +133,7 @@ items:
           répond à ce qui fait que CE MÊME être reste, dans le temps, une
           seule et même personne. Ne fonds pas ces deux critères en un seul.
       - id: C
-        text: "Elle manque le fait que, pour Locke, c'est une âme substantielle et immatérielle, identique à travers le temps, qui garantit l'identité personnelle."
+        text: "Elle manque le fait que, pour Locke, c'est une âme substantielle et immatérielle, rigoureusement identique à elle-même à travers tout le cours du temps, qui garantit seule l'identité personnelle du sujet."
         correct: false
         feedback: >
           C'est l'inverse : Locke évite précisément de fonder l'identité
@@ -174,9 +174,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Par l'introspection, on ne trouve jamais un « moi » stable derrière les perceptions, seulement une succession de perceptions particulières -- le moi n'est qu'un « faisceau de perceptions », une unité fabriquée après coup par l'imagination, non une substance que l'on pourrait observer."
-        correct: true
-      - id: B
         text: "C'est Locke, et non Hume, qui a le premier réduit le moi à un simple « faisceau de perceptions » sans unité réelle."
         correct: false
         feedback: >
@@ -184,7 +181,7 @@ items:
           continue, capable de mémoire, qui s'approprie ses états passés ;
           c'est Hume qui va plus loin et conteste jusqu'à l'existence d'une
           telle unité derrière les perceptions.
-      - id: C
+      - id: B
         text: "Hume confirme, par l'introspection, l'existence d'une âme substantielle qui unifie toutes les perceptions successives."
         correct: false
         feedback: >
@@ -192,8 +189,11 @@ items:
           jamais, par introspection, ce genre de substance unificatrice,
           seulement des perceptions distinctes qui se succèdent sans fil
           substantiel commun.
+      - id: C
+        text: "Par l'introspection, on ne trouve jamais un « moi » stable, seulement une succession de perceptions -- le moi n'est qu'un « faisceau de perceptions », une unité fabriquée après coup par l'imagination."
+        correct: true
       - id: D
-        text: "Hume soutient que le moi se définit par sa capacité à se donner à lui-même une loi morale, indépendamment de toute perception."
+        text: "Hume soutient que le moi se définit avant tout par sa capacité à se donner à lui-même une loi morale universelle, tout à fait indépendamment des perceptions particulières que l'introspection pourrait lui livrer au fil du temps."
         correct: false
         feedback: >
           C'est le critère kantien de l'être raisonnable et autonome (R2),
@@ -229,16 +229,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que la responsabilité suppose l'imputabilité : pouvoir attribuer un acte à un sujet capable d'en comprendre la portée et d'avoir pu agir autrement -- juger ainsi un être dépourvu de ce statut (un objet, un très jeune enfant, un individu jugé irresponsable au sens pénal) n'aurait aucun sens."
-        correct: true
-      - id: B
-        text: "Parce que seule une « personne morale » au sens juridique (une entreprise, une association) peut être poursuivie en justice -- jamais une personne physique."
+        text: "Parce que seule une « personne morale » au sens juridique -- une entreprise, une association, une collectivité territoriale -- peut être poursuivie et condamnée devant un tribunal, jamais un simple individu, une personne physique en chair et en os."
         correct: false
         feedback: >
           C'est l'inverse de la distinction juridique : personne physique et
           personne morale peuvent toutes deux être sujets de droit ; la
           responsabilité pénale, en particulier, concerne d'abord les
           personnes physiques capables de discernement.
+      - id: B
+        text: "Parce que la responsabilité suppose l'imputabilité : pouvoir attribuer un acte à un sujet capable d'en comprendre la portée et d'avoir pu agir autrement -- juger un être dépourvu de ce statut (un objet, un jeune enfant) n'aurait aucun sens."
+        correct: true
       - id: C
         text: "Parce que le droit tient pour responsable quiconque a matériellement causé un dommage, indépendamment de sa capacité à comprendre ou à choisir autrement."
         correct: false
@@ -287,9 +287,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Cesser de le traiter comme un sujet raisonnable, digne de respect et capable de répondre de ses actes, pour le réduire à un pur instrument ou objet interchangeable -- ce qui l'a, historiquement, privé à la fois de la dignité kantienne et de la reconnaissance comme sujet de droit."
-        correct: true
-      - id: B
         text: "Se sentir seul ou anonyme dans une grande ville, parmi des inconnus qui ne nous remarquent pas."
         correct: false
         feedback: >
@@ -297,14 +294,14 @@ items:
           ici, désigne une opération précise -- retirer à quelqu'un le
           statut moral et juridique de fin en soi et de sujet responsable --
           pas un simple sentiment ordinaire de solitude.
-      - id: C
-        text: "Changer légalement de nom ou de numéro d'identité administrative, sans que rien d'autre ne change dans le traitement qui vous est réservé."
+      - id: B
+        text: "Changer légalement de nom, de prénom ou de numéro d'identité administrative auprès des services de l'État civil, sans que rien d'autre ne change dans le traitement concret et quotidien qui continue de vous être réservé par les autres."
         correct: false
         feedback: >
           Un simple changement administratif, sans perte de dignité ni de
           reconnaissance comme sujet responsable, n'est pas ce que la leçon
           appelle dépersonnalisation.
-      - id: D
+      - id: C
         text: "Perdre, avec l'âge, une partie de ses souvenirs d'enfance, comme le montre Hume à propos du moi."
         correct: false
         feedback: >
@@ -312,6 +309,9 @@ items:
           d'un moi-substance (R4) avec l'acte social et moral de
           dépersonnalisation (R6) : oublier certains souvenirs d'enfance ne
           retire, par lui-même, le statut de personne à personne.
+      - id: D
+        text: "Cesser de traiter quelqu'un comme un sujet raisonnable, digne de respect et responsable de ses actes, pour le réduire à un pur instrument ou objet interchangeable, privé à la fois de dignité et de reconnaissance comme sujet de droit."
+        correct: true
     correct_feedback: >
       Dépersonnaliser, c'est cesser de reconnaître en quelqu'un une fin en
       soi capable de répondre de ses actes, pour le réduire à un objet ou un

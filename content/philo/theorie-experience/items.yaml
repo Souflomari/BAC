@@ -15,17 +15,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Hume soutient que toute connaissance, y compris les idées les plus abstraites, se ramène en dernière analyse à des impressions sensibles, tandis que Descartes soutient qu'il existe des vérités (le cogito, ou la nature de la cire saisie par l'entendement) accessibles à la raison seule, indépendamment des sens."
-        correct: true
-      - id: B
-        text: "Hume pense que la raison seule peut établir des vérités certaines, tandis que Descartes réduit toute connaissance à l'expérience sensible."
+        text: "Hume pense que la raison seule peut établir des vérités certaines, indépendamment de toute expérience, tandis que Descartes réduit toute connaissance à l'expérience sensible et fait de l'observation la seule source du savoir."
         correct: false
         feedback: >
           C'est exactement l'inverse des deux positions : c'est Hume
           l'empiriste (toute connaissance vient des impressions sensibles) et
           Descartes le rationaliste (certaines vérités sont accessibles à la
           raison seule, indépendamment des sens).
-      - id: C
+      - id: B
         text: "Les deux soutiennent en réalité la même position sur la source de la connaissance, sous un vocabulaire différent."
         correct: false
         feedback: >
@@ -33,7 +30,7 @@ items:
           équivalentes, à la question de savoir d'où vient la connaissance --
           l'expérience seule pour l'un, la raison seule (au moins pour
           certaines vérités) pour l'autre.
-      - id: D
+      - id: C
         text: "Hume et Descartes s'opposent seulement sur l'existence de Dieu, pas sur la source de la connaissance."
         correct: false
         feedback: >
@@ -41,6 +38,9 @@ items:
           oppose les deux philosophes précisément sur la source de la
           connaissance (expérience sensible contre raison seule), pas sur une
           autre question.
+      - id: D
+        text: "Hume ramène toute connaissance, même la plus abstraite, à des impressions sensibles, quand Descartes admet des vérités -- le cogito, la nature de la cire -- accessibles à la raison seule, indépendamment des sens."
+        correct: true
     correct_feedback: >
       Hume (empirisme) ramène toute idée à des impressions sensibles ;
       Descartes (rationalisme) soutient qu'au moins certaines vérités sont
@@ -72,23 +72,23 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Qu'elle établit, au mieux, une conjonction constante entre la tisane et la guérison, mais ne prouve logiquement ni que la tisane est la cause de la guérison (le rhume aurait pu guérir seul), ni qu'elle continuera de fonctionner -- aucune accumulation d'observations passées ne garantit logiquement une conclusion universelle."
-        correct: true
-      - id: B
-        text: "Qu'elle prouve, avec une quasi-certitude, que la tisane est efficace, puisqu'aucune exception n'a jamais été observée en quarante ans."
+        text: "Qu'elle prouve, avec une quasi-certitude, que la tisane est bien efficace et qu'elle est la cause de la guérison, puisqu'aucune exception n'a jamais été observée en quarante ans d'usage répété, sans le moindre échec ni la moindre exception."
         correct: false
         feedback: >
           C'est exactement l'erreur inductiviste que Hume dénonce : voir mille
           cygnes blancs ne prouve pas que tous les cygnes le sont -- aucune
           longueur de la série d'observations, même sans exception, ne rend
           une conclusion universelle logiquement certaine.
-      - id: C
+      - id: B
         text: "Qu'elle ne prouve rigoureusement rien, et qu'il faut donc conclure que la tisane n'a aucun effet."
         correct: false
         feedback: >
           L'absence de preuve définitive de l'efficacité de la tisane ne
           prouve pas non plus son inefficacité -- c'est l'erreur inverse,
           explicitement signalée dans l'encadré « Erreur à éviter » de R2.
+      - id: C
+        text: "Qu'elle établit au mieux une conjonction constante entre tisane et guérison, sans prouver que la tisane en est la cause ni qu'elle marchera encore : aucune accumulation d'observations passées ne garantit une conclusion universelle."
+        correct: true
       - id: D
         text: "Qu'elle prouve seulement que grand-mère croit sincèrement en sa tisane, ce qui suffit à en garantir l'efficacité réelle."
         correct: false
@@ -127,10 +127,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'expérience scientifique part d'une hypothèse précise, formulée à l'avance, qui décide ce qu'il faut observer et comment le tester (par exemple en comparant un groupe traité à un groupe non traité) -- alors que l'observation de grand-mère se contente d'enregistrer des cas favorables sans jamais isoler ni comparer aucune condition."
+        text: "L'expérience part d'une hypothèse formulée à l'avance, qui fixe quoi observer et comment le tester (groupe traité contre groupe non traité) ; l'observation de grand-mère ne fait qu'enregistrer des cas favorables, sans rien isoler ni comparer."
         correct: true
       - id: B
-        text: "L'expérience scientifique consiste seulement à répéter l'observation un plus grand nombre de fois, jusqu'à atteindre un nombre de cas suffisant pour conclure."
+        text: "L'expérience scientifique consiste seulement à répéter l'observation un plus grand nombre de fois, jusqu'à atteindre un nombre de cas suffisant pour conclure avec assurance, sans jamais formuler la moindre hypothèse préalable ni construire de comparaison entre des conditions différentes."
         correct: false
         feedback: >
           Cela reste une simple accumulation inductive (le problème même de
@@ -183,16 +183,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "En construisant une expérience qui prédit un résultat précis, interdit si l'hypothèse est fausse (par exemple : aucune différence entre le groupe traité et le groupe non traité), l'expérimentateur expose réellement l'hypothèse au risque d'être réfutée -- ce qu'aucune observation non guidée par une hypothèse ne peut faire."
-        correct: true
-      - id: B
-        text: "En accumulant le plus grand nombre possible d'observations favorables à l'hypothèse, jusqu'à ce qu'elle devienne certaine."
+        text: "En accumulant le plus grand nombre possible d'observations favorables à l'hypothèse, jusqu'à ce qu'elle devienne certaine et qu'aucun doute ne subsiste, sans jamais construire de test qui pourrait, en principe, la mettre en défaut ou chercher à la réfuter par une observation contraire."
         correct: false
         feedback: >
           C'est reproduire exactement la confusion inductiviste que R2 et R4
           rejettent toutes les deux : la falsifiabilité ne consiste pas à
           empiler des confirmations, mais à construire un test qui pourrait,
           en principe, réfuter l'hypothèse.
+      - id: B
+        text: "En construisant une expérience dont le résultat prédit serait interdit si l'hypothèse était fausse (aucune différence entre groupe traité et non traité), l'expérimentateur expose l'hypothèse à la réfutation, ce qu'aucune observation sans hypothèse ne permet."
+        correct: true
       - id: C
         text: "En modifiant l'hypothèse après coup pour qu'elle explique n'importe quel résultat observé, quel qu'il soit."
         correct: false
@@ -238,17 +238,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La sensibilité fournit la matière de la connaissance (a posteriori, donnée par l'expérience), et l'entendement fournit la forme -- des concepts a priori comme la causalité -- qui l'organise ; aucune des deux facultés ne suffit seule à produire une connaissance."
-        correct: true
-      - id: B
-        text: "Kant affirme, comme l'empirisme, que toute connaissance dérive uniquement de l'expérience sensible, sans qu'aucun concept a priori ne soit nécessaire."
+        text: "Kant affirme, comme l'empirisme, que toute connaissance dérive uniquement de l'expérience sensible, sans qu'aucun concept a priori de l'entendement ne soit jamais nécessaire pour l'organiser ou la mettre en forme."
         correct: false
         feedback: >
           C'est mal lire Kant comme un pur empiriste : « des intuitions sans
           concepts sont aveugles » dit précisément le contraire -- la
           sensibilité seule, sans les concepts de l'entendement, ne produit
           aucune connaissance.
-      - id: C
+      - id: B
         text: "Kant affirme, comme le rationalisme, que la raison seule, sans le secours d'aucune expérience, peut connaître le contenu du monde réel."
         correct: false
         feedback: >
@@ -256,7 +253,7 @@ items:
           contenu sont vides » dit précisément que les concepts seuls, sans
           la matière fournie par l'expérience, ne donnent non plus aucune
           connaissance.
-      - id: D
+      - id: C
         text: "Les concepts a priori de l'entendement sont des idées innées qui contiennent déjà, avant toute expérience, une information précise sur le monde."
         correct: false
         feedback: >
@@ -264,6 +261,9 @@ items:
           contenu propre, qui ne produit une connaissance qu'appliquée à une
           matière donnée par l'expérience -- avec une idée innée qui porterait
           déjà, en elle-même, un contenu sur le monde.
+      - id: D
+        text: "La sensibilité fournit la matière (a posteriori, donnée par l'expérience), l'entendement la forme (des concepts a priori comme la causalité) qui l'organise ; ni l'une ni l'autre ne suffit seule à connaître."
+        correct: true
     correct_feedback: >
       La connaissance suppose toujours deux éléments : la matière donnée par
       la sensibilité (a posteriori) et la forme fournie par l'entendement (les
@@ -292,9 +292,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elles ne sont pas logées à la même enseigne : la conviction de grand-mère n'a jamais été formulée de façon à pouvoir être réfutée par une observation précise, alors qu'une hypothèse testée selon la méthode de Bernard a été réellement exposée au risque d'être mise en défaut -- même si, dans les deux cas, aucune certitude absolue et définitive n'est jamais atteinte."
-        correct: true
-      - id: B
         text: "Puisqu'aucune théorie scientifique n'est jamais prouvée avec une certitude absolue, la conviction de grand-mère et une hypothèse rigoureusement testée se valent finalement autant l'une que l'autre."
         correct: false
         feedback: >
@@ -303,15 +300,18 @@ items:
           les convictions se valent) -- exactement l'erreur déjà signalée en
           la-verite, R8 : l'une des deux démarches a été exposée au risque de
           la réfutation, l'autre non.
-      - id: C
+      - id: B
         text: "Puisque la méthode de Bernard permet de tester une hypothèse, elle permet forcément d'arriver à une certitude absolue, contrairement à la conviction non testée de grand-mère."
         correct: false
         feedback: >
           Cela contredit R2 et R4 : même une hypothèse rigoureusement testée
           et corroborée n'est jamais prouvée avec une certitude absolue --
           elle reste seulement non-encore-réfutée.
+      - id: C
+        text: "Elles diffèrent : la conviction de grand-mère n'a jamais été formulée de façon à pouvoir être réfutée, alors qu'une hypothèse testée selon Bernard a été réellement exposée au risque d'être mise en défaut -- sans qu'aucune des deux n'atteigne jamais une certitude absolue."
+        correct: true
       - id: D
-        text: "La conviction de grand-mère est en réalité plus fiable, puisqu'elle repose sur quarante années d'expérience personnelle directe, alors que la méthode de Bernard repose sur des groupes artificiellement construits."
+        text: "La conviction de grand-mère est en réalité plus fiable, puisqu'elle repose sur quarante années d'expérience personnelle directe et sans faille, alors que la méthode de Bernard ne repose que sur des groupes artificiellement construits en laboratoire, loin de toute expérience réelle."
         correct: false
         feedback: >
           C'est l'inverse du point établi par la leçon : quarante ans

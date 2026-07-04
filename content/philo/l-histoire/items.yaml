@@ -15,10 +15,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "« La mémoire » est une trace vécue et subjective, gardée par un individu ou un groupe ; « l'histoire » est le récit construit par l'historien selon une méthode critique, à partir de traces ; « l'Histoire » est le devenir collectif réel de l'humanité, dont ce récit essaie de rendre compte."
-        correct: true
-      - id: B
-        text: "Ce sont trois mots pour une même réalité : la mémoire d'un témoin, le récit d'un historien et le devenir collectif de l'humanité coïncident nécessairement, puisqu'ils portent tous sur le même passé."
+        text: "Ce sont trois mots pour une seule et même réalité : la mémoire d'un témoin, le récit d'un historien et le devenir collectif réel de l'humanité coïncident nécessairement et se recouvrent, puisqu'ils portent tous, au fond, sur le même passé unique et parfaitement identique."
         correct: false
         feedback: >
           La leçon distingue justement ces trois réalités : un témoignage
@@ -26,7 +23,7 @@ items:
           et aucun des deux ne restitue le devenir collectif (Histoire) dans
           sa totalité -- les fondre en un seul mot efface la question même
           que R5 va poser (l'objectivité de l'historien).
-      - id: C
+      - id: B
         text: "« L'histoire », comme discipline, désigne le devenir collectif réel de l'humanité ; « l'Histoire », avec une majuscule, désigne seulement le récit qu'on en fait dans un manuel scolaire."
         correct: false
         feedback: >
@@ -34,7 +31,7 @@ items:
           (discipline) est le récit construit par l'historien ; l'Histoire
           (processus) est le devenir collectif réel dont ce récit essaie de
           rendre compte.
-      - id: D
+      - id: C
         text: "« La mémoire » désigne exclusivement les souvenirs personnels d'un individu, jamais ceux d'un groupe ou d'un peuple."
         correct: false
         feedback: >
@@ -42,6 +39,9 @@ items:
           un individu OU chez un groupe (une famille, un peuple peuvent se
           souvenir collectivement d'un même événement) -- restreindre la
           mémoire au seul individu manque une partie de la définition.
+      - id: D
+        text: "« La mémoire » est une trace vécue et subjective, gardée par un individu ou un groupe ; « l'histoire » est le récit que l'historien construit selon une méthode critique ; « l'Histoire » est le devenir collectif réel dont ce récit tente de rendre compte."
+        correct: true
     correct_feedback: >
       La mémoire est un vécu subjectif et partiel ; l'histoire (discipline)
       est un travail critique construit sur des traces ; l'Histoire
@@ -74,9 +74,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le point central de la ruse de la raison : ce sont de VRAIES passions, librement exercées (l'ambition d'un César, par exemple), qui servent, sans coercition extérieure ni plan explicite, une fin rationnelle plus large -- la nécessité se réalise PAR cette liberté des passions, non en l'annulant."
-        correct: true
-      - id: B
         text: "Elle manque le fait que la ruse de la raison est en réalité une thèse de Marx sur les rapports de production, et non une thèse de Hegel."
         correct: false
         feedback: >
@@ -85,8 +82,11 @@ items:
           et de la liberté à travers les passions humaines -- Marx (R3)
           soutient une thèse différente, fondée sur les rapports de
           production et la lutte des classes, pas sur l'Esprit.
+      - id: B
+        text: "Elle manque le point central de la ruse de la raison : ce sont de VRAIES passions, librement exercées (l'ambition d'un César), qui servent, sans coercition ni plan explicite, une fin rationnelle plus large -- la nécessité se réalise PAR cette liberté, non en l'annulant."
+        correct: true
       - id: C
-        text: "Elle manque le fait que, pour Hegel, aucun individu particulier -- ni César, ni Alexandre, ni Napoléon -- n'a jamais joué de rôle dans la réalisation de l'Histoire, qui se passerait entièrement des actions humaines concrètes."
+        text: "Elle manque le fait que, pour Hegel, aucun individu particulier -- ni César, ni Alexandre, ni Napoléon -- n'a jamais joué le moindre rôle réel dans la réalisation de l'Histoire, qui se passerait entièrement des actions et des passions humaines concrètes, aussi grandes fussent-elles."
         correct: false
         feedback: >
           C'est l'inverse : Hegel prend justement ces grands individus
@@ -131,9 +131,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Pour Marx, ce ne sont pas les idées qui déterminent l'être social, mais l'inverse : les rapports de production (l'infrastructure) déterminent les idées, le droit, la religion (la superstructure) -- un renversement frontal de Hegel, qui faisait au contraire descendre l'Histoire matérielle d'une Idée."
-        correct: true
-      - id: B
         text: "Le matérialisme historique est une thèse hégélienne, que Marx se serait contenté de reprendre et de renommer sans rien y changer."
         correct: false
         feedback: >
@@ -143,7 +140,7 @@ items:
           précisément à ce schéma d'avoir la démarche "sur la tête", et le
           retourne en plaçant la cause du côté des rapports matériels de
           production, pas des idées.
-      - id: C
+      - id: B
         text: "Pour Marx, l'Histoire avance par la seule évolution pacifique des idées politiques et religieuses, sans qu'aucun conflit économique n'y joue de rôle déterminant."
         correct: false
         feedback: >
@@ -152,8 +149,11 @@ items:
           jamais, selon Marx, par la seule évolution des idées, mais par la
           lutte des classes -- l'affrontement entre ceux qui profitent des
           rapports existants et ceux qu'ils exploitent.
+      - id: C
+        text: "Pour Marx, ce ne sont pas les idées qui déterminent l'être social, mais l'inverse : les rapports de production (infrastructure) déterminent les idées, le droit, la religion (superstructure) -- l'exact renversement de Hegel, qui faisait dériver l'Histoire d'une Idée."
+        correct: true
       - id: D
-        text: "Le matérialisme historique soutient que seules les circonstances matérielles contingentes -- un puits, une lettre, une dispute -- expliquent l'Histoire, sans qu'aucun rapport de classe n'y intervienne."
+        text: "Le matérialisme historique soutiendrait que seules des circonstances matérielles purement contingentes -- un puits creusé là, une lettre égarée, une dispute de hasard -- expliquent tout le cours de l'Histoire, sans qu'aucun rapport de classe n'y intervienne jamais de façon déterminante."
         correct: false
         feedback: >
           C'est confondre le matérialisme historique de Marx (R3), qui
@@ -195,7 +195,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le point précis de la critique d'Aron : la contingence de l'Histoire ne nie pas que chaque événement ait des causes réelles et nombreuses -- elle conteste seulement qu'une seule loi nécessaire, connaissable à l'avance, aurait garanti que les choses se passent ainsi plutôt qu'autrement."
+        text: "Elle manque le point précis d'Aron : la contingence ne nie pas que chaque événement ait des causes réelles et nombreuses -- elle conteste seulement qu'une loi nécessaire, connaissable à l'avance, ait garanti que les choses se passent ainsi plutôt qu'autrement."
         correct: true
       - id: B
         text: "Elle manque le fait qu'Aron, comme Hegel et Marx, défend au contraire l'existence d'une nécessité unique qui gouvernerait tout le cours de l'Histoire."
@@ -206,7 +206,7 @@ items:
           sa façon -- sa position n'est pas une nécessité de plus, mais une
           critique de toute nécessité de ce type.
       - id: C
-        text: "Elle manque le fait que la critique de la contingence appartient en réalité au matérialisme historique de Marx, qui aurait le premier insisté sur le rôle du hasard en histoire."
+        text: "Elle manque le fait que la critique de la contingence appartiendrait en réalité au seul matérialisme historique de Marx, qui aurait, le premier, insisté sur le rôle décisif du pur hasard et de l'accident imprévisible dans le cours entier de l'histoire humaine et de ses grandes révolutions."
         correct: false
         feedback: >
           C'est une mauvaise attribution : Marx (R3) affirme au contraire
@@ -251,17 +251,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'historien ne dispose que de traces incomplètes et non neutres (documents, témoignages) qu'il doit soumettre à une critique rigoureuse des sources ; cette absence d'accès direct exige donc une méthode plus exigeante, pas moins de rigueur -- l'objectivité n'est pas niée, mais redéfinie comme un travail critique, non comme une copie du passé."
-        correct: true
-      - id: B
-        text: "Puisque l'historien n'observe jamais directement le passé, Bloch en conclut que l'objectivité en histoire est un mot vide de sens, et que tout récit historique en vaut, au fond, un autre."
+        text: "Puisque l'historien n'observe jamais directement le passé lui-même, Bloch en conclurait que l'objectivité en histoire n'est qu'un mot vide de sens, et que tout récit historique en vaudrait finalement bien un autre, sans critère de départage ni de vérité possible."
         correct: false
         feedback: >
           C'est l'inverse de la position de Bloch : il ne renonce jamais à
           l'exigence d'objectivité -- il la redéfinit comme une méthode
           critique rigoureuse (la critique des sources), précisément parce
           que l'accès direct au passé fait défaut.
-      - id: C
+      - id: B
         text: "Bloch soutient au contraire que l'historien, comme le physicien en laboratoire, peut observer et reproduire directement les événements du passé qu'il étudie."
         correct: false
         feedback: >
@@ -269,7 +266,7 @@ items:
           physicien, l'historien n'a jamais accès au phénomène lui-même,
           seulement à des traces qui en subsistent -- documents, objets,
           témoignages.
-      - id: D
+      - id: C
         text: "Bloch réserve ce problème d'accès indirect aux seuls témoignages oraux, comme celui d'un grand-parent -- les documents écrits, eux, donneraient un accès direct et complet au passé."
         correct: false
         feedback: >
@@ -277,6 +274,9 @@ items:
           -- écrite ou orale -- ne donne un accès direct au passé lui-même ;
           toutes doivent être soumises à la même critique des sources
           (authenticité, cohérence avec d'autres sources indépendantes).
+      - id: D
+        text: "L'historien ne dispose que de traces incomplètes et non neutres, qu'il doit soumettre à une critique rigoureuse des sources ; cette absence d'accès direct redéfinit l'objectivité comme un travail critique exigeant, non comme une copie fidèle du passé."
+        correct: true
     correct_feedback: >
       L'historien ne perçoit jamais le passé lui-même, seulement des traces
       partielles -- ce qui impose une critique rigoureuse des sources, et
@@ -305,18 +305,18 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que la mémoire collective, laissée sans critique, peut elle-même être manipulée ou instrumentalisée -- mobilisée pour légitimer une position présente ou entretenir un ressentiment perpétuel ; Ricœur appelle « juste mémoire » l'équilibre entre ne pas oublier les victimes et ne pas laisser la mémoire se figer en légende partisane."
-        correct: true
-      - id: B
-        text: "Parce que, pour Ricœur, aucun événement du passé ne mérite réellement d'être retenu par la mémoire collective, l'oubli étant toujours préférable au souvenir."
+        text: "Parce que, pour Ricœur, aucun événement du passé, aussi grave soit-il, ne mériterait réellement d'être retenu par la mémoire collective des peuples, l'oubli étant à ses yeux toujours préférable au souvenir."
         correct: false
         feedback: >
           C'est le contraire de la thèse de Ricœur : il part au contraire
           de l'idée que certains passés -- des crimes de grande ampleur --
           ne peuvent, moralement, être livrés à l'oubli, sous peine
           d'achever l'injustice commise envers leurs victimes.
+      - id: B
+        text: "Parce que la mémoire collective, laissée sans critique, peut être manipulée pour légitimer une position présente ou entretenir un ressentiment ; Ricœur appelle « juste mémoire » l'équilibre entre ne pas oublier les victimes et ne pas figer le souvenir en légende partisane."
+        correct: true
       - id: C
-        text: "Parce que le devoir de mémoire, selon Ricœur, se confond exactement avec le travail critique de l'historien décrit en R5 -- les deux ne formeraient qu'une seule et même exigence."
+        text: "Parce que le devoir de mémoire, selon Ricœur, se confondrait exactement avec le travail critique de reconstitution des faits mené par l'historien et décrit en R5 -- les deux ne formeraient, au fond, qu'une seule et même exigence, sans aucune différence réelle de nature ni de méthode."
         correct: false
         feedback: >
           La leçon distingue les deux : le devoir de mémoire est une

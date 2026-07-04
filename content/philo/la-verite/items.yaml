@@ -14,15 +14,15 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il existe une adéquation entre cet énoncé et la réalité : l'énoncé est vrai si, et seulement si, il pleut effectivement -- indépendamment de la conviction de celui qui le prononce ou de l'accord des autres à son sujet."
-        correct: true
-      - id: B
-        text: "L'énoncé s'intègre sans contradiction à l'ensemble des autres énoncés que je tiens déjà pour vrais."
+        text: "L'énoncé s'intègre sans contradiction à l'ensemble des autres énoncés que je tiens déjà pour vrais, en parfait accord interne avec eux."
         correct: false
         feedback: >
           C'est le critère de la théorie de la COHÉRENCE (R3), pas celui de
           la correspondance : Aristote exige une adéquation avec le réel
           lui-même, pas seulement un accord interne entre énoncés.
+      - id: B
+        text: "Il y a adéquation entre l'énoncé et la réalité : il est vrai si, et seulement si, il pleut effectivement."
+        correct: true
       - id: C
         text: "La personne qui prononce cet énoncé en est absolument certaine, sans le moindre doute."
         correct: false
@@ -67,16 +67,13 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Qu'un système d'énoncés peut être parfaitement cohérent -- sans la moindre contradiction interne -- et pourtant rigoureusement faux : la cohérence interne ne garantit jamais, à elle seule, la correspondance avec le réel."
-        correct: true
-      - id: B
-        text: "Que la cohérence et la correspondance désignent, en réalité, exactement le même critère de vérité, appliqué à deux domaines différents."
+        text: "Que la cohérence et la correspondance désignent, en réalité, exactement le même critère de vérité, appliqué à deux domaines différents et donc toujours interchangeables."
         correct: false
         feedback: >
           Ce sont deux critères distincts, qui peuvent se dissocier -- c'est
           précisément ce que montre l'exemple : un système cohérent
           (Ptolémée) qui ne correspond pourtant pas au réel.
-      - id: C
+      - id: B
         text: "Que Ptolémée avait raison, puisque son modèle a permis de faire des prédictions astronomiques exactes pendant des siècles."
         correct: false
         feedback: >
@@ -84,13 +81,16 @@ items:
           théorie est vraie -- la Terre n'est pas immobile au centre de
           l'univers, malgré la cohérence et l'utilité prédictive, un temps,
           du modèle de Ptolémée.
-      - id: D
+      - id: C
         text: "Que la cohérence interne d'un système est un critère inutile, sans aucune valeur pour juger de la vérité d'un énoncé."
         correct: false
         feedback: >
           La leçon ne rejette pas la cohérence comme sans valeur -- elle en
           montre seulement la limite : cohérent ne veut pas dire
           automatiquement vrai, pas que la cohérence ne compte pour rien.
+      - id: D
+        text: "Qu'un système d'énoncés peut être parfaitement cohérent et pourtant faux : la cohérence interne ne garantit jamais, à elle seule, la correspondance au réel."
+        correct: true
     correct_feedback: >
       La cohérence est un critère accessible sans sortir de la pensée, mais
       elle ne suffit pas : un système peut être parfaitement cohérent,
@@ -117,23 +117,23 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Un obstacle interne, logé dans l'esprit de celui qui cherche à connaître -- une habitude de pensée, une évidence spontanée (l'opinion, le sens commun) -- qu'il faut activement rompre pour construire une connaissance scientifique, et non un simple manque de données ou de moyens matériels."
-        correct: true
-      - id: B
-        text: "Un manque de données ou d'instruments qui empêche, provisoirement, d'accéder à la vérité, et que l'accumulation de nouvelles observations suffit à résorber."
+        text: "Un manque de données ou d'instruments qui empêche, provisoirement, d'accéder à la vérité, et que la seule accumulation de nouvelles observations, dans le même sens, suffit à résorber, sans qu'aucune rupture dans la manière de penser ne soit requise."
         correct: false
         feedback: >
           C'est confondre l'obstacle épistémologique (interne, une manière
           de penser à rompre) avec un obstacle purement matériel ou
           pratique -- celui-là se résout en accumulant plus de données dans
           le même sens, ce que Bachelard juge précisément insuffisant.
-      - id: C
+      - id: B
         text: "La théorie scientifique concurrente qu'il faut réfuter par l'expérience avant d'établir la sienne."
         correct: false
         feedback: >
           Un obstacle épistémologique n'est pas une théorie rivale
           extérieure -- c'est une résistance interne à l'esprit du
           chercheur lui-même, une évidence trop vite acceptée.
+      - id: C
+        text: "Un obstacle interne à l'esprit du chercheur -- une habitude de pensée, une évidence spontanée (l'opinion, le sens commun) -- qu'il faut rompre pour connaître, non un simple manque de moyens matériels."
+        correct: true
       - id: D
         text: "La difficulté à faire cohabiter deux systèmes d'énoncés également cohérents mais incompatibles."
         correct: false
@@ -174,7 +174,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le fait même de douter est déjà un acte de pensée -- ce qui prouve, sans faille possible, qu'il existe un sujet pensant qui l'accomplit : « je pense, donc je suis »."
+        text: "Douter est déjà un acte de pensée, ce qui prouve qu'il existe un sujet pensant qui l'accomplit : « je pense, donc je suis »."
         correct: true
       - id: B
         text: "L'existence du monde extérieur et la fiabilité des sens, puisque le doute, une fois poussé à son terme, finit par les confirmer."
@@ -231,9 +231,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Qu'être certain, même totalement et sincèrement, ne garantit jamais qu'on est dans le vrai : la certitude est un état subjectif du sujet qui affirme, la vérité une propriété de l'énoncé lui-même, et les deux peuvent parfaitement se dissocier."
-        correct: true
-      - id: B
         text: "Que les deux témoignages sont également vrais, chacun selon la vérité propre à celui qui l'énonce."
         correct: false
         feedback: >
@@ -241,15 +238,15 @@ items:
           -- ils ne peuvent pas être vrais tous les deux à la fois ; dire
           « chacun sa vérité » ici confond la sincérité de la conviction
           avec la vérité de l'énoncé.
-      - id: C
-        text: "Que le témoin le plus certain de lui a nécessairement raison, puisque le doute serait, lui, le signe d'un souvenir moins fiable."
+      - id: B
+        text: "Que le témoin le plus certain de lui a nécessairement raison, puisque le doute serait, lui, le signe d'un souvenir moins fiable, la force de la conviction mesurant alors, à elle seule, la vérité du témoignage."
         correct: false
         feedback: >
           C'est exactement l'erreur que ce rung dénonce : le DEGRÉ de
           certitude d'un témoin ne garantit rien quant à la vérité de son
           témoignage -- des témoins sincères et sûrs d'eux se sont déjà
           trompés, y compris ensemble.
-      - id: D
+      - id: C
         text: "Qu'aucun des deux témoignages ne peut être vrai, puisque la présence d'un désaccord prouve qu'aucune vérité n'existe sur cette question."
         correct: false
         feedback: >
@@ -257,6 +254,9 @@ items:
           vérité -- il prouve seulement qu'au moins l'un des deux témoins
           se trompe ; le fait lui-même (ce qui s'est réellement passé)
           reste déterminé, même si on peine à l'établir avec certitude.
+      - id: D
+        text: "Qu'être certain, même sincèrement et totalement, ne garantit jamais d'être dans le vrai : la certitude est un état subjectif du sujet, la vérité une propriété de l'énoncé, et les deux peuvent se dissocier."
+        correct: true
     correct_feedback: >
       La certitude est un état subjectif ; la vérité, une propriété de
       l'énoncé. Les deux peuvent parfaitement se dissocier -- être certain
@@ -287,10 +287,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'une théorie scientifique doit interdire certains résultats observables, de sorte qu'une observation future puisse, en principe, la contredire et la réfuter -- une théorie qu'aucune observation ne pourrait jamais mettre en défaut ne prend aucun risque, et ne peut donc jamais être mise sérieusement à l'épreuve."
-        correct: true
-      - id: B
-        text: "Parce qu'une théorie scientifique doit être prouvée définitivement vraie par un nombre suffisant d'observations qui la confirment."
+        text: "Parce qu'une théorie scientifique doit être prouvée définitivement vraie par un nombre suffisant d'observations qui la confirment, l'accumulation des confirmations finissant par établir sa vérité de manière certaine, définitive et hors de tout doute."
         correct: false
         feedback: >
           C'est l'inverse de la logique de Popper : aucun nombre
@@ -298,6 +295,9 @@ items:
           définitivement vraie -- c'est justement pour cela qu'il faut un
           autre critère, la falsifiabilité, plutôt que l'accumulation de
           confirmations.
+      - id: B
+        text: "Parce qu'une théorie scientifique doit interdire certains résultats observables, pour qu'une observation puisse en principe la réfuter : celle qu'aucune observation ne pourrait mettre en défaut ne prend aucun risque testable."
+        correct: true
       - id: C
         text: "Parce qu'une théorie scientifique doit être fréquemment réfutée par l'expérience pour progresser."
         correct: false
@@ -308,7 +308,7 @@ items:
           succès, à de nombreux tests sérieux, sans jamais avoir été
           réfutée.
       - id: D
-        text: "Parce qu'une théorie qui explique n'importe quel résultat observable est, au contraire, plus puissante et donc plus scientifique qu'une théorie plus limitée."
+        text: "Parce qu'une théorie qui explique n'importe quel résultat observable est, au contraire, plus puissante et donc plus scientifique qu'une théorie plus limitée, qui s'interdit d'avance certaines observations."
         correct: false
         feedback: >
           C'est exactement l'erreur que Popper dénonce : une théorie
