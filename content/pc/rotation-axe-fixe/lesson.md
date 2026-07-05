@@ -98,6 +98,8 @@ Le signe traduit le sens dans lequel la force tend à faire tourner le solide, p
 
 Pourquoi c'est écrit comme un produit $d \times F$, et pas juste $F$ : parce que l'effet de rotation d'une force dépend des **deux** à la fois. Une petite force loin de l'axe peut avoir le même moment — donc le même effet de rotation — qu'une grande force près de l'axe. C'est exactement le principe du levier : le bras de levier $d$ **multiplie** l'efficacité de la force, il ne s'ajoute pas à elle.
 
+[[figure:moment-force]]
+
 ### Deux façons d'avoir un moment nul
 
 Ce point est essentiel, et il confronte directement l'erreur la plus fréquente sur ce sujet : **une force non nulle peut avoir un moment strictement nul.**
@@ -188,6 +190,8 @@ Pour l'haltère, chaque masse ponctuelle est à $d = L/2 = 0{,}50\ \text{m}$ de 
 $$J_{halt\grave{e}re} = 2 \times m_{point} \times d^2 = 2 \times 1{,}0 \times 0{,}50^2 = 0{,}50\ \text{kg}\cdot\text{m}^2$$
 
 Même masse totale ($2{,}0\ \text{kg}$), même longueur totale ($1{,}0\ \text{m}$) — et pourtant $J_{halt\grave{e}re}$ vaut **trois fois** $J_{tige}$. La différence ne vient pas de « combien de masse », mais uniquement de **comment** cette masse est répartie par rapport à l'axe : concentrée aux extrémités (loin de l'axe), ou étalée uniformément (dont une bonne partie reste proche de l'axe). « Même masse » ne veut jamais dire « même $J_\Delta$ ».
+
+[[figure:moment-inertie]]
 
 ### Exemple travaillé : chiffrer l'énigme du manège
 

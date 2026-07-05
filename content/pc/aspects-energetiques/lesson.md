@@ -140,6 +140,8 @@ Regarde ce que dit cette formule dans les deux cas extrêmes : si $A$ et $B$ son
 
 Voici le réflexe fautif à éliminer : penser qu'un chemin plus long "fatigue" davantage le poids, ou au contraire qu'un chemin plus long lui donne "plus de temps pour agir" — et donc changer le résultat en fonction de la longueur du trajet. Le travail du poids ne connaît ni la longueur du chemin, ni sa forme, ni le temps mis pour le parcourir : il ne connaît que $z_A$ et $z_B$.
 
+[[figure:travail-poids-chemin]]
+
 ### Résoudre la question de R0
 
 La bille en chute libre et la bille sur le toboggan partent toutes deux de la même altitude et arrivent toutes deux à la même altitude, sans frottement dans les deux cas. Donc $W(\vec{P})$ est **strictement le même** dans les deux cas, malgré la longueur très différente des deux chemins. Par le TEC, $\Delta E_c$ ne dépend, ici, que de $W(\vec{P})$ (aucune autre force ne travaille : les frottements sont négligés, et la réaction de la piste, si elle en exerce une, est perpendiculaire au déplacement à chaque instant, donc de travail nul) — donc $\Delta E_c$ est le même dans les deux cas, et les deux billes arrivent avec **exactement la même vitesse**.
@@ -213,6 +215,8 @@ $$\Delta E_c + \Delta E_{pp} = W(\vec{f})$$
 $$\Delta E_m = W(\vec{f})$$
 
 **La variation de l'énergie mécanique est égale au travail du frottement.** Et le frottement, par nature, s'oppose toujours au mouvement : il est donc toujours résistant, $W(\vec{f}) < 0$ (sauf à l'arrêt, où il ne travaille pas). Donc, dès qu'il y a du frottement, $\Delta E_m < 0$ : **l'énergie mécanique diminue**, elle ne se conserve plus — toute la perte est exactement égale au travail (négatif) du frottement, ni plus, ni moins.
+
+[[figure:conservation-em]]
 
 ### L'erreur à repérer
 
