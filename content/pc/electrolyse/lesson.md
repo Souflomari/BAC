@@ -80,6 +80,8 @@ Symétriquement, le générateur, par sa borne −, pousse des électrons dans l
 
 Le résultat : dans une cellule d'électrolyse, l'anode est la borne + et la cathode est la borne − - l'exact opposé de la pile. Le vocabulaire *anode = oxydation*, *cathode = réduction* ne bouge pas d'un mot ; c'est la polarité associée à chaque nom qui s'inverse, parce que ce n'est plus la même chose qui la détermine.
 
+[[figure:cellule-electrolyse]]
+
 ### Teste l'idée avant de la croire : « anode = borne −, toujours »
 
 Un élève qui vient d'apprendre, pour la pile, que l'anode est la borne − risque de transporter cette règle telle quelle à l'électrolyse. Mets cette idée à l'épreuve, plutôt que de la mémoriser telle quelle.

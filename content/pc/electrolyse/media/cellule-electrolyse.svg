@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Schéma d'une cellule d'électrolyse : générateur électrique extérieur, borne + reliée à l'anode (oxydation), borne − reliée à la cathode (réduction), sens du courant I et des électrons e− imposés par le générateur, migration des cations vers la cathode et des anions vers l'anode.">
+  <title>Cellule d'électrolyse</title>
+
+  <!--
+    cellule-electrolyse.svg — figure STATIQUE (pas de step-groups).
+
+    Simplification assumée (disclosed) : ce schéma montre une cellule
+    d'électrolyse GÉNÉRIQUE à une seule cuve — deux électrodes plongées
+    dans un même électrolyte, reliées à un générateur extérieur — telle
+    que définie au rung 1 ("deux électrodes, plongées dans un électrolyte
+    ... reliées ... par un générateur électrique extérieur") et telle
+    qu'utilisée aux exemples à une seule cuve du rung 5 (électrolyse de
+    l'eau, galvanoplastie). Ce n'est PAS le montage à deux compartiments
+    + pont salin de l'accroche (pile Daniell inversée) : celui-ci a déjà
+    deux électrodes dans des solutions séparées, ce qui aurait demandé un
+    second schéma. Les espèces ioniques sont laissées génériques
+    (cation M^n+, anion X^n-) plutôt que fixées à Zn²⁺/Cu²⁺, précisément
+    parce que ce schéma sert de repère général pour la notion de cellule
+    d'électrolyse, réutilisable pour n'importe lequel des exemples de la
+    leçon (eau, argent, zinc, aluminium...).
+
+    Grammaire de construction — reprend celle de rl-schema.svg /
+    rc-schema.svg pour la cohérence visuelle de la famille de schémas :
+      Corners : TL(90,66) TR(550,66) BR(550,278) BL(90,278)
+      Générateur : fil gauche, vertical (x=90, y=150..182) — même
+                   symbole (plaque longue/fine = +, plaque courte/épaisse
+                   = −) que le générateur E de rl-schema/rc-schema, ici
+                   étiqueté U (la tension imposée et réglable du rung 3,
+                   à distinguer de la f.é.m. propre E de la cellule).
+      Cuve (vessel) : suspendue au fil du bas, entre les deux jonctions
+                   (x=253 cathode / x=397 anode) — remplace le composant
+                   unique (bobine/condensateur) des schémas RL/RC, car il
+                   faut ici montrer DEUX électrodes, un électrolyte et la
+                   migration ionique, pas un simple dipôle.
+
+    Convention de couleur (identique à rl-schema.svg/rc-schema.svg) :
+      fils / générateur / cuve / électrodes / migration ionique : --figure-ink,
+      --figure-ink-soft (structurel, neutre)
+      I (courant conventionnel) et e− (flux d'électrons) — la SEULE chose
+      que le générateur impose et qui contraste avec une pile — : --figure-accent
+
+    Sens du courant et des électrons (rungs 1-2) : le générateur pousse des
+    électrons par sa borne − vers la cathode (flèche e−, fil gauche-bas) et
+    tire des électrons de l'anode par sa borne + (flèche I conventionnelle,
+    fil droit-bas, courant conventionnel opposé au sens des électrons) — le
+    courant conventionnel global part de + , traverse TL→TR (flèche I du
+    haut), descend à droite, entre dans la cellule par l'anode, ressort par
+    la cathode, remonte à −. Ce sens est imposé par le générateur, à
+    l'opposé de ce qui se passerait spontanément dans une pile.
+  -->
+
+  <defs>
+    <linearGradient id="liquid-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="var(--figure-surface)"/>
+      <stop offset="100%" stop-color="var(--figure-grid)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Cellule d'électrolyse
+  </text>
+  <!-- Sous-titre : le contraste essentiel avec une pile -->
+  <text x="320" y="40" text-anchor="middle"
+        font-size="10" font-style="italic" fill="var(--figure-ink-soft)">
+    un générateur électrique extérieur impose le sens non spontané — l'inverse d'une pile
+  </text>
+
+  <!-- ── Fils du circuit ──────────────────────────────────── -->
+  <line x1="90" y1="66" x2="550" y2="66"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="550" y1="66" x2="550" y2="278"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="90" y1="66" x2="90" y2="150"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="90" y1="182" x2="90" y2="278"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="90" y1="278" x2="253" y2="278"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="397" y1="278" x2="550" y2="278"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Jonctions -->
+  <circle cx="90"  cy="66"  r="3" fill="var(--figure-ink)"/>
+  <circle cx="550" cy="66"  r="3" fill="var(--figure-ink)"/>
+  <circle cx="550" cy="278" r="3" fill="var(--figure-ink)"/>
+  <circle cx="90"  cy="278" r="3" fill="var(--figure-ink)"/>
+
+  <!-- ── Générateur (fil gauche) — extérieur, impose le sens ── -->
+  <!-- Borne + : trait long et fin -->
+  <line x1="68" y1="150" x2="112" y2="150"
+        stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Borne − : trait court et épais -->
+  <line x1="76" y1="182" x2="104" y2="182"
+        stroke="var(--figure-ink)" stroke-width="5" stroke-linecap="round"/>
+  <text x="90" y="141" text-anchor="middle"
+        font-size="9" font-weight="700" fill="var(--figure-ink)">+</text>
+  <text x="90" y="199" text-anchor="middle"
+        font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+  <text x="34" y="171" text-anchor="end"
+        font-size="13" font-style="italic" fill="var(--figure-ink)">U</text>
+
+  <!-- ── Courant I imposé (fil du haut) ────────────────────── -->
+  <line x1="280" y1="66" x2="336" y2="66"
+        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="350,66 336,60.5 336,71.5" fill="var(--figure-accent)"/>
+  <text x="313" y="54" text-anchor="middle"
+        font-size="14" font-style="italic" fill="var(--figure-accent)">I</text>
+
+  <!-- ── Courant I imposé, entrant par l'anode (fil bas droit) ── -->
+  <line x1="470" y1="278" x2="415" y2="278"
+        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="401,278 415,272.5 415,283.5" fill="var(--figure-accent)"/>
+  <text x="435" y="264" text-anchor="middle"
+        font-size="12" font-style="italic" fill="var(--figure-accent)">I</text>
+
+  <!-- ── Électrons e− imposés, poussés vers la cathode (fil bas gauche) ── -->
+  <line x1="120" y1="278" x2="175" y2="278"
+        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="189,278 175,272.5 175,283.5" fill="var(--figure-accent)"/>
+  <text x="154" y="264" text-anchor="middle"
+        font-size="12" fill="var(--figure-accent)">e<tspan dy="-4" font-size="8">−</tspan></text>
+
+  <!-- ── Cuve (électrolyte) ─────────────────────────────────── -->
+  <path d="M195,294 L195,344 Q195,352 203,352 L447,352 Q455,352 455,344 L455,294"
+        fill="none" stroke="var(--figure-ink)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M197,310 L197,342 Q197,350 205,350 L445,350 Q453,350 453,342 L453,310 Z"
+        fill="url(#liquid-grad)"/>
+  <line x1="197" y1="310" x2="453" y2="310"
+        stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+  <!-- ── Électrodes ─────────────────────────────────────────── -->
+  <rect x="253" y="278" width="14" height="67" rx="3"
+        fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+  <rect x="383" y="278" width="14" height="67" rx="3"
+        fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+
+  <text x="260" y="256" text-anchor="middle"
+        font-size="12" font-weight="600" fill="var(--figure-ink)">Cathode</text>
+  <text x="260" y="270" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">(borne −, réduction)</text>
+
+  <text x="390" y="256" text-anchor="middle"
+        font-size="12" font-weight="600" fill="var(--figure-ink)">Anode</text>
+  <text x="390" y="270" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">(borne +, oxydation)</text>
+
+  <!-- ── Migration ionique dans l'électrolyte ──────────────── -->
+  <!-- Cation : migre vers la cathode -->
+  <circle cx="300" cy="324" r="8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="300" y="327" text-anchor="middle" font-size="9"
+        fill="var(--figure-ink)">M<tspan dy="-4" font-size="6">n+</tspan></text>
+  <text x="300" y="341" text-anchor="middle" font-size="7.5"
+        font-style="italic" fill="var(--figure-ink-soft)">(cation)</text>
+  <line x1="288" y1="324" x2="276" y2="324"
+        stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-linecap="round"/>
+  <polygon points="268,324 276,320 276,328" fill="var(--figure-ink-soft)"/>
+
+  <!-- Anion : migre vers l'anode -->
+  <circle cx="350" cy="324" r="8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="350" y="327" text-anchor="middle" font-size="9"
+        fill="var(--figure-ink)">X<tspan dy="-4" font-size="6">n−</tspan></text>
+  <text x="350" y="341" text-anchor="middle" font-size="7.5"
+        font-style="italic" fill="var(--figure-ink-soft)">(anion)</text>
+  <line x1="362" y1="324" x2="374" y2="324"
+        stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-linecap="round"/>
+  <polygon points="382,324 374,320 374,328" fill="var(--figure-ink-soft)"/>
+
+  <!-- Légende de la cuve, intégrée juste sous elle -->
+  <text x="325" y="368" text-anchor="middle"
+        font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">
+    électrolyte : les ions assurent la conduction entre les deux électrodes
+  </text>
+
+</svg>
