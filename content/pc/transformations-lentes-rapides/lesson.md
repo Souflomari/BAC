@@ -22,6 +22,8 @@ On dit qu'une transformation chimique est **rapide** quand elle est pratiquement
 
 On dit qu'une transformation est **lente** quand son évolution s'étale sur une durée qu'on peut effectivement observer et mesurer avec ces mêmes moyens usuels — de quelques secondes à plusieurs mois, voire plusieurs années. La rouille du clou de l'accroche en est un exemple. En voici un autre, qu'on va utiliser tout au long de cette leçon : la réaction entre les ions peroxodisulfate $S_2O_8^{2-}$ et les ions iodure $I^-$, qui, à température ambiante et à faible concentration, met plusieurs dizaines de minutes à se terminer — largement de quoi la suivre au chronomètre.
 
+[[figure:lente-rapide]]
+
 ### Pourquoi ce critère est pratique, et non une propriété figée de la réaction
 
 Remarque bien ceci : la frontière « rapide / lente » ne décrit pas une propriété physique absolue, gravée dans la nature de la réaction — elle décrit le rapport entre la durée de la transformation et nos moyens usuels d'observation. Une réaction qui paraît instantanée à l'oeil nu peut, avec un instrument de mesure plus rapide, se révéler s'étaler sur quelques millisecondes parfaitement mesurables. Ce critère sert surtout à une décision pratique : comment étudier la transformation ? Une transformation rapide ne se laisse observer qu'APRÈS coup — on ne voit que l'état final, tout est déjà joué. Une transformation lente, elle, peut être SUIVIE pendant qu'elle se déroule : on peut prélever, mesurer, tracer son évolution minute par minute — ce sera précisément l'objet du chapitre suivant.

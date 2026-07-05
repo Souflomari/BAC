@@ -82,6 +82,8 @@ Tu as construit, dans le chapitre sur l'état d'équilibre, l'outil qui prédit 
 - Si $Q_{r,i} > K$ : le système évolue dans le sens inverse.
 - Si $Q_{r,i} = K$ : le système est déjà à l'équilibre.
 
+[[figure:critere-qr-k]]
+
 Rien, dans ce critère, ne mentionne le type de réaction, ni la façon dont les réactifs sont mis en présence. Une réaction d'oxydoréduction par contact direct - comme celle de l'accroche - obéit exactement au même critère qu'une réaction acido-basique, ou qu'un système déjà à l'équilibre qu'on vient de perturber. Rien à mémoriser espèce par espèce : c'est une conséquence du calcul.
 
 ### L'expression de $Q_r$ pour notre réaction

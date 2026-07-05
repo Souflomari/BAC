@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Courbe schématique du taux d'avancement τ(t) d'une estérification simple (mélange équimolaire acide + alcool) : montée depuis 0 vers une limite d'équilibre τ ≈ 2/3 ≈ 66,7 % (cas K = 4 du rung R3), marquée par une ligne de référence pointillée.">
+  <title>Estérification simple — τ(t) vers sa limite d'équilibre</title>
+  <!--
+    rendement-esterification.svg — figure à UNE seule courbe (variante « single
+    curve » du brief), choisie après lecture du texte : le chapitre ne décrit
+    jamais une expérience à deux flacons partant, l'un de l'acide + alcool
+    purs, l'autre de l'ester pur, convergeant vers la même composition. R2
+    décrit seulement la coexistence estérification/hydrolyse dans UN SEUL
+    mélange (acide + alcool au départ) jusqu'à l'égalité des vitesses ; R3
+    chiffre ensuite la limite atteinte. Cette figure illustre donc R2+R3 :
+    τ(t) part de 0 (mélange initial acide + alcool) et monte vers la limite
+    d'équilibre, sans jamais la dépasser ni revenir.
+
+    Ce qui est EXACT dans cette figure (dérivé du texte, R3) :
+      - la valeur du plateau : τ → 2/3 ≈ 0,667 ≈ 66,7 %, obtenue en R3 en
+        résolvant τ²/(1-τ)² = K = 4 pour une estérification simple (quantités
+        initiales égales, chaînes linéaires) ;
+      - le fait que τ est borné dans [0, 1] (0 = mélange initial, 1 =
+        conversion totale de l'acide et de l'alcool — jamais atteinte, R3 :
+        « ni plus, ni moins ») ;
+      - le fait que la courbe monte de façon monotone et concave vers cette
+        limite SANS jamais la dépasser (R2 : les deux vitesses s'égalisent,
+        elles ne s'inversent pas) — propriété qualitative du texte, pas
+        seulement décorative.
+
+    Ce qui est SCHÉMATIQUE (compromis assumé, aucune loi de vitesse n'étant
+    donnée dans ce chapitre pour l'estérification) :
+      - la FORME précise de la montée. Le texte ne fournit aucune loi
+        cinétique (juste des ordres de grandeur qualitatifs en R4 : « plusieurs
+        jours » sans catalyseur, « environ une heure » avec catalyseur +
+        chauffage) ; on trace donc une monotone concave générique
+        τ(t) = (2/3)·(1 - e^(-t/θ)) avec une constante de pacing θ_px = 90 px
+        purement graphique (aucune signification physique, contrairement au
+        τ = RC de uc-charge.svg) — choisie seulement pour donner une allure
+        de saturation lisible, sans prétendre à une échelle de temps réelle ;
+      - l'axe t ne porte donc NI graduation NI unité (aucune précision
+        n'est inventée sur la durée réelle).
+
+    Géométrie (calculée, polyligne, pas une bézier devinée) :
+      origine (t=0, τ=0)     : (80, 230)
+      sommet axe τ (τ=1)     : (80, 50)   → hauteur pleine (τ:0→1) = 180 px
+      limite τ = 2/3         : y = 230 - 180×(2/3) = 110  (ligne de référence)
+      pas temporel du tracé  : 30 px (= θ_px/3), de t=0 à t≈530 px
+      y(t) = 230 - 180×(2/3)×(1 - e^(-t/90)) = 230 - 120×(1 - e^(-t/90))
+
+    Rôle des couleurs :
+      courbe τ(t)                                : --figure-ink (la donnée)
+      axes, flèches, "0"                          : --figure-ink-soft (chrome neutre)
+      ligne de référence τ=2/3, sa graduation,
+        son étiquette, le marqueur sur la courbe   : --figure-accent (le point
+        focal de la figure : la limite d'équilibre)
+      fil de rappel de l'annotation                : --figure-ink-soft (neutre,
+        comme dans uc-charge.svg / decroissance-courbe.svg)
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Estérification simple — le taux d'avancement τ(t) vers sa limite d'équilibre
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="210" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes ──────────────────────────────────────────────── -->
+  <line x1="80" y1="230" x2="610" y2="230"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,230 598,225.5 598,234.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="230" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="617" y="234" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">τ</text>
+  <text x="72" y="234" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Ligne de référence : limite d'équilibre τ = 2/3 -->
+  <line x1="80" y1="110" x2="610" y2="110"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="76" y1="110" x2="84" y2="110"
+        stroke="var(--figure-accent)" stroke-width="1.2"/>
+  <text x="70" y="114" text-anchor="end" font-size="10.5"
+        fill="var(--figure-accent)">2/3</text>
+
+  <!--
+    Courbe τ(t) — polyligne calculée, pas=30px, de t=0 à t≈530px,
+    via τ(t)/[.]{2/3} = 1 - e^(-t/90) (constante de pacing purement graphique,
+    voir note en tête de fichier).
+  -->
+  <path d="
+    M80,230
+    L110,196.0 L140,171.6 L170,154.2 L200,141.6 L230,132.7
+    L260,126.2 L290,121.6 L320,118.3 L350,116.0 L380,114.3
+    L410,113.1 L440,112.2 L470,111.6 L500,111.1 L530,110.8
+    L560,110.6 L590,110.4 L610,110.3
+  " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Étiquette identifiant la courbe elle-même -->
+  <text x="150" y="160" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink)">τ(t)</text>
+
+  <!-- Marqueur : la courbe rejoint (visuellement) la limite d'équilibre -->
+  <circle cx="560" cy="110.6" r="3.2" fill="var(--figure-accent)"/>
+
+  <!-- Fil de rappel discret vers l'étiquette de la limite -->
+  <line x1="480" y1="96" x2="480" y2="108"
+        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+  <text x="480" y="88" text-anchor="middle" font-size="11.5"
+        fill="var(--figure-accent)"><tspan font-style="italic">τ</tspan><tspan> → 2/3 ≈ 66,7 %</tspan></text>
+
+  <!-- Captions -->
+  <text x="335" y="263" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">τ — le taux d'avancement (avancement réel / avancement maximal), borné entre 0 (mélange initial) et 1 (conversion totale, jamais atteinte).</text>
+  <text x="335" y="280" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Mélange équimolaire acide/alcool, K = 4 (rung R3) : τ tend vers 2/3 ≈ 66,7 % — une limite fixée par K, pas par le temps ni la vitesse d'y parvenir.</text>
+
+</svg>

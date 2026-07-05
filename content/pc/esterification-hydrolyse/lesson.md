@@ -141,6 +141,8 @@ $$\tau = \frac{2}{3} \approx 0{,}667$$
 
 $\tau \approx 66{,}7\,\%$ : c'est le résultat annoncé au rung R0. Dans ce cas particulier de l'estérification simple, environ deux tiers de l'acide (et de l'alcool) se convertissent en ester et en eau - ni plus, ni moins - et ce résultat ne bouge pas si tu changes les quantités initiales, tant que acide et alcool restent en proportions égales.
 
+[[figure:rendement-esterification]]
+
 ### Teste l'idée avant de la croire : « avec plus de réactifs au départ, on obtient un meilleur taux »
 
 Une confusion naturelle, après le chapitre sur l'état d'équilibre, où l'on a vu que $\tau$ change avec l'état initial (par dilution, par exemple) : on pourrait croire que doubler $n_0$ - mettre deux fois plus d'acide et d'alcool au départ - améliore aussi le taux de conversion.
