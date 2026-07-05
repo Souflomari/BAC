@@ -86,6 +86,8 @@ Direction du déplacement des spires : horizontale, le long du ressort. Directio
 
 Direction du déplacement des points de la corde : verticale. Direction de propagation : horizontale. Les deux directions sont perpendiculaires : c'est une onde **transversale**.
 
+[[figure:transverse-longitudinal]]
+
 *Et la surface de l'eau de l'accroche ?* Le bouchon se déplace verticalement (il monte, il redescend), alors que la vague avance horizontalement, à la surface, vers le bord. Même critère, même conclusion : c'est encore une onde transversale.
 
 ---
@@ -129,6 +131,8 @@ Le mouvement que $M$ affiche à l'instant $t$ est donc celui que $S$ affichait �
 $$y_M(t) = y_S(t - \tau)$$
 
 Cette relation dit exactement ce que montrait le mécanisme : la courbe $y_M(t)$ est la courbe $y_S(t)$, **identique dans sa forme**, seulement décalée dans le temps de $\tau$. $M$ ne fait rien de nouveau ; il rejoue, en retard, ce que $S$ a déjà fait.
+
+[[figure:onde-propagation-retard]]
 
 ### Calcule un retard, puis décris le mouvement
 

@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" width="700" height="360"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Comparaison bonne modulation / surmodulation : à gauche m=0,5, l'enveloppe reste positive et lisse ; à droite m≈1,33, l'enveloppe formelle croise l'axe et l'oscillation rapide change brutalement de phase.">
+  <title>Bonne modulation vs surmodulation</title>
+  <!--
+    bonne-surmodulation.svg — figure STATIQUE, deux panneaux.
+
+    Reprend EXACTEMENT les deux exemples numeriques de R3 du cours :
+      Panneau gauche  : U0 = 6 V, Sm = 3 V -> m = 0,5 < 1 (bonne modulation)
+      Panneau droit    : U0 = 6 V, Sm = 8 V -> m = 1,33 > 1 (surmodulation)
+    Meme rapport f_p/f_signal schematique = 4 (encore plus reduit que la
+    figure principale, pour que les 8 cycles montres tiennent dans un panneau
+    etroit ; theta_k = 45*k degres, k=0..8, soit UNE periode du signal).
+
+    Modele (identique a modulation-amplitude.svg) :
+      E_k (formel) = U0 + Sm*cos(45k deg)   <- PEUT etre negatif si m>1
+      v_k = E_k * (-1)^k   (le signe (-1)^k vient de cos(2*pi*f_p*t_k), qui
+                            vaut +1 aux pics pairs, -1 aux creux impairs)
+
+    Panneau gauche (U0=6, Sm=3) :
+      k :   0    1     2     3     4     5     6     7    8
+      Ek:   9  8.121   6   3.879   3   3.879   6   8.121   9   (toujours >0)
+      vk:  +9 -8.121  +6  -3.879  +3  -3.879  +6  -8.121  +9
+      Echelle : 1V = 8,5px, axe a y=140.  y_k = 140 - 8,5*v_k
+      y :  63.5  209.03  89  172.97  114.5  172.97  89  209.03  63.5
+      x_k = 44 + 34*k  (44,78,112,146,180,214,248,282,316)
+
+    Panneau droit (U0=6, Sm=8) :
+      k :    0     1    2      3     4     5      6    7     8
+      Ek:   14  11.657  6    0.343  -2   0.343   6  11.657  14   <- passe negatif !
+      vk:  +14  -11.657 +6  -0.343  -2  -0.343  +6  -11.657 +14
+      C'est exactement l'exemple du cours : a l'instant ou s_m(t) touche son
+      minimum -8V (k=4), l'amplitude formelle U0+s_m(t) = 6-8 = -2V < 0 :
+      l'oscillation rapide "devrait" continuer sa descente mais change de
+      signe a la place -> au lieu d'un grand creux, on obtient une petite
+      bosse INVERSEE : la porteuse et l'enveloppe se croisent visuellement
+      autour de k=3..5 (le "pincement" caracteristique de la surmodulation).
+      Echelle : 1V = 6,2px, axe a y=149.  y_k = 149 - 6,2*v_k
+      y :  62.2  221.27  111.8  151.13  161.4  151.13  111.8  221.27  62.2
+      x_k = 360 + 34*k  (360,394,428,462,496,530,564,598,632)
+
+    Chaque "bosse" = 2 arcs cubiques par le zero (meme recette que
+    regimes-uc.svg / modulation-amplitude.svg : controle plat au voisinage
+    d'un extremum, controle raide au voisinage d'un zero — demi-largeur
+    w=17px, offsets 0,36w et 0,24w).
+
+    Enveloppe (haute=+E_k, basse=-E_k) en pointilles, MEME teinte que la
+    porteuse. Panneau droit : les deux enveloppes se CROISENT autour de k=4
+    (haute=161,4 > basse=136,6 en y, i.e. la haute passe SOUS la basse) —
+    c'est la signature graphique exacte de m>1, calculee, pas dessinee a la
+    main.
+
+    Couleurs : porteuse + enveloppe = --figure-accent (les deux panneaux
+    partagent la même teinte — le contraste vient de la FORME, pas de la
+    couleur, conformement au principe de coherence). Axes / U0 = --figure-ink-soft.
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Bonne modulation et surmodulation
+  </text>
+
+  <!-- Sous-titres -->
+  <text x="181" y="44" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink)">Bonne modulation (m = 0,5)</text>
+  <text x="501" y="44" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink)">Surmodulation (m ≈ 1,33)</text>
+
+  <!-- Fonds des deux panneaux -->
+  <rect x="40" y="52" width="282" height="195" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+  <rect x="356" y="52" width="290" height="195" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════ PANNEAU GAUCHE — bonne modulation ══════════════ -->
+  <g id="panel-good">
+    <!-- Axe t -->
+    <line x1="44" y1="140" x2="316" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="316,140 306,136.5 306,143.5" fill="var(--figure-ink-soft)"/>
+    <text x="322" y="144" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+
+    <!-- Repère U0 = 6V -> y=89 -->
+    <line x1="40" y1="89" x2="44" y2="89" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="37" y="92.5" text-anchor="end" font-size="8.5"
+          fill="var(--figure-ink-soft)">U<tspan dy="2" font-size="6">0</tspan></text>
+
+    <!-- Enveloppe basse -->
+    <polyline points="44,216.5 78,209.0285 112,191 146,172.9715 180,165.5 214,172.9715 248,191 282,209.0285 316,216.5"
+      fill="none" stroke="var(--figure-accent)" stroke-width="1.1" stroke-dasharray="4,3" stroke-linecap="round"/>
+    <!-- Enveloppe haute -->
+    <polyline points="44,63.5 78,70.9715 112,89 146,107.0285 180,114.5 214,107.0285 248,89 282,70.9715 316,63.5"
+      fill="none" stroke="var(--figure-accent)" stroke-width="1.1" stroke-dasharray="4,3" stroke-linecap="round"/>
+
+    <!-- Porteuse -->
+    <path d="
+      M44,63.5
+      C50.12,63.5 56.92,87.41 61,140
+      C65.08,187.46 71.88,209.0285 78,209.0285
+      C84.12,209.0285 90.92,187.46 95,140
+      C99.08,104.94 105.88,89 112,89
+      C118.12,89 124.92,104.94 129,140
+      C133.08,162.67 139.88,172.9715 146,172.9715
+      C152.12,172.9715 158.92,162.67 163,140
+      C167.08,122.47 173.88,114.5 180,114.5
+      C186.12,114.5 192.92,122.47 197,140
+      C201.08,162.67 207.88,172.9715 214,172.9715
+      C220.12,172.9715 226.92,162.67 231,140
+      C235.08,104.94 241.88,89 248,89
+      C254.12,89 260.92,104.94 265,140
+      C269.08,187.46 275.88,209.0285 282,209.0285
+      C288.12,209.0285 294.92,187.46 299,140
+      C303.08,87.41 309.88,63.5 316,63.5
+    " fill="none" stroke="var(--figure-accent)" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ══════════════ PANNEAU DROIT — surmodulation ══════════════ -->
+  <g id="panel-surmod">
+    <!-- Axe t -->
+    <line x1="360" y1="149" x2="632" y2="149" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="632,149 622,145.5 622,152.5" fill="var(--figure-ink-soft)"/>
+    <text x="638" y="153" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+
+    <!-- Repère U0 = 6V -> y=111.8 -->
+    <line x1="356" y1="111.8" x2="360" y2="111.8" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="353" y="115.3" text-anchor="end" font-size="8.5"
+          fill="var(--figure-ink-soft)">U<tspan dy="2" font-size="6">0</tspan></text>
+
+    <!-- Enveloppe basse (formelle — peut passer AU-DESSUS de la haute) -->
+    <polyline points="360,235.8 394,221.2734 428,186.2 462,151.1266 496,136.6 530,151.1266 564,186.2 598,221.2734 632,235.8"
+      fill="none" stroke="var(--figure-accent)" stroke-width="1.1" stroke-dasharray="4,3" stroke-linecap="round"/>
+    <!-- Enveloppe haute (formelle — plonge sous la basse autour de k=4) -->
+    <polyline points="360,62.2 394,76.7266 428,111.8 462,146.8734 496,161.4 530,146.8734 564,111.8 598,76.7266 632,62.2"
+      fill="none" stroke="var(--figure-accent)" stroke-width="1.1" stroke-dasharray="4,3" stroke-linecap="round"/>
+
+    <!-- Porteuse -->
+    <path d="
+      M360,62.2
+      C366.12,62.2 372.92,89.325 377,149
+      C381.08,198.688 387.88,221.2734 394,221.2734
+      C400.12,221.2734 406.92,198.688 411,149
+      C415.08,123.425 421.88,111.8 428,111.8
+      C434.12,111.8 440.92,123.425 445,149
+      C449.08,150.4625 455.88,151.1266 462,151.1266
+      C468.12,151.1266 474.92,150.4625 479,149
+      C483.08,157.525 489.88,161.4 496,161.4
+      C502.12,161.4 508.92,157.525 513,149
+      C517.08,150.4625 523.88,151.1266 530,151.1266
+      C536.12,151.1266 542.92,150.4625 547,149
+      C551.08,123.425 557.88,111.8 564,111.8
+      C570.12,111.8 576.92,123.425 581,149
+      C585.08,198.688 591.88,221.2734 598,221.2734
+      C604.12,221.2734 610.92,198.688 615,149
+      C619.08,89.325 625.88,62.2 632,62.2
+    " fill="none" stroke="var(--figure-accent)" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Repère du pincement : la porteuse et l'enveloppe se croisent ici -->
+    <line x1="496" y1="172" x2="496" y2="234" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="496" y="245" text-anchor="middle" font-size="8.5" font-style="italic"
+          fill="var(--figure-ink-soft)">changement de phase</text>
+  </g>
+
+  <!-- ── Légendes sous chaque panneau ── -->
+  <text x="181" y="266" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">l'enveloppe reste positive : elle</text>
+  <text x="181" y="279" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">redessine s<tspan dy="2.5" font-size="7">m</tspan><tspan dy="-2.5">(t) fidèlement.</tspan></text>
+
+  <text x="501" y="266" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">l'enveloppe formelle croise l'axe :</text>
+  <text x="501" y="279" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">le récepteur ne peut plus la lire.</text>
+
+  <!-- ── Note commune ── -->
+  <text x="350" y="300" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">m = S<tspan
+        dy="2.5" font-size="7.5">m</tspan><tspan
+        dy="-2.5">/U</tspan><tspan
+        dy="2.5" font-size="7.5">0</tspan><tspan
+        dy="-2.5"> — même U</tspan><tspan
+        dy="2.5" font-size="7.5">0</tspan><tspan
+        dy="-2.5"> = 6 V à gauche et à droite ; seul S</tspan><tspan
+        dy="2.5" font-size="7.5">m</tspan><tspan
+        dy="-2.5"> change (3 V puis 8 V).</tspan>
+  </text>
+  <text x="350" y="316" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">(rapport f<tspan
+        dy="2" font-size="6.5">p</tspan><tspan
+        dy="-2">/f</tspan><tspan
+        dy="2" font-size="6.5">signal</tspan><tspan
+        dy="-2"> réduit ici pour la lisibilité — cf. modulation-amplitude et R1/R3)</tspan>
+  </text>
+
+</svg>

@@ -94,6 +94,8 @@ $$s(t) = \big(6 + 3\cos(2\pi \times 3\,000\, t)\big)\cos(2\pi \times 900\,000\, 
 
 L'amplitude instantanée, $6 + 3\cos(2\pi \times 3\,000\,t)$, oscille entre $6-3=3\ \text{V}$ et $6+3=9\ \text{V}$, au rythme de $3\ \text{kHz}$. À l'intérieur de cette enveloppe, la tension oscille $300$ fois plus vite, à $900\ \text{kHz}$. Si tu observais $s(t)$ à l'oscilloscope, tu verrais une multitude d'oscillations rapides et serrées, dont les sommets, si tu les reliais, dessineraient une courbe douce montant et descendant entre $3\ \text{V}$ et $9\ \text{V}$ toutes les $\frac{1}{3\,000} \approx 0{,}33\ \text{ms}$.
 
+[[figure:modulation-amplitude]]
+
 Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}$, $f_{signal}=3\ \text{kHz}$ — elles reviennent dans les rungs suivants.
 
 ---
@@ -149,6 +151,8 @@ Imagine maintenant qu'on augmente l'amplitude du signal informatif jusqu'à $S_m
 $$m = \frac{8}{6} \approx 1{,}33$$
 
 $m > 1$ : c'est une surmodulation. À l'instant où $s_m(t)$ atteint son minimum $-8\ \text{V}$, l'amplitude instantanée formelle vaudrait $6-8=-2\ \text{V}$ — négative, impossible pour une amplitude réelle. Concrètement, l'oscillation rapide change de phase à cet instant au lieu de suivre une amplitude qui continuerait de baisser : l'enveloppe se « replie » sur elle-même, et ne redessine plus fidèlement la forme de $s_m(t)$. Un récepteur qui essaierait de démoduler ce signal reconstituerait un message déformé.
+
+[[figure:bonne-surmodulation]]
 
 ---
 
