@@ -90,6 +90,8 @@ $$T_0 = \frac{2\pi}{\omega_0} = 2\pi\sqrt{\frac{m}{k}}$$
 
 $T_0$ ne dépend que de $m$ et de $k$ — les deux seules grandeurs qui figurent dans l'équation différentielle. Rien d'autre n'y apparaît, donc rien d'autre ne peut apparaître dans $T_0$ : ni l'amplitude $X_m$, ni la phase $\varphi$. On y reviendra précisément dans le prochain rung.
 
+[[figure:pendule-elastique]]
+
 ### Le pendule élastique, analogue mécanique du circuit LC
 
 Si tu as déjà étudié le circuit RLC en régime libre, cette équation devrait te sembler familière. $\ddot{x} + \omega_0^2 x = 0$ est EXACTEMENT la même forme que celle du circuit LC idéal, $\ddot{q} + \dfrac{1}{LC}\,q = 0$ (avec $q$ à la place de $x$, et $\dfrac{1}{LC}$ à la place de $\dfrac{k}{m}$). Un pendule élastique est, mathématiquement, l'analogue exact d'un circuit LC oscillant : la masse $m$ joue le rôle de l'inductance $L$ (l'inertie du système, ce qui résiste à un changement brusque), et la raideur $k$ joue le rôle de l'inverse de la capacité $1/C$ (le rappel). Ce n'est pas une coïncidence de notation — c'est la même mathématique qui gouverne les deux phénomènes physiques, mécanique d'un côté, électrique de l'autre. On retrouvera cette parenté plus loin, pour l'énergie et pour l'amortissement.
@@ -347,6 +349,8 @@ Exactement comme dans le circuit RLC idéal, où l'énergie électrique du conde
 - Quand $x = \pm X_m$ (écart maximal) : $\dot{x} = 0$ (le solide s'arrête un instant pour repartir en sens inverse), donc $E_c = 0$ — toute l'énergie est dans le ressort.
 
 Entre ces deux instants, l'énergie ne disparaît pas et ne surgit pas de nulle part : elle **traverse** d'un réservoir à l'autre, exactement comme elle traversait entre le condensateur et la bobine. Les maxima de $E_c$ et de $E_{pe}$ sont en opposition de phase, décalés d'un quart de période — la même signature que $E_C$ et $E_L$ dans le circuit RLC.
+
+[[figure:energie-oscillateur]]
 
 ### Exemple numérique
 
