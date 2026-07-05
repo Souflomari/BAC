@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 364" width="640" height="364"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le défaut de masse de l'hélium 4 : à gauche, 2 protons et 2 neutrons séparés, de masse totale 4,03190 u ; à droite, ces mêmes 4 nucléons assemblés en un noyau d'hélium 4, de masse 4,00151 u — plus légère. La différence, le défaut de masse Δm = 0,03039 u, correspond par E=mc² à l'énergie de liaison libérée lors de l'assemblage, environ 28,31 MeV. Les deux encadrés sont dessinés à la même taille : la différence de masse n'est pas représentée à l'échelle, elle est donnée uniquement par les valeurs numériques.">
+  <title>Le défaut de masse — l'exemple de l'hélium 4</title>
+  <!--
+    defaut-masse.svg — diagramme STATIQUE, structurel (pas un graphe de
+    courbe). Toutes les valeurs sont copiées telles quelles de l'exemple
+    travaillé du R2 (lesson.md) :
+      m_p = 1,00728 u ; m_n = 1,00867 u ; m(4He) = 4,00151 u
+      somme séparée = 2×1,00728 + 2×1,00867 = 4,03190 u
+      Δm = 4,03190 − 4,00151 = 0,03039 u
+      El = 0,03039 × 931,5 ≈ 28,31 MeV
+
+    DÉCISION DE CONCEPTION IMPORTANTE — pas de fausse échelle :
+    l'écart réel Δm/m ≈ 0,76 % (R1 : "indétectable par la meilleure
+    balance" à l'échelle macroscopique) est bien trop petit pour être
+    représenté par une hauteur de barre proportionnelle sans mentir
+    visuellement (une barre à l'échelle réelle serait visuellement
+    identique à l'œil). Ce diagramme évite donc TOUTE géométrie encodant
+    la masse : les deux encadrés "avant" / "après" ont EXACTEMENT la
+    même taille (230×170), et seule la disposition des 4 nucléons
+    (dispersés vs. regroupés/superposés) illustre "séparé" vs. "lié" —
+    ce n'est pas une variable quantitative, seulement qualitative.
+    Les seules quantités numériques (masses, Δm, El) sont données par
+    le texte, jamais par une longueur ou une surface.
+
+    Rôle des couleurs / formes :
+      proton : cercle plein --figure-accent, lettre "p" en --figure-surface
+      neutron : cercle creux (fill=--figure-surface, contour --figure-ink-soft),
+                lettre "n" en --figure-ink-soft
+      (différenciation par FORME/remplissage, pas par la couleur seule)
+      flèche d'assemblage, encadré Δm/El : --figure-accent (le sujet de la figure)
+      encadrés avant/après eux-mêmes : contour --figure-accent, fond --figure-surface
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le défaut de masse — l'exemple de l'hélium 4
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="30" y="34" width="580" height="282" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       Encadré AVANT — 2 protons + 2 neutrons séparés
+       ══════════════════════════════════════════════════════ -->
+  <rect x="50" y="70" width="230" height="170" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="165" y="90" text-anchor="middle" font-size="11" font-weight="700"
+        letter-spacing="0.04em" fill="var(--figure-accent)">AVANT</text>
+
+  <!-- 2 protons (pleins), 2 neutrons (creux) — dispersés, non liés -->
+  <circle cx="100" cy="122" r="14" fill="var(--figure-accent)"/>
+  <text x="100" y="126" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-surface)">p</text>
+  <circle cx="230" cy="122" r="14" fill="var(--figure-accent)"/>
+  <text x="230" y="126" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-surface)">p</text>
+  <circle cx="100" cy="158" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <text x="100" y="162" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink-soft)">n</text>
+  <circle cx="230" cy="158" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <text x="230" y="162" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink-soft)">n</text>
+
+  <text x="165" y="196" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">2 protons + 2 neutrons séparés</text>
+  <text x="165" y="222" text-anchor="middle" font-size="10.5" font-weight="600"
+        fill="var(--figure-ink)">m = 2m<tspan dy="3" font-size="8">p</tspan><tspan dy="-3"> + 2m</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> = 4,03190 u</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       Encadré APRÈS — noyau ⁴He assemblé (même taille que AVANT)
+       ══════════════════════════════════════════════════════ -->
+  <rect x="360" y="70" width="230" height="170" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="475" y="90" text-anchor="middle" font-size="11" font-weight="700"
+        letter-spacing="0.04em" fill="var(--figure-accent)">APRÈS</text>
+
+  <!-- 4 nucléons regroupés, en contact (schématise le lien) -->
+  <circle cx="462" cy="128" r="15" fill="var(--figure-accent)"/>
+  <text x="462" y="132" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-surface)">p</text>
+  <circle cx="490" cy="128" r="15" fill="var(--figure-accent)"/>
+  <text x="490" y="132" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-surface)">p</text>
+  <circle cx="462" cy="156" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <text x="462" y="160" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink-soft)">n</text>
+  <circle cx="490" cy="156" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <text x="490" y="160" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink-soft)">n</text>
+
+  <text x="475" y="196" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">noyau <tspan dy="-5" font-size="7.5">4</tspan><tspan dy="5">He assemblé (lié)</tspan></text>
+  <text x="475" y="222" text-anchor="middle" font-size="10.5" font-weight="600"
+        fill="var(--figure-ink)">m(<tspan dy="-5" font-size="8">4</tspan><tspan dy="5">He) = 4,00151 u</tspan></text>
+
+  <!-- Flèche d'assemblage entre les deux encadrés -->
+  <line x1="282" y1="155" x2="358" y2="155"
+        stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <polygon points="358,155 348,150.5 348,159.5" fill="var(--figure-accent)"/>
+  <text x="320" y="140" text-anchor="middle" font-size="10" font-style="italic"
+        fill="var(--figure-ink-soft)">assemblage</text>
+  <text x="320" y="176" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">(interaction forte)</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       Encadré Δm / El — la seule quantité qui compte, en texte
+       ══════════════════════════════════════════════════════ -->
+  <rect x="110" y="250" width="420" height="56" rx="6"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="320" y="270" text-anchor="middle" font-size="11"
+        fill="var(--figure-accent)">Δm = 4,03190 − 4,00151 = 0,03039 u</text>
+  <text x="320" y="292" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-accent)">E<tspan dy="3" font-size="8">l</tspan><tspan dy="-3"> = Δm · c</tspan><tspan dy="-5" font-size="8">2</tspan><tspan dy="5"> ≈ 28,31 MeV — énergie libérée à l'assemblage</tspan></text>
+
+  <!-- Repères discrets reliant les deux encadrés au calcul -->
+  <line x1="165" y1="240" x2="205" y2="250"
+        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+  <line x1="475" y1="240" x2="435" y2="250"
+        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+  <!-- Captions -->
+  <text x="320" y="332" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Le noyau assemblé (à droite) pèse moins que les 4 nucléons séparés (à gauche) : c'est le défaut de masse Δm.</text>
+  <text x="320" y="346" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Cette masse manquante ne disparaît pas : par E = mc², elle est exactement l'énergie de liaison libérée à l'assemblage.</text>
+
+</svg>

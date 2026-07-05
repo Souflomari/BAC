@@ -108,6 +108,8 @@ $$E_l = 0{,}03039 \times 931{,}5 \approx 28{,}31\ \text{MeV}$$
 
 28 MeV pour dissocier un noyau de seulement 4 nucléons : c'est énorme, comparé à ce qu'on rencontre en chimie (on quantifie précisément cet écart au R4). Voilà, chiffré, ce que veut dire « l'hélium est exceptionnellement bien lié ».
 
+[[figure:defaut-masse]]
+
 ---
 
 ## R3 — L'énergie de liaison par nucléon et la courbe d'Aston
@@ -150,6 +152,8 @@ Voici la conséquence directe de cette forme de courbe, et c'est elle qui expliq
 - **Fission.** Un noyau **lourd**, situé sur la partie **descendante** de la courbe (à droite du maximum), se casse en deux noyaux de masse intermédiaire, plus proches du maximum : les noyaux fils ont, ensemble, un $E_l/A$ moyen plus grand que le noyau de départ. Là encore, ce gain se traduit par une énergie libérée — c'est le principe d'un réacteur nucléaire.
 
 Dans les deux cas — fusion à gauche, fission à droite — la réaction se dirige vers le sommet de la courbe, vers le fer et le nickel, les noyaux les plus stables qui existent. On chiffre précisément cette énergie libérée au rung suivant.
+
+[[figure:courbe-aston]]
 
 ---
 
