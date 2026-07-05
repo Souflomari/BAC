@@ -62,6 +62,7 @@ interface MediaDiagramProps {
 const STRUCTURAL_SLUGS = new Set([
   "rlc-schema",
   "rl-schema",
+  "rc-schema",
   "loi-mailles-build",
   "origin-uc",
   "origin-i",

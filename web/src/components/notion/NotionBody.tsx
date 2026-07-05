@@ -71,6 +71,20 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "loi-mailles-build":   "Construction terme à terme de la loi des mailles",
   "rl-schema":           "Schéma du circuit RL série : générateur E, résistor R0, bobine (L, r)",
   "i-etablissement":     "Établissement du courant i(t) : montée exponentielle vers I_max, tangente à l'origine et repère à t = τ",
+  // D10 wave A — PC électricité / ondes / nucléaire
+  "rc-schema":           "Schéma du circuit RC série : générateur E, interrupteur K, résistor R, condensateur C",
+  "uc-charge":           "Charge du condensateur : u_C monte vers E, constante de temps τ = RC, tangente à l'origine et méthode des 63 %",
+  "uc-decharge":         "Décharge du condensateur : u_C décroît de E vers 0, constante de temps τ = RC, méthode des 37 %",
+  "onde-propagation-retard": "Propagation d'une onde : la même perturbation à t1 puis à t2 = t1 + τ, décalée de d = v·τ",
+  "transverse-longitudinal": "Onde transversale (corde) et onde longitudinale (ressort) : déplacement perpendiculaire ou parallèle à la propagation",
+  "double-periodicite":  "La double périodicité : période spatiale λ sur y(x) et période temporelle T sur y(t), liées par λ = c·T",
+  "dephasage":           "Déphasage entre deux points : concordance de phase (d = λ) et opposition de phase (d = λ/2)",
+  "diffraction-fente":   "Diffraction par une fente de largeur a : écart angulaire θ = λ/a et largeur de la tache centrale sur l'écran",
+  "dispersion-prisme":   "Dispersion de la lumière blanche par un prisme : le violet est dévié plus que le rouge (n_violet > n_rouge)",
+  "modulation-amplitude": "Modulation d'amplitude : la porteuse haute fréquence dont l'amplitude suit l'enveloppe U0 + s_m(t)",
+  "bonne-surmodulation": "Bonne modulation (m < 1) et surmodulation (m > 1) : l'enveloppe se distord quand le taux dépasse 1",
+  "decroissance-courbe": "Décroissance radioactive : N(t) = N0·e^(−λt) avec les demi-vies successives N0/2, N0/4, N0/8",
+  "tangente-tau":        "Constante de temps radioactive τ = 1/λ : tangente à l'origine, relation t½ = τ·ln 2, méthode des 37 %",
 };
 
 function figureAriaLabel(slug: string): string {
