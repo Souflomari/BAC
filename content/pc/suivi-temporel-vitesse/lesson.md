@@ -92,6 +92,8 @@ $$[v] = \frac{\text{mol}}{\text{L}\cdot\text{s}} = \text{mol}\cdot\text{L}^{-1}\
 
 C'est l'unité de référence. Si le graphe est gradué en minutes, on peut exprimer $v$ en $\text{mol}\cdot\text{L}^{-1}\cdot\text{min}^{-1}$, à condition de le préciser clairement — l'important est la cohérence de l'unité de temps utilisée.
 
+[[figure:avancement-tangente]]
+
 ### Lecture graphique : la tangente, et comment l'estimer sans tangente tracée
 
 $\dfrac{dx}{dt}$, à un instant $t$, c'est la pente de la tangente à la courbe $x(t)$ en ce point. Quand cette tangente est directement tracée sur un graphe (par exemple fournie dans un énoncé), on lit les coordonnées de deux points de cette droite et on calcule sa pente. Mais si on ne dispose que d'un tableau de mesures — comme ici — on peut estimer cette pente en traçant la **sécante** entre les deux points du tableau qui encadrent symétriquement l'instant visé.
@@ -175,6 +177,8 @@ Concrètement : on repère (ou on calcule à partir du tableau d'avancement) la 
 $$t_{1/2} = 8\ \text{min}$$
 
 Remarque : c'est exactement l'instant qu'on a utilisé en R2 pour calculer $v(8\ \text{min})$ — pas un hasard de la nature, mais un choix pour que tu repères tout de suite où $t_{1/2}$ se situe sur la courbe qu'on vient d'étudier en détail.
+
+[[figure:temps-demi-reaction]]
 
 ### À quoi sert $t_{1/2}$
 

@@ -125,6 +125,8 @@ $$NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$$
 - Pour une transformation non totale, le sens qui domine au départ dépend de la composition initiale du mélange - pas d'une propriété fixe de la réaction. Ce même critère sera rendu précis, par le calcul, dans le chapitre suivant.
 - Enfin, « pouvoir se produire dans les deux sens » ne dit pas encore *jusqu'où* : une transformation réversible peut être nettement limitée, ou au contraire presque totale (il ne reste alors qu'une trace infime de réactifs). Ce degré se quantifiera au chapitre suivant - et les réactions qu'on traite comme presque totales, on les écrit alors souvent avec une flèche simple $\rightarrow$, même si en toute rigueur elles restent réversibles.
 
+[[figure:avancement-limite]]
+
 ### Exercice de type bac (original - entraînement, non un sujet officiel)
 
 Un chimiste mélange, dans un ballon, de l'acide propanoïque $CH_3CH_2COOH$ et du méthanol $CH_3OH$, avec quelques gouttes d'acide sulfurique comme catalyseur, puis chauffe doucement à reflux pendant plusieurs heures. Après ce temps, une analyse du mélange révèle la présence de propanoate de méthyle $CH_3CH_2COOCH_3$ et d'eau, mais aussi - en quantité clairement détectable - de l'acide propanoïque et du méthanol n'ayant pas réagi. Prolonger le chauffage de plusieurs heures supplémentaires ne change rien à ces quantités.

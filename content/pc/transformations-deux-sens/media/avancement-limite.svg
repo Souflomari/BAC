@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 434"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Avancement x(t) d'une transformation chimique dans les deux sens : la courbe croît puis se stabilise à x_éq, nettement en dessous du maximum théorique x_max qu'atteindrait une transformation totale ; l'écart entre les deux valeurs, mis en évidence par une accolade en accent, donne le taux d'avancement final τ = x_éq / x_max, inférieur à 1.">
+  <title>Avancement x(t) — transformation limitée (x_éq &lt; x_max)</title>
+  <!--
+    avancement-limite.svg — figure SCHÉMATIQUE (pas une courbe physique
+    mesurée, ni un ajustement cinétique). Ce chapitre (transformations dans
+    les deux sens) reste explicitement qualitatif : lesson.md R3 dit "cette
+    idée reste ici qualitative" et le récapitulatif R4 dit "ce degré se
+    quantifiera au chapitre suivant". Cette figure est donc un APERÇU
+    graphique de ce que le récapitulatif R4 décrit en mots (une
+    transformation réversible peut être nettement limitée ou presque
+    totale) — pas un calcul tiré du texte, qui n'introduit ni x, ni x_max,
+    ni x_éq, ni τ comme symboles. Le marqueur est placé juste après la
+    phrase de R4 qui introduit cette idée de "degré", et une légende de la
+    figure rappelle explicitement que le calcul précis vient au chapitre
+    suivant, pour ne pas laisser croire que τ a été défini dans ce texte.
+
+    Point pédagogique : une transformation ⇌ (limitée) monte puis se
+    stabilise à x_éq, un palier STRICTEMENT INFÉRIEUR au maximum théorique
+    x_max qu'atteindrait la même transformation si elle allait jusqu'au
+    bout (flèche simple →, cf. R2 du texte). L'écart x_max − x_éq, mis en
+    évidence en accent, est ce qui rend la transformation "limitée" ; le
+    rapport τ = x_éq / x_max (< 1) mesure ce degré d'arrêt.
+
+    Géométrie (calculée, pas devinée) :
+      origine (t=0, x=0)  : (x0,y0) = (80, 350)
+      sommet de l'axe x   : (80, 50)
+      x_max (hauteur pleine — transformation totale) : y = 110  → hauteur 240 px
+      x_éq  (palier réel — transformation limitée)   : y = 190  → hauteur 160 px
+      → τ = 160/240 = 2/3 ≈ 0,667 — ratio SCHÉMATIQUE choisi pour la clarté
+        du dessin, PAS une valeur calculée pour une réaction précise :
+        aucun calcul de τ n'est fait dans ce chapitre qualitatif, et cette
+        figure ne prétend pas donner la vraie valeur d'une réaction
+        nommée — c'est un aperçu générique de "x_éq < x_max".
+
+    Courbe x(t) — polyligne calculée via x/x_éq = 1 − e^(−Δt/θ), avec
+    θ = 90 px (constante d'allure arbitraire, choisie uniquement pour le
+    rythme visuel de la montée — aucune loi cinétique n'est donnée dans ce
+    chapitre), échantillonnée tous les 15 px (= θ/6) de Δt = 0 à Δt = 5θ =
+    450 (x = 80 à 530 ; mêmes valeurs de fraction 1−e^(−r) que
+    uc-charge.svg / i-etablissement.svg, réutilisées ici avec r = Δt/90),
+    puis deux points de prolongement (x = 560, x = 610) qui poursuivent la
+    même formule pour s'approcher visuellement de la ligne x_éq sans
+    jamais la toucher — même convention de rendu de l'approche
+    asymptotique que dans ces deux figures sœurs.
+
+    Rôle des couleurs :
+      courbe x(t), axes, lignes de repère x_max / x_éq, tous les labels :
+        --figure-ink / --figure-ink-soft (chrome neutre — consigne
+        explicite : "keep axes/curve on ink/ink-soft/grid")
+      accolade verticale (l'écart x_max − x_éq) + boîte-formule τ :
+        --figure-accent (le seul foyer de la figure — l'incomplétude que
+        mesure τ, rien d'autre n'est en accent)
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Avancement x(t) — une transformation limitée s'arrête avant x<tspan dy="3" font-size="8.5">max</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+  <line x1="80" y1="350" x2="610" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="350" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="617" y="354" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="72" y="354" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Origine (t=0, x=0) -->
+  <circle cx="80" cy="350" r="2.6" fill="var(--figure-ink-soft)"/>
+
+  <!-- x_max — le maximum théorique (transformation totale), ink-soft -->
+  <line x1="80" y1="110" x2="610" y2="110"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="68" y="114" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+
+  <!-- x_éq — le palier réel (transformation limitée), ink-soft -->
+  <line x1="80" y1="190" x2="610" y2="190"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="68" y="194" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">éq</tspan></text>
+
+  <!--
+    Courbe x(t) — polyligne calculée, pas=15px (=θ/6), de t=0 à t=5θ,
+    puis deux points de prolongement doux vers le bord du panneau (voir
+    calcul en tête de fichier).
+  -->
+  <path d="
+    M80,350
+    L95,325.44 L110,304.64 L125,287.04 L140,272.14 L155,259.54
+    L170,248.86 L185,239.82 L200,232.18 L215,225.70 L230,220.22
+    L245,215.58 L260,211.65 L275,208.34 L290,205.52 L305,203.14
+    L320,201.12 L335,199.41 L350,197.97 L365,196.74 L380,195.71
+    L395,194.83 L410,194.10 L425,193.47 L440,192.93 L455,192.48
+    L470,192.10 L485,191.78 L500,191.50 L515,191.28 L530,191.07
+    L560,190.77 L610,190.44
+  " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!--
+    Accolade verticale — l'écart x_max − x_éq, le seul foyer en accent de
+    la figure (l'incomplétude qui rend la transformation "limitée").
+  -->
+  <line x1="537" y1="110" x2="537" y2="190"
+        stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <line x1="529" y1="110" x2="545" y2="110"
+        stroke="var(--figure-accent)" stroke-width="1.4"/>
+  <line x1="529" y1="190" x2="545" y2="190"
+        stroke="var(--figure-accent)" stroke-width="1.4"/>
+
+  <!-- Boîte formule — τ = x_éq / x_max < 1, directement au-dessus de l'accolade -->
+  <rect x="455" y="45" width="165" height="32" rx="5"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="537" y="66" text-anchor="middle" font-size="12" font-style="italic"
+        fill="var(--figure-accent)">τ = x<tspan
+        dy="3" font-size="8.5">éq</tspan><tspan
+        dy="-3"> / x</tspan><tspan
+        dy="3" font-size="8.5">max</tspan><tspan
+        dy="-3"> &lt; 1</tspan>
+  </text>
+
+  <!-- Captions -->
+  <text x="335" y="398" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan><tspan
+        dy="-3"> — l'avancement qu'atteindrait la même transformation si elle était totale (→).</tspan>
+  </text>
+  <text x="335" y="412" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">éq</tspan><tspan
+        dy="-3"> — l'avancement réellement atteint par une transformation ⇌, qui s'arrête avant x</tspan><tspan
+        dy="3" font-size="7.5">max</tspan><tspan dy="-3">.</tspan>
+  </text>
+  <text x="335" y="426" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">τ = x<tspan dy="3" font-size="7.5">éq</tspan><tspan
+        dy="-3"> / x</tspan><tspan dy="3" font-size="7.5">max</tspan><tspan
+        dy="-3"> (&lt; 1) — un aperçu ; son calcul précis viendra au chapitre suivant.</tspan>
+  </text>
+
+</svg>

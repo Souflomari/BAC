@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Construction graphique du temps de demi-réaction : une droite horizontale tracée à x_max sur 2 coupe la courbe d'avancement x(t) ; la verticale abaissée depuis ce point de rencontre donne t un demi sur l'axe des temps.">
+  <title>Construction graphique de t½, le temps de demi-réaction</title>
+  <!--
+    temps-demi-reaction.svg — même courbe x(t) que dans
+    avancement-tangente.svg (modèle x(t) = x_max·(1−e^(−t/τ)),
+    x_max=5,0 mmol, τ=8/ln2≈11,542 min — voir calcul complet dans ce
+    fichier-là), ici annotée pour la construction graphique du temps de
+    demi-réaction t½ : une horizontale tracée à x_max/2 coupe la courbe,
+    et la verticale abaissée en ce point de rencontre donne t½ en abscisse.
+
+    Par construction du modèle (le même qu'en R2/R4 de la leçon), ce
+    point de rencontre tombe exactement à t½ = 8 min, x_max/2 = 2,5 mmol
+    — cohérent avec le tableau de R2 (x(8 min) = 2,5 mmol mesuré) et avec
+    la remarque explicite de R4 : ce n'est pas un hasard, c'est le même
+    instant que la tangente étudiée dans la figure précédente.
+
+    Géométrie (identique à avancement-tangente.svg, pour la cohérence
+    visuelle entre les deux figures compagnes) :
+      origine (t=0, x=0) : (80, 350) ; échelle temps 6,625 px/min
+      (t=80 min → x=610 px) ; échelle x 50 px/mmol (x_max=5,0 mmol
+      → y=100 px). x_max/2 = 2,5 mmol → y=225 px ; t½ = 8 min → x_px=133.
+      (Coordonnées exactes, pas arrondies à l'oeil — mêmes formules que
+      dans avancement-tangente.svg.)
+
+    Rôle des couleurs (consigne explicite de cette paire de figures) :
+      droite horizontale à x_max/2, droite verticale à t½, ticks/labels
+        "x_max/2" et "t½", point de rencontre, boîte formule
+        x(t½)=x_max/2 : --figure-accent (LA construction, sujet unique
+        de cette figure)
+      courbe x(t) : --figure-ink (structure, pas le sujet)
+      axes, tick x_max (repère de contexte), unités : --figure-ink-soft
+        (chrome neutre)
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le temps de demi-réaction t<tspan dy="3" font-size="8.5">1/2</tspan><tspan dy="-3"> — construction graphique</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+  <line x1="80" y1="350" x2="610" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="350" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+  <text x="72" y="54" text-anchor="end" font-size="11"
+        fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan> (mmol)</tspan></text>
+  <text x="72" y="354" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+  <text x="605" y="368" text-anchor="end" font-size="10.5"
+        fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan><tspan> (min)</tspan></text>
+
+  <!-- Repère x_max (plateau, ink-soft — repère de contexte, pas le sujet de CETTE figure) -->
+  <line x1="76" y1="100" x2="84" y2="100"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="70" y="104" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+
+  <!--
+    Courbe x(t) — identique à avancement-tangente.svg (même polyligne,
+    même modèle). Couleur ink : structure de fond, pas le sujet accent.
+  -->
+  <path d="
+    M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
+    L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
+    L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
+    L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
+    L610,100.24
+  " fill="none"
+    stroke="var(--figure-ink)"
+    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       Construction de t½ — LA construction, sujet unique de cette
+       figure, tout en accent (miroir exact de la construction des
+       demi-vies dans decroissance-courbe.svg)
+       ══════════════════════════════════════════════════════ -->
+
+  <!-- x_max/2 : guide horizontal de l'axe jusqu'à la courbe -->
+  <line x1="80" y1="225" x2="133" y2="225"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="76" y1="225" x2="84" y2="225"
+        stroke="var(--figure-accent)" stroke-width="1.2"/>
+  <text x="70" y="229" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-accent)">x<tspan dy="3" font-size="7.5">max</tspan><tspan dy="-3">/2</tspan></text>
+
+  <!-- t½ : guide vertical de la courbe jusqu'à l'axe des temps -->
+  <line x1="133" y1="225" x2="133" y2="350"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="133" y1="345" x2="133" y2="355"
+        stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="133" y="366" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-accent)">t<tspan dy="4" font-size="8">1/2</tspan></text>
+
+  <!-- Point de rencontre horizontale/courbe -->
+  <circle cx="133" cy="225" r="3.2" fill="var(--figure-accent)"/>
+
+  <!-- Boîte formule -->
+  <rect x="380" y="48" width="235" height="32" rx="5"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="497.5" y="69" text-anchor="middle" font-size="13" font-style="italic"
+        fill="var(--figure-accent)">x(t<tspan dy="4" font-size="9">1/2</tspan><tspan
+        dy="-4">) = x</tspan><tspan dy="4" font-size="9">max</tspan><tspan dy="-4">/2</tspan></text>
+
+  <!-- Captions -->
+  <text x="335" y="398" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">La droite horizontale à x<tspan dy="3" font-size="7.5">max</tspan><tspan
+        dy="-3">/2 coupe la courbe x(t) ; la verticale abaissée donne t</tspan><tspan
+        dy="3" font-size="7.5">1/2</tspan><tspan dy="-3"> en abscisse.</tspan></text>
+  <text x="335" y="412" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">x(t) croît sans jamais redescendre : elle ne peut couper x<tspan
+        dy="3" font-size="7.5">max</tspan><tspan dy="-3">/2 qu'une seule fois — t</tspan><tspan
+        dy="3" font-size="7.5">1/2</tspan><tspan dy="-3"> est donc unique.</tspan></text>
+
+</svg>
