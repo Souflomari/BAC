@@ -67,6 +67,9 @@ const STRUCTURAL_SLUGS = new Set([
   "origin-uc",
   "origin-i",
   "origin-uL",
+  // D10 wave C — electrochemistry cell schematics
+  "pile-daniell",
+  "cellule-electrolyse",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────

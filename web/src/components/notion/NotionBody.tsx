@@ -85,6 +85,17 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "bonne-surmodulation": "Bonne modulation (m < 1) et surmodulation (m > 1) : l'enveloppe se distord quand le taux dépasse 1",
   "decroissance-courbe": "Décroissance radioactive : N(t) = N0·e^(−λt) avec les demi-vies successives N0/2, N0/4, N0/8",
   "tangente-tau":        "Constante de temps radioactive τ = 1/λ : tangente à l'origine, relation t½ = τ·ln 2, méthode des 37 %",
+  // D10 wave B — PC mécanique / nucléaire
+  "trajectoire-parabolique": "Trajectoire parabolique d'un projectile : décomposition de la vitesse initiale v0, flèche et portée",
+  "deflexion-magnetique": "Déflexion magnétique d'une particule chargée : trajectoire circulaire dans le champ B, force de Lorentz centripète",
+  "courbe-aston":        "Courbe d'Aston : énergie de liaison par nucléon E_l/A en fonction du nombre de masse A, maximum vers A = 56 (fer, noyau le plus stable), fusion et fission rapprochant du sommet",
+  "defaut-masse":        "Le défaut de masse Δm sur l'exemple de l'hélium 4 : la masse du noyau est inférieure à la somme des masses de ses nucléons",
+  "moment-force":        "Moment d'une force par rapport à un axe fixe : bras de levier d, pied de la perpendiculaire à la ligne d'action, M_Δ = ± d·F",
+  "moment-inertie":      "Moment d'inertie : une tige homogène et un haltère de même masse et même longueur ont des J_Δ différents (rapport 3)",
+  "travail-poids-chemin": "Le travail du poids est indépendant du chemin suivi : il ne dépend que du dénivelé entre départ et arrivée",
+  "conservation-em":     "Conservation de l'énergie mécanique : les barres d'énergie cinétique E_C, d'énergie potentielle E_pp et d'énergie mécanique E_m au cours du mouvement",
+  "pendule-elastique":   "Pendule élastique : le ressort et la masse aux trois états −Xm, 0, +Xm, et l'élongation x(t) = Xm·cos(ω0·t + φ) au cours du temps",
+  "energie-oscillateur": "Énergie de l'oscillateur : l'énergie potentielle élastique E_pe et l'énergie cinétique E_c en antiphase, l'énergie mécanique E_m restant constante",
 };
 
 function figureAriaLabel(slug: string): string {
