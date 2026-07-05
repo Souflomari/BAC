@@ -61,6 +61,7 @@ interface MediaDiagramProps {
 // They are capped at 680px and centered.
 const STRUCTURAL_SLUGS = new Set([
   "rlc-schema",
+  "rl-schema",
   "loi-mailles-build",
   "origin-uc",
   "origin-i",

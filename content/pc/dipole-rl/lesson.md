@@ -65,6 +65,8 @@ Le saut instantané est donc physiquement impossible : il exigerait une tension 
 
 On étudie le montage classique : un générateur idéal de force électromotrice $E$, un interrupteur $K$, et en série, un résistor de résistance $R_0$ et la bobine $(r, L)$. Avant $t = 0$, le circuit est ouvert, aucun courant ne circule. À $t = 0$, on ferme $K$ : c'est un échelon de tension $E$ appliqué brutalement au dipôle RL.
 
+[[figure:rl-schema]]
+
 Pour alléger l'écriture, on regroupe toutes les résistances du circuit en une seule résistance totale $R = R_0 + r$ — la résistance ajoutée et la résistance interne de la bobine jouent exactement le même rôle du point de vue de la loi d'Ohm, rien ne justifie de les garder séparées dans l'équation.
 
 La loi des mailles donne, à chaque instant :
@@ -127,6 +129,8 @@ Quand $t$ devient grand ($t \gg \tau$) : $e^{-t/\tau} \to 0$, donc $i(t) \to I_{
 
 Entre les deux, la montée est **rapide au début, puis de plus en plus lente** — exactement l'allure d'un ralentissement progressif, jamais un saut, jamais une ligne droite.
 
+[[figure:i-etablissement]]
+
 ### Exemple numérique
 
 Prenons un résistor $R_0 = 50\ \Omega$, une bobine de résistance interne $r = 10\ \Omega$ et d'inductance $L = 0{,}3\ \text{H}$, alimentés par un générateur idéal $E = 6\ \text{V}$.
@@ -177,6 +181,8 @@ Deux méthodes pratiques, aux résultats équivalents, pour mesurer $\tau$ sur u
 
 - **La méthode des 63 %.** On relève $I_{max}$ (la valeur asymptotique, en régime permanent). On cherche l'instant où $i(t)$ atteint $0{,}63 \times I_{max}$ ($1 - e^{-1} \approx 0{,}63$) : cet instant est $\tau$.
 - **La méthode de la tangente à l'origine.** On trace la tangente à la courbe $i(t)$ au point $t = 0$. Cette tangente coupe l'asymptote horizontale $i = I_{max}$ en un point d'abscisse exactement $t = \tau$. (Cette propriété vient directement de la pente à l'origine, $\dfrac{di}{dt}(0) = \dfrac{I_{max}}{\tau}$ : une droite de cette pente, partant de $0$, atteint $I_{max}$ précisément en $t = \tau$.)
+
+[[figure:i-etablissement]]
 
 ### Exemple numérique
 

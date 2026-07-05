@@ -69,6 +69,8 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "origin-i":            "Origine de la relation i = dq/dt",
   "origin-uL":           "Origine de la relation u_L = L di/dt",
   "loi-mailles-build":   "Construction terme à terme de la loi des mailles",
+  "rl-schema":           "Schéma du circuit RL série : générateur E, résistor R0, bobine (L, r)",
+  "i-etablissement":     "Établissement du courant i(t) : montée exponentielle vers I_max, tangente à l'origine et repère à t = τ",
 };
 
 function figureAriaLabel(slug: string): string {
