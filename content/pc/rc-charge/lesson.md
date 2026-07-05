@@ -26,6 +26,8 @@ On ferme un interrupteur K à l'instant $t=0$ sur un circuit série : un génér
 
 Décrivons le montage précisément, puisqu'on va y revenir sans cesse : c'est une boucle en série où se suivent le générateur idéal (f.é.m. constante $E$), l'interrupteur $K$, le conducteur ohmique de résistance $R$, et le condensateur de capacité $C$. On oriente le courant dans le sens qui charge le condensateur, et on compte les deux tensions — $u_R$ aux bornes de la résistance, $u_C$ aux bornes du condensateur — en convention récepteur.
 
+[[figure:rc-schema]]
+
 On rappelle deux relations de ce chapitre : le courant est le débit de charge, $i = \dfrac{dq}{dt}$ ; et la charge posée sur les armatures fixe la tension du condensateur, $q = Cu_C$, c'est-à-dire $u_C = \dfrac{q}{C}$.
 
 ### Une prédiction naturelle — et pourquoi elle échoue
@@ -153,6 +155,8 @@ $$u_C(5\tau) = E\left(1 - e^{-5}\right) \approx E \times 0{,}993$$
 
 soit plus de **99 %** : en pratique, on considère la charge terminée et le régime permanent atteint au bout de $\approx 5\tau$. Voilà la réponse exacte à la question laissée ouverte en R1 : $\tau$ n'est pas l'instant où « ça s'arrête » (ça ne s'arrête jamais tout à fait), c'est l'échelle qui règle toute la montée.
 
+[[figure:uc-charge]]
+
 ### En déduire le courant $i(t)$ — et le point où $u_C$ est continue mais $i$ ne l'est pas
 
 Le courant se déduit directement de $u_C$, sans nouvelle hypothèse : c'est $i = C\dfrac{du_C}{dt}$, et on a déjà calculé cette dérivée. Avec $\tau = RC$ :
@@ -216,6 +220,8 @@ $$\frac{du_C}{dt}(0) = \frac{E}{\tau}\,e^{0} = \frac{E}{\tau}$$
 
 Une droite qui part de $0$ avec cette pente atteint la hauteur $E$ après une durée $\dfrac{E}{E/\tau} = \tau$. La tangente à l'origine « vise » donc l'asymptote pile en $t = \tau$ — c'est une lecture graphique très rapide, souvent plus précise que le pointage des 63 %.
 
+[[figure:uc-charge]]
+
 ### Exemple de lecture
 
 Reprenons le circuit de R2 : $R = 1{,}0\ \text{k}\Omega$, $C = 1{,}0\ \mu\text{F}$, donc on attend $\tau = 1{,}0\ \text{ms}$ et une asymptote à $E = 10\ \text{V}$.
@@ -267,6 +273,8 @@ Le courant s'en déduit, $i = C\dfrac{du_C}{dt}$ :
 $$i(t) = -\frac{E}{R}\,e^{-t/\tau}$$
 
 Il est **négatif** : le courant circule maintenant dans le sens inverse de la charge — le condensateur se vide au lieu de se remplir. Sa constante de temps est la même, $\tau = RC$ : la décharge est pratiquement complète au bout de $\approx 5\tau$, et l'énergie $\frac{1}{2}CE^2$ qui était stockée finit entièrement dissipée par effet Joule dans $R$. Charge et décharge sont les deux faces du même temps caractéristique.
+
+[[figure:uc-decharge]]
 
 ---
 
