@@ -96,6 +96,8 @@ $$\theta = \frac{\lambda}{a}$$
 
 où $\lambda$ est la longueur d'onde de la lumière et $a$ la largeur de la fente (ou le diamètre du fil). Cette formule dit quelque chose d'intuitif une fois qu'on la regarde : plus l'ouverture $a$ est petite comparée à $\lambda$, plus l'écart angulaire $\theta$ est grand — l'onde s'étale d'autant plus qu'elle est forcée de passer par une ouverture étroite. À l'inverse, une ouverture $a$ beaucoup plus grande que $\lambda$ donne un $\theta$ minuscule, imperceptible : c'est le régime de l'optique géométrique, où l'onde semble se propager en ligne droite.
 
+[[figure:diffraction-fente]]
+
 ### Exemple : calculer un écart angulaire, puis la largeur de la tache
 
 Un faisceau laser de longueur d'onde $\lambda = 600\ \text{nm}$ traverse une fente fine de largeur $a = 0{,}2\ \text{mm}$.
@@ -186,6 +188,8 @@ C'est une différence faible — de l'ordre de quelques centièmes ou moins — 
 Rappelle-toi (chapitre réfraction) que la loi de Descartes relie l'angle d'incidence $i_1$ et l'angle de réfraction $r$ à l'indice du milieu traversé : plus l'indice $n$ est grand, plus le rayon réfracté se rapproche de la normale — c'est-à-dire plus il est dévié par rapport à sa direction initiale.
 
 Puisque $n_{violet} > n_{rouge}$, le violet est réfracté plus près de la normale que le rouge, à la première face du prisme : **le violet est donc dévié plus fortement que le rouge**. Chaque couleur composant la lumière blanche emprunte donc, à l'intérieur du prisme, un chemin très légèrement différent des autres — et cet écart s'accentue encore à la sortie du prisme, à la seconde face. C'est ce qu'on appelle la **dispersion** de la lumière.
+
+[[figure:dispersion-prisme]]
 
 ### Exemple : calculer et comparer deux angles de réfraction
 

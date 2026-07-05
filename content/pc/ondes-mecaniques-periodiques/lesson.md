@@ -124,6 +124,8 @@ Et puisque $f = 1/T$ :
 
 $$\lambda = \frac{c}{f}$$
 
+[[figure:double-periodicite]]
+
 ### Fixe l'image mentale : $T$ n'est pas $\lambda$
 
 C'est ici qu'une confusion s'installe facilement, alors arrête-toi. $T$ et $\lambda$ décrivent deux répétitions différentes, lues sur deux graphiques différents :
@@ -191,6 +193,8 @@ C'est la formule à retenir : le déphasage entre deux points séparés d'une di
 
 - Si $d$ est un multiple entier de $\lambda$ ($d = k\lambda$, $k$ entier), alors $\Delta\varphi = 2k\pi$ : les deux points vibrent en **concordance de phase** — ils affichent, à chaque instant, exactement la même élongation (c'est le cas qu'on a dérivé en R2 avec $d = \lambda$).
 - Si $d$ est un multiple impair d'une demi-longueur d'onde ($d = (2k+1)\lambda/2$), alors $\Delta\varphi = (2k+1)\pi$ : les deux points vibrent en **opposition de phase** — l'un est à son élongation maximale exactement quand l'autre est à son élongation minimale.
+
+[[figure:dephasage]]
 
 ### Exemple
 

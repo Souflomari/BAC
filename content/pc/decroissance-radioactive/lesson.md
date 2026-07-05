@@ -245,6 +245,8 @@ $$\boxed{t_{1/2} = \frac{\ln 2}{\lambda}}$$
 
 **Une propriété qu'il faut retenir précisément : après $n$ demi-vies, quel que soit l'instant de départ choisi, il reste $N_0/2^n$.** Et ce n'est pas propre à l'instant $t=0$ — c'est une conséquence directe du caractère sans mémoire établi au rung précédent : le noyau ne « sait » pas depuis quand il existe, donc la même loi s'applique à partir de *n'importe quel* instant pris comme nouvelle origine. Deux demi-vies après le début, il reste $N_0/4$ — pas $N_0/2$ retiré deux fois de façon linéaire (ce qui donnerait zéro), mais bien une division par 2 répétée : $N_0 \to N_0/2 \to N_0/4$.
 
+[[figure:decroissance-courbe]]
+
 ### La constante de temps τ
 
 On définit aussi $\tau = \dfrac{1}{\lambda}$, la **constante de temps**, homogène à une durée (même rôle que le $\tau = RC$ du circuit RC, si tu l'as déjà vu : un temps caractéristique du phénomène). La relation entre les deux temps caractéristiques se lit directement sur ce qu'on vient d'établir :
@@ -252,6 +254,8 @@ On définit aussi $\tau = \dfrac{1}{\lambda}$, la **constante de temps**, homog�
 $$t_{1/2} = \tau \ln 2 \approx 0{,}693 \, \tau$$
 
 La demi-vie est donc plus courte que la constante de temps ($\ln 2 < 1$). Après une durée $\tau$, il reste $N_0 e^{-1} \approx 37\%$ des noyaux — pas 50 %, ce chiffre-là correspond à $t_{1/2}$, pas à $\tau$. En pratique, on considère qu'un échantillon a quasiment fini de désintégrer après une dizaine de demi-vies (moins de 0,1 % restant).
+
+[[figure:tangente-tau]]
 
 ### Exemple — l'iode 131
 

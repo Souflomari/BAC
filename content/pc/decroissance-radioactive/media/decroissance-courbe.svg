@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Courbe de décroissance radioactive N(t) = N0 exp(-λt), avec les trois demi-vies successives marquées : N0/2 atteint à t = t½, N0/4 à t = 2·t½, N0/8 à t = 3·t½.">
+  <title>N(t) et les demi-vies successives</title>
+  <!--
+    decroissance-courbe.svg — courbe STATIQUE de N(t) = N0 · e^(-λt).
+
+    Géométrie (calculée, pas devinée) :
+      origine (t=0, N=N0)  : (x0,y0) = (80, 70)
+      axe N=0 (asymptote)  : y = 350            → hauteur pleine N0 = 280 px
+      échelle temporelle   : t½_px = 140 px      (1 demi-vie = 140 px sur x)
+
+    La courbe est une polyligne de points calculés exactement via
+    N/N0 = 2^(-t/t½) à des pas réguliers de 20px (= t½_px/7), jamais une
+    bézier devinée à la main — garantit l'exactitude physique.
+
+    Propriété vérifiée par construction (les trois demi-vies tombent
+    PILE sur des coordonnées entières, par choix de l'échelle) :
+      t = t½   (x=220) → N/N0 = 1/2 → y = 350 - 280×0,5  = 210  (N0/2)
+      t = 2t½  (x=360) → N/N0 = 1/4 → y = 350 - 280×0,25 = 280  (N0/4)
+      t = 3t½  (x=500) → N/N0 = 1/8 → y = 350 - 280×0,125= 315  (N0/8)
+    Ce ne sont pas des repères approximatifs : ce sont les valeurs
+    réelles de la courbe à ces abscisses.
+
+    Rôle des couleurs :
+      courbe N(t) + les trois repères de demi-vie (guides, ticks, points,
+        labels t½/2t½/3t½ et N0/2/N0/4/N0/8) : --figure-accent
+        (ce sont TOUS des aspects du même phénomène central de la figure)
+      axes, "0", N0 (valeur de référence initiale, comme U0/Imax dans les
+        autres figures de cette famille) : --figure-ink-soft (chrome neutre)
+
+    Par consigne explicite : lignes pointillées HORIZONTALES seulement à
+    N0/2 et N0/4 (pas à N0/8, pour ne pas surcharger la bande basse près
+    de l'axe) ; lignes pointillées VERTICALES aux trois demi-vies t½, 2t½,
+    3t½ (toutes les trois, pour rendre visible l'espacement constant).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Décroissance radioactive — N(t) et les demi-vies successives
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+  <line x1="80" y1="350" x2="610" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="350" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="617" y="354" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">N</text>
+  <text x="72" y="354" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Repère N0 (valeur initiale, ink-soft — comme U0/Imax dans les figures RLC/RL) -->
+  <line x1="76" y1="70" x2="84" y2="70"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="70" y="74" text-anchor="end" font-size="10.5"
+        fill="var(--figure-ink-soft)">N<tspan dy="3" font-size="7.5">0</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       Repères de demi-vie — guides pointillés, ticks, points, labels
+       Tout en --figure-accent (le sujet même de la figure)
+       ══════════════════════════════════════════════════════ -->
+
+  <!-- N0/2 @ t½ (x=220, y=210) — guide horizontal + vertical -->
+  <line x1="80" y1="210" x2="220" y2="210"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="220" y1="210" x2="220" y2="350"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="76" y1="210" x2="84" y2="210"
+        stroke="var(--figure-accent)" stroke-width="1.2"/>
+  <text x="70" y="214" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-accent)">N<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">/2</tspan></text>
+  <line x1="220" y1="345" x2="220" y2="355"
+        stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="220" y="366" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-accent)">t<tspan dy="4" font-size="8">1/2</tspan></text>
+
+  <!-- N0/4 @ 2t½ (x=360, y=280) — guide horizontal + vertical -->
+  <line x1="80" y1="280" x2="360" y2="280"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="360" y1="280" x2="360" y2="350"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="76" y1="280" x2="84" y2="280"
+        stroke="var(--figure-accent)" stroke-width="1.2"/>
+  <text x="70" y="284" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-accent)">N<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">/4</tspan></text>
+  <line x1="360" y1="345" x2="360" y2="355"
+        stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="360" y="366" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-accent)">2t<tspan dy="4" font-size="8">1/2</tspan></text>
+
+  <!-- N0/8 @ 3t½ (x=500, y=315) — pas de guide horizontal (consigne), seulement le tick vertical -->
+  <line x1="500" y1="315" x2="500" y2="350"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="76" y1="315" x2="84" y2="315"
+        stroke="var(--figure-accent)" stroke-width="1.2"/>
+  <text x="70" y="319" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-accent)">N<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">/8</tspan></text>
+  <line x1="500" y1="345" x2="500" y2="355"
+        stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="500" y="366" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-accent)">3t<tspan dy="4" font-size="8">1/2</tspan></text>
+
+  <!--
+    Courbe N(t) — polyligne calculée, pas=20px (=t½_px/7), de t=0 à t≈3,57×t½.
+    Valeurs N/N0 = 2^(-Δt/t½) ; y = 350 - 280×(N/N0). Voir calcul en tête de fichier.
+  -->
+  <path d="
+    M80,70
+    L100,96.4 L120,120.31 L140,141.96 L160,161.58 L180,179.34
+    L200,195.43 L220,210 L240,223.2 L260,235.15 L280,245.98
+    L300,255.79 L320,264.67 L340,272.71 L360,280 L380,286.6
+    L400,292.58 L420,297.99 L440,302.89 L460,307.33 L480,311.36
+    L500,315 L520,318.3 L540,321.29 L560,324 L580,326.45
+  " fill="none"
+    stroke="var(--figure-accent)"
+    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Points marqueurs aux trois demi-vies (au-dessus de la courbe) -->
+  <circle cx="220" cy="210" r="3.2" fill="var(--figure-accent)"/>
+  <circle cx="360" cy="280" r="3.2" fill="var(--figure-accent)"/>
+  <circle cx="500" cy="315" r="3.2" fill="var(--figure-accent)"/>
+
+  <!-- Boîte formule -->
+  <rect x="405" y="48" width="210" height="32" rx="5"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="510" y="69" text-anchor="middle" font-size="13" font-style="italic"
+        fill="var(--figure-accent)">N(t) = N<tspan
+        dy="4" font-size="9">0</tspan><tspan
+        dy="-4"> e</tspan><tspan
+        dy="-5" font-size="9">-λt</tspan>
+  </text>
+
+  <!-- Captions -->
+  <text x="335" y="398" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Chaque demi-vie divise la population restante par 2 : décroissance géométrique, pas linéaire.</text>
+  <text x="335" y="412" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">La durée entre deux demi-vies consécutives est toujours la même — c'est la définition de t<tspan
+        dy="3" font-size="7.5">1/2</tspan><tspan
+        dy="-3">, quel que soit l'instant de départ.</tspan>
+  </text>
+
+</svg>
