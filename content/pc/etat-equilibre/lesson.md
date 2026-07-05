@@ -45,6 +45,8 @@ Au fil du temps, deux évolutions opposées se produisent en même temps : les c
 
 C'est exactement l'instant où la couleur cesse de changer. Mais regarde bien ce que ça veut dire : les deux réactions ne s'arrêtent pas - elles continuent, chacune à sa propre vitesse, mais ces deux vitesses sont maintenant égales. Chaque seconde, autant de complexe $FeSCN^{2+}$ se forme (réaction directe) qu'il s'en dissocie (réaction inverse). Le bilan net est nul : les concentrations, mesurées globalement, ne bougent plus. Mais microscopiquement, ça n'a jamais cessé de réagir dans les deux sens. C'est ce qu'on appelle un **état d'équilibre dynamique**.
 
+[[figure:equilibre-concentrations]]
+
 ### Teste l'idée avant de la croire : « l'équilibre, c'est la réaction qui s'arrête »
 
 C'est la confusion la plus naturelle, et elle mérite d'être affrontée directement : en voyant une couleur - ou un pH, une conductivité, n'importe quelle grandeur observable - cesser de changer, on conclut spontanément que « la réaction est terminée », exactement comme pour une transformation totale qui atteint $x_{max}$.
@@ -174,6 +176,8 @@ Pour notre réaction :
 $$K = \frac{[FeSCN^{2+}]_{eq}}{[Fe^{3+}]_{eq}[SCN^-]_{eq}}$$
 
 $K$ (comme $Q_r$) est une grandeur sans unité, par convention.
+
+[[figure:quotient-vers-K]]
 
 ### Ce que $K$ raconte - et ce qu'il ne dépend PAS
 

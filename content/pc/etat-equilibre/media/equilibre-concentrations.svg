@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 315"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Concentrations en fonction du temps pour une transformation non totale : les réactifs Fe3+ et SCN- diminuent puis se stabilisent à une valeur non nulle, tandis que le produit FeSCN2+ augmente puis se stabilise — la zone teintée marque l'équilibre dynamique atteint.">
+  <title>Concentrations vers un équilibre dynamique</title>
+  <!--
+    equilibre-concentrations.svg — graphe STATIQUE et QUALITATIF des
+    concentrations [Fe3+]=[SCN-] (décroissante) et [FeSCN2+] (croissante)
+    au cours du temps, pour Fe3+ + SCN- ⇌ FeSCN2+ (le fil rouge de la leçon).
+
+    Pourquoi qualitatif (pas d'échelle numérique sur les axes) :
+    cette figure illustre R1 (« un équilibre qui n'est pas un arrêt » —
+    l'état d'équilibre dynamique), AVANT que la leçon ne donne son premier
+    jeu de valeurs numériques (R2 : c0 = 2,0×10⁻³ mol/L) et son tableau
+    complet (R3 : t = 0, 2, 5, 10 min, équilibre). Mettre des graduations
+    chiffrées ici serait soit prématuré, soit en léger désaccord d'échelle
+    visuel avec R3. La figure reste donc sans graduation numérique — mais
+    sa GÉOMÉTRIE n'est pas arbitraire : les hauteurs des deux paliers sont
+    calées, en proportion exacte, sur les valeurs réelles de R2/R3 :
+
+      c0 (= [Fe3+]0 = [SCN-]0)         → fraction 1,00  (départ de [Fe3+]/[SCN-])
+      [Fe3+]eq = [SCN-]eq = 0,8×10⁻³   → fraction 0,40  (= 0,8/2,0)  — PALIER réactifs
+      [FeSCN2+]eq = 1,2×10⁻³           → fraction 0,60  (= 1,2/2,0)  — PALIER produit
+
+    Comme la stœchiométrie est 1:1:1 avec concentrations initiales égales,
+    [Fe3+](t) = [SCN-](t) = c0 − y(t) et [FeSCN2+](t) = y(t) : les deux
+    courbes sont RIGOUREUSEMENT complémentaires (leur somme vaut c0 à tout
+    instant), d'où la même vitesse de mise à plat pour les deux — tracées
+    ici avec y(t)/y_f = 1 − e^(−t/T), T = 84px (constante de temps
+    SCHÉMATIQUE, choisie pour la lisibilité du tracé — la leçon ne donne
+    aucune loi cinétique continue pour [FeSCN2+](t), seulement les mesures
+    ponctuelles du tableau de R3).
+
+    Géométrie :
+      origine (t=0)         : (80, 230)   [FeSCN2+](0) = 0, touche l'axe
+      valeur haute (fraction 1) : y = 70  [Fe3+](0) = [SCN-](0) = c0
+      hauteur totale utile  : 160 px
+      palier réactifs (0,40) : y ≈ 165,6  (nettement AU-DESSUS de l'axe 230
+                                — le réactif ne s'annule jamais, point central
+                                de cette figure)
+      palier produit  (0,60) : y ≈ 134,4
+
+    Le repère "t_éq" (x=350, zone teintée jusqu'à x=610) marque l'endroit
+    où les deux courbes sont visuellement indiscernables de leur palier —
+    ce n'est pas un instant mathématique précis (l'approche est
+    asymptotique, comme toute mise à l'équilibre réelle), mais la
+    représentation fidèle de ce qu'on observe expérimentalement (R0 : "la
+    couleur s'arrête").
+
+    Rôle des couleurs :
+      courbe [Fe3+]=[SCN-] (réactifs, décroissante) : --figure-ink
+      courbe [FeSCN2+] (produit, croissante)         : --figure-ink-soft
+      zone teintée + repère t_éq + légende de la zone : --figure-accent
+        (le seul foyer d'attention : LA zone d'équilibre elle-même)
+      axes, "0", label "concentration"               : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Évolution des concentrations vers un équilibre dynamique
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="230" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Zone teintée : équilibre atteint (derrière les axes/courbes) -->
+  <rect x="350" y="50" width="260" height="180"
+        fill="var(--figure-accent)" fill-opacity="0.08"/>
+
+  <!-- ── Axes ──────────────────────────────────────────────── -->
+  <line x1="80" y1="230" x2="610" y2="230"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,230 598,225.5 598,234.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="230" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="617" y="234" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="46" text-anchor="end" font-size="9.5"
+        fill="var(--figure-ink-soft)">concentration</text>
+  <text x="72" y="234" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Repère vertical à t_éq (début de la zone teintée) -->
+  <line x1="350" y1="50" x2="350" y2="230"
+        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="350" y1="226" x2="350" y2="234"
+        stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="350" y="247" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-accent)">t<tspan dy="4" font-size="8">éq</tspan></text>
+
+  <!--
+    Courbe réactifs [Fe3+] = [SCN-] — décroissante, palier ≈165,6
+    (nettement au-dessus de l'axe : ne s'annule pas).
+  -->
+  <path d="
+    M80,70
+    L108,97.2 L136,116.7 L164,130.7 L192,140.7 L220,147.9
+    L248,153.0 L276,156.7 L304,159.3 L332,161.2 L360,162.6
+    L388,163.5 L416,164.2 L444,164.7 L472,165.1 L500,165.4
+    L540,165.5 L580,165.6 L610,165.6
+  " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Courbe produit [FeSCN2+] — croissante depuis 0, palier ≈134,4 -->
+  <path d="
+    M80,230
+    L108,202.8 L136,183.3 L164,169.3 L192,159.3 L220,152.1
+    L248,147.0 L276,143.3 L304,140.7 L332,138.8 L360,137.4
+    L388,136.5 L416,135.8 L444,135.3 L472,134.9 L500,134.6
+    L540,134.5 L580,134.4 L610,134.4
+  " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Points de palier (marqueurs) -->
+  <circle cx="500" cy="165.4" r="3" fill="var(--figure-ink)"/>
+  <circle cx="500" cy="134.6" r="3" fill="var(--figure-ink-soft)"/>
+
+  <!-- Étiquette de la zone d'équilibre -->
+  <text x="480" y="66" text-anchor="middle" font-size="10.5" font-weight="600"
+        fill="var(--figure-accent)">état d&#8217;équilibre (dynamique)</text>
+
+  <!-- Étiquettes directes des courbes (avec la courbe, pas de légende à distance) -->
+  <text x="415" y="150" font-size="11" font-style="italic" fill="var(--figure-ink)">[Fe<tspan
+        dy="-4" font-size="7">3+</tspan><tspan
+        dy="4">] = [SCN</tspan><tspan
+        dy="-4" font-size="7">-</tspan><tspan
+        dy="4">]</tspan><tspan
+        dy="0" font-style="normal" font-size="9" fill="var(--figure-ink-soft)"> — ne s&#8217;annule pas</tspan>
+  </text>
+  <text x="415" y="118" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">[FeSCN<tspan
+        dy="-4" font-size="7">2+</tspan><tspan
+        dy="4">]</tspan>
+  </text>
+
+  <!-- Captions -->
+  <text x="335" y="278" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Une fois l&#8217;équilibre atteint (zone teintée), les concentrations cessent de varier globalement —</text>
+  <text x="335" y="293" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">mais aucun réactif n&#8217;a disparu : les deux réactions, directe et inverse, continuent de se produire (R1).</text>
+
+</svg>

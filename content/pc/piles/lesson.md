@@ -50,6 +50,8 @@ C'est pour ça qu'on relie les deux solutions par un **pont salin** (un tube rem
 
 Retiens la règle de construction : une pile, c'est deux demi-piles (deux couples oxydant/réducteur, chacun sur une électrode), reliées électriquement en deux endroits - par un fil (qui impose aux électrons le détour extérieur) et par un pont salin ou une jonction (qui maintient l'électroneutralité des deux solutions, sans permettre aux espèces réactives de se mélanger directement).
 
+[[figure:pile-daniell]]
+
 ---
 
 ## R2 — Prédire le sens spontané : comparer $Q_{r,i}$ et $K$

@@ -96,6 +96,8 @@ Pour une transformation totale, c'est presque évident : le catalyseur n'apporte
 
 Pour une transformation limitée — un équilibre —, l'affirmation est plus délicate. Et c'est là qu'il faut un vrai argument, pas une simple affirmation.
 
+[[figure:facteurs-cinetiques]]
+
 ### Pourquoi un catalyseur ne peut pas déplacer un équilibre
 
 Reviens à ce qu'est un équilibre, vu au chapitre état d'équilibre : c'est l'instant où la **vitesse de la réaction directe** devient égale à la **vitesse de la réaction inverse**. Les deux réactions continuent, mais à vitesses égales — si bien que les quantités n'évoluent plus.
@@ -113,6 +115,8 @@ $$\alpha \, v_{\text{directe}} = \alpha \, v_{\text{inverse}}$$
 C'est **la même égalité** — on peut diviser les deux membres par $\alpha$ et retomber exactement sur la précédente. Elle est donc vérifiée pour **le même rapport de concentrations** qu'avant, c'est-à-dire pour la même valeur de $Q_r$ à l'équilibre — donc le même $K$. Le catalyseur fait converger les deux vitesses vers leur égalité plus rapidement, mais il ne déplace pas le point où cette égalité se produit.
 
 Retiens la formule qui résume tout : un catalyseur qui n'accélérerait qu'un seul sens déplacerait l'équilibre — mais alors ce ne serait plus un catalyseur. Un vrai catalyseur agit sur les deux sens à la fois, dans les mêmes proportions, et c'est précisément pour ça qu'il laisse $K$ intact.
+
+[[figure:effet-catalyseur]]
 
 ### Teste l'idée avant de la croire : « un catalyseur améliore le rendement »
 
