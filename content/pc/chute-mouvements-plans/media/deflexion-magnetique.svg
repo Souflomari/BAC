@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" width="640" height="500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Déflexion d'une particule chargée entrant avec une vitesse v0 dans une région de champ magnétique uniforme B perpendiculaire au plan (entrant, symbole en croix dans un cercle) : arc de cercle de rayon R, force de Lorentz F toujours perpendiculaire à la vitesse et dirigée vers le centre C, angle de déflexion thêta à la sortie du couloir de largeur l.">
+  <title>Déflexion magnétique d'une particule chargée</title>
+  <!--
+    deflexion-magnetique.svg — figure STATIQUE, cœur de la partie
+    "champ magnétique" de la leçon (R6). Cas cadre-correct : B ⊥ v0,
+    mouvement circulaire uniforme.
+
+    Géométrie (calculée, pas devinée) — schématique, choisie pour la
+    lisibilité (le couple R/ℓ de l'exemple numérique du texte, R≈5,7cm et
+    ℓ=2,0cm, donne un arc presque droit ; ici on prend un rapport ℓ/R plus
+    grand pour que la courbure soit visible, MAIS la relation géométrique
+    sinθ = ℓ/R, elle, est exactement respectée) :
+      R_px = 180 px,  θ = 40°  ⇒  ℓ_px = R·sinθ = 115,70 px
+      Centre C, perpendiculairement à v0 à l'entrée : C = O + (0, −R) [SVG]
+      O (entrée dans le champ) = (140, 280)  ⇒  C = (140, 100)
+
+    Paramétrage de l'arc (cercle de centre C, rayon R) : pour un balayage
+    d'angle φ à partir de l'entrée,
+      P(φ) = C + (R sinφ, R cosφ)   [coordonnées SVG, y vers le bas]
+    Vérifications : P(0) = C+(0,R) = O ✓.  À φ=θ, P(θ)_x − O_x = R sinθ = ℓ
+    EXACTEMENT — c'est la relation sinθ = ℓ/R du cours, pas une coïncidence
+    de mise en page. La vitesse (dérivée de P) est tangente, direction
+    (cosφ, −sinφ) : à φ=0, horizontale (= v0) ; à φ=θ, inclinée de θ — la
+    déflexion. La force centripète (P→C) a pour direction (−sinφ, −cosφ),
+    perpendiculaire à la vitesse à tout φ (produit scalaire nul) — c'est
+    exactement F = qv∧B, toujours ⊥ à v, dirigée vers C.
+
+    Points de l'arc (φ = 0° à 40°, pas de 5°), calculés via P(φ) ci-dessus :
+      φ=0°  (140, 280)         [O, entrée]
+      φ=5°  (155.69, 279.31)
+      φ=10° (171.26, 277.27)
+      φ=15° (186.59, 273.87)
+      φ=20° (201.56, 269.14)
+      φ=25° (216.07, 263.14)
+      φ=30° (230.00, 255.89)
+      φ=35° (243.24, 247.45)
+      φ=40° (255.70, 237.89)   [sortie du couloir de champ, largeur ℓ]
+
+    Au-delà de la sortie, plus aucune force : la trajectoire continue en
+    ligne droite selon la tangente à φ=θ=40°, direction (cos40°,−sin40°) =
+    (0,766;−0,643), sur 130px : point final = sortie + 130·direction =
+    (355.28, 154.30).
+
+    Rôle des couleurs :
+      trajectoire (arc + ligne droite après sortie — grandeur d'intérêt) : --figure-accent
+      v0, v (vecteurs vitesse), F (force de Lorentz)                     : --figure-ink
+      champ B (symboles ⊗), rayons R, arc θ, bracket ℓ, ligne de
+      référence "sans champ"                                            : --figure-ink-soft
+      région de champ (fond)                                            : --figure-grid
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Déflexion d'une particule chargée dans un champ magnétique uniforme
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="30" width="600" height="410" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Région de champ B (couloir de largeur ℓ), entrant dans le plan ─ -->
+  <rect x="140" y="60" width="115.7" height="340"
+        fill="var(--figure-grid)" fill-opacity="0.35"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+  <!-- Symbole B étiqueté, en haut du couloir -->
+  <circle cx="198" cy="78" r="9" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <line x1="192.4" y1="72.4" x2="203.6" y2="83.6" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <line x1="203.6" y1="72.4" x2="192.4" y2="83.6" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <text x="214" y="82" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">B</text>
+
+  <!-- Petits symboles ⊗ répétés (champ uniforme, dans tout le couloir) -->
+  <g stroke="var(--figure-ink-soft)" stroke-width="1" fill="none">
+    <circle cx="178" cy="130" r="6.5"/><line x1="174" y1="126" x2="182" y2="134"/><line x1="182" y1="126" x2="174" y2="134"/>
+    <circle cx="220" cy="130" r="6.5"/><line x1="216" y1="126" x2="224" y2="134"/><line x1="224" y1="126" x2="216" y2="134"/>
+    <circle cx="178" cy="190" r="6.5"/><line x1="174" y1="186" x2="182" y2="194"/><line x1="182" y1="186" x2="174" y2="194"/>
+    <circle cx="220" cy="190" r="6.5"/><line x1="216" y1="186" x2="224" y2="194"/><line x1="224" y1="186" x2="216" y2="194"/>
+    <circle cx="178" cy="310" r="6.5"/><line x1="174" y1="306" x2="182" y2="314"/><line x1="182" y1="306" x2="174" y2="314"/>
+    <circle cx="220" cy="310" r="6.5"/><line x1="216" y1="306" x2="224" y2="314"/><line x1="224" y1="306" x2="216" y2="314"/>
+    <circle cx="178" cy="370" r="6.5"/><line x1="174" y1="366" x2="182" y2="374"/><line x1="182" y1="366" x2="174" y2="374"/>
+    <circle cx="220" cy="370" r="6.5"/><line x1="216" y1="366" x2="224" y2="374"/><line x1="224" y1="366" x2="216" y2="374"/>
+  </g>
+
+  <!-- ── Vecteur v0 — juste avant l'entrée dans le champ ──────────────── -->
+  <line x1="95" y1="280" x2="140" y2="280"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="140,280 128,275.5 128,284.5" fill="var(--figure-ink)"/>
+  <text x="100" y="271" font-size="13" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
+
+  <!-- ── Trajectoire — arc de cercle (grandeur d'intérêt), puis ligne droite après la sortie ── -->
+  <path d="
+    M140,280
+    L155.69,279.31 L171.26,277.27 L186.59,273.87 L201.56,269.14
+    L216.07,263.14 L230,255.89 L243.24,247.45 L255.70,237.89
+    L355.28,154.30
+  " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="355.28,154.30 348.98,165.47 343.20,158.57" fill="var(--figure-accent)"/>
+
+  <!-- ── Vecteur v à la sortie — même norme que v0, direction déviée ─── -->
+  <line x1="255.70" y1="237.89" x2="290.17" y2="208.95"
+        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+  <polygon points="290.17,208.95 283.87,220.12 278.09,213.22" fill="var(--figure-ink)"/>
+  <text x="296" y="204" font-size="11" font-style="italic" fill="var(--figure-ink)">v (= v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">)</tspan></text>
+
+  <!-- ── Centre C et rayons R (dashed) ─────────────────────────────── -->
+  <line x1="140" y1="100" x2="140" y2="280"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="140" y1="100" x2="255.70" y2="237.89"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <circle cx="140" cy="100" r="3" fill="var(--figure-ink-soft)"/>
+  <text x="148" y="96" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">C</text>
+  <text x="122" y="190" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">R</text>
+
+  <!-- ── Force de Lorentz F — perpendiculaire à v, dirigée vers C ─────── -->
+  <line x1="140" y1="280" x2="140" y2="225"
+        stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="140,225 135.5,237 144.5,237" fill="var(--figure-ink)"/>
+  <text x="152" y="256" font-size="13" font-style="italic" fill="var(--figure-ink)">F</text>
+
+  <line x1="255.70" y1="237.89" x2="220.34" y2="195.76"
+        stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="220.34,195.76 231.51,202.06 224.61,207.84" fill="var(--figure-ink)"/>
+
+  <!-- ── Ligne de référence pointillée : direction initiale, sans champ ── -->
+  <line x1="255.70" y1="237.89" x2="385.70" y2="237.89"
+        stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-dasharray="4,3"/>
+  <text x="330" y="231" font-size="9.5" fill="var(--figure-ink-soft)">(référence : direction sans champ)</text>
+
+  <!-- Arc de l'angle θ, entre la référence et la trajectoire déviée -->
+  <path d="M277.70,237.89 L277.37,234.07 L276.37,230.37 L274.75,226.89 L272.55,223.75"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="288" y="228" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">θ</text>
+
+  <!-- ── Bracket ℓ — largeur du couloir de champ ───────────────────── -->
+  <line x1="140" y1="400" x2="140" y2="415"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="255.70" y1="400" x2="255.70" y2="415"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="140" y1="417" x2="255.70" y2="417"
+        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <line x1="140" y1="412" x2="140" y2="422"
+        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <line x1="255.70" y1="412" x2="255.70" y2="422"
+        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="197.85" y="434" text-anchor="middle" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">ℓ</text>
+
+  <!-- Captions -->
+  <text x="320" y="460" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">F = q v∧B est toujours perpendiculaire à v, dirigée vers le centre C — elle ne change jamais la norme de la vitesse (v = v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">).</tspan></text>
+  <text x="320" y="477" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">R = m v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3"> / (|q| B), constant ⇒ trajectoire circulaire uniforme ; à la sortie du couloir de largeur ℓ, sin θ = ℓ / R.</tspan></text>
+
+</svg>

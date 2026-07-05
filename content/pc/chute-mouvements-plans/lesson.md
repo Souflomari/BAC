@@ -199,6 +199,8 @@ Ce n'est pas un hasard si on te pose la question maintenant : c'est exactement l
 
 Retiens l'image : la flèche, c'est « jusqu'où ça monte » ; la portée, c'est « jusqu'où ça va, au sol ». Les deux se calculent à partir des mêmes équations horaires, mais ce ne sont pas la même question, et ce ne sont jamais le même nombre.
 
+[[figure:trajectoire-parabolique]]
+
 ### Calculer la flèche : le sommet, c'est $v_y = 0$
 
 Le sommet de la trajectoire est l'instant où le projectile cesse un instant de monter avant de redescendre — exactement le même critère qu'au rung 1 pour la balle lancée à la verticale : la vitesse verticale s'y annule.
@@ -363,6 +365,8 @@ De combien la direction a-t-elle tourné ? Place l'entrée dans le champ à l'or
 $$\sin\theta = \frac{\ell}{R}$$
 
 et cet angle $\theta$ est aussi celui dont a tourné le vecteur vitesse. Tout est de nouveau contenu dans $R$ : plus $R$ est petit (champ fort, particule peu massive ou très chargée, vitesse faible), plus l'arc est serré et plus la déflexion $\theta$ est grande.
+
+[[figure:deflexion-magnetique]]
 
 ### Exemple travaillé : rayon et déflexion d'un électron
 
