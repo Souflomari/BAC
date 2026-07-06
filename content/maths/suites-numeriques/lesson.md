@@ -405,6 +405,8 @@ $$L = 20$$
 
 Le réservoir se stabilise **exactement** à 20 — soit 20 000 litres — pas approximativement, exactement. C'est la réponse au mystère posé en R0 : ni vidange complète, ni débordement infini — une stabilisation précise, et on sait maintenant pourquoi cette valeur précise et pas une autre : c'est l'unique point fixe de la règle de mise à jour $f(x) = 0{,}5x+10$.
 
+[[motion:escalier-pas-a-pas]]
+
 [[figure:suite-escalier]]
 
 ### Vérifier avec la formule explicite (la technique de la suite auxiliaire)
