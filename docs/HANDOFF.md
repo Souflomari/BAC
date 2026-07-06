@@ -1,4 +1,10 @@
-# HANDOFF — the July-2026 sprint, closed (2026-07-03)
+# HANDOFF — the July-2026 sprint, closed (2026-07-03 · addendum 07-06)
+
+> **07-06 :** the Fable sessions are over. Read §0 (gates, incl. 7bis),
+> then **§5 — the post-Fable addendum** (D9→D12 state, the three-leg QA,
+> the model-swap rule, and the first work order:
+> `docs/pipeline/post-fable-work-order.md`). Consolidated records:
+> ADR 0025 (first arc, 06-27→07-03) + ADR 0026 (second arc, 07-04→07-06).
 
 > **Audience:** the next maintainer (Opus 4.8 or any standard-model session,
 > cold) and the owner. This is the sprint's last act. Orientation order for
@@ -37,6 +43,18 @@
 6. **Canonical domain.** `metadataBase` and JSON-LD URLs point at the
    `bac-pink.vercel.app` preview; swap when a real domain is decided.
    `robots` stays noindex until the owner opens indexing.
+7bis. **(07-06) Gates added at the Fable close:** **M1 masthead +
+   RetenirZone (W3 adapté)** — OWNER-DIRECTED Day 11, §3 not yet built
+   (work order item 3); **maths GeoGebra/Desmos embeds** need the owner in
+   the loop (applet content unverifiable headlessly — honest-state,
+   `docs/audits/d10-media-layer.md`); **the video-slot decision**
+   ([[video:]] renderer-stubbed; generative tooling = CLAUDE.md open
+   decision 4); **the D10 legacy figure bug** —
+   `content/pc/rlc-serie/media/energy-exchange.svg` uses hex colors and
+   labels a cos² peak-to-peak interval « T₀ » where physics says T₀/2
+   (orphaned from lessons but in the repo: fix or delete, owner eyes);
+   **ledger §11's twelve Day-11 calls** remain FABLE-DECIDED /
+   OWNER-REVIEW-PENDING except where marked OWNER-DIRECTED.
 7. **The maths notion is pre-sprint debt.** It predates template v2 and the
    week's grammars: rungs authored at h3 (one rail entry, no ordinals), the
    arbre-pondéré figure never built while the prose references it (C5 —
@@ -127,3 +145,40 @@ commit. Evidence dirs: `web/shots/options/` (Day-3 sets),
 `web/shots/day6/report/`, `web/shots/day7/blind/`,
 `web/shots/day8-audit/` (external-audit before/after). The full shot
 matrices are local-only by gitignore design.
+
+---
+
+## 5. Post-Fable addendum (2026-07-06) — the second arc, and how to carry it
+
+**What D9→D12 added** (record: ADR 0026; evidence: ledger §11,
+`docs/audits/d10-media-layer.md`, `docs/design/LESSON-EXPERIENCE-SPEC.md`):
+the full site skeleton; 61 real lessons (SVT content intact but its media
+layer untouched — Fable safety scope); the D10 media layer (all PC + maths
+figures, 5 verified motions, 3 curated PhET embeds); Lesson Experience v2
+§§1–2 shipped (chapter pagination + StagedFigure), §§3–5 pending in the
+work order.
+
+**The three-leg QA — none substitutes for another:**
+1. **dom-truth (mechanical)** — `web/scripts/dom-truth.mjs`, 121 checks,
+   self-syncing battery + sweeps. Run on EVERY build that touches
+   web/ or content/. A green run is necessary, never sufficient.
+2. **Gestalt reference (rendered)** — screenshot against the shots
+   harness and LOOK, per DESIGN-BIBLE §10; compare to
+   `docs/design/AUDIT-SCORECARD.md` anchors. Catch what selectors can't.
+3. **External fresh-eye (deployed)** — periodically, a session with NO
+   repo context audits the deployed preview cold (precedent:
+   `docs/audits/external-design-audit-2026-07.md` — it found what both
+   other legs missed). Schedule one after any multi-day arc.
+
+**The model-swap rule:** on ANY model change (Fable→Opus, Opus→Sonnet,
+version bumps), re-run dom-truth + one gestalt pass BEFORE new work.
+Different models regress differently; the instruments are the contract.
+
+**Spec-first discipline (Day-11 proof):** for any architectural change,
+the spec (LESSON-EXPERIENCE-SPEC standard: contracts, file:line anchors,
+ledger entries, verification criteria) lands and is committed BEFORE code.
+A window that closes mid-build must leave the spec as the handoff.
+
+**The first work order** for the next session is
+`docs/pipeline/post-fable-work-order.md` — written to the Day-7 tightened
+brief standard, cold-executable by Sonnet.
