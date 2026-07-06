@@ -95,8 +95,28 @@ for (const dir of dirs) {
   for (const y of ["items.yaml", "checkpoints.yaml", "exercises.yaml", "derivations.yaml"]) {
     const yp = path.join(abs, y);
     if (fs.existsSync(yp)) {
-      try { yamlIds[y] = collectIds(yaml.load(fs.readFileSync(yp, "utf8")), new Set()); }
+      const rawYaml = fs.readFileSync(yp, "utf8");
+      try { yamlIds[y] = collectIds(yaml.load(rawYaml), new Set()); }
       catch (err) { console.error(`  ✗ ${dir}/${y}: ${err.message.split("\n")[0]}`); dirFail++; yamlIds[y] = new Set(); }
+      // Class guard (hunt 07-06): TeX inside a DOUBLE-QUOTED YAML string must
+      // be written \\cmd — a single \cmd is eaten by YAML's escape processing
+      // and reaches KaTeX mangled (found live: \approx → « pprox », a red
+      // .katex-error on every RLC surface). Convention: quoted strings never
+      // use single-backslash escapes; literal newlines use block scalars.
+      // Only VALUE-POSITION quoted scalars (`key: "…"` / `- "…"`): quotes
+      // inside block scalars are literal characters, not YAML delimiters
+      // (false positive found live: arithmetique items.yaml:194).
+      let lineNo = 0;
+      for (const line of rawYaml.split("\n")) {
+        lineNo++;
+        const m = line.match(/(?::|-)\s*"((?:[^"\\]|\\.)*)"\s*$/);
+        if (!m) continue;
+        const bad = m[1].match(/(?<!\\)\\[a-zA-Z]\w*/);
+        if (bad) {
+          console.error(`  ✗ ${dir}/${y}:${lineNo}: single-backslash « ${bad[0]} » in double-quoted string (YAML eats or rejects the escape — write \\\\${bad[0].slice(1)} or use a block scalar)`);
+          dirFail++;
+        }
+      }
     }
   }
 

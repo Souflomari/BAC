@@ -676,6 +676,42 @@ h3:hover .heading-anchor,
   font-size: 0.9375rem;
 }
 
+/* Masthead title containment (hunt 07-06 — the ONE culprit behind every
+   390px page overflow) : un seul mot français long (« Dysfonctionnements »,
+   « électromagnétiques ») à 3.5rem dépasse 390px en bloc insécable.
+   Deux couches : taille fluide sous 600px + césure française en filet
+   (lang="fr" est posé sur <html>, layout.tsx:96). */
+@media (max-width: 600px) {
+  [data-band="masthead"] h1 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    line-height: 1.12;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Mobile containment (hunt 07-06 — bible §1 « adapts down gracefully ») :
+   le min-content d'un tableau peut dépasser 390px, et une formule INLINE
+   longue (équations chimiques…) ne peut pas se replier. Les deux défilent
+   dans leur propre boîte — la page, elle, ne défile jamais horizontalement.
+   (Le math display est déjà contenu par .katex-display plus bas.) */
+@media (max-width: 600px) {
+  .prose-lesson table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .prose-lesson p > .katex,
+  .prose-lesson li > .katex,
+  .prose-lesson td > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 .prose-lesson th {
   text-align: left;
   font-weight: 600;

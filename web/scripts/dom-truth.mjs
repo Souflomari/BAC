@@ -609,6 +609,51 @@ try {
     else console.log(`  ✓ ${k.mathml}/${k.total} formulas carry MathML`);
   }
 
+  // (F8) KaTeX render-error class guard (hunt 07-06): a single-backslash TeX
+  // command inside a DOUBLE-QUOTED YAML string reaches KaTeX as a mangled
+  // control char and renders a red .katex-error (found: items.yaml \approx →
+  // « R pprox 0 » on every RLC surface). validate-content now blocks the class
+  // at author time; this sweep is the rendered-truth backstop.
+  {
+    console.log(`\n[${NOTION}] SWEEP: zero .katex-error`);
+    const kerr = await page.evaluate(() => ({
+      n: document.querySelectorAll(".katex-error").length,
+      sample: document.querySelector(".katex-error")?.textContent?.slice(0, 60) ?? "",
+    }));
+    checks++;
+    if (kerr.n > 0) failures += fail(`${kerr.n} .katex-error rendered — « ${kerr.sample} »`);
+    else console.log(`  ✓ no .katex-error on the page`);
+  }
+
+  // (F9) Mobile 390px overflow guard (hunt 07-06): the page NEVER scrolls
+  // horizontally at phone width (bible §1). The hunt convicted ONE class —
+  // the masthead h1's long French words at display size — plus latent table
+  // min-content. The sample below is the convicted set + controls; any new
+  // wide construct (table, inline formula, band) must keep these green.
+  {
+    console.log(`\nSWEEP: 390px — zéro défilement horizontal`);
+    const mctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const mpage = await mctx.newPage();
+    const MOBILE_SAMPLE = [
+      "/", NOTION,
+      "/notions/svt/dysfonctionnements-immunitaires", // pire cas condamné (169px)
+      "/notions/pc/ondes-em-modulation",              // 144px
+      "/notions/pc/transformations-deux-sens",        // 67px + formule inline longue
+      "/notions/maths/limites-continuite",            // tableau plus large que 390
+      "/notions/maths/nombres-complexes-2",           // 61px
+    ];
+    for (const route of MOBILE_SAMPLE) {
+      await mpage.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+      const over = await mpage.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+      );
+      checks++;
+      if (over > 1) failures += fail(`${route}: overflow-x ${over}px à 390`);
+      else console.log(`  ✓ ${route} — 0px`);
+    }
+    await mctx.close();
+  }
+
   await browser.close();
   console.log(`\n━━ dom-truth: ${checks} checks, ${failures} failure(s) ━━`);
   process.exitCode = failures > 0 ? 1 : 0;
