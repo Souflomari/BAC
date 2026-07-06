@@ -78,6 +78,8 @@ $$T_2 : \quad y = 4(x-2) + 4$$
 
 $$y = 4x - 8 + 4 = 4x-4$$
 
+[[figure:tangente-derivee]]
+
 ### Dérivabilité à gauche, à droite — et un contre-exemple qui compte
 
 Exactement comme pour une limite (chapitre précédent), on peut regarder le taux d'accroissement seulement par valeurs de $h$ négatives ou seulement par valeurs positives :
@@ -298,6 +300,8 @@ $f'$ change bien de signe en $-1$ (de $+$ à $-$ : maximum local) et en $1$ (de 
 $$f(-1) = (-1)^3 - 3(-1) = -1+3 = 2 \qquad \qquad f(1) = 1^3-3(1) = 1-3=-2$$
 
 Ce sont exactement les valeurs $f(-1)=2$ et $f(1)=-2$ que le chapitre précédent avait données comme admises — tu viens de les retrouver par le calcul, sans les supposer.
+
+[[figure:tableau-variations-courbe]]
 
 ---
 
