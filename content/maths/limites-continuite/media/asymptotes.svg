@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img"
+     aria-label="Courbe de la fonction homographique f(x) = 2 + 1/(x-2) : asymptote verticale x = 2 (la courbe part vers moins l'infini à gauche et plus l'infini à droite) et asymptote horizontale y = 2 (la courbe s'en approche des deux côtés sans jamais l'atteindre). Deux branches en encre, asymptotes en accent pointillé.">
+  <title>Asymptotes d'une fonction homographique</title>
+  <!--
+    asymptotes.svg — graphe STATIQUE de f(x) = 2 + 1/(x-2), fonction
+    homographique construite à partir de deux exemples déjà calculés dans
+    la leçon (jamais inventée) :
+
+      - le terme constant "2" est la valeur de l'asymptote horizontale du
+        R1 : lim_{x->+inf} (2x+1)/x = 2 + 1/x = 2 ;
+      - le pôle "x=2" et l'étude de signe qui l'accompagne reprennent
+        exactement le comportement de 1/(x-2) étudié au R2 (lateral
+        limits explicitement calculées dans le texte : -inf à gauche,
+        +inf à droite).
+
+    f(x) = 2 + 1/(x-2) = (2x-3)/(x-2), domaine R\{2}.
+
+    Asymptote verticale x=2 (dénominateur nul) :
+      x -> 2^- : (x-2) -> 0^- donc 1/(x-2) -> -inf donc f -> -inf
+      x -> 2^+ : (x-2) -> 0^+ donc 1/(x-2) -> +inf donc f -> +inf
+    (signe identique à l'exemple R2, translaté de +2 en ordonnée.)
+
+    Asymptote horizontale y=2 : quand x -> +-inf, 1/(x-2) -> 0, donc
+    f -> 2 (jamais atteint, la branche droite reste au-dessus de 2, la
+    branche gauche reste en-dessous).
+
+    Repère écran (calculé, pas deviné) :
+      px_x(x) = 90 + (x+2) * 67.5     [x affiché de -2 à 6]
+      px_y(y) = 340 - (y+4) * 25      [y affiché de -4 à 8]
+      -> x=0 : px_x=225 (axe des y)   y=0 : px_y=240 (axe des x)
+      -> x=2 : px_x=360 (asymptote verticale)
+      -> y=2 : px_y=190 (asymptote horizontale)
+
+    Chaque branche est une polyligne dont les points (x, f(x)) sont
+    calculés exactement via f(x)=2+1/(x-2), pas une bézier devinée.
+    Chaque branche s'arrête à y=8 / y=-4 (bords du cadre), ce qui
+    représente honnêtement le fait que f diverge en +-inf près de x=2 —
+    ce n'est pas un artefact du dessin.
+
+    Rôle des couleurs :
+      les deux branches de la courbe   : --figure-ink
+      les deux asymptotes (le sujet)   : --figure-accent, pointillées
+      axes / graduations neutres        : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une fonction avec deux asymptotes
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="640" height="308" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes ──────────────────────────────────────────────── -->
+  <line x1="50" y1="240" x2="645" y2="240"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="645,240 633,235.5 633,244.5" fill="var(--figure-ink-soft)"/>
+  <line x1="225" y1="335" x2="225" y2="45"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="225,45 220.5,56 229.5,56" fill="var(--figure-ink-soft)"/>
+  <text x="650" y="244" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="231" y="52" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+  <text x="210" y="254" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Boîte formule (le repère ink : décrit la courbe, pas les asymptotes) -->
+  <rect x="50" y="45" width="270" height="34" rx="5"
+        fill="var(--figure-ink)" fill-opacity="0.08"/>
+  <text x="185" y="67" text-anchor="middle" font-size="13"
+        fill="var(--figure-ink)"><tspan font-style="italic">f</tspan>(<tspan
+        font-style="italic">x</tspan>) = 2 + 1/(<tspan
+        font-style="italic">x</tspan> - 2)</text>
+
+  <!-- ── Asymptote verticale x = 2 (accent) ───────────────────── -->
+  <line x1="360" y1="40" x2="360" y2="340"
+        stroke="var(--figure-accent)" stroke-width="1.8"
+        stroke-dasharray="6,4" stroke-linecap="round"/>
+  <line x1="360" y1="236" x2="360" y2="244"
+        stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <text x="360" y="258" text-anchor="middle" font-size="11"
+        fill="var(--figure-accent)"><tspan font-style="italic">x</tspan> = 2</text>
+
+  <!-- ── Asymptote horizontale y = 2 (accent) ─────────────────── -->
+  <line x1="90" y1="190" x2="630" y2="190"
+        stroke="var(--figure-accent)" stroke-width="1.8"
+        stroke-dasharray="6,4" stroke-linecap="round"/>
+  <line x1="221" y1="190" x2="229" y2="190"
+        stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <text x="211" y="194" text-anchor="end" font-size="11"
+        fill="var(--figure-accent)"><tspan font-style="italic">y</tspan> = 2</text>
+
+  <!-- ── Branche droite (x > 2), decroissante de +inf vers 2 par au-dessus ── -->
+  <path d="
+    M371.3,40 L373.5,65 L376.9,90 L380.3,106.7 L387,127.5
+    L393.8,140 L400.5,148.3 L414,158.8 L427.5,165 L461.3,173.3
+    L495,177.5 L528.8,180 L562.5,181.7 L596.3,182.9 L630,183.8
+  " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ── Branche gauche (x < 2), decroissante de 2 par en-dessous vers -inf ── -->
+  <path d="
+    M348.8,340 L346.5,315 L343.1,290 L339.8,273.3 L333,252.5
+    L326.3,240 L319.5,231.7 L306,221.3 L292.5,215 L258.8,206.7
+    L225,202.5 L191.3,200 L157.5,198.3 L123.8,197.1 L90,196.3
+  " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Captions -->
+  <text x="340" y="365" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">x = 2 — asymptote verticale : f(x) tend vers -∞ quand x tend vers 2 par valeurs inférieures, vers +∞ par valeurs supérieures.</text>
+  <text x="340" y="382" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">y = 2 — asymptote horizontale : f(x) s'approche de 2 quand x → -∞ ou x → +∞, sans jamais l'atteindre.</text>
+
+</svg>

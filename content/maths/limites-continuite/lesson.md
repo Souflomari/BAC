@@ -99,6 +99,8 @@ $$\lim_{x \to +\infty} \frac{2x+1}{x} = 2$$
 
 Ici aussi, il y a une image graphique : quand $\lim_{x \to +\infty} f(x) = L$ (un nombre fini), la courbe de $f$ se rapproche indéfiniment de la droite horizontale $y=L$ — une **asymptote horizontale**.
 
+[[figure:asymptotes]]
+
 ---
 
 ## R2 — Opérations sur les limites : ce qui marche, ce qui coince
@@ -290,6 +292,8 @@ Ces résultats permettent d'affirmer la continuité d'une fonction "d'un coup d'
 **Théorème des valeurs intermédiaires (TVI).** Si $f$ est continue sur un intervalle $[a,b]$, alors pour tout réel $k$ compris entre $f(a)$ et $f(b)$, il existe **au moins** un réel $c \in [a,b]$ tel que $f(c) = k$.
 
 **Pourquoi c'est vrai, avec les mots du R4 :** une fonction continue sur $[a,b]$, c'est une courbe qu'on peut tracer d'un seul trait, sans lever le crayon, du point $(a, f(a))$ jusqu'au point $(b, f(b))$. Pour aller d'une hauteur $f(a)$ à une hauteur $f(b)$ sans jamais lever le crayon, le trait est bien obligé de traverser **toutes** les hauteurs intermédiaires au moins une fois — il ne peut pas "sauter" par-dessus une hauteur $k$ sans y passer, puisqu'il n'y a aucune coupure dans le tracé. C'est tout le théorème : il traduit en langage précis ce que "continu" veut dire graphiquement.
+
+[[figure:continuite-tvi]]
 
 ### Le corollaire le plus utilisé : l'existence d'une solution
 
