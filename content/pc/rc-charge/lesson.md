@@ -274,6 +274,10 @@ $$i(t) = -\frac{E}{R}\,e^{-t/\tau}$$
 
 Il est **négatif** : le courant circule maintenant dans le sens inverse de la charge — le condensateur se vide au lieu de se remplir. Sa constante de temps est la même, $\tau = RC$ : la décharge est pratiquement complète au bout de $\approx 5\tau$, et l'énergie $\frac{1}{2}CE^2$ qui était stockée finit entièrement dissipée par effet Joule dans $R$. Charge et décharge sont les deux faces du même temps caractéristique.
 
+Vérifie tout ça par toi-même, en manipulation directe : construis le montage, charge le condensateur, double $R$ (ou $C$) et regarde $\tau$ doubler à son tour sans que la hauteur finale $E$ ne bouge — puis retire le générateur pour observer la décharge.
+
+[[embed:rc-sandbox]]
+
 [[figure:uc-decharge]]
 
 ---
