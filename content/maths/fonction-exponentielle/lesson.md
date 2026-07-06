@@ -316,6 +316,8 @@ $\exp$ et $\ln$ sont réciproques l'une de l'autre (R1). Un fait général sur l
 
 En rassemblant tout : la courbe de $\exp$ part de très près de $0$ (asymptote horizontale $y=0$) quand $x\to-\infty$, sans jamais toucher l'axe, traverse l'axe des ordonnées en $(0,1)$, passe par $(1,e)$, et monte ensuite de plus en plus vite vers la droite, sans jamais s'aplatir — au contraire de $\ln$, elle **accélère** indéfiniment, puisque $\dfrac{e^x}{x}\to+\infty$ (R4).
 
+[[figure:courbe-exponentielle]]
+
 ---
 
 ## R6 — Primitives de exp
