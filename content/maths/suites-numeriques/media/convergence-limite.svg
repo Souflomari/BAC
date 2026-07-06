@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 530" width="640" height="530"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img" aria-label="Convergence de la suite (u_n) vers ℓ = 20 : points (n, u_n) pour n de 0 à 10, bande ]ℓ-ε, ℓ+ε[ = ]17, 23[ et rang N = 5 à partir duquel tous les termes restent dans la bande.">
+  <title>Convergence de (u_n) vers ℓ — définition ε–N (R5)</title>
+  <!--
+    convergence-limite.svg — vue discrète STATIQUE de la convergence, pour
+    la même suite du réservoir que le reste de la leçon (R0/R5/R8) :
+
+      u_n = 20 + 80 × 0,5^n
+      (formule explicite établie au R8 via la suite auxiliaire
+       v_n = u_n - 20, géométrique de raison 0,5, v_0 = 80)
+
+    Valeurs calculées, n = 0..10 (les 8 premières sont EXACTEMENT celles
+    déjà calculées au R0 du texte — même suite, pas de nombres inventés) :
+      n=0  : u0  = 100
+      n=1  : u1  = 60
+      n=2  : u2  = 40
+      n=3  : u3  = 30
+      n=4  : u4  = 25
+      n=5  : u5  = 22,5
+      n=6  : u6  = 21,25
+      n=7  : u7  = 20,625
+      n=8  : u8  = 20,3125
+      n=9  : u9  = 20,15625
+      n=10 : u10 = 20,078125
+
+    Tolérance choisie : ε = 3, donc bande ]ℓ-ε, ℓ+ε[ = ]17, 23[.
+
+    Rang N : le plus petit rang à partir duquel TOUS les termes suivants
+    restent dans la bande.
+      u4 = 25    -> 25 ∉ ]17,23[ (25 > 23)                donc N > 4
+      u5 = 22,5  -> 22,5 ∈ ]17,23[ (17 < 22,5 < 23)        candidat N = 5
+      (u_n) est strictement décroissante (R4) et minorée par 20 (R1/R3) :
+      une fois entrée sous 23 elle ne la redépasse jamais, et elle reste
+      toujours strictement au-dessus de 20 > 17 — donc tous les u_n,
+      n ≥ 5, restent dans ]17,23[.  =>  N = 5.
+
+    Repère écran : px = 90 + 50 n,  py = 430 - 3,6 u  (u=0 -> py=430,
+    u=100 -> py=70). Coordonnées pixel de chaque point :
+      n=0  (90,70)     n=1  (140,214)   n=2  (190,286)   n=3  (240,322)
+      n=4  (290,340)   n=5  (340,349)   n=6  (390,353.5) n=7  (440,355.8)
+      n=8  (490,356.9) n=9  (540,357.4) n=10 (590,357.7)
+
+    Ligne ℓ = 20      : py = 430-3,6×20   = 358
+    Ligne ℓ+ε = 23    : py = 430-3,6×23   = 347,2
+    Ligne ℓ-ε = 17    : py = 430-3,6×17   = 368,8
+
+    Couleurs : axes, points, ligne ℓ en --figure-ink / --figure-ink-soft
+    (repères neutres) ; la bande ]ℓ-ε,ℓ+ε[ (remplissage + ses deux
+    bornes) et le repère du rang N en --figure-accent — seul foyer visuel
+    de la figure (ce que "converger" signifie concrètement : à partir de
+    N, on ne quitte plus la bande).
+  -->
+
+  <rect x="20" y="34" width="600" height="430" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Convergence de (u<tspan dy="3" font-size="9">n</tspan><tspan dy="-3">) vers ℓ : la définition ε–N</tspan></text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">réservoir (R5/R8) : u<tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> = 20 + 80 &#xD7; 0,5</tspan><tspan dy="-5" font-size="8">n</tspan><tspan dy="5"> &#x2014; ε = 3, N = 5</tspan></text>
+
+  <!-- bande ]ℓ-ε, ℓ+ε[ : remplissage + bornes (foyer accent) -->
+  <rect x="90" y="347.2" width="510" height="21.6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <line x1="90" y1="347.2" x2="600" y2="347.2" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <line x1="90" y1="368.8" x2="600" y2="368.8" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <text x="78" y="344" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-accent)">ℓ + ε</text>
+  <text x="78" y="373" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-accent)">ℓ - ε</text>
+
+  <!-- ligne ℓ = 20 (repère neutre) -->
+  <line x1="90" y1="358" x2="600" y2="358" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="78" y="356" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">ℓ = 20</text>
+
+  <!-- axes -->
+  <line x1="90" y1="430" x2="600" y2="430" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,430 600,425.5 600,434.5" fill="var(--figure-ink-soft)"/>
+  <line x1="90" y1="430" x2="90" y2="51" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="90,40 85.5,51 94.5,51" fill="var(--figure-ink-soft)"/>
+  <text x="616" y="434" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">n</text>
+  <text x="70" y="48" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n</tspan></text>
+
+  <!-- ticks + labels y : 0 et 100, pour donner l'échelle -->
+  <line x1="82" y1="430" x2="90" y2="430" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="82" y1="70" x2="90" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="78" y="434" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+  <text x="78" y="74" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">100</text>
+
+  <!-- ticks + labels x : n = 0..10 -->
+  <line x1="90" y1="430" x2="90" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="140" y1="430" x2="140" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="190" y1="430" x2="190" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="240" y1="430" x2="240" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="290" y1="430" x2="290" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="340" y1="430" x2="340" y2="438" stroke="var(--figure-accent)" stroke-width="1.4"/>
+  <line x1="390" y1="430" x2="390" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="440" y1="430" x2="440" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="490" y1="430" x2="490" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="540" y1="430" x2="540" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="590" y1="430" x2="590" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+  <text x="90" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+  <text x="140" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">1</text>
+  <text x="190" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">2</text>
+  <text x="240" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">3</text>
+  <text x="290" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">4</text>
+  <text x="340" y="450" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-accent)">5</text>
+  <text x="390" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">6</text>
+  <text x="440" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">7</text>
+  <text x="490" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">8</text>
+  <text x="540" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">9</text>
+  <text x="590" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">10</text>
+
+  <!-- trajectoire (repère visuel discret, pas une courbe continue) -->
+  <polyline points="90,70 140,214 190,286 240,322 290,340 340,349 390,353.5 440,355.8 490,356.9 540,357.4 590,357.7"
+            fill="none" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.55"/>
+
+  <!-- points (n, u_n) -->
+  <circle cx="90"  cy="70"    r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="140" cy="214"   r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="190" cy="286"   r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="240" cy="322"   r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="290" cy="340"   r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="340" cy="349"   r="3.5" fill="var(--figure-accent)"/>
+  <circle cx="390" cy="353.5" r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="440" cy="355.8" r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="490" cy="356.9" r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="540" cy="357.4" r="2.5" fill="var(--figure-ink)"/>
+  <circle cx="590" cy="357.7" r="2.5" fill="var(--figure-ink)"/>
+
+  <!-- repère du rang N (accent) -->
+  <line x1="340" y1="430" x2="340" y2="349" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <text x="340" y="333" text-anchor="middle" font-size="11" font-weight="600" font-style="italic" fill="var(--figure-accent)">N = 5</text>
+
+  <!-- légende -->
+  <text x="320" y="484" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">chaque point (n, u<tspan dy="2" font-size="7.5">n</tspan><tspan dy="-2">) est un terme de la suite ; à partir du rang N, tous les points restent dans la bande.</tspan></text>
+  <text x="320" y="501" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">]ℓ-ε, ℓ+ε[ = ]17, 23[ pour ε = 3 : u<tspan dy="2" font-size="7.5">4</tspan><tspan dy="-2"> = 25 est hors bande, u</tspan><tspan dy="2" font-size="7.5">5</tspan><tspan dy="-2"> = 22,5 y entre et n'en ressort plus (R5).</tspan></text>
+</svg>

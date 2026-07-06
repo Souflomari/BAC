@@ -253,6 +253,8 @@ $$|u_n - L| < \varepsilon$$
 
 **Ce que fait cette définition :** elle transforme « se rapproche » — une idée vague — en une garantie précise et vérifiable : pour chaque niveau de précision $\varepsilon$ qu'on exige, il existe un rang $N$ à partir duquel la promesse est tenue.
 
+[[figure:convergence-limite]]
+
 Si une suite ne converge vers aucun réel, on dit qu'elle **diverge**. Diverger recouvre deux cas très différents : la suite peut tendre vers $+\infty$ ou $-\infty$ (ses termes dépassent n'importe quel seuil, aussi grand soit-il, à partir d'un certain rang), ou bien elle peut ne tendre vers rien du tout — osciller sans jamais se stabiliser (par exemple $u_n = (-1)^n$, qui vaut alternativement $1$ et $-1$).
 
 ### Pourquoi la limite, si elle existe, est unique
@@ -402,6 +404,8 @@ $$0{,}5\,L = 10$$
 $$L = 20$$
 
 Le réservoir se stabilise **exactement** à 20 — soit 20 000 litres — pas approximativement, exactement. C'est la réponse au mystère posé en R0 : ni vidange complète, ni débordement infini — une stabilisation précise, et on sait maintenant pourquoi cette valeur précise et pas une autre : c'est l'unique point fixe de la règle de mise à jour $f(x) = 0{,}5x+10$.
+
+[[figure:suite-escalier]]
 
 ### Vérifier avec la formule explicite (la technique de la suite auxiliaire)
 
