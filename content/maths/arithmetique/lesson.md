@@ -198,6 +198,8 @@ Le dernier reste non nul est $18$ :
 
 $$\mathrm{PGCD}(252, 198) = 18$$
 
+[[figure:euclide-cascade]]
+
 ---
 
 ## R4 — Nombres premiers entre eux et le théorème de Bézout
