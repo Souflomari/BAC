@@ -282,6 +282,8 @@ $$\frac{[NH_3]}{[NH_4^+]} = 10^{\text{pH} - pK_A} = 10^{7{,}0 - 9{,}2} = 10^{-2{
 
 Le rapport est très inférieur à $1$ : pour environ $160$ ions $NH_4^+$, on ne trouve qu'une seule molécule $NH_3$. À pH sanguin (voisin de $7{,}4$), l'azote de l'ammoniac circule donc presque exclusivement sous sa forme ionisée $NH_4^+$ — un exemple concret de ce que « prédominer » veut dire en pratique : pas « être seul », mais « écraser numériquement l'autre forme ».
 
+[[figure:diagramme-predominance]]
+
 ---
 
 ## R6 — Force et concentration : deux choses différentes (retour à l'accroche)
@@ -361,6 +363,8 @@ $$CH_3COOH + NH_3 \rightleftharpoons CH_3COO^- + NH_4^+$$
 $$K = \frac{K_{A1}}{K_{A2}} = 10^{pK_{A2} - pK_{A1}} = 10^{9{,}2 - 4{,}8} = 10^{4{,}4} \approx 2{,}5 \times 10^4$$
 
 $K \gg 1$ : la réaction est quasi totale, $\tau \approx 1$. Sans surprise : l'acide éthanoïque ($pK_{A1} = 4{,}8$) est un acide bien plus fort que l'ion ammonium ($pK_{A2} = 9{,}2$), donc il impose son proton à l'ammoniac presque sans retour en arrière.
+
+[[figure:zones-predominance-2]]
 
 ### Exemple travaillé 2 : une réaction limitée — calculer $\tau$ pour de vrai
 

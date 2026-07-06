@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Deux diagrammes de prédominance superposés sur le même axe de pH : le couple CH3COOH/CH3COO- (pKA1 environ 4,8) et le couple NH4+/NH3 (pKA2 environ 9,2). Entre les deux frontières, CH3COO- prédomine pour le premier couple et NH4+ prédomine pour le second : les produits de la réaction CH3COOH + NH3 sont donc conjointement favorisés sur une large plage de pH, ce qui explique une réaction quasi totale.">
+  <title>Deux couples sur le même axe de pH — pourquoi la réaction est quasi totale (R7)</title>
+  <!--
+    zones-predominance-2.svg — figure STATIQUE, rung R7.
+
+    Choix de fig. 2 : la leçon ne traite PAS le titrage pH-métrique (aucune
+    mention de "titrage", "équivalence", "burette" dans le texte). Cette
+    figure est donc du type "zones-predominance-2" demandé en repli : un
+    second diagramme de prédominance, superposant ici DEUX couples sur le
+    même axe de pH pour illustrer directement le rung R7 ("réaction entre
+    deux couples"), plutôt qu'une simple répétition à un seul couple.
+
+    Couples et valeurs (repris tels quels du texte, Exemple travaillé 1, R7) :
+      Couple 1 : CH3COOH/CH3COO-  , pKA1 ≈ 4,8
+      Couple 2 : NH4+/NH3         , pKA2 ≈ 9,2
+      Réaction : CH3COOH + NH3 ⇌ CH3COO- + NH4+
+      K = KA1/KA2 = 10^(pKA2-pKA1) = 10^4,4 ≈ 2,5×10^4  (valeur du texte)
+
+    Géométrie (même échelle que diagramme-predominance.svg, pour cohérence
+    entre les deux figures de la leçon) :
+      x(pH) = 70 + 38·pH
+      x(pH=0)    = 70
+      x(pH=4,8)  = 252,4   (frontière pKA1)
+      x(pH=7)    = 336
+      x(pH=9,2)  = 419,6   (frontière pKA2)
+      x(pH=14)   = 602
+    Aucune exagération : les deux frontières sont les projections exactes
+    de pH = 4,8 et pH = 9,2 sur cette échelle linéaire commune aux deux
+    rangées.
+
+    Point pédagogique montré : entre pKA1 et pKA2, la rangée 1 est déjà
+    dans sa zone "base" (CH3COO- prédominant, car pH > pKA1) et la rangée
+    2 est encore dans sa zone "acide" (NH4+ prédominant, car pH < pKA2) :
+    les deux produits de la réaction dominent donc simultanément leurs
+    couples respectifs sur cette plage — cohérent avec K ≫ 1.
+
+    Choix de tracé : chaque frontière (pKA1, pKA2) n'est marquée par un
+    trait plein QUE dans sa propre rangée (vérifié pour ne croiser aucune
+    étiquette d'espèce de sa propre rangée). Aucun trait de liaison continu
+    n'est tracé entre les deux rangées ni jusqu'à l'axe : à ces valeurs
+    précises, un tel trait traverserait l'étiquette d'espèce de l'AUTRE
+    rangée (pKA1 = 252,4 tombe dans la zone du libellé NH4+ de la rangée 2 ;
+    pKA2 = 419,6 tombe dans la zone du libellé CH3COO- de la rangée 1). Ce
+    n'est pas une marque essentielle : l'alignement en colonne entre
+    l'accolade du haut, le trait de chaque rangée et le tick d'axe en bas
+    suffit à montrer la correspondance, sans surcharger la figure.
+
+    Rôle des couleurs : les deux frontières pKA1 et pKA2 (accolade du haut,
+    trait propre à chaque rangée, ticks et étiquettes sur l'axe) sont le
+    même type de foyer répété deux fois → --figure-accent pour les deux
+    (comme les demi-vies répétées dans decroissance-courbe.svg). Axe,
+    bandes de zone, étiquettes de rangée et espèces restent en
+    --figure-ink / --figure-ink-soft / --figure-grid.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Deux couples sur un même axe de pH — pourquoi la réaction est quasi totale (R7)</text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="36" width="608" height="234" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Accolade du haut : plage où les deux produits dominent ────────── -->
+  <text x="336" y="49" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-accent)">zone où CH<tspan
+        dy="3" font-size="8">3</tspan><tspan
+        dy="-3">COO</tspan><tspan
+        dy="-4" font-size="8">-</tspan><tspan
+        dy="4"> et NH</tspan><tspan
+        dy="3" font-size="8">4</tspan><tspan
+        dy="-6" font-size="8">+</tspan><tspan
+        dy="3"> dominent ensemble</tspan>
+  </text>
+  <line x1="252.4" y1="58" x2="419.6" y2="58"
+        stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <polygon points="252.4,58 259,54.5 259,61.5" fill="var(--figure-accent)"/>
+  <polygon points="419.6,58 413,54.5 413,61.5" fill="var(--figure-accent)"/>
+  <text x="336" y="72" text-anchor="middle" font-size="10"
+        fill="var(--figure-accent)">K = K<tspan
+        dy="3" font-size="7.5">A1</tspan><tspan
+        dy="-3"> / K</tspan><tspan
+        dy="3" font-size="7.5">A2</tspan><tspan
+        dy="-3"> ≈ 2,5×10</tspan><tspan
+        dy="-5" font-size="7.5">4</tspan>
+  </text>
+
+  <!-- ── Rangée 1 : CH3COOH / CH3COO- , pKA1 ≈ 4,8 ─────────────────────── -->
+  <text x="72" y="86" font-size="9.5" font-style="italic"
+        fill="var(--figure-ink-soft)">Couple 1</text>
+  <rect x="70" y="90" width="532" height="34" rx="4"
+        fill="var(--figure-grid)" fill-opacity="0.55"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="161.2" y="112" text-anchor="middle" font-size="14"
+        fill="var(--figure-ink)">CH<tspan
+        dy="3" font-size="9">3</tspan><tspan
+        dy="-3">COOH</tspan>
+  </text>
+  <text x="427.2" y="112" text-anchor="middle" font-size="14"
+        fill="var(--figure-ink)">CH<tspan
+        dy="3" font-size="9">3</tspan><tspan
+        dy="-3">COO</tspan><tspan
+        dy="-5" font-size="9">-</tspan>
+  </text>
+  <!-- frontière pKA1, confinée à la rangée 1 (claire des deux étiquettes CH3COOH/CH3COO- de cette rangée) -->
+  <line x1="252.4" y1="86" x2="252.4" y2="128"
+        stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+  <!-- ── Rangée 2 : NH4+ / NH3 , pKA2 ≈ 9,2 ─────────────────────────────── -->
+  <text x="72" y="146" font-size="9.5" font-style="italic"
+        fill="var(--figure-ink-soft)">Couple 2</text>
+  <rect x="70" y="150" width="532" height="34" rx="4"
+        fill="var(--figure-grid)" fill-opacity="0.55"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="244.8" y="172" text-anchor="middle" font-size="14"
+        fill="var(--figure-ink)">NH<tspan
+        dy="4" font-size="9">4</tspan><tspan
+        dy="-9" font-size="9">+</tspan>
+  </text>
+  <text x="510.8" y="172" text-anchor="middle" font-size="14"
+        fill="var(--figure-ink)">NH<tspan
+        dy="4" font-size="9">3</tspan>
+  </text>
+  <!-- frontière pKA2, confinée à la rangée 2 (claire des deux étiquettes NH4+/NH3 de cette rangée) -->
+  <line x1="419.6" y1="146" x2="419.6" y2="188"
+        stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+  <!-- ── Axe de pH partagé par les deux rangées ─────────────────────────── -->
+  <line x1="60" y1="215" x2="612" y2="215"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,215 600,210.5 600,219.5" fill="var(--figure-ink-soft)"/>
+  <text x="618" y="219" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">pH</text>
+
+  <line x1="70" y1="212" x2="70" y2="218" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="70" y="231" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+
+  <line x1="336" y1="212" x2="336" y2="218" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="336" y="231" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">7</text>
+
+  <line x1="602" y1="212" x2="602" y2="218" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="602" y="231" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">14</text>
+
+  <!-- Ticks d'axe pour pKA1 et pKA2 — foyers de la figure, en accent -->
+  <line x1="252.4" y1="209" x2="252.4" y2="221" stroke="var(--figure-accent)" stroke-width="2"/>
+  <text x="252.4" y="246" text-anchor="middle" font-size="11"
+        fill="var(--figure-accent)">pK<tspan
+        dy="3" font-size="8">A1</tspan><tspan
+        dy="-3"> ≈ 4,8</tspan>
+  </text>
+
+  <line x1="419.6" y1="209" x2="419.6" y2="221" stroke="var(--figure-accent)" stroke-width="2"/>
+  <text x="419.6" y="246" text-anchor="middle" font-size="11"
+        fill="var(--figure-accent)">pK<tspan
+        dy="3" font-size="8">A2</tspan><tspan
+        dy="-3"> ≈ 9,2</tspan>
+  </text>
+
+  <!-- Captions -->
+  <text x="320" y="290" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Entre pK<tspan
+        dy="3" font-size="8">A1</tspan><tspan
+        dy="-3"> et pK</tspan><tspan
+        dy="3" font-size="8">A2</tspan><tspan
+        dy="-3">, CH</tspan><tspan
+        dy="3" font-size="8">3</tspan><tspan
+        dy="-3">COO</tspan><tspan
+        dy="-4" font-size="8">-</tspan><tspan
+        dy="4"> et NH</tspan><tspan
+        dy="3" font-size="8">4</tspan><tspan
+        dy="-6" font-size="8">+</tspan><tspan
+        dy="3"> prédominent en même temps : la réaction est quasi totale.</tspan>
+  </text>
+  <text x="320" y="306" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">K = K<tspan
+        dy="3" font-size="8">A1</tspan><tspan
+        dy="-3"> / K</tspan><tspan
+        dy="3" font-size="8">A2</tspan><tspan
+        dy="-3"> ne dépend que des deux couples, jamais du pH (R7).</tspan>
+  </text>
+
+</svg>

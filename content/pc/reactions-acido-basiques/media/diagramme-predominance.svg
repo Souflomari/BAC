@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Diagramme de prédominance pour le couple NH4+/NH3, pKA environ 9,2 : sur un axe de pH de 0 à 14, la forme acide NH4+ prédomine pour pH inférieur à 9,2, la forme basique NH3 prédomine pour pH supérieur à 9,2, la frontière pH = pKA étant le lieu où les deux concentrations sont égales.">
+  <title>Diagramme de prédominance — couple NH4+/NH3 (pKA ≈ 9,2)</title>
+  <!--
+    diagramme-predominance.svg — figure STATIQUE, rung R5.
+
+    Couple utilisé (issu de l'exemple travaillé du rung R5 de la leçon) :
+      NH4+/NH3, pKA ≈ 9,2.
+    Frontière représentée : pH = pKA ≈ 9,2, où [NH4+] = [NH3].
+    Exemple chiffré repris du texte (R5, calcul à pH = 7,0) : le rapport
+    [NH3]/[NH4+] = 10^(7,0-9,2) ≈ 6,3×10⁻³, soit environ 160 ions NH4+
+    pour 1 molécule NH3 — donnée reportée telle quelle en légende, aucune
+    valeur inventée.
+
+    Géométrie (calculée, pas devinée) : axe de pH linéaire de 0 à 14.
+      x(pH) = 70 + 38·pH   (échelle : 38 px par unité de pH)
+      x(pH=0)  = 70
+      x(pH=7)  = 336   (coïncide avec le pH utilisé dans l'exemple du
+                          texte — pas une coïncidence de mise en page :
+                          c'est la même valeur que R5 calcule)
+      x(pH=9,2)= 419,6  (frontière pKA)
+      x(pH=14) = 602
+    Aucune exagération schématique : la position de la frontière est la
+    projection exacte de pH = 9,2 sur cette échelle linéaire.
+
+    Rôle des couleurs : la frontière pH = pKA (ligne, tick, étiquette
+    "pKA ≈ 9,2" et l'égalité [NH4+] = [NH3]) est le seul foyer de la
+    figure → --figure-accent. Axe, ticks courants (0, 7, 14), bandes de
+    zone et étiquettes d'espèces restent en --figure-ink / --figure-ink-soft
+    / --figure-grid, jamais en accent.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Diagramme de prédominance — couple NH<tspan
+        dy="4" font-size="9">4</tspan><tspan
+        dy="-9" font-size="9">+</tspan><tspan
+        dy="5"> / NH</tspan><tspan
+        dy="4" font-size="9">3</tspan><tspan
+        dy="-4"> (pK</tspan><tspan
+        dy="4" font-size="9">A</tspan><tspan
+        dy="-4"> ≈ 9,2)</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="38" width="608" height="176" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── En-têtes de zone ──────────────────────────────────────────── -->
+  <text x="244.8" y="54" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">forme acide</text>
+  <text x="510.8" y="54" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">forme basique</text>
+
+  <!-- ── Bande de zone (une seule bande continue, coupée par la frontière) ── -->
+  <rect x="70" y="64" width="532" height="38" rx="4"
+        fill="var(--figure-grid)" fill-opacity="0.55"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- Espèces prédominantes -->
+  <text x="244.8" y="90" text-anchor="middle" font-size="17"
+        fill="var(--figure-ink)">NH<tspan
+        dy="5" font-size="10">4</tspan><tspan
+        dy="-10" font-size="10">+</tspan>
+  </text>
+  <text x="510.8" y="90" text-anchor="middle" font-size="17"
+        fill="var(--figure-ink)">NH<tspan
+        dy="5" font-size="10">3</tspan>
+  </text>
+
+  <text x="244.8" y="114" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">prédominant</text>
+  <text x="510.8" y="114" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">prédominant</text>
+
+  <!-- ── Axe de pH ─────────────────────────────────────────────────── -->
+  <line x1="60" y1="140" x2="612" y2="140"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,140 600,135.5 600,144.5" fill="var(--figure-ink-soft)"/>
+  <text x="618" y="144" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">pH</text>
+
+  <!-- Ticks mineurs : 0, 7, 14 -->
+  <line x1="70" y1="137" x2="70" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="70" y="156" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+
+  <line x1="336" y1="137" x2="336" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="336" y="156" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">7</text>
+
+  <line x1="602" y1="137" x2="602" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="602" y="156" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">14</text>
+
+  <!-- ── Frontière pH = pKA — seul foyer de la figure, en accent ──────── -->
+  <line x1="419.6" y1="48" x2="419.6" y2="134"
+        stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="5,3"/>
+  <line x1="419.6" y1="134" x2="419.6" y2="146"
+        stroke="var(--figure-accent)" stroke-width="2"/>
+
+  <text x="419.6" y="176" text-anchor="middle" font-size="12"
+        fill="var(--figure-accent)">pK<tspan
+        dy="4" font-size="9">A</tspan><tspan
+        dy="-4"> ≈ 9,2</tspan>
+  </text>
+  <text x="419.6" y="190" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-accent)">(pH = pK<tspan
+        dy="3" font-size="8">A</tspan><tspan
+        dy="-3"> : [NH</tspan><tspan
+        dy="3" font-size="8">4</tspan><tspan
+        dy="-6" font-size="8">+</tspan><tspan
+        dy="3">] = [NH</tspan><tspan
+        dy="3" font-size="8">3</tspan><tspan
+        dy="-3">])</tspan>
+  </text>
+
+  <!-- Captions -->
+  <text x="320" y="234" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Règle générale : pH &lt; pK<tspan
+        dy="3" font-size="8">A</tspan><tspan
+        dy="-3"> → forme acide prédominante ; pH &gt; pK</tspan><tspan
+        dy="3" font-size="8">A</tspan><tspan
+        dy="-3"> → forme basique prédominante.</tspan>
+  </text>
+  <text x="320" y="250" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Exemple (R5) : à pH = 7,0, NH<tspan
+        dy="3" font-size="8">4</tspan><tspan
+        dy="-6" font-size="8">+</tspan><tspan
+        dy="3"> prédomine très largement sur NH</tspan><tspan
+        dy="3" font-size="8">3</tspan><tspan
+        dy="-3"> — environ 160 ions NH</tspan><tspan
+        dy="3" font-size="8">4</tspan><tspan
+        dy="-6" font-size="8">+</tspan><tspan
+        dy="3"> pour 1 molécule NH</tspan><tspan
+        dy="3" font-size="8">3</tspan><tspan dy="-3">.</tspan>
+  </text>
+
+</svg>
