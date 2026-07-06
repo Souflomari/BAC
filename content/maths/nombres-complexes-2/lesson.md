@@ -226,6 +226,8 @@ $$z_0 = e^{i0} = 1 \qquad z_1 = e^{i2\pi/3} \qquad z_2 = e^{i4\pi/3}$$
 
 Les trois solutions de $z^3=1$ sont donc $1$, $e^{i2\pi/3}$ et $e^{i4\pi/3}$ — trois points sur le cercle de rayon $1$, régulièrement espacés d'un tiers de tour.
 
+[[figure:racines-unite]]
+
 ### Résoudre $z^n=Z$ pour un complexe quelconque $Z\neq 0$
 
 Même mécanisme, avec un second membre général. Écris $Z$ sous forme exponentielle, $Z=Re^{i\Phi}$ (avec $R=|Z|>0$), et cherche $z=\rho e^{i\alpha}$ tel que $z^n=Z$ :
@@ -389,6 +391,8 @@ $$z' = iz + 2 + 2i$$
 $$z' = i(3+2i) + 2+2i = 3i + 2i^2 + 2 + 2i = 3i - 2 + 2 + 2i = 5i$$
 
 On retrouve exactement $z_C=5i$. La rotation transforme bien $B$ en $C$ — cohérent avec la question 3 : $A$ étant équidistant de $B$ et de $C$ avec un angle droit entre les deux, une rotation de $\pi/2$ centrée en $A$ devait envoyer l'un sur l'autre.
+
+[[figure:rotation-complexe]]
 
 ### À toi de jouer
 

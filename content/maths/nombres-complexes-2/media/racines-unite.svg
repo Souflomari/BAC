@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 620" width="640" height="620"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img" aria-label="Sur le cercle de rayon 1 dans le plan complexe, les trois racines cubiques de l'unité : z0 = 1 à l'angle 0, z1 = e élevé i·2π/3 à 120°, z2 = e élevé i·4π/3 à 240°, régulièrement espacées d'un tiers de tour et reliées par un triangle équilatéral en pointillés.">
+  <title>Les racines cubiques de l'unité, sur le cercle unité (R4)</title>
+  <!--
+    racines-unite.svg — figure STATIQUE pour R4, exemple travaillé
+    "racines cubiques de l'unité (n=3)" : z_k = e^{i2kπ/3}, k=0,1,2.
+
+    Positions exactes (n=3) :
+      z0 = e^{i0}     = 1              -> angle 0°
+      z1 = e^{i2π/3}  = -1/2 + i√3/2    -> angle 120°
+      z2 = e^{i4π/3}  = -1/2 - i√3/2    -> angle 240°
+    Trois points régulièrement espacés d'un tiers de tour (2π/3 = 120°) sur
+    le cercle de rayon 1 — formant un triangle équilatéral (cf. R6 : |w|=1
+    et arg(w)=±π/3 [2π] <=> triangle équilatéral).
+
+    Repère écran : centre O = (320,300), rayon du cercle unité R = 170 px.
+    px = 320 + 170·cos(angle) ,  py = 300 - 170·sin(angle)  (y inversé pour
+    que l'angle croissant tourne bien dans le sens direct à l'écran).
+      z0 (angle 0°)   -> (490, 300)
+      z1 (angle 120°) -> (235, 153)
+      z2 (angle 240°) -> (235, 447)
+
+    Arc 2π/3 : rayon 0,35 unité autour de O, de 0° à 120°, approximé par une
+    Bézier quadratique (point de contrôle sur la bissectrice à 60°, distance
+    0,35/cos(60°) = 0,7 du centre — même technique que rotation-complexe.svg
+    et moment-force.svg).
+
+    Couleurs : cercle unité, axes Re/Im, origine O, triangle (pointillé) —
+    --figure-ink-soft (structure neutre : la forme que les racines dessinent).
+    Les trois racines elles-mêmes (points + étiquettes) et l'arc 2π/3 —
+    --figure-accent (seul foyer : ce sont LES RACINES qui comptent ici).
+  -->
+
+  <rect x="20" y="34" width="600" height="520" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Les racines cubiques de l'unité (n = 3)</text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">R4 : z<tspan dy="2" font-size="8">k</tspan><tspan dy="-2"> = e</tspan><tspan dy="-4" font-size="8">i2k&#960;/3</tspan><tspan dy="4">, k = 0, 1, 2 — trois points régulièrement espacés sur le cercle unité</tspan></text>
+
+  <!-- ── Cercle unité (structure neutre) ────────────────────────────────── -->
+  <circle cx="320" cy="300" r="170" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+  <!-- ── Triangle formé par les trois racines (pointillé, structure) ───── -->
+  <polygon points="490,300 235,153 235,447" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+  <!-- ── Axes Re / Im (repère neutre) ───────────────────────────────────── -->
+  <line x1="120" y1="300" x2="520" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="520,300 508,295.5 508,304.5" fill="var(--figure-ink-soft)"/>
+  <text x="505" y="316" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Re</text>
+
+  <line x1="320" y1="500" x2="320" y2="100" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="320,100 315.5,111 324.5,111" fill="var(--figure-ink-soft)"/>
+  <text x="333" y="110" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)">Im</text>
+
+  <circle cx="320" cy="300" r="2.5" fill="var(--figure-ink-soft)"/>
+  <text x="306" y="317" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+  <!-- ── Arc 2π/3, entre z0 et z1 (foyer accent : l'écart régulier) ─────── -->
+  <path d="M380,300 Q380,197 290,248" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="367" y="223" text-anchor="middle" font-size="12" fill="var(--figure-accent)"><tspan font-style="italic">2&#960;</tspan>/3</text>
+
+  <!-- ── Les trois racines (foyer accent) ───────────────────────────────── -->
+  <circle cx="490" cy="300" r="5" fill="var(--figure-accent)"/>
+  <text x="505" y="304" text-anchor="start" font-size="13" font-style="italic" fill="var(--figure-accent)">z<tspan dy="4" font-size="9" font-style="normal">0</tspan><tspan dy="-4"> = 1</tspan></text>
+
+  <circle cx="235" cy="153" r="5" fill="var(--figure-accent)"/>
+  <text x="220" y="130" text-anchor="end" font-size="13" font-style="italic" fill="var(--figure-accent)">z<tspan dy="4" font-size="9" font-style="normal">1</tspan><tspan dy="-4"> = e</tspan><tspan dy="-7" font-size="9">i2&#960;/3</tspan></text>
+
+  <circle cx="235" cy="447" r="5" fill="var(--figure-accent)"/>
+  <text x="220" y="475" text-anchor="end" font-size="13" font-style="italic" fill="var(--figure-accent)">z<tspan dy="4" font-size="9" font-style="normal">2</tspan><tspan dy="-4"> = e</tspan><tspan dy="-7" font-size="9">i4&#960;/3</tspan></text>
+
+  <!-- ── Formule encadrée ───────────────────────────────────────────────── -->
+  <rect x="160" y="490" width="320" height="56" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="320" y="510" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-accent)">z<tspan dy="4" font-size="10" font-style="normal">k</tspan><tspan dy="-4"> = e</tspan><tspan dy="-7" font-size="10">i2k&#960;/n</tspan><tspan dy="7" font-style="normal"> (k = 0, 1, &#8230;, n&#8722;1)</tspan></text>
+  <text x="320" y="533" text-anchor="middle" font-size="11.5" fill="var(--figure-accent)"><tspan font-style="normal">ici, n = 3 : </tspan><tspan font-style="italic">z</tspan><tspan dy="4" font-size="8.5" font-style="normal">k</tspan><tspan dy="-4" font-style="italic"> = e</tspan><tspan dy="-6" font-size="8.5" font-style="italic">i2k&#960;/3</tspan><tspan dy="6" font-style="normal">, k = 0, 1, 2</tspan></text>
+
+  <!-- ── Légende ────────────────────────────────────────────────────────── -->
+  <text x="320" y="574" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">Les 3 racines sont régulièrement espacées d'un tiers de tour (2π/3) sur le cercle de rayon 1.</text>
+  <text x="320" y="591" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">z<tspan dy="2" font-size="7.5">0</tspan><tspan dy="-2">, z</tspan><tspan dy="2" font-size="7.5">1</tspan><tspan dy="-2">, z</tspan><tspan dy="2" font-size="7.5">2</tspan><tspan dy="-2"> forment un triangle équilatéral inscrit (cf. R6 : |w|=1 et arg(w)=&#177;π/3 [2π]).</tspan></text>
+</svg>
