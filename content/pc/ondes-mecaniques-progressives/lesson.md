@@ -40,6 +40,8 @@ C'est exactement ce que fait la « ola » dans un stade : chaque spectateur se l
 
 Voilà ce qui se cache derrière « transport d'énergie sans transport de matière » : ce n'est pas une formule à retenir, c'est la conséquence directe de la façon dont une perturbation se relaie entre voisins dans un milieu élastique.
 
+[[motion:onde-qui-avance]]
+
 <!-- Pointeur d'échelle (jamais bloquant) : la question de la répétition dans
      le temps de la perturbation (période, fréquence, longueur d'onde) est
      volontairement laissée de côté ici — elle est traitée dans le chapitre
