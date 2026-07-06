@@ -696,3 +696,29 @@ orphelins : energy-exchange, loi-mailles-build). La table détaillée
 (done / pending / declined-with-reason, une ligne par figure) est tenue
 en fin de cette section au fur et à mesure du fan-out Day-11.
 
+
+## 12. Extension — la chasse adversariale (2026-07-06, post-ADR-0026)
+
+Nouvel instrument `web/scripts/hunt.mjs` : toutes routes × 5 viewports
+(390/768/1280/1536/1920) × 2 thèmes RÉELS × print/reduced-motion/params
+hostiles/clavier/persistance/embed-bloqué. dom-truth 121 → **129**.
+
+- **P0 mobile (corrigé + gardé)** : les 10 débordements à 390px avaient UNE
+  cause — le `h1` du masthead (un mot français long à 3.5rem dépasse 390px ;
+  pire cas 169px, SVT). Fix : `clamp()` fluide + césure fr. sous 600px +
+  contention tableaux/formules-inline. Garde F9 (balayage 390px, 7 routes
+  condamnées + témoins). Bible §1 « adapts down gracefully » : VÉRIFIÉ.
+- **P1 KaTeX-YAML (corrigé + gardé)** : `\approx` à simple backslash dans
+  une chaîne YAML double-quotée → escape mangé → `.katex-error « R pprox 0 »`.
+  Garde double : classe author-time (validate-content) + backstop rendu (F8).
+- **Contenu (flag-only, owner-gated)** : 3 critiques, chaque nombre des 61
+  leçons recalculé. 2 P1 (He⁺ v=3,1e6→4,4e6 CONFIRMÉ ; Hardy-Weinberg
+  4 vs 5 conditions), 2 P2, 3 P3 → `docs/audits/hunt-flags-2026-07.md`.
+  1 faux positif écarté par vérité rendue (`P(B\|A)` rend juste). Corpus
+  autrement sain (chaîne nucléaire, Bayes, Mendel, philo — exacts).
+- **Passes confirmés par la chasse** (non-régressions prouvées, pas
+  supposées) : print déplie les chapitres + masque les contrôles ; params
+  `?chapitre=0/99/abc/-3` clampés à 1 chapitre visible ; reduced-motion =
+  StagedFigure complète sans contrôles ; anneaux de focus partout au Tab ;
+  StagedFigure opérable au clavier ; la page survit à PhET injoignable ;
+  thème persistant à la navigation.
