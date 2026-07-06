@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Décomposition de la vitesse d'un projectile en quatre positions le long de sa trajectoire parabolique : au lancement, à mi-montée, au sommet et à mi-descente. La composante horizontale v_x garde rigoureusement la même longueur aux quatre positions ; la composante verticale v_y raccourcit en montant, s'annule au sommet, puis réapparaît vers le bas avec la même longueur qu'à mi-montée.">
+  <title>Les composantes de la vitesse le long de la parabole — v_x invariante, v_y qui change</title>
+
+  <!--
+    vecteurs-le-long-parabole.motion.svg  (v1 — pilot, ADR 0022 / MotionStage engine)
+    ─────────────────────────────────────────────────────────────────────────
+    Engine: MotionStage.tsx (GSAP `fade` verb, `replace` layout model — no
+    morph: each position is an authored group, cross-faded, per the "safe
+    pattern" for successive discrete snapshots; see rationale below).
+
+    CONCEPT: the static figure of this lesson (trajectoire-parabolique.svg)
+    decomposes v_0 into v_0x/v_0y only ONCE, at the launch point — it cannot
+    show how the two components evolve as the ball travels. This clip fills
+    exactly that gap: the SAME ball, shown at four successive positions along
+    the SAME parabola, with v_x and v_y redrawn at each position. The
+    misconception this kills (R0/R2 of the lesson): "the ball is momentarily
+    at rest at the top of its arc." It is not — only v_y is zero there; v_x
+    (and hence the ball's motion) never stops.
+
+    NUMBERS (disclosed): reuses the lesson's OWN worked example, unchanged,
+    from R2-R4 — v_0 = 25 m/s, sinα = 0,60, cosα = 0,80, g ≈ 9,8 m/s²
+    ⇒ v_0x = 20 m/s, v_0y = 15 m/s. From v_y(t) = 15 − 9,8t (R2) and
+    y(t) = 15t − 4,9t² (R2), t_sommet = 15/9,8 ≈ 1,531 s (R4). The four
+    positions are chosen so v_y takes CLEAN, exactly-symmetric values:
+      P0 lancement      t = 0                  x = 0,00 m   y = 0,00 m   v_x = 20   v_y = +15,0
+      P1 mi-montée       t = t_sommet/2 ≈ 0,765s x = 15,31 m  y = 8,61 m   v_x = 20   v_y = +7,5   (exactly half of v_0y — v_y is linear in t)
+      P2 sommet          t = t_sommet ≈ 1,531s  x = 30,61 m  y = 11,48 m  v_x = 20   v_y = 0
+      P3 mi-descente     t = 1,5·t_sommet≈2,296s x = 45,92 m  y = 8,61 m   v_x = 20   v_y = −7,5   (mirror of P1: same |v_y|, same height y, by parabola symmetry)
+    Positions and heights computed from y(x) = 0,75x − 0,01225x² (R3); the
+    dashed background curve is the same true parabola, sampled every 5 m of
+    x plus the exact vertex and landing point (D ≈ 61,22 m, R4).
+
+    TWO INDEPENDENT PIXEL SCALES (by design, both disclosed):
+      (a) POSITION scale, for the ball's location and the dashed trajectory:
+          scale_x = 8 px/m, scale_y = 14 px/m (anisotropic, same convention
+          as trajectoire-parabolique.svg), origin (x=0,y=0) at svg (70,350).
+          x_px = 70 + 8·x_m ; y_px = 350 − 14·y_m.
+      (b) VELOCITY-ARROW scale, for arrow LENGTH only (a schematic magnitude,
+          not tied to the position axes — standard practice, also used by
+          the static figure's v_0 vector): 4 px per (m/s). This is what
+          makes v_x = 20 m/s a pixel-identical 80px arrow at all four
+          positions (the literal, load-bearing point of this clip), v_y at
+          launch 15×4=60px, at mid-ascent/mid-descent 7,5×4=30px (exactly
+          half), and 0px (no arrow) at the summit.
+
+    ACCENT-COLOR CHOICE (disclosed, per authoring contract): --figure-accent
+    is used for v_x ONLY, held identical across all four beats — the
+    sustained accent on the one quantity that never changes is the visual
+    argument for its invariance. v_y uses --figure-ink (still a primary,
+    legible color — it is not de-emphasized, just not the sustained accent)
+    so its own shrink/grow/flip reads as "the changing one" through motion
+    and length alone, without competing for the single accent role (DESIGN-
+    BIBLE §7, one thing to look at). The dashed background trajectory uses
+    --figure-ink-soft per the rendering contract for this task.
+
+    LAYOUT MODEL: replace.
+      Slot "vector-slot" — NOT a small fixed-size box (unlike the canonical
+      equation/label slots in the two gold references): it is "whichever
+      one ball+vectors snapshot currently represents the projectile,"
+      spanning the whole stage region, because the ball's location itself
+      is the content that must change. Exactly one of #pos-0..#pos-3 is
+      visible at a time; the engine's `replaces` directive still applies
+      unchanged (fade the exiting group's <g> opacity to 0, fade the
+      entering group's <g> opacity to 1) — the mechanism does not require
+      matching bounding boxes, only "one current tenant."
+      Slot "chip-slot" — a conventional small fixed-size label chip
+      (top-right), swapped the same way, naming the current position in
+      words ("Lancement", "Mi-montée", …) as a wayfinding aid alongside the
+      external figcaption.
+    Why fade/replace and not morph (considered and rejected): morphing
+    would require the v_y arrow to interpolate THROUGH a zero-length state
+    and then re-emerge pointing the opposite way (up → 0 → down) — exactly
+    the ambiguous, hard-to-read intermediate state MorphSVG is bad at, and
+    the task names this "the safe pattern" for good reason. Four authored,
+    correct snapshots (including the summit's textual "v_y = 0", which has
+    no sensible arrow at all) avoids that failure mode entirely.
+
+    THE GRAVITY REMINDER (#gravity-g): always-visible chrome, NEVER
+    animates, identical at every beat — a small downward arrow labeled "g"
+    in the top-right corner, the same role/style as the "g" vector in
+    trajectoire-parabolique.svg. Deliberately NOT tied to the beat sequence
+    (no fade-in "reveal" at the summit) so it cannot look like gravity
+    switches on only at the top; beat-2's caption explicitly points back to
+    this ever-present arrow to make the "g never stopped acting" argument.
+
+    CURRICULUM BOUNDARY (matches this lesson's R2-R4): only v_x, v_y, the
+    launch/summit/landing vocabulary already established in the lesson.
+    No projectile range/height formulas re-derived here (that is R4's job,
+    in the static figure) — this clip is scoped strictly to the vector
+    decomposition question raised in R0 and answered in R2.
+
+    NO-FLASH CONTRACT: #pos-1/2/3 and #chip-1/2/3 authored opacity="0"
+    (fade pre-state). #pos-0 and #chip-0 are authored visible (settled
+    beat-0). All chrome (title, subtitle, trajectory, ground line, gravity
+    reminder, footer) carries no beat membership and is authored normally.
+  -->
+
+  <!-- ── Background ────────────────────────────────────────────────────── -->
+  <rect width="720" height="460" rx="8" fill="var(--figure-surface)"/>
+
+  <!-- ── Chrome: title + subtitle (always visible) ──────────────────────── -->
+  <text x="360" y="18" text-anchor="middle"
+        font-size="12.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Les composantes de la vitesse le long de la parabole
+  </text>
+  <text x="360" y="33" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Tir de référence : v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3"> = 25 m/s, sin α = 0,60, cos α = 0,80 → v</tspan><tspan
+    dy="3" font-size="7.5">0x</tspan><tspan dy="-3"> = 20 m/s, v</tspan><tspan dy="3" font-size="7.5">0y</tspan><tspan
+    dy="-3"> = 15 m/s, g ≈ 9,8 m/s²</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       STAGE — trajectory + moving ball (region: stage, x:20-700, y:40-370)
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Ground reference line (y = 0), always visible chrome -->
+  <line id="ground-line" x1="55" y1="350" x2="580" y2="350"
+        stroke="var(--figure-grid)" stroke-width="1.2"/>
+
+  <!-- Full trajectory — the true parabola y(x) = 0,75x − 0,01225x², dashed,
+       always visible (chrome). Sampled every 5 m of x, plus the exact
+       vertex (sommet) and landing point. -->
+  <path id="trajectory-path"
+        d="M70.00,350.00 L110.00,301.79 L150.00,262.15 L190.00,231.09 L230.00,208.60
+           L270.00,194.69 L310.00,189.35 L314.90,189.29 L350.00,192.59 L390.00,204.40
+           L430.00,224.79 L470.00,253.75 L510.00,291.29 L550.00,337.40 L559.80,350.00"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"
+        stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Gravity reminder — always visible, NEVER animates, identical at every
+       beat (see rationale in the header comment: prevents "g only appears
+       at the top" misreading). -->
+  <g id="gravity-g">
+    <line x1="684" y1="94" x2="684" y2="126"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="684,126 679.5,117 688.5,117" fill="var(--figure-ink)"/>
+    <text x="696" y="116" font-size="13" font-style="italic" fill="var(--figure-ink)">g</text>
+  </g>
+
+  <!--
+    VECTOR SLOT — exactly ONE of #pos-0..#pos-3 visible at a time (replace
+    slot "vector-slot"). Each group: the ball (neutral ink fill, ink-soft
+    ring) + v_x (accent, horizontal, ALWAYS 80px — the pixel-identical
+    invariant) + v_y (ink, vertical, length = 4 px per m/s, absent/replaced
+    by a "v_y = 0" label at the summit).
+  -->
+
+  <!-- P0 — Lancement : x=0,00 m  y=0,00 m  v_x=20 m/s  v_y=+15,0 m/s (visible on load) -->
+  <g id="pos-0">
+    <line x1="70.00" y1="350.00" x2="70.00" y2="290.00"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="70.00,290.00 65.5,299.00 74.5,299.00" fill="var(--figure-ink)"/>
+    <text x="84" y="300" text-anchor="start" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink)">v<tspan dy="3" font-size="7.5">y</tspan></text>
+
+    <line x1="70.00" y1="350.00" x2="150.00" y2="350.00"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="150.00,350.00 141,345.5 141,354.5" fill="var(--figure-accent)"/>
+    <text x="110" y="366" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">v<tspan dy="3" font-size="7.5">x</tspan></text>
+
+    <circle cx="70.00" cy="350.00" r="5.5" fill="var(--figure-ink)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  </g>
+
+  <!-- P1 — Mi-montée : x=15,31 m  y=8,61 m  v_x=20 m/s  v_y=+7,5 m/s (authored hidden) -->
+  <g id="pos-1" opacity="0">
+    <line x1="192.45" y1="229.46" x2="192.45" y2="199.46"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="192.45,199.46 187.95,208.46 196.95,208.46" fill="var(--figure-ink)"/>
+    <text x="206.45" y="209.46" text-anchor="start" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink)">v<tspan dy="3" font-size="7.5">y</tspan></text>
+
+    <line x1="192.45" y1="229.46" x2="272.45" y2="229.46"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="272.45,229.46 263.45,224.96 263.45,233.96" fill="var(--figure-accent)"/>
+    <text x="232.45" y="245.46" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">v<tspan dy="3" font-size="7.5">x</tspan></text>
+
+    <circle cx="192.45" cy="229.46" r="5.5" fill="var(--figure-ink)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  </g>
+
+  <!-- P2 — Sommet : x=30,61 m  y=11,48 m  v_x=20 m/s  v_y=0 (authored hidden) -->
+  <g id="pos-2" opacity="0">
+    <text x="314.90" y="171.29" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink)">v<tspan dy="3" font-size="7.5">y</tspan><tspan dy="-3"> = 0</tspan></text>
+
+    <line x1="314.90" y1="189.29" x2="394.90" y2="189.29"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="394.90,189.29 385.90,184.79 385.90,193.79" fill="var(--figure-accent)"/>
+    <text x="354.90" y="205.29" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">v<tspan dy="3" font-size="7.5">x</tspan></text>
+
+    <circle cx="314.90" cy="189.29" r="5.5" fill="var(--figure-ink)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  </g>
+
+  <!-- P3 — Mi-descente : x=45,92 m  y=8,61 m  v_x=20 m/s  v_y=−7,5 m/s (authored hidden) -->
+  <g id="pos-3" opacity="0">
+    <line x1="437.34" y1="229.47" x2="437.34" y2="259.47"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="437.34,259.47 432.84,250.47 441.84,250.47" fill="var(--figure-ink)"/>
+    <text x="451.34" y="269.47" text-anchor="start" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink)">v<tspan dy="3" font-size="7.5">y</tspan></text>
+
+    <line x1="437.34" y1="229.47" x2="517.34" y2="229.47"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="517.34,229.47 508.34,224.97 508.34,233.97" fill="var(--figure-accent)"/>
+    <text x="477.34" y="245.47" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">v<tspan dy="3" font-size="7.5">x</tspan></text>
+
+    <circle cx="437.34" cy="229.47" r="5.5" fill="var(--figure-ink)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  </g>
+
+  <!--
+    CHIP SLOT — a conventional small fixed-size label (top-right), exactly
+    one of #chip-0..#chip-3 visible at a time (replace slot "chip-slot").
+    Background rect is always-visible chrome; only the text groups swap.
+  -->
+  <rect x="520" y="46" width="130" height="28" rx="6" fill="var(--figure-accent)" opacity="0.10"/>
+
+  <g id="chip-0">
+    <text x="585" y="64" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">Lancement (t = 0)</text>
+  </g>
+  <g id="chip-1" opacity="0">
+    <text x="585" y="64" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">Mi-montée</text>
+  </g>
+  <g id="chip-2" opacity="0">
+    <text x="585" y="64" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">Sommet — v<tspan dy="3" font-size="7.5">y</tspan><tspan dy="-3"> = 0</tspan></text>
+  </g>
+  <g id="chip-3" opacity="0">
+    <text x="585" y="64" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">Mi-descente</text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER — legend + boundary reinforcement (always visible)
+       ══════════════════════════════════════════════════════════════════════ -->
+  <line x1="40" y1="406" x2="70" y2="406" stroke="var(--figure-accent)" stroke-width="2.6"/>
+  <text x="76" y="410" font-size="10.5" fill="var(--figure-accent)">v<tspan dy="3" font-size="8">x</tspan><tspan
+        dy="-3" fill="var(--figure-ink)"> — même longueur à chaque instant du vol</tspan></text>
+
+  <line x1="40" y1="426" x2="70" y2="426" stroke="var(--figure-ink)" stroke-width="2.2"/>
+  <text x="76" y="430" font-size="10.5" fill="var(--figure-ink)">v<tspan dy="3" font-size="8">y</tspan><tspan
+        dy="-3"> — diminue, s'annule au sommet, puis s'inverse</tspan></text>
+
+  <text x="360" y="450" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">
+    Deux mouvements indépendants : l'horizontal ignore la pesanteur ; seul le vertical la ressent.
+  </text>
+
+</svg>

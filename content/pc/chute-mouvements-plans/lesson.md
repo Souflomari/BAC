@@ -102,6 +102,8 @@ $$v_x(t) = v_{0x}$$
 
 Ce résultat mérite qu'on s'y arrête, parce qu'il tranche directement la question posée en R0. Beaucoup d'élèves imaginent que la vitesse horizontale ralentit en même temps que la vitesse verticale ralentit (en montée), pour ensuite « reprendre » en redescente — comme si les deux composantes étaient liées. Ce n'est pas le cas : ce sont deux mouvements **complètement indépendants**, gouvernés par deux équations séparées. La composante verticale $v_y(t)$ change bel et bien avec le temps (elle diminue, s'annule au sommet, puis devient négative) — c'est elle qu'on voit ralentir puis s'inverser. Mais $v_x(t)$, elle, ne bouge pas d'un iota : elle vaut $v_{0x}$ au lancer, $v_{0x}$ au sommet, $v_{0x}$ à l'impact. Rien dans le bilan des forces ne pourrait la faire changer, puisque $a_x = 0$ à chaque instant.
 
+[[motion:vecteurs-le-long-parabole]]
+
 On primitive une seconde fois pour obtenir les positions — ce sont les **équations horaires** du mouvement :
 
 $$x(t) = v_{0x}\,t$$

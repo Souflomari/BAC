@@ -157,6 +157,8 @@ $$dN = -\lambda \, N(t) \, dt$$
 
 (le signe moins traduit que $N$ *diminue*). Remarque ce que dit cette équation : plus il y a de noyaux présents, plus il y a de désintégrations par seconde en valeur absolue — pas parce que les noyaux restants deviennent plus instables avec le temps, mais simplement parce qu'il y a plus de noyaux pour tenter leur chance.
 
+[[motion:population-aleatoire]]
+
 ### Poser la solution, puis la vérifier
 
 On réécrit l'équation précédente sous forme différentielle :

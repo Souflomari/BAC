@@ -82,6 +82,8 @@ Regarde bien cette expression. Le terme $\cos(2\pi f_p t)$ oscille très vite, t
 
 Le résultat : une oscillation rapide (à $f_p$) dont l'enveloppe — la courbe qui relie les sommets successifs — dessine exactement la forme de $s_m(t)$, décalée vers le haut de $U_0$. L'information ne voyage pas dans la fréquence de l'oscillation (elle reste $f_p$, immuable) : elle voyage entièrement dans l'amplitude.
 
+[[motion:construction-modulation]]
+
 ### Exemple numérique
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on écrit explicitement $s(t)$ pour une porteuse et un signal donnés, pour voir concrètement à quoi ressemble le résultat de la formule — avant de s'en servir pour vérifier des conditions dans le rung suivant.

@@ -1,0 +1,363 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 540"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Construction de la tension modulée s(t) : la porteuse seule, le signal informatif seul, leur produit modulé (porteuse d'amplitude variable) avec son enveloppe, puis l'enveloppe isolée qui porte l'information transmise au récepteur.">
+  <title>Construire s(t) : de la porteuse au signal modulé</title>
+
+  <!--
+    construction-modulation.motion.svg  (v1 — MotionStage engine, ADR 0022)
+    ─────────────────────────────────────────────────────────────────────────
+    Engine: MotionStage.tsx (GSAP DrawSVGPlugin for trace; fade for entrances
+    and de-emphasis via the `replace` slot mechanism).
+
+    CONCEPT: this notion's two static figures (modulation-amplitude,
+    bonne-surmodulation) show the FINISHED modulated tension s(t). Neither can
+    show it being BUILT from its two ingredients. This clip does exactly that,
+    one beat at a time: porteuse seule -> signal seul -> leur produit (avec
+    l'enveloppe qui apparaît) -> l'enveloppe isolée (ce que le récepteur doit
+    retrouver). Supports R2's construction of s(t) = (U0+s_m(t))·cos(2π f_p t).
+
+    MODEL (identical to modulation-amplitude.svg, same worked example — R2):
+      u_p(t)  = U0 · cos(2π f_p t)                          (panel 1)
+      s_m(t)  = S_m · cos(2π f_signal t)                    (panel 2)
+      s(t)    = (U0 + s_m(t)) · cos(2π f_p t)                (panel 3)
+      U0 = 6 V, S_m = 3 V  ->  m = S_m/U0 = 0,5 (bonne modulation, cf. R2/R3).
+      Rapport f_p/f_signal RÉDUIT à 6 (au lieu de 300 dans le cours) pour que
+      l'oeil distingue les cycles individuels de la porteuse — EXACTEMENT le
+      même rapport réduit que modulation-amplitude.svg (voir son en-tête).
+      Seul ce rapport est schématique ; U0, S_m et la forme de l'enveloppe
+      sont physiquement exacts.
+
+    CONSTRUCTION DES POINTS (même recette que modulation-amplitude.svg /
+    regimes-uc.svg : chaque "bosse" entre deux extremums consécutifs = 2 arcs
+    cubiques par le zéro ; contrôle proche d'un EXTREMUM à tangente plate
+    (même y que l'extremum, décalé de 0,18·Δx) ; contrôle proche d'un ZÉRO à
+    tangente raide, y = 0,3125·y_axe + 0,6875·y_extremum, décalé de 0,12·Δx).
+
+    Panel 1 (porteuse seule) : baseline y=108, échelle 8 px/V, Δx=40 px par
+      demi-période, 12 demi-périodes (6 périodes complètes) sur x=112..592.
+      Amplitude CONSTANTE U0=6V -> pics à y=60, creux à y=156, toujours.
+
+    Panel 2 (signal seul) : baseline y=228, même échelle 8 px/V, UNE période
+      complète du signal sur la même largeur x=112..592 (Δx=240 px par
+      demi-période) — cette largeur représente exactement 6 périodes de
+      porteuse = 1 période de signal (rapport fp/fsignal=6). Pic S_m=3V à
+      y=204 (t=0), creux à y=252 (mi-période), retour au pic à y=204.
+
+    Panel 3 (produit + enveloppe) : baseline y=386, même échelle 8 px/V, même
+      découpage en 12 demi-périodes de porteuse que le panel 1 (mêmes x_k),
+      mais l'amplitude à chaque extremum suit maintenant E_k = U0+S_m·cos(30k°)
+      (k=0..12, soit UNE période de signal — theta_k=30k° car f_p=6·f_signal,
+      identique à la table de modulation-amplitude.svg, restreinte à k=0..12) :
+        E_k : 9  8,598  7,5  6  4,5  3,402  3  3,402  4,5  6  7,5  8,598  9
+      v_k = +E_k si k pair (pic), -E_k si k impair (creux) ; y_k = 386-8·v_k.
+      L'enveloppe (haute=+E_k, basse=-E_k) est tracée en polyligne simple à
+      travers les mêmes 13 points x_k — elle touche exactement chaque extremum
+      de la porteuse modulée (vérifié point par point), comme dans
+      modulation-amplitude.svg.
+
+    LAYOUT MODEL: reserved-regions (default) — chrome / panel-1 / panel-2 /
+    panel-3 / footer sont des bandes disjointes. Une seule exception locale :
+    dans panel-3, le beat-3 utilise le mécanisme `replace` (spec `replaces`)
+    pour ESTOMPER la porteuse déjà tracée (#p3-curve, plein contraste) en la
+    remplaçant par un doublon atténué (#p3-curve-dim, ink-soft) — le verbe
+    `fade` ne peut animer QUE vers une opacité pleine (1), jamais vers une
+    valeur partielle ; le seul moyen propre de faire disparaître un élément
+    déjà réglé visible par un beat antérieur est la sortie automatique du
+    mécanisme `replace` (fade-out géré par le moteur). AUCUN `pulse-settle`
+    n'est utilisé sur un élément déjà visible dans un beat antérieur : la
+    pré-passe du moteur (`setPre`) masque INCONDITIONNELLEMENT la cible d'un
+    `pulse-settle` (autoAlpha:0) au moment de la construction de la timeline,
+    quel que soit le beat où le tween apparaît — l'appliquer à #p3-curve ou à
+    #p3-envelope (déjà révélés en beat-2) les aurait rendus invisibles dès le
+    beat-2 (bug de préséance). D'où le choix : #p3-curve-dim et #p3-spotlight
+    sont des éléments NEUFS, jamais montrés avant le beat-3, animés par un
+    simple `fade` (from:none) — sans risque.
+
+    BEAT PRE-STATES (no-flash contract) :
+      Beat 0 (settled on load) : panel-1 entièrement authored VISIBLE (bg,
+        axes, tick U0, courbe #p1-curve) — aucun opacity="0". Seul #p1-curve
+        porte un tween `trace` (cohérent avec regime-traces-forming.motion.json :
+        le beat 0 est de toute façon "seek-past" instantanément par le moteur).
+      Beat 1 : panel-2 (#p2-bg, #p2-axes, #p2-curve) authored opacity="0".
+      Beat 2 : panel-3 (#p3-bg, #p3-axes, #p3-curve, #p3-envelope,
+        #p3-label-envelope) authored opacity="0". #p3-spotlight et
+        #p3-curve-dim (utilisés seulement au beat 3) sont AUSSI authored
+        opacity="0" dès maintenant (ils n'apparaissent qu'au beat 3, donc pas
+        de flash avant cela).
+
+    PALETTE (DESIGN-TOKENS §7.1, RENDERING CONTRACT) : l'ACCENT est réservé à
+    l'enveloppe (le foyer pédagogique — R2 : "l'enveloppe reproduit le
+    signal"). La porteuse (panels 1 et 3, MÊME teinte pour signaler qu'il
+    s'agit physiquement de la même onde, seulement modulée) est en
+    --figure-ink. Le signal informatif seul (panel 2) est en --figure-ink-soft
+    (plus doux — c'est l'ingrédient, pas encore le résultat). Chrome / axes /
+    grilles en --figure-ink-soft / --figure-grid.
+
+    CURRICULUM BOUNDARY : le beat 3 nomme la démodulation ("c'est la
+    démodulation") sans montrer le détecteur de crête (diode + condensateur)
+    — ce mécanisme est le sujet de R4, hors du périmètre de ce clip qui reste
+    sur la CONSTRUCTION de s(t) (R2). Aucun schéma de circuit ici.
+  -->
+
+  <!-- ── Background ───────────────────────────────────────────────────────── -->
+  <rect width="680" height="540" rx="8" fill="var(--figure-surface)"/>
+
+  <!-- ── Chrome: title + subtitle (always visible) ───────────────────────── -->
+  <text x="340" y="22" text-anchor="middle"
+        font-size="12.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Construire s(t) : de la porteuse au signal modulé
+  </text>
+  <text x="340" y="38" text-anchor="middle"
+        font-size="10" fill="var(--figure-ink-soft)">
+    U<tspan dy="2" font-size="7">0</tspan><tspan dy="-2">=6 V, S</tspan><tspan dy="2" font-size="7">m</tspan><tspan dy="-2">=3 V (m=0,5) — rapport f</tspan><tspan dy="2" font-size="7">p</tspan><tspan dy="-2">/f</tspan><tspan dy="2" font-size="7">signal</tspan><tspan dy="-2"> réduit à 6 pour la lisibilité</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PANEL 1 — la porteuse seule (beat 0, settled on load)
+       Region: x:0 y:50 w:680 h:120. All elements authored VISIBLE.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect id="p1-bg" x="90" y="56" width="550" height="104" rx="5"
+        fill="var(--figure-grid)" opacity="0.35"/>
+
+  <line x1="112" y1="108" x2="602" y2="108"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="602,108 592,103.5 592,112.5" fill="var(--figure-ink-soft)"/>
+  <line x1="112" y1="158" x2="112" y2="54"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="112,54 107,64.5 117,64.5" fill="var(--figure-ink-soft)"/>
+
+  <text x="608" y="112" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="100" y="46" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">u<tspan dy="2" font-size="7">p</tspan><tspan dy="-2">(t)</tspan></text>
+  <text x="104" y="112" text-anchor="end" font-size="9.5"
+        fill="var(--figure-ink-soft)">0</text>
+  <line x1="108" y1="60" x2="116" y2="60"
+        stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="98" y="64" text-anchor="end" font-size="9"
+        fill="var(--figure-ink-soft)">U<tspan dy="2" font-size="6.5">0</tspan></text>
+
+  <!-- Porteuse — amplitude U0 constante, 6 périodes pleines. Baseline y=108,
+       pics y=60, creux y=156, 8 px/V, Δx=40 px / demi-période. -->
+  <path id="p1-curve"
+        d="M112,60
+           C119.2,60 127.2,75 132,108
+           C136.8,141 144.8,156 152,156
+           C159.2,156 167.2,141 172,108
+           C176.8,75 184.8,60 192,60
+           C199.2,60 207.2,75 212,108
+           C216.8,141 224.8,156 232,156
+           C239.2,156 247.2,141 252,108
+           C256.8,75 264.8,60 272,60
+           C279.2,60 287.2,75 292,108
+           C296.8,141 304.8,156 312,156
+           C319.2,156 327.2,141 332,108
+           C336.8,75 344.8,60 352,60
+           C359.2,60 367.2,75 372,108
+           C376.8,141 384.8,156 392,156
+           C399.2,156 407.2,141 412,108
+           C416.8,75 424.8,60 432,60
+           C439.2,60 447.2,75 452,108
+           C456.8,141 464.8,156 472,156
+           C479.2,156 487.2,141 492,108
+           C496.8,75 504.8,60 512,60
+           C519.2,60 527.2,75 532,108
+           C536.8,141 544.8,156 552,156
+           C559.2,156 567.2,141 572,108
+           C576.8,75 584.8,60 592,60"
+        fill="none"
+        stroke="var(--figure-ink)"
+        stroke-width="2.2"
+        stroke-linejoin="round"/>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PANEL 2 — le signal informatif seul (beat 1)
+       Region: x:0 y:170 w:680 h:120. Authored opacity="0" (fade / trace
+       pre-state) — engine setPre re-asserts idempotently, no flash.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect id="p2-bg" x="90" y="176" width="550" height="104" rx="5"
+        fill="var(--figure-grid)" opacity="0.35" style="opacity:0"/>
+
+  <g id="p2-axes" opacity="0">
+    <line x1="112" y1="228" x2="602" y2="228"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="602,228 592,223.5 592,232.5" fill="var(--figure-ink-soft)"/>
+    <line x1="112" y1="256" x2="112" y2="198"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="112,198 107,208.5 117,208.5" fill="var(--figure-ink-soft)"/>
+    <text x="608" y="232" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="100" y="190" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">s<tspan dy="2" font-size="7">m</tspan><tspan dy="-2">(t)</tspan></text>
+    <text x="104" y="232" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">0</text>
+    <line x1="108" y1="204" x2="116" y2="204"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="98" y="208" text-anchor="end" font-size="9"
+          fill="var(--figure-ink-soft)">S<tspan dy="2" font-size="6.5">m</tspan></text>
+  </g>
+
+  <!-- Signal seul — une période complète, même largeur que les 6 périodes de
+       porteuse (Δx=240 px / demi-période). Baseline y=228, pic y=204 (t=0),
+       creux y=252 (mi-période), retour au pic y=204. Ink-soft : l'ingrédient,
+       pas encore le résultat. -->
+  <path id="p2-curve"
+        d="M112,204
+           C155.2,204 203.2,211.5 232,228
+           C260.8,244.5 308.8,252 352,252
+           C395.2,252 443.2,244.5 472,228
+           C500.8,211.5 548.8,204 592,204"
+        fill="none"
+        stroke="var(--figure-ink-soft)"
+        stroke-width="2.2"
+        stroke-linejoin="round"
+        opacity="0"/>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PANEL 3 — le produit modulé + son enveloppe, puis (beat 3) l'enveloppe
+       isolée. Region: x:0 y:290 w:680 h:200.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect id="p3-bg" x="90" y="298" width="550" height="176" rx="5"
+        fill="var(--figure-grid)" opacity="0.35" style="opacity:0"/>
+
+  <!-- Spotlight discret derrière l'enveloppe — introduit seulement au beat 3,
+       jamais montré avant (aucun risque de préséance avec pulse-settle : ici
+       un simple fade, from:none). Placé tôt dans le document pour rester
+       DERRIÈRE la courbe et l'enveloppe. -->
+  <rect id="p3-spotlight" x="100" y="310" width="530" height="148" rx="14"
+        fill="var(--figure-accent)" fill-opacity="0.07" opacity="0"/>
+
+  <g id="p3-axes" opacity="0">
+    <line x1="112" y1="386" x2="602" y2="386"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="602,386 592,381.5 592,390.5" fill="var(--figure-ink-soft)"/>
+    <line x1="112" y1="463" x2="112" y2="306"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="112,306 107,316.5 117,316.5" fill="var(--figure-ink-soft)"/>
+    <text x="608" y="390" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="100" y="304" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">s(t)</text>
+    <text x="104" y="390" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">0</text>
+    <line x1="108" y1="338" x2="116" y2="338"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="98" y="342" text-anchor="end" font-size="9"
+          fill="var(--figure-ink-soft)">U<tspan dy="2" font-size="6.5">0</tspan></text>
+  </g>
+
+  <!-- Porteuse modulée s(t) — même 12 demi-périodes (mêmes x_k) que le panel 1,
+       mais l'amplitude à chaque extremum suit E_k = U0+S_m·cos(30k°). Baseline
+       y=386. Ink : c'est physiquement LA MÊME porteuse qu'au panel 1, dont
+       seule l'amplitude varie maintenant. -->
+  <path id="p3-curve"
+        d="M112,314
+           C119.2,314 127.2,336.5 132,386
+           C136.8,433.29 144.8,454.78 152,454.78
+           C159.2,454.78 167.2,433.29 172,386
+           C176.8,344.75 184.8,326 192,326
+           C199.2,326 207.2,344.75 212,386
+           C216.8,419 224.8,434 232,434
+           C239.2,434 247.2,419 252,386
+           C256.8,361.25 264.8,350 272,350
+           C279.2,350 287.2,361.25 292,386
+           C296.8,404.71 304.8,413.22 312,413.22
+           C319.2,413.22 327.2,404.71 332,386
+           C336.8,369.5 344.8,362 352,362
+           C359.2,362 367.2,369.5 372,386
+           C376.8,404.71 384.8,413.22 392,413.22
+           C399.2,413.22 407.2,404.71 412,386
+           C416.8,361.25 424.8,350 432,350
+           C439.2,350 447.2,361.25 452,386
+           C456.8,419 464.8,434 472,434
+           C479.2,434 487.2,419 492,386
+           C496.8,344.75 504.8,326 512,326
+           C519.2,326 527.2,344.75 532,386
+           C536.8,433.29 544.8,454.78 552,454.78
+           C559.2,454.78 567.2,433.29 572,386
+           C576.8,336.5 584.8,314 592,314"
+        fill="none"
+        stroke="var(--figure-ink)"
+        stroke-width="2.2"
+        stroke-linejoin="round"
+        opacity="0"/>
+
+  <!-- Doublon atténué de la porteuse — introduit seulement au beat 3 (slot
+       "carrier-emphasis" du mécanisme `replace` : #p3-curve sort, celui-ci
+       entre). MÊME tracé, ink-soft, trait plus fin : la porteuse "s'efface"
+       pour laisser l'enveloppe seule à l'avant-plan. -->
+  <path id="p3-curve-dim"
+        d="M112,314
+           C119.2,314 127.2,336.5 132,386
+           C136.8,433.29 144.8,454.78 152,454.78
+           C159.2,454.78 167.2,433.29 172,386
+           C176.8,344.75 184.8,326 192,326
+           C199.2,326 207.2,344.75 212,386
+           C216.8,419 224.8,434 232,434
+           C239.2,434 247.2,419 252,386
+           C256.8,361.25 264.8,350 272,350
+           C279.2,350 287.2,361.25 292,386
+           C296.8,404.71 304.8,413.22 312,413.22
+           C319.2,413.22 327.2,404.71 332,386
+           C336.8,369.5 344.8,362 352,362
+           C359.2,362 367.2,369.5 372,386
+           C376.8,404.71 384.8,413.22 392,413.22
+           C399.2,413.22 407.2,404.71 412,386
+           C416.8,361.25 424.8,350 432,350
+           C439.2,350 447.2,361.25 452,386
+           C456.8,419 464.8,434 472,434
+           C479.2,434 487.2,419 492,386
+           C496.8,344.75 504.8,326 512,326
+           C519.2,326 527.2,344.75 532,386
+           C536.8,433.29 544.8,454.78 552,454.78
+           C559.2,454.78 567.2,433.29 572,386
+           C576.8,336.5 584.8,314 592,314"
+        fill="none"
+        stroke="var(--figure-ink-soft)"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        opacity="0"/>
+
+  <!-- Enveloppe — haute (+E_k) et basse (-E_k), tracée en polyligne à travers
+       les 13 mêmes x_k. Touche exactement chaque extremum de #p3-curve. -->
+  <g id="p3-envelope" opacity="0">
+    <polyline points="112,314 152,317.22 192,326 232,338 272,350 312,358.78 352,362 392,358.78 432,350 472,338 512,326 552,317.22 592,314"
+              fill="none" stroke="var(--figure-accent)" stroke-width="1.5"
+              stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="112,458 152,454.78 192,446 232,434 272,422 312,413.22 352,410 392,413.22 432,422 472,434 512,446 552,454.78 592,458"
+              fill="none" stroke="var(--figure-accent)" stroke-width="1.5"
+              stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Étiquette « enveloppe » — pointe vers un sommet de l'enveloppe haute. -->
+  <g id="p3-label-envelope" opacity="0">
+    <line x1="460" y1="313" x2="472" y2="336"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="445" y="308" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">enveloppe : U<tspan dy="2" font-size="7">0</tspan><tspan dy="-2">+s</tspan><tspan dy="2" font-size="7">m</tspan><tspan dy="-2">(t)</tspan></text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER — légende + note (always visible)
+       ══════════════════════════════════════════════════════════════════════ -->
+  <line x1="60" y1="503" x2="90" y2="503" stroke="var(--figure-ink)" stroke-width="2.4"/>
+  <text x="96" y="507" font-size="10" fill="var(--figure-ink)">
+    porteuse et signal informatif (ink / ink-soft)
+  </text>
+
+  <line x1="60" y1="520" x2="90" y2="520" stroke="var(--figure-accent)" stroke-width="1.8"
+        stroke-dasharray="5,3"/>
+  <text x="96" y="524" font-size="10" fill="var(--figure-ink)">
+    enveloppe : U<tspan dy="2" font-size="7">0</tspan><tspan dy="-2">+s</tspan><tspan dy="2" font-size="7">m</tspan><tspan dy="-2">(t) — l'information transmise</tspan>
+  </text>
+
+  <text x="340" y="536" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">
+    (rapport f<tspan dy="2" font-size="6.5">p</tspan><tspan dy="-2">/f</tspan><tspan dy="2" font-size="6.5">signal</tspan><tspan dy="-2"> réduit ici à 6 pour la lisibilité — en réalité f</tspan><tspan dy="2" font-size="6.5">p</tspan><tspan dy="-2"> ≫ f</tspan><tspan dy="2" font-size="6.5">signal</tspan><tspan dy="-2">, cf. R1/R3 et la figure modulation-amplitude)</tspan>
+  </text>
+
+</svg>
