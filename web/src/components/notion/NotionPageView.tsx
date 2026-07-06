@@ -109,6 +109,7 @@ export function NotionPageView({
     mediaSvgs,
     motionSvgs,
     motionSpecs,
+    mediaStages,
     mediaEmbeds,
   } = notion;
 
@@ -254,6 +255,7 @@ export function NotionPageView({
               mediaSvgs={mediaSvgs}
               motionSvgs={motionSvgs}
               motionSpecs={motionSpecs}
+              mediaStages={mediaStages}
               mediaEmbeds={mediaEmbeds}
               checkpoints={checkpoints}
             />

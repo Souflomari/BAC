@@ -152,6 +152,22 @@ export interface NotionDerivation {
   steps: DerivationStep[];
 }
 
+/** A single stage of a StagedFigure — one caption per revealed step group. */
+export interface StagedFigureStageSpec {
+  caption: string;
+}
+
+/**
+ * Parsed media/<slug>.stages.json sidecar (LESSON-EXPERIENCE-SPEC §2.2).
+ * `slug` is the authored slug inside the file (asserted equal to the
+ * filename-derived key by validate-content.mjs, not re-checked here — the
+ * loader is fail-safe, not the source of truth for authoring correctness).
+ */
+export interface MediaStagesSpec {
+  slug: string;
+  stages: StagedFigureStageSpec[];
+}
+
 export interface NotionExercise {
   id: string;
   title: string;
@@ -203,6 +219,13 @@ export interface NotionContent {
    * renders it; absent → the legacy stepped MotionDiagram is used.
    */
   motionSpecs: Record<string, MotionSpec>;
+  /**
+   * Staged-figure declarations — media/*.stages.json, keyed by base slug
+   * (e.g. "regimes-uc.stages.json" → "regimes-uc"), same convention as
+   * motionSpecs. When a figure slug has an entry here, NotionBody dispatches
+   * to StagedFigure instead of MediaDiagramFigure (LESSON-EXPERIENCE-SPEC §2).
+   */
+  mediaStages: Record<string, MediaStagesSpec>;
   /**
    * Map of slug → EmbedDescriptor for every media/*.json file.
    * Key is the basename without extension, e.g. "rlc-sandbox".
@@ -509,6 +532,7 @@ export function loadNotion(id: string): NotionContent | null {
   const mediaSvgs: Record<string, string> = {};
   const motionSvgs: Record<string, string> = {};
   const motionSpecs: Record<string, MotionSpec> = {};
+  const mediaStages: Record<string, MediaStagesSpec> = {};
   const mediaEmbeds: Record<string, EmbedDescriptor> = {};
   const mediaDir = path.join(dir, "media");
   if (dirExists(mediaDir)) {
@@ -544,9 +568,58 @@ export function loadNotion(id: string): NotionContent | null {
       }
     }
 
+    // Staged-figure sidecars — media/*.stages.json (LESSON-EXPERIENCE-SPEC §2.2).
+    // Keyed by base slug ("regimes-uc.stages.json" → "regimes-uc"), same
+    // convention as motionSpecs. Loaded BEFORE the embed-JSON loop below so
+    // these files are never mis-read as embed descriptors (they carry no
+    // `url`, so the embed loop would skip them anyway — routing them
+    // explicitly keeps intent clear, matching the motion-spec comment above).
+    // Malformed JSON → console.warn + skip, never throw (every loader here is
+    // fail-safe; a bad sidecar must not take the page down).
+    for (const file of files.filter((f) => f.endsWith(".stages.json"))) {
+      const raw = safeReadFile(path.join(mediaDir, file));
+      if (!raw) continue;
+      try {
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== "object") {
+          console.warn(`loadNotion(${id}): media/${file} is not a JSON object — skipped`);
+          continue;
+        }
+        const p = parsed as { slug?: unknown; stages?: unknown };
+        if (typeof p.slug !== "string" || !Array.isArray(p.stages) || p.stages.length === 0) {
+          console.warn(
+            `loadNotion(${id}): media/${file} missing "slug" or a non-empty "stages" array — skipped`
+          );
+          continue;
+        }
+        const stages: StagedFigureStageSpec[] = [];
+        let allCaptionsValid = true;
+        for (const s of p.stages) {
+          const caption = (s as { caption?: unknown } | null)?.caption;
+          if (typeof caption !== "string" || caption.length === 0) {
+            allCaptionsValid = false;
+            break;
+          }
+          stages.push({ caption });
+        }
+        if (!allCaptionsValid) {
+          console.warn(`loadNotion(${id}): media/${file} has a non-string/empty stage caption — skipped`);
+          continue;
+        }
+        const stageSlug = file.replace(/\.stages\.json$/, "");
+        mediaStages[stageSlug] = { slug: p.slug, stages };
+      } catch (err) {
+        console.warn(
+          `loadNotion(${id}): media/${file} invalid JSON — skipped (${(err as Error).message})`
+        );
+      }
+    }
+
     // JSON embed descriptors — keyed by basename slug (e.g. "rlc-sandbox").
-    // Skip *.motion.json (already handled above as beat specs).
-    for (const file of files.filter((f) => f.endsWith(".json") && !f.endsWith(".motion.json"))) {
+    // Skip *.motion.json and *.stages.json (already handled above).
+    for (const file of files.filter(
+      (f) => f.endsWith(".json") && !f.endsWith(".motion.json") && !f.endsWith(".stages.json")
+    )) {
       const raw = safeReadFile(path.join(mediaDir, file));
       if (!raw) continue;
       try {
@@ -604,5 +677,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, mediaEmbeds, embed };
 }

@@ -6,40 +6,53 @@
  * checkpoints, and video elements.
  *
  * Supported marker syntax (one per line, no other text on that line):
- *   [[figure:<slug>]]      → MediaDiagram (static SVG, progressive stepped reveal)
+ *   [[figure:<slug>]]      → StagedFigure when media/<slug>.stages.json exists,
+ *                            else MediaDiagram (static SVG, legacy stepped reveal)
  *   [[motion:<slug>]]      → MotionDiagram (animated SVG from *.motion.svg)
  *   [[embed:<slug>]]       → EmbedPanel (embed descriptor from media/*.json)
  *   [[checkpoint:<id>]]    → CheckpointItem (inline formative MCQ from checkpoints.yaml)
  *   [[video:<slug>]]       → VideoElement (graceful: renders if asset exists, omits if not)
  *
- * Progressive (stepped) figure reveal:
- *   Figures with step groups (id="step-1", "step-2", …) are revealed cumulatively
- *   by occurrence order in the document. The Nth occurrence of slug "rlc-schema"
- *   shows step groups 1..N and hides the rest. This requires no lesson-file edits —
- *   cumulative count is tracked at render time.
+ * Progressive (stepped) figure reveal — TWO mechanisms, coexisting this commit
+ * (LESSON-EXPERIENCE-SPEC §2, ledger 11.7):
  *
- *   Stepped slugs (configured here): "rlc-schema" (4 steps), "regimes-uc" (3 steps).
- *   All other figure slugs render fully (visibleSteps=undefined).
+ *   NEW — StagedFigure (docs/design/LESSON-EXPERIENCE-SPEC.md §2): a sidecar
+ *   media/<slug>.stages.json declares the stage captions; the slug's step
+ *   groups are REMOVED from the SVG string (real DOM absence) above the
+ *   current stage, not merely hidden. `initialStage = min(occurrence,
+ *   stages.length)` — repeated placements of the same figure start
+ *   pre-revealed at their historical level, exactly like the legacy
+ *   mechanism below, which this one supersedes slug-by-slug as sidecars land.
+ *
+ *   LEGACY — the STEPPED_FIGURE_MAX_STEPS allowlist below + MediaDiagramFigure's
+ *   `visibleSteps` (display:none injection): still active for any stepped slug
+ *   that has NOT yet grown a .stages.json sidecar. Cumulative count is tracked
+ *   at render time; the Nth occurrence of a slug shows step groups 1..N.
+ *
+ *   Both read the SAME global occurrence counter (`figureOccurrenceCount`,
+ *   author order, computed before any future pagination split — ledger §1.2):
+ *   a slug is tracked in it the moment it appears in EITHER map below.
  *
  * Unknown slugs → silent no-op (nothing rendered, no crash).
  * No [[…]] literal ever leaks to the rendered page.
  * No browser storage anywhere in this component tree.
  *
  * This is a SERVER component — no "use client".
- * CheckpointItem and MotionDiagram are client components imported here and
- * hydrated in the browser.
+ * CheckpointItem, MotionDiagram, MotionStage and StagedFigure are client
+ * components imported here and hydrated in the browser.
  *
  * DESIGN-BIBLE §0: learning core is sacred; no engagement theater.
  * DESIGN-BIBLE §7: one primary thing per screen; prose and media interleave as authored.
  */
 
-import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation } from "@/lib/content";
+import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { LessonRenderer } from "./LessonRenderer";
 import { MediaDiagramFigure } from "./MediaDiagram";
 import { MotionDiagram } from "./MotionDiagram";
 import { MotionStage } from "./MotionStage";
+import { StagedFigure } from "./StagedFigure";
 import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
@@ -262,6 +275,12 @@ interface NotionBodyProps {
    * renders it; otherwise the legacy stepped MotionDiagram is used.
    */
   motionSpecs: Record<string, MotionSpec>;
+  /**
+   * Staged-figure declarations — media/*.stages.json, keyed by base slug.
+   * When a figure slug has an entry here, NotionBody dispatches to
+   * StagedFigure instead of MediaDiagramFigure (LESSON-EXPERIENCE-SPEC §2).
+   */
+  mediaStages: Record<string, MediaStagesSpec>;
   /** Map of slug → EmbedDescriptor for every media/*.json file. */
   mediaEmbeds: Record<string, EmbedDescriptor>;
   /** Checkpoint items keyed by id. */
@@ -275,6 +294,7 @@ export function NotionBody({
   mediaSvgs,
   motionSvgs,
   motionSpecs,
+  mediaStages,
   mediaEmbeds,
   checkpoints,
 }: NotionBodyProps) {
@@ -311,16 +331,38 @@ export function NotionBody({
           const svg = svgBySlug[seg.slug];
           if (!svg) return null; // Unknown slug — silent no-op
 
-          // Cumulative step reveal
+          const stagesSpec = mediaStages[seg.slug];
           const maxSteps = STEPPED_FIGURE_MAX_STEPS[seg.slug];
+
+          // Global occurrence counter (author order, §1.2) — shared by BOTH
+          // the new StagedFigure mechanism and the legacy allowlist below.
+          // A slug is tracked the moment it needs either: repeated placements
+          // start pre-revealed at their historical level either way.
+          if (stagesSpec !== undefined || maxSteps !== undefined) {
+            figureOccurrenceCount[seg.slug] =
+              (figureOccurrenceCount[seg.slug] ?? 0) + 1;
+          }
+          const occurrence = figureOccurrenceCount[seg.slug];
+
+          // NEW mechanism: a media/<slug>.stages.json sidecar exists.
+          if (stagesSpec !== undefined) {
+            return (
+              <StagedFigure
+                key={`${seg.slug}-${i}`}
+                svg={svg}
+                slug={seg.slug}
+                label={figureAriaLabel(seg.slug)}
+                stages={stagesSpec.stages}
+                initialStage={Math.min(occurrence, stagesSpec.stages.length)}
+              />
+            );
+          }
+
+          // LEGACY mechanism: STEPPED_FIGURE_MAX_STEPS allowlist + MediaDiagramFigure.
           let visibleSteps: number | undefined;
           let caption: string | undefined;
 
           if (maxSteps !== undefined) {
-            // Increment occurrence counter
-            figureOccurrenceCount[seg.slug] =
-              (figureOccurrenceCount[seg.slug] ?? 0) + 1;
-            const occurrence = figureOccurrenceCount[seg.slug];
             // Clamp to max steps so extra occurrences show the full figure
             visibleSteps = Math.min(occurrence, maxSteps);
             caption = stepCaption(seg.slug, visibleSteps);

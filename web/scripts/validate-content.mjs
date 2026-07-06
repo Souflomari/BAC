@@ -14,6 +14,17 @@
  *       [[video:slug]]   → ALWAYS fails (dead marker: NotionBody hard-stubs it to null)
  *   - no authoring lexicon leaks in rendered prose (a stray inline `[[`, TODO,
  *     SLOT, À SOURCER … — comments are stripped first)
+ *   - STAGED FIGURES (LESSON-EXPERIENCE-SPEC §2.7) — a directory-level scan of
+ *     media/, independent of which markers appear in lesson.md:
+ *       media/<slug>.stages.json present  → sibling media/<slug>.svg MUST exist,
+ *                                            stages.length MUST equal the max
+ *                                            id="step-N" in that SVG, every
+ *                                            caption MUST be a non-empty string
+ *                                            (all hard failures)
+ *       media/<slug>.svg has id="step-N" groups but NO .stages.json sidecar →
+ *         warning "(migration pending)", except the four already-grouped
+ *         legacy figures (rlc-schema, regimes-uc, energy-exchange,
+ *         loi-mailles-build) which warn "(legacy occurrence mechanism)"
  *
  * A marker only resolves if it is ALONE on its own line (NotionBody's rule).
  *
@@ -47,6 +58,18 @@ function mathSpans(src) {
 // Authoring-leak lexicon (NOT the media markers, which are handled separately).
 const LEXICON = /TODO|FIXME|SLOT D|AMÉLIORATION|[Àà] [Ss]ourcer|À FAIRE|asset-pending|<!--\s*SLOT/;
 
+// Figures already grouped step-N BEFORE the StagedFigure mechanism existed —
+// migrating them to a .stages.json sidecar is tracked in the ledger migration
+// table, not owed by this validator; they warn distinctly from a plain
+// "migration pending" figure so the two backlogs stay legible at a glance.
+// (docs/audits/fable-day3-ledger.md §11 migration table.)
+const LEGACY_STEP_SLUGS = new Set([
+  "rlc-schema",
+  "regimes-uc",
+  "energy-exchange",
+  "loi-mailles-build",
+]);
+
 /** Collect every `id:` value anywhere in a parsed YAML tree. */
 function collectIds(node, out) {
   if (Array.isArray(node)) { for (const v of node) collectIds(v, out); }
@@ -65,7 +88,7 @@ for (const dir of dirs) {
   if (!fs.existsSync(lesson)) { console.error(`✗ ${dir}: no lesson.md`); failures++; continue; }
   const md = fs.readFileSync(lesson, "utf8");
   let dirFail = 0;
-  let figN = 0, motN = 0, embN = 0;
+  let figN = 0, motN = 0, embN = 0, stgN = 0;
 
   // Parse the YAML sidecars once (also used for marker id-resolution).
   const yamlIds = {}; // filename → Set of ids
@@ -118,6 +141,62 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Staged figures (LESSON-EXPERIENCE-SPEC §2.7) — a directory-level scan
+  // of media/, independent of the [[figure:slug]] markers walked above (a
+  // sidecar's contract with its SVG holds whether or not the lesson happens
+  // to place that figure this revision).
+  if (fs.existsSync(mediaDir)) {
+    const mediaFiles = fs.readdirSync(mediaDir);
+    const svgFiles = mediaFiles.filter((f) => f.endsWith(".svg") && !f.endsWith(".motion.svg"));
+    const stagesFiles = mediaFiles.filter((f) => f.endsWith(".stages.json"));
+    const stagedSlugs = new Set(stagesFiles.map((f) => f.replace(/\.stages\.json$/, "")));
+
+    for (const file of stagesFiles) {
+      const slug = file.replace(/\.stages\.json$/, "");
+      const svgPath = path.join(mediaDir, `${slug}.svg`);
+      if (!fs.existsSync(svgPath)) {
+        console.error(`  ✗ ${dir}: media/${file} → sibling media/${slug}.svg MISSING`); dirFail++;
+        continue;
+      }
+      let parsed;
+      try { parsed = JSON.parse(fs.readFileSync(path.join(mediaDir, file), "utf8")); }
+      catch (err) { console.error(`  ✗ ${dir}: media/${file} invalid JSON → ${err.message.split("\n")[0]}`); dirFail++; continue; }
+
+      const stages = Array.isArray(parsed?.stages) ? parsed.stages : null;
+      if (!stages) {
+        console.error(`  ✗ ${dir}: media/${file} has no "stages" array`); dirFail++; continue;
+      }
+
+      const svgSrc = fs.readFileSync(svgPath, "utf8");
+      const stepNs = [...svgSrc.matchAll(/\bid="step-(\d+)"/g)].map((m) => parseInt(m[1], 10));
+      const maxN = stepNs.length ? Math.max(...stepNs) : 0;
+      if (stages.length !== maxN) {
+        console.error(`  ✗ ${dir}: media/${file} declares ${stages.length} stage(s) but media/${slug}.svg's max is id="step-${maxN}" — counts must match exactly`);
+        dirFail++;
+      }
+
+      const badCaption = stages.some((s) => typeof s?.caption !== "string" || s.caption.trim().length === 0);
+      if (badCaption) {
+        console.error(`  ✗ ${dir}: media/${file} has a non-string or empty stage caption`); dirFail++;
+      }
+      stgN++;
+    }
+
+    // An SVG with step-N groups but no sidecar is either awaiting migration
+    // (Workflow fan-out, ledger §11 migration table) or one of the four
+    // figures grouped BEFORE the sidecar mechanism existed (still driven by
+    // NotionBody's STEPPED_FIGURE_MAX_STEPS occurrence allowlist).
+    for (const file of svgFiles) {
+      const slug = file.replace(/\.svg$/, "");
+      if (stagedSlugs.has(slug)) continue; // already validated above
+      const svgSrc = fs.readFileSync(path.join(mediaDir, file), "utf8");
+      if (/\bid="step-/.test(svgSrc)) {
+        const reason = LEGACY_STEP_SLUGS.has(slug) ? "(legacy occurrence mechanism)" : "(migration pending)";
+        console.error(`  ⚠ ${dir}: media/${file} has step-N groups but no media/${slug}.stages.json sidecar ${reason}`);
+      }
+    }
+  }
+
   // KaTeX — on prose with comments/fences/markers removed.
   const proseSrc = stripCommentsAndFences(proseLines.join("\n"));
   const { display, inline } = mathSpans(proseSrc);
@@ -141,7 +220,7 @@ for (const dir of dirs) {
   }
 
   if (dirFail === 0) {
-    const media = figN + motN + embN ? `, media ${figN}fig ${motN}mot ${embN}emb ok` : "";
+    const media = figN + motN + embN + stgN ? `, media ${figN}fig ${motN}mot ${embN}emb ${stgN}stg ok` : "";
     console.log(`✓ ${dir} — math ${display.length}+${inline.length} ok, yaml ok${media}`);
   }
   failures += dirFail;

@@ -59,7 +59,9 @@ interface MediaDiagramProps {
 // ── Structural figure slugs — capped to natural size, centered ───────────────
 // These are circuit/schema diagrams that should NOT stretch to the full band.
 // They are capped at 680px and centered.
-const STRUCTURAL_SLUGS = new Set([
+// Exported: StagedFigure.tsx applies the same width-cap rule (single source —
+// LESSON-EXPERIENCE-SPEC §2.3 "figure chrome identical to MediaDiagramFigure").
+export const STRUCTURAL_SLUGS = new Set([
   "rlc-schema",
   "rl-schema",
   "rc-schema",
@@ -79,7 +81,10 @@ const STRUCTURAL_SLUGS = new Set([
 // Key: slug; Value: total number of equal-height panels stacked vertically.
 // When showing N of totalPanels panels, viewBox height is cropped to
 // N/totalPanels of the full height, so hidden panels vanish (no blank space).
-const VERTICALLY_STACKED_PANELS: Record<string, number> = {
+// Exported: StagedFigure.tsx (regimes-uc's stages.json migration) applies the
+// same crop on the current stage count — single source (LESSON-EXPERIENCE-
+// SPEC §2.3).
+export const VERTICALLY_STACKED_PANELS: Record<string, number> = {
   "regimes-uc": 3,
 };
 
@@ -113,8 +118,10 @@ function applyStepVisibility(svg: string, visibleSteps: number): string {
  * bottom stroke or gap line without revealing the next panel.
  *
  * If no viewBox is found, no cropping is applied (falls back to normal rendering).
+ *
+ * Exported for StagedFigure.tsx — single source (LESSON-EXPERIENCE-SPEC §2.3).
  */
-function applyViewBoxCrop(
+export function applyViewBoxCrop(
   svg: string,
   visiblePanels: number,
   totalPanels: number
