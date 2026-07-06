@@ -1,0 +1,84 @@
+<svg viewBox="0 0 760 490" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="La sphère de centre S et de rayon 3, coupant le plan de base ABC selon un cercle : H, projeté orthogonal de S sur le plan (égal à A), à distance d égale 2 de S ; le triangle rectangle en H avec l'hypoténuse SM égale au rayon R égale 3 et le côté HM égale racine de 5, rayon du cercle d'intersection.">
+  <title>Sphère et plan sécants : d(S,(ABC)) &lt; R</title>
+  <!--
+    sphere-plan.svg — figure du R9 (intersection sphère/plan), cas sécant,
+    avec les nombres exacts de l'exemple travaillé : sphère de centre
+    S(0,0,2) [= Ω dans la formule générale] et de rayon R = 3 ; plan de
+    base (ABC), d'équation z = 0 ; H, projeté orthogonal de S sur (ABC),
+    est exactement A (le tétraèdre est trirectangle en A) ; d(S,(ABC)) = 2 ;
+    rayon du cercle d'intersection = √(R² − d²) = √(9−4) = √5.
+
+    Convention de projection, DIVULGUÉE ici :
+    - échelle : 1 unité = 45 px, appliquée sur DEUX directions à la vraie
+      grandeur : l'horizontale (direction e1 du plan, portant H→M) et la
+      verticale (portant S→H). Le triangle SHM est donc un vrai triangle
+      rectangle en H sur ce dessin (angle droit exact), pas une
+      approximation — on vérifie : HM = 45×√5 ≈ 100,6 px, SH = 45×2 = 90 px,
+      SM = 45×3 = 135 px, et 100,6² + 90² = 135² (au pixel près).
+    - l'arête de profondeur du plan (utilisée seulement pour donner au
+      parallélogramme son effet de perspective, aucune longueur n'y est
+      lue) est inclinée à 45°, coefficient de réduction 0,5 — perspective
+      cavalière, comme dans plan-normal.svg.
+    - le cercle d'intersection, posé à plat dans le plan, est dessiné en
+      ellipse avec le même coefficient de réduction 0,5 sur son petit axe
+      (rayon vertical = rayon horizontal × 0,5), pour suggérer qu'il est
+      couché dans le plan reculant — simplification standard de la
+      perspective cavalière (comme un cercle dessiné sur une table vue de
+      biais), non une transformée affine exacte.
+    - convention des traits cachés : l'arc de sphère sous le plan (la
+      calotte immergée, de hauteur R − d = 1 unité) est en pointillés ;
+      l'arc au-dessus (la plus grande partie de la sphère, R + d = 5
+      unités) est en trait plein.
+    Focus accent : la comparaison d (distance) vs R (rayon) — les deux
+    segments SH et SM, seuls éléments en couleur d'accent.
+  -->
+  <rect width="760" height="490" fill="var(--figure-surface)"/>
+
+  <!-- ── Le plan de base (ABC), en perspective cavalière ──────────────── -->
+  <path d="M 40 440 L 600 440 L 710 330 L 150 330 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1.5"/>
+  <text x="560" y="352" font-size="15" fill="var(--figure-ink-soft)">(<tspan font-style="italic">ABC</tspan>)</text>
+
+  <!-- ── La sphère : arc visible (plein) puis arc caché (pointillé) ──── -->
+  <path d="M 229.4 390 A 135 135 0 1 1 430.6 390" fill="none"
+        stroke="var(--figure-ink)" stroke-width="2"/>
+  <path d="M 229.4 390 A 135 135 0 0 0 430.6 390" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <!-- ── Le cercle d'intersection, en ellipse (couché dans le plan) ──── -->
+  <ellipse cx="330" cy="390" rx="101" ry="50" fill="var(--figure-surface)"
+           stroke="var(--figure-ink)" stroke-width="2"/>
+
+  <!-- ── Angle droit en H (entre HS vertical et HM horizontal) ────────── -->
+  <path d="M 344 390 L 344 376 L 330 376" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+  <!-- ── Segment d = SH (ACCENT — la distance comparée à R) ───────────── -->
+  <line x1="330" y1="300" x2="330" y2="390" stroke="var(--figure-accent)" stroke-width="2.4"/>
+  <text x="345" y="349" font-size="15" font-style="italic" fill="var(--figure-accent)">d</text>
+
+  <!-- ── Segment R = SM (ACCENT — le rayon comparé à d) ───────────────── -->
+  <line x1="330" y1="300" x2="430.6" y2="390" stroke="var(--figure-accent)" stroke-width="2.4"/>
+  <text x="400" y="332" font-size="15" font-style="italic" fill="var(--figure-accent)">R</text>
+
+  <!-- ── Segment HM = √5 (ink-soft — dérivé, pas le focus) ────────────── -->
+  <text x="358" y="408" font-size="13" fill="var(--figure-ink-soft)">&#8730;5</text>
+
+  <!-- ── Points S, H, M ────────────────────────────────────────────────  -->
+  <circle cx="330" cy="300" r="4" fill="var(--figure-ink)"/>
+  <text x="346" y="296" font-size="16" font-style="italic" fill="var(--figure-ink)">S</text>
+  <text x="362" y="296" font-size="12" fill="var(--figure-ink-soft)">(= &#937;)</text>
+
+  <circle cx="330" cy="390" r="4" fill="var(--figure-ink)"/>
+  <text x="292" y="412" font-size="16" font-style="italic" fill="var(--figure-ink)">H</text>
+  <text x="284" y="427" font-size="12" fill="var(--figure-ink-soft)">(= A)</text>
+
+  <circle cx="430.6" cy="390" r="4" fill="var(--figure-ink)"/>
+  <text x="440" y="382" font-size="16" font-style="italic" fill="var(--figure-ink)">M</text>
+  <text x="440" y="398" font-size="11" fill="var(--figure-ink-soft)">point quelconque du cercle</text>
+
+  <!-- ── Lecture de la figure ──────────────────────────────────────────  -->
+  <text x="380" y="472" text-anchor="middle" font-size="13" fill="var(--figure-ink-soft)">
+    d(S,(ABC)) = 2 &lt; R = 3   &#8658;   intersection = cercle de centre H (= A), de rayon &#8730;5
+  </text>
+</svg>

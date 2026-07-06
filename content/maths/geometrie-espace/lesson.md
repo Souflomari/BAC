@@ -273,6 +273,8 @@ Un plan $\mathcal P$ est entièrement déterminé par un point $A_0(x_0,y_0,z_0)
 
 $$\vec{n}\cdot\overrightarrow{A_0M} = 0$$
 
+[[figure:plan-normal]]
+
 On développe ce produit scalaire avec la formule analytique du R2 :
 
 $$a(x-x_0) + b(y-y_0) + c(z-z_0) = 0$$
@@ -443,6 +445,8 @@ Trois cas, selon la comparaison de $d$ et $R$ :
 $$d\left(S,(ABC)\right) = \frac{|0+0+2-0|}{\sqrt{0^2+0^2+1^2}} = 2$$
 
 Puisque $d=2<R=3$, l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}=\sqrt{9-4}=\sqrt5$. Son centre est le projeté orthogonal de $S$ sur $(ABC)$ : comme $\overrightarrow{AS}$ est déjà perpendiculaire à ce plan (le tétraèdre est trirectangle en $A$), ce projeté est exactement $A$. Le cercle d'intersection est donc centré en $A$, de rayon $\sqrt5$.
+
+[[figure:sphere-plan]]
 
 ---
 
