@@ -70,6 +70,9 @@ const STRUCTURAL_SLUGS = new Set([
   // D10 wave C — electrochemistry cell schematics
   "pile-daniell",
   "cellule-electrolyse",
+  // D10 wave B — mechanics schematics
+  "plan-incline-forces",
+  "deux-chariots-inertie",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────

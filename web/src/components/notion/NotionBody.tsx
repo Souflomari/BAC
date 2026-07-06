@@ -94,6 +94,8 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "moment-inertie":      "Moment d'inertie : une tige homogène et un haltère de même masse et même longueur ont des J_Δ différents (rapport 3)",
   "travail-poids-chemin": "Le travail du poids est indépendant du chemin suivi : il ne dépend que du dénivelé entre départ et arrivée",
   "conservation-em":     "Conservation de l'énergie mécanique : les barres d'énergie cinétique E_C, d'énergie potentielle E_pp et d'énergie mécanique E_m au cours du mouvement",
+  "deux-chariots-inertie": "Même force de 20 N sur deux chariots : le chariot de 10 kg accélère à 2,0 m/s², celui de 40 kg à 0,5 m/s² — les flèches d'accélération sont à l'échelle, rapport 4:1 inverse des masses",
+  "plan-incline-forces": "Solide sur un plan incliné à 30° : bilan des forces (poids P, réaction normale N, frottement f), repère Ox/Oy lié au plan, et décomposition du poids en mg·sinα le long du plan et mg·cosα perpendiculairement",
   "pendule-elastique":   "Pendule élastique : le ressort et la masse aux trois états −Xm, 0, +Xm, et l'élongation x(t) = Xm·cos(ω0·t + φ) au cours du temps",
   "energie-oscillateur": "Énergie de l'oscillateur : l'énergie potentielle élastique E_pe et l'énergie cinétique E_c en antiphase, l'énergie mécanique E_m restant constante",
   // D10 wave C — PC chimie

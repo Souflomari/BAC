@@ -137,6 +137,8 @@ $$a_B = \frac{F}{m_B} = \frac{20}{40} = 0{,}5\ \text{m}\cdot\text{s}^{-2}$$
 
 Le chariot A accélère quatre fois plus vite que le chariot B — exactement le rapport inverse de leurs masses ($m_B/m_A = 4$). La force appliquée est identique dans les deux cas ; c'est uniquement la masse qui distingue les deux résultats.
 
+[[figure:deux-chariots-inertie]]
+
 ---
 
 ## R4 — La troisième loi : les actions réciproques
@@ -297,6 +299,8 @@ Le poids $\vec{P}$ est toujours vertical, mais le repère qu'on vient de choisir
 $$P_x = mg\sin\alpha \qquad P_y = -mg\cos\alpha$$
 
 (le signe négatif sur $P_y$ vient de ce que la composante perpendiculaire du poids pointe vers l'intérieur du plan, à l'opposé du sens choisi pour $Oy$).
+
+[[figure:plan-incline-forces]]
 
 ### Deuxième loi, projetée
 

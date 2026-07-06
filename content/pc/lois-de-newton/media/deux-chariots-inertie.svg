@@ -1,0 +1,73 @@
+<svg viewBox="0 0 720 412" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Deux chariots poussés par la même force horizontale de 20 newtons : le chariot A de masse 10 kilogrammes prend une accélération de 2,0 mètres par seconde carrée, le chariot B de masse 40 kilogrammes une accélération de 0,5 mètre par seconde carrée — les flèches d'accélération sont à l'échelle, dans le rapport 4 pour 1, inverse du rapport des masses.">
+  <title>Même force, masses différentes — la masse mesure l'inertie</title>
+  <!--
+    deux-chariots-inertie.svg — figure STATIQUE, illustre l'exemple
+    travaillé du R3 avec SES valeurs (rien d'inventé) :
+    F = 20 N identique, m_A = 10 kg → a_A = 2,0 m·s⁻²,
+    m_B = 40 kg → a_B = 0,5 m·s⁻².
+    Échelles (divulguées en pied de figure) :
+    - accélérations : 80 px ↔ 1 m·s⁻², donc a_A = 160 px et a_B = 40 px,
+      rapport 4:1 exact — la comparaison est vérifiable à la règle.
+    - les deux flèches F sont identiques (92 px de l'origine à la pointe),
+      c'est tout le propos.
+    - la taille des chariots SUGGÈRE la masse mais n'est pas à l'échelle
+      (un rapport de volumes 4:1 serait illisible).
+    Focus accent : les deux flèches d'accélération (une seule idée — le
+    contraste des a — répétée sur les deux rangées, comme les demi-vies
+    de decroissance-courbe.svg).
+  -->
+  <rect width="720" height="412" fill="var(--figure-surface)"/>
+
+  <!-- ── Rangée A : m = 10 kg ───────────────────────────────────────── -->
+  <line x1="60" y1="170" x2="660" y2="170" stroke="var(--figure-grid)" stroke-width="1.5"/>
+
+  <!-- chariot A -->
+  <rect x="250" y="110" width="84" height="48" rx="4"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+  <circle cx="272" cy="163" r="7" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+  <circle cx="312" cy="163" r="7" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+  <text x="346" y="152" font-size="14" fill="var(--figure-ink)"><tspan font-style="italic">m</tspan><tspan dy="4" font-size="70%" font-style="italic">A</tspan><tspan dy="-4"> = 10 kg</tspan></text>
+
+  <!-- force F (identique aux deux rangées) -->
+  <line x1="150" y1="134" x2="230" y2="134" stroke="var(--figure-ink)" stroke-width="2.5"/>
+  <polygon points="242,134 230,129 230,139" fill="var(--figure-ink)"/>
+  <line x1="176" y1="107" x2="188" y2="107" stroke="var(--figure-ink)" stroke-width="1.3"/>
+  <polyline points="184,104 188,107 184,110" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+  <text x="170" y="124" font-size="14.5" fill="var(--figure-ink)"><tspan font-style="italic">F</tspan> = 20 N</text>
+
+  <!-- accélération a_A : 160 px (2,0 m·s⁻² à 80 px/unité) — LE focus -->
+  <line x1="250" y1="88" x2="398" y2="88" stroke="var(--figure-accent)" stroke-width="2.5"/>
+  <polygon points="410,88 398,83 398,93" fill="var(--figure-accent)"/>
+  <line x1="306" y1="59" x2="318" y2="59" stroke="var(--figure-accent)" stroke-width="1.3"/>
+  <polyline points="314,56 318,59 314,62" fill="none" stroke="var(--figure-accent)" stroke-width="1.3"/>
+  <text x="330" y="76" text-anchor="middle" font-size="14.5" fill="var(--figure-accent)"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="70%" font-style="italic">A</tspan><tspan dy="-4"> = 2,0 m·s</tspan><tspan dy="-5" font-size="70%">−2</tspan></text>
+
+  <!-- ── Rangée B : m = 40 kg ───────────────────────────────────────── -->
+  <line x1="60" y1="350" x2="660" y2="350" stroke="var(--figure-grid)" stroke-width="1.5"/>
+
+  <!-- chariot B (plus grand : suggère la masse, sans échelle) -->
+  <rect x="250" y="270" width="110" height="64" rx="4"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+  <circle cx="278" cy="343" r="7" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+  <circle cx="332" cy="343" r="7" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+  <text x="372" y="326" font-size="14" fill="var(--figure-ink)"><tspan font-style="italic">m</tspan><tspan dy="4" font-size="70%" font-style="italic">B</tspan><tspan dy="-4"> = 40 kg</tspan></text>
+
+  <!-- la même force F -->
+  <line x1="150" y1="302" x2="230" y2="302" stroke="var(--figure-ink)" stroke-width="2.5"/>
+  <polygon points="242,302 230,297 230,307" fill="var(--figure-ink)"/>
+  <line x1="176" y1="275" x2="188" y2="275" stroke="var(--figure-ink)" stroke-width="1.3"/>
+  <polyline points="184,272 188,275 184,278" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+  <text x="170" y="292" font-size="14.5" fill="var(--figure-ink)"><tspan font-style="italic">F</tspan> = 20 N</text>
+
+  <!-- accélération a_B : 40 px (0,5 m·s⁻²), même échelle — LE focus -->
+  <line x1="250" y1="248" x2="278" y2="248" stroke="var(--figure-accent)" stroke-width="2.5"/>
+  <polygon points="290,248 278,243 278,253" fill="var(--figure-accent)"/>
+  <line x1="300" y1="228" x2="312" y2="228" stroke="var(--figure-accent)" stroke-width="1.3"/>
+  <polyline points="308,225 312,228 308,231" fill="none" stroke="var(--figure-accent)" stroke-width="1.3"/>
+  <text x="300" y="245" font-size="14.5" fill="var(--figure-accent)"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="70%" font-style="italic">B</tspan><tspan dy="-4"> = 0,5 m·s</tspan><tspan dy="-5" font-size="70%">−2</tspan></text>
+
+  <!-- ── Divulgation d'échelle (deux lignes pour tenir dans le viewBox) ── -->
+  <text x="360" y="382" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">Échelle des accélérations : 80 px ↔ 1 m·s<tspan dy="-4" font-size="70%">−2</tspan><tspan dy="4"> (rapport 4:1 exact). Les flèches </tspan><tspan font-style="italic">F</tspan> sont identiques.</text>
+  <text x="360" y="400" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">La taille des chariots suggère la masse, sans être à l'échelle.</text>
+</svg>
