@@ -173,6 +173,8 @@ $$X_m = 5\ \text{cm}, \qquad \varphi = \frac{\pi}{2}$$
 
 Le même oscillateur, lancé différemment, retrouve la même amplitude ici (une coïncidence des chiffres choisis) mais une phase différente : $\omega_0$ et $T_0$ n'ont pas changé d'un iota — ils appartiennent au ressort et à la masse, pas à la façon dont on a lancé le mouvement.
 
+[[embed:ressort-sandbox]]
+
 ---
 
 ## R3 — Le pendule simple et le pendule pesant : l'isochronisme des petites oscillations
@@ -391,6 +393,8 @@ Selon l'intensité du frottement (la valeur de $h$, à $m$ et $k$ fixés), on ob
 - **Régime apériodique** ($h$ grand) : le solide revient vers l'équilibre sans jamais le dépasser. Plus aucune oscillation.
 
 C'est exactement la même trichotomie que pour le circuit RLC — et pour une raison identique : dans les deux cas, un terme proportionnel à la « vitesse » (électrique ou mécanique) s'oppose au mouvement et dissipe de l'énergie, sans jamais en fournir.
+
+[[embed:ressort-sandbox]]
 
 ### Où va l'énergie perdue
 
