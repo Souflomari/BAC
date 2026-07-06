@@ -42,9 +42,13 @@ Read the right document for the task at hand:
   `docs/reestablish-state/`, pending human review and merge.]**
 - **`docs/decisions/*.md`** — *what we decided and why.* The ADR trail.
   Numbered, append-only history. Referenced for context on past
-  decisions. **ADR 0025 consolidates the July-2026 sprint** (rendered/
-  deployed-truth discipline, page anatomy, honest-state, template v2, the
-  component set, the portability protocol, the external-audit event).
+  decisions. **ADR 0025 consolidates the July-2026 sprint's first arc**
+  (rendered/deployed-truth discipline, page anatomy, honest-state,
+  template v2, the component set, the portability protocol, the
+  external-audit event). **ADR 0026 consolidates the second arc and the
+  Fable close** (site skeleton, the 61-lesson fill, the D10 media layer,
+  Lesson Experience v2, the handoff corpus — HANDOFF §5, the post-Fable
+  work order, DASHBOARD-SPEC, THEME-ARCHITECTURE, the three skills).
 - **`docs/HANDOFF.md`** — *start here after the July-2026 sprint.* The
   open-gates list (owner decisions pending), the external-audit triage,
   and the "how not to regress this" invariants — written as the sprint's
