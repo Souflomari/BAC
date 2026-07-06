@@ -135,6 +135,8 @@ Reprends $(\mathbb{Z}/4\mathbb{Z},+)$, où $e=0$. Cherche, pour chaque élément
 
 Remarque que le symétrique de $1$ est $3$, et pas $0$ : $0$ est le neutre, pas le symétrique de qui que ce soit d'autre que lui-même. Répondre "le symétrique de $1$, c'est le neutre $0$" est exactement l'erreur à éviter — $1+0=1 \neq 0$, donc $0$ n'est pas le symétrique de $1$.
 
+[[figure:table-groupe]]
+
 **Pourquoi le symétrique est unique, quand la loi est associative.** Suppose que $x'$ et $x''$ soient tous les deux symétriques de $x$, pour une loi $\star$ associative. Pars de $x'$, et récris-le en insérant le neutre $e$ à droite — ce qui ne change rien, par définition du neutre :
 
 $$x' = x' \star e$$
