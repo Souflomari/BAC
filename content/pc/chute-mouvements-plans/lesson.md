@@ -271,6 +271,8 @@ Ces deux formules disent exactement comment le tir change quand on change $v_0$ 
 
 Pour une même vitesse initiale $v_0$, quel angle de lancement $\alpha$ donne, selon toi, la plus grande portée ? Le plus petit angle possible (un tir presque à l'horizontale, très rapide, très bas) ? Le plus grand (un tir presque à la verticale) ? Ou un angle entre les deux ?
 
+[[embed:projectile-sandbox]]
+
 ### L'effet de l'angle, à $v_0$ fixé
 
 Regarde d'abord la flèche : $f = \dfrac{v_0^2\sin^2\alpha}{2g}$ augmente avec $\alpha$ sans jamais redescendre, sur tout l'intervalle $0^\circ$ à $90^\circ$ — $\sin^2\alpha$ croît continûment de $0$ à $1$. Plus l'angle de lancement est grand, plus le tir monte haut. Ça, c'est conforme à l'intuition.
