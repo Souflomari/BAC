@@ -174,6 +174,10 @@ $$\Delta E = h \cdot \nu$$
 
 où $\Delta E$ est la différence d'énergie entre les deux niveaux, $\nu$ la fréquence de la lumière émise ou absorbée, et $h \approx 6{,}63 \times 10^{-34}\ \text{J}\cdot\text{s}$ la constante de Planck. C'est cette quantification qui explique que les atomes émettent ou absorbent la lumière à des fréquences bien précises, formant des raies dans un spectre, plutôt qu'une lumière de toutes les couleurs mélangées.
 
+[[figure:niveaux-energie]]
+
+[[figure:spectre-raies]]
+
 Rien, dans la deuxième loi de Newton ni dans la force de Coulomb, ne prédit cette quantification : ces lois, à elles seules, autoriseraient un continuum d'orbites et d'énergies, exactement le modèle de R2. C'est précisément pour rendre compte de cette quantification — et, du même coup, de la stabilité de l'atome, puisqu'il existe un niveau d'énergie le plus bas en dessous duquel l'électron ne peut pas descendre — qu'un cadre entièrement nouveau a été nécessaire. Ce cadre, la mécanique quantique, sort du programme de ce chapitre ; retiens seulement, de ce rung, le constat qui referme la boucle ouverte en R0 : la mécanique de Newton permet de calculer une orbite (R2), mais elle ne permet pas d'expliquer pourquoi l'énergie de l'atome est quantifiée, ni pourquoi l'atome, en définitive, ne s'effondre pas.
 
 ---
