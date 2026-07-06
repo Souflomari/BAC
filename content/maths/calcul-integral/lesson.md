@@ -58,6 +58,8 @@ $$\int_0^2 t^2\,\mathrm{d}t = \frac{8}{3}$$
 
 La distance exacte est $\dfrac{8}{3} \approx 2{,}67\ \text{m}$. Si ta prédiction du R0 se situait entre $2$ et $3\ \text{m}$, tu avais vu juste : la courbe $t^2$ démarre lentement, donc l'aire sous elle est plus proche de $0$ que ne le serait un triangle de même hauteur finale (qui donnerait $\frac12 \times 2 \times 4 = 4$).
 
+[[figure:aire-sous-courbe]]
+
 ### Un deuxième exemple : une primitive que tu connais déjà
 
 Le chapitre "Fonction logarithme" a défini $\ln$ comme l'unique primitive de $t \mapsto \dfrac1t$ sur $\left]0,+\infty\right[$ qui s'annule en $1$. Applique directement la définition de l'intégrale à cette primitive, pour $x>0$ :
@@ -383,6 +385,8 @@ Sur $[0,1]$, teste un point, par exemple $x=0{,}5$ : $f(0{,}5)=0{,}5$ et $g(0{,}
 $$\text{aire} = \int_0^1 \big(x-x^2\big)\,\mathrm{d}x = \left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1 = \frac12-\frac13$$
 
 $$\text{aire} = \frac16\ \text{u.a.}$$
+
+[[figure:aire-entre-courbes]]
 
 ### Les unités d'aire, converties en cm²
 

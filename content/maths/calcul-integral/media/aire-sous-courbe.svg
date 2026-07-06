@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Aire sous la courbe v(t) = t au carré, entre t = 0 et t = 2 : la région hachurée sous la parabole, entre l'axe des abscisses et les droites t = 0 et t = 2, vaut exactement 8/3.">
+  <title>Aire sous une courbe — v(t) = t² sur [0, 2]</title>
+  <!--
+    aire-sous-courbe.svg — figure STATIQUE, géométrie calculée (pas devinée).
+
+    Fonction tracée : v(t) = t², sur [0, 2] (l'exemple de l'accroche R0,
+    résolu au R1 : la distance parcourue par une voiture dont la vitesse
+    instantanée est v(t) = t², entre t = 0 s et t = 2 s).
+
+    Correspondance repère -> pixels :
+      origine (t=0, v=0)     : (x0,y0) = (80, 350)
+      échelle horizontale    : 150 px par unité de t   -> t=2  : x = 380
+      échelle verticale      : 60 px par unité de v     -> v=4  : y = 110
+      (v(2) = 4, donc le point (t=2, v=4) est le coin supérieur-droit
+      de la région hachurée)
+
+    Les points de la courbe sont calculés exactement via v = t², à pas
+    réguliers de 0,1 en t (jamais une bézier devinée à la main) :
+      x(t) = 80 + 150·t
+      y(t) = 350 − 60·t²
+    Vérification de quelques points :
+      t=0   -> (80, 350)    (v=0)
+      t=1   -> (230, 290)   (v=1  -> y = 350−60 = 290)
+      t=2   -> (380, 110)   (v=4  -> y = 350−240 = 110)
+    La courbe est prolongée, en dehors de la région hachurée, jusqu'à
+    t=2,2 (points supplémentaires, teinte neutre) pour montrer qu'elle
+    continue au-delà de la borne b — mais seule la portion [0,2] est
+    calculée dans l'intégrale.
+
+    Aire hachurée = ∫₀² t² dt = [t³/3]₀² = 8/3 − 0 = 8/3 (≈ 2,67), la
+    valeur exacte résolue au R1 pour la distance parcourue en mètres.
+
+    Rôle des couleurs (règle stricte de cette figure : l'accent sert
+    UNIQUEMENT le foyer, c'est-à-dire la région hachurée et ce qui
+    l'annote directement) :
+      région hachurée (remplissage + contour, y compris le segment de
+        courbe sur [0,2] qui forme son bord supérieur, et le segment
+        vertical en t=2 qui forme son bord droit), bornes a/b, formule,
+        repère ponctuel en (2,4)                    : --figure-accent
+      prolongement de la courbe au-delà de t=2 (hors du calcul), axes,
+        flèches, labels t/v                         : --figure-ink-soft
+      fond du panneau                               : --figure-surface
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Aire sous une courbe — v(t) = t² sur [0, 2]
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes — ink-soft, chrome neutre -->
+  <line x1="80" y1="350" x2="610" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="350" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="617" y="354" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="54" text-anchor="end" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">v</text>
+
+  <!-- Prolongement de la courbe au-delà de t=2 — hors du calcul, ink-soft, pointillé -->
+  <path d="M380,110 L395,85.4 L410,59.6"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"
+        stroke-dasharray="4,3" stroke-linecap="round"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Région hachurée sur [0,2] — LE FOYER de la figure.
+       Remplissage + contour en accent (le contour EST la courbe
+       sur [0,2], plus le segment vertical en t=2, plus le segment
+       de l'axe entre a et b).
+       ═══════════════════════════════════════════════════════ -->
+  <path d="M80,350 L95,349.4 L110,347.6 L125,344.6 L140,340.4 L155,335
+           L170,328.4 L185,320.6 L200,311.6 L215,301.4 L230,290
+           L245,277.4 L260,263.6 L275,248.6 L290,232.4 L305,215
+           L320,196.4 L335,176.6 L350,155.6 L365,133.4 L380,110
+           L380,350 Z"
+        fill="var(--figure-accent)" fill-opacity="0.18"
+        stroke="var(--figure-accent)" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Repère ponctuel en (t=2, v=4), le coin de la région -->
+  <circle cx="380" cy="110" r="3.2" fill="var(--figure-accent)"/>
+
+  <!-- Bornes a et b, sur l'axe des t -->
+  <text x="80" y="366" text-anchor="middle" font-size="11"
+        fill="var(--figure-accent)">a = 0</text>
+  <text x="380" y="366" text-anchor="middle" font-size="11"
+        fill="var(--figure-accent)">b = 2</text>
+
+  <!-- Label de la courbe, à côté d'elle (pas de légende séparée) -->
+  <text x="300" y="100" font-size="13" font-style="italic"
+        fill="var(--figure-accent)">v(t) = t²</text>
+
+  <!-- Boîte formule — pointe vers la région hachurée -->
+  <line x1="440" y1="120" x2="280" y2="270"
+        stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2"/>
+  <circle cx="280" cy="270" r="2.5" fill="var(--figure-accent)"/>
+
+  <rect x="440" y="70" width="185" height="72" rx="8"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="532" y="86" text-anchor="middle" font-size="10.5" font-weight="600"
+        fill="var(--figure-accent)">aire hachurée</text>
+  <text x="532" y="112" text-anchor="middle" font-size="15"
+        fill="var(--figure-accent)"><tspan font-size="24">&#8747;</tspan><tspan
+        dy="-11" font-size="10">2</tspan><tspan
+        dy="15" dx="-8" font-size="10">0</tspan><tspan
+        dy="-2" dx="6" font-style="italic"> t</tspan><tspan
+        dy="-6" font-size="10">2</tspan><tspan
+        dy="6"> dt</tspan></text>
+  <text x="532" y="136" text-anchor="middle" font-size="12.5"
+        fill="var(--figure-accent)">= 8/3 m &#8776; 2,67 m</text>
+
+  <!-- Caption -->
+  <text x="320" y="400" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">L'aire hachurée sous la courbe est exactement l'intégrale — ici, la distance parcourue entre t = 0 et t = 2 s.</text>
+
+</svg>
