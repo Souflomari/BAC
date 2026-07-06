@@ -96,6 +96,21 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "conservation-em":     "Conservation de l'énergie mécanique : les barres d'énergie cinétique E_C, d'énergie potentielle E_pp et d'énergie mécanique E_m au cours du mouvement",
   "pendule-elastique":   "Pendule élastique : le ressort et la masse aux trois états −Xm, 0, +Xm, et l'élongation x(t) = Xm·cos(ω0·t + φ) au cours du temps",
   "energie-oscillateur": "Énergie de l'oscillateur : l'énergie potentielle élastique E_pe et l'énergie cinétique E_c en antiphase, l'énergie mécanique E_m restant constante",
+  // D10 wave C — PC chimie
+  "avancement-tangente": "L'avancement x(t) et la tangente en un instant t1 : la pente de la tangente donne la vitesse volumique de réaction",
+  "temps-demi-reaction": "Construction graphique du temps de demi-réaction t½ : ligne horizontale à x_f/2, descente verticale vers t½ sur l'axe des temps",
+  "lente-rapide":        "Transformation rapide et transformation lente : mêmes états initial et final, seule l'échelle de temps change",
+  "facteurs-cinetiques": "Un facteur cinétique change la vitesse, pas l'état final : plusieurs courbes x(t) atteignant le même plateau à des vitesses différentes",
+  "effet-catalyseur":    "Pourquoi un catalyseur ne déplace pas l'équilibre : il accélère l'atteinte du même état final",
+  "equilibre-concentrations": "Concentrations vers un équilibre dynamique : les réactifs diminuent, les produits augmentent, tous atteignent un plateau sans que les réactifs s'épuisent",
+  "quotient-vers-K":     "Le quotient de réaction Qr(t) évolue vers l'asymptote K : à l'équilibre Qr,éq = K",
+  "avancement-limite":   "Avancement d'une transformation limitée : x(t) plafonne à x_éq sous le plafond x_max, taux d'avancement final τ = x_éq/x_max < 1",
+  "diagramme-predominance": "Diagramme de prédominance du couple NH4+/NH3 sur l'axe des pH : NH4+ prédomine pour pH < pKA, NH3 pour pH > pKA, frontière à pH = pKA ≈ 9,2",
+  "zones-predominance-2": "Diagrammes de prédominance des couples CH3COOH/CH3COO− (pKA1 ≈ 4,8) et NH4+/NH3 (pKA2 ≈ 9,2) : entre les deux pKA, les deux produits de la réaction prédominent simultanément",
+  "critere-qr-k":        "Le critère d'évolution spontanée sur l'axe des Qr : évolution en sens direct si Qr,i < K, en sens inverse si Qr,i > K, équilibre quand Qr = K",
+  "rendement-esterification": "Estérification : le taux d'avancement τ(t) monte vers sa limite d'équilibre, la réaction est limitée par l'hydrolyse inverse",
+  "pile-daniell":        "Schéma de la pile Daniell : demi-pile Zn/Zn2+ (anode, borne −) et demi-pile Cu/Cu2+ (cathode, borne +), pont salin, circulation des électrons dans le circuit extérieur",
+  "cellule-electrolyse": "Cellule d'électrolyse : le générateur extérieur impose le courant, oxydation à l'anode reliée au +, réduction à la cathode reliée au −, migration des ions",
 };
 
 function figureAriaLabel(slug: string): string {
