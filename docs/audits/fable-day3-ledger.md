@@ -665,3 +665,34 @@ redeploy/wait for the d8acef7+ build.
    guard; derivation pre-reveal guard; counter-scope invariant; tokens
    only; calm budget/count limits; append-only migrations; production
    human-gate) — each with its dom-truth row or doc anchor.
+
+## 11. Day-11 — Lesson Experience v2 (pagination · StagedFigure · largeur composée)
+
+Direction OWNER-DIRECTED (message Day 11). Contrat d'implémentation :
+`docs/design/LESSON-EXPERIENCE-SPEC.md`. Statuts ci-dessous :
+OWNER-DECIDED = dicté par le propriétaire ; FABLE-DECIDED /
+OWNER-REVIEW-PENDING = choix d'implémentation, révisable.
+
+| # | Décision | Statut |
+|---|---|---|
+| 11.1 | La revue M/W du Day-8 (laissée « no provisional adoption », §9) est CLOSE par supersession : M1 (cover-in-band) au masthead ; zone « à retenir » à droite (W3 adapté en `RetenirZone`, par-chapitre) ; notes de marge (esprit W1) en emplacements ≥1536px dans la même zone. w2 mort. | OWNER-DECIDED |
+| 11.2 | Chapitre = section `## ` de lesson.md (≡ rungs pour 60/61 leçons) ; chapitre synthétique final « S'entraîner » quand des items existent ; LessonEnd reste la clôture du dernier chapitre. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.3 | URL de chapitre = `?chapitre=<n>` (1-based), PAS un segment de chemin : garde UNE page SSG, survit à l'impression linéaire ; pushState/popstate ; deep-link `#ancre` résolu vers son chapitre au montage. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.4 | Les chapitres non actifs RESTENT dans le DOM (`hidden`) — impression, SSG, ancres. Les étapes de StagedFigure n'y sont PAS (retrait réel de la chaîne SVG) — motif AttemptFirst. Deux mécanismes, délibérément différents. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.5 | Mouvement de chapitre : 300ms, ease `enter` (cubic-bezier(0,0,0.2,1)), slide 16px + fade, direction-aware, entrée seule ; nouveau token `--duration-view: 300ms`. Reduced-motion = échange instantané. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.6 | Règle de seuil figures : graphes TOUJOURS staged (axes → données → lecture) ; autres si ≥3 couches ET si l'ordre est un geste d'enseignement ; trivial = entier ; refus documenté légitime. Owner-overridable par ligne de ledger. | OWNER-DIRECTED (seuil), FABLE-DECIDED (critère « geste ») |
+| 11.7 | `initialStage = min(occurrence, stages)` : les placements répétés (rlc-schema ×4, regimes-uc ×3…) partent pré-révélés à leur niveau historique — unifie et remplace l'allowlist `STEPPED_FIGURE_MAX_STEPS`. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.8 | StagedFigure reduced-motion = figure complète statique, contrôles masqués (précédent Derivation, pas MotionStage). Flèches clavier réservées aux chapitres ; les figures restent Tab+Enter (un geste, un propriétaire). | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.9 | Impression : chapitres dépliés par CSS print ; StagedFigure révélée complète via `beforeprint`/`afterprint` (le DOM reste propre jusqu'à l'impression réelle). | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.10 | « À retenir » : sidecar `retenir.json` par leçon (prioritaire) ; fallback = premier bloc `$$…$$` du chapitre ; sinon zone vide et silencieuse. rlc-serie porte l'exemplaire autoré. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.11 | probabilites-conditionnelles (seule leçon à `##` non-rung) se pagine sur ses `##` tels quels ; normalisation de contenu vers `## R<n>` inscrite `pending` à la table de migration. | FABLE-DECIDED / OWNER-REVIEW-PENDING |
+| 11.12 | Dette notée : hack thème de shots.mjs (classList) conservé ce jour ; défauts adjacents du §6 de la spec consignés, non corrigés. | FABLE-DECIDED |
+
+### Table de migration des figures (état vivant — mise à jour au fil du sweep)
+
+Census : 72 SVG statiques (50 pc, 22 maths) ; 34 graphes / 23 schémas /
+15 diagrammes-autres ; 4 déjà groupés step-N (tous rlc-serie, dont 2
+orphelins : energy-exchange, loi-mailles-build). La table détaillée
+(done / pending / declined-with-reason, une ligne par figure) est tenue
+en fin de cette section au fur et à mesure du fan-out Day-11.
+

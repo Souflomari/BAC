@@ -117,6 +117,15 @@ For EVERY misconception in the spec's inventory, exactly one of:
 - [ ] Every `[[marker]]` in lesson.md resolves to an existing asset OR is an
   explicitly-commented enhancement slot.
 - [ ] Structural diagrams coded (ADR 0017); math live KaTeX, never imaged.
+- [ ] **`stages` (Day-11, LESSON-EXPERIENCE-SPEC §2.8):** every figure brief
+  declares either `stages: [ordered list — one line per stage stating what
+  that stage TEACHES, ending with the reading/method stage]` or
+  `stages: whole (reason)`. Graphs are always staged (axes → data →
+  reading); other figures staged only when the layer order is a teaching
+  gesture (threshold rule, ledger 11.6). Stage order is AUTHORED here —
+  never improvised by the implementing agent. The shipped asset pairs the
+  SVG's `step-N` groups with a `media/<slug>.stages.json` sidecar whose
+  captions match this brief.
 - [ ] **Authoring-annotation channel (July-2026 external-audit fix — a
   guard-class failure):** internal notes in lesson.md are written as HTML
   comments (`<!-- … -->`) and are STRIPPED AT LOAD by
