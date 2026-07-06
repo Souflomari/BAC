@@ -722,3 +722,20 @@ hostiles/clavier/persistance/embed-bloqué. dom-truth 121 → **129**.
   StagedFigure complète sans contrôles ; anneaux de focus partout au Tab ;
   StagedFigure opérable au clavier ; la page survit à PhET injoignable ;
   thème persistant à la navigation.
+
+## 13. Extension — le hunt de correctness du contenu (2026-07-06)
+
+Passe profonde : 6 auditeurs `general-purpose` parallèles (Python, recalcul
+×2), ~350 exemples travaillés sur les 61 leçons. Docket owner-gated :
+`docs/audits/content-correctness-docket-2026-07.md`.
+- **0 P0** — aucune valeur/loi fausse sur un chemin correct. **50/61 leçons
+  entièrement propres** (les 11 de philo incluses, citations vérifiées).
+- 2 P1 (He⁺ v/T facteur-2, CONFIRMÉ 3× indépendamment ; anneau non-unitaire
+  cadre+incohérence), 2 P2 (compte HW « quatre » vs 5 puces — **corrige** le
+  flag B1 « panmixie omise », fausse lecture ; pH trypsine), 13 P3.
+- 1 faux positif re-écarté par vérité rendue (`P(B\|A)`).
+- **Aucun fix ce passage** : tout est substantiel → docket, jamais corrigé
+  en silence (le propriétaire est la porte de correctness). Le garde de la
+  classe « correction numérique » est le sweep d'auditeurs (process), pas
+  dom-truth (129, inchangé — aucun code touché). Docket = session de
+  décision proprio → nettoyage Sonnet gaté.
