@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Pourquoi on divise par p factorielle : les 6 arrangements ordonnés d'Amine, Sara et Karim (à gauche) se regroupent, via une accolade, en une seule combinaison non ordonnée — Amine, Sara, Karim — à droite. En bas, le même mécanisme appliqué au comité de 3 parmi 8 de la leçon : A huit trois égale 336 arrangements, divisé par 3 factorielle égale 6, donne 56 combinaisons C huit trois.">
+  <title>Arrangement vs combinaison — pourquoi diviser par p!</title>
+
+  <!--
+    arrangement-combinaison.svg — R5, "Le mécanisme : combien de fois
+    l'arrangement recompte-t-il chaque groupe ?"
+
+    Reprend TEL QUEL l'exemple de la leçon : le groupe fixé {Amine, Sara,
+    Karim} et ses 3! = 6 ordres différents (la leçon: "Prends un groupe
+    fixé de p éléments — disons {Amine, Sara, Karim}. […] 3! = 6 ordres
+    différents, tous construits à partir du MÊME groupe de personnes.").
+    Panneau gauche : les 6 arrangements (ordre compte), notation en
+    tuple ordonné (a,b,c) — la même notation tuple que la leçon utilise au
+    R2 pour les p-listes ("(1,2) et (2,1) sont deux p-listes différentes").
+    Panneau droit : le même groupe, mais comme ENSEMBLE non ordonné
+    {Amine, Sara, Karim} — une seule combinaison.
+    L'accolade centrale (SEULE emphase accent de la figure) matérialise la
+    division par p! = 3! = 6, mécanisme exact de la formule
+    C(n,p) = A(n,p) / p! introduite juste avant dans la leçon.
+    Le bas de la figure relie ce mécanisme aux nombres RÉELS que la leçon
+    calcule ensuite pour le comité de 3 parmi 8 : A(8,3) = 336, 3! = 6,
+    C(8,3) = 56 — aucun nombre inventé, ce sont ceux du texte (R5,
+    "Résolvons le comité de 3 parmi 8").
+
+    Rôle des couleurs (5 jetons seulement) :
+      structure (boîtes, titres, tuples, groupe)   : --figure-ink / --figure-ink-soft / --figure-grid / --figure-surface
+      SEULE emphase : l'accolade de regroupement p! et son libellé ÷3!=6 : --figure-accent
+  -->
+
+  <style>
+    .aec-title      { font: 600 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .aec-sub        { font: 500 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .aec-box        { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .aec-tuple      { font: 600 12.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .aec-brace      { stroke: var(--figure-accent); stroke-width: 2.5; fill: none; }
+    .aec-bracelabel { font: 700 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .aec-combobox   { fill: var(--figure-surface); stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .aec-combolabel { font: 700 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .aec-combosub   { font: 500 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .aec-bridge1    { font: 600 12.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .aec-bridge2    { font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- ══════════════ Titres des deux panneaux ══════════════ -->
+  <text class="aec-title" x="170" y="22">Arrangements — l'ordre compte</text>
+  <text class="aec-sub"   x="170" y="38">les 3! = 6 façons de classer Amine, Sara, Karim</text>
+
+  <text class="aec-title" x="570" y="22">Combinaison — l'ordre ne compte plus</text>
+  <text class="aec-sub"   x="570" y="38">le même groupe, une seule fois</text>
+
+  <!-- ══════════════ Panneau gauche : les 6 arrangements (tuples ordonnés) ══════════════ -->
+  <rect class="aec-box" x="40" y="52"  width="260" height="48" rx="12"/>
+  <text class="aec-tuple" x="170" y="80">1. (Amine, Sara, Karim)</text>
+
+  <rect class="aec-box" x="40" y="108" width="260" height="48" rx="12"/>
+  <text class="aec-tuple" x="170" y="136">2. (Amine, Karim, Sara)</text>
+
+  <rect class="aec-box" x="40" y="164" width="260" height="48" rx="12"/>
+  <text class="aec-tuple" x="170" y="192">3. (Sara, Amine, Karim)</text>
+
+  <rect class="aec-box" x="40" y="220" width="260" height="48" rx="12"/>
+  <text class="aec-tuple" x="170" y="248">4. (Sara, Karim, Amine)</text>
+
+  <rect class="aec-box" x="40" y="276" width="260" height="48" rx="12"/>
+  <text class="aec-tuple" x="170" y="304">5. (Karim, Amine, Sara)</text>
+
+  <rect class="aec-box" x="40" y="332" width="260" height="48" rx="12"/>
+  <text class="aec-tuple" x="170" y="360">6. (Karim, Sara, Amine)</text>
+
+  <!-- ══════════════ Accolade de regroupement (l'unique emphase accent) ══════════════ -->
+  <path class="aec-brace" d="M310,52 C332,52 332,202 350,216 C332,230 332,380 310,380"/>
+  <text class="aec-bracelabel" x="395" y="210">÷ 3!</text>
+  <text class="aec-bracelabel" x="395" y="228">= 6</text>
+
+  <!-- ══════════════ Panneau droit : la combinaison (ensemble non ordonné) ══════════════ -->
+  <rect class="aec-combobox" x="440" y="186" width="260" height="60" rx="14"/>
+  <text class="aec-combolabel" x="570" y="214">{Amine, Sara, Karim}</text>
+  <text class="aec-combosub" x="570" y="234">1 seul groupe (l'ordre est oublié)</text>
+
+  <!-- ══════════════ Passerelle vers les nombres réels de la leçon ══════════════ -->
+  <text class="aec-bridge1" x="400" y="430">Même mécanisme pour choisir 3 personnes parmi 8 :</text>
+  <text class="aec-bridge2" x="400" y="452"><tspan font-style="italic">A</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan><tspan dy="5"> = 336 → 336 ÷ 3! = 56 = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan></text>
+</svg>

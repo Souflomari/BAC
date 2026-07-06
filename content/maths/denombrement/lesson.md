@@ -26,6 +26,8 @@ Maintenant regarde la structure : pour CHACUNE des 3 entrées, il y a exactement
 
 Ce n'est pas une coïncidence. Imagine un arbre : à la racine, tu choisis l'entrée (3 branches). Au bout de chaque branche "entrée", tu choisis le plat (2 branches). Le nombre de chemins complets dans cet arbre, c'est exactement le nombre de menus. Et parce que CHAQUE branche "entrée" se prolonge par le MÊME nombre de branches "plat" (2, toujours 2, peu importe l'entrée choisie), le nombre total de chemins est : (nombre de branches au premier niveau) fois (nombre de branches à chaque prolongement).
 
+[[figure:arbre-denombrement]]
+
 **Principe multiplicatif.** Si une situation se décompose en $k$ choix successifs, et si le $i$-ème choix offre toujours $n_i$ possibilités (peu importe ce qui a été choisi avant), alors le nombre total de résultats possibles est :
 
 $$n_1 \times n_2 \times \cdots \times n_k$$
@@ -215,6 +217,8 @@ $$A_8^3 = 8 \times 7 \times 6 = 336 \qquad \qquad 3! = 6$$
 $$\binom{8}{3} = \frac{336}{6} = 56$$
 
 Il y a **56 comités possibles** — bien moins que les 336 tiercés ordonnés du même groupe de 8 personnes, exactement parce qu'on a "effacé" l'ordre : chaque comité de 3 personnes correspond à 6 tiercés différents (les $3!=6$ façons de les ordonner), et $336 = 56 \times 6$.
+
+[[figure:arrangement-combinaison]]
 
 ### Exemple travaillé : une main de cartes
 

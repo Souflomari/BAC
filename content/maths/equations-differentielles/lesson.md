@@ -241,6 +241,10 @@ $$\boxed{T(t) = 70\,e^{-0{,}1t} + 20}$$
 
 La formule qu'on vient d'établir n'est pas juste une courbe qui « ressemble » aux données du R0 — elle les reproduit exactement, parce qu'elle a été construite à partir du mécanisme (l'écart pilote la vitesse) et fixée par la seule vraie condition initiale disponible, $T(0)=90$.
 
+[[figure:famille-solutions]]
+
+La figure ci-dessus rend visible ce que le R1 avait déjà annoncé : l'équation $T'=-0{,}1T+2$, à elle seule, ne dessine pas une courbe mais toute une **famille** — une par valeur de $T_0=T(0)$ — qui partagent toutes le même palier $T_p=-b/a=20$ sans jamais le franchir. La courbe en accent, celle avec $T(0)=90$, est la seule que le calcul ci-dessus a isolée dans cette famille.
+
 ---
 
 ## R4 — L'équation de l'oscillateur : $y'' + \omega^2 y = 0$

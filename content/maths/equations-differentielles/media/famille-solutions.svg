@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 470"
+     font-family="'IBM Plex Sans', system-ui, sans-serif" role="img"
+     aria-label="Famille de solutions de l'équation différentielle T prime = -0,1 T + 2 (forme y prime = ay + b) : quatre courbes T(t) = (T0 - 20)·e^(-0,1t) + 20, pour T0 = 90 (en accent, la condition initiale du cours, R3), 60, 40 et 0 (en ink-soft), convergeant toutes vers le palier T_p = -b/a = 20, tracé en pointillés.">
+  <title>Famille de solutions de T' = -0,1 T + 2</title>
+  <!--
+    famille-solutions.svg — graphe STATIQUE de la famille de solutions de
+    l'équation T'(t) = -0,1 T(t) + 2, c'est-à-dire y' = ay + b avec a = -0,1
+    et b = 2 (le modèle café du R0, résolu et fermé au R3 de
+    content/maths/equations-differentielles/lesson.md).
+
+    Solution générale (R2, ligne 154 du lesson.md) : y(x) = Ce^(ax) - b/a.
+    Ici : T(t) = Ce^(-0,1t) + 20, palier T_p = -b/a = -2/(-0,1) = 20.
+    Équivalent, paramétré par la condition initiale T0 = T(0) (puisque
+    C = T0 - T_p) :
+
+        T(t) = (T0 - 20)·e^(-0,1t) + 20
+
+    L'IDÉE MONTRÉE : l'équation différentielle seule ne fixe qu'une FAMILLE
+    de courbes (une par valeur de T0) ; seule la condition initiale épingle
+    UNE solution dans cette famille (R3, "la condition initiale choisit UNE
+    solution dans la famille").
+
+    Quatre courbes tracées, toutes solutions de la MÊME équation :
+      T0 = 90  (accent)   — exactement la fermeture de l'arc du R3
+                              (lesson.md lignes 224-238) : T(0) = 90,
+                              C = 70, T(t) = 70e^(-0,1t) + 20 (boxed).
+      T0 = 60  (ink-soft) — sibling, même a, b ; C = 40.
+      T0 = 40  (ink-soft) — sibling, même a, b ; C = 20.
+      T0 = 0   (ink-soft) — sibling en dessous du palier (ex. physique : un
+                              objet à 0°C qui se réchauffe vers 20°C — la
+                              même loi T' = -k(T-20) vaut dans les deux sens,
+                              R0 lignes 25-27) ; C = -20.
+    Seule la courbe T0 = 90 est celle du cours ; les trois autres illustrent
+    la famille, construites avec les mêmes a, b, par la même formule exacte.
+
+    VÉRIFICATION contre le tableau du R0 (lesson.md ligne 19), sur la courbe
+    T0 = 90 : T(5) = 70e^(-0,5)+20 ≈ 62,46 (table : 62,5) ; T(10) =
+    70e^(-1)+20 ≈ 45,75 (table : 45,8) ; T(20) = 70e^(-2)+20 ≈ 29,47
+    (table : 29,5). Concorde (aux arrondis du tableau près) — confirme que
+    la courbe accent est bien celle du texte, pas une approximation.
+
+    GÉOMÉTRIE (calculée, jamais devinée) :
+      origine (t=0, T=0)     : (x0,y0) = (110, 380)
+      échelle temporelle      : 10 px / minute       → x(t) = 110 + 10t
+      échelle de température  : 3 px / °C (T croît vers le haut)
+                                                       → y(T) = 380 - 3T
+      palier T_p = 20         → y = 380 - 60 = 320 (ligne pointillée)
+      chaque courbe est une polyligne échantillonnée à t =
+      0,2,4,...,20 (pas fin, forte courbure), puis 25,30,35,40,45,50
+      (pas grossier, courbe presque plate), via T(t) = (T0-20)e^(-0,1t)+20
+      — jamais une bézier dessinée à la main.
+
+    Couleurs (tokens uniquement, --figure-*) :
+      courbe T0 = 90 (la solution retenue au R3)      : --figure-accent
+      courbes T0 = 60, 40, 0 (siblings de la famille)  : --figure-ink-soft
+      palier / asymptote commune (dashed)               : --figure-ink
+      axes, ticks, légendes                             : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="330" y="22" text-anchor="middle" font-size="13.5" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">Famille de solutions de T' = -0,1 T + 2 (forme y' = ay + b)</text>
+  <text x="330" y="39" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">T en °C, t en minutes — même équation différentielle, condition initiale T<tspan
+        dy="3" font-size="7">0</tspan><tspan dy="-3"> différente</tspan></text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="54" width="590" height="356" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes ──────────────────────────────────────────────── -->
+  <line x1="110" y1="380" x2="622" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="622,380 610,375.5 610,384.5" fill="var(--figure-ink-soft)"/>
+  <line x1="110" y1="380" x2="110" y2="64" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="110,64 105.5,76 114.5,76" fill="var(--figure-ink-soft)"/>
+  <text x="628" y="384" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+  <text x="102" y="70" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">T</text>
+
+  <!-- Ticks de l'axe t (repère d'échelle, minutes) -->
+  <g stroke="var(--figure-ink-soft)" stroke-width="1">
+    <line x1="210" y1="380" x2="210" y2="386"/>
+    <line x1="310" y1="380" x2="310" y2="386"/>
+    <line x1="410" y1="380" x2="410" y2="386"/>
+    <line x1="510" y1="380" x2="510" y2="386"/>
+    <line x1="610" y1="380" x2="610" y2="386"/>
+  </g>
+  <g font-size="9.5" fill="var(--figure-ink-soft)" text-anchor="middle">
+    <text x="210" y="398">10</text>
+    <text x="310" y="398">20</text>
+    <text x="410" y="398">30</text>
+    <text x="510" y="398">40</text>
+    <text x="610" y="398">50</text>
+  </g>
+
+  <!-- Ticks de l'axe T (initiales + palier) — les valeurs demandées sur l'axe -->
+  <line x1="104" y1="110" x2="116" y2="110" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="98" y="114" text-anchor="end" font-size="11" font-weight="600" fill="var(--figure-accent)">90</text>
+
+  <line x1="104" y1="200" x2="116" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="98" y="204" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">60</text>
+
+  <line x1="104" y1="260" x2="116" y2="260" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="98" y="264" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">40</text>
+
+  <line x1="100" y1="320" x2="120" y2="320" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="98" y="324" text-anchor="end" font-size="11" font-weight="600" fill="var(--figure-ink)">20</text>
+
+  <text x="98" y="384" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Palier / asymptote commune à toute la famille : T_p = -b/a = 20 -->
+  <line x1="110" y1="320" x2="608" y2="320" stroke="var(--figure-ink)" stroke-width="1.4" stroke-dasharray="6,4"/>
+  <text x="606" y="306" text-anchor="end" font-size="11" fill="var(--figure-ink)">palier T<tspan
+        dy="3" font-size="7.5">p</tspan><tspan dy="-3"> = -b/a = 20</tspan></text>
+
+  <!-- Boîte formule : instanciation concrète de la famille (a=-0,1, b=2) -->
+  <rect x="356" y="64" width="258" height="52" rx="8" fill="var(--figure-accent)" fill-opacity="0.08"/>
+  <text x="485" y="84" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-ink)">T(t) = (T<tspan
+        dy="3" font-size="7.5">0</tspan><tspan dy="-3"> - 20)e</tspan><tspan
+        dy="-5" font-size="9">-0,1t</tspan><tspan dy="5"> + 20</tspan></text>
+  <text x="485" y="104" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">forme générale (R2-R3) : y(t) = (y<tspan
+        dy="3" font-size="7">0</tspan><tspan dy="-3"> - y</tspan><tspan
+        dy="3" font-size="7">p</tspan><tspan dy="-3">)e</tspan><tspan
+        dy="-4" font-size="7">at</tspan><tspan dy="4"> + y</tspan><tspan
+        dy="3" font-size="7">p</tspan></text>
+
+  <!-- ── Courbes — polylignes calculées, jamais devinées ─────────────── -->
+
+  <!-- Siblings de la famille (ink-soft) : T0 = 60, 40, 0 -->
+  <path d="M110,200.0 L130,221.8 L150,239.6 L170,254.1 L190,266.1 L210,275.9 L230,283.9 L250,290.4 L270,295.8 L290,300.2 L310,303.8 L360,310.2 L410,314.0 L460,316.4 L510,317.8 L560,318.7 L610,319.2"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110,260.0 L130,270.9 L150,279.8 L170,287.1 L190,293.0 L210,297.9 L230,301.9 L250,305.2 L270,307.9 L290,310.1 L310,311.9 L360,315.1 L410,317.0 L460,318.2 L510,318.9 L560,319.3 L610,319.6"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110,380.0 L130,369.1 L150,360.2 L170,352.9 L190,347.0 L210,342.1 L230,338.1 L250,334.8 L270,332.1 L290,329.9 L310,328.1 L360,324.9 L410,323.0 L460,321.8 L510,321.1 L560,320.7 L610,320.4"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- La courbe retenue (accent) : T0 = 90 — condition initiale du cours (R3) -->
+  <path d="M110,110.0 L130,148.1 L150,179.2 L170,204.8 L190,225.6 L210,242.8 L230,256.8 L250,268.2 L270,277.6 L290,285.3 L310,291.6 L360,302.8 L410,309.5 L460,313.7 L510,316.2 L560,317.7 L610,318.6"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Points de départ (t=0) — chacun exactement sur le tick de son T0 -->
+  <circle cx="110" cy="200" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="110" cy="260" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="110" cy="380" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="110" cy="110" r="3.6" fill="var(--figure-accent)"/>
+
+  <!-- Étiquette de la courbe retenue, à côté de son point de départ -->
+  <text x="128" y="100" font-size="11" font-weight="600" fill="var(--figure-accent)">T<tspan
+        dy="3" font-size="7.5">0</tspan><tspan dy="-3"> = 90 (le cours, R3)</tspan></text>
+  <text x="128" y="116" font-size="10.5" font-style="italic" fill="var(--figure-accent)">T(t) = 70 e<tspan
+        dy="-5" font-size="9">-0,1t</tspan><tspan dy="5"> + 20</tspan></text>
+
+  <!-- Captions -->
+  <text x="330" y="432" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">Chaque valeur de T<tspan
+        dy="3" font-size="7.5">0</tspan><tspan dy="-3"> donne une solution différente de la même équation — une famille entière, pas une seule courbe.</tspan></text>
+  <text x="330" y="450" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">Seule la condition initiale T(0) = 90 épingle LA solution retenue (en accent) ; toutes convergent vers le palier T<tspan
+        dy="3" font-size="7.5">p</tspan><tspan dy="-3"> = -b/a = 20.</tspan></text>
+
+</svg>

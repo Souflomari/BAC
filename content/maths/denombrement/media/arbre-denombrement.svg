@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Arbre des choix pour composer un menu : à la racine, un choix parmi 3 entrées (salade, soupe, pastilla) ; pour chaque entrée, un choix parmi 2 plats (tajine, couscous). Six feuilles au total, chacune un menu distinct ; le produit 3 fois 2 égale 6 est mis en évidence en bas.">
+  <title>Arbre des choix — principe multiplicatif (3 entrées × 2 plats)</title>
+
+  <!--
+    arbre-denombrement.svg — arbre du principe multiplicatif, R1.
+    Reprend TEL QUEL l'exemple du menu du restaurant (3 entrées : salade,
+    soupe, pastilla ; 2 plats : tajine, couscous) que la leçon décrit déjà
+    comme un arbre ("Pourquoi ça marche : l'arbre des choix"), dans l'ordre
+    de énumération donné par la leçon : (salade,tajine), (salade,couscous),
+    (soupe,tajine), (soupe,couscous), (pastilla,tajine), (pastilla,couscous).
+
+    Style de famille : reprend la grammaire de arbre-pondere.svg (racine →
+    niveau 1 → feuilles, arêtes dessinées avant les nœuds, feuilles à deux
+    lignes) mais avec la palette à jetons imposée par ce lot (var(--figure-*)
+    uniquement — aucune couleur en dur), et la police IBM Plex Sans du
+    système de tokens actuel.
+
+    Rôle des couleurs (5 jetons seulement) :
+      structure (racine, nœuds, feuilles, arêtes, libellés)      : --figure-ink / --figure-ink-soft / --figure-grid / --figure-surface
+      SEULE emphase de la figure : le produit final "3 × 2 = 6"   : --figure-accent
+    (le nombre de feuilles est annoté sur chaque feuille — "menu 1"…"menu 6" —
+    en ink-soft neutre ; seul l'encadré du produit, en bas, porte l'accent.)
+  -->
+
+  <style>
+    .adn-edge      { stroke: var(--figure-ink-soft); stroke-width: 1.75; fill: none; }
+    .adn-root      { fill: var(--figure-surface); stroke: var(--figure-ink); stroke-width: 2; }
+    .adn-node      { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .adn-leaf      { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .adn-nlabel    { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .adn-leaftop   { font: 600 13.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .adn-leafval   { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .adn-elabel    { font: 500 12.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .adn-header    { font: 600 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .adn-headersub { font: 500 12px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .adn-accentbox { fill: var(--figure-surface); stroke: var(--figure-accent); stroke-width: 1.75; }
+    .adn-accent    { font: 700 16px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .adn-cap       { font: 500 12px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- ══════════════ Arêtes (dessinées avant les nœuds) ══════════════ -->
+  <!-- racine → entrée -->
+  <line class="adn-edge" x1="62" y1="268" x2="330" y2="104"/>
+  <line class="adn-edge" x1="62" y1="268" x2="330" y2="268"/>
+  <line class="adn-edge" x1="62" y1="268" x2="330" y2="432"/>
+  <!-- entrée → plat (feuille) -->
+  <line class="adn-edge" x1="330" y1="104" x2="681" y2="73"/>
+  <line class="adn-edge" x1="330" y1="104" x2="681" y2="135"/>
+  <line class="adn-edge" x1="330" y1="268" x2="681" y2="237"/>
+  <line class="adn-edge" x1="330" y1="268" x2="681" y2="299"/>
+  <line class="adn-edge" x1="330" y1="432" x2="681" y2="401"/>
+  <line class="adn-edge" x1="330" y1="432" x2="681" y2="463"/>
+
+  <!-- ══════════════ En-têtes de colonne (les deux choix successifs) ══════════════ -->
+  <text class="adn-header" x="330" y="40">1<tspan dy="-4" font-size="70%">er</tspan><tspan dy="4"> choix — l'entrée</tspan></text>
+  <text class="adn-headersub" x="330" y="58"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">1</tspan><tspan dy="-4"> = 3 possibilités</tspan></text>
+
+  <text class="adn-header" x="681" y="40">2<tspan dy="-4" font-size="70%">e</tspan><tspan dy="4"> choix — le plat</tspan></text>
+  <text class="adn-headersub" x="681" y="58"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">2</tspan><tspan dy="-4"> = 2 possibilités</tspan></text>
+
+  <!-- ══════════════ Racine (point de départ, sans nom propre) ══════════════ -->
+  <circle class="adn-root" cx="62" cy="268" r="10"/>
+
+  <!-- ══════════════ Niveau 1 : l'entrée ══════════════ -->
+  <rect class="adn-node" x="278" y="84"  width="104" height="40" rx="12"/>
+  <text class="adn-nlabel" x="330" y="109">Salade</text>
+  <rect class="adn-node" x="278" y="248" width="104" height="40" rx="12"/>
+  <text class="adn-nlabel" x="330" y="273">Soupe</text>
+  <rect class="adn-node" x="278" y="412" width="104" height="40" rx="12"/>
+  <text class="adn-nlabel" x="330" y="437">Pastilla</text>
+
+  <!-- Libellés d'arête (le plat choisi sur ce prolongement) -->
+  <text class="adn-elabel" x="505" y="81">Tajine</text>
+  <text class="adn-elabel" x="505" y="112">Couscous</text>
+  <text class="adn-elabel" x="505" y="245">Tajine</text>
+  <text class="adn-elabel" x="505" y="276">Couscous</text>
+  <text class="adn-elabel" x="505" y="409">Tajine</text>
+  <text class="adn-elabel" x="505" y="440">Couscous</text>
+
+  <!-- ══════════════ Feuilles : les 6 menus, dans l'ordre énuméré par la leçon ══════════════ -->
+  <g>
+    <rect class="adn-leaf" x="586" y="50" width="190" height="46" rx="13"/>
+    <text class="adn-leaftop" x="681" y="67">Salade + Tajine</text>
+    <text class="adn-leafval" x="681" y="85">menu 1</text>
+  </g>
+  <g>
+    <rect class="adn-leaf" x="586" y="112" width="190" height="46" rx="13"/>
+    <text class="adn-leaftop" x="681" y="129">Salade + Couscous</text>
+    <text class="adn-leafval" x="681" y="147">menu 2</text>
+  </g>
+  <g>
+    <rect class="adn-leaf" x="586" y="214" width="190" height="46" rx="13"/>
+    <text class="adn-leaftop" x="681" y="231">Soupe + Tajine</text>
+    <text class="adn-leafval" x="681" y="249">menu 3</text>
+  </g>
+  <g>
+    <rect class="adn-leaf" x="586" y="276" width="190" height="46" rx="13"/>
+    <text class="adn-leaftop" x="681" y="293">Soupe + Couscous</text>
+    <text class="adn-leafval" x="681" y="311">menu 4</text>
+  </g>
+  <g>
+    <rect class="adn-leaf" x="586" y="378" width="190" height="46" rx="13"/>
+    <text class="adn-leaftop" x="681" y="395">Pastilla + Tajine</text>
+    <text class="adn-leafval" x="681" y="413">menu 5</text>
+  </g>
+  <g>
+    <rect class="adn-leaf" x="586" y="440" width="190" height="46" rx="13"/>
+    <text class="adn-leaftop" x="681" y="457">Pastilla + Couscous</text>
+    <text class="adn-leafval" x="681" y="475">menu 6</text>
+  </g>
+
+  <!-- ══════════════ L'unique emphase : le produit qui compte les feuilles ══════════════ -->
+  <rect class="adn-accentbox" x="270" y="498" width="260" height="36" rx="12"/>
+  <text class="adn-accent" x="400" y="521"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">1</tspan><tspan dy="-4"> × </tspan><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">2</tspan><tspan dy="-4"> = 3 × 2 = 6 menus</tspan></text>
+
+  <text class="adn-cap" x="400" y="550">Chaque chemin (racine → feuille) est un menu distinct</text>
+</svg>
