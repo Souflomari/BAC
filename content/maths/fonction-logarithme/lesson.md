@@ -326,6 +326,8 @@ Regarde ce que ça donne : l'équation de cette tangente est exactement l'inéga
 
 En rassemblant tout : la courbe de $\ln$ part de $-\infty$ près de l'asymptote verticale $x=0$, traverse l'axe des abscisses en $(1,0)$, passe par $(e,1)$, et continue de monter indéfiniment vers la droite — mais de plus en plus lentement, puisque $\dfrac{\ln(x)}{x} \to 0$ (R4) : la courbe s'aplatit progressivement, sans jamais redescendre ni se stabiliser sur une horizontale.
 
+[[figure:courbe-logarithme]]
+
 ---
 
 ## R6 — Équations, inéquations avec ln, et le logarithme décimal

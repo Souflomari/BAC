@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Courbe de la fonction logarithme népérien y = ln x : elle passe par (1, 0) et (e, 1), admet l'asymptote verticale x = 0 (ln x tend vers moins l'infini quand x tend vers 0 par valeurs positives), et sa tangente au point d'abscisse 1 est la droite y = x − 1, avec la zone (teintée) où la courbe reste strictement en dessous de cette tangente — la traduction graphique de ln x ≤ x − 1.">
+  <title>Courbe de y = ln x — tangente en x = 1</title>
+  <!--
+    courbe-logarithme.svg — courbe STATIQUE de y = ln x (logarithme népérien).
+
+    Valeurs de référence utilisées (ln exact, pas deviné) :
+      ln(2)=0,693147  ln(3)=1,098612  ln(5)=1,609438  ln(7)=1,945910
+      ln(11)=2,397895 ln(13)=2,564949 ln(17)=2,833213 ln(e)=1 (définition)
+    Tous les échantillons de la courbe ci-dessous sont dérivés de ces
+    valeurs (ln(a/b)=ln(a)-ln(b), ln(a×10^n)=ln(a)+n·ln(10)), jamais
+    approximés à l'oeil.
+
+    Géométrie (calculée) :
+      Axe des x (valeur de la variable) : X=0 → px=80, X=9 → px=610
+        échelle : scaleX = 530/9 ≈ 58,8889 px par unité de x
+      Axe des y (valeur de ln x)        : Y=-3,0 → py=350, Y=2,3 → py=50
+        échelle : scaleY = 300/5,3 ≈ 56,6038 px par unité de y
+      Ligne Y=0 (l'axe des x lui-même)  : py0 = 350 - 3×56,6038 ≈ 180,19
+      px(X) = 80 + X×58,8889 ; py(Y) = 180,19 - Y×56,6038
+
+    Points clés (exacts par construction, pas des repères approximatifs) :
+      (1, 0)  → px=138,89 ; py=180,19  (ln(1)=0, par définition)
+      (e, 1)  → px=240,08 ; py=123,58  (ln(e)=1, e ≈ 2,71828 → X×58,8889=160,08)
+
+    Tangente en x=1 : coefficient directeur ln'(1)=1/1=1, point (1,0) ⇒
+      droite y = x − 1. Tracée de X=0,2 (px=91,78 ; py=225,47) à X=3,3
+      (px=274,33 ; py=50,00, bord haut du cadre) — pente en pixels
+      = -scaleY/scaleX × 1 ≈ -0,9612, vérifiée par interpolation au point
+      de tangence (1,0) : (138,89-91,78)/(274,33-91,78)=0,258 →
+      225,47+0,258×(50,00-225,47) ≈ 180,19. ✓ concordance exacte.
+
+    Zone teintée (accent, 8%) : polygone borné en haut par la tangente et
+      en bas par la courbe, pour X∈[0,2 ; 3,3] — traduction visuelle de
+      l'inégalité ln x ≤ x − 1 (établie au R4, réinterprétée au R5 comme
+      la concavité de ln : la courbe reste sous chacune de ses tangentes).
+      Épaisseur nulle exactement en X=1 (point de tangence), comme il se
+      doit.
+
+    Asymptote verticale x=0 : elle coïncide géométriquement avec l'axe
+      des y lui-même (px=80). Par consigne du callout, elle est rendue
+      EN POINTILLÉ (dérogation assumée à la convention "axe = trait plein"
+      des autres figures de ce corpus, parce qu'ici l'axe EST l'asymptote :
+      ln x → -∞ quand x → 0⁺, ce que la courbe montre en plongeant vers le
+      bas du cadre près de px=80).
+
+    Choix délibéré : PAS de droite y=x, PAS de courbe exp — cette leçon
+      définit ln directement comme primitive de 1/t s'annulant en 1 (pas
+      comme réciproque de exp) ; sa propre note de validation indique que
+      "fonction exponentielle" est le chapitre SUIVANT dans la
+      progression, et qu'aucune dépendance circulaire n'est introduite ici.
+      Montrer le miroir y=x/exp anticiperait une notion pas encore vue.
+
+    Rôle des couleurs :
+      tangente, point de tangence (1,0), zone teintée, boîte formule
+        (ln x ≤ x−1) : --figure-accent (LE sujet de cette figure)
+      courbe y=ln x, point (e,1) : --figure-ink (structure, pas le focus)
+      axes, asymptote pointillée, ticks neutres, légendes : --figure-ink-soft
+  -->
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       Zone teintée entre la tangente (haut) et la courbe (bas),
+       X ∈ [0,2 ; 3,3] — visualise ln x ≤ x − 1 (dessinée avant les
+       lignes, pour que la tangente et la courbe restent nettes par-dessus)
+       ══════════════════════════════════════════════════════ -->
+  <path d="
+    M91.78,225.47 L274.33,50.00 L274.33,112.61 L256.67,118.00
+    L240.08,123.58 L221.33,130.63 L209.56,135.56 L197.78,140.95
+    L186.00,146.92 L174.22,153.58 L162.44,161.14 L150.67,169.87
+    L138.89,180.19 L133.00,186.15 L127.11,192.82 L121.22,200.38
+    L115.33,209.10 L109.44,219.42 L103.56,232.05 L97.67,248.34
+    L91.78,271.29 Z
+  " fill="var(--figure-accent)" fill-opacity="0.08" stroke="none"/>
+
+  <!-- Repères pointillés vers le point (e, 1) -->
+  <line x1="80" y1="123.58" x2="240.08" y2="123.58"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="240.08" y1="123.58" x2="240.08" y2="180.19"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+  <!-- ── Axe des x — ink-soft, chrome neutre ───────────────────────── -->
+  <line x1="80" y1="180.19" x2="610" y2="180.19"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,180.19 598,175.69 598,184.69" fill="var(--figure-ink-soft)"/>
+
+  <!-- ── Axe des y / asymptote verticale x=0 — pointillé (voir note en tête) ── -->
+  <line x1="80" y1="350" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+  <text x="617" y="184.19" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+  <text x="72" y="184.19" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Tick Y=1 (niveau atteint en x=e) -->
+  <line x1="76" y1="123.58" x2="84" y2="123.58"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="70" y="127.58" text-anchor="end" font-size="10.5"
+        fill="var(--figure-ink-soft)">1</text>
+
+  <!-- Tick x=e -->
+  <line x1="240.08" y1="175.19" x2="240.08" y2="185.19"
+        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="240.08" y="197.19" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">e</text>
+
+  <!-- Tick x=1 — en accent : c'est aussi le point de tangence -->
+  <line x1="138.89" y1="175.19" x2="138.89" y2="185.19"
+        stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+  <!--
+    Courbe y = ln x — polyligne calculée (34 points, densifiée près de
+    x=0 où la courbure est forte), de x=0,05 à x=9. Voir le calcul complet
+    en tête de fichier.
+  -->
+  <path d="
+    M82.94,349.76 L85.89,310.52 L88.83,287.57 L91.78,271.29
+    L97.67,248.34 L103.56,232.05 L109.44,219.42 L115.33,209.10
+    L121.22,200.38 L127.11,192.82 L133.00,186.15 L138.89,180.19
+    L150.67,169.87 L162.44,161.14 L174.22,153.58 L186.00,146.92
+    L197.78,140.95 L209.56,135.56 L221.33,130.63 L240.08,123.58
+    L256.67,118.00 L274.33,112.61 L286.11,109.28 L315.56,101.72
+    L345.00,95.05 L374.44,89.09 L404.39,83.69 L433.33,78.77
+    L462.78,74.24 L492.22,70.04 L521.67,66.14 L551.11,62.48
+    L580.56,59.05 L610.00,55.82
+  " fill="none"
+    stroke="var(--figure-ink)"
+    stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       Tangente en x=1 — LE sujet de cette figure, en accent
+       ══════════════════════════════════════════════════════ -->
+  <line x1="91.78" y1="225.47" x2="274.33" y2="50.00"
+        stroke="var(--figure-accent)" stroke-width="1.8"
+        stroke-dasharray="6,4" stroke-linecap="round"/>
+
+  <!-- Point de tangence (1, 0) -->
+  <circle cx="138.89" cy="180.19" r="3.2" fill="var(--figure-accent)"/>
+  <text x="138.89" y="200" text-anchor="middle" font-size="10"
+        fill="var(--figure-accent)">(1, 0)</text>
+
+  <!-- Point (e, 1) -->
+  <circle cx="240.08" cy="123.58" r="3.2" fill="var(--figure-ink)"/>
+  <text x="240.08" y="106" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink)">(e, 1)</text>
+
+  <!-- Étiquette de la tangente, accolée à la droite -->
+  <text x="230" y="80" font-size="13" fill="var(--figure-accent)"><tspan
+        font-style="italic">y</tspan><tspan> = </tspan><tspan
+        font-style="italic">x</tspan><tspan> − 1</tspan></text>
+
+  <!-- Étiquette de la courbe, accolée à la courbe -->
+  <text x="480" y="100" font-size="12" fill="var(--figure-ink)"><tspan
+        font-style="italic">y</tspan><tspan> = </tspan><tspan>ln</tspan><tspan
+        font-style="italic"> x</tspan></text>
+
+  <!-- Note sur l'asymptote, accolée à la ligne pointillée -->
+  <text x="95" y="300" font-size="11" fill="var(--figure-ink-soft)"><tspan
+        font-style="italic">x</tspan><tspan> = 0</tspan></text>
+  <text x="95" y="313" font-size="9" fill="var(--figure-ink-soft)">(asymptote verticale)</text>
+
+  <!-- Boîte formule : la concavité, lue graphiquement -->
+  <rect x="405" y="48" width="210" height="32" rx="5"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="510" y="69" text-anchor="middle" font-size="13"
+        fill="var(--figure-accent)"><tspan>ln</tspan><tspan
+        font-style="italic"> x</tspan><tspan> ≤ </tspan><tspan
+        font-style="italic">x</tspan><tspan> − 1</tspan></text>
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Courbe de la fonction logarithme népérien — tangente en x = 1
+  </text>
+
+  <!-- Captions -->
+  <text x="335" y="398" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">La tangente en (1, 0) a pour coefficient directeur ln'(1) = 1 : c'est la droite y = x − 1 ; la courbe reste toujours en dessous d'elle (ln est concave).</text>
+  <text x="335" y="412" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">Quand x tend vers 0 par valeurs positives, ln x tend vers −∞ (asymptote verticale x = 0) ; en (e, 1) apparaît l'unique réel e tel que ln(e) = 1.</text>
+
+</svg>
