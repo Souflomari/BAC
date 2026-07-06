@@ -91,6 +91,10 @@
   --ease-between:       cubic-bezier(0.4, 0, 0.2, 1);
   --duration-micro:     150ms;
   --duration-standard:  250ms;
+  /* LESSON-EXPERIENCE-SPEC §1.3 — the chapter-view enter transition
+     (ChapterShell.tsx). Distinct from --duration-standard: a full-view swap
+     reads calmer a touch slower than a hover/state change. */
+  --duration-view:      300ms;
 
   /* ── Elevation scale (ADR 0023) ───────────────────────────────────────────
      Warm-tinted (rgba 60,45,30), slightly deeper drops that genuinely lift —
@@ -315,6 +319,17 @@ h3:hover .heading-anchor,
   }
   /* Anchors are meaningless on paper */
   .heading-anchor {
+    display: none !important;
+  }
+  /* Chapter pagination (LESSON-EXPERIENCE-SPEC §1.5, §1.9 / ledger 11.9): the
+     lesson prints linearly, whole — every chapter view unhidden regardless of
+     its `hidden` attribute (chapter navigation is a screen-only affordance).
+     The position affordance and prev/next transport are screen-only chrome. */
+  .chapter-view {
+    display: block !important;
+  }
+  .chapter-position,
+  .chapter-transport {
     display: none !important;
   }
 }
@@ -818,6 +833,44 @@ h3:hover .heading-anchor,
  */
 .notion-wide-band {
   width: 100%;
+}
+
+/* ── Chapter pagination (LESSON-EXPERIENCE-SPEC §1.3, ChapterShell.tsx) ──────
+   Entering-only movement: the incoming chapter slides+fades in over
+   --duration-view, direction-aware; the outgoing chapter simply disappears
+   (`hidden` — no exit animation, one movement on screen at a time, DESIGN-
+   BIBLE §5). Implemented as @keyframes rather than a plain `transition`: the
+   element goes from `hidden` to shown in the same tick a class is added, and
+   a transition needs a committed "from" state to animate away from (which
+   would require force-reflow trickery); an animation runs regardless of
+   prior state. ChapterShell adds the class only on user-triggered
+   navigation, never on the initial mount (§1.3: movement belongs to
+   navigating, not to loading). */
+.chapter-enter-forward,
+.chapter-enter-back {
+  animation: chapter-enter-forward var(--duration-view) cubic-bezier(0, 0, 0.2, 1);
+}
+.chapter-enter-back {
+  animation-name: chapter-enter-back;
+}
+@keyframes chapter-enter-forward {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes chapter-enter-back {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+/* Belt-and-braces alongside the global 0.01ms reduced-motion net above
+   (which already zeroes animation-duration for every element): explicitly
+   dropping the animation here means the entering chapter never even
+   receives a one-frame opacity dip before the global net's 0.01ms tick —
+   the swap is fully instant, not just imperceptibly fast. */
+@media (prefers-reduced-motion: reduce) {
+  .chapter-enter-forward,
+  .chapter-enter-back {
+    animation: none;
+  }
 }
 
 /* ── Scrollbar — refined floating thumb (warm, inset) ───────────────────────── */

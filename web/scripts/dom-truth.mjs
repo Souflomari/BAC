@@ -103,7 +103,7 @@ const BATTERY = [
   // TODO(post-answer states): the solution <summary> and correctness rows only
   // exist after answering an item — battery v2 should drive one interaction.
   // ── de-jargon guards (audit U3, Day-2/3 items) ──
-  { name: "rail resting label is a word, not a code", page: NOTION, sel: ".notion-rail a", text: "Accroche", fontKey: "caption", notText: /^R\d+/ },
+  { name: "rail resting label is a word, not a code", page: NOTION, sel: ".notion-rail button", text: "Accroche", fontKey: "caption", notText: /^R\d+/ },
   { name: "no authoring flags rendered", page: NOTION, sel: "h2", text: "Exercice de type bac", notText: /à sourcer|synthèse —/ },
   { name: "prose headings carry no R-codes", page: NOTION, sel: ".prose-lesson h2[data-rung]", notText: /^R\d/ },
   // ── representative spacing (TOKENS.md §3: 8-pt grid) ──
@@ -134,7 +134,7 @@ const BATTERY = [
   // ── Day-6 covers (COVER-SPEC): the shelf is illustrated ──
   { name: "covers present on home shelf", page: "/", sel: "[data-cover='rlc-serie']", present: true },
   // ── Day-3 rail: labels never ellipsize ──
-  { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail a > span[class*='bp-expanded']", noOverflow: true },
+  { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail button > span[class*='bp-expanded']", noOverflow: true },
   // ── Day-6 followability: section ordinals. The fragile invariant is counter
   //    SCOPE — reset must live on the whole content column; markers split the
   //    prose into several .prose-lesson containers, so a per-container reset
@@ -201,7 +201,7 @@ const BATTERY = [
   //    looked at heading TEXT with math. Class guard: rendered heading text
   //    never contains an underscore (the TeX-annotation signature), and the
   //    R2 heading carries a real .katex child. ──
-  { name: "R2 heading renders live math (no flattened TeX)", page: NOTION, sel: "h2[data-rung='R2']", notText: /_|T0T/, present: true },
+  { name: "R2 heading renders live math (no flattened TeX)", page: NOTION + "?chapitre=3", sel: "h2[data-rung='R2']", notText: /_|T0T/, present: true },
   { name: "R2 heading contains a KaTeX element", page: NOTION, sel: "h2[data-rung='R2'] .katex", present: true },
   // ── Day-9 site skeleton (dashboard → matière → chapitre) ──
   { name: "D9 dashboard: subject grid present", page: "/", sel: "section[aria-label='Tes matières']", present: true },
@@ -477,7 +477,7 @@ try {
   const CONTRAST_TARGETS = [
     { page: NOTION, sel: "figcaption", label: "figcaption" },
     { page: NOTION, sel: "[data-band='masthead'] p", label: "masthead metadata" },
-    { page: NOTION, sel: ".notion-rail a span[class*='bp-expanded']", label: "rail idle label" },
+    { page: NOTION, sel: ".notion-rail button span[class*='bp-expanded']", label: "rail idle label" },
     { page: NOTION, sel: "footer p", label: "footer" },
     { page: "/", sel: "section[aria-label='Notions disponibles'] a span[class*='caption']", label: "shelf caption" },
   ];

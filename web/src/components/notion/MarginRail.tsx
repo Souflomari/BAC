@@ -1,209 +1,120 @@
 /**
  * MarginRail
  *
- * Sticky left-margin wayfinder listing the lesson rungs (R0–R7…).
+ * Sticky left-margin chapter NAVIGATOR (LESSON-EXPERIENCE-SPEC §1.4 — was a
+ * passive rung wayfinder before pagination landed; a click now ACTIVATES a
+ * chapter via `ChapterShell`'s context instead of jumping to an anchor).
  *
- * Phase 4 — craft polish:
+ * Entries = every `## ` heading in lesson.md (widened from "rungs only" to
+ * cover the one non-rung exception — probabilites-conditionnelles, ledger
+ * 11.11), plus a synthetic final "S'entraîner" entry when `hasItems`. This
+ * list is built with the SAME `extractChapterHeadings` helper NotionPageView
+ * uses to size `ChapterShell`'s `totalChapters` (lib/chapters.ts) — rail and
+ * shell can never disagree on how many chapters exist.
  *
- * Progress spine: a vertical line runs through all rungs. The portion of
- * the spine ABOVE (and including) the active rung is rendered in the accent
- * color; below it in border-subtle. This gives a calm reading-progress fill
- * without any animation — just a CSS gradient on the spine line.
+ * The rAF scroll-spy that used to compute "active" from scroll position is
+ * GONE (LESSON-EXPERIENCE-SPEC §1.4: "le code spy est retiré du chemin
+ * paginé... il meurt") — active is now simply `current` from ChapterShell's
+ * context, pushed down, not measured.
  *
- * Active rung dot: scales in with a 250ms emphasized ease when it first
- * becomes active (one-shot, no looping). CSS transition on transform/opacity.
+ * Progress spine: a vertical line runs through all entries. The portion of
+ * the spine ABOVE (and including) the active entry is rendered in the accent
+ * color; below it in border-subtle. Calm — no animation, just a CSS gradient
+ * read off `current`.
  *
- * Hover title reveal: on hover/focus, the rung's full title label
- * slides/fades in to the right of the dot+label cluster. Positioned
- * absolutely so it does NOT shift the content column layout.
+ * Active-entry dot, hover title reveal, keyboard-focusable button, .focus-ring,
+ * ≥48px effective touch target — unchanged from the pre-pagination version.
  *
- * Keyboard-focusable, .focus-ring, ≥44px effective touch target.
- * Calm — the calm-load critic is the adversary; nothing loops or pulses.
+ * No browser storage — active state lives in ChapterShell's React context,
+ * reset on page navigation like any other in-memory state.
  *
- * Design requirements:
- * - Quiet / muted — never loud
- * - Keyboard-focusable links
- * - Sticky; aligned with content column
- * - Current rung highlighted
- * - Desktop only (900px+)
- *
- * No browser storage — active state is ephemeral React state from a
- * rAF-throttled scroll listener, reset on page navigation.
- *
- * CLIENT component for scroll tracking and DOM queries.
+ * CLIENT component (context consumer + click handlers).
  */
 
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { extractChapterHeadings, type ChapterHeadingInfo } from "@/lib/chapters";
+import { useChapter, ChapterPosition } from "./ChapterShell";
 
-interface RungDef {
-  label: string;    // internal rung code, e.g. "R0" — used for h2 matching/keys, NEVER displayed (audit U3: no spec jargon in student chrome)
-  title: string;    // e.g. "Accroche : le balancement électrique"
-  shortTitle: string; // resting rail label, e.g. "Accroche" — title cut at " : " / " ("
-}
-
-/**
- * Derive the short resting label from a rung title: the part before " : " or
- * " (" reads as the section's name ("Accroche", "Le cas amorti"); titles with
- * neither stay whole (and wrap if ever too long). Also keeps raw KaTeX ($T_0$) out of
- * the rail — the dollar-bearing tails sit after these separators.
- */
-function shortTitleOf(title: string): string {
-  const cut = title.split(" : ")[0].split(" (")[0].trim();
-  return cut.length > 0 ? cut : title;
+interface RailEntry {
+  title: string;
+  shortTitle: string;
 }
 
 interface MarginRailProps {
-  /** Raw lesson markdown — used to extract rung headings */
+  /** Raw lesson markdown — used to extract chapter headings */
   lessonMd: string;
+  /** Whether a synthetic final "S'entraîner" chapter follows (itemsData exists). */
+  hasItems?: boolean;
 }
 
-/**
- * Extract rung definitions from lesson markdown.
- * Matches lines like: ## R0 — Accroche : le balancement électrique
- */
-function extractRungDefs(markdown: string): RungDef[] {
-  const rungs: RungDef[] = [];
-  const lines = markdown.split("\n");
+const FALLBACK_ENTRY: ChapterHeadingInfo = { title: "Leçon", shortTitle: "Leçon" };
+const PRACTICE_ENTRY: RailEntry = { title: "S'entraîner", shortTitle: "S'entraîner" };
 
-  for (const line of lines) {
-    const m = line.match(/^##\s+(R\d+(?:\s*[-—]\s*.+)?)\s*$/);
-    if (!m) continue;
+export function MarginRail({ lessonMd, hasItems = false }: MarginRailProps) {
+  const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
+  const { current, goTo } = useChapter();
 
-    const fullText = m[1].trim();
-    const labelMatch = fullText.match(/^(R\d+)/);
-    if (!labelMatch) continue;
-    const label = labelMatch[1];
+  // Nothing to navigate: no headings and no exercises chapter (mirrors the
+  // pre-pagination "0 rungs → hide the rail" behavior).
+  if (headings.length === 0 && !hasItems) return null;
 
-    const sepMatch = fullText.match(/^R\d+\s*[-—]\s*(.+)$/);
-    const title = sepMatch ? sepMatch[1].trim() : fullText;
-
-    rungs.push({ label, title, shortTitle: shortTitleOf(title) });
-  }
-
-  return rungs;
-}
-
-interface ResolvedRung extends RungDef {
-  el: HTMLElement | null;
-  href: string;
-}
-
-export function MarginRail({ lessonMd }: MarginRailProps) {
-  const rungDefs = useMemo(() => extractRungDefs(lessonMd), [lessonMd]);
-  const [resolvedRungs, setResolvedRungs] = useState<ResolvedRung[]>([]);
-  const [activeLabel, setActiveLabel] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (rungDefs.length === 0) return;
-
-    // Rung headings are matched by the data-rung attribute LessonRenderer sets
-    // (the visible R-code was removed from student-facing render — audit U3 —
-    // so textContent matching is no longer possible or desirable).
-    const resolved: ResolvedRung[] = rungDefs.map((def) => {
-      const el = document.querySelector<HTMLElement>(
-        `h2[data-rung="${def.label}"]`
-      );
-      const href = el?.id ? `#${el.id}` : "#";
-      return { ...def, el, href };
-    });
-
-    setResolvedRungs(resolved);
-
-    const els = resolved.filter((r) => r.el);
-    if (els.length === 0) return;
-
-    // Scroll-spy (Day-3 fallout fix — the IntersectionObserver version only
-    // recomputed on threshold crossings and visibly lagged a section behind).
-    // Deterministic rule, evaluated on every scroll frame (rAF-throttled):
-    // the active rung is the LAST heading whose top has passed the reading
-    // line (header 56px + one line of breathing room). Passive listener;
-    // cheap (≤10 getBoundingClientRect per frame, only while scrolling).
-    const READING_LINE = 96;
-    let ticking = false;
-    function computeActive() {
-      ticking = false;
-      let found: string | null = null;
-      for (const r of els) {
-        if (r.el!.getBoundingClientRect().top <= READING_LINE) found = r.label;
-        else break; // headings are in document order — first miss ends it
-      }
-      setActiveLabel(found ?? els[0].label);
-    }
-    function onScroll() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(computeActive);
-      }
-    }
-    computeActive();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [rungDefs]);
-
-  if (rungDefs.length === 0) return null;
-
-  const rungs = resolvedRungs.length > 0 ? resolvedRungs : rungDefs.map((def) => ({
-    ...def,
-    el: null,
-    href: "#",
-  }));
-
-  // Determine the index of the active rung for the progress spine
-  const activeIndex = rungs.findIndex((r) => r.label === activeLabel);
+  // Real chapters (never empty — the "Leçon" fallback keeps this array's
+  // length equal to lib/chapters.ts's `realChapterCount`, which also clamps
+  // to min 1, so the synthetic entry below always lands at the right index).
+  // A FRESH array, never `headings` itself: `headings` is useMemo-cached
+  // keyed on `lessonMd`, so mutating it in place (e.g. via .push) would leak
+  // an extra "S'entraîner" entry onto the SAME cached array on every
+  // subsequent render while lessonMd is unchanged.
+  const realEntries: RailEntry[] = headings.length > 0 ? headings : [FALLBACK_ENTRY];
+  const entries: RailEntry[] = hasItems ? [...realEntries, PRACTICE_ENTRY] : realEntries;
 
   return (
-    <nav
-      className="notion-rail"
-      aria-label="Navigation par rung de la leçon"
-    >
-      <ol
-        className="relative flex flex-col pt-1"
-        role="list"
-      >
-        {rungs.map((rung, i) => {
-          const isActive = activeLabel === rung.label;
-          // A rung is "read" if it is before or at the active rung
-          const isRead = activeIndex >= 0 && i <= activeIndex;
+    <nav className="notion-rail" aria-label="Navigation par chapitre de la leçon">
+      <ChapterPosition className="mb-3" />
+      <ol className="relative flex flex-col pt-1" role="list">
+        {entries.map((entry, i) => {
+          const isActive = current === i;
+          // An entry is "read" if it is before or at the active one.
+          const isRead = i <= current;
 
           return (
-            <li key={rung.label} className="relative">
+            <li key={i} className="relative">
               {/*
-                The spine segment for this rung: a 1px vertical line that
-                bridges from the top of this item to the bottom. We draw it
-                explicitly per-rung so we can color the read portion vs unread.
-                Hidden on the last rung (no segment below).
+                The spine segment for this entry: a 1px vertical line that
+                bridges from the top of this item to the bottom. Drawn
+                explicitly per-entry so the read portion vs unread can be
+                colored independently. Hidden on the last entry (no segment
+                below).
               */}
-              {i < rungs.length - 1 && (
+              {i < entries.length - 1 && (
                 <span
                   aria-hidden="true"
                   className={cn(
                     // Positioned from the dot center (top: ~22px) down to bottom of li
                     "absolute left-[5.5px] top-[22px] bottom-0 w-px",
                     // Read segment: accent color; unread: border-subtle
-                    isRead
-                      ? "bg-accent"
-                      : "bg-[var(--color-border-subtle)]"
+                    isRead ? "bg-accent" : "bg-[var(--color-border-subtle)]"
                   )}
                 />
               )}
 
-              <a
-                href={rung.href}
-                title={rung.title}
-                // Active rung exposed to AT, not only by color (July-2026
+              <button
+                type="button"
+                onClick={() => goTo(i)}
+                title={entry.title}
+                // Active entry exposed to AT, not only by color (July-2026
                 // audit F3 side-finding: color-swap was the sole signal).
-                aria-current={isActive ? "location" : undefined}
+                // "step" (not "location"): this is now a paginated sequence
+                // activated by click, not an in-page anchor jump.
+                aria-current={isActive ? "step" : undefined}
                 className={cn(
                   // §9 touch target: 48px (raised from 44px per audit finding #2)
-                  "group relative flex items-center gap-2",
+                  "group relative flex w-full items-center gap-2 text-left",
                   "min-h-[48px] py-2 pr-2 rounded-sm",
+                  "bg-transparent",
                   "text-caption font-medium",
                   // Unified neutral interaction wash on the rounded hit-area
                   // (ADR 0024 state-layer). The dot/text-color active+hover
@@ -215,12 +126,12 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                   "focus-ring",
                   isActive
                     ? "text-accent"
-                    // #1: idle rung label is 12px functional text — must pass 4.5:1.
+                    // #1: idle entry label is 12px functional text — must pass 4.5:1.
                     // Promoted from tertiary to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1).
                     : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 )}
               >
-                {/* Rung node on the spine */}
+                {/* Entry node on the spine */}
                 <span
                   className={cn(
                     "relative z-10 flex-shrink-0",
@@ -258,7 +169,7 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                   aria-hidden="true"
                 />
 
-                {/* Rung label — the human section name (audit U3: the R-codes
+                {/* Entry label — the human section name (audit U3: the R-codes
                     are spec vocabulary and never render; wayfinding is words).
                     Text shows from the expanded rail (176px) up; the medium
                     rail (52px) is dots-only with the full title on hover. */}
@@ -271,7 +182,7 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                 <span className="hidden bp-expanded:block leading-tight min-w-0">
                   <span className="tabular-nums">{i + 1}</span>
                   {" · "}
-                  {rung.shortTitle}
+                  {entry.shortTitle}
                 </span>
 
                 {/*
@@ -279,7 +190,7 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                   the content column. Fades + slides in from the right of the
                   label. z-50 to float above everything.
                   pointer-events-none so it doesn't eat click events meant for
-                  the underlying anchor.
+                  the underlying button.
                 */}
                 <span
                   aria-hidden="true"
@@ -302,9 +213,9 @@ export function MarginRail({ lessonMd }: MarginRailProps) {
                     "max-w-[28ch] truncate"
                   )}
                 >
-                  {rung.title}
+                  {entry.title}
                 </span>
-              </a>
+              </button>
             </li>
           );
         })}

@@ -22,10 +22,12 @@
 
 import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
+import { realChapterCount } from "@/lib/chapters";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
 import { ItemsSection, buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
+import { ChapterShell, ChapterPosition, ChapterTransport } from "@/components/notion/ChapterShell";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
@@ -129,6 +131,16 @@ export function NotionPageView({
     Object.keys(motionSvgs).length > 0 ||
     Object.keys(mediaEmbeds).length > 0;
 
+  // ── Pagination (LESSON-EXPERIENCE-SPEC §1) ────────────────────────────────
+  // `realChapters` = the lesson's own `## ` chapters (lib/chapters.ts — the
+  // SAME rule MarginRail uses, so the two never disagree). A synthetic final
+  // "S'entraîner" chapter is appended whenever itemsData exists (spec §1.1);
+  // its index is exactly `realChapters` (0-based, right after the last real
+  // one). `totalChapters` is what ChapterShell uses to size keyboard/URL
+  // clamping and the "Chapitre n / N" affordance.
+  const realChapters = lessonMd ? realChapterCount(lessonMd) : 0;
+  const totalChapters = Math.max(1, realChapters + (itemsData ? 1 : 0));
+
   // Masthead title classes per variant (Set A). a1 = shipped control.
   const titleClass = {
     a1: "text-h1",
@@ -231,73 +243,101 @@ export function NotionPageView({
         </div>
       )}
 
-      {/* ── Two-column layout: margin rail + content ─────────────────────── */}
-      <div className="notion-page-grid">
-        {lessonMd ? (
-          <MarginRail lessonMd={lessonMd} />
-        ) : (
-          <div className="notion-rail" aria-hidden="true" />
-        )}
-
-        {/* Content column. Set-W1/W3 candidates anchor their right-margin
-            channel to this column (absolute, outside the container, in the
-            wide-tier void the owner circled). */}
-        <div id="lesson-content" className={cn("notion-content", (wideOption === "w1" || wideOption === "w3") && "relative")}>
-          {wideOption === "w1" && marginNotes && <MarginNotes notes={marginNotes} />}
-          {wideOption === "w3" && keyFormulas && <KeyFormulaRail formulas={keyFormulas} />}
-          {mastheadVariant !== "a3" && masthead}
-
+      {/* ── Two-column layout: margin rail + content, both paginated ──────
+          LESSON-EXPERIENCE-SPEC §1.3: ChapterShell wraps rail + content so
+          BOTH can read/drive the current-chapter context (MarginRail's
+          active highlighting + activation, the position affordance, every
+          chapter's own prev/next). NotionBody and the synthetic chapter
+          below are the ONLY things ChapterShell toggles visibility on — the
+          shell itself renders no lesson content of its own. */}
+      <ChapterShell totalChapters={totalChapters}>
+        <div className="notion-page-grid">
           {lessonMd ? (
-            <NotionBody
-              lessonMd={lessonMd}
-              exercises={exercises}
-              derivations={derivations}
-              mediaSvgs={mediaSvgs}
-              motionSvgs={motionSvgs}
-              motionSpecs={motionSpecs}
-              mediaStages={mediaStages}
-              mediaEmbeds={mediaEmbeds}
-              checkpoints={checkpoints}
-            />
+            <MarginRail lessonMd={lessonMd} hasItems={!!itemsData} />
           ) : (
-            <div
-              className={cn(
-                "rounded-xl border border-dashed border-[var(--color-border-subtle)]",
-                "px-8 py-10 text-center",
-                "text-body-sm text-[var(--color-text-secondary)]"
-              )}
-            >
-              Leçon en cours de préparation.
-            </div>
+            <div className="notion-rail" aria-hidden="true" />
           )}
 
-          {/* MCQ items — always rendered after the lesson body */}
-          {itemsData && (
-            <div className="mt-16">
-              <ItemsSection
-                itemsData={itemsData}
-                checkpointCloneIds={checkpointCloneIds}
+          {/* Content column. Set-W1/W3 candidates anchor their right-margin
+              channel to this column (absolute, outside the container, in the
+              wide-tier void the owner circled). */}
+          <div id="lesson-content" className={cn("notion-content", (wideOption === "w1" || wideOption === "w3") && "relative")}>
+            {/* Mobile-only twin of the rail's "Chapitre n / N" (rail is
+                display:none below 600px — globals.css:764-788): the SAME
+                context, so the two copies can never disagree. */}
+            <ChapterPosition className="mb-6 bp-medium:hidden" />
+
+            {wideOption === "w1" && marginNotes && <MarginNotes notes={marginNotes} />}
+            {wideOption === "w3" && keyFormulas && <KeyFormulaRail formulas={keyFormulas} />}
+            {mastheadVariant !== "a3" && masthead}
+
+            {lessonMd ? (
+              <NotionBody
+                lessonMd={lessonMd}
+                exercises={exercises}
+                derivations={derivations}
+                mediaSvgs={mediaSvgs}
+                motionSvgs={motionSvgs}
+                motionSpecs={motionSpecs}
+                mediaStages={mediaStages}
+                mediaEmbeds={mediaEmbeds}
+                checkpoints={checkpoints}
+                hasTrailingChapter={!!itemsData}
+                lessonEnd={hasAnyContent ? <LessonEnd next={nextNotion} /> : undefined}
               />
-            </div>
-          )}
+            ) : (
+              <div
+                className={cn(
+                  "rounded-xl border border-dashed border-[var(--color-border-subtle)]",
+                  "px-8 py-10 text-center",
+                  "text-body-sm text-[var(--color-text-secondary)]"
+                )}
+              >
+                Leçon en cours de préparation.
+              </div>
+            )}
 
-          {/* Session-close handoff (bible §8; Set-C C2 refile, Day-4 build) */}
-          {hasAnyContent && <LessonEnd next={nextNotion} />}
+            {/* Synthetic final chapter « S'entraîner » (spec §1.1): hosts
+                ItemsSection; LessonEnd always closes the LAST chapter, so it
+                lands HERE instead of inside NotionBody's own last real
+                chapter (suppressed there via `hasTrailingChapter`). Index is
+                always `realChapters` — right after NotionBody's own last
+                real chapter, 0 in the (unused in the corpus) case where the
+                lesson has no prose at all. */}
+            {itemsData && (
+              <section
+                data-chapter-section
+                data-chapter-index={realChapters}
+                data-chapter-active={realChapters === 0 ? "true" : "false"}
+                hidden={realChapters !== 0}
+                className="chapter-view"
+              >
+                <div className="mt-16">
+                  <ItemsSection
+                    itemsData={itemsData}
+                    checkpointCloneIds={checkpointCloneIds}
+                  />
+                </div>
+                {hasAnyContent && <LessonEnd next={nextNotion} />}
+                <ChapterTransport index={realChapters} />
+              </section>
+            )}
 
-          {/* Fallback: notion directory exists but all content is absent */}
-          {!hasAnyContent && (
-            <div
-              className={cn(
-                "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",
-                "px-8 py-10 text-center",
-                "text-body-sm text-[var(--color-text-secondary)]"
-              )}
-            >
-              Contenu en cours de préparation.
-            </div>
-          )}
+            {/* Fallback: notion directory exists but all content is absent */}
+            {!hasAnyContent && (
+              <div
+                className={cn(
+                  "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",
+                  "px-8 py-10 text-center",
+                  "text-body-sm text-[var(--color-text-secondary)]"
+                )}
+              >
+                Contenu en cours de préparation.
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </ChapterShell>
     </PageShell>
   );
 }

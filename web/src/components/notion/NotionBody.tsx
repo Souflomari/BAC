@@ -13,6 +13,16 @@
  *   [[checkpoint:<id>]]    → CheckpointItem (inline formative MCQ from checkpoints.yaml)
  *   [[video:<slug>]]       → VideoElement (graceful: renders if asset exists, omits if not)
  *
+ * ── Chapterize (LESSON-EXPERIENCE-SPEC §1.2, ledger 11.2) ───────────────────
+ * A SECOND pass over the marker-split segments re-splits every `prose`
+ * segment at `^##\s` lines (the marker split above is blind to headings) and
+ * tags each resulting piece with a `chapterIndex`. Each chapter renders as
+ * its own `<section data-chapter-section data-chapter-index=…>` — ALL of
+ * them present in the DOM (SSG, print, in-page anchors — ledger 11.4);
+ * `ChapterShell` (client, a wrapper the caller supplies) is the only thing
+ * that toggles which one is visible. This file stays a SERVER component:
+ * chapter VISIBILITY is someone else's job, chapter CONTENT is this file's.
+ *
  * Progressive (stepped) figure reveal — TWO mechanisms, coexisting this commit
  * (LESSON-EXPERIENCE-SPEC §2, ledger 11.7):
  *
@@ -30,8 +40,13 @@
  *   at render time; the Nth occurrence of a slug shows step groups 1..N.
  *
  *   Both read the SAME global occurrence counter (`figureOccurrenceCount`,
- *   author order, computed before any future pagination split — ledger §1.2):
- *   a slug is tracked in it the moment it appears in EITHER map below.
+ *   author order, computed ACROSS ALL CHAPTERS before any per-chapter
+ *   rendering — spec §1.2, ledger 11.2's "piège n°1 pour un repreneur froid"):
+ *   a slug is tracked in it the moment it appears in EITHER map below. The
+ *   counter object is declared ONCE, outside the chapter loop; iterating
+ *   chapters-then-segments visits every segment in the exact same authored
+ *   order as the pre-chapterize flat pass did, so this invariant survives
+ *   pagination unchanged.
  *
  * Unknown slugs → silent no-op (nothing rendered, no crash).
  * No [[…]] literal ever leaks to the rendered page.
@@ -45,8 +60,10 @@
  * DESIGN-BIBLE §7: one primary thing per screen; prose and media interleave as authored.
  */
 
+import type { ReactNode } from "react";
 import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
+import { minutesForText } from "@/lib/chapters";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { LessonRenderer } from "./LessonRenderer";
 import { MediaDiagramFigure } from "./MediaDiagram";
@@ -57,6 +74,7 @@ import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
 import { Derivation } from "./Derivation";
+import { ChapterTransport } from "./ChapterShell";
 
 // ── Stepped figure configuration ─────────────────────────────────────────────
 // Slugs listed here have step groups (id="step-1"…"step-N") in their SVG.
@@ -250,6 +268,88 @@ function splitIntoSegments(markdown: string): Segment[] {
   return segments;
 }
 
+// ── Chapterize (LESSON-EXPERIENCE-SPEC §1.2) ────────────────────────────────
+
+interface Chapter {
+  /** 0-based, authored order. */
+  index: number;
+  segments: Segment[];
+  /** words / 180 wpm, min 1 — see minutesForText (lib/chapters.ts). */
+  minutes: number;
+}
+
+/**
+ * Second pass over `splitIntoSegments`' output: re-splits every `prose`
+ * segment at `^##\s` lines and groups the resulting pieces (plus every
+ * untouched non-prose segment) into chapters, in authored order.
+ *
+ * Content before the FIRST `## ` line anywhere in the document (rare — the
+ * H1 is already stripped by `stripLeadingTitle`, lib/content.ts:265-274)
+ * merges into chapter 0 rather than becoming a throwaway chapter of its own
+ * (spec §1.1) — `isFirstHeadingEver` is captured BEFORE the pending buffer is
+ * flushed so this merge happens regardless of whether that buffer was empty.
+ */
+function chapterizeSegments(segments: Segment[]): Chapter[] {
+  const chapters: Chapter[] = [];
+
+  function ensureChapter(): Chapter {
+    if (chapters.length === 0) {
+      chapters.push({ index: 0, segments: [], minutes: 0 });
+    }
+    return chapters[chapters.length - 1];
+  }
+
+  function openNewChapter(): void {
+    chapters.push({ index: chapters.length, segments: [], minutes: 0 });
+  }
+
+  function pushProse(chunk: string): void {
+    ensureChapter().segments.push({ kind: "prose", md: chunk });
+  }
+
+  for (const seg of segments) {
+    if (seg.kind !== "prose") {
+      ensureChapter().segments.push(seg);
+      continue;
+    }
+
+    const lines = seg.md.split("\n");
+    let buffer: string[] = [];
+    for (const line of lines) {
+      if (/^##\s/.test(line)) {
+        const isFirstHeadingEver = chapters.length === 0;
+        if (buffer.length > 0) {
+          pushProse(buffer.join("\n"));
+          buffer = [];
+        }
+        if (isFirstHeadingEver) {
+          ensureChapter(); // no-op if the flush above already opened chapter 0
+        } else {
+          openNewChapter();
+        }
+      }
+      buffer.push(line);
+    }
+    if (buffer.length > 0) {
+      pushProse(buffer.join("\n"));
+    }
+  }
+
+  if (chapters.length === 0) {
+    // No `##` heading AND no content at all reached this point (defensive —
+    // NotionPageView already skips rendering NotionBody when lessonMd is
+    // empty, so this is unlikely to occur in practice).
+    return [{ index: 0, segments: [], minutes: 1 }];
+  }
+
+  for (const c of chapters) {
+    c.minutes = minutesForText(
+      c.segments.filter((s): s is ProseSegment => s.kind === "prose").map((s) => s.md).join("\n")
+    );
+  }
+  return chapters;
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 interface NotionBodyProps {
@@ -285,6 +385,25 @@ interface NotionBodyProps {
   mediaEmbeds: Record<string, EmbedDescriptor>;
   /** Checkpoint items keyed by id. */
   checkpoints: Record<string, CheckpointItemType>;
+  /**
+   * True whenever a synthetic final "S'entraîner" chapter will be appended
+   * AFTER NotionBody's own real chapters (LESSON-EXPERIENCE-SPEC §1.1 —
+   * present whenever `itemsData` exists; NotionPageView renders that
+   * chapter's `<section>` itself, hosting ItemsSection). When true,
+   * NotionBody's own last real chapter is NOT the lesson's last chapter —
+   * it does not render `lessonEnd` (the synthetic chapter does instead) and
+   * its ChapterTransport still gets a "Chapitre suivant" (the shared
+   * `total` from ChapterShell's context already accounts for the synthetic
+   * chapter, regardless of this prop).
+   */
+  hasTrailingChapter: boolean;
+  /**
+   * LessonEnd (the session-close handoff) — appended inside NotionBody's own
+   * LAST chapter. Used only when `hasTrailingChapter` is false: with no
+   * items, the lesson's own last real chapter IS the lesson's last chapter,
+   * and LessonEnd always closes the last chapter (spec §1.1).
+   */
+  lessonEnd?: ReactNode;
 }
 
 export function NotionBody({
@@ -297,6 +416,8 @@ export function NotionBody({
   mediaStages,
   mediaEmbeds,
   checkpoints,
+  hasTrailingChapter,
+  lessonEnd,
 }: NotionBodyProps) {
   // Build a slug-keyed SVG map for static figures (strip ".svg" extension)
   const svgBySlug: Record<string, string> = {};
@@ -306,164 +427,202 @@ export function NotionBody({
   }
 
   const segments = splitIntoSegments(lessonMd);
+  const chapters = chapterizeSegments(segments);
 
   // Track occurrence count per stepped figure slug for cumulative reveal.
   // Key: slug, Value: how many times this slug has been rendered so far.
+  // Declared ONCE, outside the chapter loop below — see the file-header note
+  // on why this must stay a single counter across ALL chapters (ledger 11.2).
   const figureOccurrenceCount: Record<string, number> = {};
+
+  // One segment → one rendered node. Extracted to a named function (rather
+  // than an inline map callback) purely so it can be called once per chapter
+  // below instead of once over one flat array — every branch is UNCHANGED
+  // from the pre-pagination version.
+  function renderSegment(seg: Segment, key: string): ReactNode {
+    // ── Prose ──────────────────────────────────────────────────────────
+    if (seg.kind === "prose") {
+      const trimmed = seg.md.trim();
+      if (!trimmed) return null;
+      return (
+        // notion-prose: max-width 65ch + mx-auto (centered in content band)
+        <div key={key} className="notion-prose">
+          <LessonRenderer markdown={trimmed} />
+        </div>
+      );
+    }
+
+    // ── Figure (static SVG, optionally stepped) ────────────────────────
+    if (seg.kind === "figure") {
+      const svg = svgBySlug[seg.slug];
+      if (!svg) return null; // Unknown slug — silent no-op
+
+      const stagesSpec = mediaStages[seg.slug];
+      const maxSteps = STEPPED_FIGURE_MAX_STEPS[seg.slug];
+
+      // Global occurrence counter (author order, §1.2) — shared by BOTH
+      // the new StagedFigure mechanism and the legacy allowlist below.
+      // A slug is tracked the moment it needs either: repeated placements
+      // start pre-revealed at their historical level either way.
+      if (stagesSpec !== undefined || maxSteps !== undefined) {
+        figureOccurrenceCount[seg.slug] =
+          (figureOccurrenceCount[seg.slug] ?? 0) + 1;
+      }
+      const occurrence = figureOccurrenceCount[seg.slug];
+
+      // NEW mechanism: a media/<slug>.stages.json sidecar exists.
+      if (stagesSpec !== undefined) {
+        return (
+          <StagedFigure
+            key={key}
+            svg={svg}
+            slug={seg.slug}
+            label={figureAriaLabel(seg.slug)}
+            stages={stagesSpec.stages}
+            initialStage={Math.min(occurrence, stagesSpec.stages.length)}
+          />
+        );
+      }
+
+      // LEGACY mechanism: STEPPED_FIGURE_MAX_STEPS allowlist + MediaDiagramFigure.
+      let visibleSteps: number | undefined;
+      let caption: string | undefined;
+
+      if (maxSteps !== undefined) {
+        // Clamp to max steps so extra occurrences show the full figure
+        visibleSteps = Math.min(occurrence, maxSteps);
+        caption = stepCaption(seg.slug, visibleSteps);
+      }
+
+      return (
+        <MediaDiagramFigure
+          key={key}
+          slug={seg.slug}
+          svg={svg}
+          label={figureAriaLabel(seg.slug)}
+          visibleSteps={visibleSteps}
+          stepCaption={caption}
+        />
+      );
+    }
+
+    // ── Motion (animated SVG) ──────────────────────────────────────────
+    if (seg.kind === "motion") {
+      const svg = motionSvgs[seg.slug];
+      if (!svg) return null; // Unknown slug — silent no-op
+
+      // Real-motion engine when a beat spec exists; else legacy stepped
+      // renderer (graceful: not every motion slug has been converted yet).
+      const spec = motionSpecs[seg.slug];
+      if (spec) {
+        return (
+          <MotionStage
+            key={key}
+            svg={svg}
+            spec={spec}
+            label={figureAriaLabel(seg.slug)}
+          />
+        );
+      }
+
+      return (
+        <MotionDiagram
+          key={key}
+          svg={svg}
+          label={figureAriaLabel(seg.slug)}
+        />
+      );
+    }
+
+    // ── Embed ──────────────────────────────────────────────────────────
+    if (seg.kind === "embed") {
+      const embed = mediaEmbeds[seg.slug] ?? null;
+      // EmbedPanel handles null gracefully (shows placeholder)
+      return (
+        <EmbedPanel
+          key={key}
+          embed={embed}
+        />
+      );
+    }
+
+    // ── Checkpoint ─────────────────────────────────────────────────────
+    if (seg.kind === "checkpoint") {
+      const item = checkpoints[seg.id];
+      if (!item) return null; // Unknown id — silent no-op
+
+      return (
+        <div key={key} className="my-10 notion-wide-band">
+          <CheckpointItem item={item} />
+        </div>
+      );
+    }
+
+    // ── Video ──────────────────────────────────────────────────────────
+    // Gracefully omit if the asset does not exist.
+    // The lesson currently references [[video:balancement]] — if the Veo
+    // asset has not been produced yet, this renders nothing (no error, no
+    // placeholder — design brief specifies graceful omission).
+    if (seg.kind === "video") {
+      // Video assets are not loaded server-side in this pass —
+      // the balancement Veo clip is pending production. When a video
+      // asset exists, it would be passed in via a `mediaVideos` prop.
+      // For now: silent no-op on all video markers.
+      // This satisfies the "omit gracefully, never show a placeholder error"
+      // requirement without blocking the build.
+      return null;
+    }
+
+    // Attempt-first exercise (Day-5, audit C1): question → commit →
+    // reasoning unlocks. Unknown slug → silent no-op like every marker.
+    if (seg.kind === "exercise") {
+      const ex = exercises?.[seg.slug];
+      if (!ex) return null;
+      return <AttemptFirstExercise key={key} exercise={ex} />;
+    }
+
+    // Stepped derivation (Day-6, §7): learner-paced worked math.
+    if (seg.kind === "derivation") {
+      const d = derivations?.[seg.slug];
+      if (!d) return null;
+      return <Derivation key={key} id={d.id} title={d.title} steps={d.steps} />;
+    }
+
+    return null;
+  }
+
+  const lastChapterIndex = chapters.length - 1;
 
   return (
     <>
-      {segments.map((seg, i) => {
-        // ── Prose ──────────────────────────────────────────────────────────
-        if (seg.kind === "prose") {
-          const trimmed = seg.md.trim();
-          if (!trimmed) return null;
-          return (
-            // notion-prose: max-width 65ch + mx-auto (centered in content band)
-            <div key={i} className="notion-prose">
-              <LessonRenderer markdown={trimmed} />
-            </div>
-          );
-        }
-
-        // ── Figure (static SVG, optionally stepped) ────────────────────────
-        if (seg.kind === "figure") {
-          const svg = svgBySlug[seg.slug];
-          if (!svg) return null; // Unknown slug — silent no-op
-
-          const stagesSpec = mediaStages[seg.slug];
-          const maxSteps = STEPPED_FIGURE_MAX_STEPS[seg.slug];
-
-          // Global occurrence counter (author order, §1.2) — shared by BOTH
-          // the new StagedFigure mechanism and the legacy allowlist below.
-          // A slug is tracked the moment it needs either: repeated placements
-          // start pre-revealed at their historical level either way.
-          if (stagesSpec !== undefined || maxSteps !== undefined) {
-            figureOccurrenceCount[seg.slug] =
-              (figureOccurrenceCount[seg.slug] ?? 0) + 1;
-          }
-          const occurrence = figureOccurrenceCount[seg.slug];
-
-          // NEW mechanism: a media/<slug>.stages.json sidecar exists.
-          if (stagesSpec !== undefined) {
-            return (
-              <StagedFigure
-                key={`${seg.slug}-${i}`}
-                svg={svg}
-                slug={seg.slug}
-                label={figureAriaLabel(seg.slug)}
-                stages={stagesSpec.stages}
-                initialStage={Math.min(occurrence, stagesSpec.stages.length)}
-              />
-            );
-          }
-
-          // LEGACY mechanism: STEPPED_FIGURE_MAX_STEPS allowlist + MediaDiagramFigure.
-          let visibleSteps: number | undefined;
-          let caption: string | undefined;
-
-          if (maxSteps !== undefined) {
-            // Clamp to max steps so extra occurrences show the full figure
-            visibleSteps = Math.min(occurrence, maxSteps);
-            caption = stepCaption(seg.slug, visibleSteps);
-          }
-
-          return (
-            <MediaDiagramFigure
-              key={`${seg.slug}-${i}`}
-              slug={seg.slug}
-              svg={svg}
-              label={figureAriaLabel(seg.slug)}
-              visibleSteps={visibleSteps}
-              stepCaption={caption}
-            />
-          );
-        }
-
-        // ── Motion (animated SVG) ──────────────────────────────────────────
-        if (seg.kind === "motion") {
-          const svg = motionSvgs[seg.slug];
-          if (!svg) return null; // Unknown slug — silent no-op
-
-          // Real-motion engine when a beat spec exists; else legacy stepped
-          // renderer (graceful: not every motion slug has been converted yet).
-          const spec = motionSpecs[seg.slug];
-          if (spec) {
-            return (
-              <MotionStage
-                key={`motion-${seg.slug}-${i}`}
-                svg={svg}
-                spec={spec}
-                label={figureAriaLabel(seg.slug)}
-              />
-            );
-          }
-
-          return (
-            <MotionDiagram
-              key={`motion-${seg.slug}-${i}`}
-              svg={svg}
-              label={figureAriaLabel(seg.slug)}
-            />
-          );
-        }
-
-        // ── Embed ──────────────────────────────────────────────────────────
-        if (seg.kind === "embed") {
-          const embed = mediaEmbeds[seg.slug] ?? null;
-          // EmbedPanel handles null gracefully (shows placeholder)
-          return (
-            <EmbedPanel
-              key={`embed-${seg.slug}-${i}`}
-              embed={embed}
-            />
-          );
-        }
-
-        // ── Checkpoint ─────────────────────────────────────────────────────
-        if (seg.kind === "checkpoint") {
-          const item = checkpoints[seg.id];
-          if (!item) return null; // Unknown id — silent no-op
-
-          return (
-            <div key={`cp-${seg.id}-${i}`} className="my-10 notion-wide-band">
-              <CheckpointItem item={item} />
-            </div>
-          );
-        }
-
-        // ── Video ──────────────────────────────────────────────────────────
-        // Gracefully omit if the asset does not exist.
-        // The lesson currently references [[video:balancement]] — if the Veo
-        // asset has not been produced yet, this renders nothing (no error, no
-        // placeholder — design brief specifies graceful omission).
-        if (seg.kind === "video") {
-          // Video assets are not loaded server-side in this pass —
-          // the balancement Veo clip is pending production. When a video
-          // asset exists, it would be passed in via a `mediaVideos` prop.
-          // For now: silent no-op on all video markers.
-          // This satisfies the "omit gracefully, never show a placeholder error"
-          // requirement without blocking the build.
-          return null;
-        }
-
-        // Attempt-first exercise (Day-5, audit C1): question → commit →
-        // reasoning unlocks. Unknown slug → silent no-op like every marker.
-        if (seg.kind === "exercise") {
-          const ex = exercises?.[seg.slug];
-          if (!ex) return null;
-          return <AttemptFirstExercise key={`ex-${i}`} exercise={ex} />;
-        }
-
-        // Stepped derivation (Day-6, §7): learner-paced worked math.
-        if (seg.kind === "derivation") {
-          const d = derivations?.[seg.slug];
-          if (!d) return null;
-          return <Derivation key={`dv-${i}`} id={d.id} title={d.title} steps={d.steps} />;
-        }
-
-        return null;
-      })}
+      {chapters.map((chapter, ci) => (
+        // Every chapter renders — non-active ones carry `hidden` (spec §1.3,
+        // ledger 11.4): SSG, print, and in-page anchors all need the whole
+        // lesson in the DOM. ChapterShell (the caller's client wrapper) is
+        // the only thing that ever flips `hidden`/`data-chapter-active` on
+        // these nodes; the default below (chapter 0 open) is what SSG and a
+        // no-JS visitor see.
+        <section
+          key={`chapter-${chapter.index}`}
+          data-chapter-section
+          data-chapter-index={chapter.index}
+          data-chapter-active={chapter.index === 0 ? "true" : "false"}
+          hidden={chapter.index !== 0}
+          className="chapter-view"
+        >
+          {/* Per-chapter reading time — quiet, above the chapter's own
+              content (LESSON-EXPERIENCE-SPEC §1.3). Not literally inline
+              with the markdown-rendered `##` heading below it: that heading
+              is produced deep inside LessonRenderer/react-markdown, a
+              shared, chapter-agnostic renderer this task does not touch. */}
+          <p className="notion-prose mb-2 text-body-sm text-[var(--color-text-secondary)]">
+            {`~${chapter.minutes} min`}
+          </p>
+          {chapter.segments.map((seg, i) => renderSegment(seg, `${chapter.index}-${i}`))}
+          {ci === lastChapterIndex && !hasTrailingChapter && lessonEnd}
+          <ChapterTransport index={chapter.index} />
+        </section>
+      ))}
     </>
   );
 }
