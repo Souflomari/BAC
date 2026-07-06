@@ -267,6 +267,8 @@ Tu connais déjà un repère orthonormé $(O; \vec{u}, \vec{v})$ pour placer des
 
 **Définition.** Au nombre complexe $z=a+bi$, on associe le point $M(a,b)$ : on dit que $M$ est **l'image** de $z$, et que $z$ est **l'affixe** de $M$.
 
+[[figure:plan-complexe]]
+
 La même idée s'applique à un vecteur : l'affixe du vecteur $\vec{OM}$ est $z$ lui-même, et plus généralement, l'affixe du vecteur $\vec{AB}$ (où $A$ a pour affixe $z_A$ et $B$ pour affixe $z_B$) est
 
 $$z_{\vec{AB}} = z_B - z_A$$
@@ -279,6 +281,8 @@ $$z_{\vec{AB}} = z_B - z_A$$
 
 - Le point d'affixe $\overline{z}$ est le **symétrique** du point d'affixe $z$ par rapport à l'axe des réels (l'axe des abscisses) : conjuguer, c'est changer le signe de $b$ seul, donc changer le signe de la deuxième coordonnée uniquement.
 - Le point d'affixe $-z$ est le **symétrique** du point d'affixe $z$ par rapport à l'origine $O$ : on change le signe des deux coordonnées à la fois.
+
+[[figure:module-argument]]
 
 ### L'interprétation géométrique du module : une distance
 

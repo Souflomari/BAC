@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le conjugué et l'opposé du nombre complexe z = 3 + 4i dans le plan complexe : le point d'affixe z barre = 3 − 4i, symétrique de z par rapport à l'axe des réels, et le point d'affixe moins z = −3 − 4i, symétrique de z par rapport à l'origine O.">
+  <title>Symétries dans le plan complexe : le conjugué z̄ et l'opposé −z</title>
+  <!--
+    module-argument.svg — figure STATIQUE pour le R5, sous-section
+    "Deux images simples à repérer".
+
+    CHOIX DE CONTENU (le slug du callout, "module-argument", suggérait la
+    forme trigonométrique / l'argument — mais la leçon nombres-complexes-1
+    exclut volontairement l'argument, voir la note de validation en fin de
+    lesson.md, point 2 : arg(z) est réservé à un chapitre 2). La leçon
+    couvre en revanche EXACTEMENT la géométrie du conjugué et de l'opposé
+    (R5, "Deux images simples à repérer") : c'est ce contenu qui est
+    dessiné ici, sous le nom de fichier imposé par le callout.
+
+    Reprend le z du plan-complexe.svg pour la continuité visuelle :
+      z = 3 + 4i,  z̄ = 3 − 4i  (symétrique par rapport à l'axe des réels),
+      −z = −3 − 4i (symétrique par rapport à l'origine O).
+
+    Repère : échelle 42 px/unité, origine au CENTRE du panneau (les trois
+    points occupent des quadrants différents, contrairement à
+    plan-complexe.svg) :
+      O_px = (320, 240)
+      z    = O_px + (3·42, −4·42)  = (446, 72)
+      z̄   = O_px + (3·42, +4·42)  = (446, 408)
+      −z   = O_px + (−3·42, +4·42) = (194, 408)
+
+    Deux relations géométriques tracées en pointillé (--figure-ink-soft),
+    chacune avec deux petites marques perpendiculaires signalant l'égalité
+    des deux longueurs (une preuve visuelle, pas une décoration) :
+      (1) z—z̄ : segment vertical, coupé en deux moitiés égales (168 px
+          chacune) par l'axe des réels — la définition même du symétrique
+          par rapport à cet axe.
+      (2) z—O—(−z) : les trois points sont alignés (même direction unitaire
+          (−0.6, 0.8) depuis z, deux fois, longueur 210 px de chaque côté
+          de O) — la définition même du symétrique par rapport à O.
+
+    Rôle des couleurs :
+      axes, segments de construction, labels                 : --figure-ink-soft
+      noms/valeurs des trois points (z, z̄, −z)                : --figure-ink
+      le point z lui-même (le nombre de départ, le repère)    : --figure-accent
+  -->
+  <rect width="640" height="480" fill="var(--figure-surface)"/>
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Conjugué et opposé : deux symétries dans le plan complexe
+  </text>
+
+  <!-- ── Axes (Re, Im), à travers l'origine centrale ────────────────────── -->
+  <line x1="24" y1="240" x2="560" y2="240"
+        stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <polygon points="574,240 560,235.5 560,244.5" fill="var(--figure-ink-soft)"/>
+  <text x="584" y="244" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">Re</text>
+
+  <line x1="320" y1="420" x2="320" y2="54"
+        stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <polygon points="320,40 315.5,54 324.5,54" fill="var(--figure-ink-soft)"/>
+  <text x="330" y="50" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">Im</text>
+
+  <circle cx="320" cy="240" r="3" fill="var(--figure-ink-soft)"/>
+  <text x="306" y="232" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+  <!-- ── (1) z—z̄ : symétrie par rapport à l'axe des réels ──────────────── -->
+  <line x1="446" y1="78" x2="446" y2="402"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="5,4" stroke-linecap="round"/>
+  <line x1="441" y1="156" x2="451" y2="156" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <line x1="441" y1="324" x2="451" y2="324" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+
+  <!-- ── (2) z—O—(−z) : symétrie par rapport à l'origine ───────────────── -->
+  <line x1="442.4" y1="76.8" x2="197.6" y2="403.2"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="5,4" stroke-linecap="round"/>
+  <line x1="379" y1="153" x2="387" y2="159" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <line x1="253" y1="321" x2="261" y2="327" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+
+  <!-- ── Le point z (accent : le nombre de départ) ──────────────────────── -->
+  <circle cx="446" cy="72" r="4" fill="var(--figure-accent)"/>
+  <text x="456" y="64" font-size="13" fill="var(--figure-ink)"><tspan
+        font-style="italic">z</tspan><tspan> = 3 + 4</tspan><tspan font-style="italic">i</tspan></text>
+
+  <!-- ── Le point z̄ (conjugué) — italique z + trait de surlignement ────── -->
+  <circle cx="446" cy="408" r="4" fill="var(--figure-ink)"/>
+  <text x="456" y="428" font-size="13" fill="var(--figure-ink)"><tspan
+        font-style="italic">z</tspan><tspan> = 3 − 4</tspan><tspan font-style="italic">i</tspan></text>
+  <line x1="455" y1="417" x2="464" y2="417" stroke="var(--figure-ink)" stroke-width="1.1"/>
+
+  <!-- ── Le point −z (opposé) ────────────────────────────────────────────── -->
+  <circle cx="194" cy="408" r="4" fill="var(--figure-ink)"/>
+  <text x="150" y="428" font-size="13" fill="var(--figure-ink)"><tspan
+        >−</tspan><tspan font-style="italic">z</tspan><tspan> = −3 − 4</tspan><tspan font-style="italic">i</tspan></text>
+
+  <!-- Captions -->
+  <text x="320" y="448" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Le point en bas à droite est le symétrique de <tspan
+        font-style="italic">z</tspan> par rapport à l'axe des réels — c'est le conjugué.</text>
+  <text x="320" y="464" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Le point en bas à gauche est le symétrique de <tspan
+        font-style="italic">z</tspan> par rapport à l'origine <tspan
+        font-style="italic">O</tspan> — c'est l'opposé.</text>
+</svg>
