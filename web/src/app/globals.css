@@ -766,6 +766,86 @@ h3:hover .heading-anchor,
   font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
 }
 
+/* ── Dashboard grid (DASHBOARD-SPEC §4) — the ONE surface allowed a
+   multi-column composition (bible §0/§8: engagement lives in the
+   periphery; DASHBOARD-SPEC §0: the dashboard is the sole exception to
+   the calm core's single-column rule).
+
+   Base (mobile, and everything below 1280px): one column, DOM order —
+   primary (SessionCard + NextUp) → mastery (MasteryMap) → shelf
+   (AvailableShelf) → subjects (SubjectProgress). MilestoneSlot renders
+   null and is never part of the grid.
+
+   1280: two columns — primary 2fr (left), mastery 1fr (right); shelf and
+   subjects span the full width below.
+
+   1536/1920: three zones — a thin subjects RAIL (left), primary
+   (centre-gauche), mastery (droite); shelf stays full width below. 1920 is
+   structurally IDENTICAL to 1536 (bible §11: composed space never grows a
+   column with the viewport) — the extra breathing room comes for free from
+   PageShell's fixed max-w-page (1280px) container centering with a larger
+   outer margin as the viewport widens; nothing here changes at 1920.
+
+   Named areas move each wrapper div's VISUAL position only — the divs stay
+   in their authored DOM sequence (primary, mastery, shelf, subjects) and no
+   `order` property is used anywhere in this block (DASHBOARD-SPEC §5:
+   "DOM order stable, colonnes par grid, pas de reorder"). */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "primary"
+    "mastery"
+    "shelf"
+    "subjects";
+  row-gap: 64px;
+}
+
+.dashboard-grid__primary  { grid-area: primary;  min-width: 0; }
+.dashboard-grid__mastery  { grid-area: mastery;  min-width: 0; }
+.dashboard-grid__shelf    { grid-area: shelf;    min-width: 0; }
+.dashboard-grid__subjects { grid-area: subjects; min-width: 0; }
+
+/* Inside `primary`: the session card and the next-up line stack with a
+   TIGHTER internal gap than the grid's own row-gap (DESIGN-BIBLE §4:
+   internal spacing ≤ external spacing — the pairing reads as one group). */
+.dashboard-grid__primary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1280px) {
+  .dashboard-grid {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "primary  mastery"
+      "shelf    shelf"
+      "subjects subjects";
+    column-gap: 48px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .dashboard-grid {
+    grid-template-columns: 200px 2fr 1fr;
+    grid-template-areas:
+      "subjects primary mastery"
+      "shelf    shelf   shelf";
+    column-gap: 56px;
+  }
+
+  /* The rail is thin and quiet — a smaller heading keeps it from visually
+     competing with the session card's serif h2 (bible §7: one primary
+     thing; the rail is periphery even within the periphery). */
+  .dashboard-grid__subjects h2 {
+    font-size: 0.875rem;
+  }
+}
+
+/* 1920: no structural change from 1536 (bible §4/§11 — no 4th column; the
+   fixed-width container already grows the surrounding margin for free). */
+
 /* ── Notion page layout — use the width (design brief #1) ──────────────────── */
 /*
  * The notion page uses a two-column layout on desktop:

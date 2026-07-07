@@ -1,0 +1,100 @@
+/**
+ * SessionCard — the ONE primary element of the dashboard (DASHBOARD-SPEC §1.1).
+ *
+ * Extracted from the original home page.tsx (Day-4 B1 "session-first"; the
+ * markup/classes below are unchanged from that build — DASHBOARD-SPEC §6
+ * moves it to its own file, it does not restyle it). Reads `getTodaySession()`
+ * (session.ts) — a separate, already-honest contract that this session's
+ * StudentState work does not touch: `session.ts` already documents that its
+ * `resume` kind REQUIRES persisted student state and is never constructed
+ * today, which is the same truth `getStudentState()` (student-state.ts)
+ * states for the rest of the dashboard.
+ *
+ * The one change: the zero-state ("start") caption now reads « Commence ici »
+ * instead of the resume framing's « Aujourd'hui » — DASHBOARD-SPEC §3's exact
+ * wording for the first-visit degraded render. Carries the page's ONE
+ * `[data-primary-action]` (DASHBOARD-SPEC §5).
+ */
+
+import Link from "next/link";
+import { getTodaySession } from "@/lib/session";
+import { subjectLabel, notionHref } from "@/lib/subjects";
+import { Icon } from "@/components/ui/Icon";
+import { Cover } from "@/components/covers/Cover";
+import { cn } from "@/lib/utils";
+
+export function SessionCard() {
+  const session = getTodaySession();
+  if (!session) return null;
+
+  const { notion } = session;
+
+  return (
+    <section aria-label="La session du jour" className="max-w-list">
+      <div
+        className={cn(
+          "rounded-xl overflow-hidden",
+          "bg-surface-container-high shadow-elevation-2",
+          "bp-medium:grid bp-medium:grid-cols-[1fr_240px]"
+        )}
+      >
+        <div className="px-8 py-8">
+          <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+            {session.kind === "start" ? "Commence ici" : "Aujourd’hui"} ·{" "}
+            {subjectLabel(notion.subject)}
+          </p>
+          <h2 className="mt-2 font-serif text-h2 font-bold text-[var(--color-text-primary)]">
+            {notion.title}
+          </h2>
+          <p className="mt-2 text-body text-[var(--color-text-secondary)]">
+            {session.kind === "start" ? (
+              <>
+                Nouvelle notion — on la prend depuis le début
+                {notion.readingMinutes ? ` (≈ ${notion.readingMinutes} min de lecture)` : ""}.
+              </>
+            ) : (
+              <>
+                Reprise à « {session.position} » — section {session.step} sur{" "}
+                {session.totalSteps}.
+              </>
+            )}
+          </p>
+
+          {/* Progress renders ONLY from real resume state — never fabricated. */}
+          {session.kind === "resume" && (
+            <div
+              className="mt-5 h-1 rounded-full bg-[var(--color-border-subtle)]"
+              role="progressbar"
+              aria-valuenow={Math.round((session.step / session.totalSteps) * 100)}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Progression dans la notion"
+            >
+              <div
+                className="h-1 rounded-full bg-accent"
+                style={{ width: `${(session.step / session.totalSteps) * 100}%` }}
+              />
+            </div>
+          )}
+
+          <Link
+            href={notionHref(notion.subject, notion.slug)}
+            data-primary-action=""
+            className={cn("mt-6 btn-primary focus-ring")}
+          >
+            {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
+            <Icon name="arrow-right" size={14} />
+          </Link>
+        </div>
+
+        <div className="hidden bp-medium:block relative">
+          <Cover
+            subject={notion.subject}
+            slug={notion.slug}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}

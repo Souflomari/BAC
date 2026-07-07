@@ -761,3 +761,43 @@ Specs : LEARNER-MODEL-SPEC, AUTH-SPEC. Brouillons : docs/drafts/migrations/
 | 14.12 | Leçons publiques ; /moi authentifié ; écritures service_role-only via RPC | bible (partageable) + règle 047 |
 | 14.13 | Preview → STAGING (jamais prod), gated par la fermeture 050 + session de sync | preview→prod écrirait des comptes réels en prod : violation RULES §0 |
 | 14.14 | Modes off/mock/live ; dépendance @supabase n'entre qu'avec live | pas de dépendance dormante ; le build de session = mock |
+
+## 15. Extension — l'arc persistance (2026-07-07) : le build sans persistance
+
+Livrable 4 : UI auth (modes off/mock/live, AUTH-SPEC §3/§5) + tableau de
+bord état-zéro (DASHBOARD-SPEC §1/§3/§4). Vérifié rendu : dom-truth passe
+de 129 à 143 contrôles, 0 échec — dont la nouvelle batterie D12 (carte
+session « Commence ici », jamais « continuer » sans état ; NextUp
+`data-reco-source="parcours"` ; lexique interdit /%\|maîtrisé\|streak\|XP\|
+points/i ; /connexion fermée sans formulaire en off ; en-tête sans
+affordance auth en off) et le sweep arithmétique §5 (UN SEUL
+`[data-primary-action]` ; jetons `[data-mastery-token]` == notions sur
+disque, dénominateur filesystem = 61 aujourd'hui, jamais codé en dur).
+Évidence : `web/shots/d12/report/` (7 captures, deux thèmes).
+
+Notes de vérification :
+
+- **L'appel interprétatif §4/§5 (ordre de lecture au palier 1536) est
+  CONFORME** : la spec définit elle-même l'invariant comme « ordre DOM
+  stable, colonnes par grid » — c'est ce qui est construit (capture
+  1536 : rail matières fin à gauche, carte session dominante au centre,
+  maîtrise à droite) ; la carte session reste l'élément focal sans
+  ambiguïté.
+- **Deux instruments corrigés en passant** : la garde honest-state de
+  l'accueil porte une exception nommée pour « Ensuite dans le parcours »
+  (la formulation §3 exacte — tout autre « Ensuite » reste interdit) ; et
+  le runner notText reconstruisait les regex EN PERDANT leurs flags — le
+  /i du lexique interdit aurait été silencieusement désarmé (corrigé :
+  flags préservés).
+- **Verrue connue, mode mock seulement** : sur les pages en largeur
+  « content » (/connexion, notions), le lien « Se connecter » ajouté à
+  l'en-tête déborde la colonne et l'en-tête passe à la ligne (capture
+  connexion-mock-light). Le build par défaut (off) est byte-identique —
+  rien ne change sur la preview. À traiter avec le câblage live
+  (AUTH-SPEC §4) : traitement compact de l'affordance auth sous largeur
+  content, PAS un hot-fix du spine.
+- Les trois rangées D9 « Tes matières » de dom-truth sont retirées AVEC
+  la surface qu'elles gardaient (remplacée par le dashboard composé) ;
+  Dashboard.tsx / SubjectCard.tsx restent en source, non référencés —
+  suppression = décision propriétaire (ils portent le choix filière
+  inline).

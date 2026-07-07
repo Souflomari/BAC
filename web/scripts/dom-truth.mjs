@@ -24,7 +24,7 @@
 
 import { chromium } from "playwright-core";
 import { spawn, execSync } from "child_process";
-import { readFileSync } from "fs";
+import { readFileSync, readdirSync, statSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 
@@ -124,7 +124,10 @@ const BATTERY = [
   { name: "LessonEnd present", page: NOTION, sel: "[data-lesson-end]", text: "Et maintenant", present: true },
   { name: "footer = C1 contents", page: NOTION, sel: "footer", text: "cadre de référence", present: true },
   { name: "B1 primary action present", page: "/", sel: "main a[class*='btn-primary']", text: "Commencer", present: true },
-  { name: "HONEST STATE: no fabricated progress", page: "/", sel: "main", notText: /en cours|Reprendre|vu récemment|Ensuite/, absentSel: "[role='progressbar']" },
+  // D12 carve-out: « Ensuite dans le parcours » is the DASHBOARD-SPEC §3
+  // zero-state wording (curriculum order, data-reco-source="parcours" — not
+  // fabricated state); any OTHER « Ensuite » phrasing stays forbidden.
+  { name: "HONEST STATE: no fabricated progress", page: "/", sel: "main", notText: /en cours|Reprendre|vu récemment|Ensuite(?! dans le parcours)/, absentSel: "[role='progressbar']" },
   // ── Day-5 attempt-first summit (audit C1): reasoning NEVER in DOM pre-commit ──
   { name: "R8 is attempt-first (no printed solutions)", page: NOTION, sel: "[data-exercise='r8-bac']", present: true, notText: /Raisonnement expert/ },
   { name: "R9 is attempt-first (no printed solutions)", page: NOTION, sel: "[data-exercise='r9-variation']", present: true, notText: /Raisonnement expert/ },
@@ -203,10 +206,31 @@ const BATTERY = [
   //    R2 heading carries a real .katex child. ──
   { name: "R2 heading renders live math (no flattened TeX)", page: NOTION + "?chapitre=3", sel: "h2[data-rung='R2']", notText: /_|T0T/, present: true },
   { name: "R2 heading contains a KaTeX element", page: NOTION, sel: "h2[data-rung='R2'] .katex", present: true },
-  // ── Day-9 site skeleton (dashboard → matière → chapitre) ──
-  { name: "D9 dashboard: subject grid present", page: "/", sel: "section[aria-label='Tes matières']", present: true },
-  { name: "D9 dashboard: subject card title (serif)", page: "/", sel: "section[aria-label='Tes matières'] a span", text: "Mathématiques", fontKey: "lead", family: "Source Serif" },
-  { name: "D9 dashboard: honest counts, no fabricated progress", page: "/", sel: "section[aria-label='Tes matières']", notText: /en cours|% terminé|complété|Reprendre|maîtrisé/ },
+  // ── Day-12 dashboard (DASHBOARD-SPEC §1/§3/§5). The D9 subject grid
+  //    ("Tes matières") was REPLACED by the composed dashboard — its three
+  //    rows retired with it. Presence + honest wording here; the §5
+  //    arithmetic (ONE [data-primary-action]; token count == notions on
+  //    disk) lives in the D12 sweep below. ──
+  { name: "D12 session card: « Commence ici » zero-state framing", page: "/", sel: "section[aria-label='La session du jour']", text: "Commence ici", present: true },
+  { name: "D12 session card: no « continuer » without state (§5)", page: "/", sel: "section[aria-label='La session du jour']", notText: /[Cc]ontinuer|Reprendre|Reprise/ },
+  { name: "D12 next-up: parcours wording + source anchor", page: "/", sel: "[data-reco-source='parcours']", text: "Ensuite dans le parcours", present: true },
+  { name: "D12 next-up: no « toi » without state (§3)", page: "/", sel: "[data-reco-source='parcours']", notText: /pour toi|[Rr]ecommandé/ },
+  { name: "D12 mastery map: calm TOC present", page: "/", sel: "section[aria-label='Carte de maîtrise']", present: true },
+  { name: "D12 mastery token links to its notion", page: "/", sel: "a[data-mastery-token][href^='/notions/']", present: true },
+  { name: "D12 zero-state: no token claims a state source (§5)", page: "/", sel: "main", present: true, absentSel: "[data-mastery-token][data-state-source]" },
+  { name: "D12 subject line: honest fact, not score", page: "/", sel: "section[aria-label='Progrès par matière'] li", text: "h de lecture", present: true },
+  // The future milestone component MUST render [data-milestone] — this row
+  // is the AttemptFirst contract (§1.6): absent until DEFINED and EARNED.
+  { name: "D12 milestone slot: absent until earned (§1.6)", page: "/", sel: "main", present: true, absentSel: "[data-milestone]" },
+  { name: "D12 forbidden dashboard vocabulary (§5)", page: "/", sel: "main", notText: /\d+\s?%|maîtrisé|streak|série de|\bXP\b|\bpoints\b/i },
+  // ── Day-12 auth surface (AUTH-SPEC §3/§5). The default build is mode
+  //    "off": /connexion states it quietly with NO form in the tree, and the
+  //    header carries no auth affordance (zero DOM delta). Mock-mode markup
+  //    is verified by the mock-build shot pass, not here (the mode is
+  //    inlined at build time). ──
+  { name: "D12 connexion (off): honest closed state, no form", page: "/connexion", sel: "main", text: "pas encore ouverte", present: true, absentSel: "main form" },
+  { name: "D12 connexion (off): no Google affordance either", page: "/connexion", sel: "main", notText: /Google|démonstration|mot de passe/i },
+  { name: "D12 header (off): no auth affordance", page: "/", sel: "header", notText: /Se connecter|Se déconnecter|démonstration/ },
   { name: "D9 subject page: masthead band", page: "/matieres/pc", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
   { name: "D9 subject page: h1 display-lg serif", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display-lg", weight: "700", family: "Source Serif" },
   { name: "D9 subject page: available chapter links to notion", page: "/matieres/pc", sel: "a[href='/notions/pc/rlc-serie']", present: true },
@@ -387,7 +411,8 @@ try {
       }
       if (spec.notText) {
         checks++;
-        const re = new RegExp(spec.notText.source ?? spec.notText);
+        // Preserve flags — dropping them silently disarmed /i guards.
+        const re = new RegExp(spec.notText.source ?? spec.notText, spec.notText.flags ?? "");
         const m = re.exec(r.textFull ?? r.textHead);
         if (m) {
           const at = Math.max(0, m.index - 30);
@@ -571,6 +596,36 @@ try {
       else console.log(`  ✓ no overflow, spine holds (left ${Math.round(r.mainLeft)}px)${p !== "/" ? (r.band ? ", band present" : "") : ""}`);
     }
     await wp.close();
+  }
+
+  // (D12) DASHBOARD-SPEC §5 arithmetic: exactly ONE [data-primary-action] on
+  // the dashboard, and exactly one [data-mastery-token] per REAL notion on
+  // disk. The denominator mirrors listNotions() (lib/content.ts): every
+  // content/<subject>/<slug>/ directory whose segments don't start with
+  // "_" or "." — the filesystem is the honest source, not a hardcoded 61.
+  {
+    console.log(`\n[/] SWEEP: dashboard §5 — one primary action, tokens == notions`);
+    const CONTENT = path.join(path.dirname(WEB), "content");
+    const visible = (name) => !name.startsWith("_") && !name.startsWith(".");
+    let expected = 0;
+    for (const subject of readdirSync(CONTENT).filter(visible)) {
+      const subjectPath = path.join(CONTENT, subject);
+      if (!statSync(subjectPath).isDirectory()) continue;
+      for (const slug of readdirSync(subjectPath).filter(visible)) {
+        if (statSync(path.join(subjectPath, slug)).isDirectory()) expected++;
+      }
+    }
+    await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    const d = await page.evaluate(() => ({
+      primary: document.querySelectorAll("[data-primary-action]").length,
+      tokens: document.querySelectorAll("[data-mastery-token]").length,
+    }));
+    checks++;
+    if (d.primary !== 1) failures += fail(`[data-primary-action] count ${d.primary} ≠ 1 (§5: ONE primary action)`);
+    else console.log(`  ✓ exactly one [data-primary-action]`);
+    checks++;
+    if (expected === 0 || d.tokens !== expected) failures += fail(`[data-mastery-token] count ${d.tokens} ≠ ${expected} notions on disk`);
+    else console.log(`  ✓ ${d.tokens} mastery tokens == ${expected} notions on disk`);
   }
 
   // (Day-8.5) BUILD STAMP: the footer answers "which version am I looking
