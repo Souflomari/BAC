@@ -11,13 +11,27 @@
  *
  * Token count is exactly `notions.length` (DASHBOARD-SPEC §5's dom-truth
  * invariant) — every notion in the prop list renders exactly one
- * `[data-mastery-token]`, once, in its subject group.
+ * `[data-mastery-token]`, once, in its subject group, WHEN NO FILTER IS
+ * ACTIVE. The subject-filter dropdown (craft addition) narrows the visible
+ * groups only on explicit user choice — the default render (filter = null,
+ * i.e. on first paint) is byte-identical to the unfiltered table of
+ * contents, so the dom-truth "tokens == notions on disk" sweep still holds.
+ *
+ * Client component: needs local filter state. Still receives `notions` as a
+ * plain prop from the server-component parent (page.tsx → listNotions()),
+ * so nothing about the data source changes.
  */
 
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { getStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";
 import { cn } from "@/lib/utils";
+import { frenchTypography } from "@/lib/frenchTypography";
+import { Icon } from "@/components/ui/Icon";
 import type { NotionMeta } from "@/lib/content";
 
 const SUBJECT_ORDER = ["maths", "pc", "svt", "philo", "si"];
@@ -25,8 +39,12 @@ const SUBJECT_ORDER = ["maths", "pc", "svt", "philo", "si"];
 export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
   // Consumed through the contract (DASHBOARD-SPEC §2): null until
   // persistence lands (AUTH-SPEC §4 gate). See the per-token lookup below —
-  // that is where a future non-default état + data-state-source attaches.
+  // that is where a future non-null state attaches its data-state-source
+  // here without restructuring the token.
   const state = getStudentState();
+
+  // null = "toutes les matières" (the default, unfiltered render).
+  const [activeSubject, setActiveSubject] = useState<string | null>(null);
 
   const bySubject = new Map<string, NotionMeta[]>();
   for (const n of notions) {
@@ -34,19 +52,100 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
     list.push(n);
     bySubject.set(n.subject, list);
   }
+  // Only subjects that actually have built notions — never the 5 hard-coded
+  // subject ids, so the filter menu never offers an empty matière.
   const subjects = SUBJECT_ORDER.filter((id) => bySubject.has(id));
+  const visibleSubjects = subjects.filter(
+    (id) => !activeSubject || id === activeSubject
+  );
 
   return (
     <section aria-label="Carte de maîtrise">
-      <h2 className="mb-2 pb-3 border-b border-[var(--color-border-subtle)] text-h4 font-semibold text-[var(--color-text-primary)]">
-        Carte de maîtrise
-      </h2>
+      <div className="flex items-center justify-between gap-3 mb-2 pb-3 border-b border-[var(--color-border-subtle)]">
+        <h2 className="text-h4 font-semibold text-[var(--color-text-primary)]">
+          Carte de maîtrise
+        </h2>
+
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger asChild>
+            <button
+              type="button"
+              aria-label={frenchTypography("Filtrer la carte de maîtrise par matière")}
+              className={cn(
+                "group inline-flex items-center gap-1 rounded-md px-2 py-1 -mx-2",
+                "state-layer focus-ring [--focus-radius:6px]",
+                "text-body-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                "transition-colors duration-micro ease-enter"
+              )}
+            >
+              {activeSubject ? subjectLabel(activeSubject) : frenchTypography("Toutes les matières")}
+              {/* No dedicated "chevron-down" glyph in the Icon module — the
+                  existing "chevron-right" glyph rotated 90° reads as the
+                  resting down-caret, then rotates a further 180° (270°
+                  total) on open, landing pointed up. */}
+              <Icon
+                name="chevron-right"
+                size={14}
+                className="rotate-90 transition-transform duration-micro ease-enter group-data-[state=open]:rotate-[270deg]"
+              />
+            </button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Portal>
+            <DropdownMenu.Content
+              sideOffset={8}
+              align="end"
+              className={cn(
+                "z-50 min-w-[200px] rounded-xl p-1.5",
+                "border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)]",
+                "shadow-elevation-2",
+                // Calm opacity/scale settle — no bounce/overshoot (§5). Plain
+                // CSS transition (no framer-motion/GSAP) keyed to Radix's
+                // own data-state attribute.
+                "transition-[opacity,transform] duration-micro ease-enter",
+                "data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+                "data-[state=open]:scale-100 data-[state=closed]:scale-95"
+              )}
+            >
+              <DropdownMenu.Item
+                onSelect={() => setActiveSubject(null)}
+                className={cn(
+                  "rounded-md px-2.5 py-2",
+                  "state-layer focus-ring [--focus-radius:6px]",
+                  "text-body-sm transition-colors duration-micro ease-between",
+                  activeSubject === null
+                    ? "bg-[var(--color-accent-subtle)] text-accent"
+                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                )}
+              >
+                {frenchTypography("Toutes les matières")}
+              </DropdownMenu.Item>
+              {subjects.map((id) => (
+                <DropdownMenu.Item
+                  key={id}
+                  onSelect={() => setActiveSubject(id)}
+                  className={cn(
+                    "rounded-md px-2.5 py-2",
+                    "state-layer focus-ring [--focus-radius:6px]",
+                    "text-body-sm transition-colors duration-micro ease-between",
+                    activeSubject === id
+                      ? "bg-[var(--color-accent-subtle)] text-accent"
+                      : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                  )}
+                >
+                  {subjectLabel(id)}
+                </DropdownMenu.Item>
+              ))}
+            </DropdownMenu.Content>
+          </DropdownMenu.Portal>
+        </DropdownMenu.Root>
+      </div>
+
       <p className="mt-2 mb-6 text-caption text-[var(--color-text-secondary)]">
         Le sommaire des notions déjà écrites, matière par matière.
       </p>
 
       <div className="space-y-6">
-        {subjects.map((subjectId) => {
+        {visibleSubjects.map((subjectId) => {
           const list = bySubject.get(subjectId)!;
           return (
             <div key={subjectId}>

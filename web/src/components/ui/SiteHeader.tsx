@@ -25,12 +25,22 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { useAuth } from "@/lib/auth/provider";
+import { subjectHref, subjectLabel } from "@/lib/subjects";
 import { FontSizeStepper } from "./FontSizeStepper";
 import { ThemeToggle } from "./ThemeToggle";
 import { FiliereBadge } from "./FiliereBadge";
+import { Icon } from "./Icon";
+
+/**
+ * Fixed matières order for the "Notions" menu — mirrors the order used
+ * elsewhere (MasteryMap's SUBJECT_ORDER). Labels/hrefs come from the ONE
+ * canonical home (@/lib/subjects), not duplicated here.
+ */
+const SUBJECT_MENU_ORDER = ["maths", "pc", "svt", "philo", "si"] as const;
 
 interface SiteHeaderProps {
   className?: string;
@@ -190,20 +200,68 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           <ThemeToggle />
 
           <nav aria-label="Navigation principale">
-            <Link
-              href="/"
-              className={cn(
-                "text-body-sm font-medium",
-                // Neutral state-layer wash leads; the text-color shift stays as
-                // a secondary cue (ADR 0024). Both share the calm micro timing.
-                "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
-                "transition-colors duration-micro ease-enter",
-                "rounded px-2 py-1",
-                "focus-ring [--focus-radius:8px]"
-              )}
-            >
-              Notions
-            </Link>
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger asChild>
+                <button
+                  type="button"
+                  aria-label={frenchTypography("Menu des matières")}
+                  className={cn(
+                    "group inline-flex items-center gap-1",
+                    "text-body-sm font-medium",
+                    // Neutral state-layer wash leads; the text-color shift stays as
+                    // a secondary cue (ADR 0024). Both share the calm micro timing.
+                    "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                    "transition-colors duration-micro ease-enter",
+                    "rounded px-2 py-1",
+                    "focus-ring [--focus-radius:8px]"
+                  )}
+                >
+                  Notions
+                  {/* No dedicated "chevron-down" glyph in the Icon module — the
+                      existing "chevron-right" glyph rotated 90° reads as the
+                      resting down-caret, then rotates a further 180° (270°
+                      total) on open, landing pointed up. */}
+                  <Icon
+                    name="chevron-right"
+                    size={14}
+                    className="rotate-90 transition-transform duration-micro ease-enter group-data-[state=open]:rotate-[270deg]"
+                  />
+                </button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content
+                  sideOffset={8}
+                  align="end"
+                  className={cn(
+                    "z-50 min-w-[200px] rounded-xl p-1.5",
+                    "border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)]",
+                    "shadow-elevation-2",
+                    // Calm opacity/scale settle — no bounce/overshoot (§5). Plain
+                    // CSS transition (no framer-motion/GSAP) keyed to Radix's own
+                    // data-state attribute.
+                    "transition-[opacity,transform] duration-micro ease-enter",
+                    "data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+                    "data-[state=open]:scale-100 data-[state=closed]:scale-95"
+                  )}
+                >
+                  {SUBJECT_MENU_ORDER.map((id) => (
+                    <DropdownMenu.Item key={id} asChild>
+                      <Link
+                        href={subjectHref(id)}
+                        className={cn(
+                          "block rounded-md px-2.5 py-2",
+                          "state-layer focus-ring [--focus-radius:6px]",
+                          "text-body-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                          "transition-colors duration-micro ease-between"
+                        )}
+                      >
+                        {subjectLabel(id)}
+                      </Link>
+                    </DropdownMenu.Item>
+                  ))}
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu.Root>
           </nav>
 
           {/*
