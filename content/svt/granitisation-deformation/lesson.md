@@ -137,6 +137,8 @@ C'est cette cristallisation extrêmement lente qui explique l'aspect si particul
 
 Compare avec ce qui se passe à la surface. Une lave qui s'épanche à l'air libre, ou au contact de l'eau, perd sa chaleur en quelques heures ou quelques jours — un temps dérisoire face aux dizaines de milliers d'années nécessaires en profondeur. Les cristaux n'ont tout simplement pas le temps de croître : la roche qui en résulte a un grain fin, invisible à l'œil nu, parfois même vitreux si le refroidissement est vraiment brutal. C'est exactement ce que tu as vu avec l'andésite des volcans de subduction, au chapitre précédent : une roche à grain fin, née d'un refroidissement rapide en surface.
 
+[[figure:granite-texture-grenue]]
+
 ### L'erreur à ne pas commettre
 
 Un piège très répandu : comme le granite est une roche « magmatique », beaucoup d'élèves l'imaginent volcanique — une lave qui aurait simplement refroidi en surface, un peu comme une coulée de basalte ou d'andésite.

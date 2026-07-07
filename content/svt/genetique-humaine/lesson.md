@@ -85,6 +85,8 @@ Reprends le tableau : I-1 et I-2 sont tous les deux sains, et pourtant leur fill
 
 Et II-2 (sain) ? Son génotype n'est pas encore déterminé avec certitude à ce stade — il peut être $A//A$ ou $A//a$, puisque les deux génotypes donnent un phénotype sain. On garde cette question ouverte : le R5 te donnera l'outil pour y répondre précisément, avec un chiffre.
 
+[[figure:pedigree-drepanocytose]]
+
 ### L'erreur classique à éviter ici
 
 Une erreur fréquente : penser qu'une maladie rare est forcément récessive, ou qu'une maladie fréquente est forcément dominante. La fréquence dans la population n'a rien à voir avec la dominance — ce sont deux informations indépendantes. Le seul test valable est celui du dessus : regarder si un enfant atteint peut avoir deux parents phénotypiquement sains.

@@ -56,6 +56,8 @@ Grâce à elle, les phagocytes se retrouvent exactement là où ils sont utiles 
 
 Une confusion fréquente à ce stade : penser que la réaction inflammatoire, parce qu'elle survient « en réponse à une infection », est déjà une reconnaissance SPÉCIFIQUE de l'agent infectieux en cause — comme si l'organisme avait déjà identifié précisément quelle bactérie ou quel virus est présent. L'exemple de l'entorse (sans aucun microbe) devrait te convaincre du contraire : la réaction inflammatoire se déclenche de la même façon, avec les mêmes quatre signes, que la lésion soit due à un microbe, à un choc, ou à une brûlure. C'est une réaction **non spécifique** : elle ne fait aucune différence entre les différentes causes possibles de la lésion tissulaire. On appelle ce type de défense l'**immunité innée**, par opposition à une défense qui, elle, reconnaîtrait précisément l'intrus — et qu'on découvre à partir du R4.
 
+[[figure:cascade-inflammatoire]]
+
 ### Vérification rapide
 
 Si la réaction inflammatoire exigeait la reconnaissance précise d'un microbe donné, l'entorse sans microbe ne devrait produire AUCUN des quatre signes — or elle les produit tous. C'est bien la preuve que le déclencheur est la lésion tissulaire elle-même (via les substances chimiques libérées), pas l'identité de l'agent qui l'a causée.
@@ -292,6 +294,8 @@ Les LB et les LT8 spécifiques de l'agent infectieux sont bien présents et sél
 ### Vérification rapide
 
 Si les LT4 agissaient uniquement sur la réponse humorale (et pas sur la réponse cellulaire), leur destruction expérimentale n'aurait dû affaiblir QUE la production d'anticorps, en laissant intacte l'élimination des cellules infectées par les LT8. Ce n'est pas ce qu'on observe : les deux réponses s'effondrent ensemble, ce qui confirme que le signal des LT4 est nécessaire aux deux branches, pas à une seule.
+
+[[figure:reponse-humorale-cellulaire]]
 
 ---
 

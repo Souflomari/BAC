@@ -75,6 +75,30 @@ export const STRUCTURAL_SLUGS = new Set([
   // D10 wave B — mechanics schematics
   "plan-incline-forces",
   "deux-chariots-inertie",
+  // D-persistance wave — SVT cell/gamete schematics
+  "disjonction-alleles",
+  // D-persistance wave — SVT pedigree (genetique-humaine)
+  "pedigree-drepanocytose",
+  // D-persistance wave — SVT mastocyte/IgE schematic (dysfonctionnements-immunitaires)
+  "sensibilisation-reaction-allergie",
+  // D-persistance wave — SVT allele-counting diagram (genetique-populations)
+  "comptage-alleles",
+  // D-persistance wave — SVT immune-mechanism diagrams (moyens-de-defense)
+  "cascade-inflammatoire",
+  "reponse-humorale-cellulaire",
+  // D-persistance wave — SVT geological cross-section (chaines-de-montagnes)
+  "plis-chevauchement",
+  // D-persistance wave — SVT granite texture comparison (granitisation-deformation)
+  "granite-texture-grenue",
+  // D-persistance wave — SVT CMH/ABO donor-comparison schematic (soi-non-soi)
+  "cmh-abo-independants",
+  // D-persistance wave — SVT enzyme-substrate cycle schematic (role-enzymes)
+  "cycle-enzyme-substrat",
+  // D-persistance wave — SVT mid-ocean-ridge cross-section (theorie-tectonique-plaques)
+  "expansion-oceanique",
+  // D-persistance wave — SVT respiration/fermentation comparative schematic
+  // (liberation-energie-matiere-organique)
+  "respiration-fermentation",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────

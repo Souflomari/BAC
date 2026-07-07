@@ -144,6 +144,8 @@ Un chevauchement fait exactement la même chose, mais en empilant des blocs enti
 
 Plis et chevauchements ne sont donc pas des curiosités isolées : ce sont la signature structurale directe du raccourcissement et de l'épaississement qui accompagnent toute collision. Là où on observe des couches intactes et horizontales, il n'y a pas eu de raccourcissement significatif. Là où on observe des plis serrés et des chevauchements empilés les uns sur les autres, la croûte a été comprimée et épaissie — exactement ce qu'on attend d'une chaîne de collision.
 
+[[figure:plis-chevauchement]]
+
 ---
 
 ## R5 — Les roches métamorphiques : la preuve de l'enfouissement

@@ -86,6 +86,8 @@ Ces campagnes révèlent l'existence d'une immense chaîne de montagnes sous-mar
 
 Le géologue américain Harry Hess propose, au début des années 1960, une hypothèse qui va changer la donne : au niveau de l'axe de la dorsale, de la matière chaude remonte du manteau terrestre, se solidifie en refroidissant, et forme du nouveau plancher océanique. Ce plancher tout juste formé s'écarte ensuite progressivement de part et d'autre de la dorsale, comme sur un tapis roulant, poussé par la matière encore plus jeune qui se forme derrière lui. On appelle ce processus l'**expansion océanique**.
 
+[[figure:expansion-oceanique]]
+
 C'est une idée radicalement différente de celle de Wegener : ce n'est plus le continent qui laboure un plancher océanique fixe — c'est le plancher océanique lui-même qui se crée en continu et qui s'écarte, en emportant avec lui tout ce qui repose dessus, continents compris.
 
 Une hypothèse d'une telle ampleur a besoin de preuves solides. En voici deux, indépendantes, qui répondent précisément à la question de l'expert : *comment sait-on que le plancher océanique se renouvelle vraiment ?*

@@ -81,6 +81,8 @@ Pour l'amylase sur l'amidon, cela s'écrit :
 
 $$\text{Amidon} + n\,H_2O \xrightarrow{\ \text{amylase}\ } n\,\text{Maltose}$$
 
+[[figure:cycle-enzyme-substrat]]
+
 ### Ce que ce mécanisme explique, que le R1 laissait ouvert
 
 Ce cycle répond exactement à la question posée à la fin du R1 : pourquoi l'enzyme n'est-elle jamais consommée ? Parce que la réaction modifie le **substrat**, pas l'**enzyme** — celle-ci ressort du cycle avec exactement la même structure, la même forme de site actif, qu'avant d'y entrer. C'est ce recommencement en boucle, sans usure, qui permet à une toute petite quantité d'amylase de transformer, avec le temps, une quantité d'amidon bien plus grande qu'elle-même.

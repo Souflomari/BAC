@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Coupe d'une dorsale océanique : deux plaques de lithosphère rigide s'écartent symétriquement de l'axe ; de la matière chaude de l'asthénosphère ductile remonte par un étroit conduit à l'axe, s'y solidifie, et devient la lithosphère la plus jeune de chaque plaque, avant d'être poussée vers l'extérieur à mesure qu'elle vieillit.">
+  <title>Expansion océanique à l'axe d'une dorsale</title>
+
+  <!--
+    expansion-oceanique.svg — figure STATIQUE.
+
+    Cible précise : le cœur du R3 (Harry Hess, expansion océanique) — le
+    passage exact du texte que ce schéma illustre est la phrase qui suit
+    immédiatement le marqueur dans lesson.md : « au niveau de l'axe de la
+    dorsale, de la matière chaude remonte du manteau terrestre, se
+    solidifie en refroidissant, et forme du nouveau plancher océanique.
+    Ce plancher tout juste formé s'écarte ensuite progressivement de part
+    et d'autre de la dorsale, comme sur un tapis roulant ». L'erreur
+    classique neutralisée est nommée juste avant, en R2/R3 : Wegener
+    imaginait un continent qui « laboure » un plancher océanique FIXE ; le
+    schéma montre au contraire que c'est le plancher lui-même qui NAÎT en
+    continu à l'axe et qui s'écarte, symétriquement, des deux côtés à la
+    fois — jamais dans une seule direction, jamais à travers un fond
+    immobile.
+
+    Layout (viewBox 720×390) :
+      Axe de la dorsale         : x = 360 (repère vertical, pointillé court)
+      Conduit central (montée)  : rect x=340..380, y=70..300 (accent, seul
+                                  trait de la figure en --figure-accent)
+      Bandes « jeunes »         : rect x=300..340 et x=380..420, y=70..190
+                                  (accent, adjacentes au conduit)
+      Plaques rigides (vieilles): rect x=40..300 et x=420..680, y=70..190
+                                  (--figure-ink, fill --figure-surface)
+      Asthénosphère             : rect x=40..680, y=190..300 (--figure-grid)
+
+    Convention de couleur (5 tokens, comme toutes les figures du corpus) :
+      structure (plaques, contours, flèches d'écartement, texte de rôle)
+        : --figure-ink / --figure-ink-soft
+      asthénosphère (remplissage neutre)                : --figure-grid
+      fond de figure                                    : --figure-surface
+      SEULE emphase de la figure : le conduit de remontée et la lithosphère
+        fraîchement formée à l'axe (--figure-accent) — l'idée que ce rung
+        enseigne : le plancher se CRÉE en continu à l'axe, il ne coulisse
+        pas sur un fond préexistant. Les flèches d'écartement (la
+        conséquence du phénomène, déjà bien établie ailleurs dans la leçon)
+        restent en --figure-ink pour qu'une seule idée porte l'accent.
+
+    Simplifications pédagogiques assumées (schéma introductif, pas à
+    l'échelle) : le conduit de remontée est dessiné comme un canal vertical
+    simple (pas de forme de panache réaliste) ; l'océan et l'eau de mer ne
+    sont pas représentés (hors sujet de cette figure — la confusion
+    « plaques flottant sur l'eau » est traitée ailleurs, R4) ; les deux
+    plaques sont dessinées à épaisseur constante (le léger épaississement
+    réel de la lithosphère avec l'âge n'est pas abordé dans cette leçon).
+  -->
+
+  <rect width="720" height="390" fill="var(--figure-surface)"/>
+
+  <!-- Titre -->
+  <text x="360" y="22" text-anchor="middle"
+        font-size="13.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Dorsale océanique : la lithosphère se crée à l'axe, symétriquement
+  </text>
+
+  <!-- Repère de l'axe -->
+  <text x="360" y="38" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    axe de la dorsale
+  </text>
+  <line x1="360" y1="46" x2="360" y2="58" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+  <!-- Étiquette de l'idée centrale, juste au-dessus de la zone accentuée -->
+  <text x="360" y="66" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">
+    nouvelle lithosphère
+  </text>
+
+  <!-- ── Asthénosphère (fond) ───────────────────────────────────────── -->
+  <rect x="40" y="190" width="640" height="110"
+        fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+  <!-- ── Conduit central de remontée (SEUL trait en accent, avec les deux
+       bandes « jeunes » ci-dessous) ─────────────────────────────────── -->
+  <rect x="340" y="70" width="40" height="230"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+  <!-- Flèche de remontée de matière chaude, à l'intérieur du conduit -->
+  <line x1="360" y1="285" x2="360" y2="188" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="360,178 352,193 368,193" fill="var(--figure-accent)"/>
+
+  <!-- ── Plaques rigides (lithosphère « âgée », de part et d'autre) ──── -->
+  <rect x="40" y="70" width="260" height="120"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <rect x="420" y="70" width="260" height="120"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+  <!-- ── Bandes « jeunes » (lithosphère tout juste solidifiée, adjacente
+       au conduit, en accent) ────────────────────────────────────────── -->
+  <rect x="300" y="70" width="40" height="120"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+  <rect x="380" y="70" width="40" height="120"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+  <text x="320" y="100" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">jeune</text>
+  <text x="400" y="100" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">jeune</text>
+
+  <!-- ── Nom de la couche rigide ──────────────────────────────────────── -->
+  <text x="170" y="90" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+    lithosphère
+  </text>
+  <text x="170" y="102" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">
+    (rigide)
+  </text>
+
+  <!-- ── Flèches d'écartement, symétriques, en ink (pas en accent : la
+       conséquence, pas l'idée centrale) ─────────────────────────────── -->
+  <text x="175" y="122" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">écartement</text>
+  <line x1="290" y1="135" x2="60" y2="135" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="48,135 62,129 62,141" fill="var(--figure-ink)"/>
+
+  <text x="545" y="122" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">écartement</text>
+  <line x1="430" y1="135" x2="660" y2="135" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="672,135 658,129 658,141" fill="var(--figure-ink)"/>
+
+  <!-- ── Âge relatif, symétrique ──────────────────────────────────────── -->
+  <text x="175" y="160" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">plus ancienne</text>
+  <text x="545" y="160" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">plus ancienne</text>
+
+  <!-- ── Asthénosphère : nom ──────────────────────────────────────────── -->
+  <text x="55" y="245" font-size="11" font-weight="600" fill="var(--figure-ink-soft)">asthénosphère</text>
+  <text x="55" y="258" font-size="9.5" fill="var(--figure-ink-soft)">(ductile)</text>
+
+  <!-- ── Mécanisme, à côté du conduit ─────────────────────────────────── -->
+  <line x1="420" y1="238" x2="382" y2="228" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="424" y="234" font-size="10" fill="var(--figure-accent)">matière chaude qui remonte,</text>
+  <text x="424" y="248" font-size="10" fill="var(--figure-accent)">se solidifie en nouvelle roche</text>
+
+  <!-- ── Synthèse, en bas ─────────────────────────────────────────────── -->
+  <text x="360" y="335" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    Le plancher se crée en continu à l'axe — les plaques s'écartent,
+  </text>
+  <text x="360" y="350" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    elles ne glissent pas sur un fond fixe.
+  </text>
+</svg>

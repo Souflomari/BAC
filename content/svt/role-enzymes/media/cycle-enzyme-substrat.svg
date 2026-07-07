@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 444"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le cycle enzyme-substrat en quatre étapes : la rencontre forme un complexe enzyme-substrat, la transformation (hydrolyse) coupe le substrat, la libération relâche les produits, puis le recommencement montre le site actif redevenu libre et identique — la même petite région de l'enzyme, jamais consommée, à chaque cycle.">
+  <title>Le cycle enzyme-substrat : site actif, complexe ES, produits, recommencement</title>
+
+  <!--
+    cycle-enzyme-substrat.svg — figure STATIQUE (pas de step-groups).
+    Cible précise : les erreurs classiques nommées en R1 et R2 du lesson.md.
+      (R1) « l'enzyme est consommée/détruite par la réaction » — FAUX.
+      (R2) « le site actif, c'est toute l'enzyme » — FAUX, ce n'est qu'une
+           petite région.
+      (R2) « le complexe enzyme-substrat est un produit final » — FAUX,
+           c'est un état transitoire.
+    Les 4 panneaux reproduisent EXACTEMENT les 4 étapes numérotées du texte
+    (R2, lignes « 1. La rencontre / 2. La transformation / 3. La libération /
+    4. Le recommencement »), avec un site actif (petit cercle) STRICTEMENT
+    IDENTIQUE (même rayon, même position relative) dans les 4 panneaux — la
+    preuve visuelle que le site actif, et l'enzyme tout entière, ressortent
+    inchangés à chaque cycle.
+
+    Layout (viewBox 800×444) :
+      4 panneaux, ellipses (l'enzyme) centrées à cy=200, rx=50, ry=46,
+      cx ∈ {115, 305, 495, 685} — espacement régulier de 190.
+      Site actif : petit cercle r=12.5, décalage (+24,+12) depuis le centre
+      de chaque ellipse — IDENTIQUE dans les 4 panneaux.
+      Flèches horizontales (ink) reliant les panneaux 1→2→3→4.
+      Grande flèche de bouclage (accent) du panneau 4 vers le panneau 1,
+      portant le message central : « même enzyme, jamais consommée ».
+
+    Convention couleur : l'accent (--figure-accent) marque UNE SEULE idée —
+    le site actif — dans les 4 panneaux et dans la flèche de bouclage qui
+    ramène au premier panneau (même idée : ce qui revient identique). Le
+    corps de l'enzyme (ellipse) et le substrat/produits (chaînes de petits
+    cercles, simplification schématique d'un fragment de polymère) restent
+    en --figure-ink / --figure-ink-soft, neutres.
+
+    Simplification pédagogique assumée : le substrat et les produits sont
+    représentés par de petits cercles reliés (schéma générique d'un
+    fragment de chaîne), pas une structure chimique réelle — la leçon
+    donne déjà l'équation exacte en KaTeX juste au-dessus de cette figure ;
+    le schéma ne la duplique pas, il illustre le MÉCANISME géométrique
+    (site actif / complexe / cycle) que l'équation ne montre pas.
+  -->
+
+  <!-- Titre -->
+  <text x="400" y="26" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le site actif : une petite région de l'enzyme — jamais consommée, cycle après cycle
+  </text>
+
+  <!-- ══════════════════════ Panneau 1 — La rencontre ══════════════════════ -->
+  <g>
+    <ellipse cx="115" cy="200" rx="50" ry="46"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <!-- Label « enzyme » : identifie le corps entier, à distance du site actif -->
+    <text x="88" y="172" text-anchor="middle"
+          font-size="11" fill="var(--figure-ink)">enzyme</text>
+
+    <!-- Arrivée du substrat (indice discret, non répété dans les autres panneaux) -->
+    <path d="M 52,196 Q 90,224 124,213" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"
+          stroke-dasharray="3,3" opacity="0.6"/>
+
+    <!-- Site actif (occupé) -->
+    <circle cx="139" cy="212" r="12.5"
+            fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+    <!-- Substrat logé dans le site actif : chaîne de 3 unités -->
+    <line x1="128" y1="212" x2="150" y2="212" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="128" cy="212" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="139" cy="212" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="150" cy="212" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <text x="115" y="296" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      1. La rencontre
+    </text>
+    <text x="115" y="312" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      complexe enzyme-substrat
+    </text>
+  </g>
+
+  <!-- Flèche 1 → 2 -->
+  <line x1="172" y1="200" x2="248" y2="200" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="248,200 232,192 232,208" fill="var(--figure-ink)"/>
+
+  <!-- ══════════════════════ Panneau 2 — La transformation ══════════════════════ -->
+  <g>
+    <ellipse cx="305" cy="200" rx="50" ry="46"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <circle cx="329" cy="212" r="12.5"
+            fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+    <!-- Fragment A (reste attaché) -->
+    <line x1="318" y1="212" x2="329" y2="212" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="318" cy="212" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="329" cy="212" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Marque de coupure (liaison rompue) -->
+    <line x1="337" y1="205" x2="337" y2="209" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="337" y1="215" x2="337" y2="219" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Fragment B (déjà séparé) -->
+    <circle cx="346" cy="212" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <text x="305" y="296" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      2. La transformation
+    </text>
+    <text x="305" y="312" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      hydrolyse (+ <tspan font-style="italic">H</tspan><tspan font-size="7.5" dy="3">2</tspan><tspan dy="-3" font-style="italic">O</tspan>)
+    </text>
+  </g>
+
+  <!-- Flèche 2 → 3 -->
+  <line x1="362" y1="200" x2="438" y2="200" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="438,200 422,192 422,208" fill="var(--figure-ink)"/>
+
+  <!-- ══════════════════════ Panneau 3 — La libération ══════════════════════ -->
+  <g>
+    <ellipse cx="495" cy="200" rx="50" ry="46"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <circle cx="519" cy="212" r="12.5"
+            fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+    <!-- Produit A (chaîne de 2), déjà éloigné, ne correspond plus au site actif -->
+    <line x1="559" y1="150" x2="571" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="559" cy="150" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="571" cy="150" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <path d="M 528,203 Q 548,172 557,155" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="557,155 545,158 551,168" fill="var(--figure-ink-soft)"/>
+
+    <!-- Produit B (1 unité), éloigné dans une autre direction -->
+    <circle cx="565" cy="258" r="5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <path d="M 528,222 Q 548,248 560,254" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="560,254 548,248 556,238" fill="var(--figure-ink-soft)"/>
+
+    <text x="495" y="296" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      3. La libération
+    </text>
+    <text x="495" y="312" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      produits relâchés
+    </text>
+  </g>
+
+  <!-- Flèche 3 → 4 -->
+  <line x1="552" y1="200" x2="628" y2="200" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="628,200 612,192 612,208" fill="var(--figure-ink)"/>
+
+  <!-- ══════════════════════ Panneau 4 — Le recommencement ══════════════════════ -->
+  <g>
+    <ellipse cx="685" cy="200" rx="50" ry="46"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <!-- Site actif libre : rayon, position STRICTEMENT identiques au panneau 1 -->
+    <circle cx="709" cy="212" r="12.5"
+            fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <line x1="709" y1="224.5" x2="709" y2="248" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="709" y="262" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">
+      site actif
+    </text>
+
+    <text x="685" y="296" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      4. Le recommencement
+    </text>
+    <text x="685" y="312" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      enzyme inchangée, prête à recommencer
+    </text>
+  </g>
+
+  <!-- ══════════════════════ Bouclage : 4 → 1 (jamais consommée) ══════════════════════ -->
+  <path d="M 660,332 C 660,410 140,410 140,332" fill="none"
+        stroke="var(--figure-accent)" stroke-width="2"/>
+  <polygon points="140,332 132,346 148,346" fill="var(--figure-accent)"/>
+
+  <text x="400" y="428" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    recommencement — <tspan font-weight="700" fill="var(--figure-accent)">même enzyme, jamais consommée</tspan>
+  </text>
+</svg>

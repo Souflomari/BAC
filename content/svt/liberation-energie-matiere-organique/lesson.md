@@ -237,6 +237,8 @@ Une erreur fréquente : croire que la fermentation est réservée aux micro-orga
 | Bilan net en ATP par glucose | $\approx 36$ à $38$ | $2$ |
 | Produits finaux | $CO_2$ + $H_2O$ | Acide lactique OU éthanol + $CO_2$ |
 
+[[figure:respiration-fermentation]]
+
 ### Le lien entre la structure de la mitochondrie et sa fonction
 
 La mitochondrie n'est pas un compartiment uniforme : chacune de ses parties correspond précisément à une étape de la respiration vue en R3-R4.

@@ -98,6 +98,8 @@ Mais quand un greffon (organe, tissu, moelle osseuse) est transplanté d'un donn
 
 Une confusion fréquente : penser qu'un donneur « compatible » au sens des groupes sanguins (R4) est automatiquement compatible pour une greffe d'organe. Ce sont **deux systèmes de marqueurs du soi indépendants** : la compatibilité ABO/Rhésus conditionne les transfusions sanguines, la compatibilité CMH conditionne le succès des greffes d'organes ou de tissus. Un donneur peut être parfaitement compatible pour l'un et incompatible pour l'autre. C'est pourquoi, avant une greffe, on réalise un **typage HLA** (comparaison des molécules de CMH), en plus du groupage sanguin — et pourquoi les donneurs apparentés (frères, sœurs, parents), qui partagent en moyenne davantage d'allèles de CMH que des inconnus, offrent statistiquement de meilleures chances de compatibilité qu'un donneur pris au hasard dans la population.
 
+[[figure:cmh-abo-independants]]
+
 ### Vérification rapide
 
 Si le CMH était identique chez tous les êtres humains (aucun polymorphisme), aucune greffe ne serait jamais rejetée pour cause de CMH, puisque tout donneur porterait, par définition, les mêmes molécules que tout receveur. C'est précisément parce que le CMH est extrêmement polymorphe que le rejet de greffe est un problème biologique réel, à gérer activement en médecine.

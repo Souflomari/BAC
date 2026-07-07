@@ -108,6 +108,8 @@ Le terme $\frac{1}{2}f(B//b)$, c'est exactement la part d'allèle $B$ qui se cac
 
 **Le réflexe à corriger :** si on te donne une fréquence génotypique et qu'on te demande une fréquence allélique (ou l'inverse), ce n'est jamais le même nombre — sauf dans le cas particulier, très rare, où toute la population serait homozygote pour un seul allèle. Vérifie toujours : est-ce qu'on parle d'individus, ou d'exemplaires de gène ?
 
+[[figure:comptage-alleles]]
+
 ---
 
 ## R2 — Le modèle de Hardy-Weinberg : d'où vient $p^2 + 2pq + q^2 = 1$

@@ -801,3 +801,62 @@ Notes de vérification :
   Dashboard.tsx / SubjectCard.tsx restent en source, non référencés —
   suppression = décision propriétaire (ils portent le choix filière
   inline).
+
+## 16. Extension — la couche média SVT + philo, gel du modèle (2026-07-07)
+
+Contexte : D10 avait explicitement exclu SVT (`docs/audits/d10-media-layer.md:4-6`
+— sécurité du modèle Fable 5 sur du contenu biologique). La session bascule sur
+un autre modèle (Sonnet 5) et le propriétaire demande explicitement de
+continuer à illustrer toutes les leçons — la condition d'attente documentée
+(« attend une session non-Fable ») est remplie ; traité comme l'autorisation
+explicite requise, pas une décision silencieuse.
+
+**Bug trouvé en vérifiant le pilote, corrigé et gardé en permanence** :
+atterrir directement sur `?chapitre=N` (N>1) provoquait un vrai mismatch
+d'hydratation React (erreurs #418/#423/#425 — `ChapterShell` lisait
+`window.location` DANS l'initialiseur `useState`, donc le rendu serveur et le
+rendu d'hydratation client calculaient des `current` différents, une valeur
+qui atterrit dans du texte visible). La récupération de React après un
+mismatch est un re-rendu complet, qui effaçait aussi la classe `.dark` posée
+par le script de démarrage sur `<html>` — un symptôme qui n'avait presque rien
+à voir avec sa cause réelle. Corrigé à la source
+(`web/src/components/notion/ChapterShell.tsx` : `current` démarre TOUJOURS à
+0, la vraie valeur est résolue depuis l'URL dans un effet post-hydratation) ;
+`web/scripts/dom-truth.mjs` porte désormais un sweep permanent (« deep-linked
+chapter + dark theme ») qui aurait détecté cette classe de bug — 129 → 144
+contrôles.
+
+**Couche média SVT — pilote + fan-out parallèle** (diagram-author, un agent
+par leçon, contrat D10 repris verbatim) :
+- Pilote : `transmission-caracteres/disjonction-alleles.svg` — disjonction des
+  allèles en méiose, cible directement l'erreur R3 (« un hétérozygote au
+  phénotype dominant ne transmet pas QUE l'allèle dominant »). Vérifié
+  build+dom-truth+screenshots clair/sombre avant tout fan-out.
+- **Fan-out : 10/10 lessons, 11/11 aucun refus** — chaque leçon SVT porte
+  désormais au moins une figure ciblant une erreur classique nommée dans
+  son propre texte (12 figures au total, `moyens-de-defense` en porte deux) :
+
+  | Leçon | Slug(s) | Cible |
+  |---|---|---|
+  | dysfonctionnements-immunitaires | `sensibilisation-reaction-allergie` | 1er contact sensibilise sans symptôme ; seul un contact ultérieur pontant deux IgE déclenche |
+  | moyens-de-defense | `cascade-inflammatoire`, `reponse-humorale-cellulaire` | même cascade quelle que soit la cause ; LB/LT jamais confondus, seul LTc détruit par contact direct |
+  | genetique-populations | `comptage-alleles` | fréquence génotypique ≠ fréquence allélique (hétérozygote compte 1 dans chaque camp) |
+  | genetique-humaine | `pedigree-drepanocytose` | arbre généalogique : distinguer déduction certaine vs. probable |
+  | role-enzymes | `cycle-enzyme-substrat` | l'enzyme n'est jamais consommée (site actif identique aux 4 étapes) |
+  | soi-non-soi | `cmh-abo-independants` | ABO-compatible ≠ CMH-compatible |
+  | liberation-energie-matiere-organique | `respiration-fermentation` | la fermentation produit encore de l'ATP (jamais zéro) |
+  | chaines-de-montagnes | `plis-chevauchement` | l'inversion d'âge sur une coupe prouve un charriage |
+  | theorie-tectonique-plaques | `expansion-oceanique` | le plancher se crée en continu, ne glisse pas sur un fond fixe |
+  | granitisation-deformation | `granite-texture-grenue` | le granite ne se forme jamais en surface |
+
+  Vérifié : `validate-content` (0 échec, 10 dirs) + grep anti-contrat (0
+  hex/`currentColor`/`foreignObject` sur les 12 SVG) + build + dom-truth
+  (144/0) + captures clair/sombre (`web/shots/persistance-wave/report/`).
+
+**Philosophie — AUCUNE figure, décision documentée (pas un oubli)** : les 11
+leçons suivent toutes la même anatomie (R0 accroche → philosophes en séquence
+dialectique → méthode de dissertation) — argumentation pure, aucune structure
+ni processus diagrammable. Forcer un schéma décoratif (frise de philosophes,
+carte conceptuelle fictive) violerait le précédent D10 (« une figure qui ne
+sert pas la pédagogie n'est pas créée ») et risquerait l'écueil du théâtre
+d'engagement. Refus honnête sur les 11, pas un gap.

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Disjonction des allèles pendant la méiose : un parent hétérozygote G//g produit deux types de gamètes, G et g, à parts égales.">
+  <title>Disjonction des allèles pendant la méiose</title>
+
+  <!--
+    disjonction-alleles.svg — figure STATIQUE (pas de step-groups).
+    Cible précise : l'erreur classique nommée en R3 du lesson.md — croire
+    qu'un parent au phénotype dominant (donc potentiellement hétérozygote)
+    ne peut transmettre QUE l'allèle dominant. Le schéma montre les DEUX
+    chromosomes homologues (portant G et g) se séparant en méiose vers
+    deux gamètes distincts, à proportions égales (1/2 chacun).
+
+    Layout :
+      Cellule parentale (gauche)  : ellipse x=60..240, y=70..230
+      Flèche « méiose »           : x=260..380, y=150
+      Gamète G (droite haut)      : cercle centre (470,95)  r=55
+      Gamète g (droite bas)       : cercle centre (470,205) r=55
+
+    Convention couleur : allèle dominant G en --figure-accent (l'idée
+    centrale : G n'est pas le seul transmis) ; allèle récessif g en
+    --figure-ink-soft (neutre, non estompé — il existe à parts égales).
+    Simplification pédagogique assumée : les chromosomes sont des barres
+    schématiques (pas de chromatides sœurs ni de crossing-over — hors
+    programme de cette leçon, la leçon ne traite que la ségrégation).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Un hétérozygote transmet SES DEUX allèles, à parts égales
+  </text>
+
+  <!-- ── Cellule parentale (gauche) ─────────────────────────── -->
+  <ellipse cx="150" cy="150" rx="95" ry="82"
+           fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+  <!-- Paire de chromosomes homologues, côte à côte -->
+  <!-- Chromosome portant G -->
+  <rect x="112" y="108" width="24" height="84" rx="12"
+        fill="none" stroke="var(--figure-accent)" stroke-width="3"/>
+  <text x="124" y="106" text-anchor="middle"
+        font-size="15" font-style="italic" font-weight="700"
+        fill="var(--figure-accent)">G</text>
+
+  <!-- Chromosome portant g -->
+  <rect x="164" y="108" width="24" height="84" rx="12"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="3"/>
+  <text x="176" y="106" text-anchor="middle"
+        font-size="15" font-style="italic" font-weight="700"
+        fill="var(--figure-ink-soft)">g</text>
+
+  <!-- Étiquette génotype -->
+  <text x="150" y="222" text-anchor="middle"
+        font-size="13" fill="var(--figure-ink)">
+    Parent <tspan font-style="italic" font-weight="700">G//g</tspan>
+  </text>
+  <text x="150" y="240" text-anchor="middle"
+        font-size="11" fill="var(--figure-ink-soft)">
+    (hétérozygote)
+  </text>
+
+  <!-- ── Flèche « méiose : disjonction » ────────────────────── -->
+  <line x1="260" y1="150" x2="378" y2="150"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="392,150 374,142 374,158" fill="var(--figure-ink)"/>
+  <text x="320" y="134" text-anchor="middle"
+        font-size="12" font-weight="600" fill="var(--figure-ink)">
+    méiose
+  </text>
+  <text x="320" y="172" text-anchor="middle"
+        font-size="11" fill="var(--figure-ink-soft)">
+    (disjonction)
+  </text>
+
+  <!-- ── Gamète G (droite, haut) ────────────────────────────── -->
+  <circle cx="470" cy="95" r="55"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+  <rect x="459" y="70" width="22" height="50" rx="11"
+        fill="none" stroke="var(--figure-accent)" stroke-width="3"/>
+  <text x="470" y="63" text-anchor="middle"
+        font-size="14" font-style="italic" font-weight="700"
+        fill="var(--figure-accent)">G</text>
+  <text x="470" y="163" text-anchor="middle"
+        font-size="12" fill="var(--figure-ink)">
+    Gamète <tspan font-style="italic" font-weight="700">G</tspan> — <tspan font-style="italic">1/2</tspan>
+  </text>
+
+  <!-- ── Gamète g (droite, bas) ─────────────────────────────── -->
+  <circle cx="470" cy="205" r="55"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="2.2"/>
+  <rect x="459" y="180" width="22" height="50" rx="11"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="3"/>
+  <text x="470" y="173" text-anchor="middle"
+        font-size="14" font-style="italic" font-weight="700"
+        fill="var(--figure-ink-soft)">g</text>
+  <text x="470" y="273" text-anchor="middle"
+        font-size="12" fill="var(--figure-ink)">
+    Gamète <tspan font-style="italic" font-weight="700">g</tspan> — <tspan font-style="italic">1/2</tspan>
+  </text>
+
+  <!-- Deux flèches distinctes de la cellule vers chaque gamète (la
+       disjonction produit DEUX destins, jamais un seul) -->
+  <path d="M 210,120 Q 340,60 415,90" fill="none"
+        stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.55"/>
+  <path d="M 210,180 Q 340,240 415,210" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.55"/>
+</svg>

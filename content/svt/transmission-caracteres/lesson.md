@@ -110,6 +110,8 @@ Un hétérozygote porte deux allèles différents, un sur chaque chromosome homo
 
 C'est la **deuxième loi de Mendel** : au moment de la formation des gamètes, les deux allèles d'une paire se séparent et se répartissent, à parts égales, dans des gamètes distincts.
 
+[[figure:disjonction-alleles]]
+
 ### Construire l'échiquier F1 × F1
 
 Les deux parents ($G//g \times G//g$) produisent chacun deux types de gamètes, $G$ (proportion $\frac{1}{2}$) et $g$ (proportion $\frac{1}{2}$). L'échiquier a maintenant quatre cases :
