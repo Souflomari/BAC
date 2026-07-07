@@ -144,7 +144,13 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
         Le sommaire des notions déjà écrites, matière par matière.
       </p>
 
-      <div className="space-y-6">
+      {/* Bounded + internally scrollable from the 1280px two-column tier up
+          (mastery-map-scroll, globals.css) — otherwise this list (currently
+          61 links) stretches the shared grid row far taller than the primary
+          column, leaving a large dead gap above the shelf (owner feedback,
+          2026-07-07: "do we need to show everything?"). Unbounded on mobile/
+          narrow, where the whole page already scrolls as one column. */}
+      <div className="space-y-6 mastery-map-scroll">
         {visibleSubjects.map((subjectId) => {
           const list = bySubject.get(subjectId)!;
           return (

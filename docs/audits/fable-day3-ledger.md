@@ -860,3 +860,44 @@ ni processus diagrammable. Forcer un schéma décoratif (frise de philosophes,
 carte conceptuelle fictive) violerait le précédent D10 (« une figure qui ne
 sert pas la pédagogie n'est pas créée ») et risquerait l'écueil du théâtre
 d'engagement. Refus honnête sur les 11, pas un gap.
+
+## 17. Extension — le tableau de bord replié (retour propriétaire, 2026-07-07)
+
+Retour direct : « faut-il vraiment tout montrer sur l'accueil, vu que les
+couvertures portent le même logo ? Peut-être les regrouper avec un menu qui
+se déplie. » Vérifié : `Cover.tsx` résout un motif **par matière** (5 formes),
+pas par notion — seules `rlc-serie` et `rc-charge` ont un motif propre. À 61
+notions, l'étagère « Disponible maintenant » répétait donc la même poignée
+d'illustrations des dizaines de fois, à plat.
+
+**Fait** : `AvailableShelf.tsx` (nouveau fichier, extrait de page.tsx) — un
+`Accordion.Item` Radix par matière, REPLIÉ par défaut (premier vrai usage de
+`@radix-ui/react-accordion`, dépendance jusque-là inutilisée). Le déclencheur
+porte le motif en aperçu + le libellé + le compte réel ; déplier révèle la
+grille de couvertures inchangée. `Presence` de Radix DÉMONTE le contenu fermé
+(pas juste `display:none`) — le coût DOM des 59 couvertures répétées n'existe
+qu'une fois une matière vraiment ouverte. Reveal calme en hauteur
+(`.shelf-accordion-content`, @keyframes, pas de bounce), `prefers-reduced-
+motion` respecté.
+
+**Effet de bord trouvé en vérifiant (test du regard, bible §10)** : l'étagère
+courte a révélé un vide de ~1000px dans la colonne gauche au palier 1280 — la
+grille CSS étire la ligne "primary/mastery" à la hauteur de `MasteryMap`
+(61 liens à plat), bien plus haute que la carte de session. Corrigé en
+bornant `MasteryMap` (`.mastery-map-scroll`, ≥1280px seulement — sous ce
+palier tout défile en une colonne) : hauteur max 640px + défilement interne +
+un DÉGRADÉ bas (`mask-image`) signalant « plus de contenu » (les défileurs
+overlay du système sont invisibles au repos sur la plupart des configurations
+— mesuré aussi en Chromium headless). Répond au même retour d'un second
+angle : la carte de maîtrise montrait AUSSI « tout », sans logo cette fois
+mais avec la même sensation de trop-plein.
+
+Hauteur totale de la page d'accueil (desktop, 1280px) : **3756px → 2072px**
+(-45 %). Vérifié : dom-truth 143/0 (2 contrôles retargetés sur le
+déclencheur au repos — texte inchangé, ils ne testaient qu'un sélecteur
+devenu invalide — et 2 anciens contrôles présence-de-couverture déplacés
+dans un nouveau SWEEP interactif qui ouvre Physique-Chimie et confirme
+`rlc-serie` + le motif propre de `rc-charge`, absents avant / présents
+après). Aucune règle enfreinte : ordre DOM inchangé (aucun `order` CSS,
+aucune leçon réordonnée), `[data-mastery-token]` toujours == notions sur
+disque (61) que le filtre soit actif ou non.

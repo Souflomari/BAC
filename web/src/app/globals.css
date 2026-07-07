@@ -846,6 +846,28 @@ h3:hover .heading-anchor,
 /* 1920: no structural change from 1536 (bible §4/§11 — no 4th column; the
    fixed-width container already grows the surrounding margin for free). */
 
+/* ── Mastery-map internal scroll (MasteryMap.tsx) — owner feedback,
+   2026-07-07: the flat 61-notion list stretches the shared grid row (CSS
+   Grid's default row auto-sizing) far taller than the primary column,
+   leaving a large dead gap above the shelf/subjects rows below. Bounded +
+   internally scrollable from the SAME 1280px tier where the two-column
+   grid begins — below that, the whole page is one column and a nested
+   scroll region would be an awkward mobile pattern, so it stays natural
+   height there. The scrollbar is the existing refined thumb (below). */
+@media (min-width: 1280px) {
+  .mastery-map-scroll {
+    max-height: 640px;
+    overflow-y: auto;
+    padding-right: 4px;
+    /* Soft bottom fade signals "more below" regardless of OS/browser
+       scrollbar-visibility settings — overlay scrollbars render invisible
+       at rest in most setups (measured in headless Chromium too), which
+       would otherwise make a hard content cut read as "that's everything." */
+    mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+  }
+}
+
 /* ── Notion page layout — use the width (design brief #1) ──────────────────── */
 /*
  * The notion page uses a two-column layout on desktop:
@@ -985,6 +1007,35 @@ h3:hover .heading-anchor,
 @media (prefers-reduced-motion: reduce) {
   .chapter-enter-forward,
   .chapter-enter-back {
+    animation: none;
+  }
+}
+
+/* ── Shelf accordion (dashboard AvailableShelf.tsx) — calm height reveal,
+   no overshoot. Radix exposes --radix-accordion-content-height on the
+   Content element while its data-state is transitioning; @keyframes (not a
+   plain transition) so the "from" state doesn't need force-reflow trickery
+   — same rationale as the chapter-pagination animation above. */
+.shelf-accordion-content {
+  overflow: hidden;
+}
+.shelf-accordion-content[data-state="open"] {
+  animation: shelf-accordion-open var(--duration-standard) cubic-bezier(0, 0, 0.2, 1);
+}
+.shelf-accordion-content[data-state="closed"] {
+  animation: shelf-accordion-close var(--duration-standard) cubic-bezier(0.4, 0, 1, 1);
+}
+@keyframes shelf-accordion-open {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes shelf-accordion-close {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shelf-accordion-content[data-state="open"],
+  .shelf-accordion-content[data-state="closed"] {
     animation: none;
   }
 }

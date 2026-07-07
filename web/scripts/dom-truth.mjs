@@ -83,7 +83,11 @@ const BATTERY = [
   { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Source Serif" },
   { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
   { name: "home session-card h2 (B1 primary)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h2", weight: "700", family: "Source Serif" },
-  { name: "home shelf row title", page: "/", sel: "section[aria-label='Notions disponibles'] a span", text: "Oscillations", fontKey: "lead", family: "Source Serif" },
+  // (Persistance-wave, 2026-07-07) shelf collapsed per matière — the trigger's
+  // subject-label span is the "row title" typography at rest now; the old
+  // per-card title only exists once a matière is expanded (see the SWEEP
+  // below for the interactive check that opens one and asserts the cover).
+  { name: "home shelf row title", page: "/", sel: "section[aria-label='Notions disponibles'] [data-shelf-subject-label]", text: "Physique-Chimie", fontKey: "lead", family: "Source Serif" },
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
@@ -134,8 +138,9 @@ const BATTERY = [
   { name: "hook commits via checkpoint (C5)", page: NOTION, sel: "div[aria-label*='Vérifie']", present: true },
   // ── Day-6 stepped derivations (§7): later steps NOT in DOM pre-reveal ──
   { name: "R2 derivation present, step 1 only", page: NOTION, sel: "[data-derivation='verification-cosinus']", present: true, absentSel: "[data-derivation='verification-cosinus'] [data-step='2']" },
-  // ── Day-6 covers (COVER-SPEC): the shelf is illustrated ──
-  { name: "covers present on home shelf", page: "/", sel: "[data-cover='rlc-serie']", present: true },
+  // (Day-6 covers (COVER-SPEC) — moved to an interactive SWEEP below: the
+  // shelf is now collapsed per matière (persistance-wave, 2026-07-07), so a
+  // notion cover only exists in the DOM once its matière is opened.)
   // ── Day-3 rail: labels never ellipsize ──
   { name: "rail labels not truncated", page: NOTION, sel: ".notion-rail button > span[class*='bp-expanded']", noOverflow: true },
   // ── Day-6 followability: section ordinals. The fragile invariant is counter
@@ -158,7 +163,9 @@ const BATTERY = [
   // (d): data-motif must be the notion's OWN motif — the pc fallback also
   // carries data-cover='rc-charge', which made the original presence-only
   // row go green before the article ran (instrument bug, fixed Day 7).
-  { name: "DAY7(d): rc-charge cover has its own motif", page: "/", sel: "[data-cover='rc-charge'][data-motif='rc-charge']", present: true },
+  // (DAY7(d), rc-charge's own motif — moved to the shelf-accordion SWEEP
+  // below alongside rlc-serie: both live in the "pc" matière, now collapsed
+  // by default — persistance-wave, 2026-07-07.)
   // ── July-2026 external audit F1 — the CLASS guard (bible §13 amendment:
   //    guards target classes, not instances). No page's rendered text may
   //    contain authoring-marker lexicon. Three enhancement-slot comments
@@ -504,7 +511,10 @@ try {
     { page: NOTION, sel: "[data-band='masthead'] p", label: "masthead metadata" },
     { page: NOTION, sel: ".notion-rail button span[class*='bp-expanded']", label: "rail idle label" },
     { page: NOTION, sel: "footer p", label: "footer" },
-    { page: "/", sel: "section[aria-label='Notions disponibles'] a span[class*='caption']", label: "shelf caption" },
+    // Persistance-wave (2026-07-07): the per-card caption is collapsed by
+    // default now — the trigger's subject-count caption is the shelf-caption
+    // typography visible at rest, same token, same contrast requirement.
+    { page: "/", sel: "section[aria-label='Notions disponibles'] [data-shelf-subject-count]", label: "shelf caption" },
   ];
   const lum = `(c)=>{const [r,g,b]=c.match(/\\d+(\\.\\d+)?/g).map(Number);const f=(v)=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)}`;
   for (const theme of ["light", "dark"]) {
@@ -601,6 +611,40 @@ try {
     else if (!r.dark) failures += fail(`dark theme LOST after landing directly on ?chapitre=3 (position: ${r.position})`);
     else if (r.position !== "Chapitre 3 / 11") failures += fail(`chapter position wrong: "${r.position}" ≠ "Chapitre 3 / 11"`);
     else console.log(`  ✓ no hydration error, dark survives, position correct ("${r.position}")`);
+  }
+
+  // (Persistance-wave, 2026-07-07) SHELF ACCORDION: `AvailableShelf.tsx`
+  // collapses each matière (owner feedback: `Cover` shares one motif per
+  // SUBJECT, so the old flat grid repeated the same handful of
+  // illustrations dozens of times across 61 notions — too long). Asserts
+  // BOTH halves of the honest claim: closed by default means the covers are
+  // genuinely ABSENT from the DOM (not just visually hidden — Radix
+  // `Presence` unmounts), and opening a trigger actually reveals them.
+  {
+    console.log(`\n[/] SWEEP: shelf accordion — collapsed by default, opens on click`);
+    const spage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await spage.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    const beforeOpen = await spage.evaluate(() => ({
+      rlcInDom: !!document.querySelector("[data-cover='rlc-serie']"),
+      rcInDom: !!document.querySelector("[data-cover='rc-charge'][data-motif='rc-charge']"),
+      triggerCount: document.querySelectorAll("section[aria-label='Notions disponibles'] [data-shelf-subject-label]").length,
+    }));
+    await spage.click("section[aria-label='Notions disponibles'] [data-shelf-subject-label]:has-text('Physique-Chimie')");
+    await spage.waitForTimeout(350); // shelf-accordion-open runs over --duration-standard (250ms)
+    const afterOpen = await spage.evaluate(() => ({
+      rlc: !!document.querySelector("[data-cover='rlc-serie']"),
+      // DAY7(d): rc-charge must resolve to ITS OWN motif, not the pc
+      // fallback (the original bug: the pc fallback also carries
+      // data-cover='rc-charge', which made a presence-only row false-green).
+      rc: !!document.querySelector("[data-cover='rc-charge'][data-motif='rc-charge']"),
+    }));
+    await spage.close();
+    checks++;
+    if (beforeOpen.rlcInDom || beforeOpen.rcInDom) failures += fail("a PC notion cover is present BEFORE opening its matière — accordion not actually collapsed");
+    else if (beforeOpen.triggerCount === 0) failures += fail("no shelf triggers found — matières listing broken");
+    else if (!afterOpen.rlc) failures += fail("rlc-serie cover still absent AFTER opening Physique-Chimie");
+    else if (!afterOpen.rc) failures += fail("rc-charge cover missing its own motif (or absent) AFTER opening Physique-Chimie");
+    else console.log(`  ✓ ${beforeOpen.triggerCount} matière triggers, covers absent until opened, present (rlc-serie + rc-charge own motif) after`);
   }
 
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
