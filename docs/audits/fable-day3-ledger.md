@@ -739,3 +739,25 @@ Passe profonde : 6 auditeurs `general-purpose` parallèles (Python, recalcul
   classe « correction numérique » est le sweep d'auditeurs (process), pas
   dom-truth (129, inchangé — aucun code touché). Docket = session de
   décision proprio → nettoyage Sonnet gaté.
+
+## 14. Extension — l'arc persistance (2026-07-07) : décisions
+
+Specs : LEARNER-MODEL-SPEC, AUTH-SPEC. Brouillons : docs/drafts/migrations/
+048-050. Tout FABLE-DECIDED / OWNER-REVIEW-PENDING sauf mention.
+
+| # | Décision | Raison courte |
+|---|---|---|
+| 14.1 | v1 clé NOTION par chaînes TEXT (précédent 043) ; user_misconception_states (skills) INTACTE, jumelle notion séparée | le contenu est la vérité filesystem ; pas de registre dupliqué ; zéro migration de données |
+| 14.2 | `cleared_at` (pas `resolved_at`) sur la jumelle | le nom suit le contrat de lecture Cleared |
+| 14.3 | Clearing v1 = 2 succès distincts post-exhibition sans ré-exhibition | symétrique du plancher ≥2 ; 1 = chance, 3 = décourageant |
+| 14.4 | « lu » RÉGRESSE à « entamé » si le contenu grandit | honest-state : l'état dit ce qui est vrai maintenant |
+| 14.5 | « à revoir » = lu ET >21 jours | mi-trimestre de révision ; PAS une courbe d'oubli prétendue — assumé et dit |
+| 14.6 | Ordre reco : misconception-active > reprise > révision > parcours | la faute active est le signal le plus actionnable d'un tuteur |
+| 14.7 | Retour espacé v2 (intervalles adaptatifs) DIFFÉRÉ | sans données réelles d'oubli, des intervalles inventés = pseudo-science |
+| 14.8 | « maîtrisé » reste BANNI même à données riches | le mot promet plus que le modèle ne sait |
+| 14.9 | Auth : email+mdp socle, Google rapide, PAS de SMS-OTP ni magic-link seul | coût SMS + numéro sensible (mineurs) ; friction mail lycéen ; pas de verrouillage Google |
+| 14.10 | Confirmation e-mail DÉSACTIVÉE en v1 | friction > risque sur produit gratuit ; à réévaluer si abus |
+| 14.11 | @supabase/ssr cookies + middleware scoppé /moi et /connexion SEULEMENT | le site reste SSG ; l'accueil s'hydrate côté client |
+| 14.12 | Leçons publiques ; /moi authentifié ; écritures service_role-only via RPC | bible (partageable) + règle 047 |
+| 14.13 | Preview → STAGING (jamais prod), gated par la fermeture 050 + session de sync | preview→prod écrirait des comptes réels en prod : violation RULES §0 |
+| 14.14 | Modes off/mock/live ; dépendance @supabase n'entre qu'avec live | pas de dépendance dormante ; le build de session = mock |
