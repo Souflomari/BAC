@@ -15,14 +15,19 @@
  *   Transitions with ease-between over 200ms; reduced-motion: no transition,
  *   just the end-state class applied immediately.
  * - Focus rings migrated to .focus-ring utility.
+ * - Auth affordance (AUTH-SPEC §3, ledger 14.12): a "Se connecter" link, or
+ *   (mock, signed in) the élève's initial + "Se déconnecter" — both entirely
+ *   absent when NEXT_PUBLIC_AUTH_MODE === "off" (today's zero-delta state).
  *
- * No browser storage — scrolled state is ephemeral in-memory React state.
+ * No browser storage — scrolled state is ephemeral in-memory React state
+ * (the auth user itself lives in AuthProvider, also in-memory only).
  */
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
+import { useAuth } from "@/lib/auth/provider";
 import { FontSizeStepper } from "./FontSizeStepper";
 import { ThemeToggle } from "./ThemeToggle";
 import { FiliereBadge } from "./FiliereBadge";
@@ -84,6 +89,9 @@ function GlyphMark({ className }: { className?: string }) {
 
 export function SiteHeader({ className, container }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  // AUTH-SPEC §3 (docs/design/AUTH-SPEC.md): the entry point lives here, in
+  // the right cluster, rendered ONLY when NEXT_PUBLIC_AUTH_MODE !== "off".
+  const { user, mode, signOutMock } = useAuth();
 
   useEffect(() => {
     // Passive scroll listener — check >8px threshold
@@ -197,6 +205,61 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
               Notions
             </Link>
           </nav>
+
+          {/*
+            Auth affordance (AUTH-SPEC §3, ledger 14.12). Renders ONLY when
+            mode !== "off" — when it IS "off" this whole block contributes
+            nothing to the DOM, so today's header stays byte-identical.
+          */}
+          {mode !== "off" &&
+            (user ? (
+              <div className="flex items-center gap-1">
+                {/*
+                  Identity chip — deliberately NOT a clickable control: it
+                  "opens nothing fancy" (no menu/popover, v1 "calm > clever"
+                  call). role="group" + aria-label gives it an accessible
+                  name without adding a dead button to the tab order; the one
+                  real action ("Se déconnecter") sits right next to it.
+                */}
+                <div
+                  role="group"
+                  aria-label={`Compte — ${user.displayName}`}
+                  className={cn(
+                    "flex h-8 w-8 items-center justify-center rounded-full",
+                    "bg-[var(--color-accent-subtle)] text-accent",
+                    "text-body-sm font-semibold select-none"
+                  )}
+                >
+                  <span aria-hidden="true">{user.displayName.charAt(0)}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={signOutMock}
+                  className={cn(
+                    "text-body-sm font-medium",
+                    "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                    "transition-colors duration-micro ease-enter",
+                    "rounded px-2 py-1",
+                    "focus-ring [--focus-radius:8px]"
+                  )}
+                >
+                  Se déconnecter
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/connexion"
+                className={cn(
+                  "text-body-sm font-medium",
+                  "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                  "transition-colors duration-micro ease-enter",
+                  "rounded px-2 py-1",
+                  "focus-ring [--focus-radius:8px]"
+                )}
+              >
+                Se connecter
+              </Link>
+            ))}
         </div>
       </div>
     </header>

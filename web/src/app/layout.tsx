@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { AuthProvider } from "@/lib/auth/provider";
 import "./globals.css";
 
 // ── Fonts (editorial pairing — ADR 0023) ──────────────────────────────────────
@@ -106,7 +107,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
-        {children}
+        {/*
+          AuthProvider (web/src/lib/auth/provider.tsx) — the ONLY auth wiring
+          at the root. A minimal client boundary: it holds mode + an
+          in-memory mock user, nothing else. No session logic, no
+          @supabase/*, no network — see AUTH-SPEC §5 / ledger 14.14. This
+          server component (RootLayout) can render a client provider
+          directly; the boundary starts exactly there.
+        */}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
