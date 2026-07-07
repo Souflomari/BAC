@@ -567,6 +567,42 @@ try {
     await page.evaluate(() => localStorage.removeItem("bac-theme"));
   }
 
+  // (D-persistance, 2026-07-07) DEEP-LINKED CHAPTER + DARK THEME: found by
+  // accident verifying a new SVT figure — landing directly on `?chapitre=N`
+  // with N>1 caused a React hydration mismatch (errors #418/#423/#425:
+  // ChapterShell's `current` state read `window.location` inside its
+  // `useState` initializer, so the server render and the client's hydration
+  // render computed DIFFERENT chapter numbers — a value baked into visible
+  // text via ChapterPosition). React's mismatch recovery is a full
+  // client-side re-render, which also silently wiped the boot script's
+  // manually-added `.dark` class on `<html>` — a much stranger-looking
+  // symptom than its actual cause. Fixed at the source (ChapterShell.tsx:
+  // `current` now starts at 0 on every render, resolved from the URL only in
+  // a post-hydration effect). This sweep is the rendered-truth backstop:
+  // asserts BOTH the absence of hydration errors AND that dark mode survives
+  // a direct deep link into a non-first chapter.
+  {
+    console.log(`\n[${NOTION}] SWEEP: deep-linked chapter + dark theme (no hydration mismatch)`);
+    const pageErrors = [];
+    const dpage = await browser.newPage({ viewport: { width: 1280, height: 860 } });
+    dpage.on("pageerror", (e) => pageErrors.push(e.message));
+    await dpage.goto(`${BASE}${NOTION}`, { waitUntil: "commit" });
+    await dpage.evaluate(() => localStorage.setItem("bac-theme", "dark"));
+    await dpage.goto(`${BASE}${NOTION}?chapitre=3`, { waitUntil: "networkidle" });
+    await dpage.waitForTimeout(800);
+    const r = await dpage.evaluate(() => ({
+      dark: document.documentElement.classList.contains("dark"),
+      position: document.querySelector(".chapter-position")?.textContent ?? null,
+    }));
+    await dpage.evaluate(() => localStorage.removeItem("bac-theme"));
+    await dpage.close();
+    checks++;
+    if (pageErrors.length > 0) failures += fail(`hydration/page error(s) on deep-linked chapter: ${pageErrors[0].slice(0, 80)}`);
+    else if (!r.dark) failures += fail(`dark theme LOST after landing directly on ?chapitre=3 (position: ${r.position})`);
+    else if (r.position !== "Chapitre 3 / 11") failures += fail(`chapter position wrong: "${r.position}" ≠ "Chapitre 3 / 11"`);
+    else console.log(`  ✓ no hydration error, dark survives, position correct ("${r.position}")`);
+  }
+
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
   // ~2000px; everything above ran at 1280 and was blind to his dead zones.
   // Structural assertions at 1536/1920 (composition assertions land with the

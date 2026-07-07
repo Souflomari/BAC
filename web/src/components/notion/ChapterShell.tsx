@@ -28,6 +28,23 @@
  * swapping a tick later. It cannot help the raw pre-hydration HTML (always
  * chapter 1, server-rendered, SSG has no per-request query string to read) —
  * that residual flash is a documented, accepted trade-off, not a silent gap.
+ *
+ * `current` STARTS AT 0 UNCONDITIONALLY (both server render and the client's
+ * hydration render) — never `readChapterFromLocation` in the state
+ * initializer. Found 2026-07-07: reading `window.location` inside a
+ * `useState` initializer runs it AGAIN during the client's hydration render
+ * (hooks don't carry values across the SSR/hydration boundary), so on any
+ * `?chapitre=N` with N>1 the hydration render computed a DIFFERENT `current`
+ * than the server did — a real value baked into visible text
+ * (`ChapterPosition`'s "Chapitre N / M"), not just an attribute. That's a
+ * genuine React hydration mismatch (errors #418/#423/#425), and React's
+ * recovery is a full client-side re-render of the whole tree — which also
+ * wipes unrelated DOM state other code sets on `<html>` (the dark-theme
+ * class), a much stranger-looking symptom than the mismatch that caused it.
+ * The real chapter is resolved from the URL/hash in the sync effect below,
+ * STRICTLY POST-HYDRATION (an ordinary effect-driven re-render, not a second
+ * hydration render) — `useLayoutEffect` still flushes it before paint, so
+ * the "no flash of chapter 1" goal holds; only the MECHANISM changed.
  */
 
 import {
@@ -108,14 +125,22 @@ export function ChapterShell({
   children: ReactNode;
 }) {
   const total = Math.max(1, totalChapters);
-  const [current, setCurrent] = useState(() => readChapterFromLocation(total));
-  const prevRef = useRef(current);
+  // Always 0 on both the server render and the client's hydration render —
+  // see the class doc comment above (the SSR-mismatch fix). The real
+  // URL/hash-derived chapter is applied by the sync effect below, once,
+  // strictly after hydration.
+  const [current, setCurrent] = useState(0);
+  const prevRef = useRef(0);
   // False until the FIRST chapter-sync pass has run — gates the enter
   // transition and the focus-transfer so neither fires on initial load
   // (§1.3 wants movement on NAVIGATION, not on mount; moving focus away from
   // the skip-link/URL bar on load would itself be an accessibility fault —
   // WCAG discourages hijacking focus without a user action).
   const mountedRef = useRef(false);
+  // True once the initial URL/hash chapter has been resolved — gates the
+  // one-time resolution in the sync effect so later legitimate `goTo`/
+  // `popstate` updates don't re-read the URL from scratch.
+  const initialSyncRef = useRef(false);
 
   function goTo(index: number) {
     const clamped = Math.min(Math.max(index, 0), total - 1);
@@ -133,6 +158,21 @@ export function ChapterShell({
   //    enter transition on the newly active section. Server-rendered nodes
   //    are never recreated — only their attributes/classes are flipped. ──
   useIsoLayoutEffect(() => {
+    // One-time resolution, strictly post-hydration: if the URL/hash names a
+    // chapter other than 0, jump straight there. Runs before paint (layout
+    // effect), and the setCurrent below flushes synchronously before the
+    // browser paints — so there is still no visible flash of chapter 1 even
+    // though the state now starts at 0 on every render.
+    if (!initialSyncRef.current) {
+      initialSyncRef.current = true;
+      const initial = readChapterFromLocation(total);
+      if (initial !== current) {
+        prevRef.current = initial;
+        setCurrent(initial);
+        return;
+      }
+    }
+
     const sections = document.querySelectorAll<HTMLElement>("[data-chapter-section]");
     const forward = current >= prevRef.current;
     sections.forEach((el) => {
