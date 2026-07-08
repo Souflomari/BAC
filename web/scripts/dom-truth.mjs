@@ -647,6 +647,122 @@ try {
     else console.log(`  ✓ ${beforeOpen.triggerCount} matière triggers, covers absent until opened, present (rlc-serie + rc-charge own motif) after`);
   }
 
+  // (Interactive-figures wave, 2026-07-07) StagedFigure's DOM-absence
+  // contract has had ZERO dom-truth coverage since it shipped (D11 §§1-2) —
+  // fully specified in LESSON-EXPERIENCE-SPEC.md §5, never implemented.
+  // Closing that gap BEFORE building the new drag/slider capability on top
+  // of it (INTERACTIVE-FIGURE-SPEC.md) — testing the extension without
+  // ever having tested the foundation it extends would invert the
+  // dependency. Uses `regimes-uc`'s first placement (R0 of rlc-serie,
+  // chapter 1 — no deep-link needed), 3 stages.
+  {
+    console.log(`\n[${NOTION}] SWEEP: StagedFigure — real DOM absence, transport, print`);
+    const fpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await fpage.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
+    const initial = await fpage.evaluate(() => {
+      const fig = document.querySelector("[data-figure='regimes-uc']");
+      return {
+        figPresent: !!fig,
+        stage: fig?.getAttribute("data-stage-current"),
+        // AttemptFirst: step-2/step-3 groups must be REALLY absent, not display:none.
+        step2Absent: !fig?.querySelector("g#step-2"),
+        step3Absent: !fig?.querySelector("g#step-3"),
+        prevDisabled: fig?.querySelector("button[aria-label='Étape précédente']")?.disabled,
+        indicator: fig?.querySelector("[aria-live='polite']")?.textContent,
+      };
+    });
+    // Advance once: "Suivant" (aria-label "Étape suivante" at stage 1/3).
+    await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']");
+    await fpage.waitForTimeout(100);
+    const afterOneAdvance = await fpage.evaluate(() => {
+      const fig = document.querySelector("[data-figure='regimes-uc']");
+      return {
+        stage: fig?.getAttribute("data-stage-current"),
+        step2Present: !!fig?.querySelector("g#step-2"),
+        step3Absent: !fig?.querySelector("g#step-3"),
+      };
+    });
+    // Print: every stage present, controls hidden — no timeline to seek
+    // (Derivation precedent), independent of how far the transport advanced.
+    // Dispatching `beforeprint` directly (not page.emulateMedia): verified
+    // separately that Playwright/CDP's media emulation flips
+    // matchMedia("print").matches to true but never fires a "change" event
+    // on an already-registered MediaQueryList — a Playwright limitation,
+    // not a real-browser one (real print dialogs DO fire it). StagedFigure
+    // was already built with a REDUNDANT window "beforeprint"/"afterprint"
+    // listener for exactly this kind of cross-browser reliability gap
+    // (Safari doesn't reliably fire beforeprint either) — dispatching that
+    // event directly exercises the same code path a real print does.
+    await fpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await fpage.waitForTimeout(100);
+    const printed = await fpage.evaluate(() => {
+      const fig = document.querySelector("[data-figure='regimes-uc']");
+      return {
+        step3Present: !!fig?.querySelector("g#step-3"),
+        controlsHidden: !fig?.querySelector("[role='group'][aria-label*='Contrôles']") ||
+          getComputedStyle(fig.querySelector("[role='group'][aria-label*='Contrôles']")).display === "none",
+      };
+    });
+    await fpage.close();
+    checks++;
+    if (!initial.figPresent) failures += fail("regimes-uc StagedFigure not found on rlc-serie R0");
+    else if (initial.stage !== "1") failures += fail(`initial stage ${initial.stage} ≠ "1" (first placement, R0)`);
+    else if (!initial.step2Absent || !initial.step3Absent) failures += fail("step-2/step-3 groups present in DOM before any advance — NOT real absence (AttemptFirst broken)");
+    else if (!initial.prevDisabled) failures += fail("« Précédent » not disabled at stage 1");
+    else if (!initial.indicator?.includes("Étape 1")) failures += fail(`step indicator "${initial.indicator}" doesn't read "Étape 1"`);
+    else if (afterOneAdvance.stage !== "2") failures += fail(`stage after one "Suivant" click = ${afterOneAdvance.stage} ≠ "2"`);
+    else if (!afterOneAdvance.step2Present) failures += fail("step-2 group still absent after advancing to stage 2 — re-injection broken");
+    else if (!afterOneAdvance.step3Absent) failures += fail("step-3 group present at stage 2 — advanced too far or absence contract broken");
+    else if (!printed.step3Present) failures += fail("print: step-3 NOT present — fullyRevealed branch not firing under @media print");
+    else if (!printed.controlsHidden) failures += fail("print: transport controls still visible");
+    else console.log(`  ✓ real DOM absence (step-2/3 absent at stage 1, step-2 re-injected at stage 2), transport correct, print reveals all + hides controls`);
+  }
+
+  // (Interactive-figures wave, 2026-07-07) EmbedPanel — same pre-existing
+  // gap as StagedFigure above. Uses `rlc-sandbox` on rlc-serie R3
+  // (chapter 4) — the gold-reference embed (docs/audits/d10-media-layer.md).
+  {
+    console.log(`\n[${NOTION}?chapitre=4] SWEEP: EmbedPanel — opt-in mount, tab order, sandbox, attribution`);
+    const epage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await epage.goto(`${BASE}${NOTION}?chapitre=4`, { waitUntil: "networkidle" });
+    const beforeMount = await epage.evaluate(() => {
+      const mountBtn = document.querySelector("button.btn-primary");
+      const iframe = document.querySelector("iframe");
+      const extLink = document.querySelector("a[href*='phet.colorado.edu']");
+      return {
+        iframeAbsent: !iframe,
+        mountBtnPresent: !!mountBtn && /bac à sable/i.test(mountBtn.textContent ?? ""),
+        // Tab order (#8 fix): the external link must precede the mount
+        // button in DOCUMENT ORDER (compareDocumentPosition, not just both existing).
+        extLinkBeforeButton: !!extLink && !!mountBtn &&
+          (extLink.compareDocumentPosition(mountBtn) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0,
+      };
+    });
+    await epage.click("button.btn-primary:has-text('Ouvrir le bac à sable interactif')");
+    await epage.waitForTimeout(200);
+    const afterMount = await epage.evaluate(() => {
+      const iframe = document.querySelector("iframe");
+      return {
+        iframePresent: !!iframe,
+        sandbox: iframe?.getAttribute("sandbox"),
+        srcIsPhet: iframe?.getAttribute("src")?.includes("phet.colorado.edu"),
+        loadingLazy: iframe?.getAttribute("loading"),
+        attributionPresent: !!Array.from(document.querySelectorAll("p")).find((p) => /CC.BY|PhET/i.test(p.textContent ?? "")),
+      };
+    });
+    await epage.close();
+    checks++;
+    if (!beforeMount.iframeAbsent) failures += fail("iframe already mounted before any click — opt-in gate broken (heavy 3rd-party resource loading eagerly)");
+    else if (!beforeMount.mountBtnPresent) failures += fail("« Ouvrir le bac à sable interactif » button not found");
+    else if (!beforeMount.extLinkBeforeButton) failures += fail("external link does NOT precede the mount button in DOM/tab order (§9 keyboard-access regression)");
+    else if (!afterMount.iframePresent) failures += fail("iframe did not mount after clicking the opt-in button");
+    else if (afterMount.sandbox !== "allow-scripts allow-same-origin allow-popups") failures += fail(`sandbox attr "${afterMount.sandbox}" ≠ expected`);
+    else if (!afterMount.srcIsPhet) failures += fail("iframe src is not the expected PhET URL");
+    else if (afterMount.loadingLazy !== "lazy") failures += fail(`iframe loading="${afterMount.loadingLazy}" ≠ "lazy"`);
+    else if (!afterMount.attributionPresent) failures += fail("CC-BY/PhET attribution text not found after mount");
+    else console.log(`  ✓ opt-in gate holds, tab order correct, sandboxed iframe mounts on click, attribution present`);
+  }
+
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
   // ~2000px; everything above ran at 1280 and was blind to his dead zones.
   // Structural assertions at 1536/1920 (composition assertions land with the
