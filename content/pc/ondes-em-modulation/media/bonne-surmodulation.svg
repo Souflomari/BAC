@@ -3,7 +3,18 @@
      aria-label="Comparaison bonne modulation / surmodulation : à gauche m=0,5, l'enveloppe reste positive et lisse ; à droite m≈1,33, l'enveloppe formelle croise l'axe et l'oscillation rapide change brutalement de phase.">
   <title>Bonne modulation vs surmodulation</title>
   <!--
-    bonne-surmodulation.svg — figure STATIQUE, deux panneaux.
+    bonne-surmodulation.svg — figure STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    Graphe -> toujours stagée (§2.5). Ordre = axes/fond (chrome) -> step-1
+    données (le panneau bonne modulation) -> step-2 données (le panneau
+    surmodulation, même construction, seul Sm change) -> step-3 lecture (le
+    point de bascule : le taux m = Sm/U0 et le pincement où la porteuse
+    change de phase — exactement le geste du cours en R3 : on vérifie
+    d'abord la bonne modulation, PUIS on casse volontairement la condition
+    pour observer, par le calcul, ce que ça change). Les captions sont
+    portées par bonne-surmodulation.stages.json — les paragraphes de légende
+    prose par panneau ont été retirés du SVG (même convention que
+    courbe-exponentielle.svg) ; seule la formule (notation) reste sur la
+    figure, déplacée dans la lecture.
 
     Reprend EXACTEMENT les deux exemples numeriques de R3 du cours :
       Panneau gauche  : U0 = 6 V, Sm = 3 V -> m = 0,5 < 1 (bonne modulation)
@@ -26,7 +37,7 @@
       x_k = 44 + 34*k  (44,78,112,146,180,214,248,282,316)
 
     Panneau droit (U0=6, Sm=8) :
-      k :    0     1    2      3     4     5      6    7     8
+      k :    0     1    2      3     4     5      6    7    8
       Ek:   14  11.657  6    0.343  -2   0.343   6  11.657  14   <- passe negatif !
       vk:  +14  -11.657 +6  -0.343  -2  -0.343  +6  -11.657 +14
       C'est exactement l'exemple du cours : a l'instant ou s_m(t) touche son
@@ -62,20 +73,25 @@
     Bonne modulation et surmodulation
   </text>
 
-  <!-- Sous-titres -->
-  <text x="181" y="44" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-ink)">Bonne modulation (m = 0,5)</text>
-  <text x="501" y="44" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-ink)">Surmodulation (m ≈ 1,33)</text>
+  <!-- ── Note de bas de figure : rapport schématique divulgué (chrome, permanent) ── -->
+  <text x="350" y="316" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">(rapport f<tspan
+        dy="2" font-size="6.5">p</tspan><tspan
+        dy="-2">/f</tspan><tspan
+        dy="2" font-size="6.5">signal</tspan><tspan
+        dy="-2"> réduit ici pour la lisibilité — cf. modulation-amplitude et R1/R3)</tspan>
+  </text>
 
-  <!-- Fonds des deux panneaux -->
-  <rect x="40" y="52" width="282" height="195" rx="6"
-        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
-  <rect x="356" y="52" width="290" height="195" rx="6"
-        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : panneau gauche, bonne modulation (m = 0,5)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="181" y="44" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">Bonne modulation (m = 0,5)</text>
 
-  <!-- ══════════════ PANNEAU GAUCHE — bonne modulation ══════════════ -->
-  <g id="panel-good">
+    <rect x="40" y="52" width="282" height="195" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
     <!-- Axe t -->
     <line x1="44" y1="140" x2="316" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
     <polygon points="316,140 306,136.5 306,143.5" fill="var(--figure-ink-soft)"/>
@@ -114,10 +130,18 @@
       C303.08,87.41 309.88,63.5 316,63.5
     " fill="none" stroke="var(--figure-accent)" stroke-width="1.8"
       stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
+  </g><!-- /step-1 -->
 
-  <!-- ══════════════ PANNEAU DROIT — surmodulation ══════════════ -->
-  <g id="panel-surmod">
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : panneau droit, surmodulation (m ≈ 1,33)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="501" y="44" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">Surmodulation (m ≈ 1,33)</text>
+
+    <rect x="356" y="52" width="290" height="195" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
     <!-- Axe t -->
     <line x1="360" y1="149" x2="632" y2="149" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
     <polygon points="632,149 622,145.5 622,152.5" fill="var(--figure-ink-soft)"/>
@@ -156,41 +180,29 @@
       C619.08,89.325 625.88,62.2 632,62.2
     " fill="none" stroke="var(--figure-accent)" stroke-width="1.8"
       stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
 
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : le taux m = Sm/U0 et le pincement (changement
+       de phase) où l'enveloppe formelle serait devenue négative
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
     <!-- Repère du pincement : la porteuse et l'enveloppe se croisent ici -->
     <line x1="496" y1="172" x2="496" y2="234" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="2,2"/>
     <text x="496" y="245" text-anchor="middle" font-size="8.5" font-style="italic"
           fill="var(--figure-ink-soft)">changement de phase</text>
-  </g>
 
-  <!-- ── Légendes sous chaque panneau ── -->
-  <text x="181" y="266" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">l'enveloppe reste positive : elle</text>
-  <text x="181" y="279" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">redessine s<tspan dy="2.5" font-size="7">m</tspan><tspan dy="-2.5">(t) fidèlement.</tspan></text>
-
-  <text x="501" y="266" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">l'enveloppe formelle croise l'axe :</text>
-  <text x="501" y="279" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">le récepteur ne peut plus la lire.</text>
-
-  <!-- ── Note commune ── -->
-  <text x="350" y="300" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">m = S<tspan
-        dy="2.5" font-size="7.5">m</tspan><tspan
-        dy="-2.5">/U</tspan><tspan
-        dy="2.5" font-size="7.5">0</tspan><tspan
-        dy="-2.5"> — même U</tspan><tspan
-        dy="2.5" font-size="7.5">0</tspan><tspan
-        dy="-2.5"> = 6 V à gauche et à droite ; seul S</tspan><tspan
-        dy="2.5" font-size="7.5">m</tspan><tspan
-        dy="-2.5"> change (3 V puis 8 V).</tspan>
-  </text>
-  <text x="350" y="316" text-anchor="middle" font-size="9" font-style="italic"
-        fill="var(--figure-ink-soft)">(rapport f<tspan
-        dy="2" font-size="6.5">p</tspan><tspan
-        dy="-2">/f</tspan><tspan
-        dy="2" font-size="6.5">signal</tspan><tspan
-        dy="-2"> réduit ici pour la lisibilité — cf. modulation-amplitude et R1/R3)</tspan>
-  </text>
+    <!-- Note commune : le taux de modulation qui sépare les deux panneaux -->
+    <text x="350" y="300" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">m = S<tspan
+          dy="2.5" font-size="7.5">m</tspan><tspan
+          dy="-2.5">/U</tspan><tspan
+          dy="2.5" font-size="7.5">0</tspan><tspan
+          dy="-2.5"> — même U</tspan><tspan
+          dy="2.5" font-size="7.5">0</tspan><tspan
+          dy="-2.5"> = 6 V à gauche et à droite ; seul S</tspan><tspan
+          dy="2.5" font-size="7.5">m</tspan><tspan
+          dy="-2.5"> change (3 V puis 8 V).</tspan>
+    </text>
+  </g><!-- /step-3 -->
 
 </svg>

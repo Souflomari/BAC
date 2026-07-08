@@ -3,8 +3,18 @@
      aria-label="Conservation de l'énergie mécanique : en haut, sans frottement, quatre positions sur une trajectoire montrent Ec qui augmente et Epp qui diminue de la même quantité, la somme Em restant constante à 6,0 joules. En bas, avec frottement, la même somme Em diminue progressivement de position en position.">
   <title>Conservation (et dissipation) de l'énergie mécanique</title>
   <!--
-    conservation-em.svg — figure STATIQUE, deux panneaux empilés, aucun step-group
-    (rendu figé, pas de révélation progressive — c'est le rôle du motion-author).
+    conservation-em.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2.5 :
+    graphe -> toujours staged, ordre canonique axes -> données -> lecture ; les
+    axes/repères restent un chrome permanent, non-stepped, comme dans
+    aire-sous-courbe.svg / aire-entre-courbes.svg / tangente-derivee.svg).
+      permanent : fonds de panneau, sous-titres, mini-trajectoires + repères
+                  de position, ligne de base E=0, étiquette d'axe "E (J)".
+      step-1 : les barres empilées Ec+Epp (+ valeurs sous chaque barre) des
+               DEUX panneaux, et la légende de couleur Ec/Epp — les données.
+      step-2 : la ligne Em (accent), des DEUX panneaux, et la légende Em —
+               la lecture. Elle se peint maintenant PAR-DESSUS les sommets
+               des barres (elle est révélée après elles), ce qui rend le
+               contact ligne/sommets plus net qu'avant la mise en étapes.
 
     Panneau A (sans frottement) : 4 positions sur une trajectoire descendante ;
     sous chaque position, une barre empilée [Ec (bas) + Epp (haut)] de hauteur
@@ -53,45 +63,71 @@
   </text>
 
   <!-- ══════════════════════════════════════════════════════════
-       PANNEAU A — sans frottement, Em constante
+       PANNEAU A — chrome permanent (fond, sous-titre, trajectoire, axe)
        ══════════════════════════════════════════════════════════ -->
-  <g id="panel-a">
-    <rect x="40" y="40" width="560" height="330" rx="8"
-          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+  <rect x="40" y="40" width="560" height="330" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
 
-    <text x="60" y="60" font-size="12" font-weight="600"
-          fill="var(--figure-ink)">Sans frottement — E<tspan
-          dy="3" font-size="8">m</tspan><tspan dy="-3"> constante</tspan>
-    </text>
+  <text x="60" y="60" font-size="12" font-weight="600"
+        fill="var(--figure-ink)">Sans frottement — E<tspan
+        dy="3" font-size="8">m</tspan><tspan dy="-3"> constante</tspan>
+  </text>
 
-    <!-- Mini-trajectoire descendante, 4 positions repères -->
-    <path d="M150,78 L290,96 L430,116 L570,140" fill="none"
-          stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="150" cy="78"  r="5" fill="var(--figure-ink)"/>
-    <circle cx="290" cy="96"  r="5" fill="var(--figure-ink)"/>
-    <circle cx="430" cy="116" r="5" fill="var(--figure-ink)"/>
-    <circle cx="570" cy="140" r="5" fill="var(--figure-ink)"/>
-    <text x="150" y="66"  text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
-    <text x="290" y="84"  text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">2</text>
-    <text x="430" y="104" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
-    <text x="570" y="128" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">4</text>
+  <!-- Mini-trajectoire descendante, 4 positions repères -->
+  <path d="M150,78 L290,96 L430,116 L570,140" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="150" cy="78"  r="5" fill="var(--figure-ink)"/>
+  <circle cx="290" cy="96"  r="5" fill="var(--figure-ink)"/>
+  <circle cx="430" cy="116" r="5" fill="var(--figure-ink)"/>
+  <circle cx="570" cy="140" r="5" fill="var(--figure-ink)"/>
+  <text x="150" y="66"  text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
+  <text x="290" y="84"  text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">2</text>
+  <text x="430" y="104" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
+  <text x="570" y="128" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">4</text>
 
-    <!-- Ligne Em constante -->
-    <line x1="110" y1="206" x2="598" y2="206"
-          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
-    <text x="360" y="196" text-anchor="middle" font-size="11"
-          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">m</tspan><tspan
-          dy="-3"> = 6,0 J (constante)</tspan>
-    </text>
+  <!-- Baseline E = 0 -->
+  <line x1="110" y1="326" x2="598" y2="326"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="104" y="330" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <text x="100" y="210" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">E (J)</text>
 
-    <!-- Baseline E = 0 -->
-    <line x1="110" y1="326" x2="598" y2="326"
-          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-    <text x="104" y="330" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
-    <text x="100" y="210" text-anchor="end" font-size="11" font-style="italic"
-          fill="var(--figure-ink-soft)">E (J)</text>
+  <!-- ══════════════════════════════════════════════════════════
+       PANNEAU B — chrome permanent (fond, sous-titre, trajectoire, axe)
+       ══════════════════════════════════════════════════════════ -->
+  <rect x="40" y="386" width="560" height="330" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
 
-    <!-- Barres empilées : Ec (bas, energy-L) + Epp (haut, energy-C) -->
+  <text x="60" y="406" font-size="12" font-weight="600"
+        fill="var(--figure-ink)">Avec frottement — E<tspan
+        dy="3" font-size="8">m</tspan><tspan dy="-3"> diminue</tspan>
+  </text>
+
+  <!-- Mini-trajectoire descendante, mêmes 4 positions -->
+  <path d="M150,424 L290,442 L430,462 L570,486" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="150" cy="424" r="5" fill="var(--figure-ink)"/>
+  <circle cx="290" cy="442" r="5" fill="var(--figure-ink)"/>
+  <circle cx="430" cy="462" r="5" fill="var(--figure-ink)"/>
+  <circle cx="570" cy="486" r="5" fill="var(--figure-ink)"/>
+  <text x="150" y="412" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
+  <text x="290" y="430" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">2</text>
+  <text x="430" y="450" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
+  <text x="570" y="474" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">4</text>
+
+  <!-- Baseline E = 0 -->
+  <line x1="110" y1="672" x2="598" y2="672"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="104" y="676" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <text x="100" y="556" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">E (J)</text>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 1 — les barres empilées Ec+Epp des deux panneaux (données)
+       + la légende de couleur Ec/Epp
+       ══════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Panneau A — barres empilées : Ec (bas, energy-L) + Epp (haut, energy-C) -->
     <!-- position 1 : Ec=0, Epp=6,0 J -->
     <rect x="122" y="206" width="56" height="120" fill="var(--figure-energy-C)"
           stroke="var(--figure-grid)" stroke-width="1"/>
@@ -126,48 +162,8 @@
       dy="3" font-size="7">pp</tspan><tspan dy="-3"> = 0 · E</tspan><tspan
       dy="3" font-size="7">c</tspan><tspan dy="-3"> = 6,0 J</tspan>
     </text>
-  </g><!-- /panel-a -->
 
-  <!-- ══════════════════════════════════════════════════════════
-       PANNEAU B — avec frottement, Em diminue
-       ══════════════════════════════════════════════════════════ -->
-  <g id="panel-b">
-    <rect x="40" y="386" width="560" height="330" rx="8"
-          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
-
-    <text x="60" y="406" font-size="12" font-weight="600"
-          fill="var(--figure-ink)">Avec frottement — E<tspan
-          dy="3" font-size="8">m</tspan><tspan dy="-3"> diminue</tspan>
-    </text>
-
-    <!-- Mini-trajectoire descendante, mêmes 4 positions -->
-    <path d="M150,424 L290,442 L430,462 L570,486" fill="none"
-          stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="150" cy="424" r="5" fill="var(--figure-ink)"/>
-    <circle cx="290" cy="442" r="5" fill="var(--figure-ink)"/>
-    <circle cx="430" cy="462" r="5" fill="var(--figure-ink)"/>
-    <circle cx="570" cy="486" r="5" fill="var(--figure-ink)"/>
-    <text x="150" y="412" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
-    <text x="290" y="430" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">2</text>
-    <text x="430" y="450" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
-    <text x="570" y="474" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">4</text>
-
-    <!-- Ligne Em décroissante (relie les sommets des 4 barres) -->
-    <path d="M150,552 L290,560 L430,576 L570,600" fill="none"
-          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
-    <text x="400" y="540" text-anchor="middle" font-size="11"
-          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">m</tspan><tspan
-          dy="-3"> diminue (frottement)</tspan>
-    </text>
-
-    <!-- Baseline E = 0 -->
-    <line x1="110" y1="672" x2="598" y2="672"
-          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-    <text x="104" y="676" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
-    <text x="100" y="556" text-anchor="end" font-size="11" font-style="italic"
-          fill="var(--figure-ink-soft)">E (J)</text>
-
-    <!-- Barres empilées -->
+    <!-- Panneau B — barres empilées -->
     <!-- position 1 : Ec=0, Epp=6,0 J (identique au panneau A : rien n'est encore dissipé) -->
     <rect x="122" y="552" width="56" height="120" fill="var(--figure-energy-C)"
           stroke="var(--figure-grid)" stroke-width="1"/>
@@ -202,10 +198,8 @@
       dy="3" font-size="7">pp</tspan><tspan dy="-3"> = 0 · E</tspan><tspan
       dy="3" font-size="7">c</tspan><tspan dy="-3"> = 3,6 J</tspan>
     </text>
-  </g><!-- /panel-b -->
 
-  <!-- ── Légende ───────────────────────────────────────────────── -->
-  <g id="legend">
+    <!-- Légende — Ec, Epp (les couleurs des barres qui viennent d'apparaître) -->
     <rect x="60" y="736" width="26" height="14" fill="var(--figure-energy-L)"/>
     <text x="92" y="747" font-size="10.5" fill="var(--figure-ink)">E<tspan
       dy="3" font-size="7.5">c</tspan><tspan dy="-3"> — énergie cinétique</tspan>
@@ -215,25 +209,35 @@
     <text x="332" y="747" font-size="10.5" fill="var(--figure-ink)">E<tspan
       dy="3" font-size="7.5">pp</tspan><tspan dy="-3"> — énergie potentielle de pesanteur</tspan>
     </text>
+  </g><!-- /step-1 -->
 
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 2 — la ligne Em des deux panneaux (lecture) + la légende Em
+       ══════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Panneau A — ligne Em constante -->
+    <line x1="110" y1="206" x2="598" y2="206"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <text x="360" y="196" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">m</tspan><tspan
+          dy="-3"> = 6,0 J (constante)</tspan>
+    </text>
+
+    <!-- Panneau B — ligne Em décroissante (relie les sommets des 4 barres) -->
+    <path d="M150,552 L290,560 L430,576 L570,600" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <text x="400" y="540" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">m</tspan><tspan
+          dy="-3"> diminue (frottement)</tspan>
+    </text>
+
+    <!-- Légende — Em (la ligne qui vient d'apparaître) -->
     <line x1="60" y1="768" x2="86" y2="768" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="6,4"/>
     <text x="92" y="772" font-size="10.5" fill="var(--figure-ink)">E<tspan
       dy="3" font-size="7.5">m</tspan><tspan dy="-3"> = E</tspan><tspan
       dy="3" font-size="7.5">c</tspan><tspan dy="-3"> + E</tspan><tspan
       dy="3" font-size="7.5">pp</tspan><tspan dy="-3"> — énergie mécanique</tspan>
     </text>
-  </g>
-
-  <!-- ── Captions ──────────────────────────────────────────────── -->
-  <text x="320" y="794" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">En haut, sans frottement : E<tspan
-        dy="3" font-size="7.5">m</tspan><tspan dy="-3"> reste constante — E</tspan><tspan
-        dy="3" font-size="7.5">c</tspan><tspan dy="-3"> augmente exactement ce qu'E</tspan><tspan
-        dy="3" font-size="7.5">pp</tspan><tspan dy="-3"> perd, à chaque position.</tspan>
-  </text>
-  <text x="320" y="810" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">En bas, avec frottement : E<tspan
-        dy="3" font-size="7.5">m</tspan><tspan dy="-3"> diminue peu à peu — la perte est exactement le travail (négatif) du frottement.</tspan>
-  </text>
+  </g><!-- /step-2 -->
 
 </svg>

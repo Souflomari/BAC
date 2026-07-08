@@ -16,116 +16,129 @@
     (gradient d'opacité = logique de palette claire, pas de tons ad-hoc)
     Séparateur inter-panneaux : arrowhead SVG dessiné, pas de glyphe ASCII →
     Panneaux : --figure-surface fond + --figure-grid bordure (surface conçue)
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — schéma à geste
+    d'enseignement, pas un graphe : aucun axe tracé dans cette figure).
+    Révélation progressive 3 étapes, ordre = le raisonnement narré en prose :
+      step-1 : la scène physique — le fil, la section S, les charges qui
+               passent, la flèche de courant i
+      step-2 : le rapport Δq/Δt (débit moyen)
+      step-3 : la limite Δt → 0 → i = dq/dt, et son interprétation
+
+    La légende de bas de panneau gauche ("Δq charges passent S en Δt") a été
+    retirée : elle dupliquait ce que dit désormais la légende de l'étape 1.
   -->
 
-  <!-- ── Titre ──────────────────────────────────────────── -->
-  <text x="210" y="20" text-anchor="middle"
-        font-size="12" font-weight="600" letter-spacing="0.01em"
-        fill="var(--figure-ink)">
-    Pourquoi i = dq/dt ?
-  </text>
+  <g id="step-1">
+    <!-- ── Titre ──────────────────────────────────────────── -->
+    <text x="210" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Pourquoi i = dq/dt ?
+    </text>
 
-  <!-- ══════════════════════════════════════════════════════
-       PANNEAU GAUCHE — Fil en coupe avec charges
-       x=12..204, y=30..192
-       ══════════════════════════════════════════════════════ -->
-  <rect x="12" y="30" width="192" height="162" rx="7"
-        fill="var(--figure-surface)"
-        stroke="var(--figure-grid)" stroke-width="1"/>
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU GAUCHE — Fil en coupe avec charges
+         x=12..204, y=30..192
+         ══════════════════════════════════════════════════════ -->
+    <rect x="12" y="30" width="192" height="162" rx="7"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- Tube du fil (bords haut et bas) -->
-  <line x1="30"  y1="78"  x2="196" y2="78"
-        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="30"  y1="126" x2="196" y2="126"
-        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- Extrémité gauche (bouchon) -->
-  <line x1="30" y1="78" x2="30" y2="126"
-        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- Continuation à droite : arrowhead dessiné (pas de glyphe ASCII →) -->
-  <line x1="196" y1="102" x2="202" y2="102"
-        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
-  <polygon points="202,102 193,97.5 193,106.5" fill="var(--figure-ink)"/>
+    <!-- Tube du fil (bords haut et bas) -->
+    <line x1="30"  y1="78"  x2="196" y2="78"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="30"  y1="126" x2="196" y2="126"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Extrémité gauche (bouchon) -->
+    <line x1="30" y1="78" x2="30" y2="126"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Continuation à droite : arrowhead dessiné (pas de glyphe ASCII →) -->
+    <line x1="196" y1="102" x2="202" y2="102"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="202,102 193,97.5 193,106.5" fill="var(--figure-ink)"/>
 
-  <!-- Section de mesure S (tirets verticaux à x=108) -->
-  <line x1="108" y1="67" x2="108" y2="137"
-        stroke="var(--figure-accent)" stroke-width="1.6"
-        stroke-dasharray="5,3" stroke-linecap="round"/>
-  <text x="108" y="63" text-anchor="middle"
-        font-size="9" font-weight="500" fill="var(--figure-accent)">section S</text>
+    <!-- Section de mesure S (tirets verticaux à x=108) -->
+    <line x1="108" y1="67" x2="108" y2="137"
+          stroke="var(--figure-accent)" stroke-width="1.6"
+          stroke-dasharray="5,3" stroke-linecap="round"/>
+    <text x="108" y="63" text-anchor="middle"
+          font-size="9" font-weight="500" fill="var(--figure-accent)">section S</text>
 
-  <!-- Charges + passées (droite de S — opaques, "déjà passées") -->
-  <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
-  <text x="138" y="94" text-anchor="middle" font-size="10"
-        fill="var(--figure-surface)" font-weight="700">+</text>
-  <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
-  <text x="164" y="118" text-anchor="middle" font-size="10"
-        fill="var(--figure-surface)" font-weight="700">+</text>
+    <!-- Charges + passées (droite de S — opaques, "déjà passées") -->
+    <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
+    <text x="138" y="94" text-anchor="middle" font-size="10"
+          fill="var(--figure-surface)" font-weight="700">+</text>
+    <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
+    <text x="164" y="118" text-anchor="middle" font-size="10"
+          fill="var(--figure-surface)" font-weight="700">+</text>
 
-  <!-- Charges + approchant (gauche de S — opacité décroissante = distance) -->
-  <circle cx="80"  cy="102" r="7.5" fill="var(--figure-accent)" fill-opacity="0.52"/>
-  <text x="80" y="106" text-anchor="middle" font-size="10"
-        fill="var(--figure-surface)" font-weight="700">+</text>
-  <circle cx="56"  cy="87"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.34"/>
-  <text x="56" y="91" text-anchor="middle" font-size="10"
-        fill="var(--figure-surface)" font-weight="700">+</text>
-  <circle cx="44"  cy="116" r="7.5" fill="var(--figure-accent)" fill-opacity="0.22"/>
-  <text x="44" y="120" text-anchor="middle" font-size="10"
-        fill="var(--figure-surface)" font-weight="700">+</text>
+    <!-- Charges + approchant (gauche de S — opacité décroissante = distance) -->
+    <circle cx="80"  cy="102" r="7.5" fill="var(--figure-accent)" fill-opacity="0.52"/>
+    <text x="80" y="106" text-anchor="middle" font-size="10"
+          fill="var(--figure-surface)" font-weight="700">+</text>
+    <circle cx="56"  cy="87"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.34"/>
+    <text x="56" y="91" text-anchor="middle" font-size="10"
+          fill="var(--figure-surface)" font-weight="700">+</text>
+    <circle cx="44"  cy="116" r="7.5" fill="var(--figure-accent)" fill-opacity="0.22"/>
+    <text x="44" y="120" text-anchor="middle" font-size="10"
+          fill="var(--figure-surface)" font-weight="700">+</text>
 
-  <!-- Petites flèches de mouvement sur les charges approchantes -->
-  <line x1="89" y1="102" x2="99" y2="102"
-        stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
-  <polygon points="99,102 92,98.5 92,105.5" fill="var(--figure-accent)"/>
-  <line x1="65" y1="87" x2="75" y2="87"
-        stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
-  <polygon points="75,87 68,83.5 68,90.5" fill="var(--figure-accent)"/>
+    <!-- Petites flèches de mouvement sur les charges approchantes -->
+    <line x1="89" y1="102" x2="99" y2="102"
+          stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="99,102 92,98.5 92,105.5" fill="var(--figure-accent)"/>
+    <line x1="65" y1="87" x2="75" y2="87"
+          stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="75,87 68,83.5 68,90.5" fill="var(--figure-accent)"/>
 
-  <!-- Flèche i globale (sens du courant) -->
-  <line x1="30" y1="148" x2="184" y2="148"
-        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
-  <polygon points="184,148 173,143.5 173,152.5" fill="var(--figure-accent)"/>
-  <!-- Label i directement sous la flèche -->
-  <text x="107" y="164" text-anchor="middle"
-        font-size="13" font-style="italic" fill="var(--figure-accent)">i</text>
+    <!-- Flèche i globale (sens du courant) -->
+    <line x1="30" y1="148" x2="184" y2="148"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="184,148 173,143.5 173,152.5" fill="var(--figure-accent)"/>
+    <!-- Label i directement sous la flèche -->
+    <text x="107" y="164" text-anchor="middle"
+          font-size="13" font-style="italic" fill="var(--figure-accent)">i</text>
 
-  <!-- Caption -->
-  <text x="107" y="181" text-anchor="middle"
-        font-size="9.5" fill="var(--figure-ink-soft)">Δq charges passent S en Δt</text>
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU DROIT — cadre (contenu ajouté aux étapes 2/3)
+         x=216..408, y=30..192
+         ══════════════════════════════════════════════════════ -->
+    <rect x="216" y="30" width="192" height="162" rx="7"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+  </g><!-- /step-1 -->
 
-  <!-- ══════════════════════════════════════════════════════
-       PANNEAU DROIT — Raisonnement limite
-       x=216..408, y=30..192
-       ══════════════════════════════════════════════════════ -->
-  <rect x="216" y="30" width="192" height="162" rx="7"
-        fill="var(--figure-surface)"
-        stroke="var(--figure-grid)" stroke-width="1"/>
+  <g id="step-2">
+    <!-- Étape 1 : définition du flux -->
+    <text x="312" y="58" text-anchor="middle"
+          font-size="10.5" fill="var(--figure-ink-soft)">charge Δq en temps Δt :</text>
 
-  <!-- Étape 1 : définition du flux -->
-  <text x="312" y="58" text-anchor="middle"
-        font-size="10.5" fill="var(--figure-ink-soft)">charge Δq en temps Δt :</text>
+    <!-- i = Δq/Δt -->
+    <text x="312" y="83" text-anchor="middle"
+          font-size="14" font-style="italic" fill="var(--figure-ink)">i = Δq / Δt</text>
 
-  <!-- i = Δq/Δt -->
-  <text x="312" y="83" text-anchor="middle"
-        font-size="14" font-style="italic" fill="var(--figure-ink)">i = Δq / Δt</text>
+    <!-- Séparateur discret -->
+    <line x1="240" y1="96" x2="384" y2="96"
+          stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="4,4"/>
+  </g><!-- /step-2 -->
 
-  <!-- Séparateur discret -->
-  <line x1="240" y1="96" x2="384" y2="96"
-        stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="4,4"/>
+  <g id="step-3">
+    <!-- Limite Δt→0 -->
+    <text x="312" y="114" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">à la limite Δt → 0 :</text>
 
-  <!-- Limite Δt→0 -->
-  <text x="312" y="114" text-anchor="middle"
-        font-size="10" fill="var(--figure-ink-soft)">à la limite Δt → 0 :</text>
+    <!-- Boîte formule -->
+    <rect x="238" y="120" width="148" height="34" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="312" y="142" text-anchor="middle"
+          font-size="15" font-style="italic" fill="var(--figure-accent)">i = dq/dt</text>
 
-  <!-- Boîte formule -->
-  <rect x="238" y="120" width="148" height="34" rx="5"
-        fill="var(--figure-accent)" fill-opacity="0.12"/>
-  <text x="312" y="142" text-anchor="middle"
-        font-size="15" font-style="italic" fill="var(--figure-accent)">i = dq/dt</text>
-
-  <!-- Interprétation -->
-  <text x="312" y="170" text-anchor="middle"
-        font-size="9.5" fill="var(--figure-ink-soft)">i = vitesse d'écoulement</text>
-  <text x="312" y="183" text-anchor="middle"
-        font-size="9.5" fill="var(--figure-ink-soft)">de la charge q</text>
+    <!-- Interprétation -->
+    <text x="312" y="170" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">i = vitesse d'écoulement</text>
+    <text x="312" y="183" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">de la charge q</text>
+  </g><!-- /step-3 -->
 
 </svg>

@@ -52,10 +52,12 @@
   </text>
 
   <!-- ══════════════════════════════════════════════════════
-       BANDE A — instant t1 : la bosse est sur S, M est au repos
+       STEP 1 — BANDE A — instant t1 : la bosse est sur S, M au repos
+       (mise en étapes StagedFigure, LESSON-EXPERIENCE-SPEC §2.5 — graphe,
+       toujours stagé : ce step = le signal source, "données")
        rect y=64..204, baseline (corde au repos) y=159
        ══════════════════════════════════════════════════════ -->
-  <g id="band-a">
+  <g id="step-1">
     <rect x="40" y="64" width="560" height="140" rx="8"
           fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
 
@@ -93,13 +95,15 @@
     <!-- Étiquette de bande, coin dégagé (droite, la bosse est à gauche) -->
     <text x="580" y="86" text-anchor="end" font-size="11" font-weight="600"
           fill="var(--figure-ink-soft)">À l'instant t<tspan dy="3" font-size="8">1</tspan></text>
-  </g><!-- /band-a -->
+  </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════
-       BANDE B — instant t2 = t1 + τ : même bosse, sur M ; S au repos
+       STEP 2 — BANDE B — instant t2 = t1 + τ : même bosse, sur M ; S repos
+       (ce step = le signal reçu en M + la mesure du retard, "lecture" —
+       ajouté en dernier, jamais avant que la source ait été établie)
        rect y=216..366, baseline y=306
        ══════════════════════════════════════════════════════ -->
-  <g id="band-b">
+  <g id="step-2">
     <rect x="40" y="216" width="560" height="150" rx="8"
           fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
 
@@ -150,12 +154,6 @@
           dy="3" font-size="8">1</tspan><tspan
           dy="-3"> + τ</tspan>
     </text>
-  </g><!-- /band-b -->
-
-  <!-- Légendes -->
-  <text x="320" y="384" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">M reproduit le mouvement de S, à l'identique, avec le retard τ = d/v.</text>
-  <text x="320" y="400" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Même forme, seulement décalée : S et M sont deux points fixes de la corde.</text>
+  </g><!-- /step-2 -->
 
 </svg>

@@ -3,7 +3,7 @@
      aria-label="Dispersion de la lumière blanche par un prisme : le rayon incident polychromatique se sépare, à la sortie, en un spectre ordonné où le violet est dévié plus fortement que le rouge.">
   <title>Dispersion de la lumière par un prisme</title>
   <!--
-    dispersion-prisme.svg — figure STATIQUE, R5 (dispersion).
+    dispersion-prisme.svg — figure STAGED (3 étapes), R5 (dispersion).
 
     Géométrie (calculée, pas devinée) :
       Prisme : apex(300,80), baseL(230,270), baseR(370,270).
@@ -29,6 +29,16 @@
     le contenu pédagogique de cette figure (cf. contrat de rendu). Tout le
     reste (prisme, rayon incident, écran, légendes) reste sur les tokens
     --figure-*.
+
+    Mise en étapes — le geste d'enseignement suit exactement la prose de R5 :
+      step-1 : le montage — rayon de lumière blanche incident sur le prisme.
+      step-2 : le phénomène — l'éventail de sortie, chaque couleur déviée
+               différemment (le violet plus que le rouge).
+      step-3 : la conséquence observable — l'écran révèle le spectre continu.
+    Chrome non-stepped (defs, titre, fond de panneau) placé AVANT tout
+    step-N — aucun contenu non-stepped n'est intercalé entre des groupes
+    (piège d'assemblage du renderer : StagedFigure.tsx ré-injecte
+    step-1..N, ascendant, juste avant `</svg>` à chaque étape).
   -->
 
   <!-- Dégradé du spectre, rouge (haut) → violet (bas) -->
@@ -55,48 +65,56 @@
         fill="var(--figure-surface)"
         stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- ── Prisme (verre) ───────────────────────────────────────────────── -->
-  <polygon points="300,80 230,270 370,270"
-           fill="var(--figure-grid)" fill-opacity="0.35"
-           stroke="var(--figure-ink)" stroke-width="1.6"/>
-  <text x="300" y="206" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">verre (prisme)</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le montage : rayon de lumière blanche incident sur le prisme
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ── Prisme (verre) ───────────────────────────────────────────────── -->
+    <polygon points="300,80 230,270 370,270"
+             fill="var(--figure-grid)" fill-opacity="0.35"
+             stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="300" y="206" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">verre (prisme)</text>
 
-  <!-- ── Rayon incident : lumière blanche (polychromatique) ──────────── -->
-  <line x1="90" y1="120" x2="265" y2="175"
-        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="265,175 252,167 255,176" fill="var(--figure-ink)"/>
-  <text x="95" y="108" font-size="11" fill="var(--figure-ink)">lumière blanche (polychromatique)</text>
+    <!-- ── Rayon incident : lumière blanche (polychromatique) ──────────── -->
+    <line x1="90" y1="120" x2="265" y2="175"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="265,175 252,167 255,176" fill="var(--figure-ink)"/>
+    <text x="95" y="108" font-size="11" fill="var(--figure-ink)">lumière blanche (polychromatique)</text>
 
-  <!-- Trajet à l'intérieur du prisme (non séparé — simplification usuelle) -->
-  <line x1="265" y1="175" x2="335" y2="175"
-        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Trajet à l'intérieur du prisme (non séparé — simplification usuelle) -->
+    <line x1="265" y1="175" x2="335" y2="175"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  </g><!-- /step-1 -->
 
-  <!-- ── Éventail de sortie : spectre ordonné rouge → violet ─────────── -->
-  <line x1="335" y1="175" x2="560" y2="205" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="335" y1="175" x2="560" y2="216" stroke="#C77F2E" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="335" y1="175" x2="560" y2="227" stroke="#B7A233" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="335" y1="175" x2="560" y2="238" stroke="#3F8F5C" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="335" y1="175" x2="560" y2="249" stroke="#3B6FA0" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="335" y1="175" x2="560" y2="260" stroke="#6E4E96" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Le phénomène : éventail de sortie, chaque couleur déviée
+       différemment (rouge → violet)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="335" y1="175" x2="560" y2="205" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="216" stroke="#C77F2E" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="227" stroke="#B7A233" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="238" stroke="#3F8F5C" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="249" stroke="#3B6FA0" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="260" stroke="#6E4E96" stroke-width="1.6" stroke-linecap="round"/>
+  </g><!-- /step-2 -->
 
-  <!-- ── Écran ────────────────────────────────────────────────────────── -->
-  <line x1="560" y1="190" x2="560" y2="275" stroke="var(--figure-ink)" stroke-width="2"/>
-  <line x1="560" y1="195" x2="552" y2="187" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
-  <line x1="560" y1="270" x2="552" y2="262" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — La conséquence observable : l'écran révèle le spectre continu
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- ── Écran ────────────────────────────────────────────────────────── -->
+    <line x1="560" y1="190" x2="560" y2="275" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="560" y1="195" x2="552" y2="187" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <line x1="560" y1="270" x2="552" y2="262" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
 
-  <!-- Bande du spectre observé -->
-  <rect x="560" y="200" width="12" height="65" rx="2" fill="url(#spectrum-grad)"/>
+    <!-- Bande du spectre observé -->
+    <rect x="560" y="200" width="12" height="65" rx="2" fill="url(#spectrum-grad)"/>
 
-  <!-- Étiquettes des deux couleurs extrêmes -->
-  <text x="574" y="209" font-size="10.5" fill="#C0392B">Rouge</text>
-  <text x="574" y="264" font-size="10.5" fill="#6E4E96">Violet</text>
-
-  <!-- Captions -->
-  <text x="320" y="352" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"><tspan
-        font-style="italic">n</tspan><tspan dy="3" font-size="8">violet</tspan><tspan
-        dy="-3"> &gt; </tspan><tspan font-style="italic">n</tspan><tspan
-        dy="3" font-size="8">rouge</tspan><tspan dy="-3"> : le violet, plus réfracté, est dévié plus fortement que le rouge.</tspan></text>
-  <text x="320" y="368" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">La lumière blanche (polychromatique) se sépare en un spectre continu ; un rayon monochromatique n'est que dévié, jamais séparé.</text>
+    <!-- Étiquettes des deux couleurs extrêmes -->
+    <text x="574" y="209" font-size="10.5" fill="#C0392B">Rouge</text>
+    <text x="574" y="264" font-size="10.5" fill="#6E4E96">Violet</text>
+  </g><!-- /step-3 -->
 
 </svg>

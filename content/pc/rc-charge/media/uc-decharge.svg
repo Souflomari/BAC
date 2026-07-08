@@ -3,9 +3,18 @@
      aria-label="Décharge du condensateur u_C(t) dans un dipôle RC : décroissance exponentielle depuis E vers 0, tangente à l'origine coupant l'axe des temps en t = τ, et point à 37 % sur la courbe réelle.">
   <title>Décharge du condensateur u_C(t)</title>
   <!--
-    uc-decharge.svg — graphe STATIQUE de u_C(t) = E e^(-t/tau) pendant la
-    décharge d'un condensateur dans un dipôle RC (R4 du texte, "Et si on
-    décharge ?"), une fois le générateur retiré du circuit.
+    uc-decharge.svg — graphe u_C(t) = E e^(-t/tau) pendant la décharge d'un
+    condensateur dans un dipôle RC (R4 du texte, "Et si on décharge ?"), une
+    fois le générateur retiré du circuit. STAGED (LESSON-EXPERIENCE-SPEC §2)
+    en 3 étapes, ordre canonique axes → données → lecture :
+      step-1 : les axes (repère vide, échelle posée)
+      step-2 : la courbe u_C(t), sa formule et le niveau de départ E — E est
+               ici une VALEUR INITIALE (donnée du problème), pas une
+               asymptote construite pour la lecture, d'où son rattachement
+               aux données plutôt qu'à la lecture (asymétrie assumée avec
+               uc-charge.svg, où E est bien l'asymptote lue en step-3)
+      step-3 : la lecture — tangente à l'origine, repère τ, les deux
+               méthodes (tangente / 37 %)
 
     C'est le miroir vertical exact de uc-charge.svg : même panneau, mêmes
     axes, mêmes 84px par tau — seule la courbe est retournée verticalement
@@ -38,97 +47,107 @@
       niveau E / axes / repère 37 %   : --figure-ink-soft (neutre)
   -->
 
-  <!-- Titre -->
-  <text x="320" y="20" text-anchor="middle"
-        font-size="12" font-weight="600" letter-spacing="0.01em"
-        fill="var(--figure-ink)">
-    Décharge du condensateur u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3">(t) — dipôle RC</tspan>
-  </text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes (repère vide, échelle posée)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Décharge du condensateur u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3">(t) — dipôle RC</tspan>
+    </text>
 
-  <!-- Fond du panneau -->
-  <rect x="40" y="32" width="590" height="200" rx="6"
-        fill="var(--figure-surface)"
-        stroke="var(--figure-grid)" stroke-width="1"/>
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="200" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- ── Axes ──────────────────────────────────────────────── -->
-  <line x1="80" y1="208" x2="610" y2="208"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="610,208 598,203.5 598,212.5" fill="var(--figure-ink-soft)"/>
-  <line x1="80" y1="208" x2="80" y2="50"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
-  <text x="617" y="212" font-size="11" font-style="italic"
-        fill="var(--figure-ink-soft)">t</text>
-  <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
-        fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
-  <text x="72" y="212" text-anchor="end" font-size="10"
-        fill="var(--figure-ink-soft)">0</text>
+    <!-- ── Axes ──────────────────────────────────────────────── -->
+    <line x1="80" y1="208" x2="610" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,208 598,203.5 598,212.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="208" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="212" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="72" y="212" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
 
-  <!-- Repère du niveau de départ E (valeur initiale, pas une asymptote) -->
-  <line x1="76" y1="78" x2="84" y2="78"
-        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-  <text x="68" y="82" text-anchor="end" font-size="11" font-style="italic"
-        fill="var(--figure-ink-soft)">E</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la courbe u_C(t), sa formule et le niveau de départ E
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Repère du niveau de départ E (valeur initiale, pas une asymptote) -->
+    <line x1="76" y1="78" x2="84" y2="78"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="68" y="82" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">E</text>
 
-  <!-- Boîte formule -->
-  <rect x="260" y="40" width="230" height="32" rx="5"
-        fill="var(--figure-energy-C)" fill-opacity="0.12"/>
-  <text x="375" y="61" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-energy-C)">u<tspan
-        dy="4" font-size="9">C</tspan><tspan
-        dy="-4">(t) = E e</tspan><tspan
-        dy="-5" font-size="9">-t/τ</tspan>
-  </text>
+    <!-- Boîte formule -->
+    <rect x="260" y="40" width="230" height="32" rx="5"
+          fill="var(--figure-energy-C)" fill-opacity="0.12"/>
+    <text x="375" y="61" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-energy-C)">u<tspan
+          dy="4" font-size="9">C</tspan><tspan
+          dy="-4">(t) = E e</tspan><tspan
+          dy="-5" font-size="9">-t/τ</tspan>
+    </text>
 
-  <!--
-    Courbe u_C(t) — miroir vertical exact de uc-charge.svg (y = 286 - y_charge),
-    mêmes 84px par tau.
-  -->
-  <path d="
-    M80,78
-    L94,98.0   L108,114.8 L122,129.1 L136,141.3 L150,151.5
-    L164,160.2 L178,167.5 L192,173.7 L206,179.0 L220,183.4
-    L234,187.2 L248,190.4 L262,193.1 L276,195.4 L290,197.3
-    L304,199.0 L318,200.3 L332,201.5 L346,202.5 L360,203.4
-    L374,204.1 L388,204.7 L402,205.2 L416,205.6 L430,206.0
-    L444,206.3 L458,206.6 L472,206.8 L486,207.0 L500,207.1
-    L540,207.5 L580,207.7
-  " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+    <!--
+      Courbe u_C(t) — miroir vertical exact de uc-charge.svg (y = 286 - y_charge),
+      mêmes 84px par tau.
+    -->
+    <path d="
+      M80,78
+      L94,98.0   L108,114.8 L122,129.1 L136,141.3 L150,151.5
+      L164,160.2 L178,167.5 L192,173.7 L206,179.0 L220,183.4
+      L234,187.2 L248,190.4 L262,193.1 L276,195.4 L290,197.3
+      L304,199.0 L318,200.3 L332,201.5 L346,202.5 L360,203.4
+      L374,204.1 L388,204.7 L402,205.2 L416,205.6 L430,206.0
+      L444,206.3 L458,206.6 L472,206.8 L486,207.0 L500,207.1
+      L540,207.5 L580,207.7
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
 
-  <!--
-    Tangente à l'origine — droite exacte de (80,78) [pente = -hauteur/tau_px]
-    jusqu'à (164,208), où elle rencontre l'axe des temps (u_C=0) pile à t=tau.
-  -->
-  <line x1="80" y1="78" x2="164" y2="208"
-        stroke="var(--figure-accent)" stroke-width="1.8"
-        stroke-dasharray="6,4" stroke-linecap="round"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : tangente à l'origine, repère τ,
+       les deux méthodes (tangente / 37 %)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!--
+      Tangente à l'origine — droite exacte de (80,78) [pente = -hauteur/tau_px]
+      jusqu'à (164,208), où elle rencontre l'axe des temps (u_C=0) pile à t=tau.
+    -->
+    <line x1="80" y1="78" x2="164" y2="208"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
 
-  <!-- Petite marque sur l'axe t, à t = tau (la tangente y arrive déjà : pas
-       besoin d'un trait de chute vertical séparé, contrairement à uc-charge,
-       puisque l'asymptote se confond ici avec l'axe) -->
-  <line x1="164" y1="204" x2="164" y2="212"
-        stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <text x="164" y="225" text-anchor="middle" font-size="11" font-style="italic"
-        fill="var(--figure-accent)">τ</text>
+    <!-- Petite marque sur l'axe t, à t = tau (la tangente y arrive déjà : pas
+         besoin d'un trait de chute vertical séparé, contrairement à uc-charge,
+         puisque l'asymptote se confond ici avec l'axe) -->
+    <line x1="164" y1="204" x2="164" y2="212"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="164" y="225" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">τ</text>
 
-  <!-- Point : tangente atteignant l'axe des temps, à t = tau -->
-  <circle cx="164" cy="208" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Point : tangente atteignant l'axe des temps, à t = tau -->
+    <circle cx="164" cy="208" r="3.2" fill="var(--figure-accent)"/>
 
-  <!-- Point : valeur réelle de la courbe à t = tau -->
-  <circle cx="164" cy="160.2" r="3.2" fill="var(--figure-energy-C)"/>
-  <!-- Ligne de repère discrète vers le label -->
-  <line x1="167" y1="162" x2="222" y2="183"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-  <text x="228" y="186" font-size="9.5" fill="var(--figure-ink)">u<tspan
-        dy="3" font-size="7">C</tspan><tspan dy="-3">(τ) ≈ 0,37 · E</tspan>
-  </text>
-  <text x="228" y="199" font-size="9" fill="var(--figure-ink-soft)">(37 % de E restants)</text>
-
-  <!-- Captions -->
-  <text x="335" y="253" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3">(0) = E — le condensateur part chargé, puis se vide vers 0.</tspan></text>
-  <text x="335" y="270" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">τ = RC — la tangente à l'origine coupe l'axe des temps en t = τ ; sur la courbe, u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3">(τ) ≈ 0,37 · E.</tspan></text>
+    <!-- Point : valeur réelle de la courbe à t = tau -->
+    <circle cx="164" cy="160.2" r="3.2" fill="var(--figure-energy-C)"/>
+    <!-- Ligne de repère discrète vers le label -->
+    <line x1="167" y1="162" x2="222" y2="183"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="228" y="186" font-size="9.5" fill="var(--figure-ink)">u<tspan
+          dy="3" font-size="7">C</tspan><tspan dy="-3">(τ) ≈ 0,37 · E</tspan>
+    </text>
+    <text x="228" y="199" font-size="9" fill="var(--figure-ink-soft)">(37 % de E restants)</text>
+  </g><!-- /step-3 -->
 
 </svg>

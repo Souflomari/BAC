@@ -4,6 +4,14 @@
   <title>Courbe d'Aston — Eₗ/A en fonction de A</title>
   <!--
     courbe-aston.svg — courbe STATIQUE, allure générale de El/A = f(A).
+    STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2) — c'est un graphe :
+    toujours staged (§2.5). Ordre = axes (chrome, ci-dessous) -> données
+    (step-1 : la courbe, ses points ⁴He/⁵⁶Fe/²³⁵U et leurs valeurs) ->
+    lecture (step-2 : la construction/lecture du sommet — « ce point-là
+    veut dire quoi » ; step-3 : les zones fusion/fission — l'interprétation
+    finale du R3/R4, ajoutée en dernier). Les deux paragraphes de légende
+    du bas ont été retirés : ils dupliquaient ce que portent maintenant les
+    captions de courbe-aston.stages.json.
 
     Il n'existe pas de formule fermée simple donnée dans la leçon pour
     El/A(A) (le texte dit explicitement : "aucune figure ne remplace le
@@ -69,111 +77,117 @@
         fill="var(--figure-ink-soft)">0</text>
 
   <!-- ══════════════════════════════════════════════════════
-       Repères du sommet (⁵⁶Fe, A=56, El/A=8,79) — guides pointillés
+       STEP 1 — données : la courbe El/A(A), ses ancres de valeurs
+       (⁴He, sommet ⁵⁶Fe, ²³⁵U) et leurs étiquettes
        ══════════════════════════════════════════════════════ -->
-  <line x1="80" y1="86.3" x2="199.2" y2="86.3"
-        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="199.2" y1="86.3" x2="199.2" y2="350"
-        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="76" y1="86.3" x2="84" y2="86.3"
-        stroke="var(--figure-accent)" stroke-width="1.2"/>
-  <text x="70" y="90.3" text-anchor="end" font-size="10.5"
-        fill="var(--figure-accent)">8,79</text>
+  <g id="step-1">
+    <!-- Ticks sur l'axe A : A=4 (⁴He), A=56 (sommet, ⁵⁶Fe), A=235 (²³⁵U) -->
+    <line x1="88.5" y1="345" x2="88.5" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="88.5" y="366" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-accent)">4</text>
 
-  <!-- Ticks sur l'axe A : A=4 (⁴He), A=56 (sommet, ⁵⁶Fe), A=235 (²³⁵U) -->
-  <line x1="88.5" y1="345" x2="88.5" y2="355"
-        stroke="var(--figure-accent)" stroke-width="1.2"/>
-  <text x="88.5" y="366" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-accent)">4</text>
+    <line x1="199.2" y1="345" x2="199.2" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="199.2" y="368" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">56</text>
 
-  <line x1="199.2" y1="345" x2="199.2" y2="355"
-        stroke="var(--figure-accent)" stroke-width="1.8"/>
-  <text x="199.2" y="368" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-accent)">56</text>
+    <line x1="580" y1="345" x2="580" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="580" y="366" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-accent)">235</text>
 
-  <line x1="580" y1="345" x2="580" y2="355"
-        stroke="var(--figure-accent)" stroke-width="1.2"/>
-  <text x="580" y="366" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-accent)">235</text>
+    <!--
+      Courbe El/A(A) — tracé lissé passant exactement par (0,0), ⁴He(88.5,137.6),
+      le sommet ⁵⁶Fe(199.2,86.3) et ²³⁵U(580,122.3). Voir le calcul en tête de
+      fichier pour la correspondance (A, El/A) ↔ (x, y).
+    -->
+    <path d="
+      M80,350
+      C83,260 86,160 88.5,137.6
+      C115,105 175,87 199.2,86.3
+      C260,86.5 450,112 580,122.3
+      C590,123.4 600,124.3 610,125
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!--
-    Courbe El/A(A) — tracé lissé passant exactement par (0,0), ⁴He(88.5,137.6),
-    le sommet ⁵⁶Fe(199.2,86.3) et ²³⁵U(580,122.3). Voir le calcul en tête de
-    fichier pour la correspondance (A, El/A) ↔ (x, y).
-  -->
-  <path d="
-    M80,350
-    C83,260 86,160 88.5,137.6
-    C115,105 175,87 199.2,86.3
-    C260,86.5 450,112 580,122.3
-    C590,123.4 600,124.3 610,125
-  " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Point ⁴He -->
+    <circle cx="88.5" cy="137.6" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Point sommet ⁵⁶Fe — halo pour l'emphase -->
+    <circle cx="199.2" cy="86.3" r="6.5" fill="none" stroke="var(--figure-accent)"
+            stroke-width="1" opacity="0.4"/>
+    <circle cx="199.2" cy="86.3" r="3.6" fill="var(--figure-accent)"/>
+    <!-- Point ²³⁵U -->
+    <circle cx="580" cy="122.3" r="3.2" fill="var(--figure-accent)"/>
 
-  <!-- Point ⁴He -->
-  <circle cx="88.5" cy="137.6" r="3.2" fill="var(--figure-accent)"/>
-  <!-- Point sommet ⁵⁶Fe — halo pour l'emphase -->
-  <circle cx="199.2" cy="86.3" r="6.5" fill="none" stroke="var(--figure-accent)"
-          stroke-width="1" opacity="0.4"/>
-  <circle cx="199.2" cy="86.3" r="3.6" fill="var(--figure-accent)"/>
-  <!-- Point ²³⁵U -->
-  <circle cx="580" cy="122.3" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Étiquette ⁴He, avec repère discret -->
+    <line x1="91" y1="140" x2="132" y2="163"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="138" y="166" font-size="9.5" fill="var(--figure-ink)">
+      <tspan dy="-5" font-size="7.5">4</tspan><tspan dy="5">He — 7,08 MeV/nucléon</tspan>
+    </text>
 
-  <!-- Boîte "sommet" — formule / valeur -->
-  <rect x="225" y="44" width="270" height="46" rx="6"
-        fill="var(--figure-accent)" fill-opacity="0.12"/>
-  <text x="360" y="60" text-anchor="middle" font-size="12"
-        fill="var(--figure-accent)">Maximum : <tspan dy="-5" font-size="9">56</tspan><tspan dy="5">Fe — le noyau le plus stable</tspan></text>
-  <text x="360" y="77" text-anchor="middle" font-size="11.5"
-        fill="var(--figure-accent)">E<tspan dy="3" font-size="8">l</tspan><tspan dy="-3">/A ≈ 8,79 MeV/nucléon</tspan></text>
-  <!-- Repère discret reliant la boîte au point du sommet -->
-  <line x1="270" y1="90" x2="207" y2="89"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-
-  <!-- Étiquette ⁴He, avec repère discret -->
-  <line x1="91" y1="140" x2="132" y2="163"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-  <text x="138" y="166" font-size="9.5" fill="var(--figure-ink)">
-    <tspan dy="-5" font-size="7.5">4</tspan><tspan dy="5">He — 7,08 MeV/nucléon</tspan>
-  </text>
-
-  <!-- Étiquette ²³⁵U, avec repère discret -->
-  <line x1="576" y1="127" x2="527" y2="158"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-  <text x="521" y="161" text-anchor="end" font-size="9.5" fill="var(--figure-ink)">
-    <tspan dy="-5" font-size="7.5">235</tspan><tspan dy="5">U — 7,59 MeV/nucléon</tspan>
-  </text>
+    <!-- Étiquette ²³⁵U, avec repère discret -->
+    <line x1="576" y1="127" x2="527" y2="158"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="521" y="161" text-anchor="end" font-size="9.5" fill="var(--figure-ink)">
+      <tspan dy="-5" font-size="7.5">235</tspan><tspan dy="5">U — 7,59 MeV/nucléon</tspan>
+    </text>
+  </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════
-       FUSION — flèche vers le sommet, à gauche (noyaux légers)
+       STEP 2 — lecture : la construction/lecture du sommet
+       (le maximum de la courbe = le noyau le plus stable)
        ══════════════════════════════════════════════════════ -->
-  <line x1="92" y1="250" x2="192" y2="250"
-        stroke="var(--figure-accent)" stroke-width="1.8"/>
-  <polygon points="192,250 182,245.5 182,254.5" fill="var(--figure-accent)"/>
-  <text x="142" y="236" text-anchor="middle" font-size="12" font-weight="700"
-        fill="var(--figure-accent)">FUSION</text>
-  <text x="142" y="264" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-ink-soft)">noyaux légers (H, <tspan dy="-4" font-size="7">4</tspan><tspan dy="4">He…)</tspan></text>
-  <text x="142" y="278" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-ink-soft)">→ énergie libérée</text>
+  <g id="step-2">
+    <!-- Repères pointillés du sommet (⁵⁶Fe, A=56, El/A=8,79) -->
+    <line x1="80" y1="86.3" x2="199.2" y2="86.3"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="199.2" y1="86.3" x2="199.2" y2="350"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="76" y1="86.3" x2="84" y2="86.3"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="70" y="90.3" text-anchor="end" font-size="10.5"
+          fill="var(--figure-accent)">8,79</text>
+
+    <!-- Boîte "sommet" — formule / valeur -->
+    <rect x="225" y="44" width="270" height="46" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="360" y="60" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)">Maximum : <tspan dy="-5" font-size="9">56</tspan><tspan dy="5">Fe — le noyau le plus stable</tspan></text>
+    <text x="360" y="77" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">l</tspan><tspan dy="-3">/A ≈ 8,79 MeV/nucléon</tspan></text>
+    <!-- Repère discret reliant la boîte au point du sommet -->
+    <line x1="270" y1="90" x2="207" y2="89"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+  </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════
-       FISSION — flèche vers le sommet, à droite (noyaux lourds)
+       STEP 3 — lecture : fusion (légers) et fission (lourds),
+       les deux se rapprochant du sommet — l'interprétation finale
        ══════════════════════════════════════════════════════ -->
-  <line x1="576" y1="310" x2="216" y2="310"
-        stroke="var(--figure-accent)" stroke-width="1.8"/>
-  <polygon points="216,310 226,305.5 226,314.5" fill="var(--figure-accent)"/>
-  <text x="396" y="296" text-anchor="middle" font-size="12" font-weight="700"
-        fill="var(--figure-accent)">FISSION</text>
-  <text x="396" y="326" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-ink-soft)">noyaux lourds (<tspan dy="-4" font-size="7">235</tspan><tspan dy="4">U…)</tspan></text>
-  <text x="396" y="340" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-ink-soft)">→ énergie libérée</text>
+  <g id="step-3">
+    <!-- FUSION — flèche vers le sommet, à gauche (noyaux légers) -->
+    <line x1="92" y1="250" x2="192" y2="250"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="192,250 182,245.5 182,254.5" fill="var(--figure-accent)"/>
+    <text x="142" y="236" text-anchor="middle" font-size="12" font-weight="700"
+          fill="var(--figure-accent)">FUSION</text>
+    <text x="142" y="264" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">noyaux légers (H, <tspan dy="-4" font-size="7">4</tspan><tspan dy="4">He…)</tspan></text>
+    <text x="142" y="278" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">→ énergie libérée</text>
 
-  <!-- Captions -->
-  <text x="335" y="398" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">E<tspan dy="3" font-size="7.5">l</tspan><tspan dy="-3">/A (MeV/nucléon) en fonction de A — allure générale (échelle linéaire), les valeurs réelles ont de légères irrégularités locales.</tspan></text>
-  <text x="335" y="414" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Le sommet (<tspan dy="-4" font-size="7.5">56</tspan><tspan dy="4">Fe, A≈56) est le noyau le plus stable : fusion et fission s'en rapprochent toutes deux, en libérant de l'énergie.</tspan></text>
+    <!-- FISSION — flèche vers le sommet, à droite (noyaux lourds) -->
+    <line x1="576" y1="310" x2="216" y2="310"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="216,310 226,305.5 226,314.5" fill="var(--figure-accent)"/>
+    <text x="396" y="296" text-anchor="middle" font-size="12" font-weight="700"
+          fill="var(--figure-accent)">FISSION</text>
+    <text x="396" y="326" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">noyaux lourds (<tspan dy="-4" font-size="7">235</tspan><tspan dy="4">U…)</tspan></text>
+    <text x="396" y="340" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">→ énergie libérée</text>
+  </g><!-- /step-3 -->
 
 </svg>

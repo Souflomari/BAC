@@ -3,10 +3,17 @@
      aria-label="Trajectoire parabolique d'un projectile lancé depuis l'origine avec une vitesse initiale v0 inclinée d'un angle alpha au-dessus de l'horizontale : la parabole calculée, le vecteur v0 décomposé en v0x et v0y, la flèche (hauteur au sommet) et la portée (distance au sol) marquées, et le vecteur g vers le bas.">
   <title>Trajectoire d'un projectile — décomposition de v0, flèche et portée</title>
   <!--
-    trajectoire-parabolique.svg — figure STATIQUE, cœur de la partie
-    "projectile" de la leçon (R2-R5).
+    trajectoire-parabolique.svg — STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 :
+    graphe/trajectoire, toujours stagé, ordre axes → données → lecture). Les
+    axes (Ox, Oy) jouent le rôle de chrome donné, toujours visible, non stagé.
+      step-1 : la parabole seule — données (la trajectoire calculée).
+      step-2 : + v0, v0x, v0y, α, g — lecture : vecteurs vitesse et
+               annotation de force (la pesanteur constante).
+      step-3 : + sommet/flèche f et point de chute/portée D — lecture :
+               les deux grandeurs-clé, jamais le même nombre.
 
-    Reprend EXACTEMENT l'exemple numérique filé dans le texte (R2-R4) :
+    Cœur de la partie "projectile" de la leçon (R2-R5). Reprend EXACTEMENT
+    l'exemple numérique filé dans le texte (R2-R4) :
       v0 = 25 m/s, sinα = 0,60, cosα = 0,80  ⇒  v0x = 20 m/s, v0y = 15 m/s
       g ≈ 9,8 m/s², tanα = 0,75
       y(x) = tanα·x − g/(2·v0x²)·x² = 0,75x − 0,01225x²   (R3)
@@ -68,6 +75,10 @@
       v0 (résultante), g                               : --figure-ink
       v0x, v0y (composantes), axes, arc α, brackets     : --figure-ink-soft
       sommet / point de chute (sur la courbe)          : --figure-accent
+
+    Les captions sont portées par trajectoire-parabolique.stages.json
+    (figcaption hors-SVG) — aucun texte de légende baké ici (même
+    convention que regimes-uc.svg / tangente-derivee.svg).
   -->
 
   <!-- Titre -->
@@ -96,91 +107,97 @@
   <text x="72" y="312" text-anchor="end" font-size="10"
         fill="var(--figure-ink-soft)">O</text>
 
-  <!-- ── Trajectoire — la vraie parabole calculée (grandeur d'intérêt) ─ -->
-  <path d="
-    M80,300
-    L100,274.82 L120,251.79 L140,230.90 L160,212.15 L180,195.55
-    L200,181.09 L220,168.77 L240,158.60 L260,150.57 L280,144.69
-    L300,140.95 L320,139.35 L324.9,139.14 L340,139.90 L360,142.59
-    L380,147.42 L400,154.40 L420,163.52 L440,174.79 L460,188.20
-    L480,203.75 L500,221.45 L520,241.29 L540,263.27 L560,287.40
-    L569.8,300
-  " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : la parabole seule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Trajectoire — la vraie parabole calculée (grandeur d'intérêt) -->
+    <path d="
+      M80,300
+      L100,274.82 L120,251.79 L140,230.90 L160,212.15 L180,195.55
+      L200,181.09 L220,168.77 L240,158.60 L260,150.57 L280,144.69
+      L300,140.95 L320,139.35 L324.9,139.14 L340,139.90 L360,142.59
+      L380,147.42 L400,154.40 L420,163.52 L440,174.79 L460,188.20
+      L480,203.75 L500,221.45 L520,241.29 L540,263.27 L560,287.40
+      L569.8,300
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-1 -->
 
-  <!-- ── Vecteur v0 (résultante) — tangent à la courbe à l'origine ───── -->
-  <line x1="80" y1="300" x2="190" y2="155.63"
-        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="190,155.63 186.31,167.90 179.15,162.44" fill="var(--figure-ink)"/>
-  <text x="113" y="212" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — lecture : v0 décomposé (v0x, v0y, α) et g
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Vecteur v0 (résultante) — tangent à la courbe à l'origine -->
+    <line x1="80" y1="300" x2="190" y2="155.63"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="190,155.63 186.31,167.90 179.15,162.44" fill="var(--figure-ink)"/>
+    <text x="113" y="212" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
 
-  <!-- Composante v0x (horizontale, pointillée) -->
-  <line x1="80" y1="300" x2="190" y2="300"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3" stroke-linecap="round"/>
-  <polygon points="190,300 178,295.5 178,304.5" fill="var(--figure-ink-soft)"/>
-  <text x="135" y="314" text-anchor="middle" font-size="10.5" font-style="italic"
-        fill="var(--figure-ink-soft)">v<tspan dy="3" font-size="7.5">0x</tspan></text>
+    <!-- Composante v0x (horizontale, pointillée) -->
+    <line x1="80" y1="300" x2="190" y2="300"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3" stroke-linecap="round"/>
+    <polygon points="190,300 178,295.5 178,304.5" fill="var(--figure-ink-soft)"/>
+    <text x="135" y="314" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">v<tspan dy="3" font-size="7.5">0x</tspan></text>
 
-  <!-- Composante v0y (verticale, pointillée) -->
-  <line x1="190" y1="300" x2="190" y2="155.63"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3" stroke-linecap="round"/>
-  <polygon points="190,155.63 186.5,164.63 193.5,164.63" fill="var(--figure-ink-soft)"/>
-  <text x="200" y="230" text-anchor="start" font-size="10.5" font-style="italic"
-        fill="var(--figure-ink-soft)">v<tspan dy="3" font-size="7.5">0y</tspan></text>
+    <!-- Composante v0y (verticale, pointillée) -->
+    <line x1="190" y1="300" x2="190" y2="155.63"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3" stroke-linecap="round"/>
+    <polygon points="190,155.63 186.5,164.63 193.5,164.63" fill="var(--figure-ink-soft)"/>
+    <text x="200" y="230" text-anchor="start" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">v<tspan dy="3" font-size="7.5">0y</tspan></text>
 
-  <!-- Arc de l'angle α, entre Ox et v0 -->
-  <path d="M104,300 L103.39,294.60 L101.57,289.48 L98.65,284.90 L94.54,280.91"
-        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-  <text x="115" y="283" font-size="11" font-style="italic"
-        fill="var(--figure-ink-soft)">α</text>
+    <!-- Arc de l'angle α, entre Ox et v0 -->
+    <path d="M104,300 L103.39,294.60 L101.57,289.48 L98.65,284.90 L94.54,280.91"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="115" y="283" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">α</text>
 
-  <!-- ── Sommet (v_y = 0) — point sur la courbe ───────────────────────── -->
-  <circle cx="324.9" cy="139.14" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Vecteur g — constant, vers le bas -->
+    <line x1="575" y1="42" x2="575" y2="82"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="575,82 570.5,71 579.5,71" fill="var(--figure-ink)"/>
+    <text x="583" y="66" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">g</text>
+  </g><!-- /step-2 -->
 
-  <!-- Bracket vertical : flèche f (hauteur, mesurée depuis le sol jusqu'au sommet) -->
-  <line x1="324.9" y1="139.14" x2="345" y2="139.14"
-        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="345" y1="300" x2="345" y2="139.14"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <line x1="340" y1="139.14" x2="350" y2="139.14"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <line x1="340" y1="300" x2="350" y2="300"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <text x="357" y="222" font-size="12" font-style="italic"
-        fill="var(--figure-ink-soft)">f</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : flèche f (sommet) et portée D (point de chute)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Sommet (v_y = 0) — point sur la courbe -->
+    <circle cx="324.9" cy="139.14" r="3.2" fill="var(--figure-accent)"/>
 
-  <!-- ── Point de chute — point sur la courbe (y = 0, x = D) ──────────── -->
-  <circle cx="569.8" cy="300" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Bracket vertical : flèche f (hauteur, mesurée depuis le sol jusqu'au sommet) -->
+    <line x1="324.9" y1="139.14" x2="345" y2="139.14"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="345" y1="300" x2="345" y2="139.14"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="340" y1="139.14" x2="350" y2="139.14"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="340" y1="300" x2="350" y2="300"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="357" y="222" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">f</text>
 
-  <!-- Bracket horizontal : portée D (distance au sol, du lancement à l'arrivée) -->
-  <line x1="80" y1="300" x2="80" y2="322"
-        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="569.8" y1="300" x2="569.8" y2="322"
-        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="80" y1="324" x2="569.8" y2="324"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <line x1="80" y1="319" x2="80" y2="329"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <line x1="569.8" y1="319" x2="569.8" y2="329"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <text x="324.9" y="340" text-anchor="middle" font-size="12" font-style="italic"
-        fill="var(--figure-ink-soft)">D</text>
+    <!-- Point de chute — point sur la courbe (y = 0, x = D) -->
+    <circle cx="569.8" cy="300" r="3.2" fill="var(--figure-accent)"/>
 
-  <!-- ── Vecteur g — constant, vers le bas ─────────────────────────── -->
-  <line x1="575" y1="42" x2="575" y2="82"
-        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="575,82 570.5,71 579.5,71" fill="var(--figure-ink)"/>
-  <text x="583" y="66" font-size="13" font-style="italic"
-        fill="var(--figure-ink)">g</text>
-
-  <!-- Captions -->
-  <text x="320" y="392" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">v<tspan dy="3" font-size="7.5">x</tspan><tspan dy="-3">(t) = v</tspan><tspan
-        dy="3" font-size="7.5">0</tspan><tspan dy="-3"> cos α reste constante tout au long du vol ; seule v</tspan><tspan
-        dy="3" font-size="7.5">y</tspan><tspan dy="-3">(t) varie et s'annule au sommet.</tspan></text>
-  <text x="320" y="409" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">La flèche f (hauteur, au sommet où v<tspan
-        dy="3" font-size="7.5">y</tspan><tspan dy="-3"> = 0) et la portée D (distance au sol, à l'arrivée) ne sont jamais le même nombre.</tspan></text>
+    <!-- Bracket horizontal : portée D (distance au sol, du lancement à l'arrivée) -->
+    <line x1="80" y1="300" x2="80" y2="322"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="569.8" y1="300" x2="569.8" y2="322"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="80" y1="324" x2="569.8" y2="324"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="80" y1="319" x2="80" y2="329"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="569.8" y1="319" x2="569.8" y2="329"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="324.9" y="340" text-anchor="middle" font-size="12"
+          fill="var(--figure-ink-soft)">D</text>
+  </g><!-- /step-3 -->
 
 </svg>

@@ -75,41 +75,39 @@
     E<tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> = -13,6 / n</tspan><tspan dy="-5" font-size="8">2</tspan><tspan dy="5"> (eV)</tspan>
   </text>
 
-  <!-- ══════════════════════════════════════════════════════
-       Niveaux quantifiés — ink (structure, pas le focus)
-       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ══════════════════════════════════════════════════════
+         Niveaux quantifiés — ink (structure, pas le focus)
+         ══════════════════════════════════════════════════════ -->
 
-  <!-- n = 3 -->
-  <line x1="150" y1="122.2" x2="480" y2="122.2" stroke="var(--figure-ink)" stroke-width="2"/>
-  <text x="488" y="126" font-size="10.5" fill="var(--figure-ink)">n = 3  (-1,51 eV)</text>
+    <!-- n = 3 -->
+    <line x1="150" y1="122.2" x2="480" y2="122.2" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="488" y="126" font-size="10.5" fill="var(--figure-ink)">n = 3  (-1,51 eV)</text>
 
-  <!-- n = 2 -->
-  <line x1="150" y1="162.5" x2="480" y2="162.5" stroke="var(--figure-ink)" stroke-width="2"/>
-  <text x="488" y="166" font-size="10.5" fill="var(--figure-ink)">n = 2  (-3,4 eV)</text>
+    <!-- n = 2 -->
+    <line x1="150" y1="162.5" x2="480" y2="162.5" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="488" y="166" font-size="10.5" fill="var(--figure-ink)">n = 2  (-3,4 eV)</text>
 
-  <!-- n = 1 — état fondamental : trait plus épais (structure, pas couleur) -->
-  <line x1="150" y1="380" x2="480" y2="380" stroke="var(--figure-ink)" stroke-width="2.6"/>
-  <text x="488" y="384" font-size="10.5" fill="var(--figure-ink)">n = 1  (-13,6 eV)</text>
+    <!-- n = 1 — état fondamental : trait plus épais (structure, pas couleur) -->
+    <line x1="150" y1="380" x2="480" y2="380" stroke="var(--figure-ink)" stroke-width="2.6"/>
+    <text x="488" y="384" font-size="10.5" fill="var(--figure-ink)">n = 1  (-13,6 eV)</text>
+  </g>
 
-  <!-- ══════════════════════════════════════════════════════
-       Transitions — accent, LE point focal unique de la figure
-       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Absorption n = 1 → n = 2 -->
+    <line x1="210" y1="375" x2="210" y2="167.5" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="210,167.5 205,179.5 215,179.5" fill="var(--figure-accent)"/>
+    <text x="225" y="262" font-size="10.5" font-weight="600" fill="var(--figure-accent)">absorption : n = 1 → n = 2</text>
+    <text x="225" y="278" font-size="10.5" fill="var(--figure-accent)">ΔE = h·ν = 10,2 eV</text>
+  </g>
 
-  <!-- Absorption n = 1 → n = 2 -->
-  <line x1="210" y1="375" x2="210" y2="167.5" stroke="var(--figure-accent)" stroke-width="2.2"/>
-  <polygon points="210,167.5 205,179.5 215,179.5" fill="var(--figure-accent)"/>
-  <text x="225" y="262" font-size="10.5" font-weight="600" fill="var(--figure-accent)">absorption : n = 1 → n = 2</text>
-  <text x="225" y="278" font-size="10.5" fill="var(--figure-accent)">ΔE = h·ν = 10,2 eV</text>
-
-  <!-- Émission n = 3 → n = 2 -->
-  <line x1="340" y1="127.2" x2="340" y2="157.5" stroke="var(--figure-accent)" stroke-width="2.2"/>
-  <polygon points="340,157.5 335,145.5 345,145.5" fill="var(--figure-accent)"/>
-  <line x1="340" y1="157.5" x2="340" y2="200" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="3,2"/>
-  <text x="348" y="206" font-size="10.5" font-weight="600" fill="var(--figure-accent)">émission : n = 3 → n = 2</text>
-  <text x="348" y="222" font-size="10.5" fill="var(--figure-accent)">ΔE = h·ν ≈ 1,89 eV</text>
-
-  <!-- Captions -->
-  <text x="335" y="428" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">L'électron ne peut occuper que ces énergies précises (n = 1, 2, 3…) — jamais une valeur intermédiaire.</text>
-  <text x="335" y="442" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">n = 1 est l'état fondamental ; chaque transition échange un photon ΔE = h·ν avec l'extérieur.</text>
+  <g id="step-3">
+    <!-- Émission n = 3 → n = 2 -->
+    <line x1="340" y1="127.2" x2="340" y2="157.5" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="340,157.5 335,145.5 345,145.5" fill="var(--figure-accent)"/>
+    <line x1="340" y1="157.5" x2="340" y2="200" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="348" y="206" font-size="10.5" font-weight="600" fill="var(--figure-accent)">émission : n = 3 → n = 2</text>
+    <text x="348" y="222" font-size="10.5" fill="var(--figure-accent)">ΔE = h·ν ≈ 1,89 eV</text>
+  </g>
 
 </svg>

@@ -3,7 +3,21 @@
      aria-label="Un solide vu de face, en rotation autour d'un axe fixe Delta représenté par un point au centre. Une force F est appliquée en un point du solide ; sa droite d'action, prolongée en pointillé, passe à une distance d de l'axe — le bras de levier. L'angle theta repère la position angulaire du solide par rapport à une direction fixe, et une flèche courbe indique le sens de rotation positif choisi.">
   <title>Moment d'une force par rapport à un axe fixe Δ</title>
   <!--
-    moment-force.svg — figure STATIQUE de référence pour M_Δ(F) = ±d·F.
+    moment-force.svg — figure STAGED (4 étapes) pour M_Δ(F) = ±d·F.
+      step-1 : le solide en rotation autour de Δ, sa position angulaire θ et
+               son sens de rotation positif (le décor, avant toute force).
+      step-2 : la force F, appliquée en A, et sa droite d'action prolongée
+               dans les deux sens (le pointillé reste SOUS F — même z-order
+               que la version statique, F peint par-dessus le pointillé
+               dans leur zone de recouvrement, entre A et H).
+      step-3 : le bras de levier d — la perpendiculaire de Δ à la droite
+               d'action, PAS à A : geste pédagogique clé (d ≈ 96 px, plus
+               court que R = |CA| = 150 px, précisément parce que F n'est
+               pas tangentielle). Ce groupe ne recouvre ni la droite
+               d'action ni F (vérifié géométriquement — x du segment d dans
+               [283,300], hors de leur zone x∈[338,396]), donc le peindre
+               après F ne change rien au rendu final.
+      step-4 : le moment résultant, signé.
 
     Géométrie (calculée, pas devinée) :
       Axe Δ (perpendiculaire à la page) : C = (300, 260) — symbole ⊙ (cercle + point).
@@ -52,91 +66,108 @@
       --figure-accent (le contrat de rendu : accent = la force / le moment)
   -->
 
-  <!-- Titre -->
+  <!-- Titre (permanent, ne change pas d'une étape à l'autre) -->
   <text x="300" y="26" text-anchor="middle"
         font-size="12" font-weight="600" letter-spacing="0.01em"
         fill="var(--figure-ink)">
     Moment d'une force par rapport à un axe fixe Δ
   </text>
 
-  <!-- ── Le solide, vu de face ─────────────────────────────────────────── -->
-  <rect x="100" y="70" width="400" height="340" rx="30"
-        fill="var(--figure-grid)" fill-opacity="0.35"
-        stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le solide en rotation, θ et le sens positif
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
 
-  <!-- ── Direction fixe du référentiel (référence de l'angle θ) ────────── -->
-  <line x1="300" y1="260" x2="490" y2="260"
-        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
-  <text x="450" y="250" text-anchor="middle" font-size="9.5"
-        fill="var(--figure-ink-soft)">direction fixe (référence)</text>
+    <!-- ── Le solide, vu de face ───────────────────────────────────────── -->
+    <rect x="100" y="70" width="400" height="340" rx="30"
+          fill="var(--figure-grid)" fill-opacity="0.35"
+          stroke="var(--figure-ink)" stroke-width="1.8"/>
 
-  <!-- ── Rayon attaché au solide, jusqu'au point A où F est appliquée ──── -->
-  <line x1="300" y1="260" x2="396" y2="145"
-        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
-  <circle cx="396" cy="145" r="3.2" fill="var(--figure-ink)"/>
+    <!-- ── Direction fixe du référentiel (référence de l'angle θ) ──────── -->
+    <line x1="300" y1="260" x2="490" y2="260"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="450" y="250" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">direction fixe (référence)</text>
 
-  <!-- ── Arc θ, entre la direction fixe et le rayon attaché au solide ──── -->
-  <path d="M342,260 Q342.0,240.4 327.0,227.8"
-        fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
-  <text x="352.6" y="239.5" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-ink)">θ</text>
+    <!-- ── Rayon attaché au solide, jusqu'au point A où F est appliquée ── -->
+    <line x1="300" y1="260" x2="396" y2="145"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="396" cy="145" r="3.2" fill="var(--figure-ink)"/>
 
-  <!-- ── Sens de rotation positif (flèche courbe autour de Δ) ──────────── -->
-  <path d="M253.6,272.4 Q265.0,314.9 308.3,307.3"
-        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <polygon points="316.2,305.9 309.0,311.2 307.6,303.3" fill="var(--figure-ink-soft)"/>
-  <text x="283" y="332" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">sens positif</text>
+    <!-- ── Arc θ, entre la direction fixe et le rayon attaché au solide ── -->
+    <path d="M342,260 Q342.0,240.4 327.0,227.8"
+          fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <text x="352.6" y="239.5" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">θ</text>
 
-  <!-- ── Axe Δ (symbole ⊙ : perpendiculaire à la page) ─────────────────── -->
-  <circle cx="300" cy="260" r="6.5" fill="var(--figure-surface)"
-          stroke="var(--figure-ink)" stroke-width="1.6"/>
-  <circle cx="300" cy="260" r="2" fill="var(--figure-ink)"/>
-  <text x="268" y="245" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-ink)">Δ</text>
+    <!-- ── Sens de rotation positif (flèche courbe autour de Δ) ────────── -->
+    <path d="M253.6,272.4 Q265.0,314.9 308.3,307.3"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <polygon points="316.2,305.9 309.0,311.2 307.6,303.3" fill="var(--figure-ink-soft)"/>
+    <text x="283" y="332" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">sens positif</text>
 
-  <!-- ── Droite d'action de F, prolongée en pointillé (dessinée sous F) ── -->
-  <line x1="415.7" y1="141.5" x2="263.1" y2="168.9"
-        stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="6,4"/>
+    <!-- ── Axe Δ (symbole ⊙ : perpendiculaire à la page) ───────────────── -->
+    <circle cx="300" cy="260" r="6.5" fill="var(--figure-surface)"
+            stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="300" cy="260" r="2" fill="var(--figure-ink)"/>
+    <text x="268" y="245" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">Δ</text>
 
-  <!-- ── Bras de levier d = distance de Δ à la droite d'action ─────────── -->
-  <line x1="300" y1="260" x2="283.0" y2="165.3"
-        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
-  <!-- petite butée perpendiculaire, à l'extrémité côté Δ -->
-  <line x1="304.9" y1="259.1" x2="295.1" y2="260.9"
-        stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <!-- marque d'angle droit en H, contre la droite d'action -->
-  <path d="M284.6,174.2 L275.7,175.8 L274.1,166.9"
-        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
-  <text x="309" y="212" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-accent)">d</text>
+  </g><!-- /step-1 -->
 
-  <!-- ── Force F, appliquée en A (dessinée par-dessus la droite d'action) -->
-  <line x1="396" y1="145" x2="338.9" y2="155.3"
-        stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
-  <polygon points="327.1,157.4 339.8,160.2 338.0,150.3" fill="var(--figure-accent)"/>
-  <text x="306" y="163" text-anchor="middle" font-size="14" font-style="italic"
-        fill="var(--figure-accent)">F</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la force F et sa droite d'action prolongée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
 
-  <!-- ── Formule ────────────────────────────────────────────────────────── -->
-  <rect x="300" y="350" width="190" height="34" rx="6"
-        fill="var(--figure-accent)" fill-opacity="0.12"/>
-  <text x="395" y="371" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-accent)">M<tspan
-        dy="4" font-size="9" font-style="normal">Δ</tspan><tspan
-        dy="-4">(F) = +d · F</tspan>
-  </text>
+    <!-- ── Droite d'action de F, prolongée en pointillé (dessinée sous F) -->
+    <line x1="415.7" y1="141.5" x2="263.1" y2="168.9"
+          stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="6,4"/>
 
-  <!-- Captions -->
-  <text x="310" y="440" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)"><tspan
-        font-style="italic">d</tspan> est la distance de Δ à la droite d'action de <tspan
-        font-style="italic">F</tspan> — pas à son point d'application.</text>
-  <text x="310" y="456" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Ici, <tspan font-style="italic">F</tspan> fait tourner le solide dans le sens positif marqué, donc M<tspan
-        dy="3" font-size="7.5">Δ</tspan><tspan dy="-3">(</tspan><tspan
-        font-style="italic">F</tspan><tspan>) = +</tspan><tspan
-        font-style="italic">d</tspan><tspan> · </tspan><tspan
-        font-style="italic">F</tspan><tspan> &gt; 0.</tspan></text>
+    <!-- ── Force F, appliquée en A (dessinée par-dessus la droite d'action) -->
+    <line x1="396" y1="145" x2="338.9" y2="155.3"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="327.1,157.4 339.8,160.2 338.0,150.3" fill="var(--figure-accent)"/>
+    <text x="306" y="163" text-anchor="middle" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">F</text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le bras de levier d (perpendiculaire de Δ à la
+       droite d'action, pas à A)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- ── Bras de levier d = distance de Δ à la droite d'action ───────── -->
+    <line x1="300" y1="260" x2="283.0" y2="165.3"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- petite butée perpendiculaire, à l'extrémité côté Δ -->
+    <line x1="304.9" y1="259.1" x2="295.1" y2="260.9"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <!-- marque d'angle droit en H, contre la droite d'action -->
+    <path d="M284.6,174.2 L275.7,175.8 L274.1,166.9"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="309" y="212" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">d</text>
+
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — le moment résultant, signé
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+
+    <!-- ── Formule ──────────────────────────────────────────────────────── -->
+    <rect x="300" y="350" width="190" height="34" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="395" y="371" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">M<tspan
+          dy="4" font-size="9" font-style="normal">Δ</tspan><tspan
+          dy="-4">(F) = +d · F</tspan>
+    </text>
+
+  </g><!-- /step-4 -->
 
 </svg>

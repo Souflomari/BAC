@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 315"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Concentrations en fonction du temps pour une transformation non totale : les réactifs Fe3+ et SCN- diminuent puis se stabilisent à une valeur non nulle, tandis que le produit FeSCN2+ augmente puis se stabilise — la zone teintée marque l'équilibre dynamique atteint.">
+     aria-label="Concentrations en fonction du temps pour une transformation non totale : les réactifs Fe3+ et SCN- diminuent puis se stabilisent à une valeur non nulle, tandis que le produit FeSCN2+ augmente puis se stabilise — la zone teintée marque l'équilibre dynamique atteint. Révélation progressive en 3 étapes.">
   <title>Concentrations vers un équilibre dynamique</title>
   <!--
     equilibre-concentrations.svg — graphe STATIQUE et QUALITATIF des
@@ -52,94 +52,102 @@
       zone teintée + repère t_éq + légende de la zone : --figure-accent
         (le seul foyer d'attention : LA zone d'équilibre elle-même)
       axes, "0", label "concentration"               : --figure-ink-soft
+
+    Révélation progressive (StagedFigure, LESSON-EXPERIENCE-SPEC §2.5 —
+    graphe, donc toujours stagé, ordre canonique axes → données → lecture) :
+      step-1 : les axes seuls (titre, panneau, axes, "0", "concentration").
+      step-2 : les données — les deux courbes de concentration + leurs
+               étiquettes directes.
+      step-3 : la lecture — la zone d'équilibre teintée, le repère t_éq,
+               les points de palier, l'étiquette "état d'équilibre".
   -->
 
-  <!-- Titre -->
-  <text x="320" y="20" text-anchor="middle"
-        font-size="12" font-weight="600" letter-spacing="0.01em"
-        fill="var(--figure-ink)">
-    Évolution des concentrations vers un équilibre dynamique
-  </text>
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Évolution des concentrations vers un équilibre dynamique
+    </text>
 
-  <!-- Fond du panneau -->
-  <rect x="40" y="32" width="590" height="230" rx="6"
-        fill="var(--figure-surface)"
-        stroke="var(--figure-grid)" stroke-width="1"/>
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="230" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- Zone teintée : équilibre atteint (derrière les axes/courbes) -->
-  <rect x="350" y="50" width="260" height="180"
-        fill="var(--figure-accent)" fill-opacity="0.08"/>
+    <!-- ── Axes ──────────────────────────────────────────────── -->
+    <line x1="80" y1="230" x2="610" y2="230"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,230 598,225.5 598,234.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="230" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="234" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="46" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">concentration</text>
+    <text x="72" y="234" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
 
-  <!-- ── Axes ──────────────────────────────────────────────── -->
-  <line x1="80" y1="230" x2="610" y2="230"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="610,230 598,225.5 598,234.5" fill="var(--figure-ink-soft)"/>
-  <line x1="80" y1="230" x2="80" y2="50"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
-  <text x="617" y="234" font-size="11" font-style="italic"
-        fill="var(--figure-ink-soft)">t</text>
-  <text x="72" y="46" text-anchor="end" font-size="9.5"
-        fill="var(--figure-ink-soft)">concentration</text>
-  <text x="72" y="234" text-anchor="end" font-size="10"
-        fill="var(--figure-ink-soft)">0</text>
+  <g id="step-2">
+    <!--
+      Courbe réactifs [Fe3+] = [SCN-] — décroissante, palier ≈165,6
+      (nettement au-dessus de l'axe : ne s'annule pas).
+    -->
+    <path d="
+      M80,70
+      L108,97.2 L136,116.7 L164,130.7 L192,140.7 L220,147.9
+      L248,153.0 L276,156.7 L304,159.3 L332,161.2 L360,162.6
+      L388,163.5 L416,164.2 L444,164.7 L472,165.1 L500,165.4
+      L540,165.5 L580,165.6 L610,165.6
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- Repère vertical à t_éq (début de la zone teintée) -->
-  <line x1="350" y1="50" x2="350" y2="230"
-        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="350" y1="226" x2="350" y2="234"
-        stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <text x="350" y="247" text-anchor="middle" font-size="11" font-style="italic"
-        fill="var(--figure-accent)">t<tspan dy="4" font-size="8">éq</tspan></text>
+    <!-- Courbe produit [FeSCN2+] — croissante depuis 0, palier ≈134,4 -->
+    <path d="
+      M80,230
+      L108,202.8 L136,183.3 L164,169.3 L192,159.3 L220,152.1
+      L248,147.0 L276,143.3 L304,140.7 L332,138.8 L360,137.4
+      L388,136.5 L416,135.8 L444,135.3 L472,134.9 L500,134.6
+      L540,134.5 L580,134.4 L610,134.4
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!--
-    Courbe réactifs [Fe3+] = [SCN-] — décroissante, palier ≈165,6
-    (nettement au-dessus de l'axe : ne s'annule pas).
-  -->
-  <path d="
-    M80,70
-    L108,97.2 L136,116.7 L164,130.7 L192,140.7 L220,147.9
-    L248,153.0 L276,156.7 L304,159.3 L332,161.2 L360,162.6
-    L388,163.5 L416,164.2 L444,164.7 L472,165.1 L500,165.4
-    L540,165.5 L580,165.6 L610,165.6
-  " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Étiquettes directes des courbes (avec la courbe, pas de légende à distance) -->
+    <text x="415" y="150" font-size="11" font-style="italic" fill="var(--figure-ink)">[Fe<tspan
+          dy="-4" font-size="7">3+</tspan><tspan
+          dy="4">] = [SCN</tspan><tspan
+          dy="-4" font-size="7">-</tspan><tspan
+          dy="4">]</tspan><tspan
+          dy="0" font-style="normal" font-size="9" fill="var(--figure-ink-soft)"> — ne s&#8217;annule pas</tspan>
+    </text>
+    <text x="415" y="118" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">[FeSCN<tspan
+          dy="-4" font-size="7">2+</tspan><tspan
+          dy="4">]</tspan>
+    </text>
+  </g><!-- /step-2 -->
 
-  <!-- Courbe produit [FeSCN2+] — croissante depuis 0, palier ≈134,4 -->
-  <path d="
-    M80,230
-    L108,202.8 L136,183.3 L164,169.3 L192,159.3 L220,152.1
-    L248,147.0 L276,143.3 L304,140.7 L332,138.8 L360,137.4
-    L388,136.5 L416,135.8 L444,135.3 L472,134.9 L500,134.6
-    L540,134.5 L580,134.4 L610,134.4
-  " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="step-3">
+    <!-- Zone teintée : équilibre atteint -->
+    <rect x="350" y="50" width="260" height="180"
+          fill="var(--figure-accent)" fill-opacity="0.08"/>
 
-  <!-- Points de palier (marqueurs) -->
-  <circle cx="500" cy="165.4" r="3" fill="var(--figure-ink)"/>
-  <circle cx="500" cy="134.6" r="3" fill="var(--figure-ink-soft)"/>
+    <!-- Repère vertical à t_éq (début de la zone teintée) -->
+    <line x1="350" y1="50" x2="350" y2="230"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="350" y1="226" x2="350" y2="234"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="350" y="247" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">t<tspan dy="4" font-size="8">éq</tspan></text>
 
-  <!-- Étiquette de la zone d'équilibre -->
-  <text x="480" y="66" text-anchor="middle" font-size="10.5" font-weight="600"
-        fill="var(--figure-accent)">état d&#8217;équilibre (dynamique)</text>
+    <!-- Points de palier (marqueurs) -->
+    <circle cx="500" cy="165.4" r="3" fill="var(--figure-ink)"/>
+    <circle cx="500" cy="134.6" r="3" fill="var(--figure-ink-soft)"/>
 
-  <!-- Étiquettes directes des courbes (avec la courbe, pas de légende à distance) -->
-  <text x="415" y="150" font-size="11" font-style="italic" fill="var(--figure-ink)">[Fe<tspan
-        dy="-4" font-size="7">3+</tspan><tspan
-        dy="4">] = [SCN</tspan><tspan
-        dy="-4" font-size="7">-</tspan><tspan
-        dy="4">]</tspan><tspan
-        dy="0" font-style="normal" font-size="9" fill="var(--figure-ink-soft)"> — ne s&#8217;annule pas</tspan>
-  </text>
-  <text x="415" y="118" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">[FeSCN<tspan
-        dy="-4" font-size="7">2+</tspan><tspan
-        dy="4">]</tspan>
-  </text>
-
-  <!-- Captions -->
-  <text x="335" y="278" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Une fois l&#8217;équilibre atteint (zone teintée), les concentrations cessent de varier globalement —</text>
-  <text x="335" y="293" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">mais aucun réactif n&#8217;a disparu : les deux réactions, directe et inverse, continuent de se produire.</text>
+    <!-- Étiquette de la zone d'équilibre -->
+    <text x="480" y="66" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">état d&#8217;équilibre (dynamique)</text>
+  </g><!-- /step-3 -->
 
 </svg>

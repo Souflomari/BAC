@@ -32,95 +32,102 @@
       courbe x(t) : --figure-ink (structure, pas le sujet)
       axes, tick x_max (repère de contexte), unités : --figure-ink-soft
         (chrome neutre)
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5) : graphe → toujours stagé,
+    ordre canonique axes → données → lecture.
+      step-1 : axes, repère x_max (chrome neutre)
+      step-2 : la courbe x(t) (les données)
+      step-3 : la construction de t½ — guides, ticks, point de rencontre
+               et boîte formule x(t½) = x_max/2 (la lecture — la
+               construction interprétative, ajoutée en dernier)
+    L'ancien paragraphe de légende en bas de figure (dupliquant ce que la
+    caption d'étape dit maintenant) a été retiré ; les repères permanents
+    (x_max, t½, boîte formule) sont conservés.
   -->
 
-  <!-- Titre -->
-  <text x="320" y="20" text-anchor="middle"
-        font-size="12" font-weight="600" letter-spacing="0.01em"
-        fill="var(--figure-ink)">
-    Le temps de demi-réaction t<tspan dy="3" font-size="8.5">1/2</tspan><tspan dy="-3"> — construction graphique</tspan>
-  </text>
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Le temps de demi-réaction t<tspan dy="3" font-size="8.5">1/2</tspan><tspan dy="-3"> — construction graphique</tspan>
+    </text>
 
-  <!-- Fond du panneau -->
-  <rect x="40" y="32" width="590" height="350" rx="6"
-        fill="var(--figure-surface)"
-        stroke="var(--figure-grid)" stroke-width="1"/>
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="350" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
-  <line x1="80" y1="350" x2="610" y2="350"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
-  <line x1="80" y1="350" x2="80" y2="50"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
 
-  <text x="72" y="54" text-anchor="end" font-size="11"
-        fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan> (mmol)</tspan></text>
-  <text x="72" y="354" text-anchor="end" font-size="10"
-        fill="var(--figure-ink-soft)">0</text>
-  <text x="605" y="368" text-anchor="end" font-size="10.5"
-        fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan><tspan> (min)</tspan></text>
+    <text x="72" y="54" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan> (mmol)</tspan></text>
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+    <text x="605" y="368" text-anchor="end" font-size="10.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan><tspan> (min)</tspan></text>
 
-  <!-- Repère x_max (plateau, ink-soft — repère de contexte, pas le sujet de CETTE figure) -->
-  <line x1="76" y1="100" x2="84" y2="100"
-        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-  <text x="70" y="104" text-anchor="end" font-size="10.5" font-style="italic"
-        fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+    <!-- Repère x_max (plateau, ink-soft — repère de contexte, pas le sujet de CETTE figure) -->
+    <line x1="76" y1="100" x2="84" y2="100"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="104" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+  </g><!-- /step-1 -->
 
-  <!--
-    Courbe x(t) — identique à avancement-tangente.svg (même polyligne,
-    même modèle). Couleur ink : structure de fond, pas le sujet accent.
-  -->
-  <path d="
-    M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
-    L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
-    L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
-    L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
-    L610,100.24
-  " fill="none"
-    stroke="var(--figure-ink)"
-    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="step-2">
+    <!--
+      Courbe x(t) — identique à avancement-tangente.svg (même polyligne,
+      même modèle). Couleur ink : structure de fond, pas le sujet accent.
+    -->
+    <path d="
+      M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
+      L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
+      L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
+      L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
+      L610,100.24
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
 
-  <!-- ══════════════════════════════════════════════════════
-       Construction de t½ — LA construction, sujet unique de cette
-       figure, tout en accent (miroir exact de la construction des
-       demi-vies dans decroissance-courbe.svg)
-       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- ══════════════════════════════════════════════════════
+         Construction de t½ — LA construction, sujet unique de cette
+         figure, tout en accent (miroir exact de la construction des
+         demi-vies dans decroissance-courbe.svg)
+         ══════════════════════════════════════════════════════ -->
 
-  <!-- x_max/2 : guide horizontal de l'axe jusqu'à la courbe -->
-  <line x1="80" y1="225" x2="133" y2="225"
-        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="76" y1="225" x2="84" y2="225"
-        stroke="var(--figure-accent)" stroke-width="1.2"/>
-  <text x="70" y="229" text-anchor="end" font-size="10.5" font-style="italic"
-        fill="var(--figure-accent)">x<tspan dy="3" font-size="7.5">max</tspan><tspan dy="-3">/2</tspan></text>
+    <!-- x_max/2 : guide horizontal de l'axe jusqu'à la courbe -->
+    <line x1="80" y1="225" x2="133" y2="225"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="76" y1="225" x2="84" y2="225"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="70" y="229" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">x<tspan dy="3" font-size="7.5">max</tspan><tspan dy="-3">/2</tspan></text>
 
-  <!-- t½ : guide vertical de la courbe jusqu'à l'axe des temps -->
-  <line x1="133" y1="225" x2="133" y2="350"
-        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="133" y1="345" x2="133" y2="355"
-        stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <text x="133" y="366" text-anchor="middle" font-size="11" font-style="italic"
-        fill="var(--figure-accent)">t<tspan dy="4" font-size="8">1/2</tspan></text>
+    <!-- t½ : guide vertical de la courbe jusqu'à l'axe des temps -->
+    <line x1="133" y1="225" x2="133" y2="350"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="133" y1="345" x2="133" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="133" y="366" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">t<tspan dy="4" font-size="8">1/2</tspan></text>
 
-  <!-- Point de rencontre horizontale/courbe -->
-  <circle cx="133" cy="225" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Point de rencontre horizontale/courbe -->
+    <circle cx="133" cy="225" r="3.2" fill="var(--figure-accent)"/>
 
-  <!-- Boîte formule -->
-  <rect x="380" y="48" width="235" height="32" rx="5"
-        fill="var(--figure-accent)" fill-opacity="0.12"/>
-  <text x="497.5" y="69" text-anchor="middle" font-size="13" font-style="italic"
-        fill="var(--figure-accent)">x(t<tspan dy="4" font-size="9">1/2</tspan><tspan
-        dy="-4">) = x</tspan><tspan dy="4" font-size="9">max</tspan><tspan dy="-4">/2</tspan></text>
-
-  <!-- Captions -->
-  <text x="335" y="398" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">La droite horizontale à x<tspan dy="3" font-size="7.5">max</tspan><tspan
-        dy="-3">/2 coupe la courbe x(t) ; la verticale abaissée donne t</tspan><tspan
-        dy="3" font-size="7.5">1/2</tspan><tspan dy="-3"> en abscisse.</tspan></text>
-  <text x="335" y="412" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">x(t) croît sans jamais redescendre : elle ne peut couper x<tspan
-        dy="3" font-size="7.5">max</tspan><tspan dy="-3">/2 qu'une seule fois — t</tspan><tspan
-        dy="3" font-size="7.5">1/2</tspan><tspan dy="-3"> est donc unique.</tspan></text>
+    <!-- Boîte formule -->
+    <rect x="380" y="48" width="235" height="32" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="497.5" y="69" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">x(t<tspan dy="4" font-size="9">1/2</tspan><tspan
+          dy="-4">) = x</tspan><tspan dy="4" font-size="9">max</tspan><tspan dy="-4">/2</tspan></text>
+  </g><!-- /step-3 -->
 
 </svg>

@@ -4,8 +4,18 @@
   <title>Le défaut de masse — l'exemple de l'hélium 4</title>
   <!--
     defaut-masse.svg — diagramme STATIQUE, structurel (pas un graphe de
-    courbe). Toutes les valeurs sont copiées telles quelles de l'exemple
-    travaillé du R2 (lesson.md) :
+    courbe). STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2) : 3 couches
+    sémantiques distinctes — l'état séparé (step-1), l'état assemblé
+    (step-2), l'écart chiffré et sa signification énergétique (step-3) —
+    et cet ordre EST le geste d'enseignement du R2 : le texte fait
+    explicitement peser d'abord les nucléons séparés, puis assemblés,
+    avant de révéler l'écart ("Avant de lire la suite, prends position :
+    le noyau assemblé pèse-t-il exactement la somme... ?"). La figure
+    rejoue ce même engagement-puis-révélation, pas une simple juxtaposition
+    décorative.
+
+    Toutes les valeurs sont copiées telles quelles de l'exemple travaillé
+    du R2 (lesson.md) :
       m_p = 1,00728 u ; m_n = 1,00867 u ; m(4He) = 4,00151 u
       somme séparée = 2×1,00728 + 2×1,00867 = 4,03190 u
       Δm = 4,03190 − 4,00151 = 0,03039 u
@@ -31,6 +41,11 @@
       (différenciation par FORME/remplissage, pas par la couleur seule)
       flèche d'assemblage, encadré Δm/El : --figure-accent (le sujet de la figure)
       encadrés avant/après eux-mêmes : contour --figure-accent, fond --figure-surface
+
+    Les captions sont portées par defaut-masse.stages.json — les deux
+    paragraphes de légende du bas ont été retirés : ils dupliquaient ce
+    que portent maintenant ces captions (même convention que
+    courbe-exponentielle.svg / tangente-derivee.svg).
   -->
 
   <!-- Titre -->
@@ -46,88 +61,91 @@
         stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- ══════════════════════════════════════════════════════
-       Encadré AVANT — 2 protons + 2 neutrons séparés
+       STEP 1 — l'état séparé : 2 protons + 2 neutrons, isolés
        ══════════════════════════════════════════════════════ -->
-  <rect x="50" y="70" width="230" height="170" rx="10"
-        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <text x="165" y="90" text-anchor="middle" font-size="11" font-weight="700"
-        letter-spacing="0.04em" fill="var(--figure-accent)">AVANT</text>
+  <g id="step-1">
+    <rect x="50" y="70" width="230" height="170" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="165" y="90" text-anchor="middle" font-size="11" font-weight="700"
+          letter-spacing="0.04em" fill="var(--figure-accent)">AVANT</text>
 
-  <!-- 2 protons (pleins), 2 neutrons (creux) — dispersés, non liés -->
-  <circle cx="100" cy="122" r="14" fill="var(--figure-accent)"/>
-  <text x="100" y="126" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-surface)">p</text>
-  <circle cx="230" cy="122" r="14" fill="var(--figure-accent)"/>
-  <text x="230" y="126" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-surface)">p</text>
-  <circle cx="100" cy="158" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-  <text x="100" y="162" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-ink-soft)">n</text>
-  <circle cx="230" cy="158" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-  <text x="230" y="162" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-ink-soft)">n</text>
+    <!-- 2 protons (pleins), 2 neutrons (creux) — dispersés, non liés -->
+    <circle cx="100" cy="122" r="14" fill="var(--figure-accent)"/>
+    <text x="100" y="126" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-surface)">p</text>
+    <circle cx="230" cy="122" r="14" fill="var(--figure-accent)"/>
+    <text x="230" y="126" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-surface)">p</text>
+    <circle cx="100" cy="158" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="100" y="162" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">n</text>
+    <circle cx="230" cy="158" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="230" y="162" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">n</text>
 
-  <text x="165" y="196" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">2 protons + 2 neutrons séparés</text>
-  <text x="165" y="222" text-anchor="middle" font-size="10.5" font-weight="600"
-        fill="var(--figure-ink)">m = 2m<tspan dy="3" font-size="8">p</tspan><tspan dy="-3"> + 2m</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> = 4,03190 u</tspan></text>
+    <text x="165" y="196" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">2 protons + 2 neutrons séparés</text>
+    <text x="165" y="222" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">m = 2m<tspan dy="3" font-size="8">p</tspan><tspan dy="-3"> + 2m</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> = 4,03190 u</tspan></text>
+  </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════
-       Encadré APRÈS — noyau ⁴He assemblé (même taille que AVANT)
+       STEP 2 — l'état assemblé : le noyau ⁴He lié (même taille
+       d'encadré que l'état séparé, §pas de fausse échelle), et la
+       flèche d'assemblage qui relie les deux états
        ══════════════════════════════════════════════════════ -->
-  <rect x="360" y="70" width="230" height="170" rx="10"
-        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <text x="475" y="90" text-anchor="middle" font-size="11" font-weight="700"
-        letter-spacing="0.04em" fill="var(--figure-accent)">APRÈS</text>
+  <g id="step-2">
+    <rect x="360" y="70" width="230" height="170" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="475" y="90" text-anchor="middle" font-size="11" font-weight="700"
+          letter-spacing="0.04em" fill="var(--figure-accent)">APRÈS</text>
 
-  <!-- 4 nucléons regroupés, en contact (schématise le lien) -->
-  <circle cx="462" cy="128" r="15" fill="var(--figure-accent)"/>
-  <text x="462" y="132" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-surface)">p</text>
-  <circle cx="490" cy="128" r="15" fill="var(--figure-accent)"/>
-  <text x="490" y="132" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-surface)">p</text>
-  <circle cx="462" cy="156" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-  <text x="462" y="160" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-ink-soft)">n</text>
-  <circle cx="490" cy="156" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-  <text x="490" y="160" text-anchor="middle" font-size="11" font-weight="600"
-        fill="var(--figure-ink-soft)">n</text>
+    <!-- 4 nucléons regroupés, en contact (schématise le lien) -->
+    <circle cx="462" cy="128" r="15" fill="var(--figure-accent)"/>
+    <text x="462" y="132" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-surface)">p</text>
+    <circle cx="490" cy="128" r="15" fill="var(--figure-accent)"/>
+    <text x="490" y="132" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-surface)">p</text>
+    <circle cx="462" cy="156" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="462" y="160" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">n</text>
+    <circle cx="490" cy="156" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="490" y="160" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">n</text>
 
-  <text x="475" y="196" text-anchor="middle" font-size="10"
-        fill="var(--figure-ink-soft)">noyau <tspan dy="-5" font-size="7.5">4</tspan><tspan dy="5">He assemblé (lié)</tspan></text>
-  <text x="475" y="222" text-anchor="middle" font-size="10.5" font-weight="600"
-        fill="var(--figure-ink)">m(<tspan dy="-5" font-size="8">4</tspan><tspan dy="5">He) = 4,00151 u</tspan></text>
+    <text x="475" y="196" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">noyau <tspan dy="-5" font-size="7.5">4</tspan><tspan dy="5">He assemblé (lié)</tspan></text>
+    <text x="475" y="222" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">m(<tspan dy="-5" font-size="8">4</tspan><tspan dy="5">He) = 4,00151 u</tspan></text>
 
-  <!-- Flèche d'assemblage entre les deux encadrés -->
-  <line x1="282" y1="155" x2="358" y2="155"
-        stroke="var(--figure-accent)" stroke-width="1.8"/>
-  <polygon points="358,155 348,150.5 348,159.5" fill="var(--figure-accent)"/>
-  <text x="320" y="140" text-anchor="middle" font-size="10" font-style="italic"
-        fill="var(--figure-ink-soft)">assemblage</text>
-  <text x="320" y="176" text-anchor="middle" font-size="9" font-style="italic"
-        fill="var(--figure-ink-soft)">(interaction forte)</text>
+    <!-- Flèche d'assemblage entre les deux encadrés -->
+    <line x1="282" y1="155" x2="358" y2="155"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="358,155 348,150.5 348,159.5" fill="var(--figure-accent)"/>
+    <text x="320" y="140" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">assemblage</text>
+    <text x="320" y="176" text-anchor="middle" font-size="9" font-style="italic"
+          fill="var(--figure-ink-soft)">(interaction forte)</text>
+  </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════
-       Encadré Δm / El — la seule quantité qui compte, en texte
+       STEP 3 — lecture : l'écart chiffré Δm et sa signification
+       énergétique — le payoff du R2
        ══════════════════════════════════════════════════════ -->
-  <rect x="110" y="250" width="420" height="56" rx="6"
-        fill="var(--figure-accent)" fill-opacity="0.12"/>
-  <text x="320" y="270" text-anchor="middle" font-size="11"
-        fill="var(--figure-accent)">Δm = 4,03190 − 4,00151 = 0,03039 u</text>
-  <text x="320" y="292" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-accent)">E<tspan dy="3" font-size="8">l</tspan><tspan dy="-3"> = Δm · c</tspan><tspan dy="-5" font-size="8">2</tspan><tspan dy="5"> ≈ 28,31 MeV — énergie libérée à l'assemblage</tspan></text>
+  <g id="step-3">
+    <rect x="110" y="250" width="420" height="56" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="270" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">Δm = 4,03190 − 4,00151 = 0,03039 u</text>
+    <text x="320" y="292" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">l</tspan><tspan dy="-3"> = Δm · c</tspan><tspan dy="-5" font-size="8">2</tspan><tspan dy="5"> ≈ 28,31 MeV — énergie libérée à l'assemblage</tspan></text>
 
-  <!-- Repères discrets reliant les deux encadrés au calcul -->
-  <line x1="165" y1="240" x2="205" y2="250"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-  <line x1="475" y1="240" x2="435" y2="250"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-
-  <!-- Captions -->
-  <text x="320" y="332" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Le noyau assemblé (à droite) pèse moins que les 4 nucléons séparés (à gauche) : c'est le défaut de masse Δm.</text>
-  <text x="320" y="346" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Cette masse manquante ne disparaît pas : par E = mc², elle est exactement l'énergie de liaison libérée à l'assemblage.</text>
+    <!-- Repères discrets reliant les deux encadrés au calcul -->
+    <line x1="165" y1="240" x2="205" y2="250"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <line x1="475" y1="240" x2="435" y2="250"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+  </g><!-- /step-3 -->
 
 </svg>

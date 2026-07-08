@@ -3,9 +3,18 @@
      aria-label="Déflexion d'une particule chargée entrant avec une vitesse v0 dans une région de champ magnétique uniforme B perpendiculaire au plan (entrant, symbole en croix dans un cercle) : arc de cercle de rayon R, force de Lorentz F toujours perpendiculaire à la vitesse et dirigée vers le centre C, angle de déflexion thêta à la sortie du couloir de largeur l.">
   <title>Déflexion magnétique d'une particule chargée</title>
   <!--
-    deflexion-magnetique.svg — figure STATIQUE, cœur de la partie
-    "champ magnétique" de la leçon (R6). Cas cadre-correct : B ⊥ v0,
-    mouvement circulaire uniforme.
+    deflexion-magnetique.svg — STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 : graphe/
+    trajectoire, toujours stagé, ordre axes → données → lecture). Le "couloir de
+    champ" (fond + symbole B + ⊗ répétés) joue le rôle des axes : chrome donné,
+    toujours visible, non stagé.
+      step-1 : la trajectoire seule — données (arc puis ligne droite).
+      step-2 : + v0 et v — lecture : vecteurs vitesse (même norme, direction
+               qui a tourné).
+      step-3 : + F, C, R, θ, ℓ — lecture : la construction géométrique qui
+               explique la déflexion (sin θ = ℓ / R).
+
+    Cas cadre-correct : B ⊥ v0, mouvement circulaire uniforme (partie "champ
+    magnétique" de la leçon, R6).
 
     Géométrie (calculée, pas devinée) — schématique, choisie pour la
     lisibilité (le couple R/ℓ de l'exemple numérique du texte, R≈5,7cm et
@@ -49,6 +58,10 @@
       champ B (symboles ⊗), rayons R, arc θ, bracket ℓ, ligne de
       référence "sans champ"                                            : --figure-ink-soft
       région de champ (fond)                                            : --figure-grid
+
+    Les captions sont portées par deflexion-magnetique.stages.json (figcaption
+    hors-SVG) — aucun texte de légende baké ici (même convention que
+    regimes-uc.svg / tangente-derivee.svg).
   -->
 
   <!-- Titre -->
@@ -86,75 +99,84 @@
     <circle cx="220" cy="370" r="6.5"/><line x1="216" y1="366" x2="224" y2="374"/><line x1="224" y1="366" x2="216" y2="374"/>
   </g>
 
-  <!-- ── Vecteur v0 — juste avant l'entrée dans le champ ──────────────── -->
-  <line x1="95" y1="280" x2="140" y2="280"
-        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="140,280 128,275.5 128,284.5" fill="var(--figure-ink)"/>
-  <text x="100" y="271" font-size="13" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : la trajectoire seule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Trajectoire — arc de cercle (grandeur d'intérêt), puis ligne droite après la sortie -->
+    <path d="
+      M140,280
+      L155.69,279.31 L171.26,277.27 L186.59,273.87 L201.56,269.14
+      L216.07,263.14 L230,255.89 L243.24,247.45 L255.70,237.89
+      L355.28,154.30
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="355.28,154.30 348.98,165.47 343.20,158.57" fill="var(--figure-accent)"/>
+  </g><!-- /step-1 -->
 
-  <!-- ── Trajectoire — arc de cercle (grandeur d'intérêt), puis ligne droite après la sortie ── -->
-  <path d="
-    M140,280
-    L155.69,279.31 L171.26,277.27 L186.59,273.87 L201.56,269.14
-    L216.07,263.14 L230,255.89 L243.24,247.45 L255.70,237.89
-    L355.28,154.30
-  " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
-  <polygon points="355.28,154.30 348.98,165.47 343.20,158.57" fill="var(--figure-accent)"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — lecture : vecteurs vitesse v0 (entrée) et v (sortie)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Vecteur v0 — juste avant l'entrée dans le champ -->
+    <line x1="95" y1="280" x2="140" y2="280"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="140,280 128,275.5 128,284.5" fill="var(--figure-ink)"/>
+    <text x="100" y="271" font-size="13" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
 
-  <!-- ── Vecteur v à la sortie — même norme que v0, direction déviée ─── -->
-  <line x1="255.70" y1="237.89" x2="290.17" y2="208.95"
-        stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
-  <polygon points="290.17,208.95 283.87,220.12 278.09,213.22" fill="var(--figure-ink)"/>
-  <text x="296" y="204" font-size="11" font-style="italic" fill="var(--figure-ink)">v (= v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">)</tspan></text>
+    <!-- Vecteur v à la sortie — même norme que v0, direction déviée -->
+    <line x1="255.70" y1="237.89" x2="290.17" y2="208.95"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="290.17,208.95 283.87,220.12 278.09,213.22" fill="var(--figure-ink)"/>
+    <text x="296" y="204" font-size="11" font-style="italic" fill="var(--figure-ink)">v (= v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">)</tspan></text>
+  </g><!-- /step-2 -->
 
-  <!-- ── Centre C et rayons R (dashed) ─────────────────────────────── -->
-  <line x1="140" y1="100" x2="140" y2="280"
-        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="140" y1="100" x2="255.70" y2="237.89"
-        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <circle cx="140" cy="100" r="3" fill="var(--figure-ink-soft)"/>
-  <text x="148" y="96" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">C</text>
-  <text x="122" y="190" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">R</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : la construction géométrique (F, C, R, θ, ℓ)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Centre C et rayons R (dashed) -->
+    <line x1="140" y1="100" x2="140" y2="280"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="140" y1="100" x2="255.70" y2="237.89"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <circle cx="140" cy="100" r="3" fill="var(--figure-ink-soft)"/>
+    <text x="148" y="96" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">C</text>
+    <text x="122" y="190" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">R</text>
 
-  <!-- ── Force de Lorentz F — perpendiculaire à v, dirigée vers C ─────── -->
-  <line x1="140" y1="280" x2="140" y2="225"
-        stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
-  <polygon points="140,225 135.5,237 144.5,237" fill="var(--figure-ink)"/>
-  <text x="152" y="256" font-size="13" font-style="italic" fill="var(--figure-ink)">F</text>
+    <!-- Force de Lorentz F — perpendiculaire à v, dirigée vers C -->
+    <line x1="140" y1="280" x2="140" y2="225"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="140,225 135.5,237 144.5,237" fill="var(--figure-ink)"/>
+    <text x="152" y="256" font-size="13" font-style="italic" fill="var(--figure-ink)">F</text>
 
-  <line x1="255.70" y1="237.89" x2="220.34" y2="195.76"
-        stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
-  <polygon points="220.34,195.76 231.51,202.06 224.61,207.84" fill="var(--figure-ink)"/>
+    <line x1="255.70" y1="237.89" x2="220.34" y2="195.76"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="220.34,195.76 231.51,202.06 224.61,207.84" fill="var(--figure-ink)"/>
 
-  <!-- ── Ligne de référence pointillée : direction initiale, sans champ ── -->
-  <line x1="255.70" y1="237.89" x2="385.70" y2="237.89"
-        stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-dasharray="4,3"/>
-  <text x="330" y="231" font-size="9.5" fill="var(--figure-ink-soft)">(référence : direction sans champ)</text>
+    <!-- Ligne de référence pointillée : direction initiale, sans champ -->
+    <line x1="255.70" y1="237.89" x2="385.70" y2="237.89"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-dasharray="4,3"/>
+    <text x="330" y="231" font-size="9.5" fill="var(--figure-ink-soft)">(référence : direction sans champ)</text>
 
-  <!-- Arc de l'angle θ, entre la référence et la trajectoire déviée -->
-  <path d="M277.70,237.89 L277.37,234.07 L276.37,230.37 L274.75,226.89 L272.55,223.75"
-        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-  <text x="288" y="228" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">θ</text>
+    <!-- Arc de l'angle θ, entre la référence et la trajectoire déviée -->
+    <path d="M277.70,237.89 L277.37,234.07 L276.37,230.37 L274.75,226.89 L272.55,223.75"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="288" y="228" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">θ</text>
 
-  <!-- ── Bracket ℓ — largeur du couloir de champ ───────────────────── -->
-  <line x1="140" y1="400" x2="140" y2="415"
-        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="255.70" y1="400" x2="255.70" y2="415"
-        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="140" y1="417" x2="255.70" y2="417"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <line x1="140" y1="412" x2="140" y2="422"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <line x1="255.70" y1="412" x2="255.70" y2="422"
-        stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-  <text x="197.85" y="434" text-anchor="middle" font-size="12" font-style="italic"
-        fill="var(--figure-ink-soft)">ℓ</text>
-
-  <!-- Captions -->
-  <text x="320" y="460" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">F = q v∧B est toujours perpendiculaire à v, dirigée vers le centre C — elle ne change jamais la norme de la vitesse (v = v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">).</tspan></text>
-  <text x="320" y="477" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">R = m v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3"> / (|q| B), constant ⇒ trajectoire circulaire uniforme ; à la sortie du couloir de largeur ℓ, sin θ = ℓ / R.</tspan></text>
+    <!-- Bracket ℓ — largeur du couloir de champ -->
+    <line x1="140" y1="400" x2="140" y2="415"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="255.70" y1="400" x2="255.70" y2="415"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="140" y1="417" x2="255.70" y2="417"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="140" y1="412" x2="140" y2="422"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="255.70" y1="412" x2="255.70" y2="422"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="197.85" y="434" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">ℓ</text>
+  </g><!-- /step-3 -->
 
 </svg>

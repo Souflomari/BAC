@@ -2,7 +2,7 @@
      aria-label="Solide sur un plan incliné à 30 degrés : bilan des trois forces (poids P vertical, réaction normale N perpendiculaire au plan, frottement f vers le haut du plan), repère Ox le long de la descente et Oy sortant du plan, et décomposition du poids en mg sin alpha le long du plan et mg cos alpha perpendiculairement au plan, l'angle alpha se retrouvant entre P et la normale.">
   <title>Plan incliné — bilan des forces et décomposition du poids</title>
   <!--
-    plan-incline-forces.svg — figure STATIQUE, cœur du R7.
+    plan-incline-forces.svg — figure STAGED (4 étapes), cœur du R7.
     Géométrie calculée, pas devinée :
     - pente réelle α = 30° : hypoténuse de (80,88) à (620,400), soit un
       rapport 312/540 = 0,5778 = tan 30° (y vers le bas en SVG).
@@ -17,95 +17,109 @@
       r/cos(demi-angle)), même technique que moment-force.svg.
     Focus accent : la décomposition du poids (les deux composantes en
     pointillés + l'angle α répété en G) — une seule idée, répétée.
+    Étapes (geste d'enseignement — reprend l'ordre du texte : géométrie,
+    puis « Bilan des forces et repère », puis la décomposition du poids) :
+    (1) le plan incliné, son angle α, et le solide en G ;
+    (2) le bilan des trois forces P, N, f ;
+    (3) le repère choisi Ox, Oy ;
+    (4) la décomposition du poids en mg·sin α et mg·cos α.
   -->
   <rect width="720" height="470" fill="var(--figure-surface)"/>
 
-  <!-- ── Le plan incliné ─────────────────────────────────────────────── -->
-  <path d="M 80 88 L 620 400 L 80 400 Z" fill="var(--figure-surface)"
-        stroke="var(--figure-grid)" stroke-width="1.5"/>
-  <line x1="80" y1="88" x2="620" y2="400" stroke="var(--figure-ink)" stroke-width="2.5"/>
-  <line x1="80" y1="400" x2="620" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-
-  <!-- angle α au pied du plan (arc quadratique, contrôle sur la bissectrice) -->
-  <path d="M 550 400 Q 550 381.2 559.4 365" fill="none"
-        stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-  <text x="536" y="382" text-anchor="end" font-size="15" fill="var(--figure-ink)"
-        font-style="italic">α<tspan font-style="normal"> = 30°</tspan></text>
-
-  <!-- ── Le solide (rectangle posé sur la pente, tourné de 30°) ─────── -->
-  <g transform="rotate(30 320.8 194.75)">
-    <rect x="272.8" y="166.75" width="96" height="56" rx="3"
-          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
-  </g>
-  <circle cx="320.8" cy="194.75" r="4" fill="var(--figure-ink)"/>
-  <text x="333" y="190" font-size="15" font-style="italic" fill="var(--figure-ink)">G</text>
-
-  <!-- ── Les trois forces (échelle 16 px/N, f exagérée ×2) ──────────── -->
-  <!-- P : vertical, 157 px -->
-  <line x1="320.8" y1="194.75" x2="320.8" y2="339.55"
-        stroke="var(--figure-ink)" stroke-width="2.5"/>
-  <polygon points="320.8,351.55 315.8,339.55 325.8,339.55" fill="var(--figure-ink)"/>
-  <line x1="334" y1="322" x2="346" y2="322" stroke="var(--figure-ink)" stroke-width="1.3"/>
-  <polyline points="342,319 346,322 342,325" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
-  <text x="336" y="342" font-size="16" font-style="italic" fill="var(--figure-ink)">P</text>
-
-  <!-- N : normale sortante, 136 px -->
-  <line x1="320.8" y1="194.75" x2="382.7" y2="87.54"
-        stroke="var(--figure-ink)" stroke-width="2.5"/>
-  <polygon points="388.7,77.15 387.03,90.04 378.37,85.04" fill="var(--figure-ink)"/>
-  <line x1="396" y1="72" x2="408" y2="72" stroke="var(--figure-ink)" stroke-width="1.3"/>
-  <polyline points="404,69 408,72 404,75" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
-  <text x="397" y="92" font-size="16" font-style="italic" fill="var(--figure-ink)">N</text>
-
-  <!-- f : le long du plan, vers le haut de la pente (64 px, exagérée ×2) -->
-  <line x1="320.8" y1="194.75" x2="275.79" y2="168.75"
-        stroke="var(--figure-ink)" stroke-width="2.5"/>
-  <polygon points="265.4,162.75 278.29,164.42 273.29,173.08" fill="var(--figure-ink)"/>
-  <line x1="243" y1="146" x2="255" y2="146" stroke="var(--figure-ink)" stroke-width="1.3"/>
-  <polyline points="251,143 255,146 251,149" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
-  <text x="246" y="166" font-size="16" font-style="italic" fill="var(--figure-ink)">f</text>
-
-  <!-- ── LA DÉCOMPOSITION DU POIDS (le focus, en accent) ────────────── -->
-  <!-- composante le long du plan : mg·sin α = 4,9 N → 78 px -->
-  <line x1="320.8" y1="194.75" x2="378.31" y2="227.95"
-        stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="6 5"/>
-  <polygon points="388.7,233.95 375.81,232.28 380.81,223.62" fill="var(--figure-accent)"/>
-  <text x="402" y="234" font-size="14.5" font-style="italic" fill="var(--figure-accent)">mg<tspan font-style="normal">·sin </tspan>α</text>
-
-  <!-- composante perpendiculaire (vers l'intérieur du plan) : mg·cos α = 8,5 N → 136 px -->
-  <line x1="320.8" y1="194.75" x2="258.9" y2="301.96"
-        stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="6 5"/>
-  <polygon points="252.9,312.35 263.23,304.46 254.57,299.46" fill="var(--figure-accent)"/>
-  <text x="245" y="330" text-anchor="end" font-size="14.5" font-style="italic" fill="var(--figure-accent)">mg<tspan font-style="normal">·cos </tspan>α</text>
-
-  <!-- guides du parallélogramme (chaque composante rejoint la pointe de P) -->
-  <line x1="388.7" y1="233.95" x2="320.8" y2="351.55"
-        stroke="var(--figure-grid)" stroke-width="1.2" stroke-dasharray="3 5"/>
-  <line x1="252.9" y1="312.35" x2="320.8" y2="351.55"
-        stroke="var(--figure-grid)" stroke-width="1.2" stroke-dasharray="3 5"/>
-
-  <!-- l'angle α se retrouve entre P et la perpendiculaire au plan -->
-  <path d="M 320.8 250.75 Q 305.8 250.75 292.8 243.25" fill="none"
-        stroke="var(--figure-accent)" stroke-width="1.5"/>
-  <text x="299" y="271" font-size="15" font-style="italic" fill="var(--figure-accent)">α</text>
-
-  <!-- ── Le repère (Ox parallèle à la descente, Oy sortant du plan) ───
-       décalé de 14 px le long de la normale sortante pour que l'axe Ox
-       ne se superpose pas au trait de la pente (lisibilité) -->
-  <circle cx="454.2" cy="288.1" r="3" fill="var(--figure-ink-soft)"/>
-  <text x="441" y="283" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">O</text>
-  <line x1="454.2" y1="288.1" x2="530.41" y2="332.1"
-        stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
-  <polygon points="540.8,338.1 527.91,336.43 532.91,327.77" fill="var(--figure-ink-soft)"/>
-  <text x="551" y="336" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">x</text>
-  <line x1="454.2" y1="288.1" x2="498.2" y2="211.89"
-        stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
-  <polygon points="504.2,201.5 502.53,214.39 493.87,209.39" fill="var(--figure-ink-soft)"/>
-  <text x="510" y="198" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">y</text>
-  <!-- petit carré d'angle droit entre Ox et Oy -->
-  <path d="M 464.59 294.1 L 470.59 283.71 L 460.2 277.71" fill="none"
-        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-
   <!-- ── Divulgation d'échelle ──────────────────────────────────────── -->
   <text x="360" y="452" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">Échelle : 16 px ↔ 1 N (m = 1,0 kg, g = 9,8 m·s<tspan dy="-4" font-size="70%">−2</tspan><tspan dy="4">). Seule la norme de </tspan><tspan font-style="italic">f</tspan> (2,0 N) est exagérée ×2 pour rester lisible.</text>
+
+  <g id="step-1">
+    <!-- ── Le plan incliné ─────────────────────────────────────────────── -->
+    <path d="M 80 88 L 620 400 L 80 400 Z" fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <line x1="80" y1="88" x2="620" y2="400" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <line x1="80" y1="400" x2="620" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+
+    <!-- angle α au pied du plan (arc quadratique, contrôle sur la bissectrice) -->
+    <path d="M 550 400 Q 550 381.2 559.4 365" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="536" y="382" text-anchor="end" font-size="15" fill="var(--figure-ink)"
+          font-style="italic">α<tspan font-style="normal"> = 30°</tspan></text>
+
+    <!-- ── Le solide (rectangle posé sur la pente, tourné de 30°) ─────── -->
+    <g transform="rotate(30 320.8 194.75)">
+      <rect x="272.8" y="166.75" width="96" height="56" rx="3"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    </g>
+    <circle cx="320.8" cy="194.75" r="4" fill="var(--figure-ink)"/>
+    <text x="333" y="190" font-size="15" font-style="italic" fill="var(--figure-ink)">G</text>
+  </g>
+
+  <g id="step-2">
+    <!-- ── Les trois forces (échelle 16 px/N, f exagérée ×2) ──────────── -->
+    <!-- P : vertical, 157 px -->
+    <line x1="320.8" y1="194.75" x2="320.8" y2="339.55"
+          stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="320.8,351.55 315.8,339.55 325.8,339.55" fill="var(--figure-ink)"/>
+    <line x1="334" y1="322" x2="346" y2="322" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="342,319 346,322 342,325" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="336" y="342" font-size="16" font-style="italic" fill="var(--figure-ink)">P</text>
+
+    <!-- N : normale sortante, 136 px -->
+    <line x1="320.8" y1="194.75" x2="382.7" y2="87.54"
+          stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="388.7,77.15 387.03,90.04 378.37,85.04" fill="var(--figure-ink)"/>
+    <line x1="396" y1="72" x2="408" y2="72" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="404,69 408,72 404,75" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="397" y="92" font-size="16" font-style="italic" fill="var(--figure-ink)">N</text>
+
+    <!-- f : le long du plan, vers le haut de la pente (64 px, exagérée ×2) -->
+    <line x1="320.8" y1="194.75" x2="275.79" y2="168.75"
+          stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="265.4,162.75 278.29,164.42 273.29,173.08" fill="var(--figure-ink)"/>
+    <line x1="243" y1="146" x2="255" y2="146" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="251,143 255,146 251,149" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="246" y="166" font-size="16" font-style="italic" fill="var(--figure-ink)">f</text>
+  </g>
+
+  <g id="step-3">
+    <!-- ── Le repère (Ox parallèle à la descente, Oy sortant du plan) ───
+         décalé de 14 px le long de la normale sortante pour que l'axe Ox
+         ne se superpose pas au trait de la pente (lisibilité) -->
+    <circle cx="454.2" cy="288.1" r="3" fill="var(--figure-ink-soft)"/>
+    <text x="441" y="283" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+    <line x1="454.2" y1="288.1" x2="530.41" y2="332.1"
+          stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <polygon points="540.8,338.1 527.91,336.43 532.91,327.77" fill="var(--figure-ink-soft)"/>
+    <text x="551" y="336" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+    <line x1="454.2" y1="288.1" x2="498.2" y2="211.89"
+          stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <polygon points="504.2,201.5 502.53,214.39 493.87,209.39" fill="var(--figure-ink-soft)"/>
+    <text x="510" y="198" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">y</text>
+    <!-- petit carré d'angle droit entre Ox et Oy -->
+    <path d="M 464.59 294.1 L 470.59 283.71 L 460.2 277.71" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  </g>
+
+  <g id="step-4">
+    <!-- ── LA DÉCOMPOSITION DU POIDS (le focus, en accent) ────────────── -->
+    <!-- composante le long du plan : mg·sin α = 4,9 N → 78 px -->
+    <line x1="320.8" y1="194.75" x2="378.31" y2="227.95"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="6 5"/>
+    <polygon points="388.7,233.95 375.81,232.28 380.81,223.62" fill="var(--figure-accent)"/>
+    <text x="402" y="234" font-size="14.5" font-style="italic" fill="var(--figure-accent)">mg<tspan font-style="normal">·sin </tspan>α</text>
+
+    <!-- composante perpendiculaire (vers l'intérieur du plan) : mg·cos α = 8,5 N → 136 px -->
+    <line x1="320.8" y1="194.75" x2="258.9" y2="301.96"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="6 5"/>
+    <polygon points="252.9,312.35 263.23,304.46 254.57,299.46" fill="var(--figure-accent)"/>
+    <text x="245" y="330" text-anchor="end" font-size="14.5" font-style="italic" fill="var(--figure-accent)">mg<tspan font-style="normal">·cos </tspan>α</text>
+
+    <!-- guides du parallélogramme (chaque composante rejoint la pointe de P) -->
+    <line x1="388.7" y1="233.95" x2="320.8" y2="351.55"
+          stroke="var(--figure-grid)" stroke-width="1.2" stroke-dasharray="3 5"/>
+    <line x1="252.9" y1="312.35" x2="320.8" y2="351.55"
+          stroke="var(--figure-grid)" stroke-width="1.2" stroke-dasharray="3 5"/>
+
+    <!-- l'angle α se retrouve entre P et la perpendiculaire au plan -->
+    <path d="M 320.8 250.75 Q 305.8 250.75 292.8 243.25" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1.5"/>
+    <text x="299" y="271" font-size="15" font-style="italic" fill="var(--figure-accent)">α</text>
+  </g>
 </svg>

@@ -4,14 +4,23 @@
   <title>Échange d'énergie E_c ↔ E_pe — pendule élastique (sans frottement)</title>
 
   <!--
-    energie-oscillateur.svg — figure STATIQUE, un seul panneau (pas de
-    step-groups). Ec(t) et Epe(t) tracées en fonction du TEMPS (le choix
-    "vs temps" plutôt que "vs position" pour rester au plus près du calcul
-    du rung R5 : Ec(t)=½mXm²ω0²sin²(ω0t+φ), Epe(t)=½mXm²ω0²cos²(ω0t+φ),
-    Ec+Epe = constante). Chaque instant-clé est ANNOTÉ avec la position x
-    correspondante (x=0 aux pics de Ec ; x=±Xm aux pics de Epe), ce qui
-    relie explicitement le graphe temporel à la position — cf. R5 : "Quand
-    x=0... quand x=±Xm...".
+    energie-oscillateur.svg — figure STAGÉE, 3 étapes (LESSON-EXPERIENCE-SPEC
+    §2.5 : un graphe est TOUJOURS stagé, ordre canonique axes → données →
+    lecture) :
+      step-1 : les axes (repère E_max)
+      step-2 : les données — les deux courbes E_pe(t)/E_c(t), leurs
+               étiquettes de courbe, et la légende Ec/Epe (ce qu'elles valent)
+      step-3 : la lecture — E_m = constante (repère + légende) et les
+               instants-clés qui relient le graphe temporel à la position x
+
+    Ec(t) et Epe(t) tracées en fonction du TEMPS (le choix "vs temps" plutôt
+    que "vs position" pour rester au plus près du calcul du rung R5 :
+    Ec(t)=½mXm²ω0²sin²(ω0t+φ), Epe(t)=½mXm²ω0²cos²(ω0t+φ), Ec+Epe = constante).
+    Chaque instant-clé est ANNOTÉ avec la position x correspondante (x=0 aux
+    pics de Ec ; x=±Xm aux pics de Epe), ce qui relie explicitement le graphe
+    temporel à la position — cf. R5 : "Quand x=0... quand x=±Xm...". Ce lien
+    graphe↔position est précisément la LECTURE (step-3) : elle ne doit donc
+    pas apparaître avant que l'élève l'ait demandée.
 
     BORNE DE PRUDENCE PHYSIQUE (à ne pas reproduire par erreur ailleurs) :
     Epe(t) et Ec(t) sont des fonctions en cos²/sin² de ω0·t : leur PROPRE
@@ -49,103 +58,113 @@
   <rect x="20" y="32" width="600" height="310" rx="8"
         fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- Axes -->
-  <line x1="70" y1="300" x2="600" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="600,300 588,295.5 588,304.5" fill="var(--figure-ink-soft)"/>
-  <line x1="90" y1="155" x2="90" y2="310" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-  <polygon points="90,155 85.5,167 94.5,167" fill="var(--figure-ink-soft)"/>
-  <text x="607" y="304" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
-  <text x="82" y="159" text-anchor="end" font-size="11" font-style="italic"
-        fill="var(--figure-ink-soft)">E</text>
-  <text x="82" y="304" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <!-- ════════════════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="70" y1="300" x2="600" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="600,300 588,295.5 588,304.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="155" x2="90" y2="310" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,155 85.5,167 94.5,167" fill="var(--figure-ink-soft)"/>
+    <text x="607" y="304" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="82" y="159" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">E</text>
+    <text x="82" y="304" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
 
-  <!-- Repère E_max -->
-  <line x1="86" y1="170" x2="94" y2="170" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-  <text x="66" y="174" text-anchor="end" font-size="9.5" font-style="italic"
-        fill="var(--figure-ink-soft)">E<tspan dy="3" font-size="7">max</tspan></text>
+    <!-- Repère E_max -->
+    <line x1="86" y1="170" x2="94" y2="170" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="66" y="174" text-anchor="end" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">E<tspan dy="3" font-size="7">max</tspan></text>
+  </g><!-- /step-1 -->
 
-  <!-- E_pe(t) — dômes, pics à x=90,290,490 (x=±X_m) -->
-  <path d="
-    M90,170
-    C140,170 140,300 190,300
-    C240,300 240,170 290,170
-    C340,170 340,300 390,300
-    C440,300 440,170 490,170
-    C540,170 540,300 590,300
-  " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ════════════════════════════════════════════════════════════════
+       STEP 2 — les données : les deux courbes
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- E_pe(t) — dômes, pics à x=90,290,490 (x=±X_m) -->
+    <path d="
+      M90,170
+      C140,170 140,300 190,300
+      C240,300 240,170 290,170
+      C340,170 340,300 390,300
+      C440,300 440,170 490,170
+      C540,170 540,300 590,300
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- E_c(t) — dômes en antiphase, pics à x=190,390,590 (x=0) -->
-  <path d="
-    M90,300
-    C140,300 140,170 190,170
-    C240,170 240,300 290,300
-    C340,300 340,170 390,170
-    C440,170 440,300 490,300
-    C540,300 540,170 590,170
-  " fill="none" stroke="var(--figure-energy-L)" stroke-width="2.4"
-    stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- E_c(t) — dômes en antiphase, pics à x=190,390,590 (x=0) -->
+    <path d="
+      M90,300
+      C140,300 140,170 190,170
+      C240,170 240,300 290,300
+      C340,300 340,170 390,170
+      C440,170 440,300 490,300
+      C540,300 540,170 590,170
+    " fill="none" stroke="var(--figure-energy-L)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- E_m = constante (repère plat) -->
-  <line x1="90" y1="170" x2="590" y2="170" stroke="var(--figure-accent)" stroke-width="2"
-        stroke-dasharray="8,5"/>
-  <text x="440" y="160" text-anchor="middle" font-size="11" font-style="italic"
-        fill="var(--figure-accent)">E<tspan dy="3" font-size="8">m</tspan><tspan
-        dy="-3"> = constante</tspan>
-  </text>
+    <!-- Étiquettes de courbe -->
+    <text x="290" y="155" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-energy-C)">E<tspan dy="3" font-size="8.5">pe</tspan></text>
+    <text x="190" y="155" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-energy-L)">E<tspan dy="3" font-size="8.5">c</tspan></text>
 
-  <!-- Étiquettes de courbe -->
-  <text x="290" y="155" text-anchor="middle" font-size="12" font-style="italic"
-        fill="var(--figure-energy-C)">E<tspan dy="3" font-size="8.5">pe</tspan></text>
-  <text x="190" y="155" text-anchor="middle" font-size="12" font-style="italic"
-        fill="var(--figure-energy-L)">E<tspan dy="3" font-size="8.5">c</tspan></text>
+    <!-- Légende Ec / Epe -->
+    <line x1="60" y1="362" x2="90" y2="362" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+    <text x="96" y="366" font-size="10.5" fill="var(--figure-energy-L)">E<tspan
+          font-style="italic" dy="3" font-size="8">c</tspan><tspan
+          dy="-3"> (cinétique) = ½ m v²</tspan>
+    </text>
 
-  <!-- Instants-clés annotés (les 3 premiers ; le motif se répète ensuite) -->
-  <circle cx="90" cy="300" r="3.5" fill="var(--figure-energy-C)"/>
-  <text x="90" y="316" text-anchor="middle" font-size="10" font-style="italic"
-        fill="var(--figure-ink)">x = +X<tspan dy="3" font-size="7">m</tspan></text>
-  <text x="90" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">Epe max, Ec = 0</text>
+    <line x1="340" y1="362" x2="370" y2="362" stroke="var(--figure-energy-C)" stroke-width="2.5"/>
+    <text x="376" y="366" font-size="10.5" fill="var(--figure-energy-C)">E<tspan
+          font-style="italic" dy="3" font-size="8">pe</tspan><tspan
+          dy="-3"> (potentiel élastique) = ½ k x²</tspan>
+    </text>
+  </g><!-- /step-2 -->
 
-  <circle cx="190" cy="300" r="3.5" fill="var(--figure-energy-L)"/>
-  <text x="190" y="316" text-anchor="middle" font-size="10" font-style="italic"
-        fill="var(--figure-ink)">x = 0</text>
-  <text x="190" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">Ec max, Epe = 0</text>
+  <!-- ════════════════════════════════════════════════════════════════
+       STEP 3 — la lecture : E_m constante + instants-clés
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- E_m = constante (repère plat) -->
+    <line x1="90" y1="170" x2="590" y2="170" stroke="var(--figure-accent)" stroke-width="2"
+          stroke-dasharray="8,5"/>
+    <text x="440" y="160" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">E<tspan dy="3" font-size="8">m</tspan><tspan
+          dy="-3"> = constante</tspan>
+    </text>
 
-  <circle cx="290" cy="300" r="3.5" fill="var(--figure-energy-C)"/>
-  <text x="290" y="316" text-anchor="middle" font-size="10" font-style="italic"
-        fill="var(--figure-ink)">x = −X<tspan dy="3" font-size="7">m</tspan></text>
-  <text x="290" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">Epe max, Ec = 0</text>
+    <!-- Instants-clés annotés (les 3 premiers ; le motif se répète ensuite) -->
+    <circle cx="90" cy="300" r="3.5" fill="var(--figure-energy-C)"/>
+    <text x="90" y="316" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink)">x = +X<tspan dy="3" font-size="7">m</tspan></text>
+    <text x="90" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">Epe max, Ec = 0</text>
 
-  <!-- Instants suivants — motif déjà établi, marqueur seul -->
-  <circle cx="390" cy="300" r="3" fill="var(--figure-energy-L)"/>
-  <circle cx="490" cy="300" r="3" fill="var(--figure-energy-C)"/>
-  <circle cx="590" cy="300" r="3" fill="var(--figure-energy-L)"/>
+    <circle cx="190" cy="300" r="3.5" fill="var(--figure-energy-L)"/>
+    <text x="190" y="316" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink)">x = 0</text>
+    <text x="190" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">Ec max, Epe = 0</text>
 
-  <!-- Légende -->
-  <line x1="60" y1="362" x2="90" y2="362" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
-  <text x="96" y="366" font-size="10.5" fill="var(--figure-energy-L)">E<tspan
-        font-style="italic" dy="3" font-size="8">c</tspan><tspan
-        dy="-3"> (cinétique) = ½ m v²</tspan>
-  </text>
+    <circle cx="290" cy="300" r="3.5" fill="var(--figure-energy-C)"/>
+    <text x="290" y="316" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink)">x = −X<tspan dy="3" font-size="7">m</tspan></text>
+    <text x="290" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">Epe max, Ec = 0</text>
 
-  <line x1="340" y1="362" x2="370" y2="362" stroke="var(--figure-energy-C)" stroke-width="2.5"/>
-  <text x="376" y="366" font-size="10.5" fill="var(--figure-energy-C)">E<tspan
-        font-style="italic" dy="3" font-size="8">pe</tspan><tspan
-        dy="-3"> (potentiel élastique) = ½ k x²</tspan>
-  </text>
+    <!-- Instants suivants — motif déjà établi, marqueur seul -->
+    <circle cx="390" cy="300" r="3" fill="var(--figure-energy-L)"/>
+    <circle cx="490" cy="300" r="3" fill="var(--figure-energy-C)"/>
+    <circle cx="590" cy="300" r="3" fill="var(--figure-energy-L)"/>
 
-  <line x1="60" y1="384" x2="90" y2="384" stroke="var(--figure-accent)" stroke-width="2"
-        stroke-dasharray="6,4"/>
-  <text x="96" y="388" font-size="10.5" fill="var(--figure-accent)">E<tspan
-        font-style="italic" dy="3" font-size="8">m</tspan><tspan
-        dy="-3"> = E</tspan><tspan font-style="italic" dy="3" font-size="8">c</tspan><tspan
-        dy="-3"> + E</tspan><tspan font-style="italic" dy="3" font-size="8">pe</tspan><tspan
-        dy="-3"> = constante</tspan>
-  </text>
-
-  <text x="320" y="406" text-anchor="middle" font-size="9.5" font-style="italic"
-        fill="var(--figure-ink-soft)">
-    Cas idéal, sans frottement : l'énergie mécanique totale ne varie pas au cours du temps.
-  </text>
+    <!-- Légende Em -->
+    <line x1="60" y1="384" x2="90" y2="384" stroke="var(--figure-accent)" stroke-width="2"
+          stroke-dasharray="6,4"/>
+    <text x="96" y="388" font-size="10.5" fill="var(--figure-accent)">E<tspan
+          font-style="italic" dy="3" font-size="8">m</tspan><tspan
+          dy="-3"> = E</tspan><tspan font-style="italic" dy="3" font-size="8">c</tspan><tspan
+          dy="-3"> + E</tspan><tspan font-style="italic" dy="3" font-size="8">pe</tspan><tspan
+          dy="-3"> = constante</tspan>
+    </text>
+  </g><!-- /step-3 -->
 
 </svg>
