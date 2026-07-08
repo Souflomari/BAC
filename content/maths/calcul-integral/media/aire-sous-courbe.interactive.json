@@ -1,0 +1,21 @@
+{
+  "slug": "aire-sous-courbe",
+  "control": {
+    "kind": "drag-point",
+    "axis": "b",
+    "domain": [0.3, 2.0],
+    "step": 0.05,
+    "initial": 2
+  },
+  "bindings": [
+    { "target": "#point-mobile", "recompute": "point" },
+    { "target": "#point-mobile-halo", "recompute": "pointHalo" },
+    { "target": "#region-path", "recompute": "regionPath" },
+    { "target": "#bound-label", "recompute": "boundLabelPos" },
+    { "target": "#bound-label", "recompute": "boundLabelText" },
+    { "target": "#formule-borne", "recompute": "formuleBorne" },
+    { "target": "#formule-valeur", "recompute": "formuleValeur" }
+  ],
+  "unlockAfterStage": 2,
+  "readoutTemplate": "En b = {value} s : aire {formuleValeur}"
+}

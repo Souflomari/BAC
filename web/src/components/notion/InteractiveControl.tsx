@@ -10,10 +10,14 @@
  * already ignores `input` elements by tag name, so this never collides with
  * chapter-transport keyboard nav.
  *
- * `readoutTemplate` (from the sidecar) is filled in with `{value}` (and
- * `{slope}` when the model exposes `fPrime`) — a live aria-live region so a
- * screen-reader user hears the recomputed reading as they drag or use the
- * slider, without the figure's own static aria-label having to change.
+ * `readoutTemplate` (from the sidecar) is filled in with `{value}`,
+ * `{slope}` (when the model exposes `fPrime`), and any OTHER `{name}` token
+ * that matches a key in the model's own `recompute` record whose result is
+ * `kind: "text"` — reusing the exact same bindings the figure itself is
+ * drawn from rather than inventing a parallel readout-only computation. A
+ * live aria-live region so a screen-reader user hears the recomputed
+ * reading as they drag or use the slider, without the figure's own static
+ * aria-label having to change.
  */
 
 import type { InteractiveFigureConfigSpec } from "@/lib/content";
@@ -24,11 +28,16 @@ function fillTemplate(
   value: number,
   model: InteractiveFigureModel
 ): string {
-  let out = template.replace("{value}", model.formatValue(value));
-  if (model.fPrime) {
-    out = out.replace("{slope}", model.formatValue(model.fPrime(value)));
-  }
-  return out;
+  return template.replace(/\{(\w+)\}/g, (match, token: string) => {
+    if (token === "value") return model.formatValue(value);
+    if (token === "slope" && model.fPrime) return model.formatValue(model.fPrime(value));
+    const recompute = model.recompute[token];
+    if (recompute) {
+      const result = recompute(value);
+      if (result.kind === "text") return result.value;
+    }
+    return match; // unresolvable token — leave literal rather than blank
+  });
 }
 
 interface InteractiveControlProps {

@@ -953,6 +953,149 @@ try {
     else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional, no transition), print hides the control`);
   }
 
+  // (Interactive-figures wave, pilot 2) aire-sous-courbe — drag the upper
+  // bound b, the shaded region/point/labels/formula recompute live.
+  {
+    const AINOTION = "/notions/maths/calcul-integral";
+    const FIG = "[data-figure='aire-sous-courbe']";
+    console.log(`\n[${AINOTION}?chapitre=2] SWEEP: aire-sous-courbe — manipulation unlock, drag, keyboard, reduced-motion, print`);
+    const model = loadInteractiveFigureModel("aire-sous-courbe");
+
+    const apage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await apage.goto(`${BASE}${AINOTION}?chapitre=2`, { waitUntil: "networkidle" });
+    const atStage1 = await apage.evaluate((sel) => !!document.querySelector(sel)?.querySelector("input[type=range]"), FIG);
+    await apage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await apage.waitForTimeout(100);
+
+    const readFigure = (sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        rangePresent: !!range,
+        rangeValue: range?.value,
+        pointCx: fig?.querySelector("#point-mobile")?.getAttribute("cx"),
+        pointCy: fig?.querySelector("#point-mobile")?.getAttribute("cy"),
+        regionD: fig?.querySelector("#region-path")?.getAttribute("d"),
+        boundText: fig?.querySelector("#bound-label")?.textContent,
+        formuleValeur: fig?.querySelector("#formule-valeur")?.textContent,
+      };
+    };
+    const atStage2Initial = await apage.evaluate(readFigure, FIG);
+    const expectAt = (b) => ({
+      point: model.recompute.point(b),
+      region: model.recompute.regionPath(b),
+      bound: model.recompute.boundLabelText(b).value,
+      valeur: model.recompute.formuleValeur(b).value,
+    });
+    const expectedInitial = expectAt(2);
+
+    // Keyboard: exact, deterministic — 20×ArrowLeft from initial 2.0, step
+    // 0.05, lands exactly on 1.0.
+    await apage.focus(`${FIG} input[type=range]`);
+    for (let i = 0; i < 20; i++) await apage.keyboard.press("ArrowLeft");
+    await apage.waitForTimeout(50);
+    const afterKeyboard = await apage.evaluate(readFigure, FIG);
+    const expectedAfterKeyboard = expectAt(1);
+
+    // Mouse drag — same CTM-based approach as the tangente-derivee sweep;
+    // assertion is on internal consistency (bound attrs match the model at
+    // whatever value the drag actually landed on).
+    const svgToClient = (sel, svgX, svgY) =>
+      apage.evaluate(
+        ({ sel, svgX, svgY }) => {
+          const svg = document.querySelector(sel)?.querySelector("svg");
+          const pt = svg.createSVGPoint();
+          pt.x = svgX;
+          pt.y = svgY;
+          const p = pt.matrixTransform(svg.getScreenCTM());
+          return { x: p.x, y: p.y };
+        },
+        { sel, svgX, svgY }
+      );
+    const startPt = model.toSvgPoint(1, model.f(1));
+    const startClient = await svgToClient(FIG, startPt.x, startPt.y);
+    const targetB = 1.5;
+    const targetPt = model.toSvgPoint(targetB, model.f(targetB));
+    const targetClient = await svgToClient(FIG, targetPt.x, targetPt.y);
+    await apage.mouse.move(startClient.x, startClient.y);
+    await apage.mouse.down();
+    await apage.mouse.move(targetClient.x, targetClient.y, { steps: 8 });
+    await apage.mouse.up();
+    await apage.waitForTimeout(50);
+    const afterDrag = await apage.evaluate(readFigure, FIG);
+    const draggedValue = parseFloat(afterDrag.rangeValue);
+    const expectedAfterDrag = Number.isFinite(draggedValue) ? expectAt(draggedValue) : null;
+
+    await apage.close();
+    checks++;
+    if (atStage1) failures += fail("aire-sous-courbe: manipulation control present at stage 1 — AttemptFirst unlock-gating broken");
+    else if (!atStage2Initial.rangePresent) failures += fail("aire-sous-courbe: manipulation control absent at the final stage — never unlocks");
+    else if (atStage2Initial.rangeValue !== "2") failures += fail(`initial range value "${atStage2Initial.rangeValue}" ≠ "2" (control.initial)`);
+    else if (atStage2Initial.regionD !== expectedInitial.region.d) failures += fail(`initial region path ≠ model`);
+    else if (atStage2Initial.boundText !== expectedInitial.bound) failures += fail(`initial bound label "${atStage2Initial.boundText}" ≠ model "${expectedInitial.bound}"`);
+    else if (atStage2Initial.formuleValeur !== expectedInitial.valeur) failures += fail(`initial formule "${atStage2Initial.formuleValeur}" ≠ model "${expectedInitial.valeur}"`);
+    else if (afterKeyboard.rangeValue !== "1") failures += fail(`after 20×ArrowLeft, range value "${afterKeyboard.rangeValue}" ≠ "1" (step 0.05 × 20)`);
+    else if (afterKeyboard.pointCx !== String(expectedAfterKeyboard.point.x) || afterKeyboard.pointCy !== String(expectedAfterKeyboard.point.y))
+      failures += fail(`after keyboard, #point-mobile (${afterKeyboard.pointCx},${afterKeyboard.pointCy}) ≠ model (${expectedAfterKeyboard.point.x},${expectedAfterKeyboard.point.y})`);
+    else if (afterKeyboard.formuleValeur !== expectedAfterKeyboard.valeur)
+      failures += fail(`after keyboard, formule "${afterKeyboard.formuleValeur}" ≠ model "${expectedAfterKeyboard.valeur}"`);
+    else if (!expectedAfterDrag) failures += fail(`after mouse drag, range value "${afterDrag.rangeValue}" is not a number`);
+    else if (Math.abs(draggedValue - targetB) > 0.5) failures += fail(`after mouse drag toward b=${targetB}, landed value ${draggedValue} is too far off — drag gesture not tracking the pointer`);
+    else if (afterDrag.pointCx !== String(expectedAfterDrag.point.x) || afterDrag.pointCy !== String(expectedAfterDrag.point.y))
+      failures += fail(`after mouse drag, #point-mobile (${afterDrag.pointCx},${afterDrag.pointCy}) ≠ model(${draggedValue}) (${expectedAfterDrag.point.x},${expectedAfterDrag.point.y})`);
+    else if (afterDrag.regionD !== expectedAfterDrag.region.d) failures += fail(`after mouse drag, region path ≠ model(${draggedValue})`);
+    else if (afterDrag.formuleValeur !== expectedAfterDrag.valeur)
+      failures += fail(`after mouse drag, formule "${afterDrag.formuleValeur}" ≠ model(${draggedValue}) "${expectedAfterDrag.valeur}"`);
+    else console.log(`  ✓ unlocks only at the final stage, initial state matches the model exactly, keyboard stepping exact, mouse drag internally consistent (landed b=${draggedValue})`);
+  }
+
+  // (Interactive-figures wave, pilot 2) aire-sous-courbe — reduced-motion
+  // unlock, print hides control (same gating logic as tangente-derivee).
+  {
+    const AINOTION = "/notions/maths/calcul-integral";
+    const FIG = "[data-figure='aire-sous-courbe']";
+    console.log(`\n[${AINOTION}?chapitre=2] SWEEP: aire-sous-courbe — reduced-motion unlock, print hides control`);
+    const rpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await rpage.emulateMedia({ reducedMotion: "reduce" });
+    await rpage.goto(`${BASE}${AINOTION}?chapitre=2`, { waitUntil: "networkidle" });
+    await rpage.locator(FIG).scrollIntoViewIfNeeded();
+    await rpage.waitForTimeout(150);
+    const reduced = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        step2Present: !!fig?.querySelector("g#step-2"),
+        rangePresent: !!range,
+      };
+    }, FIG);
+    let keyboardWorksUnderReduced = false;
+    if (reduced.rangePresent) {
+      const before = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      await rpage.focus(`${FIG} input[type=range]`);
+      await rpage.keyboard.press("ArrowLeft");
+      await rpage.waitForTimeout(50);
+      const after = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      keyboardWorksUnderReduced = before !== after;
+    }
+    await rpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await rpage.waitForTimeout(100);
+    const printed = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      return {
+        rangeAbsent: !fig?.querySelector("input[type=range]"),
+        step2Present: !!fig?.querySelector("g#step-2"),
+      };
+    }, FIG);
+    await rpage.close();
+    checks++;
+    if (!reduced.step2Present) failures += fail("reduced-motion: step-2 not present — fullyRevealed branch not firing");
+    else if (!reduced.rangePresent) failures += fail("reduced-motion: manipulation control absent — reduced-motion must not disable manipulation itself (§4)");
+    else if (!keyboardWorksUnderReduced) failures += fail("reduced-motion: control present but keyboard stepping had no effect — not actually functional");
+    else if (!printed.rangeAbsent) failures += fail("print: manipulation control still present — nothing to drag on paper");
+    else if (!printed.step2Present) failures += fail("print: step-2 not present under @media print");
+    else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
+  }
+
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
   // ~2000px; everything above ran at 1280 and was blind to his dead zones.
   // Structural assertions at 1536/1920 (composition assertions land with the

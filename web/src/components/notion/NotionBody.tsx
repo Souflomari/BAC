@@ -148,7 +148,7 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "table-groupe":        "Table de Cayley du groupe (Z/4Z, +) : la ligne et la colonne du neutre 0 en évidence, et la lecture du symétrique (1 + 3 = 0 donc 3 est le symétrique de 1)",
   "suite-escalier":      "Construction en escalier de la suite récurrente u_{n+1} = f(u_n) : la droite y = x, la courbe de f, et l'escalier u0, u1, u2… convergeant vers le point fixe ℓ",
   "convergence-limite":  "Convergence d'une suite : les points (n, u_n) entrent dans la bande ]ℓ−ε, ℓ+ε[ à partir du rang N et n'en sortent plus",
-  "aire-sous-courbe":    "L'intégrale comme aire : la région entre la courbe v(t) = t² et l'axe des abscisses sur [0, 2], d'aire ∫ t² dt = 8/3",
+  "aire-sous-courbe":    "L'intégrale comme aire : la région entre la courbe v(t) = t² et l'axe des abscisses, avec une borne b que l'on peut faire glisser pour voir l'aire ∫ t² dt se recalculer en direct, jusqu'à retrouver 8/3 en b = 2",
   "aire-entre-courbes":  "Aire entre deux courbes : la lentille entre f(x) = x et g(x) = x² sur [0, 1], d'aire ∫ (f − g) = 1/6 unité d'aire",
   "plan-complexe":       "Le plan complexe : le point M d'affixe z = 3 + 4i, ses projections a et b sur les axes, le vecteur OM et le module |z| = 5",
   "module-argument":     "Conjugué et opposé dans le plan complexe : z̄ symétrique de z par rapport à l'axe réel, −z symétrique de z par rapport à l'origine O",
