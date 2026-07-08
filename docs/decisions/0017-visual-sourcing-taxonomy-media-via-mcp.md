@@ -32,7 +32,8 @@ is sourced by its *kind*, per this taxonomy:
 |---|---|---|
 | **Atmospheric / illustrative** | hooks, scene-setting | **Gemini** — gemini-image MCP, with the DESIGN-BIBLE style preamble appended verbatim |
 | **Structural / labelled** | probability trees, circuit schematics, geometric figures, SVT schemas | **Coded SVG + KaTeX** — never Gemini |
-| **Manipulable** | drag-the-point, RLC sandbox | **Embed** (GeoGebra / Desmos / Falstad / PhET) — don't rebuild |
+| **Manipulable — omnibus** | RLC sandbox, full physics sim, full circuit topology | **Embed** (GeoGebra / Desmos / Falstad / PhET) — don't rebuild a mature engine |
+| **Manipulable — bespoke** | drag-a-point-along-a-curve, scrub-one-parameter, single-slider builds (see amendment below) | **Coded SVG + TS** (`interactive-svg`) — small, well-scoped, first-party |
 | **Motion explanation** | the hardest concepts | **Manim** |
 
 The DESIGN-BIBLE style preamble is appended verbatim to *every* Gemini brief
@@ -110,4 +111,44 @@ structural/labelled work is sourced from code, never from generation.
 
 ## Retractions and Corrections
 
-None.
+**2026-07-07 — the "Manipulable" row split (amendment, not a reversal).**
+The original decision named GeoGebra/Desmos/Falstad/PhET embeds as *the*
+tool for every manipulable, including the worked example "drag-the-point."
+Building the first small first-party interactive figures (a draggable
+point on a tangent line, a slider on a Riemann-sum rectangle count —
+`docs/design/INTERACTIVE-FIGURE-SPEC.md`) surfaced a real distinction the
+original row didn't carry: **omnibus** manipulables (a full circuit
+simulator, a full physics sandbox — genuinely wasteful to rebuild, "don't
+rebuild" still holds exactly as written) vs. **bespoke** manipulables (one
+draggable point or one slider bound to a single already-known function —
+cheap to hand-code, and NOT the "don't rebuild a whole engine" case this
+ADR was written to prevent).
+
+The split was forced by three facts specific to the bespoke case, verified
+against the actual product and the actual embed vendors, not assumed:
+1. **Licensing.** GeoGebra requires a paid commercial license for a
+   product like this (`geogebra.org/license`: "any use... for a commercial
+   purpose... requires a special license"); Desmos's commercial API access
+   routes through a partnership conversation, not a self-serve key. A
+   hand-coded widget carries zero licensing surface.
+2. **Verification.** `docs/audits/d10-media-layer.md` and `docs/HANDOFF.md`
+   (gate 7bis) already deferred GeoGebra/Desmos specifically because a
+   third-party iframe's internal applet state is opaque to this project's
+   headless test harness (`dom-truth.mjs`) — "un embed faux est pire
+   qu'absent." A first-party component renders into this codebase's own
+   DOM/React state, so `dom-truth.mjs` CAN assert on it directly (the same
+   way it already asserts on `MotionStage`/`StagedFigure`) — it does not
+   inherit the human-in-the-loop blocker the omnibus embeds still carry.
+3. **French-vocabulary fidelity.** The existing PhET embeds already
+   surfaced a real, observed friction (English sim labels not matching the
+   exact bac register — e.g. "flèche"/"portée" vs. the sim's own words);
+   a hand-coded figure uses the lesson's own vocabulary exactly.
+
+**What does NOT change**: the 4 existing PhET embeds, `interactive-author`'s
+charter (still owns `geogebra/desmos/falstad/phet` omnibus embeds, still
+"don't rebuild a graphing engine or a circuit simulator"), and the general
+principle that generated/fake manipulation never substitutes for a real
+one. `diagram-author`'s charter gains the new `interactive-svg` callout
+type (`.claude/agents/diagram-author.md` v0.2) since it already owns
+"exact structure, exact labels" — a parametrized slope is the same kind of
+exactness. See `docs/design/INTERACTIVE-FIGURE-SPEC.md` for the contracts.
