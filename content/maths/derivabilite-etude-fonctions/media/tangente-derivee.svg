@@ -1,56 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 470" width="640" height="470"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
      role="img"
-     aria-label="La tangente à la courbe de d(t) = t carré au point A d'abscisse 2 : la sécante (AM) pivote vers la tangente quand M se rapproche de A, et la pente de la tangente vaut le nombre dérivé d prime de 2, qui vaut 4.">
-  <title>La tangente en A — pente de d(t) = t² en t = 2</title>
+     aria-label="La tangente à la courbe de d(t) = t carré : une sécante qui pivote vers la tangente en A, puis un point A que l'on peut faire glisser le long de la courbe pour voir la pente d prime de t se recalculer en direct.">
+  <title>La tangente en A — pente de d(t) = t², étape par étape puis manipulable</title>
   <!--
-    tangente-derivee.svg — graphe STATIQUE de d(t) = t² (l'exemple filé du
-    R0/R1 de la leçon : la bille dont la position est d(t) = t², a=2), avec :
-      - le point A(2 ; 4) = (a, d(a)) ;
-      - la tangente T_2 en A, de pente d'(2) = 4 (calculée au R1 par
-        d'(a) = lim_{h->0} (d(a+h)-d(a))/h = lim (4+h) = 4, cas particulier
-        de d'(a) = 2a établi dans la même section) ;
-      - une sécante (AM) optionnelle, M = (2+h, d(2+h)) avec h = 1,2 choisi
-        arbitrairement pour l'illustration (pas une valeur du tableau du
-        R0 — juste une position lisible sur la figure), pour suggérer le
-        processus de limite h -> 0 (la sécante "pivote" vers la tangente).
+    tangente-derivee.svg — STAGED + MANIPULABLE (docs/design/INTERACTIVE-FIGURE-SPEC.md).
+    step-1 : la courbe d(t) = t² seule.
+    step-2 : + une sécante (AM), h = 1,2 fixe — illustration STATIQUE de
+             l'approximation (pas liée au point A manipulable ; ce n'est
+             qu'une suggestion visuelle du processus de limite h -> 0).
+    step-3 : + la tangente en A, le point A, son repère et la boîte formule —
+             c'est ICI que la manipulation se déverrouille
+             (tangente-derivee.interactive.json, unlockAfterStage = 3) :
+             faire glisser #point-a recalcule #tangente-line, #label-a,
+             #repere-dash/#repere-tick/#repere-label et la boîte formule en
+             direct (web/src/lib/interactive-figures/tangente-derivee.ts).
 
     Géométrie (calculée, pas devinée) :
       mapping : x_px = 90 + 100·t ,  y_px = 340 - 15·d   (d = t²)
-      donc l'origine (t=0, d=0) est en pixel (90, 340).
+      donc l'origine (t=0, d=0) est en pixel (90, 340). Domaine manipulable :
+      t ∈ [0,3 ; 4,0] (physiquement motivé : d(t) = t² modélise la position
+      d'une bille, t ≥ 0 ; le pas 0,05 et la valeur initiale t=2 reproduisent
+      EXACTEMENT le point déjà tracé au step-3 — aucun saut visuel au
+      déverrouillage).
 
       Courbe : échantillonnée pas=0,2 de t=0 à t=4,4 (23 points), d=t² exact
-      à chaque point — voir la liste de coordonnées dans le path ci-dessous.
+      à chaque point.
 
-      Point A : t=2, d=4  ->  x=290, y=280.
-      Tangente T_2 : d = d'(2)·(t-2) + d(2) = 4(t-2)+4 = 4t-4 (identique à
-        "y = 4x-4" du texte, seule la variable est renommée t/d au lieu de
-        x/y, pour rester dans la scène physique de la bille). Tracée de
-        t=0,5 (d=-2 -> x=140,y=370) à t=4,2 (d=12,8 -> x=510,y=148) : ligne
-        EXACTE (pente en pixels = -15×4/100 = -0,6, vérifiable point par
-        point sur le path).
+      Point A (état initial, t=2, d=4) : x=290, y=280.
+      Tangente en A (état initial) : d = 4t-4, tracée en CLIPPANT au
+        rectangle utile du panneau (x∈[95,580], y∈[50,395] — voir
+        clipLineToPanel dans le module .ts) plutôt qu'un segment cadré à la
+        main : nécessaire pour rester correcte à N'IMPORTE QUEL t du domaine,
+        pas seulement a=2. Au repos (t=2) cela donne M98,3,395 L580,106 —
+        un segment plus long que l'ancienne version purement statique, qui
+        n'avait qu'un seul cas (a=2) à cadrer joliment à la main.
 
-      Point M (h=1,2) : t=3,2, d=10,24 (=3,2²) -> x=410, y=186,4.
-      Sécante (AM) : pente réelle = (10,24-4)/(3,2-2) = 6,24/1,2 = 5,2 (>
-        pente tangente 4, cohérent : la sécante surestime encore la pente
-        limite pour ce h). Tracée de t=1,6 (x=250,y=311,2) à t=3,6
-        (x=450,y=155,2), passant exactement par A et M (vérifiable :
-        pente pixels = -15×5,2/100 = -0,78, constante sur le segment).
+      Point M (sécante, h=1,2 FIXE, non lié au point A manipulable) :
+        t=3,2, d=10,24 -> x=410, y=186,4.
+      Sécante (AM) : pente réelle = (10,24-4)/(3,2-2) = 5,2 (> pente
+        tangente 4, cohérent : la sécante surestime encore la pente limite
+        pour ce h). Tracée de t=1,6 (x=250,y=311,2) à t=3,6 (x=450,y=155,2).
 
     Rôle des couleurs :
-      tangente T_2, point A (l'ancre du foyer), boîte formule, repère "2" :
+      tangente, point A, boîte formule, repère "t" :
         --figure-accent (LE sujet de cette figure)
       courbe d(t)=t² : --figure-ink (structure donnée, pas le sujet)
       sécante (AM), point M : --figure-ink-soft (élément secondaire,
         optionnel — sert à suggérer la limite, n'est pas le foyer)
-      axes, labels d'axes, captions : --figure-ink-soft (chrome neutre)
+      axes, labels d'axes : --figure-ink-soft (chrome neutre)
+
+    Les captions sont portées par tangente-derivee.stages.json (figcaption
+    hors-SVG) — aucun texte de légende baké ici, contrairement à l'ancienne
+    version statique (convention alignée sur regimes-uc.svg, qui n'en a
+    jamais eu non plus).
   -->
 
   <!-- Titre -->
   <text x="320" y="20" text-anchor="middle"
         font-size="12" font-weight="600" letter-spacing="0.01em"
         fill="var(--figure-ink)">
-    La tangente en A — pente de d(t) = t² en t = 2
+    La tangente en A — pente de d(t) = t²
   </text>
 
   <!-- Fond du panneau -->
@@ -58,7 +68,7 @@
         fill="var(--figure-surface)"
         stroke="var(--figure-grid)" stroke-width="1"/>
 
-  <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+  <!-- ── Axes — ink-soft, chrome neutre, toujours visibles ────────────── -->
   <line x1="90" y1="340" x2="585" y2="340"
         stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
   <polygon points="585,340 573,335.5 573,344.5" fill="var(--figure-ink-soft)"/>
@@ -73,76 +83,80 @@
   <text x="80" y="354" text-anchor="end" font-size="10"
         fill="var(--figure-ink-soft)">0</text>
 
-  <!--
-    Courbe d(t) = t² — polyligne calculée, pas=0,2, de t=0 à t=4,4.
-    x_px = 90+100t ; y_px = 340-15·t². Couleur ink : la courbe est la
-    structure donnée, pas le sujet accent (cf. avancement-tangente.svg).
-  -->
-  <path d="
-    M90,340 L110,339.4 L130,337.6 L150,334.6 L170,330.4
-    L190,325 L210,318.4 L230,310.6 L250,301.6 L270,291.4
-    L290,280 L310,267.4 L330,253.6 L350,238.6 L370,222.4
-    L390,205 L410,186.4 L430,166.6 L450,145.6 L470,123.4
-    L490,100 L510,75.4 L530,49.6
-  " fill="none"
-    stroke="var(--figure-ink)"
-    stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la courbe seule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="
+      M90,340 L110,339.4 L130,337.6 L150,334.6 L170,330.4
+      L190,325 L210,318.4 L230,310.6 L250,301.6 L270,291.4
+      L290,280 L310,267.4 L330,253.6 L350,238.6 L370,222.4
+      L390,205 L410,186.4 L430,166.6 L450,145.6 L470,123.4
+      L490,100 L510,75.4 L530,49.6
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- Étiquette de la courbe -->
-  <text x="450" y="90" text-anchor="middle" font-size="12" fill="var(--figure-ink)"
-    ><tspan font-style="italic">d</tspan><tspan>(</tspan><tspan font-style="italic">t</tspan
-    ><tspan>) = </tspan><tspan font-style="italic">t</tspan><tspan dy="-5" font-size="8.5">2</tspan></text>
+    <text x="450" y="90" text-anchor="middle" font-size="12" fill="var(--figure-ink)"
+      ><tspan font-style="italic">d</tspan><tspan>(</tspan><tspan font-style="italic">t</tspan
+      ><tspan>) = </tspan><tspan font-style="italic">t</tspan><tspan dy="-5" font-size="8.5">2</tspan></text>
+  </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════
-       Sécante (AM) — élément secondaire, ink-soft, suggère la limite
+       STEP 2 — sécante (AM), h = 1,2 fixe : illustration STATIQUE
+       (jamais liée au point A manipulable du step-3)
        ══════════════════════════════════════════════════════ -->
-  <line x1="250" y1="311.2" x2="450" y2="155.2"
-        stroke="var(--figure-ink-soft)" stroke-width="1.4"
-        stroke-dasharray="3,3" stroke-linecap="round"/>
-  <circle cx="410" cy="186.4" r="2.8" fill="var(--figure-ink-soft)"/>
+  <g id="step-2">
+    <line x1="250" y1="311.2" x2="450" y2="155.2"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"
+          stroke-dasharray="3,3" stroke-linecap="round"/>
+    <circle cx="410" cy="186.4" r="2.8" fill="var(--figure-ink-soft)"/>
 
-  <!-- Repère de M, avec ligne de rappel discrète vers son étiquette -->
-  <line x1="413" y1="183" x2="447" y2="213"
-        stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-  <text x="453" y="216" font-size="9.5" fill="var(--figure-ink)">M(3,2 ; 10,24)</text>
+    <line x1="413" y1="183" x2="447" y2="213"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="453" y="216" font-size="9.5" fill="var(--figure-ink)">M(3,2 ; 10,24)</text>
 
-  <!-- Étiquette de la sécante -->
-  <text x="350" y="262" text-anchor="middle" font-size="9.5" font-style="italic"
-        fill="var(--figure-ink-soft)">sécante : pente 5,2</text>
+    <text x="350" y="262" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">sécante : pente 5,2</text>
+  </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════
-       La tangente T_2 en A — LE sujet de cette figure, tout en accent
+       STEP 3 — la tangente en A, LE sujet — déverrouille la manipulation
+       (tangente-derivee.interactive.json, unlockAfterStage = 3)
        ══════════════════════════════════════════════════════ -->
-  <line x1="140" y1="370" x2="510" y2="148"
-        stroke="var(--figure-accent)" stroke-width="1.9"
-        stroke-dasharray="6,4" stroke-linecap="round"/>
+  <g id="step-3">
+    <!-- Tangente — clippée au panneau utile (voir clipLineToPanel, .ts) -->
+    <path id="tangente-line" d="M98.33,395 L580,106"
+          stroke="var(--figure-accent)" stroke-width="1.9"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
 
-  <!-- Point A — ancre du foyer -->
-  <circle cx="290" cy="280" r="3.2" fill="var(--figure-accent)"/>
-  <text x="283" y="252" text-anchor="end" font-size="11" font-weight="600"
-        fill="var(--figure-ink)">A(2 ; 4)</text>
+    <!-- Halo de glissé (--state-dragged) — invisible au repos, la seule
+         chrome que le hook bascule DIRECTEMENT (pas via le module .ts).
+         Sert aussi de zone de saisie élargie (touch/souris) autour du
+         petit point A. -->
+    <circle id="point-a-halo" cx="290" cy="280" r="9" style="cursor:grab"
+            fill="var(--figure-accent)" opacity="0"/>
 
-  <!-- Repère vertical de t=2, jusqu'à l'axe des temps -->
-  <line x1="290" y1="283" x2="290" y2="335"
-        stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <line x1="290" y1="335" x2="290" y2="345"
-        stroke="var(--figure-accent)" stroke-width="1.6"/>
-  <text x="290" y="357" text-anchor="middle" font-size="11"
-        fill="var(--figure-accent)">2</text>
+    <!-- Point A — poignée glissable -->
+    <circle id="point-a" cx="290" cy="280" r="3.2" style="cursor:grab" fill="var(--figure-accent)"/>
+    <text id="label-a" x="283" y="252" text-anchor="end" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">A(2 ; 4)</text>
 
-  <!-- Boîte formule : équation de la tangente et sa pente -->
-  <rect x="100" y="44" width="230" height="56" rx="8"
-        fill="var(--figure-accent)" fill-opacity="0.12"/>
-  <text x="215" y="66" text-anchor="middle" font-size="13"
-        fill="var(--figure-accent)">T<tspan dy="3" font-size="9">2</tspan
-        ><tspan dy="-3"> : d = 4t − 4</tspan></text>
-  <text x="215" y="88" text-anchor="middle" font-size="11.5"
-        fill="var(--figure-accent)">pente = d′(2) = 4</text>
+    <!-- Repère vertical de t, jusqu'à l'axe des temps -->
+    <path id="repere-dash" d="M290,283 L290,335"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <path id="repere-tick" d="M290,335 L290,345"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text id="repere-label" x="290" y="357" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">2</text>
 
-  <!-- Captions -->
-  <text x="335" y="432" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">Quand h → 0 (ici h = 1,2 pour M), la sécante (AM) pivote vers la tangente en A.</text>
-  <text x="335" y="447" text-anchor="middle" font-size="10.5"
-        fill="var(--figure-ink-soft)">La tangente a pour pente le nombre dérivé d′(2) = 4 : la vitesse instantanée à t = 2 s.</text>
+    <!-- Boîte formule : équation de la tangente et sa pente -->
+    <rect x="100" y="44" width="230" height="56" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text id="formule-equation" x="215" y="66" text-anchor="middle" font-size="13"
+          fill="var(--figure-accent)">T : d = 4t − 4</text>
+    <text id="formule-pente" x="215" y="88" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-accent)">pente = d′(2) = 4</text>
+  </g><!-- /step-3 -->
 
 </svg>

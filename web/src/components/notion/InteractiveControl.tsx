@@ -1,0 +1,76 @@
+"use client";
+
+/**
+ * InteractiveControl — the native range-input half of a manipulable
+ * StagedFigure (docs/design/INTERACTIVE-FIGURE-SPEC.md §4). The drag-point
+ * gesture on the SVG itself is wired by useInteractiveFigure directly against
+ * the injected SVG subtree; this component is the accessible source of
+ * truth — native keyboard (arrows, Home/End), native touch, native
+ * aria-valuenow/min/max. `ChapterShell`'s global ArrowLeft/ArrowRight listener
+ * already ignores `input` elements by tag name, so this never collides with
+ * chapter-transport keyboard nav.
+ *
+ * `readoutTemplate` (from the sidecar) is filled in with `{value}` (and
+ * `{slope}` when the model exposes `fPrime`) — a live aria-live region so a
+ * screen-reader user hears the recomputed reading as they drag or use the
+ * slider, without the figure's own static aria-label having to change.
+ */
+
+import type { InteractiveFigureConfigSpec } from "@/lib/content";
+import type { InteractiveFigureModel } from "@/lib/interactive-figures";
+
+function fillTemplate(
+  template: string,
+  value: number,
+  model: InteractiveFigureModel
+): string {
+  let out = template.replace("{value}", model.formatValue(value));
+  if (model.fPrime) {
+    out = out.replace("{slope}", model.formatValue(model.fPrime(value)));
+  }
+  return out;
+}
+
+interface InteractiveControlProps {
+  config: InteractiveFigureConfigSpec;
+  model: InteractiveFigureModel;
+  value: number;
+  onChange: (value: number) => void;
+}
+
+export function InteractiveControl({ config, model, value, onChange }: InteractiveControlProps) {
+  const { control, readoutTemplate } = config;
+  const hint =
+    control.kind === "drag-point"
+      ? "Faites glisser le point sur la courbe, ou utilisez le curseur."
+      : "Utilisez le curseur.";
+
+  return (
+    <div
+      className="mt-4 flex flex-col gap-2 print:hidden"
+      role="group"
+      aria-label="Manipuler la figure"
+    >
+      <p className="text-caption text-[var(--color-text-secondary)]">{hint}</p>
+      <input
+        type="range"
+        min={control.domain[0]}
+        max={control.domain[1]}
+        step={control.step}
+        value={value}
+        onChange={(e) => onChange(parseFloat(e.target.value))}
+        aria-valuetext={model.formatValue(value)}
+        className="w-full max-w-sm accent-[var(--color-accent)]"
+      />
+      {readoutTemplate && (
+        <p
+          className="text-body-sm text-[var(--color-text-primary)] tabular-nums"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {fillTemplate(readoutTemplate, value, model)}
+        </p>
+      )}
+    </div>
+  );
+}

@@ -56,11 +56,15 @@
  * CLIENT component.
  */
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
+import { InteractiveControl } from "./InteractiveControl";
+import { useInteractiveFigure } from "./useInteractiveFigure";
+import { getInteractiveFigureModel } from "@/lib/interactive-figures";
+import type { InteractiveFigureConfigSpec } from "@/lib/content";
 import {
   applyViewBoxCrop,
   STRUCTURAL_SLUGS,
@@ -85,6 +89,14 @@ interface StagedFigureProps {
    */
   initialStage: number;
   className?: string;
+  /**
+   * Optional bespoke-manipulation sidecar (docs/design/INTERACTIVE-FIGURE-SPEC.md).
+   * Pure JSON — no function ever crosses this boundary. Only takes effect if
+   * `slug` also resolves to a registered model in
+   * web/src/lib/interactive-figures/index.ts; otherwise this figure renders
+   * exactly as a plain staged figure (graceful degradation, §2.2).
+   */
+  interactiveConfig?: InteractiveFigureConfigSpec;
 }
 
 // ── extractStepGroups ─────────────────────────────────────────────────────────
@@ -203,12 +215,15 @@ export function StagedFigure({
   stages,
   initialStage,
   className,
+  interactiveConfig,
 }: StagedFigureProps) {
   const totalStages = stages.length;
   const [stage, setStage] = useState(() => clampStage(initialStage, totalStages));
   const [reduced, setReduced] = useState(false);
   const [printing, setPrinting] = useState(false);
   const captionId = useId();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const interactiveModel = interactiveConfig ? getInteractiveFigureModel(slug) : undefined;
 
   // prefers-reduced-motion — same live-listener pattern as Derivation/MotionStage.
   useEffect(() => {
@@ -275,6 +290,21 @@ export function StagedFigure({
   const currentCaption = stages[stage - 1]?.caption;
   const accessibleName = label ?? slug;
 
+  // The manipulation control unlocks once the figure reaches its final stage
+  // (§1.2) — or immediately under reduced-motion, where the figure is already
+  // fully assembled and there is no stage to click through. Printing hides it
+  // regardless (nothing to drag on paper) — this is INTENTIONALLY separate
+  // from `fullyRevealed`: reduced-motion must not disable manipulation itself
+  // (§4), only the click-through transport above it does that.
+  const interactiveUnlocked = (fullyRevealed || atLast) && !printing;
+  const { value: interactiveValue, setValue: setInteractiveValue } = useInteractiveFigure({
+    containerRef,
+    config: interactiveConfig,
+    model: interactiveModel,
+    unlocked: interactiveUnlocked,
+    svgVersion: svgContent,
+  });
+
   return (
     <figure
       aria-label={label}
@@ -284,6 +314,7 @@ export function StagedFigure({
     >
       {/* SVG wrapper — identical chrome to MediaDiagramFigure (MediaDiagram.tsx:221-264) */}
       <div
+        ref={containerRef}
         className={cn(
           "overflow-hidden",
           "rounded-xl",
@@ -301,6 +332,17 @@ export function StagedFigure({
         style={isStructural ? { maxWidth: "680px" } : undefined}
         dangerouslySetInnerHTML={{ __html: svgContent }}
       />
+
+      {/* Manipulation control — only once interactiveUnlocked (§1.2) AND the
+          slug resolves to a registered model (graceful degradation, §2.2). */}
+      {interactiveConfig && interactiveModel && interactiveValue !== undefined && (
+        <InteractiveControl
+          config={interactiveConfig}
+          model={interactiveModel}
+          value={interactiveValue}
+          onChange={setInteractiveValue}
+        />
+      )}
 
       {/* Controls — hidden under reduced-motion / print (Derivation precedent:
           there is no timeline to seek here, unlike MotionStage; an instant

@@ -61,7 +61,7 @@
  */
 
 import type { ReactNode } from "react";
-import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec } from "@/lib/content";
+import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec, InteractiveFigureConfigSpec } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
 import { minutesForText } from "@/lib/chapters";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -162,7 +162,7 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "arrangement-combinaison": "Arrangements et combinaisons : les 6 ordres du groupe {Amine, Sara, Karim} regroupés en une seule combinaison — diviser par 3! fait passer de A à C",
   "rotation-complexe":   "Rotation de centre A(2i) et d'angle π/2 dans le plan complexe : B(3 + 2i) a pour image C(5i), avec AB = AC et z_C − z_A = i·(z_B − z_A)",
   "racines-unite":       "Les racines cubiques de l'unité sur le cercle trigonométrique : 1, e^(2iπ/3) et e^(4iπ/3), sommets d'un triangle équilatéral, espacées de 2π/3",
-  "tangente-derivee":    "La dérivée comme pente de la tangente : la courbe d(t) = t², le point A(2, 4), la tangente de pente d′(2) = 4 et une sécante qui pivote vers elle",
+  "tangente-derivee":    "La dérivée comme pente de la tangente : la courbe d(t) = t², une sécante qui pivote vers la tangente en A, puis un point A que l'on peut faire glisser le long de la courbe pour voir la pente d′(t) se recalculer en direct",
   "asymptotes":          "Asymptote verticale x = 2 et asymptote horizontale y = 2 de la courbe de f(x) = 2 + 1/(x − 2) : les deux branches s'en approchent sans les toucher",
   "continuite-tvi":      "Le théorème des valeurs intermédiaires : sur [−1, 1], f continue passe de f(−1) = 2 à f(1) = −2, la droite y = k coupe la courbe en un point c où f(c) = k",
   "tableau-variations-courbe": "Le lien signe de f′ / variations : la courbe de f(x) = x³ − 3x, tangentes horizontales aux extremums (−1, 2) et (1, −2), bande +/−/+ et flèches de variation synchronisées",
@@ -394,6 +394,13 @@ interface NotionBodyProps {
    * StagedFigure instead of MediaDiagramFigure (LESSON-EXPERIENCE-SPEC §2).
    */
   mediaStages: Record<string, MediaStagesSpec>;
+  /**
+   * Bespoke-interactive declarations — media/*.interactive.json, keyed by
+   * base slug. When a figure slug has an entry here, StagedFigure unlocks a
+   * manipulation control once the student reaches `unlockAfterStage`
+   * (docs/design/INTERACTIVE-FIGURE-SPEC.md §3).
+   */
+  mediaInteractive: Record<string, InteractiveFigureConfigSpec>;
   /** Map of slug → EmbedDescriptor for every media/*.json file. */
   mediaEmbeds: Record<string, EmbedDescriptor>;
   /** Checkpoint items keyed by id. */
@@ -427,6 +434,7 @@ export function NotionBody({
   motionSvgs,
   motionSpecs,
   mediaStages,
+  mediaInteractive,
   mediaEmbeds,
   checkpoints,
   hasTrailingChapter,
@@ -493,6 +501,7 @@ export function NotionBody({
             label={figureAriaLabel(seg.slug)}
             stages={stagesSpec.stages}
             initialStage={Math.min(occurrence, stagesSpec.stages.length)}
+            interactiveConfig={mediaInteractive[seg.slug]}
           />
         );
       }

@@ -168,6 +168,31 @@ export interface MediaStagesSpec {
   stages: StagedFigureStageSpec[];
 }
 
+/**
+ * Parsed media/<slug-figure>.interactive.json sidecar
+ * (docs/design/INTERACTIVE-FIGURE-SPEC.md §2.1/§3). Always sits next to a
+ * `.stages.json` for the same slug — a manipulable figure is always staged
+ * first, never a standalone manipulation mode.
+ */
+export interface InteractiveControlSpec {
+  kind: "drag-point" | "slider";
+  axis: string;
+  domain: [number, number];
+  step: number;
+  initial: number;
+}
+export interface InteractiveBindingSpec {
+  target: string;
+  recompute: string;
+}
+export interface InteractiveFigureConfigSpec {
+  slug: string;
+  control: InteractiveControlSpec;
+  bindings: InteractiveBindingSpec[];
+  unlockAfterStage: number;
+  readoutTemplate?: string;
+}
+
 export interface NotionExercise {
   id: string;
   title: string;
@@ -226,6 +251,14 @@ export interface NotionContent {
    * to StagedFigure instead of MediaDiagramFigure (LESSON-EXPERIENCE-SPEC §2).
    */
   mediaStages: Record<string, MediaStagesSpec>;
+  /**
+   * Bespoke-interactive declarations — media/*.interactive.json, keyed by
+   * base slug (e.g. "tangente-derivee.interactive.json" → "tangente-derivee"),
+   * same convention as mediaStages. When a figure slug has an entry here,
+   * StagedFigure unlocks a manipulation control once the student reaches
+   * `unlockAfterStage` (docs/design/INTERACTIVE-FIGURE-SPEC.md §3).
+   */
+  mediaInteractive: Record<string, InteractiveFigureConfigSpec>;
   /**
    * Map of slug → EmbedDescriptor for every media/*.json file.
    * Key is the basename without extension, e.g. "rlc-sandbox".
@@ -533,6 +566,7 @@ export function loadNotion(id: string): NotionContent | null {
   const motionSvgs: Record<string, string> = {};
   const motionSpecs: Record<string, MotionSpec> = {};
   const mediaStages: Record<string, MediaStagesSpec> = {};
+  const mediaInteractive: Record<string, InteractiveFigureConfigSpec> = {};
   const mediaEmbeds: Record<string, EmbedDescriptor> = {};
   const mediaDir = path.join(dir, "media");
   if (dirExists(mediaDir)) {
@@ -615,10 +649,97 @@ export function loadNotion(id: string): NotionContent | null {
       }
     }
 
+    // Bespoke-interactive sidecars — media/*.interactive.json
+    // (INTERACTIVE-FIGURE-SPEC.md §2.1). Keyed by base slug
+    // ("tangente-derivee.interactive.json" → "tangente-derivee"), loaded
+    // BEFORE the embed-JSON loop below for the same reason as motionSpecs/
+    // mediaStages above — these carry no `url`, so routing them explicitly
+    // just keeps intent clear. Malformed/incomplete → console.warn + skip,
+    // never throw (every loader here is fail-safe).
+    for (const file of files.filter((f) => f.endsWith(".interactive.json"))) {
+      const raw = safeReadFile(path.join(mediaDir, file));
+      if (!raw) continue;
+      try {
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== "object") {
+          console.warn(`loadNotion(${id}): media/${file} is not a JSON object — skipped`);
+          continue;
+        }
+        const p = parsed as {
+          slug?: unknown;
+          control?: unknown;
+          bindings?: unknown;
+          unlockAfterStage?: unknown;
+          readoutTemplate?: unknown;
+        };
+        const c = p.control as
+          | { kind?: unknown; axis?: unknown; domain?: unknown; step?: unknown; initial?: unknown }
+          | undefined;
+        const domainValid =
+          Array.isArray(c?.domain) &&
+          c.domain.length === 2 &&
+          typeof c.domain[0] === "number" &&
+          typeof c.domain[1] === "number" &&
+          c.domain[0] < c.domain[1];
+        if (
+          typeof p.slug !== "string" ||
+          !c ||
+          (c.kind !== "drag-point" && c.kind !== "slider") ||
+          typeof c.axis !== "string" ||
+          !domainValid ||
+          typeof c.step !== "number" ||
+          typeof c.initial !== "number" ||
+          !Array.isArray(p.bindings) ||
+          typeof p.unlockAfterStage !== "number"
+        ) {
+          console.warn(`loadNotion(${id}): media/${file} has an invalid shape — skipped`);
+          continue;
+        }
+        const domain = c.domain as [number, number];
+        const bindings: InteractiveBindingSpec[] = [];
+        let allBindingsValid = true;
+        for (const b of p.bindings) {
+          const target = (b as { target?: unknown } | null)?.target;
+          const recompute = (b as { recompute?: unknown } | null)?.recompute;
+          if (typeof target !== "string" || typeof recompute !== "string") {
+            allBindingsValid = false;
+            break;
+          }
+          bindings.push({ target, recompute });
+        }
+        if (!allBindingsValid) {
+          console.warn(`loadNotion(${id}): media/${file} has an invalid binding — skipped`);
+          continue;
+        }
+        const interactiveSlug = file.replace(/\.interactive\.json$/, "");
+        mediaInteractive[interactiveSlug] = {
+          slug: p.slug,
+          control: {
+            kind: c.kind,
+            axis: c.axis,
+            domain: [domain[0], domain[1]],
+            step: c.step,
+            initial: c.initial,
+          },
+          bindings,
+          unlockAfterStage: p.unlockAfterStage,
+          readoutTemplate: typeof p.readoutTemplate === "string" ? p.readoutTemplate : undefined,
+        };
+      } catch (err) {
+        console.warn(
+          `loadNotion(${id}): media/${file} invalid JSON — skipped (${(err as Error).message})`
+        );
+      }
+    }
+
     // JSON embed descriptors — keyed by basename slug (e.g. "rlc-sandbox").
-    // Skip *.motion.json and *.stages.json (already handled above).
+    // Skip *.motion.json, *.stages.json, and *.interactive.json (already handled above).
     for (const file of files.filter(
-      (f) => f.endsWith(".json") && !f.endsWith(".motion.json") && !f.endsWith(".stages.json")
+      (f) =>
+        f.endsWith(".json") &&
+        !f.endsWith(".motion.json") &&
+        !f.endsWith(".stages.json") &&
+        !f.endsWith(".interactive.json")
     )) {
       const raw = safeReadFile(path.join(mediaDir, file));
       if (!raw) continue;
@@ -677,5 +798,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, mediaInteractive, mediaEmbeds, embed };
 }

@@ -27,8 +27,21 @@ import { spawn, execSync } from "child_process";
 import { readFileSync, readdirSync, statSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
+import jitiFactory from "jiti";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+
+// Loads a web/src/lib/interactive-figures/<slug>.ts module directly from
+// TypeScript source at test time (via jiti, already a transitive devDep) — so
+// an interactive-figure sweep's "expected" values come from THE SAME module
+// StagedFigure imports at runtime, never a hand-duplicated expectation that
+// could silently drift from the real math (INTERACTIVE-FIGURE-SPEC.md §6).
+function loadInteractiveFigureModel(slug) {
+  const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
+  const mod = jiti(path.join(WEB, "src/lib/interactive-figures", `${slug}.ts`));
+  const camel = slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+  return mod[camel];
+}
 // Unique port per run — a fixed port raced ORPHANED servers from prior runs
 // (killing the npx wrapper orphans the next-server child; the detached spawn +
 // process-group kill below fixes the orphaning itself).
@@ -761,6 +774,183 @@ try {
     else if (afterMount.loadingLazy !== "lazy") failures += fail(`iframe loading="${afterMount.loadingLazy}" ≠ "lazy"`);
     else if (!afterMount.attributionPresent) failures += fail("CC-BY/PhET attribution text not found after mount");
     else console.log(`  ✓ opt-in gate holds, tab order correct, sandboxed iframe mounts on click, attribution present`);
+  }
+
+  // (Interactive-figures wave, pilot 1) tangente-derivee — the manipulation
+  // layer on top of a StagedFigure (INTERACTIVE-FIGURE-SPEC.md §6). Uses the
+  // figure's first placement (maths/derivabilite-etude-fonctions, R1 →
+  // chapter 2). Expected values come from `loadInteractiveFigureModel`
+  // (the SAME .ts module StagedFigure imports), never hand-duplicated.
+  {
+    const TDNOTION = "/notions/maths/derivabilite-etude-fonctions";
+    const FIG = "[data-figure='tangente-derivee']";
+    console.log(`\n[${TDNOTION}?chapitre=2] SWEEP: tangente-derivee — manipulation unlock, drag, keyboard, reduced-motion, print`);
+    const model = loadInteractiveFigureModel("tangente-derivee");
+
+    const ipage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await ipage.goto(`${BASE}${TDNOTION}?chapitre=2`, { waitUntil: "networkidle" });
+    const atStage1 = await ipage.evaluate((sel) => !!document.querySelector(sel)?.querySelector("input[type=range]"), FIG);
+    await ipage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await ipage.waitForTimeout(100);
+    const atStage2 = await ipage.evaluate((sel) => !!document.querySelector(sel)?.querySelector("input[type=range]"), FIG);
+    await ipage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await ipage.waitForTimeout(100);
+
+    const readFigure = (sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        rangePresent: !!range,
+        rangeValue: range?.value,
+        pointCx: fig?.querySelector("#point-a")?.getAttribute("cx"),
+        pointCy: fig?.querySelector("#point-a")?.getAttribute("cy"),
+        labelA: fig?.querySelector("#label-a")?.textContent,
+        tangentD: fig?.querySelector("#tangente-line")?.getAttribute("d"),
+        equation: fig?.querySelector("#formule-equation")?.textContent,
+        pente: fig?.querySelector("#formule-pente")?.textContent,
+      };
+    };
+    const atStage3Initial = await ipage.evaluate(readFigure, FIG);
+
+    const expectAt = (t) => ({
+      point: model.recompute.point(t),
+      tangent: model.recompute.tangentPath(t),
+      equation: model.recompute.equationLabel(t).value,
+      pente: model.recompute.slopeLabel(t).value,
+      label: model.recompute.labelAText(t).value,
+    });
+    const expectedInitial = expectAt(2);
+
+    // Keyboard: native <input type=range> arrow-key stepping — deterministic,
+    // no pixel measurement involved, so an EXACT match is the right bar.
+    await ipage.focus(`${FIG} input[type=range]`);
+    for (let i = 0; i < 5; i++) await ipage.keyboard.press("ArrowRight");
+    await ipage.waitForTimeout(50);
+    const afterKeyboard = await ipage.evaluate(readFigure, FIG);
+    const expectedAfterKeyboard = expectAt(2.25);
+
+    // Mouse drag — real Playwright mouse events, from point-a's CURRENT
+    // screen position to a new one (both computed via the SVG's own
+    // getScreenCTM, not a hand-guessed pixel scale — correct regardless of
+    // how large the responsive SVG actually renders). Sub-pixel measurement
+    // means the exact landed value can't be predicted before the fact, so
+    // the assertion is on INTERNAL CONSISTENCY (every bound element matches
+    // what the model computes for whatever value the drag actually landed
+    // on) plus a sanity check that the drag moved the value in the right
+    // direction by roughly the right amount.
+    const svgToClient = (sel, svgX, svgY) =>
+      ipage.evaluate(
+        ({ sel, svgX, svgY }) => {
+          const svg = document.querySelector(sel)?.querySelector("svg");
+          const pt = svg.createSVGPoint();
+          pt.x = svgX;
+          pt.y = svgY;
+          const p = pt.matrixTransform(svg.getScreenCTM());
+          return { x: p.x, y: p.y };
+        },
+        { sel, svgX, svgY }
+      );
+    const startPt = model.toSvgPoint(2.25, model.f(2.25));
+    const startClient = await svgToClient(FIG, startPt.x, startPt.y);
+    const targetT = 3.5;
+    const targetPt = model.toSvgPoint(targetT, model.f(targetT));
+    const targetClient = await svgToClient(FIG, targetPt.x, targetPt.y);
+    await ipage.mouse.move(startClient.x, startClient.y);
+    await ipage.mouse.down();
+    await ipage.mouse.move(targetClient.x, targetClient.y, { steps: 8 });
+    await ipage.mouse.up();
+    await ipage.waitForTimeout(50);
+    const afterDrag = await ipage.evaluate(readFigure, FIG);
+    const draggedValue = parseFloat(afterDrag.rangeValue);
+    const expectedAfterDrag = Number.isFinite(draggedValue) ? expectAt(draggedValue) : null;
+
+    await ipage.close();
+    checks++;
+    if (atStage1) failures += fail("tangente-derivee: manipulation control present at stage 1 — AttemptFirst unlock-gating broken");
+    else if (atStage2) failures += fail("tangente-derivee: manipulation control present at stage 2 — unlocks too early (must be the final stage)");
+    else if (!atStage3Initial.rangePresent) failures += fail("tangente-derivee: manipulation control absent at the final stage — never unlocks");
+    else if (atStage3Initial.rangeValue !== "2") failures += fail(`initial range value "${atStage3Initial.rangeValue}" ≠ "2" (control.initial)`);
+    else if (atStage3Initial.pointCx !== String(expectedInitial.point.x) || atStage3Initial.pointCy !== String(expectedInitial.point.y))
+      failures += fail(`initial #point-a (${atStage3Initial.pointCx},${atStage3Initial.pointCy}) ≠ model (${expectedInitial.point.x},${expectedInitial.point.y})`);
+    else if (atStage3Initial.tangentD !== expectedInitial.tangent.d)
+      failures += fail(`initial tangent "${atStage3Initial.tangentD}" ≠ model "${expectedInitial.tangent.d}"`);
+    else if (atStage3Initial.equation !== expectedInitial.equation)
+      failures += fail(`initial equation "${atStage3Initial.equation}" ≠ model "${expectedInitial.equation}"`);
+    else if (afterKeyboard.rangeValue !== "2.25") failures += fail(`after 5×ArrowRight, range value "${afterKeyboard.rangeValue}" ≠ "2.25" (step 0.05 × 5)`);
+    else if (afterKeyboard.pointCx !== String(expectedAfterKeyboard.point.x) || afterKeyboard.pointCy !== String(expectedAfterKeyboard.point.y))
+      failures += fail(`after keyboard, #point-a (${afterKeyboard.pointCx},${afterKeyboard.pointCy}) ≠ model (${expectedAfterKeyboard.point.x},${expectedAfterKeyboard.point.y})`);
+    else if (afterKeyboard.labelA !== expectedAfterKeyboard.label) failures += fail(`after keyboard, label "${afterKeyboard.labelA}" ≠ model "${expectedAfterKeyboard.label}"`);
+    else if (!expectedAfterDrag) failures += fail(`after mouse drag, range value "${afterDrag.rangeValue}" is not a number`);
+    else if (Math.abs(draggedValue - targetT) > 0.5) failures += fail(`after mouse drag toward t=${targetT}, landed value ${draggedValue} is too far off — drag gesture not tracking the pointer`);
+    else if (afterDrag.pointCx !== String(expectedAfterDrag.point.x) || afterDrag.pointCy !== String(expectedAfterDrag.point.y))
+      failures += fail(`after mouse drag, #point-a (${afterDrag.pointCx},${afterDrag.pointCy}) ≠ model(${draggedValue}) (${expectedAfterDrag.point.x},${expectedAfterDrag.point.y})`);
+    else if (afterDrag.tangentD !== expectedAfterDrag.tangent.d)
+      failures += fail(`after mouse drag, tangent "${afterDrag.tangentD}" ≠ model(${draggedValue}) "${expectedAfterDrag.tangent.d}"`);
+    else if (afterDrag.equation !== expectedAfterDrag.equation)
+      failures += fail(`after mouse drag, equation "${afterDrag.equation}" ≠ model(${draggedValue}) "${expectedAfterDrag.equation}"`);
+    else if (afterDrag.pente !== expectedAfterDrag.pente)
+      failures += fail(`after mouse drag, pente "${afterDrag.pente}" ≠ model(${draggedValue}) "${expectedAfterDrag.pente}"`);
+    else console.log(`  ✓ unlocks only at the final stage, initial state matches the model exactly, keyboard stepping exact, mouse drag internally consistent (landed t=${draggedValue})`);
+  }
+
+  // (Interactive-figures wave, pilot 1) tangente-derivee — reduced-motion
+  // unlocks manipulation EVEN BEFORE the final stage (the figure is already
+  // fully assembled — INTERACTIVE-FIGURE-SPEC.md §4's "manipulation itself
+  // is never disabled by reduced-motion", distinct from `fullyRevealed`
+  // merely hiding the click-through transport). Print hides it regardless.
+  {
+    const TDNOTION = "/notions/maths/derivabilite-etude-fonctions";
+    const FIG = "[data-figure='tangente-derivee']";
+    console.log(`\n[${TDNOTION}?chapitre=2] SWEEP: tangente-derivee — reduced-motion unlock, print hides control`);
+    const rpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await rpage.emulateMedia({ reducedMotion: "reduce" });
+    // chapitre=2 (R1): the figure's chapter must be the ACTIVE one — a
+    // hidden (non-current) ChapterShell section blocks focus() on anything
+    // inside it, which would make the keyboard-functionality check below a
+    // false negative rather than a real one.
+    await rpage.goto(`${BASE}${TDNOTION}?chapitre=2`, { waitUntil: "networkidle" });
+    await rpage.locator(FIG).scrollIntoViewIfNeeded();
+    await rpage.waitForTimeout(150);
+    const reduced = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      const point = fig?.querySelector("#point-a");
+      return {
+        stage: fig?.getAttribute("data-stage-current"),
+        step3Present: !!fig?.querySelector("g#step-3"),
+        rangePresent: !!range,
+        transitionDuration: point ? getComputedStyle(point).transitionDuration : null,
+      };
+    }, FIG);
+    // Reduced-motion still allows dragging/stepping — a quick keyboard nudge
+    // confirms the control is functional, not just present-but-inert.
+    let keyboardWorksUnderReduced = false;
+    if (reduced.rangePresent) {
+      const before = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      await rpage.focus(`${FIG} input[type=range]`);
+      await rpage.keyboard.press("ArrowRight");
+      await rpage.waitForTimeout(50);
+      const after = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      keyboardWorksUnderReduced = before !== after;
+    }
+    await rpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await rpage.waitForTimeout(100);
+    const printed = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      return {
+        rangeAbsent: !fig?.querySelector("input[type=range]"),
+        step3Present: !!fig?.querySelector("g#step-3"),
+      };
+    }, FIG);
+    await rpage.close();
+    checks++;
+    if (!reduced.step3Present) failures += fail("reduced-motion: step-3 not present — fullyRevealed branch not firing");
+    else if (!reduced.rangePresent) failures += fail("reduced-motion: manipulation control absent — reduced-motion must not disable manipulation itself (§4)");
+    else if (reduced.transitionDuration && parseFloat(reduced.transitionDuration) > 0.0001) failures += fail(`reduced-motion: #point-a has a perceptible transition-duration (${reduced.transitionDuration}) during recompute — the global 0.01ms net (globals.css §"Reduced motion") isn't reaching it`);
+    else if (!keyboardWorksUnderReduced) failures += fail("reduced-motion: control present but keyboard stepping had no effect — not actually functional");
+    else if (!printed.rangeAbsent) failures += fail("print: manipulation control still present — nothing to drag on paper");
+    else if (!printed.step3Present) failures += fail("print: step-3 not present under @media print");
+    else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional, no transition), print hides the control`);
   }
 
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is

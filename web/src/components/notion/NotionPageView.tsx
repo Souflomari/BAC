@@ -112,6 +112,7 @@ export function NotionPageView({
     motionSvgs,
     motionSpecs,
     mediaStages,
+    mediaInteractive,
     mediaEmbeds,
   } = notion;
 
@@ -280,6 +281,7 @@ export function NotionPageView({
                 motionSvgs={motionSvgs}
                 motionSpecs={motionSpecs}
                 mediaStages={mediaStages}
+                mediaInteractive={mediaInteractive}
                 mediaEmbeds={mediaEmbeds}
                 checkpoints={checkpoints}
                 hasTrailingChapter={!!itemsData}

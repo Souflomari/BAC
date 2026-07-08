@@ -88,7 +88,7 @@ for (const dir of dirs) {
   if (!fs.existsSync(lesson)) { console.error(`✗ ${dir}: no lesson.md`); failures++; continue; }
   const md = fs.readFileSync(lesson, "utf8");
   let dirFail = 0;
-  let figN = 0, motN = 0, embN = 0, stgN = 0;
+  let figN = 0, motN = 0, embN = 0, stgN = 0, itxN = 0;
 
   // Parse the YAML sidecars once (also used for marker id-resolution).
   const yamlIds = {}; // filename → Set of ids
@@ -202,6 +202,77 @@ for (const dir of dirs) {
       stgN++;
     }
 
+    // Bespoke-interactive sidecars (INTERACTIVE-FIGURE-SPEC.md §5) — a
+    // manipulable figure is ALWAYS staged first (a sibling .stages.json MUST
+    // exist), unlockAfterStage MUST equal that sidecar's stages.length, every
+    // binding target MUST resolve to a real id in the sibling .svg, and
+    // control.domain MUST be a valid [min, max] pair.
+    const interactiveFiles = mediaFiles.filter((f) => f.endsWith(".interactive.json"));
+    for (const file of interactiveFiles) {
+      const slug = file.replace(/\.interactive\.json$/, "");
+      let parsed;
+      try { parsed = JSON.parse(fs.readFileSync(path.join(mediaDir, file), "utf8")); }
+      catch (err) { console.error(`  ✗ ${dir}: media/${file} invalid JSON → ${err.message.split("\n")[0]}`); dirFail++; continue; }
+
+      if (!stagedSlugs.has(slug)) {
+        console.error(`  ✗ ${dir}: media/${file} has no sibling media/${slug}.stages.json — a manipulable figure must always be staged first`);
+        dirFail++;
+        continue;
+      }
+
+      const stagesRaw = JSON.parse(fs.readFileSync(path.join(mediaDir, `${slug}.stages.json`), "utf8"));
+      const stageCount = Array.isArray(stagesRaw?.stages) ? stagesRaw.stages.length : 0;
+      if (parsed?.unlockAfterStage !== stageCount) {
+        console.error(`  ✗ ${dir}: media/${file} unlockAfterStage=${parsed?.unlockAfterStage} must equal media/${slug}.stages.json's stages.length=${stageCount}`);
+        dirFail++;
+      }
+
+      const domain = parsed?.control?.domain;
+      if (!Array.isArray(domain) || domain.length !== 2 || typeof domain[0] !== "number" || typeof domain[1] !== "number" || domain[0] >= domain[1]) {
+        console.error(`  ✗ ${dir}: media/${file} control.domain must be [min, max] with min < max`);
+        dirFail++;
+      }
+
+      const svgSrc = fs.readFileSync(path.join(mediaDir, `${slug}.svg`), "utf8");
+      const bindings = Array.isArray(parsed?.bindings) ? parsed.bindings : [];
+      for (const b of bindings) {
+        const target = typeof b?.target === "string" ? b.target : null;
+        const idMatch = target && target.match(/^#([a-zA-Z0-9_-]+)$/);
+        if (!idMatch) {
+          console.error(`  ✗ ${dir}: media/${file} binding target "${target}" is not a plain "#id" selector`);
+          dirFail++;
+          continue;
+        }
+        const idRe = new RegExp(`\\bid="${idMatch[1]}"`);
+        if (!idRe.test(svgSrc)) {
+          console.error(`  ✗ ${dir}: media/${file} binding target "${target}" resolves to no id="${idMatch[1]}" in media/${slug}.svg`);
+          dirFail++;
+        }
+      }
+
+      // The math module — best-effort if the content lane commits ahead of
+      // the code lane (warning only); a hard failure once it exists and is
+      // missing a named recompute key (the binding pipeline for the final
+      // merge).
+      const tsPath = path.join(REPO, "web/src/lib/interactive-figures", `${slug}.ts`);
+      if (!fs.existsSync(tsPath)) {
+        console.error(`  ⚠ ${dir}: media/${file} has no web/src/lib/interactive-figures/${slug}.ts yet (content committed ahead of code)`);
+      } else {
+        const tsSrc = fs.readFileSync(tsPath, "utf8");
+        const recomputeBlockMatch = tsSrc.match(/recompute:\s*\{([\s\S]*?)\n\s*\},/);
+        const recomputeKeys = recomputeBlockMatch
+          ? [...recomputeBlockMatch[1].matchAll(/^\s*([a-zA-Z0-9_]+)[,:]/gm)].map((m) => m[1])
+          : [];
+        for (const b of bindings) {
+          if (typeof b?.recompute === "string" && !recomputeKeys.includes(b.recompute)) {
+            console.error(`  ✗ ${dir}: media/${file} recompute "${b.recompute}" has no matching key in web/src/lib/interactive-figures/${slug}.ts`);
+            dirFail++;
+          }
+        }
+      }
+      itxN++;
+    }
+
     // An SVG with step-N groups but no sidecar is either awaiting migration
     // (Workflow fan-out, ledger §11 migration table) or one of the four
     // figures grouped BEFORE the sidecar mechanism existed (still driven by
@@ -240,7 +311,7 @@ for (const dir of dirs) {
   }
 
   if (dirFail === 0) {
-    const media = figN + motN + embN + stgN ? `, media ${figN}fig ${motN}mot ${embN}emb ${stgN}stg ok` : "";
+    const media = figN + motN + embN + stgN + itxN ? `, media ${figN}fig ${motN}mot ${embN}emb ${stgN}stg ${itxN}itx ok` : "";
     console.log(`✓ ${dir} — math ${display.length}+${inline.length} ok, yaml ok${media}`);
   }
   failures += dirFail;
