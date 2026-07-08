@@ -1217,6 +1217,143 @@ try {
     else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
   }
 
+  // (Interactive-figures wave, pilot 4) suite-escalier — drag the starting
+  // point u0; the cobweb regenerates, always converging to the SAME fixed
+  // point ℓ=20 regardless of u0 (the companion escalier-pas-a-pas motion
+  // clip is untouched — separate id namespace).
+  {
+    const SENOTION = "/notions/maths/suites-numeriques";
+    const FIG = "[data-figure='suite-escalier']";
+    console.log(`\n[${SENOTION}?chapitre=9] SWEEP: suite-escalier — manipulation unlock, drag, keyboard, reduced-motion, print`);
+    const model = loadInteractiveFigureModel("suite-escalier");
+
+    const sepage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await sepage.goto(`${BASE}${SENOTION}?chapitre=9`, { waitUntil: "networkidle" });
+    const atStage1 = await sepage.evaluate((sel) => !!document.querySelector(sel)?.querySelector("input[type=range]"), FIG);
+    await sepage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await sepage.waitForTimeout(100);
+
+    const readFigure = (sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        rangePresent: !!range,
+        rangeValue: range?.value,
+        pointCx: fig?.querySelector("#point-u0")?.getAttribute("cx"),
+        pointCy: fig?.querySelector("#point-u0")?.getAttribute("cy"),
+        cobwebD: fig?.querySelector("#cobweb-path")?.getAttribute("d"),
+        labelU0: fig?.querySelector("#label-u0")?.textContent,
+      };
+    };
+    const atStage2Initial = await sepage.evaluate(readFigure, FIG);
+    const expectAt = (u0) => ({
+      point: model.recompute.point(u0),
+      cobweb: model.recompute.cobwebPath(u0),
+      label: model.recompute.labelU0Text(u0).value,
+    });
+    const expectedInitial = expectAt(100);
+
+    // Keyboard: exact — 50×ArrowLeft from initial 100, step 1, lands on 50.
+    await sepage.focus(`${FIG} input[type=range]`);
+    for (let i = 0; i < 50; i++) await sepage.keyboard.press("ArrowLeft");
+    await sepage.waitForTimeout(50);
+    const afterKeyboard = await sepage.evaluate(readFigure, FIG);
+    const expectedAfterKeyboard = expectAt(50);
+
+    // Mouse drag toward u0=20 (the fixed point itself — the cobweb
+    // degenerates to a single point there, a real and correct edge case).
+    const svgToClient = (sel, svgX, svgY) =>
+      sepage.evaluate(
+        ({ sel, svgX, svgY }) => {
+          const svg = document.querySelector(sel)?.querySelector("svg");
+          const pt = svg.createSVGPoint();
+          pt.x = svgX;
+          pt.y = svgY;
+          const p = pt.matrixTransform(svg.getScreenCTM());
+          return { x: p.x, y: p.y };
+        },
+        { sel, svgX, svgY }
+      );
+    const startPt = model.toSvgPoint(50, 0);
+    const startClient = await svgToClient(FIG, startPt.x, startPt.y);
+    const targetU0 = 20;
+    const targetPt = model.toSvgPoint(targetU0, 0);
+    const targetClient = await svgToClient(FIG, targetPt.x, targetPt.y);
+    await sepage.mouse.move(startClient.x, startClient.y);
+    await sepage.mouse.down();
+    await sepage.mouse.move(targetClient.x, targetClient.y, { steps: 8 });
+    await sepage.mouse.up();
+    await sepage.waitForTimeout(50);
+    const afterDrag = await sepage.evaluate(readFigure, FIG);
+    const draggedValue = parseFloat(afterDrag.rangeValue);
+    const expectedAfterDrag = Number.isFinite(draggedValue) ? expectAt(draggedValue) : null;
+
+    await sepage.close();
+    checks++;
+    if (atStage1) failures += fail("suite-escalier: manipulation control present at stage 1 — AttemptFirst unlock-gating broken");
+    else if (!atStage2Initial.rangePresent) failures += fail("suite-escalier: manipulation control absent at the final stage — never unlocks");
+    else if (atStage2Initial.rangeValue !== "100") failures += fail(`initial range value "${atStage2Initial.rangeValue}" ≠ "100" (control.initial)`);
+    else if (atStage2Initial.cobwebD !== expectedInitial.cobweb.d) failures += fail(`initial cobweb path ≠ model`);
+    else if (atStage2Initial.labelU0 !== expectedInitial.label) failures += fail(`initial label "${atStage2Initial.labelU0}" ≠ model "${expectedInitial.label}"`);
+    else if (afterKeyboard.rangeValue !== "50") failures += fail(`after 50×ArrowLeft, range value "${afterKeyboard.rangeValue}" ≠ "50"`);
+    else if (afterKeyboard.pointCx !== String(expectedAfterKeyboard.point.x) || afterKeyboard.pointCy !== String(expectedAfterKeyboard.point.y))
+      failures += fail(`after keyboard, #point-u0 (${afterKeyboard.pointCx},${afterKeyboard.pointCy}) ≠ model (${expectedAfterKeyboard.point.x},${expectedAfterKeyboard.point.y})`);
+    else if (afterKeyboard.cobwebD !== expectedAfterKeyboard.cobweb.d) failures += fail(`after keyboard, cobweb ≠ model`);
+    else if (!expectedAfterDrag) failures += fail(`after mouse drag, range value "${afterDrag.rangeValue}" is not a number`);
+    else if (Math.abs(draggedValue - targetU0) > 2) failures += fail(`after mouse drag toward u0=${targetU0}, landed value ${draggedValue} is too far off — drag gesture not tracking the pointer`);
+    else if (afterDrag.pointCx !== String(expectedAfterDrag.point.x) || afterDrag.pointCy !== String(expectedAfterDrag.point.y))
+      failures += fail(`after mouse drag, #point-u0 (${afterDrag.pointCx},${afterDrag.pointCy}) ≠ model(${draggedValue}) (${expectedAfterDrag.point.x},${expectedAfterDrag.point.y})`);
+    else if (afterDrag.cobwebD !== expectedAfterDrag.cobweb.d) failures += fail(`after mouse drag, cobweb ≠ model(${draggedValue})`);
+    else console.log(`  ✓ unlocks only at the final stage, initial/keyboard states match the model exactly, mouse drag internally consistent (landed u0=${draggedValue}), fixed point ℓ=20 always static`);
+  }
+
+  // (Interactive-figures wave, pilot 4) suite-escalier — reduced-motion
+  // unlock, print hides control.
+  {
+    const SENOTION = "/notions/maths/suites-numeriques";
+    const FIG = "[data-figure='suite-escalier']";
+    console.log(`\n[${SENOTION}?chapitre=9] SWEEP: suite-escalier — reduced-motion unlock, print hides control`);
+    const rpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await rpage.emulateMedia({ reducedMotion: "reduce" });
+    await rpage.goto(`${BASE}${SENOTION}?chapitre=9`, { waitUntil: "networkidle" });
+    await rpage.locator(FIG).scrollIntoViewIfNeeded();
+    await rpage.waitForTimeout(150);
+    const reduced = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        step2Present: !!fig?.querySelector("g#step-2"),
+        rangePresent: !!range,
+      };
+    }, FIG);
+    let keyboardWorksUnderReduced = false;
+    if (reduced.rangePresent) {
+      const before = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      await rpage.focus(`${FIG} input[type=range]`);
+      await rpage.keyboard.press("ArrowLeft");
+      await rpage.waitForTimeout(50);
+      const after = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      keyboardWorksUnderReduced = before !== after;
+    }
+    await rpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await rpage.waitForTimeout(100);
+    const printed = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      return {
+        rangeAbsent: !fig?.querySelector("input[type=range]"),
+        step2Present: !!fig?.querySelector("g#step-2"),
+      };
+    }, FIG);
+    await rpage.close();
+    checks++;
+    if (!reduced.step2Present) failures += fail("reduced-motion: step-2 not present — fullyRevealed branch not firing");
+    else if (!reduced.rangePresent) failures += fail("reduced-motion: manipulation control absent — reduced-motion must not disable manipulation itself (§4)");
+    else if (!keyboardWorksUnderReduced) failures += fail("reduced-motion: control present but keyboard stepping had no effect — not actually functional");
+    else if (!printed.rangeAbsent) failures += fail("print: manipulation control still present — nothing to drag on paper");
+    else if (!printed.step2Present) failures += fail("print: step-2 not present under @media print");
+    else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
+  }
+
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
   // ~2000px; everything above ran at 1280 and was blind to his dead zones.
   // Structural assertions at 1536/1920 (composition assertions land with the
