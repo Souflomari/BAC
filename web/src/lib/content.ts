@@ -191,6 +191,17 @@ export interface InteractiveFigureConfigSpec {
   bindings: InteractiveBindingSpec[];
   unlockAfterStage: number;
   readoutTemplate?: string;
+  /**
+   * Optional ONE-SHOT micro-affordance (racines-unite pilot): when the
+   * control's value lands on `settleAt` (a transition INTO it, never on
+   * mount), `settleTarget` (a CSS selector into the injected SVG) gets a
+   * `pulse-settle-once` class for ~450ms — reaction to the student's own
+   * action landing back on the lesson's worked example, never ambient/
+   * looping (DESIGN-BIBLE §0/§5). Both fields must be present together or
+   * both absent.
+   */
+  settleAt?: number;
+  settleTarget?: string;
 }
 
 export interface NotionExercise {
@@ -671,6 +682,8 @@ export function loadNotion(id: string): NotionContent | null {
           bindings?: unknown;
           unlockAfterStage?: unknown;
           readoutTemplate?: unknown;
+          settleAt?: unknown;
+          settleTarget?: unknown;
         };
         const c = p.control as
           | { kind?: unknown; axis?: unknown; domain?: unknown; step?: unknown; initial?: unknown }
@@ -724,6 +737,8 @@ export function loadNotion(id: string): NotionContent | null {
           bindings,
           unlockAfterStage: p.unlockAfterStage,
           readoutTemplate: typeof p.readoutTemplate === "string" ? p.readoutTemplate : undefined,
+          settleAt: typeof p.settleAt === "number" ? p.settleAt : undefined,
+          settleTarget: typeof p.settleTarget === "string" ? p.settleTarget : undefined,
         };
       } catch (err) {
         console.warn(

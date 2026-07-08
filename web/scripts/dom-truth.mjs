@@ -1096,6 +1096,127 @@ try {
     else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
   }
 
+  // (Interactive-figures wave, pilot 3 — "fun/quirky") racines-unite —
+  // a SLIDER (not drag-point) on n, plus the one-shot pulse-settle when n
+  // returns to the lesson's own worked value (n=3).
+  {
+    const RUNOTION = "/notions/maths/nombres-complexes-2";
+    const FIG = "[data-figure='racines-unite']";
+    console.log(`\n[${RUNOTION}?chapitre=5] SWEEP: racines-unite — slider unlock, keyboard, settle-pulse, reduced-motion, print`);
+    const model = loadInteractiveFigureModel("racines-unite");
+
+    const rupage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await rupage.goto(`${BASE}${RUNOTION}?chapitre=5`, { waitUntil: "networkidle" });
+    const atStage1 = await rupage.evaluate((sel) => !!document.querySelector(sel)?.querySelector("input[type=range]"), FIG);
+    await rupage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await rupage.waitForTimeout(100);
+
+    const readFigure = (sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        rangePresent: !!range,
+        rangeValue: range?.value,
+        polygonD: fig?.querySelector("#roots-polygon")?.getAttribute("d"),
+        dotsD: fig?.querySelector("#roots-dots")?.getAttribute("d"),
+        formuleN: fig?.querySelector("#formule-n")?.textContent,
+      };
+    };
+    const atStage2Initial = await rupage.evaluate(readFigure, FIG);
+    const expectAt = (n) => ({
+      polygon: model.recompute.rootsPolygon(n),
+      dots: model.recompute.rootsDots(n),
+      formule: model.recompute.formuleN(n).value,
+    });
+    const expectedInitial = expectAt(3);
+
+    // Keyboard: exact — 3×ArrowRight lands on n=6.
+    await rupage.focus(`${FIG} input[type=range]`);
+    for (let i = 0; i < 3; i++) await rupage.keyboard.press("ArrowRight");
+    await rupage.waitForTimeout(50);
+    const atN6 = await rupage.evaluate(readFigure, FIG);
+    const expectedAtN6 = expectAt(6);
+
+    // Settle pulse: 3×ArrowLeft back to n=3 (the worked value) — the
+    // pulse-settle-once class should appear immediately, then be removed
+    // ~500ms later (never permanent, never on mere presence at mount).
+    for (let i = 0; i < 3; i++) await rupage.keyboard.press("ArrowLeft");
+    await rupage.waitForTimeout(30);
+    const rightAfterSettle = await rupage.evaluate(
+      (sel) => document.querySelector(sel)?.querySelector("#roots-dots")?.classList.contains("pulse-settle-once"),
+      FIG
+    );
+    await rupage.waitForTimeout(600);
+    const afterSettleCleared = await rupage.evaluate(
+      (sel) => document.querySelector(sel)?.querySelector("#roots-dots")?.classList.contains("pulse-settle-once"),
+      FIG
+    );
+    const atN3Again = await rupage.evaluate(readFigure, FIG);
+
+    await rupage.close();
+    checks++;
+    if (atStage1) failures += fail("racines-unite: manipulation control present at stage 1 — AttemptFirst unlock-gating broken");
+    else if (!atStage2Initial.rangePresent) failures += fail("racines-unite: manipulation control absent at the final stage — never unlocks");
+    else if (atStage2Initial.rangeValue !== "3") failures += fail(`initial range value "${atStage2Initial.rangeValue}" ≠ "3" (control.initial)`);
+    else if (atStage2Initial.polygonD !== expectedInitial.polygon.d) failures += fail(`initial polygon ≠ model`);
+    else if (atStage2Initial.dotsD !== expectedInitial.dots.d) failures += fail(`initial dots ≠ model`);
+    else if (atStage2Initial.formuleN !== expectedInitial.formule) failures += fail(`initial formule "${atStage2Initial.formuleN}" ≠ model "${expectedInitial.formule}"`);
+    else if (atN6.rangeValue !== "6") failures += fail(`after 3×ArrowRight, range value "${atN6.rangeValue}" ≠ "6"`);
+    else if (atN6.dotsD !== expectedAtN6.dots.d) failures += fail(`n=6 dots ≠ model`);
+    else if (atN6.formuleN !== expectedAtN6.formule) failures += fail(`n=6 formule "${atN6.formuleN}" ≠ model "${expectedAtN6.formule}"`);
+    else if (!rightAfterSettle) failures += fail("settle: pulse-settle-once class did not appear on landing back at n=3");
+    else if (afterSettleCleared) failures += fail("settle: pulse-settle-once class still present ~600ms later — not actually one-shot");
+    else if (atN3Again.dotsD !== expectedInitial.dots.d) failures += fail(`after returning to n=3, dots ≠ model`);
+    else console.log(`  ✓ slider unlocks only at the final stage, initial/n=6 states match the model exactly, one-shot settle pulse fires and clears`);
+  }
+
+  // (Interactive-figures wave, pilot 3) racines-unite — reduced-motion
+  // unlock, print hides control.
+  {
+    const RUNOTION = "/notions/maths/nombres-complexes-2";
+    const FIG = "[data-figure='racines-unite']";
+    console.log(`\n[${RUNOTION}?chapitre=5] SWEEP: racines-unite — reduced-motion unlock, print hides control`);
+    const rpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await rpage.emulateMedia({ reducedMotion: "reduce" });
+    await rpage.goto(`${BASE}${RUNOTION}?chapitre=5`, { waitUntil: "networkidle" });
+    await rpage.locator(FIG).scrollIntoViewIfNeeded();
+    await rpage.waitForTimeout(150);
+    const reduced = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        step2Present: !!fig?.querySelector("g#step-2"),
+        rangePresent: !!range,
+      };
+    }, FIG);
+    let keyboardWorksUnderReduced = false;
+    if (reduced.rangePresent) {
+      const before = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      await rpage.focus(`${FIG} input[type=range]`);
+      await rpage.keyboard.press("ArrowRight");
+      await rpage.waitForTimeout(50);
+      const after = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      keyboardWorksUnderReduced = before !== after;
+    }
+    await rpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await rpage.waitForTimeout(100);
+    const printed = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      return {
+        rangeAbsent: !fig?.querySelector("input[type=range]"),
+        step2Present: !!fig?.querySelector("g#step-2"),
+      };
+    }, FIG);
+    await rpage.close();
+    checks++;
+    if (!reduced.step2Present) failures += fail("reduced-motion: step-2 not present — fullyRevealed branch not firing");
+    else if (!reduced.rangePresent) failures += fail("reduced-motion: manipulation control absent — reduced-motion must not disable manipulation itself (§4)");
+    else if (!keyboardWorksUnderReduced) failures += fail("reduced-motion: control present but keyboard stepping had no effect — not actually functional");
+    else if (!printed.rangeAbsent) failures += fail("print: manipulation control still present — nothing to drag on paper");
+    else if (!printed.step2Present) failures += fail("print: step-2 not present under @media print");
+    else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
+  }
+
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
   // ~2000px; everything above ran at 1280 and was blind to his dead zones.
   // Structural assertions at 1536/1920 (composition assertions land with the

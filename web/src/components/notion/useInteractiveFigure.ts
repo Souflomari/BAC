@@ -148,6 +148,26 @@ export function useInteractiveFigure({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, config, model]);
 
+  // One-shot settle pulse (racines-unite pilot, §"pulse-settle-once" in
+  // globals.css) — fires ONLY on a transition INTO settleAt (never on
+  // mount, even though the initial value often IS the worked example),
+  // matching the calm-core rule that this is a reaction to the student's
+  // OWN action, not an ambient effect.
+  const prevSettleValueRef = useRef(value);
+  useEffect(() => {
+    const prev = prevSettleValueRef.current;
+    prevSettleValueRef.current = value;
+    if (!active || !config?.settleAt || !config.settleTarget) return;
+    if (value !== config.settleAt || prev === config.settleAt) return;
+    const container = containerRef.current;
+    const el = container?.querySelector(config.settleTarget);
+    if (!el) return;
+    el.classList.add("pulse-settle-once");
+    const timeout = setTimeout(() => el.classList.remove("pulse-settle-once"), 500);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, config, value]);
+
   // The drag-point gesture — delegated on the STABLE container (never
   // replaced by React; only its injected SVG children are, whenever
   // StagedFigure re-renders for ANY reason — a captured reference to the
@@ -169,12 +189,11 @@ export function useInteractiveFigure({
     }
 
     function moveTo(clientX: number, clientY: number) {
-      if (!config || !model) return;
+      if (!config || !model || !model.toDataX) return;
       const svg = container!.querySelector("svg");
       if (!svg) return;
       const p = svgPointFromClient(svg as unknown as SVGSVGElement, clientX, clientY);
-      const dataX = model.toDataX(p.x);
-      setValue(dataX);
+      setValue(model.toDataX(p.x));
     }
 
     function onPointerDown(e: PointerEvent) {

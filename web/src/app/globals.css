@@ -1011,6 +1011,28 @@ h3:hover .heading-anchor,
   }
 }
 
+/* ── pulse-settle-once (interactive-figures, racines-unite pilot) ────────────
+   A ONE-SHOT, non-looping micro-affordance for a manipulable figure landing
+   back on its own worked example (docs/design/INTERACTIVE-FIGURE-SPEC.md) —
+   reaction to the student's OWN action, never ambient/looping, no score/
+   streak attaches (calm-core safe, DESIGN-BIBLE §0/§5). Toggled imperatively
+   by useInteractiveFigure.ts for ~450ms then removed. Belt-and-braces
+   alongside the global 0.01ms net: reduced-motion drops it outright rather
+   than relying on the net to compress it to imperceptible. */
+.pulse-settle-once {
+  animation: pulse-settle-once 0.45s var(--ease-between);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes pulse-settle-once {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse-settle-once { animation: none; }
+}
+
 /* ── Shelf accordion (dashboard AvailableShelf.tsx) — calm height reveal,
    no overshoot. Radix exposes --radix-accordion-content-height on the
    Content element while its data-state is transitioning; @keyframes (not a

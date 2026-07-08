@@ -19,13 +19,17 @@ export interface InteractiveFigureModel {
   /**
    * Data-space (dataX, dataY) -> SVG user-space point, using the SAME
    * scale constants the author used for the static SVG (single source —
-   * never re-derive the mapping separately from the drawn curve).
+   * never re-derive the mapping separately from the drawn curve). Required
+   * for `control.kind === "drag-point"` figures (the drag gesture needs it);
+   * a `"slider"`-only figure whose control value isn't a point on a curve
+   * (e.g. racines-unite's vertex count n) may omit it.
    */
-  toSvgPoint(dataX: number, dataY: number): { x: number; y: number };
-  /** SVG user-space x -> data-space x, clamped to `domain`. */
-  toDataX(svgX: number): number;
-  /** f evaluated at a data-space x. */
-  f(x: number): number;
+  toSvgPoint?(dataX: number, dataY: number): { x: number; y: number };
+  /** SVG user-space x -> data-space x, clamped to `domain`. Same
+   * drag-point-only requirement as `toSvgPoint`. */
+  toDataX?(svgX: number): number;
+  /** f evaluated at a data-space x. Omit if the control isn't a curve position. */
+  f?(x: number): number;
   /** Optional — only bindings that draw a tangent/derivative need this. */
   fPrime?(x: number): number;
   /**

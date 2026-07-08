@@ -250,6 +250,24 @@ for (const dir of dirs) {
         }
       }
 
+      // Optional one-shot settle pulse (racines-unite pilot) — both fields
+      // present together or both absent; settleTarget must resolve too.
+      const hasSettleAt = parsed?.settleAt !== undefined;
+      const hasSettleTarget = parsed?.settleTarget !== undefined;
+      if (hasSettleAt !== hasSettleTarget) {
+        console.error(`  ✗ ${dir}: media/${file} settleAt/settleTarget must both be present or both absent`);
+        dirFail++;
+      } else if (hasSettleTarget) {
+        const settleMatch = typeof parsed.settleTarget === "string" ? parsed.settleTarget.match(/^#([a-zA-Z0-9_-]+)$/) : null;
+        if (!settleMatch) {
+          console.error(`  ✗ ${dir}: media/${file} settleTarget "${parsed.settleTarget}" is not a plain "#id" selector`);
+          dirFail++;
+        } else if (!new RegExp(`\\bid="${settleMatch[1]}"`).test(svgSrc)) {
+          console.error(`  ✗ ${dir}: media/${file} settleTarget "${parsed.settleTarget}" resolves to no id="${settleMatch[1]}" in media/${slug}.svg`);
+          dirFail++;
+        }
+      }
+
       // The math module — best-effort if the content lane commits ahead of
       // the code lane (warning only); a hard failure once it exists and is
       // missing a named recompute key (the binding pipeline for the final
