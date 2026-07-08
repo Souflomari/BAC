@@ -27,6 +27,19 @@
     Rôle des couleurs (5 jetons seulement) :
       structure (boîtes, titres, tuples, groupe)   : --figure-ink / --figure-ink-soft / --figure-grid / --figure-surface
       SEULE emphase : l'accolade de regroupement p! et son libellé ÷3!=6 : --figure-accent
+
+    STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2.5) — 3 couches qui
+    suivent exactement le geste d'enseignement narré par la leçon, phrase
+    par phrase : (1) "3! = 6 ordres différents, tous construits à partir du
+    MÊME groupe" → les 6 arrangements seuls ; (2) "chaque groupe […] est
+    compté p! fois […] il faut diviser" → l'accolade qui les effondre en LA
+    combinaison ; (3) "Résolvons le comité de 3 parmi 8" → le pont vers les
+    nombres réels. Ce n'est pas un découpage arbitraire d'une figure déjà
+    simple : chaque étape est un moment conceptuel distinct (recompter →
+    effondrer → appliquer), pas un fractionnement mécanique du dessin.
+      step-1 : panneau gauche — titre + les 6 arrangements ordonnés.
+      step-2 : panneau droit — titre + l'accolade ÷3! + la combinaison unique.
+      step-3 : le pont vers les nombres du comité de 3 parmi 8.
   -->
 
   <style>
@@ -44,43 +57,54 @@
     text { text-anchor: middle; }
   </style>
 
-  <!-- ══════════════ Titres des deux panneaux ══════════════ -->
-  <text class="aec-title" x="170" y="22">Arrangements — l'ordre compte</text>
-  <text class="aec-sub"   x="170" y="38">les 3! = 6 façons de classer Amine, Sara, Karim</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — panneau gauche : les 6 arrangements ordonnés
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text class="aec-title" x="170" y="22">Arrangements — l'ordre compte</text>
+    <text class="aec-sub"   x="170" y="38">les 3! = 6 façons de classer Amine, Sara, Karim</text>
 
-  <text class="aec-title" x="570" y="22">Combinaison — l'ordre ne compte plus</text>
-  <text class="aec-sub"   x="570" y="38">le même groupe, une seule fois</text>
+    <rect class="aec-box" x="40" y="52"  width="260" height="48" rx="12"/>
+    <text class="aec-tuple" x="170" y="80">1. (Amine, Sara, Karim)</text>
 
-  <!-- ══════════════ Panneau gauche : les 6 arrangements (tuples ordonnés) ══════════════ -->
-  <rect class="aec-box" x="40" y="52"  width="260" height="48" rx="12"/>
-  <text class="aec-tuple" x="170" y="80">1. (Amine, Sara, Karim)</text>
+    <rect class="aec-box" x="40" y="108" width="260" height="48" rx="12"/>
+    <text class="aec-tuple" x="170" y="136">2. (Amine, Karim, Sara)</text>
 
-  <rect class="aec-box" x="40" y="108" width="260" height="48" rx="12"/>
-  <text class="aec-tuple" x="170" y="136">2. (Amine, Karim, Sara)</text>
+    <rect class="aec-box" x="40" y="164" width="260" height="48" rx="12"/>
+    <text class="aec-tuple" x="170" y="192">3. (Sara, Amine, Karim)</text>
 
-  <rect class="aec-box" x="40" y="164" width="260" height="48" rx="12"/>
-  <text class="aec-tuple" x="170" y="192">3. (Sara, Amine, Karim)</text>
+    <rect class="aec-box" x="40" y="220" width="260" height="48" rx="12"/>
+    <text class="aec-tuple" x="170" y="248">4. (Sara, Karim, Amine)</text>
 
-  <rect class="aec-box" x="40" y="220" width="260" height="48" rx="12"/>
-  <text class="aec-tuple" x="170" y="248">4. (Sara, Karim, Amine)</text>
+    <rect class="aec-box" x="40" y="276" width="260" height="48" rx="12"/>
+    <text class="aec-tuple" x="170" y="304">5. (Karim, Amine, Sara)</text>
 
-  <rect class="aec-box" x="40" y="276" width="260" height="48" rx="12"/>
-  <text class="aec-tuple" x="170" y="304">5. (Karim, Amine, Sara)</text>
+    <rect class="aec-box" x="40" y="332" width="260" height="48" rx="12"/>
+    <text class="aec-tuple" x="170" y="360">6. (Karim, Sara, Amine)</text>
+  </g><!-- /step-1 -->
 
-  <rect class="aec-box" x="40" y="332" width="260" height="48" rx="12"/>
-  <text class="aec-tuple" x="170" y="360">6. (Karim, Sara, Amine)</text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — panneau droit : l'accolade ÷3! effondre les 6 en 1 combinaison
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text class="aec-title" x="570" y="22">Combinaison — l'ordre ne compte plus</text>
+    <text class="aec-sub"   x="570" y="38">le même groupe, une seule fois</text>
 
-  <!-- ══════════════ Accolade de regroupement (l'unique emphase accent) ══════════════ -->
-  <path class="aec-brace" d="M310,52 C332,52 332,202 350,216 C332,230 332,380 310,380"/>
-  <text class="aec-bracelabel" x="395" y="210">÷ 3!</text>
-  <text class="aec-bracelabel" x="395" y="228">= 6</text>
+    <path class="aec-brace" d="M310,52 C332,52 332,202 350,216 C332,230 332,380 310,380"/>
+    <text class="aec-bracelabel" x="395" y="210">÷ 3!</text>
+    <text class="aec-bracelabel" x="395" y="228">= 6</text>
 
-  <!-- ══════════════ Panneau droit : la combinaison (ensemble non ordonné) ══════════════ -->
-  <rect class="aec-combobox" x="440" y="186" width="260" height="60" rx="14"/>
-  <text class="aec-combolabel" x="570" y="214">{Amine, Sara, Karim}</text>
-  <text class="aec-combosub" x="570" y="234">1 seul groupe (l'ordre est oublié)</text>
+    <rect class="aec-combobox" x="440" y="186" width="260" height="60" rx="14"/>
+    <text class="aec-combolabel" x="570" y="214">{Amine, Sara, Karim}</text>
+    <text class="aec-combosub" x="570" y="234">1 seul groupe (l'ordre est oublié)</text>
+  </g><!-- /step-2 -->
 
-  <!-- ══════════════ Passerelle vers les nombres réels de la leçon ══════════════ -->
-  <text class="aec-bridge1" x="400" y="430">Même mécanisme pour choisir 3 personnes parmi 8 :</text>
-  <text class="aec-bridge2" x="400" y="452"><tspan font-style="italic">A</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan><tspan dy="5"> = 336 → 336 ÷ 3! = 56 = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan></text>
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le pont vers les nombres réels du comité de 3 parmi 8
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text class="aec-bridge1" x="400" y="430">Même mécanisme pour choisir 3 personnes parmi 8 :</text>
+    <text class="aec-bridge2" x="400" y="452"><tspan font-style="italic">A</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan><tspan dy="5"> = 336 → 336 ÷ 3! = 56 = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan></text>
+  </g><!-- /step-3 -->
+
 </svg>

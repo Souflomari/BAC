@@ -4,7 +4,7 @@
   <title>PGCD(252, 198) par l'algorithme d'Euclide, à l'échelle</title>
 
   <!--
-    euclide-cascade.svg — cascade STATIQUE de l'algorithme d'Euclide,
+    euclide-cascade.svg — cascade STAGED de l'algorithme d'Euclide,
     sur l'exemple travaillé du R3 de la leçon (PGCD(252,198) = 18).
 
     Échelle UNIQUE pour les 4 lignes (pas de renormalisation par ligne) :
@@ -30,6 +30,17 @@
     reste final ET diviseur qui le fait apparaître deux fois à la
     dernière ligne — est en accent plein partout où il figure. Aucune
     autre teinte n'est utilisée : un seul accent, réservé au PGCD.
+
+    MISE EN ÉTAPES (LESSON-EXPERIENCE-SPEC §2.5) : geste d'enseignement
+    authentique — l'algorithme est littéralement récursif (le reste d'une
+    ligne devient le diviseur de la suivante), donc chaque ligne n'est
+    pleinement lisible qu'une fois qu'on a vu d'où elle vient. step-1 =
+    la 1ère division ; step-2..4 = connecteur (le reste devient le
+    diviseur suivant) + division suivante ; step-5 = la lecture finale
+    (dernier reste non nul = PGCD). Chrome toujours visible : fond,
+    titre, légende de couleur — placés AVANT les groupes step-N, qui
+    restent les derniers enfants du SVG (contrat de réassemblage du
+    renderer).
   -->
 
   <rect width="640" height="410" fill="var(--figure-surface)"/>
@@ -42,20 +53,8 @@
   <text x="320" y="40" text-anchor="middle" font-size="11" font-style="italic"
         fill="var(--figure-ink-soft)">En accent : le nombre 18, qui devient le PGCD</text>
 
-  <!-- ══════════════ Connecteurs (le reste devient le prochain diviseur) ══════════════ -->
-  <g stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3 3">
-    <line x1="488" y1="94" x2="488" y2="142"/>
-    <line x1="168" y1="172" x2="168" y2="220"/>
-    <line x1="128" y1="250" x2="128" y2="298"/>
-  </g>
-  <g fill="var(--figure-ink-soft)">
-    <polygon points="488,142 484,133 492,133"/>
-    <polygon points="168,220 164,211 172,211"/>
-    <polygon points="128,298 124,289 132,289"/>
-  </g>
-
-  <!-- ══════════════ Ligne 1 : 252 = 198 × 1 + 54 ══════════════ -->
-  <g>
+  <!-- ══════════════ Étape 1 : 252 = 198 × 1 + 54 ══════════════ -->
+  <g id="step-1">
     <rect x="48" y="64" width="440" height="30" rx="3" fill="var(--figure-ink-soft)"/>
     <rect x="488" y="64" width="120" height="30" rx="3" fill="var(--figure-accent)" fill-opacity="0.28"/>
     <rect x="48" y="64" width="560" height="30" rx="3" fill="none" stroke="var(--figure-ink)" stroke-width="1.25"/>
@@ -65,8 +64,12 @@
     <text x="328" y="110" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">252 = 198 × 1 + 54</text>
   </g>
 
-  <!-- ══════════════ Ligne 2 : 198 = 54 × 3 + 36 ══════════════ -->
-  <g>
+  <!-- ══════════════ Étape 2 : le reste 54 devient le diviseur → 198 = 54 × 3 + 36 ══════════════ -->
+  <g id="step-2">
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3 3">
+      <line x1="488" y1="94" x2="488" y2="142"/>
+    </g>
+    <polygon points="488,142 484,133 492,133" fill="var(--figure-ink-soft)"/>
     <rect x="48"  y="142" width="360" height="30" rx="3" fill="var(--figure-ink-soft)"/>
     <line x1="168" y1="142" x2="168" y2="172" stroke="var(--figure-grid)" stroke-width="1"/>
     <line x1="288" y1="142" x2="288" y2="172" stroke="var(--figure-grid)" stroke-width="1"/>
@@ -80,8 +83,12 @@
     <text x="268" y="188" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">198 = 54 × 3 + 36</text>
   </g>
 
-  <!-- ══════════════ Ligne 3 : 54 = 36 × 1 + 18 (18 apparaît : futur PGCD) ══════════════ -->
-  <g>
+  <!-- ══════════════ Étape 3 : le reste 36 devient le diviseur → 54 = 36 × 1 + 18 (18 apparaît : futur PGCD) ══════════════ -->
+  <g id="step-3">
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3 3">
+      <line x1="168" y1="172" x2="168" y2="220"/>
+    </g>
+    <polygon points="168,220 164,211 172,211" fill="var(--figure-ink-soft)"/>
     <rect x="48"  y="220" width="80" height="30" rx="3" fill="var(--figure-ink-soft)"/>
     <rect x="128" y="220" width="40" height="30" rx="3" fill="var(--figure-accent)"/>
     <rect x="48"  y="220" width="120" height="30" rx="3" fill="none" stroke="var(--figure-ink)" stroke-width="1.25"/>
@@ -91,8 +98,12 @@
     <text x="108" y="266" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">54 = 36 × 1 + 18</text>
   </g>
 
-  <!-- ══════════════ Ligne 4 : 36 = 18 × 2 + 0 (18 tapisse toute la barre, reste nul) ══════════════ -->
-  <g>
+  <!-- ══════════════ Étape 4 : le reste 18 devient le diviseur → 36 = 18 × 2 + 0 (18 tapisse toute la barre, reste nul) ══════════════ -->
+  <g id="step-4">
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3 3">
+      <line x1="128" y1="250" x2="128" y2="298"/>
+    </g>
+    <polygon points="128,298 124,289 132,289" fill="var(--figure-ink-soft)"/>
     <rect x="48" y="298" width="80" height="30" rx="3" fill="var(--figure-accent)"/>
     <line x1="88" y1="298" x2="88" y2="328" stroke="var(--figure-surface)" stroke-width="1.5"/>
     <rect x="48" y="298" width="80" height="30" rx="3" fill="none" stroke="var(--figure-ink)" stroke-width="1.25"/>
@@ -103,8 +114,10 @@
     <text x="88" y="344" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">36 = 18 × 2 + 0</text>
   </g>
 
-  <!-- ══════════════ Conclusion ══════════════ -->
-  <text x="320" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Dernier reste non nul :</text>
-  <text x="320" y="390" text-anchor="middle" font-size="17" font-weight="700"
-        fill="var(--figure-ink)">PGCD(252, 198) = <tspan fill="var(--figure-accent)">18</tspan></text>
+  <!-- ══════════════ Étape 5 : lecture — le dernier reste non nul est le PGCD ══════════════ -->
+  <g id="step-5">
+    <text x="320" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Dernier reste non nul :</text>
+    <text x="320" y="390" text-anchor="middle" font-size="17" font-weight="700"
+          fill="var(--figure-ink)">PGCD(252, 198) = <tspan fill="var(--figure-accent)">18</tspan></text>
+  </g>
 </svg>
