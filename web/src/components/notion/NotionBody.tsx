@@ -163,7 +163,7 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "rotation-complexe":   "Rotation de centre A(2i) et d'angle π/2 dans le plan complexe : B(3 + 2i) a pour image C(5i), avec AB = AC et z_C − z_A = i·(z_B − z_A)",
   "racines-unite":       "Les racines n-ièmes de l'unité sur le cercle trigonométrique, avec un curseur sur n (de 3 à 8) qui redessine le polygone régulier des n racines, régulièrement espacées de 2π/n",
   "tangente-derivee":    "La dérivée comme pente de la tangente : la courbe d(t) = t², une sécante qui pivote vers la tangente en A, puis un point A que l'on peut faire glisser le long de la courbe pour voir la pente d′(t) se recalculer en direct",
-  "asymptotes":          "Asymptote verticale x = 2 et asymptote horizontale y = 2 de la courbe de f(x) = 2 + 1/(x − 2) : les deux branches s'en approchent sans les toucher",
+  "asymptotes":          "Asymptote verticale x = 2 et asymptote horizontale y = 2 de la courbe de f(x) = 2 + 1/(x − 2), avec un point que l'on peut faire glisser sur la branche de droite pour voir f(x) se rapprocher de 2 sans jamais l'atteindre",
   "continuite-tvi":      "Le théorème des valeurs intermédiaires : sur [−1, 1], f continue passe de f(−1) = 2 à f(1) = −2, la droite y = k coupe la courbe en un point c où f(c) = k",
   "tableau-variations-courbe": "Le lien signe de f′ / variations : la courbe de f(x) = x³ − 3x, tangentes horizontales aux extremums (−1, 2) et (1, −2), bande +/−/+ et flèches de variation synchronisées",
   "pile-daniell":        "Schéma de la pile Daniell : demi-pile Zn/Zn2+ (anode, borne −) et demi-pile Cu/Cu2+ (cathode, borne +), pont salin, circulation des électrons dans le circuit extérieur",

@@ -12,12 +12,14 @@ import { tangenteDerivee } from "./tangente-derivee";
 import { aireSousCourbe } from "./aire-sous-courbe";
 import { racinesUnite } from "./racines-unite";
 import { suiteEscalier } from "./suite-escalier";
+import { asymptotes } from "./asymptotes";
 
 const REGISTRY: Record<string, InteractiveFigureModel> = {
   "tangente-derivee": tangenteDerivee,
   "aire-sous-courbe": aireSousCourbe,
   "racines-unite": racinesUnite,
   "suite-escalier": suiteEscalier,
+  asymptotes,
 };
 
 export function getInteractiveFigureModel(slug: string): InteractiveFigureModel | undefined {

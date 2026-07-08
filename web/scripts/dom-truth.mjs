@@ -1354,6 +1354,154 @@ try {
     else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
   }
 
+  // (Interactive-figures wave, pilot 5) asymptotes — drag along the right
+  // branch (x>2); pedagogy-architect-approved descriptive framing (gap
+  // shrinks, never an ε/δ challenge). unlockAfterStage=3 (this figure was
+  // never staged before this pilot — 3 fresh stages authored from scratch).
+  {
+    const ASNOTION = "/notions/maths/limites-continuite";
+    const FIG = "[data-figure='asymptotes']";
+    console.log(`\n[${ASNOTION}?chapitre=2] SWEEP: asymptotes — manipulation unlock, drag, keyboard, reduced-motion, print`);
+    const model = loadInteractiveFigureModel("asymptotes");
+
+    const aspage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await aspage.goto(`${BASE}${ASNOTION}?chapitre=2`, { waitUntil: "networkidle" });
+    const atStage1 = await aspage.evaluate((sel) => !!document.querySelector(sel)?.querySelector("input[type=range]"), FIG);
+    await aspage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await aspage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await aspage.waitForTimeout(100);
+
+    const readFigure = (sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        rangePresent: !!range,
+        rangeValue: range?.value,
+        pointCx: fig?.querySelector("#point-x")?.getAttribute("cx"),
+        pointCy: fig?.querySelector("#point-x")?.getAttribute("cy"),
+        guideD: fig?.querySelector("#guide-x")?.getAttribute("d"),
+        labelX: fig?.querySelector("#label-x")?.textContent,
+      };
+    };
+    const atStage3Initial = await aspage.evaluate(readFigure, FIG);
+    const expectAt = (x) => ({
+      point: model.recompute.point(x),
+      guide: model.recompute.guideX(x),
+      label: model.recompute.labelXText(x).value,
+    });
+    const expectedInitial = expectAt(3);
+
+    // Keyboard: exact — 10×ArrowRight from initial 3, step 0.1, lands on 4.
+    await aspage.focus(`${FIG} input[type=range]`);
+    for (let i = 0; i < 10; i++) await aspage.keyboard.press("ArrowRight");
+    await aspage.waitForTimeout(50);
+    const afterKeyboard = await aspage.evaluate(readFigure, FIG);
+    const expectedAfterKeyboard = expectAt(4);
+
+    // Mouse drag toward x=6 (the domain max — the right end of the branch).
+    const svgToClient = (sel, svgX, svgY) =>
+      aspage.evaluate(
+        ({ sel, svgX, svgY }) => {
+          const svg = document.querySelector(sel)?.querySelector("svg");
+          const pt = svg.createSVGPoint();
+          pt.x = svgX;
+          pt.y = svgY;
+          const p = pt.matrixTransform(svg.getScreenCTM());
+          return { x: p.x, y: p.y };
+        },
+        { sel, svgX, svgY }
+      );
+    const startPt = model.toSvgPoint(4, model.f(4));
+    const startClient = await svgToClient(FIG, startPt.x, startPt.y);
+    const targetX = 6;
+    const targetPt = model.toSvgPoint(targetX, model.f(targetX));
+    const targetClient = await svgToClient(FIG, targetPt.x, targetPt.y);
+    await aspage.mouse.move(startClient.x, startClient.y);
+    await aspage.mouse.down();
+    await aspage.mouse.move(targetClient.x, targetClient.y, { steps: 8 });
+    await aspage.mouse.up();
+    await aspage.waitForTimeout(50);
+    const afterDrag = await aspage.evaluate(readFigure, FIG);
+    const draggedValue = parseFloat(afterDrag.rangeValue);
+    const expectedAfterDrag = Number.isFinite(draggedValue) ? expectAt(draggedValue) : null;
+
+    // No epsilon/delta/tolerance vocabulary anywhere in the rendered figure
+    // or readout — the pedagogy-architect sign-off's hard boundary.
+    const forbidden = /\bepsilon\b|\bdelta\b|ε|δ|tolérance|seuil|pour tout.*il existe/i;
+    const readoutText = await aspage.evaluate(
+      (sel) => document.querySelector(sel)?.querySelector("[aria-live='polite']")?.textContent ?? "",
+      FIG
+    );
+    const figureText = await aspage.evaluate((sel) => document.querySelector(sel)?.textContent ?? "", FIG);
+
+    await aspage.close();
+    checks++;
+    if (atStage1) failures += fail("asymptotes: manipulation control present at stage 1 — AttemptFirst unlock-gating broken");
+    else if (!atStage3Initial.rangePresent) failures += fail("asymptotes: manipulation control absent at the final stage — never unlocks");
+    else if (atStage3Initial.rangeValue !== "3") failures += fail(`initial range value "${atStage3Initial.rangeValue}" ≠ "3" (control.initial)`);
+    else if (atStage3Initial.pointCx !== String(expectedInitial.point.x) || atStage3Initial.pointCy !== String(expectedInitial.point.y))
+      failures += fail(`initial #point-x (${atStage3Initial.pointCx},${atStage3Initial.pointCy}) ≠ model (${expectedInitial.point.x},${expectedInitial.point.y})`);
+    else if (atStage3Initial.labelX !== expectedInitial.label) failures += fail(`initial label "${atStage3Initial.labelX}" ≠ model "${expectedInitial.label}"`);
+    else if (afterKeyboard.rangeValue !== "4") failures += fail(`after 10×ArrowRight, range value "${afterKeyboard.rangeValue}" ≠ "4"`);
+    else if (afterKeyboard.pointCx !== String(expectedAfterKeyboard.point.x) || afterKeyboard.pointCy !== String(expectedAfterKeyboard.point.y))
+      failures += fail(`after keyboard, #point-x (${afterKeyboard.pointCx},${afterKeyboard.pointCy}) ≠ model (${expectedAfterKeyboard.point.x},${expectedAfterKeyboard.point.y})`);
+    else if (!expectedAfterDrag) failures += fail(`after mouse drag, range value "${afterDrag.rangeValue}" is not a number`);
+    else if (Math.abs(draggedValue - targetX) > 0.5) failures += fail(`after mouse drag toward x=${targetX}, landed value ${draggedValue} is too far off — drag gesture not tracking the pointer`);
+    else if (afterDrag.pointCx !== String(expectedAfterDrag.point.x) || afterDrag.pointCy !== String(expectedAfterDrag.point.y))
+      failures += fail(`after mouse drag, #point-x (${afterDrag.pointCx},${afterDrag.pointCy}) ≠ model(${draggedValue}) (${expectedAfterDrag.point.x},${expectedAfterDrag.point.y})`);
+    else if (afterDrag.guideD !== expectedAfterDrag.guide.d) failures += fail(`after mouse drag, guide ≠ model(${draggedValue})`);
+    else if (forbidden.test(readoutText) || forbidden.test(figureText))
+      failures += fail(`forbidden ε/δ/tolérance/seuil vocabulary found in the rendered figure or readout — curriculum-scope violation (pedagogy-architect sign-off)`);
+    else console.log(`  ✓ unlocks only at the final stage, initial/keyboard states match the model exactly, mouse drag internally consistent (landed x=${draggedValue}), no ε/δ vocabulary leaked`);
+  }
+
+  // (Interactive-figures wave, pilot 5) asymptotes — reduced-motion unlock,
+  // print hides control. Three stages here (step-3 is the last).
+  {
+    const ASNOTION = "/notions/maths/limites-continuite";
+    const FIG = "[data-figure='asymptotes']";
+    console.log(`\n[${ASNOTION}?chapitre=2] SWEEP: asymptotes — reduced-motion unlock, print hides control`);
+    const rpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await rpage.emulateMedia({ reducedMotion: "reduce" });
+    await rpage.goto(`${BASE}${ASNOTION}?chapitre=2`, { waitUntil: "networkidle" });
+    await rpage.locator(FIG).scrollIntoViewIfNeeded();
+    await rpage.waitForTimeout(150);
+    const reduced = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      const range = fig?.querySelector("input[type=range]");
+      return {
+        step3Present: !!fig?.querySelector("g#step-3"),
+        rangePresent: !!range,
+      };
+    }, FIG);
+    let keyboardWorksUnderReduced = false;
+    if (reduced.rangePresent) {
+      const before = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      await rpage.focus(`${FIG} input[type=range]`);
+      await rpage.keyboard.press("ArrowRight");
+      await rpage.waitForTimeout(50);
+      const after = await rpage.evaluate((sel) => document.querySelector(sel)?.querySelector("input[type=range]")?.value, FIG);
+      keyboardWorksUnderReduced = before !== after;
+    }
+    await rpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await rpage.waitForTimeout(100);
+    const printed = await rpage.evaluate((sel) => {
+      const fig = document.querySelector(sel);
+      return {
+        rangeAbsent: !fig?.querySelector("input[type=range]"),
+        step3Present: !!fig?.querySelector("g#step-3"),
+      };
+    }, FIG);
+    await rpage.close();
+    checks++;
+    if (!reduced.step3Present) failures += fail("reduced-motion: step-3 not present — fullyRevealed branch not firing");
+    else if (!reduced.rangePresent) failures += fail("reduced-motion: manipulation control absent — reduced-motion must not disable manipulation itself (§4)");
+    else if (!keyboardWorksUnderReduced) failures += fail("reduced-motion: control present but keyboard stepping had no effect — not actually functional");
+    else if (!printed.rangeAbsent) failures += fail("print: manipulation control still present — nothing to drag on paper");
+    else if (!printed.step3Present) failures += fail("print: step-3 not present under @media print");
+    else console.log(`  ✓ reduced-motion unlocks manipulation (present + functional), print hides the control`);
+  }
+
   // (Day-8, §13 amendment #3) WIDE-TIER battery: the owner's viewport is
   // ~2000px; everything above ran at 1280 and was blind to his dead zones.
   // Structural assertions at 1536/1920 (composition assertions land with the
