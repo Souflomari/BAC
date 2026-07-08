@@ -696,6 +696,93 @@ orphelins : energy-exchange, loi-mailles-build). La table détaillée
 (done / pending / declined-with-reason, une ligne par figure) est tenue
 en fin de cette section au fur et à mesure du fan-out Day-11.
 
+**Clôture 2026-07-08 : le fan-out complet (Item 3, post-fable-work-order.md)
+est terminé.** 65/72 figures staged, 7 déclinées avec raison documentée
+(aucun refus par paresse — chaque décline nomme un critère du seuil §2.5).
+SVT exclu de tout ce passage (gate propriétaire pré-existante, D10). Pilote
+(`courbe-exponentielle`) et cas le plus délicat (`arbre-pondere`, 3
+placements) traités personnellement avant le fan-out ; le reste par vagues
+d'agents parallèles, un par leçon, `validate-content.mjs` vert à chaque
+leçon, `dom-truth.mjs` (155 vérifs) sans régression après coup.
+
+| # | Figure | Leçon | Statut | Détail |
+|---|---|---|---|---|
+| 1 | tangente-derivee | maths/derivabilite-etude-fonctions | ✅ staged (interactif) | pilote interactif 1 (vague antérieure) |
+| 2 | aire-sous-courbe | maths/calcul-integral | ✅ staged (interactif) | pilote interactif 2 |
+| 3 | racines-unite | maths/nombres-complexes-2 | ✅ staged (interactif) | pilote interactif 3 |
+| 4 | suite-escalier | maths/suites-numeriques | ✅ staged (interactif) | pilote interactif 4 |
+| 5 | asymptotes | maths/limites-continuite | ✅ staged (interactif) | pilote interactif 5 |
+| 6 | rlc-schema | pc/rlc-serie | ✅ staged | legacy, déjà groupé avant Day-11 |
+| 7 | regimes-uc | pc/rlc-serie | ✅ staged | legacy, déjà groupé avant Day-11 |
+| 8 | courbe-exponentielle | maths/fonction-exponentielle | ✅ staged (3) | pilote mécanique de cette vague |
+| 9 | arbre-pondere | maths/probabilites-conditionnelles | ✅ staged (3) | cas le plus délicat : 3 placements, initialStage 1/2/3 confirmé en rendu |
+| 10 | energy-exchange | pc/rlc-serie | ⛔ declined | orphelin : aucun `[[figure:...]]` dans lesson.md, remplacé par energy-pendulum.motion.json |
+| 11 | loi-mailles-build | pc/rlc-serie | ⛔ declined | orphelin : aucun `[[figure:...]]` dans lesson.md, remplacé par loi-des-mailles-build.motion.json |
+| 12 | euclide-cascade | maths/arithmetique | ✅ staged (5) | schéma récursif : chaque ligne dérive de la précédente (geste réel) |
+| 13 | aire-entre-courbes | maths/calcul-integral | ✅ staged (2) | graphe |
+| 14 | arbre-denombrement | maths/denombrement | ✅ staged (3) | arbre de dénombrement, même famille qu'arbre-pondere |
+| 15 | arrangement-combinaison | maths/denombrement | ✅ staged (3) | recompter → replier → appliquer |
+| 16 | tableau-variations-courbe | maths/derivabilite-etude-fonctions | ✅ staged (3) | graphe + tableau |
+| 17 | famille-solutions | maths/equations-differentielles | ✅ staged (3) | graphe (famille de courbes) |
+| 18 | courbe-logarithme | maths/fonction-logarithme | ✅ staged (3) | graphe |
+| 19 | plan-normal | maths/geometrie-espace | ✅ staged (3) | construction géométrique 3D |
+| 20 | sphere-plan | maths/geometrie-espace | ✅ staged (3) | construction géométrique 3D |
+| 21 | continuite-tvi | maths/limites-continuite | ✅ staged (3) | graphe (TVI) |
+| 22 | module-argument | maths/nombres-complexes-1 | ✅ staged (3) | symétries dans le plan complexe |
+| 23 | plan-complexe | maths/nombres-complexes-1 | ✅ staged (3) | construction plan complexe |
+| 24 | rotation-complexe | maths/nombres-complexes-2 | ✅ staged (4) | construction géométrique (rotation) |
+| 25 | table-groupe | maths/structures-algebriques | ✅ staged (3) | table de Cayley : neutre puis symétrique, ordre du texte R2 |
+| 26 | convergence-limite | maths/suites-numeriques | ✅ staged (2) | graphe |
+| 27 | conservation-em | pc/aspects-energetiques | ✅ staged (2) | graphe (diagramme d'énergie) |
+| 28 | travail-poids-chemin | pc/aspects-energetiques | ⛔ declined | instantané de comparaison unique, dérivation déjà portée par la prose |
+| 29 | niveaux-energie | pc/atome-mecanique-newton | ✅ staged (3) | schéma (niveaux quantiques) |
+| 30 | spectre-raies | pc/atome-mecanique-newton | ✅ staged (3) | schéma (raies spectrales) |
+| 31 | deflexion-magnetique | pc/chute-mouvements-plans | ✅ staged (3) | graphe (trajectoire) |
+| 32 | trajectoire-parabolique | pc/chute-mouvements-plans | ✅ staged (3) | graphe (trajectoire) |
+| 33 | effet-catalyseur | pc/controle-catalyse | ✅ staged (3) | graphe |
+| 34 | facteurs-cinetiques | pc/controle-catalyse | ✅ staged (3) | graphe |
+| 35 | decroissance-courbe | pc/decroissance-radioactive | ✅ staged (3) | graphe |
+| 36 | tangente-tau | pc/decroissance-radioactive | ✅ staged (3) | graphe + tangente |
+| 37 | i-etablissement | pc/dipole-rl | ✅ staged (3) | graphe |
+| 38 | rl-schema | pc/dipole-rl | ⛔ declined | placement unique, une phrase, trivial → entier |
+| 39 | cellule-electrolyse | pc/electrolyse | ✅ staged (4) | schéma (cause → conséquence forcée) |
+| 40 | rendement-esterification | pc/esterification-hydrolyse | ✅ staged (2) | graphe |
+| 41 | equilibre-concentrations | pc/etat-equilibre | ✅ staged (3) | graphe |
+| 42 | quotient-vers-K | pc/etat-equilibre | ✅ staged (3) | graphe |
+| 43 | critere-qr-k | pc/evolution-spontanee | ✅ staged (3) | schéma (droite graduée qualitative) |
+| 44 | deux-chariots-inertie | pc/lois-de-newton | ✅ staged (3) | schéma (bilan de forces) |
+| 45 | plan-incline-forces | pc/lois-de-newton | ✅ staged (4) | schéma (décomposition du poids) |
+| 46 | courbe-aston | pc/noyaux-masse-energie | ✅ staged (3) | graphe (courbe d'Aston) |
+| 47 | defaut-masse | pc/noyaux-masse-energie | ✅ staged (3) | schéma (avant/après, geste pile-Daniell) |
+| 48 | bonne-surmodulation | pc/ondes-em-modulation | ✅ staged (3) | graphe |
+| 49 | modulation-amplitude | pc/ondes-em-modulation | ✅ staged (2) | graphe |
+| 50 | dephasage | pc/ondes-mecaniques-periodiques | ✅ staged (3) | graphe |
+| 51 | double-periodicite | pc/ondes-mecaniques-periodiques | ✅ staged (3) | graphe |
+| 52 | onde-propagation-retard | pc/ondes-mecaniques-progressives | ✅ staged (2) | graphe |
+| 53 | transverse-longitudinal | pc/ondes-mecaniques-progressives | ⛔ declined | comparaison côte-à-côte, la vue simultanée EST le point |
+| 54 | pile-daniell | pc/piles | ✅ staged (3) | schéma, exemple cité littéralement par la spec §2.5 |
+| 55 | diffraction-fente | pc/propagation-onde-lumineuse | ✅ staged (4) | schéma (montage → prédiction → réel → mesure) |
+| 56 | dispersion-prisme | pc/propagation-onde-lumineuse | ✅ staged (3) | schéma (montage → phénomène → conséquence) |
+| 57 | uc-charge | pc/rc-charge | ✅ staged (3) | graphe |
+| 58 | uc-decharge | pc/rc-charge | ✅ staged (3) | graphe |
+| 59 | rc-schema | pc/rc-charge | ⛔ declined | placement unique, une phrase, trivial → entier (même famille que rl-schema) |
+| 60 | diagramme-predominance | pc/reactions-acido-basiques | ✅ staged (3) | schéma (zones de prédominance) |
+| 61 | zones-predominance-2 | pc/reactions-acido-basiques | ✅ staged (4) | schéma (deux pKa, chevauchement) |
+| 62 | origin-i | pc/rlc-serie | ✅ staged (3) | schéma (origine i = dq/dt) |
+| 63 | origin-uL | pc/rlc-serie | ✅ staged (3) | schéma (origine u_L = L·di/dt) |
+| 64 | origin-uc | pc/rlc-serie | ✅ staged (4) | graphe (origine u_C = q/C) |
+| 65 | moment-force | pc/rotation-axe-fixe | ✅ staged (4) | schéma (bilan de moments) |
+| 66 | moment-inertie | pc/rotation-axe-fixe | ✅ staged (3) | schéma (tige vs haltère, comparaison chiffrée à l'échelle) |
+| 67 | avancement-tangente | pc/suivi-temporel-vitesse | ✅ staged (3) | graphe |
+| 68 | temps-demi-reaction | pc/suivi-temporel-vitesse | ✅ staged (3) | graphe |
+| 69 | energie-oscillateur | pc/systemes-oscillants | ✅ staged (3) | graphe |
+| 70 | pendule-elastique | pc/systemes-oscillants | ⛔ declined | figure composée 2-panneaux, trois états à voir ensemble ; déjà déclarée statique dans son propre en-tête (autorat D10) |
+| 71 | avancement-limite | pc/transformations-deux-sens | ✅ staged (3) | graphe |
+| 72 | lente-rapide | pc/transformations-lentes-rapides | ✅ staged (3) | graphe |
+
+**Bilan : 65 staged, 7 declined (raison documentée), 0 pending.** SVT :
+non touché, hors census (gate D10 pré-existante, confirmée non levée).
+
 
 ## 12. Extension — la chasse adversariale (2026-07-06, post-ADR-0026)
 
