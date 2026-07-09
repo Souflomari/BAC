@@ -34,6 +34,8 @@ $$\ln(1) = 0 \qquad \text{et} \qquad \ln'(x) = \frac1x \ \text{ pour tout } x>0$
 
 Comme $\ln$ est une primitive de $1/t$, elle a une interprétation géométrique directe : pour $x>1$, $\ln(x)$ est l'aire sous la courbe de $t \mapsto 1/t$, entre les abscisses $1$ et $x$. Pour $0<x<1$, cette même aire existe encore (entre $x$ et $1$ cette fois), mais $\ln(x)$ en vaut l'opposé — c'est précisément pour ça que $\ln(x)$ est négatif sur $]0,1[$.
 
+[[figure:ln-aire-sous-courbe]]
+
 ### Signe et sens de variation
 
 $\ln'(x) = \dfrac1x$, et $\dfrac1x>0$ pour tout $x>0$. Une dérivée strictement positive sur tout l'intervalle signifie que $\ln$ est **strictement croissante sur $]0,+\infty[$**.
@@ -255,6 +257,8 @@ Quand $x \to +\infty$, $\dfrac{2}{\sqrt x} \to 0$ (limite de référence sur les
 $$\lim_{x \to +\infty} \frac{\ln(x)}{x} = 0$$
 
 Ce résultat porte le nom de **croissances comparées** : dans la course vers $+\infty$, $x$ écrase $\ln(x)$.
+
+[[figure:croissances-comparees-ln]]
 
 **Corollaire utile.**
 

@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Aire sous la courbe de t maps to 1/t sur l'intervalle ouvert 0, plus l'infini, entre t=1 et t=x. Pour x supérieur à 1, l'aire teintée entre 1 et x vaut exactement ln(x), qui est positif. Pour x compris strictement entre 0 et 1, l'aire teintée entre x et 1 existe toujours, mais ln(x) en vaut l'opposé, donc ln(x) est négatif — la définition géométrique du signe de ln.">
+  <title>Aire sous la courbe de 1/t — la définition géométrique du signe de ln(x)</title>
+  <!--
+    ln-aire-sous-courbe.svg — figure STATIQUE, STAGED en 4 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2), R1 de fonction-logarithme :
+    "Une image concrète : l'aire sous la courbe de 1/t".
+
+    Déviation assumée par rapport à courbe-logarithme.svg (R5, la figure
+    de référence de cette leçon) : là-bas, les axes sont un chrome NON
+    STEPPED, toujours visibles, et seules 3 couches (données + 2 lectures)
+    sont des groupes step-N. Ici, le brief pédagogique approuvé énumère
+    EXPLICITEMENT 4 étapes numérotées, "Axes" étant l'étape (1) — donc les
+    axes eux-mêmes (y compris le repère t=1) sont ici un step-1 gated,
+    pas un chrome pré-révélé. Toutes les AUTRES conventions (viewBox,
+    panneau, style des ticks/flèches, tspans italiques pour les variables,
+    palette --figure-*) suivent courbe-logarithme.svg à l'identique.
+
+    Repère écran (calculé, pas deviné) :
+      t-axis   : t=0 → px=80  ;  t=5,3 → px=610   (scaleX = 100 px/unité)
+      y-axis   : y=0 → py=350 ;  y=6   → py=50     (scaleY = 50  px/unité,
+                 y ici désigne la VALEUR de 1/t, pas une seconde variable)
+      px(t) = 80 + 100·t  ;  py(y) = 350 - 50·y
+
+    Courbe t ↦ 1/t, échantillonnée de t=1/6 (où 1/t=6, le plafond du
+    panneau) à t=5,3 (bord droit) — valeurs exactes, jamais approximées :
+      t=1/6  (1/t=6)      → (96,67 ; 50,00)
+      t=0,2  (1/t=5)       → (100,00 ; 100,00)
+      t=0,25 (1/t=4)       → (105,00 ; 150,00)
+      t=0,3  (1/t=3,3333)  → (110,00 ; 183,33)
+      t=0,4  (1/t=2,5)     → (120,00 ; 225,00)
+      t=0,5  (1/t=2)       → (130,00 ; 250,00)
+      t=0,6  (1/t=1,6667)  → (140,00 ; 266,67)
+      t=0,7  (1/t=1,4286)  → (150,00 ; 278,57)
+      t=0,8  (1/t=1,25)    → (160,00 ; 287,50)
+      t=0,9  (1/t=1,1111)  → (170,00 ; 294,44)
+      t=1,0  (1/t=1)       → (180,00 ; 300,00)
+      t=1,2  (1/t=0,8333)  → (200,00 ; 308,33)
+      t=1,4  (1/t=0,7143)  → (220,00 ; 314,29)
+      t=1,6  (1/t=0,625)   → (240,00 ; 318,75)
+      t=1,8  (1/t=0,5556)  → (260,00 ; 322,22)
+      t=2,0  (1/t=0,5)     → (280,00 ; 325,00)
+      t=2,5  (1/t=0,4)     → (330,00 ; 330,00)
+      t=3,0  (1/t=0,3333)  → (380,00 ; 333,33)
+      t=3,5  (1/t=0,2857)  → (430,00 ; 335,71)
+      t=4,0  (1/t=0,25)    → (480,00 ; 337,50)
+      t=4,5  (1/t=0,2222)  → (530,00 ; 338,89)
+      t=5,0  (1/t=0,2)     → (580,00 ; 340,00)
+      t=5,3  (1/t=0,1887)  → (610,00 ; 340,57)
+
+    Aire teintée, cas x>1 (illustré avec x=3, mais étiqueté "x" génériquement
+    — comme dans le texte du R1, qui ne fixe pas de valeur particulière) :
+      polygone borné en bas par l'axe (py=350), à gauche par t=1 (px=180),
+      à droite par t=3 (px=380), en haut par la courbe elle-même —
+      réutilise EXACTEMENT les points échantillonnés ci-dessus (t=1,0 à
+      t=3,0), jamais une bézier devinée.
+
+    Aire teintée, cas 0<x<1 (illustré avec x=0,4, étiqueté "x" aussi, mais
+    annoté "(0 < x < 1)" pour lever toute ambiguïté avec le premier "x") :
+      polygone borné en bas par l'axe, à gauche par t=0,4 (px=120), à
+      droite par t=1 (px=180), en haut par la courbe (points t=0,4 à
+      t=1,0 ci-dessus).
+
+    Rôle des couleurs :
+      courbe t ↦ 1/t (step-2, la structure donnée)           : --figure-ink
+      axes, ticks neutres, "t=1", annotations de désambiguïsation
+        "(x > 1)" / "(0 < x < 1)"                             : --figure-ink-soft
+      aires teintées, ticks "x" des deux cas, boîtes formule
+        (LE sujet des étapes de lecture 3 et 4)                : --figure-accent
+
+    Mise en étapes : step-1 = axes + t=1 marqué ; step-2 = la courbe seule ;
+    step-3 = lecture, cas x>1 (aire = ln x, positive) ; step-4 = lecture,
+    cas 0<x<1 (aire = -ln x, donc ln x négatif). Suit l'ordre du texte R1
+    ("Une image concrète : l'aire sous la courbe de 1/t").
+
+    Les captions sont portées par ln-aire-sous-courbe.stages.json — aucun
+    texte de légende baké ici (même convention que courbe-logarithme.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Aire sous la courbe de t ↦ 1/t — la définition géométrique du signe de ln(x)
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes, t = 1 marqué
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axe des t (horizontal) -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="354" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+
+    <!-- Axe vertical, en t=0 — pointillé : c'est aussi l'asymptote de 1/t
+         quand t → 0⁺ (même convention que l'asymptote de courbe-logarithme.svg) -->
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="5,3"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- t = 1, marqué dès les axes (le pivot de toute la figure) -->
+    <line x1="180" y1="346" x2="180" y2="354"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="180" y="366" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-ink-soft)">1</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la courbe t ↦ 1/t
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M96.67,50.00 L100.00,100.00 L105.00,150.00 L110.00,183.33
+      L120.00,225.00 L130.00,250.00 L140.00,266.67 L150.00,278.57
+      L160.00,287.50 L170.00,294.44 L180.00,300.00 L200.00,308.33
+      L220.00,314.29 L240.00,318.75 L260.00,322.22 L280.00,325.00
+      L330.00,330.00 L380.00,333.33 L430.00,335.71 L480.00,337.50
+      L530.00,338.89 L580.00,340.00 L610.00,340.57
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Étiquette de la courbe, en zone dégagée (ni sous les boîtes
+         formule, ni sous les futures aires teintées) -->
+    <text x="410" y="322" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">y</tspan><tspan> = 1/</tspan><tspan
+          font-style="italic">t</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture, cas x > 1 : aire = ln(x) > 0
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="
+      M180,350 L180,300.00 L200.00,308.33 L220.00,314.29 L240.00,318.75
+      L260.00,322.22 L280.00,325.00 L330.00,330.00 L380.00,333.33
+      L380,350 Z
+    " fill="var(--figure-accent)" fill-opacity="0.16" stroke="none"/>
+
+    <line x1="380" y1="346" x2="380" y2="354"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="380" y="366" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">x</text>
+    <text x="380" y="378" text-anchor="middle" font-size="8"
+          fill="var(--figure-ink-soft)">(x &gt; 1)</text>
+
+    <rect x="425" y="55" width="185" height="58" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="517" y="76" text-anchor="middle" font-size="13"
+          fill="var(--figure-accent)"><tspan>ln</tspan><tspan
+          font-style="italic"> x</tspan><tspan> = aire</tspan></text>
+    <text x="517" y="98" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)">donc <tspan font-style="italic">ln x</tspan> &gt; 0</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — lecture, cas 0 < x < 1 : aire = -ln(x), donc ln(x) < 0
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <path d="
+      M120,350 L120,225.00 L130.00,250.00 L140.00,266.67 L150.00,278.57
+      L160.00,287.50 L170.00,294.44 L180.00,300.00
+      L180,350 Z
+    " fill="var(--figure-accent)" fill-opacity="0.16" stroke="none"/>
+
+    <line x1="120" y1="346" x2="120" y2="354"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="120" y="366" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">x</text>
+    <text x="120" y="378" text-anchor="middle" font-size="8"
+          fill="var(--figure-ink-soft)">(0 &lt; x &lt; 1)</text>
+
+    <rect x="425" y="128" width="185" height="58" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="517" y="149" text-anchor="middle" font-size="13"
+          fill="var(--figure-accent)"><tspan>ln</tspan><tspan
+          font-style="italic"> x</tspan><tspan> = &#8722;aire</tspan></text>
+    <text x="517" y="171" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)">donc <tspan font-style="italic">ln x</tspan> &lt; 0</text>
+  </g><!-- /step-4 -->
+
+</svg>

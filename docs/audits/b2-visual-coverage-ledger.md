@@ -40,7 +40,7 @@ rule, carried forward here).
 | Wave | Matière | Lessons | Status |
 |---|---|---|---|
 | M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
-| M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | judged (14 STAGE / 13 DECLINE), build in progress |
+| M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | pending |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
@@ -164,6 +164,37 @@ rule, carried forward here).
 | nombres-complexes-1 | R6 | DECLINE | practice chapter, lesson itself says no drawing needed |
 
 **Wave M2 judgment tally: 14 STAGE / 13 DECLINE** (27 chapters judged).
+
+**Build** (diagram-author × 4):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| fonction-logarithme | ln-aire-sous-courbe | R1 | 4 |
+| fonction-logarithme | croissances-comparees-ln | R4 | 4 |
+| geometrie-espace | cube-diagonales | R0 | 3 |
+| geometrie-espace | distance-deux-pythagore | R1 | 4 |
+| geometrie-espace | produit-vectoriel-aire | R3 | 3 |
+| geometrie-espace | parallelepipede-volume | R4 | 3 |
+| geometrie-espace | droite-point-direction | R5 | 3 |
+| geometrie-espace | positions-droite-droite | R7 | 3 |
+| geometrie-espace | distance-point-plan | R8 | 3 |
+| limites-continuite | limite-trou | R0 | 3 |
+| limites-continuite | indetermination-trois-courbes | R2 | 3 |
+| limites-continuite | trois-discontinuites | R4 | 4 |
+| limites-continuite | cubique-trois-racines | R6 | 3 |
+| nombres-complexes-1 | tour-des-ensembles | R0 | 5 |
+
+**Verification:**
+- `validate-content.mjs content/maths/<slug>` — pass ×4 (all clean)
+- anti-contract grep (`#[0-9a-fA-F]{3,6}|currentColor|foreignObject`) — pass ×4 (all clean)
+- `npm run build` — clean
+- App-code fix: registered `trois-discontinuites: 4` in `MediaDiagram.tsx`'s `VERTICALLY_STACKED_PANELS` allowlist (the 4-panel figure needed viewBox cropping to avoid blank canvas during early stages — same class of fix as the B1 pilot's flagged `frontieres-plaques-quatre-types` gap; confirmed the 700px viewBox divides evenly into 4×175 panels before registering)
+- `dom-truth.mjs` — 155/155, 0 fail (also caught and fixed an unrelated stale-server issue: an orphaned prior server instance on port 4173 was serving cached HTML referencing pre-rebuild chunk hashes, causing ChunkLoadErrors on deep-linked chapter navigation; killed via `fuser -k 4173/tcp` and restarted clean — dom-truth itself runs its own self-managed server on a separate port so was unaffected throughout)
+- screenshot spot-check (light+dark) — `limites-continuite` R4 `trois-discontinuites`: confirmed the crop fix works (stage 1 shows only panel 1, no blank space; final stage shows all 4 panels correctly). `geometrie-espace` R0 `cube-diagonales`: cavalière projection, dashed hidden edges, and the ⊥? callout all render correctly
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 9/47 lessons done, 61/266 chapters judged, 30 STAGE / 31 DECLINE.**
 
 **Build:** in progress.
 

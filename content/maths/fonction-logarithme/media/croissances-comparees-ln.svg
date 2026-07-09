@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Course de croissance entre y=ln(x) et y=x sur ]0, 10]. La courbe de ln(x) monte puis s'aplatit visiblement ; la droite y=x monte bien plus vite et écrase ln(x) — l'écart vertical entre les deux grandit avec x. Le rapport ln(x)/x tend vers 0 quand x tend vers plus l'infini.">
+  <title>Croissances comparées : ln(x) contre x — étape par étape</title>
+  <!--
+    croissances-comparees-ln.svg — figure STATIQUE, STAGED en 4 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2), R4 de fonction-logarithme :
+    "Croissances comparées : ln x contre x". DISTINCTE de courbe-logarithme.svg
+    (R5, la courbe de ln seule avec sa tangente) — ici le sujet est la COURSE
+    entre ln(x) et x, pas la courbe de ln en elle-même.
+
+    Déviation assumée par rapport à courbe-logarithme.svg (même raison que
+    ln-aire-sous-courbe.svg, voir son en-tête) : le brief pédagogique
+    approuvé énumère explicitement "Axes" comme étape (1) sur 4 — donc les
+    axes (et les grilles de repère) sont ici un step-1 gated, pas un chrome
+    pré-révélé. Toutes les autres conventions restent identiques au reste
+    du corpus (viewBox, panneau, tspans italiques, palette --figure-*).
+
+    Repère écran (calculé) — domaine x ∈ ]0, 10], même échelle en x et y
+    pour que la "course" soit lisible :
+      px(x) = 80 + 53·x   (x=0 → px=80 ; x=10 → px=610 ; scaleX = 53)
+      py(y) = 350 - 30·y  (y=0 → py=350 ; y=10 → py=50  ; scaleY = 30)
+
+    Droite y = x : EXACTEMENT linéaire, un seul segment suffit :
+      (x=0, px=80,py=350) → (x=10, px=610,py=50)
+
+    Courbe y = ln(x), échantillonnée à pas régulier (curve part de x=0,35,
+    le plus petit x qui reste dans le panneau : ln(0,35)=-1,0498 →
+    py=381,49, tout juste sous le bord bas y=382 du panneau) :
+      x=0,35 : ln=-1,0498 → (98,55 ; 381,49)
+      x=0,5  : ln=-0,6931 → (106,50 ; 370,79)
+      x=0,75 : ln=-0,2877 → (119,75 ; 358,63)
+      x=1,0  : ln=0       → (133,00 ; 350,00)
+      x=1,5  : ln=0,4055  → (159,50 ; 337,84)
+      x=2,0  : ln=0,6931  → (186,00 ; 329,21)
+      x=2,5  : ln=0,9163  → (212,50 ; 322,51)
+      x=3,0  : ln=1,0986  → (239,00 ; 317,04)
+      x=4,0  : ln=1,3863  → (292,00 ; 308,41)
+      x=5,0  : ln=1,6094  → (345,00 ; 301,72)
+      x=6,0  : ln=1,7918  → (398,00 ; 296,25)
+      x=7,0  : ln=1,9459  → (451,00 ; 291,62)
+      x=8,0  : ln=2,0794  → (504,00 ; 287,62)
+      x=9,0  : ln=2,1972  → (557,00 ; 284,08)
+      x=10,0 : ln=2,3026  → (610,00 ; 280,92)
+
+    Écart vertical, lu directement sur ces points : en x=3, l'écart
+    (317,04-260,00)=57,04 px ; en x=8, l'écart (287,62-110,00)=177,62 px —
+    plus de trois fois plus grand. C'est ce doublement de grandeur qui
+    justifie le repère "l'écart grandit" en step-3, posé à x=8.
+
+    Courbe majorante y = 2√x (R4, étape 2 de la preuve ln(x) < 2√x, overlay
+    optionnel du brief) :
+      x=0 : (80,00 ; 350,00)     x=6 : (398,00 ; 203,03)
+      x=1 : (133,00 ; 290,00)    x=7 : (451,00 ; 191,26)
+      x=2 : (186,00 ; 265,15)    x=8 : (504,00 ; 180,29)
+      x=3 : (239,00 ; 246,08)    x=9 : (557,00 ; 170,00)
+      x=4 : (292,00 ; 230,00)    x=10: (610,00 ; 160,26)
+      x=5 : (345,00 ; 215,84)
+
+    Rôle des couleurs :
+      courbe y=ln(x) (step-2, la donnée dont on regarde la lenteur)  : --figure-ink
+      droite y=x (step-3, celle qui écrase, l'attention du regard),
+        repère d'écart, boîte de lecture (rapport → 0)               : --figure-accent
+      axes, grille de repère, majorant y=2√x (overlay de contexte)   : --figure-ink-soft
+
+    Mise en étapes : step-1 = axes + grille de repère ; step-2 = la courbe
+    de ln(x) ; step-3 = la droite y=x, avec le repère d'écart qui grandit ;
+    step-4 = lecture — le rapport ln(x)/x → 0, "x écrase ln(x)", et le
+    rappel du majorant y=2√x établi à la preuve du R4.
+
+    Les captions sont portées par croissances-comparees-ln.stages.json —
+    aucun texte de légende baké ici (même convention que le reste du corpus).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Croissances comparées : ln(x) contre x
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes, la grille de repère
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Grille de repère (discrète) -->
+    <g stroke="var(--figure-grid)" stroke-width="1">
+      <line x1="186" y1="350" x2="186" y2="50"/>
+      <line x1="292" y1="350" x2="292" y2="50"/>
+      <line x1="398" y1="350" x2="398" y2="50"/>
+      <line x1="504" y1="350" x2="504" y2="50"/>
+      <line x1="80" y1="290" x2="610" y2="290"/>
+      <line x1="80" y1="230" x2="610" y2="230"/>
+      <line x1="80" y1="170" x2="610" y2="170"/>
+      <line x1="80" y1="110" x2="610" y2="110"/>
+    </g>
+
+    <!-- Axe des x -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="354" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">x</text>
+
+    <!-- Axe des y -->
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Ticks x : 1, 5, 10 -->
+    <line x1="133" y1="346" x2="133" y2="354" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="133" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">1</text>
+    <line x1="345" y1="346" x2="345" y2="354" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="345" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">5</text>
+    <line x1="610" y1="346" x2="610" y2="354" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="610" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">10</text>
+
+    <!-- Ticks y : 5, 10 -->
+    <line x1="76" y1="200" x2="84" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="203.5" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">5</text>
+    <line x1="76" y1="50" x2="84" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="53.5" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">10</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la courbe y = ln(x)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M98.55,381.49 L106.50,370.79 L119.75,358.63 L133.00,350.00
+      L159.50,337.84 L186.00,329.21 L212.50,322.51 L239.00,317.04
+      L292.00,308.41 L345.00,301.72 L398.00,296.25 L451.00,291.62
+      L504.00,287.62 L557.00,284.08 L610.00,280.92
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="415" y="270" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">y</tspan><tspan> = ln</tspan><tspan
+          font-style="italic"> x</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — données : la droite y = x, et l'écart qui grandit
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="80" y1="350" x2="610" y2="50"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="6,4"
+          stroke-linecap="round"/>
+    <text x="520" y="72" font-size="12" fill="var(--figure-accent)"><tspan
+          font-style="italic">y</tspan><tspan> = </tspan><tspan
+          font-style="italic">x</tspan></text>
+
+    <!-- Repère d'écart vertical, en x = 8 : la droite est déjà loin devant -->
+    <line x1="504" y1="110.00" x2="504" y2="287.62"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <polygon points="504,110.00 500,118 508,118" fill="var(--figure-accent)"/>
+    <polygon points="504,287.62 500,279.62 508,279.62" fill="var(--figure-accent)"/>
+    <text x="512" y="200" font-size="10" fill="var(--figure-accent)">l'écart grandit</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — lecture : ln(x)/x → 0, x écrase ln(x)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Majorant y = 2√x (R4, étape 2 de la preuve), overlay de contexte -->
+    <path d="
+      M80.00,350.00 L133.00,290.00 L186.00,265.15 L239.00,246.08
+      L292.00,230.00 L345.00,215.84 L398.00,203.03 L451.00,191.26
+      L504.00,180.29 L557.00,170.00 L610.00,160.26
+    " fill="none"
+      stroke="var(--figure-ink-soft)"
+      stroke-width="1.4" stroke-dasharray="4,3" stroke-linecap="round"/>
+    <text x="480" y="152" font-size="10" fill="var(--figure-ink-soft)"><tspan
+          >y = 2√</tspan><tspan font-style="italic">x</tspan><tspan
+          > (majorant, R4)</tspan></text>
+
+    <!-- Boîte de lecture -->
+    <rect x="95" y="55" width="240" height="60" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="215" y="78" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)"><tspan
+          font-style="italic">ln x</tspan><tspan> / </tspan><tspan
+          font-style="italic">x</tspan><tspan> &#8594; 0</tspan></text>
+    <text x="215" y="100" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)"><tspan
+          font-style="italic">x</tspan><tspan> écrase </tspan><tspan
+          font-style="italic">ln x</tspan></text>
+  </g><!-- /step-4 -->
+
+</svg>

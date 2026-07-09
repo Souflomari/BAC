@@ -12,6 +12,8 @@ Reprends l'histoire des ensembles de nombres que tu connais déjà, depuis le co
 
 À chaque étape, le même schéma se répète : une équation toute simple n'a pas de solution dans l'ensemble où on travaille, alors on **agrandit** l'ensemble pour lui en fournir une.
 
+[[figure:tour-des-ensembles]]
+
 Maintenant, regarde cette équation, posée cette fois dans $\mathbb{R}$ :
 
 $$x^2 = -1$$

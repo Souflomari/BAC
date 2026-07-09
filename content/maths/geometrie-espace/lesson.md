@@ -8,6 +8,8 @@ Imagine un cube $ABCDEFGH$ : $ABCD$ est la face du bas, $EFGH$ la face du haut, 
 
 Trace mentalement deux segments : la **grande diagonale** $(AG)$, qui traverse le cube de part en part d'un coin à son coin opposé, et la **diagonale de la face du bas** $(BD)$.
 
+[[figure:cube-diagonales]]
+
 Avant de lire la suite, prends position : d'après toi, ces deux droites sont-elles perpendiculaires, ou n'ont-elles aucun lien particulier ? Regarde le cube dans ta tête, tourne-le, essaie de trancher à l'oeil.
 
 C'est difficile, non ? Et c'est bien le problème. À l'oeil, sur un dessin en perspective, deux droites de l'espace peuvent sembler perpendiculaires sans l'être, ou l'inverse — la perspective ment. Pire : $(AG)$ et $(BD)$ ne se croisent même pas (elles ne passent pas par le même point), donc « perpendiculaires » n'a même pas un sens évident ici.
@@ -51,6 +53,8 @@ $$AB^2 = (x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2$$
 D'où, en prenant la racine carrée :
 
 $$AB = \sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$$
+
+[[figure:distance-deux-pythagore]]
 
 Ce n'est pas une nouvelle idée : c'est le théorème de Pythagore, appliqué une fois à plat pour gérer $x$ et $y$ ensemble, puis une seconde fois à la verticale pour ajouter $z$. Et pour un vecteur $\vec{u}(x,y,z)$, sa norme suit exactement la même formule (c'est la distance entre son origine et son extrémité) :
 
@@ -173,6 +177,8 @@ $$\|\vec{u}\wedge\vec{v}\| = \|\vec{u}\|\,\|\vec{v}\|\,\sin\theta$$
 
 Or $\|\vec{u}\|\|\vec{v}\|\sin\theta$, c'est exactement « base fois hauteur » du parallélogramme construit sur $\vec{u}$ et $\vec{v}$ : $\|\vec{u}\|$ est la longueur de la base, et $\|\vec{v}\|\sin\theta$ est la hauteur (la composante de $\vec{v}$ perpendiculaire à $\vec{u}$). **Voilà pourquoi** $\|\vec{u}\wedge\vec{v}\|$ est l'aire du parallélogramme construit sur $\vec{u}$ et $\vec{v}$ — et l'aire du triangle correspondant en est la moitié.
 
+[[figure:produit-vectoriel-aire]]
+
 ### Exemple travaillé
 
 On introduit un tétraèdre qui va servir de fil conducteur pour plusieurs rungs à venir : $A(0,0,0)$, $B(2,0,0)$, $C(0,2,0)$, $S(0,0,2)$ — un tétraèdre **trirectangle en $A$** (les trois arêtes $AB$, $AC$, $AS$ sont deux à deux perpendiculaires, portées par les axes du repère).
@@ -213,6 +219,8 @@ $$V_{\text{tétraèdre}} = \frac{1}{6}\left|\left[\vec{u},\vec{v},\vec{w}\right]
 
 Une conséquence immédiate : si $\left[\vec{u},\vec{v},\vec{w}\right]=0$, le volume est nul — les trois vecteurs sont **coplanaires** (le « parallélépipède » est aplati, sans épaisseur). C'est le test de coplanarité de trois vecteurs.
 
+[[figure:parallelepipede-volume]]
+
 ### Exemple travaillé
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** calculer le volume du tétraèdre $SABC$ introduit au R3. On a déjà $\overrightarrow{AB}\wedge\overrightarrow{AC}=(0,0,4)$ ; il ne reste qu'à faire le produit scalaire avec $\overrightarrow{AS}=(0,0,2)$.
@@ -234,6 +242,8 @@ Une droite $\mathcal D$ de l'espace est entièrement déterminée par un point $
 $$\begin{cases} x = x_A + ta \\ y = y_A + tb \\ z = z_A + tc \end{cases} \qquad t\in\mathbb{R}$$
 
 C'est la **représentation paramétrique** de $\mathcal D$ : chaque valeur de $t$ donne un point de la droite, et chaque point de la droite correspond à exactement une valeur de $t$.
+
+[[figure:droite-point-direction]]
 
 ### La forme cartésienne (symétrique) — quand elle existe
 
@@ -326,6 +336,8 @@ Deux droites $\mathcal D_1$ (vecteur directeur $\vec{u_1}$) et $\mathcal D_2$ (v
 - **parallèles** si $\vec{u_1}$ et $\vec{u_2}$ sont colinéaires (il existe $k$ tel que $\vec{u_2}=k\vec{u_1}$) ;
 - sinon, on cherche si elles ont un point commun en résolvant le système obtenu en égalant leurs représentations paramétriques. **Une solution existe** → les droites sont **sécantes** (et donc coplanaires). **Aucune solution** → les droites sont **non coplanaires** (on dit aussi « gauches ») : leurs directions diffèrent, mais elles passent l'une à côté de l'autre sans jamais se toucher, à des « hauteurs » différentes dans la troisième dimension.
 
+[[figure:positions-droite-droite]]
+
 **Exemple travaillé.** Dans le tétraèdre $SABC$, les arêtes opposées $(SA)$ et $(BC)$ ont-elles un point commun ?
 
 $\overrightarrow{AS}=(0,0,2)$, colinéaire à $(0,0,1)$. $\overrightarrow{BC} = C-B = (-2,2,0)$, colinéaire à $(-1,1,0)$. Ces deux directions ne sont pas colinéaires (l'une a une troisième coordonnée non nulle, l'autre non) : les droites ne sont pas parallèles.
@@ -373,6 +385,8 @@ $(0,1,0)$ et $(1,0,0)$ ne sont pas colinéaires : les deux plans sont sécants. 
 Pour un plan $\mathcal P$ d'équation $ax+by+cz+d=0$ (normale $\vec{n}(a,b,c)$) et un point $M_0(x_0,y_0,z_0)$, on décompose le vecteur $\overrightarrow{A_0M_0}$ (où $A_0$ est un point quelconque de $\mathcal P$) en une partie le long de $\vec{n}$ et une partie couchée dans $\mathcal P$ (orthogonale à $\vec{n}$). Seule la partie le long de $\vec{n}$ éloigne $M_0$ du plan — la partie couchée dans $\mathcal P$ ne contribue à aucun écart. La distance est donc exactement la projection de $\overrightarrow{A_0M_0}$ sur $\vec{n}$ :
 
 $$d(M_0,\mathcal P) = \frac{\left|\vec{n}\cdot\overrightarrow{A_0M_0}\right|}{\|\vec{n}\|}$$
+
+[[figure:distance-point-plan]]
 
 En développant $\vec{n}\cdot\overrightarrow{A_0M_0}$ avec la même formule qu'au R6 (et puisque $d=-(ax_A+by_A+cz_A)$ pour un point $A_0$ du plan), le numérateur se réécrit directement à partir des coordonnées de $M_0$ :
 

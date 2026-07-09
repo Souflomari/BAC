@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img"
+     aria-label="Zoom autour de x = 1 sur la fonction f(x) = (x carré - 1)/(x - 1) : les valeurs 0,9 ; 0,99 ; 0,999 par la gauche et 1,1 ; 1,01 ; 1,001 par la droite se resserrent visiblement vers le point (1 ; 2), marqué par un cercle vide car f n'est pas définie en 1.">
+  <title>Zoom sur le trou en x = 1</title>
+  <!--
+    limite-trou.svg — STAGED (LESSON-EXPERIENCE-SPEC.md §2.5, graphe : toujours
+    axes -> données -> lecture), accroche du R0. Sign-off pédagogique implicite
+    du callout : CRITIQUE — ne JAMAIS tracer la courbe y=x+1 ici, seulement les
+    points discrets du tableau + le cercle vide. La factorisation (x²-1)/(x-1)
+    = x+1 et le tracé de la droite appartiennent au R3 (voir la prose R3,
+    "Résolvons enfin l'exemple du départ"), pas à cette accroche.
+
+    Repère écran — une FENÊTRE zoomée (pas un repère passant par l'origine,
+    puisque la zone utile est x∈[0,85 ; 1,15], y∈[1,8 ; 2,2], loin de (0,0)) :
+      px_x(x) = 90 + (x - 0,85) × 1733,33   [0,85 -> 90 ; 1,15 -> 610]
+      px_y(y) = 340 - (y - 1,8) × 700       [1,8 -> 340 ; 2,2 -> 60]
+
+    Sept colonnes du tableau du R0 (lesson.md lignes 21-23), SIX valeurs
+    numériques utilisables (la colonne centrale "→ 1 ←" / "?" est justement
+    l'absence de valeur en x=1 — c'est le cercle vide du step-3, pas un
+    septième point à tracer) :
+      x=0,9   f=1,9   -> px(176.67 ; 270)
+      x=0,99  f=1,99  -> px(332.67 ; 207)
+      x=0,999 f=1,999 -> px(348.27 ; 200.7)
+      x=1,001 f=2,001 -> px(351.73 ; 199.3)
+      x=1,01  f=2,01  -> px(367.33 ; 193)
+      x=1,1   f=2,1   -> px(523.33 ; 130)
+
+    Point (1 ; 2) — cercle VIDE (f(1) n'existe pas, division 0/0) : px(350 ; 200).
+
+    Rôle des couleurs :
+      fenêtre / graduations / coche "x=1"     : --figure-ink-soft (chrome neutre)
+      les six points du tableau (step-2)       : --figure-ink (données)
+      cercle vide, repères en pointillés,
+      boîte "lim" (step-3)                     : --figure-accent (LA lecture)
+
+    Mise en étapes :
+      step-1 (axes)    : la fenêtre + les graduations, x=1 déjà repéré comme
+                         une graduation parmi d'autres (rien ne le distingue
+                         encore — la distinction vient au step-3).
+      step-2 (données) : les six points, qui se resserrent visiblement des
+                         deux côtés.
+      step-3 (lecture) : le cercle vide en (1;2), ses deux repères en
+                         pointillés vers les axes, et la boîte "lim".
+    Les captions sont portées par limite-trou.stages.json — aucun texte de
+    légende baké ici (même convention que asymptotes.svg / continuite-tvi.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Que fait f(x) tout près de x = 1 ?
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="600" height="372" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — axes : la fenêtre zoomée + ses graduations
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Boîte formule -->
+    <rect x="40" y="44" width="240" height="32" rx="5"
+          fill="var(--figure-ink)" fill-opacity="0.08"/>
+    <text x="160" y="65" text-anchor="middle" font-size="13"
+          fill="var(--figure-ink)"><tspan font-style="italic">f</tspan>(<tspan
+          font-style="italic">x</tspan>) = (<tspan font-style="italic">x</tspan><tspan
+          dy="-5" font-size="9">2</tspan><tspan dy="5"> − 1)/(</tspan><tspan
+          font-style="italic">x</tspan><tspan> − 1)</tspan></text>
+
+    <!-- La fenêtre : un cadre en tireté, pas des axes passant par l'origine -->
+    <rect x="90" y="60" width="520" height="280" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <!-- Graduations x : 0,9 / 1 / 1,1 -->
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.2">
+      <line x1="176.67" y1="336" x2="176.67" y2="344"/>
+      <line x1="350" y1="336" x2="350" y2="344"/>
+      <line x1="523.33" y1="336" x2="523.33" y2="344"/>
+    </g>
+    <g font-size="10" text-anchor="middle" fill="var(--figure-ink-soft)">
+      <text x="176.67" y="358">0,9</text>
+      <text x="350" y="358">1</text>
+      <text x="523.33" y="358">1,1</text>
+    </g>
+
+    <!-- Graduations y : 1,9 / 2 / 2,1 -->
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.2">
+      <line x1="86" y1="270" x2="94" y2="270"/>
+      <line x1="86" y1="200" x2="94" y2="200"/>
+      <line x1="86" y1="130" x2="94" y2="130"/>
+    </g>
+    <g font-size="10" text-anchor="end" fill="var(--figure-ink-soft)">
+      <text x="78" y="274">1,9</text>
+      <text x="78" y="204">2</text>
+      <text x="78" y="134">2,1</text>
+    </g>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : les six valeurs du tableau, qui se resserrent
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Par la gauche : 0,9 ; 0,99 ; 0,999 -->
+    <circle cx="176.67" cy="270" r="3.2" fill="var(--figure-ink)"/>
+    <circle cx="332.67" cy="207" r="3.2" fill="var(--figure-ink)"/>
+    <circle cx="348.27" cy="200.7" r="3.2" fill="var(--figure-ink)"/>
+
+    <!-- Par la droite : 1,001 ; 1,01 ; 1,1 -->
+    <circle cx="351.73" cy="199.3" r="3.2" fill="var(--figure-ink)"/>
+    <circle cx="367.33" cy="193" r="3.2" fill="var(--figure-ink)"/>
+    <circle cx="523.33" cy="130" r="3.2" fill="var(--figure-ink)"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : le cercle vide en (1;2), ses repères, "lim"
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Repères en pointillés vers les deux bords de la fenêtre -->
+    <line x1="90" y1="200" x2="350" y2="200"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <line x1="350" y1="200" x2="350" y2="340"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
+
+    <!-- Le cercle vide : f(1) n'existe pas -->
+    <circle cx="350" cy="200" r="4.5" fill="var(--figure-surface)"
+            stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <text x="360" y="192" font-size="9.5" fill="var(--figure-ink-soft)">f(1) n'existe pas</text>
+
+    <!-- Boîte "lim" -->
+    <rect x="410" y="72" width="180" height="38" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="500" y="96" text-anchor="middle" font-size="13"
+          fill="var(--figure-accent)"><tspan>lim</tspan><tspan dy="4" font-size="8">x→1</tspan><tspan
+          dy="-4"> </tspan><tspan font-style="italic">f</tspan><tspan>(</tspan><tspan
+          font-style="italic">x</tspan><tspan>) = 2</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

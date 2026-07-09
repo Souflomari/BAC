@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" width="640" height="560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les ensembles de nombres emboîtés : N (les entiers naturels) à l'intérieur de Z (les entiers relatifs), à l'intérieur de Q (les rationnels), à l'intérieur de R (les réels), à l'intérieur de C (les complexes). À chaque frontière, une équation sans solution dans l'ensemble en cours trouve sa solution juste à l'extérieur : x+5=3 (pas de solution dans N) résolue par −2 dans Z ; 2x=3 (pas de solution dans Z) résolue par 3/2 dans Q ; x²=2 (pas de solution dans Q) résolue par √2 dans R ; x²=−1 (pas de solution dans R) résolue par i dans C.">
+  <title>La tour des ensembles de nombres, de ℕ à ℂ</title>
+  <!--
+    tour-des-ensembles.svg — figure STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 :
+    "schémas… staged si ≥3 couches sémantiques ET l'ordre des couches est un
+    geste d'enseignement" — ici 5 couches, et l'ordre EST le geste : chaque
+    ensemble n'existe, dans le récit, que parce que le précédent butait sur
+    une équation) pour le R0 (accroche). Légendes dans
+    tour-des-ensembles.stages.json.
+
+    PÉRIMÈTRE — volontairement PAS une figure de géométrie plane : aucun axe,
+    aucun repère. C'est un diagramme de régions emboîtées pur (N ⊂ Z ⊂ Q ⊂ R
+    ⊂ C), au sens ensembliste, pas au sens du plan complexe. La géométrie du
+    plan complexe (repère, affixe, image, module) est le territoire du R5 —
+    plan-complexe.svg et module-argument.svg — et n'est pas touchée ici.
+
+    Reprend EXACTEMENT la progression du texte du R0 (lesson.md) :
+      N, x+5=3 sans solution → Z gagne −2 → 2x=3 sans solution dans Z
+      → Q gagne 3/2 → x²=2 sans solution dans Q → R gagne √2
+      → x²=−1 sans solution dans R → C gagne i.
+
+    GÉOMÉTRIE — cinq rectangles arrondis, coin bas-gauche COMMUN (x0,y0) =
+    (70,500), chacun plus grand que le précédent (un "escalier" emboîté,
+    plus simple à étiqueter que des cercles concentriques : chaque rectangle
+    offre un bord haut ET un bord droit rectilignes, propres à porter du
+    texte, alors qu'un anneau circulaire imposerait un calcul d'angle pour
+    chaque étiquette) :
+      N : x=70  y=400 100×100   (bord haut y=400, bord droit x=170)
+      Z : x=70  y=320 200×180   (bord haut y=320, bord droit x=270)
+      Q : x=70  y=240 300×260   (bord haut y=240, bord droit x=370)
+      R : x=70  y=160 400×340   (bord haut y=160, bord droit x=470)
+      C : x=70  y=80  500×420   (bord haut y=80,  bord droit x=570)
+    rx=16 partout (même rayon absolu — "rounded forms, soft geometry",
+    DESIGN-BIBLE §6). Tous les rectangles sont SANS remplissage
+    (fill="none") : seul le contour (--figure-ink-soft) marque la
+    frontière — aucun empilement d'opacité à gérer, et le texte d'un
+    rectangle plus petit reste toujours visible sous les plus grands
+    dessinés après lui dans le DOM (StagedFigure ajoute step-2..5 APRÈS
+    step-1, donc plus tard dans l'ordre de peinture).
+
+    LA COLONNE DE LECTURE — tout le récit (équation bloquée → solution
+    gagnée) se lit verticalement le long de x=130 (à l'intérieur de N, donc
+    à l'intérieur de tous les rectangles puisqu'ils partagent le même bord
+    gauche x=70). Formule, pour la frontière i (bord haut du rectangle i,
+    à y_i) :
+      le "trigger" (l'équation sans solution DANS l'ensemble i) est posé
+        juste SOUS y_i (donc encore À L'INTÉRIEUR de l'ensemble i) :
+        deux lignes à y_i+30 et y_i+46 — apparaît à l'étape i (en même
+        temps que le rectangle i lui-même).
+      la "solution" (le nombre qui la résout) est posée juste AU-DESSUS de
+        y_i (donc À L'EXTÉRIEUR de l'ensemble i, mais À L'INTÉRIEUR de
+        l'ensemble i+1) : une ligne à y_i−14 — apparaît à l'étape i+1 (en
+        même temps que le rectangle i+1, celui qui la contient enfin).
+    Résultat, lu de haut en bas sur la figure complète : solution₄ (i) →
+    bord R → trigger₄ (x²=−1) → solution₃ (√2) → bord Q → trigger₃ (x²=2)
+    → solution₂ (3/2) → bord Z → trigger₂ (2x=3) → solution₁ (−2) → bord N
+    → trigger₁ (x+5=3). C'est exactement la lecture "de bas en haut" du
+    récit du R0, rejouée dans l'espace.
+
+    Les noms d'ensemble (N, Z, Q, R, C) sont posés sur une seconde rangée,
+    à y=485 (donc toujours à l'intérieur de tout rectangle, près du bord
+    bas partagé y=500), centrés sur la BANDE horizontale propre à chaque
+    ensemble (entre le bord droit du précédent et son propre bord droit) :
+    N→x=120, Z→x=220, Q→x=320, R→x=420, C→x=520 — une deuxième colonne de
+    lecture, horizontale celle-ci, sans collision avec la colonne verticale
+    des équations (x=130, y max utile 446, bien au-dessus de y=485).
+
+    Rôle des couleurs (5 tokens seulement, comme les figures R5 sœurs) :
+      contour des 5 rectangles (chrome structurel, chaque frontière a le
+        même poids)                                        : --figure-ink-soft
+      noms des ensembles (N,Z,Q,R,C) et équations "trigger"  : --figure-ink
+      notes "(pas de solution dans …)"                       : --figure-ink-soft
+      solutions gagnées (−2, 3/2, √2, i — la grandeur mise en
+        avant par cette figure, comme |z| dans plan-complexe.svg) : --figure-accent
+
+    Étapes (StagedFigure — StageFigure applique elle-même l'emphase calme
+    opacity=0.55 aux groupes antérieurs ; aucune re-teinte manuelle ici) :
+      step-1 : N seul, x+5=3 signalée sans solution.
+      step-2 : Z enveloppe N ; −2 la résout ; nouvelle butée 2x=3 dans Z.
+      step-3 : Q enveloppe Z ; 3/2 la résout ; nouvelle butée x²=2 dans Q.
+      step-4 : R enveloppe Q ; √2 la résout ; nouvelle butée x²=−1 dans R.
+      step-5 : C enveloppe R ; i la résout enfin.
+  -->
+  <rect width="640" height="560" fill="var(--figure-surface)"/>
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Des ensembles emboîtés : ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — N seul : x + 5 = 3 n'a pas de solution
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="70" y="400" width="100" height="100" rx="16"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="120" y="485" text-anchor="middle" font-size="18" font-weight="700"
+          fill="var(--figure-ink)">ℕ</text>
+
+    <text x="130" y="430" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">x</tspan><tspan> + 5 = 3</tspan></text>
+    <text x="130" y="446" font-size="10" fill="var(--figure-ink-soft)">(pas de solution dans ℕ)</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Z enveloppe N : −2 résout x+5=3 ; 2x=3 bute dans Z
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="70" y="320" width="200" height="180" rx="16"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="220" y="485" text-anchor="middle" font-size="18" font-weight="700"
+          fill="var(--figure-ink)">ℤ</text>
+
+    <text x="130" y="386" font-size="12" font-weight="600" fill="var(--figure-accent)"><tspan
+          font-style="italic">x</tspan><tspan> = −2</tspan></text>
+
+    <text x="130" y="350" font-size="12" fill="var(--figure-ink)"><tspan
+          >2</tspan><tspan font-style="italic">x</tspan><tspan> = 3</tspan></text>
+    <text x="130" y="366" font-size="10" fill="var(--figure-ink-soft)">(pas de solution dans ℤ)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Q enveloppe Z : 3/2 résout 2x=3 ; x²=2 bute dans Q
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect x="70" y="240" width="300" height="260" rx="16"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="320" y="485" text-anchor="middle" font-size="18" font-weight="700"
+          fill="var(--figure-ink)">ℚ</text>
+
+    <text x="130" y="306" font-size="12" font-weight="600" fill="var(--figure-accent)"><tspan
+          font-style="italic">x</tspan><tspan> = 3/2</tspan></text>
+
+    <text x="130" y="270" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">x</tspan><tspan>² = 2</tspan></text>
+    <text x="130" y="286" font-size="10" fill="var(--figure-ink-soft)">(pas de solution dans ℚ)</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — R enveloppe Q : √2 résout x²=2 ; x²=−1 bute dans R
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect x="70" y="160" width="400" height="340" rx="16"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="420" y="485" text-anchor="middle" font-size="18" font-weight="700"
+          fill="var(--figure-ink)">ℝ</text>
+
+    <text x="130" y="226" font-size="12" font-weight="600" fill="var(--figure-accent)"><tspan
+          font-style="italic">x</tspan><tspan> = √2</tspan></text>
+
+    <text x="130" y="190" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">x</tspan><tspan>² = −1</tspan></text>
+    <text x="130" y="206" font-size="10" fill="var(--figure-ink-soft)">(pas de solution dans ℝ)</text>
+  </g><!-- /step-4 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 5 — C enveloppe R : i résout enfin x²=−1
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-5">
+    <rect x="70" y="80" width="500" height="420" rx="16"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="520" y="485" text-anchor="middle" font-size="18" font-weight="700"
+          fill="var(--figure-ink)">ℂ</text>
+
+    <text x="130" y="146" font-size="13" font-weight="700" fill="var(--figure-accent)"><tspan
+          font-style="italic">x</tspan><tspan> = </tspan><tspan font-style="italic">i</tspan></text>
+  </g><!-- /step-5 -->
+
+</svg>

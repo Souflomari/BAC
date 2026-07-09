@@ -110,6 +110,7 @@ export const STRUCTURAL_SLUGS = new Set([
 // SPEC §2.3).
 export const VERTICALLY_STACKED_PANELS: Record<string, number> = {
   "regimes-uc": 3,
+  "trois-discontinuites": 4,
 };
 
 /**

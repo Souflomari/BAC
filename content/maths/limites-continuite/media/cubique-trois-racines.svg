@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img"
+     aria-label="Courbe de f(x) = x cube moins 3x sur [-3,3] : maximum local en (-1 ; 2), minimum local en (1 ; -2), extrémités (-3 ; -18) et (3 ; 18). Trois changements de signe donc trois solutions de f(x)=0 : c1 dans ]-3,-1[, c2 dans ]-1,1[, c3 dans ]1,3[.">
+  <title>f(x) = x³ − 3x — trois solutions de f(x) = 0 sur [−3, 3]</title>
+  <!--
+    cubique-trois-racines.svg — STAGED (graphe : axes -> données -> lecture,
+    LESSON-EXPERIENCE-SPEC §2.5), R6 : la fonction de l'exercice travaillé
+    (lesson.md "R6 — Pour t'entraîner"), MÊME fonction et MÊMES valeurs que
+    tableau-variations-courbe.svg (leçon dérivabilité) mais sur le domaine
+    complet [-3,3] de CET exercice (pas [-2,2] comme l'autre figure — repère
+    donc recalculé, pas réutilisé tel quel).
+
+    f(x) = x³ - 3x  (donnée du texte, Partie A/B).
+    Racines : x(x²-3) = 0  =>  x = 0, x = ±√3 ≈ ±1,7320508 — exactes, mais
+    étiquetées seulement par leur intervalle (c₁ ∈ ]-3,-1[ etc.), comme le
+    fait le texte lui-même (aucune valeur numérique de racine n'est donnée
+    dans la prose — seul le tableau de variations admis l'est).
+
+    Repère écran (calculé, pas deviné) :
+      px_x(x) = 320 + 80x    [x=-3 -> 80 ; x=0 -> 320 ; x=3 -> 560]
+      px_y(f) = 232 - 9f     [f=-18 -> 394 ; f=0 -> 232 ; f=18 -> 70]
+
+    Courbe échantillonnée pas=0,25 de x=-3 à x=3 (25 points), f(x)=x³-3x
+    exact à chaque point (fonction impaire : f(-x)=-f(x), vérifiable point
+    par point sur les px_y, symétriques autour de 232).
+
+    Extremums et bornes (Partie B du texte, tableau de variations admis) :
+      (-3,-18) -> (80,394)   (-1,2) max local -> (240,214)
+      (1,-2) min local -> (400,250)   (3,18) -> (560,70)
+
+    Racines (calculées : x(x²-3)=0) :
+      c1 = -√3 ≈ -1,7320508 -> px(181,44 ; 232)
+      c2 = 0                -> px(320 ; 232)
+      c3 = √3 ≈ 1,7320508   -> px(458,56 ; 232)
+
+    Rôle des couleurs :
+      courbe, points de repère (max/min/bornes), leurs coordonnées (step-2,
+        données) : --figure-ink
+      les trois racines, leurs intervalles, et les quatre signes aux bornes
+        (step-3, lecture — l'argument du corollaire TVI) : --figure-accent
+      axes / graduations : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    f(x) = x³ − 3x — combien de solutions pour f(x) = 0 ?
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="600" height="400" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — axes : le repère et ses graduations, rien de plus
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="45" y1="232" x2="605" y2="232"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="605,232 593,227.5 593,236.5" fill="var(--figure-ink-soft)"/>
+    <line x1="320" y1="420" x2="320" y2="45"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="320,45 315.5,56 324.5,56" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="236" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+    <text x="308" y="50" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">y</text>
+
+    <!-- Graduations x : −3 / 3 -->
+    <line x1="80" y1="228" x2="80" y2="236" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="80" y="250" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">−3</text>
+    <line x1="560" y1="228" x2="560" y2="236" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="560" y="250" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
+
+    <!-- Graduations y : 18 / −18 -->
+    <line x1="316" y1="70" x2="324" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="306" y="74" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">18</text>
+    <line x1="316" y1="394" x2="324" y2="394" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="306" y="398" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">−18</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la courbe, ses extremums, ses bornes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Boîte formule -->
+    <rect x="40" y="44" width="180" height="32" rx="5"
+          fill="var(--figure-ink)" fill-opacity="0.08"/>
+    <text x="130" y="65" text-anchor="middle" font-size="13"
+          fill="var(--figure-ink)"><tspan font-style="italic">f</tspan>(<tspan
+          font-style="italic">x</tspan>) = <tspan font-style="italic">x</tspan><tspan
+          dy="-6" font-size="9">3</tspan><tspan dy="6"> − 3</tspan><tspan
+          font-style="italic">x</tspan><tspan font-size="10"> , sur [−3 ; 3]</tspan></text>
+
+    <!-- Courbe f(x) = x³ − 3x -->
+    <path d="M80,394 L100,344.92 L120,305.13 L140,273.77 L160,250 L180,232.98 L200,221.88 L220,215.83 L240,214 L260,215.55 L280,219.63 L300,225.39 L320,232 L340,238.61 L360,244.38 L380,248.45 L400,250 L420,248.17 L440,242.13 L460,231.02 L480,214 L500,190.23 L520,158.88 L540,119.08 L560,70"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.3"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Extrémité gauche (−3 ; −18) -->
+    <circle cx="80" cy="394" r="3.2" fill="var(--figure-ink)"/>
+    <text x="92" y="392" font-size="9.5" fill="var(--figure-ink)">(−3 ; −18)</text>
+
+    <!-- Maximum local (−1 ; 2) -->
+    <circle cx="240" cy="214" r="3.2" fill="var(--figure-ink)"/>
+    <text x="240" y="198" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">(−1 ; 2)</text>
+
+    <!-- Minimum local (1 ; −2) -->
+    <circle cx="400" cy="250" r="3.2" fill="var(--figure-ink)"/>
+    <text x="400" y="266" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">(1 ; −2)</text>
+
+    <!-- Extrémité droite (3 ; 18) -->
+    <circle cx="560" cy="70" r="3.2" fill="var(--figure-ink)"/>
+    <text x="548" y="66" text-anchor="end" font-size="9.5" fill="var(--figure-ink)">(3 ; 18)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : trois changements de signe, trois racines
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Signes aux bornes (l'argument du corollaire TVI) -->
+    <text x="92" y="408" font-size="9.5" font-weight="600" fill="var(--figure-accent)">−18 &lt; 0</text>
+    <text x="240" y="182" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-accent)">2 &gt; 0</text>
+    <text x="400" y="282" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-accent)">−2 &lt; 0</text>
+    <text x="548" y="80" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">18 &gt; 0</text>
+
+    <!-- Les trois racines, sur l'axe des x -->
+    <line x1="181.44" y1="226" x2="181.44" y2="240" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <circle cx="181.44" cy="232" r="3.5" fill="var(--figure-accent)"/>
+    <text x="181.44" y="252" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">c</tspan><tspan dy="3" font-size="8">1</tspan><tspan
+          dy="-3"> ∈ ]−3,−1[</tspan></text>
+
+    <line x1="320" y1="226" x2="320" y2="240" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <circle cx="320" cy="232" r="3.5" fill="var(--figure-accent)"/>
+    <text x="320" y="252" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">c</tspan><tspan dy="3" font-size="8">2</tspan><tspan
+          dy="-3"> ∈ ]−1,1[</tspan></text>
+
+    <line x1="458.56" y1="226" x2="458.56" y2="240" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <circle cx="458.56" cy="232" r="3.5" fill="var(--figure-accent)"/>
+    <text x="458.56" y="252" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">c</tspan><tspan dy="3" font-size="8">3</tspan><tspan
+          dy="-3"> ∈ ]1,3[</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

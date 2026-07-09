@@ -26,6 +26,8 @@ Regarde la deuxième ligne : $1{,}9$, puis $1{,}99$, puis $1{,}999$... et de l'a
 
 Autrement dit, même si $f(1)$ n'existe pas, $f$ se comporte comme si elle valait $2$ en $1$. Ce nombre "fantôme" a un nom : c'est la **limite** de $f$ en $1$. On note ça $\lim_{x \to 1} f(x) = 2$.
 
+[[figure:limite-trou]]
+
 Pourquoi ce resserrement se produit-il exactement à $2$, et comment le prouver sans construire un tableau de valeurs à chaque fois ? C'est tout l'objet de cette leçon. On va construire, étape par étape, les outils qui permettent de calculer une limite proprement — et à la fin de la troisième étape, on reviendra sur cette fonction précise et on prouvera que $2$ est bien la bonne valeur, sans tableau ni calculatrice.
 
 ---
@@ -158,6 +160,8 @@ $$\lim_{x \to +\infty} \big((x+5) - x\big) = 5 \qquad \text{(les deux termes s'a
 
 Trois expressions, une seule forme apparente ("$\infty - \infty$"), et trois réponses différentes : $+\infty$, $-\infty$, et un nombre fini. C'est exactement ça, une forme indéterminée : le symbole ne code pas assez d'information pour trancher. Il faut regarder les fonctions *elles-mêmes*, pas juste l'étiquette "$\infty-\infty$" qu'on leur colle.
 
+[[figure:indetermination-trois-courbes]]
+
 ### Exemple travaillé : un cas où le dénominateur s'annule sans que ce soit une FI
 
 Toutes les divisions par $0$ ne sont pas des formes indéterminées $\frac{0}{0}$. Regarde $f(x) = \dfrac{1}{x-2}$ (sans le carré, cette fois) quand $x \to 2$.
@@ -254,6 +258,8 @@ Une fonction $f$ est **continue en $a$** quand trois choses sont vraies **en mê
 $$f \text{ continue en } a \iff \lim_{x \to a} f(x) = f(a)$$
 
 Pourquoi trois conditions et pas une seule ? Parce que chacune peut échouer indépendamment des autres, et il faut les trois pour que la courbe n'ait "aucun accident" en $a$ : sans la 1, il n'y a même pas de point à ce niveau-là ; sans la 2, la courbe part dans deux directions incompatibles ; sans la 3, la courbe a une limite bien définie mais elle "saute" par-dessus la valeur réellement atteinte en $a$ (un trou avec un point isolé ailleurs). Intuitivement, sur un intervalle, une fonction continue est une fonction dont tu peux tracer la courbe **sans lever le crayon**.
+
+[[figure:trois-discontinuites]]
 
 **Reprenons l'exemple du R1** pour voir la définition en action côté "échec" : $f(x) = x+1$ si $x<1$, $f(x)=x^2$ si $x \geq 1$. On avait trouvé $\lim_{x \to 1^{-}} f(x) = 2$ et $\lim_{x \to 1^{+}} f(x) = 1$ : ces deux limites latérales diffèrent, donc $\lim_{x \to 1} f(x)$ **n'existe pas** — la condition 2 échoue. Résultat : $f$ n'est pas continue en $1$, même si $f(1)=1$ est parfaitement défini (condition 1 vérifiée). Une seule des trois conditions suffit à faire échouer la continuité.
 
@@ -363,6 +369,8 @@ $$\lim_{x \to -\infty} x^3\left(1-\frac{3}{x^2}\right) = -\infty$$
 - Sur $[1,3]$ : $f$ continue et strictement croissante, $f(1)=-2<0$ et $f(3)=18>0$. $0$ est compris entre les deux : il existe une unique solution $c_3 \in \, ]1,3[$.
 
 Les trois intervalles ouverts $]-3,-1[$, $]-1,1[$, $]1,3[$ sont disjoints, et aux points de jonction $f(-1)=2 \neq 0$ et $f(1)=-2 \neq 0$ (donc ces points ne sont pas eux-mêmes solutions). Les solutions $c_1$, $c_2$, $c_3$ sont donc bien trois solutions **distinctes**. L'équation $f(x)=0$ admet **exactement trois** solutions dans $[-3,3]$.
+
+[[figure:cubique-trois-racines]]
 
 ### À toi de jouer
 
