@@ -303,6 +303,7 @@ export function StagedFigure({
     model: interactiveModel,
     unlocked: interactiveUnlocked,
     svgVersion: svgContent,
+    reduced,
   });
 
   return (

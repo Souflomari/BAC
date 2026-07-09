@@ -5,14 +5,60 @@
  * unlocks (docs/design/INTERACTIVE-FIGURE-SPEC.md §3-4).
  *
  * Writes IMPERATIVELY into the already-injected SVG subtree (setAttribute /
- * textContent), exactly like MotionStage.tsx writes into its own injected
- * SVG — no fight with React's render cycle, and no risk of the drag gesture
- * fighting a re-render: StagedFigure's `svgContent` memo does not depend on
- * the control's value, so React never re-injects the SVG mid-drag. It DOES
- * re-inject on stage changes (Précédent/Suivant) and on prefers-reduced-
- * motion/print toggles — `svgVersion` (the same string) is a dependency here
- * so every fresh injection gets the current control value re-applied,
+ * textContent, or a GSAP attribute tween — see below), exactly like
+ * MotionStage.tsx writes into its own injected SVG — no fight with React's
+ * render cycle, and no risk of the drag gesture fighting a re-render:
+ * StagedFigure's `svgContent` memo does not depend on the control's value,
+ * so React never re-injects the SVG mid-drag. It DOES re-inject on stage
+ * changes (Précédent/Suivant) and on prefers-reduced-motion/print toggles —
+ * `svgVersion` is a dependency of the structural-reapply effect below, so
+ * every fresh injection gets the current control value re-applied,
  * mirroring MotionStage's own re-inject-then-re-apply pattern.
+ *
+ * ── Tweened recompute (not a snap) ──────────────────────────────────────────
+ * A `value` change from user interaction (drag, keyboard step, slider input)
+ * animates the bound attribute over `--duration-micro` via a lazily-loaded
+ * GSAP (kept out of the server bundle, same dynamic-import pattern as
+ * MotionStage.tsx:184-197) — `ease: "none"` while actively dragging (a
+ * real-time chase, not laggy catch-up, matching MotionStage's own precedent
+ * for continuous scrub) and `ease: "power2.out"` for discrete updates.
+ *
+ * The tween is created SYNCHRONOUSLY inside `setValue`, in the SAME call
+ * stack as the triggering DOM event (matching how MotionStage's `goTo()`
+ * creates its own tween directly inside the transport button's click
+ * handler) — deliberately NOT via a separate `useEffect` watching `value`
+ * as a dependency. Routing tween creation through a value-watching effect
+ * (verified with both `useEffect` and `useLayoutEffect`) reproducibly made
+ * GSAP's ticker treat the tween as already-complete on its very first tick
+ * — confirmed via `tween.progress() === 1` immediately after creation and
+ * via a frame-by-frame DOM poll showing the bound attribute already at its
+ * final value on the first observed frame — while the exact same
+ * `gsap.to()` call, made synchronously inside a plain
+ * `window.addEventListener("keydown", …)` handler on the same page,
+ * animated correctly every time. The exact GSAP-internal mechanism wasn't
+ * fully root-caused, but the fix is unambiguous and low-risk: create the
+ * tween where the user gesture actually happens, not one render-cycle away.
+ *
+ * A `path` binding whose new `d` has the SAME number of embedded numbers as
+ * its current one gets a plain attribute tween; one whose topology changes
+ * (only `racines-unite`'s vertex-count-scaled paths today, detected
+ * generically by comparing token counts, never slug-hardcoded) routes
+ * through MorphSVGPlugin instead — plain attribute interpolation on
+ * differently-shaped `d` strings does not animate coherently. `text`
+ * bindings are never tweened (can't be meaningfully interpolated; a
+ * flash-on-every-tick would add noise, not reduce it — `pulse-settle-once`
+ * already owns the "notable settle" cue). `prefers-reduced-motion` bypasses
+ * GSAP entirely — an explicit branch, since the project's global reduced-
+ * motion CSS net does not reach GSAP's own rAF-driven tweens.
+ *
+ * A structural re-injection (`svgVersion` changed — a stage transition, or
+ * the reduced-motion/print toggle) is handled by a SEPARATE effect and is
+ * always applied INSTANTLY: the freshly-mounted elements start at their
+ * authored static values and this is a re-stamp, not a user gesture —
+ * tweening it would compete visually with the stage-reveal transition. If
+ * GSAP's dynamic import hasn't resolved yet (or fails), every apply
+ * degrades to the original instant `setAttribute`/`textContent` —
+ * "degrade, never break," the same contract MotionStage already keeps.
  *
  * No browser storage — `value` lives in React state only, reset to
  * `control.initial` on remount (the same honest-state discipline as every
@@ -27,7 +73,69 @@ import type {
 } from "@/lib/content";
 import type { InteractiveFigureModel, RecomputeResult } from "@/lib/interactive-figures";
 
-function applyResult(el: Element, result: RecomputeResult): void {
+// ── Minimal structural type for the GSAP surface we use (same pattern as
+// MotionStage.tsx:67-89 — GSAP is dynamically imported, so only the methods
+// actually called are typed rather than depending on gsap's full exports). ──
+interface GsapTweenVars {
+  attr?: Record<string, number | string>;
+  morphSVG?: string;
+  duration?: number;
+  ease?: string;
+  overwrite?: string | boolean;
+}
+interface GsapLike {
+  registerPlugin(...args: unknown[]): void;
+  to(target: unknown, vars: GsapTweenVars): unknown;
+}
+
+interface GsapContext {
+  gsap: GsapLike;
+  hasMorph: boolean;
+}
+
+const TWEEN_DURATION = 0.15; // --duration-micro (150ms), globals.css:92
+
+let gsapLoadPromise: Promise<GsapContext | null> | null = null;
+
+/** Lazily loads GSAP + MorphSVGPlugin once, cached across every figure on
+ * the page — mirrors MotionStage.tsx:184-197's dynamic-import pattern
+ * (GSAP stays out of the server bundle, ADR 0022). Never throws: a failed
+ * plugin import just means path-topology-changing bindings (racines-unite)
+ * fall back to an instant snap; a failed core import means every binding
+ * on every interactive figure does. */
+function loadGsap(): Promise<GsapContext | null> {
+  if (!gsapLoadPromise) {
+    gsapLoadPromise = (async () => {
+      try {
+        const gsapMod = await import("gsap");
+        const gsap = (gsapMod.gsap ?? gsapMod.default) as unknown as GsapLike;
+        let hasMorph = false;
+        try {
+          const morph = await import("gsap/MorphSVGPlugin");
+          gsap.registerPlugin(morph.MorphSVGPlugin ?? morph.default);
+          hasMorph = true;
+        } catch {
+          // Plugin unavailable — variable-topology paths degrade to instant snap.
+        }
+        return { gsap, hasMorph };
+      } catch {
+        return null;
+      }
+    })();
+  }
+  return gsapLoadPromise;
+}
+
+/** Count of embedded numeric tokens in an SVG path `d` string — a cheap,
+ * generic proxy for "same topology" (same command/point count), used to
+ * decide plain attribute tweening vs. MorphSVGPlugin. Not slug-specific:
+ * any figure whose recompute changes a path's segment count (today, only
+ * racines-unite's vertex-count-scaled `d`) is caught by this check. */
+function pathTokenCount(d: string): number {
+  return (d.match(/-?\d+\.?\d*/g) ?? []).length;
+}
+
+function applyResultInstant(el: Element, result: RecomputeResult): void {
   if (result.kind === "path") {
     el.setAttribute("d", result.d);
   } else if (result.kind === "point") {
@@ -43,7 +151,42 @@ function applyResult(el: Element, result: RecomputeResult): void {
   }
 }
 
-function applyBindings(
+function applyResultTweened(
+  ctx: GsapContext | null,
+  el: Element,
+  result: RecomputeResult,
+  dragging: boolean
+): void {
+  if (result.kind === "text") {
+    el.textContent = result.value;
+    return;
+  }
+  if (!ctx) {
+    // GSAP hasn't loaded yet (or failed) — degrade, never break.
+    applyResultInstant(el, result);
+    return;
+  }
+  const ease = dragging ? "none" : "power2.out";
+  if (result.kind === "point") {
+    const attrs: Record<string, number> =
+      el.tagName === "circle" ? { cx: result.x, cy: result.y } : { x: result.x, y: result.y };
+    ctx.gsap.to(el, { attr: attrs, duration: TWEEN_DURATION, ease, overwrite: "auto" });
+    return;
+  }
+  // kind === "path"
+  const currentD = el.getAttribute("d") ?? "";
+  if (pathTokenCount(currentD) === pathTokenCount(result.d)) {
+    ctx.gsap.to(el, { attr: { d: result.d }, duration: TWEEN_DURATION, ease, overwrite: "auto" });
+  } else if (ctx.hasMorph) {
+    ctx.gsap.to(el, { morphSVG: result.d, duration: TWEEN_DURATION, ease, overwrite: "auto" });
+  } else {
+    // Topology changed but the morph plugin isn't available — snap rather
+    // than animate a mismatched attribute interpolation.
+    el.setAttribute("d", result.d);
+  }
+}
+
+function applyBindingsInstant(
   container: Element,
   bindings: InteractiveBindingSpec[],
   model: InteractiveFigureModel,
@@ -54,7 +197,24 @@ function applyBindings(
     if (!recompute) continue;
     const el = container.querySelector(binding.target);
     if (!el) continue;
-    applyResult(el, recompute(value));
+    applyResultInstant(el, recompute(value));
+  }
+}
+
+function applyBindingsTweened(
+  container: Element,
+  bindings: InteractiveBindingSpec[],
+  model: InteractiveFigureModel,
+  value: number,
+  ctx: GsapContext | null,
+  dragging: boolean
+): void {
+  for (const binding of bindings) {
+    const recompute = model.recompute[binding.recompute];
+    if (!recompute) continue;
+    const el = container.querySelector(binding.target);
+    if (!el) continue;
+    applyResultTweened(ctx, el, recompute(value), dragging);
   }
 }
 
@@ -85,6 +245,10 @@ interface UseInteractiveFigureArgs {
   /** Changes whenever the SVG subtree is freshly re-injected (StagedFigure's
    * own `svgContent` string) — re-applies the current value on remount. */
   svgVersion: string;
+  /** StagedFigure's own prefers-reduced-motion flag — threaded down rather
+   * than a second matchMedia listener here (single source of truth). When
+   * true, every apply bypasses GSAP entirely. */
+  reduced: boolean;
 }
 
 interface UseInteractiveFigureResult {
@@ -99,26 +263,79 @@ export function useInteractiveFigure({
   model,
   unlocked,
   svgVersion,
+  reduced,
 }: UseInteractiveFigureArgs): UseInteractiveFigureResult {
   const [value, setValueState] = useState<number>(() => config?.control.initial ?? 0);
   const draggingRef = useRef(false);
+  const [gsapCtx, setGsapCtx] = useState<GsapContext | null>(null);
 
   const active = unlocked && config !== undefined && model !== undefined;
 
+  // Refs mirroring the latest gsapCtx/reduced/value — read by setValue (and,
+  // transitively, the drag gesture's moveTo() below) so that ANY closure
+  // over setValue, however stale (the drag-gesture effect only re-runs on
+  // [active, config, model, svgVersion], not on gsapCtx/reduced changing),
+  // still applies with the CURRENT GSAP-loaded state and reduced-motion
+  // flag, never a stale "not loaded yet" snapshot from an earlier render.
+  const gsapCtxRef = useRef(gsapCtx);
+  useEffect(() => {
+    gsapCtxRef.current = gsapCtx;
+  }, [gsapCtx]);
+  const reducedRef = useRef(reduced);
+  useEffect(() => {
+    reducedRef.current = reduced;
+  }, [reduced]);
+  const valueRef = useRef(value);
+  useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
+
+  // Updates state AND applies the new value SYNCHRONOUSLY, in the same call
+  // stack as the triggering DOM event — see the file header for why this
+  // must not be deferred through a value-watching effect.
   function setValue(next: number) {
-    if (!config) return;
-    setValueState(snapToStep(next, config.control.domain, config.control.step));
+    if (!config || !model) return;
+    const snapped = snapToStep(next, config.control.domain, config.control.step);
+    setValueState(snapped);
+    const container = containerRef.current;
+    if (!container) return;
+    if (reducedRef.current) {
+      applyBindingsInstant(container, config.bindings, model, snapped);
+    } else {
+      applyBindingsTweened(container, config.bindings, model, snapped, gsapCtxRef.current, draggingRef.current);
+    }
   }
 
-  // Re-apply every binding whenever the value changes OR the SVG subtree is
-  // freshly re-injected (stage change, reduced-motion/print toggle).
+  // Load GSAP once, lazily — harmless to kick off even when reduced-motion
+  // is active (loadGsap() is cached and cheap; the actual bypass happens at
+  // apply time above, not here).
+  useEffect(() => {
+    let cancelled = false;
+    loadGsap().then((ctx) => {
+      if (!cancelled) setGsapCtx(ctx);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Structural re-apply: fires ONLY when the SVG subtree is freshly
+  // re-injected (a stage transition — svgVersion changes) or reduced-motion
+  // toggles — NEVER on a plain value change (setValue already handled that
+  // synchronously, above). Always instant: the freshly-mounted elements
+  // start at their authored static values and this is a re-stamp, not a
+  // user gesture — tweening it would compete visually with StagedFigure's
+  // own stage-reveal transition.
+  const prevSvgVersionRef = useRef<string | undefined>(undefined);
   useEffect(() => {
     if (!active || !config || !model) return;
     const container = containerRef.current;
     if (!container) return;
-    applyBindings(container, config.bindings, model, value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, config, model, value, svgVersion]);
+    const svgChanged = prevSvgVersionRef.current !== svgVersion;
+    prevSvgVersionRef.current = svgVersion;
+    if (!svgChanged && !reduced) return;
+    applyBindingsInstant(container, config.bindings, model, valueRef.current);
+  }, [active, config, model, svgVersion, reduced]);
 
   // Self-healing net: StagedFigure's `dangerouslySetInnerHTML` div can be
   // silently re-injected by React on a commit whose diff isn't visible to
@@ -132,16 +349,13 @@ export function useInteractiveFigure({
   // container's OWN children (not `subtree`, so it never sees our own
   // attribute writes on grandchildren) re-stamps the current value the
   // instant any such replacement happens, regardless of why it happened.
-  const valueRef = useRef(value);
-  useEffect(() => {
-    valueRef.current = value;
-  }, [value]);
   useEffect(() => {
     if (!active || !config || !model) return;
     const container = containerRef.current;
     if (!container) return;
     const observer = new MutationObserver(() => {
-      applyBindings(container, config.bindings, model, valueRef.current);
+      // A correction, not a user gesture — always instant.
+      applyBindingsInstant(container, config.bindings, model, valueRef.current);
     });
     observer.observe(container, { childList: true });
     return () => observer.disconnect();
