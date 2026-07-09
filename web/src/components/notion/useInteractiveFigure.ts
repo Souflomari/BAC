@@ -7,13 +7,16 @@
  * Writes IMPERATIVELY into the already-injected SVG subtree (setAttribute /
  * textContent, or a GSAP attribute tween — see below), exactly like
  * MotionStage.tsx writes into its own injected SVG — no fight with React's
- * render cycle, and no risk of the drag gesture fighting a re-render:
- * StagedFigure's `svgContent` memo does not depend on the control's value,
- * so React never re-injects the SVG mid-drag. It DOES re-inject on stage
- * changes (Précédent/Suivant) and on prefers-reduced-motion/print toggles —
- * `svgVersion` is a dependency of the structural-reapply effect below, so
- * every fresh injection gets the current control value re-applied,
- * mirroring MotionStage's own re-inject-then-re-apply pattern.
+ * render cycle, and no risk of the drag gesture fighting a re-render.
+ * StagedFigure patches its own SVG subtree directly on stage changes
+ * (Précédent/Suivant) rather than re-rendering it; when that patch replaces
+ * a group holding one of this hook's bound elements (a Précédent-then-
+ * Suivant round trip), StagedFigure calls `reapply()` (returned below)
+ * SYNCHRONOUSLY, right after the DOM change, to re-stamp the current value
+ * onto the fresh elements — deliberately NOT via a React-state dependency
+ * (`reapply`'s own doc comment explains why: a state bump there was found
+ * to trigger a second render that undoes the very DOM change it was meant
+ * to react to).
  *
  * ── Tweened recompute (not a snap) ──────────────────────────────────────────
  * A `value` change from user interaction (drag, keyboard step, slider input)
@@ -51,14 +54,14 @@
  * GSAP entirely — an explicit branch, since the project's global reduced-
  * motion CSS net does not reach GSAP's own rAF-driven tweens.
  *
- * A structural re-injection (`svgVersion` changed — a stage transition, or
- * the reduced-motion/print toggle) is handled by a SEPARATE effect and is
- * always applied INSTANTLY: the freshly-mounted elements start at their
- * authored static values and this is a re-stamp, not a user gesture —
- * tweening it would compete visually with the stage-reveal transition. If
- * GSAP's dynamic import hasn't resolved yet (or fails), every apply
- * degrades to the original instant `setAttribute`/`textContent` —
- * "degrade, never break," the same contract MotionStage already keeps.
+ * Unlocking (reaching the final stage) and a reduced-motion toggle are
+ * handled by a SEPARATE effect and are always applied INSTANTLY: the
+ * freshly-mounted elements start at their authored static values and this
+ * is a re-stamp, not a user gesture — tweening it would compete visually
+ * with the stage-reveal transition. If GSAP's dynamic import hasn't
+ * resolved yet (or fails), every apply degrades to the original instant
+ * `setAttribute`/`textContent` — "degrade, never break," the same contract
+ * MotionStage already keeps.
  *
  * No browser storage — `value` lives in React state only, reset to
  * `control.initial` on remount (the same honest-state discipline as every
@@ -242,9 +245,6 @@ interface UseInteractiveFigureArgs {
   model: InteractiveFigureModel | undefined;
   /** True once the figure has reached the stage where manipulation unlocks. */
   unlocked: boolean;
-  /** Changes whenever the SVG subtree is freshly re-injected (StagedFigure's
-   * own `svgContent` string) — re-applies the current value on remount. */
-  svgVersion: string;
   /** StagedFigure's own prefers-reduced-motion flag — threaded down rather
    * than a second matchMedia listener here (single source of truth). When
    * true, every apply bypasses GSAP entirely. */
@@ -255,6 +255,18 @@ interface UseInteractiveFigureResult {
   /** Undefined when there is nothing to render (no config, no model, locked). */
   value: number | undefined;
   setValue: (v: number) => void;
+  /** Re-stamps the current value onto whatever bound elements exist right
+   * now — call this SYNCHRONOUSLY, directly, right after a structural DOM
+   * change (a step group freshly re-inserted after Précédent-then-Suivant).
+   * Deliberately NOT wired through a React-state "svgVersion" prop: an
+   * earlier version did that, and the state bump it required forced an
+   * extra render, which — a confirmed React behavior in this app, see
+   * StagedFigure.tsx's `reconcile` comment — re-triggers a
+   * dangerouslySetInnerHTML reset that wipes out whatever DOM change the
+   * caller just made (including the reveal animation racines-unite/etc.
+   * groups now play) before it ever paints. Calling this directly performs
+   * zero React state updates, so it can never trigger that cascade. */
+  reapply: () => void;
 }
 
 export function useInteractiveFigure({
@@ -262,7 +274,6 @@ export function useInteractiveFigure({
   config,
   model,
   unlocked,
-  svgVersion,
   reduced,
 }: UseInteractiveFigureArgs): UseInteractiveFigureResult {
   const [value, setValueState] = useState<number>(() => config?.control.initial ?? 0);
@@ -319,23 +330,28 @@ export function useInteractiveFigure({
     };
   }, []);
 
-  // Structural re-apply: fires ONLY when the SVG subtree is freshly
-  // re-injected (a stage transition — svgVersion changes) or reduced-motion
-  // toggles — NEVER on a plain value change (setValue already handled that
+  // Re-apply on unlock (active becomes true) or a reduced-motion toggle —
+  // NEVER on a plain value change (setValue already handled that
   // synchronously, above). Always instant: the freshly-mounted elements
   // start at their authored static values and this is a re-stamp, not a
   // user gesture — tweening it would compete visually with StagedFigure's
-  // own stage-reveal transition.
-  const prevSvgVersionRef = useRef<string | undefined>(undefined);
+  // own stage-reveal transition. Structural DOM changes (a step group
+  // freshly re-inserted) are handled by `reapply`, below — called directly
+  // by StagedFigure, not through a dependency-array signal (see `reapply`'s
+  // own doc comment for why).
   useEffect(() => {
     if (!active || !config || !model) return;
     const container = containerRef.current;
     if (!container) return;
-    const svgChanged = prevSvgVersionRef.current !== svgVersion;
-    prevSvgVersionRef.current = svgVersion;
-    if (!svgChanged && !reduced) return;
     applyBindingsInstant(container, config.bindings, model, valueRef.current);
-  }, [active, config, model, svgVersion, reduced]);
+  }, [active, config, model, reduced]);
+
+  function reapply() {
+    if (!active || !config || !model) return;
+    const container = containerRef.current;
+    if (!container) return;
+    applyBindingsInstant(container, config.bindings, model, valueRef.current);
+  }
 
   // Self-healing net: StagedFigure's `dangerouslySetInnerHTML` div can be
   // silently re-injected by React on a commit whose diff isn't visible to
@@ -471,7 +487,7 @@ export function useInteractiveFigure({
       window.removeEventListener("pointerup", onPointerUp);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, config, model, svgVersion]);
+  }, [active, config, model]);
 
-  return { value: active ? value : undefined, setValue };
+  return { value: active ? value : undefined, setValue, reapply };
 }

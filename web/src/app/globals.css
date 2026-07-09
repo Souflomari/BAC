@@ -1014,15 +1014,15 @@ h3:hover .heading-anchor,
 /* ── Stage-group reveal (StagedFigure.tsx, all staged figures) ───────────────
    Replaces the old "re-inject the whole SVG string, new step group pops in
    at full opacity instantly" contract. StagedFigure now patches the live
-   SVG subtree directly: a newly-revealed group gets `.stage-group-enter`
-   (removed after the animation via `animationend`, so it doesn't replay on
-   later re-renders); a group falling below the current stage gets
+   SVG subtree directly: a group falling below the current stage gets
    `.stage-group-exit` before removal (`transitionend`-gated, `setTimeout`
    fallback — same idiom as this file's print listener); groups behind the
    current stage carry `.stage-group-dim` (opacity 0.55, animates in/out via
    the plain `.stage-group` transition — covers both dimming on advance and
    undimming on "Précédent"). Reuses --duration-standard/--duration-micro/
-   --ease-between only (no new tokens) — DESIGN-BIBLE calm-core discipline. */
+   --ease-between only (no new tokens) — DESIGN-BIBLE calm-core discipline.
+   The newly-revealed group's OWN entrance is `.stage-child-enter`, below —
+   the group itself is never animated as one blob. */
 .stage-group {
   transition: opacity var(--duration-standard) var(--ease-between);
 }
@@ -1033,15 +1033,35 @@ h3:hover .heading-anchor,
   opacity: 0;
   transition: opacity var(--duration-micro) var(--ease-between);
 }
-.stage-group-enter {
-  animation: stage-group-enter var(--duration-standard) cubic-bezier(0, 0, 0.2, 1);
+
+/* ── Stage-child assemble (StagedFigure.tsx reconcile()) ──────────────────────
+   MOTION-CHOREOGRAPHY.md §1 "assemble": a staggered, thing-by-thing entrance
+   — "never fire all elements simultaneously (reads as 'pop', not
+   choreography)." A newly-revealed step group's DIRECT children (the
+   figure's actual "things" — a curve, an axis, a label) each get this class
+   with a JS-computed `animation-delay` (60–90ms apart, scaled by count per
+   §2.2), so the group visibly builds one piece at a time instead of the
+   whole step appearing at once — the "Imprint-style" deliberate reveal.
+   Duration/ease/travel match the spec exactly: 350ms, `power3.out`
+   (≈ tailwind's `ease-emphasized`, cubic-bezier(0.2, 0, 0, 1)), ~8px rise.
+   `animation-fill-mode: both` is load-bearing: without it, an element with a
+   nonzero delay renders at its NORMAL (fully opaque) style during the delay
+   window instead of holding at the keyframe's `from` state — every child
+   would flash visible immediately and only re-fade afterward, defeating the
+   stagger entirely. Longhand properties (not the `animation` shorthand) so
+   StagedFigure's inline `animation-delay` per child is never overwritten. */
+.stage-child-enter {
+  animation-name: stage-child-enter;
+  animation-duration: 350ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: both;
 }
-@keyframes stage-group-enter {
-  from { opacity: 0; transform: translateY(6px); }
+@keyframes stage-child-enter {
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .stage-group-enter {
+  .stage-child-enter {
     animation: none;
   }
   .stage-group,

@@ -215,6 +215,45 @@ function clampStage(n: number, max: number): number {
   return Math.min(Math.max(1, n), max);
 }
 
+const ASSEMBLE_CHILD_DURATION_MS = 350; // MOTION-CHOREOGRAPHY.md §1 "assemble"
+
+/** Stagger interval between an assembling group's direct children, scaled
+ * by count (MOTION-CHOREOGRAPHY.md §2.2: 60–90ms, tighter for busier
+ * groups) — a 3-element step reads as deliberately paced at 90ms apart; a
+ * 12-element one would take too long at that same interval, so it tightens
+ * to 60ms rather than growing the whole reveal past a few seconds. */
+function assembleStaggerMs(childCount: number): number {
+  if (childCount <= 3) return 90;
+  if (childCount > 6) return 60;
+  return 70;
+}
+
+/**
+ * Reveal a freshly-inserted step group's DIRECT children one at a time —
+ * MOTION-CHOREOGRAPHY.md §1 "assemble": "never fire all elements
+ * simultaneously (reads as 'pop', not choreography)." Each child (a curve,
+ * an axis, a label — whatever the figure actually authored as a direct
+ * child of the step group) gets `.stage-child-enter` with a JS-computed
+ * `animation-delay`, instead of the whole group fading in as one blob —
+ * the "watch it build, thing by thing" pacing an Imprint-style illustration
+ * has and the old single-blob fade didn't. Each child's own cleanup timer
+ * clears its class/inline delay once settled, independent of the others,
+ * so a later re-entrance (Précédent-then-Suivant) always starts fresh.
+ */
+function assembleGroupChildren(group: SVGGElement): void {
+  const children = Array.from(group.children) as SVGElement[];
+  const stagger = assembleStaggerMs(children.length);
+  children.forEach((child, i) => {
+    child.classList.add("stage-child-enter");
+    child.style.animationDelay = `${i * stagger}ms`;
+    const settleMs = i * stagger + ASSEMBLE_CHILD_DURATION_MS + 50;
+    window.setTimeout(() => {
+      child.classList.remove("stage-child-enter");
+      child.style.removeProperty("animation-delay");
+    }, settleMs);
+  });
+}
+
 export function StagedFigure({
   svg,
   slug,
@@ -229,10 +268,15 @@ export function StagedFigure({
   const [stage, setStage] = useState(initialStageClamped);
   const [reduced, setReduced] = useState(false);
   const [printing, setPrinting] = useState(false);
-  const [domVersion, setDomVersion] = useState(0);
   const captionId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const interactiveModel = interactiveConfig ? getInteractiveFigureModel(slug) : undefined;
+  // Populated (below, after useInteractiveFigure is called) with its
+  // `reapply` function — read from `reconcile` via a ref, not a dependency,
+  // so `reconcile`'s own identity doesn't change every render (see the
+  // reconciliation comment for why calling this must never itself trigger
+  // a React re-render).
+  const reapplyRef = useRef<(() => void) | null>(null);
 
   // prefers-reduced-motion — same live-listener pattern as Derivation/MotionStage.
   useEffect(() => {
@@ -299,14 +343,17 @@ export function StagedFigure({
   // string — the old contract tore down and reparsed the entire SVG on every
   // stage change (the literal "everything pops in on top of each other like
   // slides" the motion upgrade exists to fix). A step group that's needed but
-  // missing is appended with a `.stage-group-enter` animation (skipped on the
-  // initial mount, via `mountedRef`, and whenever `fullyRevealed` batch-
-  // inserts everything at once — no timeline to animate through there); a
-  // group no longer wanted gets a `.stage-group-exit` fade before removal —
-  // real DOM absence is preserved (ledger 11.4's AttemptFirst contract), it's
-  // just no longer instant. Bumps `domVersion` on any structural change — the
-  // seam useInteractiveFigure's `svgVersion` re-apply trigger now watches,
-  // replacing the old whole-string identity check.
+  // missing is appended and its DIRECT CHILDREN assemble in one at a time via
+  // `assembleGroupChildren` (skipped on the initial mount, via `mountedRef`,
+  // and whenever `fullyRevealed` batch-inserts everything at once — no
+  // timeline to animate through there) — MOTION-CHOREOGRAPHY.md §1
+  // "assemble," not a single group-level blob fade: the group itself is
+  // never animated, only its children, staggered. A group no longer wanted
+  // gets a `.stage-group-exit` fade before removal — real DOM absence is
+  // preserved (ledger 11.4's AttemptFirst contract), it's just no longer
+  // instant. Calls `reapplyRef.current()` directly (never a React state
+  // update) after a structural change, so useInteractiveFigure can
+  // re-stamp its bound value onto whatever just got reinserted.
   const mountedRef = useRef(false);
   const pendingExitsRef = useRef(new Map<number, () => void>());
 
@@ -351,8 +398,7 @@ export function StagedFigure({
             if (inserted) {
               inserted.classList.add("stage-group");
               if (mountedRef.current && !fullyRevealed && !instant) {
-                inserted.classList.add("stage-group-enter");
-                window.setTimeout(() => inserted.classList.remove("stage-group-enter"), 300);
+                assembleGroupChildren(inserted);
               }
             }
             structuralChange = true;
@@ -368,7 +414,6 @@ export function StagedFigure({
             if (el.hasAttribute("opacity")) el.removeAttribute("opacity");
           }
         } else if (el && !pendingExits.has(n)) {
-          el.classList.remove("stage-group-enter");
           el.classList.add("stage-group-exit");
           structuralChange = true;
           let finished = false;
@@ -412,16 +457,23 @@ export function StagedFigure({
       }
 
       mountedRef.current = true;
-      // NEVER bump domVersion from an `instant` (self-heal) call: React's
-      // own re-render is what caused the reset `reconcile` just corrected,
-      // and re-rendering AGAIN here (domVersion is React state) would give
-      // React another chance to reset the div, which self-heals again,
-      // which bumps again — an infinite loop, empirically confirmed (this
-      // exact shape hung a real browser tab). useInteractiveFigure.ts's own
-      // self-heal MutationObserver on the same container (childList-only,
-      // no state update) already covers the "re-stamp bindings after an
-      // unexpected reset" job without needing this signal.
-      if (structuralChange && !instant) setDomVersion((v) => v + 1);
+      // Re-stamp the interactive value onto whatever just got structurally
+      // reinserted (the Précédent-then-Suivant case) — called DIRECTLY, a
+      // plain function call, never a React state update. An earlier version
+      // signaled this via a `domVersion` state bump instead; that bump
+      // forced a second render, and React's own re-render is what causes
+      // the dangerouslySetInnerHTML reset `reconcile` exists to correct —
+      // re-rendering AGAIN here gave React another chance to reset the div,
+      // which then needed another correction, which bumped again: an
+      // infinite loop, empirically confirmed (hung a real browser tab), and
+      // separately, ANY extra render — even a self-terminating one — was
+      // also silently overwriting this exact reconcile call's OWN
+      // `assembleGroupChildren` reveal before it ever painted. Skipped
+      // entirely on an `instant` (self-heal) call: that call is itself the
+      // reapply-worthy correction, and useInteractiveFigure's own
+      // MutationObserver self-heal on the same container already covers it
+      // independently.
+      if (structuralChange && !instant) reapplyRef.current?.();
     },
     [stage, fullyRevealed, extracted, originalViewBox, slug]
   );
@@ -437,7 +489,24 @@ export function StagedFigure({
   // always to GRANDCHILDREN of this container (groups inside the `<svg>`),
   // so they never re-trigger this observer — only a wholesale replacement
   // of the `<svg>` element itself (a direct child) does.
-  useEffect(() => {
+  //
+  // MUST be a LAYOUT effect (useIsoLayoutEffect), not a plain useEffect —
+  // confirmed by a real, reproduced bug: a plain useEffect's reconnect
+  // (disconnect the OLD observer, whose closure captured the PREVIOUS
+  // render's `fullyRevealed`/`stage`, then create a NEW one) only runs
+  // AFTER paint, as a passive effect. But the OLD observer is still
+  // CONNECTED at the moment `reconcile`'s own layout effect (just above)
+  // mutates the DOM — it sees that mutation and queues its STALE callback
+  // as a microtask, which fires (with the previous, now-wrong
+  // `fullyRevealed`/`stage`) BEFORE the passive effect ever gets a chance
+  // to reconnect — undoing the correct insertion moments after it happened
+  // (reproduced with prefers-print: the group was inserted, then
+  // immediately re-removed by a self-heal call that still read
+  // `fullyRevealed: false`). Making this a layout effect means the
+  // disconnect+reconnect happens SYNCHRONOUSLY, in the same commit as the
+  // mutation, before the browser ever drains the microtask queue that
+  // would have delivered the stale observer's callback.
+  useIsoLayoutEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     const observer = new MutationObserver(() => reconcile(true));
@@ -456,14 +525,16 @@ export function StagedFigure({
   // from `fullyRevealed`: reduced-motion must not disable manipulation itself
   // (§4), only the click-through transport above it does that.
   const interactiveUnlocked = (fullyRevealed || atLast) && !printing;
-  const { value: interactiveValue, setValue: setInteractiveValue } = useInteractiveFigure({
+  const { value: interactiveValue, setValue: setInteractiveValue, reapply } = useInteractiveFigure({
     containerRef,
     config: interactiveConfig,
     model: interactiveModel,
     unlocked: interactiveUnlocked,
-    svgVersion: String(domVersion),
     reduced,
   });
+  useEffect(() => {
+    reapplyRef.current = reapply;
+  }, [reapply]);
 
   return (
     <figure

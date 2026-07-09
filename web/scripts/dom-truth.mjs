@@ -671,15 +671,23 @@ try {
   // deep-link needed), 3 stages.
   //
   // Motion Phase 2: StagedFigure now patches the live SVG subtree instead
-  // of re-injecting a whole new string — a freshly-revealed group animates
-  // in (.stage-group-enter, --duration-standard) instead of popping in at
-  // full opacity instantly, and a group falling out of view fades
+  // of re-injecting a whole new string — a group falling out of view fades
   // (.stage-group-exit, --duration-micro) before real removal instead of
-  // vanishing on the same tick. Every post-transport-click DOM-absence /
-  // opacity assertion below now needs a settle wait first.
+  // vanishing on the same tick. Every post-transport-click DOM-absence
+  // assertion below now needs a settle wait first.
+  //
+  // Motion "thing-by-thing" pass (2026-07-09): a freshly-revealed group's
+  // own opacity is NEVER animated — MOTION-CHOREOGRAPHY.md §1 "assemble"
+  // instead staggers the group's DIRECT CHILDREN in one at a time
+  // (.stage-child-enter, 350ms each, 60–90ms apart per §2.2's count-based
+  // scaling). regimes-uc's step-2 has 22 direct children (a rich annotated
+  // curve), which — at the 60ms floor for >6 elements — takes up to
+  // ~21×60 + 350 + the component's own 50ms cleanup margin ≈ 1660ms to
+  // fully settle; ASSEMBLE_SETTLE_MS below clears that with margin.
   const STAGE_SETTLE_MS = 350; // clears --duration-standard (250ms) + the
-  // component's own 300ms JS enter-class cleanup margin, and comfortably
-  // clears the smaller exit side too (--duration-micro 150ms + 200ms JS).
+  // smaller exit side (--duration-micro 150ms + 200ms JS) — unaffected by
+  // the assemble change, exits are still a single quick group-level fade.
+  const ASSEMBLE_SETTLE_MS = 2000;
   {
     console.log(`\n[${NOTION}] SWEEP: StagedFigure — real DOM absence, transport, print, reveal/exit motion`);
     const fpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -699,27 +707,28 @@ try {
 
     // Advance once: "Suivant" (aria-label "Étape suivante" at stage 1/3).
     await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']");
-    // Sample opacity SOON after the click — before the enter animation
-    // finishes — as a soft, non-blocking signal that it's actually
-    // animating rather than popping in instantly. A plain CSS keyframe
-    // animation (not GSAP) isn't subject to the render-cycle timing bug
-    // Phase 1 diagnosed, so this is expected to hold reliably, but CDP
-    // click/read round-trip latency can still occasionally outrun a 250ms
-    // window — reported as a warning, not a hard failure, matching this
-    // file's established discipline for any mid-transition sample.
-    const midEnter = await fpage.evaluate(() => {
-      const el = document.querySelector("[data-figure='regimes-uc'] g#step-2");
-      return el ? getComputedStyle(el).opacity : null;
+    // Sample every direct child's opacity partway through the assemble
+    // sequence — proof this is a genuine thing-by-thing stagger (a MIX of
+    // values: early children well underway, later ones still at 0), not
+    // the old single-blob pop. A plain CSS animation-delay isn't subject
+    // to the GSAP render-cycle timing bug Phase 1 diagnosed, so this is a
+    // hard, reliable assertion rather than a soft warning.
+    await fpage.waitForTimeout(250);
+    const midAssemble = await fpage.evaluate(() => {
+      const step2 = document.querySelector("[data-figure='regimes-uc'] g#step-2");
+      return Array.from(step2?.children ?? []).map((c) => parseFloat(getComputedStyle(c).opacity).toFixed(2));
     });
-    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    await fpage.waitForTimeout(ASSEMBLE_SETTLE_MS - 250);
     const afterOneAdvance = await fpage.evaluate(() => {
       const fig = document.querySelector("[data-figure='regimes-uc']");
       const step2 = fig?.querySelector("g#step-2");
+      const children = Array.from(step2?.children ?? []);
       return {
         stage: fig?.getAttribute("data-stage-current"),
         step2Present: !!step2,
-        step2Opacity: step2 ? getComputedStyle(step2).opacity : null,
-        step2HasEnterClass: !!step2?.classList.contains("stage-group-enter"),
+        childCount: children.length,
+        allChildrenOpaque: children.every((c) => getComputedStyle(c).opacity === "1"),
+        anyChildStillAnimating: children.some((c) => c.classList.contains("stage-child-enter")),
         step3Absent: !fig?.querySelector("g#step-3"),
       };
     });
@@ -774,9 +783,11 @@ try {
     const printed = await fpage.evaluate(() => {
       const fig = document.querySelector("[data-figure='regimes-uc']");
       const step3 = fig?.querySelector("g#step-3");
+      const children = Array.from(step3?.children ?? []);
       return {
         step3Present: !!step3,
-        step3HasEnterClass: !!step3?.classList.contains("stage-group-enter"),
+        anyChildHasEnterClass: children.some((c) => c.classList.contains("stage-child-enter")),
+        allChildrenOpaque: children.every((c) => getComputedStyle(c).opacity === "1"),
         controlsHidden: !fig?.querySelector("[role='group'][aria-label*='Contrôles']") ||
           getComputedStyle(fig.querySelector("[role='group'][aria-label*='Contrôles']")).display === "none",
       };
@@ -784,18 +795,18 @@ try {
     await fpage.close();
 
     checks++;
-    if (midEnter !== null && parseFloat(midEnter) >= 1) {
-      console.warn(`  ⚠ (non-blocking, CDP click/read latency can outrun a 250ms CSS animation) regimes-uc: step-2 already at opacity ${midEnter} immediately after "Suivant" — enter animation may have already settled before the sample`);
-    }
+    const distinctMidOpacities = new Set(midAssemble).size;
     if (!initial.figPresent) failures += fail("regimes-uc StagedFigure not found on rlc-serie R0");
     else if (initial.stage !== "1") failures += fail(`initial stage ${initial.stage} ≠ "1" (first placement, R0)`);
     else if (!initial.step2Absent || !initial.step3Absent) failures += fail("step-2/step-3 groups present in DOM before any advance — NOT real absence (AttemptFirst broken)");
     else if (!initial.prevDisabled) failures += fail("« Précédent » not disabled at stage 1");
     else if (!initial.indicator?.includes("Étape 1")) failures += fail(`step indicator "${initial.indicator}" doesn't read "Étape 1"`);
+    else if (midAssemble.length < 2) failures += fail(`step-2 has only ${midAssemble.length} direct children — can't prove a thing-by-thing stagger with this figure`);
+    else if (distinctMidOpacities < 2) failures += fail(`step-2's ${midAssemble.length} children all read the SAME opacity 250ms into the reveal (${midAssemble[0]}) — assemble isn't staggering thing-by-thing, it's popping as one blob again`);
     else if (afterOneAdvance.stage !== "2") failures += fail(`stage after one "Suivant" click = ${afterOneAdvance.stage} ≠ "2"`);
     else if (!afterOneAdvance.step2Present) failures += fail("step-2 group still absent after advancing to stage 2 — re-injection broken");
-    else if (afterOneAdvance.step2Opacity !== "1") failures += fail(`step-2 opacity "${afterOneAdvance.step2Opacity}" ≠ "1" — the enter transition should have settled by now`);
-    else if (afterOneAdvance.step2HasEnterClass) failures += fail("step-2 still carries .stage-group-enter after the settle wait — the one-shot cleanup didn't fire");
+    else if (!afterOneAdvance.allChildrenOpaque) failures += fail(`step-2's children are not all fully opaque ${ASSEMBLE_SETTLE_MS}ms after the click — the assemble sequence should have long settled (${afterOneAdvance.childCount} children)`);
+    else if (afterOneAdvance.anyChildStillAnimating) failures += fail("step-2 still has a child carrying .stage-child-enter after the settle wait — the per-child cleanup didn't fire");
     else if (!afterOneAdvance.step3Absent) failures += fail("step-3 group present at stage 2 — advanced too far or absence contract broken");
     else if (afterPrev.stage !== "1") failures += fail(`stage after "Précédent" = ${afterPrev.stage} ≠ "1"`);
     else if (!afterPrev.step2Absent) failures += fail("step-2 group still present after « Précédent » + settle — exit removal broken (real DOM absence regression)");
@@ -803,9 +814,10 @@ try {
     else if (afterRecommencer.stage !== "1") failures += fail(`stage after "Recommencer" = ${afterRecommencer.stage} ≠ "1"`);
     else if (!afterRecommencer.step2Absent || !afterRecommencer.step3Absent) failures += fail("« Recommencer » from the last stage did not remove every group above 1 in one shot");
     else if (!printed.step3Present) failures += fail("print: step-3 NOT present — fullyRevealed branch not firing under @media print");
-    else if (printed.step3HasEnterClass) failures += fail("print: the fully-revealed batch insert carries .stage-group-enter — should never animate");
+    else if (printed.anyChildHasEnterClass) failures += fail("print: a fully-revealed batch-inserted child carries .stage-child-enter — should never animate");
+    else if (!printed.allChildrenOpaque) failures += fail("print: fully-revealed batch-inserted children are not all opaque — should appear instantly, no stagger");
     else if (!printed.controlsHidden) failures += fail("print: transport controls still visible");
-    else console.log(`  ✓ real DOM absence + reveal/exit motion (enter settles to opacity 1 and cleans up its class, exit truly removes after settling, Recommencer clears every group in one shot), print reveals all with no animation + hides controls`);
+    else console.log(`  ✓ real DOM absence + thing-by-thing assemble motion (step-2's ${midAssemble.length} children show ${distinctMidOpacities} distinct opacities mid-reveal, all settle + clean up), exit truly removes after settling, Recommencer clears every group in one shot, print reveals all with no animation + hides controls`);
   }
 
   // (Interactive-figures wave, 2026-07-07) EmbedPanel — same pre-existing
