@@ -42,7 +42,7 @@ rule, carried forward here).
 | M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
-| P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
+| P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | judged (12 STAGE / 12 DECLINE), build in progress |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
@@ -262,4 +262,39 @@ rule, carried forward here).
 **Commit:** pending (this wave commits together with this ledger update).
 
 **Running tally: 13/47 lessons done, 86/266 chapters judged, 45 STAGE / 41 DECLINE. Maths matière COMPLETE (13/13 remaining lessons done, plus the arithmetique pilot — all 14 maths lessons now have full chapter-level visual judgment).**
+
+### Wave P1 — pc: aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| aspects-energetiques | R0 | DECLINE | narrative hook, payoff already lives at R3 |
+| aspects-energetiques | R1 | STAGE | `ec-parabole` — Ec vs v graph, confronts linear-vs-quadratic intuition |
+| aspects-energetiques | R2 | STAGE | `travail-force-signe` — work-sign tool, motrice/nulle/résistante |
+| aspects-energetiques | R5 | STAGE | `plan-incline-travaux` — energetic reading of incline, d→Δz=d·sinα |
+| aspects-energetiques | R6 | DECLINE | practice chapter, would pre-reveal the exercise's answer |
+| atome-mecanique-newton | R0 | DECLINE | narrative paradox hook, payload at R2 |
+| atome-mecanique-newton | R1 | DECLINE | order-of-magnitude comparison, table already carries it |
+| atome-mecanique-newton | R2 | STAGE | `bilan-forces-orbite` — centripetal force balance, 4-stage construction |
+| atome-mecanique-newton | R3 | STAGE | `spirale-rayonnement` — radiation-collapse paradox, causal sequence |
+| atome-mecanique-newton | R5 | DECLINE | practice chapter, reapplies R2's method |
+| chute-mouvements-plans | R0 | DECLINE | narrative hook, deliberately withholds the answer |
+| chute-mouvements-plans | R1 | STAGE | `symetrie-montee-descente` — 2-panel graph, montée=descente symmetry |
+| chute-mouvements-plans | R3 | DECLINE | algebraic elimination of t, result already visualized at R4 |
+| chute-mouvements-plans | R7 | DECLINE | practice chapter, duplicates R4/R6 |
+| controle-catalyse | R0 | DECLINE | narrative hook, no structure to build |
+| controle-catalyse | R1 | STAGE | `anhydride-alcool` — atom-tracked mechanism, no-water-byproduct |
+| controle-catalyse | R3 | STAGE | `trois-catalyses` — phase-classification, 3-panel homogène/hétérogène/enzymatique |
+| controle-catalyse | R4 | STAGE | `savon-amphiphile` — structure-property link, hydrophile/hydrophobe |
+| controle-catalyse | R5 | DECLINE | practice chapter, click-theater risk |
+| decroissance-radioactive | R0 | DECLINE | narrative hook, payload at R3's motion figure |
+| decroissance-radioactive | R1 | STAGE | `vallee-stabilite` — (Z,N) valley, confronts "gros=instable" misconception |
+| decroissance-radioactive | R2 | STAGE | `desintegrations-nz` — decay-displacement on the valley, β⁻/β⁺ trap |
+| decroissance-radioactive | R5 | STAGE | `datation-c14` — dating graph, living-equilibrium plateau + inverse read |
+| decroissance-radioactive | R6 | DECLINE | practice chapter, would duplicate R4/R5 |
+
+**Wave P1 judgment tally: 12 STAGE / 12 DECLINE** (24 chapters judged).
+
+**Build:** in progress.
 
