@@ -660,16 +660,28 @@ try {
     else console.log(`  ✓ ${beforeOpen.triggerCount} matière triggers, covers absent until opened, present (rlc-serie + rc-charge own motif) after`);
   }
 
-  // (Interactive-figures wave, 2026-07-07) StagedFigure's DOM-absence
-  // contract has had ZERO dom-truth coverage since it shipped (D11 §§1-2) —
-  // fully specified in LESSON-EXPERIENCE-SPEC.md §5, never implemented.
-  // Closing that gap BEFORE building the new drag/slider capability on top
-  // of it (INTERACTIVE-FIGURE-SPEC.md) — testing the extension without
-  // ever having tested the foundation it extends would invert the
-  // dependency. Uses `regimes-uc`'s first placement (R0 of rlc-serie,
-  // chapter 1 — no deep-link needed), 3 stages.
+  // (Interactive-figures wave, 2026-07-07; Motion Phase 2, 2026-07-09)
+  // StagedFigure's DOM-absence contract has had ZERO dom-truth coverage
+  // since it shipped (D11 §§1-2) — fully specified in
+  // LESSON-EXPERIENCE-SPEC.md §5, never implemented. Closing that gap
+  // BEFORE building the new drag/slider capability on top of it
+  // (INTERACTIVE-FIGURE-SPEC.md) — testing the extension without ever
+  // having tested the foundation it extends would invert the dependency.
+  // Uses `regimes-uc`'s first placement (R0 of rlc-serie, chapter 1 — no
+  // deep-link needed), 3 stages.
+  //
+  // Motion Phase 2: StagedFigure now patches the live SVG subtree instead
+  // of re-injecting a whole new string — a freshly-revealed group animates
+  // in (.stage-group-enter, --duration-standard) instead of popping in at
+  // full opacity instantly, and a group falling out of view fades
+  // (.stage-group-exit, --duration-micro) before real removal instead of
+  // vanishing on the same tick. Every post-transport-click DOM-absence /
+  // opacity assertion below now needs a settle wait first.
+  const STAGE_SETTLE_MS = 350; // clears --duration-standard (250ms) + the
+  // component's own 300ms JS enter-class cleanup margin, and comfortably
+  // clears the smaller exit side too (--duration-micro 150ms + 200ms JS).
   {
-    console.log(`\n[${NOTION}] SWEEP: StagedFigure — real DOM absence, transport, print`);
+    console.log(`\n[${NOTION}] SWEEP: StagedFigure — real DOM absence, transport, print, reveal/exit motion`);
     const fpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await fpage.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
     const initial = await fpage.evaluate(() => {
@@ -684,40 +696,97 @@ try {
         indicator: fig?.querySelector("[aria-live='polite']")?.textContent,
       };
     });
+
     // Advance once: "Suivant" (aria-label "Étape suivante" at stage 1/3).
     await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']");
-    await fpage.waitForTimeout(100);
+    // Sample opacity SOON after the click — before the enter animation
+    // finishes — as a soft, non-blocking signal that it's actually
+    // animating rather than popping in instantly. A plain CSS keyframe
+    // animation (not GSAP) isn't subject to the render-cycle timing bug
+    // Phase 1 diagnosed, so this is expected to hold reliably, but CDP
+    // click/read round-trip latency can still occasionally outrun a 250ms
+    // window — reported as a warning, not a hard failure, matching this
+    // file's established discipline for any mid-transition sample.
+    const midEnter = await fpage.evaluate(() => {
+      const el = document.querySelector("[data-figure='regimes-uc'] g#step-2");
+      return el ? getComputedStyle(el).opacity : null;
+    });
+    await fpage.waitForTimeout(STAGE_SETTLE_MS);
     const afterOneAdvance = await fpage.evaluate(() => {
       const fig = document.querySelector("[data-figure='regimes-uc']");
+      const step2 = fig?.querySelector("g#step-2");
       return {
         stage: fig?.getAttribute("data-stage-current"),
-        step2Present: !!fig?.querySelector("g#step-2"),
+        step2Present: !!step2,
+        step2Opacity: step2 ? getComputedStyle(step2).opacity : null,
+        step2HasEnterClass: !!step2?.classList.contains("stage-group-enter"),
         step3Absent: !fig?.querySelector("g#step-3"),
       };
     });
-    // Print: every stage present, controls hidden — no timeline to seek
-    // (Derivation precedent), independent of how far the transport advanced.
-    // Dispatching `beforeprint` directly (not page.emulateMedia): verified
-    // separately that Playwright/CDP's media emulation flips
-    // matchMedia("print").matches to true but never fires a "change" event
-    // on an already-registered MediaQueryList — a Playwright limitation,
-    // not a real-browser one (real print dialogs DO fire it). StagedFigure
-    // was already built with a REDUNDANT window "beforeprint"/"afterprint"
-    // listener for exactly this kind of cross-browser reliability gap
-    // (Safari doesn't reliably fire beforeprint either) — dispatching that
-    // event directly exercises the same code path a real print does.
-    await fpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
-    await fpage.waitForTimeout(100);
-    const printed = await fpage.evaluate(() => {
+
+    // Back once: "Précédent" — step-2 must genuinely LEAVE the DOM again
+    // (not just fade), after its exit transition settles.
+    await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape précédente']");
+    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    const afterPrev = await fpage.evaluate(() => {
       const fig = document.querySelector("[data-figure='regimes-uc']");
       return {
-        step3Present: !!fig?.querySelector("g#step-3"),
+        stage: fig?.getAttribute("data-stage-current"),
+        step2Absent: !fig?.querySelector("g#step-2"),
+      };
+    });
+
+    // Advance to the last stage, then "Recommencer" — every group above 1
+    // must be gone from the DOM in one shot (multi-group removal, same
+    // reconciliation loop as a single-group Précédent, no special case).
+    await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']"); // -> stage 2
+    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']"); // -> stage 3 (last)
+    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    const atLastBeforeReset = await fpage.evaluate(() => {
+      const fig = document.querySelector("[data-figure='regimes-uc']");
+      return { stage: fig?.getAttribute("data-stage-current"), step3Present: !!fig?.querySelector("g#step-3") };
+    });
+    await fpage.click("[data-figure='regimes-uc'] button[aria-label*='Recommencer']");
+    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    const afterRecommencer = await fpage.evaluate(() => {
+      const fig = document.querySelector("[data-figure='regimes-uc']");
+      return {
+        stage: fig?.getAttribute("data-stage-current"),
+        step2Absent: !fig?.querySelector("g#step-2"),
+        step3Absent: !fig?.querySelector("g#step-3"),
+      };
+    });
+
+    // Print: every stage present, controls hidden — no timeline to seek
+    // (Derivation precedent), independent of how far the transport
+    // advanced. Dispatching `beforeprint` directly (not page.emulateMedia):
+    // verified separately that Playwright/CDP's media emulation flips
+    // matchMedia("print").matches to true but never fires a "change" event
+    // on an already-registered MediaQueryList — a Playwright limitation,
+    // not a real-browser one. StagedFigure carries a REDUNDANT window
+    // "beforeprint"/"afterprint" listener for exactly this kind of
+    // cross-browser reliability gap — dispatching that event directly
+    // exercises the same code path a real print does. The fully-revealed
+    // batch-insert this triggers must NOT animate (no timeline to seek).
+    await fpage.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    const printed = await fpage.evaluate(() => {
+      const fig = document.querySelector("[data-figure='regimes-uc']");
+      const step3 = fig?.querySelector("g#step-3");
+      return {
+        step3Present: !!step3,
+        step3HasEnterClass: !!step3?.classList.contains("stage-group-enter"),
         controlsHidden: !fig?.querySelector("[role='group'][aria-label*='Contrôles']") ||
           getComputedStyle(fig.querySelector("[role='group'][aria-label*='Contrôles']")).display === "none",
       };
     });
     await fpage.close();
+
     checks++;
+    if (midEnter !== null && parseFloat(midEnter) >= 1) {
+      console.warn(`  ⚠ (non-blocking, CDP click/read latency can outrun a 250ms CSS animation) regimes-uc: step-2 already at opacity ${midEnter} immediately after "Suivant" — enter animation may have already settled before the sample`);
+    }
     if (!initial.figPresent) failures += fail("regimes-uc StagedFigure not found on rlc-serie R0");
     else if (initial.stage !== "1") failures += fail(`initial stage ${initial.stage} ≠ "1" (first placement, R0)`);
     else if (!initial.step2Absent || !initial.step3Absent) failures += fail("step-2/step-3 groups present in DOM before any advance — NOT real absence (AttemptFirst broken)");
@@ -725,10 +794,18 @@ try {
     else if (!initial.indicator?.includes("Étape 1")) failures += fail(`step indicator "${initial.indicator}" doesn't read "Étape 1"`);
     else if (afterOneAdvance.stage !== "2") failures += fail(`stage after one "Suivant" click = ${afterOneAdvance.stage} ≠ "2"`);
     else if (!afterOneAdvance.step2Present) failures += fail("step-2 group still absent after advancing to stage 2 — re-injection broken");
+    else if (afterOneAdvance.step2Opacity !== "1") failures += fail(`step-2 opacity "${afterOneAdvance.step2Opacity}" ≠ "1" — the enter transition should have settled by now`);
+    else if (afterOneAdvance.step2HasEnterClass) failures += fail("step-2 still carries .stage-group-enter after the settle wait — the one-shot cleanup didn't fire");
     else if (!afterOneAdvance.step3Absent) failures += fail("step-3 group present at stage 2 — advanced too far or absence contract broken");
+    else if (afterPrev.stage !== "1") failures += fail(`stage after "Précédent" = ${afterPrev.stage} ≠ "1"`);
+    else if (!afterPrev.step2Absent) failures += fail("step-2 group still present after « Précédent » + settle — exit removal broken (real DOM absence regression)");
+    else if (atLastBeforeReset.stage !== "3" || !atLastBeforeReset.step3Present) failures += fail(`did not reach the last stage cleanly before Recommencer (stage ${atLastBeforeReset.stage}, step3Present=${atLastBeforeReset.step3Present})`);
+    else if (afterRecommencer.stage !== "1") failures += fail(`stage after "Recommencer" = ${afterRecommencer.stage} ≠ "1"`);
+    else if (!afterRecommencer.step2Absent || !afterRecommencer.step3Absent) failures += fail("« Recommencer » from the last stage did not remove every group above 1 in one shot");
     else if (!printed.step3Present) failures += fail("print: step-3 NOT present — fullyRevealed branch not firing under @media print");
+    else if (printed.step3HasEnterClass) failures += fail("print: the fully-revealed batch insert carries .stage-group-enter — should never animate");
     else if (!printed.controlsHidden) failures += fail("print: transport controls still visible");
-    else console.log(`  ✓ real DOM absence (step-2/3 absent at stage 1, step-2 re-injected at stage 2), transport correct, print reveals all + hides controls`);
+    else console.log(`  ✓ real DOM absence + reveal/exit motion (enter settles to opacity 1 and cleans up its class, exit truly removes after settling, Recommencer clears every group in one shot), print reveals all with no animation + hides controls`);
   }
 
   // (Interactive-figures wave, 2026-07-07) EmbedPanel — same pre-existing
@@ -935,6 +1012,20 @@ try {
     const draggedValue = parseFloat(afterDrag.rangeValue);
     const expectedAfterDrag = Number.isFinite(draggedValue) ? expectAt(draggedValue) : null;
 
+    // Motion Phase 2 regression guard: #point-a lives inside <g id="step-3">
+    // — the same group Précédent removes from and Suivant re-inserts into
+    // the DOM (real DOM absence, ledger 11.4). A fresh insertion starts
+    // from the AUTHORED markup (t=2's default position), not the just-
+    // dragged value — useInteractiveFigure's structural re-apply effect
+    // (keyed on StagedFigure's domVersion) must re-stamp the CURRENT
+    // stored value onto it, or a Précédent-then-Suivant round trip would
+    // silently revert the student's own manipulation.
+    await ipage.click(`${FIG} button[aria-label='Étape précédente']`);
+    await ipage.waitForTimeout(STAGE_SETTLE_MS);
+    await ipage.click(`${FIG} button[aria-label='Étape suivante']`);
+    await ipage.waitForTimeout(STAGE_SETTLE_MS);
+    const afterPrevThenNext = await ipage.evaluate(readFigure, FIG);
+
     const gsapWarnings = stopWatchingGsap();
     await ipage.close();
     checks++;
@@ -963,8 +1054,12 @@ try {
       failures += fail(`after mouse drag, equation "${afterDrag.equation}" ≠ model(${draggedValue}) "${expectedAfterDrag.equation}"`);
     else if (afterDrag.pente !== expectedAfterDrag.pente)
       failures += fail(`after mouse drag, pente "${afterDrag.pente}" ≠ model(${draggedValue}) "${expectedAfterDrag.pente}"`);
+    else if (afterPrevThenNext.rangeValue !== afterDrag.rangeValue)
+      failures += fail(`Précédent-then-Suivant: range value "${afterPrevThenNext.rangeValue}" ≠ the last-dragged "${afterDrag.rangeValue}" — the freshly re-inserted stage-3 group reverted to its authored default instead of re-stamping the student's own manipulation`);
+    else if (afterPrevThenNext.pointCx !== expectedAfterDrag.point.x.toString() || afterPrevThenNext.pointCy !== expectedAfterDrag.point.y.toString())
+      failures += fail(`Précédent-then-Suivant: #point-a (${afterPrevThenNext.pointCx},${afterPrevThenNext.pointCy}) ≠ the last-dragged model(${draggedValue}) (${expectedAfterDrag.point.x},${expectedAfterDrag.point.y})`);
     else if (gsapWarnings.length) failures += fail(`GSAP console warning(s) during drag/step sweep: ${gsapWarnings.join(" | ")}`);
-    else console.log(`  ✓ unlocks only at the final stage, initial state matches the model exactly, keyboard stepping exact, mouse drag internally consistent (landed t=${draggedValue})`);
+    else console.log(`  ✓ unlocks only at the final stage, initial state matches the model exactly, keyboard stepping exact, mouse drag internally consistent (landed t=${draggedValue}), Précédent-then-Suivant re-stamps the dragged value onto the freshly re-inserted group`);
   }
 
   // (Interactive-figures wave, pilot 1) tangente-derivee — reduced-motion

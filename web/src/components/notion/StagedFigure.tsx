@@ -56,7 +56,7 @@
  * CLIENT component.
  */
 
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { Icon } from "@/components/ui/Icon";
@@ -67,9 +67,16 @@ import { getInteractiveFigureModel } from "@/lib/interactive-figures";
 import type { InteractiveFigureConfigSpec } from "@/lib/content";
 import {
   applyViewBoxCrop,
+  cropViewBoxValue,
   STRUCTURAL_SLUGS,
   VERTICALLY_STACKED_PANELS,
 } from "./MediaDiagram";
+
+// React warns if useLayoutEffect runs during server rendering; Next.js does
+// render client components on the server for the initial HTML, so the DOM
+// reconciliation effect below (which must fire before paint — see its own
+// comment) needs the same isomorphic guard ChapterShell.tsx already uses.
+const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export interface StagedFigureStage {
   /** Caption shown below the figure while this stage is current. */
@@ -218,9 +225,11 @@ export function StagedFigure({
   interactiveConfig,
 }: StagedFigureProps) {
   const totalStages = stages.length;
-  const [stage, setStage] = useState(() => clampStage(initialStage, totalStages));
+  const initialStageClamped = clampStage(initialStage, totalStages);
+  const [stage, setStage] = useState(initialStageClamped);
   const [reduced, setReduced] = useState(false);
   const [printing, setPrinting] = useState(false);
+  const [domVersion, setDomVersion] = useState(0);
   const captionId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const interactiveModel = interactiveConfig ? getInteractiveFigureModel(slug) : undefined;
@@ -269,22 +278,172 @@ export function StagedFigure({
 
   // Parsing the SVG into template + groups only depends on the raw string;
   // re-running it on every stage change (rather than memoizing) would be
-  // wasted work, so it's split from the (cheap) per-stage reassembly below.
+  // wasted work, so it's split from the per-stage DOM reconciliation below.
   const extracted = useMemo(() => extractStepGroups(svg), [svg]);
+  const originalViewBox = useMemo(() => svg.match(/viewBox="([^"]+)"/)?.[1] ?? null, [svg]);
 
-  const svgContent = useMemo(() => {
-    let out = assembleSvg(
-      extracted,
-      fullyRevealed ? null : stage,
-      fullyRevealed ? null : stage
-    );
+  // First-paint markup ONLY — computed once via a lazy initializer, never
+  // recomputed on a later render, and used ONLY for the very first commit
+  // (see the note on React re-injecting dangerouslySetInnerHTML, below).
+  const [initialSvgContent] = useState(() => {
+    let out = assembleSvg(extracted, initialStageClamped, initialStageClamped);
     const totalPanels = VERTICALLY_STACKED_PANELS[slug];
     if (totalPanels !== undefined) {
-      const visiblePanels = fullyRevealed ? totalPanels : stage;
-      out = applyViewBoxCrop(out, visiblePanels, totalPanels);
+      out = applyViewBoxCrop(out, initialStageClamped, totalPanels);
     }
     return out;
-  }, [extracted, fullyRevealed, stage, slug]);
+  });
+
+  // ── DOM reconciliation ────────────────────────────────────────────────────
+  // Patches the LIVE svg subtree directly instead of re-injecting a whole new
+  // string — the old contract tore down and reparsed the entire SVG on every
+  // stage change (the literal "everything pops in on top of each other like
+  // slides" the motion upgrade exists to fix). A step group that's needed but
+  // missing is appended with a `.stage-group-enter` animation (skipped on the
+  // initial mount, via `mountedRef`, and whenever `fullyRevealed` batch-
+  // inserts everything at once — no timeline to animate through there); a
+  // group no longer wanted gets a `.stage-group-exit` fade before removal —
+  // real DOM absence is preserved (ledger 11.4's AttemptFirst contract), it's
+  // just no longer instant. Bumps `domVersion` on any structural change — the
+  // seam useInteractiveFigure's `svgVersion` re-apply trigger now watches,
+  // replacing the old whole-string identity check.
+  const mountedRef = useRef(false);
+  const pendingExitsRef = useRef(new Map<number, () => void>());
+
+  // React's `dangerouslySetInnerHTML` prop is NOT reliably inert across
+  // re-renders in this app even when the `__html` string is unchanged —
+  // confirmed by direct DOM instrumentation (a MutationObserver on the
+  // wrapping div catches the whole `<svg>` being silently replaced on a
+  // later, unrelated commit) and by MotionStage.tsx:163-170's own
+  // pre-existing comment describing the exact same hazard ("if it also
+  // managed this innerHTML it would re-inject the SVG on the next
+  // re-render… replacing the very nodes [being] animated"). Rather than
+  // fight that (MotionStage sidesteps it by never using
+  // dangerouslySetInnerHTML past first paint, at the cost of no SSR
+  // content — not acceptable here, print/no-JS rendering matters for this
+  // component), `reconcile` is idempotent and re-runs INSTANTLY whenever a
+  // MutationObserver on the container catches such a reset — the exact
+  // "self-healing net" pattern useInteractiveFigure.ts already uses for
+  // the identical class of bug, one effect below.
+  const reconcile = useCallback(
+    (instant: boolean) => {
+      const svgRoot = containerRef.current?.querySelector("svg");
+      if (!svgRoot) return;
+      const pendingExits = pendingExitsRef.current;
+      const numbers = Array.from(extracted.groups.keys()).sort((a, b) => a - b);
+      let structuralChange = false;
+
+      for (const n of numbers) {
+        const wanted = fullyRevealed || n <= stage;
+        const el = svgRoot.querySelector<SVGGElement>(`#step-${n}`);
+
+        if (wanted) {
+          const cancelExit = pendingExits.get(n);
+          if (cancelExit) {
+            cancelExit();
+            pendingExits.delete(n);
+          }
+          if (!el) {
+            const raw = extracted.groups.get(n);
+            if (!raw) continue;
+            svgRoot.insertAdjacentHTML("beforeend", raw);
+            const inserted = svgRoot.querySelector<SVGGElement>(`#step-${n}`);
+            if (inserted) {
+              inserted.classList.add("stage-group");
+              if (mountedRef.current && !fullyRevealed && !instant) {
+                inserted.classList.add("stage-group-enter");
+                window.setTimeout(() => inserted.classList.remove("stage-group-enter"), 300);
+              }
+            }
+            structuralChange = true;
+          } else {
+            const dim = !fullyRevealed && n < stage;
+            el.classList.add("stage-group");
+            el.classList.toggle("stage-group-dim", dim);
+            // The frozen initial string may carry opacity as a raw SVG
+            // attribute (withOpacity, above) for a pre-revealed placement's
+            // dimmed groups — dimming is handed off to the CSS class
+            // exclusively from here on, or a later undim (class removed)
+            // would still be overridden by the leftover attribute.
+            if (el.hasAttribute("opacity")) el.removeAttribute("opacity");
+          }
+        } else if (el && !pendingExits.has(n)) {
+          el.classList.remove("stage-group-enter");
+          el.classList.add("stage-group-exit");
+          structuralChange = true;
+          let finished = false;
+          const cleanup = () => {
+            el.removeEventListener("transitionend", onEnd);
+            window.clearTimeout(timeoutId);
+          };
+          const finalize = () => {
+            if (finished) return;
+            finished = true;
+            cleanup();
+            pendingExits.delete(n);
+            el.remove();
+          };
+          const onEnd = (e: Event) => {
+            if (e.target === el) finalize();
+          };
+          el.addEventListener("transitionend", onEnd);
+          const timeoutId = window.setTimeout(finalize, 200);
+          // If this group becomes wanted again before finalize runs (a quick
+          // Précédent-then-Suivant), the `wanted` branch above calls this to
+          // stop the pending removal and restore full opacity — the element
+          // was never actually torn down, so any live (e.g. dragged) values
+          // on it survive untouched.
+          pendingExits.set(n, () => {
+            finished = true;
+            cleanup();
+            el.classList.remove("stage-group-exit");
+          });
+        }
+      }
+
+      const totalPanels = VERTICALLY_STACKED_PANELS[slug];
+      if (totalPanels !== undefined && originalViewBox) {
+        const visiblePanels = fullyRevealed ? totalPanels : stage;
+        const nextViewBox =
+          visiblePanels >= totalPanels
+            ? originalViewBox
+            : cropViewBoxValue(originalViewBox, visiblePanels, totalPanels);
+        svgRoot.setAttribute("viewBox", nextViewBox);
+      }
+
+      mountedRef.current = true;
+      // NEVER bump domVersion from an `instant` (self-heal) call: React's
+      // own re-render is what caused the reset `reconcile` just corrected,
+      // and re-rendering AGAIN here (domVersion is React state) would give
+      // React another chance to reset the div, which self-heals again,
+      // which bumps again — an infinite loop, empirically confirmed (this
+      // exact shape hung a real browser tab). useInteractiveFigure.ts's own
+      // self-heal MutationObserver on the same container (childList-only,
+      // no state update) already covers the "re-stamp bindings after an
+      // unexpected reset" job without needing this signal.
+      if (structuralChange && !instant) setDomVersion((v) => v + 1);
+    },
+    [stage, fullyRevealed, extracted, originalViewBox, slug]
+  );
+
+  useIsoLayoutEffect(() => {
+    reconcile(false);
+  }, [reconcile]);
+
+  // Self-heal: whenever React resets the container's direct children back
+  // to the frozen `initialSvgContent` (see `reconcile`'s own comment above),
+  // re-apply the current stage's state INSTANTLY — a correction, not a user
+  // gesture. `subtree: false` is deliberate: `reconcile`'s own writes are
+  // always to GRANDCHILDREN of this container (groups inside the `<svg>`),
+  // so they never re-trigger this observer — only a wholesale replacement
+  // of the `<svg>` element itself (a direct child) does.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new MutationObserver(() => reconcile(true));
+    observer.observe(container, { childList: true, subtree: false });
+    return () => observer.disconnect();
+  }, [reconcile]);
 
   const isStructural = STRUCTURAL_SLUGS.has(slug);
   const currentCaption = stages[stage - 1]?.caption;
@@ -302,7 +461,7 @@ export function StagedFigure({
     config: interactiveConfig,
     model: interactiveModel,
     unlocked: interactiveUnlocked,
-    svgVersion: svgContent,
+    svgVersion: String(domVersion),
     reduced,
   });
 
@@ -331,7 +490,7 @@ export function StagedFigure({
               "w-full"
         )}
         style={isStructural ? { maxWidth: "680px" } : undefined}
-        dangerouslySetInnerHTML={{ __html: svgContent }}
+        dangerouslySetInnerHTML={{ __html: initialSvgContent }}
       />
 
       {/* Manipulation control — only once interactiveUnlocked (§1.2) AND the

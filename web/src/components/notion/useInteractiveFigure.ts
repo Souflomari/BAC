@@ -373,12 +373,38 @@ export function useInteractiveFigure({
     prevSettleValueRef.current = value;
     if (!active || !config?.settleAt || !config.settleTarget) return;
     if (value !== config.settleAt || prev === config.settleAt) return;
-    const container = containerRef.current;
-    const el = container?.querySelector(config.settleTarget);
-    if (!el) return;
-    el.classList.add("pulse-settle-once");
-    const timeout = setTimeout(() => el.classList.remove("pulse-settle-once"), 500);
-    return () => clearTimeout(timeout);
+
+    const settleTarget = config.settleTarget;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let rafId: number | undefined;
+
+    function pulse(el: Element) {
+      el.classList.add("pulse-settle-once");
+      timeoutId = setTimeout(() => el.classList.remove("pulse-settle-once"), 500);
+    }
+
+    const el = containerRef.current?.querySelector(settleTarget);
+    if (el) {
+      pulse(el);
+    } else {
+      // The target can be MOMENTARILY absent here even though it exists in
+      // the authored SVG: this same keypress also changed `value`, which
+      // re-renders StagedFigure, which — a confirmed, if not fully
+      // root-caused, React behavior in this app — can reset and then
+      // self-heal the dangerouslySetInnerHTML subtree (StagedFigure.tsx's
+      // `reconcile` comment). That self-heal runs off a MutationObserver
+      // microtask; this passive effect can run before it. One rAF retry
+      // (which always fires after any pending microtask) is enough.
+      rafId = requestAnimationFrame(() => {
+        const retryEl = containerRef.current?.querySelector(settleTarget);
+        if (retryEl) pulse(retryEl);
+      });
+    }
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, config, value]);
 

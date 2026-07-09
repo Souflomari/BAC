@@ -145,6 +145,28 @@ function applyStepVisibility(svg: string, visibleSteps: number): string {
  *
  * Exported for StagedFigure.tsx — single source (LESSON-EXPERIENCE-SPEC §2.3).
  */
+/**
+ * The cropped viewBox VALUE (not the full attribute) for showing N of
+ * totalPanels vertically-stacked panels. Exported so StagedFigure's DOM
+ * patch effect can call `svgEl.setAttribute("viewBox", ...)` directly on
+ * the live element (regimes-uc), sharing the exact math with the
+ * string-level applyViewBoxCrop below rather than duplicating it.
+ */
+export function cropViewBoxValue(
+  existingViewBox: string,
+  visiblePanels: number,
+  totalPanels: number
+): string {
+  const parts = existingViewBox.trim().split(/[\s,]+/);
+  if (parts.length !== 4) return existingViewBox; // can't parse
+  const [minX, minY, w, h] = parts.map(Number);
+  const panelH = h / totalPanels;
+  // Buffer: 4% of a single panel — clears bottom border, won't reveal next panel
+  const buffer = panelH * 0.04;
+  const croppedH = (visiblePanels / totalPanels) * h + buffer;
+  return `${minX} ${minY} ${w} ${croppedH}`;
+}
+
 export function applyViewBoxCrop(
   svg: string,
   visiblePanels: number,
@@ -153,16 +175,7 @@ export function applyViewBoxCrop(
   if (visiblePanels >= totalPanels) return svg; // nothing to crop
   return svg.replace(
     /viewBox="([^"]+)"/,
-    (_, existing: string) => {
-      const parts = existing.trim().split(/[\s,]+/);
-      if (parts.length !== 4) return `viewBox="${existing}"`; // can't parse
-      const [minX, minY, w, h] = parts.map(Number);
-      const panelH = h / totalPanels;
-      // Buffer: 4% of a single panel — clears bottom border, won't reveal next panel
-      const buffer = panelH * 0.04;
-      const croppedH = (visiblePanels / totalPanels) * h + buffer;
-      return `viewBox="${minX} ${minY} ${w} ${croppedH}"`;
-    }
+    (_, existing: string) => `viewBox="${cropViewBoxValue(existing, visiblePanels, totalPanels)}"`
   );
 }
 

@@ -1011,6 +1011,45 @@ h3:hover .heading-anchor,
   }
 }
 
+/* ── Stage-group reveal (StagedFigure.tsx, all staged figures) ───────────────
+   Replaces the old "re-inject the whole SVG string, new step group pops in
+   at full opacity instantly" contract. StagedFigure now patches the live
+   SVG subtree directly: a newly-revealed group gets `.stage-group-enter`
+   (removed after the animation via `animationend`, so it doesn't replay on
+   later re-renders); a group falling below the current stage gets
+   `.stage-group-exit` before removal (`transitionend`-gated, `setTimeout`
+   fallback — same idiom as this file's print listener); groups behind the
+   current stage carry `.stage-group-dim` (opacity 0.55, animates in/out via
+   the plain `.stage-group` transition — covers both dimming on advance and
+   undimming on "Précédent"). Reuses --duration-standard/--duration-micro/
+   --ease-between only (no new tokens) — DESIGN-BIBLE calm-core discipline. */
+.stage-group {
+  transition: opacity var(--duration-standard) var(--ease-between);
+}
+.stage-group-dim {
+  opacity: 0.55;
+}
+.stage-group-exit {
+  opacity: 0;
+  transition: opacity var(--duration-micro) var(--ease-between);
+}
+.stage-group-enter {
+  animation: stage-group-enter var(--duration-standard) cubic-bezier(0, 0, 0.2, 1);
+}
+@keyframes stage-group-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage-group-enter {
+    animation: none;
+  }
+  .stage-group,
+  .stage-group-exit {
+    transition: none;
+  }
+}
+
 /* ── pulse-settle-once (interactive-figures, racines-unite pilot) ────────────
    A ONE-SHOT, non-looping micro-affordance for a manipulable figure landing
    back on its own worked example (docs/design/INTERACTIVE-FIGURE-SPEC.md) —
