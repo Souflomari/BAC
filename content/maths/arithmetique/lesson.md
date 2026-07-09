@@ -12,6 +12,8 @@ Avant de lire la suite, prends position : possible ou impossible ? Si tu penses 
 
 Voici une suite qui fonctionne. Remplis le bidon de 3 L, verse-le entièrement dans le bidon de 5 L : il reste alors 2 L de place dans le grand bidon. Vide le bidon de 3 L, puis remplis-le à nouveau. Verse ce nouveau contenu dans le bidon de 5 L, jusqu'à ce que celui-ci soit plein — cela ne prend que 2 des 3 litres, puisqu'il ne restait que 2 L de place. Il reste alors, dans le bidon de 3 L, exactement $3 - 2 = 1$ litre.
 
+[[figure:bidons-3-5]]
+
 Ça marche. Mais est-ce un coup de chance, ou est-ce que n'importe quelle paire de bidons permettrait le même genre de tour ? Essaie avec un bidon de 4 L et un bidon de 6 L : peux-tu, cette fois, obtenir 1 litre ?
 
 Tu vas buter sur quelque chose de systématique : avec 4 et 6, toute quantité que tu peux fabriquer est un multiple de 2 (2 L, 4 L, 6 L, 8 L, ...) — jamais 1 L. Ce n'est pas un hasard.
@@ -71,6 +73,8 @@ Pour $-157$ divisé par $12$, attention au piège : le reste doit rester **posit
 $$-157 = 12 \times (-14) + 11$$
 
 Vérification : $12 \times (-14) = -168$, et $-168 + 11 = -157$. ✓ Et $0 \leq 11 < 12$. Le quotient est $-14$ (pas $-13$) précisément parce que le reste doit être choisi dans $[0, 12)$ et non centré autour de zéro.
+
+[[figure:division-euclidienne-droite]]
 
 ---
 
@@ -256,6 +260,8 @@ On obtient $18 = 252 \times 4 + 198 \times (-5)$ : les coefficients de Bézout s
 
 Ce mécanisme — remonter l'algorithme d'Euclide ligne par ligne, en substituant à chaque étape — fonctionne toujours, quels que soient $a$ et $b$ : c'est exactement pour ça que le théorème est vrai pour toute paire d'entiers, pas seulement pour cet exemple.
 
+[[figure:bezout-remontee]]
+
 ### Retour aux bidons
 
 La paire $(3,5)$ du R0 admet, par ce même mécanisme, l'écriture $3 \times 2 + 5 \times (-1) = 1$ (vérifie-le : $6 - 5 = 1$). Et c'est précisément la manœuvre effectuée avec les bidons : remplir le bidon de 3 L **deux fois** ($u=2$), et transvaser de façon à retirer l'équivalent d'**un** bidon de 5 L ($v=-1$). Le théorème de Bézout n'est pas qu'une formule abstraite — il décrit exactement, en une seule égalité, la manipulation physique qui marche.
@@ -360,6 +366,8 @@ $$\mathrm{PGCD}(360, 252) = 2^{\min(3,2)} \times 3^{\min(2,2)} = 2^2 \times 3^2 
 
 **Vérification par l'algorithme d'Euclide** (R3), sur ces deux mêmes nombres : $360 = 252 \times 1 + 108$ ; $252 = 108 \times 2 + 36$ ; $108 = 36 \times 3 + 0$. Dernier reste non nul : $36$. Les deux méthodes, complètement différentes dans leur mécanisme, donnent exactement le même résultat — ce qui n'est pas un hasard, mais une confirmation croisée utile chaque fois que tu as un doute sur un calcul.
 
+[[figure:factorisation-360]]
+
 ---
 
 ## R7 — Équations diophantiennes : résoudre $ax + by = c$
@@ -431,6 +439,8 @@ $$252(8+11t) + 198(-10-14t) = 2016 + 2772t - 1980 - 2772t$$
 $$= 2016 + 2772t - 1980 - 2772t = 36$$
 
 Les termes en $t$ s'annulent exactement — ce n'est pas un hasard : $252 \times 11 = 2772$ et $198 \times 14 = 2772$ sont égaux par construction, puisque $252 \times b' = 252 \times \frac{198}{18} = \frac{252 \times 198}{18}$ et $198 \times a' = 198 \times \frac{252}{18} = \frac{198 \times 252}{18}$ sont littéralement la même quantité.
+
+[[figure:solutions-diophantiennes-reseau]]
 
 ---
 

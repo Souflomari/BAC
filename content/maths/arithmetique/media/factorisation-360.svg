@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 760" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Arbre de décomposition de 360 : on pèle le plus petit facteur premier à chaque étape (2, 2, 2, 3, 3, 5), les feuilles se regroupent en 360 = 2 puissance 3 fois 3 puissance 2 fois 5. En comparant avec 252 = 2 puissance 2 fois 3 puissance 2 fois 7, les puissances minimales communes donnent PGCD(360,252) = 2 puissance 2 fois 3 puissance 2 = 36, confirmant l'algorithme d'Euclide du R3.">
+  <title>Décomposition de 360 en facteurs premiers, puis PGCD(360, 252) par les puissances minimales</title>
+  <!--
+    factorisation-360.svg — StagedFigure, R6 de arithmetique/lesson.md.
+    Style de famille : reprend la grammaire de arbre-denombrement.svg
+    (palette --figure-* uniquement, classes .fXX, IBM Plex Sans).
+
+    step-1 : l'arbre entier — on pèle le plus petit facteur premier à
+             chaque niveau : 360 -> 2x180 -> 2x90 -> 2x45 -> 3x15 -> 3x5,
+             feuilles 2,2,2,3,3,5.
+    step-2 : on collecte les feuilles : 360 = 2^3 x 3^2 x 5.
+    step-3 : le payoff — 252 = 2^2 x 3^2 x 7 posé à côté ; les puissances
+             minimales communes (2^2, 3^2) donnent PGCD(360,252) = 36,
+             confirmé contre l'algorithme d'Euclide (R3).
+
+    Arbre "en peigne" : à chaque niveau, un nœud composite se scinde en
+    une FEUILLE (premier pelé, à gauche) et un NŒUD composite (le
+    quotient restant, à droite, qui continue à se scinder) — jusqu'à ce
+    que le dernier niveau donne deux feuilles (3 et 5).
+  -->
+
+  <style>
+    .f-edge   { stroke: var(--figure-ink-soft); stroke-width: 1.6; fill: none; }
+    .f-node   { fill: var(--figure-surface); stroke: var(--figure-ink); stroke-width: 1.6; }
+    .f-leaf   { fill: var(--figure-accent); fill-opacity: 0.16; stroke: var(--figure-accent); stroke-width: 1.6; }
+    .f-nlabel { font: 700 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); text-anchor: middle; }
+    .f-llabel { font: 700 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); text-anchor: middle; }
+  </style>
+
+  <rect width="650" height="760" fill="var(--figure-surface)"/>
+
+  <text x="325" y="24" text-anchor="middle" font-size="13.5" font-weight="700"
+        fill="var(--figure-ink)">Décomposer 360 — puis retrouver un PGCD déjà connu</text>
+
+  <!-- ══════════════ Étape 1 : l'arbre entier ══════════════ -->
+  <g id="step-1">
+    <line class="f-edge" x1="150" y1="60"  x2="70"  y2="120"/>
+    <line class="f-edge" x1="150" y1="60"  x2="230" y2="120"/>
+    <line class="f-edge" x1="230" y1="140" x2="150" y2="200"/>
+    <line class="f-edge" x1="230" y1="140" x2="310" y2="200"/>
+    <line class="f-edge" x1="310" y1="220" x2="230" y2="280"/>
+    <line class="f-edge" x1="310" y1="220" x2="390" y2="280"/>
+    <line class="f-edge" x1="390" y1="300" x2="310" y2="360"/>
+    <line class="f-edge" x1="390" y1="300" x2="470" y2="360"/>
+    <line class="f-edge" x1="470" y1="380" x2="390" y2="440"/>
+    <line class="f-edge" x1="470" y1="380" x2="550" y2="440"/>
+
+    <circle class="f-node" cx="150" cy="60" r="26"/>
+    <text class="f-nlabel" x="150" y="65">360</text>
+
+    <circle class="f-leaf" cx="70" cy="120" r="20"/>
+    <text class="f-llabel" x="70" y="125">2</text>
+    <circle class="f-node" cx="230" cy="120" r="24"/>
+    <text class="f-nlabel" x="230" y="125">180</text>
+
+    <circle class="f-leaf" cx="150" cy="200" r="20"/>
+    <text class="f-llabel" x="150" y="205">2</text>
+    <circle class="f-node" cx="310" cy="200" r="24"/>
+    <text class="f-nlabel" x="310" y="205">90</text>
+
+    <circle class="f-leaf" cx="230" cy="280" r="20"/>
+    <text class="f-llabel" x="230" y="285">2</text>
+    <circle class="f-node" cx="390" cy="280" r="24"/>
+    <text class="f-nlabel" x="390" y="285">45</text>
+
+    <circle class="f-leaf" cx="310" cy="360" r="20"/>
+    <text class="f-llabel" x="310" y="365">3</text>
+    <circle class="f-node" cx="470" cy="360" r="24"/>
+    <text class="f-nlabel" x="470" y="365">15</text>
+
+    <circle class="f-leaf" cx="390" cy="440" r="20"/>
+    <text class="f-llabel" x="390" y="445">3</text>
+    <circle class="f-leaf" cx="550" cy="440" r="20"/>
+    <text class="f-llabel" x="550" y="445">5</text>
+  </g>
+
+  <!-- ══════════════ Étape 2 : collecte des feuilles ══════════════ -->
+  <g id="step-2">
+    <line x1="70" y1="480" x2="70" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="150" y1="480" x2="150" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="230" y1="480" x2="230" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="310" y1="480" x2="310" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="390" y1="480" x2="390" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="550" y1="480" x2="550" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+
+    <rect x="150" y="520" width="380" height="46" rx="9" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="340" y="550" text-anchor="middle" font-size="19" font-weight="700" fill="var(--figure-ink)">360 = 2<tspan
+          dy="-6" font-size="12">3</tspan><tspan dy="6"> &#215; 3</tspan><tspan dy="-6" font-size="12">2</tspan><tspan dy="6"> &#215; 5</tspan></text>
+  </g>
+
+  <!-- ══════════════ Étape 3 : le payoff — comparer à 252, puissances minimales ══════════════ -->
+  <g id="step-3">
+    <line x1="60" y1="592" x2="590" y2="592" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="325" y="616" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">252 (déjà décomposé au R3) posé à côté :</text>
+
+    <text x="150" y="646" text-anchor="end" font-size="15" fill="var(--figure-ink)">360 =</text>
+    <text x="150" y="678" text-anchor="end" font-size="15" fill="var(--figure-ink)">252 =</text>
+
+    <!-- colonne du 2 : commun, puissance minimale mise en avant -->
+    <rect x="165" y="626" width="80" height="66" rx="8" fill="var(--figure-accent)" fill-opacity="0.14"/>
+    <text x="205" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink)">2<tspan dy="-5" font-size="10">3</tspan></text>
+    <text x="205" y="678" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-accent)">2<tspan dy="-5" font-size="10">2</tspan></text>
+
+    <!-- colonne du 3 : commun, puissances égales -->
+    <rect x="265" y="626" width="80" height="66" rx="8" fill="var(--figure-accent)" fill-opacity="0.14"/>
+    <text x="305" y="646" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-accent)">3<tspan dy="-5" font-size="10">2</tspan></text>
+    <text x="305" y="678" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-accent)">3<tspan dy="-5" font-size="10">2</tspan></text>
+
+    <!-- colonnes du 5 et du 7 : non communes, atténuées -->
+    <text x="405" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.6">5</text>
+    <text x="405" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.35">&#8212;</text>
+    <text x="465" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.35">&#8212;</text>
+    <text x="465" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.6">7</text>
+    <text x="435" y="702" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">non communs — n'entrent pas dans le PGCD</text>
+
+    <rect x="120" y="718" width="410" height="30" rx="7" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="325" y="739" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--figure-ink)">PGCD(360, 252) = 2<tspan
+          dy="-5" font-size="9">2</tspan><tspan dy="5"> &#215; 3</tspan><tspan dy="-5" font-size="9">2</tspan><tspan dy="5"> = 36  (&#8801; Euclide, R3)</tspan></text>
+  </g>
+
+</svg>
