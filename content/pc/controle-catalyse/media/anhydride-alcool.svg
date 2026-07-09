@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 620"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Réaction d'un anhydride d'acide avec un alcool : formule développée de l'anhydride R-CO-O-CO-R et de l'alcool R'-OH avec leurs sites réactifs repérés (pont C-O-C, groupe O-H), la réorganisation des liaisons (le pont se rompt, une nouvelle liaison ester se forme avec l'oxygène de l'alcool, l'hydrogène est transféré vers l'oxygène restant), puis les produits obtenus : l'ester R-CO-O-R' portant l'oxygène de l'alcool, et l'acide carboxylique R-COOH — sous-produit qui n'est pas de l'eau, dans une réaction totale.">
+  <title>Anhydride + alcool → ester + acide carboxylique</title>
+  <!--
+    anhydride-alcool.svg — STAGED (LESSON-EXPERIENCE-SPEC §2.5, geste
+    d'enseignement : « on regarde d'abord les réactifs, puis on regarde ce
+    qui bouge, puis on regarde ce qu'on obtient »). Trois panneaux empilés
+    verticalement, un par étape — la même convention de bandes que
+    regimes-uc.svg, mais chaque bande porte ici un schéma structural
+    indépendant plutôt qu'une courbe.
+
+    step-1 (bande 1, y=0..206)   : les réactifs, sites réactifs repérés —
+      l'anhydride R-CO-O-CO-R (formule semi-développée : R, R' condensés,
+      groupe fonctionnel C/O/H explicite) avec son pont C-O-C central
+      encerclé en accent (« la liaison qui va se rompre ») ; l'alcool
+      R'-OH avec son oxygène marqué d'un disque accent (l'atome qu'on va
+      suivre jusque dans l'ester) et sa liaison O-H flaguée en accent
+      (l'hydrogène qui va être transféré).
+    step-2 (bande 2, y=206..412) : la réorganisation des liaisons — vue
+      zoomée sur le cœur réactif seulement (pas les groupes R, pour
+      n'ajouter que le trait essentiel). La liaison pont O-C2 est
+      pointillée ink-soft (« se rompt ») ; deux flèches courbes en
+      pointillé accent montrent (a) le nouvel oxygène de l'alcool qui se
+      lie au carbone C2 (future liaison ester) et (b) l'hydrogène de
+      l'alcool qui migre vers l'oxygène du pont (qui, lui, reste lié à
+      C1 — jamais rompu). Rien ne part sous forme d'eau : l'oxygène du
+      pont ne fait qu'échanger son second voisin (C2 → H).
+    step-3 (bande 3, y=412..620) : les produits, annotés — l'ester
+      R-CO-O-R' (l'oxygène issu de l'alcool, même disque accent qu'à
+      l'étape 1, pour suivre visuellement cet atome) et l'acide
+      R-COOH (le groupe -OH provient du pont, qui a gagné l'hydrogène
+      transféré) ; deux bandeaux de lecture : « réaction totale (τ = 1) »
+      et « sous-produit = acide, pas d'eau ».
+
+    Simplification assumée (déclarée) : ce schéma trace un bilan de
+    liaisons (quelle liaison casse, quelle liaison se forme, quel atome
+    va où), pas un mécanisme réactionnel complet à flèches d'électrons
+    (hors programme de ce chapitre — le texte ne parle jamais
+    d'intermédiaire tétraédrique). Les groupes R et R' restent
+    génériques, condensés, cohérents avec la façon dont le rung R1 les
+    écrit lui-même ($R-CO-O-CO-R$, $R'-OH$).
+
+    Rôle des couleurs (une seule couleur distinctive, --figure-accent) :
+      pont C-O-C de l'anhydride (étape 1, à repérer)      : accent
+      oxygène de l'alcool, suivi jusque dans l'ester       : accent (disque)
+      liaison O-H de l'alcool (le H qui part)              : accent
+      nouvelle liaison (ester) et transfert de H (étape 2) : accent, pointillé
+      liaison qui se rompt (étape 2)                       : ink-soft, pointillé
+      squelette moléculaire, bandeaux de lecture           : ink / ink-soft
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les réactifs, sites réactifs repérés
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">1. Les réactifs — sites réactifs repérés</text>
+
+    <rect x="20" y="30" width="600" height="165" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Anhydride : R1-C1(=O1)-Obr-C2(=O2)-R2 -->
+    <text x="130" y="122" font-size="15" font-style="italic" fill="var(--figure-ink)">R</text>
+    <line x1="145" y1="118" x2="177" y2="118" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="183" y="122" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="179" y1="106" x2="179" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="187" y1="106" x2="187" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="183" y="68" font-size="13" fill="var(--figure-ink)">O</text>
+
+    <line x1="191" y1="118" x2="221" y2="118" stroke="var(--figure-accent)" stroke-width="2"/>
+    <circle cx="235" cy="118" r="14" fill="var(--figure-accent)" fill-opacity="0.15"
+            stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="3,2"/>
+    <text x="235" y="122" text-anchor="middle" font-size="14" font-weight="600" fill="var(--figure-accent)">O</text>
+    <line x1="249" y1="118" x2="279" y2="118" stroke="var(--figure-accent)" stroke-width="2"/>
+
+    <text x="289" y="122" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="285" y1="106" x2="285" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="293" y1="106" x2="293" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="289" y="68" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="297" y1="118" x2="329" y2="118" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="337" y="122" font-size="15" font-style="italic" fill="var(--figure-ink)">R</text>
+
+    <!-- Repère : le pont C-O-C -->
+    <line x1="235" y1="132" x2="235" y2="146" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="235" y="160" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">pont C–O–C : la liaison</text>
+    <text x="235" y="172" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">qui va se rompre</text>
+
+    <text x="371" y="122" text-anchor="middle" font-size="18" fill="var(--figure-ink)">+</text>
+
+    <!-- Alcool : R'-O-H -->
+    <text x="401" y="122" font-size="15" fill="var(--figure-ink)"
+          ><tspan font-style="italic">R</tspan><tspan dy="-4" font-size="10">′</tspan></text>
+    <line x1="418" y1="118" x2="446" y2="118" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="459" cy="118" r="12" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <text x="459" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-accent)">O</text>
+    <line x1="471" y1="118" x2="495" y2="118" stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="503" y="122" font-size="14" fill="var(--figure-ink)">H</text>
+
+    <text x="459" y="150" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">O de l'alcool — à suivre</text>
+    <text x="459" y="162" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">jusque dans l'ester</text>
+    <text x="503" y="150" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">H : transférable</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la réorganisation des liaisons (cœur réactif,
+       vue zoomée)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="320" y="226" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">2. La réorganisation des liaisons</text>
+
+    <rect x="20" y="236" width="600" height="165" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- C1(=O1) — reste lié à Obr tout du long -->
+    <text x="200" y="330" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="196" y1="318" x2="196" y2="288" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="204" y1="318" x2="204" y2="288" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="200" y="280" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="208" y1="326" x2="236" y2="326" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="248" y="330" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">(liaison conservée)</text>
+
+    <!-- Obr, en transition -->
+    <circle cx="250" cy="326" r="14" fill="var(--figure-accent)" fill-opacity="0.12"
+            stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="250" y="330" text-anchor="middle" font-size="14" font-weight="600" fill="var(--figure-accent)">O</text>
+
+    <!-- liaison Obr-C2 qui se rompt -->
+    <line x1="264" y1="326" x2="298" y2="326" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="3,3"/>
+    <text x="281" y="316" text-anchor="middle" font-size="13" fill="var(--figure-ink-soft)">✕</text>
+    <text x="281" y="356" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">liaison qui se rompt</text>
+
+    <!-- C2(=O2) -->
+    <text x="310" y="330" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="306" y1="318" x2="306" y2="288" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="314" y1="318" x2="314" y2="288" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="310" y="280" font-size="13" fill="var(--figure-ink)">O</text>
+
+    <!-- Fragment alcool entrant : O(accent)-R' en haut, H en bas -->
+    <circle cx="460" cy="284" r="12" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <text x="460" y="288" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-accent)">O</text>
+    <line x1="472" y1="280" x2="496" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="504" y="266" font-size="14" fill="var(--figure-ink)"
+          ><tspan font-style="italic">R</tspan><tspan dy="-4" font-size="10">′</tspan></text>
+    <line x1="460" y1="296" x2="460" y2="322" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="460" y="336" text-anchor="middle" font-size="13" fill="var(--figure-ink)">H</text>
+
+    <!-- Nouvelle liaison (ester) : O(alcool) → C2 -->
+    <path d="M448,286 Q380,250 316,318" fill="none" stroke="var(--figure-accent)"
+          stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-accent-1)"/>
+    <text x="380" y="238" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">nouvelle liaison (ester)</text>
+
+    <!-- Transfert de H vers Obr -->
+    <path d="M450,332 Q355,372 262,332" fill="none" stroke="var(--figure-accent)"
+          stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-accent-2)"/>
+    <text x="356" y="386" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">H transféré (pas d'eau formée)</text>
+
+    <defs>
+      <marker id="arrow-accent-1" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-accent)"/>
+      </marker>
+      <marker id="arrow-accent-2" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-accent)"/>
+      </marker>
+    </defs>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — les produits, annotés
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="320" y="432" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">3. Les produits</text>
+
+    <rect x="20" y="442" width="600" height="165" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Ester : R2-C2(=O2)-O(alcool)-R' -->
+    <text x="60" y="510" font-size="15" font-style="italic" fill="var(--figure-ink)">R</text>
+    <line x1="75" y1="506" x2="103" y2="506" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="110" y="510" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="106" y1="494" x2="106" y2="466" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="114" y1="494" x2="114" y2="466" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="110" y="458" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="118" y1="506" x2="146" y2="506" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <circle cx="159" cy="506" r="12" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <text x="159" y="510" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-accent)">O</text>
+
+    <line x1="171" y1="506" x2="197" y2="506" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="205" y="510" font-size="15" fill="var(--figure-ink)"
+          ><tspan font-style="italic">R</tspan><tspan dy="-4" font-size="10">′</tspan></text>
+    <text x="140" y="536" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">ester — porte l'oxygène de l'alcool</text>
+
+    <text x="248" y="510" text-anchor="middle" font-size="18" fill="var(--figure-ink)">+</text>
+
+    <!-- Acide : R1-C1(=O1)-OH -->
+    <text x="278" y="510" font-size="15" font-style="italic" fill="var(--figure-ink)">R</text>
+    <line x1="293" y1="506" x2="321" y2="506" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="328" y="510" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="324" y1="494" x2="324" y2="466" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="332" y1="494" x2="332" y2="466" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="328" y="458" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="336" y1="506" x2="364" y2="506" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="372" y="510" font-size="14" fill="var(--figure-ink)">OH</text>
+    <text x="345" y="536" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">acide carboxylique</text>
+
+    <!-- Bandeaux de lecture -->
+    <rect x="60" y="552" width="230" height="34" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="175" y="574" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-accent)">réaction totale (τ = 1)</text>
+
+    <rect x="330" y="552" width="230" height="34" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="445" y="574" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">sous-produit = acide, pas d'eau</text>
+  </g><!-- /step-3 -->
+
+</svg>

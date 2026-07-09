@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La vallée de stabilité dans le plan (Z, N) : le nombre de neutrons N en fonction du nombre de protons Z, avec la droite de référence N = Z. La bande des noyaux stables suit N ≈ Z pour les noyaux légers puis s'incurve vers N > Z pour les noyaux plus lourds — ancrée par le carbone 12 (Z=6, N=6, sur la droite N=Z) et le chlore 37 (Z=17, N=20, au-dessus). Deux noyaux instables tombent hors de la bande : le carbone 14 (Z=6, N=8), juste au-dessus, et le tritium (Z=1, N=2), hors de la vallée bien qu'il soit l'un des noyaux les plus légers qui existent.">
+  <title>La vallée de stabilité — le plan (Z, N)</title>
+  <!--
+    vallee-stabilite.svg — diagramme STRUCTUREL STATIQUE, chart de
+    nucléides dans le plan (Z,N). STAGED (LESSON-EXPERIENCE-SPEC §2.5) :
+    "chart de positions" suit le même ordre canonique qu'un graphe —
+    axes → données → lecture.
+      step-1 : axes (Z horizontal, N vertical) + droite de référence N=Z
+      step-2 : la bande des noyaux stables (données) + deux ancres réelles
+               (¹²C sur N=Z, ³⁷Cl au-dessus)
+      step-3 : lecture — ¹⁴C et le tritium ³H tombent hors de la bande ;
+               légende stable/instable ; encadré de synthèse
+
+    Géométrie (calculée, pas devinée) :
+      origine (Z=0,N=0) : (x0,y0) = (80,350)
+      échelle Z : x = 80 + 25·Z    (25 px / proton)
+      échelle N : y = 350 − 13·N   (13 px / neutron)
+      Vérifications :
+        ¹²C  (Z=6,N=6)   → x=230, y=350−78=272
+        ¹⁴C  (Z=6,N=8)   → x=230, y=350−104=246
+        ³H   (Z=1,N=2)   → x=105, y=350−26=324
+        ³⁷Cl (Z=17,N=20) → x=505, y=350−260=90
+
+    La bande de stabilité est un RUBAN calculé (pas une bézier devinée) :
+    centre(Z) = Z + 0,01·Z² (dérive lente vers N>Z, réaliste pour Z≤~20 —
+    le programme du bac ne demande pas de représenter les noyaux très
+    lourds ici, R2 traite ce cas séparément et schématiquement) ;
+    demi-largeur(Z) = 0,25 + 0,12·Z neutrons (le corridor de stabilité
+    s'élargit avec Z, ce qui est physiquement vrai : à Z=1 seuls 2
+    isotopes sont stables, contre plusieurs à Z=17). Le polygone ci-dessous
+    relie les bornes basse (Z=0→17) puis haute (Z=17→0) de ce ruban, aux
+    pas Z=0,2,4,…,16,17, chaque point calculé depuis ces deux formules puis
+    converti en pixels par les échelles ci-dessus — jamais un tracé à main
+    levée.
+
+    Vérification des trois faits pédagogiques (par construction, pas par
+    ajustement visuel après coup) :
+      ¹²C  (272)  est À L'INTÉRIEUR du ruban à Z=6 (bornes 254,7–279,9)
+        — proche du bord bas, cohérent avec "sur la droite N=Z".
+      ¹⁴C  (246)  est AU-DESSUS du ruban à Z=6 (borne haute 254,7)
+        — 8,7 px hors bande : "juste hors de la vallée".
+      ³H   (324)  est AU-DESSUS du ruban à Z=1 (borne haute ≈332,1)
+        — hors bande dès Z=1, où le ruban est le plus étroit : le
+        tritium n'a que 3 nucléons et est pourtant hors de la vallée
+        (le texte flottant porte cette insistance, la géométrie seule
+        ne peut pas exagérer une vraie petite différence de N sans
+        mentir sur les proportions — même principe de refus de la
+        fausse échelle que defaut-masse.svg).
+
+    Rôle des couleurs (identique à decroissance-courbe.svg / tangente-tau.svg) :
+      axes, droite N=Z, "0" : --figure-ink-soft (chrome neutre)
+      bande de stabilité, points ¹²C/³⁷Cl, étiquettes courtes accolées
+        (¹²C, ³⁷Cl, ¹⁴C, ³H) : --figure-accent (le sujet de la figure)
+      étiquettes flottantes explicatives (« juste hors de la vallée »,
+        légende, encadré de synthèse) : --figure-ink / boîte de synthèse
+        en accent (même convention que courbe-aston.svg : le texte
+        d'accompagnement est ink, un encadré-loi reste accent)
+      noyau stable = disque plein ; noyau instable = anneau (disque +
+        trou --figure-surface) — même codage par FORME que le marqueur
+        « désintégré » de population-aleatoire.motion.svg de cette même
+        leçon, pas une couleur supplémentaire.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    La vallée de stabilité — le plan (Z, N)
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <g id="step-1">
+    <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="354" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">Z</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">N</text>
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Droite de référence N = Z, de l'origine à (Z=19,N=19) -->
+    <line x1="80" y1="350" x2="555" y2="103"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="6,4"/>
+    <text x="515" y="118" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">N = Z</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- La bande de stabilité — ruban calculé, voir le détail en tête de fichier -->
+    <path d="M80,350 L130,329.85 L180,305.41 L230,279.93 L280,253.41 L330,225.85
+             L380,197.25 L430,167.61 L480,136.93 L505,121.2
+             L505,61.66 L480,80.51 L430,117.43 L380,153.31 L330,188.15
+             L280,221.95 L230,254.71 L180,286.43 L130,317.11 L80,346.75 Z"
+          fill="var(--figure-accent)" fill-opacity="0.16"
+          stroke="var(--figure-accent)" stroke-opacity="0.35" stroke-width="1.2"/>
+    <text x="355" y="175" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">vallée de stabilité</text>
+
+    <!-- ¹²C (Z=6,N=6) — sur la droite N=Z, à l'intérieur de la bande -->
+    <circle cx="230" cy="272" r="3.6" fill="var(--figure-accent)"/>
+    <text x="238" y="269" font-size="10" fill="var(--figure-accent)"><tspan
+          dy="-5" font-size="7.5">12</tspan><tspan dy="5">C</tspan></text>
+
+    <!-- ³⁷Cl (Z=17,N=20) — plus lourd, au-dessus de N=Z, dans la bande -->
+    <circle cx="505" cy="90" r="3.6" fill="var(--figure-accent)"/>
+    <text x="513" y="87" font-size="10" fill="var(--figure-accent)"><tspan
+          dy="-5" font-size="7.5">37</tspan><tspan dy="5">Cl</tspan></text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- ¹⁴C (Z=6,N=8) — anneau (instable), juste au-dessus de la bande -->
+    <circle cx="230" cy="246" r="4.2" fill="var(--figure-accent)"/>
+    <circle cx="230" cy="246" r="1.7" fill="var(--figure-surface)"/>
+    <line x1="230" y1="246" x2="258" y2="222"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="264" y="220" font-size="10" fill="var(--figure-accent)"><tspan
+          dy="-5" font-size="7.5">14</tspan><tspan dy="5">C</tspan></text>
+    <text x="264" y="233" font-size="9" fill="var(--figure-ink)">juste hors de la vallée</text>
+
+    <!-- ³H, le tritium (Z=1,N=2) — anneau (instable), hors bande même à Z=1 -->
+    <circle cx="105" cy="324" r="4.2" fill="var(--figure-accent)"/>
+    <circle cx="105" cy="324" r="1.7" fill="var(--figure-surface)"/>
+    <line x1="105" y1="324" x2="150" y2="285"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="156" y="283" font-size="10"><tspan
+          fill="var(--figure-accent)" dy="-5" font-size="7.5">3</tspan><tspan
+          fill="var(--figure-accent)" dy="5">H</tspan><tspan
+          fill="var(--figure-ink)"> (tritium)</tspan></text>
+    <text x="156" y="297" font-size="9" fill="var(--figure-ink)">hors de la vallée, même très léger !</text>
+
+    <!-- Encadré de synthèse -->
+    <rect x="390" y="270" width="225" height="40" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="502.5" y="286" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">hors de la vallée de stabilité</text>
+    <text x="502.5" y="302" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">= instable = radioactif</text>
+
+    <!-- Légende stable/instable — codage par forme -->
+    <circle cx="410" cy="322" r="5" fill="var(--figure-accent)"/>
+    <text x="422" y="326" font-size="9.5" fill="var(--figure-ink)">noyau stable (dans la vallée)</text>
+    <circle cx="410" cy="340" r="5" fill="var(--figure-accent)"/>
+    <circle cx="410" cy="340" r="2" fill="var(--figure-surface)"/>
+    <text x="422" y="344" font-size="9.5" fill="var(--figure-ink)">noyau instable (hors la vallée)</text>
+  </g><!-- /step-3 -->
+
+</svg>

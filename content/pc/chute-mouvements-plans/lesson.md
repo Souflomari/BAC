@@ -70,6 +70,8 @@ $$9{,}8\,t - 4{,}9\,t^2 = 0 \implies t\,(9{,}8 - 4{,}9\,t) = 0 \implies t = 0 \ 
 
 Remarque ce qui vient de se produire : $t_{sol} = 2{,}0\ \text{s}$ est exactement **le double** de $t_{sommet} = 1{,}0\ \text{s}$. La montée et la descente prennent rigoureusement le même temps. Ce n'est pas une coïncidence de cet exemple précis — c'est une conséquence directe de la forme parabolique de $y(t)$, et on va retrouver exactement cette même symétrie, avec les mêmes noms, dans le mouvement à deux dimensions du rung suivant.
 
+[[figure:symetrie-montee-descente]]
+
 ---
 
 ## R2 — Le mécanisme : la 2e loi de Newton décompose le mouvement en deux axes indépendants

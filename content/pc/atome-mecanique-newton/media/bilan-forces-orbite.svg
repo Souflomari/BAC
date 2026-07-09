@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" width="700" height="500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Modèle planétaire de l'atome : une orbite circulaire de rayon r autour du noyau (plus Z e) sur laquelle se trouve l'électron (moins e). Le vecteur vitesse v est tangent à la trajectoire, perpendiculaire au rayon. L'accélération centripète a indice N, égale à v au carré sur r, part de l'électron vers le noyau. La force de Coulomb F indice C, égale à k fois e au carré sur r au carré, est colinéaire à cette accélération et de même sens : la deuxième loi de Newton donne k e au carré sur r au carré égale m indice e fois v au carré sur r.">
+  <title>Le modèle planétaire : de la vitesse à la force de Coulomb</title>
+  <!--
+    bilan-forces-orbite.svg — figure STAGED (4 étapes), cœur du R2.
+    Géométrie calculée, pas devinée :
+      C (noyau) = (280, 270). R = 150. E (électron) = C + (R, 0) = (430, 270)
+      — l'électron est placé au point le plus à droite du cercle, où la
+      tangente est EXACTEMENT verticale (vérifié : à x = 430 = cx+R, le
+      cercle (x-280)²+(y-270)²=150² n'a qu'une seule solution, y = 270 —
+      donc une droite verticale en x = 430 est tangente au cercle en E et
+      reste hors du disque pour tout autre y). C'est ce qui permet de
+      tracer v strictement vertical, exactement tangent, sans calcul
+      d'angle supplémentaire.
+
+      v (étape 2) : tangente en E, sens direct (trigonométrique, vers le
+      haut de l'écran) — hampe (430,270)→(430,175), pointe en (430,163).
+
+      a_N et F_C (étapes 3-4) : tous deux dirigés de E vers C (vers le
+      noyau), donc tous deux horizontaux à cette position — pour les
+      distinguer sans qu'ils se recouvrent, ils sont tracés sur deux
+      parallèles à la droite EC, décalées symétriquement de ∓18 px
+      (a_N au-dessus, y=252 ; F_C en-dessous, y=288) : un compromis
+      graphique assumé (la vraie droite d'action commune est le segment r
+      lui-même, y=270), qui rend visible qu'ils sont colinéaires et de
+      même sens sans que les deux flèches se superposent exactement.
+
+      Aucune valeur physique n'est attachée aux longueurs des vecteurs
+      (figure conceptuelle, comme vecteur-vitesse-tangente.svg) : v, a_N
+      et F_C sont trois grandeurs de nature et d'unités différentes, leurs
+      longueurs ne codent donc aucune échelle commune — pas de disclosure
+      d'échelle nécessaire.
+
+    Étapes (geste d'enseignement — reprend l'ordre du texte de R2) :
+      (1) la géométrie : orbite, noyau (+Ze), électron (−e), le rayon r.
+      (2) la vitesse v, tangente au cercle, perpendiculaire à r.
+      (3) l'accélération centripète a_N = v²/r, de l'électron vers le noyau.
+      (4) la force de Coulomb F_C = k·e²/r², colinéaire à a_N — la
+          deuxième loi de Newton ferme le bilan : k·e²/r² = m_e·v²/r.
+
+    Rôle des couleurs :
+      cercle (orbite), noyau, électron, segment r et leurs étiquettes :
+        --figure-ink (géométrie de fond, fixe d'une étape à l'autre)
+      v, a_N, F_C, leurs étiquettes et la formule finale encadrée :
+        --figure-accent (le contrat de rendu : accent = la chaîne
+        cinématique/dynamique que R2 construit, du vecteur vitesse jusqu'à
+        l'égalité de la deuxième loi de Newton)
+  -->
+
+  <rect width="700" height="500" fill="var(--figure-surface)"/>
+
+  <!-- Titre (permanent) -->
+  <text x="350" y="26" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le modèle planétaire : de la vitesse à la force de Coulomb
+  </text>
+
+  <g id="step-1">
+    <!-- Orbite -->
+    <circle cx="280" cy="270" r="150" fill="none" stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <!-- Noyau, au centre -->
+    <circle cx="280" cy="270" r="6" fill="var(--figure-ink)"/>
+    <text x="280" y="300" text-anchor="middle" font-size="14" fill="var(--figure-ink)">+<tspan font-style="italic">Ze</tspan></text>
+
+    <!-- Électron, sur le cercle -->
+    <circle cx="430" cy="270" r="5" fill="var(--figure-ink)"/>
+    <text x="444" y="258" font-size="14" fill="var(--figure-ink)">−<tspan font-style="italic">e</tspan></text>
+
+    <!-- Rayon, du noyau à l'électron -->
+    <line x1="280" y1="270" x2="430" y2="270" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="310" y="260" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-ink)">r</text>
+  </g>
+
+  <g id="step-2">
+    <!-- v : tangente en E, verticale, sens direct -->
+    <line x1="430" y1="270" x2="430" y2="175" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <polygon points="430,163 425,175 435,175" fill="var(--figure-accent)"/>
+    <text x="442" y="172" font-size="15" font-style="italic" fill="var(--figure-accent)">v</text>
+  </g>
+
+  <g id="step-3">
+    <!-- a_N : de l'électron vers le noyau, décalée au-dessus de r -->
+    <line x1="430" y1="252" x2="350" y2="252" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <polygon points="338,252 350,247 350,257" fill="var(--figure-accent)"/>
+    <text x="384" y="234" text-anchor="middle" font-size="13.5" fill="var(--figure-accent)"><tspan font-style="italic">a</tspan><tspan dy="3" font-size="70%" font-style="normal">N</tspan><tspan dy="-3" font-style="normal"> = </tspan><tspan font-style="italic">v</tspan><tspan dy="-6" font-size="65%" font-style="normal">2</tspan><tspan dy="6" font-style="normal">/</tspan><tspan font-style="italic">r</tspan></text>
+  </g>
+
+  <g id="step-4">
+    <!-- F_C : de l'électron vers le noyau, décalée sous r, colinéaire à a_N -->
+    <line x1="430" y1="288" x2="350" y2="288" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <polygon points="338,288 350,283 350,293" fill="var(--figure-accent)"/>
+    <text x="384" y="306" text-anchor="middle" font-size="13.5" fill="var(--figure-accent)"><tspan font-style="italic">F</tspan><tspan dy="3" font-size="70%" font-style="normal">C</tspan><tspan dy="-3" font-style="normal"> = k·</tspan><tspan font-style="italic">e</tspan><tspan dy="-6" font-size="65%" font-style="normal">2</tspan><tspan dy="6" font-style="normal">/</tspan><tspan font-style="italic">r</tspan><tspan dy="-6" font-size="65%" font-style="normal">2</tspan></text>
+
+    <!-- Formule finale : la deuxième loi de Newton ferme le bilan -->
+    <rect x="200" y="435" width="300" height="42" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="350" y="461" text-anchor="middle" font-size="15" fill="var(--figure-accent)"><tspan font-style="italic">k</tspan><tspan font-style="normal"> </tspan><tspan font-style="italic">e</tspan><tspan dy="-6" font-size="65%" font-style="normal">2</tspan><tspan dy="6" font-style="normal">/</tspan><tspan font-style="italic">r</tspan><tspan dy="-6" font-size="65%" font-style="normal">2</tspan><tspan dy="6" font-style="normal"> = </tspan><tspan font-style="italic">m</tspan><tspan dy="3" font-size="70%" font-style="normal">e</tspan><tspan dy="-3" font-style="italic"> v</tspan><tspan dy="-6" font-size="65%" font-style="normal">2</tspan><tspan dy="6" font-style="normal">/</tspan><tspan font-style="italic">r</tspan></text>
+  </g>
+
+</svg>

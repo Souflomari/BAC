@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 660"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les trois types de catalyse : homogène (catalyseur et réactifs mélangés dans une seule phase liquide) ; hétérogène (catalyseur solide Pt/Pd/Rh, réactifs gazeux qui s'adsorbent, réagissent puis se désorbent à sa surface) ; enzymatique (une enzyme au site actif de forme spécifique, un seul substrat qui s'y ajuste puis en ressort clivé, l'enzyme intacte — modèle clé-serrure).">
+  <title>Les trois visages de la catalyse</title>
+  <!--
+    trois-catalyses.svg — STAGED (LESSON-EXPERIENCE-SPEC §2.5), un
+    panneau/type par étape (consigne du brief), empilés verticalement
+    (même convention de bandes que regimes-uc.svg).
+
+    step-1 (bande 1, y=0..220)   : catalyse HOMOGÈNE — une seule boîte de
+      phase (le milieu liquide unique) contenant réactifs (points
+      ink-soft) et catalyseur (points accent) mélangés, sans séparation.
+    step-2 (bande 2, y=220..440) : catalyse HÉTÉROGÈNE — un bloc solide
+      (Pt/Pd/Rh) ; des molécules gazeuses (ink) s'adsorbent (flèches vers
+      le bloc), réagissent en surface (marque accent), puis les produits
+      (accent) se désorbent (flèches partant du bloc).
+    step-3 (bande 3, y=440..660) : catalyse ENZYMATIQUE — modèle
+      clé-serrure, deux instantanés côte à côte dans le même panneau :
+      « avant » (enzyme au site actif vide, substrat qui s'approche) et
+      « après » (site à nouveau vide, produits clivés qui s'éloignent,
+      enzyme inchangée).
+
+    Simplification assumée (déclarée) : l'enzyme est schématisée par une
+    ellipse portant une encoche (cercle de la couleur du fond, superposé
+    au bord de l'ellipse, pour simuler un site actif creusé) — pas une
+    structure protéique réaliste, hors de portée du programme.
+
+    Rôle des couleurs (une seule couleur distinctive, --figure-accent) :
+      catalyseur (les trois types), réaction/produits, ce qui est
+      spécifique au mécanisme montré : accent
+      réactifs, structure neutre (bloc solide, enzyme, béchers) : ink / ink-soft
+      fonds de panneau : --figure-surface / --figure-grid
+  -->
+
+  <defs>
+    <marker id="tc-arrow" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-ink-soft)"/>
+    </marker>
+    <marker id="tc-arrow-accent" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-accent)"/>
+    </marker>
+  </defs>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — catalyse HOMOGÈNE
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">1. Catalyse homogène</text>
+
+    <!-- La boîte de phase : un seul milieu -->
+    <rect x="140" y="46" width="360" height="130" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Réactifs, mêlés au catalyseur -->
+    <circle cx="180" cy="86"  r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="230" cy="136" r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="284" cy="72"  r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="342" cy="152" r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="404" cy="92"  r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="454" cy="132" r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="200" cy="158" r="5" fill="var(--figure-ink-soft)"/>
+    <circle cx="424" cy="66"  r="5" fill="var(--figure-ink-soft)"/>
+
+    <!-- Catalyseur, dissous dans la même phase -->
+    <circle cx="255" cy="100" r="6" fill="var(--figure-accent)"/>
+    <circle cx="352" cy="78"  r="6" fill="var(--figure-accent)"/>
+    <circle cx="312" cy="150" r="6" fill="var(--figure-accent)"/>
+    <circle cx="460" cy="108" r="6" fill="var(--figure-accent)"/>
+
+    <!-- Légende -->
+    <circle cx="222" cy="195" r="5" fill="var(--figure-ink-soft)"/>
+    <text x="234" y="199" font-size="10.5" fill="var(--figure-ink-soft)">réactif</text>
+    <circle cx="342" cy="195" r="6" fill="var(--figure-accent)"/>
+    <text x="356" y="199" font-size="10.5" fill="var(--figure-accent)">catalyseur (même phase)</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — catalyse HÉTÉROGÈNE
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="320" y="240" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">2. Catalyse hétérogène</text>
+
+    <rect x="140" y="256" width="360" height="140" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Bloc catalyseur solide -->
+    <rect x="170" y="340" width="300" height="34" rx="4"
+          fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <text x="320" y="362" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-surface)">Pt / Pd / Rh (solide)</text>
+
+    <!-- Molécules gazeuses qui s'adsorbent -->
+    <circle cx="200" cy="288" r="5" fill="var(--figure-ink)"/>
+    <line x1="200" y1="294" x2="200" y2="337" stroke="var(--figure-ink-soft)" stroke-width="1.3" marker-end="url(#tc-arrow)"/>
+    <text x="200" y="316" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">adsorption</text>
+
+    <circle cx="250" cy="278" r="5" fill="var(--figure-ink)"/>
+    <line x1="250" y1="284" x2="250" y2="337" stroke="var(--figure-ink-soft)" stroke-width="1.3" marker-end="url(#tc-arrow)"/>
+
+    <!-- Réaction en surface -->
+    <text x="288" y="360" text-anchor="middle" font-size="13" fill="var(--figure-accent)">✱</text>
+    <text x="288" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-accent)">réaction en surface</text>
+
+    <!-- Produits qui se désorbent -->
+    <line x1="400" y1="337" x2="400" y2="290" stroke="var(--figure-accent)" stroke-width="1.3" marker-end="url(#tc-arrow-accent)"/>
+    <circle cx="400" cy="280" r="5" fill="var(--figure-accent)"/>
+    <line x1="440" y1="337" x2="440" y2="280" stroke="var(--figure-accent)" stroke-width="1.3" marker-end="url(#tc-arrow-accent)"/>
+    <circle cx="440" cy="270" r="5" fill="var(--figure-accent)"/>
+    <text x="420" y="312" text-anchor="middle" font-size="8.5" fill="var(--figure-accent)">désorption</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — catalyse ENZYMATIQUE (clé-serrure)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="320" y="460" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">3. Catalyse enzymatique (clé-serrure)</text>
+
+    <rect x="20" y="476" width="600" height="168" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- AVANT : enzyme + substrat qui s'approche -->
+    <ellipse cx="165" cy="565" rx="55" ry="42" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <circle cx="212" cy="565" r="17" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="212" y="528" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">site actif</text>
+    <line x1="212" y1="533" x2="212" y2="550" stroke="var(--figure-ink-soft)" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+    <rect x="255" y="551" width="28" height="28" rx="6" fill="var(--figure-accent)" fill-opacity="0.75"
+          stroke="var(--figure-accent)" stroke-width="1.2" transform="rotate(45 269 565)"/>
+    <line x1="252" y1="565" x2="226" y2="565" stroke="var(--figure-accent)" stroke-width="1.6" marker-end="url(#tc-arrow-accent)"/>
+    <text x="269" y="598" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">substrat</text>
+    <text x="165" y="618" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">enzyme</text>
+
+    <!-- Flèche de séquence -->
+    <text x="335" y="571" text-anchor="middle" font-size="20" fill="var(--figure-ink-soft)">→</text>
+
+    <!-- APRÈS : site à nouveau vide, produits clivés, enzyme intacte -->
+    <ellipse cx="455" cy="565" rx="55" ry="42" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <circle cx="502" cy="565" r="17" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.3"/>
+
+    <line x1="512" y1="555" x2="545" y2="540" stroke="var(--figure-accent)" stroke-width="1.4" marker-end="url(#tc-arrow-accent)"/>
+    <circle cx="558" cy="533" r="9" fill="var(--figure-accent)" fill-opacity="0.75" stroke="var(--figure-accent)" stroke-width="1.1"/>
+    <line x1="512" y1="575" x2="545" y2="590" stroke="var(--figure-accent)" stroke-width="1.4" marker-end="url(#tc-arrow-accent)"/>
+    <circle cx="558" cy="597" r="9" fill="var(--figure-accent)" fill-opacity="0.75" stroke="var(--figure-accent)" stroke-width="1.1"/>
+
+    <text x="455" y="618" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">enzyme, intacte</text>
+    <text x="575" y="565" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">produits</text>
+    <text x="575" y="577" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">(clivé)</text>
+  </g><!-- /step-3 -->
+
+</svg>

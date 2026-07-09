@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" width="640" height="460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le paradoxe du rayonnement : d'abord l'orbite circulaire stable de rayon r prédite par la seule mécanique de Newton, l'électron sur le cercle et le noyau (plus Z e) au centre ; puis des ondes électromagnétiques concentriques émanant de l'électron, représentant le rayonnement continu d'énergie qu'impose l'électromagnétisme classique à toute charge accélérée ; enfin la trajectoire en spirale de l'électron, de rayon décroissant sur deux tours et demi, s'enroulant depuis l'orbite initiale jusqu'au noyau, où elle s'effondre en une fraction de nanoseconde.">
+  <title>Le paradoxe du rayonnement : de l'orbite stable à l'effondrement</title>
+  <!--
+    spirale-rayonnement.svg — figure STAGED (3 étapes), cœur du R3.
+    Reprend la géométrie de base de bilan-forces-orbite.svg (R2) : même
+    disposition (électron au point le plus à droite du cercle), rayons
+    différents par nécessité de mise en page (C, R propres à cette figure).
+
+    Géométrie (calculée, pas devinée) :
+      C (noyau) = (260, 260). R = 130. E (électron, étape 1) = (390, 260).
+
+      Étape 2 — ondes rayonnées : trois arcs concentriques centrés en E,
+      ouverts vers l'extérieur (demi-angle 35° de part et d'autre de l'axe
+      horizontal), rayons 22 / 40 / 58 px. Approximation en Bézier
+      quadratique, même technique que moment-force.svg (point de contrôle
+      sur la bissectrice, à distance r/cos(35°) du centre E) :
+        r=22 : départ (408.02,272.62) → contrôle (416.86,260) → arrivée (408.02,247.38)
+        r=40 : départ (422.77,282.94) → contrôle (438.83,260) → arrivée (422.77,237.06)
+        r=58 : départ (437.51,293.27) → contrôle (460.80,260) → arrivée (437.51,226.73)
+      Opacité décroissante (0.9 / 0.6 / 0.35) vers l'extérieur : suggère les
+      ondes déjà propagées, sans dégradé de couleur (variation d'opacité
+      sur un seul token --figure-accent, pas de <linearGradient>).
+
+      Étape 3 — spirale d'effondrement : point de départ = E (même position
+      que l'électron des étapes 1-2, sur le cercle de rayon R = 130), point
+      d'arrivée = C (le noyau), rayon décroissant LINÉAIREMENT avec l'angle
+      balayé, sur 2,5 tours complets (θ de 0° à 900°, sens direct — même
+      sens que v en étape 2 de bilan-forces-orbite.svg) :
+        r(θ) = R · (1 − θ/900°),  position = C + r(θ)·(cos θ, −sin θ)
+      Échantillonnée tous les 30° (31 points, k = 0..30, θ_k = 30·k°),
+      reliés par des segments droits (stroke-linejoin="round" : lisse assez
+      à cette échelle pour un pas de 30°) — tableau de valeurs (x,y),
+      vérifié : k=0 → (390.00,260.00) = E exactement ; k=30 → (260.00,260.00)
+      = C exactement (r=0). Aucune valeur physique (durée réelle) n'est
+      encodée dans la géométrie : la spirale est conceptuelle, comme
+      vecteur-vitesse-tangente.svg — seule la forme (rayon qui décroît en
+      s'enroulant) porte l'idée ; le temps réel (une fraction de nanoseconde)
+      est donné en toutes lettres dans le texte, pas dans une échelle de
+      figure.
+
+    Étapes (geste d'enseignement — reprend l'ordre du texte de R3) :
+      (1) l'orbite stable héritée de R2 — ce que la mécanique seule prédit.
+      (2) le rayonnement électromagnétique continu émis par l'électron,
+          charge accélérée en permanence (résultat de l'électromagnétisme,
+          hors mécanique).
+      (3) la conséquence : la trajectoire s'enroule vers le noyau, où elle
+          s'effondre en une fraction de nanoseconde.
+
+    Rôle des couleurs :
+      cercle (orbite), noyau, électron, segment r et leur étiquette :
+        --figure-ink (géométrie de fond, la même qu'en R2 — rien de neuf ici)
+      arcs de rayonnement, spirale, étiquettes de ces deux étapes :
+        --figure-accent (le contrat de rendu : accent = ce que la mécanique
+        SEULE ne prédit pas — le rayonnement et sa conséquence)
+  -->
+
+  <rect width="640" height="460" fill="var(--figure-surface)"/>
+
+  <!-- Titre (permanent) -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le paradoxe du rayonnement : de l'orbite stable à l'effondrement
+  </text>
+
+  <g id="step-1">
+    <!-- Orbite stable, héritée de R2 -->
+    <circle cx="260" cy="260" r="130" fill="none" stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <!-- Noyau, au centre -->
+    <circle cx="260" cy="260" r="6" fill="var(--figure-ink)"/>
+    <text x="260" y="290" text-anchor="middle" font-size="14" fill="var(--figure-ink)">+<tspan font-style="italic">Ze</tspan></text>
+
+    <!-- Électron, sur le cercle -->
+    <circle cx="390" cy="260" r="5" fill="var(--figure-ink)"/>
+    <text x="390" y="244" text-anchor="middle" font-size="14" fill="var(--figure-ink)">−<tspan font-style="italic">e</tspan></text>
+
+    <!-- Rayon -->
+    <line x1="260" y1="260" x2="390" y2="260" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="325" y="250" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-ink)">r</text>
+  </g>
+
+  <g id="step-2">
+    <!-- Ondes électromagnétiques concentriques émanant de l'électron -->
+    <path d="M 408.02,272.62 Q 416.86,260 408.02,247.38" fill="none" stroke="var(--figure-accent)" stroke-width="2" opacity="0.9"/>
+    <path d="M 422.77,282.94 Q 438.83,260 422.77,237.06" fill="none" stroke="var(--figure-accent)" stroke-width="2" opacity="0.6"/>
+    <path d="M 437.51,293.27 Q 460.80,260 437.51,226.73" fill="none" stroke="var(--figure-accent)" stroke-width="2" opacity="0.35"/>
+
+    <text x="475" y="248" font-size="12.5" fill="var(--figure-accent)">
+      <tspan x="475" dy="0">rayonnement (onde EM),</tspan>
+      <tspan x="475" dy="16">perte d'énergie continue</tspan>
+    </text>
+  </g>
+
+  <g id="step-3">
+    <!-- Spirale d'effondrement : de E (rayon R) au noyau C (rayon 0), 2,5 tours -->
+    <path d="M 390.00,260.00 L 368.83,197.17 L 320.67,154.91 L 260.00,143.00 L 203.67,162.43 L 166.18,205.83 L 156.00,260.00 L 173.69,309.83 L 212.33,342.55 L 260.00,351.00 L 303.33,335.06 L 331.30,301.17 L 338.00,260.00 L 323.80,223.16 L 294.67,199.95 L 260.00,195.00 L 229.67,207.46 L 211.21,231.83 L 208.00,260.00 L 218.71,283.84 L 238.33,297.53 L 260.00,299.00 L 277.33,290.02 L 286.27,275.17 L 286.00,260.00 L 278.77,249.16 L 268.67,244.99 L 260.00,247.00 L 255.67,252.49 L 256.25,257.83 L 260.00,260.00"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"
+          stroke-linejoin="round" stroke-linecap="round"/>
+
+    <text x="260" y="425" text-anchor="middle" font-size="13" fill="var(--figure-accent)">effondrement : une fraction de nanoseconde</text>
+  </g>
+
+</svg>

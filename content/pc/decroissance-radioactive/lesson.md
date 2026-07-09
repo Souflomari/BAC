@@ -54,6 +54,8 @@ Avant de continuer, teste l'idée qu'on vient de poser. Beaucoup d'élèves reti
 
 Compare-le à ses cousins stables : $^{1}_{1}\text{H}$ (1 proton, 0 neutron) et $^{2}_{1}\text{H}$, le deutérium (1 proton, 1 neutron), tous deux stables. Le tritium a deux fois plus de neutrons que de protons — un rapport $N/Z = 2$, alors que ses cousins stables ont $N/Z = 0$ et $N/Z = 1$. Pour un noyau aussi léger, ce rapport est déjà trop déséquilibré : la règle « gros = instable » est fausse, prise seule — un noyau de seulement 3 nucléons peut très bien être instable si son rapport $N/Z$ s'écarte trop de la vallée de stabilité. Ce qui compte, ce n'est pas la taille seule : c'est la position par rapport à la vallée de stabilité, et cette position dépend du rapport $N/Z$, pas du nombre brut de nucléons.
 
+[[figure:vallee-stabilite]]
+
 ---
 
 ## R2 — Les désintégrations α, β⁻, β⁺, γ et les lois de conservation (Soddy)
@@ -128,6 +130,8 @@ Après une désintégration $\alpha$ ou $\beta$, le noyau fils est très souvent
 $$^{A}_{Z}\text{Y}^{*} \longrightarrow \ ^{A}_{Z}\text{Y} + \gamma$$
 
 Remarque ce qui ne change PAS ici : ni $A$ ni $Z$. Le rayonnement $\gamma$ ne transforme pas un noyau en un autre noyau — il ne fait que relâcher de l'énergie. C'est le même noyau, avant et après, juste moins excité. C'est pour ça que $\gamma$ n'apparaît jamais seul en tête d'une désintégration : il accompagne, en second temps, une désintégration $\alpha$ ou $\beta$ qui a laissé le noyau fils dans un état excité. Le cobalt 60, par exemple, se désintègre $\beta^-$ vers du nickel 60 excité, qui relâche ensuite l'excédent d'énergie par $\gamma$ — c'est ce rayonnement $\gamma$ du cobalt 60 qui est utilisé en radiothérapie.
+
+[[figure:desintegrations-nz]]
 
 ### Vérifie ta compréhension avant de continuer
 
@@ -306,6 +310,8 @@ Cette formule est la clé de toute datation radioactive : mesure la proportion r
 Tant qu'un organisme est vivant (une plante, un arbre, un animal), il renouvelle en permanence son carbone en échangeant avec son environnement, ce qui maintient la proportion de carbone 14 dans ses tissus à une valeur d'équilibre à peu près constante — appelons-la la référence $N_0$ (ou l'activité de référence $A_0$).
 
 À la mort de l'organisme, les échanges s'arrêtent. Le carbone 14 déjà présent continue de désintégrer, comme on l'a vu au R2 ($^{14}_{6}\text{C} \to \ ^{14}_{7}\text{N} + \ ^{0}_{-1}\text{e}$), mais il n'est plus renouvelé : sa quantité (et donc son activité) décroît désormais selon $N(t) = N_0 e^{-\lambda t}$, où $t$ est compté depuis la mort. En mesurant aujourd'hui l'activité restante $A(t)$ d'un échantillon (un morceau de bois, un os) et en la comparant à l'activité de référence $A_0$ d'un organisme vivant, on remonte au temps écoulé depuis la mort — c'est-à-dire l'âge de l'échantillon.
+
+[[figure:datation-c14]]
 
 ---
 

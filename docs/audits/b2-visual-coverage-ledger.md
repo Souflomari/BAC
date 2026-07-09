@@ -42,7 +42,7 @@ rule, carried forward here).
 | M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
-| P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | judged (12 STAGE / 12 DECLINE), build in progress |
+| P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
@@ -296,5 +296,31 @@ rule, carried forward here).
 
 **Wave P1 judgment tally: 12 STAGE / 12 DECLINE** (24 chapters judged).
 
-**Build:** in progress.
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| aspects-energetiques | ec-parabole | R1 | 3 |
+| aspects-energetiques | travail-force-signe | R2 | 4 |
+| aspects-energetiques | plan-incline-travaux | R5 | 3 |
+| atome-mecanique-newton | bilan-forces-orbite | R2 | 4 |
+| atome-mecanique-newton | spirale-rayonnement | R3 | 3 |
+| chute-mouvements-plans | symetrie-montee-descente | R1 | 3 |
+| controle-catalyse | anhydride-alcool | R1 | 3 |
+| controle-catalyse | trois-catalyses | R3 | 3 |
+| controle-catalyse | savon-amphiphile | R4 | 3 |
+| decroissance-radioactive | vallee-stabilite | R1 | 3 |
+| decroissance-radioactive | desintegrations-nz | R2 | 5 |
+| decroissance-radioactive | datation-c14 | R5 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×5 (decroissance-radioactive's grep hits were false positives: `#decay-batch-1` etc. are SVG element ID references inside a pre-existing, untouched motion-figure comment, not colors)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail (used `fuser -k 4173/tcp` before restart per the M2 lesson learned — no stale-server recurrence)
+- screenshot spot-check (light+dark) — `decroissance-radioactive` R2 `desintegrations-nz`: all 5 stages read clearly, β⁻/β⁺ opposite-vector confrontation visible. `controle-catalyse` R3 `trois-catalyses`: three-panel phase classification (homogène/hétérogène/enzymatique) renders cleanly both themes
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 18/47 lessons done, 110/266 chapters judged, 57 STAGE / 53 DECLINE.**
 

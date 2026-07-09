@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 420" width="650" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Graphe de l'énergie cinétique Ec en fonction de la vitesse v, pour une bille de masse 0,20 kilogramme : la courbe Ec = 0,10 v² tracée pour v de 0 à 5 mètres par seconde, avec deux points marqués, (2,0 ; 0,40) et (4,0 ; 1,6), montrant que doubler la vitesse quadruple l'énergie cinétique et ne la double pas.">
+  <title>Ec = 0,10 v² — doubler v quadruple Ec, ne le double pas</title>
+  <!--
+    ec-parabole.svg — figure STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 : un
+    graphe est TOUJOURS stagé, ordre canonique axes -> données -> lecture),
+    3 étapes, cœur du rung R1.
+
+    Exemple numérique repris EXACTEMENT du texte (R1) : m = 0,20 kg,
+    Ec = ½ m v² = 0,10 v² (m en kg, v en m/s, Ec en J).
+      v = 2,0 m/s -> Ec = 0,10 × 2,0² = 0,40 J
+      v = 4,0 m/s -> Ec = 0,10 × 4,0² = 1,6  J   (×4, pas ×2)
+
+    Repère écran (calculé, pas deviné) : origine (v=0,Ec=0) en pixel
+    (90,350). Échelle ISOTROPE en unités d'affichage : 100 px par unité de
+    v (m/s) ET 100 px par unité de Ec (J) — un choix arbitraire de mise en
+    page (comme rl-schema.svg / i-etablissement.svg ont chacune leur propre
+    échelle px-par-grandeur), qui a l'avantage de faire tomber v=5 -> px=590
+    et Ec=2,5 -> py=100 sur des nombres ronds.
+      px = 90 + 100·v      py = 350 − 100·Ec
+
+    Points de la courbe Ec = 0,10 v² (pas = 0,25 m/s, v de 0 à 5) :
+      v=0,00 Ec=0,000   -> (90.0 , 350.0)
+      v=0,25 Ec=0,00625 -> (115.0, 349.4)
+      v=0,50 Ec=0,025   -> (140.0, 347.5)
+      v=0,75 Ec=0,05625 -> (165.0, 344.4)
+      v=1,00 Ec=0,10    -> (190.0, 340.0)
+      v=1,25 Ec=0,15625 -> (215.0, 334.4)
+      v=1,50 Ec=0,225   -> (240.0, 327.5)
+      v=1,75 Ec=0,30625 -> (265.0, 319.4)
+      v=2,00 Ec=0,40    -> (290.0, 310.0)   ← 1er point lu (step-3)
+      v=2,25 Ec=0,50625 -> (315.0, 299.4)
+      v=2,50 Ec=0,625   -> (340.0, 287.5)
+      v=2,75 Ec=0,75625 -> (365.0, 274.4)
+      v=3,00 Ec=0,90    -> (390.0, 260.0)
+      v=3,25 Ec=1,05625 -> (415.0, 244.4)
+      v=3,50 Ec=1,225   -> (440.0, 227.5)
+      v=3,75 Ec=1,40625 -> (465.0, 209.4)
+      v=4,00 Ec=1,60    -> (490.0, 190.0)   ← 2e point lu (step-3)
+      v=4,25 Ec=1,80625 -> (515.0, 169.4)
+      v=4,50 Ec=2,025   -> (540.0, 147.5)
+      v=4,75 Ec=2,25625 -> (565.0, 124.4)
+      v=5,00 Ec=2,50    -> (590.0, 100.0)
+
+    Droite fantôme (step-3, "si Ec était proportionnelle à v") : choisie
+    pour coïncider EXACTEMENT avec la courbe réelle au premier point lu
+    (v=2,0 ; Ec=0,40), donc de pente 0,40/2,0 = 0,20 :
+      Ec_fantôme(v) = 0,20 v  ->  (90,350) à (590,250)
+      en v=4,0 : Ec_fantôme = 0,80 J (px 490, py=270) très en-dessous de
+      la vraie valeur 1,6 J (py=190) — l'écart EST le point de la figure :
+      l'intuition linéaire "double v -> double Ec" sous-estime radicalement.
+
+    Rôle des couleurs :
+      axes, ticks, grille de lecture       : --figure-ink-soft (chrome)
+      courbe Ec = 0,10 v² (les données)    : --figure-ink (structure)
+      droite fantôme (Ec ∝ v, la fausse intuition) : --figure-ink-soft, fine, pointillée
+      points lus, projections, ticks-accent, boîte ×2/×4 : --figure-accent
+        (LE sujet de cette figure : le carré, pas la proportionnalité)
+  -->
+
+  <!-- Titre -->
+  <text x="325" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    L'énergie cinétique en fonction de la vitesse — E<tspan dy="3" font-size="8.5">c</tspan><tspan dy="-3"> = 0,10 </tspan><tspan font-style="italic">v</tspan><tspan dy="-5" font-size="8.5">2</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes (le repère)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Fond du panneau -->
+    <rect x="20" y="32" width="610" height="370" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axes -->
+    <line x1="90" y1="350" x2="605" y2="350" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="605,350 593,345.5 593,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="350" x2="90" y2="58" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,58 85.5,69 94.5,69" fill="var(--figure-ink-soft)"/>
+
+    <text x="605" y="340" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"
+      ><tspan font-style="italic">v</tspan><tspan> (m/s)</tspan></text>
+    <text x="78" y="52" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"
+      >E<tspan dy="3" font-size="8">c</tspan><tspan dy="-3"> (J)</tspan></text>
+    <text x="78" y="364" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Ticks v = 1..5 -->
+    <line x1="190" y1="350" x2="190" y2="357" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="290" y1="350" x2="290" y2="357" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="390" y1="350" x2="390" y2="357" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="490" y1="350" x2="490" y2="357" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="590" y1="350" x2="590" y2="357" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="190" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">1</text>
+    <text x="290" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">2</text>
+    <text x="390" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">3</text>
+    <text x="490" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">4</text>
+    <text x="590" y="366" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">5</text>
+
+    <!-- Ticks Ec = 0,5..2,5 -->
+    <line x1="83" y1="300" x2="90" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="83" y1="250" x2="90" y2="250" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="83" y1="200" x2="90" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="83" y1="150" x2="90" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="83" y1="100" x2="90" y2="100" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="78" y="303" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0,5</text>
+    <text x="78" y="253" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">1,0</text>
+    <text x="78" y="203" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">1,5</text>
+    <text x="78" y="153" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">2,0</text>
+    <text x="78" y="103" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">2,5</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : la parabole Ec = 0,10 v²
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M90.0,350.0 L115.0,349.4 L140.0,347.5 L165.0,344.4 L190.0,340.0
+      L215.0,334.4 L240.0,327.5 L265.0,319.4 L290.0,310.0 L315.0,299.4
+      L340.0,287.5 L365.0,274.4 L390.0,260.0 L415.0,244.4 L440.0,227.5
+      L465.0,209.4 L490.0,190.0 L515.0,169.4 L540.0,147.5 L565.0,124.4
+      L590.0,100.0
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="497" y="128" text-anchor="start" font-size="12.5" fill="var(--figure-ink)"
+      >E<tspan dy="3" font-size="9">c</tspan><tspan dy="-3"> = 0,10 </tspan><tspan font-style="italic">v</tspan><tspan dy="-5" font-size="9">2</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : deux points, leurs projections,
+       la droite fantôme, et l'annonce ×2 / ×4
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Droite fantôme : "si Ec était proportionnelle à v" -->
+    <line x1="90" y1="350" x2="590" y2="250"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <text x="452" y="272" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">(si E<tspan
+      dy="2.5" font-size="6.5">c</tspan><tspan dy="-2.5"> ∝ v — faux)</tspan></text>
+
+    <!-- Point 1 : v = 2,0 m/s, Ec = 0,40 J -->
+    <line x1="290" y1="310" x2="290" y2="350" stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <line x1="90" y1="310" x2="290" y2="310" stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <circle cx="290" cy="310" r="3.5" fill="var(--figure-accent)"/>
+    <line x1="286" y1="310" x2="294" y2="310" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="60" y="313" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-accent)">0,40</text>
+    <line x1="290" y1="346" x2="290" y2="354" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="290" y="384" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">2,0</text>
+
+    <!-- Point 2 : v = 4,0 m/s, Ec = 1,6 J -->
+    <line x1="490" y1="190" x2="490" y2="350" stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <line x1="90" y1="190" x2="490" y2="190" stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <circle cx="490" cy="190" r="3.5" fill="var(--figure-accent)"/>
+    <line x1="486" y1="190" x2="494" y2="190" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="60" y="193" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-accent)">1,6</text>
+    <line x1="490" y1="346" x2="490" y2="354" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="490" y="384" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">4,0</text>
+
+    <!-- Boîte ×2 / ×4 -->
+    <rect x="110" y="55" width="340" height="72" rx="8" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="280" y="74" text-anchor="middle" font-size="12.5" fill="var(--figure-accent)"
+      ><tspan font-style="italic">v</tspan><tspan> : 2,0 → 4,0 m/s   (× 2)</tspan></text>
+    <text x="280" y="92" text-anchor="middle" font-size="12.5" fill="var(--figure-accent)"
+      >E<tspan dy="3" font-size="9">c</tspan><tspan dy="-3"> : 0,40 → 1,6 J   (× 4)</tspan></text>
+    <text x="280" y="112" text-anchor="middle" font-size="11" fill="var(--figure-accent)">doubler <tspan font-style="italic">v</tspan><tspan> ne double pas E</tspan><tspan
+      dy="2.5" font-size="8">c</tspan><tspan dy="-2.5"> — ça le quadruple</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

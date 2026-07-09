@@ -42,6 +42,8 @@ Quand un anhydride d'acide rencontre un alcool, il se comporte comme l'acide don
 
 $$R-CO-O-CO-R + R'-OH \rightarrow R-CO-O-R' + R-COOH$$
 
+[[figure:anhydride-alcool]]
+
 Regarde bien les deux différences avec l'estérification classique du chapitre précédent :
 
 - **Une seule flèche, pas une double.** La réaction est **totale** : elle avance jusqu'à épuisement du réactif limitant, sans réaction inverse qui viendrait la ronger. Pas de plafond à $\tau \approx 2/3$ ici — on va jusqu'à $\tau = 1$.
@@ -152,6 +154,8 @@ Une **enzyme** est un catalyseur biologique, une protéine produite par les cell
 
 Exemple concret : l'amylase salivaire catalyse l'hydrolyse de l'amidon, une grosse molécule, en molécules de sucre bien plus petites — une réaction d'hydrolyse, de la même famille que celle qu'on va rencontrer pour les esters au rung suivant, mais ici accélérée par une enzyme plutôt que par un acide ou une base.
 
+[[figure:trois-catalyses]]
+
 ---
 
 ## R4 — L'hydrolyse basique et la saponification
@@ -197,6 +201,8 @@ Regarde de près un ion du savon, $R-COO^-$, avec $R$ une longue chaîne carbon�
 *Ce qu'on cherche ici, et pourquoi ce geste :* pour reconnaître la partie hydrophile et la partie hydrophobe d'un ion carboxylate à longue chaîne, on ne regarde jamais la taille, mais la **charge**. Le bout qui porte la charge $-COO^-$ est toujours l'hydrophile ; la longue chaîne carbonée neutre est toujours l'hydrophobe.
 
 C'est cette double personnalité qui explique le pouvoir lavant du savon. Face à une tache de gras dans l'eau, chaque ion oriente sa queue hydrophobe vers le gras (où elle se plaît) et sa tête hydrophile vers l'eau (où elle se plaît aussi). Les ions savon entourent ainsi les petites gouttes de gras, tête tournée vers l'eau, et les emportent au rinçage. Une molécule qui a un pied dans chaque camp — voilà la relation structure-propriété au cœur du savon.
+
+[[figure:savon-amphiphile]]
 
 ---
 

@@ -83,6 +83,8 @@ En projetant sur la direction normale (vers le centre), et puisque $F_C = k\dfra
 
 $$k\frac{e^2}{r^2} = m_e\frac{v^2}{r}$$
 
+[[figure:bilan-forces-orbite]]
+
 ### Résoudre pour la vitesse $v$
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* isoler $v$ demande d'éliminer $r$ progressivement des deux côtés — on avance une transformation à la fois, pour ne jamais perdre le fil de la résolution.
@@ -148,6 +150,8 @@ Il existe un résultat de l'électromagnétisme (qu'on peut énoncer ici sans le
 Or on vient d'établir en R2 que l'électron, même en mouvement circulaire **uniforme**, possède une accélération non nulle — l'accélération centripète $a_N = v^2/r$, dirigée vers le noyau. L'électron est donc une charge en accélération permanente. D'après ce résultat de l'électromagnétisme, il devrait rayonner de l'énergie électromagnétique en continu.
 
 Cette énergie rayonnée doit venir de quelque part : elle est prélevée sur l'énergie même de l'orbite (l'énergie cinétique et l'énergie potentielle électrique de l'électron). À mesure que l'électron perd de l'énergie, il ne peut plus rester sur une orbite de rayon $r$ constant — il doit se rapprocher du noyau, sur une trajectoire en spirale, de plus en plus vite à mesure qu'il se rapproche (car $v$ augmente quand $r$ diminue, d'après la formule de R2). Les physiciens qui ont fait ce calcul au début du vingtième siècle ont trouvé un résultat saisissant : un tel effondrement, pour un atome d'hydrogène, prendrait, classiquement, une fraction de seconde extrêmement courte — un temps largement inférieur au milliardième de seconde.
+
+[[figure:spirale-rayonnement]]
 
 ### Le paradoxe, formulé clairement
 

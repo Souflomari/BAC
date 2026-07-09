@@ -36,6 +36,8 @@ $$E_c = \frac{1}{2} \times 0{,}20 \times 4{,}0^2 = 1{,}6\ \text{J}$$
 
 $1{,}6$ vaut quatre fois $0{,}40$ — pas deux fois. Retiens ce réflexe : $E_c$ varie comme $v^2$, jamais comme $v$.
 
+[[figure:ec-parabole]]
+
 Cette grandeur va être au centre de toute la leçon : le rung suivant construit l'outil qui relie ses variations aux forces qui s'exercent sur le solide.
 
 ---
@@ -61,6 +63,8 @@ Trois cas à distinguer, selon le signe de $\cos\theta$ :
 - si $\theta = 90^\circ$ exactement (la force est perpendiculaire au déplacement), $\cos\theta = 0$ : le travail est **nul**, la force ne modifie ni n'entretient le mouvement.
 
 Ce dernier cas, tu l'as déjà rencontré sans le nommer. Au chapitre lois de Newton, sur le plan horizontal avec frottement, tu avais remarqué que la réaction normale $\vec{N}$ n'intervenait jamais dans l'accélération horizontale — seules $F$ et $f$ y intervenaient. Voilà pourquoi, en langage énergétique : $\vec{N}$ est perpendiculaire au déplacement (qui reste horizontal, tant que le solide ne décolle pas du plan), donc $W(\vec{N}) = 0$. Une force peut être indispensable à l'équilibre vertical (elle empêche le solide de s'enfoncer dans le sol) sans jamais travailler.
+
+[[figure:travail-force-signe]]
 
 ### Le théorème de l'énergie cinétique — et pourquoi c'est vrai
 
@@ -285,6 +289,8 @@ $$W(\vec{N}) = 0$$
 **Travail du frottement** : $\vec{f}$ s'oppose au sens du mouvement sur toute la distance $d$ :
 
 $$W(\vec{f}) = -f \times d = -2{,}0 \times 2{,}0 = -4{,}0\ \text{J}$$
+
+[[figure:plan-incline-travaux]]
 
 **TEC entre le départ (repos) et le point à $d = 2{,}0\ \text{m}$ :**
 
