@@ -39,7 +39,7 @@ rule, carried forward here).
 
 | Wave | Matière | Lessons | Status |
 |---|---|---|---|
-| M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | pending |
+| M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | judged (16 STAGE / 18 DECLINE), build in progress |
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | pending |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | pending |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
@@ -53,3 +53,49 @@ rule, carried forward here).
 ---
 
 ## Wave log
+
+### Wave M1 — maths: calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| calcul-integral | R0 | DECLINE | predict-first hook, payload delivered by existing R1 figure |
+| calcul-integral | R2 | DECLINE | linearity proved purely symbolically, no load-bearing graph |
+| calcul-integral | R3 | STAGE | `chasles-decoupage-aire` — Chasles area-splitting, graph auto-staged |
+| calcul-integral | R4 | STAGE | `comparaison-aires-nichees` — nested-region comparison, graph |
+| calcul-integral | R5 | STAGE | `inegalite-moyenne-rectangles` — sandwiched-rectangles, graph |
+| calcul-integral | R6 | STAGE | `valeur-moyenne-rectangle` — equal-area flattening, graph |
+| calcul-integral | R7 | DECLINE | IPP is pure symbolic method, no area to read |
+| calcul-integral | R9 | DECLINE | practice chapter, would duplicate R1/R6/R8 gestures |
+| denombrement | R0 | DECLINE | narrative hook, deliberately withholds the count until R2 |
+| denombrement | R2 | STAGE | `p-liste-cadenas` — slot diagram, replacement-invariance gesture |
+| denombrement | R3 | STAGE | `arrangement-reservoir` — depleting-reservoir contrast to R2 |
+| denombrement | R4 | DECLINE | permutation is p=n endpoint of R3's mechanism, no new gesture |
+| denombrement | R6 | STAGE | `triangle-pascal` — triangle built by its own recurrence relation |
+| denombrement | R7 | STAGE | `urne-deux-couleurs` — two-color urn, confronts ET/× misconception |
+| denombrement | R8 | DECLINE | practice chapter, reuses R7's two-pool decomposition |
+| derivabilite-etude-fonctions | R0 | DECLINE | secant/tangent gesture already staged one chapter later at R1 |
+| derivabilite-etude-fonctions | R2 | STAGE | `regle-produit-aire` — product-rule area construction, confronts (uv)'=u'v' misconception |
+| derivabilite-etude-fonctions | R3 | DECLINE | chain rule intuition already stated vividly by gear analogy in prose |
+| derivabilite-etude-fonctions | R5 | STAGE | `etude-fonction-rationnelle` — full-study graph, culminating méthode complète |
+| derivabilite-etude-fonctions | R6 | DECLINE | practice chapter, student produces the table themselves (AttemptFirst) |
+| equations-differentielles | R0 | STAGE | `refroidissement-modeles` — predict-then-reveal, constant-rate vs decay graph |
+| equations-differentielles | R1 | DECLINE | algebraic uniqueness proof, family-of-curves already at R3 |
+| equations-differentielles | R2 | DECLINE | palier-family visualization already carried by R3's existing figure |
+| equations-differentielles | R4 | STAGE | `oscillateur-periode` — period/amplitude read on y''+ω²y=0 solution |
+| equations-differentielles | R5 | STAGE | `rc-charge-decharge` — RC charge/discharge palier contrast |
+| equations-differentielles | R6 | DECLINE | practice chapter, would pre-solve or duplicate R4/R5 |
+| fonction-exponentielle | R0 | DECLINE | predict-first hook, spoils R1's reciprocity reveal |
+| fonction-exponentielle | R1 | STAGE | `exp-reciproque-de-ln` — two-track number-line reciprocity diagram |
+| fonction-exponentielle | R2 | DECLINE | pure algebraic property-building, no structural layers |
+| fonction-exponentielle | R3 | DECLINE | derivative established algebraically, geometry owned by R5 |
+| fonction-exponentielle | R4 | STAGE | `exp-au-dessus-de-x-plus-1` — global inequality e^x ≥ x+1, graph |
+| fonction-exponentielle | R6 | DECLINE | antiderivative pattern-matching, no structural content |
+| fonction-exponentielle | R7 | DECLINE | procedural equation-solving by injectivity |
+| fonction-exponentielle | R8 | STAGE | `etude-f-e-x-plus-x-moins-2` — TVI existence/uniqueness graph |
+
+**Wave M1 judgment tally: 16 STAGE / 18 DECLINE** (34 chapters judged).
+
+**Build:** in progress.
+
