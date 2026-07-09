@@ -356,6 +356,23 @@ export function StagedFigure({
   // re-stamp its bound value onto whatever just got reinserted.
   const mountedRef = useRef(false);
   const pendingExitsRef = useRef(new Map<number, () => void>());
+  // Which step numbers the student has ALREADY watched assemble, independent
+  // of momentary DOM presence — `!el` alone is NOT a safe proxy for "never
+  // revealed": React's own re-render can silently reset this component's
+  // dangerouslySetInnerHTML subtree (see the comment on `reconcile` below),
+  // and on a multi-stage advance (e.g. stage 2→3) that reset can wipe an
+  // ALREADY-SHOWN group out of the DOM microseconds before this SAME
+  // reconcile call runs — which, without this set, re-inserts it exactly
+  // like a fresh reveal and replays its assemble alongside the genuinely
+  // new stage's (a real, reported bug: "step 3 redoes the motion at step
+  // 2"). Seeded with whatever the frozen initial paint already shows, so a
+  // repeated placement that starts pre-revealed never animates its own
+  // history either. Cleared for `n` only when that group's exit actually
+  // `finalize()`s (a real backward stage change, not a self-heal
+  // correction) — so Précédent-then-Suivant deliberately DOES replay the
+  // assemble (the student asked to go back and came forward again; seeing
+  // it build once more is correct there, unlike the reset-driven case).
+  const shownRef = useRef(new Set<number>(Array.from({ length: initialStageClamped }, (_, i) => i + 1)));
 
   // React's `dangerouslySetInnerHTML` prop is NOT reliably inert across
   // re-renders in this app even when the `__html` string is unchanged —
@@ -397,10 +414,11 @@ export function StagedFigure({
             const inserted = svgRoot.querySelector<SVGGElement>(`#step-${n}`);
             if (inserted) {
               inserted.classList.add("stage-group");
-              if (mountedRef.current && !fullyRevealed && !instant) {
+              if (mountedRef.current && !fullyRevealed && !instant && !shownRef.current.has(n)) {
                 assembleGroupChildren(inserted);
               }
             }
+            shownRef.current.add(n);
             structuralChange = true;
           } else {
             const dim = !fullyRevealed && n < stage;
@@ -426,6 +444,7 @@ export function StagedFigure({
             finished = true;
             cleanup();
             pendingExits.delete(n);
+            shownRef.current.delete(n);
             el.remove();
           };
           const onEnd = (e: Event) => {

@@ -749,9 +749,34 @@ try {
     // must be gone from the DOM in one shot (multi-group removal, same
     // reconciliation loop as a single-group Précédent, no special case).
     await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']"); // -> stage 2
-    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    await fpage.waitForTimeout(ASSEMBLE_SETTLE_MS);
+    // Regression guard for a real, reported bug: advancing past an
+    // already-settled group must NEVER replay its assemble (StagedFigure.tsx
+    // used to treat "missing from the DOM" as synonymous with "never
+    // revealed," but React's own dangerouslySetInnerHTML reset can wipe an
+    // ALREADY-SHOWN group microseconds before the SAME reconcile() call that
+    // handles the genuinely-new stage-3 reveal, replaying step-2's build
+    // alongside it). Poll step-2's children continuously through the
+    // stage-3 advance — none should ever dip back below full opacity.
+    await fpage.evaluate(() => {
+      window.__step2NoReplaySamples = [];
+      const start = performance.now();
+      function tick() {
+        const fig = document.querySelector("[data-figure='regimes-uc']");
+        const g = fig?.querySelector("g#step-2");
+        const opacities = Array.from(g?.children ?? []).map((c) => parseFloat(getComputedStyle(c).opacity));
+        window.__step2NoReplaySamples.push(opacities);
+        if (performance.now() - start < 1500) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
     await fpage.click("[data-figure='regimes-uc'] button[aria-label='Étape suivante']"); // -> stage 3 (last)
-    await fpage.waitForTimeout(STAGE_SETTLE_MS);
+    await fpage.waitForTimeout(1600);
+    const step2NoReplay = await fpage.evaluate(() => {
+      const samples = window.__step2NoReplaySamples ?? [];
+      return !samples.some((opacities) => opacities.some((o) => o < 0.99));
+    });
+    await fpage.waitForTimeout(Math.max(0, STAGE_SETTLE_MS - 1600));
     const atLastBeforeReset = await fpage.evaluate(() => {
       const fig = document.querySelector("[data-figure='regimes-uc']");
       return { stage: fig?.getAttribute("data-stage-current"), step3Present: !!fig?.querySelector("g#step-3") };
@@ -810,6 +835,7 @@ try {
     else if (!afterOneAdvance.step3Absent) failures += fail("step-3 group present at stage 2 — advanced too far or absence contract broken");
     else if (afterPrev.stage !== "1") failures += fail(`stage after "Précédent" = ${afterPrev.stage} ≠ "1"`);
     else if (!afterPrev.step2Absent) failures += fail("step-2 group still present after « Précédent » + settle — exit removal broken (real DOM absence regression)");
+    else if (!step2NoReplay) failures += fail("step-2's already-settled children dipped below full opacity while advancing to stage 3 — the assemble animation replayed an already-seen stage (real, reported regression)");
     else if (atLastBeforeReset.stage !== "3" || !atLastBeforeReset.step3Present) failures += fail(`did not reach the last stage cleanly before Recommencer (stage ${atLastBeforeReset.stage}, step3Present=${atLastBeforeReset.step3Present})`);
     else if (afterRecommencer.stage !== "1") failures += fail(`stage after "Recommencer" = ${afterRecommencer.stage} ≠ "1"`);
     else if (!afterRecommencer.step2Absent || !afterRecommencer.step3Absent) failures += fail("« Recommencer » from the last stage did not remove every group above 1 in one shot");
@@ -817,7 +843,7 @@ try {
     else if (printed.anyChildHasEnterClass) failures += fail("print: a fully-revealed batch-inserted child carries .stage-child-enter — should never animate");
     else if (!printed.allChildrenOpaque) failures += fail("print: fully-revealed batch-inserted children are not all opaque — should appear instantly, no stagger");
     else if (!printed.controlsHidden) failures += fail("print: transport controls still visible");
-    else console.log(`  ✓ real DOM absence + thing-by-thing assemble motion (step-2's ${midAssemble.length} children show ${distinctMidOpacities} distinct opacities mid-reveal, all settle + clean up), exit truly removes after settling, Recommencer clears every group in one shot, print reveals all with no animation + hides controls`);
+    else console.log(`  ✓ real DOM absence + thing-by-thing assemble motion (step-2's ${midAssemble.length} children show ${distinctMidOpacities} distinct opacities mid-reveal, all settle + clean up, no replay when advancing to stage 3), exit truly removes after settling, Recommencer clears every group in one shot, print reveals all with no animation + hides controls`);
   }
 
   // (Interactive-figures wave, 2026-07-07) EmbedPanel — same pre-existing
