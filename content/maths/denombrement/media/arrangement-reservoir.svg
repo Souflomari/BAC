@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Podium de 8 coureurs : le réservoir de 8 coureurs se vide place par place — 8 choix pour le 1er, 7 pour le 2e, 6 pour le 3e, chaque coureur placé quittant définitivement le réservoir. Le produit 8 × 7 × 6 = 336 est mis en évidence en bas, avec la réécriture factorielle A huit trois = 8! ÷ 5!.">
+  <title>Podium de 8 coureurs — tirage sans remise, A_n^p</title>
+
+  <!--
+    arrangement-reservoir.svg — R3, "8 coureurs franchissent une ligne
+    d'arrivée […] le podium". Reprend TEL QUEL l'exemple du podium du R3
+    (8 coureurs, 1er/2e/3e, 8×7×6=336, A_8^3 = 8!/5!).
+
+    Figure-sœur de p-liste-cadenas.svg (R2) : MÊME grammaire réservoir →
+    créneaux, volontairement pour faire RIMER visuellement les deux figures
+    — mais ici le réservoir SE VIDE à chaque tirage (sans remise), alors
+    qu'en R2 il reste constant (avec remise). Le contraste est le point
+    pédagogique de la paire R2/R3.
+
+    Rôle des couleurs (5 jetons seulement) :
+      structure (réservoir, podium, coureurs, flèches, libellés) : --figure-ink
+      / --figure-ink-soft / --figure-grid / --figure-surface
+      SEULE emphase : le produit final 8×7×6=336                       : --figure-accent
+    (même discipline "un seul accent, réservé au résultat final" que
+    p-liste-cadenas.svg et les figures R1/R5 déjà en place dans cette leçon.)
+
+    STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2.5) :
+      step-1 : réservoir des 8 coureurs + les 3 places du podium, vides.
+      step-2 : le podium se remplit un coureur à la fois — 3 coureurs
+               marqués "pris" (croix) dans le réservoir, chacun relié par
+               une flèche à sa place, avec le nombre de choix disponible
+               AU MOMENT de ce tirage (8, puis 7, puis 6) ; le réservoir
+               affiche ce qu'il en reste.
+      step-3 : le produit 8×7×6=336 qui compte les podiums, avec la
+               réécriture factorielle A_8^3 = 8! ÷ 5! du texte.
+  -->
+
+  <style>
+    .arr-title      { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .arr-subtitle   { font: 600 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .arr-box        { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .arr-slot       { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .arr-token      { fill: var(--figure-surface); stroke: var(--figure-ink-soft); stroke-width: 1.3; }
+    .arr-tokenlabel { font: 600 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .arr-slotlabel  { font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .arr-slotsub    { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .arr-n          { font: 500 12px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .arr-edge       { stroke: var(--figure-ink-soft); stroke-width: 1.5; fill: none; }
+    .arr-used       { stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .arr-countlabel { font: 600 12px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .arr-poolnote   { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .arr-formhead   { font: 500 12px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .arr-form       { font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .arr-accentbox  { fill: var(--figure-surface); stroke: var(--figure-accent); stroke-width: 1.75; }
+    .arr-accent     { font: 700 16px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le réservoir des 8 coureurs + les 3 places du podium, vides
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text class="arr-title" x="400" y="26">Podium de 8 coureurs — tirage sans remise</text>
+
+    <text class="arr-subtitle" x="145" y="56">Réservoir : 8 coureurs</text>
+    <text class="arr-subtitle" x="525" y="56">Le podium</text>
+
+    <rect class="arr-box" x="50" y="70" width="190" height="150" rx="16"/>
+    <!-- 8 coureurs, 4 colonnes x 2 lignes -->
+    <circle class="arr-token" cx="80"  cy="114" r="14"/><text class="arr-tokenlabel" x="80"  y="118">1</text>
+    <circle class="arr-token" cx="124" cy="114" r="14"/><text class="arr-tokenlabel" x="124" y="118">2</text>
+    <circle class="arr-token" cx="168" cy="114" r="14"/><text class="arr-tokenlabel" x="168" y="118">3</text>
+    <circle class="arr-token" cx="212" cy="114" r="14"/><text class="arr-tokenlabel" x="212" y="118">4</text>
+    <circle class="arr-token" cx="80"  cy="162" r="14"/><text class="arr-tokenlabel" x="80"  y="166">5</text>
+    <circle class="arr-token" cx="124" cy="162" r="14"/><text class="arr-tokenlabel" x="124" y="166">6</text>
+    <circle class="arr-token" cx="168" cy="162" r="14"/><text class="arr-tokenlabel" x="168" y="166">7</text>
+    <circle class="arr-token" cx="212" cy="162" r="14"/><text class="arr-tokenlabel" x="212" y="166">8</text>
+    <text class="arr-n" x="145" y="200">n = 8</text>
+
+    <!-- le podium, vide -->
+    <rect class="arr-slot" x="300" y="105" width="110" height="80" rx="14"/>
+    <text class="arr-slotlabel" x="355" y="138">1<tspan dy="-4" font-size="65%">er</tspan></text>
+    <rect class="arr-slot" x="470" y="105" width="110" height="80" rx="14"/>
+    <text class="arr-slotlabel" x="525" y="138">2<tspan dy="-4" font-size="65%">e</tspan></text>
+    <rect class="arr-slot" x="640" y="105" width="110" height="80" rx="14"/>
+    <text class="arr-slotlabel" x="695" y="138">3<tspan dy="-4" font-size="65%">e</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le podium se remplit un coureur à la fois : le réservoir
+       se vide, le nombre de choix diminue de 1 à chaque tirage
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- les 3 coureurs pris quittent le réservoir (marqués d'une croix) -->
+    <line class="arr-used" x1="74"  y1="108" x2="86"  y2="120"/>
+    <line class="arr-used" x1="86"  y1="108" x2="74"  y2="120"/>
+    <line class="arr-used" x1="118" y1="108" x2="130" y2="120"/>
+    <line class="arr-used" x1="130" y1="108" x2="118" y2="120"/>
+    <line class="arr-used" x1="162" y1="108" x2="174" y2="120"/>
+    <line class="arr-used" x1="174" y1="108" x2="162" y2="120"/>
+
+    <!-- chaque coureur pris rejoint sa place -->
+    <line class="arr-edge" x1="80"  y1="114" x2="355" y2="105"/>
+    <line class="arr-edge" x1="124" y1="114" x2="525" y2="105"/>
+    <line class="arr-edge" x1="168" y1="114" x2="695" y2="105"/>
+
+    <text class="arr-countlabel" x="355" y="93">8 choix</text>
+    <text class="arr-countlabel" x="525" y="93">7 choix</text>
+    <text class="arr-countlabel" x="695" y="93">6 choix</text>
+
+    <text class="arr-slotsub" x="355" y="163">coureur 1</text>
+    <text class="arr-slotsub" x="525" y="163">coureur 2</text>
+    <text class="arr-slotsub" x="695" y="163">coureur 3</text>
+
+    <text class="arr-poolnote" x="145" y="234">il reste 5 coureurs dans le réservoir</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le produit qui compte les podiums, et sa réécriture
+       factorielle A_8^3 = 8!/5!
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text class="arr-formhead" x="400" y="298">produit des trois choix successifs</text>
+
+    <rect class="arr-accentbox" x="250" y="318" width="300" height="54" rx="14"/>
+    <text class="arr-accent" x="400" y="352">8 &#xD7; 7 &#xD7; 6 = 336</text>
+
+    <text class="arr-form" x="400" y="398"><tspan font-style="italic">A</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan><tspan dy="5"> = 8! &#xF7; 5!</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

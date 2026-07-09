@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="La relation de Chasles : une courbe f positive sur [a, b] ; l'aire totale entre a et b se découpe, au point intermédiaire c, en deux aires adjacentes — entre a et c, puis entre c et b — dont la somme redonne l'aire totale.">
+  <title>La relation de Chasles — découpage de l'aire en a, c, b</title>
+  <!--
+    chasles-decoupage-aire.svg — figure STAGED (3 étapes), rung R3.
+
+    Courbe : f est une fonction ABSTRAITE dans l'exemple travaillé du R3 (la
+    leçon prouve Chasles pour un f quelconque, puis l'applique à un exemple
+    chiffré SANS expression explicite de f — deux intégrales données, une
+    troisième déduite). Donc la courbe tracée ici n'est l'image d'aucune
+    formule du texte : c'est un f positif générique, choisi lisible (une
+    bosse simple), au seul service de la géométrie de Chasles — a, c, b
+    quelconques, aucune valeur numérique n'est empruntée à la leçon.
+
+    Géométrie (calculée, pas devinée) :
+      paramétrage t ∈ [0,1] : x(t) = 160 + 360·t ,  hauteur(t) = 40 + 170·sin(π·t)
+      y(t) = 350 − hauteur(t)   (baseline des abscisses en y = 350)
+      a = t=0  → (160, 310) ;  b = t=1 → (520, 310) ;  c = t=0,35 → (286, 158,5)
+      échantillonné à pas régulier de 0,05 en t (21 points).
+
+    Rôle des couleurs :
+      courbe f, labels a/b, label "f"          : --figure-ink / --figure-ink-soft
+        (données — étape 1, rien n'est encore le foyer)
+      aire totale (étape 2), repère c, aire
+        gauche renforcée, labels d'intégrale,
+        boîte formule                          : --figure-accent (le foyer)
+      axes, flèches                            : --figure-ink-soft (chrome neutre)
+
+    Technique des DEUX teintes (étape 3, callout R3 : "deux teintes
+    distinctes") : la palette n'a qu'UN accent (pas de second ton dédié).
+    L'étape 2 peint déjà l'aire ENTIÈRE de a à b à opacité 0,14 (le ton de
+    base). L'étape 3 superpose une SEULE forme supplémentaire — l'aire de a
+    à c seulement — à la MÊME opacité 0,14 : le morceau gauche cumule donc
+    deux couches (≈ plus sombre), le morceau droit reste à une seule couche
+    (≈ plus clair). Même idiome que table-groupe.svg (cellule mise en
+    évidence = accent superposé sur accent de base).
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — graphe, ordre canonique
+    axes → données → lecture ; les axes sont un chrome permanent, non-stepped,
+    comme dans aire-sous-courbe.svg / aire-entre-courbes.svg) :
+      step-1 : la courbe f + les bornes a, b marquées (données).
+      step-2 : l'aire totale hachurée, de a à b, avec sa formule (lecture 1).
+      step-3 : le point c, la coupure, les deux sous-aires distinguées par
+               teinte, leurs labels, et la relation de Chasles complétée
+               dans la boîte formule (lecture 2).
+
+    Les captions sont portées par chasles-decoupage-aire.stages.json —
+    aucun texte de légende baké ici (même convention que les figures
+    existantes de cette leçon).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    La relation de Chasles — découpage de l'aire en a, c, b
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes — ink-soft, chrome neutre, toujours visibles -->
+  <line x1="60" y1="350" x2="615" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="615,350 603,345.5 603,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="60" y1="350" x2="60" y2="55"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="60,55 55.5,66 64.5,66" fill="var(--figure-ink-soft)"/>
+  <text x="622" y="354" text-anchor="middle" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="52" y="59" text-anchor="end" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la courbe f, les bornes a et b (données)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="M160,310 L178,283.4 L196,257.5 L214,232.8 L232,210.1 L250,189.8
+             L268,172.5 L286,158.5 L304,148.3 L322,142.1 L340,140
+             L358,142.1 L376,148.3 L394,158.5 L412,172.5 L430,189.8
+             L448,210.1 L466,232.8 L484,257.5 L502,283.4 L520,310"
+          fill="none" stroke="var(--figure-ink)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="460" y="175" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">f</text>
+
+    <!-- Bornes a et b -->
+    <line x1="160" y1="347" x2="160" y2="353" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="160" y="366" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">a</text>
+
+    <line x1="520" y1="347" x2="520" y2="353" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="520" y="366" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">b</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — l'aire totale, de a à b (lecture 1)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M160,350 L160,310 L178,283.4 L196,257.5 L214,232.8 L232,210.1 L250,189.8
+             L268,172.5 L286,158.5 L304,148.3 L322,142.1 L340,140
+             L358,142.1 L376,148.3 L394,158.5 L412,172.5 L430,189.8
+             L448,210.1 L466,232.8 L484,257.5 L502,283.4 L520,310 L520,350 Z"
+          fill="var(--figure-accent)" fill-opacity="0.14"
+          stroke="var(--figure-accent)" stroke-width="1.4" stroke-linejoin="round"/>
+
+    <!-- Boîte formule — s'agrandit à l'étape 3 (même boîte, second membre ajouté) -->
+    <rect x="175" y="40" width="280" height="88" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="315" y="58" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">aire totale</text>
+    <text x="315" y="82" text-anchor="middle" font-size="14"
+          fill="var(--figure-accent)"><tspan font-size="22">&#8747;</tspan><tspan
+          dy="-10" font-size="9">b</tspan><tspan
+          dy="12" dx="-6" font-size="9">a</tspan><tspan
+          dy="-2" dx="3" font-style="italic"> f</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le point c, la coupure, les deux sous-aires (lecture 2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Renfort de teinte sur l'aire [a, c] seule — cumulée sur l'étape 2 -->
+    <path d="M160,350 L160,310 L178,283.4 L196,257.5 L214,232.8 L232,210.1 L250,189.8
+             L268,172.5 L286,158.5 L286,350 Z"
+          fill="var(--figure-accent)" fill-opacity="0.16" stroke="none"/>
+
+    <!-- Coupure en c -->
+    <line x1="286" y1="350" x2="286" y2="158.5"
+          stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="5,3"/>
+    <line x1="286" y1="347" x2="286" y2="353" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="286" y="366" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-accent)">c</text>
+    <circle cx="286" cy="158.5" r="3" fill="var(--figure-accent)"/>
+
+    <!-- Labels dans chaque sous-aire -->
+    <text x="205" y="290" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)"><tspan font-size="16">&#8747;</tspan><tspan
+          dy="-7" font-size="7">c</tspan><tspan
+          dy="8" dx="-4" font-size="7">a</tspan><tspan
+          dy="-1" font-style="italic"> f</tspan></text>
+
+    <text x="430" y="270" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)"><tspan font-size="16">&#8747;</tspan><tspan
+          dy="-7" font-size="7">b</tspan><tspan
+          dy="8" dx="-4" font-size="7">c</tspan><tspan
+          dy="-1" font-style="italic"> f</tspan></text>
+
+    <!-- Second membre de la relation, dans la même boîte -->
+    <text x="315" y="110" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan>= </tspan><tspan
+          font-size="16">&#8747;</tspan><tspan
+          dy="-7" font-size="7">c</tspan><tspan
+          dy="8" dx="-4" font-size="7">a</tspan><tspan
+          dy="-1" font-style="italic"> f </tspan><tspan
+          dy="0"> + </tspan><tspan
+          font-size="16">&#8747;</tspan><tspan
+          dy="-7" font-size="7">b</tspan><tspan
+          dy="8" dx="-4" font-size="7">c</tspan><tspan
+          dy="-1" font-style="italic"> f</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

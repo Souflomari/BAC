@@ -86,6 +86,8 @@ $$\text{nombre de codes} = 10^4 = 10\,000$$
 
 Il y a **10 000 codes possibles.** À raison d'un essai par seconde, ton ami mettrait 10 000 secondes dans le pire des cas — soit environ **2 h 47 min**, pas "vite" du tout. La plupart des gens sous-estiment largement ce nombre parce qu'ils imaginent lister les codes un par un, plutôt que de voir la structure des 4 roues indépendantes.
 
+[[figure:p-liste-cadenas]]
+
 ### Exemple travaillé : des mots de 3 lettres
 
 Combien de "mots" de 3 lettres (pas forcément des mots qui existent en français) peut-on former avec les 26 lettres de l'alphabet, sachant qu'une lettre peut être répétée plusieurs fois dans le même mot ?
@@ -137,6 +139,8 @@ Il ne reste plus qu'à calculer :
 $$8 \times 7 \times 6 = 336$$
 
 C'est bien le même nombre trouvé directement plus haut.
+
+[[figure:arrangement-reservoir]]
 
 ### Exemple travaillé : un tiercé de 12 chevaux
 
@@ -302,6 +306,8 @@ C'est la **relation de Pascal**. Elle permet de construire le tableau suivant, o
 
 Regarde par exemple $\binom{5}{2} = 10$ : c'est bien la somme de $\binom{4}{1}=4$ et $\binom{4}{2}=6$ juste au-dessus, $4+6=10$. Ce tableau s'appelle le **triangle de Pascal**.
 
+[[figure:triangle-pascal]]
+
 **Une mention utile pour plus tard :** ces mêmes nombres $\binom{n}{p}$ réapparaissent comme coefficients dans le développement de $(a+b)^n$ — le binôme de Newton — mais ce développement fait l'objet d'un autre chapitre ; on ne le traite pas ici.
 
 ---
@@ -339,6 +345,8 @@ $$\text{card}(E) = \binom{5}{2} \times \binom{4}{1} = 10 \times 4 = 40$$
 $$P(E) = \frac{40}{84} = \frac{10}{21} \approx 0{,}476$$
 
 **Le piège à éviter ici :** ne PAS confondre "choisir 2 rouges ET 1 verte" (un ET entre deux groupes différents, donc une multiplication de deux combinaisons) avec "choisir 3 boules parmi 9" (un seul groupe, une seule combinaison). C'est le "ET" entre rouges et vertes qui déclenche la multiplication — exactement le principe multiplicatif du R1, appliqué ici à des combinaisons plutôt qu'à des choix simples.
+
+[[figure:urne-deux-couleurs]]
 
 ---
 

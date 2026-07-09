@@ -164,6 +164,8 @@ $$\int_2^5 f(x)\,\mathrm{d}x = 7$$
 
 C'est tout l'intérêt de Chasles dans les exercices : elle relie des intégrales entre elles par une simple relation additive, même quand $f$ reste une fonction abstraite — c'est aussi l'outil qu'on utilisera au R8 pour découper une aire à l'endroit où une courbe change de signe.
 
+[[figure:chasles-decoupage-aire]]
+
 ---
 
 ## R4 — Positivité et comparaison
@@ -208,6 +210,8 @@ Calcule la borne de droite : $\displaystyle\int_0^1 x\,\mathrm{d}x = \left[\frac
 
 **Vérification :** la valeur exacte est $\displaystyle\int_0^1 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^1 = \dfrac13$. On a bien $0 \leq \dfrac13 \leq \dfrac12$ — l'encadrement tient.
 
+[[figure:comparaison-aires-nichees]]
+
 ---
 
 ## R5 — L'inégalité de la moyenne
@@ -244,6 +248,8 @@ $$1 \leq \int_0^1 e^x\,\mathrm{d}x \leq e$$
 
 **Vérification :** la valeur exacte est $\displaystyle\int_0^1 e^x\,\mathrm{d}x = \big[e^x\big]_0^1 = e - 1 \approx 1{,}718$. On a bien $1 \leq e-1 \leq e$ (puisque $e \approx 2{,}718$) — l'encadrement est cohérent, et il donne une estimation rapide de la valeur, sans même calculer $e-1$.
 
+[[figure:inegalite-moyenne-rectangles]]
+
 ---
 
 ## R6 — La valeur moyenne d'une fonction
@@ -275,6 +281,8 @@ $$\mu = \frac{1}{3-0}\times 9 = 3$$
 La valeur moyenne de $x^2$ sur $[0,3]$ est $3$. Un rectangle de largeur $3$ et de hauteur $3$ a une aire de $9$ — exactement la même aire que sous la parabole entre $0$ et $3$.
 
 **Vérification de cohérence :** sur $[0,3]$, $f$ varie de $m=f(0)=0$ à $M=f(3)=9$. On a bien $0 \leq 3 \leq 9$ : la valeur moyenne est coincée entre le minimum et le maximum, comme le garantit le mécanisme.
+
+[[figure:valeur-moyenne-rectangle]]
 
 ---
 

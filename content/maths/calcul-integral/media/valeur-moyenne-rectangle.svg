@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="La valeur moyenne de x² sur [0, 3] : l'aire sous la courbe, 9, est exactement l'aire d'un rectangle de largeur 3 et de hauteur μ = 3 ; la partie où la courbe dépasse μ compense exactement la partie où elle reste en dessous.">
+  <title>La valeur moyenne d'une fonction — x² aplati en μ = 3 sur [0, 3]</title>
+  <!--
+    valeur-moyenne-rectangle.svg — figure STAGED (3 étapes), rung R6.
+
+    Exemple travaillé du R6 : f(x) = x² sur [0,3], μ = (1/3)∫₀³x²dx = 3.
+
+    Géométrie (calculée, pas devinée) :
+      x_px = 100 + 150·x ,  y_px = 350 − 30·x²   (baseline en y=350, f(0)=0
+      touche la baseline — comme aire-sous-courbe.svg)
+      x=0 → (100, 350)   x=3 → (550, 80)
+      échantillonné à pas régulier de 0,15 en x (21 points).
+      μ = 3 → y_px = 350 − 30·3 = 260 (ligne horizontale, toute la largeur).
+      Point de croisement courbe/μ : x² = 3 ⟺ x = √3 ≈ 1,7321,
+      x_px = 100 + 150·√3 ≈ 359,8 (y = 260 exactement, par construction).
+
+    Aire sous la courbe = ∫₀³x²dx = 9 (calcul du R6). Aire du rectangle
+    μ×(b−a) = 3×3 = 9 — les deux aires sont ÉGALES par construction de μ ;
+    la figure montre POURQUOI, géométriquement : ce que la courbe donne en
+    trop (x > √3, f > μ) compense exactement ce qu'elle donne en moins
+    (x < √3, f < μ).
+
+    Rôle des couleurs :
+      courbe, bornes 0/3                     : --figure-ink / --figure-ink-soft
+        (données — étape 1, mais la leçon veut déjà l'aire visible ici,
+        donc l'aire sous la courbe passe en accent dès l'étape 1 — seule
+        exception à la règle "accent = lecture seulement" dans cette
+        leçon, car le callout R4/R5/R6 fixe explicitlement cette étape)
+      rectangle μ, aire sous la courbe, les
+        deux tranches de compensation, boîte
+        formule                                : --figure-accent (le foyer)
+      axes                                     : --figure-ink-soft (chrome neutre)
+
+    Les deux tranches de compensation (étape 3) sont peintes à la MÊME
+    opacité supplémentaire (0,22, superposée sur ce qui est dessous) — le
+    même poids visuel pour les deux, cohérent avec le fait qu'elles ont la
+    même aire (la moitié de l'écart entre les deux aires égales).
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — graphe, ordre canonique
+    axes → données → lecture ; axes en chrome permanent, non-stepped) :
+      step-1 : la courbe x², l'aire sous elle hachurée, 9 (données + une
+               première lecture, regroupées comme le veut le callout R6).
+      step-2 : la droite y=μ=3 et le rectangle 3×3, aire = 9 (lecture 1).
+      step-3 : les deux tranches de compensation — le manque (x<√3) et
+               l'excédent (x>√3) — mis en évidence (lecture 2).
+
+    Les captions sont portées par valeur-moyenne-rectangle.stages.json —
+    aucun texte de légende baké ici.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    La valeur moyenne d'une fonction — x² aplati en μ = 3 sur [0, 3]
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes — ink-soft, chrome neutre, toujours visibles -->
+  <line x1="60" y1="350" x2="615" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="615,350 603,345.5 603,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="100" y1="350" x2="100" y2="55"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="100,55 95.5,66 104.5,66" fill="var(--figure-ink-soft)"/>
+  <text x="622" y="354" text-anchor="middle" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="92" y="59" text-anchor="end" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la courbe x², l'aire sous elle (données + lecture)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="M100,350 L122.5,349.3 L145,347.3 L167.5,343.9 L190,339.2
+             L212.5,333.1 L235,325.7 L257.5,316.9 L280,306.8 L302.5,295.3
+             L325,282.5 L347.5,268.3 L370,252.8 L392.5,235.9 L415,217.7
+             L437.5,198.1 L460,177.2 L482.5,154.9 L505,131.3 L527.5,106.3 L550,80"
+          fill="none" stroke="var(--figure-ink)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="463" y="152" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">f(x) = x²</text>
+
+    <path d="M100,350 L122.5,349.3 L145,347.3 L167.5,343.9 L190,339.2
+             L212.5,333.1 L235,325.7 L257.5,316.9 L280,306.8 L302.5,295.3
+             L325,282.5 L347.5,268.3 L370,252.8 L392.5,235.9 L415,217.7
+             L437.5,198.1 L460,177.2 L482.5,154.9 L505,131.3 L527.5,106.3 L550,80 L550,350 Z"
+          fill="var(--figure-accent)" fill-opacity="0.16"
+          stroke="var(--figure-accent)" stroke-width="1.3" stroke-linejoin="round"/>
+
+    <text x="460" y="320" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">aire = 9</text>
+
+    <text x="100" y="364" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">0</text>
+    <text x="550" y="364" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">3</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la droite y = μ, le rectangle 3×3 (lecture 1)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="90" y1="260" x2="560" y2="260"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="97" y1="260" x2="103" y2="260" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="90" y="264" text-anchor="end" font-size="11"
+          fill="var(--figure-accent)">μ = 3</text>
+
+    <rect x="100" y="260" width="450" height="90"
+          fill="var(--figure-accent)" fill-opacity="0.08"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+    <text x="200" y="304" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">aire rectangle = 3×3 = 9</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — les deux tranches de compensation (lecture 2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Manque : x < √3, f < μ — dans le rectangle mais hors de l'aire -->
+    <path d="M100,260 L359.8,260 L347.5,268.3 L325,282.5 L302.5,295.3
+             L280,306.8 L257.5,316.9 L235,325.7 L212.5,333.1 L190,339.2
+             L167.5,343.9 L145,347.3 L122.5,349.3 L100,350 Z"
+          fill="var(--figure-accent)" fill-opacity="0.22"
+          stroke="var(--figure-accent)" stroke-width="1"/>
+
+    <!-- Excédent : x > √3, f > μ — dans l'aire mais hors du rectangle -->
+    <path d="M359.8,260 L370,252.8 L392.5,235.9 L415,217.7 L437.5,198.1
+             L460,177.2 L482.5,154.9 L505,131.3 L527.5,106.3 L550,80
+             L550,260 Z"
+          fill="var(--figure-accent)" fill-opacity="0.22"
+          stroke="var(--figure-accent)" stroke-width="1"/>
+
+    <circle cx="359.8" cy="260" r="2.8" fill="var(--figure-accent)"/>
+
+    <text x="178" y="292" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-accent)">manquante</text>
+    <text x="478" y="142" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-accent)">excédentaire</text>
+
+    <!-- Boîte formule -->
+    <rect x="170" y="42" width="300" height="40" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="67" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)">aire excédentaire = aire manquante</text>
+  </g><!-- /step-3 -->
+
+</svg>

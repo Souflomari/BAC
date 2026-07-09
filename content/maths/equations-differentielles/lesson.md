@@ -20,6 +20,8 @@ Engage-toi sur l'un des deux. Voici maintenant ce qu'on relève réellement, min
 
 Regarde les écarts, pas seulement les valeurs. Entre $t=0$ et $t=5$ (soit $5$ minutes), la température chute de $90-62,5=27,5\ °\text{C}$ — un rythme d'environ $5,5\ °\text{C}$ par minute. Entre $t=5$ et $t=10$ (encore $5$ minutes), elle chute de $62,5-45,8=16,7\ °\text{C}$ — un rythme d'environ $3,3\ °\text{C}$ par minute. Le rythme a changé du tout au tout, alors que l'intervalle de temps est identique.
 
+[[figure:refroidissement-modeles]]
+
 Si le modèle A était vrai, ce rythme serait resté le même — $5,5\ °\text{C}$ par minute dans les deux cas. Il ne l'est pas. Le refroidissement ralentit à mesure que le café se rapproche de la température de la pièce : c'est le modèle B qui décrit la réalité.
 
 Voici l'idée qui explique ce ralentissement : ce n'est pas la température elle-même qui pilote la vitesse de refroidissement, c'est l'**écart** entre la température du café et celle de la pièce. Un grand écart ($90-20=70$) donne un refroidissement rapide ; un petit écart ($29,5-20=9,5$) donne un refroidissement lent. En langage mathématique, si $T(t)$ est la température à l'instant $t$, cette idée s'écrit :
@@ -317,6 +319,8 @@ $$y(x) = 3\cos(4x) + 2\sin(4x)$$
 
 **Vérification :** $y'(x) = -12\sin(4x)+8\cos(4x)$, donc $y'(0) = 8\cos(0) = 8$ — cohérent avec la donnée.
 
+[[figure:oscillateur-periode]]
+
 ### Arrête-toi : ne pas oublier de diviser par $\omega$
 
 Une erreur fréquente : poser $B=y'(0)$ directement, sans diviser par $\omega$. Teste ce reflexe sur l'exemple ci-dessus : si $B=8$ (au lieu de $2$), la fonction $y(x)=3\cos(4x)+8\sin(4x)$ donnerait $y'(x) = -12\sin(4x)+32\cos(4x)$, donc $y'(0)=32 \neq 8$ — ça contredit la condition posée au départ. Le facteur $\omega$ n'est pas optionnel : il vient directement de la dérivée $(\sin(\omega x))'=\omega\cos(\omega x)$, et l'oublier fausse systématiquement la vitesse initiale.
@@ -352,6 +356,8 @@ C'est la courbe de charge classique : $u_C$ démarre à $0$ et tend vers $E$ san
 $$u_C(t) = U_0\,e^{-t/(RC_0)}$$
 
 C'est la différence essentielle entre charge et décharge : la charge a un palier non nul ($E$, imposé par le générateur), la décharge a un palier nul (rien ne maintient de tension une fois le générateur retiré).
+
+[[figure:rc-charge-decharge]]
 
 ### Établissement du courant dans un dipôle RL
 

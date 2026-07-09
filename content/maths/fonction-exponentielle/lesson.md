@@ -72,6 +72,8 @@ Une erreur fréquente à ce stade : croire que $\exp(x)$ peut être négatif ou 
 
 Attention aussi à l'erreur symétrique : ce n'est pas $\exp$ qui a un domaine restreint, c'est $\ln$. $\exp(x)$ est parfaitement défini pour n'importe quel réel $x$, aussi grand ou aussi négatif soit-il.
 
+[[figure:exp-reciproque-de-ln]]
+
 ---
 
 ## R2 — Propriétés algébriques : quand la somme redevient un produit
@@ -290,6 +292,8 @@ $$\lim_{x \to +\infty} e^x\left(1-\frac{x}{e^x}\right) = +\infty$$
 
 $$\lim_{x \to +\infty} \big(e^x - x\big) = +\infty$$
 
+[[figure:exp-au-dessus-de-x-plus-1]]
+
 ---
 
 ## R5 — Étude complète et courbe
@@ -445,6 +449,8 @@ $$f(1) = e^1+1-2 = e-1 \approx 1{,}718 > 0$$
 $f$ étant strictement croissante, $f(0)<0<f(1)$ place $\alpha$ strictement entre $0$ et $1$ : $0<\alpha<1$.
 
 **4.** $f$ est strictement croissante sur $\mathbb{R}$ et s'annule uniquement en $\alpha$ : donc $f(x)<0$ pour $x<\alpha$, et $f(x)>0$ pour $x>\alpha$ — la stricte monotonie transforme le passage par $0$ en $\alpha$ en une frontière nette entre les deux signes.
+
+[[figure:etude-f-e-x-plus-x-moins-2]]
 
 ### À toi de jouer
 

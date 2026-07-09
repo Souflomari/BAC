@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Triangle de Pascal, lignes n=0 à n=5 : la bordure de 1 encadre le triangle, puis C(5,2)=10 est construit comme la somme de C(4,1)=4 et C(4,2)=6 juste au-dessus, puis le triangle complet montre son axe de symétrie vertical avec C(n,p)=C(n,n-p), illustré par C(5,2)=C(5,3)=10.">
+  <title>Triangle de Pascal — construction et symétrie des combinaisons</title>
+
+  <!--
+    triangle-pascal.svg — R6, "Le triangle de Pascal : construire les
+    combinaisons sans factorielle" + "La symétrie : C(n,p) = C(n,n-p)".
+    Reprend TEL QUEL le tableau du R6 (lesson.md lignes 294-303) : lignes
+    n=0 à n=5, et l'exemple C(5,2)=10=C(4,1)+C(4,2)=4+6 donné en toutes
+    lettres dans le texte juste avant.
+
+    Layout : triangle étagé (pas une grille rectangulaire comme
+    table-groupe.svg) — ligne n a n+1 cases, centrées, largeur de case 56,
+    pas horizontal 64, pas vertical 58. Étiquettes de ligne "n = k" en
+    marge gauche.
+
+    Rôle des couleurs (5 jetons seulement) — CETTE figure suit la
+    convention de table-groupe.svg (grille/mécanisme : l'accent sert
+    CHAQUE étape de mécanisme, pas une seule fois), différente du lot
+    panneau R1/R5/R2/R3 qui réserve l'accent au seul résultat final :
+      structure (cases, bordure de 1, libellés de ligne)      : --figure-ink
+      / --figure-ink-soft / --figure-grid / --figure-surface
+      étape 2 — mécanisme de construction (teinte + flèches + formule)  : --figure-accent
+      étape 3 — mécanisme de symétrie (anneaux + axe + formule finale)  : --figure-accent
+
+    STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2.5) :
+      step-1 : le squelette triangulaire complet (toutes les cases, vides),
+               seule la bordure C(n,0)=C(n,n)=1 est remplie.
+      step-2 : la règle en action — C(4,1)=4, C(4,2)=6 et C(5,2)=10 se
+               remplissent, teintés, reliés par deux flèches d'apport ;
+               "C(4,1) + C(4,2) = C(5,2)" puis "4 + 6 = 10" en dessous.
+      step-3 : le reste du triangle se complète, un axe de symétrie
+               vertical apparaît, et la paire miroir C(5,2)=C(5,3)=10 est
+               encerclée — conclusion générale C(n,p) = C(n,n-p).
+
+    Contrat DOM-absence (LESSON-EXPERIENCE-SPEC §2.3) : chaque étape
+    n'AJOUTE que des éléments neufs par-dessus les précédents (jamais de
+    restyle d'un rect déjà dessiné) — même discipline qu'arbre-pondere.svg
+    et table-groupe.svg.
+  -->
+
+  <style>
+    .tp-title    { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .tp-subtitle { font: 500 12px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .tp-cell     { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .tp-val      { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .tp-rowlabel { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); text-anchor: end; }
+    .tp-tint     { fill: var(--figure-accent); fill-opacity: 0.18; }
+    .tp-arrow    { stroke: var(--figure-accent); stroke-width: 2.25; fill: none; }
+    .tp-arrowhead{ fill: var(--figure-accent); }
+    .tp-formula  { font: 600 13.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .tp-sum      { font: 700 16px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .tp-axis     { stroke: var(--figure-ink-soft); stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+    .tp-symring  { fill: none; stroke: var(--figure-accent); stroke-width: 2.25; }
+    .tp-genbox   { fill: var(--figure-surface); stroke: var(--figure-accent); stroke-width: 1.75; }
+    .tp-genform  { font: 700 17px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le squelette triangulaire complet, seule la bordure de 1
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text class="tp-title" x="400" y="28">Triangle de Pascal — construire les combinaisons par addition</text>
+    <text class="tp-subtitle" x="400" y="46">chaque valeur = la somme des deux cases juste au-dessus</text>
+
+    <text class="tp-rowlabel" x="170" y="81">n = 0</text>
+    <text class="tp-rowlabel" x="170" y="139">n = 1</text>
+    <text class="tp-rowlabel" x="170" y="197">n = 2</text>
+    <text class="tp-rowlabel" x="170" y="255">n = 3</text>
+    <text class="tp-rowlabel" x="170" y="313">n = 4</text>
+    <text class="tp-rowlabel" x="170" y="371">n = 5</text>
+
+    <!-- toutes les cases (bordure + intérieur vide) -->
+    <!-- n=0 -->
+    <rect class="tp-cell" x="372" y="56" width="56" height="40" rx="10"/>
+    <text class="tp-val" x="400" y="81">1</text>
+    <!-- n=1 -->
+    <rect class="tp-cell" x="340" y="114" width="56" height="40" rx="10"/><text class="tp-val" x="368" y="139">1</text>
+    <rect class="tp-cell" x="404" y="114" width="56" height="40" rx="10"/><text class="tp-val" x="432" y="139">1</text>
+    <!-- n=2 -->
+    <rect class="tp-cell" x="308" y="172" width="56" height="40" rx="10"/><text class="tp-val" x="336" y="197">1</text>
+    <rect class="tp-cell" x="372" y="172" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="436" y="172" width="56" height="40" rx="10"/><text class="tp-val" x="464" y="197">1</text>
+    <!-- n=3 -->
+    <rect class="tp-cell" x="276" y="230" width="56" height="40" rx="10"/><text class="tp-val" x="304" y="255">1</text>
+    <rect class="tp-cell" x="340" y="230" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="404" y="230" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="468" y="230" width="56" height="40" rx="10"/><text class="tp-val" x="496" y="255">1</text>
+    <!-- n=4 -->
+    <rect class="tp-cell" x="244" y="288" width="56" height="40" rx="10"/><text class="tp-val" x="272" y="313">1</text>
+    <rect class="tp-cell" x="308" y="288" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="372" y="288" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="436" y="288" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="500" y="288" width="56" height="40" rx="10"/><text class="tp-val" x="528" y="313">1</text>
+    <!-- n=5 -->
+    <rect class="tp-cell" x="212" y="346" width="56" height="40" rx="10"/><text class="tp-val" x="240" y="371">1</text>
+    <rect class="tp-cell" x="276" y="346" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="340" y="346" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="404" y="346" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="468" y="346" width="56" height="40" rx="10"/>
+    <rect class="tp-cell" x="532" y="346" width="56" height="40" rx="10"/><text class="tp-val" x="560" y="371">1</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la règle en action : C(4,1)+C(4,2)=C(5,2), 4+6=10
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect class="tp-tint" x="308" y="288" width="56" height="40" rx="10"/>
+    <rect class="tp-tint" x="372" y="288" width="56" height="40" rx="10"/>
+    <rect class="tp-tint" x="340" y="346" width="56" height="40" rx="10"/>
+
+    <text class="tp-val" x="336" y="313">4</text>
+    <text class="tp-val" x="400" y="313">6</text>
+    <text class="tp-val" x="368" y="371">10</text>
+
+    <!-- deux flèches d'apport, de (4,1) et (4,2) vers (5,2) -->
+    <line class="tp-arrow" x1="340" y1="328" x2="356" y2="344"/>
+    <polygon class="tp-arrowhead" points="362,350 354,347 359,341"/>
+    <line class="tp-arrow" x1="398" y1="328" x2="380" y2="344"/>
+    <polygon class="tp-arrowhead" points="374,350 378,342 382,348"/>
+
+    <text class="tp-formula" x="400" y="410"><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">4</tspan><tspan dy="-9" font-size="65%">1</tspan><tspan dy="5"> + </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">4</tspan><tspan dy="-9" font-size="65%">2</tspan><tspan dy="5"> = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">5</tspan><tspan dy="-9" font-size="65%">2</tspan><tspan dy="5"></tspan></text>
+    <text class="tp-sum" x="400" y="432">4 + 6 = 10</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le triangle complet, axe de symétrie, C(n,p)=C(n,n-p)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- valeurs intérieures restantes -->
+    <text class="tp-val" x="400" y="197">2</text>
+    <text class="tp-val" x="368" y="255">3</text>
+    <text class="tp-val" x="432" y="255">3</text>
+    <text class="tp-val" x="464" y="313">4</text>
+    <text class="tp-val" x="304" y="371">5</text>
+    <text class="tp-val" x="432" y="371">10</text>
+    <text class="tp-val" x="496" y="371">5</text>
+
+    <!-- axe de symétrie vertical -->
+    <line class="tp-axis" x1="400" y1="50" x2="400" y2="396"/>
+
+    <!-- paire miroir C(5,2) = C(5,3) = 10 -->
+    <rect class="tp-symring" x="340" y="346" width="56" height="40" rx="10"/>
+    <rect class="tp-symring" x="404" y="346" width="56" height="40" rx="10"/>
+
+    <text class="tp-formula" x="400" y="454"><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">5</tspan><tspan dy="-9" font-size="65%">2</tspan><tspan dy="5"> = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">5</tspan><tspan dy="-9" font-size="65%">3</tspan><tspan dy="5"> = 10</tspan></text>
+
+    <rect class="tp-genbox" x="270" y="480" width="260" height="46" rx="14"/>
+    <text class="tp-genform" x="400" y="509"><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%" font-style="italic">n</tspan><tspan dy="-9" font-size="65%" font-style="italic">p</tspan><tspan dy="5"> = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%" font-style="italic">n</tspan><tspan dy="-9" font-size="65%" font-style="italic">n-p</tspan><tspan dy="5"></tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

@@ -39,7 +39,7 @@ rule, carried forward here).
 
 | Wave | Matière | Lessons | Status |
 |---|---|---|---|
-| M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | judged (16 STAGE / 18 DECLINE), build in progress |
+| M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | pending |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | pending |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
@@ -97,5 +97,35 @@ rule, carried forward here).
 
 **Wave M1 judgment tally: 16 STAGE / 18 DECLINE** (34 chapters judged).
 
-**Build:** in progress.
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| calcul-integral | chasles-decoupage-aire | R3 | 3 |
+| calcul-integral | comparaison-aires-nichees | R4 | 3 |
+| calcul-integral | inegalite-moyenne-rectangles | R5 | 3 |
+| calcul-integral | valeur-moyenne-rectangle | R6 | 3 |
+| denombrement | p-liste-cadenas | R2 | 3 |
+| denombrement | arrangement-reservoir | R3 | 3 |
+| denombrement | triangle-pascal | R6 | 3 |
+| denombrement | urne-deux-couleurs | R7 | 3 |
+| derivabilite-etude-fonctions | regle-produit-aire | R2 | 4 |
+| derivabilite-etude-fonctions | etude-fonction-rationnelle | R5 | 5 |
+| equations-differentielles | refroidissement-modeles | R0 | 4 |
+| equations-differentielles | oscillateur-periode | R4 | 3 |
+| equations-differentielles | rc-charge-decharge | R5 | 3 |
+| fonction-exponentielle | exp-reciproque-de-ln | R1 | 4 |
+| fonction-exponentielle | exp-au-dessus-de-x-plus-1 | R4 | 4 |
+| fonction-exponentielle | etude-f-e-x-plus-x-moins-2 | R8 | 4 |
+
+**Verification:**
+- `validate-content.mjs content/maths/<slug>` — pass ×5 (all clean)
+- anti-contract grep (`#[0-9a-fA-F]{3,6}|currentColor|foreignObject`) — pass ×5 (all clean)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `denombrement` R6 `triangle-pascal`: renders correctly both themes, construction-rule feeder arrows and symmetry axis read clearly
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 5/47 lessons done, 34/266 chapters judged, 16 STAGE / 18 DECLINE.**
 

@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" width="640" height="520"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Le mécanisme géométrique de la règle du produit : un rectangle d'aire u fois v qui grandit d'abord en largeur puis en hauteur, faisant apparaître une bande verticale d'aire v fois Δu et une bande horizontale d'aire u fois Δv, puis un petit coin d'aire Δu fois Δv qui s'annule quand h tend vers zéro — expliquant pourquoi la dérivée du produit a exactement deux termes, u′v plus uv′, et non trois.">
+  <title>La règle du produit (uv)′ = u′v + uv′ — construction géométrique</title>
+  <!--
+    regle-produit-aire.svg — STAGED (LESSON-EXPERIENCE-SPEC §2.5 : figure
+    hors-graphe, staged parce que l'ORDRE des couches est le geste
+    d'enseignement lui-même — le rectangle grandit dans une direction, puis
+    dans l'autre, exactement comme la démonstration de (uv)'=u'v+uv' du R2
+    traite les deux incréments l'un après l'autre avant de voir le
+    troisième terme s'annuler).
+
+    step-1 : le rectangle de départ, largeur u, hauteur v, aire u·v.
+    step-2 : + la bande verticale d'aire v·Δu (largeur Δu, hauteur v fixe)
+             — deviendra le terme u′v.
+    step-3 : + la bande horizontale d'aire u·Δv (hauteur Δv, largeur u
+             fixe) — deviendra le terme uv′.
+    step-4 : + le petit coin d'aire Δu·Δv (carrés emboîtés vers son coin,
+             visualisation statique du fait qu'il s'annule quand h → 0) et
+             l'identité finale (uv)′ = u′v + uv′.
+
+    Géométrie (calculée, pas devinée) — système purement symbolique, sans
+    valeurs numériques : u, v, Δu, Δv restent des grandeurs abstraites,
+    comme dans le texte du R2.
+      rectangle de base   (u ×v)  : x=150, y=200, largeur=220, hauteur=180
+      bande verticale     (Δu×v)  : x=370, y=200, largeur=60,  hauteur=180
+      bande horizontale   (u ×Δv) : x=150, y=150, largeur=220, hauteur=50
+      coin                (Δu×Δv) : x=370, y=150, largeur=60,  hauteur=50
+    Les quatre pièces pavent exactement le rectangle assemblé
+    (u+Δu)×(v+Δv), x∈[150,430], y∈[150,380] — aucun chevauchement, aucun
+    vide : (u+Δu)(v+Δv) = uv + vΔu + uΔv + ΔuΔv.
+
+    Carrés emboîtés du step-4 (Δu·Δv « qui s'annule »), tous ancrés au même
+    coin (430,150) — le coin qui s'éloigne le moins vite des deux autres
+    termes quand h → 0 :
+      R1 = le coin lui-même (60×60... 60×50, tracé au-dessus, très clair,
+           contour tireté)
+      R2 : x=394, y=150, 36×30 (tireté, plus opaque)
+      R3 : x=412, y=150, 18×15 (plein, encore plus opaque)
+      R4 : x=424, y=150, 6×5   (plein — le point-limite)
+
+    Rôle des couleurs :
+      bandes v·Δu et u·Δv, coin Δu·Δv, identité finale (uv)′=u′v+uv′ :
+        --figure-accent (LE sujet — ce qui apparaît et change)
+      rectangle de base u·v et ses côtés u/v : --figure-ink (la structure
+        donnée, le point de départ)
+      repères de côté (traits + coches), sous-note explicative :
+        --figure-ink-soft (chrome / commentaire, pas le foyer)
+
+    Les captions sont portées par regle-produit-aire.stages.json (figcaption
+    hors-SVG) — aucun texte de légende baké ici, seules les étiquettes
+    mathématiques (u, v, Δu, Δv, aires, identité finale) sont dans le SVG.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La règle du produit (uv)′ = u′v + uv′ — construction géométrique
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="560" height="460" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Rectangle de base, aire u·v -->
+    <rect x="150" y="200" width="220" height="180"
+          fill="var(--figure-grid)" fill-opacity="0.65"
+          stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="260" y="295" text-anchor="middle" font-size="14" fill="var(--figure-ink)"
+      ><tspan font-style="italic">u</tspan><tspan>·</tspan><tspan font-style="italic">v</tspan></text>
+
+    <!-- Repère de largeur u (sous le rectangle) -->
+    <line x1="150" y1="395" x2="370" y2="395" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="150" y1="390" x2="150" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="370" y1="390" x2="370" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="260" y="412" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">u</text>
+
+    <!-- Repère de hauteur v (à gauche du rectangle) -->
+    <line x1="135" y1="200" x2="135" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="130" y1="200" x2="140" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="130" y1="380" x2="140" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="118" y="294" text-anchor="end" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">v</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la largeur grandit de Δu, v fixe : bande v·Δu
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="370" y="200" width="60" height="180"
+          fill="var(--figure-accent)" fill-opacity="0.28"
+          stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="400" y="296" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
+      ><tspan font-style="italic">v</tspan><tspan>·Δ</tspan><tspan font-style="italic">u</tspan></text>
+
+    <!-- Repère de largeur Δu -->
+    <line x1="370" y1="395" x2="430" y2="395" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <line x1="370" y1="390" x2="370" y2="400" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <line x1="430" y1="390" x2="430" y2="400" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="400" y="412" text-anchor="middle" font-size="12" fill="var(--figure-accent)"
+      ><tspan>Δ</tspan><tspan font-style="italic">u</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la hauteur grandit de Δv, u fixe : bande u·Δv
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect x="150" y="150" width="220" height="50"
+          fill="var(--figure-accent)" fill-opacity="0.28"
+          stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="260" y="179" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
+      ><tspan font-style="italic">u</tspan><tspan>·Δ</tspan><tspan font-style="italic">v</tspan></text>
+
+    <!-- Repère de hauteur Δv (prolonge le repère v au-dessus) -->
+    <line x1="135" y1="150" x2="135" y2="200" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <line x1="130" y1="150" x2="140" y2="150" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="118" y="178" text-anchor="end" font-size="12" fill="var(--figure-accent)"
+      ><tspan>Δ</tspan><tspan font-style="italic">v</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — le coin Δu·Δv, qui s'annule quand h → 0 —
+       et l'identité finale, LE sujet
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Le coin, tracé très clair : c'est lui qui va "disparaître" -->
+    <rect x="370" y="150" width="60" height="50"
+          fill="var(--figure-accent)" fill-opacity="0.12"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="4,3"/>
+
+    <!-- Carrés emboîtés vers le coin (430,150) : visualisation statique
+         de "Δu·Δv → 0" — pas d'animation possible en SVG figé, donc la
+         succession de tailles fait le travail. -->
+    <rect x="394" y="150" width="36" height="30"
+          fill="var(--figure-accent)" fill-opacity="0.3"
+          stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <rect x="412" y="150" width="18" height="15"
+          fill="var(--figure-accent)" fill-opacity="0.55"/>
+    <rect x="424" y="150" width="6" height="5"
+          fill="var(--figure-accent)" fill-opacity="1"/>
+
+    <!-- Renvoi vers le coin -->
+    <line x1="430" y1="175" x2="458" y2="175" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <polygon points="458,175 450,171.5 450,178.5" fill="var(--figure-accent)"/>
+    <text x="463" y="178.5" font-size="10.5" fill="var(--figure-accent)"
+      ><tspan>Δ</tspan><tspan font-style="italic">u</tspan><tspan>·Δ</tspan><tspan font-style="italic">v</tspan><tspan> → 0</tspan></text>
+
+    <!-- L'identité finale, sous le rectangle -->
+    <text x="290" y="440" text-anchor="middle" font-size="13.5" font-weight="600" fill="var(--figure-accent)"
+      ><tspan>(</tspan><tspan font-style="italic">u</tspan><tspan font-style="italic">v</tspan><tspan>)′ = </tspan><tspan font-style="italic">u</tspan><tspan>′</tspan><tspan font-style="italic">v</tspan><tspan> + </tspan><tspan font-style="italic">u</tspan><tspan font-style="italic">v</tspan><tspan>′</tspan></text>
+    <text x="290" y="458" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+      >Δu·Δv s'annule plus vite que les deux bandes : il ne reste que deux termes.</text>
+  </g><!-- /step-4 -->
+
+</svg>

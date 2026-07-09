@@ -191,6 +191,8 @@ $$(uv)'(a) = u'(a)v(a) + u(a)v'(a)$$
 
 **Pourquoi ce n'est pas $u'v'$ :** une erreur fréquente est de croire que la dérivée d'un produit est le produit des dérivées. Le calcul ci-dessus montre que ce n'est pas le cas — il y a **deux** termes, parce qu'une petite variation du produit $uv$ vient de deux sources à la fois : la variation de $u$ (à $v$ presque fixé) ET la variation de $v$ (à $u$ presque fixé). Ignorer l'un des deux termes revient à ignorer une des deux sources de variation.
 
+[[figure:regle-produit-aire]]
+
 **Le quotient : $\left(\dfrac{u}{v}\right)' = \dfrac{u'v-uv'}{v^2}$** (là où $v(a) \neq 0$). On l'obtient en deux temps. D'abord, la dérivée de $\dfrac{1}{v}$, par le même principe que $\left(\dfrac{1}{x}\right)'=-\dfrac{1}{x^2}$ vu plus haut, généralisé à $v$ :
 
 $$\left(\frac{1}{v}\right)'(a) = -\frac{v'(a)}{v(a)^2}$$
@@ -373,6 +375,8 @@ $$f'(x) = \frac{x(x-2)}{(x-1)^2}$$
 **6. Concavité (remarque).** On aurait $f''(x) = \dfrac{2}{(x-1)^3}$ : négative pour $x<1$ (concave), positive pour $x>1$ (convexe). Le signe change bien de part et d'autre de $x=1$ — mais $x=1$ n'appartient pas au domaine de $f$, donc ce n'est **pas** un point d'inflexion : c'est juste que la concavité diffère de chaque côté de l'asymptote verticale. Un point d'inflexion exige que $f$ soit réellement définie (et dérivable) à cet endroit précis.
 
 **7. Tracé (description).** Deux branches séparées par l'asymptote verticale $x=1$. À gauche, la courbe monte de $-\infty$ jusqu'au maximum local $(0,-1)$, en restant sous l'asymptote oblique $y=x$, puis redescend vers $-\infty$ en longeant $x=1$. À droite, elle redescend de $+\infty$ jusqu'au minimum local $(2,3)$, en restant au-dessus de $y=x$, puis remonte en suivant l'asymptote oblique.
+
+[[figure:etude-fonction-rationnelle]]
 
 ---
 
