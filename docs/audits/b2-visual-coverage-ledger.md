@@ -40,7 +40,7 @@ rule, carried forward here).
 | Wave | Matière | Lessons | Status |
 |---|---|---|---|
 | M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
-| M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | pending |
+| M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | judged (14 STAGE / 13 DECLINE), build in progress |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | pending |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
@@ -125,7 +125,45 @@ rule, carried forward here).
 - `dom-truth.mjs` — 155/155, 0 fail
 - screenshot spot-check (light+dark) — `denombrement` R6 `triangle-pascal`: renders correctly both themes, construction-rule feeder arrows and symmetry axis read clearly
 
-**Commit:** pending (this wave commits together with this ledger update).
+**Commit:** `bcb1309` — pushed y.
 
 **Running tally: 5/47 lessons done, 34/266 chapters judged, 16 STAGE / 18 DECLINE.**
+
+### Wave M2 — maths: fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1
+
+**Judgment** (pedagogy-architect × 4):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| fonction-logarithme | R0 | DECLINE | narrative hook, would pre-empt R2's product→sum mechanism reveal |
+| fonction-logarithme | R1 | STAGE | `ln-aire-sous-courbe` — area-under-1/t, unique geometric payload for ln's sign |
+| fonction-logarithme | R2 | DECLINE | pure algebraic derivation chain, no graph |
+| fonction-logarithme | R3 | DECLINE | procedural chain-rule application, no curve constructed in prose |
+| fonction-logarithme | R4 | STAGE | `croissances-comparees-ln` — ln vs x growth-race graph, distinct from R5 |
+| fonction-logarithme | R6 | DECLINE | procedural equation-solving, no geometric schema |
+| fonction-logarithme | R7 | DECLINE | practice chapter, would undercut attempt-first exercises |
+| geometrie-espace | R0 | STAGE | `cube-diagonales` — shared referent for R0/R1/R2 arc, visual-intuition-fails hook |
+| geometrie-espace | R1 | STAGE | `distance-deux-pythagore` — distance formula via two stacked Pythagoras |
+| geometrie-espace | R2 | DECLINE | algebraic dot-product content, geometric payoff already at R0 |
+| geometrie-espace | R3 | STAGE | `produit-vectoriel-aire` — cross product orthogonality + area mechanism |
+| geometrie-espace | R4 | STAGE | `parallelepipede-volume` — volume = base × height via projection |
+| geometrie-espace | R5 | STAGE | `droite-point-direction` — parametric line, confronts "line = segment" misconception |
+| geometrie-espace | R7 | STAGE | `positions-droite-droite` — parallel/secant/skew trichotomy, the hardest 3D-specific idea |
+| geometrie-espace | R8 | STAGE | `distance-point-plan` — perpendicular-projection distance mechanism |
+| geometrie-espace | R10 | DECLINE | practice chapter, would reveal the method the exercises test |
+| limites-continuite | R0 | STAGE | `limite-trou` — open-circle ghost-point graph, seeds R1/R3 |
+| limites-continuite | R2 | STAGE | `indetermination-trois-courbes` — three ∞−∞ functions, three different limits |
+| limites-continuite | R3 | DECLINE | symbol-level algebraic FI-lifting, geometry owned by R0/R1 |
+| limites-continuite | R4 | STAGE | `trois-discontinuites` — 3-panel graph, one per failing continuity condition |
+| limites-continuite | R6 | STAGE | `cubique-trois-racines` — TVI on 3 monotone pieces, three root crossings |
+| nombres-complexes-1 | R0 | STAGE | `tour-des-ensembles` — nested ℕ⊂ℤ⊂ℚ⊂ℝ⊂ℂ set-extension diagram |
+| nombres-complexes-1 | R1 | DECLINE | single-layer Re/Im formula callout, not a teaching-gesture build |
+| nombres-complexes-1 | R2 | DECLINE | procedural algebra, vector interpretation deliberately deferred to R5 |
+| nombres-complexes-1 | R3 | DECLINE | conjugate's one figure-worthy idea (reflection) deferred to R5 |
+| nombres-complexes-1 | R4 | DECLINE | module kept algebraic here, geometric meaning deferred to R5 |
+| nombres-complexes-1 | R6 | DECLINE | practice chapter, lesson itself says no drawing needed |
+
+**Wave M2 judgment tally: 14 STAGE / 13 DECLINE** (27 chapters judged).
+
+**Build:** in progress.
 
