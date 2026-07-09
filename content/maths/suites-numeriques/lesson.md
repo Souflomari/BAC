@@ -30,6 +30,8 @@ $$u_0 = 100, \quad u_1 = 0{,}5 \times 100 + 10 = 60, \quad u_2 = 0{,}5 \times 60
 
 $$u_4 = 25, \quad u_5 = 22{,}5, \quad u_6 = 21{,}25, \quad u_7 = 20{,}625, \ldots$$
 
+[[figure:reservoir-premiers-termes]]
+
 Le volume diminue, mais de moins en moins vite, et semble se rapprocher de 20. Est-ce vraiment ce qui se passe ? Continue-t-il à diminuer indéfiniment, aussi lentement soit-il, ou bien se stabilise-t-il **exactement** à une valeur — et si oui, laquelle, et pourquoi celle-là ?
 
 Répondre proprement à cette question demande tous les outils de ce chapitre : montrer qu'une suite ne descend jamais en dessous d'un certain seuil (majorer, minorer), montrer qu'elle est décroissante (monotonie), établir qu'une suite décroissante et minorée est forcément convergente (un théorème qu'on va démontrer et comprendre), et enfin calculer la valeur exacte de la limite. On construit ces outils un par un — et à la fin de cette leçon, on referme complètement la question du réservoir.
@@ -185,6 +187,8 @@ Donc $u_{n+1} \leq 100$.
 
 Confondre « majorée » avec « qui augmente vers une valeur qu'elle ne dépasse jamais ». Être bornée ne dit **rien** sur le sens de variation. Une suite peut très bien osciller — monter, descendre, remonter — tout en restant bornée. La monotonie est une propriété séparée, qu'on étudie au rung suivant.
 
+[[figure:suite-bornee-non-monotone]]
+
 ---
 
 ## R4 — Monotonie : le sens de variation d'une suite
@@ -337,6 +341,8 @@ $$\lim_{n\to+\infty} \frac{\cos(n)}{n+1} = 0$$
 
 **Ce que ce résultat montre :** on a trouvé la limite d'une suite dont le comportement individuel ($\cos(n)$) est imprévisible, uniquement en l'encadrant par deux suites simples convergeant vers la même valeur.
 
+[[figure:theoreme-gendarmes]]
+
 ### L'erreur à repérer
 
 Utiliser le théorème des gendarmes avec un encadrement dont les deux bornes ne convergent **pas** vers la même limite (par exemple $u_n \to 0$ mais $v_n \to 1$). Dans ce cas, le théorème ne s'applique pas du tout, et on ne peut rien conclure sur $w_n$ par cette méthode. Il faut toujours vérifier que les deux bornes convergent, et vers la **même** valeur, avant d'invoquer le théorème.
@@ -361,6 +367,8 @@ Les rungs précédents supposaient qu'on connaissait déjà (ou pouvait deviner)
 Prends une suite décroissante et minorée par $m$ : $u_0 \geq u_1 \geq u_2 \geq \cdots \geq m$. Les termes descendent, descendent — mais ne peuvent jamais passer sous $m$. Une suite qui descend sans jamais pouvoir franchir un plancher ne peut pas descendre indéfiniment : elle est forcée de se rapprocher d'une valeur limite, en s'entassant juste au-dessus (ou exactement sur) un certain niveau qu'elle ne dépassera jamais vers le bas. (Une preuve rigoureuse de ce fait utilise la construction des nombres réels — hors programme ici ; on retient le résultat et l'intuition.)
 
 **Le point capital à retenir :** ce théorème donne l'**existence** de la limite, mais **pas sa valeur**. Le minorant $m$ n'est en général **pas** la limite elle-même — c'est juste un plancher que la suite ne franchit pas, souvent bien en dessous de la vraie limite.
+
+[[figure:convergence-monotone-plancher]]
 
 ### Exemple travaillé : le réservoir converge
 
@@ -484,6 +492,8 @@ Considérons $u_n = -\dfrac{1}{n+1}$ et $v_n = \dfrac{1}{n+1}$, pour $n \geq 0$.
 - $v_n - u_n = \dfrac{1}{n+1} - \left(-\dfrac{1}{n+1}\right) = \dfrac{2}{n+1} \to 0$ quand $n \to +\infty$. ✓
 
 Les trois conditions sont vérifiées : $(u_n)$ et $(v_n)$ sont adjacentes. Elles convergent donc vers la même limite — ici, on le voit directement, $L=0$ (les deux suites tendent vers 0, chacune depuis son côté), et on a bien, pour tout $n$, $u_n \leq 0 \leq v_n$.
+
+[[figure:suites-adjacentes-etau]]
 
 ### L'erreur à repérer
 

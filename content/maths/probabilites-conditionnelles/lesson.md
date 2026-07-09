@@ -55,6 +55,8 @@ Ici, on ne s'intéresse plus à toute la classe. On **restreint** le regard aux 
 
 La deuxième question, c'est une **probabilité conditionnelle**. On a réduit l'univers : au lieu de regarder toute la classe, on ne regarde que les sportifs.
 
+[[figure:univers-restreint]]
+
 #### La formule, maintenant qu'on voit ce qu'elle fait
 
 Notons $A$ l'événement « pratiquer un sport collectif » et $B$ l'événement « jouer au football ».
@@ -233,6 +235,8 @@ Ce sont deux formules pour deux relations différentes et deux opérations ensem
 Non. Une intersection ne peut jamais être plus grande que chacun de ses membres : $P(A \cap B) \leq \min(P(A), P(B)) = 0{,}4$. Une probabilité de 0,9 pour l'intersection d'événements dont l'un a probabilité 0,4, c'est absurde — ça voudrait dire que $A \cap B$ est plus probable que $A$ lui-même.
 
 La réponse correcte : $P(A \cap B) = 0{,}4 \times 0{,}5 = 0{,}20$.
+
+[[figure:independant-vs-incompatible]]
 
 #### Récapitulatif (à garder en tête)
 

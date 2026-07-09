@@ -41,7 +41,7 @@ rule, carried forward here).
 |---|---|---|---|
 | M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
-| M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | judged (15 STAGE / 10 DECLINE), build in progress |
+| M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
@@ -230,7 +230,36 @@ rule, carried forward here).
 
 **Wave M3 judgment tally: 15 STAGE / 10 DECLINE** (25 chapters judged).
 
-**Build:** in progress.
+**Build** (diagram-author × 4):
 
-**Build:** in progress.
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| nombres-complexes-2 | multiplication-par-i | R0 | 3 |
+| nombres-complexes-2 | argument-forme-trigo | R1 | 3 |
+| nombres-complexes-2 | spirale-moivre | R3 | 4 |
+| nombres-complexes-2 | rotation-homothetie | R5 | 3 |
+| nombres-complexes-2 | nature-triangle-w | R6 | 3 |
+| probabilites-conditionnelles | univers-restreint | R1 | 4 |
+| probabilites-conditionnelles | independant-vs-incompatible | R3 | 3 |
+| structures-algebriques | symetries-rectangle | R3 | 3 |
+| structures-algebriques | table-multiplication-modulo4 | R5 | 4 |
+| structures-algebriques | echelle-structures | R6 | 4 |
+| suites-numeriques | reservoir-premiers-termes | R0 | 3 |
+| suites-numeriques | suite-bornee-non-monotone | R3 | 3 |
+| suites-numeriques | theoreme-gendarmes | R6 | 3 |
+| suites-numeriques | convergence-monotone-plancher | R7 | 3 |
+| suites-numeriques | suites-adjacentes-etau | R9 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/maths/<slug>` — pass ×4 (all clean)
+- anti-contract grep — pass ×4 (probabilites-conditionnelles' pre-existing `arbre-pondere.svg` carries legacy hex colors predating the token system, untouched by this wave; both new files in that lesson confirmed clean on their own)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail (learned from wave M2's stale-server incident — used `fuser -k 4173/tcp` before restarting this time, no recurrence)
+- screenshot spot-check (light+dark) — `nombres-complexes-2` R3 `spirale-moivre` and `probabilites-conditionnelles` R1 `univers-restreint`: both render correctly, correct geometry, correct probability readings boxed clearly
+
+**Known non-blocking gap flagged by the nombres-complexes-2 build agent:** `NotionBody.tsx`'s `FIGURE_ARIA_LABELS` map (a manually-curated slug → French aria-label lookup) has only 5 entries, all from the original pc/rlc-serie StagedFigure work; every other figure in the 90+-figure corpus — including all of B1's and B2's new figures — already falls back to `figureAriaLabel()`'s `slug.replace(/-/g," ")` default, which is plain but functional (not broken). This is a pre-existing condition across the whole corpus, not a regression from this campaign; retroactively curating entries for 90+ slugs is out of scope for content-only diagram-author agents and is not blocking. Worth a dedicated accessibility-polish pass at some point, tracked here rather than actioned mid-campaign.
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 13/47 lessons done, 86/266 chapters judged, 45 STAGE / 41 DECLINE. Maths matière COMPLETE (13/13 remaining lessons done, plus the arithmetique pilot — all 14 maths lessons now have full chapter-level visual judgment).**
 

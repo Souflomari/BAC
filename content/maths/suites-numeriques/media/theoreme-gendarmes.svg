@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 530" width="640" height="530"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img" aria-label="Le théorème des gendarmes : u_n=-1/(n+1) monte vers 0 depuis en dessous, v_n=1/(n+1) descend vers 0 depuis au-dessus, et w_n=cos(n)/(n+1), coincé entre les deux, est forcé vers la même limite 0.">
+  <title>Le théorème des gendarmes — w_n coincé entre deux suites convergentes</title>
+  <!--
+    theoreme-gendarmes.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    Exemple travaillé EXACT du R6 : u_n = -1/(n+1), v_n = 1/(n+1),
+    w_n = cos(n)/(n+1), n = 0..9 (cos en radians, valeurs calculées) :
+
+      n : 0       1       2       3       4       5       6       7       8       9
+      u : -1      -0,5    -0,333  -0,25   -0,2    -0,167  -0,143  -0,125  -0,111  -0,1
+      v :  1       0,5     0,333   0,25    0,2     0,167   0,143   0,125   0,111   0,1
+      w :  1       0,270  -0,139  -0,248  -0,131   0,047   0,137   0,094  -0,016  -0,091
+
+    Vérification u_n <= w_n <= v_n pour tout n (u0=v0=w0=... en fait
+    w0=cos(0)=1=v0, égalité au bord — cas limite correct, pas une erreur) ;
+    tous les autres rangs sont strictement à l'intérieur.
+
+    Repère écran : px = 90 + 50·n,  py = 240 - 170·valeur  (valeur=1 ->
+    py=70, valeur=-1 -> py=410, valeur=0 -> py=240 — même repère vertical
+    centré que le reste de la leçon).
+
+      u : n0(90,410) n1(140,325) n2(190,296.67) n3(240,282.5) n4(290,274)
+          n5(340,268.33) n6(390,264.29) n7(440,261.25) n8(490,258.89) n9(540,257)
+      v : n0(90,70)  n1(140,155) n2(190,183.33) n3(240,197.5) n4(290,206)
+          n5(340,211.67) n6(390,215.71) n7(440,218.75) n8(490,221.11) n9(540,223)
+      w : n0(90,70)  n1(140,194.06) n2(190,263.58) n3(240,282.08) n4(290,262.22)
+          n5(340,231.96) n6(390,216.68) n7(440,223.98) n8(490,242.75) n9(540,255.49)
+
+    STAGED, 3 étapes (LESSON-EXPERIENCE-SPEC §2.5), suivant EXACTEMENT
+    l'ordre du R6 : la limite commune d'abord (annoncée), puis les deux
+    gendarmes, puis le prisonnier forcé de les suivre :
+      step-1 : axes + la ligne pointillée L = 0 déjà nommée (la cible
+               commune, connue avant même que les suites n'apparaissent).
+      step-2 : les deux gendarmes u_n et v_n (en ink — données), qui
+               convergent visiblement vers L depuis chaque côté.
+      step-3 : le prisonnier w_n (en accent — lecture), oscillant de
+               façon imprévisible mais toujours coincé entre les deux,
+               forcé vers L.
+
+    Couleurs : axes/ligne L en --figure-ink-soft (chrome, repère neutre) ;
+    u_n, v_n en --figure-ink (les gendarmes, données) ; w_n en
+    --figure-accent (le prisonnier, seul foyer — la conclusion du
+    théorème).
+
+    Les captions vivent dans theoreme-gendarmes.stages.json — aucun
+    texte de légende baké ici (même convention que convergence-limite.svg).
+  -->
+
+  <rect x="20" y="34" width="600" height="430" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Le théorème des gendarmes</text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> &#x2264; w</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> &#x2264; v</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3">, avec u</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> &#x2192; 0 et v</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> &#x2192; 0</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — axes : la limite commune L = 0, déjà nommée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- axes -->
+    <line x1="90" y1="430" x2="565" y2="430" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="577,430 565,425.5 565,434.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="430" x2="90" y2="51" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,40 85.5,51 94.5,51" fill="var(--figure-ink-soft)"/>
+    <text x="581" y="434" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">n</text>
+    <text x="70" y="48" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">valeur</text>
+
+    <!-- ticks y : -1 et 1 seulement (minimalisme, voir convergence-limite) -->
+    <line x1="82" y1="410" x2="90" y2="410" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="82" y1="70"  x2="90" y2="70"  stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="78" y="414" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">-1</text>
+    <text x="78" y="74"  text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">1</text>
+
+    <!-- ticks x : n = 0..9 -->
+    <line x1="90"  y1="430" x2="90"  y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="140" y1="430" x2="140" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="190" y1="430" x2="190" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="240" y1="430" x2="240" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="290" y1="430" x2="290" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="340" y1="430" x2="340" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="390" y1="430" x2="390" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="440" y1="430" x2="440" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="490" y1="430" x2="490" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="540" y1="430" x2="540" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="90"  y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+    <text x="140" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">1</text>
+    <text x="190" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">2</text>
+    <text x="240" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">3</text>
+    <text x="290" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">4</text>
+    <text x="340" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">5</text>
+    <text x="390" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">6</text>
+    <text x="440" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">7</text>
+    <text x="490" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">8</text>
+    <text x="540" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">9</text>
+
+    <!-- limite commune L = 0 -->
+    <line x1="90" y1="240" x2="560" y2="240" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="78" y="238" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">L = 0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : les deux gendarmes u_n et v_n
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <polyline points="90,410 140,325 190,296.67 240,282.5 290,274 340,268.33 390,264.29 440,261.25 490,258.89 540,257"
+              fill="none" stroke="var(--figure-ink)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="90" y="424" font-size="10.5" font-style="italic" fill="var(--figure-ink)">u<tspan dy="3" font-size="8">n</tspan></text>
+
+    <polyline points="90,70 140,155 190,183.33 240,197.5 290,206 340,211.67 390,215.71 440,218.75 490,221.11 540,223"
+              fill="none" stroke="var(--figure-ink)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="90" y="62" font-size="10.5" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8">n</tspan></text>
+
+    <circle cx="90"  cy="410"    r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="140" cy="325"    r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="190" cy="296.67" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="240" cy="282.5"  r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="290" cy="274"    r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="340" cy="268.33" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="390" cy="264.29" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="440" cy="261.25" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="490" cy="258.89" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="540" cy="257"    r="2.2" fill="var(--figure-ink)"/>
+
+    <circle cx="90"  cy="70"     r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="140" cy="155"    r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="190" cy="183.33" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="240" cy="197.5"  r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="290" cy="206"    r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="340" cy="211.67" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="390" cy="215.71" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="440" cy="218.75" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="490" cy="221.11" r="2.2" fill="var(--figure-ink)"/>
+    <circle cx="540" cy="223"    r="2.2" fill="var(--figure-ink)"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : le prisonnier w_n, forcé vers L
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <polyline points="90,70 140,194.06 190,263.58 240,282.08 290,262.22 340,231.96 390,216.68 440,223.98 490,242.75 540,255.49"
+              fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="90"  cy="70"     r="3" fill="var(--figure-accent)"/>
+    <circle cx="140" cy="194.06" r="3" fill="var(--figure-accent)"/>
+    <circle cx="190" cy="263.58" r="3" fill="var(--figure-accent)"/>
+    <circle cx="240" cy="282.08" r="3" fill="var(--figure-accent)"/>
+    <circle cx="290" cy="262.22" r="3" fill="var(--figure-accent)"/>
+    <circle cx="340" cy="231.96" r="3" fill="var(--figure-accent)"/>
+    <circle cx="390" cy="216.68" r="3" fill="var(--figure-accent)"/>
+    <circle cx="440" cy="223.98" r="3" fill="var(--figure-accent)"/>
+    <circle cx="490" cy="242.75" r="3" fill="var(--figure-accent)"/>
+    <circle cx="540" cy="255.49" r="3" fill="var(--figure-accent)"/>
+    <text x="220" y="298" text-anchor="middle" font-size="10.5" font-weight="600" font-style="italic"
+          fill="var(--figure-accent)">w<tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> — coincé, forcé vers L</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

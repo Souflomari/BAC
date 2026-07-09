@@ -24,6 +24,8 @@ Et voilà la question qui porte toute cette leçon. $i$ produit une rotation de 
 
 C'est exactement ce qu'on va construire : une nouvelle façon d'écrire les complexes qui rend ces angles et ces rapports visibles, là où la forme algébrique $a+bi$ les cachait complètement.
 
+[[figure:multiplication-par-i]]
+
 ---
 
 ## R1 — Argument d'un complexe et forme trigonométrique
@@ -51,6 +53,8 @@ $$\cos\theta = \frac{a}{r} \qquad \text{et} \qquad \sin\theta = \frac{b}{r}$$
 Ces deux égalités déterminent $\theta$ de façon unique, à $2\pi$ près : le point $(a/r,\, b/r)$ est sur le cercle de rayon $1$ (puisque $(a/r)^2+(b/r)^2 = (a^2+b^2)/r^2 = r^2/r^2 = 1$), et un point du cercle unité correspond à exactement une direction, à un tour complet près.
 
 **Méthode pratique — et le piège à éviter.** Pour lire un argument à partir de la forme algébrique : calcule $r=|z|$, puis $\cos\theta=a/r$ et $\sin\theta=b/r$, et cherche l'angle dont le cosinus **et** le sinus valent exactement ces deux nombres — pas seulement leur valeur absolue. C'est ce double contrôle qui fixe le bon quadrant. Se contenter d'un « angle de référence » sans vérifier les deux signes est l'erreur la plus fréquente : un $a$ négatif, par exemple, place $M$ dans le demi-plan gauche, et l'argument n'est alors ni l'angle de référence lui-même, ni son opposé, mais $\pi$ moins (ou plus) cet angle de référence, selon le signe de $b$.
+
+[[figure:argument-forme-trigo]]
 
 ### La forme trigonométrique
 
@@ -202,6 +206,8 @@ $$z^4 = 4(\cos\pi + i\sin\pi) = 4(-1+0i) = -4$$
 
 **Vérification directe :** $z^2 = (1+i)^2 = 1+2i+i^2 = 2i$. Puis $z^4=(z^2)^2=(2i)^2=4i^2=-4$. Les deux méthodes donnent exactement $-4$.
 
+[[figure:spirale-moivre]]
+
 ---
 
 ## R4 — Racines n-ièmes : de l'unité, puis d'un complexe quelconque
@@ -298,6 +304,8 @@ La transformation est donc la composée d'une rotation de centre $O$ et d'angle 
 
 **Vérification géométrique :** $z=3$ a pour module $3$ et pour argument $0$. D'après la règle, $z'$ doit avoir pour module $3\sqrt2$ et pour argument $0+\pi/4=\pi/4$. Or $|3+3i| = \sqrt{9+9}=\sqrt{18}=3\sqrt2$, et $3+3i$ a bien pour argument $\pi/4$ (car $\cos = \sin = \frac{3}{3\sqrt2}=\frac{\sqrt2}{2}$). Les deux méthodes coïncident.
 
+[[figure:rotation-homothetie]]
+
 ---
 
 ## R6 — Configurations : la nature d'un triangle, l'alignement
@@ -342,6 +350,8 @@ $$w = -i$$
 $w$ est imaginaire pur non nul, donc le triangle est **rectangle en $A$**. Et $|w|=|-i|=1$, donc **isocèle en $A$** aussi : $AB=AC$. Le triangle $ABC$ est donc **rectangle et isocèle en $A$**.
 
 **Vérification directe sur les coordonnées :** $A(1,0)$, $B(1,1)$, $C(2,0)$. Le vecteur $\vec{AB}=(0,1)$ et $\vec{AC}=(1,0)$ sont bien orthogonaux (produit scalaire nul), et de même norme ($1$ chacun). La conclusion tirée du calcul complexe est directement confirmée par la géométrie élémentaire.
+
+[[figure:nature-triangle-w]]
 
 ---
 

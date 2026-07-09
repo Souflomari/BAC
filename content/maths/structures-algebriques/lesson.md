@@ -198,6 +198,8 @@ Il n'y en a pas d'autres (un rectangle non carré n'a que ces quatre symétries 
 
 **Construire une case de la table, en suivant les sommets.** Calculons $s_h \circ s_v$ (applique $s_v$, puis $s_h$), en suivant le sommet $A$ : $s_v$ envoie $A$ sur $B$ ; puis $s_h$ envoie ce $B$ sur $C$. Donc $A \mapsto C$ au total. En suivant les trois autres sommets de la même façon, on trouve $B \mapsto D$, $C \mapsto A$, $D \mapsto B$ : $A \leftrightarrow C$ et $B \leftrightarrow D$, exactement l'effet de $r$. Donc $s_h \circ s_v = r$.
 
+[[figure:symetries-rectangle]]
+
 En répétant ce même suivi de sommets pour chaque paire, on obtient la table complète :
 
 | $\circ$ | $id$ | $s_h$ | $s_v$ | $r$ |
@@ -289,6 +291,8 @@ $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ **est un anneau**.
 
 **Une observation qui va compter pour la suite.** Regarde la ligne du $1$ dans la table de $\times$ : elle recopie l'en-tête $0,1,2,3$ — $1$ est bien neutre pour $\times$. Mais est-ce que **chaque** élément a un symétrique pour $\times$ ? Regarde la ligne du $2$ : $2\times0=0$, $2\times1=2$, $2\times2=0$, $2\times3=2$ — jamais $1$. **$2$ n'a pas de symétrique pour $\times$.** Donc $(\mathbb{Z}/4\mathbb{Z}, \times)$, prise seule, **n'est pas un groupe** — l'axiome 4 échoue pour l'élément $2$ — alors même que $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ est bel et bien un anneau. C'est exactement ce que la définition de l'anneau annonçait : rien n'exige que $\times$ forme un groupe. Un anneau n'est **pas** "deux lois qui sont chacune un groupe" — c'est un groupe commutatif pour $+$, accompagné d'une seconde loi $\times$ moins exigeante.
 
+[[figure:table-multiplication-modulo4]]
+
 ---
 
 ## R6 — Corps : une brève mention
@@ -328,6 +332,8 @@ C'est exactement la même observation que celle faite à la fin du R5 pour $(\ma
 | Corps $(E,+,\times)$ | anneau, avec $\times$ commutative et **tout élément non nul** inversible pour $\times$ |
 
 La ligne qui sépare l'anneau du corps tient en une seule exigence supplémentaire — et c'est elle qui distingue $(\mathbb{Z},+,\times)$ (anneau seulement) de $(\mathbb{Q},+,\times)$ (corps).
+
+[[figure:echelle-structures]]
 
 ---
 

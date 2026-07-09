@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Modèle d'aires proportionnelles pour le tableau des 100 élèves : quatre cases, A inter B = 30, A inter B barre = 30, A barre inter B = 8, A barre inter B barre = 32, avec les totaux de ligne 60/40 et de colonne 38/62. Étape 1 : le tableau complet. Étape 2 : la case A inter B mise en évidence sur toute la classe, P(A inter B) = 0,30. Étape 3 : l'univers restreint à la ligne A (le reste grisé), P(B sachant A) = 0,50. Étape 4 : l'univers restreint à la colonne B (le reste grisé), P(A sachant B) environ 0,79.">
+  <title>Univers restreint — lire une probabilité conditionnelle sur un tableau à effectifs</title>
+
+  <!--
+    univers-restreint.svg — figure STAGED (4 étapes), R1 "Qu'est-ce qu'une
+    probabilité conditionnelle ?" (content/maths/probabilites-conditionnelles).
+
+    Grammaire de famille : reprend la structure de arbre-pondere.svg de CETTE
+    MÊME leçon (groupes id="step-N" stables, feuilles/cases à deux lignes
+    "libellé" + "valeur", boîte-formule en bas façon apt-leaf/adn-accentbox,
+    aria-label exhaustif, <title>) — mais avec la palette à JETONS
+    (var(--figure-*) uniquement, aucune couleur en dur) qui est la convention
+    ACTUELLE du corpus (précédent : arbre-denombrement.svg, urne-deux-couleurs.svg,
+    cmh-abo-independants.svg — tous postérieurs à arbre-pondere.svg, qui reste
+    en hex parce qu'il n'a pas encore été migré). arbre-pondere.svg n'est PAS
+    modifié par ce lot.
+
+    Géométrie — MOSAÏQUE EXACTE (aire = effectif), pas une grille figée :
+    le tableau n'est PAS indépendant (A inter B = 30 != 100 x 0,6 x 0,38 =
+    22,8), donc une grille à marges fixes (lignes ET colonnes alignées)
+    ne peut PAS avoir des aires de cellule égales aux effectifs réels — c'est
+    mathématiquement impossible sauf indépendance. On découpe donc D'ABORD
+    par LIGNE (A/A-barre, hauteurs 60%/40% = les totaux de ligne exacts),
+    PUIS, à l'intérieur de chaque ligne, par colonne selon le partage RÉEL de
+    cette ligne (dans la ligne A : 30/30, soit 50/50 ; dans la ligne A-barre :
+    8/32, soit 20/80). Résultat : quatre cases dont l'AIRE est exactement
+    l'effectif réel, ET une ligne A qui reste une bande unique et propre
+    (nécessaire à l'étape 3). En contrepartie, la colonne B n'est PAS un
+    bandeau vertical aligné (20% de large dans la ligne A-barre, 50% dans la
+    ligne A) — c'est honnête (c'est ce que "non indépendant" veut dire), donc
+    l'étape 4 met en évidence les DEUX cases B (non adjacentes) ensemble,
+    exactement comme arbre-pondere.svg step-3 met en évidence les deux
+    feuilles B non adjacentes de l'arbre (même précédent, même discipline :
+    on n'invente pas une grille fausse pour que ça "ait l'air" aligné).
+
+    Coordonnées (repère : rect x=220..740, y=130..430) :
+      ligne A     : y 130..310 (hauteur 180 = 60%)
+      ligne A-bar : y 310..430 (hauteur 120 = 40%)
+      dans A      : B x220..480 (50%) | B-barre x480..740 (50%)
+      dans A-bar  : B x220..324 (20%) | B-barre x324..740 (80%)
+    Les totaux de colonne (38/62) sont annoncés par une règle de cotation
+    horizontale SÉPARÉE au-dessus du rectangle (tick à 38% = x417,6) —
+    délibérément non confondue avec les frontières internes (x480 et x324),
+    pour ne jamais laisser croire à un alignement qui n'existe pas.
+
+    Étapes (geste d'enseignement, LESSON-EXPERIENCE-SPEC §2.5) :
+      step-1 : la mosaïque complète, quatre cases + totaux de ligne/colonne.
+      step-2 : la case A inter B isolée sur TOUTE la classe -> P(A inter B).
+      step-3 : la ligne A-barre grisée (univers réduit à 60) -> P(B|A).
+      step-4 : les deux cases B-barre grisées (univers réduit à 38) -> P(A|B).
+    Contrat DOM-additif (StagedFigure) : chaque étape n'AJOUTE que des
+    calques ; rien n'est retiré ni restylé. À l'étape 4, l'ancien calque de
+    grisaille de l'étape 3 (ligne A-barre) devient lui-même translucide
+    (opacité de groupe 0,55, gérée par le moteur StagedFigure) : la case
+    A-barre inter B (gardée à l'étape 4) peut donc garder une TRÈS légère
+    teinte résiduelle de l'étape précédente — comportement du moteur commun à
+    toutes les figures multi-étapes de ce corpus, pas une erreur locale à
+    cette figure.
+
+    Rôle des couleurs (5 jetons seulement) :
+      structure (cases, cadre, cotations, libellés) : --figure-ink /
+        --figure-ink-soft / --figure-grid / --figure-surface
+      grisaille des cases exclues : --figure-surface en surimpression semi-
+        opaque (fait refluer vers le fond, correct dans les deux thèmes)
+      SEULE emphase : le résultat en cours (contour + boîte-formule) :
+        --figure-accent
+    Les captions sont portées par univers-restreint.stages.json — aucun
+    texte de légende narrative baké ici (même convention que arbre-pondere).
+  -->
+
+  <style>
+    .urs-title    { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .urs-subtitle { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .urs-cell     { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .urs-celltop  { font: 600 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .urs-cellval  { font: 700 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .urs-frame    { fill: none; stroke: var(--figure-ink-soft); stroke-width: 2; }
+    .urs-dim      { stroke: var(--figure-ink-soft); stroke-width: 1.4; }
+    .urs-rowlabel { font: 700 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .urs-rowsub   { font: 500 10px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .urs-collabel { font: 600 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .urs-dim2     { fill: var(--figure-surface); fill-opacity: 0.82; }
+    .urs-keep     { fill: none; stroke: var(--figure-accent); stroke-width: 2.5; }
+    .urs-hi       { fill: var(--figure-accent); fill-opacity: 0.20; stroke: var(--figure-accent); stroke-width: 2.5; }
+    .urs-box      { fill: var(--figure-surface); stroke: var(--figure-accent); stroke-width: 1.75; }
+    .urs-accent   { font: 700 13.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .urs-note     { font: 500 10.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- Titre (chrome permanent) -->
+  <text class="urs-title" x="460" y="24">Lire une probabilité conditionnelle : l'univers qui rétrécit</text>
+  <text class="urs-subtitle" x="460" y="42">100 élèves — sport collectif (A) et football (B)</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la mosaïque complète, quatre cases + totaux
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Quatre cases, aire = effectif réel (mosaïque ligne-d'abord) -->
+    <rect class="urs-cell" x="220" y="130" width="260" height="180"/>
+    <text class="urs-celltop" x="350" y="213">A &#x2229; B</text>
+    <text class="urs-cellval" x="350" y="236">30</text>
+
+    <rect class="urs-cell" x="480" y="130" width="260" height="180"/>
+    <text class="urs-celltop" x="610" y="213">A &#x2229; B&#x0305;</text>
+    <text class="urs-cellval" x="610" y="236">30</text>
+
+    <rect class="urs-cell" x="220" y="310" width="104" height="120"/>
+    <text class="urs-celltop" x="272" y="363">A&#x0305; &#x2229; B</text>
+    <text class="urs-cellval" x="272" y="386">8</text>
+
+    <rect class="urs-cell" x="324" y="310" width="416" height="120"/>
+    <text class="urs-celltop" x="532" y="363">A&#x0305; &#x2229; B&#x0305;</text>
+    <text class="urs-cellval" x="532" y="386">32</text>
+
+    <!-- Cadre extérieur, coins doux -->
+    <rect class="urs-frame" x="220" y="130" width="520" height="300" rx="14"/>
+
+    <!-- Cotation de ligne (verticale, gauche) : 60 / 40 -->
+    <line class="urs-dim" x1="190" y1="130" x2="190" y2="430"/>
+    <line class="urs-dim" x1="182" y1="130" x2="198" y2="130"/>
+    <line class="urs-dim" x1="182" y1="310" x2="198" y2="310"/>
+    <line class="urs-dim" x1="182" y1="430" x2="198" y2="430"/>
+    <text class="urs-rowlabel" x="172" y="214" text-anchor="end">A — 60</text>
+    <text class="urs-rowsub"   x="172" y="230" text-anchor="end">sport collectif</text>
+    <text class="urs-rowlabel" x="172" y="364" text-anchor="end">A&#x0305; — 40</text>
+    <text class="urs-rowsub"   x="172" y="380" text-anchor="end">pas de sport collectif</text>
+
+    <!-- Cotation de colonne (horizontale, haut) : 38 / 62 — ligne SÉPARÉE,
+         volontairement non alignée sur x=480 ni x=324 (voir commentaire). -->
+    <line class="urs-dim" x1="220" y1="100" x2="740" y2="100"/>
+    <line class="urs-dim" x1="220" y1="92" x2="220" y2="108"/>
+    <line class="urs-dim" x1="417.6" y1="92" x2="417.6" y2="108"/>
+    <line class="urs-dim" x1="740" y1="92" x2="740" y2="108"/>
+    <text class="urs-collabel" x="318.8" y="84">B = 38 (football)</text>
+    <text class="urs-collabel" x="578.8" y="84">B&#x0305; = 62 (pas de football)</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — A inter B isolée sur TOUTE la classe -> P(A inter B)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect class="urs-hi" x="220" y="130" width="260" height="180"/>
+
+    <rect class="urs-box" x="190" y="452" width="220" height="58" rx="10"/>
+    <text class="urs-accent" x="300" y="474">P(A &#x2229; B) = 30/100 = 0,30</text>
+    <text class="urs-note" x="300" y="494">sur toute la classe (100 élèves)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — restriction à la ligne A -> P(B|A)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect class="urs-dim2" x="220" y="310" width="520" height="120"/>
+    <rect class="urs-keep" x="220" y="130" width="520" height="180" rx="10"/>
+
+    <rect class="urs-box" x="430" y="452" width="220" height="58" rx="10"/>
+    <text class="urs-accent" x="540" y="474">P(B|A) = 30/60 = 0,50</text>
+    <text class="urs-note" x="540" y="494">univers restreint à A (60 élèves)</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — restriction à la colonne B (deux cases non adjacentes) -> P(A|B)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect class="urs-dim2" x="480" y="130" width="260" height="180"/>
+    <rect class="urs-dim2" x="324" y="310" width="416" height="120"/>
+    <rect class="urs-keep" x="220" y="130" width="260" height="180" rx="8"/>
+    <rect class="urs-keep" x="220" y="310" width="104" height="120" rx="8"/>
+
+    <rect class="urs-box" x="670" y="452" width="220" height="58" rx="10"/>
+    <text class="urs-accent" x="780" y="474">P(A|B) = 30/38 &#x2248; 0,79</text>
+    <text class="urs-note" x="780" y="494">univers restreint à B (38 élèves)</text>
+  </g><!-- /step-4 -->
+
+</svg>

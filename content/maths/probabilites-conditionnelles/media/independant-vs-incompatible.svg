@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Modèle d'aires en carré unité contrastant incompatibilité et indépendance, avec le même P(A) = 0,4 et le même P(B) = 0,5 dans les deux cas. Étape 1 : le carré Ω avec la bande verticale A. Étape 2 : B ajoutée comme bande disjointe, sans chevauchement, A inter B vide, P(B sachant A) = 0 différent de P(B) — dépendance maximale. Étape 3 : un second carré où B est une bande horizontale qui traverse A ; le rectangle d'intersection vaut P(A) fois P(B) = 0,20, et P(B sachant A) égale P(B) — aucune dépendance.">
+  <title>Indépendance et incompatibilité — même P(A), même P(B), deux agencements</title>
+
+  <!--
+    independant-vs-incompatible.svg — figure STAGED (3 étapes), R3
+    "Indépendance et incompatibilité" (content/maths/probabilites-conditionnelles).
+
+    Grammaire de famille : même discipline que univers-restreint.svg de cette
+    leçon (groupes id="step-N" stables, boîte-formule accent en bas, palette
+    --figure-* uniquement).
+
+    Choix structurel : ÉVITE le piège du diagramme de Venn (callout R3 :
+    "utiliser le même modèle en carré unité dans les deux cas, pour que seule
+    la structure du recouvrement change"). On dessine DEUX carrés-unité
+    séparés, tous deux avec la MÊME bande A (largeur P(A) = 0,4) :
+      carré GAUCHE (step-1 puis step-2) : B ajoutée comme bande verticale
+        DISJOINTE (aucun chevauchement) -> incompatibles.
+      carré DROIT (step-3, copie fraîche) : B ajoutée comme bande
+        HORIZONTALE qui traverse toute la largeur -> indépendants,
+        intersection = rectangle P(A) x P(B).
+    Un second carré plutôt qu'une réécriture du premier : le contrat
+    DOM-additif de StagedFigure n'autorise que des AJOUTS (jamais de retrait
+    ni de restyle d'un groupe déjà injecté) — impossible de faire
+    disparaître la bande disjointe de l'étape 2 pour la remplacer. Une copie
+    fraîche à droite est honnête ET pédagogiquement utile : à l'étape 3, les
+    deux agencements sont visibles côte à côte pour comparaison directe.
+
+    Valeurs : P(A) = 0,4, P(B) = 0,5 — reprises telles quelles du "test de
+    magnitude" du R3 (lesson.md, sous-section "La formule d'indépendance
+    utilise ×, pas +"), pour que cette figure introduise (et la prose
+    confirme ensuite) exactement ces nombres. Carré de 260 x 260 :
+      bande A : largeur 0,4 x 260 = 104 (les deux carrés, même position
+        relative x0..104 du carré).
+      carré gauche, étape 2 — bande B disjointe : largeur 0,5 x 260 = 130,
+        séparée de A par un vide de 26 (= 0,1 x 260, la probabilité "ni A
+        ni B" — 1 - 0,4 - 0,5 = 0,1 ; le vide n'est PAS un artefact, il a une
+        aire exacte).
+      carré droit, étape 3 — bande B horizontale : hauteur 0,5 x 260 = 130,
+        pleine largeur. Rectangle A inter B = 104 x 130 = aire 0,20 du
+        carré = P(A) x P(B). Une ligne pointillée à la frontière basse de B
+        (y=220) traverse tout le carré : la même frontière, dans et hors de
+        la bande A, montre que la fraction de B ne change pas selon qu'on
+        est dans A ou non — c'est visuellement P(B|A) = P(B).
+
+    Rôle des couleurs (5 jetons seulement, discipline "accent = résultat",
+    même que arbre-denombrement.svg / urne-deux-couleurs.svg) :
+      bande A (les deux carrés)      : --figure-ink-soft, contour plein
+      bande B (les deux carrés)      : --figure-grid (remplissage) +
+        contour --figure-ink en tirets — distingue B de A par la LIGNE
+        (tirets vs plein), pas par une couleur supplémentaire (la palette
+        n'a qu'un accent)
+      SEULE emphase : le symbole ∅ (étape 2), le rectangle d'intersection
+        A inter B et les boîtes-formule (étapes 2 et 3) : --figure-accent
+
+    Les captions sont portées par independant-vs-incompatible.stages.json —
+    aucun texte de légende narrative baké ici.
+  -->
+
+  <style>
+    .ivi-title    { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .ivi-subtitle { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .ivi-square   { fill: var(--figure-surface); stroke: var(--figure-ink-soft); stroke-width: 2; }
+    .ivi-omega    { font: 500 12px 'IBM Plex Sans', system-ui, sans-serif; font-style: italic; fill: var(--figure-ink-soft); }
+    .ivi-bandA    { fill: var(--figure-ink-soft); fill-opacity: 0.16; stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .ivi-bandB    { fill: var(--figure-grid); stroke: var(--figure-ink); stroke-width: 1.75; stroke-dasharray: 5 3; }
+    .ivi-bandlabel{ font: 700 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .ivi-bandsub  { font: 500 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .ivi-heading  { font: 700 13.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .ivi-tag      { font: 600 12.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .ivi-emptyset { font: 700 16px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .ivi-overlap  { fill: var(--figure-accent); fill-opacity: 0.22; stroke: var(--figure-accent); stroke-width: 2.5; }
+    .ivi-overlaplabel { font: 700 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .ivi-guide    { stroke: var(--figure-ink-soft); stroke-width: 1.2; stroke-dasharray: 4 4; }
+    .ivi-box      { fill: var(--figure-surface); stroke: var(--figure-accent); stroke-width: 1.75; }
+    .ivi-accent   { font: 700 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .ivi-note     { font: 500 9.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .ivi-bridge   { font: 500 10.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    text { text-anchor: middle; }
+  </style>
+
+  <!-- Titre (chrome permanent) -->
+  <text class="ivi-title" x="470" y="24">Indépendance et incompatibilité : deux agencements possibles</text>
+  <text class="ivi-subtitle" x="470" y="42">Deux façons de placer B à côté de A dans le même univers Ω</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — carré gauche : Ω et la bande A (P(A) = 0,4)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect class="ivi-square" x="60" y="90" width="260" height="260" rx="12"/>
+    <text class="ivi-omega" x="305" y="340" text-anchor="end">&#x3A9;</text>
+
+    <rect class="ivi-bandA" x="60" y="90" width="104" height="260"/>
+    <text class="ivi-bandlabel" x="112" y="115">A</text>
+    <text class="ivi-bandsub" x="112" y="133">P(A) = 0,4</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — B disjointe : incompatibles
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text class="ivi-heading" x="190" y="68">Événements incompatibles</text>
+
+    <rect class="ivi-bandB" x="190" y="90" width="130" height="260"/>
+    <text class="ivi-bandlabel" x="255" y="115">B</text>
+    <text class="ivi-bandsub" x="255" y="133">P(B) = 0,5</text>
+
+    <text class="ivi-emptyset" x="177" y="226">&#x2205;</text>
+    <text class="ivi-tag" x="190" y="378">A &#x2229; B = &#x2205;</text>
+
+    <rect class="ivi-box" x="60" y="396" width="260" height="58" rx="10"/>
+    <text class="ivi-accent" x="190" y="418">P(B|A) = 0 &#x2260; P(B) = 0,5</text>
+    <text class="ivi-note" x="190" y="438">A exclut B totalement — dépendance maximale</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — carré droit (copie fraîche) : B croise A -> indépendants
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect class="ivi-square" x="620" y="90" width="260" height="260" rx="12"/>
+    <text class="ivi-omega" x="865" y="340" text-anchor="end">&#x3A9;</text>
+
+    <text class="ivi-heading" x="750" y="68">Événements indépendants</text>
+
+    <!-- bande A, verticale, même largeur que le carré gauche -->
+    <rect class="ivi-bandA" x="620" y="90" width="104" height="260"/>
+    <!-- bande B, horizontale, pleine largeur -->
+    <rect class="ivi-bandB" x="620" y="90" width="260" height="130"/>
+
+    <!-- intersection A inter B — LE résultat : P(A) x P(B) -->
+    <rect class="ivi-overlap" x="620" y="90" width="104" height="130"/>
+    <text class="ivi-overlaplabel" x="672" y="147">A&#x2229;B</text>
+    <text class="ivi-overlaplabel" x="672" y="163">0,20</text>
+
+    <text class="ivi-bandlabel" x="672" y="290">A</text>
+    <text class="ivi-bandsub" x="672" y="306">P(A) = 0,4</text>
+    <text class="ivi-bandlabel" x="802" y="150">B</text>
+    <text class="ivi-bandsub" x="802" y="168">P(B) = 0,5</text>
+
+    <!-- frontière de B, pleine largeur : la même fraction dans et hors de A -->
+    <line class="ivi-guide" x1="620" y1="220" x2="880" y2="220"/>
+
+    <text class="ivi-bridge" x="470" y="220">mêmes P(A) et P(B) — seul l'agencement change</text>
+
+    <rect class="ivi-box" x="620" y="396" width="260" height="58" rx="10"/>
+    <text class="ivi-accent" x="750" y="418">P(B|A) = 0,20/0,40 = 0,50 = P(B)</text>
+    <text class="ivi-note" x="750" y="438">aucune dépendance : la part de B ne change pas</text>
+  </g><!-- /step-3 -->
+
+</svg>

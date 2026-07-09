@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 620"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Une échelle à quatre barreaux, chacun ajoutant une seule exigence au précédent. Groupe : loi interne, associative, neutre, symétrique pour chaque élément, exemple Z/4Z avec addition. Groupe commutatif : le groupe, plus la commutativité, seule exigence ajoutée. Anneau : E muni de l'addition doit être un groupe commutatif entier, plus une seconde loi multiplicative seulement associative et distributive par rapport à l'addition, exemple Z avec addition et multiplication. Corps : l'anneau, plus la multiplication commutative et tout élément non nul inversible pour la multiplication, exemple Q avec addition et multiplication, contrasté avec Z qui est un anneau mais pas un corps.">
+  <title>L'échelle des structures : chaque niveau ajoute une seule exigence</title>
+
+  <!--
+    echelle-structures.svg — R6 ("brève mention" du corps) + synthèse du
+    chapitre. STAGED (LESSON-EXPERIENCE-SPEC §2.5 — le geste d'enseignement
+    EST l'ordre cumulatif du chapitre lui-même : groupe (R3) -> groupe
+    commutatif (R4) -> anneau (R5) -> corps (R6), chaque barreau reprenant
+    STRICTEMENT le texte de la table de synthèse du R6, lesson.md
+    lignes 323-328 — aucune formulation nouvelle inventée ici).
+
+    PRINCIPE DE LA FIGURE : chaque barreau montre CE QUI EST HÉRITÉ (calme,
+    --figure-ink-soft) et LA SEULE EXIGENCE NOUVELLE (--figure-accent, gras)
+    — jamais l'inverse, jamais plusieurs exigences accentuées à la fois : un
+    seul ajout par barreau, exactement ce que le texte affirme à chaque rung.
+
+    step-1 : barreau Groupe seul — rien n'est "ajouté" encore (c'est le
+             socle), donc les quatre axiomes sont en encre neutre, pas en
+             accent (l'accent est réservé à un AJOUT relatif à un barreau
+             précédent, qui n'existe pas encore ici).
+    step-2 : + barreau Groupe commutatif — hérite "groupe" (calme), ajoute
+             SEULEMENT "commutativité" (accent).
+    step-3 : + barreau Anneau — hérite "(E,+) groupe commutatif" (calme),
+             ajoute la seconde loi × "associative, distributive sur +"
+             (accent).
+    step-4 : + barreau Corps — hérite "anneau" (calme), ajoute "× commutative,
+             tout élément non nul inversible" (accent) ; et l'étiquette de
+             contraste demandée par la leçon (R6, "Le contre-exemple qui
+             sépare anneau et corps") : (ℚ,+,×) corps vs (ℤ,+,×) anneau
+             seulement.
+
+    Layout : 4 barreaux (rounded rect, x=40, largeur 560), empilés de haut
+    en bas dans l'ordre exact du texte, avec un espace de 20px entre eux.
+    Chaque barreau porte : le nom de la structure (gras, ink) + son exemple
+    entre parenthèses (ink-soft, italique, aligné à droite) + 1 à 3 lignes
+    d'exigences.
+
+    Couleurs (5 tokens seulement) :
+      cadre des barreaux                         : --figure-grid
+      titres, exemples hérités                    : --figure-ink / --figure-ink-soft
+      SEULE exigence nouvelle par barreau          : --figure-accent
+  -->
+
+  <!-- Fond du panneau -->
+  <rect x="10" y="10" width="620" height="600" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Titre -->
+  <text x="320" y="32" text-anchor="middle" font-size="15" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">Chaque structure = la précédente + une exigence</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Groupe (E, ⋆) : le socle, quatre axiomes complets
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="40" y="54" width="560" height="114" rx="12" fill="none" stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <text x="60" y="80" font-size="16" font-weight="700" fill="var(--figure-ink)">Groupe (E, ⋆)</text>
+    <text x="580" y="80" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">ex. (ℤ/4ℤ, +)</text>
+    <text x="60" y="112" font-size="13" fill="var(--figure-ink)">loi interne + associative</text>
+    <text x="60" y="134" font-size="13" fill="var(--figure-ink)">+ neutre + symétrique pour chaque élément</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Groupe commutatif : + commutativité (seule nouveauté)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="40" y="188" width="560" height="88" rx="12" fill="none" stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <text x="60" y="214" font-size="16" font-weight="700" fill="var(--figure-ink)">Groupe commutatif</text>
+    <text x="580" y="214" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">ex. (ℤ/4ℤ, +)</text>
+    <text x="60" y="246" font-size="13" fill="var(--figure-ink-soft)"
+          >groupe<tspan fill="var(--figure-ink-soft)"> + </tspan><tspan font-weight="700" fill="var(--figure-accent)">commutativité</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Anneau (E,+,×) : + une seconde loi ×, moins exigeante
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect x="40" y="296" width="560" height="114" rx="12" fill="none" stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <text x="60" y="322" font-size="16" font-weight="700" fill="var(--figure-ink)">Anneau (E, +, ×)</text>
+    <text x="580" y="322" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">ex. (ℤ, +, ×)</text>
+    <text x="60" y="354" font-size="13" fill="var(--figure-ink-soft)">(E, +) groupe commutatif</text>
+    <text x="60" y="376" font-size="13" fill="var(--figure-ink-soft)"
+          ><tspan>+ nouvelle loi </tspan><tspan font-weight="700" fill="var(--figure-accent)">× associative, distributive sur +</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — Corps (E,+,×) : + × commutative et inversible (non nuls)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect x="40" y="430" width="560" height="136" rx="12" fill="none" stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <text x="60" y="456" font-size="16" font-weight="700" fill="var(--figure-ink)">Corps (E, +, ×)</text>
+    <text x="580" y="456" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">ex. (ℚ, +, ×)</text>
+    <text x="60" y="488" font-size="13" fill="var(--figure-ink-soft)"
+          >anneau<tspan> + </tspan><tspan font-weight="700" fill="var(--figure-accent)">× commutative,</tspan></text>
+    <text x="60" y="510" font-size="13" font-weight="700" fill="var(--figure-accent)">tout élément non nul inversible pour ×</text>
+    <text x="60" y="536" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">(ℚ, +, ×) : corps  —  (ℤ, +, ×) : anneau (pas corps)</text>
+  </g><!-- /step-4 -->
+
+</svg>
