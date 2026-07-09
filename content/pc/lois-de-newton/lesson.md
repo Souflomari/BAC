@@ -56,6 +56,8 @@ $$\vec{v}_G = \frac{d\overrightarrow{OG}}{dt}$$
 
 où $O$ est un point fixe du référentiel. Concrètement, $\vec{v}_G$ est **tangent à la trajectoire** de $G$ à chaque instant, dirigé dans le sens du mouvement, et sa norme est la vitesse au sens usuel (en m/s).
 
+[[figure:vecteur-vitesse-tangente]]
+
 Retiens bien ceci, parce que ça va compter dans les rungs suivants : $\vec{v}_G$ peut être grand ou petit, constant ou changeant — **ce n'est pas la vitesse elle-même qui va nous renseigner sur les forces**. Ce qui va compter, c'est de savoir si, et comment, $\vec{v}_G$ **change** au cours du temps.
 
 ---
@@ -171,6 +173,8 @@ $$\vec{N}_{\text{table} \to \text{livre}} \quad \text{a pour réciproque} \quad 
 
 Cette force réciproque s'exerce SUR LA TABLE, pas sur le livre — c'est pour ça qu'elle n'apparaît jamais dans le bilan des forces du livre. De même, la réciproque du poids $\vec{P}$ (qui est la force exercée par la Terre sur le livre) est la force que le livre exerce, en retour, sur la Terre — une force minuscule en effet sur un objet aussi massif, mais qui existe bien, par la troisième loi.
 
+[[figure:actions-reciproques-livre-table]]
+
 ### Synthèse des trois lois
 
 | Loi | Énoncé en une phrase | Remarque |
@@ -225,6 +229,8 @@ $$a_{G,x} = \frac{8{,}0 - 3{,}0}{2{,}0} = 2{,}5\ \text{m}\cdot\text{s}^{-2}$$
 
 L'accélération de la caisse vaut $2{,}5\ \text{m}\cdot\text{s}^{-2}$, dans le sens du mouvement. Remarque un point de méthode important : $N$ n'intervient **pas** dans l'équation selon $Ox$ — le poids et la réaction normale se compensent verticalement, mais ils n'ont aucun effet sur l'accélération horizontale. Seules $F$ et $f$, les forces qui ont une composante selon $Ox$, déterminent $a_{G,x}$.
 
+[[figure:bilan-forces-caisse-horizontale]]
+
 ---
 
 ## R6 — Application : la chute verticale
@@ -246,6 +252,8 @@ $$m\,\vec{g} = m\,\vec{a}_G$$
 $$\vec{a}_G = \vec{g}$$
 
 La masse $m$ se simplifie **complètement** des deux côtés de l'équation. L'accélération en chute libre ne dépend donc ni de la masse, ni du poids de l'objet : elle vaut $\vec{g}$, la même pour tous les objets, quelle que soit leur masse. Les deux billes, acier et plastique, tombent avec exactement la même accélération, donc touchent le sol **au même instant** — la prédiction « plus lourd tombe plus vite » est directement contredite par ce calcul.
+
+[[figure:chute-libre-comparaison]]
 
 ### Pourquoi masse et poids ne sont pas la même chose
 

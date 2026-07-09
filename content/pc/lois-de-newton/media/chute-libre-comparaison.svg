@@ -1,0 +1,77 @@
+<svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Deux billes, une en acier de 200 grammes et une en plastique de 20 grammes, lâchées ensemble sans vitesse initiale depuis la même hauteur : elles ont parcouru la même distance une seconde plus tard, et touchent le sol au même instant, deux secondes après le lâcher.">
+  <title>Chute libre — la même accélération, quelle que soit la masse</title>
+  <!--
+    chute-libre-comparaison.svg — figure STAGED (3 étapes = 3 instantanés),
+    cœur du R6. Figure qualitative : le texte ne donne pas de hauteur pour
+    CE comparatif à deux billes (contrairement à l'exemple travaillé du R6
+    qui utilise h = 19,6 m — un cas séparé) ; les positions verticales
+    suivent honnêtement la loi x(t) = ½g t² en PROPORTION (position à t=1
+    = 1/4 de la chute totale, position à t=2 = chute complète), sans
+    revendiquer d'échelle en mètres — donc pas de disclosure d'échelle
+    on-canvas.
+    Différenciation acier / plastique SANS deuxième couleur (palette à
+    accent unique) : bille acier = disque plein (--figure-ink), bille
+    plastique = disque évidé (contour --figure-ink, fond --figure-surface).
+    Les 3 groupes step-N sont CUMULATIFS (convention StagedFigure : les
+    étapes précédentes restent visibles, atténuées) — l'effet recherché
+    est une traînée des 3 instantanés superposés, pour que la comparaison
+    "même niveau à chaque instant" saute aux yeux dès l'étape 3.
+    Focus accent : les deux liserés horizontaux reliant les billes aux
+    étapes 2 et 3 — la preuve visuelle qu'elles restent toujours au même
+    niveau.
+    Étapes (reprend l'ordre du texte : lâcher, un instant plus tard, arrivée) :
+    (1) t = 0 : les deux billes lâchées ensemble, sans vitesse initiale ;
+    (2) t = 1 s : même distance parcourue, a_G = g pour les deux ;
+    (3) t = 2 s : les deux au sol, au même instant.
+  -->
+  <rect width="720" height="460" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <!-- ── le sol ─────────────────────────────────────────────────────── -->
+    <line x1="140" y1="400" x2="580" y2="400" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="150" y1="400" x2="142" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="190" y1="400" x2="182" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="230" y1="400" x2="222" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="270" y1="400" x2="262" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="310" y1="400" x2="302" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="350" y1="400" x2="342" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="390" y1="400" x2="382" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="430" y1="400" x2="422" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="470" y1="400" x2="462" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="510" y1="400" x2="502" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="550" y1="400" x2="542" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- ── t = 0 : lâcher ─────────────────────────────────────────────── -->
+    <line x1="200" y1="60" x2="520" y2="60" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <text x="536" y="64" font-size="13" fill="var(--figure-ink-soft)">t = 0</text>
+
+    <circle cx="260" cy="60" r="18" fill="var(--figure-ink)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="460" cy="60" r="18" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <text x="260" y="28" text-anchor="middle" font-size="13" fill="var(--figure-ink-soft)">acier — 200 g</text>
+    <text x="460" y="28" text-anchor="middle" font-size="13" fill="var(--figure-ink-soft)">plastique — 20 g</text>
+    <text x="360" y="93" text-anchor="middle" font-size="13" fill="var(--figure-ink-soft)">v = 0, lâchées ensemble</text>
+  </g>
+
+  <g id="step-2">
+    <!-- ── t = 1 s : même distance parcourue ────────────────────────────── -->
+    <line x1="200" y1="145" x2="520" y2="145" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <text x="536" y="149" font-size="13" fill="var(--figure-ink-soft)">t = 1 s</text>
+
+    <circle cx="260" cy="145" r="18" fill="var(--figure-ink)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="460" cy="145" r="18" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <line x1="278" y1="145" x2="442" y2="145" stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6 4"/>
+    <text x="360" y="122" text-anchor="middle" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="65%">G</tspan><tspan dy="-4"> = </tspan><tspan font-style="italic">g</tspan><tspan> — même valeur, quelle que soit la masse</tspan></text>
+  </g>
+
+  <g id="step-3">
+    <!-- ── t = 2 s : les deux au sol, au même instant ───────────────────── -->
+    <circle cx="260" cy="382" r="18" fill="var(--figure-ink)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="460" cy="382" r="18" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <line x1="278" y1="382" x2="442" y2="382" stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6 4"/>
+    <text x="360" y="358" text-anchor="middle" font-size="14" fill="var(--figure-accent)">t = 2 s — au même instant</text>
+  </g>
+</svg>

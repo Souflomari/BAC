@@ -1,0 +1,80 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Un livre posé sur une table, elle-même posée sur le sol : le poids P et la réaction normale N s'exercent tous deux sur le livre (un équilibre, pas une paire d'action-réaction) ; la vraie réciproque de N, notée N livre vers table, s'exerce sur la table ; la vraie réciproque de P, notée P livre vers Terre, s'exerce sur la Terre — chaque paire relie deux corps différents.">
+  <title>Actions réciproques — le livre, la table et la Terre</title>
+  <!--
+    actions-reciproques-livre-table.svg — figure STAGED (4 étapes), cœur du R4.
+    Figure qualitative (aucune valeur numérique en jeu dans le texte pour ce
+    cas) : les 4 flèches ont donc délibérément la MÊME longueur (80 px),
+    ce qui rend visible, sans l'écrire, que chaque paire réciproque a
+    "même norme" — pas seulement "sens opposé".
+    Convention de construction des flèches, reprise de deux-chariots/
+    plan-incline : hampe = longueur − 12 px, pointe (polygone) sur les
+    12 derniers px, base du triangle ± 5 px perpendiculaire à la hampe.
+    Trois corps empilés (livre / table / Terre), chacune des 4 forces
+    part du CENTRE du corps sur lequel elle s'exerce — c'est PAR la
+    position de la queue de la flèche (pas sa couleur) que la figure
+    répond à la question "sur quel corps ?", conformément à la consigne
+    du callout ("rendre visible la distinction par le corps où atterrit
+    chaque flèche").
+    Focus accent : les deux réciproques (étapes 3 et 4) — le "twist"
+    pédagogique de ce rung, qui n'existe qu'une fois qu'on regarde l'AUTRE
+    corps.
+    Étapes (geste d'enseignement — reprend l'ordre du texte : le montage,
+    puis les deux forces sur le livre, puis la réciproque de N, puis celle
+    de P) :
+    (1) le montage — livre sur table, table sur Terre ;
+    (2) les deux forces SUR LE LIVRE : P et N (même corps → équilibre) ;
+    (3) la réciproque de N, sur la TABLE : N livre→table ;
+    (4) la réciproque de P, sur la TERRE : P livre→Terre.
+  -->
+  <rect width="720" height="520" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <!-- le livre -->
+    <rect x="290" y="170" width="140" height="40" rx="3"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="300" y="163" font-size="13" fill="var(--figure-ink-soft)">Livre</text>
+
+    <!-- la table -->
+    <rect x="140" y="330" width="440" height="14"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="170" y1="344" x2="170" y2="440" stroke="var(--figure-ink)" stroke-width="8"/>
+    <line x1="550" y1="344" x2="550" y2="440" stroke="var(--figure-ink)" stroke-width="8"/>
+    <text x="590" y="341" font-size="13" fill="var(--figure-ink-soft)">Table</text>
+
+    <!-- la Terre -->
+    <rect x="0" y="440" width="720" height="80" fill="var(--figure-grid)"/>
+    <line x1="0" y1="440" x2="720" y2="440" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="640" y="485" text-anchor="end" font-size="13" fill="var(--figure-ink-soft)">Terre</text>
+  </g>
+
+  <g id="step-2">
+    <!-- P : poids, Terre → livre, vers le bas, SUR LE LIVRE -->
+    <line x1="360" y1="190" x2="360" y2="258" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="360,270 355,258 365,258" fill="var(--figure-ink)"/>
+    <text x="374" y="255" font-size="16" font-style="italic" fill="var(--figure-ink)">P</text>
+
+    <!-- N : réaction normale, table → livre, vers le haut, SUR LE LIVRE -->
+    <line x1="360" y1="190" x2="360" y2="122" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="360,110 355,122 365,122" fill="var(--figure-ink)"/>
+    <text x="374" y="130" font-size="16" font-style="italic" fill="var(--figure-ink)">N</text>
+
+    <!-- flag : même corps → équilibre -->
+    <path d="M 468 110 L 460 110 L 460 270 L 468 270" fill="none" stroke="var(--figure-accent)" stroke-width="1.5"/>
+    <text x="476" y="182" font-size="13.5" fill="var(--figure-accent)"><tspan x="476" dy="0">même corps</tspan><tspan x="476" dy="16">→ équilibre</tspan></text>
+  </g>
+
+  <g id="step-3">
+    <!-- réciproque de N : force du livre SUR LA TABLE, vers le bas -->
+    <line x1="360" y1="337" x2="360" y2="405" stroke="var(--figure-accent)" stroke-width="2.5"/>
+    <polygon points="360,417 355,405 365,405" fill="var(--figure-accent)"/>
+    <text x="374" y="398" font-size="15" fill="var(--figure-accent)"><tspan font-style="italic">N</tspan><tspan dy="4" font-size="60%">livre→table</tspan></text>
+  </g>
+
+  <g id="step-4">
+    <!-- réciproque de P : force du livre SUR LA TERRE, vers le haut -->
+    <line x1="360" y1="480" x2="360" y2="412" stroke="var(--figure-accent)" stroke-width="2.5"/>
+    <polygon points="360,400 355,412 365,412" fill="var(--figure-accent)"/>
+    <text x="374" y="452" font-size="15" fill="var(--figure-accent)"><tspan font-style="italic">P</tspan><tspan dy="4" font-size="60%">livre→Terre</tspan></text>
+  </g>
+</svg>

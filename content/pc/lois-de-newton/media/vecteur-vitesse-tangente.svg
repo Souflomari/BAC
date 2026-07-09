@@ -1,0 +1,68 @@
+<svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Construction du vecteur vitesse par passage à la limite : la trajectoire courbe du centre d'inertie G, repérée depuis un point fixe O du référentiel ; la corde G1G2 portant la vitesse moyenne ; la même corde qui pivote quand G2 se rapproche de G1 ; et à la limite, le vecteur vitesse instantanée vG, tangent à la trajectoire en G1, dans le sens du mouvement.">
+  <title>Construction du vecteur vitesse — de la sécante à la tangente</title>
+  <!--
+    vecteur-vitesse-tangente.svg — figure STAGED (4 étapes), cœur du R1.
+    Géométrie calculée, pas devinée : trajectoire = Bézier quadratique
+    P0=(100,340) P1=(260,340) P2=(560,110). G1 = point à t=0,30 sur cette
+    courbe ; G2 = point à t=0,65 ; G2' (étape 3, G2 rapproché) = point à
+    t=0,42. La tangente en G1 (étape 4) est la dérivée exacte de la Bézier
+    en t=0,30, normalisée à 140 px — une longueur comparable à la corde
+    G1G2 (≈176 px), pour ne pas suggérer "plus longue donc plus grande" à
+    tort. Aucune valeur physique n'est attachée (figure conceptuelle) :
+    pas de disclosure d'échelle nécessaire.
+    Focus accent : le vecteur vitesse instantanée vG (étape 4), l'aboutissement
+    de la construction — une seule idée, à la fin du geste.
+    Étapes (geste d'enseignement — reprend l'ordre du texte : la trajectoire
+    et G1, puis la sécante G1G2, puis son resserrement, puis la tangente) :
+    (1) la trajectoire de G, le point G1, le point fixe O du référentiel ;
+    (2) G2 plus loin sur la trajectoire, la corde G1G2 = vitesse moyenne ;
+    (3) G2 se rapproche de G1 : la corde pivote (l'intervalle se resserre) ;
+    (4) à la limite, la corde devient tangente en G1 : c'est vG.
+  -->
+  <rect width="720" height="420" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <!-- trajectoire de G -->
+    <path d="M 100 340 Q 260 340 560 110" fill="none" stroke="var(--figure-ink)" stroke-width="2.5"/>
+
+    <!-- point fixe O du référentiel -->
+    <circle cx="90" cy="380" r="3.5" fill="var(--figure-ink-soft)"/>
+    <text x="76" y="384" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+    <line x1="90" y1="380" x2="204.6" y2="322.1" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4 4"/>
+
+    <!-- G1 -->
+    <circle cx="208.6" cy="319.3" r="4" fill="var(--figure-ink)"/>
+    <text x="192" y="342" font-size="15" fill="var(--figure-ink)"><tspan font-style="italic">G</tspan><tspan dy="4" font-size="65%">1</tspan></text>
+  </g>
+
+  <g id="step-2">
+    <!-- G2 et la corde G1G2 = vitesse moyenne -->
+    <circle cx="367.15" cy="242.8" r="4" fill="var(--figure-ink)"/>
+    <text x="378" y="238" font-size="15" fill="var(--figure-ink)"><tspan font-style="italic">G</tspan><tspan dy="4" font-size="65%">2</tspan></text>
+
+    <line x1="208.6" y1="319.3" x2="356.4" y2="248.0" stroke="var(--figure-ink)" stroke-width="2.3"/>
+    <polygon points="367.15,242.8 358.6,252.5 354.2,243.5" fill="var(--figure-ink)"/>
+    <text x="300" y="272" font-size="14.5" fill="var(--figure-ink)"><tspan font-style="italic">v</tspan><tspan dy="4" font-size="60%">moy</tspan></text>
+  </g>
+
+  <g id="step-3">
+    <!-- G2 se rapproche de G1 : G2' et la corde resserrée qui pivote -->
+    <circle cx="259.1" cy="299.4" r="3.5" fill="var(--figure-ink-soft)"/>
+    <text x="266" y="296" font-size="13" fill="var(--figure-ink-soft)"><tspan font-style="italic">G</tspan><tspan dy="4" font-size="65%">2</tspan><tspan dy="-4">'</tspan></text>
+
+    <line x1="208.6" y1="319.3" x2="247.9" y2="303.79" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-dasharray="5 4"/>
+    <polygon points="259.1,299.4 249.7,308.4 246.1,299.1" fill="var(--figure-ink-soft)"/>
+
+    <text x="118" y="272" font-size="13" fill="var(--figure-ink-soft)">t₂ − t₁ se resserre, la corde pivote</text>
+  </g>
+
+  <g id="step-4">
+    <!-- à la limite : la tangente en G1, c'est vG -->
+    <line x1="208.6" y1="319.3" x2="329.7" y2="278.0" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <polygon points="341.0,274.1 331.3,282.7 328.1,273.3" fill="var(--figure-accent)"/>
+    <text x="344" y="264" font-size="15" fill="var(--figure-accent)"><tspan font-style="italic">v</tspan><tspan dy="4" font-size="65%">G</tspan></text>
+
+    <text x="118" y="252" font-size="13" fill="var(--figure-accent)">à la limite : tangente à la trajectoire, sens du mouvement</text>
+  </g>
+</svg>
