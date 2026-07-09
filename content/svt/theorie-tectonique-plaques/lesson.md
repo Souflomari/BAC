@@ -46,6 +46,8 @@ Dans des roches vieilles d'environ 300 millions d'années, on trouve, en Amériq
 
 Le raisonnement : un climat glaciaire dans des régions aujourd'hui tropicales, et un climat tropical dans une région aujourd'hui polaire, ne s'expliquent pas si les continents sont restés immobiles à leur place actuelle. En revanche, si l'on réassemble ces continents en une seule masse regroupée près du pôle sud de l'époque, toutes ces traces glaciaires se retrouvent regroupées exactement là où on attend une calotte glaciaire — et l'ancienne forêt tropicale d'Antarctique se retrouve, elle, à une latitude bien plus clémente.
 
+[[figure:pangee-reconstruction-preuves]]
+
 ### Ce qui rend l'ensemble convaincant
 
 Ce qui fait la force du raisonnement de Wegener, ce n'est pas un seul de ces quatre arguments pris isolément — c'est qu'ils sont **indépendants les uns des autres** (géométrie des côtes, biologie des fossiles, structure des roches, traces climatiques n'ont rien à voir entre eux) et que pourtant, ils s'alignent tous vers la même reconstitution : un seul assemblage des continents, la Pangée, satisfait simultanément les quatre. Si la dérive des continents était fausse, il faudrait que ces quatre coïncidences indépendantes se soient produites par hasard, toutes en même temps, et toutes compatibles avec le même arrangement géographique. C'est cette convergence de preuves indépendantes qui a poussé Wegener à publier son hypothèse.
@@ -139,6 +141,8 @@ Sous la lithosphère se trouve l'**asthénosphère** : chimiquement, c'est la m�
 
 Une confusion très répandue consiste à croire que « lithosphère » et « croûte » désignent la même chose, ou que la limite entre les deux suit la même frontière que la limite croûte/manteau. Ce n'est pas le cas : la limite croûte/manteau est une limite de **composition chimique** (le manteau est fait d'une roche différente de la croûte) ; la limite lithosphère/asthénosphère est une limite de **comportement mécanique** (rigide contre ductile), et elle se situe plus bas, à l'intérieur du manteau lui-même. La lithosphère n'est donc pas seulement « la croûte » — elle inclut la croûte ET la portion rigide du manteau juste en dessous. Une plaque tectonique est un morceau de lithosphère, pas un morceau de croûte seule.
 
+[[figure:lithosphere-asthenosphere-limites]]
+
 ### Une deuxième erreur, liée à la première : les plaques ne « flottent » pas sur l'océan
 
 Autre confusion fréquente : penser que les plaques flottent sur l'eau des océans, comme des radeaux. Ce n'est pas ce qui se passe. Les plaques (portions rigides de lithosphère, qu'elles portent à leur surface un océan, un continent, ou les deux) reposent sur l'asthénosphère ductile — une roche du manteau, pas de l'eau. L'eau des océans n'a strictement aucun rôle mécanique de soutien : elle repose simplement dans les creux les plus bas de la surface rigide, exactement comme l'eau d'un lac repose dans le creux d'une vallée. Ce sont les très lents mouvements de la matière ductile sous la lithosphère — pas la présence ou l'absence d'eau en surface — qui permettent aux plaques de se déplacer.
@@ -175,6 +179,8 @@ Que se passe-t-il alors ? Les deux masses continentales, poussées l'une contre 
 
 Enfin, deux plaques peuvent simplement glisser latéralement, l'une contre l'autre, sans que de la lithosphère soit ni créée ni détruite au passage. On appelle cette frontière une **faille transformante**. La faille de San Andreas, en Californie, en est l'exemple le plus connu : la plaque pacifique y coulisse contre la plaque nord-américaine, ce qui provoque de fréquents séismes le long de la faille, sans volcanisme associé.
 
+[[figure:frontieres-plaques-quatre-types]]
+
 ### Synthèse des frontières de plaques
 
 | Type de frontière | Mouvement relatif | Devenir de la lithosphère | Exemple | Manifestation typique |
@@ -202,6 +208,8 @@ Depuis les années 1990, des réseaux de stations au sol équipées de récepteu
 
 Le raisonnement ferme la boucle : les inférences indirectes du passé (âges radiométriques du plancher océanique, largeur des bandes magnétiques) et la mesure directe du présent (déplacement GPS mesuré cette année, comparé à l'an dernier) donnent des vitesses du même ordre de grandeur. Ce n'est pas seulement une théorie qui explique bien le passé géologique — c'est un phénomène qu'on peut mesurer, littéralement, en train de se produire.
 
+[[figure:seismicite-volcanisme-gps-carte]]
+
 ---
 
 ## R7 — Le moteur : la convection mantellique
@@ -217,6 +225,8 @@ C'est exactement le même principe physique qu'une casserole d'eau chauffée par
 ### Comment ce mouvement entraîne les plaques
 
 Cette circulation lente de matière ductile dans le manteau, sous la lithosphère rigide, est ce qui entraîne les plaques : là où la matière chaude remonte, elle pousse la lithosphère à s'écarter — c'est ce qui se produit au niveau des dorsales (R5). Là où la lithosphère océanique refroidie et alourdie plonge dans le manteau lors d'une subduction, son propre poids l'entraîne vers le bas et participe à tirer le reste de la plaque avec elle. Les plaques rigides sont ainsi transportées passivement, comme des blocs qui reposent sur un tapis roulant extraordinairement lent et puissant, mû par la chaleur interne du globe.
+
+[[figure:convection-mantellique-moteur]]
 
 Voilà la réponse à la question laissée ouverte depuis le R2 : ce n'est ni la force centrifuge de la rotation terrestre, ni l'attraction des marées — les forces, bien trop faibles, que Wegener avait invoquées. C'est la convection du manteau, une force interne, continue, largement suffisante pour déplacer des masses rocheuses de plusieurs milliers de kilomètres sur des dizaines de millions d'années. La pièce manquante à l'époque de Wegener n'était donc pas une preuve supplémentaire de mouvement : c'était un moteur physiquement plausible — et ce moteur a fini par être identifié, des décennies plus tard, à l'intérieur même du manteau.
 
@@ -238,6 +248,8 @@ L'histoire complète, de la première idée à la théorie moderne, tient donc e
 - À 50 km à l'ouest de l'axe : 5 millions d'années. À 50 km à l'est de l'axe : 5 millions d'années.
 - À 150 km à l'ouest : 15 millions d'années. À 150 km à l'est : 15 millions d'années.
 - À 300 km à l'ouest : 30 millions d'années. À 300 km à l'est : 30 millions d'années.
+
+[[figure:profil-age-plancher-oceanique]]
 
 1. Que remarques-tu dans la répartition de ces âges, de part et d'autre de l'axe ?
 2. Calcule la vitesse à laquelle le plancher océanique s'écarte de l'axe, sur le flanc ouest, entre l'axe et 300 km.

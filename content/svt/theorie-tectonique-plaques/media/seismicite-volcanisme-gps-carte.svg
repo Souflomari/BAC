@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Carte schématique centrée sur le Pacifique : Amérique du Nord et Amérique du Sud à gauche, Asie (avec le Japon) et Australie à droite. Un nuage de séismes et de volcans épars, qui pourrait passer pour du hasard, se révèle en fait former deux lignes fines et continues le long des deux rives du Pacifique — la ceinture de feu. Ces lignes coïncident exactement avec les frontières de plaques déjà identifiées par d'autres méthodes, et quelques flèches GPS montrent le déplacement actuel, mesuré en centimètres par an, à ces mêmes frontières.">
+  <title>Séismes, volcans et GPS : la répartition n'est pas due au hasard</title>
+
+  <!--
+    seismicite-volcanisme-gps-carte.svg — STAGED, 3 étapes (LESSON-
+    EXPERIENCE-SPEC §2.5 : schéma "erreur classique" du R6 — un nuage de
+    points qui SEMBLE aléatoire au premier regard, geste d'enseignement en
+    couches successives).
+
+    Cible précise : le raisonnement du R6 — "si les plaques n'étaient pas de
+    vrais blocs rigides distincts, il n'y aurait aucune raison pour que
+    l'activité sismique et volcanique se concentre ainsi le long de lignes
+    aussi précises". Le step-1 doit délibérément pouvoir se lire comme du
+    bruit ; le step-2 ne DÉPLACE aucun point du step-1 (contrat DOM-absence,
+    §2.3 : uniquement des AJOUTS) — il ajoute une ligne dense de nouveaux
+    points le long des deux rives du Pacifique, si bien que la figure
+    complète (step-1 estompé + step-2 plein) montre naturellement un nuage
+    dispersé EN ARRIÈRE-PLAN et une ligne nette qui domine visuellement, ce
+    qui EST le mécanisme "les points se résolvent en lignes". Le step-3
+    ajoute la frontière de plaques déjà identifiée (R5) exactement sur le
+    même tracé, plus quelques vecteurs GPS.
+
+    step-1 (le nuage) : séismes (cercles) et volcans (triangles) dispersés
+      sur toute la carte, y compris loin des futures lignes — lecture
+      possible comme un nuage aléatoire.
+    step-2 (les lignes) : deux tracés denses de points ajoutés le long des
+      deux rives du Pacifique (Amériques à l'ouest, Asie/Australie à
+      l'est) — la "ceinture de feu" ; les points épars du step-1 restent
+      visibles, mais estompés, en arrière-plan.
+    step-3 (coïncidence + mesure du présent) : la frontière de plaques (R5),
+      en tireté, calquée sur le MÊME tracé que les lignes du step-2 ; trois
+      vecteurs GPS (Californie, Japon, Andes), quelques cm/an, cohérents
+      avec l'expansion océanique du R3.
+
+    Convention couleur (5 tokens) :
+      continents (contours), chrome                : --figure-ink / --figure-ink-soft
+      nuage dispersé du step-1 (bruit apparent)      : --figure-ink
+      SEUL accent, réutilisé pour LA MÊME idée à chaque étape — la ligne qui
+      émerge, la frontière qui coïncide, les vecteurs GPS : --figure-accent.
+
+    Simplifications pédagogiques assumées : carte schématique, PAS une
+    projection cartographique exacte — cinq masses continentales simplifiées
+    (formes lissées, pas de tracé côtier réel), suffisantes pour porter
+    l'idée d'anneau autour du Pacifique que le texte nomme explicitement
+    ("la ceinture de feu qui encercle l'océan Pacifique"). La dorsale
+    médio-atlantique (R3) n'est pas reprise ici — cette figure cible
+    spécifiquement l'exemple nommé dans le texte du R6.
+  -->
+
+  <text x="380" y="20" text-anchor="middle" font-size="13" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Séismes, volcans, GPS : une carte du monde, pas un hasard
+  </text>
+
+  <!-- ── Continents (chrome, toujours visibles) ─────────────────────────── -->
+  <path d="M90,70 C140,50 220,55 250,90 C270,120 255,160 230,190 C200,220 140,225 100,205 C70,190 55,150 65,110 C70,90 75,80 90,70 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="155" y="52" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Amérique du Nord</text>
+
+  <path d="M150,255 C190,255 215,280 220,320 C225,360 210,400 180,425 C160,440 140,430 135,405 C120,370 110,330 115,295 C120,270 130,258 150,255 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="175" y="250" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Amérique du Sud</text>
+
+  <path d="M520,50 C580,35 660,45 690,80 C710,110 700,150 670,175 C630,205 560,210 520,180 C495,160 490,120 500,90 C505,70 510,58 520,50 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="605" y="40" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Asie</text>
+
+  <path d="M498,145 C505,150 510,165 505,180 C502,190 495,192 492,182 C488,168 490,152 498,145 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="465" y="150" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">Japon</text>
+
+  <path d="M550,280 C610,270 660,285 675,320 C685,345 665,375 620,385 C580,393 540,380 525,350 C515,325 525,295 550,280 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="600" y="266" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Australie</text>
+
+  <text x="370" y="140" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">océan Pacifique</text>
+
+  <g id="step-1">
+    <!-- Nuage dispersé — pourrait se lire comme du hasard -->
+    <g fill="var(--figure-ink)">
+      <circle cx="140" cy="130" r="2.6"/>
+      <circle cx="200" cy="300" r="2.6"/>
+      <circle cx="600" cy="120" r="2.6"/>
+      <circle cx="590" cy="340" r="2.6"/>
+      <circle cx="350" cy="200" r="2.6"/>
+      <circle cx="400" cy="350" r="2.6"/>
+      <circle cx="240" cy="80" r="2.6"/>
+      <circle cx="220" cy="380" r="2.6"/>
+      <circle cx="500" cy="200" r="2.6"/>
+      <circle cx="540" cy="380" r="2.6"/>
+      <circle cx="300" cy="100" r="2.6"/>
+      <circle cx="330" cy="420" r="2.6"/>
+    </g>
+    <g fill="var(--figure-ink)">
+      <polygon points="230,110 224,122 236,122"/>
+      <polygon points="210,340 204,352 216,352"/>
+      <polygon points="510,190 504,202 516,202"/>
+      <polygon points="560,300 554,312 566,312"/>
+      <polygon points="370,150 364,162 376,162"/>
+      <polygon points="420,280 414,292 426,292"/>
+      <polygon points="250,420 244,432 256,432"/>
+      <polygon points="650,150 644,162 656,162"/>
+    </g>
+    <text x="380" y="436" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">
+      épicentres (●) et volcans actifs (▲) — répartition au premier regard
+    </text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Les deux rives du Pacifique : les points s'alignent en lignes fines -->
+    <path d="M255,65 C245,120 230,180 222,250 C215,320 195,380 175,425"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8" opacity="0.55"/>
+    <path d="M500,55 C498,110 500,160 515,210 C530,260 540,320 555,385"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8" opacity="0.55"/>
+
+    <g fill="var(--figure-accent)">
+      <circle cx="250" cy="80" r="2.2"/>
+      <circle cx="245" cy="110" r="2.2"/>
+      <circle cx="238" cy="145" r="2.2"/>
+      <circle cx="230" cy="180" r="2.2"/>
+      <circle cx="225" cy="215" r="2.2"/>
+      <circle cx="218" cy="250" r="2.2"/>
+      <circle cx="210" cy="285" r="2.2"/>
+      <circle cx="200" cy="320" r="2.2"/>
+      <circle cx="190" cy="355" r="2.2"/>
+      <circle cx="178" cy="390" r="2.2"/>
+      <circle cx="172" cy="415" r="2.2"/>
+
+      <circle cx="500" cy="70" r="2.2"/>
+      <circle cx="500" cy="100" r="2.2"/>
+      <circle cx="502" cy="130" r="2.2"/>
+      <circle cx="508" cy="160" r="2.2"/>
+      <circle cx="515" cy="190" r="2.2"/>
+      <circle cx="522" cy="220" r="2.2"/>
+      <circle cx="530" cy="250" r="2.2"/>
+      <circle cx="538" cy="280" r="2.2"/>
+      <circle cx="545" cy="310" r="2.2"/>
+      <circle cx="550" cy="340" r="2.2"/>
+      <circle cx="555" cy="370" r="2.2"/>
+    </g>
+
+    <text x="380" y="238" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-accent)">
+      ceinture de feu
+    </text>
+    <text x="380" y="252" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">
+      (pourtour du Pacifique)
+    </text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Frontière de plaques (R5) — même tracé, coïncide exactement -->
+    <path d="M255,65 C245,120 230,180 222,250 C215,320 195,380 175,425"
+          fill="none" stroke="var(--figure-ink)" stroke-width="1.6" stroke-dasharray="5,4"/>
+    <path d="M500,55 C498,110 500,160 515,210 C530,260 540,320 555,385"
+          fill="none" stroke="var(--figure-ink)" stroke-width="1.6" stroke-dasharray="5,4"/>
+    <text x="145" y="435" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink)">
+      frontière de plaque (R5) — coïncide avec les lignes
+    </text>
+
+    <!-- Vecteurs GPS : le mouvement, mesuré aujourd'hui -->
+    <line x1="245" y1="95" x2="270" y2="78" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="278,73 264,71 270,84" fill="var(--figure-accent)"/>
+    <text x="282" y="70" font-size="9.5" font-weight="600" fill="var(--figure-accent)">~5 cm/an</text>
+
+    <line x1="490" y1="150" x2="465" y2="144" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="455,142 468,138 468,150" fill="var(--figure-accent)"/>
+    <text x="368" y="140" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">~8 cm/an</text>
+
+    <line x1="195" y1="300" x2="218" y2="294" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="228,291 215,289 218,301" fill="var(--figure-accent)"/>
+    <text x="232" y="298" font-size="9.5" font-weight="600" fill="var(--figure-accent)">~7 cm/an</text>
+
+    <text x="380" y="465" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
+      le déplacement des plaques, mesuré en direct — pas seulement déduit du passé
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>

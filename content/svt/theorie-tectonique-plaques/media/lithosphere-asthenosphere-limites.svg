@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Coupe verticale, à l'échelle des profondeurs : la croûte continentale (granite, environ 50 km) et la croûte océanique (basalte, environ 7 km) reposent sur un manteau continu ; la limite croûte/manteau, de composition chimique, se situe à des profondeurs différentes selon la colonne. Par-dessus, la lithosphère rigide englobe la croûte ET le sommet du manteau, jusqu'à une limite mécanique commune à environ 100 km — nettement plus profonde que la limite croûte/manteau, et non confondue avec elle. En dessous, l'asthénosphère est ductile : même roche, plus chaude.">
+  <title>Croûte, lithosphère, asthénosphère : deux limites, deux critères</title>
+
+  <!--
+    lithosphere-asthenosphere-limites.svg — STAGED, 3 étapes (LESSON-
+    EXPERIENCE-SPEC §2.5 : schéma "erreur classique" du R4, geste
+    d'enseignement en 3 couches empilées).
+
+    Cible précise : l'erreur nommée en toutes lettres au R4 —
+    « lithosphère = croûte » et « la limite lithosphère/asthénosphère suit
+    la même frontière que la limite croûte/manteau ». Ce n'est pas le cas :
+    ce sont deux limites différentes, définies par deux critères différents
+    (composition vs comportement mécanique), à deux profondeurs différentes.
+
+    step-1 (composition) : la croûte, à l'échelle des profondeurs. Deux
+      colonnes témoins posées sur un manteau continu — continentale
+      (granite, ≈ 50 km) à gauche, océanique (basalte, ≈ 7 km) à droite —
+      chacune avec SA PROPRE limite croûte/manteau (accent), à une
+      profondeur différente selon la colonne.
+    step-2 (mécanique) : la lithosphère = croûte + sommet rigide du manteau,
+      encadrée par-dessus les deux colonnes ; la limite lithosphère/
+      asthénosphère, MÉCANIQUE, tracée à ≈ 100 km — délibérément plus
+      profonde que les deux limites croûte/manteau du step-1 (qui restent
+      visibles, estompées, pour la comparaison directe des profondeurs).
+    step-3 (comportement + payload) : rigide/cassant au-dessus de 100 km,
+      ductile/fluant en dessous (même roche, plus chaude) ; la phrase de
+      clôture du R4 telle qu'écrite dans le texte.
+
+    Géométrie (calculée, pas devinée) — échelle verticale 2,3 px/km,
+    surface (0 km) à y=70 :
+      0 km   -> y = 70
+      50 km  -> y = 70 + 50×2,3  = 185   (base de la croûte continentale)
+      7 km   -> y = 70 + 7×2,3   ≈ 86    (base de la croûte océanique)
+      100 km -> y = 70 + 100×2,3 = 300   (limite lithosphère/asthénosphère)
+      120 km -> y = 70 + 120×2,3 = 346   (repère d'échelle le plus bas)
+    Les ticks 50 km et 100 km de l'axe de profondeur tombent donc EXACTEMENT
+    sur les deux limites tracées dans la figure — ce n'est pas approximatif.
+
+    Convention couleur (5 tokens) :
+      manteau (fond continu)                    : --figure-grid
+      croûte (blocs), axe de profondeur, chrome  : --figure-ink / --figure-ink-soft
+      SEUL accent, réutilisé à chaque étape pour LA MÊME idée (les deux
+      limites et ce qui les distingue) : --figure-accent — step-1 l'utilise
+      pour les deux limites croûte/manteau ; step-2 la réutilise pour le
+      cadre lithosphère et la limite à 100 km ; step-3 la réutilise pour les
+      deux mentions rigide/ductile et l'encart de clôture. Une seule idée
+      porte l'accent du début à la fin : où sont les limites, et pourquoi
+      elles ne coïncident pas.
+
+    Simplifications pédagogiques assumées : deux colonnes "témoins" côte à
+    côte (pas une coupe géographique réelle) pour comparer directement les
+    deux types de croûte sur un même schéma ; le manteau est représenté
+    comme continu sous les deux colonnes (une seule et même couche), sans
+    variation latérale ; les valeurs 50 km / 7 km / 100 km sont les valeurs
+    médianes citées dans le texte (croûte continentale 30–70 km, océanique
+    5–10 km, limite mécanique "environ 100 km").
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="360" y="22" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La croûte, à l'échelle des profondeurs
+    </text>
+
+    <!-- Manteau continu (fond), sous les deux colonnes -->
+    <rect x="90" y="70" width="560" height="290"
+          fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <!-- Axe de profondeur (gauche) -->
+    <line x1="60" y1="70" x2="60" y2="360" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="55" y1="70" x2="65" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="50" y="73" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0 km</text>
+    <line x1="55" y1="185" x2="65" y2="185" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="50" y="188" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">50 km</text>
+    <line x1="55" y1="300" x2="65" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="50" y="303" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">100 km</text>
+    <line x1="55" y1="346" x2="65" y2="346" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="50" y="349" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">120 km</text>
+    <text x="60" y="373" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">profondeur</text>
+
+    <!-- Repère discret (estompé au step-1 par sa propre couleur douce) à
+         50 km, sur toute la largeur — sert de comparaison directe une fois
+         la limite à 100 km ajoutée au step-2 -->
+    <line x1="90" y1="185" x2="650" y2="185" stroke="var(--figure-ink-soft)" stroke-width="0.8" stroke-dasharray="3,4" opacity="0.5"/>
+
+    <!-- ── Colonne continentale ─────────────────────────────────────── -->
+    <text x="245" y="52" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Croûte continentale</text>
+    <text x="245" y="65" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">(granite, ≈ 50 km)</text>
+    <rect x="140" y="70" width="210" height="115"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="245" y="132" text-anchor="middle" font-size="11" fill="var(--figure-ink)">granite</text>
+
+    <!-- ── Colonne océanique ────────────────────────────────────────── -->
+    <text x="545" y="52" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Croûte océanique</text>
+    <text x="545" y="65" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">(basalte, ≈ 7 km)</text>
+    <rect x="440" y="70" width="210" height="16"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <!-- Manteau, étiquette dans l'espace intermédiaire -->
+    <text x="395" y="130" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">manteau</text>
+
+    <!-- ── Limite croûte/manteau — accent, une par colonne, profondeur différente ─ -->
+    <line x1="140" y1="185" x2="350" y2="185" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="355" y="181" font-size="10.5" font-weight="600" fill="var(--figure-accent)">limite croûte/manteau</text>
+    <text x="355" y="193" font-size="9.5" fill="var(--figure-accent)">(composition chimique)</text>
+
+    <line x1="440" y1="86" x2="650" y2="86" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="545" y="102" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-accent)">limite croûte/manteau (≈ 7 km ici)</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Cadre lithosphère : croûte + sommet rigide du manteau, sur les deux colonnes -->
+    <rect x="122" y="68" width="528" height="234" rx="4"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="7,4"/>
+    <text x="395" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-accent)">LITHOSPHÈRE (rigide)</text>
+    <text x="395" y="95" text-anchor="middle" font-size="10" fill="var(--figure-accent)">= croûte + sommet du manteau</text>
+
+    <!-- Limite lithosphère/asthénosphère — mécanique, à 100 km, sur toute la largeur -->
+    <line x1="122" y1="300" x2="650" y2="300" stroke="var(--figure-accent)" stroke-width="2.8"/>
+    <text x="395" y="316" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-accent)">
+      limite lithosphère / asthénosphère (mécanique) ≈ 100 km
+    </text>
+    <text x="395" y="329" text-anchor="middle" font-size="10" fill="var(--figure-accent)">
+      plus profonde que la limite croûte/manteau — jamais la même ligne
+    </text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Comportement, au-dessus / en dessous de 100 km -->
+    <text x="395" y="235" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-accent)">rigide / cassant</text>
+    <text x="395" y="345" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-accent)">
+      ASTHÉNOSPHÈRE — ductile / fluant (même roche, plus chaude)
+    </text>
+
+    <!-- Encart de clôture -->
+    <rect x="170" y="395" width="380" height="42" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="360" y="414" text-anchor="middle" font-size="11.5" fill="var(--figure-accent)">
+      Une plaque = un morceau de LITHOSPHÈRE,
+    </text>
+    <text x="360" y="430" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-accent)">
+      jamais de croûte seule.
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>

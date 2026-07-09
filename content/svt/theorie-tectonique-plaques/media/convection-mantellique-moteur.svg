@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Coupe du manteau montrant une seule cellule de convection : la matière chaude, moins dense, remonte d'un côté, circule sous la lithosphère, et la matière refroidie, plus dense, redescend de l'autre côté. La lithosphère rigide posée par-dessus est entraînée par ce mouvement : au-dessus de la remontée se forme une dorsale qui pousse les plaques (ridge-push) ; au-dessus de la descente, une plaque océanique refroidie et alourdie plonge dans le manteau et tire le reste de la plaque (slab-pull) — les deux faces du même moteur.">
+  <title>Le moteur : une seule cellule de convection entraîne dorsale et subduction</title>
+
+  <!--
+    convection-mantellique-moteur.svg — STAGED, 3 étapes (LESSON-EXPERIENCE-
+    SPEC §2.5 : coupe/mécanisme, geste d'enseignement — la cellule se
+    construit, PUIS la lithosphère se pose dessus, PUIS les deux
+    conséquences, dorsale et subduction, se lisent comme les deux bouts du
+    MÊME mouvement).
+
+    Cible précise : la question laissée ouverte au R2 (pas de moteur
+    crédible chez Wegener) et refermée au R7 — ce n'est ni la force
+    centrifuge ni les marées, c'est la convection mantellique. Le schéma
+    montre UNE SEULE cellule (pas un empilement décoratif de plusieurs
+    cellules) pour que ridge-push et slab-pull se lisent comme les deux
+    conséquences d'un seul et même mouvement, exactement comme le texte le
+    referme : "ridge-push + slab-pull, tenus par la même cellule".
+
+    step-1 (la cellule) : montée chaude à gauche, redescente froide à
+      droite, flux fermé en boucle, source de chaleur profonde en bas.
+    step-2 (la lithosphère posée dessus) : au-dessus de la remontée, une
+      dorsale s'ouvre — les plaques sont poussées ("tapis roulant").
+    step-3 (subduction + bouclage) : au-dessus de la redescente, la plaque
+      refroidie et alourdie plonge (slab-pull) ; le texte de clôture relie
+      ridge-push et slab-pull à la même cellule tracée au step-1.
+
+    Layout (viewBox 700×460) :
+      lithosphère (bande rigide)      : y = 72..92,  x = 50..650
+      manteau (fond)                  : y = 92..390, x = 50..650
+      cellule de convection (boucle)  : rect arrondi x=240..480, y=112..370
+        côté gauche (x=240) = remontée chaude ; côté droit (x=480) = redescente froide
+      source de chaleur profonde      : bande basse du manteau, y≈378
+
+    Convention couleur (5 tokens) :
+      manteau (fond), lithosphère (bande), chrome : --figure-ink / --figure-ink-soft
+      SEUL accent, la même idée du début à la fin — LE mouvement de
+      convection et ses deux conséquences (dorsale, subduction) : la boucle
+      de flux, la source de chaleur, le coin de nouvelle lithosphère à la
+      dorsale, et le panneau plongeant de la subduction sont tous en
+      --figure-accent — un seul phénomène, jamais restylé, seulement
+      complété d'étape en étape.
+
+    Simplifications pédagogiques assumées : une seule cellule de convection
+    fermée dessinée comme un rectangle à coins arrondis (pas une forme de
+    panache réaliste) — la géométrie réelle des cellules mantelliques est
+    hors du programme de cette leçon, seul le principe (montée chaude,
+    descente froide, boucle fermée) est enseigné ici.
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="22" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une seule cellule de convection — les deux bouts du même moteur
+  </text>
+
+  <g id="step-1">
+    <!-- Manteau (fond) -->
+    <rect x="50" y="92" width="600" height="298"
+          fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="360" y="106" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">
+      manteau : roche solide, ductile (~ cm/an)
+    </text>
+
+    <!-- Cellule de convection : boucle fermée, montée à gauche, descente à droite -->
+    <rect x="240" y="112" width="240" height="258" rx="14"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <!-- Flèches de sens (montée gauche → haut → descente droite → bas) -->
+    <polygon points="240,234 234,246 246,246" fill="var(--figure-accent)"/>
+    <text x="220" y="245" text-anchor="end" font-size="9.5" fill="var(--figure-accent)">remonte (chaud, léger)</text>
+
+    <polygon points="370,112 358,106 358,118" fill="var(--figure-accent)"/>
+    <polygon points="470,254 464,242 476,242" fill="var(--figure-accent)"/>
+    <text x="490" y="252" font-size="9.5" fill="var(--figure-accent)">redescend (froid, dense)</text>
+
+    <polygon points="350,370 362,364 362,376" fill="var(--figure-accent)"/>
+
+    <!-- Source de chaleur profonde -->
+    <ellipse cx="360" cy="378" rx="210" ry="10" fill="var(--figure-accent)" fill-opacity="0.22"/>
+    <text x="360" y="410" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">
+      source de chaleur profonde (radioactivité + chaleur résiduelle)
+    </text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Lithosphère rigide, posée par-dessus la cellule -->
+    <rect x="50" y="72" width="180" height="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="250" y="72" width="400" height="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="140" y="66" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">lithosphère (rigide)</text>
+
+    <!-- Ouverture de la dorsale, au-dessus de la remontée (x=240) -->
+    <polygon points="230,92 250,92 240,112" fill="var(--figure-accent)"/>
+    <text x="240" y="64" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-accent)">dorsale</text>
+
+    <!-- Plaques poussées de part et d'autre (ridge-push, "tapis roulant") -->
+    <line x1="200" y1="55" x2="130" y2="55" stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="118,55 132,49 132,61" fill="var(--figure-accent)"/>
+    <line x1="280" y1="55" x2="350" y2="55" stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="362,55 348,49 348,61" fill="var(--figure-accent)"/>
+    <text x="240" y="45" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">ridge-push — plaques poussées, "tapis roulant"</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Panneau plongeant, au-dessus de la redescente (x=480) : la plaque
+         refroidie et alourdie s'enfonce sous son propre poids -->
+    <polygon points="460,92 500,92 560,370 520,370" fill="var(--figure-accent)" fill-opacity="0.35" stroke="var(--figure-accent)" stroke-width="1.5"/>
+    <text x="500" y="106" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-accent)">subduction</text>
+
+    <line x1="495" y1="150" x2="525" y2="310" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="528,322 517,308 533,304" fill="var(--figure-accent)"/>
+    <text x="540" y="250" font-size="9.5" font-weight="600" fill="var(--figure-accent)">slab-pull —</text>
+    <text x="540" y="263" font-size="9.5" fill="var(--figure-accent)">le panneau froid</text>
+    <text x="540" y="276" font-size="9.5" fill="var(--figure-accent)">tire la plaque</text>
+
+    <!-- Bouclage : les deux conséquences d'une seule et même cellule -->
+    <text x="350" y="432" text-anchor="middle" font-size="11" fill="var(--figure-accent)">
+      Une seule cellule de convection : elle pousse à la dorsale (ridge-push)
+    </text>
+    <text x="350" y="448" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-accent)">
+      et tire à la subduction (slab-pull) — le même moteur aux deux bouts.
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>
