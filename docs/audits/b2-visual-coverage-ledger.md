@@ -41,7 +41,7 @@ rule, carried forward here).
 |---|---|---|---|
 | M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
-| M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | pending |
+| M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | judged (15 STAGE / 10 DECLINE), build in progress |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | pending |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
@@ -192,9 +192,45 @@ rule, carried forward here).
 - `dom-truth.mjs` — 155/155, 0 fail (also caught and fixed an unrelated stale-server issue: an orphaned prior server instance on port 4173 was serving cached HTML referencing pre-rebuild chunk hashes, causing ChunkLoadErrors on deep-linked chapter navigation; killed via `fuser -k 4173/tcp` and restarted clean — dom-truth itself runs its own self-managed server on a separate port so was unaffected throughout)
 - screenshot spot-check (light+dark) — `limites-continuite` R4 `trois-discontinuites`: confirmed the crop fix works (stage 1 shows only panel 1, no blank space; final stage shows all 4 panels correctly). `geometrie-espace` R0 `cube-diagonales`: cavalière projection, dashed hidden edges, and the ⊥? callout all render correctly
 
-**Commit:** pending (this wave commits together with this ledger update).
+**Commit:** `c025506` — pushed y.
 
 **Running tally: 9/47 lessons done, 61/266 chapters judged, 30 STAGE / 31 DECLINE.**
+
+### Wave M3 — maths: nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques
+
+**Judgment** (pedagogy-architect × 4):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| nombres-complexes-2 | R0 | STAGE | `multiplication-par-i` — predict-then-reveal, 90° rotation reading |
+| nombres-complexes-2 | R1 | STAGE | `argument-forme-trigo` — foundational Argand construction, (a,b)↔(r,θ) |
+| nombres-complexes-2 | R2 | DECLINE | algebraic derivation, geometric meaning already at R0/R5 |
+| nombres-complexes-2 | R3 | STAGE | `spirale-moivre` — power spiral, confronts "argument × n" misconception |
+| nombres-complexes-2 | R5 | STAGE | `rotation-homothetie` — two-step transformation, R0's payoff |
+| nombres-complexes-2 | R6 | STAGE | `nature-triangle-w` — grounds the reading-table in a concrete configuration |
+| probabilites-conditionnelles | R0 | DECLINE | predict-then-reveal hook, payload deferred to R5 |
+| probabilites-conditionnelles | R1 | STAGE | `univers-restreint` — proportional-area mosaic, conditioning = shrinking universe |
+| probabilites-conditionnelles | R3 | STAGE | `independant-vs-incompatible` — unit-square contrast, confronts core misconception |
+| structures-algebriques | R0 | DECLINE | narrative hook, single-layer, precedent `congruence-horloge` |
+| structures-algebriques | R1 | DECLINE | single-layer table observation, duplicates R2's staged table |
+| structures-algebriques | R3 | STAGE | `symetries-rectangle` — geometric symmetry group, vertex-permutation composition |
+| structures-algebriques | R4 | DECLINE | commutativity mechanism already staged at R2 |
+| structures-algebriques | R5 | STAGE | `table-multiplication-modulo4` — distinct table, bridges anneau→corps |
+| structures-algebriques | R6 | STAGE | `echelle-structures` — cumulative-strengthening ladder synthesis |
+| structures-algebriques | R7 | DECLINE | practice chapter, would pre-reveal attempt-first tables |
+| suites-numeriques | R0 | STAGE | `reservoir-premiers-termes` — predict-then-reveal, terms-plot payoff |
+| suites-numeriques | R1 | DECLINE | domino cascade is atmospheric metaphor, not a structural diagram |
+| suites-numeriques | R2 | DECLINE | algebraic/procedural, no graph invoked |
+| suites-numeriques | R3 | STAGE | `suite-bornee-non-monotone` — confronts "bounded ≠ monotone" misconception |
+| suites-numeriques | R4 | DECLINE | purely algebraic monotonicity method |
+| suites-numeriques | R6 | STAGE | `theoreme-gendarmes` — canonical squeeze theorem graph |
+| suites-numeriques | R7 | STAGE | `convergence-monotone-plancher` — confronts "L ≠ minorant" misconception |
+| suites-numeriques | R9 | STAGE | `suites-adjacentes-etau` — closing-vise graph, matches prose metaphor |
+| suites-numeriques | R10 | DECLINE | practice chapter, would duplicate R7/R8 |
+
+**Wave M3 judgment tally: 15 STAGE / 10 DECLINE** (25 chapters judged).
+
+**Build:** in progress.
 
 **Build:** in progress.
 
