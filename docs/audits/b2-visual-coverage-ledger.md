@@ -46,7 +46,7 @@ rule, carried forward here).
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
-| P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | judged (7 STAGE / 10 DECLINE), build in progress |
+| P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | done (7 STAGE / 10 DECLINE, 7 figures) |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
 | S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
 
@@ -554,5 +554,53 @@ was validated (validate-content + anti-contract grep) before pushing.
 
 **Wave P5 judgment tally: 7 STAGE / 10 DECLINE** (17 chapters judged — closes the pc matière's judgment).
 
-**Build:** in progress.
+**Build** (diagram-author × 4):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| suivi-temporel-vitesse | prediction-avancement | R0 | 3 |
+| suivi-temporel-vitesse | tangentes-decroissantes | R3 | 3 |
+| systemes-oscillants | bilan-pendule-simple | R3 | 4 |
+| transformations-deux-sens | sens-direct-inverse | R1 | 3 |
+| transformations-deux-sens | experiences-miroir | R3 | 4 |
+| transformations-lentes-rapides | comparaison-facteurs-cinetiques | R3 | 4 |
+| transformations-lentes-rapides | chocs-efficaces | R4 | 5 |
+
+**Slug-collision incident (new campaign rule):** the judgment proposed
+`facteurs-cinetiques` for transformations-lentes-rapides R3, but
+`controle-catalyse` already owns that slug — and the app's slug-keyed maps
+(`FIGURE_ARIA_LABELS`, `STRUCTURAL_SLUGS`, `VERTICALLY_STACKED_PANELS`)
+are global, so a duplicate would cross-contaminate both lessons' rendering.
+Caught before any file was written (a corpus-wide duplicate audit found
+zero existing duplicates); the build agent was redirected mid-flight and
+shipped `comparaison-facteurs-cinetiques` instead. **Rule going forward:
+every proposed slug is checked for corpus uniqueness before build launch**
+— applied to S1/S2 prompts.
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×4 (all clean)
+- anti-contract grep — pass ×7 new SVGs (all clean; `&#`-entity false
+  positives excluded as usual)
+- French aria labels added to `FIGURE_ARIA_LABELS` for all 7 new figures
+  (a first for the campaign — one build agent started the practice, the
+  orchestrator completed it for the wave; M1–P4 figures still rely on the
+  slug-derived fallback, a pre-existing corpus-wide polish gap)
+- `comparaison-facteurs-cinetiques` deliberately NOT registered in
+  `VERTICALLY_STACKED_PANELS` (matches the unregistered `trois-catalyses`
+  precedent; its stage-4 overlay lives inside earlier rows' bounds)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `systemes-oscillants` R3
+  `bilan-pendule-simple` at stage 4/4 (the wave's geometrically riskiest
+  figure, hand-derived arc math): trajectory arc through équilibre,
+  tension colinear with the string, accented −mg sin θ, struck-through
+  mass in the equation box — clean in both themes (renders at `?chapitre=4`)
+
+**Commits:** `71c78e7` (judgment), `5f4e508` (suivi-temporel-vitesse),
+`b43e152` (transformations-lentes-rapides), `96c62ed`
+(transformations-deux-sens), `d8dce33` (systemes-oscillants), plus the
+closing ledger commit. Incremental per-lesson cadence, every commit
+validated before push.
+
+**Running tally: 37/47 lessons done, 199/266 chapters judged, 96 STAGE / 103 DECLINE. PC matière COMPLETE (24/24 remaining lessons done — all pc lessons now have full chapter-level visual judgment). Remaining: svt waves S1+S2 (10 lessons, 67 gap chapters).**
 
