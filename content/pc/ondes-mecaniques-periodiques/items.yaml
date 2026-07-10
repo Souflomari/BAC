@@ -373,3 +373,740 @@ items:
 
       $5\pi = 4\pi + \pi$ : un multiple entier de $2\pi$ plus $\pi$, donc un
       multiple impair de $\pi$ — opposition de phase confirmée.
+
+  - id: OMPP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, milieu_de_propagation]
+    stem: >
+      On resserre le rythme du vibreur (il monte et descend plus vite), sans
+      toucher à la tension de la corde. Que montre l'expérience sur la
+      photographie de la corde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les bosses se resserrent aussi : la répétition spatiale et la
+          répétition temporelle ne sont pas indépendantes, elles varient
+          ensemble.
+        correct: true
+      - id: B
+        text: >-
+          Rien ne change sur la photo : l'espacement des bosses ne dépend
+          que de la tension de la corde, jamais du rythme du vibreur.
+        correct: false
+        feedback: >
+          L'espacement des bosses (la longueur d'onde) dépend à la fois de
+          la célérité (fixée par la tension) ET de la période de la source
+          ($\lambda = cT$) : resserrer le rythme du vibreur change $T$, donc
+          change $\lambda$, même si la tension — et donc $c$ — reste la
+          même.
+      - id: C
+        text: >-
+          Les bosses s'écartent : resserrer le rythme dans le temps élargit
+          automatiquement l'espacement dans l'espace.
+        correct: false
+        feedback: >
+          C'est l'inverse : resserrer le rythme temporel (diminuer $T$)
+          resserre aussi l'espacement spatial (diminuer $\lambda$), puisque
+          $\lambda = cT$ — les deux diminuent ensemble, ils ne varient
+          jamais en sens opposé.
+      - id: D
+        text: >-
+          Impossible à prévoir : la répétition temporelle du vibreur et la
+          répétition spatiale sur la corde sont deux phénomènes
+          indépendants.
+        correct: false
+        feedback: >
+          C'est précisément ce que l'expérience contredit : les deux
+          répétitions bougent ensemble, sans qu'on touche à l'espacement à
+          la main. Ce n'est pas une coïncidence — ce sont deux faces d'un
+          même phénomène, pas deux phénomènes indépendants.
+    correct_feedback: >
+      Resserrer le rythme de la source resserre nécessairement l'espacement
+      des bosses : la répétition temporelle et la répétition spatiale sont
+      les deux faces d'un même phénomène, jamais indépendantes l'une de
+      l'autre.
+    solution: |
+      L'expérience de l'accroche est décisive : quand on resserre le rythme
+      du vibreur sans toucher à la corde, les bosses sur la photo se
+      rapprochent aussi, exactement au même rythme. Si les deux répétitions
+      étaient indépendantes, cela n'aurait aucune raison de se produire. La
+      relation qui formalise ce lien, dérivée au rung suivant, est
+      $\lambda = cT$ : à célérité $c$ fixée par le milieu, resserrer $T$ (le
+      rythme de la source) resserre $\lambda$ dans les mêmes proportions.
+
+  - id: OMPP-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale]
+    stem: >
+      Léa filme un seul point d'une corde parcourue par une onde progressive
+      périodique : elle observe que ce point repasse par le même mouvement
+      toutes les $20\ \text{ms}$. Yanis prend une photo de toute la corde à
+      un instant donné : il observe que les bosses se répètent tous les
+      $15\ \text{cm}$. Ces deux observations sont-elles reliées, ou
+      indépendantes ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Reliées : ce sont les deux faces de la même onde périodique — la
+          répétition temporelle vue par Léa ($T$) et la répétition spatiale
+          vue par Yanis ($\lambda$) sont nécessairement liées, via la
+          célérité de la corde.
+        correct: true
+      - id: B
+        text: >-
+          Indépendantes : Léa et Yanis observent en réalité deux ondes
+          différentes, qui se superposent par hasard sur la même corde.
+        correct: false
+        feedback: >
+          Il n'y a qu'UNE seule onde sur la corde. $T$ et $\lambda$ ne sont
+          pas deux ondes différentes : ce sont deux façons de décrire le
+          même phénomène périodique, l'une en suivant le temps sur un point
+          fixe, l'autre en regardant l'espace à un instant fixe.
+      - id: C
+        text: >-
+          Indépendantes : la mesure de Yanis (l'espacement des bosses) ne
+          dépend que de la longueur totale de la corde utilisée, pas du
+          mouvement du vibreur.
+        correct: false
+        feedback: >
+          La longueur totale de la corde ne fait que limiter combien de
+          bosses sont visibles ; elle ne fixe pas leur espacement. Cet
+          espacement, la longueur d'onde, dépend du rythme du vibreur (via
+          $T$) et de la célérité — jamais de la longueur de corde
+          disponible.
+      - id: D
+        text: >-
+          On ne peut rien affirmer : il pourrait très bien s'agir d'une
+          simple coïncidence si les deux valeurs semblent correspondre.
+        correct: false
+        feedback: >
+          Ce n'est jamais une coïncidence : dès que la source et le milieu
+          sont fixés, la répétition temporelle et la répétition spatiale
+          sont forcées d'aller ensemble — c'est tout l'objet de la relation
+          $\lambda = cT$ qui les relie.
+    correct_feedback: >
+      Léa et Yanis décrivent la même onde périodique sous deux angles
+      différents — le temps pour un point fixe ($T$), l'espace à un instant
+      fixe ($\lambda$) — et ces deux répétitions sont nécessairement liées,
+      jamais indépendantes ni coïncidentes.
+    solution: |
+      Une seule onde progressive périodique se propage sur la corde. Le film
+      de Léa révèle sa répétition dans le temps ($T = 20\ \text{ms}$) ; la
+      photo de Yanis révèle sa répétition dans l'espace
+      ($\lambda = 15\ \text{cm}$). Ces deux grandeurs ne sont ni deux ondes
+      séparées, ni de simples coïncidences numériques : elles sont liées par
+      la célérité de la corde, $\lambda = cT$, une relation dérivée au rung
+      suivant.
+
+  - id: OMPP-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, onde_sinusoidale]
+    stem: >
+      Quelle affirmation décrit correctement le lien entre la répétition
+      temporelle ($T$) et la répétition spatiale ($\lambda$) d'une onde
+      progressive périodique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Ce sont deux aspects d'un même phénomène : changer le rythme de la
+          source change nécessairement l'espacement spatial. C'est vrai pour
+          toute onde périodique, pas seulement pour une onde sinusoïdale.
+        correct: true
+      - id: B
+        text: >-
+          Ce sont deux phénomènes indépendants : on peut resserrer le rythme
+          de la source sans que l'espacement spatial change.
+        correct: false
+        feedback: >
+          C'est le contraire de ce que montre l'expérience : resserrer le
+          rythme de la source resserre toujours l'espacement spatial en
+          proportion. Les deux répétitions ne sont jamais indépendantes.
+      - id: C
+        text: >-
+          Ce lien n'existe que si la source vibre sinusoïdalement ; pour une
+          source périodique quelconque, non sinusoïdale, $T$ et $\lambda$ ne
+          sont pas reliés.
+        correct: false
+        feedback: >
+          Le lien entre $T$ et $\lambda$ est établi sans jamais supposer que
+          la source vibre sinusoïdalement : il vient uniquement du fait que
+          chaque point du milieu rejoue le mouvement de la source avec
+          retard. Le cas sinusoïdal, vu plus loin, est un cas particulier
+          qui s'ajoute à ce lien général, il ne le conditionne pas.
+      - id: D
+        text: >-
+          Ce lien n'existe que pour les ondes sonores, pas pour les ondes
+          sur une corde.
+        correct: false
+        feedback: >
+          C'est l'inverse chronologique : le lien entre $T$ et $\lambda$ est
+          établi d'abord pour une onde sur une corde, avant d'être appliqué
+          au son — qui n'est qu'un exemple parmi d'autres d'onde mécanique
+          progressive périodique, pas un cas à part.
+    correct_feedback: >
+      La double périodicité — temporelle et spatiale — est une propriété
+      générale de toute onde progressive périodique, quelle que soit la
+      nature précise du mouvement de la source (sinusoïdal ou non) et quel
+      que soit le milieu (corde, air, etc.).
+    solution: |
+      Le mécanisme établi par le chapitre (retard + périodicité de la
+      source) ne fait intervenir à aucun moment une forme particulière du
+      mouvement de $S$ : il vaut pour n'importe quelle source périodique. Le
+      lien entre $T$ et $\lambda$ est donc général — il ne dépend ni de la
+      nature sinusoïdale ou non du mouvement, ni du type d'onde (corde, son,
+      ou autre).
+
+  - id: OMPP-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, transport_matiere, retard, longitudinale_transversale]
+    stem: >
+      Une onde progressive périodique est définie comme le cas particulier
+      d'une onde progressive où...
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          la perturbation imposée par la source se répète à l'identique, à
+          intervalles de temps réguliers $T$.
+        correct: true
+      - id: B
+        text: >-
+          la perturbation transporte de la matière en plus de l'énergie,
+          contrairement à une onde progressive simple.
+        correct: false
+        feedback: >
+          Une onde progressive — périodique ou non — ne transporte jamais de
+          matière, seulement de l'énergie : c'est une propriété de TOUTE
+          onde progressive, héritée du chapitre précédent, pas quelque chose
+          que la périodicité changerait.
+      - id: C
+        text: >-
+          la perturbation se propage sans aucun retard entre la source et
+          les points du milieu.
+        correct: false
+        feedback: >
+          Le retard $\tau = d/c$ entre la source et un point $M$ existe
+          toujours, périodicité ou non : $M$ rejoue le mouvement de $S$ avec
+          ce retard, il ne le reproduit pas instantanément. La périodicité
+          ne supprime pas le retard, elle garantit seulement que $M$ vibre à
+          la même période que $S$ malgré ce retard.
+      - id: D
+        text: >-
+          la perturbation change de nature (une onde transversale devient
+          longitudinale) à chaque nouvelle période.
+        correct: false
+        feedback: >
+          La nature d'une onde — transversale ou longitudinale — est fixée
+          par le mécanisme physique de la source et du milieu, elle ne
+          change jamais d'une période à l'autre. La périodicité concerne la
+          répétition du mouvement dans le temps, pas la nature géométrique
+          de la vibration.
+    correct_feedback: >
+      Ce qui définit une onde progressive périodique, c'est uniquement que
+      le mouvement de la source se répète à l'identique à intervalles
+      réguliers $T$ — tout le reste (absence de transport de matière, retard
+      $d/c$, nature transversale ou longitudinale) est hérité tel quel du
+      cas général d'onde progressive.
+    solution: |
+      Une onde progressive périodique est un CAS PARTICULIER d'onde
+      progressive : elle en garde toutes les propriétés générales
+      (propagation de proche en proche, sans transport de matière, avec un
+      retard $\tau = d/c$ entre source et point atteint, une nature fixée
+      par le mécanisme physique) et y ajoute une seule propriété
+      supplémentaire — la répétition à l'identique du mouvement de la
+      source, à intervalles de temps réguliers $T$.
+
+  - id: OMPP-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, retard, milieu_de_propagation, dephasage]
+    stem: >
+      Le retard $\tau = d/c$ entre la source $S$ et un point $M$ dépend de
+      la distance $d$. Cela signifie-t-il que deux points du milieu, à des
+      distances différentes de $S$, vibrent avec des périodes différentes ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : quelle que soit la distance $d$, chaque point $M$ vibre avec
+          exactement la même période $T$ que la source ; seul l'instant où
+          l'on observe le cycle change avec le retard.
+        correct: true
+      - id: B
+        text: >-
+          Oui : plus $M$ est loin de $S$, plus le signal met de temps à
+          l'atteindre, donc plus sa période est grande.
+        correct: false
+        feedback: >
+          Le retard $\tau$ (le temps que met le signal à atteindre $M$ pour
+          la première fois) et la période $T$ (le temps que met $M$, une
+          fois atteint, à répéter son propre mouvement) sont deux durées
+          différentes. Un retard plus grand décale seulement le début de la
+          vibration de $M$ dans le temps, il n'allonge jamais sa période une
+          fois que $M$ vibre.
+      - id: C
+        text: >-
+          Oui, mais seulement si le milieu est tel que la célérité $c$ varie
+          avec la distance ; sinon la période reste la même.
+        correct: false
+        feedback: >
+          La démonstration ($y_M(t+T) = y_M(t)$) ne fait intervenir que la
+          périodicité de la source, jamais une propriété particulière du
+          milieu : elle vaut pour n'importe quel milieu, homogène ou non. La
+          période de chaque point est toujours celle de la source, sans
+          condition supplémentaire sur le milieu.
+      - id: D
+        text: >-
+          Non, la période ne change pas, mais le déphasage entre $S$ et $M$
+          est toujours nul, quelle que soit la distance $d$.
+        correct: false
+        feedback: >
+          Le déphasage $\Delta\varphi = 2\pi d/\lambda$ dépend de $d$ et
+          n'est nul que si $d$ est un multiple entier de $\lambda$ : il
+          n'est pas systématiquement nul. Ce qui est vrai pour TOUT point
+          $M$, c'est l'égalité des périodes, pas l'absence de déphasage.
+    correct_feedback: >
+      Le retard ne fait que décaler dans le temps le mouvement de $M$ ;
+      décaler une fonction périodique ne change jamais sa période. Tout
+      point atteint par l'onde vibre avec exactement la période $T$ de la
+      source, quelle que soit sa distance à celle-ci.
+    solution: |
+      On a établi $y_M(t+T) = y_M(t)$ pour tout point $M$, en utilisant
+      uniquement la périodicité de $S$ (et non une valeur particulière de
+      $\tau$ ou de $c$). Le retard $\tau = d/c$ décale seulement l'instant
+      où le cycle de $M$ commence à être observé — il ne modifie ni la durée
+      de ce cycle ($T$), ni la conclusion, quelle que soit la distance $d$
+      ou le milieu traversé.
+
+  - id: OMPP-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, calcul]
+    stem: >
+      Une onde progressive périodique sinusoïdale se propage le long d'une
+      corde à la célérité $c = 12\ \text{m/s}$. La période de la source est
+      $T = 0{,}4\ \text{s}$. Quelle est la longueur d'onde $\lambda$ de cette
+      onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda = cT = 12 \times 0{,}4 = 4{,}8\ \text{m}$
+        correct: true
+      - id: B
+        text: >-
+          $\lambda = c/T = 12/0{,}4 = 30\ \text{m}$
+        correct: false
+        feedback: >
+          Ce calcul divise $c$ par $T$ au lieu de les multiplier : la
+          relation correcte, dérivée en R2, est $\lambda = cT$ (un produit),
+          pas un quotient. De plus, $c/T$ n'a pas la dimension d'une
+          longueur.
+      - id: C
+        text: >-
+          $\lambda = T/c = 0{,}4/12 \approx 0{,}033\ \text{m}$
+        correct: false
+        feedback: >
+          Ce calcul inverse le rôle de $c$ et $T$ dans la relation
+          $\lambda = cT$ : c'est un produit des deux grandeurs, pas un
+          quotient de l'une par l'autre — et $T/c$ n'a d'ailleurs pas la
+          dimension d'une longueur.
+      - id: D
+        text: >-
+          $\lambda = c + T = 12{,}4\ \text{m}$
+        correct: false
+        feedback: >
+          On ne peut jamais additionner une célérité (en m/s) et une durée
+          (en s) : ce ne sont pas des grandeurs de même nature. La longueur
+          d'onde se calcule par le PRODUIT $\lambda = cT$, jamais par une
+          somme.
+    correct_feedback: >
+      La longueur d'onde se dérive du fait que l'onde avance d'une distance
+      $\lambda$ pendant chaque période $T$, à la célérité $c$ :
+      $\lambda = cT = 12 \times 0{,}4 = 4{,}8\ \text{m}$.
+    solution: |
+      $$\lambda = cT = 12 \times 0{,}4 = 4{,}8\ \text{m}$$
+      On peut vérifier avec l'écriture équivalente : $f = 1/T =
+      2{,}5\ \text{Hz}$, donc $\lambda = c/f = 12/2{,}5 = 4{,}8\ \text{m}$ —
+      les deux calculs coïncident.
+
+  - id: OMPP-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, concordance_opposition, periodicite_spatiale]
+    stem: >
+      Deux points $M_1$ et $M_2$ d'une corde sont séparés d'une distance
+      $d = 2\lambda$ (deux longueurs d'onde complètes). Quelle est leur
+      relation de phase ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Concordance de phase : $d$ est un multiple entier de $\lambda$
+          ($d = 2\lambda$), donc $\Delta\varphi = 4\pi\ \text{rad}$, un
+          multiple entier de $2\pi$.
+        correct: true
+      - id: B
+        text: >-
+          Opposition de phase : $d$ est un multiple de $\lambda/2$, puisque
+          $2\lambda = 4 \times (\lambda/2)$.
+        correct: false
+        feedback: >
+          L'opposition de phase exige un multiple IMPAIR de $\lambda/2$, pas
+          n'importe quel multiple. Ici $2\lambda = 4 \times (\lambda/2)$, où
+          $4$ est un multiple PAIR — ce qui équivaut exactement à
+          $2\lambda$, donc à la concordance, pas à l'opposition.
+      - id: C
+        text: >-
+          On ne peut pas savoir sans connaître les valeurs numériques de $d$
+          et $\lambda$ ; une relation générale n'existe pas.
+        correct: false
+        feedback: >
+          Le rapport $d/\lambda = 2$ suffit entièrement : la relation
+          $\Delta\varphi = 2\pi d/\lambda$ ne dépend que de ce rapport, pas
+          des valeurs numériques séparées de $d$ et de $\lambda$. Ici
+          $d/\lambda$ est un entier, ce qui détermine la concordance sans
+          calcul supplémentaire.
+      - id: D
+        text: >-
+          Ni concordance ni opposition : $d = 2\lambda$ ne correspond à
+          aucun des deux cas particuliers reconnus.
+        correct: false
+        feedback: >
+          La concordance de phase correspond à TOUT multiple entier de
+          $\lambda$ ($d = k\lambda$, pour n'importe quel entier $k$), pas
+          seulement à $d = \lambda$. Avec $k = 2$, $d = 2\lambda$ est bien un
+          cas de concordance.
+    correct_feedback: >
+      $d = 2\lambda$ est un multiple entier de $\lambda$ ($k=2$), donc
+      $\Delta\varphi = 2\pi \times 2 = 4\pi\ \text{rad}$, un multiple entier
+      de $2\pi$ : $M_1$ et $M_2$ vibrent en concordance de phase.
+    solution: |
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 2\lambda}{\lambda} = 4\pi\ \text{rad}$$
+      $4\pi = 2 \times 2\pi$ : un multiple entier de $2\pi$, donc concordance
+      de phase. Tout multiple entier de $\lambda$ ($\lambda$, $2\lambda$,
+      $3\lambda$, ...) donne la concordance ; seuls les multiples IMPAIRS de
+      $\lambda/2$ donnent l'opposition.
+
+  - id: OMPP-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [longitudinale_transversale, milieu_de_propagation, son]
+    stem: >
+      Le son est une onde mécanique progressive périodique. Comment les
+      particules d'air vibrent-elles par rapport à la direction de
+      propagation du son ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles vibrent (compressions et dilatations) dans la MÊME direction
+          que la propagation : le son est une onde longitudinale.
+        correct: true
+      - id: B
+        text: >-
+          Elles vibrent perpendiculairement à la direction de propagation,
+          comme sur une corde : le son est une onde transversale.
+        correct: false
+        feedback: >
+          C'est l'inverse : contrairement à l'onde sur une corde
+          (transversale), le son se propage par des compressions et des
+          dilatations de l'air DANS la même direction que la propagation —
+          c'est précisément ce qui définit une onde longitudinale.
+      - id: C
+        text: >-
+          Elles ne vibrent pas du tout : seule l'énergie se déplace, sans
+          que l'air soit localement perturbé.
+        correct: false
+        feedback: >
+          Une onde mécanique se propage justement PARCE QUE le milieu est
+          perturbé localement, de proche en proche : pour le son, cette
+          perturbation, ce sont les compressions et dilatations de l'air.
+          Sans vibration locale des particules d'air, il n'y aurait aucune
+          perturbation à relayer.
+      - id: D
+        text: >-
+          Elles vibrent dans le vide, ce qui explique que le son puisse se
+          propager dans l'espace.
+        correct: false
+        feedback: >
+          Le son est une onde MÉCANIQUE : il a besoin d'un milieu matériel
+          pour se propager (ici, l'air) et ne se propage jamais dans le
+          vide — contrairement à la lumière. Il n'y a donc rien à faire
+          vibrer dans le vide.
+    correct_feedback: >
+      Le son se propage par des compressions et dilatations successives de
+      l'air, dans la MÊME direction que la propagation : c'est la définition
+      même d'une onde longitudinale, à la différence d'une onde sur une
+      corde qui est transversale.
+    solution: |
+      Comme toute onde mécanique, le son a besoin d'un milieu matériel (il
+      ne se propage pas dans le vide) et perturbe ce milieu localement pour
+      se propager de proche en proche. Cette perturbation prend la forme de
+      compressions et de dilatations de l'air ALIGNÉES avec la direction de
+      propagation : le son est donc une onde longitudinale, contrairement à
+      l'onde sur une corde, transversale.
+
+  - id: OMPP-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [frequence, hauteur, milieu_de_propagation, longitudinale_transversale]
+    stem: >
+      Deux notes de musique, l'une aiguë et l'autre grave, sont jouées dans
+      la même salle (même air, même température). D'un point de vue
+      physique, qu'est-ce qui les distingue nécessairement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Leur fréquence $f$ : la note aiguë a une fréquence plus élevée que
+          la note grave ; la célérité du son, elle, est la même dans les
+          deux cas (même milieu).
+        correct: true
+      - id: B
+        text: >-
+          Leur célérité $c$ : le son de la note aiguë se propage plus vite
+          dans l'air que celui de la note grave.
+        correct: false
+        feedback: >
+          La célérité est fixée par le milieu de propagation (ici, l'air à
+          une température donnée), pas par la hauteur de la note émise :
+          dans la même salle, les deux sons se propagent exactement à la
+          même célérité $c$. Ce qui distingue les deux notes, c'est leur
+          fréquence, imposée par leur source respective.
+      - id: C
+        text: >-
+          Seulement leur longueur d'onde $\lambda$, la fréquence étant
+          nécessairement la même pour tout son.
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est la fréquence qui est imposée par la source
+          et qui DIFFÈRE nécessairement entre deux notes de hauteurs
+          différentes — c'est même ce qui définit la hauteur. La longueur
+          d'onde n'est qu'une conséquence, via $\lambda = c/f$, elle ne
+          varie que parce que $f$ varie (à $c$ fixée).
+      - id: D
+        text: >-
+          La nature de l'onde : la note grave est une onde longitudinale, la
+          note aiguë une onde transversale.
+        correct: false
+        feedback: >
+          Le son est TOUJOURS une onde longitudinale, quelle que soit sa
+          fréquence ou la hauteur perçue : la nature d'une onde
+          (longitudinale ou transversale) ne dépend pas de sa fréquence,
+          mais du mécanisme physique de sa propagation.
+    correct_feedback: >
+      La hauteur d'un son est directement liée à sa fréquence, fixée par la
+      source qui vibre. Dans un même milieu, deux notes de hauteurs
+      différentes ont donc des fréquences différentes, mais partagent
+      exactement la même célérité.
+    solution: |
+      La hauteur perçue dépend uniquement de la fréquence $f$, fixée par la
+      source (R1, R4) : une note aiguë a un $f$ plus élevé qu'une note
+      grave. Dans la même salle, l'air constitue un seul et même milieu de
+      propagation, donc la célérité $c$ est identique pour les deux notes ;
+      seule leur longueur d'onde diffère, en conséquence de $f$ (via
+      $\lambda = c/f$), pas l'inverse. Le son reste une onde longitudinale
+      dans les deux cas.
+
+  - id: OMPP-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, concordance_opposition, retard, calcul]
+    stem: >
+      Un vibreur impose une fréquence $f = 20\ \text{Hz}$ à l'extrémité
+      d'une corde. La célérité de l'onde vaut $c = 6\ \text{m/s}$. Un point
+      $M$ de la corde est situé à $d = 1{,}35\ \text{m}$ de la source.
+      Quelle est la relation de phase entre $M$ et la source ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Opposition de phase : $T = 1/f = 0{,}05\ \text{s}$, $\tau = d/c =
+          0{,}225\ \text{s}$, donc $\tau/T = 4{,}5$, soit $4$ périodes
+          entières plus une demi-période.
+        correct: true
+      - id: B
+        text: >-
+          Concordance de phase : $\tau/T = 4{,}5$ est un multiple de
+          $0{,}5$, ce qui suffit pour la concordance.
+        correct: false
+        feedback: >
+          $4{,}5$ périodes, c'est $4$ périodes entières (qui donnent la
+          concordance) PLUS une demi-période supplémentaire, qui déplace $M$
+          à l'opposé exact du cycle de $S$. Le fait que $4{,}5$ soit un
+          multiple de $0{,}5$ ne suffit pas : il faut un nombre ENTIER de
+          périodes pour la concordance, un nombre entier plus une
+          demi-période pour l'opposition.
+      - id: C
+        text: >-
+          On ne peut pas conclure sans connaître la longueur d'onde
+          $\lambda$.
+        correct: false
+        feedback: >
+          Le rapport $\tau/T$ (le retard divisé par la période) suffit à lui
+          seul pour conclure : c'est équivalent à $\Delta\varphi =
+          2\pi\tau/T$, une autre écriture du déphasage qui ne nécessite pas
+          $\lambda$ séparément — même si on peut aussi le retrouver via
+          $\lambda = cT$ et $\Delta\varphi = 2\pi d/\lambda$.
+      - id: D
+        text: >-
+          Concordance de phase, car $\tau = 0{,}225\ \text{s}$ est très
+          petit devant la durée totale de l'expérience.
+        correct: false
+        feedback: >
+          La relation de phase ne dépend jamais de la petitesse du retard
+          par rapport à une durée extérieure (comme la durée totale de
+          l'expérience) : elle dépend uniquement du rapport $\tau/T$,
+          comparé à un nombre entier de périodes. Ici ce rapport vaut
+          $4{,}5$, ce qui donne l'opposition, pas la concordance.
+    correct_feedback: >
+      $\tau/T = 4{,}5$ : quatre périodes entières, pendant lesquelles $S$
+      reproduit son mouvement à l'identique, plus une demi-période
+      supplémentaire, qui place $M$ à l'opposé exact du cycle de $S$ —
+      l'opposition de phase.
+    solution: |
+      $$T = \frac{1}{f} = \frac{1}{20} = 0{,}05\ \text{s}, \qquad
+      \tau = \frac{d}{c} = \frac{1{,}35}{6} = 0{,}225\ \text{s}$$
+      $$\frac{\tau}{T} = \frac{0{,}225}{0{,}05} = 4{,}5$$
+      $4$ périodes entières plus une demi-période : opposition de phase.
+      Vérification par le déphasage : $\lambda = cT = 6 \times 0{,}05 =
+      0{,}3\ \text{m}$, donc
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 1{,}35}{0{,}3} = 9\pi\ \text{rad}$$
+      $9\pi = 8\pi + \pi$ : un multiple impair de $\pi$, l'opposition est
+      confirmée.
+
+  - id: OMPP-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_spatiale, milieu_de_propagation, concordance_opposition, calcul]
+    stem: >
+      Une onde sinusoïdale de fréquence $f = 50\ \text{Hz}$ se propage
+      d'abord dans un milieu 1 ($c_1 = 20\ \text{m/s}$), puis dans un milieu
+      2 ($c_2 = 8\ \text{m/s}$). Une fois dans le milieu 2, quelle est la
+      plus petite distance séparant deux points en opposition de phase ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $0{,}08\ \text{m}$, soit $\lambda_2/2$, avec $\lambda_2 = c_2/f =
+          8/50 = 0{,}16\ \text{m}$.
+        correct: true
+      - id: B
+        text: >-
+          $0{,}2\ \text{m}$, en utilisant la longueur d'onde du milieu 1,
+          $\lambda_1 = c_1/f = 0{,}4\ \text{m}$, divisée par deux.
+        correct: false
+        feedback: >
+          Une fois l'onde entrée dans le milieu 2, c'est la longueur d'onde
+          DANS LE MILIEU 2 qui compte, $\lambda_2 = c_2/f$, pas celle du
+          milieu 1 : la fréquence reste la même aux deux endroits, mais la
+          célérité change au passage d'un milieu à l'autre, donc $\lambda$
+          change aussi.
+      - id: C
+        text: >-
+          $0{,}16\ \text{m}$, soit $\lambda_2$ tout entier.
+        correct: false
+        feedback: >
+          C'est la distance minimale pour la CONCORDANCE de phase (un
+          multiple entier de $\lambda$), pas pour l'opposition. La distance
+          minimale pour l'opposition de phase est une DEMI-longueur d'onde,
+          $\lambda_2/2$, plus petite que $\lambda_2$.
+      - id: D
+        text: >-
+          $0{,}04\ \text{m}$, soit $\lambda_2/4$.
+        correct: false
+        feedback: >
+          Un quart de longueur d'onde correspond à un déphasage de $\pi/2$
+          (un quart de tour, la quadrature), pas à l'opposition de phase,
+          qui exige un déphasage de $\pi$ (un demi-tour) — donc une distance
+          de $\lambda_2/2$, pas $\lambda_2/4$.
+    correct_feedback: >
+      Dans le milieu 2, $\lambda_2 = c_2/f = 0{,}16\ \text{m}$. L'opposition
+      de phase correspond à un déphasage de $\pi$, soit une distance de
+      $\lambda_2/2 = 0{,}08\ \text{m}$ — la plus petite distance possible
+      pour ce cas.
+    solution: |
+      La fréquence $f = 50\ \text{Hz}$ est fixée par la source et reste la
+      même dans les deux milieux. Dans le milieu 2 :
+      $$\lambda_2 = \frac{c_2}{f} = \frac{8}{50} = 0{,}16\ \text{m}$$
+      L'opposition de phase correspond aux multiples IMPAIRS de
+      $\lambda_2/2$ ; le plus petit d'entre eux est $\lambda_2/2 =
+      0{,}08\ \text{m}$.
+
+  - id: OMPP-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, calcul, frequence, periodicite_spatiale]
+    stem: >
+      Deux points d'une corde, distants de $d = 1{,}8\ \text{m}$, vibrent
+      avec un déphasage $\Delta\varphi = 6\pi\ \text{rad}$. Sachant que la
+      célérité de l'onde vaut $c = 3\ \text{m/s}$, quelle est la fréquence
+      $f$ de la source ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $f = 5\ \text{Hz}$, obtenue via $\lambda = 2\pi d/\Delta\varphi =
+          0{,}6\ \text{m}$, puis $T = \lambda/c = 0{,}2\ \text{s}$, puis
+          $f = 1/T$.
+        correct: true
+      - id: B
+        text: >-
+          $f \approx 1{,}8\ \text{Hz}$, obtenue en calculant $\lambda =
+          \Delta\varphi/(2\pi d) \approx 1{,}67\ \text{m}$.
+        correct: false
+        feedback: >
+          Ce calcul inverse la relation $\Delta\varphi = 2\pi d/\lambda$ :
+          pour isoler $\lambda$, il faut écrire
+          $\lambda = 2\pi d/\Delta\varphi$, pas $\Delta\varphi/(2\pi d)$ —
+          c'est $d$ qui doit rester au numérateur, comme dans la relation de
+          départ.
+      - id: C
+        text: >-
+          $f \approx 31{,}4\ \text{Hz}$, obtenue en calculant $\lambda =
+          d/\Delta\varphi \approx 0{,}0955\ \text{m}$.
+        correct: false
+        feedback: >
+          Ce calcul oublie le facteur $2\pi$ : le rapport $d/\lambda$ compte
+          un nombre de longueurs d'onde, ce n'est pas directement égal à
+          $\Delta\varphi$ (l'angle en radians) — il faut diviser
+          $\Delta\varphi$ par $2\pi$ pour obtenir ce nombre, avant de
+          retrouver $\lambda$.
+      - id: D
+        text: >-
+          $f = 0{,}2\ \text{Hz}$, en prenant directement $f = T$ après avoir
+          trouvé $\lambda = 0{,}6\ \text{m}$ et $T = 0{,}2\ \text{s}$.
+        correct: false
+        feedback: >
+          $\lambda$ et $T$ sont ici correctement calculés, mais la dernière
+          étape est fausse : la fréquence est l'INVERSE de la période,
+          $f = 1/T$, pas $T$ elle-même. Avec $T = 0{,}2\ \text{s}$, on
+          obtient $f = 1/0{,}2 = 5\ \text{Hz}$, pas $0{,}2\ \text{Hz}$.
+    correct_feedback: >
+      $\lambda = 2\pi d/\Delta\varphi = 2\pi \times 1{,}8/6\pi =
+      0{,}6\ \text{m}$, puis $T = \lambda/c = 0{,}6/3 = 0{,}2\ \text{s}$,
+      donc $f = 1/T = 5\ \text{Hz}$.
+    solution: |
+      $$\lambda = \frac{2\pi d}{\Delta\varphi} = \frac{2\pi \times 1{,}8}{6\pi} = 0{,}6\ \text{m}$$
+      $$T = \frac{\lambda}{c} = \frac{0{,}6}{3} = 0{,}2\ \text{s}$$
+      $$f = \frac{1}{T} = \frac{1}{0{,}2} = 5\ \text{Hz}$$
