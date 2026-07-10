@@ -317,3 +317,989 @@ items:
       au sommet $A$ a ses deux autres angles égaux à
       $(180°-60°)/2=60°$ chacun. Les trois angles valent $60°$ : le
       triangle est équilatéral.
+
+  - id: NBCOMPLEX2-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_complexes_trigo
+    tags: ["multiplication-par-i", "rotation", "intuition-geometrique"]
+    stem: >
+      D'après l'accroche du chapitre, que produit géométriquement la
+      multiplication d'un point du plan par $i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une rotation de centre $O$ et d'angle $\\pi/2$ (un quart de tour direct), sans changement de taille."
+        correct: true
+      - id: B
+        text: "Un agrandissement (une homothétie), sans rotation."
+        correct: false
+        feedback: >
+          $|i|=1$ : multiplier par $i$ ne change jamais la distance à
+          $O$, donc il n'y a aucun agrandissement. Tu as traité $i$
+          comme un simple facteur d'échelle, en oubliant de vérifier son
+          module — c'est justement parce que $|i|=1$ que la
+          multiplication par $i$ n'agrandit rien, elle fait seulement
+          tourner.
+      - id: C
+        text: "Une translation."
+        correct: false
+        feedback: >
+          Une translation vient d'une ADDITION d'affixes (comme vu au
+          chapitre précédent), pas d'une multiplication. Ici on
+          multiplie $z$ par $i$, on ne lui ajoute rien : il ne peut donc
+          pas s'agir d'une translation.
+      - id: D
+        text: "Une symétrie par rapport à l'axe réel."
+        correct: false
+        feedback: >
+          C'est l'effet de la CONJUGAISON ($z\mapsto\overline z$), pas
+          de la multiplication par $i$. Vérifie sur un exemple : le
+          conjugué de $1+i$ est $1-i$, alors que $i(1+i)=-1+i$ — ce
+          n'est pas du tout le symétrique de $1+i$ par rapport à l'axe
+          réel.
+    correct_feedback: >
+      Sur les trois exemples de l'accroche ($z=2$, $z=3i$, $z=1+i$), la
+      distance à $O$ reste inchangée à chaque fois, et le point tourne
+      exactement d'un quart de tour dans le sens direct : multiplier
+      par $i$ est une rotation de centre $O$ et d'angle $\pi/2$.
+    solution: |
+      **Les trois exemples de l'accroche :**
+      $$2 \mapsto 2i \qquad 3i \mapsto -3 \qquad 1+i \mapsto -1+i$$
+
+      **Vérification des distances :** $|2|=2=|2i|$ ;
+      $|3i|=3=|-3|$ ; $|1+i|=\sqrt2=|-1+i|$. Dans les trois cas, la
+      distance à $O$ ne change pas : pas d'agrandissement.
+
+      **Vérification de l'angle :** dans les trois cas, le point tourné
+      d'un quart de tour direct ($90°$) autour de $O$ tombe exactement
+      sur le point d'arrivée (vérifie-le sur $(1,1)\mapsto(-1,1)$).
+
+      **Conclusion :** multiplier par $i$ est une rotation de centre
+      $O$ et d'angle $\pi/2$, sans agrandissement.
+
+  - id: NBCOMPLEX2-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_complexes_trigo
+    tags: ["multiplication-par-i", "rotation", "sens-direct"]
+    stem: >
+      Le point $M$ a pour affixe $z = 3$. Quelle est l'affixe du point
+      $M'$ obtenu en multipliant $z$ par $i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-3i$"
+        correct: false
+        feedback: >
+          Ce point correspond à un quart de tour dans le sens INDIRECT
+          (horaire), pas direct. Or l'accroche montre que multiplier
+          par $i$ fait tourner dans le sens direct (trigonométrique,
+          anti-horaire) : $(3,0)$ tourné d'un quart de tour direct
+          donne $(0,3)$, pas $(0,-3)$.
+      - id: B
+        text: "$3i$"
+        correct: true
+      - id: C
+        text: "$-3$"
+        correct: false
+        feedback: >
+          $-3$ correspond à une multiplication par $-1=i^2$, c'est-à-dire
+          un DEMI-tour, pas un quart de tour. Tu as confondu $i$ avec
+          $i^2$ : $i\times3=3i$, alors que $i^2\times3=-3$.
+      - id: D
+        text: "$3$"
+        correct: false
+        feedback: >
+          Cette réponse revient à dire que multiplier par $i$ ne change
+          rien, comme si $i$ jouait le rôle de $1$. Or $i\neq1$ :
+          $i\times3=3i$, un nombre différent de $3$, dont l'image a
+          tourné d'un quart de tour.
+    correct_feedback: >
+      $i\times3=3i$ : le point $(3,0)$ devient $(0,3)$, exactement un
+      quart de tour direct autour de $O$, sans changement de distance.
+    solution: |
+      **Calcul direct :**
+      $$z' = i\times z = i\times3 = 3i$$
+
+      **Vérification géométrique :** $M(3,0)$ est à distance $3$ de
+      $O$ ; $M'(0,3)$ aussi est à distance $3$ de $O$. La direction a
+      tourné d'un quart de tour dans le sens direct, cohérent avec
+      l'effet de la multiplication par $i$ vu dans l'accroche.
+
+  - id: NBCOMPLEX2-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_complexes_trigo
+    tags: ["multiplication-par-i", "composition-rotations"]
+    stem: >
+      On part du point d'affixe $z$, on le multiplie par $i$, puis on
+      multiplie le résultat par $i$ une seconde fois (on calcule donc
+      $i\times(iz)=i^2z$). Quel est l'effet géométrique total de ces
+      deux multiplications successives ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une rotation de centre $O$ et d'angle $\\pi/2$ (un quart de tour), comme une seule multiplication par $i$."
+        correct: false
+        feedback: >
+          Faire deux fois la même rotation ne redonne pas le même
+          angle : les deux quarts de tour s'ADDITIONNENT
+          ($\pi/2+\pi/2=\pi$), ils ne se répètent pas à l'identique. Tu
+          n'as compté l'effet que d'une seule des deux multiplications.
+      - id: B
+        text: "Un agrandissement de rapport $2$, sans rotation."
+        correct: false
+        feedback: >
+          Tu as pensé qu'appliquer deux fois la même multiplication
+          double la distance à $O$, comme si $|i|$ n'était pas $1$
+          mais s'ajoutait à chaque fois. Or $|i|=1$ : composer deux
+          rotations ne change jamais la taille, seulement l'angle (qui,
+          lui, s'additionne bel et bien).
+      - id: C
+        text: "Une rotation de centre $O$ et d'angle $\\pi$ (un demi-tour)."
+        correct: true
+      - id: D
+        text: "Le point revient à sa position de départ (transformation identique)."
+        correct: false
+        feedback: >
+          Tu as peut-être pensé « faire une chose deux fois annule son
+          effet », comme pour une symétrie. Mais une ROTATION répétée
+          deux fois ne redonne pas le point de départ : elle compose
+          les deux angles. Deux quarts de tour direct font un demi-tour
+          ($\pi$), pas un tour complet nul.
+    correct_feedback: >
+      $i^2=-1$, et $-1=e^{i\pi}$ : multiplier deux fois de suite par
+      $i$ revient à multiplier par $-1$, c'est-à-dire à faire tourner
+      le point d'un demi-tour ($\pi$) autour de $O$, sans changer sa
+      distance à $O$.
+    solution: |
+      **Calcul algébrique :**
+      $$i\times(iz) = i^2 z = -z$$
+
+      **Effet géométrique de $z\mapsto-z$ :** vu au chapitre précédent,
+      c'est la symétrie par rapport à $O$, c'est-à-dire une rotation de
+      centre $O$ et d'angle $\pi$ (un demi-tour).
+
+      **Cohérence avec l'angle :** chaque multiplication par $i$ fait
+      tourner d'un quart de tour ($\pi/2$) ; en faire deux additionne
+      les angles : $\pi/2+\pi/2=\pi$. Les deux points de vue
+      (algébrique et géométrique) coïncident.
+
+  - id: NBCOMPLEX2-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: ["forme-trigonometrique", "argument", "quadrant"]
+    stem: >
+      Quelle est la forme trigonométrique de $z = 1 - i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2\\left(\\cos\\left(-\\dfrac{\\pi}{4}\\right)+i\\sin\\left(-\\dfrac{\\pi}{4}\\right)\\right)$"
+        correct: false
+        feedback: >
+          L'angle est correct, mais le module est faux : tu as calculé
+          $r=1^2+(-1)^2=2$ en oubliant de prendre la racine carrée.
+          Le module est $r=|z|=\sqrt{1^2+(-1)^2}=\sqrt2$, pas $2$.
+      - id: B
+        text: "$\\sqrt2\\left(\\cos\\dfrac{\\pi}{4}+i\\sin\\dfrac{\\pi}{4}\\right)$"
+        correct: false
+        feedback: >
+          Le module est correct, mais tu as oublié de vérifier le
+          signe du sinus : ici $b=-1<0$, donc $\sin\theta<0$. Or
+          $\sin(\pi/4)>0$. L'angle de référence $\pi/4$ est le bon,
+          mais comme $\cos\theta>0$ ET $\sin\theta<0$, l'argument est
+          $-\pi/4$, pas $\pi/4$.
+      - id: C
+        text: "$\\sqrt2\\left(\\cos\\dfrac{3\\pi}{4}+i\\sin\\dfrac{3\\pi}{4}\\right)$"
+        correct: false
+        feedback: >
+          Cet angle correspond à $\cos\theta<0$ et $\sin\theta>0$, donc
+          au point $(-1,1)$. Mais ici $z=1-i$ correspond au point
+          $(1,-1)$ : les signes des deux coordonnées sont inversés par
+          rapport à ce que suppose cette réponse.
+      - id: D
+        text: "$\\sqrt2\\left(\\cos\\left(-\\dfrac{\\pi}{4}\\right)+i\\sin\\left(-\\dfrac{\\pi}{4}\\right)\\right)$"
+        correct: true
+    correct_feedback: >
+      $r=|z|=\sqrt{1^2+(-1)^2}=\sqrt2$, donc $\cos\theta=\dfrac{1}{\sqrt2}=\dfrac{\sqrt2}{2}$
+      et $\sin\theta=\dfrac{-1}{\sqrt2}=-\dfrac{\sqrt2}{2}$. Ces deux
+      valeurs correspondent à $\theta=-\pi/4$.
+    solution: |
+      **Étape 1 — module :**
+      $$r = |z| = \sqrt{1^2+(-1)^2} = \sqrt2$$
+
+      **Étape 2 — cosinus et sinus :**
+      $$\cos\theta = \frac{1}{\sqrt2} = \frac{\sqrt2}{2}, \qquad \sin\theta = \frac{-1}{\sqrt2} = -\frac{\sqrt2}{2}$$
+
+      **Étape 3 — quadrant et angle :** $\cos\theta>0$ et
+      $\sin\theta<0$ place $M$ dans le quatrième quadrant. L'angle de
+      référence est $\pi/4$ ; dans ce quadrant, $\theta=-\pi/4$.
+
+      $$z = \sqrt2\left(\cos\left(-\frac{\pi}{4}\right)+i\sin\left(-\frac{\pi}{4}\right)\right)$$
+
+  - id: NBCOMPLEX2-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: ["argument", "conjugue", "oppose"]
+    stem: >
+      On sait qu'un complexe $z$ non nul a pour argument
+      $\theta=\dfrac{\pi}{5}$. Quel est un argument de $-\overline z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{4\\pi}{5}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{6\\pi}{5}$"
+        correct: false
+        feedback: >
+          Tu as appliqué la règle de l'opposé ($\arg(-w)=\arg(w)+\pi$)
+          directement à $\theta$, sans tenir compte du conjugué. Mais
+          ici $w=\overline z$, pas $z$ : il faut d'abord changer le
+          signe de l'argument à cause du conjugué ($\arg(\overline
+          z)=-\theta$), PUIS ajouter $\pi$ pour l'opposé.
+      - id: C
+        text: "$-\\dfrac{\\pi}{5}$"
+        correct: false
+        feedback: >
+          Tu as appliqué seulement la règle du conjugué
+          ($\arg(\overline z)=-\theta$), mais oublié le signe « $-$ »
+          devant $\overline z$, qui correspond à un demi-tour
+          supplémentaire ($+\pi$). $-\overline z$ n'est pas
+          $\overline z$ : il manque l'étape de l'opposé.
+      - id: D
+        text: "$\\dfrac{\\pi}{5}$"
+        correct: false
+        feedback: >
+          Tu as sans doute pensé que les deux transformations (le
+          conjugué et l'opposé) s'annulent l'une l'autre et redonnent
+          l'argument de départ. Ce n'est pas le cas : elles se
+          COMBINENT (changement de signe de $\theta$, PUIS ajout de
+          $\pi$), elles ne s'annulent pas.
+    correct_feedback: >
+      $\arg(\overline z) = -\theta = -\pi/5$ (règle du conjugué), puis
+      $\arg(-\overline z) = \arg(\overline z)+\pi = -\pi/5+\pi =
+      4\pi/5$ (règle de l'opposé, appliquée ensuite).
+    solution: |
+      **Étape 1 — conjugué :** $\arg(\overline z) = -\arg(z) = -\dfrac{\pi}{5}\ [2\pi]$
+
+      **Étape 2 — opposé du conjugué :**
+      $$\arg(-\overline z) = \arg(\overline z) + \pi = -\frac{\pi}{5}+\pi = \frac{4\pi}{5}\ [2\pi]$$
+
+      **Vérification sur un exemple concret :** prends $z=e^{i\pi/5}$.
+      Alors $\overline z = e^{-i\pi/5}$ et $-\overline z =
+      -e^{-i\pi/5} = e^{i\pi}e^{-i\pi/5} = e^{i(\pi-\pi/5)} =
+      e^{i4\pi/5}$. Cohérent avec le résultat ci-dessus.
+
+  - id: NBCOMPLEX2-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: ["produit", "module", "argument"]
+    stem: >
+      On donne $z = 3e^{i2\pi/3}$ et $z' = 5e^{-i\pi/6}$. Quelle est la
+      forme exponentielle de $zz'$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$8e^{i\\pi/2}$"
+        correct: false
+        feedback: >
+          L'argument est correct, mais le module est faux : tu as
+          ADDITIONNÉ les modules ($3+5=8$) au lieu de les multiplier.
+          Pour un produit, les modules se MULTIPLIENT ($3\times5=15$) ;
+          seuls les arguments s'additionnent.
+      - id: B
+        text: "$15e^{i\\pi/2}$"
+        correct: true
+      - id: C
+        text: "$15e^{i5\\pi/6}$"
+        correct: false
+        feedback: >
+          Le module est correct, mais tu as oublié le signe « $-$ »
+          devant l'argument de $z'$ : tu as additionné $2\pi/3+\pi/6$
+          comme si $z'$ avait pour argument $\pi/6$, alors qu'il vaut
+          $-\pi/6$. Il fallait calculer $2\pi/3+(-\pi/6)$.
+      - id: D
+        text: "$15e^{i2\\pi/3}$"
+        correct: false
+        feedback: >
+          Tu as multiplié correctement les modules, mais oublié
+          d'ajouter l'argument de $z'$ : ce choix ne garde que
+          l'argument de $z$ seul ($2\pi/3$), comme si $z'$ n'apportait
+          rien à la direction. Il faut ajouter les DEUX arguments :
+          $2\pi/3+(-\pi/6)$.
+    correct_feedback: >
+      Les modules se multiplient : $3\times5=15$. Les arguments
+      s'additionnent : $2\pi/3+(-\pi/6) = 4\pi/6-\pi/6 = 3\pi/6 =
+      \pi/2$. Donc $zz' = 15e^{i\pi/2}$.
+    solution: |
+      **Règle du produit (R2) :**
+      $$|zz'| = |z|\times|z'| = 3\times5 = 15$$
+      $$\arg(zz') = \arg(z)+\arg(z') = \frac{2\pi}{3}+\left(-\frac{\pi}{6}\right) = \frac{4\pi}{6}-\frac{\pi}{6} = \frac{3\pi}{6} = \frac{\pi}{2}$$
+      $$zz' = 15e^{i\pi/2}$$
+
+  - id: NBCOMPLEX2-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_complexes_trigo
+    tags: ["forme-exponentielle", "definition"]
+    stem: >
+      Quelle égalité correspond à la définition de la notation
+      $e^{i\theta}$ posée dans ce chapitre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\cos\\theta - i\\sin\\theta$"
+        correct: false
+        feedback: >
+          C'est l'expression de $e^{-i\theta}$ (ou de
+          $\overline{e^{i\theta}}$), pas de $e^{i\theta}$ : tu as
+          inversé le signe devant $\sin\theta$. Par définition,
+          $e^{i\theta}=\cos\theta+i\sin\theta$, avec un « $+$ ».
+      - id: B
+        text: "$\\sin\\theta + i\\cos\\theta$"
+        correct: false
+        feedback: >
+          Tu as inversé les rôles : c'est $\cos\theta$ qui donne la
+          partie RÉELLE (en facteur de $1$) et $\sin\theta$ qui donne
+          la partie IMAGINAIRE (en facteur de $i$), pas l'inverse. La
+          définition est $e^{i\theta}=\cos\theta+i\sin\theta$.
+      - id: C
+        text: "$\\cos\\theta + i\\sin\\theta$"
+        correct: true
+      - id: D
+        text: "$1 + i\\theta$"
+        correct: false
+        feedback: >
+          Ce n'est pas la définition posée dans ce chapitre : ici,
+          $e^{i\theta}$ est un NOM donné à $\cos\theta+i\sin\theta$,
+          une égalité exacte pour tout $\theta$, pas une approximation
+          linéaire valable seulement pour $\theta$ petit.
+    correct_feedback: >
+      Par définition, $e^{i\theta}=\cos\theta+i\sin\theta$ : le cosinus
+      donne la partie réelle, le sinus (multiplié par $i$) donne la
+      partie imaginaire.
+    solution: |
+      **Définition posée dans ce chapitre (R2) :**
+      $$e^{i\theta} = \cos\theta + i\sin\theta$$
+
+      Ce choix de notation est justifié parce qu'il vérifie
+      $e^{i\theta}\times e^{i\theta'}=e^{i(\theta+\theta')}$, exactement
+      comme une vraie exponentielle — c'est le calcul du R2, utilisant
+      les formules d'addition trigonométrique, qui le garantit.
+
+  - id: NBCOMPLEX2-14
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["quotient", "module", "argument"]
+    stem: >
+      On donne $z = 6e^{i\pi/2}$ et $z' = 2e^{i\pi/3}$. Quelle est la
+      forme exponentielle de $\dfrac{z}{z'}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3e^{i5\\pi/6}$"
+        correct: false
+        feedback: >
+          Le module est correct, mais tu as ADDITIONNÉ les arguments
+          ($\pi/2+\pi/3$) au lieu de les soustraire. L'addition des
+          arguments correspond à un PRODUIT, pas à un quotient. Pour
+          $z/z'$, il faut soustraire : $\pi/2-\pi/3$.
+      - id: B
+        text: "$4e^{i\\pi/6}$"
+        correct: false
+        feedback: >
+          L'argument est correct, mais tu as SOUSTRAIT les modules
+          ($6-2=4$) au lieu de les diviser. Pour un quotient, les
+          modules se DIVISENT ($6\div2=3$) ; c'est seulement les
+          arguments qui se soustraient.
+      - id: C
+        text: "$3e^{-i\\pi/6}$"
+        correct: false
+        feedback: >
+          Le module est correct, mais tu as inversé l'ordre de la
+          soustraction : tu as calculé $\arg(z')-\arg(z)$ au lieu de
+          $\arg(z)-\arg(z')$. La règle du quotient donne
+          $\arg(z/z')=\arg(z)-\arg(z')=\pi/2-\pi/3$, pas
+          $\pi/3-\pi/2$.
+      - id: D
+        text: "$3e^{i\\pi/6}$"
+        correct: true
+    correct_feedback: >
+      Les modules se divisent : $6\div2=3$. Les arguments se
+      soustraient : $\pi/2-\pi/3 = 3\pi/6-2\pi/6 = \pi/6$. Donc
+      $z/z' = 3e^{i\pi/6}$.
+    solution: |
+      **Règle du quotient (R3) :**
+      $$\left|\frac{z}{z'}\right| = \frac{|z|}{|z'|} = \frac{6}{2} = 3$$
+      $$\arg\!\left(\frac{z}{z'}\right) = \arg(z)-\arg(z') = \frac{\pi}{2}-\frac{\pi}{3} = \frac{3\pi}{6}-\frac{2\pi}{6} = \frac{\pi}{6}$$
+      $$\frac{z}{z'} = 3e^{i\pi/6}$$
+
+  - id: NBCOMPLEX2-15
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["moivre", "puissance", "periodicite"]
+    stem: >
+      Soit $z = e^{i\pi/3}$. Quelle est la forme la plus simple de
+      $z^6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$"
+        correct: true
+      - id: B
+        text: "$-1$"
+        correct: false
+        feedback: >
+          Tu sembles avoir supposé qu'un argument se reproduit tous les
+          $\pi$ (comme la tangente), alors que l'argument est
+          $2\pi$-PÉRIODIQUE, pas $\pi$-périodique. Ici
+          $\arg(z^6)=6\times\pi/3=2\pi\equiv0\ [2\pi]$, ce qui donne
+          $1$, pas $-1$ (qui correspondrait à un argument de $\pi$).
+      - id: C
+        text: "$e^{i2\\pi/3}$"
+        correct: false
+        feedback: >
+          Cet argument correspond à $2\times\pi/3$ : tu as multiplié
+          l'argument par $2$ au lieu de $6$, comme si tu calculais
+          $z^2$ plutôt que $z^6$. La formule de Moivre demande de
+          multiplier l'argument par l'exposant TOUT ENTIER : $6\times
+          \pi/3$.
+      - id: D
+        text: "$6$"
+        correct: false
+        feedback: >
+          Tu as multiplié le module par $6$ ($1\times6=6$) au lieu de
+          l'ÉLEVER à la puissance $6$ ($1^6=1$). La formule de Moivre
+          élève le module à la puissance $n$ ; multiplier par $n$ est
+          la règle d'un produit répété d'arguments, pas celle du
+          module.
+    correct_feedback: >
+      Formule de Moivre : $|z^6|=|z|^6=1^6=1$ et
+      $\arg(z^6)=6\times\pi/3=2\pi\equiv0\ [2\pi]$. Donc $z^6=e^{i0}=1$.
+    solution: |
+      **Formule de Moivre (R3) :**
+      $$|z^6| = |z|^6 = 1^6 = 1$$
+      $$\arg(z^6) = 6\times\frac{\pi}{3} = 2\pi \equiv 0\ [2\pi]$$
+
+      **Réduction :** un argument se lit modulo $2\pi$ : $2\pi$ et $0$
+      décrivent le même point. Donc
+      $$z^6 = 1\times e^{i0} = 1$$
+
+  - id: NBCOMPLEX2-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["racines-n-iemes", "complexe-quelconque"]
+    stem: >
+      Quelles sont les trois solutions, dans $\mathbb{C}$, de
+      l'équation $z^3 = -8$, sous forme exponentielle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-2$ seulement"
+        correct: false
+        feedback: >
+          Tu n'as cherché de solution que parmi les RÉELS. Mais dans
+          $\mathbb{C}$, une équation $z^n=Z$ (avec $Z\neq0$) a
+          exactement $n$ solutions complexes distinctes. Ici $n=3$ :
+          il y a trois racines, dont une seule est réelle ($-2$), les
+          deux autres étant non réelles.
+      - id: B
+        text: "$2e^{i\\pi/3},\\ 2e^{i\\pi},\\ 2e^{i5\\pi/3}$"
+        correct: true
+      - id: C
+        text: "$2e^{i\\pi/3},\\ 2e^{i\\pi},\\ 2e^{i7\\pi/3}$"
+        correct: false
+        feedback: >
+          Tu as calculé $k=0$ et $k=1$ correctement, mais pour la
+          troisième racine tu as pris $k=3$ au lieu de $k=2$. Il n'y a
+          que $n=3$ racines distinctes, obtenues pour $k=0,1,2$ ;
+          au-delà ($k=3$), on retombe sur une racine déjà trouvée :
+          $2e^{i7\pi/3}=2e^{i\pi/3}$ (même angle, à $2\pi$ près). Ce
+          choix ne donne donc que deux racines distinctes, pas trois.
+      - id: D
+        text: "$8e^{i\\pi/3},\\ 8e^{i\\pi},\\ 8e^{i5\\pi/3}$"
+        correct: false
+        feedback: >
+          Les arguments sont corrects, mais le module est faux : tu as
+          gardé $R=|{-8}|=8$ tel quel, au lieu de prendre sa racine
+          CUBIQUE $\rho=R^{1/3}=8^{1/3}=2$. Le module de chaque racine
+          est $\rho=2$, pas $R=8$.
+    correct_feedback: >
+      $-8=8e^{i\pi}$, donc $R=8$, $\Phi=\pi$. On calcule
+      $\rho=8^{1/3}=2$ et $\alpha_k=\dfrac{\pi+2k\pi}{3}$ pour
+      $k=0,1,2$ : $\pi/3$, $\pi$, $5\pi/3$.
+    solution: |
+      **Forme exponentielle de $Z=-8$ :** $R=|{-8}|=8$,
+      $\Phi=\arg(-8)=\pi$.
+
+      **Module des racines :** $\rho = R^{1/3} = 8^{1/3} = 2$
+
+      **Arguments, pour $k=0,1,2$ :**
+      $$\alpha_k = \frac{\pi+2k\pi}{3}$$
+      $$k=0:\ \frac{\pi}{3} \qquad k=1:\ \frac{3\pi}{3}=\pi \qquad k=2:\ \frac{5\pi}{3}$$
+
+      **Vérification sur $k=1$ :** $2e^{i\pi}=-2$, et
+      $(-2)^3=-8=Z$. ✓
+
+  - id: NBCOMPLEX2-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: ["racines-n-iemes", "unite", "placement"]
+    stem: >
+      Les six solutions de $z^6=1$ sont placées régulièrement sur le
+      cercle trigonométrique. Quel est l'angle, en radians, entre deux
+      racines consécutives ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2\\pi$"
+        correct: false
+        feedback: >
+          $2\pi$ est l'angle d'un TOUR COMPLET, pas l'écart entre deux
+          racines consécutives. Les $n=6$ racines se partagent le tour
+          complet en $6$ parts égales : il faut diviser $2\pi$ par $6$,
+          pas répondre par $2\pi$ lui-même.
+      - id: B
+        text: "$\\dfrac{\\pi}{6}$"
+        correct: false
+        feedback: >
+          Tu as calculé $\pi/n$ au lieu de $2\pi/n$ : il manque le
+          facteur $2$, qui vient du fait qu'un tour complet mesure
+          $2\pi$ (pas $\pi$). L'écart correct est
+          $2\pi/6=\pi/3$, pas $\pi/6$.
+      - id: C
+        text: "$\\dfrac{\\pi}{3}$"
+        correct: true
+      - id: D
+        text: "$6$"
+        correct: false
+        feedback: >
+          Tu as répondu avec le nombre de racines lui-même, pas avec
+          un angle. L'écart entre deux racines consécutives est une
+          mesure d'ANGLE, en radians : il faut diviser le tour complet
+          $2\pi$ par le nombre de racines $n=6$, ce qui donne
+          $\pi/3$, pas $6$.
+    correct_feedback: >
+      Les $n=6$ racines $n$-ièmes de l'unité sont régulièrement
+      espacées sur le cercle trigonométrique, à
+      $\dfrac{2\pi}{n}=\dfrac{2\pi}{6}=\dfrac{\pi}{3}$ l'une de
+      l'autre.
+    solution: |
+      **Position des racines :** $z_k=e^{i2k\pi/6}$ pour
+      $k=0,1,\ldots,5$.
+
+      **Écart entre deux racines consécutives :**
+      $$\alpha_{k+1}-\alpha_k = \frac{2(k+1)\pi}{6}-\frac{2k\pi}{6} = \frac{2\pi}{6} = \frac{\pi}{3}$$
+
+      Les six racines partagent le tour complet ($2\pi$) en $6$ parts
+      égales de $\pi/3$ chacune.
+
+  - id: NBCOMPLEX2-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["rotation", "homothetie", "centre-quelconque"]
+    stem: >
+      On considère la transformation qui à $M$ d'affixe $z$ associe
+      $M'$ d'affixe $z'$ telle que $z'-(1+i) = 2\big(z-(1+i)\big)$.
+      Quelle est cette transformation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La composée d'une rotation de centre le point d'affixe $1+i$ et d'angle $\\pi/2$, et d'une homothétie de rapport $2$."
+        correct: false
+        feedback: >
+          Il ne faut pas supposer par défaut qu'il y a une rotation :
+          ici $c=2$ est un réel STRICTEMENT POSITIF, donc
+          $\arg(c)=0$ — il n'y a AUCUNE rotation, seulement une
+          homothétie. Le cas particulier du R5 le dit explicitement :
+          si $c$ est réel positif, $\theta=0$.
+      - id: B
+        text: "La composée d'une rotation de centre $O$ et d'angle $0$, et d'une homothétie de centre $O$ et de rapport $2$."
+        correct: false
+        feedback: >
+          L'angle et le rapport sont corrects, mais le CENTRE est
+          faux : la transformation est écrite avec $z-(1+i)$ des deux
+          côtés, donc elle est centrée au point d'affixe $1+i$, pas en
+          $O$. Tu as appliqué les formules du cas centré en $O$ sans
+          tenir compte du centrage en $A$.
+      - id: C
+        text: "Une rotation de centre le point d'affixe $1+i$ et d'angle $\\pi$."
+        correct: false
+        feedback: >
+          Multiplier par un réel STRICTEMENT POSITIF ne produit jamais
+          un demi-tour : $\arg(2)=0$, pas $\pi$. Tu as peut-être
+          confondu avec la règle $\arg(-z)=\arg(z)+\pi$, qui concerne
+          les réels NÉGATIFS, pas les réels positifs comme $c=2$ ici.
+      - id: D
+        text: "Une homothétie de centre le point d'affixe $1+i$ et de rapport $2$ (pas de rotation)."
+        correct: true
+    correct_feedback: >
+      $c=2$ est un réel strictement positif : $|c|=2$ et
+      $\arg(c)=0$. La transformation est donc une simple homothétie de
+      centre $A$ (affixe $1+i$) et de rapport $2$, sans rotation.
+    solution: |
+      **Identification de $c$ :** l'écriture $z'-z_A=c(z-z_A)$ avec
+      $z_A=1+i$ donne ici $c=2$.
+
+      **Module et argument de $c=2$ :** $|c|=2$, $\arg(c)=0$ (réel
+      strictement positif).
+
+      **Conclusion (cas particulier du R5) :** quand $c$ est réel
+      strictement positif, $\theta=0$ : il n'y a aucune rotation. La
+      transformation est une homothétie de centre $A$ et de rapport
+      $2$.
+
+  - id: NBCOMPLEX2-19
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: maths_complexes_trigo
+    tags: ["rotation", "ecriture-complexe", "centre-quelconque"]
+    stem: >
+      Quelle est l'écriture complexe de la rotation de centre $A$
+      d'affixe $z_A=1-i$ et d'angle $\dfrac{\pi}{3}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$z' - (1-i) = e^{i\\pi/3}\\,(z-(1-i))$"
+        correct: true
+      - id: B
+        text: "$z' = e^{i\\pi/3}\\,z$"
+        correct: false
+        feedback: >
+          Cette écriture correspond à une rotation centrée en $O$, pas
+          en $A$. Comme le centre n'est pas $O$ mais le point d'affixe
+          $z_A=1-i$, il faut écrire la relation avec $z-z_A$ des deux
+          côtés : $z'-z_A=e^{i\pi/3}(z-z_A)$.
+      - id: C
+        text: "$z' - (1-i) = e^{-i\\pi/3}\\,(z-(1-i))$"
+        correct: false
+        feedback: >
+          Tu as utilisé $e^{-i\pi/3}$ (rotation dans le sens indirect,
+          horaire) au lieu de $e^{i\pi/3}$ (sens direct). L'énoncé
+          demande une rotation d'angle $+\pi/3$, donc le coefficient
+          doit être $e^{i\pi/3}$, pas son opposé.
+      - id: D
+        text: "$z' - (1-i) = \\dfrac{\\pi}{3}\\,(z-(1-i))$"
+        correct: false
+        feedback: >
+          Tu as utilisé l'angle $\pi/3$ lui-même comme coefficient
+          multiplicateur, au lieu du nombre complexe $e^{i\pi/3}$ qui
+          CODE cette rotation. Une rotation d'angle $\theta$
+          correspond à une multiplication par $e^{i\theta}$, pas par
+          $\theta$ (qui n'est même pas de module $1$).
+    correct_feedback: >
+      Une rotation de centre $A$ (affixe $z_A$) et d'angle $\theta$
+      s'écrit $z'-z_A = e^{i\theta}(z-z_A)$. Ici $z_A=1-i$ et
+      $\theta=\pi/3$, d'où $z'-(1-i) = e^{i\pi/3}(z-(1-i))$.
+    solution: |
+      **Formule générale (R5) :** une rotation de centre $A$ et
+      d'angle $\theta$ s'écrit
+      $$z' - z_A = e^{i\theta}(z-z_A)$$
+      car $c=e^{i\theta}$ a pour module $1$ (pas d'homothétie) et pour
+      argument $\theta$ (juste la rotation voulue).
+
+      **Application :** avec $z_A=1-i$ et $\theta=\pi/3$ :
+      $$z' - (1-i) = e^{i\pi/3}\,(z-(1-i))$$
+
+  - id: NBCOMPLEX2-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["triangle", "alignement", "rapport-complexe"]
+    stem: >
+      $A$, $B$, $C$ ont pour affixes respectives $z_A=0$, $z_B=1$,
+      $z_C=-2$. Que peut-on dire du triangle $ABC$, à partir de
+      $w=\dfrac{z_C-z_A}{z_B-z_A}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les points ne sont pas alignés, car $w=-2$ est négatif : un rapport négatif ne correspond pas à un alignement."
+        correct: false
+        feedback: >
+          Le critère d'alignement est « $w$ RÉEL non nul », qu'il soit
+          positif OU négatif — pas seulement positif. Un $w$ négatif
+          signifie simplement que $C$ est du côté opposé à $B$ par
+          rapport à $A$ sur la même droite : les points restent
+          alignés.
+      - id: B
+        text: "$A$, $B$, $C$ sont alignés (avec $C$ du côté opposé à $B$ par rapport à $A$)."
+        correct: true
+      - id: C
+        text: "Le triangle est rectangle en $A$, car $\\arg(w)=\\pi$ est un multiple de $\\pi/2$."
+        correct: false
+        feedback: >
+          Le critère de « rectangle en $A$ » est « $w$ IMAGINAIRE PUR »
+          (argument $\pm\pi/2$ exactement), pas « argument multiple de
+          $\pi/2$ » au sens large. $\pi$ est bien un multiple de
+          $\pi/2$ ($2\times\pi/2$), mais un argument de $\pi$
+          correspond à un $w$ RÉEL (négatif), pas imaginaire pur.
+      - id: D
+        text: "Le triangle est isocèle en $A$ ($AB=AC$), car $|w|=2$."
+        correct: false
+        feedback: >
+          Le critère d'isocèle en $A$ est précisément « $|w|=1$ », pas
+          « $|w|$ est un nombre ». Ici $|w|=2\neq1$, donc
+          $AC=2\times AB$ : les côtés ne sont PAS égaux, le triangle
+          n'est pas isocèle en $A$.
+    correct_feedback: >
+      $w=\dfrac{-2-0}{1-0}=-2$, un réel non nul (négatif). D'après la
+      table de lecture du R6, cela signifie que $A$, $B$, $C$ sont
+      alignés — l'angle en $A$ vaut $\pi$ puisque $C$ est du côté
+      opposé à $B$.
+    solution: |
+      **Calcul de $w$ :**
+      $$w = \frac{z_C-z_A}{z_B-z_A} = \frac{-2-0}{1-0} = -2$$
+
+      **Lecture :** $w=-2\in\mathbb{R}^*$ (réel non nul), donc $A,B,C$
+      sont alignés (angle en $A$ égal à $0$ ou $\pi$ ; ici $\pi$
+      puisque $w<0$).
+
+      **Vérification directe :** $A(0,0)$, $B(1,0)$, $C(-2,0)$ sont
+      bien tous les trois sur l'axe des réels.
+
+  - id: NBCOMPLEX2-21
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: maths_complexes_trigo
+    tags: ["triangle", "rectangle", "rapport-complexe"]
+    stem: >
+      $A$, $B$, $C$ ont pour affixes respectives $z_A=0$, $z_B=2$,
+      $z_C=3i$. On calcule
+      $w=\dfrac{z_C-z_A}{z_B-z_A}=\dfrac{3}{2}i$. Que peut-on en
+      déduire sur la nature du triangle $ABC$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rectangle ET isocèle en $A$, car $w$ est imaginaire pur."
+        correct: false
+        feedback: >
+          « $w$ imaginaire pur » garantit seulement le caractère
+          RECTANGLE en $A$ ; ce n'est pas le critère d'isocèle. Le
+          critère d'isocèle en $A$ est SÉPARÉ : $|w|=1$. Ici
+          $|w|=3/2\neq1$, donc le triangle n'est pas isocèle en $A$ —
+          il faut vérifier les deux conditions indépendamment, pas
+          déduire l'une de l'autre.
+      - id: B
+        text: "Isocèle en $A$ (car l'argument de $w$ vaut $\\pi/2$), mais pas rectangle (car $|w|\\neq1$)."
+        correct: false
+        feedback: >
+          Les deux critères sont inversés : c'est l'ARGUMENT de $w$
+          (imaginaire pur, $\pm\pi/2$) qui donne le caractère
+          RECTANGLE, et c'est le MODULE de $w$ ($|w|=1$) qui donne le
+          caractère ISOCÈLE — pas l'inverse. Ici l'argument $\pi/2$
+          signale un angle droit en $A$, pas une égalité de longueurs.
+      - id: C
+        text: "Rectangle en $A$, mais pas isocèle en $A$ (car $|w|=3/2\\neq1$)."
+        correct: true
+      - id: D
+        text: "Ni rectangle ni isocèle en $A$, car $w$ n'est ni réel ni de module $1$."
+        correct: false
+        feedback: >
+          Tu as bien vu que $w$ n'est pas réel (donc pas d'alignement)
+          et que $|w|\neq1$ (donc pas isocèle), mais tu en conclus à
+          tort qu'il n'y a pas non plus de rectangle. Or « $w$
+          imaginaire pur » EST précisément le critère du rectangle en
+          $A$ — ce n'est pas la même chose que « $w$ n'est pas réel »,
+          c'est une condition positive à part entière, qui est ici
+          vérifiée.
+    correct_feedback: >
+      $\arg(w)=\pi/2$ (imaginaire pur) $\implies$ rectangle en $A$. Mais
+      $|w|=3/2\neq1$ $\implies$ pas isocèle en $A$ : les deux critères
+      sont indépendants, et ici seul le premier est vérifié.
+    solution: |
+      **Lecture du rapport $w=\dfrac{3}{2}i$ :**
+      $$\arg(w) = \frac{\pi}{2} \implies \text{rectangle en } A$$
+      $$|w| = \frac{3}{2} \neq 1 \implies \text{pas isocèle en } A$$
+
+      **Vérification directe :** $A(0,0)$, $B(2,0)$, $C(0,3)$. Le
+      vecteur $\vec{AB}=(2,0)$ et $\vec{AC}=(0,3)$ sont orthogonaux
+      (produit scalaire nul) : angle droit en $A$ confirmé. Mais
+      $AB=2\neq3=AC$ : pas isocèle en $A$, confirmé aussi.
+
+  - id: NBCOMPLEX2-22
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: maths_complexes_trigo
+    tags: ["rotation", "ecriture-complexe", "application"]
+    stem: >
+      On considère le point $A$ d'affixe $z_A=1+i$ et la rotation $r$
+      de centre $A$ et d'angle $\dfrac{\pi}{2}$, qui à tout point $M$
+      d'affixe $z$ associe $M'$ d'affixe $z'$. Quelle est l'expression
+      de $z'$ en fonction de $z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$z' = iz$"
+        correct: false
+        feedback: >
+          Cette écriture correspond à une rotation centrée en $O$, pas
+          en $A$. Il faut partir de $z'-z_A=i(z-z_A)$ (car
+          $e^{i\pi/2}=i$) et isoler $z'$ en tenant compte de $z_A$, pas
+          l'oublier.
+      - id: B
+        text: "$z' = iz+1-i$"
+        correct: false
+        feedback: >
+          Tu as bien posé $z'-z_A=i(z-z_A)$, mais en isolant $z'$ tu
+          as oublié de RAJOUTER $z_A$ à la fin : tu t'es arrêté à
+          $z'=iz-iz_A$ au lieu de $z'=iz-iz_A+z_A$. Il manque le
+          dernier « $+z_A$ ».
+      - id: C
+        text: "$z' = -iz+2i$"
+        correct: false
+        feedback: >
+          Tu as utilisé $e^{-i\pi/2}=-i$ (rotation dans le sens
+          indirect, horaire) au lieu de $e^{i\pi/2}=i$ (sens direct).
+          L'énoncé demande une rotation d'angle $+\pi/2$, donc le
+          coefficient multiplicateur doit être $i$, pas $-i$.
+      - id: D
+        text: "$z' = iz+2$"
+        correct: true
+    correct_feedback: >
+      $z'-z_A=e^{i\pi/2}(z-z_A)=i(z-z_A)$, avec $z_A=1+i$. En
+      développant : $z'=iz-i(1+i)+(1+i)=iz-i+1+1+i=iz+2$.
+    solution: |
+      **Écriture de la rotation (R5) :**
+      $$z' - z_A = e^{i\pi/2}(z-z_A) = i(z-z_A)$$
+
+      **Isolement de $z'$, avec $z_A=1+i$ :**
+      $$z' = iz - i\,z_A + z_A = iz - i(1+i) + (1+i)$$
+      $$-i(1+i) = -i - i^2 = -i+1 = 1-i$$
+      $$z' = iz + (1-i) + (1+i) = iz + 2$$
+
+      **Vérification :** $A$ doit être fixe : $z=1+i \Rightarrow
+      z'=i(1+i)+2 = i-1+2 = 1+i = z_A$. ✓
+
+  - id: NBCOMPLEX2-23
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: maths_complexes_trigo
+    tags: ["racines-n-iemes", "application"]
+    stem: >
+      Quelles sont, sous forme exponentielle, les trois solutions dans
+      $\mathbb{C}$ de l'équation $z^3 = -8i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2e^{-i\\pi/6},\\ 2e^{i\\pi/2},\\ 2e^{i7\\pi/6}$"
+        correct: true
+      - id: B
+        text: "$8e^{-i\\pi/6},\\ 8e^{i\\pi/2},\\ 8e^{i7\\pi/6}$"
+        correct: false
+        feedback: >
+          Les arguments sont corrects, mais le module est faux : tu as
+          gardé $R=|{-8i}|=8$ tel quel au lieu de prendre sa racine
+          CUBIQUE $\rho=8^{1/3}=2$. Le module de chaque racine est
+          $2$, pas $8$.
+      - id: C
+        text: "$2e^{i\\pi/6},\\ 2e^{i5\\pi/6},\\ 2e^{i3\\pi/2}$"
+        correct: false
+        feedback: >
+          Tu as pris $\Phi=\pi/2$, l'argument de $8i$ (l'exemple du
+          cours), au lieu de calculer l'argument de $-8i$. Le signe
+          change tout : $-8i$ est sur la partie NÉGATIVE de l'axe
+          imaginaire, donc $\Phi=-\pi/2$, pas $+\pi/2$. Il faut
+          recalculer l'argument à chaque nouvel exercice, pas réutiliser
+          celui d'un exemple déjà rencontré.
+      - id: D
+        text: "$2e^{-i\\pi/6}$ seulement"
+        correct: false
+        feedback: >
+          Tu t'es arrêté à $k=0$. Une équation $z^3=Z$ (avec
+          $Z\neq0$) a exactement $3$ solutions distinctes, pour
+          $k=0,1,2$ : il manque les deux autres racines.
+    correct_feedback: >
+      $-8i = 8e^{-i\pi/2}$, donc $R=8$, $\Phi=-\pi/2$. On calcule
+      $\rho=8^{1/3}=2$ et $\alpha_k=\dfrac{-\pi/2+2k\pi}{3}$ pour
+      $k=0,1,2$ : $-\pi/6$, $\pi/2$, $7\pi/6$.
+    solution: |
+      **Forme exponentielle de $Z=-8i$ :** $R=|{-8i}|=8$,
+      $\Phi=\arg(-8i)=-\pi/2$ (point sur la partie négative de l'axe
+      imaginaire).
+
+      **Module des racines :** $\rho = R^{1/3} = 8^{1/3} = 2$
+
+      **Arguments, pour $k=0,1,2$ :**
+      $$\alpha_k = \frac{-\pi/2+2k\pi}{3}$$
+      $$k=0:\ -\frac{\pi}{6} \qquad k=1:\ \frac{3\pi/2}{3}=\frac{\pi}{2} \qquad k=2:\ \frac{7\pi/2}{3}=\frac{7\pi}{6}$$
+
+      **Vérification sur $k=1$ :** $\left(2e^{i\pi/2}\right)^3 =
+      8e^{i3\pi/2} = 8\left(\cos\frac{3\pi}{2}+i\sin\frac{3\pi}{2}\right)
+      = 8(0-i) = -8i = Z$. ✓
+
+  - id: NBCOMPLEX2-24
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: maths_complexes_trigo
+    tags: ["ensemble-de-points", "cercle", "argument"]
+    stem: >
+      Soient $A$ et $B$ d'affixes respectives $z_A=-1$ et $z_B=3$. On
+      note $\Gamma$ l'ensemble des points $M$ d'affixe $z\neq z_B$
+      tels que $\dfrac{z-z_A}{z-z_B}$ soit un imaginaire pur non nul.
+      Que peut-on dire de $\Gamma$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La médiatrice du segment $[AB]$."
+        correct: false
+        feedback: >
+          La médiatrice de $[AB]$ correspond à la condition
+          $|z-z_A|=|z-z_B|$ (équidistance), pas à « imaginaire pur ».
+          Ici la condition porte sur l'ARGUMENT du rapport (un angle
+          droit), pas sur l'égalité de deux distances : ce n'est pas
+          le même type de lieu.
+      - id: B
+        text: "Le cercle de diamètre $[AB]$ (centre le point d'affixe $1$, rayon $2$), privé des points $A$ et $B$."
+        correct: true
+      - id: C
+        text: "Le cercle de centre $A$ et de rayon $AB=4$."
+        correct: false
+        feedback: >
+          Tu as traité cette condition comme si elle donnait « $M$ à
+          distance constante de $A$ » (un cercle centré en $A$, comme
+          au chapitre 1 avec $|z-z_A|=r$). Mais « imaginaire pur »
+          porte sur un ANGLE (le rapport $(z-z_A)/(z-z_B)$ code
+          l'angle en $M$ entre $MA$ et $MB$), pas sur une distance
+          fixe à $A$ : le cercle obtenu est centré au MILIEU de
+          $[AB]$, pas en $A$.
+      - id: D
+        text: "La droite $(AB)$ privée du point $B$."
+        correct: false
+        feedback: >
+          Tu as inversé les deux lignes de la table de lecture du R6 :
+          c'est « $w$ RÉEL » qui donne un alignement (une droite), et
+          « $w$ IMAGINAIRE PUR » qui donne un angle droit (un cercle,
+          par le théorème de Thalès), pas l'inverse.
+    correct_feedback: >
+      $\dfrac{z-z_A}{z-z_B}$ imaginaire pur non nul signifie que
+      l'angle $(\overrightarrow{MB},\overrightarrow{MA})$ vaut
+      $\pm\pi/2$ : le triangle $MAB$ est rectangle en $M$. Par le
+      théorème de Thalès, $M$ décrit le cercle de diamètre $[AB]$
+      (centre le milieu de $[AB]$, affixe $1$, rayon $AB/2=2$), privé
+      de $A$ et $B$.
+    solution: |
+      **Interprétation du rapport :** pour $M$ d'affixe $z\neq z_A,z_B$,
+      $\dfrac{z-z_A}{z-z_B}$ a pour argument l'angle
+      $(\overrightarrow{MB},\overrightarrow{MA})$ (même principe qu'au
+      R6, avec $M$ au rôle du sommet).
+
+      **Condition « imaginaire pur non nul » :** cet argument vaut
+      $\pm\pi/2\ [2\pi]$, donc le triangle $MAB$ est rectangle en $M$.
+
+      **Théorème de Thalès (réciproque) :** l'ensemble des points $M$
+      tels que le triangle $MAB$ soit rectangle en $M$ est le cercle
+      de diamètre $[AB]$, privé de $A$ et de $B$ (où l'angle n'est pas
+      défini).
+
+      **Centre et rayon :** centre $=\dfrac{z_A+z_B}{2}=\dfrac{-1+3}{2}=1$,
+      rayon $=\dfrac{AB}{2}=\dfrac{|z_B-z_A|}{2}=\dfrac{4}{2}=2$.

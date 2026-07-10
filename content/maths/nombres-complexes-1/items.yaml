@@ -256,3 +256,657 @@ items:
     solution: |
       $$z_B - z_A = (6+2i)-(2+5i) = 4-3i$$
       $$AB = |z_B-z_A| = \sqrt{4^2+(-3)^2} = \sqrt{16+9} = \sqrt{25} = 5$$
+
+  - id: NBCOMPLEX-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_complexes_algebrique
+    tags: ["accroche", "carre-reel"]
+    stem: >
+      Pourquoi l'équation $x^2=-1$ n'a-t-elle aucune solution dans
+      $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que $-1$ n'est pas un carré parfait (comme $4$ ou $9$)."
+        correct: false
+        feedback: >
+          Ce n'est pas la bonne raison : des réels non carrés parfaits,
+          comme $2$, ont quand même une racine carrée réelle (ici
+          $\sqrt{2}$). Le vrai problème avec $x^2=-1$ n'est pas que
+          $-1$ serait un « mauvais » nombre à racine, mais qu'aucun
+          carré de réel ne peut être négatif, quel que soit ce réel.
+      - id: B
+        text: "Parce que le carré d'un nombre réel est toujours positif ou nul, donc jamais égal à $-1$."
+        correct: true
+      - id: C
+        text: "Parce que $x^2=-1$ a une solution réelle, mais irrationnelle, qu'on n'a pas encore trouvée."
+        correct: false
+        feedback: >
+          Contrairement à $x^2=2$ (qui gagne une solution irrationnelle,
+          $\sqrt{2}$, en passant de $\mathbb{Q}$ à $\mathbb{R}$),
+          $x^2=-1$ n'a aucune solution réelle, rationnelle ou
+          irrationnelle : un carré de réel ne peut jamais être négatif.
+      - id: D
+        text: "Parce que $-1$ est un nombre négatif, et qu'on ne peut pas résoudre d'équation avec un nombre négatif."
+        correct: false
+        feedback: >
+          Affirmation trop générale : des équations avec des nombres
+          négatifs ont très bien des solutions réelles (par exemple
+          $x+5=3$ donne $x=-2$). Le problème vient spécifiquement du
+          carré, pas de la présence d'un nombre négatif dans l'équation.
+    correct_feedback: >
+      Exact : pour tout réel $x$, on a $x^2 \geq 0$, donc $x^2$ ne peut
+      jamais être égal à $-1$, qui est strictement négatif.
+    solution: |
+      Le carré d'un nombre réel, qu'il soit positif ou négatif, est
+      toujours positif ou nul (par exemple $3^2=9$ et $(-3)^2=9$). Aucun
+      réel élevé au carré ne peut donc donner $-1$, qui est strictement
+      négatif : l'équation $x^2=-1$ n'a aucune solution dans
+      $\mathbb{R}$.
+
+  - id: NBCOMPLEX-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_complexes_algebrique
+    tags: ["accroche", "extension-ensembles"]
+    stem: >
+      D'après le schéma présenté (chaque nouvel ensemble de nombres est
+      inventé pour donner une solution à une équation qui n'en a pas dans
+      l'ensemble précédent), quelle équation a motivé le passage de
+      $\mathbb{Z}$ à $\mathbb{Q}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x+5=3$"
+        correct: false
+        feedback: >
+          C'est l'équation qui motive le passage de $\mathbb{N}$ à
+          $\mathbb{Z}$ (il faut un entier négatif, $-2$, pour la
+          résoudre), pas le passage de $\mathbb{Z}$ à $\mathbb{Q}$.
+      - id: B
+        text: "$x^2=2$"
+        correct: false
+        feedback: >
+          C'est l'équation qui motive le passage de $\mathbb{Q}$ à
+          $\mathbb{R}$ (il faut un irrationnel, $\sqrt{2}$), une étape
+          plus loin dans le schéma que $\mathbb{Z}$ à $\mathbb{Q}$.
+      - id: C
+        text: "$2x=3$"
+        correct: true
+      - id: D
+        text: "$x^2=-1$"
+        correct: false
+        feedback: >
+          C'est l'équation qui motive le passage de $\mathbb{R}$ à
+          $\mathbb{C}$ (il faut inventer $i$), la toute dernière étape du
+          schéma, pas le passage de $\mathbb{Z}$ à $\mathbb{Q}$.
+    correct_feedback: >
+      Exact : dans $\mathbb{Z}$, $2x=3$ n'a pas de solution (aucun entier
+      doublé ne donne $3$) ; il a fallu inventer les fractions, et
+      $\mathbb{Z}$ est devenu $\mathbb{Q}$.
+    solution: |
+      Le schéma suit l'ordre : $x+5=3$ ($\mathbb{N}\to\mathbb{Z}$),
+      $2x=3$ ($\mathbb{Z}\to\mathbb{Q}$), $x^2=2$
+      ($\mathbb{Q}\to\mathbb{R}$), $x^2=-1$ ($\mathbb{R}\to\mathbb{C}$).
+      L'équation associée au passage de $\mathbb{Z}$ à $\mathbb{Q}$ est
+      donc $2x=3$.
+
+  - id: NBCOMPLEX-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["accroche", "definition-i"]
+    stem: >
+      Comment le nombre $i$ est-il introduit pour donner un sens à
+      l'équation $x^2=-1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On pose qu'il existe un nombre $i$ vérifiant $i^2=-1$ — ce n'est pas démontré, c'est le point de départ."
+        correct: true
+      - id: B
+        text: "On démontre que $i=\\sqrt{-1}$ en appliquant les règles habituelles de la racine carrée."
+        correct: false
+        feedback: >
+          La racine carrée n'est définie que pour des réels positifs ou
+          nuls ; on ne peut pas l'appliquer directement à $-1$. Le nombre
+          $i$ est POSÉ par une propriété ($i^2=-1$), pas obtenu en
+          appliquant la racine carrée usuelle à un nombre négatif.
+      - id: C
+        text: "On démontre que $x=-1$ résout l'équation, en remplaçant $x$ par $-1$."
+        correct: false
+        feedback: >
+          $(-1)^2=1$, pas $-1$ : $x=-1$ n'est donc pas solution de
+          $x^2=-1$. Cette piste ne fonctionne pas, quel que soit le réel
+          essayé.
+      - id: D
+        text: "On montre que l'équation était en fait résoluble dans $\\mathbb{R}$ depuis le début, et qu'il y avait une erreur de calcul."
+        correct: false
+        feedback: >
+          Il n'y a aucune erreur de calcul en cause : c'est une propriété
+          structurelle de $\mathbb{R}$ (tout carré de réel est positif ou
+          nul) qui rend l'équation réellement sans solution dans
+          $\mathbb{R}$.
+    correct_feedback: >
+      Exact : $i$ n'est pas démontré ni calculé à partir de règles
+      existantes — c'est un nouveau nombre, posé comme point de départ,
+      qui vérifie $i^2=-1$ par définition.
+    solution: |
+      Aucun réel ne vérifie $x^2=-1$. Pour donner malgré tout un sens à
+      cette équation, on pose l'existence d'un nombre $i$ tel que
+      $i^2=-1$ : c'est un postulat, la brique de départ de tout le
+      chapitre, pas quelque chose qu'on démontre à partir de règles déjà
+      connues sur $\mathbb{R}$.
+
+  - id: NBCOMPLEX-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["forme-algebrique", "egalite-complexes"]
+    stem: >
+      Trouver les réels $x$ et $y$ tels que
+      $(2x+1) + (2y-3)i = 7 + 5i$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$x=2$ et $y=5$"
+        correct: false
+        feedback: >
+          Tu as identifié la partie réelle de gauche avec la partie
+          IMAGINAIRE de droite, et inversement ($2x+1=5$ et $2y-3=7$).
+          L'égalité de deux complexes se lit partie réelle avec partie
+          réelle, partie imaginaire avec partie imaginaire : $2x+1=7$ et
+          $2y-3=5$.
+      - id: B
+        text: "$x=4$ et $y=4$"
+        correct: false
+        feedback: >
+          Erreur de signe en isolant $x$ : à partir de $2x+1=7$, il faut
+          SOUSTRAIRE $1$ aux deux membres ($2x=7-1=6$, donc $x=3$), pas
+          l'ajouter ($2x=7+1=8$ donnerait $x=4$).
+      - id: C
+        text: "$x=3$ et $y=1$"
+        correct: false
+        feedback: >
+          Erreur de signe en isolant $y$ : à partir de $2y-3=5$, il faut
+          AJOUTER $3$ aux deux membres ($2y=5+3=8$, donc $y=4$), pas le
+          soustraire ($2y=5-3=2$ donnerait $y=1$).
+      - id: D
+        text: "$x=3$ et $y=4$"
+        correct: true
+    correct_feedback: >
+      Exact : l'égalité de deux complexes donne deux équations réelles,
+      $2x+1=7$ et $2y-3=5$, d'où $x=3$ et $y=4$.
+    solution: |
+      D'après la règle d'égalité des complexes, on identifie partie
+      réelle avec partie réelle et partie imaginaire avec partie
+      imaginaire :
+      $$2x+1=7 \qquad \text{et} \qquad 2y-3=5$$
+      La première donne $2x=6$, donc $x=3$. La seconde donne $2y=8$, donc
+      $y=4$.
+
+  - id: NBCOMPLEX-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["forme-algebrique", "imaginaire-pur"]
+    stem: >
+      Pour quelle valeur du réel $m$ le nombre complexe
+      $z=(m-2)+(m+1)i$ est-il un imaginaire pur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m=-1$"
+        correct: false
+        feedback: >
+          $m=-1$ annule la partie IMAGINAIRE ($m+1=0$), ce qui rend $z$
+          RÉEL, pas imaginaire pur. Un imaginaire pur exige au contraire
+          que la partie réelle soit nulle : $m-2=0$.
+      - id: B
+        text: "$m=2$"
+        correct: true
+      - id: C
+        text: "$m=-2$"
+        correct: false
+        feedback: >
+          Erreur de signe en résolvant $m-2=0$ : on ajoute $2$ aux deux
+          membres, ce qui donne $m=2$, pas $m=-2$.
+      - id: D
+        text: "$m$ n'existe pas"
+        correct: false
+        feedback: >
+          Un imaginaire pur exige seulement que la partie réelle soit
+          nulle ($a=0$), pas que les deux parties soient nulles à la
+          fois (sinon $z=0$, qui est réel). Ici $m=2$ annule la partie
+          réelle et laisse la partie imaginaire $m+1=3 \neq 0$ : $z$ est
+          bien un imaginaire pur non nul.
+    correct_feedback: >
+      Exact : pour que $z$ soit un imaginaire pur, il faut et il suffit
+      que sa partie réelle soit nulle et sa partie imaginaire non nulle.
+      $m-2=0$ donne $m=2$, et alors $m+1=3\neq 0$.
+    solution: |
+      $z$ est un imaginaire pur si et seulement si sa partie réelle est
+      nulle et sa partie imaginaire ne l'est pas :
+      $$m-2=0 \quad \text{et} \quad m+1 \neq 0$$
+      La première équation donne $m=2$. On vérifie que $m+1=3\neq 0$ :
+      la condition est bien satisfaite.
+
+  - id: NBCOMPLEX-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["somme", "forme-algebrique"]
+    stem: >
+      Calculer $(-3+5i)+(4-2i)$ sous forme algébrique.
+    type: mcq
+    choices:
+      - id: A
+        text: "$7+3i$"
+        correct: false
+        feedback: >
+          Tu as ignoré le signe négatif de $-3$ en additionnant les
+          parties réelles ($3+4=7$). La partie réelle est
+          $-3+4=1$, pas $7$.
+      - id: B
+        text: "$1+7i$"
+        correct: false
+        feedback: >
+          Tu as ignoré le signe négatif de $-2i$ en additionnant les
+          parties imaginaires ($5+2=7$). La partie imaginaire est
+          $5+(-2)=3$, pas $7$.
+      - id: C
+        text: "$1+3i$"
+        correct: true
+      - id: D
+        text: "$-1-3i$"
+        correct: false
+        feedback: >
+          Tu as inversé le signe global de chaque terme avant
+          d'additionner (comme si on calculait $(3-5i)+(-4+2i)$) : cela
+          donne $3-4=-1$ et $-5+2=-3$. En gardant les signes d'origine,
+          $-3+4=1$ et $5-2=3$.
+    correct_feedback: >
+      Exact : on additionne les parties réelles entre elles
+      ($-3+4=1$) et les parties imaginaires entre elles ($5-2=3$).
+    solution: |
+      $$(-3+5i)+(4-2i) = (-3+4)+(5-2)i = 1+3i$$
+
+  - id: NBCOMPLEX-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["puissances-i"]
+    stem: >
+      Calculer $i^{13}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$i$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        feedback: >
+          Tu as réduit $i^{12}=(i^4)^3=1$ mais oublié de multiplier par
+          le facteur restant $i^1$ : $13=4\times 3+1$, donc
+          $i^{13}=i^{12}\times i = 1\times i = i$, pas $1$ tout seul.
+      - id: C
+        text: "$-i$"
+        correct: false
+        feedback: >
+          Tu as utilisé $i^4=-1$ au lieu de $i^4=1$. Rappel :
+          $i^4=(i^2)^2=(-1)^2=1$, un réel POSITIF, pas $-1$.
+      - id: D
+        text: "$-1$"
+        correct: false
+        feedback: >
+          Erreur dans le reste de la division de $13$ par $4$ :
+          $13=4\times 3+1$ (reste $1$), pas reste $2$. Donc
+          $i^{13}=i^1=i$, pas $i^2=-1$.
+    correct_feedback: >
+      Exact : les puissances de $i$ se répètent par groupes de $4$
+      ($i^4=1$). Comme $13=4\times 3+1$, on a
+      $i^{13}=(i^4)^3\times i = 1\times i = i$.
+    solution: |
+      $$13 = 4\times 3 + 1$$
+      $$i^{13} = i^{4\times 3+1} = (i^4)^3 \times i^1 = 1^3 \times i = i$$
+
+  - id: NBCOMPLEX-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["conjugue", "propriete"]
+    stem: >
+      Pour un nombre complexe $z=a+bi$ (avec $a,b$ réels), que vaut
+      $z - \overline{z}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2a$"
+        correct: false
+        feedback: >
+          C'est $z+\overline{z}$ qui vaut $2a$ (les parties imaginaires
+          s'annulent dans la SOMME). Dans la DIFFÉRENCE, ce sont au
+          contraire les parties réelles qui s'annulent ($a-a=0$), et les
+          parties imaginaires qui s'ajoutent : $bi-(-bi)=2bi$.
+      - id: B
+        text: "$0$"
+        correct: false
+        feedback: >
+          Erreur de distribution du signe moins : si on oublie de
+          changer le signe du $-bi$ à l'intérieur de la parenthèse, on
+          calcule $a+bi-a-bi=0$. Mais il faut distribuer le moins aux
+          DEUX termes : $-(a-bi)=-a+bi$, ce qui donne
+          $a+bi-a+bi=2bi$, pas $0$.
+      - id: C
+        text: "$-2bi$"
+        correct: false
+        feedback: >
+          Tu as calculé $\overline{z}-z$ (dans le mauvais ordre) au lieu
+          de $z-\overline{z}$ : $(a-bi)-(a+bi)=-2bi$. Dans l'ordre
+          demandé, $z-\overline{z}=(a+bi)-(a-bi)=2bi$.
+      - id: D
+        text: "$2bi$"
+        correct: true
+    correct_feedback: >
+      Exact : $z-\overline{z} = (a+bi)-(a-bi) = 2bi$, un imaginaire pur —
+      c'est toujours le double de la partie imaginaire, multiplié par
+      $i$.
+    solution: |
+      $$z - \overline{z} = (a+bi) - (a-bi) = a+bi-a+bi = 2bi$$
+      Les parties réelles s'annulent ($a-a=0$), il ne reste que le
+      double de la partie imaginaire, multiplié par $i$.
+
+  - id: NBCOMPLEX-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["module", "propriete"]
+    stem: >
+      Sachant que $|z|=3$ et $|z'|=4$, que vaut $|z \times z'|$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$7$"
+        correct: false
+        feedback: >
+          Tu as additionné les modules ($3+4=7$) au lieu de les
+          multiplier. La propriété est $|z\times z'|=|z|\times|z'|$, un
+          PRODUIT, pas une somme.
+      - id: B
+        text: "$12$"
+        correct: true
+      - id: C
+        text: "$1$"
+        correct: false
+        feedback: >
+          Tu as soustrait les modules ($4-3=1$) ; il n'existe pas de
+          propriété reliant $|z\times z'|$ à une différence de modules.
+      - id: D
+        text: "$\\dfrac{4}{3}$"
+        correct: false
+        feedback: >
+          Tu as calculé le quotient des modules, qui correspondrait à
+          $|z'/z|$, pas au produit $|z\times z'|$.
+    correct_feedback: >
+      Exact : $|z\times z'|=|z|\times|z'|=3\times 4=12$.
+    solution: |
+      $$|z \times z'| = |z|\times|z'| = 3\times 4 = 12$$
+
+  - id: NBCOMPLEX-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["module", "developpement", "i-carre"]
+    stem: >
+      Calculer le module de $z=(1-i)^2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\sqrt{2}$"
+        correct: false
+        feedback: >
+          Tu as calculé $|1-i|$ (le module de la base), pas
+          $|(1-i)^2|$ (le module du carré). Il faut développer
+          $(1-i)^2$ d'abord (ou utiliser
+          $|(1-i)^2|=|1-i|^2=(\sqrt{2})^2=2$).
+      - id: B
+        text: "$2\\sqrt{2}$"
+        correct: false
+        feedback: >
+          Erreur de signe en développant : avec $i^2=-1$,
+          $(1-i)^2=1-2i+i^2=1-2i-1=-2i$. Si on utilise par erreur
+          $i^2=+1$, on obtient $1-2i+1=2-2i$, dont le module est
+          $\sqrt{4+4}=2\sqrt{2}$ — mais $i^2=-1$, pas $+1$.
+      - id: C
+        text: "$2$"
+        correct: true
+      - id: D
+        text: "$4$"
+        correct: false
+        feedback: >
+          Tu as bien développé $(1-i)^2=-2i$ (donc $a=0$, $b=-2$), et
+          calculé $a^2+b^2=0+4=4$, mais oublié de prendre la racine
+          carrée finale : le module est $\sqrt{4}=2$, pas $4$.
+    correct_feedback: >
+      Exact : $(1-i)^2 = 1-2i+i^2 = 1-2i-1 = -2i$, donc
+      $|z|=\sqrt{0^2+(-2)^2}=\sqrt{4}=2$.
+    solution: |
+      $$(1-i)^2 = 1-2i+i^2 = 1-2i-1 = -2i$$
+      $$|z| = |-2i| = \sqrt{0^2+(-2)^2} = \sqrt{4} = 2$$
+
+  - id: NBCOMPLEX-17
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "milieu"]
+    stem: >
+      Soient $A$ et $B$ les points d'affixes respectives
+      $z_A=-3+2i$ et $z_B=5-6i$. Quelle est l'affixe du milieu $I$ du
+      segment $[AB]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1-2i$"
+        correct: true
+      - id: B
+        text: "$2-4i$"
+        correct: false
+        feedback: >
+          Tu as calculé $z_A+z_B$ mais oublié de diviser par $2$.
+          L'affixe du milieu est la MOYENNE des deux affixes, pas leur
+          simple somme.
+      - id: C
+        text: "$4-4i$"
+        correct: false
+        feedback: >
+          Tu as calculé $\dfrac{z_B-z_A}{2}$ au lieu de
+          $\dfrac{z_A+z_B}{2}$. La formule du milieu utilise la SOMME des
+          affixes, pas leur différence.
+      - id: D
+        text: "$1+4i$"
+        correct: false
+        feedback: >
+          Erreur de signe : tu as ignoré le signe négatif de $-6$ dans
+          $z_B$, en calculant $2+6=8$ au lieu de $2+(-6)=-4$ pour la
+          partie imaginaire de la somme.
+    correct_feedback: >
+      Exact : $z_I=\dfrac{z_A+z_B}{2}=\dfrac{(-3+5)+(2-6)i}{2}=
+      \dfrac{2-4i}{2}=1-2i$.
+    solution: |
+      $$z_I = \frac{z_A+z_B}{2} = \frac{(-3+5)+(2-6)i}{2} =
+      \frac{2-4i}{2} = 1-2i$$
+
+  - id: NBCOMPLEX-18
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "symetrie", "conjugue"]
+    stem: >
+      Le point $M$ a pour affixe $z=4-7i$. Quelle est l'affixe du point
+      $M'$, symétrique de $M$ par rapport à l'axe des réels ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-4-7i$"
+        correct: false
+        feedback: >
+          Tu as changé le signe de la partie RÉELLE au lieu de la partie
+          imaginaire (c'est la symétrie par rapport à l'axe des
+          imaginaires, pas des réels). Le symétrique par rapport à l'axe
+          des réels change le signe de $b$ seul : $4-7i \to 4+7i$.
+      - id: B
+        text: "$-4+7i$"
+        correct: false
+        feedback: >
+          Tu as changé le signe des DEUX parties (réelle et imaginaire),
+          ce qui donne le symétrique par rapport à l'ORIGINE ($-z$), pas
+          par rapport à l'axe des réels ($\overline{z}$).
+      - id: C
+        text: "$4-7i$"
+        correct: false
+        feedback: >
+          Tu as gardé $z$ inchangé. Le symétrique par rapport à l'axe des
+          réels change bien le signe de la partie imaginaire ; ici
+          $b=-7\neq 0$, donc $M'\neq M$.
+      - id: D
+        text: "$4+7i$"
+        correct: true
+    correct_feedback: >
+      Exact : le point d'affixe $\overline{z}$ est le symétrique du point
+      d'affixe $z$ par rapport à l'axe des réels ; ici
+      $\overline{4-7i}=4+7i$.
+    solution: |
+      Le symétrique de $M(a,b)$ par rapport à l'axe des réels est le
+      point $(a,-b)$, d'affixe $\overline{z}=a-bi$. Ici $z=4-7i$
+      ($a=4$, $b=-7$), donc $\overline{z}=4+7i$.
+
+  - id: NBCOMPLEX-19
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["module", "produit", "application"]
+    stem: >
+      On pose $z_1=3+4i$ et $z_2=5+12i$. Quel est le module de
+      $z_1 \times z_2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$18$"
+        correct: false
+        feedback: >
+          Tu as calculé $|z_1|=5$ et $|z_2|=13$ correctement, mais tu les
+          as ADDITIONNÉS ($5+13=18$) au lieu de les multiplier. La
+          propriété est $|z_1z_2|=|z_1|\times|z_2|$, un produit.
+      - id: B
+        text: "$65$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{13}{5}$"
+        correct: false
+        feedback: >
+          Tu as calculé le QUOTIENT des deux modules ($13/5$), ce qui
+          correspondrait à $|z_2/z_1|$, pas à $|z_1\times z_2|$.
+      - id: D
+        text: "$13$"
+        correct: false
+        feedback: >
+          Tu as pris seulement $|z_2|=13$, en oubliant de multiplier par
+          $|z_1|=5$. Le module d'un produit combine les DEUX modules :
+          $|z_1z_2|=|z_1|\times|z_2|=65$, pas $13$.
+    correct_feedback: >
+      Exact : $|z_1|=\sqrt{3^2+4^2}=5$ et $|z_2|=\sqrt{5^2+12^2}=13$,
+      donc $|z_1\times z_2|=|z_1|\times|z_2|=5\times 13=65$.
+    solution: |
+      $$|z_1| = \sqrt{3^2+4^2} = \sqrt{25} = 5 \qquad
+      |z_2| = \sqrt{5^2+12^2} = \sqrt{169} = 13$$
+      $$|z_1\times z_2| = |z_1|\times|z_2| = 5\times 13 = 65$$
+      (Vérification par développement : $z_1z_2=-33+56i$, et
+      $\sqrt{33^2+56^2}=\sqrt{4225}=65$.)
+
+  - id: NBCOMPLEX-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["quotient", "conjugue", "application"]
+    stem: >
+      On pose $z=\dfrac{4+2i}{1-i}$. Quelle est la forme algébrique de
+      $z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2+i$"
+        correct: false
+        feedback: >
+          Tu as multiplié le dénominateur par son conjugué mais pas le
+          numérateur : $(4+2i)/2=2+i$. Il faut multiplier haut ET bas par
+          la même quantité, $\overline{1-i}=1+i$.
+      - id: B
+        text: "$3+3i$"
+        correct: false
+        feedback: >
+          Erreur de signe en développant le numérateur : avec $i^2=-1$,
+          $(4+2i)(1+i)=4+6i+2i^2=4+6i-2=2+6i$. Si on utilise par erreur
+          $i^2=+1$, on obtient $4+6i+2=6+6i$, d'où $3+3i$ après division
+          — mais $i^2=-1$, pas $+1$.
+      - id: C
+        text: "$1+3i$"
+        correct: true
+      - id: D
+        text: "$2+6i$"
+        correct: false
+        feedback: >
+          Tu as bien développé le numérateur ($2+6i$) mais oublié de
+          diviser par le dénominateur réel obtenu, $(1-i)(1+i)=2$ : il
+          reste $1+3i$, pas $2+6i$.
+    correct_feedback: >
+      Exact : en multipliant haut et bas par $\overline{1-i}=1+i$, le
+      dénominateur devient $1^2+1^2=2$ et le numérateur devient
+      $(4+2i)(1+i)=2+6i$, d'où $z=1+3i$.
+    solution: |
+      $$z = \frac{4+2i}{1-i} = \frac{(4+2i)(1+i)}{(1-i)(1+i)}$$
+      Dénominateur : $(1-i)(1+i)=1^2+1^2=2$.
+      Numérateur : $(4+2i)(1+i)=4+4i+2i+2i^2=4+6i-2=2+6i$.
+      $$z = \frac{2+6i}{2} = 1+3i$$
+
+  - id: NBCOMPLEX-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "distance", "application"]
+    stem: >
+      Soient $A$ et $B$ les points d'affixes respectives $z_A=-2+3i$ et
+      $z_B=6-3i$. Calculer la distance $AB$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$10$"
+        correct: true
+      - id: B
+        text: "$4$"
+        correct: false
+        feedback: >
+          Tu as calculé $|z_A+z_B|$ au lieu de $|z_B-z_A|$ :
+          $z_A+z_B=4+0i$, de module $4$. La distance $AB$ utilise la
+          DIFFÉRENCE des affixes, pas leur somme.
+      - id: C
+        text: "$100$"
+        correct: false
+        feedback: >
+          Tu as bien calculé $z_B-z_A=8-6i$ et
+          $8^2+(-6)^2=64+36=100$, mais oublié de prendre la racine
+          carrée finale : $AB=\sqrt{100}=10$, pas $100$.
+      - id: D
+        text: "$8$"
+        correct: false
+        feedback: >
+          Tu as utilisé seulement la différence des parties réelles
+          ($6-(-2)=8$), en oubliant la partie imaginaire. La distance
+          combine les deux différences : $AB=\sqrt{8^2+(-6)^2}=10$, pas
+          $8$.
+    correct_feedback: >
+      Exact : $AB=|z_B-z_A|=|8-6i|=\sqrt{8^2+(-6)^2}=\sqrt{100}=10$.
+    solution: |
+      $$z_B - z_A = (6-(-2))+(-3-3)i = 8-6i$$
+      $$AB = |z_B-z_A| = \sqrt{8^2+(-6)^2} = \sqrt{64+36} = \sqrt{100} = 10$$

@@ -288,3 +288,769 @@ items:
       corollaire du théorème des valeurs intermédiaires, l'équation $h(x)=0$
       admet au moins une solution dans $]1,5[$. Rien n'est dit sur l'unicité,
       faute d'information sur la monotonie de $h$.
+
+  - id: LIMCONT-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_limites_continuite
+    tags: ["lecture-tableau", "limite-intuitive"]
+    stem: >
+      Reprends le tableau de valeurs de l'accroche (R0) pour
+      $f(x)=\dfrac{x^2-1}{x-1}$ : pour $x=0{,}9$, $0{,}99$, $0{,}999$, on a
+      $f(x)=1{,}9$, $1{,}99$, $1{,}999$ ; pour $x=1{,}001$, $1{,}01$,
+      $1{,}1$, on a $f(x)=2{,}001$, $2{,}01$, $2{,}1$. Que suggère ce
+      tableau pour $\lim_{x \to 1} f(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\lim_{x \\to 1} f(x) = 1$, car c'est la valeur vers laquelle $x$ se rapproche."
+        correct: false
+        feedback: >
+          Tu as lu la colonne des $x$ (qui se rapproche bien de $1$) au lieu
+          de la colonne des $f(x)$. La limite porte sur ce que fait $f(x)$,
+          pas sur la valeur de $x$ elle-même — et $f(x)$ se rapproche de
+          $2$, pas de $1$.
+      - id: B
+        text: "$\\lim_{x \\to 1} f(x) = 2$ : les deux colonnes de $f(x)$ se resserrent vers $2$, aussi bien par la gauche que par la droite."
+        correct: true
+      - id: C
+        text: "$\\lim_{x \\to 1} f(x)$ n'existe pas, car $f(1)$ n'est pas défini."
+        correct: false
+        feedback: >
+          Tu confonds deux choses différentes : que $f(1)$ n'existe pas
+          (vrai, on tombe sur $\frac{0}{0}$) ne dit rien sur ce qui se
+          passe tout PRÈS de $1$. Le tableau montre justement que $f(x)$ se
+          comporte parfaitement bien autour de $1$, en se resserrant vers
+          $2$, même si le point $x=1$ lui-même manque.
+      - id: D
+        text: "$\\lim_{x \\to 1} f(x) = 2{,}1$, car c'est la valeur la plus proche visible dans le tableau du côté droit."
+        correct: false
+        feedback: >
+          $2{,}1$ n'est qu'une des valeurs du tableau, obtenue pour
+          $x=1{,}1$ — pas la valeur limite. Il faut regarder la TENDANCE de
+          toute la colonne ($2{,}1$, puis $2{,}01$, puis $2{,}001$...), qui
+          se resserre vers $2$, pas s'arrêter à la première valeur lue.
+    correct_feedback: >
+      Exactement : les deux colonnes de $f(x)$ se resserrent vers le même
+      nombre, $2$, quand $x$ se rapproche de $1$ par la gauche et par la
+      droite. C'est ce resserrement, et non une valeur isolée du tableau,
+      qui définit la limite.
+    solution: |
+      La colonne de gauche ($1{,}9$, $1{,}99$, $1{,}999$) et la colonne de
+      droite ($2{,}1$, $2{,}01$, $2{,}001$) se resserrent toutes les deux
+      vers le même nombre, $2$, à mesure que $x$ se rapproche de $1$. Le
+      tableau suggère donc $\lim_{x \to 1} f(x) = 2$.
+
+  - id: LIMCONT-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-intuitive", "domaine-definition"]
+    stem: >
+      Pour $f(x)=\dfrac{x^2-1}{x-1}$, que peut-on dire de $f(1)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f(1)=2$, car en simplifiant d'abord $\\frac{x^2-1}{x-1}$ par $(x-1)$, il reste $x+1$, qui vaut $2$ en $x=1$."
+        correct: false
+        feedback: >
+          Cette simplification est exactement celle qui permettra de
+          calculer la LIMITE en $1$ (tu la reverras au R3), mais elle ne
+          change rien au fait que $f(1)$ lui-même reste indéfini : la
+          fonction de départ exige de diviser par $1-1=0$ en $x=1$, quelle
+          que soit la réécriture algébrique effectuée « avant » de
+          remplacer $x$ par $1$.
+      - id: B
+        text: "$f(1)=0$, car le numérateur $1^2-1$ vaut $0$."
+        correct: false
+        feedback: >
+          Tu n'as regardé que le numérateur. Le dénominateur $1-1$ vaut
+          aussi $0$ — c'est justement cette double annulation qui rend
+          l'expression $\frac{0}{0}$ dépourvue de sens, pas $0$.
+      - id: C
+        text: "$f(1)$ n'existe pas : le calcul direct donne $\\frac{1^2-1}{1-1}=\\frac{0}{0}$, qui n'a pas de valeur numérique."
+        correct: true
+      - id: D
+        text: "$f(1)=1$, car $\\frac{0}{0}=1$ par convention, comme n'importe quel nombre divisé par lui-même."
+        correct: false
+        feedback: >
+          Il n'existe aucune convention qui donne une valeur à
+          $\frac{0}{0}$ — contrairement à $\frac{a}{a}=1$ pour $a \neq 0$,
+          diviser $0$ par $0$ n'est tout simplement pas défini en
+          mathématiques.
+    correct_feedback: >
+      Exact : $f(1)$ demanderait de calculer $\frac{1^2-1}{1-1}=\frac{0}{0}$,
+      une expression sans valeur numérique. $f$ n'est donc pas définie en
+      $1$ — même si, comme tu le verras bientôt, elle a bien une limite en
+      ce point.
+    solution: |
+      $$f(1) = \frac{1^2-1}{1-1} = \frac{0}{0}$$
+      Cette forme n'a pas de valeur numérique : $f(1)$ n'existe pas. Le
+      point $x=1$ est un trou dans le domaine de $f$.
+
+  - id: LIMCONT-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-intuitive", "lecture-tableau"]
+    stem: >
+      D'après le tableau de valeurs du R0, $f(x)$ se rapproche de $2$
+      quand $x$ se rapproche de $1$, par la gauche comme par la droite.
+      Quelle est l'interprétation correcte de cette observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le tableau suggère fortement que $\\lim_{x \\to 1} f(x) = 2$, mais un tableau de valeurs n'est jamais une preuve rigoureuse — il faudra un calcul algébrique pour le démontrer."
+        correct: true
+      - id: B
+        text: "Le tableau prouve que $f(1)=2$."
+        correct: false
+        feedback: >
+          Le tableau ne contient AUCUNE valeur en $x=1$ — toutes les
+          valeurs testées en sont proches, sans jamais l'atteindre. Il ne
+          peut donc rien prouver sur $f(1)$, qui d'ailleurs n'existe même
+          pas (division par $0$).
+      - id: C
+        text: "Le tableau prouve rigoureusement que $\\lim_{x \\to 1} f(x)=2$, sans qu'aucun calcul supplémentaire ne soit nécessaire."
+        correct: false
+        feedback: >
+          Un tableau, même convaincant, ne teste qu'un nombre fini de
+          valeurs — il suggère une conjecture, il ne la prouve pas. C'est
+          justement pour ça que la leçon promet de revenir sur cet exemple
+          « sans tableau ni calculatrice » : la preuve, elle, viendra d'un
+          calcul algébrique (R3).
+      - id: D
+        text: "Le tableau ne permet rien d'affirmer, car on n'a testé que six valeurs de $x$ parmi une infinité possible."
+        correct: false
+        feedback: >
+          C'est l'excès inverse : un tableau bien choisi, qui se resserre
+          nettement des deux côtés vers le même nombre, donne une
+          conjecture solide et exploitable — simplement pas une preuve
+          formelle. Rejeter toute conclusion serait ignorer une
+          information réelle et utile.
+    correct_feedback: >
+      Oui : l'observation numérique est une bonne raison de CONJECTURER que
+      la limite vaut $2$, mais seule une manipulation algébrique (comme la
+      factorisation vue au R3) permettra de le démontrer avec certitude.
+    solution: |
+      Le tableau montre un resserrement net et cohérent vers $2$ des deux
+      côtés de $1$ : c'est une conjecture numérique solide, mais pas une
+      preuve. La leçon y reviendra au R3 pour la démontrer par le calcul.
+
+  - id: LIMCONT-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-infinie-en-un-point", "asymptote-verticale"]
+    stem: >
+      On sait que $\lim_{x \to 5} f(x) = +\infty$. Que peut-on en déduire
+      sur la courbe de $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La courbe de $f$ admet une asymptote horizontale d'équation $y=5$."
+        correct: false
+        feedback: >
+          Tu as pris le nombre $5$ (celui vers lequel $x$ tend) pour
+          l'équation d'une asymptote HORIZONTALE. C'est l'inverse : une
+          limite infinie en un point FINI ($x \to 5$) donne toujours une
+          asymptote VERTICALE d'équation $x=5$ — une asymptote horizontale
+          viendrait d'une limite finie quand $x \to \pm\infty$.
+      - id: B
+        text: "On ne peut rien dire sur une éventuelle asymptote sans connaître aussi $\\lim_{x \\to +\\infty} f(x)$."
+        correct: false
+        feedback: >
+          Une limite infinie EN UN POINT donne déjà, à elle seule, une
+          asymptote verticale en ce point — sans avoir besoin d'aucune
+          information sur le comportement de $f$ à l'infini. Ce sont deux
+          phénomènes indépendants.
+      - id: C
+        text: "La courbe de $f$ admet une asymptote verticale d'équation $y=5$."
+        correct: false
+        feedback: >
+          Le type d'asymptote (verticale) est correct, mais pas son
+          équation : une asymptote verticale s'écrit toujours sous la forme
+          $x=a$ (une droite verticale), jamais $y=a$ — c'est l'équation
+          $x=5$ qu'il fallait écrire, pas $y=5$.
+      - id: D
+        text: "La courbe de $f$ admet une asymptote verticale d'équation $x=5$."
+        correct: true
+    correct_feedback: >
+      Exact : dès qu'une limite en un point fini vaut $+\infty$ ou
+      $-\infty$, la courbe colle de plus en plus près de la droite
+      verticale $x=5$ sans jamais la toucher — c'est la définition même
+      d'une asymptote verticale.
+    solution: |
+      $\lim_{x \to 5} f(x) = +\infty$ signifie que $f(x)$ grossit
+      indéfiniment quand $x$ se rapproche de $5$. Graphiquement, la courbe
+      de $f$ admet donc une asymptote verticale d'équation $x=5$.
+
+  - id: LIMCONT-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-a-l-infini", "limites-de-reference"]
+    stem: >
+      Calculer $\lim_{x \to -\infty} x^5$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$, car une puissance d'un nombre est toujours positive."
+        correct: false
+        feedback: >
+          C'est vrai pour une puissance PAIRE ($x^2$, $x^4$...), mais pas
+          pour une puissance impaire comme $x^5$ : une puissance impaire
+          garde le signe de $x$. Comme $x \to -\infty$ (négatif), $x^5$
+          reste négatif et part vers $-\infty$, pas $+\infty$.
+      - id: B
+        text: "$-\\infty$"
+        correct: true
+      - id: C
+        text: "$0$, car plus $x$ devient grand en valeur absolue, plus $\\frac{1}{x^5}$ se rapproche de $0$, donc $x^5$ aussi."
+        correct: false
+        feedback: >
+          Tu as confondu deux limites de référence différentes :
+          $\lim \frac{1}{x^5}=0$ (le quotient) et $\lim x^5$ (la puissance
+          elle-même). Ce n'est pas parce que l'INVERSE de $x^5$ tend vers
+          $0$ que $x^5$ tend aussi vers $0$ — c'est même l'inverse : $x^5$
+          devient très grand en valeur absolue.
+      - id: D
+        text: "La limite n'existe pas, car on ne peut pas élever un nombre négatif à une puissance impaire à l'infini."
+        correct: false
+        feedback: >
+          Élever un nombre négatif à une puissance impaire est
+          parfaitement légitime à tout moment (par exemple
+          $(-2)^5=-32$) : le résultat existe toujours et il est négatif.
+          La limite existe bel et bien, et elle vaut $-\infty$.
+    correct_feedback: >
+      Bien vu : $5$ est impair, donc $x^n$ garde le signe de $x$. Comme
+      $x \to -\infty$, on a $\lim_{x \to -\infty} x^5 = -\infty$.
+    solution: |
+      $5$ est impair. D'après les limites de référence,
+      $\lim_{x \to -\infty} x^n = -\infty$ quand $n$ est impair. Donc
+      $$\lim_{x \to -\infty} x^5 = -\infty$$
+
+  - id: LIMCONT-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["operations-sur-les-limites", "asymptote-verticale"]
+    stem: >
+      On veut calculer $\lim_{x \to 4^{+}} \dfrac{3}{x-4}$. Que vaut cette
+      limite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$ : le numérateur tend vers $3$ (non nul) et le dénominateur tend vers $0$ en restant positif (car $x>4$), donc le quotient tend vers $+\\infty$."
+        correct: true
+      - id: B
+        text: "C'est une forme indéterminée $\\frac{0}{0}$, donc on ne peut rien conclure sans factoriser."
+        correct: false
+        feedback: >
+          Ce n'est pas $\frac{0}{0}$ : le numérateur tend vers $3$, un
+          nombre NON nul, pas vers $0$. Le cas « nombre non nul divisé par
+          $0$ » n'est jamais une forme indéterminée — il donne toujours un
+          résultat infini, dont il faut juste déterminer le signe.
+      - id: C
+        text: "$-\\infty$ : le dénominateur tend vers $0$ donc le quotient part vers l'infini, et comme on approche par la droite on prend le signe négatif."
+        correct: false
+        feedback: >
+          Erreur de signe : quand $x \to 4^{+}$ (par la DROITE), on a
+          $x>4$, donc $x-4$ est POSITIF (proche de $0$ mais positif). Un
+          nombre positif divisé par quelque chose de positif et minuscule
+          donne $+\infty$, pas $-\infty$.
+      - id: D
+        text: "$0$ : un nombre divisé par quelque chose qui devient très grand tend vers $0$."
+        correct: false
+        feedback: >
+          Tu as confondu deux situations opposées : ici c'est le
+          DÉNOMINATEUR qui devient minuscule (tend vers $0$), pas quelque
+          chose qui devient grand. Diviser un nombre non nul par une
+          quantité qui tend vers $0$ donne un résultat qui EXPLOSE vers
+          l'infini, pas $0$.
+    correct_feedback: >
+      Exact : le numérateur tend vers $3 \neq 0$ et le dénominateur tend
+      vers $0$ en restant strictement positif (puisque $x \to 4^{+}$
+      signifie $x>4$, donc $x-4>0$). Le quotient part donc vers $+\infty$.
+    solution: |
+      Quand $x \to 4^{+}$, on a $x>4$ donc $x-4 \to 0$ en restant positif.
+      Le numérateur tend vers $3 \neq 0$. D'après le tableau des quotients,
+      « nombre non nul divisé par $0^{+}$ » donne $+\infty$ :
+      $$\lim_{x \to 4^{+}} \frac{3}{x-4} = +\infty$$
+
+  - id: LIMCONT-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["operations-sur-les-limites", "forme-indeterminee"]
+    stem: >
+      Sachant que $\lim_{x \to +\infty} f(x) = -4$ et
+      $\lim_{x \to +\infty} g(x) = +\infty$, que vaut
+      $\lim_{x \to +\infty} \big(f(x) \times g(x)\big)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une forme indéterminée $0 \\times \\infty$."
+        correct: false
+        feedback: >
+          La forme indéterminée $0 \times \infty$ exige que le facteur FINI
+          tende précisément vers $0$. Ici, $f(x)$ tend vers $-4$, un nombre
+          fini mais NON nul — ce n'est donc pas cette forme indéterminée,
+          et le tableau des produits donne un résultat déterminé.
+      - id: B
+        text: "$+\\infty$, car dès qu'un $+\\infty$ apparaît dans un produit, le résultat est toujours $+\\infty$."
+        correct: false
+        feedback: >
+          Le signe du facteur fini compte : ici $f(x)$ tend vers $-4$, un
+          nombre NÉGATIF. Un facteur négatif multiplié par quelque chose
+          qui tend vers $+\infty$ inverse le signe du résultat, donnant
+          $-\infty$, pas $+\infty$.
+      - id: C
+        text: "$-\\infty$ : un nombre négatif fini multiplié par quelque chose qui tend vers $+\\infty$ donne $-\\infty$."
+        correct: true
+      - id: D
+        text: "On ne peut pas savoir sans connaître $f(x)$ et $g(x)$ précisément, une limite ne suffit pas."
+        correct: false
+        feedback: >
+          C'est justement l'intérêt des tableaux d'opérations sur les
+          limites (R2) : connaître seulement les DEUX limites (ici $-4$ et
+          $+\infty$) suffit à déterminer le résultat, sans avoir besoin des
+          expressions précises de $f$ et $g$ — sauf dans les quatre cas de
+          forme indéterminée, qui ne s'applique pas ici.
+    correct_feedback: >
+      Exact : d'après le tableau des produits, « $L<0$ multiplié par
+      $+\infty$ » donne $-\infty$. Ici $L=-4<0$, donc
+      $\lim_{x \to +\infty} (f \times g) = -\infty$.
+    solution: |
+      $\lim f(x) = -4 < 0$ et $\lim g(x) = +\infty$. D'après le tableau des
+      produits de limites (R2), $L<0$ et $+\infty$ donnent $-\infty$ :
+      $$\lim_{x \to +\infty} \big(f(x) \times g(x)\big) = -\infty$$
+
+  - id: LIMCONT-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["forme-indeterminee", "terme-dominant"]
+    stem: >
+      Calculer $\lim_{x \to +\infty} \dfrac{4x^2-3x+2}{2x^2+5}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$, car le numérateur et le dénominateur tendent tous les deux vers $+\\infty$."
+        correct: false
+        feedback: >
+          C'est justement la forme $\frac{\infty}{\infty}$, indéterminée :
+          « les deux tendent vers l'infini » ne suffit PAS à conclure. Il
+          faut factoriser le terme dominant avant de pouvoir répondre — ce
+          que tu n'as pas fait ici.
+      - id: B
+        text: "$0$, car en factorisant, il ne reste que les termes en $\\frac{1}{x}$ et $\\frac{1}{x^2}$, qui tendent vers $0$."
+        correct: false
+        feedback: >
+          Tu as gardé les mauvais termes : après factorisation, il reste
+          $\frac{4-\frac{3}{x}+\frac{2}{x^2}}{2+\frac{5}{x^2}}$ — ce sont
+          les CONSTANTES ($4$ et $2$) qui survivent quand $x \to +\infty$,
+          pas les fractions en $\frac1x$ qui, elles, s'annulent. La limite
+          vient du rapport des constantes restantes, $\frac42$, pas de $0$.
+      - id: C
+        text: "$\\dfrac{4}{5}$, en prenant le rapport entre le coefficient de $x^2$ au numérateur ($4$) et la constante du dénominateur ($5$)."
+        correct: false
+        feedback: >
+          Le raccourci pour une limite à l'infini de fonction rationnelle
+          (degrés égaux) compare les COEFFICIENTS DOMINANTS des deux
+          polynômes — ici $4$ (coefficient de $x^2$ au numérateur) et $2$
+          (coefficient de $x^2$ au dénominateur), pas la constante $5$ du
+          dénominateur qui n'a rien à voir avec ce rapport.
+      - id: D
+        text: "$2$ : en factorisant le terme dominant $x^2$ en haut et en bas, il reste $\\dfrac{4-\\frac{3}{x}+\\frac{2}{x^2}}{2+\\frac{5}{x^2}}$, qui tend vers $\\dfrac{4}{2}=2$."
+        correct: true
+    correct_feedback: >
+      Exact : numérateur et dénominateur sont de même degré ($2$), donc la
+      limite est le rapport des coefficients dominants, $\frac{4}{2}=2$ —
+      confirmé par la factorisation du terme dominant $x^2$.
+    solution: |
+      $$\frac{4x^2-3x+2}{2x^2+5} = \frac{x^2\left(4-\frac{3}{x}+\frac{2}{x^2}\right)}{x^2\left(2+\frac{5}{x^2}\right)} = \frac{4-\frac{3}{x}+\frac{2}{x^2}}{2+\frac{5}{x^2}}$$
+      Quand $x \to +\infty$, les termes en $\frac1x$ et $\frac{1}{x^2}$
+      tendent vers $0$ :
+      $$\lim_{x \to +\infty} \frac{4x^2-3x+2}{2x^2+5} = \frac{4}{2} = 2$$
+
+  - id: LIMCONT-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["continuite", "domaine-definition"]
+    stem: >
+      La fonction $f(x) = \dfrac{2x+1}{x-3}$ est-elle continue en $x=3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car $f$ est une fonction rationnelle, et toute fonction rationnelle est continue partout."
+        correct: false
+        feedback: >
+          Tu as oublié la restriction : une fonction rationnelle est
+          continue sur son DOMAINE DE DÉFINITION, c'est-à-dire partout où
+          le dénominateur ne s'annule pas — pas « partout » sans condition.
+          Ici $x=3$ annule le dénominateur, donc $3$ n'est justement pas
+          dans le domaine, et la question de continuité n'y a même pas de
+          sens.
+      - id: B
+        text: "Non : $f$ n'est même pas définie en $3$ (le dénominateur s'annule), donc la première condition de la continuité échoue déjà."
+        correct: true
+      - id: C
+        text: "On ne peut pas savoir sans calculer $\\lim_{x \\to 3} f(x)$ d'abord."
+        correct: false
+        feedback: >
+          Il n'est pas nécessaire de calculer la limite pour conclure ici :
+          la toute première condition de continuité ($f(a)$ doit exister)
+          échoue déjà, puisque $f(3)$ n'est pas défini. Inutile d'aller
+          plus loin — la fonction ne peut pas être continue en $3$.
+      - id: D
+        text: "Oui, car $\\lim_{x \\to 3} f(x)$ existe et vaut $+\\infty$ ou $-\\infty$ selon le côté, et une limite infinie compte comme « continue à l'infini »."
+        correct: false
+        feedback: >
+          Une limite infinie n'est pas un nombre réel : la définition de la
+          continuité exige une limite FINIE, égale à $f(a)$. Une limite
+          infinie signale au contraire une ASYMPTOTE verticale, l'exact
+          opposé d'un comportement continu en ce point.
+    correct_feedback: >
+      Exact : $f(3)$ demanderait de diviser par $3-3=0$, donc $f$ n'est
+      même pas définie en $3$. La toute première des trois conditions de
+      continuité échoue, ce qui suffit à conclure.
+    solution: |
+      $f(3)$ demanderait de calculer $\frac{2(3)+1}{3-3} = \frac{7}{0}$,
+      qui n'existe pas. $f$ n'est donc pas définie en $3$ : la condition
+      « $f(a)$ existe » échoue, donc $f$ n'est pas continue en $3$
+      (elle admet en fait une asymptote verticale $x=3$).
+
+  - id: LIMCONT-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["continuite"]
+    stem: >
+      Soit $h$ définie par $h(x)=x^2$ si $x \neq 2$ et $h(2)=10$. La
+      fonction $h$ est-elle continue en $x=2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : $\\lim_{x \\to 2} h(x) = 4$ (calculée avec $x^2$), mais $h(2)=10$. La limite existe, mais elle est différente de $h(2)$ — la troisième condition échoue."
+        correct: true
+      - id: B
+        text: "Oui, car $h(2)$ est bien défini (il vaut $10$) et la limite $\\lim_{x \\to 2} h(x)$ existe aussi (elle vaut $4$) : les deux premières conditions suffisent."
+        correct: false
+        feedback: >
+          Il ne suffit pas que $f(a)$ existe ET que la limite existe
+          séparément — la définition exige en plus qu'elles soient ÉGALES.
+          Ici $h(2)=10$ et $\lim_{x\to2}h(x)=4$ existent bien toutes les
+          deux, mais elles ne coïncident pas ($10 \neq 4$) : la troisième
+          condition échoue, donc $h$ n'est pas continue en $2$.
+      - id: C
+        text: "Non, car $h$ change de définition en $x=2$, donc $\\lim_{x \\to 2} h(x)$ n'existe pas."
+        correct: false
+        feedback: >
+          La limite EXISTE bel et bien : quand $x$ se rapproche de $2$
+          SANS être égal à $2$, $h(x)=x^2$ tout du long, donc
+          $\lim_{x\to2}h(x)=2^2=4$ parfaitement défini. Le fait que $h(2)$
+          soit redéfini à une valeur différente ($10$) n'affecte pas le
+          calcul de la limite, qui ignore justement la valeur exacte au
+          point lui-même.
+      - id: D
+        text: "Oui, car $\\lim_{x \\to 2} h(x) = 10$, en substituant directement $x=2$ dans la définition de $h$."
+        correct: false
+        feedback: >
+          Substituer $x=2$ donne $h(2)=10$ — c'est la VALEUR de $h$ en
+          $2$, pas sa limite. La limite se calcule en regardant ce qui se
+          passe tout PRÈS de $2$ (là où $h(x)=x^2$ s'applique), ce qui
+          donne $4$, pas $10$.
+    correct_feedback: >
+      Exact : $\lim_{x\to2}h(x)=4$ (en utilisant $h(x)=x^2$ pour $x$ proche
+      de $2$ mais différent de $2$), alors que $h(2)=10$ par définition. La
+      limite existe mais ne coïncide pas avec $h(2)$ : la troisième
+      condition de continuité échoue.
+    solution: |
+      Pour $x \neq 2$, $h(x)=x^2$, donc
+      $$\lim_{x \to 2} h(x) = \lim_{x \to 2} x^2 = 4$$
+      Or $h(2)=10$ par définition. Comme $4 \neq 10$, la limite existe mais
+      diffère de $h(2)$ : $h$ n'est pas continue en $2$.
+
+  - id: LIMCONT-17
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "hypotheses-tvi"]
+    stem: >
+      Soit $f$ définie sur $[0,4]$ par $f(x)=x-3$ si $x \leq 2$ et
+      $f(x)=x+1$ si $x>2$. On observe $f(0)=-3<0$ et $f(4)=5>0$. Peut-on
+      appliquer le théorème des valeurs intermédiaires pour affirmer que
+      l'équation $f(x)=0$ admet une solution dans $]0,4[$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : $f(0)$ et $f(4)$ sont de signes contraires, donc le TVI garantit une solution, quelle que soit la fonction."
+        correct: false
+        feedback: >
+          Le TVI a DEUX hypothèses, pas une seule : la continuité ET des
+          signes contraires aux bornes. Ici les signes sont bien contraires,
+          mais $f$ n'est pas continue en $2$ (elle saute de $-1$ à $3$ sans
+          passer par les valeurs intermédiaires) : l'hypothèse de continuité
+          manque, donc le théorème ne s'applique pas — et sa conclusion est
+          d'ailleurs fausse ici, puisque $f$ ne s'annule jamais.
+      - id: B
+        text: "Oui, à condition que $f$ soit défini sur tout l'intervalle $[0,4]$, ce qui est le cas ici, donc le TVI s'applique."
+        correct: false
+        feedback: >
+          « Définie partout » n'est pas la même chose que « continue
+          partout ». $f$ est bien définie en chaque point de $[0,4]$ (y
+          compris en $2$, où $f(2)=-1$), mais elle saute brutalement de
+          $-1$ à des valeurs proches de $3$ en passant $x=2$ : ce saut est
+          précisément une discontinuité, même si aucun point n'est
+          « manquant » dans le domaine.
+      - id: C
+        text: "Non : $f$ n'est pas continue en $x=2$ (elle saute de $-1$ à $3$), donc l'hypothèse de continuité du TVI n'est pas vérifiée — et de fait, $f$ ne s'annule jamais sur $[0,4]$."
+        correct: true
+      - id: D
+        text: "Non, car on ne connaît pas $f(2)$."
+        correct: false
+        feedback: >
+          $f(2)$ est parfaitement connu : $f(2)=2-3=-1$ (on utilise la
+          formule $x \leq 2$). Le problème n'est pas un manque
+          d'information, c'est que $f$ SAUTE en $x=2$ (de $-1$ à des
+          valeurs proches de $3$) sans passer par les valeurs
+          intermédiaires — une vraie discontinuité, pas une inconnue.
+    correct_feedback: >
+      Exact : $f$ n'est pas continue en $2$, donc le TVI ne s'applique pas,
+      malgré les signes opposés aux bornes. Et effectivement, sur $[0,2]$,
+      $f(x)=x-3 \in [-3,-1]$ (toujours négatif), et sur $]2,4]$,
+      $f(x)=x+1 \in \,]3,5]$ (toujours positif) : $f$ ne vaut jamais $0$.
+    solution: |
+      Sur $[0,2]$, $f(x)=x-3$ prend ses valeurs dans $[-3,-1]$ : toujours
+      strictement négatif. Sur $]2,4]$, $f(x)=x+1$ prend ses valeurs dans
+      $]3,5]$ : toujours strictement positif. $f$ saute donc de $-1$ à des
+      valeurs proches de $3$ sans jamais passer par $0$ : bien que
+      $f(0)<0<f(4)$, l'équation $f(x)=0$ n'a AUCUNE solution sur $[0,4]$,
+      précisément parce que $f$ n'est pas continue en $2$ (hypothèse du
+      TVI non vérifiée).
+
+  - id: LIMCONT-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "existence-de-solution", "unicite-solution"]
+    stem: >
+      On veut montrer que l'équation $x^3+2x-5=0$ admet une unique
+      solution dans $[1,2]$, en posant $g(x)=x^3+2x-5$. Parmi les quatre
+      rédactions suivantes, laquelle est correcte et complète ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$g$ est continue sur $\\mathbb{R}$, $g(1)=-2<0$ et $g(2)=7>0$, donc $0$ est compris entre les deux : par le TVI, l'équation $g(x)=0$ admet une unique solution dans $]1,2[$."
+        correct: false
+        feedback: >
+          Le TVI (continuité + signes contraires) garantit seulement
+          l'EXISTENCE d'au moins une solution — jamais l'unicité à lui
+          seul. Pour affirmer l'unicité, il manque ici l'ingrédient
+          supplémentaire : établir que $g$ est strictement monotone sur
+          $[1,2]$. Sans cette étape, écrire « unique » n'est pas justifié.
+      - id: B
+        text: "$g(0)=0+0-5=-5<0$ et $g(2)=7>0$, donc $0$ est compris entre les deux : il existe une unique solution dans $]0,2[$, pas $]1,2[$."
+        correct: false
+        feedback: >
+          Tu as utilisé $g(0)$ au lieu de $g(1)$ — sans doute en te
+          rappelant l'exemple de la leçon (l'intervalle $[0,1]$ pour
+          $x^3+x-1$) plutôt qu'en relisant l'intervalle demandé ICI,
+          $[1,2]$. Le calcul doit toujours utiliser les bornes de
+          l'intervalle réellement donné dans l'énoncé, pas celles d'un
+          exemple mémorisé.
+      - id: C
+        text: "$g(1)=-2<0$ et $g(2)=7>0$, donc $0$ est compris entre les deux, mais $g$ n'est pas continue en tout point (car $x^3$ n'est continue que sur $[0,+\\infty[$), donc le TVI ne s'applique pas : on ne peut rien conclure."
+        correct: false
+        feedback: >
+          $x \mapsto x^3$ est un polynôme, donc continu sur $\mathbb{R}$
+          TOUT ENTIER, y compris pour les valeurs négatives (par exemple
+          $(-2)^3=-8$ est parfaitement défini). Tu as confondu avec la
+          fonction racine carrée, qui elle est bien restreinte à
+          $[0,+\infty[$. $g$ est donc continue partout, et le TVI
+          s'applique normalement.
+      - id: D
+        text: "$g$ est continue sur $\\mathbb{R}$ (polynôme), $g(1)=1+2-5=-2<0$ et $g(2)=8+4-5=7>0$ donc $0$ est compris entre $g(1)$ et $g(2)$ : par le TVI, il existe au moins une solution dans $]1,2[$. De plus, $g$ est strictement croissante sur $\\mathbb{R}$ (somme de $x\\mapsto x^3$ et $x\\mapsto 2x$, toutes deux strictement croissantes), donc cette solution est unique."
+        correct: true
+    correct_feedback: >
+      Exact : la rédaction complète vérifie les trois ingrédients dans
+      l'ordre — continuité sur $[1,2]$, signes opposés aux bornes
+      (existence), puis stricte monotonie (unicité) — exactement la
+      méthode du R5.
+    solution: |
+      $g(x)=x^3+2x-5$ est un polynôme, donc continu sur $\mathbb{R}$, en
+      particulier sur $[1,2]$.
+      $$g(1) = 1+2-5 = -2 < 0 \qquad g(2) = 8+4-5 = 7 > 0$$
+      Les signes sont opposés, donc par le TVI, $g(x)=0$ admet au moins une
+      solution dans $]1,2[$. De plus, $x \mapsto x^3$ et $x \mapsto 2x$
+      sont toutes deux strictement croissantes sur $\mathbb{R}$, donc leur
+      somme $g$ l'est aussi : la solution est donc unique.
+
+  - id: LIMCONT-19
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-a-l-infini", "terme-dominant"]
+    stem: >
+      Soit $f(x) = -x^3+6x$. Que valent $\lim_{x \to +\infty} f(x)$ et
+      $\lim_{x \to -\infty} f(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\lim_{x \\to +\\infty} f(x) = +\\infty$ et $\\lim_{x \\to -\\infty} f(x) = -\\infty$, en ne gardant que le terme dominant $-x^3$ mais en oubliant le signe négatif devant."
+        correct: false
+        feedback: >
+          En factorisant, $f(x)=x^3\left(-1+\frac{6}{x^2}\right)$ : le
+          facteur entre parenthèses tend vers $-1$ (négatif), pas $+1$. Tu
+          as gardé $x^3$ correctement mais perdu le signe $-$ du
+          coefficient dominant — c'est ce signe qui inverse le résultat
+          final par rapport à $\lim x^3$ seul.
+      - id: B
+        text: "$\\lim_{x \\to +\\infty} f(x) = -\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$."
+        correct: true
+      - id: C
+        text: "$\\lim_{x \\to +\\infty} f(x) = +\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$ dans les deux cas, car le terme $6x$ devient négligeable et $-x^3$ élevé au cube donne toujours un résultat positif."
+        correct: false
+        feedback: >
+          Une puissance IMPAIRE (comme le cube) garde le signe de sa base —
+          elle n'est pas automatiquement positive comme une puissance
+          paire. Ici, en plus, il y a un signe $-$ devant $x^3$ : le
+          facteur dominant $-x^3$ est positif quand $x<0$ et négatif quand
+          $x>0$, jamais « toujours positif ».
+      - id: D
+        text: "On ne peut pas conclure directement : $-x^3+6x$ est une forme $\\infty - \\infty$, indéterminée, et il n'existe aucune méthode pour la lever ici car ce n'est pas un quotient."
+        correct: false
+        feedback: >
+          La technique du terme dominant (R3) s'applique aussi bien aux
+          FORMES $\infty-\infty$ (différences de puissances, comme ici)
+          qu'aux formes $\frac{\infty}{\infty}$ (quotients) : dans les deux
+          cas, on factorise la puissance de plus haut degré. Ici,
+          factoriser $x^3$ lève parfaitement l'indétermination.
+    correct_feedback: >
+      Exact : $f(x)=x^3\left(-1+\frac{6}{x^2}\right)$, et le facteur entre
+      parenthèses tend vers $-1$. Comme $x^3 \to +\infty$ quand
+      $x\to+\infty$, le produit tend vers $-\infty$ ; comme $x^3\to-\infty$
+      quand $x\to-\infty$, le produit tend vers $+\infty$.
+    solution: |
+      $$f(x) = -x^3+6x = x^3\left(-1+\frac{6}{x^2}\right)$$
+      Quand $x \to +\infty$ : $\frac{6}{x^2} \to 0$, donc le facteur entre
+      parenthèses tend vers $-1$, et $x^3 \to +\infty$ :
+      $$\lim_{x \to +\infty} f(x) = +\infty \times (-1) = -\infty$$
+      Quand $x \to -\infty$ : le même facteur tend encore vers $-1$, mais
+      $x^3 \to -\infty$ :
+      $$\lim_{x \to -\infty} f(x) = -\infty \times (-1) = +\infty$$
+
+  - id: LIMCONT-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "monotonie"]
+    stem: >
+      Soit $g$ continue sur $[-2,4]$, strictement décroissante sur
+      $[-2,0]$ (de $g(-2)=5$ à $g(0)=-1$) puis strictement croissante sur
+      $[0,4]$ (de $g(0)=-1$ à $g(4)=7$). Combien de solutions l'équation
+      $g(x)=3$ admet-elle dans $[-2,4]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Exactement $2$ : sur $[-2,0]$, $g$ est continue et strictement décroissante de $5$ à $-1$, et $3$ est compris entre les deux, donc une unique solution dans $]-2,0[$ ; sur $[0,4]$, $g$ est continue et strictement croissante de $-1$ à $7$, et $3$ est compris entre les deux, donc une unique solution dans $]0,4[$. Ces deux solutions sont distinctes."
+        correct: true
+      - id: B
+        text: "Exactement $1$ solution, car il ne peut y avoir qu'une seule solution à une équation du type $g(x)=k$ sur un intervalle, par définition de fonction."
+        correct: false
+        feedback: >
+          Rien n'interdit à une équation $g(x)=k$ d'avoir plusieurs
+          solutions sur un intervalle où $g$ n'est PAS monotone sur tout
+          l'intervalle : ici $g$ change de sens de variation en $0$, ce qui
+          découpe $[-2,4]$ en deux morceaux strictement monotones, chacun
+          pouvant apporter sa propre solution. « Fonction » n'implique pas
+          « au plus une solution à $g(x)=k$ » — seule la stricte monotonie
+          SUR TOUT l'intervalle considéré le garantirait.
+      - id: C
+        text: "Exactement $3$ : une solution sur $[-2,0]$, une solution sur $[0,4]$, et une solution supplémentaire exactement en $x=0$ car c'est le point de jonction des deux intervalles."
+        correct: false
+        feedback: >
+          Il faut vérifier si le point de jonction est lui-même solution
+          avant de le compter : ici $g(0)=-1 \neq 3$, donc $x=0$ N'EST PAS
+          une solution de $g(x)=3$. Il ne faut jamais compter
+          automatiquement un point de jonction comme solution
+          supplémentaire sans le vérifier.
+      - id: D
+        text: "On ne peut rien affirmer sans connaître l'expression algébrique de $g$ : le TVI ne s'applique qu'aux fonctions polynômes ou rationnelles données par une formule."
+        correct: false
+        feedback: >
+          Le TVI ne nécessite que la continuité de $g$ et ses valeurs aux
+          bornes des intervalles considérés — jamais une formule explicite.
+          C'est exactement ce que l'énoncé fournit ici (continuité,
+          monotonie, valeurs aux bornes), ce qui suffit amplement à
+          appliquer le théorème sur chacun des deux morceaux.
+    correct_feedback: >
+      Exact : $g$ étant strictement monotone (mais de sens opposé) sur
+      chacun des deux sous-intervalles $[-2,0]$ et $[0,4]$, et $3$ étant
+      atteint sur chacun d'eux, l'équation $g(x)=3$ admet exactement deux
+      solutions distinctes sur $[-2,4]$.
+    solution: |
+      Sur $[-2,0]$ : $g$ continue, strictement décroissante, $g(-2)=5>3$
+      et $g(0)=-1<3$ : $3$ est compris entre les deux, donc une unique
+      solution $c_1 \in \,]-2,0[$.
+
+      Sur $[0,4]$ : $g$ continue, strictement croissante, $g(0)=-1<3$ et
+      $g(4)=7>3$ : $3$ est compris entre les deux, donc une unique solution
+      $c_2 \in \,]0,4[$.
+
+      Comme $g(0)=-1 \neq 3$, le point de jonction n'est pas lui-même une
+      solution, et $c_1 \neq c_2$ car ils appartiennent à des intervalles
+      disjoints. L'équation $g(x)=3$ admet donc exactement $2$ solutions
+      dans $[-2,4]$.
+
+  - id: LIMCONT-21
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["factorisation", "continuite"]
+    stem: >
+      Soit $f$ définie par $f(x) = \dfrac{x^2-4}{x-2}$ si $x \neq 2$ et
+      $f(2)=m$, où $m$ est un réel. Pour quelle valeur de $m$ la fonction
+      $f$ est-elle continue en $x=2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m=0$, car il faut que $f(2)$ corresponde à la forme $\\frac{0}{0}$ obtenue en substituant directement $x=2$ dans l'expression de départ."
+        correct: false
+        feedback: >
+          $\frac{0}{0}$ n'est pas une valeur numérique — ce n'est donc pas
+          « une forme à faire correspondre ». Il faut d'abord factoriser
+          l'expression pour lever l'indétermination et trouver la VRAIE
+          valeur de la limite ($4$ ici), et c'est CETTE valeur, pas $0$,
+          que $m$ doit égaler.
+      - id: B
+        text: "N'importe quelle valeur de $m$ convient, car $f$ est automatiquement continue en $2$ dès que $f(2)$ est défini par une valeur numérique quelconque."
+        correct: false
+        feedback: >
+          Définir $f(2)$ par un nombre assure seulement la première
+          condition de continuité (« $f(2)$ existe »). Il faut EN PLUS que
+          cette valeur soit ÉGALE à $\lim_{x\to2}f(x)=4$ — ce n'est vrai
+          que pour $m=4$, pas pour n'importe quel réel.
+      - id: C
+        text: "$m=4$ : en factorisant, $\\frac{x^2-4}{x-2}=\\frac{(x-2)(x+2)}{x-2}=x+2$ pour $x\\neq 2$, donc $\\lim_{x\\to2} f(x) = 2+2=4$. Pour que $f$ soit continue en $2$, il faut $f(2)=m$ égal à cette limite, donc $m=4$."
+        correct: true
+      - id: D
+        text: "$m=2$, car $\\lim_{x\\to2}\\frac{x^2-4}{x-2}$ se calcule en simplifiant $x^2-4$ par $x-2$, ce qui donne $x$, puis en évaluant $x=2$."
+        correct: false
+        feedback: >
+          Erreur de factorisation : $x^2-4=(x-2)(x+2)$, pas
+          $(x-2) \times x$. En simplifiant correctement par $(x-2)$, il
+          reste $x+2$ — pas $x$ seul — et c'est $x+2$ qu'il faut évaluer en
+          $x=2$, ce qui donne $4$, pas $2$.
+    correct_feedback: >
+      Exact : la factorisation $x^2-4=(x-2)(x+2)$ donne
+      $\lim_{x\to2}f(x)=4$. La continuité exige $f(2)=m$ égal à cette
+      limite, donc $m=4$.
+    solution: |
+      Pour $x \neq 2$ :
+      $$f(x) = \frac{x^2-4}{x-2} = \frac{(x-2)(x+2)}{x-2} = x+2$$
+      $$\lim_{x \to 2} f(x) = 2+2 = 4$$
+      Pour que $f$ soit continue en $2$, il faut $f(2)=\lim_{x\to2}f(x)$,
+      donc $m=4$.
