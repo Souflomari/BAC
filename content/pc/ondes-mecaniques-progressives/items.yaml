@@ -324,3 +324,733 @@ items:
       ne se propage pas dans le vide. Une petite source étant reliée à des
       voisins dans toutes les directions de l'espace, le front d'onde est
       une sphère qui s'agrandit : onde à trois dimensions.
+
+  - id: OMP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [transport_energie_matiere, milieu_deplace_globalement]
+    stem: >
+      Dans la scène d'ouverture, les cercles créés par le caillou
+      s'élargissent jusqu'à atteindre un bouchon de liège qui flotte près du
+      bord. Qu'observe-t-on réellement, une fois que la vague est passée sur
+      le bouchon ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le bouchon a monté puis redescendu plusieurs fois, et se retrouve,
+          la vague passée, à peu près à sa position de départ.
+        correct: true
+      - id: B
+        text: >-
+          Le bouchon a été poussé par la vague et a lentement dérivé vers le
+          bord de l'étang.
+        correct: false
+        feedback: >
+          C'est confondre la vague avec un courant. Si l'eau elle-même avait
+          voyagé jusqu'au bouchon, il aurait dérivé ; or il revient à sa
+          position de départ, ce qui montre que l'eau sous lui oscille sur
+          place, elle ne dérive pas.
+      - id: C
+        text: >-
+          Le bouchon est resté parfaitement immobile : une vague sur l'eau
+          ne peut rien transmettre à un objet aussi léger.
+        correct: false
+        feedback: >
+          Le bouchon monte et descend précisément parce que la vague lui
+          transmet de l'énergie : ce n'est pas rien transmettre, c'est
+          transmettre de l'énergie sans transmettre de matière.
+      - id: D
+        text: >-
+          Le bouchon a suivi exactement la même trajectoire que le caillou
+          et a fini par couler au fond de l'étang.
+        correct: false
+        feedback: >
+          C'est confondre le caillou, qui crée la perturbation en un point,
+          avec la perturbation elle-même, qui se relaie ensuite de proche en
+          proche dans l'eau sans que le caillou ni l'eau ne voyagent
+          jusqu'au bouchon.
+    correct_feedback: >
+      Le bouchon oscille sur place et revient à sa position de départ : la
+      vague lui a transmis de l'énergie, sans jamais le faire dériver ni le
+      couler.
+    solution: |
+      Une fois la vague passée, le bouchon est revenu à peu près à sa
+      position initiale : il a seulement oscillé verticalement pendant le
+      passage de la perturbation. Il n'a ni dérivé vers le bord (ce qui
+      supposerait un transport de matière), ni coulé en suivant le caillou
+      (ce qui confondrait la source et la perturbation), ni ignoré la vague
+      (ce qui nierait le transport d'énergie).
+
+  - id: OMP-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [transport_energie_matiere, milieu_deplace_globalement]
+    stem: >
+      Toujours à propos du bouchon : la vague l'a bien fait bouger, sans que
+      l'eau elle-même n'ait fait tout le trajet jusqu'à lui. Qu'est-ce qui a
+      donc réellement voyagé du point d'impact du caillou jusqu'au bouchon ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'énergie de la perturbation, relayée de molécule d'eau en
+          molécule d'eau, chacune oscillant sur place sans être elle-même
+          transportée jusqu'au bouchon.
+        correct: true
+      - id: B
+        text: >-
+          Rien n'a réellement voyagé : ce qu'on croit voir bouger n'est
+          qu'un effet de la lumière qui se reflète différemment sur l'eau
+          agitée.
+        correct: false
+        feedback: >
+          Le bouchon monte et descend réellement : ce mouvement exige de
+          l'énergie, qui a bien voyagé jusqu'à lui. Ce n'est pas un effet
+          optique, c'est le mécanisme même de la propagation de proche en
+          proche.
+      - id: C
+        text: >-
+          Le caillou lui-même, qui a continué sa trajectoire sous l'eau
+          jusqu'à atteindre le bouchon.
+        correct: false
+        feedback: >
+          Le caillou coule au point d'impact ; c'est là que s'arrête son
+          propre trajet. Ce qui continue au-delà, ce n'est pas le caillou,
+          c'est la perturbation qu'il a créée, relayée d'une molécule d'eau
+          à la suivante.
+      - id: D
+        text: >-
+          L'eau elle-même, qui s'est déplacée en un courant continu depuis
+          le point d'impact jusqu'au bouchon.
+        correct: false
+        feedback: >
+          Si l'eau avait vraiment été transportée jusqu'au bouchon, il
+          aurait dérivé avec ce courant. Chaque molécule d'eau oscille sur
+          place et revient à sa position de repos : elle ne voyage pas
+          jusqu'au bouchon.
+    correct_feedback: >
+      Ce qui voyage, c'est l'énergie de la perturbation, relayée de molécule
+      en molécule — jamais l'eau elle-même, ni le caillou.
+    solution: |
+      Chaque molécule d'eau, une fois écartée par sa voisine, est rappelée
+      vers sa position de repos après avoir transmis le mouvement — et
+      l'énergie qui l'accompagne — à la molécule suivante. C'est cette
+      énergie relayée de proche en proche qui parvient jusqu'au bouchon,
+      pas l'eau elle-même, et pas le caillou.
+
+  - id: OMP-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [milieu_materiel_necessaire, milieu_deplace_globalement]
+    stem: >
+      Toujours au bord de cet étang : pourquoi la vague ne pourrait-elle ni
+      se former, ni se propager jusqu'au bouchon, s'il n'y avait pas d'eau
+      dans l'étang ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'une onde mécanique a besoin d'un milieu matériel
+          déformable à perturber : sans eau, il n'y a rien que le caillou
+          puisse écarter puis relayer de proche en proche.
+        correct: true
+      - id: B
+        text: >-
+          Ce n'est pas vraiment nécessaire : une onde peut tout aussi bien
+          se propager dans le vide, l'eau ne fait qu'accélérer le
+          phénomène.
+        correct: false
+        feedback: >
+          C'est l'inverse : une onde MÉCANIQUE a justement besoin d'un
+          milieu matériel pour exister, et ne se propage jamais dans le
+          vide. Se passer de tout milieu est le propre des ondes
+          électromagnétiques, pas des ondes mécaniques.
+      - id: C
+        text: >-
+          Parce que c'est l'eau elle-même qui doit être transportée jusqu'au
+          bouchon pour le faire bouger : sans eau, rien ne pourrait
+          matériellement l'atteindre.
+        correct: false
+        feedback: >
+          L'eau n'est pas transportée jusqu'au bouchon : chaque molécule
+          oscille sur place et relaie le mouvement à sa voisine. Ce qui
+          manquerait sans eau, ce n'est pas un « transporteur » de matière,
+          c'est le milieu déformable nécessaire pour que la perturbation
+          existe et se relaie.
+      - id: D
+        text: >-
+          Parce que l'eau ne sert qu'à faire flotter le bouchon ; elle n'a
+          aucun rôle dans la transmission de la perturbation elle-même.
+        correct: false
+        feedback: >
+          L'eau n'est pas un simple support flottant : c'est elle qui
+          relaie la perturbation, molécule après molécule, du point
+          d'impact jusqu'au bouchon. Sans elle, il n'y aurait ni
+          perturbation à relayer, ni bouchon flottant à faire bouger.
+    correct_feedback: >
+      Sans milieu matériel déformable, il n'y a rien à écarter ni à
+      relayer de proche en proche : une onde mécanique ne peut tout
+      simplement pas exister.
+    solution: |
+      Une onde mécanique progressive exige un milieu matériel déformable et
+      élastique : c'est en écartant puis en rappelant chaque point de ce
+      milieu que la perturbation se relaie de proche en proche. Sans eau,
+      le caillou n'aurait rien à déformer, et aucune onde ne pourrait ni se
+      former, ni se propager jusqu'au bouchon.
+
+  - id: OMP-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [transport_energie_matiere, milieu_deplace_globalement]
+    stem: >
+      Lors d'une « ola » dans un stade, chaque spectateur se lève puis se
+      rassoit à sa place, dans l'ordre, ce qui donne l'impression d'une
+      vague qui fait le tour des gradins. Quelle affirmation décrit
+      correctement ce qui se passe réellement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Aucun spectateur ne change de siège : c'est le mouvement « se
+          lever puis se rasseoir », transmis de spectateur en spectateur,
+          qui donne l'illusion d'un déplacement autour du stade.
+        correct: true
+      - id: B
+        text: >-
+          Chaque spectateur, une fois debout, se déplace physiquement vers
+          le siège suivant, ce qui fait progressivement le tour du stade.
+        correct: false
+        feedback: >
+          Si chaque spectateur changeait vraiment de siège, il finirait le
+          tour du stade dans un autre fauteuil que le sien. Or chacun reste
+          à sa place : c'est le mouvement, pas la personne, qui est relayé
+          de spectateur en spectateur.
+      - id: C
+        text: >-
+          La ola n'est pas un vrai exemple d'onde, car se lever et se
+          rasseoir ne demande aucune énergie.
+        correct: false
+        feedback: >
+          Se lever demande bien de l'énergie musculaire, transmise (au sens
+          figuré) de spectateur en spectateur par l'enchaînement des
+          mouvements : c'est justement ce qui fait de la ola un bon exemple
+          de transport d'énergie sans transport de matière.
+      - id: D
+        text: >-
+          Une fois la ola passée, chaque spectateur reste debout, car un
+          mouvement, une fois transmis à quelqu'un, ne s'arrête plus.
+        correct: false
+        feedback: >
+          Chaque spectateur se rassoit peu après s'être levé : il revient à
+          sa position de repos, exactement comme chaque point d'un milieu
+          matériel une fois la perturbation passée. Rien n'oblige un point
+          perturbé à rester déplacé indéfiniment.
+    correct_feedback: >
+      La ola illustre exactement le mécanisme de l'onde : chaque spectateur
+      reste à sa place et revient s'asseoir, mais le mouvement, lui, se
+      relaie de proche en proche tout autour du stade.
+    solution: |
+      Chaque spectateur fait la même chose, l'un après l'autre : il se lève
+      (il reçoit le signal de son voisin), puis il se rassoit (il revient à
+      sa position initiale), en ayant transmis le mouvement au spectateur
+      suivant. Personne ne fait le tour du stade ; seul le mouvement,
+      relayé de proche en proche, le fait.
+
+  - id: OMP-11
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [onde_transversale_longitudinale]
+    stem: >
+      Un ressort horizontal est tendu entre deux mains. On comprime
+      brièvement une extrémité puis on la relâche : une zone de spires
+      resserrées se forme et voyage le long de l'axe du ressort. Quel est le
+      type de cette onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Longitudinale : les spires se resserrent puis s'écartent dans la
+          même direction que celle où la compression avance, le long de
+          l'axe du ressort.
+        correct: true
+      - id: B
+        text: >-
+          Transversale : les spires se déplacent nécessairement
+          perpendiculairement à l'axe du ressort.
+        correct: false
+        feedback: >
+          C'est l'inverse de ce qui se passe ici : les spires se déplacent
+          le long de l'axe même du ressort, dans la direction de
+          propagation, pas perpendiculairement à elle — c'est justement le
+          critère d'une onde longitudinale.
+      - id: C
+        text: >-
+          On ne peut pas la classer comme transversale ou longitudinale,
+          car cette onde se propage en réalité dans les trois dimensions de
+          l'espace, comme le son.
+        correct: false
+        feedback: >
+          Le nombre de dimensions de propagation (ici, une seule : le long
+          du ressort) et le type transversal/longitudinal sont deux
+          critères différents, qui répondent à deux questions différentes.
+          Le premier compte les directions où l'onde peut avancer ; le
+          second compare la direction du déplacement de la matière à celle
+          de la propagation.
+      - id: D
+        text: >-
+          Longitudinale seulement parce que le ressort est tenu
+          horizontalement ; si on le tenait verticalement, l'onde serait
+          transversale.
+        correct: false
+        feedback: >
+          Le type de l'onde ne dépend pas de l'orientation absolue du
+          ressort dans l'espace (horizontale ou verticale), mais de la
+          comparaison entre la direction du déplacement des spires et la
+          direction de propagation — ces deux directions restent
+          parallèles, que le ressort soit horizontal ou vertical.
+    correct_feedback: >
+      Les spires se déplacent le long de l'axe du ressort, exactement dans
+      la direction où la compression avance : c'est le critère même d'une
+      onde longitudinale.
+    solution: |
+      Direction du déplacement des spires : le long de l'axe du ressort.
+      Direction de propagation : le long de l'axe du ressort. Les deux
+      directions coïncident, donc l'onde est longitudinale — quelle que
+      soit l'orientation du ressort dans l'espace, et indépendamment du
+      nombre de dimensions dans lequel il se propage.
+
+  - id: OMP-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [onde_transversale_longitudinale]
+    stem: >
+      On frappe l'extrémité d'une longue tige métallique horizontale par un
+      coup sec donné dans l'axe même de la tige. Une onde de compression se
+      propage le long de la tige. Quel est le type de cette onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Longitudinale : chaque tranche de métal est comprimée puis étirée
+          dans la même direction que celle où l'onde avance.
+        correct: true
+      - id: B
+        text: >-
+          Transversale, car un coup sec donné sur un objet crée toujours un
+          déplacement perpendiculaire à la direction du coup.
+        correct: false
+        feedback: >
+          Il n'y a pas de règle générale liant la brièveté d'un coup à la
+          direction du déplacement qu'il produit : ici, le coup est donné
+          DANS l'axe de la tige, et c'est dans cet axe que la matière se
+          déplace — donc parallèlement à la propagation, pas
+          perpendiculairement.
+      - id: C
+        text: >-
+          On ne peut pas savoir : le critère transversal/longitudinal ne
+          s'applique qu'aux ondes dans un fluide (eau, air), pas dans un
+          solide comme cette tige.
+        correct: false
+        feedback: >
+          Le critère (comparer la direction du déplacement de la matière à
+          la direction de propagation) s'applique à tout milieu matériel,
+          solide compris — c'est ce même critère qui classe l'onde sur une
+          corde tendue, elle aussi un solide déformable.
+      - id: D
+        text: >-
+          Transversale, car l'exemple de l'onde à la surface de l'eau, vu
+          en cours, montre que toute onde mécanique est transversale.
+        correct: false
+        feedback: >
+          Un seul exemple ne fait pas une règle générale : l'onde à la
+          surface de l'eau est transversale à cause de la façon dont l'eau
+          est rappelée vers l'équilibre, mais chaque situation s'analyse
+          avec le même critère, pas en généralisant un exemple déjà vu.
+    correct_feedback: >
+      Le déplacement de la matière (compression le long de l'axe) coïncide
+      avec la direction de propagation (le long de la tige) : c'est une
+      onde longitudinale, exactement comme dans un ressort.
+    solution: |
+      Direction du déplacement de la matière : le long de l'axe de la
+      tige. Direction de propagation : le long de l'axe de la tige. Les
+      deux directions coïncident, donc l'onde est longitudinale. Le
+      critère transversal/longitudinal s'applique à tout milieu matériel
+      élastique — corde, ressort, tige solide, air — pas seulement aux
+      fluides, et il s'évalue à chaque fois par la même comparaison de
+      directions, jamais par généralisation d'un exemple déjà rencontré.
+
+  - id: OMP-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard]
+    stem: >
+      Une onde progresse le long d'une corde à la célérité
+      $v = 2{,}5\ \text{m/s}$. La source $S$ commence à vibrer à l'instant
+      $t = 0$. Un point $M$ de la corde est situé à $d = 75\ \text{cm}$ de
+      $S$. À quel instant $M$ commence-t-il à son tour à bouger ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$t = 0{,}3\\ \\text{s}$"
+        correct: true
+      - id: B
+        text: >-
+          $t = 30\ \text{s}$, en gardant $d = 75$ (sans convertir les
+          centimètres en mètres) dans $\tau = d/v$.
+        correct: false
+        feedback: >
+          Il faut convertir $d = 75\ \text{cm}$ en mètres avant de diviser
+          par $v$ (exprimée en m/s) : $d = 0{,}75\ \text{m}$, d'où
+          $\tau = 0{,}75/2{,}5 = 0{,}3\ \text{s}$, pas $30\ \text{s}$.
+      - id: C
+        text: >-
+          $t \approx 3{,}33\ \text{s}$, obtenu avec
+          $\tau = v/d = 2{,}5/0{,}75$.
+        correct: false
+        feedback: >
+          Le retard se calcule avec la distance DIVISÉE par la célérité,
+          $\tau = d/v$, pas l'inverse. Avec le bon rapport,
+          $\tau = 0{,}75/2{,}5 = 0{,}3\ \text{s}$.
+      - id: D
+        text: >-
+          $t = 0\ \text{s}$ : $M$ commence à bouger en même temps que $S$,
+          puisqu'ils appartiennent à la même corde.
+        correct: false
+        feedback: >
+          Une célérité finie ($v = 2{,}5\ \text{m/s}$, pas infinie) signifie
+          justement que la perturbation met un temps non nul pour parcourir
+          la distance $d$ : appartenir à la même corde ne rend pas la
+          transmission instantanée.
+    correct_feedback: >
+      $\tau = d/v = 0{,}75/2{,}5 = 0{,}3\ \text{s}$ : $M$ commence à bouger
+      $0{,}3\ \text{s}$ après $S$, ni avant, ni en même temps.
+    solution: |
+      $$\tau = \frac{d}{v} = \frac{0{,}75}{2{,}5} = 0{,}3\ \text{s}$$
+      $M$ commence donc à reproduire le mouvement de $S$ à l'instant
+      $t = 0{,}3\ \text{s}$.
+
+  - id: OMP-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [front_onde_dimension]
+    stem: >
+      Une perturbation est créée en un point de la surface d'une grande
+      piscine, loin de tout bord. Quelle est la forme du front d'onde qui en
+      résulte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un cercle qui s'agrandit : chaque point de la surface est relié à
+          des voisins tout autour de lui dans le plan de la surface, donc
+          l'onde se propage dans deux dimensions.
+        correct: true
+      - id: B
+        text: >-
+          Une droite qui s'éloigne dans une seule direction, comme sur une
+          corde tendue.
+        correct: false
+        feedback: >
+          Sur une corde, chaque point n'a que deux voisins (gauche et
+          droite) : une seule dimension suffit. Sur une surface d'eau,
+          chaque point a des voisins tout autour de lui dans le plan : la
+          perturbation s'étend dans toutes ces directions à la fois, pas
+          selon une seule droite.
+      - id: C
+        text: >-
+          Une sphère qui s'agrandit, exactement comme pour une onde sonore
+          dans l'air.
+        correct: false
+        feedback: >
+          Une sphère suppose des voisins dans les trois dimensions de
+          l'espace, comme dans l'air. La surface de l'eau est un plan (deux
+          dimensions) : les points ne sont reliés qu'à des voisins de ce
+          plan, pas au-dessus ni en dessous, donc le front d'onde reste un
+          cercle, pas une sphère.
+      - id: D
+        text: >-
+          Un carré qui s'agrandit, dont la forme dépend de la forme
+          rectangulaire du bassin de la piscine.
+        correct: false
+        feedback: >
+          Le front d'onde est fixé par le mécanisme de propagation
+          isotrope à partir de la source (le même relais dans toutes les
+          directions du plan), pas par la forme du récipient qui contient
+          l'eau — c'est un cercle qui s'agrandit, quelle que soit la forme
+          du bassin, tant que le front n'atteint pas encore les bords.
+    correct_feedback: >
+      Chaque point de la surface est relié à des voisins tout autour de lui
+      dans le plan : le front d'onde est un cercle qui s'agrandit, la
+      signature d'une onde à deux dimensions.
+    solution: |
+      La géométrie du milieu fixe le nombre de directions disponibles
+      autour de la source : sur une surface (deux dimensions), chaque
+      point est relié à des voisins tout autour de lui dans le plan, donc
+      la perturbation s'étend également dans toutes les directions du
+      plan. Le front d'onde — l'ensemble des points atteints au même
+      instant — dessine donc un cercle qui s'agrandit, indépendamment de la
+      forme du récipient qui contient l'eau.
+
+  - id: OMP-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [front_onde_dimension, onde_transversale_longitudinale]
+    stem: >
+      On considère trois situations : (1) une onde le long d'un long
+      ressort horizontal tenu à une extrémité ; (2) une onde sonore émise
+      par une cloche, en plein air ; (3) une vague créée par une pierre
+      jetée dans un grand lac. Quel est, dans l'ordre, le nombre de
+      dimensions de propagation de chacune de ces ondes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "(1) une dimension, (2) trois dimensions, (3) deux dimensions."
+        correct: true
+      - id: B
+        text: "(1) deux dimensions, (2) trois dimensions, (3) deux dimensions."
+        correct: false
+        feedback: >
+          Un ressort, même s'il a une épaisseur physique visible, ne relie
+          chaque spire qu'à ses deux voisines immédiates le long de son
+          axe : c'est ce nombre de voisins directs qui fixe le nombre de
+          dimensions de propagation, pas l'épaisseur ou l'aspect visible de
+          l'objet. La compression ne peut avancer que dans les deux sens le
+          long de l'axe : une seule dimension.
+      - id: C
+        text: "(1) une dimension, (2) une dimension, (3) deux dimensions."
+        correct: false
+        feedback: >
+          Une cloche, comme toute petite source dans l'air, est reliée à
+          des voisins dans toutes les directions de l'espace autour
+          d'elle — le son ne part pas en ligne droite dans une seule
+          direction, il s'étend en sphère grandissante autour de la source :
+          trois dimensions, pas une.
+      - id: D
+        text: "(1) trois dimensions, (2) trois dimensions, (3) trois dimensions."
+        correct: false
+        feedback: >
+          Le nombre de dimensions n'est pas une propriété universelle de
+          « toute onde » : c'est la géométrie du milieu (le nombre de
+          voisins directs de chaque point) qui le fixe, et elle diffère
+          d'un milieu à l'autre — une, deux ou trois, selon le cas.
+    correct_feedback: >
+      Le ressort ne relie chaque point qu'à deux voisins le long de son
+      axe (une dimension) ; l'air relie chaque point à des voisins dans
+      toutes les directions de l'espace (trois dimensions) ; la surface du
+      lac relie chaque point à des voisins dans le plan (deux dimensions).
+    solution: |
+      Le nombre de dimensions de propagation dépend uniquement de la
+      géométrie du milieu, c'est-à-dire du nombre de directions dans
+      lesquelles chaque point est relié à des voisins : (1) le long d'un
+      ressort, deux voisins seulement (gauche, droite) → une dimension ;
+      (2) dans l'air, autour d'une petite source, des voisins dans toutes
+      les directions de l'espace → trois dimensions, front sphérique ;
+      (3) sur la surface d'un lac, des voisins tout autour dans le plan →
+      deux dimensions, front circulaire.
+
+  - id: OMP-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, amplitude_source]
+    stem: >
+      On mesure la célérité du son avec deux microphones distants de
+      $d = 1{,}36\ \text{m}$ : l'oscilloscope affiche un décalage
+      $\Delta t = 4{,}0\ \text{ms}$ entre les deux signaux captés lors d'un
+      premier clic. On répète ensuite l'expérience avec un clic beaucoup
+      plus fort (une source sonore plus intense), sans rien changer
+      d'autre. Que peut-on dire de la valeur de $v$ obtenue dans ce second
+      essai ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v = d/\Delta t = 1{,}36 / (4{,}0\times10^{-3}) = 340\ \text{m/s}$
+          dans les deux essais : l'intensité du clic ne change rien à la
+          célérité du son, qui ne dépend que du milieu (l'air, ici).
+        correct: true
+      - id: B
+        text: >-
+          $v$ sera plus grande dans le second essai, car un clic plus fort
+          envoie plus d'énergie, et plus d'énergie signifie une onde plus
+          rapide.
+        correct: false
+        feedback: >
+          L'énergie transportée par l'onde et sa célérité sont deux choses
+          différentes : un clic plus fort transporte effectivement plus
+          d'énergie, mais la vitesse à laquelle cette énergie se propage
+          reste fixée par l'air seul, pas par la quantité d'énergie
+          envoyée.
+      - id: C
+        text: >-
+          $v$ sera plus petite dans le second essai, car un son plus fort
+          est plus « lourd » à transporter pour l'air, ce qui ralentit sa
+          progression.
+        correct: false
+        feedback: >
+          Rien dans le mécanisme de propagation de proche en proche ne
+          rend une perturbation plus ample plus « lourde » à relayer :
+          c'est la rigidité et l'inertie de l'air lui-même, pas l'intensité
+          du clic, qui fixent la vitesse de relais.
+      - id: D
+        text: >-
+          $v = \Delta t / d = (4{,}0\times10^{-3}) / 1{,}36 \approx
+          2{,}9\times10^{-3}\ \text{s/m}$, une grandeur qu'on retient comme
+          la célérité dans ce cas.
+        correct: false
+        feedback: >
+          Ce rapport a la dimension de l'inverse d'une vitesse (s/m), pas
+          d'une vitesse (m/s) : la célérité se calcule avec la distance
+          divisée par la durée, $v = d/\Delta t$, jamais l'inverse.
+    correct_feedback: >
+      La célérité du son ne dépend que de l'air traversé, jamais de
+      l'intensité de la source : $v = 340\ \text{m/s}$ dans les deux
+      essais, quelle que soit la force du clic.
+    solution: |
+      $$v = \frac{d}{\Delta t} = \frac{1{,}36}{4{,}0\times10^{-3}} =
+      340\ \text{m/s}$$
+      Cette valeur est indépendante de l'intensité du clic, car la
+      célérité est une propriété du milieu (l'air), pas de la source : le
+      second essai donnerait exactement le même résultat.
+
+  - id: OMP-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, onde_transversale_longitudinale]
+    stem: >
+      On observe une onde progressive le long d'un long ressort horizontal :
+      une compression créée à l'extrémité $S$ se propage à la célérité
+      $v = 1{,}5\ \text{m/s}$. Un repère $M$, situé à $d = 90\ \text{cm}$ de
+      $S$, montre les spires se resserrer puis s'écarter le long de l'axe
+      horizontal du ressort, avec un retard $\tau$ par rapport à $S$.
+      Quelles sont, à la fois, la valeur de $\tau$ et le type de cette
+      onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = d/v = 0{,}9/1{,}5 = 0{,}6\ \text{s}$ ; l'onde est
+          longitudinale, car les spires se déplacent dans la même direction
+          que la propagation (l'axe horizontal du ressort).
+        correct: true
+      - id: B
+        text: >-
+          $\tau = d/v = 0{,}9/1{,}5 = 0{,}6\ \text{s}$ ; l'onde est
+          transversale, car un déplacement de spires est toujours
+          perpendiculaire à l'axe du ressort.
+        correct: false
+        feedback: >
+          Le calcul de $\tau$ est correct, mais le type est faux : les
+          spires se déplacent ici LE LONG de l'axe du ressort (elles se
+          resserrent puis s'écartent dans cette direction), pas
+          perpendiculairement à lui — c'est le critère même d'une onde
+          longitudinale, pas transversale.
+      - id: C
+        text: >-
+          $\tau = v/d = 1{,}5/0{,}9 \approx 1{,}67\ \text{s}$ ; l'onde est
+          longitudinale.
+        correct: false
+        feedback: >
+          Le type (longitudinale) est correct, mais le calcul de $\tau$
+          inverse le rapport : le retard se calcule avec la distance
+          divisée par la célérité, $\tau = d/v = 0{,}9/1{,}5 =
+          0{,}6\ \text{s}$, pas $v/d$.
+      - id: D
+        text: >-
+          $\tau = d \times v = 0{,}9 \times 1{,}5 = 1{,}35\ \text{s}$ ;
+          l'onde est longitudinale.
+        correct: false
+        feedback: >
+          Le type (longitudinale) est correct, mais le retard se calcule en
+          DIVISANT la distance par la célérité, $\tau = d/v$, pas en les
+          multipliant : $\tau = 0{,}9/1{,}5 = 0{,}6\ \text{s}$, pas
+          $1{,}35\ \text{s}$.
+    correct_feedback: >
+      $\tau = d/v = 0{,}6\ \text{s}$, et le déplacement des spires
+      (parallèle à la propagation) signe une onde longitudinale : les deux
+      réponses sont indépendantes, il faut les obtenir toutes les deux
+      correctement.
+    solution: |
+      **Retard :**
+      $$\tau = \frac{d}{v} = \frac{0{,}9}{1{,}5} = 0{,}6\ \text{s}$$
+
+      **Type :** les spires se déplacent le long de l'axe horizontal du
+      ressort, exactement la direction de propagation de la compression :
+      les deux directions coïncident, donc l'onde est longitudinale.
+
+  - id: OMP-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [amplitude_source, celerite_retard]
+    stem: >
+      Deux perturbations sont créées successivement sur la même corde
+      tendue, dans les mêmes conditions de tension : la première par un
+      petit coup sec (faible amplitude), la seconde par un coup beaucoup
+      plus fort (grande amplitude). Les deux perturbations doivent
+      parcourir la même distance $d$ jusqu'à un même point $M$. Comparé au
+      premier coup, le second met-il plus de temps, moins de temps, ou
+      exactement le même temps pour atteindre $M$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Exactement le même temps : la célérité $v$ ne dépend que de la
+          corde elle-même (sa tension, sa masse linéique), jamais de
+          l'amplitude de la perturbation créée à la source, donc
+          $\tau = d/v$ est identique dans les deux cas.
+        correct: true
+      - id: B
+        text: >-
+          Moins de temps, car une perturbation de plus grande amplitude
+          transporte plus d'énergie, et l'énergie voyage plus vite.
+        correct: false
+        feedback: >
+          Une perturbation plus ample transporte effectivement plus
+          d'énergie, mais la vitesse à laquelle cette énergie se propage
+          (la célérité) ne dépend que de la corde, jamais de la quantité
+          d'énergie transportée : $v$, et donc $\tau = d/v$, restent les
+          mêmes.
+      - id: C
+        text: >-
+          Plus de temps, car une perturbation plus ample est plus
+          « lourde » à transmettre d'un point à l'autre, ce qui ralentit sa
+          progression.
+        correct: false
+        feedback: >
+          Rien dans le mécanisme de propagation de proche en proche ne rend
+          une perturbation plus ample plus « lourde » à relayer : c'est la
+          tension et la masse linéique de la corde, pas l'amplitude du
+          coup, qui fixent la vitesse de relais.
+      - id: D
+        text: >-
+          On ne peut pas comparer les deux cas sans connaître la fréquence
+          de chaque coup.
+        correct: false
+        feedback: >
+          Un coup sec unique n'est pas un phénomène périodique : il n'a pas
+          de fréquence à proprement parler (cette notion concerne les ondes
+          périodiques, pas une perturbation isolée). La comparaison ne
+          nécessite que la célérité $v$, fixée par la corde, et la distance
+          $d$, la même dans les deux cas.
+    correct_feedback: >
+      La célérité est une propriété du milieu, jamais de la perturbation
+      créée à la source : les deux coups, quelle que soit leur amplitude,
+      mettent exactement le même temps $\tau = d/v$ pour atteindre $M$.
+    solution: |
+      $\tau = d/v$ : $d$ est la même distance dans les deux cas, et $v$ est
+      fixée uniquement par la corde (tension, masse linéique), pas par
+      l'amplitude du coup qui a créé la perturbation. Les deux
+      perturbations, malgré leur amplitude différente, mettent donc
+      exactement le même temps à atteindre $M$.
