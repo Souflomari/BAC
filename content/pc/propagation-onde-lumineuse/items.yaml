@@ -383,3 +383,846 @@ items:
       **Conséquence :** c'est cette dépendance de $n$ envers la couleur,
       même faible, qui sépare spatialement les différentes couleurs de la
       lumière blanche à la sortie du prisme — le phénomène de dispersion.
+
+  - id: POL-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Sous une cloche à vide, une clochette électrique sonne en continu
+      pendant qu'on pompe progressivement l'air. À mesure que le vide
+      s'installe, le son faiblit puis disparaît, alors qu'on continue à voir
+      parfaitement le battant de la clochette frapper à travers la vitre. Que
+      peut-on en conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le son, onde mécanique, a besoin d'air pour se propager et
+          disparaît donc avec lui, tandis que la lumière n'a besoin d'aucun
+          milieu matériel pour continuer à nous parvenir.
+        correct: true
+      - id: B
+        text: >-
+          Le son se propage en réalité très bien dans le vide ; s'il n'est
+          plus entendu, c'est seulement qu'il est devenu trop faible pour
+          l'oreille humaine, pas qu'il ne s'est pas propagé.
+        correct: false
+        feedback: >
+          Le son ne s'affaiblit pas dans le vide, il ne s'y propage tout
+          simplement pas : une onde mécanique a besoin d'un milieu matériel
+          pour exister, pas seulement pour être audible.
+      - id: C
+        text: >-
+          Puisque le son et la lumière sont deux ondes, ils devraient tous
+          deux disparaître à mesure que le vide s'installe ; le fait que la
+          lumière persiste est donc une anomalie inexpliquée.
+        correct: false
+        feedback: >
+          Ce n'est pas une anomalie : la lumière est une onde
+          électromagnétique, un type d'onde fondamentalement différent d'une
+          onde mécanique comme le son, qui n'a justement pas besoin de
+          matière pour se propager.
+      - id: D
+        text: >-
+          Ce que l'on voit à travers la vitre n'est pas vraiment de la
+          lumière ayant traversé le vide : c'est un reflet produit par la
+          vitre elle-même, sans rapport avec le battant.
+        correct: false
+        feedback: >
+          La vitre ne fait que laisser passer la lumière : ce qu'on observe
+          est bien la lumière émise par le battant, ayant traversé le vide
+          puis la vitre, sans aucun besoin de support matériel.
+    correct_feedback: >
+      Le son (onde mécanique) disparaît avec l'air qui le portait ; la
+      lumière (onde électromagnétique) n'a jamais eu besoin de ce support et
+      continue de traverser le vide sans aucune atténuation.
+    solution: |
+      Deux natures d'onde, deux comportements face au vide : le son a besoin
+      d'un milieu matériel pour relayer sa perturbation de proche en proche —
+      il s'éteint donc avec l'air. La lumière, onde électromagnétique, n'a
+      jamais eu besoin d'un tel relais matériel et traverse le vide sans
+      difficulté.
+
+  - id: POL-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Toute onde mécanique (le son, une vague, une onde sur une corde) a
+      besoin d'un milieu matériel pour se propager. Cette affirmation
+      s'applique-t-elle aussi à une onde lumineuse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : une onde lumineuse est une onde électromagnétique, elle se
+          propage aussi bien dans le vide que dans un milieu matériel
+          transparent.
+        correct: true
+      - id: B
+        text: >-
+          Oui, la lumière est elle aussi une onde mécanique, donc elle a
+          besoin d'un milieu matériel comme n'importe quelle autre onde.
+        correct: false
+        feedback: >
+          La lumière n'est pas une onde mécanique mais une onde
+          électromagnétique, ce qui change fondamentalement sa relation au
+          vide.
+      - id: C
+        text: >-
+          Oui, mais seulement sur de courtes distances : au-delà de quelques
+          mètres de vide, même la lumière finit par s'arrêter.
+        correct: false
+        feedback: >
+          La lumière traverse le vide sur n'importe quelle distance, y
+          compris les années-lumière séparant les étoiles de la Terre, sans
+          aucune atténuation due à l'absence de matière.
+      - id: D
+        text: >-
+          Non, mais uniquement parce que la lumière transporte tellement
+          d'énergie qu'elle peut « forcer » son passage même sans milieu.
+        correct: false
+        feedback: >
+          La lumière ne traverse pas le vide en le « forçant » : elle n'a
+          tout simplement jamais besoin d'un support matériel, quelle que
+          soit son énergie.
+    correct_feedback: >
+      Une onde lumineuse est électromagnétique, pas mécanique : elle se
+      propage aussi bien dans le vide que dans un milieu transparent, sans
+      aucune limite de distance liée à l'absence de matière.
+    solution: |
+      L'affirmation sur les ondes mécaniques ne s'étend pas à la lumière,
+      car la lumière n'est pas une onde mécanique. Une onde électromagnétique
+      n'a besoin d'aucun support matériel pour exister, à n'importe quelle
+      distance.
+
+  - id: POL-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un élève propose : « Si la lumière traverse le vide, c'est qu'il doit
+      forcément exister une substance extrêmement fine et invisible qui
+      remplit tout l'espace, et que la lumière fait vibrer pour s'y
+      propager. » Que penser de cette idée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Cette idée (l'« éther lumineux ») a été proposée puis abandonnée
+          faute de preuve : aucune expérience n'a jamais mis en évidence un
+          tel support, et la lumière n'a besoin d'aucun milieu pour se
+          propager.
+        correct: true
+      - id: B
+        text: >-
+          C'est une idée correcte et aujourd'hui acceptée : cette substance
+          invisible s'appelle le champ électromagnétique, et c'est elle qui
+          vibre comme le ferait un milieu matériel.
+        correct: false
+        feedback: >
+          Le champ électromagnétique n'est pas une substance matérielle qui
+          « remplit » l'espace comme un milieu mécanique : c'est justement
+          l'idée d'un support matériel invisible que la physique a
+          abandonnée.
+      - id: C
+        text: >-
+          C'est une idée fausse, car la lumière ne traverse en réalité jamais
+          un vide parfait : il reste toujours suffisamment de matière
+          résiduelle pour la faire vibrer.
+        correct: false
+        feedback: >
+          La lumière traverse un vide poussé en laboratoire exactement comme
+          l'air, sans la moindre atténuation liée à l'absence de matière ;
+          ce n'est pas une trace de matière résiduelle qui permet sa
+          propagation.
+      - id: D
+        text: >-
+          C'est une idée fausse, car la lumière ne se propage pas du tout :
+          elle est perçue instantanément, sans traverser de distance ni de
+          support.
+        correct: false
+        feedback: >
+          La lumière se propage bel et bien, à une vitesse grande mais finie ;
+          ce n'est pas un phénomène instantané.
+    correct_feedback: >
+      L'hypothèse de l'éther a réellement été envisagée dans l'histoire des
+      sciences avant d'être abandonnée : la lumière ne nécessite aucun
+      support, visible ou invisible, pour se propager.
+    solution: |
+      L'idée d'un support invisible universel (l'éther lumineux) a été
+      sérieusement testée puis rejetée faute de toute preuve expérimentale.
+      La bonne image n'est pas « une matière invisible vibre », mais « deux
+      champs s'entretiennent mutuellement, sans avoir besoin d'aucun
+      support ».
+
+  - id: POL-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Sur la Lune, l'atmosphère est quasiment inexistante. Un astronaute
+      laisse tomber un outil sur le sol rocheux, produisant un choc visible,
+      à quelques mètres d'un second astronaute. Que peut-on prédire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le second astronaute verra le choc se produire (la lumière traverse
+          l'absence d'atmosphère sans difficulté), mais n'entendra rien,
+          faute d'air pour transporter le son.
+        correct: true
+      - id: B
+        text: >-
+          Le son du choc se propage normalement dans le vide lunaire ; s'il
+          n'est pas perçu, c'est uniquement à cause du casque qui isole les
+          oreilles de l'astronaute.
+        correct: false
+        feedback: >
+          Ce n'est pas le casque qui bloque le son : une onde mécanique comme
+          le son a besoin d'un milieu matériel pour exister, et ce milieu
+          manque presque totalement sur la Lune.
+      - id: C
+        text: >-
+          Ni le son ni la lumière du choc ne devraient parvenir au second
+          astronaute, puisque l'absence d'atmosphère prive les deux ondes de
+          tout support pour se propager.
+        correct: false
+        feedback: >
+          La lumière est une onde électromagnétique qui n'a besoin d'aucun
+          support matériel, contrairement au son : seule l'absence d'air
+          empêche la propagation du son, pas celle de la lumière.
+      - id: D
+        text: >-
+          Le son et la lumière se propagent tous deux normalement sur la
+          Lune, la quasi-absence d'atmosphère n'affectant que la visibilité,
+          pas l'audition.
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est le son, onde mécanique, qui ne peut pas se
+          propager sans air, tandis que la visibilité n'est pas affectée par
+          l'absence d'atmosphère.
+    correct_feedback: >
+      La lumière du choc traverse le vide lunaire sans obstacle ; le son, lui,
+      n'a plus d'air pour le relayer et ne parvient donc jamais au second
+      astronaute.
+    solution: |
+      Deux ondes, deux besoins différents : le son exige un milieu matériel
+      (l'air) pour relayer sa perturbation, absent sur la Lune. La lumière,
+      onde électromagnétique, n'a besoin d'aucun tel relais et parvient donc
+      normalement au second astronaute.
+
+  - id: POL-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Qu'est-ce qui « oscille » concrètement dans une onde lumineuse, et
+      pourquoi ce mécanisme lui permet-il de se propager sans aucun milieu
+      matériel ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un champ électrique et un champ magnétique qui s'entretiennent
+          mutuellement (la variation de l'un engendre l'autre) ; aucune
+          matière n'a donc besoin d'être déplacée pour que la propagation
+          continue.
+        correct: true
+      - id: B
+        text: >-
+          Les molécules du milieu environnant, exactement comme dans une onde
+          mécanique, mais avec des oscillations si rapides qu'elles semblent
+          se produire même en l'absence de matière.
+        correct: false
+        feedback: >
+          S'il n'y a pas de molécules à faire osciller, comme dans le vide,
+          il ne peut rien se passer selon ce modèle : la lumière n'a en
+          réalité besoin d'aucune matière, rapide ou non.
+      - id: C
+        text: >-
+          Un support invisible qui remplit tout l'espace, l'éther, dont la
+          vibration transporte l'onde lumineuse de proche en proche.
+        correct: false
+        feedback: >
+          L'existence de ce support invisible (l'éther) a été sérieusement
+          envisagée puis abandonnée faute de toute preuve expérimentale.
+      - id: D
+        text: >-
+          Rien n'oscille à proprement parler : la lumière transporte
+          simplement de l'énergie d'un point à un autre de façon instantanée,
+          sans mécanisme ondulatoire.
+        correct: false
+        feedback: >
+          La lumière est bien un phénomène ondulatoire qui se propage à une
+          vitesse grande mais finie, avec un mécanisme d'entretien mutuel des
+          champs — ce n'est pas un transport instantané.
+    correct_feedback: >
+      Les champs électrique et magnétique s'entretiennent mutuellement : la
+      variation de l'un engendre l'autre, sans qu'aucune matière n'ait besoin
+      d'être déplacée — c'est pour cela que la lumière traverse le vide.
+    solution: |
+      Le mécanisme d'une onde électromagnétique ne repose sur aucun
+      déplacement de matière : un champ électrique variable engendre un champ
+      magnétique, et réciproquement, en un relais qui se suffit à lui-même.
+      C'est cette auto-entretien qui permet la propagation dans le vide.
+
+  - id: POL-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Le diamant a un indice de réfraction $n \approx 2{,}42$, nettement
+      supérieur à celui de l'eau ($n \approx 1{,}33$). Que peut-on en déduire
+      sur la vitesse de propagation de la lumière dans ces deux milieux ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La lumière se propage plus lentement dans le diamant que dans
+          l'eau, car un indice plus élevé correspond, via $n = c/v$, à une
+          vitesse $v$ plus faible.
+        correct: true
+      - id: B
+        text: >-
+          La lumière se propage plus vite dans le diamant que dans l'eau, car
+          un indice plus élevé signifie que le milieu est plus favorable à la
+          propagation de la lumière.
+        correct: false
+        feedback: >
+          C'est l'inverse : dans $n=c/v$, un $n$ plus grand correspond à un
+          $v$ plus petit, donc à une propagation plus lente, pas plus
+          favorable.
+      - id: C
+        text: >-
+          La vitesse de la lumière est la même dans le diamant et dans l'eau ;
+          seule la valeur de l'indice $n$ diffère d'un milieu à l'autre, sans
+          lien avec $v$.
+        correct: false
+        feedback: >
+          L'indice $n$ est précisément défini à partir de $v$ ($n=c/v$) :
+          deux indices différents correspondent nécessairement à deux
+          vitesses différentes.
+      - id: D
+        text: >-
+          L'indice de réfraction ne renseigne que sur la déviation des rayons
+          lumineux par le milieu ; il ne permet pas de connaître leur vitesse
+          de propagation.
+        correct: false
+        feedback: >
+          L'indice $n=c/v$ est d'abord défini à partir de la vitesse de
+          propagation ; c'est cette même grandeur qui, via la loi de
+          Descartes, gouverne aussi la déviation des rayons.
+    correct_feedback: >
+      Un indice plus élevé signifie une vitesse de propagation plus faible
+      ($v=c/n$) : la lumière est donc plus lente dans le diamant que dans
+      l'eau.
+    solution: |
+      $n=c/v$ relie directement l'indice à la vitesse : plus $n$ est grand,
+      plus $v$ est petit. Puisque $n_{diamant} > n_{eau}$, la lumière se
+      propage plus lentement dans le diamant.
+
+  - id: POL-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un rayon laser traverse un morceau de diamant, d'indice de réfraction
+      $n = 2{,}42$. Sachant que $n = c/v$ avec $c \approx 3\times10^8\
+      \text{m/s}$, quelle est la vitesse $v$ de la lumière dans ce diamant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v \\approx 1{,}24\\times10^8\\ \\text{m/s}$"
+        correct: true
+      - id: B
+        text: "$v \\approx 7{,}26\\times10^8\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce calcul multiplie $n$ par $c$ au lieu de diviser ($v=c/n$, pas
+          $v=n\times c$) ; un résultat supérieur à $c$ signale toujours une
+          erreur, puisqu'aucun milieu ne va plus vite que le vide.
+      - id: C
+        text: "$v = c = 3\\times10^8\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          $c$ est la vitesse dans le vide uniquement ; dans un milieu
+          d'indice $n>1$, la lumière est nécessairement ralentie par rapport
+          à $c$.
+      - id: D
+        text: "$v \\approx 5{,}12\\times10^7\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'avoir divisé par $n^2$ au lieu de $n$ ; la
+          définition $n=c/v$ n'élève jamais l'indice au carré.
+    correct_feedback: >
+      $v = c/n = (3\times10^8)/2{,}42 \approx 1{,}24\times10^8\ \text{m/s}$,
+      une valeur bien inférieure à $c$, comme l'exige tout milieu matériel.
+    solution: |
+      $$v = \frac{c}{n} = \frac{3\times10^8}{2{,}42} \approx 1{,}24\times10^8\ \text{m/s}$$
+      Cette valeur est inférieure à $c$, cohérent avec $n>1$ pour un milieu
+      matériel.
+
+  - id: POL-14
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Deux faisceaux laser, l'un rouge ($\lambda_0 = 650\ \text{nm}$) et
+      l'autre bleu ($\lambda_0 = 450\ \text{nm}$), traversent successivement
+      la même fente de largeur $a = 0{,}15\ \text{mm}$. Lequel des deux
+      produit l'écart angulaire de diffraction $\theta$ le plus grand ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le rouge, car $\theta=\lambda/a$ et $\lambda$ est plus grande pour
+          le rouge : à ouverture égale, une longueur d'onde plus grande donne
+          un écart angulaire plus grand.
+        correct: true
+      - id: B
+        text: >-
+          Le bleu, car une longueur d'onde plus courte permet à la lumière de
+          mieux passer à travers une ouverture étroite, donc de s'étaler
+          davantage.
+        correct: false
+        feedback: >
+          C'est l'inverse : dans $\theta=\lambda/a$, c'est la plus GRANDE
+          longueur d'onde (le rouge) qui donne le plus grand écart angulaire,
+          pas la plus courte.
+      - id: C
+        text: >-
+          Les deux couleurs produisent le même écart angulaire, car
+          $\theta=\lambda/a$ ne dépend que de la largeur de la fente $a$,
+          identique pour les deux.
+        correct: false
+        feedback: >
+          $\theta=\lambda/a$ dépend aussi de $\lambda$, au numérateur : à $a$
+          fixé, deux longueurs d'onde différentes donnent deux écarts
+          angulaires différents.
+      - id: D
+        text: >-
+          On ne peut pas comparer sans connaître la distance à l'écran $D$,
+          car c'est elle qui détermine l'écart angulaire $\theta$.
+        correct: false
+        feedback: >
+          L'écart angulaire $\theta=\lambda/a$ ne dépend que de $\lambda$ et
+          $a$ ; c'est seulement la largeur linéaire $L=D\theta$ de la tache
+          sur l'écran, pas $\theta$ lui-même, qui dépend en plus de $D$.
+    correct_feedback: >
+      À largeur de fente égale, la couleur de plus grande longueur d'onde
+      diffracte le plus : le rouge ($\lambda_0=650\ \text{nm}$) produit donc
+      un écart angulaire plus grand que le bleu ($\lambda_0=450\ \text{nm}$).
+    solution: |
+      $\theta=\lambda/a$ : à $a$ fixé, $\theta$ croît avec $\lambda$. Comme
+      $\lambda_{rouge} > \lambda_{bleu}$, le rouge diffracte davantage que le
+      bleu à travers la même fente.
+
+  - id: POL-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un faisceau de lumière verte laser (monochromatique) passe de l'air à
+      l'eau. Que peut-on affirmer sur sa fréquence $\nu$ et sa longueur
+      d'onde $\lambda$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La fréquence $\nu$ reste inchangée (elle est imposée par la
+          source), tandis que la longueur d'onde $\lambda$ diminue, car
+          $\lambda$ dépend de la vitesse de propagation qui change avec le
+          milieu.
+        correct: true
+      - id: B
+        text: >-
+          La longueur d'onde $\lambda$ reste inchangée, tandis que la
+          fréquence $\nu$ diminue, car c'est elle qui dépend de la vitesse de
+          propagation.
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est $\nu$ qui est invariante (imposée par la
+          source) et $\lambda=v/\nu$ qui change avec la vitesse locale de
+          propagation.
+      - id: C
+        text: >-
+          La fréquence $\nu$ et la longueur d'onde $\lambda$ diminuent toutes
+          les deux en entrant dans l'eau, car la lumière y est ralentie.
+        correct: false
+        feedback: >
+          Seule $\lambda$ diminue ; la fréquence $\nu$ est fixée par la
+          source et ne change jamais en changeant de milieu, même si $v$
+          diminue.
+      - id: D
+        text: >-
+          Ni la fréquence $\nu$ ni la longueur d'onde $\lambda$ ne changent :
+          seule la vitesse de propagation $v$ est affectée par le changement
+          de milieu.
+        correct: false
+        feedback: >
+          $\lambda=v/\nu$ dépend directement de $v$ : si $v$ change et que
+          $\nu$ est fixe, $\lambda$ change nécessairement aussi.
+    correct_feedback: >
+      La fréquence $\nu$, imposée par la source, ne change jamais de milieu
+      en milieu ; la longueur d'onde $\lambda=v/\nu$ diminue, elle, car $v$
+      diminue dans l'eau.
+    solution: |
+      $\nu$ est fixée par la source et reste invariante quel que soit le
+      milieu. $\lambda=v/\nu$ diminue dans l'eau car $v=c/n<c$ y est réduite,
+      alors que $\nu$ ne bouge pas.
+
+  - id: POL-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Une radiation violette a, dans le vide, $\lambda_0 = 420\ \text{nm}$.
+      Elle pénètre dans l'eau, d'indice $n = 1{,}33$. Quelle est sa longueur
+      d'onde $\lambda$ dans l'eau, et la lumière change-t-elle de couleur
+      perçue ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda \approx 316\ \text{nm}$ dans l'eau, mais la couleur perçue
+          reste violette, car c'est la fréquence (invariante) qui détermine
+          la couleur, pas la valeur numérique de $\lambda$.
+        correct: true
+      - id: B
+        text: >-
+          $\lambda \approx 316\ \text{nm}$ dans l'eau, et la lumière devient
+          donc invisible (ultraviolet) tant qu'elle reste dans l'eau, car
+          cette valeur est sous la limite du violet visible (400 nm).
+        correct: false
+        feedback: >
+          C'est la fréquence $\nu$, invariante, qui détermine la couleur
+          perçue par l'œil — pas la valeur numérique locale de $\lambda$, qui
+          n'identifie une couleur que mesurée dans le vide.
+      - id: C
+        text: >-
+          $\lambda = 420 \times 1{,}33 \approx 559\ \text{nm}$ dans l'eau
+          (on multiplie par $n$), et la lumière devient donc verte.
+        correct: false
+        feedback: >
+          La relation est $\lambda=\lambda_0/n$ (on divise), pas $\lambda_0
+          \times n$ : puisque $n\geq1$, la longueur d'onde diminue dans un
+          milieu matériel, elle n'augmente jamais.
+      - id: D
+        text: >-
+          $\lambda$ reste égale à $420\ \text{nm}$ dans l'eau, car la
+          longueur d'onde d'une radiation est fixée uniquement par sa source,
+          indépendamment du milieu traversé.
+        correct: false
+        feedback: >
+          C'est la fréquence qui ne change jamais en changeant de milieu, pas
+          la longueur d'onde : $\lambda=\lambda_0/n$ diminue bel et bien dans
+          l'eau.
+    correct_feedback: >
+      $\lambda=\lambda_0/n=420/1{,}33\approx316\ \text{nm}$ dans l'eau ; la
+      lumière reste pourtant violette, car sa fréquence, invariante, n'a pas
+      changé.
+    solution: |
+      $$\lambda = \frac{\lambda_0}{n} = \frac{420}{1{,}33} \approx 316\ \text{nm}$$
+      Cette valeur numérique correspond à un ultraviolet dans le vide, mais
+      la couleur perçue dépend de $\nu=c/\lambda_0$, invariante : la
+      radiation reste violette dans l'eau.
+
+  - id: POL-17
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      On envoie un faisceau laser (lumière monochromatique) à travers un
+      prisme de verre. Que peut-on observer en sortie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un unique point ou tache lumineuse dévié, car il n'y a qu'une seule
+          longueur d'onde présente : sans mélange de couleurs au départ, il
+          n'y a rien à séparer.
+        correct: true
+      - id: B
+        text: >-
+          Un spectre de couleurs, comme avec la lumière blanche, car tout
+          prisme disperse nécessairement la lumière qui le traverse.
+        correct: false
+        feedback: >
+          La dispersion ne fait qu'écarter différemment des couleurs déjà
+          présentes au départ ; sans mélange de longueurs d'onde (lumière
+          monochromatique), il n'y a rien à séparer.
+      - id: C
+        text: >-
+          Aucune déviation du faisceau, car un prisme ne peut dévier que de
+          la lumière polychromatique.
+        correct: false
+        feedback: >
+          La réfraction (donc la déviation) dépend de l'indice $n$ du verre
+          et de l'angle d'incidence, pas du caractère mono- ou
+          polychromatique de la lumière : un faisceau monochromatique est
+          bien dévié.
+      - id: D
+        text: >-
+          Un spectre de couleurs, mais uniquement si l'indice du verre dépend
+          fortement de la longueur d'onde utilisée.
+        correct: false
+        feedback: >
+          Avec une seule longueur d'onde, la dépendance de $n$ envers
+          $\lambda$ n'a aucune couleur supplémentaire à séparer : il ne peut
+          y avoir de spectre, aussi forte soit cette dépendance.
+    correct_feedback: >
+      Un faisceau monochromatique est dévié comme n'importe quel rayon, mais
+      ressort en un point unique : la dispersion ne sépare que des couleurs
+      déjà mélangées au départ.
+    solution: |
+      La dispersion écarte différemment les couleurs déjà présentes dans la
+      lumière incidente ; elle n'en crée aucune. Une lumière monochromatique
+      n'a qu'une seule couleur à dévier : elle ressort donc en un point
+      unique, pas en spectre.
+
+  - id: POL-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un rayon de lumière blanche arrive sur un prisme de verre avec un angle
+      d'incidence $i_1 = 50°$. Pour ce verre, $n_{rouge} = 1{,}620$ et
+      $n_{violet} = 1{,}650$. Quelle relation correcte décrit les angles de
+      réfraction $r_{rouge}$ et $r_{violet}$ à la première face ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $r_{violet} < r_{rouge}$ (environ $27{,}7°$ contre $28{,}2°$), car
+          un indice plus grand rapproche le rayon réfracté de la normale.
+        correct: true
+      - id: B
+        text: >-
+          $r_{violet} > r_{rouge}$, car une longueur d'onde plus courte
+          réfracte davantage, donc s'écarte plus de la normale.
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est l'indice $n$ (plus grand pour le violet)
+          qui rapproche le rayon réfracté de la normale, pas la longueur
+          d'onde directement.
+      - id: C
+        text: >-
+          $r_{violet} = r_{rouge}$, car à angle d'incidence identique, tous
+          les rayons se réfractent selon le même angle, indépendamment de
+          l'indice.
+        correct: false
+        feedback: >
+          La loi de Descartes $\sin i_1 = n \sin r$ fait dépendre $r$ de $n$ ;
+          deux indices différents donnent donc deux angles de réfraction
+          différents à $i_1$ égal.
+      - id: D
+        text: >-
+          On ne peut pas conclure sans connaître aussi l'indice de l'air, qui
+          influence fortement la déviation.
+        correct: false
+        feedback: >
+          L'indice de l'air vaut environ $1$ et est déjà implicite dans
+          $\sin i_1 = n \sin r$ ; les deux indices du verre donnés suffisent
+          à comparer $r_{rouge}$ et $r_{violet}$.
+    correct_feedback: >
+      Puisque $n_{violet} > n_{rouge}$, le violet est réfracté plus près de
+      la normale ($r_{violet} \approx 27{,}7°$ contre $r_{rouge} \approx
+      28{,}2°$) : c'est ce petit écart qui sépare les couleurs.
+    solution: |
+      $\sin r = \sin i_1 / n$. Avec $\sin 50° \approx 0{,}766$ :
+      $r_{rouge}=\arcsin(0{,}766/1{,}620)\approx28{,}2°$ et
+      $r_{violet}=\arcsin(0{,}766/1{,}650)\approx27{,}7°$. Un $n$ plus grand
+      donne un $r$ plus petit : le violet est dévié plus fortement.
+
+  - id: POL-19
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un faisceau laser vert, de longueur d'onde dans le vide $\lambda_0 =
+      532\ \text{nm}$, traverse une fente de largeur $a = 0{,}3\ \text{mm}$ ;
+      un écran est placé à $D = 2{,}5\ \text{m}$. Le même faisceau traverse
+      ensuite un bloc de verre d'indice $n = 1{,}5$. Quel est l'écart
+      angulaire $\theta$ obtenu dans l'air, et la lumière change-t-elle de
+      couleur en traversant le verre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\theta \approx 1{,}77\times10^{-3}\ \text{rad}$ ; la lumière reste
+          verte, car c'est la fréquence (invariante par changement de
+          milieu) qui détermine la couleur perçue, pas la valeur numérique de
+          $\lambda$.
+        correct: true
+      - id: B
+        text: >-
+          $\theta \approx 1{,}77\times10^{-3}\ \text{rad}$ ; mais la lumière
+          devient invisible (ultraviolet) en traversant le verre, car sa
+          longueur d'onde y vaut environ $355\ \text{nm}$, sous la limite du
+          violet visible.
+        correct: false
+        feedback: >
+          C'est la fréquence, invariante, qui détermine la couleur perçue —
+          pas la valeur numérique locale de $\lambda$, qui n'identifie une
+          couleur que mesurée dans le vide.
+      - id: C
+        text: >-
+          $\theta \approx 564\ \text{rad}$ (formule $a/\lambda_0$) ; la
+          lumière reste verte dans le verre.
+        correct: false
+        feedback: >
+          Ce résultat inverse la fraction : $\theta=\lambda_0/a$, pas
+          $a/\lambda_0$ ; un écart angulaire de $564\ \text{rad}$ n'a
+          d'ailleurs aucun sens physique.
+      - id: D
+        text: >-
+          $\theta \approx 1{,}77\times10^{-3}\ \text{rad}$ ; la lumière
+          devient invisible en traversant le verre, car l'indice $n=1{,}5$,
+          trop élevé, empêche le vert de le traverser.
+        correct: false
+        feedback: >
+          L'indice de réfraction gouverne la vitesse et la déviation de la
+          lumière, jamais sa capacité à traverser un milieu transparent selon
+          sa couleur.
+    correct_feedback: >
+      $\theta=\lambda_0/a\approx1{,}77\times10^{-3}\ \text{rad}$ dans l'air ;
+      dans le verre, seule la valeur numérique de $\lambda$ change ($\approx
+      355\ \text{nm}$), la fréquence restant fixe, donc la couleur perçue
+      reste verte.
+    solution: |
+      $$\theta = \frac{\lambda_0}{a} = \frac{5{,}32\times10^{-7}}{3\times10^{-4}} \approx 1{,}77\times10^{-3}\ \text{rad}$$
+      Dans le verre, $\lambda=\lambda_0/n\approx355\ \text{nm}$, mais
+      $\nu=c/\lambda_0$ ne change pas : la couleur perçue reste verte.
+
+  - id: POL-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Un rayon de lumière blanche traverse un prisme de verre flint, pour
+      lequel $n_{rouge} = 1{,}613$ et $n_{violet} = 1{,}632$. La vitesse de
+      la lumière rouge dans ce verre est-elle plus grande, plus petite, ou
+      égale à celle de la lumière violette dans ce même verre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v_{rouge} > v_{violet}$, car $v=c/n$ et $n_{rouge}<n_{violet}$ :
+          un indice plus faible correspond à une vitesse de propagation plus
+          grande.
+        correct: true
+      - id: B
+        text: >-
+          $v_{rouge} < v_{violet}$, car le rouge est davantage dévié par le
+          prisme donc s'y propage plus difficilement.
+        correct: false
+        feedback: >
+          C'est le contraire : le rouge est en réalité MOINS dévié que le
+          violet (car $n_{rouge}<n_{violet}$), et un $n$ plus petit
+          correspond à une vitesse plus grande, pas plus difficile.
+      - id: C
+        text: >-
+          $v_{rouge} = v_{violet}$, car dans un même milieu, toutes les
+          couleurs se propagent à la même vitesse, seul $n$ diffère selon la
+          couleur.
+        correct: false
+        feedback: >
+          $n$ est défini par $n=c/v$ : deux indices différents pour un même
+          verre impliquent nécessairement deux vitesses différentes, une par
+          couleur.
+      - id: D
+        text: >-
+          On ne peut pas comparer les vitesses sans connaître les longueurs
+          d'onde exactes en nanomètres de chaque couleur.
+        correct: false
+        feedback: >
+          Les deux indices $n_{rouge}$ et $n_{violet}$ suffisent : $v=c/n$
+          se calcule directement à partir d'eux, sans connaître $\lambda_0$
+          en nanomètres.
+    correct_feedback: >
+      Puisque $n_{rouge}<n_{violet}$, et que $v=c/n$, le rouge se propage
+      plus vite que le violet dans ce même verre.
+    solution: |
+      $v_{rouge}=c/n_{rouge}=3\times10^8/1{,}613\approx1{,}86\times10^8\
+      \text{m/s}$ ; $v_{violet}=c/n_{violet}\approx1{,}84\times10^8\
+      \text{m/s}$. Un indice plus petit donne une vitesse plus grande :
+      $v_{rouge}>v_{violet}$.
+
+  - id: POL-21
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    stem: >
+      Lors d'une séance de travaux pratiques, on utilise un laser
+      hélium-néon ($\lambda_0 = 632{,}8\ \text{nm}$) pour étudier la
+      diffraction par un cheveu humain assimilé à un fil de diamètre $a = 80\
+      \mu\text{m}$, avec un écran à $D = 2\ \text{m}$. Un élève affirme :
+      « Puisqu'un cheveu est bien plus large qu'une fente habituelle de
+      diffraction, on ne devrait observer aucune figure de diffraction. » Que
+      penser de cette affirmation, et quel est l'écart angulaire attendu ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'affirmation est fausse : bien qu'un cheveu (environ $0{,}08\
+          \text{mm}$) soit environ 125 fois plus large que $\lambda_0$, il
+          reste de l'ordre du dixième de millimètre, assez fin pour produire
+          une diffraction mesurable ; $\theta = \lambda_0/a \approx
+          7{,}9\times10^{-3}\ \text{rad}$.
+        correct: true
+      - id: B
+        text: >-
+          L'affirmation est vraie : un cheveu est bien trop large comparé à
+          $\lambda_0$ (environ 125 fois plus grand), donc aucune diffraction
+          n'est observable, contrairement à une fente submillimétrique.
+        correct: false
+        feedback: >
+          « Du même ordre de grandeur » n'exige pas un rapport proche de 1 :
+          $0{,}08\ \text{mm}$ reste assez fin (l'ordre du dixième de
+          millimètre) pour produire une diffraction bien mesurable.
+      - id: C
+        text: >-
+          L'affirmation est fausse, mais l'écart angulaire vaut $\theta =
+          a/\lambda_0 \approx 126\ \text{rad}$, une valeur bien supérieure à
+          celle attendue pour un phénomène de diffraction.
+        correct: false
+        feedback: >
+          Cette valeur inverse la fraction : $\theta=\lambda_0/a$, pas
+          $a/\lambda_0$ ; un angle de $126\ \text{rad}$ n'a d'ailleurs aucun
+          sens physique.
+      - id: D
+        text: >-
+          L'affirmation est fausse car la diffraction dépend uniquement de la
+          distance à l'écran $D$, pas de la taille de l'obstacle : avec $D=2\
+          \text{m}$, une figure de diffraction apparaît nécessairement.
+        correct: false
+        feedback: >
+          La condition de diffraction compare $a$ à $\lambda_0$
+          ($\theta=\lambda_0/a$) ; $D$ ne détermine que la largeur $L=D\theta$
+          de la tache sur l'écran, pas si la diffraction a lieu.
+    correct_feedback: >
+      $0{,}08\ \text{mm}$ reste de l'ordre du dixième de millimètre : la
+      diffraction est bien observable, avec $\theta=\lambda_0/a\approx
+      7{,}9\times10^{-3}\ \text{rad}$ — l'élève a tort de l'exclure.
+    solution: |
+      $$\theta = \frac{\lambda_0}{a} = \frac{6{,}328\times10^{-7}}{8\times10^{-5}} \approx 7{,}9\times10^{-3}\ \text{rad}$$
+      Même si $a$ est environ 125 fois plus grand que $\lambda_0$, il reste
+      de l'ordre du dixième de millimètre — assez fin pour une diffraction
+      mesurable. L'affirmation de l'élève est donc fausse.
