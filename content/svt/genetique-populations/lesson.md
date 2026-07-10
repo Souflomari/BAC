@@ -147,6 +147,8 @@ Et comme ces trois cases couvrent tous les cas possibles, sans en oublier aucun 
 
 $$p^2 + 2pq + q^2 = 1$$
 
+[[figure:echiquier-gametes]]
+
 On peut aussi retrouver ce résultat par un pur calcul algébrique, comme vérification de cohérence : puisque $p + q = 1$ (R1), élevons les deux membres au carré :
 
 $$(p+q)^2 = 1^2 = 1$$

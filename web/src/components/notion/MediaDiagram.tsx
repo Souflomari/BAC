@@ -103,6 +103,8 @@ export const STRUCTURAL_SLUGS = new Set([
   // D-persistance wave — SVT respiration/fermentation comparative schematic
   // (liberation-energie-matiere-organique)
   "respiration-fermentation",
+  // B2 wave S1 — SVT gamete-grid schematic (genetique-populations R2)
+  "echiquier-gametes",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────
