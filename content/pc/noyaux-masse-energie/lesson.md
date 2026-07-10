@@ -217,6 +217,8 @@ Compare maintenant ces chiffres à une réaction chimique ordinaire. Une réacti
 
 Compare : $4\ \text{eV}$ pour une réaction chimique, contre $17{,}6\times10^6\ \text{eV}$ pour la fusion deutérium-tritium, ou $173\times10^6\ \text{eV}$ pour la fission de l'uranium 235. Le rapport est de l'ordre de $10^7$ à $10^8$ : une seule réaction nucléaire libère, par événement, entre dix millions et cent millions de fois plus d'énergie qu'une seule réaction chimique. C'est tout l'écart rencontré à l'accroche entre les quelques milliers d'années d'un Soleil chimique et ses 4,6 milliards d'années réels — et ce n'est pas une coïncidence : c'est exactement ce facteur qui comble l'écart.
 
+[[figure:nucleaire-vs-chimique]]
+
 ---
 
 ## R5 — Pour t'entraîner

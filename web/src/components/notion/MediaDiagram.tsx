@@ -74,6 +74,8 @@ export const STRUCTURAL_SLUGS = new Set([
   "cellule-electrolyse",
   // B2 wave P2 — same cell-schema family as cellule-electrolyse
   "electrolyse-eau-cellule",
+  // B2 wave P3 — reuses pile-daniell's exact cell geometry
+  "courant-vs-electrons",
   // D10 wave B — mechanics schematics
   "plan-incline-forces",
   "deux-chariots-inertie",

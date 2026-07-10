@@ -44,7 +44,7 @@ rule, carried forward here).
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
-| P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | judged (10 STAGE / 13 DECLINE), build in progress |
+| P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
@@ -424,5 +424,31 @@ rule, carried forward here).
 
 **Wave P3 judgment tally: 10 STAGE / 13 DECLINE** (23 chapters judged).
 
-**Build:** in progress.
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| noyaux-masse-energie | nucleaire-vs-chimique | R4 | 4 |
+| ondes-em-modulation | antenne-quart-onde | R1 | 3 |
+| ondes-em-modulation | detecteur-crete | R4 | 3 |
+| ondes-em-modulation | circuit-accorde-selection | R5 | 3 |
+| ondes-mecaniques-periodiques | heritage-periode-retard | R1 | 3 |
+| ondes-mecaniques-periodiques | son-longitudinal-compressions | R4 | 3 |
+| ondes-mecaniques-progressives | bouchon-oscille-sur-place | R0 | 3 |
+| ondes-mecaniques-progressives | front-onde-dimensions | R4 | 3 |
+| piles | qr-vs-k-echelle | R2 | 3 |
+| piles | courant-vs-electrons | R4 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×10 new SVGs (all clean)
+- App-code fix: added `courant-vs-electrons` to `MediaDiagram.tsx`'s `STRUCTURAL_SLUGS` (reuses `pile-daniell`'s exact cell geometry, which is registered). Checked the axis-diagram family precedent: `critere-qr-k`/`quotient-vers-K` are deliberately NOT registered, so `qr-vs-k-echelle` and `seuil-tension-electrolyse` correctly stay unregistered
+- Marker-duplication check on ondes-em-modulation (its build agent reported "4 insertions" for 3 figures): grep confirms exactly 5 markers, 3 new + 2 pre-existing — the report was a miscount, no duplicate
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `piles` R4 `courant-vs-electrons`: width-capped, antiparallel e⁻/I arrows read clearly. `ondes-mecaniques-progressives` R4 `front-onde-dimensions`: 1D/2D/3D panels with two-points/circle/sphere fronts all render cleanly
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 28/47 lessons done, 161/266 chapters judged, 80 STAGE / 81 DECLINE.**
 

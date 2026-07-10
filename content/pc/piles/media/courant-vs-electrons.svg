@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Sens du courant, sens des électrons dans le circuit extérieur de la pile Daniell : électrode de zinc à gauche (anode, borne moins) et électrode de cuivre à droite (cathode, borne plus), reliées par un fil passant par un ampèremètre, béchers et pont salin suggérés. Dans le fil, les électrons circulent réellement du zinc vers le cuivre, de la borne moins vers la borne plus. Le courant conventionnel, lui, est dessiné en sens inverse des électrons : du cuivre vers le zinc, de la borne plus vers la borne moins.">
+  <title>Sens du courant, sens des électrons</title>
+
+  <!--
+    courant-vs-electrons.svg — schéma STAGED (LESSON-EXPERIENCE-SPEC §2.5 :
+    l'ordre des couches est le geste d'enseignement du rung R4 lui-même,
+    qui l'énonce dans le texte : « électrons, puis courant, dans cet ordre »),
+    3 étapes, rung R4 (pile Daniell).
+
+    Reprend DÉLIBÉRÉMENT la géométrie de la figure sœur
+    content/pc/piles/media/pile-daniell.svg (béchers, électrodes en
+    x=190/450, fil extérieur + ampèremètre en x=320,y=45) : le texte du
+    rung R4 dit littéralement « Sur le schéma de la pile Daniell » - c'est
+    le MÊME dispositif, regardé cette fois pour le sens de circulation
+    plutôt que pour le mécanisme d'assemblage. Les béchers et le pont
+    salin sont SUGGÉRÉS (mêmes tracés que la figure sœur, mais sans les
+    étiquettes d'ions du pont salin ni les demi-équations aux électrodes,
+    déjà couvertes par pile-daniell.svg / R1 et R3) - ce schéma n'ajoute
+    que ce qui lui est propre : les deux flèches de sens.
+
+    Différence de mise en page avec pile-daniell.svg : là où pile-daniell
+    dessine électrons et courant sur deux SEGMENTS distincts d'une même
+    ligne de fil (pour éviter la superposition), cette figure les dessine
+    sur deux lignes PARALLÈLES et décalées verticalement, dans le
+    corridor ouvert entre les deux colonnes d'électrode (x=205 à 430,
+    y=45 le fil réel en haut, jusqu'à y=150 le bord des béchers). C'est un
+    choix délibéré, dicté par le brief R4 lui-même : « deux flèches
+    opposées » qui doivent se lire comme le climax pédagogique - les
+    montrer côte à côte, parallèles et de sens contraire, sur toute la
+    largeur du circuit, rend ce contraste plus lisible qu'une alternance
+    de segments sur une seule ligne.
+
+    Mise en étapes (reprend l'ordre littéral du texte du rung R4 - le
+    squelette d'abord, puis « électrons, puis courant, dans cet ordre ») :
+      step-1 : le squelette - béchers/pont salin suggérés, les deux
+               électrodes, le fil extérieur + l'ampèremètre, les étiquettes
+               de rôle (anode/borne −, cathode/borne +) - AUCUNE flèche.
+      step-2 : la réalité physique - la flèche des électrons, du zinc vers
+               le cuivre (de la borne − vers la borne +), étiquetée e−.
+      step-3 : la convention dérivée - la flèche du courant conventionnel,
+               du cuivre vers le zinc (de la borne + vers la borne −),
+               délibérément opposée et parallèle à la flèche des électrons,
+               annotée « sens inverse des électrons ».
+
+    Rôle des couleurs :
+      la flèche des électrons (la réalité physique, revélée en premier) :
+        --figure-accent (le seul foyer d'accent, comme dans pile-daniell.svg
+        - « une seule direction porte l'accent »).
+      la flèche du courant conventionnel (la convention dérivée) :
+        --figure-ink-soft (même convention que pile-daniell.svg : montrée,
+        mais pas l'accent).
+      béchers, électrodes, fil, pont salin, étiquettes de rôle : --figure-ink
+        / --figure-ink-soft (structure, jamais le focus).
+      l'annotation « sens inverse des électrons » (texte explicatif, pas un
+        objet graphique) : --figure-ink, comme les notes explicatives des
+        autres figures de ce corpus (ex. datation-c14.svg).
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le squelette : béchers/pont salin suggérés,
+       électrodes, fil + ampèremètre, rôles - AUCUNE flèche
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="320" y="24" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Sens du courant, sens des électrons</text>
+
+    <!-- ── Bécher gauche (anode, Zn) — suggéré ─────────────────────── -->
+    <path d="M110,175 L110,310 Q110,330 130,330 L250,330 Q270,330 270,310 L270,175 Z"
+          fill="var(--figure-grid)" opacity="0.6" stroke="none"/>
+    <line x1="110" y1="175" x2="270" y2="175" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <path d="M110,150 L110,310 Q110,330 130,330 L250,330 Q270,330 270,310 L270,150"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- ── Bécher droit (cathode, Cu) — suggéré ────────────────────── -->
+    <path d="M370,175 L370,310 Q370,330 390,330 L510,330 Q530,330 530,310 L530,175 Z"
+          fill="var(--figure-grid)" opacity="0.6" stroke="none"/>
+    <line x1="370" y1="175" x2="530" y2="175" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <path d="M370,150 L370,310 Q370,330 390,330 L510,330 Q530,330 530,310 L530,150"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Étiquettes des solutions -->
+    <text x="205" y="250" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">Zn</tspan><tspan dy="-5" font-size="7.5" font-style="normal">2+</tspan><tspan dy="5"> (aq)</tspan></text>
+    <text x="435" y="250" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">Cu</tspan><tspan dy="-5" font-size="7.5" font-style="normal">2+</tspan><tspan dy="5"> (aq)</tspan></text>
+
+    <!-- ── Électrodes ───────────────────────────────────────────── -->
+    <rect x="182" y="95" width="16" height="175" rx="2"
+          fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <rect x="442" y="95" width="16" height="175" rx="2"
+          fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <text x="190" y="122" text-anchor="middle" font-size="12" font-weight="600" font-style="italic"
+          fill="var(--figure-surface)">Zn</text>
+    <text x="450" y="122" text-anchor="middle" font-size="12" font-weight="600" font-style="italic"
+          fill="var(--figure-surface)">Cu</text>
+
+    <!-- ── Pont salin — suggéré, sans détail d'ions ────────────────── -->
+    <path d="M270,150 Q320,35 370,150" fill="none" stroke="var(--figure-grid)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M270,150 Q320,35 370,150" fill="none" stroke="var(--figure-ink)" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="270" cy="150" r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="370" cy="150" r="2.5" fill="var(--figure-ink)"/>
+    <text x="320" y="108" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">pont salin</text>
+
+    <!-- ── Fil extérieur + ampèremètre — aucune flèche encore ──────── -->
+    <line x1="190" y1="95" x2="190" y2="45" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="450" y1="95" x2="450" y2="45" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="190" y1="45" x2="306" y2="45" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="334" y1="45" x2="450" y2="45" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="190" cy="95" r="3" fill="var(--figure-ink)"/>
+    <circle cx="450" cy="95" r="3" fill="var(--figure-ink)"/>
+    <circle cx="190" cy="45" r="3" fill="var(--figure-ink)"/>
+    <circle cx="450" cy="45" r="3" fill="var(--figure-ink)"/>
+
+    <circle cx="320" cy="45" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="320" y="49.5" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink)">A</text>
+
+    <!-- ── Étiquettes de rôle (anode / cathode) ────────────────────── -->
+    <text x="8" y="190" text-anchor="start" font-size="12" font-weight="600" fill="var(--figure-ink)">ANODE</text>
+    <text x="8" y="204" text-anchor="start" font-size="10" fill="var(--figure-ink-soft)">(borne −)</text>
+
+    <text x="632" y="190" text-anchor="end" font-size="12" font-weight="600" fill="var(--figure-ink)">CATHODE</text>
+    <text x="632" y="204" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">(borne +)</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la réalité physique : les électrons, Zn → Cu
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <line x1="205" y1="75" x2="430" y2="75"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="430,75 417,69.5 417,80.5" fill="var(--figure-accent)"/>
+    <text x="317" y="63" text-anchor="middle" font-size="13" fill="var(--figure-accent)"
+          ><tspan font-style="italic">e</tspan><tspan dy="-6" font-size="9" font-style="normal">−</tspan></text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la convention dérivée : le courant, Cu → Zn,
+       opposé et parallèle à la flèche des électrons
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <line x1="430" y1="105" x2="205" y2="105"
+          stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="205,105 218,99.5 218,110.5" fill="var(--figure-ink-soft)"/>
+    <text x="317" y="122" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">I</text>
+
+    <text x="317" y="137" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          >(sens inverse des électrons)</text>
+
+  </g><!-- /step-3 -->
+
+</svg>

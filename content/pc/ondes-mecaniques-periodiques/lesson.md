@@ -68,6 +68,8 @@ $$f = \frac{1}{T}$$
 
 $f$ se mesure en hertz ($\text{Hz}$). Puisque tous les points du milieu partagent la même période $T$ que la source, ils partagent tous, aussi, exactement la même fréquence $f$. Et cette fréquence ne vient que d'un seul endroit : le mouvement imposé à la source. **Ni la distance à la source, ni la nature du milieu traversé, ne peuvent la modifier** — le milieu ne fait que relayer, point après point, le rythme déjà fixé par la source. On y reviendra avec le son en R4, car c'est exactement là que cette idée est la plus utile.
 
+[[figure:heritage-periode-retard]]
+
 ### Exemple
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on part de la seule donnée qu'on a — la durée d'un cycle du vibreur — et on en tire la fréquence, qui est l'inverse immédiat de cette durée.
@@ -225,6 +227,8 @@ Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $
 La **hauteur** d'un son — le fait qu'on le perçoive comme aigu ou comme grave — est directement liée à sa fréquence $f$ : plus $f$ est élevée, plus le son est perçu aigu ; plus $f$ est basse, plus il est perçu grave.
 
 Et cette fréquence, on l'a établi en R1, est fixée **uniquement par la source qui vibre** — jamais par le milieu de propagation. Le milieu ne fait que relayer le rythme déjà imposé par la source ; il ne peut ni l'accélérer, ni le ralentir. Ce que le milieu fixe, en revanche, c'est la célérité $c$ — et donc, par $\lambda = c/f$, la longueur d'onde : à fréquence fixée par la source, un milieu où le son va plus vite donne une longueur d'onde plus grande, pas une fréquence différente.
+
+[[figure:son-longitudinal-compressions]]
 
 ### Exemple
 

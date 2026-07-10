@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 496" width="640" height="496"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Héritage de la période : en haut, un rappel du milieu avec la source S et un point M à distance d ; au centre, l'évolution y_S(t) de la source, un motif périodique non sinusoïdal (une bosse haute et étroite suivie d'une bosse basse et large), avec une période T marquée entre deux motifs consécutifs ; en bas, l'évolution y_M(t) du point M, exactement le même motif que S, simplement décalé vers la droite d'un retard tau, avec la même période T marquée, identique à celle de S ; le retard décale le motif dans le temps mais ne l'étire pas.">
+  <title>Héritage de la période : y_M(t) = y_S(t − τ), même T</title>
+  <!--
+    heritage-periode-retard.svg — R1 : le mécanisme d'héritage de la période.
+
+    DÉCISION DE FORME (contrainte décisive de la spec) : le motif source
+    n'est PAS sinusoïdal — c'est la seule figure de la leçon à montrer une
+    source périodique générale, pour bien montrer que l'héritage de la
+    période vaut pour N'IMPORTE QUELLE forme, pas seulement le cas
+    sinusoïdal particulier de R2/R3. Motif par période (125px) : une bosse
+    haute et étroite (largeur 30px, amplitude 46px) suivie d'une bosse basse
+    et large (largeur 60px, amplitude 20px), puis un repos plat (35px) —
+    clairement irrégulier, non symétrique, non sinusoïdal.
+
+    Structure : un petit schéma spatial (S, M, d) en haut, rappel du milieu
+    (repris du vocabulaire de onde-propagation-retard.svg — mêmes rôles de
+    couleur : S = accent, M = ink-soft, bracket "d" = accent, comme le
+    schéma spatial de dephasage.svg dans cette même leçon) ; puis deux
+    panneaux empilés y_S(t) / y_M(t), même gabarit de mise en page que
+    double-periodicite.svg (rect 536×118, axis_y = rect_y + 58).
+
+    Le panneau B est EXACTEMENT le panneau A translaté de +45px en x (= τ),
+    +180px en y (changement de baseline) — un même motif, décalé, jamais
+    réétiré : la preuve visuelle de y_M(t) = y_S(t − τ).
+
+    Couleurs : les deux courbes (S et M) restent dans la MÊME couleur
+    --figure-accent (reprise du principe de double-periodicite.svg : « même
+    onde, même couleur, dans les deux panneaux ») — ici, littéralement le
+    même motif, retardé. Les repères T (panneau A et panneau B) restent
+    aussi en --figure-accent, pour bien montrer visuellement que c'est LE
+    MÊME repère T répété à l'identique. Le repère τ (l'écart entre panneaux)
+    est en --figure-ink-soft — délibérément neutre, pour le distinguer de T :
+    T ne change pas (accent), τ n'est qu'un décalage (neutre).
+
+    MISE EN ÉTAPES (LESSON-EXPERIENCE-SPEC §2.5 — graphe, toujours stagé,
+    axes → données → lecture) :
+      step-1 : schéma spatial (S, M, d) + les deux panneaux, axes vides.
+      step-2 : la courbe y_S(t) se trace ; la période T se marque sur S.
+      step-3 : la courbe y_M(t) se trace (même motif, décalé de τ) ; l'écart
+               τ se marque entre les deux panneaux ; la même période T se
+               marque sur M ; annotation de synthèse.
+  -->
+
+  <!-- Titre (chrome non-stagé) -->
+  <text x="320" y="16" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Le mécanisme d'héritage : la période de <tspan
+        font-style="italic">S</tspan>, retrouvée en <tspan
+        font-style="italic">M</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Axes : schéma spatial (S, M, d) + les deux panneaux vides
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Rappel du milieu : S, M, distance d -->
+    <text x="96" y="32" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">Rappel : <tspan
+          font-style="italic">S</tspan> et <tspan
+          font-style="italic">M</tspan>, séparés de <tspan
+          font-style="italic">d</tspan></text>
+
+    <line x1="140" y1="58" x2="560" y2="58" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="230" cy="58" r="4.5" fill="var(--figure-accent)"/>
+    <circle cx="420" cy="58" r="4.5" fill="var(--figure-ink-soft)"/>
+    <text x="230" y="44" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink)">S</text>
+    <text x="420" y="44" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink)">M</text>
+    <line x1="230" y1="64" x2="230" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="420" y1="64" x2="420" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="230" y1="70" x2="420" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="325" y="84" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">d</text>
+
+    <!-- Panneau A — la source S -->
+    <text x="96" y="112" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">La source <tspan
+          font-style="italic">S</tspan> — <tspan
+          font-style="italic">y</tspan><tspan dy="3" font-size="8"
+          font-style="italic">S</tspan><tspan dy="-3">(</tspan><tspan
+          font-style="italic">t</tspan><tspan>)</tspan></text>
+
+    <rect x="88" y="120" width="536" height="118" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <line x1="104" y1="178" x2="604" y2="178"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,178 592,173.5 592,182.5" fill="var(--figure-ink-soft)"/>
+    <line x1="104" y1="228" x2="104" y2="124"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="104,124 99.5,135 108.5,135" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="182" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">t</tspan><tspan> (s)</tspan></text>
+    <text x="96" y="124" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+    <text x="96" y="182" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Panneau B — le point M -->
+    <text x="96" y="292" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">Le point <tspan
+          font-style="italic">M</tspan>, à distance <tspan
+          font-style="italic">d</tspan> — <tspan
+          font-style="italic">y</tspan><tspan dy="3" font-size="8"
+          font-style="italic">M</tspan><tspan dy="-3">(</tspan><tspan
+          font-style="italic">t</tspan><tspan>)</tspan></text>
+
+    <rect x="88" y="300" width="536" height="118" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <line x1="104" y1="358" x2="604" y2="358"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,358 592,353.5 592,362.5" fill="var(--figure-ink-soft)"/>
+    <line x1="104" y1="408" x2="104" y2="304"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="104,304 99.5,315 108.5,315" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="362" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">t</tspan><tspan> (s)</tspan></text>
+    <text x="96" y="304" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+    <text x="96" y="362" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Données : la courbe y_S(t) (motif non sinusoïdal) + repère T
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- Motif : bosse haute-étroite + bosse basse-large + repos plat, répété -->
+    <path d="
+      M104,178
+      C110,178 113,132 119,132
+      C125,132 128,178 134,178
+      C146,178 152,158 164,158
+      C176,158 182,178 194,178
+      L229,178
+      C235,178 238,132 244,132
+      C250,132 253,178 259,178
+      C271,178 277,158 289,158
+      C301,158 307,178 319,178
+      L354,178
+      C360,178 363,132 369,132
+      C375,132 378,178 384,178
+      C396,178 402,158 414,158
+      C426,158 432,178 444,178
+      L479,178
+      C485,178 488,132 494,132
+      C500,132 503,178 509,178
+      C521,178 527,158 539,158
+      C545,158 550,164 554,168
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Repère T (panneau A) : deux motifs consécutifs, sommets des bosses hautes -->
+    <line x1="119" y1="132" x2="119" y2="225"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="244" y1="132" x2="244" y2="225"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="119" y1="230" x2="244" y2="230" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="119" y1="225" x2="119" y2="235" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="244" y1="225" x2="244" y2="235" stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="181.5" y="227" text-anchor="middle" font-size="12" font-style="italic"
+          font-weight="600" fill="var(--figure-accent)">T</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Lecture : y_M(t) (même motif, décalé de τ) + écart τ + même T + synthèse
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Motif de M : EXACTEMENT le motif de S, translaté de +45 en x (= τ), +180 en y -->
+    <path d="
+      M104,358
+      L149,358
+      C155,358 158,312 164,312
+      C170,312 173,358 179,358
+      C191,358 197,338 209,338
+      C221,338 227,358 239,358
+      L274,358
+      C280,358 283,312 289,312
+      C295,312 298,358 304,358
+      C316,358 322,338 334,338
+      C346,338 352,358 364,358
+      L399,358
+      C405,358 408,312 414,312
+      C420,312 423,358 429,358
+      C441,358 447,338 459,338
+      C471,338 477,358 489,358
+      L524,358
+      C530,358 533,312 539,312
+      C545,312 548,358 554,358
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Écart τ entre le motif de S (x=119) et le motif correspondant de M (x=164) —
+         neutre (ink-soft), pour le distinguer de T (accent) : τ décale, il ne change rien à T. -->
+    <line x1="119" y1="235" x2="119" y2="266"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="164" y1="266" x2="164" y2="300"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="119" y1="266" x2="164" y2="266" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+    <line x1="119" y1="261" x2="119" y2="271" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+    <line x1="164" y1="261" x2="164" y2="271" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+    <text x="141.5" y="257" text-anchor="middle" font-size="12" font-style="italic"
+          font-weight="600" fill="var(--figure-ink-soft)">τ</text>
+
+    <!-- Repère T (panneau B) : même construction, mêmes proportions que le repère T de S —
+         accent, pour montrer qu'il s'agit du MÊME T. -->
+    <line x1="164" y1="312" x2="164" y2="405"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="289" y1="312" x2="289" y2="405"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="164" y1="410" x2="289" y2="410" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="164" y1="405" x2="164" y2="415" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="289" y1="405" x2="289" y2="415" stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="226.5" y="407" text-anchor="middle" font-size="12" font-style="italic"
+          font-weight="600" fill="var(--figure-accent)">T</text>
+
+    <!-- Synthèse -->
+    <rect x="110" y="428" width="420" height="52" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="449" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)">le retard décale, il n'étire pas →</text>
+    <text x="320" y="468" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)">même période <tspan font-style="italic"
+          font-weight="600">T</tspan>, donc même <tspan font-style="italic"
+          font-weight="600">f</tspan> = 1/<tspan font-style="italic"
+          font-weight="600">T</tspan>.</text>
+  </g><!-- /step-3 -->
+
+</svg>

@@ -12,6 +12,8 @@ Voici ce qu'on observe réellement, si on filme la scène : le bouchon ne dériv
 
 Si tu avais prédit que le bouchon serait entraîné vers le bord, ta prédiction et la réalité se contredisent — c'est précisément cet écart qu'on va comprendre. Si tu avais deviné juste, la vraie question commence maintenant : la vague a bien transporté quelque chose jusqu'au bouchon — elle l'a fait bouger, elle lui a donné de l'énergie pour monter et descendre — mais elle ne lui a pas fait traverser l'étang. Qu'est-ce qui voyage, alors, si ce n'est pas l'eau elle-même ?
 
+[[figure:bouchon-oscille-sur-place]]
+
 C'est tout l'objet de cette leçon : comprendre ce qu'est une onde mécanique progressive, ce qui s'y propage réellement, et comment décrire ce voyage dans le temps et dans l'espace.
 
 ---
@@ -165,6 +167,8 @@ L'ensemble des points atteints par la perturbation au même instant s'appelle le
 | Une | Onde le long d'une corde tendue | Deux points, qui s'écartent de la source |
 | Deux | Vague à la surface de l'eau | Cercle qui s'agrandit |
 | Trois | Onde sonore dans l'air | Sphère qui s'agrandit |
+
+[[figure:front-onde-dimensions]]
 
 Rien de nouveau dans le mécanisme : c'est toujours la même propagation de proche en proche (R1) — seule la géométrie du milieu change le nombre de directions disponibles autour de la source.
 

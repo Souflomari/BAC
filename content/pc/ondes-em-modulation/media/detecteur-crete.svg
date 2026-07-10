@@ -1,0 +1,309 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 410" width="680" height="410"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Démodulation par détecteur de crête : le signal reçu s(t) (oscillation rapide, enveloppe entre 3V et 9V) ; puis sa version redressée par une diode, qui ne garde que l'alternance positive ; puis la tension u_C aux bornes du condensateur, qui charge presque instantanément à chaque sommet puis se décharge lentement jusqu'au suivant, retraçant ainsi l'enveloppe.">
+  <title>Le détecteur de crête — retrouver l'enveloppe</title>
+  <!--
+    detecteur-crete.svg — figure STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md
+    §2), R4 (ondes-em-modulation). Graphe -> toujours stagée (§2.5), mais
+    l'ordre exact demandé par le brief pédagogique BUNDLE axes+données en
+    step-1 (le signal DÉJÀ connu de R2/R3, le point de départ de la
+    démodulation), puis step-2 = la donnée nouvelle (redressement),
+    step-3 = la lecture (u_C, charge rapide / décharge lente). C'est un
+    écart assumé au patron "axes seules d'abord" d'effet-catalyseur.svg /
+    double-periodicite.svg : ici les axes ne sont PAS du chrome neutre,
+    elles portent déjà le signal connu — donc gated avec lui.
+
+    Reprend EXACTEMENT l'exemple numérique de R2/R3 (U0=6V, Sm=3V, donc
+    m=0,5, enveloppe 3V–9V) et EXACTEMENT la géométrie déjà calculée dans
+    modulation-amplitude.svg (même repère : axe s=0 à y=170, 1V=12px,
+    x_k=80+26k, k=0..18, rapport fp/fsignal SCHÉMATIQUEMENT réduit à 6 pour
+    la lisibilité — cf. la note de bas de figure, identique à
+    modulation-amplitude.svg). Copier ce tracé plutôt que d'en recalculer un
+    autre garde les deux figures visuellement cohérentes (même signal, deux
+    lectures).
+
+    ── step-2 : redressement (diode) ──
+    Le chemin cubique de s(t) est composé de 36 commandes C, 4 par
+    demi-période, groupées en motif répété KEEP,REMOVE,REMOVE,KEEP (KEEP =
+    l'arc traverse une alternance POSITIVE ; REMOVE = l'arc plonge dans
+    l'alternance négative, un creux). Le tracé redressé réutilise TOUS les
+    arcs KEEP tels quels, et remplace chaque paire REMOVE par une simple
+    ligne plate au niveau s=0 (y=170) entre les deux zéros qui l'encadrent —
+    exactement ce que fait une diode idéale (elle ne bloque rien pendant
+    l'alternance positive, elle coupe tout pendant l'alternance négative).
+    Aucune valeur n'est inventée : les zéros et les arcs KEEP sont ceux,
+    déjà calculés, de modulation-amplitude.svg.
+
+    ── step-3 : u_C (détecteur de crête) ──
+    u_C touche EXACTEMENT chaque sommet réel de s(t) (mêmes 10 points que
+    les crêtes positives du tracé redressé : x=80,132,184,236,288,340,392,
+    444,496,548 ; y=62,80,116,134,116,80,62,80,116,134 — la capacité se
+    charge, à chaque alternance positive, jusqu'à la valeur crête). Entre
+    deux sommets, u_C décroît par une courbe concave (contrôle proche du
+    sommet à faible décalage = démarrage raide de la décharge, contrôle
+    proche du sommet suivant à décalage large = la décharge ralentit,
+    "s'aplatit" avant d'être rattrapée) suivie d'un segment quasi vertical
+    jusqu'au sommet suivant (recharge quasi instantanée). Choix de
+    modélisation déclaré (le programme ne fixe aucune valeur de R ni C pour
+    ce détecteur, décrit purement qualitativement en R4) : décalage de
+    décharge fixe = 14px (~1,2V) par intervalle, indépendant du sens de
+    variation de l'enveloppe — un ondulation modeste et constante, assez
+    visible pour lire "charge rapide / décharge lente" sans prétendre à une
+    simulation RC précise.
+
+    Couleurs : s(t), signal redressé et u_C partagent tous --figure-accent
+    (une seule teinte distinctive) — la distinction entre étapes vient de
+    l'ATTÉNUATION automatique des étapes précédentes (StagedFigure.tsx,
+    opacity 0.55), pas d'un changement de couleur : on voit le fantôme du
+    signal d'origine sous le tracé redressé, et le fantôme du redressement
+    sous u_C. Axes / U0 / annotations neutres = --figure-ink-soft.
+    Le petit schéma diode+C+R (chrome, non-stagé — "n'est pas le contenu
+    stagé" par consigne du brief) reste sur les tokens --figure-* aussi.
+  -->
+
+  <!-- Titre (chrome) -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le détecteur de crête — retrouver l'enveloppe
+  </text>
+
+  <!-- Fond du panneau (chrome) -->
+  <rect x="32" y="32" width="616" height="272" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Note de bas de figure : rapport schématique divulgué (chrome, permanent) -->
+  <text x="340" y="351" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">(rapport f<tspan
+        dy="2" font-size="6.5">p</tspan><tspan
+        dy="-2">/f</tspan><tspan
+        dy="2" font-size="6.5">signal</tspan><tspan
+        dy="-2"> réduit ici pour la lisibilité, mêmes valeurs qu'en R2/R3 — cf. modulation-amplitude)</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — axes + le signal reçu s(t), déjà connu de R2/R3
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axes -->
+    <line x1="80" y1="170" x2="630" y2="170"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="630,170 618,165.5 618,174.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="296" x2="80" y2="44"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,44 75.5,56 84.5,56" fill="var(--figure-ink-soft)"/>
+    <text x="637" y="174" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="52" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u</text>
+    <text x="72" y="174" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Repère U0 (= 6 V -> y = 170 - 12*6 = 98) -->
+    <line x1="72" y1="98" x2="80" y2="98"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="66" y="102" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">U<tspan dy="2.5" font-size="7">0</tspan></text>
+
+    <!-- Enveloppe basse (pointillés, -E(t)) -->
+    <polyline points="
+      80,278 106,273.176 132,260 158,242 184,224 210,210.824 236,206
+      262,210.824 288,224 314,242 340,260 366,273.176 392,278
+      418,273.176 444,260 470,242 496,224 522,210.824 548,206
+    " fill="none" stroke="var(--figure-accent)" stroke-width="1.3"
+      stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Enveloppe haute (pointillés, +E(t)) -->
+    <polyline points="
+      80,62 106,66.824 132,80 158,98 184,116 210,129.176 236,134
+      262,129.176 288,116 314,98 340,80 366,66.824 392,62
+      418,66.824 444,80 470,98 496,116 522,129.176 548,134
+    " fill="none" stroke="var(--figure-accent)" stroke-width="1.3"
+      stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- s(t) — même tracé que modulation-amplitude.svg (36 arcs cubiques) -->
+    <path d="
+      M80,62
+      C84.68,62 89.88,95.75 93,170
+      C96.12,240.94 101.32,273.18 106,273.18
+      C110.68,273.18 115.88,240.94 119,170
+      C122.12,108.125 127.32,80 132,80
+      C136.68,80 141.88,108.125 145,170
+      C148.12,219.5 153.32,242 158,242
+      C162.68,242 167.88,219.5 171,170
+      C174.12,132.875 179.32,116 184,116
+      C188.68,116 193.88,132.875 197,170
+      C200.12,198.06 205.32,210.82 210,210.82
+      C214.68,210.82 219.88,198.06 223,170
+      C226.12,145.25 231.32,134 236,134
+      C240.68,134 245.88,145.25 249,170
+      C252.12,198.06 257.32,210.82 262,210.82
+      C266.68,210.82 271.88,198.06 275,170
+      C278.12,132.875 283.32,116 288,116
+      C292.68,116 297.88,132.875 301,170
+      C304.12,219.5 309.32,242 314,242
+      C318.68,242 323.88,219.5 327,170
+      C330.12,108.125 335.32,80 340,80
+      C344.68,80 349.88,108.125 353,170
+      C356.12,240.94 361.32,273.18 366,273.18
+      C370.68,273.18 375.88,240.94 379,170
+      C382.12,95.75 387.32,62 392,62
+      C396.68,62 401.88,95.75 405,170
+      C408.12,240.94 413.32,273.18 418,273.18
+      C422.68,273.18 427.88,240.94 431,170
+      C434.12,108.125 439.32,80 444,80
+      C448.68,80 453.88,108.125 457,170
+      C460.12,219.5 465.32,242 470,242
+      C474.68,242 479.88,219.5 483,170
+      C486.12,132.875 491.32,116 496,116
+      C500.68,116 505.88,132.875 509,170
+      C512.12,198.06 517.32,210.82 522,210.82
+      C526.68,210.82 531.88,198.06 535,170
+      C538.12,145.25 543.32,134 548,134
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="180" y="46" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">s(t) reçu, avant démodulation</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : le redressement par la diode (alternance
+       positive gardée, alternance négative supprimée)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M80,62
+      C84.68,62 89.88,95.75 93,170
+      L119,170
+      C122.12,108.125 127.32,80 132,80
+      C136.68,80 141.88,108.125 145,170
+      L171,170
+      C174.12,132.875 179.32,116 184,116
+      C188.68,116 193.88,132.875 197,170
+      L223,170
+      C226.12,145.25 231.32,134 236,134
+      C240.68,134 245.88,145.25 249,170
+      L275,170
+      C278.12,132.875 283.32,116 288,116
+      C292.68,116 297.88,132.875 301,170
+      L327,170
+      C330.12,108.125 335.32,80 340,80
+      C344.68,80 349.88,108.125 353,170
+      L379,170
+      C382.12,95.75 387.32,62 392,62
+      C396.68,62 401.88,95.75 405,170
+      L431,170
+      C434.12,108.125 439.32,80 444,80
+      C448.68,80 453.88,108.125 457,170
+      L483,170
+      C486.12,132.875 491.32,116 496,116
+      C500.68,116 505.88,132.875 509,170
+      L535,170
+      C538.12,145.25 543.32,134 548,134
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <line x1="220" y1="238" x2="220" y2="176" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="220" y="252" text-anchor="middle" font-size="10" fill="var(--figure-ink)">diode : ne garde que</text>
+    <text x="220" y="264" text-anchor="middle" font-size="10" fill="var(--figure-ink)">l'alternance positive</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : u_C — charge rapide, décharge lente,
+       l'enveloppe reconstituée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="
+      M80,62
+      C88,66 106,72 118,76
+      L132,80
+      C140,84 168,90 176,94
+      L184,116
+      C192,120 220,126 228,130
+      L236,134
+      C244,138 272,144 280,148
+      L288,116
+      C296,120 324,126 332,130
+      L340,80
+      C348,84 376,90 384,94
+      L392,62
+      C400,66 428,72 436,76
+      L444,80
+      C452,84 480,90 488,94
+      L496,116
+      C504,120 532,126 540,130
+      L548,134
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Annotation "charge rapide" — pointe la remontée quasi verticale vers le sommet à x=392 -->
+    <line x1="392" y1="62" x2="392" y2="44" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="392" y="38" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-ink)">charge rapide</text>
+
+    <!-- Annotation "décharge lente" — pointe la courbe de décroissance après le 1er sommet -->
+    <line x1="105" y1="72" x2="105" y2="44" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="105" y="38" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-ink)">décharge lente</text>
+
+    <!-- Étiquette de l'enveloppe reconstituée — la ligne part d'un point réel
+         du tracé de u_C (le sommet touché en x=496, y=116), pas d'un autre
+         élément (éviter toute ambiguïté visuelle) -->
+    <line x1="496" y1="116" x2="496" y2="182" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="496" y="196" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">u<tspan dy="2.5" font-size="7.5">C</tspan><tspan dy="-2.5"> ≈ U</tspan><tspan
+          dy="2.5" font-size="7.5">0</tspan><tspan dy="-2.5"> + s</tspan><tspan
+          dy="2.5" font-size="7.5">m</tspan><tspan dy="-2.5">(t)</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       Schéma inline du détecteur de crête (chrome, non-stagé — un
+       repère, pas le contenu enseigné par étapes)
+       ══════════════════════════════════════════════════════ -->
+  <text x="560" y="320" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">détecteur de crête (schéma)</text>
+
+  <!-- Entrée -->
+  <line x1="478" y1="355" x2="500" y2="355" stroke="var(--figure-ink)" stroke-width="1.4" stroke-linecap="round"/>
+  <text x="472" y="358" text-anchor="end" font-size="8.5" fill="var(--figure-ink-soft)">s(t)</text>
+
+  <!-- Diode (triangle + barre cathode) -->
+  <polygon points="500,346 500,364 520,355" fill="var(--figure-ink)" stroke="var(--figure-ink)" stroke-width="1"/>
+  <line x1="520" y1="345" x2="520" y2="365" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <text x="510" y="378" text-anchor="middle" font-size="8" fill="var(--figure-ink-soft)">diode</text>
+
+  <!-- Rail haut, du noeud diode au noeud de sortie -->
+  <line x1="520" y1="355" x2="600" y2="355" stroke="var(--figure-ink)" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="540" cy="355" r="2" fill="var(--figure-ink)"/>
+  <circle cx="565" cy="355" r="2" fill="var(--figure-ink)"/>
+
+  <!-- Branche C -->
+  <line x1="540" y1="355" x2="540" y2="365" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <line x1="533" y1="366" x2="547" y2="366" stroke="var(--figure-energy-C)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="533" y1="372" x2="547" y2="372" stroke="var(--figure-energy-C)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="540" y1="373" x2="540" y2="385" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <text x="524" y="372" text-anchor="end" font-size="8.5" font-style="italic" fill="var(--figure-energy-C)">C</text>
+
+  <!-- Branche R -->
+  <line x1="565" y1="355" x2="565" y2="362" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <rect x="559" y="362" width="12" height="20" rx="2" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+  <line x1="561" y1="368" x2="569" y2="368" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+  <line x1="561" y1="373" x2="569" y2="373" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+  <line x1="561" y1="378" x2="569" y2="378" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+  <line x1="565" y1="382" x2="565" y2="385" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <text x="578" y="375" text-anchor="start" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">R</text>
+
+  <!-- Rail bas commun (masse) -->
+  <line x1="540" y1="385" x2="565" y2="385" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <line x1="540" y1="385" x2="536" y2="391" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+  <line x1="540" y1="385" x2="544" y2="391" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+  <!-- Sortie u_C -->
+  <line x1="600" y1="355" x2="600" y2="385" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <polygon points="600,385 596.5,375 603.5,375" fill="var(--figure-ink-soft)"/>
+  <text x="608" y="373" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">u<tspan
+        dy="2.5" font-size="6">C</tspan></text>
+
+</svg>

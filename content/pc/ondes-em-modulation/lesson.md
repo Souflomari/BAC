@@ -54,6 +54,8 @@ $$\lambda = \frac{c}{f_p} = \frac{3{,}00\times10^{8}}{9{,}00\times10^{5}} \appro
 
 Le quart de cette longueur d'onde vaut environ $83\ \text{m}$ — une taille d'antenne tout à fait réalisable, comparable aux vrais mâts des stations de radio AM. En passant d'un signal à $1\ \text{kHz}$ à une onde à $900\ \text{kHz}$, la taille d'antenne nécessaire est divisée par $900$.
 
+[[figure:antenne-quart-onde]]
+
 ### La conclusion : il faut une porteuse
 
 Voilà pourquoi on ne peut pas rayonner directement la musique ou la voix : leurs fréquences sont bien trop basses pour qu'une antenne raisonnable les rayonne efficacement. La solution consiste à confier l'information à une onde de fréquence bien plus élevée — quelques centaines de kHz à quelques MHz —, une onde qu'on appelle la **porteuse**, et qui, elle, se rayonne très bien avec une antenne de taille humaine. La question devient alors : comment fait-on « porter » un signal basse fréquence par une porteuse haute fréquence, sans perdre l'information ? C'est l'objet du prochain rung.
@@ -184,6 +186,8 @@ Cette méthode ne fonctionne que si l'enveloppe représente fidèlement $s_m(t)$
 
 Reprends l'exemple de R2-R3 : l'enveloppe oscille entre $3\ \text{V}$ et $9\ \text{V}$, avec une période de $0{,}33\ \text{ms}$. Un détecteur de crête, branché sur ce signal, délivrerait une tension qui suit cette même enveloppe : elle démarre vers $9\ \text{V}$, redescend doucement vers $3\ \text{V}$ en environ une demi-période ($0{,}17\ \text{ms}$), remonte vers $9\ \text{V}$, et ainsi de suite — reconstituant, une fois l'offset $U_0=6\ \text{V}$ retiré, une tension oscillant entre $-3\ \text{V}$ et $+3\ \text{V}$ à $3\ \text{kHz}$ : exactement $s_m(t)$.
 
+[[figure:detecteur-crete]]
+
 ---
 
 ## R5 — Le circuit accordé : le retour au RLC
@@ -205,6 +209,8 @@ En choisissant $L$ et $C$ de sorte que $f_0$ coïncide exactement avec la fréqu
 On reste ici volontairement descriptif, au niveau où le programme le demande : ce phénomène de renforcement sélectif porte un nom, la **résonance**, mais on n'en fait pas ici une étude quantitative — pas de calcul de l'amplitude du signal en fonction de la fréquence, pas de déphasage (ça, c'est le régime sinusoïdal forcé, qui n'est pas étudié dans ce programme). Ce qu'il faut retenir, c'est uniquement le rôle fonctionnel : régler $C$ change $f_0$, et c'est la coïncidence $f_0 = f_p$ qui sélectionne la station.
 
 Concrètement, dans un poste de radio, $C$ est un **condensateur variable** : tourner le bouton de sélection des stations, c'est faire varier $C$, donc faire varier $f_0$, jusqu'à ce qu'il coïncide avec la porteuse de la station qu'on veut écouter. Le condensateur ne change évidemment rien à la fréquence émise par la station elle-même : il ne fait que régler la fréquence propre du récepteur pour qu'elle s'accorde avec elle.
+
+[[figure:circuit-accorde-selection]]
 
 ### Exemple numérique
 

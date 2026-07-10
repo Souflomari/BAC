@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Comparaison de Qr,i et K sur un axe logarithmique : l'axe est partitionné en trois zones - Qr,i inférieur à K donne le sens direct, Qr,i égal à K donne l'équilibre, Qr,i supérieur à K donne le sens inverse. Dans l'exemple travaillé de la pile Daniell, Qr,i vaut 0,10, très à gauche sur l'axe, tandis que K vaut environ 1,8 fois 10 puissance 37, très à droite - un écart d'environ 38 ordres de grandeur. Tant que Qr,i est inférieur à K, le système évolue dans le sens direct et Qr augmente en se rapprochant de K : c'est ce qui fait débiter la pile.">
+  <title>Comparer Qr,i à K : une échelle logarithmique</title>
+
+  <!--
+    qr-vs-k-echelle.svg — schéma STAGED (LESSON-EXPERIENCE-SPEC §2.5 :
+    schéma dont l'ordre des couches est un geste d'enseignement - poser le
+    critère générique, puis y ancrer les valeurs réelles, puis en tirer la
+    conséquence dynamique), 3 étapes, rung R2 (pile Daniell).
+
+    Pourquoi un axe LOGARITHMIQUE et pas linéaire (comme la figure sœur
+    content/pc/evolution-spontanee/media/critere-qr-k.svg ou
+    content/pc/etat-equilibre/media/critere-evolution-qr-k.svg, toutes deux
+    linéaires) : ici l'écart réel entre Qr,i = 0,10 et K ≈ 1,8×10^37 (rung
+    R2, exemple travaillé) est d'environ 38 ordres de grandeur - une échelle
+    linéaire rendrait Qr,i indiscernable de 0 et ne pourrait pas montrer les
+    deux valeurs sur le même axe fini. D'où le titre qui nomme l'échelle, et
+    des flèches OUVERTES aux deux bouts de l'axe (pas d'origine "0" : sur une
+    échelle logarithmique, Qr → 0 correspond à log(Qr) → -∞, donc il n'y a
+    pas de borne franche à gauche non plus).
+
+    Positions (SCHÉMATIQUES - pas une mise à l'échelle log₁₀ calculée pixel
+    pour pixel : le placement traduit fidèlement "Qr,i très à gauche" /
+    "K très à droite" / "l'écart est énorme", pas une graduation numérique
+    lisible sur l'axe - aucune valeur intermédiaire n'y est portée) :
+      Qr,i = 0,10   : x = 120  (près du bord gauche)
+      K ≈ 1,8×10^37 : x = 540  (près du bord droit)
+      axe           : y = 190, de x = 90 à x = 596 (+ flèches ouvertes aux
+                      deux extrémités, x = 78 à gauche, x = 608 à droite)
+
+    Rôle des couleurs :
+      le pivot K (tige, disque, étiquette "K", valeur numérique, note
+        d'équilibre) + le point Qr,i (tige, disque, étiquette numérique) +
+        la flèche d'évolution du rung 3 : --figure-accent (le sujet : LA
+        comparaison Qr,i / K, du critère générique jusqu'à sa conséquence).
+      axe, flèches d'axe, bandes de zone, en-têtes "sens direct"/"sens
+        inverse" et leurs inégalités, ligne de cote de l'écart : --figure-ink
+        / --figure-ink-soft (chrome et texte de contexte, jamais le focus).
+
+    Mise en étapes (reprend l'ordre du rung R2 : poser le critère générique
+    d'abord, puis l'exemple numérique, puis la conséquence - "tant que
+    Qr,i < K, la pile débite") :
+      step-1 : l'axe seul, partitionné en trois - Qr,i < K → sens direct,
+               Qr,i = K → équilibre (le pivot K, générique, sans valeur
+               chiffrée), Qr,i > K → sens inverse.
+      step-2 : les deux marques de l'exemple travaillé - Qr,i = 0,10 épinglé
+               à gauche, K ≈ 1,8×10^37 épinglé à droite (valeur ajoutée au
+               pivot déjà posé), et une ligne de cote qui rend l'écart
+               explicite (≈ 38 ordres de grandeur).
+      step-3 : la flèche d'évolution - Qr,i grimpe vers la droite, vers K, à
+               mesure que la pile débite ; tant que Qr,i < K, elle continue.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — l'axe, partitionné en trois zones
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Comparer <tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8.5">r,i</tspan><tspan dy="-3"> et </tspan><tspan font-style="italic">K</tspan><tspan> (échelle logarithmique)</tspan>
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="20" y="32" width="600" height="250" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Bandes de zone (partition visuelle, avant tout point réel) ─ -->
+    <rect x="94" y="176" width="446" height="28" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.08"/>
+    <rect x="540" y="176" width="68" height="28" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.08"/>
+
+    <!-- ── Axe des Qr — ouvert aux deux bouts (log, pas d'origine) ──── -->
+    <line x1="90" y1="190" x2="596" y2="190"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="608,190 596,185.5 596,194.5" fill="var(--figure-ink-soft)"/>
+    <polygon points="78,190 90,185.5 90,194.5" fill="var(--figure-ink-soft)"/>
+    <text x="616" y="194" font-size="12" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8">r</tspan></text>
+
+    <!-- ── Pivot K : posé génériquement, sans valeur chiffrée ───────── -->
+    <line x1="540" y1="176" x2="540" y2="204"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <circle cx="540" cy="190" r="3.6" fill="var(--figure-accent)"/>
+    <text x="551" y="194" font-style="italic" font-weight="600"
+          font-size="14" fill="var(--figure-accent)">K</text>
+    <text x="540" y="222" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+          >(<tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7">r,i</tspan><tspan dy="-3"> = </tspan><tspan font-style="italic">K</tspan><tspan>)</tspan></text>
+    <text x="540" y="236" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+          >→ équilibre</text>
+
+    <!-- ── Zone gauche : sens direct ─────────────────────────────── -->
+    <text x="315" y="64" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">sens direct</text>
+    <text x="315" y="82" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan><tspan dy="-3"> &lt; </tspan><tspan font-style="italic">K</tspan></text>
+
+    <!-- ── Zone droite : sens inverse ────────────────────────────── -->
+    <text x="574" y="64" text-anchor="middle" font-size="11.5" font-weight="600"
+          fill="var(--figure-ink)">sens inverse</text>
+    <text x="574" y="82" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan><tspan dy="-3"> &gt; </tspan><tspan font-style="italic">K</tspan></text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les deux marques de l'exemple travaillé + l'écart
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- Point Qr,i = 0,10, épinglé loin à gauche -->
+    <line x1="120" y1="176" x2="120" y2="204"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <circle cx="120" cy="190" r="3.6" fill="var(--figure-accent)"/>
+    <text x="120" y="150" text-anchor="middle" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8">r,i</tspan><tspan dy="-3"> = 0,10</tspan></text>
+
+    <!-- Valeur numérique de K, ajoutée au pivot déjà posé à l'étape 1 -->
+    <text x="540" y="148" text-anchor="middle" font-size="12.5" font-weight="600"
+          fill="var(--figure-accent)"
+          ><tspan font-style="italic">K</tspan><tspan> &#8776; 1,8&#215;10</tspan><tspan dy="-5" font-size="8">37</tspan></text>
+
+    <!-- Ligne de cote : l'écart entre les deux points, rendu explicite -->
+    <line x1="120" y1="165" x2="540" y2="165"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <line x1="120" y1="161" x2="120" y2="169" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <line x1="540" y1="161" x2="540" y2="169" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="330" y="153" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          >&#8776; 38 ordres de grandeur d&#8217;écart</text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la flèche d'évolution : Qr,i grimpe vers K
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <circle cx="124" cy="214" r="3" fill="var(--figure-accent)"/>
+    <line x1="124" y1="214" x2="450" y2="214"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="450,214 437,208.5 437,219.5" fill="var(--figure-accent)"/>
+
+    <text x="287" y="232" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          >Tant que <tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan><tspan dy="-3"> &lt; </tspan><tspan font-style="italic">K</tspan><tspan>, la pile débite</tspan></text>
+
+  </g><!-- /step-3 -->
+
+</svg>

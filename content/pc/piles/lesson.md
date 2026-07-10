@@ -84,6 +84,8 @@ $Q_{r,i} = 0{,}10$, et $K \approx 1{,}8\times10^{37}$ : $Q_{r,i}$ est plus petit
 
 Remarque ce que ce calcul révèle : avec un $K$ aussi écrasant, à peu près n'importe quel choix raisonnable de concentrations initiales donnerait le même verdict - $Q_{r,i}$ resterait très inférieur à $K$. C'est pour ça que la pile Daniell fonctionne toujours dans le même sens en pratique : ce n'est pas une propriété qu'on mémorise électrode par électrode, c'est la conséquence d'un $K$ extrêmement grand pour cette réaction.
 
+[[figure:qr-vs-k-echelle]]
+
 ---
 
 ## R3 — La polarité : cathode (borne +), anode (borne -)
@@ -145,6 +147,8 @@ Sur le schéma de la pile Daniell : la lame de zinc est plongée dans le bécher
 *Ce qu'on cherche ici, et pourquoi ce geste :* on identifie d'abord l'anode et la cathode (rung 3), puis on en déduit les deux sens de circulation dans le circuit extérieur - électrons, puis courant, dans cet ordre, parce que le sens des électrons est le sens physique réel, et le sens du courant s'en déduit par inversion.
 
 Le zinc (à gauche) est l'anode, borne $-$. Le cuivre (à droite) est la cathode, borne $+$. Dans le fil au-dessus des béchers : les électrons partent de la lame de zinc, traversent l'ampèremètre, et arrivent à la lame de cuivre - de gauche à droite. Le courant conventionnel, affiché par l'ampèremètre, circule en sens inverse : de la lame de cuivre vers la lame de zinc - de droite à gauche.
+
+[[figure:courant-vs-electrons]]
 
 ---
 
