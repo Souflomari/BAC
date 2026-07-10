@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="L'ATP : trois phosphates chargés négativement serrés bout à bout se repoussent électriquement, ce qui rend la molécule instable et riche en énergie. Une molécule d'eau rompt la liaison du dernier phosphate : l'ATP devient ADP plus phosphate libre Pi, et cette répulsion soulagée libère de l'énergie utilisable par la cellule — ATP plus H2O donne ADP plus Pi plus énergie. Enfin, une flèche de bouclage montre que l'ADP et le Pi sont aussitôt réassemblés en ATP grâce à l'énergie tirée du glucose par la respiration ou la fermentation : l'ATP circule en boucle, ce n'est jamais un stock.">
+  <title>L'ATP : une monnaie qui se dépense et se régénère aussitôt</title>
+
+  <!--
+    atp-hydrolyse-cycle.svg — figure STAGÉE, 3 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2), R1.
+
+    Placement : après le paragraphe qui clôt "Une monnaie, pas une
+    réserve" (le cycle ATP ⇌ ADP + Pi), avant l'aside des "dizaines de
+    kilogrammes d'ATP recyclés par jour".
+
+    Cible pédagogique : deux idées successives du texte.
+      (R1) pourquoi l'hydrolyse libère de l'énergie — la répulsion
+           électrique des 3 phosphates chargés (−), serrés bout à bout.
+      (R1, "Une monnaie, pas une réserve") l'ATP n'est JAMAIS stocké :
+           il circule en permanence entre forme chargée (ATP) et forme
+           déchargée (ADP + Pi), régénéré par l'énergie du glucose.
+
+    Mise en scène (deux molécules schématiques, panneau A → panneau B,
+    puis un bouclage) :
+      step-1 : panneau A seul — ATP : adénine, ribose, chaîne de 3
+               phosphates (cercles bout à bout, chacun "P−"), petits
+               glyphes de répulsion entre phosphates adjacents, bilan
+               "ATP — instable, riche en énergie".
+      step-2 : AJOUT — flèche "+ H2O" vers un panneau B : ADP (2
+               phosphates seulement) + un Pi détaché à part, un petit
+               éclat "énergie libérée", et l'équation-écho
+               ATP + H2O → ADP + Pi + énergie.
+      step-3 : AJOUT — anneaux accent autour des étiquettes "ATP" et
+               "ADP" + grande flèche de bouclage accent (ADP + Pi → ATP)
+               portant le label "énergie du glucose (respiration /
+               fermentation)" — la SEULE idée que cette figure marque en
+               accent (DESIGN-BIBLE §6 : une idée par figure) : la
+               régénération en boucle, jamais un stock.
+
+    Simplification pédagogique assumée : adénine et ribose sont des
+    formes génériques (rectangle / ellipse), pas des structures
+    chimiques réelles — hors du programme de ce rung, qui porte sur la
+    charge des phosphates et le bilan énergétique, pas sur la chimie
+    organique de la base azotée ou du sucre.
+  -->
+
+  <!-- Titre -->
+  <text x="380" y="22" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    L'ATP : une monnaie qui se dépense et se régénère aussitôt
+  </text>
+
+  <!-- ══════════════════════════ STEP 1 — la molécule d'ATP ══════════════════════ -->
+  <g id="step-1">
+    <!-- adénine -->
+    <rect x="30" y="118" width="66" height="42" rx="9"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="63" y="143" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">adénine</text>
+
+    <line x1="96" y1="140" x2="114" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <!-- ribose -->
+    <ellipse cx="138" cy="140" rx="26" ry="17"
+             fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="138" y="144" text-anchor="middle" font-size="9" fill="var(--figure-ink)">ribose</text>
+
+    <line x1="164" y1="140" x2="182" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <!-- chaîne de 3 phosphates, bout à bout (léger recouvrement = "serrés") -->
+    <circle cx="201" cy="140" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <circle cx="228" cy="140" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <circle cx="255" cy="140" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="201" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">P</text>
+    <text x="228" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">P</text>
+    <text x="255" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">P</text>
+    <text x="210" y="130" font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+    <text x="237" y="130" font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+    <text x="264" y="130" font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+
+    <!-- glyphes de répulsion : deux petites pointes divergentes à chaque jonction -->
+    <polygon points="203,115 213,111 213,119" fill="var(--figure-ink-soft)"/>
+    <polygon points="226,115 216,111 216,119" fill="var(--figure-ink-soft)"/>
+    <polygon points="230,115 240,111 240,119" fill="var(--figure-ink-soft)"/>
+    <polygon points="253,115 243,111 243,119" fill="var(--figure-ink-soft)"/>
+
+    <!-- accolade "3 phosphates (−)" -->
+    <line x1="187" y1="158" x2="269" y2="158" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="187" y1="154" x2="187" y2="158" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="269" y1="154" x2="269" y2="158" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="228" y="171" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">3 phosphates (−)</text>
+
+    <text x="150" y="207" text-anchor="middle" font-size="14" font-weight="700" fill="var(--figure-ink)">ATP</text>
+    <text x="150" y="224" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">instable — charges qui se repoussent</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════ STEP 2 — l'hydrolyse ══════════════════════ -->
+  <g id="step-2">
+    <!-- flèche "+ H2O" vers le panneau B -->
+    <path d="M270,133 Q365,72 460,133" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <polygon points="460,133 446,126 446,140" fill="var(--figure-ink-soft)"/>
+    <text x="365" y="76" text-anchor="middle" font-size="11" fill="var(--figure-ink)"
+          >+ <tspan font-style="italic">H</tspan><tspan dy="3" font-size="8">2</tspan><tspan dy="-3" font-style="italic">O</tspan></text>
+
+    <!-- panneau B : adénine + ribose (identiques) -->
+    <rect x="490" y="118" width="66" height="42" rx="9"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="523" y="143" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">adénine</text>
+
+    <line x1="556" y1="140" x2="574" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <ellipse cx="598" cy="140" rx="26" ry="17"
+             fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="598" y="144" text-anchor="middle" font-size="9" fill="var(--figure-ink)">ribose</text>
+
+    <line x1="624" y1="140" x2="642" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <!-- ADP : 2 phosphates seulement -->
+    <circle cx="661" cy="140" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <circle cx="688" cy="140" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="661" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">P</text>
+    <text x="688" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">P</text>
+    <text x="670" y="130" font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+    <text x="697" y="130" font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+
+    <text x="596" y="207" text-anchor="middle" font-size="14" font-weight="700" fill="var(--figure-ink)">ADP</text>
+    <text x="596" y="224" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">état plus stable, énergie libérée</text>
+
+    <!-- phosphate détaché : Pi -->
+    <path d="M688,152 Q706,164 716,172" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <polygon points="716,172 706,168 710,177" fill="var(--figure-ink-soft)"/>
+    <circle cx="716" cy="180" r="12" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="716" y="184" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-ink)"
+          ><tspan font-style="italic">P</tspan><tspan dy="3" font-size="8">i</tspan></text>
+    <text x="726" y="171" font-size="8" font-weight="700" fill="var(--figure-ink)">−</text>
+    <text x="716" y="202" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">phosphate libre</text>
+
+    <!-- éclat "énergie libérée" -->
+    <g stroke="var(--figure-ink)" stroke-width="1.3" stroke-linecap="round">
+      <line x1="615" y1="90" x2="615" y2="78"/>
+      <line x1="615" y1="90" x2="626" y2="82"/>
+      <line x1="615" y1="90" x2="604" y2="82"/>
+      <line x1="615" y1="90" x2="624" y2="98"/>
+      <line x1="615" y1="90" x2="606" y2="98"/>
+    </g>
+    <text x="627" y="93" font-size="9.5" font-weight="600" fill="var(--figure-ink)">énergie libérée</text>
+
+    <!-- équation-écho -->
+    <text x="385" y="255" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)"
+          >ATP + <tspan font-style="italic">H</tspan><tspan dy="3" font-size="8">2</tspan><tspan dy="-3" font-style="italic">O</tspan> → ADP + <tspan font-style="italic">P</tspan><tspan dy="3" font-size="8">i</tspan><tspan dy="-3"> + énergie</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════ STEP 3 — le bouclage (la monnaie circule) ══════════════════════ -->
+  <g id="step-3">
+    <!-- anneaux accent sur les deux nœuds du cycle -->
+    <rect x="95" y="192" width="110" height="28" rx="14"
+          fill="var(--figure-accent)" fill-opacity="0.1" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <rect x="541" y="192" width="110" height="28" rx="14"
+          fill="var(--figure-accent)" fill-opacity="0.1" stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <!-- flèche de bouclage : ADP + Pi → ATP -->
+    <path d="M596,220 C596,300 150,300 150,220" fill="none"
+          stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="150,220 143,232 157,232" fill="var(--figure-accent)"/>
+
+    <text x="373" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-accent)">énergie du glucose</text>
+    <text x="373" y="324" text-anchor="middle" font-size="10" font-weight="700" fill="var(--figure-accent)">(respiration / fermentation)</text>
+  </g><!-- /step-3 -->
+
+</svg>

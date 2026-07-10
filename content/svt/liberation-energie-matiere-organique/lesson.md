@@ -42,6 +42,8 @@ $$ADP + P_i + \text{énergie} \rightarrow ATP + H_2O$$
 
 utilise l'énergie extraite du glucose (par la respiration ou la fermentation, objets des rungs suivants) pour reformer de l'ATP à partir de l'ADP produit l'instant d'avant. L'ATP circule donc en permanence entre sa forme « chargée » (ATP) et sa forme « déchargée » ($ADP + P_i$), un peu comme une pièce de monnaie qu'on dépense puis qu'on regagne aussitôt — jamais accumulée en grande quantité, toujours en circulation. C'est exactement pour cette raison qu'on l'appelle la **monnaie énergétique** de la cellule : elle sert d'intermédiaire universel entre les réactions qui libèrent de l'énergie (respiration, fermentation) et celles qui en consomment (contraction musculaire, synthèses, transports actifs...), mais elle n'est jamais elle-même la réserve.
 
+[[figure:atp-hydrolyse-cycle]]
+
 On estime qu'un adulte au repos hydrolyse et régénère, en une seule journée, l'équivalent de plusieurs dizaines de kilogrammes d'ATP — alors que la quantité d'ATP présente à un instant donné dans tout son corps ne pèse que quelques dizaines de grammes. **Ce que révèle ce chiffre :** ce n'est pas un stock qu'on aurait sous-évalué, c'est la preuve que chaque molécule d'ATP est recyclée des centaines de fois par jour, et non stockée.
 
 ### L'erreur classique à éviter ici
@@ -71,6 +73,8 @@ La glycolyse coupe une molécule de glucose ($C_6H_{12}O_6$, 6 carbones) en deux
 $$4 - 2 = 2 \text{ ATP nets par molécule de glucose}$$
 
 et c'est ce chiffre, pas 4, qu'il faut retenir comme bilan de la glycolyse. Ce mécanisme de production directe d'ATP, sans intervention de la chaîne respiratoire, s'appelle la **phosphorylation au niveau du substrat** : le groupement phosphate est transféré directement d'une molécule intermédiaire vers l'ADP.
+
+[[figure:glycolyse-bilan-atp]]
 
 ### L'erreur classique à éviter ici
 
@@ -112,6 +116,8 @@ $$2 + 4 = 6$$
 
 exactement les 6 carbones du glucose de départ, désormais tous sous forme de $CO_2$. C'est précisément ce qu'on entend par **oxydation complète** du glucose : en présence de dioxygène, la cellule extrait la totalité du potentiel énergétique de la molécule de glucose, jusqu'au dernier carbone. Tu verras en R6 que ce n'est PAS le cas de la fermentation, qui s'arrête bien avant.
 
+[[figure:krebs-bilan-carbone]]
+
 ### Ce que la matrice ne fait pas encore
 
 Remarque bien : la matrice produit très peu d'ATP directement (seulement 2, par phosphorylation au niveau du substrat). L'essentiel de ce qu'elle produit, ce sont des coenzymes réduits — 8 $NADH,H^+$ et 2 $FADH_2$ au total (à ajouter aux 2 $NADH,H^+$ de la glycolyse). Ces coenzymes ne sont pas de l'ATP : ce sont des porteurs d'électrons, chargés d'énergie, en attente d'être « encaissés » — c'est l'objet du rung suivant.
@@ -141,6 +147,8 @@ Au bout de la chaîne, les électrons doivent bien finir quelque part : c'est le
 $$O_2 + 4e^- + 4H^+ \rightarrow 2H_2O$$
 
 **Pourquoi ce rôle est indispensable :** sans accepteur final, les électrons s'accumuleraient en bout de chaîne, qui se bloquerait — plus aucun transfert d'électrons ne serait possible, donc plus aucun pompage de $H^+$, donc plus aucune synthèse d'ATP par cette voie. Le dioxygène ne fabrique pas l'ATP lui-même : il ne fait que débloquer la chaîne en évacuant les électrons sous forme d'eau, ce qui permet à tout le processus de continuer à tourner. C'est cette dépendance stricte au dioxygène qui distingue la respiration cellulaire de la fermentation (R6).
+
+[[figure:chimiosmose-atp-synthase]]
 
 ### Pourquoi les crêtes mitochondriales
 

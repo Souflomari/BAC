@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 600"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Bilan carbone du cycle de Krebs, dans la matrice mitochondriale. Les 2 pyruvate à 3 carbones issus de la glycolyse entrent dans la matrice. Chacun est oxydé : il perd un carbone sous forme de CO2 et devient un acétyle à 2 carbones, tandis que 2 NADH,H+ sont chargés — 2 CO2 libérés au total à cette étape. L'acétyle rejoint ensuite un accepteur à 4 carbones pour former transitoirement une molécule à 6 carbones ; le cycle tourne deux fois, libère 4 CO2 de plus, régénère l'accepteur à 4 carbones, et charge 8 NADH,H+, 2 FADH2 et 2 ATP directs. Bilan carbone final : 2 plus 4 égale 6 CO2 — les 6 carbones du glucose de départ sont tous partis sous forme de CO2 : c'est une oxydation complète, contrairement à la fermentation.">
+  <title>Le cycle de Krebs : bilan carbone dans la matrice mitochondriale</title>
+
+  <!--
+    krebs-bilan-carbone.svg — figure STAGÉE, 4 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2), R3.
+
+    Placement : après "Ce que révèle ce comptage : une oxydation
+    complète" (juste après le calcul 2 + 4 = 6 dans le texte).
+
+    Reprend les conventions de la mitochondrie de respiration-
+    fermentation.svg (même leçon, R7) : une seule ellipse = l'organite,
+    "matrice" comme étiquette du compartiment — pas de crêtes ici (hors
+    sujet du R3, qui porte sur la matrice ; les crêtes/membrane interne
+    sont le sujet propre de chimiosmose-atp-synthase.svg, R4).
+
+    BAC-SCOPE : aucun intermédiaire de Krebs nommé (pas de citrate…) —
+    seulement "acétyle (2 C)" / "accepteur (4 C)" / "6 C" transitoire.
+
+    Mise en scène :
+      step-1 : ellipse (mitochondrie / matrice) + 2 pyruvate (3 C) hors de
+               l'ellipse, entrant dans la matrice.
+      step-2 : AJOUT — 2 acétyle (2 C) formés, jeton agrégé "2 CO2"
+               (avec flèche de sortie), jeton agrégé "2 NADH,H+".
+      step-3 : AJOUT — la boucle du cycle (anneau, badge "×2") :
+               acétyle + accepteur (4 C) → 6 C → régénère l'accepteur
+               (4 C), jeton "4 CO2 (2 tours)", jeton agrégé
+               "8 NADH,H+ + 2 FADH2", jeton "+2 ATP".
+      step-4 : AJOUT — bannière accent de synthèse "2 + 4 = 6 CO2" — la
+               SEULE idée que cette figure marque en accent
+               (DESIGN-BIBLE §6) : le compte total = oxydation complète.
+
+    Simplification pédagogique assumée : "acétyle", "accepteur (4 C)" et
+    "6 C" sont des jetons génériques de comptage de carbones, pas des
+    molécules nommées — le programme de ce rung porte sur le bilan
+    carbone et énergétique du cycle, pas sur l'identité chimique de ses
+    intermédiaires.
+  -->
+
+  <!-- Titre -->
+  <text x="380" y="24" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le cycle de Krebs : bilan carbone dans la matrice
+  </text>
+
+  <!-- ══════════════════════════ STEP 1 — la mitochondrie, entrée des pyruvate ══════════════════════ -->
+  <g id="step-1">
+    <ellipse cx="380" cy="260" rx="270" ry="195"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="380" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">mitochondrie</text>
+    <text x="380" y="116" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">matrice</text>
+    <text x="560" y="90" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">(<tspan font-style="italic">O</tspan><tspan dy="3" font-size="7">2</tspan><tspan dy="-3"> présent)</tspan></text>
+
+    <rect x="10" y="200" width="95" height="42" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="57" y="220" text-anchor="middle" font-size="10" fill="var(--figure-ink)">pyruvate</text>
+    <text x="57" y="236" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">(3 <tspan font-style="italic">C</tspan>)</text>
+
+    <rect x="10" y="330" width="95" height="42" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="57" y="350" text-anchor="middle" font-size="10" fill="var(--figure-ink)">pyruvate</text>
+    <text x="57" y="366" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">(3 <tspan font-style="italic">C</tspan>)</text>
+
+    <path d="M105,221 Q140,225 172,240" fill="none" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="172,240 159,233 159,245" fill="var(--figure-ink)"/>
+    <path d="M105,351 Q140,335 172,320" fill="none" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="172,320 159,313 159,325" fill="var(--figure-ink)"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════ STEP 2 — oxydation des pyruvate ══════════════════════ -->
+  <g id="step-2">
+    <rect x="170" y="222" width="90" height="36" rx="7"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="215" y="244" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--figure-ink)">acétyle (2 <tspan font-style="italic">C</tspan>)</text>
+
+    <rect x="170" y="302" width="90" height="36" rx="7"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="215" y="324" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--figure-ink)">acétyle (2 <tspan font-style="italic">C</tspan>)</text>
+
+    <!-- jeton agrégé : 2 CO2 libérés -->
+    <path d="M260,280 Q290,220 239,174" fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <polygon points="239,174 246,187 233,186" fill="var(--figure-ink)"/>
+    <circle cx="215" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="215" y="154" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)"
+          >2 <tspan font-style="italic">CO</tspan><tspan dy="3" font-size="7.5">2</tspan></text>
+    <path d="M215,126 Q170,100 150,90" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="150,90 163,90 158,101" fill="var(--figure-ink-soft)"/>
+
+    <!-- jeton agrégé : 2 NADH,H+ (hexagone — forme distincte de l'ATP) -->
+    <polygon points="258,190 275,174 325,174 343,190 325,206 275,206"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <text x="300" y="192" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--figure-ink)"
+          >2 <tspan font-style="italic">NADH</tspan>,<tspan font-style="italic">H</tspan><tspan dy="-4" font-size="6.5">+</tspan></text>
+    <path d="M260,240 Q272,215 275,196" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <path d="M260,320 Q280,260 275,208" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════ STEP 3 — le cycle tourne deux fois ══════════════════════ -->
+  <g id="step-3">
+    <!-- flèche d'entrée : acétyle → cycle -->
+    <path d="M260,320 Q300,340 355,350" fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <polygon points="355,350 342,344 342,356" fill="var(--figure-ink)"/>
+
+    <!-- anneau du cycle -->
+    <circle cx="420" cy="350" r="65" fill="none" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="420" cy="350" r="19" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="420" y="356" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-ink-soft)">×2</text>
+
+    <!-- petite pointe indiquant le sens de rotation -->
+    <polygon points="440,281 428,275 428,289" fill="var(--figure-ink)"/>
+
+    <circle cx="420" cy="285" r="4" fill="var(--figure-ink)"/>
+    <text x="420" y="264" text-anchor="middle" font-size="9" fill="var(--figure-ink)">acétyle (2 <tspan font-style="italic">C</tspan>)</text>
+    <text x="420" y="277" text-anchor="middle" font-size="9" fill="var(--figure-ink)">+ accepteur (4 <tspan font-style="italic">C</tspan>)</text>
+
+    <circle cx="485" cy="350" r="4" fill="var(--figure-ink)"/>
+    <text x="508" y="354" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)">6 <tspan font-style="italic">C</tspan></text>
+
+    <circle cx="420" cy="415" r="4" fill="var(--figure-ink)"/>
+    <text x="420" y="432" text-anchor="middle" font-size="9" font-weight="600" fill="var(--figure-ink)">accepteur (4 <tspan font-style="italic">C</tspan>)</text>
+    <text x="420" y="446" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">régénéré</text>
+
+    <!-- 4 CO2 (sur 2 tours) -->
+    <path d="M455,395 Q500,405 536,410" fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <polygon points="536,410 524,404 523,416" fill="var(--figure-ink)"/>
+    <circle cx="560" cy="410" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="560" y="414" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)"
+          >4 <tspan font-style="italic">CO</tspan><tspan dy="3" font-size="7.5">2</tspan></text>
+    <text x="560" y="442" text-anchor="middle" font-size="8" fill="var(--figure-ink-soft)">(2 tours)</text>
+
+    <!-- coenzymes chargés (agrégat) -->
+    <path d="M455,320 Q475,308 495,300" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="495,300 520,281 600,281 625,300 600,319 520,319"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <text x="560" y="297" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)"
+          >8 <tspan font-style="italic">NADH</tspan>,<tspan font-style="italic">H</tspan><tspan dy="-4" font-size="7">+</tspan></text>
+    <text x="560" y="311" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)"
+          >+ 2 <tspan font-style="italic">FADH</tspan><tspan dy="3" font-size="7">2</tspan></text>
+
+    <!-- 2 ATP directs -->
+    <path d="M455,305 Q495,270 525,251" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <rect x="525" y="237" width="70" height="26" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="560" y="255" text-anchor="middle" font-size="10" font-weight="700" fill="var(--figure-ink)">+2 ATP</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════ STEP 4 — bilan carbone : oxydation complète ══════════════════════ -->
+  <g id="step-4">
+    <rect x="110" y="480" width="540" height="84" rx="12"
+          fill="var(--figure-accent)" fill-opacity="0.1" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <text x="380" y="510" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-accent)"
+          >2 + 4 = 6 <tspan font-style="italic">CO</tspan><tspan dy="3" font-size="10">2</tspan></text>
+    <text x="380" y="532" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">= les 6 carbones du glucose de départ</text>
+    <text x="380" y="550" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-accent)">oxydation complète (≠ fermentation, R6)</text>
+  </g><!-- /step-4 -->
+
+</svg>
