@@ -122,6 +122,8 @@ Imagine qu'on branche, à la place de l'ampèremètre, un générateur réglé s
 
 Règle-le maintenant sur $U = 6\ \text{V}$, toujours en opposition. Cette tension dépasse largement $E \approx 1{,}1\ \text{V}$ : le générateur impose son propre sens, et c'est exactement la situation décrite dans l'accroche - le zinc se dépose, le cuivre se dissout.
 
+[[figure:seuil-tension-electrolyse]]
+
 ### Teste l'idée avant de la croire : « n'importe quel générateur suffit à inverser le sens »
 
 Un générateur branché en opposition au sens spontané, même s'il ne fait au départ qu'affaiblir légèrement le courant, pourrait laisser croire que l'inversion est déjà en cours - comme si tout générateur, aussi faible soit-il, produisait forcément un peu de sens inverse.
@@ -205,6 +207,8 @@ Les $4\,H^+$ et les $4\,e^-$ s'annulent exactement dans la somme, et il reste le
 $$2\,H_2O \rightarrow 2\,H_2 + O_2$$
 
 L'eau ne se décompose jamais spontanément en dihydrogène et dioxygène gazeux dans les conditions ordinaires - c'est précisément une transformation non spontanée, qu'on force ici grâce au générateur.
+
+[[figure:electrolyse-eau-cellule]]
 
 ### Le dépôt métallique - galvanoplastie
 

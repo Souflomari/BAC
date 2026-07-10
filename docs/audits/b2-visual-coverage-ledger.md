@@ -43,7 +43,7 @@ rule, carried forward here).
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
-| P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | judged (13 STAGE / 15 DECLINE), build in progress |
+| P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
@@ -361,5 +361,34 @@ rule, carried forward here).
 
 **Wave P2 judgment tally: 13 STAGE / 15 DECLINE** (28 chapters judged).
 
-**Build:** in progress.
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| dipole-rl | bobine-modele-rl | R1 | 3 |
+| dipole-rl | bilan-puissance-energie | R4 | 3 |
+| dipole-rl | oscillogramme-exercice | R5 | 3 |
+| electrolyse | seuil-tension-electrolyse | R3 | 3 |
+| electrolyse | electrolyse-eau-cellule | R5 | 4 |
+| esterification-hydrolyse | condensation-ester | R1 | 3 |
+| esterification-hydrolyse | vitesses-equilibre-dynamique | R2 | 3 |
+| esterification-hydrolyse | catalyse-meme-palier | R4 | 3 |
+| esterification-hydrolyse | qr-k-deplacement | R5 | 3 |
+| etat-equilibre | jauge-avancement-tau | R2 | 3 |
+| etat-equilibre | critere-evolution-qr-k | R5 | 3 |
+| evolution-spontanee | transfert-direct-chaleur | R3 | 3 |
+| evolution-spontanee | direct-vs-pile | R4 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×13 new SVGs (all clean; `electrolyse-eau-cellule` deliberately reuses R2's `liquid-grad` gradient for family coherence, gradient stops are token-based)
+- App-code fix: added `electrolyse-eau-cellule` to `MediaDiagram.tsx`'s `STRUCTURAL_SLUGS` (same width-capped cell-schema family as the already-listed `cellule-electrolyse` — flagged by the build agent, applied during verification)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `electrolyse` R5 `electrolyse-eau-cellule`: width-cap confirmed, 2:1 gas-ratio panel and ⇌/→ notation correct. `esterification-hydrolyse` R5 `qr-k-deplacement`: stacked-fraction Qr, K pivot, sens-direct/répétable annotations all read cleanly
+- Notable build-agent self-correction: esterification-hydrolyse's agent initially drafted `condensation-ester` as stacked panels, discovered the `VERTICALLY_STACKED_PANELS` allowlist dependency on its own, and rebuilt as a single persistent panel — no app-code change needed for it
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 23/47 lessons done, 138/266 chapters judged, 70 STAGE / 68 DECLINE.**
 

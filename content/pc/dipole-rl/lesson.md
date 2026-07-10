@@ -43,6 +43,8 @@ Cette expression a deux morceaux, et chacun raconte une histoire différente.
 
 **Le terme $L\dfrac{di}{dt}$** est ce qui rend la bobine différente d'un simple résistor. Il ne dépend pas du courant lui-même, mais de sa **vitesse de variation**. Si le courant est constant, $\dfrac{di}{dt} = 0$, et ce terme disparaît entièrement — la bobine se comporte alors comme un simple résistor de résistance $r$, rien de plus. Mais dès que le courant varie, ce terme apparaît, et il est d'autant plus grand que le courant varie vite.
 
+[[figure:bobine-modele-rl]]
+
 ### Le sens physique : une inertie électrique
 
 Pourquoi ce terme existe-t-il ? Le mécanisme est le suivant : le courant qui traverse la bobine crée un champ magnétique à l'intérieur de l'enroulement. Quand ce courant varie, ce champ varie aussi — et cette variation induit, dans la bobine elle-même, une tension qui s'oppose à ce qui la cause. C'est l'auto-induction : la bobine réagit à ses propres variations de courant en générant une tension qui les freine.
@@ -209,6 +211,8 @@ Chaque terme raconte où va la puissance fournie par le générateur, $Ei$ :
 - $Ri^2$ est la puissance dissipée par effet Joule dans la résistance totale — définitivement perdue en chaleur.
 - $Li\dfrac{di}{dt}$ est ce qui reste. Ce n'est pas dissipé : c'est ce que la bobine **emmagasine**.
 
+[[figure:bilan-puissance-energie]]
+
 ### Pourquoi $Li\dfrac{di}{dt}$ est une énergie stockée : $E_L = \frac{1}{2}Li^2$
 
 Le terme $Li\dfrac{di}{dt}$ se reconnaît : c'est exactement la dérivée par rapport au temps de $\dfrac{1}{2}Li^2$. Vérifions-le en dérivant cette expression :
@@ -247,6 +251,8 @@ Cette énergie reste emmagasinée dans la bobine tant que le courant de $100\ \t
 ### Exercice de type bac (original — entraînement, non un sujet officiel)
 
 On réalise le montage suivant : un générateur idéal de f.é.m. $E = 12\ \text{V}$, un interrupteur $K$, un résistor $R_0 = 90\ \Omega$ et une bobine d'inductance $L$ et de résistance interne $r = 10\ \Omega$, tous en série. On ferme $K$ à $t = 0$ et on enregistre $i(t)$ à l'oscilloscope. La courbe montre un courant qui croît de $0$ vers une asymptote horizontale $I_{max} = 120\ \text{mA}$, et la tangente à l'origine coupe cette asymptote à $t = 4\ \text{ms}$.
+
+[[figure:oscillogramme-exercice]]
 
 **1) Vérifier la valeur de $I_{max}$ lue sur la courbe à partir des données du circuit.**
 

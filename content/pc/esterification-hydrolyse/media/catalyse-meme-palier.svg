@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 315" width="640" height="315"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Taux d'avancement τ(t) pour deux flacons du même mélange équimolaire (K=4) : le flacon B (reflux + acide sulfurique) monte vite et atteint le palier τ = 2/3 ≈ 0,667 en environ une heure ; le flacon A (température ambiante, sans catalyseur) monte lentement et atteint le même palier après plusieurs jours — l'axe des temps est brisé pour faire tenir ces deux échelles radicalement différentes sur le même graphe. Les deux flacons rejoignent la même composition finale : accélérer n'est pas déplacer.">
+  <title>Catalyseur et chauffage : même palier, à des instants radicalement différents</title>
+  <!--
+    catalyse-meme-palier.svg — graphe STATIQUE et QUALITATIF de τ(t) pour
+    les deux flacons du rung R4 (même mélange équimolaire, K=4 — le même
+    système que rendement-esterification.svg, revisité). Comme dans ce
+    chapitre aucune loi cinétique n'est donnée (R4 : « plusieurs jours »
+    sans catalyseur, « environ une heure » avec catalyseur + chauffage —
+    aucun chiffre précis), l'axe des temps ne porte NI graduation NI unité
+    numérique — seul le fait qualitatif compte (même choix déclaré que
+    rendement-esterification.svg).
+
+    AXE DES TEMPS BRISÉ (choix structural explicite, demandé par le brief) :
+    un même repère continu ne peut pas représenter fidèlement « une heure »
+    et « plusieurs jours » sans écraser l'un des deux tracés. L'axe t est
+    donc coupé en deux segments, avec un symbole de rupture (deux traits
+    obliques) entre les deux :
+      segment 1 (x=80..240)   : échelle réelle, la première heure environ —
+        assez de place pour voir le flacon B monter ET plafonner.
+      RUPTURE (x=240..272)    : le temps qui s'écoule ici n'est PAS dessiné
+        à l'échelle — on saute directement à « plusieurs jours plus tard ».
+      segment 2 (x=272..610)  : échelle compressée, les jours suivants —
+        assez de place pour voir le flacon A monter lentement jusqu'au
+        même palier.
+    Cette rupture explique pourquoi la courbe du flacon A a un VRAI trou
+    visuel à la coupure (elle « saute » par-dessus les jours non montrés),
+    alors que la courbe du flacon B, déjà à son palier avant la rupture,
+    continue en trait plein et plat au travers : la rupture ne change rien
+    pour B, elle est tout l'enjeu pour A.
+
+    Géométrie (calculée, polylignes, jamais devinée) :
+      origine (t=0, τ=0)     : (80, 230)   — commune aux deux flacons
+      sommet axe τ (τ=1)     : (80, 50)    → hauteur pleine = 180 px
+                                (même échelle EXACTE que
+                                rendement-esterification.svg, pour que la
+                                ligne τ=2/3 tombe au même y=110 dans les
+                                deux figures de ce chapitre — cohérence
+                                visuelle voulue, même si seul τ jusqu'à
+                                ≈0,7 est réellement utilisé ici)
+      palier commun τ = 2/3  : y = 230 - 180×(2/3) = 110  (ligne de référence)
+
+      Flacon B (segment 1, x=80..240) : τ/[.]{2/3} = 1 - e^(-t/40), t=x-80,
+        pas=20px — approche rapide, ~plafonné dès x=200 (t=120, 4·τ_facteur).
+        Continue en trait plein, MÊME FORMULE (t=x-80, non brisée pour B —
+        B ne « voit » pas la rupture, il est déjà à son palier), jusqu'à
+        x=610.
+      Flacon A (segment 1, x=80..240) : τ/[.]{2/3} = 1 - e^(-t/2000), t=x-80
+        — quasi plat (montée < 5 % de la hauteur totale sur ce segment :
+        progrès négligeable en une heure face à des jours nécessaires).
+        (segment 2, x=272..610) : REPART d'une origine LOCALE au point de
+        rupture, τ/[.]{2/3} = 1 - e^(-t'/85), t'=x-272 — approche du même
+        palier 2/3, cette fois sur l'échelle compressée des jours suivants.
+
+    Rôle des couleurs :
+      flacon B (reflux + H2SO4, s'arrête vite)   : --figure-ink
+      flacon A (ambiante, sans catalyseur)        : --figure-ink-soft
+      axes, symbole de rupture, "0", étiquettes
+        d'échelle temporelle (« ≈ 1 h » / « plusieurs jours »)
+                                                    : --figure-ink-soft
+      ligne de référence τ=2/3, son étiquette « même composition finale »,
+        les deux marqueurs de palier, la boîte de lecture
+                                                    : --figure-accent
+        (le seul foyer : LA valeur commune atteinte par les deux flacons)
+
+    STAGED (LESSON-EXPERIENCE-SPEC §2.5 — graphe, toujours staged, ordre
+    canonique axes → données → lecture) :
+      step-1 : les axes — y compris l'axe des temps brisé et la ligne de
+               référence τ=2/3 posée d'emblée (comme le pivot K de
+               critere-qr-k.svg, cette valeur commune est établie AVANT
+               qu'aucune des deux expériences ne soit tracée, puisque
+               c'est elle qui donne son sens à toute la comparaison).
+      step-2 : les données — les deux courbes (flacon A, flacon B),
+               étiquetées directement.
+      step-3 : la lecture — les deux marqueurs de palier sur la ligne de
+               référence, et la boîte « même τ ≈ 0,667 / accélération, pas
+               déplacement ».
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes (axe des temps brisé + palier commun posé)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Deux flacons, le même palier — à des instants radicalement différents
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="230" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axe τ (vertical) ──────────────────────────────────── -->
+    <line x1="80" y1="230" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">τ</text>
+    <text x="72" y="234" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- ── Axe t (horizontal), BRISÉ ─────────────────────────── -->
+    <line x1="80" y1="230" x2="240" y2="230"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="272" y1="230" x2="610" y2="230"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,230 598,225.5 598,234.5" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="234" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+
+    <!-- Symbole de rupture d'échelle -->
+    <line x1="248" y1="237" x2="256" y2="223"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="260" y1="237" x2="268" y2="223"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Étiquettes d'échelle temporelle, une par segment -->
+    <text x="160" y="246" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">flacon B : &#8776; 1 h</text>
+    <text x="440" y="246" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">flacon A : plusieurs jours</text>
+
+    <!-- Ligne de référence : le palier commun, posé d'emblée -->
+    <line x1="80" y1="110" x2="610" y2="110"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="76" y1="110" x2="84" y2="110"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="70" y="114" text-anchor="end" font-size="10.5"
+          fill="var(--figure-accent)">2/3</text>
+    <text x="552" y="95" text-anchor="middle" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">même composition finale</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : les deux courbes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!--
+      Flacon B — τ/[.]{2/3} = 1 - e^(-t/40), t=x-80, pas=20px sur le
+      segment 1, puis continue EN UNE SEULE COURBE (formule non brisée,
+      B ne voit pas la rupture) jusqu'au bord droit.
+    -->
+    <path d="
+      M80,230
+      L100,182.78 L120,154.15 L140,136.77 L160,126.24 L180,119.85
+      L200,115.98 L220,113.62 L240,112.20
+      L272,110.99 L340,110.18 L610,110.00
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!--
+      Flacon A — segment 1 : τ/[.]{2/3} = 1 - e^(-t/2000), t=x-80, quasi
+      plat (progrès négligeable en une heure). TROU visuel à la rupture :
+      segment 2 repart d'une origine locale, τ/[.]{2/3} = 1 - e^(-t'/85),
+      t'=x-272, pour rejoindre le même palier sur l'échelle des jours.
+    -->
+    <path d="M80,230 L120,227.62 L160,225.30 L200,223.02 L240,220.77"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="
+      M272,220.00
+      L320,172.52 L360,149.07 L400,134.40 L440,125.25 L480,119.52
+      L520,115.94 L560,113.71 L600,112.32 L610,112.07
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Étiquettes directes -->
+    <text x="150" y="85" font-size="11" fill="var(--figure-ink)">flacon B — reflux + H<tspan
+          dy="4" font-size="7.5">2</tspan><tspan dy="-4">SO</tspan><tspan
+          dy="4" font-size="7.5">4</tspan></text>
+    <text x="420" y="178" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">flacon A — ambiante, sans catalyseur</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : même τ, instants radicalement différents
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Marqueur : le flacon B plafonne dès le segment 1 (~1 h) -->
+    <circle cx="230" cy="112.6" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Marqueur : le flacon A ne plafonne qu'en fin de segment 2 (jours) -->
+    <circle cx="600" cy="112.32" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Boîte de lecture -->
+    <rect x="250" y="54" width="210" height="46" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="355" y="72" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">même τ &#8776; 0,667</text>
+    <text x="355" y="88" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">accélération, pas déplacement</text>
+  </g><!-- /step-3 -->
+
+</svg>

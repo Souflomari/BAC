@@ -103,6 +103,8 @@ $$[Fe^{3+}]_{eq} = [SCN^-]_{eq} = c_0 - [FeSCN^{2+}]_{eq} = 2{,}0 \times 10^{-3}
 
 La transformation est nettement **limitée** : réactifs et produit coexistent à l'équilibre, dans des proportions comparables. Garde ces trois concentrations - elles reviennent dans les rungs suivants.
 
+[[figure:jauge-avancement-tau]]
+
 ---
 
 ## R3 — Le quotient de réaction $Q_r$ et son évolution au cours du temps
@@ -226,6 +228,8 @@ Reprends l'équilibre de l'expérience 1 (rungs 2 et 4) : $[Fe^{3+}]_{eq}=[SCN^-
 $$Q_{r,i} = \frac{1{,}2\times10^{-3}}{0{,}8\times10^{-3}\times2{,}8\times10^{-3}} \approx 5{,}4\times10^2$$
 
 $Q_{r,i} \approx 5{,}4\times10^2$, très inférieur à $K = 1875$ : le critère prédit une évolution dans le sens direct - davantage de complexe $FeSCN^{2+}$ va se former, jusqu'à ce que $Q_r$ rejoigne $K$. C'est exactement l'intensification de couleur observée en R0 : pas une coïncidence, mais la conséquence directe de la comparaison entre $Q_{r,i}$ et $K$.
+
+[[figure:critere-evolution-qr-k]]
 
 ---
 

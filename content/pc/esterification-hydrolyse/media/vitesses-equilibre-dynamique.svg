@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 315" width="640" height="315"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Vitesses d'estérification et d'hydrolyse en fonction du temps : v(estérification) part d'une valeur élevée et diminue, v(hydrolyse) part de presque zéro et augmente ; les deux courbes se rapprochent jusqu'à devenir indiscernables à une valeur commune non nulle, marquée par un repère vertical à l'instant t_éq — l'équilibre dynamique, où les deux réactions continuent à la même vitesse.">
+  <title>v(estérification) et v(hydrolyse) — vers l&#8217;équilibre dynamique</title>
+  <!--
+    vitesses-equilibre-dynamique.svg — graphe STATIQUE et QUALITATIF des
+    vitesses v_estérification(t) (décroissante) et v_hydrolyse(t)
+    (croissante), pour le mélange acide + alcool du rung R2. Aucune valeur
+    numérique de vitesse n'est donnée dans ce chapitre (R2 reste
+    volontairement qualitatif — l'outil chiffré n'arrive qu'au rung R3, et
+    porte sur Qr/K, pas sur des vitesses) : l'axe v ne porte donc AUCUNE
+    graduation numérique, seul le fait qualitatif compte — même choix
+    déclaré que rendement-esterification.svg / avancement-limite.svg pour
+    ce chapitre et le précédent.
+
+    Point pédagogique central (R2 du texte) : les deux vitesses évoluent en
+    sens opposé — v_estérification diminue (l'acide et l'alcool se
+    raréfient), v_hydrolyse augmente (l'ester et l'eau s'accumulent) —
+    jusqu'à devenir RIGOUREUSEMENT ÉGALES, à une valeur commune NON NULLE
+    (ce n'est pas un arrêt : les deux réactions continuent, chacune à sa
+    propre vitesse, mais ces deux vitesses coïncident désormais). C'est
+    l'unique foyer de la figure.
+
+    Géométrie (calculée, polylignes, pas une bézier devinée) :
+      origine (t=0)                 : (80, 230)
+      valeur commune d'équilibre v_eq (schématique, aucun chiffre donné
+        dans le texte)              : y = 140
+      v_estérification(t) = 140 - 70·e^(-t/90)   (part de y=70, décroît vers 140)
+      v_hydrolyse(t)       = 140 + 85·e^(-t/110)  (part de y=225, décroît vers 140)
+      pas d'échantillonnage : 30 px, de t=0 (x=80) à t=530 (x=610)
+
+    À x=580 (dernier point avant le bord), les deux courbes valent
+    respectivement y≈139,73 et y≈140,90 : moins de 1,2 px d'écart sur une
+    hauteur utile de 180 px (< 1 % de l'échelle) — visuellement
+    indiscernables, ce qui justifie d'y placer le repère t_éq (même
+    convention que la « zone d'équilibre » de equilibre-concentrations.svg :
+    on marque l'endroit où les courbes deviennent indiscernables de leur
+    valeur commune, pas un instant mathématique exact — l'approche reste
+    asymptotique par construction).
+
+    Étiquetage des courbes : les noms v(estérification) / v(hydrolyse) sont
+    portés DIRECTEMENT par les courbes à l'étape 2 (données), pas par
+    l'étape 1 (axes) — même convention que equilibre-concentrations.svg et
+    regimes-uc.svg (l'étiquette reste avec la donnée qu'elle nomme, jamais
+    en légende à distance sur des axes encore vides).
+
+    Rôle des couleurs :
+      v(estérification), décroissante — première grandeur nommée dans le
+        texte du rung R2                                       : --figure-ink
+      v(hydrolyse), croissante                                  : --figure-ink-soft
+      axes, "0", "t", "v"                                       : --figure-ink-soft
+      repère t_éq, les deux points de rencontre, la boîte de
+        lecture "v_dir = v_inv ≠ 0"                              : --figure-accent
+        (le seul foyer : l'INSTANT où les deux vitesses s'égalisent)
+
+    STAGED (LESSON-EXPERIENCE-SPEC §2.5 — graphe, toujours staged, ordre
+    canonique axes → données → lecture) :
+      step-1 : les axes seuls.
+      step-2 : les données — les deux courbes, étiquetées directement.
+      step-3 : la lecture — le repère t_éq et l'annotation d'équilibre
+               dynamique.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Les vitesses d&#8217;estérification et d&#8217;hydrolyse coexistent, jusqu&#8217;à s&#8217;égaler
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="230" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes ──────────────────────────────────────────────── -->
+    <line x1="80" y1="230" x2="610" y2="230"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,230 598,225.5 598,234.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="230" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="234" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">v</text>
+    <text x="72" y="234" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : les deux courbes, étiquetées directement
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!--
+      v(estérification) — décroissante. Polyligne calculée point par point
+      via v = 140 - 70·e^(-t/90), t = x-80, pas=30px. Part de y=70 (t=0,
+      v déjà élevée : l'acide et l'alcool sont abondants dès le mélange),
+      décroît (y augmente) vers l'asymptote y=140.
+    -->
+    <path d="
+      M80,70.00
+      L110,89.84 L140,104.06 L170,114.25 L200,121.55 L230,126.78
+      L260,130.53 L290,133.21 L320,135.13 L350,136.51 L380,137.50
+      L410,138.21 L440,138.72 L470,139.08 L500,139.34 L530,139.53
+      L560,139.66 L590,139.76 L610,139.80
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!--
+      v(hydrolyse) — croissante. Polyligne calculée via v = 140 + 85·e^(-t/110),
+      t = x-80, pas=30px. Part de y=225 (t=0, v proche de zéro : l'ester et
+      l'eau sont absents au départ), croît (y diminue) vers la même
+      asymptote y=140.
+    -->
+    <path d="
+      M80,225.0
+      L110,204.71 L140,189.26 L170,177.51 L200,168.55 L230,161.73
+      L260,156.54 L290,152.60 L320,149.59 L350,147.30 L380,145.56
+      L410,144.23 L440,143.22 L470,142.45 L500,141.87 L530,141.42
+      L560,141.08 L590,140.82 L610,140.69
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Étiquettes directes (avec la donnée qu'elles nomment) -->
+    <text x="150" y="95" font-size="11" font-style="italic" fill="var(--figure-ink)"
+          >v(estérification)</text>
+    <text x="260" y="175" font-size="11" font-style="italic" fill="var(--figure-ink-soft)"
+          >v(hydrolyse)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : t_éq, v_dir = v_inv ≠ 0
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Repère vertical, discret, à l'instant où les courbes se rejoignent -->
+    <line x1="580" y1="140" x2="580" y2="230"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="580" y1="226" x2="580" y2="234"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="580" y="247" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">t<tspan dy="3" font-size="7.5">éq</tspan></text>
+
+    <!-- Point de rencontre (les deux courbes, quasi confondues) -->
+    <circle cx="580" cy="139.76" r="3" fill="var(--figure-ink)"/>
+    <circle cx="580" cy="140.82" r="3" fill="var(--figure-ink-soft)"/>
+
+    <!-- Boîte de lecture -->
+    <rect x="395" y="55" width="195" height="58" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="492" y="75" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-accent)">v<tspan
+          dy="4" font-size="8">dir</tspan><tspan
+          dy="-4"> = v</tspan><tspan
+          dy="4" font-size="8">inv</tspan><tspan
+          dy="-4"> &#8800; 0</tspan>
+    </text>
+    <text x="492" y="93" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">équilibre dynamique</text>
+    <text x="492" y="106" text-anchor="middle" font-size="9"
+          fill="var(--figure-accent)">(les deux réactions continuent)</text>
+  </g><!-- /step-3 -->
+
+</svg>

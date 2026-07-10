@@ -34,6 +34,8 @@ $$R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$$
 
 Le produit organique formé, $R-COO-R'$, est un **ester**. Remarque déjà la double flèche : ce n'est pas un détail cosmétique, on y revient au rung suivant.
 
+[[figure:condensation-ester]]
+
 ### Nommer un ester
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* la règle de nomenclature d'un ester est mécanique une fois qu'on sait d'où vient chaque morceau du nom - elle recopie simplement, dans l'ordre, le nom de l'acide puis celui de l'alcool qui l'ont formé.
@@ -76,6 +78,8 @@ Reprends le raisonnement déjà construit dans le chapitre sur les transformatio
 ### Ce que ça veut dire : un équilibre dynamique, pas un arrêt
 
 Tu as vu, dans le chapitre sur l'état d'équilibre, ce que ça implique concrètement : au début, l'estérification (qui a besoin d'acide et d'alcool, abondants au départ) l'emporte largement sur l'hydrolyse (qui a besoin d'ester et d'eau, absents au départ). Au fil du temps, l'acide et l'alcool se raréfient, l'ester et l'eau s'accumulent : l'estérification ralentit, l'hydrolyse accélère - jusqu'à ce que les deux vitesses deviennent rigoureusement égales. C'est l'instant où l'odeur cesse de changer. Les deux réactions ne s'arrêtent pas : elles continuent, chacune à sa propre vitesse, mais ces deux vitesses sont désormais égales. C'est un **état d'équilibre dynamique**, exactement au sens du chapitre précédent.
+
+[[figure:vitesses-equilibre-dynamique]]
 
 ### L'outil pour le chiffrer : $Q_r$ et $K$
 
@@ -168,6 +172,8 @@ Voici le test qui tranche. Deux flacons contiennent chacun le même mélange éq
 
 Les deux flacons atteignent **la même composition finale**, au bout de durées radicalement différentes. Reviens à ta prédiction du rung R0 : si tu avais parié que le catalyseur ou le chauffage donneraient *plus* d'ester, ce résultat la contredit directement. Si tu avais parié qu'ils ne feraient qu'accélérer la mise en place du même équilibre, ce résultat te donne raison.
 
+[[figure:catalyse-meme-palier]]
+
 ### Pourquoi, mécanisme par mécanisme
 
 **Le catalyseur.** Un catalyseur acide ouvre un chemin réactionnel qui demande moins d'énergie pour aboutir - il facilite le réarrangement des liaisons. Mais il facilite ce réarrangement **dans les deux sens à la fois** : il accélère l'estérification autant que l'hydrolyse, dans les mêmes proportions. Le rapport entre les deux vitesses - celui-là même qui fixe la position de l'équilibre, donc $K$ - reste inchangé. Un catalyseur ne figure d'ailleurs jamais dans l'équation bilan, ni dans l'expression de $K$ : il n'a tout simplement aucune prise sur la position de l'équilibre, seulement sur la vitesse d'y parvenir.
@@ -229,6 +235,8 @@ $\tau \approx 84{,}5\,\%$. Le taux passe de $66{,}7\,\%$ (quantités égales) à
 Retirer, au fur et à mesure qu'elle se forme, une partie de l'eau produite (par exemple par distillation, ou avec un agent desséchant) - ou, de la même façon, une partie de l'ester produit, s'il est plus volatil que le reste du mélange et qu'on peut le distiller à mesure qu'il se forme - a le même type d'effet, mais sur le numérateur de $Q_r$ cette fois : diminuer $[eau]$ ou $[ester]$ diminue $Q_r$ instantanément, donc $Q_{r,i}$ repasse en dessous de $K$. Le système réagit alors dans le sens direct pour reformer une partie de ce qui vient d'être retiré et rejoindre à nouveau $K$ - ce qui consomme, au passage, davantage d'acide et d'alcool.
 
 Si on retire l'eau (ou l'ester) en continu, au fur et à mesure de sa formation, on peut répéter cette relance indéfiniment : $Q_r$ ne rejoint jamais tout à fait $K$, le système est perpétuellement relancé dans le sens direct, et on peut ainsi approcher une conversion quasi totale de l'acide - bien au-delà des $66{,}7\,\%$ de départ.
+
+[[figure:qr-k-deplacement]]
 
 ### Teste l'idée avant de la croire : « retirer un produit ne change rien, puisque $K$ ne bouge pas »
 

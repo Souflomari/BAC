@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Coupe microscopique à la surface du zinc : au contact, un ion Cu2+ vient se coller directement contre un réseau d'atomes de zinc, séparés par quelques couches atomiques seulement, sans fil ni trajet organisé. Deux électrons sautent directement de l'atome de zinc de surface vers l'ion Cu2+ : l'atome de zinc part en solution sous forme d'ion Zn2+, l'ion se dépose sur la surface sous forme de cuivre métallique. L'énergie libérée par ce saut se dissipe aussitôt, localement, en agitation thermique des molécules de solvant environnantes — cette chaleur, répétée à grande échelle, fait grimper la température du tube à essai.">
+  <title>Transfert direct d'électrons : pourquoi ça part en chaleur</title>
+
+  <!--
+    transfert-direct-chaleur.svg — STAGED (LESSON-EXPERIENCE-SPEC §2), 3 étapes,
+    R3 (évolution spontanée). Coupe microscopique, à l'échelle atomique, du
+    contact entre le zinc métallique et un ion Cu2+ en solution.
+
+    step-1 : la géométrie — réseau d'atomes de zinc (2 rangées en quinconce)
+             en bas ; solution au-dessus ; un unique ion Cu2+ qui dérive vers
+             le bas (flèche pointillée) jusqu'à toucher exactement la surface
+             (aucun jeu entre le bord de l'ion et le sommet de l'atome de
+             contact) ; encart d'échelle "contact direct, quelques couches
+             atomiques" en accent, avec ligne de rappel vers le point de
+             contact.
+    step-2 : le transfert — deux flèches courtes (2 e-) sautent, sur place,
+             de l'atome de zinc de contact vers l'ion ; l'atome de zinc
+             quitte le réseau (site vacant en pointillé) et réapparaît comme
+             ion Zn2+ dérivant en solution ; l'ion Cu2+ se dépose au même
+             endroit sous forme d'atome de cuivre métallique (dessiné
+             par-dessus, à l'échelle du réseau). Étiquette "sur place, aucun
+             trajet organisé" en accent.
+    step-3 : la chaleur — une petite salve de traits courts irradie près du
+             point de contact (l'énergie libérée), et quelques molécules de
+             solvant voisines portent chacune un petit repère d'agitation
+             (deux traits croisés) ; légende "énergie → agitation thermique
+             locale (chaleur)".
+
+    Géométrie (calculée) :
+      panneau : x=30 y=54 w=580 h=252 rx=8 (bas=306, droite=610)
+      réseau, rangée basse (volume) : y=278, r=15, x = 88,146,204,262,320,
+        378,436,494,552 (pas 58)
+      réseau, rangée haute (surface) : y=250, r=15, x = 117,175,233,291,
+        349,407,465,523 (pas 58, décalée de 29 = demi-pas)
+      atome de contact (surface, 4e de la rangée haute) : (291,250) —
+        bord supérieur y=235
+      ion Cu2+ (step-1) : centre (291,218) r=17 — bord inférieur y=235,
+        exactement au contact du bord supérieur de l'atome (aucun jeu)
+      atome de cuivre déposé (step-2, même site) : (291,218) r=15
+      site vacant du zinc parti (step-2) : (291,250) r=15, pointillé
+      ion Zn2+ qui s'éloigne (step-2) : (235,185) r=14
+      salve d'énergie (step-3) : centrée en (300,165), 6 traits courts
+        rayonnants, rayon interne ≈10, externe ≈24
+      molécules de solvant agitées (step-3) : (150,190), (480,180),
+        (420,140), (180,130) — petits disques + repère "agitation" en croix
+
+    Simplifications assumées (schéma pédagogique, pas à l'échelle) :
+      - le réseau de zinc n'est qu'une TRANCHE représentative (2 rangées),
+        pas le cristal entier — cohérent avec "coupe microscopique, vue
+        rapprochée" ;
+      - un seul ion Cu2+ est montré au contact, pour isoler UN événement de
+        transfert (le tube à essai en contient un nombre immense, simultané) ;
+      - "site vacant" et "ion Zn2+ qui s'éloigne" représentent le même atome,
+        avant/après, dans la même étape (device autorisé par la grammaire
+        StagedFigure : les groupes s'AJOUTENT, rien n'est jamais retiré d'un
+        groupe déjà révélé — l'atome de cuivre déposé au step-2 est simplement
+        redessiné PAR-DESSUS l'ancien ion Cu2+ du step-1, au même endroit).
+
+    Rôle des couleurs (contrat de rendu, 5 tokens seulement) :
+      Le fil conducteur de la figure — accent — porte, à chaque étape, ce qui
+      démontre le caractère DIRECT et LOCAL du transfert : l'encart d'échelle
+      (step-1), les deux flèches d'électrons + leur étiquette (step-2), la
+      salve d'énergie et les repères d'agitation (step-3).
+      Structure neutre (réseau d'atomes, ion, étiquettes d'espèces, site
+      vacant, ion Zn2+ qui s'éloigne) : --figure-ink / --figure-ink-soft.
+      Fonds (panneau, remplissage des disques) : --figure-surface.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la géométrie : réseau de zinc, solution, l'ion
+       Cu2+ qui dérive jusqu'au contact
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="320" y="22" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Transfert direct au contact : pourquoi ça part en chaleur
+    </text>
+    <text x="320" y="38" text-anchor="middle"
+          font-size="10" font-style="italic" fill="var(--figure-ink-soft)">
+      vue rapprochée, échelle atomique
+    </text>
+
+    <!-- Panneau -->
+    <rect x="30" y="54" width="580" height="252" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Réseau de zinc : rangée basse (volume) ──────────────────── -->
+    <circle cx="88"  cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="146" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="204" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="262" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="320" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="378" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="436" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="494" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="552" cy="278" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+
+    <!-- ── Réseau de zinc : rangée haute (surface, en quinconce) ──── -->
+    <circle cx="117" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="175" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="233" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <!-- atome de contact -->
+    <circle id="zn-contact-atom" cx="291" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="349" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="407" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="465" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+    <circle cx="523" cy="250" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.1"/>
+
+    <!-- Étiquettes d'espèces -->
+    <text x="38" y="268" text-anchor="start" font-size="10.5" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">Zn</tspan><tspan> (s)</tspan></text>
+    <text x="38" y="80" text-anchor="start" font-size="10.5" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">Cu</tspan><tspan dy="-5" font-size="7.5" font-style="normal">2+</tspan><tspan dy="5"> (aq)</tspan></text>
+
+    <!-- ── Trajectoire de l'ion Cu2+ : dérive vers le bas jusqu'au contact -->
+    <line x1="291" y1="84" x2="291" y2="193"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="4,3" stroke-linecap="round"/>
+    <polygon points="291,201 286,190 296,190" fill="var(--figure-ink-soft)"/>
+
+    <!-- ── Ion Cu2+, au contact exact de l'atome de surface ────────── -->
+    <circle cx="291" cy="218" r="17" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="291" y="221" text-anchor="middle" font-size="8.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Cu</tspan><tspan dy="-4" font-size="6" font-style="normal">2+</tspan></text>
+
+    <!-- ── Encart d'échelle (le point de la figure) ────────────────── -->
+    <text x="420" y="78" font-size="11.5" font-weight="600" fill="var(--figure-accent)">contact direct,</text>
+    <text x="420" y="93" font-size="10.5" fill="var(--figure-accent)">quelques couches atomiques</text>
+    <path d="M416,84 Q380,160 297,230" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <circle cx="297" cy="230" r="2.5" fill="var(--figure-accent)"/>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le transfert : 2 e- sautent sur place ; le zinc
+       part en Zn2+, l'ion Cu2+ se dépose en cuivre métallique
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- Deux flèches d'électrons, très courtes, à la verticale du contact -->
+    <line x1="285" y1="244" x2="285" y2="228" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="285,222 281,231 289,231" fill="var(--figure-accent)"/>
+    <line x1="298" y1="244" x2="298" y2="228" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="298,222 294,231 302,231" fill="var(--figure-accent)"/>
+    <text x="312" y="240" font-size="12" fill="var(--figure-accent)"
+          >2 <tspan font-style="italic">e</tspan><tspan dy="-6" font-size="9" font-style="normal">−</tspan></text>
+
+    <!-- Site vacant : l'atome de zinc de contact a quitté le réseau -->
+    <circle cx="291" cy="250" r="15" fill="var(--figure-surface)"/>
+    <circle cx="291" cy="250" r="15" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+    <!-- L'atome parti réapparaît comme ion Zn2+, dérivant en solution -->
+    <path d="M280,238 Q255,212 244,198" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,2"/>
+    <polygon points="242,196 249,203 237,203" fill="var(--figure-ink-soft)"/>
+    <circle cx="235" cy="185" r="14" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="235" y="188" text-anchor="middle" font-size="8.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Zn</tspan><tspan dy="-4" font-size="6" font-style="normal">2+</tspan></text>
+
+    <!-- L'ion Cu2+ se dépose au même site, sous forme d'atome de cuivre -->
+    <circle cx="291" cy="218" r="15" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <text x="291" y="222" text-anchor="middle" font-size="10" font-weight="600" font-style="italic"
+          fill="var(--figure-surface)">Cu</text>
+
+    <!-- Étiquette du mécanisme -->
+    <text x="345" y="204" font-size="11" fill="var(--figure-accent)">sur place —</text>
+    <text x="345" y="219" font-size="11" fill="var(--figure-accent)">aucun trajet organisé</text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la chaleur : l'énergie se dissipe en agitation
+       thermique locale, autour du point de contact
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Salve d'énergie, centrée juste au-dessus du point de contact -->
+    <line x1="310" y1="165" x2="324" y2="165" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="305" y1="156" x2="312" y2="144" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="295" y1="156" x2="288" y2="144" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="290" y1="165" x2="276" y2="165" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="295" y1="174" x2="288" y2="186" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="305" y1="174" x2="312" y2="186" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Molécules de solvant environnantes, agitées -->
+    <circle cx="150" cy="190" r="4.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="145" y1="185" x2="155" y2="195" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="145" y1="195" x2="155" y2="185" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+
+    <circle cx="480" cy="180" r="4.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="475" y1="175" x2="485" y2="185" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="475" y1="185" x2="485" y2="175" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+
+    <circle cx="420" cy="140" r="4.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="415" y1="135" x2="425" y2="145" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="415" y1="145" x2="425" y2="135" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+
+    <circle cx="180" cy="130" r="4.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="175" y1="125" x2="185" y2="135" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="175" y1="135" x2="185" y2="125" stroke="var(--figure-accent)" stroke-width="1.3" stroke-linecap="round"/>
+
+    <!-- Légende -->
+    <text x="320" y="300" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-accent)">
+      énergie → agitation thermique locale (chaleur)
+    </text>
+
+  </g><!-- /step-3 -->
+
+</svg>

@@ -128,6 +128,8 @@ Dans le tube à essai, il n'y a rien entre le zinc et les ions $Cu^{2+}$ : un io
 
 C'est cette agitation thermique, multipliée par un nombre immense de sauts d'électrons simultanés à l'échelle du tube à essai, qui fait grimper la température que tu sens sous tes doigts.
 
+[[figure:transfert-direct-chaleur]]
+
 ### Teste l'idée avant de la croire : « une transformation spontanée dégage toujours une chaleur qu'on peut sentir »
 
 Voici une généralisation trompeuse, et elle vient précisément de l'exemple qu'on vient de voir : puisque CETTE réaction spontanée chauffe le tube de façon nette, on peut être tenté de conclure qu'une transformation spontanée dégage TOUJOURS une chaleur perceptible - que « spontané » et « qui chauffe » seraient presque synonymes.
@@ -155,6 +157,8 @@ Deux montages peuvent faire réagir exactement le même couple de réactifs, ave
 - **Détour forcé (une pile, sujet d'un prochain chapitre) :** le réducteur et l'oxydant sont physiquement séparés dans deux compartiments distincts, reliés uniquement par un fil conducteur (et une jonction qui maintient l'électroneutralité des solutions). Les électrons n'ont alors qu'une seule issue : passer par le fil. Un ampèremètre placé sur ce fil dévie - un courant électrique mesurable circule, exploitable.
 
 Le test qui tranche, face à un montage inconnu, n'est donc jamais « y a-t-il une oxydoréduction ? » (cette question ne suffit pas à elle seule) mais : **les réactifs sont-ils physiquement séparés, avec un courant mesurable dans un circuit extérieur - ou sont-ils en contact direct dans le même récipient ?**
+
+[[figure:direct-vs-pile]]
 
 ### Teste l'idée avant de la croire : « toute réaction entre un métal et une solution d'ions métalliques est une pile »
 
