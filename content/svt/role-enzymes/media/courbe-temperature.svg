@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Activité de l'amylase selon la température : l'activité monte de 0 à 37 degrés, atteint son maximum à l'optimum thermique vers 37 degrés, puis s'effondre au-delà de 40 à 45 degrés jusqu'à devenir quasiment nulle à 60 degrés — la dénaturation, irréversible.">
+  <title>Courbe activité-température de l'amylase salivaire</title>
+
+  <!--
+    courbe-temperature.svg — graphe STAGÉ, 4 étapes, cible R4.
+    Courbe qualitative (cloche) : AUCUNE constante cinétique précise n'est
+    disponible dans le texte — seule la FORME (monte, optimum ≈ 37°C,
+    s'effondre au-delà de 40-45°C jusqu'à quasi nulle à 60°C) est fidèle.
+
+    step-1 : les axes seuls — température (0-60°C) en x, activité en y.
+    step-2 : la montée, 0 → 37°C.
+    step-3 : l'optimum — repère accent à 37°C (le seul foyer accent de
+             la figure, §"single accent for the optimum/read-off").
+    step-4 : l'effondrement au-delà de l'optimum, jusqu'à quasi nulle à
+             60°C, annoté "dénaturation — irréversible" (en ink, PAS en
+             accent — un seul accent dans toute la figure : l'optimum).
+
+    Géométrie : origine (0°C, activité=0) = (80,208). Sommet axe y = (80,50).
+    Échelle x : 8,5 px par degré → 37°C à x=394,5.
+    Sommet de la courbe (optimum) : (394.5, 85) — proche du haut du panneau,
+    laissant juste la place à l'étiquette "optimum thermique" au-dessus.
+    Courbe = ink partout (pas de token --figure-energy-* pertinent en SVT) ;
+    seul le repère de l'optimum (point, pointillé, étiquette) est en accent.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Activité de l'amylase selon la température
+    </text>
+
+    <rect x="40" y="32" width="590" height="200" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <line x1="80" y1="208" x2="610" y2="208" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,208 598,203.5 598,212.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="208" x2="80" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="616" y="204" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">T<tspan
+          font-style="normal" font-size="9"> (°C)</tspan></text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">activité</text>
+
+    <text x="80" y="222" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <text x="590" y="222" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">60</text>
+
+    <text x="320" y="260" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">
+      activité = vitesse de production de maltose
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la montée, 0 → 37°C
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M80,208 C160,204 300,88 394.5,85"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — l'optimum thermique (≈ 37°C) — seul repère accent
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="394.5" y1="85" x2="394.5" y2="208"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="394.5" y1="204" x2="394.5" y2="212" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="394.5" y="224" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">37</text>
+    <circle cx="394.5" cy="85" r="3.4" fill="var(--figure-accent)"/>
+
+    <path d="M390,92 C365,110 335,124 305,132" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="298" y="122" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-accent)">
+      optimum thermique
+    </text>
+    <text x="298" y="136" text-anchor="end" font-size="10.5" fill="var(--figure-accent)">
+      ≈ 37 °C
+    </text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — l'effondrement au-delà de l'optimum
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <path d="M394.5,85 C420,92 445,150 462.5,178 C485,203 530,206 590,202"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <line x1="448" y1="148" x2="490" y2="120" stroke="var(--figure-ink-soft)"
+          stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="494" y="112" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+      dénaturation
+    </text>
+    <text x="494" y="126" text-anchor="start" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">
+      irréversible
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

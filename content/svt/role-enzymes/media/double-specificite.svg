@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 670"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La double spécificité d'une enzyme : plusieurs molécules se présentent devant l'enzyme, mais seul l'amidon, de forme complémentaire au site actif, y entre — le saccharose et la protéine, de formes différentes, sont rejetés. C'est la spécificité de substrat. Puis, sur l'amidon logé, la coupure a toujours lieu au même endroit, produisant toujours du maltose — jamais du glucose direct, jamais une autre coupure. C'est la spécificité d'action. Deux propriétés distinctes : sur qui l'enzyme agit, et ce qu'elle lui fait.">
+  <title>La double spécificité : spécificité de substrat et spécificité d'action</title>
+
+  <!--
+    double-specificite.svg — figure STAGED, 4 étapes cumulatives. Cible R3.
+
+    Ne redessine PAS le cycle en 4 panneaux de cycle-enzyme-substrat.svg (R2) —
+    ici une SEULE enzyme, statique, face à PLUSIEURS candidats simultanément,
+    pour séparer visuellement deux questions différentes (R3) :
+      spécificité de SUBSTRAT : sur qui l'enzyme agit-elle ?
+      spécificité d'ACTION    : que lui fait-elle, une fois choisie ?
+
+    step-1 : l'enzyme (ellipse, site actif = encoche en zigzag, forme
+             "taillée" pour l'amidon) + trois candidats qui s'approchent :
+             amidon (chaîne en zigzag complémentaire), saccharose (double
+             cercle compact), protéine (polygone replié, plus grand) —
+             aucun jugement encore porté, juste la scène.
+    step-2 : spécificité de substrat — l'amidon vient se loger dans
+             l'encoche (chaîne accent superposée, coche + « forme
+             complémentaire ») ; saccharose et protéine reçoivent chacun
+             une marque de rejet (croix ink-soft) sur leur flèche.
+    step-3 : spécificité d'action — zoom sous la scène : la même chaîne
+             d'amidon, TOUJOURS coupée aux mêmes liaisons (repères accent),
+             produisant TOUJOURS des unités de maltose ; à côté, deux
+             issues jamais observées (« glucose direct », « autre
+             coupure »), barrées.
+    step-4 : synthèse — deux bandeaux : « Sur QUI ? → l'amidon (le
+             substrat) » et « QUE lui fait-elle ? → une seule coupure
+             (l'action) », la réponse de chacun en accent (même idée
+             répétée : LA réponse précise à chaque question).
+
+    Convention couleur : l'encoche/site actif et les trois candidats sont
+    neutres (ink / ink-soft) en step-1 — rien n'est encore jugé. L'accent
+    marque, à chaque étape, UNE seule idée nouvelle : le bon substrat qui
+    entre (step-2), le point de coupure invariant (step-3), la réponse à
+    chaque question (step-4).
+
+    Simplification pédagogique assumée : molécules schématiques (chaînes
+    de cercles, polygones), pas de structure chimique réelle — même
+    convention que cycle-enzyme-substrat.svg.
+  -->
+
+  <!-- ══════════════════════ STEP 1 — la scène : plusieurs candidats ══════ -->
+  <g id="step-1">
+    <text x="350" y="26" text-anchor="middle"
+          font-size="13.5" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Deux spécificités : sur qui l'enzyme agit, et ce qu'elle lui fait
+    </text>
+
+    <!-- Enzyme -->
+    <ellipse cx="150" cy="210" rx="90" ry="82"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="150" y="110" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">enzyme</text>
+
+    <!-- Site actif : encoche en zigzag, taillée pour l'amidon -->
+    <path d="M200,165 L222,180 L200,195 L222,210 L200,225 L222,240 L200,255"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="211" y="278" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+      site actif (forme pour l'amidon)
+    </text>
+
+    <!-- Candidat 1 : amidon (chaîne en zigzag, forme complémentaire) -->
+    <g>
+      <line x1="495" y1="75" x2="515" y2="88" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <line x1="515" y1="88" x2="495" y2="101" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <line x1="495" y1="101" x2="515" y2="114" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <line x1="515" y1="114" x2="495" y2="127" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <circle cx="495" cy="75" r="5.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <circle cx="515" cy="88" r="5.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <circle cx="495" cy="101" r="5.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <circle cx="515" cy="114" r="5.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <circle cx="495" cy="127" r="5.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+      <text x="505" y="150" text-anchor="middle" font-size="11" fill="var(--figure-ink)">amidon</text>
+      <path d="M480,101 Q380,140 232,205" fill="none" stroke="var(--figure-ink-soft)"
+            stroke-width="1.3" stroke-dasharray="4,3" opacity="0.7"/>
+      <polygon points="235,207 248,200 246,213" fill="var(--figure-ink-soft)" opacity="0.7"/>
+    </g>
+
+    <!-- Candidat 2 : saccharose (double cercle compact — forme très différente) -->
+    <g>
+      <circle cx="508" cy="230" r="15" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="530" cy="222" r="13" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <text x="519" y="268" text-anchor="middle" font-size="11" fill="var(--figure-ink)">saccharose</text>
+      <path d="M495,228 Q380,220 234,213" fill="none" stroke="var(--figure-ink-soft)"
+            stroke-width="1.3" stroke-dasharray="4,3" opacity="0.7"/>
+      <polygon points="234,213 247,206 245,219" fill="var(--figure-ink-soft)" opacity="0.7"/>
+    </g>
+
+    <!-- Candidat 3 : protéine (polygone replié, plus grand) -->
+    <g>
+      <polygon points="480,340 520,328 555,345 560,378 535,400 495,395 478,368"
+               fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+      <text x="519" y="420" text-anchor="middle" font-size="11" fill="var(--figure-ink)">protéine</text>
+      <path d="M478,368 Q370,300 236,222" fill="none" stroke="var(--figure-ink-soft)"
+            stroke-width="1.3" stroke-dasharray="4,3" opacity="0.7"/>
+      <polygon points="236,222 249,216 244,229" fill="var(--figure-ink-soft)" opacity="0.7"/>
+    </g>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════ STEP 2 — spécificité de substrat : un seul entre ═══════ -->
+  <g id="step-2">
+    <!-- Amidon docké : chaîne accent superposée à l'encoche -->
+    <g fill="var(--figure-accent)" stroke="var(--figure-accent)">
+      <line x1="200" y1="165" x2="222" y2="180" stroke-width="2"/>
+      <line x1="222" y1="180" x2="200" y2="195" stroke-width="2"/>
+      <line x1="200" y1="195" x2="222" y2="210" stroke-width="2"/>
+      <line x1="222" y1="210" x2="200" y2="225" stroke-width="2"/>
+      <line x1="200" y1="225" x2="222" y2="240" stroke-width="2"/>
+      <line x1="222" y1="240" x2="200" y2="255" stroke-width="2"/>
+      <circle cx="200" cy="165" r="4" fill="var(--figure-surface)"/>
+      <circle cx="222" cy="180" r="4" fill="var(--figure-surface)"/>
+      <circle cx="200" cy="195" r="4" fill="var(--figure-surface)"/>
+      <circle cx="222" cy="210" r="4" fill="var(--figure-surface)"/>
+      <circle cx="200" cy="225" r="4" fill="var(--figure-surface)"/>
+      <circle cx="222" cy="240" r="4" fill="var(--figure-surface)"/>
+      <circle cx="200" cy="255" r="4" fill="var(--figure-surface)"/>
+    </g>
+    <path d="M240,150 L245,157 L256,140" fill="none" stroke="var(--figure-accent)"
+          stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="262" y="150" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-accent)">
+      forme complémentaire
+    </text>
+
+    <!-- Rejet du saccharose -->
+    <line x1="359" y1="216" x2="371" y2="228" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="371" y1="216" x2="359" y2="228" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="365" y="248" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+      forme non complémentaire
+    </text>
+
+    <!-- Rejet de la protéine -->
+    <line x1="351" y1="289" x2="363" y2="301" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="363" y1="289" x2="351" y2="301" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="357" y="321" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+      forme non complémentaire
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════ STEP 3 — spécificité d'action : toujours la même coupure ══ -->
+  <g id="step-3">
+    <line x1="40" y1="445" x2="660" y2="445" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="350" y="470" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">
+      Zoom : toujours la même coupure, toujours du maltose
+    </text>
+
+    <!-- Chaîne d'amidon logée, avec deux coupures — mêmes liaisons, chaque fois -->
+    <g>
+      <line x1="210" y1="520" x2="246" y2="520" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <line x1="282" y1="520" x2="318" y2="520" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <line x1="354" y1="520" x2="390" y2="520" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="210" cy="520" r="7.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="246" cy="520" r="7.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="282" cy="520" r="7.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="318" cy="520" r="7.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="354" cy="520" r="7.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+      <circle cx="390" cy="520" r="7.5" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    </g>
+    <!-- Repères de coupure — toujours au même endroit, en accent -->
+    <line x1="264" y1="513" x2="264" y2="518" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="264" y1="522" x2="264" y2="527" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="336" y1="513" x2="336" y2="518" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="336" y1="522" x2="336" y2="527" stroke="var(--figure-accent)" stroke-width="1.8"/>
+
+    <text x="228" y="550" text-anchor="middle" font-size="10" fill="var(--figure-ink)">maltose</text>
+    <text x="300" y="550" text-anchor="middle" font-size="10" fill="var(--figure-ink)">maltose</text>
+    <text x="372" y="550" text-anchor="middle" font-size="10" fill="var(--figure-ink)">maltose</text>
+
+    <text x="300" y="572" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">
+      toujours la même coupure → toujours du maltose
+    </text>
+
+    <!-- Issues jamais observées -->
+    <text x="560" y="490" text-anchor="middle" font-size="10" font-weight="600" font-style="italic" fill="var(--figure-ink-soft)">
+      jamais observé :
+    </text>
+    <line x1="466" y1="500" x2="474" y2="510" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="474" y1="500" x2="466" y2="510" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="568" y="509" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">glucose direct</text>
+    <line x1="505" y1="505" x2="632" y2="505" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <line x1="466" y1="528" x2="474" y2="538" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="474" y1="528" x2="466" y2="538" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="568" y="537" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">autre coupure</text>
+    <line x1="505" y1="533" x2="632" y2="533" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════ STEP 4 — synthèse ═══════════════════════════ -->
+  <g id="step-4">
+    <line x1="40" y1="598" x2="660" y2="598" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <rect x="40" y="604" width="290" height="48" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="185" y="620" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-ink)">Sur QUI ?</text>
+    <text x="185" y="636" text-anchor="middle" font-size="10">
+      <tspan fill="var(--figure-accent)" font-weight="700">→ l'amidon</tspan>
+      <tspan fill="var(--figure-ink-soft)" font-size="9.5"> (le substrat)</tspan>
+    </text>
+
+    <rect x="370" y="604" width="290" height="48" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="515" y="620" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-ink)">QUE lui fait-elle ?</text>
+    <text x="515" y="636" text-anchor="middle" font-size="10">
+      <tspan fill="var(--figure-accent)" font-weight="700">→ une seule coupure</tspan>
+      <tspan fill="var(--figure-ink-soft)" font-size="9.5"> (l'action)</tspan>
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

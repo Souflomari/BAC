@@ -125,6 +125,8 @@ On peut résumer la différence ainsi :
 | Spécificité de **substrat** | Sur quoi l'enzyme agit-elle, et sur quoi n'agit-elle pas ? | Agit sur l'amidon ; n'agit ni sur le saccharose ni sur les protéines |
 | Spécificité d'**action** | Parmi toutes les transformations chimiques envisageables sur ce substrat, laquelle l'enzyme réalise-t-elle ? | Réalise toujours la même coupure (hydrolyse d'une liaison précise), produisant toujours du maltose |
 
+[[figure:double-specificite]]
+
 ### L'erreur classique à éviter ici
 
 Une confusion très fréquente consiste à croire que « spécificité de substrat » et « spécificité d'action » disent la même chose, ou à n'en retenir qu'une en pensant qu'elle suffit à tout expliquer. Ce n'est pas le cas : une enzyme pourrait, en théorie, être stricte sur le choix de son substrat mais capable de lui faire subir plusieurs transformations différentes (ce ne serait alors pas une action spécifique) ; ou, à l'inverse, toujours réaliser la même transformation, mais sur une famille un peu plus large de substrats voisins. Les deux propriétés se vérifient donc **séparément**, avec deux questions différentes — « sur quoi agit-elle ? » n'est pas « que lui fait-elle ? ». C'est exactement ce que l'expérience ci-dessus permet de vérifier indépendamment : le tableau du tube 1/2/3 renseigne sur le substrat ; l'observation du seul tube 1 dans la durée renseigne sur l'action.
@@ -159,6 +161,8 @@ Voici ce qu'on obtient quand on mesure, expérimentalement, la vitesse de produc
 - **Autour de 37°C**, proche de la température du corps humain : l'activité atteint son maximum. On appelle cette valeur l'**optimum thermique** de l'enzyme.
 - **Au-delà d'environ 40-45°C, et jusqu'à 60°C :** l'activité s'effondre brutalement, jusqu'à devenir quasiment nulle.
 
+[[figure:courbe-temperature]]
+
 Regarde bien ce dernier segment : ce n'est pas ce que prédisait le raisonnement « plus chaud, toujours plus actif ». Si cette prédiction était vraie, la courbe continuerait de monter sans fin. Ce n'est pas ce qui se produit : passé l'optimum, l'activité chute, et elle ne remonte pas si on refroidit ensuite.
 
 ### Pourquoi l'activité s'effondre après l'optimum
@@ -177,6 +181,8 @@ Deux exemples, tirés de la digestion, illustrent bien à quel point cet optimum
 - La **pepsine**, une enzyme digestive qu'on retrouve au R6, a un optimum de pH très acide (environ 2), ce qui correspond au pH du suc gastrique dans l'estomac.
 
 Si on place la pepsine dans un milieu proche de la neutralité, ou l'amylase salivaire dans un milieu très acide, l'activité de chacune s'effondre — non pas parce que le substrat a disparu, mais parce que l'écart au pH optimum déforme le site actif, exactement comme un excès de température. On retrouve, au R6, pourquoi cette différence d'optimum entre enzymes digestives n'est pas un détail anecdotique, mais une organisation cohérente le long du tube digestif.
+
+[[figure:courbe-ph]]
 
 ### L'erreur classique à éviter ici
 
@@ -203,6 +209,8 @@ Maintenant, l'inverse : on fixe une grande quantité d'amidon (en excès, jamais
 ### Pourquoi les deux courbes n'ont pas la même forme
 
 Ce que ces deux expériences révèlent, mises côte à côte : la concentration en substrat rencontre un plafond (la saturation des sites actifs), alors que la concentration en enzyme n'en rencontre pas, tant que le substrat reste abondant — chaque molécule d'enzyme supplémentaire ajoute simplement un site actif de plus au travail collectif, sans jamais se marcher dessus. Ce sont donc deux mécanismes différents qui produisent deux formes de courbe différentes : un palier de saturation d'un côté, une droite proportionnelle de l'autre.
+
+[[figure:concentration-substrat-enzyme]]
 
 ### Vérification rapide
 
