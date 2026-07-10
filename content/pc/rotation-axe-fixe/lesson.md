@@ -76,6 +76,8 @@ $$v_2 = d_2\,\omega = 1{,}5 \times 2{,}0 = 3{,}0\ \text{m/s}$$
 
 Le bord va cinq fois plus vite que le point proche du centre — alors que $\omega$ vaut $2{,}0\ \text{rad/s}$ **partout sur le disque**, y compris exactement sur l'axe (où $d=0$, donc $v=0$ : le centre du manège ne bouge pas du tout, même quand le manège tourne). C'est exactement ce que dit $v = d\,\omega$ : une seule pulsation angulaire, mais autant de vitesses linéaires que de distances à l'axe.
 
+[[figure:omega-vitesse-point]]
+
 ---
 
 ## R2 — Le moment d'une force par rapport à l'axe : ce qui fait vraiment tourner

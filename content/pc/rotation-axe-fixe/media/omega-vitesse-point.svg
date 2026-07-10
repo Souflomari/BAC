@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 540" width="620" height="540"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Un disque en rotation autour d'un axe fixe Delta représenté par un point en son centre. Une ligne de référence peinte sur le disque fait un angle theta, l'abscisse angulaire, avec une direction fixe pointillée ; un sens de rotation positif est indiqué par une flèche courbe. Un point M du disque, à une distance d de l'axe, décrit un cercle de rayon d ; pendant que le disque tourne d'un petit angle delta-theta, M parcourt un arc delta-s égal à d fois delta-theta, ce qui établit v_M = d fois oméga — la définition même du radian. Enfin, deux points du disque, l'un proche de l'axe à 0,30 mètre et l'autre au bord à 1,5 mètre, portent des vecteurs vitesse tangentiels dessinés à l'échelle : 0,60 mètre par seconde près de l'axe contre 3,0 mètres par seconde au bord, cinq fois plus grand, tandis que la vitesse est nulle exactement sur l'axe — oméga est identique partout, v est proportionnelle à d.">
+  <title>Un solide en rotation autour d'un axe fixe Δ : θ, puis v = d·ω</title>
+  <!--
+    omega-vitesse-point.svg — figure STAGED (3 étapes) pour R1 (rotation-axe-fixe) :
+      step-1 : le décor — le disque, l'axe fixe Δ, une direction fixe de référence
+               (pointillée), une ligne peinte sur le solide faisant l'angle θ avec
+               elle (l'abscisse angulaire), et le sens de rotation positif choisi.
+      step-2 : la construction qui rend v = d·ω évidente plutôt qu'affirmée — un
+               point M du solide, à distance d de Δ, sur la MÊME ligne peinte que
+               step-1 (donc à la même position angulaire) ; son cercle-trajectoire
+               de rayon d ; et, pour une petite rotation supplémentaire Δθ, l'arc
+               Δs = d·Δθ qu'il parcourt — exactement la définition du radian.
+      step-3 : deux points du solide, l'un à d₁ = 0,30 m (proche de l'axe), l'autre
+               à d₂ = 1,5 m (au bord — exactement R du disque), avec leurs vecteurs
+               vitesse tangentiels DESSINÉS À L'ÉCHELLE (0,60 m/s et 3,0 m/s — les
+               valeurs de l'exemple travaillé de R1) ; v = 0 est marqué sur l'axe.
+
+    Géométrie (calculée, pas devinée) :
+      Axe Δ : C = (300, 280) — même convention ⊙ que moment-force.svg.
+      Disque : cercle de rayon R_disque = 160 px, centré sur C (donc x:140–460,
+      y:120–440). Échelle commune à toute la figure : 160 px = 1,5 m (le rayon du
+      manège de l'exemple travaillé), soit ≈ 106,7 px/m — choisie pour que d₂ = R
+      tombe exactement sur le bord du disque (cohérence step-3).
+
+      Convention d'angle (identique à moment-force.svg) : pour tout point à
+      distance r de C et angle φ (sens trigonométrique positif), P(φ) = C +
+      r·(cos φ, −sin φ) — le "−" compense le repère SVG (y vers le bas).
+
+      STEP 1 : ligne peinte sur le solide à θ = 40°, jusqu'au bord (r = 160) :
+        A_bord = C + 160·(cos40°, −sin40°) ≈ (422.6, 177.2).
+      Direction fixe : le rayon horizontal C → (470, 280) (φ = 0°).
+      Arc θ : rayon 45 px entre φ = 0° et φ = 40°, approximé par une quadratique
+      (point de contrôle sur la bissectrice à 45/cos20° ≈ 47.9 px de C — même
+      technique que moment-force.svg).
+      Sens positif : arc décoratif entre φ = 195° et φ = 245°, à l'écart de tout
+      le reste de la construction (le rayon peint est en haut-droite, φ=40° ; les
+      deux points de step-3 sont juste en dessous de l'axe, φ=270°) — placé donc
+      sur le côté gauche, où rien d'autre n'est dessiné.
+
+      STEP 2 : M est PRIS SUR LA MÊME LIGNE que le rayon peint de step-1 (même
+      φ = 40°), mais à d = 100 px (< 160, donc entre l'axe et le bord) :
+        M = C + 100·(cos40°, −sin40°) ≈ (376.6, 215.7).
+      Cercle-trajectoire : rayon 100 px, centré C, pointillé.
+      Petite rotation supplémentaire Δθ = 12° au-delà de θ, jusqu'à
+        M' = C + 100·(cos52°, −sin52°) ≈ (361.6, 201.2).
+      Arc Δs : de M à M' le long du cercle r = 100 (quadratique, même technique).
+      Le label M est décalé PERPENDICULAIREMENT à la ligne C–M (pas le long
+      d'elle, puisque M est sur la ligne) : direction perpendiculaire
+      (0.643, 0.766) × 18 px ⇒ label en (388, 230).
+
+      STEP 3 : deux points sur le rayon vertical descendant (φ = 270° = −90°,
+      choisi à l'écart de la ligne peinte de step-1 pour ne pas se superposer) :
+        P₁ = C + 32·(0, 1)  = (300, 312)   [d₁ = 0,30 m × 106,7 ≈ 32 px]
+        P₂ = C + 160·(0, 1) = (300, 440)   [d₂ = 1,5 m × 106,7 = 160 px = R]
+      Direction tangentielle pour une rotation positive (φ croissant), dérivée de
+      P(φ) : dP/dφ ∝ (−sin φ, −cos φ). En φ = 270° (=−90°) : (−sin(−90°),
+      −cos(−90°)) = (1, 0) — donc la vitesse pointe vers +x (la droite), pour les
+      DEUX points (même φ, seul le rayon change), cohérent avec la flèche « sens
+      positif » de step-1 (bas du disque se déplaçant vers la droite en rotation
+      trigonométrique). Longueur des vecteurs : échelle commune 40 px par m/s ⇒
+        v₁ = 0,60 m/s → 24 px ;  v₂ = 3,0 m/s → 120 px (rapport 5:1, comme le
+      texte : "le bord va cinq fois plus vite").
+      v = 0 : anneau pointillé fin autour du point Δ lui-même (d = 0 ⇒ v = 0).
+
+    Rôle des couleurs :
+      disque, axe Δ, ligne peinte, arc θ, sens positif : --figure-ink /
+      --figure-ink-soft (structure neutre — la position angulaire elle-même
+      n'est pas la grandeur enseignée ici)
+      point M, cercle-trajectoire, arc Δs, d, les deux points d₁/d₂, leurs
+      vecteurs vitesse, l'anneau v=0, l'encadré de conclusion : --figure-accent
+      (le contrat de rendu : accent = la grandeur "vitesse", et la distance d
+      qui la détermine)
+  -->
+
+  <!-- Titre (permanent, ne change pas d'une étape à l'autre) -->
+  <text x="310" y="26" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Un solide en rotation autour d'un axe fixe Δ
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le décor : disque, Δ, θ, sens positif
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- ── Le disque, vu de face ────────────────────────────────────────── -->
+    <circle cx="300" cy="280" r="160"
+            fill="var(--figure-grid)" fill-opacity="0.35"
+            stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <!-- ── Direction fixe du référentiel (référence de l'angle θ) ──────── -->
+    <line x1="300" y1="280" x2="470" y2="280"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="430" y="270" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">direction fixe (référence)</text>
+
+    <!-- ── Ligne peinte sur le solide, jusqu'au bord (θ = 40°) ─────────── -->
+    <line x1="300" y1="280" x2="422.6" y2="177.2"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="422.6" cy="177.2" r="3.2" fill="var(--figure-ink)"/>
+
+    <!-- ── Arc θ, entre la direction fixe et la ligne peinte ───────────── -->
+    <path d="M345,280 Q345.0,263.6 334.5,251.1"
+          fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <text x="358" y="255" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">θ</text>
+
+    <!-- ── Sens de rotation positif (flèche courbe, à l'écart) ─────────── -->
+    <path d="M246.87,294.23 Q253.52,319.02 276.76,329.85"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <polygon points="282.2,332.4 272.35,332.2 275.73,324.95" fill="var(--figure-ink-soft)"/>
+    <text x="258" y="346" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">sens positif</text>
+
+    <!-- ── Axe Δ (symbole ⊙ : perpendiculaire à la page) ───────────────── -->
+    <circle cx="300" cy="280" r="6.5" fill="var(--figure-surface)"
+            stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="300" cy="280" r="2" fill="var(--figure-ink)"/>
+    <text x="268" y="265" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">Δ</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le point M, son cercle-trajectoire, l'arc Δs
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- ── Cercle-trajectoire de M, rayon d ─────────────────────────────── -->
+    <circle cx="300" cy="280" r="100" fill="none"
+            stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+    <!-- ── Distance d, le long de C–M (label décalé, pas sur la ligne) ──── -->
+    <text x="329" y="237" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-accent)">d</text>
+
+    <!-- ── Seconde ligne fine, après une petite rotation Δθ ─────────────── -->
+    <line x1="300" y1="280" x2="361.6" y2="201.2"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="361.6" cy="201.2" r="2" fill="var(--figure-ink-soft)"/>
+
+    <!-- ── Point M ──────────────────────────────────────────────────────── -->
+    <circle cx="376.6" cy="215.7" r="3.2" fill="var(--figure-accent)"/>
+    <text x="388" y="230" text-anchor="start" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">M</text>
+
+    <!-- ── Arc Δs, de M à M', le long du cercle-trajectoire ─────────────── -->
+    <path d="M376.6,215.7 Q369.86,207.67 361.6,201.2"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="356.84,197.51 365.0,200.07 361.3,204.79" fill="var(--figure-accent)"/>
+    <text x="369" y="193" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)">Δ<tspan font-style="italic">s</tspan><tspan
+          font-style="normal"> = </tspan><tspan font-style="italic">d</tspan><tspan
+          font-style="normal">&#183;Δ</tspan><tspan font-style="italic">θ</tspan>
+    </text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — deux points, deux vitesses, v = 0 sur l'axe
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- ── Rayon vertical portant les deux points (à l'écart de la ligne peinte) -->
+    <line x1="300" y1="280" x2="300" y2="440"
+          stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- ── v = 0 sur l'axe : anneau pointillé fin ───────────────────────── -->
+    <circle cx="300" cy="280" r="10" fill="none"
+            stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="250" y="278" text-anchor="end" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">v</tspan><tspan
+          font-style="normal"> = 0</tspan></text>
+
+    <!-- ── Point 1 : d₁ = 0,30 m, proche de l'axe ───────────────────────── -->
+    <circle cx="300" cy="312" r="3.2" fill="var(--figure-ink)"/>
+    <text x="270" y="316" text-anchor="end" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">d</tspan><tspan
+          dy="3" font-size="8">1</tspan><tspan dy="-3" font-style="normal"> = 0,30 m</tspan>
+    </text>
+    <!-- vecteur v₁ = 0,60 m/s → 24 px (échelle 40 px/(m/s)) -->
+    <line x1="300" y1="312" x2="317" y2="312"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="324,312 315,308 315,316" fill="var(--figure-accent)"/>
+    <text x="312" y="302" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">v</tspan><tspan
+          dy="3" font-size="7">1</tspan><tspan dy="-3" font-style="normal"> = 0,60 m/s</tspan>
+    </text>
+
+    <!-- ── Point 2 : d₂ = 1,5 m, au bord (= R du disque) ────────────────── -->
+    <circle cx="300" cy="440" r="3.2" fill="var(--figure-ink)"/>
+    <text x="270" y="444" text-anchor="end" font-size="10.5"
+          fill="var(--figure-accent)"><tspan font-style="italic">d</tspan><tspan
+          dy="3" font-size="8">2</tspan><tspan dy="-3" font-style="normal"> = 1,5 m</tspan>
+    </text>
+    <!-- vecteur v₂ = 3,0 m/s → 120 px (même échelle) -->
+    <line x1="300" y1="440" x2="413" y2="440"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="420,440 411,436 411,444" fill="var(--figure-accent)"/>
+    <text x="360" y="430" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)"><tspan font-style="italic">v</tspan><tspan
+          dy="3" font-size="7">2</tspan><tspan dy="-3" font-style="normal"> = 3,0 m/s</tspan>
+    </text>
+
+    <!-- ── Conclusion, encadrée ──────────────────────────────────────────── -->
+    <rect x="160" y="478" width="300" height="34" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="310" y="499" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan font-style="italic">ω</tspan><tspan
+          font-style="normal"> identique partout, </tspan><tspan
+          font-style="italic">v</tspan><tspan font-style="normal"> proportionnelle à </tspan><tspan
+          font-style="italic">d</tspan>
+    </text>
+
+  </g><!-- /step-3 -->
+
+</svg>
