@@ -48,7 +48,7 @@ rule, carried forward here).
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | done (7 STAGE / 10 DECLINE, 7 figures) |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | done (14 STAGE / 18 DECLINE, 14 figures) |
-| S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
+| S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | judged (16 STAGE ch → 17 figs / 19 DECLINE), build in progress |
 
 ---
 
@@ -711,3 +711,58 @@ carrying genetique-humaine content, the reconciled app files, and this
 ledger update.
 
 **Running tally: 42/47 lessons done, 231/266 chapters judged, 110 STAGE / 121 DECLINE.**
+
+### Wave S2 — svt: liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres
+
+**Judgment** (pedagogy-architect × 5; the two "Pour t'entraîner" exercise
+chapters initially omitted from the agent prompts — liberation R8, moyens
+R9 — were judged directly by the orchestrator against §2.5, both clean
+DECLINE, restoring full 35/35 coverage):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| liberation-energie-matiere-organique | R0 | DECLINE | narrative sprint/marathon hook |
+| liberation-energie-matiere-organique | R1 | STAGE | `atp-hydrolyse-cycle` — charge repulsion → hydrolyse → regeneration loop (R7 never touches ATP) |
+| liberation-energie-matiere-organique | R2 | STAGE | `glycolyse-bilan-atp` — invest −2 then repay +4, net +2 (confronts "net = 4") |
+| liberation-energie-matiere-organique | R3 | STAGE | `krebs-bilan-carbone` — carbon accounting to 6 CO₂ = complete oxidation |
+| liberation-energie-matiere-organique | R4 | STAGE | `chimiosmose-atp-synthase` — the ETC/gradient/ATP-synthase mechanism R7 only labels |
+| liberation-energie-matiere-organique | R5 | DECLINE | energy-balance recap, a totals table not a curve |
+| liberation-energie-matiere-organique | R6 | DECLINE | fermentation mechanism already owned by R7 |
+| liberation-energie-matiere-organique | R8 | DECLINE | exercise (flask A/B respiration vs fermentation), visual work carried by R7 |
+| moyens-de-defense | R0 | DECLINE | narrative wound hook |
+| moyens-de-defense | R2 | STAGE | `phagocytose-etapes` — one cell's chimiotactisme→adhérence→ingestion→digestion→rejet |
+| moyens-de-defense | R3 | DECLINE | innate-limits narrative bridge, a comparison table |
+| moyens-de-defense | R4 | STAGE | `selection-clonale` — the SELECTION of one clone from the repertoire (R7 starts post-selection) |
+| moyens-de-defense | R5 | STAGE | `anticorps-agglutination` — bivalence → crosslink → mark-not-destroy |
+| moyens-de-defense | R6 | STAGE | `lt8-cytotoxicite` — soi-modifié recognition + induced apoptosis (R7 only produces the CTL) |
+| moyens-de-defense | R8 | STAGE | `reponse-primaire-secondaire` — the primary-vs-secondary titre graph |
+| moyens-de-defense | R9 | DECLINE | exercise supplies titre data verbally = R8's figure; attempt-first |
+| role-enzymes | R0 | DECLINE | narrative bread→sweet hook |
+| role-enzymes | R1 | DECLINE | definitional; "never consumed" is R2's cycle-figure punchline |
+| role-enzymes | R3 | STAGE | `double-specificite` — substrate-choice vs action separated spatially |
+| role-enzymes | R4 | STAGE ×2 | `courbe-temperature` (bell + denaturation collapse) + `courbe-ph` (two enzyme optima) |
+| role-enzymes | R5 | STAGE | `concentration-substrat-enzyme` — saturation plateau vs proportional line, two-panel |
+| role-enzymes | R6 | DECLINE | digestive-enzyme reference table, recap |
+| role-enzymes | R7 | DECLINE | exercise, hinges on curves already staged at R4/R5 |
+| soi-non-soi | R0 | DECLINE | narrative transfusion/graft hook |
+| soi-non-soi | R1 | DECLINE | self/non-self conceptual boundary, narrative |
+| soi-non-soi | R2 | STAGE | `specificite-cle-serrure` — antigen-antibody complementarity, fit vs no-fit |
+| soi-non-soi | R4 | STAGE | `agglutination-transfusion` — transfusion agglutination mechanism (distinct from R3's CMH-graft axis) |
+| soi-non-soi | R5 | DECLINE | non-self category catalog, parallel not a build |
+| soi-non-soi | R6 | DECLINE | exercise applies R4's compatibility logic |
+| transmission-caracteres | R0 | DECLINE | narrative mice hook |
+| transmission-caracteres | R1 | DECLINE | vocabulary definitions, a prose table |
+| transmission-caracteres | R2 | DECLINE | P×P→F1 is a trivial 1-case cross; meiosis gesture owned by R3 |
+| transmission-caracteres | R4 | STAGE | `echiquier-dihybride` — the 4×4 grid giving 9:3:3:1 (distinct scale from R3's 2×2) |
+| transmission-caracteres | R5 | STAGE | `test-cross-deux-hypotheses` — two-branch inference revealing a hidden genotype |
+| transmission-caracteres | R6 | DECLINE | exercise instructs the student to build the échiquier themselves |
+
+**Wave S2 judgment tally: 16 STAGE chapters → 17 figures / 19 DECLINE**
+(35 chapters judged — role-enzymes R4 is the campaign's only chapter to
+warrant two figures, the temperature and pH enzyme-kinetics graphs).
+
+**Slug-uniqueness pre-check:** all 17 proposed slugs verified corpus-unique
+before build launch, zero collisions (including the collision-prone generic
+`courbe-temperature`/`courbe-ph`).
+
+**Build:** in progress.
