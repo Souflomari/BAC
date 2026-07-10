@@ -268,3 +268,789 @@ items:
       $$m\frac{v_0^2}{R} = |q|\,v_0\,B \implies R = \frac{m\,v_0}{|q|\,B}$$
       Vitesse de norme constante et rayon constant : mouvement circulaire
       uniforme.
+
+  - id: CMP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un joueur de basket tire en cloche vers le panier : le ballon ralentit
+      nettement en montant, puis redescend de plus en plus vite. Un eleve en
+      conclut que ce ralentissement concerne tout le mouvement du ballon. Que
+      peut-on dire, en realite, du deplacement horizontal (de gauche a
+      droite) du ballon pendant ce meme vol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il ralentit lui aussi en montant, avant de reprendre de la vitesse en redescendant, comme le mouvement vertical"
+        correct: false
+        feedback: >
+          C'est confondre les deux axes. Le mouvement vertical ralentit puis
+          repart, mais le mouvement horizontal n'a aucune raison d'en faire
+          autant : les deux sont independants.
+      - id: B
+        text: "Il se poursuit a vitesse constante pendant tout le vol, sans jamais ralentir ni accelerer"
+        correct: true
+      - id: C
+        text: "Il s'arrete completement au sommet de la trajectoire, en meme temps que le ballon cesse de monter"
+        correct: false
+        feedback: >
+          C'est la vitesse VERTICALE qui s'annule au sommet, pas
+          l'horizontale : au sommet, le ballon garde exactement sa vitesse
+          horizontale de depart.
+      - id: D
+        text: "Il accelere progressivement du debut a la fin du vol, car le poids agit sur tout le mouvement"
+        correct: false
+        feedback: >
+          Le poids est une force purement verticale : il n'a aucune
+          composante horizontale, donc il ne peut ni accelerer ni ralentir le
+          mouvement horizontal.
+    correct_feedback: >
+      Oui : aucune force horizontale n'agit (le poids est vertical), donc la
+      vitesse horizontale ne change jamais pendant tout le vol.
+    solution: |
+      Seul le poids agit, et il est vertical : sa projection horizontale est
+      nulle a tout instant, donc $a_x = 0$ et $v_x$ reste constante du debut
+      a la fin du vol, independamment de ce que fait $v_y$.
+
+  - id: CMP-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      On lance, avec exactement la meme vitesse initiale (meme valeur, meme
+      angle), une balle de tennis et une boule de petanque, frottements de
+      l'air negliges. Laquelle va le plus loin ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La boule de petanque, plus lourde, va plus loin car elle est moins freinee par sa propre inertie"
+        correct: false
+        feedback: >
+          En chute libre, la masse disparait de la deuxieme loi
+          ($\vec a = \vec g$) : une masse plus grande ne donne aucun
+          avantage de portee.
+      - id: B
+        text: "Impossible a dire sans connaitre les masses exactes des deux objets"
+        correct: false
+        feedback: >
+          On peut au contraire conclure sans les masses : c'est justement
+          parce que $\vec a = \vec g$ ne depend pas de $m$ que leur valeur
+          est inutile ici.
+      - id: C
+        text: "Aucune des deux : les deux suivent exactement la meme trajectoire, quelle que soit leur masse"
+        correct: true
+      - id: D
+        text: "La balle de tennis, plus legere, va plus loin car elle est plus facile a propulser"
+        correct: false
+        feedback: >
+          Sans frottements, la masse n'intervient nulle part dans le
+          mouvement : etre plus legere ne donne aucun avantage de portee.
+    correct_feedback: >
+      Exact : $\vec a = \vec g$ ne depend pas de $m$. Memes conditions
+      initiales, meme acceleration, donc meme trajectoire, quelle que soit la
+      masse.
+    solution: |
+      $$m\vec a = m\vec g \implies \vec a = \vec g$$
+      La masse se simplifie completement. A conditions initiales identiques,
+      les deux objets suivent rigoureusement la meme trajectoire.
+
+  - id: CMP-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Le poids d'un projectile est une force verticale, dirigee vers le bas.
+      Cette force a-t-elle un effet sur le deplacement horizontal du
+      projectile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, un peu : meme verticale, une force finit toujours par influencer un peu tous les axes du mouvement"
+        correct: false
+        feedback: >
+          Une force n'influence que les axes ou elle a une composante non
+          nulle. Le poids etant purement vertical, sa composante horizontale
+          est exactement nulle, pas seulement petite.
+      - id: B
+        text: "Oui, completement : c'est elle qui fait ralentir puis repartir le ballon horizontalement, comme elle le fait verticalement"
+        correct: false
+        feedback: >
+          C'est confondre les deux axes. Le poids agit uniquement sur l'axe
+          vertical ; l'axe horizontal n'est soumis a aucune force, donc a
+          aucun ralentissement.
+      - id: C
+        text: "Cela depend de l'angle de lancement : plus l'angle est grand, plus le poids agit horizontalement"
+        correct: false
+        feedback: >
+          L'angle de lancement change la direction de la vitesse initiale,
+          pas la direction du poids : celui-ci reste vertical quel que soit
+          l'angle choisi.
+      - id: D
+        text: "Non, aucun : une force purement verticale n'a pas de composante horizontale, donc elle ne peut pas modifier le mouvement horizontal"
+        correct: true
+    correct_feedback: >
+      Exact : projete sur l'axe horizontal, le poids donne une composante
+      nulle a chaque instant, donc $a_x = 0$ quel que soit l'angle de
+      lancement.
+    solution: |
+      Le poids $\vec P = m\vec g$ est purement vertical. Sa projection sur
+      un axe horizontal vaut $0$ a tout instant, donc $a_x = 0$ : aucune
+      force horizontale n'agit, quel que soit l'angle de lancement.
+
+  - id: CMP-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      On etudie une chute libre verticale avec un axe $Oy$ oriente vers le
+      HAUT. Un eleve ecrit $a_y = +g$ au lieu de $a_y = -g$. D'ou vient cette
+      erreur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il a oublie que $\\vec g$ pointe vers le bas, donc dans le sens oppose a $Oy$ : sa composante sur cet axe est negative, $a_y = -g$"
+        correct: true
+      - id: B
+        text: "Il n'y a pas d'erreur : $a_y = +g$ est toujours vrai, quel que soit le sens choisi pour l'axe"
+        correct: false
+        feedback: >
+          Le signe de $a_y$ depend entierement du sens choisi pour $Oy$. Avec
+          $Oy$ vers le haut, $\vec g$ (vers le bas) a une composante
+          negative : $a_y = -g$, pas $+g$.
+      - id: C
+        text: "L'erreur vient d'avoir oublie la masse dans la deuxieme loi de Newton"
+        correct: false
+        feedback: >
+          La masse n'est pas en cause ici : elle se simplifie des le depart
+          ($\vec a = \vec g$). L'erreur porte uniquement sur le signe, lie a
+          l'orientation de l'axe.
+      - id: D
+        text: "L'erreur vient d'avoir pris une vitesse initiale positive au lieu de negative"
+        correct: false
+        feedback: >
+          Le signe de $v_{0y}$ est independant de celui de $a_y$ : c'est une
+          erreur sur l'acceleration (projection de $\vec g$), pas sur la
+          vitesse initiale.
+    correct_feedback: >
+      Avec $Oy$ vers le haut, $\vec g$ pointe dans le sens oppose a l'axe :
+      $g_y = -g$, donc $a_y = -g$. Ce signe vient uniquement du choix
+      d'orientation de l'axe, pas d'une regle universelle.
+    solution: |
+      $Oy$ vers le haut, $\vec g$ vers le bas : $\vec g$ est oppose au sens
+      de l'axe, donc sa composante est negative.
+      $$a_y = g_y = -g$$
+      Avec $Oy$ vers le bas, on aurait trouve $a_y = +g$ : le signe suit le
+      choix d'axe, il n'est pas fixe une fois pour toutes.
+
+  - id: CMP-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Une balle est lancee verticalement vers le haut avec une vitesse
+      initiale $v_{0y}=9{,}8\ \text{m/s}$, depuis le sol. Elle atteint son
+      sommet a $t=1{,}0\ \text{s}$. Combien de temps met-elle, apres ce
+      sommet, pour retomber au sol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Moins de 1,0 s, car en redescendant la balle est plus rapide donc elle met moins de temps"
+        correct: false
+        feedback: >
+          Aller plus vite a l'arrivee ne veut pas dire mettre moins de temps :
+          $y(t)$ est une parabole symetrique par rapport a son sommet, ce qui
+          impose une duree de descente egale a celle de la montee.
+      - id: B
+        text: "Exactement 1,0 s : la montee et la descente prennent le meme temps, par symetrie de $y(t)$"
+        correct: true
+      - id: C
+        text: "Plus de 1,0 s, car il faut d'abord que la vitesse s'annule avant de pouvoir redescendre"
+        correct: false
+        feedback: >
+          La vitesse s'annule justement AU sommet, a $t=1{,}0\ \text{s}$ : ce
+          n'est pas un delai supplementaire, c'est l'instant meme ou la
+          montee se termine et la descente commence.
+      - id: D
+        text: "Impossible a savoir sans connaitre la hauteur exacte atteinte au sommet"
+        correct: false
+        feedback: >
+          La symetrie de la parabole $y(t)$ donne directement
+          $t_{sol} = 2\,t_{sommet}$, sans avoir besoin de calculer la hauteur
+          du sommet.
+    correct_feedback: >
+      $t_{sol} = 2\,t_{sommet}$ : la parabole $y(t)$ est symetrique par
+      rapport a son sommet, donc montee et descente prennent exactement le
+      meme temps, ici $1{,}0\ \text{s}$ chacune.
+    solution: |
+      $y(t) = v_{0y}t - \frac{1}{2}gt^2$ est une parabole en $t$, symetrique
+      par rapport a $t_{sommet}$. Donc $t_{sol} = 2\,t_{sommet} = 2{,}0\
+      \text{s}$, soit $2{,}0 - 1{,}0 = 1{,}0\ \text{s}$ apres le sommet.
+
+  - id: CMP-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un projectile est lance avec une vitesse initiale de norme $v_0$,
+      faisant un angle $\alpha$ au-dessus de l'horizontale. Quelle est
+      l'expression correcte de sa composante verticale initiale $v_{0y}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_{0y} = v_0 \\cos\\alpha$"
+        correct: false
+        feedback: >
+          C'est l'expression de $v_{0x}$, pas de $v_{0y}$ : $\cos\alpha$
+          projette sur l'axe horizontal, $\sin\alpha$ sur l'axe vertical.
+      - id: B
+        text: "$v_{0y} = v_0 \\tan\\alpha$"
+        correct: false
+        feedback: >
+          $\tan\alpha$ est le rapport $v_{0y}/v_{0x}$, pas une composante de
+          $v_0$ elle-meme : ce n'est pas la bonne fonction trigonometrique
+          pour projeter directement $v_0$.
+      - id: C
+        text: "$v_{0y} = v_0 \\sin\\alpha$"
+        correct: true
+      - id: D
+        text: "$v_{0y} = v_0$"
+        correct: false
+        feedback: >
+          Cela reviendrait a ignorer l'angle $\alpha$, comme si tout $v_0$
+          etait vertical : ce n'est vrai que dans le cas particulier
+          $\alpha = 90^\circ$.
+    correct_feedback: >
+      Exact : $v_{0y} = v_0\sin\alpha$. Verification aux cas extremes :
+      $\alpha=90^\circ$ donne $v_{0y}=v_0$ (lancer vertical), $\alpha=0^\circ$
+      donne $v_{0y}=0$ (lancer horizontal).
+    solution: |
+      La projection de $\vec v_0$ sur l'axe vertical $Oy$ donne
+      $v_{0y} = v_0\sin\alpha$, et sur l'axe horizontal $Ox$,
+      $v_{0x} = v_0\cos\alpha$ — deux fonctions trigonometriques distinctes
+      pour deux axes distincts.
+
+  - id: CMP-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Pour un projectile soumis uniquement a son poids (frottements
+      negliges), pourquoi peut-on affirmer que $a_x = 0$ a chaque instant du
+      vol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que la vitesse horizontale initiale $v_{0x}$ est toujours nulle"
+        correct: false
+        feedback: >
+          $v_{0x}$ n'est nulle que dans le cas particulier d'un lancer
+          vertical ($\alpha=90^\circ$). En general $v_{0x}=v_0\cos\alpha \neq
+          0$, et pourtant $a_x=0$ quand meme.
+      - id: B
+        text: "Parce que la masse du projectile est trop faible pour que $g$ agisse horizontalement"
+        correct: false
+        feedback: >
+          La masse n'a aucun role ici : $a_x=0$ vient uniquement de la
+          direction du poids (verticale), pas de la valeur de la masse,
+          petite ou grande.
+      - id: C
+        text: "Parce qu'au sommet de la trajectoire, la vitesse horizontale s'annule aussi, ce qui donne $a_x=0$"
+        correct: false
+        feedback: >
+          C'est $v_y$ qui s'annule au sommet, pas $v_x$ : $v_x$ garde la
+          valeur $v_{0x}$ a chaque instant, y compris au sommet.
+      - id: D
+        text: "Parce que le poids est une force purement verticale : sa projection sur l'axe horizontal est nulle a chaque instant"
+        correct: true
+    correct_feedback: >
+      Oui : le poids est la seule force, et il est purement vertical, donc sa
+      composante sur $Ox$ est nulle a tout instant, d'ou $a_x=0$ tout au long
+      du vol.
+    solution: |
+      Bilan : seul $\vec P = m\vec g$ agit. Projection sur $Ox$ :
+      $$m a_x = P_x = 0 \implies a_x = 0$$
+      Ceci vient de la direction de $\vec P$ (verticale), et non de la masse
+      ni des conditions initiales.
+
+  - id: CMP-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un projectile est lance avec $v_0 = 20\ \text{m/s}$ et $\alpha=45^\circ$
+      (donc $\sin\alpha=\cos\alpha\approx 0{,}71$, $\cos^2\alpha=0{,}50$,
+      $\tan\alpha=1{,}0$), $g\approx 9{,}8\ \text{m/s}^2$. Quelle est
+      l'equation de sa trajectoire $y(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = x - 0{,}0245\\,x^2$"
+        correct: true
+      - id: B
+        text: "$y(x) = x - 0{,}049\\,x^2$"
+        correct: false
+        feedback: >
+          Ce coefficient oublie le facteur $2$ au denominateur :
+          $g/(2v_0^2\cos^2\alpha)$, pas $g/(v_0^2\cos^2\alpha)$.
+      - id: C
+        text: "$y(x) = x - 0{,}0173\\,x^2$"
+        correct: false
+        feedback: >
+          Ce coefficient utilise $\cos\alpha$ au lieu de $\cos^2\alpha$ au
+          denominateur : la formule exige le carre de $\cos\alpha$.
+      - id: D
+        text: "$y(x) = x + 0{,}0245\\,x^2$"
+        correct: false
+        feedback: >
+          Erreur de signe : la parabole s'ouvre vers le BAS (le second terme
+          se retranche), consequence directe du signe negatif de $g$ dans
+          $a_y=-g$.
+    correct_feedback: >
+      $y(x) = \tan\alpha\cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2 = x -
+      0{,}0245\,x^2$, avec $\tan\alpha=1{,}0$ et
+      $g/(2\times400\times0{,}50)=0{,}0245$.
+    solution: |
+      $$y(x) = \tan\alpha \cdot x - \frac{g}{2v_0^2\cos^2\alpha}x^2$$
+      $$y(x) = 1{,}0\,x - \frac{9{,}8}{2\times 400\times 0{,}50}\,x^2 =
+      x - 0{,}0245\,x^2$$
+
+  - id: CMP-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      L'equation de la trajectoire
+      $y(x) = \tan\alpha \cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$ a ete
+      obtenue en eliminant le temps entre $x(t)$ et $y(t)$. Que peut-on dire
+      de la masse $m$ du projectile dans cette equation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle a disparu seulement a cette etape, en se simplifiant lors de l'elimination du temps"
+        correct: false
+        feedback: >
+          Elle avait deja disparu bien avant : des la deuxieme loi de Newton,
+          $\vec a_G = \vec g$ ne contient plus $m$. L'elimination du temps
+          n'a rien simplifie de plus a ce sujet.
+      - id: B
+        text: "Elle n'apparait nulle part : elle a deja disparu des la deuxieme loi de Newton ($\\vec a_G = \\vec g$), avant meme d'ecrire $x(t)$ et $y(t)$"
+        correct: true
+      - id: C
+        text: "Elle est cachee dans le terme $g$, qui depend en realite legerement de la masse du projectile"
+        correct: false
+        feedback: >
+          $g$ est l'acceleration de pesanteur du lieu, independante de la
+          masse de l'objet qui tombe : ce n'est pas une propriete du
+          projectile.
+      - id: D
+        text: "Elle intervient implicitement a travers $v_0$, qui depend de la masse du lanceur"
+        correct: false
+        feedback: >
+          $v_0$ est une donnee du probleme (la vitesse a laquelle l'objet est
+          lance), pas une consequence de la masse de qui que ce soit dans
+          cette equation.
+    correct_feedback: >
+      Exact : $m$ disparait des la deuxieme loi de Newton
+      ($\vec a_G = \vec g$), donc elle n'a jamais figure dans $x(t)$, $y(t)$,
+      ni dans $y(x)$.
+    solution: |
+      $m\vec a_G = m\vec g \implies \vec a_G = \vec g$ : $m$ se simplifie des
+      cette premiere etape. Toutes les equations qui suivent ($x(t)$, $y(t)$,
+      $y(x)$) en heritent, sans jamais faire reapparaitre $m$.
+
+  - id: CMP-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Avec $v_0=25\ \text{m/s}$, $\sin\alpha=0{,}60$, $\cos\alpha=0{,}80$,
+      $g\approx9{,}8\ \text{m/s}^2$, l'equation de la trajectoire est
+      $y(x) = 0{,}75\,x - 0{,}01225\,x^2$. Quelle est la hauteur $y$ du
+      projectile lorsqu'il a parcouru $x=10\ \text{m}$ horizontalement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y = 7{,}5\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce calcul oublie completement le second terme
+          ($0{,}01225\,x^2$) de l'equation.
+      - id: B
+        text: "$y \\approx 7{,}4\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce calcul oublie d'elever $x$ au carre dans le second terme
+          ($0{,}01225\times x$ au lieu de $0{,}01225\times x^2$).
+      - id: C
+        text: "$y \\approx 6{,}3\\ \\text{m}$"
+        correct: true
+      - id: D
+        text: "$y \\approx 8{,}7\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Erreur de signe : le second terme se RETRANCHE (parabole vers le
+          bas), il ne s'ajoute pas au premier.
+    correct_feedback: >
+      $y(10) = 0{,}75\times10 - 0{,}01225\times10^2 = 7{,}5 - 1{,}225 \approx
+      6{,}3\ \text{m}$.
+    solution: |
+      $$y(10) = 0{,}75\times 10 - 0{,}01225\times 10^2 = 7{,}5 - 1{,}225
+      \approx 6{,}3\ \text{m}$$
+
+  - id: CMP-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un ballon est lance avec $v_0 = 18\ \text{m/s}$, $\sin\alpha = 0{,}50$
+      (donc $v_{0y}=9{,}0\ \text{m/s}$), $g\approx 9{,}8\ \text{m/s}^2$.
+      Quelle est la fleche du tir ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f \\approx 28{,}6\\ \\text{m}$"
+        correct: false
+        feedback: >
+          C'est la formule de la PORTEE ($v_0^2\sin(2\alpha)/g$) qui a ete
+          utilisee ici, pas celle de la fleche.
+      - id: B
+        text: "$f \\approx 8{,}3\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce calcul oublie le facteur $2$ au denominateur :
+          $f=v_{0y}^2/(2g)$, pas $v_{0y}^2/g$.
+      - id: C
+        text: "$f \\approx 16{,}5\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce calcul utilise $v_0^2$ au lieu de $v_{0y}^2$ : la fleche ne
+          depend que de la composante VERTICALE de la vitesse initiale.
+      - id: D
+        text: "$f \\approx 4{,}1\\ \\text{m}$"
+        correct: true
+    correct_feedback: >
+      $f = v_{0y}^2/(2g) = 9{,}0^2/(2\times9{,}8) = 81/19{,}6 \approx
+      4{,}1\ \text{m}$.
+    solution: |
+      $$f = \frac{v_{0y}^2}{2g} = \frac{9{,}0^2}{2\times 9{,}8} =
+      \frac{81}{19{,}6} \approx 4{,}1\ \text{m}$$
+
+  - id: CMP-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Pour un meme angle de lancement $\alpha$, on double la vitesse initiale
+      $v_0$ d'un tir. Que deviennent la fleche $f$ et la portee $D$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles sont toutes les deux multipliees par 4, car $f$ et $D$ dependent de $v_0^2$"
+        correct: true
+      - id: B
+        text: "Elles sont toutes les deux multipliees par 2, comme $v_0$"
+        correct: false
+        feedback: >
+          $f$ et $D$ dependent de $v_0^2$, pas de $v_0$ : doubler $v_0$
+          multiplie donc $v_0^2$ par $4$, pas par $2$.
+      - id: C
+        text: "Seule la portee double ; la fleche ne change pas, car elle ne depend que de l'angle"
+        correct: false
+        feedback: >
+          $f=v_0^2\sin^2\alpha/(2g)$ depend elle aussi de $v_0^2$ : elle
+          change avec $v_0$, exactement comme la portee.
+      - id: D
+        text: "Elles sont toutes les deux multipliees par 8"
+        correct: false
+        feedback: >
+          $f$ et $D$ dependent de $v_0^2$ (une puissance 2), pas de $v_0^3$ :
+          doubler $v_0$ multiplie donc par $2^2=4$, pas par $2^3=8$.
+    correct_feedback: >
+      $f$ et $D$ contiennent toutes deux $v_0^2$ et rien d'autre en $v_0$ :
+      doubler $v_0$ multiplie donc les deux par $2^2=4$.
+    solution: |
+      $$f = \frac{v_0^2\sin^2\alpha}{2g} \qquad D =
+      \frac{v_0^2\sin(2\alpha)}{g}$$
+      Les deux formules ne contiennent $v_0$ qu'au carre : doubler $v_0$
+      multiplie donc $f$ et $D$ par $2^2=4$, pas par $2$.
+
+  - id: CMP-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Deux tirs, a la meme vitesse $v_0$, sont effectues avec des angles
+      complementaires $\alpha_1 = 20^\circ$ et $\alpha_2 = 70^\circ$. Que
+      peut-on affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux tirs ont la meme portee ET la meme fleche, puisque les angles sont complementaires"
+        correct: false
+        feedback: >
+          Seule la portee est egale pour des angles complementaires
+          ($\sin(2\alpha)$ identique). La fleche depend de $\sin^2\alpha$,
+          qui differe : le tir le plus incline monte plus haut.
+      - id: B
+        text: "Les deux tirs ont la meme portee, mais le tir a $70^\\circ$ a la fleche la plus grande"
+        correct: true
+      - id: C
+        text: "Le tir a $70^\\circ$ a la plus grande portee, car un angle plus grand rapproche le tir de la verticale, donc du maximum"
+        correct: false
+        feedback: >
+          La portee depend de $\sin(2\alpha)$, maximale a $45^\circ$ puis
+          redescendante : $20^\circ$ et $70^\circ$ donnent en realite la
+          MEME portee, ni l'un ni l'autre n'est superieur.
+      - id: D
+        text: "Le tir a $20^\\circ$ a la plus grande fleche, car un angle plus petit donne un tir plus tendu et plus efficace"
+        correct: false
+        feedback: >
+          C'est l'inverse : la fleche $f=v_0^2\sin^2\alpha/(2g)$ croit avec
+          $\alpha$. Le tir le plus incline ($70^\circ$) monte plus haut, pas
+          celui a $20^\circ$.
+    correct_feedback: >
+      $\sin(2\times20^\circ)=\sin(2\times70^\circ)$ : meme portee. Mais
+      $\sin^2(70^\circ) > \sin^2(20^\circ)$ : le tir le plus incline a la
+      fleche la plus grande.
+    solution: |
+      Portee : $\sin(2\alpha_1)=\sin(40^\circ)=\sin(140^\circ)=\sin(2\alpha_2)$
+      (angles complementaires), donc $D_1=D_2$.
+      Fleche : $\sin^2(70^\circ) > \sin^2(20^\circ)$, donc $f_2 > f_1$.
+
+  - id: CMP-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Deux particules, l'une de charge positive et l'autre de charge
+      negative (meme masse, meme valeur $|q|$), entrent avec la meme vitesse
+      $\vec v_0$ dans le meme champ $\vec B$ perpendiculaire a $\vec v_0$.
+      Que peut-on dire de leurs trajectoires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles suivent exactement la meme trajectoire, car le champ magnetique ne depend pas du signe de la charge"
+        correct: false
+        feedback: >
+          Contrairement a la chute libre (ou la masse disparait), le SIGNE
+          de la charge intervient directement dans le sens de
+          $\vec F = q\vec v\wedge\vec B$ : il ne disparait pas.
+      - id: B
+        text: "La particule positive n'est pas deviee du tout, seule la negative subit la force de Lorentz"
+        correct: false
+        feedback: >
+          La force de Lorentz agit sur toute charge non nulle, positive ou
+          negative ; seul son SENS change avec le signe de $q$, pas son
+          existence.
+      - id: C
+        text: "Elles decrivent des cercles de meme rayon $R=mv_0/(|q|B)$, mais courbes en sens opposes, selon le signe de la charge"
+        correct: true
+      - id: D
+        text: "Les deux sont deviees dans le meme sens, mais avec des rayons differents selon le signe de la charge"
+        correct: false
+        feedback: >
+          $R=mv_0/(|q|B)$ ne depend que de la VALEUR de $q$ (identique ici),
+          pas de son signe : c'est le SENS de la courbure qui differe, pas le
+          rayon.
+    correct_feedback: >
+      $R=mv_0/(|q|B)$ est identique pour les deux (meme $|q|$), mais le sens
+      de $\vec F=q\vec v\wedge\vec B$ s'inverse avec le signe de $q$ : les
+      deux cercles sont courbes en sens opposes.
+    solution: |
+      Meme $m$, $v_0$, $|q|$, $B$ donc meme $R$. Mais
+      $\vec F = q\vec v\wedge\vec B$ change de sens quand $q$ change de
+      signe : les deux trajectoires sont deux cercles de meme rayon, courbes
+      de part et d'autre de la direction initiale.
+
+  - id: CMP-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Le rayon de la trajectoire circulaire d'une particule chargee dans un
+      champ magnetique uniforme vaut $R = \dfrac{m\,v_0}{|q|\,B}$. Laquelle
+      de ces modifications, prise seule (toutes les autres grandeurs restant
+      fixees), AUGMENTE ce rayon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Augmenter le champ magnetique $B$"
+        correct: false
+        feedback: >
+          $B$ est au denominateur : l'augmenter DIMINUE le rayon, il ne
+          l'augmente pas.
+      - id: B
+        text: "Augmenter la charge $|q|$ de la particule"
+        correct: false
+        feedback: >
+          $|q|$ est au denominateur : l'augmenter DIMINUE le rayon, il ne
+          l'augmente pas.
+      - id: C
+        text: "Diminuer la masse $m$ de la particule"
+        correct: false
+        feedback: >
+          $m$ est au numerateur : la DIMINUER reduit le rayon ; c'est
+          l'AUGMENTER qui l'agrandirait.
+      - id: D
+        text: "Augmenter la vitesse initiale $v_0$"
+        correct: true
+    correct_feedback: >
+      $v_0$ est au numerateur de $R=mv_0/(|q|B)$ : l'augmenter augmente $R$.
+      $B$ et $|q|$ sont au denominateur (les augmenter reduit $R$) ; $m$ est
+      au numerateur (la diminuer reduit $R$).
+    solution: |
+      $$R = \frac{m\,v_0}{|q|\,B}$$
+      Seule une augmentation du numerateur ($m$ ou $v_0$) augmente $R$.
+      Parmi les options, seule l'augmentation de $v_0$ correspond a ce cas.
+
+  - id: CMP-22
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un jet d'eau est lance avec $v_0 = 15\ \text{m/s}$, $\sin\alpha =
+      0{,}60$, $\cos\alpha = 0{,}80$, $g\approx 9{,}8\ \text{m/s}^2$ (sol
+      horizontal, frottements negliges). Quelle est la portee de ce jet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$D \\approx 22{,}0\\ \\text{m}$"
+        correct: true
+      - id: B
+        text: "$D \\approx 11{,}0\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce calcul oublie le facteur $2$ : $D=2v_{0x}v_{0y}/g$, pas
+          $v_{0x}v_{0y}/g$.
+      - id: C
+        text: "$D \\approx 4{,}1\\ \\text{m}$"
+        correct: false
+        feedback: >
+          C'est la formule de la FLECHE ($v_{0y}^2/(2g)$) qui a ete utilisee
+          ici, pas celle de la portee.
+      - id: D
+        text: "$D \\approx 16{,}5\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Les composantes ont ete inversees : c'est $v_{0x}$ (horizontale)
+          qui multiplie $t_{portee}$ pour donner une distance, pas $v_{0y}$.
+    correct_feedback: >
+      $D = v_0^2\sin(2\alpha)/g = 15^2\times2\times0{,}60\times0{,}80/9{,}8
+      = 216/9{,}8 \approx 22{,}0\ \text{m}$.
+    solution: |
+      $v_{0x}=12\ \text{m/s}$, $v_{0y}=9{,}0\ \text{m/s}$,
+      $t_{portee}=2v_{0y}/g\approx1{,}84\ \text{s}$.
+      $$D = v_{0x}\times t_{portee} \approx 12\times1{,}84 \approx
+      22{,}0\ \text{m}$$
+
+  - id: CMP-23
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Une pierre est lancee horizontalement du haut d'une falaise, avec une
+      vitesse initiale $v_0 = 8{,}0\ \text{m/s}$ (donc $\alpha=0^\circ$,
+      $v_{0y}=0$), frottements negliges. Elle heurte le sol en contrebas
+      apres une trajectoire courbe. Que vaut sa vitesse horizontale juste
+      avant l'impact, comparee a $v_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est superieure a $8{,}0\\ \\text{m/s}$, car la chute lui communique de la vitesse dans toutes les directions, y compris horizontalement"
+        correct: false
+        feedback: >
+          Le poids, qui provoque la chute, est purement vertical : il ne
+          communique aucune vitesse supplementaire a l'axe horizontal.
+      - id: B
+        text: "Elle vaut encore exactement $8{,}0\\ \\text{m/s}$ : que le sol soit plus bas que le point de lancement ne change rien a $a_x=0$"
+        correct: true
+      - id: C
+        text: "Elle est inferieure a $8{,}0\\ \\text{m/s}$, car une partie de la vitesse initiale se convertit progressivement en vitesse verticale"
+        correct: false
+        feedback: >
+          Les deux axes sont independants : $v_{0x}$ ne se « convertit » pas
+          en $v_y$, elle reste intacte pendant que $v_y$ se construit
+          separement sous l'effet de $g$.
+      - id: D
+        text: "Impossible a dire sans connaitre la hauteur de la falaise"
+        correct: false
+        feedback: >
+          $a_x=0$ tient a chaque instant, quelle que soit la duree du vol ou
+          la hauteur de chute : $v_x$ reste $v_{0x}$, hauteur connue ou non.
+    correct_feedback: >
+      $a_x=0$ tout au long du vol, quelle que soit la hauteur de la falaise :
+      $v_x$ reste egale a $v_0=8{,}0\ \text{m/s}$ du lancer jusqu'a
+      l'impact.
+    solution: |
+      Seul le poids agit, purement vertical : $a_x=0$ a chaque instant, quel
+      que soit le niveau du sol d'arrivee. $v_x(t)=v_{0x}=8{,}0\ \text{m/s}$
+      reste donc constante jusqu'a l'impact.
+
+  - id: CMP-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Dans toute cette etude, on suppose les frottements de l'air
+      negligeables. Dans un chapitre precedent, on a vu qu'un objet tombant
+      avec frottements fluides finit par atteindre un regime permanent, a
+      vitesse limite constante. Un eleve affirme : « Meme ici, si le vol dure
+      assez longtemps, la vitesse horizontale $v_x$ finira par se stabiliser
+      a une valeur limite, a cause de l'air. » Que penser de cette
+      affirmation, dans le cadre du modele etudie ici (frottements
+      negliges) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est vraie : comme en chute avec frottements, $v_x$ finit toujours par se stabiliser, quel que soit le modele utilise"
+        correct: false
+        feedback: >
+          Cela importe le resultat d'un AUTRE modele (avec frottements). Ici,
+          les frottements sont explicitement negliges : rien ne peut faire
+          varier $v_x$, ni la stabiliser a une limite.
+      - id: B
+        text: "Elle est vraie uniquement pour de tres longues portees, ou les frottements finissent par ne plus pouvoir etre negliges"
+        correct: false
+        feedback: >
+          L'hypothese « frottements negliges » est posee pour tout le
+          probleme, pas seulement pour les courtes distances : elle ne
+          s'efface pas d'elle-meme au-dela d'une certaine portee.
+      - id: C
+        text: "Elle est hors-sujet ici : le modele etudie neglige explicitement les frottements, donc $v_x = v_{0x}$ reste rigoureusement constante, sans jamais tendre vers une valeur limite"
+        correct: true
+      - id: D
+        text: "Elle est fausse, mais c'est la vitesse VERTICALE $v_y$, et non $v_x$, qui se stabiliserait a une vitesse limite dans ce modele"
+        correct: false
+        feedback: >
+          Dans CE modele (frottements negliges), aucune des deux composantes
+          ne se stabilise a une limite : $v_y$ croit indefiniment en valeur
+          absolue, elle ne plafonne pas non plus.
+    correct_feedback: >
+      Le regime permanent avec vitesse limite est un resultat du modele AVEC
+      frottements fluides, etudie ailleurs. Ici, les frottements sont
+      negliges par hypothese : $v_x=v_{0x}$ reste rigoureusement constante,
+      sans jamais tendre vers une limite.
+    solution: |
+      Aucune force horizontale n'agit ($a_x=0$) tant que les frottements sont
+      negliges : $v_x=v_{0x}$ constante. Le regime permanent / vitesse
+      limite appartient a un modele different (chute avec frottements), non
+      applicable ici par hypothese.
