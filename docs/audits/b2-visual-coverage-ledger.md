@@ -43,7 +43,7 @@ rule, carried forward here).
 | M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
-| P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | pending |
+| P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | judged (13 STAGE / 15 DECLINE), build in progress |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
@@ -320,7 +320,46 @@ rule, carried forward here).
 - `dom-truth.mjs` — 155/155, 0 fail (used `fuser -k 4173/tcp` before restart per the M2 lesson learned — no stale-server recurrence)
 - screenshot spot-check (light+dark) — `decroissance-radioactive` R2 `desintegrations-nz`: all 5 stages read clearly, β⁻/β⁺ opposite-vector confrontation visible. `controle-catalyse` R3 `trois-catalyses`: three-panel phase classification (homogène/hétérogène/enzymatique) renders cleanly both themes
 
-**Commit:** pending (this wave commits together with this ledger update).
+**Commit:** `f21e27c` — pushed y.
 
 **Running tally: 18/47 lessons done, 110/266 chapters judged, 57 STAGE / 53 DECLINE.**
+
+### Wave P2 — pc: dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| dipole-rl | R0 | DECLINE | narrative hook, would duplicate R2's schema or spoil R2/R3's curve |
+| dipole-rl | R1 | STAGE | `bobine-modele-rl` — coil model construction, real object → idealization → law |
+| dipole-rl | R4 | STAGE | `bilan-puissance-energie` — power-balance branching, dissipé vs stocké |
+| dipole-rl | R5 | STAGE | `oscillogramme-exercice` — graph, tangent/asymptote reading task |
+| electrolyse | R0 | DECLINE | narrative hook, would duplicate R2's cell schematic |
+| electrolyse | R1 | DECLINE | mechanism belongs to R2's canonical cell figure |
+| electrolyse | R3 | STAGE | `seuil-tension-electrolyse` — tension threshold, confronts "any generator suffices" |
+| electrolyse | R4 | DECLINE | formula + arithmetic, no data graph |
+| electrolyse | R5 | STAGE | `electrolyse-eau-cellule` — water-electrolysis cell, distinct system from R2 |
+| electrolyse | R6 | DECLINE | recap-plus-exercises chapter |
+| esterification-hydrolyse | R0 | DECLINE | narrative hook, no structure to build |
+| esterification-hydrolyse | R1 | STAGE | `condensation-ester` — atom-tracked condensation mechanism |
+| esterification-hydrolyse | R2 | STAGE | `vitesses-equilibre-dynamique` — opposing-rate graph, confronts "equilibrium=arrêt" |
+| esterification-hydrolyse | R4 | STAGE | `catalyse-meme-palier` — same-plateau graph, accelerates not displaces |
+| esterification-hydrolyse | R5 | STAGE | `qr-k-deplacement` — Qr/K gauge, confronts "K fixed so nothing moves" |
+| esterification-hydrolyse | R6 | DECLINE | practice chapter |
+| etat-equilibre | R0 | DECLINE | narrative hook, atmospheric or pre-reveals |
+| etat-equilibre | R2 | STAGE | `jauge-avancement-tau` — advancement gauge, limited vs total contrast |
+| etat-equilibre | R3 | DECLINE | Qr(t) graph already owned by R4's existing figure |
+| etat-equilibre | R5 | STAGE | `critere-evolution-qr-k` — directional Qr axis, confronts direction misconception |
+| etat-equilibre | R6 | DECLINE | algebraic scaling relation, would rehash R5's axis |
+| etat-equilibre | R7 | DECLINE | practice/recap chapter |
+| evolution-spontanee | R0 | DECLINE | narrative hook, atmospheric |
+| evolution-spontanee | R1 | DECLINE | electron-counting algebra, already staged as KaTeX |
+| evolution-spontanee | R3 | STAGE | `transfert-direct-chaleur` — microscopic contact/jump/heat mechanism |
+| evolution-spontanee | R4 | STAGE | `direct-vs-pile` — contrast schema, the discriminating test itself |
+| evolution-spontanee | R5 | DECLINE | conceptual synthesis, no exact structure to carry |
+| evolution-spontanee | R6 | DECLINE | practice/recap chapter |
+
+**Wave P2 judgment tally: 13 STAGE / 15 DECLINE** (28 chapters judged).
+
+**Build:** in progress.
 
