@@ -45,7 +45,7 @@ rule, carried forward here).
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
-| P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | judged (9 STAGE / 12 DECLINE), build in progress |
+| P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
 | S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
@@ -482,5 +482,49 @@ rule, carried forward here).
 
 **Wave P4 judgment tally: 9 STAGE / 12 DECLINE** (21 chapters judged).
 
-**Build:** in progress.
+**Build** (diagram-author × 4 — rlc-serie needed none, its only gap chapter was DECLINED):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| propagation-onde-lumineuse | cloche-a-vide-son-lumiere | R0 | 3 |
+| propagation-onde-lumineuse | lambda-nu-changement-milieu | R4 | 3 |
+| rc-charge | saut-ou-montee | R0 | 3 |
+| rc-charge | exo-oscillogramme | R5 | 3 |
+| reactions-acido-basiques | transfert-proton-ammonium | R1 | 4 |
+| reactions-acido-basiques | echelle-acide-neutre-basique | R3 | 3 |
+| reactions-acido-basiques | fort-vs-faible-avancement | R6 | 3 |
+| rotation-axe-fixe | omega-vitesse-point | R1 | 3 |
+| rotation-axe-fixe | pendule-pesant-bras-levier | R6 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×4 (all clean)
+- anti-contract grep — pass ×9 new SVGs, with ONE documented exception:
+  `lambda-nu-changement-milieu.svg` uses a literal red hex (#C0392B) for the
+  two identical colour swatches, because perceived colour IS the pedagogical
+  content there (same red both sides of the medium change). This mirrors the
+  pre-existing, comment-documented exception in the same lesson's
+  `dispersion-prisme.svg` and reuses its exact red for consistency
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `reactions-acido-basiques` R1
+  `transfert-proton-ammonium` at stage 4/4: half-equations with cède/capte
+  arrows, H⁺ capsule strike-through, net equation — clean in both themes
+- Deep-link note: R1 of reactions-acido-basiques renders at `?chapitre=2`
+  (index shifted by intro chapters) — worth remembering for future spot-checks
+
+**Flagged (pre-existing, NOT touched):** `reactions-acido-basiques/lesson.md`
+~line 170 says pH 2 vs pH 9 differ by "un million de fois" — the ratio is
+10⁷ (dix millions). For the content-author lane, recorded in the
+reactions-acido-basiques marker commit (4f29284).
+
+**Commits:** this wave shipped incrementally as build agents completed
+(stop-hook cadence), not as one batch commit: `3f08aa6` (rc-charge),
+`480f388` (propagation-onde-lumineuse), `1490219` + `23d9196`
+(reactions-acido-basiques media), `4f29284` (reactions-acido-basiques
+markers), `5f64296` (rotation-axe-fixe first figure), plus the closing
+commit carrying pendule-pesant-bras-levier and this ledger update. All
+content identical in outcome to a single wave commit; every partial commit
+was validated (validate-content + anti-contract grep) before pushing.
+
+**Running tally: 33/47 lessons done, 182/266 chapters judged, 89 STAGE / 93 DECLINE.**
 

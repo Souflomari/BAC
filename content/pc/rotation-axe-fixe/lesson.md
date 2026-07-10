@@ -350,6 +350,8 @@ Ce système va nous permettre de mettre tout ce chapitre au travail en même tem
 
 $$\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta$$
 
+[[figure:pendule-pesant-bras-levier]]
+
 **La relation fondamentale**, avec ce seul moment non nul :
 
 $$J_\Delta\,\ddot\theta = -mg\,d\sin\theta$$
