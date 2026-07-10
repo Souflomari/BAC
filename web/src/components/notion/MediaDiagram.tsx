@@ -83,8 +83,13 @@ export const STRUCTURAL_SLUGS = new Set([
   "disjonction-alleles",
   // D-persistance wave — SVT pedigree (genetique-humaine)
   "pedigree-drepanocytose",
+  // B2 wave S1 — SVT genetique-humaine X-linked cross grid (compact, not the tree)
+  "croisement-lie-x",
   // D-persistance wave — SVT mastocyte/IgE schematic (dysfonctionnements-immunitaires)
   "sensibilisation-reaction-allergie",
+  // B2 wave S1 — SVT auto-immunity flowchart (dysfonctionnements-immunitaires R2),
+  // same box/arrow grammar as cascade-inflammatoire
+  "rupture-tolerance-deux-voies",
   // D-persistance wave — SVT allele-counting diagram (genetique-populations)
   "comptage-alleles",
   // D-persistance wave — SVT immune-mechanism diagrams (moyens-de-defense)
@@ -108,6 +113,12 @@ export const STRUCTURAL_SLUGS = new Set([
   // B2 wave S1 — narrow vertical-column figures (chaines-de-montagnes)
   "sequence-ophiolite",
   "enfouissement-exhumation",
+  // B2 wave S1 — SVT granitisation-deformation cross-sections/columns
+  // (solidus-seuil-anatexie is the lesson's one wide-band P-T graph — NOT
+  // capped, deliberately excluded here)
+  "pli-faille-profondeur",
+  "facies-jauge-profondeur",
+  "exhumation-erosion-granite",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────

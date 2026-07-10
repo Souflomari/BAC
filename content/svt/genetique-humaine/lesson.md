@@ -163,6 +163,8 @@ L'échiquier de croisement du chapitre précédent s'utilise exactement de la m�
 
 **Lecture par sexe :** parmi les filles, $100\,\%$ sont saines (aucune ne peut être $X^{a}X^{a}$, puisque le père ne transmet que $X^{A}$) ; parmi les fils, $\frac12$ sont atteints ($X^{a}Y$) et $\frac12$ sont sains ($X^{A}Y$). C'est un résultat qu'on ne peut JAMAIS obtenir avec un gène autosomal : là, le phénotype attendu ne dépend jamais du sexe de l'enfant. Ce contraste — un risque qui diffère selon qu'on attend une fille ou un fils — est justement la signature qu'on cherche pour reconnaître une transmission liée à l'X.
 
+[[figure:croisement-lie-x]]
+
 ### L'erreur classique à éviter ici
 
 Une erreur fréquente : oublier que le père transmet SOIT son X SOIT son Y (jamais les deux) à un enfant donné, et donc traiter à tort le sexe de l'enfant comme une variable indépendante du génotype pour ce gène. Pour un gène lié à l'X, sexe de l'enfant et génotype possible sont **liés** : c'est précisément pour ça que l'échiquier doit faire apparaître les deux informations dans la même case, comme ci-dessus.
@@ -204,6 +206,8 @@ II-2 se marie à II-3, une femme saine non apparentée à la famille, dont on sa
 $$P(\text{III-1 atteint}) = P(\text{II-2}=A//a) \times P(a//a \mid Aa \times Aa) \;+\; P(\text{II-2}=A//A) \times P(a//a \mid AA \times Aa)$$
 
 $$P(\text{III-1 atteint}) = \left(\frac{2}{3} \times \frac{1}{4}\right) + \left(\frac{1}{3} \times 0\right) = \frac{2}{12} = \frac{1}{6}$$
+
+[[figure:proba-enfant-atteint]]
 
 ### Vérification rapide
 

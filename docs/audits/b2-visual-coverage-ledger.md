@@ -47,7 +47,7 @@ rule, carried forward here).
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | done (7 STAGE / 10 DECLINE, 7 figures) |
-| S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | judged (14 STAGE / 18 DECLINE), build in progress |
+| S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | done (14 STAGE / 18 DECLINE, 14 figures) |
 | S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
 
 ---
@@ -653,4 +653,61 @@ a single rock's vertical journey) and `exhumation-erosion-granite`
 (granitisation-deformation R5, the granite-root unroofing) — deliberately
 different slugs, different gestures, no collision.
 
-**Build:** in progress.
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages | Width |
+|---|---|---|---|---|
+| chaines-de-montagnes | subduction-andes | R1 | 4 | wide-band |
+| chaines-de-montagnes | collision-himalaya | R2 | 4 | wide-band (stacked time-panels) |
+| chaines-de-montagnes | sequence-ophiolite | R3 | 3 | structural (680px) |
+| chaines-de-montagnes | enfouissement-exhumation | R5 | 3 | structural (680px) |
+| dysfonctionnements-immunitaires | rupture-tolerance-deux-voies | R2 | 4 | structural (680px) |
+| dysfonctionnements-immunitaires | vih-lt4-charge-virale | R3 | 4 | wide-band |
+| dysfonctionnements-immunitaires | titre-anticorps-vaccin-serum | R6 | 4 | wide-band |
+| genetique-humaine | croisement-lie-x | R4 | 5 | structural (680px) |
+| genetique-humaine | proba-enfant-atteint | R5 | 5 | wide-band |
+| genetique-populations | echiquier-gametes | R2 | 4 | structural (680px) |
+| granitisation-deformation | pli-faille-profondeur | R1 | 4 | structural (680px) |
+| granitisation-deformation | facies-jauge-profondeur | R2 | 4 | structural (680px) |
+| granitisation-deformation | solidus-seuil-anatexie | R3 | 5 | wide-band |
+| granitisation-deformation | exhumation-erosion-granite | R5 | 4 | structural (680px) |
+
+**Concurrent app-file edits (new observation):** unlike prior waves where
+the orchestrator solely owned `NotionBody.tsx`/`MediaDiagram.tsx`, four of
+the five S1 build agents (all but dysfonctionnements) chose to self-register
+their own `FIGURE_ARIA_LABELS` + `STRUCTURAL_SLUGS` entries — several
+writing to the same two shared files concurrently. Post-hoc audit confirmed
+NO lost updates: all 11 self-registered aria labels present exactly once,
+all 8 expected-structural slugs registered exactly once, all 6 expected
+wide-band slugs correctly absent from STRUCTURAL_SLUGS, and `npm run build`
+compiled clean (no duplicate-key TS error). The orchestrator added the 3
+remaining dysfonctionnements aria labels + the 1 rupture-tolerance-deux-voies
+structural entry in the reconciliation pass. It worked this time, but agents
+writing shared app files concurrently is a real lost-update hazard — future
+waves should instruct build agents to leave app-file registration to the
+orchestrator (the dysfonctionnements agent's behaviour, which was cleanest).
+
+**Verification:**
+- `validate-content.mjs content/svt/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×14 new SVGs (all clean)
+- all 14 slugs have French `FIGURE_ARIA_LABELS`; 8 compact figures registered
+  in `STRUCTURAL_SLUGS` (680px cap), 6 wide-band correctly excluded (verified
+  by membership audit)
+- `npm run build` — clean (also the concurrent-edit integrity check)
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark), three types sampled: `vih-lt4-charge-virale`
+  (dual-curve graph, shared axes + ~200/mm³ threshold + 3 phases), `croisement-lie-x`
+  (structural-capped Punnett with the accented hemizygous XᵃY son + superscript
+  notation), `solidus-seuil-anatexie` (wide-band P-T graph, path + dry/wet solidus
+  + anatexie crossing) — all clean in both themes
+- `collision-himalaya` uses stacked time-panels (StagedFigure's additive
+  contract can't shrink an earlier ocean under a later one) — same precedent
+  as this lesson family's `frontieres-plaques-quatre-types`
+
+**Commits:** `2a238dd` (judgment), `393162c` (genetique-populations),
+`cf7c9d7` (chaines-de-montagnes + its app entries), `63ef22a`
+(dysfonctionnements + granitisation content), plus the closing commit
+carrying genetique-humaine content, the reconciled app files, and this
+ledger update.
+
+**Running tally: 42/47 lessons done, 231/266 chapters judged, 110 STAGE / 121 DECLINE.**
