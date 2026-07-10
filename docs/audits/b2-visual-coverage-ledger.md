@@ -44,7 +44,7 @@ rule, carried forward here).
 | M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
-| P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | pending |
+| P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | judged (10 STAGE / 13 DECLINE), build in progress |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
@@ -391,4 +391,38 @@ rule, carried forward here).
 **Commit:** pending (this wave commits together with this ledger update).
 
 **Running tally: 23/47 lessons done, 138/266 chapters judged, 70 STAGE / 68 DECLINE.**
+
+### Wave P3 — pc: noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| noyaux-masse-energie | R0 | DECLINE | predict-first hook, quantitative payoff belongs to R4 |
+| noyaux-masse-energie | R1 | DECLINE | single boxed postulate + unit conversion, already staged as prose equations |
+| noyaux-masse-energie | R4 | STAGE | `nucleaire-vs-chimique` — log-scale energy-per-reaction bars, ×10⁷ made visceral |
+| noyaux-masse-energie | R5 | DECLINE | worked-exercise chapter, Aston placement owned by R3 |
+| ondes-em-modulation | R0 | DECLINE | predict-then-reveal narrative hook |
+| ondes-em-modulation | R1 | STAGE | `antenne-quart-onde` — λ/4 scale comparison, 75km vs 83m absurdity |
+| ondes-em-modulation | R4 | STAGE | `detecteur-crete` — peak-detector envelope recovery graph |
+| ondes-em-modulation | R5 | STAGE | `circuit-accorde-selection` — tuned L‖C carrier selection, strictly qualitative (cadre exclusion respected) |
+| ondes-em-modulation | R6 | DECLINE | exercise hands the trace verbally, drawing it would spoil the reading work |
+| ondes-mecaniques-periodiques | R0 | DECLINE | payload already carried by R2's double-periodicite |
+| ondes-mecaniques-periodiques | R1 | STAGE | `heritage-periode-retard` — delay shifts, doesn't stretch; non-sinusoidal waveform |
+| ondes-mecaniques-periodiques | R4 | STAGE | `son-longitudinal-compressions` — longitudinal vs transverse, λ between compressions |
+| ondes-mecaniques-periodiques | R5 | DECLINE | recap + numeric exercise, no new concept |
+| ondes-mecaniques-progressives | R0 | STAGE | `bouchon-oscille-sur-place` — predict-then-reveal cork, energy travels not water |
+| ondes-mecaniques-progressives | R4 | STAGE | `front-onde-dimensions` — 1D two points → 2D circle → 3D sphere |
+| ondes-mecaniques-progressives | R5 | DECLINE | student computes/constructs themselves, solution-graph would spoil |
+| piles | R0 | DECLINE | hook, would front-run R1's pile-daniell |
+| piles | R2 | STAGE | `qr-vs-k-echelle` — log axis, 38-orders gap + discharge evolution arrow |
+| piles | R3 | DECLINE | naming/word-association argument, visual anchor subsumed by R4 |
+| piles | R4 | STAGE | `courant-vs-electrons` — two antiparallel arrows, electrons first then convention |
+| piles | R5 | DECLINE | definition + formula, dynamics already on R2's scale |
+| piles | R6 | DECLINE | linear formula chain, boxes would be click theater |
+| piles | R7 | DECLINE | recap chapter, visuals live at R1/R4 |
+
+**Wave P3 judgment tally: 10 STAGE / 13 DECLINE** (23 chapters judged).
+
+**Build:** in progress.
 
