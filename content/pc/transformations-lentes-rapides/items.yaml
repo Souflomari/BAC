@@ -295,3 +295,671 @@ items:
       et la proportion de chocs assez énergétiques pour être efficaces. Les
       deux effets de la température se cumulent, contrairement à celui de la
       concentration.
+
+  - id: TLR-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Le clou en fer rouille en plusieurs mois ; l'allumette s'enflamme en
+      une fraction de seconde. Les deux sont pourtant des réactions de la
+      même famille chimique : un transfert d'électrons vers le dioxygène.
+      Qu'est-ce que cet écart de vitesse permet de conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Autre chose que la famille chimique doit intervenir, puisque deux
+          réactions de même famille peuvent avoir des vitesses très
+          différentes.
+        correct: true
+      - id: B
+        text: >-
+          La famille chimique (ici, un transfert d'électrons vers le
+          dioxygène) fixe entièrement la vitesse : deux réactions de cette
+          famille devraient donc durer à peu près le même temps.
+        correct: false
+        feedback: >
+          C'est justement ce que l'écart observé contredit : le clou et
+          l'allumette, de même famille chimique, ont des durées radicalement
+          différentes. La famille seule ne peut donc pas fixer la vitesse.
+      - id: C
+        text: >-
+          L'écart n'est qu'une illusion : avec un chronomètre assez précis,
+          on constaterait que le clou et l'allumette réagissent en réalité à
+          la même vitesse.
+        correct: false
+        feedback: >
+          Rien n'indique une illusion de mesure ici : plusieurs mois contre
+          une fraction de seconde est un écart bien trop massif pour être un
+          artefact de précision du chronomètre.
+      - id: D
+        text: >-
+          Le fer et le bois ne peuvent pas être comparés, car ce ne sont pas
+          les mêmes éléments chimiques : la question n'a pas de sens.
+        correct: false
+        feedback: >
+          Rien n'empêche de comparer deux vitesses de réaction, quels que
+          soient les éléments en jeu : c'est précisément ce type de
+          comparaison qui va permettre, dans la suite, d'identifier ce qui
+          contrôle vraiment la vitesse d'une transformation.
+    correct_feedback: >
+      Deux réactions de même famille chimique peuvent avoir des vitesses
+      très différentes : la famille seule ne fixe pas la vitesse. Le reste
+      de la leçon identifie ce qui, en plus, la contrôle.
+    solution: |
+      Le clou et l'allumette appartiennent à la même famille (transfert
+      d'électrons vers O2), pourtant leurs durées diffèrent radicalement.
+      Puisqu'un même facteur (la famille) donne des résultats opposés, c'est
+      qu'il ne suffit pas à expliquer la vitesse : quelque chose d'autre, en
+      dehors de la famille chimique, doit intervenir.
+
+  - id: TLR-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Pour vraiment savoir si la famille chimique fixe, à elle seule, la
+      vitesse d'une réaction, quel type d'observation serait le plus
+      convaincant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Observer une seule et même équation chimique, strictement
+          inchangée, dont la durée varie considérablement d'une expérience à
+          l'autre selon les conditions.
+        correct: true
+      - id: B
+        text: >-
+          Comparer une précipitation et une réaction d'oxydoréduction, et
+          constater qu'elles n'ont pas la même vitesse.
+        correct: false
+        feedback: >
+          Cette comparaison change deux choses à la fois — la famille ET les
+          conditions — sans en isoler aucune : un écart de vitesse ne
+          prouverait rien, puisqu'il resterait compatible avec l'idée que
+          c'est la famille qui fixe la vitesse. Il faut au contraire garder
+          la même réaction et ne faire varier que les conditions.
+      - id: C
+        text: "Chronométrer très précisément la rouille du clou pour vérifier qu'elle ne dépasse jamais six mois."
+        correct: false
+        feedback: >
+          Mesurer une seule durée, aussi précisément soit-elle, ne dit rien
+          sur ce qui contrôle cette durée. Il faut comparer au moins deux
+          situations pour isoler un facteur.
+      - id: D
+        text: "Vérifier que le fer et le bois appartiennent bien tous deux à la famille des combustibles."
+        correct: false
+        feedback: >
+          Classer les réactifs par famille ne teste pas le lien entre
+          famille et vitesse : il faudrait comparer des vitesses, pas
+          vérifier une classification.
+    correct_feedback: >
+      Garder la même équation chimique et ne faire varier que les
+      conditions expérimentales isole exactement ce qu'on veut tester : si
+      la durée change malgré une famille — et une équation — inchangées,
+      alors la famille seule ne suffit pas à fixer la vitesse.
+    solution: |
+      Pour isoler l'effet d'un paramètre, il faut le faire varier seul, en
+      gardant tout le reste identique — ici, garder la même équation
+      chimique et ne changer que les conditions expérimentales. C'est
+      exactement ce que la leçon va montrer avec la réaction entre
+      $S_2O_8^{2-}$ et $I^-$, dont la durée change nettement selon les
+      conditions, sans jamais changer de nature.
+
+  - id: TLR-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Une seule et même équation chimique, rigoureusement inchangée, se
+      termine en quelques dizaines de secondes dans une expérience, et en
+      plusieurs minutes dans une autre. Que peut-on en déduire, à ce stade,
+      sans encore connaître le détail du mécanisme ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La vitesse d'une réaction n'est pas figée par sa nature chimique
+          seule : quelque chose dans les conditions de l'expérience doit
+          aussi jouer un rôle.
+        correct: true
+      - id: B
+        text: "L'équation chimique elle-même a dû changer entre les deux expériences, puisque sa vitesse a changé."
+        correct: false
+        feedback: >
+          C'est contraire à l'énoncé, qui précise que l'équation reste
+          rigoureusement inchangée. Une vitesse différente ne signifie pas
+          une réaction différente : les réactifs et les produits sont les
+          mêmes dans les deux cas.
+      - id: C
+        text: "C'est une erreur expérimentale : la même équation chimique devrait toujours durer exactement le même temps."
+        correct: false
+        feedback: >
+          Rien n'impose qu'une équation chimique ait une durée fixe et
+          universelle : au contraire, c'est justement ce postulat que
+          l'écart observé remet en cause.
+      - id: D
+        text: >-
+          Cela ne concerne que les réactions lentes : les réactions rapides,
+          elles, ont toujours une durée fixe, quelles que soient les
+          conditions.
+        correct: false
+        feedback: >
+          Rien ne restreint ce constat aux seules réactions lentes : le
+          mécanisme à l'échelle microscopique, qu'on étudiera plus loin, ne
+          distingue pas les réactions lentes des réactions rapides.
+    correct_feedback: >
+      Une même réaction, une même équation, peut durer des temps très
+      différents selon les conditions : c'est le signe qu'autre chose que la
+      nature chimique de la réaction contrôle sa vitesse. Identifier ce
+      « autre chose » est l'objet du reste de la leçon.
+    solution: |
+      Puisque l'équation chimique reste rigoureusement la même dans les deux
+      expériences, ce n'est pas elle qui explique l'écart de durée : il faut
+      chercher ailleurs, du côté des conditions expérimentales. C'est
+      exactement ce que la leçon va établir en R3, avec la concentration et
+      la température.
+
+  - id: TLR-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Une réaction paraît instantanée à l'oeil nu, mais un dispositif de
+      mesure ultra-rapide révèle qu'elle s'étale en réalité sur quelques
+      millisecondes parfaitement mesurables par cet instrument. Que peut-on
+      en conclure sur le critère « rapide / lente » ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Ce critère n'est pas une propriété physique absolue de la
+          réaction : il dépend des moyens d'observation utilisés — avec un
+          instrument plus rapide, la même réaction peut être requalifiée.
+        correct: true
+      - id: B
+        text: >-
+          C'est impossible : une réaction est soit rapide, soit lente, une
+          fois pour toutes, indépendamment de l'instrument utilisé pour
+          l'observer.
+        correct: false
+        feedback: >
+          C'est l'inverse de ce que rappelle la leçon : le critère
+          rapide/lente compare une durée à des moyens d'observation donnés,
+          il ne décrit pas une propriété figée de la réaction, indépendante
+          de tout instrument.
+      - id: C
+        text: >-
+          Cela signifie que la réaction a changé de nature chimique en
+          passant d'un banc de mesure à l'autre.
+        correct: false
+        feedback: >
+          Utiliser un instrument différent ne change ni les réactifs ni les
+          produits de la réaction : seule la façon dont on peut suivre sa
+          durée change, pas sa nature chimique.
+      - id: D
+        text: >-
+          Cela veut dire que l'instrument de mesure est défaillant, puisqu'à
+          l'oeil nu, aucune réaction jugée instantanée ne peut réellement
+          durer plusieurs millisecondes.
+        correct: false
+        feedback: >
+          L'oeil nu n'est pas la référence ultime : c'est justement l'un des
+          moyens usuels dont la précision est limitée. Un instrument plus
+          rapide n'est pas défaillant, il révèle une durée que l'oeil nu ne
+          pouvait tout simplement pas distinguer.
+    correct_feedback: >
+      Rapide et lente comparent une durée réelle à des moyens d'observation
+      donnés — pas une propriété figée de la réaction. Un instrument plus
+      précis peut révéler qu'une réaction jugée instantanée dure en fait
+      quelques millisecondes bien réelles.
+    solution: |
+      La frontière rapide/lente décrit le rapport entre la durée de la
+      transformation et nos moyens usuels d'observation, pas une propriété
+      physique absolue et figée de la réaction. Un instrument plus rapide
+      que l'oeil nu ou le chronomètre usuel peut révéler qu'une réaction
+      « instantanée » s'étale en fait sur quelques millisecondes parfaitement
+      mesurables — sans que la réaction elle-même ait changé.
+
+  - id: TLR-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Quelle est la conséquence pratique majeure, pour l'expérimentateur, de
+      la différence entre une transformation rapide et une transformation
+      lente ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une transformation lente peut être suivie pendant son déroulement
+          (prélèvements, mesures successives) ; une transformation rapide ne
+          se laisse observer qu'après coup, une fois l'état final atteint.
+        correct: true
+      - id: B
+        text: "Une transformation rapide est plus facile à étudier, car elle libère plus vite les produits à analyser."
+        correct: false
+        feedback: >
+          C'est l'inverse : une transformation rapide est justement plus
+          difficile à étudier EN COURS, puisqu'elle est déjà terminée quand
+          on peut l'observer. Seul l'état final, pas son déroulement, est
+          accessible.
+      - id: C
+        text: "Une transformation lente ne peut jamais être suivie, car elle prend trop de temps pour qu'on reste au laboratoire."
+        correct: false
+        feedback: >
+          C'est au contraire tout l'intérêt d'une transformation lente :
+          elle laisse le temps de prélever et de mesurer son évolution
+          minute par minute, contrairement à une transformation rapide.
+      - id: D
+        text: "Il n'y a aucune différence pratique : dans les deux cas, on ne peut observer que l'état final."
+        correct: false
+        feedback: >
+          C'est justement la différence pratique majeure entre les deux :
+          une transformation lente peut être suivie pendant qu'elle se
+          déroule, une transformation rapide ne peut être observée qu'une
+          fois terminée.
+    correct_feedback: >
+      Rapide : on ne voit que l'état final, tout est déjà joué. Lente : on
+      peut prélever, mesurer, suivre son évolution minute par minute — c'est
+      cette possibilité qui rend le suivi temporel utile.
+    solution: |
+      Une transformation rapide est terminée avant qu'on ait pu la suivre :
+      seul l'état final est accessible à l'observation. Une transformation
+      lente, elle, s'étale sur une durée mesurable : on peut prélever, doser,
+      mesurer une grandeur physique à différents instants, et ainsi suivre
+      son évolution — c'est ce que le chapitre suivant développera.
+
+  - id: TLR-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      D'après la méthode de la leçon (conserver d'abord les éléments, puis
+      la charge), quelle est la demi-équation correcte du couple $I_2/I^-$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$I_2 + 2e^- \\rightleftharpoons 2I^-$"
+        correct: true
+      - id: B
+        text: "$I_2 + e^- \\rightleftharpoons 2I^-$"
+        correct: false
+        feedback: >
+          La conservation de la charge n'est pas respectée : à gauche,
+          $0 + (-1) = -1$ ; à droite, $2 \times (-1) = -2$. Il faut deux
+          électrons, pas un seul, pour équilibrer les deux membres.
+      - id: C
+        text: "$I^- + 2e^- \\rightleftharpoons 2I_2$"
+        correct: false
+        feedback: >
+          Les éléments ne sont pas conservés : il n'y a qu'un seul atome
+          d'iode à gauche pour quatre à droite. Il faut d'abord ajuster les
+          nombres stoechiométriques (ici, $2I^-$), avant de s'occuper de la
+          charge.
+      - id: D
+        text: "$I_2 \\rightleftharpoons 2I^-$"
+        correct: false
+        feedback: >
+          Aucun électron n'apparaît : la charge n'est pas conservée ($0$ à
+          gauche, $-2$ à droite). Toute demi-équation redox doit inclure le
+          nombre d'électrons nécessaire pour équilibrer les deux membres.
+    correct_feedback: >
+      On conserve d'abord les éléments ($I_2$ donne $2I^-$), puis la charge
+      en ajoutant $2e^-$ à gauche : $0 + (-2) = -2$, et à droite
+      $2 \times (-1) = -2$. Les deux membres sont équilibrés.
+    solution: |
+      Deux conservations, dans cet ordre : d'abord les éléments (un $I_2$
+      donne deux $I^-$, donc on écrit $2I^-$), puis la charge, en ajoutant le
+      nombre d'électrons qu'il faut pour équilibrer les deux membres. À
+      gauche, $I_2$ porte la charge $0$ ; pour atteindre $-2$ comme à droite,
+      il faut ajouter $2e^-$ : $I_2 + 2e^- \rightleftharpoons 2I^-$.
+
+  - id: TLR-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Pourquoi doit-on ajuster les deux demi-équations pour qu'elles
+      échangent le même nombre d'électrons avant de les additionner membre à
+      membre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'il n'existe pas d'électron libre en solution : tout
+          électron cédé par le réducteur doit être immédiatement capté par
+          l'oxydant, donc les électrons doivent s'annuler exactement dans
+          l'équation globale.
+        correct: true
+      - id: B
+        text: >-
+          Parce que le nombre d'électrons échangés doit toujours être pair,
+          pour respecter la conservation de la charge.
+        correct: false
+        feedback: >
+          La parité n'est pas la règle : ce qui compte, c'est que le nombre
+          d'électrons cédés par le réducteur égale exactement celui captés
+          par l'oxydant, qu'il soit pair ou impair (5 électrons, par
+          exemple, pour le couple $MnO_4^-/Mn^{2+}$).
+      - id: C
+        text: >-
+          Parce que sinon la réaction globale serait trop lente pour être
+          suivie au chronomètre.
+        correct: false
+        feedback: >
+          Ceci confond deux idées différentes : équilibrer les électrons
+          d'une équation (R2) est une question d'écriture chimique, sans
+          rapport avec le critère lent/rapide (R1), qui compare une durée
+          réelle à nos moyens d'observation.
+      - id: D
+        text: >-
+          Parce que l'équation globale doit obligatoirement comporter le
+          symbole $\rightleftharpoons$, réservé aux équations équilibrées en
+          électrons.
+        correct: false
+        feedback: >
+          C'est l'inverse : l'équation globale d'une réaction entre deux
+          couples s'écrit avec une flèche simple $\rightarrow$, pas
+          $\rightleftharpoons$ (réservé aux demi-équations, qui
+          représentent un équilibre Ox/Red). Le symbole utilisé n'est pas ce
+          qui impose d'égaler les électrons.
+    correct_feedback: >
+      Aucun électron ne reste libre en solution : égaler le nombre
+      d'électrons échangés dans les deux demi-équations est ce qui permet de
+      les additionner en les faisant s'annuler exactement.
+    solution: |
+      Le principe est physique, pas seulement une convention d'écriture : un
+      électron cédé par un réducteur doit être immédiatement capté par un
+      oxydant, il n'existe pas d'électron libre en solution. Pour
+      additionner deux demi-équations et obtenir une équation globale sans
+      électron apparent, il faut donc que les deux demi-équations échangent
+      le même nombre d'électrons — quel que soit ce nombre.
+
+  - id: TLR-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      On veut ralentir une transformation lente, sans en changer la nature,
+      pour avoir le temps de l'étudier plus facilement. D'après les deux
+      facteurs cinétiques établis expérimentalement, que doit-on faire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Diminuer à la fois la température et la concentration initiale des réactifs."
+        correct: true
+      - id: B
+        text: "Augmenter la température et diminuer la concentration initiale des réactifs."
+        correct: false
+        feedback: >
+          Augmenter la température accélère la transformation, elle ne la
+          ralentit pas : ce levier est actionné dans le mauvais sens. Seule
+          la baisse de concentration va dans le sens recherché.
+      - id: C
+        text: "Diminuer la température et augmenter la concentration initiale des réactifs."
+        correct: false
+        feedback: >
+          Augmenter la concentration des réactifs accélère la
+          transformation, elle ne la ralentit pas : ce levier est actionné
+          dans le mauvais sens. Seule la baisse de température va dans le
+          sens recherché.
+      - id: D
+        text: "Augmenter à la fois la température et la concentration initiale des réactifs."
+        correct: false
+        feedback: >
+          Les deux leviers sont actionnés dans le mauvais sens : augmenter
+          la température ou la concentration accélère une transformation,
+          cela ne la ralentit jamais.
+    correct_feedback: >
+      Les deux facteurs cinétiques agissent dans le même sens : diminuer la
+      température et diminuer la concentration ralentissent tous deux la
+      transformation, sans changer sa nature chimique.
+    solution: |
+      D'après R3, augmenter la concentration ou la température accélère une
+      transformation ; les diminuer la ralentit. Pour ralentir sans changer
+      la nature de la réaction, il faut donc actionner les deux facteurs
+      dans le sens qui freine : température plus basse ET concentration plus
+      faible.
+
+  - id: TLR-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Pourquoi l'hypothèse « n'importe quelle rencontre entre les entités
+      réactives suffit à déclencher la réaction » est-elle rejetée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que si c'était le cas, seule la fréquence des chocs (donc la
+          concentration) contrôlerait la vitesse, ce qui n'explique pas
+          l'effet marqué de la température observé en R3, qui change peu
+          cette fréquence.
+        correct: true
+      - id: B
+        text: >-
+          Parce qu'un choc entre deux entités identiques (deux ions iodure,
+          par exemple) est physiquement impossible.
+        correct: false
+        feedback: >
+          Ce n'est pas la raison invoquée : deux entités identiques peuvent
+          tout à fait se croiser. Le problème de l'hypothèse « tout choc
+          suffit » est ailleurs — elle ne rend pas compte de l'effet marqué
+          de la température sur la vitesse.
+      - id: C
+        text: >-
+          Parce qu'à l'échelle microscopique, il n'existe pas de chocs entre
+          les entités réactives, seulement des réactions instantanées.
+        correct: false
+        feedback: >
+          C'est l'inverse du modèle posé en R4 : la réaction se produit
+          précisément PAR des chocs entre entités en mouvement — c'est la
+          condition d'efficacité de ces chocs qui est en question, pas leur
+          existence.
+      - id: D
+        text: >-
+          Parce que la concentration n'a en réalité aucun effet sur le
+          nombre de chocs entre les entités.
+        correct: false
+        feedback: >
+          C'est contraire au mécanisme établi : augmenter la concentration
+          augmente bien le nombre d'entités par unité de volume, donc la
+          fréquence de leurs chocs. Ce n'est pas ce point qui invalide
+          l'hypothèse « tout choc suffit ».
+    correct_feedback: >
+      Si tout choc suffisait, la vitesse ne dépendrait que de la fréquence
+      des rencontres — donc de la concentration. Or la température, qui
+      change peu cette fréquence, a un effet très marqué sur la vitesse :
+      autre chose que la simple rencontre doit donc compter, à savoir
+      l'énergie du choc.
+    solution: |
+      L'hypothèse « tout choc suffit » prédit que seule la fréquence des
+      rencontres — donc la concentration — devrait contrôler la vitesse. Or
+      R3 a établi expérimentalement que la température accélère elle aussi
+      nettement la réaction, alors qu'elle change assez peu le nombre total
+      de rencontres par seconde. Un effet aussi marqué ne peut donc pas
+      s'expliquer par la seule fréquence : il faut une seconde condition,
+      l'énergie du choc, ce qui mène à la notion de choc efficace.
+
+  - id: TLR-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Les couples $MnO_4^-/Mn^{2+}$ et $Fe^{3+}/Fe^{2+}$ interviennent dans
+      une réaction en milieu acide, avec
+      $MnO_4^- + 8H^+ + 5e^- \rightleftharpoons Mn^{2+} + 4H_2O$ et
+      $Fe^{3+} + e^- \rightleftharpoons Fe^{2+}$. Quelle est l'équation
+      globale correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$MnO_4^- + 8H^+ + 5Fe^{2+} \\rightarrow Mn^{2+} + 4H_2O + 5Fe^{3+}$"
+        correct: true
+      - id: B
+        text: "$MnO_4^- + 8H^+ + Fe^{2+} \\rightarrow Mn^{2+} + 4H_2O + Fe^{3+}$"
+        correct: false
+        feedback: >
+          Le nombre d'électrons échangés n'est pas égalé avant d'additionner
+          : le couple du manganèse échange 5 électrons, celui du fer un
+          seul. Il faut multiplier la demi-équation du fer par 5 avant de
+          combiner, pas l'utiliser telle quelle.
+      - id: C
+        text: "$MnO_4^- + 8H^+ + 5Fe^{2+} + 5e^- \\rightarrow Mn^{2+} + 4H_2O + 5Fe^{3+} + 5e^-$"
+        correct: false
+        feedback: >
+          Les électrons ont bien été égalés (5 dans chaque demi-équation),
+          mais ils doivent s'annuler à l'addition, puisqu'aucun électron ne
+          reste libre en solution : ils ne doivent apparaître ni à gauche ni
+          à droite de l'équation globale.
+      - id: D
+        text: "$5MnO_4^- + 8H^+ + Fe^{2+} \\rightarrow Mn^{2+} + 4H_2O + Fe^{3+}$"
+        correct: false
+        feedback: >
+          C'est la mauvaise demi-équation qui a été multipliée : c'est celle
+          du fer (qui échange 1 électron) qu'il faut multiplier par 5 pour
+          atteindre les 5 électrons du couple du manganèse, pas l'inverse.
+    correct_feedback: >
+      Le fer, réducteur, cède 1 électron ; il faut donc multiplier sa
+      demi-équation par 5 pour égaler les 5 électrons captés par $MnO_4^-$.
+      En additionnant, les $5e^-$ s'annulent exactement.
+    solution: |
+      Réduction : $MnO_4^- + 8H^+ + 5e^- \rightarrow Mn^{2+} + 4H_2O$.
+      Oxydation, multipliée par 5 pour égaler les électrons :
+      $5Fe^{2+} \rightarrow 5Fe^{3+} + 5e^-$.
+      En additionnant membre à membre, les $5e^-$ s'annulent :
+      $MnO_4^- + 8H^+ + 5Fe^{2+} \rightarrow Mn^{2+} + 4H_2O + 5Fe^{3+}$.
+
+  - id: TLR-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Le lait laissé à température ambiante ($20\,^\circ\text{C}$) tourne
+      (transformation chimique de dégradation) en $8$ heures ; le même lait,
+      au réfrigérateur ($4\,^\circ\text{C}$), met $4$ jours à tourner.
+      Quelle affirmation, fondée sur le modèle des chocs efficaces, explique
+      correctement cet écart ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À $4\,^\circ\text{C}$, l'agitation thermique des espèces
+          réactives est plus faible : les chocs sont moins fréquents, et une
+          plus petite proportion d'entre eux atteint l'énergie nécessaire
+          pour être efficace — la dégradation est donc beaucoup plus lente.
+        correct: true
+      - id: B
+        text: "Le froid détruit chimiquement une partie des espèces réactives responsables du caillage du lait."
+        correct: false
+        feedback: >
+          Le froid ne détruit rien chimiquement : les espèces réactives
+          restent présentes, en même quantité. C'est la vitesse à laquelle
+          elles réagissent qui diminue, pas leur quantité.
+      - id: C
+        text: "Le réfrigérateur diminue la concentration des espèces réactives dans le lait, ce qui ralentit la dégradation."
+        correct: false
+        feedback: >
+          La température et la concentration sont deux facteurs cinétiques
+          distincts : refroidir le lait ne change pas les quantités de
+          matière qu'il contient, seulement l'agitation thermique des
+          espèces.
+      - id: D
+        text: >-
+          Un écart aussi important (environ douze fois plus long) est trop
+          grand pour être expliqué par un simple changement de température ;
+          un autre facteur, non identifié, doit intervenir.
+        correct: false
+        feedback: >
+          Au contraire, R4 établit que l'effet de la température est
+          souvent particulièrement marqué, car elle cumule deux effets
+          (fréquence ET énergie des chocs) : une élévation ou une baisse
+          même modeste de température peut donc accélérer ou ralentir
+          nettement une transformation, sans qu'aucun autre facteur ne soit
+          nécessaire.
+    correct_feedback: >
+      La baisse de température cumule deux effets freinateurs : moins de
+      chocs par seconde, et une proportion moindre d'entre eux assez
+      énergétique — exactement le mécanisme établi en R4 pour expliquer un
+      effet marqué de la température.
+    solution: |
+      Seule la température a changé entre les deux récipients. D'après R4,
+      la baisser diminue à la fois la fréquence des chocs entre espèces
+      réactives (agitation thermique plus faible) et la proportion de chocs
+      assez énergétiques pour être efficaces. Ces deux effets se cumulent,
+      ce qui explique un ralentissement marqué de la dégradation — sans
+      qu'aucun autre facteur n'intervienne.
+
+  - id: TLR-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    stem: >
+      Un chimiste étudie une transformation lente en laboratoire. Il
+      constate qu'en refroidissant le mélange à $0\,^\circ\text{C}$ et en
+      diluant fortement les réactifs, la teinte caractéristique, auparavant
+      visible en $5$ minutes, n'apparaît plus qu'après plusieurs heures.
+      Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il a combiné les deux facteurs cinétiques dans le sens qui
+          ralentit (température plus basse ET concentration plus faible) :
+          moins de chocs par seconde, et une moindre proportion d'entre eux
+          assez énergétique, d'où une transformation nettement plus lente.
+        correct: true
+      - id: B
+        text: "En diluant fortement les réactifs, il a en réalité changé la nature chimique de la réaction, ce qui explique le net ralentissement."
+        correct: false
+        feedback: >
+          Changer une concentration ne change ni les réactifs ni les
+          produits de la réaction, seulement la durée qu'elle met à se
+          terminer : c'est toujours la même équation chimique, seulement
+          plus lente.
+      - id: C
+        text: "Seule la baisse de température explique le ralentissement ; diluer les réactifs n'a, en réalité, aucun effet sur la vitesse d'une réaction."
+        correct: false
+        feedback: >
+          La concentration des réactifs est l'un des deux facteurs
+          cinétiques établis expérimentalement en R3 : la diluer ralentit
+          bien la transformation, en plus de l'effet de la température.
+      - id: D
+        text: "La transformation, en ralentissant autant, est probablement devenue une transformation rapide dont on ne voit plus que l'état final."
+        correct: false
+        feedback: >
+          « Ralentir » et « devenir rapide » sont contradictoires : rendre
+          une transformation plus lente l'éloigne encore plus du critère de
+          rapidité (R1). Elle reste une transformation lente, seulement
+          encore plus lente qu'avant, et toujours observable pendant son
+          déroulement.
+    correct_feedback: >
+      Refroidir ET diluer actionnent les deux facteurs cinétiques établis en
+      R3 dans le même sens freinateur, ce qui explique, via le modèle des
+      chocs efficaces (R4), un net ralentissement sans changement de nature
+      chimique.
+    solution: |
+      Deux facteurs cinétiques ont été actionnés à la fois, tous deux dans
+      le sens qui ralentit : température plus basse et concentration plus
+      faible. D'après R4, cela diminue à la fois la fréquence des chocs et
+      la proportion de chocs assez énergétiques pour être efficaces. La
+      transformation reste lente — simplement beaucoup plus lente qu'avant —
+      et demeure, comme toute transformation lente, observable pendant son
+      déroulement.
