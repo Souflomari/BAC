@@ -286,3 +286,727 @@ items:
       Or $\dfrac{d}{dt}\left(\dfrac12 Cu_C^2\right) = Cu_C\dfrac{du_C}{dt} = p$.
       Donc l'énergie emmagasinée est $E_C = \dfrac12 Cu_C^2$.
       Une fois le condensateur chargé ($u_C = E$) : $E_C = \dfrac12 CE^2$.
+
+  - id: RC-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      On ferme l'interrupteur d'un dipôle RC série alimenté par un générateur
+      idéal de tension constante $E$, le condensateur étant initialement
+      déchargé. Laquelle de ces descriptions correspond à ce qu'on observe
+      réellement sur $u_C(t)$ à l'oscilloscope, juste après la fermeture ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $u_C$ part de $0$, monte vite au début puis de plus en plus
+          lentement, en se rapprochant de $E$ sans jamais le dépasser.
+        correct: true
+      - id: B
+        text: "$u_C$ saute instantanément de $0$ à $E$ dès la fermeture."
+        correct: false
+        feedback: >
+          C'est le modèle « charge instantanée », impossible ici : $u_C$ est
+          une tension continue, elle ne peut pas sauter. La montée est
+          progressive, sur une durée bien réelle.
+      - id: C
+        text: >-
+          $u_C$ monte en ligne droite, à vitesse constante, jusqu'à $E$, puis
+          s'arrête net.
+        correct: false
+        feedback: >
+          C'est le modèle « verre qu'on remplit à débit constant » : il ne
+          décrit pas ce qu'on observe. La montée décélère continûment, elle ne
+          suit pas une droite qui s'arrête brutalement.
+      - id: D
+        text: "$u_C$ oscille autour de $E$ avant de s'y stabiliser."
+        correct: false
+        feedback: >
+          Il n'y a aucune oscillation dans un dipôle RC : ce comportement est
+          celui d'un circuit RLC (avec bobine). Ici $u_C$ croît de façon
+          monotone vers $E$, sans dépassement ni oscillation.
+    correct_feedback: >
+      C'est exactement ce que montre l'oscilloscope : une montée continue,
+      rapide au début puis de plus en plus lente, qui s'approche de $E$ sans
+      jamais sauter ni le dépasser.
+    solution: |
+      La tension d'un condensateur ne peut varier que continûment (pas de
+      saut). Le mécanisme de charge (vu en détail plus loin) montre que la
+      vitesse de montée est proportionnelle à ce qu'il reste de chemin
+      jusqu'à E : rapide loin de E, lente près de E. D'où une approche qui
+      décélère, jamais une droite, jamais un saut, jamais une oscillation
+      (propre au RLC, absent ici car il n'y a pas de bobine).
+
+  - id: RC-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Juste avant de fermer l'interrupteur $K$ (donc $K$ encore ouvert), le
+      condensateur d'un dipôle RC est initialement déchargé. Que valent alors
+      la tension $u_C$ à ses bornes et le courant $i$ dans le circuit ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u_C = 0$ et $i = 0$ : rien ne circule tant que $K$ est ouvert."
+        correct: true
+      - id: B
+        text: >-
+          $u_C = E$ déjà, car le générateur impose cette tension partout dans
+          le circuit dès qu'il est branché.
+        correct: false
+        feedback: >
+          Le générateur ne peut imposer sa tension que si le circuit est
+          fermé et qu'un courant peut circuler. $K$ ouvert coupe le circuit :
+          le condensateur reste à sa valeur initiale, $u_C=0$.
+      - id: C
+        text: >-
+          $i \neq 0$ : un léger courant circule déjà, même interrupteur
+          ouvert.
+        correct: false
+        feedback: >
+          Un interrupteur ouvert coupe le circuit électriquement : aucun
+          courant ne peut circuler, $i=0$, quelle que soit la tension du
+          générateur.
+      - id: D
+        text: "$u_C$ est indéterminée tant qu'aucun courant n'a circulé."
+        correct: false
+        feedback: >
+          $u_C$ est au contraire parfaitement connue ici : le condensateur a
+          été décrit comme initialement déchargé, donc $u_C=0$, un fait
+          donné, pas une inconnue.
+    correct_feedback: >
+      Interrupteur ouvert : le circuit est coupé, aucun courant ne circule
+      ($i=0$), et le condensateur reste à son état initial, déchargé
+      ($u_C=0$).
+    solution: |
+      K ouvert interrompt le circuit : par définition, aucun courant ne peut
+      le traverser, i=0. Le condensateur est donné initialement déchargé,
+      donc u_C=0. Ces deux valeurs sont les conditions de départ à partir
+      desquelles la charge démarrera à t=0, à la fermeture de K.
+
+  - id: RC-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Toujours d'après ce qu'on observe à l'oscilloscope lors de la charge
+      d'un dipôle RC : la montée de $u_C$ prend-elle un temps nul, un temps
+      fini et mesurable, ou un temps infiniment long avant que quoi que ce
+      soit ne se passe ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un temps fini et mesurable (de l'ordre de la milliseconde pour un
+          circuit typique) : ni instantané, ni figé indéfiniment.
+        correct: true
+      - id: B
+        text: "Un temps nul : $u_C$ atteint directement sa valeur finale."
+        correct: false
+        feedback: >
+          C'est de nouveau le modèle du saut instantané. La charge se
+          déroule sur une durée caractéristique bien réelle, pas un temps
+          nul.
+      - id: C
+        text: >-
+          Un temps infiniment long : rien de significatif ne se passe avant
+          plusieurs secondes, quel que soit le circuit.
+        correct: false
+        feedback: >
+          Au contraire, la charge démarre dès $t=0$ (le courant est même
+          maximal à cet instant) et l'essentiel se joue sur une durée de
+          l'ordre de quelques constantes de temps — pas « plusieurs
+          secondes » de façon universelle.
+      - id: D
+        text: >-
+          Le temps de charge est toujours le même, quels que soient les
+          composants du circuit.
+        correct: false
+        feedback: >
+          La durée de la charge dépend bien du circuit : elle est réglée par
+          la résistance et la capacité utilisées, pas figée à une valeur
+          universelle.
+    correct_feedback: >
+      La charge est un phénomène transitoire réel, ni instantané ni éternel :
+      sa durée caractéristique dépend du circuit utilisé.
+    solution: |
+      L'observation à l'oscilloscope montre une montée progressive de u_C,
+      qui se déroule sur une durée mesurable (millisecondes pour des
+      composants usuels) : ni un saut (temps nul), ni un phénomène qui ne
+      démarrerait qu'après un long délai. Cette durée caractéristique,
+      appelée constante de temps, dépend des composants du circuit (elle
+      sera précisée plus loin).
+
+  - id: RC-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      On imagine un modèle simpliste : le condensateur se chargerait à
+      **débit constant**, comme un verre qu'on remplit au robinet — le
+      courant $i$ resterait égal à sa valeur de départ $i_0 = E/R$ pendant
+      toute la charge, jusqu'à ce que $u_C$ atteigne $E$. Pourquoi ce modèle
+      est-il physiquement impossible dans ce circuit ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'il impose un courant constant non nul jusqu'à l'instant où
+          $u_C=E$, mais à cet instant la loi des mailles donne $u_R=E-u_C=0$
+          donc $i=0$ : le courant serait à la fois resté constant et tombé à
+          zéro, ce qui est contradictoire.
+        correct: true
+      - id: B
+        text: >-
+          Parce qu'un condensateur ne peut jamais atteindre exactement la
+          tension $E$, quel que soit le modèle envisagé.
+        correct: false
+        feedback: >
+          Ce n'est pas la bonne raison : le problème du modèle « débit
+          constant » n'est pas que $E$ serait inatteignable, c'est qu'il se
+          contredit lui-même à l'instant où $u_C=E$ (le courant devrait être
+          à la fois constant et nul).
+      - id: C
+        text: >-
+          Parce que la résistance $R$ s'oppose totalement au passage du
+          courant dès $t=0$, empêchant toute charge de se déposer.
+        correct: false
+        feedback: >
+          Au contraire, à $t=0$ le courant est maximal ($i_0=E/R$) : $R$
+          limite le courant, elle ne l'empêche pas totalement de circuler.
+      - id: D
+        text: >-
+          Parce que la loi des mailles ne s'applique qu'une fois le régime
+          permanent atteint, pas pendant la charge.
+        correct: false
+        feedback: >
+          La loi des mailles est toujours vraie, à chaque instant, que le
+          circuit soit en régime transitoire ou permanent — c'est justement
+          en l'appliquant à un instant quelconque de la charge qu'on démontre
+          la contradiction du modèle « débit constant ».
+    correct_feedback: >
+      Le modèle à débit constant s'auto-contredit : au moment où $u_C=E$, la
+      loi des mailles impose $i=0$, incompatible avec un courant resté
+      constant à sa valeur de départ non nulle. Le courant doit donc décroître
+      progressivement, pas rester constant.
+    solution: |
+      Si i restait égal à i0=E/R jusqu'à u_C=E, alors à cet instant précis la
+      loi des mailles (toujours vraie) donne u_R = E - u_C = 0, donc i = u_R/R
+      = 0. Mais on avait supposé i constant et non nul. Contradiction : le
+      modèle est faux. Le courant doit décroître progressivement à mesure que
+      u_C monte, jamais rester constant.
+
+  - id: RC-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Pendant la charge, on a établi $i = \dfrac{E-u_C}{R}$. Au fur et à
+      mesure que $u_C$ se rapproche progressivement de $E$, comment évolue le
+      courant $i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $i$ diminue progressivement vers $0$ : ce qu'il reste de tension
+          disponible pour le pousser ($E-u_C$) se réduit sans cesse.
+        correct: true
+      - id: B
+        text: "$i$ reste constant, puisque $R$ ne change pas."
+        correct: false
+        feedback: >
+          $R$ est bien constant, mais $i$ dépend aussi de $E-u_C$, qui lui
+          diminue au fil de la charge : $i=(E-u_C)/R$ décroît donc, même si
+          $R$ ne bouge pas.
+      - id: C
+        text: >-
+          $i$ augmente : plus $u_C$ est grande, plus le condensateur « pousse
+          » fort le courant.
+        correct: false
+        feedback: >
+          C'est l'inverse : le condensateur ne « pousse » pas le courant,
+          c'est l'écart $E-u_C$ qui le fait circuler. Plus $u_C$ grandit,
+          plus cet écart se réduit, donc $i$ diminue.
+      - id: D
+        text: >-
+          $i$ décroît d'abord, puis remonte vers $E/R$ en fin de charge.
+        correct: false
+        feedback: >
+          Il n'y a pas de remontée : $i=(E-u_C)/R$ décroît de façon monotone
+          tout au long de la charge, sans jamais repartir vers le haut, car
+          $u_C$ ne fait que croître vers $E$.
+    correct_feedback: >
+      $i=(E-u_C)/R$ décroît continûment : à mesure que $u_C$ monte, l'écart
+      $E-u_C$ se réduit, donc de moins en moins de tension reste disponible
+      pour pousser le courant.
+    solution: |
+      i = (E - u_C)/R. u_C croît de façon monotone de 0 vers E, donc E - u_C
+      décroît de façon monotone de E vers 0, et i = (E-u_C)/R décroît en
+      conséquence de i0=E/R vers 0. C'est la boucle de rétroaction qui freine
+      la charge : plus u_C monte, moins il reste de tension pour pousser le
+      courant qui la fait monter.
+
+  - id: RC-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      On double la résistance $R$ d'un dipôle RC, sans changer ni $C$ ni $E$.
+      D'après le mécanisme de la charge ($i=(E-u_C)/R$), la charge est-elle
+      plus rapide, plus lente, ou inchangée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Plus lente : à tension disponible égale ($E-u_C$), un $R$ plus
+          grand limite davantage le courant, donc dépose moins de charge par
+          seconde — la constante de temps $\tau=RC$ augmente.
+        correct: true
+      - id: B
+        text: >-
+          Plus rapide : une résistance plus grande « pousse » plus fort le
+          courant vers le condensateur.
+        correct: false
+        feedback: >
+          Une résistance ne pousse jamais le courant, elle le limite. Un $R$
+          plus grand réduit $i=(E-u_C)/R$ à écart de tension égal : la charge
+          se dépose donc plus lentement, pas plus vite.
+      - id: C
+        text: >-
+          Inchangée : seule la capacité $C$ fixe la vitesse de charge, $R$
+          n'intervient pas.
+        correct: false
+        feedback: >
+          $R$ intervient bien : la constante de temps est $\tau=RC$, produit
+          des deux grandeurs. Doubler $R$ double $\tau$, donc ralentit la
+          charge.
+      - id: D
+        text: >-
+          La vitesse ne change pas, mais la tension finale $u_C(\infty)$
+          double avec $R$.
+        correct: false
+        feedback: >
+          C'est l'inverse des rôles : $R$ (avec $C$) règle la vitesse via
+          $\tau=RC$, tandis que la tension finale ne dépend que de $E$
+          ($u_C(\infty)=E$), pas de $R$. Doubler $R$ ne change donc pas
+          l'asymptote.
+    correct_feedback: >
+      Doubler $R$ double $\tau=RC$ : la charge est plus lente, mais
+      l'asymptote reste $E$ — seule la vitesse change, pas la valeur finale.
+    solution: |
+      i = (E-u_C)/R : à écart (E-u_C) donné, un R plus grand donne un i plus
+      petit, donc moins de charge déposée par unité de temps sur les
+      armatures (dq/dt = i). La charge est donc plus lente. Formellement,
+      tau = RC double si R double. La valeur finale u_C(infini) = E ne
+      dépend, elle, que de E, pas de R : c'est un rôle distinct de celui de
+      R et C, qui règlent uniquement la vitesse.
+
+  - id: RC-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Sur un oscillogramme de charge d'un dipôle RC, l'asymptote horizontale
+      (régime permanent) est à $8{,}0\ \text{V}$. La tangente à la courbe
+      $u_C(t)$ tracée à l'origine ($t=0$) coupe cette asymptote à l'instant
+      $t=15\ \text{ms}$. Que vaut la constante de temps $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = 15\ \text{ms}$ : c'est exactement la définition de la
+          méthode de la tangente à l'origine, qui coupe l'asymptote en
+          $t=\tau$.
+        correct: true
+      - id: B
+        text: "$\\tau = 8{,}0\\ \\text{ms}$, la valeur de l'asymptote lue en volts."
+        correct: false
+        feedback: >
+          $8{,}0\ \text{V}$ est la valeur de $E$ (une tension), pas une
+          durée : elle ne peut pas être $\tau$ (en secondes). C'est
+          l'abscisse du point d'intersection tangente-asymptote qui donne
+          $\tau$, soit $15\ \text{ms}$.
+      - id: C
+        text: >-
+          On ne peut pas conclure directement : il faut d'abord calculer
+          $0{,}63\times8{,}0$ puis chercher l'instant correspondant sur la
+          courbe.
+        correct: false
+        feedback: >
+          C'est la méthode des $63\,\%$, une méthode différente et
+          équivalente — mais elle n'est pas nécessaire ici : la méthode de la
+          tangente à l'origine donne $\tau$ directement, sans calcul
+          intermédiaire, par construction.
+      - id: D
+        text: >-
+          $\tau = 15/2 = 7{,}5\ \text{ms}$, car la tangente ne coupe
+          l'asymptote qu'à mi-chemin de $\tau$.
+        correct: false
+        feedback: >
+          Il n'y a pas de facteur $1/2$ : la tangente à l'origine coupe
+          l'asymptote pile à $t=\tau$, pas à $t=\tau/2$. C'est une propriété
+          exacte de la pente à l'origine, $E/\tau$.
+    correct_feedback: >
+      Par construction de la méthode, la tangente tracée à $t=0$ coupe
+      l'asymptote $u_C=E$ exactement à l'abscisse $t=\tau$ : ici $\tau=15\
+      \text{ms}$, sans autre calcul.
+    solution: |
+      La pente de u_C à l'origine vaut E/tau (dérivée de la solution en
+      t=0). Une droite partant de 0 avec cette pente atteint la hauteur E
+      après une durée E/(E/tau) = tau. La tangente à l'origine coupe donc
+      l'asymptote pile en t=tau. Ici l'intersection est lue à t=15 ms, donc
+      tau = 15 ms directement — la valeur de l'asymptote (8,0 V) ne sert pas
+      à ce calcul, elle donne E, une information différente.
+
+  - id: RC-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Sur un oscillogramme de charge, l'asymptote horizontale (régime
+      permanent) est à $E=5{,}0\ \text{V}$. On relève que $u_C$ atteint
+      $3{,}15\ \text{V}$ à l'instant $t=4{,}0\ \text{ms}$. Que peut-on en
+      déduire sur $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau \approx 4{,}0\ \text{ms}$ : $3{,}15\ \text{V}$ représente
+          $63\,\%$ de $E=5{,}0\ \text{V}$, donc cet instant est exactement
+          $t=\tau$ par la méthode des $63\,\%$.
+        correct: true
+      - id: B
+        text: >-
+          $\tau \approx 3{,}15\ \text{ms}$, en reprenant directement la
+          valeur lue en volts comme si c'était une durée en ms.
+        correct: false
+        feedback: >
+          $3{,}15\ \text{V}$ est une tension, pas une durée : recopier ce
+          nombre en millisecondes n'a pas de sens physique. C'est l'instant
+          $t=4{,}0\ \text{ms}$ auquel cette tension est atteinte qui vaut
+          $\tau$.
+      - id: C
+        text: >-
+          On ne peut rien déduire tant que le régime permanent ($\approx
+          5\tau$) n'est pas atteint sur la courbe.
+        correct: false
+        feedback: >
+          La méthode des $63\,\%$ ne demande pas d'attendre le régime
+          permanent : il suffit de connaître l'asymptote $E$ (le régime
+          permanent sert seulement à la lire) et un point à $63\,\%$ de
+          celle-ci pour lire $\tau$ directement.
+      - id: D
+        text: >-
+          $\tau \approx 2{,}8\ \text{ms}$, en cherchant l'instant où $u_C$
+          atteint la moitié de $E$, comme pour une demi-vie en décroissance
+          radioactive.
+        correct: false
+        feedback: >
+          C'est une confusion avec la convention des $50\,\%$ (demi-vie),
+          utilisée en décroissance radioactive mais pas ici : la convention
+          du dipôle RC est fixée à $63\,\%$ ($1-e^{-1}$), pas $50\,\%$.
+    correct_feedback: >
+      $u_C(\tau)=E(1-e^{-1})\approx0{,}63\,E$ : atteindre $63\,\%$ de $E$ est
+      la signature de $t=\tau$, ici $4{,}0\ \text{ms}$.
+    solution: |
+      u_C(tau) = E(1 - e^-1) ≈ 0,63 E. Ici 3,15/5,0 = 0,63 : la tension
+      relevée est bien 63 % de l'asymptote, donc l'instant correspondant,
+      t = 4,0 ms, est directement tau. Aucun calcul supplémentaire n'est
+      nécessaire, et il ne faut pas confondre ce critère (63 %) avec celui
+      de la demi-vie (50 %) utilisé pour une décroissance radioactive.
+
+  - id: RC-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Un condensateur de capacité $C=2{,}0\ \mu\text{F}$ se charge sous un
+      échelon $E=12\ \text{V}$. Quelle est l'énergie emmagasinée à l'instant
+      où $u_C=6{,}0\ \text{V}$ (le régime permanent n'est pas encore
+      atteint) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_C = \frac12\times2{,}0\times10^{-6}\times6{,}0^2 =
+          3{,}6\times10^{-5}\ \text{J} = 36\ \mu\text{J}$
+        correct: true
+      - id: B
+        text: >-
+          $E_C = \frac12\times2{,}0\times10^{-6}\times12^2 =
+          1{,}4\times10^{-4}\ \text{J} = 144\ \mu\text{J}$
+        correct: false
+        feedback: >
+          C'est l'énergie finale, une fois $u_C=E=12\ \text{V}$. Mais
+          l'énoncé demande l'énergie à l'instant où $u_C=6{,}0\ \text{V}$,
+          pas en fin de charge : il faut utiliser la valeur instantanée de
+          $u_C$ dans $\frac12Cu_C^2$, pas $E$.
+      - id: C
+        text: >-
+          $E_C = 2{,}0\times10^{-6}\times6{,}0 = 1{,}2\times10^{-5}\ \text{J}
+          = 12\ \mu\text{J}$
+        correct: false
+        feedback: >
+          $Cu_C$ est la charge $q$ stockée sur les armatures, pas une
+          énergie. L'énergie est $\frac12Cu_C^2$, pas $Cu_C$.
+      - id: D
+        text: >-
+          $E_C = \frac12\times2{,}0\times10^{-6}\times6{,}0 =
+          6{,}0\times10^{-6}\ \text{J} = 6{,}0\ \mu\text{J}$
+        correct: false
+        feedback: >
+          $u_C$ doit être élevée au carré dans $\frac12Cu_C^2$ : l'oubli du
+          carré donne une valeur bien trop petite. L'énergie croît comme le
+          carré de la tension, pas linéairement.
+    correct_feedback: >
+      $E_C=\frac12Cu_C^2$ s'applique avec la valeur de $u_C$ à l'instant
+      considéré, pas avec $E$ : ici $u_C=6{,}0\ \text{V}$, non encore la
+      valeur finale, donne $36\ \mu\text{J}$.
+    solution: |
+      E_C = (1/2) C u_C^2, avec u_C la tension à l'instant considéré, pas
+      forcément E. Ici u_C = 6,0 V (le régime permanent, où u_C = E = 12 V,
+      n'est pas encore atteint) :
+      E_C = 0,5 × 2,0e-6 × 6,0^2 = 0,5 × 2,0e-6 × 36 = 3,6e-5 J = 36 µJ.
+
+  - id: RC-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Un condensateur chargé à $E=9{,}0\ \text{V}$ se décharge dans une
+      résistance $R$ (le générateur est retiré du circuit). Que peut-on dire
+      de $u_C(t)$, de $i(t)$ et de la constante de temps, par rapport à la
+      charge ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $u_C(t)=E\,e^{-t/\tau}$ décroît vers $0$, $i(t)=-\frac{E}{R}\,
+          e^{-t/\tau}$ est négatif (le courant s'inverse), et $\tau=RC$ est
+          identique à celui de la charge.
+        correct: true
+      - id: B
+        text: >-
+          $u_C$ décroît vers $0$, mais $i$ reste positif, dans le même sens
+          que pendant la charge.
+        correct: false
+        feedback: >
+          Le courant s'inverse pendant la décharge : le condensateur se vide
+          au lieu de se remplir, donc $i$ change de sens et devient négatif
+          (avec la même orientation de référence qu'à la charge).
+      - id: C
+        text: >-
+          $u_C$ et $i$ suivent exactement les mêmes équations qu'à la
+          charge, avec le même signe.
+        correct: false
+        feedback: >
+          Les équations diffèrent : à la charge, le second membre de
+          l'équation différentielle est $E$ (le générateur pousse) ; à la
+          décharge, il est nul (plus de générateur). Les solutions ne sont
+          donc pas identiques : $E(1-e^{-t/\tau})$ contre $E\,e^{-t/\tau}$.
+      - id: D
+        text: >-
+          La constante de temps de la décharge est différente de celle de la
+          charge, car il n'y a plus de générateur.
+        correct: false
+        feedback: >
+          $\tau=RC$ ne dépend que de $R$ et $C$, pas de la présence d'un
+          générateur : c'est la même valeur à la charge et à la décharge, ce
+          qui change c'est seulement la forme de la solution ($E-u_C$ n'a
+          plus de $E$ à pousser).
+    correct_feedback: >
+      La décharge suit $u_C(t)=E\,e^{-t/\tau}$ et $i(t)=-\frac{E}{R}\,
+      e^{-t/\tau}$ (courant inversé), avec le même $\tau=RC$ qu'à la charge —
+      seule la forme des solutions change, pas la constante de temps.
+    solution: |
+      Sans générateur, la loi des mailles donne RC du_C/dt + u_C = 0, avec
+      u_C(0)=E : solution u_C(t) = E e^(-t/tau). Le courant, i = C du_C/dt =
+      -(E/R) e^(-t/tau), est négatif : le sens conventionnel de charge
+      devient un sens de décharge. La vérification de la solution impose de
+      nouveau tau = RC, qui ne dépend que des composants, pas de la présence
+      ou non d'un générateur.
+
+  - id: RC-17
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Un dipôle RC série (générateur idéal $E$, résistance $R$, condensateur
+      $C=3{,}0\ \mu\text{F}$ initialement déchargé) est soumis à un échelon
+      de tension à $t=0$. L'oscillogramme de $u_C(t)$ montre une asymptote
+      horizontale à $9{,}0\ \text{V}$ ; la tangente à l'origine coupe cette
+      asymptote à $t=6{,}0\ \text{ms}$. Quelle est la valeur de $R$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $R = \tau/C = 6{,}0\times10^{-3}/(3{,}0\times10^{-6}) =
+          2{,}0\times10^{3}\ \Omega = 2{,}0\ \text{k}\Omega$
+        correct: true
+      - id: B
+        text: >-
+          $R = \tau\times C = 6{,}0\times10^{-3}\times3{,}0\times10^{-6}
+          \approx 1{,}8\times10^{-8}\ \Omega$
+        correct: false
+        feedback: >
+          C'est la formule inversée : $\tau=RC$ donne $R=\tau/C$, pas
+          $R=\tau\times C$. Multiplier au lieu de diviser donne une valeur
+          absurdement petite pour une résistance.
+      - id: C
+        text: >-
+          $R = C/\tau = 3{,}0\times10^{-6}/(6{,}0\times10^{-3}) =
+          5{,}0\times10^{-4}\ \Omega$
+        correct: false
+        feedback: >
+          Le rapport est inversé : c'est $\tau$ qu'on divise par $C$, pas
+          l'inverse. $R=C/\tau$ n'a même pas la bonne dimension pour une
+          résistance dans cette formule.
+      - id: D
+        text: >-
+          $R = E/C = 9{,}0/(3{,}0\times10^{-6}) = 3{,}0\times10^{6}\ \Omega =
+          3{,}0\ \text{M}\Omega$
+        correct: false
+        feedback: >
+          $9{,}0\ \text{V}$ est la valeur de l'asymptote, c'est-à-dire $E$ —
+          elle ne joue aucun rôle dans $\tau=RC$. C'est $\tau=6{,}0\
+          \text{ms}$, lu par la méthode de la tangente, qu'il faut diviser
+          par $C$, pas $E$.
+    correct_feedback: >
+      La tangente à l'origine coupe l'asymptote en $t=\tau$, donc
+      $\tau=6{,}0\ \text{ms}$ ; avec $\tau=RC$, $R=\tau/C=2{,}0\
+      \text{k}\Omega$. L'asymptote ($9{,}0\ \text{V}$) donne $E$, une
+      information distincte, non utilisée dans ce calcul.
+    solution: |
+      La tangente à l'origine coupe l'asymptote en t = tau (méthode vue en
+      R3) : tau = 6,0 ms = 6,0e-3 s.
+      tau = RC ⟹ R = tau/C = 6,0e-3 / 3,0e-6 = 2,0e3 Ω = 2,0 kΩ.
+      La valeur de l'asymptote (9,0 V) donne E, indépendante de ce calcul de
+      R : elle ne sert pas ici.
+
+  - id: RC-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Un dipôle RC ($E=15\ \text{V}$, $R=3{,}0\ \text{k}\Omega$, condensateur
+      initialement déchargé) est soumis à un échelon de tension à $t=0$.
+      Quel est le courant $i(0^+)$ juste après la fermeture de
+      l'interrupteur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $i(0^+) = E/R = 15/3000 = 5{,}0\times10^{-3}\ \text{A} = 5{,}0\
+          \text{mA}$
+        correct: true
+      - id: B
+        text: >-
+          $i(0^+) = 0$, car le condensateur bloque le courant dès la
+          fermeture.
+        correct: false
+        feedback: >
+          C'est vrai en régime permanent ($t\gg\tau$), pas à $t=0^+$ : juste
+          après la fermeture, le condensateur est encore vide, il n'oppose
+          aucune tension, et c'est justement là que le courant est maximal.
+      - id: C
+        text: "$i(0^+) = E/(2R) = 2{,}5\\ \\text{mA}$, en divisant par deux."
+        correct: false
+        feedback: >
+          Il n'y a aucune raison de diviser par deux : à $t=0^+$, $u_C=0$
+          donc $u_R=E$ (toute la tension du générateur), et $i=u_R/R=E/R$
+          sans facteur correctif.
+      - id: D
+        text: >-
+          $i(0^+)$ dépend aussi de $C$, qu'il faudrait connaître pour
+          répondre.
+        correct: false
+        feedback: >
+          $i(0^+)=E/R$ ne dépend que de $E$ et $R$, pas de $C$ : à $t=0^+$,
+          la valeur du courant initial est fixée uniquement par la tension
+          disponible sur $R$. $C$ intervient seulement dans la vitesse de la
+          charge ($\tau=RC$), pas dans cette valeur initiale.
+    correct_feedback: >
+      À $t=0^+$, le condensateur est encore déchargé : toute la tension $E$
+      tombe sur $R$, donc $i(0^+)=E/R=5{,}0\ \text{mA}$, la valeur maximale du
+      courant.
+    solution: |
+      À t=0+, u_C=0 (continuité, condensateur initialement déchargé).
+      Loi des mailles : u_R = E - u_C = E.
+      Loi d'Ohm : i(0+) = u_R/R = E/R = 15/3000 = 5,0e-3 A = 5,0 mA.
+      Cette valeur ne dépend pas de C : C ne règle que la vitesse de la
+      charge ensuite (tau = RC), pas le courant initial.
+
+  - id: RC-19
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_rc_charge
+    tags: []
+    stem: >
+      Un condensateur de capacité $C=4{,}0\ \mu\text{F}$, chargé sous
+      $E=10\ \text{V}$, est ensuite déchargé dans une résistance $R$ (le
+      générateur est retiré). Quelle est l'énergie totale dissipée par effet
+      Joule dans $R$ au cours de la décharge complète ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Toute l'énergie initialement stockée est dissipée :
+          $E_C=\frac12CE^2=\frac12\times4{,}0\times10^{-6}\times10^2=
+          2{,}0\times10^{-4}\ \text{J} = 200\ \mu\text{J}$
+        correct: true
+      - id: B
+        text: >-
+          Aucune énergie n'est dissipée : elle reste stockée dans le
+          condensateur indéfiniment.
+        correct: false
+        feedback: >
+          La décharge vide justement le condensateur : $u_C\to0$, donc son
+          énergie $\frac12Cu_C^2\to0$. Cette énergie ne disparaît pas, elle
+          est intégralement dissipée par effet Joule dans $R$ au fil de la
+          décharge.
+      - id: C
+        text: >-
+          Seule la moitié de l'énergie initiale est dissipée, l'autre moitié
+          restant dans le condensateur.
+        correct: false
+        feedback: >
+          Une fois la décharge terminée ($t\approx5\tau$), $u_C\approx0$ :
+          il ne reste donc (pratiquement) aucune énergie stockée, pas la
+          moitié. Toute l'énergie initiale finit dissipée dans $R$.
+      - id: D
+        text: >-
+          L'énergie dissipée dépend de $R$ : plus $R$ est grand, plus
+          l'énergie dissipée est grande.
+        correct: false
+        feedback: >
+          L'énergie totale dissipée ne dépend que de $C$ et $E$
+          ($\frac12CE^2$), pas de $R$ : $R$ règle seulement la durée de la
+          décharge (via $\tau=RC$), pas la quantité totale d'énergie
+          libérée.
+    correct_feedback: >
+      À la fin de la décharge, $u_C\to0$ : toute l'énergie initialement
+      stockée, $\frac12CE^2=200\ \mu\text{J}$, a été dissipée par effet Joule
+      dans $R$ — $R$ ne change que la vitesse de cette dissipation, pas son
+      total.
+    solution: |
+      Énergie initialement stockée (condensateur chargé à E) :
+      E_C = (1/2) C E^2 = 0,5 × 4,0e-6 × 100 = 2,0e-4 J = 200 µJ.
+      À la fin de la décharge (t ≈ 5τ), u_C ≈ 0, donc l'énergie restant
+      stockée est ≈ 0 : par conservation de l'énergie, la totalité de
+      l'énergie initiale a été dissipée par effet Joule dans R. Cette
+      quantité ne dépend que de C et E ; R fixe seulement tau = RC, donc la
+      vitesse de la dissipation, pas son total.
