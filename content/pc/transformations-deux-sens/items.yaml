@@ -346,3 +346,427 @@ items:
       transformation totale, c'est uniquement le fait qu'elle s'arrête avant
       que le réactif de départ ($NH_3$) ait totalement disparu - pas le fait
       qu'elle n'aurait presque pas eu lieu.
+
+  # ── croire que toute réaction va jusqu'au bout avec assez de temps (variant, niveau accroche) ──
+  - id: TDS-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Reprends l'accroche : au moment où il verse l'acide éthanoïque et
+      l'éthanol dans le ballon, avant tout test, un élève avance : « Si on
+      chauffe assez longtemps, tout l'acide et tout l'alcool finiront
+      forcément par disparaître complètement. » Cette prédiction est-elle
+      justifiée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui - c'est vrai pour toute réaction chimique, il suffit d'attendre assez longtemps."
+        correct: false
+        feedback: >
+          C'est l'erreur à éviter : le test chimique montrera au contraire
+          que l'acide et l'alcool restent détectables indéfiniment.
+      - id: B
+        text: "Rien ne permet de l'affirmer à l'avance : certaines transformations laissent coexister indéfiniment des réactifs avec les produits, quel que soit le temps attendu."
+        correct: true
+      - id: C
+        text: "Oui, car un chauffage prolongé fournit toujours assez d'énergie pour consommer la totalité des réactifs."
+        correct: false
+        feedback: >
+          Le chauffage accélère la réaction, il ne change pas le fait que ce
+          mélange laisse coexister acide et alcool avec l'ester et l'eau.
+      - id: D
+        text: "Non, mais seulement parce qu'il n'y a pas assez de catalyseur dans ce mélange."
+        correct: false
+        feedback: >
+          Ce n'est pas une question de quantité de catalyseur : même avec
+          plus de catalyseur, le mélange atteindrait le même état stabilisé.
+    correct_feedback: >
+      Rien ne garantit qu'une réaction aille jusqu'au bout : le test du rung
+      2 le confirmera pour ce mélange précis.
+    solution: |
+      On ne peut pas prédire, sans test, qu'une transformation ira jusqu'au
+      bout. Ici, le test chimique révèle qu'acide et alcool restent
+      détectables indéfiniment : la prédiction de l'élève est fausse.
+
+  # ── confondre lenteur (durée d'attente) et caractère totale (variant, niveau accroche) ──
+  - id: TDS-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Toujours dans l'accroche : l'odeur d'ester met plusieurs heures à se
+      stabiliser dans le ballon. Un élève en déduit : « Puisque cette
+      réaction est lente - elle prend des heures - elle va forcément finir
+      par aller jusqu'au bout, comme toute réaction qui prend du temps. »
+      Que penser de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est valide : plus une réaction est lente, plus elle a de chances d'être totale."
+        correct: false
+        feedback: >
+          C'est confondre deux axes indépendants : la vitesse et le
+          caractère totale/limitée n'ont aucun lien logique.
+      - id: B
+        text: "Il est valide, mais seulement parce qu'il y a un catalyseur dans ce mélange."
+        correct: false
+        feedback: >
+          Le catalyseur ne change que la vitesse d'installation de l'état
+          stabilisé, jamais le fait que des réactifs y restent ou non.
+      - id: C
+        text: "Il est invalide : la durée que met une réaction à se stabiliser ne renseigne en rien sur le fait qu'elle soit totale ou limitée - ce sont deux questions indépendantes."
+        correct: true
+      - id: D
+        text: "Il est invalide, car en réalité cette réaction est rapide, pas lente."
+        correct: false
+        feedback: >
+          Le problème n'est pas la vitesse réelle de cette réaction, mais le
+          fait que vitesse et caractère totale/limitée sont indépendants.
+    correct_feedback: >
+      Rapide/lente et totale/limitée sont deux questions séparées : rien
+      n'oblige une réaction lente à aller jusqu'au bout.
+    solution: |
+      La durée d'installation d'une réaction ne renseigne que sur sa
+      vitesse. Malgré plusieurs heures de chauffage, le test montrera que la
+      réaction reste limitée : la lenteur n'implique aucunement la totalité.
+
+  # ── croire qu'une transformation limitée signifie « rien ne se passe » (variant, niveau accroche) ──
+  - id: TDS-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Dernier point sur l'accroche : après plusieurs heures, on détecte
+      encore de l'acide éthanoïque et de l'éthanol dans le ballon. Un élève
+      en conclut : « Puisque l'acide et l'alcool sont encore là, c'est donc
+      qu'il ne s'est en réalité rien passé dans ce ballon. » Que penser de
+      cette conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est correcte : la présence persistante des réactifs prouve qu'aucune réaction n'a eu lieu."
+        correct: false
+        feedback: >
+          L'odeur fruitée qui se développe est la preuve sensible qu'une
+          transformation réelle a eu lieu, malgré les réactifs restants.
+      - id: B
+        text: "Elle est correcte, mais seulement parce que le mélange n'a pas assez chauffé."
+        correct: false
+        feedback: >
+          Chauffer davantage changerait la vitesse d'installation de l'état
+          stabilisé, pas le fait qu'une odeur d'ester s'est déjà développée.
+      - id: C
+        text: "On ne peut rien dire sans mesurer précisément les quantités en présence."
+        correct: false
+        feedback: >
+          L'odeur perceptible suffit déjà à indiquer qu'un produit nouveau
+          s'est formé, sans qu'une mesure précise soit nécessaire.
+      - id: D
+        text: "Elle est fausse : une odeur fruitée franche s'est bel et bien développée, preuve qu'une quantité réelle d'ester et d'eau s'est formée, aux côtés de l'acide et de l'alcool restants."
+        correct: true
+    correct_feedback: >
+      Une odeur nouvelle qui apparaît prouve qu'une transformation réelle
+      s'est produite, même si l'acide et l'alcool restent détectables.
+    solution: |
+      La coexistence persistante des réactifs n'efface pas ce qui a été
+      produit : l'odeur fruitée signale la formation réelle d'ester et
+      d'eau. « Réactifs encore présents » ne veut pas dire « rien ne s'est
+      passé ».
+
+  # ── croire que répéter le test plus tard changera le verdict totale/limitée (variant, niveau test) ──
+  - id: TDS-10
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Un chimiste teste un mélange d'acide éthanoïque et d'éthanol deux
+      heures après le début du chauffage : il détecte encore de l'acide et
+      de l'alcool. Il refait le même test cinq heures plus tard : il détecte
+      exactement les mêmes quantités, inchangées. Un camarade affirme : « Il
+      faut refaire le test après une semaine entière - à ce moment-là, il ne
+      détectera sans doute plus aucune trace d'acide ni d'alcool. » Que
+      penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est peu probable : le fait que le test donne exactement le même résultat à deux heures d'intervalle signale que le mélange a déjà atteint son état stabilisé - attendre une semaine de plus ne changera rien à la présence d'acide et d'alcool."
+        correct: true
+      - id: B
+        text: "Elle est probable : plus on attend, plus la quantité de réactifs restants diminue, jusqu'à disparaître complètement."
+        correct: false
+        feedback: >
+          Un test répété qui donne le même résultat est au contraire le
+          signe que l'état est stabilisé : rien ne disparaîtra de plus.
+      - id: C
+        text: "On ne peut rien conclure du test répété : deux résultats identiques ne prouvent rien, il faudrait changer de méthode de test pour être sûr."
+        correct: false
+        feedback: >
+          Deux résultats identiques à deux heures d'intervalle sont au
+          contraire le critère même utilisé pour reconnaître un état stabilisé.
+      - id: D
+        text: "Elle est probable, mais seulement si on ajoute davantage de catalyseur avant de refaire le test."
+        correct: false
+        feedback: >
+          Le catalyseur change la vitesse d'atteinte de l'état stabilisé,
+          pas la composition de cet état une fois atteint.
+    correct_feedback: >
+      Deux tests identiques à des instants différents signalent un état
+      stabilisé : rien ne changera plus, quel que soit le temps attendu.
+    solution: |
+      Répéter le test et obtenir le même résultat confirme qu'un mélange a
+      atteint son état stabilisé. L'acide et l'alcool restent, en quantité
+      inchangée, ce qui exclut qu'un temps d'attente plus long fasse
+      disparaître le reste.
+
+  # ── croire qu'un grand excès de réactif restant signifie qu'il ne s'est presque rien passé (variant, niveau test) ──
+  - id: TDS-11
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Dans un ballon, on mélange une grande quantité d'acide éthanoïque et
+      d'éthanol avec seulement un tout petit volume de catalyseur. Après
+      stabilisation, un test révèle qu'une quantité d'ester s'est bien
+      formée, mais qu'elle reste faible comparée à l'énorme quantité d'acide
+      et d'alcool encore présente. Un élève conclut : « Vu la faible
+      quantité d'ester par rapport à ce qui reste, on peut dire que cette
+      transformation ne s'est presque pas produite. » Que penser de cette
+      conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est correcte : pour qu'on puisse dire qu'une transformation a eu lieu, la quantité de produit formé doit dépasser celle des réactifs restants."
+        correct: false
+        feedback: >
+          Rien n'impose qu'un produit dépasse en quantité les réactifs
+          restants pour que la transformation soit reconnue comme réelle.
+      - id: B
+        text: "Elle est fausse : même minoritaire face aux réactifs restants, la quantité d'ester détectée prouve qu'une transformation réelle a eu lieu ; cette comparaison ne définit ni le caractère totale ou limité, ni le fait que la réaction se soit produite."
+        correct: true
+      - id: C
+        text: "Elle est correcte, à moins que l'ester formé ne dépasse la moitié de la quantité initiale d'acide."
+        correct: false
+        feedback: >
+          Il n'existe aucun seuil de proportion à atteindre : dès qu'une
+          quantité détectable de produit apparaît, la transformation a eu lieu.
+      - id: D
+        text: "Elle est correcte, car le trop petit volume de catalyseur a empêché la réaction de vraiment démarrer."
+        correct: false
+        feedback: >
+          Un catalyseur en faible quantité ralentit l'installation de l'état
+          stabilisé, il n'empêche pas la réaction de se produire.
+    correct_feedback: >
+      La quantité de produit formé, même faible comparée aux réactifs
+      restants, prouve qu'une transformation réelle a eu lieu.
+    solution: |
+      Ce qui définit le caractère limité, c'est la persistance détectable
+      des réactifs de départ, pas la proportion entre produit formé et
+      réactif restant. L'ester détecté - même minoritaire - suffit à prouver
+      qu'une transformation réelle s'est produite.
+
+  # ── croire que la simple présence de produit au départ suffit à faire dominer le sens inverse, indépendamment des quantités relatives (canonique) ──
+  - id: TDS-12
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      On prépare un mélange contenant, dès l'instant initial, une grande
+      quantité d'acide éthanoïque et d'éthanol, ainsi qu'une toute petite
+      quantité d'ester et d'eau déjà présents (contrairement aux expériences
+      A et B du cours, où l'un des deux couples partait totalement de zéro).
+      Un élève affirme : « Puisqu'il y a déjà de l'ester et de l'eau dans le
+      mélange au départ, c'est forcément le sens inverse (l'hydrolyse) qui
+      va dominer dès le début. » Que penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : c'est en réalité toujours le sens direct qui domine au départ, quelle que soit la composition initiale."
+        correct: false
+        feedback: >
+          Ce n'est pas vrai non plus en toute généralité : l'expérience B du
+          cours (ester et eau purs) montre le contraire quand la composition
+          initiale est inversée.
+      - id: B
+        text: "On ne peut rien affirmer sans calculer précisément les concentrations de chaque espèce."
+        correct: false
+        feedback: >
+          Le raisonnement qualitatif suffit ici : comparer les quantités
+          relatives de chaque couple permet déjà de prédire le sens dominant.
+      - id: C
+        text: "Elle est fausse : ce n'est pas la simple présence d'ester et d'eau qui compte, mais la quantité relative de chaque couple - ici, l'acide et l'alcool sont largement majoritaires, donc le sens direct devrait au contraire dominer au départ, comme dans l'expérience A."
+        correct: true
+      - id: D
+        text: "On ne peut rien prédire : puisque les deux sens coexistent toujours en même temps, aucun des deux ne peut dominer l'autre, même au tout début."
+        correct: false
+        feedback: >
+          Les deux sens coexistent en permanence, mais l'un peut dominer
+          l'autre à un instant donné, comme le montrent les expériences A et B.
+    correct_feedback: >
+      C'est la quantité relative de chaque couple, pas la simple présence
+      d'un peu de produit, qui décide quel sens domine au départ.
+    solution: |
+      La présence d'un peu d'ester et d'eau ne suffit pas à faire dominer le
+      sens inverse : ce qui compte, c'est la disponibilité relative de
+      chaque couple, comme le montre l'analogie des salles reliées. Ici,
+      l'acide et l'alcool sont très majoritaires, donc le sens direct
+      devrait dominer au départ.
+
+  # ── croire que le sens qui domine est une propriété fixe de la réaction, indépendante de la composition initiale (variant bac, application) ──
+  - id: TDS-13
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      On dissout du chlorure d'ammonium solide $NH_4Cl$ (qui libère des
+      ions $NH_4^+$ en solution) dans une solution aqueuse déjà riche en
+      ions hydroxyde $HO^-$ et pauvre en ammoniac $NH_3$ libre. La réaction
+      en jeu est $NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$. Quel sens
+      va dominer au départ dans ce nouveau mélange, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le sens direct va dominer, car $NH_4Cl$ est le solide qu'on vient d'ajouter au mélange."
+        correct: false
+        feedback: >
+          $NH_4^+$ est un produit de la réaction directe, pas son réactif :
+          sa présence abondante pousse au contraire vers le sens inverse.
+      - id: B
+        text: "Le sens direct va dominer, comme dans toute solution contenant de l'ammoniac, quelle que soit sa composition initiale."
+        correct: false
+        feedback: >
+          Le sens n'est pas une propriété fixe attachée à l'ammoniac : il
+          dépend de la composition initiale de ce mélange précis.
+      - id: C
+        text: "Impossible à prédire sans connaître les concentrations exactes de chaque espèce."
+        correct: false
+        feedback: >
+          Un raisonnement qualitatif suffit : comparer ce qui est abondant
+          (les produits) à ce qui est rare ($NH_3$) prédit déjà le sens.
+      - id: D
+        text: "Le sens inverse va dominer : le mélange est déjà riche en produits ($NH_4^+$, $HO^-$) et pauvre en réactif $NH_3$, donc $NH_4^+$ et $HO^-$ réagissent davantage entre eux pour reformer $NH_3$ et $H_2O$, comme dans l'expérience B du cours."
+        correct: true
+    correct_feedback: >
+      Un mélange riche en produits et pauvre en réactif voit le sens
+      inverse dominer au départ - le miroir de l'expérience A du cours.
+    solution: |
+      Ce mélange est riche en $NH_4^+$ et $HO^-$ (les produits) et pauvre en
+      $NH_3$ (le réactif) : par le même raisonnement que l'expérience B,
+      c'est le sens inverse qui va dominer au départ, régénérant $NH_3$ et
+      $H_2O$.
+
+  # ── croire qu'une transformation limitée signifie « rien ne se passe » (variant bac, application) ──
+  - id: TDS-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      Un chimiste fait réagir de l'acide propanoïque $CH_3CH_2COOH$ et du
+      méthanol $CH_3OH$ ; après stabilisation, un test révèle la présence de
+      propanoate de méthyle et d'eau, mais aussi d'acide propanoïque et de
+      méthanol non transformés. Un camarade affirme : « Puisque la
+      transformation est limitée, ça veut dire qu'il ne s'est presque rien
+      passé dans le ballon. » Quelle réponse est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est faux : une quantité réelle de propanoate de méthyle et d'eau s'est formée, détectable par le test ; « limitée » signifie seulement que l'acide et le méthanol n'ont pas totalement disparu, pas que la réaction n'a pas eu lieu."
+        correct: true
+      - id: B
+        text: "C'est vrai : une transformation limitée, par définition, ne produit pas de changement mesurable."
+        correct: false
+        feedback: >
+          « Limitée » ne veut pas dire « rien ne se passe » : le test
+          détecte bel et bien du propanoate de méthyle et de l'eau formés.
+      - id: C
+        text: "C'est vrai, dans le sens où l'ester formé n'est pas un vrai produit tant que la réaction n'est pas totale."
+        correct: false
+        feedback: >
+          L'ester formé est un produit tout aussi réel, qu'il soit issu
+          d'une transformation totale ou limitée.
+      - id: D
+        text: "C'est vrai, mais seulement parce que le chauffage n'a pas été assez long pour que la réaction avance vraiment."
+        correct: false
+        feedback: >
+          Chauffer plus longtemps changerait la vitesse d'installation de
+          l'état stabilisé, pas le fait que réactifs et produits coexistent.
+    correct_feedback: >
+      Le test détecte du propanoate de méthyle et de l'eau en quantité
+      réelle : la transformation a bien eu lieu, même si elle reste limitée.
+    solution: |
+      Le test révèle la présence de produit formé en quantité détectable :
+      la transformation s'est réellement produite. « Limitée » décrit
+      seulement le fait que l'acide et le méthanol restent, eux aussi,
+      détectables indéfiniment - pas une absence de réaction.
+
+  # ── croire que le sens dominant est une propriété fixe, indépendante de la composition initiale (variant bac, application) ──
+  - id: TDS-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    stem: >
+      On considère la réaction acido-basique
+      $CH_3COOH + NH_3 \rightleftharpoons CH_3COO^- + NH_4^+$. On prépare un
+      mélange en dissolvant de l'acétate d'ammonium solide $CH_3COONH_4$
+      (qui libère à la fois des ions $CH_3COO^-$ et $NH_4^+$) dans de l'eau
+      pure, sans la moindre trace de $CH_3COOH$ ni de $NH_3$ libres au
+      départ. Quel sens va dominer au tout début dans ce mélange, et
+      pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le sens direct va dominer, car c'est le solide qu'on vient de dissoudre qui pilote toujours le sens de la réaction."
+        correct: false
+        feedback: >
+          Ce solide libère justement les deux produits de la réaction, ce
+          qui pousse au contraire vers le sens inverse.
+      - id: B
+        text: "Le sens inverse va dominer : le mélange ne contient au départ que les produits ($CH_3COO^-$, $NH_4^+$) et aucun réactif libre ($CH_3COOH$, $NH_3$), donc ces ions réagissent entre eux pour reformer l'acide et l'ammoniac, exactement comme dans l'expérience B du cours."
+        correct: true
+      - id: C
+        text: "Aucun sens ne peut dominer, car il n'y a aucun réactif libre au départ pour amorcer la réaction."
+        correct: false
+        feedback: >
+          Rien n'empêche le sens inverse de démarrer : $CH_3COO^-$ et
+          $NH_4^+$ peuvent réagir entre eux pour reformer $CH_3COOH$ et
+          $NH_3$, même sans réactif libre au départ.
+      - id: D
+        text: "Le sens direct va dominer quand même, car c'est le sens qui domine par défaut dans toute réaction acido-basique."
+        correct: false
+        feedback: >
+          Il n'existe pas de sens « par défaut » : le sens qui domine dépend
+          de la composition initiale de chaque mélange, pas de la famille
+          chimique de la réaction.
+    correct_feedback: >
+      Un mélange qui ne contient au départ que les produits voit le sens
+      inverse dominer - le même raisonnement que l'expérience B du cours,
+      appliqué à une réaction acido-basique différente.
+    solution: |
+      Le mélange est entièrement composé des produits ($CH_3COO^-$,
+      $NH_4^+$) au départ, sans aucun réactif libre : par le même
+      raisonnement que l'expérience B, c'est le sens inverse qui domine,
+      régénérant $CH_3COOH$ et $NH_3$.
+
+# ── COVERAGE SUMMARY ─────────────────────────────────────────────────────────
+# Misconception clusters × items (floor: ≥3 per cluster):
+#   A. croire que toute réaction va jusqu'au bout avec assez de temps
+#      → TDS-1 (R1), TDS-2 (R3), TDS-7 (R0), TDS-10 (R2 variant: test répété)   = 4
+#   B. confondre la double flèche / vitesse (rapide-lente) avec totale-limitée
+#      → TDS-3 (R1), TDS-4 (R1), TDS-8 (R0)                                    = 3
+#   C. croire qu'une transformation limitée signifie « rien ne s'est passé »
+#      → TDS-5 (R2), TDS-6 (R3), TDS-9 (R0), TDS-11 (R2 variant: grand excès),
+#        TDS-14 (R4)                                                          = 5
+#   D. croire que le sens dominant est une propriété fixe, indépendante de la
+#      composition initiale (qualitatif — pas de calcul Qr,i/K, hors-programme ici)
+#      → TDS-12 (R3), TDS-13 (R4), TDS-15 (R4)                                = 3
+# Rung distribution: R0=3 (TDS-7,8,9) R1=3 (TDS-1,3,4) R2=3 (TDS-5,10,11)
+#                     R3=3 (TDS-2,6,12) R4=3 (TDS-13,14,15)
