@@ -1,6 +1,8 @@
 # B2 — Visual Coverage Fan-Out Ledger
 
-**Status:** IN PROGRESS. Sibling to `docs/audits/fable-day3-ledger.md`,
+**Status:** COMPLETE (all 10 waves shipped; 47/47 lessons, 266/266 chapters
+judged, 127 figures built — see "Campaign close" at the end). Sibling to
+`docs/audits/fable-day3-ledger.md`,
 scoped strictly to Part B2 of the chapter-level visual-coverage campaign —
 building StagedFigures for the 47 lessons remaining after the B1 pilot
 (maths ×13 / pc ×24 / svt ×10, 266 gap chapters). Contract:
@@ -48,7 +50,7 @@ rule, carried forward here).
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | done (7 STAGE / 10 DECLINE, 7 figures) |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | done (14 STAGE / 18 DECLINE, 14 figures) |
-| S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | judged (16 STAGE ch → 17 figs / 19 DECLINE), build in progress |
+| S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | done (16 STAGE ch / 19 DECLINE, 17 figures) |
 
 ---
 
@@ -765,4 +767,98 @@ warrant two figures, the temperature and pH enzyme-kinetics graphs).
 before build launch, zero collisions (including the collision-prone generic
 `courbe-temperature`/`courbe-ph`).
 
-**Build:** in progress.
+**Build** (diagram-author × 5, 17 figures):
+
+| Lesson | Figure slug | Chapter | Stages | Width |
+|---|---|---|---|---|
+| liberation-energie-matiere-organique | atp-hydrolyse-cycle | R1 | 3 | structural |
+| liberation-energie-matiere-organique | glycolyse-bilan-atp | R2 | 4 | structural |
+| liberation-energie-matiere-organique | krebs-bilan-carbone | R3 | 4 | structural |
+| liberation-energie-matiere-organique | chimiosmose-atp-synthase | R4 | 5 | wide-band |
+| moyens-de-defense | phagocytose-etapes | R2 | 5 | structural |
+| moyens-de-defense | selection-clonale | R4 | 4 | structural |
+| moyens-de-defense | anticorps-agglutination | R5 | 4 | structural |
+| moyens-de-defense | lt8-cytotoxicite | R6 | 4 | structural |
+| moyens-de-defense | reponse-primaire-secondaire | R8 | 4 | wide-band |
+| role-enzymes | double-specificite | R3 | 4 | structural |
+| role-enzymes | courbe-temperature | R4 | 4 | wide-band |
+| role-enzymes | courbe-ph | R4 | 3 | wide-band |
+| role-enzymes | concentration-substrat-enzyme | R5 | 4 | wide-band |
+| soi-non-soi | specificite-cle-serrure | R2 | 3 | structural |
+| soi-non-soi | agglutination-transfusion | R4 | 4 | structural |
+| transmission-caracteres | echiquier-dihybride | R4 | 5 | structural |
+| transmission-caracteres | test-cross-deux-hypotheses | R5 | 4 | structural |
+
+**App-file rule fix (worked):** unlike S1 (where four agents self-registered
+into the shared app files concurrently), all five S2 build agents were
+explicitly told NOT to touch `NotionBody.tsx`/`MediaDiagram.tsx`. Every agent
+complied — the orchestrator did the single clean registration pass: 12
+compact figures into `STRUCTURAL_SLUGS`, all 17 aria labels into
+`FIGURE_ARIA_LABELS`, 5 wide-band figures (chimiosmose-atp-synthase,
+reponse-primaire-secondaire, courbe-temperature, courbe-ph,
+concentration-substrat-enzyme) deliberately excluded from the cap. No race,
+no lost updates.
+
+**Verification:**
+- `validate-content.mjs content/svt/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×17 new SVGs (all clean)
+- all 17 slugs registered in `FIGURE_ARIA_LABELS`; 12 compact figures in
+  `STRUCTURAL_SLUGS`, 5 wide-band excluded (membership audit clean)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check, four types sampled: `chimiosmose-atp-synthase`
+  (wide-band membrane cross-section, light — gradient/ATP-synthase/O₂ all
+  legible at full width), `phagocytose-etapes` (structural 5-step storyboard,
+  dark), `courbe-temperature` (wide-band kinetics graph, light — bell +
+  denaturation collapse), `echiquier-dihybride` (structural-capped 4×4 grid,
+  dark — all 16 genotypes + legend + 9:3:3:1 legible even at the 680px cap) —
+  all clean in the sampled themes
+
+**Commits:** `cccf052` (judgment), `ebbe0ab` (role-enzymes), `7b03c61`
+(soi-non-soi), `e5b1d03` (transmission-caracteres), `91b11e0`
+(moyens-de-defense), `2c097c8` (liberation-energie), plus the closing commit
+carrying the reconciled app files and this ledger update.
+
+**Running tally: 47/47 lessons done, 266/266 chapters judged, 126 STAGE / 140 DECLINE, 127 figures built. SVT matière COMPLETE. B2 CAMPAIGN COMPLETE.**
+
+---
+
+## Campaign close — B2 visual fan-out
+
+Every one of the 47 lessons remaining after the B1 pilot has had every gap
+chapter judged at the chapter level against `LESSON-EXPERIENCE-SPEC.md`
+§2.5, and every STAGE verdict has been built, validated, and shipped.
+
+**Final numbers (B2 only, excludes the B1 pilot's 23 chapters / 15 figures):**
+- **47 lessons**, all three science matières (maths 13, pc 24, svt 10).
+- **266 gap chapters judged** — 126 STAGE, 140 DECLINE. The ~47% STAGE rate
+  reflects the §2.5 discipline: graphs and genuine ≥3-layer teaching gestures
+  are staged; narrative hooks, definitional vocab, procedural recaps, and
+  attempt-first exercises are honestly declined rather than given decorative
+  figures.
+- **127 StagedFigures built** (126 STAGE chapters + role-enzymes R4's second
+  figure). Every figure: `--figure-*` tokens only, native-SVG math, a
+  `.stages.json` sidecar with stage-count parity, an aria label, and a
+  wide-band/structural width decision.
+- **10 waves**, matière-pure, ≤5 lessons each, each closed with
+  validate-content + anti-contract grep + `npm run build` + full
+  `dom-truth.mjs` (155/155 every wave) + a light/dark screenshot spot-check,
+  committed and pushed incrementally (no single mega-commit).
+
+**Philosophie stays a deliberate zero** (11 lessons, 84 chapters) per
+`fable-day3-ledger.md` §16 — not re-litigated.
+
+**Two process lessons recorded for the next maintainer:**
+1. **Figure slugs must be corpus-unique** — the app keys `FIGURE_ARIA_LABELS`,
+   `STRUCTURAL_SLUGS`, `VERTICALLY_STACKED_PANELS` by bare slug, so a
+   duplicate cross-contaminates two lessons' rendering. Caught once in P5
+   (`facteurs-cinetiques` → `comparaison-facteurs-cinetiques`); a
+   pre-build uniqueness check became standard from S1 on.
+2. **Build agents must not write shared app files concurrently** — S1's four
+   self-registering agents happened to avoid a lost update, but S2's
+   explicit "orchestrator owns the app files" rule is the safe pattern and
+   should be the standing instruction.
+
+**What this did NOT do:** the ≥3-questions-per-chapter items track (Part B3
+pilot + B4 fan-out) is untouched — it retains its own human checkpoint per
+the approved plan and has not begun.

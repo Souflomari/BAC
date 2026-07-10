@@ -119,6 +119,22 @@ export const STRUCTURAL_SLUGS = new Set([
   "pli-faille-profondeur",
   "facies-jauge-profondeur",
   "exhumation-erosion-granite",
+  // B2 wave S2 — SVT compact schematics (12 of the 17; the 5 wide-band
+  // graphs are deliberately excluded: chimiosmose-atp-synthase [horizontal
+  // membrane cross-section], reponse-primaire-secondaire, courbe-temperature,
+  // courbe-ph, concentration-substrat-enzyme)
+  "atp-hydrolyse-cycle",
+  "glycolyse-bilan-atp",
+  "krebs-bilan-carbone",
+  "phagocytose-etapes",
+  "selection-clonale",
+  "anticorps-agglutination",
+  "lt8-cytotoxicite",
+  "double-specificite",
+  "specificite-cle-serrure",
+  "agglutination-transfusion",
+  "echiquier-dihybride",
+  "test-cross-deux-hypotheses",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────
