@@ -486,9 +486,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$\\ln(e^{x}) = x$"
-        correct: true
-      - id: B
         text: "$e^{\\ln(x)} = x$"
         correct: false
         feedback: >
@@ -497,6 +494,9 @@ items:
           $\ln(e^x)=x$, qui elle tient pour absolument tout réel $x$, car
           $e^x$ est toujours strictement positif et donc toujours dans le
           domaine de $\ln$.
+      - id: B
+        text: "$\\ln(e^{x}) = x$"
+        correct: true
       - id: C
         text: "$\\ln(e^{x}) = e^{x}$"
         correct: false
@@ -531,9 +531,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$e^{-3}$"
-        correct: true
-      - id: B
         text: "$e^{-28}$"
         correct: false
         feedback: >
@@ -541,13 +538,16 @@ items:
           ADDITIONNER. C'est la règle $(e^a)^n=e^{na}$ (puissance d'une
           exponentielle) que tu appliques ici — mais $e^a\times e^b=e^{a+b}$
           (produit de deux exponentielles) est une règle différente.
-      - id: C
+      - id: B
         text: "$e^{11}$"
         correct: false
         feedback: >
           Tu as additionné les exposants en oubliant le signe négatif de
           $-7$ : $4+7=11$ au lieu de $4+(-7)=-3$. Le signe de chaque exposant
           doit être conservé dans la somme.
+      - id: C
+        text: "$e^{-3}$"
+        correct: true
       - id: D
         text: "$e^{3}$"
         correct: false
@@ -615,29 +615,29 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$h'(x) = -3e^{x} - 3x\\,e^{x}$"
-        correct: true
-      - id: B
         text: "$h'(x) = -3e^{x}$"
         correct: false
         feedback: >
           $h$ est un PRODUIT de deux fonctions ($-3x$ et $e^x$), donc la
           règle est $(uv)'=u'v+uv'$. Ici tu as gardé seulement le terme
           $u'v=-3e^x$, en oubliant complètement le second terme $uv'=-3xe^x$.
-      - id: C
+      - id: B
         text: "$h'(x) = -3x\\,e^{x}$"
         correct: false
         feedback: >
           Tu as gardé seulement le terme $uv'=-3xe^x$, en oubliant le premier
           terme de la règle du produit $u'v=-3e^x$ (avec $u(x)=-3x$,
           $u'(x)=-3$, $v(x)=e^x$).
-      - id: D
+      - id: C
         text: "$h'(x) = -3e^{x} + 3x\\,e^{x}$"
         correct: false
         feedback: >
           Erreur de signe sur le second terme : $uv'=(-3x)\times e^x=-3xe^x$
           (négatif), pas $+3xe^x$. Le signe négatif de $u(x)=-3x$ doit rester
           dans les deux termes de la somme $u'v+uv'$.
+      - id: D
+        text: "$h'(x) = -3e^{x} - 3x\\,e^{x}$"
+        correct: true
     correct_feedback: >
       Exactement : avec $u(x)=-3x$, $u'(x)=-3$, $v(x)=e^x$, $v'(x)=e^x$,
       $(uv)'=u'v+uv'=-3e^x-3xe^x$.
@@ -655,9 +655,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$0$"
-        correct: true
-      - id: B
         text: "$-\\infty$"
         correct: false
         feedback: >
@@ -665,6 +662,9 @@ items:
           $-\infty$ (une fonction qui diverge vers $-\infty$). Mais $e^x$
           reste TOUJOURS strictement positif, quel que soit $x$ — il ne peut
           donc jamais diverger vers $-\infty$ ; il se rapproche de $0$.
+      - id: B
+        text: "$0$"
+        correct: true
       - id: C
         text: "$+\\infty$"
         correct: false
@@ -744,22 +744,22 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$y = x+1$"
-        correct: true
-      - id: B
         text: "$y = x$"
         correct: false
         feedback: >
           Tu as oublié le terme constant. La tangente en $0$ a pour équation
           $y=e^0+(e^0)(x-0)=1+x$ : le « $+1$ » (qui vient de $\exp(0)=1$) ne
           doit pas disparaître.
-      - id: C
+      - id: B
         text: "$y = e\\,x$"
         correct: false
         feedback: >
           Tu as confondu le coefficient directeur de la tangente en $0$
           (qui vaut $\exp'(0)=\exp(0)=1$) avec $\exp(1)=e$. Le coefficient
           directeur en $x=0$ est $1$, pas $e$.
+      - id: C
+        text: "$y = x+1$"
+        correct: true
       - id: D
         text: "$y = 1$"
         correct: false
@@ -788,16 +788,13 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$(1,e)$"
-        correct: true
-      - id: B
         text: "$(e,1)$"
         correct: false
         feedback: >
           Tu as gardé le point inchangé, sans appliquer la symétrie. Une
           symétrie par rapport à $y=x$ ÉCHANGE les deux coordonnées : le
           symétrique de $(e,1)$ est $(1,e)$, pas $(e,1)$ lui-même.
-      - id: C
+      - id: B
         text: "$(-e,-1)$"
         correct: false
         feedback: >
@@ -805,7 +802,7 @@ items:
           change les signes) au lieu d'une symétrie axiale par rapport à la
           droite $y=x$ (qui échange les coordonnées sans changer leurs
           signes).
-      - id: D
+      - id: C
         text: "$(0,1)$"
         correct: false
         feedback: >
@@ -813,6 +810,9 @@ items:
           mais ce n'est PAS le symétrique de $(e,1)$ — c'est un point
           totalement différent. Le symétrique de $(e,1)$ par rapport à $y=x$
           s'obtient en échangeant ses deux coordonnées : $(1,e)$.
+      - id: D
+        text: "$(1,e)$"
+        correct: true
     correct_feedback: >
       Exactement : une symétrie par rapport à $y=x$ échange les coordonnées.
       $(e,1)$ sur la courbe de $\ln$ devient $(1,e)$ sur la courbe de $\exp$
@@ -837,15 +837,15 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$ tout entier, de limite $0$ en $-\\infty$ à $+\\infty$ en $+\\infty$, sans jamais s'annuler ni changer de sens de variation."
-        correct: true
-      - id: B
         text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, de limite $-\\infty$ en $-\\infty$ à $+\\infty$ en $+\\infty$."
         correct: false
         feedback: >
           Erreur sur la limite en $-\infty$ : $\exp$ ne diverge jamais vers
           $-\infty$, elle reste toujours strictement positive. La limite en
           $-\infty$ est $0$ (asymptote horizontale $y=0$), pas $-\infty$.
+      - id: B
+        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$ tout entier, de limite $0$ en $-\\infty$ à $+\\infty$ en $+\\infty$, sans jamais s'annuler ni changer de sens de variation."
+        correct: true
       - id: C
         text: "$\\exp$ est strictement décroissante sur $]-\\infty,0]$ puis strictement croissante sur $[0,+\\infty[$."
         correct: false
@@ -927,9 +927,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$G(x) = \\dfrac{5}{2}\\,e^{x^{2}} + C$"
-        correct: true
-      - id: B
         text: "$G(x) = 5\\,e^{x^{2}} + C$"
         correct: false
         feedback: >
@@ -937,7 +934,7 @@ items:
           exactement ce facteur $2x$, seulement $x$. Il faut écrire
           $5x=\dfrac{5}{2}\times2x$ pour faire apparaître $u'$, ce qui laisse
           un facteur $\dfrac{5}{2}$ devant la primitive — pas $5$ tout seul.
-      - id: C
+      - id: B
         text: "$G(x) = e^{x^{2}} + C$"
         correct: false
         feedback: >
@@ -945,6 +942,9 @@ items:
           Après avoir fait apparaître le facteur manquant $2$ (car
           $u'(x)=2x$), il reste un coefficient $\dfrac{5}{2}$ devant la
           primitive, pas $1$.
+      - id: C
+        text: "$G(x) = \\dfrac{5}{2}\\,e^{x^{2}} + C$"
+        correct: true
       - id: D
         text: "$G(x) = \\dfrac{5}{2}x^{2}\\,e^{x^{2}} + C$"
         correct: false
@@ -975,16 +975,13 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$x \\mapsto e^{x} + C$, où $C$ est une constante réelle quelconque."
-        correct: true
-      - id: B
         text: "$x \\mapsto e^{x+C}$, où $C$ est une constante réelle quelconque."
         correct: false
         feedback: >
           La constante d'intégration s'AJOUTE à la fonction, elle ne se
           place pas à l'intérieur de l'exposant. $e^{x+C}=e^x\times e^C$
           n'est pas la même famille de fonctions que $e^x+C$.
-      - id: C
+      - id: B
         text: "$x \\mapsto \\dfrac{e^{x+1}}{x+1}$"
         correct: false
         feedback: >
@@ -993,7 +990,7 @@ items:
           suivait la même règle. Mais $e^x$ est un cas particulier : elle
           est SA PROPRE primitive (à une constante près), elle ne « monte »
           pas d'un cran comme une puissance.
-      - id: D
+      - id: C
         text: "$x \\mapsto x\\,e^{x}$"
         correct: false
         feedback: >
@@ -1001,6 +998,9 @@ items:
           produit), on obtient $e^x+xe^x$, pas $e^x$. La primitive la plus
           simple de $e^x$ est $e^x$ lui-même, sans facteur $x$
           supplémentaire.
+      - id: D
+        text: "$x \\mapsto e^{x} + C$, où $C$ est une constante réelle quelconque."
+        correct: true
     correct_feedback: >
       Exactement : $\exp$ est SA PROPRE primitive (comme elle est sa propre
       dérivée) — unique parmi les fonctions usuelles du programme.
@@ -1018,9 +1018,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$\\mathcal{S} = ]-\\infty,3]$"
-        correct: true
-      - id: B
         text: "$\\mathcal{S} = [3,+\\infty[$"
         correct: false
         feedback: >
@@ -1028,6 +1025,9 @@ items:
           DÉCROISSANTE. Or $\exp$ est strictement CROISSANTE sur
           $\mathbb{R}$ : $e^A\leq e^B \iff A\leq B$, le sens se conserve, il
           ne s'inverse jamais.
+      - id: B
+        text: "$\\mathcal{S} = ]-\\infty,3]$"
+        correct: true
       - id: C
         text: "$\\mathcal{S} = ]-\\infty,2]$"
         correct: false
@@ -1110,21 +1110,21 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$x = 5$"
-        correct: true
-      - id: B
         text: "$x = 1$"
         correct: false
         feedback: >
           Erreur de signe en regroupant les termes : $3x-4=x+6$ donne
           $3x-x=6+4$ (le $-4$ devient $+4$ en passant de l'autre côté), pas
           $3x-x=6-4$.
-      - id: C
+      - id: B
         text: "$x = 10$"
         correct: false
         feedback: >
           Tu es correctement arrivé à $2x=10$, mais tu as oublié de diviser
           par $2$ à la dernière étape. $2x=10$ donne $x=5$, pas $x=10$.
+      - id: C
+        text: "$x = 5$"
+        correct: true
       - id: D
         text: "$x = -\\dfrac{1}{2}$"
         correct: false
@@ -1155,9 +1155,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle admet une unique solution dans $\\mathbb{R}$, par le corollaire du théorème des valeurs intermédiaires."
-        correct: true
-      - id: B
         text: "Elle admet au moins une solution, mais on ne peut rien dire sur son unicité sans étudier le signe de $g''$."
         correct: false
         feedback: >
@@ -1166,7 +1163,7 @@ items:
           le signe de $g''$. Nul besoin d'étudier une dérivée seconde ici :
           continuité + changement de signe + stricte monotonie suffisent
           pour conclure existence ET unicité.
-      - id: C
+      - id: B
         text: "Elle n'admet aucune solution, car $e^{x}>0$ toujours, donc $g(x)>0$ toujours."
         correct: false
         feedback: >
@@ -1174,7 +1171,7 @@ items:
           oubliant les termes $+2x-3$. Ce n'est pas parce que $e^x$ reste
           positif que $g(x)=e^x+2x-3$ le reste aussi : pour $x$ très
           négatif, $2x-3\to-\infty$ l'emporte et $g(x)\to-\infty$.
-      - id: D
+      - id: C
         text: "Elle admet une infinité de solutions, car $g$ est continue et change de signe entre $-\\infty$ et $+\\infty$."
         correct: false
         feedback: >
@@ -1183,6 +1180,9 @@ items:
           monotonie de $g$ (donnée dans l'énoncé) garantit en plus
           l'UNICITÉ. Le corollaire du TVI conclut donc « exactement une »
           solution, pas « une infinité ».
+      - id: D
+        text: "Elle admet une unique solution dans $\\mathbb{R}$, par le corollaire du théorème des valeurs intermédiaires."
+        correct: true
     correct_feedback: >
       Exactement : continuité (car dérivable), changement de signe entre les
       deux limites infinies, ET stricte monotonie réunis donnent le
