@@ -104,3 +104,21 @@ STAGE/DECLINE judgment to protect (unlike visuals) and every lesson is verified.
 ## Wave log
 
 _(appended per wave)_
+
+### Wave 1 — maths batch 1 (6 lessons) — DONE
+
+All brought to ≥3/chapter, validate-content clean, one commit each:
+- calcul-integral (+24, R0-R9), denombrement (+21, R0-R8),
+  derivabilite-etude-fonctions (+15, R0-R6), equations-differentielles
+  (+15, R0-R6), fonction-exponentielle (+21, R0-R8), fonction-logarithme
+  (+18, R0-R7).
+- Every distractor mapped to a named misconception; numbers hand-verified;
+  correct-answer positions varied (several lessons' legacy items skewed to A).
+
+### Wave 2 — maths batch 2 (7 lessons) — launched
+
+geometrie-espace (+27, R0-R10), limites-continuite (+15, R0-R6),
+nombres-complexes-1 (+15, R0-R6), nombres-complexes-2 (+18, R0-R7),
+probabilites-conditionnelles (+3, R0 only — R1-R5 nested `###`, existing
+items render via the orphan net), structures-algebriques (+18, R0-R7),
+suites-numeriques (+27, R0-R10). Closes the maths matière (13 lessons).
