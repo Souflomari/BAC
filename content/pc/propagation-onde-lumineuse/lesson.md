@@ -12,6 +12,8 @@ Avant de lire la suite, prends position : si une onde a besoin d'un milieu maté
 
 Fais maintenant l'expérience de pensée inverse. Sous une cloche à vide, on place une clochette électrique qui sonne en continu. Tant que l'air est présent, on l'entend parfaitement. À mesure qu'on pompe l'air et qu'on s'approche du vide, le son faiblit puis disparaît complètement — alors qu'on voit toujours, à travers la vitre de la cloche, le battant qui continue de frapper. Le son ne franchit pas le vide. Mais la lumière, elle, continue de nous parvenir parfaitement à travers cette même vitre, ce même vide.
 
+[[figure:cloche-a-vide-son-lumiere]]
+
 Il y a donc quelque chose de fondamentalement différent entre une onde sonore et une onde lumineuse. C'est tout l'objet de cette leçon : comprendre ce qu'est une onde lumineuse, pourquoi elle n'a pas besoin de matière pour exister, et ce que cette différence change concrètement — sur sa vitesse selon le milieu traversé, sur ses couleurs, et sur des phénomènes comme la diffraction et la dispersion.
 
 ---
@@ -160,6 +162,8 @@ $$\lambda = \frac{v}{\nu} = \frac{c/n}{\nu} = \frac{\lambda_0}{n}$$
 puisque $\lambda_0 = c/\nu$ est justement la longueur d'onde dans le vide. Comme $n \geq 1$ toujours, on a $\lambda \leq \lambda_0$ : **la longueur d'onde diminue** quand la lumière entre dans un milieu matériel plus dense optiquement.
 
 C'est pour cette raison précise qu'on caractérise systématiquement une couleur par sa longueur d'onde **dans le vide**, $\lambda_0$ : c'est la seule des deux valeurs — $\lambda_0$, ou $\lambda$ dans tel ou tel milieu — qui ne dépend pas du trajet suivi par la lumière avant qu'elle n'atteigne l'œil.
+
+[[figure:lambda-nu-changement-milieu]]
 
 ### Exemple : une lumière rouge reste rouge, même si sa longueur d'onde change de valeur
 

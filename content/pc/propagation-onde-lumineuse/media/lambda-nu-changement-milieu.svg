@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Une onde lumineuse rouge franchit l'interface entre le vide (n = 1) et un verre (n = 1,5) : elle reste continue à la traversée, sa longueur d'onde se compresse de λ0 = 660 nm dans le vide à λ = 440 nm dans le verre, mais sa fréquence ν ne change pas, si bien que la couleur perçue reste rouge des deux côtés.">
+  <title>Longueur d'onde et changement de milieu, à fréquence inchangée</title>
+  <!--
+    lambda-nu-changement-milieu.svg — figure STAGED (3 étapes), R4 (couleur,
+    longueur d'onde, lumière monochromatique).
+
+    Géométrie (calculée, pas devinée) :
+      Axe des positions : y=200, x=40..600.
+      Interface vide/verre : x=320 (droite verticale, pleine longueur du panneau).
+      Onde, un seul tracé CONTINU (un seul chemin <path>), construit par
+      arches sinusoïdales (une arche cubique = un demi-période, alternant
+      crête/creux), RÉFÉRENCÉES DEPUIS L'INTERFACE (x=320) des deux côtés —
+      c'est ce qui garantit la continuité en x=320 (même y, même sens de
+      pente) alors même que la période change : seule la RAIDEUR de la
+      pente diffère de part et d'autre, jamais sa valeur ni son signe au
+      point de jonction.
+        Côté vide   : λ₀_px = 140  → 280 px de large (x=40..320) = EXACTEMENT
+                      2 longueurs d'onde (4 demi-arches : 40,110,180,250,320).
+        Côté verre  : λ_px  = 140/1,5 ≈ 93,33 → 280 px de large (x=320..600)
+                      = EXACTEMENT 3 longueurs d'onde (6 demi-arches :
+                      320, 366.67, 413.33, 460, 506.67, 553.33, 600).
+      Le ratio visuel 140 / 93,33 = 1,5 = n : la compression dessinée est
+      l'exacte compression physique (λ = λ0/n), pas une exagération
+      pédagogique — à la différence des figures d'angle de ce chapitre.
+      Crêtes à y=160, creux à y=240 (amplitude 40 de part et d'autre de
+      l'axe y=200) — mêmes bornes des deux côtés (même amplitude/même
+      onde), seule la cadence horizontale change.
+      Crochets de lecture (étape 3) : λ₀ mesuré sur exactement une longueur
+      d'onde vide (x=40..180) ; λ mesuré sur exactement une longueur
+      d'onde verre (x=320..413,33) — la comparaison directe des deux
+      longueurs de crochet (140 px vs 93 px) EST le rapport 1,5 rendu visible.
+
+    Rôle des couleurs :
+      accent    : le phénomène (le tracé de l'onde, les crochets λ₀/λ, les
+                  deux annotations de lecture) — la même convention que
+                  diffraction-fente/dispersion-prisme (accent = ce qui est
+                  démontré, pas ce qui sert de repère).
+      ink-soft  : repères neutres de mise en place (axe, frontière, teinte
+                  du verre, étiquettes de milieu).
+      Rouge littéral (#C0392B, PAS un token) : les deux pastilles de
+      couleur perçue. Comme pour dispersion-prisme, une teinte littérale
+      est utilisée ici UNIQUEMENT parce que la couleur EST le contenu
+      pédagogique — et le point exact de cette figure est que la pastille
+      DOIT être identique (rouge) des deux côtés, alors même que la valeur
+      numérique de λ à droite (440 nm) correspondrait, prise isolément, au
+      bleu : c'est ν, invariante, qui fixe la couleur perçue, pas la valeur
+      locale de λ. Peindre la pastille de droite en bleu serait FAUX ici.
+
+    Mise en étapes — l'ordre canonique « axes → données → lecture »
+    (LESSON-EXPERIENCE-SPEC §2.5, graphes toujours staged) :
+      step-1 : les axes — axe des positions, frontière vide/verre, étiquettes
+               de milieu, pastilles de couleur identiques (rouge) des deux
+               côtés — le constat de départ, sans encore l'expliquer.
+      step-2 : les données — l'onde, un seul tracé continu, qui se comprime
+               en traversant l'interface, à même fréquence.
+      step-3 : la lecture — crochets λ₀ vs λ (660 nm → 440 nm), et les deux
+               annotations : « ν inchangée → couleur inchangée », « seule λ
+               diminue ».
+    Chrome non-stepped (titre, fond de panneau) placé AVANT tout step-N —
+    aucun contenu non-stepped n'est intercalé entre des groupes (piège
+    d'assemblage du renderer : StagedFigure.tsx ré-injecte step-1..N,
+    ascendant, juste avant `</svg>` à chaque étape).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Longueur d'onde et changement de milieu, à fréquence inchangée
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="30" width="592" height="336" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Les axes : position, frontière vide/verre, pastilles de
+       couleur identiques.
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ── Teinte du verre (milieu le plus dense, à droite de l'interface) ── -->
+    <rect x="320" y="50" width="280" height="300" fill="var(--figure-grid)" fill-opacity="0.3"/>
+
+    <!-- ── Frontière vide / verre ───────────────────────────────────────── -->
+    <line x1="320" y1="50" x2="320" y2="350" stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+    <!-- ── Axe des positions ────────────────────────────────────────────── -->
+    <line x1="40" y1="200" x2="600" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="600,200 590,195 590,205" fill="var(--figure-ink-soft)"/>
+    <text x="600" y="216" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">x (position)</text>
+
+    <!-- ── Étiquettes de milieu ─────────────────────────────────────────── -->
+    <text x="180" y="70" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">vide (n = 1)</text>
+    <text x="460" y="70" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">verre (n = 1,5)</text>
+
+    <!-- ── Pastilles de couleur perçue : identiques des deux côtés ─────────
+         (rouge littéral — voir note de couleur ci-dessus) -->
+    <circle cx="180" cy="100" r="11" fill="#C0392B" stroke="var(--figure-ink)" stroke-width="1"/>
+    <circle cx="460" cy="100" r="11" fill="#C0392B" stroke="var(--figure-ink)" stroke-width="1"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Les données : l'onde, un seul tracé continu, se comprime en
+       traversant l'interface.
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M40,200
+             C63.3,160 86.7,160 110,200
+             C133.3,240 156.7,240 180,200
+             C203.3,160 226.7,160 250,200
+             C273.3,240 296.7,240 320,200
+             C335.6,160 351.1,160 366.7,200
+             C382.2,240 397.8,240 413.3,200
+             C428.9,160 444.4,160 460,200
+             C475.6,240 491.1,240 506.7,200
+             C522.2,160 537.8,160 553.3,200
+             C568.9,240 584.4,240 600,200"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+
+    <text x="320" y="135" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+      même ν de part et d'autre de l'interface
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — La lecture : crochets λ₀ vs λ, annotations.
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- ── Crochet λ₀ (une longueur d'onde côté vide, x=40..180) ───────────── -->
+    <line x1="40" y1="264" x2="40" y2="276" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="180" y1="264" x2="180" y2="276" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="40" y1="270" x2="180" y2="270" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="110" y="290" text-anchor="middle" font-size="11" fill="var(--figure-accent)">
+      <tspan font-style="italic">λ₀</tspan> = 660 nm
+    </text>
+
+    <!-- ── Crochet λ (une longueur d'onde côté verre, x=320..413,3) ─────────── -->
+    <line x1="320" y1="264" x2="320" y2="276" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="413.3" y1="264" x2="413.3" y2="276" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="320" y1="270" x2="413.3" y2="270" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="366.7" y="290" text-anchor="middle" font-size="11" fill="var(--figure-accent)">
+      <tspan font-style="italic">λ</tspan> = 440 nm
+    </text>
+
+    <!-- ── Annotations de lecture ────────────────────────────────────────── -->
+    <text x="330" y="314" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">ν inchangée → couleur inchangée</text>
+    <text x="330" y="330" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">seule λ diminue</text>
+  </g><!-- /step-3 -->
+
+</svg>

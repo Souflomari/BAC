@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" width="640" height="460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Expérience de la cloche à vide : tant que l'air est présent, le son et la lumière atteignent tous deux l'observateur. Une pompe retire l'air jusqu'au quasi-vide : le son ne franchit plus la cloche, faute de milieu relais, tandis que la lumière continue de traverser la vitre et le vide sans aucune atténuation.">
+  <title>La cloche à vide : son et lumière face au vide</title>
+  <!--
+    cloche-a-vide-son-lumiere.svg — figure STAGED (3 étapes), R0 (accroche).
+
+    Géométrie (calculée, pas devinée) :
+      Cloche (dôme + parois) : parois x=170 et x=350 de y=236 à y=326 (rebord),
+      dôme A90,90 entre (170,236) et (350,236) → sommet (260,146).
+      Plaque support : x=150..370, y=326..340.
+      Source (clochette) : centre (230,262), rayon 9.
+      Arcs sonores concentrifs (centrés sur la source, s'ouvrant à droite,
+      style « icône haut-parleur ») : rayons 22, 40, 58 — restent TOUS à
+      l'intérieur de la cloche (extrémité la plus large à x=288, y∈[204,320],
+      loin encore du rebord x=350) : ils représentent le son qui se propage
+      depuis la source, pas un trajet complet jusqu'à l'œil — convention
+      usuelle de manuel (icône d'émission), pas une onde unique dessinée
+      point par point sur toute la distance.
+      Rayon lumineux : segment horizontal y=262, de x=239 (bord de la
+      source) à x=546 (bord de l'œil) — celui-ci, lui, est bien tracé sur
+      toute la distance jusqu'à l'observateur, dès l'étape 1.
+      Œil (observateur) : centré (560,262).
+
+    Rôle des couleurs :
+      accent   : le dénouement (étape 3) — la barre d'arrêt du son ET le
+                 rayon lumineux ré-affirmé en gras jusqu'à l'œil, plus les
+                 deux étiquettes de lecture. C'est la même paire d'éléments
+                 qui porte tout le contraste pédagogique de l'accroche.
+      ink      : éléments structurels opaques (verre de la cloche, plaque,
+                 pompe, œil).
+      ink-soft : repères neutres de mise en place (arcs sonores à l'étape 1,
+                 rayon lumineux fin de référence, pompe et son étiquetage).
+
+    Mise en étapes — le geste d'enseignement suit exactement la prose de R0 :
+      step-1 : le montage — cloche scellée, air présent, clochette qui
+               sonne ; arcs sonores et rayon lumineux tous deux émis,
+               observateur en place, étiquette « air présent ».
+      step-2 : on pompe l'air — tube, pompe, flèche d'extraction,
+               étiquette « air retiré → vide ».
+      step-3 : le contraste — une barre d'arrêt accent bloque le son juste
+               après son parcours de l'étape 1 (« son : éteint — plus de
+               milieu relais »), tandis que le rayon lumineux de l'étape 1
+               est ré-affirmé en gras, avec flèche, jusqu'à l'œil
+               (« lumière : passe — aucun milieu requis »). Les arcs sonores
+               de l'étape 1 restent visibles, mais atténués (opacity 0.55
+               appliquée automatiquement aux étapes antérieures) : ils
+               illustrent l'ÉTAT PASSÉ (air encore présent), pas l'état
+               actuel — la barre d'arrêt accent annote ce changement sans
+               effacer ni contredire ce tracé antérieur.
+    Chrome non-stepped (titre, fond de panneau) placé AVANT tout step-N —
+    aucun contenu non-stepped n'est intercalé entre des groupes (piège
+    d'assemblage du renderer : StagedFigure.tsx ré-injecte step-1..N,
+    ascendant, juste avant `</svg>` à chaque étape).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    La cloche à vide : son et lumière face au vide
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="30" width="592" height="396" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le montage : cloche scellée, air présent, clochette qui
+       sonne, arcs sonores et rayon lumineux tous deux émis vers
+       l'observateur.
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ── Cloche à vide (verre) ────────────────────────────────────────── -->
+    <path d="M170,326 L170,236 A90,90 0 0 1 350,236 L350,326"
+          fill="var(--figure-ink-soft)" fill-opacity="0.22"
+          stroke="var(--figure-ink)" stroke-width="1.5"/>
+
+    <!-- ── Plaque support ───────────────────────────────────────────────── -->
+    <rect x="150" y="326" width="220" height="14" rx="3"
+          fill="var(--figure-ink-soft)" fill-opacity="0.22"
+          stroke="var(--figure-ink)" stroke-width="1.5"/>
+
+    <!-- ── Clochette électrique (source) ────────────────────────────────── -->
+    <circle cx="230" cy="262" r="9" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1"/>
+    <line x1="230" y1="253" x2="230" y2="246" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="230" y1="271" x2="230" y2="276" stroke="var(--figure-ink)" stroke-width="1"/>
+    <circle cx="230" cy="276" r="1.8" fill="var(--figure-ink)"/>
+
+    <!-- ── Arcs sonores (icône d'émission, concentriques, ouverts à droite) ─ -->
+    <path d="M230,240 A22,22 0 0 1 230,284" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <path d="M230,222 A40,40 0 0 1 230,302" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <path d="M230,204 A58,58 0 0 1 230,320" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- ── Rayon lumineux, fin, jusqu'à l'observateur (référence de base) ─── -->
+    <line x1="239" y1="262" x2="546" y2="262" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- ── Œil (observateur) ────────────────────────────────────────────── -->
+    <path d="M542,262 Q560,250 578,262 Q560,274 542,262 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <circle cx="560" cy="262" r="3.5" fill="var(--figure-ink)"/>
+    <text x="560" y="234" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">observateur</text>
+
+    <!-- ── Étiquette d'état ─────────────────────────────────────────────── -->
+    <text x="260" y="178" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">air présent</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — On pompe l'air : tube, pompe, flèche d'extraction.
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="260" y1="340" x2="260" y2="372" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <rect x="222" y="372" width="76" height="32" rx="5"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <text x="260" y="420" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">pompe à vide</text>
+
+    <line x1="306" y1="344" x2="306" y2="368" stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="306,368 300,358 312,358" fill="var(--figure-ink-soft)"/>
+    <text x="318" y="362" text-anchor="start" font-size="9.5" fill="var(--figure-ink-soft)">air retiré → vide</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Le contraste : le son s'arrête, la lumière persiste.
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- ── Barre d'arrêt du son (le son ne franchit plus ce point) ────────── -->
+    <line x1="288" y1="247" x2="288" y2="277" stroke="var(--figure-accent)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="283" y1="247" x2="293" y2="247" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="283" y1="277" x2="293" y2="277" stroke="var(--figure-accent)" stroke-width="2"/>
+
+    <!-- ── Rayon lumineux ré-affirmé, jusqu'à l'œil ────────────────────────── -->
+    <line x1="239" y1="262" x2="546" y2="262" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="546,262 536,257 536,267" fill="var(--figure-accent)"/>
+
+    <!-- ── Lecture ──────────────────────────────────────────────────────── -->
+    <text x="170" y="70" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">son : éteint — plus de milieu relais</text>
+    <text x="470" y="70" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">lumière : passe — aucun milieu requis</text>
+  </g><!-- /step-3 -->
+
+</svg>
