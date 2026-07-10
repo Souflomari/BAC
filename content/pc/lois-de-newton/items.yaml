@@ -386,3 +386,1395 @@ items:
       ($g\sin\alpha = 4{,}9\ \text{m/s}^2$) d'une quantité $f/m = 1{,}5\
       \text{m/s}^2$ — jamais l'inverse, car il s'oppose toujours au
       mouvement.
+
+  - id: LDN-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, impetus, force_mouvement]
+    stem: >
+      Sur une glace idéale parfaitement lisse (aucun frottement), une fois la
+      main partie et rien ne touchant le palet horizontalement, que prévoit-on
+      pour son mouvement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il ralentit puis finit par s'arrêter, car l'élan communiqué par la
+          main s'épuise peu à peu.
+        correct: false
+        feedback: >
+          C'est l'idée d'un « élan » qui s'userait progressivement — une
+          intuition ancienne (proche de la théorie de l'impetus), mais elle
+          ne correspond à aucune force réelle. Une fois la main retirée,
+          aucune force horizontale ne s'exerce plus sur le palet : rien ne
+          « s'épuise », car il n'y a rien à épuiser.
+      - id: B
+        text: >-
+          Il continue indéfiniment, en ligne droite, à vitesse constante.
+        correct: true
+      - id: C
+        text: >-
+          Il accélère, car plus rien ne le freine.
+        correct: false
+        feedback: >
+          L'absence de frottement explique pourquoi le palet NE RALENTIT PAS,
+          mais elle ne crée aucune force nouvelle qui le ferait accélérer.
+          Supprimer un frein n'équivaut pas à ajouter un moteur : sans force
+          motrice horizontale, la vitesse reste constante, elle n'augmente
+          pas.
+      - id: D
+        text: >-
+          Il s'arrête net dès que la main le quitte.
+        correct: false
+        feedback: >
+          Cela suppose qu'un mouvement ne peut exister qu'en présence
+          continue d'une force qui le maintient. Or c'est l'inverse : c'est
+          un CHANGEMENT de vitesse qui exige une force, pas le maintien d'une
+          vitesse déjà acquise. Sans force horizontale (frottement négligé),
+          rien ne peut faire chuter la vitesse à zéro instantanément.
+    correct_feedback: >
+      Sur une glace parfaitement lisse, aucune force horizontale ne s'exerce
+      sur le palet une fois la main retirée : $\sum \vec{F}_{ext} = \vec{0}$.
+      Par le principe d'inertie, le palet garde alors un vecteur vitesse
+      constant — il continue en ligne droite, à vitesse constante,
+      indéfiniment.
+    solution: |
+      **Situation idéalisée :** aucun frottement, aucune force horizontale
+      appliquée après le lâcher.
+
+      **Principe d'inertie :** un solide soumis à une somme de forces
+      extérieures nulle garde un vecteur vitesse constant (en norme et en
+      direction).
+
+      Le palet continue donc indéfiniment, en ligne droite, à la vitesse
+      qu'il avait au moment où la main l'a lâché. Aucune force ne le
+      maintient en mouvement, et aucune force ne le freine : c'est le
+      mouvement lui-même qui ne demande rien.
+
+  - id: LDN-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, frottement, impetus]
+    stem: >
+      En réalité, sur une vraie patinoire, le palet ralentit très légèrement
+      sur une grande distance. Qu'est-ce qui en est responsable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le frottement résiduel de la glace (et de l'air), non nul mais très
+          faible.
+        correct: true
+      - id: B
+        text: >-
+          L'épuisement progressif de la force communiquée par la main au
+          lancer.
+        correct: false
+        feedback: >
+          Aucune force ne subsiste « stockée » dans le palet après le
+          lancer : une fois le contact avec la main terminé, la main n'exerce
+          plus rien sur le palet. Le ralentissement observé a une cause
+          extérieure et présente — le frottement — pas une cause passée qui
+          s'épuiserait avec le temps.
+      - id: C
+        text: >-
+          Rien de particulier : tout mouvement finit naturellement par
+          s'arrêter.
+        correct: false
+        feedback: >
+          Ce n'est pas une propriété générale du mouvement : sur une glace
+          quasi sans frottement, un palet peut glisser presque indéfiniment.
+          S'il ralentit ici, c'est à cause d'une force réelle et
+          identifiable (le frottement), pas parce que le repos serait l'état
+          « naturel » vers lequel tout mouvement tendrait spontanément.
+      - id: D
+        text: >-
+          Son poids, qui finit par le tirer vers l'arrière.
+        correct: false
+        feedback: >
+          Le poids est vertical, dirigé vers le bas — il n'a aucune
+          composante horizontale sur une patinoire plane et ne peut donc pas
+          freiner un mouvement horizontal. Le ralentissement horizontal
+          vient d'une force horizontale : le frottement, pas le poids.
+    correct_feedback: >
+      Une vraie patinoire n'est jamais parfaitement lisse : un frottement
+      résiduel, faible mais non nul, exerce une force horizontale opposée au
+      mouvement. Cette force, même petite, suffit à produire une accélération
+      non nulle qui ralentit progressivement le palet sur une grande
+      distance.
+    solution: |
+      **Différence avec le cas idéal :** dans la réalité, $\sum \vec{F}_{ext}$
+      n'est pas rigoureusement nulle : un frottement résiduel (glace, air)
+      s'exerce, même s'il est faible.
+
+      **Conséquence :** $\vec{a}_G$ n'est pas rigoureusement nul non plus,
+      mais dirigée en sens opposé au mouvement, d'où un ralentissement lent
+      et progressif — observable seulement sur une grande distance.
+
+      Le poids et la force de la main n'entrent pas en jeu ici : le premier
+      est vertical, la seconde a cessé de s'exercer dès le lâcher.
+
+  - id: LDN-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, frottement, force_mouvement]
+    stem: >
+      Dans la vie courante, un objet qu'on cesse de pousser finit toujours
+      par s'arrêter. Pourquoi cela ne contredit-il pas l'idée qu'un palet
+      pourrait, lui, glisser presque indéfiniment ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que les objets de tous les jours sont plus lourds, donc plus
+          difficiles à garder en mouvement.
+        correct: false
+        feedback: >
+          La masse n'est pas ce qui arrête un objet : un objet plus massif
+          n'a besoin d'aucune force pour continuer à vitesse constante, tout
+          comme un objet léger. Ce qui arrête un objet, c'est une force
+          extérieure (le frottement), pas sa propre masse.
+      - id: B
+        text: >-
+          Parce qu'on applique dans la vie courante une force trop faible
+          pour entretenir le mouvement.
+        correct: false
+        feedback: >
+          Cela suppose qu'un mouvement à vitesse constante a besoin d'une
+          force pour être « entretenu ». Or par le principe d'inertie, une
+          vitesse constante ne demande aucune force : ce qui manque dans la
+          vie courante n'est pas une force d'entretien, c'est l'absence de
+          frottement.
+      - id: C
+        text: >-
+          Parce que dans la vie courante il y a toujours des frottements qui
+          freinent ; sur une glace quasi sans frottement, il n'y a presque
+          rien pour l'arrêter.
+        correct: true
+      - id: D
+        text: >-
+          Parce que le palet est un cas spécial où les lois du mouvement ne
+          s'appliquent pas pareil.
+        correct: false
+        feedback: >
+          Les mêmes lois de Newton s'appliquent partout, sans exception. Le
+          palet sur glace n'est pas un cas à part physiquement différent :
+          c'est simplement une situation où le frottement, présent partout
+          ailleurs, devient quasiment négligeable.
+    correct_feedback: >
+      Le principe d'inertie s'applique dans les deux cas. La différence
+      observée vient uniquement de la présence ou de l'absence de frottement :
+      dans la vie courante, le frottement est important et arrête rapidement
+      les objets ; sur une glace quasi sans frottement, presque rien ne
+      s'oppose au mouvement, qui se poursuit alors très longtemps.
+    solution: |
+      **Même loi, contextes différents :** dans les deux cas, un solide
+      soumis à une somme de forces nulle garde une vitesse constante
+      (principe d'inertie).
+
+      **Ce qui change :** dans la vie courante, les frottements (sol, air)
+      sont rarement négligeables : $\sum \vec{F}_{ext} \neq \vec{0}$, d'où un
+      ralentissement rapide. Sur une glace quasi parfaite, le frottement est
+      quasi nul : $\sum \vec{F}_{ext} \approx \vec{0}$, d'où un mouvement qui
+      persiste presque sans changement.
+
+      Il ne s'agit donc pas de deux physiques différentes, mais d'une seule
+      loi appliquée à deux niveaux de frottement très différents.
+
+  - id: LDN-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [referentiel, mouvement_relatif]
+    stem: >
+      Un voyageur est assis, immobile dans son siège, dans un train qui roule
+      à vitesse constante. Laquelle de ces affirmations est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il est immobile par rapport au train et en mouvement par rapport au
+          quai — aucune des deux descriptions n'est « plus vraie ».
+        correct: true
+      - id: B
+        text: >-
+          Il est en mouvement « dans l'absolu », indépendamment de tout
+          référentiel.
+        correct: false
+        feedback: >
+          Le mouvement n'existe que relativement à un référentiel choisi : il
+          n'y a pas de mouvement « absolu » qui se passerait de préciser par
+          rapport à quoi on l'observe. Le voyageur est en mouvement par
+          rapport au quai, mais immobile par rapport au train — les deux
+          descriptions sont également valables, chacune dans son
+          référentiel.
+      - id: C
+        text: >-
+          Il est immobile « dans l'absolu », puisqu'il ne bouge pas dans son
+          siège.
+        correct: false
+        feedback: >
+          Ne pas bouger DANS le train ne signifie pas être immobile « dans
+          l'absolu ». Par rapport au quai (référentiel terrestre), le
+          voyageur se déplace bel et bien à la vitesse du train. Il n'existe
+          pas de référentiel privilégié qui donnerait le mouvement
+          « vrai ».
+      - id: D
+        text: >-
+          On ne peut pas dire qu'il est en mouvement puisqu'il ne fait aucun
+          effort.
+        correct: false
+        feedback: >
+          Le mouvement (ou son absence) se définit par la position par
+          rapport à un référentiel au cours du temps, pas par l'effort
+          musculaire fourni. Le voyageur peut être en mouvement par rapport
+          au quai sans fournir aucun effort, exactement comme il reste
+          immobile par rapport au train sans effort non plus.
+    correct_feedback: >
+      Le mouvement est toujours relatif à un référentiel. Par rapport au
+      train, le voyageur est immobile ; par rapport au quai (référentiel
+      terrestre), il se déplace à la vitesse du train. Ces deux descriptions
+      ne se contredisent pas : elles décrivent le même voyageur dans deux
+      référentiels différents.
+    solution: |
+      **Ce que dit la relativité du mouvement :** la position, la trajectoire
+      et la vitesse d'un objet ne prennent sens que relativement à un
+      référentiel choisi.
+
+      **Dans le référentiel du train :** le voyageur ne change pas de
+      position par rapport au train — il y est immobile.
+
+      **Dans le référentiel terrestre (le quai) :** la position du voyageur
+      change au cours du temps à la même vitesse que le train — il y est en
+      mouvement.
+
+      Ces deux affirmations sont simultanément vraies, chacune dans son
+      référentiel : il n'existe pas de mouvement « absolu » indépendant de
+      tout référentiel.
+
+  - id: LDN-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [referentiel, referentiel_non_galileen, pseudo_force]
+    stem: >
+      Dans un bus qui freine brutalement, une balle posée sur la tablette se
+      met à rouler vers l'avant, sans que rien de visible ne la pousse.
+      Qu'est-ce que cela montre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une force réelle, vers l'avant, transmise par le freinage, pousse
+          la balle.
+        correct: false
+        feedback: >
+          Aucun objet n'exerce de force réelle vers l'avant sur la balle :
+          rien ne la touche ni ne la pousse dans ce sens. L'apparente mise en
+          mouvement vient du fait que c'est le BUS qui décélère sous la
+          balle, pas d'une force qui agirait sur la balle elle-même.
+      - id: B
+        text: >-
+          Une force mystérieuse s'exerce sur la balle et prouve qu'aucun
+          référentiel n'est fiable.
+        correct: false
+        feedback: >
+          Il ne s'agit pas d'une vraie force physique, mais d'un effet
+          apparent propre aux référentiels non galiléens (accélérés). Cela ne
+          remet pas en cause TOUS les référentiels : dans un référentiel
+          galiléen (comme la route, approximativement), la deuxième loi de
+          Newton s'applique parfaitement, sans aucune force mystérieuse à
+          invoquer.
+      - id: C
+        text: >-
+          Le référentiel terrestre non plus n'est pas galiléen.
+        correct: false
+        feedback: >
+          Le référentiel terrestre est, en très bonne approximation, galiléen
+          pour ce type de situation (le bus, la route). C'est le bus EN TRAIN
+          DE FREINER qui est accéléré par rapport à la route, et donc non
+          galiléen — ce n'est pas une propriété de tous les référentiels liés
+          à la Terre.
+      - id: D
+        text: >-
+          Le référentiel du bus qui freine n'est pas galiléen : un objet peut
+          y sembler se mettre en mouvement sans qu'aucune force réelle ne
+          s'exerce sur lui.
+        correct: true
+    correct_feedback: >
+      Le bus qui freine est un référentiel accéléré, donc non galiléen. Dans
+      un tel référentiel, la deuxième loi de Newton ($\sum \vec{F}_{ext} =
+      m\vec{a}$) ne s'applique pas directement aux forces réelles seules : un
+      objet peut sembler accélérer sans qu'aucune force réelle ne s'exerce
+      sur lui. Dans le référentiel terrestre (galiléen), en revanche, la
+      balle reste bien en mouvement rectiligne uniforme pendant que le bus
+      ralentit sous elle.
+    solution: |
+      **Ce qui se passe réellement (référentiel terrestre, galiléen) :** au
+      moment du freinage, aucune force horizontale ne s'exerce sur la balle
+      (frottement négligé sur la tablette lisse) : elle continue par inertie
+      à sa vitesse d'avant le freinage, pendant que le bus, lui, ralentit.
+
+      **Ce qui est observé depuis le bus :** vu depuis l'intérieur du bus qui
+      décélère, la balle semble accélérer vers l'avant — alors qu'aucune
+      force réelle ne la pousse.
+
+      **Conclusion :** le référentiel du bus qui freine est non galiléen ;
+      l'apparente mise en mouvement de la balle n'est pas due à une force
+      réelle, mais au fait que le référentiel d'observation lui-même
+      accélère.
+
+  - id: LDN-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [vecteur_vitesse, trajectoire, translation]
+    stem: >
+      Un solide en translation parcourt une trajectoire courbe. À un instant
+      donné, que peut-on dire du vecteur vitesse $\vec{v}_G$ de son centre
+      d'inertie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il est tangent à la trajectoire au point où se trouve $G$, dirigé
+          dans le sens du mouvement.
+        correct: true
+      - id: B
+        text: >-
+          C'est simplement la vitesse en m/s : un nombre, sans direction.
+        correct: false
+        feedback: >
+          La vitesse en m/s n'est que la NORME du vecteur vitesse. Le
+          mouvement possède aussi une direction et un sens, portés par le
+          vecteur $\vec{v}_G$ tout entier — réduire la vitesse à un simple
+          nombre fait perdre toute l'information directionnelle, essentielle
+          dès que la trajectoire n'est pas rectiligne.
+      - id: C
+        text: >-
+          Il est dirigé vers le centre de la courbe.
+        correct: false
+        feedback: >
+          C'est la direction de l'ACCÉLÉRATION (ou d'une de ses composantes)
+          dans un mouvement courbe, pas celle de la vitesse. Le vecteur
+          vitesse, lui, est toujours tangent à la trajectoire — il indique
+          où va le solide à cet instant, pas vers quoi sa trajectoire se
+          courbe.
+      - id: D
+        text: >-
+          Il est dirigé selon la corde reliant deux positions successives,
+          quel que soit l'intervalle.
+        correct: false
+        feedback: >
+          Ceci décrit un vecteur vitesse MOYENNE entre deux instants
+          séparés d'une durée finie, pas la vitesse à un instant précis. La
+          vitesse INSTANTANÉE est la limite de cette corde quand l'intervalle
+          de temps tend vers zéro — elle devient alors tangente à la
+          trajectoire, et non plus une corde reliant deux points distincts.
+    correct_feedback: >
+      Le vecteur vitesse instantané $\vec{v}_G$ est toujours tangent à la
+      trajectoire décrite par $G$, orienté dans le sens du mouvement, quelle
+      que soit la forme (droite ou courbe) de cette trajectoire.
+    solution: |
+      **Définition du vecteur vitesse instantané :**
+      $$\vec{v}_G = \lim_{\Delta t \to 0} \frac{\overrightarrow{GG'}}{\Delta t}$$
+      où $G'$ est la position de $G$ à l'instant $t+\Delta t$.
+
+      **Passage à la limite :** quand $\Delta t \to 0$, le point $G'$ se
+      rapproche de $G$ le long de la trajectoire, et la corde
+      $\overrightarrow{GG'}$ devient tangente à la trajectoire en $G$.
+
+      Le vecteur vitesse est donc, à chaque instant, tangent à la
+      trajectoire au point occupé par $G$, et orienté dans le sens du
+      parcours — que la trajectoire soit rectiligne ou courbe.
+
+  - id: LDN-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, bilan_forces, force_mouvement]
+    stem: >
+      Une caisse est tirée sur un sol horizontal par une force de traction
+      horizontale $\vec{F}$ et se déplace en ligne droite à vitesse
+      constante ; le frottement $\vec{f}$ s'oppose au mouvement. Que peut-on
+      affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Nécessairement $F > f$, sinon la caisse n'avancerait pas.
+        correct: false
+        feedback: >
+          C'est confondre le maintien d'une vitesse constante avec sa mise en
+          mouvement initiale. Une fois la caisse déjà en mouvement à vitesse
+          constante, aucune force nette n'est nécessaire pour la maintenir :
+          $F > f$ produirait au contraire une ACCÉLÉRATION, donc une vitesse
+          qui augmente — ce qui contredit l'énoncé.
+      - id: B
+        text: >-
+          $\sum \vec{F}_{ext} = \vec{0}$ : $\vec{F}$ et $\vec{f}$ se
+          compensent exactement ($F = f$), de même que $\vec{P}$ et
+          $\vec{N}$.
+        correct: true
+      - id: C
+        text: >-
+          $F = 0$ : puisque la vitesse ne change pas, aucune force de
+          traction n'est utile.
+        correct: false
+        feedback: >
+          Vitesse constante signifie somme des forces nulle, pas absence
+          totale de forces. Ici, le frottement $\vec{f}$ existe bel et bien
+          et s'oppose au mouvement ; il faut une force de traction $\vec{F}$
+          de même norme pour l'équilibrer exactement et obtenir
+          $\sum \vec{F}_{ext} = \vec{0}$.
+      - id: D
+        text: >-
+          On ne peut rien conclure sans connaître la masse de la caisse.
+        correct: false
+        feedback: >
+          Le fait que $\sum \vec{F}_{ext} = \vec{0}$ découle directement de
+          $\vec{a}_G = \vec{0}$ (vitesse constante) via la deuxième loi de
+          Newton, $\sum \vec{F}_{ext} = m\vec{a}_G$ — et ceci reste vrai quelle
+          que soit la valeur de $m$, puisque $m \times \vec{0} = \vec{0}$
+          pour toute masse.
+    correct_feedback: >
+      Vitesse constante $\Rightarrow$ $\vec{a}_G = \vec{0}$ $\Rightarrow$
+      $\sum \vec{F}_{ext} = \vec{0}$ (deuxième loi de Newton). Les quatre
+      forces se compensent deux à deux : $\vec{P}$ et $\vec{N}$
+      (verticalement), $\vec{F}$ et $\vec{f}$ (horizontalement), avec donc
+      $F = f$.
+    solution: |
+      **Observation :** la caisse se déplace en ligne droite à vitesse
+      constante, donc $\vec{a}_G = \vec{0}$.
+
+      **Deuxième loi de Newton :**
+      $$\sum \vec{F}_{ext} = m\,\vec{a}_G = \vec{0}$$
+
+      **Bilan des forces :** $\vec{P}$, $\vec{N}$, $\vec{F}$, $\vec{f}$.
+      Verticalement, $\vec{P} + \vec{N} = \vec{0}$. Horizontalement,
+      $\vec{F} + \vec{f} = \vec{0}$, donc $F = f$ (mêmes normes, sens
+      opposés).
+
+      La force de traction n'est donc ni nulle ni supérieure au frottement :
+      elle lui est exactement égale, ce qui permet à la vitesse de rester
+      constante sans jamais changer.
+
+  - id: LDN-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, vecteur_acceleration, sens_mouvement]
+    stem: >
+      Un solide se déplace vers la droite. On lui applique une force
+      résultante $\sum \vec{F}_{ext}$ dirigée vers la gauche (sens opposé au
+      mouvement). Que peut-on dire de $\vec{a}_G$ à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec{a}_G$ est dirigée vers la gauche, dans le sens de
+          $\sum \vec{F}_{ext}$ : le solide ralentit.
+        correct: true
+      - id: B
+        text: >-
+          $\vec{a}_G$ est dirigée vers la droite, dans le sens du mouvement.
+        correct: false
+        feedback: >
+          Ceci confond la direction de l'accélération avec celle de la
+          vitesse. La deuxième loi de Newton relie $\vec{a}_G$ à la force
+          résultante, $\vec{a}_G = \sum \vec{F}_{ext}/m$ — pas à la vitesse.
+          Ici $\sum \vec{F}_{ext}$ pointe vers la gauche, donc $\vec{a}_G$
+          aussi, même si le solide se déplace encore vers la droite à cet
+          instant.
+      - id: C
+        text: >-
+          $\vec{a}_G = \vec{0}$, puisque le solide se déplace toujours vers
+          la droite.
+        correct: false
+        feedback: >
+          Se déplacer encore dans une direction ne signifie pas que
+          l'accélération y est nulle. Une force résultante non nulle produit
+          toujours une accélération non nulle ($\vec{a}_G = \sum
+          \vec{F}_{ext}/m \neq \vec{0}$ ici) : le solide ralentit,
+          c'est-à-dire que sa vitesse diminue progressivement, même s'il
+          continue de se déplacer vers la droite pendant un temps.
+      - id: D
+        text: >-
+          $\vec{a}_G$ est perpendiculaire au mouvement.
+        correct: false
+        feedback: >
+          Rien n'impose une perpendicularité ici. La deuxième loi de Newton
+          donne $\vec{a}_G$ EXACTEMENT dans la direction de
+          $\sum \vec{F}_{ext}$, qui est colinéaire à la direction du
+          mouvement (vers la gauche), et non perpendiculaire à elle.
+    correct_feedback: >
+      Par la deuxième loi de Newton, $\vec{a}_G$ est toujours colinéaire et de
+      même sens que $\sum \vec{F}_{ext}$, quelle que soit la direction de la
+      vitesse à cet instant. Ici $\sum \vec{F}_{ext}$ pointe vers la gauche,
+      donc $\vec{a}_G$ aussi : la vitesse (vers la droite) diminue
+      progressivement, le solide ralentit.
+    solution: |
+      **Deuxième loi de Newton :**
+      $$\vec{a}_G = \frac{\sum \vec{F}_{ext}}{m}$$
+
+      $\vec{a}_G$ a donc exactement la direction et le sens de
+      $\sum \vec{F}_{ext}$ — ici, vers la gauche.
+
+      **Effet sur le mouvement :** le solide se déplaçant vers la droite avec
+      une accélération dirigée vers la gauche voit sa vitesse diminuer en
+      norme (elle reste dirigée vers la droite tant qu'elle n'est pas
+      annulée) : le mouvement est ralenti, pas inversé instantanément ni
+      stoppé net.
+
+  - id: LDN-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, calcul, resultante]
+    stem: >
+      Un solide de masse $m = 4{,}0\ \text{kg}$ est soumis à deux forces
+      horizontales : $\vec{F}_1$ vers la droite, $F_1 = 30\ \text{N}$, et
+      $\vec{F}_2$ vers la gauche, $F_2 = 10\ \text{N}$ (frottements
+      négligés). Quelle est la valeur de son accélération ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a = \\dfrac{30+10}{4{,}0} = 10\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce calcul ADDITIONNE les deux forces au lieu de tenir compte de
+          leurs sens opposés. $\vec{F}_1$ et $\vec{F}_2$ pointent dans des
+          directions contraires : il faut les soustraire (calculer leur
+          RÉSULTANTE algébrique), pas additionner leurs normes comme si elles
+          s'ajoutaient dans le même sens.
+      - id: B
+        text: "$a = \\dfrac{30-10}{4{,}0} = 5{,}0\\ \\text{m/s}^2$ (vers la droite)"
+        correct: true
+      - id: C
+        text: "$a = \\dfrac{30}{4{,}0} = 7{,}5\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce calcul ignore complètement $\vec{F}_2$, comme si seule la plus
+          grande force comptait. Or c'est la RÉSULTANTE des deux forces
+          (leur somme vectorielle) qui détermine l'accélération, pas la plus
+          grande force prise isolément : $\vec{F}_2$ doit être soustraite de
+          $\vec{F}_1$.
+      - id: D
+        text: "$a = 20\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce résultat prend la résultante des forces (20 N) mais oublie de
+          diviser par la masse. La deuxième loi de Newton donne
+          $a = \sum F_{ext}/m$ : il faut diviser la résultante par la masse
+          pour obtenir une accélération, pas utiliser directement la valeur
+          en newtons comme si elle était déjà en m/s².
+    correct_feedback: >
+      La résultante des forces horizontales vaut
+      $\sum F_{ext} = F_1 - F_2 = 30 - 10 = 20\ \text{N}$ (vers la droite,
+      sens de la plus grande force). Par la deuxième loi de Newton,
+      $a = \sum F_{ext}/m = 20/4{,}0 = 5{,}0\ \text{m/s}^2$.
+    solution: |
+      **Résultante des forces (projection sur l'axe horizontal, droite
+      positive) :**
+      $$\sum F_{ext} = F_1 - F_2 = 30 - 10 = 20\ \text{N}$$
+
+      **Deuxième loi de Newton :**
+      $$a = \frac{\sum F_{ext}}{m} = \frac{20}{4{,}0} = 5{,}0\ \text{m}\cdot\text{s}^{-2}$$
+
+      L'accélération est dirigée vers la droite (sens de la résultante,
+      c'est-à-dire de la force la plus grande, $F_1$).
+
+  - id: LDN-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [troisieme_loi, action_reaction, masse_force]
+    stem: >
+      Un camion lourd entre en collision avec une petite voiture. Pendant le
+      choc, comment se comparent la force exercée par le camion sur la
+      voiture, $\vec{F}_{c\to v}$, et celle exercée par la voiture sur le
+      camion, $\vec{F}_{v\to c}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles ont exactement la même norme et des sens opposés
+          ($\vec{F}_{v\to c} = -\vec{F}_{c\to v}$), quelles que soient leurs
+          masses ; ce sont leurs effets (accélérations) qui diffèrent.
+        correct: true
+      - id: B
+        text: >-
+          Le camion exerce une force plus grande, car il est plus massif.
+        correct: false
+        feedback: >
+          La troisième loi de Newton ne dépend jamais des masses des deux
+          corps en interaction : elle est toujours vraie, quelles que soient
+          leurs masses. Ce qui diffère avec la masse, c'est l'EFFET de la
+          force (l'accélération $a = F/m$), pas la force elle-même : la
+          petite voiture, moins massive, subit une accélération bien plus
+          grande pour une force de même norme.
+      - id: C
+        text: >-
+          Le camion exerce une force plus grande, car il a plus d'élan.
+        correct: false
+        feedback: >
+          La quantité de mouvement (l'« élan ») du camion avant le choc ne
+          détermine pas la norme de la force qu'il exerce pendant le choc :
+          la troisième loi impose l'égalité stricte des deux forces
+          d'interaction, indépendamment de la vitesse ou de la masse de
+          chaque véhicule avant la collision.
+      - id: D
+        text: >-
+          La voiture exerce une force plus grande, car elle est plus
+          accélérée / plus endommagée.
+        correct: false
+        feedback: >
+          Un effet plus visible (plus de dégâts, plus d'accélération) ne
+          signifie pas une force plus grande : la voiture, moins massive,
+          subit une accélération plus grande pour la MÊME force que celle
+          reçue par le camion ($a = F/m$, et $m$ est petit pour la voiture).
+          Les deux forces d'interaction restent de norme identique.
+    correct_feedback: >
+      La troisième loi de Newton s'applique quelles que soient les masses des
+      deux corps : $\vec{F}_{v\to c} = -\vec{F}_{c\to v}$, toujours, à chaque
+      instant du choc. Seuls les EFFETS diffèrent, car $a = F/m$ : la petite
+      voiture, moins massive, subit une accélération bien plus grande que le
+      camion pour cette même force.
+    solution: |
+      **Troisième loi de Newton (principe des actions réciproques) :** pour
+      toute interaction entre deux corps, les deux forces exercées l'une sur
+      l'autre ont même norme, même direction, et des sens opposés — cela ne
+      dépend ni de la masse, ni de la vitesse, ni de l'état des corps.
+      $$\vec{F}_{v\to c} = -\vec{F}_{c\to v}$$
+
+      **Ce qui diffère réellement :** l'accélération de chaque véhicule,
+      $a = F/m$. Le camion, très massif, subit une petite accélération sous
+      cette force ; la voiture, peu massive, subit une grande accélération
+      sous cette MÊME force — d'où l'impression trompeuse que le camion
+      « exerce une force plus grande ».
+
+  - id: LDN-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [troisieme_loi, action_reaction, corps_differents]
+    stem: >
+      Les deux forces d'une paire action-réaction ont même norme et sens
+      opposés. Pourquoi ne se compensent-elles JAMAIS entre elles ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles se compensent effectivement : c'est pourquoi les corps en
+          interaction restent à l'équilibre.
+        correct: false
+        feedback: >
+          C'est une confusion fréquente : deux forces ne se « compensent »
+          (au sens d'un équilibre) que si elles s'appliquent sur le MÊME
+          corps. Une paire action-réaction s'exerce sur DEUX corps
+          différents, chacun subissant une seule des deux forces — l'état
+          d'équilibre ou de mouvement de chaque corps dépend de TOUTES les
+          forces qui s'exercent SUR LUI, pas d'une compensation entre les
+          deux forces de la paire.
+      - id: B
+        text: >-
+          Elles ne se compensent pas parce qu'elles n'ont pas tout à fait la
+          même norme.
+        correct: false
+        feedback: >
+          La troisième loi de Newton impose au contraire une égalité EXACTE
+          des normes, sans aucune exception ni approximation. La raison pour
+          laquelle elles ne se compensent pas n'est pas une différence de
+          norme, mais le fait qu'elles s'exercent sur deux corps différents.
+      - id: C
+        text: >-
+          Elles ne se compensent pas parce que l'une est plus grande selon la
+          masse du corps.
+        correct: false
+        feedback: >
+          La norme des deux forces d'une paire action-réaction est
+          rigoureusement identique, indépendamment des masses des deux
+          corps. La masse influence l'accélération produite par la force
+          ($a = F/m$), pas la force elle-même ni son égalité avec sa
+          réciproque.
+      - id: D
+        text: >-
+          Parce qu'elles s'exercent sur deux corps différents ; on
+          n'additionne (pour un bilan/équilibre) que des forces appliquées au
+          même corps.
+        correct: true
+    correct_feedback: >
+      Une compensation (ou un équilibre) ne se calcule qu'entre forces
+      appliquées à UN MÊME corps. Une paire action-réaction relie toujours
+      deux forces appliquées à deux corps différents : elles ne s'additionnent
+      donc jamais dans un même bilan de forces, même si elles ont
+      individuellement même norme et sens opposés.
+    solution: |
+      **Rappel de la troisième loi :** pour une interaction entre un corps A
+      et un corps B, $\vec{F}_{A\to B} = -\vec{F}_{B\to A}$ — même norme, sens
+      opposés.
+
+      **Le point essentiel :** $\vec{F}_{A\to B}$ s'exerce SUR B, et
+      $\vec{F}_{B\to A}$ s'exerce SUR A. Ce sont deux corps différents.
+
+      **Conséquence :** pour étudier l'équilibre ou le mouvement d'un corps,
+      on fait le bilan de TOUTES les forces qui s'exercent SUR CE CORPS
+      précisément — jamais en mélangeant une force reçue par A avec une force
+      reçue par B. Une paire action-réaction ne peut donc jamais apparaître
+      entièrement dans le bilan des forces d'un seul et même corps.
+
+  - id: LDN-18
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [bilan_forces, poids, reaction_normale, frottement]
+    stem: >
+      Une caisse est tirée sur un sol horizontal par une force horizontale
+      $\vec{F}$, avec frottement. Quel est le bilan CORRECT des forces
+      extérieures sur la caisse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec{F}$ et $\vec{f}$ seulement.
+        correct: false
+        feedback: >
+          Ce bilan oublie deux forces pourtant bien présentes : le poids
+          $\vec{P}$ (la caisse a une masse, donc un poids) et la réaction
+          normale $\vec{N}$ exercée par le sol (le sol empêche la caisse de
+          s'enfoncer). Un bilan de forces doit recenser TOUTES les
+          interactions du système avec l'extérieur, pas seulement les forces
+          horizontales visibles.
+      - id: B
+        text: >-
+          Le poids $\vec{P}$, la réaction normale $\vec{N}$, la force de
+          traction $\vec{F}$, le frottement $\vec{f}$ — quatre forces.
+        correct: true
+      - id: C
+        text: >-
+          $\vec{P}$, $\vec{N}$, $\vec{F}$, $\vec{f}$, plus une « force du
+          mouvement » vers l'avant.
+        correct: false
+        feedback: >
+          Il n'existe aucune force physique associée au simple fait d'être en
+          mouvement. Chaque force du bilan doit correspondre à une
+          interaction identifiable (avec la Terre, avec le sol, avec la
+          corde de traction) : ajouter une « force du mouvement » sans
+          origine physique revient à réintroduire l'idée fausse qu'un
+          mouvement a besoin d'être « alimenté » par une force qui lui est
+          propre.
+      - id: D
+        text: >-
+          $\vec{P}$, $\vec{F}$, $\vec{f}$ (sans la réaction normale).
+        correct: false
+        feedback: >
+          Oublier $\vec{N}$ revient à ignorer que le sol empêche la caisse de
+          s'enfoncer sous l'effet de son poids. Tant que la caisse reste en
+          contact avec le sol, celui-ci exerce nécessairement une réaction
+          normale $\vec{N}$, verticale, qui équilibre (au moins en partie) le
+          poids.
+    correct_feedback: >
+      Le bilan complet des forces extérieures comprend toutes les
+      interactions réelles de la caisse avec son environnement : la Terre
+      (poids $\vec{P}$), le sol (réaction normale $\vec{N}$ et frottement
+      $\vec{f}$), et la corde ou la main qui tire (force de traction
+      $\vec{F}$) — quatre forces, ni plus, ni moins.
+    solution: |
+      **Méthode du bilan des forces :** recenser chaque objet en CONTACT (ou
+      en interaction à distance) avec la caisse.
+
+      - La Terre exerce le poids $\vec{P}$ (interaction à distance,
+        gravitationnelle).
+      - Le sol exerce la réaction normale $\vec{N}$ (empêche l'enfoncement)
+        et le frottement $\vec{f}$ (s'oppose au glissement).
+      - La corde (ou la main) exerce la force de traction $\vec{F}$.
+
+      Aucune autre interaction n'existe : il n'y a ni « force du mouvement »
+      ni force qui apparaîtrait du simple fait que la caisse avance. Le bilan
+      correct compte donc exactement quatre forces.
+
+  - id: LDN-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [bilan_forces, projection, reaction_normale]
+    stem: >
+      Pour une caisse tirée horizontalement sur un sol plat (mouvement
+      horizontal), pourquoi la réaction normale $N$ n'apparaît-elle PAS dans
+      l'équation selon l'axe horizontal ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que $\vec{N}$ est verticale (perpendiculaire au sol) : elle
+          n'a aucune composante selon l'axe horizontal.
+        correct: true
+      - id: B
+        text: >-
+          Parce que $N = 0$ tant que la caisse glisse.
+        correct: false
+        feedback: >
+          $\vec{N}$ n'est pas nulle pendant le glissement : le sol continue
+          d'exercer une réaction normale non nulle tant que la caisse reste
+          en contact avec lui, glissante ou non. Ce qui est vrai, c'est que
+          sa DIRECTION (verticale) fait que sa composante HORIZONTALE est
+          nulle — mais $\vec{N}$ elle-même, verticalement, ne s'annule pas.
+      - id: C
+        text: >-
+          Parce que $\vec{N}$ est toujours égale au frottement et s'annule
+          avec lui.
+        correct: false
+        feedback: >
+          $\vec{N}$ (verticale) et $\vec{f}$ (horizontale) sont deux forces
+          perpendiculaires entre elles : elles n'ont pas la même direction et
+          ne peuvent donc pas « s'annuler » l'une avec l'autre. $\vec{N}$
+          s'équilibre avec $\vec{P}$ (les deux verticales), et $\vec{f}$
+          s'équilibre avec $\vec{F}$ (les deux horizontales) — ce sont deux
+          équilibres séparés, sur deux axes différents.
+      - id: D
+        text: >-
+          Parce que $\vec{N}$ compense la force de traction $\vec{F}$.
+        correct: false
+        feedback: >
+          $\vec{N}$ est verticale et $\vec{F}$ est horizontale ici : deux
+          forces de directions différentes ne peuvent pas se « compenser »
+          entre elles au sens d'un équilibre. $\vec{N}$ compense le poids
+          $\vec{P}$ (verticalement) ; $\vec{F}$ est compensée par le
+          frottement $\vec{f}$ (horizontalement) — pas par $\vec{N}$.
+    correct_feedback: >
+      Pour projeter la deuxième loi de Newton sur un axe, seules les
+      composantes des forces le long de CET axe interviennent. $\vec{N}$
+      étant perpendiculaire au sol (donc verticale, pour un sol horizontal),
+      sa projection sur l'axe horizontal est nulle : elle n'apparaît donc que
+      dans l'équation verticale, où elle équilibre le poids $\vec{P}$.
+    solution: |
+      **Méthode de projection :** on projette $\sum \vec{F}_{ext} =
+      m\vec{a}_G$ sur deux axes perpendiculaires (ici, horizontal et
+      vertical).
+
+      **Selon l'axe vertical :** $\vec{P}$ et $\vec{N}$ sont toutes deux
+      verticales ; elles s'équilibrent : $N = P = mg$ (mouvement purement
+      horizontal, $a_{G,vertical} = 0$).
+
+      **Selon l'axe horizontal :** $\vec{N}$ et $\vec{P}$, étant verticales,
+      ont une projection NULLE sur cet axe. Seules $\vec{F}$ et $\vec{f}$
+      (horizontales) contribuent : $F - f = m\,a_G$.
+
+      $\vec{N}$ n'est donc pas absente du problème — elle intervient
+      pleinement dans l'équation verticale — mais elle est simplement absente
+      de l'équation HORIZONTALE, du seul fait de sa direction perpendiculaire
+      à cet axe.
+
+  - id: LDN-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, calcul, frottement]
+    stem: >
+      Une caisse de masse $m = 5{,}0\ \text{kg}$ glisse sur un sol horizontal,
+      tirée par une force horizontale $F = 25\ \text{N}$ dans le sens du
+      mouvement ; le frottement vaut $f = 10\ \text{N}$. Quelle est
+      l'accélération $a_G$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_G = \\dfrac{25+10}{5{,}0} = 7{,}0\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce calcul additionne $F$ et $f$ comme si elles agissaient dans le
+          même sens. Or le frottement s'oppose toujours au mouvement, donc à
+          $\vec{F}$ : il faut le RETRANCHER, pas l'ajouter, pour obtenir la
+          résultante horizontale.
+      - id: B
+        text: "$a_G = \\dfrac{F-f}{m} = \\dfrac{25-10}{5{,}0} = 3{,}0\\ \\text{m/s}^2$"
+        correct: true
+      - id: C
+        text: "$a_G = \\dfrac{25}{5{,}0} = 5{,}0\\ \\text{m/s}^2$"
+        correct: false
+        feedback: >
+          Ce calcul ignore complètement le frottement $f$, comme s'il
+          n'existait pas. Or l'énoncé précise que $f = 10\ \text{N}$ agit
+          bien sur la caisse, en s'opposant au mouvement : il doit être
+          soustrait de $F$ dans le calcul de la résultante horizontale.
+      - id: D
+        text: "$a_G \\approx 0{,}3\\ \\text{m/s}^2$ (en divisant par le poids $mg = 49\\ \\text{N}$)"
+        correct: false
+        feedback: >
+          La deuxième loi de Newton divise la résultante des forces par la
+          MASSE $m$ (en kg), pas par le POIDS $mg$ (en newtons) — ce sont deux
+          grandeurs de nature différente. Diviser par $mg$ au lieu de $m$
+          mélange une force et une masse, et donne un résultat sans sens
+          physique correct pour une accélération.
+    correct_feedback: >
+      La résultante horizontale vaut $F - f = 25 - 10 = 15\ \text{N}$
+      (le frottement s'oppose à la traction). Par la deuxième loi de Newton,
+      $a_G = (F-f)/m = 15/5{,}0 = 3{,}0\ \text{m/s}^2$.
+    solution: |
+      **Bilan horizontal :** $\vec{F}$ (moteur, dans le sens du mouvement) et
+      $\vec{f}$ (résistant, opposé au mouvement).
+
+      **Projection de la deuxième loi sur l'axe horizontal :**
+      $$F - f = m\,a_G$$
+
+      **Isoler $a_G$ :**
+      $$a_G = \frac{F-f}{m} = \frac{25-10}{5{,}0} = \frac{15}{5{,}0} = 3{,}0\ \text{m}\cdot\text{s}^{-2}$$
+
+      Il faut bien utiliser la MASSE $m = 5{,}0\ \text{kg}$ (et non le poids
+      $mg = 49\ \text{N}$) dans cette division, conformément à
+      $\sum \vec{F}_{ext} = m\vec{a}_G$.
+
+  - id: LDN-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [chute_libre, masse_poids, gravite]
+    stem: >
+      Un même objet est lâché en chute libre, sans vitesse initiale et depuis
+      la même hauteur, une fois sur Terre ($g \approx 9{,}8\ \text{N/kg}$) et
+      une fois sur la Lune ($g \approx 1{,}6\ \text{N/kg}$). Comparez la durée
+      de chute et la masse de l'objet.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Même durée sur la Lune et sur Terre : $a_G = g$ ne dépend pas du
+          lieu.
+        correct: false
+        feedback: >
+          Il est vrai que $a_G = g$ ne dépend pas de la MASSE de l'objet —
+          mais $g$ lui-même dépend du LIEU (de la planète). Ici $g$ change
+          bel et bien entre la Terre et la Lune : l'indépendance par rapport
+          à la masse ne doit pas être confondue avec une indépendance par
+          rapport au lieu.
+      - id: B
+        text: >-
+          La chute dure plus longtemps sur la Lune ($g$ plus faible ⇒
+          $a_G$ plus faible) ; la masse de l'objet est identique aux deux
+          endroits.
+        correct: true
+      - id: C
+        text: >-
+          La chute est plus courte sur la Lune, car l'objet y est plus léger.
+        correct: false
+        feedback: >
+          Ceci confond « léger » (poids plus faible) avec une chute plus
+          rapide, et c'est même l'inverse qui se produit : un $g$ plus
+          faible donne une accélération de chute plus faible, donc une chute
+          PLUS LONGUE, pas plus courte. Le poids diminue sur la Lune, mais
+          cela ralentit la chute, ne l'accélère pas.
+      - id: D
+        text: >-
+          La masse de l'objet est plus faible sur la Lune.
+        correct: false
+        feedback: >
+          La masse est une propriété intrinsèque de l'objet (quantité de
+          matière), elle ne change pas selon le lieu où l'objet se trouve. Ce
+          qui change d'un astre à l'autre, c'est le POIDS ($P = mg$), à cause
+          de $g$ qui varie — pas la masse $m$, qui reste rigoureusement la
+          même sur Terre et sur la Lune.
+    correct_feedback: >
+      En chute libre, $\vec{a}_G = \vec{g}$ : l'accélération ne dépend pas de
+      la masse de l'objet, mais elle dépend bien du lieu, via $g$. Comme
+      $g_{Lune} < g_{Terre}$, la chute est plus lente, donc plus longue sur la
+      Lune. La masse de l'objet, en revanche, reste identique sur les deux
+      astres : c'est une propriété de l'objet, pas du lieu.
+    solution: |
+      **Deuxième loi appliquée à la chute libre :**
+      $$\vec{P} = m\vec{a}_G \quad\text{avec}\quad \vec{P} = m\vec{g}
+      \quad\Longrightarrow\quad \vec{a}_G = \vec{g}$$
+
+      **Ce qui ne dépend pas de la masse :** $a_G = g$, quel que soit $m$ —
+      donc la masse de l'objet ne change ni sur Terre ni sur la Lune, et
+      n'influence à aucun moment la durée de chute.
+
+      **Ce qui dépend du lieu :** $g$ lui-même est différent sur Terre
+      ($\approx 9{,}8\ \text{m/s}^2$) et sur la Lune ($\approx
+      1{,}6\ \text{m/s}^2$). Une accélération plus faible sur la Lune signifie
+      que la vitesse augmente plus lentement : pour parcourir la même
+      hauteur $h$, il faut donc PLUS de temps sur la Lune que sur Terre.
+
+  - id: LDN-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [chute_libre, calcul, cinematique]
+    stem: >
+      On lâche un objet sans vitesse initiale, en chute libre, depuis une
+      hauteur $h = 45\ \text{m}$. On prend $g = 10\ \text{m/s}^2$. Combien de
+      temps met-il pour atteindre le sol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$t = \\sqrt{\\dfrac{h}{g}} = \\sqrt{4{,}5} \\approx 2{,}1\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Ce calcul oublie le facteur 2 dans la relation
+          $h = \tfrac{1}{2}g t^2$ : il faut isoler $t$ à partir de
+          $t^2 = 2h/g$, pas $t^2 = h/g$. Cette omission fait sous-estimer le
+          temps de chute.
+      - id: B
+        text: "$t = \\dfrac{h}{g} = 4{,}5\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Ce calcul traite la chute comme un mouvement à vitesse CONSTANTE
+          égale à $g$ (comme si $h = g \times t$), ce qui reviendrait à
+          confondre $g$ (une accélération) avec une vitesse. En chute libre,
+          la vitesse augmente progressivement à partir de zéro : la relation
+          correcte entre $h$, $g$ et $t$ est $h = \tfrac{1}{2}g t^2$, pas
+          $h = g t$.
+      - id: C
+        text: "$t = \\sqrt{\\dfrac{2h}{g}} = \\sqrt{\\dfrac{2\\times 45}{10}} = \\sqrt{9} = 3{,}0\\ \\text{s}$"
+        correct: true
+      - id: D
+        text: >-
+          Impossible sans connaître la masse de l'objet.
+        correct: false
+        feedback: >
+          La durée de chute libre ne dépend pas de la masse de l'objet :
+          $\vec{a}_G = \vec{g}$ est valable quelle que soit la masse (elle se
+          simplifie dans l'équation $m\vec{g} = m\vec{a}_G$). La relation
+          $h = \tfrac{1}{2}g t^2$ ne fait intervenir que $h$ et $g$, jamais la
+          masse : le temps de chute est donc parfaitement déterminable sans
+          elle.
+    correct_feedback: >
+      En chute libre sans vitesse initiale, $h = \tfrac{1}{2}g t^2$, donc
+      $t = \sqrt{2h/g} = \sqrt{2\times 45/10} = \sqrt{9} = 3{,}0\ \text{s}$.
+    solution: |
+      **Relation position-temps en chute libre (départ du repos) :**
+      $$h = \frac{1}{2} g\, t^2$$
+
+      **Isoler $t$ :**
+      $$t = \sqrt{\frac{2h}{g}}$$
+
+      **Application numérique :**
+      $$t = \sqrt{\frac{2\times 45}{10}} = \sqrt{9} = 3{,}0\ \text{s}$$
+
+      Cette durée ne dépend ni de la masse ni du poids de l'objet : seuls $h$
+      et $g$ interviennent dans le calcul.
+
+  - id: LDN-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [plan_incline, projection, reaction_normale]
+    stem: >
+      Un solide de masse $m = 2{,}0\ \text{kg}$ repose/glisse sur un plan
+      incliné d'angle $\alpha = 30^\circ$. On prend $g = 9{,}8\ \text{m/s}^2$
+      et $\cos 30^\circ \approx 0{,}87$. Quelle est la valeur de la réaction
+      normale $N$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$N = mg = 19{,}6\\ \\text{N}$"
+        correct: false
+        feedback: >
+          C'est le réflexe valable sur un sol HORIZONTAL, où $N = P$. Sur un
+          plan INCLINÉ, la réaction normale équilibre seulement la
+          composante du poids PERPENDICULAIRE au plan, pas le poids entier :
+          il faut projeter $\vec{P}$ selon la direction perpendiculaire au
+          plan, ce qui introduit un facteur $\cos\alpha$.
+      - id: B
+        text: "$N = mg\\sin\\alpha = 9{,}8\\ \\text{N}$"
+        correct: false
+        feedback: >
+          Ceci utilise $\sin\alpha$ au lieu de $\cos\alpha$. C'est la
+          composante du poids LE LONG du plan (celle qui entraîne le solide
+          dans la pente) qui s'exprime avec $\sin\alpha$ ; la composante
+          PERPENDICULAIRE au plan, celle que $\vec{N}$ équilibre, s'exprime
+          avec $\cos\alpha$.
+      - id: C
+        text: "$N = mg\\cos\\alpha = 2{,}0 \\times 9{,}8 \\times 0{,}87 \\approx 17\\ \\text{N}$"
+        correct: true
+      - id: D
+        text: >-
+          Impossible sans connaître le frottement $f$.
+        correct: false
+        feedback: >
+          La réaction normale $N$ résulte de l'équilibre PERPENDICULAIRE au
+          plan, entre $\vec{N}$ et la composante perpendiculaire du poids.
+          Le frottement $\vec{f}$, lui, est parallèle au plan : il
+          n'intervient pas dans cet équilibre perpendiculaire, donc $N$ se
+          calcule sans connaître $f$.
+    correct_feedback: >
+      Perpendiculairement au plan, $\vec{N}$ équilibre la composante du
+      poids perpendiculaire au plan, $mg\cos\alpha$ : $N = mg\cos\alpha =
+      2{,}0 \times 9{,}8 \times 0{,}87 \approx 17\ \text{N}$.
+    solution: |
+      **Projection selon l'axe perpendiculaire au plan incliné :**
+      $$N - mg\cos\alpha = 0 \quad\Longrightarrow\quad N = mg\cos\alpha$$
+
+      **Application numérique :**
+      $$N = 2{,}0 \times 9{,}8 \times 0{,}87 \approx 17\ \text{N}$$
+
+      Sur un plan incliné, $N$ n'équilibre que la composante du poids
+      perpendiculaire au plan ($mg\cos\alpha$), pas le poids entier ($mg$) :
+      c'est seulement sur un sol horizontal ($\alpha = 0$, $\cos\alpha = 1$)
+      que $N = mg$.
+
+  - id: LDN-24
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [plan_incline, deuxieme_loi, masse_inertie]
+    stem: >
+      Sur un plan incliné SANS frottement, d'angle $\alpha$, un solide glisse
+      en partant du repos. De quoi dépend son accélération $a_G$ le long du
+      plan ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_G = g$, indépendante de l'angle."
+        correct: false
+        feedback: >
+          Ceci traite le plan incliné comme une chute libre complète, comme
+          si le solide tombait verticalement. Or seule la composante du
+          poids LE LONG du plan entraîne le solide dans cette direction : elle
+          vaut $mg\sin\alpha$, pas $mg$ tout entier — l'accélération dépend
+          donc bien de l'angle $\alpha$, et vaut $g\sin\alpha$, pas $g$.
+      - id: B
+        text: "$a_G$ dépend de la masse : plus le solide est lourd, plus il accélère."
+        correct: false
+        feedback: >
+          Comme en chute libre, la masse se simplifie entièrement dans
+          l'équation du mouvement sur un plan incliné sans frottement :
+          $mg\sin\alpha = ma_G$ donne $a_G = g\sin\alpha$, où $m$ disparaît
+          complètement. Un solide plus lourd n'accélère donc ni plus ni
+          moins vite qu'un solide léger sur le même plan.
+      - id: C
+        text: "$a_G = g\\sin\\alpha$ : elle dépend de l'angle $\\alpha$ et de $g$, mais PAS de la masse du solide."
+        correct: true
+      - id: D
+        text: "$a_G = g\\cos\\alpha$."
+        correct: false
+        feedback: >
+          C'est une confusion entre $\sin\alpha$ et $\cos\alpha$ : la
+          composante du poids LE LONG du plan (celle qui produit
+          l'accélération dans le sens de la descente) s'exprime avec
+          $\sin\alpha$, tandis que $\cos\alpha$ correspond à la composante
+          PERPENDICULAIRE au plan, celle qu'équilibre la réaction normale
+          $N$.
+    correct_feedback: >
+      Sans frottement, la projection de la deuxième loi le long du plan donne
+      $mg\sin\alpha = m a_G$, donc $a_G = g\sin\alpha$ : la masse se simplifie
+      complètement (comme en chute libre), et seule l'accélération dépend de
+      l'angle $\alpha$ et de $g$.
+    solution: |
+      **Projection de la deuxième loi le long du plan (sans frottement) :**
+      $$mg\sin\alpha = m\,a_G$$
+
+      **Isoler $a_G$ :**
+      $$a_G = g\sin\alpha$$
+
+      La masse $m$ disparaît de l'équation, exactement comme en chute libre
+      verticale : deux solides de masses différentes, lâchés sur le même
+      plan incliné sans frottement, ont la même accélération et arrivent en
+      bas en même temps.
+
+  - id: LDN-25
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, frottement, force_mouvement]
+    stem: >
+      Une caisse est tirée à vitesse $v$ sur un sol horizontal, puis la corde
+      est coupée ; le frottement continue de s'exercer. La caisse
+      s'arrête-t-elle immédiatement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : elle continue puis ralentit progressivement. Le frottement
+          seul donne $\sum\vec{F}_{ext}\neq\vec{0}$, donc une accélération
+          opposée au mouvement ; il faut une durée finie pour annuler
+          $\vec{v}_G$.
+        correct: true
+      - id: B
+        text: >-
+          Oui, elle s'arrête net dès que la corde est coupée : il n'y a plus
+          de force motrice.
+        correct: false
+        feedback: >
+          Ceci suppose qu'un mouvement a besoin d'une force qui le maintient
+          en continu, et que sa disparition arrête tout instantanément. Or
+          c'est un CHANGEMENT de vitesse qui exige une force ; la vitesse
+          acquise avant la coupure ne disparaît pas d'elle-même. Seule
+          l'accélération produite par le frottement peut la réduire, et cela
+          prend un temps non nul.
+      - id: C
+        text: >-
+          Non, elle continue indéfiniment à vitesse constante, puisque plus
+          rien ne la tire.
+        correct: false
+        feedback: >
+          Ceci oublie que le frottement continue bel et bien de s'exercer
+          après la coupure de la corde. $\sum \vec{F}_{ext} = \vec{f} \neq
+          \vec{0}$ : il existe donc une accélération non nulle, opposée au
+          mouvement, qui réduit progressivement la vitesse — la caisse ne
+          garde pas une vitesse constante indéfiniment.
+      - id: D
+        text: >-
+          Oui, le frottement l'arrête instantanément.
+        correct: false
+        feedback: >
+          Une force, même non nulle, produit une ACCÉLÉRATION finie
+          ($a = f/m$), pas un arrêt instantané. Passer d'une vitesse $v$ non
+          nulle à une vitesse nulle demande un temps $\Delta t = v/a$ non
+          nul : le frottement ralentit la caisse progressivement, il ne
+          l'arrête pas en un instant.
+    correct_feedback: >
+      Après la coupure, seule $\vec{f}$ agit horizontalement :
+      $\sum \vec{F}_{ext} = \vec{f} \neq \vec{0}$, donc $\vec{a}_G \neq
+      \vec{0}$, dirigée en sens opposé au mouvement. La caisse ralentit
+      progressivement — ni arrêt instantané, ni vitesse constante indéfinie.
+    solution: |
+      **Après la coupure de la corde :** seules $\vec{P}$, $\vec{N}$ et
+      $\vec{f}$ subsistent. Verticalement, $\vec{P}$ et $\vec{N}$
+      s'équilibrent. Horizontalement, seule $\vec{f}$ agit, opposée au
+      mouvement.
+
+      **Deuxième loi de Newton :**
+      $$-f = m\,a_G \quad\Longrightarrow\quad a_G = -\frac{f}{m}$$
+
+      Cette accélération, non nulle mais finie, réduit progressivement la
+      norme de $\vec{v}_G$ jusqu'à zéro, au bout d'une durée
+      $\Delta t = v/(f/m) = mv/f$ non nulle. La caisse ne s'arrête donc ni
+      instantanément, ni jamais (elle finit bien par s'arrêter, contrairement
+      au cas sans frottement).
+
+  - id: LDN-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, calcul, cinematique]
+    stem: >
+      Une caisse de masse $m = 20\ \text{kg}$, initialement au repos, est
+      tirée par une force horizontale $T = 90\ \text{N}$ ; le frottement vaut
+      $f = 50\ \text{N}$. Quelle vitesse atteint-elle après $d = 4{,}0\
+      \text{m}$ ? (On donne $a = \dfrac{T-f}{m}=2{,}0\ \text{m/s}^2$.)
+    type: mcq
+    choices:
+      - id: A
+        text: "$v = 16\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $v^2 = 2ad = 16$, mais oublie de prendre
+          la racine carrée. $v^2$ vaut bien $16\ \text{m}^2/\text{s}^2$, mais
+          la VITESSE $v$ est la racine carrée de cette quantité, soit
+          $4{,}0\ \text{m/s}$, pas $16\ \text{m/s}$.
+      - id: B
+        text: "$v = 6{,}0\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'un calcul qui ignore le frottement : avec
+          $a = T/m = 90/20 = 4{,}5\ \text{m/s}^2$ au lieu de la valeur
+          correcte $a = (T-f)/m = 2{,}0\ \text{m/s}^2$ donnée dans l'énoncé,
+          on obtient $v^2 = 2\times 4{,}5\times 4{,}0 = 36$, soit $v =
+          6{,}0\ \text{m/s}$. Le frottement doit pourtant bien être soustrait
+          de la tension pour obtenir la résultante correcte.
+      - id: C
+        text: "$v = \\sqrt{2ad} = \\sqrt{2\\times 2{,}0\\times 4{,}0} = \\sqrt{16} = 4{,}0\\ \\text{m/s}$"
+        correct: true
+      - id: D
+        text: "$v = 8{,}0\\ \\text{m/s}$"
+        correct: false
+        feedback: >
+          Ce résultat utilise la relation $v = a \times d$ (comme si $v$
+          était proportionnelle à $d$), ce qui correspondrait à un mouvement
+          à accélération nulle et vitesse déjà établie. Or ici la caisse
+          PART DU REPOS avec une accélération constante : la relation correcte
+          entre vitesse et distance parcourue est $v^2 = 2ad$ (et non $v =
+          a\,d$), car la vitesse continue d'augmenter tout au long du
+          parcours.
+    correct_feedback: >
+      Avec $a = 2{,}0\ \text{m/s}^2$ constante et un départ du repos, la
+      relation vitesse-distance donne $v^2 = 2ad = 2\times 2{,}0\times 4{,}0 =
+      16$, donc $v = \sqrt{16} = 4{,}0\ \text{m/s}$.
+    solution: |
+      **Relation vitesse-distance (accélération constante, départ du
+      repos) :**
+      $$v^2 = 2\,a\,d$$
+
+      **Application numérique :**
+      $$v^2 = 2 \times 2{,}0 \times 4{,}0 = 16 \quad\Longrightarrow\quad v =
+      \sqrt{16} = 4{,}0\ \text{m/s}$$
+
+      Il est essentiel de bien prendre la racine carrée : $v^2$ (en
+      $\text{m}^2/\text{s}^2$) n'est pas directement une vitesse, et la
+      relation $v = a\,d$ ne s'applique qu'à des cas particuliers, pas à un
+      mouvement uniformément accéléré partant du repos.
+
+  - id: LDN-27
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, masse_inertie, poids]
+    stem: >
+      On remplace la caisse par une caisse de masse double $2m$ (donc de
+      poids double), tirée par la même tension $T$ et freinée par le même
+      frottement $f$. Que devient l'accélération, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'accélération est inchangée : $T$ et $f$ n'ont pas changé.
+        correct: false
+        feedback: >
+          La résultante des forces ($T - f$) est en effet inchangée, mais
+          l'accélération $a = \sum F_{ext}/m$ dépend aussi de la masse : avec
+          $m$ doublée au dénominateur, $a$ est nécessairement divisée par
+          deux, même si le numérateur reste identique. Oublier $m$ dans cette
+          division fait conclure à tort à une accélération inchangée.
+      - id: B
+        text: >-
+          L'accélération est divisée par deux ($a = \sum F_{ext}/m$, $m$
+          doublée) ; le poids, bien que doublé, n'intervient pas dans
+          l'équation horizontale (compensé par $\vec{N}$).
+        correct: true
+      - id: C
+        text: >-
+          L'accélération est divisée par deux à cause du poids doublé qui
+          freine davantage.
+        correct: false
+        feedback: >
+          La valeur numérique (divisée par deux) est correcte, mais la
+          raison invoquée ne l'est pas : le poids est vertical et ne
+          « freine » jamais un mouvement horizontal — il est entièrement
+          compensé par la réaction normale $\vec{N}$, elle aussi doublée,
+          et n'apparaît donc pas dans l'équation horizontale. C'est la masse
+          $m$ au dénominateur de $a = \sum F_{ext}/m$, pas le poids, qui
+          explique la division par deux.
+      - id: D
+        text: >-
+          L'accélération double : un objet plus lourd subit une plus grande
+          force et accélère plus.
+        correct: false
+        feedback: >
+          C'est l'inverse de la deuxième loi de Newton : à résultante de
+          forces égale ($T - f$ inchangée ici), un objet plus massif accélère
+          MOINS, pas plus, car $a = \sum F_{ext}/m$ diminue quand $m$
+          augmente. La masse mesure l'inertie, c'est-à-dire la résistance
+          au changement de vitesse — elle ne rend jamais l'accélération plus
+          grande.
+    correct_feedback: >
+      La résultante horizontale $T - f$ ne change pas, mais la masse double :
+      $a_{nouveau} = (T-f)/(2m) = a_{ancien}/2$. Le poids, doublé lui aussi,
+      reste sans effet sur l'équation horizontale car il est intégralement
+      compensé par la réaction normale $\vec{N}$ (elle aussi doublée),
+      verticalement.
+    solution: |
+      **Bilan horizontal (inchangé en nature) :** $T - f = m\,a$, donc pour
+      la nouvelle masse $2m$ :
+      $$T - f = 2m\,a_{nouveau} \quad\Longrightarrow\quad a_{nouveau} =
+      \frac{T-f}{2m} = \frac{a_{ancien}}{2}$$
+
+      **Rôle du poids doublé :** verticalement, $2mg$ est exactement
+      compensé par la nouvelle réaction normale $N' = 2mg$ — le poids double
+      bien, mais il n'entre jamais dans l'équation horizontale, qui ne
+      dépend que de $T$, $f$ et $m$.
+
+      L'accélération est donc divisée par deux uniquement parce que la masse
+      (l'inertie) a doublé au dénominateur — pas parce que le poids, plus
+      grand, « freinerait » davantage.
