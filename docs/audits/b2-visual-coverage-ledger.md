@@ -46,7 +46,7 @@ rule, carried forward here).
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
-| P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
+| P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | judged (7 STAGE / 10 DECLINE), build in progress |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
 | S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
 
@@ -527,4 +527,32 @@ content identical in outcome to a single wave commit; every partial commit
 was validated (validate-content + anti-contract grep) before pushing.
 
 **Running tally: 33/47 lessons done, 182/266 chapters judged, 89 STAGE / 93 DECLINE.**
+
+### Wave P5 — pc: suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides
+
+**Judgment** (pedagogy-architect × 4):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| suivi-temporel-vitesse | R0 | STAGE | `prediction-avancement` — predict-then-reveal: droite constante vs courbe qui ralentit, allure only |
+| suivi-temporel-vitesse | R1 | DECLINE | procedural catalog of monitoring methods, conceptual prose |
+| suivi-temporel-vitesse | R3 | STAGE | `tangentes-decroissantes` — two tangents of falling steepness make the deceleration itself visible (R2 owns the single-tangent method) |
+| suivi-temporel-vitesse | R5 | DECLINE | exercise supplies all values numerically; tangent/t½ gestures owned by R2/R4 figures |
+| systemes-oscillants | R0 | DECLINE | narrative hook; payload delivered by R1's pendule-elastique + sandbox |
+| systemes-oscillants | R3 | STAGE | `bilan-pendule-simple` — circular geometry + force decomposition (−mg sinθ, tension radial, mass cancels); no existing media covers pendulums |
+| systemes-oscillants | R4 | DECLINE | recap/analogy chapter; torsion schema is single-layer, staging would be click-theatre |
+| systemes-oscillants | R7 | DECLINE | exercises supply data verbally; visual work done by R1/R5 figures + sandbox |
+| transformations-deux-sens | R0 | DECLINE | narrative hook; its only figure idea is R4's avancement-limite gesture |
+| transformations-deux-sens | R1 | STAGE | `sens-direct-inverse` — constructs the ⇌ notation: sens direct → sens inverse → coexistence |
+| transformations-deux-sens | R2 | DECLINE | procedural binary criterion; a decision fork is not a progressive build |
+| transformations-deux-sens | R3 | STAGE | `experiences-miroir` — composition track, two mirror departures converging on coexistence |
+| transformations-lentes-rapides | R0 | DECLINE | narrative accroche; timescale contrast carried by R1's lente-rapide |
+| transformations-lentes-rapides | R2 | DECLINE | symbolic half-equation recap, equations carry it |
+| transformations-lentes-rapides | R3 | STAGE | `facteurs-cinetiques` — A/B/C controlled comparison, one variable isolated per stage |
+| transformations-lentes-rapides | R4 | STAGE | `chocs-efficaces` — entities → collision → efficace/inefficace pivot → the two levers |
+| transformations-lentes-rapides | R5 | DECLINE | algebraic/criterion/qualitative questions; visual work done by R3/R4 figures |
+
+**Wave P5 judgment tally: 7 STAGE / 10 DECLINE** (17 chapters judged — closes the pc matière's judgment).
+
+**Build:** in progress.
 
