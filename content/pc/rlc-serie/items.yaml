@@ -42,6 +42,11 @@ misconceptions:
     description: "L'élève confond entretien (compensation de la perte Joule) et régime forcé (fréquence imposée par un générateur extérieur)."
     contradicts_principle: "Le générateur d'entretien délivre $u_G = k \\cdot i$ et compense exactement la perte Joule ($k = R$). L'ODE devient $L\\ddot{q} + q/C = 0$ : le circuit oscille librement à sa propre période $T_0 = 2\\pi\\sqrt{LC}$. Le générateur ne fixe pas de fréquence."
 
+  - id: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+    label: "« Le circuit LC/RLC en oscillations libres se décharge comme un circuit RC : $u_C$ décroît vers 0 et n'y revient pas »"
+    description: "L'élève applique le modèle de décharge exponentielle du condensateur (chapitre RC) au circuit LC/RLC, sans tenir compte du rôle de la bobine qui renvoie l'énergie de l'autre côté et fait osciller $u_C$."
+    contradicts_principle: "Connectée à une bobine, la tension $u_C$ ne décroît pas de façon monotone vers 0 : la bobine s'oppose à la chute du courant et restitue l'énergie, ce qui fait remonter $u_C$ dans l'autre sens. En régime périodique ou pseudo-périodique, $u_C(t)$ oscille ; elle ne tend vers 0 sans osciller qu'en régime apériodique (R très grande), pas par défaut."
+
 items:
 
   # ══════════════════════════════════════════════════════════════
@@ -1375,62 +1380,558 @@ items:
       Condition initiale : $q(0) = Q_{max} = CU_0
       = 25 \times 10^{-6} \times 8 = 2{,}0 \times 10^{-4}\,\text{C}$.
 
+  # ══════════════════════════════════════════════════════════════
+  # WAVE-2 ADDITIONS — ramp completion (R0, R7, R8, R9 → 3 items each)
+  # ══════════════════════════════════════════════════════════════
+
+  # ── R0 (accroche) × 3 — new misconception: confond-oscillation-avec-decharge-rc ──
+
+  - id: RLC-R0-1
+    rung: "R0"
+    difficulty_level: 1
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      On charge complètement un condensateur, puis on le connecte
+      directement à une bobine (sans résistance, sans générateur). Que va
+      faire la tension $u_C(t)$ aux bornes du condensateur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle oscille : elle décroît, passe par zéro, puis remonte de l'autre côté, et ainsi de suite (régime périodique)."
+        correct: true
+      - id: B
+        text: "Elle décroît vers 0 comme dans une décharge de condensateur à travers une résistance, puis reste nulle."
+        correct: false
+        misconception: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+        also_reveals: []
+        feedback: "Ce n'est pas une décharge RC : la bobine s'oppose à la chute du courant et renvoie l'énergie vers le condensateur, ce qui fait remonter $u_C$ de l'autre côté au lieu de s'arrêter à zéro."
+      - id: C
+        text: "Elle reste constante à sa valeur initiale : sans résistance, rien ne peut se passer dans le circuit."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: "C'est l'inverse : sans R, le circuit oscille indéfiniment (rien ne dissipe). L'absence de résistance ne bloque rien ; elle empêche seulement l'amortissement."
+      - id: D
+        text: "Elle diminue rapidement jusqu'à une valeur non nulle puis s'arrête : le reste de l'énergie a été perdu."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "Sans résistance, aucune énergie n'est perdue : elle passe intégralement du condensateur à la bobine puis revient, indéfiniment."
+    correct_feedback: "Le condensateur se vide dans la bobine, qui la lui renvoie en sens inverse : $u_C(t)$ oscille indéfiniment, sans jamais s'arrêter."
+    solution: |
+      Sans résistance, la loi des mailles donne $L\ddot{q} + q/C = 0$, dont
+      la solution est $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} +
+      \varphi\right)$.
+      C'est une oscillation, pas une décharge monotone : $u_C(t) = q(t)/C$
+      traverse zéro et change de signe, contrairement à la décharge d'un
+      condensateur à travers une résistance (chapitre RC), qui tend vers 0
+      sans jamais le dépasser.
+
+  - id: RLC-R0-2
+    rung: "R0"
+    difficulty_level: 1
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Un élève, se basant sur le circuit RC vu au chapitre précédent,
+      prédit : « Ce condensateur connecté à une bobine va se décharger
+      exactement comme à travers une résistance : $u_C$ décroît en
+      exponentielle vers 0 et n'en repart plus. »
+      Une fois la vraie trace $u_C(t)$ observée, que peut-on dire de cette
+      prédiction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : la trace réelle montre une oscillation — $u_C$ passe par zéro puis remonte du côté opposé, au lieu de s'arrêter à zéro."
+        correct: true
+      - id: B
+        text: "Elle est confirmée : la bobine se comporte comme une résistance et produit la même décroissance."
+        correct: false
+        misconception: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+        also_reveals: []
+        feedback: "La bobine ne dissipe rien : elle stocke l'énergie magnétique puis la restitue au condensateur. Elle ne se comporte pas comme une résistance."
+      - id: C
+        text: "Elle est fausse dans le sens inverse : $u_C$ croît indéfiniment sans jamais redescendre."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "L'énergie totale du circuit est fixée dès le départ (charge initiale) ; $u_C$ ne peut pas croître indéfiniment, elle oscille entre $+U_0$ et $-U_0$."
+      - id: D
+        text: "Elle est vraie en partie : $u_C$ décroît vers 0 et s'y stabilise, car l'énergie initiale a été totalement consommée pendant la décharge."
+        correct: false
+        misconception: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+        also_reveals: [mc.physics.rlc_serie.energie-consommee-non-conservee]
+        feedback: "Double erreur : $u_C$ ne se stabilise pas à zéro (elle oscille), et l'énergie n'est pas consommée — sans résistance elle est intégralement conservée, transférée à la bobine puis restituée."
+    correct_feedback: "La prédiction RC ne s'applique pas ici : la bobine renvoie l'énergie plutôt que de la laisser s'annuler, donc $u_C(t)$ oscille au lieu de décroître vers 0."
+    solution: |
+      Le modèle RC prévoit $u_C(t) = U_0 e^{-t/\tau}$, une décroissance
+      monotone qui ne change jamais de signe.
+      Le circuit LC obéit à $L\ddot{q} + q/C = 0$, dont la solution est un
+      cosinus : $u_C(t)$ change de signe périodiquement.
+      Les deux modèles sont physiquement différents car la bobine (absente
+      du circuit RC) restitue l'énergie au lieu de la dissiper.
+
+  - id: RLC-R0-3
+    rung: "R0"
+    difficulty_level: 1
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      On observe la trace réelle de $u_C(t)$ pour un circuit condensateur
+      + bobine (résistance négligeable) : elle oscille indéfiniment, sans
+      jamais s'arrêter à zéro.
+      Quelle affirmation explique correctement pourquoi cette trace diffère
+      d'une décharge de condensateur à travers une résistance (circuit RC) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Contrairement à la résistance, qui dissipe l'énergie, la bobine l'emmagasine puis la renvoie vers le condensateur, ce qui inverse le sens de $u_C$ au lieu de la laisser s'annuler."
+        correct: true
+      - id: B
+        text: "Il n'y a pas de différence réelle : les deux circuits produisent la même décroissance exponentielle vers 0, seule l'échelle de temps change."
+        correct: false
+        misconception: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+        also_reveals: []
+        feedback: "Les deux comportements sont qualitativement différents : la décharge RC ne change jamais de signe, alors que $u_C(t)$ dans le circuit LC oscille — elle traverse zéro et repart dans l'autre sens."
+      - id: C
+        text: "La différence vient du fait qu'il manque une résistance : sans elle, aucun courant ne devrait circuler, donc la trace observée est anormale."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: "Le courant circule très bien sans résistance : c'est justement l'absence de dissipation qui permet à l'oscillation de durer indéfiniment. La trace observée est la trace normale du cas idéal."
+      - id: D
+        text: "La différence vient du fait que, dans le circuit LC, l'énergie est stockée deux fois plus qu'en RC."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "L'énergie initiale est la même dans les deux montages ($E_0 = \\frac12 CU_0^2$) ; ce qui diffère, c'est ce qui lui arrive ensuite — dissipée (RC) ou échangée avec la bobine (LC)."
+    correct_feedback: "La bobine est l'élément qui change tout : elle ne dissipe pas comme R, elle stocke puis restitue, ce qui transforme une décharge monotone en oscillation."
+    solution: |
+      Dans le circuit RC : $u_C(t) = U_0e^{-t/\tau}$, une exponentielle qui
+      ne change jamais de signe — l'énergie initiale $\frac12 CU_0^2$ est
+      entièrement dissipée par effet Joule dans R.
+      Dans le circuit LC : $L\ddot{q} + q/C = 0$ donne $u_C(t)$ sinusoïdale
+      — l'énergie oscille entre $E_C$ et $E_L$ sans jamais être dissipée.
+      La bobine, absente du circuit RC, est la cause structurelle de cette
+      différence.
+
+  # ── R7 completion (entretien) ──
+
+  - id: RLC-M8-4
+    rung: "R7"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, entretien, document_experimental]
+    stem: |
+      Pour illustrer l'entretien des oscillations en TP, un professeur
+      ajoute un générateur $u_G(t) = k \cdot i(t)$ en série dans le circuit
+      RLC et règle $k$ jusqu'à obtenir, à l'oscilloscope, une sinusoïde
+      d'amplitude parfaitement constante.
+      Un élève interprète : « Le générateur a imposé sa propre fréquence
+      de sortie au circuit, comme un GBF en régime forcé. »
+      Cette interprétation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non. Le générateur annule seulement l'amortissement (réglage $k = R$) ; la fréquence observée reste $1/T_0$, fixée par $L$ et $C$, comme en oscillations libres."
+        correct: true
+      - id: B
+        text: "Oui : dès qu'un générateur externe est branché, le régime devient nécessairement un régime forcé imposé de l'extérieur."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: []
+        feedback: "Ce générateur d'entretien n'impose rien : $u_G = k\\,i$ est proportionnel au courant du circuit lui-même. Il compense la perte Joule ; il ne fixe pas de fréquence extérieure."
+      - id: C
+        text: "Non, mais parce que c'est la résistance $R$ qui impose la fréquence observée dans ce montage."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "$R$ n'a jamais fixé la fréquence, ni seule ni via ce montage : la fréquence est $1/T_0 = 1/(2\\pi\\sqrt{LC})$, déterminée uniquement par $L$ et $C$."
+      - id: D
+        text: "Non, car sans le générateur les oscillations n'existeraient pas du tout : c'est lui qui crée le phénomène oscillatoire."
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: [mc.physics.rlc_serie.resistance-entretient-oscillations]
+        feedback: "Les oscillations existent déjà sans générateur (régime pseudo-périodique amorti) ; le générateur ne les crée pas, il compense simplement la perte due à $R$ pour empêcher qu'elles s'éteignent."
+    correct_feedback: "$k = R$ annule le terme dissipatif $(R-k)\\dot{q}$ dans l'ODE : le circuit redevient l'oscillateur libre $L\\ddot{q} + q/C = 0$, à la fréquence propre $1/T_0$, indépendante de $k$."
+    solution: |
+      Avec le générateur, l'ODE est $L\ddot q + (R-k)\dot q + q/C = 0$.
+      Amplitude constante à l'oscilloscope $\Leftrightarrow$ $(R-k) = 0$
+      $\Leftrightarrow$ $k = R$.
+      L'équation redevient $L\ddot q + q/C = 0$ : c'est l'oscillateur libre,
+      de fréquence $1/T_0 = 1/(2\pi\sqrt{LC})$.
+      $k$ ne fixe aucune fréquence : il ne fait qu'annuler l'amortissement.
+
+  # ── R8 bac-style × 2 — RLC-R8-2, RLC-R8-3 ──
+
+  - id: RLC-R8-2
+    rung: "R8"
+    difficulty_level: 4
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, bac_style]
+    stem: |
+      Un circuit RLC série ($L = 0{,}2\,\text{H}$, $C = 20\,\mu\text{F}$)
+      est étudié pour trois valeurs de résistance : $R_1 = 0\,\Omega$,
+      $R_2 = 15\,\Omega$, $R_3 = 300\,\Omega$. On enregistre
+      l'oscillogramme de $u_C(t)$ dans chaque cas.
+      (a) Identifier le régime observé pour chacune des trois valeurs de
+      $R$.
+      (b) Calculer la période propre $T_0$ du circuit.
+      (c) Pour $R_2$, on mesure sur l'oscillogramme deux maxima consécutifs
+      à $t_1 = 2{,}0\,\text{ms}$ et $t_2 = 14{,}0\,\text{ms}$. Comparer la
+      pseudo-période mesurée à $T_0$.
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          (a) $R_1$ : régime périodique ; $R_2$ : régime
+          pseudo-périodique ; $R_3$ : régime apériodique.
+          (b) $T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{0{,}2 \times 20 \times
+          10^{-6}} = 2\pi \times 2{,}0 \times 10^{-3} \approx
+          12{,}6\,\text{ms}$.
+          (c) $T = t_2 - t_1 = 12{,}0\,\text{ms} \approx T_0
+          (12{,}6\,\text{ms})$ : écart d'environ 5 %, cohérent avec un
+          amortissement faible pour $R_2$.
+        correct: true
+      - id: B
+        text: |
+          (a) $R_1$ : périodique ; $R_2$ : pseudo-périodique ; $R_3$ :
+          apériodique.
+          (b) $T_0 = 2\pi\sqrt{R_2 C} = 2\pi\sqrt{15 \times 20 \times
+          10^{-6}} \approx 108{,}8\,\text{ms}$.
+          (c) $T$ mesuré ($12{,}0\,\text{ms}$) est très inférieur à ce
+          $T_0$ : l'amortissement serait donc très fort.
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "$T_0$ ne dépend pas de $R$. $\\sqrt{RC}$ est la constante de temps d'un circuit RC, pas la période propre d'un RLC. La bonne formule est $T_0 = 2\\pi\\sqrt{LC} \\approx 12{,}6\\,\\text{ms}$, indépendante de $R_2$."
+      - id: C
+        text: |
+          (a) $R_1$ : périodique ; $R_2$ : pseudo-périodique ; $R_3$ :
+          apériodique.
+          (b) La période dépend de $R$ : plus $R$ augmente, plus la
+          période diminue, donc chaque courbe a sa propre fréquence
+          propre.
+          (c) La pseudo-période mesurée pour $R_2$ ($12{,}0\,\text{ms}$)
+          est plus courte que $T_0$ à $R = 0$ ($12{,}6\,\text{ms}$)
+          précisément parce que $R_2 > 0$ accélère les oscillations.
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "$R$ ne fixe pas la fréquence : elle est fixée uniquement par $L$ et $C$ ($T_0 = 2\\pi\\sqrt{LC}$). L'écart de $0{,}6\\,\\text{ms}$ entre $T$ mesuré et $T_0$ est une incertitude de mesure normale, pas un effet de $R$ sur la fréquence."
+      - id: D
+        text: |
+          (a) $R_1$ : périodique ; $R_2$ : pseudo-périodique ; $R_3$ :
+          apériodique.
+          (b) $T_0 = 2\pi\sqrt{LC} \approx 12{,}6\,\text{ms}$.
+          (c) $T$ mesuré doit être exactement égal à $T_0$ ; l'écart de
+          $0{,}6\,\text{ms}$ est une erreur de lecture à corriger sur le
+          graphe.
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "$T \\approx T_0$ n'est qu'une approximation valable pour un faible amortissement, pas une égalité exacte. Un écart de quelques pourcents entre $T$ mesuré et $T_0$ calculé est physiquement attendu, ce n'est pas une erreur à corriger."
+    correct_feedback: |
+      $T_0 = 2\pi\sqrt{LC} \approx 12{,}6\,\text{ms}$ ne dépend que de $L$
+      et $C$. La pseudo-période mesurée pour $R_2$ ($12{,}0\,\text{ms}$)
+      en est proche : cohérent avec un amortissement faible. $R$ fixe
+      seulement le régime observé et la vitesse d'amortissement, pas la
+      fréquence.
+    solution: |
+      (a) $R_1 = 0$ : aucune dissipation → régime périodique (sinusoïde
+      pure).
+      $R_2 = 15\,\Omega$ modérée → oscillations amorties →
+      pseudo-périodique.
+      $R_3 = 300\,\Omega$ grande → pas d'oscillation → apériodique.
+      (b) $LC = 0{,}2 \times 20 \times 10^{-6} = 4{,}0 \times
+      10^{-6}\,\text{s}^2$, $\sqrt{LC} = 2{,}0 \times 10^{-3}\,\text{s}$,
+      $T_0 = 2\pi \times 2{,}0 \times 10^{-3} \approx 12{,}57\,\text{ms}$.
+      (c) $T = t_2 - t_1 = 14{,}0 - 2{,}0 = 12{,}0\,\text{ms}$.
+      Écart avec $T_0$ : $(12{,}6 - 12{,}0)/12{,}6 \approx 5\,\%$, cohérent
+      avec un amortissement faible ($R_2$ modérée).
+
+  - id: RLC-R8-3
+    rung: "R8"
+    difficulty_level: 4
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, bac_style]
+    stem: |
+      Un circuit RLC série ($L = 0{,}2\,\text{H}$, $C = 8\,\mu\text{F}$,
+      $R = 25\,\Omega$) est chargé à $U_0 = 10\,\text{V}$ puis abandonné
+      en oscillations libres (régime pseudo-périodique).
+      (a) Calculer l'énergie initiale $E_0$ stockée dans le condensateur.
+      (b) Au fil des cycles, cette énergie diminue. Expliquer pourquoi, et
+      où elle va.
+      (c) On ajoute un générateur d'entretien $u_G = k \cdot i$. Donner la
+      valeur de $k$ qui maintient des oscillations d'amplitude constante
+      à $T_0$, et calculer $T_0$.
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          (a) $E_0 = \tfrac12 C U_0^2 = 0{,}5 \times 8\times10^{-6}
+          \times 100 = 4{,}0 \times 10^{-4}\,\text{J}$.
+          (b) $E$ diminue car $R$ dissipe par effet Joule ($P = Ri^2 >
+          0$) ; cette énergie est convertie en chaleur, pas détruite.
+          L'échange $E_C \leftrightarrow E_L$ continue à chaque cycle,
+          mais leur somme décroît.
+          (c) $k = R = 25\,\Omega$ ; $T_0 = 2\pi\sqrt{LC} =
+          2\pi\sqrt{0{,}2 \times 8\times10^{-6}} \approx 7{,}9\,\text{ms}$,
+          indépendante de $k$.
+        correct: true
+      - id: B
+        text: |
+          (a) $E_0 = 4{,}0 \times 10^{-4}\,\text{J}$.
+          (b) $E$ diminue car le condensateur et la bobine consomment
+          eux-mêmes de l'énergie à chaque cycle.
+          (c) $k = R = 25\,\Omega$ ; $T_0 \approx 7{,}9\,\text{ms}$.
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "Ni C ni L ne consomment d'énergie : ils la stockent puis la restituent (échange conservatif). Seule R dissipe réellement de l'énergie, par effet Joule."
+      - id: C
+        text: |
+          (a) $E_0 = 4{,}0 \times 10^{-4}\,\text{J}$.
+          (b) $E$ diminue car $R$ dissipe par effet Joule.
+          (c) Le générateur impose une fréquence propre différente de
+          $T_0$, qui dépend de la valeur choisie pour $k$.
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: []
+        feedback: "Avec $k = R$, l'ODE redevient $L\\ddot{q} + q/C = 0$ : la fréquence des oscillations entretenues reste $1/T_0 = 1/(2\\pi\\sqrt{LC})$, indépendante de $k$. Le générateur ne fixe aucune fréquence propre."
+      - id: D
+        text: |
+          (a) $E_0 = 4{,}0 \times 10^{-4}\,\text{J}$.
+          (b) L'énergie perdue par R finit par se retrouver stockée
+          définitivement dans la bobine, sous forme magnétique, sans
+          jamais revenir vers le condensateur.
+          (c) $k = R = 25\,\Omega$ ; $T_0 \approx 7{,}9\,\text{ms}$.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "La bobine n'est pas un réservoir final : l'échange $E_C \\leftrightarrow E_L$ se poursuit à chaque cycle jusqu'à extinction. Ce qui quitte définitivement le système, c'est l'énergie dissipée par R en chaleur — pas l'énergie stockée dans L."
+    correct_feedback: |
+      $E_0 = \tfrac12 CU_0^2 = 4{,}0\times10^{-4}\,\text{J}$ ; elle
+      décroît par dissipation Joule dans $R$ (pas par consommation de C
+      ou L) ; le générateur $k = R$ compense exactement cette perte sans
+      changer $T_0 = 2\pi\sqrt{LC} \approx 7{,}9\,\text{ms}$.
+    solution: |
+      (a) $E_0 = \tfrac12 C U_0^2 = 0{,}5 \times 8\times10^{-6} \times
+      10^2 = 4{,}0\times10^{-4}\,\text{J}$.
+      (b) Bilan : $\dfrac{dE}{dt} = -Ri^2 \le 0$. L'énergie quitte le
+      circuit sous forme de chaleur dans $R$ (effet Joule) ; à l'intérieur
+      de chaque cycle, $E_C$ et $E_L$ continuent de s'échanger, mais leur
+      somme diminue.
+      (c) Générateur d'entretien : $u_G = k\,i$ ; ODE :
+      $L\ddot q + (R-k)\dot q + q/C = 0$.
+      Amplitude constante $\Leftrightarrow$ $k = R = 25\,\Omega$.
+      $LC = 0{,}2 \times 8\times10^{-6} = 1{,}6\times10^{-6}\,\text{s}^2$,
+      $T_0 = 2\pi\sqrt{1{,}6\times10^{-6}} \approx 2\pi \times
+      1{,}265\times10^{-3} \approx 7{,}95\times10^{-3}\,\text{s} \approx
+      7{,}9\,\text{ms}$.
+
+  # ── R9 fresh variation × 2 — RLC-R9-1, RLC-R9-2 ──
+
+  - id: RLC-R9-1
+    rung: "R9"
+    difficulty_level: 4
+    habilete: resolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Deux circuits RLC série sont comparés :
+      - Circuit A : $L_A = 0{,}4\,\text{H}$, $C_A = 4\,\mu\text{F}$,
+        $R_A = 10\,\Omega$.
+      - Circuit B : $L_B = 0{,}1\,\text{H}$, $C_B = 16\,\mu\text{F}$,
+        $R_B = 60\,\Omega$.
+      Les deux circuits sont chargés puis abandonnés en oscillations
+      libres. Comparer (i) leurs périodes propres $T_{0,A}$ et $T_{0,B}$,
+      et (ii) la rapidité de l'amortissement de leurs oscillations.
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_{0,A} = T_{0,B} \\approx 7{,}9\\,\\text{ms}$ (car $L_AC_A = L_BC_B = 1{,}6\\times10^{-6}\\,\\text{s}^2$) ; le circuit B s'amortit plus vite, car $R_B > R_A$."
+        correct: true
+      - id: B
+        text: "$T_{0,B} < T_{0,A}$, car la résistance $R_B$ plus grande raccourcit la période propre du circuit B."
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: "$T_0 = 2\\pi\\sqrt{LC}$ ne dépend pas de R. Comme $L_AC_A = L_BC_B$, les deux périodes propres sont rigoureusement égales, quelle que soit la valeur de $R$."
+      - id: C
+        text: "Le circuit B oscille avec une période plus courte, car $R_B$ plus grande accélère les oscillations ; les deux circuits s'amortissent à la même vitesse, car $R$ n'affecte que la fréquence."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: []
+        feedback: "C'est l'inverse du rôle de R : elle gouverne l'amortissement (le circuit B, plus résistif, s'amortit plus vite), pas la fréquence. La période propre reste identique dans les deux circuits."
+      - id: D
+        text: "$T_{0,A} \\neq T_{0,B}$ car $L_A \\neq L_B$ et $C_A \\neq C_B$, même si leur produit $LC$ est identique."
+        correct: false
+        misconception: null
+        also_reveals: []
+        feedback: "Seul le produit $LC$ intervient dans $T_0 = 2\\pi\\sqrt{LC}$, pas $L$ et $C$ séparément. Deux circuits de $L$ et $C$ différents mais de même produit $LC$ ont exactement la même période propre."
+    correct_feedback: |
+      $T_0$ ne dépend que du produit $LC$ : $L_AC_A =
+      0{,}4\times4\times10^{-6} = L_BC_B = 0{,}1\times16\times10^{-6} =
+      1{,}6\times10^{-6}\,\text{s}^2$, donc $T_{0,A} = T_{0,B} \approx
+      7{,}9\,\text{ms}$. Seule $R$ diffère (10 Ω contre 60 Ω) : le
+      circuit B s'amortit plus vite.
+    solution: |
+      $L_A C_A = 0{,}4 \times 4\times10^{-6} = 1{,}6\times10^{-6}\,\text{s}^2$.
+      $L_B C_B = 0{,}1 \times 16\times10^{-6} = 1{,}6\times10^{-6}\,\text{s}^2$.
+      Produits identiques $\Rightarrow$ $T_{0,A} = T_{0,B} =
+      2\pi\sqrt{1{,}6\times10^{-6}} \approx 7{,}95\,\text{ms}$.
+      $R$ n'entre pas dans $T_0$ : elle ne fixe que le taux d'amortissement.
+      $R_B = 60\,\Omega > R_A = 10\,\Omega$ $\Rightarrow$ dissipation
+      Joule plus forte dans B $\Rightarrow$ B s'amortit plus vite, à
+      fréquence identique.
+
+  - id: RLC-R9-2
+    rung: "R9"
+    difficulty_level: 4
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Sur l'oscillogramme d'un circuit RLC série ($L = 0{,}3\,\text{H}$,
+      $C = 3\,\mu\text{F}$), on repère un maximum de $u_C$ à
+      $t_1 = 1{,}0\,\text{ms}$ avec $u_{C,1} = 5{,}0\,\text{V}$, puis le
+      maximum suivant à $t_2 = 7{,}0\,\text{ms}$ avec $u_{C,2} =
+      3{,}0\,\text{V}$ (amplitude plus faible, à cause de
+      l'amortissement). On admet qu'à un maximum de $u_C$ le courant est
+      quasiment nul ($i \approx 0$).
+      (a) Calculer la pseudo-période mesurée $T$ et la comparer à
+      $T_0 = 2\pi\sqrt{LC}$.
+      (b) Calculer $E_{C,1} = \tfrac12 C u_{C,1}^2$ et $E_{C,2} = \tfrac12
+      C u_{C,2}^2$, et interpréter leur différence.
+    type: mcq
+    choices:
+      - id: A
+        text: "(a) $T = t_2 - t_1 = 6{,}0\\,\\text{ms} \\approx T_0 = 5{,}96\\,\\text{ms}$ (écart $\\approx$ 0,7 %, cohérent avec un faible amortissement). (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$, $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$ ; la différence ($2{,}4\\times10^{-5}\\,\\text{J}$) a été dissipée par effet Joule dans $R$ entre $t_1$ et $t_2$."
+        correct: true
+      - id: B
+        text: "(a) $T$ doit être exactement égal à $T_0 = 5{,}96\\,\\text{ms}$ ; la valeur mesurée ($6{,}0\\,\\text{ms}$) est une erreur d'expérience à corriger. (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$, $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$."
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: []
+        feedback: "$T \\approx T_0$ n'est qu'une approximation pour un faible amortissement, pas une égalité exacte. Un écart de quelques pourcents entre la mesure et le calcul est normal, ce n'est pas une erreur à corriger."
+      - id: C
+        text: "(a) $T = 6{,}0\\,\\text{ms} \\approx T_0$. (b) La différence d'énergie ($2{,}4\\times10^{-5}\\,\\text{J}$) a simplement disparu : elle ne peut être ni mesurée ni expliquée physiquement."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: "Cette énergie n'a pas disparu : elle a été convertie en chaleur dans $R$ par effet Joule entre $t_1$ et $t_2$. C'est un bilan parfaitement explicable et quantifiable."
+      - id: D
+        text: "(a) $T = 6{,}0\\,\\text{ms} \\approx T_0$. (b) $E_{C,1}$ et $E_{C,2}$ représentent l'énergie stockée dans la bobine à ces instants, car $i \\approx 0$ signifie que toute l'énergie est magnétique."
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: "C'est l'inverse : $i \\approx 0$ signifie que $E_L = \\tfrac12 Li^2 \\approx 0$, donc l'énergie du système est presque entièrement dans le condensateur à ces instants ($E_{C,1}$, $E_{C,2}$), pas dans la bobine."
+    correct_feedback: |
+      $T = 6{,}0\,\text{ms}$ est proche de $T_0 = 2\pi\sqrt{LC} \approx
+      5{,}96\,\text{ms}$ (faible amortissement) ; la perte d'énergie
+      entre les deux maxima ($2{,}4\times10^{-5}\,\text{J}$) est dissipée
+      par effet Joule dans $R$, pas détruite.
+    solution: |
+      (a) $LC = 0{,}3 \times 3\times10^{-6} = 9{,}0\times10^{-7}\,\text{s}^2$,
+      $\sqrt{LC} \approx 9{,}487\times10^{-4}\,\text{s}$,
+      $T_0 = 2\pi \times 9{,}487\times10^{-4} \approx 5{,}96\,\text{ms}$.
+      $T = t_2 - t_1 = 6{,}0\,\text{ms}$ : écart $\approx 0{,}7\,\%$, très
+      faible amortissement.
+      (b) $E_{C,1} = 0{,}5 \times 3\times10^{-6} \times 5{,}0^2 =
+      3{,}75\times10^{-5}\,\text{J}$.
+      $E_{C,2} = 0{,}5 \times 3\times10^{-6} \times 3{,}0^2 =
+      1{,}35\times10^{-5}\,\text{J}$.
+      Comme $i \approx 0$ à un maximum de $u_C$, $E_{C,i} \approx
+      E_{totale}(t_i)$.
+      $\Delta E = E_{C,1} - E_{C,2} = 2{,}4\times10^{-5}\,\text{J}$ :
+      dissipée par effet Joule dans $R$ entre $t_1$ et $t_2$, pas
+      détruite.
+
 coverage_summary:
   per_misconception:
-    mc.physics.rlc_serie.resistance-entretient-oscillations: 4   # +RLC-M1-4
-    mc.physics.rlc_serie.energie-consommee-non-conservee: 3
-    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 3
-    mc.physics.rlc_serie.T0-depend-de-R: 5                       # +RLC-M4-4, +RLC-R8-1(B)
-    mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 3
-    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 4  # +RLC-R8-1(D)
-    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 5         # +RLC-M7-4, +RLC-R8-1(C)
-    mc.physics.rlc_serie.entretien-est-regime-force: 3
-  total_items: 28
-  floor_met: true   # all 8 misconceptions ≥ 3 items (minimum is 3, for M2, M3, M5, M8)
+    # Recomputed WAVE-2: item-level counts (an item counts once per
+    # misconception if ANY of its distractors carries that misconception
+    # as its PRIMARY tag; also_reveals/dual-tag co-attributions are not
+    # counted here — see dual_tagged_distractors below). This recount
+    # corrects a WAVE-1 undercount that ignored cross-family primary tags
+    # (e.g. RLC-M8-2's distractor D is primary-tagged to
+    # resistance-entretient-oscillations but was not previously counted
+    # toward it; same for RLC-M1-1/M1-3's plus-de-R-oscille-plus-vite tags).
+    mc.physics.rlc_serie.resistance-entretient-oscillations: 7
+    # M1-1, M1-2, M1-3, M8-2, M1-4, +RLC-R0-1, +RLC-R0-3
+    mc.physics.rlc_serie.energie-consommee-non-conservee: 7
+    # M2-1, M2-2, M2-3, M7-3, +RLC-R0-1, +RLC-R8-3, +RLC-R9-2
+    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 8
+    # M1-1, M1-3, M3-1, M3-2, M3-3, +RLC-M8-4, +RLC-R8-2, +RLC-R9-1
+    mc.physics.rlc_serie.T0-depend-de-R: 9
+    # M3-1, M4-1, M4-2, M4-3, M5-3, M4-4, R8-1, +RLC-R8-2, +RLC-R9-1
+    mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 6
+    # M5-1, M5-2, M5-3, M6-3, +RLC-R8-2, +RLC-R9-2
+    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 4
+    # M6-1, M6-2, M6-3, R8-1  (no WAVE-2 addition)
+    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 9
+    # M1-2, M2-1, M7-1, M7-2, M7-3, M7-4, R8-1, +RLC-R8-3, +RLC-R9-2
+    mc.physics.rlc_serie.entretien-est-regime-force: 6
+    # M3-3, M8-1, M8-2, M8-3, +RLC-M8-4, +RLC-R8-3
+    mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc: 3
+    # NEW (WAVE-2): +RLC-R0-1, +RLC-R0-2, +RLC-R0-3 — covers the R0 accroche's
+    # naive "it discharges like RC" prediction, not previously in inventory.
+  total_items: 36
+  floor_met: true   # all 9 misconceptions ≥ 3 items (minimum is 3, for cas-amorti-... and the new confond-oscillation-avec-decharge-rc)
   habilete_mix:
     # Authoritative counts: derived from each item's own `habilete:` field.
-    utilisation: 12
-    # M1-1, M1-2, M2-1, M2-2, M3-1, M4-1, M4-2, M7-1, M7-2  (original 9)
-    # + M1-4 (regime recognition), M4-4 (T₀ direct compute), M7-4 (which stores what)
-    resolution: 11
-    # M1-3, M2-3, M3-3, M4-3, M6-1, M6-2, M6-3, M8-1, M8-2, M8-3  (original 10)
-    # + RLC-R8-1 (bac-style R8)
-    application_experimentale: 5
-    # M3-2, M5-1, M5-2, M5-3, M7-3
+    utilisation: 15
+    # 12 (WAVE-1 total) + RLC-R0-1, RLC-R0-2, RLC-R0-3
+    resolution: 14
+    # 11 (WAVE-1 total) + RLC-R8-2, RLC-R8-3, RLC-R9-1
+    application_experimentale: 7
+    # 5 (WAVE-1 total) + RLC-M8-4, RLC-R9-2
     percentages:
-      utilisation: "42.9 %"        # 12/28
-      resolution: "39.3 %"         # 11/28
-      application_experimentale: "17.9 %"   # 5/28
+      utilisation: "41.7 %"        # 15/36
+      resolution: "38.9 %"         # 14/36
+      application_experimentale: "19.4 %"   # 7/36
     target:
       utilisation: "~50 %"
       resolution: "~35 %"
       application_experimentale: "~15 %"
     note: >
-      Adding the 3 pure Utilisation items moves the mix from 37.5 / 45.8 / 16.7 %
-      to 42.9 / 39.3 / 17.9 %. Utilisation rises toward the 50 % target; Résolution
-      falls from 45.8 % toward 35 %. The gap from the target is inherent to the
-      misconception inventory (M6 and M8 are Résolution-heavy by structural necessity —
-      establishing ODEs and the entretien k=R derivation have no low-floor
-      Utilisation form). Application expérimentale sits at 17.9 %, just above the
-      ~15 % target. A further shift toward 50/35/15 would require padding or weakening
-      the M6/M8 coverage, which would violate the ≥3-per-misconception discipline.
-      Flagged for the editorial gate.
+      WAVE-2 added 3 R0 items (utilisation, lighter-check per spec), 1 R7
+      item (application_experimentale, TP framing), 2 R8 items (resolution,
+      bac-style), 2 R9 items (resolution + application_experimentale,
+      fresh variations). The mix barely moved (42.9/39.3/17.9 → 41.7/38.9/19.4)
+      because the ramp gap being closed (R0, R7, R8, R9) happened to need a
+      mix close to the existing one. The same structural note from WAVE-1
+      still applies: further movement toward 50/35/15 would require padding
+      or weakening M6/M8-flavoured coverage. Flagged for the editorial gate.
 
   ramp_coverage:
-    R0: 0
+    # Recomputed WAVE-2 from each item's own `rung:` field (corrects two
+    # WAVE-1 miscounts: RLC-R8-1 is rung R8 not R2; RLC-M6-3 is rung R5 not
+    # R4; RLC-M4-3 is rung R2 not R6 — both were double-counted or
+    # misfiled in the prior summary's parenthetical notes).
+    R0: 3   # RLC-R0-1, RLC-R0-2, RLC-R0-3   (NEW — was 0)
     R1: 5   # M2-1, M2-2, M7-1, M7-2, M7-4
-    R2: 5   # M4-1, M4-2, M4-3, M4-4, RLC-R8-1 (placed R8 not R2 — see R8 count)
+    R2: 4   # M4-1, M4-2, M4-3, M4-4
     R3: 4   # M1-1, M1-2, M1-3, M3-1
-    R4: 5   # M2-3, M3-3, M5-1, M6-3(*), M1-4
+    R4: 4   # M2-3, M3-3, M5-1, M1-4
     R5: 3   # M6-1, M6-2, M6-3
-    R6: 5   # M3-2, M5-2, M5-3, M7-3, M4-3(*)
-    R7: 3   # M8-1, M8-2
-    R8: 1   # RLC-R8-1
-    R9: 1   # M8-3
+    R6: 4   # M3-2, M5-2, M5-3, M7-3
+    R7: 3   # M8-1, M8-2, RLC-M8-4          (was 2)
+    R8: 3   # RLC-R8-1, RLC-R8-2, RLC-R8-3  (was 1)
+    R9: 3   # M8-3, RLC-R9-1, RLC-R9-2      (was 1)
     note: >
-      (*) RLC-M6-3 is tagged R5; RLC-M4-3 is tagged R2 — counts are approximate,
-      each item's rung field is authoritative. R8 now has 1 item (RLC-R8-1);
-      the ramp summit is covered.
+      All rung counts above are exact item tallies by each item's own
+      `rung:` field (28 original + 8 WAVE-2 = 36, sum checks out:
+      3+5+4+4+4+3+4+3+3+3 = 36). The ramp floor (R0, R7, R8, R9 → 3 each)
+      is now met across the whole ramp.
 
   dual_tagged_distractors:
     - item: RLC-M3-1
@@ -1568,3 +2069,19 @@ coverage_summary:
         - mc.physics.rlc_serie.T0-depend-de-R
         - mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
       note: "M4↔M6: the bac-style stem's wrong choice B bundles both T₀-contains-R (M4) and over-generalised closed-form (M6)."
+
+    - item: RLC-R0-2
+      choice: D
+      text: "u_C décroît vers 0 et s'y stabilise, car l'énergie a été totalement consommée."
+      attributes_to:
+        - mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+        - mc.physics.rlc_serie.energie-consommee-non-conservee
+      note: "NEW↔M2: the 'stabilises at 0' claim (RC-decay model) is bundled with the reasoning that gets it there ('energy consumed'), reaching both misconceptions at once."
+
+    - item: RLC-M8-4
+      choice: D
+      text: "Sans le générateur les oscillations n'existeraient pas du tout : c'est lui qui crée le phénomène."
+      attributes_to:
+        - mc.physics.rlc_serie.entretien-est-regime-force
+        - mc.physics.rlc_serie.resistance-entretient-oscillations
+      note: "M8↔M1: believing an active external element is required to create oscillation (rather than merely compensate a loss) is the generator-flavoured cousin of the R-creates-oscillation belief (M1)."
