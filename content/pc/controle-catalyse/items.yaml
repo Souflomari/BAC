@@ -301,3 +301,614 @@ items:
       d'hydrogène sans charge, n'a aucune affinité pour l'eau mais se mêle aux
       graisses : elle est **hydrophobe**. La queue plonge dans le gras, la tête
       reste dans l'eau — d'où le lavage.
+
+  # ── R0 : lente ≠ limitée (vitesse vs avancement) ──────────────────────────
+  - id: CTC-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Le parfumeur du R0 affirme que son estérification est « lente » ET
+      « limitée ». Que désignent précisément ces deux mots ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux mots disent la même chose : une réaction lente est nécessairement limitée, et réciproquement."
+        correct: false
+        feedback: >
+          Vitesse et avancement final sont deux propriétés indépendantes.
+          Une réaction peut être lente ET totale (la saponification, vue au
+          rung R4) ou rapide ET limitée : rien n'impose qu'elles aillent
+          ensemble.
+      - id: B
+        text: "« Lente » décrit la vitesse (plusieurs jours pour atteindre l'état final) ; « limitée » décrit l'avancement final ($\\tau \\approx 2/3$, jamais $\\tau = 1$) — deux caractéristiques indépendantes."
+        correct: true
+      - id: C
+        text: "« Limitée » signifie que la réaction met longtemps à démarrer ; « lente » signifie qu'elle n'ira jamais jusqu'au bout."
+        correct: false
+        feedback: >
+          Les définitions sont inversées. « Lente » concerne le TEMPS pour
+          atteindre l'état final (une question de vitesse), pas le fait de
+          démarrer ; « limitée » concerne la POSITION de cet état final (un
+          avancement $\tau \approx 2/3$), pas un délai de démarrage.
+      - id: D
+        text: "« Lente » et « limitée » décrivent toutes les deux le rendement final de la réaction."
+        correct: false
+        feedback: >
+          Seule « limitée » concerne le rendement final (l'avancement
+          atteint). « Lente » est un renseignement sur le TEMPS nécessaire
+          pour y arriver — une question de vitesse, pas de rendement.
+    correct_feedback: >
+      « Lente » = une question de vitesse (le temps pour atteindre l'état
+      final) ; « limitée » = une question d'avancement (l'état final
+      lui-même, plafonné à $\tau \approx 2/3$). Les deux idées sont
+      indépendantes : ce chapitre va justement montrer qu'on peut agir sur
+      l'une sans agir sur l'autre.
+    solution: |
+      Rien n'oblige une réaction lente à être limitée, ni une réaction
+      limitée à être lente : ce sont deux axes différents (le temps d'un
+      côté, l'avancement final de l'autre). Le chapitre le confirmera : le
+      catalyseur (R2) agit sur la vitesse sans toucher à l'avancement final,
+      tandis que le changement de réactif (R1) agit sur l'avancement final
+      et, en prime, sur la vitesse.
+
+  # ── R0 : pourquoi τ plafonne (réaction inverse, pas manque de réactif) ────
+  - id: CTC-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      D'après le R0, pourquoi le parfumeur ne convertit-il qu'environ deux
+      tiers de son acide éthanoïque en ester, même en attendant
+      indéfiniment ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que l'acide éthanoïque est le réactif limitant : il n'y en avait que les deux tiers d'un équivalent au départ."
+        correct: false
+        feedback: >
+          Rien dans l'énoncé n'indique un manque de réactif au départ : le
+          plafond à $\tau \approx 2/3$ n'est pas une question de quantités
+          initiales, mais du fait que la réaction inverse (l'hydrolyse)
+          s'installe dès que de l'ester et de l'eau apparaissent.
+      - id: B
+        text: "Parce que la réaction est trop lente pour aller plus loin en un temps raisonnable."
+        correct: false
+        feedback: >
+          L'énoncé précise « même en attendant indéfiniment » : le plafond
+          ne vient donc pas d'un manque de temps. C'est confondre, encore,
+          la vitesse (lente) et l'avancement final (limité) — deux choses
+          différentes.
+      - id: C
+        text: "Parce que la réaction inverse (l'hydrolyse de l'ester) se produit en même temps que l'estérification et ronge une partie de l'ester formé."
+        correct: true
+      - id: D
+        text: "Parce qu'une partie de l'ester formé s'évapore au fur et à mesure, ce qui limite la quantité récupérée."
+        correct: false
+        feedback: >
+          Rien n'indique une perte physique par évaporation. La limitation
+          vient de la chimie de l'équilibre — la réaction inverse — pas
+          d'une perte matérielle du produit.
+    correct_feedback: >
+      La double flèche dit tout : l'hydrolyse (réaction inverse) redémarre
+      dès que l'ester et l'eau apparaissent, et ronge une partie de l'ester
+      formé, jusqu'à ce que les deux vitesses s'égalent à $\tau \approx 2/3$.
+    solution: |
+      L'estérification et l'hydrolyse se déroulent simultanément. Au fur et
+      à mesure que l'ester se forme, l'hydrolyse le décompose en partie ;
+      l'équilibre s'installe quand les deux vitesses s'égalent, bien avant
+      que tout l'acide n'ait réagi — d'où $\tau \approx 2/3$, quel que soit
+      le temps d'attente.
+
+  # ── R0 : la double flèche = deux réactions simultanées, pas figées ───────
+  - id: CTC-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans l'équation du R0,
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$, que
+      signifie la double flèche $\rightleftharpoons$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les réactions directe (estérification) et inverse (hydrolyse) se produisent simultanément ; l'équilibre est atteint quand leurs vitesses s'égalent, sans que ni l'une ni l'autre ne s'arrête."
+        correct: true
+      - id: B
+        text: "Elle signifie que la réaction peut être inversée seulement si on chauffe fortement le mélange."
+        correct: false
+        feedback: >
+          Aucun déclencheur extérieur n'est nécessaire : les deux réactions
+          ont lieu spontanément et en même temps, dès que les réactifs sont
+          mélangés — pas seulement sous l'effet d'un chauffage.
+      - id: C
+        text: "Elle signifie que la réaction directe s'arrête complètement une fois l'équilibre atteint, et que seule l'hydrolyse continue ensuite."
+        correct: false
+        feedback: >
+          À l'équilibre, les DEUX réactions continuent — elles ne
+          s'arrêtent jamais — mais à des vitesses devenues égales, si bien
+          que les quantités n'évoluent plus globalement.
+      - id: D
+        text: "Elle signifie simplement qu'on pourrait aussi écrire l'équation à l'envers, mais dans les faits une seule réaction a lieu."
+        correct: false
+        feedback: >
+          Ce n'est pas une simple convention d'écriture : les deux réactions
+          se produisent réellement et simultanément, pas une seule à la
+          fois.
+    correct_feedback: >
+      La double flèche signale deux réactions réellement simultanées ;
+      l'équilibre est l'instant où leurs vitesses deviennent égales, pas
+      l'instant où l'une des deux s'arrête.
+    solution: |
+      $\rightleftharpoons$ indique que l'estérification et l'hydrolyse ont
+      lieu en même temps, dans les deux sens, dès le mélange des réactifs.
+      L'état final n'est pas un arrêt de la réaction, mais un équilibre
+      dynamique : $v_{\text{directe}} = v_{\text{inverse}}$. Cette idée sera
+      la clé, au rung R2, pour comprendre pourquoi un catalyseur ne peut pas
+      déplacer un tel équilibre.
+
+  # ── R1 : transférer l'équation générale à un nouveau couple (rendement) ──
+  - id: CTC-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On mélange de l'anhydride éthanoïque $(CH_3CO)_2O$, en excès, avec
+      $n_0 = 0{,}30\ \text{mol}$ de propan-1-ol $C_3H_7OH$. Quelle quantité
+      d'éthanoate de propyle obtient-on, et quel est le rendement de cette
+      synthèse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$n(\\text{ester}) \\approx 0{,}20\\ \\text{mol}$ et $\\eta \\approx 67\\,\\%$, comme pour toute estérification."
+        correct: false
+        feedback: >
+          C'est appliquer le plafond de l'estérification par l'ACIDE
+          ($\tau \approx 2/3$) à une réaction qui n'est pas concernée :
+          anhydride + alcool est une réaction totale, sans équilibre, donc
+          sans ce plafond.
+      - id: B
+        text: "$n(\\text{ester}) = 0{,}30\\ \\text{mol}$, mais le rendement ne peut jamais atteindre $100\\,\\%$ car il faut toujours soustraire une fraction perdue par la réaction inverse."
+        correct: false
+        feedback: >
+          Il n'existe pas de réaction inverse ici : le sous-produit est un
+          acide carboxylique, pas de l'eau, et le carboxylate ne peut pas se
+          reformer en anhydride. Rien ne « ronge » l'ester obtenu.
+      - id: C
+        text: "On ne peut pas calculer le rendement sans connaître la quantité exacte d'anhydride introduite."
+        correct: false
+        feedback: >
+          Seule la quantité du réactif LIMITANT (ici le propan-1-ol, puisque
+          l'anhydride est en excès) fixe $n_{\text{obtenu}}$ et
+          $n_{\text{max}}$ ; la quantité exacte de l'excès n'intervient pas
+          dans le calcul du rendement.
+      - id: D
+        text: "$n(\\text{ester}) = 0{,}30\\ \\text{mol}$ et $\\eta = 100\\,\\%$ : le propan-1-ol, réactif limitant, est intégralement consommé par une réaction totale."
+        correct: true
+    correct_feedback: >
+      Anhydride + alcool est une réaction totale : le réactif limitant
+      (le propan-1-ol) est entièrement consommé, donc $n(\text{ester}) =
+      n_0 = 0{,}30\ \text{mol}$ et $\eta = 100\,\%$.
+    solution: |
+      $$(CH_3CO)_2O + C_3H_7OH \rightarrow CH_3COOC_3H_7 + CH_3COOH$$
+      L'anhydride étant en excès, le propan-1-ol est le réactif limitant et
+      la réaction étant totale, il est intégralement consommé :
+      $n(\text{ester}) = 0{,}30\ \text{mol}$. C'est aussi la quantité
+      maximale théorique, d'où $\eta = 0{,}30/0{,}30 = 100\,\%$.
+
+  # ── R2 : le catalyseur ne se consomme pas (écriture au-dessus de la flèche) ─
+  - id: CTC-11
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans l'équation de la réaction entre les ions peroxodisulfate
+      $S_2O_8^{2-}$ et les ions iodure $I^-$, catalysée par les ions
+      $Fe^{3+}$, comment doit-on faire figurer $Fe^{3+}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parmi les réactifs, avec un coefficient stœchiométrique, puisqu'il participe activement à la réaction."
+        correct: false
+        feedback: >
+          $Fe^{3+}$ participe au mécanisme mais n'est pas consommé : il
+          ressort en même quantité qu'au départ. On ne lui attribue donc pas
+          de coefficient stœchiométrique parmi les réactifs.
+      - id: B
+        text: "Au-dessus de la flèche de l'équation, jamais parmi les réactifs ni les produits : $Fe^{3+}$ intervient dans le mécanisme mais ressort intact, en même quantité et de même nature."
+        correct: true
+      - id: C
+        text: "Parmi les produits, car il est régénéré à la fin de la réaction."
+        correct: false
+        feedback: >
+          Être régénéré ne veut pas dire apparaître comme produit : la
+          quantité de $Fe^{3+}$ à la fin est la même qu'au départ, donc son
+          bilan net est nul — il n'appartient ni aux réactifs ni aux
+          produits.
+      - id: D
+        text: "Il ne doit pas apparaître du tout dans l'écriture, car un catalyseur n'intervient jamais dans la réaction chimique elle-même."
+        correct: false
+        feedback: >
+          Un catalyseur participe bel et bien au déroulement de la
+          transformation (ici, par deux étapes rapides qui, additionnées,
+          redonnent l'équation bilan) — c'est justement pour ça qu'on
+          l'indique, au-dessus de la flèche.
+    correct_feedback: >
+      Un catalyseur n'est ni réactif ni produit puisqu'il ressort intact :
+      on l'écrit donc au-dessus de la flèche, jamais dans le bilan matière.
+    solution: |
+      $Fe^{3+}$ accélère la réaction par deux étapes rapides qui,
+      additionnées, redonnent exactement l'équation bilan entre $S_2O_8^{2-}$
+      et $I^-$ — sans que $Fe^{3+}$ (régénéré) n'y apparaisse. Il se note donc
+      au-dessus de la flèche : ni réactif, ni produit.
+
+  # ── R2 : le rôle sélectif (accélérer une réaction, pas toutes) ───────────
+  - id: CTC-12
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un mélange de réactifs peut, en principe, évoluer selon deux réactions
+      concurrentes A et B, menant à deux produits différents. On y ajoute un
+      catalyseur qui n'accélère que la réaction A. Quel est l'effet de ce
+      catalyseur sur le système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucun effet particulier : un catalyseur accélère nécessairement toutes les réactions possibles du mélange, pas une seule."
+        correct: false
+        feedback: >
+          C'est justement le contraire du rôle sélectif : un catalyseur
+          donné peut n'accélérer qu'une seule réaction parmi plusieurs
+          possibles, sans toucher aux autres.
+      - id: B
+        text: "Il empêche complètement la réaction B de se produire, en consommant les réactifs qui y mèneraient."
+        correct: false
+        feedback: >
+          Un catalyseur n'est jamais consommé, et n'empêche pas une réaction
+          concurrente de se produire : il se contente de ne pas
+          l'accélérer. La réaction B reste possible, simplement plus lente
+          que A.
+      - id: C
+        text: "Il joue un rôle sélectif : il oriente le système vers le produit de la réaction A, sans accélérer la réaction concurrente B."
+        correct: true
+      - id: D
+        text: "Il déplace l'équilibre du système en faveur du produit de la réaction A."
+        correct: false
+        feedback: >
+          Un catalyseur ne déplace jamais un équilibre, même dans un rôle
+          sélectif : il multiplie les vitesses directe et inverse de la
+          réaction qu'il accélère par le même facteur. La sélectivité
+          oriente entre réactions concurrentes, elle ne déplace pas une
+          position d'équilibre.
+    correct_feedback: >
+      C'est le rôle sélectif du catalyseur : accélérer une réaction précise
+      parmi plusieurs possibles, orientant ainsi le système vers son produit,
+      sans agir sur les réactions concurrentes.
+    solution: |
+      Le programme reconnaît deux rôles à un catalyseur : accélérateur (il
+      augmente une vitesse) et sélectif (il choisit LAQUELLE des réactions
+      possibles accélérer). Ici, en n'accélérant que A, il favorise
+      l'obtention du produit de A — sans consommer de réactif, sans bloquer
+      B, et sans déplacer aucun équilibre.
+
+  # ── R3 : spécificité enzymatique ≠ classification homogène/hétérogène ────
+  - id: CTC-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      L'amylase salivaire catalyse l'hydrolyse de l'amidon en sucres plus
+      petits, mais elle est incapable de catalyser l'hydrolyse d'un ester
+      comme l'éthanoate d'éthyle. Comment expliquer cette différence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une enzyme est extrêmement spécifique : sa forme géométrique ne s'ajuste qu'à un seul type de substrat (ici l'amidon) — une clé qui n'ouvre qu'une seule serrure."
+        correct: true
+      - id: B
+        text: "L'amylase est un catalyseur hétérogène : elle n'agit qu'en phase solide, jamais sur des molécules dissoutes comme l'ester."
+        correct: false
+        feedback: >
+          C'est confondre deux critères différents. La spécificité d'une
+          enzyme (quel substrat elle accepte) n'a rien à voir avec la phase
+          homogène/hétérogène (où se trouve le catalyseur par rapport aux
+          réactifs) : l'amylase agit d'ailleurs en solution, donc de façon
+          homogène.
+      - id: C
+        text: "Toute enzyme perd son efficacité en dehors de l'amidon, car les enzymes ne sont actives qu'à $37\\,^\\circ\\text{C}$."
+        correct: false
+        feedback: >
+          La température n'est pas en cause ici : l'éthanoate d'éthyle
+          pourrait tout à fait être présent à $37\,^\circ\text{C}$. C'est la
+          forme géométrique du site actif, ajustée à l'amidon et à lui
+          seul, qui explique l'inaction de l'amylase sur l'ester.
+      - id: D
+        text: "L'amylase est un catalyseur homogène, alors que l'ester nécessiterait un catalyseur hétérogène pour réagir."
+        correct: false
+        feedback: >
+          Là encore, c'est mélanger deux critères. La raison pour laquelle
+          l'amylase n'agit pas sur l'ester n'est pas une question de phase
+          (homogène/hétérogène), mais de spécificité : sa forme ne
+          correspond qu'au substrat amidon.
+    correct_feedback: >
+      C'est la spécificité, extrême chez les enzymes, qui explique cette
+      différence : la forme du site actif de l'amylase s'ajuste à l'amidon
+      et à lui seul, pas à l'ester.
+    solution: |
+      Une enzyme catalyse en général une seule réaction, sur un seul type de
+      substrat, grâce à une forme géométrique qui s'ajuste précisément à ce
+      substrat — une clé qui n'ouvre qu'une seule serrure. L'amidon est le
+      substrat de l'amylase ; l'éthanoate d'éthyle, chimiquement très
+      différent, ne s'ajuste pas à son site actif. Cette spécificité est un
+      critère à part, indépendant de la classification homogène/hétérogène
+      (qui ne porte que sur la phase).
+
+  # ── R3 : catalyse homogène (phase, pas nature chimique) ───────────────────
+  - id: CTC-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans l'estérification de l'acide éthanoïque et de l'éthanol,
+      catalysée par quelques gouttes d'acide sulfurique $H_2SO_4$, comment
+      qualifie-t-on cette catalyse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Hétérogène, car $H_2SO_4$ est une espèce minérale, chimiquement très différente des espèces organiques du mélange."
+        correct: false
+        feedback: >
+          La différence de nature chimique ne suffit pas à rendre une
+          catalyse hétérogène — TOUS les catalyseurs sont des espèces
+          différentes des réactifs. Ce qui compte, c'est la phase : ici,
+          $H_2SO_4$ est dissous dans le même mélange liquide que les
+          réactifs.
+      - id: B
+        text: "Enzymatique, car l'acide sulfurique joue le rôle d'un catalyseur biologique dans cette réaction organique."
+        correct: false
+        feedback: >
+          Une catalyse enzymatique exige un catalyseur BIOLOGIQUE (une
+          protéine, une enzyme) — pas simplement une réaction sur des
+          espèces organiques. $H_2SO_4$ est un acide minéral, pas une
+          enzyme.
+      - id: C
+        text: "On ne peut pas classer cette catalyse sans connaître la concentration de l'acide sulfurique utilisé."
+        correct: false
+        feedback: >
+          Le classement homogène/hétérogène ne dépend jamais de la
+          concentration ou de la quantité de catalyseur, seulement de sa
+          phase par rapport à celle des réactifs.
+      - id: D
+        text: "Homogène : l'acide sulfurique est dissous dans le même mélange liquide que les réactifs organiques — même phase."
+        correct: true
+    correct_feedback: >
+      $H_2SO_4$ est dissous dans le même mélange liquide que l'acide
+      éthanoïque et l'éthanol : même phase, donc catalyse homogène — la
+      nature minérale de l'acide n'entre pas en jeu dans ce classement.
+    solution: |
+      Le critère homogène/hétérogène porte uniquement sur la phase du
+      catalyseur par rapport à celle des réactifs. Ici, $H_2SO_4$ est
+      dissous dans le même liquide que les espèces organiques : catalyse
+      homogène — exactement comme les ions $Fe^{3+}$ dans le mélange
+      peroxodisulfate/iodure.
+
+  # ── R4 : totale ≠ rapide (vitesse et avancement, encore) ─────────────────
+  - id: CTC-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un élève affirme : « La saponification est totale, donc elle doit
+      forcément être rapide. » Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Vrai : une réaction totale va nécessairement plus vite qu'une réaction limitée, puisqu'il n'y a pas de réaction inverse pour la ralentir."
+        correct: false
+        feedback: >
+          Rien n'impose ce lien. La saponification est un contre-exemple
+          direct : elle est totale, mais lente (elle nécessite souvent un
+          chauffage à reflux prolongé). L'absence de réaction inverse fixe
+          l'avancement final, pas la vitesse.
+      - id: B
+        text: "Faux : la saponification est lente (chauffage à reflux prolongé) mais totale — le caractère total (avancement) et le caractère rapide (vitesse) sont deux propriétés indépendantes."
+        correct: true
+      - id: C
+        text: "Vrai, car dans une réaction totale, le catalyseur agit forcément plus efficacement."
+        correct: false
+        feedback: >
+          Il n'y a pas de catalyseur en jeu dans la saponification : la
+          soude, $HO^-$, est un RÉACTIF (consommé), pas un catalyseur. La
+          totalité de la réaction vient de l'absence de réaction inverse
+          (le carboxylate ne se réestérifie pas), pas d'un quelconque
+          catalyseur.
+      - id: D
+        text: "Faux : en réalité c'est l'inverse, une réaction totale est toujours plus lente qu'une réaction limitée."
+        correct: false
+        feedback: >
+          C'est encore lier vitesse et avancement, mais dans l'autre sens.
+          Les deux propriétés restent indépendantes : rien n'impose qu'une
+          réaction totale soit plus lente (l'anhydride + alcool du R1 est
+          rapide ET totale).
+    correct_feedback: >
+      La saponification est lente mais totale : « lente » décrit la
+      vitesse, « totale » décrit l'avancement final — deux propriétés
+      indépendantes, comme le rappelle le tableau récapitulatif du R5.
+    solution: |
+      Rien ne relie nécessairement vitesse et avancement final. La
+      saponification est lente (chauffage à reflux prolongé) car elle
+      requiert une activation thermique importante, mais totale car le
+      carboxylate formé ne se réestérifie jamais. À l'inverse, la réaction
+      anhydride + alcool du R1 est rapide ET totale : les deux propriétés
+      varient bien indépendamment l'une de l'autre.
+
+  # ── R5 : intégratif — anhydride vs acide catalysé, valeurs neuves ────────
+  - id: CTC-16
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On veut synthétiser du propanoate d'éthyle. Voie 1 : anhydride
+      propanoïque $(C_2H_5CO)_2O$, en excès, avec $n_0 = 0{,}60\ \text{mol}$
+      d'éthanol. Voie 2 : acide propanoïque et éthanol en quantités égales
+      ($0{,}60\ \text{mol}$ chacun), avec quelques gouttes d'acide
+      sulfurique comme catalyseur (on admet le même $\tau \approx 2/3$ que
+      pour l'acide éthanoïque). Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La voie 1 donne $n(\\text{ester}) = 0{,}60\\ \\text{mol}$ ($\\eta = 100\\,\\%$) ; la voie 2 plafonne à $n(\\text{ester}) \\approx 0{,}40\\ \\text{mol}$ ($\\eta \\approx 67\\,\\%$) : le catalyseur accélère la voie 2 sans jamais combler l'écart de rendement avec la voie 1."
+        correct: true
+      - id: B
+        text: "Les deux voies donnent finalement $0{,}60\\ \\text{mol}$ d'ester, car le catalyseur de la voie 2 finit par compenser l'absence d'anhydride."
+        correct: false
+        feedback: >
+          Un catalyseur accélère l'estérification et l'hydrolyse dans les
+          mêmes proportions : il ne peut jamais faire dépasser à la voie 2
+          son plafond d'équilibre $\tau \approx 2/3$, quelle que soit la
+          quantité de catalyseur ajoutée.
+      - id: C
+        text: "La voie 1 est plus lente que la voie 2, car un catalyseur va toujours plus vite qu'une réaction sans catalyseur."
+        correct: false
+        feedback: >
+          C'est confondre catalyseur et réactif plus réactif. La voie 1 est
+          rapide grâce à la réactivité intrinsèque de l'anhydride, sans
+          aucun catalyseur — ce n'est pas une règle générale qu'une réaction
+          catalysée batte toujours une réaction sans catalyseur.
+      - id: D
+        text: "Les deux voies plafonnent à $0{,}40\\ \\text{mol}$ d'ester, car $0{,}60\\ \\text{mol}$ d'éthanol ne peut jamais réagir en totalité, quel que soit le réactif choisi."
+        correct: false
+        feedback: >
+          Le plafond $\tau \approx 2/3$ n'est pas universel : il est propre
+          à l'équilibre acide + alcool. La voie de l'anhydride n'a pas cet
+          équilibre (une seule flèche) et atteint $\tau = 1$.
+    correct_feedback: >
+      Changer de réactif (voie 1) rend la réaction totale ; ajouter un
+      catalyseur (voie 2) ne fait qu'accélérer l'arrivée au même équilibre
+      limité — deux leviers différents, aux effets différents.
+    solution: |
+      **Voie 1 :** $(C_2H_5CO)_2O + C_2H_5OH \rightarrow
+      CH_3CH_2COOC_2H_5 + C_2H_5COOH$ — totale, donc $n(\text{ester}) =
+      0{,}60\ \text{mol}$, $\eta = 100\,\%$.
+
+      **Voie 2 :** équilibre acide + alcool, $\tau \approx 2/3$, donc
+      $n(\text{ester}) \approx \tfrac{2}{3}\times 0{,}60 = 0{,}40\ \text{mol}$,
+      $\eta \approx 67\,\%$ — le catalyseur ne change que le temps pour y
+      arriver, jamais cette valeur.
+
+  # ── R5 : intégratif — stœchiométrie de saponification + amphiphile ───────
+  - id: CTC-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On saponifie $n = 0{,}050\ \text{mol}$ d'un corps gras (triglycéride)
+      par de la soude en excès, libérant l'ion palmitate
+      $C_{15}H_{31}-COO^-$. Quelle quantité minimale d'ions $HO^-$ faut-il
+      pour une saponification totale, et quelle est la partie hydrophobe de
+      l'ion palmitate obtenu ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$n = 0{,}050\\ \\text{mol}$ d'ions $HO^-$, car un triglycéride ne compte qu'une seule fonction ester à hydrolyser."
+        correct: false
+        feedback: >
+          Un triglycéride est un TRIester : il porte trois fonctions ester,
+          chacune hydrolysée par un ion $HO^-$. Il en faut donc $3n$, pas
+          $n$.
+      - id: B
+        text: "$6n = 0{,}30\\ \\text{mol}$ d'ions $HO^-$, car chaque fonction ester nécessite deux ions $HO^-$ pour être hydrolysée."
+        correct: false
+        feedback: >
+          L'hydrolyse d'une seule fonction ester ne consomme qu'UN ion
+          $HO^-$ : $R-CO-O-R' + HO^- \rightarrow R-COO^- + R'-OH$. Avec
+          trois fonctions ester, il en faut $3n$, pas $6n$.
+      - id: C
+        text: "$3n = 0{,}15\\ \\text{mol}$ d'ions $HO^-$ ; la partie hydrophobe est la longue chaîne carbonée $C_{15}H_{31}$."
+        correct: true
+      - id: D
+        text: "$3n = 0{,}15\\ \\text{mol}$ d'ions $HO^-$, mais la partie hydrophobe est la tête $-COO^-$, car elle porte la charge la plus grande."
+        correct: false
+        feedback: >
+          La stœchiométrie est correcte, mais le classement hydrophile /
+          hydrophobe est inversé. C'est la tête CHARGÉE $-COO^-$ qui est
+          attirée par l'eau (hydrophile) ; c'est la longue chaîne carbonée
+          NEUTRE qui fuit l'eau (hydrophobe) — le critère est la charge, pas
+          sa « grandeur ».
+    correct_feedback: >
+      Trois fonctions ester par triglycéride $\Rightarrow 3n = 0{,}15\
+      \text{mol}$ de $HO^-$. Sur l'ion palmitate, la tête chargée $-COO^-$
+      est hydrophile, la longue chaîne carbonée $C_{15}H_{31}$ est
+      hydrophobe.
+    solution: |
+      $$C_3H_5(O-CO-C_{15}H_{31})_3 + 3\,HO^- \rightarrow
+      3\,C_{15}H_{31}-COO^- + C_3H_5(OH)_3$$
+      Il faut $3n = 3 \times 0{,}050 = 0{,}15\ \text{mol}$ d'ions $HO^-$
+      pour hydrolyser les trois fonctions ester. Sur l'ion obtenu, la tête
+      $-COO^-$, chargée, est hydrophile ; la chaîne $C_{15}H_{31}$, neutre,
+      est hydrophobe.
+
+  # ── R5 : intégratif — quel levier atteint réellement 100 % ? (capstone) ──
+  - id: CTC-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un chimiste industriel part d'une synthèse d'ester lente et limitée
+      (acide + alcool, $\tau \approx 2/3$). Parmi les quatre modifications
+      suivantes, laquelle, seule, permet d'atteindre un rendement de
+      $100\,\%$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ajouter davantage de catalyseur acide au mélange."
+        correct: false
+        feedback: >
+          Un catalyseur, quelle que soit sa quantité, accélère
+          l'estérification et l'hydrolyse dans les mêmes proportions : il
+          ne change ni $K$ ni le rendement à l'équilibre, seulement le temps
+          pour l'atteindre.
+      - id: B
+        text: "Remplacer le catalyseur homogène ($H_2SO_4$) par un catalyseur hétérogène solide."
+        correct: false
+        feedback: >
+          Changer le TYPE de catalyseur (homogène vers hétérogène) reste un
+          changement de catalyseur : ça ne modifie que la vitesse à laquelle
+          on rejoint l'équilibre, jamais sa position — quel que soit le type
+          de catalyse employé.
+      - id: C
+        text: "Augmenter la sélectivité du catalyseur utilisé."
+        correct: false
+        feedback: >
+          La sélectivité choisit LAQUELLE réaction un catalyseur accélère
+          parmi plusieurs concurrentes ; ici il n'y a qu'une seule réaction
+          en jeu (estérification/hydrolyse). Ce levier ne change pas
+          l'avancement final d'un équilibre déjà fixé.
+      - id: D
+        text: "Remplacer l'acide carboxylique par son anhydride d'acide correspondant."
+        correct: true
+    correct_feedback: >
+      Seul un changement de RÉACTIF (l'anhydride, sans équilibre à établir)
+      élimine la réaction inverse et atteint $\tau = 1$. Aucun réglage sur le
+      catalyseur — sa quantité, son type, sa sélectivité — ne peut déplacer
+      l'état final d'un équilibre.
+    solution: |
+      Le chapitre distingue nettement deux familles de leviers : ceux qui
+      changent l'ÉTAT FINAL (ici, seul le changement de réactif — passer à
+      l'anhydride — supprime l'équilibre et ses $\tau \approx 2/3$) et ceux
+      qui ne changent que la VITESSE (tout ce qui touche au catalyseur :
+      quantité, type homogène/hétérogène, sélectivité). Seule la
+      modification D agit sur le premier axe.
