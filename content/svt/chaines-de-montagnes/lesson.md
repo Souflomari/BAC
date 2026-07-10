@@ -49,6 +49,8 @@ Le raisonnement est direct : ces séismes ne sont pas dispersés au hasard, ils 
 
 Retiens ces deux signatures : une chaîne de subduction porte un **volcanisme actif de composition andésitique** et des **séismes dont les foyers s'enfoncent en profondeur** vers l'intérieur du continent. Les deux viennent du même fait physique : une plaque océanique rigide continue de plonger, en profondeur, sous la plaque qui la chevauche.
 
+[[figure:subduction-andes]]
+
 **Avant de continuer, prends position sur une question.** L'Himalaya est, lui aussi, une chaîne de montagnes née de la convergence de deux plaques. À ton avis, l'Himalaya présente-t-il, comme les Andes, des volcans actifs et des séismes dont les foyers s'enfoncent à plusieurs centaines de kilomètres de profondeur ?
 
 ---
@@ -72,6 +74,8 @@ C'est là que tout change. La croûte continentale (granite, roche relativement 
 Mais la convergence, elle, ne s'arrête pas : les deux plaques continuent de se pousser l'une contre l'autre, à quelques centimètres par an, poussées par le même moteur mantellique que partout ailleurs. Puisque rien ne peut plus plonger pour absorber ce rapprochement, la seule issue qui reste à la croûte est de se déformer sur place : elle se plisse, se fracture, et des tranches entières de croûte s'empilent les unes sur les autres. On appelle ce processus la **collision**, et le résultat est un **épaississement crustal** considérable : la croûte, qui fait environ 35 kilomètres d'épaisseur en moyenne sur un continent, atteint 70 à 80 kilomètres sous l'Himalaya et le plateau tibétain — le double.
 
 C'est cet épaississement, et non un simple soulèvement local, qui explique l'altitude extrême de la chaîne : une croûte plus épaisse, faite d'une roche moins dense que le manteau sur lequel elle repose, se maintient mécaniquement plus haut — un peu comme un glaçon plus épais flotte plus haut au-dessus de la surface de l'eau, sans qu'on ait besoin de le pousser depuis en dessous. Doubler l'épaisseur de la croûte, c'est doubler, dans une large mesure, la hauteur à laquelle elle se maintient.
+
+[[figure:collision-himalaya]]
 
 ### Confronter la prédiction
 
@@ -115,6 +119,8 @@ Cette séquence précise — basalte en coussins, puis gabbro, puis péridotite 
 Un piège classique consiste à se dire : « on est au milieu d'une chaîne de montagnes continentale, donc toute roche trouvée là, aussi étrange soit-elle, doit bien être une forme particulière de croûte continentale. » Ce raisonnement est faux, et il efface exactement la preuve qu'on cherche.
 
 Teste-le : le granite continental et la séquence basalte/gabbro/péridotite ne sont pas deux variantes d'une même famille de roche — ce sont deux compositions chimiques et deux densités différentes, correspondant à deux origines physiquement distinctes (fusion du manteau sous un océan, contre refroidissement lent d'un magma continental riche en silice). Si l'ophiolite n'était qu'une forme de croûte continentale, on ne s'attendrait à aucune raison particulière pour qu'elle reproduise, dans le bon ordre, la structure verticale exacte d'un plancher océanique. Trouver précisément cette séquence, intacte, coincée entre deux blocs de croûte continentale bien identifiée, ne s'explique que d'une façon : un morceau de véritable lithosphère océanique a été préservé là, au moment où l'océan qui séparait les deux continents achevait de se refermer.
+
+[[figure:sequence-ophiolite]]
 
 C'est exactement le cas des ophiolites du Chenaillet, dans les Alpes françaises, ou de celles qu'on trouve le long de la suture qui sépare l'Inde de l'Asie dans l'Himalaya : dans les deux cas, un fragment de plancher océanique authentique, aujourd'hui perché à plusieurs milliers de mètres d'altitude, au sein d'une chaîne de collision.
 
@@ -161,6 +167,8 @@ Le raisonnement clé, c'est que la nature précise des minéraux formés dépend
 ### Le problème que ça pose : comment une roche formée en profondeur se retrouve-t-elle en surface ?
 
 Si le métamorphisme exige un enfouissement à plusieurs dizaines de kilomètres, et qu'on trouve pourtant ces roches métamorphiques exposées à la surface, en haute altitude, il faut qu'un second mécanisme soit intervenu après l'enfouissement : un mécanisme qui ramène cette roche vers le haut. On appelle ce processus l'**exhumation**, et il combine deux effets qui agissent ensemble sur de longues durées : la poursuite du soulèvement tectonique, qui continue de pousser la croûte épaissie vers le haut, et l'érosion, qui décape progressivement, à la surface, tout ce qui recouvrait autrefois ces roches — jusqu'à mettre au jour ce qui, il y a des millions d'années, était enfoui à trente kilomètres de profondeur.
+
+[[figure:enfouissement-exhumation]]
 
 ### Ce que ça établit
 

@@ -105,6 +105,9 @@ export const STRUCTURAL_SLUGS = new Set([
   "respiration-fermentation",
   // B2 wave S1 — SVT gamete-grid schematic (genetique-populations R2)
   "echiquier-gametes",
+  // B2 wave S1 — narrow vertical-column figures (chaines-de-montagnes)
+  "sequence-ophiolite",
+  "enfouissement-exhumation",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────

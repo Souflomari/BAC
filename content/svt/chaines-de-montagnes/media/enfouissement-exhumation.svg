@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le voyage vertical d'une roche. En surface, une roche sédimentaire ordinaire. Entraînée à environ trente kilomètres de profondeur par l'empilement de la croûte, elle subit de fortes pression et température sans fondre : ses minéraux se recristallisent, elle devient métamorphique, un gneiss. Le soulèvement tectonique et l'érosion la ramènent ensemble vers le haut : la voilà exhumée, exposée à environ quatre mille mètres d'altitude — la preuve d'un enfouissement profond.">
+  <title>Le voyage d'une roche : enfouissement, métamorphisme, exhumation</title>
+
+  <!--
+    enfouissement-exhumation.svg — STAGED, 3 étapes (R5). Schéma
+    profondeur-vs-trajet QUALITATIF — délibérément PAS une courbe P-T sur
+    des axes pression/température (le brief l'exclut explicitement) :
+    l'axe vertical est une échelle de PROFONDEUR (0 à ~40 km), et la
+    figure suit le trajet d'UNE SEULE roche, pas un empilement de blocs
+    (domaine de plis-chevauchement.svg / collision-himalaya.svg, R4/R2).
+
+      step-1 : l'échelle de profondeur posée (0 → ~40 km) ; la roche,
+               ordinaire, en surface.
+      step-2 : + la roche entraînée à ~30 km (empilement crustal, R2/R4) ;
+               sous forte pression et température MAIS SANS FONDRE, elle
+               se recristallise en gneiss (métamorphisme).
+      step-3 : + l'exhumation — soulèvement tectonique ET érosion agissant
+               ENSEMBLE — qui ramène la roche à la surface, à ~4000 m
+               d'altitude.
+
+    Convention couleur : l'échelle et la roche de surface (step-1) restent
+    neutres (ink / ink-soft) — ce n'est encore qu'un repère, pas une
+    preuve. L'accent porte, à chaque étape suivante, l'idée nouvelle :
+    la transformation SANS FUSION à 30 km (step-2), puis le soulèvement +
+    l'érosion agissant ensemble pour exhumer la roche (step-3) — les deux
+    effets du contrat sont en accent, aucun des deux seul.
+
+    Chiffres : seuls ceux du texte de la leçon (≈30 km, altitude ≈4000 m) ;
+    aucune valeur inventée.
+  -->
+
+  <text x="350" y="22" text-anchor="middle"
+        font-size="12.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le voyage d'une roche : enfouissement, métamorphisme, exhumation
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — L'échelle de profondeur, la roche en surface
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axe de profondeur -->
+    <line x1="110" y1="50" x2="110" y2="330" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="104" y1="50" x2="110" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="104" y1="120" x2="110" y2="120" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="104" y1="190" x2="110" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="104" y1="260" x2="110" y2="260" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="104" y1="330" x2="110" y2="330" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="98" y="54" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">0 km</text>
+    <text x="98" y="124" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">10 km</text>
+    <text x="98" y="194" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">20 km</text>
+    <text x="98" y="264" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">30 km</text>
+    <text x="98" y="334" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">40 km</text>
+    <text x="130" y="345" text-anchor="start" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+      profondeur
+    </text>
+
+    <!-- Surface (niveau 0 km) -->
+    <line x1="110" y1="50" x2="640" y2="50" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="118" y="43" text-anchor="start" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+      surface
+    </text>
+
+    <!-- La roche, ordinaire, en surface -->
+    <rect x="270" y="32" width="110" height="28" rx="4" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="325" y="50" text-anchor="middle" font-size="9" font-weight="600" fill="var(--figure-ink)">
+      roche sédimentaire
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Entraînée à ~30 km : recristallisation sans fusion
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="325" y1="60" x2="325" y2="248" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="325,258 318,244 332,244" fill="var(--figure-accent)"/>
+
+    <text x="340" y="155" text-anchor="start" font-size="9" fill="var(--figure-accent)">
+      empilement de la croûte
+    </text>
+    <text x="340" y="167" text-anchor="start" font-size="9" font-weight="700" fill="var(--figure-accent)">
+      P et T ↑, sans fondre
+    </text>
+
+    <rect x="262" y="250" width="126" height="28" rx="4" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="272" y1="270" x2="290" y2="258" stroke="var(--figure-accent)" stroke-width="1" opacity="0.8"/>
+    <line x1="292" y1="272" x2="310" y2="260" stroke="var(--figure-accent)" stroke-width="1" opacity="0.8"/>
+    <line x1="312" y1="270" x2="330" y2="258" stroke="var(--figure-accent)" stroke-width="1" opacity="0.8"/>
+    <text x="325" y="268" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--figure-accent)">
+      gneiss (métamorphique)
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Exhumation : soulèvement ET érosion, ensemble
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Relief soulevé, au-dessus du niveau 0 km d'origine -->
+    <path d="M450,50 L500,50 L560,22 L620,50 L640,50"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+    <!-- Trajet de remontée : soulèvement tectonique -->
+    <path d="M325,250 C 380,150 480,80 560,58"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="560,48 552,62 567,64" fill="var(--figure-accent)"/>
+    <text x="400" y="188" text-anchor="start" font-size="9" font-weight="600" fill="var(--figure-accent)">
+      soulèvement tectonique
+    </text>
+    <text x="560" y="78" text-anchor="middle" font-size="9" font-weight="600" fill="var(--figure-accent)">
+      altitude ≈ 4000 m
+    </text>
+
+    <!-- Érosion : décape ce qui recouvrait la roche pendant la remontée -->
+    <path d="M420,128 L430,116 L440,128 L450,116 L460,128"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.4" stroke-linecap="round"/>
+    <text x="440" y="145" text-anchor="middle" font-size="8.5" font-style="italic" fill="var(--figure-accent)">
+      + érosion
+    </text>
+
+    <!-- La roche, exhumée, exposée en altitude -->
+    <rect x="505" y="28" width="110" height="28" rx="4" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="560" y="46" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--figure-accent)">
+      gneiss exhumé
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>
