@@ -181,6 +181,8 @@ C'est le même geste de multiplication qu'en R3 (deux événements indépendants
 
 Chaque parent F1 produit les quatre gamètes $CL$, $Cl$, $cL$, $cl$, chacun avec une probabilité $\frac{1}{4}$. L'échiquier de croisement compte donc $4 \times 4 = 16$ cases :
 
+[[figure:echiquier-dihybride]]
+
 | | $CL$ ($\frac14$) | $Cl$ ($\frac14$) | $cL$ ($\frac14$) | $cl$ ($\frac14$) |
 |--|--|--|--|--|
 | **$CL$ ($\frac14$)** | $C//C\,;\,L//L$ | $C//C\,;\,L//l$ | $C//c\,;\,L//L$ | $C//c\,;\,L//l$ |
@@ -234,6 +236,8 @@ Reprenons une souris grise de génotype inconnu ($G//G$ ou $G//g$ ?), croisée a
 
 - **Si la souris grise est homozygote ($G//G$) :** elle ne produit que des gamètes $G$. Tous les petits reçoivent $G$ du parent testé et $g$ du testeur : 100 % de la descendance est $G//g$, donc grise.
 - **Si la souris grise est hétérozygote ($G//g$) :** elle produit des gamètes $G$ et $g$ à parts égales. La moitié des petits est $G//g$ (gris), l'autre moitié $g//g$ (blanc) : un rapport $\frac{1}{2}:\frac{1}{2}$.
+
+[[figure:test-cross-deux-hypotheses]]
 
 **Ce qu'il faut retenir :** le rapport phénotypique observé chez les descendants d'un test-cross est directement la signature des gamètes produits par le parent testé, puisque le testeur ne contribue aucune variation. Compter les phénotypes des petits, c'est littéralement lire le génotype caché du parent.
 

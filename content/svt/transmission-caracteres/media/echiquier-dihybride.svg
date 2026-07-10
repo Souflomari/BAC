@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 840"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Échiquier de croisement dihybride F1 × F1 : chaque parent F1, double hétérozygote C sur c point-virgule L sur l, produit quatre types de gamètes CL, Cl, cL, cl à un quart chacun. L'échiquier de seize cases est dressé, quatre gamètes en en-tête de colonne, quatre en en-tête de ligne, puis chaque case reçoit le génotype issu de l'union des deux gamètes. Les seize cases sont regroupées par phénotype : neuf grises à ailes longues, trois grises à ailes vestigiales, trois noires à ailes longues, une seule noire à ailes vestigiales — mise en évidence en accent. Le rapport phénotypique final est neuf, trois, trois, un.">
+  <title>Échiquier de croisement dihybride — F1 × F1, seize cases, rapport 9:3:3:1</title>
+
+  <!--
+    echiquier-dihybride.svg — figure STAGÉE, 5 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2 ; SKILL figure-authoring).
+
+    Placement : R4, juste après "...compte donc 4 × 4 = 16 cases :", juste
+    avant le tableau markdown 16 cases. Cette figure REND en 5 étapes le
+    même échiquier que ce tableau, construit étape par étape plutôt que
+    donné d'un bloc.
+
+    step-1 : les deux parents F1 (double hétérozygotes C//c ; L//l), CHACUN
+             produisant ses quatre gamètes CL, Cl, cL, cl à 1/4 — la
+             multiplication 1/2 × 1/2 rendue visible (panneau autonome,
+             séparé de la grille qui suit — pas de réutilisation des
+             coordonnées, cf. R4 "Les gamètes d'un double hétérozygote").
+    step-2 : la grille 4×4 VIDE — cadre, quatre en-têtes de colonne (les
+             gamètes du parent "haut"), quatre en-têtes de ligne (les
+             gamètes du parent "gauche"), seize cases encore blanches.
+    step-3 : AJOUT — le génotype de chaque case (texte SVG natif, "//" et
+             " ; " littéraux, jamais du KaTeX), calculé exactement comme
+             le tableau markdown du lesson.md (même ordre de lignes/
+             colonnes : CL, Cl, cL, cl).
+    step-4 : AJOUT — regroupement par phénotype. Neuf cases "gris, longues"
+             restent NEUTRES (la classe majoritaire, non marquée — principe
+             de cohérence : pas de marque superflue). Les deux classes à
+             3/16 ("gris, vestigiales" / "noir, longues") reçoivent la
+             MÊME teinte neutre (--figure-ink-soft) mais un TRAIT distinct
+             (plein vs tireté) pour rester différentiables sans sortir de
+             la palette à 5 jetons. La case UNIQUE "noir, vestigiales"
+             (1/16) — la classe double-récessive, celle qui prouve à elle
+             seule l'assortiment indépendant — est l'unique porteuse de
+             --figure-accent dans toute la figure (SKILL : « l'accent
+             marque UNE idée par figure »). Une légende sous la grille relie
+             chaque style à son nom de phénotype (étiquette avec la chose
+             qu'elle étiquette).
+    step-5 : AJOUT — encart de synthèse : le rapport 9 : 3 : 3 : 1, chaque
+             nombre positionné sous son étiquette de phénotype.
+
+    Couleurs : UNIQUEMENT var(--figure-surface|ink|ink-soft|grid|accent).
+    Toutes les lettres d'allèle en italique + font-weight 700 (convention
+    reprise de disjonction-alleles.svg). "//" et " ; " sont du texte SVG
+    natif littéral, jamais des tspans KaTeX.
+
+    Repères de layout (viewBox 800×840) :
+      Titre                              y=24
+      Parents + gamètes (step-1)         y=42–198   (panneau gauche x20–345,
+                                                       panneau droit x435–760)
+      Sous-titre grille (step-2)         y=214
+      Grille 4×4 (cadre + en-têtes)      x20–730, y232–672
+        colonnes (en-tête haut)          y232–312, centres x=205,355,505,655
+        lignes   (en-tête gauche)        x20–130,  centres y=357,447,537,627
+        cellules 150×90                  x130–730, y312–672
+      Légende phénotypes (step-4)        y688–706
+      Encart ratio 9:3:3:1 (step-5)      x125–625, y736–826
+  -->
+
+  <g id="step-1">
+    <text x="400" y="24" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      L'échiquier F1 × F1 : construire les 16 cases du dihybridisme
+    </text>
+
+    <!-- Panneau gauche : Parent F1 (1) -->
+    <rect x="45" y="42" width="300" height="46" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="195" y="56" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+      Parent F1 (1)
+    </text>
+    <text x="195" y="76" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">
+      <tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan>
+    </text>
+
+    <line x1="195" y1="88" x2="92" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="195" y1="88" x2="163" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="195" y1="88" x2="234" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="195" y1="88" x2="305" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+
+    <circle cx="92" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="163" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="234" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="305" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <text x="92" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">CL</text>
+    <text x="163" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">Cl</text>
+    <text x="234" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cL</text>
+    <text x="305" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cl</text>
+
+    <text x="92" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="163" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="234" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="305" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+
+    <!-- Panneau droit : Parent F1 (2) — même génotype, même quatre gamètes -->
+    <rect x="435" y="42" width="300" height="46" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="585" y="56" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+      Parent F1 (2)
+    </text>
+    <text x="585" y="76" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">
+      <tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan>
+    </text>
+
+    <line x1="585" y1="88" x2="482" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="585" y1="88" x2="553" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="585" y1="88" x2="624" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="585" y1="88" x2="695" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.6"/>
+
+    <circle cx="482" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="553" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="624" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="695" cy="150" r="24" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <text x="482" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">CL</text>
+    <text x="553" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">Cl</text>
+    <text x="624" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cL</text>
+    <text x="695" y="155" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cl</text>
+
+    <text x="482" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="553" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="624" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="695" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/4)</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <text x="375" y="214" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      L'échiquier F1 × F1 (16 cases)
+    </text>
+
+    <!-- Fond de la grille -->
+    <rect x="20" y="232" width="710" height="440" fill="var(--figure-surface)" stroke="none"/>
+
+    <!-- Lignes internes -->
+    <line x1="130" y1="232" x2="130" y2="672" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="280" y1="232" x2="280" y2="672" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="430" y1="232" x2="430" y2="672" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="580" y1="232" x2="580" y2="672" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="20" y1="312" x2="730" y2="312" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="20" y1="402" x2="730" y2="402" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="20" y1="492" x2="730" y2="492" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <line x1="20" y1="582" x2="730" y2="582" stroke="var(--figure-grid)" stroke-width="1.2"/>
+
+    <!-- Cadre extérieur -->
+    <rect x="20" y="232" width="710" height="440" rx="6" fill="none" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <!-- En-têtes de colonne (gamètes du parent "haut") -->
+    <text x="205" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">CL</text>
+    <text x="205" y="288" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="355" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">Cl</text>
+    <text x="355" y="288" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="505" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cL</text>
+    <text x="505" y="288" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="655" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cl</text>
+    <text x="655" y="288" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+
+    <!-- En-têtes de ligne (gamètes du parent "gauche") -->
+    <text x="75" y="351" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">CL</text>
+    <text x="75" y="369" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="75" y="441" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">Cl</text>
+    <text x="75" y="459" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="75" y="531" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cL</text>
+    <text x="75" y="549" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+    <text x="75" y="621" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">cl</text>
+    <text x="75" y="639" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(1/4)</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Ligne CL × (CL, Cl, cL, cl) -->
+    <text x="205" y="361" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">C</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">L</tspan></text>
+    <text x="355" y="361" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">C</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="505" y="361" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">L</tspan></text>
+    <text x="655" y="361" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+
+    <!-- Ligne Cl × (CL, Cl, cL, cl) -->
+    <text x="205" y="451" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">C</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="355" y="451" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">C</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">l</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="505" y="451" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="655" y="451" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">l</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+
+    <!-- Ligne cL × (CL, Cl, cL, cl) -->
+    <text x="205" y="541" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">L</tspan></text>
+    <text x="355" y="541" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="505" y="541" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">c</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">L</tspan></text>
+    <text x="655" y="541" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">c</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+
+    <!-- Ligne cl × (CL, Cl, cL, cl) -->
+    <text x="205" y="631" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="355" y="631" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">C</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">l</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="505" y="631" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">c</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">L</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+    <text x="655" y="631" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">c</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">c</tspan><tspan> ; </tspan><tspan font-style="italic" font-weight="700">l</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">l</tspan></text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- Trois cases "gris, vestigiales" (3/16) — teinte neutre, trait plein -->
+    <rect x="283" y="405" width="144" height="84" fill="var(--figure-ink-soft)" fill-opacity="0.12" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <rect x="583" y="405" width="144" height="84" fill="var(--figure-ink-soft)" fill-opacity="0.12" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <rect x="283" y="585" width="144" height="84" fill="var(--figure-ink-soft)" fill-opacity="0.12" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <!-- Trois cases "noir, longues" (3/16) — même teinte neutre, trait tireté -->
+    <rect x="433" y="495" width="144" height="84" fill="var(--figure-ink-soft)" fill-opacity="0.12" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3"/>
+    <rect x="583" y="495" width="144" height="84" fill="var(--figure-ink-soft)" fill-opacity="0.12" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3"/>
+    <rect x="433" y="585" width="144" height="84" fill="var(--figure-ink-soft)" fill-opacity="0.12" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5,3"/>
+
+    <!-- Case UNIQUE "noir, vestigiales" (1/16) — seule porteuse de l'accent -->
+    <rect x="583" y="585" width="144" height="84" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="718" y="600" text-anchor="end" font-size="9" font-weight="700" fill="var(--figure-accent)">1/16</text>
+
+    <!-- Légende — chaque style reste avec son nom de phénotype -->
+    <rect x="20" y="690" width="16" height="16" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="42" y="702" font-size="10" fill="var(--figure-ink)">gris, longues — 9/16</text>
+
+    <rect x="223" y="690" width="16" height="16" fill="var(--figure-ink-soft)" fill-opacity="0.3" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="245" y="702" font-size="10" fill="var(--figure-ink)">gris, vestigiales — 3/16</text>
+
+    <rect x="440" y="690" width="16" height="16" fill="var(--figure-ink-soft)" fill-opacity="0.3" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,2.5"/>
+    <text x="462" y="702" font-size="10" fill="var(--figure-ink)">noir, longues — 3/16</text>
+
+    <rect x="649" y="690" width="16" height="16" fill="var(--figure-accent)" fill-opacity="0.3" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="671" y="702" font-size="10" fill="var(--figure-ink)">noir, vestigiales — 1/16</text>
+  </g><!-- /step-4 -->
+
+  <g id="step-5">
+    <rect x="125" y="736" width="500" height="90" rx="10" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+
+    <text x="225" y="776" text-anchor="middle" font-size="24" font-weight="700" fill="var(--figure-ink)">9</text>
+    <text x="275" y="776" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink-soft)">:</text>
+    <text x="325" y="776" text-anchor="middle" font-size="24" font-weight="700" fill="var(--figure-ink-soft)">3</text>
+    <text x="375" y="776" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink-soft)">:</text>
+    <text x="425" y="776" text-anchor="middle" font-size="24" font-weight="700" fill="var(--figure-ink-soft)">3</text>
+    <text x="475" y="776" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink-soft)">:</text>
+    <text x="525" y="776" text-anchor="middle" font-size="24" font-weight="700" fill="var(--figure-accent)">1</text>
+
+    <text x="225" y="800" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">gris, longues</text>
+    <text x="325" y="800" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">gris, vestigiales</text>
+    <text x="425" y="800" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">noir, longues</text>
+    <text x="525" y="800" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">noir, vestigiales</text>
+  </g><!-- /step-5 -->
+</svg>

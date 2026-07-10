@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 590"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Test-cross : un individu de génotype inconnu, G sur G ou G sur g, phénotype gris, est croisé avec un testeur homozygote récessif g sur g, qui ne produit qu'un seul type de gamète, g. Deux hypothèses sont comparées sur deux lignes horizontales. Hypothèse 1 : si l'individu est G sur G, il ne produit que des gamètes G, et toute la descendance est G sur g, grise à 100 %, aucune blanche. Hypothèse 2 : si l'individu est G sur g, il produit des gamètes G et g à parts égales, et la descendance se partage moitié G sur g grise, moitié g sur g blanche — cette moitié blanche, en accent, est la preuve directe de l'hétérozygotie. Un encart final relie chaque rapport observé au génotype qu'il révèle.">
+  <title>Test-cross — deux hypothèses comparées pour révéler un génotype caché</title>
+
+  <!--
+    test-cross-deux-hypotheses.svg — figure STAGÉE, 4 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2 ; SKILL figure-authoring).
+
+    Placement : R5, après le second tiret ("Si la souris grise est
+    hétérozygote…") et avant "Ce qu'il faut retenir :". Rend en 4 étapes le
+    raisonnement PAR HYPOTHÈSE que le texte vient de dérouler en prose —
+    PAS l'échiquier 2×2/rapport 3:1 de R3 (interdit par le brief) : ici,
+    deux mini-grilles 2×1 (une case "grise", une case "blanche" — jamais
+    quatre cases), parce que le test-cross ne mélange que deux gamètes
+    possibles à la fois (celui du parent testé, et l'unique g du testeur).
+
+    step-1 (mise en place) : l'individu testé (génotype inconnu, "G//G ?
+             ou G//g ?") × le testeur g//g — avec un encart dédié montrant
+             explicitement que le testeur NE PRODUIT QU'UN SEUL type de
+             gamète (g, 100 %). Cet encart reste visible à toutes les
+             étapes suivantes (contrat additif) : la propriété du testeur
+             reste donc explicite du début à la fin.
+    step-2 (voie A, hypothèse G//G) : ligne horizontale du haut. Grille
+             2×1 : case "grise" pleine à 100 %, case "blanche" vide/
+             tiretée avec "0 % (impossible)" — jamais de couleur ici, ton
+             neutre partout (cette voie ne produit rien d'inattendu).
+    step-3 (voie B, hypothèse G//g) : ligne horizontale du bas. Grille
+             2×1 : case "grise" à 1/2 (neutre), case "blanche" à 1/2 —
+             SEULE porteuse de --figure-accent dans toute la figure,
+             parce que l'apparition de tout descendant blanc est la seule
+             preuve possible de l'hétérozygotie (SKILL : une seule idée
+             par accent).
+    step-4 (bilan / lecture inverse) : encart de synthèse sous les deux
+             voies, reliant chaque rapport observé au génotype qu'il
+             révèle — "Si 100 % grise → G//G", "Si 1/2 blanche → G//g" —
+             la propriété "on lit le génotype caché dans le rapport
+             observé" mise en avant par un swatch neutre / swatch accent
+             qui reprend exactement les styles des deux voies.
+
+    Couleurs : UNIQUEMENT var(--figure-surface|ink|ink-soft|grid|accent).
+    Génotypes en italique + font-weight 700 (convention disjonction-
+    alleles.svg / echiquier-dihybride.svg). "//" est du texte SVG natif
+    littéral.
+
+    Repères de layout (viewBox 780×590) :
+      Titre                                y=24
+      Individu testé (boîte)               x50–330,  y48–128
+      Testeur (boîte)                      x430–710, y48–128
+      Callout gamète unique du testeur     x570, y128–225
+      Voie A (step-2)                      y245–345  (mini-diagramme
+                                              x50–410, grille 2×1 x420–740)
+      Voie B (step-3)                      y375–473  (même répartition)
+      Encart bilan (step-4)                x90–690,  y490–566
+  -->
+
+  <g id="step-1">
+    <text x="390" y="24" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Test-cross : croiser l'individu testé avec un testeur homozygote récessif
+    </text>
+
+    <!-- Individu testé -->
+    <rect x="50" y="48" width="280" height="80" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="190" y="70" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">
+      Individu testé — phénotype gris
+    </text>
+    <text x="140" y="98" text-anchor="middle" font-size="13" fill="var(--figure-ink)">
+      <tspan font-style="italic" font-weight="700">G</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">G</tspan>
+    </text>
+    <text x="190" y="98" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"> ou </text>
+    <text x="245" y="98" text-anchor="middle" font-size="13" fill="var(--figure-ink)">
+      <tspan font-style="italic" font-weight="700">G</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">g</tspan>
+    </text>
+    <text x="272" y="92" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink-soft)">?</text>
+
+    <!-- Symbole croisement -->
+    <text x="380" y="98" text-anchor="middle" font-size="18" font-weight="700" fill="var(--figure-ink)">×</text>
+
+    <!-- Testeur -->
+    <rect x="430" y="48" width="280" height="80" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="570" y="70" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">
+      Testeur — phénotype blanc
+    </text>
+    <text x="570" y="98" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">
+      <tspan font-style="italic" font-weight="700">g</tspan><tspan>//</tspan><tspan font-style="italic" font-weight="700">g</tspan>
+    </text>
+
+    <!-- Le testeur ne produit qu'un seul type de gamète -->
+    <line x1="570" y1="128" x2="570" y2="153" stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="570,159 565,150 575,150" fill="var(--figure-ink-soft)"/>
+    <circle cx="570" cy="181" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <text x="570" y="186" text-anchor="middle" font-size="13.5" font-style="italic" font-weight="700" fill="var(--figure-ink)">g</text>
+    <text x="570" y="218" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">seul type de gamète — 100 %</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <line x1="30" y1="245" x2="750" y2="245" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="50" y="268" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      <tspan>Hypothèse 1 — si l'individu est </tspan><tspan font-style="italic" font-weight="700">G//G</tspan>
+    </text>
+
+    <text x="50" y="300" font-size="11" fill="var(--figure-ink)">
+      <tspan>génotype réel : </tspan><tspan font-style="italic" font-weight="700">G//G</tspan>
+    </text>
+    <text x="50" y="318" font-size="10" fill="var(--figure-ink-soft)">
+      <tspan>→ un seul type de gamète : </tspan><tspan font-style="italic" font-weight="700">G</tspan>
+    </text>
+    <text x="395" y="320" text-anchor="middle" font-size="16" fill="var(--figure-ink)">→</text>
+
+    <rect x="420" y="290" width="160" height="55" rx="6" fill="var(--figure-ink-soft)" fill-opacity="0.14" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="500" y="313" text-anchor="middle" font-size="12.5" font-style="italic" font-weight="700" fill="var(--figure-ink)">G//g</text>
+    <text x="500" y="332" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-ink)">100 %</text>
+
+    <rect x="580" y="290" width="160" height="55" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="660" y="313" text-anchor="middle" font-size="14" fill="var(--figure-ink-soft)">—</text>
+    <text x="660" y="332" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">0 % (impossible)</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <line x1="30" y1="375" x2="750" y2="375" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="50" y="398" font-size="12.5" font-weight="600" fill="var(--figure-ink)">
+      <tspan>Hypothèse 2 — si l'individu est </tspan><tspan font-style="italic" font-weight="700">G//g</tspan>
+    </text>
+
+    <text x="50" y="430" font-size="11" fill="var(--figure-ink)">
+      <tspan>génotype réel : </tspan><tspan font-style="italic" font-weight="700">G//g</tspan>
+    </text>
+    <text x="50" y="448" font-size="10" fill="var(--figure-ink-soft)">
+      <tspan>→ deux types de gamètes à 1/2 : </tspan><tspan font-style="italic" font-weight="700">G</tspan><tspan> et </tspan><tspan font-style="italic" font-weight="700">g</tspan>
+    </text>
+    <text x="395" y="447" text-anchor="middle" font-size="16" fill="var(--figure-ink)">→</text>
+
+    <rect x="420" y="418" width="160" height="55" rx="6" fill="var(--figure-ink-soft)" fill-opacity="0.14" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="500" y="441" text-anchor="middle" font-size="12.5" font-style="italic" font-weight="700" fill="var(--figure-ink)">G//g</text>
+    <text x="500" y="460" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-ink)">1/2</text>
+
+    <rect x="580" y="418" width="160" height="55" rx="6" fill="var(--figure-accent)" fill-opacity="0.18" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <text x="660" y="441" text-anchor="middle" font-size="12.5" font-style="italic" font-weight="700" fill="var(--figure-accent)">g//g</text>
+    <text x="660" y="460" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-accent)">1/2</text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <rect x="90" y="490" width="600" height="76" rx="10" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+    <rect x="105" y="505" width="14" height="14" fill="var(--figure-ink-soft)" fill-opacity="0.3" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="128" y="517" font-size="11" fill="var(--figure-ink)">
+      <tspan>Si </tspan><tspan font-weight="700" fill="var(--figure-ink-soft)">100 % grise</tspan><tspan> → l'individu est </tspan><tspan font-style="italic" font-weight="700">G//G</tspan>
+    </text>
+
+    <rect x="105" y="533" width="14" height="14" fill="var(--figure-accent)" fill-opacity="0.3" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="128" y="545" font-size="11" fill="var(--figure-ink)">
+      <tspan>Si </tspan><tspan font-weight="700" fill="var(--figure-accent)">1/2 blanche apparaît</tspan><tspan> → l'individu est </tspan><tspan font-style="italic" font-weight="700" fill="var(--figure-accent)">G//g</tspan>
+    </text>
+  </g><!-- /step-4 -->
+</svg>
