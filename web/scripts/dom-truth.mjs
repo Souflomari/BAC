@@ -105,7 +105,12 @@ const BATTERY = [
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
   { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Source Serif" },
-  { name: "items h2", page: NOTION, sel: "h2", text: "Exercices", fontKey: "h2", weight: "700", family: "Source Serif" },
+  // Inline-items model (§1.1): questions moved from a single end-of-lesson
+  // "Exercices" h2 bank to a per-chapter "Vérifie ta compréhension" h3 block
+  // (ChapterQuestions). The heading lives in the DOM on every chapter that has
+  // items (hidden chapters included), so this presence+type check holds on the
+  // default landing page.
+  { name: "inline chapter questions heading", page: NOTION, sel: "section[aria-label='Questions de compréhension du chapitre'] h3", text: "Vérifie ta compréhension", fontPx: 20, weight: "600", family: "Source Serif" },
   // ── code-verified unmeasured victims from the audit ──
   // (The two Eyebrow instances measured on Day 2 were REMOVED in the Day-3
   // doubled-label kill (audit U3) — the masthead eyebrow duplicated the
@@ -622,7 +627,7 @@ try {
     checks++;
     if (pageErrors.length > 0) failures += fail(`hydration/page error(s) on deep-linked chapter: ${pageErrors[0].slice(0, 80)}`);
     else if (!r.dark) failures += fail(`dark theme LOST after landing directly on ?chapitre=3 (position: ${r.position})`);
-    else if (r.position !== "Chapitre 3 / 11") failures += fail(`chapter position wrong: "${r.position}" ≠ "Chapitre 3 / 11"`);
+    else if (r.position !== "Chapitre 3 / 10") failures += fail(`chapter position wrong: "${r.position}" ≠ "Chapitre 3 / 10"`);
     else console.log(`  ✓ no hydration error, dark survives, position correct ("${r.position}")`);
   }
 

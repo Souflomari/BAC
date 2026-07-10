@@ -61,7 +61,7 @@
  */
 
 import type { ReactNode } from "react";
-import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec, InteractiveFigureConfigSpec } from "@/lib/content";
+import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec, InteractiveFigureConfigSpec, NotionItem } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
 import { minutesForText } from "@/lib/chapters";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -74,6 +74,7 @@ import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
 import { Derivation } from "./Derivation";
+import { ChapterQuestions } from "./ChapterQuestions";
 import { ChapterTransport } from "./ChapterShell";
 
 // ── Stepped figure configuration ─────────────────────────────────────────────
@@ -340,6 +341,13 @@ interface Chapter {
   segments: Segment[];
   /** words / 180 wpm, min 1 — see minutesForText (lib/chapters.ts). */
   minutes: number;
+  /**
+   * The rung code ("R3") parsed from this chapter's `## R<n> — …` heading,
+   * when rung-shaped. Undefined for the non-rung heading exception
+   * (lib/chapters.ts §1.4). Used to attach this chapter's inline diagnostic
+   * items (ChapterQuestions), keyed by rung.
+   */
+  rung?: string;
 }
 
 /**
@@ -390,6 +398,13 @@ function chapterizeSegments(segments: Segment[]): Chapter[] {
           ensureChapter(); // no-op if the flush above already opened chapter 0
         } else {
           openNewChapter();
+        }
+        // Label the just-opened chapter with its rung, when the heading is
+        // rung-shaped (`## R3 — …`). Non-rung headings leave rung undefined —
+        // their inline items (if any) fall through to the orphan safety-net.
+        const rungMatch = line.match(/^##\s+(R\d+)\b/);
+        if (rungMatch) {
+          chapters[chapters.length - 1].rung = rungMatch[1];
         }
       }
       buffer.push(line);
@@ -457,6 +472,15 @@ interface NotionBodyProps {
   /** Checkpoint items keyed by id. */
   checkpoints: Record<string, CheckpointItemType>;
   /**
+   * Diagnostic MCQ items grouped by rung ("R3" → its items), from items.yaml.
+   * Each chapter renders its own rung's items inline at the end of its section
+   * (ChapterQuestions) — the inline-items model that replaces the former single
+   * end-of-lesson "S'entraîner" bank (LESSON-EXPERIENCE-SPEC §1.1). Items whose
+   * rung matches no `## R<n>` chapter (e.g. the nested-heading exception) are
+   * collected into the last chapter as an orphan safety-net so none is lost.
+   */
+  itemsByRung?: Record<string, NotionItem[]>;
+  /**
    * True whenever a synthetic final "S'entraîner" chapter will be appended
    * AFTER NotionBody's own real chapters (LESSON-EXPERIENCE-SPEC §1.1 —
    * present whenever `itemsData` exists; NotionPageView renders that
@@ -488,6 +512,7 @@ export function NotionBody({
   mediaInteractive,
   mediaEmbeds,
   checkpoints,
+  itemsByRung,
   hasTrailingChapter,
   lessonEnd,
 }: NotionBodyProps) {
@@ -666,6 +691,19 @@ export function NotionBody({
 
   const lastChapterIndex = chapters.length - 1;
 
+  // Orphan safety-net: items whose rung matches no rung-shaped `## ` chapter
+  // (the nested-heading exception, or any stray rung) still render — collected
+  // into the last chapter — so no authored question is ever dropped. Empty for
+  // the 60/61 lessons whose chapters are clean `## R<n>` headings.
+  const consumedRungs = new Set(
+    chapters.map((c) => c.rung).filter((r): r is string => !!r)
+  );
+  const orphanItems: NotionItem[] = itemsByRung
+    ? Object.entries(itemsByRung)
+        .filter(([rung]) => !consumedRungs.has(rung))
+        .flatMap(([, items]) => items)
+    : [];
+
   return (
     <>
       {chapters.map((chapter, ci) => (
@@ -692,6 +730,15 @@ export function NotionBody({
             {`~${chapter.minutes} min`}
           </p>
           {chapter.segments.map((seg, i) => renderSegment(seg, `${chapter.index}-${i}`))}
+          {/* This chapter's diagnostic items, inline (§1.1 inline-items). */}
+          {chapter.rung && itemsByRung?.[chapter.rung] && (
+            <ChapterQuestions items={itemsByRung[chapter.rung]} />
+          )}
+          {/* Orphan safety-net lands in the last chapter (empty for clean
+              `## R<n>` lessons). */}
+          {ci === lastChapterIndex && orphanItems.length > 0 && (
+            <ChapterQuestions items={orphanItems} />
+          )}
           {ci === lastChapterIndex && !hasTrailingChapter && lessonEnd}
           <ChapterTransport index={chapter.index} />
         </section>

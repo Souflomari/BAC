@@ -47,9 +47,23 @@ tout langage de déploiement ; le SVT n'est pas touché.
 - Le contenu avant le premier `## ` (rare : le H1 est déjà strippé par
   `stripLeadingTitle`, `web/src/lib/content.ts:265-274`) est fusionné dans le
   premier chapitre.
-- Si `itemsData` existe, un **chapitre synthétique final « S'entraîner »**
-  est ajouté, contenant `ItemsSection`. `LessonEnd` clôt toujours le dernier
-  chapitre (synthétique ou non) — il reste la fermeture de la leçon.
+- **Items en ligne, par chapitre (amendement 2026-07, « question generator »).**
+  Les items diagnostiques `items.yaml` ne vivent plus dans un chapitre
+  synthétique final unique : chaque item est regroupé par son `rung` et rendu
+  **à la fin du chapitre correspondant**, via `ChapterQuestions` (bloc « Vérifie
+  ta compréhension », en aval de la prose et des figures du chapitre). Il n'y a
+  donc **plus** de chapitre synthétique « S'entraîner » ni d'`ItemsSection` de
+  fin de leçon ; `totalChapters = realChapters`, et `LessonEnd` clôt le dernier
+  chapitre réel (`NotionBody`, `hasTrailingChapter=false`).
+  - Regroupement : `NotionPageView` construit `itemsByRung` (`rung → items`),
+    en excluant les items déjà clonés en checkpoints inline (`item_source:
+    clone_of_<id>`) pour que la même question n'apparaisse jamais deux fois.
+  - Filet anti-perte : les items dont le `rung` ne correspond à aucun titre
+    `## R<n>` (p. ex. l'exception à titres non-rung) sont rassemblés dans le
+    dernier chapitre — aucun item authored n'est perdu.
+  - Bible : §0/§7 (coda de pratique calme, pas de théâtre), §11 (le code de
+    rung n'est JAMAIS affiché — le titre du bloc est générique). Le `McqItem`
+    partagé porte le feedback immédiat par choix (source unique).
 
 ### 1.2 Où le découpage se calcule
 
@@ -134,7 +148,9 @@ Nouveau composant client `web/src/components/notion/ChapterShell.tsx` :
 - Visuel : chapitre courant accentué (dot + label pleine encre), lus =
   calmes (spine accent/40 existant), non-lus = neutres. Mêmes classes
   qu'aujourd'hui (`MarginRail.tsx:176-306`), sémantique d'état changée.
-- Le chapitre synthétique « S'entraîner » apparaît comme dernière entrée.
+- Plus d'entrée synthétique « S'entraîner » (amendement items-en-ligne, §1.1) :
+  le rail dérive uniquement des `## ` réels ; `MarginRail` reçoit
+  `hasItems={false}`, les questions vivant désormais dans leur chapitre.
 
 ### 1.5 Impression
 

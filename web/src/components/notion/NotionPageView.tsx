@@ -22,12 +22,13 @@
 
 import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
+import type { NotionItem } from "@/lib/content";
 import { realChapterCount } from "@/lib/chapters";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
-import { ItemsSection, buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
+import { buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
-import { ChapterShell, ChapterPosition, ChapterTransport } from "@/components/notion/ChapterShell";
+import { ChapterShell, ChapterPosition } from "@/components/notion/ChapterShell";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
@@ -116,7 +117,19 @@ export function NotionPageView({
     mediaEmbeds,
   } = notion;
 
+  // Inline-items model (LESSON-EXPERIENCE-SPEC §1.1): group every diagnostic
+  // item by its rung so NotionBody can render each chapter's questions inline
+  // at the end of that chapter. Items that are cloned as inline checkpoints
+  // (`item_source: clone_of_<id>`) are excluded so the student never meets the
+  // identical question twice. Items with no rung fall into a bucket that
+  // matches no chapter → NotionBody's orphan safety-net renders them.
   const checkpointCloneIds = buildCheckpointCloneIds(checkpoints);
+  const itemsByRung: Record<string, NotionItem[]> = {};
+  for (const item of itemsData?.items ?? []) {
+    if (checkpointCloneIds.has(item.id)) continue;
+    const key = item.rung ?? "__no_rung__";
+    (itemsByRung[key] ??= []).push(item);
+  }
 
   // LessonEnd next-suggestion: deterministic + honest — the most recently
   // updated OTHER notion (interleaving another subject beats repeating this
@@ -134,13 +147,13 @@ export function NotionPageView({
 
   // ── Pagination (LESSON-EXPERIENCE-SPEC §1) ────────────────────────────────
   // `realChapters` = the lesson's own `## ` chapters (lib/chapters.ts — the
-  // SAME rule MarginRail uses, so the two never disagree). A synthetic final
-  // "S'entraîner" chapter is appended whenever itemsData exists (spec §1.1);
-  // its index is exactly `realChapters` (0-based, right after the last real
-  // one). `totalChapters` is what ChapterShell uses to size keyboard/URL
-  // clamping and the "Chapitre n / N" affordance.
+  // SAME rule MarginRail uses, so the two never disagree). Under the inline-
+  // items model each chapter hosts its own diagnostic questions, so there is
+  // no longer a synthetic trailing "S'entraîner" chapter: the chapter count is
+  // exactly the real chapters. `totalChapters` is what ChapterShell uses to
+  // size keyboard/URL clamping and the "Chapitre n / N" affordance.
   const realChapters = lessonMd ? realChapterCount(lessonMd) : 0;
-  const totalChapters = Math.max(1, realChapters + (itemsData ? 1 : 0));
+  const totalChapters = Math.max(1, realChapters);
 
   // Masthead title classes per variant (Set A). a1 = shipped control.
   const titleClass = {
@@ -254,7 +267,7 @@ export function NotionPageView({
       <ChapterShell totalChapters={totalChapters}>
         <div className="notion-page-grid">
           {lessonMd ? (
-            <MarginRail lessonMd={lessonMd} hasItems={!!itemsData} />
+            <MarginRail lessonMd={lessonMd} hasItems={false} />
           ) : (
             <div className="notion-rail" aria-hidden="true" />
           )}
@@ -284,7 +297,8 @@ export function NotionPageView({
                 mediaInteractive={mediaInteractive}
                 mediaEmbeds={mediaEmbeds}
                 checkpoints={checkpoints}
-                hasTrailingChapter={!!itemsData}
+                itemsByRung={itemsByRung}
+                hasTrailingChapter={false}
                 lessonEnd={hasAnyContent ? <LessonEnd next={nextNotion} /> : undefined}
               />
             ) : (
@@ -299,31 +313,11 @@ export function NotionPageView({
               </div>
             )}
 
-            {/* Synthetic final chapter « S'entraîner » (spec §1.1): hosts
-                ItemsSection; LessonEnd always closes the LAST chapter, so it
-                lands HERE instead of inside NotionBody's own last real
-                chapter (suppressed there via `hasTrailingChapter`). Index is
-                always `realChapters` — right after NotionBody's own last
-                real chapter, 0 in the (unused in the corpus) case where the
-                lesson has no prose at all. */}
-            {itemsData && (
-              <section
-                data-chapter-section
-                data-chapter-index={realChapters}
-                data-chapter-active={realChapters === 0 ? "true" : "false"}
-                hidden={realChapters !== 0}
-                className="chapter-view"
-              >
-                <div className="mt-16">
-                  <ItemsSection
-                    itemsData={itemsData}
-                    checkpointCloneIds={checkpointCloneIds}
-                  />
-                </div>
-                {hasAnyContent && <LessonEnd next={nextNotion} />}
-                <ChapterTransport index={realChapters} />
-              </section>
-            )}
+            {/* Inline-items model (spec §1.1): each chapter's diagnostic
+                questions render inside that chapter (NotionBody →
+                ChapterQuestions). There is no separate end-of-lesson
+                "S'entraîner" chapter, and LessonEnd closes NotionBody's own
+                last real chapter. */}
 
             {/* Fallback: notion directory exists but all content is absent */}
             {!hasAnyContent && (
