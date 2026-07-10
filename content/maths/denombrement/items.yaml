@@ -295,3 +295,1062 @@ items:
 
       **Probabilité :**
       $$P(E) = \frac{6}{45} = \frac{2}{15} \approx 0{,}133$$
+
+  - id: DENOMB-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_denombrement
+    tags: ["p-liste", "accroche", "prediction"]
+    stem: >
+      Un cadenas a 4 roues, chacune portant les chiffres de 0 à 9
+      (répétitions autorisées, comme dans l'histoire du départ). Avant même
+      de connaître une formule, quel est le nombre total de codes possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$10\\,000$"
+        correct: true
+      - id: B
+        text: "$40$"
+        correct: false
+        feedback: >
+          Ce résultat vient de $4 \times 10$ : tu as multiplié le nombre de
+          roues par le nombre de chiffres sur une roue, comme s'il fallait
+          juste "les combiner une fois". Mais chaque roue ajoute un facteur
+          $10$ complet au total : il faut multiplier $10$ par lui-même $4$
+          fois ($10 \times 10 \times 10 \times 10$), pas multiplier $10$ par
+          $4$.
+      - id: C
+        text: "$5\\,040$"
+        correct: false
+        feedback: >
+          Ce résultat ($10 \times 9 \times 8 \times 7$) suppose qu'un
+          chiffre déjà utilisé sur une roue ne peut plus resservir sur une
+          autre roue. Mais les roues sont réglées indépendamment : le code
+          1111 est parfaitement valide, un même chiffre peut apparaître sur
+          plusieurs roues à la fois.
+      - id: D
+        text: "$10$"
+        correct: false
+        feedback: >
+          Ce choix ne compte que les possibilités d'UNE seule roue, en
+          oubliant qu'il y a 4 roues indépendantes à combiner.
+    correct_feedback: >
+      Chaque roue offre 10 choix, indépendamment des 3 autres : $10 \times
+      10 \times 10 \times 10 = 10^4 = 10\,000$.
+    solution: |
+      **Ce qu'on cherche :** 4 roues indépendantes, chacune avec 10 chiffres
+      possibles, répétitions autorisées.
+      $$10 \times 10 \times 10 \times 10 = 10^4 = 10\,000$$
+      Il y a 10 000 codes possibles (ce calcul sera justifié formellement en
+      R2, avec les p-listes).
+
+  - id: DENOMB-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_denombrement
+    tags: ["p-liste", "croissance-multiplicative", "prediction"]
+    stem: >
+      Le cadenas du départ a 4 roues (chiffres 0 à 9, répétitions
+      autorisées), ce qui donne 10 000 codes. Si on ajoutait une 5e roue
+      (toujours des chiffres 0 à 9), le nombre total de codes serait...
+    type: mcq
+    choices:
+      - id: A
+        text: "multiplié par $10$, donc $100\\,000$ codes"
+        correct: true
+      - id: B
+        text: "augmenté de $10$, donc $10\\,010$ codes"
+        correct: false
+        feedback: >
+          Ajouter une roue ne rajoute pas simplement 10 codes au total :
+          chaque roue supplémentaire multiplie TOUTES les combinaisons
+          existantes par ses propres possibilités. Une nouvelle position
+          indépendante multiplie le total, elle ne s'additionne pas à lui.
+      - id: C
+        text: "multiplié par $5$, donc $50\\,000$ codes"
+        correct: false
+        feedback: >
+          Le facteur multiplicatif à appliquer est le nombre de chiffres
+          possibles sur la nouvelle roue ($10$), pas le nombre total de
+          roues après ajout ($5$). C'est une confusion entre $n$ (le nombre
+          de choix par position) et $p$ (le nombre de positions).
+      - id: D
+        text: "resterait à $10\\,000$, la 5e roue ne change rien"
+        correct: false
+        feedback: >
+          Une roue supplémentaire, même avec les mêmes chiffres possibles
+          que les autres, ajoute toujours un facteur multiplicatif : chaque
+          nouvelle position indépendante multiplie le nombre total de
+          combinaisons, elle ne le laisse jamais inchangé.
+    correct_feedback: >
+      Chaque roue supplémentaire ajoute un facteur égal à son nombre de
+      chiffres possibles, ici $10$ : $10\,000 \times 10 = 100\,000$.
+    solution: |
+      Avec 5 roues, le compte devient $10^5=100\,000$ (contre $10^4=10\,000$
+      avec 4 roues). Le rapport entre les deux est exactement $10$ — le
+      nombre de chiffres possibles sur la roue ajoutée, pas le nombre de
+      roues.
+
+  - id: DENOMB-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_denombrement
+    tags: ["p-liste", "comparaison", "prediction"]
+    stem: >
+      Cadenas X : 3 roues, chiffres 0 à 9 (répétitions autorisées). Cadenas
+      Y : 4 roues, mais seulement les chiffres 0 à 4 (répétitions
+      autorisées). Lequel des deux offre le plus de codes possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le cadenas X, car $10^3=1\\,000$ est plus grand que $5^4=625$"
+        correct: true
+      - id: B
+        text: "Le cadenas Y, car il a plus de roues (4 contre 3)"
+        correct: false
+        feedback: >
+          Le nombre de roues seul ne suffit pas à comparer : il faut aussi
+          tenir compte du nombre de chiffres possibles sur CHAQUE roue. Ici,
+          Y a plus de roues mais moins de chiffres par roue (5 au lieu de
+          10) : au final $5^4=625$ reste inférieur à $10^3=1\,000$.
+      - id: C
+        text: "Le cadenas X, car $10 \\times 3 = 30$ est plus grand que $5 \\times 4 = 20$"
+        correct: false
+        feedback: >
+          Le résultat final (X gagne) est bon, mais pas la méthode : $10
+          \times 3$ et $5 \times 4$ ne sont pas les bons calculs. Le nombre
+          de codes se calcule en multipliant le nombre de chiffres par
+          lui-même autant de fois qu'il y a de roues ($n^p$), pas en
+          multipliant $n$ par $p$.
+      - id: D
+        text: "Les deux cadenas offrent le même nombre de codes"
+        correct: false
+        feedback: >
+          Ce n'est pas le cas : $10^3=1\,000$ pour X contre $5^4=625$ pour
+          Y, deux valeurs bien différentes. "Beaucoup de chiffres possibles"
+          des deux côtés ne veut pas dire un nombre égal de codes — il faut
+          calculer, pas estimer à l'œil.
+    correct_feedback: >
+      Il faut calculer $n^p$ dans chaque cas, pas comparer $n$ ou $p$
+      isolément : $10^3=1\,000 > 5^4=625$, donc c'est X qui offre le plus de
+      codes, malgré ses 3 roues seulement.
+    solution: |
+      **Cadenas X :** $n=10$ chiffres, $p=3$ roues : $10^3=1\,000$.
+      **Cadenas Y :** $n=5$ chiffres (0 à 4), $p=4$ roues : $5^4=625$.
+      $1\,000 > 625$ : le cadenas X offre plus de codes, malgré un nombre de
+      roues plus petit.
+
+  - id: DENOMB-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["principe-additif", "principe-multiplicatif"]
+    stem: >
+      Pour te rendre au lycée, tu peux prendre SOIT un bus (3 lignes
+      possibles), SOIT un tram (2 lignes possibles), mais jamais les deux à
+      la fois pour un même trajet. Combien de façons différentes as-tu de te
+      rendre au lycée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+      - id: B
+        text: "$6$"
+        correct: false
+        feedback: >
+          Tu as multiplié $3 \times 2 = 6$ au lieu d'additionner. Bus et
+          tram sont deux façons ALTERNATIVES de faire le trajet (un "ou",
+          pas un "et") : les deux familles de lignes ne se combinent jamais
+          ensemble pour un même trajet. C'est le principe additif qui
+          s'applique ici, pas le principe multiplicatif.
+      - id: C
+        text: "$3$"
+        correct: false
+        feedback: >
+          Ce choix ne retient que les lignes de bus, en oubliant
+          complètement le tram comme option alternative.
+      - id: D
+        text: "$2$"
+        correct: false
+        feedback: >
+          Ce choix ne retient que les lignes de tram, en oubliant
+          complètement le bus comme option alternative.
+    correct_feedback: >
+      Bus et tram sont deux façons qui s'excluent (un seul trajet, soit bus,
+      soit tram) : $3+2=5$.
+    solution: |
+      **Ce qu'on cherche :** une alternative entre deux groupes disjoints de
+      lignes (bus OU tram) — le principe additif s'applique.
+      $$3 + 2 = 5$$
+      Il y a 5 façons différentes de se rendre au lycée.
+
+  - id: DENOMB-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["principe-multiplicatif"]
+    stem: >
+      Pour composer un petit-déjeuner, tu choisis une boisson parmi 4, un
+      pain parmi 3, et une confiture parmi 2. Combien de petits-déjeuners
+      complets (une boisson ET un pain ET une confiture) peux-tu composer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$24$"
+        correct: true
+      - id: B
+        text: "$9$"
+        correct: false
+        feedback: >
+          Tu as additionné $4+3+2=9$ au lieu de multiplier. Les trois choix
+          se combinent TOUS ensemble (une boisson ET un pain ET une
+          confiture) : c'est le principe multiplicatif, pas le principe
+          additif.
+      - id: C
+        text: "$12$"
+        correct: false
+        feedback: >
+          Ce résultat ($4 \times 3$) multiplie seulement la boisson et le
+          pain, en oubliant d'inclure le choix de la confiture. Un
+          petit-déjeuner complet exige les TROIS choix, pas seulement deux
+          d'entre eux.
+      - id: D
+        text: "$6$"
+        correct: false
+        feedback: >
+          Ce résultat ($3 \times 2$) multiplie seulement le pain et la
+          confiture, en oubliant d'inclure le choix de la boisson. Il faut
+          multiplier les TROIS nombres, pas en laisser un de côté.
+    correct_feedback: >
+      Trois choix indépendants qui se combinent tous ensemble :
+      $4 \times 3 \times 2 = 24$.
+    solution: |
+      **Ce qu'on cherche :** trois choix successifs qui se combinent tous
+      (boisson ET pain ET confiture) — le principe multiplicatif à trois
+      facteurs.
+      $$4 \times 3 \times 2 = 24$$
+      Il y a 24 petits-déjeuners complets possibles.
+
+  - id: DENOMB-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["p-liste", "tirage-avec-remise"]
+    stem: >
+      Un digicode utilise des lettres majuscules (26 lettres possibles),
+      avec répétition autorisée, sur un code de 4 lettres. Combien de codes
+      différents existe-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$456\\,976$"
+        correct: true
+      - id: B
+        text: "$4^{26}$"
+        correct: false
+        feedback: >
+          Tu as inversé les rôles de $n$ (le nombre de possibilités par
+          position) et $p$ (le nombre de positions). Ici, il y a $26$
+          lettres possibles pour chacune des $4$ positions : $n=26$, $p=4$,
+          ce qui donne $n^p=26^4$ — pas $4^{26}$, qui prend $4$ comme base
+          et $26$ comme exposant.
+      - id: C
+        text: "$358\\,800$"
+        correct: false
+        feedback: >
+          Ce résultat ($26 \times 25 \times 24 \times 23$) calcule un
+          arrangement, en supposant qu'une lettre déjà utilisée ne peut plus
+          resservir. Mais l'énoncé autorise explicitement la répétition :
+          chaque position garde $26$ choix possibles, pas un de moins à
+          chaque étape.
+      - id: D
+        text: "$104$"
+        correct: false
+        feedback: >
+          Ce résultat ($26 \times 4$) multiplie le nombre de lettres
+          possibles par le nombre de positions, au lieu d'élever à la
+          puissance. Il faut multiplier $26$ par lui-même $4$ fois
+          ($26^4$), pas multiplier $26$ par $4$.
+    correct_feedback: >
+      Chaque position a 26 choix indépendants (répétition autorisée) :
+      c'est une p-liste, $26^4 = 456\,976$.
+    solution: |
+      **Ce qu'on cherche :** un tirage successif AVEC remise sur 4
+      positions : une p-liste avec $n=26$, $p=4$.
+      $$26^4 = 456\,976$$
+      Il y a 456 976 codes possibles.
+
+  - id: DENOMB-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["p-liste", "tirage-avec-remise"]
+    stem: >
+      On lance un dé à 6 faces trois fois de suite, et on note le résultat
+      de chaque lancer dans l'ordre (par exemple $(3,3,6)$ est un résultat
+      possible, tout comme $(6,3,3)$, qui est différent). Combien de
+      résultats ordonnés différents sont possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$216$"
+        correct: true
+      - id: B
+        text: "$20$"
+        correct: false
+        feedback: >
+          Ce résultat est une combinaison, $\binom{6}{3}=20$, comme si
+          l'ordre des trois lancers n'avait pas d'importance et qu'une même
+          face ne pouvait pas ressortir. Mais $(3,3,6)$ et $(6,3,3)$
+          comptent ici comme deux résultats DIFFÉRENTS, et le dé "se remet"
+          à chaque lancer : c'est une p-liste, pas une combinaison.
+      - id: C
+        text: "$120$"
+        correct: false
+        feedback: >
+          Ce résultat ($6 \times 5 \times 4$) calcule un arrangement sans
+          répétition, comme si une face déjà obtenue ne pouvait plus
+          ressortir aux lancers suivants. Mais chaque lancer est indépendant
+          des précédents : le dé peut parfaitement retomber sur la même face
+          plusieurs fois.
+      - id: D
+        text: "$18$"
+        correct: false
+        feedback: >
+          Ce résultat ($6 \times 3$) multiplie le nombre de faces par le
+          nombre de lancers, au lieu d'élever à la puissance. Chaque lancer
+          ajoute un facteur $6$ multiplicatif : il faut $6 \times 6 \times
+          6 = 6^3$, pas $6 \times 3$.
+    correct_feedback: >
+      Trois lancers indépendants, chacun avec 6 issues possibles, où
+      l'ordre est significatif et la répétition possible : une p-liste,
+      $6^3=216$.
+    solution: |
+      **Ce qu'on cherche :** un tirage successif avec remise (le dé se
+      "remet" à chaque lancer) sur 3 positions ordonnées : une p-liste avec
+      $n=6$, $p=3$.
+      $$6^3 = 216$$
+      Il y a 216 résultats ordonnés possibles.
+
+  - id: DENOMB-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["arrangement", "tirage-sans-remise", "ordre"]
+    stem: >
+      Une course rassemble 9 coureurs. On veut connaître le classement
+      complet des 4 premières places (1er, 2e, 3e, 4e), dans cet ordre
+      exact. Combien de classements des 4 premières places sont possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\,024$"
+        correct: true
+      - id: B
+        text: "$126$"
+        correct: false
+        feedback: >
+          Ce résultat est une combinaison, $\binom{9}{4}=126$, qui ignore
+          l'ordre des 4 premières places. Mais 1er, 2e, 3e et 4e sont quatre
+          rôles distincts : le classement (Ali, Sara, Karim, Nadia) est
+          différent du classement (Sara, Ali, Karim, Nadia). Il faut un
+          arrangement, pas une combinaison.
+      - id: C
+        text: "$6\\,561$"
+        correct: false
+        feedback: >
+          Ce résultat ($9^4$) traite le tirage comme s'il y avait remise,
+          comme si un coureur déjà classé pouvait l'être une seconde fois à
+          un autre rang. Un coureur ne peut occuper qu'UN SEUL rang : le
+          nombre de choix diminue à chaque rang attribué (9, puis 8, puis 7,
+          puis 6), ce n'est pas une p-liste.
+      - id: D
+        text: "$362\\,880$"
+        correct: false
+        feedback: >
+          Ce résultat est $9!$, le nombre de façons de classer les 9
+          coureurs EN ENTIER. Mais l'énoncé ne demande que les 4 premières
+          places : il faut s'arrêter après 4 facteurs ($9 \times 8 \times 7
+          \times 6$), pas continuer jusqu'à $1$.
+    correct_feedback: >
+      L'ordre compte (4 rôles distincts) et un coureur classé ne peut plus
+      l'être une seconde fois : un arrangement, $A_9^4 = 9 \times 8 \times 7
+      \times 6 = 3\,024$.
+    solution: |
+      **Ce qu'on cherche :** un tirage sans remise, ordonné (4 rôles
+      distincts) parmi 9 coureurs : $A_9^4$.
+      $$A_9^4 = 9 \times 8 \times 7 \times 6 = 3\,024$$
+      Il y a 3 024 classements possibles pour les 4 premières places.
+
+  - id: DENOMB-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["arrangement", "tirage-sans-remise", "ordre"]
+    stem: >
+      Un club de 12 membres doit élire un président, un secrétaire et un
+      trésorier — trois postes distincts, chacun occupé par une personne
+      différente. Combien de répartitions de ces trois postes sont
+      possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1\\,320$"
+        correct: true
+      - id: B
+        text: "$220$"
+        correct: false
+        feedback: >
+          Ce résultat est une combinaison, $\binom{12}{3}=220$, qui compte
+          les groupes de 3 personnes SANS distinguer leurs postes. Mais
+          président, secrétaire et trésorier sont trois rôles différents :
+          élire (Ali=président, Sara=secrétaire, Karim=trésorier) est
+          différent d'élire (Sara=président, Ali=secrétaire,
+          Karim=trésorier), même si ce sont les mêmes 3 personnes. Il faut
+          un arrangement.
+      - id: C
+        text: "$1\\,728$"
+        correct: false
+        feedback: >
+          Ce résultat ($12^3$) traite les trois postes comme s'ils
+          pouvaient être occupés par la même personne, alors que l'énoncé
+          précise "chacun occupé par une personne différente". Une fois
+          qu'un membre a un poste, il ne peut plus en occuper un second.
+      - id: D
+        text: "$36$"
+        correct: false
+        feedback: >
+          Ce résultat ($12 \times 3$) multiplie le nombre de membres par le
+          nombre de postes, au lieu d'appliquer le mécanisme de
+          l'arrangement, qui retire un choix à chaque étape : $12 \times 11
+          \times 10$, pas $12 \times 3$.
+    correct_feedback: >
+      Trois postes distincts occupés chacun par une personne différente :
+      un arrangement, $A_{12}^3 = 12 \times 11 \times 10 = 1\,320$.
+    solution: |
+      **Ce qu'on cherche :** trois postes distincts, aucune personne ne
+      pouvant en occuper deux : un arrangement $A_{12}^3$.
+      $$A_{12}^3 = 12 \times 11 \times 10 = 1\,320$$
+      Il y a 1 320 répartitions possibles des trois postes.
+
+  - id: DENOMB-16
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["permutation", "factorielle"]
+    stem: >
+      7 amis veulent se placer côte à côte pour une photo, en occupant
+      chacun une position différente sur la ligne. Combien de dispositions
+      différentes sont possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5\\,040$"
+        correct: true
+      - id: B
+        text: "$823\\,543$"
+        correct: false
+        feedback: >
+          Ce résultat ($7^7$) traite le rangement comme si une même
+          personne pouvait occuper plusieurs positions à la fois. Mais
+          chaque ami ne peut occuper qu'UNE SEULE position, et une position
+          déjà prise ne peut plus être prise par un autre : ce n'est pas un
+          tirage avec remise.
+      - id: C
+        text: "$720$"
+        correct: false
+        feedback: >
+          Ce résultat est $6!$ : le produit ne compte que 6 facteurs ($7
+          \times 6 \times 5 \times 4 \times 3 \times 2$), comme si une des 7
+          positions (ou un des 7 amis) n'existait pas. Il y a bien 7 amis ET
+          7 positions : le produit doit avoir 7 facteurs, pas 6.
+      - id: D
+        text: "$28$"
+        correct: false
+        feedback: >
+          Ce résultat ($7+6+5+4+3+2+1$) additionne les tailles du réservoir
+          restant à chaque étape, au lieu de les multiplier. Placer les amis
+          un par un réduit le nombre de positions disponibles À CHAQUE
+          ÉTAPE, et ces choix successifs se MULTIPLIENT (comme dans tout
+          principe multiplicatif) : ils ne s'additionnent pas.
+    correct_feedback: >
+      Chaque ami placé réduit le nombre de positions restantes de 1, et ces
+      choix successifs se multiplient : $7! = 7 \times 6 \times 5 \times 4
+      \times 3 \times 2 \times 1 = 5\,040$.
+    solution: |
+      **Ce qu'on cherche :** ranger les 7 amis en entier, aucun n'est laissé
+      de côté — une permutation de 7 éléments.
+      $$7! = 7 \times 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 5\,040$$
+      Il y a 5 040 dispositions possibles.
+
+  - id: DENOMB-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["permutation", "factorielle"]
+    stem: >
+      Combien d'anagrammes (mots ayant un sens ou non) peut-on former en
+      utilisant une seule fois chacune des 6 lettres du mot CAHIER (C, A, H,
+      I, E, R) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$720$"
+        correct: true
+      - id: B
+        text: "$46\\,656$"
+        correct: false
+        feedback: >
+          Ce résultat ($6^6$) traite les lettres comme réutilisables à
+          chaque position (répétition autorisée). Mais chaque lettre du mot
+          CAHIER est utilisée UNE SEULE FOIS : une fois placée, elle ne peut
+          plus être replacée ailleurs.
+      - id: C
+        text: "$360$"
+        correct: false
+        feedback: >
+          Ce résultat divise $6!$ par $2$, comme s'il y avait une lettre
+          répétée dans CAHIER à "effacer". Mais les 6 lettres C, A, H, I, E,
+          R sont toutes DIFFÉRENTES : il n'y a aucune répétition à corriger,
+          donc pas de division à faire — c'est une permutation simple,
+          $6!$, sans ajustement.
+      - id: D
+        text: "$21$"
+        correct: false
+        feedback: >
+          Ce résultat ($6+5+4+3+2+1$) additionne les tailles du réservoir
+          restant à chaque position, au lieu de les multiplier. Il faut
+          $6 \times 5 \times 4 \times 3 \times 2 \times 1$, pas
+          $6+5+4+3+2+1$.
+    correct_feedback: >
+      6 lettres toutes distinctes, aucune répétition à corriger : une
+      permutation simple, $6! = 720$.
+    solution: |
+      **Ce qu'on cherche :** ranger les 6 lettres distinctes de CAHIER, sans
+      aucune répétition à traiter — une permutation simple de 6 éléments.
+      $$6! = 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720$$
+      Il y a 720 anagrammes possibles.
+
+  - id: DENOMB-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["combinaison", "tirage-simultane"]
+    stem: >
+      On doit former une équipe de 5 joueurs à partir de 11 candidats, sans
+      distinction de poste entre les 5 joueurs retenus. Combien d'équipes
+      différentes peut-on former ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$462$"
+        correct: true
+      - id: B
+        text: "$55\\,440$"
+        correct: false
+        feedback: >
+          Ce résultat est l'arrangement $A_{11}^5 = 11 \times 10 \times 9
+          \times 8 \times 7 = 55\,440$, qui distingue l'ordre des 5 joueurs.
+          Mais une équipe "sans distinction de poste" ne distingue aucun
+          ordre : chaque groupe de 5 est compté $5!=120$ fois dans cet
+          arrangement. Il faut diviser par $5!$ pour ne compter chaque
+          équipe qu'une seule fois.
+      - id: C
+        text: "$16$"
+        correct: false
+        feedback: >
+          Ce résultat additionne $11+5=16$ au lieu d'appliquer le mécanisme
+          de la combinaison. Former une équipe n'est ni une alternative
+          entre deux familles séparées, ni une simple somme : c'est un
+          tirage simultané d'un groupe, qui se calcule avec $\binom{n}{p}$.
+      - id: D
+        text: "$161\\,051$"
+        correct: false
+        feedback: >
+          Ce résultat ($11^5$) suppose qu'un même candidat pourrait être
+          choisi plusieurs fois pour l'équipe, comme dans une p-liste avec
+          répétition. Mais chaque candidat ne peut faire partie de l'équipe
+          qu'une seule fois.
+    correct_feedback: >
+      Une équipe sans rôles distincts est un tirage simultané : une
+      combinaison. $\binom{11}{5} = \dfrac{A_{11}^5}{5!} =
+      \dfrac{55\,440}{120} = 462$.
+    solution: |
+      **Ce qu'on cherche :** 5 joueurs choisis parmi 11, sans ordre — une
+      combinaison.
+      $$A_{11}^5 = 11 \times 10 \times 9 \times 8 \times 7 = 55\,440$$
+      $$\binom{11}{5} = \frac{55\,440}{5!} = \frac{55\,440}{120} = 462$$
+      Il y a 462 équipes possibles.
+
+  - id: DENOMB-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["combinaison", "tirage-simultane"]
+    stem: >
+      On choisit une délégation de 4 élèves parmi 15 pour représenter la
+      classe, sans aucune hiérarchie entre les 4 élèves choisis. Combien de
+      délégations différentes sont possibles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1\\,365$"
+        correct: true
+      - id: B
+        text: "$32\\,760$"
+        correct: false
+        feedback: >
+          Ce résultat est l'arrangement $A_{15}^4 = 15 \times 14 \times 13
+          \times 12 = 32\,760$, qui distingue l'ordre des 4 élèves. Mais une
+          délégation "sans hiérarchie" ne distingue aucun ordre : chaque
+          groupe de 4 est compté $4!=24$ fois dans cet arrangement. Il faut
+          diviser par $4!$ pour ne compter chaque délégation qu'une seule
+          fois.
+      - id: C
+        text: "$60$"
+        correct: false
+        feedback: >
+          Ce résultat ($15 \times 4$) multiplie le nombre d'élèves par le
+          nombre de places dans la délégation, au lieu d'utiliser le
+          mécanisme de la combinaison. Il faut d'abord former l'arrangement
+          $A_{15}^4$, puis diviser par $4!$ — pas multiplier $15$ par $4$.
+      - id: D
+        text: "$50\\,625$"
+        correct: false
+        feedback: >
+          Ce résultat ($15^4$) suppose qu'un même élève pourrait être choisi
+          plusieurs fois pour la délégation, comme dans une p-liste avec
+          répétition. Mais chaque élève ne peut faire partie de la
+          délégation qu'une seule fois.
+    correct_feedback: >
+      Une délégation sans hiérarchie est un tirage simultané : une
+      combinaison. $\binom{15}{4} = \dfrac{A_{15}^4}{4!} =
+      \dfrac{32\,760}{24} = 1\,365$.
+    solution: |
+      **Ce qu'on cherche :** 4 élèves choisis parmi 15, sans ordre — une
+      combinaison.
+      $$A_{15}^4 = 15 \times 14 \times 13 \times 12 = 32\,760$$
+      $$\binom{15}{4} = \frac{32\,760}{4!} = \frac{32\,760}{24} = 1\,365$$
+      Il y a 1 365 délégations possibles.
+
+  - id: DENOMB-20
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_denombrement
+    tags: ["combinaison", "symetrie"]
+    stem: >
+      On sait que $\binom{12}{5} = 792$. En utilisant la propriété de
+      symétrie, que vaut $\binom{12}{7}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$792$"
+        correct: true
+      - id: B
+        text: "$5$"
+        correct: false
+        feedback: >
+          Tu as confondu la propriété de symétrie avec une simple
+          différence : $12-7=5$, mais $\binom{12}{7}$ n'est PAS égal à
+          $12-7$. La symétrie dit que $\binom{12}{7} = \binom{12}{12-7} =
+          \binom{12}{5}$ (donc $792$), pas que $\binom{12}{7}$ vaut
+          littéralement $5$.
+      - id: C
+        text: "$396$"
+        correct: false
+        feedback: >
+          Tu as divisé $792$ par $2$, comme si $\binom{12}{7}$ et
+          $\binom{12}{5}$ se partageaient la valeur totale. En réalité, ces
+          deux quantités sont EXACTEMENT ÉGALES (chaque choix de 7 éléments
+          à garder correspond exactement à un choix de 5 éléments à
+          écarter) — ce n'est pas la moitié l'une de l'autre.
+      - id: D
+        text: "On ne peut pas savoir sans refaire tout le calcul avec les factorielles"
+        correct: false
+        feedback: >
+          C'est justement l'intérêt de la propriété de symétrie,
+          $\binom{n}{p} = \binom{n}{n-p}$ : elle permet de retrouver
+          $\binom{12}{7}$ directement à partir de $\binom{12}{5}$ déjà
+          connu, sans repasser par les factorielles.
+    correct_feedback: >
+      $12-7=5$, donc par symétrie $\binom{12}{7} = \binom{12}{5} = 792$ :
+      chaque choix de 7 éléments à garder détermine exactement un choix de 5
+      éléments à écarter, et réciproquement.
+    solution: |
+      Propriété de symétrie : $\binom{n}{p} = \binom{n}{n-p}$, avec $n=12$,
+      $p=7$. Comme $12-7=5$ :
+      $$\binom{12}{7} = \binom{12}{5} = 792$$
+
+  - id: DENOMB-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_denombrement
+    tags: ["combinaison", "triangle-de-pascal", "relation-de-pascal"]
+    stem: >
+      En utilisant la relation de Pascal, sachant que $\binom{6}{2}=15$ et
+      $\binom{6}{3}=20$, que vaut $\binom{7}{3}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$35$"
+        correct: true
+      - id: B
+        text: "$300$"
+        correct: false
+        feedback: >
+          Tu as multiplié $15 \times 20 = 300$ au lieu d'additionner. La
+          relation de Pascal repose sur un principe ADDITIF : un groupe
+          contient l'élément fixé, ou il ne le contient pas — deux cas
+          disjoints qu'on additionne, jamais qu'on multiplie.
+          $\binom{n}{p} = \binom{n-1}{p-1} + \binom{n-1}{p}$.
+      - id: C
+        text: "$5$"
+        correct: false
+        feedback: >
+          Tu as soustrait $20-15=5$ au lieu d'additionner. La relation de
+          Pascal additionne les deux cas disjoints (le groupe contient
+          l'élément fixé, ou il ne le contient pas), elle ne les soustrait
+          jamais.
+      - id: D
+        text: "$20$"
+        correct: false
+        feedback: >
+          Tu n'as gardé que $\binom{6}{3}=20$, en oubliant complètement le
+          second terme $\binom{6}{2}=15$ de la relation de Pascal. Il faut
+          additionner les DEUX termes, pas n'en retenir qu'un seul.
+    correct_feedback: >
+      Relation de Pascal : $\binom{7}{3} = \binom{6}{2} + \binom{6}{3} = 15
+      + 20 = 35$.
+    solution: |
+      $$\binom{n}{p} = \binom{n-1}{p-1} + \binom{n-1}{p}$$
+      avec $n=7$, $p=3$ :
+      $$\binom{7}{3} = \binom{6}{2} + \binom{6}{3} = 15 + 20 = 35$$
+      (Vérification directe : $\binom{7}{3} = \frac{7 \times 6 \times 5}{3
+      \times 2 \times 1} = 35$.)
+
+  - id: DENOMB-22
+    rung: "R6"
+    difficulty_level: 1
+    skill_code: maths_denombrement
+    tags: ["combinaison", "valeurs-particulieres"]
+    stem: >
+      Sans calculer de factorielle, que vaut $\binom{9}{0}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        feedback: >
+          Tu penses que "choisir 0 élément" signifie "aucune possibilité",
+          donc $0$. Mais il existe justement UNE seule façon de ne rien
+          choisir (le groupe vide), pas zéro façon : $\binom{n}{0}=1$ pour
+          tout $n$, jamais $0$.
+      - id: C
+        text: "$9$"
+        correct: false
+        feedback: >
+          Tu confonds $\binom{9}{0}$ avec $\binom{9}{1}$ (choisir 1 élément
+          parmi 9, qui vaut bien $9$). Ici c'est $0$ élément à choisir, pas
+          $1$ : la bonne valeur est $\binom{9}{0}=1$.
+      - id: D
+        text: "Cette expression n'a pas de sens, car on ne peut pas choisir 0 élément"
+        correct: false
+        feedback: >
+          $\binom{9}{0}$ est parfaitement défini : c'est le nombre de
+          façons de choisir un groupe VIDE parmi 9 éléments, et il n'y en a
+          qu'une seule (ne rien prendre) — cette expression a un sens
+          précis et une valeur bien définie, $1$.
+    correct_feedback: >
+      Il n'y a qu'une seule façon de choisir "rien du tout" parmi 9
+      éléments (le groupe vide) : $\binom{9}{0}=1$, quel que soit $n$.
+    solution: |
+      $\binom{n}{0}=1$ pour tout $n$ (une seule façon de ne rien choisir :
+      le groupe vide). Ici, $\binom{9}{0}=1$.
+
+  - id: DENOMB-23
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_denombrement
+    tags: ["probabilite", "equiprobabilite", "combinaison"]
+    stem: >
+      Une urne contient 6 boules rouges et 5 boules bleues, indiscernables
+      au toucher. On tire simultanément 4 boules. Quelle est la probabilité
+      d'obtenir exactement 2 boules rouges et 2 boules bleues ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{5}{11}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{25}{330}$"
+        correct: false
+        feedback: >
+          Tu as additionné $\binom{6}{2} + \binom{5}{2} = 15+10=25$ au lieu
+          de multiplier. Mais "2 rouges ET 2 bleues" combine DEUX groupes
+          différents en même temps (pas une alternative entre eux) : c'est
+          le principe multiplicatif qui s'applique au numérateur,
+          $\binom{6}{2} \times \binom{5}{2}$, pas le principe additif.
+      - id: C
+        text: "$\\dfrac{150}{15}$"
+        correct: false
+        feedback: >
+          Tu as utilisé $\binom{6}{4}=15$ comme dénominateur, comme si
+          l'univers ne contenait QUE les boules rouges. Mais l'univers est
+          TOUTE l'urne (11 boules, rouges et bleues confondues) : le
+          dénominateur d'une probabilité par équiprobabilité est toujours le
+          nombre total de tirages possibles dans TOUT l'univers,
+          $\binom{11}{4}=330$, pas un sous-groupe. (Remarque : $150/15=10$
+          n'est même pas une probabilité valide, un signal que quelque
+          chose ne va pas.)
+      - id: D
+        text: "$\\dfrac{15}{330}$"
+        correct: false
+        feedback: >
+          Tu as gardé seulement $\binom{6}{2}=15$ au numérateur, en
+          oubliant complètement la condition sur les boules bleues.
+          L'événement demande 2 rouges ET 2 bleues : il faut le produit des
+          deux choix, $\binom{6}{2} \times \binom{5}{2}=150$, pas un seul
+          des deux facteurs.
+    correct_feedback: >
+      Univers : $\binom{11}{4}=330$ (tirage simultané de 4 boules parmi 11).
+      Favorable : $\binom{6}{2} \times \binom{5}{2} = 15 \times 10 = 150$ (2
+      rouges ET 2 bleues, principe multiplicatif entre deux combinaisons).
+      $P = \dfrac{150}{330} = \dfrac{5}{11}$.
+    solution: |
+      **Univers :** choisir 4 boules parmi les 11 de l'urne.
+      $$\text{card}(\Omega) = \binom{11}{4} = \frac{11 \times 10 \times 9
+      \times 8}{4 \times 3 \times 2 \times 1} = 330$$
+
+      **Événement favorable :** 2 rouges parmi les 6, ET 2 bleues parmi les
+      5.
+      $$\text{card}(E) = \binom{6}{2} \times \binom{5}{2} = 15 \times 10 = 150$$
+
+      **Probabilité :**
+      $$P(E) = \frac{150}{330} = \frac{5}{11}$$
+
+  - id: DENOMB-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_denombrement
+    tags: ["probabilite", "equiprobabilite", "arrangement"]
+    stem: >
+      On tire successivement et sans remise 3 cartes parmi 10 cartes
+      numérotées de 1 à 10, en notant l'ordre du tirage. Quelle est la
+      probabilité que les 3 cartes tirées soient exactement, dans cet
+      ordre, 1 puis 2 puis 3 ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{720}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{6}{720}$"
+        correct: false
+        feedback: >
+          Tu as compté $3!=6$ cas favorables, comme si n'importe quel ORDRE
+          des cartes 1, 2, 3 convenait. Mais l'énoncé impose un ordre précis
+          (1 PUIS 2 PUIS 3), pas n'importe lequel des $3!$ arrangements
+          possibles de ces trois cartes : il n'y a qu'UN SEUL tirage
+          favorable, pas six.
+      - id: C
+        text: "$\\dfrac{1}{120}$"
+        correct: false
+        feedback: >
+          Tu as utilisé $\binom{10}{3}=120$ au dénominateur, une
+          combinaison qui ignore l'ordre. Mais ici le tirage est SUCCESSIF
+          et un ordre précis est demandé (1er, 2e, 3e tirage) : l'univers
+          est un arrangement, $A_{10}^3=720$, pas une combinaison.
+      - id: D
+        text: "$\\dfrac{1}{1\\,000}$"
+        correct: false
+        feedback: >
+          Tu as utilisé $10^3=1\,000$ au dénominateur, comme si les cartes
+          étaient remises après chaque tirage. Mais "sans remise" signifie
+          qu'une carte déjà tirée ne peut plus ressortir : l'univers est
+          l'arrangement $A_{10}^3=10 \times 9 \times 8=720$, pas une
+          puissance.
+    correct_feedback: >
+      Tirage successif sans remise, avec un ordre exigé : univers =
+      $A_{10}^3=720$. Un seul tirage donne exactement (1,2,3) dans cet
+      ordre : favorable = 1. $P = \dfrac{1}{720}$.
+    solution: |
+      **Univers :** tirage ordonné sans remise de 3 cartes parmi 10.
+      $$\text{card}(\Omega) = A_{10}^3 = 10 \times 9 \times 8 = 720$$
+
+      **Événement favorable :** un seul résultat convient, l'ordre exact
+      (1, 2, 3).
+      $$\text{card}(E) = 1$$
+
+      **Probabilité :**
+      $$P(E) = \frac{1}{720}$$
+
+  - id: DENOMB-25
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_denombrement
+    tags: ["p-liste", "principe-multiplicatif", "application"]
+    stem: >
+      Un code de réduction est formé de 2 lettres majuscules (parmi les 26)
+      suivies de 3 chiffres (parmi 0 à 9). Les lettres peuvent se répéter
+      entre elles, et les chiffres aussi. Combien de codes de réduction
+      différents existe-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$676\\,000$"
+        correct: true
+      - id: B
+        text: "$1\\,560$"
+        correct: false
+        feedback: >
+          Ce résultat ($26 \times 2 \times 10 \times 3$) multiplie le
+          nombre de lettres par le nombre de positions de lettres, et le
+          nombre de chiffres par le nombre de positions de chiffres, au lieu
+          d'élever chaque partie à la puissance correspondante. Chaque
+          lettre est un choix indépendant parmi 26 (donc $26^2$, pas $26
+          \times 2$), et chaque chiffre un choix indépendant parmi 10 (donc
+          $10^3$, pas $10 \times 3$).
+      - id: C
+        text: "$1\\,676$"
+        correct: false
+        feedback: >
+          Ce résultat ($676+1\,000$) additionne les deux parties du code
+          (lettres et chiffres) au lieu de les multiplier. Un code complet
+          est composé de 2 lettres ET 3 chiffres qui se combinent ENSEMBLE
+          : c'est le principe multiplicatif entre les deux blocs, $26^2
+          \times 10^3$, pas une somme.
+      - id: D
+        text: "$468\\,000$"
+        correct: false
+        feedback: >
+          Ce résultat ($26 \times 25 \times 10 \times 9 \times 8$) calcule
+          comme si les lettres ne pouvaient pas se répéter entre elles ($26
+          \times 25$) et les chiffres non plus ($10 \times 9 \times 8$).
+          Mais l'énoncé autorise explicitement la répétition pour les deux
+          : chaque lettre garde 26 choix (donc $26^2$), chaque chiffre garde
+          10 choix (donc $10^3$).
+    correct_feedback: >
+      2 lettres avec répétition ($26^2=676$) ET 3 chiffres avec répétition
+      ($10^3=1\,000$), deux blocs qui se combinent : $676 \times 1\,000 =
+      676\,000$.
+    solution: |
+      **Bloc lettres :** p-liste, $n=26$, $p=2$ : $26^2=676$.
+      **Bloc chiffres :** p-liste, $n=10$, $p=3$ : $10^3=1\,000$.
+      Les deux blocs se combinent (principe multiplicatif) :
+      $$676 \times 1\,000 = 676\,000$$
+      Il y a 676 000 codes de réduction possibles.
+
+  - id: DENOMB-26
+    rung: "R8"
+    difficulty_level: 5
+    skill_code: maths_denombrement
+    tags: ["combinaison", "probabilite", "equiprobabilite", "application"]
+    stem: >
+      Un jury de 4 personnes est tiré au hasard parmi 8 scientifiques et 5
+      littéraires (13 candidats en tout), tous les jurys de 4 étant
+      équiprobables. Quelle est la probabilité que le jury contienne
+      exactement 3 scientifiques et 1 littéraire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{56}{143}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{61}{715}$"
+        correct: false
+        feedback: >
+          Tu as additionné $\binom{8}{3} + \binom{5}{1} = 56+5=61$ au lieu
+          de multiplier. "3 scientifiques ET 1 littéraire" combine deux
+          choix simultanés : c'est le principe multiplicatif entre les deux
+          combinaisons, $\binom{8}{3} \times \binom{5}{1}$, pas une somme.
+      - id: C
+        text: "$\\dfrac{280}{56}$"
+        correct: false
+        feedback: >
+          Tu as utilisé $\binom{8}{3}=56$ comme dénominateur, comme si
+          l'univers ne contenait que les scientifiques. Mais l'univers est
+          l'ensemble des 13 candidats (scientifiques ET littéraires
+          confondus) : le dénominateur correct est $\binom{13}{4}=715$, le
+          nombre total de jurys possibles, pas un sous-groupe.
+      - id: D
+        text: "$\\dfrac{280}{17\\,160}$"
+        correct: false
+        feedback: >
+          Tu as utilisé $A_{13}^4=17\,160$ au dénominateur, un arrangement
+          qui distingue l'ordre des 4 membres. Mais un jury n'a pas d'ordre
+          entre ses membres : il faut une combinaison, $\binom{13}{4}=715$,
+          pas un arrangement.
+    correct_feedback: >
+      Univers : $\binom{13}{4}=715$. Favorable : $\binom{8}{3} \times
+      \binom{5}{1} = 56 \times 5 = 280$. $P = \dfrac{280}{715} =
+      \dfrac{56}{143}$.
+    solution: |
+      **Univers :** choisir 4 personnes parmi les 13 candidats.
+      $$\text{card}(\Omega) = \binom{13}{4} = \frac{13 \times 12 \times 11
+      \times 10}{4 \times 3 \times 2 \times 1} = 715$$
+
+      **Événement favorable :** 3 scientifiques parmi les 8, ET 1
+      littéraire parmi les 5.
+      $$\text{card}(E) = \binom{8}{3} \times \binom{5}{1} = 56 \times 5 = 280$$
+
+      **Probabilité :**
+      $$P(E) = \frac{280}{715} = \frac{56}{143}$$
+
+  - id: DENOMB-27
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_denombrement
+    tags: ["combinaison", "probabilite", "equiprobabilite", "application"]
+    stem: >
+      Une urne contient 8 boules numérotées de 1 à 8. On tire simultanément
+      2 boules. Quelle est la probabilité que la somme des deux numéros
+      tirés soit égale à 9 ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{7}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{4}{64}$"
+        correct: false
+        feedback: >
+          Tu as utilisé $8^2=64$ au dénominateur, comme s'il s'agissait
+          d'un tirage avec remise (une boule pourrait sortir deux fois, et
+          l'ordre compterait). Mais un tirage SIMULTANÉ de 2 boules ne
+          permet ni la répétition ni l'ordre : l'univers est une
+          combinaison, $\binom{8}{2}=28$, pas une puissance.
+      - id: C
+        text: "$\\dfrac{8}{28}$"
+        correct: false
+        feedback: >
+          Tu as compté chaque paire deux fois (par exemple $\{1,8\}$ ET
+          $\{8,1\}$ séparément), comme si l'ordre des deux boules avait de
+          l'importance. Mais un tirage simultané ne distingue pas l'ordre :
+          $\{1,8\}$ et $\{8,1\}$ sont la MÊME paire. Il n'y a que 4 paires
+          favorables distinctes, pas 8.
+      - id: D
+        text: "$\\dfrac{5}{28}$"
+        correct: false
+        feedback: >
+          Cette liste inclut une paire invalide. En relisant l'ensemble
+          $\{1,\ldots,8\}$, les seules paires de deux boules DISTINCTES dont
+          la somme vaut 9 sont $\{1,8\}$, $\{2,7\}$, $\{3,6\}$, $\{4,5\}$ —
+          exactement 4 paires, pas 5.
+    correct_feedback: >
+      Univers : $\binom{8}{2}=28$. Favorable : les 4 paires $\{1,8\},
+      \{2,7\}, \{3,6\}, \{4,5\}$. $P = \dfrac{4}{28} = \dfrac{1}{7}$.
+    solution: |
+      **Univers :** choisir 2 boules parmi les 8 de l'urne.
+      $$\text{card}(\Omega) = \binom{8}{2} = \frac{8 \times 7}{2 \times 1} = 28$$
+
+      **Événement favorable :** les paires dont la somme vaut 9 :
+      $\{1,8\}$, $\{2,7\}$, $\{3,6\}$, $\{4,5\}$ — soit 4 paires.
+      $$\text{card}(E) = 4$$
+
+      **Probabilité :**
+      $$P(E) = \frac{4}{28} = \frac{1}{7}$$
