@@ -132,6 +132,9 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   // D10 wave C — PC chimie
   "avancement-tangente": "L'avancement x(t) et la tangente en un instant t1 : la pente de la tangente donne la vitesse volumique de réaction",
   "temps-demi-reaction": "Construction graphique du temps de demi-réaction t½ : ligne horizontale à x_f/2, descente verticale vers t½ sur l'axe des temps",
+  // B2 wave P5 — suivi-temporel-vitesse accroche + lecture figures
+  "prediction-avancement": "Accroche : deux hypothèses sur l'allure de x(t), une droite à vitesse constante et une courbe qui ralentit vers un plateau, puis la révélation qu'aucune droite ne correspond à l'observation réelle",
+  "tangentes-decroissantes": "Deux tangentes à la courbe x(t) : une pente forte tout au début de la réaction et une pente faible près du plateau, montrant que la vitesse volumique de réaction diminue continûment",
   "lente-rapide":        "Transformation rapide et transformation lente : mêmes états initial et final, seule l'échelle de temps change",
   "facteurs-cinetiques": "Un facteur cinétique change la vitesse, pas l'état final : plusieurs courbes x(t) atteignant le même plateau à des vitesses différentes",
   "effet-catalyseur":    "Pourquoi un catalyseur ne déplace pas l'équilibre : il accélère l'atteinte du même état final",

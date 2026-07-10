@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La courbe x(t) avec deux tangentes : une pente forte tout au début de la réaction et une pente faible près du plateau, montrant que la vitesse volumique de réaction diminue continûment au cours du temps, sans aucune valeur de pente affichée.">
+  <title>Deux tangentes à x(t) : la pente diminue avec le temps</title>
+  <!--
+    tangentes-decroissantes.svg — figure de lecture (R3, wave B2 P5), placée
+    juste avant la confirmation numérique v(8 min)/v(30 min) du texte : rend
+    VISIBLE, par contraste de pente seul, que la vitesse volumique de
+    réaction diminue continûment. Contrainte dure du brief : AUCUN nombre
+    de pente affiché sur la figure — seul le contraste "raide" vs "presque
+    plate" porte l'idée.
+
+    Étape 1 : les mêmes axes qu'avancement-tangente.svg, chrome VERBATIM
+    (panel, flèches, repères "0" et x_max — ce ne sont pas des valeurs de
+    pente, la contrainte dure ne les vise pas) ; seul le titre change pour
+    refléter le sujet de cette figure.
+
+    Étape 2 : la même courbe x(t) qu'avancement-tangente.svg step-2, chemin
+    "d" identique, verbatim (x(t) = x_max·(1−e^(−t/τ)), x_max=5,0 mmol,
+    τ=8/ln2≈11,5416 min — calcul complet dans ce fichier-là).
+
+    Étape 3 : deux tangentes à la courbe, calculées ANALYTIQUEMENT à partir
+    du même modèle (pas devinées à l'oeil), à deux instants choisis pour
+    leur seul contraste visuel — ni l'un ni l'autre n'est un repère nommé
+    ailleurs dans la leçon (ni t1=8 min de avancement-tangente.svg, ni
+    t=30 min du calcul de R3 ; choisis délibérément différents pour ne pas
+    laisser croire que cette figure ILLUSTRE ces calculs-là au pixel près —
+    elle illustre seulement le CONTRASTE de pente) :
+
+      dx/dt(t) = (x_max/τ)·e^(−t/τ) = 0,43325·e^(−t/τ) mmol/min (analytique,
+      dérivée exacte du modèle tracé en step-2, pas une estimation par
+      sécante).
+
+      "pente forte" en t=2 min :
+        x(2) = 5,0·(1−e^(−2/τ)) = 0,79545 mmol → point de tangence en pixels
+        (93,25 ; 310,23) [t_px = 80+6,625·t ; y_px = 350−50·x, mêmes
+        échelles qu'avancement-tangente.svg].
+        dx/dt(2) = 0,36433 mmol/min → pente écran = −(50·dx/dt)/6,625
+        ≈ −2,7497 px/px (quasi verticale, cohérent avec "pente forte").
+        Droite tracée de (80 ; 346,67) [bord gauche du repère, t≈0] à
+        (187,89 ; 50) [bord haut du repère] — calculée pour passer
+        EXACTEMENT par le point de tangence avec cette pente, pas raccourcie
+        à l'oeil.
+
+      "pente faible" en t=50 min :
+        x(50) = 5,0·(1−e^(−50/τ)) = 4,93433 mmol → point de tangence en
+        pixels (411,25 ; 103,28).
+        dx/dt(50) = 0,005692 mmol/min → pente écran ≈ −0,04296 px/px
+        (quasi horizontale, cohérent avec "pente faible").
+        Droite tracée de (300 ; 108,06) à (610 ; 94,74).
+
+      Vérification de non-croisement : x(t) est concave (dx/dt décroissante,
+      d²x/dt² < 0) donc toute tangente reste AU-DESSUS de la courbe (y_px
+      plus petit) partout sauf au point de tangence — vérifié numériquement
+      aux deux extrémités de chaque segment tracé (pas de croisement visuel
+      avec la courbe de l'étape 2).
+
+      Aucune de ces valeurs (pentes, instants t=2 min / t=50 min) n'apparaît
+      en texte sur la figure : seules les étiquettes "pente forte" / "pente
+      faible" sont affichées, conformément à la contrainte dure du brief.
+
+    Rôle des couleurs : les deux tangentes, leurs points de tangence et
+    leurs étiquettes sont --figure-accent (LE sujet de cette figure) ; la
+    courbe reste --figure-ink (structure, pas le sujet) ; les axes restent
+    --figure-ink-soft (chrome neutre, identique à avancement-tangente.svg).
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Suivi temporel — la pente de la courbe x(t) diminue avec le temps
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="350" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="72" y="54" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan> (mmol)</tspan></text>
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+    <text x="605" y="368" text-anchor="end" font-size="10.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan><tspan> (min)</tspan></text>
+
+    <!-- Repère x_max (plateau, ink-soft — chrome, identique à avancement-tangente.svg) -->
+    <line x1="76" y1="100" x2="84" y2="100"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="104" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!--
+      Courbe x(t) — identique à avancement-tangente.svg step-2 (même
+      polyligne, même modèle). Couleur ink : structure de fond, pas le sujet.
+    -->
+    <path d="
+      M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
+      L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
+      L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
+      L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
+      L610,100.24
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Tangente "pente forte" (t=2 min — calcul en en-tête) -->
+    <line x1="80" y1="346.67" x2="187.89" y2="50"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+    <circle cx="93.25" cy="310.23" r="3.2" fill="var(--figure-accent)"/>
+    <text x="193" y="46" font-size="11" fill="var(--figure-accent)">pente forte</text>
+
+    <!-- Tangente "pente faible" (t=50 min — calcul en en-tête) -->
+    <line x1="300" y1="108.06" x2="610" y2="94.74"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+    <circle cx="411.25" cy="103.28" r="3.2" fill="var(--figure-accent)"/>
+    <text x="560" y="135" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">pente faible</text>
+  </g><!-- /step-3 -->
+
+</svg>

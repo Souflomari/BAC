@@ -10,6 +10,8 @@ Mais si, au lieu d'attendre la fin, tu mesurais l'intensité de cette teinte min
 
 Avant de lire la suite, prends position, en une phrase : à quoi ressemblerait cette courbe, à ton avis ? Une droite qui monte à rythme constant, à la même vitesse du début à la fin ? Ou une courbe qui grimpe vite au tout début, puis de plus en plus lentement, jusqu'à devenir presque plate bien avant que tu n'aies arrêté ton chronomètre ?
 
+[[figure:prediction-avancement]]
+
 Voici ce qu'on observe réellement, si on prend une mesure toutes les minutes : la courbe ne monte JAMAIS à rythme constant. Elle grimpe vite dès les premières minutes, puis ralentit sans cesse, et devient quasiment horizontale largement avant la « fin » que tu chronométrais dans le chapitre précédent. Si tu avais prédit une droite, l'écart avec cette observation est justement ce qu'on va comprendre. Si tu avais deviné le ralentissement, la vraie question commence maintenant : comment transformer cette courbe en un nombre précis — une vitesse, à un instant donné, exprimée dans une unité — plutôt qu'une impression visuelle de « ça ralentit » ?
 
 C'est exactement la promesse du chapitre précédent : mesurer une grandeur physique liée à l'avancement de la réaction, minute après minute, pour en tirer une vitesse chiffrée. C'est l'objet de cette leçon : comment suivre une transformation dans le temps, comment construire et lire sa courbe d'avancement $x(t)$, comment en extraire une vitesse volumique de réaction à n'importe quel instant, et comment repérer un repère de durée particulier, le temps de demi-réaction.
@@ -133,6 +135,8 @@ Regarde le tableau de R2 : entre $t=0$ et $t=4\ \text{min}$, $x$ gagne $1{,}4\ \
 ### Ce que dit vraiment la vitesse volumique
 
 $v(t)$ est **maximale tout au début** de la réaction (au tout premier instant, la pente de $x(t)$ est la plus raide de toute la courbe) et **diminue continûment** ensuite, en tendant vers zéro à mesure que la réaction s'achève.
+
+[[figure:tangentes-decroissantes]]
 
 Reprends le calcul de R2 : $v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$. Calculons maintenant $v(30\ \text{min})$, avec la même méthode de sécante symétrique, en utilisant les points $t=20\ \text{min}$ et $t=40\ \text{min}$ du tableau :
 
