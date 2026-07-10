@@ -305,3 +305,1311 @@ items:
       À comparer aux deux pièges : l'intégrale directe donne $-3$ (signée,
       pas une aire), et sa valeur absolue donne $3$ (toujours faux, car
       l'annulation a déjà eu lieu avant la valeur absolue).
+
+  - id: CI-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_calcul_integral
+    tags: [accroche, aire_sous_courbe]
+    stem: >
+      Sur $[0,2]$, une voiture roule avec $v(t)=t^2$ (en m/s). Pourquoi ne
+      peut-on pas calculer la distance parcourue avec une simple formule
+      d'aire de rectangle ou de triangle, comme on le ferait pour une
+      vitesse constante ou une vitesse qui croît proportionnellement au
+      temps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La courbe de $v$ est une parabole : ni le contour d'un rectangle (vitesse constante) ni celui d'un triangle (vitesse proportionnelle au temps) ne suit sa forme courbe."
+        correct: true
+      - id: B
+        text: "Parce que la vitesse devient trop grande à la fin de l'intervalle pour ces formules."
+        correct: false
+        feedback: >
+          Ce raisonnement fait dépendre la méthode de la taille des
+          nombres, alors que c'est la forme du contour (droite ou courbe)
+          qui décide si une formule de géométrie plane s'applique — pas
+          l'ampleur des valeurs de $v(t)$.
+      - id: C
+        text: "Parce que la voiture part de l'arrêt, avec $v(0)=0$, ce qui empêche d'utiliser une formule d'aire."
+        correct: false
+        feedback: >
+          Un rectangle ou un triangle peut très bien avoir un côté de
+          hauteur nulle en un point — ce n'est pas $v(0)=0$ qui pose
+          problème, c'est le fait que $v(t)=t^2$ ne trace ni une droite
+          horizontale ni une droite oblique entre $t=0$ et $t=2$.
+      - id: D
+        text: "Parce que le temps $t$ n'est pas une longueur, donc on ne peut pas parler d'aire sous cette courbe."
+        correct: false
+        feedback: >
+          Sur un graphique vitesse-temps, l'aire sous la courbe se lit bien
+          comme une distance (produit vitesse × temps), quelles que soient
+          les unités des axes — c'est le principe rappelé au début du rung.
+          Le problème n'est pas la nature des axes, c'est la forme courbe
+          du contour.
+    correct_feedback: >
+      Une formule d'aire de géométrie plane (rectangle, triangle) suppose
+      un contour fait de segments de droite. Ici, $v(t)=t^2$ trace une
+      parabole : aucun découpage en rectangles ou en triangles ne colle
+      exactement à ce contour courbe.
+    solution: |
+      Un rectangle correspond à une vitesse constante ; un triangle
+      correspond à une vitesse qui croît proportionnellement au temps (une
+      droite). Ici, $v(t)=t^2$ n'est ni l'une ni l'autre : c'est une
+      parabole, un contour courbe qu'aucune formule de géométrie plane
+      classique ne mesure exactement. C'est précisément le problème que ce
+      chapitre va résoudre, à partir du rung suivant.
+
+  - id: CI-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_calcul_integral
+    tags: [accroche, estimation]
+    stem: >
+      Toujours avec $v(t)=t^2$ sur $[0,2]$ : la droite reliant les points
+      $(0,0)$ et $(2,4)$ délimite, avec l'axe des temps, un triangle
+      d'aire $\frac12 \times 2 \times 4 = 4$. Sans calculer précisément
+      l'aire sous la parabole, peux-tu dire si elle est plus grande, plus
+      petite, ou égale à cette aire de $4$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Plus grande que $4$, car la vitesse augmente de plus en plus vite : la courbe finit par dépasser la droite avant $t=2$."
+        correct: false
+        feedback: >
+          Vérifie sur un point intermédiaire, $t=1$ : la parabole vaut
+          $v(1)=1$, alors que la droite (qui va de $0$ à $4$ en $2$
+          secondes) vaut $2\times1=2$ à cet instant. La parabole est EN
+          DESSOUS de la droite sur tout l'intervalle, pas au-dessus — la
+          vitesse s'accélère mais reste plus lente que la droite jusqu'à ce
+          qu'elles se rejoignent exactement en $t=2$.
+      - id: B
+        text: "Égale à $4$, puisque les deux courbes partagent les mêmes valeurs en $t=0$ et $t=2$."
+        correct: false
+        feedback: >
+          Partager les mêmes valeurs aux deux extrémités ne suffit pas à
+          rendre les aires égales : entre ces deux points, la parabole et
+          la droite empruntent des chemins différents, donc délimitent des
+          aires différentes avec l'axe des temps.
+      - id: C
+        text: "Plus petite que $4$, car sur tout l'intervalle, $t^2$ reste en dessous de la droite reliant $(0,0)$ à $(2,4)$."
+        correct: true
+      - id: D
+        text: "Impossible à savoir sans calculer précisément l'intégrale."
+        correct: false
+        feedback: >
+          On peut comparer deux aires sans les calculer exactement,
+          simplement en comparant les hauteurs des deux courbes point par
+          point sur l'intervalle — c'est cette idée de comparaison, sans
+          calcul explicite, que tu retrouveras formalisée plus loin dans ce
+          chapitre.
+    correct_feedback: >
+      Sur $[0,2]$, la parabole $t^2$ reste toujours en dessous de la droite
+      reliant $(0,0)$ à $(2,4)$ (vérifie-le en $t=1$ : $1<2$). L'aire sous
+      la parabole est donc strictement plus petite que l'aire du triangle,
+      $4$ — cohérent avec la valeur exacte $\frac83\approx2{,}67$ trouvée
+      au rung suivant.
+    solution: |
+      Compare $t^2$ à la droite $y=2t$ (qui relie $(0,0)$ à $(2,4)$) sur
+      $[0,2]$ : $2t-t^2 = t(2-t) \geq 0$ pour $t \in [0,2]$, donc $t^2 \leq
+      2t$ sur tout l'intervalle. L'aire sous la parabole est donc
+      inférieure ou égale à l'aire sous la droite, qui est $4$. La valeur
+      exacte, calculée au rung suivant, est $\frac83\approx2{,}67 < 4$.
+
+  - id: CI-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_calcul_integral
+    tags: [accroche, vitesse_moyenne_intuition]
+    stem: >
+      Un élève raisonne ainsi : « La vitesse maximale de la voiture sur
+      $[0,2]$ est $v(2)=4$ m/s. Si elle avait roulé tout le temps à cette
+      vitesse, elle aurait parcouru $4\times2=8$ m. » Que peut-on dire de
+      la distance réellement parcourue par rapport à ce chiffre de $8$ m ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est exactement égale à $8$ m, car c'est la vitesse en fin de trajet qui détermine la distance totale."
+        correct: false
+        feedback: >
+          La vitesse à l'instant final ne résume pas tout le trajet : la
+          voiture a roulé plus lentement pendant presque tout l'intervalle
+          $[0,2]$, avant d'atteindre $4$ m/s seulement à la toute fin.
+      - id: B
+        text: "Elle est supérieure à $8$ m, car la voiture accélère sans cesse et dépasse donc $4$ m/s avant $t=2$."
+        correct: false
+        feedback: >
+          Sur l'intervalle $[0,2]$, $v(t)=t^2$ est croissante et atteint
+          son maximum PRÉCISÉMENT en $t=2$, avec $v(2)=4$ — elle ne dépasse
+          jamais $4$ m/s sur cet intervalle, elle l'atteint seulement à
+          l'instant final.
+      - id: C
+        text: "On ne peut rien en dire, car $4\\times2$ est un calcul de vitesse, pas de distance."
+        correct: false
+        feedback: >
+          Une vitesse constante multipliée par une durée donne bien une
+          distance (m/s $\times$ s = m) — le calcul $4\times2=8$ m est
+          dimensionnellement correct pour une vitesse CONSTANTE de $4$
+          m/s. Le problème n'est pas ce calcul en lui-même, mais
+          l'hypothèse que la voiture aurait roulé à $4$ m/s pendant tout le
+          trajet.
+      - id: D
+        text: "Elle est strictement inférieure à $8$ m, car la voiture n'a atteint $4$ m/s qu'à l'instant final $t=2$ — elle a roulé plus lentement pendant tout le reste du trajet."
+        correct: true
+    correct_feedback: >
+      $8$ m suppose une vitesse constamment égale à $4$ m/s, alors que la
+      voiture démarre à l'arrêt et n'atteint $4$ m/s qu'à l'instant $t=2$.
+      Comme elle a roulé moins vite pendant tout le reste du trajet, la
+      distance réelle est strictement inférieure à $8$ m — cohérent avec la
+      valeur exacte $\frac83\approx2{,}67$ m.
+    solution: |
+      Le raisonnement de l'élève suppose une vitesse constante égale au
+      maximum atteint sur l'intervalle. Mais $v(t)=t^2 < 4$ pour tout
+      $t \in [0,2[$ : la voiture roule plus lentement que $4$ m/s pendant
+      tout le trajet, sauf à l'instant final. La distance réelle,
+      $\frac83\approx2{,}67$ m, est donc bien inférieure à $8$ m —
+      utiliser la vitesse maximale comme si elle était constante donne
+      systématiquement une SURESTIMATION de la distance.
+
+  - id: CI-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [primitive_integrale, variable_muette]
+    stem: >
+      On sait que $\ln$ est une primitive de $t \mapsto \dfrac1t$ sur
+      $\left]0,+\infty\right[$. En appliquant la définition de l'intégrale
+      du R1, que vaut $\displaystyle\int_2^x \frac1t\,\mathrm{d}t$ pour
+      $x>2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\ln(x) - \\ln(t)$"
+        correct: false
+        feedback: >
+          $t$ est la variable d'intégration : une fois la primitive
+          évaluée aux bornes, $t$ ne doit plus apparaître dans le résultat.
+          La définition demande $F(x)-F(2)$, où $F=\ln$ est évaluée aux
+          DEUX bornes numériques $x$ et $2$, jamais à la lettre $t$
+          elle-même.
+      - id: B
+        text: "$\\ln(x) - \\ln(2)$"
+        correct: true
+      - id: C
+        text: "$\\ln(x)$"
+        correct: false
+        feedback: >
+          Ce résultat oublie de soustraire la valeur de la primitive à la
+          borne inférieure, $\ln(2)$. La définition du R1 est toujours une
+          différence $F(b)-F(a)$, jamais la valeur de $F$ au seul point
+          $b$.
+      - id: D
+        text: "$\\ln(x-2)$"
+        correct: false
+        feedback: >
+          Ce choix applique la primitive à la DIFFÉRENCE des bornes,
+          $\ln(x-2)$, au lieu de calculer la différence des valeurs de la
+          primitive, $\ln(x)-\ln(2)$. La définition est $F(b)-F(a)$, pas
+          $F(b-a)$ : la soustraction porte sur les valeurs de $F$, pas sur
+          les bornes avant d'appliquer $F$.
+    correct_feedback: >
+      Par définition (R1), $\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2)$ où
+      $F=\ln$. Donc $\int_2^x \frac1t\,\mathrm{d}t = \ln(x)-\ln(2)$ : la
+      variable d'intégration $t$ disparaît, remplacée par les deux bornes
+      numériques évaluées séparément dans $\ln$.
+    solution: |
+      **Définition (R1) appliquée à $F=\ln$ :**
+      $$\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2) = \ln(x)-\ln(2)$$
+
+      La lettre $t$ n'est qu'une variable muette utilisée pour décrire la
+      fonction à intégrer ; une fois la primitive évaluée aux bornes $x$ et
+      $2$, elle n'apparaît plus dans le résultat.
+
+  - id: CI-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_integrale, definition]
+    stem: >
+      Un élève affirme : « Pour calculer $\int_{-2}^{1} x\,\mathrm{d}x$
+      avec la définition $F(b)-F(a)$, il faut d'abord vérifier que
+      $x\geq0$ sur $[-2,1]$, sinon la formule ne s'applique pas — or ici
+      $x$ est négatif sur une partie de l'intervalle, donc on ne peut pas
+      utiliser cette définition directement. » Cette affirmation est-elle
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : la définition $F(b)-F(a)$ ne s'applique que si $f\\geq0$ sur tout l'intervalle."
+        correct: false
+        feedback: >
+          Non — relis la définition du R1 : elle suppose seulement que $f$
+          est CONTINUE sur $[a,b]$, sans aucune condition de signe. C'est
+          seulement l'INTERPRÉTATION en aire (« $\int_a^b f$ est l'aire
+          sous la courbe ») qui exige $f\geq0$, pas la définition
+          elle-même.
+      - id: B
+        text: "Non, mais il faut changer le signe de la primitive quand $f<0$ avant de l'évaluer."
+        correct: false
+        feedback: >
+          On n'a jamais besoin de « changer le signe » de la primitive. La
+          primitive de $x\mapsto x$ est $F(x)=\frac{x^2}{2}$, quelle que
+          soit la partie de l'intervalle où $x$ est négatif — le signe de
+          $f$ n'intervient nulle part dans le calcul de $F(b)-F(a)$.
+      - id: C
+        text: "Non : la définition $F(b)-F(a)$ s'applique à toute fonction continue sur $[a,b]$, que $f$ garde un signe constant ou non. Seule l'interprétation en aire exige $f\\geq0$."
+        correct: true
+      - id: D
+        text: "Non, car $f(x)=x$ n'a pas de primitive sur un intervalle contenant des valeurs négatives de $x$."
+        correct: false
+        feedback: >
+          $f(x)=x$ est parfaitement continue sur $\mathbb{R}$, y compris
+          sur les réels négatifs, et admet la primitive
+          $F(x)=\frac{x^2}{2}$ sur tout $\mathbb{R}$. Le signe de $x$
+          n'empêche en rien l'existence d'une primitive.
+    correct_feedback: >
+      La définition du R1 exige seulement que $f$ soit continue sur
+      $[a,b]$ — aucune condition de signe. Le fait que $\int_a^b f(x)\,
+      \mathrm{d}x$ représente une AIRE est une interprétation
+      supplémentaire, valable uniquement quand $f\geq0$ ; la définition
+      elle-même, $F(b)-F(a)$, fonctionne pour toute fonction continue, quel
+      que soit son signe.
+    solution: |
+      **Définition (R1) :** $\int_{-2}^1 x\,\mathrm{d}x = F(1)-F(-2)$ avec
+      $F(x)=\frac{x^2}{2}$, sans aucune condition sur le signe de $f$.
+
+      $$\int_{-2}^1 x\,\mathrm{d}x = \frac{1}{2} - \frac{4}{2} = \frac12 - 2 = -\frac32$$
+
+      Le résultat est négatif — cohérent avec le fait que $f(x)=x<0$
+      domine sur une plus grande portion de $[-2,1]$. Ce nombre négatif
+      n'est PAS une aire (l'interprétation en aire du R1 suppose
+      $f\geq0$), mais c'est bien la valeur de l'intégrale au sens de la
+      définition.
+
+  - id: CI-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [linearite, produit_de_fonctions]
+    stem: >
+      On donne $\int_0^1 f(x)\,\mathrm{d}x = 2$ et $\int_0^1 g(x)\,
+      \mathrm{d}x = 3$. Un élève en déduit que $\int_0^1 f(x)g(x)\,
+      \mathrm{d}x = 6$. Ce raisonnement est-il valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car la linéarité de l'intégrale permet de multiplier les deux intégrales entre elles."
+        correct: false
+        feedback: >
+          La linéarité (R2) ne porte que sur les SOMMES et les produits
+          par un facteur CONSTANT — $\int(f+g)=\int f+\int g$ et $\int kf =
+          k\int f$. Elle ne dit rien sur le produit de deux fonctions
+          $f(x)g(x)$ : en général, $\int_a^b f(x)g(x)\,\mathrm{d}x \neq
+          \left(\int_a^b f(x)\,\mathrm{d}x\right)\times\left(\int_a^b
+          g(x)\,\mathrm{d}x\right)$.
+      - id: B
+        text: "Oui, mais seulement si $f$ et $g$ sont toutes les deux positives sur $[0,1]$."
+        correct: false
+        feedback: >
+          Le signe de $f$ et $g$ ne change rien au problème : même pour
+          deux fonctions positives, l'intégrale d'un produit n'est en
+          général pas le produit des intégrales. Contre-exemple : $f=g=x$
+          sur $[0,1]$ donne $\int_0^1 x\,\mathrm{d}x=\frac12$, mais
+          $\int_0^1 x^2\,\mathrm{d}x=\frac13 \neq \left(\frac12\right)^2=
+          \frac14$.
+      - id: C
+        text: "On ne peut rien dire sans connaître les expressions exactes de $f$ et $g$."
+        correct: false
+        feedback: >
+          On peut au moins affirmer que ce raisonnement particulier —
+          multiplier les deux intégrales — n'est PAS une règle valide de
+          l'intégrale, quelles que soient $f$ et $g$. Ce n'est pas un
+          manque d'information qui pose problème ici, c'est l'application
+          d'une règle inexistante.
+      - id: D
+        text: "Non, car la linéarité ne s'applique qu'aux sommes et aux produits par une constante, jamais au produit de deux fonctions."
+        correct: true
+    correct_feedback: >
+      La linéarité de l'intégrale (R2) ne concerne que $\int(f+g)$ et
+      $\int kf$ pour $k$ CONSTANT. Le produit $f(x)g(x)$ de deux fonctions
+      n'a pas de règle de décomposition aussi simple : en général,
+      $\int_a^b f(x)g(x)\,\mathrm{d}x \neq \int_a^b f(x)\,\mathrm{d}x
+      \times \int_a^b g(x)\,\mathrm{d}x$. (C'est même pour traiter certains
+      produits que l'intégration par parties, R7, sera nécessaire.)
+    solution: |
+      La linéarité (R2) s'écrit $\int_a^b(f+g) = \int_a^b f + \int_a^b g$
+      et $\int_a^b kf = k\int_a^b f$ — uniquement pour une somme ou un
+      facteur CONSTANT $k$. Un produit de deux fonctions $f(x)g(x)$
+      n'entre dans aucun de ces deux cas : $f(x)$ n'est pas une constante,
+      donc rien ne permet de sortir $f$ de l'intégrale pour la multiplier
+      par $\int g$. Contre-exemple : avec $f(x)=g(x)=x$ sur $[0,1]$,
+      $\int_0^1 x\,\mathrm{d}x = \frac12$, mais $\int_0^1 x\cdot x\,
+      \mathrm{d}x = \int_0^1 x^2\,\mathrm{d}x = \frac13 \neq
+      \frac12\times\frac12=\frac14$.
+
+  - id: CI-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [linearite, terme_constant]
+    stem: >
+      Calcule $\displaystyle\int_1^4 \big(2x+7\big)\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$22$"
+        correct: false
+        feedback: >
+          Ce calcul ajoute le terme constant $7$ une seule fois à
+          $\int_1^4 2x\,\mathrm{d}x=15$, comme s'il ne fallait pas le
+          multiplier par la longueur de l'intervalle. Une primitive de la
+          fonction constante $x\mapsto7$ est $x\mapsto7x$ : sa
+          contribution sur $[1,4]$ est $7\times4-7\times1=7\times(4-1)=21$,
+          pas $7$.
+      - id: B
+        text: "$36$"
+        correct: true
+      - id: C
+        text: "$15$"
+        correct: false
+        feedback: >
+          Ce calcul oublie complètement la contribution du terme constant
+          $7$ — seul $\int_1^4 2x\,\mathrm{d}x=15$ a été calculé. Par
+          linéarité, il faut ajouter $\int_1^4 7\,\mathrm{d}x=21$.
+      - id: D
+        text: "$43$"
+        correct: false
+        feedback: >
+          Ce calcul multiplie le terme constant par la borne supérieure
+          $b=4$ au lieu de la longueur de l'intervalle $b-a=4-1=3$ :
+          $7\times4=28$ au lieu de $7\times3=21$. Le facteur multiplicatif
+          est toujours $b-a$, jamais une borne isolée.
+    correct_feedback: >
+      Par linéarité, $\int_1^4(2x+7)\,\mathrm{d}x = \int_1^4 2x\,
+      \mathrm{d}x + \int_1^4 7\,\mathrm{d}x$. Une primitive de $2x$ est
+      $x^2$, donc $\int_1^4 2x\,\mathrm{d}x = 16-1=15$. Une primitive de la
+      fonction constante $7$ est $7x$, donc $\int_1^4 7\,\mathrm{d}x =
+      28-7=21$. Total : $15+21=36$.
+    solution: |
+      **Terme par terme (linéarité) :**
+      $$\int_1^4 2x\,\mathrm{d}x = \Big[x^2\Big]_1^4 = 16-1=15$$
+      $$\int_1^4 7\,\mathrm{d}x = \Big[7x\Big]_1^4 = 28-7=21$$
+
+      **Somme :**
+      $$\int_1^4(2x+7)\,\mathrm{d}x = 15+21=36$$
+
+      **Vérification avec la primitive globale** $F(x)=x^2+7x$ :
+      $$F(4)-F(1) = (16+28)-(1+7) = 44-8=36$$
+
+  - id: CI-14
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [chasles]
+    stem: >
+      On donne $\int_0^7 f(x)\,\mathrm{d}x = 20$ et $\int_3^7 f(x)\,
+      \mathrm{d}x = 9$. Que vaut $\int_0^3 f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$29$"
+        correct: false
+        feedback: >
+          Ce choix additionne les deux intégrales données, $20+9=29$, au
+          lieu d'isoler $\int_0^3 f$ dans la relation de Chasles
+          $\int_0^7 f = \int_0^3 f + \int_3^7 f$. Il faut ici SOUSTRAIRE,
+          pas additionner : $\int_0^3 f = 20-9$.
+      - id: B
+        text: "$20$"
+        correct: false
+        feedback: >
+          Ce choix reprend directement $\int_0^7 f(x)\,\mathrm{d}x$ sans
+          tenir compte du découpage en $c=3$ : la relation de Chasles
+          relie les trois intégrales entre elles, elle ne permet pas
+          d'ignorer $\int_3^7 f=9$.
+      - id: C
+        text: "$11$"
+        correct: true
+      - id: D
+        text: "$-11$"
+        correct: false
+        feedback: >
+          Ce choix inverse le signe du résultat, comme si la relation de
+          Chasles s'écrivait $\int_3^7 f = \int_0^3 f - \int_0^7 f$. Or
+          c'est $\int_0^7 f = \int_0^3 f + \int_3^7 f$ qui est vraie, donc
+          $\int_0^3 f = \int_0^7 f - \int_3^7 f = 20-9=11$, pas l'opposé.
+    correct_feedback: >
+      Par Chasles avec $c=3$ : $\int_0^7 f(x)\,\mathrm{d}x = \int_0^3
+      f(x)\,\mathrm{d}x + \int_3^7 f(x)\,\mathrm{d}x$, donc $20 =
+      \int_0^3 f(x)\,\mathrm{d}x + 9$, d'où $\int_0^3 f(x)\,\mathrm{d}x =
+      11$.
+    solution: |
+      **Chasles en $c=3$ :**
+      $$\int_0^7 f(x)\,\mathrm{d}x = \int_0^3 f(x)\,\mathrm{d}x + \int_3^7 f(x)\,\mathrm{d}x$$
+      $$20 = \int_0^3 f(x)\,\mathrm{d}x + 9$$
+      $$\int_0^3 f(x)\,\mathrm{d}x = 20-9 = 11$$
+
+  - id: CI-15
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [chasles, convention_bornes]
+    stem: >
+      On donne $\int_2^6 f(x)\,\mathrm{d}x = 15$. Que vaut $\int_6^2
+      f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-15$"
+        correct: true
+      - id: B
+        text: "$15$"
+        correct: false
+        feedback: >
+          Inverser l'ordre des bornes change le signe de l'intégrale, par
+          convention : $\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6 f(x)\,
+          \mathrm{d}x$. Garder $15$ revient à ignorer cette convention,
+          comme si l'ordre des bornes n'avait aucune importance.
+      - id: C
+        text: "$\\dfrac{1}{15}$"
+        correct: false
+        feedback: >
+          Inverser l'ordre des bornes change le SIGNE de l'intégrale, ce
+          n'est pas une opération qui inverse sa valeur (comme un inverse
+          multiplicatif). La convention est $\int_6^2 f = -\int_2^6 f$,
+          une négation, pas une division.
+      - id: D
+        text: "On ne peut pas savoir, car $6>2$ alors que l'intégrale s'écrit habituellement avec la borne du bas plus petite que celle du haut."
+        correct: false
+        feedback: >
+          C'est justement pour ce genre de cas que la convention du R3
+          existe : elle donne un sens à $\int_b^a$ même quand $b>a$, à
+          savoir $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b f(x)\,\mathrm{d}x$.
+          Ce n'est pas une situation indéterminée, c'est une définition.
+    correct_feedback: >
+      Par la convention du R3, $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b
+      f(x)\,\mathrm{d}x$. Donc $\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6
+      f(x)\,\mathrm{d}x = -15$.
+    solution: |
+      **Convention (R3) :**
+      $$\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6 f(x)\,\mathrm{d}x = -15$$
+
+      Cette convention découle directement de la définition $F(b)-F(a)$ :
+      échanger les bornes échange les deux termes de la soustraction, ce
+      qui change le signe du résultat.
+
+  - id: CI-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [chasles, hors_intervalle]
+    stem: >
+      On donne $\int_0^2 f(x)\,\mathrm{d}x = 4$ et $\int_0^5 f(x)\,
+      \mathrm{d}x = 10$. Que vaut $\int_2^5 f(x)\,\mathrm{d}x$ ? (Remarque :
+      ici on te demande d'appliquer Chasles avec $c=0$, un point qui n'est
+      PAS entre $2$ et $5$.)
+    type: mcq
+    choices:
+      - id: A
+        text: "La relation de Chasles ne s'applique pas ici, car $0$ n'est pas compris entre $2$ et $5$."
+        correct: false
+        feedback: >
+          La relation de Chasles est vraie pour n'importe quel réel $c$, y
+          compris un $c$ situé en dehors du segment délimité par les deux
+          bornes de l'intégrale recherchée — c'est justement ce que
+          permettent les conventions sur $\int_a^a$ et $\int_b^a=-\int_a^b$
+          vues au début du R3.
+      - id: B
+        text: "$14$"
+        correct: false
+        feedback: >
+          Ce choix additionne les deux intégrales données, $4+10=14$, sans
+          respecter la structure de la relation de Chasles. Ici $c=0$
+          n'est pas entre les bornes $2$ et $5$ : il faut écrire
+          $\int_0^5 f = \int_0^2 f + \int_2^5 f$ et isoler le terme
+          recherché, pas simplement additionner les deux valeurs connues.
+      - id: C
+        text: "$-6$"
+        correct: false
+        feedback: >
+          Ce choix calcule $4-10$ au lieu de $10-4$ : l'ordre de la
+          soustraction dans $\int_0^5 f = \int_0^2 f + \int_2^5 f$ a été
+          inversé. C'est $\int_2^5 f$ qu'on isole en écrivant
+          $\int_2^5 f = \int_0^5 f - \int_0^2 f$, donc $10-4$, pas $4-10$.
+      - id: D
+        text: "$6$"
+        correct: true
+    correct_feedback: >
+      Par Chasles en $c=0$ (même si $0$ n'est pas entre $2$ et $5$, la
+      relation reste valable) : $\int_0^5 f(x)\,\mathrm{d}x = \int_0^2
+      f(x)\,\mathrm{d}x + \int_2^5 f(x)\,\mathrm{d}x$, donc $10 = 4 +
+      \int_2^5 f(x)\,\mathrm{d}x$, d'où $\int_2^5 f(x)\,\mathrm{d}x = 6$.
+    solution: |
+      **Chasles en $c=0$ (valable même si $0 \notin [2,5]$) :**
+      $$\int_0^5 f(x)\,\mathrm{d}x = \int_0^2 f(x)\,\mathrm{d}x + \int_2^5 f(x)\,\mathrm{d}x$$
+      $$10 = 4 + \int_2^5 f(x)\,\mathrm{d}x$$
+      $$\int_2^5 f(x)\,\mathrm{d}x = 6$$
+
+  - id: CI-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [positivite, ordre_des_bornes]
+    stem: >
+      Soit $f$ continue et $f\geq0$ sur $[2,5]$. Un élève en déduit que
+      $\int_5^2 f(x)\,\mathrm{d}x \geq 0$. A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car $f\\geq0$ garantit que toute intégrale de $f$ est positive, quel que soit l'ordre des bornes."
+        correct: false
+        feedback: >
+          La propriété de positivité du R4 exige explicitement $a\leq b$ :
+          elle dit $\int_a^b f \geq 0$ quand $a\leq b$ et $f\geq0$ sur
+          $[a,b]$. Ici les bornes sont inversées ($5$ puis $2$), donc cette
+          propriété ne s'applique pas directement à $\int_5^2 f$.
+      - id: B
+        text: "Non : $\\int_5^2 f(x)\\,\\mathrm{d}x = -\\int_2^5 f(x)\\,\\mathrm{d}x \\leq 0$, car $\\int_2^5 f(x)\\,\\mathrm{d}x\\geq0$ par positivité (bornes dans le bon ordre)."
+        correct: true
+      - id: C
+        text: "Non, car $f\\geq0$ sur $[2,5]$ n'implique rien du tout sur le signe d'aucune intégrale de $f$."
+        correct: false
+        feedback: >
+          $f\geq0$ sur $[2,5]$ implique bien quelque chose : $\int_2^5
+          f(x)\,\mathrm{d}x \geq 0$ (bornes dans l'ordre croissant). C'est
+          seulement pour $\int_5^2 f$ — bornes inversées — que le signe
+          change, via la convention du R3.
+      - id: D
+        text: "Oui, car une aire est toujours positive, quel que soit le sens dans lequel on la parcourt."
+        correct: false
+        feedback: >
+          $\int_5^2 f(x)\,\mathrm{d}x$ n'est pas une aire, c'est une
+          intégrale signée avec les bornes inversées : par convention
+          (R3), $\int_5^2 f = -\int_2^5 f$. Le signe négatif vient de
+          cette convention sur l'ordre des bornes, pas d'un changement de
+          sens de « parcours » d'une aire.
+    correct_feedback: >
+      La positivité (R4) donne $\int_2^5 f(x)\,\mathrm{d}x \geq 0$, car les
+      bornes sont dans l'ordre croissant ($2\leq5$) et $f\geq0$. Mais
+      $\int_5^2 f(x)\,\mathrm{d}x = -\int_2^5 f(x)\,\mathrm{d}x$
+      (convention du R3), donc $\int_5^2 f(x)\,\mathrm{d}x \leq 0$ :
+      l'inversion des bornes change le signe.
+    solution: |
+      **Positivité (R4), bornes dans l'ordre croissant :**
+      $$\int_2^5 f(x)\,\mathrm{d}x \geq 0 \quad (\text{car } 2\leq5 \text{ et } f\geq0 \text{ sur } [2,5])$$
+
+      **Convention (R3) pour les bornes inversées :**
+      $$\int_5^2 f(x)\,\mathrm{d}x = -\int_2^5 f(x)\,\mathrm{d}x \leq 0$$
+
+      La propriété de positivité exige $a\leq b$ ; l'appliquer sans
+      vérifier l'ordre des bornes donne un signe faux.
+
+  - id: CI-18
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [comparaison, intervalle_entier]
+    stem: >
+      On sait que $f(1)\leq g(1)$ et $f(4)\leq g(4)$, mais on ne sait rien
+      sur le signe de $g(x)-f(x)$ pour les $x$ strictement entre $1$ et
+      $4$. Peut-on en déduire que $\int_1^4 f(x)\,\mathrm{d}x \leq
+      \int_1^4 g(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car il suffit que l'inégalité soit vraie aux bornes de l'intervalle pour qu'elle soit vraie sur tout l'intervalle par continuité."
+        correct: false
+        feedback: >
+          La continuité ne garantit rien de tel : $f$ et $g$ peuvent très
+          bien vérifier $f\leq g$ aux deux bornes tout en ayant $g<f$
+          quelque part au milieu de l'intervalle (les deux courbes peuvent
+          se croiser deux fois entre $1$ et $4$). La propriété du R4 exige
+          l'inégalité sur TOUT l'intervalle, sans exception.
+      - id: B
+        text: "Oui, car la propriété de comparaison ne porte que sur les valeurs de $f$ et $g$ aux bornes de l'intégrale."
+        correct: false
+        feedback: >
+          C'est l'inverse : la propriété de comparaison du R4 porte sur le
+          comportement de $f$ et $g$ SUR TOUT L'INTERVALLE $[a,b]$, pas
+          seulement en $x=a$ et $x=b$. Ce qui se passe strictement entre
+          les bornes compte tout autant.
+      - id: C
+        text: "Non, car la comparaison des intégrales ne s'applique qu'à des fonctions positives."
+        correct: false
+        feedback: >
+          La comparaison (R4) ne demande pas que $f$ et $g$ soient
+          positives — seulement que $f\leq g$ sur tout l'intervalle. La
+          démonstration du R4 applique la positivité à la différence
+          $g-f$, ce qui fonctionne même si $f$ et $g$ prennent des valeurs
+          négatives.
+      - id: D
+        text: "Non : la comparaison des intégrales exige $f(x)\\leq g(x)$ pour TOUT $x$ de l'intervalle $[1,4]$, pas seulement aux deux extrémités."
+        correct: true
+    correct_feedback: >
+      La propriété de comparaison du R4 s'appuie sur $f\leq g$ sur TOUT
+      l'intervalle $[a,b]$ (elle applique la positivité à $g-f\geq0$
+      partout). Une inégalité vérifiée seulement aux deux bornes ne suffit
+      pas : $f$ et $g$ pourraient très bien se croiser entre $1$ et $4$,
+      rendant la conclusion fausse.
+    solution: |
+      La démonstration de la comparaison (R4) applique la positivité à
+      $g-f\geq0$ **sur tout l'intervalle** $[a,b]$. Si $g-f$ n'est
+      positive qu'aux deux bornes mais change de signe entre les deux,
+      rien ne garantit $\int_a^b(g-f)\geq0$ — l'hypothèse de la propriété
+      n'est simplement pas vérifiée. Sans information sur $[1,4]$ tout
+      entier, on ne peut rien conclure sur l'ordre des deux intégrales.
+
+  - id: CI-19
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [inegalite_moyenne]
+    stem: >
+      Soit $f$ continue sur $[3,8]$ avec $2\leq f(x)\leq6$ pour tout
+      $x\in[3,8]$. D'après l'inégalité de la moyenne, quel encadrement
+      peut-on donner pour $\int_3^8 f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 6$"
+        correct: false
+        feedback: >
+          Ce choix oublie de multiplier $m=2$ et $M=6$ par la longueur de
+          l'intervalle $b-a=8-3=5$. L'inégalité de la moyenne s'écrit
+          $m(b-a)\leq\int_a^b f\leq M(b-a)$ — sans ce facteur, l'encadrement
+          obtenu est celui de $f(x)$ elle-même, pas celui de son intégrale
+          sur un intervalle de longueur $5$.
+      - id: B
+        text: "$16 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 48$"
+        correct: false
+        feedback: >
+          Ce choix multiplie $m$ et $M$ par $8$ (la borne supérieure
+          seule) au lieu de $b-a=8-3=5$ (la longueur de l'intervalle). Le
+          facteur à utiliser est toujours une LONGUEUR d'intervalle,
+          jamais une borne isolée.
+      - id: C
+        text: "$10 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 30$"
+        correct: true
+      - id: D
+        text: "$10 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 6$"
+        correct: false
+        feedback: >
+          Ce choix multiplie correctement $m=2$ par $b-a=5$ (donnant
+          $10$), mais oublie de faire la même chose pour $M=6$, qui reste
+          tel quel. Les DEUX bornes $m$ et $M$ doivent être multipliées
+          par $b-a$ : $M(b-a)=6\times5=30$, pas $6$.
+    correct_feedback: >
+      Par l'inégalité de la moyenne, $m(b-a)\leq\int_a^b f(x)\,\mathrm{d}x
+      \leq M(b-a)$ avec $m=2$, $M=6$, $b-a=5$ : $2\times5\leq\int_3^8
+      f(x)\,\mathrm{d}x\leq6\times5$, soit $10\leq\int_3^8 f(x)\,
+      \mathrm{d}x\leq30$.
+    solution: |
+      **Inégalité de la moyenne (R5), $m=2$, $M=6$, $b-a=8-3=5$ :**
+      $$m(b-a) \leq \int_3^8 f(x)\,\mathrm{d}x \leq M(b-a)$$
+      $$2\times5 \leq \int_3^8 f(x)\,\mathrm{d}x \leq 6\times5$$
+      $$10 \leq \int_3^8 f(x)\,\mathrm{d}x \leq 30$$
+
+  - id: CI-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [inegalite_moyenne, monotonie]
+    stem: >
+      Soit $f(x)=\sqrt{x}$ sur $[4,9]$ (fonction croissante). Pour
+      appliquer l'inégalité de la moyenne, quelles valeurs faut-il prendre
+      pour $m$ et $M$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m=9$ et $M=4$, car on prend toujours la borne du haut pour $m$ et celle du bas pour $M$."
+        correct: false
+        feedback: >
+          Il n'y a pas de règle fixe « borne du haut pour $m$ » : $m$ et
+          $M$ sont respectivement le minimum et le maximum de $f$ SUR
+          L'INTERVALLE, ce qui dépend du sens de variation de $f$. Ici $f$
+          est croissante, donc son minimum est atteint à la borne
+          INFÉRIEURE ($x=4$) et son maximum à la borne SUPÉRIEURE ($x=9$)
+          — pas l'inverse.
+      - id: B
+        text: "$m=\\sqrt{9}=3$ et $M=\\sqrt{4}=2$, car $f$ est croissante donc ses valeurs augmentent en dépassant la racine de la borne du haut."
+        correct: false
+        feedback: >
+          Les valeurs de $m$ et $M$ sont inversées par rapport à leur
+          définition : $m$ doit être le PLUS PETIT des deux, $M$ le PLUS
+          GRAND. Ici $3>2$, donc ce choix nomme « $m$ » la plus grande
+          valeur — une erreur d'étiquetage qui rendrait l'encadrement
+          final incohérent ($m>M$ n'a pas de sens).
+      - id: C
+        text: "$m=4$ et $M=9$, en utilisant directement les bornes de l'intervalle sans passer par $f$."
+        correct: false
+        feedback: >
+          $m$ et $M$ sont le minimum et le maximum de $f(x)$ —
+          c'est-à-dire des valeurs de la fonction $\sqrt{x}$ — pas les
+          bornes $4$ et $9$ de l'intervalle lui-même. Il faut évaluer $f$
+          en ces bornes : $f(4)=2$ et $f(9)=3$.
+      - id: D
+        text: "$m=\\sqrt{4}=2$ et $M=\\sqrt{9}=3$, car $f$ est croissante sur $[4,9]$ : son minimum est atteint en $x=4$ et son maximum en $x=9$."
+        correct: true
+    correct_feedback: >
+      $f(x)=\sqrt x$ est croissante sur $[4,9]$, donc son minimum sur cet
+      intervalle est atteint à la borne inférieure, $f(4)=2$, et son
+      maximum à la borne supérieure, $f(9)=3$. D'où $m=2$ et $M=3$ —
+      exactement le même raisonnement que pour $e^x$ au R5.
+    solution: |
+      $f(x)=\sqrt x$ est croissante sur $[4,9]$ (chapitre "Fonction racine
+      carrée" / dérivée $f'(x)=\frac{1}{2\sqrt x}>0$), donc son minimum
+      est atteint en $x=4$ (la borne inférieure) et son maximum en $x=9$
+      (la borne supérieure) : $m=f(4)=2$ et $M=f(9)=3$. On aurait alors
+      $2\times5\leq\int_4^9\sqrt x\,\mathrm{d}x\leq3\times5$, soit
+      $10\leq\int_4^9\sqrt x\,\mathrm{d}x\leq15$.
+
+  - id: CI-21
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [inegalite_moyenne, valeur_absolue]
+    stem: >
+      Soit $f$ continue sur $[0,4]$ avec $|f(x)|\leq3$ pour tout
+      $x\in[0,4]$. D'après le corollaire de l'inégalité de la moyenne, que
+      peut-on affirmer sur $\left|\int_0^4 f(x)\,\mathrm{d}x\right|$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\leq 3$"
+        correct: false
+        feedback: >
+          Ce choix oublie de multiplier le majorant $M=3$ par la longueur
+          de l'intervalle, $b-a=4-0=4$. Le corollaire s'écrit
+          $\left|\int_a^b f\right|\leq M(b-a)$, pas $\left|\int_a^b
+          f\right|\leq M$.
+      - id: B
+        text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\leq 12$"
+        correct: true
+      - id: C
+        text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\geq 12$"
+        correct: false
+        feedback: >
+          Le corollaire donne une borne SUPÉRIEURE au module de
+          l'intégrale, pas une borne inférieure : $|f|\leq M$ garantit que
+          l'intégrale ne peut pas devenir trop grande en valeur absolue,
+          pas qu'elle est nécessairement grande. Le sens de l'inégalité
+          est inversé.
+      - id: D
+        text: "On ne peut rien affirmer, car on ne connaît pas le signe de $f$."
+        correct: false
+        feedback: >
+          Le corollaire du R5 s'applique précisément à $|f(x)|\leq M$ sans
+          avoir besoin de connaître le signe de $f$ — c'est tout l'intérêt
+          de raisonner sur la valeur absolue de $f$ plutôt que sur $f$
+          elle-même. Le signe de $f$ n'est pas nécessaire ici.
+    correct_feedback: >
+      D'après le corollaire du R5 (appliqué à $m=-M$), $\left|\int_a^b
+      f(x)\,\mathrm{d}x\right| \leq M(b-a)$. Ici $M=3$ et $b-a=4$, donc
+      $\left|\int_0^4 f(x)\,\mathrm{d}x\right| \leq 3\times4=12$.
+    solution: |
+      **Corollaire (R5) :** si $|f(x)|\leq M$ sur $[a,b]$, alors
+      $$\left|\int_a^b f(x)\,\mathrm{d}x\right| \leq M(b-a)$$
+
+      Ici $M=3$, $b-a=4-0=4$ :
+      $$\left|\int_0^4 f(x)\,\mathrm{d}x\right| \leq 3\times4=12$$
+
+  - id: CI-22
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [valeur_moyenne, calcul_complet]
+    stem: >
+      Calcule la valeur moyenne de $f(x)=2x+1$ sur $[1,4]$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$18$"
+        correct: false
+        feedback: >
+          Ce résultat est la valeur de $\int_1^4(2x+1)\,\mathrm{d}x$
+          seule, sans division par la longueur de l'intervalle
+          $b-a=4-1=3$. La valeur moyenne est TOUJOURS l'intégrale divisée
+          par $b-a$, jamais l'intégrale seule.
+      - id: C
+        text: "$9$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $f(4)=2\times4+1=9$, la valeur de $f$ à
+          la borne supérieure seule. La valeur moyenne de $f$ sur tout
+          l'intervalle n'est pas la valeur de $f$ en un seul point — c'est
+          une moyenne sur l'ensemble de l'intervalle, calculée via
+          l'intégrale.
+      - id: D
+        text: "$4{,}5$"
+        correct: false
+        feedback: >
+          Ce résultat divise $18$ par $4$ (la borne supérieure) au lieu de
+          $3$ (la longueur de l'intervalle $b-a=4-1$). Le dénominateur de
+          la valeur moyenne est toujours $b-a$, jamais une borne isolée.
+    correct_feedback: >
+      $\int_1^4(2x+1)\,\mathrm{d}x = \big[x^2+x\big]_1^4 = (16+4)-(1+1) =
+      18$. Puis $\mu = \dfrac{1}{4-1}\times18 = \dfrac{18}{3}=6$.
+    solution: |
+      **Intégrale :**
+      $$\int_1^4(2x+1)\,\mathrm{d}x = \Big[x^2+x\Big]_1^4 = (16+4)-(1+1) = 18$$
+
+      **Valeur moyenne (R6) :**
+      $$\mu = \frac{1}{4-1}\times18 = \frac{18}{3} = 6$$
+
+  - id: CI-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [valeur_moyenne, interpretation]
+    stem: >
+      Soit $f(x)=x^2$ sur $[0,4]$. Un élève affirme que la valeur moyenne
+      de $f$ sur $[0,4]$ est $f\left(\dfrac{0+4}{2}\right) = f(2) = 4$,
+      « puisque c'est la valeur de $f$ au milieu de l'intervalle ». Cette
+      affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, la valeur moyenne d'une fonction est toujours sa valeur au point milieu de l'intervalle."
+        correct: false
+        feedback: >
+          C'est une confusion fréquente mais fausse en général : la valeur
+          moyenne est définie par $\mu=\frac{1}{b-a}\int_a^b f(x)\,
+          \mathrm{d}x$, pas par $f\left(\frac{a+b}2\right)$. Ces deux
+          nombres ne coïncident que pour certaines fonctions particulières
+          (par exemple les fonctions affines), pas pour $x^2$.
+      - id: B
+        text: "Oui, car $x^2$ est symétrique par rapport à l'axe des ordonnées, donc sa valeur moyenne se lit directement au centre de l'intervalle."
+        correct: false
+        feedback: >
+          La symétrie de $x^2$ par rapport à l'axe des ordonnées (en
+          $x=0$) ne dit rien sur son comportement sur l'intervalle
+          $[0,4]$, qui ne contient pas de partie symétrique par rapport à
+          $x=0$. La valeur moyenne se calcule par la définition du R6, pas
+          en invoquant une symétrie qui ne s'applique pas ici.
+      - id: C
+        text: "Non : la valeur moyenne se calcule par $\\mu=\\frac{1}{b-a}\\int_a^b f(x)\\,\\mathrm{d}x$, et ce nombre ne coïncide en général pas avec $f$ évaluée au milieu de l'intervalle."
+        correct: true
+      - id: D
+        text: "Non, car la formule de la valeur moyenne ne s'applique qu'à des fonctions affines."
+        correct: false
+        feedback: >
+          La définition de la valeur moyenne (R6) s'applique à TOUTE
+          fonction continue, pas seulement aux fonctions affines — c'est
+          d'ailleurs pour une fonction affine que la valeur moyenne
+          coïnciderait avec la valeur au milieu de l'intervalle, un cas
+          particulier plutôt qu'une restriction.
+    correct_feedback: >
+      La vraie valeur moyenne est $\mu=\dfrac{1}{4-0}\int_0^4 x^2\,
+      \mathrm{d}x = \dfrac14\times\dfrac{64}{3} = \dfrac{16}{3}\approx
+      5{,}33$, différente de $f(2)=4$. Pour une fonction convexe comme
+      $x^2$, la valeur moyenne intègre le comportement de toute la courbe,
+      pas seulement le point central — les deux notions ne coïncident
+      qu'à l'exception des fonctions affines.
+    solution: |
+      **Calcul de la vraie valeur moyenne :**
+      $$\int_0^4 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^4 = \frac{64}{3}$$
+      $$\mu = \frac{1}{4-0}\times\frac{64}{3} = \frac{16}{3} \approx 5{,}33$$
+
+      **Comparaison :** $f(2)=4 \neq \frac{16}{3}\approx5{,}33$. La valeur
+      moyenne n'est pas, en général, la valeur de $f$ au milieu de
+      l'intervalle — c'est une propriété propre aux fonctions affines
+      uniquement (où la courbe EST la droite reliant ses extrémités).
+
+  - id: CI-24
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [integration_par_parties, formule]
+    stem: >
+      Pour calculer $\int_0^1 x\,e^x\,\mathrm{d}x$, on pose $u=x$ ($u'=1$)
+      et $v'=e^x$ ($v=e^x$). Quelle est la formule correcte issue de
+      l'intégration par parties ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 + \\int_0^1 e^x\\,\\mathrm{d}x$"
+        correct: false
+        feedback: >
+          Le signe entre le terme de bord et l'intégrale restante est un
+          MOINS, pas un plus. La formule de l'IPP est $\int_a^b uv' =
+          [uv]_a^b - \int_a^b u'v$ — le signe moins vient directement de
+          la règle de dérivation du produit isolée au R7, pas d'un choix
+          arbitraire.
+      - id: B
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 - \\int_0^1 e^x\\,\\mathrm{d}x$"
+        correct: true
+      - id: C
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[e^x\\big]_0^1 - \\int_0^1 x\\,e^x\\,\\mathrm{d}x$"
+        correct: false
+        feedback: >
+          Le terme de bord $[uv]_a^b$ doit contenir le PRODUIT
+          $u(x)v(x)=x\,e^x$, pas seulement $v(x)=e^x$ seul. Oublier le
+          facteur $u=x$ dans le terme de bord ignore une partie de la
+          formule.
+      - id: D
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 - \\int_0^1 x\\,e^x\\,\\mathrm{d}x$"
+        correct: false
+        feedback: >
+          L'intégrale restante dans la formule de l'IPP est $\int_a^b
+          u'(x)v(x)\,\mathrm{d}x$, c'est-à-dire $\int_0^1 1\times e^x\,
+          \mathrm{d}x=\int_0^1 e^x\,\mathrm{d}x$ — pas une répétition de
+          l'intégrale de départ $\int_0^1 x\,e^x\,\mathrm{d}x$. Si
+          l'intégrale restante était identique à celle de départ, l'IPP ne
+          ferait progresser aucun calcul.
+    correct_feedback: >
+      La formule de l'IPP (R7) est $\int_a^b u(x)v'(x)\,\mathrm{d}x =
+      \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x$. Avec
+      $u=x$, $u'=1$, $v=e^x$ : $\int_0^1 x\,e^x\,\mathrm{d}x =
+      \big[x\,e^x\big]_0^1 - \int_0^1 1\times e^x\,\mathrm{d}x =
+      \big[x\,e^x\big]_0^1 - \int_0^1 e^x\,\mathrm{d}x$.
+    solution: |
+      **Formule générale (R7) :**
+      $$\int_a^b u(x)v'(x)\,\mathrm{d}x = \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x$$
+
+      Avec $u=x$ ($u'=1$) et $v'=e^x$ ($v=e^x$) :
+      $$\int_0^1 x\,e^x\,\mathrm{d}x = \big[x\,e^x\big]_0^1 - \int_0^1 e^x\,\mathrm{d}x$$
+
+      (Le calcul complet donne $1$, comme dans l'exemple travaillé du R7.)
+
+  - id: CI-25
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [integration_par_parties, choix_u_v]
+    stem: >
+      Pour calculer $\int_1^2 x^2\ln(x)\,\mathrm{d}x$ par intégration par
+      parties, quel choix de $u$ et $v'$ est le plus efficace ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u=\\ln(x)$ et $v'=x^2$"
+        correct: true
+      - id: B
+        text: "$u=x^2$ et $v'=\\ln(x)$"
+        correct: false
+        feedback: >
+          Ce choix demande de trouver une primitive de $\ln(x)$ pour
+          obtenir $v$ — or cette primitive ($x\ln(x)-x$) n'est pas
+          immédiate, elle nécessite elle-même une intégration par
+          parties. Le bon réflexe est de primitiver le facteur dont une
+          primitive est directe ($x^2$), et de dériver l'autre.
+      - id: C
+        text: "$u=x^2\\ln(x)$ et $v'=1$"
+        correct: false
+        feedback: >
+          Prendre le produit entier comme $u$ ne sépare rien : dériver
+          $x^2\ln(x)$ (règle du produit) redonne une expression aussi
+          compliquée, voire plus. L'IPP n'a d'intérêt que si on sépare les
+          deux facteurs du produit d'origine, $x^2$ et $\ln(x)$.
+      - id: D
+        text: "L'intégration par parties ne s'applique pas ici, car $\\ln(x)$ n'est pas un polynôme."
+        correct: false
+        feedback: >
+          L'IPP ne demande à aucun moment que les facteurs soient des
+          polynômes — elle s'applique à tout produit de deux fonctions
+          dérivables, comme $x^2$ et $\ln(x)$ ici. C'est même l'exemple
+          typique où l'IPP est indispensable, précisément parce que
+          $\ln(x)$ n'a pas de primitive immédiate à mémoriser en dehors de
+          ce mécanisme.
+    correct_feedback: >
+      Avec $u=\ln(x)$, $u'=\dfrac1x$ est plus simple que $\ln(x)$
+      lui-même — le signal que $u=\ln(x)$ est le bon choix. Et $v'=x^2$ se
+      primitive immédiatement en $v=\dfrac{x^3}{3}$. Le produit
+      $u\cdot v'$, difficile à intégrer directement, devient un produit
+      $u'\cdot v$ plus simple : $\dfrac1x\times\dfrac{x^3}{3}=
+      \dfrac{x^2}{3}$, une intégrale immédiate.
+    solution: |
+      **Choix : $u=\ln(x)$ ($u'=\dfrac1x$), $v'=x^2$
+      ($v=\dfrac{x^3}{3}$).**
+
+      $$\int_1^2 x^2\ln(x)\,\mathrm{d}x = \left[\frac{x^3}{3}\ln(x)\right]_1^2 - \int_1^2 \frac{x^3}{3}\times\frac1x\,\mathrm{d}x = \left[\frac{x^3}{3}\ln(x)\right]_1^2 - \int_1^2 \frac{x^2}{3}\,\mathrm{d}x$$
+
+      Le choix inverse ($u=x^2$, $v'=\ln(x)$) exigerait de connaître
+      d'avance une primitive de $\ln(x)$ — ce qui n'est pas immédiat et
+      nécessiterait lui-même une IPP.
+
+  - id: CI-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [aires, entre_deux_courbes]
+    stem: >
+      Les courbes de $f(x)=x+2$ et $g(x)=x^2$ se coupent en $x=-1$ et
+      $x=2$. Sur $]-1,2[$, la droite $f$ est au-dessus de la parabole $g$.
+      Quelle est la bonne démarche pour calculer l'aire de la région
+      comprise entre les deux courbes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Calculer $\\int_{-1}^2 \\big(g(x)-f(x)\\big)\\,\\mathrm{d}x = \\int_{-1}^2 \\big(x^2-x-2\\big)\\,\\mathrm{d}x$, car on prend toujours « la deuxième courbe moins la première »."
+        correct: false
+        feedback: >
+          Il n'y a pas de convention « deuxième moins première » : il faut
+          toujours soustraire la fonction du DESSOUS à la fonction du
+          DESSUS, jamais l'inverse par automatisme. Ici $f$ est au-dessus
+          de $g$, donc c'est $f-g$ qu'il faut intégrer, pas $g-f$ — sinon
+          on obtient un résultat négatif, qui n'est pas une aire.
+      - id: B
+        text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x - \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, ce qui revient à $\\int_{-1}^2 \\big(f(x)-g(x)\\big)\\,\\mathrm{d}x$ par linéarité — la fonction du dessus ($f$) moins celle du dessous ($g$)."
+        correct: true
+      - id: C
+        text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x + \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, en additionnant les deux aires sous chaque courbe."
+        correct: false
+        feedback: >
+          Additionner les deux intégrales ne donne pas l'aire ENTRE les
+          deux courbes : cela reviendrait à empiler les deux régions au
+          lieu de mesurer l'écart entre elles. L'aire entre deux courbes se
+          calcule en intégrant leur DIFFÉRENCE (dessus moins dessous), pas
+          leur somme.
+      - id: D
+        text: "Calculer directement $\\big(f(2)-g(2)\\big) - \\big(f(-1)-g(-1)\\big)$, la différence des valeurs de $f-g$ aux deux points d'intersection."
+        correct: false
+        feedback: >
+          Aux deux points d'intersection, $f(x)-g(x)=0$ (c'est la
+          définition même de ces points) : ce calcul donnerait $0-0=0$, ce
+          qui n'est manifestement pas l'aire recherchée. L'aire s'obtient
+          en INTÉGRANT $f-g$ sur l'intervalle, pas en évaluant $f-g$ aux
+          bornes puis en soustrayant ces valeurs.
+    correct_feedback: >
+      Comme $f\geq g$ sur tout $]-1,2[$ (le signe de $f-g$ ne change pas
+      entre les deux points d'intersection), l'aire s'obtient directement
+      par $\int_{-1}^2\big(f(x)-g(x)\big)\,\mathrm{d}x$ — la fonction du
+      dessus moins celle du dessous, jamais l'inverse.
+    solution: |
+      **Intersections :** $f(x)=g(x) \iff x+2=x^2 \iff x^2-x-2=0 \iff
+      (x-2)(x+1)=0 \iff x=-1$ ou $x=2$.
+
+      **Signe de $f-g$ sur $]-1,2[$ :** en $x=0$, $f(0)=2>g(0)=0$, donc
+      $f\geq g$ sur tout l'intervalle (le signe ne change pas entre les
+      deux intersections).
+
+      **Aire :**
+      $$\text{aire} = \int_{-1}^2 \big(f(x)-g(x)\big)\,\mathrm{d}x = \int_{-1}^2 \big(x+2-x^2\big)\,\mathrm{d}x = \left[\frac{x^2}{2}+2x-\frac{x^3}{3}\right]_{-1}^2$$
+
+      $$= \left(2+4-\frac83\right) - \left(\frac12-2+\frac13\right) = \frac{10}{3} - \left(-\frac{7}{6}\right) = \frac{20}{6}+\frac{7}{6} = \frac{27}{6} = \frac92$$
+
+      $$\text{aire} = \frac92\ \text{u.a.}$$
+
+  - id: CI-27
+    rung: "R8"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [aires, unites_aire]
+    stem: >
+      Dans un repère où chaque axe est gradué à raison de $3\ \text{cm}$
+      par unité, une aire calculée par intégration vaut $5$ u.a. Quelle
+      est cette aire en cm² ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$15\\ \\text{cm}^2$"
+        correct: false
+        feedback: >
+          Ce calcul multiplie $5$ u.a. par $3$ une seule fois. Mais $1$
+          u.a. est l'aire d'un CARRÉ de côté $1$, donc dans ce repère, $1$
+          u.a. $= 3\,\text{cm}\times3\,\text{cm}=9\,\text{cm}^2$ — le
+          facteur d'échelle doit être appliqué aux DEUX dimensions de
+          l'aire (longueur ET largeur), pas une seule fois.
+      - id: B
+        text: "$8\\ \\text{cm}^2$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $5+3$, comme si l'on ajoutait l'échelle
+          du repère à l'aire en u.a. La conversion entre u.a. et cm² est
+          une MULTIPLICATION par le facteur d'échelle au carré, jamais une
+          addition.
+      - id: C
+        text: "$45\\ \\text{cm}^2$"
+        correct: true
+      - id: D
+        text: "$5\\ \\text{cm}^2$"
+        correct: false
+        feedback: >
+          Ce choix ne convertit pas du tout : il garde le nombre $5$ tel
+          quel, en changeant seulement l'unité affichée de u.a. à cm².
+          Mais u.a. et cm² ne sont pas la même unité de mesure dans ce
+          repère : $1$ u.a. correspond ici à $9\,\text{cm}^2$, pas à
+          $1\,\text{cm}^2$.
+    correct_feedback: >
+      $1$ u.a. est l'aire du carré de côté $1$ dans le repère, donc ici
+      $1\,\text{u.a.} = 3\,\text{cm}\times3\,\text{cm} = 9\,\text{cm}^2$.
+      L'aire cherchée vaut donc $5\times9=45\,\text{cm}^2$.
+    solution: |
+      **Conversion de l'unité d'aire :**
+      $$1\ \text{u.a.} = 3\ \text{cm} \times 3\ \text{cm} = 9\ \text{cm}^2$$
+
+      **Aire cherchée :**
+      $$5\ \text{u.a.} \times 9\ \text{cm}^2/\text{u.a.} = 45\ \text{cm}^2$$
+
+      Le facteur d'échelle s'applique aux deux dimensions de l'aire —
+      jamais une seule fois — car une aire est un produit de deux
+      longueurs.
+
+  - id: CI-28
+    rung: "R9"
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [synthese, chasles, integration_par_parties, aires]
+    stem: >
+      Soit $f(x)=(x-2)e^x$ sur $[0,3]$. On a établi par IPP qu'une
+      primitive de $f$ est $F(x)=(x-3)e^x$. Sachant que $f$ change de
+      signe en $x=2$ ($f\leq0$ sur $[0,2]$, $f\geq0$ sur $[2,3]$), quelle
+      est la bonne démarche pour calculer l'AIRE délimitée par la courbe
+      de $f$, l'axe des abscisses, et les droites $x=0$ et $x=3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Découper en $[0,2]$ et $[2,3]$ (Chasles), calculer $-\\big(F(2)-F(0)\\big)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour l'aire sur $[2,3]$, puis additionner les deux."
+        correct: true
+      - id: B
+        text: "Calculer directement $F(3)-F(0)$ et prendre ce nombre comme l'aire, puisque $F$ est une primitive de $f$ sur tout $[0,3]$."
+        correct: false
+        feedback: >
+          $F(3)-F(0) = \int_0^3 f(x)\,\mathrm{d}x$ est l'intégrale SIGNÉE
+          sur tout l'intervalle : comme $f$ change de signe en $x=2$, les
+          parties positive et négative s'annulent partiellement dans cette
+          différence, donc ce nombre n'est pas l'aire — exactement le
+          piège identifié au R8.
+      - id: C
+        text: "Calculer $\\left|F(3)-F(0)\\right|$, en prenant la valeur absolue du résultat global."
+        correct: false
+        feedback: >
+          Prendre la valeur absolue APRÈS avoir tout combiné ne corrige
+          pas l'annulation partielle entre la partie où $f\leq0$ et celle
+          où $f\geq0$ : il faut découper en $x=2$ AVANT de prendre les
+          valeurs absolues, comme vu au R8, pas après avoir calculé
+          l'intégrale globale.
+      - id: D
+        text: "Calculer $F(2)-F(0)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour l'aire sur $[2,3]$, sans changer aucun signe, puis additionner."
+        correct: false
+        feedback: >
+          Sur $[0,2]$, $f\leq0$, donc $F(2)-F(0)=\int_0^2 f(x)\,
+          \mathrm{d}x$ est NÉGATIF — ce n'est pas encore l'aire de ce
+          morceau, il faut en prendre l'OPPOSÉ. Additionner ce nombre
+          négatif directement au morceau positif ne redonne pas la vraie
+          aire totale.
+    correct_feedback: >
+      Comme $f$ change de signe en $x=2$, il faut découper (Chasles, R3)
+      et traiter chaque morceau selon son signe : l'opposé de l'intégrale
+      là où $f\leq0$, l'intégrale telle quelle là où $f\geq0$, puis
+      additionner — exactement la méthode du R8, appliquée ici à une
+      primitive obtenue par IPP (R7).
+    solution: |
+      **Sur $[0,2]$, $f\leq0$ :**
+      $$\text{aire}_{[0,2]} = -\big(F(2)-F(0)\big) = -\Big((-1)e^2-(-3)e^0\Big) = -\big(-e^2+3\big) = e^2-3$$
+
+      **Sur $[2,3]$, $f\geq0$ :**
+      $$\text{aire}_{[2,3]} = F(3)-F(2) = 0\cdot e^3-(-e^2) = e^2$$
+
+      **Aire totale (somme) :**
+      $$\text{aire} = (e^2-3)+e^2 = 2e^2-3\ \text{u.a.}$$
+
+  - id: CI-29
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [synthese, comparaison, valeur_moyenne]
+    stem: >
+      Soient $f$ et $g$ deux fonctions continues sur $[2,6]$ telles que
+      $f(x) \leq g(x)$ pour tout $x \in [2,6]$. On donne que la valeur
+      moyenne de $f$ sur $[2,6]$ vaut $3$. Que peut-on affirmer avec
+      certitude sur la valeur moyenne de $g$ sur $[2,6]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La valeur moyenne de $g$ vaut exactement $3$ également, car les deux fonctions sont comparables sur le même intervalle."
+        correct: false
+        feedback: >
+          $f\leq g$ n'implique pas $f=g$, donc rien ne garantit que leurs
+          valeurs moyennes coïncident. On sait seulement que celle de $g$
+          est au moins celle de $f$, pas qu'elle lui est égale.
+      - id: B
+        text: "On ne peut rien affirmer sur la valeur moyenne de $g$ sans connaître son expression explicite."
+        correct: false
+        feedback: >
+          On PEUT affirmer quelque chose : la comparaison $f\leq g$ (R4),
+          combinée à la définition de la valeur moyenne (R6), donne
+          directement $\mu_g\geq\mu_f=3$, sans avoir besoin de connaître
+          l'expression de $g$.
+      - id: C
+        text: "La valeur moyenne de $g$ est inférieure ou égale à $3$, car $g$ étant plus grande que $f$, son intégrale « compense » en étant plus petite en moyenne."
+        correct: false
+        feedback: >
+          C'est l'inégalité inversée. $f\leq g$ sur tout l'intervalle
+          donne $\int f\leq\int g$ (R4), donc en divisant par $b-a>0$ (ce
+          qui ne change pas le sens de l'inégalité), $\mu_f\leq\mu_g$ — la
+          valeur moyenne de $g$ est AU MOINS celle de $f$, pas au plus.
+      - id: D
+        text: "La valeur moyenne de $g$ est supérieure ou égale à $3$, mais elle n'est pas déterminée précisément."
+        correct: true
+    correct_feedback: >
+      Par comparaison (R4), $f\leq g$ sur $[2,6]$ donne $\int_2^6 f(x)\,
+      \mathrm{d}x \leq \int_2^6 g(x)\,\mathrm{d}x$. En divisant les deux
+      membres par $b-a=4>0$ (ce qui préserve le sens de l'inégalité), on
+      obtient $\mu_f\leq\mu_g$, donc $\mu_g\geq3$ — sans pouvoir dire plus
+      précisément quelle est cette valeur.
+    solution: |
+      **Comparaison (R4) :** $f\leq g$ sur $[2,6]$ $\Rightarrow$
+      $$\int_2^6 f(x)\,\mathrm{d}x \leq \int_2^6 g(x)\,\mathrm{d}x$$
+
+      **Division par $b-a=4>0$ (préserve le sens) :**
+      $$\frac{1}{4}\int_2^6 f(x)\,\mathrm{d}x \leq \frac14\int_2^6 g(x)\,\mathrm{d}x$$
+      $$\mu_f \leq \mu_g$$
+
+      Comme $\mu_f=3$, on conclut $\mu_g\geq3$ — un encadrement, pas une
+      valeur exacte, puisque l'énoncé ne donne aucune autre information
+      sur $g$.
+
+  - id: CI-30
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [synthese, integration_par_parties, valeur_moyenne]
+    stem: >
+      Soit $q(x)=(2-x)e^x$ sur $[0,2]$. Une intégration par parties donne
+      $\int_0^2 q(x)\,\mathrm{d}x = e^2-3$. Quelle est la valeur moyenne de
+      $q$ sur $[0,2]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^2-3$"
+        correct: false
+        feedback: >
+          Ce choix reprend directement la valeur de l'intégrale, sans la
+          diviser par la longueur de l'intervalle $b-a=2-0=2$. La valeur
+          moyenne n'est jamais l'intégrale elle-même, c'est l'intégrale
+          divisée par $b-a$.
+      - id: B
+        text: "$\\dfrac{e^2-3}{2}$"
+        correct: true
+      - id: C
+        text: "$2(e^2-3)$"
+        correct: false
+        feedback: >
+          Ce choix MULTIPLIE l'intégrale par $b-a=2$ au lieu de la
+          DIVISER. La définition de la valeur moyenne est
+          $\mu=\dfrac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x$ — une division
+          par $b-a$, pas une multiplication.
+      - id: D
+        text: "$\\dfrac{e^2-3}{e^2}$"
+        correct: false
+        feedback: >
+          Ce choix divise l'intégrale par $q(2)=e^2$ (une valeur de la
+          fonction) au lieu de diviser par la longueur de l'intervalle
+          $b-a=2$. Le dénominateur de la valeur moyenne est toujours une
+          LONGUEUR d'intervalle, jamais une valeur de la fonction
+          elle-même.
+    correct_feedback: >
+      $\mu = \dfrac{1}{b-a}\int_a^b q(x)\,\mathrm{d}x = \dfrac{1}{2-0}
+      \times(e^2-3) = \dfrac{e^2-3}{2}$.
+    solution: |
+      **Valeur moyenne (R6), appliquée au résultat de l'IPP :**
+      $$\mu = \frac{1}{2-0}\int_0^2 q(x)\,\mathrm{d}x = \frac{e^2-3}{2}$$
+
+      (Vérification de l'intégrale par IPP : avec $u=2-x$, $u'=-1$,
+      $v'=e^x$, $v=e^x$ : $\int_0^2(2-x)e^x\,\mathrm{d}x =
+      \big[(2-x)e^x\big]_0^2 + \int_0^2 e^x\,\mathrm{d}x = (0-2) +
+      \big[e^x\big]_0^2 = -2+(e^2-1) = e^2-3$.)
