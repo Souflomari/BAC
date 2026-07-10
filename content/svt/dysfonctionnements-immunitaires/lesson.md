@@ -76,6 +76,8 @@ Une **maladie auto-immune**, c'est exactement l'échec de cette tolérance : un 
 
 **La polyarthrite rhumatoïde.** Ici, c'est la voie humorale qui est en cause : des auto-anticorps, produits par des plasmocytes issus de lymphocytes B auto-réactifs, se lient à des molécules du soi présentes dans les tissus articulaires. Les complexes immuns qui en résultent (anticorps + molécule du soi) s'accumulent dans les articulations et y entretiennent une réaction inflammatoire chronique — la même logique de complexe immun que celle vue pour les agents infectieux, mais ici dirigée contre l'organisme lui-même, et de façon durable plutôt que ponctuelle, ce qui explique la destruction articulaire progressive qui caractérise la maladie.
 
+[[figure:rupture-tolerance-deux-voies]]
+
 ### Exemple travaillé : interpréter la présence d'auto-anticorps
 
 **Énoncé.** Un adolescent vient de recevoir un diagnostic de diabète de type 1. Une prise de sang, réalisée au moment du diagnostic, révèle la présence d'anticorps dirigés spécifiquement contre les cellules β du pancréas — des anticorps qu'on ne trouve jamais chez un individu sain. Que peut-on conclure de cette observation ?
@@ -137,6 +139,8 @@ Une précision, hors du mécanisme détaillé ici mais nécessaire par souci de 
 - **Phase aiguë (les premières semaines) :** le nombre de LT4 chute rapidement, tandis que la quantité de virus dans le sang grimpe fortement. Puis, la réponse immunitaire encore globalement fonctionnelle réagit : le nombre de LT4 remonte partiellement (sans revenir tout à fait à son niveau initial), et la quantité de virus redescend nettement, sans jamais s'annuler complètement.
 - **Phase chronique, dite de latence clinique (plusieurs années) :** le nombre de LT4 continue de décliner, mais très progressivement ; la quantité de virus reste relativement stable, à un niveau bas. La personne est, la plupart du temps, sans symptôme notable.
 - **Phase SIDA :** le nombre de LT4 franchit le seuil critique évoqué plus haut. La quantité de virus remonte nettement, la coordination cellulaire ne fonctionne plus assez pour contenir les infections, et des infections opportunistes (ainsi que certains cancers) apparaissent.
+
+[[figure:vih-lt4-charge-virale]]
 
 Explique pourquoi la phase chronique peut durer plusieurs années sans aucun symptôme, alors que le virus continue, pendant tout ce temps, à détruire des LT4.
 
@@ -234,6 +238,8 @@ Ces deux outils partagent un même but — protéger contre un agent infectieux 
 Une confusion très répandue consiste à inverser ces deux propriétés — ou à les mélanger — en imaginant qu'un vaccin protège dès l'injection (comme un sérum), ou qu'un sérum laisse une protection durable (comme un vaccin).
 
 Teste ce modèle sur les courbes qu'on obtiendrait en mesurant le titre d'anticorps (leur concentration dans le sang) au cours du temps, dans les deux cas.
+
+[[figure:titre-anticorps-vaccin-serum]]
 
 **Après une vaccination :** le titre d'anticorps reste quasiment nul pendant les premiers jours (le temps de la sélection puis de l'expansion clonale), puis augmente progressivement pour atteindre un plateau, plusieurs jours à quelques semaines après l'injection. Ce plateau ne redescend ensuite que très lentement, et reste à un niveau protecteur pendant des années — avec, si un rappel est administré, une remontée brutale et bien plus haute du titre, la signature d'une réponse secondaire appuyée sur la mémoire déjà là.
 

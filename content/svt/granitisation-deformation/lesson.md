@@ -42,6 +42,8 @@ Ce passage d'un comportement à l'autre — qu'on appelle la **transition fragil
 
 Voilà pourquoi, dans une même coupe de terrain traversant une chaîne de collision, on trouve des failles et des chevauchements dans les niveaux les plus superficiels, et des plis dans les niveaux plus profonds de la même pile de roches — parfois même dans la même couche, suivie de haut en bas.
 
+[[figure:pli-faille-profondeur]]
+
 ### L'erreur à ne pas commettre
 
 Un piège fréquent : penser que « ductile » veut dire « roche molle » et « cassant » veut dire « roche dure », comme si c'était une propriété fixe, écrite une fois pour toutes dans la nature du matériau. Ce n'est pas le cas. La même roche calcaire, le même granite, se comporte de façon cassante près de la surface et de façon ductile en profondeur — pour cette roche précise, rien n'a changé sauf la température et la pression qui l'entourent.
@@ -78,6 +80,8 @@ Chaque assemblage minéral n'est stable que dans une fenêtre précise de pressi
 
 Le raisonnement se retourne alors naturellement : face à un échantillon de roche métamorphique inconnu, il suffit d'identifier son assemblage minéral pour remonter, avec une bonne précision, à la profondeur approximative à laquelle cette roche a été enfouie. Un géologue qui trouve un gneiss lit, dans les minéraux eux-mêmes, une information sur une profondeur passée — exactement comme on a lu, au chapitre précédent, l'histoire d'une collision dans la position des ophiolites et des chevauchements.
 
+[[figure:facies-jauge-profondeur]]
+
 ### L'erreur à ne pas commettre
 
 Un piège fréquent : voir dans schiste, gneiss et migmatite trois roches simplement différentes, sans lien entre elles — ou pire, croire que leur différence est une question d'âge, comme si le schiste était « plus jeune » et la migmatite « plus vieille », un peu comme des générations de roches qui se succéderaient dans le temps sans rapport avec la profondeur.
@@ -108,6 +112,8 @@ Toute roche possède un **solidus** : une température (qui dépend aussi de la 
 Le problème, c'est que ce seuil est élevé. Pour une roche « sèche », sans eau piégée dans ses minéraux, le solidus se situe à une température que la croûte continentale, même très épaissie par une collision, atteint rarement, même à sa base. C'est là qu'intervient un facteur déjà rencontré au chapitre précédent, à propos de la subduction : la présence d'eau.
 
 De nombreux minéraux qui composent les gneiss (certains micas, en particulier) retiennent de l'eau dans leur structure cristalline. Or l'eau a, ici aussi, un effet précis : elle abaisse nettement la température à laquelle la roche commence à fondre — exactement le même principe que celui qui déclenchait la fusion partielle du manteau au-dessus d'une plaque en subduction, mais appliqué cette fois à une roche continentale déjà métamorphisée, à très grande profondeur au cœur d'une chaîne de collision. Avec de l'eau disponible, le solidus peut s'abaisser jusque vers 650 à 700 °C environ — une température que la base d'une croûte épaissie par collision, à 25-30 kilomètres de profondeur ou plus, peut réellement atteindre.
+
+[[figure:solidus-seuil-anatexie]]
 
 ### Une fusion partielle, pas totale
 
@@ -162,6 +168,8 @@ Rassemblons ce qu'on sait. Une collision épaissit la croûte continentale (chap
 Pour que ce granite soit visible aujourd'hui, à la surface, il faut le même mécanisme d'**exhumation** que celui qui ramène un gneiss vers le jour : le soulèvement tectonique qui continue de pousser la croûte épaissie vers le haut, combiné à l'érosion qui décape, année après année, tout ce qui recouvre ces roches profondes.
 
 La seule différence, c'est la distance à parcourir. Un gneiss, formé vers vingt kilomètres de profondeur, a moins de chemin à remonter, et moins de roche à voir disparaître au-dessus de lui, qu'un granite formé vers trente kilomètres ou plus. Exposer un granite en surface demande donc, en général, une érosion plus poussée et plus de temps qu'exposer un gneiss ou un schiste — ce qui explique pourquoi on trouve de vastes affleurements de granite au cœur de chaînes très anciennes et déjà fortement érodées, comme le Massif central, la Bretagne, ou la Meseta marocaine, alors qu'on en trouve très peu, et seulement de façon localisée, dans les vallées les plus profondément entaillées d'une chaîne encore jeune et à peine entamée par l'érosion.
+
+[[figure:exhumation-erosion-granite]]
 
 Cela ne veut pas dire qu'une jeune chaîne de collision ne produit pas de granite : l'anatexie s'y produit dès que la croûte est assez épaissie et assez chaude, pendant la collision elle-même, pas après. Simplement, ce granite reste enfoui, caché sous des dizaines de kilomètres de roche qui n'ont pas encore eu le temps d'être arrachées par l'érosion.
 

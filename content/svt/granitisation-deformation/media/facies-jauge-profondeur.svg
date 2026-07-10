@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Une même pélite, suivie en profondeur croissante : à quelques kilomètres, à peine transformée ; vers 10 kilomètres, un schiste feuilleté ; vers 20 kilomètres, un gneiss rubané ; au-delà de 25 kilomètres, une migmatite mêlant zones solides et zones fondues — chaque faciès lit une profondeur.">
+  <title>Le métamorphisme régional comme jauge de profondeur</title>
+
+  <!--
+    facies-jauge-profondeur.svg — figure STAGED, 4 étapes (LESSON-EXPERIENCE-SPEC §2).
+    Cible : R2 du lesson.md — une même pélite, enfouie de plus en plus
+    profondément, traverse une série de faciès métamorphiques prévisible ;
+    lire le faciès, c'est lire la profondeur.
+
+    Colonne verticale UNIQUE (contrairement à pli-faille-profondeur.svg qui
+    est une coupe LARGE avec compression latérale) : un seul axe de
+    profondeur, quatre repères ajoutés un par un, en descendant. Chaque
+    étape AJOUTE un nouveau repère à une NOUVELLE profondeur — jamais de
+    retouche d'un repère déjà posé (contrat DOM-additif).
+
+    step-1 : pélite (quelques km) — à peine recristallisée.
+    step-2 : + schiste (≈10 km) — feuilleté, mica orienté en fines plaques.
+    step-3 : + gneiss (≈20 km) — rubané, bandes claires/sombres alternées.
+    step-4 : + migmatite (>25 km) — mélange zones solides / zones fondues —
+             et l'accolade qui relie les quatre repères : « lire le faciès →
+             lire la profondeur ». Seule idée accentuée de la figure.
+
+    Convention : les textures (feuilleté / rubané / mixte) sont des FABRIQUES
+    métamorphiques schématiques, jamais une texture de cristaux magmatiques
+    (propriété de R4 / granite-texture-grenue.svg — hors sujet ici). Aucun
+    axe P-T ici (c'est solidus-seuil-anatexie.svg, une autre figure) ; la
+    migmatite est montrée comme un FAIT (son aspect), pas expliquée (son
+    mécanisme vient au rung suivant).
+
+    Profondeurs en ordre de grandeur, espacement de l'axe non strictement
+    linéaire (le texte R2 lui-même ne donne que des ordres de grandeur).
+  -->
+
+  <!-- Titre -->
+  <text x="330" y="22" text-anchor="middle" font-size="13.5" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Une même pélite, enfouie de plus en plus profondément
+  </text>
+
+  <!-- Axe de profondeur (convention reprise de granite-texture-grenue.svg) -->
+  <line x1="70" y1="90" x2="70" y2="500" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="70,512 64,498 76,498" fill="var(--figure-ink)"/>
+  <text x="70" y="80" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">surface</text>
+  <text x="70" y="530" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">&gt; 25 km</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — pélite, quelques km
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="100" y1="130" x2="140" y2="130" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <rect x="140" y="95" width="110" height="70" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <g fill="var(--figure-ink-soft)">
+      <circle cx="168" cy="118" r="1.6"/><circle cx="195" cy="112" r="1.6"/>
+      <circle cx="222" cy="122" r="1.6"/><circle cx="178" cy="140" r="1.6"/>
+      <circle cx="208" cy="148" r="1.6"/><circle cx="232" cy="140" r="1.6"/>
+      <circle cx="160" cy="150" r="1.6"/>
+    </g>
+    <text x="270" y="118" font-size="12" font-weight="700" fill="var(--figure-ink)">Pélite</text>
+    <text x="270" y="133" font-size="10.5" fill="var(--figure-ink-soft)">quelques km</text>
+    <text x="270" y="150" font-size="10" fill="var(--figure-ink-soft)">roche argileuse,</text>
+    <text x="270" y="163" font-size="10" fill="var(--figure-ink-soft)">à peine recristallisée</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — schiste, ≈10 km — feuilleté
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="100" y1="230" x2="140" y2="230" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <rect x="140" y="195" width="110" height="70" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round">
+      <line x1="155" y1="205" x2="240" y2="215"/>
+      <line x1="152" y1="217" x2="238" y2="227"/>
+      <line x1="150" y1="229" x2="236" y2="239"/>
+      <line x1="152" y1="241" x2="238" y2="251"/>
+      <line x1="155" y1="253" x2="240" y2="255"/>
+    </g>
+    <text x="270" y="218" font-size="12" font-weight="700" fill="var(--figure-ink)">Schiste</text>
+    <text x="270" y="233" font-size="10.5" fill="var(--figure-ink-soft)">≈10 km</text>
+    <text x="270" y="250" font-size="10" fill="var(--figure-ink-soft)">feuilleté, mica orienté</text>
+    <text x="270" y="263" font-size="10" fill="var(--figure-ink-soft)">en fines plaques</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — gneiss, ≈20 km — rubané
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="100" y1="340" x2="140" y2="340" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <rect x="140" y="305" width="110" height="70" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <g fill="var(--figure-ink-soft)">
+      <rect x="147" y="312" width="96" height="10"/>
+      <rect x="147" y="332" width="96" height="10"/>
+      <rect x="147" y="352" width="96" height="10"/>
+    </g>
+    <text x="270" y="328" font-size="12" font-weight="700" fill="var(--figure-ink)">Gneiss</text>
+    <text x="270" y="343" font-size="10.5" fill="var(--figure-ink-soft)">≈20 km</text>
+    <text x="270" y="360" font-size="10" fill="var(--figure-ink-soft)">rubané, bandes claires</text>
+    <text x="270" y="373" font-size="10" fill="var(--figure-ink-soft)">et sombres alternées</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — migmatite, > 25 km — mixte (solide + fondu) + accolade
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <line x1="100" y1="450" x2="140" y2="450" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <rect x="140" y="415" width="110" height="70" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <!-- bandes résiduelles (héritées du stade gneiss) -->
+    <g fill="var(--figure-ink-soft)">
+      <rect x="147" y="422" width="45" height="8"/>
+      <rect x="147" y="466" width="40" height="8"/>
+    </g>
+    <!-- poches fondues -->
+    <g fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.3">
+      <path d="M198,428 C215,422 232,430 228,444 C224,456 204,456 198,446 Z"/>
+      <path d="M155,448 C170,443 188,450 184,462 C180,472 160,472 155,462 Z"/>
+    </g>
+
+    <text x="270" y="438" font-size="12" font-weight="700" fill="var(--figure-accent)">Migmatite</text>
+    <text x="270" y="453" font-size="10.5" fill="var(--figure-ink-soft)">&gt; 25 km, environ</text>
+    <text x="270" y="470" font-size="10" fill="var(--figure-ink-soft)">zones solides + zones</text>
+    <text x="270" y="483" font-size="10" fill="var(--figure-ink-soft)">autrefois fondues</text>
+
+    <!-- Accolade reliant les quatre repères : lire le faciès = lire la profondeur -->
+    <path d="M460,130 C445,130 445,130 445,155 C445,285 445,285 430,290
+             C445,295 445,295 445,425 C445,450 445,450 460,450"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="475" y="278" font-size="11" font-weight="700" fill="var(--figure-accent)">lire le faciès</text>
+    <text x="475" y="293" font-size="11" font-weight="700" fill="var(--figure-accent)">→ lire la profondeur</text>
+  </g><!-- /step-4 -->
+
+</svg>

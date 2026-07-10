@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Coupe verticale de la croûte, comprimée horizontalement à toutes les profondeurs : la même couche sédimentaire casse le long d'une faille près de la surface, où elle est froide et peu confinée, et se plie sans casser en profondeur, où elle est chaude et fortement confinée — avec une bande de transition fragile-ductile marquée vers 10 à 15 kilomètres.">
+  <title>Plier ou casser : ce que décide la profondeur</title>
+
+  <!--
+    pli-faille-profondeur.svg — figure STAGED, 4 étapes (LESSON-EXPERIENCE-SPEC §2).
+    Cible : R1 du lesson.md — la même compression horizontale casse la roche
+    près de la surface et la plie en profondeur ; ce n'est pas la roche qui
+    décide, c'est sa profondeur (température + pression de confinement).
+
+    step-1 : la coupe verticale, l'axe de profondeur (0 → ≈30 km), les
+             flèches de compression horizontale (une paire près de la
+             surface, une paire en profondeur — pour montrer que c'est LA
+             MÊME compression à toute profondeur), et une seule couche,
+             continue, tracée en trait fin ET discontinu (--figure-ink-soft)
+             — la couche "telle qu'on l'imagine, uniforme", avant de
+             regarder de plus près.
+    step-2 : AJOUTE, près de la surface (0-10 km), la même couche mais
+             réellement cassée : deux blocs pleins séparés par un plan de
+             faille incliné, avec le même repère de couche DÉCALÉ
+             verticalement d'un bloc à l'autre — la preuve du rejet.
+             Labels "froid" / "peu confiné".
+    step-3 : AJOUTE, en profondeur (15-30 km), la même couche mais plissée
+             sans rupture : un ruban continu et épais en --figure-accent —
+             SEULE idée accentuée de la figure (le pli profond, contre-
+             intuitif : "profond" ne veut pas dire "cassé davantage").
+             Labels "chaud" / "fortement confiné".
+    step-4 : AJOUTE la bande de transition fragile-ductile (≈10-15 km), avec
+             ses deux étiquettes "casse" (au-dessus) / "plie" (en dessous)
+             et un repère sur l'axe de profondeur.
+
+    Convention de recouvrement (contrat DOM-additif — StagedFigure ne permet
+    QUE des ajouts, jamais une retouche d'un groupe antérieur) : le trait fin
+    en tirets de l'étape 1 reste visible, atténué (opacity 0.55 injectée
+    automatiquement dès l'étape 2), sous les blocs / le ruban des étapes
+    2-3 — il se lit comme le "fantôme" de l'hypothèse naïve (une couche
+    uniforme) contre le comportement réel qui se superpose en pleine encre.
+    Aucune étape ne retouche le contenu d'une étape antérieure.
+
+    Simplification pédagogique assumée : profondeurs et bande de transition
+    en ordre de grandeur (le texte R1 le dit lui-même : "pas une ligne
+    unique et universelle... l'ordre de grandeur reste le même partout").
+    Pli et faille sont schématiques, pas une coupe de terrain réelle.
+
+    Hors sujet ici (propriété de R4, déjà traitée par granite-texture-
+    grenue.svg) : aucune texture de cristaux, aucune vitesse de
+    refroidissement.
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="22" text-anchor="middle" font-size="13.5" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Une même compression, un comportement qui change avec la profondeur
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — coupe, axe, compression, couche unique (hypothèse naïve)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axe de profondeur (convention reprise de granite-texture-grenue.svg) -->
+    <line x1="70" y1="90" x2="70" y2="450" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="70,462 64,448 76,448" fill="var(--figure-ink)"/>
+    <text x="70" y="80" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">surface</text>
+    <text x="70" y="478" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">≈30 km</text>
+
+    <!-- Panneau : la coupe de croûte -->
+    <rect x="190" y="90" width="370" height="360" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+
+    <!-- Compression horizontale — paire du haut (≈5 km) -->
+    <line x1="100" y1="150" x2="178" y2="150" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="190,150 176,144 176,156" fill="var(--figure-ink)"/>
+    <line x1="650" y1="150" x2="572" y2="150" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="560,150 574,144 574,156" fill="var(--figure-ink)"/>
+    <text x="350" y="130" text-anchor="middle" font-size="11" fill="var(--figure-ink)">compression horizontale</text>
+
+    <!-- Compression horizontale — paire du bas (≈25 km, LA MÊME compression) -->
+    <line x1="100" y1="390" x2="178" y2="390" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="190,390 176,384 176,396" fill="var(--figure-ink)"/>
+    <line x1="650" y1="390" x2="572" y2="390" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="560,390 574,384 574,396" fill="var(--figure-ink)"/>
+
+    <!-- Une seule couche, continue, telle qu'on l'imagine avant d'y regarder de près -->
+    <path d="M375,100 C330,140 420,170 375,220 C330,260 420,300 375,350 C345,385 405,410 375,440"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2"
+          stroke-dasharray="7,5" stroke-linecap="round"/>
+    <text x="472" y="178" font-size="10.5" fill="var(--figure-ink-soft)">la même couche,</text>
+    <text x="472" y="192" font-size="10.5" fill="var(--figure-ink-soft)">suivie de haut en bas</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — près de la surface : la couche casse (faille)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="330" y1="95" x2="430" y2="205" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <polygon points="205,95 330,95 430,205 205,205"
+             fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="330,95 545,95 545,205 430,205"
+             fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- la même couche, mais DÉCALÉE de part et d'autre du plan de faille -->
+    <line x1="215" y1="135" x2="315" y2="118" stroke="var(--figure-ink)" stroke-width="3.4" stroke-linecap="round"/>
+    <line x1="445" y1="178" x2="535" y2="188" stroke="var(--figure-ink)" stroke-width="3.4" stroke-linecap="round"/>
+
+    <text x="385" y="168" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-ink)">faille</text>
+
+    <text x="215" y="160" font-size="11" font-weight="700" fill="var(--figure-ink)">froid,</text>
+    <text x="215" y="174" font-size="10.5" fill="var(--figure-ink-soft)">peu confiné</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — en profondeur : la couche plie (pli, sans rupture)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M205,360 C255,320 305,320 355,360 C405,400 455,400 505,360 L545,340"
+          fill="none" stroke="var(--figure-accent)" stroke-width="10"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="330" y="308" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-accent)">pli</text>
+
+    <text x="375" y="425" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-ink)">chaud,</text>
+    <text x="375" y="440" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">fortement confiné</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — la bande de transition fragile-ductile (≈10-15 km)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect x="195" y="210" width="350" height="60" rx="6"
+          fill="var(--figure-accent)" opacity="0.12"
+          stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="5,3"/>
+    <text x="370" y="235" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-accent)">
+      transition fragile-ductile
+    </text>
+    <text x="235" y="252" text-anchor="middle" font-size="10" fill="var(--figure-ink)">↑ casse</text>
+    <text x="510" y="252" text-anchor="middle" font-size="10" fill="var(--figure-ink)">plie ↓</text>
+
+    <!-- Repère sur l'axe de profondeur -->
+    <line x1="52" y1="210" x2="88" y2="210" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="52" y1="270" x2="88" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="52" y1="210" x2="52" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="42" y="245" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">≈10-15 km</text>
+  </g><!-- /step-4 -->
+
+</svg>

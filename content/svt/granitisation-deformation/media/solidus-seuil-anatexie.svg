@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Diagramme pression-température : le trajet d'enfouissement d'une roche continentale reste solide en se métamorphisant (schiste, gneiss), n'atteint jamais le solidus sec, mais franchit vers 25 à 30 kilomètres le solidus abaissé par l'eau, vers 650 à 700 degrés — déclenchant une fusion partielle, l'anatexie.">
+  <title>Le solidus : un seuil de fusion, pas une pente continue</title>
+
+  <!--
+    solidus-seuil-anatexie.svg — figure STAGED, 5 étapes (LESSON-EXPERIENCE-
+    SPEC §2). Cible : R3 du lesson.md — l'anatexie n'est pas un prolongement
+    continu du métamorphisme, c'est le franchissement d'un SEUIL (le
+    solidus), abaissé par l'eau des micas.
+
+    SEUL graphe P-T de la leçon — wide-band (pas de cap 680px), à la
+    différence des trois autres figures de cette vague qui sont des coupes/
+    colonnes structurelles. Repère géologique : la profondeur (donc P)
+    augmente VERS LE BAS (convention reprise des autres figures SVT de la
+    leçon), donc l'origine du repère est en HAUT-GAUCHE, pas en bas-gauche
+    comme un diagramme de phase classique.
+
+    step-1 : les axes seuls (T en abscisse, P/profondeur en ordonnée,
+             repère vide).
+    step-2 : AJOUTE le trajet métamorphique (enfouissement → schiste →
+             gneiss), qui reste SOLIDE tout du long — encre neutre, pas
+             d'accent (le solidus n'est pas encore montré).
+    step-3 : AJOUTE le solidus SEC — jamais atteint par le trajet — en
+             --figure-ink-soft (constante dure : le solidus sec n'est pas le
+             point d'accent de la figure).
+    step-4 : AJOUTE le solidus abaissé PAR L'EAU, décalé vers la gauche
+             (vers 650-700 °C), en --figure-accent, avec une flèche de
+             décalage entre les deux solidus.
+    step-5 : AJOUTE le point de franchissement (≈25-30 km) et la zone de
+             fusion partielle (anatexie → migmatite) — un COURT segment de
+             trajet, en accent, continue au-delà du croisement (le trajet ne
+             change pas de tracé, seule sa couleur signale qu'il est
+             désormais partiellement fondu).
+
+    Simplification pédagogique assumée : diagramme QUALITATIF — aucune
+    équation, aucune précision de diagramme de phase réel ; températures et
+    profondeurs en ordre de grandeur (le texte R3 ne donne, lui aussi, que
+    des ordres de grandeur : "650 à 700 °C environ", "25-30 kilomètres... ou
+    plus"). Les repères schiste/gneiss sur le trajet sont des jalons
+    LÉGERS — ce n'est pas le sujet de cette figure (R2/facies-jauge-
+    profondeur.svg le sont).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle" font-size="13.5" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Le solidus : un seuil, pas une pente continue
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes, repère vide
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="100" y="60" width="480" height="340" fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axe T (horizontal, en haut : P = 0 à la surface) -->
+    <line x1="100" y1="60" x2="588" y2="60" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="600,60 586,54.5 586,65.5" fill="var(--figure-ink)"/>
+    <text x="608" y="64" font-size="12" fill="var(--figure-ink)">T (°C)</text>
+
+    <!-- Axe P / profondeur (vertical, croît vers le bas) -->
+    <line x1="100" y1="60" x2="100" y2="412" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="100,424 94,410 106,410" fill="var(--figure-ink)"/>
+    <text x="66" y="238" text-anchor="middle" font-size="12" fill="var(--figure-ink)"
+          transform="rotate(-90 66 238)">P (profondeur)</text>
+
+    <!-- Graduations de température -->
+    <line x1="428" y1="56" x2="428" y2="64" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="454" y1="56" x2="454" y2="64" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="441" y="46" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">650-700 °C</text>
+    <line x1="555" y1="56" x2="555" y2="64" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="555" y="46" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">≈900 °C</text>
+
+    <!-- Graduations de profondeur -->
+    <line x1="96" y1="166" x2="104" y2="166" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="88" y="170" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">≈10 km</text>
+    <line x1="96" y1="273" x2="104" y2="273" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="88" y="277" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">≈20 km</text>
+    <line x1="96" y1="379" x2="104" y2="379" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="88" y="383" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">≈30 km</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — trajet métamorphique (reste solide)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M140,81 C180,100 220,130 262,166 C300,200 330,235 363,273 C395,310 430,345 460,370 L474,379"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="262" cy="166" r="3.5" fill="var(--figure-ink)"/>
+    <text x="272" y="156" font-size="10" fill="var(--figure-ink-soft)">schiste</text>
+    <circle cx="363" cy="273" r="3.5" fill="var(--figure-ink)"/>
+    <text x="373" y="263" font-size="10" fill="var(--figure-ink-soft)">gneiss</text>
+    <text x="150" y="98" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">enfouissement, reste solide</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — solidus SEC (jamais atteint)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M555,60 C548,100 546,140 544,166 C540,210 536,240 534,273 C530,310 526,345 524,379"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-dasharray="6,4"/>
+    <text x="562" y="82" font-size="10.5" font-weight="700" fill="var(--figure-ink-soft)">solidus</text>
+    <text x="562" y="96" font-size="10.5" font-weight="700" fill="var(--figure-ink-soft)">sec</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — solidus ABAISSÉ PAR L'EAU (décalé vers la gauche)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <path d="M464,60 C458,100 456,140 454,166 C450,210 446,240 443,273 C440,310 436,345 433,379"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.8"/>
+    <text x="330" y="98" font-size="10.5" font-weight="700" fill="var(--figure-accent)">solidus abaissé</text>
+    <text x="330" y="112" font-size="10.5" font-weight="700" fill="var(--figure-accent)">par l'eau</text>
+
+    <!-- Flèche de décalage, du solidus sec vers le solidus abaissé -->
+    <line x1="536" y1="220" x2="454" y2="220" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="443,220 457,214 457,226" fill="var(--figure-accent)"/>
+  </g><!-- /step-4 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 5 — franchissement : fusion partielle (anatexie)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-5">
+    <polygon points="436,347 433,379 580,379 580,347" fill="var(--figure-accent)" opacity="0.14"/>
+    <path d="M436,347 C450,360 460,368 474,379" fill="none" stroke="var(--figure-accent)" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="436" cy="347" r="4.5" fill="var(--figure-accent)"/>
+    <text x="492" y="360" font-size="10.5" font-weight="700" fill="var(--figure-accent)">fusion partielle</text>
+    <text x="492" y="374" font-size="10.5" font-weight="700" fill="var(--figure-accent)">anatexie → migmatite</text>
+  </g><!-- /step-5 -->
+
+</svg>

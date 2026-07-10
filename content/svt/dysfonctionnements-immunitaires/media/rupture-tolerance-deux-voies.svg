@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 600"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Rupture de la tolérance au soi : normalement, un clone de lymphocytes capable de reconnaître une molécule du soi est éliminé pendant le développement, si bien que le soi n'est jamais attaqué. Dans une maladie auto-immune, ce même type de clone survit et s'active contre une molécule du soi traitée à tort comme étrangère. Une fois activé, il suit l'une de deux voies effectrices : la voie cellulaire, où des lymphocytes T8 cytotoxiques détruisent par contact direct les cellules bêta saines du pancréas, provoquant un diabète de type 1 ; ou la voie humorale, où des plasmocytes sécrètent des auto-anticorps qui forment des complexes immuns s'accumulant dans les articulations saines, provoquant une polyarthrite rhumatoïde.">
+  <title>Rupture de la tolérance au soi : deux voies effectrices, deux maladies</title>
+
+  <!--
+    rupture-tolerance-deux-voies.svg — STAGED, 4 étapes cumulatives.
+    step-1 : tolérance normale — un clone auto-réactif est éliminé pendant le
+             développement ; le soi n'est jamais atteint.
+    step-2 : échec de la tolérance — le MÊME TYPE de clone, cette fois, n'est
+             pas éliminé : il survit et s'active contre une molécule du soi.
+             (Scène distincte de step-1, positionnée à côté — jamais une
+             restyle du clone déjà dessiné en step-1, qui reste éliminé dans
+             SON scénario : le contrat DOM-absence n'autorise que des AJOUTS.)
+    step-3 : voie A, cellulaire — LT8 cytotoxiques, destruction par CONTACT
+             direct des cellules β SAINES du pancréas (soi) → diabète de type 1.
+    step-4 : voie B, humorale — plasmocytes → auto-anticorps → complexes
+             immuns qui s'ACCUMULENT dans les articulations SAINES (soi) →
+             polyarthrite rhumatoïde, inflammation chronique.
+
+    Cible précise (R2 du lesson.md) : la maladie auto-immune n'est PAS une
+    allergie plus intense — c'est un échec de la RECONNAISSANCE du soi, pas
+    un excès de réaction contre un non-soi. D'où la consigne dure : l'accent
+    ne marque JAMAIS une cible infectée ou étrangère ici, seulement le SOI
+    attaqué à tort — répété à chaque apparition de la cible (la molécule du
+    soi en step-2, les cellules β en step-3, les articulations en step-4) :
+    une seule idée, répétée à chaque étage où elle s'applique (même
+    convention que le repère τ répété dans uc-charge.svg).
+
+    Les deux voies effectrices sont rendues visuellement distinctes :
+    voie A = flèche courte + glyphe de deux triangles se touchant (contact
+    direct, une seule étape) ; voie B = trois anticorps auto-Y (glyphe du
+    Fab repris tel quel de sensibilisation-reaction-allergie.svg) puis un
+    petit amas de complexes immuns (anticorps + pastille accent = molécule
+    du soi liée) qui « pleuvent » dans la case cible — dépôt, pas contact.
+
+    Simplification pédagogique assumée : la sélection clonale n'est pas
+    re-diagrammée (un seul pictogramme de clone, jamais une expansion
+    détaillée). Aucun IgE, aucun mastocyte — ce territoire appartient à
+    sensibilisation-reaction-allergie.svg (R1), pas à cette figure.
+  -->
+
+  <!-- ══════════════════════ STEP 1 — tolérance normale ══════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="370" y="22" text-anchor="middle"
+          font-size="13.5" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Rupture de la tolérance au soi : de l'échec à la maladie
+    </text>
+
+    <!-- Cellule du soi -->
+    <circle cx="130" cy="108" r="42" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <line x1="100" y1="78" x2="94" y2="68" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="130" y1="66" x2="130" y2="54" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="160" y1="78" x2="166" y2="68" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="130" y="168" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">cellule du soi</text>
+    <text x="130" y="182" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">molécules du soi en surface</text>
+
+    <!-- Clone auto-réactif, éliminé -->
+    <circle cx="270" cy="108" r="20" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="258" y1="96" x2="282" y2="120" stroke="var(--figure-ink-soft)" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="282" y1="96" x2="258" y2="120" stroke="var(--figure-ink-soft)" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="270" y="146" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">clone auto-réactif</text>
+    <text x="270" y="160" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">éliminé (développement)</text>
+
+    <!-- Connecteur : le clone reconnaîtrait le soi, s'il n'était pas éliminé -->
+    <line x1="176" y1="108" x2="240" y2="108" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <polygon points="240,102 240,114 248,108" fill="var(--figure-ink-soft)"/>
+    <text x="211" y="100" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">reconnaîtrait</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════ STEP 2 — échec de la tolérance ══════════════ -->
+  <g id="step-2">
+    <!-- Cellule du soi — cette fois attaquée (cible accent) -->
+    <circle cx="470" cy="108" r="42" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <line x1="440" y1="80" x2="434" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="500" y1="80" x2="506" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="470" y1="66" x2="470" y2="60" stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="470,60 476,50 464,50" fill="var(--figure-accent)"/>
+    <text x="470" y="44" text-anchor="middle" font-size="8.5" font-weight="600" fill="var(--figure-accent)">molécule du soi</text>
+    <text x="470" y="168" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">cellule du soi</text>
+    <text x="470" y="182" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">attaquée à tort, comme non-soi</text>
+
+    <!-- Clone auto-réactif, activé (survit) -->
+    <circle cx="630" cy="108" r="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="630" y="146" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">clone auto-réactif</text>
+    <text x="630" y="160" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)">ACTIVÉ (survit)</text>
+
+    <!-- Connecteur : attaque -->
+    <line x1="610" y1="108" x2="514" y2="108" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="520,102 520,114 512,108" fill="var(--figure-accent)"/>
+    <text x="562" y="98" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--figure-accent)">attaque</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════ STEP 3 — voie A, cellulaire ══════════════════ -->
+  <g id="step-3">
+    <text x="370" y="220" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">
+      Une fois activé, le clone suit l'une de ces deux voies effectrices :
+    </text>
+
+    <text x="220" y="246" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">Voie A — cellulaire</text>
+
+    <rect x="90" y="254" width="260" height="46" rx="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="220" y="274" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">LT8 cytotoxiques</text>
+    <text x="220" y="290" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">différenciés à partir du clone</text>
+
+    <line x1="220" y1="300" x2="220" y2="326" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="214,326 226,326 220,332" fill="var(--figure-ink)"/>
+    <!-- glyphe de contact : deux triangles qui se touchent -->
+    <polygon points="168,308 168,318 176,313" fill="var(--figure-ink-soft)"/>
+    <polygon points="184,308 184,318 176,313" fill="var(--figure-ink-soft)"/>
+    <text x="255" y="317" text-anchor="start" font-size="9.5" font-weight="600" fill="var(--figure-ink)">contact DIRECT</text>
+
+    <rect x="90" y="332" width="260" height="66" rx="10" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="220" y="354" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-accent)">Cellules β SAINES</text>
+    <text x="220" y="370" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">du pancréas (soi)</text>
+    <text x="220" y="388" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">détruites par erreur</text>
+
+    <line x1="220" y1="398" x2="220" y2="422" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="214,422 226,422 220,428" fill="var(--figure-ink)"/>
+
+    <rect x="140" y="428" width="160" height="34" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <text x="220" y="449" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">Diabète de type 1</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════ STEP 4 — voie B, humorale ══════════════════ -->
+  <g id="step-4">
+    <text x="550" y="246" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">Voie B — humorale</text>
+
+    <rect x="420" y="254" width="260" height="46" rx="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="550" y="274" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Plasmocytes</text>
+    <text x="550" y="290" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">issus du clone B auto-réactif</text>
+
+    <line x1="550" y1="300" x2="550" y2="324" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="544,324 556,324 550,330" fill="var(--figure-ink)"/>
+    <text x="585" y="318" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">sécrètent</text>
+
+    <rect x="420" y="328" width="260" height="58" rx="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="550" y="346" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Auto-anticorps</text>
+    <!-- trois anticorps auto-Y (glyphe Fab repris de sensibilisation-reaction-allergie.svg) -->
+    <g transform="translate(500,382) scale(0.85)">
+      <line x1="0" y1="0" x2="0" y2="-13" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="-8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+      <circle cx="8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+    </g>
+    <g transform="translate(550,382) scale(0.85)">
+      <line x1="0" y1="0" x2="0" y2="-13" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="-8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+      <circle cx="8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+    </g>
+    <g transform="translate(600,382) scale(0.85)">
+      <line x1="0" y1="0" x2="0" y2="-13" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="-8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+      <circle cx="8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+    </g>
+
+    <line x1="550" y1="386" x2="550" y2="422" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="544,422 556,422 550,428" fill="var(--figure-ink)"/>
+    <text x="588" y="400" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">forment des complexes</text>
+    <text x="588" y="412" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">qui s'accumulent</text>
+
+    <!-- amas de complexes immuns (anticorps + pastille accent = molécule du soi liée) -->
+    <g transform="translate(470,426) scale(0.7)">
+      <line x1="0" y1="0" x2="0" y2="-13" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="-8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-8" cy="-23" r="2.2" fill="var(--figure-accent)"/>
+      <circle cx="8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+    </g>
+    <g transform="translate(550,422) scale(0.7)">
+      <line x1="0" y1="0" x2="0" y2="-13" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="-8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-8" cy="-23" r="2.2" fill="var(--figure-accent)"/>
+      <circle cx="8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+    </g>
+    <g transform="translate(630,426) scale(0.7)">
+      <line x1="0" y1="0" x2="0" y2="-13" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="-8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-13" x2="8" y2="-23" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-8" cy="-23" r="2.2" fill="var(--figure-accent)"/>
+      <circle cx="8" cy="-23" r="2" fill="var(--figure-ink-soft)"/>
+    </g>
+
+    <rect x="420" y="430" width="260" height="70" rx="10" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="550" y="452" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--figure-accent)">Articulations (soi)</text>
+    <text x="550" y="468" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">accumulation des complexes immuns</text>
+    <text x="550" y="483" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">→ inflammation chronique</text>
+
+    <line x1="550" y1="500" x2="550" y2="524" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="544,524 556,524 550,530" fill="var(--figure-ink)"/>
+
+    <rect x="450" y="530" width="200" height="34" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <text x="550" y="551" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)">Polyarthrite rhumatoïde</text>
+
+    <!-- Légende de clôture -->
+    <text x="370" y="584" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      Même clone, même machinerie de sélection — mais une cible qui est le soi, pas un intrus.
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>
