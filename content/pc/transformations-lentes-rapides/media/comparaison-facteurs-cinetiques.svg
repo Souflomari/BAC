@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 660"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Trois expériences empilées comparant la même réaction entre ions peroxodisulfate et ions iodure : A, la référence, concentration usuelle et température ambiante, teinte jaune-brune après une longue barre de durée ; B, seule la concentration en iodure est doublée (annotée en accent), la barre de durée est nettement plus courte ; C, seule la température est portée à 50 degrés Celsius (annotée en accent), la barre de durée est elle aussi nettement plus courte ; enfin une lecture de synthèse marque que B et C diffèrent chacune de A par un seul paramètre changé, deux leviers indépendants.">
+  <title>Concentration et température : deux leviers cinétiques, isolés un à un</title>
+  <!--
+    comparaison-facteurs-cinetiques.svg — trois panneaux empilés verticalement,
+    un par expérience (A/B/C), même convention de bandes que trois-catalyses.svg
+    (chaque bande porte son propre en-tête + panneau, entièrement contenue dans
+    son groupe d'étape — PAS de viewBox cropping ici, voir note ci-dessous).
+
+    Contrainte dure (brief) : comparaison QUALITATIVE uniquement — barres de
+    durée comparatives, JAMAIS une courbe avancement-vs-temps, JAMAIS de
+    graduation numérique de temps. Les longueurs de barre sont donc un CHOIX
+    SCHÉMATIQUE déclaré (différence visuelle nette, pas une donnée mesurée ni
+    une loi horaire) : A pleine largeur (référence), B et C nettement plus
+    courtes, chacune à sa propre longueur (expériences indépendantes, aucune
+    raison qu'elles soient égales entre elles).
+
+    Répère « fin » réutilisé de lente-rapide.svg (même figure, R1) : un petit
+    disque marqueur en bout de barre + une étiquette de lecture, jamais une
+    couleur littéralement « jaune-brune » (palette figée aux tokens --figure-*
+    uniquement — aucun hex inventé). L'étiquette « teinte jaune-brune » et le
+    disque restent VOLONTAIREMENT ink-soft (neutres) dans les trois lignes,
+    identiques d'une ligne à l'autre : cette identité visuelle est ce qui
+    montre que les trois expériences rejoignent le même état final.
+
+    Rôle de l'accent (UNE seule idée par figure : « le levier isolé ») :
+      - la valeur changée (× 2 en B, 50 °C en C) et la barre de durée qui en
+        résulte : --figure-accent, dans les deux lignes concernées seulement ;
+      - la ligne A (référence) et tout ce qui NE change PAS d'une ligne à
+        l'autre (l'autre condition, le marqueur de fin, le repère « mélange ») :
+        ink / ink-soft, jamais accent — accent est réservé au changement.
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — l'ordre des couches est ici
+    un geste d'enseignement explicite : une expérience à la fois, comme au
+    labo) :
+      step-1 : Expérience A — la référence (panneau complet, barre pleine
+               largeur).
+      step-2 : Expérience B — même température, concentration doublée
+               (accent), barre nettement plus courte.
+      step-3 : Expérience C — mêmes concentrations que A, 50 °C (accent),
+               barre nettement plus courte.
+      step-4 : la lecture de synthèse — deux petites pastilles accent,
+               localisées À CÔTÉ des libellés déjà révélés en B et C
+               (« 1 seul changement vs A »), sans ajouter de nouvelle
+               bande ni étendre le canevas : elles vivent ENTIÈREMENT à
+               l'intérieur des bandes B et C déjà établies aux étapes 2 et 3.
+
+    Géométrie : trois bandes égales de 220 px (y=0..220, 220..440, 440..660),
+    même hauteur de bande que trois-catalyses.svg. Chaque bande : en-tête
+    (texte), panneau (rect), un bécher schématique (rect + quelques entités
+    génériques, mêmes positions dans les trois lignes — la variation de
+    concentration est PORTÉE PAR LE TEXTE « × 2 », pas par un comptage de
+    points, pour ne pas suggérer une précision qui n'existe pas), deux lignes
+    de condition, un repère de départ commun (« mélange », sans graduation),
+    une barre de durée, un marqueur de fin + étiquette.
+
+    Note d'enregistrement (VERTICALLY_STACKED_PANELS) — À NE PAS FAIRE :
+    contrairement à regimes-uc.svg / trois-discontinuites.svg, ce slug ne
+    doit PAS être ajouté à VERTICALLY_STACKED_PANELS. content/pc/controle-
+    catalyse/media/facteurs-cinetiques.svg existait déjà sous un nom proche à
+    la conception de cette figure (collision de slug signalée et résolue par
+    le renommage en « comparaison-facteurs-cinetiques » avant livraison) —
+    mais par prudence ce fichier suit malgré tout le précédent NON-cropped
+    déjà expédié par trois-catalyses.svg (même lessons, empilement vertical,
+    aucune entrée dans VERTICALLY_STACKED_PANELS) : l'espace blanc sous les
+    lignes pas encore révélées est un compromis visuel déjà accepté en
+    production, préférable à tout risque de collision future sur des cartes
+    globales indexées par le seul slug.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Expérience A (référence)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="320" y="24" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Expérience A — référence</text>
+
+    <rect x="30" y="38" width="580" height="166" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Bécher schématique : mélange générique -->
+    <rect x="54" y="58" width="88" height="118" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <rect x="59" y="100" width="78" height="72" rx="4"
+          fill="var(--figure-ink-soft)" fill-opacity="0.10"/>
+    <circle cx="70" cy="112" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="100" cy="120" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="120" cy="108" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="78" cy="140" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="108" cy="150" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="126" cy="134" r="3" fill="var(--figure-ink-soft)"/>
+
+    <!-- Conditions -->
+    <text x="166" y="78" font-size="12.5" fill="var(--figure-ink)"
+          >[I<tspan dy="-5" font-size="9">−</tspan><tspan dy="5">]</tspan><tspan dy="4" font-size="8">0</tspan><tspan dy="-4"> usuelle</tspan></text>
+    <text x="166" y="104" font-size="12.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">θ</tspan> ambiante</text>
+
+    <!-- Repère de départ commun (pas de graduation numérique) -->
+    <line x1="166" y1="140" x2="166" y2="150" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Barre de durée — pleine largeur (référence) -->
+    <line x1="166" y1="145" x2="545" y2="145" stroke="var(--figure-ink-soft)" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="545" cy="145" r="4.5" fill="var(--figure-ink-soft)"/>
+    <text x="545" y="131" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">teinte jaune-brune</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Expérience B (concentration doublée)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="320" y="244" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Expérience B — concentration doublée</text>
+
+    <rect x="30" y="258" width="580" height="166" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <rect x="54" y="278" width="88" height="118" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <rect x="59" y="320" width="78" height="72" rx="4"
+          fill="var(--figure-ink-soft)" fill-opacity="0.10"/>
+    <circle cx="70" cy="332" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="100" cy="340" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="120" cy="328" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="78" cy="360" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="108" cy="370" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="126" cy="354" r="3" fill="var(--figure-ink-soft)"/>
+
+    <!-- Conditions — concentration flaguée en accent -->
+    <text x="166" y="298" font-size="12.5" fill="var(--figure-ink)"
+          >[I<tspan dy="-5" font-size="9">−</tspan><tspan dy="5">]</tspan><tspan dy="4" font-size="8">0</tspan><tspan dy="-4" fill="var(--figure-accent)" font-weight="600"> × 2</tspan></text>
+    <text x="166" y="324" font-size="12.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">θ</tspan> ambiante</text>
+
+    <line x1="166" y1="360" x2="166" y2="370" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Barre de durée — nettement plus courte, accent (effet du levier) -->
+    <line x1="166" y1="365" x2="326" y2="365" stroke="var(--figure-accent)" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="326" cy="365" r="4.5" fill="var(--figure-accent)"/>
+    <text x="326" y="351" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">teinte jaune-brune</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Expérience C (température 50 °C)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="320" y="464" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Expérience C — température portée à 50 °C</text>
+
+    <rect x="30" y="478" width="580" height="166" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <rect x="54" y="498" width="88" height="118" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <rect x="59" y="540" width="78" height="72" rx="4"
+          fill="var(--figure-ink-soft)" fill-opacity="0.10"/>
+    <circle cx="70" cy="552" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="100" cy="560" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="120" cy="548" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="78" cy="580" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="108" cy="590" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="126" cy="574" r="3" fill="var(--figure-ink-soft)"/>
+
+    <!-- Conditions — température flaguée en accent -->
+    <text x="166" y="518" font-size="12.5" fill="var(--figure-ink)"
+          >[I<tspan dy="-5" font-size="9">−</tspan><tspan dy="5">]</tspan><tspan dy="4" font-size="8">0</tspan><tspan dy="-4"> usuelle</tspan></text>
+    <text x="166" y="544" font-size="12.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">θ</tspan> = <tspan fill="var(--figure-accent)" font-weight="600">50 °C</tspan></text>
+
+    <line x1="166" y1="580" x2="166" y2="590" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Barre de durée — nettement plus courte, accent (effet du levier) -->
+    <line x1="166" y1="585" x2="376" y2="585" stroke="var(--figure-accent)" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="376" cy="585" r="4.5" fill="var(--figure-accent)"/>
+    <text x="376" y="571" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">teinte jaune-brune</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — lecture de synthèse : deux leviers indépendants
+       (pastilles localisées dans les bandes B et C déjà révélées —
+       aucune nouvelle bande, aucune extension du canevas)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect x="290" y="286" width="150" height="18" rx="9"
+          fill="var(--figure-accent)" fill-opacity="0.12" stroke="var(--figure-accent)" stroke-width="1"/>
+    <text x="365" y="299" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">1 seul changement vs A</text>
+
+    <rect x="290" y="532" width="150" height="18" rx="9"
+          fill="var(--figure-accent)" fill-opacity="0.12" stroke="var(--figure-accent)" stroke-width="1"/>
+    <text x="365" y="545" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">1 seul changement vs A</text>
+  </g><!-- /step-4 -->
+
+</svg>

@@ -136,6 +136,9 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "prediction-avancement": "Accroche : deux hypothèses sur l'allure de x(t), une droite à vitesse constante et une courbe qui ralentit vers un plateau, puis la révélation qu'aucune droite ne correspond à l'observation réelle",
   "tangentes-decroissantes": "Deux tangentes à la courbe x(t) : une pente forte tout au début de la réaction et une pente faible près du plateau, montrant que la vitesse volumique de réaction diminue continûment",
   "lente-rapide":        "Transformation rapide et transformation lente : mêmes états initial et final, seule l'échelle de temps change",
+  // B2 wave P5 — transformations-lentes-rapides facteurs + modèle microscopique
+  "comparaison-facteurs-cinetiques": "Trois expériences empilées : la référence A, puis B où seule la concentration double, puis C où seule la température augmente — chaque barre de durée raccourcit, un seul paramètre changé à la fois",
+  "chocs-efficaces": "Le modèle microscopique des chocs : les entités s'agitent et se rencontrent, seuls les chocs bien orientés et assez énergétiques réagissent ; plus de concentration multiplie les chocs, plus de température les rend plus énergétiques",
   "facteurs-cinetiques": "Un facteur cinétique change la vitesse, pas l'état final : plusieurs courbes x(t) atteignant le même plateau à des vitesses différentes",
   "effet-catalyseur":    "Pourquoi un catalyseur ne déplace pas l'équilibre : il accélère l'atteinte du même état final",
   "equilibre-concentrations": "Concentrations vers un équilibre dynamique : les réactifs diminuent, les produits augmentent, tous atteignent un plateau sans que les réactifs s'épuisent",

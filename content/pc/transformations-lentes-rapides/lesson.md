@@ -105,6 +105,8 @@ Conclusion tirée de cette comparaison, un fait établi expérimentalement : **p
 
 Même logique de comparaison, même conclusion établie expérimentalement pour ce second levier : **plus la température est élevée, plus la transformation se termine rapidement.**
 
+[[figure:comparaison-facteurs-cinetiques]]
+
 Ces deux faits ne sont pas de simples curiosités de laboratoire : ils expliquent des choix très concrets. On chauffe un mélange réactionnel pour accélérer une synthèse en chimie industrielle. On met les aliments au réfrigérateur — donc au froid — précisément pour ralentir les transformations chimiques qui les dégradent.
 
 Pourquoi ces deux leviers, concentration et température, fonctionnent-ils ? Établir le fait expérimental est une chose ; comprendre le mécanisme en est une autre. Il faut descendre à l'échelle des molécules elles-mêmes pour répondre — c'est l'objet du rung suivant.
@@ -121,6 +123,8 @@ Pourquoi ces deux leviers, concentration et température, fonctionnent-ils ? Ét
 - une **énergie suffisante** lors de la rencontre, pour rompre et former les liaisons nécessaires au réarrangement chimique.
 
 Un choc « mou », ou mal orienté, ne mène à rien : les entités se croisent sans réagir. Plus il y a de chocs efficaces par unité de temps, plus la transformation avance vite.
+
+[[figure:chocs-efficaces]]
 
 ### Teste l'idée naïve avant de la croire : « tout choc suffit »
 
