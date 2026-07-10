@@ -144,6 +144,9 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "equilibre-concentrations": "Concentrations vers un équilibre dynamique : les réactifs diminuent, les produits augmentent, tous atteignent un plateau sans que les réactifs s'épuisent",
   "quotient-vers-K":     "Le quotient de réaction Qr(t) évolue vers l'asymptote K : à l'équilibre Qr,éq = K",
   "avancement-limite":   "Avancement d'une transformation limitée : x(t) plafonne à x_éq sous le plafond x_max, taux d'avancement final τ = x_éq/x_max < 1",
+  // B2 wave P5 — transformations-deux-sens construction du ⇌ + expériences miroir
+  "sens-direct-inverse": "Construction de la double flèche : le sens direct (estérification) seul, puis le sens inverse (hydrolyse), puis les deux sens réunis dans le symbole ⇌ — les quatre espèces coexistent en permanence",
+  "experiences-miroir": "Deux expériences miroir sur un axe de composition : partir de l'acide et l'alcool purs ou partir de l'ester et l'eau purs — les deux mélanges évoluent en sens opposés vers la zone de coexistence",
   "diagramme-predominance": "Diagramme de prédominance du couple NH4+/NH3 sur l'axe des pH : NH4+ prédomine pour pH < pKA, NH3 pour pH > pKA, frontière à pH = pKA ≈ 9,2",
   "zones-predominance-2": "Diagrammes de prédominance des couples CH3COOH/CH3COO− (pKA1 ≈ 4,8) et NH4+/NH3 (pKA2 ≈ 9,2) : entre les deux pKA, les deux produits de la réaction prédominent simultanément",
   "critere-qr-k":        "Le critère d'évolution spontanée sur l'axe des Qr : évolution en sens direct si Qr,i < K, en sens inverse si Qr,i > K, équilibre quand Qr = K",

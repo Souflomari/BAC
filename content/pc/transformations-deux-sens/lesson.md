@@ -40,6 +40,8 @@ $$CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$$
 
 Cette double flèche est un symbole honnête : elle dit « cette transformation se produit dans les deux sens, et aucun des deux ne l'emporte jusqu'à faire disparaître l'autre ». Ce n'est pas une notation cosmétique - c'est une information chimique précise sur ce que fait réellement le système.
 
+[[figure:sens-direct-inverse]]
+
 ### Contre-exemple : une transformation qui, elle, va jusqu'au bout
 
 Pour bien voir la différence, regarde une réaction qui se comporte autrement. On verse une solution contenant des ions $Ag^+$, en excès, dans une solution contenant une petite quantité d'ions $Cl^-$. Un précipité blanc de chlorure d'argent apparaît aussitôt :
@@ -96,6 +98,8 @@ Pour une transformation non totale, les deux sens - direct et inverse - sont tou
 **Expérience B.** Cette fois, on part de l'inverse : de l'éthanoate d'éthyle pur, mélangé à de l'eau, sans une seule trace d'acide éthanoïque ni d'éthanol au départ. Ce qu'on observe : une odeur âcre d'acide apparaît et grandit au fil du temps - l'ester se décompose peu à peu. Le sens **inverse** (l'hydrolyse) domine cette fois, jusqu'à ce que ce mélange, lui aussi, se stabilise.
 
 C'est très exactement la même réaction, gouvernée par la même équation $\rightleftharpoons$ - et pourtant, le sens observé au début est opposé d'une expérience à l'autre. Ce qui a changé, ce n'est pas la réaction : c'est la composition du mélange à l'instant zéro.
+
+[[figure:experiences-miroir]]
 
 ### Pourquoi, intuitivement
 
