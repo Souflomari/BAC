@@ -47,7 +47,7 @@ rule, carried forward here).
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
 | P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | done (7 STAGE / 10 DECLINE, 7 figures) |
-| S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
+| S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | judged (14 STAGE / 18 DECLINE), build in progress |
 | S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
 
 ---
@@ -604,3 +604,53 @@ validated before push.
 
 **Running tally: 37/47 lessons done, 199/266 chapters judged, 96 STAGE / 103 DECLINE. PC matière COMPLETE (24/24 remaining lessons done — all pc lessons now have full chapter-level visual judgment). Remaining: svt waves S1+S2 (10 lessons, 67 gap chapters).**
 
+
+### Wave S1 — svt: chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| chaines-de-montagnes | R0 | DECLINE | narrative hook (fossils at the summit) |
+| chaines-de-montagnes | R1 | STAGE | `subduction-andes` — slab plunge → water release → arc melting → Wadati-Benioff plane |
+| chaines-de-montagnes | R2 | STAGE | `collision-himalaya` — Téthys closure → contact halts subduction → crust doubles 35→70 km |
+| chaines-de-montagnes | R3 | STAGE | `sequence-ophiolite` — ocean-floor column found impossibly high = proof an ocean closed |
+| chaines-de-montagnes | R5 | STAGE | `enfouissement-exhumation` — a rock's burial-to-30 km-then-exhumed journey |
+| chaines-de-montagnes | R6 | DECLINE | synthesis/recap, indices already carried by R3/R4/R5 |
+| chaines-de-montagnes | R7 | DECLINE | capstone verbal exercise, earlier figures carry the visuals |
+| dysfonctionnements-immunitaires | R0 | DECLINE | narrative accroche (the second sting) |
+| dysfonctionnements-immunitaires | R2 | STAGE | `rupture-tolerance-deux-voies` — tolerance fails → cellular (T1 diabetes) vs humoral (RA) fork |
+| dysfonctionnements-immunitaires | R3 | STAGE | `vih-lt4-charge-virale` — the canonical LT4/charge-virale vs time graph, three phases + threshold |
+| dysfonctionnements-immunitaires | R4 | DECLINE | vaccination mechanism flagged as prior-lesson review; kinetics belong to R6 |
+| dysfonctionnements-immunitaires | R5 | DECLINE | sérothérapie is one idea (ready-made antibodies); kinetics belong to R6 |
+| dysfonctionnements-immunitaires | R6 | STAGE | `titre-anticorps-vaccin-serum` — the mirror-image titre curves the chapter tells you to read |
+| dysfonctionnements-immunitaires | R7 | DECLINE | capstone synthesis, no new figure it hinges on |
+| genetique-humaine | R0 | DECLINE | narrative hook (why colour-blindness hits men) |
+| genetique-humaine | R1 | DECLINE | pedigree-convention vocabulary; legend already in R2's figure |
+| genetique-humaine | R3 | DECLINE | logical-deduction checklist; transmission gesture is R4's |
+| genetique-humaine | R4 | STAGE | `croisement-lie-x` — X-linked cross built column-by-column + hemizygosity punchline |
+| genetique-humaine | R5 | STAGE | `proba-enfant-atteint` — conditional-probability tree: strike, renormalize, weight branches |
+| genetique-humaine | R6 | DECLINE | practice; same X-linked gesture as R4 with H/h, would spoil attempt-first |
+| genetique-populations | R0 | DECLINE | narrative hook (the invisible carrier) |
+| genetique-populations | R2 | STAGE | `echiquier-gametes` — gamete grid deriving p²+2pq+q²=1, margins→cells→collect→equation |
+| genetique-populations | R3 | DECLINE | HW-conditions checklist, definitional |
+| genetique-populations | R4 | DECLINE | q²→q→2pq calculation method, procedural |
+| genetique-populations | R5 | DECLINE | catalog of four independent evolutionary forces, enumeration not a build |
+| genetique-populations | R6 | DECLINE | capstone procedural application (mucoviscidose) |
+| granitisation-deformation | R0 | DECLINE | narrative accroche (a granite in open air) |
+| granitisation-deformation | R1 | STAGE | `pli-faille-profondeur` — one bed, one compression, brittle-vs-ductile decided by depth |
+| granitisation-deformation | R2 | STAGE | `facies-jauge-profondeur` — one pélite descending, schiste→gneiss→migmatite as depth-gauge |
+| granitisation-deformation | R3 | STAGE | `solidus-seuil-anatexie` — P-T diagram: path + dry solidus + water-lowered solidus + crossing |
+| granitisation-deformation | R5 | STAGE | `exhumation-erosion-granite` — uplift + erosion strip overburden to expose the granite root |
+| granitisation-deformation | R6 | DECLINE | capstone coupe exercise, would spoil or duplicate |
+
+**Wave S1 judgment tally: 14 STAGE / 18 DECLINE** (32 chapters judged).
+
+**Slug-uniqueness pre-check:** all 14 proposed slugs verified corpus-unique
+before build launch (the P5 rule), zero collisions. Note two distinct
+exhumation figures — `enfouissement-exhumation` (chaines-de-montagnes R5,
+a single rock's vertical journey) and `exhumation-erosion-granite`
+(granitisation-deformation R5, the granite-root unroofing) — deliberately
+different slugs, different gestures, no collision.
+
+**Build:** in progress.
