@@ -327,3 +327,779 @@ items:
       est libérée. Si $\Delta m > 0$, comme ici, les produits sont plus
       lourds : la réaction demanderait un apport d'énergie extérieur pour
       avoir lieu, elle ne se produit donc pas spontanément.
+
+  # ── R0 (append) ──
+
+  - id: NME-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      D'après le raisonnement de l'accroche, pourquoi une combustion
+      chimique — même avec le meilleur combustible imaginable, brûlant
+      dans tout l'oxygène nécessaire — ne peut-elle pas expliquer que le
+      Soleil brille depuis 4,6 milliards d'années ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'une réaction chimique, contrairement à une réaction
+          nucléaire, ne libère jamais la moindre énergie.
+        correct: false
+        feedback: >
+          C'est faux, et ce n'est pas l'argument de l'accroche : une
+          combustion chimique libère bel et bien de l'énergie (quelques
+          dizaines de mégajoules par kilogramme) — seulement des millions
+          de fois moins, par kilogramme, qu'une réaction nucléaire. C'est
+          un écart d'ordre de grandeur, pas une absence totale d'énergie
+          côté chimique.
+      - id: B
+        text: >-
+          Parce que l'énergie chimique libérée par kilogramme est bien
+          trop faible : le calcul ne donne que quelques milliers d'années
+          d'autonomie, un facteur d'environ un million trop petit par
+          rapport à l'âge réel du Soleil.
+        correct: true
+      - id: C
+        text: >-
+          Parce que la réaction qui alimente le Soleil est en réalité une
+          fission de l'hydrogène, et non une combustion.
+        correct: false
+        feedback: >
+          C'est confondre fission et fusion : le Soleil est alimenté par
+          une fusion (des noyaux légers qui s'assemblent en un noyau plus
+          lourd), pas par une fission (un noyau lourd qui se casse). Et de
+          toute façon, le nom de la réaction n'est pas l'argument qui
+          explique l'écart de durée : c'est l'ordre de grandeur de
+          l'énergie libérée par kilogramme qui tranche.
+      - id: D
+        text: >-
+          Parce que l'écart entre les deux durées n'est en réalité qu'une
+          erreur d'unités : exprimées dans le même système d'unités,
+          l'énergie chimique et l'énergie nucléaire par kilogramme
+          seraient du même ordre de grandeur.
+        correct: false
+        feedback: >
+          Non : l'écart est réel, pas un artefact d'unités. Même
+          converties proprement dans les mêmes unités, l'énergie
+          nucléaire par kilogramme reste des millions de fois plus grande
+          que l'énergie chimique — c'est précisément ce facteur, chiffré
+          au R4, qui comble l'écart de durée.
+    correct_feedback: >
+      L'argument est un argument d'ordre de grandeur : la meilleure
+      combustion chimique imaginable ne tient que quelques milliers
+      d'années à la puissance du Soleil, contre 4,6 milliards d'années
+      réels — un facteur d'environ un million qu'aucune réaction chimique
+      ne peut combler.
+    solution: |
+      On compare l'énergie totale disponible dans la masse du Soleil si
+      elle brûlait chimiquement (quelques dizaines de MJ par kg) à
+      l'énergie qu'il faut fournir pour rayonner sa puissance pendant 4,6
+      milliards d'années. Le premier chiffre tient quelques milliers
+      d'années ; le second en demande des milliards : un facteur de
+      l'ordre du million sépare les deux, bien au-delà de ce qu'une
+      réaction chimique, aussi énergétique soit-elle, peut fournir.
+
+  - id: NME-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Dans la réaction de fusion qui alimente le Soleil, la matière
+      produite pèse un peu moins lourd que la matière de départ. Où «
+      passe » cette masse manquante ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est réellement détruite : la fusion nucléaire est l'une
+          des rares réactions où de la matière peut disparaître sans
+          laisser aucune trace.
+        correct: false
+        feedback: >
+          Ce n'est pas une destruction, c'est une conversion : par
+          l'équivalence masse-énergie, cette masse ne « disparaît » pas,
+          elle se retrouve intégralement sous forme d'énergie libérée. La
+          masse et l'énergie sont deux façons de mesurer la même chose,
+          pas deux choses dont l'une peut s'évanouir sans laisser de
+          trace.
+      - id: B
+        text: >-
+          Elle se retrouve sous forme de particules supplémentaires
+          (neutrons, protons) non comptabilisées dans le bilan, ce qui
+          explique la masse manquante.
+        correct: false
+        feedback: >
+          Le nombre de nucléons (protons + neutrons) est rigoureusement
+          conservé dans toute réaction nucléaire : il n'y a pas de
+          particule « cachée » qui s'ajouterait au bilan. La masse
+          manquante n'est pas un défaut de comptage des nucléons, c'est
+          une vraie différence de masse entre les nucléons séparés et le
+          noyau assemblé, qui devient de l'énergie.
+      - id: C
+        text: >-
+          Elle ne disparaît pas au sens propre : par l'équivalence
+          masse-énergie, elle correspond exactement à l'énergie libérée
+          par la réaction.
+        correct: true
+      - id: D
+        text: >-
+          C'est une erreur de mesure : avec une précision suffisante, on
+          trouverait exactement la même masse totale avant et après la
+          réaction.
+        correct: false
+        feedback: >
+          Ce n'est pas une erreur de mesure : la différence de masse est
+          systématique, reproductible, et mesurée avec une précision
+          extrême en laboratoire. Elle est réelle et directement liée,
+          par $E=mc^2$, à l'énergie libérée.
+    correct_feedback: >
+      La masse manquante n'a pas disparu : par $E=mc^2$, elle s'est
+      convertie en l'énergie libérée par la réaction.
+    solution: |
+      Par l'équivalence masse-énergie établie au R1, une variation de
+      masse $\Delta m$ correspond toujours à une énergie $\Delta m\,c^2$.
+      Ici, la masse « manquante » entre réactifs et produits n'est pas
+      perdue : elle est exactement l'énergie libérée par la fusion,
+      exprimée en unité de masse plutôt qu'en joules.
+
+  - id: NME-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      L'accroche estime que la combustion chimique de toute la masse du
+      Soleil ne tiendrait que quelques milliers d'années, très loin des
+      4,6 milliards d'années réels. Quel est l'ordre de grandeur du
+      facteur qui sépare ces deux durées ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Environ un million ($10^{6}$)."
+        correct: true
+      - id: B
+        text: "Environ dix (10)."
+        correct: false
+        feedback: >
+          C'est très en dessous de la réalité : l'écart entre l'énergie
+          chimique (quelques dizaines de mégajoules par kilogramme) et
+          l'énergie nucléaire par kilogramme n'est pas un facteur 10,
+          mais de l'ordre du million.
+      - id: C
+        text: "Environ mille milliards ($10^{12}$)."
+        correct: false
+        feedback: >
+          C'est très au-dessus de la réalité : l'écart, chiffré
+          précisément au R4 en comparant électronvolts et
+          méga-électronvolts par réaction, est de l'ordre de $10^{6}$ à
+          $10^{8}$, pas $10^{12}$.
+      - id: D
+        text: >-
+          Le même facteur qu'entre l'énergie de liaison par nucléon d'un
+          noyau léger et d'un noyau lourd, soit environ 2.
+        correct: false
+        feedback: >
+          C'est confondre deux comparaisons différentes : le facteur «
+          chimique contre nucléaire » (environ un million) mesure l'écart
+          entre deux types de réactions ; le facteur « $E_l/A$ d'un noyau
+          léger contre un noyau lourd » (R3) mesure un écart bien plus
+          modeste entre deux noyaux, tous deux nucléaires. Les deux ne
+          sont pas du même ordre de grandeur.
+    correct_feedback: >
+      Le facteur est de l'ordre du million : c'est cet écart-là, chiffré
+      précisément au R4, qui sépare l'énergie nucléaire de l'énergie
+      chimique par réaction.
+    solution: |
+      Quelques milliers d'années contre 4,6 milliards d'années : le
+      rapport des deux durées est de l'ordre de $10^{6}$. Ce facteur n'est
+      pas anodin — c'est exactement celui qu'on retrouve au R4 en
+      comparant l'énergie libérée par une réaction nucléaire à celle
+      d'une réaction chimique.
+
+  # ── R1 (append) ──
+
+  - id: NME-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un système voit son énergie augmenter de $\Delta E$, sans qu'aucune
+      variation de masse ne soit détectable avec une balance ordinaire.
+      Que peut-on affirmer, d'après $E=mc^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien : à notre échelle, masse et énergie sont deux grandeurs
+          indépendantes, et l'une ne peut jamais se transformer en
+          l'autre.
+        correct: false
+        feedback: >
+          C'est nier le postulat lui-même : $E=mc^2$ s'applique à tout
+          système, pas seulement aux noyaux atomiques. La masse et
+          l'énergie ne sont jamais deux grandeurs totalement
+          indépendantes — c'est seulement que la variation de masse
+          associée à une énergie ordinaire est trop petite pour être
+          détectée.
+      - id: B
+        text: >-
+          Sa masse a diminué, car toute augmentation d'énergie stockée
+          par un système fait nécessairement perdre de la masse à ce
+          système.
+        correct: false
+        feedback: >
+          C'est le sens inverse : une augmentation d'énergie $\Delta E >
+          0$ correspond à une augmentation de masse $\Delta m =
+          \Delta E/c^2 > 0$, pas une diminution. Le signe de $\Delta m$
+          suit toujours celui de $\Delta E$.
+      - id: C
+        text: >-
+          On ne peut rien dire, car la relation $E=mc^2$ ne s'applique
+          qu'aux noyaux atomiques, jamais à un système macroscopique
+          comme celui-ci.
+        correct: false
+        feedback: >
+          $E=mc^2$ est un postulat général, valable pour tout système,
+          quelle que soit son échelle — c'est justement le point du R1.
+          Ce n'est qu'à l'échelle nucléaire que $\Delta m$ devient assez
+          grand pour être mesurable ; à l'échelle macroscopique, la
+          relation s'applique toujours, elle donne seulement un $\Delta
+          m$ indétectable.
+      - id: D
+        text: >-
+          Sa masse a bel et bien augmenté de $\Delta m = \Delta E/c^2$,
+          mais cette variation est bien trop petite pour être détectée
+          par une balance à l'échelle macroscopique.
+        correct: true
+    correct_feedback: >
+      $E=mc^2$ s'applique toujours : $\Delta m = \Delta E/c^2$ est non
+      nul, simplement ridiculement petit à l'échelle macroscopique, à
+      cause de la valeur énorme de $c^2$.
+    solution: |
+      Par réciprocité de $E=mc^2$, toute variation d'énergie $\Delta E$
+      s'accompagne d'une variation de masse $\Delta m = \Delta E/c^2$.
+      Comme $c^2 \approx 9\times10^{16}\ \text{m}^2/\text{s}^2$ est
+      énorme, convertir une énergie usuelle en variation de masse donne
+      un $\Delta m$ indétectable par la meilleure balance — mais non nul
+      en toute rigueur.
+
+  - id: NME-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un élève calcule l'énergie de liaison d'un noyau à partir de
+      $\Delta m = 0{,}020\ \text{u}$ en écrivant directement $E = \Delta m
+      \times c^2 = 0{,}020 \times (3{,}00\times10^{8})^2$, sans convertir
+      $\Delta m$ en kilogrammes au préalable. Que peut-on dire du résultat
+      obtenu ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le résultat est correct, car l'unité u est déjà une unité du
+          Système International.
+        correct: false
+        feedback: >
+          C'est faux : l'unité de masse atomique u n'est pas une unité du
+          Système International — le kilogramme l'est. Utiliser $\Delta
+          m$ en u directement dans $E=mc^2$ avec $c$ en m/s mélange deux
+          systèmes d'unités et donne un résultat sans sens physique.
+      - id: B
+        text: >-
+          Le résultat est faux : il faut d'abord convertir $\Delta m$ de u
+          en kilogrammes avant d'appliquer $E=mc^2$ en unités SI — ou,
+          plus simplement, utiliser directement le raccourci $1\ \text{u}
+          \approx 931{,}5\ \text{MeV}/c^2$ établi au R1.
+        correct: true
+      - id: C
+        text: >-
+          Le résultat est faux, mais seulement parce qu'il fallait
+          exprimer $c$ en kilomètres par seconde plutôt qu'en mètres par
+          seconde.
+        correct: false
+        feedback: >
+          Changer l'unité de $c$ ne corrige pas le vrai problème : c'est
+          l'unité de $\Delta m$ (u au lieu de kg) qui est incompatible
+          avec $c$ en unités SI, pas l'unité de $c$ elle-même.
+      - id: D
+        text: >-
+          Le résultat est faux, mais ça n'a pas d'importance : à
+          l'échelle nucléaire, $\Delta m$ est de toute façon trop petit
+          pour donner une énergie mesurable.
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est précisément à l'échelle nucléaire que
+          $\Delta m$ devient assez grand, relativement à la masse du
+          noyau, pour donner une énergie parfaitement mesurable — des MeV
+          par réaction, comme vu tout au long de cette leçon. L'erreur de
+          calcul, elle, reste bien réelle.
+    correct_feedback: >
+      Mélanger u (une unité adaptée à l'échelle nucléaire) avec c en m/s
+      (unités SI) sans convertir donne un résultat sans signification :
+      il faut soit tout passer en kg et J, soit utiliser directement le
+      facteur $931{,}5\ \text{MeV}$ par u établi au R1.
+    solution: |
+      $\text{u}$ n'est pas une unité SI : $1\ \text{u} =
+      1{,}6605\times10^{-27}\ \text{kg}$. Pour appliquer $E=mc^2$ avec $c$
+      en m/s, il faut d'abord convertir $\Delta m$ en kilogrammes, ou
+      utiliser directement le facteur de conversion $1\ \text{u} \approx
+      931{,}5\ \text{MeV}/c^2$, qui évite justement d'avoir à repasser par
+      le kilogramme et le joule.
+
+  # ── R2 (append) ──
+
+  - id: NME-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Le noyau d'azote 14, $^{14}_{7}\text{N}$, a une masse (masse du
+      noyau) $m(^{14}_{7}\text{N}) = 13{,}99923\ \text{u}$. On donne $m_p
+      = 1{,}00728\ \text{u}$ et $m_n = 1{,}00867\ \text{u}$. Quel calcul
+      donne correctement le défaut de masse $\Delta m$ de ce noyau ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\Delta m = 14\,m_p - m(^{14}_{7}\text{N})$
+        correct: false
+        feedback: >
+          Ce calcul traite les 14 nucléons comme s'ils étaient tous des
+          protons. Or l'azote 14 a $Z=7$ protons et $N=A-Z=7$ neutrons :
+          il faut compter les deux types de nucléons séparément, avec
+          leurs masses $m_p$ et $m_n$ respectives.
+      - id: B
+        text: >-
+          $\Delta m = m(^{14}_{7}\text{N}) - 7\,m_p - 7\,m_n$
+        correct: false
+        feedback: >
+          Le signe est inversé : le défaut de masse se définit comme
+          (masse des nucléons séparés) moins (masse du noyau assemblé),
+          jamais l'inverse — puisque le noyau assemblé est toujours plus
+          léger, cette formule inversée donnerait systématiquement un
+          $\Delta m$ négatif, ce qui contredit le fait que $\Delta m$ est
+          toujours positif pour un noyau lié.
+      - id: C
+        text: >-
+          $\Delta m = 7\,m_p + 7\,m_n - m(^{14}_{7}\text{N})$
+        correct: true
+      - id: D
+        text: >-
+          $\Delta m = 7\,m_p + 14\,m_n - m(^{14}_{7}\text{N})$
+        correct: false
+        feedback: >
+          Ce calcul utilise $N=14$ neutrons au lieu de $N=A-Z=14-7=7$ : il
+          confond le nombre de masse $A$ (le nombre total de nucléons)
+          avec le nombre de neutrons $N$. Il faut lire soigneusement $Z$
+          et $A$ dans la notation $^{A}_{Z}\text{X}$ pour en déduire
+          $N=A-Z$.
+    correct_feedback: >
+      L'azote 14 a $Z=7$ protons et $N=A-Z=14-7=7$ neutrons : le défaut de
+      masse compare la somme de ces 7 protons et 7 neutrons séparés à la
+      masse du noyau assemblé.
+    solution: |
+      $$\Delta m = Z\,m_p + N\,m_n - m(^{14}_{7}\text{N}) = 7\,m_p +
+      7\,m_n - m(^{14}_{7}\text{N})$$
+      avec $Z=7$ et $N=A-Z=7$, lus directement dans la notation
+      $^{14}_{7}\text{N}$.
+
+  # ── R3 (append) ──
+
+  - id: NME-13
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un noyau lourd, situé sur la partie descendante de la courbe
+      d'Aston (à droite du maximum), se casse en deux noyaux de masse
+      intermédiaire. Que peut-on dire de cette réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une fission : les noyaux fils ont, ensemble, un $E_l/A$
+          plus grand que le noyau initial, donc de l'énergie est libérée.
+        correct: true
+      - id: B
+        text: >-
+          C'est une fusion, car le nombre de noyaux augmente au cours de
+          la réaction.
+        correct: false
+        feedback: >
+          C'est confondre fission et fusion : la fusion, c'est
+          l'assemblage de plusieurs noyaux en un seul plus lourd ; ici
+          c'est l'inverse, un seul noyau lourd se casse en plusieurs
+          noyaux plus légers — c'est la définition même de la fission,
+          quel que soit le nombre de noyaux obtenus.
+      - id: C
+        text: >-
+          C'est une fission, mais elle absorbe de l'énergie, car casser un
+          noyau demande toujours de fournir de l'énergie.
+        correct: false
+        feedback: >
+          Casser un noyau ne demande de l'énergie que s'il est déjà
+          proche du maximum de la courbe d'Aston. Ici, le noyau initial
+          est sur la partie descendante (à droite du maximum) : le casser
+          rapproche les fragments du sommet de la courbe, ce qui libère
+          de l'énergie plutôt que d'en absorber.
+      - id: D
+        text: >-
+          C'est une fission, et l'énergie libérée ne dépend pas de la
+          position du noyau initial sur la courbe d'Aston.
+        correct: false
+        feedback: >
+          C'est l'inverse : c'est précisément la position du noyau sur la
+          courbe d'Aston (avant et après cassure) qui détermine si de
+          l'énergie est libérée, et combien. Un noyau déjà proche du
+          maximum libérerait très peu, voire rien.
+    correct_feedback: >
+      Un noyau lourd se cassant en fragments plus proches du maximum de
+      la courbe d'Aston est une fission qui libère de l'énergie — c'est
+      exactement le principe d'un réacteur nucléaire.
+    solution: |
+      Sur la partie descendante de la courbe d'Aston, $E_l/A$ diminue à
+      mesure que $A$ augmente : les noyaux lourds sont donc moins bien
+      liés par nucléon que des noyaux de masse intermédiaire. En se
+      cassant, un noyau lourd produit des fragments plus proches du
+      maximum, avec un $E_l/A$ moyen plus grand : ce gain d'énergie de
+      liaison par nucléon se traduit par une énergie libérée — c'est une
+      fission.
+
+  # ── R4 (append) ──
+
+  - id: NME-14
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      On étudie la réaction de fission suivante, où $X$ est un noyau à
+      identifier : $^{1}_{0}\text{n} + \ ^{235}_{92}\text{U}
+      \longrightarrow \ ^{140}_{54}\text{Xe} + X + 2\,^{1}_{0}\text{n}$.
+      Quel noyau $X$ complète correctement cette équation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$^{93}_{38}\\text{Sr}$"
+        correct: false
+        feedback: >
+          Le bilan de $A$ oublie le neutron incident côté réactifs : $A_X
+          = 1 + 235 - 140 - 2 = 94$, pas $235-140-2=93$. Le neutron qui
+          percute l'uranium fait partie des réactifs, au même titre que
+          l'uranium lui-même.
+      - id: B
+        text: "$^{94}_{36}\\text{Kr}$"
+        correct: false
+        feedback: >
+          Le bilan de $Z$ est faux : les neutrons ont une charge nulle
+          ($Z=0$), donc les « 2 n » du membre de droite ne doivent rien
+          retrancher au bilan de $Z$. Il faut $Z_X = 92 - 54 = 38$, pas
+          $92-54-2=36$.
+      - id: C
+        text: >-
+          $^{94}_{40}\text{Zr}$ ; il suffit de vérifier la conservation de
+          $A$, la conservation de $Z$ n'est pas nécessaire pour identifier
+          un noyau.
+        correct: false
+        feedback: >
+          Les deux lois de conservation (celle de $A$ ET celle de $Z$)
+          doivent être vérifiées ensemble pour identifier un noyau sans
+          ambiguïté : $A=94$ seul ne suffit pas, il existe plusieurs
+          noyaux de nombre de masse 94. Ici $Z_X = 92-54=38$ (le
+          strontium), pas $40$ (le zirconium).
+      - id: D
+        text: "$^{94}_{38}\\text{Sr}$"
+        correct: true
+    correct_feedback: >
+      Conservation de $A$ : $1+235=140+A_X+2 \Rightarrow A_X=94$.
+      Conservation de $Z$ : $0+92=54+Z_X+0 \Rightarrow Z_X=38$. D'où
+      $X=\,^{94}_{38}\text{Sr}$.
+    solution: |
+      Les deux lois de Soddy s'appliquent simultanément :
+      $$A:\ 1+235=140+A_X+2\times1 \Rightarrow A_X=236-140-2=94$$
+      $$Z:\ 0+92=54+Z_X+2\times0 \Rightarrow Z_X=92-54=38$$
+      Le noyau $X$ est donc $^{94}_{38}\text{Sr}$ (strontium 94).
+
+  - id: NME-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Deux noyaux de deutérium fusionnent selon $^{2}_{1}\text{H} + \
+      ^{2}_{1}\text{H} \longrightarrow \ ^{3}_{2}\text{He} + \
+      ^{1}_{0}\text{n}$ (cette réaction sera étudiée avec ses données
+      numériques au R5). Comment qualifier cette réaction, et pourquoi
+      libère-t-elle de l'énergie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une fission, car l'un des noyaux de départ (le deutérium)
+          se retrouve transformé, avec production d'un neutron libre.
+        correct: false
+        feedback: >
+          C'est confondre fission et fusion : ici, deux noyaux de départ
+          s'assemblent en un seul noyau plus lourd ($^{3}_{2}\text{He}$)
+          — c'est la définition même de la fusion. Produire un neutron
+          libre en supplément ne change pas la nature de la réaction, qui
+          reste un assemblage de noyaux, pas une cassure.
+      - id: B
+        text: >-
+          C'est une fusion : deux noyaux légers s'assemblent en un noyau
+          plus proche du maximum de la courbe d'Aston, donc d'énergie de
+          liaison par nucléon plus grande — cette différence est libérée
+          sous forme d'énergie.
+        correct: true
+      - id: C
+        text: >-
+          C'est une fusion, mais rien ne permet de prévoir en général si
+          elle libère ou absorbe de l'énergie : cela dépend uniquement
+          des données de masse de chaque réaction particulière, sans lien
+          avec une courbe générale de stabilité.
+        correct: false
+        feedback: >
+          C'est précisément la courbe d'Aston (R3) qui permet de prévoir
+          si une réaction libère de l'énergie, sans même connaître les
+          masses en détail : une fusion entre noyaux légers, sur la
+          partie montante de la courbe, libère toujours de l'énergie,
+          parce qu'elle rapproche les noyaux du maximum.
+      - id: D
+        text: >-
+          C'est une fusion qui libère de l'énergie parce que le nombre
+          total de nucléons diminue entre les réactifs et les produits.
+        correct: false
+        feedback: >
+          Le nombre de nucléons est rigoureusement conservé dans toute
+          réaction nucléaire : $2+2=4$ côté réactifs, $3+1=4$ côté
+          produits — il ne diminue jamais. L'énergie libérée vient d'un
+          gain d'énergie de liaison par nucléon, pas d'une disparition de
+          nucléons.
+    correct_feedback: >
+      Deux noyaux légers qui s'assemblent en un noyau plus lourd, c'est
+      une fusion ; elle libère de l'énergie parce qu'elle rapproche les
+      noyaux du maximum de la courbe d'Aston.
+    solution: |
+      Le deutérium ($A=2$) est un noyau très léger, situé loin à gauche
+      sur la courbe d'Aston. En fusionnant, les deux noyaux de deutérium
+      forment des produits plus proches du maximum de la courbe : leur
+      $E_l/A$ moyen est plus grand que celui des réactifs, donc de
+      l'énergie est libérée. C'est une fusion, pas une fission.
+
+  # ── R5 (append) ──
+
+  - id: NME-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      On étudie une autre voie de fission de l'uranium 235, différente de
+      celle vue au R4 : $^{1}_{0}\text{n} + \ ^{235}_{92}\text{U}
+      \longrightarrow \ ^{140}_{54}\text{Xe} + \ ^{94}_{38}\text{Sr} +
+      2\,^{1}_{0}\text{n}$. On donne (masses des noyaux) : $m(\text{n}) =
+      1{,}00867\ \text{u}$, $m(^{235}_{92}\text{U}) = 234{,}99342\
+      \text{u}$, $m(^{140}_{54}\text{Xe}) = 139{,}88137\ \text{u}$,
+      $m(^{94}_{38}\text{Sr}) = 93{,}90578\ \text{u}$, $1\ \text{u}
+      \approx 931{,}5\ \text{MeV}/c^2$. Quelle est l'énergie libérée par
+      cette réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Cette réaction absorbe environ $755{,}5\ \text{MeV}$ (elle ne
+          peut pas se produire spontanément).
+        correct: false
+        feedback: >
+          Ce résultat oublie le neutron incident dans la masse des
+          réactifs (en ne comptant que $m(^{235}_{92}\text{U})$ seul). Le
+          neutron qui percute l'uranium fait partie des réactifs :
+          $m_{\text{réactifs}} = m(\text{n}) + m(^{235}_{92}\text{U})$,
+          pas $m(^{235}_{92}\text{U})$ seul.
+      - id: B
+        text: >-
+          Cette réaction absorbe environ $184{,}1\ \text{MeV}$ (elle ne
+          peut pas se produire spontanément).
+        correct: false
+        feedback: >
+          La valeur absolue est correcte, mais l'interprétation du signe
+          est inversée : $\Delta m = m_{\text{produits}} -
+          m_{\text{réactifs}}$ est ici négatif (les produits sont plus
+          légers), ce qui signifie que l'énergie est **libérée**, pas
+          absorbée.
+      - id: C
+        text: >-
+          Cette réaction libère environ $184{,}1\ \text{MeV}$.
+        correct: true
+      - id: D
+        text: >-
+          Cette réaction libère environ $0{,}1976\ \text{MeV}$.
+        correct: false
+        feedback: >
+          Ce résultat oublie de multiplier $|\Delta m|=0{,}19760\
+          \text{u}$ par le facteur de conversion $931{,}5$ : il traite la
+          valeur en u comme si elle était déjà une énergie en MeV.
+    correct_feedback: >
+      $m_{\text{réactifs}} = 236{,}00209\ \text{u}$ (comme au R4, mêmes
+      réactifs), $m_{\text{produits}} = 235{,}80449\ \text{u}$, donc
+      $\Delta m \approx -0{,}19760\ \text{u}$ et $E \approx 184{,}1\
+      \text{MeV}$ sont libérés.
+    solution: |
+      $$m_{\text{réactifs}} = m(\text{n}) + m(^{235}_{92}\text{U}) =
+      1{,}00867 + 234{,}99342 = 236{,}00209\ \text{u}$$
+      $$m_{\text{produits}} = m(^{140}_{54}\text{Xe}) +
+      m(^{94}_{38}\text{Sr}) + 2\,m(\text{n}) = 139{,}88137 + 93{,}90578
+      + 2\times1{,}00867 = 235{,}80449\ \text{u}$$
+      $$\Delta m = 235{,}80449 - 236{,}00209 = -0{,}19760\ \text{u}$$
+      $$E = 0{,}19760 \times 931{,}5 \approx 184{,}1\ \text{MeV}$$
+      Comme $\Delta m<0$, cette énergie est libérée.
+
+  - id: NME-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Dans le Soleil, deux noyaux d'hélium 3 fusionnent selon
+      $^{3}_{2}\text{He} + \ ^{3}_{2}\text{He} \longrightarrow \
+      ^{4}_{2}\text{He} + 2\,^{1}_{1}\text{H}$ (une étape réelle de la
+      chaîne de réactions qui alimente le Soleil, évoquée à l'accroche).
+      On donne (masses des noyaux) : $m(^{3}_{2}\text{He}) =
+      3{,}01493\ \text{u}$, $m(^{4}_{2}\text{He}) = 4{,}00151\ \text{u}$,
+      $m_p = 1{,}00728\ \text{u}$, $1\ \text{u} \approx 931{,}5\
+      \text{MeV}/c^2$. Quelle est l'énergie libérée par cette réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Cette réaction libère environ $12{,}8\ \text{MeV}$.
+        correct: true
+      - id: B
+        text: >-
+          Cette réaction libère environ $951{,}1\ \text{MeV}$.
+        correct: false
+        feedback: >
+          Ce résultat ne compte qu'un seul proton produit au lieu de
+          deux : l'équation produit $2\,^{1}_{1}\text{H}$, donc
+          $m_{\text{produits}} = m(^{4}_{2}\text{He}) + 2\,m_p$, pas
+          $m(^{4}_{2}\text{He}) + m_p$.
+      - id: C
+        text: >-
+          Cette réaction absorbe environ $12{,}8\ \text{MeV}$ (elle ne
+          peut pas se produire spontanément).
+        correct: false
+        feedback: >
+          La valeur absolue est correcte, mais le signe de $\Delta m$
+          (négatif : les produits sont plus légers que les réactifs)
+          indique que cette énergie est **libérée**, pas absorbée — c'est
+          d'ailleurs cohérent avec le fait que cette réaction se produit
+          spontanément au cœur du Soleil.
+      - id: D
+        text: >-
+          Cette réaction libère environ $0{,}01379\ \text{MeV}$.
+        correct: false
+        feedback: >
+          Ce résultat oublie de multiplier $|\Delta m|=0{,}01379\
+          \text{u}$ par le facteur de conversion $931{,}5$ : il donne
+          $\Delta m$ en u comme s'il s'agissait déjà d'une énergie en
+          MeV.
+    correct_feedback: >
+      $m_{\text{réactifs}} = 2\times3{,}01493 = 6{,}02986\ \text{u}$,
+      $m_{\text{produits}} = 4{,}00151+2\times1{,}00728 = 6{,}01607\
+      \text{u}$, donc $\Delta m \approx -0{,}01379\ \text{u}$ et $E
+      \approx 12{,}8\ \text{MeV}$ sont libérés.
+    solution: |
+      $$m_{\text{réactifs}} = 2\,m(^{3}_{2}\text{He}) = 2\times3{,}01493 =
+      6{,}02986\ \text{u}$$
+      $$m_{\text{produits}} = m(^{4}_{2}\text{He}) + 2\,m_p = 4{,}00151 +
+      2\times1{,}00728 = 6{,}01607\ \text{u}$$
+      $$\Delta m = 6{,}01607 - 6{,}02986 = -0{,}01379\ \text{u}$$
+      $$E = 0{,}01379 \times 931{,}5 \approx 12{,}8\ \text{MeV}$$
+      Cette énergie est libérée ($\Delta m<0$) : c'est l'une des réactions
+      qui alimentent réellement le Soleil, prolongeant directement le
+      raisonnement de l'accroche (R0).
+
+  - id: NME-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    stem: >
+      Un proton fusionne avec un noyau de bore 11, $^{1}_{1}\text{H} + \
+      ^{11}_{5}\text{B} \longrightarrow\ ?$. Laquelle des équations
+      suivantes complète correctement cette réaction, en respectant les
+      lois de conservation de $A$ et de $Z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $2\,^{4}_{2}\text{He} + \ ^{3}_{2}\text{He}$
+        correct: false
+        feedback: >
+          La conservation de $A$ échoue : $1+11=12$ côté réactifs, mais
+          $4+4+3=11$ côté produits — il manque un nucléon. Vérifier $A$
+          d'abord aurait suffi à écarter cette réponse.
+      - id: B
+        text: >-
+          $2\,^{4}_{2}\text{He} + \ ^{4}_{3}\text{Li}$
+        correct: false
+        feedback: >
+          $A$ est bien conservé ($4+4+4=12=1+11$), mais pas $Z$ :
+          $2+2+3=7$ côté produits, contre $1+5=6$ côté réactifs. Les deux
+          lois de conservation doivent être vérifiées séparément — $A$
+          juste ne garantit pas $Z$ juste.
+      - id: C
+        text: >-
+          $2\,^{4}_{2}\text{He} + \ ^{2}_{1}\text{H} + \ ^{1}_{0}\text{n}$
+        correct: false
+        feedback: >
+          Ni $A$ ($4+4+2+1=11\neq12$) ni $Z$ ($2+2+1+0=5\neq6$) ne sont
+          conservés ici : c'est une combinaison de produits choisie sans
+          vérifier aucune des deux lois de Soddy.
+      - id: D
+        text: >-
+          $3\,^{4}_{2}\text{He}$
+        correct: true
+    correct_feedback: >
+      $A$ : $1+11=12=3\times4$. $Z$ : $1+5=6=3\times2$. Les deux lois de
+      conservation sont vérifiées : $3\,^{4}_{2}\text{He}$ est la bonne
+      réponse.
+    solution: |
+      Il faut vérifier séparément les deux lois de Soddy :
+      $$A:\ 1+11=12 \quad\text{et}\quad 3\times4=12 \ \checkmark$$
+      $$Z:\ 1+5=6 \quad\text{et}\quad 3\times2=6 \ \checkmark$$
+      Les deux bilans sont satisfaits : la réaction produit bien
+      $3\,^{4}_{2}\text{He}$ (une fusion aneutronique, sans neutron émis,
+      étudiée pour de futurs réacteurs à fusion).
+
+# ══════════════════════════════════════════════════════════════
+# COVERAGE SUMMARY (18 items total: NME-1..18)
+# Items per rung: R0=3 R1=3 R2=3 R3=3 R4=3 R5=3
+#
+# No spec.md / formal misconception inventory exists yet for this
+# notion (pedagogy-architect has not authored one) — distractors are
+# tagged informally to the 6 diagnostic categories named in the
+# fan-out brief, via their `feedback` text (no `misconception:` id
+# field, matching this file's pre-existing style). Item-level
+# coverage (an item counts once per category even when several of its
+# distractors target it):
+#   defaut-de-masse / E=Δm·c² (sens, portee) ... NME-1,6,8,10,11,12,16,17 (8)
+#   energie-de-liaison vs par-nucleon .......... NME-2,3,9 (3)
+#   fission-vs-fusion .......................... NME-6,7,13,15 (4)
+#   courbe-d-aston (stabilite, prevision) ...... NME-4,13,15 (3)
+#   conservation-A-Z (lois de Soddy) ........... NME-8,12,14,15,16,17,18 (7)
+#   unites-MeV-u (facteur 931,5) ............... NME-5,7,9,11,16,17 (6)
+# All six categories clear the >=3-items floor. Flag for
+# pedagogy-architect: a real misconception inventory (with stable
+# `mc.physics.noyaux_masse_energie.<slug>` ids, per the rlc_serie /
+# decroissance_radioactive precedent) should still be authored and
+# back-filled onto these distractors before they are treated as a
+# finished diagnostic spine.
