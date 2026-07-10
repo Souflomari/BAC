@@ -925,3 +925,474 @@ items:
     solution: |
       **Test d'appartenance (R5) :** on cherche une seule valeur de $t$
       commune aux trois équations. $t=2$ convient partout : $M\in\mathcal D$.
+
+  # ── R6 · plan : équation à partir de point+normal, et à partir de 3 points ─
+  - id: GE-22
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_geometrie_espace
+    tags: [plan, vecteur_normal, equation_cartesienne]
+    stem: >
+      Le plan $\mathcal P$ passe par $A(1,-2,3)$ et admet pour vecteur normal
+      $\vec{n}(2,-1,4)$. Quelle est une équation cartésienne de $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2x-y+4z-16=0$"
+        correct: true
+      - id: B
+        text: "$2x-y+4z+16=0$"
+        correct: false
+        feedback: >
+          Signe oublié devant la constante $d=-(ax_0+by_0+cz_0)$ : ça donne
+          $+16$ au lieu de $-16$.
+      - id: C
+        text: "$2x-y+4z-2=0$"
+        correct: false
+        feedback: >
+          La constante a été calculée comme la somme brute des coordonnées
+          de $A$ ($1-2+3=2$), au lieu de $ax_0+by_0+cz_0=16$.
+      - id: D
+        text: "$2x+y+4z-12=0$"
+        correct: false
+        feedback: >
+          Erreur de signe sur la composante $y$ du vecteur normal ($+1$ au
+          lieu de $-1$), ce qui change aussi la constante.
+    correct_feedback: >
+      $2(x-1)-1(y+2)+4(z-3)=0$ développe en $2x-y+4z-16=0$ : coefficients
+      = coordonnées de $\vec n$, constante déterminée ensuite avec $A$.
+    solution: |
+      $2(x-1)-(y+2)+4(z-3)=0 \implies 2x-y+4z-16=0$.
+
+  - id: GE-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [plan, vecteur_normal, produit_vectoriel]
+    stem: >
+      Le plan $\mathcal P$ passe par les points $A(1,0,1)$, $B(2,1,1)$ et
+      $C(1,1,2)$. Quel est un vecteur normal à $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\vec n(1,-1,1)$"
+        correct: true
+      - id: B
+        text: "$\\vec n(1,1,1)$"
+        correct: false
+        feedback: >
+          Erreur de signe sur la deuxième composante du produit vectoriel
+          ($zx'-xz'=-1$, pas $+1$).
+      - id: C
+        text: "$\\vec n(1,-1,-1)$"
+        correct: false
+        feedback: >
+          Erreur de signe sur la troisième composante du produit vectoriel
+          ($xy'-yx'=1$, pas $-1$).
+      - id: D
+        text: "$\\vec n(1,1,0)$"
+        correct: false
+        feedback: >
+          Ce triplet est $\overrightarrow{AB}$ lui-même, un vecteur DANS le
+          plan, pas le vecteur normal obtenu par produit vectoriel.
+    correct_feedback: >
+      $\overrightarrow{AB}(1,1,0)$ et $\overrightarrow{AC}(0,1,1)$ ; leur
+      produit vectoriel $\overrightarrow{AB}\wedge\overrightarrow{AC}=(1,-1,1)$
+      est normal au plan.
+    solution: |
+      $\overrightarrow{AB}\wedge\overrightarrow{AC}=(1\times1-0\times1,\
+      0\times0-1\times1,\ 1\times1-1\times0)=(1,-1,1)$.
+
+  # ── R7 · positions relatives droite/plan et plan/plan ───────────────────────
+  - id: GE-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [positions_relatives, droite_plan]
+    stem: >
+      La droite $\mathcal D$ passe par $A(1,0,-1)$ avec pour vecteur
+      directeur $\vec u(1,2,-1)$ ; le plan $\mathcal P$ a pour équation
+      $x-y+z-2=0$ (normal $\vec n(1,-1,1)$). Sachant que $\vec u\cdot\vec
+      n=-2$, quelle est la position relative de $\mathcal D$ et
+      $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\mathcal D$ et $\\mathcal P$ sont sécants en un point unique, car $\\vec u\\cdot\\vec n\\neq0$."
+        correct: true
+      - id: B
+        text: "$\\mathcal D$ et $\\mathcal P$ sont parallèles, car $\\vec u\\cdot\\vec n\\neq0$ signifie que la direction de $\\mathcal D$ est orthogonale à $\\vec n$."
+        correct: false
+        feedback: >
+          C'est l'inverse : un produit scalaire NUL signalerait une
+          direction orthogonale à $\vec n$ (cas parallèle) ; ici il est non
+          nul, c'est le critère des droites sécantes.
+      - id: C
+        text: "On ne peut rien conclure sans vérifier si $A$ appartient à $\\mathcal P$."
+        correct: false
+        feedback: >
+          Ce test n'est utile que si $\vec u\cdot\vec n=0$ (pour distinguer
+          incluse/strictement parallèle) ; produit scalaire non nul suffit
+          déjà à garantir la sécance.
+      - id: D
+        text: "$\\mathcal D$ et $\\mathcal P$ ne peuvent être sécants que si $\\vec u$ et $\\vec n$ sont colinéaires."
+        correct: false
+        feedback: >
+          Colinéarité de $\vec u$ et $\vec n$ caractérise une droite
+          PERPENDICULAIRE au plan, un cas particulier ; le critère général
+          de sécance est simplement $\vec u\cdot\vec n\neq0$.
+    correct_feedback: >
+      $\vec u\cdot\vec n\neq0$ : la direction de $\mathcal D$ n'est pas
+      « couchée » dans $\mathcal P$, donc $\mathcal D$ perce le plan en un
+      point unique.
+    solution: |
+      $\vec u\cdot\vec n=1\times1+2\times(-1)+(-1)\times1=1-2-1=-2\neq0$ :
+      $\mathcal D$ et $\mathcal P$ sont sécants.
+
+  - id: GE-25
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [positions_relatives, plans_paralleles]
+    stem: >
+      Le plan $\mathcal P_1$ a pour équation $x+2y-z+1=0$ et le plan
+      $\mathcal P_2$ a pour équation $2x+4y-2z+5=0$. Quelle est leur
+      position relative ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\mathcal P_1$ et $\\mathcal P_2$ sont strictement parallèles (distincts) : $\\vec n_2=2\\vec n_1$, mais les équations ne sont pas proportionnelles terme à terme."
+        correct: true
+      - id: B
+        text: "$\\mathcal P_1$ et $\\mathcal P_2$ sont confondus, car $\\vec n_2=2\\vec n_1$."
+        correct: false
+        feedback: >
+          La colinéarité des normales donne le parallélisme, pas la
+          confusion des plans ; il faut aussi que la constante suive le même
+          facteur, ce qui échoue ici ($5\neq2\times1$).
+      - id: C
+        text: "$\\mathcal P_1$ et $\\mathcal P_2$ sont sécants, car leurs équations ne sont pas identiques."
+        correct: false
+        feedback: >
+          Le critère de sécance porte sur la colinéarité des normales, pas
+          sur l'identité des équations ; ici $\vec n_1$ et $\vec n_2$ sont
+          colinéaires, donc les plans ne sont pas sécants.
+      - id: D
+        text: "On ne peut pas savoir si les plans sont parallèles ou sécants sans résoudre le système de leurs deux équations."
+        correct: false
+        feedback: >
+          Comparer les vecteurs normaux suffit à trancher directement ;
+          résoudre un système n'est utile qu'une fois les plans reconnus
+          sécants, pour décrire leur droite d'intersection.
+    correct_feedback: >
+      $\vec n_1(1,2,-1)$ et $\vec n_2(2,4,-2)=2\vec n_1$ sont colinéaires :
+      les plans sont parallèles. Mais $5\neq2\times1$ : ils ne sont pas
+      confondus.
+    solution: |
+      $\vec n_2=2\vec n_1$ (parallèles), et $5\neq2\times1$ (équations non
+      proportionnelles) : $\mathcal P_1\parallel\mathcal P_2$, strictement.
+
+  # ── R8 · distance point-droite, distance point-plan (suite) ─────────────────
+  - id: GE-26
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [distance, droite]
+    stem: >
+      La droite $\mathcal D$ passe par $A(0,0,0)$ avec pour vecteur
+      directeur $\vec u(3,4,0)$. Quelle est la distance du point $M(0,0,5)$
+      à $\mathcal D$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+      - id: B
+        text: "$25$"
+        correct: false
+        feedback: >
+          C'est $\|\overrightarrow{AM}\wedge\vec u\|$ seul ; il manque la
+          division par $\|\vec u\|=5$.
+      - id: C
+        text: "$1$"
+        correct: false
+        feedback: >
+          Division par $\|\vec u\|^2=25$ au lieu de $\|\vec u\|=5$ : la
+          racine carrée a été oubliée.
+      - id: D
+        text: "$0$"
+        correct: false
+        feedback: >
+          Utilise $\vec u\cdot\overrightarrow{AM}$ (formule de distance à un
+          PLAN) au lieu de $\|\vec u\wedge\overrightarrow{AM}\|$.
+    correct_feedback: >
+      $\overrightarrow{AM}\wedge\vec u=(-20,15,0)$, de norme $25$ ; $\|\vec
+      u\|=5$ ; donc $d(M,\mathcal D)=25/5=5$.
+    solution: |
+      $\overrightarrow{AM}(0,0,5)$, $\overrightarrow{AM}\wedge\vec
+      u=(-20,15,0)$ de norme $25$. $\|\vec u\|=\sqrt{9+16}=5$.
+      $d(M,\mathcal D)=25/5=5$.
+
+  - id: GE-27
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [distance, plan]
+    stem: >
+      Le plan $\mathcal P$ a pour équation $4x-8y+z-6=0$. Quelle est la
+      distance du point $M(2,-1,3)$ à $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{13}{9}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{19}{9}$"
+        correct: false
+        feedback: >
+          La constante $-6$ de l'équation a été oubliée dans le numérateur
+          ($|8+8+3|=19$ au lieu de $|8+8+3-6|=13$).
+      - id: C
+        text: "$\\dfrac{13}{3}$"
+        correct: false
+        feedback: >
+          Dénominateur pris comme la somme des coefficients $4-8+1=-3$
+          (valeur absolue $3$), au lieu de $\sqrt{4^2+8^2+1^2}=9$.
+      - id: D
+        text: "$\\dfrac13$"
+        correct: false
+        feedback: >
+          Erreur de signe sur le coefficient de $y$ ($+8$ au lieu de $-8$),
+          ce qui change le numérateur en $|8-8+3-6|=3$.
+    correct_feedback: >
+      $d(M,\mathcal P)=\dfrac{|4\times2-8\times(-1)+3-6|}{\sqrt{16+64+1}}=\dfrac{13}{9}$.
+    solution: |
+      Numérateur $|8+8+3-6|=13$ ; dénominateur $\sqrt{16+64+1}=9$ ;
+      $d=13/9$.
+
+  # ── R9 · sphère : équation, forme canonique, intersection avec un plan ──────
+  - id: GE-28
+    rung: "R9"
+    difficulty_level: 1
+    skill_code: maths_geometrie_espace
+    tags: [sphere, equation_cartesienne]
+    stem: >
+      La sphère $\mathcal S$ a pour équation
+      $(x+1)^2+(y-3)^2+(z-2)^2=16$. Quels sont son centre et son rayon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Centre $\\Omega(-1,3,2)$, rayon $R=4$."
+        correct: true
+      - id: B
+        text: "Centre $\\Omega(1,-3,-2)$, rayon $R=4$."
+        correct: false
+        feedback: >
+          Signe oublié : $(x+1)^2=(x-(-1))^2$ donne $x_\Omega=-1$, pas
+          $+1$ (et de même pour $y,z$).
+      - id: C
+        text: "Centre $\\Omega(-1,3,2)$, rayon $R=16$."
+        correct: false
+        feedback: >
+          $16$ est $R^2$, pas $R$ : la racine carrée finale a été oubliée.
+      - id: D
+        text: "Centre $\\Omega(-1,2,3)$, rayon $R=4$."
+        correct: false
+        feedback: >
+          Les coordonnées $y$ et $z$ du centre ont été échangées.
+    correct_feedback: >
+      Sous forme centre-rayon $(x-x_\Omega)^2+\dots=R^2$ : $\Omega(-1,3,2)$
+      et $R=\sqrt{16}=4$.
+    solution: |
+      $(x+1)^2=(x-(-1))^2$, etc. : $\Omega(-1,3,2)$, $R=\sqrt{16}=4$.
+
+  - id: GE-29
+    rung: "R9"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [sphere, equation_cartesienne, forme_canonique]
+    stem: >
+      Quels sont le centre et le rayon de la sphère d'équation
+      $x^2+y^2+z^2+4x-2y+6z+5=0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Centre $\\Omega(-2,1,-3)$, rayon $R=3$."
+        correct: true
+      - id: B
+        text: "Centre $\\Omega(2,-1,3)$, rayon $R=3$."
+        correct: false
+        feedback: >
+          Les coefficients de l'équation ont été lus directement comme
+          coordonnées du centre, sans les négativer.
+      - id: C
+        text: "Centre $\\Omega(-2,1,-3)$, rayon $R=9$."
+        correct: false
+        feedback: >
+          $9$ est $R^2$, pas $R$ : la racine carrée finale a été oubliée.
+      - id: D
+        text: "Centre $\\Omega(-2,1,-3)$, rayon $R=\\sqrt{14}$."
+        correct: false
+        feedback: >
+          La constante $+5$ de l'équation de départ n'a pas été soustraite
+          ($4+1+9=14$ au lieu de $4+1+9-5=9$).
+    correct_feedback: >
+      $(x+2)^2+(y-1)^2+(z+3)^2=4+1+9-5=9$ : $\Omega(-2,1,-3)$, $R=3$.
+    solution: |
+      $(x^2+4x)+(y^2-2y)+(z^2+6z)+5=0 \implies
+      (x+2)^2+(y-1)^2+(z+3)^2=9$.
+
+  - id: GE-30
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, intersection]
+    stem: >
+      La sphère $\mathcal S$ a pour centre $\Omega(2,0,0)$ et rayon $R=5$.
+      Le plan $\mathcal P$ a pour équation $x+2y+2z-11=0$. Quelle est la
+      nature de l'intersection de $\mathcal S$ et $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est un cercle : $d(\\Omega,\\mathcal P)=3<R=5$, de rayon $\\sqrt{25-9}=4$."
+        correct: true
+      - id: B
+        text: "Le plan est tangent à $\\mathcal S$ (un seul point commun), car $d(\\Omega,\\mathcal P)<R$."
+        correct: false
+        feedback: >
+          La tangence correspond à $d=R$, pas $d<R$ ; ici $d=3<R=5$ donne au
+          contraire un cercle d'intersection.
+      - id: C
+        text: "C'est un cercle de rayon $\\sqrt{34}$."
+        correct: false
+        feedback: >
+          Erreur de signe dans Pythagore — $R^2+d^2=34$ a été utilisé au
+          lieu de $R^2-d^2=16$.
+      - id: D
+        text: "C'est un cercle de rayon $16$."
+        correct: false
+        feedback: >
+          $16=R^2-d^2$ est le carré du rayon du cercle ; la racine carrée
+          finale a été oubliée.
+    correct_feedback: >
+      $d(\Omega,\mathcal P)=\dfrac{|2+0+0-11|}{3}=3<R=5$ : intersection en
+      un cercle de rayon $\sqrt{25-9}=4$.
+    solution: |
+      $d(\Omega,\mathcal P)=|2-11|/3=3$. Comme $3<5$ : cercle de rayon
+      $\sqrt{5^2-3^2}=4$.
+
+  # ── R10 · exercice type bac : tétraèdre, plan, distance (variation fraîche) ─
+  - id: GE-31
+    rung: "R10"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [tetraedre, produit_mixte, volume]
+    stem: >
+      On considère $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$, $D(1,1,1)$. Sachant
+      que $\overrightarrow{AB}\wedge\overrightarrow{AC}=(6,3,2)$, quel est
+      le volume du tétraèdre $ABCD$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac56$"
+        correct: true
+      - id: B
+        text: "$5$"
+        correct: false
+        feedback: >
+          C'est la valeur absolue du produit mixte (volume du
+          parallélépipède) ; il manque le facteur $\frac16$.
+      - id: C
+        text: "$\\dfrac53$"
+        correct: false
+        feedback: >
+          Seul le facteur $\frac13$ (pyramide) a été appliqué, en oubliant
+          le facteur $\frac12$ (base triangulaire).
+      - id: D
+        text: "$-\\dfrac56$"
+        correct: false
+        feedback: >
+          Le volume utilise la VALEUR ABSOLUE du produit mixte ; le signe
+          négatif a été conservé à tort.
+    correct_feedback: >
+      $[\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AD}]=(6,3,2)\cdot(0,1,1)=5$ ;
+      $V=\frac16\times|5|=\frac56$.
+    solution: |
+      $\overrightarrow{AD}(0,1,1)$ ;
+      $[\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AD}]=(6,3,2)\cdot(0,1,1)=5$ ;
+      $V_{ABCD}=\frac16\times5=\frac56$.
+
+  - id: GE-32
+    rung: "R10"
+    difficulty_level: 3
+    skill_code: maths_geometrie_espace
+    tags: [plan, vecteur_normal, equation_cartesienne]
+    stem: >
+      Avec les mêmes points $B(0,2,0)$, $C(0,0,3)$, $D(1,1,1)$, sachant que
+      $\overrightarrow{BC}\wedge\overrightarrow{BD}=(1,3,2)$, quelle est
+      l'équation cartésienne du plan $(BCD)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x+3y+2z-6=0$"
+        correct: true
+      - id: B
+        text: "$x-3y+2z+6=0$"
+        correct: false
+        feedback: >
+          Erreur de signe sur la deuxième composante du produit vectoriel
+          utilisé comme normale.
+      - id: C
+        text: "$x+3y+2z=0$"
+        correct: false
+        feedback: >
+          La constante $d$ n'a pas été déterminée à l'aide d'un point du
+          plan ; l'origine n'appartient pourtant pas à $(BCD)$.
+      - id: D
+        text: "$6x+3y+2z-6=0$"
+        correct: false
+        feedback: >
+          Cette normale vient de $\overrightarrow{AB}\wedge\overrightarrow{AC}=(6,3,2)$,
+          normale au plan $(ABC)$, pas à $(BCD)$.
+    correct_feedback: >
+      $\vec n(1,3,2)$ ; avec $B(0,2,0)$ : $0+6+0+d=0\implies d=-6$ ;
+      équation $x+3y+2z-6=0$.
+    solution: |
+      $x+3y+2z+d=0$ ; $B(0,2,0)\implies d=-6$ ; $(BCD): x+3y+2z-6=0$.
+
+  - id: GE-33
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [distance, plan, verification_croisee]
+    stem: >
+      Avec le plan $(BCD): x+3y+2z-6=0$, quelle est la distance du point
+      $A(1,0,0)$ à ce plan ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{5\\sqrt{14}}{14}$"
+        correct: true
+      - id: B
+        text: "$-\\dfrac{5\\sqrt{14}}{14}$"
+        correct: false
+        feedback: >
+          Une distance n'est jamais négative ; la valeur absolue du
+          numérateur a été omise.
+      - id: C
+        text: "$\\dfrac56$"
+        correct: false
+        feedback: >
+          Dénominateur pris comme la somme des coefficients $1+3+2=6$, au
+          lieu de $\sqrt{1^2+3^2+2^2}=\sqrt{14}$.
+      - id: D
+        text: "$\\dfrac{6\\sqrt{14}}{14}$"
+        correct: false
+        feedback: >
+          Le numérateur a été calculé avec les coordonnées de l'origine
+          $(0,0,0)$ au lieu de celles de $A(1,0,0)$.
+    correct_feedback: >
+      $d(A,(BCD))=\dfrac{|1+0+0-6|}{\sqrt{1+9+4}}=\dfrac{5}{\sqrt{14}}=\dfrac{5\sqrt{14}}{14}$.
+    solution: |
+      $d(A,(BCD))=\dfrac{|1-6|}{\sqrt{14}}=\dfrac{5\sqrt{14}}{14}$, cohérent
+      avec $V=\frac16\times5$ et l'aire de $(BCD)=\frac12\sqrt{14}$.
