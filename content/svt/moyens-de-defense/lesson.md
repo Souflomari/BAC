@@ -82,6 +82,8 @@ Les phagocytes sont arrivés sur place par diapédèse (R1). Que font-ils, concr
 
 Retiens la logique d'ensemble : le phagocyte ne « touche » pas l'intrus pour le tuer instantanément — il l'attire à lui (chimiotactisme), s'y accroche (adhérence), l'enferme (ingestion), puis le dissout chimiquement à l'intérieur de lui-même (digestion), avant de rejeter ce qui reste.
 
+[[figure:phagocytose-etapes]]
+
 ### Exemple travaillé : lire une série de clichés de microscopie
 
 **Énoncé.** Un microscope électronique a permis de photographier, sur des échantillons différents, quatre instants distincts impliquant un même macrophage (un type de phagocyte) et une bactérie. Voici, dans le désordre, ce que montre chacun des quatre clichés :
@@ -159,6 +161,8 @@ Ces cellules issues de l'expansion se différencient ensuite en deux types :
 - des **plasmocytes**, des cellules qui sécrètent en grande quantité des anticorps spécifiques de cet antigène (on détaille les anticorps eux-mêmes au R5) ;
 - des **lymphocytes B mémoire**, qui ne produisent rien dans l'immédiat, mais qui persistent longtemps dans l'organisme, prêts à réagir beaucoup plus vite en cas de nouvelle rencontre avec le même antigène (on y revient au R8 — c'est la réponse à la seconde question du R0).
 
+[[figure:selection-clonale]]
+
 ### Exemple travaillé : pourquoi ça prend des jours
 
 **Énoncé.** Explique, à partir du mécanisme de sélection clonale, pourquoi la production d'anticorps efficaces contre un intrus totalement nouveau prend plusieurs jours, alors que la réaction inflammatoire (R1) se met en place en quelques heures.
@@ -211,6 +215,8 @@ C'est l'erreur la plus fréquente sur les anticorps : croire qu'un anticorps agi
 
 Dans les trois cas, l'anticorps prépare le terrain ou bloque l'action de l'intrus — il ne le détruit pas lui-même. La destruction effective vient d'un autre acteur (le plus souvent, un phagocyte qui élimine ensuite l'agent neutralisé ou marqué).
 
+[[figure:anticorps-agglutination]]
+
 Retiens bien un second point, qui prépare directement le rung suivant : les anticorps circulent dans le sang et la lymphe, et n'agissent que sur des antigènes LIBRES ou portés par des agents infectieux encore EXTÉRIEURS aux cellules de l'organisme. Une fois qu'un virus est entré à l'intérieur d'une cellule, il est hors de portée des anticorps — aucun anticorps circulant ne peut atteindre un virus déjà installé dans le cytoplasme d'une cellule infectée. Ce cas-là exige un mécanisme complètement différent, qu'on découvre au R6.
 
 ### Vérification rapide
@@ -232,6 +238,8 @@ Rappelle-toi la notion de « soi modifié » de la leçon précédente : une cel
 Un second type de lymphocytes, les **lymphocytes T8** (LT8), porte à sa surface des récepteurs capables de reconnaître spécifiquement ces fragments anormaux affichés par une cellule infectée — exactement sur le même principe de sélection clonale que pour les LB (R4) : parmi des millions de clones de LT8 différents, seuls ceux dont le récepteur correspond à ce fragment précis sont sélectionnés, puis se multiplient.
 
 Une fois sélectionnés et multipliés (avec, là aussi, l'aide des lymphocytes T4 — R7), ces LT8 se différencient en **lymphocytes T cytotoxiques** (LTc). Un LTc entre en contact DIRECT avec la cellule infectée qu'il a reconnue, et déclenche sa destruction : la cellule infectée est amenée à s'autodétruire. En éliminant la cellule elle-même, on élimine du même coup le virus qui s'y multipliait à l'intérieur — avant qu'il n'ait eu le temps de produire de nouvelles particules infectieuses.
+
+[[figure:lt8-cytotoxicite]]
 
 ### Deux réponses, deux terrains d'action
 
@@ -310,6 +318,8 @@ Il est temps de répondre à la question posée dès l'ouverture de cette leçon
 Rappelle-toi le R4 : lors de l'expansion clonale, le clone de LB sélectionné ne se différencie pas EN TOTALITÉ en plasmocytes. Une partie de sa descendance se différencie plutôt en **lymphocytes B mémoire** — des cellules qui ne sécrètent rien dans l'immédiat, mais qui persistent longtemps dans l'organisme (des mois, des années, parfois toute une vie), en nombre bien supérieur à celui du clone naïf initial, avant toute rencontre avec l'antigène. Le même phénomène se produit du côté des LT8 : une partie de leur descendance devient des **lymphocytes T mémoire**.
 
 Lors d'une PREMIÈRE rencontre avec un antigène donné, tout part d'un clone rare, isolé au milieu de millions d'autres — d'où le délai de plusieurs jours nécessaire à sa sélection puis à son expansion (R4). Lors d'une SECONDE rencontre avec le MÊME antigène, en revanche, ce ne sont plus des clones rares et isolés qui doivent être trouvés puis multipliés depuis zéro : ce sont des cellules mémoire, déjà sélectionnées, déjà nombreuses, immédiatement disponibles. Elles se différencient directement, sans avoir à repartir du hasard d'une rencontre initiale entre un clone rare et l'antigène. La réponse qui en résulte — la **réponse secondaire** — est donc à la fois plus rapide à démarrer et plus intense (davantage de plasmocytes et de LTc produits en un temps donné) que la toute première réponse, dite **réponse primaire**.
+
+[[figure:reponse-primaire-secondaire]]
 
 ### Exemple travaillé : le rappel vaccinal
 

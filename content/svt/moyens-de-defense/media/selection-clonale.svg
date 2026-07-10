@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 450"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La sélection clonale d'un lymphocyte B : un répertoire de six clones portant chacun un récepteur de forme différente ; un antigène ne se lie qu'au récepteur complémentaire d'un seul clone, qu'il sélectionne sans en créer aucun ; ce clone se multiplie en une population identique (expansion clonale) ; cette population se différencie en plasmocytes sécréteurs d'anticorps et en lymphocytes B mémoire.">
+  <title>La sélection clonale : un antigène sélectionne, il ne crée rien</title>
+
+  <!--
+    selection-clonale.svg — STAGED, 4 étapes cumulatives.
+    step-1 : le répertoire — 6 clones de LB, récepteurs tous DIFFÉRENTS
+             (formes distinctes : cercle, carré, losange, TRIANGLE, chevron,
+             pentagone) — aucun accent : rien n'est encore sélectionné.
+    step-2 : + un antigène (triangle) qui ne se lie qu'au récepteur
+             complémentaire (le SEUL triangle) — surbrillance AJOUTÉE
+             par-dessus le clone n°4, jamais une restyle des 6 clones du
+             step-1 (les 5 autres restent visuellement inchangés — la
+             preuve qu'aucun clone n'est créé, un seul est repéré).
+    step-3 : + expansion clonale — une population de petites copies
+             identiques du clone sélectionné (même triangle, contour accent).
+    step-4 : + différenciation — plasmocytes (sécrètent, accent) et
+             lymphocytes B mémoire (dormants, neutres).
+
+    Motif clé-serrure : le récepteur de forme triangulaire du clone n°4 et
+    l'antigène (triangle complémentaire) — ce même motif est repris dans
+    lt8-cytotoxicite.svg (fig. 4) pour la reconnaissance du fragment viral
+    par le LTc, pour la continuité visuelle demandée par le brief.
+
+    Convention couleur ("accent = une idée par étape") :
+      step-1 : aucun accent (rien n'est sélectionné) ;
+      step-2 : le clone sélectionné + l'antigène (LA sélection) ;
+      step-3 : les clones de la population issue de l'expansion (LA
+               multiplication, même récepteur partagé) ;
+      step-4 : le plasmocyte et ses anticorps sécrétés (LA production
+               active) — le LB mémoire reste neutre (dormant, "prêt").
+
+    Simplification assumée : 6 clones (sur des millions réels) et une
+    population d'expansion de 6 copies (sur des millions réels) — le
+    texte R4 donne déjà les ordres de grandeur en mots ; le schéma illustre
+    le MÉCANISME (un seul récepteur complémentaire, une seule population
+    qui en descend), pas un dénombrement.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le répertoire (6 clones, récepteurs différents)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="440" y="20" text-anchor="middle"
+          font-size="12.5" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La sélection clonale : l'antigène sélectionne un clone, il n'en crée aucun
+    </text>
+
+    <!-- Clone 1 — récepteur en cercle -->
+    <g>
+      <circle cx="90" cy="118" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="90" y1="96" x2="90" y2="84" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+      <circle cx="90" cy="80" r="5.5" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+
+    <!-- Clone 2 — récepteur en carré -->
+    <g>
+      <circle cx="230" cy="118" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="230" y1="96" x2="230" y2="84" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+      <rect x="225.5" y="75.5" width="9" height="9" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+
+    <!-- Clone 3 — récepteur en losange -->
+    <g>
+      <circle cx="370" cy="118" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="370" y1="96" x2="370" y2="84" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+      <rect x="364" y="74" width="12" height="12" transform="rotate(45 370 80)"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+
+    <!-- Clone 4 — récepteur en TRIANGLE (celui qui sera sélectionné) -->
+    <g>
+      <circle cx="510" cy="118" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="510" y1="96" x2="510" y2="84" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+      <polygon points="510,73 504,85 516,85" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+
+    <!-- Clone 5 — récepteur en chevron -->
+    <g>
+      <circle cx="650" cy="118" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="650" y1="96" x2="650" y2="84" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+      <path d="M644,84 L648,76 L650,80 L652,76 L656,84" fill="none" stroke="var(--figure-ink)" stroke-width="1.5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Clone 6 — récepteur en pentagone -->
+    <g>
+      <circle cx="790" cy="118" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="790" y1="96" x2="790" y2="84" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+      <polygon points="790,73.5 796.2,78 793.8,85.5 786.2,85.5 783.8,78"
+               fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+
+    <text x="440" y="160" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      des millions de clones de LB, chacun un récepteur de forme unique
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la sélection (antigène → seul le clone 4)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Antigène : triangle complémentaire, tombant vers le récepteur du clone 4 -->
+    <polygon points="510,53 504,41 516,41" fill="var(--figure-accent)"/>
+    <line x1="510" y1="53" x2="510" y2="72" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="3,3"/>
+    <text x="540" y="46" font-size="10.5" fill="var(--figure-accent)">antigène</text>
+
+    <!-- Surbrillance du récepteur complémentaire — AJOUTÉE par-dessus le triangle du step-1 -->
+    <polygon points="510,73 504,85 516,85" fill="none" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <!-- Anneau de sélection autour du clone 4 -->
+    <circle cx="510" cy="118" r="27" fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="4,3"/>
+
+    <text x="560" y="130" font-size="10.5" fill="var(--figure-accent)">récepteur</text>
+    <text x="560" y="144" font-size="10.5" fill="var(--figure-accent)">complémentaire</text>
+
+    <text x="440" y="178" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      les cinq autres clones restent inactifs face à cet antigène — aucun n'est créé, aucun n'est modifié
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — expansion clonale
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Flèche du clone sélectionné vers la population -->
+    <line x1="510" y1="145" x2="510" y2="216" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="510,216 504,206 516,206" fill="var(--figure-ink)"/>
+    <text x="545" y="188" font-size="10.5" font-weight="600" fill="var(--figure-accent)">expansion clonale</text>
+    <text x="545" y="202" font-size="9.5" fill="var(--figure-ink-soft)">(plusieurs jours)</text>
+
+    <!-- Population de clones identiques, même récepteur (accent : idée = multiplication du même clone) -->
+    <g>
+      <circle cx="495" cy="232" r="13" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+      <polygon points="495,222 491,229 499,229" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    </g>
+    <g>
+      <circle cx="525" cy="232" r="13" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+      <polygon points="525,222 521,229 529,229" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    </g>
+    <g>
+      <circle cx="480" cy="260" r="13" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+      <polygon points="480,250 476,257 484,257" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    </g>
+    <g>
+      <circle cx="540" cy="260" r="13" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+      <polygon points="540,250 536,257 544,257" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    </g>
+    <g>
+      <circle cx="495" cy="288" r="13" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+      <polygon points="495,278 491,285 499,285" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    </g>
+    <g>
+      <circle cx="525" cy="288" r="13" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+      <polygon points="525,278 521,285 529,285" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    </g>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — différenciation (plasmocytes / LB mémoire)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Fourche vers les deux devenirs -->
+    <line x1="500" y1="298" x2="400" y2="352" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="400,352 411,349 405,359" fill="var(--figure-ink)"/>
+    <line x1="520" y1="298" x2="620" y2="352" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="620,352 609,349 615,359" fill="var(--figure-ink)"/>
+
+    <!-- Plasmocyte : cellule effectrice, sécrète des anticorps (accent) -->
+    <circle cx="390" cy="382" r="27" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <!-- Anticorps sécrétés : quatre petits Y, autour de la cellule -->
+    <g stroke="var(--figure-accent)" stroke-width="1.3" fill="none" stroke-linecap="round">
+      <path d="M390,349 L390,342 M390,342 L385,335 M390,342 L395,335"/>
+      <path d="M420,382 L427,382 M427,382 L433,377 M427,382 L433,387"/>
+      <path d="M390,415 L390,422 M390,422 L385,429 M390,422 L395,429"/>
+      <path d="M360,382 L353,382 M353,382 L347,377 M353,382 L347,387"/>
+    </g>
+    <text x="390" y="424" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">Plasmocytes</text>
+    <text x="390" y="439" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">sécrètent des anticorps</text>
+
+    <!-- LB mémoire : dormant, même récepteur, neutre -->
+    <circle cx="630" cy="382" r="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <polygon points="630,368 626,375 634,375" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="630" y="424" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">LB mémoire</text>
+    <text x="630" y="439" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">persistent, prêts à réagir</text>
+  </g><!-- /step-4 -->
+
+</svg>

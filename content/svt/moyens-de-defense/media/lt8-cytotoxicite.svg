@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 430"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La cytotoxicité du lymphocyte T8 : une cellule infectée affiche à sa surface des fragments viraux, son soi est modifié ; un lymphocyte T cytotoxique déjà différencié reconnaît spécifiquement ce fragment par contact direct ; il déclenche l'autodestruction de la cellule infectée ; en la détruisant, il élimine le virus qu'elle abritait avant qu'il ne produise de nouvelles particules infectieuses.">
+  <title>Le LTc : reconnaissance du soi modifié, puis destruction par contact direct</title>
+
+  <!--
+    lt8-cytotoxicite.svg — STAGED, 4 étapes cumulatives.
+    step-1 : soi modifié — cellule saine (gauche, référence, jamais
+             retouchée ensuite) vs cellule infectée (droite) qui affiche
+             trois fragments viraux à sa membrane.
+    step-2 : + un LTc DÉJÀ DIFFÉRENCIÉ (pas de sélection/expansion ici —
+             territoire de selection-clonale.svg / R4/R7) reconnaît, par
+             contact direct, le fragment complémentaire à son récepteur.
+    step-3 : + signal déclenché — la cellule infectée commence à se
+             fissurer (autodestruction induite par le LTc, pas par le
+             virus).
+    step-4 : + le résultat — la cellule est fragmentée, le virus qu'elle
+             abritait (marqué d'un ×) est éliminé avec elle, AVANT qu'il
+             produise de nouvelles particules.
+
+    Motif clé-serrure : le récepteur du LTc et le fragment viral reconnu
+    reprennent le même triangle complémentaire que selection-clonale.svg
+    (fig. 2) — continuité visuelle demandée par le brief : même grammaire
+    de reconnaissance spécifique, appliquée ici à un fragment de membrane
+    plutôt qu'à un antigène libre.
+
+    Convention couleur ("accent = une idée par étape") :
+      step-1 : les trois fragments viraux (répétés = une idée : la
+               membrane est altérée, "soi modifié") ;
+      step-2 : le récepteur du LTc + le lien de reconnaissance (LA
+               spécificité du contact) ;
+      step-3 : les fissures internes (LE déclenchement) ;
+      step-4 : le × sur le virus (L'élimination).
+    La cellule saine reste entièrement neutre du début à la fin — c'est
+    la référence "soi non modifié", jamais concernée par l'accent.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — soi modifié : cellule saine vs cellule infectée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="410" y="22" text-anchor="middle"
+          font-size="12.5" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Le LTc : reconnaître le soi modifié, puis détruire par contact direct
+    </text>
+
+    <!-- Cellule saine — référence, jamais retouchée -->
+    <circle cx="200" cy="190" r="48" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="200" y="252" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">cellule saine</text>
+
+    <!-- Cellule infectée -->
+    <circle cx="560" cy="190" r="48" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <!-- Virus, à l'intérieur -->
+    <g transform="translate(560,185)">
+      <circle r="9" fill="var(--figure-ink-soft)" opacity="0.5"/>
+      <g stroke="var(--figure-ink-soft)" stroke-width="1.2" opacity="0.6">
+        <line x1="0" y1="-9" x2="0" y2="-14"/>
+        <line x1="8" y1="-5" x2="12" y2="-8"/>
+        <line x1="8" y1="5" x2="12" y2="8"/>
+        <line x1="-8" y1="-5" x2="-12" y2="-8"/>
+        <line x1="-8" y1="5" x2="-12" y2="8"/>
+      </g>
+    </g>
+
+    <!-- Trois fragments viraux à la membrane — accent (une idée : soi modifié) -->
+    <polygon points="0,-9 -6,3 6,3" transform="translate(601,165) rotate(35)" fill="var(--figure-accent)"/>
+    <polygon points="0,-9 -6,3 6,3" transform="translate(596,222) rotate(130)" fill="var(--figure-accent)"/>
+    <polygon points="0,-9 -6,3 6,3" transform="translate(515,160) rotate(-50)" fill="var(--figure-accent)"/>
+
+    <text x="560" y="252" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">cellule infectée</text>
+    <text x="560" y="268" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">« soi modifié »</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — reconnaissance : le LTc, déjà différencié
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- LTc -->
+    <circle cx="650" cy="300" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.7"/>
+
+    <!-- Récepteur du LTc, orienté vers le fragment reconnu — accent -->
+    <line x1="637" y1="282" x2="627" y2="267" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="0,-7 -6,5 6,5" transform="translate(627,267) rotate(-125)"
+             fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.8"/>
+
+    <!-- Lien de reconnaissance (contact direct) — accent -->
+    <line x1="620" y1="255" x2="601" y2="230" stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="3,3"/>
+
+    <text x="650" y="338" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">LT cytotoxique</text>
+    <text x="650" y="352" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(déjà différencié)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — autodestruction induite
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="560" y="122" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">
+      autodestruction déclenchée
+    </text>
+
+    <!-- Fissures internes — accent (l'idée : le déclenchement) -->
+    <g stroke="var(--figure-accent)" stroke-width="1.4" fill="none" stroke-linejoin="round">
+      <path d="M560,190 L578,172 L570,168"/>
+      <path d="M560,190 L545,165 L552,160"/>
+      <path d="M560,190 L540,205 L530,198"/>
+      <path d="M560,190 L580,210 L588,204"/>
+    </g>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — virus éliminé
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Débris de la cellule détruite, superposés à son emplacement -->
+    <g fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2">
+      <rect x="-7" y="-4" width="14" height="8" rx="2.5" transform="translate(540,170) rotate(20)"/>
+      <rect x="-6" y="-4" width="12" height="8" rx="2.5" transform="translate(585,175) rotate(-15)"/>
+      <rect x="-6.5" y="-4" width="13" height="8" rx="2.5" transform="translate(575,215) rotate(35)"/>
+      <rect x="-5.5" y="-3.5" width="11" height="7" rx="2.5" transform="translate(535,210) rotate(-25)"/>
+    </g>
+
+    <!-- × sur le virus — accent (l'idée : le virus est éliminé avec la cellule) -->
+    <g stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round">
+      <line x1="553" y1="178" x2="567" y2="192"/>
+      <line x1="567" y1="178" x2="553" y2="192"/>
+    </g>
+
+    <text x="560" y="400" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">
+      cellule détruite, virus éliminé — avant toute nouvelle particule
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

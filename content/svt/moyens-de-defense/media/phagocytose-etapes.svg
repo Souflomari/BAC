@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La phagocytose en cinq étapes : chimiotactisme (le phagocyte est attiré à distance vers la bactérie par un gradient chimique), adhérence (fixation au contact), ingestion (la bactérie enfermée dans un phagosome clos), digestion (fusion avec un lysosome, la bactérie fragmentée) et rejet (les débris non digérés expulsés) — un seul phagocyte, une seule bactérie, aucun vaisseau.">
+  <title>La phagocytose, étape par étape : d'un phagocyte et d'une bactérie uniques</title>
+
+  <!--
+    phagocytose-etapes.svg — STAGED (LESSON-EXPERIENCE-SPEC §2), 5 étapes
+    cumulatives, révélation additive (arbre-pondere.svg pattern) : chaque
+    step-N AJOUTE un nouveau panneau à un filmstrip (grammaire de
+    cycle-enzyme-substrat.svg), sans jamais toucher au panneau précédent.
+
+    step-1 : panneau 1 — chimiotactisme (phagocyte à distance, gradient,
+             flèche de déplacement)
+    step-2 : + flèche 1→2 + panneau 2 — adhérence (contact, fixation)
+    step-3 : + flèche 2→3 + panneau 3 — ingestion (phagosome refermé,
+             bactérie enfermée mais intacte)
+    step-4 : + flèche 3→4 + panneau 4 — digestion (fusion avec un
+             lysosome, bactérie fragmentée)
+    step-5 : + flèche 4→5 + panneau 5 — rejet (débris expulsés)
+
+    Un seul phagocyte + une seule bactérie par panneau (contrainte du
+    brief) — le glyphe "phagocyte" (contour organique + noyau) et le
+    glyphe "bactérie" (capsule à deux cloisons) sont réutilisés à
+    l'identique (juste translatés/pivotés) dans les cinq panneaux, ET
+    dans anticorps-agglutination.svg (fig. 3) pour la continuité visuelle
+    demandée par le brief. Aucun vaisseau, aucune diapédèse : ce
+    mécanisme est celui de R1, pas celui-ci.
+
+    Convention couleur : "accent = une idée par étape" (brief). Chaque
+    panneau accentue UN SEUL élément — celui qui porte l'idée propre de
+    cette étape :
+      panneau 1 : la flèche de déplacement (l'attraction à distance)
+      panneau 2 : le point de fixation (l'adhérence elle-même)
+      panneau 3 : l'anneau du phagosome (la clôture de la vésicule)
+      panneau 4 : le lysosome et son point de fusion (le déclencheur
+                  de la digestion)
+      panneau 5 : la flèche d'expulsion (le rejet)
+    Le reste (corps du phagocyte, bactérie, débris) reste en
+    --figure-ink / --figure-ink-soft, neutre.
+
+    Simplification assumée : chaque panneau est un instantané isolé (pas
+    une animation continue d'un même blob) — comme dans cycle-enzyme-
+    substrat.svg, la progression se lit de gauche à droite, panneau après
+    panneau, pas par déplacement continu d'une même forme.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Panneau 1 : chimiotactisme
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="470" y="22" text-anchor="middle"
+          font-size="12.5" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La phagocytose : cinq étapes, d'un phagocyte et d'une bactérie uniques
+    </text>
+
+    <!-- Bactérie (capsule), à distance -->
+    <g transform="translate(135,150) rotate(-15)">
+      <rect x="-18" y="-7" width="36" height="14" rx="7"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="-6" y1="-7" x2="-6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+      <line x1="6" y1="-7" x2="6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+    </g>
+
+    <!-- Gradient chimique : petits points, plus denses près de la bactérie -->
+    <circle cx="112" cy="172" r="3" fill="var(--figure-ink-soft)" opacity="0.55"/>
+    <circle cx="100" cy="185" r="2.6" fill="var(--figure-ink-soft)" opacity="0.5"/>
+    <circle cx="90" cy="196" r="2.2" fill="var(--figure-ink-soft)" opacity="0.45"/>
+    <circle cx="82" cy="204" r="1.8" fill="var(--figure-ink-soft)" opacity="0.4"/>
+
+    <!-- Phagocyte (contour organique + noyau) -->
+    <g transform="translate(70,222)">
+      <path d="M36,0 C38,-16 26,-28 8,-30 C-12,-32 -28,-20 -33,-3
+               C-38,14 -29,29 -10,35 C8,41 25,33 33,17 C37,9 35,3 36,0 Z"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <ellipse cx="-3" cy="3" rx="12" ry="9" fill="var(--figure-ink-soft)" opacity="0.28"/>
+    </g>
+
+    <!-- Flèche de déplacement — accent (l'idée de ce panneau : l'attraction) -->
+    <line x1="80" y1="212" x2="100" y2="192"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="100,192 89,194 96,201" fill="var(--figure-accent)"/>
+
+    <text x="95" y="332" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">1. Chimiotactisme</text>
+    <text x="95" y="348" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">à distance, gradient chimique</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Panneau 2 : adhérence
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Flèche 1 → 2 -->
+    <line x1="178" y1="190" x2="200" y2="190" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="200,190 190,184 190,196" fill="var(--figure-ink)"/>
+
+    <!-- Phagocyte -->
+    <g transform="translate(250,207)">
+      <path d="M36,0 C38,-16 26,-28 8,-30 C-12,-32 -28,-20 -33,-3
+               C-38,14 -29,29 -10,35 C8,41 25,33 33,17 C37,9 35,3 36,0 Z"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <ellipse cx="-3" cy="3" rx="12" ry="9" fill="var(--figure-ink-soft)" opacity="0.28"/>
+    </g>
+
+    <!-- Bactérie, au contact -->
+    <g transform="translate(297,186) rotate(12)">
+      <rect x="-18" y="-7" width="36" height="14" rx="7"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="-6" y1="-7" x2="-6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+      <line x1="6" y1="-7" x2="6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+    </g>
+
+    <!-- Point de fixation — accent (l'idée de ce panneau : l'adhérence) -->
+    <circle cx="279" cy="197" r="3.4" fill="var(--figure-accent)"/>
+
+    <text x="275" y="332" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">2. Adhérence</text>
+    <text x="275" y="348" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">fixation au contact</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Panneau 3 : ingestion (phagosome refermé)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Flèche 2 → 3 -->
+    <line x1="358" y1="190" x2="380" y2="190" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="380,190 370,184 370,196" fill="var(--figure-ink)"/>
+
+    <!-- Phagocyte, agrandi -->
+    <g transform="translate(455,195)">
+      <path d="M40,0 C43,-18 29,-31 9,-33 C-13,-36 -31,-22 -37,-3
+               C-42,16 -32,32 -11,39 C9,46 28,37 37,19 C41,10 39,4 40,0 Z"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+      <!-- Phagosome : vésicule close — accent (l'idée : enfermée, pas détruite) -->
+      <circle cx="0" cy="4" r="22" fill="var(--figure-surface)"
+              stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+      <!-- Bactérie, intacte, à l'intérieur -->
+      <g transform="rotate(8)">
+        <rect x="-15" y="-6" width="30" height="12" rx="6"
+              fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+        <line x1="-5" y1="-6" x2="-5" y2="6" stroke="var(--figure-ink-soft)" stroke-width="0.9" opacity="0.5"/>
+        <line x1="5" y1="-6" x2="5" y2="6" stroke="var(--figure-ink-soft)" stroke-width="0.9" opacity="0.5"/>
+      </g>
+    </g>
+
+    <text x="455" y="332" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">3. Ingestion</text>
+    <text x="455" y="348" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">phagosome refermé</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — Panneau 4 : digestion (fusion avec un lysosome)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Flèche 3 → 4 -->
+    <line x1="538" y1="190" x2="560" y2="190" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="560,190 550,184 550,196" fill="var(--figure-ink)"/>
+
+    <!-- Phagocyte -->
+    <g transform="translate(635,195)">
+      <path d="M40,0 C43,-18 29,-31 9,-33 C-13,-36 -31,-22 -37,-3
+               C-42,16 -32,32 -11,39 C9,46 28,37 37,19 C41,10 39,4 40,0 Z"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+      <!-- Phagosome, désormais fusionné (contour resté visible, neutre : déjà établi ailleurs) -->
+      <circle cx="0" cy="4" r="22" fill="var(--figure-surface)"
+              stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+      <!-- Bactérie fragmentée : trois débris, plus intacte -->
+      <rect x="-13" y="-4" width="10" height="7" rx="3" transform="rotate(-10 -8 0)"
+            fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+      <rect x="0" y="2" width="9" height="6" rx="3" transform="rotate(20 5 5)"
+            fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+      <circle cx="3" cy="-8" r="3.2" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+      <!-- Lysosome fusionné — accent (l'idée : la fusion déclenche la digestion) -->
+      <circle cx="17" cy="-16" r="9" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2"/>
+      <circle cx="14" cy="-18" r="1.3" fill="var(--figure-accent)"/>
+      <circle cx="19" cy="-14" r="1.3" fill="var(--figure-accent)"/>
+      <circle cx="19" cy="-19" r="1.1" fill="var(--figure-accent)"/>
+    </g>
+    <text x="672" y="164" font-size="9.5" fill="var(--figure-accent)">lysosome</text>
+
+    <text x="635" y="332" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">4. Digestion</text>
+    <text x="635" y="348" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">fusion phagosome–lysosome</text>
+  </g><!-- /step-4 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 5 — Panneau 5 : rejet
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-5">
+    <!-- Flèche 4 → 5 -->
+    <line x1="718" y1="190" x2="740" y2="190" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="740,190 730,184 730,196" fill="var(--figure-ink)"/>
+
+    <!-- Phagocyte -->
+    <g transform="translate(805,200)">
+      <path d="M36,0 C38,-16 26,-28 8,-30 C-12,-32 -28,-20 -33,-3
+               C-38,14 -29,29 -10,35 C8,41 25,33 33,17 C37,9 35,3 36,0 Z"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <ellipse cx="-3" cy="3" rx="11" ry="8" fill="var(--figure-ink-soft)" opacity="0.25"/>
+    </g>
+
+    <!-- Débris expulsés -->
+    <rect x="866" y="178" width="9" height="6" rx="3" transform="rotate(15 870 181)"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <circle cx="880" cy="196" r="2.8" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+
+    <!-- Flèche d'expulsion — accent (l'idée de ce panneau : le rejet) -->
+    <line x1="841" y1="188" x2="862" y2="180"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="862,180 850,180 856,190" fill="var(--figure-accent)"/>
+
+    <text x="815" y="332" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">5. Rejet</text>
+    <text x="815" y="348" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">débris expulsés</text>
+  </g><!-- /step-5 -->
+
+</svg>
