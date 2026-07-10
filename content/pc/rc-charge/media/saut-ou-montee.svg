@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" width="640" height="290"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Accroche : la tension u_C aux bornes du condensateur, en fonction du temps. Une hypothèse de saut instantané de 0 à E à t = 0 (en pointillés, prédiction) est confrontée à la courbe réelle, qui monte progressivement de 0 vers l'asymptote E — vite au début, de plus en plus lentement ensuite, sur une échelle de quelques millisecondes.">
+  <title>u_C(t) : saut instantané ou montée progressive ?</title>
+  <!--
+    saut-ou-montee.svg — figure de l'accroche R0 (content/pc/rc-charge/lesson.md,
+    marqueur placé juste après le paragraphe de révélation "Voici ce qu'on
+    observe réellement…", pour que l'engagement écrit de l'élève précède le
+    dessin). Predict-then-reveal QUALITATIF STRICT : ni τ, ni 63 %, ni 5τ —
+    ce sont les instruments quantitatifs de R2/R3, pas celui de R0. Seule la
+    FORME (saut vs montée) porte l'idée ici.
+
+    STAGED (LESSON-EXPERIENCE-SPEC §2.5) en 3 étapes, dans l'ordre voulu par
+    le pedagogy-architect pour cet accroche — prédiction → réfutation →
+    lecture qualitative (pas l'ordre canonique axes→données→lecture, qui est
+    la règle par défaut pour un graphe, mais ce graphe EST l'accroche) :
+      step-1 : les axes + la prédiction naïve (saut instantané, en
+               pointillés, pas encore réfutée)
+      step-2 : la réalité — la courbe réelle se superpose, contredit le saut
+      step-3 : l'annotation qualitative — vite au début / lent ensuite, le
+               repère "quelques ms", et le nom E enfin donné à l'asymptote
+
+    Géométrie — IDENTIQUE, point pour point, à uc-charge.svg (même fonction
+    u_C(t) = E(1 - e^(-t/tau)), même leçon, même échelle en pixels), pour que
+    R0 et R2 se lisent comme la même courbe vue deux fois, l'une qualitative,
+    l'autre quantifiée :
+      origine (t=0, u_C=0)  : (80, 208)
+      sommet axe u_C        : (80, 50)
+      ligne-cible E          : y = 78   → hauteur = 130 px
+    Aucune valeur de τ n'est affichée ni même construite ici — seule la
+    forme (le polyligne) est reprise de uc-charge.svg step-2, calculée via
+    u_C/E = 1 - e^(-t/tau), jamais une bézier devinée à la main.
+
+    Le modèle naïf est un chemin en L : montée verticale quasi instantanée
+    (légèrement décalée à x=84 pour rester visible à côté de l'axe u_C, sans
+    se confondre avec lui), puis plateau à hauteur E — un chemin unique, en
+    pointillés marqués, qui se superpose délibérément à la ligne-cible E
+    (fine, pointillés légers) sur son segment : le modèle prétend que u_C
+    atteint E et y reste, exactement la hauteur que la vraie courbe visera
+    aussi, mais jamais en sautant.
+
+    Décision volontaire : pas de rappel textuel "quelques ms" au step-1 (voir
+    rapport de build — évite la redondance avec le repère de mesure du
+    step-3, seul endroit où cette échelle est nommée).
+
+    Rôle des couleurs :
+      courbe réelle u_C(t)     : --figure-energy-C (cohérent avec le reste
+                                  de la leçon — uc-charge, uc-decharge)
+      modèle naïf (saut)       : --figure-ink-soft (une hypothèse réfutée,
+                                  jamais la couleur d'un composant réel)
+      ligne-cible / axes / annotations : --figure-ink-soft (neutre)
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes + la prédiction naïve (saut instantané)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3">(t) — saut instantané ou montée progressive ?</tspan>
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="200" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes ──────────────────────────────────────────────── -->
+    <line x1="80" y1="208" x2="610" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,208 598,203.5 598,212.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="208" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="212" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="72" y="212" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Ligne-cible E (fine, pointillés légers) — non nommée à ce stade -->
+    <line x1="80" y1="78" x2="610" y2="78"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+    <!-- Prédiction naïve : saut instantané, chemin en L, pointillés marqués -->
+    <path d="M84,208 L84,78 L280,78"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"
+          stroke-dasharray="5,4" stroke-linecap="round"/>
+    <circle cx="84" cy="78" r="3.2" fill="var(--figure-ink-soft)"/>
+
+    <!-- Étiquette de la prédiction -->
+    <rect x="300" y="40" width="270" height="32" rx="6"
+          fill="var(--figure-ink-soft)" fill-opacity="0.1"/>
+    <text x="435" y="61" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-ink-soft)">prédiction : saut instantané ?</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la réalité : la courbe réelle se superpose
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!--
+      Courbe réelle u_C(t) — polyligne IDENTIQUE à uc-charge.svg step-2
+      (même fonction, même échelle en pixels).
+    -->
+    <path d="
+      M80,208
+      L94,188.0 L108,171.2 L122,156.9 L136,144.7 L150,134.5
+      L164,125.8 L178,118.5 L192,112.3 L206,107.0 L220,102.6
+      L234,98.8  L248,95.6  L262,92.9  L276,90.6  L290,88.7
+      L304,87.0  L318,85.7  L332,84.5  L346,83.5  L360,82.6
+      L374,81.9  L388,81.3  L402,80.8  L416,80.4  L430,80.0
+      L444,79.7  L458,79.4  L472,79.2  L486,79.0  L500,78.9
+      L540,78.5  L580,78.3
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Étiquette de la réalité -->
+    <rect x="300" y="90" width="270" height="32" rx="6"
+          fill="var(--figure-energy-C)" fill-opacity="0.12"/>
+    <text x="435" y="111" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-energy-C)">réalité : montée progressive</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — annotation qualitative : vite/lent, repère ms, E nommé
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Nom de l'asymptote, enfin donné -->
+    <text x="68" y="82" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">E</text>
+
+    <!-- Repère "vite au début" (point sur la partie raide de la courbe) -->
+    <circle cx="108" cy="171.2" r="3" fill="var(--figure-energy-C)"/>
+    <!-- Repère "de plus en plus lente" (point sur la partie qui s'aplatit) -->
+    <circle cx="430" cy="80.0" r="3" fill="var(--figure-energy-C)"/>
+
+    <!-- Boîte d'annotation qualitative, reliée aux deux repères -->
+    <line x1="111" y1="173" x2="300" y2="158" stroke="var(--figure-ink-soft)"
+          stroke-width="0.9" stroke-dasharray="3,2" opacity="0.8"/>
+    <line x1="430" y1="84" x2="430" y2="140" stroke="var(--figure-ink-soft)"
+          stroke-width="0.9" stroke-dasharray="3,2" opacity="0.8"/>
+    <rect x="300" y="140" width="270" height="44" rx="6"
+          fill="var(--figure-ink-soft)" fill-opacity="0.08"/>
+    <text x="313" y="158" font-size="10.5" fill="var(--figure-ink)">vite au début,</text>
+    <text x="313" y="173" font-size="10.5" fill="var(--figure-ink)">de plus en plus lente ensuite</text>
+
+    <!-- Repère de mesure "quelques ms" sous l'axe -->
+    <line x1="84" y1="218" x2="420" y2="218" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="84" y1="213" x2="84" y2="223" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="420" y1="213" x2="420" y2="223" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="252" y="230" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">quelques ms</text>
+  </g><!-- /step-3 -->
+
+</svg>

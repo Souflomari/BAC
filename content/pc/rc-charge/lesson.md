@@ -12,6 +12,8 @@ Avant de lire la suite, engage-toi vraiment, en une phrase : à ton avis, la ten
 
 Voici ce qu'on observe réellement, si on branche un oscilloscope sur le condensateur : $u_C$ **ne saute pas**. Elle part de zéro et grimpe progressivement vers $E$ — vite au début, puis de plus en plus lentement, sur une durée qui se mesure en millisecondes. Le condensateur ne se remplit pas d'un coup ; il se charge sur un temps caractéristique bien réel.
 
+[[figure:saut-ou-montee]]
+
 Si tu avais parié sur un saut instantané, ta prédiction et la réalité se contredisent — et c'est exactement cet écart qu'on va comprendre. Si tu avais deviné juste, la vraie question commence maintenant : **pourquoi la tension grimpe-t-elle progressivement au lieu de sauter, et qu'est-ce qui fixe la durée de cette montée ?**
 
 C'est tout l'objet de cette leçon : comprendre le mécanisme de la charge, établir l'équation qui la gouverne, en poser et vérifier la solution, et lire dessus le temps caractéristique du phénomène.
@@ -296,6 +298,8 @@ Vérifie tout ça par toi-même, en manipulation directe : construis le montage,
 ### Exercice de type bac (original — entraînement, non un sujet officiel)
 
 On réalise le montage série suivant : un générateur idéal de f.é.m. $E$, un interrupteur $K$, un conducteur ohmique de résistance $R$ inconnue, et un condensateur de capacité $C = 10\ \mu\text{F}$ initialement déchargé. À $t = 0$ on ferme $K$ et on enregistre $u_C(t)$ à l'oscilloscope. La courbe part de $0$ et croît vers une asymptote horizontale à $6\ \text{V}$ ; la tangente à la courbe à l'origine coupe cette asymptote à l'instant $t = 20\ \text{ms}$.
+
+[[figure:exo-oscillogramme]]
 
 **1) Déterminer la f.é.m. $E$ du générateur à partir de la courbe.**
 
