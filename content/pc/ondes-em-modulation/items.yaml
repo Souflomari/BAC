@@ -375,3 +375,852 @@ items:
       répond beaucoup moins aux autres : c'est ainsi qu'on sélectionne une
       station parmi toutes celles reçues, sans agir en rien sur
       l'émetteur lui-même.
+
+  - id: OEM-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      D'après le récit d'accroche, l'ingénieur relie un micro directement à
+      une antenne d'un mètre pour diffuser de la musique. En réalité, cette
+      antenne ne rayonne quasiment rien. Que devient l'essentiel de
+      l'énergie électrique injectée dedans ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est rayonnée normalement, mais l'onde produite a une
+          fréquence trop élevée pour être captée par un poste de radio.
+        correct: false
+        feedback: >
+          Le problème n'est pas une fréquence rayonnée trop élevée : c'est
+          l'inverse, le signal audio est trop BASSE fréquence pour ce
+          montage.
+      - id: B
+        text: >-
+          Elle reste « collée » près de l'antenne, sans partir réellement
+          vers l'infini : l'antenne chauffe un peu mais ne rayonne
+          quasiment rien.
+        correct: true
+      - id: C
+        text: >-
+          Elle est totalement perdue par effet Joule dans les fils de
+          connexion entre le micro et l'antenne, avant même d'atteindre
+          l'antenne.
+        correct: false
+        feedback: >
+          Ce n'est pas une perte dans les fils : c'est l'antenne, trop
+          petite pour cette fréquence, qui ne rayonne pas l'énergie
+          qu'elle reçoit.
+      - id: D
+        text: >-
+          Elle part bien sous forme d'onde électromagnétique, mais dans une
+          direction aléatoire qui évite le poste de radio du quartier.
+        correct: false
+        feedback: >
+          Ce n'est pas une question de direction : l'énergie ne part
+          quasiment pas du tout sous forme d'onde, quelle que soit la
+          direction visée.
+    correct_feedback: >
+      L'antenne, bien trop petite comparée à la longueur d'onde d'un signal
+      audio, ne rayonne quasiment rien : l'énergie électrique reste
+      localisée près d'elle au lieu de partir vers l'infini.
+    solution: |
+      Une antenne ne rayonne efficacement que si sa taille est comparable à
+      la longueur d'onde du signal. Pour un signal audio (quelques kHz), la
+      longueur d'onde vaut des centaines de km : une antenne d'un mètre est
+      donc totalement hors d'échelle, et l'énergie injectée reste
+      « collée » près d'elle plutôt que de rayonner.
+
+  - id: OEM-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Les stations de radio, elles, diffusent bel et bien de la musique à
+      des dizaines de kilomètres, avec des antennes qui ne mesurent, elles
+      non plus, que quelques dizaines de mètres. Qu'est-ce qu'elles font
+      forcément de différent du montage direct de l'ingénieur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles utilisent des antennes en matériaux plus conducteurs, qui
+          rayonnent efficacement même les basses fréquences.
+        correct: false
+        feedback: >
+          Le matériau de l'antenne n'est pas en cause : c'est la taille de
+          l'antenne comparée à la longueur d'onde qui compte, quel que
+          soit le matériau.
+      - id: B
+        text: >-
+          Elles amplifient énormément la puissance électrique du signal
+          audio avant de l'envoyer dans l'antenne.
+        correct: false
+        feedback: >
+          Amplifier la puissance ne change rien à l'efficacité du
+          rayonnement : c'est une question d'échelle (taille d'antenne vs
+          longueur d'onde), pas de puissance.
+      - id: C
+        text: >-
+          Elles ne rayonnent pas directement le signal audio basse
+          fréquence : elles le font porter par une onde de fréquence bien
+          plus élevée, adaptée à la taille de leur antenne.
+        correct: true
+      - id: D
+        text: >-
+          Elles placent leurs antennes en hauteur, ce qui compense la
+          fréquence trop basse du signal audio.
+        correct: false
+        feedback: >
+          La hauteur de l'antenne ne compense pas un mauvais rapport
+          taille/longueur d'onde ; il faut changer la fréquence rayonnée,
+          pas la position de l'antenne.
+    correct_feedback: >
+      Les stations font porter le signal audio par une porteuse haute
+      fréquence, adaptée à la taille réelle de leurs antennes — c'est tout
+      l'objet de cette leçon.
+    solution: |
+      Le montage direct échoue car le signal audio a une fréquence trop
+      basse pour l'antenne. La solution des stations de radio consiste à
+      confier ce signal à une porteuse de fréquence bien plus élevée, dont
+      la longueur d'onde correspond à une antenne de taille réaliste.
+
+  - id: OEM-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Si l'on se contente d'augmenter la puissance électrique envoyée dans
+      une antenne d'un mètre pour un signal audio direct, cela suffit-il à
+      le rayonner efficacement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui : il suffit d'amplifier suffisamment le signal audio en
+          puissance avant de l'envoyer dans l'antenne, quelle que soit sa
+          fréquence.
+        correct: false
+        feedback: >
+          Non : la puissance électrique fournie ne change rien à
+          l'efficacité du rayonnement, qui dépend du rapport taille
+          d'antenne / longueur d'onde.
+      - id: B
+        text: >-
+          Non, mais seulement parce que le micro ne produit pas assez de
+          tension électrique pour cela.
+        correct: false
+        feedback: >
+          Le micro n'est pas en cause ; même avec une tension bien plus
+          grande en entrée, l'antenne resterait hors d'échelle pour cette
+          fréquence.
+      - id: C
+        text: >-
+          Non : il faudrait aussi ajouter un second micro pour capter deux
+          fois plus de signal.
+        correct: false
+        feedback: >
+          Ajouter un micro ne change rien : il ne s'agit pas de la
+          quantité de signal captée, mais de sa fréquence trop basse pour
+          l'antenne.
+      - id: D
+        text: >-
+          Non : le problème est la taille de l'antenne comparée à la
+          longueur d'onde du signal, pas la quantité de puissance
+          électrique fournie.
+        correct: true
+    correct_feedback: >
+      Augmenter la puissance ne résout rien : c'est un problème d'échelle,
+      taille d'antenne contre longueur d'onde, indépendant de la puissance
+      électrique injectée.
+    solution: |
+      Le rayonnement efficace dépend du rapport entre la taille de
+      l'antenne et la longueur d'onde du signal, pas de la puissance
+      électrique disponible. Une antenne trop petite pour la fréquence
+      considérée ne rayonnera presque rien, même alimentée à forte
+      puissance.
+
+  - id: OEM-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Un signal audio a pour fréquence $f = 500\ \text{Hz}$. Quelle est sa
+      longueur d'onde dans le vide, et cette valeur permet-elle
+      d'envisager une antenne réaliste (quelques dizaines de mètres) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda = f/c \approx 1{,}67\times10^{-6}\ \text{m}$ : cette
+          valeur, très petite, est tout à fait compatible avec une antenne
+          réaliste.
+        correct: false
+        feedback: >
+          La formule est inversée : c'est $\lambda=c/f$, pas $f/c$ ; en
+          l'inversant on obtient une longueur d'onde absurdement petite au
+          lieu d'énorme.
+      - id: B
+        text: >-
+          $\lambda = c \times f = 1{,}5\times10^{11}\ \text{m}$ : une
+          valeur immense, mais cela ne pose aucun problème car l'antenne
+          peut être placée en orbite.
+        correct: false
+        feedback: >
+          Multiplier $c$ par $f$ au lieu de diviser n'a aucun sens
+          physique ; et même correcte, une longueur d'onde énorme resterait
+          un problème d'antenne, pas résolu en changeant de position.
+      - id: C
+        text: >-
+          $\lambda = c/f = 6{,}00\times10^{5}\ \text{m} = 600\ \text{km}$ :
+          bien trop grand, une antenne réaliste ne peut pas rayonner cette
+          fréquence efficacement.
+        correct: true
+      - id: D
+        text: >-
+          $\lambda = c/f = 600\ \text{km}$, mais il suffit de replier
+          l'antenne plusieurs fois sur elle-même pour qu'elle tienne dans
+          un espace réduit tout en rayonnant efficacement.
+        correct: false
+        feedback: >
+          Le calcul de $\lambda$ est juste, mais replier l'antenne ne
+          change rien à ce qui compte : son extension physique réelle
+          comparée à $\lambda$.
+    correct_feedback: >
+      $\lambda=c/f=600\ \text{km}$ : bien trop grand pour n'importe quelle
+      antenne raisonnable, confirmant qu'un signal audio ne peut pas être
+      rayonné tel quel.
+    solution: |
+      $$\lambda = \frac{c}{f} = \frac{3{,}00\times10^{8}}{500} =
+      6{,}00\times10^{5}\ \text{m} = 600\ \text{km}$$
+
+      Le quart de cette longueur d'onde, $150\ \text{km}$, est une taille
+      d'antenne impossible : ce signal ne peut pas être rayonné
+      directement.
+
+  - id: OEM-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Une antenne de $50\ \text{m}$ de long doit rayonner efficacement une
+      porteuse, sachant qu'une antenne rayonne efficacement une onde dont
+      le quart de la longueur d'onde est de l'ordre de sa taille. Quel
+      ordre de grandeur de fréquence porteuse est compatible avec cette
+      antenne ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $f_p \approx c\times(4\times50) = 6{,}0\times10^{10}\ \text{Hz}$
+          : une fréquence bien plus élevée, dans le domaine des
+          micro-ondes.
+        correct: false
+        feedback: >
+          La relation $\lambda=c/f$ donne $f=c/\lambda$ : il faut diviser
+          $c$ par la longueur d'onde, pas multiplier.
+      - id: B
+        text: >-
+          $f_p \approx c/(4\times50) = 1{,}5\times10^{6}\ \text{Hz} =
+          1{,}5\ \text{MHz}$, une fréquence typique de porteuse AM.
+        correct: true
+      - id: C
+        text: >-
+          $f_p \approx c/50 = 6{,}0\times10^{6}\ \text{Hz}$ : on peut
+          ignorer le facteur $4$, l'essentiel est que la taille soit du
+          même ordre que $\lambda$.
+        correct: false
+        feedback: >
+          Le facteur $4$ compte : c'est le QUART de la longueur d'onde qui
+          doit être de l'ordre de la taille de l'antenne, pas la longueur
+          d'onde entière.
+      - id: D
+        text: >-
+          $f_p \approx (4\times50)/c \approx 6{,}7\times10^{-7}\ \text{Hz}$
+          : une fréquence extrêmement basse.
+        correct: false
+        feedback: >
+          Cette expression divise une longueur par $c$, ce qui donne un
+          temps, pas une fréquence ; c'est $c$ divisé par la longueur, pas
+          l'inverse.
+    correct_feedback: >
+      Avec une antenne de $50\ \text{m}$, le quart d'onde vaut
+      $50\ \text{m}$, donc $\lambda\approx200\ \text{m}$ et
+      $f_p=c/\lambda\approx1{,}5\ \text{MHz}$ — une fréquence de porteuse
+      AM réaliste.
+    solution: |
+      Taille d'antenne $\approx \lambda/4 \Rightarrow \lambda \approx
+      4\times50 = 200\ \text{m}$.
+
+      $$f_p = \frac{c}{\lambda} = \frac{3{,}00\times10^{8}}{200} =
+      1{,}5\times10^{6}\ \text{Hz} = 1{,}5\ \text{MHz}$$
+
+  - id: OEM-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Une porteuse seule, $u_p(t) = U_0\cos(2\pi f_p t)$, oscille
+      indéfiniment de façon parfaitement répétitive. Pourquoi ne peut-elle
+      pas, à elle seule, transporter une information ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que sa fréquence $f_p$ est trop élevée pour être perçue
+          par l'oreille humaine.
+        correct: false
+        feedback: >
+          La porteuse n'est de toute façon pas destinée à être entendue
+          directement ; le problème est qu'elle ne CHANGE jamais, pas
+          qu'elle soit inaudible.
+      - id: B
+        text: >-
+          Parce que son amplitude $U_0$ est trop faible pour transporter
+          quoi que ce soit.
+        correct: false
+        feedback: >
+          Ce n'est pas une question de grandeur de $U_0$ : même une
+          porteuse de forte amplitude, mais constante, ne transporte
+          aucune information.
+      - id: C
+        text: >-
+          Parce qu'elle n'est associée à aucun signal informatif $s_m(t)$
+          tant qu'elle n'a pas été démodulée.
+        correct: false
+        feedback: >
+          C'est l'inverse : la démodulation extrait $s_m(t)$ APRÈS la
+          modulation, elle ne le crée pas ; une porteuse non modulée n'en
+          contient simplement aucun.
+      - id: D
+        text: >-
+          Parce que rien ne change, à aucun instant, dans cette
+          expression : pour transmettre un message il faut que quelque
+          chose varie au rythme de ce message, ce que ne fait pas une
+          oscillation parfaitement répétitive.
+        correct: true
+    correct_feedback: >
+      Une porteuse seule oscille toujours de la même façon : rien n'y
+      varie au rythme d'un message. C'est en faisant varier son amplitude
+      au rythme de $s_m(t)$ qu'on lui fait porter une information (R2).
+    solution: |
+      $u_p(t)=U_0\cos(2\pi f_p t)$ est parfaitement répétitive : elle se
+      reproduit identique à chaque période, sans rien qui distingue un
+      instant d'un autre à l'échelle du message. Transmettre une
+      information exige que quelque chose varie au rythme de cette
+      information — d'où l'idée de moduler l'amplitude par $s_m(t)$.
+
+  - id: OEM-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Une porteuse d'amplitude $U_0=10\ \text{V}$ et de fréquence
+      $f_p=1\ \text{MHz}$ est modulée par un signal informatif
+      $s_m(t)=4\cos(2\pi\times2\,000\,t)$ (en volts). Quelle est
+      l'expression de l'amplitude instantanée de la tension modulée, et
+      entre quelles bornes oscille-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $U_0+s_m(t) = 10+4\cos(2\pi\times2\,000\,t)$, qui oscille entre
+          $6\ \text{V}$ et $14\ \text{V}$.
+        correct: true
+      - id: B
+        text: >-
+          $U_0\times s_m(t) = 40\cos(2\pi\times2\,000\,t)$, qui oscille
+          entre $-40\ \text{V}$ et $40\ \text{V}$.
+        correct: false
+        feedback: >
+          L'amplitude instantanée d'une modulation d'amplitude est
+          $U_0+s_m(t)$, une SOMME, pas un produit.
+      - id: C
+        text: >-
+          $s_m(t)$ seul, soit une oscillation entre $-4\ \text{V}$ et
+          $4\ \text{V}$ : $U_0$ ne joue aucun rôle dans l'amplitude
+          instantanée.
+        correct: false
+        feedback: >
+          $U_0$ décale bien l'amplitude instantanée vers le haut :
+          l'oublier revient à confondre le signal informatif seul avec
+          l'amplitude réelle de $s(t)$.
+      - id: D
+        text: >-
+          $U_0+s_m(t)$, mais cette quantité oscille au rythme de
+          $f_p=1\ \text{MHz}$ et non de $f_{signal}=2\ \text{kHz}$.
+        correct: false
+        feedback: >
+          L'expression est juste, mais c'est l'oscillation rapide
+          $\cos(2\pi f_p t)$ qui va à $f_p$ ; l'amplitude instantanée
+          varie lentement, au rythme de $f_{signal}$.
+    correct_feedback: >
+      L'amplitude instantanée $U_0+s_m(t)=10+4\cos(2\pi\times2\,000\,t)$
+      oscille entre $10-4=6\ \text{V}$ et $10+4=14\ \text{V}$, au rythme
+      de $f_{signal}=2\ \text{kHz}$.
+    solution: |
+      $$s(t) =
+      \big(10+4\cos(2\pi\times2\,000\,t)\big)\cos(2\pi\times10^{6}t)$$
+
+      L'amplitude instantanée, $10+4\cos(2\pi\times2\,000\,t)$, varie
+      entre $10-4=6\ \text{V}$ et $10+4=14\ \text{V}$ : c'est elle qui
+      dessine l'enveloppe et porte l'information.
+
+  - id: OEM-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Dans un détecteur de crête (démodulateur), quel est le rôle de la
+      diode placée juste après le circuit accordé ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle amplifie l'amplitude du signal reçu avant que le
+          condensateur ne se charge.
+        correct: false
+        feedback: >
+          La diode n'amplifie rien : elle ne fait que laisser passer le
+          courant dans un seul sens.
+      - id: B
+        text: >-
+          Elle élimine complètement la porteuse, ne laissant subsister que
+          le signal informatif $s_m(t)$ directement en sortie.
+        correct: false
+        feedback: >
+          La diode seule ne garde que les alternances positives ; c'est
+          l'ensemble diode + condensateur qui reconstitue l'enveloppe, pas
+          la diode isolément.
+      - id: C
+        text: >-
+          Elle ne laisse passer le courant que dans un sens, ne conservant
+          que la moitié positive de chaque oscillation rapide — celle qui
+          monte vers les sommets, utile pour retracer l'enveloppe.
+        correct: true
+      - id: D
+        text: >-
+          Elle sert à sélectionner la station voulue parmi toutes celles
+          reçues par l'antenne.
+        correct: false
+        feedback: >
+          C'est le rôle du circuit accordé (R5), pas celui de la diode :
+          la sélection de station se fait avant, la diode intervient
+          ensuite pour démoduler.
+    correct_feedback: >
+      La diode ne laisse passer que les alternances positives de
+      l'oscillation rapide, celles qui montent vers les sommets — la
+      première étape pour retracer l'enveloppe.
+    solution: |
+      Un détecteur de crête combine une diode (ne garde qu'une moitié de
+      chaque oscillation rapide) et un condensateur (charge/décharge qui
+      suit les sommets). La diode, seule, prépare le terrain : elle isole
+      les sommets positifs sur lesquels le condensateur va ensuite se
+      caler.
+
+  - id: OEM-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Dans le détecteur de crête, pourquoi le condensateur doit-il se
+      charger très rapidement à chaque sommet, mais se décharger lentement
+      entre deux sommets ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Pour amplifier l'enveloppe et la rendre plus facilement audible
+          dans le haut-parleur.
+        correct: false
+        feedback: >
+          Ce mécanisme de charge/décharge ne sert pas à amplifier : c'est
+          un simple suivi de tension, pas une amplification.
+      - id: B
+        text: >-
+          Pour filtrer et éliminer complètement le signal informatif
+          $s_m(t)$, ne conservant que la composante continue $U_0$.
+        correct: false
+        feedback: >
+          C'est l'inverse du but recherché : le détecteur de crête cherche
+          justement à conserver $s_m(t)$ (dans l'enveloppe), pas à
+          l'éliminer.
+      - id: C
+        text: >-
+          Pour que le condensateur se comporte comme dans le chapitre RLC,
+          en oscillant librement à sa fréquence propre $f_0$.
+        correct: false
+        feedback: >
+          Le condensateur du détecteur de crête ne fait pas partie d'un
+          circuit oscillant : sa charge/décharge suit l'enveloppe, elle
+          n'oscille pas librement comme dans un RLC.
+      - id: D
+        text: >-
+          Pour que la tension à ses bornes suive de près la courbe des
+          sommets successifs (l'enveloppe) : une charge quasi instantanée
+          capture chaque nouveau sommet, une décharge lente évite de
+          redescendre trop vite avant le sommet suivant.
+        correct: true
+    correct_feedback: >
+      Charge rapide à chaque sommet, décharge lente entre deux sommets :
+      la tension aux bornes du condensateur suit ainsi fidèlement la
+      courbe des sommets, c'est-à-dire l'enveloppe elle-même.
+    solution: |
+      Si la charge était lente, le condensateur raterait les sommets
+      rapides. Si la décharge était rapide, il redescendrait à zéro entre
+      deux sommets au lieu de suivre l'enveloppe. La combinaison charge
+      rapide / décharge lente reconstitue $U_0+s_m(t)$.
+
+  - id: OEM-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      On envoie, à l'émission, une tension surmodulée ($m\geq1$) à un
+      récepteur équipé d'un détecteur de crête parfait. Que peut-on dire
+      de la qualité du signal reçu, une fois démodulé ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le signal démodulé sera parfait, car le détecteur de crête est
+          capable de corriger toute surmodulation survenue à l'émission.
+        correct: false
+        feedback: >
+          La démodulation ne fait que retracer l'enveloppe telle qu'elle
+          est ; elle ne peut pas corriger une déformation déjà présente à
+          l'émission.
+      - id: B
+        text: >-
+          Le signal démodulé sera déformé : l'enveloppe à l'émission était
+          déjà faussée (changements brutaux de phase), et aucune
+          démodulation, même parfaite, ne peut récupérer une information
+          qui n'a jamais été fidèlement portée par l'enveloppe.
+        correct: true
+      - id: C
+        text: >-
+          Le signal démodulé sera simplement un peu moins fort en
+          amplitude, mais sa forme restera fidèle au signal d'origine.
+        correct: false
+        feedback: >
+          La surmodulation ne touche pas qu'à l'amplitude : elle casse la
+          FORME de l'enveloppe (changements brutaux de phase), donc la
+          forme du signal démodulé est aussi déformée.
+      - id: D
+        text: >-
+          Le signal démodulé sera identique au signal d'origine, à
+          condition d'augmenter la fréquence de la porteuse $f_p$.
+        correct: false
+        feedback: >
+          Augmenter $f_p$ agit sur la condition $f_p\gg f_{signal}$
+          (lisibilité de l'enveloppe), pas sur la surmodulation
+          ($m\geq1$), qui est un problème d'amplitude indépendant de
+          $f_p$.
+    correct_feedback: >
+      Une enveloppe déjà déformée à l'émission (surmodulation) ne peut pas
+      être réparée par une démodulation, même parfaite : la qualité de la
+      réception dépend entièrement de la qualité de la modulation
+      initiale.
+    solution: |
+      En cas de surmodulation, $U_0+s_m(t)$ s'annule ou deviendrait
+      négatif : l'oscillation rapide change brutalement de phase à ces
+      instants, et l'enveloppe ne redessine plus fidèlement $s_m(t)$. Le
+      détecteur de crête retrace cette enveloppe telle quelle — déjà
+      fausse, donc le signal démodulé est déformé, quelle que soit la
+      qualité du récepteur.
+
+  - id: OEM-17
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      On veut accorder un récepteur, équipé d'une bobine
+      $L=200\ \mu\text{H}=2{,}00\times10^{-4}\ \text{H}$, sur une station
+      émettant à $f_p=1\,000\ \text{kHz}=1{,}00\times10^{6}\ \text{Hz}$.
+      Quelle valeur de $C$ faut-il régler ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $C = \dfrac{1}{(2\pi f_p)^2 L} \approx
+          1{,}27\times10^{-10}\ \text{F} \approx 127\ \text{pF}$.
+        correct: true
+      - id: B
+        text: >-
+          $C = (2\pi f_p)^2 L \approx 7{,}90\times10^{9}\ \text{F}$.
+        correct: false
+        feedback: >
+          Isoler $C$ dans $f_0=1/(2\pi\sqrt{LC})$ demande de DIVISER par
+          $(2\pi f_p)^2 L$, pas de multiplier par cette quantité.
+      - id: C
+        text: >-
+          $C = \dfrac{1}{2\pi f_p L} \approx 7{,}96\times10^{-4}\ \text{F}
+          \approx 796\ \mu\text{F}$.
+        correct: false
+        feedback: >
+          Le terme $(2\pi f_p)$ doit être ÉLEVÉ AU CARRÉ avant de diviser
+          ; l'oublier donne une capacité absurdement grande pour un
+          circuit d'accord radio.
+      - id: D
+        text: >-
+          $C=\dfrac{1}{f_p^{2}L}\approx 5{,}00\times10^{-9}\ \text{F} =
+          5{,}00\ \text{nF}$.
+        correct: false
+        feedback: >
+          C'est $2\pi f_p$ qu'il faut élever au carré, pas $f_p$ seul : le
+          facteur $2\pi$ a été oublié dans le calcul.
+    correct_feedback: >
+      $C=\dfrac{1}{(2\pi f_p)^2 L}\approx127\ \text{pF}$, une valeur
+      typique d'un condensateur d'accord radio AM.
+    solution: |
+      $$C = \frac{1}{(2\pi f_p)^2 L}$$
+
+      $2\pi f_p \approx 6{,}283\times10^{6}\ \text{rad/s}$,
+      $(2\pi f_p)^2 \approx 3{,}948\times10^{13}$.
+
+      $$C \approx \frac{1}{3{,}948\times10^{13}\times2{,}00\times10^{-4}}
+      \approx 1{,}27\times10^{-10}\ \text{F} \approx 127\ \text{pF}$$
+
+  - id: OEM-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      On veut faire passer un récepteur AM de l'écoute d'une station à
+      $f_p=900\ \text{kHz}$ à une station à $f_p'=1\,500\ \text{kHz}$, à
+      bobine $L$ fixe. Comment doit-on modifier $C$, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il faut augmenter $C$, car une fréquence porteuse plus élevée
+          nécessite un condensateur de plus grande capacité pour stocker
+          davantage d'énergie.
+        correct: false
+        feedback: >
+          Le rôle de $C$ n'est pas de stocker plus ou moins d'énergie ici,
+          mais de fixer, avec $L$, la fréquence propre
+          $f_0=1/(2\pi\sqrt{LC})$ du circuit.
+      - id: B
+        text: >-
+          Il faut augmenter $L$, car $C$ n'intervient pas dans le réglage
+          de la fréquence propre du circuit.
+        correct: false
+        feedback: >
+          $C$ intervient bien dans $f_0=1/(2\pi\sqrt{LC})$ ; c'est
+          justement en réglant le condensateur variable qu'on sélectionne
+          les stations.
+      - id: C
+        text: >-
+          Il faut diminuer $C$ : puisque $f_0=1/(2\pi\sqrt{LC})$, une
+          fréquence propre plus élevée exige un produit $LC$ plus petit,
+          donc, à $L$ fixe, un $C$ plus petit.
+        correct: true
+      - id: D
+        text: >-
+          Il n'est pas nécessaire de modifier $C$ : le récepteur recevra
+          automatiquement toutes les porteuses, y compris celle à
+          $1\,500\ \text{kHz}$, sans réglage.
+        correct: false
+        feedback: >
+          Sans réglage de $C$, le circuit reste accordé sur l'ancienne
+          fréquence propre et ne privilégie pas la nouvelle station :
+          c'est justement l'accord qui réalise la sélection.
+    correct_feedback: >
+      $f_0=1/(2\pi\sqrt{LC})$ : pour augmenter $f_0$ à $L$ fixe, il faut
+      diminuer $C$, ce qui diminue $\sqrt{LC}$ et donc augmente $f_0$.
+    solution: |
+      $$f_0 = \frac{1}{2\pi\sqrt{LC}}$$
+
+      $f_0$ et $C$ varient en sens inverse (à $L$ fixe) : passer d'une
+      fréquence plus basse à une fréquence plus haute exige de DIMINUER
+      $C$.
+
+  - id: OEM-19
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Une porteuse d'amplitude $U_0=8\ \text{V}$ et de fréquence
+      $f_p=1\,000\ \text{kHz}$ est modulée par un signal informatif de
+      fréquence $f_{signal}=4\ \text{kHz}$ et d'amplitude $S_m=5\ \text{V}$.
+      Cette modulation respecte-t-elle les deux conditions de bonne
+      modulation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $m=U_0/S_m=1{,}6>1$, il y a surmodulation.
+        correct: false
+        feedback: >
+          Le taux de modulation se définit comme $m=S_m/U_0$, pas
+          l'inverse ; ici $m=5/8=0{,}625<1$, pas de surmodulation.
+      - id: B
+        text: >-
+          Oui, mais seulement la première condition compte réellement ; le
+          taux de modulation n'a pas d'incidence sur la qualité de la
+          réception.
+        correct: false
+        feedback: >
+          Les deux conditions sont nécessaires : $m<1$ garantit une
+          enveloppe toujours positive, sans quoi la démodulation
+          reconstitue un signal déformé.
+      - id: C
+        text: >-
+          Non : $f_p=1\,000\ \text{kHz}$ n'est pas assez élevée par
+          rapport à $f_{signal}=4\ \text{kHz}$, il faudrait un rapport
+          d'au moins $1\,000$.
+        correct: false
+        feedback: >
+          Il n'existe pas de seuil numérique fixe imposé par le cours ;
+          ici le rapport vaut $250$, ce qui vérifie très largement
+          $f_p\gg f_{signal}$.
+      - id: D
+        text: >-
+          Oui : $f_p/f_{signal}=250\gg1$ et $m=S_m/U_0=0{,}625<1$, les
+          deux conditions sont vérifiées.
+        correct: true
+    correct_feedback: >
+      $f_p/f_{signal}=250\gg1$ et $m=5/8=0{,}625<1$ : les deux conditions
+      de bonne modulation sont vérifiées, sans surmodulation.
+    solution: |
+      $$\frac{f_p}{f_{signal}} = \frac{1\,000\,000}{4\,000} = 250 \gg 1$$
+
+      $$m = \frac{S_m}{U_0} = \frac{5}{8} = 0{,}625 < 1$$
+
+      Les deux conditions sont satisfaites : c'est une bonne modulation.
+
+  - id: OEM-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Une station émet avec $U_0=10\ \text{V}$ et $S_m=12\ \text{V}$. Un
+      auditeur se plaint d'un son fortement déformé, avec des craquements
+      réguliers. Quelle est l'explication la plus probable, et que
+      faudrait-il changer à l'émission pour la corriger ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $m=S_m/U_0=1{,}2>1$ : c'est une surmodulation, mais le problème
+          vient forcément du récepteur, pas de l'émetteur ; il n'y a rien
+          à changer à l'émission.
+        correct: false
+        feedback: >
+          La surmodulation est un défaut de l'émission (l'enveloppe est
+          déjà déformée avant même la réception) : c'est bien à
+          l'émission qu'il faut agir, pas au récepteur.
+      - id: B
+        text: >-
+          $m=S_m/U_0=1{,}2>1$ : c'est une surmodulation. Il faudrait, à
+          l'émission, soit augmenter $U_0$, soit réduire $S_m$, pour
+          ramener $m$ en dessous de $1$.
+        correct: true
+      - id: C
+        text: >-
+          $m=S_m/U_0=1{,}2$, ce qui est inférieur à $U_0$, donc la
+          modulation est bonne ; les craquements ont une autre origine,
+          sans rapport avec le taux de modulation.
+        correct: false
+        feedback: >
+          Comparer $m$ à $U_0$ n'a pas de sens : $m$ est un rapport sans
+          dimension qu'il faut comparer à $1$, et ici $m=1{,}2>1$ signale
+          bien une surmodulation.
+      - id: D
+        text: >-
+          Il faudrait augmenter la fréquence porteuse $f_p$ pour réduire
+          ces craquements, sans toucher à $U_0$ ni $S_m$.
+        correct: false
+        feedback: >
+          Changer $f_p$ agit sur la condition $f_p\gg f_{signal}$, pas sur
+          la surmodulation ; c'est $U_0$ ou $S_m$ qu'il faut modifier pour
+          ramener $m$ sous $1$.
+    correct_feedback: >
+      $m=S_m/U_0=12/10=1{,}2>1$ : surmodulation. Il faut, à l'émission,
+      augmenter $U_0$ ou réduire $S_m$ pour revenir à $m<1$.
+    solution: |
+      $$m = \frac{S_m}{U_0} = \frac{12}{10} = 1{,}2 > 1$$
+
+      Les craquements réguliers sont la signature d'une surmodulation
+      (changements brutaux de phase quand l'amplitude formelle s'annule).
+      La correction se fait à l'émission : augmenter $U_0$ ou diminuer
+      $S_m$.
+
+  - id: OEM-21
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    tags: []
+    stem: >
+      Un récepteur possède une bobine $L=250\ \mu\text{H}$ et un
+      condensateur variable réglable entre $C_{min}=50\ \text{pF}$ et
+      $C_{max}=300\ \text{pF}$. Une station émet à
+      $f_p=1\,000\ \text{kHz}$. Ce récepteur peut-il, en principe,
+      s'accorder sur cette station ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui : on calcule $C=\dfrac{1}{(2\pi f_p)^2 L}\approx
+          101\ \text{pF}$, une valeur comprise entre $C_{min}=50\ \text{pF}$
+          et $C_{max}=300\ \text{pF}$, donc atteignable.
+        correct: true
+      - id: B
+        text: >-
+          Non : $C=\dfrac{1}{(2\pi f_p)^2 L}\approx 101\ \text{pF}$ est
+          bien calculée, mais un condensateur variable ne peut jamais
+          atteindre une valeur intermédiaire comme $101\ \text{pF}$,
+          seulement ses bornes $50\ \text{pF}$ ou $300\ \text{pF}$.
+        correct: false
+        feedback: >
+          Un condensateur variable balaie en continu toutes les valeurs
+          entre ses bornes, pas seulement les deux extrêmes :
+          $101\ \text{pF}$ est parfaitement atteignable.
+      - id: C
+        text: >-
+          Non : plus $L$ est grande, plus $f_0$ doit être grande pour
+          compenser, or ici $L=250\ \mu\text{H}$ est trop petite pour
+          cette fréquence.
+        correct: false
+        feedback: >
+          Cette affirmation n'engage aucun calcul et inverse la logique :
+          à $C$ fixé, augmenter $L$ DIMINUE $f_0$, et le calcul direct
+          montre que $101\ \text{pF}$ est atteignable.
+      - id: D
+        text: >-
+          Oui, car n'importe quel couple $(L,C)$ permet de recevoir
+          n'importe quelle fréquence porteuse : le rôle de $L$ et $C$
+          n'est pas de fixer $f_0$ mais seulement d'amplifier le signal
+          reçu.
+        correct: false
+        feedback: >
+          C'est précisément $L$ et $C$, via $f_0=1/(2\pi\sqrt{LC})$, qui
+          fixent la fréquence propre du circuit accordé ; ils ne jouent
+          aucun rôle d'amplification.
+    correct_feedback: >
+      $C=\dfrac{1}{(2\pi f_p)^2 L}\approx101\ \text{pF}$, une valeur bien
+      comprise entre $50\ \text{pF}$ et $300\ \text{pF}$ : la station est
+      accessible.
+    solution: |
+      $$C = \frac{1}{(2\pi f_p)^2 L} \approx \frac{1}{3{,}948\times10^{13}
+      \times 2{,}50\times10^{-4}} \approx 1{,}01\times10^{-10}\ \text{F}
+      \approx 101\ \text{pF}$$
+
+      $50\ \text{pF} < 101\ \text{pF} < 300\ \text{pF}$ : la valeur est
+      atteignable, la station est donc bien accessible.
