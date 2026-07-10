@@ -67,6 +67,8 @@ Une espèce qui peut jouer le rôle d'acide dans un couple et de base dans un au
 
 Vérifie ta compréhension avant d'avancer : identifie l'acide et la base dans le couple $HCOOH/HCOO^-$ (acide méthanoïque et ion méthanoate), puis écris la demi-équation correspondante avant de lire la suite.
 
+[[figure:transfert-proton-ammonium]]
+
 ---
 
 ## R2 — Mesurer l'acidité : le pH
@@ -176,6 +178,8 @@ $$[H_3O^+] = \frac{K_e}{[HO^-]} = \frac{10^{-14}}{10^{-5}} = 10^{-9}\ \text{mol/
 $$\text{pH} = -\log(10^{-9}) = 9$$
 
 $\text{pH} = 9 > 7$ : la solution est **basique** — cohérent avec $[HO^-] = 10^{-5} > [H_3O^+] = 10^{-9}$, l'hydroxyde y est bien plus abondant que l'oxonium.
+
+[[figure:echelle-acide-neutre-basique]]
 
 ---
 
@@ -321,6 +325,8 @@ Seulement $4\,\%$ de l'acide éthanoïque introduit a effectivement réagi avec 
 Voici la confusion qui se cache derrière l'accroche, et il faut la nommer clairement : la **force** d'un acide (son $K_A$, son $pK_A$, son $\tau$ face à l'eau) est une propriété de sa **nature chimique** — elle ne dépend, à une température donnée, que du couple auquel il appartient. La **concentration** $c$ décrit une tout autre chose : la quantité de matière qu'on a choisi de dissoudre dans un volume donné. Ce sont deux grandeurs indépendantes.
 
 Prends un exemple qui casse l'intuition : une solution d'acide éthanoïque très concentrée (par exemple $c = 1{,}0\ \text{mol/L}$, du vinaigre pur presque non dilué) reste un acide **faible** — son $K_A$ ne change pas avec $c$, et une bonne partie de l'acide reste sous forme $CH_3COOH$ à l'équilibre, quelle que soit la quantité totale dissoute. À l'inverse, de l'acide chlorhydrique très dilué (par exemple $c = 1{,}0 \times 10^{-4}\ \text{mol/L}$) reste un acide **fort** — la réaction avec l'eau reste quasi totale, seule la quantité de $H_3O^+$ produite est faible parce qu'on est parti de peu. « Fort » qualifie un mécanisme (jusqu'où va la réaction avec l'eau), pas une quantité (combien on en a mis).
+
+[[figure:fort-vs-faible-avancement]]
 
 ---
 
