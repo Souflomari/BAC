@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 690" width="700" height="690"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le pendule simple : un point fixe O au plafond, un fil de longueur L, une masse ponctuelle m repérée par l'angle thêta avec la verticale, sur une trajectoire en arc de cercle de rayon L ; l'équilibre est à thêta égal zéro. Le poids P égal m g, vertical vers le bas, et la tension T, le long du fil vers le pivot. La tension est purement radiale ; le poids se décompose en une composante radiale m g cosinus thêta et une composante tangentielle moins m g sinus thêta, seule responsable du mouvement. La deuxième loi de Newton projetée sur la tangente donne m fois L fois thêta double-point égale moins m g sinus thêta ; la masse se simplifie des deux côtés, donnant thêta double-point égale moins g sur L, le tout fois sinus thêta.">
+  <title>Le pendule simple : bilan des forces et l'équation du mouvement</title>
+
+  <!--
+    bilan-pendule-simple.svg — figure STAGÉE (4 étapes), R3 de systemes-oscillants.
+    Un seul geste pédagogique : géométrie → bilan des forces → décomposition
+    radiale/tangentielle → l'équation, jusqu'à la disparition de m. S'ARRÊTE à
+    l'équation exacte ; l'approximation sinθ≈θ est la suite du texte, PAS montrée
+    ici (ledger : ne pas anticiper la leçon).
+
+    Paramétrage (identique à pendule-pesant-bras-levier.svg, rotation-axe-fixe) :
+      O = (240, 72) le point fixe. θ = 20° (petit angle, dessiné, PAS la valeur
+      d'un exemple chiffré). L = 320 px (longueur d'affichage, sans échelle
+      physique dédiée — figure conceptuelle, comme bilan-forces-orbite.svg).
+      Un point à distance r de O, angle θ depuis la verticale descendante :
+        P(θ) = O + r·(sinθ, cosθ)   [convention pendule : x=r sinθ, y=r cosθ]
+      M (masse) = O + 320·(sin20°, cos20°) = (240+109.45, 72+300.70)
+                = (349.45, 372.70).
+      e_r (radiale, VERS L'EXTÉRIEUR depuis O)      = (sin20°, cos20°)
+                                                      = (0.34202, 0.93969)
+      e_t (tangentielle, sens des θ croissants)     = (cos20°, −sin20°)
+                                                      = (0.93969, −0.34202)
+      (e_r · e_t = 0 : vérifié perpendiculaires.)
+
+    Arc-trajectoire (step-1) : cercle de rayon 320 centré en O, de θ=−24° à
+    θ=+24° (un peu plus large que la position dessinée de la masse, pour bien
+    lire "arc", pas "segment"). Endpoints :
+      θ=−24° → (109.8, 364.3)   θ=+24° → (370.2, 364.3)
+    Le point θ=0 (équilibre) est EXACTEMENT (240, 392) — vérifié :
+    formule d'angle "formel" φ=atan2(y−72,x−240) : point1 φ=114.0°, point2
+    φ=66.0° ; parcourir en DIMINUANT φ (114°→90°→66°, 48° au total, le petit
+    arc) passe par φ=90° ⇒ (240, 72+320)=(240,392) — le creux de l'arc, bien
+    l'équilibre. Diminuer φ = sweep-flag SVG "0" (pas "1", qui ferait les 312°
+    restants) : `A320,320 0 0,0 370.2,364.3`. (Vérification faite à la main,
+    piège classique du sens de balayage — à ne pas deviner ailleurs.)
+
+    Petit arc θ (près de O, rayon 55, --figure-accent) : même construction en
+    quadratique que pendule-pesant-bras-levier.svg — point de contrôle sur la
+    bissectrice (θ/2=10°) à 55/cos10°≈55.85 px de O.
+
+    Vecteurs (origine au bord du disque-masse, rayon 10, PAS au centre — pour
+    ne pas traverser le "m" peint à l'intérieur) :
+      step-2 : T (accent, solide, longueur 110, direction −e_r — vers O) et
+               P = mg (accent, solide, longueur 120, direction (0,1) — vers
+               le bas). Longueurs schématiques, sans échelle commune (comme
+               bilan-forces-orbite.svg : nature/unités différentes).
+      step-3 : décomposition EXACTE de P (120 px) sur (e_r, e_t) — pas devinée :
+               radiale = 120·cos20° = 112.76 px, direction +e_r (colore
+               ink-soft, en pointillé : "estompée", ne fait pas avancer) ;
+               tangentielle = 120·sin20° = 41.04 px, direction −e_t (accent,
+               en pointillé plus marqué : "accentuée", seule responsable du
+               mouvement). Vérifié : radiale+tangentielle = P (120,0)+(0,120)
+               reconstitué à 0,1 px près. Un petit angle droit (ink-soft)
+               entre T et la composante tangentielle rend visible que l'axe
+               radial (la ligne du fil) et l'axe tangentiel sont perpendiculaires
+               — c'est le "repère tangent/radial" montré À TRAVERS les forces,
+               pas comme une croix abstraite séparée (évite la redondance).
+      step-4 : encadré à deux lignes — mLθ̈ = −mgsinθ (m barré des deux côtés,
+               text-decoration="line-through") ⟹ θ̈ = −(g/L)sinθ. Le "double-point"
+               sur θ est dessiné en diacritique décalé (tspan dx/dy), pas en
+               caractère combinant Unicode (fiabilité de rendu inter-navigateurs).
+
+    Rôle des couleurs :
+      géométrie (plafond, fil, masse, arc-trajectoire, repère d'équilibre, L) :
+        --figure-ink / --figure-ink-soft
+      θ et son arc (step-1) : --figure-accent (le contrat de rendu : θ est LA
+        grandeur que toute la figure va suivre jusqu'à l'équation finale)
+      P, T (step-2) : --figure-accent, solide
+      composante radiale mg cosθ (step-3) : --figure-ink-soft, pointillé
+        (« s'annule contre T, ne fait pas avancer »)
+      composante tangentielle −mg sinθ (step-3) : --figure-accent, pointillé
+        plus épais (« seule à agir »)
+      équation finale (step-4) : --figure-accent
+  -->
+
+  <rect width="700" height="690" fill="var(--figure-surface)"/>
+
+  <!-- Titre -->
+  <text x="350" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le pendule simple : bilan des forces et l'équation du mouvement
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 1 — la géométrie : O, fil L, masse m, angle θ, équilibre, arc
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Plafond fixe, avec hachures -->
+    <rect x="180" y="50" width="120" height="8" fill="var(--figure-ink)"/>
+    <line x1="185" y1="58" x2="176" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="202" y1="58" x2="193" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="219" y1="58" x2="210" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="236" y1="58" x2="227" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="253" y1="58" x2="244" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="270" y1="58" x2="261" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="287" y1="58" x2="278" y2="70" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Point fixe O -->
+    <circle cx="240" cy="72" r="4" fill="var(--figure-ink)"/>
+    <text x="222" y="80" text-anchor="end" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">O</text>
+
+    <!-- Verticale de référence (pointillée) -->
+    <line x1="240" y1="72" x2="240" y2="405"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="5,4"/>
+
+    <!-- Trajectoire : arc de cercle de rayon L, un peu plus large que la masse -->
+    <path d="M109.8,364.3 A320,320 0 0,0 370.2,364.3"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="100" y="344" text-anchor="middle" font-size="9"
+          fill="var(--figure-ink-soft)">trajectoire (rayon L)</text>
+
+    <!-- Équilibre θ = 0, repéré sur la trajectoire -->
+    <circle cx="240" cy="392" r="4" fill="none"
+            stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="2,2"/>
+    <text x="228" y="420" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">θ</tspan><tspan
+          font-style="normal"> = 0 (équilibre)</tspan></text>
+
+    <!-- Arc θ, entre la verticale et le fil -->
+    <path d="M240,127 Q249.7,127.0 258.8,123.7"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="253" y="145" text-anchor="middle" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">θ</text>
+
+    <!-- Fil, de O au bord de la masse -->
+    <line x1="240" y1="72" x2="346.0" y2="363.3"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <text x="267" y="213" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">L</text>
+
+    <!-- Masse ponctuelle m -->
+    <circle cx="349.5" cy="372.7" r="10" fill="var(--figure-ink)"/>
+    <text x="349.5" y="376.5" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-surface)">m</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 2 — le bilan des forces : P = mg et T
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- T : le long du fil, vers O -->
+    <line x1="346.0" y1="363.3" x2="315.9" y2="280.6"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="311.8,269.3 320.6,278.9 311.2,282.3" fill="var(--figure-accent)"/>
+    <text x="352" y="318" text-anchor="start" font-size="15" font-style="italic"
+          fill="var(--figure-accent)">T</text>
+
+    <!-- P = mg : vertical, vers le bas -->
+    <line x1="349.5" y1="382.7" x2="349.5" y2="480.7"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <polygon points="349.5,492.7 344.5,480.7 354.5,480.7" fill="var(--figure-accent)"/>
+    <text x="329" y="432" text-anchor="end" font-size="14"
+          fill="var(--figure-accent)"><tspan font-style="italic">P</tspan><tspan
+          font-style="normal"> = </tspan><tspan font-style="italic">mg</tspan></text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 3 — repère tangent/radial + décomposition de P
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Petit angle droit entre l'axe radial (T) et l'axe tangentiel -->
+    <path d="M344.7,359.5 L331.5,364.3 L336.3,377.5"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Composante radiale de P : mg cosθ, estompée, s'annule contre T -->
+    <line x1="352.9" y1="382.1" x2="383.9" y2="467.4"
+          stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-dasharray="5,4"/>
+    <polygon points="388.0,478.7 379.2,469.1 388.6,465.7" fill="var(--figure-ink-soft)"/>
+    <text x="393" y="494" text-anchor="start" font-size="12"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">mg</tspan><tspan
+          font-style="normal"> cos</tspan><tspan font-style="italic">θ</tspan></text>
+
+    <!-- Composante tangentielle de P : −mg sinθ, seule responsable du mouvement -->
+    <line x1="340.1" y1="376.1" x2="322.2" y2="382.6"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-dasharray="5,4"/>
+    <polygon points="310.9,386.7 320.5,377.9 323.9,387.3" fill="var(--figure-accent)"/>
+    <text x="315" y="366" text-anchor="end" font-size="12.5" font-weight="600"
+          fill="var(--figure-accent)"><tspan font-style="normal">−</tspan><tspan
+          font-style="italic">mg</tspan><tspan font-style="normal"> sin</tspan><tspan
+          font-style="italic">θ</tspan></text>
+
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 4 — l'équation : m disparaît des deux côtés
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-4">
+
+    <rect x="130" y="555" width="440" height="100" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+
+    <!-- Ligne 1 : m L θ̈ = −mg sinθ, m barré des deux côtés -->
+    <text x="350" y="590" text-anchor="middle" font-size="15"
+          fill="var(--figure-accent)"><tspan text-decoration="line-through"
+          font-style="italic">m</tspan><tspan font-style="normal"> </tspan><tspan
+          font-style="italic">L</tspan><tspan font-style="normal"> </tspan><tspan
+          font-style="italic">θ</tspan><tspan dx="-5.5" dy="-8" font-size="60%"
+          font-style="normal">¨</tspan><tspan dy="8" font-style="normal"> = −</tspan><tspan
+          text-decoration="line-through" font-style="italic">m</tspan><tspan
+          font-style="italic">g</tspan><tspan font-style="normal"> sin </tspan><tspan
+          font-style="italic">θ</tspan></text>
+
+    <!-- Flèche : ⟹ -->
+    <line x1="350" y1="600" x2="350" y2="614" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="350,620 347,614 353,614" fill="var(--figure-accent)"/>
+
+    <!-- Ligne 2 : θ̈ = −(g/L) sinθ — la masse a disparu -->
+    <text x="350" y="644" text-anchor="middle" font-size="15"
+          fill="var(--figure-accent)"><tspan font-style="italic">θ</tspan><tspan
+          dx="-5.5" dy="-8" font-size="60%" font-style="normal">¨</tspan><tspan dy="8"
+          font-style="normal"> = −(</tspan><tspan font-style="italic">g</tspan><tspan
+          font-style="normal">/</tspan><tspan font-style="italic">L</tspan><tspan
+          font-style="normal">) sin </tspan><tspan font-style="italic">θ</tspan></text>
+
+  </g><!-- /step-4 -->
+
+</svg>

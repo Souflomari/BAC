@@ -209,6 +209,8 @@ $$L\,\ddot{\theta} = -g\sin\theta \qquad \Longrightarrow \qquad \ddot{\theta} = 
 
 C'est l'équation EXACTE du pendule simple — mais ce n'est pas encore l'équation d'un oscillateur harmonique, à cause du $\sin\theta$.
 
+[[figure:bilan-pendule-simple]]
+
 ### L'approximation des petites oscillations
 
 Pour des angles petits (en pratique, en dessous d'une vingtaine de degrés), $\sin\theta \approx \theta$ (avec $\theta$ en radians) — c'est une approximation, valable seulement dans ce régime, pas un fait général. Avec cette approximation :
