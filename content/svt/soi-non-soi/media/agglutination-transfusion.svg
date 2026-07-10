@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Mécanisme de l'agglutination lors d'une transfusion incompatible : un receveur de groupe A dont le plasma contient déjà l'agglutinine anti-B reçoit des hématies de donneur portant l'agglutinogène B. Chaque agglutinine anti-B reconnaît et se lie à l'agglutinogène B — le principe clé-serrure — puis relie plusieurs hématies entre elles, formant un amas d'agglutination qui obstrue les petits vaisseaux et déclenche l'hémolyse.">
+  <title>Agglutination lors d'une transfusion incompatible : receveur A, donneur B</title>
+
+  <!--
+    agglutination-transfusion.svg — figure STAGED, 4 étapes cumulatives.
+    Placée au R4 du lesson.md, juste après le paragraphe « Pourquoi une
+    transfusion incompatible est dangereuse » (« […] potentiellement
+    mortelle en quelques minutes. »), avant « La règle de compatibilité
+    transfusionnelle ». UN SEUL exemple travaillé : receveur groupe A,
+    poche de sang donneur groupe B (incompatible) — pas les quatre groupes,
+    pas les tableaux de compatibilité (déjà donnés en toutes lettres dans
+    le texte juste après ce marqueur).
+
+    step-1 : le plasma du receveur (groupe A) — ses propres hématies (A,
+             neutres) ET les agglutinines anti-B déjà présentes (accent),
+             libres, ne touchant rien.
+    step-2 : les hématies du donneur (B) arrivent (flèche pointillée
+             d'entrée), chacune portant l'agglutinogène B (accent) sur sa
+             membrane (neutre).
+    step-3 : chaque agglutinine anti-B reconnaît et se lie à UNE hématie B
+             — un premier bras de chaque fourche s'y accroche (halo de
+             verrouillage), illustrant individuellement le principe
+             clé-serrure du R2.
+    step-4 : le second bras de CHAQUE agglutinine (bivalente) atteint une
+             DEUXIÈME hématie B — les trois hématies du donneur se
+             retrouvent reliées entre elles par les mêmes agglutinines :
+             c'est l'amas d'agglutination (halo pointillé englobant,
+             étiqueté), qui n'engloutit jamais les hématies du receveur.
+
+    Convention couleur : --figure-accent réservé à l'événement dangereux —
+    l'agglutinogène B (la lettre « B » sur chaque hématie du donneur),
+    les agglutinines anti-B (fourches), les liaisons et halos de
+    verrouillage, l'ellipse et l'étiquette de l'amas. Les hématies PROPRES
+    du receveur (lettre « A », disques) et le panneau de plasma restent
+    --figure-ink / --figure-ink-soft / --figure-surface, neutres dans les
+    4 étapes — elles ne sont jamais touchées par l'amas.
+
+    Simplification pédagogique assumée : schéma qualitatif (positions et
+    tailles non à l'échelle) ; 3 hématies du donneur et 2 agglutinines
+    suffisent à montrer le pontage bivalent → amas, sans surcharger le
+    schéma d'un exemple à lui seul (les tableaux de compatibilité complets
+    sont dans le texte, pas redessinés ici).
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="360" y="26" text-anchor="middle"
+          font-size="15" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      L'agglutination lors d'une transfusion incompatible
+    </text>
+    <text x="360" y="45" text-anchor="middle"
+          font-size="11.5" fill="var(--figure-ink-soft)">
+      Receveur de groupe A recevant une poche de sang de groupe B (incompatible)
+    </text>
+
+    <!-- Panneau : plasma du receveur -->
+    <rect x="50" y="64" width="620" height="356" rx="14"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="70" y="90" text-anchor="start" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">Plasma du receveur — groupe A</text>
+
+    <!-- Hématies propres du receveur (A), neutres -->
+    <circle cx="140" cy="150" r="18" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="140" cy="150" r="9" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="140" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">A</text>
+
+    <circle cx="110" cy="225" r="18" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="110" cy="225" r="9" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="110" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">A</text>
+
+    <circle cx="165" cy="295" r="18" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="165" cy="295" r="9" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="165" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">A</text>
+
+    <text x="140" y="335" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      hématies du receveur (A)
+    </text>
+
+    <!-- Agglutinines anti-B, libres (accent) : FA, FB, FC -->
+    <!-- FA -->
+    <line x1="480" y1="134" x2="480" y2="122" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="480" y1="122" x2="462" y2="138" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="462" cy="138" r="2.6" fill="var(--figure-accent)"/>
+    <line x1="480" y1="122" x2="498" y2="138" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="498" cy="138" r="2.6" fill="var(--figure-accent)"/>
+
+    <!-- FB -->
+    <line x1="540" y1="249" x2="540" y2="237" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="540" y1="237" x2="525" y2="205" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="525" cy="205" r="2.6" fill="var(--figure-accent)"/>
+    <line x1="540" y1="237" x2="505" y2="235" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="505" cy="235" r="2.6" fill="var(--figure-accent)"/>
+
+    <!-- FC (libre, ambiante) -->
+    <line x1="250" y1="146" x2="250" y2="134" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="250" y1="134" x2="232" y2="148" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="232" cy="148" r="2.6" fill="var(--figure-accent)"/>
+    <line x1="250" y1="134" x2="268" y2="148" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="268" cy="148" r="2.6" fill="var(--figure-accent)"/>
+
+    <text x="250" y="172" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">agglutinine anti-B (libre)</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Arrivée des hématies du donneur -->
+    <text x="480" y="88" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">Hématies du donneur — groupe B</text>
+
+    <line x1="665" y1="150" x2="566" y2="150" stroke="var(--figure-ink-soft)"
+          stroke-width="1.4" stroke-dasharray="4,3"/>
+    <polygon points="566,150 578,145 578,155" fill="var(--figure-ink-soft)"/>
+    <text x="615" y="138" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">transfusion</text>
+
+    <!-- Hématies du donneur (B), agglutinogène B en accent -->
+    <circle cx="420" cy="150" r="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="420" cy="150" r="10" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="420" y="156" text-anchor="middle" font-size="13" font-weight="800" fill="var(--figure-accent)">B</text>
+
+    <circle cx="540" cy="150" r="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="540" cy="150" r="10" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="540" y="156" text-anchor="middle" font-size="13" font-weight="800" fill="var(--figure-accent)">B</text>
+
+    <circle cx="480" cy="250" r="20" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="480" cy="250" r="10" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="480" y="256" text-anchor="middle" font-size="13" font-weight="800" fill="var(--figure-accent)">B</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- FA se lie à D1 (premier bras) -->
+    <line x1="462" y1="138" x2="439" y2="145" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="439" cy="145" r="6" fill="none" stroke="var(--figure-accent)" stroke-width="1.3" opacity="0.55"/>
+
+    <!-- FB se lie à D2 (premier bras) -->
+    <line x1="525" y1="205" x2="535" y2="169" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="535" cy="169" r="6" fill="none" stroke="var(--figure-accent)" stroke-width="1.3" opacity="0.55"/>
+
+    <text x="460" y="100" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">principe clé-serrure (R2)</text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- FA relie aussi D2 (second bras, bivalent) -->
+    <line x1="498" y1="138" x2="521" y2="145" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="521" cy="145" r="6" fill="none" stroke="var(--figure-accent)" stroke-width="1.3" opacity="0.55"/>
+
+    <!-- FB relie aussi D3 (second bras, bivalent) -->
+    <line x1="505" y1="235" x2="497" y2="240" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="497" cy="240" r="6" fill="none" stroke="var(--figure-accent)" stroke-width="1.3" opacity="0.55"/>
+
+    <!-- Amas : les 3 hématies du donneur sont maintenant reliées entre elles -->
+    <ellipse cx="480" cy="205" rx="150" ry="100"
+             fill="var(--figure-accent)" fill-opacity="0.06"
+             stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="5,4" stroke-opacity="0.5"/>
+
+    <text x="480" y="325" text-anchor="middle" font-size="12" font-weight="700"
+          fill="var(--figure-accent)">Amas : agglutination</text>
+    <text x="480" y="341" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      → obstruction de petits vaisseaux, hémolyse
+    </text>
+  </g><!-- /step-4 -->
+</svg>

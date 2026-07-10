@@ -58,6 +58,8 @@ Ce qui fait la force de cette reconnaissance, c'est sa **spécificité**. Un ant
 
 **Pourquoi cette spécificité est essentielle.** Si un anticorps réagissait avec n'importe quelle molécule, il ne pourrait plus servir à distinguer le soi du non-soi : il attaquerait indifféremment tout ce qu'il rencontre, y compris les molécules du soi. C'est précisément parce que chaque anticorps ne reconnaît qu'un antigène précis que l'organisme peut cibler le non-soi sans se détruire lui-même.
 
+[[figure:specificite-cle-serrure]]
+
 ### Une même molécule, deux statuts possibles
 
 Voici le point le plus important de cette leçon, qu'on va retrouver à chaque rung suivant : **une molécule n'est pas « antigène » ou « soi » dans l'absolu — son statut dépend de qui la regarde.** Une molécule portée par mes cellules fait partie de mon soi, tolérée par mon propre système immunitaire (R1). Mais si cette même molécule se retrouve, par une transfusion ou une greffe, dans l'organisme de quelqu'un d'autre, dont le système immunitaire ne l'a jamais tolérée, elle devient pour lui un antigène — un signal de non-soi. C'est exactement ce qui se joue dans les deux histoires du R0 ; on va le vérifier précisément aux R3 et R4.
@@ -128,6 +130,8 @@ Particularité du système ABO : dès les premiers mois de la vie, le plasma con
 ### Pourquoi une transfusion incompatible est dangereuse
 
 Voici le mécanisme précis, qui applique directement le principe clé-serrure du R2. Lors d'une transfusion, les hématies du donneur (portant leurs propres agglutinogènes) se retrouvent dans le plasma du receveur. Si ce plasma contient une agglutinine dirigée contre un agglutinogène présent sur les hématies transfusées, la reconnaissance se fait — spécifiquement, comme prévu par le principe clé-serrure — et l'anticorps se lie à l'antigène. Comme chaque anticorps peut se lier à plusieurs hématies à la fois, il les relie entre elles : les hématies s'agglutinent en amas visibles (**agglutination**). Ces amas peuvent obstruer de petits vaisseaux sanguins et déclencher la destruction massive des hématies (hémolyse) — une réaction violente, potentiellement mortelle en quelques minutes.
+
+[[figure:agglutination-transfusion]]
 
 ### La règle de compatibilité transfusionnelle
 
