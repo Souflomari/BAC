@@ -45,7 +45,7 @@ rule, carried forward here).
 | P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
 | P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
 | P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
-| P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | pending |
+| P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | judged (9 STAGE / 12 DECLINE), build in progress |
 | P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | pending |
 | S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | pending |
 | S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | pending |
@@ -451,4 +451,36 @@ rule, carried forward here).
 **Commit:** pending (this wave commits together with this ledger update).
 
 **Running tally: 28/47 lessons done, 161/266 chapters judged, 80 STAGE / 81 DECLINE.**
+
+### Wave P4 — pc: propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie (R9 only), rotation-axe-fixe
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| propagation-onde-lumineuse | R0 | STAGE | `cloche-a-vide-son-lumiere` — bell-jar contrast, sound dies / light survives |
+| propagation-onde-lumineuse | R1 | DECLINE | E↔B mechanism deliberately out of program scope, prose carries it |
+| propagation-onde-lumineuse | R2 | DECLINE | definitional/computational (n=c/v), equations carry it |
+| propagation-onde-lumineuse | R4 | STAGE | `lambda-nu-changement-milieu` — λ shrinks, ν unchanged → colour unchanged |
+| propagation-onde-lumineuse | R6 | DECLINE | exercise reuses R3's diffraction setup |
+| rc-charge | R0 | STAGE | `saut-ou-montee` — predict-then-reveal jump-vs-rise, strictly qualitative |
+| rc-charge | R5 | STAGE | `exo-oscillogramme` — the exercise's reading graph, tangent + 63% |
+| reactions-acido-basiques | R0 | DECLINE | narrative hook, two pH values carried by prose |
+| reactions-acido-basiques | R1 | STAGE | `transfert-proton-ammonium` — proton cede/capture, H⁺ cancels like e⁻ |
+| reactions-acido-basiques | R2 | DECLINE | procedural pH conversions, R3's scale owns the axis |
+| reactions-acido-basiques | R3 | STAGE | `echelle-acide-neutre-basique` — pH 7 derived from Ke, kills "petit pH = basique" |
+| reactions-acido-basiques | R4 | DECLINE | procedural KA reconstruction, axis figure would duplicate family |
+| reactions-acido-basiques | R6 | STAGE | `fort-vs-faible-avancement` — equal c, divergent extent, closes R0 loop |
+| reactions-acido-basiques | R8 | DECLINE | recap + exercises |
+| rlc-serie | R9 | DECLINE | bare exercise stub; visual work done by R8's regimes-uc, re-scaffolding would fight the variation-fraîche purpose |
+| rotation-axe-fixe | R0 | DECLINE | narrative hook, contrast delivered quantitatively at R3 |
+| rotation-axe-fixe | R1 | STAGE | `omega-vitesse-point` — one ω, many v; radian construction |
+| rotation-axe-fixe | R4 | DECLINE | symbolic derivation, dictionary already a prose table |
+| rotation-axe-fixe | R5 | DECLINE | formula built at R3, arithmetic additivity check |
+| rotation-axe-fixe | R6 | STAGE | `pendule-pesant-bras-levier` — constructs the d·sinθ lever arm |
+| rotation-axe-fixe | R7 | DECLINE | recap + practice, geometry carried by R2's moment-force |
+
+**Wave P4 judgment tally: 9 STAGE / 12 DECLINE** (21 chapters judged).
+
+**Build:** in progress.
 
