@@ -1403,18 +1403,263 @@ items:
       **Étape 3 — Lecture inverse :**
       $$P(U_1|R) = \frac{P(U_1 \cap R)}{P(R)} = \frac{0{,}20}{0{,}55} = \frac{4}{11} \approx 0{,}364$$
 
+  # ── R0 · accroche (le déclencheur) ──────────────────────────────────────────
+  # Per spec §2 ramp table: "R0 — Hook | predict-then-reveal | full (narrative)
+  # | Confronts: M1 (sets it up) | No computation expected yet — the question
+  # is planted." These 3 items continue the PC-M1-* canonical family (lighter
+  # comprehension/prediction checks, not full tree computation) and raise M1
+  # coverage from 3 to 6 — exactly the spec's diminishing-returns ceiling
+  # (§5: "do not exceed 6"). Each item also carries a secondary distractor
+  # signature (M2, or an unmapped-but-plausible independence-confusion) so the
+  # accroche exercises recognition, not just the M1 trigger, without inventing
+  # a 9th misconception id.
+
+  - id: PC-M1-4
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, accroche, depistage_medical]
+    stem: >
+      Une maladie touche $1\,\%$ de la population. Un test la détecte chez
+      $95\,\%$ des malades et donne un résultat positif chez $10\,\%$ des
+      personnes saines. On note $M$ = « être malade » et $T^+$ = « test
+      positif ». On se demande : sachant que le test est positif, quelle est
+      la probabilité d'être réellement malade ? Quelle expression représente
+      exactement cette question ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$P(M|T^+)$"
+        correct: true
+      - id: B
+        text: "$P(T^+|M)$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: []
+        feedback: >
+          Cette expression représente la question inverse : « sachant qu'on
+          est malade, quelle est la probabilité que le test soit positif ? »
+          — c'est la sensibilité du test ($0{,}95$), donnée dans l'énoncé.
+          Ce n'est pas ce qu'on cherche : on part du résultat observé (le
+          test positif) pour remonter vers la cause (être malade), pas
+          l'inverse. Modèle erroné : « $P(A|B)$ et $P(B|A)$ sont la même
+          chose. »
+      - id: C
+        text: "$P(M \\cap T^+)$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        also_reveals: []
+        feedback: >
+          Cette expression représente la probabilité qu'une personne, prise
+          au hasard dans toute la population, soit à la fois malade et
+          testée positive. Ce n'est pas ce qu'on cherche : la question
+          restreint déjà l'attention aux personnes testées positives, puis
+          demande la proportion de malades parmi elles. Modèle erroné :
+          « $P(A|B) = P(A \cap B)$. »
+      - id: D
+        text: "$P(M) \\cdot P(T^+)$"
+        correct: false
+        misconception: null
+        feedback: >
+          Ce produit ne correspondrait à la probabilité d'être malade et
+          positif que si $M$ et $T^+$ étaient indépendants — or c'est
+          exactement le contraire : le test est construit pour dépendre de
+          la maladie. Cette expression ne correspond à aucune des
+          probabilités en jeu ici.
+    correct_feedback: >
+      $P(M|T^+)$ est la notation exacte de « la probabilité d'être malade
+      sachant que le test est positif » : la barre verticale se lit
+      « sachant que », et l'événement placé après la barre ($T^+$) est celui
+      qu'on connaît déjà — c'est lui qui restreint l'univers dans lequel on
+      mesure $M$.
+    solution: |
+      **Ce qu'on cherche :** on connaît le résultat du test ($T^+$, positif)
+      et on veut la probabilité que la cause ($M$, malade) soit vraie. La
+      notation correcte place l'événement connu **après** la barre :
+      $$P(M|T^+)$$
+
+      **Pourquoi les autres expressions ne conviennent pas :**
+      - $P(T^+|M)$ pose la question dans l'autre sens (de la maladie vers le
+        test) — c'est la donnée $0{,}95$, pas la réponse cherchée.
+      - $P(M \cap T^+)$ mesure une proportion sur toute la population, pas
+        une proportion restreinte aux positifs.
+      - $P(M) \cdot P(T^+)$ supposerait à tort que $M$ et $T^+$ sont
+        indépendants.
+
+      La suite de la leçon construit l'outil (l'arbre pondéré, lu à rebours)
+      pour calculer réellement $P(M|T^+)$ — la réponse, environ $9\,\%$,
+      sera obtenue à la fin du chapitre.
+
+  - id: PC-M1-5
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, accroche, depistage_medical]
+    stem: >
+      Une maladie touche $1\,\%$ de la population. Un test la détecte chez
+      $95\,\%$ des malades : $P(T^+|M)=0{,}95$. La plupart des gens, en
+      lisant ce chiffre, répondent qu'un résultat de test positif signifie
+      environ $95\,\%$ de chances d'être malade. Quelle affirmation
+      explique correctement pourquoi ce raisonnement est faux ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ce raisonnement n'est pas faux : $P(T^+|M)$ et $P(M|T^+)$ décrivent le même lien entre « malade » et « positif », donc les deux valent bien $0{,}95$."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: []
+        feedback: >
+          $P(T^+|M)$ et $P(M|T^+)$ ne sont pas interchangeables : elles
+          partagent le même numérateur $P(M \cap T^+)$ mais ont des
+          dénominateurs différents ($P(M)$ contre $P(T^+)$). Rien ne garantit
+          qu'elles soient égales — et ici, elles sont très différentes.
+          Modèle erroné : « $P(A|B)$ et $P(B|A)$ sont la même chose. »
+      - id: B
+        text: "Ce raisonnement est faux uniquement parce qu'il faudrait répondre par $P(M \\cap T^+)$, la probabilité d'être à la fois malade et positif, plutôt que par $0{,}95$."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        also_reveals: []
+        feedback: >
+          $P(M \cap T^+)$ n'est pas non plus la bonne réponse : c'est la
+          probabilité conjointe, mesurée sur toute la population, alors
+          qu'on cherche une probabilité conditionnelle, mesurée uniquement
+          parmi les personnes testées positives. Modèle erroné :
+          « $P(A|B) = P(A \cap B)$. »
+      - id: C
+        text: "$P(T^+|M)=0{,}95$ et $P(M|T^+)$ sont deux probabilités conditionnelles différentes : la première mesure la proportion de positifs parmi les malades, la seconde mesure la proportion de malades parmi les positifs — rien ne garantit qu'elles soient égales."
+        correct: true
+      - id: D
+        text: "Ce raisonnement est faux car on ne peut pas relier $P(T^+|M)$ à $P(M|T^+)$ sans savoir si $M$ et $T^+$ sont des événements indépendants."
+        correct: false
+        misconception: null
+        feedback: >
+          L'indépendance n'est pas le problème ici — $M$ et $T^+$ sont même
+          fortement dépendants (le test est construit pour détecter $M$).
+          Le vrai problème est que $P(T^+|M)$ et $P(M|T^+)$ mesurent deux
+          proportions différentes, dans deux univers restreints différents.
+    correct_feedback: >
+      $P(T^+|M)$ et $P(M|T^+)$ répondent à deux questions différentes : l'une
+      part de la maladie et regarde vers le test, l'autre part du test et
+      regarde vers la maladie. Elles partagent le numérateur $P(M \cap T^+)$
+      mais divisent par des quantités différentes ($P(M)=0{,}01$ contre
+      $P(T^+)$, une quantité bien plus grande une fois les faux positifs
+      comptés). C'est pour cela que $0{,}95$ et la vraie réponse (environ
+      $9\,\%$) sont si éloignées.
+    solution: |
+      **Pourquoi $0{,}95$ semble juste, intuitivement :** $P(T^+|M)=0{,}95$
+      est un chiffre réel de l'énoncé — mais c'est la réponse à « sachant
+      qu'on est malade, quelle est la probabilité d'un test positif ? »,
+      pas à la question posée.
+
+      **Pourquoi c'est faux :** sur $10\,000$ personnes, il y a environ
+      $100$ malades et $9\,900$ personnes saines. Le test détecte $95$ des
+      $100$ malades, mais donne aussi un faux positif à environ $990$ des
+      $9\,900$ personnes saines ($10\,\%$ d'entre elles). Sur les $95+990
+      \approx 1085$ résultats positifs, seulement $95$ viennent de vrais
+      malades — soit environ $9\,\%$, pas $95\,\%$.
+
+      **La leçon à retenir :** $P(T^+|M)$ et $P(M|T^+)$ ne sont égales que
+      dans le cas particulier où $P(M)=P(T^+)$ — ce qui n'arrive presque
+      jamais. La suite du chapitre construit l'outil (l'arbre pondéré, lu à
+      rebours) pour calculer $P(M|T^+)$ précisément.
+
+  - id: PC-M1-6
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, accroche, depistage_medical]
+    stem: >
+      Un autre test de dépistage a une sensibilité de $90\,\%$
+      ($P(T^+|M)=0{,}90$) et un taux de faux positifs de $8\,\%$ chez les
+      personnes saines ($P(T^+|\bar{M})=0{,}08$). La maladie touche
+      $2\,\%$ de la population. Sans faire le calcul complet, quel est
+      l'ordre de grandeur le plus plausible de $P(M|T^+)$ pour une personne
+      testée positive ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 0{,}90$ — puisque c'est la sensibilité du test, un résultat positif doit directement refléter cette valeur."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        also_reveals: []
+        feedback: >
+          La sensibilité $P(T^+|M)=0{,}90$ répond à « sachant qu'on est
+          malade, quelle est la probabilité d'un test positif ? ». Elle ne
+          détermine pas directement $P(M|T^+)$, la question inverse. Comme
+          dans l'exemple du début du chapitre, un test très sensible peut
+          quand même donner une valeur prédictive positive bien plus faible.
+          Modèle erroné : « $P(A|B)$ et $P(B|A)$ sont la même chose. »
+      - id: B
+        text: "$\\approx 0{,}20$ — la population saine, bien plus nombreuse, continue de produire beaucoup de faux positifs malgré son faible taux, ce qui dilue fortement la proportion de vrais malades parmi les positifs."
+        correct: true
+      - id: C
+        text: "$\\approx 0{,}018$ (soit $P(M) \\times P(T^+|M) = 0{,}02 \\times 0{,}90$), la probabilité d'être à la fois malade et positif."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        also_reveals: []
+        feedback: >
+          $0{,}02 \times 0{,}90 = 0{,}018$ est la probabilité conjointe
+          $P(M \cap T^+)$ — la part de toute la population qui est à la
+          fois malade et positive. Ce n'est pas $P(M|T^+)$, qui restreint
+          l'univers aux seules personnes positives. Modèle erroné :
+          « $P(A|B) = P(A \cap B)$. »
+      - id: D
+        text: "$\\approx 0{,}02$ — le test ne fait que confirmer la fréquence de base de la maladie, un résultat positif n'apporte pas d'information supplémentaire."
+        correct: false
+        misconception: null
+        feedback: >
+          Un test positif apporte de l'information — c'est justement
+          pourquoi $P(M|T^+)$ doit être plus grand que la prévalence
+          $P(M)=0{,}02$. Un résultat de test n'est pas neutre : il déplace la
+          probabilité, même s'il ne la déplace pas jusqu'à $0{,}90$.
+    correct_feedback: >
+      Comme dans le test présenté au début du chapitre, la rareté de la
+      maladie ($2\,\%$) fait que la population saine, bien plus nombreuse,
+      produit encore beaucoup de faux positifs. Le calcul complet (à faire
+      plus tard avec l'arbre pondéré) donne
+      $P(M|T^+)=\dfrac{0{,}02 \times 0{,}90}{0{,}02 \times 0{,}90 + 0{,}98
+      \times 0{,}08} \approx 0{,}187$, soit environ $0{,}19$ — bien loin de
+      $0{,}90$ (la sensibilité), mais aussi bien au-dessus de $0{,}02$ (la
+      prévalence de départ). L'ordre de grandeur « environ $0{,}20$ » est le
+      bon.
+    solution: |
+      **Feuilles de l'arbre (calcul complet, pour vérification) :**
+      $$P(M \cap T^+) = 0{,}02 \times 0{,}90 = 0{,}018$$
+      $$P(\bar{M} \cap T^+) = 0{,}98 \times 0{,}08 = 0{,}0784$$
+
+      **Probabilités totales :**
+      $$P(T^+) = 0{,}018 + 0{,}0784 = 0{,}0964$$
+
+      **Lecture inverse :**
+      $$P(M|T^+) = \frac{0{,}018}{0{,}0964} \approx 0{,}187$$
+
+      Le résultat ($\approx 0{,}19$) confirme l'ordre de grandeur « environ
+      $0{,}20$ » : ni proche de $0{,}90$ (la sensibilité), ni resté à
+      $0{,}02$ (la prévalence de départ). C'est le même phénomène que dans
+      le test du début du chapitre : la population saine, bien plus grande,
+      noie une partie des vrais positifs sous ses faux positifs.
+
 coverage_summary:
-  total_items: 24
+  total_items: 27
+  per_rung:
+    R0: 3   # PC-M1-4, PC-M1-5, PC-M1-6 — accroche, lighter comprehension/prediction, confronts M1 (spec §2)
+    R1: 2
+    R2: 4
+    R3: 9
+    R4: 3
+    R5: 3
+    R6: 1
+    R7: 2
   per_misconception:
-    mc.math.sma_prob_conditionnelle.transpose-conditionnel: 3          # PC-M1-1, PC-M1-2, PC-M1-3
-    mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection: 3  # PC-M2-1, PC-M2-2, PC-M2-3
+    mc.math.sma_prob_conditionnelle.transpose-conditionnel: 6          # PC-M1-1, PC-M1-2, PC-M1-3 (R5/R7 canonical family) + PC-M1-4, PC-M1-5, PC-M1-6 (R0 accroche, lighter — ceiling of 6 per spec §5 "do not exceed 6")
+    mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection: 3  # PC-M2-1, PC-M2-2, PC-M2-3 (also appears as a secondary, non-counted distractor on PC-M1-4/5/6 and PC-M8-2 — see dual/secondary notes)
     mc.math.sma_prob_conditionnelle.independant-egale-incompatible: 3   # PC-M3-1, PC-M3-2, PC-M3-3
     mc.math.sma_prob_conditionnelle.independant-implique-intersection-nulle: 3  # PC-M4-1, PC-M4-2, PC-M4-3
     mc.math.sma_prob_conditionnelle.independant-somme: 3               # PC-M5-1, PC-M5-2, PC-M5-3
     mc.math.sma_prob_conditionnelle.arbre-additionne-branche: 3        # PC-M6-1, PC-M6-2, PC-M6-3
     mc.math.sma_prob_conditionnelle.totales-sans-ponderation: 3        # PC-M7-1, PC-M7-2, PC-M7-3
     mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur: 3    # PC-M8-1, PC-M8-2, PC-M8-3
-  floor_met: true   # all 8 misconceptions have exactly 3 items >= floor of 3
+  floor_met: true   # all 8 misconceptions have >= 3 items; transpose-conditionnel is now at the 6-item ceiling (spec §5), none exceed it
 
   dual_tagged_distractors:
     # M4 <-> M5 family: "0" and "0,9" on independence-overlap stems
