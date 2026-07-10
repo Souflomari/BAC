@@ -387,3 +387,740 @@ items:
       $E_{pp}$, qui fait partie de $E_m$. Ce qui reste dans $\Delta E_m$,
       c'est uniquement l'effet des forces qui ne sont ni le poids ni une
       réaction perpendiculaire au mouvement — ici, le frottement.
+
+  - id: AE-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_energie
+    tags: [intuition, chemin]
+    stem: >
+      Deux billes identiques, de même masse, sont lâchées sans vitesse
+      initiale depuis la même hauteur $h$ au-dessus du sol. La première
+      tombe en chute libre verticale. La seconde descend un toboggan
+      incurvé, partant du même point de départ et arrivant au même niveau,
+      mais par un chemin beaucoup plus long et sinueux. On néglige les
+      frottements dans les deux cas. Laquelle des deux billes arrive au sol
+      avec la plus grande vitesse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux billes arrivent avec exactement la même vitesse."
+        correct: true
+      - id: B
+        text: >-
+          La bille en chute libre arrive plus vite, car son trajet est plus
+          direct.
+        correct: false
+        feedback: >
+          Un chemin plus court ne donne pas une vitesse d'arrivée plus
+          grande : le travail du poids, donc la vitesse finale, ne dépend
+          que de la dénivelée $h$, identique pour les deux billes.
+      - id: C
+        text: >-
+          La bille sur le toboggan arrive plus vite, car son trajet plus
+          long lui donne plus de temps pour prendre de la vitesse.
+        correct: false
+        feedback: >
+          Un chemin plus long ne donne pas non plus plus de vitesse : seule
+          la dénivelée $h$ compte pour le travail du poids, jamais la
+          longueur du trajet.
+      - id: D
+        text: "Impossible de savoir sans connaître la forme exacte du toboggan."
+        correct: false
+        feedback: >
+          La forme du chemin n'intervient pas dans le résultat : la
+          dénivelée commune et l'absence de frottement suffisent à conclure,
+          sans connaître la géométrie précise du toboggan.
+    correct_feedback: >
+      Les deux billes partent et arrivent aux mêmes altitudes, sans
+      frottement : leur vitesse finale ne dépend que de cette dénivelée
+      commune, jamais de la forme ou de la longueur du chemin suivi.
+    solution: |
+      Sans frottement, seul le poids travaille, et son travail ne dépend
+      que de la dénivelée $h$ (identique pour les deux billes), jamais du
+      chemin suivi. Les deux billes ont donc exactement la même vitesse
+      finale, malgré des trajets très différents.
+
+  - id: AE-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_energie
+    tags: [intuition, chemin, temps_vs_vitesse]
+    stem: >
+      Reprends les deux billes de l'exercice précédent (même hauteur $h$,
+      même masse, sans frottement, chute libre contre toboggan sinueux).
+      Compare cette fois non seulement leur vitesse d'arrivée, mais aussi la
+      durée du trajet. Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux billes arrivent en même temps et à la même vitesse."
+        correct: false
+        feedback: >
+          Le toboggan impose un chemin plus long à parcourir : sa durée de
+          trajet est donc plus longue, même si la vitesse finale, elle, est
+          la même dans les deux cas.
+      - id: B
+        text: >-
+          La bille sur le toboggan met plus de temps à arriver, mais les
+          deux billes arrivent à la même vitesse.
+        correct: true
+      - id: C
+        text: >-
+          La bille sur le toboggan met plus de temps ET arrive avec une
+          vitesse plus faible, car son trajet est plus long.
+        correct: false
+        feedback: >
+          La longueur du chemin allonge la durée du trajet, mais elle ne
+          change rien à la vitesse finale, qui ne dépend que de la
+          dénivelée.
+      - id: D
+        text: >-
+          La bille en chute libre met plus de temps à arriver, car elle a
+          moins de distance pour accélérer.
+        correct: false
+        feedback: >
+          C'est l'inverse : un trajet plus court se parcourt en moins de
+          temps, à dénivelée égale — c'est la bille sur le toboggan qui met
+          le plus de temps, pas celle en chute libre.
+    correct_feedback: >
+      La durée du trajet dépend de la longueur du chemin (plus longue pour
+      le toboggan), mais la vitesse finale ne dépend que de la dénivelée
+      $h$ — les deux notions ne varient pas ensemble.
+    solution: |
+      Le toboggan impose un chemin plus long : le trajet y dure plus
+      longtemps. Mais le travail du poids, donc la vitesse finale, ne
+      dépend que de la dénivelée $h$, commune aux deux billes : "plus long"
+      ne veut pas dire "plus lent à l'arrivée".
+
+  - id: AE-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [intuition, frottement, chemin]
+    stem: >
+      Modifie une dernière fois l'exercice : la bille en chute libre tombe
+      toujours sans frottement, mais cette fois le toboggan présente des
+      frottements non négligeables sur tout son trajet. Les deux billes
+      partent toujours de la même hauteur $h$, sans vitesse initiale.
+      Que peut-on dire des deux vitesses d'arrivée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux billes arrivent quand même à la même vitesse, car seule
+          la dénivelée compte, quel que soit le trajet.
+        correct: false
+        feedback: >
+          Ce résultat ("seule la dénivelée compte") n'est vrai que pour le
+          travail du poids ; dès qu'un frottement s'exerce, il apporte sa
+          propre contribution, négative, au bilan d'énergie cinétique.
+      - id: B
+        text: >-
+          La bille sur le toboggan arrive plus vite, car le frottement
+          échauffe la piste et lui restitue de l'énergie.
+        correct: false
+        feedback: >
+          Le frottement dissipe de l'énergie, il n'en restitue jamais au
+          solide : son travail est toujours résistant (négatif), donc il ne
+          peut qu'abaisser la vitesse d'arrivée.
+      - id: C
+        text: >-
+          La bille sur le toboggan arrive avec une vitesse plus faible que
+          celle en chute libre, car le frottement dissipe de l'énergie sur
+          son trajet.
+        correct: true
+      - id: D
+        text: "Impossible de savoir sans connaître la valeur exacte du frottement."
+        correct: false
+        feedback: >
+          La valeur exacte n'est pas nécessaire pour connaître le sens de
+          l'effet : tout frottement non nul retranche de l'énergie
+          cinétique, donc la bille du toboggan arrive nécessairement moins
+          vite, quelle que soit l'intensité du frottement.
+    correct_feedback: >
+      Avec frottement sur le toboggan, le TEC ajoute un travail résistant
+      supplémentaire par rapport à la chute libre : l'énergie cinétique
+      finale, donc la vitesse, y est nécessairement plus faible.
+    solution: |
+      Sur le toboggan, le TEC devient
+      $\Delta E_c = W(\vec P) + W(\vec N) + W(\vec f)$, avec $W(\vec f) < 0$.
+      Le même $W(\vec P)$ qu'en chute libre est amputé de ce terme négatif :
+      l'énergie cinétique, donc la vitesse d'arrivée, y est strictement
+      plus faible.
+
+  - id: AE-10
+    rung: "R1"
+    difficulty_level: 1
+    skill_code: pc_energie
+    tags: [energie_cinetique]
+    stem: >
+      Un solide de masse $m = 0{,}40\ \text{kg}$ se déplace en translation à
+      la vitesse $v = 5{,}0\ \text{m/s}$. Quelle est son énergie cinétique
+      $E_c$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$10{,}0\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat oublie le facteur $\frac12$ dans $E_c = \frac12 m v^2$
+          : il correspond à $m v^2$ sans le diviser par deux.
+      - id: B
+        text: "$1{,}0\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat utilise $v$ au lieu de $v^2$ (soit $\frac12 m v$) :
+          l'énergie cinétique varie comme le carré de la vitesse, jamais
+          comme la vitesse elle-même.
+      - id: C
+        text: "$12{,}5\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat correspond à $\frac12 v^2$ sans la masse $m$ : la
+          formule $E_c = \frac12 m v^2$ exige de multiplier par $m$, pas de
+          l'omettre.
+      - id: D
+        text: "$5{,}0\\ \\text{J}$"
+        correct: true
+    correct_feedback: >
+      $E_c = \frac12 m v^2 = \frac12 \times 0{,}40 \times 5{,}0^2 = 5{,}0\ \text{J}$.
+    solution: |
+      $$E_c = \frac{1}{2} m v^2 = \frac{1}{2} \times 0{,}40 \times 5{,}0^2 = 5{,}0\ \text{J}$$
+
+  - id: AE-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [energie_cinetique]
+    stem: >
+      La vitesse d'un mobile double, sa masse restant inchangée. Comment
+      varie son énergie cinétique $E_c$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est multipliée par 4."
+        correct: true
+      - id: B
+        text: "Elle est multipliée par 2, comme la vitesse."
+        correct: false
+        feedback: >
+          $E_c$ varie comme le carré de la vitesse, pas comme la vitesse
+          elle-même : doubler $v$ multiplie $v^2$ par 4, pas par 2.
+      - id: C
+        text: "Elle est multipliée par 8."
+        correct: false
+        feedback: >
+          $E_c$ dépend de $v^2$, pas de $v^3$ : doubler $v$ multiplie $E_c$
+          par $2^2 = 4$, pas par $2^3 = 8$.
+      - id: D
+        text: "Elle ne change pas, car seule la masse détermine l'énergie cinétique."
+        correct: false
+        feedback: >
+          $E_c = \frac12 m v^2$ dépend explicitement de $v$, pas seulement
+          de $m$ : faire varier la vitesse fait nécessairement varier $E_c$.
+    correct_feedback: >
+      $E_c \propto v^2$ : doubler $v$ multiplie $v^2$, donc $E_c$, par
+      $2^2 = 4$.
+    solution: |
+      $$\frac{E_c'}{E_c} = \frac{\frac12 m (2v)^2}{\frac12 m v^2} = \frac{4v^2}{v^2} = 4$$
+      L'énergie cinétique est multipliée par 4, jamais par 2.
+
+  - id: AE-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [energie_cinetique, grandeur_scalaire]
+    stem: >
+      Deux solides identiques, de masse $m = 0{,}30\ \text{kg}$, se
+      déplacent tous deux à la même norme de vitesse $v = 4{,}0\ \text{m/s}$
+      : l'un horizontalement, l'autre verticalement vers le bas. Que
+      peut-on dire de leurs énergies cinétiques respectives ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles sont différentes, car $E_c$ est un vecteur orienté comme
+          $\vec v$.
+        correct: false
+        feedback: >
+          $E_c$ est une grandeur scalaire, pas un vecteur : elle ne porte
+          aucune direction, contrairement au vecteur vitesse dont elle
+          dérive.
+      - id: B
+        text: >-
+          Elles sont égales : $E_c$ ne dépend que de la norme de la
+          vitesse, pas de sa direction.
+        correct: true
+      - id: C
+        text: >-
+          Elles sont différentes, car il faut connaître la direction du
+          mouvement pour savoir si l'énergie est motrice ou résistante.
+        correct: false
+        feedback: >
+          "Motrice" ou "résistante" qualifie le travail d'une force selon
+          sa direction par rapport au déplacement, pas l'énergie cinétique
+          elle-même, qui ne dépend que de $v$ et $m$.
+      - id: D
+        text: >-
+          Impossible de comparer sans connaître la trajectoire complète de
+          chaque solide.
+        correct: false
+        feedback: >
+          $E_c = \frac12 m v^2$ ne demande que la masse et la norme de la
+          vitesse à l'instant considéré, jamais la trajectoire suivie.
+    correct_feedback: >
+      $E_c = \frac12 m v^2$ ne fait intervenir que la norme $v$, pas la
+      direction : les deux énergies cinétiques valent ici $2{,}4\ \text{J}$,
+      quelle que soit l'orientation du mouvement.
+    solution: |
+      $$E_c = \frac12 m v^2 = \frac12 \times 0{,}30 \times 4{,}0^2 = 2{,}4\ \text{J}$$
+      dans les deux cas : la formule ne contient que la norme $v$, jamais
+      une direction.
+
+  - id: AE-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [travail_force, signe_travail]
+    stem: >
+      Une force constante $\vec F$, de norme $F = 10\ \text{N}$, s'exerce
+      sur un solide pendant un déplacement rectiligne $AB$ de longueur
+      $d = 5{,}0\ \text{m}$. L'angle entre $\vec F$ et $\vec{AB}$ vaut
+      $\theta = 60^\circ$. Quel est le travail $W(\vec F)$ de cette force ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $50\ \text{J}$ (le travail vaut simplement $F \times d$, sans
+          tenir compte de l'angle)
+        correct: false
+        feedback: >
+          Le travail est un produit scalaire, $W(\vec F) = F d \cos\theta$
+          : il faut multiplier par $\cos\theta$, pas ignorer l'angle entre
+          la force et le déplacement.
+      - id: B
+        text: >-
+          $\approx 43\ \text{J}$ (en utilisant $\sin\theta$ au lieu de
+          $\cos\theta$)
+        correct: false
+        feedback: >
+          C'est $\cos\theta$ qui intervient dans le travail d'une force,
+          pas $\sin\theta$ : ce dernier mesurerait la composante
+          perpendiculaire au déplacement, qui ne travaille jamais.
+      - id: C
+        text: "$25\\ \\text{J}$"
+        correct: true
+      - id: D
+        text: >-
+          $-25\ \text{J}$ (la force serait résistante dès que $\theta$
+          n'est pas nul)
+        correct: false
+        feedback: >
+          Le travail n'est négatif que si $\cos\theta < 0$, c'est-à-dire
+          $90^\circ < \theta \leq 180^\circ$ ; ici $\theta = 60^\circ < 90^\circ$
+          donne $\cos\theta > 0$, donc un travail positif (moteur).
+    correct_feedback: >
+      $W(\vec F) = F d \cos\theta = 10 \times 5{,}0 \times \cos 60^\circ = 25\ \text{J}$.
+    solution: |
+      $$W(\vec F) = F \times d \times \cos\theta = 10 \times 5{,}0 \times 0{,}5 = 25\ \text{J}$$
+      $\theta = 60^\circ < 90^\circ$ donne $\cos\theta > 0$ : la force est
+      motrice, travail positif.
+
+  - id: AE-14
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [travail_force, reaction_normale]
+    stem: >
+      Un solide glisse sur un plan incliné, avec frottement, sous l'effet
+      de son poids, de la réaction normale $\vec N$ du plan et du
+      frottement $\vec f$. Concernant le travail $W(\vec N)$ de la réaction
+      normale pendant le déplacement, quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $W(\vec N) = N \times d$, car $\vec N$ agit sur toute la distance
+          parcourue $d$.
+        correct: false
+        feedback: >
+          Cette formule ignore que $\vec N$ est perpendiculaire au
+          déplacement : seule la composante d'une force alignée avec le
+          déplacement travaille, et $\vec N$ n'en a aucune ici.
+      - id: B
+        text: >-
+          $W(\vec N)$ est négatif, car $\vec N$ s'oppose à l'enfoncement du
+          solide dans le plan.
+        correct: false
+        feedback: >
+          S'opposer à l'enfoncement (perpendiculaire au plan) n'est pas la
+          même chose que s'opposer au déplacement (le long du plan) : c'est
+          ce deuxième critère qui détermine le signe du travail, et ici
+          l'angle est de $90^\circ$, donc le travail est nul, pas négatif.
+      - id: C
+        text: "$W(\\vec N)$ dépend de l'angle $\\alpha$ du plan incliné."
+        correct: false
+        feedback: >
+          C'est la norme de $N$ (par exemple $N = mg\cos\alpha$) qui dépend
+          de l'angle, pas son travail : $\vec N$ reste perpendiculaire au
+          déplacement quel que soit $\alpha$, donc $W(\vec N) = 0$ toujours.
+      - id: D
+        text: >-
+          $W(\vec N) = 0$, quelle que soit la valeur de $N$, car $\vec N$
+          est perpendiculaire au déplacement.
+        correct: true
+    correct_feedback: >
+      $\vec N$ reste perpendiculaire au déplacement (qui suit le plan) à
+      chaque instant : $\cos 90^\circ = 0$, donc $W(\vec N) = 0$, quelle que
+      soit sa norme.
+    solution: |
+      $\vec N$ est toujours perpendiculaire au déplacement le long du plan,
+      donc $\theta = 90^\circ$ et $\cos\theta = 0$ :
+      $$W(\vec N) = N \times d \times \cos 90^\circ = 0$$
+      indépendamment de la valeur de $N$ ou de l'angle $\alpha$ du plan.
+
+  - id: AE-15
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [tec, chute_libre]
+    stem: >
+      Un objet est lâché sans vitesse initiale et tombe en chute libre,
+      frottements négligés, d'une hauteur $h = 10\ \text{m}$. On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quelle est sa vitesse au sol,
+      déterminée par le théorème de l'énergie cinétique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 14{,}0\\ \\text{m/s}$"
+        correct: true
+      - id: B
+        text: >-
+          $\approx 9{,}9\ \text{m/s}$ (en oubliant le facteur 2 dans
+          $v^2 = 2gh$)
+        correct: false
+        feedback: >
+          Le TEC donne $\frac12 m v^2 = mgh$, donc $v^2 = 2gh$ : oublier le
+          facteur 2 revient à écrire $E_c = mv^2$ au lieu de
+          $E_c = \frac12 m v^2$.
+      - id: C
+        text: "Impossible de calculer sans connaître la masse de l'objet."
+        correct: false
+        feedback: >
+          La masse se simplifie des deux côtés de l'égalité TEC
+          ($\frac12 m v^2 = mgh$) : $v = \sqrt{2gh}$ ne dépend pas de $m$,
+          il n'est donc pas nécessaire de la connaître.
+      - id: D
+        text: >-
+          $196\ \text{m/s}$ (en oubliant de prendre la racine carrée de
+          $v^2$)
+        correct: false
+        feedback: >
+          $v^2 = 2gh = 196$ est le carré de la vitesse, pas la vitesse
+          elle-même : il faut encore prendre la racine carrée pour obtenir
+          $v$.
+    correct_feedback: >
+      $v = \sqrt{2gh} = \sqrt{2 \times 9{,}8 \times 10} = \sqrt{196} = 14{,}0\ \text{m/s}$.
+    solution: |
+      $$\frac12 m v^2 - 0 = mgh \implies v = \sqrt{2gh} = \sqrt{2 \times 9{,}8 \times 10} = 14{,}0\ \text{m/s}$$
+      La masse se simplifie : elle n'est jamais nécessaire pour ce calcul.
+
+  - id: AE-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_poids, energie_potentielle]
+    stem: >
+      Un solide de masse $m = 0{,}30\ \text{kg}$ monte d'une hauteur
+      $h = 2{,}0\ \text{m}$ (chemin quelconque, sans frottement). On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quels sont le travail du poids
+      $W(\vec P)$ et la variation d'énergie potentielle $\Delta E_{pp}$
+      correspondants ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$W(\\vec P) \\approx +5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx -5{,}9\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Le poids s'oppose ici au déplacement, qui est vers le haut : son
+          travail est donc résistant (négatif), pas positif, quelle que
+          soit la distance parcourue.
+      - id: B
+        text: "$W(\\vec P) \\approx -5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx +5{,}9\\ \\text{J}$"
+        correct: true
+      - id: C
+        text: "$W(\\vec P) \\approx -5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx -5{,}9\\ \\text{J}$"
+        correct: false
+        feedback: >
+          La relation est $W(\vec P) = -\Delta E_{pp}$ : si $W(\vec P)$ est
+          négatif, $\Delta E_{pp}$ doit être positif, pas de même signe.
+      - id: D
+        text: "$W(\\vec P) \\approx -0{,}60\\ \\text{J}$ ; $\\Delta E_{pp} \\approx +0{,}60\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat oublie le facteur $g$ dans $W(\vec P) = mgh$ (calcul
+          $mh$ au lieu de $mgh$) : l'énergie potentielle de pesanteur
+          contient bien $g$.
+    correct_feedback: >
+      Le solide monte : le poids s'y oppose, $W(\vec P) = -mgh \approx -5{,}9\ \text{J}$,
+      et $\Delta E_{pp} = -W(\vec P) \approx +5{,}9\ \text{J}$.
+    solution: |
+      $$W(\vec P) = mg(z_A - z_B) = -mgh = -0{,}30 \times 9{,}8 \times 2{,}0 \approx -5{,}9\ \text{J}$$
+      $$\Delta E_{pp} = -W(\vec P) \approx +5{,}9\ \text{J}$$
+      Le solide monte : le poids résiste (travail négatif), l'énergie
+      potentielle augmente.
+
+  - id: AE-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [tec, comparaison_methodes]
+    stem: >
+      Pourquoi le théorème de l'énergie cinétique, à lui seul, ne permet-il
+      pas de calculer directement la durée du trajet ni l'accélération d'un
+      solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que le TEC ne s'applique qu'aux mouvements sans frottement."
+        correct: false
+        feedback: >
+          Le TEC s'applique à toutes les forces extérieures, frottement
+          compris ($\Delta E_c = \sum W(\vec F_{ext})$) : ce n'est pas une
+          restriction aux mouvements sans frottement.
+      - id: B
+        text: >-
+          Parce que le TEC et la 2e loi de Newton donnent des résultats
+          différents, donc on ne peut pas mélanger les deux.
+        correct: false
+        feedback: >
+          Les deux méthodes donnent exactement le même résultat pour la
+          vitesse, car le TEC est directement déduit de la 2e loi de
+          Newton : elles ne sont pas en désaccord.
+      - id: C
+        text: >-
+          Parce que le TEC relie directement les travaux des forces à la
+          variation de $E_c$, sans jamais faire intervenir le temps ni
+          l'accélération.
+        correct: true
+      - id: D
+        text: "Parce qu'il faut d'abord calculer la réaction normale $N$ avant d'utiliser le TEC."
+        correct: false
+        feedback: >
+          $N$ n'est pas un préalable au TEC : quand $\vec N$ est
+          perpendiculaire au déplacement, $W(\vec N) = 0$ s'écrit sans même
+          connaître la valeur de $N$.
+    correct_feedback: >
+      Le TEC saute directement des travaux à $\Delta E_c$ : c'est justement
+      ce raccourci qui explique qu'il ne donne ni le temps ni
+      l'accélération, contrairement à la 2e loi de Newton suivie de la
+      cinématique.
+    solution: |
+      Le TEC relie forces et $E_c$ sans jamais passer par $a$, $v(t)$ ou
+      $x(t)$ : c'est son atout pour aller vite vers une vitesse, mais aussi
+      la raison pour laquelle il ne donne ni le temps ni l'accélération —
+      seule la 2e loi de Newton, suivie d'une intégration, le permet.
+
+  - id: AE-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [tec, comparaison_methodes]
+    stem: >
+      Pour un même solide et un même trajet, on calcule la vitesse en un
+      point donné une première fois par la 2e loi de Newton (suivie de la
+      cinématique), une seconde fois par le théorème de l'énergie
+      cinétique. Que peut-on dire des deux résultats obtenus ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles peuvent différer légèrement, car ce sont deux calculs
+          indépendants.
+        correct: false
+        feedback: >
+          Ce ne sont pas deux calculs indépendants : le TEC se déduit
+          directement de la 2e loi de Newton, donc les deux méthodes
+          donnent nécessairement le même résultat, sans écart possible.
+      - id: B
+        text: >-
+          La méthode du TEC donne une vitesse approximative, la méthode de
+          Newton une vitesse exacte.
+        correct: false
+        feedback: >
+          Aucune des deux méthodes n'est une approximation de l'autre :
+          le TEC est une reformulation rigoureuse de la 2e loi de Newton,
+          pas un raccourci moins précis.
+      - id: C
+        text: "Elles ne sont comparables que si le mouvement est rectiligne."
+        correct: false
+        feedback: >
+          L'équivalence entre le TEC et la 2e loi de Newton n'est pas
+          limitée aux mouvements rectilignes : le TEC reste valable pour un
+          mouvement quelconque.
+      - id: D
+        text: >-
+          Elles sont rigoureusement égales : le TEC est directement déduit
+          de la 2e loi de Newton, ce sont deux formulations équivalentes de
+          la même mécanique.
+        correct: true
+    correct_feedback: >
+      Le TEC est établi à partir de la 2e loi de Newton (R2) : les deux
+      méthodes décrivent la même mécanique, elles donnent donc
+      nécessairement le même nombre.
+    solution: |
+      Le TEC a été construit en R2 à partir de $\sum \vec F_{ext} = m\vec a_G$
+      : ce n'est pas une méthode alternative indépendante, mais une
+      conséquence directe de la 2e loi de Newton. Les deux calculs donnent
+      donc rigoureusement la même vitesse.
+
+  - id: AE-19
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: pc_energie
+    tags: [tec, frottement, application_bac]
+    stem: >
+      Un traîneau de masse $m = 60\ \text{kg}$ part sans vitesse initiale du
+      sommet d'une piste inclinée rectiligne de longueur $L = 50\ \text{m}$,
+      telle que $\sin\alpha = 0{,}20$. Un frottement constant, opposé au
+      mouvement, de norme $f = 30\ \text{N}$, s'exerce sur toute la piste
+      inclinée. Au bas de la piste, le traîneau aborde une portion
+      horizontale où le frottement devient $f' = 150\ \text{N}$, jusqu'à
+      l'arrêt complet. On prend $g \approx 9{,}8\ \text{m/s}^2$. Quelle
+      distance $d'$ le traîneau parcourt-il sur la portion horizontale
+      avant de s'arrêter ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 29{,}2\\ \\text{m}$"
+        correct: true
+      - id: B
+        text: "$\\approx 39{,}2\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce résultat oublie le travail du frottement sur la piste inclinée
+          (comme si $E_m$ y était conservée) : il faut retrancher
+          $f \times L$ à $W(\vec P)$ avant d'aborder la portion horizontale.
+      - id: C
+        text: "$\\approx 186{,}0\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce résultat utilise $mgL$ au lieu de $mgL\sin\alpha$ pour le
+          travail du poids : seule la dénivelée $h = L\sin\alpha$ compte,
+          pas la longueur $L$ de la piste inclinée.
+      - id: D
+        text: "$\\approx 146{,}0\\ \\text{m}$"
+        correct: false
+        feedback: >
+          Ce résultat utilise le frottement de la piste inclinée
+          ($f = 30\ \text{N}$) au lieu de celui de la portion horizontale
+          ($f' = 150\ \text{N}$) pour calculer la distance d'arrêt.
+    correct_feedback: >
+      $E_{c,bas} = mgL\sin\alpha - fL = 5\,880 - 1\,500 = 4\,380\ \text{J}$,
+      puis $d' = E_{c,bas} / f' = 4\,380 / 150 \approx 29{,}2\ \text{m}$.
+    solution: |
+      $$W(\vec P) = mgL\sin\alpha = 60 \times 9{,}8 \times 50 \times 0{,}20 = 5\,880\ \text{J}$$
+      $$W(\vec f) = -fL = -30 \times 50 = -1\,500\ \text{J}$$
+      $$E_{c,bas} = 5\,880 - 1\,500 = 4\,380\ \text{J}$$
+      Sur le plat, $W(\vec P) = 0$ : $E_{c,bas} = f' d' \implies d' = 4\,380 / 150 \approx 29{,}2\ \text{m}$.
+
+  - id: AE-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement, raisonnement_qualitatif]
+    stem: >
+      Un skieur descend une piste inclinée avec frottement, en partant du
+      repos. On refait l'expérience en doublant la norme du frottement sur
+      la piste inclinée, toutes les autres grandeurs (masse, angle,
+      distance parcourue) restant inchangées. La vitesse au bas de la piste
+      sera-t-elle plus grande, plus petite, ou égale à celle du premier
+      essai ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Égale, car le travail du poids ne change pas."
+        correct: false
+        feedback: >
+          $\Delta E_c$ dépend de la somme de tous les travaux, pas
+          seulement de $W(\vec P)$ : doubler $W(\vec f)$ (négatif) change
+          nécessairement $E_c$, même si $W(\vec P)$ reste identique.
+      - id: B
+        text: >-
+          Plus petite : doubler le frottement double la valeur absolue
+          (négative) de $W(\vec f)$, donc $E_c$ en bas de la piste diminue,
+          et $v$ diminue aussi.
+        correct: true
+      - id: C
+        text: >-
+          Plus grande, car un frottement plus important échauffe la piste
+          et lui restitue de l'énergie.
+        correct: false
+        feedback: >
+          Le frottement dissipe de l'énergie, il n'en restitue jamais au
+          solide : son travail reste résistant (négatif), donc augmenter le
+          frottement ne peut qu'abaisser la vitesse finale.
+      - id: D
+        text: "Impossible à dire sans refaire tout le calcul numériquement."
+        correct: false
+        feedback: >
+          Le TEC permet un raisonnement qualitatif sans refaire le calcul :
+          $W(\vec P)$ inchangé, $W(\vec f)$ plus négatif $\implies E_c$ plus
+          petite, donc $v$ plus petite, sans recalculer aucun nombre.
+    correct_feedback: >
+      $E_{c,bas} = W(\vec P) + W(\vec f)$ ; $W(\vec P)$ est inchangé, mais
+      $W(\vec f)$ (négatif) double en valeur absolue : $E_{c,bas}$ diminue,
+      donc $v$ diminue.
+    solution: |
+      $E_{c,bas} = W(\vec P) + W(\vec f)$, avec $W(\vec P)$ inchangé et
+      $W(\vec f)$ deux fois plus négatif. $E_{c,bas}$ diminue donc, et avec
+      elle $v_{bas}$ : pas besoin de refaire le calcul numérique pour
+      conclure sur le sens de la variation.
+
+  - id: AE-21
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: pc_energie
+    tags: [tec, frottement, application_bac]
+    stem: >
+      Un solide de masse $m = 1{,}5\ \text{kg}$ part sans vitesse initiale
+      et descend une piste avec frottement. Son altitude diminue de
+      $\Delta z = 3{,}0\ \text{m}$, et sa vitesse mesurée en bas de la piste
+      vaut $v = 6{,}0\ \text{m/s}$. On prend $g \approx 9{,}8\ \text{m/s}^2$.
+      Quel est le travail des frottements $W(\vec f)$ sur ce trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 27\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat ignore le travail du poids dans le bilan (comme si
+          $E_{c,bas} = W(\vec f)$ seul) : il faut écrire le TEC complet,
+          $E_{c,bas} = W(\vec P) + W(\vec f)$, pour isoler $W(\vec f)$.
+      - id: B
+        text: "$\\approx +17{,}1\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Le frottement est nécessairement résistant : son travail est
+          négatif. Le signe correct ici est celui de
+          $W(\vec f) = E_{c,bas} - W(\vec P)$, soit $-17{,}1\ \text{J}$, pas
+          $+17{,}1\ \text{J}$.
+      - id: C
+        text: "$\\approx -17{,}1\\ \\text{J}$"
+        correct: true
+      - id: D
+        text: "$\\approx 9{,}9\\ \\text{J}$"
+        correct: false
+        feedback: >
+          Ce résultat oublie le facteur $\frac12$ dans $E_c = \frac12 m v^2$
+          (calcul $mv^2 = 54\ \text{J}$ au lieu de $27\ \text{J}$), ce qui
+          fausse ensuite $W(\vec f)$.
+    correct_feedback: >
+      $W(\vec P) = mg\Delta z \approx 44{,}1\ \text{J}$,
+      $E_{c,bas} = \frac12 m v^2 = 27\ \text{J}$, donc par le TEC
+      $W(\vec f) = E_{c,bas} - W(\vec P) \approx -17{,}1\ \text{J}$.
+    solution: |
+      $$W(\vec P) = mg\Delta z = 1{,}5 \times 9{,}8 \times 3{,}0 \approx 44{,}1\ \text{J}$$
+      $$E_{c,bas} = \frac12 m v^2 = \frac12 \times 1{,}5 \times 6{,}0^2 = 27\ \text{J}$$
+      $$E_{c,bas} = W(\vec P) + W(\vec f) \implies W(\vec f) = 27 - 44{,}1 \approx -17{,}1\ \text{J}$$
