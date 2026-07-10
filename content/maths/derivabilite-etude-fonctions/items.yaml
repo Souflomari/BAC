@@ -280,3 +280,733 @@ items:
       (convexe) : $f''$ change de signe en $x=0$, qui appartient au domaine
       $\mathbb{R}$ de $f$. C'est donc un point d'inflexion, de coordonnées
       $(0, f(0)) = (0, 0)$.
+
+  - id: DERIVFCT-7
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["vitesse-instantanee", "limite-intuitive"]
+    stem: >
+      Reprenons l'accroche du début du chapitre, mais avec une chute libre :
+      un objet chute, et la distance qu'il a parcourue après $t$ secondes est
+      $c(t)=t^2$ (en mètres). On s'intéresse à l'instant $t=3$. En calculant
+      le taux d'accroissement moyen $\frac{c(3+h)-c(3)}{h}$ pour $h=0{,}1$ on
+      obtient $6{,}1$ ; pour $h=0{,}01$ on obtient $6{,}01$ ; pour $h=0{,}001$
+      on obtient $6{,}001$. Ces valeurs se rapprochent de plus en plus de
+      $6$. Que représente ce nombre $6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une approximation seulement : $6$ correspond à la vitesse moyenne obtenue avec le plus petit $h$ testé ($h=0{,}001$), on ne peut rien dire de plus précis."
+        correct: false
+        feedback: >
+          Ce n'est pas une simple approximation parmi d'autres : $6$ est la
+          valeur LIMITE exacte vers laquelle toutes les vitesses moyennes
+          convergent quand $h$ tend vers $0$ — un nombre précis, jamais
+          atteint par un $h$ non nul, mais parfaitement défini malgré tout.
+      - id: B
+        text: "La vitesse instantanée de l'objet exactement à $t=3$ secondes : la limite exacte du taux d'accroissement moyen quand $h$ tend vers $0$."
+        correct: true
+      - id: C
+        text: "$c(3)=9$, la distance totale parcourue après $3$ secondes — pas une vitesse."
+        correct: false
+        feedback: >
+          $9$, c'est $c(3)$, la position (la distance chutée) à l'instant
+          $t=3$ — pas la vitesse. La vitesse instantanée est un nombre
+          entièrement différent ($6$ ici), obtenu par la limite du taux
+          d'accroissement, pas en évaluant $c$ en $3$.
+      - id: D
+        text: "Rien : une vitesse n'a de sens que calculée sur une durée non nulle, jamais à un instant précis."
+        correct: false
+        feedback: >
+          C'est exactement la position naïve que ce chapitre remet en
+          cause. Le tableau qui se stabilise autour de $6$ montre au
+          contraire qu'une vitesse « à un instant précis » a un sens
+          parfaitement rigoureux, via la limite du taux d'accroissement
+          moyen quand $h \to 0$.
+    correct_feedback: >
+      Exactement : à mesure que l'intervalle $[3,3+h]$ se resserre autour de
+      $t=3$ (c'est-à-dire quand $h \to 0$), le taux d'accroissement moyen se
+      rapproche d'un nombre précis, $6$ — c'est ce nombre-là, et lui seul,
+      qui définit la vitesse instantanée en $t=3$.
+    solution: |
+      $$\frac{c(3+h)-c(3)}{h} = \frac{(3+h)^2-9}{h} = \frac{9+6h+h^2-9}{h} = \frac{6h+h^2}{h} = 6+h \quad (h \neq 0)$$
+      Quand $h \to 0$, cette expression tend vers $6$ : c'est la vitesse
+      instantanée en $t=3$, distincte de $c(3)=9$ (la distance elle-même) et
+      distincte de toute valeur isolée du tableau.
+
+  - id: DERIVFCT-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["notion-intuitive", "vitesse-instantanee"]
+    stem: >
+      D'après l'idée centrale de ce chapitre (la bille sur la rampe), quelle
+      affirmation décrit correctement le lien entre vitesse moyenne et
+      vitesse instantanée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ce sont deux noms différents pour exactement le même calcul : $\\frac{d(a+h)-d(a)}{h}$, pour n'importe quel $h$ non nul."
+        correct: false
+        feedback: >
+          Ce n'est pas la même chose : $\frac{d(a+h)-d(a)}{h}$ pour un $h$
+          non nul FIXÉ donne une vitesse MOYENNE (la pente d'une sécante).
+          La vitesse instantanée est la LIMITE de ce quotient quand $h$
+          tend vers $0$ — un objet mathématique différent, pas un synonyme.
+      - id: B
+        text: "La vitesse instantanée est seulement une vitesse moyenne calculée sur un intervalle extrêmement court — un $h$ tout petit suffit, sans besoin de parler de limite."
+        correct: false
+        feedback: >
+          Aussi petit soit le $h$ choisi (tant qu'il reste non nul), le
+          quotient reste une vitesse MOYENNE, la pente d'une sécante — pas
+          une vitesse instantanée. Il faut vraiment le processus de limite
+          (faire tendre $h$ vers $0$, pas seulement le rendre petit) pour
+          obtenir la vitesse instantanée.
+      - id: C
+        text: "La vitesse instantanée en $t=a$ est la valeur limite vers laquelle tend la vitesse moyenne sur $[a,a+h]$, quand $h$ tend vers $0$."
+        correct: true
+      - id: D
+        text: "Une vitesse n'a de sens que sur une durée : parler de vitesse à un instant précis n'est pas mathématiquement légitime."
+        correct: false
+        feedback: >
+          C'est exactement la position que ce chapitre remet en cause. Le
+          processus de limite donne un sens parfaitement rigoureux à une
+          vitesse « à un instant précis » — c'est précisément ce que montre
+          la stabilisation des vitesses moyennes autour d'une valeur unique.
+    correct_feedback: >
+      Exactement : c'est la définition même de la vitesse instantanée — une
+      limite, pas un calcul isolé sur un intervalle, aussi petit soit-il.
+    solution: |
+      La vitesse instantanée en $t=a$ n'est pas une vitesse moyenne parmi
+      d'autres : c'est le nombre vers lequel TOUTES les vitesses moyennes
+      $\frac{d(a+h)-d(a)}{h}$ convergent quand $h \to 0$. C'est cette
+      limite — et seulement elle — qui donne un sens rigoureux à « la
+      vitesse à l'instant $t=a$ ».
+
+  - id: DERIVFCT-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["vitesse-instantanee", "lecture-tableau"]
+    stem: >
+      On reprend la bille du R0, $d(t)=t^2$, mais on s'intéresse maintenant
+      à l'instant $t=5$. Le taux d'accroissement moyen sur $[5,5+h]$ vaut
+      $10{,}1$ pour $h=0{,}1$ ; $10{,}01$ pour $h=0{,}01$ ; $10{,}001$ pour
+      $h=0{,}001$. D'après ce tableau de valeurs, quelle est la vitesse
+      instantanée de la bille à $t=5$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$10$"
+        correct: true
+      - id: B
+        text: "$25$, car $d(5)=5^2=25$."
+        correct: false
+        feedback: >
+          $25$, c'est $d(5)$ — la position de la bille, pas sa vitesse. La
+          vitesse instantanée est le nombre vers lequel les vitesses
+          MOYENNES se rapprochent (ici $10$), un nombre entièrement
+          différent de $d(5)$.
+      - id: C
+        text: "$10{,}001$, la valeur la plus précise du tableau, obtenue avec le plus petit $h$."
+        correct: false
+        feedback: >
+          $10{,}001$ est une très bonne approximation, mais reste une
+          vitesse MOYENNE, calculée avec un $h$ non nul. La vitesse
+          instantanée est le nombre exact vers lequel toutes ces valeurs
+          s'approchent, ici $10$, pas $10{,}001$.
+      - id: D
+        text: "$0$, en remplaçant directement $h$ par $0$ dans $\\frac{d(5+h)-d(5)}{h}$, ce qui donne $\\frac{0}{0}=0$."
+        correct: false
+        feedback: >
+          La forme $\frac{0}{0}$ n'a pas de valeur propre — elle ne vaut
+          certainement pas $0$ automatiquement. Il faut d'abord simplifier
+          l'expression (elle devient $10+h$) avant de faire tendre $h$ vers
+          $0$ : la limite vaut alors $10$, pas $0$.
+    correct_feedback: >
+      Bien vu : ces vitesses moyennes se rapprochent de $10$ à mesure que
+      $h$ se rapproche de $0$ — c'est cette valeur limite qui est la
+      vitesse instantanée à $t=5$, pas $d(5)=25$ ni aucune valeur isolée du
+      tableau.
+    solution: |
+      $$\frac{d(5+h)-d(5)}{h} = \frac{(5+h)^2-25}{h} = \frac{25+10h+h^2-25}{h} = \frac{10h+h^2}{h} = 10+h \quad (h \neq 0)$$
+      Quand $h \to 0$, cette expression tend vers $10$ : c'est la vitesse
+      instantanée en $t=5$.
+
+  - id: DERIVFCT-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["tangente", "equation-tangente"]
+    stem: >
+      Soit $f(x)=x^2$. Sachant que $f(3)=9$ et $f'(3)=6$, quelle est
+      l'équation de la tangente à la courbe de $f$ au point d'abscisse $3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y=6x$"
+        correct: false
+        feedback: >
+          Tu as utilisé seulement la pente $f'(3)=6$, en oubliant que la
+          tangente doit aussi passer par le point $(3, f(3))=(3,9)$, pas
+          par l'origine. Il faut écrire $y-f(a)=f'(a)(x-a)$, pas simplement
+          $y=f'(a)x$.
+      - id: B
+        text: "$y=6x-9$"
+        correct: true
+      - id: C
+        text: "$y=9x-21$"
+        correct: false
+        feedback: >
+          Tu as inversé les rôles : c'est $f'(3)=6$ qui est la PENTE de la
+          tangente, et $f(3)=9$ qui sert de valeur en $x=3$. La formule est
+          $y=f'(a)(x-a)+f(a)$ — la pente est toujours le nombre dérivé, pas
+          $f(a)$.
+      - id: D
+        text: "$y=6x+27$"
+        correct: false
+        feedback: >
+          Erreur de signe dans $(x-a)$ : avec $a=3$, c'est $(x-3)$, pas
+          $(x+3)$. La formule de la tangente utilise toujours $(x-a)$, où
+          $a$ est l'abscisse du point de tangence — ici $3$, donc $(x-3)$.
+    correct_feedback: >
+      Exact : $T_3: y=f'(3)(x-3)+f(3) = 6(x-3)+9 = 6x-18+9=6x-9$.
+    solution: |
+      $$T_3 : y = f'(3)(x-3)+f(3) = 6(x-3)+9$$
+      $$y = 6x-18+9 = 6x-9$$
+
+  - id: DERIVFCT-11
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["regle-du-quotient"]
+    stem: >
+      Soit $f(x) = \frac{x-1}{x+2}$ (pour $x \neq -2$). Quelle est $f'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{3}{x+2}$"
+        correct: false
+        feedback: >
+          Le dénominateur de la dérivée d'un quotient est toujours
+          $v(x)^2$, jamais $v(x)$ seul — ici $(x+2)^2$, pas $(x+2)$.
+      - id: B
+        text: "$2x+1$"
+        correct: false
+        feedback: >
+          Tu as appliqué la règle du PRODUIT ($u'v+uv'$) à un quotient, et
+          oublié de diviser par $v(x)^2$. Un quotient $\frac{u}{v}$ suit sa
+          propre règle, $\frac{u'v-uv'}{v^2}$, différente de celle du
+          produit.
+      - id: C
+        text: "$\\frac{-3}{(x+2)^2}$"
+        correct: false
+        feedback: >
+          Tu as inversé l'ordre dans le numérateur : c'est $u'v-uv'$, pas
+          $uv'-u'v$ — l'ordre compte, sinon on obtient l'opposé du bon
+          résultat (ici $-3$ au lieu de $3$).
+      - id: D
+        text: "$\\frac{3}{(x+2)^2}$"
+        correct: true
+    correct_feedback: >
+      Bien vu : avec $u=x-1$ ($u'=1$) et $v=x+2$ ($v'=1$),
+      $f'(x)=\frac{u'v-uv'}{v^2} = \frac{(x+2)-(x-1)}{(x+2)^2} =
+      \frac{3}{(x+2)^2}$.
+    solution: |
+      $u(x)=x-1 \Rightarrow u'(x)=1$ ; $v(x)=x+2 \Rightarrow v'(x)=1$.
+      $$f'(x) = \frac{u'(x)v(x)-u(x)v'(x)}{v(x)^2} = \frac{(x+2)-(x-1)}{(x+2)^2} = \frac{3}{(x+2)^2}$$
+
+  - id: DERIVFCT-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["derivees-usuelles", "polynome"]
+    stem: >
+      Soit $f(x)=3x^4-2x^3+5x-7$. Quelle est $f'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$12x^3-6x^2+5$"
+        correct: true
+      - id: B
+        text: "$12x^3-6x^2+5x-7$"
+        correct: false
+        feedback: >
+          La dérivée d'une constante est $0$, pas la constante elle-même :
+          le terme $-7$ disparaît totalement en dérivant, il ne doit plus
+          apparaître dans $f'(x)$.
+      - id: C
+        text: "$3x^3-2x^2+5$"
+        correct: false
+        feedback: >
+          Tu as seulement baissé l'exposant de $1$, sans multiplier par
+          l'exposant d'origine : la règle est $(x^n)' = n x^{n-1}$, avec le
+          facteur $n$ devant. Ici, $3x^4$ devient $3 \times 4\,x^3=12x^3$,
+          pas $3x^3$ (et $-2x^3$ devient $-2\times3\,x^2=-6x^2$, pas
+          $-2x^2$).
+      - id: D
+        text: "$12x^3+6x^2+5$"
+        correct: false
+        feedback: >
+          Erreur de signe : la dérivée de $-2x^3$ est $-2\times3\,x^2=-6x^2$
+          (le signe négatif du coefficient reste), pas $+6x^2$. Garde
+          toujours le signe du coefficient d'origine en appliquant
+          $(cx^n)'=cn\,x^{n-1}$.
+    correct_feedback: >
+      Exact : en dérivant terme à terme, $(3x^4)'=12x^3$, $(-2x^3)'=-6x^2$,
+      $(5x)'=5$, et $(-7)'=0$. D'où $f'(x)=12x^3-6x^2+5$.
+    solution: |
+      $$f'(x) = (3x^4)' - (2x^3)' + (5x)' - (7)' = 12x^3 - 6x^2 + 5 - 0 = 12x^3-6x^2+5$$
+
+  - id: DERIVFCT-13
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["derivee-composee", "racine-composee"]
+    stem: >
+      Soit $g(x)=\sqrt{x^2+1}$. Quelle est $g'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{1}{2\\sqrt{x^2+1}}$"
+        correct: false
+        feedback: >
+          Tu as oublié de multiplier par $u'(x)=2x$, la dérivée de
+          l'intérieur $u(x)=x^2+1$ — l'erreur classique de la composée :
+          dériver seulement « l'extérieur » sans tenir compte de la vitesse
+          à laquelle l'intérieur change.
+      - id: B
+        text: "$\\frac{2x}{\\sqrt{x^2+1}}$"
+        correct: false
+        feedback: >
+          Tu as oublié le facteur $2$ au dénominateur : la règle est
+          $(\sqrt{u})'=\frac{u'}{2\sqrt{u}}$, pas $\frac{u'}{\sqrt{u}}$ — ce
+          $2$ vient directement de $(\sqrt{x})'=\frac{1}{2\sqrt{x}}$,
+          généralisée à $u$.
+      - id: C
+        text: "$\\frac{x}{\\sqrt{x^2+1}}$"
+        correct: true
+      - id: D
+        text: "$\\frac{x}{2\\sqrt{x^2+1}}$"
+        correct: false
+        feedback: >
+          Presque : $g'(x)=\frac{u'(x)}{2\sqrt{u(x)}}=\frac{2x}{2\sqrt{x^2+1}}$,
+          mais il reste à simplifier le facteur $2$ commun au numérateur et
+          au dénominateur — il ne doit pas rester seul au dénominateur une
+          fois la simplification faite.
+    correct_feedback: >
+      Exact : avec $u(x)=x^2+1$ ($u'(x)=2x$),
+      $g'(x)=\frac{u'(x)}{2\sqrt{u(x)}} = \frac{2x}{2\sqrt{x^2+1}} =
+      \frac{x}{\sqrt{x^2+1}}$.
+    solution: |
+      $u(x)=x^2+1 \Rightarrow u'(x)=2x$.
+      $$g'(x) = \frac{u'(x)}{2\sqrt{u(x)}} = \frac{2x}{2\sqrt{x^2+1}} = \frac{x}{\sqrt{x^2+1}}$$
+
+  - id: DERIVFCT-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["derivee-composee", "structure-composee"]
+    stem: >
+      Soient $u$ et $v$ deux fonctions dérivables, et $g=u \circ v$
+      (c'est-à-dire $g(x)=u\big(v(x)\big)$). Quelle est l'expression
+      correcte de $g'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u'(x) \\times v'(x)$"
+        correct: false
+        feedback: >
+          Tu confonds la dérivée d'une COMPOSÉE avec un produit de
+          dérivées : il ne s'agit pas de $u'(x) \times v'(x)$, et surtout
+          $u'$ doit être évaluée en $v(x)$ — le point où $v$ envoie $x$ —
+          pas en $x$ directement.
+      - id: B
+        text: "$v'(x) \\times u'(v(x))$"
+        correct: true
+      - id: C
+        text: "$u'(v(x))$"
+        correct: false
+        feedback: >
+          Il manque le facteur $v'(x)$ : dériver seulement « l'extérieur »
+          $u$ (évaluée en $v(x)$) ne suffit pas, il faut aussi multiplier
+          par la vitesse à laquelle l'intérieur $v$ change — c'est
+          exactement le facteur qu'un élève pressé oublie le plus souvent.
+      - id: D
+        text: "$v'(u(x)) \\times u'(x)$"
+        correct: false
+        feedback: >
+          Tu as inversé les rôles de $u$ et $v$. Dans $g=u\circ v$, c'est
+          $v$ qui est appliquée en premier (fonction intérieure) et $u$ en
+          second (fonction extérieure) : c'est donc $u'$ qui doit être
+          évaluée en $v(x)$, et $v'$ qui reste évaluée en $x$ — pas
+          l'inverse.
+    correct_feedback: >
+      Exact : c'est la règle de la composée — on dérive $u$ « à
+      l'extérieur » (évaluée en $v(x)$, pas en $x$), et on multiplie par
+      $v'(x)$, la dérivée de « l'intérieur ».
+    solution: |
+      $$(u \circ v)'(x) = v'(x) \times u'\big(v(x)\big)$$
+      On dérive $u$ à l'extérieur, en l'évaluant au point $v(x)$ — pas au
+      point $x$ — et on multiplie par $v'(x)$, la dérivée de l'intérieur.
+
+  - id: DERIVFCT-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["signe-f-prime", "sens-variation"]
+    stem: >
+      Soit $f$ une fonction dérivable sur $\mathbb{R}$, telle que
+      $f'(x)=-2(x-1)(x+3)$. Sur quel intervalle $f$ est-elle strictement
+      croissante ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On ne peut pas savoir sans connaître le signe de $f$ elle-même, pas seulement de $f'$."
+        correct: false
+        feedback: >
+          Le sens de variation de $f$ dépend uniquement du SIGNE de $f'$,
+          pas des valeurs de $f$ elle-même — c'est tout le théorème du R4.
+          Il suffit d'étudier le signe de $f'(x)=-2(x-1)(x+3)$, sans rien
+          savoir d'autre sur $f$.
+      - id: B
+        text: "$]-\\infty,-3[$ et $]1,+\\infty[$"
+        correct: false
+        feedback: >
+          Tu as oublié le signe négatif du facteur $-2$ : avec ce
+          coefficient négatif, le trinôme est NÉGATIF à l'extérieur des
+          racines et POSITIF entre elles — l'inverse du cas « positif à
+          l'extérieur » qui vaut seulement pour un coefficient dominant
+          positif.
+      - id: C
+        text: "En $x=-3$ et $x=1$ uniquement, car c'est là que $f'(x)=0$."
+        correct: false
+        feedback: >
+          $f'(x)=0$ signale des points isolés (candidats à un extremum),
+          pas un intervalle de croissance : la croissance se lit sur un
+          INTERVALLE où $f'$ garde un signe constant positif, pas en deux
+          points isolés.
+      - id: D
+        text: "$]-3,1[$"
+        correct: true
+    correct_feedback: >
+      Exact : $f'(x)=-2(x-1)(x+3)$ est un trinôme de coefficient dominant
+      négatif, donc positif ENTRE ses racines $-3$ et $1$, et négatif à
+      l'extérieur. $f$ est donc strictement croissante sur $]-3,1[$.
+    solution: |
+      $f'(x)=-2(x-1)(x+3)$ s'annule en $x=-3$ et $x=1$. En développant, le
+      coefficient de $x^2$ est $-2$ (négatif), donc $f'$ est positive ENTRE
+      les racines et négative à l'extérieur :
+      - $f'(x)<0$ sur $]-\infty,-3[$
+      - $f'(x)>0$ sur $]-3,1[$
+      - $f'(x)<0$ sur $]1,+\infty[$
+
+      $f$ est donc strictement croissante sur $]-3,1[$.
+
+  - id: DERIVFCT-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["extremum-local", "valeur-extremum"]
+    stem: >
+      Soit $f(x)=-x^2+4x-1$. On calcule $f'(x)=-2x+4$, qui s'annule en
+      $x=2$, avec changement de signe de $+$ à $-$ (donc un maximum local).
+      Quelle est la valeur de ce maximum local ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$"
+        correct: true
+      - id: B
+        text: "$2$, l'abscisse où le maximum est atteint."
+        correct: false
+        feedback: >
+          $2$ est l'ABSCISSE où le maximum est atteint (la valeur de $x$),
+          pas la valeur du maximum elle-même. Il faut calculer $f(2)$, pas
+          se contenter de l'endroit où $f'$ s'annule.
+      - id: C
+        text: "$0$, en évaluant $f'(2)$."
+        correct: false
+        feedback: >
+          Tu as évalué $f'(2)$ (qui vaut $0$, ce qui confirme juste que $2$
+          est un candidat à l'extremum), pas $f(2)$. La VALEUR du maximum
+          s'obtient en substituant $x=2$ dans $f$, la fonction elle-même —
+          pas dans $f'$.
+      - id: D
+        text: "$11$"
+        correct: false
+        feedback: >
+          Erreur de signe : $-x^2$ en $x=2$ donne $-(2)^2=-4$, pas $+4$ —
+          le signe négatif porte sur tout $x^2$. Recalcule : $f(2)=-4+8-1=3$,
+          pas $11$.
+    correct_feedback: >
+      Exact : $f(2)=-(2)^2+4(2)-1=-4+8-1=3$. C'est bien la VALEUR du
+      maximum local, obtenue en évaluant $f$ (pas $f'$) au point $x=2$.
+    solution: |
+      $$f(2) = -(2)^2+4(2)-1 = -4+8-1 = 3$$
+      Le maximum local vaut $3$, atteint en $x=2$.
+
+  - id: DERIVFCT-17
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["concavite", "convexite"]
+    stem: >
+      Soit $f$ une fonction deux fois dérivable sur $\mathbb{R}$, telle que
+      $f''(x)<0$ sur tout l'intervalle $]-\infty,2[$. Que peut-on en
+      conclure sur la courbe de $f$ sur cet intervalle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La courbe de $f$ est convexe sur $]-\\infty,2[$, car $f''$ y est négative."
+        correct: false
+        feedback: >
+          Tu as inversé les deux notions : $f''<0$ correspond à la
+          concavité (courbe en dessous de ses tangentes, « en dôme »), pas
+          à la convexité. C'est $f''>0$ qui donne la convexité (courbe
+          au-dessus de ses tangentes, « en bol »).
+      - id: B
+        text: "$f$ est décroissante sur $]-\\infty,2[$, car $f''$ y est négative."
+        correct: false
+        feedback: >
+          Le signe de $f''$ renseigne sur la CONCAVITÉ de la courbe, pas
+          directement sur le sens de variation de $f$ — celui-ci dépend du
+          signe de $f'$, pas de $f''$. On ne peut rien conclure ici sur la
+          croissance ou décroissance de $f$ sans connaître le signe de
+          $f'$.
+      - id: C
+        text: "La courbe de $f$ est concave sur $]-\\infty,2[$ : elle se situe en dessous de chacune de ses tangentes."
+        correct: true
+      - id: D
+        text: "$f$ admet un point d'inflexion en tout point de $]-\\infty,2[$, puisque $f''$ y est non nulle."
+        correct: false
+        feedback: >
+          Un point d'inflexion exige que $f''$ CHANGE DE SIGNE en ce point
+          précis — pas simplement qu'elle soit négative sur tout un
+          intervalle. Ici, $f''<0$ partout sur $]-\infty,2[$ signale
+          seulement une concavité constante, sans aucun point d'inflexion à
+          l'intérieur.
+    correct_feedback: >
+      Exact : $f''<0$ signifie que la pente des tangentes successives
+      DÉCROÎT en balayant l'intervalle — la courbe reste alors en dessous de
+      chacune de ses tangentes, c'est la définition même de la concavité.
+    solution: |
+      Sur un intervalle où $f''(x)<0$, la courbe de $f$ est dite concave :
+      elle se situe en dessous de chacune de ses tangentes (« en dôme »).
+      C'est l'inverse pour $f''(x)>0$ (convexe, « en bol »). Le signe de
+      $f''$ ne renseigne ni sur le sens de variation de $f$ (donné par
+      $f'$), ni sur un éventuel point d'inflexion (qui exige un CHANGEMENT
+      de signe de $f''$, pas juste un signe constant).
+
+  - id: DERIVFCT-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["point-inflexion", "domaine"]
+    stem: >
+      Soit $h(x)=\frac{1}{x}$, définie sur $\mathbb{R}^*$, avec
+      $h''(x)=\frac{2}{x^3}$. $h''$ change de signe de part et d'autre de
+      $x=0$ (négative pour $x<0$, positive pour $x>0$). Peut-on affirmer
+      que la courbe de $h$ admet un point d'inflexion en $x=0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car le changement de signe de $h''$ autour de $0$ suffit à lui seul, peu importe si $h$ y est définie ou non."
+        correct: false
+        feedback: >
+          Le changement de signe de $f''$ ne suffit pas à lui seul : il
+          faut aussi que $f$ soit réellement DÉFINIE (et dérivable deux
+          fois) à cet endroit précis. Ici $h$ n'est même pas définie en
+          $0$ — il n'y a donc aucun point sur la courbe en $x=0$, donc pas
+          de point d'inflexion possible.
+      - id: B
+        text: "Non : $x=0$ n'appartient pas au domaine de $h$, donc il ne peut pas y avoir de point d'inflexion à cet endroit, malgré le changement de signe de $h''$ de part et d'autre."
+        correct: true
+      - id: C
+        text: "Oui, car $h$ change de sens de variation en $0$."
+        correct: false
+        feedback: >
+          $h$ ne change pas de sens de variation en $0$ (elle est
+          décroissante sur $]-\infty,0[$ ET sur $]0,+\infty[$ séparément) —
+          et de toute façon, le point d'inflexion se définit par un
+          changement de signe de $f''$ (la concavité), pas de $f'$ (la
+          variation). De plus, $x=0$ n'est même pas dans le domaine.
+      - id: D
+        text: "Oui, car une fonction rationnelle admet toujours un point d'inflexion là où son dénominateur s'annule."
+        correct: false
+        feedback: >
+          C'est une généralisation incorrecte : un dénominateur qui
+          s'annule donne une valeur INTERDITE du domaine, ce qui empêche
+          justement tout point d'inflexion à cet endroit — ce n'est jamais
+          une garantie qu'il y en a un, c'est l'inverse : ça garantit qu'il
+          n'y en a pas.
+    correct_feedback: >
+      Exact : un point d'inflexion exige non seulement un changement de
+      signe de $f''$, mais aussi que $f$ soit réellement définie à cet
+      endroit. $h$ n'est pas définie en $x=0$ : il n'y a donc aucun point
+      de la courbe en $x=0$, et donc pas de point d'inflexion, malgré le
+      changement de signe de $h''$ de part et d'autre de cette valeur
+      interdite.
+    solution: |
+      $h''(x)=\frac{2}{x^3}$ est négative pour $x<0$ et positive pour
+      $x>0$ : un changement de signe se produit bien « autour » de $x=0$.
+      Mais $x=0$ n'appartient pas au domaine $\mathbb{R}^*$ de $h$
+      (division par zéro interdite) : il n'existe aucun point $(0, h(0))$
+      sur la courbe. Un point d'inflexion exige que $f$ soit définie (et
+      deux fois dérivable) à cet endroit précis, en plus du changement de
+      signe de $f''$ — condition non remplie ici. Il n'y a donc pas de
+      point d'inflexion, seulement une asymptote verticale de part et
+      d'autre de laquelle la concavité diffère.
+
+  - id: DERIVFCT-19
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["etude-complete", "sens-variation"]
+    stem: >
+      Soit $f(x)=x^3-6x^2+9x$, définie sur $\mathbb{R}$. On calcule
+      $f'(x)=3x^2-12x+9=3(x-1)(x-3)$. Quel est le tableau de signes de
+      $f'$, et qu'en déduit-on sur le sens de variation de $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'<0$ sur $]-\\infty,1[$, $f'>0$ sur $]1,3[$, $f'<0$ sur $]3,+\\infty[$ : $f$ décroît, puis croît, puis décroît."
+        correct: false
+        feedback: >
+          Tu as appliqué le motif « négatif à l'extérieur, positif entre
+          les racines », qui ne vaut que pour un coefficient dominant
+          NÉGATIF. Ici, le coefficient de $x^2$ dans $f'(x)=3x^2-12x+9$ est
+          $+3$ (positif) : c'est donc le cas standard, positif à
+          l'extérieur des racines, négatif entre elles — pas l'inverse.
+      - id: B
+        text: "$f'>0$ sur $]-\\infty,3[$ et $f'<0$ sur $]3,+\\infty[$ : $f$ croît puis décroît, sans repasser par une phase de croissance."
+        correct: false
+        feedback: >
+          Un trinôme du second degré à deux racines DISTINCTES ($1$ et $3$
+          ici) change de signe DEUX fois, une fois à chaque racine — jamais
+          une seule. En ignorant la racine $x=1$, tu perds toute une phase
+          de variation.
+      - id: C
+        text: "$f'$ s'annule en $x=-1$ et $x=-3$ (pas $1$ et $3$), donc $f'>0$ sur $]-\\infty,-3[$, $f'<0$ sur $]-3,-1[$, $f'>0$ sur $]-1,+\\infty[$."
+        correct: false
+        feedback: >
+          Erreur de lecture des racines : $(x-1)(x-3)=0$ donne $x=1$ et
+          $x=3$ (on cherche ce qui annule chaque facteur, $x-1=0
+          \Rightarrow x=1$), pas $x=-1$ et $x=-3$ — ne confonds pas le
+          signe du facteur avec le signe de la racine.
+      - id: D
+        text: "$f'>0$ sur $]-\\infty,1[$, $f'<0$ sur $]1,3[$, $f'>0$ sur $]3,+\\infty[$ : $f$ croît, puis décroît, puis croît."
+        correct: true
+    correct_feedback: >
+      Exact : $f'(x)=3(x-1)(x-3)$ a pour racines $1$ et $3$, et un
+      coefficient dominant $+3$ (positif) : $f'$ est donc positive à
+      l'extérieur des racines et négative entre elles, ce qui donne bien la
+      variation croît / décroît / croît.
+    solution: |
+      $f'(x)=3x^2-12x+9=3(x-1)(x-3)$ s'annule en $x=1$ et $x=3$. Le
+      coefficient dominant du trinôme ($+3$) est positif, donc :
+      - $f'(x)>0$ sur $]-\infty,1[$
+      - $f'(x)<0$ sur $]1,3[$
+      - $f'(x)>0$ sur $]3,+\infty[$
+
+      $f$ croît sur $]-\infty,1]$, décroît sur $[1,3]$, puis croît sur
+      $[3,+\infty[$.
+
+  - id: DERIVFCT-20
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["tangente", "extremum-local", "etude-complete"]
+    stem: >
+      Soit $g(x)=-x^3+3x-2$, définie sur $\mathbb{R}$. On calcule
+      $g'(x)=-3x^2+3=-3(x-1)(x+1)$, qui s'annule en $x=-1$ et $x=1$ ; $g'$
+      change de signe de $-$ à $+$ en $-1$ (minimum local) puis de $+$ à
+      $-$ en $1$ (maximum local). Quelle est l'équation de la tangente à la
+      courbe de $g$ au point d'abscisse $1$ (le maximum local) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y=0$"
+        correct: true
+      - id: B
+        text: "$y=-3x+3$"
+        correct: false
+        feedback: >
+          Tu as pris le coefficient $-3$ de $g'(x)=-3x^2+3$ comme s'il
+          était LA pente en $x=1$, sans évaluer $g'$ en $1$. Or
+          $g'(1)=-3(1)^2+3=0$ exactement — c'est précisément ce qui signale
+          un extremum : la tangente y est HORIZONTALE, de pente $0$, pas
+          $-3$.
+      - id: C
+        text: "$y=-4$"
+        correct: false
+        feedback: >
+          Tu as utilisé $g(-1)=-4$ (la valeur au minimum local, en
+          $x=-1$), pas $g(1)$ (le point demandé, le maximum local en
+          $x=1$). Ici $g(1)=-(1)^3+3(1)-2=-1+3-2=0$, donc la tangente
+          horizontale est $y=0$, pas $y=-4$.
+      - id: D
+        text: "Une tangente ne peut pas être horizontale : une pente nulle n'a pas de sens pour une tangente."
+        correct: false
+        feedback: >
+          Une tangente horizontale est parfaitement valide : sa pente est
+          $0$, exactement ce qui se produit en un point où $f'$ s'annule
+          avec changement de signe (un extremum). L'équation
+          $y=f'(a)(x-a)+f(a)$ reste valable même quand $f'(a)=0$ — elle se
+          réduit simplement à $y=f(a)$, une droite horizontale.
+    correct_feedback: >
+      Exact : $g'(1)=-3(1)^2+3=0$ (tangente horizontale) et
+      $g(1)=-(1)^3+3(1)-2=0$, donc $T_1: y=0\times(x-1)+0=0$.
+    solution: |
+      $$g'(1) = -3(1)^2+3 = 0 \qquad g(1) = -(1)^3+3(1)-2 = -1+3-2 = 0$$
+      $$T_1 : y = g'(1)(x-1)+g(1) = 0 \times (x-1) + 0 = 0$$
+      La tangente au maximum local est donc la droite horizontale $y=0$
+      (l'axe des abscisses).
+
+  - id: DERIVFCT-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: ["domaine", "asymptote-verticale", "etude-complete"]
+    stem: >
+      Soit $f(x)=\frac{2x-1}{x+1}$. Quel est le domaine de définition de
+      $f$, et quelle droite est asymptote verticale à sa courbe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f$ est définie sur $\\mathbb{R}$ privé de $0{,}5$, et $x=0{,}5$ est asymptote verticale."
+        correct: false
+        feedback: >
+          La valeur interdite d'une fraction est celle qui annule le
+          DÉNOMINATEUR, pas le numérateur : ici $x+1=0 \Rightarrow x=-1$,
+          pas $2x-1=0 \Rightarrow x=0{,}5$ (qui donne simplement
+          $f(0{,}5)=0$, une valeur parfaitement définie).
+      - id: B
+        text: "$f$ est définie sur $\\mathbb{R}$ tout entier, il n'y a pas de valeur interdite."
+        correct: false
+        feedback: >
+          Une fraction n'est pas définie là où son dénominateur s'annule :
+          ici $x+1=0$ pour $x=-1$, donc $f(-1)$ n'existe pas (division par
+          $0$). Le domaine exclut bien cette valeur.
+      - id: C
+        text: "$f$ est définie sur $\\mathbb{R}$ privé de $-1$, et la droite d'équation $x=-1$ est asymptote verticale."
+        correct: true
+      - id: D
+        text: "$f$ est définie sur $\\mathbb{R}$ privé de $-1$, et la droite d'équation $y=-1$ est asymptote verticale."
+        correct: false
+        feedback: >
+          Une asymptote VERTICALE a une équation de la forme $x=\ldots$
+          (une valeur de $x$ fixe), jamais $y=\ldots$ — c'est $y=\ldots$ qui
+          décrit une droite HORIZONTALE. Ici, la valeur interdite est
+          $x=-1$, donc l'asymptote verticale est la droite d'équation
+          $x=-1$, pas $y=-1$.
+    correct_feedback: >
+      Exact : $x+1=0$ pour $x=-1$, valeur exclue du domaine. Au voisinage
+      de $-1$, $f(x) \to \pm\infty$ : la droite d'équation $x=-1$ est bien
+      asymptote verticale à la courbe de $f$.
+    solution: |
+      $f$ est définie tant que $x+1 \neq 0$, donc sur $\mathbb{R}$ privé de
+      $-1$. En écrivant $f(x) = \frac{2x-1}{x+1} = 2 - \frac{3}{x+1}$, on
+      voit que $\frac{3}{x+1} \to \pm\infty$ quand $x \to -1$ : la droite
+      d'équation $x=-1$ est bien asymptote verticale.
