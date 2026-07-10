@@ -1207,9 +1207,6 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$k(x) < 0$ pour $x<1$, $k(x)=0$ pour $x=1$, et $k(x)>0$ pour $x>1$."
-        correct: true
-      - id: B
         text: "$k(x)>0$ pour tout réel $x$, car une différence de deux exponentielles est toujours positive."
         correct: false
         feedback: >
@@ -1217,6 +1214,9 @@ items:
           séparément, pas sur leur DIFFÉRENCE. $k(x)=e^{3x-2}-e^x$ est une
           soustraction, qui peut parfaitement être négative — par exemple
           quand $3x-2<x$, c'est-à-dire $x<1$.
+      - id: B
+        text: "$k(x) < 0$ pour $x<1$, $k(x)=0$ pour $x=1$, et $k(x)>0$ pour $x>1$."
+        correct: true
       - id: C
         text: "$k(x)<0$ pour $x<1$ et $k(x)>0$ pour $x>1$, mais on ne peut rien dire du signe en $x=1$ sans calculer $k(1)$ séparément."
         correct: false
