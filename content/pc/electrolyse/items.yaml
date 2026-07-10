@@ -385,3 +385,713 @@ items:
 
       **Masse déposée :**
       $$m(Cu) = n(Cu) \times M(Cu) \approx 3{,}11\times10^{-3} \times 63{,}5 \approx 0{,}20\ \text{g}$$
+
+  # ── transformation forcée vs spontanée (R0, la lame de zinc grossit au lieu de se dissoudre) ──
+  - id: ELECTROLYSE-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_electrolyse
+    tags: [transformation_forcee, sens_spontane]
+    stem: >
+      On reprend le montage de l'accroche : une pile Daniell (lame de zinc
+      dans une solution de sulfate de zinc, lame de cuivre dans une solution
+      de sulfate de cuivre) dont l'ampèremètre est remplacé par un
+      générateur, réglé pour imposer, en opposition au sens spontané de la
+      pile, un courant suffisant pour inverser ce sens. Que devient la lame
+      de zinc ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle grossit : un dépôt de zinc métallique s'y forme (réduction imposée)."
+        correct: true
+      - id: B
+        text: "Elle continue à se dissoudre comme dans la pile, mais plus lentement."
+        correct: false
+        feedback: >
+          Cela décrirait un générateur trop faible pour inverser le sens ;
+          ici le courant imposé est suffisant, donc le sens s'inverse
+          complètement au lieu d'être seulement freiné.
+      - id: C
+        text: "Elle se dissout plus vite qu'avec la pile seule, car le générateur ajoute de l'énergie dans le même sens."
+        correct: false
+        feedback: >
+          Le générateur est branché en OPPOSITION au sens spontané, pas
+          pour le renforcer : il force le sens inverse, pas une dissolution
+          accélérée.
+      - id: D
+        text: "Rien ne change sur la lame de zinc ; seule la lame de cuivre est affectée par le générateur."
+        correct: false
+        feedback: >
+          Une électrolyse impose un sens aux deux électrodes à la fois : si
+          le cuivre est affecté, le zinc l'est nécessairement aussi, dans
+          le sens complémentaire.
+    correct_feedback: >
+      Le générateur impose un courant assez fort pour inverser totalement
+      le sens : la réduction $Zn^{2+}+2\,e^-\rightleftharpoons Zn$ se
+      produit sur la lame de zinc, qui grossit au lieu de se dissoudre.
+    solution: |
+      Le générateur force le sens $Cu+Zn^{2+}\rightleftharpoons Cu^{2+}+Zn$,
+      l'inverse du sens spontané de la pile. Sur la lame de zinc, cela
+      impose la réduction $Zn^{2+}+2\,e^-\rightleftharpoons Zn$ : un dépôt
+      de zinc métallique s'y forme.
+
+  # ── transformation forcée vs spontanée (R0, la lame de cuivre se dissout au lieu de se déposer) ──
+  - id: ELECTROLYSE-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_electrolyse
+    tags: [transformation_forcee, sens_spontane]
+    stem: >
+      Toujours sur ce montage (pile Daniell forcée à l'envers par le
+      générateur), qu'observe-t-on du côté de la lame de cuivre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle se dissout progressivement ; la solution qui l'entoure devient plus intensément bleue (enrichissement en $Cu^{2+}$)."
+        correct: true
+      - id: B
+        text: "Elle continue à se recouvrir de cuivre, comme dans le fonctionnement spontané de la pile."
+        correct: false
+        feedback: >
+          Un courant circule dans les deux cas, mais pas dans le même sens :
+          ici le générateur impose l'inverse du fonctionnement spontané,
+          donc le cuivre se dissout au lieu de se déposer.
+      - id: C
+        text: "Elle grossit d'un dépôt de cuivre, mais plus lentement qu'avec la pile seule."
+        correct: false
+        feedback: >
+          Cela décrirait un générateur qui freine seulement le dépôt
+          spontané ; un générateur assez fort ne freine pas ce sens, il
+          l'inverse complètement.
+      - id: D
+        text: "Elle reste inchangée, car le cuivre est un métal inerte qui ne réagit pas dans une électrolyse."
+        correct: false
+        feedback: >
+          Aucun métal n'est « inerte » face à un courant imposé assez
+          fort : le cuivre s'oxyde ici, exactement comme le zinc se réduit
+          sur l'autre lame.
+    correct_feedback: >
+      Le générateur impose l'oxydation $Cu\rightleftharpoons Cu^{2+}+2\,e^-$
+      sur la lame de cuivre : elle se dissout, à l'inverse de son
+      comportement dans la pile.
+    solution: |
+      Le générateur force le sens inverse du fonctionnement spontané de la
+      pile. Sur la lame de cuivre, cela impose l'oxydation
+      $Cu\rightleftharpoons Cu^{2+}+2\,e^-$ : le cuivre se dissout au lieu
+      de se déposer.
+
+  # ── transformation forcée vs spontanée (R0, définition générale du forçage) ──
+  - id: ELECTROLYSE-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_electrolyse
+    tags: [transformation_forcee, sens_spontane]
+    stem: >
+      Quelle affirmation décrit correctement ce qui se passe, de façon
+      générale, lorsqu'on force une transformation par électrolyse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le générateur impose à la réaction d'évoluer dans le sens inverse de son sens spontané - le sens que $Q_{r,i}$ face à $K$ interdirait si le système était livré à lui-même."
+        correct: true
+      - id: B
+        text: "Le générateur accélère la réaction dans son sens spontané, sans en changer la nature."
+        correct: false
+        feedback: >
+          Forcer une transformation, ce n'est pas l'accélérer dans son sens
+          naturel : c'est lui imposer le sens contraire, celui que la
+          chimie seule interdirait.
+      - id: C
+        text: "Le générateur permet à la réaction spontanée et à la réaction inverse de se produire simultanément, à parts égales."
+        correct: false
+        feedback: >
+          Il n'y a pas de coexistence à parts égales des deux sens : une
+          fois le seuil de tension dépassé, c'est le sens forcé qui
+          l'emporte entièrement.
+      - id: D
+        text: "Le générateur remplace la réaction chimique : ce n'est plus une transformation chimique, mais un phénomène purement électrique."
+        correct: false
+        feedback: >
+          L'électrolyse reste une transformation chimique à part entière
+          (des espèces s'oxydent et se réduisent aux électrodes) ; le
+          générateur en impose seulement le sens, il ne la supprime pas.
+    correct_feedback: >
+      Une électrolyse force la réaction à évoluer dans le sens que
+      $Q_{r,i}$ face à $K$ interdirait si le système était livré à
+      lui-même - c'est exactement l'inverse d'une pile.
+    solution: |
+      Dans une pile, $Q_{r,i}$ face à $K$ impose le sens spontané. Dans une
+      électrolyse, le générateur impose le sens inverse de celui-ci, contre
+      ce que la chimie seule ferait - c'est la définition même du
+      forçage.
+
+  # ── sens du courant vs déplacement des électrons (R1) ──
+  - id: ELECTROLYSE-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_electrolyse
+    tags: [sens_courant, mouvement_electrons]
+    stem: >
+      Dans le fil reliant le générateur à la cathode d'une cellule
+      d'électrolyse, comment se déplacent les électrons par rapport au sens
+      conventionnel du courant électrique $i$ dans ce fil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les électrons se déplacent en sens inverse de $i$ : ils vont de la borne − du générateur vers la cathode, alors que $i$ est orienté de la cathode vers la borne −."
+        correct: true
+      - id: B
+        text: "Les électrons se déplacent dans le même sens que $i$, puisque ce sont eux qui transportent le courant."
+        correct: false
+        feedback: >
+          Par convention, le sens du courant $i$ est toujours opposé au
+          sens réel de déplacement des électrons, dans tout circuit -
+          électrolyse comprise.
+      - id: C
+        text: "Il n'y a pas de sens conventionnel défini pour le courant dans un circuit d'électrolyse, seul le mouvement des électrons compte."
+        correct: false
+        feedback: >
+          Le sens conventionnel du courant est défini dans tout circuit
+          électrique, y compris une électrolyse ; il n'est pas propre aux
+          piles.
+      - id: D
+        text: "Les électrons se déplacent de la cathode vers la borne − du générateur."
+        correct: false
+        feedback: >
+          C'est l'inverse du mécanisme décrit : c'est la borne − du
+          générateur qui POUSSE les électrons vers la cathode, pas la
+          cathode qui les renvoie vers le générateur.
+    correct_feedback: >
+      Le générateur pousse les électrons, par sa borne −, à travers le fil
+      jusqu'à la cathode ; le sens conventionnel du courant $i$ dans ce
+      fil est, par définition, opposé à ce déplacement réel des électrons.
+    solution: |
+      Le courant conventionnel $i$ est toujours orienté en sens inverse du
+      déplacement réel des électrons. Ici, les électrons vont de la borne
+      − du générateur vers la cathode ; $i$ est donc orienté de la cathode
+      vers la borne −.
+
+  # ── nommer anode/cathode à partir d'une demi-équation (R2, contexte dichlore) ──
+  - id: ELECTROLYSE-11
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: [anode_cathode, polarite]
+    stem: >
+      Dans une cellule d'électrolyse, on observe à l'une des deux électrodes
+      un dégagement de dichlore selon la demi-équation
+      $2\,Cl^- \rightleftharpoons Cl_2 + 2\,e^-$, lue de la gauche vers la
+      droite. Comment se nomme cette électrode, et à quelle borne du
+      générateur est-elle reliée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est l'anode, reliée à la borne +."
+        correct: true
+      - id: B
+        text: "C'est la cathode, reliée à la borne +."
+        correct: false
+        feedback: >
+          Le nom est faux : les ions chlorure perdent des électrons ici
+          (oxydation), donc c'est l'anode, pas la cathode - même si la
+          polarité + est correctement identifiée.
+      - id: C
+        text: "C'est l'anode, reliée à la borne −."
+        correct: false
+        feedback: >
+          Le nom est juste, mais la polarité est celle d'une pile : dans
+          une cellule d'électrolyse, c'est le générateur qui, par sa borne
+          +, arrache les électrons pour forcer l'oxydation à l'anode.
+      - id: D
+        text: "C'est la cathode, reliée à la borne −."
+        correct: false
+        feedback: >
+          Cette demi-équation, lue de la gauche vers la droite, montre les
+          ions chlorure PERDANT des électrons : c'est une oxydation, donc
+          une anode, pas une réduction à une cathode.
+    correct_feedback: >
+      Les ions chlorure perdent des électrons ($2\,Cl^- \rightleftharpoons
+      Cl_2 + 2\,e^-$) : c'est une oxydation, donc l'anode ; dans une
+      cellule d'électrolyse, l'anode est reliée à la borne + du générateur.
+    solution: |
+      La demi-équation montre une perte d'électrons : c'est une oxydation,
+      donc cette électrode est l'anode. En électrolyse, l'anode est reliée
+      à la borne + du générateur, qui lui arrache ces électrons.
+
+  # ── tension seuil : sous le seuil E, sens spontané freiné mais non inversé (R3) ──
+  - id: ELECTROLYSE-12
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_electrolyse
+    tags: [tension_seuil, force_electromotrice]
+    stem: >
+      On reprend la cellule de l'accroche (pile Daniell forcée), de force
+      électromotrice propre $E \approx 1{,}1\ \text{V}$. On y branche un
+      générateur réglé sur $U = 0{,}9\ \text{V}$, en opposition au sens
+      spontané. Que se passe-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le courant continue de circuler dans le sens spontané de la pile, simplement affaibli ; aucun dépôt de zinc n'apparaît."
+        correct: true
+      - id: B
+        text: "Le sens s'inverse partiellement : un peu de zinc commence à se déposer, en plus faible quantité qu'à $U = 6\\ \\text{V}$."
+        correct: false
+        feedback: >
+          Il n'existe pas d'inversion partielle : sous le seuil $E$, c'est
+          uniquement le sens spontané qui l'emporte, simplement freiné.
+      - id: C
+        text: "Le courant est nul : le générateur, branché en opposition, bloque totalement le passage du courant."
+        correct: false
+        feedback: >
+          Une tension inférieure à $E$ affaiblit le courant spontané, elle
+          ne l'annule pas complètement.
+      - id: D
+        text: "Le sens s'inverse complètement, car le générateur est branché en opposition au sens naturel, quelle que soit sa tension."
+        correct: false
+        feedback: >
+          Le branchement en opposition ne suffit pas : il faut que $U$
+          dépasse $E$ en valeur absolue pour que le sens forcé l'emporte
+          réellement.
+    correct_feedback: >
+      $U = 0{,}9\ \text{V}$ reste sous le seuil $E \approx 1{,}1\ \text{V}$ :
+      le sens spontané de la pile continue de l'emporter, seulement
+      affaibli - aucun dépôt de zinc n'apparaît.
+    solution: |
+      Tant que $U < E$, le générateur ne fait que freiner le sens spontané
+      sans l'inverser. Ici $0{,}9\ \text{V} < 1{,}1\ \text{V}$ : le zinc
+      continue de se dissoudre, plus lentement.
+
+  # ── tension seuil : comparer U à E, cas limite U=E (R3) ──
+  - id: ELECTROLYSE-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: [tension_seuil, force_electromotrice]
+    stem: >
+      Une cellule électrolytique possède, dans le sens opposé à celui
+      recherché, une force électromotrice propre $E \approx 0{,}7\ \text{V}$.
+      Parmi les tensions suivantes, qu'on pourrait imposer en opposition à
+      l'aide d'un générateur, laquelle inverserait réellement le sens de la
+      réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$U = 1{,}5\\ \\text{V}$"
+        correct: true
+      - id: B
+        text: "$U = 0{,}5\\ \\text{V}$"
+        correct: false
+        feedback: >
+          Cette valeur reste sous le seuil $E \approx 0{,}7\ \text{V}$ : le
+          sens spontané continue de l'emporter, seulement affaibli.
+      - id: C
+        text: "$U = 0{,}7\\ \\text{V}$ (exactement égale à $E$)"
+        correct: false
+        feedback: >
+          Une tension exactement égale à $E$ ne fait que compenser la
+          tendance spontanée sans la dépasser ; il faut une tension
+          STRICTEMENT supérieure à $E$ pour inverser réellement le sens.
+      - id: D
+        text: "$U = 0\\ \\text{V}$ (aucun générateur, juste le pont salin)"
+        correct: false
+        feedback: >
+          Sans générateur, la cellule fonctionne comme une pile ordinaire
+          dans son sens spontané : il n'y a alors aucune opposition, encore
+          moins une inversion.
+    correct_feedback: >
+      Seule une tension strictement supérieure à $E \approx 0{,}7\ \text{V}$
+      inverse réellement le sens ; parmi les propositions, $1{,}5\ \text{V}$
+      est la seule à dépasser ce seuil.
+    solution: |
+      Il faut $U > E$ en valeur absolue pour que le sens forcé l'emporte.
+      Ici $E \approx 0{,}7\ \text{V}$ : seule $U = 1{,}5\ \text{V}$ dépasse
+      strictement ce seuil.
+
+  # ── tension seuil : basculement net, pas de curseur continu (R3) ──
+  - id: ELECTROLYSE-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: [tension_seuil, force_electromotrice]
+    stem: >
+      Un camarade affirme : « Plus la tension imposée en opposition dépasse
+      le seuil $E$, plus l'inversion du sens de la réaction devient
+      complète : juste au-dessus du seuil, l'inversion n'est que
+      partielle. » Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : dès que la tension imposée dépasse $E$, même de peu, le sens forcé l'emporte totalement - c'est un seuil net, pas un curseur continu."
+        correct: true
+      - id: B
+        text: "Oui : l'inversion se renforce progressivement à mesure que $U$ s'éloigne de $E$."
+        correct: false
+        feedback: >
+          Le passage du sens spontané au sens forcé n'est pas progressif :
+          c'est un basculement complet dès que le seuil est dépassé, pas un
+          curseur continu.
+      - id: C
+        text: "Non, car en réalité aucun seuil n'existe : tout générateur branché en opposition inverse totalement le sens, quelle que soit sa tension."
+        correct: false
+        feedback: >
+          Cela contredit l'exemple à $U = 0{,}9\ \text{V} < E \approx
+          1{,}1\ \text{V}$, où aucune inversion n'a lieu : un seuil existe
+          bel et bien.
+      - id: D
+        text: "Oui, et en dessous du seuil $E$ aucun courant ne circule du tout."
+        correct: false
+        feedback: >
+          Sous le seuil, le courant spontané continue de circuler,
+          simplement affaibli - il n'est pas nul.
+    correct_feedback: >
+      Le basculement entre sens spontané et sens forcé est un seuil net :
+      dès que $U$ dépasse $E$, le sens forcé l'emporte totalement, sans
+      inversion partielle intermédiaire.
+    solution: |
+      Il n'existe pas de « demi-inversion » : soit $U \leq E$ et le sens
+      spontané l'emporte (freiné), soit $U > E$ et le sens forcé prend
+      totalement le relais.
+
+  # ── loi de Faraday, problème inverse : trouver Δt (R4) ──
+  - id: ELECTROLYSE-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: [loi_faraday, quantite_electricite]
+    stem: >
+      On veut déposer une masse $m = 0{,}54\ \text{g}$ d'argent par
+      électrolyse ($Ag^+ + e^- \rightleftharpoons Ag$), en imposant un
+      courant constant $I = 0{,}30\ \text{A}$. On donne
+      $F \approx 9{,}65\times10^{4}\ \text{C/mol}$ et
+      $M(Ag) = 108\ \text{g/mol}$. Quelle durée $\Delta t$ faut-il imposer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\Delta t \\approx 1{,}61\\times10^{3}\\ \\text{s} \\approx 26{,}8\\ \\text{min}$"
+        correct: true
+      - id: B
+        text: "$\\Delta t \\approx 3{,}22\\times10^{3}\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'avoir doublé $n(e^-)$ comme si l'argent
+          échangeait 2 électrons par atome (comme $Cu^{2+}/Cu$), alors que
+          $Ag^+ + e^- \rightleftharpoons Ag$ n'en échange qu'un seul.
+      - id: C
+        text: "$\\Delta t \\approx 145\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'avoir calculé $\Delta t = Q \times I$ au
+          lieu de $\Delta t = Q / I$.
+      - id: D
+        text: "$\\Delta t \\approx 0{,}017\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'avoir oublié la constante de Faraday
+          ($Q = n(e^-) \times F$, pas $Q = n(e^-)$ seul) - une durée aussi
+          courte pour déposer $0{,}54\ \text{g}$ de métal doit alerter
+          immédiatement.
+    correct_feedback: >
+      $n(Ag) = m/M = 0{,}0050\ \text{mol}$, donc $n(e^-) = n(Ag) =
+      0{,}0050\ \text{mol}$ (1 électron par atome), $Q = n(e^-)\,F \approx
+      482{,}5\ \text{C}$, d'où $\Delta t = Q/I \approx 1{,}61\times10^{3}\
+      \text{s} \approx 26{,}8\ \text{min}$.
+    solution: |
+      $n(Ag) = m/M = 0{,}54/108 = 0{,}0050\ \text{mol}$, donc
+      $n(e^-) = 0{,}0050\ \text{mol}$ (1 électron par atome d'argent).
+      $$Q = n(e^-)\,F \approx 482{,}5\ \text{C} \quad\Rightarrow\quad
+      \Delta t = Q/I \approx 1{,}61\times10^{3}\ \text{s} \approx 26{,}8\
+      \text{min}$$
+
+  # ── bilan de matière aux électrodes : rapport H2/O2 (R5) ──
+  - id: ELECTROLYSE-16
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: [bilan_matiere, electrolyse_eau]
+    stem: >
+      Lors de l'électrolyse de l'eau (bilan global
+      $2\,H_2O \rightarrow 2\,H_2 + O_2$), on recueille à la cathode un
+      volume $V(H_2) = 120\ \text{mL}$ de dihydrogène. Quel volume de
+      dioxygène $V(O_2)$ a-t-on recueilli à l'anode, dans les mêmes
+      conditions de température et de pression ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$V(O_2) = 60\\ \\text{mL}$"
+        correct: true
+      - id: B
+        text: "$V(O_2) = 120\\ \\text{mL}$"
+        correct: false
+        feedback: >
+          Ce choix suppose un rapport 1:1 entre $H_2$ et $O_2$, alors que
+          le bilan $2\,H_2O \rightarrow 2\,H_2 + O_2$ donne deux fois moins
+          de moles (donc de volume) d'$O_2$ que de $H_2$.
+      - id: C
+        text: "$V(O_2) = 240\\ \\text{mL}$"
+        correct: false
+        feedback: >
+          Ce choix inverse le rapport : le bilan donne deux fois MOINS
+          d'$O_2$ que de $H_2$, pas deux fois plus.
+      - id: D
+        text: "$V(O_2) = 30\\ \\text{mL}$"
+        correct: false
+        feedback: >
+          Ce choix confond le nombre d'électrons échangés par molécule
+          d'$O_2$ (4) avec le rapport molaire $H_2$:$O_2$, qui vaut 2:1 et
+          non 4:1.
+    correct_feedback: >
+      Le bilan global $2\,H_2O \rightarrow 2\,H_2 + O_2$ donne un rapport
+      molaire (donc volumique, mêmes conditions) de 2 mol de $H_2$ pour 1
+      mol de $O_2$ : $V(O_2) = V(H_2)/2 = 60\ \text{mL}$.
+    solution: |
+      Le bilan $2\,H_2O \rightarrow 2\,H_2 + O_2$ impose 2 mol de $H_2$
+      pour 1 mol de $O_2$, donc le même rapport en volume :
+      $V(O_2) = V(H_2)/2 = 60\ \text{mL}$.
+
+  # ── bilan de matière aux électrodes : anode soluble, conservation de charge (R5) ──
+  - id: ELECTROLYSE-17
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: [bilan_matiere, galvanoplastie]
+    stem: >
+      Dans une opération de galvanoplastie, un objet (cathode) et une anode
+      soluble d'argent massif sont plongés dans un bain contenant des ions
+      $Ag^+$, parcouru par un courant constant pendant une durée $\Delta t$.
+      Comment se comparent la quantité de matière d'argent déposée sur
+      l'objet et la quantité de matière d'argent dissoute de l'anode,
+      pendant cette durée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles sont égales : le même courant, donc le même $n(e^-)$, traverse les deux électrodes en série."
+        correct: true
+      - id: B
+        text: "La quantité déposée à la cathode est plus grande, car la réduction consomme plus de matière que l'oxydation n'en libère."
+        correct: false
+        feedback: >
+          Le même courant (donc le même $n(e^-)$) traverse tout le circuit
+          en série : la charge échangée est nécessairement identique aux
+          deux électrodes.
+      - id: C
+        text: "Il n'existe aucun lien entre les deux : chaque électrode évolue selon sa propre cinétique, indépendamment de l'autre."
+        correct: false
+        feedback: >
+          Les deux électrodes sont reliées par le même circuit en série :
+          la conservation de la charge impose le même $n(e^-)$ aux deux.
+      - id: D
+        text: "La quantité dissoute à l'anode est le double de celle déposée à la cathode, car l'anode fournit les électrons ET la matière."
+        correct: false
+        feedback: >
+          Les deux demi-équations ($Ag \rightleftharpoons Ag^+ + e^-$ et
+          $Ag^+ + e^- \rightleftharpoons Ag$) échangent chacune un seul
+          électron par atome : aucun facteur 2 ne s'introduit ici.
+    correct_feedback: >
+      Le circuit est en série : le même courant, donc le même $n(e^-)$,
+      traverse la cathode et l'anode soluble - autant d'argent se dépose
+      d'un côté que ce qui se dissout de l'autre.
+    solution: |
+      En série, le même $n(e^-)$ traverse les deux électrodes. Les deux
+      demi-équations échangeant chacune 1 électron par atome d'argent,
+      $n(Ag)$ déposé = $n(Ag)$ dissous.
+
+  # ── bilan de matière aux électrodes : stœchiométrie électronique différente selon l'ion (R5) ──
+  - id: ELECTROLYSE-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: [bilan_matiere, aluminium]
+    stem: >
+      Dans la production industrielle de l'aluminium par électrolyse (bain
+      de cryolithe fondue), l'aluminium se dépose à la cathode selon
+      $Al^{3+} + 3\,e^- \rightleftharpoons Al$. Pour une même quantité de
+      matière d'électrons échangés $n(e^-)$, comment $n(Al)$ se compare-t-il
+      à $n(Ag)$ obtenu dans les mêmes conditions de charge, pour un dépôt
+      d'argent ($Ag^+ + e^- \rightleftharpoons Ag$) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$n(Al) = n(e^-)/3$, soit trois fois moins que $n(Ag) = n(e^-)$ pour l'argent."
+        correct: true
+      - id: B
+        text: "$n(Al) = n(e^-)$, exactement comme pour l'argent, car la quantité d'électricité échangée est la même."
+        correct: false
+        feedback: >
+          Le nombre d'électrons échangés PAR ATOME dépend de la charge de
+          l'ion ($Al^{3+}$ contre $Ag^+$) : un même $n(e^-)$ total ne donne
+          pas le même $n$(métal) si les stœchiométries diffèrent.
+      - id: C
+        text: "$n(Al) = 3 \\times n(e^-)$, soit trois fois plus que pour l'argent."
+        correct: false
+        feedback: >
+          Ce choix inverse le rapport : il faut 3 électrons pour former un
+          atome d'aluminium, ce qui donne trois fois MOINS de moles d'$Al$
+          pour un même $n(e^-)$, pas trois fois plus.
+      - id: D
+        text: "On ne peut pas comparer, car l'aluminium provient d'un sel fondu et l'argent d'une solution aqueuse."
+        correct: false
+        feedback: >
+          La loi de Faraday et le bilan de matière aux électrodes ne
+          dépendent pas de la nature du milieu (aqueux ou fondu), seulement
+          de la demi-équation électronique.
+    correct_feedback: >
+      $Al^{3+} + 3\,e^- \rightleftharpoons Al$ échange 3 électrons par
+      atome, contre 1 seul pour $Ag^+ + e^- \rightleftharpoons Ag$ : à
+      $n(e^-)$ égal, $n(Al) = n(e^-)/3$, trois fois moins que $n(Ag)$.
+    solution: |
+      Le nombre de moles de métal déposé dépend du nombre d'électrons
+      échangés par atome : 3 pour $Al^{3+}$, 1 pour $Ag^+$. À $n(e^-)$
+      égal, $n(Al) = n(e^-)/3$, trois fois moins que $n(Ag) = n(e^-)$.
+
+  # ── loi de Faraday appliquée, contexte bac (R6, nickelage) ──
+  - id: ELECTROLYSE-19
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: [loi_faraday, application]
+    stem: >
+      On veut nickeler une pièce métallique par électrolyse, à l'aide d'une
+      anode de nickel massif et d'un bain contenant des ions $Ni^{2+}$
+      ($Ni^{2+} + 2\,e^- \rightleftharpoons Ni$). Un générateur impose un
+      courant constant $I = 0{,}80\ \text{A}$ pendant $\Delta t = 15\ \text{min}$.
+      On donne $F \approx 9{,}65\times10^{4}\ \text{C/mol}$ et
+      $M(Ni) = 58{,}7\ \text{g/mol}$. Quelle masse de nickel se dépose sur
+      la pièce ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 0{,}22\\ \\text{g}$"
+        correct: true
+      - id: B
+        text: "$\\approx 0{,}44\\ \\text{g}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'avoir oublié de diviser $n(e^-)$ par 2 : la
+          demi-équation $Ni^{2+} + 2\,e^- \rightleftharpoons Ni$ échange 2
+          électrons par atome.
+      - id: C
+        text: "$\\approx 3{,}7\\times10^{-3}\\ \\text{g}$"
+        correct: false
+        feedback: >
+          Ce résultat vient d'un oubli d'unité : $\Delta t$ doit être
+          converti en secondes ($15\ \text{min} = 900\ \text{s}$) avant de
+          calculer $Q = I\,\Delta t$.
+      - id: D
+        text: "$\\approx 2{,}0\\times10^{9}\\ \\text{g}$"
+        correct: false
+        feedback: >
+          Cette masse, plusieurs millions de tonnes, doit alerter
+          immédiatement : l'erreur vient d'avoir multiplié $Q$ par $F$ au
+          lieu de diviser ($n(e^-) = Q/F$).
+    correct_feedback: >
+      $Q = I\,\Delta t = 720\ \text{C}$, $n(e^-) = Q/F \approx
+      7{,}46\times10^{-3}\ \text{mol}$, $n(Ni) = n(e^-)/2$, d'où
+      $m(Ni) \approx 0{,}22\ \text{g}$.
+    solution: |
+      $$\Delta t = 900\ \text{s}, \quad Q = I\,\Delta t = 720\ \text{C},
+      \quad n(e^-) = Q/F \approx 7{,}46\times10^{-3}\ \text{mol}$$
+      $Ni^{2+} + 2\,e^- \rightleftharpoons Ni$ échange 2 électrons par
+      atome : $n(Ni) = n(e^-)/2 \approx 3{,}73\times10^{-3}\ \text{mol}$,
+      d'où $m(Ni) = n(Ni)\,M(Ni) \approx 0{,}22\ \text{g}$.
+
+  # ── transformation forcée vs spontanée : critère d'arrêt d'une électrolyse (R6) ──
+  - id: ELECTROLYSE-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: [transformation_forcee, equilibre]
+    stem: >
+      Un camarade affirme : « Une cellule d'électrolyse finit, comme une
+      pile, par s'arrêter d'elle-même : une fois que le quotient de
+      réaction $Q_{r,i}$ atteint la constante d'équilibre $K$, la réaction
+      s'arrête, que le générateur continue de fonctionner ou non. » Ce
+      raisonnement est-il correct ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : tant que le générateur impose sa tension (au-delà du seuil $E$) et que les réactifs sont disponibles, l'électrolyse se poursuit ; le générateur maintient le système hors de l'état que $Q_{r,i}=K$ imposerait spontanément."
+        correct: true
+      - id: B
+        text: "Oui : comme dans une pile, dès que $Q_{r,i}=K$, plus aucune évolution n'est possible, générateur ou pas."
+        correct: false
+        feedback: >
+          Ce raisonnement transporte le critère d'arrêt d'une pile
+          (évolution spontanée vers l'équilibre) à l'électrolyse, alors que
+          le générateur impose précisément un sens que ce critère
+          interdirait.
+      - id: C
+        text: "Oui, mais seulement si la tension du générateur est inférieure au seuil $E$."
+        correct: false
+        feedback: >
+          Cela mélange deux idées distinctes : sous le seuil $E$, c'est
+          simplement le sens spontané de la pile interne qui continue,
+          sans lien avec un blocage « à $Q_{r,i}=K$ ».
+      - id: D
+        text: "Non, l'électrolyse ne s'arrête jamais, même si l'un des réactifs vient à manquer complètement."
+        correct: false
+        feedback: >
+          Même une transformation forcée s'arrête si un réactif est
+          épuisé à une électrode : le générateur impose un sens, il ne
+          rend pas la matière inépuisable.
+    correct_feedback: >
+      Le générateur maintient le système hors de l'équilibre que
+      $Q_{r,i}=K$ imposerait spontanément : l'électrolyse se poursuit tant
+      qu'il fonctionne et que les réactifs sont disponibles.
+    solution: |
+      Le critère d'arrêt d'une pile ($Q_{r,i}=K$) ne s'applique pas tel
+      quel à l'électrolyse : le générateur impose un sens contraire à ce
+      que ce critère dicterait, tant qu'il fonctionne et que la matière ne
+      manque pas.
+
+  # ── synthèse bac : masse déposée + polarité (R6, cuivrage) ──
+  - id: ELECTROLYSE-21
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: pc_electrolyse
+    tags: [loi_faraday, polarite]
+    stem: >
+      Lors d'une électrolyse destinée à cuivrer un objet métallique (bain
+      de sulfate de cuivre(II), anode de cuivre massif), un générateur
+      impose un courant constant $I = 1{,}2\ \text{A}$ pendant
+      $\Delta t = 10\ \text{min}$. On donne
+      $F \approx 9{,}65\times10^{4}\ \text{C/mol}$ et
+      $M(Cu) = 63{,}5\ \text{g/mol}$. Quelle masse de cuivre se dépose sur
+      l'objet, et à quelle polarité l'objet doit-il être relié ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m \\approx 0{,}24\\ \\text{g}$, l'objet relié à la borne − du générateur (c'est la cathode)."
+        correct: true
+      - id: B
+        text: "$m \\approx 0{,}24\\ \\text{g}$, l'objet relié à la borne + du générateur (c'est l'anode)."
+        correct: false
+        feedback: >
+          Le calcul de masse est juste, mais la polarité est fausse : pour
+          qu'un dépôt se forme (réduction $Cu^{2+}+2e^-\to Cu$), l'objet
+          doit être la cathode, reliée à la borne − du générateur.
+      - id: C
+        text: "$m \\approx 0{,}47\\ \\text{g}$, l'objet relié à la borne − du générateur."
+        correct: false
+        feedback: >
+          La polarité est juste, mais la masse vient d'avoir oublié de
+          diviser par 2 : $Cu^{2+}+2e^-\to Cu$ échange 2 électrons par
+          atome de cuivre.
+      - id: D
+        text: "$m \\approx 0{,}24\\ \\text{g}$, mais la polarité ne peut pas être déterminée sans connaître la nature de l'anode."
+        correct: false
+        feedback: >
+          La polarité se déduit uniquement du mécanisme recherché (un
+          dépôt = une réduction = une cathode = la borne −), indépendamment
+          de la nature de l'anode.
+    correct_feedback: >
+      $Q = I\,\Delta t = 720\ \text{C}$, $n(e^-) = Q/F \approx
+      7{,}46\times10^{-3}\ \text{mol}$, $n(Cu) = n(e^-)/2$, d'où
+      $m(Cu) \approx 0{,}24\ \text{g}$ ; l'objet doit être la cathode
+      (réduction), donc relié à la borne − du générateur.
+    solution: |
+      $$\Delta t = 600\ \text{s}, \quad Q = I\,\Delta t = 720\ \text{C},
+      \quad n(e^-) = Q/F \approx 7{,}46\times10^{-3}\ \text{mol}$$
+      $n(Cu) = n(e^-)/2 \approx 3{,}73\times10^{-3}\ \text{mol}$, d'où
+      $m(Cu) \approx 0{,}24\ \text{g}$. Le dépôt exige une réduction :
+      l'objet est la cathode, reliée à la borne − du générateur.
