@@ -350,3 +350,956 @@ items:
 
       $E_c$ et $E_{pe}$ sont donc maximales en des points opposés de la
       trajectoire, jamais au même endroit.
+
+  - id: SO-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_systemes_oscillants
+    tags: [prediction, oscillation, equilibre]
+    stem: >
+      On écarte un chariot accroché à un ressort horizontal (frottement
+      quasi nul) de sa position d'équilibre, puis on le lâche sans vitesse
+      initiale. Que va-t-il se passer, dans la réalité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il revient vers l'équilibre et s'y arrête définitivement, car c'est l'endroit où le ressort n'exerce plus aucune force."
+        correct: false
+        feedback: >
+          Ce raisonnement confond « force nulle » et « vitesse nulle » : le
+          chariot arrive à l'équilibre avec de la vitesse, acquise pendant
+          tout le trajet précédent, donc il continue son mouvement par
+          inertie au lieu de s'arrêter net à cet endroit.
+      - id: B
+        text: "Il revient vers l'équilibre, le dépasse, s'écarte à peu près autant de l'autre côté, s'arrête un instant, puis repart en sens inverse : un va-et-vient qui se répète."
+        correct: true
+      - id: C
+        text: "Il revient vers l'équilibre, le dépasse, puis continue indéfiniment dans le même sens en s'éloignant de plus en plus."
+        correct: false
+        feedback: >
+          Dès que le chariot dépasse l'équilibre, le ressort change de côté
+          d'étirement, donc de sens de rappel : la force recommence
+          immédiatement à le freiner puis à le ramener. Le mouvement ne peut
+          pas s'échapper indéfiniment dans un seul sens.
+      - id: D
+        text: "Il ralentit progressivement en s'approchant de l'équilibre et s'arrête avant même de l'atteindre, car le ressort perd de la force à mesure qu'il se détend."
+        correct: false
+        feedback: >
+          C'est l'inverse : à mesure que le chariot se rapproche de
+          l'équilibre, la force de rappel diminue, mais la vitesse, elle,
+          continue d'augmenter (moins de force freinante) jusqu'à devenir
+          maximale exactement à l'équilibre — le chariot ne s'arrête donc
+          jamais avant de l'atteindre.
+    correct_feedback: >
+      C'est une oscillation, pas un simple retour au repos : l'inertie
+      acquise pendant le trajet fait traverser l'équilibre au chariot, qui
+      s'écarte de l'autre côté avant de repartir en sens inverse, encore et
+      encore.
+    solution: |
+      Le chariot arrive à l'équilibre avec une vitesse non nulle (accélérée
+      par la force de rappel tout au long du trajet). Cette vitesse
+      l'entraîne au-delà de l'équilibre, où la force de rappel change de sens
+      et le freine, l'arrête un instant, puis le ramène. Ce cycle se répète :
+      c'est une oscillation, pas un simple retour à l'équilibre suivi d'un
+      arrêt.
+
+  - id: SO-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_systemes_oscillants
+    tags: [prediction, amplitude, conservation]
+    stem: >
+      Dans les conditions décrites (frottement presque nul), le chariot
+      effectue de nombreux allers-retours. Après plusieurs dizaines
+      d'oscillations, que peut-on dire de l'écart maximal atteint à chaque
+      aller-retour, comparé au tout premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il diminue progressivement à chaque aller-retour, même sans frottement, car le chariot « perd de l'élan » en repassant plusieurs fois par l'équilibre."
+        correct: false
+        feedback: >
+          Rien, dans un mouvement sans frottement, ne « consomme » l'écart au
+          fil des cycles : repasser par l'équilibre ne coûte rien en soi. Une
+          décroissance de l'amplitude a toujours une cause physique précise
+          (le frottement) ; en son absence, il n'y a pas de raison pour que
+          l'écart diminue tout seul.
+      - id: B
+        text: "Il ne peut pas rester le même indéfiniment : aucun mouvement ne peut se répéter sans une cause extérieure qui l'entretient en permanence."
+        correct: false
+        feedback: >
+          C'est vrai pour un système réellement freiné (il faudrait alors un
+          dispositif d'entretien pour compenser les pertes) — mais ici, le
+          frottement est justement quasi nul : il n'y a essentiellement rien
+          à compenser, donc rien à entretenir de l'extérieur pour que le
+          mouvement persiste tel quel.
+      - id: C
+        text: "Il reste à peu près le même d'un aller-retour à l'autre, tant que le frottement reste négligeable."
+        correct: true
+      - id: D
+        text: "Il augmente à chaque aller-retour, le ressort « emmagasinant » de plus en plus d'énergie au fil des cycles."
+        correct: false
+        feedback: >
+          Le ressort ne reçoit aucun apport d'énergie supplémentaire entre
+          les allers-retours : il n'y a ici ni frottement qui dissipe, ni
+          dispositif qui ajoute de l'énergie à chaque cycle. Sans apport
+          extérieur, l'écart ne peut pas grandir tout seul.
+    correct_feedback: >
+      Sans frottement, rien ne dissipe ni n'ajoute d'énergie au fil des
+      cycles : l'écart maximal reste essentiellement constant, aller-retour
+      après aller-retour.
+    solution: |
+      Tant que le frottement est négligeable, aucune cause physique ne fait
+      varier l'écart maximal d'un cycle à l'autre : il n'est ni dissipé (pas
+      de frottement) ni renforcé (pas d'apport extérieur). L'amplitude
+      observée au premier aller-retour se retrouve donc, à peu de choses
+      près, à chaque aller-retour suivant.
+
+  - id: SO-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_systemes_oscillants
+    tags: [prediction, raideur, pendule_elastique]
+    stem: >
+      Avant tout calcul : si on utilise un ressort plus raide (plus grande
+      valeur de $k$), sans changer la masse du chariot, celui-ci
+      effectue-t-il ses allers-retours plus vite, plus lentement, ou pareil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Plus lentement, car un ressort plus raide est plus difficile à déformer, ce qui ralentit davantage le mouvement."
+        correct: false
+        feedback: >
+          « Difficile à déformer » décrit l'intensité de la force nécessaire
+          pour étirer le ressort d'un écart donné, pas la vitesse du
+          mouvement qui en résulte. Au contraire, un ressort plus raide
+          exerce une force de rappel plus grande pour le même écart, ce qui
+          accélère davantage le chariot vers l'équilibre — donc un
+          aller-retour plus rapide, pas plus lent.
+      - id: B
+        text: "Pareil, car la raideur du ressort n'intervient pas dans la durée d'un aller-retour, seule la masse compte."
+        correct: false
+        feedback: >
+          C'est le rôle de la masse dans le pendule simple (elle s'annule)
+          qu'on étend ici à tort au ressort. Pour le pendule élastique, la
+          raideur $k$ joue au contraire un rôle central : c'est elle qui
+          fixe la force de rappel, donc la rapidité du retour vers
+          l'équilibre.
+      - id: C
+        text: "Cela dépend de l'amplitude du lâcher : pour un petit écart, plus raide va plus vite ; pour un grand écart, l'effet s'inverse."
+        correct: false
+        feedback: >
+          La durée d'un aller-retour d'un pendule élastique ne dépend jamais
+          de l'amplitude du lâcher (on le vérifiera précisément dans les
+          rungs suivants) : l'effet d'une raideur plus grande sur la
+          rapidité du mouvement est donc le même, quel que soit l'écart de
+          départ.
+      - id: D
+        text: "Plus vite (aller-retour plus court), car un ressort plus raide rappelle plus fortement le chariot vers l'équilibre."
+        correct: true
+    correct_feedback: >
+      Un ressort plus raide exerce, pour le même écart, une force de rappel
+      plus grande : le chariot est ramené plus fortement, donc plus vite,
+      vers l'équilibre. On retrouvera cette intuition précisément dans la
+      formule $T_0 = 2\pi\sqrt{m/k}$.
+    solution: |
+      Une raideur $k$ plus grande signifie une force de rappel $-kx$ plus
+      intense pour le même écart $x$, donc une accélération plus grande,
+      donc un retour plus rapide vers l'équilibre. L'aller-retour est plus
+      court : $T_0$ diminue quand $k$ augmente (à $m$ fixée) — ce que la
+      formule $T_0=2\pi\sqrt{m/k}$ confirmera précisément.
+
+  - id: SO-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [periode_propre, calcul, pendule_elastique]
+    stem: >
+      Un chariot de masse $m = 0{,}25\ \text{kg}$ est accroché à un ressort
+      horizontal de raideur $k = 100\ \text{N/m}$ (frottement négligé).
+      Quelle est la période propre $T_0$ de ce pendule élastique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 = \\sqrt{m/k} = \\sqrt{0{,}25/100} = 0{,}05\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Le facteur $2\pi$ a été oublié : $T_0 = 2\pi\sqrt{m/k}$, pas
+          $\sqrt{m/k}$ seul. Le rapport $\sqrt{m/k}$ donne une durée
+          caractéristique, mais il faut la multiplier par $2\pi$ pour
+          obtenir la période d'un cycle complet.
+      - id: B
+        text: "$T_0 \\approx 0{,}314\\ \\text{s}$"
+        correct: true
+      - id: C
+        text: "$T_0 = 2\\pi\\sqrt{k/m} \\approx 2\\pi \\times 20 \\approx 125{,}7\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Le rapport est inversé : c'est $\sqrt{m/k}$ qui figure dans $T_0$,
+          pas $\sqrt{k/m}$ (c'est ce dernier rapport qui donne $\omega_0$,
+          pas $T_0$). Confondre les deux formules inverse le résultat :
+          $\sqrt{k/m}=20\ \text{rad/s}$ est la pulsation, pas un facteur de
+          la période.
+      - id: D
+        text: "$T_0 = k/m = 400\\ \\text{s}$"
+        correct: false
+        feedback: >
+          Ce calcul confond $\omega_0^2 = k/m$ avec $T_0$ lui-même : il
+          manque à la fois la racine carrée et le facteur $2\pi$. $k/m$
+          donne le carré de la pulsation (en $\text{rad}^2/\text{s}^2$), pas
+          une durée.
+    correct_feedback: >
+      $\omega_0 = \sqrt{k/m} = \sqrt{100/0{,}25} = \sqrt{400} = 20\ \text{rad/s}$,
+      donc $T_0 = 2\pi/\omega_0 = 2\pi/20 \approx 0{,}314\ \text{s}$.
+    solution: |
+      $$\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{\frac{100}{0{,}25}} = \sqrt{400} = 20\ \text{rad/s}$$
+      $$T_0 = \frac{2\pi}{\omega_0} = \frac{2\pi}{20} \approx 0{,}314\ \text{s}$$
+
+  - id: SO-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [isochronisme, amplitude, pendule_elastique]
+    stem: >
+      On a établi l'équation différentielle du pendule élastique horizontal
+      (sans frottement) : $\ddot{x} + \dfrac{k}{m}x = 0$, dont la solution
+      est $x(t) = X_m\cos(\omega_0 t + \varphi)$ avec $\omega_0 = \sqrt{k/m}$.
+      Un même ressort et une même masse sont lancés deux fois différemment :
+      une fois écartés de $2\ \text{cm}$ et lâchés sans vitesse, une fois
+      écartés de $6\ \text{cm}$ et lâchés sans vitesse. Que peut-on dire des
+      périodes propres $T_0$ dans les deux cas ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0$ est plus grande pour le lancer à $6\\ \\text{cm}$, car le chariot doit parcourir une plus grande distance à chaque aller-retour."
+        correct: false
+        feedback: >
+          Un plus grand écart signifie un plus grand trajet, mais aussi une
+          force de rappel (et donc une vitesse) proportionnellement plus
+          grande tout du long : les deux effets se compensent exactement,
+          comme pour le pendule simple. $T_0$ ne dépend pas de $X_m$, qui
+          n'apparaît d'ailleurs pas dans l'équation différentielle.
+      - id: B
+        text: "On ne peut pas savoir sans connaître $\\varphi$ dans chaque cas."
+        correct: false
+        feedback: >
+          $\varphi$ change bien d'un lancer à l'autre (c'est un paramètre
+          fixé par les conditions initiales), mais ce n'est pas parce qu'un
+          paramètre de la solution dépend du lancer que $T_0$ en dépend
+          aussi : $T_0$ est fixée par $m$ et $k$ seuls, indépendamment de
+          $\varphi$.
+      - id: C
+        text: "Elles sont rigoureusement égales : $T_0$ ne dépend que de $m$ et $k$, qui figurent seuls dans l'équation différentielle."
+        correct: true
+      - id: D
+        text: "$T_0$ est plus petite pour le lancer à $6\\ \\text{cm}$, car un plus grand écart initial provoque une force de rappel plus grande dès le départ, donc un retour plus rapide."
+        correct: false
+        feedback: >
+          La force de rappel est effectivement plus grande dès le départ
+          pour un plus grand écart — mais elle doit aussi ramener le chariot
+          sur une plus grande distance. Ces deux effets s'annulent
+          exactement : ni $X_m$ ni $\varphi$ n'apparaissent dans
+          $T_0 = 2\pi\sqrt{m/k}$.
+    correct_feedback: >
+      Seuls $m$ et $k$ figurent dans l'équation différentielle
+      $\ddot{x}+(k/m)x=0$ : $T_0=2\pi\sqrt{m/k}$ ne peut donc dépendre que
+      d'eux, jamais de $X_m$ ni de $\varphi$, qui sont fixés par le lancer,
+      pas par le système.
+    solution: |
+      L'équation $\ddot{x} + (k/m)x = 0$ ne contient que $m$ et $k$. Toute
+      grandeur qui n'apparaît pas dans cette équation ne peut pas apparaître
+      dans $T_0 = 2\pi\sqrt{m/k}$ non plus. $X_m$ et $\varphi$ sont fixés par
+      les conditions initiales (le lancer), pas par le ressort et la masse :
+      ils n'ont donc aucune influence sur $T_0$, quel que soit l'écart de
+      lâcher.
+
+  - id: SO-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [conditions_initiales, phase_origine, pendule_elastique]
+    stem: >
+      On lance un pendule élastique horizontal ($\omega_0 = 10\ \text{rad/s}$
+      connu) en poussant le chariot au passage par l'équilibre ($x(0)=0$),
+      avec une vitesse $v(0) = +0{,}3\ \text{m/s}$ (vers les $x$ positifs).
+      Quelle est la valeur de la phase à l'origine $\varphi$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\varphi = \\pi/2$"
+        correct: false
+        feedback: >
+          $\cos\varphi = 0$ admet deux solutions, $\varphi=\pi/2$ ou
+          $\varphi=-\pi/2$ : ce choix retient la première sans vérifier
+          laquelle est compatible avec le signe de $v(0)$. Avec
+          $\varphi=\pi/2$, on aurait $v(0) = -X_m\omega_0\sin(\pi/2) =
+          -X_m\omega_0 < 0$, ce qui contredit $v(0) = +0{,}3\ \text{m/s} > 0$.
+      - id: B
+        text: "$\\varphi = 0$"
+        correct: false
+        feedback: >
+          $\varphi=0$ correspond au cas d'un lâcher sans vitesse depuis
+          l'écart maximal ($x(0)=X_m$, $v(0)=0$), déjà rencontré dans la
+          leçon — pas au cas ici, où c'est $x(0)$ qui est nul et $v(0)$ qui
+          ne l'est pas. Ce choix confond les deux types de lancers.
+      - id: C
+        text: "On ne peut pas déterminer $\\varphi$ sans connaître d'abord $X_m$."
+        correct: false
+        feedback: >
+          Ce n'est pas l'ordre de résolution : $x(0)=X_m\cos\varphi=0$
+          impose déjà $\cos\varphi=0$ (donc $\varphi=\pm\pi/2$) sans
+          connaître $X_m$ numériquement ; c'est ensuite le signe de $v(0)$
+          qui tranche entre les deux valeurs possibles. $X_m$ se déduit
+          seulement après, à partir de $\varphi$.
+      - id: D
+        text: "$\\varphi = -\\pi/2$"
+        correct: true
+    correct_feedback: >
+      $x(0)=0 \Rightarrow \cos\varphi=0 \Rightarrow \varphi=\pm\pi/2$. Comme
+      $v(0)=-X_m\omega_0\sin\varphi$ doit être positif, il faut
+      $\sin\varphi<0$, donc $\varphi=-\pi/2$ (et alors
+      $X_m = v(0)/\omega_0 = 0{,}03\ \text{m}$).
+    solution: |
+      $$x(0) = X_m\cos\varphi = 0 \quad\Longrightarrow\quad \cos\varphi=0 \quad\Longrightarrow\quad \varphi=\frac{\pi}{2}\text{ ou }-\frac{\pi}{2}$$
+      $$v(0) = -X_m\,\omega_0\,\sin\varphi = +0{,}3 > 0 \quad\Longrightarrow\quad \sin\varphi < 0 \quad\Longrightarrow\quad \varphi = -\frac{\pi}{2}$$
+      On en déduit $X_m = \dfrac{0{,}3}{10} = 0{,}03\ \text{m}$.
+
+  - id: SO-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_pesant, moment_inertie, isochronisme]
+    stem: >
+      Un pendule pesant est un solide de forme quelconque (par exemple une
+      plaque métallique) qui pivote autour d'un axe fixe $\Delta$ ne passant
+      pas par son centre d'inertie $G$. Sa période propre est-elle donnée par
+      la même formule $T_0 = 2\pi\sqrt{L/g}$ que celle du pendule simple,
+      avec $L$ une longueur caractéristique du solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car tout pendule qui oscille sous l'effet de la pesanteur, quelle que soit sa forme, obéit à la même formule $2\\pi\\sqrt{L/g}$ avec $L$ la distance de l'axe au centre de gravité."
+        correct: false
+        feedback: >
+          Cette formule est un cas particulier, valable seulement quand
+          toute la masse est concentrée en un point (le pendule simple).
+          Pour un solide étendu, la façon dont la masse est répartie compte,
+          à travers le moment d'inertie $J_\Delta$ — deux solides de même
+          distance $\Delta G$ mais de formes différentes n'ont pas la même
+          période.
+      - id: B
+        text: "Non : pour un pendule pesant, $T_0 = 2\\pi\\sqrt{J_\\Delta/(mgd)}$, où $J_\\Delta$ est le moment d'inertie du solide par rapport à $\\Delta$ et $d=\\Delta G$ ; cette expression ne se réduit à celle du pendule simple que dans le cas particulier d'une masse ponctuelle."
+        correct: true
+      - id: C
+        text: "Oui, à condition de remplacer $L$ par le moment d'inertie $J_\\Delta$ directement dans la formule : $T_0 = 2\\pi\\sqrt{J_\\Delta/g}$."
+        correct: false
+        feedback: >
+          Ce n'est pas une simple substitution de $L$ par $J_\Delta$ : la
+          formule correcte, $T_0=2\pi\sqrt{J_\Delta/(mgd)}$, fait intervenir
+          aussi $m$ et $d$ au dénominateur, pas seulement $g$. Cette version
+          hybride oublie ces deux grandeurs.
+      - id: D
+        text: "Non, la période propre du pendule pesant ne dépend d'aucune des grandeurs $m$, $g$, $J_\\Delta$ ou $d$ prises séparément, seulement de la forme géométrique globale du solide."
+        correct: false
+        feedback: >
+          C'est l'inverse : $T_0=2\pi\sqrt{J_\Delta/(mgd)}$ est construite
+          exactement à partir de ces quatre grandeurs. La « forme
+          géométrique » n'intervient que parce qu'elle détermine $J_\Delta$
+          et $d$ — ce ne sont pas des ingrédients à écarter.
+    correct_feedback: >
+      Le pendule pesant obéit à $J_\Delta\ddot\theta = -mgd\sin\theta$, d'où
+      $T_0=2\pi\sqrt{J_\Delta/(mgd)}$. On retrouve le pendule simple
+      seulement quand $J_\Delta=mL^2$ et $d=L$ (masse ponctuelle) :
+      $T_0=2\pi\sqrt{mL^2/(mgL)}=2\pi\sqrt{L/g}$.
+    solution: |
+      $$J_\Delta\,\ddot{\theta} = -mgd\sin\theta \;\xrightarrow{\text{petites oscillations}}\; T_0 = 2\pi\sqrt{\frac{J_\Delta}{mgd}}$$
+
+      Cette formule ne se réduit à $2\pi\sqrt{L/g}$ que si $J_\Delta = mL^2$
+      et $d=L$, c'est-à-dire pour une masse ponctuelle — le cas particulier
+      du pendule simple, pas la règle générale.
+
+  - id: SO-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, periode_propre, mecanisme]
+    stem: >
+      Un pendule de torsion est constitué d'un disque de moment d'inertie
+      $J$ par rapport à l'axe du fil, suspendu par un fil de constante de
+      torsion $C$. Quelle est l'expression correcte de sa période propre
+      $T_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 = 2\\pi\\sqrt{C/J}$"
+        correct: false
+        feedback: >
+          Le rapport est inversé : c'est $J$ (l'« inertie ») qui doit être
+          au numérateur et $C$ (le « rappel ») au dénominateur, exactement
+          comme $m$ et $k$ pour le pendule élastique. $\sqrt{C/J}$ donne en
+          réalité $\omega_0$, pas $T_0$.
+      - id: B
+        text: "$T_0 = 2\\pi\\sqrt{m/C}$"
+        correct: false
+        feedback: >
+          Ce choix remplace le moment d'inertie $J$ par la masse $m$ toute
+          seule, comme si l'inertie en rotation ne dépendait que de la
+          masse. Or $J$ dépend aussi de la façon dont cette masse est
+          répartie (forme, distance à l'axe) — ce n'est pas la même grandeur
+          que $m$.
+      - id: C
+        text: "$T_0 = 2\\pi\\sqrt{J/C}$"
+        correct: true
+      - id: D
+        text: "$T_0 = 2\\pi\\sqrt{J/(mgd)}$"
+        correct: false
+        feedback: >
+          Cette formule est celle du pendule pesant, où le rappel vient de
+          la pesanteur. Ici, le poids du solide et la réaction du fil
+          passent par l'axe de rotation : leur moment est nul. Le rappel
+          vient entièrement de la torsion du fil, $-C\theta$, pas de la
+          pesanteur.
+    correct_feedback: >
+      $J\ddot\theta = -C\theta \Rightarrow \ddot\theta + (C/J)\theta = 0$,
+      donc $\omega_0=\sqrt{C/J}$ et $T_0 = 2\pi/\omega_0 = 2\pi\sqrt{J/C}$ —
+      même structure que le pendule élastique, avec $J$ à la place de $m$
+      (inertie) et $C$ à la place de $k$ (rappel).
+    solution: |
+      $$J\ddot{\theta} = M_{rappel} = -C\theta \;\Longrightarrow\; \ddot{\theta} + \frac{C}{J}\theta = 0$$
+      $$\omega_0 = \sqrt{\frac{C}{J}} \qquad T_0 = 2\pi\sqrt{\frac{J}{C}}$$
+
+  - id: SO-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, raideur_torsion, periode_propre]
+    stem: >
+      Si on utilise un fil plus raide en torsion (constante $C$ plus
+      grande), à moment d'inertie $J$ fixé, le pendule de torsion
+      oscille-t-il plus vite ou plus lentement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Plus lentement (période $T_0$ plus grande), car un fil plus raide résiste davantage à la rotation, ce qui ralentit le mouvement."
+        correct: false
+        feedback: >
+          « Résister à la rotation » décrit ici un moment de rappel plus
+          fort, pas un frein qui ralentit la vitesse angulaire. Au
+          contraire, un moment de rappel plus fort accélère davantage le
+          retour vers l'équilibre — exactement comme un ressort plus raide
+          accélère le pendule élastique.
+      - id: B
+        text: "Cela ne change rien : $T_0$ ne dépend que de $J$, pas de $C$."
+        correct: false
+        feedback: >
+          $T_0 = 2\pi\sqrt{J/C}$ contient bien $C$ au dénominateur :
+          augmenter $C$ diminue $T_0$. Ce choix étend à tort au pendule de
+          torsion une indépendance (celle de la masse pour le pendule
+          simple) qui ne s'applique pas ici.
+      - id: C
+        text: "Cela dépend de l'angle de torsion initial : pour un petit angle, un $C$ plus grand accélère ; pour un grand angle, l'effet peut s'inverser."
+        correct: false
+        feedback: >
+          L'effet de $C$ sur $T_0$ ne dépend jamais de l'amplitude du
+          lâcher : $\theta_m$ n'apparaît pas dans $T_0=2\pi\sqrt{J/C}$, tout
+          comme pour les autres oscillateurs harmoniques étudiés.
+          L'isochronisme s'applique ici aussi.
+      - id: D
+        text: "Plus vite (période $T_0$ plus petite), car un fil plus raide exerce un moment de rappel plus fort, qui ramène plus rapidement le solide vers l'équilibre."
+        correct: true
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{J/C}$ : à $J$ fixé, augmenter $C$ diminue $T_0$. Un
+      rappel plus fort ramène plus vite vers l'équilibre — exactement le
+      même effet que $k$ pour le pendule élastique.
+    solution: |
+      $$T_0 = 2\pi\sqrt{\frac{J}{C}}$$
+
+      À $J$ fixé, $T_0$ décroît quand $C$ augmente : plus le fil est raide
+      en torsion, plus le moment de rappel $-C\theta$ est fort, plus le
+      retour vers l'équilibre est rapide.
+
+  - id: SO-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, pulsation, calcul]
+    stem: >
+      Un pendule de torsion a un moment d'inertie
+      $J = 2{,}0\times10^{-4}\ \text{kg}\cdot\text{m}^2$ et une constante de
+      torsion $C = 8{,}0\times10^{-2}\ \text{N}\cdot\text{m/rad}$. Quelle est
+      sa pulsation propre $\omega_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\omega_0 = 20\\ \\text{rad/s}$"
+        correct: true
+      - id: B
+        text: "$\\omega_0 = \\sqrt{J/C} = \\sqrt{2{,}5\\times10^{-3}} \\approx 0{,}05\\ \\text{rad/s}$"
+        correct: false
+        feedback: >
+          Le rapport est inversé : $\omega_0 = \sqrt{C/J}$ (le rappel au
+          numérateur, l'inertie au dénominateur), pas $\sqrt{J/C}$ — ce
+          dernier rapport intervient dans $T_0$, pas dans $\omega_0$.
+      - id: C
+        text: "$\\omega_0 = C/J = 400\\ \\text{rad/s}$"
+        correct: false
+        feedback: >
+          La racine carrée a été oubliée : $C/J = 400$ est $\omega_0^2$ (en
+          $\text{rad}^2/\text{s}^2$), pas $\omega_0$ lui-même. Il faut
+          encore prendre la racine carrée.
+      - id: D
+        text: "$\\omega_0 = 2\\pi\\sqrt{C/J} = 2\\pi\\times20 \\approx 125{,}7\\ \\text{rad/s}$"
+        correct: false
+        feedback: >
+          Le facteur $2\pi$ n'a rien à faire ici : $\omega_0=\sqrt{C/J}$
+          directement, sans $2\pi$. C'est $T_0=2\pi/\omega_0$ qui contient
+          ce facteur, pas $\omega_0$ lui-même — ce choix mélange les deux
+          formules.
+    correct_feedback: >
+      $\omega_0 = \sqrt{C/J} = \sqrt{8{,}0\times10^{-2}/2{,}0\times10^{-4}} =
+      \sqrt{400} = 20\ \text{rad/s}$.
+    solution: |
+      $$\omega_0 = \sqrt{\frac{C}{J}} = \sqrt{\frac{8{,}0\times10^{-2}}{2{,}0\times10^{-4}}} = \sqrt{400} = 20\ \text{rad/s}$$
+
+      (soit $T_0 = 2\pi/\omega_0 \approx 0{,}314\ \text{s}$, mais seule
+      $\omega_0$ était demandée ici.)
+
+  - id: SO-17
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [energie, amplitude, pendule_elastique]
+    stem: >
+      Un pendule élastique horizontal (sans frottement) a une énergie
+      mécanique $E_m = 0{,}08\ \text{J}$ pour une amplitude
+      $X_m = 4{,}0\ \text{cm}$. Si on relance le même pendule avec une
+      amplitude deux fois plus grande ($X_m' = 8{,}0\ \text{cm}$), que
+      devient $E_m$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_m' = 0{,}08\\ \\text{J}$ (inchangée), car l'énergie mécanique ne dépend que de $k$, pas de l'amplitude."
+        correct: false
+        feedback: >
+          C'est la période $T_0$ qui ne dépend pas de l'amplitude
+          (isochronisme), pas l'énergie mécanique. $E_m = \frac{1}{2}kX_m^2$
+          contient bien $X_m$ : ce sont deux grandeurs différentes, qui
+          n'ont pas la même dépendance à l'amplitude.
+      - id: B
+        text: "$E_m' = 0{,}32\\ \\text{J}$ (quadruplée), car $E_m \\propto X_m^2$."
+        correct: true
+      - id: C
+        text: "$E_m' = 0{,}02\\ \\text{J}$ (divisée par 4), car en doublant l'amplitude, on double la distance à parcourir donc on divise le temps, et l'énergie par 4."
+        correct: false
+        feedback: >
+          Ce raisonnement mélange plusieurs grandeurs sans lien direct avec
+          $E_m$ : la formule est simplement $E_m=\frac{1}{2}kX_m^2$. Doubler
+          $X_m$ multiplie $X_m^2$ par 4, donc multiplie $E_m$ par 4 —
+          l'inverse de « diviser ».
+      - id: D
+        text: "$E_m' = 0{,}16\\ \\text{J}$ (doublée), car l'énergie mécanique est proportionnelle à l'amplitude."
+        correct: false
+        feedback: >
+          $E_m=\frac{1}{2}kX_m^2$ est proportionnelle au carré de
+          l'amplitude, pas à l'amplitude elle-même. Doubler $X_m$ multiplie
+          donc $E_m$ par $2^2=4$, pas par 2.
+    correct_feedback: >
+      $E_m = \frac{1}{2}kX_m^2$ : en doublant $X_m$, on multiplie $X_m^2$ par
+      4, donc $E_m$ par 4 aussi. $E_m' = 4\times0{,}08 = 0{,}32\ \text{J}$.
+    solution: |
+      $$\frac{E_m'}{E_m} = \left(\frac{X_m'}{X_m}\right)^2 = \left(\frac{8{,}0}{4{,}0}\right)^2 = 4$$
+      $$E_m' = 4 \times 0{,}08 = 0{,}32\ \text{J}$$
+
+  - id: SO-18
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [energie, pendule_simple, energie_potentielle]
+    stem: >
+      Un pendule simple (fil + bille), sans frottement, oscille avec de
+      petites oscillations. À l'écart angulaire maximal $\theta_m$, la
+      vitesse est nulle. Quelle énergie potentielle faut-il utiliser dans le
+      bilan $E_m = E_c + E_p$ pour ce système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'énergie potentielle élastique $E_{pe} = \\frac{1}{2}k\\theta^2$, en remplaçant $x$ par $\\theta$ et $k$ par $g/L$ comme dans l'équation différentielle."
+        correct: false
+        feedback: >
+          Cette substitution de variables ($x\to\theta$, $k/m\to g/L$) est
+          légitime pour l'équation différentielle, où les deux systèmes ont
+          la même forme mathématique. Mais elle ne l'est pas pour l'énergie :
+          il n'y a pas de ressort ici, donc pas d'énergie potentielle
+          élastique du tout.
+      - id: B
+        text: "Aucune énergie potentielle n'intervient ici, seule l'énergie cinétique compte, car le pendule simple n'a pas de ressort."
+        correct: false
+        feedback: >
+          C'est vrai qu'il n'y a pas d'énergie élastique (pas de ressort) —
+          mais ce n'est pas la même chose que « aucune énergie
+          potentielle ». La pesanteur, elle, fournit une énergie potentielle
+          (de pesanteur), même en l'absence de tout ressort.
+      - id: C
+        text: "L'énergie potentielle de pesanteur, car le rappel du pendule simple vient du poids, pas d'un ressort — il n'y a pas d'énergie potentielle élastique ici."
+        correct: true
+      - id: D
+        text: "L'énergie potentielle électrique, par analogie avec le condensateur du circuit LC."
+        correct: false
+        feedback: >
+          L'analogie avec le circuit LC concerne la forme de l'équation
+          différentielle, pas la nature physique du système : un pendule
+          mécanique n'a aucune énergie électrique. C'est une confusion de
+          catégorie.
+    correct_feedback: >
+      Le rappel du pendule simple vient du poids, pas d'un ressort :
+      l'énergie potentielle à utiliser est celle de pesanteur, pas une
+      énergie élastique — le mécanisme de conservation est identique, seule
+      la nature de l'énergie potentielle change.
+    solution: |
+      Le pendule simple n'a pas de ressort : sa force de rappel est une
+      composante du poids. L'énergie potentielle à utiliser dans
+      $E_m = E_c + E_p$ est donc l'énergie potentielle de pesanteur, et non
+      une énergie élastique — comme le précise la leçon (R5, dernier
+      paragraphe).
+
+  - id: SO-19
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, pseudo_periode]
+    stem: >
+      On lâche un pendule élastique horizontal avec un frottement fluide
+      modéré. Le dispositif de mesure montre que le solide oscille encore,
+      avec un intervalle de temps régulier entre deux passages successifs
+      par un même extrême, mais que cet écart maximal diminue légèrement à
+      chaque aller-retour, jusqu'à devenir imperceptible après un grand
+      nombre de cycles. Quel régime décrit-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le régime apériodique, car le mouvement finit par s'arrêter."
+        correct: false
+        feedback: >
+          Le régime apériodique se reconnaît à l'absence totale
+          d'oscillation : le solide revient vers l'équilibre sans jamais le
+          dépasser. Ici, au contraire, il y a bien des allers-retours
+          réguliers qui persistent longtemps — ce n'est pas le même signe
+          observable, même si le mouvement finit lui aussi par s'arrêter au
+          bout d'un très grand nombre de cycles.
+      - id: B
+        text: "Le régime périodique, car un intervalle de temps régulier subsiste entre les extrêmes."
+        correct: false
+        feedback: >
+          La régularité de l'intervalle est un indice, mais le régime
+          périodique exige en plus une amplitude constante (frottement quasi
+          nul). Ici l'amplitude décroît clairement à chaque cycle : ce
+          détail exclut le régime périodique.
+      - id: C
+        text: "On ne peut pas identifier de régime sans connaître la valeur exacte de $h$."
+        correct: false
+        feedback: >
+          Le régime se reconnaît sur son comportement observable (intervalle
+          régulier + amplitude qui décroît), pas sur la valeur numérique de
+          $h$ : c'est précisément ce que permet une trace ou une description
+          expérimentale, sans avoir besoin de connaître $h$ au préalable.
+      - id: D
+        text: "Le régime pseudo-périodique : les oscillations persistent avec un intervalle de temps régulier (la pseudo-période), mais leur amplitude décroît progressivement à cause du frottement."
+        correct: true
+    correct_feedback: >
+      Deux indices combinés signent le régime pseudo-périodique : un
+      intervalle de temps régulier entre extrêmes (la pseudo-période) et une
+      amplitude qui décroît cycle après cycle.
+    solution: |
+      **Périodique :** amplitude constante — exclu ici (l'amplitude
+      décroît).
+
+      **Apériodique :** aucune oscillation, retour direct sans dépassement —
+      exclu ici (il y a bien des allers-retours réguliers).
+
+      **Pseudo-périodique :** oscillations qui persistent avec un intervalle
+      régulier, mais amplitude décroissante — c'est exactement ce qui est
+      décrit.
+
+  - id: SO-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, frottement]
+    stem: >
+      Sur un pendule élastique horizontal, on augmente progressivement le
+      frottement (la valeur de $h$), à $m$ et $k$ fixés, tout en restant
+      dans le régime pseudo-périodique. Comment évolue l'intervalle de temps
+      entre deux passages successifs par un même extrême (la pseudo-période
+      $T$) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T$ reste voisine de $T_0 = 2\\pi\\sqrt{m/k}$ (peu affectée, pour un amortissement modéré) ; c'est surtout l'amplitude qui décroît de plus en plus vite — jusqu'à ce que, pour un $h$ assez grand, on bascule dans le régime apériodique."
+        correct: true
+      - id: B
+        text: "$T$ diminue nettement : plus de frottement fait osciller le système plus vite."
+        correct: false
+        feedback: >
+          C'est le frottement qui gouverne l'amortissement (la vitesse à
+          laquelle l'amplitude décroît), pas la fréquence des oscillations
+          elles-mêmes. Confondre les deux, c'est prendre un frein pour un
+          accélérateur.
+      - id: C
+        text: "$T$ augmente nettement : plus de frottement freine le mouvement, donc chaque aller-retour prend plus longtemps."
+        correct: false
+        feedback: >
+          Le frottement dissipe de l'énergie (donc réduit l'amplitude)
+          plutôt que de ralentir fondamentalement le rythme des passages par
+          les extrêmes. Pour un amortissement pas trop fort, l'intervalle
+          entre deux extrêmes reste voisin de $T_0$, sans s'allonger
+          nettement.
+      - id: D
+        text: "$T$ devient égale à $2\\pi\\sqrt{h/k}$, une nouvelle formule qui dépend de $h$."
+        correct: false
+        feedback: >
+          Aucune formule de ce type n'a été établie dans la leçon : établir
+          l'équation différentielle amortie s'arrête volontairement là
+          (elle est hors-programme à résoudre complètement). On sait
+          seulement que, pour un amortissement faible, la pseudo-période
+          reste voisine de $T_0$.
+    correct_feedback: >
+      Le frottement $h$ gouverne l'amortissement (la décroissance de
+      l'amplitude), pas fondamentalement le rythme des oscillations : pour
+      un amortissement modéré, la pseudo-période reste proche de
+      $T_0=2\pi\sqrt{m/k}$.
+    solution: |
+      Le coefficient $h$ apparaît dans l'équation $m\ddot{x}+h\dot{x}+kx=0$
+      comme un terme d'amortissement : il gouverne la décroissance de
+      l'amplitude d'un cycle à l'autre, et, au-delà d'une certaine valeur,
+      le passage au régime apériodique. Il n'introduit pas de formule de
+      pseudo-période dépendant de $h$ dans le programme ; pour un
+      amortissement faible, $T\approx T_0 = 2\pi\sqrt{m/k}$.
+
+  - id: SO-21
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [entretien, amortissement, pendule_torsion]
+    stem: >
+      Dans une montre mécanique, un ressort moteur (le barillet) redonne,
+      via l'échappement, une petite impulsion au balancier à chaque
+      oscillation, pour compenser les frottements internes. Quel est le
+      rôle de ce dispositif d'entretien sur la période des oscillations du
+      balancier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il impose sa propre fréquence au balancier, comme un moteur qui entraîne le mouvement de l'extérieur."
+        correct: false
+        feedback: >
+          L'entretien ne pilote pas la fréquence : il compense exactement
+          l'énergie perdue par frottement, sans imposer de rythme. Le
+          balancier continue d'osciller à sa propre période, fixée par son
+          moment d'inertie et la raideur de son ressort spiral, pas par le
+          dispositif d'entretien.
+      - id: B
+        text: "Il ne fixe pas le rythme : le balancier continue d'osciller à sa période propre, déterminée par son moment d'inertie et la raideur de son ressort spiral ; le dispositif compense seulement l'énergie perdue par frottement."
+        correct: true
+      - id: C
+        text: "Sans lui, le balancier oscillerait plus vite ; le dispositif ralentit le mouvement pour le rendre régulier."
+        correct: false
+        feedback: >
+          Le dispositif ne joue pas le rôle d'un frein régulateur : sans
+          lui, le balancier ne ralentirait pas ni n'accélérerait, il
+          finirait par s'amortir et s'arrêter à cause du frottement. Le rôle
+          de l'entretien est de compenser cette perte, pas de contrôler la
+          vitesse.
+      - id: D
+        text: "Il n'a aucun effet sur les oscillations ; son seul rôle est de faire avancer les aiguilles de la montre."
+        correct: false
+        feedback: >
+          C'est l'inverse : sans ce dispositif, les frottements internes
+          amortiraient et arrêteraient le balancier, et la montre
+          s'arrêterait complètement. C'est justement parce qu'il entretient
+          l'oscillation du balancier que les aiguilles peuvent continuer
+          d'avancer régulièrement.
+    correct_feedback: >
+      Le dispositif d'entretien compense exactement l'énergie dissipée par
+      frottement, à chaque cycle — il ne fixe pas le rythme. Le balancier
+      oscille à sa propre période propre, déterminée par $J$ et $C$ (son
+      ressort spiral), exactement comme le générateur d'entretien du
+      circuit RLC ne fixe pas non plus la fréquence du circuit.
+    solution: |
+      Le dispositif d'entretien apporte, à chaque période, un complément
+      d'énergie calé pour compenser exactement la perte par frottement — ni
+      plus, ni moins. Le balancier continue donc d'osciller à sa période
+      propre $T_0 = 2\pi\sqrt{J/C}$, fixée par son moment d'inertie $J$ et
+      la raideur de son ressort spiral $C$ : l'entretien ne fait que
+      prolonger l'oscillation naturelle, il ne la pilote pas depuis
+      l'extérieur.
+
+  - id: SO-22
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_simple, isochronisme, bac]
+    stem: >
+      Un pendule simple de longueur $L = 2{,}5\ \text{m}$ oscille avec de
+      petites oscillations au voisinage d'un lieu où
+      $g \approx 10\ \text{m}\cdot\text{s}^{-2}$ (on prendra
+      $\pi^2\approx 10$). Un élève affirme : « Si on utilise une bille deux
+      fois plus lourde au bout du même fil, la période $T_0$ va doubler,
+      car il faudra deux fois plus d'énergie pour la faire osciller. » Que
+      peut-on dire de cette affirmation, et quelle est la valeur numérique
+      de $T_0$ (pour la masse initiale) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'affirmation est vraie : en doublant la masse, $T_0$ double aussi, ce qui donnerait, pour la masse initiale, une valeur de référence $T_0 \\approx 6{,}28\\ \\text{s}$."
+        correct: false
+        feedback: >
+          $T_0 = 2\pi\sqrt{L/g}$ ne contient pas la masse : elle se
+          simplifie complètement dans l'établissement de l'équation du
+          pendule simple. « Plus d'énergie nécessaire » n'implique pas
+          « plus de temps » — c'est la même confusion masse/durée qu'en
+          chute libre. $6{,}28\ \text{s}$ n'est d'ailleurs pas non plus la
+          bonne valeur numérique.
+      - id: B
+        text: "L'affirmation est fausse, mais $T_0 \\approx 0{,}5\\ \\text{s}$ (on a confondu $T_0$ avec $\\sqrt{L/g}$, en oubliant le facteur $2\\pi$ entièrement)."
+        correct: false
+        feedback: >
+          Le rejet de l'affirmation sur la masse est correct, mais le
+          calcul numérique oublie complètement le facteur $2\pi$ :
+          $\sqrt{L/g}=\sqrt{2{,}5/10}=0{,}5\ \text{s}$ n'est qu'une étape
+          intermédiaire, pas $T_0$.
+      - id: C
+        text: "L'affirmation est fausse : $T_0 = 2\\pi\\sqrt{L/g} = 2\\pi\\sqrt{2{,}5/10} = 2\\pi\\times0{,}5 \\approx 3{,}14\\ \\text{s}$, une valeur indépendante de la masse."
+        correct: true
+      - id: D
+        text: "L'affirmation est fausse, mais $T_0 \\approx 1{,}57\\ \\text{s}$ (on a calculé $\\pi\\sqrt{L/g}$ au lieu de $2\\pi\\sqrt{L/g}$)."
+        correct: false
+        feedback: >
+          Le rejet de l'affirmation sur la masse est correct, mais il
+          manque un facteur 2 dans le calcul : c'est $2\pi\sqrt{L/g}$, pas
+          $\pi\sqrt{L/g}$. $1{,}57\ \text{s}\approx\pi\times0{,}5$
+          correspond à la moitié seulement de la bonne valeur.
+    correct_feedback: >
+      La masse se simplifie entièrement dans l'établissement de l'équation
+      du pendule simple : elle n'a aucun effet sur $T_0$. Numériquement,
+      $T_0 = 2\pi\sqrt{2{,}5/10} = 2\pi\times0{,}5\approx3{,}14\ \text{s}$,
+      quelle que soit la masse de la bille.
+    solution: |
+      **Sur l'affirmation :** dans $mL\ddot\theta = -mg\sin\theta$, la masse
+      se simplifie des deux côtés avant même d'arriver à $T_0$ : elle ne
+      peut donc pas réapparaître dans $T_0=2\pi\sqrt{L/g}$. L'argument
+      énergétique de l'élève ne trouve aucune prise dans cette formule —
+      l'affirmation est fausse.
+
+      **Calcul :**
+      $$T_0 = 2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2{,}5}{10}} = 2\pi\sqrt{0{,}25} = 2\pi\times0{,}5 \approx 3{,}14\ \text{s}$$
+
+  - id: SO-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, energie, bac]
+    stem: >
+      Un pendule de torsion (disque de moment d'inertie
+      $J = 5{,}0\times10^{-3}\ \text{kg}\cdot\text{m}^2$, fil de constante
+      de torsion $C = 0{,}20\ \text{N}\cdot\text{m/rad}$) est lâché depuis
+      $\theta_0 = 0{,}30\ \text{rad}$, sans vitesse angulaire initiale, sans
+      frottement. Par analogie avec le pendule élastique (où
+      $E_{pe}=\frac{1}{2}kx^2$), l'énergie potentielle de torsion s'écrit
+      $E_{p,tor} = \frac{1}{2}C\theta^2$. Quelle est l'énergie mécanique de
+      ce pendule ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_m = 1{,}8\\times10^{-2}\\ \\text{J}$ (calculée comme $C\\theta_0^2$, sans le facteur $\\frac12$)."
+        correct: false
+        feedback: >
+          Le facteur $\frac12$ a été oublié : $E_{p,tor}=\frac{1}{2}C\theta_0^2$,
+          exactement comme $E_{pe}=\frac{1}{2}kx^2$ pour le ressort. Sans ce
+          facteur, le résultat est deux fois trop grand.
+      - id: B
+        text: "$E_m = 3{,}0\\times10^{-2}\\ \\text{J}$ (calculée comme $\\frac{1}{2}C\\theta_0$, avec $\\theta_0$ à la puissance 1)."
+        correct: false
+        feedback: >
+          L'énergie potentielle varie comme le carré de l'écart, pas
+          proportionnellement à l'écart : il faut $\theta_0^2$, pas
+          $\theta_0$ seul. C'est la même dépendance quadratique que pour
+          $E_{pe}=\frac{1}{2}kx^2$.
+      - id: C
+        text: "$E_m = \\frac{1}{2}J\\theta_0^2 = 2{,}25\\times10^{-4}\\ \\text{J}$."
+        correct: false
+        feedback: >
+          Ce calcul utilise $J$ (la grandeur d'« inertie », qui
+          interviendrait dans une énergie cinétique, $E_c=\frac12
+          J\dot\theta^2$) à la place de $C$ (la grandeur de « rappel », qui
+          intervient dans l'énergie potentielle). Ce sont deux rôles
+          différents, à ne pas intervertir.
+      - id: D
+        text: "$E_m = 9{,}0\\times10^{-3}\\ \\text{J}$"
+        correct: true
+    correct_feedback: >
+      Au lâcher, la vitesse angulaire est nulle : toute l'énergie mécanique
+      est potentielle. $E_m = \frac{1}{2}C\theta_0^2 =
+      \frac{1}{2}\times0{,}20\times(0{,}30)^2 = 9{,}0\times10^{-3}\ \text{J}$,
+      et elle reste constante ensuite (pas de frottement).
+    solution: |
+      $$E_m = E_{p,tor}(0) = \frac{1}{2}C\theta_0^2 = \frac{1}{2}\times0{,}20\times(0{,}30)^2 = \frac{1}{2}\times0{,}20\times0{,}09 = 9{,}0\times10^{-3}\ \text{J}$$
+
+      Sans vitesse angulaire initiale, l'énergie cinétique est nulle à
+      $t=0$ : toute l'énergie est dans le fil tordu. Sans frottement, $E_m$
+      reste constante à cette valeur pendant tout le mouvement.
+
+  - id: SO-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_systemes_oscillants
+    tags: [synthese, analogie, tous_systemes]
+    stem: >
+      Pour les quatre systèmes oscillants étudiés (pendule élastique,
+      pendule simple, pendule pesant, pendule de torsion), l'équation
+      différentielle a toujours la forme $\ddot{X} + \omega_0^2 X = 0$, où
+      $X$ joue le rôle d'une position ou d'un angle. Laquelle des
+      propositions suivantes associe correctement la grandeur $\omega_0^2$
+      à chacun des quatre systèmes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $mgd/J_\\Delta$ ; pendule de torsion : $C/J$."
+        correct: true
+      - id: B
+        text: "Pendule élastique : $k/m$ ; pendule simple : $L/g$ ; pendule pesant : $J_\\Delta/(mgd)$ ; pendule de torsion : $J/C$."
+        correct: false
+        feedback: >
+          Chaque rapport (sauf celui du pendule élastique) est inversé :
+          « inertie » doit toujours être au dénominateur et « rappel » au
+          numérateur dans $\omega_0^2$. Ces rapports inversés donneraient
+          en réalité $T_0^2/(4\pi^2)$, pas $\omega_0^2$.
+      - id: C
+        text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $g/L$ (comme le pendule simple) ; pendule de torsion : $C/J$."
+        correct: false
+        feedback: >
+          Le pendule pesant ne se réduit à $g/L$ que dans le cas particulier
+          d'une masse ponctuelle. Pour un solide étendu quelconque, il faut
+          $mgd/J_\Delta$, qui dépend de la répartition de la masse (via
+          $J_\Delta$) et de la distance $d=\Delta G$ — pas seulement d'une
+          longueur $L$.
+      - id: D
+        text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $mgd/J_\\Delta$ ; pendule de torsion : $J/C$."
+        correct: false
+        feedback: >
+          Les trois premiers rapports sont corrects, mais celui du pendule
+          de torsion est inversé : c'est $J$ (l'inertie) qui doit être au
+          dénominateur et $C$ (le rappel) au numérateur, soit $C/J$ — pas
+          $J/C$.
+    correct_feedback: >
+      Dans chaque cas, $\omega_0^2$ = (grandeur de rappel) / (grandeur
+      d'inertie) : $k/m$, $g/L$, $mgd/J_\Delta$, $C/J$ — la même structure
+      se répète, seuls les noms changent.
+    solution: |
+      | Système | Inertie | Rappel | $\omega_0^2$ |
+      |---|---|---|---|
+      | Pendule élastique | $m$ | $k$ | $k/m$ |
+      | Pendule simple | — (s'annule) | $g/L$ | $g/L$ |
+      | Pendule pesant | $J_\Delta$ | $mgd$ | $mgd/J_\Delta$ |
+      | Pendule de torsion | $J$ | $C$ | $C/J$ |
+
+      Dans les quatre cas, $\omega_0^2$ = rappel / inertie, jamais l'inverse.
