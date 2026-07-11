@@ -31,13 +31,19 @@
  * No browser storage — state is local React state only.
  * Keyboard navigable; .focus-ring on all interactive elements.
  * Math in stems/choices rendered via KaTeX.
+ *
+ * Answer-choice order is DETERMINISTICALLY shuffled per item (see
+ * lib/shuffle.ts and the same note in McqItem.tsx) — kills the file-order
+ * answer-key bias without breaking SSR/hydration parity. ChoiceButton derives
+ * the displayed letter from array position, so no change was needed there.
  */
 
-import { useState, useId } from "react";
+import { useState, useId, useMemo } from "react";
 import type { CheckpointItem as CheckpointItemType } from "@/lib/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/utils";
 import { ChoiceButton, MathText, ResultRow } from "@/components/notion/ChoiceButton";
+import { shuffledChoices } from "@/lib/shuffle";
 
 // ── Main CheckpointItem component ─────────────────────────────────────────────
 
@@ -50,7 +56,11 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
   const [answered, setAnswered] = useState(false);
   const baseId = useId();
 
-  const choices = item.choices ?? [];
+  // Deterministic per-item shuffle — see McqItem.tsx for the full rationale.
+  const choices = useMemo(
+    () => shuffledChoices(item.choices ?? [], item.id),
+    [item.choices, item.id]
+  );
 
   function handleSelect(choiceId: string) {
     if (answered) return;

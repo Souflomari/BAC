@@ -28,12 +28,21 @@
  *
  * State is local to the component — no localStorage, no cookies.
  * Math in stems and choices is rendered via KaTeX.
+ *
+ * Answer-choice order is DETERMINISTICALLY shuffled per item (see
+ * lib/shuffle.ts) — this kills the file-order answer-key bias (correct
+ * answers clustering on choice A) without breaking SSR/hydration parity or
+ * dom-truth's rendered-truth assertions. ChoiceButton derives the displayed
+ * A/B/C/D letter from the choice's POSITION in the (already-shuffled) array
+ * it's handed, never from choice.id — so shuffling here is enough; the
+ * shared component needed no change.
  */
 
-import { useState, useId } from "react";
+import { useState, useId, useMemo } from "react";
 import type { NotionItem } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { ChoiceButton, MathText, ResultRow } from "@/components/notion/ChoiceButton";
+import { shuffledChoices } from "@/lib/shuffle";
 
 // ── Main McqItem component ────────────────────────────────────────────────────
 interface McqItemProps {
@@ -47,7 +56,14 @@ export function McqItem({ item, index }: McqItemProps) {
   const [answered, setAnswered] = useState(false);
   const baseId = useId();
 
-  const choices = item.choices ?? [];
+  // Deterministic per-item shuffle (seeded by the item's own globally-unique
+  // id) — same order on server render and client hydration, stable across
+  // re-renders/reloads for a given item, different across items. The choice
+  // objects (id, correct, feedback) are untouched; only display ORDER moves.
+  const choices = useMemo(
+    () => shuffledChoices(item.choices ?? [], item.id),
+    [item.choices, item.id]
+  );
 
   function handleSelect(choiceId: string) {
     if (answered) return;
@@ -62,6 +78,11 @@ export function McqItem({ item, index }: McqItemProps) {
 
   return (
     <div
+      // Identifies this item's source (items.yaml) id in the DOM — used by
+      // web/scripts/dom-truth.mjs's shuffle-order cross-check sweep to look
+      // up the authored choices on disk and verify the rendered order
+      // matches lib/shuffle.ts's prediction. Not used for styling/state.
+      data-item-id={item.id}
       className={cn(
         "rounded-xl",
         // Surface-container tonal ladder (ADR 0024): an elevation-2 card steps UP

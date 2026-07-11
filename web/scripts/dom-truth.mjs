@@ -28,8 +28,51 @@ import { readFileSync, readdirSync, statSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import jitiFactory from "jiti";
+import yaml from "js-yaml";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const CONTENT_ROOT = path.join(path.dirname(WEB), "content");
+
+// ── keep in sync with web/src/lib/shuffle.ts — dom-truth cross-checks this ──
+//
+// Duplicate of hashString + mulberry32 + seededShuffle from
+// web/src/lib/shuffle.ts (a plain Node script here can't import TS from
+// web/src without a bundler, and web/scripts/item-stats.mjs carries its own
+// identical copy for the same reason). If the shuffle algorithm changes in
+// lib/shuffle.ts, update THIS copy and item-stats.mjs's copy in the same
+// commit — the SWEEP below (dom-truth vs. the live-rendered app) and
+// item-stats.mjs's report exist specifically to catch the three drifting
+// apart from each other.
+function domTruthHashString(s) {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    hash ^= s.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return hash >>> 0;
+}
+function domTruthMulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function domTruthSeededShuffle(arr, seed) {
+  const result = arr.slice();
+  const rand = domTruthMulberry32(seed);
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+function domTruthShuffledChoices(choices, seedKey) {
+  return domTruthSeededShuffle(choices, domTruthHashString(seedKey));
+}
 
 // Loads a web/src/lib/interactive-figures/<slug>.ts module directly from
 // TypeScript source at test time (via jiti, already a transitive devDep) — so
@@ -1939,6 +1982,96 @@ try {
     checks++;
     if (kerr.n > 0) failures += fail(`${kerr.n} .katex-error rendered — « ${kerr.sample} »`);
     else console.log(`  ✓ no .katex-error on the page`);
+  }
+
+  // (Answer-choice shuffle cross-check) The rendered choice ORDER for the
+  // first MCQ on the NOTION page must match the prediction from applying
+  // THIS FILE's duplicated hash+shuffle to the item's choices as authored on
+  // disk (items.yaml/checkpoints.yaml). This is the drift guard promised by
+  // the "keep in sync" comment above domTruthShuffledChoices: if
+  // web/src/lib/shuffle.ts's algorithm ever changes without updating the
+  // duplicates here (and in item-stats.mjs), this sweep is what catches it —
+  // it compares the LIVE, compiled app's actual output against an
+  // independent re-implementation, not against itself.
+  //
+  // Text comparison strips KaTeX/markdown so it survives rendering (a raw
+  // "$T_0$" in the YAML becomes real KaTeX markup in the DOM) — both sides
+  // are reduced to their non-math prose and normalized (apostrophe variant,
+  // whitespace incl. the narrow no-break space remarkFrenchTypography
+  // inserts) before comparing, so a genuine order mismatch is what fails
+  // this, not a rendering-format difference.
+  {
+    console.log(`\n[${NOTION}] SWEEP: answer-choice shuffle — rendered order matches lib/shuffle.ts prediction`);
+    const zpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await zpage.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
+    const rendered = await zpage.evaluate(() => {
+      const target = document.querySelector("[data-item-id]");
+      if (!target) return null;
+      const itemId = target.getAttribute("data-item-id");
+      const ul = target.querySelector("ul[aria-label^='Choix pour la question']");
+      const buttons = Array.from(ul?.querySelectorAll(":scope > li > button") ?? []);
+      const texts = buttons.map((btn) => {
+        const span = btn.querySelector("span.flex-1");
+        if (!span) return "";
+        const clone = span.cloneNode(true);
+        clone.querySelectorAll(".katex").forEach((k) => k.remove());
+        return (clone.textContent || "")
+          .replace(/['’]/g, "'")
+          .replace(/\s+/g, " ")
+          .trim();
+      });
+      return { itemId, texts };
+    });
+    await zpage.close();
+
+    checks++;
+    if (!rendered || !rendered.itemId) {
+      failures += fail("no [data-item-id] MCQ found on the notion page");
+    } else {
+      // Load the item's authored choices from disk — the same two files
+      // lib/content.ts reads (items.yaml + checkpoints.yaml), subject/slug
+      // parsed from NOTION.
+      const [, , subject, slug] = NOTION.split("/");
+      const dir = path.join(CONTENT_ROOT, subject, slug);
+      let authoredChoices = null;
+      for (const [file, topKey] of [["items.yaml", "items"], ["checkpoints.yaml", "checkpoints"]]) {
+        try {
+          const raw = readFileSync(path.join(dir, file), "utf8");
+          const parsed = yaml.load(raw);
+          const list = parsed && Array.isArray(parsed[topKey]) ? parsed[topKey] : [];
+          const found = list.find((it) => it && it.id === rendered.itemId);
+          if (found && Array.isArray(found.choices)) {
+            authoredChoices = found.choices;
+            break;
+          }
+        } catch {
+          // missing/malformed file — try the next one
+        }
+      }
+
+      if (!authoredChoices) {
+        failures += fail(`item "${rendered.itemId}" not found on disk under ${dir}`);
+      } else {
+        const predicted = domTruthShuffledChoices(authoredChoices, rendered.itemId).map((c) =>
+          String(c.text ?? "")
+            .replace(/\$[^$]*\$/g, "") // strip inline-math spans (rendered separately as KaTeX)
+            .replace(/[*_`]/g, "") // strip markdown emphasis/code markers
+            .replace(/['’]/g, "'")
+            .replace(/\s+/g, " ")
+            .trim()
+        );
+        const mismatch =
+          predicted.length !== rendered.texts.length ||
+          predicted.some((t, i) => t !== rendered.texts[i]);
+        if (mismatch) {
+          failures += fail(
+            `choice order mismatch for "${rendered.itemId}":\n      predicted: ${JSON.stringify(predicted)}\n      rendered:  ${JSON.stringify(rendered.texts)}`
+          );
+        } else {
+          console.log(`  ✓ "${rendered.itemId}" rendered order == predicted order (${predicted.length} choices)`);
+        }
+      }
+    }
   }
 
   // (F9) Mobile 390px overflow guard (hunt 07-06): the page NEVER scrolls
