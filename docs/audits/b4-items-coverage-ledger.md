@@ -122,3 +122,86 @@ nombres-complexes-1 (+15, R0-R6), nombres-complexes-2 (+18, R0-R7),
 probabilites-conditionnelles (+3, R0 only — R1-R5 nested `###`, existing
 items render via the orphan net), structures-algebriques (+18, R0-R7),
 suites-numeriques (+27, R0-R10). Closes the maths matière (13 lessons).
+
+### Waves P1–P5 — pc (24 lessons) — DONE
+
+All 24 pc lessons brought to ≥3/chapter, `validate-content.mjs` clean, one
+commit each. Every distractor names a specific physics error; solutions kept
+concise; correct-answer positions varied. Large lessons (≥8 chapters or large
+gaps) were authored in two Edit passes to stay under the output-token limit;
+`geometrie-espace` (maths) was split into part A (R0–R5) + part B (R6–R10) for
+the same reason.
+
+- aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans,
+  controle-catalyse, decroissance-radioactive, dipole-rl, electrolyse,
+  esterification-hydrolyse, etat-equilibre, evolution-spontanee,
+  noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques,
+  ondes-mecaniques-progressives, piles, propagation-onde-lumineuse, rc-charge,
+  reactions-acido-basiques, rlc-serie, rotation-axe-fixe, suivi-temporel-vitesse,
+  systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides.
+- `rlc-serie` respected its formal misconception inventory: R0's accroche
+  introduced one new misconception (`confond-oscillation-avec-decharge-rc`) to
+  reach the ≥3 floor, and the WAVE-1 `coverage_summary` was recounted honestly
+  (several pre-existing undercounts corrected).
+- One escaping fix along the way (`evolution-spontanee` line 627,
+  single-backslash `\rightleftharpoons` → doubled inside a double-quoted
+  `text:`), caught by `validate-content.mjs` and re-validated clean.
+
+### Waves PH1–PH2 — philo (11 lessons) — DONE
+
+All 11 philo lessons brought to ≥3/chapter, `validate-content.mjs` clean, one
+commit each. Philo items are a **different genre**: comprehension /
+argument-analysis MCQs with `misconceptions: []` (no formal inventory, no math).
+Each distractor names a specific philosophical error — confusing one author's
+thesis with another's, asserting the inverse of an author's actual thesis, or
+conflating two concepts — mined largely from each lesson's own
+`> Erreur à éviter:` callouts. R0 accroche chapters took lighter comprehension
+checks; R-final "Pour t'entraîner" chapters took dissertation-method items.
+
+- autrui, l-etat, l-histoire, la-liberte, la-personne, la-verite (+24, the
+  largest, authored in three small passes), la-violence (+21, two passes),
+  le-bonheur, le-devoir, le-droit-la-justice, theorie-experience.
+- A mid-wave session rate-limit (resets 1am UTC) killed six PH1 agents; three
+  had already written complete files (autrui, l-histoire, theorie-experience),
+  three had written only pass 1 (R0–R4: l-etat, la-personne, le-droit-la-justice).
+  The three complete files were committed as-is; the three partials were finished
+  with small R5–R7 top-up agents after the reset — no work discarded.
+
+### Deliberate exception — probabilites-conditionnelles nested `### R1`
+
+`content/maths/probabilites-conditionnelles/lesson.md` is the pilot lesson whose
+R1–R5 are nested `### ` under one `## Décortiquer` container, not flat `## R<n>`.
+`NotionBody` chapterizes only flat `## R<n>` headings, so R1–R5 items are
+**orphans**: the orphan net pools them (24 items) into the last rendered chapter.
+Every *rendered* chapter therefore already carries ≥3 questions (R0 = 3, orphan
+pool = 24). The file is also a formally-structured pilot with per-misconception
+ceilings and an asserted `coverage_summary: floor_met: true`; its
+`transpose-conditionnel` misconception sits at the documented 6-item ceiling.
+The nested-`### R1` metadata count of 2 has **no separate rendered surface**, so
+it was left untouched rather than forcing a redundant item that would break the
+file's own invariants. This is the single deliberate exception in the campaign.
+
+---
+
+## Closing summary — B4 COMPLETE
+
+**48 / 48 lessons** brought to ≥3 items per rendered chapter: **maths 13/13,
+pc 24/24, philo 11/11.** (SVT deferred by owner — Fable guardrails.)
+
+Verification at close:
+- `validate-content.mjs` clean on every touched lesson (YAML + KaTeX + markers).
+- Corpus-wide sweep: **zero** flat `## R<n>` chapters below 3 items across
+  maths/pc/philo (the one nested-`###` case documented above).
+- `npm run build` clean (all 61 notions prerender); build also verified under a
+  1 GB Node heap cap (rules out any build-memory regression from the added
+  items).
+- `dom-truth.mjs` 155/155 after the pc/maths waves; item additions change only
+  the count of `<li>` rendered inside each chapter's `ChapterQuestions` block,
+  not page structure.
+
+Method notes carried forward for any future top-up:
+- Wave discipline (matière-pure batches, one commit per lesson, validate +
+  re-tally before each commit) survived two provider-side session rate-limits
+  and a 64k output-token limit without losing or corrupting a single file.
+- Large lessons (≥8 chapters or large gaps) MUST be authored in 2–3 Edit passes;
+  a single-pass +24/+27 lesson exceeds the output-token limit.
