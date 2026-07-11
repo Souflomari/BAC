@@ -1,0 +1,431 @@
+# ════════════════════════════════════════════════════════════════════════
+# Frontière curriculaire — filière SVT (Sciences de la Vie et de la Terre) · SVT
+#
+# Cadre source : « Cadre de référence de l'examen national du baccalauréat —
+#   Sciences de la Vie et de la Terre — filière SVT » (MEN/CNEEO). Cadre 2015
+#   en vigueur pour la session 2026.
+#   PDF officiel = image SCANNÉE sans couche texte (CCITT Fax) →
+#   voir docs/cadre/sources/README-svt.md
+#
+# ════════════════════════════════════════════════════════════════════════
+# STATUT : PROPOSITION — NON AUTORITATIVE — DOCUMENTATION SEULEMENT.
+#   ⚠ Le contenu SVT est GELÉ pour cette campagne : cette extraction est
+#     JOURNALISÉE, elle ne déclenche AUCUNE modification de contenu. Elle est
+#     l'artefact autoritatif d'une FUTURE session d'authoring SVT.
+#   Ne devient fiable qu'après les TROIS portes (RULES §5) :
+#     1. relecture longue Gemini (couverture : aucun savoir-faire perdu/ajouté ;
+#        réconciliation des poids) ;
+#     2. research-challenger (attaque de la couche `derived` : limites/exclusions) ;
+#     3. validation humaine (profondeur).
+# ════════════════════════════════════════════════════════════════════════
+#
+# ── Convention de provenance (spécifique SVT ; PAS de `cadre p.N` ici) ──
+#   research-consensus → corroboré par ≥2 sources indépendantes (synthèses
+#                        publiques + cadre.yaml/bac-reference.md du dépôt + lecture
+#                        de nos 11 leçons). Structure de l'épreuve, barème 5/15,
+#                        architecture domaines/chapitres, présence des unités.
+#   derived            → reconstruit du programme marocain standard 2 Bac SVT +
+#                        expertise + contenu de nos leçons. NON vérifié verbatim.
+#                        Granularité fine des savoir_faire, TOUTES les limites,
+#                        TOUTES les exclusions. À VALIDER.
+#   ⚠ Le PDF officiel est scanné/non-texte : impossible d'attribuer une page.
+#     Aucune provenance `cadre p.N` — ce serait fabriqué.
+#
+# ── Structure ──  domaines → sous_domaines → chapitres → {programme, savoir_faire, limites}
+#   Deux domaines : Biologie / Géologie (mirroir de la bipartition PC = Physique/Chimie).
+# ════════════════════════════════════════════════════════════════════════
+
+filiere: sciences_vie_terre           # la filière « SVT » — SVT y est matière principale
+matiere: svt
+serie: sciences_experimentales
+cadre_annee: 2015
+cadre_session: 2026
+coefficient: 7                        # source: research-consensus (matière principale SVT)
+duree_epreuve_h: 3                    # source: research-consensus
+
+# ── Forme de l'épreuve (le fait le plus load-bearing de la matière) ──
+epreuve:                              # source: research-consensus (triangulation ≥2)
+  total_points: 20
+  parties:
+    - id: restitution_connaissances
+      nom: "Partie I — Restitution des connaissances"
+      points: 5                       # 25 %
+      formats: "définitions, QCM, vrai/faux, schémas légendés, restitution de mécanismes"
+    - id: raisonnement_communication
+      nom: "Partie II — Raisonnement scientifique et communication graphique"
+      points: 15                      # 75 %
+      formats: >
+        analyse de documents, interprétation d'expériences, exploitation ET
+        construction de graphes/courbes/tableaux, échiquiers de croisement, arbres
+        généalogiques, coupes géologiques, profils, électrophorèses ; synthèse argumentée.
+
+habiletes_ratios_examen:              # source: research-consensus (= cadre.yaml svt_stream)
+  restitution_connaissances: 25       # Partie I (5/20)
+  raisonnement_scientifique_communication: 75   # Partie II (15/20)
+  # NB : ce barème 25/75 est TRANSVERSAL aux unités — chaque domaine peut être
+  #      mobilisé dans les deux parties. La répartition fine par domaine × habileté
+  #      figure au Tableau de spécification du cadre, NON lisible (PDF scanné) →
+  #      non reproduite ici (voir coverage_notes.poids_par_domaine).
+
+domaines:
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: biologie
+    nom: "Biologie"
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: metabolisme_energie
+        nom: "Consommation de la matière organique et flux d'énergie"
+        poids: { note: "répartition % par domaine non publiée à cette granularité (PDF scanné) — voir coverage_notes" }   # source: derived
+        habiletes: { note: "barème transversal 25 restitution / 75 raisonnement (voir en-tête)" }   # source: research-consensus
+        competences_ciblees:          # source: derived (programme standard)
+          - "Expliquer la libération de l'énergie contenue dans la matière organique à l'échelle cellulaire (respiration, fermentation) et le rôle de l'ATP ; relier structure et fonction de la mitochondrie et du muscle strié squelettique ; exploiter des documents expérimentaux (ExAO, bilans chiffrés) pour caractériser les voies métaboliques."
+        chapitres:
+
+          - id: role_enzymes
+            nom: "Le rôle des enzymes (biocatalyseurs) dans le métabolisme et la digestion"
+            lesson_slug: role-enzymes
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Nature protéique de l'enzyme ; biocatalyseur non consommé ; site actif et modèle clé-serrure ; complexe enzyme-substrat."
+              - "Double spécificité : de substrat et d'action."
+              - "Facteurs modifiant l'activité enzymatique : température, pH (optimum, dénaturation), concentration en substrat (saturation), concentration en enzyme."
+              - "Rôle des enzymes digestives (hydrolyse des macromolécules alimentaires)."
+            savoir_faire:             # source: derived — orienté raisonnement sur documents (Partie II)
+              - "Exploiter une expérience à variables contrôlées (tubes témoins) pour établir la spécificité de substrat vs d'action."
+              - "Interpréter une courbe activité–température ou activité–pH : localiser l'optimum, distinguer effet réversible (cinétique) et dénaturation irréversible."
+              - "Interpréter une courbe vitesse–[substrat] (palier de saturation) et vitesse–[enzyme] (proportionnalité) et relier chaque forme au mécanisme du site actif."
+              - "Écrire le cycle E + S ⇌ ES → E + P ; rédiger un raisonnement causal reliant observation et mécanisme moléculaire."
+            limites:                  # source: derived
+              - "Cinétique traitée GRAPHIQUEMENT/qualitativement : optimum, saturation, dénaturation. PAS de modèle de Michaelis-Menten formel (Km, Vmax, équation), pas de constante catalytique kcat, pas d'inhibition compétitive/allostérique quantitative."
+              - "Modèle clé-serrure ; l'ajustement induit n'est pas exigé au-delà de l'idée de complémentarité de forme."
+
+          - id: liberation_energie
+            nom: "La libération de l'énergie emmagasinée dans la matière organique (respiration, fermentation)"
+            lesson_slug: liberation-energie-matiere-organique
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "L'ATP, monnaie énergétique : structure, hydrolyse/régénération, distinction avec une réserve (glucose/lipides)."
+              - "Glycolyse (cytoplasme) : glucose → 2 pyruvate, bilan net +2 ATP, réduction de NAD⁺."
+              - "Respiration cellulaire : oxydation du pyruvate et cycle de Krebs (matrice, oxydation complète, CO₂, coenzymes réduits) ; chaîne respiratoire et phosphorylation oxydative (membrane interne, gradient de H⁺/chimiosmose, ATP synthase, O₂ accepteur final)."
+              - "Bilan énergétique (ordre de grandeur ≈ 36–38 ATP/glucose) ; relation structure-fonction de la mitochondrie."
+              - "Fermentation (lactique, alcoolique) : régénération du NAD⁺, bilan limité à 2 ATP, produits finaux."
+            savoir_faire:             # source: derived — Partie II
+              - "Exploiter un dispositif ExAO / une expérience (levures ± O₂, muscle) pour identifier la voie métabolique à partir des échanges gazeux et des produits."
+              - "Établir/vérifier un bilan de matière (comptage des carbones) et un bilan énergétique chiffré ; comparer respiration et fermentation."
+              - "Localiser chaque étape dans le compartiment cellulaire correspondant et relier la structure (crêtes, matrice) à la fonction."
+            limites:                  # source: derived
+              - "Bilans en ORDRES DE GRANDEUR (glycolyse +2 ; respiration ≈ 36–38 ; fermentation 2). Les étapes enzymatiques détaillées et les intermédiaires (au-delà de pyruvate, acétyle, CO₂, coenzymes) ne sont pas exigés."
+              - "Chimiosmose traitée qualitativement (gradient de H⁺, ATP synthase). Pas de valeurs de potentiel redox, pas de stœchiométrie fine H⁺/ATP."
+
+          - id: muscle_strie_squelettique
+            nom: "Le rôle du muscle strié squelettique dans la conversion de l'énergie"
+            lesson_slug: null          # ⚠ LACUNE — chapitre au cadre, AUCUNE leçon (voir coverage_notes)
+            programme:                # source: research-consensus (présence) + derived (détail)
+              - "Ultrastructure de la fibre musculaire et du sarcomère ; myofilaments d'actine et de myosine."
+              - "Mécanisme de la contraction : glissement des filaments, rôle de l'ATP et des ions Ca²⁺, couplage excitation-contraction."
+              - "Sources d'ATP du muscle en activité : voie immédiate (phosphocréatine), voie anaérobie (fermentation lactique), voie aérobie (respiration)."
+            savoir_faire:             # source: derived — Partie II
+              - "Interpréter des clichés de microscopie (sarcomère au repos/contracté) et des enregistrements de contraction (myogramme)."
+              - "Relier l'effort (sprint vs endurance) à la voie de production d'ATP dominante et à l'accumulation d'acide lactique."
+            limites:                  # source: derived — À VALIDER, chapitre non couvert par une leçon
+              - "Contraction au niveau du glissement des filaments et du rôle ATP/Ca²⁺ ; pas de biochimie détaillée des têtes de myosine (cycle des ponts) au-delà du principe."
+            _flag_lacune: "Chapitre présent au cadre (unité métabolisme) mais SANS leçon dans content/svt/. Programme ci-dessus = research-consensus/derived, non ancré sur un contenu existant. À créer lors d'une future session SVT."
+
+        travaux_pratiques:            # source: derived (activités expérimentales/documentaires types)
+          - "Mise en évidence de l'action et de la spécificité d'une enzyme (amylase/pepsine) ; effet de la température et du pH."
+          - "Mesure ExAO des échanges gazeux (O₂/CO₂) chez des levures ou une suspension cellulaire ± dioxygène (respiration vs fermentation)."
+          - "Observation microscopique de fibres musculaires / mise en évidence des sources d'ATP à l'effort."
+
+        exclusions:                   # source: derived
+          - { topic: "Cinétique enzymatique quantitative (Michaelis-Menten, Km/Vmax, inhibitions formelles)", raison: "Hors cadre 2 Bac ; traitement graphique/qualitatif." }
+          - { topic: "Chaîne respiratoire au niveau moléculaire (complexes I–IV nommés, cytochromes, valeurs de potentiel)", raison: "Hors cadre ; chimiosmose qualitative." }
+          - { topic: "β-oxydation des lipides, catabolisme des protéines comme voies détaillées", raison: "Hors cadre ; le substrat de référence est le glucose." }
+          - { topic: "Photosynthèse / production de matière organique", raison: "Relève de la 1ère Bac / tronc commun, pas de l'unité métabolisme 2 Bac." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: genetique
+        nom: "Transmission de l'information génétique, génétique humaine et des populations"
+        poids: { note: "répartition % par domaine non publiée (PDF scanné) — voir coverage_notes" }   # source: derived
+        habiletes: { note: "barème transversal 25/75 ; la génétique est un gros pourvoyeur de Partie II (échiquiers, arbres, calculs)" }   # source: derived
+        competences_ciblees:          # source: derived
+          - "Interpréter des croisements et des résultats statistiques (lois de Mendel), analyser des arbres généalogiques humains, et exploiter le modèle de Hardy-Weinberg pour raisonner à l'échelle d'une population ; construire échiquiers, arbres et calculs de probabilités."
+        chapitres:
+
+          - id: transmission_caracteres
+            nom: "Les lois statistiques de transmission des caractères (mono- et dihybridisme)"
+            lesson_slug: transmission-caracteres
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Vocabulaire : gène, allèle, locus, génotype/phénotype, dominance/récessivité, homozygote/hétérozygote, lignée pure."
+              - "Monohybridisme : 1ʳᵉ loi (uniformité de la F1), 2ᵉ loi (disjonction des allèles, F2 3:1)."
+              - "Dihybridisme (gènes indépendants) : 3ᵉ loi (ségrégation indépendante, F2 9:3:3:1) ; brassage interchromosomique."
+              - "Test-cross (croisement-test) : révéler un génotype et l'indépendance des gènes."
+            savoir_faire:             # source: derived — Partie II (communication graphique centrale)
+              - "Construire et exploiter un échiquier de croisement (Punnett) ; en déduire proportions génotypiques et phénotypiques."
+              - "Justifier une proportion par produit de probabilités indépendantes (½ × ½ = ¼), jamais par addition."
+              - "Interpréter des résultats chiffrés de descendance (comptages) pour déduire génotypes parentaux et mode de transmission."
+              - "Reconnaître, à partir d'un rapport observé, monohybridisme vs dihybridisme et l'indépendance des gènes."
+            limites:                  # source: derived — frontière de couverture, PAS d'exclusion du cadre
+              - "⚠ Notre leçon couvre le brassage INTERchromosomique (gènes indépendants). Le brassage INTRAchromosomique (gènes liés, crossing-over, recombinaison, distance génétique/carte) est AU PROGRAMME de la filière SVT mais N'EST PAS couvert par la leçon (différé explicitement). C'est une LACUNE de couverture, pas une exclusion — voir coverage_notes."
+              - "Dominance simple ; codominance / dominance incomplète / allèles multiples (ex. ABO) mobilisés surtout dans le module immunologie."
+
+          - id: genetique_humaine
+            nom: "La génétique humaine"
+            lesson_slug: genetique-humaine
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Arbre généalogique (pedigree) : conventions de lecture ; autosomes vs gonosomes (X/Y)."
+              - "Détermination du mode de transmission : récessif/dominant, autosomal / lié à l'X / lié à l'Y."
+              - "Hémizygotie masculine ; notation des gènes liés à l'X ; échiquier adapté aux chromosomes sexuels."
+              - "Calcul de la probabilité qu'un enfant soit atteint (renormalisation sur l'information de phénotype)."
+            savoir_faire:             # source: derived — Partie II (analyse d'arbre = document type)
+              - "Analyser un arbre généalogique : déduire par élimination le mode de transmission (test « enfant atteint / deux parents sains », test « fille atteinte / père sain », test « père atteint → fils »)."
+              - "Attribuer les génotypes certains ; distinguer déduction certaine et probabilité à calculer."
+              - "Calculer une probabilité conditionnelle par renormalisation, puis combiner les cas incertains (pondération)."
+            limites:                  # source: derived
+              - "Hypothèses simplificatrices admises : pénétrance complète, pas de mutation nouvelle dans la famille, conjoint entrant non porteur sauf indication."
+              - "Un seul gène à la fois ; pas d'hérédité multifactorielle, pas d'empreinte parentale, pas d'anomalies chromosomiques de nombre comme objet central."
+
+          - id: genetique_populations
+            nom: "La génétique des populations (modèle de Hardy-Weinberg)"
+            lesson_slug: genetique-populations
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Population, pool génique ; fréquences génotypiques et fréquences alléliques (p, q ; p + q = 1)."
+              - "Modèle de Hardy-Weinberg : p² + 2pq + q² = 1 ; notion d'équilibre (p' = p)."
+              - "Les cinq conditions (grand effectif, panmixie, absence de migration, de mutation, de sélection)."
+              - "Remonter des malades (q²) aux porteurs (2pq) ; facteurs d'évolution (mutation, sélection, migration, dérive génétique)."
+            savoir_faire:             # source: derived — Partie II (calcul + interprétation)
+              - "Calculer p et q à partir d'un recensement génotypique OU de la seule fréquence des malades (q = √f(a//a))."
+              - "Comparer fréquences observées et fréquences attendues sous Hardy-Weinberg ; interpréter l'écart (déficit d'hétérozygotes = défaut de panmixie, etc.)."
+              - "Identifier, à partir d'un scénario (petite population insulaire, sélection, migration), le facteur d'évolution en cause."
+            limites:                  # source: derived
+              - "Hardy-Weinberg à DEUX allèles autosomaux ; le cas d'un gène lié à l'X est évoqué qualitativement (un homme = une copie) mais pas développé quantitativement."
+              - "Pas de génétique quantitative (caractères polygéniques, héritabilité), pas de coefficient de sélection s formel, pas de modèle mathématique de dérive."
+
+        travaux_pratiques:            # source: derived
+          - "Exploitation de résultats de croisements (drosophile, pois, souris) et construction d'échiquiers."
+          - "Analyse d'arbres généalogiques de maladies humaines (drépanocytose, hémophilie, daltonisme, mucoviscidose)."
+          - "Calcul de fréquences alléliques sur des données de population réelles."
+
+        exclusions:                   # source: derived
+          - { topic: "Biologie moléculaire du gène (ADN, réplication, transcription, traduction, code génétique, mutations)", raison: "Relève de l'unité SÉPARÉE « nature/expression de l'information génétique » — voir coverage_notes.unites_cadre_sans_lecon. Non couvert par nos leçons de génétique formelle." }
+          - { topic: "Génie génétique / transgenèse / OGM", raison: "Unité séparée, sans leçon — voir coverage_notes." }
+          - { topic: "Génétique quantitative, héritabilité, cartes génétiques détaillées", raison: "Hors cadre 2 Bac." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: immunologie
+        nom: "Le système immunitaire : soi/non-soi, défense, dysfonctionnements"
+        poids: { note: "répartition % par domaine non publiée (PDF scanné) — voir coverage_notes" }   # source: derived
+        habiletes: { note: "barème transversal 25/75 ; l'immunologie fournit fréquemment des exercices de Partie II (cinétiques d'anticorps, LT4/charge virale)" }   # source: derived
+        competences_ciblees:          # source: derived
+          - "Distinguer soi et non-soi et ses marqueurs (CMH, groupes sanguins) ; expliquer les mécanismes de défense innée et adaptative (humorale et cellulaire) ; interpréter les dysfonctionnements (allergie, auto-immunité, déficit) et les aides (vaccination, sérothérapie) à partir de documents et de courbes."
+        chapitres:
+
+          - id: soi_non_soi
+            nom: "Le soi et le non-soi"
+            lesson_slug: soi-non-soi
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Notions de soi et de non-soi ; tolérance immunitaire ; antigène et anticorps (reconnaissance clé-serrure, spécificité)."
+              - "Le CMH (HLA) : marqueurs du soi, polymorphisme, rôle dans les greffes."
+              - "Les groupes sanguins ABO et Rhésus (agglutinogènes/agglutinines) ; compatibilité transfusionnelle."
+              - "Les formes du non-soi : agents pathogènes, cellules/organes d'un autre individu, soi modifié (cellules infectées/cancéreuses)."
+            savoir_faire:             # source: derived — Partie II
+              - "Exploiter des tableaux/documents de compatibilité (transfusion ABO-Rhésus, typage HLA pour une greffe) pour raisonner un cas concret."
+              - "Justifier le statut soi/non-soi d'une molécule comme une RELATION (dépend du receveur), pas une propriété absolue."
+              - "Interpréter une agglutination comme un mécanisme antigène-anticorps."
+            limites:                  # source: derived
+              - "ABO/Rhésus au niveau fonctionnel (compatibilité) ; pas de génétique moléculaire des allèles ABO."
+              - "CMH classe I / classe II : distinction fonctionnelle simple (présentation) ; pas de biochimie structurale détaillée."
+
+          - id: moyens_de_defense
+            nom: "Les moyens de défense de l'organisme (immunité innée et adaptative)"
+            lesson_slug: moyens-de-defense
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Immunité innée (non spécifique) : réaction inflammatoire aiguë (signes, médiateurs, diapédèse), phagocytose (étapes)."
+              - "Immunité adaptative (spécifique) : sélection clonale des LB, plasmocytes et anticorps (structure en Y, modes d'action : neutralisation, agglutination, opsonisation) — réponse à médiation humorale."
+              - "Réponse à médiation cellulaire : LT8 → LT cytotoxiques, destruction des cellules infectées ; coopération cellulaire (CPA, LT4)."
+              - "Mémoire immunitaire : réponses primaire et secondaire."
+            savoir_faire:             # source: derived — Partie II (cinétiques et clichés = documents types)
+              - "Interpréter une cinétique du titre d'anticorps (réponse primaire vs secondaire) et la relier au mécanisme (clone rare vs cellules mémoire, population de départ)."
+              - "Ordonner et légender des clichés de microscopie (phagocytose, contact LTc-cellule cible)."
+              - "Interpréter une expérience (souris privées de LT4, sérums de transfert) pour établir le rôle d'un acteur cellulaire."
+              - "Choisir la voie effectrice (humorale/cellulaire) selon la localisation de l'antigène (extra- vs intracellulaire)."
+            limites:                  # source: derived
+              - "Anticorps = marquage/neutralisation/agglutination, action INDIRECTE ; ne détruisent pas la cible eux-mêmes (le complément n'est pas exigé comme mécanisme quantitatif)."
+              - "Coopération LT4 via des messagers chimiques (interleukines) au niveau fonctionnel ; pas de cascade de signalisation détaillée, pas de sous-classes d'immunoglobulines exhaustives."
+
+          - id: dysfonctionnements_immunitaires
+            nom: "Dysfonctionnements et aides du système immunitaire"
+            lesson_slug: dysfonctionnements-immunitaires
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Allergies (hypersensibilité) : sensibilisation (IgE, mastocytes), réaction (dégranulation, histamine), choc anaphylactique."
+              - "Maladies auto-immunes : rupture de la tolérance au soi (ex. diabète de type 1 — voie cellulaire ; polyarthrite rhumatoïde — voie humorale)."
+              - "Déficits immunitaires : VIH/SIDA — cible des LT4, effondrement de la coordination, infections opportunistes ; séropositivité vs SIDA."
+              - "Aides : vaccination (immunité active et durable) ; sérothérapie (immunité passive et brève)."
+            savoir_faire:             # source: derived — Partie II
+              - "Interpréter un suivi VIH (nombre de LT4 et charge virale au cours du temps) et situer le seuil critique du stade SIDA."
+              - "Interpréter des courbes de titre d'anticorps comparant vaccination (plateau durable) et sérothérapie (déclin rapide)."
+              - "Distinguer, à partir d'un document (auto-anticorps, test allergénique), allergie / auto-immunité / déficit par la CIBLE et le mécanisme."
+            limites:                  # source: derived
+              - "Mécanismes au niveau cellulaire/fonctionnel ; les traitements (antirétroviraux, immunosuppresseurs, désensibilisation) sont mentionnés mais leur pharmacologie n'est pas au programme."
+              - "Vaccination/sérothérapie opposées comme active/durable vs passive/brève ; pas de calendrier vaccinal ni d'adjuvants comme objet d'étude."
+
+        travaux_pratiques:            # source: derived
+          - "Test d'agglutination / détermination de groupe sanguin (documents)."
+          - "Exploitation d'électrophorèses (sérum, complexe immun) et de cinétiques d'anticorps."
+          - "Analyse de suivis cliniques (LT4/charge virale VIH ; titres vaccin vs sérum)."
+
+        exclusions:                   # source: derived
+          - { topic: "Système du complément détaillé, cascades de cytokines quantitatives", raison: "Hors cadre ; action des anticorps au niveau fonctionnel." }
+          - { topic: "Immunologie moléculaire (réarrangements V(D)J, structure fine des récepteurs)", raison: "Hors cadre 2 Bac." }
+          - { topic: "Pharmacologie des traitements (antirétroviraux, immunosuppresseurs)", raison: "Mentionnés, non détaillés — hors mécanisme du programme." }
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: geologie
+    nom: "Géologie — phénomènes accompagnant la formation des chaînes de montagnes"
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: geodynamique_chaines_montagnes
+        nom: "Tectonique des plaques et formation des chaînes de montagnes"
+        poids: { note: "répartition % par domaine non publiée (PDF scanné) — voir coverage_notes" }   # source: derived
+        habiletes: { note: "barème transversal 25/75 ; la géologie est un fort pourvoyeur de Partie II (coupes, profils, cartes)" }   # source: derived
+        competences_ciblees:          # source: derived
+          - "Utiliser la théorie de la tectonique des plaques pour expliquer la formation des chaînes de montagnes (subduction, collision) et reconstituer l'histoire d'une chaîne à partir d'indices pétrographiques et structuraux ; exploiter cartes, coupes, profils et données géophysiques."
+        chapitres:
+
+          - id: tectonique_plaques
+            nom: "La théorie de la tectonique des plaques"
+            lesson_slug: theorie-tectonique-plaques
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Dérive des continents (Wegener) : arguments (concordance des côtes, paléontologie, géologie, paléoclimat) ; rejet initial (absence de moteur)."
+              - "Expansion océanique : dorsales, anomalies magnétiques symétriques, âge croissant du plancher océanique."
+              - "Structure du globe : lithosphère rigide / asthénosphère ductile (distinction mécanique vs composition croûte/manteau)."
+              - "Plaques et frontières : divergence (accrétion), convergence (subduction, collision), transformante ; preuves actuelles (sismicité, volcanisme, GPS) ; moteur (convection mantellique)."
+            savoir_faire:             # source: derived — Partie II (documents géologiques)
+              - "Exploiter un profil d'âge/de distance du plancher océanique : reconnaître la symétrie, CALCULER une vitesse d'expansion, convertir les unités, comparer aux vitesses GPS."
+              - "Interpréter une carte de sismicité/volcanisme comme le tracé des frontières de plaques ; identifier le type de frontière à partir de ses manifestations."
+              - "Distinguer lithosphère et croûte à partir de données sismiques ; justifier le moteur (convection) contre les forces trop faibles de Wegener."
+            limites:                  # source: derived
+              - "Moteur = convection mantellique, traité QUALITATIVEMENT (roche ductile, tapis roulant) ; pas de modélisation numérique, pas de calcul de nombre de Rayleigh."
+              - "Anomalies magnétiques exploitées comme motif symétrique/chronologique ; pas de magnétostratigraphie fine ni de paléomagnétisme quantitatif (déclinaison/inclinaison calculées)."
+
+          - id: chaines_de_montagnes
+            nom: "Les chaînes de montagnes : subduction, collision, obduction"
+            lesson_slug: chaines-de-montagnes
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Chaîne de subduction (type andin) : fosse, plan de sismicité incliné (Wadati-Benioff), volcanisme andésitique (fusion partielle par déshydratation de la plaque)."
+              - "Chaîne de collision (type himalayen) : fermeture d'un océan, épaississement crustal, absence de volcanisme et de séismes profonds."
+              - "Ophiolites : témoins d'un ancien domaine océanique (séquence basaltes en coussins / gabbro / péridotite)."
+              - "Marqueurs de la déformation : plis, failles inverses, chevauchements (raccourcissement) ; roches métamorphiques et enfouissement ; exhumation ; suture."
+            savoir_faire:             # source: derived — Partie II (coupe de terrain = document phare)
+              - "Interpréter une coupe de terrain : identifier le type de chaîne à partir d'indices indépendants (ophiolites, chevauchements, métamorphisme, volcanisme/sismicité)."
+              - "Déduire un raccourcissement à partir de plis/chevauchements ; déduire un ordre chronologique inversé (couche ancienne sur couche jeune) comme signature d'un chevauchement."
+              - "Reconstituer l'histoire d'une chaîne (ouverture → subduction → fermeture → collision → exhumation) à partir des seuls indices présents."
+            limites:                  # source: derived
+              - "Volcanisme de subduction expliqué par la fusion partielle hydratée du manteau (qualitatif) ; pas de diagrammes de phase quantitatifs."
+              - "Obduction : citée comme cas de mise en place d'ophiolites ; profondeur de traitement plus légère que subduction/collision — À CONFIRMER (statut exact dans le cadre incertain, PDF scanné)."
+
+          - id: granitisation_deformation
+            nom: "La granitisation, le métamorphisme et la déformation des roches"
+            lesson_slug: granitisation-deformation
+            programme:                # source: research-consensus (structure) + derived (détail)
+              - "Déformation ductile (plis) vs cassante (failles) : rôle de la profondeur (température, pression de confinement) ; transition fragile-ductile."
+              - "Métamorphisme régional : succession de faciès (schiste → gneiss → migmatite) comme jauge de profondeur."
+              - "Anatexie : franchissement du solidus (rôle de l'eau), fusion partielle, migmatite → magma granitique."
+              - "Du magma au granite : cristallisation lente en profondeur, texture grenue (pluton) ; granite = racine des chaînes de collision ; exhumation."
+            savoir_faire:             # source: derived — Partie II
+              - "Lire un faciès métamorphique comme une jauge de pression/température, donc de profondeur d'enfouissement."
+              - "Interpréter la texture d'une roche magmatique (grain fin/grossier) comme preuve de la vitesse de refroidissement et de la profondeur de cristallisation."
+              - "Exploiter un diagramme solidus (P–T) pour situer le seuil d'anatexie et le rôle de l'eau ; reconstituer un profil d'enfouissement dans une coupe."
+            limites:                  # source: derived
+              - "Diagrammes P–T et solidus exploités QUALITATIVEMENT (seuils, tendances) ; pas de thermobarométrie chiffrée, pas de chemin P-T-t quantitatif complet."
+              - "Transition fragile-ductile donnée en ordre de grandeur (≈ 10–15 km) ; dépend du type de roche et du gradient, non traitée comme frontière universelle."
+
+        travaux_pratiques:            # source: derived
+          - "Interprétation de coupes de terrain et de cartes géologiques (chaînes de subduction et de collision)."
+          - "Identification d'échantillons/lames minces (granite grenu, andésite, basalte en coussins, gabbro, péridotite, schiste, gneiss, migmatite)."
+          - "Exploitation de profils sismiques, d'anomalies magnétiques et de données GPS."
+
+        exclusions:                   # source: derived
+          - { topic: "Modélisation numérique de la convection (nombre de Rayleigh, simulation)", raison: "Hors cadre ; moteur qualitatif." }
+          - { topic: "Thermobarométrie quantitative / chemins P-T-t chiffrés complets", raison: "Hors cadre ; diagrammes qualitatifs." }
+          - { topic: "Sédimentologie de bassin, stratigraphie séquentielle détaillée", raison: "Hors cadre de l'unité chaînes de montagnes." }
+          - { topic: "Géochimie isotopique fine (au-delà de la datation radiométrique comme outil)", raison: "Hors cadre ; la datation est utilisée comme donnée, pas comme méthode à démontrer." }
+
+# ════════════════════════════════════════════════════════════════════════
+# COVERAGE_NOTES — mapping cadre ↔ nos 11 leçons content/svt/ (source: derived)
+# ════════════════════════════════════════════════════════════════════════
+coverage_notes:
+  intro: >
+    Nos 11 leçons content/svt/ couvrent PROPREMENT quatre des six unités du cadre
+    filière SVT : métabolisme (2 des 3 chapitres), génétique formelle (mono/dihybridisme,
+    humaine, populations), immunologie (3/3), géologie (3/3). Trois écarts au cadre
+    officiel sont documentés ci-dessous ; le contenu SVT étant GELÉ cette campagne,
+    ils sont journalisés, pas corrigés.
+
+  mapping_11_lecons:                  # leçon ↔ chapitre du cadre (mapping propre)
+    - { lesson_slug: role-enzymes,                          chapitre: role_enzymes,                        etat: "propre" }
+    - { lesson_slug: liberation-energie-matiere-organique,  chapitre: liberation_energie,                  etat: "propre" }
+    - { lesson_slug: transmission-caracteres,               chapitre: transmission_caracteres,             etat: "propre (mais brassage intrachromosomique différé — voir lacunes)" }
+    - { lesson_slug: genetique-humaine,                     chapitre: genetique_humaine,                   etat: "propre" }
+    - { lesson_slug: genetique-populations,                 chapitre: genetique_populations,               etat: "propre" }
+    - { lesson_slug: soi-non-soi,                           chapitre: soi_non_soi,                          etat: "propre" }
+    - { lesson_slug: moyens-de-defense,                     chapitre: moyens_de_defense,                    etat: "propre" }
+    - { lesson_slug: dysfonctionnements-immunitaires,       chapitre: dysfonctionnements_immunitaires,      etat: "propre" }
+    - { lesson_slug: theorie-tectonique-plaques,            chapitre: tectonique_plaques,                  etat: "propre" }
+    - { lesson_slug: chaines-de-montagnes,                  chapitre: chaines_de_montagnes,                etat: "propre" }
+    - { lesson_slug: granitisation-deformation,             chapitre: granitisation_deformation,           etat: "propre" }
+
+  unites_cadre_sans_lecon:            # unités/chapitres du cadre SANS leçon (lacunes de couverture)
+    - id: information_genetique_genie_genetique
+      gravite: "MAJEURE — unité entière"
+      note: >
+        L'unité « Nature et expression de l'information génétique + génie génétique »
+        (ADN, réplication, transcription, traduction, code génétique, mutations,
+        transgenèse/OGM) est AU CADRE de la filière SVT et n'est couverte par AUCUNE
+        de nos 11 leçons. Nos leçons de génétique sont FORMELLES (Mendel, arbres,
+        populations), pas moléculaires. C'est la plus grande lacune de couverture.
+      chapitres_attendus:             # source: research-consensus (existence) — non extraits en détail ici
+        - "Structure et réplication de l'ADN"
+        - "Expression : transcription, traduction, code génétique"
+        - "Mutations et variabilité génétique"
+        - "Génie génétique et ses applications (transgenèse, OGM, thérapie génique)"
+    - id: muscle_strie_squelettique
+      gravite: "MODÉRÉE — 1 chapitre"
+      note: >
+        « Le rôle du muscle strié squelettique dans la conversion de l'énergie »
+        (unité métabolisme) : au cadre, sans leçon. Détaillé comme chapitre
+        (lesson_slug: null) dans biologie/metabolisme_energie.
+    - id: brassage_intrachromosomique
+      gravite: "MODÉRÉE — thème d'un chapitre existant"
+      note: >
+        Le brassage INTRAchromosomique (gènes liés, crossing-over, recombinaison,
+        carte génétique) est au programme de transmission filière SVT mais
+        EXPLICITEMENT DIFFÉRÉ dans la leçon transmission-caracteres (« ce cas de
+        figure sort du programme de cette leçon »). L'eval l'a noté. La leçon ne
+        traite que le brassage interchromosomique (gènes indépendants).
+
+  poids_par_domaine:
+    statut: "NON CHIFFRÉ"
+    note: >
+      La répartition en POURCENTAGE par domaine (tableau de spécification du cadre)
+      n'est pas lisible (PDF scanné) et n'est publiée dans aucune synthèse récupérée.
+      Le SEUL poids publié et confirmé (research-consensus) est le barème TRANSVERSAL
+      restitution 25 % / raisonnement-communication 75 %. Récupérer les % par domaine
+      est l'upgrade prioritaire (cible de la relecture Gemini du cadre scanné).
+
+  variante_pc:                        # la variante SVT-pour-PC, distincte
+    statut: "DISTINCTE — non extraite"
+    note: >
+      La SVT en filière Sciences Physiques (PC) a un CADRE SÉPARÉ (AlloSchool élément
+      48555, distinct du 48556), coefficient 5 (vs 7 en filière SVT ; cf. cadre.yaml),
+      et un programme allégé (sous-ensemble des unités). Durée : cadre.yaml retient 3h
+      (research-consensus) — à confirmer. Non extraite ici. Nécessitera sa propre passe
+      si l'app ouvre la filière PC. Voir README-svt.md source 2.
+
+  claims_derives_les_plus_faibles:    # à attaquer en priorité (research-challenger)
+    - "Frontière de profondeur exacte de chaque chapitre (jusqu'où va le bilan de la chaîne respiratoire ; niveau de détail du cycle de Krebs et de la contraction musculaire)."
+    - "Statut exact de l'OBDUCTION dans le cadre (citée, profondeur incertaine — PDF scanné)."
+    - "Statut exact du brassage INTRAchromosomique/gènes liés (présent au programme filière SVT ? à quelle profondeur ?) — impacte s'il faut une leçon dédiée."
+    - "TOUTES les limites/exclusions (couche anti-hors-programme, entièrement derived)."
+    - "Absence de répartition en % par domaine (non publiée) — à récupérer sur le cadre scanné."
+    - "Le périmètre exact de l'unité moléculaire (information génétique / génie génétique) — nommée au niveau research-consensus, non extraite."
