@@ -7,11 +7,12 @@
 > maslak *مسلك العلوم الفيزيائية* (Sciences Physiques, SPC), خيار فرنسية (BIOF) —
 > durée 3 h, coefficient 7** (confirmé sur les en-têtes de scans 2018 et 2019).
 >
-> Statut : **v0.1, foundation pass.** Deux examens intégralement lus et
-> transcrits (2018 N, 2019 N) ; le reste de l'inventaire est cartographié et
-> vérifié atteignable au niveau du hub. Rien ici n'est « vérifié » au sens du
-> protocole (README §Vérification) tant qu'un second agent n'a pas re-fetché et
-> diffé.
+> Statut : **v0.2, passe chimie + physique.** Cinq examens normale lus en
+> profondeur (2017, 2018, 2019, 2020, 2021 N) et une vingtaine d'exercices
+> transcrits couvrant 18 des 25 slugs (voir §4). Les deux slugs `rotation-axe-fixe`
+> et `atome-mecanique-newton` restent **non sourcés** (absents des couvertures
+> 2017–2021). Rien ici n'est « vérifié » au sens du protocole
+> (README §Vérification) tant qu'un second agent n'a pas re-fetché et diffé.
 
 ---
 
@@ -71,11 +72,11 @@ Format de toutes : **scanned-PDF + JPG par page** (aucun texte machine).
 
 | Année | N-Sujet | N-Corrigé | R-Sujet | R-Corrigé | Vérif. directe |
 |------:|:-------:|:---------:|:-------:|:---------:|----------------|
-| 2017 | `57711` | `57714` | `57717` | `57720` | listé (non ré-ouvert) |
-| 2018 | `57726` | `57729` | `57732` | `57735` | **N-Sujet lu p.1,3–6** (upload-45118, 8 p.) |
+| 2017 | `57711` | `57714` | `57717` | `57720` | **N-Sujet lu p.1,5,6** (upload-45103, 8 p.) |
+| 2018 | `57726` | `57729` | `57732` | `57735` | **N-Sujet lu p.1,3–8** (upload-45118, 8 p.) |
 | 2019 | `68300` | `68303` | `94419` | `94422` | **N-Sujet lu p.1–7** (upload-54757, 7 p.) |
-| 2020 | `109742` | `109745` | `109751` | `109757` | listé (non ré-ouvert) |
-| 2021 | `127287` | `136826` | `127290` | `136829` | **N-Sujet couverture lue** (upload-84195, 8 p.) |
+| 2020 | `109742` | `109745` | `109751` | `109757` | **N-Sujet lu p.1–7** (upload-80870, 7 p.) |
+| 2021 | `127287` | `136826` | `127290` | `136829` | **N-Sujet lu p.1–5** (upload-84195, 8 p.) |
 | 2022 | `136621` | `136832` | `136624` | `136835` | listé (non ré-ouvert) |
 | 2023 | `142476` | `142479` | `142484` | `142487` | N-Sujet PDF testé = scan |
 | 2024 | `145763` | `145766` | `145769` | `145772` | N-Sujet PDF testé = scan |
@@ -100,9 +101,34 @@ Notes :
 
 | Examen | Base d'images | Pages |
 |--------|---------------|------:|
+| 2017 Normale — Sujet | `.../course-422/upload-45103/` | 8 |
 | 2018 Normale — Sujet | `.../course-422/upload-45118/` | 8 |
 | 2019 Normale — Sujet | `.../course-422/upload-54757/` | 7 |
+| 2020 Normale — Sujet | `.../course-422/upload-80870/` | 7 |
 | 2021 Normale — Sujet | `.../course-422/upload-84195/` | 8 |
+
+**Carte des exercices par examen (relevée sur les couvertures, page 1) :**
+
+- **2017 N** (NS28F) : Ex I = pile Al-Cu + réactions de l'acide butanoïque · Ex II
+  = onde mécanique surface de l'eau · Ex III = dipôle RL échelon + modulation
+  d'amplitude · Ex IV = mouvement d'un skieur avec frottements + étude
+  énergétique d'un pendule de torsion.
+- **2018 N** (NS28F) : Ex I = électrolyse du bromure de plomb + réactions de
+  l'acide lactique (dosage + estérification) · Ex II = célérité onde ultrasonore ·
+  Ex III = capacité d'un condensateur + RLC série · Ex IV = chute verticale bille +
+  oscillateur solide-ressort (énergétique).
+- **2019 N** (NS28F) : Ex I = électrolyse iodure de zinc + conductimétrie acide
+  benzoïque · Ex II = onde mécanique (cuve) + radon 222 · Ex III = charge/décharge
+  condensateur (RC + LC) · Ex IV = mouvement du centre d'inertie (plan incliné +
+  tremplin/projectile).
+- **2020 N** (NS28F) : Ex I = solution d'ammoniac (dosage) + pile argent-chrome ·
+  Ex II = propagation des ondes (QCM + cuve) · Ex III = polonium 210
+  (masse-énergie + décroissance) · Ex IV = dipôle RL échelon + RLC
+  (amortissement/entretien) · Ex V = chute verticale bille (liquide visqueux).
+- **2021 N** (NS28F) : Ex I = cinétique saponification + acide carboxylique
+  (dosage + identification) · Ex II = ondes lumineuses (dispersion prisme +
+  diffraction) · Ex III = plutonium 238 (décroissance) · Ex IV = RC échelon + LC +
+  modulation · Ex V = mouvement d'un parachutiste.
 
 ---
 
@@ -136,6 +162,8 @@ marocain. Écartés.
 Voir les fichiers `docs/sujets/pc/<slug>.md`. Toutes les entrées sont
 `Statut: transcrit (non vérifié)`.
 
+**Passe fondation (antérieure) :**
+
 | Slug | Entrées | Origine |
 |------|--------:|---------|
 | `rc-charge` | 2 | 2019 N Ex III (charge) ; 2018 N Ex III-I-2 (décharge, échelon) |
@@ -143,6 +171,59 @@ Voir les fichiers `docs/sujets/pc/<slug>.md`. Toutes les entrées sont
 | `ondes-mecaniques-periodiques` | 1 | 2019 N Ex II-1 (onde sinusoïdale, cuve à ondes) |
 | `ondes-mecaniques-progressives` | 1 | 2018 N Ex II (onde ultrasonore, célérité, retard) |
 | `decroissance-radioactive` | 1 | 2019 N Ex II-2 (radon 222 ; recoupe `noyaux-masse-energie`) |
+
+**Passe chimie + physique (celle-ci) — nouveaux fichiers/entrées :**
+
+| Slug | Entrées | Origine |
+|------|--------:|---------|
+| `electrolyse` | 1 | 2019 N Ex I-P1 (électrolyse iodure de zinc) |
+| `reactions-acido-basiques` | 3 | 2019 N Ex I-P2 (conductimétrie acide benzoïque) ; 2021 N Ex I-P2 (dosage pH-métrique + identification acide carboxylique) ; 2020 N Ex I-P1 (dosage ammoniac / base faible) |
+| `suivi-temporel-vitesse` | 1 | 2021 N Ex I-P1 (cinétique saponification, conductimétrie) |
+| `piles` | 1 | 2020 N Ex I-P2 (pile argent-chrome) |
+| `dipole-rl` | 1 | 2020 N Ex IV-I (réponse RL à un échelon) |
+| `chute-mouvements-plans` | 1 | 2020 N Ex V (chute verticale bille, liquide visqueux, Euler) |
+| `propagation-onde-lumineuse` | 1 | 2021 N Ex II (dispersion prisme + diffraction fente/cheveu) |
+| `ondes-em-modulation` | 1 | 2017 N Ex III-II (modulation d'amplitude, multiplieur) |
+| `lois-de-newton` | 1 | 2019 N Ex IV-I (plan incliné, 2ème loi, force motrice) |
+| `noyaux-masse-energie` | 1 | 2020 N Ex III (polonium 210 : énergie libérée, défaut de masse, diagramme) |
+| `esterification-hydrolyse` | 1 | 2018 N Ex I-P2 (acide lactique + méthanol, rendement) |
+| `systemes-oscillants` | 1 | 2018 N Ex IV-II (oscillateur solide-ressort, énergétique) |
+| `decroissance-radioactive` | +1 | 2021 N Ex III (plutonium 238 : demi-vie, activité) |
+| `aspects-energetiques` | cross-list | → `systemes-oscillants` (2018 N Ex IV-II, Q Epe + travail rappel) |
+| `etat-equilibre` | cross-list | → `reactions-acido-basiques` (K, Qr, τ : 2019/2020/2021) |
+| `transformations-lentes-rapides` | cross-list | → `suivi-temporel-vitesse` (2021 N transformation lente) |
+| `controle-catalyse` | cross-list | → `esterification-hydrolyse` (2018 N facteurs cinétiques) |
+| `evolution-spontanee` | cross-list | → `piles` (2020 N transformation spontanée) |
+
+### Couverture par slug (25 slugs `content/pc/`) — état après cette passe
+
+| Slug | Année(s)/session transcrite(s) | Statut |
+|------|-------------------------------|--------|
+| `ondes-mecaniques-progressives` | 2018 N | transcrit |
+| `ondes-mecaniques-periodiques` | 2019 N | transcrit |
+| `propagation-onde-lumineuse` | 2021 N | transcrit |
+| `decroissance-radioactive` | 2019 N, 2021 N | transcrit |
+| `noyaux-masse-energie` | 2020 N | transcrit |
+| `rc-charge` | 2019 N, 2018 N | transcrit |
+| `dipole-rl` | 2020 N | transcrit |
+| `rlc-serie` | 2019 N, 2018 N | transcrit |
+| `ondes-em-modulation` | 2017 N | transcrit |
+| `lois-de-newton` | 2019 N | transcrit |
+| `chute-mouvements-plans` | 2020 N | transcrit |
+| `rotation-axe-fixe` | — | **non sourcé** (absent 2017–2021) |
+| `systemes-oscillants` | 2018 N | transcrit |
+| `aspects-energetiques` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
+| `atome-mecanique-newton` | — | **non sourcé** (absent 2017–2021) |
+| `transformations-lentes-rapides` | (2021 N, cross-list) | cross-list |
+| `suivi-temporel-vitesse` | 2021 N | transcrit |
+| `controle-catalyse` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
+| `transformations-deux-sens` | — | non sourcé (recoupe `etat-equilibre`) |
+| `etat-equilibre` | (2019/2020/2021 N, cross-list) | cross-list |
+| `evolution-spontanee` | (2020 N, cross-list) | cross-list ; entrée autonome à sourcer |
+| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N | transcrit |
+| `esterification-hydrolyse` | 2018 N | transcrit |
+| `piles` | 2020 N | transcrit |
+| `electrolyse` | 2019 N | transcrit |
 
 ---
 
@@ -165,10 +246,55 @@ Voir les fichiers `docs/sujets/pc/<slug>.md`. Toutes les entrées sont
 - **Corrigés** : non transcrits ici (scans aussi). Nécessaires pour les
   solutions/valeurs-réponses ; même pipeline JPG requis.
 
-## 6. Prochaine passe recommandée
-1. Dérouler 2020 N, 2021 N (Ex IV : RC + LC + modulation), 2022–2025 pour couvrir
-   `propagation-onde-lumineuse`, `ondes-em-modulation`, la chimie
-   (`reactions-acido-basiques`, `esterification-hydrolyse`, `piles`,
-   `electrolyse`, `suivi-temporel-vitesse`, `etat-equilibre`).
-2. Résoudre les `upload-<ID>` manquants (un fetch `element/<n>` chacun).
-3. Lancer le protocole de vérification (README) sur les 7 entrées existantes.
+## 6. Ce qui N'A PAS été atteint dans cette passe (à faire)
+
+**Slugs prioritaires non sourcés depuis les scans 2017–2021 (probablement
+absents de l'épreuve PC-SPC récente) :**
+
+- **`rotation-axe-fixe`** — ne figure sur AUCUNE couverture 2017→2021. Confirme le
+  retour de terrain (INDEX §5) : thème quasi absent de l'épreuve PC-SPC récente.
+  **Piste unique :** années **2008–2016** (upload-<ID> non encore résolus). Si
+  introuvable là non plus → candidat à un ship `unsourced` avec note honnête.
+- **`atome-mecanique-newton`** (niveaux d'énergie, quantification) — ne figure sur
+  aucune couverture 2017→2021. Même piste (2008–2016) ; même candidat `unsourced`
+  si introuvable.
+
+**Slugs couverts seulement en cross-list (entrée autonome souhaitable) :**
+
+- **`aspects-energetiques`** — transcrit via `systemes-oscillants` (2018 N,
+  solide-ressort). Entrée autonome à tirer du **2017 N Ex IV-II (pendule de
+  torsion, énergétique)** — pages ~7–8, upload-45103 (non encore lues).
+- **`controle-catalyse`** — seulement les « facteurs cinétiques » (2018 N estér.).
+  Un exercice avec **catalyseur** reste à trouver (rarement isolé, cf. §5).
+- **`evolution-spontanee`** — pas d'exercice national dédié au critère $Q_r$ vs $K$
+  transcrit ; cross-list vers `piles`.
+- **`etat-equilibre`**, **`transformations-lentes-rapides`** — cross-list ; un
+  exercice national dédié améliorerait la couverture.
+- **`transformations-deux-sens`** — non abordé cette passe (recoupe
+  `etat-equilibre`).
+
+**Exercices déjà lus mais non transcrits (matière disponible sans re-fetch, pour
+étoffer des slugs existants) :**
+
+- 2017 N Ex I (pile Al-Cu → `piles` ; acide butanoïque → acido-basique) — lu
+  partiellement (couverture) mais pages 2–3 non lues.
+- 2017 N Ex IV-I (skieur → `lois-de-newton`) et Ex IV-II (pendule torsion →
+  `aspects-energetiques`) — pages 6 (intro skieur) lue, 7–8 non lues.
+- 2018 N Ex I-P1 (électrolyse bromure de plomb → `electrolyse`) — page 2 non lue.
+- 2019 N Ex IV-II (tremplin + projectile → `chute-mouvements-plans`) — page 7 non
+  lue.
+- 2020 N Ex IV-II/III (RLC amortissement/entretien → `rlc-serie`) — pages 5–6 lues,
+  transcription à ajouter sous `rlc-serie.md`.
+- 2021 N Ex IV (RC + LC + modulation), Ex V (parachutiste →
+  `chute-mouvements-plans`) — pages 6–8 non lues.
+
+## 7. Prochaine passe recommandée
+1. **Années 2008–2016** : résoudre les `upload-<ID>` (fetch `element/<n>`) et lire
+   les couvertures pour pister `rotation-axe-fixe` et `atome-mecanique-newton`
+   (seule piste restante). Sessions **rattrapage** aussi (souvent d'autres thèmes).
+2. Étoffer les slugs existants avec les pages déjà repérées (§6, sans re-fetch
+   pour celles en cache) et ajouter les cross-lists manquants (`rlc-serie` 2020).
+3. Lancer le **protocole de vérification** (README §3) : re-fetch indépendant + diff
+   sur les ~20 entrées `transcrit (non vérifié)` — priorité aux entrées à figure
+   (dosages, courbes RL/chute) où une lecture d'échelle est marquée
+   « à confirmer ».
