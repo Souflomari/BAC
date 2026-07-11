@@ -1,0 +1,452 @@
+# ════════════════════════════════════════════════════════════════════════
+# Frontière curriculaire — Filières SCIENTIFIQUES · PHILOSOPHIE
+#
+# Cadre source : « الإطار المرجعي للامتحان الوطني — مادة الفلسفة » (MEN/CNEEO),
+#   applicable aux شعب علمية وتقنية وأصيلة (filières scientifiques, techniques,
+#   originelles). Un SEUL cadre de philosophie couvre toutes les filières
+#   scientifiques (SM-A, SM-B, Sciences Physiques, SVT) : même épreuve, même
+#   coefficient 2, même durée 2h. Le PDF officiel n'est PAS extractible en texte
+#   → voir docs/cadre/sources/README-philo.md.
+#
+# ════════════════════════════════════════════════════════════════════════
+# STATUT : PROPOSITION — NON AUTORITATIVE.
+#   Ne devient fiable qu'après les TROIS portes (RULES §5) :
+#     1. relecture longue Gemini (couverture : aucune notion / aucun savoir-faire
+#        perdu ou ajouté ; les 4 modules et leurs notions sont-ils tous là ?) ;
+#     2. research-challenger (attaque de la couche `derived` : limites, exclusions,
+#        et SURTOUT le statut des 3 notions contestées) ;
+#     3. validation humaine (profondeur + arbitrage du périmètre).
+# ════════════════════════════════════════════════════════════════════════
+#
+# ── Convention de provenance (spécifique philo ; PAS de `cadre p.N` ici) ──
+#   research-consensus → corroboré par ≥2 sources indépendantes (plateforme par
+#                        filière + épreuve nationale réelle, ou deux plateformes).
+#                        Format, durée, coefficient, grille /20, structure des
+#                        modules, présence des notions « cœur ».
+#   derived            → reconstruit du programme marocain standard + expertise.
+#                        NON vérifié verbatim. Granularité fine des savoir_faire,
+#                        TOUTES les limites, TOUTES les exclusions, et le statut
+#                        d'inclusion des notions CONTESTÉES. À VALIDER.
+#   ⚠ Le cadre officiel est scanné/protégé : aucune page attribuable. Aucune
+#     provenance `cadre p.N` — ce serait fabriqué (même règle que les maths).
+#
+# ── Adaptation de schéma (philo ≠ physique) ──
+#   L'épreuve de philosophie N'EST PAS pondérée par domaine. Le candidat choisit
+#   UN sujet parmi TROIS ; le sujet porte sur UNE notion d'UN module. Il n'existe
+#   donc pas de `poids: {part_examen}` par notion (toute notion au programme est
+#   équiprobable comme support de sujet). Le rôle joué par `habiletes` en physique
+#   est ici tenu par la GRILLE D'ÉVALUATION /20 (القدرات المستهدفة), commune à
+#   tout sujet — voir `epreuve.grille_evaluation`. On conserve
+#   domaines → sous_domaines → chapitres :
+#     domaine      = مجزوءة (module)
+#     sous_domaine = مفهوم (notion) → porte lesson_slug + statut_scope + limites
+#     chapitre     = محور (axe) de la notion (structure officielle du programme)
+# ════════════════════════════════════════════════════════════════════════
+
+filiere: sciences                     # UN cadre philo pour toutes les filières scientifiques
+matiere: philosophie
+series_concernees:                    # source: research-consensus (cadre.yaml + épreuves)
+  - sciences_mathematiques_a
+  - sciences_mathematiques_b
+  - sciences_physiques
+  - sciences_vie_terre
+  # (et les filières techniques/originelles : même épreuve « الشعب العلمية والتقنية والأصيلة »)
+cadre_statut: "PDF officiel non-texte — extraction triangulée (voir README-philo.md)"
+coefficient: 2                        # source: research-consensus
+duree_epreuve_h: 2                    # source: research-consensus (en-têtes épreuves 2024/2025 علوم)
+langue_epreuve: arabe                 # source: research-consensus
+
+# ── SHAPE de l'épreuve (analogue du bloc exam-shape) ────────────────────────
+epreuve:
+  format: "Le candidat traite UN sujet au choix parmi TROIS proposés."   # source: research-consensus
+  types_sujets:                        # source: research-consensus (épreuves 2024/2025)
+    - id: sujet_question
+      nom: "السؤال الإشكالي — question / sujet de dissertation"
+      description: "Une question ouverte à problématiser et à traiter par dissertation."
+    - id: sujet_citation
+      nom: "القولة المرفقة بمطلب/سؤال — citation accompagnée d'une consigne"
+      description: "Une courte citation philosophique à expliquer, analyser et discuter (dissertation autour de la citation)."
+    - id: sujet_texte
+      nom: "النص الفلسفي — texte à analyser et discuter"
+      description: "Un texte d'auteur (dimension adaptée), à analyser et discuter selon la méthode d'analyse de texte."
+  grille_evaluation:                   # القدرات المستهدفة — /20. source: research-consensus (profsalmi cadre + taalimpress)
+    # Grille du NÉS (source principale). Les grilles du السؤال et de la القولة suivent
+    # la MÊME structure à cinq capacités /20 ; les sous-répartitions exactes de ces
+    # deux formats sont `derived` (alignées ici sur celle du نص).
+    comprehension_fahm:      { note: 4, contenu: "Situer/encadrer (تأطير) la notion et le module ; poser la problématique (طرح الإشكال) et les questions directrices." }   # source: research-consensus
+    analyse_tahlil:          { note: 5, contenu: "Dégager la thèse (2) ; conceptualiser — définir les concepts et leurs relations (2) ; reconstruire l'argumentation/الحجاج (1)." }   # source: research-consensus (sous-splits: derived)
+    discussion_munaqasha:    { note: 5, contenu: "Montrer la valeur/portée de la thèse par des positions convergentes (2) ; en marquer les limites par des positions opposées (3)." }   # source: research-consensus (sous-splits: derived)
+    synthese_tarkib:         { note: 3, contenu: "Conclure : bilan de l'analyse et de la discussion (1.5) ; position personnelle argumentée ouvrant une question (1.5)." }   # source: research-consensus (sous-splits: derived)
+    aspects_formels:         { note: 3, contenu: "Cohérence/structure (1) ; correction de la langue (1) ; lisibilité (1)." }   # source: research-consensus (sous-splits: derived)
+    total: 20
+
+# ── Savoir-faire transversaux (les 3 compétences + les 2 méthodes) ──────────
+savoir_faire_transversaux:            # source: research-consensus (structure) / derived (formulation)
+  competences_cardinales:
+    - "PROBLÉMATISER (الأشكلة) : transformer un thème en problème, faire surgir une tension entre deux réponses également défendables, formuler une problématique (≠ reformuler le sujet)."
+    - "CONCEPTUALISER (المفهمة) : définir et distinguer les concepts, construire et manier les distinctions (ex. opinion / vérité, certitude / vérité, personne / individu)."
+    - "ARGUMENTER (المحاجّة) : soutenir une thèse par des raisons, mobiliser des positions philosophiques (pour et contre), examiner objections et limites."
+  methode_analyse_texte:              # ◄═══ CHAPITRE À AUTORISER : nouvelle leçon en préparation
+    # Structure officielle en 3 moments / 4 « مطالب » (exigences), notée /20 par la grille ci-dessus.
+    introduction_mokaddima:
+      - "Encadrer (تأطير) : rattacher le texte à sa notion et à son module."
+      - "Dégager le thème/objet du texte (تحديد موضوع النص)."
+      - "Poser le problème que le texte traite (طرح الإشكال) et les questions qui guideront l'analyse."
+    developpement_ard:
+      analyse_tahlil:
+        - "Formuler la thèse/l'idée centrale de l'auteur (أطروحة النص)."
+        - "Repérer et expliciter les concepts-clés et leurs relations."
+        - "Reconstruire la structure argumentative (procédés : exemple, comparaison, opposition, causalité, définition…) ; suivre le mouvement du texte."
+      discussion_munaqasha:
+        - "Discussion interne : valeur, portée, cohérence de la thèse."
+        - "Discussion externe : confronter à des positions philosophiques convergentes PUIS divergentes ; marquer les limites de la thèse."
+    conclusion_khatima_tarkib:
+      - "Synthétiser les acquis de l'analyse et de la discussion (نتائج)."
+      - "Proposer une réponse à la problématique ; éventuellement une position personnelle argumentée qui rouvre une question."
+    exigences_de_fidelite:
+      - "L'analyse doit RESTER COLLÉE AU TEXTE (citations/reformulations) — pas un exposé de cours plaqué."
+      - "La discussion mobilise des positions PERTINENTES pour la notion du texte, pas un name-dropping décoratif."
+  methode_dissertation:               # السؤال et القولة
+    - "Analyse des termes du sujet → problématisation → plan (souvent dialectique : thèse / antithèse / dépassement) → introduction rédigée (accroche, définition, tension, problématique, annonce) → développement argumenté → conclusion."
+    - "Pour la قولة : expliquer d'abord la citation (thèse + concepts), puis l'analyser et la discuter comme une thèse à éprouver."
+
+# ════════════════════════════════════════════════════════════════════════
+# LES QUATRE MODULES (مجزوءات)
+#   statut_scope: core   → inclusion confirmée (2 plateformes filière + épreuves)
+#   statut_scope: flagge → notion CONTESTÉE : omise des cursus par filière
+#                          (AlloSchool علوم / 9rayti) mais référencée ailleurs.
+#                          → possiblement HORS périmètre / leçon SUR-SCOPÉE.
+#                          Ne PAS trancher sans le cadre officiel + humain.
+# ════════════════════════════════════════════════════════════════════════
+
+domaines:
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: condition_humaine
+    nom: "مجزوءة الوضع البشري — La condition humaine"          # source: research-consensus
+    sous_domaines:
+
+      - id: la_personne
+        nom: "الشخص — La personne"
+        lesson_slug: la-personne
+        statut_scope: core                                     # source: research-consensus (unanime)
+        competences_ciblees:                                   # source: research-consensus (structure)
+          - "Interroger ce qui fait la personne (≠ simple individu) : conscience de soi, identité, valeur, dignité, liberté et responsabilité."
+        chapitres:                                             # محاور — source: research-consensus
+          - id: personne_identite
+            nom: "الشخص والهوية — La personne et l'identité"
+            programme: ["Ce qui fait l'identité et la permanence du moi à travers le changement (corps, mémoire, conscience)."]
+            savoir_faire: ["Distinguer personne / individu / sujet ; discuter le critère de l'identité personnelle."]   # source: derived
+          - id: personne_valeur
+            nom: "الشخص بوصفه قيمة — La personne comme valeur"
+            programme: ["La personne comme fin en soi, sa dignité, son statut moral et juridique."]
+            savoir_faire: ["Opposer valeur intrinsèque et valeur d'usage (personne / chose) ; mobiliser l'idée de dignité."]   # source: derived
+          - id: personne_necessite_liberte
+            nom: "الشخص بين الضرورة والحرية — La personne entre nécessité et liberté"
+            programme: ["La personne prise entre déterminismes (biologiques, sociaux, psychiques) et capacité d'auto-détermination."]
+            savoir_faire: ["Articuler conditionnement et liberté ; préparer le lien avec la notion de liberté (module Morale)."]   # source: derived
+        limites:                                               # source: derived
+          - "Traitement au niveau notionnel/problématique attendu pour coef 2, 2h — pas d'érudition doxographique exhaustive."
+
+      - id: autrui
+        nom: "الغير — Autrui"
+        lesson_slug: autrui
+        statut_scope: core                                     # source: research-consensus (قولة à l'épreuve 2024)
+        competences_ciblees:
+          - "Interroger l'existence d'autrui, sa connaissance (puis-je connaître autrui ?), et la relation à autrui (autrui comme condition de mon existence / comme conflit)."
+        chapitres:                                             # source: research-consensus
+          - id: existence_autrui
+            nom: "وجود الغير — L'existence d'autrui"
+            programme: ["Autrui comme alter ego et comme condition de la conscience de soi."]
+            savoir_faire: ["Discuter autrui comme médiation nécessaire de la conscience de soi (regard, reconnaissance)."]   # source: derived
+          - id: connaissance_autrui
+            nom: "معرفة الغير — La connaissance d'autrui"
+            programme: ["Puis-je accéder à la vie intérieure d'autrui ? Autrui comme énigme."]
+            savoir_faire: ["Problématiser l'accès (impossible ? indirect ?) à la conscience d'autrui."]   # source: derived
+          - id: relation_autrui
+            nom: "العلاقة مع الغير — La relation à autrui"
+            programme: ["Autrui entre conflit (lutte des consciences) et lien (amitié, sollicitude, éthique)."]
+            savoir_faire: ["Opposer les modèles conflictuel et éthique de la relation à autrui."]   # source: derived
+        limites:                                               # source: derived
+          - "Pas de développement d'anthropologie/sociologie spécialisée ; la question reste philosophique (conscience, reconnaissance, éthique)."
+
+      - id: l_histoire
+        nom: "التاريخ — L'histoire"
+        lesson_slug: l-histoire
+        statut_scope: flagge                                   # ⚠ CONTESTÉ — voir flag ci-dessous
+        scope_flag:                                            # source: derived (à trancher)
+          statut: "Omise des cursus par filière (AlloSchool علوم فيزيائية, 9rayti) qui s'arrêtent à الشخص + الغير. MAIS profsalmi la cite comme notion du module الوضع البشري pour les filières scientifiques."
+          consequence: "La leçon l-histoire est POSSIBLEMENT SUR-SCOPÉE pour les filières scientifiques coef 2. À confirmer sur le cadre officiel + humain."
+        competences_ciblees:
+          - "Interroger la connaissance historique (est-elle objective ?), l'idée de progrès, et le rôle de l'individu / des masses dans l'histoire."
+        chapitres:                                             # source: research-consensus (structure standard)
+          - id: connaissance_historique
+            nom: "المعرفة التاريخية — La connaissance historique"
+            programme: ["Statut de l'histoire comme savoir ; objectivité, interprétation, rôle du document."]
+            savoir_faire: ["Discuter l'objectivité de l'historien (reconstruction ≠ enregistrement)."]   # source: derived
+          - id: histoire_progres
+            nom: "التاريخ وفكرة التقدم — L'histoire et l'idée de progrès"
+            programme: ["Sens de l'histoire, idée de progrès et ses critiques."]
+            savoir_faire: ["Problématiser l'idée d'un sens/progrès de l'histoire."]   # source: derived
+          - id: individu_masses_histoire
+            nom: "دور الفرد ودور الجماهير — Rôle de l'individu / des masses"
+            programme: ["Qui fait l'histoire : les grands hommes, les masses, les structures ?"]
+            savoir_faire: ["Opposer histoire par les individus vs par les forces collectives."]   # source: derived
+        limites:                                               # source: derived
+          - "SI en scope : traitement philosophique (épistémologie de l'histoire, sens), pas d'historiographie technique."
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: la_connaissance
+    nom: "مجزوءة المعرفة — La connaissance / le savoir"          # source: research-consensus
+    sous_domaines:
+
+      - id: theorie_experience
+        nom: "النظرية والتجربة — La théorie et l'expérience"
+        lesson_slug: theorie-experience
+        statut_scope: core                                     # source: research-consensus (نص à l'épreuve 2024)
+        competences_ciblees:
+          - "Interroger le rapport théorie/expérience dans la connaissance scientifique : l'observation est-elle neutre ? la théorie précède-t-elle le fait ? les critères de scientificité."
+        chapitres:                                             # source: research-consensus
+          - id: experience_experimentation
+            nom: "التجربة والتجريب — Expérience et expérimentation"
+            programme: ["Observer ≠ expérimenter ; le rôle de l'hypothèse ; l'expérience n'est jamais brute (Claude Bernard)."]
+            savoir_faire: ["Distinguer observation passive et expérimentation guidée par une idée directrice."]   # source: derived
+          - id: rationalite_scientifique
+            nom: "العقلانية العلمية — La rationalité scientifique"
+            programme: ["Empirisme / rationalisme ; construction de l'objet scientifique (rupture, Bachelard) ; articulation raison/expérience (Kant)."]
+            savoir_faire: ["Opposer empirisme et rationalisme ; discuter la construction du fait scientifique."]   # source: derived
+          - id: criteres_scientificite
+            nom: "معايير علمية النظريات — Les critères de scientificité"
+            programme: ["Problème de l'induction (Hume) ; falsifiabilité (Popper) ; caractère provisoire des théories."]
+            savoir_faire: ["Distinguer confirmer / prouver ; mobiliser la falsifiabilité."]   # source: derived
+        limites:                                               # source: derived
+          - "Épistémologie au niveau notionnel : pas de technicité en logique formelle ni en histoire des sciences détaillée."
+        note_profondeur:                                       # source: derived (à valider)
+          - "La leçon existante clôt le module 'connaissance' et prolonge la-verite (Bachelard, Popper, Kant, Hume, Bernard) : riche mais globalement dans le périmètre. Vérifier que la densité reste tenable pour 2h/coef 2."
+
+      - id: la_verite
+        nom: "الحقيقة — La vérité"
+        lesson_slug: la-verite
+        statut_scope: core                                     # source: research-consensus (épreuves 2023 & 2024)
+        competences_ciblees:
+          - "Interroger l'opinion et la vérité, les critères de la vérité (correspondance, cohérence, évidence), et la vérité comme valeur."
+        chapitres:                                             # source: research-consensus
+          - id: opinion_verite
+            nom: "الرأي والحقيقة — L'opinion et la vérité"
+            programme: ["Distinguer réel / opinion / vérité ; la vérité comme propriété d'un énoncé, pas un sentiment du sujet."]
+            savoir_faire: ["Ne pas confondre opinion (croyance) et vérité ; ni vérité et réel."]   # source: derived
+          - id: criteres_verite
+            nom: "معايير الحقيقة — Les critères de la vérité"
+            programme: ["Correspondance (Aristote) ; cohérence ; évidence et doute méthodique (Descartes, cogito) ; certitude ≠ vérité."]
+            savoir_faire: ["Manier les théories de la vérité ; distinguer certitude subjective et vérité objective."]   # source: derived
+          - id: verite_valeur
+            nom: "الحقيقة بوصفها قيمة — La vérité comme valeur"
+            programme: ["Chercher le vrai comme exigence ; mensonge, propagande ; fallibilisme ≠ relativisme."]
+            savoir_faire: ["Défendre la valeur (morale et intellectuelle) de la recherche du vrai."]   # source: derived
+        limites:                                               # source: derived
+          - "Théories de la vérité au niveau philosophique/notionnel ; pas de logique formelle des valeurs de vérité."
+        note_profondeur:                                       # source: derived (à valider)
+          - "Leçon existante à 8 'rungs' (Aristote, cohérence, Bachelard, Descartes, certitude/vérité, Popper, mensonge/propagande). Couverture EXCELLENTE mais DENSE ; possiblement au-delà de l'attendu strict coef 2 — traiter comme surplus pédagogique acceptable, pas comme hors-programme. À confirmer par l'humain."
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: la_politique
+    nom: "مجزوءة السياسة — La politique / le vivre-ensemble"      # source: research-consensus
+    sous_domaines:
+
+      - id: l_etat
+        nom: "الدولة — L'État"
+        lesson_slug: l-etat
+        statut_scope: core                                     # source: research-consensus
+        competences_ciblees:
+          - "Interroger la légitimité et les finalités de l'État, la nature du pouvoir politique, et le rapport de l'État au droit et à la violence."
+        chapitres:                                             # source: research-consensus
+          - id: legitimite_finalites_etat
+            nom: "مشروعية الدولة وغاياتها — Légitimité et finalités de l'État"
+            programme: ["Fondements de l'État (contrat, nature, force) ; ses fins (sécurité, bien commun, liberté)."]
+            savoir_faire: ["Discuter ce qui fonde et justifie l'autorité de l'État."]   # source: derived
+          - id: nature_pouvoir_politique
+            nom: "طبيعة السلطة السياسية — La nature du pouvoir politique"
+            programme: ["Pouvoir légitime vs domination ; État de droit."]
+            savoir_faire: ["Distinguer autorité légitime et pouvoir de fait."]   # source: derived
+          - id: etat_droit_violence
+            nom: "الدولة بين الحق والعنف — L'État entre droit et violence"
+            programme: ["Monopole de la violence légitime (Weber) ; tension État de droit / usage de la force."]
+            savoir_faire: ["Problématiser le rapport de l'État à la violence."]   # source: derived
+        limites:                                               # source: derived
+          - "Philosophie politique au niveau notionnel ; pas de science politique institutionnelle détaillée."
+          - "L'axe 'État / violence' absorbe une bonne part de la thématique de la violence (voir la notion contestée العنف)."
+
+      - id: le_droit_la_justice
+        nom: "الحق والعدالة — Le droit et la justice"
+        lesson_slug: le-droit-la-justice
+        statut_scope: core                                     # source: research-consensus (سؤال à l'épreuve 2024)
+        competences_ciblees:
+          - "Interroger le droit (naturel / positif), la justice comme fondement du droit, et la justice entre égalité et équité."
+        chapitres:                                             # source: research-consensus
+          - id: droit_naturel_positif
+            nom: "الحق بين الطبيعي والوضعي — Droit naturel et droit positif"
+            programme: ["Droit naturel (universel, antérieur) vs droit positif (institué, historique)."]
+            savoir_faire: ["Distinguer droit naturel et droit positif ; discuter leur rapport."]   # source: derived
+          - id: justice_fondement_droit
+            nom: "العدالة كأساس للحق — La justice comme fondement du droit"
+            programme: ["La justice comme valeur qui fonde/critique le droit positif."]
+            savoir_faire: ["Articuler légalité et légitimité (une loi peut être injuste)."]   # source: derived
+          - id: justice_egalite_equite
+            nom: "العدالة بين المساواة والإنصاف — Justice entre égalité et équité"
+            programme: ["Égalité stricte vs équité (traiter différemment des situations différentes)."]
+            savoir_faire: ["Opposer égalité et équité (cf. sujet national 2024)."]   # source: derived
+        limites:                                               # source: derived
+          - "Philosophie du droit au niveau notionnel ; pas de droit positif technique."
+
+      - id: la_violence
+        nom: "العنف — La violence"
+        lesson_slug: la-violence
+        statut_scope: flagge                                   # ⚠ CONTESTÉ — voir flag ci-dessous
+        scope_flag:                                            # source: derived (à trancher)
+          statut: "Omise comme NOTION AUTONOME des cursus par filière (AlloSchool علوم / 9rayti). MAIS une قولة État+violence est tombée à l'épreuve nationale علوم 2023. La thématique est souvent RATTACHÉE à l'axe 'الدولة بين الحق والعنف' du concept الدولة."
+          consequence: "La leçon la-violence est POSSIBLEMENT SUR-SCOPÉE comme notion autonome, mais son CONTENU reste examinable via l'État. Ne pas supprimer ; requalifier éventuellement en appui de l'État. À trancher (cadre + humain)."
+        competences_ciblees:
+          - "Interroger les formes de la violence, la violence dans l'histoire, et le rapport violence / légitimité / droit."
+        chapitres:                                             # source: research-consensus (structure standard)
+          - id: formes_violence
+            nom: "أشكال العنف — Les formes de la violence"
+            programme: ["Violence physique, symbolique, institutionnelle ; nature/culture de la violence."]
+            savoir_faire: ["Distinguer les formes et sources de la violence."]   # source: derived
+          - id: violence_legitimite
+            nom: "العنف والمشروعية / تجاوز العنف — Violence, légitimité et dépassement"
+            programme: ["Violence légitime / illégitime ; dépassement de la violence par le droit et la politique."]
+            savoir_faire: ["Problématiser la légitimation de la violence ; articuler avec l'État de droit."]   # source: derived
+        limites:                                               # source: derived
+          - "SI en scope autonome : converge fortement avec l'axe État/violence — éviter le doublon de contenu avec l-etat."
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: la_morale
+    nom: "مجزوءة الأخلاق — La morale / l'action"                  # source: research-consensus
+    sous_domaines:
+
+      - id: le_devoir
+        nom: "الواجب — Le devoir"
+        lesson_slug: le-devoir
+        statut_scope: core                                     # source: research-consensus
+        competences_ciblees:
+          - "Interroger le devoir et la contrainte, la conscience morale, et le rapport du devoir à la société."
+        chapitres:                                             # source: research-consensus
+          - id: devoir_contrainte
+            nom: "الواجب والإكراه — Le devoir et la contrainte"
+            programme: ["Devoir moral (obligation intérieure) vs contrainte (extérieure) ; devoir et liberté."]
+            savoir_faire: ["Distinguer obligation morale et contrainte ; discuter l'inconditionnalité du devoir."]   # source: derived
+          - id: conscience_morale
+            nom: "الوعي الأخلاقي — La conscience morale"
+            programme: ["Origine de la conscience morale : innée ? acquise ? sociale ?"]
+            savoir_faire: ["Discuter l'origine et l'autorité de la conscience morale."]   # source: derived
+          - id: devoir_societe
+            nom: "الواجب والمجتمع — Le devoir et la société"
+            programme: ["Le devoir est-il d'origine sociale ? universalité vs relativité des devoirs."]
+            savoir_faire: ["Opposer devoir universel et morale socialement située."]   # source: derived
+        limites:                                               # source: derived
+          - "Philosophie morale au niveau notionnel ; pas de casuistique ni de théologie morale technique."
+
+      - id: la_liberte
+        nom: "الحرية — La liberté"
+        lesson_slug: la-liberte
+        statut_scope: core                                     # source: research-consensus
+        note_axe: "La leçon existante est étiquetée 'morale / politique' — la liberté est bien au module Morale, avec un pont légitime vers la Politique (liberté et loi)."   # source: derived
+        competences_ciblees:
+          - "Interroger la liberté et le déterminisme, la liberté de la volonté, et la liberté et la loi/le droit."
+        chapitres:                                             # source: research-consensus
+          - id: liberte_determinisme
+            nom: "الحرية والحتمية — La liberté et le déterminisme"
+            programme: ["Déterminismes (physiques, psychiques, sociaux) vs possibilité de la liberté."]
+            savoir_faire: ["Discuter la compatibilité liberté / déterminisme."]   # source: derived
+          - id: liberte_volonte
+            nom: "حرية الإرادة — La liberté de la volonté"
+            programme: ["Libre arbitre ; illusion de la liberté ; liberté comme conquête."]
+            savoir_faire: ["Problématiser le libre arbitre (réel / illusoire)."]   # source: derived
+          - id: liberte_loi
+            nom: "الحرية والقانون — La liberté et la loi"
+            programme: ["La loi limite-t-elle ou fonde-t-elle la liberté ? liberté et droit."]
+            savoir_faire: ["Articuler liberté et loi (contrainte vs condition de la liberté)."]   # source: derived
+        limites:                                               # source: derived
+          - "Au niveau notionnel ; pas de métaphysique de la liberté hyper-technique."
+
+      - id: le_bonheur
+        nom: "السعادة — Le bonheur"
+        lesson_slug: le-bonheur
+        statut_scope: flagge                                   # ⚠ CONTESTÉ — voir flag ci-dessous
+        scope_flag:                                            # source: derived (à trancher)
+          statut: "Omise des cursus par filière (AlloSchool علوم / 9rayti), qui s'arrêtent au module Morale à الواجب + الحرية. Le thème du bonheur apparaît de façon incidente (Aristote, finalité de l'État) mais pas clairement comme notion examinable autonome en filière scientifique."
+          consequence: "La leçon le-bonheur est POSSIBLEMENT SUR-SCOPÉE pour les filières scientifiques coef 2. À confirmer sur le cadre officiel + humain."
+        competences_ciblees:
+          - "Interroger les représentations du bonheur, le rapport bonheur / plaisir, et le rapport bonheur / devoir / raison."
+        chapitres:                                             # source: research-consensus (structure standard)
+          - id: representations_bonheur
+            nom: "تمثلات السعادة — Les représentations du bonheur"
+            programme: ["Diversité et relativité des représentations du bonheur ; bonheur comme fin."]
+            savoir_faire: ["Discuter la définissabilité et l'universalité du bonheur."]   # source: derived
+          - id: bonheur_plaisir
+            nom: "السعادة واللذة — Le bonheur et le plaisir"
+            programme: ["Bonheur / plaisir / désir ; hédonisme, eudémonisme."]
+            savoir_faire: ["Distinguer plaisir (ponctuel) et bonheur (durable)."]   # source: derived
+          - id: bonheur_devoir_raison
+            nom: "السعادة والواجب / العقل — Le bonheur, le devoir et la raison"
+            programme: ["Rechercher le bonheur est-il un devoir ? bonheur et vertu/raison."]
+            savoir_faire: ["Articuler quête du bonheur et exigence morale (pont vers le Devoir)."]   # source: derived
+        limites:                                               # source: derived
+          - "SI en scope : philosophie morale au niveau notionnel."
+
+# ════════════════════════════════════════════════════════════════════════
+# EXCLUSIONS — ce qui est HORS PÉRIMÈTRE des filières scientifiques
+#   (couche `derived` — l'anti-off-syllabus ; à attaquer par le challenger)
+# ════════════════════════════════════════════════════════════════════════
+exclusions:
+  - topic: "Module « العلوم الإنسانية » (Les sciences humaines)"
+    raison: "Module réservé à la filière علوم إنسانية (humanités). ABSENT du programme des filières scientifiques. Nous n'avons — à juste titre — aucune leçon pour lui."
+    source: research-consensus
+  - topic: "Programme FRANÇAIS des 17 notions (art, langage, religion, inconscient, conscience, technique, nature, travail, temps…)"
+    raison: "Confusion fréquente des synthèses grand-public. Le programme marocain est structuré en 4 mujazūʾāt, PAS en notions à la française. Ces notions ne sont pas au programme marocain des filières scientifiques (sauf recoupement thématique incident)."
+    source: derived
+  - topic: "Notions contestées comme notions AUTONOMES : التاريخ (l'histoire), العنف (la violence), السعادة (le bonheur)"
+    raison: "Omises des arborescences de cours par filière scientifique (AlloSchool علوم فيزيائية, 9rayti). Signaux CONTRADICTOIRES (profsalmi cite l'histoire ; une قولة violence est tombée en 2023 علوم). NON tranché ici → marquées `statut_scope: flagge`, PAS supprimées. Décision au cadre officiel + humain."
+    source: derived
+  - topic: "Érudition doxographique / corpus d'auteurs fermé à la française"
+    raison: "Le cadre marocain n'impose pas de liste d'auteurs 'au programme' à maîtriser ; l'épreuve (2h, coef 2) évalue la MÉTHODE (problématiser, conceptualiser, argumenter) et l'usage pertinent de positions, pas la couverture encyclopédique. Ne pas sur-charger en références."
+    source: derived
+  - topic: "Technicité disciplinaire (logique formelle, historiographie, science politique/juridique spécialisée)"
+    raison: "Chaque notion est traitée au niveau PHILOSOPHIQUE/notionnel, pas au niveau technique de la discipline mobilisée."
+    source: derived
+
+# ════════════════════════════════════════════════════════════════════════
+# FLAGS D'EXTRACTION (récapitulatif pour les trois portes)
+#
+#  COUVERTURE (pour Gemini) :
+#   - Nos 11 leçons couvrent : 8 notions « cœur » (in-scope confirmé) + 3 notions
+#     contestées (l-histoire, la-violence, le-bonheur). AUCUNE notion « cœur »
+#     n'est sans leçon → couverture complète du cœur, plus 3 leçons possiblement
+#     en surplus.
+#   - Le NOUVEAU chapitre à autoriser = la MÉTHODE D'ANALYSE DE TEXTE
+#     (epreuve.savoir_faire_transversaux.methode_analyse_texte) : c'est un
+#     savoir-faire transversal, pas une notion — la future leçon d'analyse de
+#     texte s'y adosse.
+#
+#  COUCHE DÉRIVÉE (pour research-challenger) — à attaquer en priorité :
+#   1. Le STATUT des 3 notions contestées (flagge). C'est LE point de fidélité
+#      décisif : signaux contradictoires, cadre non-texte. Est-ce vraiment un
+#      sous-ensemble à 8 ? ou 9/10/11 ? La violence est-elle une notion autonome
+#      ou un axe de l'État ?
+#   2. Les grilles /20 des formats سؤال et قولة (ici alignées sur celle du نص).
+#   3. Toutes les limites/exclusions et la granularité des savoir_faire.
+#
+#  PROFONDEUR (pour l'humain) :
+#   - la-verite (8 rungs) et theorie-experience : très riches. In-scope quant à la
+#     NOTION, mais possiblement au-delà de l'attendu strict coef 2 quant à la
+#     DENSITÉ. Surplus pédagogique acceptable ou à alléger ? (voir note_profondeur)
+#   - Arbitrer le périmètre des 3 notions contestées sur le cadre officiel.
+#
+#  RÉCONCILIATION SHAPE :
+#   - cadre.yaml porte déjà philosophie coefficient 2 (4 filières). Il ne porte PAS
+#     encore la durée (2h) ni le format (3 sujets, grille /20). Recommandation :
+#     compléter l'exam-shape reference avec ce bloc `epreuve` (non fait ici pour
+#     rester dans les deux livrables demandés).
+#   - Pas de « poids par domaine » en philo : l'épreuve = 1 sujet choisi, pas une
+#     somme pondérée (voir la note d'adaptation de schéma en tête de fichier).
+# ════════════════════════════════════════════════════════════════════════

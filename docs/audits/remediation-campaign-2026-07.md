@@ -28,7 +28,7 @@
 
 | Stage | What | Status |
 |---|---|---|
-| 0 | Ledger + P1 validator + P2 shuffle/item-stats + P3 filière-gating | IN PROGRESS |
+| 0 | Ledger + P1 validator + P2 shuffle/item-stats + P3 filière-gating | P1✓ P2✓ (7256d46,0f8033e); P3 pending |
 | 1 | R1-PC sujets bank · R2 cadre maths · D1 persistence code | pending |
 | 2 | H-PC wave (6 PC hole extensions) | pending |
 | 3 | Conversion pilots: maths/probabilites-conditionnelles + pc/rc-charge | pending |
@@ -131,11 +131,36 @@ Deferred in full, with pointers for the future session that picks SVT up:
 
 ## Cadre extraction status
 
-| Cadre | Sourced PDF | Extracted | Challenged | Owner-validated |
+All three are **PROPOSITION** (non-authoritative): the official cadre PDFs are
+scanned images with no text layer, so no `cadre p.N` provenance exists — every
+value is `research-consensus` (≥2 sources) or `derived`. Owner validation at
+Sitting 2 is the authority gate.
+
+| Cadre | Sourced | Extracted | Challenged | Owner-validated |
 |---|---|---|---|---|
-| maths | — | — | — | — |
-| svt | — | — | — | — |
-| philo | — | — | — | — |
+| maths (SM + SExp) | scanned only | ✓ (c271742) | pending | pending (S2) |
+| svt | scanned only | ✓ log-only | pending | pending (S2) |
+| philo | scanned only | ✓ | pending | pending (S2) |
+
+**Owner questions raised for Sitting 2 (from extraction):**
+1. **Philo language.** The scientific-stream philosophy national exam is **in
+   Arabic** (2h, coef 2, choose 1 of 3 subjects: dissertation / citation /
+   texte-à-analyser). Our whole philo corpus is French (app is French-first).
+   Owner call: keep French (teach the transferable method/concepts) vs. address
+   the Arabic exam. Default this campaign: **stay French** (matches the corpus);
+   the new analyse-de-texte lesson teaches the method in French.
+2. **Maths géométrie in SM.** Extraction says géométrie dans l'espace is **not
+   nationally tested for SM** (part_examen 0), yet we have a `geometrie-espace`
+   lesson with SM-depth content. Needs owner confirm (an ex-SM candidate settles
+   it instantly). In SExp it IS ~15% — so the lesson stays; the question is only
+   SM exposure.
+3. **Philo over-scope flags.** 3 notions (`l-histoire`, `la-violence`,
+   `le-bonheur`) give contradictory in-scope signals for scientific streams —
+   present in some sources/exams, dropped by others. Owner call; default: keep
+   (in-syllabus somewhere, and already built).
+4. **SVT molecular-genetics unit** (ADN/réplication/transcription/traduction/génie
+   génétique) is in the cadre but has **no lesson** — logged for the future SVT
+   session (SVT frozen this campaign).
 
 ## Cadre-findings triage log
 
