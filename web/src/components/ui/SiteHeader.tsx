@@ -16,14 +16,19 @@
  *   just the end-state class applied immediately.
  * - Focus rings migrated to .focus-ring utility.
  * - Auth affordance (AUTH-SPEC §3, ledger 14.12): a "Se connecter" link, or
- *   (mock, signed in) the élève's initial + "Se déconnecter" — both entirely
- *   absent when NEXT_PUBLIC_AUTH_MODE === "off" (today's zero-delta state).
+ *   (signed in — mock OR live) the élève's initial + "Se déconnecter" — both
+ *   entirely absent when NEXT_PUBLIC_AUTH_MODE === "off" (today's
+ *   zero-delta state). The sign-out control calls `signOutMock()` in mock
+ *   mode and the real `signOut()` in live mode — same DOM shape, mode-aware
+ *   handler underneath.
  *
  * No browser storage — scrolled state is ephemeral in-memory React state
- * (the auth user itself lives in AuthProvider, also in-memory only).
+ * (the auth user itself lives in AuthProvider: in-memory mirror of
+ * Supabase's own httpOnly session cookie in live mode, purely in-memory in
+ * mock mode).
  */
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
@@ -101,7 +106,22 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   // AUTH-SPEC §3 (docs/design/AUTH-SPEC.md): the entry point lives here, in
   // the right cluster, rendered ONLY when NEXT_PUBLIC_AUTH_MODE !== "off".
-  const { user, mode, signOutMock } = useAuth();
+  const { user, mode, signOutMock, signOut } = useAuth();
+
+  // Mode-aware sign-out: "mock" clears the in-memory fake user (never
+  // throws); "live" calls the real Supabase sign-out (async — errors are
+  // logged, not surfaced here, since the only affordance on this control is
+  // "try again" by clicking it again; a failed sign-out leaves `user`
+  // unchanged, which is the honest state to show).
+  const handleSignOut = useCallback(() => {
+    if (mode === "live") {
+      signOut().catch((err: unknown) => {
+        console.error("[auth] échec de la déconnexion :", err);
+      });
+    } else {
+      signOutMock();
+    }
+  }, [mode, signOut, signOutMock]);
 
   useEffect(() => {
     // Passive scroll listener — check >8px threshold
@@ -292,7 +312,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                 </div>
                 <button
                   type="button"
-                  onClick={signOutMock}
+                  onClick={handleSignOut}
                   className={cn(
                     "text-body-sm font-medium",
                     "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",

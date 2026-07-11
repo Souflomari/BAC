@@ -11,11 +11,18 @@
  *   - "mock" → the full calm form (e-mail + mot de passe, submit disabled —
  *     nothing is wired), a disabled "Continuer avec Google" affordance, AND
  *     the mock-ONLY "Entrer en démonstration" control, which actually signs
- *     the in-memory fake user in and returns to `/`.
- *   - "live" → the same form as mock (still nothing is wired this session —
- *     AUTH-SPEC §4/§5 gates the real wiring behind the owner's staging-sync
- *     session), WITHOUT the mock-only demo entry, so a stray live flag can
- *     never expose a fake "sign in" that isn't real.
+ *     the in-memory fake user in and returns to `/`. Byte-identical to
+ *     before live mode existed.
+ *   - "live" → the same calm shape, but the e-mail/mot de passe fields are
+ *     real and wired to `useAuth().signIn`/`signUp` (AUTH-SPEC §1: e-mail +
+ *     mot de passe as the socle; no SMS-OTP, no magic-link). A quiet toggle
+ *     switches between "Se connecter" and "Créer un compte" — confirmation
+ *     e-mail is disabled in v1 (ledger 14.10), so a successful sign-up is an
+ *     immediate session, same redirect as sign-in. The mock-only demo entry
+ *     never renders here, and "Continuer avec Google" stays a disabled
+ *     placeholder (real Google OAuth is out of this build's scope — AUTH-
+ *     SPEC §1 names it as a fast path, but only e-mail/mot-de-passe is wired
+ *     this pass).
  *
  * This is a CLIENT component (it reads useAuth() and drives router
  * navigation), so it intentionally does not export `metadata` — Next.js
@@ -24,11 +31,13 @@
  * interactive part into its own client child if a page-specific <title> is
  * ever wanted here.
  *
- * No network, no @supabase/*, no browser storage — mock mode only, per the
- * absolute rule for this build.
+ * No browser storage anywhere on this page — the live form's email/mot de
+ * passe/error state is in-memory React state, not persisted; the real
+ * session persistence is Supabase's own httpOnly cookie (@supabase/ssr),
+ * never localStorage/sessionStorage here.
  */
 
-import { useCallback, type FormEvent } from "react";
+import { useCallback, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -36,6 +45,31 @@ import { TransportButton } from "@/components/notion/TransportButton";
 import { useAuth } from "@/lib/auth/provider";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { cn } from "@/lib/utils";
+
+type LiveAction = "signin" | "signup";
+
+/**
+ * Supabase auth errors surface English messages by default. This maps the
+ * handful expected in v1 (wrong credentials, duplicate sign-up, weak
+ * password) to calm French copy; anything unrecognized falls back to a
+ * generic honest sentence rather than leaking a raw English string.
+ */
+function liveErrorMessage(raw: string): string {
+  const lower = raw.toLowerCase();
+  if (lower.includes("invalid login credentials")) {
+    return "E-mail ou mot de passe incorrect.";
+  }
+  if (lower.includes("already registered") || lower.includes("user already exists")) {
+    return "Un compte existe déjà avec cette adresse — essaie de te connecter.";
+  }
+  if (lower.includes("password") && lower.includes("6")) {
+    return "Le mot de passe doit contenir au moins 6 caractères.";
+  }
+  if (lower.includes("email") && lower.includes("valid")) {
+    return "Adresse e-mail invalide.";
+  }
+  return "Une erreur est survenue. Réessaie dans un instant.";
+}
 
 // ── Shared field/control classes (tokens only — no hard-coded color/spacing) ──
 
@@ -115,19 +149,50 @@ function OrDivider() {
 
 export default function ConnexionPage() {
   const router = useRouter();
-  const { mode, signInMock } = useAuth();
+  const { mode, signInMock, signIn, signUp } = useAuth();
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
-    // The submit button is disabled in every mode this build supports, so
-    // this never actually fires. Kept as a defensive no-op so nothing
-    // navigates or calls out if that ever changes.
-    e.preventDefault();
-  }, []);
+  // live-mode-only form state — in-memory, never persisted (see file header).
+  const [action, setAction] = useState<LiveAction>("signin");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      if (mode !== "live") {
+        // The submit button is disabled in "off"/"mock", so this never
+        // actually fires there. Kept as a defensive no-op.
+        return;
+      }
+
+      setError(null);
+      setPending(true);
+      const task = action === "signin" ? signIn(email, password) : signUp(email, password);
+      task
+        .then(() => router.push("/"))
+        .catch((err: unknown) => {
+          setError(liveErrorMessage(err instanceof Error ? err.message : ""));
+        })
+        .finally(() => setPending(false));
+    },
+    [mode, action, email, password, signIn, signUp, router]
+  );
 
   const handleEnterDemo = useCallback(() => {
     signInMock();
     router.push("/");
   }, [signInMock, router]);
+
+  const handleToggleAction = useCallback(() => {
+    setAction((a) => (a === "signin" ? "signup" : "signin"));
+    setError(null);
+  }, []);
+
+  const isLive = mode === "live";
+  const isSignup = isLive && action === "signup";
 
   return (
     <PageShell width="content">
@@ -135,7 +200,7 @@ export default function ConnexionPage() {
 
       <div className="max-w-sm">
         <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
-          Se connecter
+          {isSignup ? "Créer un compte" : "Se connecter"}
         </h1>
 
         {mode === "off" ? (
@@ -148,7 +213,7 @@ export default function ConnexionPage() {
               {frenchTypography("E-mail et mot de passe, avec Google en accès rapide.")}
             </p>
 
-            <form className="mt-8 space-y-6" onSubmit={handleSubmit} noValidate>
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit} noValidate={!isLive}>
               <div>
                 <label htmlFor="connexion-email" className={LABEL_CLASS}>
                   Adresse e-mail
@@ -158,7 +223,10 @@ export default function ConnexionPage() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  disabled
+                  disabled={!isLive || pending}
+                  required={isLive}
+                  value={isLive ? email : ""}
+                  onChange={isLive ? (e) => setEmail(e.target.value) : undefined}
                   placeholder="toi@exemple.com"
                   className={INPUT_CLASS}
                 />
@@ -172,8 +240,12 @@ export default function ConnexionPage() {
                   id="connexion-password"
                   name="password"
                   type="password"
-                  autoComplete="current-password"
-                  disabled
+                  autoComplete={isSignup ? "new-password" : "current-password"}
+                  disabled={!isLive || pending}
+                  required={isLive}
+                  minLength={isLive ? 6 : undefined}
+                  value={isLive ? password : ""}
+                  onChange={isLive ? (e) => setPassword(e.target.value) : undefined}
                   placeholder="••••••••"
                   className={INPUT_CLASS}
                 />
@@ -181,22 +253,64 @@ export default function ConnexionPage() {
 
               <button
                 type="submit"
-                disabled
-                aria-describedby="connexion-mode-note"
+                disabled={!isLive || pending}
+                aria-describedby={isLive ? undefined : "connexion-mode-note"}
                 className={SUBMIT_BTN_CLASS}
               >
-                Se connecter
+                {isLive
+                  ? pending
+                    ? "Un instant…"
+                    : isSignup
+                      ? "Créer mon compte"
+                      : "Se connecter"
+                  : "Se connecter"}
               </button>
 
-              <p
-                id="connexion-mode-note"
-                className="text-body-sm text-[var(--color-text-secondary)]"
-              >
-                {frenchTypography(
-                  "Mode démonstration — la connexion réelle arrive avec la persistance."
+              {isLive && error && (
+                <p role="alert" className="text-body-sm text-[var(--color-error)]">
+                  {error}
+                </p>
+              )}
+
+              {!isLive && (
+                <p
+                  id="connexion-mode-note"
+                  className="text-body-sm text-[var(--color-text-secondary)]"
+                >
+                  {frenchTypography(
+                    "Mode démonstration — la connexion réelle arrive avec la persistance."
+                  )}
+                </p>
+              )}
+            </form>
+
+            {isLive && (
+              <p className="mt-4 text-body-sm text-[var(--color-text-secondary)]">
+                {action === "signin" ? (
+                  <>
+                    {frenchTypography("Pas encore de compte ?")}{" "}
+                    <button
+                      type="button"
+                      onClick={handleToggleAction}
+                      className="underline underline-offset-2 focus-ring rounded"
+                    >
+                      Créer un compte
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {frenchTypography("Déjà un compte ?")}{" "}
+                    <button
+                      type="button"
+                      onClick={handleToggleAction}
+                      className="underline underline-offset-2 focus-ring rounded"
+                    >
+                      Se connecter
+                    </button>
+                  </>
                 )}
               </p>
-            </form>
+            )}
 
             <OrDivider />
 

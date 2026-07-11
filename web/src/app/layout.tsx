@@ -109,11 +109,12 @@ export default function RootLayout({
         />
         {/*
           AuthProvider (web/src/lib/auth/provider.tsx) — the ONLY auth wiring
-          at the root. A minimal client boundary: it holds mode + an
-          in-memory mock user, nothing else. No session logic, no
-          @supabase/*, no network — see AUTH-SPEC §5 / ledger 14.14. This
-          server component (RootLayout) can render a client provider
-          directly; the boundary starts exactly there.
+          at the root. A minimal client boundary: it holds mode + user state.
+          In "off"/"mock" it never imports @supabase/* or touches the
+          network; in "live" it reaches Supabase ONLY via a dynamic import()
+          inside the provider's own live-only code paths — see AUTH-SPEC §5 /
+          ledger 14.14. This server component (RootLayout) can render a
+          client provider directly; the boundary starts exactly there.
         */}
         <AuthProvider>{children}</AuthProvider>
       </body>
