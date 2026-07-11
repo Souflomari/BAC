@@ -246,7 +246,109 @@ Le son garderait exactement la même hauteur perçue (même $f$) dans les deux m
 
 ---
 
-## R5 — Pour t'entraîner
+## R5 — La diffraction des ondes mécaniques : quand l'onde contourne l'obstacle
+
+### Le phénomène, avant qu'il ait un nom
+
+Reprends le son ou les ultrasons installés au chapitre précédent : une onde progressive périodique, de fréquence $f$ et de longueur d'onde $\lambda = c/f$ (R2, R4), qui se propage dans l'air. On la fait maintenant arriver sur un obstacle percé d'une ouverture — une fente, de largeur réglable $a$ — placée sur son trajet.
+
+Prends position avant de lire la suite. Imagine une fente très large, qu'on rétrécit ensuite peu à peu, presque jusqu'à la fermer complètement. Derrière la fente, la zone où l'onde se fait sentir devient-elle, à ton avis, de plus en plus fine et concentrée — comme un jet d'eau qu'on force à travers un trou de plus en plus petit — ou au contraire de plus en plus large et étalée ?
+
+L'expérience tranche, et elle va à l'encontre de l'intuition du jet d'eau. Tant que la fente reste large devant $\lambda$, l'onde continue presque tout droit derrière elle : une zone étroite, dans le prolongement direct de la fente, comme en optique géométrique. Mais à mesure qu'on rétrécit la fente, jusqu'à ce que sa largeur $a$ devienne du même ordre que $\lambda$, ou plus petite, l'onde cesse d'aller tout droit : elle s'étale derrière la fente, sur un domaine angulaire de plus en plus large, comme si la fente elle-même s'était transformée en une nouvelle source rayonnant tout autour d'elle. Ce contournement de l'obstacle, cet étalement, porte un nom : c'est la **diffraction**.
+
+[[embed:cuve-a-ondes-diffraction]]
+
+Manipule la fente sur la simulation ci-dessus : réduis sa largeur, et regarde l'onde reçue s'étaler — pas se concentrer.
+
+### La condition : comparer deux longueurs, jamais une valeur isolée
+
+Ce qui décide si la diffraction est notable ou non n'est jamais une valeur absolue de $a$ : c'est une comparaison entre deux longueurs, la dimension $a$ de l'ouverture (ou de l'obstacle) et la longueur d'onde $\lambda$ de l'onde incidente.
+
+$$a \lesssim \lambda$$
+
+Tant que $a$ reste très grand devant $\lambda$, l'onde passe pratiquement en ligne droite : l'étalement, s'il existe, est négligeable. Dès que $a$ se rapproche de $\lambda$, ou devient plus petit qu'elle, l'étalement devient net — et plus $a$ diminue en deçà de $\lambda$, plus cet étalement s'accentue.
+
+**Fixe l'image mentale : ce n'est pas « il faut une grande ouverture ».** L'intuition la plus répandue dit l'exact inverse de la réalité : on imagine volontiers qu'il faut une grande ouverture pour bien laisser passer l'onde et observer un effet marqué. C'est faux, et c'est précisément l'inverse : une grande ouverture, $a \gg \lambda$, laisse l'onde filer tout droit, sans diffraction notable. C'est au contraire une ouverture petite — du même ordre que $\lambda$, ou plus petite — qui fait diffracter l'onde nettement. Ce qu'il faut retenir, ce n'est pas « grande ouverture » ou « petite ouverture » dans l'absolu : c'est le sens de la comparaison entre $a$ et $\lambda$.
+
+[[figure:diffraction-fente-fronts]]
+
+### Ce que la diffraction change, et ce qu'elle ne change jamais
+
+On pourrait se dire que rétrécir le passage change quelque chose à l'onde elle-même — comme un goulot d'étranglement qui accélérerait un fluide qui le traverse. Teste cette idée sur ce qu'on sait déjà : qu'est-ce qui, dans le mécanisme, pourrait faire changer la fréquence $f$ ? $f$ est fixée par la source, uniquement par elle (R1) — et la fente n'est pas une source, c'est un obstacle passif sur le trajet. Qu'est-ce qui pourrait faire changer la célérité $c$ ? $c$ est fixée par le milieu (R1, R4) — et le milieu, de part et d'autre de la fente, est le même air. Rien, dans ce simple passage par une ouverture, ne touche ni à la source ni à la nature du milieu.
+
+L'onde diffractée garde donc exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ (R2) — la même longueur d'onde $\lambda$ que l'onde incidente, ainsi que la même nature. La diffraction ne change qu'une chose : la géométrie de la propagation, la direction dans laquelle l'onde se répand, l'étendue angulaire qu'elle couvre derrière l'ouverture. Elle ne touche jamais $f$, $\lambda$ ni $c$.
+
+### Le montage : mesurer l'étalement, pas seulement l'observer
+
+Pour mettre en évidence la diffraction avec des ultrasons, on place, dans l'ordre, un émetteur d'ultrasons de fréquence connue, une fente de largeur réglable $a$, puis un récepteur qu'on peut déplacer sur un arc de cercle centré sur la fente, pour mesurer l'amplitude reçue en fonction de la direction. En réduisant $a$, on voit le domaine angulaire dans lequel le récepteur détecte encore un signal s'élargir : l'onde reçue s'étale sur un domaine de plus en plus large de directions, exactement comme prédit plus haut.
+
+[[figure:montage-diffraction-ultrasons]]
+
+### Exemple
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule d'abord $\lambda$ à partir de $f$ et $c$ (relation de R2/R4), puis on compare cette longueur d'onde à deux dimensions d'ouverture différentes, pour décider dans quel cas la diffraction est notable — c'est cette comparaison, pas une lecture de valeur isolée, qui tranche.
+
+On envoie des ultrasons de fréquence $f = 40\ \text{kHz}$ dans l'air, où $c \approx 340\ \text{m/s}$.
+
+$$\lambda = \frac{c}{f} = \frac{340}{40\,000} \approx 8{,}5\times10^{-3}\ \text{m} = 8{,}5\ \text{mm}$$
+
+Une fente de largeur $a = 5\ \text{mm}$ est du même ordre de grandeur que $\lambda$, et même légèrement inférieure : la diffraction est notable, l'onde s'étale nettement derrière la fente. Une porte de largeur $a = 0{,}8\ \text{m}$, en revanche, est très grande devant $\lambda$ ($a \gg \lambda$) : l'onde la traverse presque tout droit, sans étalement perceptible.
+
+Dans les deux cas, après la fente ou la porte, l'onde garde $f = 40\ \text{kHz}$, $\lambda \approx 8{,}5\ \text{mm}$ et $c \approx 340\ \text{m/s}$ — inchangés : seule la géométrie de propagation diffère entre les deux situations.
+
+### Ce qui reste hors de cette leçon
+
+La diffraction de la **lumière**, et la relation quantitative qui en donne la demi-largeur angulaire, $\theta = \lambda/a$, ne sont pas traitées ici : elles appartiennent à la leçon sur l'onde lumineuse (`propagation-onde-lumineuse`). Ce qu'on vient d'établir — la condition $a \lesssim \lambda$, les caractéristiques conservées, le montage — vaut pour les ondes mécaniques ; le prolongement quantitatif et le cas de la lumière se trouvent ailleurs.
+
+---
+
+## R6 — Les milieux dispersifs : quand la célérité dépend de la fréquence
+
+### La nuance qu'on n'avait pas encore posée
+
+On avait affirmé, aux rungs R1 et R4 : c'est le milieu qui fixe la célérité $c$, la source qui fixe la fréquence $f$. Prends position avant de lire la suite : dans un même milieu, deux ondes de fréquences différentes voyagent-elles nécessairement à la même vitesse $c$, puisque « c'est le milieu qui fixe $c$ » ? Ou peut-on imaginer un milieu où la vitesse dépend aussi de la fréquence de l'onde qui le traverse ?
+
+Ce qu'on avait dit reste vrai — c'est bien le milieu, jamais la source, qui fixe $c$ — mais il manquait une précision : *pour une fréquence donnée*. Dans certains milieux, la célérité n'est pas la même pour toutes les fréquences. Un tel milieu s'appelle **dispersif**. C'est un raffinement de l'affirmation de R1/R4, pas une contradiction : le milieu fixe toujours $c$ ; seulement, dans un milieu dispersif, il fixe une valeur de $c$ différente pour chaque fréquence.
+
+### La définition, testable
+
+Un milieu est dit **dispersif** si la célérité $c$ de l'onde y **dépend de sa fréquence** $f$ ; il est dit **non dispersif** si toutes les fréquences y ont, au contraire, la **même** célérité.
+
+Le test est opératoire, pas seulement théorique : on envoie, dans le milieu étudié, deux ondes de fréquences différentes $f_1$ et $f_2$, et on compare leurs célérités $c_1$ et $c_2$. Si $c_1 = c_2$, le milieu est non dispersif pour ces fréquences. Si $c_1 \neq c_2$, il est dispersif.
+
+[[figure:celerite-vs-frequence]]
+
+### La conséquence, sur un signal qui contient plusieurs fréquences
+
+Un signal complexe — une mélodie, une parole — n'est jamais réductible à une seule fréquence : c'est une superposition de plusieurs fréquences à la fois. Dans un milieu **non dispersif**, toutes ces fréquences voyagent à la même célérité : elles restent synchronisées tout au long du trajet, et la forme du signal est conservée. Dans un milieu **dispersif**, en revanche, les composantes de fréquences différentes voyagent à des célérités différentes : elles se désynchronisent progressivement en avançant, et le signal **se déforme** au fur et à mesure de sa propagation.
+
+[[motion:paquet-qui-se-deforme]]
+
+**Fixe l'image mentale : dispersif n'est pas synonyme d'atténué.** On pourrait croire qu'un milieu « dispersif » est un milieu qui affaiblit l'onde, qui la disperse en lui faisant perdre de l'énergie, comme on dit d'une lumière qu'elle « se disperse » en s'éparpillant. Ce n'est pas ce que veut dire dispersif ici. La dispersion, telle qu'on vient de la définir, ne concerne que la dépendance de $c$ en $f$ — rien à voir avec une perte d'énergie. Un milieu peut très bien disperser une onde sans l'atténuer, ou l'atténuer sans la disperser : ce sont deux propriétés indépendantes. Ne confonds pas dispersion et amortissement.
+
+L'air, pour le son audible, est quasi non dispersif : c'est pour cela qu'une mélodie, faite d'aigus et de graves superposés, arrive au fond d'une salle sans être déformée — toutes ses fréquences voyagent ensemble, à la même vitesse. Les ondes à la surface de l'eau, elles, sont dispersives : un paquet d'ondes qui s'y propage change de forme en avançant.
+
+### Ce qui ne change jamais
+
+Dans un milieu dispersif comme dans un milieu non dispersif, la fréquence $f$ reste, à chaque instant, celle que la source a imposée (R1) : la dispersion ne modifie jamais $f$. On pourrait être tenté de penser que, puisque « quelque chose varie avec la fréquence » dans un milieu dispersif, c'est la fréquence elle-même qui change en cours de route — ce n'est pas ça. Ce qui dépend de $f$, dans un milieu dispersif, c'est $c$ : chaque fréquence a sa propre célérité, mais chacune garde, du début à la fin de son trajet, la fréquence que la source lui a donnée. Et puisque $\lambda = c/f$ (R2), c'est $\lambda$, pas $f$, qui varie elle aussi d'une fréquence à l'autre dans un milieu dispersif.
+
+### Exemple
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement le test opératoire — comparer les célérités mesurées à deux fréquences différentes, dans un même milieu — à deux cas chiffrés, pour distinguer concrètement un milieu dispersif d'un milieu qui ne l'est pas.
+
+Dans un premier milieu (de l'air, pour le son), on mesure : à $f_1 = 200\ \text{Hz}$, $c_1 = 340\ \text{m/s}$ ; à $f_2 = 2000\ \text{Hz}$, $c_2 = 340\ \text{m/s}$.
+
+$c_1 = c_2$ : les deux fréquences voyagent à la même vitesse dans ce milieu — il est **non dispersif**. C'est le cas de l'air pour le son audible.
+
+Dans un second milieu, on mesure : à $f_1$, $c_1 = 1{,}2\ \text{m/s}$ ; à $f_2$, $c_2 = 0{,}9\ \text{m/s}$.
+
+$c_1 \neq c_2$ : la célérité dépend ici de la fréquence — ce milieu est **dispersif**.
+
+Conséquence, pour un signal qui contiendrait à la fois $f_1$ et $f_2$ : dans le premier milieu, ses deux composantes avancent ensemble, à la même vitesse — le signal garde sa forme en se propageant. Dans le second, elles se désynchronisent en avançant — le signal se déforme au fur et à mesure de sa propagation.
+
+---
+
+## R7 — Pour t'entraîner
 
 ### Récapitulatif express
 
@@ -255,6 +357,8 @@ Le son garderait exactement la même hauteur perçue (même $f$) dans les deux m
 - Relation fondamentale, dérivée à partir du retard et de la périodicité : $\lambda = cT = c/f$.
 - Cas particulier de l'onde sinusoïdale : le déphasage entre deux points distants de $d$ vaut $\Delta\varphi = 2\pi d/\lambda$ ; $d$ multiple entier de $\lambda$ → concordance de phase ; $d$ multiple impair de $\lambda/2$ → opposition de phase.
 - Le son : onde mécanique longitudinale, périodique si la source l'est ; sa hauteur dépend de $f$ (fixée par la source, jamais par le milieu) ; le milieu ne fixe que $c$, donc $\lambda$.
+- Diffraction : notable quand la dimension $a$ de l'ouverture (ou de l'obstacle) est de l'ordre de, ou inférieure à, $\lambda$ ($a \lesssim \lambda$) ; l'onde diffractée conserve $f$, $\lambda$ et $c$ — seule la géométrie de propagation change.
+- Milieu dispersif : milieu où la célérité $c$ dépend de la fréquence $f$ de l'onde (non dispersif si $c$ est la même pour toutes les fréquences) ; dans un milieu dispersif, un signal composé de plusieurs fréquences se déforme en se propageant.
 
 ### Exercice de type bac (original — entraînement, non un sujet officiel)
 
@@ -319,3 +423,7 @@ La longueur d'onde est divisée par deux, exactement comme la fréquence a été
 **Variation 1.** Un diapason vibre à $f = 1000\ \text{Hz}$. Calcule sa longueur d'onde dans l'air ($c_{air} \approx 340\ \text{m/s}$), puis dans l'eau ($c_{eau} \approx 1500\ \text{m/s}$). Sa fréquence a-t-elle changé entre les deux milieux ? Justifie ta réponse en te basant sur ce qui fixe la fréquence d'une onde périodique (R1 et R4).
 
 **Variation 2.** Deux points d'une corde, distants de $d = 2\ \text{m}$, vibrent avec un déphasage $\Delta\varphi = 4\pi\ \text{rad}$. Sachant que la célérité de l'onde le long de cette corde vaut $c = 8\ \text{m/s}$, calcule la longueur d'onde $\lambda$, puis la période $T$ de la source.
+
+**Variation 3.** On envoie des ultrasons de fréquence $f = 40\ \text{kHz}$ (dans l'air, $c \approx 340\ \text{m/s}$) sur une fente de largeur réglable $a$. Pour $a = 3\ \text{cm}$, puis pour $a = 5\ \text{mm}$, calcule $\lambda$ et compare-la à $a$ dans chaque cas : dans lequel des deux cas la diffraction est-elle notable ? Sur un schéma de montage (émetteur → fente → récepteur mobile sur un arc), quel enregistrement attends-tu — un signal reçu concentré dans une direction, ou étalé sur un large domaine angulaire — pour chacune des deux largeurs ?
+
+**Variation 4.** Dans un milieu, on mesure $c_1 = 1500\ \text{m/s}$ à $f_1 = 1\ \text{kHz}$, puis $c_2 = 1500\ \text{m/s}$ à $f_2 = 5\ \text{kHz}$. Dans un second milieu, on mesure $c_1' = 1{,}50\ \text{m/s}$ à $f_1$, puis $c_2' = 1{,}35\ \text{m/s}$ à $f_2$. Pour chacun des deux milieux, ce milieu est-il dispersif ? Justifie ta réponse, puis dis ce qu'il advient, dans chacun des deux milieux, d'un signal qui contiendrait à la fois $f_1$ et $f_2$.
