@@ -143,6 +143,22 @@ _(appended when extractions land; only binding breaches enter the fix docket)_
 
 ## Gate log
 
+**2026-07-11 — D0 capability probe (read-only, from the session container).**
+- Prod REST (`iwoydyudjondihzzsqay.supabase.co`) reachable over HTTPS (401 = up,
+  auth required). Supabase management API reachable (401).
+- Raw TCP (5432/6543) blocked by the container's HTTPS-only proxy → **mode B
+  confirmed for DB pushes**: owner executes prepared scripts on their machine
+  at the sittings; the session verifies outputs.
+- **Staging (`miscjaztsputtdalwcjp.supabase.co`) unreachable — proxy CONNECT 502,
+  DNS unresolvable — while prod resolves fine.** Staging was seeded 2026-05-15
+  and untouched since; consistent with a **paused Supabase project**. → New
+  Sitting-1 agenda item: owner un-pauses/restores staging from the dashboard
+  before the sync check touches it.
+- Read-only option for the sync check from this container: the management API
+  (`/v1/projects/{ref}/database/query`) works over HTTPS — if the owner provides
+  a management access token at Sitting 1, the read-only sync checks can run from
+  here; pushes stay owner-side regardless.
+
 _(dated compte-rendus of Owner Sittings 1–3 appended here)_
 
 ## Wave log
