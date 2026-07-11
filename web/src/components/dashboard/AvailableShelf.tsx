@@ -17,6 +17,12 @@
  * matières can be open at once) + `collapsible` per item; a calm height
  * reveal (`.shelf-accordion-content`, globals.css) — no bounce/overshoot,
  * `prefers-reduced-motion` respected.
+ *
+ * Filière narrowing (ADR 0025 §2.11 golden rule): the device's chosen
+ * filière (useFiliere) narrows out any notion outside it (e.g. the two
+ * SM-only "Approfondissement" chapters for a PC/SVT student) — never gates:
+ * no filière chosen shows every built notion, same as before this existed.
+ * `mounted` gates the narrowing so server and first client paint agree.
  */
 
 "use client";
@@ -24,15 +30,21 @@
 import Link from "next/link";
 import * as Accordion from "@radix-ui/react-accordion";
 import { subjectLabel, notionHref } from "@/lib/subjects";
+import { isNotionInFiliere } from "@/lib/curriculum";
+import { useFiliere } from "@/lib/useFiliere";
 import { Cover } from "@/components/covers/Cover";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 import type { NotionMeta } from "@/lib/content";
 
 export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
-  if (notions.length === 0) return null;
+  const { filiere, mounted } = useFiliere();
+  const activeFiliere = mounted ? filiere : null;
+  const filieredNotions = notions.filter((n) => isNotionInFiliere(n.id, activeFiliere));
+
+  if (filieredNotions.length === 0) return null;
   const bySubject: Record<string, NotionMeta[]> = {};
-  for (const n of notions) (bySubject[n.subject] ??= []).push(n);
+  for (const n of filieredNotions) (bySubject[n.subject] ??= []).push(n);
   const subjects = Object.keys(bySubject).sort();
 
   return (

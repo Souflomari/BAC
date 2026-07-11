@@ -30,6 +30,26 @@ export interface Chapter {
   /** URL/dir slug; the built chapters' slugs MATCH their content directory. */
   slug: string;
   title: string;
+  /**
+   * Filières this chapter belongs to. ABSENT means common to all filières
+   * (the default — most chapters are). Only set on chapters that are a real
+   * stream-specific narrowing, e.g. the SM-only "Approfondissement" unit.
+   *
+   * This is a NARROWING signal only (ADR 0025 §2.11, the golden rule): the
+   * filière preference narrows the view it never gates — a direct URL to a
+   * chapter outside the device's chosen filière still renders normally
+   * (§3 below, the lesson page itself stays ungated), and no filière chosen
+   * means show everything.
+   *
+   * GROUNDING NOTE: per the new cadre extraction
+   * (docs/cadre/curriculum/maths-sexp.yaml, PROPOSITION status — not yet
+   * owner-validated), SExp excludes "Arithmétique" and "Structures
+   * algébriques" from the maths programme structure it derives entirely,
+   * rather than scoping them per-filière the way this field does. Adjust
+   * this field (and which chapters carry it) once the owner validates the
+   * SExp curriculum against the official cadre.
+   */
+  filieres?: FiliereId[];
 }
 
 export interface Unit {
@@ -108,8 +128,8 @@ const MATHS: Subject = {
     {
       title: "Approfondissement (Sciences Mathématiques)",
       chapters: [
-        { slug: "arithmetique", title: "Arithmétique" },
-        { slug: "structures-algebriques", title: "Structures algébriques" },
+        { slug: "arithmetique", title: "Arithmétique", filieres: ["sm-a", "sm-b"] },
+        { slug: "structures-algebriques", title: "Structures algébriques", filieres: ["sm-a", "sm-b"] },
       ],
     },
   ],
@@ -364,4 +384,67 @@ export function subjectAvailableCount(subject: Subject, builtIds: Set<string>): 
 
 export function isChapterAvailable(subjectId: string, slug: string, builtIds: Set<string>): boolean {
   return builtIds.has(`${subjectId}/${slug}`);
+}
+
+// ── Filière narrowing (ADR 0025 §2.11 golden rule) ─────────────────────────────
+//
+// The filière preference NARROWS the view; it never GATES: a chapter with no
+// `filieres` is common to everyone, and `filiereId === null` (no device
+// preference chosen) always shows everything. These are pure helpers — no
+// browser storage, no side effects — so every consumer narrows the same way.
+
+/**
+ * True iff `chapter` belongs to `filiereId`. A chapter with no `filieres`
+ * restriction is common to all filières. `filiereId === null` (no preference
+ * chosen yet) always returns true — the default, unfiltered view.
+ */
+export function chapterInFiliere(chapter: Chapter, filiereId: FiliereId | null): boolean {
+  if (!filiereId) return true;
+  if (!chapter.filieres) return true;
+  return chapter.filieres.includes(filiereId);
+}
+
+/**
+ * A subject's chapters, flattened across all units, narrowed to one filière
+ * (see `chapterInFiliere`). `filiereId === null` returns every chapter,
+ * unfiltered — the default, "show everything" view.
+ */
+export function subjectChaptersForFiliere(subject: Subject, filiereId: FiliereId | null): Chapter[] {
+  return subject.units.flatMap((u) => u.chapters).filter((c) => chapterInFiliere(c, filiereId));
+}
+
+/**
+ * A subject's units narrowed to one filière: each unit's chapters filtered by
+ * `chapterInFiliere`, and units left with zero chapters dropped entirely (an
+ * empty unit heading is worse than no heading). `filiereId === null` returns
+ * every unit/chapter unchanged — the unfiltered, "show everything" view.
+ */
+export function unitsForFiliere(subject: Subject, filiereId: FiliereId | null): Unit[] {
+  if (!filiereId) return subject.units;
+  return subject.units
+    .map((u) => ({ ...u, chapters: u.chapters.filter((c) => chapterInFiliere(c, filiereId)) }))
+    .filter((u) => u.chapters.length > 0);
+}
+
+/**
+ * True iff the built notion id (`${subject}/${slug}`, as produced by
+ * `listNotions()`) belongs to `filiereId`. For consumers that hold a flat
+ * notion list rather than the nested unit structure (MasteryMap,
+ * AvailableShelf, SubjectProgress). An id whose chapter can't be found in
+ * `SUBJECTS` defaults to true — narrowing never fabricates an exclusion for a
+ * chapter it doesn't recognize.
+ */
+export function isNotionInFiliere(id: string, filiereId: FiliereId | null): boolean {
+  if (!filiereId) return true;
+  const slashIndex = id.indexOf("/");
+  if (slashIndex === -1) return true;
+  const subjectId = id.slice(0, slashIndex);
+  const slug = id.slice(slashIndex + 1);
+  const subject = getSubject(subjectId);
+  if (!subject) return true;
+  for (const unit of subject.units) {
+    const chapter = unit.chapters.find((c) => c.slug === slug);
+    if (chapter) return chapterInFiliere(chapter, filiereId);
+  }
+  return true;
 }

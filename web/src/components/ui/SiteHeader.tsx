@@ -21,11 +21,16 @@
  *   zero-delta state). The sign-out control calls `signOutMock()` in mock
  *   mode and the real `signOut()` in live mode — same DOM shape, mode-aware
  *   handler underneath.
+ * - Filière narrowing (ADR 0025 §2.11 golden rule): the "Notions" menu
+ *   narrows to the matières that are part of the device's chosen filière
+ *   (e.g. "si" only appears for SM-B) — never gates: no filière chosen lists
+ *   every matière, same as before this existed. `mounted` gates it (see
+ *   useFiliere) so server and first client paint agree.
  *
- * No browser storage — scrolled state is ephemeral in-memory React state
- * (the auth user itself lives in AuthProvider: in-memory mirror of
- * Supabase's own httpOnly session cookie in live mode, purely in-memory in
- * mock mode).
+ * Storage: `useFiliere` reads the persisted device preference (localStorage
+ * — sanctioned, ADR 0025 §2.11, a real chosen preference, not fabricated
+ * learning state). Everything else here (scrolled state, the auth user) is
+ * unrelated in-memory React state, as before.
  */
 
 import { useCallback, useEffect, useState } from "react";
@@ -35,6 +40,8 @@ import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { useAuth } from "@/lib/auth/provider";
 import { subjectHref, subjectLabel } from "@/lib/subjects";
+import { getFiliere } from "@/lib/curriculum";
+import { useFiliere } from "@/lib/useFiliere";
 import { FontSizeStepper } from "./FontSizeStepper";
 import { ThemeToggle } from "./ThemeToggle";
 import { FiliereBadge } from "./FiliereBadge";
@@ -107,6 +114,16 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
   // AUTH-SPEC §3 (docs/design/AUTH-SPEC.md): the entry point lives here, in
   // the right cluster, rendered ONLY when NEXT_PUBLIC_AUTH_MODE !== "off".
   const { user, mode, signOutMock, signOut } = useAuth();
+
+  // Filière narrowing (ADR 0025 §2.11 golden rule) for the "Notions" menu —
+  // narrows to the matières in the chosen filière (e.g. "si" only for
+  // SM-B), never gates: no filière chosen (or not yet mounted) lists every
+  // matière, unchanged from before this existed.
+  const { filiere, mounted } = useFiliere();
+  const activeFiliereSubjectIds = mounted ? getFiliere(filiere)?.subjects.map((s) => s.id) : undefined;
+  const menuSubjects = activeFiliereSubjectIds
+    ? SUBJECT_MENU_ORDER.filter((id) => activeFiliereSubjectIds.includes(id))
+    : SUBJECT_MENU_ORDER;
 
   // Mode-aware sign-out: "mock" clears the in-memory fake user (never
   // throws); "live" calls the real Supabase sign-out (async — errors are
@@ -264,7 +281,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                     "data-[state=open]:scale-100 data-[state=closed]:scale-95"
                   )}
                 >
-                  {SUBJECT_MENU_ORDER.map((id) => (
+                  {menuSubjects.map((id) => (
                     <DropdownMenu.Item key={id} asChild>
                       <Link
                         href={subjectHref(id)}

@@ -17,6 +17,15 @@
  * i.e. on first paint) is byte-identical to the unfiltered table of
  * contents, so the dom-truth "tokens == notions on disk" sweep still holds.
  *
+ * Filière narrowing (ADR 0025 §2.11 golden rule): the device's chosen
+ * filière (useFiliere) additionally narrows OUT any notion whose chapter
+ * isn't in that filière (e.g. the two SM-only "Approfondissement" chapters
+ * for a PC/SVT student) — never gates, narrows: no filière chosen renders
+ * every notion, same as today. `mounted` gates this so the server render and
+ * first client paint agree (no hydration flash) — the dom-truth token-count
+ * invariant is asserted with NO filière set in a fresh browser context, which
+ * this fallback preserves byte-for-byte.
+ *
  * Client component: needs local filter state. Still receives `notions` as a
  * plain prop from the server-component parent (page.tsx → listNotions()),
  * so nothing about the data source changes.
@@ -29,6 +38,8 @@ import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { getStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";
+import { isNotionInFiliere } from "@/lib/curriculum";
+import { useFiliere } from "@/lib/useFiliere";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { Icon } from "@/components/ui/Icon";
@@ -46,8 +57,13 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
   // null = "toutes les matières" (the default, unfiltered render).
   const [activeSubject, setActiveSubject] = useState<string | null>(null);
 
+  // Device filière preference — narrows, never gates (see file header).
+  const { filiere, mounted } = useFiliere();
+  const activeFiliere = mounted ? filiere : null;
+  const filieredNotions = notions.filter((n) => isNotionInFiliere(n.id, activeFiliere));
+
   const bySubject = new Map<string, NotionMeta[]>();
-  for (const n of notions) {
+  for (const n of filieredNotions) {
     const list = bySubject.get(n.subject) ?? [];
     list.push(n);
     bySubject.set(n.subject, list);

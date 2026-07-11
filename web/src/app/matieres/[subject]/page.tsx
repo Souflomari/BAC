@@ -42,6 +42,10 @@ export default function SubjectPage({ params }: { params: { subject: string } })
       .map((n) => [n.slug, n])
   );
 
+  // Every chapter is passed through, including its `filieres` restriction
+  // (absent = common to all) — the actual narrowing by the device's chosen
+  // filière happens client-side, inside ChapterList (this is a server
+  // component and can't read localStorage; see ChapterList.tsx's header).
   const units: UnitView[] = subject.units.map((u) => ({
     title: u.title,
     chapters: u.chapters.map((c) => {
@@ -51,6 +55,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
         title: c.title,
         available,
         minutes: available ? metaBySlug.get(c.slug)?.readingMinutes : undefined,
+        filieres: c.filieres,
       };
     }),
   }));

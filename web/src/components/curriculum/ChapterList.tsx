@@ -6,10 +6,26 @@
  * as a calm "À venir" row (no fabricated availability — the honest-state rule
  * at the catalogue level). Units are the programme's own groupings (cadre for
  * PC; standard program elsewhere).
+ *
+ * Filière narrowing (ADR 0025 §2.11 golden rule): narrowed here, client-side,
+ * because the parent route (`matieres/[subject]/page.tsx`) is a SERVER
+ * component and can't read the device's localStorage preference. `page.tsx`
+ * stays server-rendered and passes every chapter (including its `filieres`
+ * restriction, carried on `ChapterView`); THIS component reads `useFiliere`
+ * and filters at render time — the one client boundary the narrowing needs.
+ * `mounted` gates it so server and first client paint agree (no hydration
+ * flash): the unfiltered list, byte-identical to before this existed, until
+ * the device preference is read. No filière chosen shows every chapter, same
+ * as always — the golden rule narrows, it never gates (a direct URL to an
+ * out-of-filière chapter still opens normally regardless of this list).
  */
+
+"use client";
 
 import Link from "next/link";
 import { notionHref } from "@/lib/subjects";
+import { chapterInFiliere, type FiliereId } from "@/lib/curriculum";
+import { useFiliere } from "@/lib/useFiliere";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +34,8 @@ export interface ChapterView {
   title: string;
   available: boolean;
   minutes?: number;
+  /** Absent = common to all filières. See curriculum.ts's `Chapter.filieres`. */
+  filieres?: FiliereId[];
 }
 
 export interface UnitView {
@@ -92,7 +110,13 @@ function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterVie
 }
 
 export function ChapterList({ subject, units }: { subject: string; units: UnitView[] }) {
-  if (units.length === 0) {
+  const { filiere, mounted } = useFiliere();
+  const activeFiliere = mounted ? filiere : null;
+  const visibleUnits = units
+    .map((u) => ({ ...u, chapters: u.chapters.filter((c) => chapterInFiliere(c, activeFiliere)) }))
+    .filter((u) => u.chapters.length > 0);
+
+  if (visibleUnits.length === 0) {
     return (
       <div
         role="status"
@@ -115,7 +139,7 @@ export function ChapterList({ subject, units }: { subject: string; units: UnitVi
 
   return (
     <div className="space-y-10">
-      {units.map((unit) => (
+      {visibleUnits.map((unit) => (
         <section key={unit.title} aria-label={unit.title}>
           <h2 className="mb-2 pb-2 border-b border-[var(--color-border-subtle)] text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
             {unit.title}

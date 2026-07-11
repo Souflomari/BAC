@@ -12,7 +12,11 @@
  * preference, not fabricated state), that resolves to a REAL built notion.
  * Recommending an unwritten chapter would be dishonest (nothing to open) —
  * skipping to the first BUILT one is the honest reading of "première leçon
- * non ouverte du parcours" when nothing is open yet.
+ * non ouverte du parcours" when nothing is open yet. `firstOfParcours` also
+ * SKIPS any chapter outside the chosen filière (`chapterInFiliere`, ADR 0025
+ * §2.11 golden rule: narrows, never gates) — e.g. a PC/SVT device preference
+ * never recommends the SM-only "Approfondissement" chapters; no filière
+ * chosen skips nothing.
  *
  * Client component: useFiliere reads the persisted device preference
  * (localStorage — sanctioned, ADR 0025 §2.11), so this narrows the parcours
@@ -24,7 +28,7 @@
 "use client";
 
 import Link from "next/link";
-import { getFiliere, SUBJECTS, type SubjectId } from "@/lib/curriculum";
+import { getFiliere, SUBJECTS, chapterInFiliere, type SubjectId, type FiliereId } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
 import { notionHref } from "@/lib/subjects";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -41,17 +45,21 @@ function subjectOrder(filiereId: string | null): SubjectId[] {
   return f ? (f.subjects.map((s) => s.id) as SubjectId[]) : DEFAULT_ORDER;
 }
 
-/** The first chapter, in curriculum order, that is a real built notion —
- *  the only honest "next in the parcours" pick while nothing is opened. */
+/** The first chapter, in curriculum order, that is BOTH in the chosen
+ *  filière (ADR 0025 §2.11: narrows, never gates — `filiereId === null`
+ *  skips nothing) AND a real built notion — the only honest "next in the
+ *  parcours" pick while nothing is opened. */
 function firstOfParcours(
   order: SubjectId[],
-  builtIds: Set<string>
+  builtIds: Set<string>,
+  filiereId: FiliereId | null
 ): { subject: SubjectId; slug: string } | null {
   for (const subjectId of order) {
     const subject = SUBJECTS[subjectId];
     if (!subject) continue;
     for (const unit of subject.units) {
       for (const chapter of unit.chapters) {
+        if (!chapterInFiliere(chapter, filiereId)) continue;
         if (builtIds.has(`${subjectId}/${chapter.slug}`)) {
           return { subject: subjectId, slug: chapter.slug };
         }
@@ -63,9 +71,10 @@ function firstOfParcours(
 
 export function NextUp({ notions }: { notions: NotionMeta[] }) {
   const { filiere, mounted } = useFiliere();
+  const activeFiliere = mounted ? filiere : null;
   const builtIds = new Set(notions.map((n) => n.id));
-  const order = subjectOrder(mounted ? filiere : null);
-  const pick = firstOfParcours(order, builtIds);
+  const order = subjectOrder(activeFiliere);
+  const pick = firstOfParcours(order, builtIds, activeFiliere);
   if (!pick) return null;
 
   const meta = notions.find((n) => n.id === `${pick.subject}/${pick.slug}`);

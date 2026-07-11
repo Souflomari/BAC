@@ -8,9 +8,20 @@
  * Facts only, straight from `listNotions()`'s real `readingMinutes` sums —
  * no StudentState involved (there is no per-student reading time to report
  * yet; this is programme-level, not personal).
+ *
+ * Filière narrowing (ADR 0025 §2.11 golden rule): the device's chosen
+ * filière (useFiliere) narrows the counts to notions in that filière (e.g.
+ * the two SM-only "Approfondissement" chapters don't count for a PC/SVT
+ * student) — never gates: no filière chosen counts every built notion, same
+ * as before this existed. `mounted` gates the narrowing so server and first
+ * client paint agree — hence the "use client" this component now needs.
  */
 
+"use client";
+
 import { subjectLabel } from "@/lib/subjects";
+import { isNotionInFiliere } from "@/lib/curriculum";
+import { useFiliere } from "@/lib/useFiliere";
 import type { NotionMeta } from "@/lib/content";
 
 const SUBJECT_ORDER = ["maths", "pc", "svt", "philo", "si"];
@@ -23,8 +34,12 @@ function formatHours(totalMinutes: number): string {
 }
 
 export function SubjectProgress({ notions }: { notions: NotionMeta[] }) {
+  const { filiere, mounted } = useFiliere();
+  const activeFiliere = mounted ? filiere : null;
+  const filieredNotions = notions.filter((n) => isNotionInFiliere(n.id, activeFiliere));
+
   const bySubject = new Map<string, NotionMeta[]>();
-  for (const n of notions) {
+  for (const n of filieredNotions) {
     const list = bySubject.get(n.subject) ?? [];
     list.push(n);
     bySubject.set(n.subject, list);

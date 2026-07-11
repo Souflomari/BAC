@@ -708,6 +708,67 @@ try {
     else console.log(`  ✓ ${beforeOpen.triggerCount} matière triggers, covers absent until opened, present (rlc-serie + rc-charge own motif) after`);
   }
 
+  // (Filière-gating) MASTERY MAP NARROWS BY FILIÈRE, NEVER GATES (ADR 0025
+  // §2.11 golden rule): the two SM-only "Approfondissement" chapters
+  // (maths/arithmetique, maths/structures-algebriques) drop out of the
+  // mastery map once the device's filière preference is PC/SVT, and return
+  // once it's an SM filière. The UNFILTERED default (no filière set, a fresh
+  // browser context) is asserted by the D12 "tokens == notions on disk"
+  // sweep below (§5 arithmetic) — that sweep runs on the same fresh `page`
+  // this file also reuses elsewhere, with no filière ever set on it, so it
+  // continues to prove the unfiltered invariant unchanged. This sweep proves
+  // the two NARROWED states on top of it, on its own isolated page/context.
+  {
+    console.log(`\n[/] SWEEP: mastery map narrows by filière (SM-only chapters), never gates`);
+    const visibleName = (name) => !name.startsWith("_") && !name.startsWith(".");
+    let expectedTotal = 0;
+    for (const subject of readdirSync(CONTENT_ROOT).filter(visibleName)) {
+      const subjectPath = path.join(CONTENT_ROOT, subject);
+      if (!statSync(subjectPath).isDirectory()) continue;
+      for (const slug of readdirSync(subjectPath).filter(visibleName)) {
+        if (statSync(path.join(subjectPath, slug)).isDirectory()) expectedTotal++;
+      }
+    }
+
+    const gpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+
+    await gpage.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    await gpage.evaluate(() => localStorage.setItem("bac-filiere", "pc"));
+    await gpage.reload({ waitUntil: "networkidle" });
+    const pcState = await gpage.evaluate(() => ({
+      tokens: document.querySelectorAll("[data-mastery-token]").length,
+      arithmetiquePresent: !!document.querySelector("[data-mastery-token][href='/notions/maths/arithmetique']"),
+      structuresPresent: !!document.querySelector("[data-mastery-token][href='/notions/maths/structures-algebriques']"),
+      // A known, unrelated PC notion must still be there — the narrowing must
+      // not be over-eager and must not touch anything outside the two
+      // SM-only chapters.
+      knownPcNotionPresent: !!document.querySelector("[data-mastery-token][href='/notions/pc/rlc-serie']"),
+    }));
+    checks++;
+    if (pcState.tokens !== expectedTotal - 2)
+      failures += fail(`filière=pc: [data-mastery-token] count ${pcState.tokens} ≠ ${expectedTotal - 2} (${expectedTotal} on disk − the 2 SM-only chapters)`);
+    else console.log(`  ✓ filière=pc: ${pcState.tokens} tokens == ${expectedTotal - 2} (the 2 SM-only chapters narrowed out)`);
+    checks++;
+    if (pcState.arithmetiquePresent || pcState.structuresPresent)
+      failures += fail(`filière=pc: an SM-only chapter is still in the mastery map (arithmetique present=${pcState.arithmetiquePresent}, structures-algebriques present=${pcState.structuresPresent})`);
+    else console.log(`  ✓ filière=pc: both SM-only slugs (arithmetique, structures-algebriques) absent from the mastery map`);
+    checks++;
+    if (!pcState.knownPcNotionPresent)
+      failures += fail(`filière=pc: known PC notion (pc/rlc-serie) missing from the mastery map — over-filtering`);
+    else console.log(`  ✓ filière=pc: known PC notion (pc/rlc-serie) still present`);
+
+    await gpage.evaluate(() => localStorage.setItem("bac-filiere", "sm-a"));
+    await gpage.reload({ waitUntil: "networkidle" });
+    const smaTokens = await gpage.evaluate(() => document.querySelectorAll("[data-mastery-token]").length);
+    checks++;
+    if (smaTokens !== expectedTotal)
+      failures += fail(`filière=sm-a: [data-mastery-token] count ${smaTokens} ≠ ${expectedTotal} (an SM filière must see its own chapters — golden rule: narrows, never gates)`);
+    else console.log(`  ✓ filière=sm-a: ${smaTokens} tokens == ${expectedTotal} (full count restored, nothing gated)`);
+
+    await gpage.evaluate(() => localStorage.removeItem("bac-filiere"));
+    await gpage.close();
+  }
+
   // (Interactive-figures wave, 2026-07-07; Motion Phase 2, 2026-07-09)
   // StagedFigure's DOM-absence contract has had ZERO dom-truth coverage
   // since it shipped (D11 §§1-2) — fully specified in
