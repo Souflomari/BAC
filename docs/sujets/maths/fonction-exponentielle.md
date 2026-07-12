@@ -9,7 +9,7 @@
 
 ## 2019 — session normale — Exercice 4  *(filière SM)*
 Source: https://www.alloschool.com/element/68482
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element/68482 → course-436/upload-54931, p.4-5) et diff caractère-par-caractère conforme au scan ($f(x)=4x(e^{-x}+\tfrac12 x-1)$, Rolle/TAF, $\int_0^\alpha f = \tfrac23\alpha(\alpha^2-3)$, suite) ; filière SM et code NS 24F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), خيار فرنسية (BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 10 points
@@ -55,7 +55,7 @@ et on note $(C)$ sa courbe représentative dans un repère orthonormé $(O;\vec{
 
 ## 2022 — session normale — Problème  *(filière SExp)*
 Source: https://www.alloschool.com/element/136586
-Statut: transcrit (non vérifié)
+Statut: corrigé (conforme au scan) — agent-vérificateur-adversarial, 2026-07-12 : re-fetch indépendant (element/136586 → course-438/upload-84495, p.3-4). Énoncé diffé conforme au scan, SAUF la description de la figure $(C_g)$ (Q5b) qui était erronée — elle indiquait « négative sur $]-\infty,\alpha[$, positive au-delà » (un seul changement de signe). Le scan montre $g$ s'annulant en DEUX points ($\alpha\approx-4,5$ et $0$), positive sur $]-\infty,\alpha[$, négative sur $]\alpha,0[$ (minimum $\approx-2$ vers $x=-2$), positive sur $]0,+\infty[$ — cohérent avec les DEUX points d'inflexion demandés en Q5c ($f''=\tfrac12 e^{x/2}g$). Description corrigée d'après le scan. Filière SExp et code NS 22F confirmés en-tête.
 
 - Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème du problème : 8,5 points
@@ -78,7 +78,7 @@ Soit $(C)$ sa courbe représentative dans un repère orthonormé $(O;\vec{i},\ve
 5. a) (0,5) Montrer que $f''(x) = \dfrac{1}{2}e^{\frac{x}{2}}g(x)$ ; où $g(x) = (2x + 4)e^{\frac{x}{2}} - x - 4$ pour tout $x$ de $\mathbb{R}$
    b) (0,5) À partir de la courbe ci-contre de la fonction $g$, déterminer le signe de $g(x)$ sur $\mathbb{R}$ *(Remarque : $g(\alpha) = 0$)*
 
-   *Figure $(C_g)$ :* courbe de $g$ ; négative sur $]-\infty,\alpha[$, s'annule en $x = \alpha \approx -4,5$, positive au-delà ; passe par un minimum (ordonnée $\approx -2$) au voisinage de $x = -2$, croît ensuite fortement (dépasse $+4$ vers $x \approx 1$). *(lecture d'échelle à confirmer)*
+   *Figure $(C_g)$ :* courbe de $g$ tracée sur une fenêtre $x \in [-5\,;\,\approx 0,5]$, $y \in [-2\,;\,4]$. La courbe s'annule en **deux** points : $x = \alpha \approx -4,5$ (marqué sur l'axe des abscisses) et $x = 0$ (l'origine). Elle est **positive sur $]-\infty,\alpha[$** (petite portion visible au bord gauche, ordonnée $\approx +0,5$ en $x = -5$), **négative sur $]\alpha,0[$** avec un minimum d'ordonnée $\approx -2$ au voisinage de $x = -2$, puis de nouveau **positive sur $]0,+\infty[$** en croissant fortement (atteint $\approx +4$ au bord droit du cadre). *(lecture d'échelle à confirmer ; les deux changements de signe, en $\alpha$ et en $0$, correspondent aux deux abscisses de points d'inflexion demandées à la question 5c)*
 
    c) (0,5) Étudier la concavité de la courbe $(C)$ et déterminer les abscisses des deux points d'inflexions.
 6. (1) Construire la courbe $(C)$ dans le repère $(O;\vec{i},\vec{j})$. *(On prend : $\ln(4) \approx 1,4$, $\alpha \approx -4,5$ et $f(\alpha) \approx -3,5$)*

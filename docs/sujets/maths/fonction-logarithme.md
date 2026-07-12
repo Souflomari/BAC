@@ -10,7 +10,7 @@
 
 ## 2019 — session normale — Problème
 Source: https://www.alloschool.com/element/68527
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element → course/upload re-dérivé) et diff caractère-par-caractère conforme au scan, y compris les figures (tableau de variation de $f'$ et courbe $(C_g)$) ; filière et code NS..F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème du problème : 11 points
@@ -54,7 +54,7 @@ Soit $(u_n)$ la suite numérique définie par : $u_0 = 1$ et $u_{n+1} = f(u_n)$ 
 
 ## 2023 — session normale — Problème
 Source: https://www.alloschool.com/element/137482
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element → course/upload re-dérivé) et diff caractère-par-caractère conforme au scan, y compris les figures (tableau de variation de $f'$ et courbe $(C_g)$) ; filière et code NS..F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème du problème : 11 points

@@ -9,7 +9,7 @@
 
 ## 2023 — session normale — Exercice 3  *(entrée pilote)*
 Source: https://www.alloschool.com/element/137482
-Statut: transcrit (non vérifié)
+Statut: vérifié — Vérifié par agent-vérificateur-adversarial le 2026-07-12, re-fetch indépendant (element/137482 → course-438/upload-84924, 4 p.) + diff page 3 OK ; en-tête filière/code/barème confirmés sur page 1 du scan.
 
 - Filière / épreuve : SVT **et** Sciences Physiques (مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية), خيار فرنسية (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 3 points
@@ -34,11 +34,11 @@ On considère les événements suivants :
    b) (0,5) Montrer que $p(B) = \dfrac{1}{4}$ *(On peut utiliser l'arbre des possibilités)*
 2. (0,75) Calculer $p(A/B)$ ; probabilité de l'événement $A$ sachant que l'événement $B$ est réalisé.
 3. Soit $X$ la variable aléatoire qui associe à chaque résultat de l'expérience, le produit $ab$
-   1. a) (0,25) Montrer que $p(X = 0) = \dfrac{1}{3}$
-   2. b) (0,5) Donner la loi de probabilité de $X$ *(Remarquer que les valeurs prises par $X$ sont : $0\ ;\ 1\ ;\ 2$ et $4$)*
-   3. c) (0,5) On considère les événements :
-      $M$ : « le produit $ab$ est pair non nul » et $N$ : « le produit $ab$ est égal à $1$ »
-      Montrer que les événements $M$ et $N$ sont équiprobables.
+   - a) (0,25) Montrer que $p(X = 0) = \dfrac{1}{3}$
+   - b) (0,5) Donner la loi de probabilité de $X$ *(Remarquer que les valeurs prises par $X$ sont : $0\ ;\ 1\ ;\ 2$ et $4$)*
+   - c) (0,5) On considère les événements :
+     $M$ : « le produit $ab$ est pair non nul » et $N$ : « le produit $ab$ est égal à $1$ »
+     Montrer que les événements $M$ et $N$ sont équiprobables.
 
 > Note de classement : entrée **cœur** de `probabilites-conditionnelles` — elle
 > contient explicitement une probabilité conditionnelle $p(A/B)$, un **arbre des

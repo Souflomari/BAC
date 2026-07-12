@@ -12,7 +12,7 @@
 
 ## 2019 — session normale — Exercice 4, PARTIE II  *(filière SM)*
 Source: https://www.alloschool.com/element/68482
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element/68482 → course-436/upload-54931, p.5) et diff caractère-par-caractère conforme au scan (récurrence $u_{n+1}=f(u_n)+u_n$, $g(x)$, limites) ; filière SM et code NS 24F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), خيار فرنسية (BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème (exercice complet : 10 points)

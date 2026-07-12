@@ -10,15 +10,18 @@
 >   (BIOF) — `NS 22F`, 3 h, coef 7. *(SVT et Sc. Physiques partagent le même
 >   sujet de maths.)*
 >
-> Statut : **v0.1, passe fondation.** Quatre examens session normale lus en
-> profondeur (SM 2019 ; SExp 2019, 2022, 2023) et 14 exercices/problèmes
-> transcrits couvrant **12 slugs** sur 14 (voir §4). Toutes les entrées sont
-> `transcrit (non vérifié)` — la passe de vérification adversariale (re-fetch +
-> diff) reste **à faire**.
+> Statut : **v0.2, passe de vérification adversariale faite (2026-07-12).**
+> Quatre examens session normale lus en profondeur (SM 2019 ; SExp 2019, 2022,
+> 2023) et 14 exercices/problèmes transcrits couvrant **12 slugs** sur 14
+> (voir §4). Les 4 sources ont été **re-fetchées indépendamment** (element →
+> course/upload re-dérivé) et diffées caractère-par-caractère contre les scans :
+> **13 entrées `vérifié`**, **1 entrée `corrigé`** (fonction-exponentielle 2022
+> SExp : description de la figure $(C_g)$ reprise d'après le scan — voir §4).
 >
-> **Priorité pilote débloquée :** l'entrée `probabilites-conditionnelles`
-> (2023 SExp N, Ex 3) est sourcée, provenancée et transcrite — c'est celle qui
-> débloque la conversion maths.
+> **Priorité pilote CONFIRMÉE :** l'entrée `probabilites-conditionnelles`
+> (2023 SExp N, Ex 3) est sourcée, provenancée, transcrite **et vérifiée
+> conforme au scan** (en-tête filière/code confirmé sur page 1) — le pilote de
+> conversion maths peut procéder.
 
 ---
 
@@ -160,18 +163,18 @@ liste complète 2010→2025 sur le hub, non re-listée ici.)*
 
 | Slug | Année(s)/session | Statut |
 |------|------------------|--------|
-| `probabilites-conditionnelles` | 2023 SExp N | transcrit (non vérifié) — **pilote** |
-| `denombrement` | 2019, 2022 SExp N | transcrit (non vérifié) |
-| `nombres-complexes-1` | 2019, 2022, 2023 SExp N | transcrit (non vérifié) |
-| `nombres-complexes-2` | 2019 SM N | transcrit (non vérifié) |
-| `structures-algebriques` | 2019 SM N | transcrit (non vérifié) |
-| `arithmetique` | 2019 SM N | transcrit (non vérifié) |
-| `geometrie-espace` | 2019, 2022, 2023 SExp N | transcrit (non vérifié) |
-| `fonction-logarithme` | 2019, 2023 SExp N | transcrit (non vérifié) |
-| `fonction-exponentielle` | 2019 SM N, 2022 SExp N | transcrit (non vérifié) |
-| `calcul-integral` | 2022 SExp N (+ cross-lists) | transcrit (non vérifié) |
-| `equations-differentielles` | 2022 SExp N | transcrit (non vérifié) |
-| `suites-numeriques` | 2019 SM N (+ cross-lists) | transcrit (non vérifié) |
+| `probabilites-conditionnelles` | 2023 SExp N | **vérifié** (2026-07-12) — **pilote** |
+| `denombrement` | 2019, 2022 SExp N | **vérifié** (2026-07-12) |
+| `nombres-complexes-1` | 2019, 2022, 2023 SExp N | **vérifié** (2026-07-12) |
+| `nombres-complexes-2` | 2019 SM N | **vérifié** (2026-07-12) |
+| `structures-algebriques` | 2019 SM N | **vérifié** (2026-07-12) |
+| `arithmetique` | 2019 SM N | **vérifié** (2026-07-12) |
+| `geometrie-espace` | 2019, 2022, 2023 SExp N | **vérifié** (2026-07-12) |
+| `fonction-logarithme` | 2019, 2023 SExp N | **vérifié** (2026-07-12) — figures $f'$/$(C_g)$ confirmées |
+| `fonction-exponentielle` | 2019 SM N, 2022 SExp N | 2019 SM **vérifié** ; 2022 SExp **corrigé** (figure $(C_g)$, 2026-07-12) |
+| `calcul-integral` | 2022 SExp N (+ cross-lists) | **vérifié** (2026-07-12) |
+| `equations-differentielles` | 2022 SExp N | **vérifié** (2026-07-12) |
+| `suites-numeriques` | 2019 SM N (+ cross-lists) | **vérifié** (2026-07-12) |
 | `limites-continuite` | (embarqué dans problèmes d'analyse) | **cross-list — pas d'exercice dédié** |
 | `derivabilite-etude-fonctions` | (embarqué dans problèmes d'analyse) | **cross-list — pas d'exercice dédié** |
 
@@ -179,13 +182,20 @@ liste complète 2010→2025 sur le hub, non re-listée ici.)*
 
 ## 4. Ce qui N'A PAS été atteint / à faire
 
-1. **Vérification.** Aucune entrée n'est encore `vérifié`. Lancer la passe
-   adversariale (README §3) : re-fetch indépendant des 4 examens (re-dériver les
-   `upload-<ID>` depuis `element/<n>`) + diff caractère-par-caractère des 14
-   entrées. Points d'attention : bornes d'intégrales, signes, exposants
-   $e^{x/2}$, congruences, et les **descriptions de figures** encore marquées
-   « lecture d'échelle à confirmer » (courbes $(C_g)$ de 2022 et 2023 SExp,
-   tableau de variation de $f'$ 2023).
+1. **Vérification — FAITE (2026-07-12).** Passe adversariale exécutée (README
+   §3) : les 4 examens ont été re-fetchés indépendamment (les `upload-<ID>`
+   re-dérivés depuis `element/<n>` : 68527→54971, 136586→84495, 137482→84924,
+   68482→54931 — tous confirmés) et les 14 entrées diffées caractère-par-caractère
+   contre les scans, en-têtes filière/code inclus. Résultat : **13 entrées
+   conformes → `vérifié`** ; **1 divergence → corrigée** : la description de la
+   figure $(C_g)$ de **fonction-exponentielle 2022 SExp** (Q5) inversait le signe
+   de $g$ et manquait son second zéro — le scan montre $g$ nulle en $\alpha\approx
+   -4,5$ **et** en $0$, positive puis négative sur $]\alpha,0[$ puis positive, ce
+   qui est cohérent avec les *deux* points d'inflexion de Q5c ; corrigée d'après le
+   scan (entrée en `corrigé`). Les autres figures « lecture d'échelle à confirmer »
+   — tableau de variation de $f'$ 2023 et courbe $(C_g)$ 2023 SExp — ont été
+   **confrontées au scan et trouvées fidèles**. (Restent hors périmètre de cette
+   passe : confrontation aux *corrigés* pour les valeurs-réponses, item 5.)
 2. **`limites-continuite` et `derivabilite-etude-fonctions` sans entrée dédiée.**
    Ils sont partout dans les problèmes d'analyse mais jamais isolés. Décider :
    soit cross-list assumé (état actuel), soit chercher un exercice court dédié
@@ -204,8 +214,10 @@ liste complète 2010→2025 sur le hub, non re-listée ici.)*
 ---
 
 ## 5. Prochaine passe recommandée
-1. **Vérification adversariale** des 14 entrées (priorité : le pilote
-   `probabilites-conditionnelles`).
+1. ~~**Vérification adversariale** des 14 entrées~~ — **FAITE le 2026-07-12**
+   (voir §4.1 ; 13 `vérifié`, 1 `corrigé`). Reste conseillé : re-vérifier
+   indépendamment le *texte corrigé* de la figure $(C_g)$ 2022 SExp (un correctif
+   devrait être re-lu par un tiers, README §3).
 2. **Résoudre les `upload-<ID>`** des examens SM 2017–2023 et SExp 2016–2021/2024
    (fetch `element/<n>`), lire les pages « composantes » puis les exercices
    ciblant les slugs faibles (`limites-continuite`, `derivabilite-etude-fonctions`,

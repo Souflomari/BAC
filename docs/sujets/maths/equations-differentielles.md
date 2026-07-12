@@ -10,7 +10,7 @@
 
 ## 2022 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/136586
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element/136586 → course-438/upload-84495, p.3) et diff conforme au scan ($(E) : y''-2y'+y=0$, conditions $h(0)=1$, $h'(0)=2$) ; intitulé « Équations différentielles et calcul intégral » (2,5 pts) confirmé sur la table des composantes (page 1) ; code NS 22F confirmé en-tête.
 
 - Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 2,5 points *(intitulé officiel : « Équations différentielles et calcul intégral »)*
