@@ -8,6 +8,8 @@ Tu es au bord d'un étang parfaitement calme. Un pêcheur a posé un bouchon de 
 
 Avant de lire la suite, engage-toi vraiment : à ton avis, quand la vague circulaire atteint le bouchon, que fait-il ? Est-ce qu'il se met à glisser sur l'eau, poussé par la vague, jusqu'à dériver vers le bord de l'étang ? Ou fait-il autre chose ? Prends position, en une phrase, avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce qu'on observe réellement, si on filme la scène : le bouchon ne dérive pas vers le bord. Il monte, redescend, remonte — il oscille presque sur place, pendant que la vague, elle, continue son chemin vers le bord et au-delà. Une fois la vague passée, le bouchon est revenu, à peu de choses près, à sa position de départ.
 
 Si tu avais prédit que le bouchon serait entraîné vers le bord, ta prédiction et la réalité se contredisent — c'est précisément cet écart qu'on va comprendre. Si tu avais deviné juste, la vraie question commence maintenant : la vague a bien transporté quelque chose jusqu'au bouchon — elle l'a fait bouger, elle lui a donné de l'énergie pour monter et descendre — mais elle ne lui a pas fait traverser l'étang. Qu'est-ce qui voyage, alors, si ce n'est pas l'eau elle-même ?
@@ -58,6 +60,8 @@ On ne se demande pas ici si la perturbation se répète dans le temps, ni à que
 Le bouchon flotte sur un point précis de la surface de l'eau. Quand la perturbation créée par le caillou atteint ce point, la molécule d'eau juste sous le bouchon est écartée de sa position de repos par sa voisine (celle qui a été perturbée juste avant elle) : elle monte. Mais elle est elle-même reliée par cohésion à ses propres voisines, qui la rappellent vers sa position d'équilibre : elle redescend. Pendant ce court aller-retour, elle a transmis le mouvement — et l'énergie qui va avec — à la molécule suivante, un peu plus loin vers le bord. Et ainsi de suite.
 
 Le bouchon, posé sur cette portion d'eau, suit fidèlement ce mouvement local : il monte et redescend avec elle. Il ne dérive pas, parce que l'eau sous lui ne dérive pas non plus — elle oscille sur place, exactement comme chaque élément de la chaîne. Ce qui a vraiment traversé l'étang jusqu'au bouchon, ce n'est pas de l'eau : c'est la perturbation, relayée de molécule en molécule, portant avec elle l'énergie qu'il a fallu pour faire monter et descendre chaque point rencontré sur son passage.
+
+[[checkpoint:cp-r1-transport]]
 
 ---
 
@@ -110,6 +114,8 @@ Voici ce qui fixe la valeur de $v$, et ce qui ne la fixe pas. La célérité dé
 
 Ce qui ne change **rien** à $v$ : la source elle-même. Que la perturbation créée à la source soit ample ou discrète, brève ou étalée dans le temps, la même onde, dans le même milieu, voyage toujours à la même célérité. La forme de la perturbation façonne ce qui voyage — pas la vitesse à laquelle ça voyage.
 
+[[checkpoint:cp-r3-celerite-vs-point]]
+
 ### Le retard $\tau$
 
 Puisque $v$ est fixée par le milieu, une perturbation qui parcourt une distance $d$ met un temps bien précis à le faire. Ce temps s'appelle le **retard** $\tau$ : le délai entre l'instant où la source $S$ crée la perturbation et l'instant où un point $M$, situé à la distance $d$ de $S$, la reçoit à son tour.
@@ -149,6 +155,10 @@ Calculons le retard :
 $$\tau = \frac{d}{v} = \frac{1{,}2}{4} = 0{,}3\ \text{s}$$
 
 $M$ reproduit donc exactement le mouvement de $S$, mais $0{,}3\ \text{s}$ plus tard. Concrètement : $y_M(t) = 0$ tant que $t < 0{,}3\ \text{s}$ (le mouvement n'est pas encore arrivé jusqu'à $M$) ; puis $y_M$ croît linéairement de $0$ à $3\ \text{cm}$ entre $t = 0{,}3\ \text{s}$ et $t = 0{,}4\ \text{s}$ (le même aller que celui de $S$, décalé de $\tau$) ; puis $y_M$ reste constante, égale à $3\ \text{cm}$, pour $t > 0{,}4\ \text{s}$.
+
+[[checkpoint:cp-r3-retard]]
+
+[[checkpoint:cp-r3-periodicite]]
 
 ---
 
@@ -202,48 +212,14 @@ Cette valeur, obtenue par la mesure, est cohérente avec la célérité usuelle 
 - Retard $\tau = d/v$, et $y_M(t) = y_S(t - \tau)$ : $M$ rejoue le mouvement de $S$, à l'identique, avec ce retard.
 - Ondes à une (corde), deux (surface de l'eau) ou trois (son) dimensions : la géométrie du milieu fixe la forme du front d'onde.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On étudie la propagation d'une perturbation le long d'une corde tendue horizontalement, dont une extrémité $S$ est reliée à un vibreur. À l'instant $t = 0$, $S$ effectue un aller-retour bref vers le haut : son élongation $y_S(t)$ croît linéairement de $0$ à $a = 2\ \text{cm}$ entre $t = 0$ et $t = 20\ \text{ms}$, puis redescend linéairement de $2\ \text{cm}$ à $0$ entre $t = 20\ \text{ms}$ et $t = 40\ \text{ms}$, puis reste nulle. Un point $M$ de la corde, situé à $d = 60\ \text{cm}$ de $S$, est filmé : on observe qu'il commence tout juste à bouger (il reproduit le mouvement de $S$) à l'instant $t = 300\ \text{ms}$.
+À toi. Ce qui suit est un exercice d'examen national — **2018 (session normale)**, sur la détermination de la célérité d'une onde ultrasonore dans un liquide. C'est le format que tu retrouveras le jour J. Pour chaque question : cherche d'abord sur papier, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Quel est le retard $\tau$ entre $S$ et $M$ ?**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* le retard est, par définition, le délai entre l'instant où $S$ commence son mouvement ($t=0$) et l'instant où $M$ commence à son tour à reproduire ce même mouvement.
+### Une variation pour ne pas mémoriser
 
-$$\tau = 300\ \text{ms} - 0 = 300\ \text{ms} = 0{,}3\ \text{s}$$
+Même famille de compétences (nature de l'onde, retard, célérité, mouvement d'un point du milieu), tout autre habillage : une corde et un vibreur, à la place des ultrasons dans un liquide. À toi de reconnaître quelle relation s'applique quand le contexte et les nombres changent.
 
-**2) En déduire la célérité $v$ de l'onde le long de la corde.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on connaît maintenant $\tau$ et $d$ ; la relation $\tau = d/v$ se retourne directement pour donner $v$.
-
-$$v = \frac{d}{\tau} = \frac{0{,}6}{0{,}3} = 2\ \text{m/s}$$
-
-**3) Cette onde est-elle transversale ou longitudinale ? Justifie.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* le critère est toujours le même — comparer la direction du déplacement de la matière à la direction de propagation, jamais autre chose.
-
-Le point $M$ se déplace **verticalement** (son élongation $y_M$ varie), alors que la perturbation avance **horizontalement** le long de la corde. Les deux directions sont perpendiculaires : l'onde est **transversale**.
-
-**4) Décris le mouvement de $M$, c'est-à-dire $y_M(t)$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement $y_M(t) = y_S(t - \tau)$ — la même forme que $y_S(t)$, décalée de $\tau = 0{,}3\ \text{s}$.
-
-$y_M(t) = 0$ pour $t < 300\ \text{ms}$ ; puis $y_M$ croît linéairement de $0$ à $2\ \text{cm}$ entre $t = 300\ \text{ms}$ et $t = 320\ \text{ms}$ ; puis $y_M$ redescend linéairement de $2\ \text{cm}$ à $0$ entre $t = 320\ \text{ms}$ et $t = 340\ \text{ms}$ ; puis $y_M$ reste nulle.
-
-**5) Un second point $M'$ est situé à $d' = 90\ \text{cm}$ de $S$. À quel instant commence-t-il à bouger ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la célérité $v$ est une propriété du milieu — la même corde, la même tension — donc la valeur de $v$ trouvée à la question 2 s'applique aussi à $M'$, sans qu'il faille refaire toute l'expérience.
-
-$$\tau' = \frac{d'}{v} = \frac{0{,}9}{2} = 0{,}45\ \text{s} = 450\ \text{ms}$$
-
-**6) Un camarade affirme : « la corde se déplace de $S$ jusqu'à $M$, c'est ça une onde. » Commente cette affirmation.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* c'est exactement la confusion levée en R1 — il faut la nommer précisément, pas juste dire que c'est faux.
-
-L'affirmation confond ce qui **transporte** (la perturbation, et l'énergie qu'elle porte) avec ce qui **se déplace physiquement** (chaque point de la corde). Un point donné de la corde, une fois la perturbation passée, revient à sa position de repos — il n'a jamais voyagé de $S$ vers $M$. Ce qui a voyagé, c'est le mouvement lui-même, relayé de proche en proche le long de la corde, exactement comme le montrait le mécanisme du bouchon sur l'eau (R1) : transport d'énergie, sans transport de matière.
-
-### À toi
-
-**Variation 1.** Une source sonore émet un bref signal. Deux microphones, alignés avec la source et distants de $68\ \text{cm}$, captent ce signal avec un décalage temporel $\Delta t = 2{,}0\ \text{ms}$. Calcule la célérité du son dans l'air mesurée par cette expérience. Le résultat est-il cohérent avec la valeur usuelle d'environ $340\ \text{m/s}$ ?
-
-**Variation 2.** Reviens à l'étang de l'accroche. Cette fois, tu lances un caillou beaucoup plus gros : la vague qui se forme est nettement plus haute (plus grande amplitude) que celle du caillou précédent. Cette vague plus haute atteint-elle le bord de l'étang plus vite que la précédente ? Justifie ta réponse en te basant sur ce dont dépend — et ce dont ne dépend pas — la célérité d'une onde mécanique (R3).
+[[exercise:r-variation]]
