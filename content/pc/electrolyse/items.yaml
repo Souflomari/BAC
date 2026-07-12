@@ -1,6 +1,38 @@
 notion: electrolyse
 skill_code: pc_electrolyse
-misconceptions: []
+misconceptions:
+  - id: mc.physics.pc_electrolyse.sens-force-vs-spontane
+    label: "« Forcer une transformation, c'est accélérer son sens spontané » (au lieu d'imposer le sens inverse)"
+    description: "L'élève croit que le générateur pousse la réaction dans son sens naturel (comme un catalyseur), ou que les deux sens coexistent, au lieu de comprendre qu'il impose le sens non spontané."
+    contradicts_principle: "Une électrolyse force la réaction dans le sens que Q(r,i) face à K interdirait spontanément — le sens INVERSE du sens spontané, pas une accélération de celui-ci."
+  - id: mc.physics.pc_electrolyse.polarite-comme-pile
+    label: "« En électrolyse comme dans une pile, l'anode est la borne − » (transfert de la polarité de la pile)"
+    description: "L'élève transporte tel quel le lien nom/polarité de la pile (anode = borne −, cathode = borne +) vers l'électrolyse, ou confond le nom de l'électrode avec le mécanisme qui s'y produit."
+    contradicts_principle: "En électrolyse, c'est le générateur qui impose la polarité : sa borne + arrache les électrons, forçant l'oxydation, donc anode. L'anode est la borne + et la cathode la borne −, l'INVERSE de la pile. Le vocabulaire (anode = oxydation) ne change pas."
+  - id: mc.physics.pc_electrolyse.electrolyse-source-energie
+    label: "« Une cellule d'électrolyse produit de l'énergie électrique, comme une pile »"
+    description: "L'élève déduit d'un courant qui circule que la cellule est une source d'énergie, au lieu de voir qu'elle en consomme."
+    contradicts_principle: "L'électrolyse CONSOMME l'énergie fournie par le générateur pour forcer une réaction non spontanée ; cette énergie est stockée sous forme chimique dans les produits. Elle ne produit jamais d'énergie électrique nette, contrairement à la pile qui est la source du circuit."
+  - id: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+    label: "« Mauvais nombre d'électrons par atome dans la loi de Faraday » (division ou multiplication par le mauvais z)"
+    description: "L'élève ignore la stœchiométrie électronique de la demi-équation : il oublie de diviser par le nombre d'électrons échangés, divise à tort, ou prend le mauvais z."
+    contradicts_principle: "Le nombre d'électrons par atome est fixé par la demi-équation : 1 pour Ag⁺, 2 pour Cu²⁺/Zn²⁺/Ni²⁺, 3 pour Al³⁺. On a n(métal) = n(e⁻)/z."
+  - id: mc.physics.pc_electrolyse.faraday-calcul-unites
+    label: "« Erreur de calcul ou d'unités dans Q = I·Δt = n·F » (minutes non converties, Q = n/F, Δt = Q·I…)"
+    description: "L'élève applique la chaîne de Faraday avec une faute d'unité (durée gardée en minutes) ou une formule inversée (Q = n/F au lieu de n·F, ou Δt = Q·I au lieu de Q/I)."
+    contradicts_principle: "Q = I·Δt exige Δt en secondes ; n(e⁻) = Q/F (jamais Q × F) ; Δt = Q/I (jamais Q × I). Un ordre de grandeur absurde doit alerter."
+  - id: mc.physics.pc_electrolyse.seuil-tension-continu
+    label: "« N'importe quel générateur en opposition inverse le sens » ou « l'inversion est progressive » (pas de seuil net)"
+    description: "L'élève croit que tout générateur branché en opposition inverse (partiellement) le sens, ou que l'inversion se renforce continûment avec la tension, sans seuil à franchir."
+    contradicts_principle: "Il faut U > E (force électromotrice propre de la cellule) en valeur absolue pour inverser réellement. En dessous, le sens spontané l'emporte (freiné) ; au-dessus, le sens forcé l'emporte totalement. C'est un seuil NET, pas un curseur continu."
+  - id: mc.physics.pc_electrolyse.sens-courant-electrons
+    label: "« Les électrons se déplacent dans le sens du courant conventionnel » (ou : pas de sens conventionnel en électrolyse)"
+    description: "L'élève confond le sens réel de déplacement des électrons avec le sens conventionnel du courant, ou croit ce dernier indéfini dans une cellule d'électrolyse."
+    contradicts_principle: "Dans tout circuit (électrolyse comprise), le sens conventionnel du courant est OPPOSÉ au déplacement réel des électrons. La borne − pousse les électrons vers la cathode ; le courant i est orienté en sens inverse."
+  - id: mc.physics.pc_electrolyse.bilan-matiere-electrodes
+    label: "« Mauvais bilan de matière entre les électrodes » (rapport H₂/O₂, anode soluble, conservation en série)"
+    description: "L'élève se trompe sur le rapport des quantités formées aux deux électrodes : mauvais rapport molaire, ou oubli que le même n(e⁻) traverse les deux électrodes en série."
+    contradicts_principle: "Le circuit étant en série, le même n(e⁻) traverse les deux électrodes. Le rapport des quantités suit les demi-équations (2 mol H₂ pour 1 mol O₂) ; une anode soluble redépose autant de métal qu'il s'en dépose à la cathode."
 
 items:
 
@@ -10,6 +42,7 @@ items:
     difficulty_level: 2
     skill_code: pc_electrolyse
     tags: []
+    primary_misconception: mc.physics.pc_electrolyse.polarite-comme-pile
     stem: >
       Dans une cellule d'électrolyse, l'oxydation se produit à l'électrode
       reliée à la borne + du générateur. Comment appelle-t-on cette
@@ -22,6 +55,7 @@ items:
       - id: B
         text: "C'est la cathode, borne +."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Le nom est faux : quel que soit le dispositif, pile ou
           électrolyse, l'électrode où se produit l'OXYDATION s'appelle
@@ -31,6 +65,7 @@ items:
       - id: C
         text: "C'est l'anode, borne -."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Le nom est juste, mais la polarité est celle d'une pile, pas
           celle d'une électrolyse. Dans une pile, l'anode est bien la
@@ -43,6 +78,7 @@ items:
       - id: D
         text: "C'est la cathode, borne -."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Double confusion : le nom (cette électrode fait une oxydation,
           donc c'est l'anode, pas la cathode) et la polarité (en
@@ -75,6 +111,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: []
+    primary_misconception: mc.physics.pc_electrolyse.polarite-comme-pile
     stem: >
       Sur une cellule d'électrolyse en fonctionnement, l'électrode B est
       reliée à la borne - du générateur. Que peut-on en conclure sur ce
@@ -87,6 +124,7 @@ items:
       - id: B
         text: "C'est l'anode : une borne - signale toujours une oxydation, comme dans une pile."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           C'est vrai dans une pile - l'accumulation naturelle d'électrons
           y crée une borne -. Mais ce n'est pas vrai dans une électrolyse :
@@ -98,6 +136,7 @@ items:
       - id: C
         text: "On ne peut rien conclure sans connaître la nature chimique de l'électrode."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Le lien entre polarité et mécanisme ne dépend pas de la nature
           chimique de l'électrode : il découle uniquement du rôle
@@ -107,6 +146,7 @@ items:
       - id: D
         text: "C'est nécessairement l'électrode où un gaz se dégage."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Une réduction ne dégage pas forcément un gaz : elle peut tout
           aussi bien être un dépôt métallique, comme dans une
@@ -135,6 +175,7 @@ items:
     difficulty_level: 2
     skill_code: pc_electrolyse
     tags: []
+    primary_misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
     stem: >
       Une cellule d'électrolyse en fonctionnement est-elle une source
       d'énergie électrique, comme une pile ?
@@ -146,6 +187,7 @@ items:
       - id: B
         text: "Oui : puisqu'un courant électrique circule dans le circuit, la cellule produit de l'énergie électrique, comme une pile."
         correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
           Un courant qui circule ne signifie pas que le dispositif est une
           source d'énergie : dans une électrolyse, ce courant est IMPOSÉ
@@ -158,6 +200,7 @@ items:
       - id: C
         text: "Oui, mais seulement dans des applications comme l'électrolyse de l'eau, qui libère de l'énergie sous forme de gaz."
         correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
           Les gaz produits (dihydrogène, dioxygène) stockent de l'énergie
           chimique - mais cette énergie provient de l'énergie électrique
@@ -168,6 +211,7 @@ items:
       - id: D
         text: "Cela dépend du sens du courant imposé par le générateur."
         correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
           Non : par définition, l'électrolyse force une réaction dans le
           sens NON spontané, quel que soit le couple considéré - cela
@@ -201,6 +245,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: []
+    primary_misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
     stem: >
       Un générateur électrique alimente une cellule d'électrolyse pendant
       plusieurs heures. Que peut-on affirmer sur le bilan énergétique de
@@ -213,6 +258,7 @@ items:
       - id: B
         text: "La cellule renvoie au générateur plus d'énergie qu'elle n'en reçoit, grâce à la réaction chimique qu'elle contient."
         correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
           Cela reviendrait à créer de l'énergie à partir de rien, ce qui
           est impossible. Une cellule forcée à évoluer dans son sens non
@@ -222,6 +268,7 @@ items:
       - id: C
         text: "Le bilan énergétique est nul : l'énergie électrique fournie ne fait que traverser la cellule sans être transformée."
         correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
           L'énergie électrique fournie EST transformée : une partie
           devient de l'énergie chimique stockée dans les produits formés
@@ -231,6 +278,7 @@ items:
       - id: D
         text: "Seule une pile possède un bilan énergétique ; une cellule d'électrolyse, étant forcée, n'en a pas."
         correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
           Tout dispositif qui échange de l'énergie a un bilan énergétique.
           Le bilan d'une cellule d'électrolyse est simplement
@@ -260,6 +308,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: []
+    primary_misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
     stem: >
       Un générateur impose un courant constant $I = 0{,}40\ \text{A}$
       pendant $\Delta t = 25\ \text{min}$ à une cellule d'électrolyse où de
@@ -274,6 +323,7 @@ items:
       - id: B
         text: "$\\approx 1{,}34\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Ce résultat vient d'une division par 2 appliquée à tort - comme
           si le couple $Ag^+/Ag$ échangeait 2 électrons par atome (comme
@@ -284,6 +334,7 @@ items:
       - id: C
         text: "$\\approx 0{,}011\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Ce résultat vient d'un oubli d'unité : $\Delta t$ doit être
           converti en secondes ($25\ \text{min} = 1500\ \text{s}$) avant
@@ -293,6 +344,7 @@ items:
       - id: D
         text: "$\\approx 6{,}3\\times10^{9}\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Cette masse - plusieurs millions de tonnes d'argent - doit
           alerter immédiatement : c'est physiquement absurde pour un
@@ -325,6 +377,7 @@ items:
     difficulty_level: 4
     skill_code: pc_electrolyse
     tags: []
+    primary_misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
     stem: >
       Lors d'une électrolyse d'une solution de sulfate de cuivre(II) avec
       des électrodes inertes, un courant constant $I = 0{,}25\ \text{A}$
@@ -341,6 +394,7 @@ items:
       - id: B
         text: "$\\approx 0{,}40\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Ce choix confond la stœchiométrie de
           $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ (2 électrons échangés
@@ -351,6 +405,7 @@ items:
       - id: C
         text: "$\\approx 0{,}0033\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Ce résultat vient d'un oubli d'unité : $\Delta t$ doit être
           converti en secondes ($40\ \text{min} = 2400\ \text{s}$) avant
@@ -359,6 +414,7 @@ items:
       - id: D
         text: "$\\approx 0{,}79\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Ce choix multiplie $n(e^-)$ par 2 au lieu de diviser. La
           demi-équation $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ dit que
@@ -392,6 +448,7 @@ items:
     difficulty_level: 1
     skill_code: pc_electrolyse
     tags: [transformation_forcee, sens_spontane]
+    primary_misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
     stem: >
       On reprend le montage de l'accroche : une pile Daniell (lame de zinc
       dans une solution de sulfate de zinc, lame de cuivre dans une solution
@@ -407,6 +464,7 @@ items:
       - id: B
         text: "Elle continue à se dissoudre comme dans la pile, mais plus lentement."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Cela décrirait un générateur trop faible pour inverser le sens ;
           ici le courant imposé est suffisant, donc le sens s'inverse
@@ -414,6 +472,7 @@ items:
       - id: C
         text: "Elle se dissout plus vite qu'avec la pile seule, car le générateur ajoute de l'énergie dans le même sens."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Le générateur est branché en OPPOSITION au sens spontané, pas
           pour le renforcer : il force le sens inverse, pas une dissolution
@@ -421,6 +480,7 @@ items:
       - id: D
         text: "Rien ne change sur la lame de zinc ; seule la lame de cuivre est affectée par le générateur."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Une électrolyse impose un sens aux deux électrodes à la fois : si
           le cuivre est affecté, le zinc l'est nécessairement aussi, dans
@@ -441,6 +501,7 @@ items:
     difficulty_level: 1
     skill_code: pc_electrolyse
     tags: [transformation_forcee, sens_spontane]
+    primary_misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
     stem: >
       Toujours sur ce montage (pile Daniell forcée à l'envers par le
       générateur), qu'observe-t-on du côté de la lame de cuivre ?
@@ -452,6 +513,7 @@ items:
       - id: B
         text: "Elle continue à se recouvrir de cuivre, comme dans le fonctionnement spontané de la pile."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Un courant circule dans les deux cas, mais pas dans le même sens :
           ici le générateur impose l'inverse du fonctionnement spontané,
@@ -459,6 +521,7 @@ items:
       - id: C
         text: "Elle grossit d'un dépôt de cuivre, mais plus lentement qu'avec la pile seule."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Cela décrirait un générateur qui freine seulement le dépôt
           spontané ; un générateur assez fort ne freine pas ce sens, il
@@ -466,6 +529,7 @@ items:
       - id: D
         text: "Elle reste inchangée, car le cuivre est un métal inerte qui ne réagit pas dans une électrolyse."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Aucun métal n'est « inerte » face à un courant imposé assez
           fort : le cuivre s'oxyde ici, exactement comme le zinc se réduit
@@ -486,6 +550,7 @@ items:
     difficulty_level: 1
     skill_code: pc_electrolyse
     tags: [transformation_forcee, sens_spontane]
+    primary_misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
     stem: >
       Quelle affirmation décrit correctement ce qui se passe, de façon
       générale, lorsqu'on force une transformation par électrolyse ?
@@ -497,6 +562,7 @@ items:
       - id: B
         text: "Le générateur accélère la réaction dans son sens spontané, sans en changer la nature."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Forcer une transformation, ce n'est pas l'accélérer dans son sens
           naturel : c'est lui imposer le sens contraire, celui que la
@@ -504,6 +570,7 @@ items:
       - id: C
         text: "Le générateur permet à la réaction spontanée et à la réaction inverse de se produire simultanément, à parts égales."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Il n'y a pas de coexistence à parts égales des deux sens : une
           fois le seuil de tension dépassé, c'est le sens forcé qui
@@ -511,6 +578,7 @@ items:
       - id: D
         text: "Le générateur remplace la réaction chimique : ce n'est plus une transformation chimique, mais un phénomène purement électrique."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           L'électrolyse reste une transformation chimique à part entière
           (des espèces s'oxydent et se réduisent aux électrodes) ; le
@@ -531,6 +599,7 @@ items:
     difficulty_level: 2
     skill_code: pc_electrolyse
     tags: [sens_courant, mouvement_electrons]
+    primary_misconception: mc.physics.pc_electrolyse.sens-courant-electrons
     stem: >
       Dans le fil reliant le générateur à la cathode d'une cellule
       d'électrolyse, comment se déplacent les électrons par rapport au sens
@@ -543,6 +612,7 @@ items:
       - id: B
         text: "Les électrons se déplacent dans le même sens que $i$, puisque ce sont eux qui transportent le courant."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-courant-electrons
         feedback: >
           Par convention, le sens du courant $i$ est toujours opposé au
           sens réel de déplacement des électrons, dans tout circuit -
@@ -550,6 +620,7 @@ items:
       - id: C
         text: "Il n'y a pas de sens conventionnel défini pour le courant dans un circuit d'électrolyse, seul le mouvement des électrons compte."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-courant-electrons
         feedback: >
           Le sens conventionnel du courant est défini dans tout circuit
           électrique, y compris une électrolyse ; il n'est pas propre aux
@@ -557,6 +628,7 @@ items:
       - id: D
         text: "Les électrons se déplacent de la cathode vers la borne − du générateur."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-courant-electrons
         feedback: >
           C'est l'inverse du mécanisme décrit : c'est la borne − du
           générateur qui POUSSE les électrons vers la cathode, pas la
@@ -577,6 +649,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: [anode_cathode, polarite]
+    primary_misconception: mc.physics.pc_electrolyse.polarite-comme-pile
     stem: >
       Dans une cellule d'électrolyse, on observe à l'une des deux électrodes
       un dégagement de dichlore selon la demi-équation
@@ -591,6 +664,7 @@ items:
       - id: B
         text: "C'est la cathode, reliée à la borne +."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Le nom est faux : les ions chlorure perdent des électrons ici
           (oxydation), donc c'est l'anode, pas la cathode - même si la
@@ -598,6 +672,7 @@ items:
       - id: C
         text: "C'est l'anode, reliée à la borne −."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Le nom est juste, mais la polarité est celle d'une pile : dans
           une cellule d'électrolyse, c'est le générateur qui, par sa borne
@@ -605,6 +680,7 @@ items:
       - id: D
         text: "C'est la cathode, reliée à la borne −."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Cette demi-équation, lue de la gauche vers la droite, montre les
           ions chlorure PERDANT des électrons : c'est une oxydation, donc
@@ -624,6 +700,7 @@ items:
     difficulty_level: 2
     skill_code: pc_electrolyse
     tags: [tension_seuil, force_electromotrice]
+    primary_misconception: mc.physics.pc_electrolyse.seuil-tension-continu
     stem: >
       On reprend la cellule de l'accroche (pile Daniell forcée), de force
       électromotrice propre $E \approx 1{,}1\ \text{V}$. On y branche un
@@ -637,18 +714,21 @@ items:
       - id: B
         text: "Le sens s'inverse partiellement : un peu de zinc commence à se déposer, en plus faible quantité qu'à $U = 6\\ \\text{V}$."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Il n'existe pas d'inversion partielle : sous le seuil $E$, c'est
           uniquement le sens spontané qui l'emporte, simplement freiné.
       - id: C
         text: "Le courant est nul : le générateur, branché en opposition, bloque totalement le passage du courant."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Une tension inférieure à $E$ affaiblit le courant spontané, elle
           ne l'annule pas complètement.
       - id: D
         text: "Le sens s'inverse complètement, car le générateur est branché en opposition au sens naturel, quelle que soit sa tension."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Le branchement en opposition ne suffit pas : il faut que $U$
           dépasse $E$ en valeur absolue pour que le sens forcé l'emporte
@@ -668,6 +748,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: [tension_seuil, force_electromotrice]
+    primary_misconception: mc.physics.pc_electrolyse.seuil-tension-continu
     stem: >
       Une cellule électrolytique possède, dans le sens opposé à celui
       recherché, une force électromotrice propre $E \approx 0{,}7\ \text{V}$.
@@ -682,12 +763,14 @@ items:
       - id: B
         text: "$U = 0{,}5\\ \\text{V}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Cette valeur reste sous le seuil $E \approx 0{,}7\ \text{V}$ : le
           sens spontané continue de l'emporter, seulement affaibli.
       - id: C
         text: "$U = 0{,}7\\ \\text{V}$ (exactement égale à $E$)"
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Une tension exactement égale à $E$ ne fait que compenser la
           tendance spontanée sans la dépasser ; il faut une tension
@@ -695,6 +778,7 @@ items:
       - id: D
         text: "$U = 0\\ \\text{V}$ (aucun générateur, juste le pont salin)"
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Sans générateur, la cellule fonctionne comme une pile ordinaire
           dans son sens spontané : il n'y a alors aucune opposition, encore
@@ -714,6 +798,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: [tension_seuil, force_electromotrice]
+    primary_misconception: mc.physics.pc_electrolyse.seuil-tension-continu
     stem: >
       Un camarade affirme : « Plus la tension imposée en opposition dépasse
       le seuil $E$, plus l'inversion du sens de la réaction devient
@@ -727,6 +812,7 @@ items:
       - id: B
         text: "Oui : l'inversion se renforce progressivement à mesure que $U$ s'éloigne de $E$."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Le passage du sens spontané au sens forcé n'est pas progressif :
           c'est un basculement complet dès que le seuil est dépassé, pas un
@@ -734,6 +820,7 @@ items:
       - id: C
         text: "Non, car en réalité aucun seuil n'existe : tout générateur branché en opposition inverse totalement le sens, quelle que soit sa tension."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Cela contredit l'exemple à $U = 0{,}9\ \text{V} < E \approx
           1{,}1\ \text{V}$, où aucune inversion n'a lieu : un seuil existe
@@ -741,6 +828,7 @@ items:
       - id: D
         text: "Oui, et en dessous du seuil $E$ aucun courant ne circule du tout."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Sous le seuil, le courant spontané continue de circuler,
           simplement affaibli - il n'est pas nul.
@@ -759,6 +847,7 @@ items:
     difficulty_level: 4
     skill_code: pc_electrolyse
     tags: [loi_faraday, quantite_electricite]
+    primary_misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
     stem: >
       On veut déposer une masse $m = 0{,}54\ \text{g}$ d'argent par
       électrolyse ($Ag^+ + e^- \rightleftharpoons Ag$), en imposant un
@@ -773,6 +862,7 @@ items:
       - id: B
         text: "$\\Delta t \\approx 3{,}22\\times10^{3}\\ \\text{s}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Ce résultat vient d'avoir doublé $n(e^-)$ comme si l'argent
           échangeait 2 électrons par atome (comme $Cu^{2+}/Cu$), alors que
@@ -780,12 +870,14 @@ items:
       - id: C
         text: "$\\Delta t \\approx 145\\ \\text{s}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Ce résultat vient d'avoir calculé $\Delta t = Q \times I$ au
           lieu de $\Delta t = Q / I$.
       - id: D
         text: "$\\Delta t \\approx 0{,}017\\ \\text{s}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Ce résultat vient d'avoir oublié la constante de Faraday
           ($Q = n(e^-) \times F$, pas $Q = n(e^-)$ seul) - une durée aussi
@@ -809,6 +901,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: [bilan_matiere, electrolyse_eau]
+    primary_misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
     stem: >
       Lors de l'électrolyse de l'eau (bilan global
       $2\,H_2O \rightarrow 2\,H_2 + O_2$), on recueille à la cathode un
@@ -823,6 +916,7 @@ items:
       - id: B
         text: "$V(O_2) = 120\\ \\text{mL}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
         feedback: >
           Ce choix suppose un rapport 1:1 entre $H_2$ et $O_2$, alors que
           le bilan $2\,H_2O \rightarrow 2\,H_2 + O_2$ donne deux fois moins
@@ -830,12 +924,14 @@ items:
       - id: C
         text: "$V(O_2) = 240\\ \\text{mL}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
         feedback: >
           Ce choix inverse le rapport : le bilan donne deux fois MOINS
           d'$O_2$ que de $H_2$, pas deux fois plus.
       - id: D
         text: "$V(O_2) = 30\\ \\text{mL}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
         feedback: >
           Ce choix confond le nombre d'électrons échangés par molécule
           d'$O_2$ (4) avec le rapport molaire $H_2$:$O_2$, qui vaut 2:1 et
@@ -855,6 +951,7 @@ items:
     difficulty_level: 3
     skill_code: pc_electrolyse
     tags: [bilan_matiere, galvanoplastie]
+    primary_misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
     stem: >
       Dans une opération de galvanoplastie, un objet (cathode) et une anode
       soluble d'argent massif sont plongés dans un bain contenant des ions
@@ -870,6 +967,7 @@ items:
       - id: B
         text: "La quantité déposée à la cathode est plus grande, car la réduction consomme plus de matière que l'oxydation n'en libère."
         correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
         feedback: >
           Le même courant (donc le même $n(e^-)$) traverse tout le circuit
           en série : la charge échangée est nécessairement identique aux
@@ -877,12 +975,14 @@ items:
       - id: C
         text: "Il n'existe aucun lien entre les deux : chaque électrode évolue selon sa propre cinétique, indépendamment de l'autre."
         correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
         feedback: >
           Les deux électrodes sont reliées par le même circuit en série :
           la conservation de la charge impose le même $n(e^-)$ aux deux.
       - id: D
         text: "La quantité dissoute à l'anode est le double de celle déposée à la cathode, car l'anode fournit les électrons ET la matière."
         correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
         feedback: >
           Les deux demi-équations ($Ag \rightleftharpoons Ag^+ + e^-$ et
           $Ag^+ + e^- \rightleftharpoons Ag$) échangent chacune un seul
@@ -902,6 +1002,7 @@ items:
     difficulty_level: 4
     skill_code: pc_electrolyse
     tags: [bilan_matiere, aluminium]
+    primary_misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
     stem: >
       Dans la production industrielle de l'aluminium par électrolyse (bain
       de cryolithe fondue), l'aluminium se dépose à la cathode selon
@@ -917,6 +1018,7 @@ items:
       - id: B
         text: "$n(Al) = n(e^-)$, exactement comme pour l'argent, car la quantité d'électricité échangée est la même."
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Le nombre d'électrons échangés PAR ATOME dépend de la charge de
           l'ion ($Al^{3+}$ contre $Ag^+$) : un même $n(e^-)$ total ne donne
@@ -924,6 +1026,7 @@ items:
       - id: C
         text: "$n(Al) = 3 \\times n(e^-)$, soit trois fois plus que pour l'argent."
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Ce choix inverse le rapport : il faut 3 électrons pour former un
           atome d'aluminium, ce qui donne trois fois MOINS de moles d'$Al$
@@ -931,6 +1034,7 @@ items:
       - id: D
         text: "On ne peut pas comparer, car l'aluminium provient d'un sel fondu et l'argent d'une solution aqueuse."
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           La loi de Faraday et le bilan de matière aux électrodes ne
           dépendent pas de la nature du milieu (aqueux ou fondu), seulement
@@ -950,6 +1054,7 @@ items:
     difficulty_level: 4
     skill_code: pc_electrolyse
     tags: [loi_faraday, application]
+    primary_misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
     stem: >
       On veut nickeler une pièce métallique par électrolyse, à l'aide d'une
       anode de nickel massif et d'un bain contenant des ions $Ni^{2+}$
@@ -966,6 +1071,7 @@ items:
       - id: B
         text: "$\\approx 0{,}44\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           Ce résultat vient d'avoir oublié de diviser $n(e^-)$ par 2 : la
           demi-équation $Ni^{2+} + 2\,e^- \rightleftharpoons Ni$ échange 2
@@ -973,6 +1079,7 @@ items:
       - id: C
         text: "$\\approx 3{,}7\\times10^{-3}\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Ce résultat vient d'un oubli d'unité : $\Delta t$ doit être
           converti en secondes ($15\ \text{min} = 900\ \text{s}$) avant de
@@ -980,6 +1087,7 @@ items:
       - id: D
         text: "$\\approx 2{,}0\\times10^{9}\\ \\text{g}$"
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
           Cette masse, plusieurs millions de tonnes, doit alerter
           immédiatement : l'erreur vient d'avoir multiplié $Q$ par $F$ au
@@ -1001,6 +1109,7 @@ items:
     difficulty_level: 4
     skill_code: pc_electrolyse
     tags: [transformation_forcee, equilibre]
+    primary_misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
     stem: >
       Un camarade affirme : « Une cellule d'électrolyse finit, comme une
       pile, par s'arrêter d'elle-même : une fois que le quotient de
@@ -1015,6 +1124,7 @@ items:
       - id: B
         text: "Oui : comme dans une pile, dès que $Q_{r,i}=K$, plus aucune évolution n'est possible, générateur ou pas."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Ce raisonnement transporte le critère d'arrêt d'une pile
           (évolution spontanée vers l'équilibre) à l'électrolyse, alors que
@@ -1023,6 +1133,7 @@ items:
       - id: C
         text: "Oui, mais seulement si la tension du générateur est inférieure au seuil $E$."
         correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
           Cela mélange deux idées distinctes : sous le seuil $E$, c'est
           simplement le sens spontané de la pile interne qui continue,
@@ -1030,6 +1141,7 @@ items:
       - id: D
         text: "Non, l'électrolyse ne s'arrête jamais, même si l'un des réactifs vient à manquer complètement."
         correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
           Même une transformation forcée s'arrête si un réactif est
           épuisé à une électrode : le générateur impose un sens, il ne
@@ -1050,6 +1162,7 @@ items:
     difficulty_level: 5
     skill_code: pc_electrolyse
     tags: [loi_faraday, polarite]
+    primary_misconception: mc.physics.pc_electrolyse.polarite-comme-pile
     stem: >
       Lors d'une électrolyse destinée à cuivrer un objet métallique (bain
       de sulfate de cuivre(II), anode de cuivre massif), un générateur
@@ -1066,6 +1179,7 @@ items:
       - id: B
         text: "$m \\approx 0{,}24\\ \\text{g}$, l'objet relié à la borne + du générateur (c'est l'anode)."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           Le calcul de masse est juste, mais la polarité est fausse : pour
           qu'un dépôt se forme (réduction $Cu^{2+}+2e^-\to Cu$), l'objet
@@ -1073,6 +1187,7 @@ items:
       - id: C
         text: "$m \\approx 0{,}47\\ \\text{g}$, l'objet relié à la borne − du générateur."
         correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
           La polarité est juste, mais la masse vient d'avoir oublié de
           diviser par 2 : $Cu^{2+}+2e^-\to Cu$ échange 2 électrons par
@@ -1080,6 +1195,7 @@ items:
       - id: D
         text: "$m \\approx 0{,}24\\ \\text{g}$, mais la polarité ne peut pas être déterminée sans connaître la nature de l'anode."
         correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
         feedback: >
           La polarité se déduit uniquement du mécanisme recherché (un
           dépôt = une réduction = une cathode = la borne −), indépendamment
@@ -1095,3 +1211,129 @@ items:
       $n(Cu) = n(e^-)/2 \approx 3{,}73\times10^{-3}\ \text{mol}$, d'où
       $m(Cu) \approx 0{,}24\ \text{g}$. Le dépôt exige une réduction :
       l'objet est la cathode, reliée à la borne − du générateur.
+
+  # ── croire que l'électrolyse produit de l'énergie (variant : l'utiliser comme une pile, gated-floor closer) ──
+  - id: ELECTROLYSE-22
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_electrolyse
+    tags: [energie, electrolyse_vs_pile]
+    primary_misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+    stem: >
+      Un élève propose de se servir d'une cellule d'électrolyse en
+      fonctionnement comme d'une pile : la brancher sur une petite lampe pour
+      l'allumer, sans aucune autre source. Est-ce possible ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : elle ne fournit pas d'énergie électrique, elle en consomme ; c'est un générateur extérieur qui l'alimente, pas l'inverse."
+        correct: true
+      - id: B
+        text: "Oui : dès qu'un courant la traverse, elle se comporte comme une source et peut alimenter la lampe."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: >
+          Un courant qui traverse un dipôle ne fait pas de lui une source :
+          dans une électrolyse, ce courant est imposé de l'extérieur par un
+          générateur, qui FOURNIT l'énergie. La cellule consomme, elle ne
+          débite pas d'énergie dans un circuit.
+      - id: C
+        text: "Oui, mais seulement pendant l'électrolyse de l'eau, car les gaz produits, en brûlant, fourniraient l'énergie nécessaire à la lampe."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: >
+          Les gaz (dihydrogène, dioxygène) stockent de l'énergie chimique, mais
+          elle provient de l'énergie électrique fournie par le générateur pour
+          les fabriquer. Il faudrait ensuite les brûler dans un autre
+          dispositif pour en récupérer une partie : l'électrolyse stocke
+          l'énergie, elle ne la débite pas.
+      - id: D
+        text: "Oui, à condition d'inverser le sens du courant imposé, ce qui la transforme en source."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: >
+          Inverser le sens du courant ne transforme pas une cellule
+          d'électrolyse en source : par définition, elle force le sens non
+          spontané, ce qui exige toujours un apport net d'énergie. C'est un
+          dispositif distinct d'une pile.
+    correct_feedback: >
+      Une cellule d'électrolyse est un consommateur d'énergie : elle a besoin
+      d'un générateur extérieur pour forcer sa réaction. Elle ne peut donc pas
+      jouer le rôle d'une pile et alimenter seule une lampe.
+    solution: |
+      Une pile est une SOURCE : sa réaction spontanée libère de l'énergie,
+      récupérée dans le circuit. Une cellule d'électrolyse est l'inverse : elle
+      force une réaction non spontanée, ce qui exige un apport net d'énergie
+      fourni par un générateur extérieur. L'énergie reçue est stockée sous
+      forme chimique dans les produits (ou dissipée en chaleur), jamais débitée
+      vers un circuit.
+
+      Elle ne peut donc pas alimenter une lampe toute seule : ce serait créer
+      de l'énergie à partir de rien.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (summit-conversion campaign — electrolyse)
+#
+# This end bank (ELECTROLYSE-1…21) was authored BEFORE a misconception
+# inventory existed (`misconceptions: []`). This pass (a) declares the 8-model
+# inventory, (b) adds an item-level `primary_misconception` to every item and a
+# per-distractor `misconception:` field to every distractor (additive only — no
+# stem, feedback, or solution altered), and (c) adds ELECTROLYSE-22 to bring the
+# GATED model `electrolyse-source-energie` from 2 to 3 items.
+#
+# GATED = the four models probed by the required checkpoints (checkpoints.yaml):
+#   sens-force-vs-spontane, polarite-comme-pile, electrolyse-source-energie,
+#   faraday-stoechiometrie-electronique. All four now meet the >=3 floor →
+#   gated_floor_met: true.
+#
+# Three NON-gated models remain under the item-level floor
+# (faraday-calcul-unites, sens-courant-electrons, bilan-matiere-electrodes).
+# Per SUMMIT-CONVERSION-RECIPE §6, these are disclosed honestly rather than
+# padded — flagged for a follow-up item pass. Counts below are ITEM-LEVEL (each
+# item counted once, by its `primary_misconception`).
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 22
+  floor: 3
+  per_misconception:
+    mc.physics.pc_electrolyse.sens-force-vs-spontane: 4              # 7, 8, 9, 20
+    mc.physics.pc_electrolyse.polarite-comme-pile: 4                 # 1, 2, 11, 21
+    mc.physics.pc_electrolyse.electrolyse-source-energie: 3          # 3, 4, 22
+    mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique: 4 # 5, 6, 18, 19
+    mc.physics.pc_electrolyse.seuil-tension-continu: 3               # 12, 13, 14
+    mc.physics.pc_electrolyse.faraday-calcul-unites: 1               # 15
+    mc.physics.pc_electrolyse.sens-courant-electrons: 1              # 10
+    mc.physics.pc_electrolyse.bilan-matiere-electrodes: 2            # 16, 17
+  gated_misconceptions:
+    - mc.physics.pc_electrolyse.sens-force-vs-spontane
+    - mc.physics.pc_electrolyse.polarite-comme-pile
+    - mc.physics.pc_electrolyse.electrolyse-source-energie
+    - mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+  gated_floor_met: true
+  floor_met: false
+  under_floor_non_gated:
+    mc.physics.pc_electrolyse.faraday-calcul-unites: 1
+    mc.physics.pc_electrolyse.sens-courant-electrons: 1
+    mc.physics.pc_electrolyse.bilan-matiere-electrodes: 2
+  ramp_coverage:
+    R0: 3   # 7, 8, 9
+    R1: 4   # 3, 4, 10, 22
+    R2: 3   # 1, 2, 11
+    R3: 3   # 12, 13, 14
+    R4: 3   # 5, 6, 15
+    R5: 3   # 16, 17, 18
+    R6: 3   # 19, 20, 21
+  note: >
+    Gated floor MET: the four checkpoint-gated models each have >=3 items
+    (electrolyse-source-energie closed 2->3 by the new ELECTROLYSE-22, a fresh
+    "use the cell as a pile" framing, not a restatement of ELECTROLYSE-3/4).
+    Per-distractor misconception tags added to all of ELECTROLYSE-1…21
+    (additive; no existing stem, feedback, or solution changed).
+    floor_met is FALSE overall: three NON-gated models stay under the item-level
+    >=3 floor — faraday-calcul-unites (1), sens-courant-electrons (1),
+    bilan-matiere-electrodes (2). These are disclosed, not padded
+    (SUMMIT-CONVERSION-RECIPE §6): closing them with genuinely distinct stems
+    (not memorizable clones of existing items) is left for a follow-up item
+    pass. NB: faraday-calcul-unites, though item-level 1, is heavily covered at
+    the DISTRACTOR level (tagged on 5C, 5D, 6C, 15C, 15D, 19C, 19D).

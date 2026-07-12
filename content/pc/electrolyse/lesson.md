@@ -10,6 +10,8 @@ Maintenant, retire l'ampèremètre et branche à sa place un générateur élect
 
 Avant de lire la suite, prends position : à ton avis, que va-t-il se passer sur chaque lame à mesure qu'on augmente la tension du générateur - rien de notable, un simple ralentissement du courant, ou carrément l'inverse de ce qu'on observait avec la pile seule ?
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce qu'on observe, une fois la tension du générateur suffisamment élevée. La lame de zinc, qui se dissolvait dans le fonctionnement spontané de la pile, se met à grossir : un dépôt de zinc métallique frais s'y forme. La lame de cuivre, elle, qui se recouvrait de cuivre dans le fonctionnement spontané, se met au contraire à se dissoudre - la solution qui l'entoure devient plus intensément bleue, signe qu'elle s'enrichit en ions $Cu^{2+}$.
 
 C'est très exactement l'inverse de ce que toute la leçon précédente a établi : le sens $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$, celui que $Q_{r,i} < K$ imposait comme seul sens possible, spontanément. Livré à lui-même, ce système n'évoluerait jamais dans le sens inverse $Cu + Zn^{2+} \rightleftharpoons Cu^{2+} + Zn$ - le critère de spontanéité l'interdit, aussi sûrement qu'un objet ne remonte jamais une pente tout seul. Et pourtant, avec ce générateur, on vient de le forcer à faire exactement ça.
@@ -40,6 +42,8 @@ Symétriquement, à l'autre électrode, le générateur, par sa borne +, tire de
 
 Le vocabulaire ne change pas d'un mot : l'électrode où se produit l'oxydation continue de s'appeler l'**anode**, celle où se produit la réduction continue de s'appeler la **cathode** - exactement comme pour une pile. Ce qui change, c'est *qui décide* laquelle est laquelle : dans une pile, c'est le calcul $Q_{r,i}$ face à $K$ ; dans une électrolyse, c'est le câblage du générateur, qui peut très bien forcer le sens que ce même calcul interdirait si le système était livré à lui-même.
 
+[[checkpoint:cp-forcee-vs-spontanee]]
+
 ### Teste l'idée avant de la croire : « une électrolyse, ça produit de l'énergie électrique, comme une pile »
 
 Un courant électrique circule dans les deux dispositifs - dans une pile comme dans une cellule d'électrolyse. Il est tentant d'en conclure que les deux « produisent » de l'électricité de la même façon.
@@ -49,6 +53,8 @@ Regarde d'où vient l'énergie dans chaque cas. Dans une pile, c'est la réactio
 Dans une cellule d'électrolyse, c'est l'inverse. Le générateur extérieur doit fournir de l'énergie électrique pour forcer une réaction qui n'irait jamais spontanément dans ce sens ($Q_{r,i}$ face à $K$ s'y opposerait si on laissait faire la chimie seule). Cette énergie électrique ne disparaît pas : elle se retrouve stockée sous forme d'énergie chimique dans les produits qu'on vient de fabriquer de force - le dépôt de zinc de l'accroche, ou, tu le verras au rung 5, un gaz comme le dihydrogène. Une cellule d'électrolyse ne produit jamais d'énergie électrique nette : elle en **consomme**, pour construire quelque chose que la chimie, seule, refuserait de construire.
 
 Si une cellule d'électrolyse produisait plus d'énergie électrique qu'elle n'en reçoit, on aurait construit une machine qui crée de l'énergie à partir de rien - ce qui ne peut pas arriver. Le générateur donne toujours plus d'énergie électrique à la cellule que ce que la réaction, seule, n'en aurait jamais fourni dans ce sens ; une partie de cette énergie se retrouve stockée dans les produits, le reste se dissipe en chaleur par effet Joule dans les fils et l'électrolyte.
+
+[[checkpoint:cp-electrolyse-vs-pile]]
 
 ### Exemple travaillé : nommer les deux électrodes de l'accroche
 
@@ -103,6 +109,8 @@ Voici la comparaison complète avec la pile Daniell de la leçon précédente, p
 | Qui impose le sens | la réaction chimique elle-même ($Q_{r,i}$ face à $K$) | le générateur extérieur |
 
 Remarque bien ce que cette dernière ligne veut dire : le zinc reste, dans les deux cas, relié physiquement à la borne − - mais son rôle chimique bascule complètement, de l'oxydation (pile) à la réduction (électrolyse), parce que le sens du courant lui-même a été inversé par le générateur.
+
+[[checkpoint:cp-anode-cathode]]
 
 ---
 
@@ -178,6 +186,8 @@ Puisque $Q = I\,\Delta t = n(e^-)\,F$ a été introduite pour la première fois 
 
 Reviens à ce que mesure réellement cette relation : elle relie une charge électrique, un courant, une durée, et une quantité de matière d'électrons - rien dans ces grandeurs ne présuppose que le courant provient d'une réaction spontanée. Que les électrons soient poussés par la chimie (pile) ou par un générateur extérieur (électrolyse), ils portent la même charge élémentaire, et $F$ ne change pas de valeur. La loi de Faraday est une loi de comptage des électrons échangés - elle s'applique à tout courant traversant toute cellule électrochimique, quelle que soit son origine.
 
+[[checkpoint:cp-faraday]]
+
 ---
 
 ## R5 — Applications : forcer une réaction utile
@@ -234,44 +244,14 @@ Dans les trois cas, le même schéma se répète : la cathode produit ce qu'on c
 - La quantité d'électricité mise en jeu suit la même loi que pour la pile, $Q = I\,\Delta t = n(e^-)\,F$ - sauf qu'elle sert ici à calculer une masse déposée ou transformée, pas une masse consommée par usure.
 - L'électrolyse ne produit jamais d'énergie électrique nette : elle en consomme, pour construire des produits qu'aucune réaction spontanée ne fournirait (électrolyse de l'eau, dépôt métallique par galvanoplastie, production industrielle de l'aluminium).
 
-### Exercice de type bac (original - entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On veut recouvrir d'une fine couche d'argent un couvert de table en métal ordinaire, par galvanoplastie. On plonge le couvert et une lame d'argent massif dans un bain contenant des ions $Ag^+$ (solution de nitrate d'argent), et on relie les deux électrodes à un générateur réglé pour imposer un courant constant $I = 500\ \text{mA}$ pendant $\Delta t = 20\ \text{min}$. On donne $F \approx 9{,}65\times10^{4}\ \text{C/mol}$ et $M(Ag) = 108\ \text{g/mol}$.
+Le sujet ci-dessous est un **examen national vérifié** (session normale 2019). Prends le temps de le chercher toi-même — identifier l'anode, écrire les réactions aux électrodes, puis remonter la loi de Faraday — avant de dérouler le raisonnement.
 
-**1) Pour que l'argent se dépose sur le couvert, celui-ci doit-il être branché à l'anode ou à la cathode du montage ? Précise la polarité (borne + ou −) à laquelle il doit être relié.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on repère d'abord le mécanisme chimique voulu (rung 1), puis on en déduit la polarité correspondante (rung 2).
+### Une variation pour ne pas mémoriser
 
-Le dépôt d'argent métallique sur le couvert correspond à une réduction, $Ag^+ + e^- \rightleftharpoons Ag$ (lu de la gauche vers la droite) : cela doit se produire à la cathode. Dans une cellule d'électrolyse, la cathode est la borne − du générateur (rung 2, polarité inversée par rapport à la pile) : le couvert doit être relié à la borne − du générateur.
+Même compétences, un autre système et une question de Faraday posée dans l'autre sens : de quoi vérifier que tu as compris la méthode, et pas seulement retenu le corrigé de 2019.
 
-**2) Écris la demi-équation électronique se produisant sur la lame d'argent massif (l'autre électrode), en précisant s'il s'agit d'une anode ou d'une cathode, et son rôle dans le bain.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie l'électrode complémentaire, et son rôle d'anode soluble (rung 5).
-
-La lame d'argent massif, reliée à la borne + du générateur, est l'anode - siège de l'oxydation : $Ag \rightleftharpoons Ag^+ + e^-$. Elle se dissout progressivement, réalimentant le bain en ions $Ag^+$ : c'est une anode soluble, exactement le rôle décrit au rung 5.
-
-**3) Calcule la quantité d'électricité $Q$ débitée par le générateur, la quantité de matière d'électrons échangés $n(e^-)$, puis la masse d'argent déposée sur le couvert pendant les 20 minutes.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* même démarche qu'au rung 4 - convertir $I$ et $\Delta t$ en charge, la charge en moles d'électrons, puis les électrons en moles d'argent via la stœchiométrie de la demi-équation de la question 1 (un seul électron par atome, ici, contrairement au zinc ou au cuivre), et enfin en masse.
-
-$$\Delta t = 20\times 60 = 1200\ \text{s}$$
-
-$$Q = I\,\Delta t = 0{,}500 \times 1200 = 600\ \text{C}$$
-
-$$n(e^-) = \frac{Q}{F} = \frac{600}{9{,}65\times10^{4}} \approx 6{,}22\times10^{-3}\ \text{mol}$$
-
-Comme $Ag^+ + e^- \rightleftharpoons Ag$ n'échange qu'un seul électron par atome d'argent : $n(Ag) = n(e^-) \approx 6{,}22\times10^{-3}\ \text{mol}$.
-
-$$m(Ag) = n(Ag) \times M(Ag) \approx 6{,}22\times10^{-3} \times 108 \approx 0{,}67\ \text{g}$$
-
-**4) Un camarade se demande si un générateur réglé sur $U = 0{,}8\ \text{V}$ suffirait à réaliser ce dépôt, sachant que la cellule considérée possède, comme toute pile, une force électromotrice propre $E \approx 1{,}2\ \text{V}$ dans le sens opposé à celui recherché. Justifie ta réponse à partir du rung 3.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on compare la tension imposée au seuil fixé par la f.é.m. propre de la cellule (rung 3), pour juger si le sens forcé l'emporte réellement.
-
-Non. Il faudrait une tension imposée supérieure, en valeur absolue, à la force électromotrice propre de la cellule ($1{,}2\ \text{V}$) pour véritablement inverser le sens et provoquer le dépôt. À $0{,}8\ \text{V}$, le générateur ne fait qu'affaiblir partiellement la tendance spontanée de la cellule, sans l'inverser : aucun dépôt net d'argent ne se formerait sur le couvert.
-
-### À toi
-
-**Variation 1.** Une usine veut zinguer (recouvrir de zinc) des pièces d'acier par électrolyse, en utilisant une anode de zinc massif et un bain contenant des ions $Zn^{2+}$. Un générateur impose un courant constant $I = 2{,}0\ \text{A}$ pendant $\Delta t = 45\ \text{min}$. Identifie l'anode et la cathode de ce montage avec leur polarité, écris les deux demi-équations électroniques mises en jeu, puis calcule la masse de zinc déposée sur les pièces d'acier (donnée : $M(Zn) = 65{,}4\ \text{g/mol}$).
-
-**Variation 2.** Un camarade affirme : « Dans une cellule d'électrolyse, comme dans une pile, l'anode est toujours la borne négative, puisque c'est le siège de l'oxydation. » Explique pourquoi ce raisonnement est faux, en t'appuyant sur le mécanisme du rung 2 (ce qui impose la polarité dans chaque cas, et pourquoi cette cause change de sens entre une pile et une électrolyse).
+[[exercise:r-variation]]

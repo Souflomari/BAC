@@ -1,0 +1,357 @@
+notion: electrolyse
+skill_code: pc_electrolyse
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — electrolyse)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict          (in R0)     — COMMIT gate: turns the rhetorical
+#                                         "prends position" of the accroche into
+#                                         a real MCQ commit before the reveal.
+#                                         Probes sens-force-vs-spontane.
+#   cp-forcee-vs-spontanee (after R1)  — rupture gate: transformation FORCÉE vs
+#                                         spontanée (le générateur impose le sens
+#                                         inverse, il n'accélère pas le spontané).
+#   cp-electrolyse-vs-pile (after R1)  — rupture gate: électrolyse vs PILE — une
+#                                         cellule d'électrolyse CONSOMME de
+#                                         l'énergie, elle n'en produit pas.
+#   cp-anode-cathode       (after R2)  — rupture gate: nommer anode/cathode et
+#                                         la polarité imposée (anode = borne +,
+#                                         inverse de la pile).
+#   cp-faraday             (after R4)  — rupture gate: Q = I·Δt = n·F, avec la
+#                                         stœchiométrie électronique correcte.
+#
+# Clone note: cp-forcee-vs-spontanee clones ELECTROLYSE-9's stem,
+# cp-electrolyse-vs-pile clones ELECTROLYSE-3's, cp-anode-cathode clones
+# ELECTROLYSE-11's, cp-faraday clones ELECTROLYSE-6's. Distractors are curated
+# so EVERY distractor carries a named misconception tag. cp-r0-predict is an
+# original commit item (not in the end bank). No end-bank tally is adjusted —
+# inline surfacing does not double-count.
+#
+# Boundary guard: 2ème Bac PC, électrolyse (transformation forcée). Vocabulaire
+# anode/cathode inchangé (anode = oxydation, cathode = réduction) ; polarité
+# INVERSÉE par rapport à la pile (anode = borne +) ; seuil de tension à franchir
+# (U > E propre) ; loi de Faraday Q = I·Δt = n(e⁻)·F. Pas de potentiels
+# standard, pas de cinétique électrochimique, pas de surtension.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the accroche's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the reveal. Probes sens-force-vs-spontane.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_electrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_electrolyse, hook_commit]
+    primary_misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On reprend le montage de l'accroche : la pile Daniell (lame de zinc, lame
+      de cuivre) dont on a remplacé l'ampèremètre par un générateur réglable,
+      branché **en opposition** au sens spontané et réglé sur une tension
+      suffisamment élevée. **Que va-t-il se passer sur les deux lames ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le sens s'inverse complètement : la lame de zinc grossit (dépôt de zinc), tandis que la lame de cuivre se dissout — l'exact inverse du fonctionnement spontané."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni « rien de notable », ni un simple
+          ralentissement. La vraie question commence maintenant : **comment** un
+          générateur peut-il imposer un sens que la chimie interdisait, et
+          **jusqu'où** faut-il pousser pour y arriver ? C'est toute la leçon.
+
+      - id: B
+        text: "Rien ne s'inverse : le générateur ne fait qu'accompagner le sens spontané, le zinc continue de se dissoudre et le cuivre de se déposer, simplement un peu plus vite."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
+        feedback: |
+          Modèle détecté : « le générateur pousse dans le même sens que la
+          chimie ». C'est l'inverse : il est branché **en opposition** au sens
+          spontané. Regarde l'observation juste en dessous — le zinc grossit au
+          lieu de se dissoudre. Forcer, ce n'est pas accélérer le sens naturel,
+          c'est imposer le sens contraire.
+
+      - id: C
+        text: "Le courant spontané est seulement freiné, dans le même sens ; aucun générateur, aussi puissant soit-il, ne peut inverser le sens d'une réaction chimique."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
+        feedback: |
+          Modèle détecté : « on ne peut que freiner, jamais inverser ». Un
+          générateur trop faible ne fait effectivement que freiner (tu le verras
+          au rung 3) — mais au-delà d'un seuil de tension, il inverse bel et bien
+          le sens. C'est précisément ce qu'on observe ici : le zinc se dépose.
+
+      - id: D
+        text: "Les deux sens se produisent à parts égales : le zinc se dépose et se dissout en même temps, tant qu'on n'augmente pas encore davantage la tension."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
+        feedback: |
+          Modèle détecté : une « demi-inversion » où les deux sens coexisteraient.
+          Il n'y en a pas : soit la tension imposée reste sous le seuil et le sens
+          spontané l'emporte (freiné), soit elle le dépasse et le sens forcé prend
+          totalement le relais. C'est un seuil net, pas un curseur continu.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-forcee-vs-spontanee | placed AFTER R1
+  #        Rupture gate: transformation FORCÉE vs spontanée. Clone of
+  #        ELECTROLYSE-9's stem. Probes sens-force-vs-spontane.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-forcee-vs-spontanee
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_electrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_electrolyse]
+    primary_misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
+    item_source: clone_of_ELECTROLYSE-9
+    lesson_placement: after_R1
+
+    stem: |
+      Tu viens de voir le mécanisme du forçage. De façon générale, que se
+      passe-t-il lorsqu'on **force** une transformation par électrolyse ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le générateur impose à la réaction d'évoluer dans le sens inverse de son sens spontané — celui que $Q_{r,i}$ face à $K$ interdirait si le système était livré à lui-même."
+        correct: true
+        feedback: |
+          Exact. Le générateur, source extérieure, impose le sens que la chimie
+          seule refuserait. C'est la définition même de la transformation forcée
+          — l'exact contraire d'une pile, où c'est $Q_{r,i}$ face à $K$ qui
+          décide.
+
+      - id: B
+        text: "Le générateur ne fait qu'accélérer la réaction dans son sens spontané, comme un catalyseur, sans jamais en changer le sens ni la nature."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
+        feedback: |
+          Modèle détecté : « forcer = accélérer le sens naturel ». Non : un
+          catalyseur accélère le sens spontané ; un générateur d'électrolyse
+          impose le sens **inverse**, celui que la chimie seule n'emprunterait
+          jamais. Ce n'est pas la vitesse qui change, c'est le sens.
+
+      - id: C
+        text: "Le générateur laisse coexister, à parts égales dans la cellule, le sens spontané et son inverse, qui se déroulent alors tous les deux en même temps sur chaque électrode, sans vainqueur."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
+        feedback: |
+          Modèle détecté : une coexistence des deux sens. Il n'y a pas
+          d'oscillation ni de partage : une fois le seuil de tension dépassé,
+          c'est le seul sens forcé (non spontané) qui se produit aux électrodes.
+
+      - id: D
+        text: "Le générateur ne fait que stocker temporairement de l'énergie que la cellule lui restituera ensuite, exactement comme une pile rechargeable qui se décharge."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: |
+          Modèle détecté : la cellule « rend » l'énergie, comme une source. Non :
+          l'électrolyse **consomme** l'énergie du générateur pour forcer la
+          réaction ; l'énergie se retrouve stockée sous forme chimique dans les
+          produits, elle n'est pas restituée au générateur.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-electrolyse-vs-pile | placed AFTER R1
+  #        Rupture gate: électrolyse vs PILE — une cellule d'électrolyse
+  #        CONSOMME de l'énergie. Clone of ELECTROLYSE-3's stem.
+  #        Probes electrolyse-source-energie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-electrolyse-vs-pile
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_electrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_electrolyse]
+    primary_misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+    item_source: clone_of_ELECTROLYSE-3
+    lesson_placement: after_R1
+
+    stem: |
+      Un courant circule dans une cellule d'électrolyse en fonctionnement.
+      Est-elle pour autant une **source** d'énergie électrique, comme une pile ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Non : elle consomme l'énergie fournie par le générateur pour forcer une réaction non spontanée ; elle n'en produit pas."
+        correct: true
+        feedback: |
+          Exact. La pile est la source (la réaction spontanée libère l'énergie) ;
+          la cellule d'électrolyse est un **consommateur** — le générateur lui
+          fournit l'énergie, qui se retrouve stockée sous forme chimique dans les
+          produits formés.
+
+      - id: B
+        text: "Oui : puisqu'un courant électrique circule dans tout le circuit, la cellule produit bien de l'énergie électrique, exactement comme une pile en fonctionnement."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: |
+          Modèle détecté : « un courant circule, donc ça produit de l'énergie ».
+          Le courant est ici **imposé de l'extérieur** par le générateur, qui
+          fournit l'énergie. Un courant qui circule ne fait pas d'un dispositif
+          une source ; c'est l'origine de l'énergie qui tranche.
+
+      - id: C
+        text: "Oui, dans certaines applications comme l'électrolyse de l'eau, où les gaz formés libèrent de l'énergie."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: |
+          Modèle détecté : les gaz « rendent » de l'énergie. Le dihydrogène stocke
+          bien de l'énergie chimique — mais elle vient de l'énergie électrique que
+          le générateur a fournie pour le fabriquer. L'électrolyse la stocke, elle
+          ne la crée pas.
+
+      - id: D
+        text: "Cela dépend du sens du courant que le générateur choisit d'imposer à la cellule."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
+        feedback: |
+          Modèle détecté : « ça dépend du sens ». Non : par définition,
+          l'électrolyse force le sens **non spontané**, ce qui exige toujours un
+          apport net d'énergie du générateur, quel que soit le sens précis du
+          courant imposé.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-anode-cathode | placed AFTER R2
+  #        Rupture gate: nommer anode/cathode et la polarité imposée.
+  #        Clone of ELECTROLYSE-11's stem. Probes polarite-comme-pile.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-anode-cathode
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_electrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_electrolyse]
+    primary_misconception: mc.physics.pc_electrolyse.polarite-comme-pile
+    item_source: clone_of_ELECTROLYSE-11
+    lesson_placement: after_R2
+
+    stem: |
+      Dans une cellule d'électrolyse, on observe à l'une des électrodes un
+      dégagement de dichlore selon $2\,Cl^- \rightarrow Cl_2 + 2\,e^-$. Comment
+      se nomme cette électrode, et à quelle borne du générateur est-elle reliée ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "C'est l'anode, reliée à la borne $+$."
+        correct: true
+        feedback: |
+          Exact. Les ions chlorure perdent des électrons : c'est une oxydation,
+          donc l'anode. Et en électrolyse, c'est la borne $+$ du générateur qui
+          arrache ces électrons — l'anode y est reliée. Le nom vient du mécanisme,
+          la polarité vient du générateur.
+
+      - id: B
+        text: "C'est la cathode, reliée à la borne $+$."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
+        feedback: |
+          Le nom est faux. Une **oxydation** (perte d'électrons) se produit ici :
+          l'électrode où a lieu l'oxydation s'appelle toujours l'anode, jamais la
+          cathode — dans une pile comme dans une électrolyse. La borne $+$, elle,
+          est correctement identifiée.
+
+      - id: C
+        text: "C'est l'anode, reliée à la borne $-$."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
+        feedback: |
+          Le nom est juste, mais la polarité est celle d'une pile. Tu transportes
+          la règle « anode = borne − » : elle vaut pour la pile, pas ici. En
+          électrolyse, c'est le générateur qui impose la polarité — sa borne $+$
+          arrache les électrons de l'anode.
+
+      - id: D
+        text: "C'est la cathode, reliée à la borne $-$."
+        correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
+        feedback: |
+          Double transfert depuis la pile : le nom (une oxydation, c'est l'anode,
+          pas la cathode) et la polarité (en électrolyse, l'anode est la borne $+$,
+          pas la borne $-$). Les deux règles de la pile ont été recopiées telles
+          quelles — or l'électrolyse inverse la polarité.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-faraday | placed AFTER R4
+  #        Rupture gate: Q = I·Δt = n·F, stœchiométrie électronique
+  #        correcte. Clone of ELECTROLYSE-6's stem.
+  #        Probes faraday-stoechiometrie-electronique.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-faraday
+    rung: "R4"
+    habilete: application
+    skill_code: pc_electrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_electrolyse]
+    primary_misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+    item_source: clone_of_ELECTROLYSE-6
+    lesson_placement: after_R4
+
+    stem: |
+      Lors de l'électrolyse d'une solution de sulfate de cuivre(II) avec des
+      électrodes inertes, un courant constant $I = 0{,}25\ \text{A}$ circule
+      pendant $\Delta t = 40\ \text{min}$. La réduction
+      $Cu^{2+} + 2\,e^- \rightarrow Cu$ se produit à la cathode. On donne
+      $F \approx 9{,}65\times10^{4}\ \text{C.mol}^{-1}$ et
+      $M(Cu) = 63{,}5\ \text{g.mol}^{-1}$. Quelle masse de cuivre se dépose ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\approx 0{,}20\\ \\text{g}$"
+        correct: true
+        feedback: |
+          Exact. $Q = I\,\Delta t = 0{,}25 \times 2400 = 600\ \text{C}$, donc
+          $n(e^-) = Q/F \approx 6{,}22\times10^{-3}\ \text{mol}$. Comme
+          $Cu^{2+} + 2\,e^- \rightarrow Cu$ échange 2 électrons par atome,
+          $n(Cu) = n(e^-)/2$, d'où $m(Cu) \approx 0{,}20\ \text{g}$.
+
+      - id: B
+        text: "$\\approx 0{,}40\\ \\text{g}$"
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+        feedback: |
+          Tu as oublié de diviser par 2. La demi-équation
+          $Cu^{2+} + 2\,e^- \rightarrow Cu$ dit que chaque atome de cuivre déposé
+          consomme **deux** électrons : $n(Cu) = n(e^-)/2$, pas $n(e^-)$.
+
+      - id: C
+        text: "$\\approx 3{,}3\\times10^{-3}\\ \\text{g}$"
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
+        feedback: |
+          Oubli d'unité : il faut convertir $\Delta t$ en secondes
+          ($40\ \text{min} = 2400\ \text{s}$) avant de calculer
+          $Q = I\,\Delta t$. Garder $\Delta t = 40$ mélange les minutes avec des
+          ampères et des secondes.
+
+      - id: D
+        text: "$\\approx 0{,}79\\ \\text{g}$"
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+        feedback: |
+          Tu as **multiplié** par 2 au lieu de diviser. Chaque atome de cuivre
+          consomme deux électrons, donc il se dépose deux fois **moins** de moles
+          de cuivre que d'électrons : $n(Cu) = n(e^-)/2$.
