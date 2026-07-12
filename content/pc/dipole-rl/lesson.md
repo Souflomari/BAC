@@ -10,6 +10,8 @@ Maintenant, on remplace la résistance par une bobine — un simple fil enroulé
 
 Avant de lire la suite, engage-toi vraiment : à ton avis, la lampe atteint-elle son éclat maximal **instantanément**, exactement comme avec la résistance ? Ou bien se passe-t-il quelque chose de différent ? Prends position, en une phrase, avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce qu'on observe réellement, si on filme au ralenti ou si on relève le courant à l'oscilloscope : la lampe **ne s'allume pas d'un coup**. Elle met un court instant — quelques millisecondes, parfois plus selon la bobine — à atteindre son éclat final. Le courant grimpe progressivement depuis zéro jusqu'à sa valeur de régime permanent, au lieu de sauter directement à cette valeur.
 
 Si tu avais prédit un allumage instantané comme pour la résistance seule, ta prédiction et la réalité se contredisent — et c'est précisément cet écart qu'on va comprendre. Si tu avais deviné juste, la vraie question commence maintenant : **pourquoi la bobine retarde-t-elle l'établissement du courant, alors que la résistance ne le retarde pas** ?
@@ -58,6 +60,10 @@ Revenons à la question posée en ouverture : pourquoi le courant ne peut-il pas
 Imagine que ce saut instantané se produise réellement : à l'instant $t = 0$, le courant passerait de $0$ à une valeur finale non nulle en un temps nul. Une variation de courant en un temps nul, c'est une vitesse de variation $\dfrac{di}{dt}$ **infinie** à cet instant. Or la tension aux bornes de la bobine contient le terme $L\dfrac{di}{dt}$ — qui deviendrait donc infini lui aussi. Un générateur réel, de force électromotrice finie $E$, ne peut pas fournir une tension infinie à un dipôle du circuit.
 
 Le saut instantané est donc physiquement impossible : il exigerait une tension que rien dans le circuit ne peut produire. Le courant qui traverse une bobine ne peut varier que **continûment** — jamais par un saut brusque. C'est exactement pourquoi la lampe de l'accroche s'allume progressivement : le courant grimpe, il ne saute pas.
+
+Vérifie ta compréhension de la continuité du courant.
+
+[[checkpoint:cp-r1-i-continuite]]
 
 ---
 
@@ -155,6 +161,14 @@ $$i(\tau) = I_{max}\left(1 - e^{-1}\right) \approx 0{,}1 \times 0{,}632 \approx 
 
 On garde ces valeurs — $R = 60\ \Omega$, $L = 0{,}3\ \text{H}$, $I_{max} = 100\ \text{mA}$, $\tau = 5\ \text{ms}$ — elles reviendront dans les rungs suivants.
 
+Vérifie d'abord que tu distingues bien l'instant de la fermeture du régime permanent.
+
+[[checkpoint:cp-r2-etablissement-permanent]]
+
+Puis assure-toi du rôle de la résistance interne $r$ de la bobine.
+
+[[checkpoint:cp-r2-role-r]]
+
 ---
 
 ## R3 — La constante de temps $\tau = L/R$
@@ -195,6 +209,10 @@ On reprend le circuit de R2 : $R = 60\ \Omega$, $L = 0{,}3\ \text{H}$, donc $\ta
 Par la méthode des 63 % : à $t = 5\ \text{ms}$, on doit lire $i \approx 0{,}63 \times 100 = 63\ \text{mA}$ sur l'oscillogramme — cohérent avec le calcul exact fait en R2 ($\approx 63\ \text{mA}$).
 
 Le régime permanent est pratiquement atteint à $t \approx 5\tau = 25\ \text{ms}$.
+
+Vérifie ta compréhension de la constante de temps.
+
+[[checkpoint:cp-r3-tau]]
 
 ---
 
@@ -248,48 +266,14 @@ Cette énergie reste emmagasinée dans la bobine tant que le courant de $100\ \t
 - $\tau$ est une durée ($\text{H}/\Omega = \text{s}$) ; régime permanent atteint pour $t \gtrsim 5\tau$.
 - Énergie emmagasinée : $E_L = \frac{1}{2}Li^2$.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On réalise le montage suivant : un générateur idéal de f.é.m. $E = 12\ \text{V}$, un interrupteur $K$, un résistor $R_0 = 90\ \Omega$ et une bobine d'inductance $L$ et de résistance interne $r = 10\ \Omega$, tous en série. On ferme $K$ à $t = 0$ et on enregistre $i(t)$ à l'oscilloscope. La courbe montre un courant qui croît de $0$ vers une asymptote horizontale $I_{max} = 120\ \text{mA}$, et la tangente à l'origine coupe cette asymptote à $t = 4\ \text{ms}$.
+Ce qui suit est un exercice national **vérifié** (session normale 2020) : trois questions courtes sur la réponse d'un dipôle RL à un échelon de tension, dans le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-[[figure:oscillogramme-exercice]]
+[[exercise:r-bac]]
 
-**1) Vérifier la valeur de $I_{max}$ lue sur la courbe à partir des données du circuit.**
+### Une variation pour ne pas mémoriser
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* $I_{max}$ correspond au régime permanent, là où $\dfrac{di}{dt} = 0$ — on repart donc de l'équation différentielle en y annulant ce terme, plutôt que de deviner une formule.
+Même structure profonde, habillage et chiffres différents — pour que tu reconnaisses la procédure au lieu de recopier la solution du sujet.
 
-En régime permanent, $L\dfrac{di}{dt} = 0$, donc l'équation $L\dfrac{di}{dt} + Ri = E$ se réduit à $Ri_{max} = E$, soit $I_{max} = E/R$. La résistance totale du circuit est $R = R_0 + r = 90 + 10 = 100\ \Omega$. Donc :
-
-$$I_{max} = \frac{E}{R} = \frac{12}{100} = 0{,}12\ \text{A} = 120\ \text{mA}$$
-
-C'est cohérent avec la valeur lue sur la courbe.
-
-**2) En déduire la valeur de l'inductance $L$ de la bobine.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la tangente à l'origine coupe l'asymptote en $t = \tau$ — c'est la définition même de cette méthode de lecture (R3). On lit donc directement $\tau = 4\ \text{ms}$, puis on en tire $L$ à partir de $\tau = L/R$.
-
-$$\tau = 4\ \text{ms} = 4\times10^{-3}\ \text{s}$$
-
-$$L = \tau \times R = 4\times10^{-3} \times 100 = 0{,}4\ \text{H}$$
-
-**3) Calculer le courant $i$ à l'instant $t = 4\ \text{ms}$, puis à $t = 8\ \text{ms}$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* $t = 4\ \text{ms}$ est exactement $\tau$ : on peut utiliser directement le facteur $1-e^{-1}\approx 0{,}63$ sans repartir de zéro. Pour $t = 8\ \text{ms} = 2\tau$, on utilise $1-e^{-2}\approx 0{,}865$.
-
-$$i(\tau) = I_{max}(1-e^{-1}) \approx 0{,}12 \times 0{,}632 \approx 0{,}0758\ \text{A} \approx 75{,}8\ \text{mA}$$
-
-$$i(2\tau) = I_{max}(1-e^{-2}) \approx 0{,}12 \times 0{,}865 \approx 0{,}104\ \text{A} \approx 104\ \text{mA}$$
-
-**4) Calculer l'énergie emmagasinée dans la bobine en régime permanent.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* « régime permanent » signifie $i = I_{max}$ — on applique $E_L = \frac{1}{2}Li^2$ avec cette valeur finale, pas avec une valeur instantanée de la phase transitoire.
-
-$$E_L = \frac{1}{2}L I_{max}^2 = \frac{1}{2} \times 0{,}4 \times (0{,}12)^2$$
-
-$$E_L = \frac{1}{2} \times 0{,}4 \times 0{,}0144 = 2{,}88\times10^{-3}\ \text{J} \approx 2{,}9\ \text{mJ}$$
-
-### À toi
-
-**Variation 1.** Un circuit RL a pour données $E = 9\ \text{V}$, $R_0 = 40\ \Omega$, $r = 5\ \Omega$, $L = 0{,}225\ \text{H}$. Calcule $I_{max}$, $\tau$, puis l'énergie emmagasinée en régime permanent. Vérifie ensuite, par le calcul, que $i(\tau) \approx 0{,}63 \times I_{max}$.
-
-**Variation 2.** On double la résistance totale $R$ d'un circuit RL, sans changer ni $L$ ni $E$. Sans calculer de valeurs numériques, explique, à partir des formules $\tau = L/R$ et $I_{max} = E/R$, comment évoluent la constante de temps et le courant final, puis donne le sens physique de chaque changement : reviens à la lampe de l'accroche — atteint-elle son éclat final plus vite ou plus lentement, avec un éclat plus fort ou plus faible ?
+[[exercise:r-variation]]

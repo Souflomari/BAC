@@ -1,0 +1,379 @@
+notion: dipole-rl
+skill_code: pc_dipole_rl
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — dipole-rl)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict              (in R0)     — COMMIT gate: turns the rhetorical
+#                                            "prends position" into a real MCQ
+#                                            commit before the reveal. Probes
+#                                            courant-saute-instantane.
+#   cp-r1-i-continuite         (after R1)  — rupture gate: CONTINUITÉ de i dans
+#                                            une bobine ; i(0+) = 0.
+#   cp-r2-etablissement-permanent (after R2) — rupture gate: ÉTABLISSEMENT vs
+#                                            RÉGIME PERMANENT ; I_max = E/(R+r),
+#                                            indépendant de L.
+#   cp-r2-role-r               (after R2)  — rupture gate: RÔLE de la résistance
+#                                            interne r ; u_L = r·i en permanent.
+#   cp-r3-tau                  (after R3)  — rupture gate: τ = L/R (expression,
+#                                            unité ET sens).
+#
+# Clone note: cp-r1-i-continuite clones RL-6/RL-1's stem, cp-r2-etablissement-
+# permanent clones RL-12's, cp-r2-role-r clones RL-2's, cp-r3-tau clones RL-3's.
+# Distractors are curated so EVERY distractor carries a named misconception tag
+# (stricter than the exemplar — no null tags). cp-r0-predict is an original
+# commit item (not in the end bank). No end-bank tally is adjusted.
+#
+# Boundary guard: pure dipôle RL (établissement du courant sous échelon). Pas
+# de condensateur, pas d'oscillations, pas de régime alternatif. Courant i
+# CONTINU à travers la bobine (i(0+)=0) ; τ = L/R lue au graphe (tangente ou
+# 63 %) ou calculée ; I_max = E/(R+r) indépendant de L ; énergie E_L = ½Li².
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the slow-motion reveal. Probes:
+  #        courant-saute-instantane (the "allumage instantané" prediction).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_dipole_rl
+    tags: [checkpoint, formative, misconception_driven, pc_dipole_rl, hook_commit]
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Tu fermes l'interrupteur d'un circuit série contenant un générateur, une
+      lampe et une bobine. **Que fait l'éclat de la lampe juste après la
+      fermeture ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          L'éclat est maximal instantanément, exactement comme avec une résistance seule à la place de la bobine.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+        feedback: |
+          Modèle détecté : « la bobine ne change rien, l'allumage est
+          instantané ». C'est la prédiction la plus fréquente — et la réalité
+          va dans l'autre sens. Regarde la trace au ralenti juste en dessous :
+          l'éclat **grimpe progressivement**. Le courant dans une bobine est
+          continu (un saut imposerait $L\frac{di}{dt}$ infinie) : il part de
+          $0$ et s'établit peu à peu, il ne saute pas.
+
+      - id: B
+        text: |
+          L'éclat croît progressivement depuis zéro jusqu'à son maximum : le courant met un court instant à s'établir.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni saut, ni blocage. La vraie
+          question commence maintenant : **pourquoi** la bobine retarde-t-elle
+          l'établissement du courant, et **qu'est-ce qui fixe la durée** de ce
+          retard ? C'est toute la leçon.
+
+      - id: C
+        text: |
+          L'éclat reste nul : la bobine bloque le passage du courant, la lampe ne s'allume pas.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: |
+          Modèle détecté : « la bobine bloque le courant, comme un interrupteur
+          ouvert ». Non : elle ne bloque pas, elle **retarde**. Le courant
+          s'établit bien, il atteint sa valeur finale $E/(R+r)$ ; la bobine
+          s'oppose seulement aux variations rapides du courant, pas à son
+          passage.
+
+      - id: D
+        text: |
+          L'éclat monte, dépasse brièvement son maximum, puis oscille avant de se stabiliser.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: |
+          Modèle détecté : un dépassement, comme une oscillation. Il n'y en a
+          pas dans un dipôle RL : le courant croît de façon monotone vers
+          $I_{max} = E/(R+r)$ sans jamais le dépasser. Le dépassement et les
+          oscillations sont réservés aux circuits avec condensateur ET bobine
+          (RLC).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-i-continuite | placed AFTER R1
+  #        Rupture gate: CONTINUITÉ du courant dans une bobine, i(0+)=0.
+  #        Clone of RL-6/RL-1's stem. Probes courant-saute-instantane.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-i-continuite
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_dipole_rl
+    tags: [checkpoint, formative, misconception_driven, pc_dipole_rl]
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+    item_source: clone_of_RL-6
+    lesson_placement: after_R1
+
+    stem: |
+      On ferme l'interrupteur à $t = 0$ (le circuit était ouvert avant). Que
+      vaut l'intensité $i(0^+)$ juste après la fermeture, et que fait-elle
+      ensuite ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $i(0^+) = 0$ : le courant dans une bobine est continu, il repart de $0$ (circuit ouvert), puis grimpe.
+        correct: true
+        feedback: |
+          Exact. $i(0^-) = 0$ (circuit ouvert), et la continuité du courant
+          dans une bobine impose $i(0^+) = i(0^-) = 0$. Un saut de $i$
+          exigerait $L\frac{di}{dt}$ infinie, donc une tension infinie que le
+          générateur ne peut pas fournir. Le courant part de zéro, puis
+          s'établit progressivement.
+
+      - id: B
+        text: |
+          $i(0^+) = E/(R+r)$ : le courant s'installe d'emblée à sa valeur de régime permanent.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+        feedback: |
+          Modèle détecté : « établissement instantané ». Impossible : le
+          courant dans une bobine ne peut pas sauter. À $t = 0^+$ il vaut
+          encore $0$ (continuité) ; c'est seulement après quelques $\tau$ qu'il
+          approche $E/(R+r)$.
+
+      - id: C
+        text: |
+          $i(0^+) = 0$, et il le reste : la bobine bloque le courant comme un interrupteur ouvert.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: |
+          La valeur $0$ est juste, mais le modèle est faux : la bobine ne
+          **bloque** pas le courant. $i(0^+) = 0$ par continuité, puis le
+          courant **grimpe** vers $E/(R+r)$. La bobine retarde l'établissement,
+          elle ne l'empêche pas.
+
+      - id: D
+        text: |
+          $i(0^+) = E/(R+r)$, puis le courant redescend légèrement : il dépasse d'abord sa valeur finale avant de s'y fixer.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: |
+          Modèle détecté : un dépassement. La solution
+          $i(t) = I_{max}\left(1 - e^{-t/\tau}\right)$ croît de façon monotone
+          de $0$ vers $I_{max} = E/(R+r)$, sans jamais le franchir. Et elle part
+          de $0$, pas de $E/(R+r)$ : le courant est continu à la fermeture.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-etablissement-permanent | placed AFTER R2
+  #        Rupture gate: ÉTABLISSEMENT vs RÉGIME PERMANENT — I_max = E/(R+r),
+  #        indépendant de L, atteint seulement après quelques τ.
+  #        Clone of RL-12's stem. Probes imax-etablissement-mal-compris.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-etablissement-permanent
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_dipole_rl
+    tags: [checkpoint, formative, misconception_driven, pc_dipole_rl]
+    primary_misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+    item_source: clone_of_RL-12
+    lesson_placement: after_R2
+
+    stem: |
+      Une fois le **régime permanent** atteint dans ce dipôle RL (échelon $E$,
+      résistance totale $R + r$), que vaut l'intensité $I_{max}$, et de quoi
+      dépend-elle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $I_{max} = E/(R+r)$ : en régime permanent le terme inductif s'annule ($di/dt = 0$) ; $I_{max}$ ne dépend pas de $L$.
+        correct: true
+        feedback: |
+          Exact. En régime permanent $\frac{di}{dt} = 0$, donc
+          $L\frac{di}{dt} = 0$ : l'équation se réduit à $(R+r)\,I_{max} = E$,
+          soit $I_{max} = E/(R+r)$. $L$ ne fixe que la **durée** de
+          l'établissement (via $\tau = L/R$), jamais la **valeur** finale.
+
+      - id: B
+        text: |
+          $I_{max}$ dépend aussi de $L$ : sans connaître l'inductance, on ne peut pas la calculer.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: |
+          Modèle détecté : « $L$ fixe le courant final ». Non : en régime
+          permanent le terme en $L$ disparaît ($di/dt = 0$). $I_{max} = E/(R+r)$
+          ne dépend que de $E$ et des résistances. $L$ agit sur le temps
+          d'établissement, pas sur la valeur finale.
+
+      - id: C
+        text: |
+          $I_{max} = E/R$ : seule la résistance $R$ du conducteur ohmique compte, la résistance interne $r$ est négligée.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+        feedback: |
+          Modèle détecté : on oublie la résistance interne $r$ de la bobine.
+          La résistance totale du circuit est $R + r$, pas $R$ seul :
+          $I_{max} = E/(R+r)$. Les deux résistances se somment, elles jouent le
+          même rôle dans la loi d'Ohm.
+
+      - id: D
+        text: |
+          $I_{max} = E/(R+r)$, valeur atteinte dès la fermeture puisque le courant s'établit instantanément.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+        feedback: |
+          La valeur $E/(R+r)$ est correcte, mais pas l'instant : le courant ne
+          l'atteint **pas** dès la fermeture. À $t = 0^+$, $i = 0$ (continuité) ;
+          $I_{max}$ n'est approché qu'après quelques $\tau$. Ne confonds pas
+          l'instant de la fermeture et le régime permanent.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r2-role-r | placed AFTER R2
+  #        Rupture gate: RÔLE de la résistance interne r — en régime
+  #        permanent u_L = r·i (la bobine n'est pas un fil parfait).
+  #        Clone of RL-2's stem. Probes oubli-resistance-interne.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-role-r
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_dipole_rl
+    tags: [checkpoint, formative, misconception_driven, pc_dipole_rl]
+    primary_misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+    item_source: clone_of_RL-2
+    lesson_placement: after_R2
+
+    stem: |
+      En régime permanent (courant constant), que vaut la tension $u_L$ aux
+      bornes de la bobine $(r, L)$, et quel rôle y joue sa résistance interne
+      $r$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $u_L = r\,i$ : le terme $L\,di/dt$ s'annule, il ne reste que la résistance interne $r$.
+        correct: true
+        feedback: |
+          Exact. En régime permanent $\frac{di}{dt} = 0$, donc
+          $u_L = r\,i + L\frac{di}{dt} = r\,i$ : la bobine se comporte comme un
+          simple conducteur ohmique de résistance $r$. C'est ce palier non nul
+          de $u_L$ (avec le palier de $i$) qui permet de mesurer $r$.
+
+      - id: B
+        text: |
+          $u_L = 0$ : une bobine se comporte comme un fil parfait, aucune tension ne subsiste à ses bornes.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+        feedback: |
+          Modèle détecté : on oublie la résistance interne $r$. Une bobine
+          **réelle** n'est pas un fil parfait : en régime permanent il subsiste
+          $u_L = r\,i \neq 0$. C'est justement ce palier de $u_L$ qui donne
+          accès à $r$.
+
+      - id: C
+        text: |
+          $u_L = 0$ : puisque le courant ne varie plus, la bobine disparaît du circuit.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+        feedback: |
+          C'est seulement le terme **inductif** $L\frac{di}{dt}$ qui s'annule
+          quand le courant ne varie plus — pas toute la bobine. Sa résistance
+          interne $r$ reste, et $u_L = r\,i \neq 0$. La bobine ne disparaît pas,
+          elle se réduit à sa résistance $r$.
+
+      - id: D
+        text: |
+          $u_L = r\,i + L\,I_{max}$ : le terme inductif subsiste, avec le courant établi.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: |
+          Modèle détecté : le terme inductif s'écrit $L\frac{di}{dt}$, pas
+          $L\,i$. Et en régime permanent $\frac{di}{dt} = 0$, donc ce terme
+          **disparaît** : il ne peut pas subsister « avec le courant établi ».
+          Il reste $u_L = r\,i$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r3-tau | placed AFTER R3
+  #        Rupture gate: τ = L/R — son EXPRESSION/unité ET son SENS
+  #        (une durée caractéristique, pas l'instant où le courant "finit").
+  #        Clone of RL-3's stem. Probes tau-mauvais-groupement.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-tau
+    rung: "R3"
+    habilete: application_experimentale
+    skill_code: pc_dipole_rl
+    tags: [checkpoint, formative, misconception_driven, pc_dipole_rl, document_experimental]
+    primary_misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+    item_source: clone_of_RL-3
+    lesson_placement: after_R3
+
+    stem: |
+      Quelle est l'expression de la constante de temps $\tau$ d'un dipôle RL,
+      son unité, et que représente-t-elle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\tau = L/R$, en secondes ($\text{H}/\Omega = \text{s}$) : la durée caractéristique de l'établissement du courant.
+        correct: true
+        feedback: |
+          Exact. $\text{H}/\Omega = \text{s}$ : $L/R$ est bien un temps. Ce
+          n'est pas un instant où « ça s'arrête » (le courant ne finit jamais
+          tout à fait de s'établir), c'est l'échelle qui règle toute la
+          montée — $63\ \%$ de $I_{max}$ atteints en une constante de temps,
+          régime permanent vers $5\tau$.
+
+      - id: B
+        text: |
+          $\tau = R/L$, en secondes.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: |
+          Mauvais groupement. L'analyse dimensionnelle tranche : c'est
+          $L/R$ qui donne une seconde ($\text{H}/\Omega = \text{s}$) ; son
+          inverse $R/L$ a la dimension de l'inverse d'un temps
+          ($\text{s}^{-1}$), pas d'un temps.
+
+      - id: C
+        text: |
+          $\tau = RC$, comme pour le dipôle RC.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: |
+          C'est la constante de temps du dipôle **RC**, où le paramètre est une
+          capacité $C$. Le dipôle RL n'a pas de condensateur : sa constante de
+          temps fait intervenir l'inductance $L$, et vaut $\tau = L/R$.
+
+      - id: D
+        text: |
+          $\tau = L/R$, mais c'est l'instant précis où le courant atteint $I_{max}$ et cesse définitivement de croître.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
+        feedback: |
+          Le groupement est bon, le sens ne l'est pas. À $t = \tau$, le courant
+          n'a atteint que $63\ \%$ de $I_{max}$ — pas $I_{max}$. Le courant ne
+          cesse pas de croître à $\tau$ ; il continue, de plus en plus
+          lentement, et n'est « établi » qu'aux alentours de $5\tau$. $\tau$
+          est une échelle de temps, pas un instant d'arrêt.
