@@ -1,6 +1,42 @@
 notion: dipole-rl
 skill_code: pc_dipole_rl
-misconceptions: []
+
+# Misconception inventory (floor-backfill pass — mirrors the checkpoints.yaml
+# gold standard: courant-saute-instantane, bobine-nature-erronee,
+# imax-etablissement-mal-compris, oubli-resistance-interne,
+# tau-mauvais-groupement, lecture-tau-erronee are the six ids already used in
+# checkpoints.yaml; energie-lineaire-en-i is added here for the R4/R5 energy
+# items, which checkpoints.yaml does not probe. See coverage_summary at the
+# end of this file for honest per-misconception counts and floor_met.
+misconceptions:
+  - id: mc.physics.pc_dipole_rl.courant-saute-instantane
+    label: "« Le courant i saute instantanément à sa valeur finale à la fermeture (ou à zéro à l'ouverture) »"
+    description: "L'élève croit que i atteint E/(R+r) (ou 0) dès l'instant de commutation, sans montée (ou descente) progressive."
+    contradicts_principle: "i est continu à travers une bobine (un saut exigerait L·di/dt infinie, donc une tension infinie) : il part de i(0-) et s'établit continûment vers I_max = E/(R+r), jamais par un saut."
+  - id: mc.physics.pc_dipole_rl.bobine-nature-erronee
+    label: "« Modèle physique erroné de ce que fait une bobine (bloque le courant, le stocke comme une charge, l'amplifie, ou n'est définie que par sa forme/sa résistance) »"
+    description: "L'élève plaque sur la bobine un modèle emprunté à un autre dipôle (interrupteur ouvert, condensateur-réservoir, amplificateur) au lieu de la définir par u = ri + L·di/dt."
+    contradicts_principle: "La bobine ne bloque pas, ne stocke pas de charge et n'amplifie rien : elle s'oppose aux VARIATIONS du courant (auto-induction), retardant son établissement sans jamais l'empêcher ni le dépasser."
+  - id: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+    label: "« Confusion établissement / régime permanent : I_max dépend de L, ou dépend de E mais pas de R (ou l'inverse), ou il y a dépassement/oscillation »"
+    description: "L'élève ne distingue pas ce qui règle la VALEUR finale (E et la résistance totale) de ce qui règle la DURÉE pour l'atteindre (L, via τ), ou attend un comportement transitoire absent d'un RL pur."
+    contradicts_principle: "En régime permanent di/dt = 0, donc I_max = E/(R+r) : indépendant de L, proportionnel à E, inversement proportionnel à R+r. La montée est monotone, sans dépassement ni oscillation (propre au RLC)."
+  - id: mc.physics.pc_dipole_rl.oubli-resistance-interne
+    label: "« Oubli (ou mauvais traitement) de la résistance interne r de la bobine dans R_total, dans u_L, ou dans l'équation différentielle »"
+    description: "L'élève calcule comme si la bobine était un fil parfait (r=0), ou omet r (ou R_0) dans la résistance totale du circuit."
+    contradicts_principle: "La résistance totale est R = R_0 + r ; les deux résistances jouent le même rôle ohmique et se somment, y compris en régime permanent où u_L = ri ≠ 0."
+  - id: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+    label: "« Mauvaise expression/unité/dépendance de τ (R/L, RC, L/R en henry, τ indépendant de R ou de L…) »"
+    description: "L'élève ne retient pas le groupement L/R, se trompe d'unité, ou inverse le sens de la dépendance de τ en R ou en L."
+    contradicts_principle: "τ = L/R, homogène à un temps (H/Ω = s). τ croît avec L, décroît quand R augmente ; ni R/L, ni RC (constante du dipôle RC), ni une unité en henry."
+  - id: mc.physics.pc_dipole_rl.lecture-tau-erronee
+    label: "« τ interprété comme l'instant où le courant/la tension a fini de varier, plutôt que comme l'échelle de temps caractéristique »"
+    description: "L'élève place τ à l'instant où I_max (ou son palier) est atteint, confond la méthode des 63 % avec une demi-vie à 50 %, ou pense que τ dépend de la courbe lue (i(t) vs u_L(t))."
+    contradicts_principle: "À t=τ, seulement 63 % de I_max est atteint (1-e^{-1}) ; le régime permanent n'est que PRATIQUEMENT atteint vers 5τ. τ est une propriété du circuit (L/R), la même quelle que soit la grandeur (i ou u_L) qu'on lit pour la déterminer."
+  - id: mc.physics.pc_dipole_rl.energie-lineaire-en-i
+    label: "« Énergie de la bobine non quadratique en i (E_L = Li, ou confondue avec une puissance dissipée / une autre formule d'énergie) »"
+    description: "L'élève confond l'énergie magnétique stockée avec une expression linéaire en i, avec la puissance Joule dissipée, ou avec l'énergie d'un condensateur."
+    contradicts_principle: "E_L = ½Li² : la puissance reçue Li·di/dt est la dérivée de ½Li². Li n'est même pas homogène à une énergie ; ½ri² et ½Cu² sont d'autres grandeurs (puissance dissipée, énergie d'un condensateur)."
 
 items:
   - id: RL-1
@@ -8,6 +44,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
     stem: >
       À l'instant où on ferme l'interrupteur d'un circuit série (générateur idéal $E$,
       résistance totale $R$, bobine $(r, L)$), quelle est la valeur du courant $i$
@@ -20,6 +57,7 @@ items:
       - id: B
         text: "$i(0^+) = E/R$, comme si la bobine n'existait pas"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
         feedback: >
           Le courant à travers une bobine ne peut pas sauter instantanément : un
           saut exigerait une tension infinie aux bornes de la bobine
@@ -28,12 +66,14 @@ items:
       - id: C
         text: "$i(0^+) = E/r$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
         feedback: >
           Cette valeur ignore la résistance $R_0$ du reste du circuit, et surtout
           suppose à tort un établissement instantané du courant.
       - id: D
         text: "$i(0^+)$ est indéterminé, on ne peut rien en dire"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
         feedback: >
           Le courant est parfaitement déterminé : la continuité du courant dans
           une bobine impose $i(0^+) = i(0^-) = 0$, puisque le circuit était
@@ -55,6 +95,7 @@ items:
     difficulty_level: 2
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
     stem: >
       En régime permanent (courant $i$ constant, établi depuis longtemps) dans
       un circuit comportant une bobine $(r, L)$, que vaut la tension $u$ à ses
@@ -67,12 +108,14 @@ items:
       - id: B
         text: "$u = L\\,di/dt$ uniquement"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           Ce terme est nul en régime permanent, puisque le courant est
           constant : $di/dt = 0$.
       - id: C
         text: "$u = 0$ : une bobine ne laisse jamais paraître de tension en régime établi"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: >
           La bobine a une résistance interne $r$ non nulle : en régime permanent
           elle se comporte comme un résistor ordinaire, $u = ri$, pas comme un
@@ -80,6 +123,7 @@ items:
       - id: D
         text: "$u = ri + L\\,I_{max}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           $L$ ne se multiplie jamais directement par le courant : il se
           multiplie par $di/dt$, qui est nul en régime permanent. Ce choix
@@ -98,6 +142,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
     stem: >
       Quelle est l'expression correcte de la constante de temps d'un dipôle
       RL, et quelle est son unité ?
@@ -109,12 +154,14 @@ items:
       - id: B
         text: "$\\tau = R/L$, exprimée en secondes"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
           C'est l'inverse de la bonne formule ; $R/L$ a d'ailleurs la dimension
           de l'inverse d'un temps ($\text{s}^{-1}$), pas d'un temps.
       - id: C
         text: "$\\tau = RC$, comme pour le dipôle RC"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
           Cette formule vient du chapitre RC, où le paramètre est une capacité
           $C$, pas une inductance $L$. Le dipôle RL n'a pas de condensateur :
@@ -122,6 +169,7 @@ items:
       - id: D
         text: "$\\tau = L/R$, exprimée en henry"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
           Le henry est l'unité de l'inductance $L$, pas celle de $\tau$. Le
           rapport $L/R$ a la dimension d'un temps (la seconde), comme le
@@ -142,6 +190,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
     stem: >
       Quelle est l'expression correcte de l'énergie emmagasinée dans une
       bobine d'inductance $L$ parcourue par un courant $i$ ?
@@ -153,6 +202,7 @@ items:
       - id: B
         text: "$E_L = Li$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Cette expression n'est même pas homogène à une énergie. L'énergie
           stockée se retrouve en reconnaissant que la puissance reçue par la
@@ -161,6 +211,7 @@ items:
       - id: C
         text: "$E_L = \\frac{1}{2}ri^2$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Cette expression est une puissance dissipée par effet Joule dans la
           résistance interne — de l'énergie perdue, pas stockée. L'énergie
@@ -168,6 +219,7 @@ items:
       - id: D
         text: "$E_L = \\frac{1}{2}Cu^2$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           C'est l'énergie stockée dans un condensateur (chapitre RC), pas dans
           une bobine. Une bobine ne stocke pas d'énergie via une capacité $C$
@@ -188,6 +240,7 @@ items:
     difficulty_level: 4
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
     stem: >
       Sur un oscillogramme enregistrant $i(t)$ lors de l'établissement du
       courant dans un circuit RL, on a repéré la valeur asymptotique
@@ -200,6 +253,7 @@ items:
       - id: B
         text: "C'est l'instant où $i(t)$ atteint $I_{max}$ pour la première fois."
         correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
           $i(t)$ ne fait que se rapprocher de $I_{max}$ sans jamais l'atteindre
           exactement en un temps fini : $i(t) = I_{max}(1-e^{-t/\tau})$ tend
@@ -207,6 +261,7 @@ items:
       - id: C
         text: "C'est l'instant où $i(t)$ atteint $0{,}5 \\times I_{max}$."
         correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
           $50\%$ de $I_{max}$ correspond à un instant différent de $\tau$ : il
           faudrait résoudre $1-e^{-t/\tau} = 0{,}5$, ce qui donne
@@ -214,6 +269,7 @@ items:
       - id: D
         text: "C'est l'instant où la pente de $i(t)$ devient négative."
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           La pente de $i(t)$ reste positive tout au long de l'établissement du
           courant : le courant croît continûment vers $I_{max}$, elle ne
@@ -232,6 +288,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
     stem: >
       Pourquoi le courant traversant une bobine ne peut-il pas s'établir
       instantanément lors de la fermeture d'un interrupteur ?
@@ -248,6 +305,7 @@ items:
           Parce que la résistance interne $r$ de la bobine est toujours très
           élevée et limite fortement le courant.
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           Ce n'est pas $r$ qui empêche le saut instantané : $r$ se comporte
           comme une résistance ordinaire, qui n'empêche elle-même aucun saut.
@@ -258,6 +316,7 @@ items:
           Parce que le courant doit d'abord « remplir » physiquement les
           spires de la bobine, comme un réservoir se remplit d'eau.
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           Cette image confond la bobine avec un condensateur qui stockerait de
           la charge. La bobine ne stocke pas de charge électrique ; elle
@@ -265,6 +324,7 @@ items:
       - id: D
         text: "Parce que la loi d'Ohm ne s'applique pas du tout aux bobines."
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           La loi d'Ohm s'applique bien à la partie résistive de la bobine
           ($ri$). Ce qui est nouveau, c'est le terme additionnel $L\,di/dt$,
@@ -285,6 +345,7 @@ items:
     difficulty_level: 1
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
     stem: >
       Dans l'expérience décrite en ouverture, on ferme l'interrupteur d'un
       circuit série contenant une lampe et une bobine. Que se passe-t-il pour
@@ -297,6 +358,7 @@ items:
       - id: B
         text: "L'éclat est maximal instantanément, exactement comme avec une résistance seule"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
         feedback: >
           Ce comportement est celui d'un circuit purement résistif. Avec une
           bobine, le courant — et donc l'éclat de la lampe — ne peut pas
@@ -305,6 +367,7 @@ items:
       - id: C
         text: "La lampe reste éteinte indéfiniment : le courant ne s'établit jamais réellement"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           Le courant se rapproche asymptotiquement de sa valeur finale sans
           jamais l'atteindre exactement en temps fini, mais il devient
@@ -314,6 +377,7 @@ items:
       - id: D
         text: "L'éclat oscille plusieurs fois avant de se stabiliser"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           L'établissement du courant dans un circuit RL est un phénomène
           monotone : le courant croît continûment vers sa valeur finale, sans
@@ -335,6 +399,7 @@ items:
     difficulty_level: 1
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
     stem: >
       On compare deux circuits identiques (même générateur, même lampe) :
       l'un contient une résistance seule, l'autre une résistance et une
@@ -348,6 +413,7 @@ items:
       - id: B
         text: "Les deux circuits : la présence d'une bobine ne change rien à l'allumage"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
         feedback: >
           La bobine change justement ce point précis : elle retarde
           l'établissement du courant, donc de l'éclat, contrairement à la
@@ -356,12 +422,14 @@ items:
       - id: C
         text: "Le circuit avec la bobine, uniquement, car la bobine accélère l'établissement du courant"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           C'est l'inverse : la bobine s'oppose aux variations de courant,
           elle ralentit son établissement, elle ne l'accélère jamais.
       - id: D
         text: "Aucun des deux : un allumage instantané n'existe jamais physiquement, même sans bobine"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           Avec une résistance seule, rien dans le circuit ne s'oppose à une
           variation instantanée du courant : l'allumage y est bien
@@ -382,6 +450,7 @@ items:
     difficulty_level: 1
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
     stem: >
       D'après l'expérience de l'accroche, quelle affirmation décrit
       correctement ce que fait la bobine, sans encore recourir à une
@@ -394,6 +463,7 @@ items:
       - id: B
         text: "La bobine bloque totalement le passage du courant, comme un interrupteur resté ouvert"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           La bobine ne bloque pas le courant : en régime permanent, le
           courant s'établit bien à sa valeur finale non nulle. Elle s'oppose
@@ -401,6 +471,7 @@ items:
       - id: C
         text: "La bobine stocke le courant électrique comme un réservoir, puis le libère progressivement"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           Cette image de réservoir décrit plutôt un condensateur, qui stocke
           une charge. Une bobine ne stocke pas de courant : elle s'oppose,
@@ -408,6 +479,7 @@ items:
       - id: D
         text: "La bobine amplifie le courant fourni par le générateur au démarrage"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           C'est l'inverse : la bobine limite et retarde la montée du courant
           au démarrage, elle ne l'amplifie jamais. Le courant final reste
@@ -427,6 +499,7 @@ items:
     difficulty_level: 2
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
     stem: >
       Qu'est-ce qui définit fondamentalement une bobine en tant que dipôle
       électrique ?
@@ -438,6 +511,7 @@ items:
       - id: B
         text: "Sa forme géométrique : tout fil enroulé en spires est nécessairement une bobine"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           C'est le comportement électrique — l'apparition d'une tension liée
           à la variation du courant — qui définit la bobine, pas sa forme
@@ -446,6 +520,7 @@ items:
       - id: C
         text: "Le fait qu'elle emmagasine une charge électrique proportionnelle à la tension à ses bornes"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           C'est la définition d'un condensateur ($q = Cu$), pas d'une
           bobine. La bobine ne stocke pas de charge ; elle développe une
@@ -453,6 +528,7 @@ items:
       - id: D
         text: "Sa résistance interne $r$, seule grandeur nécessaire pour la caractériser"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
           $r$ ne caractérise que la partie résistive ordinaire du fil. Ce
           qui distingue la bobine, c'est le terme $L\,di/dt$, associé à
@@ -472,6 +548,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
     stem: >
       Un circuit série comporte un générateur idéal de f.é.m. $E$, un
       interrupteur, un résistor $R_0$, et une bobine $(r, L)$. On ferme
@@ -485,6 +562,7 @@ items:
       - id: B
         text: "$L\\dfrac{di}{dt} + R_0\\,i = E$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: >
           Cette équation oublie la résistance interne $r$ de la bobine. La
           loi des mailles fait apparaître $R_0 i + ri$, qu'on regroupe en
@@ -492,6 +570,7 @@ items:
       - id: C
         text: "$R_0\\,i = E$, sans terme inductif"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           Cette équation ignore complètement le terme $L\,di/dt$, comme si
           la bobine se comportait comme un simple fil sans inductance. C'est
@@ -500,6 +579,7 @@ items:
       - id: D
         text: "$L\\dfrac{di}{dt} = E$, sans terme résistif"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: >
           Cette équation ignore la partie résistive du circuit (le résistor
           $R_0$ et la résistance interne $r$ de la bobine), comme s'il n'y
@@ -520,6 +600,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
     stem: >
       Un circuit RL comporte un résistor $R_0 = 20\ \Omega$, une bobine de
       résistance interne $r = 5\ \Omega$ et d'inductance $L = 0{,}5\ \text{H}$,
@@ -533,6 +614,7 @@ items:
       - id: B
         text: "$I_{max} = 250\\ \\text{mA}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: >
           Ce résultat utilise $R_0 = 20\ \Omega$ seul au dénominateur, en
           oubliant la résistance interne $r$ de la bobine. La résistance
@@ -540,6 +622,7 @@ items:
       - id: C
         text: "$I_{max} = 1000\\ \\text{mA}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: >
           Ce résultat utilise $r = 5\ \Omega$ seul, en oubliant le résistor
           $R_0$. C'est la résistance totale $R = R_0 + r$ qui intervient
@@ -547,6 +630,7 @@ items:
       - id: D
         text: "$I_{max}$ ne peut pas être déterminé sans connaître $L$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           $I_{max} = E/R$ ne dépend que de $E$ et de la résistance totale
           $R = R_0+r$ : en régime permanent, $di/dt=0$, donc le terme en $L$
@@ -565,6 +649,7 @@ items:
     difficulty_level: 4
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
     stem: >
       Sur un oscillogramme de $i(t)$ enregistré lors de l'établissement du
       courant, on trace la tangente à la courbe au point $t=0$. Cette
@@ -578,6 +663,7 @@ items:
       - id: B
         text: "$t = 5\\tau$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
           $5\tau$ correspond à la durée au bout de laquelle le régime
           permanent est pratiquement atteint (l'écart à $I_{max}$ devient
@@ -586,6 +672,7 @@ items:
       - id: C
         text: "$t = 0$ : la tangente est confondue avec l'asymptote dès l'origine"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
           À $t=0$, la tangente part du point $(0,0)$ avec une pente non
           nulle, $\dfrac{di}{dt}(0) = I_{max}/\tau$ ; elle ne coïncide pas
@@ -594,6 +681,7 @@ items:
       - id: D
         text: "Cette abscisse dépend de la valeur de $I_{max}$, elle n'est pas la même d'une courbe à l'autre"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
           L'abscisse du point de croisement est toujours $\tau$, quelle que
           soit la valeur de $I_{max}$ : cette propriété géométrique découle
@@ -615,6 +703,7 @@ items:
     difficulty_level: 3
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
     stem: >
       Dans le bilan de puissance d'un circuit RL,
       $Ei = Ri^2 + Li\dfrac{di}{dt}$, que représente physiquement le terme
@@ -627,6 +716,7 @@ items:
       - id: B
         text: "La puissance dissipée par effet Joule dans la bobine"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           La puissance dissipée par effet Joule dans la résistance totale du
           circuit (y compris la résistance interne de la bobine) est déjà
@@ -635,6 +725,7 @@ items:
       - id: C
         text: "La puissance fournie par le générateur au circuit"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           La puissance fournie par le générateur est $Ei$, le terme de
           gauche de l'égalité, pas $Li\,di/dt$. Ce dernier n'est qu'une
@@ -643,6 +734,7 @@ items:
       - id: D
         text: "Une puissance perdue, non récupérable, comme de la chaleur"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Cette puissance n'est pas perdue : elle correspond à de l'énergie
           stockée sous forme magnétique dans la bobine
@@ -664,6 +756,7 @@ items:
     difficulty_level: 4
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
     stem: >
       Une bobine d'inductance $L = 0{,}2\ \text{H}$ est parcourue par un
       courant établi $i = 0{,}5\ \text{A}$ en régime permanent. Quelle est
@@ -676,6 +769,7 @@ items:
       - id: B
         text: "$E_L = 50\\ \\text{mJ}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Ce résultat correspond à $Li^2$ sans le facteur $\frac12$ :
           $0{,}2\times0{,}5^2=0{,}05\ \text{J}$. La formule correcte est
@@ -683,6 +777,7 @@ items:
       - id: C
         text: "$E_L = 100\\ \\text{mJ}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Ce résultat utilise $E_L = Li$ (linéaire en $i$) au lieu de
           $E_L=\frac12 Li^2$ (quadratique en $i$) :
@@ -691,6 +786,7 @@ items:
       - id: D
         text: "$E_L = 125\\ \\text{mJ}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Ce résultat utilise $\frac12 i^2$ en oubliant complètement le
           facteur $L$ : $\frac12\times0{,}5^2=0{,}125\ \text{J}$.
@@ -710,6 +806,7 @@ items:
     difficulty_level: 5
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
     stem: >
       On réalise un circuit RL : générateur idéal $E = 8\ \text{V}$,
       interrupteur $K$, résistor $R_0 = 70\ \Omega$, bobine de résistance
@@ -725,6 +822,7 @@ items:
       - id: B
         text: "$L = 0{,}21\\ \\text{H}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: >
           Ce résultat utilise $R_0=70\ \Omega$ seul au lieu de la résistance
           totale $R = R_0+r = 80\ \Omega$, en oubliant la résistance interne
@@ -732,6 +830,7 @@ items:
       - id: C
         text: "$L \\approx 2{,}7\\times10^4\\ \\text{H}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
           Ce résultat inverse la formule, en calculant $R/\tau$ au lieu de
           $\tau\times R$ — comme si $\tau = R/L$ au lieu de $\tau = L/R$.
@@ -740,6 +839,7 @@ items:
       - id: D
         text: "$L = 0{,}048\\ \\text{H}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
           Ce résultat suppose que la tangente à l'origine coupe l'asymptote
           en $5\tau$ plutôt qu'en $\tau$ (confusion avec la règle du régime
@@ -759,6 +859,7 @@ items:
     difficulty_level: 5
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
     stem: >
       Un circuit RL a pour données $E = 15\ \text{V}$, $R_0 = 140\ \Omega$,
       $r = 10\ \Omega$, $L = 0{,}3\ \text{H}$. Quelle est l'énergie
@@ -771,6 +872,7 @@ items:
       - id: B
         text: "$E_L = 3\\ \\text{mJ}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Ce résultat correspond à $L I_{max}^2$ sans le facteur $\frac12$ :
           $0{,}3\times0{,}1^2=0{,}003\ \text{J}$. La formule correcte est
@@ -778,6 +880,7 @@ items:
       - id: C
         text: "$E_L = 30\\ \\text{mJ}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.energie-lineaire-en-i
         feedback: >
           Ce résultat utilise $E_L=L\,I_{max}$ (linéaire) au lieu de
           $E_L=\frac12 LI_{max}^2$ (quadratique) :
@@ -785,6 +888,7 @@ items:
       - id: D
         text: "$E_L \\approx 0{,}6\\ \\text{mJ}$"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           Ce résultat utilise le courant à $t=\tau$
           ($\approx 0{,}63\times I_{max}$), soit une valeur pendant la phase
@@ -806,6 +910,7 @@ items:
     difficulty_level: 4
     skill_code: pc_dipole_rl
     tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
     stem: >
       On double la résistance totale $R$ d'un circuit RL, sans changer ni
       $L$ ni $E$. Comment évoluent la constante de temps $\tau$ et le
@@ -818,6 +923,7 @@ items:
       - id: B
         text: "$\\tau$ est divisée par 2, mais $I_{max}$ reste inchangé"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           $I_{max}=E/R$ dépend aussi de $R$ : en doublant $R$ sans changer
           $E$, $I_{max}$ est nécessairement divisé par 2 également, tout
@@ -826,6 +932,7 @@ items:
       - id: C
         text: "$\\tau$ est multipliée par 2, et $I_{max}$ est divisé par 2"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
           Cette réponse inverse le sens de la dépendance de $\tau$ en $R$ :
           comme $\tau=L/R$, une augmentation de $R$ (à $L$ constant) diminue
@@ -834,6 +941,7 @@ items:
       - id: D
         text: "$\\tau$ et $I_{max}$ restent tous deux inchangés, car $L$ et $E$ n'ont pas changé"
         correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
         feedback: >
           $\tau=L/R$ et $I_{max}=E/R$ dépendent tous les deux de $R$, pas
           seulement de $L$ et $E$. Changer $R$ change nécessairement les
@@ -848,3 +956,398 @@ items:
       $I_{max}=E/R$ : à $E$ fixé, doubler $R$ divise $I_{max}$ par 2
       également. Les deux grandeurs sont inversement proportionnelles à
       $R$.
+
+  # ──────────────────────────────────────────────────────────────────────
+  # RL-19…RL-23 — floor-backfill additions (fresh stems, not memorizable
+  # restatements of RL-1…RL-18 or of the R5 past-bac exercise r-bac in
+  # exercises.yaml). Close the four models still under the ≥3-item floor
+  # after RL-1…RL-18 were tagged: bobine-nature-erronee (2→3),
+  # imax-etablissement-mal-compris (1→3), tau-mauvais-groupement (2→3),
+  # lecture-tau-erronee (2→3). Correct-choice position is varied
+  # (B, A, D, C, D) rather than always A, as in RL-1…RL-18.
+  # ──────────────────────────────────────────────────────────────────────
+
+  - id: RL-19
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+    stem: >
+      On ouvre brusquement l'interrupteur d'un circuit RL parcouru par un
+      courant établi $I_{max}$. On observe souvent une étincelle au niveau
+      des contacts de l'interrupteur. Quelle est l'origine physique de ce
+      phénomène ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La bobine libère d'un coup toute l'énergie qu'elle avait stockée
+          sous forme de courant, comme une décharge de condensateur.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: >
+          C'est de nouveau le modèle « bobine-réservoir », emprunté au
+          condensateur. La bobine ne stocke pas de charge à libérer d'un
+          coup : c'est la tension $u_L = L\,di/dt$, provoquée par la
+          variation brutale de $i$, qui crée l'étincelle — pas une décharge.
+      - id: B
+        text: >-
+          La bobine s'oppose à la disparition brutale du courant : comme $i$
+          ne peut pas s'annuler instantanément alors que le circuit se coupe
+          presque, $di/dt$ devient très grand en valeur absolue, donc
+          $u_L = L\,di/dt$ devient très élevée — assez pour ioniser l'air
+          entre les contacts.
+        correct: true
+      - id: C
+        text: >-
+          Le courant s'annule instantanément dès l'ouverture ; l'étincelle
+          n'a aucun rapport avec cette annulation.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+        feedback: >
+          Le courant dans une bobine reste continu, même à l'ouverture : il
+          ne peut pas sauter à $0$. C'est justement parce que le circuit
+          « refuse » cette continuité (contacts qui s'écartent) que $di/dt$
+          devient énorme — et c'est cela, précisément, qui cause l'étincelle.
+      - id: D
+        text: >-
+          C'est un phénomène purement mécanique, dû au frottement des
+          contacts, sans lien avec la bobine.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: >
+          Ce phénomène est électrique, pas mécanique : il apparaît
+          précisément parce qu'il y a une bobine dans le circuit (un circuit
+          purement résistif ne produit pas cette étincelle à l'ouverture). La
+          cause est le terme $L\,di/dt$, rendu énorme par la coupure brutale
+          du courant.
+    correct_feedback: >
+      À l'ouverture, le courant établi $I_{max}$ ne peut pas s'annuler
+      instantanément : la variation extrêmement brutale de $i$ produit une
+      tension $u_L$ très élevée aux bornes de la bobine, suffisante pour
+      créer une étincelle aux contacts.
+    solution: |
+      Avant l'ouverture, $i = I_{max}$. À l'ouverture, le circuit tend à se
+      couper quasi instantanément, ce qui imposerait $di/dt$ très grand en
+      valeur absolue si $i$ devait s'annuler tout de suite. Or $i$ reste
+      continu (bobine) : la tension $u_L = L\,di/dt$ prend alors une valeur
+      très élevée, bien supérieure à $E$, ce qui peut ioniser l'air entre les
+      contacts de l'interrupteur et produire une étincelle. C'est une
+      conséquence directe de l'auto-induction, pas un stockage de charge ni
+      un phénomène mécanique.
+
+  - id: RL-20
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+    stem: >
+      On remplace la bobine d'un circuit RL par une autre, de même résistance
+      interne $r$ mais d'inductance $L$ plus grande, sans changer ni $E$ ni
+      $R_0$. Quel est l'effet sur l'établissement du courant $i(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La durée d'établissement augmente (via $\tau = L/(R_0+r)$, qui
+          croît avec $L$), mais la valeur finale $I_{max} = E/(R_0+r)$ reste
+          identique : $L$ n'intervient pas dans $I_{max}$.
+        correct: true
+      - id: B
+        text: >-
+          $I_{max}$ augmente aussi, puisqu'une bobine plus grosse peut
+          stocker davantage de courant.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          En régime permanent $di/dt = 0$, donc le terme en $L$ disparaît de
+          l'équation : $I_{max} = E/(R_0+r)$ ne dépend pas de $L$. La bobine
+          ne « stocke » pas de courant en réserve ; $L$ fixe seulement la
+          durée de l'établissement.
+      - id: C
+        text: >-
+          Cela ne change rien du tout : ni la durée d'établissement, ni la
+          valeur finale.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          $\tau = L/(R_0+r)$ dépend bien de $L$ : augmenter $L$ à résistance
+          totale inchangée augmente $\tau$, donc ralentit l'établissement.
+          Seule la valeur finale $I_{max}$, elle, ne dépend pas de $L$.
+      - id: D
+        text: >-
+          Une inductance plus grande accélère l'établissement : le courant
+          atteint plus vite sa valeur finale.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          C'est l'inverse : $\tau = L/(R_0+r)$ croît avec $L$, donc une
+          inductance plus grande ralentit l'établissement, elle ne
+          l'accélère jamais. Plus $L$ est grand, plus l'inertie électrique de
+          la bobine est forte.
+    correct_feedback: >
+      $\tau = L/(R_0+r)$ et $I_{max} = E/(R_0+r)$ ont des rôles distincts :
+      $L$ ne pèse que sur $\tau$ (la durée), jamais sur $I_{max}$ (la valeur
+      finale).
+    solution: |
+      L'équation différentielle est $L\,di/dt + (R_0+r)\,i = E$. En régime
+      permanent, $di/dt=0$, donc $I_{max}=E/(R_0+r)$ : $L$ n'y figure pas.
+      En revanche $\tau = L/(R_0+r)$ est directement proportionnelle à $L$ :
+      augmenter $L$ (à $R_0$ et $r$ fixés) augmente $\tau$, donc ralentit
+      l'établissement, sans changer la valeur finale atteinte.
+
+  - id: RL-21
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+    stem: >
+      Deux bobines, de même résistance interne $r$ mais d'inductances
+      différentes ($L_1 \neq L_2$), sont utilisées tour à tour dans le même
+      circuit RL (même $R_0$, même $E$). Une fois le régime permanent atteint
+      dans chaque cas, comment se comparent les deux courants finaux
+      $I_{max,1}$ et $I_{max,2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $I_{max,1} < I_{max,2}$ si $L_1 < L_2$ : une inductance plus
+          grande laisse passer davantage de courant en régime permanent.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          $L$ ne fixe pas le courant final : en régime permanent le terme
+          $L\,di/dt$ est nul, quelle que soit la valeur de $L$. Les deux
+          bobines, ayant la même résistance interne $r$, donnent exactement
+          le même $I_{max}$.
+      - id: B
+        text: >-
+          $I_{max,1} > I_{max,2}$ si $L_1 < L_2$ : une bobine de plus petite
+          inductance s'oppose moins au passage du courant.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          $L$ ne s'oppose pas au « passage » du courant, seulement à ses
+          variations, un effet qui s'annule en régime permanent. Les deux
+          $I_{max}$ sont identiques, quelle que soit la valeur de $L_1$ ou
+          $L_2$.
+      - id: C
+        text: >-
+          On ne peut pas comparer $I_{max,1}$ et $I_{max,2}$ sans connaître
+          les deux constantes de temps $\tau_1$ et $\tau_2$.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          $\tau$ (qui dépend de $L$) règle la durée d'établissement, pas la
+          valeur finale : $I_{max}=E/(R_0+r)$ se calcule sans connaître $\tau$
+          ni $L$. Les deux grandeurs répondent à des questions différentes.
+      - id: D
+        text: >-
+          Ils sont égaux : $I_{max} = E/(R_0+r)$ ne dépend pas de $L$,
+          seulement de $E$ et des résistances, identiques dans les deux cas.
+        correct: true
+    correct_feedback: >
+      La valeur finale $I_{max}$ ne dépend que de $E$ et de la résistance
+      totale $R_0+r$ : deux bobines de même $r$ mais de $L$ différentes,
+      dans le même circuit, atteignent exactement le même $I_{max}$ — seule
+      la durée pour y parvenir diffère.
+    solution: |
+      En régime permanent, $di/dt=0$ pour les deux bobines, donc l'équation
+      $L\,di/dt+(R_0+r)i=E$ se réduit, dans les deux cas, à
+      $(R_0+r)I_{max}=E$, soit $I_{max}=E/(R_0+r)$ — une expression qui ne
+      contient pas $L$. Avec $R_0$, $r$ et $E$ identiques dans les deux
+      circuits, $I_{max,1}=I_{max,2}$, quelles que soient $L_1$ et $L_2$
+      (qui ne fixent que $\tau_1 \neq \tau_2$, donc des durées différentes
+      pour atteindre ce même $I_{max}$).
+
+  - id: RL-22
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+    stem: >
+      On double la force électromotrice $E$ du générateur d'un circuit RL,
+      sans changer ni $R$ ni $L$. Comment évoluent $I_{max}$ et $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau$ double aussi, puisque tout est proportionnel à $E$ dans le circuit."
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          $\tau = L/R$ ne contient ni $E$ ni aucune référence à la force
+          électromotrice : c'est un rapport entre les caractéristiques du
+          circuit ($L$ et $R$), indépendant de la tension appliquée. Doubler
+          $E$ ne change donc pas $\tau$.
+      - id: B
+        text: "$I_{max}$ reste inchangé, car il ne dépend que de $R$ et $L$."
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          $I_{max} = E/R$ dépend directement de $E$ : c'est même le
+          numérateur de cette expression. Doubler $E$ (à $R$ fixé) double
+          nécessairement $I_{max}$ ; $L$, lui, n'intervient pas du tout dans
+          $I_{max}$.
+      - id: C
+        text: >-
+          $I_{max}$ double (proportionnel à $E$), mais $\tau = L/R$ reste
+          inchangée : $\tau$ ne dépend pas de $E$.
+        correct: true
+      - id: D
+        text: >-
+          $I_{max}$ double et $\tau$ double également, car augmenter $E$
+          accélère aussi l'établissement du courant.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          La valeur de $I_{max}$ est bien doublée, mais $\tau=L/R$ n'en
+          dépend pas : la vitesse relative d'établissement (réglée par
+          $\tau$) est la même, seule l'amplitude finale change. Augmenter
+          $E$ ne « pousse » pas plus vite vers $I_{max}$ en proportion, il
+          déplace seulement la cible.
+    correct_feedback: >
+      $I_{max}=E/R$ est proportionnel à $E$ : le doubler double $I_{max}$.
+      $\tau=L/R$, en revanche, ne dépend que de $L$ et $R$ : elle reste
+      rigoureusement inchangée.
+    solution: |
+      $I_{max}=E/R$ : à $R$ fixé, doubler $E$ double $I_{max}$.
+      $\tau=L/R$ : cette expression ne fait intervenir ni $E$ ni la force
+      électromotrice sous quelque forme que ce soit ; à $L$ et $R$ fixés,
+      $\tau$ reste rigoureusement identique. $E$ fixe l'échelle du courant
+      final, pas la vitesse relative à laquelle on l'atteint.
+
+  - id: RL-23
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
+    stem: >
+      Un système d'acquisition enregistre, en plus de $i(t)$, la tension
+      $u_L(t)$ aux bornes de la bobine : elle décroît de $E$ (à $t=0^+$)
+      vers son palier final $rI_{max}$. Un élève affirme : « $\tau$, c'est
+      l'instant où $u_L(t)$ atteint son palier final $rI_{max}$, car c'est
+      là que la bobine a fini de s'opposer au courant. » Cette affirmation
+      est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui, c'est exactement la définition de $\tau$ : l'instant où le
+          régime permanent est atteint.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
+        feedback: >
+          Non : le régime permanent n'est jamais atteint exactement en un
+          temps fini, il n'est que pratiquement atteint vers $5\tau$. À
+          $t=\tau$, $u_L$ n'a parcouru que $63\%$ de la descente vers son
+          palier, elle ne l'a pas encore rejoint.
+      - id: B
+        text: >-
+          Oui, mais seulement si on regarde $i(t)$ et pas $u_L(t)$ : les deux
+          courbes n'ont pas le même $\tau$.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
+        feedback: >
+          $\tau$ est une propriété du circuit ($\tau=L/R$), pas de la courbe
+          qu'on choisit de lire : elle est la même qu'on la retrouve sur
+          $i(t)$ ou sur $u_L(t)$. Et, dans les deux cas, ce n'est pas
+          l'instant où le palier final est atteint.
+      - id: C
+        text: >-
+          Non, l'affirmation est fausse : $\tau$ ne peut se lire que sur la
+          courbe $i(t)$, jamais sur $u_L(t)$.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
+        feedback: >
+          $\tau$ peut se lire sur $u_L(t)$ tout comme sur $i(t)$ (méthode des
+          $63\%$ ou tangente à l'origine, appliquées à la courbe choisie) : ce
+          qui est faux dans l'affirmation, ce n'est pas le choix de la
+          courbe, c'est d'y placer $\tau$ à l'instant du palier final.
+      - id: D
+        text: >-
+          Non : à $t=\tau$, $u_L$ n'a parcouru que $63\%$ du chemin entre $E$
+          et $rI_{max}$, elle n'a pas encore atteint son palier ; $\tau$ est
+          une échelle de temps caractéristique, pas l'instant où le régime
+          permanent est atteint (celui-ci n'est que pratiquement atteint vers
+          $5\tau$).
+        correct: true
+    correct_feedback: >
+      $\tau$ est une échelle de temps caractéristique du circuit, la même sur
+      $i(t)$ que sur $u_L(t)$ — jamais l'instant où l'une ou l'autre courbe
+      atteint effectivement son palier final.
+    solution: |
+      $u_L(t) = E - (R_0+r)\,i(t) = E - RI_{max}(1-e^{-t/\tau}) =
+      rI_{max} + (E-rI_{max})e^{-t/\tau}$ (avec $R=R_0+r$) décroît
+      exponentiellement de $E$ vers $rI_{max}$, avec la même constante de
+      temps $\tau=L/R$ que $i(t)$. À $t=\tau$, l'écart restant à $rI_{max}$
+      vaut $(E-rI_{max})e^{-1}\approx 37\%$ de l'écart initial : $u_L$ a donc
+      parcouru $63\%$ du chemin, pas $100\%$. Le palier n'est que
+      pratiquement atteint vers $5\tau$, quelle que soit la courbe lue.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (floor-backfill pass, following the checkpoints.yaml /
+# exercises.yaml summit conversion)
+#
+# RL-1…RL-18 were authored before the misconception inventory existed
+# (`misconceptions: []`). This pass adds the inventory (mirroring
+# checkpoints.yaml's six ids + one new energy id), a `primary_misconception`
+# per item, and a per-distractor `misconception:` tag on every choice
+# (mirroring the checkpoints.yaml gold standard — additive only, no existing
+# stem/feedback/solution text removed or weakened). RL-19…RL-23 are five new
+# items closing the under-covered models to the ≥3-item floor. Counts below
+# are ITEM-LEVEL (each item counted once, by its `primary_misconception`),
+# matching the method used in content/pc/rc-charge/items.yaml.
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 23
+  per_misconception:
+    mc.physics.pc_dipole_rl.courant-saute-instantane: 4        # RL-1, RL-6, RL-7, RL-8
+    mc.physics.pc_dipole_rl.bobine-nature-erronee: 3            # RL-9, RL-10, RL-19
+    mc.physics.pc_dipole_rl.imax-etablissement-mal-compris: 3   # RL-12, RL-21, RL-22
+    mc.physics.pc_dipole_rl.oubli-resistance-interne: 3         # RL-2, RL-11, RL-16
+    mc.physics.pc_dipole_rl.tau-mauvais-groupement: 3           # RL-3, RL-18, RL-20
+    mc.physics.pc_dipole_rl.lecture-tau-erronee: 3              # RL-5, RL-13, RL-23
+    mc.physics.pc_dipole_rl.energie-lineaire-en-i: 4            # RL-4, RL-14, RL-15, RL-17
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3   # RL-7, RL-8, RL-9
+    R1: 4   # RL-2, RL-6, RL-10, RL-19
+    R2: 5   # RL-1, RL-11, RL-12, RL-20, RL-22
+    R3: 5   # RL-3, RL-5, RL-13, RL-21, RL-23
+    R4: 3   # RL-4, RL-14, RL-15
+    R5: 3   # RL-16, RL-17, RL-18
+  note: >
+    Floor closed and per-distractor tagging promoted in this pass. RL-1…RL-18:
+    every distractor now carries a `misconception:` field (added without
+    deleting or weakening any existing stem, feedback, or solution — additive
+    only). RL-19…RL-23: 5 new stems closing the under-covered models
+    (bobine-nature-erronee 2→3, imax-etablissement-mal-compris 1→3,
+    tau-mauvais-groupement 2→3, lecture-tau-erronee 2→3 — oubli-resistance-
+    interne also crossed 2→3, as RL-16's primary_misconception was
+    reassigned to match its dominant distractor rather than added as a new
+    item), each a fresh stem/context (opening-switch spark, changing L,
+    comparing two bobines of different L, changing E, reading τ off u_L(t)
+    instead of i(t)) — none a memorizable restatement of an existing item or
+    of the R5 past-bac exercise (r-bac in exercises.yaml) — spanning R1–R3 to
+    keep the ramp populated. Correct-choice position is varied across the new
+    items (B, A, D, C, D), unlike RL-1…RL-18 which are all correct=A (a
+    pre-existing pattern, left untouched per the append/edit-only, never-
+    weaken instruction). Per-distractor tags are diagnostic metadata layered
+    onto the existing item-level `primary_misconception` floor count; they do
+    not themselves change the coverage method or counts above. Several items
+    (RL-2, RL-5, RL-7, RL-11, RL-12, RL-16, RL-17, RL-18, RL-20, RL-22) carry
+    distractors whose `misconception:` tag differs from the item's own
+    `primary_misconception` — expected diagnostic diversity (a single stem
+    legitimately probing more than one wrong model), not cross-skill
+    contamination: every item in this bank is single-skill (pc_dipole_rl), so
+    no dual-tagging is required by the cross-skill contamination check.
+    Stem-hygiene check: no correct choice in RL-1…RL-23 is reachable by
+    misapplying a named misconception (no correct-answer contamination
+    found); no stem mixes in dipole-RC vocabulary or another skill's model.

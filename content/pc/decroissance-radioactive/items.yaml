@@ -87,6 +87,18 @@ misconceptions:
     description: "L'élève omet la constante radioactive λ dans l'exposant, en mélangeant les unités : il traite le temps t comme s'il était déjà sans dimension."
     contradicts_principle: "L'exposant d'une exponentielle doit être sans dimension : λt est sans dimension parce que λ est en (unité de temps)^{-1}. Écrire e^{-t} directement est dimensionnellement incorrect et ignore la constante caractéristique de l'isotope."
 
+  # Summit-conversion additions (2026-07-12) — the two gates the R6 summit
+  # conversion surfaces: demi-vie vs constante λ, et activité vs nombre de noyaux.
+  - id: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+    label: "« La demi-vie et la constante radioactive λ sont la même grandeur (ou t_1/2 = 1/λ) »"
+    description: "L'élève confond la demi-vie et la constante radioactive : il pose t_1/2 = λ, ou bien t_1/2 = 1/λ (qui est la constante de temps τ, pas la demi-vie), en oubliant le facteur ln 2 qui les relie."
+    contradicts_principle: "La demi-vie et la constante radioactive sont deux grandeurs distinctes, d'unités inverses, reliées par t_1/2 = ln2/λ. Ni t_1/2 = λ (unités incompatibles), ni t_1/2 = 1/λ : ça, c'est τ = constante de temps, et t_1/2 = τ ln2 ≈ 0,693 τ, donc plus courte que τ."
+
+  - id: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+    label: "« L'activité A est le nombre de noyaux présents (le becquerel compte des noyaux) »"
+    description: "L'élève confond l'activité (nombre de désintégrations par seconde, en Bq) avec le nombre N de noyaux encore présents, en oubliant la relation A = λN qui les relie."
+    contradicts_principle: "L'activité A = λN est le nombre de désintégrations par unité de temps (Bq = 1 désintégration/s), pas le nombre de noyaux présents. N est en général bien plus grand que A ; passer de l'un à l'autre exige le facteur λ, en unité cohérente avec le becquerel (s^-1)."
+
 items:
 
   # ══════════════════════════════════════════════════════════════
@@ -537,6 +549,60 @@ items:
       $Z'=90$ correspond au thorium : le noyau fils est
       $^{234}_{90}\text{Th}$.
 
+  # Summit-conversion ride-along (2026-07-12): lifts the conservation-A/Z trio
+  # (conservation-Z-oubliee / alpha-se-comporte-comme-beta / sens-conservation-
+  # inverse) from 2 → 3 items each, so the cp-r2-soddy gate is floor-met. Mirrors
+  # r-bac Q1 (plutonium 238 α), tying the end bank to the sourced 2021 sujet.
+  - id: DECRO-22
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: [alpha, soddy, misconception_driven]
+    stem: |
+      Le plutonium 238 $^{238}_{94}\text{Pu}$ se désintègre en émettant une
+      particule alpha $^{4}_{2}\text{He}$. Quel est le noyau fils obtenu ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $^{234}_{92}\text{U}$ (A diminue de 4, Z diminue de 2).
+        correct: true
+      - id: B
+        text: |
+          $^{234}_{94}\text{Pu}$ (A diminue de 4, Z inchangé).
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.conservation-Z-oubliee
+        feedback: >
+          A est correctement diminué de 4, mais Z a été laissé inchangé : la
+          particule alpha emporte aussi 2 charges positives. Il faut appliquer
+          les deux lois de conservation ensemble (Z passe de 94 à 92).
+      - id: C
+        text: |
+          $^{238}_{92}\text{U}$ (A inchangé, Z diminue de 2).
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta
+        feedback: >
+          Ceci traite la désintégration alpha comme une beta (A inchangé). Or
+          une particule alpha emporte 4 nucléons : A DOIT diminuer de 4 (234),
+          pas rester à 238.
+      - id: D
+        text: |
+          $^{242}_{96}\text{Cm}$ (A et Z augmentent).
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.sens-conservation-inverse
+        feedback: >
+          Le noyau fils s'obtient en RETRANCHANT la particule émise du père, pas
+          en l'ajoutant : A et Z du fils sont nécessairement inférieurs à ceux du
+          père dans une désintégration alpha.
+    correct_feedback: >
+      Conservation de A : $238 = A' + 4 \Rightarrow A' = 234$. Conservation de Z :
+      $94 = Z' + 2 \Rightarrow Z' = 92$, soit l'uranium 234.
+    solution: |
+      On pose $^{238}_{94}\text{Pu} \rightarrow \ ^{A'}_{Z'}\text{Y} + \ ^{4}_{2}\text{He}$.
+      Conservation du nombre de nucléons : $238 = A' + 4 \Rightarrow A' = 234$.
+      Conservation de la charge : $94 = Z' + 2 \Rightarrow Z' = 92$.
+      $Z' = 92$ correspond à l'uranium : le noyau fils est $^{234}_{92}\text{U}$.
+
   # ══════════════════════════════════════════════════════════════
   # R3 — caractère aléatoire, loi de décroissance
   # ══════════════════════════════════════════════════════════════
@@ -841,6 +907,237 @@ items:
       \text{jour}^{-1}$. Après 4 demi-vies : $N(15{,}2)/N_0=(1/2)^4=1/16$.
       Vérification directe : $N_0e^{-0{,}182\times15{,}2}\approx N_0/16$.
 
+  # Summit-conversion ride-along (2026-07-12): four R4 items that bring the two
+  # gate misconceptions surfaced by the R6 conversion to the ≥3 floor —
+  # confond-activite-nombre-noyaux (DECRO-23, 25, 26) and
+  # confond-demi-vie-constante-lambda (DECRO-23, 24, 25, 26). Sources for
+  # cp-r4-activite-noyaux (DECRO-23) and cp-r4-demi-vie-lambda (DECRO-24).
+  - id: DECRO-23
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: decroissance_radioactive
+    tags: [activite, calcul, misconception_driven]
+    stem: |
+      Un échantillon contient $N_0 = 3{,}0\times10^{18}$ noyaux radioactifs d'un
+      isotope de demi-vie $t_{1/2} = 6{,}0$ jours. Quelle est son activité
+      initiale $A_0$ ? (On rappelle $1\ \text{jour} = 86\,400\ \text{s}$.)
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $A_0 = N_0 = 3{,}0\times10^{18}$ Bq : l'activité, c'est le nombre de
+          noyaux présents dans l'échantillon.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+        feedback: >
+          L'activité est le nombre de désintégrations PAR SECONDE (le Bq), pas le
+          nombre de noyaux présents. Les deux sont reliés par $A = \lambda N$,
+          avec $N$ bien plus grand que $A$.
+      - id: B
+        text: |
+          $A_0 = \lambda N_0 \approx 4{,}0\times10^{12}$ Bq, avec
+          $\lambda = \dfrac{\ln 2}{t_{1/2}}$ convertie en $\text{s}^{-1}$.
+        correct: true
+      - id: C
+        text: |
+          $A_0 = \dfrac{N_0}{t_{1/2}} = 5{,}0\times10^{17}$ Bq, en prenant la
+          demi-vie comme constante radioactive.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          La constante radioactive est $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (avec le
+          facteur $\ln 2$, et convertie en $\text{s}^{-1}$), pas
+          $\dfrac{1}{t_{1/2}}$. Confondre $t_{1/2}$ et la constante de
+          désintégration fausse tout le calcul.
+      - id: D
+        text: |
+          Impossible de calculer $A_0$ sans connaître la température de
+          l'échantillon, dont dépend son activité.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          $\lambda$ est intrinsèque au noyau : $A_0 = \lambda N_0$ se calcule
+          entièrement avec $t_{1/2}$ et $N_0$, sans aucune donnée extérieure.
+    correct_feedback: >
+      $\lambda = \dfrac{\ln 2}{6{,}0\times86\,400} \approx 1{,}3\times10^{-6}\ \text{s}^{-1}$,
+      donc $A_0 = \lambda N_0 \approx 4{,}0\times10^{12}$ Bq.
+    solution: |
+      L'activité et le nombre de noyaux sont reliés par $A = \lambda N$. À
+      $t = 0$ : $A_0 = \lambda N_0$. Il faut $\lambda$ en $\text{s}^{-1}$ car le
+      becquerel est une désintégration par seconde :
+      $\lambda = \dfrac{\ln 2}{6{,}0\times86\,400} \approx 1{,}3\times10^{-6}\ \text{s}^{-1}$.
+      Donc $A_0 = 1{,}3\times10^{-6}\times3{,}0\times10^{18} \approx 4{,}0\times10^{12}$ Bq.
+
+  - id: DECRO-24
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: [demi_vie, misconception_driven]
+    stem: |
+      Un isotope radioactif a une constante radioactive
+      $\lambda = 2{,}0\times10^{-2}\ \text{an}^{-1}$. Quelle est sa demi-vie
+      $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $t_{1/2} = \lambda = 2{,}0\times10^{-2}\ \text{an}$ : la demi-vie et la
+          constante radioactive sont une seule et même grandeur.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          Ce sont deux grandeurs différentes, même pas de mêmes unités
+          ($\text{an}$ contre $\text{an}^{-1}$). Elles sont reliées par
+          $t_{1/2} = \dfrac{\ln 2}{\lambda}$, pas par une égalité.
+      - id: B
+        text: |
+          $t_{1/2} = \dfrac{1}{\lambda} = 50$ ans : la demi-vie est simplement
+          l'inverse de $\lambda$.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          $\dfrac{1}{\lambda}$ est la constante de temps $\tau$, pas la demi-vie.
+          Il manque le facteur $\ln 2$ : $t_{1/2} = \tau\ln 2 \approx 0{,}693\,\tau$,
+          donc plus courte que $\tau$.
+      - id: C
+        text: |
+          $t_{1/2} = \dfrac{\ln 2}{\lambda} = \dfrac{0{,}693}{2{,}0\times10^{-2}}
+          \approx 35$ ans.
+        correct: true
+      - id: D
+        text: |
+          $t_{1/2}$ n'est pas fixe : elle dépend de la température et de la
+          pression subies par l'échantillon.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          Comme $\lambda$, la demi-vie $t_{1/2} = \dfrac{\ln 2}{\lambda}$ est
+          intrinsèque à l'isotope : invariable, quelles que soient la température
+          et la pression.
+    correct_feedback: >
+      $t_{1/2} = \dfrac{\ln 2}{\lambda} = \dfrac{0{,}693}{2{,}0\times10^{-2}}
+      \approx 35$ ans — ni $\lambda$ elle-même, ni $\dfrac{1}{\lambda} = 50$ ans.
+    solution: |
+      La demi-vie et la constante radioactive sont reliées par
+      $t_{1/2} = \dfrac{\ln 2}{\lambda}$ (R4). Ici :
+      $t_{1/2} = \dfrac{0{,}693}{2{,}0\times10^{-2}} \approx 35$ ans.
+      À ne pas confondre avec la constante de temps
+      $\tau = \dfrac{1}{\lambda} = 50$ ans : $t_{1/2} = \tau\ln 2$, donc plus
+      courte que $\tau$.
+
+  - id: DECRO-25
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: decroissance_radioactive
+    tags: [activite, calcul, misconception_driven]
+    stem: |
+      On veut trouver le nombre $N_0$ de noyaux présents à $t = 0$ dans un
+      échantillon dont on connaît l'activité initiale $A_0$ (en Bq) et la
+      demi-vie $t_{1/2}$. Quelle démarche est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $N_0 = \dfrac{A_0}{\lambda}$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$
+          convertie en $\text{s}^{-1}$ (le becquerel étant une désintégration par
+          seconde).
+        correct: true
+      - id: B
+        text: |
+          $N_0 = A_0$ : l'activité en becquerels donne directement le nombre de
+          noyaux présents.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+        feedback: >
+          $A_0$ est un nombre de désintégrations par seconde, pas un nombre de
+          noyaux. On passe de l'un à l'autre par $A = \lambda N$, donc
+          $N_0 = A_0/\lambda$, jamais $N_0 = A_0$.
+      - id: C
+        text: |
+          $N_0 = A_0 \times t_{1/2}$, en utilisant la demi-vie comme constante
+          radioactive.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          La constante qui relie $A$ et $N$ est $\lambda = \dfrac{\ln 2}{t_{1/2}}$,
+          pas $t_{1/2}$ elle-même. Utiliser la demi-vie à la place de $\lambda$
+          confond deux grandeurs distinctes.
+      - id: D
+        text: |
+          $N_0$ est le nombre de désintégrations par seconde : c'est $A_0$
+          exprimée dans une autre unité.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+        feedback: >
+          Non : le nombre de désintégrations par seconde EST l'activité $A_0$, ce
+          n'est pas le nombre $N_0$ de noyaux présents. $N_0 = A_0/\lambda$ est en
+          général bien plus grand que $A_0$.
+    correct_feedback: >
+      $A = \lambda N$ à chaque instant, donc à $t = 0$ : $N_0 = A_0/\lambda$, avec
+      $\lambda = \dfrac{\ln 2}{t_{1/2}}$ en $\text{s}^{-1}$.
+    solution: |
+      L'activité et le nombre de noyaux sont liés par $A = \lambda N$. À
+      $t = 0$ : $A_0 = \lambda N_0 \Rightarrow N_0 = \dfrac{A_0}{\lambda}$. Comme
+      $A_0$ est en Bq (désintégrations par seconde), $\lambda$ doit être en
+      $\text{s}^{-1}$, obtenue par $\lambda = \dfrac{\ln 2}{t_{1/2}}$ après
+      conversion de $t_{1/2}$ en secondes.
+
+  - id: DECRO-26
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: [activite, misconception_driven]
+    stem: |
+      Deux échantillons du même isotope radioactif contiennent, à un instant
+      donné, $N_1$ et $N_2 = 2N_1$ noyaux non encore désintégrés. Que peut-on
+      dire de leurs activités $A_1$ et $A_2$ à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $A_2 = 2A_1$ : pour un même isotope (même $\lambda$), l'activité
+          $A = \lambda N$ est proportionnelle au nombre de noyaux présents.
+        correct: true
+      - id: B
+        text: |
+          $A_1 = A_2$ : l'activité ne dépend que de l'isotope (de $\lambda$), pas
+          du nombre de noyaux présents.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+        feedback: >
+          $A = \lambda N$ dépend bel et bien de $N$ : à même $\lambda$, deux fois
+          plus de noyaux donnent deux fois plus de désintégrations par seconde.
+          Ce n'est pas $\lambda$ seul qui fixe l'activité, c'est $\lambda N$.
+      - id: C
+        text: |
+          On ne peut pas comparer sans connaître la demi-vie de l'isotope, car
+          c'est elle, et non $\lambda$, qui fixe l'activité.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          La demi-vie et $\lambda$ portent la même information
+          ($t_{1/2} = \ln 2/\lambda$) ; ici $\lambda$ est le même pour les deux
+          échantillons (même isotope), donc seule la différence de $N$ compte :
+          $A = \lambda N$.
+      - id: D
+        text: |
+          Cela dépend des conditions extérieures (température) propres à chaque
+          échantillon.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          $\lambda$ est intrinsèque à l'isotope, identique dans les deux
+          échantillons : la comparaison se fait par $A = \lambda N$, sans aucune
+          condition extérieure.
+    correct_feedback: >
+      $A = \lambda N$ avec le même $\lambda$ : $A_2 = \lambda N_2 = \lambda(2N_1)
+      = 2A_1$. L'activité est proportionnelle au nombre de noyaux présents.
+    solution: |
+      À un instant donné, $A = \lambda N$. Les deux échantillons sont du même
+      isotope, donc partagent la même constante $\lambda$. Avec $N_2 = 2N_1$ :
+      $A_2 = \lambda N_2 = 2\lambda N_1 = 2A_1$. L'activité suit le nombre de
+      noyaux présents, à $\lambda$ fixé.
+
   # ══════════════════════════════════════════════════════════════
   # R5 — principe de la datation
   # ══════════════════════════════════════════════════════════════
@@ -1120,33 +1417,52 @@ items:
       $$t=\frac{1}{\lambda}\ln\!\left(\frac{N_0}{N(t)}\right)=\frac{t_{1/2}}{\ln2}\ln(1/0{,}40)\approx\frac{1{,}3\times10^9}{0{,}693}\times0{,}916\approx1{,}72\times10^9\ \text{ans}$$
 
 # ══════════════════════════════════════════════════════════════
-# COVERAGE SUMMARY (21 items total: DECRO-1..21)
-# Items per rung: R0=3 R1=3 R2=3 R3=3 R4=3 R5=3 R6=3
+# COVERAGE SUMMARY (26 items total: DECRO-1..26)
+# Updated 2026-07-12 by the R6 summit conversion (+5 items: DECRO-22 in R2 ;
+# DECRO-23..26 in R4).
+# Items per rung: R0=3 R1=3 R2=4 R3=3 R4=7 R5=3 R6=3
 # Items per misconception (floor target ≥3):
-#   isotope-confond-neutrons-protons ....... 2   (DECRO-1, 10)
-#   isotope-confond-isobare ................ 1   (DECRO-1)                    [BELOW FLOOR]
-#   element-defini-par-masse ............... 2   (DECRO-1, 10)
-#   instabilite-necessite-grand-noyau ...... 1   (DECRO-2)                    [BELOW FLOOR]
-#   stabilite-ne-depend-que-de-Z ........... 2   (DECRO-2, 10)
-#   conservation-Z-oubliee ................. 2   (DECRO-3, 11)
-#   alpha-se-comporte-comme-beta ........... 2   (DECRO-3, 11)
-#   sens-conservation-inverse .............. 2   (DECRO-3, 11)
-#   gamma-change-Z-comme-beta .............. 1   (DECRO-4)                    [BELOW FLOOR]
-#   gamma-change-A-comme-alpha ............. 1   (DECRO-4)                    [BELOW FLOOR]
-#   gamma-change-isotope ................... 1   (DECRO-4)                    [BELOW FLOOR]
-#   noyau-vieillit .......................... 8   (DECRO-5,7,8,9,12,17,18,21)
-#   noyau-fraicheur-instable ............... 7   (DECRO-5,7,8,9,17,19,20)
-#   lambda-depend-conditions-externes ...... 9   (DECRO-5,7,8,9,12,13,17,18,21)
-#   division-lineaire-demi-vies ............ 7   (DECRO-6,13,14,15,16,19,21)
-#   demi-vie-egale-duree-de-vie-totale ..... 6   (DECRO-6,14,15,16,19,20)
-#   oubli-lambda-dans-exponentielle ........ 8   (DECRO-6,12,13,14,15,16,18,20)
+#   isotope-confond-neutrons-protons ....... 2   (DECRO-1, 10)                [BELOW FLOOR — non-gated backlog]
+#   isotope-confond-isobare ................ 1   (DECRO-1)                    [BELOW FLOOR — non-gated backlog]
+#   element-defini-par-masse ............... 2   (DECRO-1, 10)                [BELOW FLOOR — non-gated backlog]
+#   instabilite-necessite-grand-noyau ...... 1   (DECRO-2)                    [BELOW FLOOR — non-gated backlog]
+#   stabilite-ne-depend-que-de-Z ........... 2   (DECRO-2, 10)                [BELOW FLOOR — non-gated backlog]
+#   conservation-Z-oubliee ................. 3   (DECRO-3, 11, 22)            ✓ [gate: cp-r2-soddy]
+#   alpha-se-comporte-comme-beta ........... 3   (DECRO-3, 11, 22)            ✓ [gate: cp-r2-soddy]
+#   sens-conservation-inverse .............. 3   (DECRO-3, 11, 22)            ✓ [gate: cp-r2-soddy]
+#   gamma-change-Z-comme-beta .............. 1   (DECRO-4)                    [BELOW FLOOR — non-gated backlog]
+#   gamma-change-A-comme-alpha ............. 1   (DECRO-4)                    [BELOW FLOOR — non-gated backlog]
+#   gamma-change-isotope ................... 1   (DECRO-4)                    [BELOW FLOOR — non-gated backlog]
+#   noyau-vieillit .......................... 8   (DECRO-5,7,8,9,12,17,18,21)  ✓ [gate: cp-r0-predict]
+#   noyau-fraicheur-instable ............... 7   (DECRO-5,7,8,9,17,19,20)     ✓ [gate: cp-r0-predict]
+#   lambda-depend-conditions-externes ..... 12   (DECRO-5,7,8,9,12,13,17,18,21,23,24,26)  ✓ [gates: cp-r0-predict, cp-r3-loi, cp-r4-*]
+#   division-lineaire-demi-vies ............ 7   (DECRO-6,13,14,15,16,19,21)  ✓ [gate: cp-r3-loi]
+#   demi-vie-egale-duree-de-vie-totale ..... 6   (DECRO-6,14,15,16,19,20)     ✓
+#   oubli-lambda-dans-exponentielle ........ 8   (DECRO-6,12,13,14,15,16,18,20)  ✓ [gate: cp-r3-loi]
+#   confond-demi-vie-constante-lambda ...... 4   (DECRO-23,24,25,26)          ✓ NEW [gate: cp-r4-demi-vie-lambda]
+#   confond-activite-nombre-noyaux ......... 3   (DECRO-23,25,26)             ✓ NEW [gate: cp-r4-activite-noyaux]
 #
-# GAP — reported, not padded: the R1 (isotope-confond-isobare,
-# instabilite-necessite-grand-noyau) and R2 (all three gamma
-# misconceptions, plus conservation-Z-oubliee / alpha-se-comporte-comme-beta
-# / sens-conservation-inverse at 2) misconceptions stay below the ≥3 floor.
-# The orchestrator's rung quota for this pass allowed only +1 item each for
-# R1 and R2, which cannot alone lift 8 misconceptions from 1-2 to ≥3. A
-# follow-up fan-out targeted at R1/R2 specifically (not bound by the R0/R5/R6
-# quota that dominated this pass) is needed to close this gap honestly.
+# SUMMIT-CONVERSION GATE FLOOR — floor_met: true
+#   Every misconception gated by a checkpoint of THIS conversion is now at ≥3 :
+#     cp-r0-predict          → noyau-vieillit(8), noyau-fraicheur-instable(7),
+#                              lambda-depend-conditions-externes(12)            ✓
+#     cp-r2-soddy            → conservation-Z-oubliee(3),
+#                              alpha-se-comporte-comme-beta(3),
+#                              sens-conservation-inverse(3)                     ✓
+#     cp-r3-loi              → division-lineaire-demi-vies(7),
+#                              oubli-lambda-dans-exponentielle(8),
+#                              lambda-depend-conditions-externes(12)            ✓
+#     cp-r4-activite-noyaux  → confond-activite-nombre-noyaux(3)                ✓
+#     cp-r4-demi-vie-lambda  → confond-demi-vie-constante-lambda(4)             ✓
+#   floor_met: true   (scope: summit-conversion gated misconceptions)
+#
+# PRE-EXISTING R1/R2 BACKLOG — NOT closed by this pass, honestly carried forward
+# (recipe §6: "surfacing a floor_met: false gap is itself a deliverable — do not
+# pad"). The R1 definition/stability models (isotope-confond-neutrons-protons,
+# isotope-confond-isobare, element-defini-par-masse,
+# instabilite-necessite-grand-noyau, stabilite-ne-depend-que-de-Z) and the R2
+# gamma models (gamma-change-Z-comme-beta, gamma-change-A-comme-alpha,
+# gamma-change-isotope) remain at 1–2. NONE of these is gated by any checkpoint
+# of this summit conversion ; closing them is the job of the dedicated R1/R2
+# item fan-out. floor_met (whole-inventory, these 8 non-gated models): false.
 # ══════════════════════════════════════════════════════════════
