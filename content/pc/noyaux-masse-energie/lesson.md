@@ -8,6 +8,8 @@ Le Soleil brille, à peu de choses près avec la même puissance, depuis environ
 
 Avant de lire la suite, engage-toi vraiment sur un chiffre, même approximatif. Imagine que le Soleil ne soit rien d'autre qu'une gigantesque boule de combustible chimique — le meilleur charbon, le meilleur pétrole qu'on puisse imaginer, brûlant dans tout l'oxygène nécessaire. Combien de temps, à ton avis, une masse pareille pourrait-elle continuer à libérer une puissance pareille avant de s'éteindre ? Quelques millions d'années ? Autant que son âge réel, 4,6 milliards d'années ?
 
+[[checkpoint:cp-r0-predict]]
+
 Fais le calcul d'ordre de grandeur toi-même si tu veux : il ne faut que la masse du Soleil, sa puissance rayonnée, et l'énergie libérée par kilogramme dans une combustion ordinaire (quelques dizaines de mégajoules par kilogramme, l'ordre de grandeur du charbon ou de l'essence). Le résultat tient en une poignée de milliers d'années. Quelques milliers d'années — pas des millions, encore moins des milliards.
 
 Le Soleil a pourtant 4,6 milliards d'années, et brille toujours. L'écart entre les deux nombres n'est pas un facteur 2, ni un facteur 10 : c'est un facteur de l'ordre du million. Aucune réaction chimique, aussi énergétique soit-elle, ne peut combler un tel écart. Il se passe au cœur du Soleil quelque chose qui n'a tout simplement rien à voir, en ordre de grandeur, avec le fait de « brûler » au sens chimique.
@@ -53,6 +55,10 @@ $$\frac{1{,}4924\times10^{-10}}{1{,}6022\times10^{-19}} \approx 9{,}315\times10^
 $$\boxed{1\ \text{u} \approx 931{,}5\ \text{MeV}/c^2}$$
 
 Retiens surtout la conclusion pratique, pas le détail des conversions : dès qu'une masse est exprimée en $\text{u}$, on obtient son énergie équivalente en MeV en la multipliant simplement par $931{,}5$. C'est le facteur qu'on utilise pour tout calcul de cette leçon, sans plus jamais repasser par le kilogramme et le joule.
+
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r1-unites]]
 
 ---
 
@@ -110,6 +116,10 @@ $$E_l = 0{,}03039 \times 931{,}5 \approx 28{,}31\ \text{MeV}$$
 
 [[figure:defaut-masse]]
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r2-defaut-masse]]
+
 ---
 
 ## R3 — L'énergie de liaison par nucléon et la courbe d'Aston
@@ -154,6 +164,10 @@ Voici la conséquence directe de cette forme de courbe, et c'est elle qui expliq
 Dans les deux cas — fusion à gauche, fission à droite — la réaction se dirige vers le sommet de la courbe, vers le fer et le nickel, les noyaux les plus stables qui existent. On chiffre précisément cette énergie libérée au rung suivant.
 
 [[figure:courbe-aston]]
+
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r3-par-nucleon]]
 
 ---
 
@@ -219,52 +233,22 @@ Compare : $4\ \text{eV}$ pour une réaction chimique, contre $17{,}6\times10^6\ 
 
 [[figure:nucleaire-vs-chimique]]
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r4-conservation]]
+
 ---
 
-## R5 — Pour t'entraîner
+## R5 — S'entraîner sur un sujet
 
-### Exercice type bac (original — entraînement, non un sujet officiel)
+Le moment de chercher par toi-même. Ce qui suit est un exercice complet de type bac : l'énoncé d'abord, puis, pour chaque question, ta propre tentative avant que ne s'ouvre le raisonnement expert. Cherche sur papier, engage une réponse, puis seulement ouvre le raisonnement et compare-le au tien — c'est cette comparaison qui fait progresser, pas la lecture d'une solution toute faite.
 
-On donne : $m_p = 1{,}00728\ \text{u}$, $m_n = 1{,}00867\ \text{u}$, $m(^{4}_{2}\text{He}) = 4{,}00151\ \text{u}$, $m(^{7}_{3}\text{Li}) = 7{,}01436\ \text{u}$ (masses des noyaux), $1\ \text{u} \approx 931{,}5\ \text{MeV}/c^2$.
+### Exercice de type bac (2020) — désintégration du polonium 210
 
-**1) Calcule le défaut de masse $\Delta m$ et l'énergie de liaison $E_l$ du noyau de lithium 7.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste : le lithium 7 a $Z=3$ et $N=4$ (donc $A=7$) — on applique directement la définition du R2, en comptant bien 3 protons et 4 neutrons, pas 7 nucléons indifférenciés.*
+### Une variation pour ne pas mémoriser
 
-$$\Delta m = 3\,m_p + 4\,m_n - m(^{7}_{3}\text{Li})$$
+Même structure profonde, mais un noyau différent — le radium 226 — et deux gestes neufs par rapport au sujet : l'énergie de liaison **par nucléon** et le **signe** de la variation de masse. Le but n'est pas de recopier le polonium, mais de reconnaître quel geste s'applique.
 
-$$\Delta m = 3\times1{,}00728 + 4\times1{,}00867 - 7{,}01436 = 7{,}05652 - 7{,}01436 = 0{,}04216\ \text{u}$$
-
-$$E_l = 0{,}04216 \times 931{,}5 \approx 39{,}27\ \text{MeV}$$
-
-**2) Calcule $E_l/A$ pour le lithium 7. Ce noyau est-il plus ou moins stable, par nucléon, que l'hélium 4 (R2) ? Où se situe-t-il par rapport à l'hélium sur la courbe d'Aston ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste : c'est $E_l/A$, pas $E_l$, qui permet la comparaison — le lithium a plus de nucléons que l'hélium, donc comparer les $E_l$ brutes serait trompeur (R3).*
-
-$$\frac{E_l}{A} = \frac{39{,}27}{7} \approx 5{,}61\ \text{MeV/nucléon}$$
-
-C'est nettement moins que les $7{,}08\ \text{MeV/nucléon}$ de l'hélium 4 (R2) : malgré ses 3 nucléons de plus, le lithium 7 est **moins** stable par nucléon que l'hélium. Sur la courbe d'Aston, il se situe plus bas que l'hélium — un cas où la courbe n'est pas parfaitement monotone, l'hélium étant un point exceptionnellement haut pour sa masse, comme relevé au R3.
-
-**3) On bombarde un noyau de lithium 7 avec un proton, ce qui produit deux noyaux d'hélium 4 : $^{1}_{1}\text{p} + \ ^{7}_{3}\text{Li} \longrightarrow 2\,^{4}_{2}\text{He}$. Calcule l'énergie libérée par cette réaction.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste : même méthode qu'au R4 — comparer la masse totale des réactifs à celle des produits, pas noyau par noyau. (C'est, historiquement, l'une des toutes premières réactions nucléaires provoquées et mesurées en laboratoire, en 1932 — l'une des premières vérifications expérimentales directes de $E=mc^2$.)*
-
-$$m_{\text{réactifs}} = m_p + m(^{7}_{3}\text{Li}) = 1{,}00728 + 7{,}01436 = 8{,}02164\ \text{u}$$
-
-$$m_{\text{produits}} = 2\,m(^{4}_{2}\text{He}) = 2\times4{,}00151 = 8{,}00302\ \text{u}$$
-
-$$\Delta m = 8{,}00302 - 8{,}02164 = -0{,}01862\ \text{u}$$
-
-$$E = 0{,}01862 \times 931{,}5 \approx 17{,}3\ \text{MeV}$$
-
-**Vérification de cohérence — une seconde méthode.** L'énergie libérée par une réaction peut aussi se retrouver comme la différence entre l'énergie de liaison totale des produits et celle des réactifs (le proton seul n'a aucune énergie de liaison, ce n'est pas un noyau composé) :
-
-$$E = 2\,E_l(^{4}_{2}\text{He}) - E_l(^{7}_{3}\text{Li}) = 2\times28{,}31 - 39{,}27 = 56{,}62 - 39{,}27 \approx 17{,}35\ \text{MeV}$$
-
-Les deux méthodes donnent le même résultat, aux arrondis près : c'est cohérent, puisque les deux ne font, au fond, que comparer les mêmes masses par deux chemins différents.
-
-### À toi de jouer
-
-**Prompt 1.** Le noyau de carbone 12, $^{12}_{6}\text{C}$, a une masse (masse du noyau) $m(^{12}_{6}\text{C}) = 11{,}99671\ \text{u}$. Calcule son défaut de masse, son énergie de liaison, puis son énergie de liaison par nucléon. Compare cette valeur à celle de l'hélium 4 (R2) et à celle du fer 56 ($8{,}79\ \text{MeV/nucléon}$, R3) : le carbone 12 est-il, sur la courbe d'Aston, plus proche du sommet que l'hélium ou que le lithium ?
-
-**Prompt 2.** Une autre réaction de fusion entre noyaux de deutérium produit de l'hélium 3 et un neutron : $^{2}_{1}\text{H} + \ ^{2}_{1}\text{H} \longrightarrow \ ^{3}_{2}\text{He} + \ ^{1}_{0}\text{n}$. On donne $m(^{2}_{1}\text{H}) = 2{,}01355\ \text{u}$, $m(^{3}_{2}\text{He}) = 3{,}01493\ \text{u}$, $m(\text{n}) = 1{,}00867\ \text{u}$. Calcule $\Delta m$ pour cette réaction, précise si de l'énergie est libérée ou absorbée, puis calcule cette énergie en MeV. Compare enfin ce résultat à l'ordre de grandeur d'une réaction chimique (R4) : par quel facteur, environ, cette fusion est-elle plus énergétique ?
+[[exercise:r-variation]]

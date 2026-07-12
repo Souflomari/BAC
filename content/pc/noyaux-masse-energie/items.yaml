@@ -1,6 +1,26 @@
 notion: noyaux-masse-energie
 skill_code: pc_noyaux_masse_energie
-misconceptions: []
+misconceptions:
+  - id: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
+    label: "« Le noyau assemblé n'est pas plus léger, ou la masse manquante disparaît — E=mc² ne relie pas masse et énergie »"
+    description: "L'élève nie le défaut de masse (noyau assemblé aussi lourd ou plus lourd que ses nucléons séparés, ou formule au signe inversé), ou croit que la masse « manquante » d'une réaction est détruite, cachée, ou une erreur de mesure — au lieu d'une conversion masse vers énergie. Peut aussi croire E=mc² réservé aux noyaux."
+    contradicts_principle: "Un noyau lié est toujours plus léger que ses nucléons séparés (Δm = Z·mp + N·mn − m_noyau > 0), et toute masse manquante se retrouve exactement en énergie par la relation universelle et réciproque E = m·c² (donc ΔE = Δm·c²)."
+  - id: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
+    label: "« E_l est une réserve libérable, ou se compare en valeur totale ; la courbe d'Aston et le sens fusion/fission mal lus »"
+    description: "L'élève voit E_l comme une énergie stockée libérable spontanément (au lieu de l'énergie à fournir pour dissocier), compare des E_l totales au lieu de E_l/A, ou lit mal la courbe d'Aston (fusion ou fission « libère toujours », noyaux légers vus comme hauts sur la courbe, fission et fusion confondues)."
+    contradicts_principle: "E_l est l'énergie à fournir pour dissocier un noyau ; pour comparer deux noyaux de tailles différentes on divise par A (E_l/A). Une réaction ne libère de l'énergie que si elle rapproche les noyaux du maximum de la courbe d'Aston (E_l/A croissant vers le fer)."
+  - id: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
+    label: "« Une des deux lois de Soddy oubliée : bilan de A ou de Z incomplet, ou comptage Z/N erroné »"
+    description: "L'élève n'applique qu'une des deux lois de conservation (A ou Z), oublie un réactif dans le bilan de A (le neutron incident), oublie que le neutron a une charge nulle (Z=0), confond A et N en comptant les nucléons, ou croit que le nombre de nucléons peut varier au cours d'une réaction."
+    contradicts_principle: "Les deux lois de Soddy s'appliquent ensemble : conservation de A ET de Z. Un noyau (A,Z)X a Z protons et N=A−Z neutrons ; tout réactif, neutron incident compris, entre dans le bilan, et le nombre total de nucléons est rigoureusement conservé."
+  - id: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+    label: "« Mauvaise manipulation des unités et ordres de grandeur nucléaires (facteur 931,5, MeV vs eV, facteur chimique/nucléaire) »"
+    description: "L'élève oublie le facteur 1 u ≈ 931,5 MeV/c² (traite une valeur en u comme déjà en MeV, ou l'applique tel quel sans multiplier par Δm), confond MeV et eV, utilise u directement dans E=mc² avec c en unités SI, ou se trompe d'ordre de grandeur sur le facteur qui sépare énergie chimique et énergie nucléaire."
+    contradicts_principle: "À l'échelle nucléaire on convertit u en MeV par le facteur 931,5 (jamais u directement avec c en m/s) ; l'énergie nucléaire par réaction dépasse la chimique d'un facteur de l'ordre du million (10⁶ à 10⁸), ni 10 ni 10¹²."
+  - id: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
+    label: "« Signe de Δm mal interprété dans un bilan : Δm>0 vu comme énergie libérée (ou l'inverse), ou réactif/produit oublié »"
+    description: "L'élève inverse le lien entre le signe de Δm = m_produits − m_réactifs et le sens du transfert d'énergie, néglige le signe en ne gardant que la valeur absolue, ou oublie un réactif ou un produit dans le bilan de masse d'une réaction."
+    contradicts_principle: "Δm<0 (produits plus légers) implique une énergie libérée |Δm|·c² ; Δm>0 implique une énergie à fournir et une réaction non spontanée. Le signe décide du sens du transfert ; la valeur absolue n'en donne que la quantité."
 
 items:
   - id: NME-1
@@ -8,6 +28,7 @@ items:
     difficulty_level: 2
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
     stem: >
       Un noyau atomique, une fois ses nucléons assemblés, a une masse
       comparée à la somme des masses de ses nucléons pris séparément (le
@@ -25,6 +46,7 @@ items:
           Sa masse est strictement supérieure à la somme des masses des
           nucléons séparés.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           C'est l'inverse : assembler les nucléons libère de l'énergie
           (via l'interaction forte), et par $E=mc^2$ cette énergie libérée
@@ -33,6 +55,7 @@ items:
       - id: C
         text: "Sa masse est exactement égale à la somme des masses des nucléons séparés."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           Ce serait le cas si l'assemblage ne mettait en jeu aucune
           énergie de liaison — or c'est précisément l'énergie de liaison,
@@ -43,6 +66,7 @@ items:
           Ça dépend du noyau : certains noyaux sont plus lourds, d'autres
           plus légers que la somme de leurs nucléons séparés.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           Le défaut de masse $\Delta m = Zm_p + Nm_n - m_{\text{noyau}}$
           est positif pour tout noyau lié, sans exception — c'est une
@@ -63,6 +87,7 @@ items:
     difficulty_level: 3
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
     stem: >
       Un noyau stable, livré à lui-même, va-t-il spontanément libérer, au
       cours du temps, son énergie de liaison $E_l$ ?
@@ -79,6 +104,7 @@ items:
           Oui, un peu à chaque instant, comme une pile qui se décharge
           lentement.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           $E_l$ n'est pas une réserve d'énergie que le noyau relâche
           spontanément : c'est le prix à payer pour le dissocier. Un noyau
@@ -86,6 +112,7 @@ items:
       - id: C
         text: "Oui, mais seulement si le noyau est chauffé."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           La chaleur (l'agitation thermique) ne mobilise pas l'énergie de
           liaison nucléaire : il faudrait des énergies d'un tout autre
@@ -96,6 +123,7 @@ items:
           Impossible à savoir sans connaître la constante radioactive
           $\lambda$ du noyau.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           $\lambda$ (chapitre précédent) gouverne une désintégration
           radioactive spontanée d'un noyau instable vers un autre noyau —
@@ -118,6 +146,7 @@ items:
     difficulty_level: 3
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
     stem: >
       Le noyau X a une énergie de liaison totale $E_l$ deux fois plus
       grande que celle du noyau Y. Peut-on en conclure que X est plus
@@ -133,6 +162,7 @@ items:
       - id: B
         text: "Oui, une énergie de liaison totale plus grande signifie toujours un noyau plus stable."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           $E_l$ totale grandit presque automatiquement avec la taille du
           noyau (plus de nucléons, plus de liaisons à casser) — elle ne
@@ -144,6 +174,7 @@ items:
           Non, on ne peut rien conclure du tout sans connaître le rapport
           $N/Z$ de chaque noyau.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           Le rapport $N/Z$ (chapitre précédent) renseigne sur la stabilité
           d'un noyau vis-à-vis d'une désintégration radioactive — une
@@ -155,6 +186,7 @@ items:
           Oui, car $E_l$ est proportionnelle à $A$, donc $E_l/A$ serait
           aussi deux fois plus grand pour X.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           $E_l$ n'est pas simplement proportionnelle à $A$ : c'est
           exactement pour ça que la courbe d'Aston n'est pas une droite,
@@ -176,6 +208,7 @@ items:
     difficulty_level: 4
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
     stem: >
       D'après la courbe d'Aston (énergie de liaison par nucléon $E_l/A$ en
       fonction de $A$, croissante puis décroissante avec un maximum vers
@@ -194,6 +227,7 @@ items:
           Parce qu'un noyau plus lourd contient toujours plus de neutrons,
           ce qui le stabilise automatiquement contre la radioactivité.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est confondre deux notions différentes : le rapport $N/Z$
           (chapitre précédent) gouverne la stabilité contre la
@@ -205,6 +239,7 @@ items:
           Parce que la fusion, comme la fission, libère toujours de
           l'énergie, quels que soient les noyaux en jeu.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           Faux en général : fusionner deux noyaux déjà proches du maximum
           de la courbe (ou au-delà) n'en libérerait pas. C'est la position
@@ -216,6 +251,7 @@ items:
           noyaux lourds, donc fusionner les en rapproche du bas de la
           courbe.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est l'inverse : les noyaux très légers ont un $E_l/A$ plus
           PETIT (la courbe grimpe depuis les petits $A$). C'est justement
@@ -237,6 +273,7 @@ items:
     difficulty_level: 2
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
     stem: >
       Un noyau a un défaut de masse $\Delta m = 0{,}010\ \text{u}$. Quelle
       est, en ordre de grandeur, l'énergie de liaison correspondante ?
@@ -248,6 +285,7 @@ items:
       - id: B
         text: "Environ $9{,}3\\ \\text{eV}$."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est un facteur $10^6$ trop petit : le facteur de conversion
           $1\ \text{u} \approx 931{,}5\ \text{MeV}/c^2$ est exprimé en MeV,
@@ -255,6 +293,7 @@ items:
       - id: C
         text: "Environ $0{,}010\\ \\text{MeV}$."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           Ce choix oublie de multiplier $\Delta m$ par le facteur de
           conversion $931{,}5$ — il traite la valeur en $\text{u}$ comme si
@@ -262,6 +301,7 @@ items:
       - id: D
         text: "Environ $931{,}5\\ \\text{MeV}$."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est l'énergie équivalente à $1\ \text{u}$ tout entier, pas à
           $\Delta m = 0{,}010\ \text{u}$. Il faut multiplier $931{,}5$ par
@@ -279,6 +319,7 @@ items:
     difficulty_level: 3
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
     stem: >
       Dans une réaction nucléaire, on calcule $\Delta m = m_{\text{produits}}
       - m_{\text{réactifs}} = +0{,}05\ \text{u}$ (positif). Que peut-on en
@@ -293,6 +334,7 @@ items:
       - id: B
         text: "Cette réaction libère de l'énergie, comme toute réaction nucléaire."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           Un $\Delta m$ positif signifie que les produits sont plus lourds
           que les réactifs — c'est l'inverse d'une libération d'énergie,
@@ -303,6 +345,7 @@ items:
           Le signe de $\Delta m$ n'a pas d'importance : seule sa valeur
           absolue compte pour calculer l'énergie mise en jeu.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           La valeur absolue donne bien l'énergie mise en jeu, mais le
           signe indique si cette énergie est libérée ou doit être
@@ -311,6 +354,7 @@ items:
       - id: D
         text: "Cette réaction est nécessairement une fission, jamais une fusion."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           Le signe de $\Delta m$ renseigne sur le sens du transfert
           d'énergie, pas sur la nature fission/fusion de la réaction :
@@ -335,6 +379,7 @@ items:
     difficulty_level: 1
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
     stem: >
       D'après le raisonnement de l'accroche, pourquoi une combustion
       chimique — même avec le meilleur combustible imaginable, brûlant
@@ -347,6 +392,7 @@ items:
           Parce qu'une réaction chimique, contrairement à une réaction
           nucléaire, ne libère jamais la moindre énergie.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est faux, et ce n'est pas l'argument de l'accroche : une
           combustion chimique libère bel et bien de l'énergie (quelques
@@ -366,6 +412,7 @@ items:
           Parce que la réaction qui alimente le Soleil est en réalité une
           fission de l'hydrogène, et non une combustion.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est confondre fission et fusion : le Soleil est alimenté par
           une fusion (des noyaux légers qui s'assemblent en un noyau plus
@@ -380,6 +427,7 @@ items:
           l'énergie chimique et l'énergie nucléaire par kilogramme
           seraient du même ordre de grandeur.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           Non : l'écart est réel, pas un artefact d'unités. Même
           converties proprement dans les mêmes unités, l'énergie
@@ -406,6 +454,7 @@ items:
     difficulty_level: 1
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
     stem: >
       Dans la réaction de fusion qui alimente le Soleil, la matière
       produite pèse un peu moins lourd que la matière de départ. Où «
@@ -418,6 +467,7 @@ items:
           des rares réactions où de la matière peut disparaître sans
           laisser aucune trace.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           Ce n'est pas une destruction, c'est une conversion : par
           l'équivalence masse-énergie, cette masse ne « disparaît » pas,
@@ -431,6 +481,7 @@ items:
           (neutrons, protons) non comptabilisées dans le bilan, ce qui
           explique la masse manquante.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Le nombre de nucléons (protons + neutrons) est rigoureusement
           conservé dans toute réaction nucléaire : il n'y a pas de
@@ -450,6 +501,7 @@ items:
           trouverait exactement la même masse totale avant et après la
           réaction.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           Ce n'est pas une erreur de mesure : la différence de masse est
           systématique, reproductible, et mesurée avec une précision
@@ -470,6 +522,7 @@ items:
     difficulty_level: 2
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
     stem: >
       L'accroche estime que la combustion chimique de toute la masse du
       Soleil ne tiendrait que quelques milliers d'années, très loin des
@@ -483,6 +536,7 @@ items:
       - id: B
         text: "Environ dix (10)."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est très en dessous de la réalité : l'écart entre l'énergie
           chimique (quelques dizaines de mégajoules par kilogramme) et
@@ -491,6 +545,7 @@ items:
       - id: C
         text: "Environ mille milliards ($10^{12}$)."
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est très au-dessus de la réalité : l'écart, chiffré
           précisément au R4 en comparant électronvolts et
@@ -501,6 +556,7 @@ items:
           Le même facteur qu'entre l'énergie de liaison par nucléon d'un
           noyau léger et d'un noyau lourd, soit environ 2.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est confondre deux comparaisons différentes : le facteur «
           chimique contre nucléaire » (environ un million) mesure l'écart
@@ -526,6 +582,7 @@ items:
     difficulty_level: 2
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
     stem: >
       Un système voit son énergie augmenter de $\Delta E$, sans qu'aucune
       variation de masse ne soit détectable avec une balance ordinaire.
@@ -538,6 +595,7 @@ items:
           indépendantes, et l'une ne peut jamais se transformer en
           l'autre.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           C'est nier le postulat lui-même : $E=mc^2$ s'applique à tout
           système, pas seulement aux noyaux atomiques. La masse et
@@ -551,6 +609,7 @@ items:
           par un système fait nécessairement perdre de la masse à ce
           système.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           C'est le sens inverse : une augmentation d'énergie $\Delta E >
           0$ correspond à une augmentation de masse $\Delta m =
@@ -562,6 +621,7 @@ items:
           qu'aux noyaux atomiques, jamais à un système macroscopique
           comme celui-ci.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           $E=mc^2$ est un postulat général, valable pour tout système,
           quelle que soit son échelle — c'est justement le point du R1.
@@ -592,6 +652,7 @@ items:
     difficulty_level: 3
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
     stem: >
       Un élève calcule l'énergie de liaison d'un noyau à partir de
       $\Delta m = 0{,}020\ \text{u}$ en écrivant directement $E = \Delta m
@@ -605,6 +666,7 @@ items:
           Le résultat est correct, car l'unité u est déjà une unité du
           Système International.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est faux : l'unité de masse atomique u n'est pas une unité du
           Système International — le kilogramme l'est. Utiliser $\Delta
@@ -623,6 +685,7 @@ items:
           exprimer $c$ en kilomètres par seconde plutôt qu'en mètres par
           seconde.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           Changer l'unité de $c$ ne corrige pas le vrai problème : c'est
           l'unité de $\Delta m$ (u au lieu de kg) qui est incompatible
@@ -633,6 +696,7 @@ items:
           l'échelle nucléaire, $\Delta m$ est de toute façon trop petit
           pour donner une énergie mesurable.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           C'est l'inverse : c'est précisément à l'échelle nucléaire que
           $\Delta m$ devient assez grand, relativement à la masse du
@@ -659,6 +723,7 @@ items:
     difficulty_level: 3
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
     stem: >
       Le noyau d'azote 14, $^{14}_{7}\text{N}$, a une masse (masse du
       noyau) $m(^{14}_{7}\text{N}) = 13{,}99923\ \text{u}$. On donne $m_p
@@ -670,6 +735,7 @@ items:
         text: >-
           $\Delta m = 14\,m_p - m(^{14}_{7}\text{N})$
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Ce calcul traite les 14 nucléons comme s'ils étaient tous des
           protons. Or l'azote 14 a $Z=7$ protons et $N=A-Z=7$ neutrons :
@@ -679,6 +745,7 @@ items:
         text: >-
           $\Delta m = m(^{14}_{7}\text{N}) - 7\,m_p - 7\,m_n$
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
         feedback: >
           Le signe est inversé : le défaut de masse se définit comme
           (masse des nucléons séparés) moins (masse du noyau assemblé),
@@ -694,6 +761,7 @@ items:
         text: >-
           $\Delta m = 7\,m_p + 14\,m_n - m(^{14}_{7}\text{N})$
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Ce calcul utilise $N=14$ neutrons au lieu de $N=A-Z=14-7=7$ : il
           confond le nombre de masse $A$ (le nombre total de nucléons)
@@ -717,6 +785,7 @@ items:
     difficulty_level: 4
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
     stem: >
       Un noyau lourd, situé sur la partie descendante de la courbe
       d'Aston (à droite du maximum), se casse en deux noyaux de masse
@@ -733,6 +802,7 @@ items:
           C'est une fusion, car le nombre de noyaux augmente au cours de
           la réaction.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est confondre fission et fusion : la fusion, c'est
           l'assemblage de plusieurs noyaux en un seul plus lourd ; ici
@@ -744,6 +814,7 @@ items:
           C'est une fission, mais elle absorbe de l'énergie, car casser un
           noyau demande toujours de fournir de l'énergie.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           Casser un noyau ne demande de l'énergie que s'il est déjà
           proche du maximum de la courbe d'Aston. Ici, le noyau initial
@@ -755,6 +826,7 @@ items:
           C'est une fission, et l'énergie libérée ne dépend pas de la
           position du noyau initial sur la courbe d'Aston.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est l'inverse : c'est précisément la position du noyau sur la
           courbe d'Aston (avant et après cassure) qui détermine si de
@@ -780,6 +852,7 @@ items:
     difficulty_level: 3
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
     stem: >
       On étudie la réaction de fission suivante, où $X$ est un noyau à
       identifier : $^{1}_{0}\text{n} + \ ^{235}_{92}\text{U}
@@ -790,6 +863,7 @@ items:
       - id: A
         text: "$^{93}_{38}\\text{Sr}$"
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Le bilan de $A$ oublie le neutron incident côté réactifs : $A_X
           = 1 + 235 - 140 - 2 = 94$, pas $235-140-2=93$. Le neutron qui
@@ -798,6 +872,7 @@ items:
       - id: B
         text: "$^{94}_{36}\\text{Kr}$"
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Le bilan de $Z$ est faux : les neutrons ont une charge nulle
           ($Z=0$), donc les « 2 n » du membre de droite ne doivent rien
@@ -809,6 +884,7 @@ items:
           $A$, la conservation de $Z$ n'est pas nécessaire pour identifier
           un noyau.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Les deux lois de conservation (celle de $A$ ET celle de $Z$)
           doivent être vérifiées ensemble pour identifier un noyau sans
@@ -833,6 +909,7 @@ items:
     difficulty_level: 4
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
     stem: >
       Deux noyaux de deutérium fusionnent selon $^{2}_{1}\text{H} + \
       ^{2}_{1}\text{H} \longrightarrow \ ^{3}_{2}\text{He} + \
@@ -846,6 +923,7 @@ items:
           C'est une fission, car l'un des noyaux de départ (le deutérium)
           se retrouve transformé, avec production d'un neutron libre.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est confondre fission et fusion : ici, deux noyaux de départ
           s'assemblent en un seul noyau plus lourd ($^{3}_{2}\text{He}$)
@@ -866,6 +944,7 @@ items:
           des données de masse de chaque réaction particulière, sans lien
           avec une courbe générale de stabilité.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
           C'est précisément la courbe d'Aston (R3) qui permet de prévoir
           si une réaction libère de l'énergie, sans même connaître les
@@ -877,6 +956,7 @@ items:
           C'est une fusion qui libère de l'énergie parce que le nombre
           total de nucléons diminue entre les réactifs et les produits.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Le nombre de nucléons est rigoureusement conservé dans toute
           réaction nucléaire : $2+2=4$ côté réactifs, $3+1=4$ côté
@@ -901,6 +981,7 @@ items:
     difficulty_level: 4
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
     stem: >
       On étudie une autre voie de fission de l'uranium 235, différente de
       celle vue au R4 : $^{1}_{0}\text{n} + \ ^{235}_{92}\text{U}
@@ -918,6 +999,7 @@ items:
           Cette réaction absorbe environ $755{,}5\ \text{MeV}$ (elle ne
           peut pas se produire spontanément).
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           Ce résultat oublie le neutron incident dans la masse des
           réactifs (en ne comptant que $m(^{235}_{92}\text{U})$ seul). Le
@@ -929,6 +1011,7 @@ items:
           Cette réaction absorbe environ $184{,}1\ \text{MeV}$ (elle ne
           peut pas se produire spontanément).
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           La valeur absolue est correcte, mais l'interprétation du signe
           est inversée : $\Delta m = m_{\text{produits}} -
@@ -943,6 +1026,7 @@ items:
         text: >-
           Cette réaction libère environ $0{,}1976\ \text{MeV}$.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           Ce résultat oublie de multiplier $|\Delta m|=0{,}19760\
           \text{u}$ par le facteur de conversion $931{,}5$ : il traite la
@@ -967,6 +1051,7 @@ items:
     difficulty_level: 4
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
     stem: >
       Dans le Soleil, deux noyaux d'hélium 3 fusionnent selon
       $^{3}_{2}\text{He} + \ ^{3}_{2}\text{He} \longrightarrow \
@@ -986,6 +1071,7 @@ items:
         text: >-
           Cette réaction libère environ $951{,}1\ \text{MeV}$.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           Ce résultat ne compte qu'un seul proton produit au lieu de
           deux : l'équation produit $2\,^{1}_{1}\text{H}$, donc
@@ -996,6 +1082,7 @@ items:
           Cette réaction absorbe environ $12{,}8\ \text{MeV}$ (elle ne
           peut pas se produire spontanément).
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           La valeur absolue est correcte, mais le signe de $\Delta m$
           (négatif : les produits sont plus légers que les réactifs)
@@ -1006,6 +1093,7 @@ items:
         text: >-
           Cette réaction libère environ $0{,}01379\ \text{MeV}$.
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
           Ce résultat oublie de multiplier $|\Delta m|=0{,}01379\
           \text{u}$ par le facteur de conversion $931{,}5$ : il donne
@@ -1032,6 +1120,7 @@ items:
     difficulty_level: 4
     skill_code: pc_noyaux_masse_energie
     tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
     stem: >
       Un proton fusionne avec un noyau de bore 11, $^{1}_{1}\text{H} + \
       ^{11}_{5}\text{B} \longrightarrow\ ?$. Laquelle des équations
@@ -1043,6 +1132,7 @@ items:
         text: >-
           $2\,^{4}_{2}\text{He} + \ ^{3}_{2}\text{He}$
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           La conservation de $A$ échoue : $1+11=12$ côté réactifs, mais
           $4+4+3=11$ côté produits — il manque un nucléon. Vérifier $A$
@@ -1051,6 +1141,7 @@ items:
         text: >-
           $2\,^{4}_{2}\text{He} + \ ^{4}_{3}\text{Li}$
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           $A$ est bien conservé ($4+4+4=12=1+11$), mais pas $Z$ :
           $2+2+3=7$ côté produits, contre $1+5=6$ côté réactifs. Les deux
@@ -1060,6 +1151,7 @@ items:
         text: >-
           $2\,^{4}_{2}\text{He} + \ ^{2}_{1}\text{H} + \ ^{1}_{0}\text{n}$
         correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
         feedback: >
           Ni $A$ ($4+4+2+1=11\neq12$) ni $Z$ ($2+2+1+0=5\neq6$) ne sont
           conservés ici : c'est une combinaison de produits choisie sans
@@ -1080,26 +1172,46 @@ items:
       $3\,^{4}_{2}\text{He}$ (une fusion aneutronique, sans neutron émis,
       étudiée pour de futurs réacteurs à fusion).
 
-# ══════════════════════════════════════════════════════════════
-# COVERAGE SUMMARY (18 items total: NME-1..18)
-# Items per rung: R0=3 R1=3 R2=3 R3=3 R4=3 R5=3
+# ══════════════════════════════════════════════════════════════════════════════
+# COVERAGE SUMMARY (summit-conversion campaign — ride-along)
 #
-# No spec.md / formal misconception inventory exists yet for this
-# notion (pedagogy-architect has not authored one) — distractors are
-# tagged informally to the 6 diagnostic categories named in the
-# fan-out brief, via their `feedback` text (no `misconception:` id
-# field, matching this file's pre-existing style). Item-level
-# coverage (an item counts once per category even when several of its
-# distractors target it):
-#   defaut-de-masse / E=Δm·c² (sens, portee) ... NME-1,6,8,10,11,12,16,17 (8)
-#   energie-de-liaison vs par-nucleon .......... NME-2,3,9 (3)
-#   fission-vs-fusion .......................... NME-6,7,13,15 (4)
-#   courbe-d-aston (stabilite, prevision) ...... NME-4,13,15 (3)
-#   conservation-A-Z (lois de Soddy) ........... NME-8,12,14,15,16,17,18 (7)
-#   unites-MeV-u (facteur 931,5) ............... NME-5,7,9,11,16,17 (6)
-# All six categories clear the >=3-items floor. Flag for
-# pedagogy-architect: a real misconception inventory (with stable
-# `mc.physics.noyaux_masse_energie.<slug>` ids, per the rlc_serie /
-# decroissance_radioactive precedent) should still be authored and
-# back-filled onto these distractors before they are treated as a
-# finished diagnostic spine.
+# This end bank (NME-1…18) was authored BEFORE a misconception inventory existed
+# (`misconceptions: []`). The summit-conversion ride-along backfills a real
+# inventory (5 stable `mc.physics.pc_noyaux_masse_energie.<slug>` ids, per the
+# rc_charge / decroissance_radioactive precedent), tags EVERY distractor with a
+# structured `misconception:` field, and adds an item-level `primary_misconception`
+# to each item. Counts below are ITEM-LEVEL (each item counted once, by its
+# `primary_misconception`). The checkpoints.yaml clones are surfaced inline and
+# are NOT counted here (no double-counting).
+#
+# The five checkpoints probe: cp-r0-predict + cp-r1-unites → unites-et-ordres-de-
+# grandeur; cp-r2-defaut-masse → defaut-masse-et-equivalence; cp-r3-par-nucleon →
+# energie-liaison-par-nucleon-et-aston; cp-r4-conservation → conservation-A-Z.
+# ══════════════════════════════════════════════════════════════════════════════
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 18
+  per_misconception:
+    mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence: 3           # NME-1, NME-8, NME-10
+    mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston: 5  # NME-2, NME-3, NME-4, NME-13, NME-15
+    mc.physics.pc_noyaux_masse_energie.conservation-A-Z: 3                      # NME-12, NME-14, NME-18
+    mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur: 4          # NME-5, NME-7, NME-9, NME-11
+    mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan: 3                   # NME-6, NME-16, NME-17
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3   # NME-7, NME-8, NME-9
+    R1: 3   # NME-5, NME-10, NME-11
+    R2: 3   # NME-1, NME-2, NME-12
+    R3: 3   # NME-3, NME-4, NME-13
+    R4: 3   # NME-6, NME-14, NME-15
+    R5: 3   # NME-16, NME-17, NME-18
+  note: >
+    Every distractor now carries a structured `misconception:` field (additive
+    only — no existing stem, feedback, solution, or correct_feedback was deleted
+    or weakened), and every item carries a `primary_misconception`. The five
+    misconceptions each clear the ≥3-item floor (3/5/3/4/3), so floor_met is
+    true. Per-distractor tags may cross-reference a misconception other than the
+    item's primary (e.g. a fission/fusion lure inside a bilan item), which is
+    diagnostic metadata layered onto the item-level primary count; they do not
+    change the coverage method or the counts above.
