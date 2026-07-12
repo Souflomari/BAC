@@ -10,6 +10,8 @@ Mais si, au lieu d'attendre la fin, tu mesurais l'intensité de cette teinte min
 
 Avant de lire la suite, prends position, en une phrase : à quoi ressemblerait cette courbe, à ton avis ? Une droite qui monte à rythme constant, à la même vitesse du début à la fin ? Ou une courbe qui grimpe vite au tout début, puis de plus en plus lentement, jusqu'à devenir presque plate bien avant que tu n'aies arrêté ton chronomètre ?
 
+[[checkpoint:cp-r0-predict]]
+
 [[figure:prediction-avancement]]
 
 Voici ce qu'on observe réellement, si on prend une mesure toutes les minutes : la courbe ne monte JAMAIS à rythme constant. Elle grimpe vite dès les premières minutes, puis ralentit sans cesse, et devient quasiment horizontale largement avant la « fin » que tu chronométrais dans le chapitre précédent. Si tu avais prédit une droite, l'écart avec cette observation est justement ce qu'on va comprendre. Si tu avais deviné le ralentissement, la vraie question commence maintenant : comment transformer cette courbe en un nombre précis — une vitesse, à un instant donné, exprimée dans une unité — plutôt qu'une impression visuelle de « ça ralentit » ?
@@ -120,6 +122,8 @@ $$v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot
 
 Garde cette valeur et ce tableau : ils reviennent dans les rungs suivants.
 
+[[checkpoint:cp-r2-vitesse-tangente]]
+
 *Remarque en passant :* en toute rigueur, une transformation lente s'approche de son état final progressivement, de plus en plus lentement, sans qu'on puisse désigner un instant exact où elle « s'arrête » tout à fait — regarde la dernière ligne du tableau, $x$ s'approche de $x_{max} = 5{,}0\ \text{mmol}$ sans jamais l'atteindre exactement dans ces mesures. En pratique, on considère la transformation terminée dès que $x(t)$ ne varie plus de façon mesurable — dès que la courbe devient horizontale à l'oeil.
 
 ---
@@ -158,6 +162,8 @@ Or regarde le tableau d'avancement de R2 : les quantités de réactifs restants,
 
 Puisque $v$ n'est pas constante, tu ne peux jamais obtenir une vitesse instantanée valable en divisant simplement « la quantité totale produite » par « le temps total écoulé » — ce calcul donnerait une vitesse MOYENNE sur tout l'intervalle, pas la vitesse à un instant précis. Pour connaître $v$ à un instant donné, il faut toujours revenir à la pente locale de la courbe $x(t)$ en ce point — la tangente, ou son estimation par sécante symétrique vue en R2.
 
+[[checkpoint:cp-r3-vitesse-decroit]]
+
 ---
 
 ## R4 — Le temps de demi-réaction $t_{1/2}$
@@ -184,9 +190,13 @@ Remarque : c'est exactement l'instant qu'on a utilisé en R2 pour calculer $v(8\
 
 [[figure:temps-demi-reaction]]
 
+[[checkpoint:cp-r4-demi-reaction]]
+
 ### À quoi sert $t_{1/2}$
 
 $t_{1/2}$ condense en un seul nombre ce qui prendrait sinon toute une courbe à décrire : une durée caractéristique, facile à comparer d'une expérience à l'autre. Reprends les facteurs cinétiques du chapitre précédent : une expérience menée à plus haute température, ou à concentrations initiales plus élevées, atteint son avancement final plus vite — donc son $t_{1/2}$ est plus court. Comparer deux valeurs de $t_{1/2}$ revient ainsi à comparer directement la rapidité de deux transformations, sans avoir à comparer deux courbes entières point par point.
+
+[[checkpoint:cp-r4-facteurs]]
 
 ---
 
@@ -199,56 +209,14 @@ $t_{1/2}$ condense en un seul nombre ce qui prendrait sinon toute une courbe à 
 - $v(t)$ diminue continûment au cours du temps : maximale au début, elle tend vers zéro quand la réaction s'achève — parce que les concentrations des réactifs chutent, donc les chocs efficaces se raréfient (lien avec le chapitre précédent).
 - Le temps de demi-réaction $t_{1/2}$ : l'instant où $x(t_{1/2}) = x_{max}/2$, lu graphiquement ; un repère de durée pratique pour comparer la rapidité de deux transformations.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On étudie la même réaction, $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$, en mélangeant $n_0(S_2O_8^{2-}) = 4{,}0\ \text{mmol}$ d'ions peroxodisulfate avec $n_0(I^-) = 30\ \text{mmol}$ d'ions iodure (en excès), dans un volume total $V = 200\ \text{mL} = 0{,}200\ \text{L}$ supposé constant. Un suivi spectrophotométrique donne :
+À toi. Ce qui suit est le sujet d'examen national **2021 (session normale)** — l'étude cinétique d'une saponification suivie par conductimétrie, le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-| $t$ (min) | $0$ | $5$ | $10$ | $15$ | $20$ | $30$ | $40$ | $60$ |
-|---|---|---|---|---|---|---|---|---|
-| $x$ (mmol) | $0{,}0$ | $1{,}2$ | $2{,}0$ | $2{,}6$ | $3{,}0$ | $3{,}5$ | $3{,}75$ | $3{,}92$ |
+[[exercise:r-bac]]
 
-**1) Dresser le tableau d'avancement et déterminer l'avancement maximal $x_{max}$.**
+### Une variation pour ne pas mémoriser
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie le réactif limitant en comparant, pour chaque réactif, la quantité initiale à son coefficient stoechiométrique — celui qui s'annulerait en premier fixe $x_{max}$.
+Même structure profonde, habillage différent : ici la réaction est suivie par spectrophotométrie (et non par conductimétrie), à partir d'un tableau de mesures de $x(t)$, et l'on estime la vitesse par sécante symétrique (et non sur une tangente déjà tracée). À toi de reconnaître quelle procédure s'applique quand la méthode de suivi et de lecture change.
 
-$S_2O_8^{2-}$ s'annule pour $x = 4{,}0\ \text{mmol}$ ; $I^-$ ne s'annulerait que pour $x = 15\ \text{mmol}$. $S_2O_8^{2-}$ est donc limitant, et (réaction totale) :
-
-$$x_{max} = 4{,}0\ \text{mmol}$$
-
-Cohérent avec le tableau de mesures, qui s'approche bien de $3{,}9\text{-}4{,}0\ \text{mmol}$ aux temps longs.
-
-**2) La tangente à la courbe $x(t)$ en $t=10\ \text{min}$ passe par les points $(5\ \text{min} ; 1{,}2\ \text{mmol})$ et $(15\ \text{min} ; 2{,}6\ \text{mmol})$. Calculer $v(10\ \text{min})$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la tangente est donnée directement par deux de ses points — on calcule sa pente, puis on divise par $V$, jamais l'inverse.
-
-$$\text{pente} = \frac{2{,}6 - 1{,}2}{15 - 5} = \frac{1{,}4}{10} = 0{,}14\ \text{mmol/min}$$
-
-$$v(10\ \text{min}) = \frac{1}{V}\times\text{pente} = \frac{0{,}14\times10^{-3}}{0{,}200\times 60}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
-
-$$v(10\ \text{min}) \approx 1{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
-
-**3) Déterminer graphiquement le temps de demi-réaction $t_{1/2}$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* $t_{1/2}$ correspond à $x = x_{max}/2$ ; on cherche cette valeur directement dans le tableau plutôt que de la deviner.
-
-$$\frac{x_{max}}{2} = \frac{4{,}0}{2} = 2{,}0\ \text{mmol}$$
-
-Le tableau donne $x(10\ \text{min}) = 2{,}0\ \text{mmol}$ exactement, donc :
-
-$$t_{1/2} = 10\ \text{min}$$
-
-**4) Sachant que la tangente en $t=30\ \text{min}$ passe par les points $(20\ \text{min} ; 3{,}0\ \text{mmol})$ et $(40\ \text{min} ; 3{,}75\ \text{mmol})$, calculer $v(30\ \text{min})$, comparer à $v(10\ \text{min})$, et expliquer l'écart à l'aide du modèle des chocs efficaces.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* même méthode de calcul qu'en question 2 ; la comparaison doit ensuite être interprétée avec le mécanisme du chapitre précédent, pas seulement constatée numériquement.
-
-$$\text{pente} = \frac{3{,}75 - 3{,}0}{40 - 20} = \frac{0{,}75}{20} = 0{,}0375\ \text{mmol/min}$$
-
-$$v(30\ \text{min}) = \frac{1}{V}\times\text{pente} \approx 3{,}1\times10^{-6}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
-
-$v(30\ \text{min})$ est environ $3{,}7$ fois plus petite que $v(10\ \text{min})$. Entre ces deux instants, les réactifs ont continué à être consommés : leurs concentrations ont diminué, donc les entités réactives se croisent moins souvent, donc les chocs efficaces par seconde se raréfient — la vitesse volumique de réaction chute, exactement comme prévu par le modèle établi au chapitre précédent.
-
-### À toi
-
-**Variation 1.** On étudie la réaction entre le zinc et l'acide chlorhydrique, qui dégage du dihydrogène gazeux : $Zn + 2H^+ \rightarrow Zn^{2+} + H_2$. On recueille le gaz formé dans une éprouvette renversée sur l'eau, et on mesure son volume $V_{gaz}$ minute après minute. Justifie pourquoi cette méthode de suivi convient à cette réaction (et pas, par exemple, la spectrophotométrie), puis décris, sans calcul, l'allure attendue de la courbe $V_{gaz}(t)$ et explique comment tu situerais un $t_{1/2}$ sur cette courbe.
-
-**Variation 2.** Deux expériences identiques étudient la même transformation lente, sauf que la seconde est menée à une température plus élevée que la première. Sans aucun calcul, indique laquelle des deux a le $t_{1/2}$ le plus court, et justifie ta réponse en combinant les facteurs cinétiques du chapitre précédent (effet de la température sur les chocs efficaces) et la définition graphique de $t_{1/2}$ vue dans ce chapitre.
+[[exercise:r-variation]]

@@ -16,6 +16,8 @@ Voici le montage qu'on va étudier, et il change une seule chose - décisive. Ce
 
 Avant de lire la suite, prends position : à ton avis, cette même réaction va-t-elle encore se produire, maintenant que le zinc et les ions $Cu^{2+}$ sont séparés dans deux béchers distincts, sans aucun contact direct ? Et si oui, qu'est-ce que cette séparation change, par rapport au contact direct que tu avais observé ?
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce qu'on observe : l'ampèremètre dévie. Un courant électrique circule dans le fil. Avec ce montage, tu peux allumer une petite diode électroluminescente, ou faire tourner un moteur miniature - précisément l'énergie que le contact direct, lui, laissait échapper en chaleur.
 
 Chimiquement, c'est très exactement la même réaction que par contact direct : le zinc cède des électrons, les ions $Cu^{2+}$ les captent. Mais cette fois, au lieu de sauter d'une espèce à l'autre au point de contact et de s'y dissiper en chaleur, les électrons sont forcés de faire le tour par le fil - et ce trajet organisé, dirigé, c'est du courant électrique récupérable, utilisable.
@@ -118,6 +120,8 @@ Reprends la pile Daniell du rung 2. On a établi que $Q_{r,i} < K$, donc le zinc
 
 Un voltmètre branché entre les deux lames, avec sa borne rouge sur le cuivre et sa borne noire sur le zinc, doit donc afficher une valeur positive - c'est bien ce qu'on observe expérimentalement sur une pile Daniell en fonctionnement.
 
+[[checkpoint:cp-r3-anode-cathode]]
+
 ---
 
 ## R4 — Sens du courant, sens des électrons : deux flèches opposées
@@ -149,6 +153,8 @@ Sur le schéma de la pile Daniell : la lame de zinc est plongée dans le bécher
 Le zinc (à gauche) est l'anode, borne $-$. Le cuivre (à droite) est la cathode, borne $+$. Dans le fil au-dessus des béchers : les électrons partent de la lame de zinc, traversent l'ampèremètre, et arrivent à la lame de cuivre - de gauche à droite. Le courant conventionnel, affiché par l'ampèremètre, circule en sens inverse : de la lame de cuivre vers la lame de zinc - de droite à gauche.
 
 [[figure:courant-vs-electrons]]
+
+[[checkpoint:cp-r4-courant-electrons]]
 
 ---
 
@@ -226,6 +232,10 @@ Le calcul qu'on vient de faire dit le contraire, très concrètement : chaque co
 
 On retrouve d'ailleurs cette usure dans le langage du rung 2 : à mesure que la pile fonctionne, $[Zn^{2+}]$ augmente et $[Cu^{2+}]$ diminue dans les deux demi-piles, donc $Q_{r,i} = [Zn^{2+}]/[Cu^{2+}]$ ne cesse d'augmenter - exactement comme pour n'importe quel système qui évolue dans le sens direct, comme tu l'as vu dans le chapitre sur l'état d'équilibre. Et à mesure que $Q_{r,i}$ se rapproche de $K$, l'écart qui alimentait la f.é.m. (rung 5) se réduit : la tension aux bornes de la pile faiblit, jusqu'à devenir trop petite pour débiter un courant utile. La pile est alors « usée » - non pas cassée, mais chimiquement épuisée, son système ayant rejoint (ou presque) l'équilibre $Q_{r,i} = K$.
 
+[[checkpoint:cp-r6-quantite-electricite]]
+
+[[checkpoint:cp-r6-usure-qr-k]]
+
 ---
 
 ## R7 — Pour t'entraîner
@@ -240,52 +250,14 @@ On retrouve d'ailleurs cette usure dans le langage du rung 2 : à mesure que la 
 - La f.é.m. $E = V_+ - V_-$ mesure la tension à vide de la pile.
 - La quantité d'électricité débitée vérifie $Q = I\,\Delta t = n(e^-)\,F$ ; elle chiffre la consommation réelle des réactifs, donc l'usure de la pile.
 
-### Exercice de type bac (original - entraînement, non un sujet officiel)
+### Exercice de type bac (2020)
 
-On réalise une pile Daniell avec une demi-pile $Zn^{2+}/Zn$ ($V = 100\ \text{mL}$, $[Zn^{2+}]_i = 5{,}0\times10^{-2}\ \text{mol/L}$) et une demi-pile $Cu^{2+}/Cu$ ($V = 100\ \text{mL}$, $[Cu^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$), reliées par un pont salin. On donne, pour la réaction entre le zinc et les ions cuivre(II), à la température de l'expérience : $K \approx 1{,}8\times10^{37}$. On donne aussi $F \approx 9{,}65\times10^{4}\ \text{C/mol}$ et $M(Zn) = 65{,}4\ \text{g/mol}$.
+Place-toi en conditions d'examen sur un vrai sujet national : l'Exercice I, Partie 2 de la session normale 2020 (examen national PC BIOF). Il porte sur une pile **argent-chrome**, différente de la pile Daniell qui a servi de fil rouge à toute la leçon - et c'est justement l'intérêt : le jour du bac, tu appliques le même raisonnement à une pile jamais vue en cours. Pour chaque question, cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Écris les deux demi-équations électroniques des couples $Zn^{2+}/Zn$ et $Cu^{2+}/Cu$, puis l'équation de la réaction entre le zinc métallique et les ions cuivre(II).**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on écrit chaque couple sous sa forme réduction (rung 1), puis on combine les deux - exactement comme on combine deux demi-équations acido-basiques, sauf qu'ici ce sont des électrons, pas des protons, qui s'annulent dans la somme.
+### Une variation pour ne pas mémoriser
 
-$$Zn^{2+} + 2\,e^- \rightleftharpoons Zn \qquad\qquad Cu^{2+} + 2\,e^- \rightleftharpoons Cu$$
+Même structure profonde, une autre pile (zinc-argent) et une donnée en moins : à toi de reconnaître quelle procédure s'applique, sans pouvoir recopier le sujet précédent.
 
-$$Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$$
-
-**2) Calcule $Q_{r,i}$ à l'instant initial, compare-le à $K$, et déduis-en le sens d'évolution spontané : quelle espèce est oxydée, quelle espèce est réduite ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le critère du rung 2, avec les concentrations initiales de l'énoncé.
-
-$$Q_{r,i} = \frac{[Zn^{2+}]_i}{[Cu^{2+}]_i} = \frac{5{,}0\times10^{-2}}{1{,}0\times10^{-1}} = 0{,}50$$
-
-$Q_{r,i} = 0{,}50 \ll K \approx 1{,}8\times10^{37}$ : le système évolue dans le sens direct. Le zinc est oxydé, les ions $Cu^{2+}$ sont réduits.
-
-**3) Nomme l'anode et la cathode de cette pile, précise leur polarité, et indique le sens de circulation des électrons puis du courant dans le circuit extérieur.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement les rungs 3 et 4, dans l'ordre - électrode, puis polarité, puis sens réel (électrons), puis sens conventionnel (courant) déduit par inversion.
-
-Le zinc s'oxyde : c'est l'anode, borne $-$. Le cuivre se réduit : c'est la cathode, borne $+$. Dans le circuit extérieur, les électrons circulent de l'électrode de zinc vers l'électrode de cuivre (de $-$ vers $+$) ; le courant conventionnel circule en sens inverse, de l'électrode de cuivre vers l'électrode de zinc (de $+$ vers $-$).
-
-**4) La pile débite un courant supposé constant $I = 150\ \text{mA}$ pendant $\Delta t = 2\ \text{h}\ 00$. Calcule la quantité d'électricité $Q$ débitée, la quantité de matière d'électrons échangés $n(e^-)$, puis la masse de zinc consommée pendant cette durée.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* même démarche qu'au rung 6 - convertir $I$ et $\Delta t$ en charge, la charge en moles d'électrons, puis les électrons en moles de zinc via la stœchiométrie de la demi-équation de la question 1, et enfin en masse.
-
-$$Q = I\,\Delta t = 0{,}150 \times 7200 = 1080\ \text{C}$$
-
-$$n(e^-) = \frac{Q}{F} = \frac{1080}{9{,}65\times10^{4}} \approx 1{,}12\times10^{-2}\ \text{mol}$$
-
-$$n(Zn) = \frac{n(e^-)}{2} \approx 5{,}6\times10^{-3}\ \text{mol}$$
-
-$$m(Zn) = n(Zn) \times M(Zn) \approx 0{,}37\ \text{g}$$
-
-**5) Justifie, à partir de ce calcul, pourquoi cette pile finira, tôt ou tard, par ne plus débiter de courant utile - même si le pont salin fonctionne parfaitement tout du long.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on relie la consommation chiffrée en question 4 à l'argument qualitatif du rung 6 - une masse finie de réactif, et un $Q_{r,i}$ qui se rapproche inexorablement de $K$.
-
-La lame de zinc contient une masse finie de métal. Chaque coulomb débité en consomme une fraction précise (question 4) : au bout d'un temps suffisant, la concentration en $Zn^{2+}$ aura suffisamment augmenté (et celle en $Cu^{2+}$ suffisamment diminué) pour que $Q_{r,i}$ se rapproche fortement de $K$, ou pour que tout le zinc disponible ait été oxydé. Dans les deux cas, la f.é.m. de la pile s'effondre progressivement, jusqu'à ne plus pouvoir imposer de courant utile dans un circuit extérieur : la pile est usée.
-
-### À toi
-
-**Variation 1.** On réalise une pile Daniell avec $[Zn^{2+}]_i = 2{,}0\times10^{-3}\ \text{mol/L}$ et $[Cu^{2+}]_i = 4{,}0\times10^{-2}\ \text{mol/L}$, $K \approx 1{,}8\times10^{37}$ pour la même réaction. Calcule $Q_{r,i}$, compare-le à $K$, nomme l'anode et la cathode avec leur polarité, puis calcule la masse de cuivre déposée à la cathode si la pile débite un courant constant $I = 80\ \text{mA}$ pendant $\Delta t = 3\ \text{h}$ (donnée : $M(Cu) = 63{,}5\ \text{g/mol}$).
-
-**Variation 2.** Un camarade affirme : « L'anode, c'est là où se produit l'oxydation - et l'oxydation, ça libère de l'énergie dans le circuit, donc l'anode doit être la borne positive. » Explique pourquoi ce raisonnement est faux, en t'appuyant sur le mécanisme du rung 3 (le sens de circulation des électrons à chaque électrode, pas une impression sur ce que le mot « oxydation » évoque).
+[[exercise:r-variation]]

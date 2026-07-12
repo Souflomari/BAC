@@ -12,6 +12,8 @@ Avant de lire la suite, prends position, vraiment, par écrit si tu peux : le no
 
 Garde ta réponse en tête. On va la tester directement — pas dans l'abstrait, mais avec les faits que la physique nucléaire a établis sur ce phénomène précis.
 
+[[checkpoint:cp-r0-predict]]
+
 Et voici le paradoxe qu'on va devoir démêler : à l'échelle d'un seul noyau, l'instant de la désintégration est totalement imprévisible — personne, avec aucune mesure, aussi précise soit-elle, ne peut dire « celui-ci va se désintégrer dans 4 secondes ». Et pourtant, si tu comptes le nombre de noyaux restants dans un grand échantillon au cours du temps, tu obtiens une courbe parfaitement lisse, reproductible, et calculable à l'avance avec une précision redoutable. Individuellement imprévisible. Collectivement, une loi d'une précision totale.
 
 C'est cette tension — hasard individuel, loi collective exacte — qu'on va construire pas à pas : d'abord pourquoi un noyau est stable ou ne l'est pas, ensuite ce qu'il fait pour se stabiliser, et enfin la loi mathématique qui décrit sans exception le déclin d'une population de noyaux radioactifs — une loi qui te permettra, à la fin de cette leçon, de dater un objet vieux de plusieurs milliers d'années.
@@ -137,6 +139,8 @@ Remarque ce qui ne change PAS ici : ni $A$ ni $Z$. Le rayonnement $\gamma$ ne tr
 
 Un rayonnement $\gamma$ change-t-il l'élément chimique du noyau qui l'émet ? Réponds avant de tourner la page mentale : non — $Z$ ne change pas, donc l'élément reste le même. C'est précisément l'erreur qu'on va croiser dans les items de cette leçon : confondre « rayonnement » et « transformation ».
 
+[[checkpoint:cp-r2-soddy]]
+
 ---
 
 ## R3 — Un phénomène aléatoire : la loi de décroissance $N(t) = N_0 e^{-\lambda t}$
@@ -209,6 +213,8 @@ $$\frac{N(1000)}{N_0} \approx 0{,}886$$
 
 Après 1000 ans, environ 88,6 % des noyaux de carbone 14 initialement présents n'ont pas encore désintégré. Ni plus, ni moins — la loi ne dit rien sur *lesquels* : elle donne uniquement une proportion, valable pour n'importe quel sous-ensemble suffisamment grand de l'échantillon.
 
+[[checkpoint:cp-r3-loi]]
+
 ---
 
 ## R4 — Activité, demi-vie et constante de temps
@@ -226,6 +232,8 @@ $$A(t) = A_0 \, e^{-\lambda t}$$
 Son unité est le **becquerel** (Bq), qui vaut une désintégration par seconde. C'est l'activité, pas $N(t)$ lui-même, qu'on mesure en pratique — un détecteur compte des clics, pas des noyaux.
 
 *(Attention à un piège de notation, pas de physique : la lettre $A$ désigne ici l'activité, alors qu'ailleurs dans cette leçon $A$ désigne le nombre de nucléons. Les deux usages sont standards ; le contexte lève toujours l'ambiguïté.)*
+
+[[checkpoint:cp-r4-activite-noyaux]]
 
 ### La demi-vie $t_{1/2}$
 
@@ -262,6 +270,8 @@ $$t_{1/2} = \tau \ln 2 \approx 0{,}693 \, \tau$$
 La demi-vie est donc plus courte que la constante de temps ($\ln 2 < 1$). Après une durée $\tau$, il reste $N_0 e^{-1} \approx 37\%$ des noyaux — pas 50 %, ce chiffre-là correspond à $t_{1/2}$, pas à $\tau$. En pratique, on considère qu'un échantillon a quasiment fini de désintégrer après une dizaine de demi-vies (moins de 0,1 % restant).
 
 [[figure:tangente-tau]]
+
+[[checkpoint:cp-r4-demi-vie-lambda]]
 
 ### Exemple — l'iode 131
 
@@ -317,44 +327,14 @@ Tant qu'un organisme est vivant (une plante, un arbre, un animal), il renouvelle
 
 ## R6 — Pour t'entraîner
 
-### Exercice type bac
+### Exercice de type bac
 
-Un fragment de bois retrouvé sur un site archéologique est analysé. On donne, pour le carbone 14 : $t_{1/2} = 5730$ ans. L'activité d'un échantillon de bois vivant de même masse, prise comme référence, vaut $A_0$. L'activité mesurée aujourd'hui sur le fragment retrouvé vaut $A = \dfrac{A_0}{4}$.
+Un exercice national complet sur la décroissance : équation de désintégration $\alpha$, lecture graphique de la demi-vie, constante radioactive, nombre de noyaux, durée de fonctionnement. Sur chaque question, prends position — pose ton geste **avant** de dérouler le raisonnement d'expert.
 
-**1) Écris la composition du noyau de carbone 14, et donne son équation de désintégration.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste : avant tout calcul, on fixe qui sont les objets physiques en jeu — c'est la donnée dont dépend tout le reste de l'exercice.*
+### Une variation pour ne pas mémoriser
 
-Le carbone 14 s'écrit $^{14}_{6}\text{C}$ : $Z=6$ protons, $A=14$ nucléons, donc $N = 14 - 6 = 8$ neutrons. C'est un isotope du carbone (même $Z=6$) plus riche en neutrons que le carbone 12 stable — c'est cet excès de neutrons qui le rend instable, comme établi au R1.
+Même structure profonde, habillage changé : désintégration $\beta^-$ au lieu de $\alpha$, contexte médical au lieu du stimulateur, et une question finale sur l'activité **restante** plutôt que sur la fraction désintégrée. À toi de reconnaître quelle procédure s'applique — pas de recopie possible.
 
-C'est un émetteur $\beta^-$ (un neutron excédentaire se transforme en proton) :
-
-$$^{14}_{6}\text{C} \longrightarrow \ ^{14}_{7}\text{N} + \ ^{0}_{-1}\text{e}$$
-
-**2) Calcule la constante radioactive $\lambda$ du carbone 14.**
-
-*Ce qu'on cherche ici : $\lambda$ n'est pas donné directement, mais $t_{1/2}$ l'est — la relation entre les deux, établie au R4, permet de passer de l'un à l'autre immédiatement.*
-
-$$\lambda = \frac{\ln 2}{t_{1/2}} = \frac{\ln 2}{5730} \approx 1{,}21 \times 10^{-4}\ \text{an}^{-1}$$
-
-**3) Détermine l'âge du fragment de bois.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste : on connaît le rapport $A/A_0 = 1/4$ et $\lambda$ ; c'est exactement la situation de la formule de datation du R5 — mais ici le rapport est une puissance de $\dfrac{1}{2}$, donc on peut vérifier le résultat de deux façons.*
-
-Première méthode — par la formule générale :
-
-$$t = \frac{1}{\lambda}\ln\!\left(\frac{A_0}{A}\right) = \frac{1}{\lambda}\ln(4)$$
-
-$$t = \frac{\ln 4}{1{,}21\times 10^{-4}} \approx \frac{1{,}386}{1{,}21\times 10^{-4}} \approx 11\,460\ \text{ans}$$
-
-Deuxième méthode — par comptage direct des demi-vies, pour vérifier : $\dfrac{1}{4} = \left(\dfrac{1}{2}\right)^2$, donc 2 demi-vies se sont écoulées :
-
-$$t = 2 \times t_{1/2} = 2 \times 5730 = 11\,460\ \text{ans}$$
-
-Les deux méthodes donnent exactement le même résultat — ce qui confirme que la formule générale du R5 et le raisonnement par demi-vies successives du R4 disent la même chose, vue sous deux angles différents. Le fragment de bois a environ 11 460 ans.
-
-### À toi de jouer
-
-**Prompt 1.** Le même laboratoire analyse un second fragment, provenant d'un site différent. Cette fois, l'activité mesurée vaut $A = 0{,}10 \times A_0$ (10 % de l'activité de référence). Détermine l'âge de ce second fragment. (Ici, le rapport n'est pas une puissance simple de $\frac12$ — tu devras passer par la formule générale avec le logarithme.)
-
-**Prompt 2.** Un échantillon d'iode 131 ($t_{1/2} = 8$ jours), utilisé pour un examen médical, est préparé avec une activité initiale $A_0$. Calcule sa constante radioactive $\lambda$, puis détermine au bout de combien de jours son activité sera tombée à $5\%$ de $A_0$.
+[[exercise:r-variation]]

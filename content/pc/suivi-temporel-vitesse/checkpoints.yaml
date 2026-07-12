@@ -1,0 +1,359 @@
+notion: suivi-temporel-vitesse
+skill_code: pc_suivi_temporel_vitesse
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — suivi-temporel-vitesse)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict          (in R0)     — COMMIT gate: turns the rhetorical
+#                                        « prends position » (droite vs courbe
+#                                        concave) into a real MCQ before the
+#                                        reveal. Probes allure-vitesse-fausse.
+#   cp-r2-vitesse-tangente (after R2)  — rupture gate: v = pente de la tangente
+#                                        DIVISÉE PAR V (le 1/V, pas la pente
+#                                        seule). Probes vitesse-mal-reliee-a-la-pente.
+#   cp-r3-vitesse-decroit  (after R3)  — rupture gate: v(t) MAXIMALE au début,
+#                                        DÉCROÎT vers zéro. Probes allure-vitesse-fausse.
+#   cp-r4-demi-reaction    (after R4)  — rupture gate: t½ = instant où x = x_max/2
+#                                        (pas la moitié de la durée). Probes
+#                                        demi-reaction-mal-definie.
+#   cp-r4-facteurs         (after R4)  — rupture gate: facteur cinétique
+#                                        température → t½ plus court. Probes
+#                                        facteurs-cinetiques-mal-appliques.
+#
+# Clone note: cp-r2-vitesse-tangente clones STV-3's stem, cp-r3-vitesse-decroit
+# clones STV-5's, cp-r4-demi-reaction clones STV-6's, cp-r4-facteurs clones
+# STV-15's. Distractors are curated so EVERY distractor carries a named
+# misconception tag. cp-r0-predict is an original commit item (not in the end
+# bank). No end-bank tally is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: transformation lente / cinétique (2ème Bac PC). Suivi temporel,
+# vitesse volumique v = (1/V)(dx/dt), temps de demi-réaction, facteurs
+# cinétiques (concentration, température) via le modèle des chocs efficaces.
+# Volume supposé constant ; pas de loi de vitesse d'ordre, pas d'énergie
+# d'activation, pas d'Arrhenius, pas de mécanisme réactionnel détaillé.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns « prends position » (droite à rythme constant vs courbe
+  #        qui grimpe puis ralentit) into a real MCQ commit before the
+  #        reveal. Probes allure-vitesse-fausse (la droite / vitesse
+  #        constante — le modèle naïf nommé dans R0).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_suivi_temporel_vitesse
+    tags: [checkpoint, formative, misconception_driven, pc_suivi_temporel_vitesse, hook_commit]
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On mélange les réactifs d'une transformation lente et on mesure la
+      quantité de produit formé, minute après minute, dès l'instant du mélange.
+      **À quoi va ressembler la courbe d'avancement $x(t)$ ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle monte vite au début, puis de plus en plus lentement, jusqu'à devenir presque plate : une courbe concave."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni droite, ni accélération. La vraie
+          question commence maintenant : **pourquoi** la montée ralentit-elle, et
+          comment transformer « ça ralentit » en un **nombre** — une vitesse, à un
+          instant donné, dans une unité ? C'est toute la leçon.
+
+      - id: B
+        text: "Une droite qui monte à rythme constant, au même rythme du début à la fin : la réaction avance à vitesse constante."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: |
+          Modèle détecté : « la réaction avance à vitesse constante », comme une
+          voiture à vitesse fixe. C'est la prédiction la plus fréquente — et les
+          mesures vont dans l'autre sens. Regarde la trace réelle juste en
+          dessous : $x$ grimpe vite au début, puis de moins en moins vite. Une
+          droite est directement contredite par des points de plus en plus
+          rapprochés en fin de course.
+
+      - id: C
+        text: "Une courbe qui monte de plus en plus vite : la réaction accélère à mesure qu'elle avance."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: |
+          Modèle détecté : une réaction qui s'emballe. C'est l'inverse de la
+          réalité : la pente de $x(t)$ est la plus raide **au tout début**
+          (réactifs les plus concentrés) et ne fait que diminuer ensuite. Rien
+          n'accélère la réaction ici — au contraire, elle consomme ses propres
+          réactifs et se ralentit elle-même.
+
+      - id: D
+        text: "Une courbe qui reste plate un moment, puis grimpe brutalement quand la réaction « démarre »."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: |
+          Modèle détecté : un « seuil » de démarrage. Il n'y en a pas : dès le
+          mélange des réactifs, la transformation avance — et c'est même là
+          qu'elle est la plus rapide. Pas de palier initial à zéro : la courbe
+          part vers le haut immédiatement.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-vitesse-tangente | placed AFTER R2
+  #        Rupture gate: la vitesse volumique = pente de la tangente à
+  #        x(t) DIVISÉE PAR V — le 1/V n'est pas optionnel. Clone of
+  #        STV-3's stem. Probes vitesse-mal-reliee-a-la-pente.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-vitesse-tangente
+    rung: "R2"
+    habilete: application_experimentale
+    skill_code: pc_suivi_temporel_vitesse
+    tags: [checkpoint, formative, misconception_driven, pc_suivi_temporel_vitesse, document_experimental]
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+    item_source: clone_of_STV-3
+    lesson_placement: after_R2
+
+    stem: |
+      On a tracé la courbe d'avancement $x(t)$ et on veut la vitesse volumique de
+      réaction $v$ à un instant $t$. On a lu la pente de la tangente à $x(t)$ en
+      ce point. **Que faut-il en faire pour obtenir $v$ ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Diviser cette pente par le volume $V$ du mélange : $v = \\dfrac{1}{V}\\dfrac{dx}{dt}$."
+        correct: true
+        feedback: |
+          Exact. La pente de la tangente, c'est $\dfrac{dx}{dt}$ ; la vitesse
+          **volumique** la divise par $V$ pour ne plus dépendre de la taille de
+          l'échantillon. En pratique : pente en $\text{mol.s}^{-1}$, puis on
+          divise par $V$ — jamais l'inverse.
+
+      - id: B
+        text: "Rien de plus : la pente de la tangente EST la vitesse volumique, $v = \\dfrac{dx}{dt}$."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: |
+          Modèle détecté : oubli du facteur $1/V$. La pente seule, $\dfrac{dx}{dt}$,
+          dépend de la quantité totale de matière — donc de la taille de
+          l'échantillon. C'est justement pour l'éliminer qu'on divise par $V$ :
+          sans cette division, ce n'est pas la vitesse volumique de réaction.
+
+      - id: C
+        text: "La multiplier par $V$ : $v = V\\dfrac{dx}{dt}$."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: |
+          Modèle détecté : bon facteur, mauvais sens. Multiplier par $V$ accentue
+          encore la dépendance à la taille de l'échantillon, à l'opposé de l'effet
+          recherché. C'est **diviser** par $V$ qu'il faut, comme pour passer d'une
+          quantité de matière à une concentration.
+
+      - id: D
+        text: "Prendre plutôt la pente de la corde reliant le premier et le dernier point de la courbe."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: |
+          Modèle détecté : confusion entre vitesse instantanée et vitesse moyenne.
+          La corde entre les extrémités donne une vitesse **moyenne** sur toute la
+          transformation, pas la vitesse à l'instant $t$. Pour la vitesse à un
+          instant précis, c'est la pente **locale** (la tangente en ce point),
+          divisée par $V$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-vitesse-decroit | placed AFTER R3
+  #        Rupture gate: v(t) est MAXIMALE au début et DÉCROÎT vers zéro.
+  #        Clone of STV-5's stem. Probes allure-vitesse-fausse (+ une
+  #        distractrice sur la mauvaise cause du ralentissement).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-vitesse-decroit
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_suivi_temporel_vitesse
+    tags: [checkpoint, formative, misconception_driven, pc_suivi_temporel_vitesse]
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    item_source: clone_of_STV-5
+    lesson_placement: after_R3
+
+    stem: |
+      Au cours d'une transformation lente typique, sans intervention extérieure
+      (volume et température constants), comment évolue la vitesse volumique de
+      réaction $v(t)$ entre le début et la fin ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle est maximale au tout début, puis diminue continûment en tendant vers zéro quand la réaction s'achève."
+        correct: true
+        feedback: |
+          Exact. Au premier instant, les réactifs sont les plus concentrés : les
+          chocs efficaces sont les plus fréquents, donc $v$ est maximale. À mesure
+          que les réactifs se consomment, leurs concentrations chutent, les chocs
+          se raréfient, et $v$ décroît sans cesse vers zéro.
+
+      - id: B
+        text: "Elle reste constante du début à la fin de la réaction."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: |
+          Modèle détecté : « vitesse constante ». Elle donnerait une courbe
+          $x(t)$ en ligne droite ; or les mesures montrent une pente qui diminue
+          nettement au fil du temps. La vitesse n'est pas constante — elle décroît.
+
+      - id: C
+        text: "Elle augmente continûment jusqu'à la fin de la réaction."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: |
+          Modèle détecté : une réaction qui s'emballe. C'est l'inverse : la pente
+          de $x(t)$ est la plus raide au tout début et ne fait que diminuer. Rien
+          n'accélère la réaction quand ses réactifs s'épuisent.
+
+      - id: D
+        text: "Elle diminue d'abord, puis remonte en fin de réaction quand les produits se sont accumulés."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: |
+          Modèle détecté : les produits « relanceraient » la réaction. Dans ce
+          modèle, c'est la concentration des **réactifs** qui gouverne les chocs
+          efficaces, et elle ne fait que diminuer : $v(t)$ décroît de façon
+          monotone, sans rebond, jusqu'à s'annuler.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-demi-reaction | placed AFTER R4
+  #        Rupture gate: t½ = instant où x = x_max/2 (pas la moitié de la
+  #        durée totale, pas sur v(t), pas la fin). Clone of STV-6's stem.
+  #        Probes demi-reaction-mal-definie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-demi-reaction
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_suivi_temporel_vitesse
+    tags: [checkpoint, formative, misconception_driven, pc_suivi_temporel_vitesse]
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+    item_source: clone_of_STV-6
+    lesson_placement: after_R4
+
+    stem: |
+      Comment définit-on le temps de demi-réaction $t_{1/2}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "L'instant où l'avancement $x$ atteint la moitié de sa valeur finale : $x(t_{1/2}) = x_{max}/2$."
+        correct: true
+        feedback: |
+          Exact. $t_{1/2}$ se lit sur la courbe d'avancement : on repère
+          $x_{max}$, on calcule $x_{max}/2$, et $t_{1/2}$ est l'abscisse du point
+          où $x(t)$ atteint cette hauteur. Comme $x(t)$ croît sans reculer, cet
+          instant existe et est unique.
+
+      - id: B
+        text: "L'instant où la moitié de la durée totale de la réaction s'est écoulée."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: |
+          Modèle détecté : « moitié du temps ». Comme la vitesse n'est pas
+          constante (plus grande au début), $x$ atteint la moitié de $x_{max}$
+          **bien avant** que la moitié de la durée ne se soit écoulée. $t_{1/2}$
+          se définit sur l'avancement, pas sur la durée.
+
+      - id: C
+        text: "L'instant où la vitesse volumique $v$ vaut la moitié de sa valeur initiale $v(0)$."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: |
+          Modèle détecté : « demi-réaction lue sur $v(t)$ ». $t_{1/2}$ se lit sur
+          la courbe d'avancement $x(t)$, pas sur la courbe de vitesse : « moitié
+          de $x_{max}$ » et « moitié de $v(0)$ » se produisent en général à des
+          instants différents.
+
+      - id: D
+        text: "L'instant où la transformation est terminée, c'est-à-dire où $x = x_{max}$."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: |
+          Modèle détecté : confusion avec la fin de réaction. $x = x_{max}$
+          correspond à la transformation **achevée**, pas à sa moitié. $t_{1/2}$
+          correspond à $x = x_{max}/2$, un instant nettement antérieur.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-facteurs | placed AFTER R4
+  #        Rupture gate: un facteur cinétique (température) raccourcit t½.
+  #        Clone of STV-15's stem. Probes facteurs-cinetiques-mal-appliques
+  #        (+ une distractrice qui révèle demi-reaction-mal-definie).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-facteurs
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_suivi_temporel_vitesse
+    tags: [checkpoint, formative, misconception_driven, pc_suivi_temporel_vitesse]
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+    item_source: clone_of_STV-15
+    lesson_placement: after_R4
+
+    stem: |
+      Deux expériences suivent la même transformation lente, avec les mêmes
+      quantités initiales de réactifs, mais l'expérience 2 est menée à une
+      température plus élevée que l'expérience 1. Que peut-on dire des deux temps
+      de demi-réaction $t_{1/2}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$t_{1/2}$ est plus court dans l'expérience 2 : plus chaude, elle atteint $x_{max}/2$ plus vite."
+        correct: true
+        feedback: |
+          Exact. La température est un facteur cinétique : elle augmente les chocs
+          efficaces, donc la réaction avance plus vite et atteint $x_{max}/2$ plus
+          tôt. Comparer deux $t_{1/2}$, c'est comparer la rapidité de deux
+          transformations.
+
+      - id: B
+        text: "$t_{1/2}$ est identique : il ne dépend que de $x_{max}$, jamais de la rapidité de la réaction."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: |
+          Modèle détecté : $t_{1/2}$ réduit à $x_{max}$. C'est une **durée** : elle
+          dépend de la rapidité avec laquelle $x$ progresse, pas seulement de la
+          hauteur $x_{max}/2$ visée. À $x_{max}$ égal, la réaction la plus rapide a
+          le $t_{1/2}$ le plus court.
+
+      - id: C
+        text: "$t_{1/2}$ est plus long dans l'expérience 2, car une température plus élevée ralentit les réactions."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: |
+          Modèle détecté : sens inversé du facteur température. Une température
+          plus élevée **accélère** une transformation (chocs plus fréquents et
+          plus efficaces) ; elle raccourcit donc $t_{1/2}$, elle ne l'allonge pas.
+
+      - id: D
+        text: "On ne peut rien dire sans connaître les concentrations initiales exactes des deux expériences."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: |
+          Modèle détecté : refus de trancher. Les quantités initiales sont ici
+          **identiques** ; seule la température diffère. Le facteur cinétique
+          température suffit alors à conclure qualitativement, sans aucune valeur
+          numérique.
