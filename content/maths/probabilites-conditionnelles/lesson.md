@@ -19,6 +19,8 @@ Tu passes ce test. Le résultat est **positif**.
 
 Prends une seconde. Note mentalement ta réponse.
 
+[[checkpoint:cp-r0-predict]]
+
 La plupart des gens — y compris des médecins — répondent « environ 95 % ». C'est l'efficacité du test, après tout. Si le test détecte 95 % des malades, un résultat positif veut bien dire qu'on est malade à 95 %, non ?
 
 **Non. La réponse est environ 9 %.**
@@ -96,6 +98,8 @@ Dans notre exemple : $P(B|A) = 0{,}50$ et $P(A|B) = \frac{0{,}30}{0{,}38} \appro
 
 Elles ne sont égales que dans le cas particulier où $P(A) = P(B)$.
 
+[[checkpoint:cp-r1-cond-vs-inter]]
+
 ---
 
 ### R2 — La règle du produit et l'arbre pondéré
@@ -166,6 +170,8 @@ Chaque arête de l'arbre est une proportion *de ce qui est arrivé à l'étape p
 Une erreur très fréquente sur l'arbre : **additionner** les probabilités le long d'une branche au lieu de les multiplier.
 
 Dans notre exemple, la branche $A \to B$ porte les probabilités $0{,}6$ puis $0{,}5$. L'erreur donne $0{,}6 + 0{,}5 = 1{,}1$, une « probabilité » supérieure à 1 — ce qui est impossible. Quand on obtient un résultat supérieur à 1 sur une feuille, c'est le signal immédiat qu'on a additionné au lieu de multiplier. Une probabilité ne peut jamais dépasser 1.
+
+[[checkpoint:cp-r2-arbre]]
 
 ---
 
@@ -380,148 +386,6 @@ L'erreur intuitive de 95 % était de confondre $P(T^+|M)$ avec $P(M|T^+)$ — la
 
 ---
 
-## Exemples travaillés
-
-### Exemple 1 — Appliquer la définition
-
-**Énoncé.** Dans un club sportif, $P(\text{football}) = 0{,}38$ et $P(\text{sport collectif} \cap \text{football}) = 0{,}30$. On tire un membre au hasard parmi les sportifs collectifs ($P(\text{sport collectif}) = 0{,}60$). Calculer $P(\text{football} \mid \text{sport collectif})$ et $P(\text{sport collectif} \mid \text{football})$.
-
-**Raisonnement à voix haute.**
-
-Première question : on nous demande la proportion de footballeurs **parmi les sportifs collectifs**. Le mot « parmi » est le signal : on restreint l'univers aux sportifs collectifs. Le dénominateur est donc $P(\text{sport collectif}) = 0{,}60$.
-
-$$P(\text{football} \mid \text{sport collectif}) = \frac{P(\text{sport collectif} \cap \text{football})}{P(\text{sport collectif})} = \frac{0{,}30}{0{,}60} = 0{,}50$$
-
-Deuxième question : on nous demande la proportion de sportifs collectifs **parmi les footballeurs**. Cette fois, l'univers réduit, c'est les footballeurs. Dénominateur : $P(\text{football}) = 0{,}38$.
-
-$$P(\text{sport collectif} \mid \text{football}) = \frac{P(\text{sport collectif} \cap \text{football})}{P(\text{football})} = \frac{0{,}30}{0{,}38} = \frac{15}{19} \approx 0{,}79$$
-
-**Vérification :** les deux réponses sont différentes (0,50 et 0,79), ce qui est normal — les deux univers restreints ($A$ et $B$) sont de tailles différentes. Si quelqu'un répond « 0,30 » à l'une ou l'autre des questions, il a oublié de diviser — c'est l'erreur M2.
-
----
-
-### Exemple 2 — Construire et lire un arbre
-
-**Énoncé.** Une urne contient 4 boules rouges et 6 boules bleues. On tire deux boules **sans remise**. Calculer la probabilité que les deux boules soient de la même couleur.
-
-**Raisonnement à voix haute.**
-
-On tire deux boules successives sans remise — la composition de l'urne change entre les deux tirages. C'est exactement le cas où un arbre pondéré est utile : les probabilités du deuxième tirage **dépendent** du résultat du premier.
-
-Notons $R_1$ = « première boule rouge » et $R_2$ = « deuxième boule rouge ». De même pour $B_1$, $B_2$.
-
-**Premier tirage :** 10 boules en tout, 4 rouges et 6 bleues.
-$$P(R_1) = \frac{4}{10} = 0{,}4 \qquad P(B_1) = \frac{6}{10} = 0{,}6$$
-
-**Deuxième tirage, si la première était rouge :** il reste 9 boules, dont 3 rouges et 6 bleues.
-$$P(R_2|R_1) = \frac{3}{9} = \frac{1}{3} \qquad P(B_2|R_1) = \frac{6}{9} = \frac{2}{3}$$
-
-**Deuxième tirage, si la première était bleue :** il reste 9 boules, dont 4 rouges et 5 bleues.
-$$P(R_2|B_1) = \frac{4}{9} \qquad P(B_2|B_1) = \frac{5}{9}$$
-
-**Les feuilles qui nous intéressent — « même couleur » :**
-
-$$P(R_1 \cap R_2) = P(R_1) \cdot P(R_2|R_1) = \frac{4}{10} \times \frac{3}{9} = \frac{12}{90} = \frac{2}{15}$$
-
-$$P(B_1 \cap B_2) = P(B_1) \cdot P(B_2|B_1) = \frac{6}{10} \times \frac{5}{9} = \frac{30}{90} = \frac{1}{3}$$
-
-Ces deux feuilles sont incompatibles (on ne peut pas avoir à la fois deux rouges et deux bleues au même tirage), donc on additionne :
-
-$$P(\text{même couleur}) = \frac{2}{15} + \frac{1}{3} = \frac{2}{15} + \frac{5}{15} = \frac{7}{15}$$
-
-**Point d'attention :** on a multiplié le long de chaque branche, pas additionné. Si on avait additionné $\frac{4}{10} + \frac{3}{9} = \frac{36}{90} + \frac{30}{90}$, on aurait obtenu un nombre supérieur à 1 sur la première feuille — signal immédiat d'erreur.
-
----
-
-### Exemple 3 — Tester l'indépendance
-
-**Énoncé.** On lance un dé à 6 faces équilibré. Soit $A$ = « le résultat est pair » et $B$ = « le résultat est inférieur ou égal à 3 ». Ces deux événements sont-ils indépendants ?
-
-**Raisonnement à voix haute.**
-
-Pour tester l'indépendance, on vérifie si $P(A \cap B) = P(A) \cdot P(B)$.
-
-L'univers est $\{1, 2, 3, 4, 5, 6\}$.
-
-$A = \{2, 4, 6\}$, donc $P(A) = \frac{3}{6} = \frac{1}{2}$.
-
-$B = \{1, 2, 3\}$, donc $P(B) = \frac{3}{6} = \frac{1}{2}$.
-
-$A \cap B = \{2\}$ (les résultats à la fois pairs et $\leq 3$), donc $P(A \cap B) = \frac{1}{6}$.
-
-Est-ce que $P(A \cap B) = P(A) \cdot P(B)$ ?
-
-$$P(A) \cdot P(B) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$$
-
-Or $P(A \cap B) = \frac{1}{6} \neq \frac{1}{4}$.
-
-Donc $A$ et $B$ **ne sont pas indépendants**.
-
-**Ce qu'on peut en déduire :** $P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{1/6}{1/2} = \frac{1}{3} \neq \frac{1}{2} = P(B)$. Connaître $A$ (le résultat est pair) change bien la probabilité de $B$ : parmi les résultats pairs $\{2, 4, 6\}$, seulement $\{2\}$ est $\leq 3$, soit $\frac{1}{3}$ — pas $\frac{1}{2}$.
-
-**Aussi important :** $A$ et $B$ ne sont **pas** incompatibles non plus — $A \cap B = \{2\} \neq \emptyset$. Ni indépendants, ni incompatibles : deux événements quelconques n'ont pas à être dans l'une ou l'autre de ces deux catégories spéciales.
-
----
-
-### Exemple 4 — Probabilités totales avec deux machines
-
-**Énoncé.** Une usine fabrique des pièces avec deux machines. La machine $M_1$ produit **60 %** des pièces et a un taux de défaut de **5 %**. La machine $M_2$ produit **40 %** des pièces et a un taux de défaut de **3 %**. On tire une pièce au hasard dans la production. Quelle est la probabilité qu'elle soit défectueuse ?
-
-**Raisonnement à voix haute.**
-
-On cherche $P(D)$ où $D$ = « pièce défectueuse ». On ne la connaît pas directement, mais on connaît les taux de défaut conditionnels par machine.
-
-**Données :**
-- $P(M_1) = 0{,}60$, $P(M_2) = 0{,}40$ — c'est une partition de la production ($M_1 \cup M_2 = \Omega$, $M_1 \cap M_2 = \emptyset$).
-- $P(D|M_1) = 0{,}05$ et $P(D|M_2) = 0{,}03$.
-
-**Probabilités totales :**
-
-$$P(D) = P(M_1) \cdot P(D|M_1) + P(M_2) \cdot P(D|M_2)$$
-
-$$P(D) = 0{,}60 \times 0{,}05 + 0{,}40 \times 0{,}03 = 0{,}030 + 0{,}012 = 0{,}042$$
-
-**Vérification de cohérence :** $P(D)$ doit se trouver entre $P(D|M_1) = 0{,}05$ et $P(D|M_2) = 0{,}03$. On a bien $0{,}03 < 0{,}042 < 0{,}05$. C'est cohérent.
-
-Si on avait additionné sans pondérer : $0{,}05 + 0{,}03 = 0{,}08$ — une valeur supérieure à $0{,}05$, impossible puisque même la machine la plus défectueuse n'atteint que 5 %. C'est le signal de l'erreur M7 : on a oublié de pondérer par la taille de chaque sous-population.
-
----
-
-### Exemple 5 — Lecture inverse complète
-
-**Énoncé.** On reprend l'usine de l'exemple 4. On tire une pièce défectueuse. Quelle est la probabilité qu'elle vienne de la machine $M_1$ ?
-
-**Raisonnement à voix haute.**
-
-On a construit l'arbre dans le sens « machine → défaut ». La question va dans l'autre sens : on observe un défaut et on remonte vers la machine. C'est une lecture inverse.
-
-On cherche $P(M_1|D)$. On applique la définition :
-
-$$P(M_1|D) = \frac{P(M_1 \cap D)}{P(D)}$$
-
-On a déjà tout ce qu'il faut depuis l'exemple 4.
-
-**Numérateur :** la feuille $M_1 \cap D$ de l'arbre.
-$$P(M_1 \cap D) = P(M_1) \cdot P(D|M_1) = 0{,}60 \times 0{,}05 = 0{,}030$$
-
-**Dénominateur :** $P(D) = 0{,}042$ (calculé à l'exemple 4 — la somme de toutes les feuilles $D$).
-
-$$P(M_1|D) = \frac{0{,}030}{0{,}042} = \frac{30}{42} = \frac{5}{7} \approx 0{,}714$$
-
-Une pièce défectueuse a donc environ 71 % de chances de venir de $M_1$.
-
-**Pourquoi ce n'est pas 60 % ?** $M_1$ produit 60 % des pièces en général, mais elle produit aussi plus de défauts proportionnellement que $M_2$ (5 % vs 3 %). Parmi les défauts, $M_1$ est **surreprésentée** par rapport à sa part de production.
-
-**Les erreurs à éviter ici :**
-
-- Répondre $P(M_1|D) = P(D|M_1) = 0{,}05$ — c'est confondre la question et sa version renversée. Ce nombre dit « si une pièce vient de $M_1$, elle a 5 % de chances d'être défectueuse. » Ce n'est pas la même question.
-- Répondre $P(M_1|D) = P(M_1) = 0{,}60$ — c'est oublier que l'observation « défectueuse » change la distribution. On ne divise pas par $P(M_1)$ ; on divise par $P(D)$, qui rassemble **toutes** les façons de produire un défaut.
-- Répondre $P(M_1|D) = P(M_1 \cap D) = 0{,}030$ — c'est oublier de diviser par $P(D)$ du tout — la même erreur qu'à la définition (oublier la division), revisitée ici dans la lecture inverse.
-
-Le dénominateur correct est toujours l'événement **observé** — ici $D$ — parce que « sachant $D$ » signifie « on restreint l'univers à $D$ ».
-
----
-
 ## La rampe — de la définition aux questions de bac
 
 Le tableau ci-dessous donne la progression. Chaque palier augmente la demande en raisonnement, pas seulement en calcul.
@@ -535,6 +399,30 @@ Le tableau ci-dessous donne la progression. Chaque palier augmente la demande en
 | **5.** Lecture inverse | Peu d'aide, tu conduis | Identifier les feuilles $B$, former $P(B)$, calculer $P(A|B)$ en divisant par $P(B)$. |
 | **6.** Questions de bac authentiques | Sans aide | Reconnaître quelle procédure s'applique sur des questions réelles de l'examen national. |
 | **7.** Variations inédites | Sans aide | Appliquer la même logique sur des contextes jamais vus : filtre anti-spam, deux fournisseurs, tirage dans des ensembles différents. Ce que le bac teste vraiment : reconnaître la structure quand le problème est habillé différemment. |
+
+---
+
+## Pour t'entraîner — les questions de type bac
+
+Les paliers 6 et 7 de la rampe, maintenant : d'abord une **question d'examen national authentique**, puis une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change. La règle du jeu — c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier d'abord, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
+
+### Exercice de type bac (2023)
+
+Le sujet ci-dessous ajoute un ingrédient nouveau à ce qu'on a construit : une **variable aléatoire** $X$ (un nombre attaché à chaque résultat de l'expérience) et sa **loi de probabilité** (la liste des valeurs de $X$ avec leurs probabilités). Rien de plus que l'arbre et le conditionnement, mais organisés autrement. Deux réflexes suffiront : les probabilités de la deuxième branche sont **conditionnelles** (l'urne change après le transfert d'une boule), et une loi de probabilité **somme toujours à 1**.
+
+Un piège propre à ce sujet — le transfert de la boule — à trancher avant de te lancer :
+
+[[checkpoint:cp-bac-dependance]]
+
+[[exercise:r-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Même machinerie, autre habillage : deux sacs au lieu de deux urnes, un transfert lui aussi, mais une variable aléatoire qui est cette fois une **somme** $X = a+b$ et non un produit. À toi de reconnaître que l'arbre, le conditionnement et la loi s'appliquent exactement pareil. Un dernier réflexe sur la loi avant de te lancer :
+
+[[checkpoint:cp-bac-loi]]
+
+[[exercise:r-variation]]
 
 ---
 

@@ -1,0 +1,374 @@
+notion: probabilites-conditionnelles
+skill_code: sma_prob_conditionnelle
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths pilot)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PROBABILISTIC model, not just the fact of being
+# wrong. The end-bank ≥3-per-misconception floor lives in items.yaml and is
+# NOT altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict       (in R0)          — COMMIT gate: turns the medical hook's
+#                                          "note mentalement ta réponse" into a
+#                                          real MCQ commit. Probes M1
+#                                          (transpose-conditionnel).
+#   cp-r1-cond-vs-inter (after R1)       — rupture gate: p(A∩B) vs p(A/B). Probes
+#                                          M2, with M1 and M8 as distractors.
+#   cp-r2-arbre         (after R2)       — rupture gate: multiply-not-add along a
+#                                          branch (the tree operation, and the
+#                                          "branch weights sum to 1" self-check).
+#                                          Probes M6.
+#   cp-bac-dependance   (before r-bac)   — rupture gate: the transfer makes the
+#                                          2nd draw DEPENDENT — the branch weight
+#                                          is CONDITIONAL, not the start-of-urn
+#                                          value. Probes M6 (dependent-as-
+#                                          independent), with M1 and M2.
+#   cp-bac-loi          (before r-var.)  — rupture gate: mis-reading the loi de X
+#                                          (assemble ALL paths for p(X=2); a loi
+#                                          must sum to 1). Probes M8, with M6.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml). Option lengths are balanced so the correct choice is never the
+# conspicuously longest (critic NIT4 on the PC pilot — not propagated here).
+#
+# Boundary guard: 2ème Bac SExp probabilités — univers finis équiprobables,
+# probabilité conditionnelle, arbre pondéré à branches conditionnelles, règle du
+# produit, événements incompatibles / indépendants, variable aléatoire discrète
+# et sa loi. No continuous variables, no Bayes formula named as such (the
+# mechanism is the tree read backwards), no combinatorics beyond simple counting.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the medical hook's commit)
+  #        Turns "note mentalement ta réponse" into a real MCQ commit
+  #        before the reveal (« Non. La réponse est environ 9 % »).
+  #        Probes M1 (transpose-conditionnel) — reading the test's
+  #        sensibilité as the probability of being sick.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: sma_prob_conditionnelle
+    tags: [checkpoint, formative, misconception_driven, sma_prob_conditionnelle, hook_commit]
+    primary_misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Une maladie touche 1 % de la population. Un test détecte 95 % des malades,
+      et donne un résultat positif chez 10 % des personnes saines. **Tu passes ce
+      test, il est positif.** Avant de lire la suite, engage-toi : quelle est,
+      selon toi, la probabilité que tu sois **réellement malade** ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Environ 95 % : le test détecte 95 % des malades, donc un résultat positif signifie qu'on est malade à peu près à 95 %."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        feedback: |
+          Modèle détecté : « le test détecte 95 % des malades, donc positif =
+          malade à 95 % ». C'est confondre $p(T^+|M) = 0{,}95$ (la sensibilité du
+          test) avec $p(M|T^+)$ (ce qu'on cherche). Ces deux probabilités
+          conditionnelles n'ont pas le même dénominateur, et ici elles sont très
+          différentes. Regarde la réponse juste en dessous : elle est bien plus
+          basse.
+
+      - id: B
+        text: "Environ 9 % : bien plus bas qu'il n'y paraît, car la maladie est rare et beaucoup de positifs sont de faux positifs."
+        correct: true
+        feedback: |
+          Exact — et c'est profondément contre-intuitif. La maladie ne touche que
+          1 % des gens : sur une grande population, les faux positifs (10 % d'une
+          immense majorité saine) sont bien plus nombreux que les vrais positifs.
+          Toute la leçon sert à construire l'outil (l'arbre pondéré, lu à rebours)
+          pour calculer précisément ce 9 %.
+
+      - id: C
+        text: "Environ 1 % : on calcule « être malade ET positif », soit 0,01 × 0,95, ce qui donne à peu près 0,01."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        feedback: |
+          Modèle détecté : on calcule $p(M \cap T^+) = 0{,}01 \times 0{,}95 \approx 0{,}0095$
+          (« malade ET positif ») et on s'arrête là. Mais c'est
+          l'**intersection**, mesurée sur toute la population — pas la probabilité
+          conditionnelle sachant le test positif. Il faudra diviser par $p(T^+)$
+          pour restreindre l'univers aux personnes positives.
+
+      - id: D
+        text: "Presque certain, plus de 90 % : sur un test aussi fiable, un résultat positif se trompe rarement."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        feedback: |
+          Modèle détecté : « un test fiable se trompe rarement ». C'est encore
+          confondre la fiabilité du test ($p(T^+|M)$, la probabilité d'un positif
+          chez un malade) avec $p(M|T^+)$, la probabilité d'être malade sachant le
+          test positif. Quand la maladie est rare, un test même très sensible
+          laisse cette dernière probabilité étonnamment basse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-cond-vs-inter | placed AFTER R1
+  #        Rupture gate: p(A∩B) vs p(A/B). Clone of PC-M2-1's stem
+  #        shape, distractors curated so each carries a tag.
+  #        Probes M2 (conditionnelle-egale-intersection).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-cond-vs-inter
+    rung: "R1"
+    habilete: utilisation
+    skill_code: sma_prob_conditionnelle
+    tags: [checkpoint, formative, misconception_driven, sma_prob_conditionnelle]
+    primary_misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+    item_source: clone_of_PC-M2-1
+    lesson_placement: after_R1
+
+    stem: |
+      On donne $p(A \cap B) = \dfrac{1}{6}$, $p(A) = \dfrac{1}{2}$ et
+      $p(B) = \dfrac{1}{4}$. Que vaut la probabilité conditionnelle $p(A/B)$,
+      c'est-à-dire la probabilité de $A$ sachant que $B$ est réalisé ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\dfrac{2}{3}$"
+        correct: true
+        feedback: |
+          Exact : $p(A/B) = \dfrac{p(A \cap B)}{p(B)} = \dfrac{1/6}{1/4} = \dfrac{2}{3}$.
+          « Sachant $B$ » restreint l'univers à $B$ : on divise
+          l'intersection par $p(B)$, la taille de ce nouvel univers.
+
+      - id: B
+        text: "$\\dfrac{1}{6}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        feedback: |
+          C'est $p(A \cap B) = \dfrac{1}{6}$ recopié sans diviser. L'intersection
+          se mesure sur l'univers entier ; la conditionnelle se mesure dans
+          l'univers restreint à $B$. Il faut diviser par $p(B) = \dfrac{1}{4}$.
+          Modèle erroné : « $p(A/B) = p(A \cap B)$. »
+
+      - id: C
+        text: "$\\dfrac{1}{3}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        feedback: |
+          C'est $p(B/A) = \dfrac{p(A \cap B)}{p(A)} = \dfrac{1/6}{1/2} = \dfrac{1}{3}$ — la
+          conditionnelle **renversée**. On a divisé par $p(A)$
+          au lieu de $p(B)$. Modèle erroné : « $p(A/B)$ et $p(B/A)$ sont la même
+          chose. »
+
+      - id: D
+        text: "$\\dfrac{1}{2}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        feedback: |
+          C'est $p(A) = \dfrac{1}{2}$ : on répond la probabilité de $A$ sans tenir
+          compte de $B$. « Sachant $B$ » impose de diviser par $p(B)$, le bon
+          dénominateur — c'est l'événement observé qui restreint l'univers.
+          Modèle erroné : mauvais dénominateur (on ignore l'observation).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-arbre | placed AFTER R2
+  #        Rupture gate: multiply-not-add along a branch (the tree
+  #        operation), and the "branch weights sum to 1" self-check.
+  #        Probes M6 (arbre-additionne-branche), three surfaces.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-arbre
+    rung: "R2"
+    habilete: utilisation
+    skill_code: sma_prob_conditionnelle
+    tags: [checkpoint, formative, misconception_driven, sma_prob_conditionnelle, arbre_pondere]
+    primary_misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+    item_source: clone_of_PC-M6-1
+    lesson_placement: after_R2
+
+    stem: |
+      Dans l'expérience du sujet, on veut la probabilité de la feuille
+      « $a=1$ puis $b=1$ ». On sait que $p(a=1) = \dfrac{1}{2}$, et qu'après
+      avoir placé le « 1 » dans $U_2$ (qui compte alors six boules dont quatre
+      « 1 »), on a $p(b=1 \mid a=1) = \dfrac{4}{6} = \dfrac{2}{3}$.
+      Que vaut $p(a=1 \cap b=1)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{3}$"
+        correct: true
+        feedback: |
+          Exact : le long d'une branche on **multiplie**, $\dfrac{1}{2} \times \dfrac{2}{3} = \dfrac{1}{3}$.
+          Contrôle utile : les deux branches issues
+          du nœud $a=1$ somment bien à 1 ($\dfrac{4}{6} + \dfrac{2}{6} = 1$), signe
+          que l'arbre est correctement pondéré.
+
+      - id: B
+        text: "$\\dfrac{7}{6}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        feedback: |
+          C'est $\dfrac{1}{2} + \dfrac{2}{3} = \dfrac{7}{6}$, l'addition des deux
+          arêtes. Le résultat dépasse 1 : impossible pour une probabilité ! C'est
+          le signal immédiat qu'on a additionné au lieu de multiplier. Le long
+          d'une branche, on multiplie. Modèle erroné : « on additionne le long
+          d'une branche. »
+
+      - id: C
+        text: "$\\dfrac{2}{3}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        feedback: |
+          C'est $p(b=1 \mid a=1) = \dfrac{2}{3}$ recopié seul : on a oublié de
+          multiplier par la première branche $p(a=1) = \dfrac{1}{2}$. Une feuille
+          est le **produit** de toutes les arêtes du chemin, pas la dernière
+          seulement. Modèle erroné : lecture incomplète de l'arbre.
+
+      - id: D
+        text: "$\\dfrac{1}{2}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        feedback: |
+          C'est $p(a=1) = \dfrac{1}{2}$ recopié seul : on a oublié la deuxième
+          branche $p(b=1 \mid a=1)$. Une feuille multiplie **toutes** les arêtes
+          du chemin qui y mène. Modèle erroné : lecture incomplète de l'arbre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-bac-dependance | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: the transfer makes the 2nd draw DEPENDENT —
+  #        the branch weight is CONDITIONAL, not the start-of-urn
+  #        value (treating dependent draws as independent).
+  #        Probes M6 (dependent-as-independent) + M1 + M2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-dependance
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: sma_prob_conditionnelle
+    tags: [checkpoint, formative, misconception_driven, sma_prob_conditionnelle, arbre_pondere, bac_style]
+    primary_misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Dans l'expérience du sujet, après avoir tiré $a=1$ de $U_1$ et l'avoir
+      **placé** dans $U_2$ (qui contenait 1, 1, 1, 2, 2), on tire $b$ dans $U_2$.
+      Quelle probabilité faut-il porter sur la deuxième branche « $b=2$ » de
+      l'arbre ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$p(b=2 \\mid a=1) = \\dfrac{2}{6}$ : après ajout du « 1 », $U_2$ a 6 boules dont deux « 2 »."
+        correct: true
+        feedback: |
+          Exact. Le transfert change $U_2$ : après y avoir mis le « 1 », elle
+          contient 6 boules dont deux « 2 », d'où $p(b=2 \mid a=1) = \dfrac{2}{6} = \dfrac{1}{3}$.
+          La branche porte une probabilité **conditionnelle**,
+          car le second tirage dépend du premier.
+
+      - id: B
+        text: "$p(b=2) = \\dfrac{2}{5}$ : la composition de départ de $U_2$, les deux tirages étant indépendants."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        feedback: |
+          Piège central de ce sujet : on a traité les deux tirages comme
+          **indépendants**. Or on a ajouté la boule tirée dans $U_2$ — sa
+          composition change selon $a$ (elle passe à 6 boules). La probabilité de
+          $b$ dépend donc de $a$ : il faut la conditionnelle $p(b=2 \mid a=1) = \dfrac{2}{6}$,
+          pas la valeur de départ $\dfrac{2}{5}$. Modèle erroné :
+          traiter des tirages dépendants comme indépendants.
+
+      - id: C
+        text: "$p(a=1 \\mid b=2)$ : la probabilité que $a$ valait 1 sachant que $b=2$."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.transpose-conditionnel
+        feedback: |
+          C'est la conditionnelle **renversée** : $p(a=1 \mid b=2)$ remonte de
+          l'effet vers la cause, alors que la branche de l'arbre va dans le sens
+          cause → effet et porte donc $p(b=2 \mid a=1)$. Modèle erroné : confondre
+          $p(a \mid b)$ et $p(b \mid a)$.
+
+      - id: D
+        text: "$p(a=1 \\cap b=2)$ : la probabilité d'obtenir $a=1$ et $b=2$ à la fois."
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
+        feedback: |
+          C'est la probabilité **conjointe** $p(a=1 \cap b=2)$ — la feuille
+          entière, produit des deux arêtes — pas la probabilité de la seule
+          deuxième branche. La branche porte la conditionnelle $p(b=2 \mid a=1)$ ;
+          on la multipliera ensuite par $p(a=1)$. Modèle erroné : confondre la
+          conditionnelle d'une branche avec l'intersection.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-bac-loi | placed BEFORE [[exercise:r-variation]]
+  #        Rupture gate: mis-reading the loi de X — an event value can
+  #        be reached by SEVERAL paths (assemble them all), and a loi
+  #        must sum to 1. Probes M8 (gather all outcomes) + M6.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-loi
+    rung: "R6"
+    habilete: utilisation
+    skill_code: sma_prob_conditionnelle
+    tags: [checkpoint, formative, misconception_driven, sma_prob_conditionnelle, variable_aleatoire, bac_style]
+    primary_misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+    item_source: original
+    lesson_placement: before_variation
+
+    stem: |
+      Pour la variable aléatoire $X = ab$ du sujet, on cherche $p(X = 2)$.
+      L'événement « $ab = 2$ » se produit sur **deux** chemins de l'arbre :
+      $(a=1,\ b=2)$ de probabilité $\dfrac{1}{6}$, et $(a=2,\ b=1)$ de
+      probabilité $\dfrac{1}{12}$. Que vaut $p(X=2)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{4}$"
+        correct: true
+        feedback: |
+          Exact : on **rassemble tous les chemins** où $ab=2$, soit
+          $\dfrac{1}{6} + \dfrac{1}{12} = \dfrac{3}{12} = \dfrac{1}{4}$. Réflexe final pour toute
+          la loi de $X$ (valeurs 0, 1, 2, 4) : vérifier que la somme des
+          probabilités vaut bien 1.
+
+      - id: B
+        text: "$\\dfrac{1}{6}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur
+        feedback: |
+          On n'a compté qu'**un seul** chemin, $(a=1, b=2) = \dfrac{1}{6}$, en
+          oubliant l'autre façon d'obtenir $ab=2$ : $(a=2, b=1) = \dfrac{1}{12}$.
+          Comme pour assembler un dénominateur en lecture inverse, il faut
+          rassembler **toutes** les feuilles où l'événement se réalise. Modèle
+          erroné : oublier une partie des cas.
+
+      - id: C
+        text: "$\\dfrac{5}{6}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        feedback: |
+          $\dfrac{5}{6} = \dfrac{1}{2} + \dfrac{1}{3}$ : on a **additionné** les
+          arêtes le long d'un chemin au lieu de les multiplier. Une feuille est un
+          produit ; on n'additionne qu'ensuite, entre feuilles distinctes. Modèle
+          erroné : « on additionne le long d'une branche. »
+
+      - id: D
+        text: "$\\dfrac{1}{3}$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.arbre-additionne-branche
+        feedback: |
+          $\dfrac{1}{3} = p(b=2 \mid a=1)$ : on a pris la probabilité
+          conditionnelle de la deuxième branche seule, sans la multiplier par
+          $p(a=1)$ ni ajouter l'autre chemin. Modèle erroné : lecture incomplète
+          de l'arbre.
