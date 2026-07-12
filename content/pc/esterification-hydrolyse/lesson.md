@@ -12,6 +12,8 @@ Ce chapitre-là s'arrêtait volontairement là, avec une promesse explicite : «
 
 Avant de lire la suite, prends position sur une question concrète : imagine que tu es ce chimiste, et que tu voudrais repartir avec **plus** d'ester à la fin - pour un parfum, disons, où chaque gramme compte. Tu as trois idées en tête : ajouter encore plus de catalyseur, chauffer plus fort, ou verser un excès d'un des deux réactifs au départ. Laquelle de ces trois idées, à ton avis, changerait vraiment la quantité finale d'ester obtenue - et laquelle ne ferait que te faire arriver au même résultat plus vite ? Engage-toi sur une réponse avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Ne cherche pas encore la réponse définitive - on va la construire pièce par pièce. Mais retiens ta prédiction : elle va être mise à l'épreuve directement, au rung R4.
 
 Ce chapitre répond à quatre questions, dans l'ordre : comment écrire et nommer proprement cette famille de réactions ? Jusqu'où va-t-elle, exactement, et pourquoi toujours jusqu'à ce même point précis dans le cas le plus simple ? Qu'est-ce qui accélère la réaction sans rien changer au résultat final ? Et qu'est-ce qui, à l'inverse, change vraiment ce résultat final ?
@@ -89,6 +91,8 @@ $$Q_r = \frac{[ester][eau]}{[acide][alcool]}$$
 
 À l'équilibre, $Q_r$ se fige à la constante d'équilibre $K$ de cette réaction, à cette température : $Q_{r,eq} = K$. Comme dans le chapitre sur l'état d'équilibre, $K$ ne dépend que de la réaction et de la température - jamais des quantités initiales choisies. C'est cette propriété de $K$ qui va nous permettre, au rung suivant, de chiffrer précisément jusqu'où va une estérification.
 
+[[checkpoint:cp-r2-limitee]]
+
 ---
 
 ## R3 — Chiffrer l'équilibre : le cas particulier $\tau \approx 2/3$
@@ -153,6 +157,8 @@ Une confusion naturelle, après le chapitre sur l'état d'équilibre, où l'on a
 
 Reprends le calcul qu'on vient de faire : $n_0$ a disparu de l'expression de $K$. Doubler $n_0$ double bien la quantité finale d'ester produite (en mol), mais la **proportion** convertie, $\tau$, reste rigoureusement $2/3$. Ce qui change $\tau$ dans le chapitre précédent, c'est un changement du **rapport** entre les quantités initiales (comme la dilution, qui change le rapport concentrations/volume dans $Q_r$) - pas une mise à l'échelle uniforme de tout le système, qui laisse ce rapport, et donc $\tau$, inchangé.
 
+[[checkpoint:cp-r3-avancement]]
+
 ---
 
 ## R4 — Accélérer sans déplacer : cinétique et thermodynamique
@@ -183,6 +189,8 @@ Les deux flacons atteignent **la même composition finale**, au bout de durées 
 ### La règle, formulée clairement
 
 **Accélérer une réaction** (catalyseur, chauffage, concentration) et **déplacer un équilibre** (changer sa position finale, donc $\tau$) sont deux choses complètement différentes. Le premier groupe de leviers change *quand* on atteint l'équilibre. Il faut un tout autre type de levier pour changer *où* se situe cet équilibre - c'est l'objet du rung suivant.
+
+[[checkpoint:cp-r4-catalyseur]]
 
 ---
 
@@ -244,6 +252,8 @@ Une dernière confusion, qui mérite d'être affrontée directement : puisque $K
 
 C'est confondre $K$ (qui ne bouge jamais) et $Q_r$ (qui bouge à chaque instant, dès que les concentrations changent - y compris parce qu'on en a retiré une partie à la main). Retirer un produit ne touche pas à $K$ : il déséquilibre $Q_r$ par rapport à $K$, et c'est précisément cet écart qui relance la réaction dans le sens direct. $K$ fixe où l'équilibre se rétablira ; ce n'est pas la même chose que « rien ne peut plus bouger ».
 
+[[checkpoint:cp-r5-deplacement]]
+
 ---
 
 ## R6 — Pour t'entraîner
@@ -256,50 +266,14 @@ C'est confondre $K$ (qui ne bouge jamais) et $Q_r$ (qui bouge à chaque instant,
 - **Accélérer** (catalyseur acide, chauffage) change la vitesse à laquelle l'équilibre s'installe, jamais sa position : ces leviers agissent dans les deux sens à la fois, et la réaction est quasi athermique. Rendement inchangé.
 - **Déplacer l'équilibre** (donc améliorer le rendement) demande de forcer $Q_{r,i} < K$ : utiliser un réactif en excès, ou éliminer l'eau ou l'ester au fur et à mesure de leur formation.
 
-### Exercice de type bac (original - entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On étudie l'estérification entre l'acide éthanoïque $CH_3COOH$ et le propan-1-ol $CH_3CH_2CH_2OH$, en mélange équimolaire, à une température donnée.
+Un vrai sujet national. Lis l'énoncé, engage une réponse pour chaque question, puis déplie le raisonnement d'expert — il ne se révèle qu'une fois que tu t'es engagé.
 
-**1) Écris l'équation de cette réaction, en faisant apparaître les groupes fonctionnels en jeu, et donne le nom de l'ester formé.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la règle du rung R1 - repérer le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool, puis construire le nom à partir des deux radicaux.
+### Une variation pour ne pas mémoriser
 
-$$CH_3COOH + CH_3CH_2CH_2OH \rightleftharpoons CH_3COOCH_2CH_2CH_3 + H_2O$$
+Même structure profonde, couple et chiffres différents : tu ne peux pas recopier la solution du sujet, tu dois reconnaître quelle procédure s'applique.
 
-L'acide éthanoïque donne le radical « éthanoate » ; le propan-1-ol donne le radical « propyle ». L'ester formé s'appelle **éthanoate de propyle**.
-
-**2) On part de $n_0 = 0{,}20\ \text{mol}$ d'acide et $0{,}20\ \text{mol}$ d'alcool, volume du mélange supposé constant. Une fois l'équilibre atteint, on mesure $n(ester)_{eq} = 0{,}133\ \text{mol}$. Calcule le taux d'avancement final $\tau$, puis la constante d'équilibre $K$. Ce résultat est-il cohérent avec celui du rung R3 ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement le tableau d'avancement du rung R3 à des données numériques, pour vérifier que le couple utilisé ici se comporte bien comme une estérification simple.
-
-$$\tau = \frac{n(ester)_{eq}}{n_0} = \frac{0{,}133}{0{,}20} \approx 0{,}665$$
-
-$$n(acide)_{eq} = n(alcool)_{eq} = n_0 - n(ester)_{eq} = 0{,}20 - 0{,}133 = 0{,}067\ \text{mol}$$
-
-$$K = \frac{n(ester)_{eq}\, n(eau)_{eq}}{n(acide)_{eq}\, n(alcool)_{eq}} = \frac{0{,}133 \times 0{,}133}{0{,}067 \times 0{,}067} \approx 3{,}9$$
-
-$\tau \approx 0{,}665 \approx 2/3$ et $K \approx 3{,}9 \approx 4$ (l'écart vient uniquement des arrondis de mesure) : ce couple acide/alcool, tous deux à chaîne linéaire et en quantités égales, se comporte bien comme l'estérification simple du rung R3.
-
-**3) Un camarade affirme : « Si on ajoute un peu d'acide sulfurique concentré à ce mélange à l'équilibre, on va récupérer davantage d'éthanoate de propyle une fois que le mélange se sera de nouveau stabilisé. » A-t-il raison ? Justifie à partir du mécanisme du rung R4.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on distingue explicitement ce qui change la vitesse de ce qui change la position de l'équilibre.
-
-Non, il a tort. L'acide sulfurique est un catalyseur : il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans changer le rapport de leurs vitesses - donc sans changer $K$, ni la composition à l'équilibre. Le mélange retrouvera le même $\tau \approx 2/3$ qu'avant, simplement plus vite. La quantité finale d'éthanoate de propyle ne changera pas.
-
-**4) Sans refaire le calcul complet, prédis si partir d'un excès de propan-1-ol (à quantité d'acide éthanoïque inchangée) donnerait un $\tau$ plus grand, plus petit, ou égal à celui de la question 2. Justifie uniquement à partir du critère $Q_r/K$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on transpose le raisonnement du rung R5 sans refaire toute l'algèbre.
-
-Un excès d'alcool augmente le dénominateur $[acide][alcool]$ de $Q_r$ dès le mélange initial : $Q_{r,i}$ part d'une valeur plus basse que $K$, ce qui pousse le système à avancer davantage dans le sens direct (estérification) pour le rejoindre. Le taux d'avancement de l'acide, réactif limitant, serait donc **plus grand** que celui de la question 2 - exactement comme au rung R5, où l'excès d'alcool avait fait passer $\tau$ de $66{,}7\,\%$ à $84{,}5\,\%$.
-
-**5) Propose une modification expérimentale, autre qu'un excès de réactif, qui permettrait d'approcher une conversion quasi totale de l'acide éthanoïque. Justifie avec le critère $Q_r/K$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on mobilise le deuxième levier du rung R5, distinct de l'excès de réactif.
-
-Éliminer l'eau (ou l'ester) au fur et à mesure de sa formation - par exemple par distillation - diminue continuellement le numérateur de $Q_r$, ce qui maintient $Q_{r,i} < K$ tout au long de la réaction : le système est perpétuellement relancé dans le sens direct et ne peut jamais atteindre un vrai palier d'équilibre avec le réactif restant. On peut ainsi approcher une conversion quasi totale de l'acide éthanoïque, bien au-delà du $\tau \approx 2/3$ obtenu à composition constante.
-
-### À toi
-
-**Variation 1.** Pour un autre couple acide/alcool, dans les conditions de l'estérification simple (quantités initiales égales, chaînes linéaires), on mesure à une certaine température $K = 9$. En reprenant la relation $K = \dfrac{\tau^2}{(1-\tau)^2}$ établie au rung R3, calcule $\tau$ pour ce couple. Ce résultat dépend-il de la quantité initiale $n_0$ choisie ? Justifie en une phrase.
-
-**Variation 2.** Un élève chauffe à reflux, en présence d'un catalyseur acide, un mélange équimolaire d'acide et d'alcool, et observe que l'équilibre s'installe en $20$ minutes au lieu de plusieurs jours. Il en conclut : « Le rendement final va forcément être meilleur, puisque j'ai mis un catalyseur et chauffé. » Explique, en deux ou trois phrases, pourquoi ce raisonnement est incorrect, en t'appuyant sur la distinction cinétique/thermodynamique établie au rung R4.
+[[exercise:r-variation]]

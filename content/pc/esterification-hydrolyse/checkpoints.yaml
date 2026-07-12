@@ -1,0 +1,348 @@
+notion: esterification-hydrolyse
+skill_code: pc_esterification_hydrolyse
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — esterification pilot)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong CHEMICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                                   position" (trois pistes : catalyseur,
+#                                   chauffage, excès de réactif) into a real MCQ
+#                                   commit before the lesson is built. Probes
+#                                   catalyseur-augmente-rendement.
+#   cp-r2-limitee     (after R2)  — rupture gate: réaction LIMITÉE / équilibre
+#                                   (non totale). Clone of EH-7's stem.
+#   cp-r3-avancement  (after R3)  — rupture gate: état d'équilibre vs avancement
+#                                   MAXIMAL (x_f < x_max, τ < 1). New stem.
+#   cp-r4-catalyseur  (after R4)  — rupture gate: rôle du CATALYSEUR (vitesse,
+#                                   pas rendement). Clone of EH-1's stem.
+#   cp-r5-deplacement (after R5)  — rupture gate: quels facteurs DÉPLACENT
+#                                   l'équilibre. Clone of EH-4's stem.
+#
+# Every distractor carries a named `misconception:` tag (no null tags); in every
+# item the correct option is NOT the longest choice. Clones surface an end-bank
+# stem inline and do NOT adjust the items.yaml tally (no double-counting).
+#
+# Boundary guard (2ème Bac PC): estérification/hydrolyse d'un couple acide
+# carboxylique + alcool. Réaction limitée, athermique ; équilibre dynamique
+# suivi par Qr/K ; τ = x_f/x_max ; catalyseur & chauffage = cinétique ; excès
+# de réactif ou retrait d'un produit = déplacement. Pas de mécanisme
+# réactionnel détaillé, pas de thermochimie quantitative, pas de pKa/dosage.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns the rhetorical "prends position" (trois pistes) into a
+  #        real MCQ commit before the lesson is built. Probes
+  #        catalyseur-augmente-rendement. NOT a clone of any end-bank item.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_esterification_hydrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_esterification_hydrolyse, hook_commit]
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Tu es le chimiste du ballon et tu veux repartir avec **plus d'ester** à la
+      fin. Trois pistes te viennent : ajouter encore plus de catalyseur, chauffer
+      plus fort, ou verser un excès d'un des deux réactifs au départ.
+      **Laquelle change vraiment la quantité finale d'ester ?** Engage-toi — c'est
+      ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Ajouter encore plus de catalyseur : on récupérera plus d'ester."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: |
+          Modèle détecté : « le catalyseur augmente le rendement ». C'est une des
+          prédictions les plus fréquentes — et la leçon va la contredire.
+          Un catalyseur n'apparaît ni dans l'équation bilan ni dans l'expression
+          de $K$ : il accélère l'estérification **et** l'hydrolyse dans les mêmes
+          proportions, donc ne touche pas à la quantité finale d'ester.
+
+      - id: B
+        text: "Chauffer plus fort : on récupérera plus d'ester."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: |
+          Modèle détecté : « chauffer déplace l'équilibre vers l'ester ».
+          Chauffer est un facteur cinétique : ça accélère l'arrivée à l'équilibre.
+          Mais l'estérification est quasi athermique, donc $K$ — et le rendement —
+          ne bougent presque pas avec la température.
+
+      - id: C
+        text: "Verser un excès d'un des deux réactifs au départ."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : sur les trois pistes, seule celle-ci
+          change la composition initiale, donc déplace réellement l'équilibre. Les
+          deux autres ne font qu'accélérer l'arrivée au même résultat.
+          **Pourquoi** l'excès déplace-t-il l'équilibre, et **quel autre geste**
+          fait la même chose ? C'est ce que la leçon va construire.
+
+      - id: D
+        text: "Avec assez de catalyseur et de temps, l'acide finira de toute façon par disparaître : on obtiendra le maximum d'ester quoi qu'on fasse."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: |
+          Modèle détecté : « la réaction finit par être totale ». Non : l'acide et
+          l'alcool ne disparaissent jamais complètement, car l'hydrolyse inverse
+          coexiste en permanence. Ni le catalyseur ni le temps ne franchissent
+          l'équilibre — il faut agir sur la composition (excès, retrait d'un
+          produit) pour en obtenir davantage.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-limitee | placed AFTER R2
+  #        Rupture gate: réaction LIMITÉE / équilibre (non totale).
+  #        Clone of EH-7's stem. Probes esterification-totale.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-limitee
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_esterification_hydrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_esterification_hydrolyse]
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+    item_source: clone_of_EH-7
+    lesson_placement: after_R2
+
+    stem: |
+      Dans le ballon de l'introduction, après plusieurs heures de chauffage à
+      reflux, un test chimique révèle qu'il reste, **indéfiniment**, de l'acide
+      éthanoïque et de l'éthanol non transformés, aux côtés de l'ester et de l'eau.
+      Que peut-on en conclure sur cette réaction ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "C'est une anomalie : dans une estérification normale, l'acide et l'alcool finissent toujours par disparaître complètement."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: |
+          Modèle détecté : « l'estérification est totale ». Ce n'est pas une
+          anomalie : cette coexistence indéfinie des quatre espèces est le
+          comportement **normal** de l'estérification, pas un défaut d'expérience.
+
+      - id: B
+        text: "La réaction est limitée : elle atteint un équilibre où les quatre espèces coexistent."
+        correct: true
+        feedback: |
+          Exact. Le test prouve que l'acide et l'alcool subsistent indéfiniment :
+          la réaction n'est pas totale, elle s'arrête à un état d'équilibre
+          dynamique où estérification et hydrolyse se compensent.
+
+      - id: C
+        text: "Le chauffage n'a pas duré assez longtemps ; avec beaucoup plus de temps, l'acide et l'alcool finiraient par être entièrement consommés."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: |
+          Modèle détecté : « ce n'est qu'une question de temps ». Prolonger le
+          chauffage ne change rien : le système a atteint un équilibre qu'il ne
+          dépasse jamais, quelle que soit la durée.
+
+      - id: D
+        text: "Il manque du catalyseur : avec plus d'acide sulfurique, l'acide et l'alcool seraient entièrement consommés."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: |
+          Modèle détecté : « le catalyseur peut rendre la réaction totale ». Non :
+          plus de catalyseur mène au **même** équilibre, seulement plus vite. Il ne
+          déplace jamais la composition finale.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-avancement | placed AFTER R3
+  #        Rupture gate: état d'équilibre vs avancement MAXIMAL
+  #        (x_f < x_max, τ < 1). New stem. Probes
+  #        avancement-final-egale-maximal.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-avancement
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_esterification_hydrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_esterification_hydrolyse]
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+    item_source: new
+    lesson_placement: after_R3
+
+    stem: |
+      Pour une estérification simple ($K=4$, mélange équimolaire), on compare
+      l'avancement final $x_f$ (atteint à l'équilibre) à l'avancement maximal
+      $x_{max}$ (celui d'une réaction supposée totale). Que peut-on affirmer ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$x_f < x_{max}$ : la réaction étant limitée, le rendement $\\tau = x_f/x_{max}$ reste inférieur à $1$."
+        correct: true
+        feedback: |
+          Exact. Ici $\tau = x_f/x_{max} = 2/3 \approx 0{,}67 < 1$ : l'équilibre
+          est atteint **avant** l'épuisement des réactifs. L'avancement maximal
+          $x_{max} = n_0$ est une borne théorique jamais atteinte.
+
+      - id: B
+        text: "$x_f = x_{max}$ : à l'équilibre, l'acide et l'alcool ont entièrement réagi."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: |
+          Modèle détecté : « équilibre = avancement maximal ». Non : à l'équilibre
+          il reste de l'acide et de l'alcool, donc $x_f < x_{max}$. Si l'on avait
+          $x_f = x_{max}$, le rendement serait de $100\ \%$ — ce n'est jamais le
+          cas pour une réaction limitée.
+
+      - id: C
+        text: "$x_f = x_{max}$, car atteindre l'équilibre signifie que la réaction est terminée, donc totale."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: |
+          Modèle détecté : « terminée = totale ». « Terminée » veut dire que
+          l'état ne change plus (équilibre), pas que les réactifs sont épuisés.
+          L'avancement se fige à $x_f < x_{max}$ : la réaction est limitée.
+
+      - id: D
+        text: "$x_f > x_{max}$ : à l'équilibre, le système peut dépasser l'avancement maximal stoechiométrique et produire encore plus d'ester."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: |
+          Modèle détecté : confusion sur ce qu'est $x_{max}$. L'avancement maximal
+          est une **borne** fixée par la stoechiométrie : on ne peut pas la
+          dépasser. À l'équilibre, $x_f$ est toujours strictement en dessous.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-catalyseur | placed AFTER R4
+  #        Rupture gate: rôle du CATALYSEUR (change la vitesse, pas le
+  #        rendement). Clone of EH-1's stem. Probes
+  #        catalyseur-augmente-rendement.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-catalyseur
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_esterification_hydrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_esterification_hydrolyse]
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    item_source: clone_of_EH-1
+    lesson_placement: after_R4
+
+    stem: |
+      Deux flacons contiennent le même mélange équimolaire d'acide éthanoïque et
+      d'éthanol (estérification simple, $K=4$). Le flacon A est laissé à
+      température ambiante, sans catalyseur ; le flacon B reçoit quelques gouttes
+      d'acide sulfurique. Une fois les deux flacons stabilisés, comment se
+      comparent les taux d'avancement finaux $\tau_A$ et $\tau_B$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\tau_A = \\tau_B \\approx 2/3$ : seul le temps mis pour atteindre l'équilibre diffère."
+        correct: true
+        feedback: |
+          Exact. Le catalyseur accélère l'estérification et l'hydrolyse à parts
+          égales : il ne change ni $K$ ni $\tau$. Le flacon B atteint le même
+          équilibre que A, simplement en une heure au lieu de plusieurs jours.
+
+      - id: B
+        text: "$\\tau_B > \\tau_A$, car le catalyseur favorise la formation de l'ester."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: |
+          Modèle détecté : « le catalyseur favorise un sens ». Il accélère
+          l'estérification **et** l'hydrolyse dans les mêmes proportions : le
+          rapport de leurs vitesses, qui fixe l'équilibre, reste inchangé.
+
+      - id: C
+        text: "$\\tau_B > \\tau_A$, car le catalyseur déplace l'équilibre vers la droite."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: |
+          Modèle détecté : « catalyseur = déplacement d'équilibre ». Un catalyseur
+          n'apparaît jamais dans l'expression de $K$ : il n'a aucune prise sur la
+          position de l'équilibre, seulement sur la vitesse d'y parvenir.
+
+      - id: D
+        text: "$\\tau_A > \\tau_B$ : sans catalyseur, la réaction dispose de plus de temps pour se compléter et convertir davantage d'acide."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: |
+          Modèle détecté : « plus de temps = plus de conversion ». Les deux flacons
+          atteignent le **même** équilibre : le temps supplémentaire ne pousse pas
+          la réaction au-delà de $\tau \approx 2/3$. La durée ne change pas la
+          composition finale.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r5-deplacement | placed AFTER R5
+  #        Rupture gate: quels facteurs DÉPLACENT réellement l'équilibre
+  #        (excès de réactif / retrait d'un produit) vs. ceux qui ne
+  #        font qu'accélérer. Clone of EH-4's stem. Probes
+  #        chauffage-augmente-rendement.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-deplacement
+    rung: "R5"
+    habilete: resolution
+    skill_code: pc_esterification_hydrolyse
+    tags: [checkpoint, formative, misconception_driven, pc_esterification_hydrolyse, deplacement]
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    item_source: clone_of_EH-4
+    lesson_placement: after_R5
+
+    stem: |
+      Pour améliorer réellement le rendement d'une estérification — augmenter le
+      taux d'avancement final $\tau$ — lequel de ces gestes fonctionne ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Verser, dès le départ, un excès de l'un des deux réactifs."
+        correct: true
+        feedback: |
+          Exact. Un excès de réactif augmente le dénominateur de $Q_r$ dès le
+          mélange initial : $Q_{r,i}$ part en dessous de $K$, ce qui pousse le
+          système à avancer davantage dans le sens direct. C'est un déplacement
+          réel de l'équilibre — le seul, ici, à toucher $\tau$.
+
+      - id: B
+        text: "Chauffer le mélange plus fort."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: |
+          Modèle détecté : « chauffer améliore le rendement ». Chauffer accélère
+          l'atteinte de l'équilibre, mais la réaction étant quasi athermique, $K$
+          (et donc $\tau$) ne change quasiment pas avec la température.
+
+      - id: C
+        text: "Ajouter davantage de catalyseur acide."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: |
+          Modèle détecté : « le catalyseur améliore le rendement ». Il n'apparaît
+          dans aucune expression de $K$ : il ne change jamais $\tau$, quelle que
+          soit la quantité utilisée.
+
+      - id: D
+        text: "Attendre beaucoup plus longtemps : une fois l'équilibre atteint, laisser réagir encore finira par convertir tout l'acide restant."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: |
+          Modèle détecté : « attendre finit par tout convertir ». Une fois
+          l'équilibre atteint, $\tau$ ne bouge plus : attendre encore ne change
+          rien à la composition, déjà stabilisée à $\tau \approx 2/3$.
