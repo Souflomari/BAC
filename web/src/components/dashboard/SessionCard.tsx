@@ -2,29 +2,43 @@
  * SessionCard — the ONE primary element of the dashboard (DASHBOARD-SPEC §1.1).
  *
  * Extracted from the original home page.tsx (Day-4 B1 "session-first"; the
- * markup/classes below are unchanged from that build — DASHBOARD-SPEC §6
- * moves it to its own file, it does not restyle it). Reads `getTodaySession()`
- * (session.ts) — a separate, already-honest contract that this session's
- * StudentState work does not touch: `session.ts` already documents that its
- * `resume` kind REQUIRES persisted student state and is never constructed
- * today, which is the same truth `getStudentState()` (student-state.ts)
- * states for the rest of the dashboard.
+ * markup/classes below are UNCHANGED from that build, and unchanged again by
+ * this session's read-layer work — DASHBOARD-SPEC §6 moved it to its own
+ * file without restyling it, and this pass only changes WHERE `session`
+ * comes from, never the JSX it produces from one.
  *
- * The one change: the zero-state ("start") caption now reads « Commence ici »
- * instead of the resume framing's « Aujourd'hui » — DASHBOARD-SPEC §3's exact
- * wording for the first-visit degraded render. Carries the page's ONE
- * `[data-primary-action]` (DASHBOARD-SPEC §5).
+ * Now a Client Component: `useStudentState()` (student-state.ts) is the live
+ * read layer, and `sessionFromState` (session.ts, pure) turns its
+ * `StudentState | null` into the same `SessionState` shape this component
+ * has always branched on. `notions` is now a prop (computed server-side in
+ * page.tsx, same as every other dashboard component already receives it) —
+ * session.ts itself no longer reads the content tree, so this file stays a
+ * valid Client Component (importing `@/lib/content` for its `fs` read would
+ * not be). In "off"/"mock" builds, and on every signed-out/loading render in
+ * "live", `state` is `null` and `sessionFromState` degrades to EXACTLY the
+ * old (pre-read-layer) "start" behavior — byte-identical output.
+ *
+ * The one wording change (already shipped, unrelated to this pass): the
+ * zero-state ("start") caption reads « Commence ici » instead of the resume
+ * framing's « Aujourd'hui » — DASHBOARD-SPEC §3's exact wording for the
+ * first-visit degraded render. Carries the page's ONE `[data-primary-action]`
+ * (DASHBOARD-SPEC §5).
  */
 
+"use client";
+
 import Link from "next/link";
-import { getTodaySession } from "@/lib/session";
+import { sessionFromState } from "@/lib/session";
+import { useStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";
 import { Icon } from "@/components/ui/Icon";
 import { Cover } from "@/components/covers/Cover";
 import { cn } from "@/lib/utils";
+import type { NotionMeta } from "@/lib/content";
 
-export function SessionCard() {
-  const session = getTodaySession();
+export function SessionCard({ notions }: { notions: NotionMeta[] }) {
+  const { state } = useStudentState();
+  const session = sessionFromState(notions, state);
   if (!session) return null;
 
   const { notion } = session;

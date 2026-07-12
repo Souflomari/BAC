@@ -2,13 +2,15 @@
  * Home — the DASHBOARD (DASHBOARD-SPEC.md — "home becomes a real dashboard;
  * content composed, sides functional", Day-12 owner direction).
  *
- * THIS BUILD SHIPS THE ZERO-STATE ONLY (DASHBOARD-SPEC §3): StudentState is
- * consumed through the real contract (`@/lib/student-state`) from a NULL
- * provider — no persistence exists yet (AUTH-SPEC §4 gate), so every
- * component here renders the honest first-visit degraded state, never a
- * fabricated one. DESIGN-BIBLE §8 (periphery, functional sides) + §0
- * (spatial separation of focus/engagement): the dashboard is the ONE surface
- * allowed a multi-column composition (DASHBOARD-SPEC §0).
+ * StudentState is consumed through the real contract (`@/lib/student-state`'s
+ * `useStudentState()`, LEARNER-MODEL-SPEC's read layer) — in "off"/"mock"
+ * builds, and on every signed-out render in "live" (no production project is
+ * gated in yet — AUTH-SPEC §4), it resolves `null`, so every component here
+ * renders the SAME honest first-visit degraded state (DASHBOARD-SPEC §3) as
+ * before this read layer existed, never a fabricated one. DESIGN-BIBLE §8
+ * (periphery, functional sides) + §0 (spatial separation of focus/
+ * engagement): the dashboard is the ONE surface allowed a multi-column
+ * composition (DASHBOARD-SPEC §0).
  *
  * Anatomy (DASHBOARD-SPEC §1, DOM order = mobile order):
  *   1. SessionCard  — the one primary action ([data-primary-action]).
@@ -66,7 +68,7 @@ export default function HomePage() {
 
       <div className="dashboard-grid">
         <div className="dashboard-grid__primary">
-          <SessionCard />
+          <SessionCard notions={notions} />
           <NextUp notions={notions} />
         </div>
         <div className="dashboard-grid__mastery">

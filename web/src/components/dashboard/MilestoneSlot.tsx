@@ -9,8 +9,10 @@
  * The slot renders `null` — absent from the DOM entirely, not a hidden or
  * greyed placeholder — until a real milestone is both DEFINED and EARNED
  * (the AttemptFirst motif: nothing prints until something real has
- * happened). `getStudentState()` (student-state.ts) returns `null` this
- * session, so there is nothing to earn: this always returns `null` today.
+ * happened). No milestone rule is defined yet anywhere in the read layer
+ * (`student-state.ts` / `learner-model.ts`) — whether or not a live
+ * `StudentState` exists, there is nothing to earn: this always returns
+ * `null` today.
  */
 
 export function MilestoneSlot() {

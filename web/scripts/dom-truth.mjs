@@ -290,7 +290,36 @@ const BATTERY = [
   // The future milestone component MUST render [data-milestone] — this row
   // is the AttemptFirst contract (§1.6): absent until DEFINED and EARNED.
   { name: "D12 milestone slot: absent until earned (§1.6)", page: "/", sel: "main", present: true, absentSel: "[data-milestone]" },
-  { name: "D12 forbidden dashboard vocabulary (§5)", page: "/", sel: "main", notText: /\d+\s?%|maîtrisé|streak|série de|\bXP\b|\bpoints\b/i },
+  { name: "D12 forbidden dashboard vocabulary (§5)", page: "/", sel: "main", notText: /\d+\s?%|maîtrisé|streak|série de|\bXP\b|\bpoints\b|vu\s+\d+\s+fois/i },
+  // ── Learner-model read layer (LEARNER-MODEL-SPEC §0.3/§8): the guard above
+  //    now also bans "vu N fois" — `exhibited_count` is a BINARY flag under
+  //    the coverage floor, never a confidence count, so no rendered string
+  //    may ever present it as a measure ("vu 7 fois"). This still runs
+  //    against the default ("off"-mode) build, where `useStudentState()`
+  //    always resolves `null` — the same class of guard as before, just
+  //    widened for the new vocabulary this wave's read layer makes
+  //    reachable in a live build.
+  //
+  //    A TRUE non-null-`StudentState` DOM sweep (a real `data-reco-source`
+  //    ∈ {misconception-active, reprise, revision} actually rendering, with
+  //    the guard above proven clean against IT) needs a live, authenticated
+  //    session reading real rows from the draft-048/049 tables — i.e. a
+  //    seeded STAGING Supabase project, which is a human-gated production
+  //    dependency (RULES: no autonomous production/staging sync) outside
+  //    this instrument's reach. What dom-truth CAN and does prove today:
+  //    the class-level guard above stays green regardless of which branch
+  //    renders, and the row below constrains `data-reco-source` to its
+  //    known value set so a typo'd/invented source would fail loudly the
+  //    moment any build ever renders one. The DATA-LAYER correctness this
+  //    would otherwise need a seeded backend to observe (which predicate
+  //    fires, for which notion, with which numbers, across the floor/
+  //    exhibition/clearing/21-day boundaries) is instead exercised as pure
+  //    unit tests — `web/scripts/test-learner-model.mjs`, run via
+  //    `node --test scripts/test-learner-model.mjs` from `web/` — the
+  //    honest substitute noted per this task's own instructions. The
+  //    `data-reco-source` value-set guard itself is a SWEEP (below, near the
+  //    other procedural checks) — the declarative battery above has no
+  //    "attribute value ∈ known set" shape.
   // ── Day-12 auth surface (AUTH-SPEC §3/§5). The default build is mode
   //    "off": /connexion states it quietly with NO form in the tree, and the
   //    header carries no auth affordance (zero DOM delta). Mock-mode markup
@@ -2162,6 +2191,32 @@ try {
       else console.log(`  ✓ ${route} — 0px`);
     }
     await mctx.close();
+  }
+
+  // (Learner-model read layer) data-reco-source VALUE-SET GUARD: whatever
+  // predicate renders, its `data-reco-source` must be one of the four named
+  // predicates (LEARNER-MODEL-SPEC §5) — never a typo'd/invented string.
+  // Only "parcours" is reachable in this default ("off"-mode) build
+  // (predicates 1-3 need a live session — see the comment on the vocabulary
+  // guard row above), so this sweep is a forward-looking backstop today: it
+  // proves nothing NEW about the off-mode build (the declarative row above
+  // already asserts "parcours" renders) but it WILL start mattering the
+  // moment any build renders a live NextUp pick, with zero further
+  // dom-truth changes needed.
+  {
+    console.log(`\n[/] SWEEP: data-reco-source is always one of the known predicates`);
+    const KNOWN_RECO_SOURCES = ["misconception-active", "reprise", "revision", "parcours"];
+    await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    const sources = await page.evaluate(() =>
+      [...document.querySelectorAll("[data-reco-source]")].map((el) => el.getAttribute("data-reco-source"))
+    );
+    checks++;
+    if (sources.length === 0) failures += fail("no [data-reco-source] element found — NextUp not rendering");
+    else if (sources.some((s) => !KNOWN_RECO_SOURCES.includes(s)))
+      failures += fail(
+        `unknown data-reco-source value(s): ${sources.filter((s) => !KNOWN_RECO_SOURCES.includes(s)).join(", ")}`
+      );
+    else console.log(`  ✓ data-reco-source ∈ {${KNOWN_RECO_SOURCES.join(", ")}} (found: ${sources.join(", ")})`);
   }
 
   await browser.close();

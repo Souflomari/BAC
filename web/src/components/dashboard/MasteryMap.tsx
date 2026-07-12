@@ -1,13 +1,19 @@
 /**
  * MasteryMap — « Carte de maîtrise » (DASHBOARD-SPEC §1.3 / LEARNER-MODEL-SPEC
- * §4). Per-notion tokens, one per real notion. Zero-state (this session,
- * `getStudentState()` returns `null`): EVERY token is `non-ouvert`, rendered
- * as a calm TABLE OF CONTENTS grouped by subject — headings + quiet links,
- * no grey deficit chips, no invented state label. `non-ouvert` is the
- * DEFAULT state (DASHBOARD-SPEC §5): it is not printed as a status word and
- * carries no `data-state-source` — only a non-default state (entamé, lu,
- * exercé, à revoir) would earn a visible label + its `data-state-source`
- * anchor, once `state.perNotion[n.id]` is ever non-null.
+ * §4). Per-notion tokens, one per real notion. Zero-state (`useStudentState()`
+ * resolves `state: null` — every "off"/"mock" build and every signed-out or
+ * loading render, exactly as the old always-`null` `getStudentState()` did):
+ * EVERY token is `non-ouvert`, rendered as a calm TABLE OF CONTENTS grouped
+ * by subject — headings + quiet links, no grey deficit chips, no invented
+ * state label. `non-ouvert` is the DEFAULT state (DASHBOARD-SPEC §5): it is
+ * not printed as a status word and carries no `data-state-source` — only a
+ * non-default state (entamé, lu, exercé, à revoir) would earn a visible
+ * label + its `data-state-source` anchor, once `state.perNotion[n.id]` is
+ * ever non-null. (That label rendering itself is NOT wired up in this pass —
+ * `learner-model.ts`'s `notionMasteryState` computes it and is unit-tested,
+ * but attaching it to this token is left for a follow-up so this file's
+ * markup stays untouched here, per the read-layer task's "minimal adapt,
+ * no markup change" instruction.)
  *
  * Token count is exactly `notions.length` (DASHBOARD-SPEC §5's dom-truth
  * invariant) — every notion in the prop list renders exactly one
@@ -36,7 +42,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { getStudentState } from "@/lib/student-state";
+import { useStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";
 import { isNotionInFiliere } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
@@ -48,11 +54,12 @@ import type { NotionMeta } from "@/lib/content";
 const SUBJECT_ORDER = ["maths", "pc", "svt", "philo", "si"];
 
 export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
-  // Consumed through the contract (DASHBOARD-SPEC §2): null until
-  // persistence lands (AUTH-SPEC §4 gate). See the per-token lookup below —
-  // that is where a future non-null state attaches its data-state-source
-  // here without restructuring the token.
-  const state = getStudentState();
+  // Consumed through the contract (DASHBOARD-SPEC §2) via the live read
+  // layer: `null` in "off"/"mock" builds and every signed-out/loading
+  // render, exactly like the old always-`null` `getStudentState()`. See the
+  // per-token lookup below — that is where a real non-null state attaches
+  // its data-state-source without restructuring the token.
+  const { state } = useStudentState();
 
   // null = "toutes les matières" (the default, unfiltered render).
   const [activeSubject, setActiveSubject] = useState<string | null>(null);
