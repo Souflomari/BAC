@@ -8,6 +8,8 @@ Imagine une patinoire. Tu lances un palet de hockey d'un coup sec, puis tu retir
 
 Avant de lire la suite, prends position, en une phrase : qu'est-ce qui fait avancer le palet pendant tout ce trajet, alors que plus personne ne le touche ? Y a-t-il encore, selon toi, une force qui le pousse vers l'avant pendant qu'il glisse ? Ou bien penses-tu qu'aucune force n'est nécessaire pour qu'il continue ?
 
+[[checkpoint:cp-r0-predict]]
+
 Beaucoup de raisonnements naturels penchent vers la première réponse : « il continue d'avancer, donc il doit y avoir encore une force vers l'avant qui l'entretient — sinon il s'arrêterait tout de suite ». C'est une intuition ancienne (elle remonte à Aristote), et elle semble collée à l'expérience de tous les jours : un objet qu'on cesse de pousser finit toujours par s'arrêter.
 
 Garde ta réponse en tête. On va la mettre à l'épreuve, mais il nous faut d'abord le bon vocabulaire pour en parler précisément : dans quel cadre décrit-on un mouvement, et qu'est-ce qu'on entend exactement par « la vitesse » d'un solide qui, contrairement à un point, a une taille et une forme ? C'est l'objet du rung suivant. On y revient ensuite directement.
@@ -60,6 +62,8 @@ où $O$ est un point fixe du référentiel. Concrètement, $\vec{v}_G$ est **tan
 
 Retiens bien ceci, parce que ça va compter dans les rungs suivants : $\vec{v}_G$ peut être grand ou petit, constant ou changeant — **ce n'est pas la vitesse elle-même qui va nous renseigner sur les forces**. Ce qui va compter, c'est de savoir si, et comment, $\vec{v}_G$ **change** au cours du temps.
 
+[[checkpoint:cp-r1-referentiel]]
+
 ---
 
 ## R2 — La première loi de Newton : le principe d'inertie
@@ -93,6 +97,8 @@ Le principe couvre aussi le repos, qui est juste le cas particulier $\vec{v}_G =
 $$\vec{P} + \vec{N} = \vec{0} \qquad \text{soit} \qquad N = P = mg$$
 
 Les deux forces ont même norme, même direction, et des sens opposés — mais attention, on reviendra en R4 sur une confusion très fréquente à leur sujet : ce n'est PAS pour cette raison qu'elles forment une paire d'action-réciproque au sens de la troisième loi.
+
+[[checkpoint:cp-r2-inertie]]
 
 ---
 
@@ -140,6 +146,8 @@ $$a_B = \frac{F}{m_B} = \frac{20}{40} = 0{,}5\ \text{m}\cdot\text{s}^{-2}$$
 Le chariot A accélère quatre fois plus vite que le chariot B — exactement le rapport inverse de leurs masses ($m_B/m_A = 4$). La force appliquée est identique dans les deux cas ; c'est uniquement la masse qui distingue les deux résultats.
 
 [[figure:deux-chariots-inertie]]
+
+[[checkpoint:cp-r3-force-vitesse]]
 
 ---
 
@@ -332,6 +340,8 @@ $$a_{G,x} = 9{,}8 \times \sin 30^\circ - \frac{2{,}0}{1{,}0} = 9{,}8 \times 0{,}
 
 Le solide accélère bien dans le sens de la descente ($a_{G,x} > 0$), parce que la composante motrice du poids ($4{,}9\ \text{N}$, en divisant par $m=1{,}0$ kg cela donne $4{,}9\ \text{m}\cdot\text{s}^{-2}$) l'emporte sur le frottement résistant. Si le frottement avait été plus grand que $mg\sin\alpha$, on aurait trouvé $a_{G,x} < 0$ : le solide, s'il était déjà en mouvement, aurait décéléré ; s'il partait du repos, il ne se serait tout simplement pas mis en mouvement — le frottement statique aurait suffi à le retenir, un cas qui sort du cadre de ce chapitre mais qu'il est utile de savoir reconnaître.
 
+[[checkpoint:cp-r7-projection]]
+
 ---
 
 ## R8 — Pour t'entraîner
@@ -345,44 +355,14 @@ Le solide accélère bien dans le sens de la descente ($a_{G,x} > 0$), parce que
 - **3ᵉ loi (actions réciproques) :** $\vec{F}_{B \to A} = -\vec{F}_{A \to B}$, toujours vraie, sur deux corps DIFFÉRENTS — à ne jamais confondre avec deux forces en équilibre sur un même corps.
 - **Méthode :** système + référentiel → bilan des forces → $\sum \vec{F}_{ext} = m\,\vec{a}_G$ → repère et projection → équations scalaires.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Une caisse de masse $m = 25\ \text{kg}$, initialement immobile sur un sol horizontal, est tirée par une corde qui exerce une force horizontale de tension $T = 100\ \text{N}$, dans le sens du mouvement. Les frottements exercent une force constante $f = 60\ \text{N}$, opposée au mouvement. On prend $g \approx 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
+Tu as désormais toutes les pièces. Voici un vrai sujet d'examen national (session normale 2019) : un système qui descend une piste inclinée sous une force motrice, dont on étudie le mouvement du centre d'inertie par la deuxième loi de Newton. Prends le temps de chercher chaque question **avant** de dérouler le raisonnement.
 
-**1) Faire le bilan des forces et déterminer la valeur de l'accélération $a_G$ de la caisse pendant qu'elle est tirée.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* quatre forces au total (poids, réaction normale, tension, frottement) ; on projette d'abord verticalement pour confirmer que $N$ n'intervient pas horizontalement, puis on résout selon l'axe du mouvement.
+### Une variation pour ne pas mémoriser
 
-Sur l'axe vertical : $N = mg$ (le mouvement reste horizontal). Sur l'axe horizontal, dans le sens du mouvement :
+Même famille de compétences (bilan, deuxième loi projetée sur un plan incliné, cinématique), mais un habillage différent — ici la descente se fait avec frottement et sans force motrice, et aucun graphe n'est fourni. De quoi vérifier que tu reconnais **quelle procédure s'applique**, plutôt que de recopier le sujet précédent.
 
-$$T - f = m\,a_G$$
-
-$$a_G = \frac{T - f}{m} = \frac{100 - 60}{25} = 1{,}6\ \text{m}\cdot\text{s}^{-2}$$
-
-**2) En partant du repos, quelle vitesse la caisse atteint-elle après avoir parcouru $d = 5{,}0\ \text{m}$ ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* l'accélération étant constante (question 1), on réutilise la relation entre vitesse, accélération et distance parcourue du mouvement uniformément accéléré, sans repasser par le temps.
-
-$$v_G^2 = 2\,a_G\,d = 2 \times 1{,}6 \times 5{,}0 = 16$$
-
-$$v_G = \sqrt{16} = 4{,}0\ \text{m/s}$$
-
-**3) À l'instant où elle atteint cette vitesse, la corde est coupée. Le frottement, lui, continue de s'exercer. La caisse s'arrête-t-elle immédiatement ? Justifier à l'aide d'une des lois du chapitre.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* c'est une question de principe, pas de calcul — elle teste directement si tu confonds « il n'y a plus de force motrice » avec « il n'y a plus de mouvement du tout ».
-
-Non, la caisse ne s'arrête pas immédiatement. Une fois la corde coupée, la seule force horizontale restante est le frottement $f = 60\ \text{N}$, opposé au mouvement : $\sum \vec{F}_{ext} \neq \vec{0}$ (le poids et $N$ se compensent verticalement, mais $f$ subsiste horizontalement), donc, par la deuxième loi, $\vec{a}_G \neq \vec{0}$ — mais cette accélération est maintenant dirigée en sens INVERSE du mouvement (une décélération). La vitesse diminue progressivement jusqu'à s'annuler ; elle ne tombe pas à zéro instantanément, exactement comme le principe d'inertie l'impose : il faut une durée, pas un instant, pour faire varier un vecteur vitesse non nul jusqu'à zéro sous l'effet d'une force finie.
-
-**4) On remplace la caisse par une caisse de masse $2m = 50\ \text{kg}$ (donc de poids double), tirée par la même tension $T = 100\ \text{N}$ et freinée par le même frottement $f = 60\ \text{N}$. Que devient l'accélération pendant la traction ? Commenter le rôle de la masse et celui du poids dans ce résultat.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* cette question sépare explicitement l'effet de la masse (qui apparaît directement dans la deuxième loi) de celui du poids (qui, ici, ne joue aucun rôle dans l'équation horizontale).
-
-$$a_G' = \frac{T - f}{2m} = \frac{100 - 60}{50} = 0{,}8\ \text{m}\cdot\text{s}^{-2}$$
-
-L'accélération est divisée par deux exactement quand la masse double — conforme à la deuxième loi, $a_G = \sum F_{ext}/m$. Remarque bien que le POIDS, qui a doublé lui aussi, n'apparaît nulle part dans ce calcul : il est intégralement compensé par $N$ sur l'axe vertical, et n'a aucun effet sur le mouvement horizontal. C'est la MASSE, pas le poids, qui gouverne la résistance au changement de vitesse ici.
-
-### À toi
-
-**Variation 1.** On lâche, sans vitesse initiale et en chute libre, un même objet depuis la même hauteur, une fois sur Terre ($g \approx 9{,}8\ \text{N/kg}$) et une fois sur la Lune ($g \approx 1{,}6\ \text{N/kg}$). Sans reprendre tout le calcul de R6, indique sur laquelle des deux la chute dure le plus longtemps, et justifie ta réponse à partir de la relation $\vec{a}_G = \vec{g}$ établie en R6 — en particulier, précise si la masse de l'objet change quoi que ce soit à ta réponse.
-
-**Variation 2.** Un solide est lâché sans vitesse initiale en haut d'un plan incliné, une fois SANS frottement, une fois AVEC frottement (même angle, même masse dans les deux cas). Décris, sans calcul, comment évolue le vecteur $\vec{v}_G$ pendant la descente dans chacun des deux cas (direction, sens, norme), puis explique dans lequel des deux cas l'accélération $a_{G,x}$ est la plus grande, en t'appuyant sur le bilan des forces établi en R7.
+[[exercise:r-variation]]

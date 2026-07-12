@@ -1,0 +1,382 @@
+notion: lois-de-newton
+skill_code: pc_lois_newton
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — lois-de-newton)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)      — COMMIT gate: turns the rhetorical "prends
+#                                    position" of the palet into a real MCQ
+#                                    commit before the inertia reveal. Probes
+#                                    force-entretient-mouvement.
+#   cp-r1-referentiel (after R1)   — rupture gate: RÉFÉRENTIEL GALILÉEN (a non-
+#                                    galilean frame is not a real force).
+#   cp-r2-inertie     (after R2)   — rupture gate: PRINCIPE D'INERTIE (constant
+#                                    velocity ⇒ ΣF = 0).
+#   cp-r3-force-vitesse (after R3) — rupture gate: 2e LOI ΣF = m·a vs force ∝
+#                                    vitesse.
+#   cp-r7-projection  (after R7)   — rupture gate: PROJECTION SUR LES AXES du
+#                                    plan incliné (sin/cos, indépendance de la
+#                                    masse).
+#
+# Clone note: cp-r1-referentiel clones LDN-11's stem, cp-r2-inertie clones
+# LDN-1's, cp-r3-force-vitesse is an original commit-style stem, cp-r7-
+# projection clones LDN-24's. Distractors are curated so EVERY distractor
+# carries a named misconception tag (no null tags). cp-r0-predict is an
+# original commit item (not in the end bank). No end-bank tally is adjusted.
+#
+# Boundary guard: lois de Newton (2ème Bac PC) — référentiel galiléen, centre
+# d'inertie, vecteur vitesse, les trois lois, méthode (bilan/projection),
+# chute libre, plan incliné. Translation seulement. Pas de quantité de
+# mouvement au sens du théorème du centre d'inertie hors programme, pas de
+# frottement fluide dépendant de la vitesse, pas de rotation.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the inertia reveal (R2). Probes:
+  #        force-entretient-mouvement (the "il faut une force pour avancer").
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_lois_newton
+    tags: [checkpoint, formative, misconception_driven, pc_lois_newton, hook_commit]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Sur la patinoire, tu lances le palet d'un coup sec puis tu retires ta
+      main. La glace est quasi sans frottement, et plus rien ne touche le palet
+      horizontalement. Il continue pourtant de glisser longtemps, en ligne
+      droite, à vitesse presque constante.
+      **Qu'est-ce qui fait avancer le palet pendant tout ce trajet ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Rien : aucune force vers l'avant n'est nécessaire. Une fois lancé, il continue de lui-même, par inertie.
+        correct: true
+        feedback: |-
+          Exact — et c'est tout le renversement de ce chapitre : ce n'est pas le
+          mouvement qui réclame une cause, c'est son CHANGEMENT. La vraie
+          question devient : pourquoi finit-il, dans la vraie vie, par ralentir ?
+          On y répond au rung suivant.
+
+      - id: B
+        text: |-
+          Une force vers l'avant, communiquée par la main au moment du lancer, qui continue de le pousser tant qu'il avance.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: |-
+          Modèle détecté : « le mouvement a besoin d'une force qui l'entretient »
+          (l'intuition d'Aristote). Mais une fois la main partie, plus rien ne
+          touche le palet vers l'avant : cette force n'existe tout simplement
+          plus. Et pourtant il avance. C'est le signe qu'une vitesse constante ne
+          réclame aucune force.
+
+      - id: C
+        text: |-
+          Un élan reçu au lancer, stocké dans le palet, qui s'épuise peu à peu.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+        feedback: |-
+          Modèle détecté : la théorie de l'« impetus », un élan qui serait
+          emmagasiné puis se viderait. Aucune force n'est stockée dans le palet
+          après le lâcher : rien ne s'y « épuise ». S'il ralentit très lentement,
+          c'est à cause d'une force extérieure et présente — le frottement
+          résiduel — pas d'une réserve intérieure qui se viderait.
+
+      - id: D
+        text: |-
+          La réaction de la glace, qui le pousse vers l'avant.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+        feedback: |-
+          Modèle détecté : on attribue une poussée horizontale à la réaction du
+          sol. Or la réaction de la glace est **perpendiculaire** à la glace,
+          donc verticale : elle équilibre le poids, elle ne pousse rien vers
+          l'avant. Aucune force horizontale n'agit — et c'est justement pour ça
+          que le palet garde sa vitesse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-referentiel | placed AFTER R1
+  #        Rupture gate: RÉFÉRENTIEL GALILÉEN. Clone of LDN-11's stem.
+  #        Probes referentiel-toujours-galileen.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-referentiel
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_lois_newton
+    tags: [checkpoint, formative, misconception_driven, pc_lois_newton]
+    primary_misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+    item_source: clone_of_LDN-11
+    lesson_placement: after_R1
+
+    stem: |-
+      Dans un bus qui **freine brutalement**, une balle posée sur la tablette
+      se met à rouler vers l'avant, sans que rien de visible ne la pousse.
+      Qu'est-ce que cela montre ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Le référentiel du bus qui freine n'est pas galiléen : un objet peut y sembler se mettre en mouvement sans qu'aucune force réelle ne s'exerce sur lui.
+        correct: true
+        feedback: |-
+          Exact. Le bus qui freine est un référentiel **accéléré**, donc non
+          galiléen. Vu du sol (galiléen), il n'y a aucun mystère : la balle
+          continue par inertie à sa vitesse d'avant, pendant que le bus ralentit
+          sous elle.
+
+      - id: B
+        text: |-
+          Une force réelle, dirigée vers l'avant, produite par le freinage, pousse la balle.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: |-
+          Modèle détecté : inventer une force réelle pour sauver la 2e loi dans
+          un référentiel accéléré. Rien ne touche la balle vers l'avant. Ce n'est
+          pas une force qui la pousse : c'est le bus qui décélère sous elle.
+
+      - id: C
+        text: |-
+          Le référentiel terrestre non plus n'est donc pas galiléen.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: |-
+          Non : le référentiel terrestre (la route) est galiléen en très bonne
+          approximation pour ce type de situation. C'est le bus EN TRAIN DE
+          FREINER qui est accéléré par rapport à la route, et donc non galiléen —
+          pas la Terre.
+
+      - id: D
+        text: |-
+          Cela prouve que la balle bouge « dans l'absolu », sans référentiel.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: |-
+          Modèle détecté : un mouvement « absolu ». Le mouvement n'existe que par
+          rapport à un référentiel : la balle est immobile par rapport à la route
+          au début, puis avance par inertie ; vue du bus, elle « part » vers
+          l'avant. Deux descriptions, deux référentiels — aucun mouvement absolu.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-inertie | placed AFTER R2
+  #        Rupture gate: PRINCIPE D'INERTIE (v constante ⇒ ΣF = 0).
+  #        Clone of LDN-1's stem. Probes force-entretient-mouvement.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-inertie
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_lois_newton
+    tags: [checkpoint, formative, misconception_driven, pc_lois_newton]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    item_source: clone_of_LDN-1
+    lesson_placement: after_R2
+
+    stem: |-
+      Un palet glisse sur une glace parfaitement lisse (frottements négligés),
+      en ligne droite, à **vitesse constante** de $3\ \text{m}\cdot\text{s}^{-1}$,
+      longtemps après qu'on a cessé de le pousser. Que vaut la somme vectorielle
+      des forces extérieures $\sum \vec{F}_{ext}$ pendant ce trajet ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          $\sum \vec{F}_{ext} = \vec{0}$ : la vitesse est constante, donc $\vec{a}_G = \vec{0}$.
+        correct: true
+        feedback: |-
+          Exact. Vecteur vitesse constant $\Rightarrow \vec{a}_G = \vec{0}
+          \Rightarrow \sum \vec{F}_{ext} = m\,\vec{a}_G = \vec{0}$. C'est le
+          principe d'inertie : aucune force n'est nécessaire pour maintenir un
+          mouvement rectiligne uniforme, quelle que soit la vitesse.
+
+      - id: B
+        text: |-
+          Une force non nulle dirigée vers l'avant, qui maintient le palet à sa vitesse.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: |-
+          Modèle détecté : « il faut une force pour entretenir le mouvement ».
+          Une telle force produirait une accélération (la vitesse augmenterait),
+          ce qui contredit l'énoncé : la vitesse est constante. Un vecteur
+          vitesse constant ne réclame aucune force.
+
+      - id: C
+        text: |-
+          Une force non nulle vers l'arrière : l'élan communiqué au lancer s'épuise et le freine.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+        feedback: |-
+          Modèle détecté : un « élan » stocké qui se viderait. Sur une glace
+          parfaitement lisse, aucune force horizontale n'agit et la vitesse reste
+          constante — rien ne s'épuise. Une force vers l'arrière ferait au
+          contraire ralentir le palet, ce que l'énoncé exclut ici.
+
+      - id: D
+        text: |-
+          Une force non nulle, de norme proportionnelle à la vitesse du palet.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: |-
+          Modèle détecté : « la force est liée à la vitesse ». Aucune loi ne
+          relie directement force et vitesse. La 2e loi relie la force à
+          l'ACCÉLÉRATION ($\sum \vec{F}_{ext} = m\,\vec{a}_G$) : une vitesse
+          constante, si grande soit-elle, correspond à une force résultante
+          nulle.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-force-vitesse | placed AFTER R3
+  #        Rupture gate: 2e LOI ΣF = m·a vs force ∝ vitesse.
+  #        Original commit-style stem. Probes force-liee-a-vitesse.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-force-vitesse
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_lois_newton
+    tags: [checkpoint, formative, misconception_driven, pc_lois_newton]
+    primary_misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      Un solide glisse en ligne droite à vitesse constante **élevée**,
+      $30\ \text{m}\cdot\text{s}^{-1}$, sur un rail horizontal sans frottement.
+      Un camarade affirme : « plus il va vite, plus il faut une grande force
+      vers l'avant pour le maintenir à cette vitesse. »
+      Que dit la deuxième loi de Newton ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          La force résultante est nulle : la vitesse est constante, donc $\vec{a}_G = \vec{0}$. Sa valeur, même grande, n'exige aucune force.
+        correct: true
+        feedback: |-
+          Exact. $\sum \vec{F}_{ext} = m\,\vec{a}_G$ relie la force à
+          l'accélération, jamais à la vitesse. À vitesse constante,
+          $\vec{a}_G = \vec{0}$, donc $\sum \vec{F}_{ext} = \vec{0}$ — que le
+          solide aille à $3$ ou à $30\ \text{m}\cdot\text{s}^{-1}$.
+
+      - id: B
+        text: |-
+          La force résultante est proportionnelle à la vitesse : elle vaut donc le double à $30$ qu'à $15\ \text{m}\cdot\text{s}^{-1}$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: |-
+          Modèle détecté : « force $\propto$ vitesse ». C'est la confusion clé de
+          ce rung. La 2e loi est $\sum \vec{F}_{ext} = m\,\vec{a}_G$, pas
+          $\sum \vec{F}_{ext} = k\,\vec{v}_G$. Une vitesse constante — quelle que
+          soit sa valeur — donne une accélération nulle, donc une force nulle.
+
+      - id: C
+        text: |-
+          Le camarade a raison : il faut une force constante vers l'avant pour compenser la vitesse acquise.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: |-
+          Modèle détecté : « le mouvement a besoin d'une force qui l'entretient ».
+          Il n'y a rien à « compenser » : sans frottement, aucune force ne
+          s'oppose au mouvement, donc aucune force motrice n'est requise. La
+          vitesse se maintient seule, par inertie.
+
+      - id: D
+        text: |-
+          La force résultante est dirigée dans le sens de la vitesse, d'autant plus grande que le solide va vite.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: |-
+          Modèle détecté : on met la force (et l'accélération) « dans le sens de
+          la vitesse ». La 2e loi place $\vec{a}_G$ dans le sens de la
+          RÉSULTANTE, pas de la vitesse. Ici la résultante est nulle : le solide
+          va vite, mais rien ne le pousse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r7-projection | placed AFTER R7
+  #        Rupture gate: PROJECTION SUR LES AXES du plan incliné
+  #        (sin/cos, indépendance de la masse). Clone of LDN-24's stem.
+  #        Probes projection-plan-incline.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-projection
+    rung: "R7"
+    habilete: application
+    skill_code: pc_lois_newton
+    tags: [checkpoint, formative, misconception_driven, pc_lois_newton]
+    primary_misconception: mc.physics.pc_lois_newton.projection-plan-incline
+    item_source: clone_of_LDN-24
+    lesson_placement: after_R7
+
+    stem: |-
+      Sur un plan incliné **sans frottement**, d'angle $\alpha$, un solide de
+      masse $m$ glisse en partant du repos. Après projection de la deuxième loi
+      sur les axes, que vaut son accélération $a_G$ le long du plan ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          $a_G = g\sin\alpha$ : elle dépend de l'angle et de $g$, mais pas de la masse.
+        correct: true
+        feedback: |-
+          Exact. Le long du plan, la composante motrice du poids est
+          $mg\sin\alpha$ ; la 2e loi projetée donne $mg\sin\alpha = m\,a_G$, donc
+          $a_G = g\sin\alpha$. La masse se simplifie, comme en chute libre.
+
+      - id: B
+        text: |-
+          $a_G = g\cos\alpha$, car c'est $\cos\alpha$ qui projette le poids le long du plan.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: |-
+          Interversion $\sin/\cos$. Le long du plan, c'est $\sin\alpha$ (la
+          composante qui entraîne la descente) ; $\cos\alpha$ donne la composante
+          PERPENDICULAIRE au plan, celle qu'équilibre la réaction normale.
+          Le test des cas extrêmes tranche : à $\alpha = 0$, un plan horizontal
+          ne fait pas glisser — or $\sin 0° = 0$, pas $\cos 0° = 1$.
+
+      - id: C
+        text: |-
+          $a_G = g$ : le solide est en chute libre, l'angle ne change rien.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: |-
+          Modèle détecté : traiter la pente comme une chute verticale. Seule la
+          COMPOSANTE du poids le long du plan entraîne le solide, $mg\sin\alpha$,
+          pas le poids entier. L'accélération vaut donc $g\sin\alpha$ (elle dépend
+          de l'angle), et non $g$.
+
+      - id: D
+        text: |-
+          $a_G$ dépend de la masse : un solide plus lourd glisse avec une accélération plus grande.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: |-
+          Non : dans $mg\sin\alpha = m\,a_G$, la masse se simplifie entièrement,
+          d'où $a_G = g\sin\alpha$. Comme en chute libre, deux solides de masses
+          différentes descendent le même plan sans frottement avec la même
+          accélération.
