@@ -101,6 +101,8 @@ export const STRUCTURAL_SLUGS = new Set([
   "granite-texture-grenue",
   // D-persistance wave — SVT CMH/ABO donor-comparison schematic (soi-non-soi)
   "cmh-abo-independants",
+  // B2 wave — PC reactions-acido-basiques, comblement R8–R11 (apparatus schematic)
+  "montage-dosage-phmetrique",
   // D-persistance wave — SVT enzyme-substrate cycle schematic (role-enzymes)
   "cycle-enzyme-substrat",
   // D-persistance wave — SVT mid-ocean-ridge cross-section (theorie-tectonique-plaques)
@@ -135,6 +137,15 @@ export const STRUCTURAL_SLUGS = new Set([
   "agglutination-transfusion",
   "echiquier-dihybride",
   "test-cross-deux-hypotheses",
+  // Extension R5/R6 — ondes-mecaniques-periodiques (compact apparatus schematic,
+  // same family as rl-schema/rc-schema/pile-daniell — not a wide-band graph)
+  "montage-diffraction-ultrasons",
+  // Extension R6/R7 — systemes-oscillants résonance (apparatus schematic +
+  // inset resonance curve; the montage itself is what caps the width — same
+  // family as rl-schema/rc-schema). regimes-amortissement / resonance-sandbox
+  // (wide-band graphs, no apparatus) and balancoire-resonance (atmospheric
+  // hook, not a schematic) are deliberately excluded here.
+  "montage-resonance",
 ]);
 
 // ── Vertically-stacked slugs — viewBox cropped per visible step count ────────

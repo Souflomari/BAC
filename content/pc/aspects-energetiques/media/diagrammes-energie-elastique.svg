@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 810" width="640" height="810"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Deux diagrammes d'énergie de l'oscillateur élastique horizontal sans frottement. En haut, en fonction de la position x : Epe égale un demi k x carré dessine une parabole minimale en x=0 ; Ec dessine la parabole inversée, maximale en x=0 ; Em est une droite horizontale, le plafond que ni l'une ni l'autre ne dépasse ; les deux courbes se croisent en deux points symétriques. En bas, en fonction du temps t : x(t) est tracé en pâle avec sa période T0 ; Ec(t) et Epe(t) oscillent en antiphase mais deux fois plus vite, avec une période T0 sur 2, tandis que Em reste plate.">
+  <title>Diagrammes d'énergie de l'oscillateur élastique — position et temps</title>
+  <!--
+    diagrammes-energie-elastique.svg — figure STAGED (LESSON-EXPERIENCE-SPEC
+    §2.5 : un graphe est TOUJOURS stagé, ordre canonique axes → données →
+    lecture), 3 étapes, cœur du rung R5 (les deux diagrammes d'énergie).
+
+    ════ PANNEAU A — en fonction de la position x ════
+    Repère : centre (x=0) en px=330, demi-largeur 250px pour Xm de chaque
+    côté → x=−Xm en px=80, x=+Xm en px=580. Baseline (E=0) en py=300,
+    plafond (E=Em) en py=120 (hauteur 180px).
+    Avec t = x/Xm ∈ [−1,1] :
+      Epe/Em = t²   → py = 300 − 180·t²
+      Ec/Em  = 1−t² → py = 120 + 180·t²
+    Échantillonné à pas 0,1 (21 points), valeurs calculées exactement
+    (t² à 2 décimales exactes pour tout multiple de 0,1) :
+      t=−1,0 (x=−Xm)  : Epe→(80,120)   Ec→(80,300)
+      t=−0,5           : Epe→(205,255)  Ec→(205,165)
+      t=0,0 (x=0)      : Epe→(330,300)  Ec→(330,120)
+      t=+0,5           : Epe→(455,255)  Ec→(455,165)
+      t=+1,0 (x=+Xm)   : Epe→(580,120)  Ec→(580,300)
+    Croisement Ec=Epe : t²=1−t² ⟺ t=±1/√2=±0,7071 → py=300−180×0,5=210 ;
+      px = 330 ± 250×0,7071 = 330±176,8 → (153,2 ; 210) et (506,8 ; 210).
+
+    ════ PANNEAU B — en fonction du temps t ════
+    x(t) = Xm·cos(ω0t), période T0 = 240px, tracé PÂLE (ink-soft), 33 points
+    échantillonnés tous les T0/16=15px (cos exact à chaque multiple de
+    22,5°) ; amplitude d'affichage 30px, baseline (x=0) py=460 :
+      py = 460 − 30·cos(θ),  θ = k×22,5°, k=0..32 (2 périodes)
+      k=0 (θ=0°,cos=1)     → py=430,0     k=4 (θ=90°,cos=0)  → py=460,0
+      k=8 (θ=180°,cos=−1)  → py=490,0     motif répété k=16..32
+    Ec(t)∝sin²(ω0t), Epe(t)∝cos²(ω0t) : période PROPRE = T0/2 = 120px —
+    la même construction en dômes bézier symétriques que
+    energie-oscillateur.svg (contrôle au milieu du demi-dôme, largeur
+    60px = T0/4), ceiling (Em) py=530, baseline (E=0) py=660 :
+      Epe pics (py=530) en px = 90,210,330,450,570 (t=0,T0/2,T0,3T0/2,2T0)
+      Epe creux (py=660) en px = 150,270,390,510   (t=T0/4,3T0/4,5T0/4,7T0/4)
+      Ec = antiphase exacte (pics ↔ creux échangés).
+    C'EST LE POINT DE LA FIGURE : x(t) boucle tous les 240px, les énergies
+    tous les 120px — deux fois plus vite, jamais à la même fréquence
+    (candidate M-EPE-4, §2.3 du spec-extension).
+
+    Rôle des couleurs (identique à conservation-em.svg / energie-oscillateur.svg) :
+      Epe (potentiel élastique, réservoir de rappel) : --figure-energy-C
+      Ec (cinétique)                                 : --figure-energy-L
+      Em (somme, le plafond constant)                : --figure-accent
+      x(t) (référence pâle), bracket T0               : --figure-ink-soft
+      bracket T0/2 (LE fait à retenir)                : --figure-accent
+      axes, chrome                                    : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Diagrammes d'énergie de l'oscillateur élastique
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes des deux panneaux (repères vides)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Panneau A -->
+    <rect x="20" y="40" width="600" height="310" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="40" y="58" font-size="11.5" font-weight="600" fill="var(--figure-ink)"
+      >En fonction de la position <tspan font-style="italic">x</tspan></text>
+
+    <line x1="60" y1="300" x2="598" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="606,300 594,295.5 594,304.5" fill="var(--figure-ink-soft)"/>
+    <line x1="330" y1="300" x2="330" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="330,80 325.5,91 334.5,91" fill="var(--figure-ink-soft)"/>
+    <text x="318" y="95" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">E</text>
+
+    <line x1="80" y1="296" x2="80" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="80" y="318" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+      >−<tspan font-style="italic">X</tspan><tspan dy="3" font-size="7.5">m</tspan></text>
+    <text x="330" y="318" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+    <line x1="580" y1="296" x2="580" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="580" y="318" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+      >+<tspan font-style="italic">X</tspan><tspan dy="3" font-size="7.5">m</tspan></text>
+
+    <!-- Panneau B -->
+    <rect x="20" y="375" width="600" height="385" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="40" y="393" font-size="11.5" font-weight="600" fill="var(--figure-ink)"
+      >En fonction du temps <tspan font-style="italic">t</tspan></text>
+
+    <line x1="70" y1="660" x2="595" y2="660" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="605,660 593,655.5 593,664.5" fill="var(--figure-ink-soft)"/>
+    <text x="90" y="676" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <text x="330" y="676" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+      ><tspan font-style="italic">T</tspan><tspan dy="2.5" font-size="7">0</tspan></text>
+    <text x="570" y="676" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+      >2<tspan font-style="italic">T</tspan><tspan dy="2.5" font-size="7">0</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : les courbes des deux panneaux
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Panneau A : Epe(x) parabole, Ec(x) parabole inversée -->
+    <path d="M80,120 L105,154.2 L130,184.8 L155,211.8 L180,235.2 L205,255
+             L230,271.2 L255,283.8 L280,292.8 L305,298.2 L330,300 L355,298.2
+             L380,292.8 L405,283.8 L430,271.2 L455,255 L480,235.2 L505,211.8
+             L530,184.8 L555,154.2 L580,120"
+          fill="none" stroke="var(--figure-energy-C)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="55" y="108" text-anchor="end" font-size="12" fill="var(--figure-energy-C)"
+      ><tspan font-style="italic">E</tspan><tspan dy="3" font-size="8.5">pe</tspan></text>
+
+    <path d="M80,300 L105,265.8 L130,235.2 L155,208.2 L180,184.8 L205,165
+             L230,148.8 L255,136.2 L280,127.2 L305,121.8 L330,120 L355,121.8
+             L380,127.2 L405,136.2 L430,148.8 L455,165 L480,184.8 L505,208.2
+             L530,235.2 L555,265.8 L580,300"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="345" y="108" text-anchor="start" font-size="12" fill="var(--figure-energy-L)"
+      ><tspan font-style="italic">E</tspan><tspan dy="3" font-size="8.5">c</tspan></text>
+
+    <!-- Panneau B : x(t) pâle, puis Epe(t)/Ec(t) -->
+    <path d="M90,430.0 L105,432.3 L120,438.8 L135,448.5 L150,460.0 L165,471.5
+             L180,481.2 L195,487.7 L210,490.0 L225,487.7 L240,481.2 L255,471.5
+             L270,460.0 L285,448.5 L300,438.8 L315,432.3 L330,430.0 L345,432.3
+             L360,438.8 L375,448.5 L390,460.0 L405,471.5 L420,481.2 L435,487.7
+             L450,490.0 L465,487.7 L480,481.2 L495,471.5 L510,460.0 L525,448.5
+             L540,438.8 L555,432.3 L570,430.0"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.3" opacity="0.65"/>
+    <text x="60" y="434" text-anchor="end" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">x(t)</text>
+
+    <path d="M90,530 C120,530 120,660 150,660 C180,660 180,530 210,530
+             C240,530 240,660 270,660 C300,660 300,530 330,530
+             C360,530 360,660 390,660 C420,660 420,530 450,530
+             C480,530 480,660 510,660 C540,660 540,530 570,530"
+          fill="none" stroke="var(--figure-energy-C)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M90,660 C120,660 120,530 150,530 C180,530 180,660 210,660
+             C240,660 240,530 270,530 C300,530 300,660 330,660
+             C360,660 360,530 390,530 C420,530 420,660 450,660
+             C480,660 480,530 510,530 C540,530 540,660 570,660"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Pas d'étiquettes en ligne sur les dômes (panneau B) : la légende
+         ci-dessous identifie Ec/Epe sans ambiguïté — deux fois répéter le
+         nom aurait collisionné avec le repère T0/2 du step-3 juste en
+         dessous du plafond, pour un gain de lisibilité nul (Épe/Ec déjà
+         nommées dans le panneau A juste au-dessus). -->
+
+    <!-- Légende Ec / Epe / x(t) -->
+    <line x1="60" y1="702" x2="86" y2="702" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+    <text x="92" y="706" font-size="10.5" fill="var(--figure-ink)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="7.5">c</tspan><tspan
+          dy="-3"> — cinétique</tspan></text>
+    <line x1="340" y1="702" x2="366" y2="702" stroke="var(--figure-energy-C)" stroke-width="2.5"/>
+    <text x="372" y="706" font-size="10.5" fill="var(--figure-ink)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="7.5">pe</tspan><tspan
+          dy="-3"> — potentielle élastique</tspan></text>
+    <line x1="340" y1="726" x2="366" y2="726" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="372" y="730" font-size="10.5" fill="var(--figure-ink)"><tspan
+          font-style="italic">x</tspan><tspan>(t) — position (référence pâle)</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : Em, croisement, T0 vs T0/2
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Panneau A : plafond Em + croisement -->
+    <line x1="70" y1="120" x2="598" y2="120"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="7,4"/>
+    <text x="604" y="116" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="8">m</tspan></text>
+
+    <circle cx="153.2" cy="210" r="3.3" fill="var(--figure-accent)"/>
+    <circle cx="506.8" cy="210" r="3.3" fill="var(--figure-accent)"/>
+    <line x1="512" y1="216" x2="545" y2="242" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="550" y="246" font-size="10" fill="var(--figure-accent)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="7">c</tspan><tspan
+          dy="-3"> = </tspan><tspan font-style="italic">E</tspan><tspan dy="3" font-size="7">pe</tspan></text>
+
+    <!-- Panneau B : plafond Em + brackets T0 (référence) et T0/2 (le fait) -->
+    <line x1="70" y1="530" x2="590" y2="530"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="7,4"/>
+    <text x="598" y="526" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="8">m</tspan></text>
+
+    <line x1="90" y1="410" x2="330" y2="410" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="90" y1="405" x2="90" y2="415" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="330" y1="405" x2="330" y2="415" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="210" y="403" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+      ><tspan font-style="italic">T</tspan><tspan dy="2.5" font-size="7.5">0</tspan></text>
+
+    <line x1="90" y1="505" x2="210" y2="505" stroke="var(--figure-accent)" stroke-width="1.5"/>
+    <line x1="90" y1="500" x2="90" y2="510" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <line x1="210" y1="500" x2="210" y2="510" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <text x="150" y="516" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)"><tspan font-style="italic">T</tspan><tspan
+          dy="2.5" font-size="7.5">0</tspan><tspan dy="-2.5">/2</tspan></text>
+
+    <text x="330" y="792" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">E<tspan dy="3" font-size="7.5">c</tspan><tspan
+          dy="-3"> et E</tspan><tspan dy="3" font-size="7.5">pe</tspan><tspan
+          dy="-3"> oscillent deux fois plus vite que </tspan><tspan
+          font-style="italic">x</tspan><tspan>(t) — jamais à la même fréquence</tspan></text>
+
+    <!-- Légende Em -->
+    <line x1="60" y1="748" x2="86" y2="748" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="7,4"/>
+    <text x="92" y="752" font-size="10.5" fill="var(--figure-ink)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="7.5">m</tspan><tspan
+          dy="-3"> = E</tspan><tspan font-style="italic" dy="3" font-size="7.5">c</tspan><tspan
+          dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">pe</tspan><tspan
+          dy="-3"> — constante</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

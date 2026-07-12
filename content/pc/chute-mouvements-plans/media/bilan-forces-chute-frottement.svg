@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="760" height="480"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Bilan des forces d'une bille en chute dans un fluide visqueux, à deux instants : à l'instant initial, le poids P est grand et le frottement f est petit et dirigé vers le haut ; au régime permanent, à la vitesse limite, le poids P et le frottement f ont la même norme et sont opposés. Exactement deux forces à chaque instant, aucune poussée d'Archimède.">
+  <title>Bilan des forces — chute avec frottement, deux instantanés</title>
+  <!--
+    bilan-forces-chute-frottement.svg — figure STAGED (3 étapes), pendant
+    de chute-libre-comparaison.svg (lois-de-newton) : deux instantanés
+    CUMULATIFS d'une même chute, pas un graphe axes/données classique.
+    Seuil §2.5 "schémas/diagrammes" : ≥3 couches sémantiques + l'ordre est
+    un geste d'enseignement (un bilan de forces se construit, dans l'ordre
+    du texte R7 : régime initial d'abord, régime permanent/v_lim ensuite).
+
+    IMPORTANT (fidélité au texte R7) : EXACTEMENT deux forces à chaque
+    instant — le poids P et le frottement f = −kv. Aucune poussée
+    d'Archimède : R7 n'enseigne que ces deux forces, ne pas en ajouter une
+    troisième.
+
+    Axe Oy choisi VERS LE BAS (R7 : "on choisit ici un axe Oy vertical
+    orienté vers le bas"), rappelé une seule fois en chrome (marge gauche),
+    valable pour les deux instantanés.
+
+    Géométrie (schématique, échelle des forces non littérale — comme
+    bilan-forces-caisse-horizontale.svg, mais ici SEULE la longueur relative
+    P vs f porte l'information, pas une conversion N→px) :
+      colonne gauche (instant initial)  : bille en (220,150)
+      colonne droite (régime permanent) : bille en (560,290) — plus bas,
+        pour suggérer "plus tard dans la chute", comme chute-libre-comparaison.
+      P (poids) : longueur constante 100 px dans les DEUX colonnes — le
+        poids ne change jamais pendant la chute.
+      f (frottement), vers le HAUT (s'oppose au mouvement, objet qui descend) :
+        colonne gauche : 22 px (petit — v petite, f = kv petit)
+        colonne droite : 100 px, EXACTEMENT égal à P — au régime permanent,
+          k v_ℓ = mg (R7, "Arrête-toi — la force de frottement a-t-elle
+          disparu ?" : le frottement est alors MAXIMAL, pas nul).
+      v (vitesse, vecteur secondaire, tireté, décalé du bilan de forces) :
+        petite à gauche (20 px), grande à droite (60 px) — la bille va plus
+        vite au régime permanent, cohérent avec le texte.
+
+    Rôle des couleurs :
+      P, f (les deux forces du bilan)   : --figure-ink
+      v (vitesse, secondaire)           : --figure-ink-soft, tireté
+      Oy (chrome), G, séparateur        : --figure-ink-soft
+      annotation de conclusion (accent) : --figure-accent
+
+    Les captions sont portées par bilan-forces-chute-frottement.stages.json
+    — aucun texte de légende narrative baké ici (seules les étiquettes de
+    grandeurs, P/f/v/G/Oy, sont dans le SVG).
+  -->
+
+  <!-- Titre -->
+  <text x="380" y="22" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Chute dans un fluide visqueux — bilan des forces à deux instants
+  </text>
+  <text x="380" y="38" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    deux forces seulement : le poids P et le frottement f = −kv
+  </text>
+
+  <!-- Fond du panneau, deux colonnes séparées par un tiret -->
+  <rect x="90" y="55" width="650" height="395" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+  <line x1="380" y1="60" x2="380" y2="440" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : chrome Oy, les deux instantanés (bille + v)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Chrome : axe Oy, choisi vers le bas, en marge -->
+    <circle cx="45" cy="72" r="2.6" fill="var(--figure-ink-soft)"/>
+    <text x="34" y="68" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">O</text>
+    <line x1="45" y1="72" x2="45" y2="420" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="45,432 40,420 50,420" fill="var(--figure-ink-soft)"/>
+    <text x="52" y="426" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">y</text>
+    <text x="52" y="438" font-size="8.5" fill="var(--figure-ink-soft)">(choisi vers le bas)</text>
+
+    <!-- En-têtes de colonnes -->
+    <text x="220" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Instant initial (v petite)</text>
+    <text x="560" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Régime permanent (v = v<tspan dy="3" font-size="8">ℓ</tspan><tspan dy="-3">)</tspan></text>
+
+    <!-- Colonne gauche : bille -->
+    <circle cx="220" cy="150" r="16" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="220" cy="150" r="2.6" fill="var(--figure-ink)"/>
+    <text x="230" y="146" font-size="11" fill="var(--figure-ink)">G</text>
+
+    <!-- Colonne droite : bille -->
+    <circle cx="560" cy="290" r="16" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="560" cy="290" r="2.6" fill="var(--figure-ink)"/>
+    <text x="570" y="286" font-size="11" fill="var(--figure-ink)">G</text>
+
+    <!-- Vitesse v — petite, à gauche -->
+    <line x1="275" y1="144" x2="275" y2="164" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="4,3" stroke-linecap="round"/>
+    <polygon points="275,170 271,160 279,160" fill="var(--figure-ink-soft)"/>
+    <text x="284" y="160" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">v (petite)</text>
+
+    <!-- Vitesse v — grande, à droite (= v_ℓ) -->
+    <line x1="615" y1="270" x2="615" y2="330" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="4,3" stroke-linecap="round"/>
+    <polygon points="615,336 611,326 619,326" fill="var(--figure-ink-soft)"/>
+    <text x="624" y="304" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">v = v<tspan dy="3" font-size="7.5">ℓ</tspan><tspan dy="-3"> (grande)</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — mécanisme : bilan à l'instant initial (colonne gauche)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- P : poids, 100 px vers le bas -->
+    <line x1="220" y1="150" x2="220" y2="240" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="220,250 214,238 226,238" fill="var(--figure-ink)"/>
+    <text x="232" y="222" font-size="14" font-style="italic" fill="var(--figure-ink)">P</text>
+    <text x="232" y="236" font-size="9" fill="var(--figure-ink-soft)">(= mg)</text>
+
+    <!-- f : frottement, petit (22 px) vers le haut -->
+    <line x1="220" y1="150" x2="220" y2="130" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="220,120 214,132 226,132" fill="var(--figure-ink)"/>
+    <text x="198" y="115" text-anchor="end" font-size="14" font-style="italic" fill="var(--figure-ink)">f</text>
+    <text x="198" y="128" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">= kv (petit)</text>
+
+    <text x="220" y="415" text-anchor="middle" font-size="12" fill="var(--figure-accent)">Somme ≠ 0</text>
+    <text x="220" y="431" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">a ≈ g (comme en chute libre, R1)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — mécanisme : bilan au régime permanent (colonne droite)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- P : poids, 100 px vers le bas — MÊME longueur qu'à gauche -->
+    <line x1="560" y1="290" x2="560" y2="380" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="560,390 554,378 566,378" fill="var(--figure-ink)"/>
+    <text x="572" y="360" font-size="14" font-style="italic" fill="var(--figure-ink)">P</text>
+    <text x="572" y="374" font-size="9" fill="var(--figure-ink-soft)">(= mg)</text>
+
+    <!-- f : frottement, 100 px vers le haut — égal et opposé à P -->
+    <line x1="560" y1="290" x2="560" y2="200" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="560,190 554,202 566,202" fill="var(--figure-ink)"/>
+    <text x="538" y="240" text-anchor="end" font-size="14" font-style="italic" fill="var(--figure-ink)">f</text>
+    <text x="538" y="253" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">= kv<tspan dy="2" font-size="7">ℓ</tspan><tspan dy="-2"> = mg (maximal)</tspan></text>
+
+    <text x="560" y="415" text-anchor="middle" font-size="12" fill="var(--figure-accent)">Somme = 0 → a = 0</text>
+    <text x="560" y="431" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">mais f, lui, est maximal — pas nul</text>
+  </g><!-- /step-3 -->
+
+</svg>

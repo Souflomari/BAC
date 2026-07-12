@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Montage de diffraction des ultrasons : un émetteur d'ultrasons de fréquence f envoie une onde vers une fente réglable de largeur a percée dans une paroi ; derrière la fente, l'onde s'étale ; un récepteur, monté sur un arc gradué centré sur la fente, peut être déplacé le long de cet arc pour mesurer l'amplitude reçue selon la direction.">
+  <title>Montage de diffraction des ultrasons</title>
+  <!--
+    montage-diffraction-ultrasons.svg — R5, le montage décrit dans le texte
+    « on place, dans l'ordre, un émetteur d'ultrasons… une fente… un
+    récepteur ». Figure STATIQUE (pas de step-groups) : un schéma d'appareil
+    lu d'un coup, comme rl-schema.svg / rc-schema.svg / pile-daniell.svg —
+    aucun geste d'enseignement séquentiel ne justifie une mise en étapes
+    ici (contrairement à diffraction-fente-fronts.svg, qui EST un
+    predict-then-break). Ajoutée à STRUCTURAL_SLUGS (MediaDiagram.tsx),
+    même famille que ces schémas.
+
+    Géométrie :
+      émetteur : rect x=40,y=140,w=56,h=50 (centre vertical y=165) — même
+        convention que la source « S » de son-longitudinal-compressions.svg
+        (rect plein --figure-ink, étiquette sous la forme).
+      fronts d'onde émis (3 traits courts) entre l'émetteur et la paroi.
+      paroi + fente réglable : épaisseur 12 px, x=200..212, gap y=150..180
+        (a_px=30, centré sur y=165) ; double flèche verticale accent + label
+        « a (réglable) » à gauche de la paroi.
+      étalement discret derrière la fente : 3 arcs fins, atténués
+        (opacity 0,55), centrés sur le centre de la fente (212,165), ±55° —
+        un simple rappel visuel (le phénomène est déjà démontré par
+        diffraction-fente-fronts.svg ; ici, il ne sert qu'à motiver
+        pourquoi un récepteur MOBILE est nécessaire).
+      arc gradué : rayon 160, centré au même point (212,165), ±60°, avec
+        9 graduations tous les 15° (traits radiaux courts, r=150..160).
+      récepteur : un petit rectangle (détecteur) sur l'arc à θ=30°, plus
+        deux « fantômes » en pointillé à θ=−40° et θ=55° reliés par un arc
+        pointillé — pour lire « mobile », sans prétendre à un mouvement
+        animé (figure statique).
+
+    Couleurs : émetteur, paroi, arc gradué, récepteur = --figure-ink /
+    --figure-ink-soft (l'appareil, structurel) ; le double flèche + label a
+    = --figure-accent (la seule grandeur réglée par l'expérimentateur,
+    l'idée que a est un PARAMÈTRE qu'on fait varier) ; arcs d'étalement =
+    --figure-ink-soft, opacity réduite (rappel discret, pas le sujet ici).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Montage de diffraction des ultrasons</text>
+
+  <!-- ── Émetteur ── -->
+  <rect x="40" y="140" width="56" height="50" rx="5" fill="var(--figure-ink)"/>
+  <text x="68" y="204" text-anchor="middle" font-size="11" font-weight="600"
+        fill="var(--figure-ink)">Émetteur</text>
+  <text x="68" y="217" text-anchor="middle" font-size="9.5"
+        fill="var(--figure-ink-soft)">(ultrasons, f)</text>
+
+  <!-- Fronts d'onde émis, entre l'émetteur et la paroi -->
+  <line x1="112" y1="150" x2="112" y2="180" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <line x1="132" y1="150" x2="132" y2="180" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <line x1="152" y1="150" x2="152" y2="180" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <line x1="112" y1="136" x2="160" y2="136" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="160,136 150,132 150,140" fill="var(--figure-ink-soft)"/>
+
+  <!-- Paroi avec fente réglable -->
+  <rect x="200" y="60" width="12" height="90" fill="var(--figure-ink-soft)" fill-opacity="0.22"
+        stroke="var(--figure-ink)" stroke-width="1.5"/>
+  <rect x="200" y="180" width="12" height="90" fill="var(--figure-ink-soft)" fill-opacity="0.22"
+        stroke="var(--figure-ink)" stroke-width="1.5"/>
+  <text x="206" y="50" text-anchor="middle" font-size="10" fill="var(--figure-ink)">fente</text>
+
+  <!-- Double flèche verticale : la largeur a, réglable -->
+  <line x1="185" y1="150" x2="185" y2="180" stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <polygon points="185,150 181,158 189,158" fill="var(--figure-accent)"/>
+  <polygon points="185,180 181,172 189,172" fill="var(--figure-accent)"/>
+  <text x="178" y="169" text-anchor="end" font-size="12" font-style="italic"
+        font-weight="600" fill="var(--figure-accent)">a</text>
+  <text x="185" y="200" text-anchor="middle" font-size="9"
+        fill="var(--figure-ink-soft)">(réglable)</text>
+
+  <!-- Étalement discret derrière la fente (rappel, atténué) -->
+  <path d="M232.1,136.3 A35,35 0 0,1 232.1,193.7"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.55"/>
+  <path d="M246.4,115.9 A60,60 0 0,1 246.4,214.1"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.55"/>
+  <path d="M260.8,95.4 A85,85 0 0,1 260.8,234.6"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.55"/>
+
+  <!-- Arc gradué, centré sur la fente, rayon 160, ±60° -->
+  <path d="M292,26.4 A160,160 0 0,1 292,303.6"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="380" y="161" font-size="9.5" fill="var(--figure-ink-soft)">arc gradué</text>
+
+  <!-- Graduations, tous les 15°, de −60° à +60° -->
+  <line x1="287.0" y1="35.1" x2="292.0" y2="26.4" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="318.07" y1="58.93" x2="325.14" y2="51.86" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="341.9" y1="90" x2="350.56" y2="85" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="356.885" y1="126.18" x2="366.544" y2="123.59" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="362" y1="165" x2="372" y2="165" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="356.885" y1="203.82" x2="366.544" y2="206.41" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="341.9" y1="240" x2="350.56" y2="245" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="318.07" y1="271.07" x2="325.14" y2="278.14" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="287.0" y1="294.9" x2="292.0" y2="303.6" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+  <!-- Trajet de balayage du récepteur (arc pointillé, entre les deux positions fantômes) -->
+  <path d="M342.22,55.72 A170,170 0 0,1 309.51,304.26"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Récepteurs fantômes (positions possibles, mobilité) -->
+  <rect x="331.22" y="46.72" width="22" height="18" rx="3" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.6"/>
+  <rect x="298.51" y="295.26" width="22" height="18" rx="3" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.6"/>
+
+  <!-- Récepteur (position de mesure) -->
+  <rect x="348.22" y="241" width="22" height="18" rx="3" fill="var(--figure-ink-soft)"
+        stroke="var(--figure-ink)" stroke-width="1.5"/>
+  <text x="359.22" y="228" text-anchor="middle" font-size="10" font-weight="600"
+        fill="var(--figure-ink)">récepteur</text>
+
+  <!-- Centre de l'arc (rappel visuel : la fente elle-même) -->
+  <circle cx="212" cy="165" r="2.4" fill="var(--figure-ink)"/>
+
+</svg>

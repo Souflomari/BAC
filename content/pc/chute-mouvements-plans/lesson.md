@@ -467,7 +467,7 @@ Ce qui est nul à $v_\ell$, ce n'est pas le frottement : c'est la **somme** des 
 
 Regarde de nouveau $v_\ell = mg/k$ : elle contient $m$. Contraste frontal avec les rungs 1 à 3, où la masse avait **disparu** ($\vec a_G = \vec g$, indépendant de $m$) — au point qu'on avait pu dire que tous les objets tombent pareil, quelle que soit leur masse. Cette règle ne vaut que **sans frottement**. Dès qu'un frottement fluide entre en jeu, deux objets de même forme (même $k$) mais de masses différentes n'ont **pas** la même vitesse limite : le plus lourd va plus vite — il lui faut une vitesse plus grande pour que $kv$ compense son poids plus important.
 
-[[embed:sandbox-chute-frottement]]
+[[figure:sandbox-chute-frottement]]
 
 ### Exemple travaillé : la vitesse limite d'une bille dans un liquide visqueux
 
@@ -519,7 +519,7 @@ La valeur $v_{i+1}$ que donne cette formule, est-ce la valeur **exacte** de $v$ 
 
 C'est une valeur **approchée**. Pendant tout le pas $\Delta t$, on a supposé la pente constante, égale à $a_i$ — alors qu'en réalité elle change en continu, puisqu'elle dépend de $v$, qui change lui-même. Cette approximation introduit une petite erreur à chaque pas, qui peut s'accumuler d'un pas à l'autre. Plus $\Delta t$ est **petit**, plus l'hypothèse « pente constante sur le pas » est raisonnable, et plus la suite $v_0, v_1, v_2, \dots$ se rapproche de la vraie courbe — sans jamais, avec un $\Delta t$ fini, l'atteindre exactement.
 
-[[embed:euler-taille-de-pas]]
+[[figure:euler-taille-de-pas]]
 
 ### Exemple travaillé : le tableau d'Euler de la bille du rung 7
 
@@ -594,7 +594,7 @@ Un astronaute « flotte » dans une station spatiale en orbite. Réflexe naturel
 
 Ce qui se passe réellement : la station et tout ce qu'elle contient — y compris l'astronaute — sont en **chute libre permanente**. La gravité les attire tous vers le centre de la Terre, à la même accélération, en même temps ; c'est exactement pour ça que l'astronaute ne ressent aucun contact différentiel avec les parois — il « tombe » à la même vitesse que la station qui l'entoure. L'apesanteur n'est pas une absence de gravité : c'est une chute libre qui, parce que la trajectoire est une orbite fermée, ne s'arrête jamais de tomber sans jamais atteindre le sol.
 
-[[motion:satellite-chute-permanente]]
+[[figure:satellite-chute-permanente]]
 
 ### Exemple travaillé : la vitesse d'un satellite en orbite basse
 
@@ -674,7 +674,7 @@ Une dernière précision, qui trompe souvent : dire qu'un satellite géostationn
 
 [[figure:orbite-geostationnaire]]
 
-[[embed:orbites-gravite]]
+[[figure:orbites-gravite]]
 
 ### Exemple travaillé : le rayon de l'orbite géostationnaire
 

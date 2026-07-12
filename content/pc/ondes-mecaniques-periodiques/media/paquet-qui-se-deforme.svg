@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" width="640" height="460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Un même paquet d'ondes, envoyé dans deux milieux : en haut, un milieu non dispersif, où le paquet garde exactement la même forme en s'éloignant de la source ; en bas, un milieu dispersif, où le paquet, initialement identique, s'étale et s'aplatit après avoir parcouru la même distance.">
+  <title>Un paquet d'ondes, avant et après propagation</title>
+  <!--
+    paquet-qui-se-deforme.svg — R6. Remplace l'ancien [[motion:…]] (une
+    animation manim où le paquet se désynchronise en temps réel) par une
+    figure STATIQUE « avant / après » — deux instantanés côte à côte sur le
+    même axe de position, dans chacun des deux panneaux empilés
+    (technique reprise de double-periodicite.svg : panneau B = panneau A
+    translaté de +214 en y, même géométrie horizontale).
+
+    Choix de modélisation (déclaré, comme paquet-qui-se-deforme n'a — par
+    construction du cadre R6 — AUCUNE loi de dispersion quantitative à
+    respecter : « Aucun traitement quantitatif de la dispersion » HORS-
+    CADRE). Chaque paquet est dessiné comme une ENVELOPPE seule (un fuseau
+    — deux arcs symétriques haut/bas, sans le détail de la porteuse rapide
+    à l'intérieur) : c'est l'ENVELOPPE — sa largeur, sa hauteur — qui porte
+    l'idée enseignée (le signal se déforme ou non), pas le compte exact de
+    ses crêtes internes, qui n'est prescrit nulle part au cadre. Un repère
+    central pointillé (crête à creux) rappelle que c'est une onde, pas une
+    simple bosse.
+
+    Construction de chaque fuseau (repris du gabarit crête bézier du
+    corpus — tangente plate à l'extremum, tangente raide à l'axe, ratios
+    0,24 / 0,36 du demi-largeur — même recette que double-periodicite.svg /
+    modulation-amplitude.svg) :
+      demi-largeur HW, amplitude A, centre (xc, axisY).
+      c1 = (xc−HW + 0,24·HW, axisY − 0,6875·A)
+      c2 = (xc − 0,36·HW, peakY)   [peakY = axisY − A]
+      c3 = (xc + 0,36·HW, peakY)
+      c4 = (xc+HW − 0,24·HW, axisY − 0,6875·A)
+    (miroir en +A/troughY pour le lobe inférieur.)
+
+    Paquet ÉTROIT (t1, « près de la source ») : HW=45, A=42 — IDENTIQUE
+    dans les deux panneaux (même signal de départ dans les deux milieux).
+    Paquet LARGE (t2 « après propagation », milieu DISPERSIF seulement) :
+    HW=95, A=24 — même pas de calcul, HW et A différents ; le paquet t2 du
+    milieu NON dispersif réutilise EXACTEMENT la forme étroite (HW=45,A=42)
+    de t1, translatée : c'est le point pédagogique (la forme est conservée).
+
+    Panneau A (non dispersif), axisY=116, cadre y=42..190 :
+      t1 (ink-soft) centré xc=200 ; t2 (accent) centré xc=480 — MÊME forme.
+    Panneau B (dispersif), axisY=330, cadre y=256..404 :
+      t1 (ink-soft) centré xc=200 — même forme que le t1 de A (même signal
+        de départ, avant que le milieu ne joue un rôle).
+      t2 (accent) centré xc=480 — forme LARGE : après avoir parcouru la
+        MÊME distance qu'en A, le paquet s'est étalé et aplati.
+
+    Couleurs : t1 (l'état de départ, déjà connu, identique dans les deux
+    panneaux) = --figure-ink-soft ; t2 (ce qui devient de ce même paquet,
+    l'idée enseignée) = --figure-accent — même convention que M1/M2 de
+    dephasage.svg.
+
+    MISE EN ÉTAPES (le geste : montrer le départ commun, PUIS révéler ce
+    qu'il devient dans chaque milieu — un predict-then-compare) :
+      step-1 : en-têtes, axes de position (un par panneau).
+      step-2 : les paquets t1 (identiques, dans les deux panneaux) — le
+               départ commun.
+      step-3 : les paquets t2 + repères centraux + étiquettes t1/t2 — la
+               révélation : forme conservée en haut, étalée en bas.
+    Les captions vivent dans paquet-qui-se-deforme.stages.json.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="18" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Un paquet d'ondes, avant et après propagation</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — en-têtes, axes de position
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Panneau A -->
+    <text x="88" y="32" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">Milieu non dispersif : la forme est conservée</text>
+    <rect x="88" y="42" width="536" height="148" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="104" y1="116" x2="604" y2="116"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,116 592,111.5 592,120.5" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="120" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+
+    <!-- Panneau B -->
+    <text x="88" y="246" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">Milieu dispersif : le paquet s'étale</text>
+    <rect x="88" y="256" width="536" height="148" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="104" y1="330" x2="604" y2="330"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,330 592,325.5 592,334.5" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="334" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les paquets t1 (identiques dans les deux panneaux) : le départ commun
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Panneau A — t1 (xc=200, HW=45, A=42, axisY=116) -->
+    <path d="M155,116 C165.8,87.125 183.8,74 200,74 C216.2,74 234.2,87.125 245,116"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M155,116 C165.8,144.875 183.8,158 200,158 C216.2,158 234.2,144.875 245,116"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Panneau B — t1, forme IDENTIQUE (xc=200, axisY=330) -->
+    <path d="M155,330 C165.8,301.125 183.8,288 200,288 C216.2,288 234.2,301.125 245,330"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M155,330 C165.8,358.875 183.8,372 200,372 C216.2,372 234.2,358.875 245,330"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — les paquets t2 + repères + étiquettes : la révélation
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Panneau A — t2, MÊME forme que t1 (xc=480, HW=45, A=42) : conservée -->
+    <path d="M435,116 C445.8,87.125 463.8,74 480,74 C496.2,74 514.2,87.125 525,116"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M435,116 C445.8,144.875 463.8,158 480,158 C496.2,158 514.2,144.875 525,116"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="200" y1="74" x2="200" y2="158" stroke="var(--figure-ink-soft)" stroke-width="1"
+          stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="480" y1="74" x2="480" y2="158" stroke="var(--figure-accent)" stroke-width="1"
+          stroke-dasharray="3,3" opacity="0.6"/>
+    <text x="200" y="64" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">t<tspan
+          dy="2.5" font-size="7">1</tspan><tspan dy="-2.5"> — près de la source</tspan></text>
+    <text x="480" y="64" text-anchor="middle" font-size="10" fill="var(--figure-accent)">t<tspan
+          dy="2.5" font-size="7">2</tspan><tspan dy="-2.5"> — après propagation</tspan></text>
+
+    <!-- Panneau B — t2, forme LARGE (xc=480, HW=95, A=24) : étalée, aplatie -->
+    <path d="M385,330 C407.8,313.5 445.8,306 480,306 C514.2,306 552.2,313.5 575,330"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M385,330 C407.8,346.5 445.8,354 480,354 C514.2,354 552.2,346.5 575,330"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="200" y1="288" x2="200" y2="372" stroke="var(--figure-ink-soft)" stroke-width="1"
+          stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="480" y1="306" x2="480" y2="354" stroke="var(--figure-accent)" stroke-width="1"
+          stroke-dasharray="3,3" opacity="0.6"/>
+    <text x="200" y="278" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">t<tspan
+          dy="2.5" font-size="7">1</tspan><tspan dy="-2.5"> — près de la source</tspan></text>
+    <text x="480" y="296" text-anchor="middle" font-size="10" fill="var(--figure-accent)">t<tspan
+          dy="2.5" font-size="7">2</tspan><tspan dy="-2.5"> — après propagation</tspan></text>
+
+    <!-- Synthèse -->
+    <rect x="112" y="414" width="416" height="34" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="436" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)">La fréquence de la source ne change jamais — seule la forme du paquet dépend du milieu</text>
+  </g><!-- /step-3 -->
+
+</svg>

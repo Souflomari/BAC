@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 474" width="660" height="474"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les trois régimes d'amortissement de x(t), lâchés depuis le même écart initial : pseudo-périodique (oscille en s'amortissant), critique (retour le plus rapide, sans dépassement) et apériodique (retour plus lent, sans dépassement).">
+  <title>Les trois régimes d'amortissement — x(t), même lâcher</title>
+
+  <!--
+    regimes-amortissement.svg — figure STAGÉE, 3 étapes (LESSON-EXPERIENCE-
+    SPEC §2.5 : un graphe est TOUJOURS stagé, ordre canonique axes → données
+    → lecture) :
+      step-1 : les axes (t horizontal, x vertical) + le niveau de lâcher x0
+      step-2 : les données — les trois courbes x(t) (même lâcher x0, à
+               t=0) + la légende identifiant chaque régime
+      step-3 : la lecture — le bracket de pseudo-période T (pseudo-
+               périodique) et la comparaison des temps de retour (le
+               régime critique revient le plus vite)
+
+    Les TROIS courbes partagent EXACTEMENT le même point de départ
+    (104,90) = lâcher depuis x0, sans vitesse initiale : seule la suite
+    diffère (l'amortissement).
+
+    Courbes CALCULÉES depuis de vraies formules (jamais de forme
+    dessinée à l'œil), toutes normalisées à un même écart initial x0 et
+    un même repère temps→pixel (l'axe t n'a pas de graduation numérique
+    — seule la FORME porte l'idée, cf. celerite-vs-frequence.svg) :
+
+      Pseudo-périodique : x(t)/x0 = exp(−t/τ)·cos(ω0 t), avec τ = 1,3·T0
+      (amortissement faible : l'enveloppe décroît sur plusieurs
+      pseudo-périodes, exactement la LIMITE du cours — "T ≈ T0", jamais
+      "T = f(m,h,k)"). Points échantillonnés tous les quarts de
+      pseudo-période (0 à 3T), reliés par des Béziers cubiques à
+      tangente horizontale aux extrema (même règle que
+      pendule-elastique.svg / regimes-uc.svg).
+
+      Critique : x(t)/x0 = (1 + 2,2·t/T0)·exp(−2,2·t/T0) — la solution
+      canonique d'un amortissement critique lâché sans vitesse initiale
+      (retour monotone, sans dépassement, le plus rapide des trois).
+      Ceci sert UNIQUEMENT à calculer des points d'appui pour un tracé
+      fidèle — aucune formule n'apparaît dans le rendu (LIMITE R6 :
+      "on établit l'équation et on s'arrête là").
+
+      Apériodique : x(t)/x0 = A·exp(−4t/T0) + B·exp(−t/T0), avec
+      A=−1/3, B=4/3 (choisies pour x(0)=x0, ẋ(0)=0 — deux constantes de
+      temps réelles, la plus lente dominant le retour) — retour
+      monotone, plus lent que le critique. Points reliés par la même
+      technique Béziers cubiques (Catmull-Rom, tangentes lissées).
+
+    Repère t→pixel : x0 (t=0) en x=104 ; une pseudo-période T0 = 130px.
+    Repère x→pixel : x0 → y=90 ; équilibre (x=0) → y=190 (baseline) ;
+    échelle 100px par unité de x0.
+
+    Couleurs — cohérentes avec le langage de régime déjà établi
+    (regimes-uc.svg, TOKENS.md §7.3) :
+      pseudo-périodique → --figure-regime-pseudo (brun chaud)
+      apériodique       → --figure-regime-aperiodic (prune)
+      critique          → --figure-accent — l'UNE idée que cette figure
+        met en avant (DESIGN-BIBLE §6) : le retour le plus rapide est
+        exactement le régime critique, ni l'un ni l'autre des voisins.
+  -->
+
+  <!-- Titre -->
+  <text x="330" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Les trois régimes d'amortissement — même lâcher, x(t)
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="615" height="342" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axe horizontal (temps) -->
+    <line x1="64" y1="190" x2="620" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="620,190 608,185.5 608,194.5" fill="var(--figure-ink-soft)"/>
+    <text x="627" y="194" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+
+    <!-- Axe vertical (écart à l'équilibre) -->
+    <line x1="64" y1="354" x2="64" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="64,50 59.5,62 68.5,62" fill="var(--figure-ink-soft)"/>
+    <text x="56" y="54" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+    <text x="56" y="194" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Niveau de lâcher x0 -->
+    <line x1="60" y1="90" x2="68" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="52" y="94" text-anchor="end" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7">0</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 2 — les données : les trois courbes + légende
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Apériodique (tracée en premier, en dessous visuellement des deux autres
+         près du départ) -->
+    <path d="
+      M104,90
+      C121.2,95.7 143,102.4 156,107.4
+      C169,112.4 171.2,114.9 182,119.8
+      C192.8,124.7 208,131.65 221,136.7
+      C234,141.75 244.8,145.7 260,150.1
+      C275.2,154.5 294.7,159.45 312,163.1
+      C329.3,166.75 344.5,169.35 364,172
+      C383.5,174.65 407.3,177.1 429,179
+      C450.7,180.9 465.5,182.07 494,183.4
+      C522.5,184.73 565,185.8 600,187
+    " fill="none" stroke="var(--figure-regime-aperiodic)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Critique -->
+    <path d="
+      M104,90
+      C116.9,94.7 130,98.8 143,104.2
+      C156,109.6 169,115.1 182,122.5
+      C195,129.9 208,141.9 221,148.8
+      C234,155.7 244.8,159.4 260,164
+      C275.2,168.6 294.7,173.4 312,176.6
+      C329.3,179.8 344.5,181.6 364,183.4
+      C383.5,185.2 407.3,186.4 429,187.3
+      C450.7,188.2 465.5,188.55 494,189
+      C522.5,189.45 565,189.67 600,190
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.6"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Pseudo-périodique -->
+    <path d="
+      M104,90
+      C121.9,90 128.4,190 136.5,190
+      C144.6,190 151.1,258.1 169,258.1
+      C186.9,258.1 193.4,190 201.5,190
+      C209.6,190 216.1,143.7 234,143.7
+      C251.9,143.7 258.4,190 266.5,190
+      C274.6,190 281.1,221.5 299,221.5
+      C316.9,221.5 323.4,190 331.5,190
+      C339.6,190 346.1,168.5 364,168.5
+      C381.9,168.5 388.4,190 396.5,190
+      C404.6,190 411.1,204.6 429,204.6
+      C446.9,204.6 453.4,190 461.5,190
+      C469.6,190 476.1,180 494,180
+      C511.9,180 555,187 580,190
+    " fill="none" stroke="var(--figure-regime-pseudo)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Légende — trois lignes, sous le panneau -->
+    <line x1="40" y1="401" x2="68" y2="401" stroke="var(--figure-regime-pseudo)" stroke-width="2.5"/>
+    <text x="74" y="405" font-size="10.5" fill="var(--figure-ink)">Pseudo-périodique — amortissement faible : oscille en s'amortissant</text>
+
+    <line x1="40" y1="423" x2="68" y2="423" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <text x="74" y="427" font-size="10.5" fill="var(--figure-ink)">Critique — retour le plus rapide, sans dépassement</text>
+
+    <line x1="40" y1="445" x2="68" y2="445" stroke="var(--figure-regime-aperiodic)" stroke-width="2.4"/>
+    <text x="74" y="449" font-size="10.5" fill="var(--figure-ink)">Apériodique — amortissement fort : retour lent, sans oscillation</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       STEP 3 — la lecture : bracket T (pseudo-période) + comparaison des
+       temps de retour
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Bracket T entre les deux premiers pics de même côté du
+         pseudo-périodique (t=0 et t=T) -->
+    <line x1="104" y1="90" x2="104" y2="64" stroke="var(--figure-regime-pseudo)" stroke-width="1"
+          stroke-dasharray="3,3"/>
+    <line x1="234" y1="143.7" x2="234" y2="64" stroke="var(--figure-regime-pseudo)" stroke-width="1"
+          stroke-dasharray="3,3"/>
+    <line x1="104" y1="64" x2="234" y2="64" stroke="var(--figure-regime-pseudo)" stroke-width="1.6"/>
+    <line x1="104" y1="59" x2="104" y2="69" stroke="var(--figure-regime-pseudo)" stroke-width="1.6"/>
+    <line x1="234" y1="59" x2="234" y2="69" stroke="var(--figure-regime-pseudo)" stroke-width="1.6"/>
+    <text x="169" y="58" text-anchor="middle" font-size="11" font-style="italic" font-weight="600"
+          fill="var(--figure-regime-pseudo)">T</text>
+    <text x="250" y="61" font-size="9.5" fill="var(--figure-ink-soft)">(T ≈ T<tspan
+          dy="3" font-size="7">0</tspan><tspan dy="-3"> si amortissement faible)</tspan></text>
+
+    <!-- Marques de retour à l'équilibre : un point sur chaque courbe, une
+         chute pointillée vers un bracket de comparaison -->
+    <circle cx="386" cy="184.7" r="3.5" fill="var(--figure-accent)"/>
+    <line x1="386" y1="184.7" x2="386" y2="270" stroke="var(--figure-accent)" stroke-width="1"
+          stroke-dasharray="3,3"/>
+    <circle cx="386" cy="270" r="3" fill="var(--figure-accent)"/>
+
+    <circle cx="530" cy="184.6" r="3.5" fill="var(--figure-regime-aperiodic)"/>
+    <line x1="530" y1="184.6" x2="530" y2="270" stroke="var(--figure-regime-aperiodic)" stroke-width="1"
+          stroke-dasharray="3,3"/>
+    <circle cx="530" cy="270" r="3" fill="var(--figure-regime-aperiodic)"/>
+
+    <circle cx="580" cy="190" r="3.5" fill="var(--figure-regime-pseudo)"/>
+    <line x1="580" y1="190" x2="580" y2="270" stroke="var(--figure-regime-pseudo)" stroke-width="1"
+          stroke-dasharray="3,3"/>
+    <circle cx="580" cy="270" r="3" fill="var(--figure-regime-pseudo)"/>
+
+    <!-- Bracket de comparaison -->
+    <line x1="386" y1="270" x2="580" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="386" y1="266" x2="386" y2="274" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="580" y1="266" x2="580" y2="274" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Lecture -->
+    <text x="104" y="294" font-size="11" font-weight="600" fill="var(--figure-accent)">
+      Le retour est le plus rapide au régime critique.
+    </text>
+    <text x="104" y="310" font-size="10" fill="var(--figure-ink-soft)">
+      Plus lent des deux côtés, pour des raisons différentes :
+    </text>
+    <text x="104" y="326" font-size="10" fill="var(--figure-ink-soft)">
+      pseudo-périodique oscille encore ; apériodique est freiné par le frottement.
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>

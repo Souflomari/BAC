@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Comparaison de la méthode d'Euler avec deux tailles de pas sur la bille de R7 : la courbe vraie, une ligne brisée d'Euler avec un grand pas qui s'écarte visiblement, et une ligne brisée avec un petit pas qui reste proche de la courbe vraie.">
+  <title>Euler — l'effet de la taille du pas Δt</title>
+  <!--
+    euler-taille-de-pas.svg — figure figée (STATIQUE) qui remplace l'embed
+    manipulable [[embed:euler-taille-de-pas]] pour cette passe de
+    couverture (curseur Δt → ici, DEUX tailles de pas fixes tracées contre
+    la courbe vraie). STAGED (graphe : toujours staged). Sert CH-EU-1
+    ("Euler donne la valeur exacte").
+
+    Même bille que R7/R8 : m=0,20 kg, k=2,0 kg/s, g≈9,8 m/s², τ=0,10 s,
+    v_lim=0,98 m/s, v₀=0. Échelle : origine (t=0,v=0)=(90,320).
+    scale_t=900 px/s, scale_v=230 px/(m/s).
+
+    Courbe "vraie" — v/v_lim=1−e^(−t/τ) (JAMAIS dérivée dans le texte,
+    R7 "limite du cadre" ; tracée ici comme référence graphique, la même
+    convention que vitesse-vs-temps-frottement.svg), points (s=t/τ) :
+      s=0..5 → (90,320) (112.5,270.14) (135,231.29) (157.5,201.09)
+      (180,177.54) (225,144.88) (270,125.10) (315,113.11) (360,105.82)
+      (450,98.72) (540,96.12)
+
+    Euler, Δt=0,05 s (grand pas) — récurrence v_{i+1}=v_i+(9,8−10v_i)·0,05,
+    7 points (t=0 à 0,30) :
+      v : 0 / 0,49 / 0,735 / 0,8575 / 0,91875 / 0,949375 / 0,9646875
+      → (90,320) (135,207.3) (180,150.95) (225,122.775) (270,108.6875)
+        (315,101.644) (360,98.122)
+
+    Euler, Δt=0,02 s (petit pas, celui de R8) — même récurrence, 16 points
+    (t=0 à 0,30 par pas de 0,02) :
+      v : 0/0,196/0,353/0,478/0,579/0,6592/0,72336/0,774688/0,8157504/
+          0,84860032/0,874880256/0,895904205/0,912723364/0,926178691/
+          0,936942953/0,945554362
+      → (90,320) (108,274.92) (126,238.81) (144,210.06) (162,186.83)
+        (180,168.384) (198,153.627) (216,141.822) (234,132.377)
+        (252,124.822) (270,118.778) (288,113.942) (306,110.074)
+        (324,106.979) (342,104.503) (360,102.522)
+
+    Vérification qualitative (à t=0,30 s) : vraie=0,9312 ; Δt=0,02 →
+    0,9456 (écart 0,014) ; Δt=0,05 → 0,9647 (écart 0,033) — l'écart au
+    petit pas est bien plus petit que celui au grand pas, EXACTEMENT le
+    point de CH-EU-1.
+
+    Rôle des couleurs :
+      courbe vraie (référence)         : --figure-accent
+      Euler Δt petit (proche du vrai)  : --figure-ink, petits marqueurs ronds
+      Euler Δt grand (s'écarte)        : --figure-ink-soft, tireté, marqueurs carrés
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Euler, même bille — l'effet de la taille du pas Δt
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="30" y="32" width="580" height="304" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="90" y1="320" x2="600" y2="320" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="600,320 588,315.5 588,324.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="320" x2="90" y2="58" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,58 85.5,69 94.5,69" fill="var(--figure-ink-soft)"/>
+    <text x="607" y="324" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="82" y="62" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">v</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la courbe "vraie" (référence)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M90,320 L112.5,270.14 L135,231.29 L157.5,201.09 L180,177.54
+      L225,144.88 L270,125.10 L315,113.11 L360,105.82 L450,98.72 L540,96.12
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="440" y="88" font-size="10.5" font-style="italic" fill="var(--figure-accent)">courbe « vraie » (Δt → 0)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : Euler à grand pas vs petit pas
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Grand pas, Δt = 0,05 s -->
+    <path d="M90,320 L135,207.3 L180,150.95 L225,122.775 L270,108.6875 L315,101.644 L360,98.122"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-dasharray="7,4" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="var(--figure-ink-soft)">
+      <rect x="86" y="316" width="8" height="8"/>
+      <rect x="131" y="203.3" width="8" height="8"/>
+      <rect x="176" y="146.95" width="8" height="8"/>
+      <rect x="221" y="118.775" width="8" height="8"/>
+      <rect x="266" y="104.6875" width="8" height="8"/>
+      <rect x="311" y="97.644" width="8" height="8"/>
+      <rect x="356" y="94.122" width="8" height="8"/>
+    </g>
+    <text x="368" y="102" font-size="10.5" fill="var(--figure-ink-soft)">Δt = 0,05 s (grand pas — s'écarte)</text>
+
+    <!-- Petit pas, Δt = 0,02 s (celui de R8) -->
+    <path d="M90,320 L108,274.92 L126,238.81 L144,210.06 L162,186.83 L180,168.384
+             L198,153.627 L216,141.822 L234,132.377 L252,124.822 L270,118.778
+             L288,113.942 L306,110.074 L324,106.979 L342,104.503 L360,102.522"
+          fill="none" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="var(--figure-ink)">
+      <circle cx="90" cy="320" r="2.6"/><circle cx="126" cy="238.81" r="2.6"/>
+      <circle cx="162" cy="186.83" r="2.6"/><circle cx="198" cy="153.627" r="2.6"/>
+      <circle cx="234" cy="132.377" r="2.6"/><circle cx="270" cy="118.778" r="2.6"/>
+      <circle cx="306" cy="110.074" r="2.6"/><circle cx="342" cy="104.503" r="2.6"/>
+      <circle cx="360" cy="102.522" r="2.6"/>
+    </g>
+    <text x="368" y="120" font-size="10.5" fill="var(--figure-ink)">Δt = 0,02 s (petit pas — épouse la courbe)</text>
+
+    <text x="330" y="360" text-anchor="middle" font-size="11" fill="var(--figure-accent)">Euler n'est jamais exact : l'écart à la courbe vraie diminue quand Δt diminue</text>
+  </g><!-- /step-3 -->
+
+</svg>

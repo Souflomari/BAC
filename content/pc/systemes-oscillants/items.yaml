@@ -1,6 +1,76 @@
 notion: systemes-oscillants
 skill_code: pc_systemes_oscillants
-misconceptions: []
+misconceptions:
+  - id: M-OSC-AMO-1
+    label: "Amortissement confondu avec une dérive de la période"
+    description: >-
+      L'élève fusionne la décroissance de l'amplitude avec un changement du
+      rythme des oscillations : il pense que la pseudo-période est nettement
+      différente de la période propre dès qu'il y a du frottement, ou même
+      qu'un système amorti n'a plus de période du tout.
+    contradicts_principle: >-
+      Pour un amortissement faible, la pseudo-période $T$ reste voisine de la
+      période propre $T_0$ (fixée par $m$ et $k$, ou $J$ et $C$) : l'amplitude
+      décroît cycle après cycle, mais l'espacement entre deux passages par un
+      même extrême, lui, ne change presque pas.
+  - id: M-OSC-AMO-2
+    label: "Ordre des régimes d'amortissement inversé"
+    description: >-
+      L'élève classe les régimes selon « plus de frottement = retour toujours
+      plus lent » ou l'inverse, sans isoler le régime critique comme cas-limite
+      le plus rapide ; il peut croire que le régime critique oscille encore,
+      ou que l'apériodique revient plus vite que le critique.
+    contradicts_principle: >-
+      Le retour à l'équilibre est le plus rapide au régime critique (le
+      cas-limite sans oscillation) ; en-deçà, le pseudo-périodique oscille en
+      s'amortissant ; au-delà, l'apériodique revient sans osciller mais plus
+      lentement que le critique.
+  - id: M-OSC-AMO-3
+    label: "Le frottement peut restituer ou entretenir l'énergie"
+    description: >-
+      L'élève pense qu'un oscillateur amorti finit par se relancer tout seul,
+      que le frottement « entretient » le mouvement, ou qu'une réserve
+      d'énergie cachée sera libérée plus tard — en confondant l'amortissement
+      (perte pure) avec l'entretien (apport extérieur, hors de ce chapitre).
+    contradicts_principle: >-
+      Le frottement dissipe toujours l'énergie mécanique en chaleur ($W<0$) ;
+      il ne peut jamais en fournir. Sans dispositif d'entretien extérieur
+      (étudié en RLC), l'amplitude décroît jusqu'à l'arrêt — de façon
+      irréversible.
+  - id: M-OSC-RES-1
+    label: "Condition de résonance mal comprise"
+    description: >-
+      L'élève pense que l'amplitude du résonateur est maximale quand
+      l'excitateur va « le plus vite », « le plus fort », ou à n'importe
+      quelle fréquence pourvu qu'on attende assez longtemps — au lieu d'une
+      coïncidence de fréquences.
+    contradicts_principle: >-
+      L'amplitude du résonateur est maximale quand $f_{exc} \approx f_0$, la
+      fréquence propre du résonateur — ni la plus haute ni la plus basse
+      fréquence testée, mais celle qui coïncide avec $f_0$.
+  - id: M-OSC-RES-2
+    label: "Rôle de l'amortissement inversé (résonance)"
+    description: >-
+      L'élève croit qu'un amortissement plus fort rend la résonance plus
+      aiguë, plus intense, ou plus étroite, au lieu de l'émousser ; ou pense
+      que l'amortissement n'a aucune influence sur la forme du pic.
+    contradicts_principle: >-
+      Un amortissement faible donne une résonance aiguë (pic haut et étroit) ;
+      un amortissement fort donne une résonance floue (pic bas et large).
+      L'amortissement émousse toujours la résonance, il ne la concentre
+      jamais.
+  - id: M-OSC-RES-3
+    label: "Excitateur et résonateur confondus"
+    description: >-
+      L'élève ne distingue pas qui impose la fréquence réglable (l'excitateur)
+      de qui garde sa fréquence propre fixe (le résonateur) ; il peut croire
+      que $f_0$ se déplace pour rejoindre $f_{exc}$, ou que c'est le
+      résonateur qui impose le rythme.
+    contradicts_principle: >-
+      L'excitateur impose $f_{exc}$ (réglable) ; le résonateur garde sa
+      fréquence propre $f_0$, fixée par ses caractéristiques ($m,k$ ou $J,C$),
+      qui ne change jamais. La résonance survient quand $f_{exc}$ rejoint ce
+      $f_0$ fixe.
 
 items:
   - id: SO-1
@@ -1134,7 +1204,7 @@ items:
       l'extérieur.
 
   - id: SO-22
-    rung: "R7"
+    rung: "R8"
     difficulty_level: 3
     skill_code: pc_systemes_oscillants
     tags: [pendule_simple, isochronisme, bac]
@@ -1194,7 +1264,7 @@ items:
       $$T_0 = 2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2{,}5}{10}} = 2\pi\sqrt{0{,}25} = 2\pi\times0{,}5 \approx 3{,}14\ \text{s}$$
 
   - id: SO-23
-    rung: "R7"
+    rung: "R8"
     difficulty_level: 3
     skill_code: pc_systemes_oscillants
     tags: [pendule_torsion, energie, bac]
@@ -1249,7 +1319,7 @@ items:
       reste constante à cette valeur pendant tout le mouvement.
 
   - id: SO-24
-    rung: "R7"
+    rung: "R8"
     difficulty_level: 4
     skill_code: pc_systemes_oscillants
     tags: [synthese, analogie, tous_systemes]
@@ -1303,3 +1373,1157 @@ items:
       | Pendule de torsion | $J$ | $C$ | $C/J$ |
 
       Dans les quatre cas, $\omega_0^2$ = rappel / inertie, jamais l'inverse.
+
+  - id: SO-25
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, regime_pseudo_periodique, utilisation]
+    stem: >
+      Un solide-ressort ($m$, $k$ fixés) oscille sur un banc à frottement
+      faible. On mesure l'intervalle de temps entre deux passages successifs
+      par l'écart maximal du même côté. Comparé à la période propre
+      $T_0 = 2\pi\sqrt{m/k}$, cet intervalle (la pseudo-période $T$) :
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          vaut approximativement $T_0$ (amortissement faible).
+        correct: true
+      - id: B
+        text: >-
+          est nettement plus court, car l'amplitude diminue à chaque
+          aller-retour.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Ce choix fusionne deux effets distincts : le terme de frottement
+          $h\dot{x}$ retire de l'énergie, donc fait décroître l'amplitude,
+          mais le terme de rappel $kx$ (qui fixe le rythme) n'est pas
+          touché. Pour un amortissement faible, l'espacement entre deux
+          extrêmes reste voisin de $T_0$, même si leur hauteur diminue
+          nettement.
+      - id: C
+        text: >-
+          n'existe pas : dès qu'il y a du frottement, il n'y a plus de
+          période.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le régime pseudo-périodique garde une pseudo-période bien définie
+          et mesurable — c'est justement ce qui permet de la comparer à
+          $T_0$. Ce n'est que pour un amortissement très fort (régime
+          apériodique) qu'il n'y a plus aucune oscillation, donc plus de
+          période au sens propre.
+      - id: D
+        text: >-
+          augmente d'un aller-retour au suivant, à mesure que l'amplitude
+          décroît.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Ce choix imagine que la décroissance de l'amplitude « traîne »
+          aussi la période vers le haut. Mais l'amplitude et la
+          pseudo-période ne dépendent pas des mêmes termes de l'équation
+          $m\ddot{x}+h\dot{x}+kx=0$ : rien n'indique une dérive progressive
+          de $T$ d'un cycle à l'autre.
+    correct_feedback: >
+      Le frottement fait fuir l'énergie (donc l'amplitude) cycle après
+      cycle, mais il ne touche pas au terme de rappel qui fixe le rythme :
+      pour un amortissement faible, $T \approx T_0 = 2\pi\sqrt{m/k}$.
+    solution: |
+      **Deux effets à ne pas fusionner :** le terme $h\dot{x}$ dissipe de
+      l'énergie (l'amplitude décroît) ; le terme $kx$ fixe le rythme du
+      mouvement. Pour un amortissement faible, seul le premier effet est
+      net :
+      $$T \approx T_0 = 2\pi\sqrt{\frac{m}{k}}$$
+
+      L'amplitude diminue visiblement d'un aller-retour à l'autre ;
+      l'espacement entre deux passages par un même extrême, lui, reste
+      presque inchangé.
+
+  - id: SO-26
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, application_experimentale, document_experimental, hors_cadre_probe]
+    stem: >
+      On enregistre $x(t)$ pour trois amortissements croissants d'un même
+      pendule élastique. Le premier oscille en s'amortissant. Le second
+      revient à l'équilibre sans osciller, le plus rapidement possible
+      parmi les trois. Le troisième revient à l'équilibre sans osciller lui
+      non plus, mais lentement. Quels sont, dans l'ordre (premier, second,
+      troisième), les trois régimes ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          périodique ; pseudo-périodique ; apériodique.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le régime périodique (amplitude constante, sans frottement) n'est
+          pas un régime d'amortissement : il correspond au cas idéal étudié
+          avant ce chapitre. Le premier système décrit ici oscille en
+          s'amortissant : c'est le régime pseudo-périodique, pas le régime
+          périodique.
+      - id: B
+        text: >-
+          pseudo-périodique ; apériodique ; critique.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le second et le troisième régime sont inversés. Le second système
+          décrit revient le plus vite, sans osciller : c'est le régime
+          critique, le cas-limite le plus rapide. Le troisième, plus lent,
+          est l'apériodique — pas l'inverse.
+      - id: C
+        text: >-
+          pseudo-périodique ; critique ; apériodique.
+        correct: true
+      - id: D
+        text: >-
+          amorti ; critique ; forcé.
+        correct: false
+        misconception: hors_cadre_probe
+        feedback: >
+          « Amorti » n'est pas le nom d'un régime précis (les trois régimes
+          de ce chapitre sont pseudo-périodique, critique, apériodique), et
+          « forcé » désigne un régime d'oscillations entretenues par un
+          excitateur extérieur — une notion hors de ce chapitre sur les
+          oscillations libres.
+    correct_feedback: >
+      Pseudo-périodique : oscille en s'amortissant. Critique : retour le
+      plus rapide, sans dépassement — le cas-limite. Apériodique : retour
+      sans dépassement lui aussi, mais plus lent que le critique.
+    solution: |
+      **Pseudo-périodique :** amplitude décroissante, oscillations
+      persistantes.
+
+      **Critique :** cas-limite entre les deux, retour le plus rapide
+      possible sans aucun dépassement de l'équilibre.
+
+      **Apériodique :** retour sans dépassement, mais plus lent que le
+      critique (amortissement plus fort que le critique).
+
+  - id: SO-27
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, energie, bilan_energetique, resolution, hors_cadre_probe]
+    stem: >
+      Un pendule pesant oscille avec frottement, sans aucun dispositif
+      d'entretien extérieur. Que peut-on affirmer sur son énergie mécanique
+      $E_m$ et sur son mouvement à long terme ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_m$ finit par réaugmenter et l'amplitude repart, car
+          l'oscillateur s'entretient de lui-même.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Rien, dans le frottement seul, ne peut faire réaugmenter $E_m$ :
+          le travail des forces de frottement est toujours négatif (elles
+          s'opposent au mouvement). Un oscillateur ne peut « se relancer »
+          que grâce à un dispositif d'entretien extérieur — absent ici, par
+          hypothèse.
+      - id: B
+        text: >-
+          $E_m$ décroît (dissipée en chaleur) et l'amplitude tend vers
+          zéro ; sans dispositif d'entretien, le mouvement s'arrête.
+        correct: true
+      - id: C
+        text: >-
+          $E_m$ reste constante : le frottement ne change que la période,
+          pas l'énergie.
+        correct: false
+        misconception: [M-OSC-AMO-1, M-OSC-AMO-3]
+        feedback: >
+          Double erreur : le frottement n'agit pas d'abord sur la période
+          (c'est l'amplitude qui décroît, la pseudo-période reste voisine
+          de $T_0$), et il ne laisse surtout pas $E_m$ constante — il la
+          dissipe continûment en chaleur.
+      - id: D
+        text: >-
+          $E_m$ décroît, donc on peut en déduire la pseudo-période par une
+          formule $T = f(m, h, k)$.
+        correct: false
+        misconception: hors_cadre_probe
+        feedback: >
+          La leçon établit l'équation différentielle amortie
+          $m\ddot{x}+h\dot{x}+kx=0$ puis s'arrête volontairement là : aucune
+          formule fermée de la pseudo-période en fonction de $m$, $h$, $k$
+          n'est au programme. Que $E_m$ décroisse ne donne pas accès à une
+          telle formule.
+    correct_feedback: >
+      Le frottement dissipe l'énergie mécanique en chaleur, cycle après
+      cycle ; sans dispositif d'entretien extérieur (étudié au chapitre
+      RLC), l'amplitude décroît jusqu'à l'arrêt complet du mouvement.
+    solution: |
+      Les forces de frottement s'opposant toujours au mouvement, leur
+      travail est négatif à chaque instant : $E_m$ décroît continûment, en
+      chaleur. Sans aucun apport extérieur, cette perte n'est jamais
+      compensée : l'amplitude tend vers zéro et le pendule finit par
+      s'immobiliser à l'équilibre.
+
+  - id: SO-28
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, pendule_torsion, application_experimentale, document_experimental]
+    stem: |
+      Un pendule de torsion ($J$, $C$ fixés, période propre théorique
+      $T_0 = 1{,}20\ \text{s}$) oscille avec un amortissement faible. Un
+      dispositif relève les instants de passage par l'élongation angulaire
+      maximale du même côté, et l'amplitude correspondante :
+
+      | Cycle | instant (s) | intervalle avec le précédent (s) | amplitude ($^\circ$) |
+      |---|---|---|---|
+      | 1 | 0,00 | — | 40 |
+      | 2 | 1,21 | 1,21 | 34 |
+      | 3 | 2,39 | 1,18 | 29 |
+      | 4 | 3,60 | 1,21 | 25 |
+
+      Que peut-on conclure de ce tableau ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les intervalles diminuent nettement d'un cycle à l'autre (de
+          $1{,}21$ à $1{,}18\ \text{s}$), preuve que le frottement raccourcit
+          la période.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          L'écart entre $1{,}21$ et $1{,}18\ \text{s}$ (moins de $3\%$)
+          relève de la précision de mesure, pas d'une tendance : les quatre
+          intervalles restent tous voisins de $T_0=1{,}20\ \text{s}$, sans
+          dérive systématique.
+      - id: B
+        text: >-
+          Les intervalles restent voisins de $T_0=1{,}20\ \text{s}$ malgré
+          la décroissance nette de l'amplitude (de $40^\circ$ à $25^\circ$) :
+          c'est cohérent avec un amortissement faible.
+        correct: true
+      - id: C
+        text: >-
+          Puisque l'amplitude a diminué d'environ $40\%$ (de $40^\circ$ à
+          $25^\circ$), la pseudo-période a dû, elle aussi, diminuer
+          d'environ $40\%$.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          L'amplitude et la pseudo-période ne varient pas dans les mêmes
+          proportions : le tableau montre justement que la pseudo-période
+          reste quasi constante ($\approx 1{,}20\ \text{s}$) pendant que
+          l'amplitude chute nettement — ce sont deux grandeurs
+          indépendantes ici.
+      - id: D
+        text: >-
+          Ce tableau ne permet de conclure sur aucune période : dès qu'il y
+          a du frottement, la notion de période perd tout son sens.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le régime pseudo-périodique garde une pseudo-période bien définie
+          et mesurable — c'est exactement ce que ce tableau permet de
+          vérifier, colonne par colonne.
+    correct_feedback: >
+      Les quatre intervalles mesurés ($1{,}21$ ; $1{,}18$ ;
+      $1{,}21\ \text{s}$) restent tous voisins de $T_0=1{,}20\ \text{s}$,
+      alors que l'amplitude chute nettement : c'est la signature attendue
+      d'un amortissement faible.
+    solution: |
+      **Colonne « intervalle » :** $1{,}21$ ; $1{,}18$ ; $1{,}21\ \text{s}$
+      — toutes proches de $T_0=1{,}20\ \text{s}$, aux incertitudes de
+      mesure près.
+
+      **Colonne « amplitude » :** décroissance nette et régulière,
+      $40^\circ \to 25^\circ$.
+
+      Ces deux lectures combinées confirment le régime pseudo-périodique
+      pour un amortissement faible : rythme quasi inchangé, amplitude en
+      baisse.
+
+  - id: SO-29
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, pendule_simple, classement, application_experimentale]
+    stem: >
+      Trois pendules simples identiques sont plongés dans trois fluides de
+      viscosités croissantes (fluide 1 < fluide 2 < fluide 3) puis lâchés
+      du même angle. Dans le fluide 1, le pendule oscille encore plusieurs
+      fois en s'amortissant. Dans le fluide 3, il revient à l'équilibre
+      sans le dépasser, mais très lentement. Dans le fluide 2, il revient à
+      l'équilibre sans le dépasser, le plus rapidement possible parmi les
+      trois. Lequel des trois pendules atteint l'équilibre en premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Celui du fluide 1 (régime pseudo-périodique), car il n'est pas
+          ralenti par un frottement fort.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le pendule du fluide 1 oscille encore plusieurs fois avant de
+          s'immobiliser : même si chaque aller-retour n'est pas ralenti
+          individuellement, le fait de devoir osciller à répétition avant
+          de se stabiliser le rend plus long à atteindre l'équilibre que le
+          retour direct du régime critique.
+      - id: B
+        text: >-
+          Celui du fluide 3 (régime apériodique), car plus de frottement
+          ramène toujours plus vite vers l'équilibre.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          C'est l'inverse au-delà du régime critique : un amortissement
+          plus fort que le critique ralentit lui-même le retour (le
+          pendule « patauge » dans un fluide trop visqueux). Le fluide 3
+          est justement décrit comme le plus lent des trois.
+      - id: C
+        text: >-
+          Les trois atteignent l'équilibre exactement en même temps ; seul
+          le chemin suivi diffère.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le temps de retour à l'équilibre dépend bel et bien de
+          l'amortissement, et de façon non monotone : il diminue jusqu'au
+          régime critique, puis réaugmente au-delà. Les trois pendules
+          décrits n'ont pas le même temps de stabilisation.
+      - id: D
+        text: >-
+          Celui du fluide 2 (régime critique) : c'est le cas-limite qui
+          revient le plus vite, sans dépassement.
+        correct: true
+    correct_feedback: >
+      Le régime critique est le cas-limite qui sépare le pseudo-périodique
+      (retour retardé par les oscillations) de l'apériodique (retour
+      retardé par un frottement trop fort) : c'est lui qui atteint
+      l'équilibre le plus rapidement des trois.
+    solution: |
+      **Fluide 1 (pseudo-périodique) :** le pendule doit osciller plusieurs
+      fois, en s'amortissant, avant de s'immobiliser — un détour qui prend
+      du temps.
+
+      **Fluide 3 (apériodique) :** retour direct, mais ralenti par un
+      frottement trop important.
+
+      **Fluide 2 (critique) :** le compromis exact entre les deux effets —
+      retour direct, sans le frein d'un excès de frottement : c'est le plus
+      rapide des trois.
+
+  - id: SO-30
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, energie, bilan_energetique, application_experimentale, document_experimental]
+    stem: >
+      On trace l'énergie mécanique $E_m(t)$ d'un pendule élastique
+      horizontal soumis à un frottement fluide, sans aucun dispositif
+      d'entretien. La courbe obtenue décroît régulièrement vers zéro. Que
+      peut-on prévoir de cette courbe si l'on prolonge l'enregistrement
+      suffisamment longtemps ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_m$ va forcément remonter à un moment donné, car un système
+          physique ne peut pas perdre indéfiniment de l'énergie.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Un système isolé (sans apport extérieur) peut au contraire perdre
+          de l'énergie jusqu'à épuisement complet de son mouvement : rien
+          n'oblige $E_m$ à remonter. Seul un dispositif d'entretien
+          extérieur pourrait provoquer une remontée — absent ici.
+      - id: B
+        text: >-
+          $E_m$ va se stabiliser à une valeur non nulle et rester constante
+          indéfiniment, sans jamais s'annuler.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Tant que le solide bouge encore, le frottement continue de
+          dissiper de l'énergie : il n'existe aucun palier non nul où la
+          dissipation s'arrêterait spontanément. Supposer un tel palier
+          revient à supposer, implicitement, un apport qui compenserait la
+          perte — exactement le rôle d'un dispositif d'entretien, absent
+          ici.
+      - id: C
+        text: >-
+          $E_m$ continue de décroître, sans jamais remonter, jusqu'à
+          devenir quasi nulle : le solide finit par s'immobiliser à
+          l'équilibre.
+        correct: true
+      - id: D
+        text: >-
+          $E_m$ oscille indéfiniment entre une valeur haute et une valeur
+          basse, sans jamais décroître en moyenne.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          C'est l'échange $E_c \leftrightarrow E_{pe}$ (à énergie totale
+          fixée) qui oscille dans le cas SANS frottement. Ici, avec
+          frottement, c'est la somme $E_m = E_c + E_{pe}$ elle-même qui
+          diminue en moyenne, cycle après cycle — pas seulement sa
+          répartition entre les deux réservoirs.
+    correct_feedback: >
+      Sans dispositif d'entretien, rien ne peut compenser la dissipation
+      par frottement : $E_m$ décroît de façon monotone vers zéro, et le
+      solide s'immobilise à l'équilibre.
+    solution: |
+      Le frottement dissipe de l'énergie tant qu'il y a du mouvement ; il
+      n'existe aucun mécanisme, dans ce système isolé, pour interrompre
+      cette perte avant l'arrêt complet. $E_m(t)$ décroît donc de façon
+      monotone vers zéro — jamais de remontée, jamais de palier non nul,
+      jamais d'oscillation autour d'une moyenne constante.
+
+  - id: SO-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, pendule_simple, utilisation]
+    stem: >
+      Un pendule simple oscille dans l'air (frottement très faible). Un
+      élève, en observant que l'amplitude a nettement diminué après
+      quelques minutes, affirme : « Comme l'amplitude a diminué de moitié,
+      la pseudo-période a dû, elle aussi, diminuer d'environ moitié. »
+      Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : pour un amortissement faible, la pseudo-période $T$ reste
+          voisine de la période propre $T_0=2\pi\sqrt{L/g}$, quelle que
+          soit la décroissance de l'amplitude ; ce sont deux grandeurs
+          indépendantes.
+        correct: true
+      - id: B
+        text: >-
+          Oui, car l'amplitude et la pseudo-période sont deux mesures du
+          même phénomène de décroissance.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Ce sont deux grandeurs distinctes, gouvernées par des termes
+          différents de l'équation du mouvement amorti : l'amplitude
+          décroît sous l'effet du frottement, tandis que la pseudo-période
+          reste fixée, pour un amortissement faible, par $L$ et $g$ (comme
+          $T_0$), pas par le frottement.
+      - id: C
+        text: >-
+          Oui, mais dans l'autre sens : une amplitude divisée par deux
+          double la pseudo-période.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Même erreur, dans l'autre sens : cela suppose encore un lien
+          direct entre amplitude et pseudo-période, qui n'existe pas pour
+          un amortissement faible. $T$ reste voisine de $T_0$, quelle que
+          soit l'ampleur de la décroissance de l'amplitude.
+      - id: D
+        text: >-
+          On ne peut rien dire : un pendule qui perd de l'amplitude n'a
+          déjà plus de période définie.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le régime pseudo-périodique garde une pseudo-période bien
+          définie et mesurable, précisément parce que les passages par les
+          extrêmes restent régulièrement espacés, même si leur hauteur
+          diminue.
+    correct_feedback: >
+      L'amplitude et la pseudo-période obéissent à des mécanismes
+      différents : la première décroît sous l'effet du frottement, la
+      seconde reste voisine de $T_0$ tant que l'amortissement est faible.
+      L'affirmation de l'élève fusionne à tort les deux.
+    solution: |
+      Dans l'équation amortie du pendule simple, le terme de frottement
+      agit sur la décroissance de l'amplitude, pas sur le terme de rappel
+      qui fixe le rythme ($g/L$). Pour un amortissement faible,
+      $$T \approx T_0 = 2\pi\sqrt{\frac{L}{g}}$$
+      quelle que soit l'ampleur de la décroissance de l'amplitude observée.
+
+  - id: SO-32
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, pendule_pesant, application_experimentale]
+    stem: >
+      Un pendule pesant est lâché deux fois du même angle, avec deux
+      réglages d'amortissement différents. Réglage 1 : le solide revient à
+      l'équilibre sans jamais le dépasser, en $2{,}4\ \text{s}$. Réglage 2 :
+      le solide revient à l'équilibre sans jamais le dépasser non plus,
+      mais en seulement $1{,}1\ \text{s}$. Que peut-on en conclure sur ces
+      deux réglages ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le réglage 1, plus lent, est forcément le régime critique, car
+          « critique » signifie « qui prend le plus de temps à se
+          stabiliser ».
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          C'est l'inverse : le régime critique est le cas-limite le plus
+          RAPIDE parmi les régimes non oscillants, pas le plus lent. Un
+          retour sans dépassement mais lent (réglage 1) signale au
+          contraire un amortissement plus fort que le critique
+          (apériodique).
+      - id: B
+        text: >-
+          C'est impossible : deux réglages sans aucune oscillation sont
+          nécessairement identiques ; seul le régime pseudo-périodique peut
+          varier en durée.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Il existe une famille entière de réglages sans oscillation, du
+          régime critique (le plus rapide) aux réglages de plus en plus
+          apériodiques (de plus en plus lents à mesure que le frottement
+          augmente) : l'absence d'oscillation ne signifie pas l'identité
+          des temps de retour.
+      - id: C
+        text: >-
+          Le réglage le plus rapide (réglage 2) est forcément le plus
+          fortement amorti, car plus de frottement fait toujours revenir
+          plus vite vers l'équilibre.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          « Plus de frottement = toujours plus vite » n'est vrai que
+          jusqu'au régime critique ; au-delà, plus de frottement ralentit
+          le retour. Le réglage le plus rapide des deux est donc le plus
+          proche du critique, pas nécessairement le plus amorti des deux.
+      - id: D
+        text: >-
+          Le réglage 2 est plus proche du régime critique (retour le plus
+          rapide sans oscillation) ; le réglage 1, plus lent bien que non
+          oscillant, correspond à un amortissement plus fort (régime
+          apériodique).
+        correct: true
+    correct_feedback: >
+      Parmi les régimes sans oscillation, le retour le plus rapide est
+      celui du régime critique ; un retour plus lent, toujours sans
+      dépassement, signale un amortissement plus fort que le critique
+      (apériodique) — pas l'inverse.
+    solution: |
+      Le temps de retour à l'équilibre, parmi les régimes non oscillants,
+      est minimal au régime critique et croît à mesure que l'amortissement
+      s'en éloigne (vers l'apériodique). Le réglage 2 ($1{,}1\ \text{s}$,
+      plus rapide) est donc le plus proche du critique ; le réglage 1
+      ($2{,}4\ \text{s}$, plus lent) est plus fortement amorti que le
+      critique.
+
+  - id: SO-33
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, energie, entretien, pendule_torsion, resolution]
+    stem: >
+      Un pendule de torsion oscille avec un frottement non négligeable,
+      sans aucun dispositif d'entretien. Après quelques dizaines
+      d'oscillations, l'amplitude est devenue très faible. Un élève
+      propose : « Il suffit d'attendre encore un peu : le fil, en se
+      détordant, va relâcher l'énergie qu'il avait emmagasinée au début et
+      relancer les oscillations. » Que penser de cette proposition ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est vraie : le fil accumule de l'énergie de torsion au fil
+          des cycles, qu'il finira par restituer d'un coup.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Le fil ne fait qu'échanger, à chaque cycle, son énergie de
+          torsion contre de l'énergie cinétique (et réciproquement) — il
+          n'en accumule pas de réserve supplémentaire d'un cycle à l'autre.
+          C'est justement cet échange, de plus en plus faible, qui
+          s'amortit.
+      - id: B
+        text: >-
+          Elle est vraie, car l'amortissement n'est qu'une pause temporaire
+          avant que le système ne reparte de lui-même.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          L'amortissement n'est pas une pause : c'est une perte
+          irréversible d'énergie mécanique, dissipée en chaleur par
+          frottement. Rien, dans ce mécanisme, ne prépare un « redépart »
+          futur du système livré à lui-même.
+      - id: C
+        text: >-
+          Elle est fausse : l'énergie du fil est déjà restituée en énergie
+          cinétique à chaque passage par l'équilibre, cycle après cycle —
+          c'est précisément cet échange qui s'amortit ; le fil ne garde
+          aucune réserve cachée à libérer plus tard.
+        correct: true
+      - id: D
+        text: >-
+          Elle est fausse, mais seulement parce que le fil a fini par se
+          casser ; en théorie, l'énergie serait bien restituée
+          intégralement.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Aucune casse n'est en jeu ici : c'est le mécanisme même de
+          l'amortissement (le frottement, qui dissipe de l'énergie à
+          chaque cycle) qui rend la restitution impossible, indépendamment
+          de tout dommage matériel sur le fil.
+    correct_feedback: >
+      À chaque cycle, l'énergie de torsion du fil est déjà restituée en
+      énergie cinétique au passage par l'équilibre — c'est l'échange
+      normal d'un oscillateur. Le frottement grignote cet échange cycle
+      après cycle ; il n'existe pas de réserve cachée que le fil
+      « garderait » pour plus tard.
+    solution: |
+      Le fil de torsion échange son énergie potentielle avec l'énergie
+      cinétique du disque à chaque quart de période, comme dans tout
+      oscillateur — ce n'est pas une accumulation. Le frottement prélève
+      une petite fraction de l'énergie totale à chaque cycle : c'est cette
+      fuite progressive, et non une réserve cachée dans le fil, qui explique
+      la décroissance de l'amplitude jusqu'à l'arrêt.
+
+  - id: SO-34
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, condition_resonance, excitateur_resonateur, utilisation]
+    stem: >
+      Un résonateur de fréquence propre $f_0$ est forcé par un excitateur
+      de fréquence $f_{exc}$ réglable. Pour quelle valeur de $f_{exc}$
+      l'amplitude des oscillations du résonateur est-elle maximale ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $f_{exc} \approx f_0$.
+        correct: true
+      - id: B
+        text: >-
+          Pour $f_{exc}$ la plus grande possible.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Une amplitude maximale ne vient pas d'un excitateur « rapide »,
+          mais d'une coïncidence de fréquences : au-delà de $f_0$,
+          l'amplitude retombe au contraire, elle ne continue pas de
+          croître avec $f_{exc}$.
+      - id: C
+        text: >-
+          Pour n'importe quelle $f_{exc}$, si on attend suffisamment
+          longtemps.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le temps d'attente ne remplace pas la coïncidence de fréquences :
+          loin de $f_0$, l'amplitude du résonateur reste petite, aussi
+          longtemps qu'on excite le système à cette fréquence-là.
+      - id: D
+        text: >-
+          Pour $f_{exc}$ la plus petite possible.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Symétrique de l'erreur « le plus vite » : ici aussi, ce n'est ni
+          la fréquence la plus basse ni la plus haute qui maximise
+          l'amplitude, mais celle qui coïncide avec $f_0$.
+    correct_feedback: >
+      L'amplitude du résonateur culmine quand l'excitateur pousse au même
+      rythme que la fréquence propre du résonateur : $f_{exc} \approx f_0$
+      — ni la plus haute, ni la plus basse fréquence, mais celle qui
+      coïncide.
+    solution: |
+      À chaque cycle, l'excitateur transmet de l'énergie au résonateur.
+      Quand $f_{exc} \approx f_0$, ces apports arrivent en phase avec le
+      mouvement propre du résonateur et s'accumulent efficacement : c'est
+      la condition de résonance. Loin de $f_0$, les apports sont
+      partiellement désynchronisés et l'amplitude reste faible.
+
+  - id: SO-35
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, amortissement, acuite, application_experimentale, document_experimental]
+    stem: >
+      On trace, pour un même résonateur, la courbe amplitude = $f(f_{exc})$
+      dans deux conditions : (1) frottements faibles, (2) frottements
+      forts. Laquelle des deux courbes présente le pic le plus haut et le
+      plus étroit, et comment nomme-t-on cette résonance ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La courbe à frottements forts ; résonance aiguë.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse : un amortissement fort abaisse et élargit le
+          pic (résonance floue), il ne le rend jamais plus haut ni plus
+          étroit.
+      - id: B
+        text: >-
+          La courbe à frottements faibles ; résonance aiguë.
+        correct: true
+      - id: C
+        text: >-
+          La courbe à frottements forts, car un fort amortissement
+          concentre l'énergie sur $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          Le frottement dissipe de l'énergie à chaque cycle, il n'en
+          « concentre » aucune : plus le frottement est fort, plus il faut
+          une large plage de $f_{exc}$ pour entretenir une amplitude
+          notable, d'où un pic bas et large, pas concentré.
+      - id: D
+        text: >-
+          Les deux courbes ont le même pic ; l'amortissement ne change que
+          la position de $f_0$.
+        correct: false
+        misconception: [M-OSC-RES-2, M-OSC-RES-3]
+        feedback: >
+          Double erreur : l'amortissement change la hauteur et la largeur
+          du pic (pas son existence), et $f_0$ est une propriété fixe du
+          résonateur (fixée par $m,k$ ou $J,C$) — elle ne se déplace
+          jamais, quel que soit le frottement.
+    correct_feedback: >
+      Un amortissement faible donne un pic haut et étroit (résonance
+      aiguë) ; un amortissement fort donne un pic bas et large (résonance
+      floue). L'amortissement émousse toujours la résonance, il ne la
+      concentre jamais.
+    solution: |
+      L'amplitude à l'équilibre est atteinte quand l'énergie dissipée par
+      frottement sur un cycle égale l'énergie injectée par l'excitateur.
+      Faible amortissement → cet équilibre n'est atteint qu'à très grande
+      amplitude, et seulement tout près de $f_0$ → pic haut et étroit.
+      Fort amortissement → équilibre atteint à amplitude modeste, sur une
+      large plage de $f_{exc}$ → pic bas et large.
+
+  - id: SO-36
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, excitateur_resonateur, utilisation]
+    stem: >
+      À la résonance, on observe que le résonateur oscille avec une très
+      grande amplitude. Que peut-on dire des fréquences en jeu ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le résonateur oscille à sa fréquence propre $f_0$, qui a
+          augmenté pour rejoindre celle de l'excitateur.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          $f_0$ est fixée par les caractéristiques du résonateur ($m,k$ ou
+          $J,C$) : elle ne « bouge » jamais pour rejoindre quoi que ce
+          soit. C'est au contraire l'excitateur qui règle $f_{exc}$ pour
+          la rapprocher de $f_0$.
+      - id: B
+        text: >-
+          C'est le résonateur qui impose sa fréquence à l'excitateur.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Les rôles sont inversés : c'est l'excitateur qui impose une
+          fréquence réglable $f_{exc}$ au résonateur ; le résonateur, lui,
+          garde sa fréquence propre fixe $f_0$ — il ne pilote rien de
+          l'extérieur.
+      - id: C
+        text: >-
+          Le résonateur oscille à la fréquence imposée par l'excitateur
+          ($f_{exc}$), et cette $f_{exc}$ est proche de sa fréquence propre
+          $f_0$, qui elle reste fixe.
+        correct: true
+      - id: D
+        text: >-
+          Les deux oscillent à des fréquences sans rapport ; la grande
+          amplitude vient de la puissance de l'excitateur.
+        correct: false
+        misconception: [M-OSC-RES-1, M-OSC-RES-3]
+        feedback: >
+          Double erreur : la grande amplitude ne vient pas de la
+          « puissance » de l'excitateur mais de la coïncidence des
+          fréquences, et les deux fréquences ne sont justement pas « sans
+          rapport » à la résonance — $f_{exc}$ y est au contraire proche de
+          $f_0$.
+    correct_feedback: >
+      En régime établi, le résonateur oscille à la fréquence imposée par
+      l'excitateur ($f_{exc}$) ; l'amplitude est grande précisément parce
+      que cette $f_{exc}$ coïncide avec la fréquence propre fixe $f_0$ du
+      résonateur.
+    solution: |
+      L'excitateur impose $f_{exc}$ (réglable) ; le résonateur, en régime
+      établi, suit cette fréquence imposée. Sa fréquence PROPRE $f_0$, elle,
+      reste une caractéristique fixe du résonateur (fixée par $m,k$ ou
+      $J,C$), qui ne se déplace jamais. La grande amplitude observée
+      signale que $f_{exc}$ a rejoint ce $f_0$ fixe — pas l'inverse.
+
+  - id: SO-37
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, condition_resonance, application_experimentale, document_experimental]
+    stem: |
+      Pour un résonateur de fréquence propre $f_0 = 2{,}0\ \text{Hz}$, on
+      relève l'amplitude des oscillations pour différentes fréquences
+      d'excitation :
+
+      | $f_{exc}$ (Hz) | 1,0 | 1,6 | 1,9 | 2,0 | 2,1 | 3,0 |
+      |---|---|---|---|---|---|---|
+      | Amplitude (cm) | 0,4 | 1,1 | 3,8 | 5,2 | 3,6 | 0,3 |
+
+      D'après ce tableau, à quelle fréquence d'excitation le résonateur
+      atteint-il sa plus grande amplitude, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À $f_{exc}=3{,}0\ \text{Hz}$, car c'est la fréquence la plus
+          élevée du tableau.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le tableau montre au contraire l'amplitude la plus faible
+          ($0{,}3\ \text{cm}$) à cette fréquence : « le plus élevé » n'est
+          pas le bon critère, c'est la coïncidence avec $f_0$ qui compte,
+          et $3{,}0\ \text{Hz}$ en est la plus éloignée du tableau.
+      - id: B
+        text: >-
+          L'amplitude devrait continuer à croître au-delà de
+          $f_{exc}=3{,}0\ \text{Hz}$ si on poursuivait l'essai à des
+          fréquences encore plus hautes.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le tableau montre au contraire une amplitude déjà en chute nette
+          entre $2{,}1$ et $3{,}0\ \text{Hz}$ : rien n'indique une reprise
+          de la croissance au-delà, bien au contraire — la tendance est
+          à la baisse continue, loin de $f_0$.
+      - id: C
+        text: >-
+          On ne peut pas le dire sans savoir combien de temps a duré
+          chaque essai ; en attendant assez longtemps à n'importe quelle
+          fréquence, l'amplitude finirait par y culminer.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le tableau lui-même donne la réponse, sans besoin de connaître
+          la durée des essais : c'est la coïncidence entre $f_{exc}$ et
+          $f_0$ qui détermine où l'amplitude culmine, pas le temps
+          d'attente à une fréquence quelconque.
+      - id: D
+        text: >-
+          À $f_{exc}=2{,}0\ \text{Hz}$, car cette valeur coïncide avec
+          $f_0$ : l'amplitude est maximale exactement autour de cette
+          fréquence, et décroît de part et d'autre.
+        correct: true
+    correct_feedback: >
+      Le tableau montre un maximum net ($5{,}2\ \text{cm}$) à
+      $f_{exc}=2{,}0\ \text{Hz}$, exactement là où $f_{exc}$ coïncide avec
+      $f_0$ ; l'amplitude décroît nettement de part et d'autre de cette
+      valeur.
+    solution: |
+      L'amplitude croît de $1{,}0$ à $2{,}0\ \text{Hz}$
+      ($0{,}4 \to 5{,}2\ \text{cm}$), culmine à $f_{exc}=f_0=2{,}0\
+      \text{Hz}$, puis redécroît jusqu'à $3{,}0\ \text{Hz}$
+      ($3{,}6 \to 0{,}3\ \text{cm}$) : c'est la signature expérimentale de
+      la condition de résonance $f_{exc} \approx f_0$.
+
+  - id: SO-38
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, amortissement, acuite, resolution]
+    stem: >
+      Deux résonateurs identiques (même $f_0$) sont testés : le premier est
+      immergé dans l'air (frottement très faible), le second dans l'huile
+      (frottement important). On balaie $f_{exc}$ autour de $f_0$ pour
+      chacun. Lequel présente une résonance floue (pic bas et étalé sur une
+      large plage de fréquences) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le second (dans l'huile) : un amortissement fort étale et abaisse
+          le pic de résonance.
+        correct: true
+      - id: B
+        text: >-
+          Le premier (dans l'air), car un amortissement faible laisse le
+          système « flotter » sur une large plage de fréquences.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse : un amortissement faible donne au contraire un
+          pic haut et ÉTROIT (résonance aiguë), concentré tout près de
+          $f_0$ — pas une réponse étalée sur une large plage.
+      - id: C
+        text: >-
+          Les deux présentent une résonance tout aussi aiguë ; seul le
+          frottement change l'amplitude absolue, pas la largeur du pic.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          Le frottement ne change pas seulement la hauteur du pic : il en
+          change aussi la largeur. Plus l'amortissement est fort, plus il
+          faut s'écarter de $f_0$ que l'amplitude reste notable — d'où un
+          pic plus large, pas seulement plus bas.
+      - id: D
+        text: >-
+          Le second, mais uniquement parce que l'huile modifie $f_0$ du
+          résonateur, pas à cause de l'amortissement lui-même.
+        correct: false
+        misconception: [M-OSC-RES-2, M-OSC-RES-3]
+        feedback: >
+          $f_0$ est une propriété fixe du résonateur ($m,k$ ou $J,C$), pas
+          du fluide environnant : l'huile ne la modifie pas. C'est bien
+          l'amortissement lui-même (le frottement fluide) qui élargit et
+          abaisse le pic, indépendamment de toute variation de $f_0$.
+    correct_feedback: >
+      Un fort amortissement (l'huile) élargit et abaisse le pic de
+      résonance : le second résonateur présente donc la résonance floue,
+      pendant que le premier (dans l'air, faiblement amorti) garde une
+      résonance aiguë.
+    solution: |
+      L'amplitude à l'équilibre résulte d'une balance entre énergie
+      injectée par l'excitateur et énergie dissipée par frottement. Un
+      frottement fort (huile) dissipe beaucoup à chaque cycle : la balance
+      se fait à amplitude modeste, sur une plage large de $f_{exc}$
+      — résonance floue. Un frottement faible (air) dissipe peu : la
+      balance ne se fait qu'à grande amplitude, tout près de $f_0$
+      — résonance aiguë.
+
+  - id: SO-39
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, excitateur_resonateur, pendule_simple, utilisation]
+    stem: >
+      Un moteur à vitesse réglable fait vibrer, via un excentrique, le
+      support d'un pendule simple de longueur $L$ fixe. On fait varier la
+      vitesse du moteur et on observe l'amplitude du pendule. Lequel des
+      deux éléments a une fréquence propre fixe, et lequel a une fréquence
+      réglable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le moteur a une fréquence fixe, imposée par sa construction ;
+          c'est le pendule qui doit ajuster sa longueur effective pour
+          suivre.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Les rôles sont inversés : c'est précisément parce que le moteur
+          est réglable qu'on peut faire varier $f_{exc}$ pour chercher la
+          résonance. Le pendule, lui, garde sa longueur $L$ fixe pendant
+          l'essai — c'est lui qui a la fréquence propre fixe.
+      - id: B
+        text: >-
+          Le pendule simple (résonateur) a une fréquence propre fixe
+          $f_0=\frac{1}{2\pi}\sqrt{g/L}$, fixée par $L$ ; le moteur
+          (excitateur) impose une fréquence $f_{exc}$ réglable.
+        correct: true
+      - id: C
+        text: >-
+          Les deux ont une fréquence réglable : on peut aussi changer $L$
+          en cours d'expérience pour accorder le pendule.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Dans ce montage, $L$ reste fixe pendant le balayage de
+          $f_{exc}$ : le pendule est le résonateur, à fréquence propre
+          fixe, et c'est justement en gardant $L$ fixe qu'on peut observer
+          la résonance en balayant la fréquence du moteur.
+      - id: D
+        text: >-
+          Aucun des deux n'a de fréquence propre au sens strict ; seule la
+          fréquence du mouvement final, commune aux deux, compte.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Le pendule a une fréquence propre bien définie,
+          $f_0=\frac{1}{2\pi}\sqrt{g/L}$, indépendante du moteur ; c'est
+          justement parce que cette fréquence propre existe et reste fixe
+          qu'on peut chercher la valeur de $f_{exc}$ qui la rejoint.
+    correct_feedback: >
+      Le pendule (résonateur) garde sa fréquence propre fixe $f_0$, fixée
+      par $L$ ; le moteur (excitateur) impose une fréquence $f_{exc}$
+      réglable, que l'on balaie pour chercher la coïncidence
+      $f_{exc} \approx f_0$.
+    solution: |
+      $$f_0 = \frac{1}{2\pi}\sqrt{\frac{g}{L}} \quad \text{(fixe, tant que } L \text{ ne change pas)}$$
+      Le moteur, via l'excentrique, impose au support une vibration à
+      $f_{exc}$, réglable indépendamment de $L$. La résonance survient
+      quand $f_{exc}$ rejoint ce $f_0$ fixe — jamais l'inverse.
+
+  - id: SO-40
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, condition_resonance, application_experimentale, document_experimental]
+    stem: >
+      La courbe expérimentale amplitude = $f(f_{exc})$ d'un résonateur
+      présente un seul pic net, situé à $f_{exc} = 3{,}5\ \text{Hz}$, avec
+      des amplitudes faibles avant et après ce pic. Que peut-on en déduire
+      sur la fréquence propre $f_0$ du résonateur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On ne peut rien en déduire sur $f_0$ ; le pic indique seulement
+          la fréquence à laquelle l'excitateur a le plus « travaillé ».
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          C'est justement la position du pic qui révèle $f_0$ : l'amplitude
+          du résonateur est maximale quand $f_{exc}$ coïncide avec sa
+          fréquence propre, pas quand l'excitateur « travaille » plus ou
+          moins fort.
+      - id: B
+        text: >-
+          $f_0$ est forcément supérieure à $3{,}5\ \text{Hz}$, puisque
+          l'amplitude semble encore vouloir augmenter juste avant le
+          maximum observé.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le maximum observé EST le pic de résonance : au-delà, la courbe
+          redescend (amplitudes faibles après le pic, précisé dans
+          l'énoncé). Rien n'indique une croissance qui se poursuivrait
+          au-delà de $3{,}5\ \text{Hz}$.
+      - id: C
+        text: >-
+          $f_0 \approx 3{,}5\ \text{Hz}$ : le pic de la courbe expérimentale
+          se situe exactement là où $f_{exc}$ coïncide avec la fréquence
+          propre du résonateur.
+        correct: true
+      - id: D
+        text: >-
+          $f_0$ ne peut pas être déterminée à partir d'une courbe
+          amplitude-fréquence ; seule une mesure directe de la période
+          propre du résonateur seul le permettrait.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          C'est au contraire l'intérêt de la courbe de résonance : la
+          position de son pic donne directement $f_0$, sans avoir besoin
+          d'isoler le résonateur pour mesurer sa période propre
+          séparément.
+    correct_feedback: >
+      Le pic de la courbe amplitude-fréquence marque exactement la
+      coïncidence $f_{exc} \approx f_0$ : sa position, $3{,}5\ \text{Hz}$,
+      donne directement la fréquence propre du résonateur.
+    solution: |
+      L'amplitude du résonateur est maximale quand $f_{exc} \approx f_0$ :
+      la position du pic de la courbe expérimentale amplitude-fréquence
+      est donc, par définition de la condition de résonance, une mesure de
+      $f_0$. Ici, $f_0 \approx 3{,}5\ \text{Hz}$.
+
+  - id: SO-41
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, amortissement, acuite, resolution]
+    stem: >
+      On amortit fortement un premier résonateur et très faiblement un
+      second, tous deux de même $f_0$. On mesure la plage de fréquences
+      $f_{exc}$ pour laquelle l'amplitude dépasse la moitié de sa valeur
+      maximale (« largeur du pic »). Comparez ces deux plages.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La plage est plus étroite pour le résonateur fortement amorti,
+          car le frottement resserre la réponse autour de $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse : le frottement élargit la plage utile, il ne la
+          resserre jamais. Un fort amortissement donne une résonance
+          floue, étalée sur une large plage de $f_{exc}$.
+      - id: B
+        text: >-
+          Les deux plages sont nécessairement identiques : la largeur du
+          pic ne dépend que de $f_0$, pas de l'amortissement.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          La largeur du pic dépend au contraire directement de
+          l'amortissement, pas seulement de $f_0$ : c'est justement ce qui
+          distingue une résonance aiguë d'une résonance floue pour deux
+          résonateurs de même $f_0$.
+      - id: C
+        text: >-
+          La plage est plus large pour le résonateur faiblement amorti,
+          car il « explore » plus de fréquences avant de se stabiliser sur
+          $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse (et la justification imaginée n'a pas de sens
+          physique ici) : un amortissement faible donne au contraire une
+          plage ÉTROITE (résonance aiguë), concentrée tout près de $f_0$.
+      - id: D
+        text: >-
+          La plage est plus large pour le résonateur fortement amorti
+          (résonance floue) et plus étroite pour le résonateur faiblement
+          amorti (résonance aiguë).
+        correct: true
+    correct_feedback: >
+      Un amortissement fort élargit la plage de fréquences où l'amplitude
+      reste notable (résonance floue) ; un amortissement faible la
+      resserre tout près de $f_0$ (résonance aiguë).
+    solution: |
+      La largeur du pic de résonance croît avec l'amortissement : plus le
+      frottement est fort, plus il faut s'écarter de $f_0$ pour que
+      l'amplitude retombe sous la moitié du maximum, d'où une plage large
+      (résonance floue) pour le résonateur fortement amorti, et une plage
+      étroite (résonance aiguë) pour le résonateur faiblement amorti.
+
+coverage_summary:
+  note: >-
+    Coverage floor per ADR 0011: >=3 items exposing each misconception id.
+    An item "exposes" an id when at least one of its choices carries that
+    id, whether tagged solo or as part of a dual-tag (cross-misconception
+    co-attribution across one distractor — not a stem defect; see SO-27/C,
+    SO-35/D, SO-36/D, SO-38/D). Counts below include dual-tag exposures.
+  floor_target: 3
+  floor_met: true
+  by_misconception:
+    M-OSC-AMO-1: {count: 4, items: [SO-25, SO-27, SO-28, SO-31]}
+    M-OSC-AMO-2: {count: 3, items: [SO-26, SO-29, SO-32]}
+    M-OSC-AMO-3: {count: 3, items: [SO-27, SO-30, SO-33]}
+    M-OSC-RES-1: {count: 4, items: [SO-34, SO-36, SO-37, SO-40]}
+    M-OSC-RES-2: {count: 3, items: [SO-35, SO-38, SO-41]}
+    M-OSC-RES-3: {count: 4, items: [SO-35, SO-36, SO-38, SO-39]}
+  non_floor_tags:
+    note: >-
+      Boundary-tripwire / vocabulary-noise distractors are intentionally
+      excluded from the misconception floor above. They probe the
+      amortissement LIMITE (no closed-form pseudo-période as f(m,h,k);
+      "forcé" is out of scope for oscillations libres) rather than
+      exhibiting a named M-OSC-* misconception. Per spec-extension.md §6,
+      a boundary-probe distractor must never be the key — verified true
+      for both occurrences below.
+    hors_cadre_probe: {count: 2, items: [SO-26/D, SO-27/D]}
+  legacy_items_not_retagged:
+    note: >-
+      SO-19, SO-20, SO-21 (rung R6) predate the misconception schema and
+      carry no `misconception:` field on their choices. Per the
+      append/retag-only working discipline, they were left untouched
+      rather than retrofitted; SO-25..SO-33 were authored fresh instead so
+      that R6's M-OSC-AMO-* coverage is carried honestly by items that
+      actually declare it.
+    items: [SO-19, SO-20, SO-21]

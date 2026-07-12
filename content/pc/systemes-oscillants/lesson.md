@@ -305,9 +305,9 @@ Ce n'est pas un hasard si la même équation revient à chaque fois : chaque sys
 
 ---
 
-## R5 — Les aspects énergétiques : la conservation de l'énergie mécanique
+## R5 — Les aspects énergétiques : deux réservoirs d'énergie, en aperçu
 
-Revenons au pendule élastique horizontal (sans frottement), et regardons où va l'énergie au cours du mouvement — exactement la question qu'on s'était posée pour le circuit RLC oscillant, dans le chapitre sur les oscillations électriques.
+Revenons au pendule élastique horizontal (sans frottement), et regardons où va l'énergie au cours du mouvement — exactement la question qu'on s'était posée pour le circuit RLC oscillant, dans le chapitre sur les oscillations électriques. Ce rung reste volontairement un aperçu : la démonstration complète, avec les diagrammes d'énergie détaillés, est le sujet du chapitre **Aspects énergétiques**, qui vient juste après celui-ci. Ici, l'objectif est plus modeste — mais indispensable pour comprendre ce qui suit : savoir OÙ se trouve l'énergie, à chaque instant, sans encore la démontrer en détail.
 
 ### Les deux réservoirs d'énergie
 
@@ -319,31 +319,7 @@ Le ressort déformé stocke une énergie potentielle élastique :
 
 $$E_{pe} = \frac{1}{2}k\,x^2$$
 
-(cette expression vient du travail qu'il faut fournir pour étirer ou comprimer le ressort d'une quantité $x$ — une grandeur que tu retrouveras établie en détail au chapitre sur le travail et l'énergie).
-
-L'énergie mécanique totale est leur somme, $E_m = E_c + E_{pe}$.
-
-### Vérifier que $E_m$ est constante — en utilisant l'équation déjà établie
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* plutôt que d'invoquer l'absence de frottement en général, on va le VÉRIFIER directement à partir de $x(t) = X_m\cos(\omega_0 t + \varphi)$, la solution déjà confirmée — la preuve est dans le calcul, pas dans une affirmation.
-
-On calcule $E_c(t)$ et $E_{pe}(t)$ séparément, en utilisant $\dot{x}(t) = -X_m\omega_0\sin(\omega_0 t+\varphi)$ (établi en R2) :
-
-$$E_c(t) = \frac{1}{2}m\,X_m^2\,\omega_0^2\,\sin^2(\omega_0 t + \varphi)$$
-
-$$E_{pe}(t) = \frac{1}{2}k\,X_m^2\,\cos^2(\omega_0 t + \varphi)$$
-
-On sait que $k = m\omega_0^2$ (établi en R1). On remplace $k$ dans $E_{pe}$ :
-
-$$E_{pe}(t) = \frac{1}{2}m\,\omega_0^2\,X_m^2\,\cos^2(\omega_0 t + \varphi)$$
-
-On additionne les deux :
-
-$$E_m(t) = E_c(t) + E_{pe}(t) = \frac{1}{2}m\,\omega_0^2\,X_m^2\left[\sin^2(\omega_0 t+\varphi) + \cos^2(\omega_0 t+\varphi)\right]$$
-
-$$E_m(t) = \frac{1}{2}m\,\omega_0^2\,X_m^2 = \frac{1}{2}k\,X_m^2$$
-
-Le crochet vaut $1$ à chaque instant (identité $\sin^2+\cos^2=1$) : $E_m$ ne dépend pas de $t$. Elle est bien CONSTANTE, et sa valeur est fixée uniquement par $k$ (ou $m\omega_0^2$, c'est la même chose) et par l'amplitude $X_m$ — deux grandeurs qui ne changent pas au cours du mouvement.
+Retiens cette expression comme un résultat pour l'instant, pas encore comme quelque chose que tu as démontré : l'expression $\frac{1}{2}kx^2$, et la preuve que l'énergie mécanique $E_m = E_c + E_{pe}$ reste constante, sont établies au chapitre **Aspects énergétiques** ; ici, on ne s'en sert que pour suivre où va l'énergie.
 
 ### Le pendule d'énergie, à nouveau
 
@@ -356,23 +332,13 @@ Entre ces deux instants, l'énergie ne disparaît pas et ne surgit pas de nulle 
 
 [[figure:energie-oscillateur]]
 
-### Exemple numérique
+Pour un pendule simple ou pesant, sans frottement, le même principe s'applique : $E_m = E_c + E_p$ voyage entre les deux réservoirs sans se perdre, où $E_p$ est cette fois l'énergie potentielle de PESANTEUR (et non élastique) — le mécanisme est identique, seule la nature de l'énergie potentielle change.
 
-Reprenons l'oscillateur des rungs précédents : $k=40\ \text{N/m}$, $X_m = 0{,}05\ \text{m}$.
-
-$$E_m = \frac{1}{2}\times 40 \times (0{,}05)^2 = \frac{1}{2}\times 40 \times 0{,}0025 = 0{,}05\ \text{J}$$
-
-Au passage par l'équilibre, cette énergie est intégralement cinétique : $\frac{1}{2}m\,v_{max}^2 = 0{,}05\ \text{J}$, donc
-
-$$v_{max} = \sqrt{\frac{2\times 0{,}05}{0{,}40}} = \sqrt{0{,}25} = 0{,}5\ \text{m/s}$$
-
-— exactement la vitesse de lancer du deuxième exemple de R2, ce qui n'est pas un hasard : ce deuxième lancer envoyait précisément toute l'énergie sous forme cinétique au passage par l'équilibre.
-
-Pour un pendule simple ou pesant, sans frottement, le même principe s'applique : $E_m = E_c + E_p$ reste constante, où $E_p$ est cette fois l'énergie potentielle de PESANTEUR (et non élastique) — le mécanisme est identique, seule la nature de l'énergie potentielle change.
+Cette image à deux réservoirs — une énergie qui voyage sans disparaître — est la clé pour comprendre ce qui suit : ce qui se passe quand une partie de cette énergie se met à FUIR (l'amortissement, au prochain rung), et ce qui se passe quand quelqu'un, de l'extérieur, vient au contraire en RÉINJECTER (la résonance, juste après).
 
 ---
 
-## R6 — L'amortissement et l'entretien des oscillations
+## R6 — L'amortissement : quand le frottement fait décroître les oscillations
 
 Dans la réalité, aucun oscillateur mécanique n'est parfait : il existe toujours un peu de frottement (l'air, le support, les liaisons internes). Qu'est-ce que ça change ?
 
@@ -384,33 +350,131 @@ $$-k\,x - h\,\dot{x} = m\,\ddot{x}$$
 
 $$\boxed{m\,\ddot{x} + h\,\dot{x} + k\,x = 0}$$
 
-C'est l'**équation de l'oscillateur amorti**. Exactement comme pour le circuit RLC, on établit cette équation, et on s'arrête là : la résoudre complètement demande des outils mathématiques hors-programme. Ce qu'on peut faire, en revanche, c'est décrire le comportement qualitativement, et savoir ce que devient l'énergie.
+C'est l'**équation de l'oscillateur amorti**. Exactement comme pour le circuit RLC, on établit cette équation, et on s'arrête là : la résoudre complètement demande des outils mathématiques hors-programme. Ce qu'on peut faire, en revanche, c'est décrire le comportement qualitativement, expérimentalement, et énergétiquement — et c'est tout aussi utile.
 
-### Les trois régimes
+### Le rythme et l'amplitude : deux choses différentes
 
-Selon l'intensité du frottement (la valeur de $h$, à $m$ et $k$ fixés), on observe trois comportements :
+Avant de nommer les régimes, prends position sur une question précise. Le frottement fait décroître l'amplitude à chaque aller-retour — l'écart maximal diminue, cycle après cycle, c'est un fait qu'on va vérifier tout de suite. Mais la DURÉE d'un aller-retour, elle, fait-elle la même chose ? Diminue-t-elle en même temps que l'amplitude — ou peut-être augmente-t-elle, puisque le mouvement « s'essouffle » ?
 
-- **Régime périodique** ($h \approx 0$) : les oscillations se maintiennent, à amplitude constante, à la période propre $T_0 = 2\pi\sqrt{m/k}$. C'est le cas idéal étudié dans les rungs précédents.
-- **Régime pseudo-périodique** ($h$ modéré) : le solide oscille encore, mais l'amplitude décroît progressivement à chaque aller-retour, jusqu'à l'arrêt. On peut encore mesurer un intervalle de temps régulier entre deux passages successifs par un même extrême — la **pseudo-période** $T$ — et, pour un amortissement faible, $T \approx T_0$.
-- **Régime apériodique** ($h$ grand) : le solide revient vers l'équilibre sans jamais le dépasser. Plus aucune oscillation.
+Beaucoup répondent que l'un suit l'autre — soit « ça va plus vite, il y a moins à parcourir », soit « ça ralentit, le mouvement perd de l'élan ». Engage vraiment ta réponse avant de continuer.
 
-C'est exactement la même trichotomie que pour le circuit RLC — et pour une raison identique : dans les deux cas, un terme proportionnel à la « vitesse » (électrique ou mécanique) s'oppose au mouvement et dissipe de l'énergie, sans jamais en fournir.
+Regarde ce qui figure dans l'équation $m\ddot{x} + h\dot{x} + kx = 0$. Le terme $h\dot{x}$ retire un peu d'énergie à chaque instant — c'est lui, et lui seul, qui fait fuir l'amplitude. Mais le terme qui FIXE le rythme, $kx$ (le même terme de rappel que sans frottement), n'est pas touché : $k$ et $m$ n'ont pas changé. Le frottement grignote l'amplitude ; il ne modifie ni la raideur du ressort ni la masse du solide, les deux seules grandeurs qui règlent le tempo.
+
+Résultat, pour un frottement faible : la durée entre deux passages successifs par l'écart maximal du même côté — la **pseudo-période** $T$ — reste très proche de la période propre $T_0 = 2\pi\sqrt{m/k}$, alors même que l'amplitude, elle, décroît nettement d'un aller-retour au suivant. Si tu as prédit que la durée suivrait l'amplitude, ta prédiction et l'observation se séparent ici : ce sont deux effets distincts, gouvernés par deux termes distincts de l'équation. **Le rythme vient du rappel ($k$, $m$) ; la décroissance de l'amplitude vient du frottement ($h$).** Ne les confonds pas.
+
+### Les régimes d'amortissement
+
+On distingue le cas idéal, déjà étudié — le **régime périodique** ($h \approx 0$), oscillations à amplitude constante, période $T_0$, exactement les rungs précédents — des régimes propres à l'amortissement :
+
+- **Pseudo-périodique** (amortissement faible) : le solide oscille encore, l'amplitude décroît à chaque aller-retour, et la pseudo-période $T \approx T_0$ — c'est le résultat qu'on vient de discuter.
+- **Critique** : le cas-limite, à la frontière entre les deux comportements suivants — le solide revient à l'équilibre **le plus rapidement possible, sans jamais le dépasser** (aucune oscillation).
+- **Apériodique** (amortissement fort) : le solide revient lui aussi à l'équilibre sans le dépasser, mais **plus lentement** que dans le cas critique.
+
+[[figure:regimes-amortissement]]
+
+Une deuxième question, avant de continuer — prends position à nouveau. Si on augmente encore le frottement, au-delà du régime pseudo-périodique, le retour à l'équilibre devient-il de plus en plus rapide, tout simplement — « plus de frottement, plus vite arrêté », comme une voiture qui freine plus fort ?
+
+C'est un raisonnement naturel, mais regarde les trois courbes ci-dessus : le retour le plus rapide, c'est le régime **critique** — ni le pseudo-périodique (le solide dépasse l'équilibre, et il faut plusieurs allers-retours avant de se stabiliser), ni l'apériodique (cette fois, c'est le frottement lui-même, devenu trop fort, qui freine le retour). En dessous du seuil critique, le système a trop d'élan et dépasse l'équilibre ; au-dessus, le frottement est si fort qu'il ralentit le retour autant qu'il ralentissait l'écart initial. **Le temps de retour est minimal exactement au régime critique — plus long des deux côtés, pour deux raisons opposées.** « Plus de frottement, plus vite » n'est vrai que jusqu'au seuil critique ; au-delà, c'est le contraire.
 
 [[embed:ressort-sandbox]]
+
+Explore le montage : augmente progressivement le frottement, et observe deux choses séparément — l'écartement entre les pics, qui reste à peu près constant tant que le régime est pseudo-périodique, et la hauteur des pics, qui diminue. Pousse encore, et regarde le passage direct du pseudo-périodique au critique, puis à l'apériodique — repère où le retour à l'équilibre est le plus rapide.
 
 ### Où va l'énergie perdue
 
 Le frottement dissipe l'énergie mécanique sous forme de chaleur (par les mêmes mécanismes microscopiques que l'effet Joule dissipe l'énergie électrique dans une résistance) : à chaque cycle, $E_m = E_c + E_{pe}$ diminue un peu. C'est cette perte, cycle après cycle, qui fait décroître l'amplitude dans le régime pseudo-périodique, et qui arrête complètement le mouvement dans le régime apériodique.
 
-### Entretenir les oscillations
+Une dernière question, pour être sûr que ce point est solide. Un oscillateur amorti, livré à lui-même, sans aucun dispositif extérieur : son amplitude pourrait-elle, à un moment, se remettre à AUGMENTER, ne serait-ce qu'un peu ? Certains l'imaginent, en confondant amortissement et entretien — « le système finit par se relancer », ou « le frottement, avec le temps, finit par entretenir le mouvement ».
 
-Peut-on empêcher cet amortissement, et faire durer les oscillations indéfiniment, à amplitude constante ? Oui, à condition de **restituer**, à chaque cycle, exactement l'énergie perdue par frottement — ni plus, ni moins. C'est le rôle d'un **dispositif d'entretien** : un mécanisme qui apporte, à chaque période, un petit complément d'énergie, calé pour compenser exactement la perte.
+Regarde ce que fait réellement le frottement : à chaque instant, la force $\vec{f} = -h\dot{x}\,\vec{u}$ est opposée à la vitesse, donc son travail est TOUJOURS négatif — une force qui s'oppose systématiquement au déplacement ne peut que retirer de l'énergie, jamais en fournir. Il n'existe donc aucun instant où le frottement, seul, redonnerait de l'énergie au système. L'amplitude décroît de façon monotone, sans jamais remonter, jusqu'à l'arrêt complet — à moins qu'un dispositif EXTÉRIEUR n'intervienne pour compenser la perte. **Le frottement n'est jamais une source d'énergie ; c'est une fuite, et une fuite ne se rebouche pas toute seule.**
 
-C'est le principe utilisé, par exemple, dans une montre mécanique : un ressort moteur (le barillet), via un mécanisme d'échappement, redonne au balancier — un petit pendule de torsion — une impulsion à chaque oscillation, pile ce qu'il faut pour compenser les frottements internes. Le balancier continue d'osciller à SA période propre, fixée par son moment d'inertie et la raideur de son ressort spiral — le dispositif d'entretien ne fixe pas le rythme, il compense seulement la fuite d'énergie, exactement comme le générateur d'entretien du circuit RLC.
+### Peut-on entretenir les oscillations ?
+
+Peut-on compenser cette perte pour entretenir les oscillations ? Oui — mais ce dispositif d'entretien est étudié en détail au chapitre **Oscillations libres dans un circuit RLC** (électricité), où l'on établit l'équation d'un oscillateur entretenu ; le principe (restituer à chaque cycle l'énergie dissipée) y est le même.
+
+### Exemple travaillé — reconnaître un régime à l'œil
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* sur le terrain — un TP, un exercice — on ne voit jamais l'équation différentielle, seulement une courbe $x(t)$ enregistrée. Il faut savoir la lire directement, sans calcul, à partir de deux indices seulement : est-ce que ça oscille encore, et si non, à quelle vitesse le retour se fait.
+
+Reprends les trois courbes de la figure ci-dessus. Voici le raisonnement, dans l'ordre où il se fait vraiment — deux questions, posées l'une après l'autre, jamais une formule :
+
+**Première question : le solide dépasse-t-il l'équilibre au moins une fois de plus après le premier passage ?** Si oui — un deuxième pic visible du même côté, même petit — c'est forcément le régime **pseudo-périodique** : seul ce régime oscille encore. Si non — retour direct, sans jamais retraverser l'équilibre dans l'autre sens — passe à la question suivante.
+
+**Deuxième question, seulement si la réponse à la première est non : ce retour est-il le plus rapide possible, ou plus lent ?** Compare le temps de retour à celui des autres courbes de la même famille (même $m$, même $k$, frottement croissant). Le retour le plus court, sans dépassement : c'est le **régime critique**. Un retour plus long, sans dépassement non plus : c'est le régime **apériodique**.
+
+En résumé, dans l'ordre où on le lit sur une trace réelle : *amplitude qui décroît ET espacement régulier entre les pics → pseudo-périodique ; retour direct, sans dépassement, le plus rapide → critique ; retour direct mais lent → apériodique.* C'est exactement cette lecture qu'un exercice de type bac te demandera de faire — jamais de recalculer $h$, seulement de reconnaître le régime à partir de sa signature graphique.
 
 ---
 
-## R7 — Pour t'entraîner
+## R7 — La résonance mécanique : quand on pousse au bon rythme
+
+Le rung précédent s'est arrêté sur un constat sans appel : un oscillateur livré à lui-même, avec du frottement, ne peut que PERDRE de l'énergie — jamais en regagner tout seul. Mais que se passe-t-il si quelqu'un, de l'extérieur, vient repousser le système à intervalles réguliers ? C'est exactement ce que tu fais quand tu pousses une balançoire : tu ne donnes pas un seul grand coup, tu donnes de petites poussées répétées — et si tu les donnes AU BON MOMENT, l'amplitude grandit énormément, pour un effort qui, poussée par poussée, ne pèse pourtant pas grand-chose.
+
+<!-- Média optionnelle (C-RES-3, gemini) : illustration d'ambiance, poussées rythmées (balançoire) — non structurante, aucune dépendance du texte à cette image. -->
+[[figure:balancoire-resonance]]
+
+C'est ce phénomène — l'excitation d'un oscillateur, et son cas le plus spectaculaire, la **résonance** — que ce dernier rung explore. Attention : contrairement à ce qui précède, ce qui suit reste volontairement **qualitatif et expérimental**. Il n'y a pas d'équation à résoudre ici — seulement des rôles à distinguer, une condition à reconnaître, et des courbes mesurées à lire.
+
+### Excitateur et résonateur : deux rôles à ne pas confondre
+
+On appelle **résonateur** le système oscillant lui-même — un pendule élastique, un pendule pesant, n'importe lequel des systèmes des rungs précédents. Il a une fréquence propre $f_0$ (ou une période propre $T_0$), FIXÉE par ses propres caractéristiques ($m$, $k$, ou $J$, $C$...) — une propriété du système, qui ne change pas.
+
+On appelle **excitateur** le dispositif qui vient forcer le résonateur — typiquement un moteur muni d'un excentrique (un « vibreur »), relié au résonateur, qui lui impose une fréquence $f_{exc}$ que l'expérimentateur choisit et fait varier librement, comme on tourne un bouton.
+
+Prends position avant de continuer. Une fois le résonateur mis en mouvement forcé par l'excitateur, à quelle fréquence oscille-t-il, en régime établi — à SA fréquence propre $f_0$, ou à la fréquence $f_{exc}$ que lui impose l'excitateur ? Et si tu penses que c'est $f_0$ : cette fréquence propre finit-elle par se déplacer, pour rejoindre $f_{exc}$ ?
+
+Beaucoup répondent que le résonateur « retourne » à sa fréquence propre, ou encore que $f_0$ « s'ajuste » pour se rapprocher de celle de l'excitateur — comme si le résonateur reprenait le contrôle du rythme. Ce n'est pas ce qui se passe. En régime établi, le résonateur oscille À LA FRÉQUENCE $f_{exc}$ — celle que l'excitateur lui impose — pas à sa propre $f_0$. Et $f_0$, elle, ne bouge JAMAIS : elle reste fixée par $m$ et $k$ (ou $J$ et $C$) du résonateur, exactement comme au rung R1. Ce que $f_{exc}$ fait varier, ce n'est pas $f_0$ — c'est l'AMPLITUDE de la réponse du résonateur. C'est précisément le sujet de ce qui suit.
+
+### La condition de résonance : pourquoi l'amplitude explose près de $f_0$
+
+À chaque période, l'excitateur fournit un peu de travail au résonateur. Prends position une dernière fois avant la partie expérimentale : un excitateur qui pousse PLUS FORT, ou PLUS VITE (fréquence plus haute), produit-il forcément une plus grande amplitude au résonateur ?
+
+C'est une intuition naturelle — plus fort ou plus vite devrait donner plus grand. Mais ce n'est pas une question de force ou de vitesse : c'est un **accord de rythme**. Quand $f_{exc} \approx f_0$, les poussées de l'excitateur arrivent en phase avec le mouvement déjà entamé du résonateur — chaque poussée ajoute de l'énergie de la même façon, cycle après cycle, et l'amplitude s'accumule, devient grande. Loin de $f_0$, les poussées tombent partiellement à contretemps — certaines ajoutent de l'énergie, d'autres s'y opposent — et l'apport net, cycle après cycle, reste faible. L'amplitude du résonateur est donc **maximale quand $f_{exc} \approx f_0$** : c'est la **condition de résonance**.
+
+[[figure:resonance-sandbox]]
+
+Fais varier $f_{exc}$ sur le montage, de très bas vers très haut : regarde l'amplitude — elle grandit, culmine près de $f_0$, puis redescend. Si « plus vite, plus grand » était vrai, l'amplitude continuerait de grandir avec $f_{exc}$ ; ce n'est pas ce qu'on observe. Elle grandit puis RETOMBE après le pic — la preuve que ce n'est pas une question de vitesse, mais d'un rendez-vous entre deux fréquences.
+
+### L'influence de l'amortissement sur l'acuité de la résonance
+
+Une dernière question, elle aussi contre-intuitive. Un frottement plus fort rend-il la résonance plus intense, plus « pointue » — comme s'il concentrait l'énergie sur $f_0$ ?
+
+C'est tentant à imaginer, mais c'est l'inverse qui se produit. L'amplitude du résonateur grandit tant que l'énergie injectée par l'excitateur, à chaque cycle, dépasse l'énergie dissipée par le frottement ; elle se stabilise dès que les deux s'équilibrent. Avec un **amortissement faible**, cet équilibre n'est atteint qu'à très grande amplitude, et seulement dans une bande étroite de fréquences autour de $f_0$ : la résonance est **aiguë** (un pic haut et étroit). Avec un **amortissement fort**, l'équilibre est atteint bien plus tôt, à amplitude modeste, sur une large bande de fréquences : la résonance est **floue** (un pic bas et large). Le frottement, ici comme au rung précédent, ne fait jamais que freiner — il n'aiguise jamais la résonance, il l'émousse.
+
+On trace expérimentalement — jamais par le calcul, c'est la limite de ce chapitre — la **courbe de résonance** : l'amplitude du résonateur en fonction de $f_{exc}$, mesurée point par point. Elle prend la forme d'une bosse, culminant près de $f_0$ — plus haute et plus étroite pour un amortissement faible, plus basse et plus large pour un amortissement fort.
+
+### Le montage expérimental
+
+Le TP de référence : un pendule élastique horizontal (le résonateur), dont l'extrémité libre du ressort est reliée à un excentrique entraîné par un petit moteur électrique (l'excitateur), dont on règle la vitesse de rotation — donc $f_{exc}$. Pour chaque réglage de $f_{exc}$, on attend le régime établi, puis on mesure l'amplitude des oscillations du résonateur. On répète l'ensemble des mesures deux fois : une fois avec un frottement faible (banc bien lubrifié), une fois avec un frottement renforcé (une palette plongée dans l'eau, par exemple) — pour comparer les deux courbes de résonance.
+
+[[figure:montage-resonance]]
+
+### Exemple travaillé — lire une courbe de résonance sur un tableau de mesures
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* en TP, la courbe de résonance ne sort jamais d'une formule — elle sort d'un tableau de mesures, colonne par colonne. La lire, c'est répondre à trois questions précises, dans l'ordre, sans jamais chercher une expression d'amplitude.
+
+On a mesuré l'amplitude du résonateur (en unités arbitraires) pour six réglages de l'excitateur, dans deux conditions de frottement :
+
+| $f_{exc}/f_0$ | Amortissement faible | Amortissement fort |
+|---|---|---|
+| 0,5 | 0,3 | 0,6 |
+| 0,8 | 1,2 | 1,7 |
+| 0,95 | 4,5 | 2,5 |
+| 1,0 | 6,5 | 3,0 |
+| 1,1 | 3,0 | 2,6 |
+| 1,5 | 0,4 | 1,0 |
+
+**(i) Où se situe la résonance ?** On cherche la ligne où l'amplitude est maximale — pas une formule. Dans les deux colonnes, c'est $f_{exc}/f_0 = 1{,}0$, c'est-à-dire $f_{exc} = f_0$ : la résonance se produit là, et seulement là.
+
+**(ii) À quel réglage l'amplitude est-elle la plus grande, tout court ?** On compare les deux maxima entre eux : $6{,}5$ (amortissement faible) contre $3{,}0$ (amortissement fort). Le maximum absolu du tableau est atteint pour un amortissement **faible**, à $f_{exc} = f_0$.
+
+**(iii) Quelle colonne donne le pic le plus pointu ?** On ne compare pas les maxima seuls, on regarde comment l'amplitude chute AUTOUR du maximum. Colonne faible : de $6{,}5$ (à $1{,}0$) à $4{,}5$ (à $0{,}95$) et $3{,}0$ (à $1{,}1$) — la chute est rapide, sur un petit écart de fréquence. Colonne forte : de $3{,}0$ (à $1{,}0$) à $2{,}5$ et $2{,}6$ — la chute est beaucoup plus douce, l'amplitude reste élevée même loin du pic. La colonne « amortissement faible » donne donc le pic le plus étroit — la résonance la plus **aiguë** — exactement ce que prévoit le mécanisme du paragraphe précédent.
+
+On ne cherche pas une formule d'amplitude — on lit le tableau : l'amplitude culmine là où $f_{exc}$ rejoint $f_0$, et le pic est plus pointu quand l'amortissement est faible.
+
+---
+
+## R8 — Pour t'entraîner
 
 ### Récapitulatif express
 
@@ -418,7 +482,9 @@ C'est le principe utilisé, par exemple, dans une montre mécanique : un ressort
 - La solution est $X(t) = X_m\cos(\omega_0 t + \varphi)$ ; $\omega_0$ et $T_0=2\pi/\omega_0$ sont fixés par le système (masse, raideur, longueur...) ; $X_m$ et $\varphi$ sont fixés par les conditions initiales.
 - **Pulsation $\omega_0$ (rad/s) $\neq$ fréquence $f_0$ (Hz)** : $\omega_0 = 2\pi f_0 = 2\pi/T_0$, toujours ce facteur $2\pi$.
 - Pour le pendule simple (et, en pratique, tout pendule aux petites oscillations) : $T_0$ ne dépend ni de la masse, ni de l'amplitude — seulement de $L$ et $g$ (ou de l'équivalent inertie/rappel pour les autres pendules).
-- Sans frottement, l'énergie mécanique $E_m = E_c + E_p$ est constante ; avec frottement, elle décroît (régimes pseudo-périodique ou apériodique) ; un dispositif d'entretien peut compenser exactement cette perte.
+- Sans frottement, l'énergie mécanique $E_m = E_c + E_p$ voyage entre les deux réservoirs sans se perdre — l'aperçu qualitatif est ici, la démonstration complète et les diagrammes sont au chapitre **Aspects énergétiques**.
+- Avec frottement, $E_m$ décroît toujours (le frottement ne fournit jamais d'énergie, il ne fait que la dissiper) ; selon son intensité, le mouvement suit le régime **pseudo-périodique** ($T \approx T_0$, amplitude décroissante), **critique** (retour le plus rapide, sans oscillation), ou **apériodique** (retour plus lent, sans oscillation) — le retour est le plus rapide exactement au régime critique. Un dispositif d'entretien peut compenser cette perte ; son étude complète appartient au chapitre RLC.
+- Un **résonateur** (fréquence propre $f_0$ fixe) forcé par un **excitateur** (fréquence $f_{exc}$ réglable) oscille, en régime établi, à $f_{exc}$ — avec une amplitude maximale quand $f_{exc} \approx f_0$ (la résonance). Un amortissement faible donne une résonance aiguë (pic haut, étroit) ; un amortissement fort, une résonance floue (pic bas, large).
 
 ### Exercice de type bac (original — entraînement, non un sujet officiel)
 
@@ -467,3 +533,7 @@ On observe le **régime pseudo-périodique** : les oscillations persistent (un i
 **Variation 1.** Un pendule simple de longueur $L = 1{,}0\ \text{m}$ oscille avec de petites oscillations au voisinage d'un lieu où $g \approx 10\ \text{m}\cdot\text{s}^{-2}$. Calcule sa période propre $T_0$, sa pulsation propre $\omega_0$ et sa fréquence propre $f_0$ (donne les trois grandeurs avec leurs unités, et fais bien attention à ne pas confondre $\omega_0$ et $f_0$). Un deuxième pendule, de même longueur $L$ mais avec une masse deux fois plus grande, oscille-t-il plus vite, moins vite, ou pareil ? Justifie à partir de l'équation différentielle, pas seulement du résultat final.
 
 **Variation 2.** Un pendule de torsion est constitué d'un disque de moment d'inertie $J = 4{,}0\times 10^{-3}\ \text{kg}\cdot\text{m}^2$, suspendu par un fil de constante de torsion $C = 0{,}16\ \text{N}\cdot\text{m}/\text{rad}$. Détermine sa période propre $T_0$. On lâche le disque, à $t=0$, depuis un angle $\theta_0 = 0{,}20\ \text{rad}$ sans vitesse angulaire initiale : écris l'équation horaire $\theta(t)$ complète (amplitude et phase comprises), en reconnaissant le type de lancer déjà rencontré dans la leçon.
+
+**Variation 3.** Un pendule pesant, lâché avec un angle initial non nul et une vitesse angulaire initiale nulle, est filmé dans trois expériences où seul le frottement au niveau de l'axe change. Expérience A : le pendule dépasse la verticale plusieurs fois, en oscillant avec une amplitude qui décroît visiblement à chaque passage. Expérience B : le pendule revient directement vers la verticale sans jamais la dépasser, en un temps très court. Expérience C : le pendule revient aussi directement, sans la dépasser, mais met nettement plus de temps qu'en B. Nomme le régime de chaque expérience, et classe les trois par temps de retour à l'équilibre croissant, en justifiant chaque réponse par ce qui distingue les régimes (dépassement ou non, rapidité du retour).
+
+**Variation 4.** Un haut-parleur, réglé sur une fréquence $f$ que l'on peut faire varier, est placé face à un diapason de fréquence propre $f_0 = 440\ \text{Hz}$. On balaie lentement $f$ de $300\ \text{Hz}$ à $600\ \text{Hz}$ et on note à l'oreille l'intensité du son émis par le diapason. (a) Identifie, dans cette expérience, qui joue le rôle de l'excitateur et qui joue le rôle du résonateur. (b) À quelle valeur de $f$ le diapason résonne-t-il le plus fort, et pourquoi — sa fréquence propre $f_0$ a-t-elle changé pour l'occasion ? (c) On refait l'expérience en entourant le diapason de mousse absorbante (donc en augmentant l'amortissement) : la résonance observée sera-t-elle plus aiguë ou plus floue qu'avant ? Justifie sans invoquer de formule.

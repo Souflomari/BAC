@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Deux courbes v(t), pour deux billes de même coefficient de frottement k mais de masses différentes, tombant dans le même fluide : la bille deux fois plus lourde atteint une vitesse limite deux fois plus grande.">
+  <title>Chute avec frottement — l'effet de la masse sur v_lim (même k)</title>
+  <!--
+    sandbox-chute-frottement.svg — figure figée (STATIQUE) qui remplace
+    l'embed manipulable [[embed:sandbox-chute-frottement]] pour cette
+    passe de couverture (curseurs m,k → ici, DEUX masses fixes tracées
+    côte à côte, même k). STAGED (graphe : toujours staged).
+
+    Sert directement CH-FR-3 : "la masse ne joue jamais dans une chute
+    (comme en chute libre)". Contre-exemple : avec frottement, v_lim = mg/k
+    dépend de m — le plus lourd va plus vite.
+
+    Bille 1 = EXACTEMENT la bille filée en R7/R8 : m₁=0,20 kg, k=2,0 kg/s,
+    g≈9,8 m/s² ⇒ τ₁=0,10 s, v_lim,1=0,98 m/s.
+    Bille 2 = même forme, même k, masse DOUBLE : m₂=0,40 kg ⇒ τ₂=m₂/k=0,20 s,
+    v_lim,2 = m₂g/k = 1,96 m/s = 2·v_lim,1 (double exactement, cohérent
+    avec v_lim = mg/k linéaire en m, à k fixé).
+
+    Échelle : origine (t=0,v=0)=(90,364). scale_t=520 px/s, scale_v=140
+    px/(m/s). Courbes tracées via v/v_lim=1−e^(−t/τ) (forme relevée
+    expérimentalement — jamais dérivée dans le texte, R7 "limite du cadre"),
+    échantillonnées à s=t/τ = 0, 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 5 :
+
+    Bille 1 (τ=0,10 ; v_lim=0,98) — points (x=90+520t, y=364−140v) :
+      (90,364) (103,333.65) (116,310.0) (129,291.62) (142,277.28)
+      (168,257.40) (194,245.36) (220,238.07) (246,233.63) (298,229.31)
+      (350,227.72)   asymptote y = 364−140·0,98 = 227
+
+    Bille 2 (τ=0,20 ; v_lim=1,96) — mêmes points, t doublé :
+      (90,364) (116,303.31) (142,256.0) (168,219.23) (194,190.55)
+      (246,150.81) (298,126.73) (350,112.13) (402,103.26) (506,94.63)
+      (610,91.43)    asymptote y = 364−140·1,96 = 90
+
+    Rôle des couleurs :
+      courbe bille 1 (référence, plus légère) : --figure-ink
+      courbe bille 2 (plus lourde)             : --figure-accent
+      axes, asymptotes                         : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="340" y="20" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Deux billes, même k, masses différentes — v(t)
+  </text>
+  <text x="340" y="34" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    k = 2,0 kg/s pour les deux ; seule la masse change
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="30" y="42" width="620" height="342" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="90" y1="364" x2="642" y2="364" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="642,364 630,359.5 630,368.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="364" x2="90" y2="60" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,60 85.5,71 94.5,71" fill="var(--figure-ink-soft)"/>
+    <text x="649" y="368" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="82" y="64" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">v</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — bille 1 (référence, R7/R8) : m₁ = 0,20 kg
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="90" y1="227" x2="610" y2="227" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="82" y="231" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">v<tspan dy="2" font-size="7">ℓ,1</tspan></text>
+
+    <path d="
+      M90,364 L103,333.65 L116,310.0 L129,291.62 L142,277.28
+      L168,257.40 L194,245.36 L220,238.07 L246,233.63 L298,229.31
+      L350,227.72
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M350,227.72 L610,227" fill="none" stroke="var(--figure-ink)" stroke-width="1.3" stroke-dasharray="3,3"/>
+    <text x="360" y="220" font-size="10.5" font-style="italic" fill="var(--figure-ink)">m₁ = 0,20 kg (bille de R7-R8)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — bille 2, deux fois plus lourde : m₂ = 0,40 kg
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="90" y1="90" x2="610" y2="90" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="82" y="94" text-anchor="end" font-size="10" fill="var(--figure-accent)">v<tspan dy="2" font-size="7">ℓ,2</tspan></text>
+
+    <path d="
+      M90,364 L116,303.31 L142,256.0 L168,219.23 L194,190.55
+      L246,150.81 L298,126.73 L350,112.13 L402,103.26 L506,94.63
+      L610,91.43
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="420" y="84" font-size="10.5" font-style="italic" fill="var(--figure-accent)">m₂ = 0,40 kg (= 2 m₁)</text>
+
+    <text x="340" y="404" text-anchor="middle" font-size="11" fill="var(--figure-accent)">même k, masse double → v<tspan dy="2" font-size="8">ℓ,2</tspan><tspan dy="-2"> = 2·v</tspan><tspan dy="2" font-size="8">ℓ,1</tspan><tspan dy="-2"> : le plus lourd va plus vite</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

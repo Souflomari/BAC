@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 760" width="640" height="760"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le pendule pesant. En haut, la géométrie : un point fixe O, un fil de longueur L, une masse m à l'angle thêta par rapport à la verticale ; la projection L cosinus thêta et la hauteur gagnée z égale L fois un moins cosinus thêta, tracée en évidence — ni la longueur du fil L seule, ni l'arc parcouru L thêta. En bas, l'échange d'énergie en fonction de thêta : Epp dessine une parabole minimale à la verticale, Ec la parabole inversée maximale à la verticale, Em une droite horizontale constante, les deux courbes se croisant en deux points symétriques.">
+  <title>Le pendule pesant : la hauteur z = L(1−cosθ) et l'échange d'énergie</title>
+  <!--
+    pendule-pesant-energie.svg — figure STAGED (LESSON-EXPERIENCE-SPEC §2.5),
+    3 étapes, cœur du rung R7. Combine un schéma géométrique (la hauteur
+    exacte, tue M-PES-2) et un graphe d'énergie vs θ (le même diagramme
+    qu'en R5/R6, transposé — tue M-PES-1/M-PES-3).
+
+    ════ SECTION 1 — la géométrie (calculée, pas devinée) ════
+    O = (200, 70) point fixe. θ = 40° (angle générique, pas une valeur de
+    l'exemple chiffré — même choix pédagogique que
+    pendule-pesant-bras-levier.svg / bilan-pendule-simple.svg).
+    L = 260 px (longueur d'affichage, sans échelle physique dédiée).
+      sinθ = 0,6428   cosθ = 0,7660
+      M (masse, à l'angle θ)  = O + L·(sinθ, cosθ)
+        = (200 + 260×0,6428, 70 + 260×0,7660) = (367,13 ; 269,16)
+      M0 (θ=0, point le plus bas) = O + (0, L) = (200, 330)
+      H (pied de la perpendiculaire abaissée de la verticale sur la
+        hauteur de M) = (200, 269,16) — même hauteur que M, sur la
+        verticale de référence.
+    Vérifications :
+      |O–H| = 269,16 − 70 = 199,16 ≈ 260×cos40° = 199,16 ✓ (= L cosθ)
+      |H–M0| = 330 − 269,16 = 60,84 ≈ 260×(1−cos40°) = 260×0,234 = 60,84 ✓
+        (= z = L(1−cosθ), la hauteur EXACTE gagnée par rapport au point
+        le plus bas — ni L seul (=260px, quatre fois trop grand ici), ni
+        l'arc Lθ (=260×40°×π/180=181,5px, lui aussi bien plus grand))
+      |O–M| = √(167,13² + 199,16²) = √(27932+39665) = √67597 = 260,0 = L ✓
+
+    ════ SECTION 2 — l'échange d'énergie en fonction de θ ════
+    EXACTE transposition du panneau (x) de diagrammes-energie-elastique.svg
+    (R5) : θ↔x, Epp↔Epe, le « ressort effectif » étant mgL (§4.2 du texte :
+    Epp ≈ ½(mgL)θ² aux petites oscillations — le domaine même de ce
+    chapitre, §0.6 du spec-extension). Repère : centre (θ=0) px=330,
+    demi-largeur 250 → θ=−θm px=80, θ=+θm px=580. Baseline (E=0) py=690,
+    plafond (E=Em) py=510 (hauteur 180).
+    Avec t = θ/θm ∈[−1,1], Epp/Em=t² (py=690−180t²), Ec/Em=1−t²
+    (py=510+180t²) — mêmes 21 points échantillonnés à pas 0,1 que le
+    panneau (x) de R5 (t² exact à chaque multiple de 0,1), translatés de
+    +390 en y (300→690, 120→510). Croisement identique : t=±0,7071 →
+    py=600, px=330±176,8 = 153,2 et 506,8.
+
+    Rôle des couleurs :
+      Epp (potentielle de pesanteur, réservoir de rappel gravitationnel) :
+        --figure-energy-C (MÊME convention que conservation-em.svg, cette
+        leçon — Epp y était déjà colorée ainsi)
+      Ec (cinétique)                                  : --figure-energy-L
+      Em (somme constante)                            : --figure-accent
+      z = L(1−cosθ) (la hauteur exacte, LE sujet de la section 1)
+                                                        : --figure-accent
+      géométrie (O, fil, masse, θ, Lcosθ, verticale)  : --figure-ink /
+        --figure-ink-soft (structure neutre)
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le pendule pesant : la hauteur z = L(1−cosθ) et l'échange d'énergie
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la géométrie de base + les axes du panneau d'énergie
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Section 1 : cadre + sous-titre -->
+    <rect x="20" y="32" width="600" height="360" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="40" y="50" font-size="11.5" font-weight="600" fill="var(--figure-ink)"
+      >La géométrie : la hauteur exacte</text>
+
+    <!-- Point fixe O, support schématique -->
+    <rect x="170" y="58" width="60" height="6" rx="2" fill="var(--figure-ink)"/>
+    <circle cx="200" cy="70" r="4" fill="var(--figure-ink)"/>
+    <text x="188" y="66" text-anchor="end" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">O</text>
+
+    <!-- Verticale de référence (pointillée) -->
+    <line x1="200" y1="70" x2="200" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+    <!-- Position fantôme M0, θ=0 (point le plus bas) -->
+    <circle cx="200" cy="330" r="4" fill="none"
+            stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="2,2"/>
+    <text x="212" y="344" text-anchor="start" font-size="9.5" fill="var(--figure-ink-soft)"
+      ><tspan font-style="italic">θ</tspan><tspan> = 0 (point le plus bas)</tspan></text>
+
+    <!-- Arc θ, entre la verticale et le fil -->
+    <path d="M200,115 Q216.4,115.0 228.9,104.5" fill="none"
+          stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <text x="220.5" y="130" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">θ</text>
+
+    <!-- Fil O→M -->
+    <line x1="200" y1="70" x2="367.13" y2="269.16"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <text x="294.3" y="160.6" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">L</text>
+
+    <!-- Masse ponctuelle m -->
+    <circle cx="367.13" cy="269.16" r="9" fill="var(--figure-ink)"/>
+    <text x="367.13" y="272.6" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-surface)">m</text>
+
+    <!-- Section 2 : cadre + sous-titre + axes vides -->
+    <rect x="20" y="430" width="600" height="300" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="40" y="448" font-size="11.5" font-weight="600" fill="var(--figure-ink)"
+      >L'échange d'énergie en fonction de <tspan font-style="italic">θ</tspan></text>
+
+    <line x1="60" y1="690" x2="598" y2="690" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="606,690 594,685.5 594,694.5" fill="var(--figure-ink-soft)"/>
+    <line x1="330" y1="690" x2="330" y2="480" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="330,470 325.5,481 334.5,481" fill="var(--figure-ink-soft)"/>
+    <text x="318" y="485" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">E</text>
+
+    <line x1="80" y1="686" x2="80" y2="694" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="80" y="706" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+      >−<tspan font-style="italic">θ</tspan><tspan dy="3" font-size="7.5">m</tspan></text>
+    <text x="330" y="706" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+    <line x1="580" y1="686" x2="580" y2="694" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="580" y="706" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+      >+<tspan font-style="italic">θ</tspan><tspan dy="3" font-size="7.5">m</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la construction de la hauteur + les courbes d'énergie
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Segment O→H = L cosθ (projection verticale, solide sur la
+         référence pointillée) -->
+    <line x1="200" y1="70" x2="200" y2="269.16"
+          stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="188" y="170" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+      ><tspan font-style="italic">L</tspan><tspan> cos</tspan><tspan font-style="italic">θ</tspan></text>
+
+    <!-- Niveau de M, ligne pointillée jusqu'à la verticale (H) -->
+    <line x1="200" y1="269.16" x2="358" y2="269.16"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,2"/>
+
+    <!-- Bracket z = L(1−cosθ), de H à M0 -->
+    <line x1="213" y1="269.16" x2="223" y2="269.16" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="213" y1="330" x2="223" y2="330" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="218" y1="269.16" x2="218" y2="330" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="230" y="303" text-anchor="start" font-size="12.5" fill="var(--figure-accent)"
+      ><tspan font-style="italic">z</tspan><tspan font-style="normal"> = </tspan><tspan
+        font-style="italic">L</tspan><tspan font-style="normal">(1 − cos</tspan><tspan
+        font-style="italic">θ</tspan><tspan font-style="normal">)</tspan></text>
+
+    <!-- Courbes Epp(θ) et Ec(θ) -->
+    <path d="M80,510 L105,544.2 L130,574.8 L155,601.8 L180,625.2 L205,645
+             L230,661.2 L255,673.8 L280,682.8 L305,688.2 L330,690 L355,688.2
+             L380,682.8 L405,673.8 L430,661.2 L455,645 L480,625.2 L505,601.8
+             L530,574.8 L555,544.2 L580,510"
+          fill="none" stroke="var(--figure-energy-C)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="55" y="498" text-anchor="end" font-size="12" fill="var(--figure-energy-C)"
+      ><tspan font-style="italic">E</tspan><tspan dy="3" font-size="8.5">pp</tspan></text>
+
+    <path d="M80,690 L105,655.8 L130,625.2 L155,598.2 L180,574.8 L205,555
+             L230,538.8 L255,526.2 L280,517.2 L305,511.8 L330,510 L355,511.8
+             L380,517.2 L405,526.2 L430,538.8 L455,555 L480,574.8 L505,598.2
+             L530,625.2 L555,655.8 L580,690"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="345" y="498" text-anchor="start" font-size="12" fill="var(--figure-energy-L)"
+      ><tspan font-style="italic">E</tspan><tspan dy="3" font-size="8.5">c</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : ce que z n'est pas ; Em et le croisement
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="320" y="378" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)"
+      >z ≠ L (la longueur du fil) et z ≠ L<tspan font-style="italic">θ</tspan><tspan
+        font-style="normal"> (l'arc parcouru)</tspan></text>
+
+    <line x1="70" y1="510" x2="598" y2="510"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="7,4"/>
+    <text x="604" y="506" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="8">m</tspan></text>
+
+    <circle cx="153.2" cy="600" r="3.3" fill="var(--figure-accent)"/>
+    <circle cx="506.8" cy="600" r="3.3" fill="var(--figure-accent)"/>
+    <line x1="512" y1="606" x2="545" y2="632" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="550" y="636" font-size="10" fill="var(--figure-accent)"><tspan
+          font-style="italic">E</tspan><tspan dy="3" font-size="7">c</tspan><tspan
+          dy="-3"> = </tspan><tspan font-style="italic">E</tspan><tspan dy="3" font-size="7">pp</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

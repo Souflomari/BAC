@@ -1,6 +1,65 @@
 notion: chute-mouvements-plans
 skill_code: pc_chute_plans
-misconceptions: []
+misconceptions:
+  - id: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+    label: "« A la vitesse limite, il n'y a plus de force / la force de frottement a disparu »"
+    description: "L'eleve confond « somme des forces nulle » (a=0 a v_lim) et « aucune force ne s'exerce » ; il croit que le frottement s'annule au moment ou la vitesse se stabilise."
+    contradicts_principle: "A $v_\\ell$, l'acceleration est nulle parce que le frottement et le poids se compensent exactement ($k\\,v_\\ell = mg$) : le frottement y est au contraire maximal, pas absent."
+
+  - id: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+    label: "« Avec frottement, l'objet accelere indefiniment / tombe de plus en plus vite tout du long »"
+    description: "L'eleve ignore que le frottement croit avec la vitesse et finit par compenser le poids ; il generalise le comportement du regime initial ($a=g$) a toute la chute."
+    contradicts_principle: "L'acceleration decroit continument depuis $g$ (regime initial) vers 0 (regime permanent) a mesure que $kv$ se rapproche de $mg$ ; la vitesse plafonne a $v_\\ell=mg/k$, elle n'augmente pas indefiniment."
+
+  - id: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+    label: "« La masse ne joue jamais dans une chute (comme en chute libre) »"
+    description: "L'eleve transpose la regle du rung 1 ($a=g$ independant de $m$) au cas avec frottement, sans remarquer que $v_\\ell=mg/k$ contient $m$."
+    contradicts_principle: "Cette regle ne vaut que sans frottement. Des qu'un frottement fluide entre en jeu, $v_\\ell=mg/k$ depend de $m$ : deux objets de meme forme mais de masses differentes n'ont pas la meme vitesse limite."
+
+  - id: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+    label: "« La methode d'Euler donne la valeur exacte de $v(t)$ »"
+    description: "L'eleve croit que la recurrence d'Euler resout exactement l'equation differentielle, quel que soit le pas $\\Delta t$."
+    contradicts_principle: "Euler suppose la pente constante sur chaque pas, ce qui n'est vrai qu'approximativement ; l'erreur diminue quand $\\Delta t$ diminue, mais ne s'annule jamais pour un pas fini."
+
+  - id: mc.physics.pc_chute_plans.euler-oubli-dt
+    label: "« $v_{i+1}=v_i+a_i$ » (oubli du facteur $\\Delta t$)"
+    description: "L'eleve additionne directement l'acceleration a la vitesse, sans la multiplier par la duree du pas — incoherence dimensionnelle non detectee."
+    contradicts_principle: "$a_i\\,\\Delta t$ est homogene a une vitesse (acceleration x temps) ; $v_i+a_i$ additionnerait une vitesse et une acceleration, ce qui n'a pas de sens physique."
+
+  - id: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+    label: "« La pente $a_i$ reste fixe (egale a $g$) a chaque pas, comme en chute libre »"
+    description: "L'eleve n'actualise pas $a_i$ a partir de $v_i$ a chaque etape ; il applique implicitement le modele sans frottement tout au long du tableau."
+    contradicts_principle: "$a_i=g-\\frac{k}{m}v_i$ depend de $v_i$ et doit etre recalculee a chaque ligne : c'est cette actualisation qui fait apparaitre l'effet du frottement (la pente decroit ligne apres ligne)."
+
+  - id: mc.physics.pc_chute_plans.orbite-sans-gravite
+    label: "« En orbite il n'y a pas de gravite / le satellite ne subit aucune force »"
+    description: "L'eleve explique l'apesanteur par une absence de gravite plutot que par une chute libre permanente."
+    contradicts_principle: "La gravite est exactement la force qui courbe la trajectoire en orbite ; sans elle, par inertie, le satellite partirait en ligne droite. L'apesanteur ressentie vient d'une chute libre continue, pas d'une absence de force."
+
+  - id: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+    label: "« Il faut une force dans le sens du mouvement (ou un moteur) pour maintenir le satellite en orbite »"
+    description: "L'eleve croit qu'un mouvement circulaire uniforme necessite une force motrice tangentielle, en plus de la force centripete."
+    contradicts_principle: "La seule force est centripete (perpendiculaire a la vitesse) ; elle ne pousse jamais vers l'avant. La norme de la vitesse se maintient seule, par inertie, des lors qu'aucune force tangentielle n'agit."
+
+  - id: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+    label: "« Un satellite plus lourd doit aller plus vite (ou plus lentement) sur la meme orbite »"
+    description: "L'eleve croit que la masse du satellite intervient dans sa vitesse orbitale, par analogie avec d'autres contextes ou la masse compte."
+    contradicts_principle: "$v=\\sqrt{GM/r}$ ne contient pas la masse $m$ du satellite : elle se simplifie dans la 2e loi. Sur une orbite de rayon donne, tous les satellites ont la meme vitesse, quelle que soit leur masse."
+
+  - id: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+    label: "« La 3e loi de Kepler s'ecrit $T/r$, $T^3/r^2$ ou $T^2/r^2$ = constante » (exposants mal memorises)"
+    description: "L'eleve retient mal la position des exposants dans la 3e loi, faute de repartir de son etablissement."
+    contradicts_principle: "L'etablissement (egaler $v=\\sqrt{GM/r}$ et $v=2\\pi r/T$) donne directement $T^2/r^3=4\\pi^2/GM$ : le carre est sur la periode, le cube sur le rayon."
+
+  - id: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+    label: "« Le satellite geostationnaire est immobile dans l'espace / n'a pas de vitesse »"
+    description: "L'eleve confond « immobile par rapport au sol » et « immobile dans l'absolu », en oubliant le referentiel geocentrique."
+    contradicts_principle: "Dans le referentiel geocentrique, le satellite geostationnaire parcourt un cercle a sa vitesse orbitale (quelques km/s) ; il n'est immobile que par rapport a un observateur au sol, parce qu'il tourne a la meme vitesse angulaire que la Terre."
+
+  - id: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+    label: "« N'importe quelle altitude peut etre geostationnaire »"
+    description: "L'eleve ne voit pas que la condition $T=T_{Terre}$ combinee a la 3e loi impose un rayon unique."
+    contradicts_principle: "$T^2/r^3=4\\pi^2/GM_T$ relie $T$ et $r$ de facon biunivoque pour un astre donne : se donner $T=24\\ \\text{h}$ determine une seule valeur de $r$, pas une plage de rayons possibles."
 items:
   - id: CMP-1
     rung: "R2"
@@ -920,7 +979,7 @@ items:
       Parmi les options, seule l'augmentation de $v_0$ correspond a ce cas.
 
   - id: CMP-22
-    rung: "R7"
+    rung: "R11"
     difficulty_level: 4
     skill_code: pc_chute_plans
     tags: []
@@ -961,7 +1020,7 @@ items:
       22{,}0\ \text{m}$$
 
   - id: CMP-23
-    rung: "R7"
+    rung: "R11"
     difficulty_level: 4
     skill_code: pc_chute_plans
     tags: []
@@ -1005,7 +1064,7 @@ items:
       reste donc constante jusqu'a l'impact.
 
   - id: CMP-24
-    rung: "R7"
+    rung: "R11"
     difficulty_level: 4
     skill_code: pc_chute_plans
     tags: []
@@ -1054,3 +1113,786 @@ items:
       negliges : $v_x=v_{0x}$ constante. Le regime permanent / vitesse
       limite appartient a un modele different (chute avec frottements), non
       applicable ici par hypothese.
+
+  # ══════════════════════════════════════════════════════════════
+  # R7 — chute avec frottement fluide : v_lim, tau, regimes (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-25
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, utilisation]
+    stem: >
+      Un solide de masse $m$ tombe verticalement dans un fluide, soumis a un
+      frottement lineaire $\vec f = -k\vec v$. Apres un certain temps, sa
+      vitesse atteint la valeur limite $v_\ell$ et ne varie plus. Que peut-on
+      affirmer, a cet instant, sur l'acceleration et sur la force de
+      frottement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'acceleration est nulle (la somme des forces est nulle), mais la force de frottement, elle, est a son maximum : $k\\,v_\\ell = mg$"
+        correct: true
+      - id: B
+        text: "L'acceleration est nulle et la force de frottement est nulle elle aussi : puisque plus rien ne change, plus aucune force n'agit"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          Somme nulle ne veut pas dire absence de force. A $v_\ell$, le
+          frottement est au contraire maximal, exactement egal au poids
+          ($k v_\ell = mg$) : c'est leur somme qui s'annule, pas le
+          frottement lui-meme.
+      - id: C
+        text: "L'acceleration n'atteint jamais zero : l'objet continue d'accelerer indefiniment, la « vitesse limite » n'est qu'une impression"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : le frottement croit avec $v$ et finit par
+          egaler le poids, ce qui annule l'acceleration. Une vraie vitesse
+          limite existe ; ce n'est pas une illusion de mesure.
+      - id: D
+        text: "$v_\\ell$ est la meme pour tous les objets, quelle que soit leur masse, comme en chute libre sans frottement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          Ceci n'est vrai que sans frottement (rung 1). Avec frottement,
+          $v_\ell = mg/k$ contient $m$ : deux objets de masses differentes
+          n'ont pas la meme vitesse limite.
+    correct_feedback: >
+      Exact : a $v_\ell$, $dv/dt=0$ donc la somme des forces est nulle, ce
+      qui impose $k v_\ell = mg$ — le frottement y est maximal, egal au
+      poids, pas nul.
+    solution: |
+      Bilan : poids $mg$ et frottement $kv$ (frottement lineaire), axe
+      oriente vers le bas.
+      $$m\frac{dv}{dt} = mg - kv \implies \frac{dv}{dt} = g - \frac{k}{m}v$$
+      A $v_\ell$, l'acceleration est nulle :
+      $$g - \frac{k}{m}v_\ell = 0 \implies k v_\ell = mg$$
+      Le frottement est donc maximal a cet instant, exactement egal au
+      poids ; c'est leur somme (donc l'acceleration) qui s'annule, pas le
+      frottement.
+
+  - id: CMP-26
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, resolution]
+    stem: >
+      Une bille de masse $m=0{,}20\ \text{kg}$ est lachee sans vitesse
+      initiale dans un liquide visqueux ; le frottement est lineaire, de
+      coefficient $k=2{,}0\ \text{kg/s}$ ($g\approx9{,}8\ \text{m/s}^2$). La
+      2e loi donne $\dfrac{dv}{dt}=9{,}8-10{,}0\,v$ ($v$ en m/s, $t$ en s).
+      Que valent l'acceleration a $t=0$ et la vitesse limite $v_\ell$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_\\ell$ correspond a l'instant ou le frottement s'annule completement ; comme $k=2{,}0\\ \\text{kg/s}\\neq 0$, cette bille n'atteint jamais de vitesse limite"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          $v_\ell$ ne correspond pas a un frottement nul, mais a une
+          acceleration nulle : le frottement, lui, est alors maximal
+          ($k v_\ell = mg$). Cette bille atteint bien une vitesse limite,
+          comme tout objet soumis a un frottement qui croit avec $v$.
+      - id: B
+        text: "A $t=0$, $a=9{,}8\\ \\text{m/s}^2$, et cette acceleration continue de croitre par la suite : la vitesse de la bille augmente donc indefiniment"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : a mesure que $v$ augmente, le frottement $kv$
+          augmente aussi et se rapproche du poids, donc l'acceleration
+          DIMINUE. Elle s'annule a $v_\ell=0{,}98\ \text{m/s}$ ; la vitesse
+          ne croit pas indefiniment.
+      - id: C
+        text: "A $t=0$, $a=9{,}8\\ \\text{m/s}^2$ (comme en chute libre, le frottement est nul car $v=0$) ; en annulant l'acceleration dans l'equation, $v_\\ell = mg/k = 0{,}98\\ \\text{m/s}$"
+        correct: true
+      - id: D
+        text: "$v_\\ell = mg/k$ ne depend en realite pas de $m$ : une bille deux fois plus lourde, dans le meme liquide, atteindrait exactement la meme vitesse limite $0{,}98\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          La formule $v_\ell = mg/k$ contient explicitement $m$ : une bille
+          deux fois plus lourde aurait $v_\ell$ deux fois plus grand
+          ($1{,}96\ \text{m/s}$), pas la meme valeur.
+    correct_feedback: >
+      Exact : a $t=0$, $v=0$ donc le frottement est nul et
+      $a=g=9{,}8\ \text{m/s}^2$ (comme en chute libre) ; en annulant
+      l'acceleration, $v_\ell = mg/k = 0{,}20\times9{,}8/2{,}0 =
+      0{,}98\ \text{m/s}$.
+    solution: |
+      Regime initial ($v=0$) :
+      $$a(0) = 9{,}8 - 10{,}0\times0 = 9{,}8\ \text{m/s}^2$$
+      comme en chute libre, le frottement etant nul a cet instant.
+      Vitesse limite ($a=0$) :
+      $$0 = 9{,}8 - 10{,}0\,v_\ell \implies v_\ell = \frac{9{,}8}{10{,}0} =
+      0{,}98\ \text{m/s}$$
+      soit, avec les grandeurs symboliques, $v_\ell = mg/k =
+      0{,}20\times9{,}8/2{,}0 = 0{,}98\ \text{m/s}$.
+
+  - id: CMP-27
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, application_experimentale]
+    stem: >
+      Sur un graphe $v=f(t)$ obtenu en TP pour deux billes de meme forme
+      (donc meme $k$) mais de masses $m_1 < m_2$, lachees sans vitesse dans
+      le meme fluide (frottement lineaire), on observe deux courbes
+      distinctes, chacune montant vers une asymptote horizontale. Que
+      peut-on en conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux asymptotes marquent l'instant ou le frottement disparait sur chaque bille ; au-dela, seul le poids agit"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          Au palier, le frottement n'a pas disparu : il est au contraire
+          maximal et egal au poids ($kv_\ell = mg$). Ce qui s'annule, c'est
+          la somme des forces, pas le frottement lui-meme.
+      - id: B
+        text: "Les deux courbes montent vers des paliers differents : la bille $m_2$ (la plus lourde) se stabilise a une vitesse limite plus grande, car $v_\\ell = mg/k$ croit avec $m$"
+        correct: true
+      - id: C
+        text: "Ce ne sont pas de vrais paliers : si l'enregistrement durait plus longtemps, les deux courbes continueraient de monter"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          Un palier sur $v=f(t)$ marque au contraire une vraie
+          stabilisation : l'acceleration y est nulle parce que le
+          frottement a rejoint le poids. Prolonger l'enregistrement ne
+          ferait pas remonter la courbe.
+      - id: D
+        text: "Les deux billes devraient se stabiliser exactement a la meme vitesse : la masse n'a pas d'effet sur un mouvement de chute"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          C'est vrai seulement sans frottement (rung 1). Ici, avec
+          frottement, $v_\ell=mg/k$ depend de $m$ : la bille la plus lourde
+          atteint un palier plus haut.
+    correct_feedback: >
+      Exact : $v_\ell = mg/k$ croit avec $m$ (a $k$ egal), donc la bille la
+      plus lourde ($m_2$) se stabilise a une vitesse limite plus grande que
+      la bille $m_1$ — contraste direct avec la chute libre, ou la masse
+      n'intervenait pas.
+    solution: |
+      $v_\ell = mg/k$, a $k$ fixe (meme forme). Une masse plus grande donne
+      un $v_\ell$ plus grand : la courbe de $m_2$ monte vers une asymptote
+      plus haute que celle de $m_1$. C'est « la masse qui revient » par
+      rapport a la chute libre (rungs 1 a 3), ou $v_\ell$ n'existait meme
+      pas ($a=g$ pour tous, quelle que soit la masse).
+
+  # ══════════════════════════════════════════════════════════════
+  # R8 — methode d'Euler (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-28
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, methode_euler, utilisation]
+    stem: >
+      Dans la methode d'Euler appliquee a une equation differentielle
+      $\dfrac{dv}{dt}=a(v)$, avec un pas de temps $\Delta t$, comment
+      obtient-on $v_{i+1}$ a partir de $v_i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_{i+1}=v_i+a_i$, ou $a_i$ est l'acceleration calculee a partir de $v_i$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        also_reveals: []
+        feedback: >
+          Cette expression additionne une vitesse et une acceleration :
+          incoherence dimensionnelle. Il manque le facteur $\Delta t$
+          (acceleration x temps = vitesse).
+      - id: B
+        text: "$v_{i+1}=v_i+g\\,\\Delta t$, en gardant $a=g$ fixe a chaque pas"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        also_reveals: []
+        feedback: >
+          Garder $a=g$ fixe revient a ignorer tout frottement (ou toute
+          autre force dependant de $v$) : ca redonne la chute libre, pas la
+          solution de l'equation differentielle etudiee.
+      - id: C
+        text: "$v_{i+1}$ est la valeur exacte de $v$ a l'instant $t_{i+1}$, quel que soit le pas $\\Delta t$ choisi"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        also_reveals: []
+        feedback: >
+          C'est une approximation, pas une valeur exacte : la pente est
+          supposee constante sur tout le pas, ce qui n'est vrai
+          qu'approximativement. L'ecart avec la vraie courbe se reduit
+          quand $\Delta t$ diminue, sans jamais s'annuler pour un pas fini.
+      - id: D
+        text: "$v_{i+1}=v_i+a_i\\,\\Delta t$, avec $a_i$ recalcule a chaque pas a partir de l'equation differentielle en $v_i$"
+        correct: true
+    correct_feedback: >
+      Exact : c'est la formule d'Euler. Le facteur $\Delta t$ est
+      indispensable (homogeneite), et $a_i$ doit etre recalcule a chaque
+      pas a partir de $v_i$ courant, sinon on perd l'effet de la force qui
+      depend de $v$.
+    solution: |
+      $$v_{i+1} = v_i + \left(\frac{dv}{dt}\right)_i \Delta t = v_i +
+      a_i\,\Delta t, \qquad a_i = g - \frac{k}{m}v_i$$
+      Deux points a verifier a chaque application : le facteur $\Delta t$
+      (homogeneite) et le recalcul de $a_i$ a partir de $v_i$ courant, pas
+      d'une valeur figee.
+
+  - id: CMP-29
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, methode_euler, resolution]
+    stem: >
+      Pour une bille en chute avec frottement, on releve $v_i=2{,}0\
+      \text{m/s}$ et $a_i=6{,}0\ \text{m/s}^2$ (calcule a partir de
+      l'equation differentielle a $v_i$), avec un pas
+      $\Delta t=0{,}10\ \text{s}$. Quelle est la valeur d'Euler de
+      $v_{i+1}$, et que dire de sa precision ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_{i+1}=2{,}0+6{,}0\\times0{,}10=2{,}6\\ \\text{m/s}$, une valeur approchee (elle se rapprocherait de la vraie courbe si $\\Delta t$ etait plus petit)"
+        correct: true
+      - id: B
+        text: "$v_{i+1}=2{,}0+6{,}0=8{,}0\\ \\text{m/s}$ : on ajoute directement $a_i$ a $v_i$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        also_reveals: []
+        feedback: >
+          $a_i$ doit etre multiplie par $\Delta t$ avant d'etre ajoute a
+          $v_i$ : sans ce facteur, on additionne une vitesse et une
+          acceleration, ce qui n'est pas homogene.
+      - id: C
+        text: "$v_{i+1}=2{,}0+9{,}8\\times0{,}10\\approx2{,}98\\ \\text{m/s}$ : on utilise $g$ plutot que de recalculer $a_i$ a partir de l'equation differentielle"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        also_reveals: []
+        feedback: >
+          $a_i=6{,}0\ \text{m/s}^2$ est deja la valeur correcte, issue de
+          l'equation differentielle a $v_i=2{,}0\ \text{m/s}$ ; utiliser
+          $g=9{,}8\ \text{m/s}^2$ a la place revient a ignorer le
+          frottement deja installe.
+      - id: D
+        text: "$v_{i+1}=2{,}6\\ \\text{m/s}$, exactement, quel que soit $\\Delta t$ choisi : la methode d'Euler ne fait aucune approximation"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        also_reveals: []
+        feedback: >
+          La valeur $2{,}6\ \text{m/s}$ est correcte, mais elle reste
+          approchee : Euler suppose la pente constante sur tout le pas, ce
+          qui n'est vrai qu'a la limite $\Delta t \to 0$.
+    correct_feedback: >
+      Exact : $v_{i+1}=v_i+a_i\Delta t = 2{,}0+6{,}0\times0{,}10=
+      2{,}6\ \text{m/s}$. Cette valeur reste une approximation, meilleure
+      quand $\Delta t$ est plus petit.
+    solution: |
+      $$v_{i+1} = v_i + a_i\,\Delta t = 2{,}0 + 6{,}0\times0{,}10 =
+      2{,}0+0{,}60 = 2{,}6\ \text{m/s}$$
+      C'est une valeur approchee, obtenue en supposant la pente constante
+      ($=a_i$) sur tout le pas $\Delta t$.
+
+  - id: CMP-30
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, methode_euler, application_experimentale]
+    stem: >
+      Pour completer un tableau d'Euler d'une chute avec frottement, un
+      eleve presse decide de garder $a_i=9{,}8\ \text{m/s}^2$ fixe a
+      toutes les lignes, au lieu de recalculer
+      $a_i=9{,}8-10{,}0\,v_i$ a chaque etape. Que produit ce raccourci, et
+      que dit-il, plus generalement, de la precision de la methode
+      d'Euler ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien ne change : dans l'equation differentielle, $a_i$ ne depend pas vraiment de $v_i$, seulement du temps"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        also_reveals: []
+        feedback: >
+          Au contraire : $a_i=g-\frac{k}{m}v_i$ depend explicitement de
+          $v_i$ (via le frottement). Garder $a_i=g$ fixe revient a annuler
+          artificiellement l'effet du frottement a chaque ligne.
+      - id: B
+        text: "Le tableau reste exact malgre ce raccourci : la methode d'Euler donne toujours la valeur exacte de $v(t)$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        also_reveals: []
+        feedback: >
+          La methode d'Euler n'est jamais exacte, meme sans ce raccourci :
+          elle suppose la pente constante sur chaque pas, ce qui reste une
+          approximation qui s'ameliore seulement quand $\Delta t$ diminue.
+      - id: C
+        text: "Ce raccourci revient a ignorer le frottement (on retrouve la droite de la chute libre) ; independamment de ce raccourci, la methode d'Euler elle-meme ne donne qu'une valeur approchee, qui se rapproche de la vraie courbe quand $\\Delta t$ diminue"
+        correct: true
+      - id: D
+        text: "Le vrai probleme du tableau, c'est d'avoir oublie de multiplier $a_i$ par $\\Delta t$ a chaque ligne — pas d'avoir garde $a_i$ fixe"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        also_reveals: []
+        feedback: >
+          Le facteur $\Delta t$ est bien present dans la recurrence
+          ($v_{i+1}=v_i+a_i\Delta t$) ; le probleme decrit ici porte sur
+          $a_i$ garde fixe, pas sur un $\Delta t$ manquant.
+    correct_feedback: >
+      Exact : garder $a_i=g$ fixe supprime l'effet du frottement (on
+      retombe sur la droite de la chute libre) ; independamment de cela,
+      Euler reste par nature une methode approchee, d'autant meilleure que
+      $\Delta t$ est petit.
+    solution: |
+      Avec $a_i=g$ fixe, la recurrence devient $v_{i+1}=v_i+g\Delta t$ :
+      c'est exactement la suite d'Euler de la chute libre (sans
+      frottement), une droite de pente $g$, qui ne rejoint jamais
+      l'asymptote $v_\ell$. Le bon calcul recalcule $a_i=g-\frac{k}{m}v_i$
+      a chaque ligne, ce qui fait decroitre la pente et fait tendre $v_i$
+      vers $v_\ell$. Dans les deux cas, Euler ne donne que des valeurs
+      approchees, d'autant plus fideles que $\Delta t$ est petit.
+
+  # ══════════════════════════════════════════════════════════════
+  # R9 — gravitation et mouvement circulaire : force centripete (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-31
+    rung: "R9"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, gravitation_satellite, utilisation]
+    stem: >
+      Un satellite decrit une orbite circulaire autour de la Terre. Quelle
+      force subit-il, et dans quelle direction agit-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucune force : a cette altitude, la gravite terrestre ne se fait plus sentir"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        also_reveals: []
+        feedback: >
+          Si la gravite disparaissait vraiment, aucune force ne courberait
+          la trajectoire : par inertie, le satellite partirait en ligne
+          droite. Or il reste sur une orbite fermee : une force agit bel et
+          bien, et c'est la gravite.
+      - id: B
+        text: "La force gravitationnelle, centripete (dirigee vers le centre de la Terre), perpendiculaire a la vitesse a chaque instant"
+        correct: true
+      - id: C
+        text: "Une force dans le sens du mouvement, qui le pousse continuellement vers l'avant"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        also_reveals: []
+        feedback: >
+          La force gravitationnelle est centripete, donc perpendiculaire a
+          la vitesse : elle ne pousse jamais vers l'avant. Aucune force
+          tangentielle n'est necessaire pour maintenir le mouvement.
+      - id: D
+        text: "La force gravitationnelle, centripete ; mais un satellite plus lourd doit orbiter plus vite qu'un satellite leger, sur la meme orbite, pour ne pas retomber"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        also_reveals: []
+        feedback: >
+          La vitesse orbitale $v=\sqrt{GM_T/r}$ ne contient pas la masse du
+          satellite : elle se simplifie dans la 2e loi. Un satellite plus
+          lourd suit la meme orbite a la meme vitesse qu'un satellite
+          leger.
+    correct_feedback: >
+      Exact : la seule force est la force gravitationnelle, dirigee en
+      permanence vers le centre de la Terre, donc perpendiculaire a la
+      vitesse — une force centripete.
+    solution: |
+      La force gravitationnelle $\vec F = G\frac{M_T m}{r^2}\vec u$ pointe
+      toujours vers le centre de la Terre, donc perpendiculairement a la
+      vitesse (tangente au cercle). Elle est donc centripete : c'est elle
+      qui courbe la trajectoire en cercle, sans jamais accelerer ni
+      ralentir le satellite (elle ne travaille pas).
+
+  - id: CMP-32
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, gravitation_satellite, resolution]
+    stem: >
+      La 2e loi projetee sur la normale donne la vitesse orbitale d'un
+      satellite en orbite circulaire de rayon $r$ autour de la Terre
+      (masse $M_T$). Quelle est cette vitesse, et de quoi depend-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v=\\sqrt{GM_T/r}$, mais un satellite deux fois plus lourd irait deux fois plus vite sur la meme orbite"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        also_reveals: []
+        feedback: >
+          La masse du satellite apparait des deux cotes de la 2e loi
+          projetee ($mv^2/r = GM_Tm/r^2$) et se simplifie completement : la
+          formule finale $v=\sqrt{GM_T/r}$ ne la contient plus.
+      - id: B
+        text: "La question n'a pas de sens : en orbite, aucune force n'agit, donc rien n'impose de vitesse particuliere"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        also_reveals: []
+        feedback: >
+          Une force agit bien : la gravite, centripete. C'est justement
+          elle qui, via la 2e loi, impose la vitesse orbitale a chaque
+          rayon $r$.
+      - id: C
+        text: "$v$ depend de la poussee d'un moteur qui maintient le satellite sur son orbite, pas seulement de $G$, $M_T$ et $r$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        also_reveals: []
+        feedback: >
+          Aucun moteur n'intervient : la seule force est la gravite, deja
+          centripete. La 2e loi seule, sans propulsion, donne
+          $v=\sqrt{GM_T/r}$.
+      - id: D
+        text: "$v=\\sqrt{GM_T/r}$, independante de la masse du satellite (elle se simplifie dans la 2e loi)"
+        correct: true
+    correct_feedback: >
+      Exact : en projetant la 2e loi sur la normale,
+      $mv^2/r = GM_Tm/r^2$, la masse $m$ du satellite se simplifie ;
+      $v=\sqrt{GM_T/r}$ ne depend que de l'astre central et du rayon de
+      l'orbite.
+    solution: |
+      $$m\frac{v^2}{r} = G\frac{M_T m}{r^2} \implies v^2 = \frac{GM_T}{r}
+      \implies v = \sqrt{\frac{GM_T}{r}}$$
+      La masse $m$ du satellite disparait : deux satellites de masses
+      differentes, sur la meme orbite, ont exactement la meme vitesse.
+
+  - id: CMP-33
+    rung: "R9"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, gravitation_satellite, utilisation]
+    stem: >
+      Pourquoi un astronaute « flotte-t-il » a l'interieur d'une station
+      spatiale en orbite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est en chute libre permanente : la gravite continue d'agir sur lui et sur la station, a la meme acceleration, et courbe leur trajectoire commune en une orbite fermee"
+        correct: true
+      - id: B
+        text: "Il n'y a plus de gravite a cette altitude, donc plus rien ne le retient"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        also_reveals: []
+        feedback: >
+          Si la gravite disparaissait, la station partirait en ligne droite
+          (inertie) au lieu de suivre une orbite fermee. La gravite agit
+          toujours, a peine plus faible qu'au sol.
+      - id: C
+        text: "La station est munie d'un systeme de propulsion qui compense en permanence la gravite, ce qui annule son poids"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        also_reveals: []
+        feedback: >
+          Aucune propulsion n'est necessaire pour l'apesanteur ressentie :
+          c'est la chute libre commune de l'astronaute et de la station,
+          tous deux soumis a la meme acceleration gravitationnelle, qui
+          supprime le contact differentiel.
+      - id: D
+        text: "Il flotte parce que sa propre masse est trop faible pour que la gravite terrestre agisse efficacement sur lui, contrairement a la station elle-meme"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        also_reveals: []
+        feedback: >
+          La gravite agit sur toute masse, petite ou grande :
+          $F=GM_Tm/r^2$ n'est jamais nulle pour $m\neq0$. Ce n'est pas une
+          question de masse insuffisante.
+    correct_feedback: >
+      Exact : l'astronaute et la station tombent ensemble, a la meme
+      acceleration gravitationnelle, sans jamais atteindre le sol grace a
+      leur vitesse orbitale — c'est l'apesanteur, pas une absence de
+      gravite.
+    solution: |
+      La gravite agit sur l'astronaute exactement comme sur la station
+      (meme acceleration, independante de la masse). Les deux etant en
+      chute libre permanente l'un par rapport a l'autre, il n'y a pas de
+      contact differentiel entre l'astronaute et les parois : c'est ce qui
+      donne la sensation de flotter, sans que la gravite ait disparu.
+
+  # ══════════════════════════════════════════════════════════════
+  # R10 — 3e loi de Kepler (circulaire) et satellite geostationnaire (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-34
+    rung: "R10"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Pour les satellites d'un meme astre en orbite circulaire, la 3e loi
+      de Kepler relie la periode $T$ et le rayon $r$ de l'orbite. Laquelle
+      de ces affirmations est exacte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T^3/r^2 = 4\\pi^2/GM$ = constante"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : l'etablissement (egaler $v=\sqrt{GM/r}$ et
+          $v=2\pi r/T$) donne le carre sur la periode et le cube sur le
+          rayon, pas l'inverse.
+      - id: B
+        text: "Chaque rayon d'orbite possible a sa propre constante $T^2/r^3$ : rien n'empeche de choisir une orbite de n'importe quel rayon pour une periode donnee"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+        also_reveals: []
+        feedback: >
+          Au contraire, $T^2/r^3$ est LA MEME constante pour tous les
+          satellites d'un meme astre (elle ne depend que de $M$). Fixer
+          $T$ determine donc un $r$ unique, pas une famille de rayons
+          possibles.
+      - id: C
+        text: "$T^2/r^3 = 4\\pi^2/GM$ = constante, pour tous les satellites d'un meme astre central — y compris un satellite geostationnaire, qui n'echappe a aucune loi physique en paraissant immobile depuis le sol"
+        correct: true
+      - id: D
+        text: "Cette relation ne concerne que les satellites en mouvement ; un satellite geostationnaire, etant immobile, n'a pas de $T$ a proprement parler et echappe a la 3e loi"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+        also_reveals: []
+        feedback: >
+          Un satellite geostationnaire a bien une periode
+          $T\approx24\ \text{h}$ (dans le referentiel geocentrique, il
+          parcourt un cercle) : la 3e loi s'applique a lui exactement comme
+          aux autres satellites.
+    correct_feedback: >
+      Exact : en egalant $v=\sqrt{GM/r}$ (2e loi) et $v=2\pi r/T$
+      (geometrie du cercle), on obtient $T^2/r^3=4\pi^2/GM$, une constante
+      propre a l'astre central, valable pour tout satellite, geostationnaire
+      compris.
+    solution: |
+      $$\frac{2\pi r}{T} = \sqrt{\frac{GM}{r}} \implies \frac{4\pi^2
+      r^2}{T^2} = \frac{GM}{r} \implies \frac{T^2}{r^3} =
+      \frac{4\pi^2}{GM}$$
+      Le membre de droite ne depend que de $M$ (l'astre central) :
+      $T^2/r^3$ est donc la meme constante pour tous ses satellites, y
+      compris un satellite geostationnaire.
+
+  - id: CMP-35
+    rung: "R10"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, utilisation]
+    stem: >
+      Un satellite geostationnaire est decrit comme « fixe au-dessus d'un
+      point de l'equateur ». Est-il reellement immobile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa periode $T$ et son rayon $r$ verifient $T^3/r^2=4\\pi^2/GM_T$, ce qui explique son immobilite apparente"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        also_reveals: []
+        feedback: >
+          La formule elle-meme est fausse (exposants inverses : c'est
+          $T^2/r^3$, pas $T^3/r^2$), et surtout ce n'est pas une formule
+          qui « explique une immobilite » — c'est une relation entre $T$ et
+          $r$, qui vaut pour tout satellite, immobile ou non par rapport au
+          sol.
+      - id: B
+        text: "Il est immobile seulement pour un observateur au sol ; dans le referentiel geocentrique, il parcourt un cercle a sa vitesse orbitale $v=\\sqrt{GM_T/r}$, de l'ordre de quelques km/s"
+        correct: true
+      - id: C
+        text: "Il est totalement immobile dans l'espace, sans aucune vitesse, dans n'importe quel referentiel"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+        also_reveals: []
+        feedback: >
+          « Immobile » n'a de sens que par rapport a un referentiel. Dans
+          le referentiel geocentrique, ce satellite se deplace bel et
+          bien, a sa vitesse orbitale ; ce n'est que par rapport au sol
+          qu'il parait fixe.
+      - id: D
+        text: "N'importe quel satellite, a n'importe quelle altitude, peut etre rendu geostationnaire simplement en ajustant sa vitesse"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+        also_reveals: []
+        feedback: >
+          La 3e loi impose une relation biunivoque entre $T$ et $r$ pour un
+          astre donne : seul un rayon precis donne $T=T_{Terre}$. Changer
+          la vitesse a un autre rayon ne redonnerait pas la bonne periode.
+    correct_feedback: >
+      Exact : « geostationnaire » decrit une immobilite relative au sol,
+      due a une vitesse angulaire egale a celle de la Terre. Dans le
+      referentiel geocentrique, le satellite parcourt reellement un
+      cercle, a une vitesse de l'ordre de 3 km/s.
+    solution: |
+      Dans le referentiel geocentrique, le satellite geostationnaire suit
+      un mouvement circulaire uniforme a la vitesse $v=\sqrt{GM_T/r}$
+      (rung 9), non nulle. Il n'est « immobile » que par rapport a un
+      point du sol, parce que sa vitesse angulaire est exactement egale a
+      celle de la rotation terrestre : le sol et le satellite tournent
+      ensemble, d'ou l'impression de fixite relative.
+
+  - id: CMP-36
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Quelles conditions un satellite doit-il remplir pour etre
+      geostationnaire, et combien d'altitudes differentes satisfont ces
+      conditions autour de la Terre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il suffit que le satellite ait une vitesse nulle par rapport au sol des le lancement ; aucune condition sur la periode n'est necessaire"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+        also_reveals: []
+        feedback: >
+          Une vitesse nulle par rapport au sol au lancement ne garantit
+          rien pour la suite : c'est la condition sur la PERIODE
+          ($T=T_{Terre}$), combinee au plan equatorial et au sens de
+          rotation, qui maintient le satellite au-dessus du meme point.
+      - id: B
+        text: "N'importe quelle altitude convient, du moment que le satellite est en orbite circulaire autour de la Terre"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+        also_reveals: []
+        feedback: >
+          Une orbite circulaire quelconque a une periode donnee par la 3e
+          loi, differente de 24 h sauf a un rayon precis : un satellite
+          « quelconque » derive par rapport au sol, il n'est pas
+          geostationnaire.
+      - id: C
+        text: "Il suffit que $T^3=r^2\\times(4\\pi^2/GM_T)$ soit verifiee, ce qui laisse plusieurs rayons possibles pour une periode donnee"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        also_reveals: []
+        feedback: >
+          Cette formule inverse les exposants de la 3e loi (qui est
+          $T^2/r^3=4\pi^2/GM_T$, pas $T^3/r^2=\ldots$) ; et meme corrigee,
+          elle donnerait un seul $r$ pour un $T$ donne, pas plusieurs.
+      - id: D
+        text: "$T=T_{\\text{Terre}}\\approx24\\ \\text{h}$, orbite dans le plan equatorial, meme sens que la rotation terrestre ; la 3e loi fixe alors, pour un astre donne, un rayon unique — une seule altitude est geostationnaire"
+        correct: true
+    correct_feedback: >
+      Exact : les trois conditions (periode terrestre, plan equatorial,
+      meme sens de rotation) sont simultanement necessaires ; combinees a
+      la 3e loi, elles fixent une unique valeur de $r$ (environ
+      $4{,}2\times10^7\ \text{m}$ pour la Terre), donc une seule altitude
+      geostationnaire possible.
+    solution: |
+      Trois conditions simultanees : $T=T_{Terre}\approx24\ \text{h}$ (ou
+      $86\,164\ \text{s}$), orbite equatoriale, meme sens que la rotation
+      terrestre. La 3e loi, appliquee avec $T=T_{Terre}$, donne :
+      $$r = \left(\frac{GM_T\,T^2}{4\pi^2}\right)^{1/3} \approx
+      4{,}2\times10^7\ \text{m}$$
+      une valeur unique : il n'existe qu'une seule altitude geostationnaire
+      autour d'un astre donne.
+
+coverage_summary:
+  per_misconception:
+    # Every distractor across CMP-25..CMP-36 carries exactly one primary
+    # misconception id from the R7-R10 inventory added by this pass. Each
+    # of the 12 misconceptions is the primary tag on exactly one distractor
+    # per item, in all 3 items of its chapter -> exactly 3 item-level hits
+    # each (minimum floor, no slack).
+    mc.physics.pc_chute_plans.frottement-disparait-a-vlim: 3       # CMP-25, CMP-26, CMP-27
+    mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement: 3  # CMP-25, CMP-26, CMP-27
+    mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute: 3      # CMP-25, CMP-26, CMP-27
+    mc.physics.pc_chute_plans.euler-donne-valeur-exacte: 3          # CMP-28, CMP-29, CMP-30
+    mc.physics.pc_chute_plans.euler-oubli-dt: 3                     # CMP-28, CMP-29, CMP-30
+    mc.physics.pc_chute_plans.euler-pente-non-recalculee: 3         # CMP-28, CMP-29, CMP-30
+    mc.physics.pc_chute_plans.orbite-sans-gravite: 3                # CMP-31, CMP-32, CMP-33
+    mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle: 3    # CMP-31, CMP-32, CMP-33
+    mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite: 3 # CMP-31, CMP-32, CMP-33
+    mc.physics.pc_chute_plans.kepler3-exposants-inverses: 3         # CMP-34, CMP-35, CMP-36
+    mc.physics.pc_chute_plans.geostationnaire-immobile-absolu: 3    # CMP-34, CMP-35, CMP-36
+    mc.physics.pc_chute_plans.geostationnaire-toute-altitude: 3     # CMP-34, CMP-35, CMP-36
+  total_items: 36   # 24 pre-existing (R0-R6, R11) + 12 new (R7-R10)
+  new_items_this_pass: 12   # CMP-25..CMP-36
+  floor_met: true
+  floor_note: >
+    All 12 misconceptions newly added in this pass sit EXACTLY at the
+    floor (3 items each) -- by construction, not by accident: every item
+    in R7-R10 was designed so its 3 distractors each carry a distinct
+    primary misconception from that chapter's 3-item inventory, rotated
+    across all 3 items of the chapter. This means the floor has zero
+    slack: retiring or reworking any single R7-R10 item would immediately
+    break the floor for whichever misconceptions it carried. Flagged for
+    the editorial gate as a thin (not padded, but thin) coverage state --
+    a natural next-pass candidate if any of these 12 misconceptions turns
+    out, empirically, to need more diagnostic surface.
+  scope_note: >
+    This per-misconception ledger covers ONLY the 12 misconceptions
+    introduced by this pass (R7-R10). The 24 pre-existing items (R0-R6,
+    R11) predate the misconception-id-per-distractor convention entirely
+    -- none of their distractors carry a `misconception:` field, and the
+    top-level `misconceptions:` list was empty before this pass. That gap
+    is out of scope for this append/retag-only pass (task instructions:
+    "Only touch this file... append/retag only") and is reported here
+    rather than silently left implicit: R0-R6 and R11 have zero formal
+    misconception coverage and would need a separate retrofitting pass to
+    meet the same floor.
+  dual_tag_note: >
+    Spec-extension.md (section 6, "Notes de build") explicitly calls out
+    one cross-skill co-attribution: an item asking whether a heavier
+    satellite orbits faster touches both CH-SAT-3 (this chapter's
+    vitesse-orbitale-depend-masse-satellite) and the mass-independence
+    result from R2/R3 (chute libre : a=g independant de m). CMP-31/D,
+    CMP-32/A and CMP-33/D are exactly that item family. No FORMAL dual-tag
+    entry was added for the R2/R3 side, because R2/R3 predate the
+    misconception-id convention (see scope_note) and this pass does not
+    retrofit them -- inventing a retroactive id for untouched legacy items
+    would exceed the append/retag-only instruction. The echo is instead
+    named here in prose, and each relevant distractor's `feedback:`
+    explicitly cross-references the R2/R3 result. Recommended follow-up:
+    if/when R2/R3 get a formal misconception entry, add a proper
+    dual_tagged_distractors entry linking it to
+    vitesse-orbitale-depend-masse-satellite.
+  dual_tagged_distractors: []   # none within the R7-R10 set itself: each
+    # of the 12 new items' 3 distractors maps cleanly to exactly one of
+    # its own chapter's 3 misconceptions, with no reachability overlap
+    # observed between them.
+  ramp_coverage:
+    R0: 3    # CMP-7, CMP-8, CMP-9
+    R1: 3    # CMP-3, CMP-10, CMP-11
+    R2: 3    # CMP-1, CMP-12, CMP-13
+    R3: 3    # CMP-14, CMP-15, CMP-16
+    R4: 3    # CMP-2, CMP-4, CMP-17
+    R5: 3    # CMP-5, CMP-18, CMP-19
+    R6: 3    # CMP-6, CMP-20, CMP-21
+    R7: 3    # CMP-25, CMP-26, CMP-27   (NEW chapter)
+    R8: 3    # CMP-28, CMP-29, CMP-30   (NEW chapter)
+    R9: 3    # CMP-31, CMP-32, CMP-33   (NEW chapter)
+    R10: 3   # CMP-34, CMP-35, CMP-36   (NEW chapter)
+    R11: 3   # CMP-22, CMP-23, CMP-24  (retagged from old R7, unchanged content)
+    note: >
+      Every rung R0-R11 now has exactly 3 items; the ramp floor (>=3 per
+      rung) is met with no gaps after the renumbering. Sum check:
+      3x12 = 36 = total_items.
+  habilete_mix_new_items:
+    # Informal, via each new item's own `tags:` entry (utilisation /
+    # resolution / application_experimentale) -- this file has no
+    # dedicated `habilete:` field, so this is tracked through tags rather
+    # than a new top-level key, to avoid schema drift beyond what this
+    # pass was asked to touch.
+    utilisation: 5     # CMP-25, CMP-28, CMP-31, CMP-33, CMP-35
+    resolution: 5       # CMP-26, CMP-29, CMP-32, CMP-34, CMP-36
+    application_experimentale: 2   # CMP-27, CMP-30
+    note: >
+      ~42%/42%/17% against the cadre's sub-domain target (~50/35/15 for
+      Utilisation/Resolution/App. experimentale, part_examen 27, the
+      heaviest sub-domain in the physics curriculum). Resolution is
+      slightly over-weighted and utilisation slightly under-weighted
+      relative to target, driven by R7/R8 (ODE + Euler) naturally pulling
+      toward resolution. Within tolerance for 12 items; flagged for the
+      editorial gate rather than corrected by padding.

@@ -89,6 +89,16 @@ const STEPPED_FIGURE_MAX_STEPS: Record<string, number> = {
 // ── Aria-label map for known figure slugs ────────────────────────────────────
 // French captions read aloud by screen readers. Extend as new figures arrive.
 const FIGURE_ARIA_LABELS: Record<string, string> = {
+  "vitesse-vs-temps-frottement": "Vitesse v(t) tendant vers la vitesse limite lors d'une chute avec frottement",
+  "bilan-forces-chute-frottement": "Bilan des forces sur une bille tombant dans un fluide : poids et frottement",
+  "tableau-euler-pas-a-pas": "Tableau de la méthode d'Euler pas à pas",
+  "orbite-force-centripete": "Orbite circulaire : la force gravitationnelle joue le rôle de force centripète",
+  "kepler3-linearisation": "Troisième loi de Kepler linéarisée : T² en fonction de r³",
+  "orbite-geostationnaire": "Satellite géostationnaire en orbite équatoriale, période 24 h",
+  "sandbox-chute-frottement": "Deux chutes avec frottement : la vitesse limite dépend de la masse",
+  "euler-taille-de-pas": "Méthode d'Euler : effet de la taille du pas sur la précision",
+  "orbites-gravite": "Orbites de rayons différents et leurs périodes selon la loi de Kepler",
+  "satellite-chute-permanente": "Satellite en chute permanente : trajectoire courbe comparée à la ligne inertielle",
   "rlc-schema":          "Schéma du circuit RLC série",
   "regimes-uc":          "Les trois régimes de u_C(t)",
   "energy-exchange":     "Échange d'énergie E_C ↔ E_L",
@@ -111,6 +121,12 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "transverse-longitudinal": "Onde transversale (corde) et onde longitudinale (ressort) : déplacement perpendiculaire ou parallèle à la propagation",
   "double-periodicite":  "La double périodicité : période spatiale λ sur y(x) et période temporelle T sur y(t), liées par λ = c·T",
   "dephasage":           "Déphasage entre deux points : concordance de phase (d = λ) et opposition de phase (d = λ/2)",
+  // Extension R5/R6 — ondes-mecaniques-periodiques (diffraction mécanique + milieu dispersif)
+  "diffraction-fente-fronts": "Diffraction selon la largeur de l'ouverture : à gauche une ouverture large (a très supérieur à λ), les fronts d'onde continuent presque tout droit ; à droite une ouverture étroite (a inférieur ou égal à λ), les fronts deviennent des arcs qui s'étalent sur un large domaine — condition a ≤ λ pour une diffraction notable",
+  "montage-diffraction-ultrasons": "Montage de diffraction des ultrasons : émetteur de fréquence f, fente réglable de largeur a, récepteur mobile sur un arc gradué centré sur la fente pour mesurer l'amplitude reçue selon la direction",
+  "cuve-a-ondes-diffraction": "Vue de dessus d'une cuve à ondes : des fronts d'onde plans traversent une fente étroite et ressortent en arcs qui s'étalent sur un très large domaine, comme si la fente était devenue une nouvelle source",
+  "celerite-vs-frequence": "Célérité c en fonction de la fréquence f : une droite horizontale pour un milieu non dispersif (c constante), une courbe décroissante pour un milieu dispersif (c dépend de f), avec deux fréquences repères f1 et f2",
+  "paquet-qui-se-deforme": "Un même paquet d'ondes envoyé dans deux milieux : dans le milieu non dispersif il garde exactement sa forme après propagation ; dans le milieu dispersif il s'étale et s'aplatit",
   "diffraction-fente":   "Diffraction par une fente de largeur a : écart angulaire θ = λ/a et largeur de la tache centrale sur l'écran",
   "dispersion-prisme":   "Dispersion de la lumière blanche par un prisme : le violet est dévié plus que le rouge (n_violet > n_rouge)",
   "modulation-amplitude": "Modulation d'amplitude : la porteuse haute fréquence dont l'amplitude suit l'enveloppe U0 + s_m(t)",
@@ -132,6 +148,11 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "energie-oscillateur": "Énergie de l'oscillateur : l'énergie potentielle élastique E_pe et l'énergie cinétique E_c en antiphase, l'énergie mécanique E_m restant constante",
   // B2 wave P5 — systemes-oscillants pendule simple
   "bilan-pendule-simple": "Le pendule simple : la géométrie (fil de longueur L, angle θ avec la verticale, trajectoire en arc de cercle), le bilan des forces (poids et tension), la décomposition tangentielle −mg sin θ, puis l'équation où la masse se simplifie",
+  // Extension R6/R7 — systemes-oscillants amortissement + résonance
+  "regimes-amortissement": "Les trois régimes d'amortissement de x(t), lâchés depuis le même écart initial : pseudo-périodique (oscille en s'amortissant), critique (retour le plus rapide, sans dépassement) et apériodique (retour plus lent, sans dépassement)",
+  "resonance-sandbox":   "Courbe de résonance : amplitude du résonateur en fonction de la fréquence imposée par l'excitateur, pour trois amortissements croissants — le pic reste à la fréquence propre, plus haut et étroit pour un amortissement faible, plus bas et large pour un amortissement fort",
+  "montage-resonance":   "Montage de résonance mécanique : un excitateur à fréquence réglable entraîne, via un ressort, un résonateur de fréquence propre fixe ; la courbe de résonance mesurée montre un pic à la fréquence propre, aigu pour un amortissement faible, flou pour un amortissement fort",
+  "balancoire-resonance": "Illustration d'ambiance : un pendule poussé par petites poussées répétées, au bon rythme, balaie une amplitude de plus en plus grande",
   // D10 wave C — PC chimie
   "avancement-tangente": "L'avancement x(t) et la tangente en un instant t1 : la pente de la tangente donne la vitesse volumique de réaction",
   "temps-demi-reaction": "Construction graphique du temps de demi-réaction t½ : ligne horizontale à x_f/2, descente verticale vers t½ sur l'axe des temps",
@@ -233,6 +254,19 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   // B2 wave S2 — SVT transmission-caracteres (2 figures)
   "echiquier-dihybride": "L'échiquier du dihybridisme : chaque parent F1 (double hétérozygote C//c ; L//l) produit quatre types de gamètes en proportions égales ; l'échiquier 4 × 4 donne seize combinaisons, regroupées par phénotype en un rapport caractéristique 9 : 3 : 3 : 1",
   "test-cross-deux-hypotheses": "Le croisement-test : l'individu gris de génotype inconnu est croisé avec un testeur homozygote récessif g//g, qui ne produit qu'un seul gamète. Si l'individu est G//G, toute la descendance est grise (100 %) ; s'il est G//g, elle se partage 1/2 grise : 1/2 blanche — le rapport observé révèle directement le génotype caché",
+  // B2 wave — PC reactions-acido-basiques, comblement R8–R11 (titrage pH-métrique)
+  "diagramme-distribution-vs-predominance": "Diagramme de distribution superposé au diagramme de prédominance pour le couple CH3COOH/CH3COO−, pKA = 4,8 : en haut, l'axe de prédominance à une dimension avec sa frontière à pH = pKA ; en bas, les courbes de distribution %AH et %A− en fonction du pH, qui se croisent exactement à 50 % chacune au même pH = pKA — jamais à pH = 7",
+  "montage-dosage-phmetrique": "Montage d'un dosage pH-métrique : burette graduée contenant le titrant (la soude) au-dessus d'un bécher contenant le titré (l'acide éthanoïque) sous agitation magnétique, une sonde pH plongée dans le bécher et reliée à un pH-mètre qui affiche la mesure",
+  "equivalence-methode-tangentes": "Courbe pH = f(V) d'un dosage, avec la méthode des tangentes : deux tangentes parallèles de part et d'autre du saut, et leur parallèle équidistante qui coupe la courbe au point d'équivalence E, V_E = 15,0 mL, pH_E ≈ 8,5",
+  "equivalence-courbe-derivee": "En haut, rappel de la courbe pH = f(V) avec son point d'inflexion ; en bas, la courbe dérivée dpH/dV = f(V), dont le maximum tombe exactement à la verticale de ce point d'inflexion, à V_E = 15,0 mL",
+  "zone-virage-sur-saut": "La courbe pH = f(V) d'un dosage, pH_E ≈ 8,5 à V_E = 15,0 mL, avec trois zones de virage superposées : l'hélianthine (3,1–4,4) et le bleu de bromothymol (6,0–7,6), qui virent avant le saut, et la phénolphtaléine (8,2–10,0), dont la zone contient pH_E et coupe le saut — c'est elle qu'on retient",
+  "distribution-curseur-pH": "Les courbes de distribution %AH et %A− du couple CH3COOH/CH3COO− (pKA = 4,8), avec trois points lus : à pH = 3,8, environ 91 % AH et 9 % A− ; à pH = 4,8 (= pKA), 50 % chacune ; à pH = 5,8, environ 91 % A− et 9 % AH",
+  "lecture-Ve-courbe-dosage": "La courbe pH = f(V) d'un dosage, avec trois points distingués : le point où pH = 7 (bien avant le saut, ce n'est pas l'équivalence), la demi-équivalence à V_E/2 = 7,5 mL où pH ≈ pKA ≈ 4,8, et le véritable point d'équivalence E à V_E = 15,0 mL, pH_E ≈ 8,5",
+  // B2 wave — PC aspects-energetiques, extension oscillateurs (R5/R6/R7)
+  "travail-ressort-triangle": "Le travail de la force de rappel du ressort : la droite F = kx partant de l'origine, l'aire du triangle sous cette droite égale à ½kx², la force moyenne ½kx marquée en repère, et un rectangle fantôme kx², deux fois trop grand, qui traiterait à tort la force comme constante sur tout le trajet",
+  "travail-torsion-triangle": "Le travail du couple de rappel de torsion : la droite M = Cθ partant de l'origine, l'aire du triangle sous cette droite égale à ½Cθ², le moment moyen ½Cθ marqué en repère, et un rectangle fantôme Cθ², deux fois trop grand — la même construction que pour le ressort, avec k ↔ C et x ↔ θ",
+  "diagrammes-energie-elastique": "Deux diagrammes d'énergie de l'oscillateur élastique sans frottement : en fonction de la position x, Epe = ½kx² dessine une parabole minimale en x = 0, Ec la parabole inversée maximale en x = 0, Em une droite horizontale, les deux courbes se croisant en deux points ; en fonction du temps t, x(t) est tracé en pâle avec sa période T0, tandis que Ec(t) et Epe(t) oscillent en antiphase à une période T0/2, deux fois plus vite",
+  "pendule-pesant-energie": "Le pendule pesant : en haut, la géométrie de la hauteur exacte z = L(1 − cos θ), construite à partir de la projection L cos θ — ni la longueur du fil L seule, ni l'arc parcouru Lθ ; en bas, l'échange d'énergie en fonction de θ, Epp et Ec en paraboles opposées sous un plafond Em constant, se croisant en deux points",
 };
 
 function figureAriaLabel(slug: string): string {

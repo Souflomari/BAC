@@ -256,9 +256,9 @@ Prends position avant de lire la suite. Imagine une fente très large, qu'on ré
 
 L'expérience tranche, et elle va à l'encontre de l'intuition du jet d'eau. Tant que la fente reste large devant $\lambda$, l'onde continue presque tout droit derrière elle : une zone étroite, dans le prolongement direct de la fente, comme en optique géométrique. Mais à mesure qu'on rétrécit la fente, jusqu'à ce que sa largeur $a$ devienne du même ordre que $\lambda$, ou plus petite, l'onde cesse d'aller tout droit : elle s'étale derrière la fente, sur un domaine angulaire de plus en plus large, comme si la fente elle-même s'était transformée en une nouvelle source rayonnant tout autour d'elle. Ce contournement de l'obstacle, cet étalement, porte un nom : c'est la **diffraction**.
 
-[[embed:cuve-a-ondes-diffraction]]
+[[figure:cuve-a-ondes-diffraction]]
 
-Manipule la fente sur la simulation ci-dessus : réduis sa largeur, et regarde l'onde reçue s'étaler — pas se concentrer.
+La figure ci-dessus le montre, vue de dessus : une onde plane arrive sur une fente étroite, et derrière la fente, l'onde ne continue pas tout droit — elle s'étale en fronts circulaires, sur un large domaine, comme si la fente était devenue à elle seule une nouvelle source.
 
 ### La condition : comparer deux longueurs, jamais une valeur isolée
 
@@ -322,7 +322,7 @@ Le test est opératoire, pas seulement théorique : on envoie, dans le milieu é
 
 Un signal complexe — une mélodie, une parole — n'est jamais réductible à une seule fréquence : c'est une superposition de plusieurs fréquences à la fois. Dans un milieu **non dispersif**, toutes ces fréquences voyagent à la même célérité : elles restent synchronisées tout au long du trajet, et la forme du signal est conservée. Dans un milieu **dispersif**, en revanche, les composantes de fréquences différentes voyagent à des célérités différentes : elles se désynchronisent progressivement en avançant, et le signal **se déforme** au fur et à mesure de sa propagation.
 
-[[motion:paquet-qui-se-deforme]]
+[[figure:paquet-qui-se-deforme]]
 
 **Fixe l'image mentale : dispersif n'est pas synonyme d'atténué.** On pourrait croire qu'un milieu « dispersif » est un milieu qui affaiblit l'onde, qui la disperse en lui faisant perdre de l'énergie, comme on dit d'une lumière qu'elle « se disperse » en s'éparpillant. Ce n'est pas ce que veut dire dispersif ici. La dispersion, telle qu'on vient de la définir, ne concerne que la dépendance de $c$ en $f$ — rien à voir avec une perte d'énergie. Un milieu peut très bien disperser une onde sans l'atténuer, ou l'atténuer sans la disperser : ce sont deux propriétés indépendantes. Ne confonds pas dispersion et amortissement.
 

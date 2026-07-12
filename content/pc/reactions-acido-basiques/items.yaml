@@ -1,6 +1,101 @@
 notion: reactions-acido-basiques
 skill_code: pc_reactions_acido_basiques
-misconceptions: []
+misconceptions:
+  # Inventaire du cluster titrage + distribution (spec-extension.md §2-5).
+  # Ne couvre que les 4 nouveaux chapitres R8-R11 ; les items R0-R7/R12
+  # antérieurs ne portent pas encore d'id de misconception (schéma pré-cluster).
+  - id: AB-DIST-1
+    chapter: R8
+    label: "Frontière lue comme bascule totale"
+    description: >-
+      Croit qu'à la frontière $\text{pH} = pK_A$ du diagramme de
+      prédominance, la forme qui va prédominer juste au-dessus est déjà
+      présente à $\sim 100\,\%$ et l'autre a disparu — alors qu'à
+      $\text{pH} = pK_A$ les deux courbes de distribution se croisent
+      exactement à $50\,\%$/$50\,\%$.
+  - id: AB-DIST-2
+    chapter: R8
+    label: "Prédominance et distribution confondues"
+    description: >-
+      Croit que le diagramme de prédominance et le diagramme de
+      distribution donnent la même information sous deux présentations —
+      alors que la prédominance ne donne jamais de pourcentage exact (deux
+      solutions où $A^-$ prédomine peuvent être à $55\,\%$ ou à
+      $99{,}9\,\%$, indistinguables sur la seule prédominance).
+  - id: AB-DIST-3
+    chapter: R8
+    label: "Croisement placé à pH = 7"
+    description: >-
+      Croit que le croisement à $50\,\%$/$50\,\%$ des deux courbes de
+      distribution se situe à $\text{pH} = 7$ (la neutralité, propriété de
+      $K_e$) au lieu de $\text{pH} = pK_A$ (propriété du couple étudié).
+  - id: AB-TIT-1
+    chapter: R9
+    label: "Équivalence assimilée à pH = 7"
+    description: >-
+      Croit que l'équivalence d'un titrage acido-basique correspond
+      toujours à $\text{pH} = 7$ — vrai seulement pour acide fort/base
+      forte ; pour un acide faible dosé par une base forte,
+      $\text{pH}_E > 7$.
+  - id: AB-TIT-2
+    chapter: R9
+    label: "Volumes ou concentrations assimilés à l'équivalence"
+    description: >-
+      Croit que $V_E = V_A$ (ou $C_A = C_B$) systématiquement à
+      l'équivalence — alors que la relation correcte, $C_A V_A = C_B V_E$,
+      ne donne cette égalité que dans le cas particulier $C_A = C_B$.
+  - id: AB-TIT-3
+    chapter: R9
+    label: "Réaction limitée jugée utilisable comme dosage"
+    description: >-
+      Croit qu'une réaction acide-base à l'équilibre (non totale, $K$ ni
+      grand ni petit) peut servir de réaction support à un titrage — alors
+      que l'absence de totalité empêche toute équivalence nette.
+  - id: AB-EQU-1
+    chapter: R10
+    label: "V_E lu à pH = 7"
+    description: >-
+      Croit que le volume équivalent $V_E$ se lit à l'abscisse où
+      $\text{pH} = 7$, au lieu du point d'inflexion (le saut) de la courbe
+      $\text{pH} = f(V)$.
+  - id: AB-EQU-2
+    chapter: R10
+    label: "Dérivée nulle confondue avec dérivée maximale"
+    description: >-
+      Croit que l'équivalence correspond au point où $d\text{pH}/dV = 0$
+      (réflexe d'extremum appliqué au mauvais niveau) — alors qu'à
+      l'équivalence $d\text{pH}/dV$ est **maximale**, pas nulle.
+  - id: AB-EQU-3
+    chapter: R10
+    label: "Demi-équivalence confondue avec équivalence"
+    description: >-
+      Confond le point $V_E/2$ (où $\text{pH} \approx pK_A$) avec
+      l'équivalence elle-même — alors qu'à $V_E/2$ seule la moitié du
+      titré a réagi ; ce sont deux points géométriquement distincts sur la
+      courbe.
+  - id: AB-IND-1
+    chapter: R11
+    label: "N'importe quel indicateur convient"
+    description: >-
+      Croit que le choix de l'indicateur coloré n'a pas d'importance pour
+      repérer $V_E$ — alors qu'un indicateur dont la zone de virage ne
+      contient pas $\text{pH}_E$ vire à un volume qui n'a rien à voir avec
+      l'équivalence.
+  - id: AB-IND-2
+    chapter: R11
+    label: "Virage assimilé à pH = 7"
+    description: >-
+      Croit que tout indicateur coloré vire à $\text{pH} = 7$ — alors que
+      chaque indicateur vire dans sa propre zone, fixée par son propre
+      $pK_A$, sans rapport avec $7$.
+  - id: AB-IND-3
+    chapter: R11
+    label: "Virage assimilé au volume exact"
+    description: >-
+      Croit que le changement de couleur donne le volume équivalent EXACT
+      — alors qu'il n'en donne qu'une bonne approximation, et seulement si
+      la zone de virage encadre $\text{pH}_E$ ; l'indicateur repère
+      l'équivalence, il ne la définit pas.
 
 items:
 
@@ -1117,9 +1212,9 @@ items:
       $K = 10^{pK_{A2}-pK_{A1}} = 10^{0{,}2} \approx 1{,}6$, proche de $1$ :
       ni $K \gg 1$ ni $K \ll 1$, donc $\tau$ reste intermédiaire.
 
-  # ── R8 : application — Ke, neutralité, hors du seul exercice-type ──────────
+  # ── R12 (sommet, ex-R8) : application — Ke, neutralité, hors du seul exercice-type ──
   - id: RAB-25
-    rung: "R8"
+    rung: "R12"
     difficulty_level: 4
     skill_code: pc_reactions_acido_basiques
     tags: []
@@ -1168,7 +1263,7 @@ items:
       K_e/[H_3O^+] \approx 7{,}9\times10^{-11}$ mol/L, bien inférieure.
 
   - id: RAB-26
-    rung: "R8"
+    rung: "R12"
     difficulty_level: 4
     skill_code: pc_reactions_acido_basiques
     tags: []
@@ -1215,7 +1310,7 @@ items:
       inférieure à $[HO^-]$ : la solution est basique.
 
   - id: RAB-27
-    rung: "R8"
+    rung: "R12"
     difficulty_level: 5
     skill_code: pc_reactions_acido_basiques
     tags: []
@@ -1264,3 +1359,740 @@ items:
     solution: |
       Ni $Na^+$ ni $Cl^-$ ne cèdent ou ne captent de proton : l'autoprotolyse
       de l'eau seule fixe $[H_3O^+]=[HO^-]$, le pH reste $7{,}0$.
+
+  # ── R8 : diagramme de distribution — % lus depuis pH et pKA ────────────────
+  - id: RAB-28
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["lecture-graphique"]
+    stem: >
+      Diagramme de distribution du couple $CH_3COOH/CH_3COO^-$
+      ($pK_A = 4{,}8$). À $\text{pH} = 4{,}8$ exactement, quelles
+      proportions lit-on pour les deux formes du couple ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $50\,\%$ de $CH_3COOH$ et $50\,\%$ de $CH_3COO^-$
+        correct: true
+      - id: B
+        text: >-
+          Environ $100\,\%$ de $CH_3COOH$, la forme $CH_3COO^-$ étant en
+          pratique négligeable
+        correct: false
+        misconception: AB-DIST-1
+        feedback: >
+          La frontière $\text{pH} = pK_A$ n'est pas un instant de bascule
+          brutale : à cet endroit précis, l'exposant $pK_A - \text{pH}$ vaut
+          $0$, donc $\%A^- = 100/(1+10^0) = 50$. Les deux formes coexistent
+          à parts strictement égales, rien n'a « déjà disparu ».
+      - id: C
+        text: >-
+          On ne peut donner qu'un verdict qualitatif ici, comme sur le
+          diagramme de prédominance : aucune espèce ne l'emporte nettement,
+          sans qu'on puisse chiffrer davantage
+        correct: false
+        misconception: AB-DIST-2
+        feedback: >
+          Le diagramme de distribution donne justement ce que le diagramme
+          de prédominance ne donne pas : un pourcentage exact. Ici, ce
+          pourcentage se calcule très précisément : $50\,\%$ et $50\,\%$,
+          pas un simple constat d'égalité qualitative.
+      - id: D
+        text: >-
+          Ce croisement à $50\,\%$/$50\,\%$ n'est possible qu'à
+          $\text{pH} = 7$ (la neutralité) ; à $\text{pH} = 4{,}8$ les deux
+          pourcentages ne peuvent pas être égaux
+        correct: false
+        misconception: AB-DIST-3
+        feedback: >
+          Le croisement des deux courbes de distribution se situe à
+          $\text{pH} = pK_A$, une propriété du couple étudié — ici
+          $4{,}8$ — et n'a aucun rapport avec la neutralité de l'eau
+          ($\text{pH} = 7$, propriété de $K_e$).
+    correct_feedback: >
+      $\text{pH} = pK_A = 4{,}8$ annule l'exposant $pK_A - \text{pH}$ :
+      $\%A^- = 100/(1+10^0) = 50$. Les deux formes sont exactement à parts
+      égales.
+    solution: |
+      $$\%A^- = \frac{100}{1+10^{pK_A-\text{pH}}}$$
+
+      À $\text{pH} = pK_A$, l'exposant est nul : $\%A^- = 100/(1+1) = 50$,
+      et donc $\%AH = 50$ aussi, puisque $\%AH + \%A^- = 100$ toujours.
+
+  - id: RAB-29
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Quelle affirmation décrit correctement la différence entre le
+      diagramme de prédominance et le diagramme de distribution d'un
+      couple $AH/A^-$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le croisement à $50\,\%$ des deux courbes de distribution se
+          situe toujours à $\text{pH} = 7$, alors que la frontière du
+          diagramme de prédominance se situe à $pK_A$
+        correct: false
+        misconception: AB-DIST-3
+        feedback: >
+          Les deux frontières se situent en fait au même endroit : le
+          croisement du diagramme de distribution et la frontière du
+          diagramme de prédominance sont tous deux à $\text{pH} = pK_A$,
+          jamais à $7$ (qui ne concerne que la neutralité de l'eau).
+      - id: B
+        text: >-
+          Le diagramme de distribution donne un pourcentage exact de
+          chaque forme en fonction du pH ; le diagramme de prédominance ne
+          dit que quelle forme l'emporte
+        correct: true
+      - id: C
+        text: >-
+          Ce sont deux présentations différentes de la même information :
+          dès qu'on sait quelle forme prédomine, on connaît déjà son
+          pourcentage exact
+        correct: false
+        misconception: AB-DIST-2
+        feedback: >
+          Deux solutions où $A^-$ prédomine peuvent être à $56\,\%$ ou à
+          $99{,}9\,\%$ de $A^-$ : la prédominance ne distingue pas ces deux
+          cas, seul le diagramme de distribution les distingue. Ce n'est
+          donc pas la même information sous une autre forme, mais
+          strictement plus d'information.
+      - id: D
+        text: >-
+          À la frontière $\text{pH} = pK_A$ du diagramme de prédominance,
+          la forme qui va prédominer juste au-dessus est déjà présente à
+          la quasi-totalité
+        correct: false
+        misconception: AB-DIST-1
+        feedback: >
+          À $\text{pH} = pK_A$ pile, les deux formes sont à $50\,\%$
+          chacune : c'est le point où elles sont le plus également
+          représentées de toute la courbe, pas un instant de bascule vers
+          la quasi-totalité.
+    correct_feedback: >
+      La distribution chiffre ($\%AH$, $\%A^-$) ; la prédominance ne fait
+      que désigner un vainqueur. Ce n'est pas la même information : c'est
+      strictement plus d'information.
+    solution: |
+      Le diagramme de prédominance est un axe de pH à une dimension, coupé
+      par une frontière unique à $pK_A$ : il répond à « qui gagne ». Le
+      diagramme de distribution est un graphe à deux dimensions (pourcentage
+      en ordonnée, pH en abscisse) : il répond à « dans quelle proportion ».
+
+  - id: RAB-30
+    rung: "R8"
+    difficulty_level: 5
+    skill_code: pc_reactions_acido_basiques
+    tags: ["lecture-graphique"]
+    stem: >
+      Le couple $NH_4^+/NH_3$ a $pK_A \approx 9{,}2$. Sur le diagramme de
+      distribution de ce couple, à quel pH les deux courbes ($\%NH_4^+$ et
+      $\%NH_3$) se croisent-elles à $50\,\%$ chacune ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À $\text{pH} = 7{,}0$, la neutralité, comme pour tout couple
+          acide/base
+        correct: false
+        misconception: AB-DIST-3
+        feedback: >
+          $\text{pH} = 7{,}0$ fixe la neutralité de l'eau ($pK_e = 14$),
+          une propriété qui ne dépend pas du couple étudié. Le croisement
+          des courbes de distribution, lui, se situe à $\text{pH} = pK_A$
+          du couple — ici $9{,}2$, très loin de $7$.
+      - id: B
+        text: >-
+          À $\text{pH} = 9{,}2$, mais $NH_3$ y est déjà présent à la
+          quasi-totalité, $NH_4^+$ ayant disparu
+        correct: false
+        misconception: AB-DIST-1
+        feedback: >
+          À $\text{pH} = pK_A$, l'exposant $pK_A - \text{pH}$ est nul :
+          $\%NH_3 = 100/(1+10^0) = 50$. Rien n'a disparu à cet endroit,
+          c'est au contraire le point d'égalité parfaite entre les deux
+          formes.
+      - id: C
+        text: >-
+          À $\text{pH} \approx 9{,}2$, le $pK_A$ du couple ; ce croisement
+          n'a aucun rapport avec la neutralité de l'eau
+        correct: true
+      - id: D
+        text: >-
+          Cette question revient à demander où $NH_3$ prédomine :
+          au-dessus de $pK_A$, sans qu'on puisse chiffrer davantage
+        correct: false
+        misconception: AB-DIST-2
+        feedback: >
+          On peut chiffrer bien davantage que « au-dessus de $pK_A$, $NH_3$
+          prédomine » : c'est justement l'intérêt du diagramme de
+          distribution de donner un pourcentage exact, ici $50\,\%$ pile au
+          croisement, et non un simple verdict de prédominance.
+    correct_feedback: >
+      Le croisement à $50\,\%$/$50\,\%$ se situe toujours à
+      $\text{pH} = pK_A$ du couple étudié — ici $9{,}2$ pour $NH_4^+/NH_3$ —
+      et jamais à la neutralité $\text{pH} = 7$, qui est une propriété de
+      l'eau ($pK_e$), pas du couple.
+    solution: |
+      $\%NH_3 = 100/(1+10^{pK_A-\text{pH}})$ vaut $50$ exactement quand
+      l'exposant s'annule, soit $\text{pH} = pK_A \approx 9{,}2$. À
+      $\text{pH} = 7{,}0$, on a déjà établi (rung 5) que
+      $[NH_3]/[NH_4^+] \approx 6{,}3\times10^{-3}$ : $NH_4^+$ écrase $NH_3$,
+      très loin d'un croisement à $50/50$.
+
+  # ── R9 : titrage pH-métrique — équation support, montage, équivalence ──────
+  - id: RAB-31
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale"]
+    stem: >
+      On dose un volume $V_A = 20{,}0$ mL d'une solution d'acide éthanoïque
+      ($pK_A = 4{,}8$) par une solution de soude ($HO^-$) de concentration
+      $C_B = 0{,}10$ mol/L. Concernant l'équivalence de ce dosage, quelle
+      affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le pH à l'équivalence vaut exactement $7$, comme pour tout
+          dosage acide-base
+        correct: false
+        misconception: AB-TIT-1
+        feedback: >
+          C'est vrai seulement pour un acide fort dosé par une base forte.
+          Ici, à l'équivalence, tout l'acide éthanoïque a été converti en
+          ion éthanoate $CH_3COO^-$, une base : le pH à l'équivalence est
+          supérieur à $7$, pas égal à $7$.
+      - id: B
+        text: >-
+          Le volume versé à l'équivalence vaut nécessairement
+          $V_E = V_A = 20{,}0$ mL, puisqu'on neutralise ce volume
+        correct: false
+        misconception: AB-TIT-2
+        feedback: >
+          La relation à l'équivalence est $C_A V_A = C_B V_E$, donc
+          $V_E = C_A V_A / C_B$. $V_E = V_A$ seulement si $C_A = C_B$ :
+          rien ne le garantit ici, où $C_A$ est justement l'inconnue à
+          déterminer.
+      - id: C
+        text: >-
+          Une réaction acide-base même limitée (non totale) donnerait tout
+          aussi bien une équivalence exploitable
+        correct: false
+        misconception: AB-TIT-3
+        feedback: >
+          Une réaction limitée ne va jamais jusqu'au bout : il reste, à
+          tout volume versé, un mélange flou de réactifs et de produits,
+          sans palier net avant/après. C'est justement pour obtenir une
+          équivalence nette qu'on exige $K \gg 1$ (réaction totale, rapide
+          et unique).
+      - id: D
+        text: >-
+          Le pH à l'équivalence est supérieur à $7$ ; il se lit sur le
+          saut de la courbe, sans formule fermée
+        correct: true
+    correct_feedback: >
+      À l'équivalence, la solution ne contient, comme espèce du couple, que
+      la base conjuguée $CH_3COO^-$ : le milieu est basique,
+      $\text{pH}_E > 7$. Cette valeur se lit sur le saut de la courbe
+      expérimentale, elle ne se calcule pas par une formule fermée.
+    solution: |
+      L'équivalence est un fait de stœchiométrie ($C_A V_A = C_B V_E$), pas
+      une valeur de pH imposée. Pour un acide faible dosé par une base
+      forte, l'espèce restante à l'équivalence est la base conjuguée :
+      $\text{pH}_E > 7$, lu graphiquement au rung suivant.
+
+  - id: RAB-32
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale", "TP-aspirine"]
+    stem: >
+      Lors d'un TP, on dose $V_A = 10{,}0$ mL d'une solution d'aspirine
+      (acide acétylsalicylique, un acide faible monoacide, de concentration
+      inconnue $C_A$) par une solution d'hydroxyde de sodium de
+      concentration $C_B = 5{,}0 \times 10^{-2}$ mol/L. La courbe
+      $\text{pH} = f(V)$ relevée donne un volume équivalent
+      $V_E = 12{,}0$ mL. Quelle est la concentration $C_A$ de la solution
+      d'aspirine ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $C_A = C_B V_E / V_A = 6{,}0\times10^{-2}$ mol/L
+        correct: true
+      - id: B
+        text: >-
+          $C_A = C_B = 5{,}0\times10^{-2}$ mol/L, car à l'équivalence les
+          concentrations d'acide et de base sont nécessairement égales
+        correct: false
+        misconception: AB-TIT-2
+        feedback: >
+          La relation à l'équivalence est $C_A V_A = C_B V_E$ : elle relie
+          les concentrations *aux volumes correspondants*, elle ne les rend
+          pas égales entre elles. Ici $V_A \neq V_E$
+          ($10{,}0 \neq 12{,}0$), donc $C_A \neq C_B$.
+      - id: C
+        text: >-
+          Impossible à calculer : la relation $C_A V_A = C_B V_E$ ne vaut
+          que si le pH à l'équivalence est $7$, ce qui n'est pas garanti
+          ici
+        correct: false
+        misconception: AB-TIT-1
+        feedback: >
+          La relation $C_A V_A = C_B V_E$ est une égalité de quantités de
+          matière, tirée uniquement de la stœchiométrie de la réaction :
+          elle ne mentionne le pH nulle part et reste valable même quand
+          $\text{pH}_E \neq 7$ (ce qui est le cas ici, l'aspirine étant un
+          acide faible).
+      - id: D
+        text: >-
+          Le résultat serait le même si la réaction acide-base n'était pas
+          totale : la relation $C_A V_A = C_B V_E$ resterait valable pour
+          une réaction limitée
+        correct: false
+        misconception: AB-TIT-3
+        feedback: >
+          La relation $C_A V_A = C_B V_E$ suppose une réaction support
+          totale ($K \gg 1$) : c'est cette totalité qui rend le volume
+          $V_E$ net et exploitable. Une réaction limitée ne donne aucune
+          équivalence nette à lire sur la courbe.
+    correct_feedback: >
+      $C_A = C_B V_E / V_A = (5{,}0\times10^{-2} \times 12{,}0)/10{,}0 =
+      6{,}0\times10^{-2}\ \text{mol/L}$.
+    solution: |
+      La réaction support (acide faible + $HO^-$, $K \gg 1$) est totale,
+      donc l'équivalence est nette : $C_A V_A = C_B V_E$, soit
+      $$C_A = \frac{C_B V_E}{V_A} = \frac{5{,}0\times10^{-2}\times12{,}0}{10{,}0}
+      = 6{,}0\times10^{-2}\ \text{mol/L}$$
+
+  - id: RAB-33
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Pourquoi la réaction support d'un titrage acido-basique doit-elle
+      être totale, rapide et unique ($K \gg 1$) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Pour garantir que le pH vaille exactement $7$ à l'équivalence
+        correct: false
+        misconception: AB-TIT-1
+        feedback: >
+          La totalité de la réaction ne fixe pas le pH à l'équivalence :
+          elle garantit seulement qu'il existe un volume précis où tout le
+          titré a été consommé. Ce pH dépend des espèces en présence, et
+          n'est égal à $7$ que dans le cas particulier acide fort/base
+          forte.
+      - id: B
+        text: >-
+          Pour que l'équivalence soit une frontière stœchiométrique nette,
+          exploitable par $C_A V_A = C_B V_E$
+        correct: true
+      - id: C
+        text: >-
+          Pour garantir que le volume versé à l'équivalence soit égal au
+          volume initial du titré
+        correct: false
+        misconception: AB-TIT-2
+        feedback: >
+          Rien dans l'exigence $K \gg 1$ n'impose $V_E = V_A$ : cette
+          égalité ne dépend que du rapport des concentrations $C_A$ et
+          $C_B$, pas de la totalité de la réaction.
+      - id: D
+        text: >-
+          Une réaction limitée (à l'équilibre) conviendrait tout aussi
+          bien, du moment qu'on verse assez de titrant
+        correct: false
+        misconception: AB-TIT-3
+        feedback: >
+          Une réaction limitée ne consomme jamais totalement le réactif
+          titré, quel que soit le volume versé : il subsiste toujours un
+          mélange flou, sans palier net qui distingue un « avant » d'un
+          « après ». Aucun volume particulier ne devient alors exploitable
+          comme équivalence.
+    correct_feedback: >
+      $K \gg 1$ rend la réaction quasi totale : le titrant versé est
+      consommé pour de bon, ce qui crée un volume $V_E$ précis où
+      $C_A V_A = C_B V_E$ — une frontière stœchiométrique nette, sans
+      laquelle aucune équivalence ne serait exploitable.
+    solution: |
+      Sans $K \gg 1$, il resterait à tout instant un mélange de réactifs et
+      de produits dans des proportions floues (rung 7) : aucun volume ne
+      marquerait un avant/après tranché, et la relation
+      $C_A V_A = C_B V_E$ perdrait tout sens.
+
+  # ── R10 : repérer l'équivalence — tangentes et dérivée ──────────────────────
+  - id: RAB-34
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale", "lecture-graphique"]
+    stem: >
+      Sur une courbe $\text{pH} = f(V)$ d'un titrage, comment repère-t-on
+      le volume équivalent $V_E$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À l'abscisse où $\text{pH} = 7$
+        correct: false
+        misconception: AB-EQU-1
+        feedback: >
+          $V_E$ ne se lit pas à une valeur de pH fixée d'avance. Dans notre
+          dosage, $\text{pH} = 7$ est atteint *avant* le point d'inflexion,
+          sur la pente montante du saut : lire $V_E$ à cet endroit donnerait
+          un volume trop petit.
+      - id: B
+        text: >-
+          Là où la dérivée $d\text{pH}/dV$ s'annule
+        correct: false
+        misconception: AB-EQU-2
+        feedback: >
+          C'est l'inverse : à l'équivalence, $d\text{pH}/dV$ est
+          **maximale**, pas nulle. La dérivée s'annule plutôt loin du saut,
+          sur les paliers avant et après, là où il ne se passe presque
+          rien.
+      - id: C
+        text: >-
+          Au point d'inflexion de la courbe (milieu du saut), par la
+          méthode des tangentes ou celle de la dérivée
+        correct: true
+      - id: D
+        text: >-
+          À l'abscisse où $\text{pH} = pK_A$, relevée à la demi-équivalence
+        correct: false
+        misconception: AB-EQU-3
+        feedback: >
+          $\text{pH} = pK_A$ repère la **demi-équivalence** ($V_E/2$), un
+          point utile mais distinct de l'équivalence : à $V_E/2$, seule la
+          moitié du titré a réagi, ce n'est pas l'instant « juste
+          stœchiométrique ».
+    correct_feedback: >
+      $V_E$ est le milieu du saut de pH, le point où la pente de la courbe
+      est maximale (point d'inflexion) : on le repère géométriquement par
+      les deux tangentes parallèles et leur médiane, ou par le maximum de
+      la courbe dérivée.
+    solution: |
+      Autour de $V_E$, un tout petit ajout de titrant fait bondir le pH de
+      plusieurs unités (le saut). Le point où la pente est maximale — le
+      point d'inflexion — marque $V_E$ ; les deux méthodes (tangentes,
+      dérivée) doivent s'accorder sur ce même volume.
+
+  - id: RAB-35
+    rung: "R10"
+    difficulty_level: 5
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale", "lecture-graphique"]
+    stem: >
+      Sur la courbe dérivée $d\text{pH}/dV = f(V)$ d'un dosage, quel
+      critère permet de repérer $V_E$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le point où $d\text{pH}/dV = 0$, comme pour tout extremum
+        correct: false
+        misconception: AB-EQU-2
+        feedback: >
+          C'est un réflexe qui vient d'ailleurs, appliqué au mauvais
+          niveau : ici ce n'est pas le pH qu'on maximise, c'est sa dérivée.
+          $d\text{pH}/dV$ vaut à peu près $0$ sur les paliers (loin de
+          $V_E$) et culmine en un seul pic au milieu du saut — c'est ce pic
+          qui marque $V_E$, pas un zéro.
+      - id: B
+        text: >-
+          L'abscisse à laquelle le pH (lu sur la courbe $\text{pH}=f(V)$
+          initiale) vaut $7$
+        correct: false
+        misconception: AB-EQU-1
+        feedback: >
+          Cette confusion plaque une valeur de pH fixée d'avance sur la
+          lecture graphique. $V_E$ se lit au saut (le point d'inflexion,
+          pente maximale), jamais à $\text{pH} = 7$.
+      - id: C
+        text: >-
+          L'abscisse de la demi-équivalence, où l'on peut lire $pK_A$
+        correct: false
+        misconception: AB-EQU-3
+        feedback: >
+          La demi-équivalence ($V_E/2$, où $\text{pH} \approx pK_A$) est un
+          point géométriquement distinct de l'équivalence : à cet endroit,
+          la dérivée $d\text{pH}/dV$ n'est pas à son maximum, elle est
+          encore en train de monter.
+      - id: D
+        text: >-
+          Le maximum de $d\text{pH}/dV$
+        correct: true
+    correct_feedback: >
+      Le pH varie le plus vite exactement au saut : c'est là que
+      $d\text{pH}/dV$ atteint son maximum, et cette abscisse coïncide avec
+      $V_E$ trouvé par la méthode des tangentes.
+    solution: |
+      La courbe $d\text{pH}/dV = f(V)$ monte, passe par un pic, puis
+      redescend. Le pic marque l'endroit où $\text{pH}=f(V)$ varie le plus
+      vite, donc $V_E$ — jamais un zéro de la dérivée.
+
+  - id: RAB-36
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale", "lecture-graphique", "dual-tag:R4-pKA"]
+    stem: >
+      Sur la courbe du dosage de l'acide éthanoïque ($pK_A = 4{,}8$,
+      $V_A = 20{,}0$ mL, soude $C_B = 0{,}10$ mol/L, $V_E = 15{,}0$ mL), on
+      lit à $V = 7{,}5$ mL un $\text{pH} \approx 4{,}8$. Que représente ce
+      point ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La demi-équivalence : la moitié du titré a réagi ; ce n'est pas
+          l'équivalence, qui se situe à $V_E = 15{,}0$ mL
+        correct: true
+      - id: B
+        text: >-
+          L'équivalence elle-même, puisqu'on y lit un pH caractéristique
+          du couple
+        correct: false
+        misconception: AB-EQU-3
+        feedback: >
+          $7{,}5$ mL est exactement la moitié de $V_E = 15{,}0$ mL : c'est
+          la demi-équivalence, pas l'équivalence. Ce sont deux points
+          géométriquement distincts sur la courbe — seul $V=15{,}0$ mL est
+          le point d'inflexion (le saut).
+      - id: C
+        text: >-
+          Le point où le pH de la solution vaut $7$ (la neutralité)
+        correct: false
+        misconception: AB-EQU-1
+        feedback: >
+          Le pH lu ici est $4{,}8$, pas $7$ : ce point n'a rien à voir avec
+          la neutralité. Il coïncide avec $pK_A$ du couple titré, une
+          propriété propre à ce couple, sans rapport avec $\text{pH}=7$.
+      - id: D
+        text: >-
+          Un point sans intérêt : seul le point où $d\text{pH}/dV = 0$
+          permettrait de conclure quoi que ce soit sur l'équivalence
+        correct: false
+        misconception: AB-EQU-2
+        feedback: >
+          Ce point est au contraire très utile : il donne accès au $pK_A$
+          du couple sans calcul. Et ce n'est de toute façon pas un zéro de
+          la dérivée qui marque l'équivalence, mais son maximum (au saut,
+          $V=15{,}0$ mL).
+    correct_feedback: >
+      À $V_E/2 = 7{,}5$ mL, seule la moitié du titré initial a réagi : le
+      titré reste majoritairement en excès. On y lit $\text{pH} \approx
+      pK_A$ (rung 4) — un repère utile, mais distinct de l'équivalence, qui
+      se situe au saut, $V_E = 15{,}0$ mL.
+    solution: |
+      À la demi-équivalence, $n_{\text{titré restant}} = n_{\text{produit
+      formé}}$, donc $[AH]_{eq} \approx [A^-]_{eq}$ et
+      $\text{pH} \approx pK_A$ (rung 4, rung 5). C'est un point distinct de
+      l'équivalence : sur la courbe, ce n'est pas le point d'inflexion.
+
+  # ── R11 : choisir l'indicateur coloré — la zone de virage ──────────────────
+  - id: RAB-37
+    rung: "R11"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale", "lecture-graphique"]
+    stem: >
+      Dosage d'un acide faible par une base forte, $\text{pH}_E \approx
+      8{,}5$ (lu sur la courbe). Indicateurs disponibles : hélianthine
+      ($3{,}1$–$4{,}4$), BBT ($6{,}0$–$7{,}6$), phénolphtaléine
+      ($8{,}2$–$10{,}0$). Lequel choisir, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'hélianthine convient aussi : le changement de couleur donnera
+          de toute façon le volume exact à l'équivalence
+        correct: false
+        misconception: AB-IND-3
+        feedback: >
+          Le changement de couleur d'un indicateur n'approche $V_E$ que si
+          sa zone de virage encadre $\text{pH}_E$. La zone de l'hélianthine
+          ($3{,}1$–$4{,}4$) est très loin de $\text{pH}_E \approx 8{,}5$ :
+          elle virerait bien avant l'équivalence, à un volume beaucoup trop
+          petit.
+      - id: B
+        text: >-
+          La phénolphtaléine, car sa zone de virage ($8{,}2$–$10{,}0$) est
+          la seule à contenir $\text{pH}_E = 8{,}5$
+        correct: true
+      - id: C
+        text: >-
+          N'importe lequel des trois convient ; le choix de l'indicateur
+          n'a pas d'importance pour repérer $V_E$
+        correct: false
+        misconception: AB-IND-1
+        feedback: >
+          Un indicateur dont la zone de virage ne contient pas
+          $\text{pH}_E$ vire trop tôt ou trop tard, ce qui fausse la
+          lecture de $V_E$. Ici, seule la phénolphtaléine convient ;
+          l'hélianthine et le BBT donneraient un volume erroné.
+      - id: D
+        text: >-
+          Le BBT, car sa zone de virage est centrée près de
+          $\text{pH} = 7$, la valeur à laquelle un indicateur doit toujours
+          virer
+        correct: false
+        misconception: AB-IND-2
+        feedback: >
+          Chaque indicateur vire dans SA propre zone, fixée par son
+          $pK_A$, sans rapport avec $7$. Le critère de choix est de
+          contenir $\text{pH}_E$ de CE dosage — ici $8{,}5$, que le BBT
+          ($6{,}0$–$7{,}6$) ne contient pas.
+    correct_feedback: >
+      La zone de virage doit encadrer $\text{pH}_E$. Seule la
+      phénolphtaléine ($8{,}2$–$10{,}0$) contient $8{,}5$ : c'est elle qui
+      donnera un changement de couleur au voisinage du saut.
+    solution: |
+      On superpose chaque zone de virage au saut de la courbe : la bande
+      qui coupe le saut est retenue. Hélianthine et BBT sont écartés (leurs
+      zones ne contiennent pas $8{,}5$) ; seule la phénolphtaléine convient.
+
+  - id: RAB-38
+    rung: "R11"
+    difficulty_level: 3
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Que représente, pour un indicateur coloré, sa « zone de virage » ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un intervalle de pH centré près de $7$, valable pour tous les
+          indicateurs
+        correct: false
+        misconception: AB-IND-2
+        feedback: >
+          Il n'existe pas d'intervalle universel : chaque indicateur a sa
+          propre zone de virage, fixée par son propre $pK_A$. Le BBT est
+          simplement, par coïncidence, celui dont la zone est proche de
+          $7$ — ce n'est pas une règle générale.
+      - id: B
+        text: >-
+          Le volume exact où l'équivalence a lieu, repéré sans ambiguïté
+          par le changement de couleur
+        correct: false
+        misconception: AB-IND-3
+        feedback: >
+          La zone de virage est un intervalle de pH, pas un volume. Le
+          changement de couleur donne une bonne approximation de $V_E$
+          seulement si cette zone encadre $\text{pH}_E$ — jamais une valeur
+          exacte garantie.
+      - id: C
+        text: >-
+          Un intervalle de pH, approximativement $pK_A(\text{indicateur})
+          \pm 1$, propre à chaque indicateur
+        correct: true
+      - id: D
+        text: >-
+          N'importe quel indicateur suffit à repérer l'équivalence de
+          n'importe quel dosage, quelle que soit sa zone de virage
+        correct: false
+        misconception: AB-IND-1
+        feedback: >
+          Si la zone de virage ne contient pas $\text{pH}_E$ du dosage
+          considéré, l'indicateur vire à un volume qui n'a rien à voir avec
+          l'équivalence : le choix de l'indicateur compte, dosage par
+          dosage.
+    correct_feedback: >
+      Un indicateur coloré est un couple $HIn/In^-$ ; sa zone de virage,
+      $\approx pK_A(\text{indicateur}) \pm 1$, est l'intervalle où les deux
+      couleurs coexistent de façon perceptible.
+    solution: |
+      En dehors de cette zone, une seule forme (donc une seule couleur)
+      domine à plus de $\sim 91\,\%$ (rung 8) : la zone de virage est
+      justement l'intervalle où aucune des deux couleurs n'écrase l'autre.
+
+  - id: RAB-39
+    rung: "R11"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: ["application-experimentale"]
+    stem: >
+      Même avec un indicateur bien choisi (sa zone de virage encadrant
+      $\text{pH}_E$), le changement de couleur donne-t-il le volume
+      équivalent exact ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui, toujours et avec une précision parfaite, car l'indicateur
+          définit l'équivalence
+        correct: false
+        misconception: AB-IND-3
+        feedback: >
+          L'indicateur **repère** l'équivalence, il ne la **définit** pas :
+          la définition reste celle du rung 9, une égalité de quantités de
+          matière ($C_A V_A = C_B V_E$). Le virage donne une bonne
+          approximation, pas une valeur exacte garantie.
+      - id: B
+        text: >-
+          Cela n'a pas d'importance : n'importe quel indicateur donnerait
+          une lecture équivalente
+        correct: false
+        misconception: AB-IND-1
+        feedback: >
+          Seul un indicateur dont la zone de virage encadre $\text{pH}_E$
+          donne une lecture proche de $V_E$. Un indicateur mal choisi (zone
+          hors du saut) donne un volume franchement faux, pas simplement
+          « équivalent ».
+      - id: C
+        text: >-
+          Oui, car tout indicateur vire précisément à $\text{pH} = 7$, qui
+          définit l'équivalence
+        correct: false
+        misconception: AB-IND-2
+        feedback: >
+          Ni la prémisse (chaque indicateur vire dans SA propre zone, pas à
+          $7$) ni la conclusion (l'équivalence n'est pas définie par
+          $\text{pH}=7$) ne sont correctes ici.
+      - id: D
+        text: >-
+          Une bonne approximation seulement, car la zone de virage encadre
+          $\text{pH}_E$ ; cela reste une lecture graphique, pas la
+          définition de l'équivalence
+        correct: true
+    correct_feedback: >
+      Le virage se produit dans l'intervalle raide du saut, donc à un
+      volume très proche de $V_E$ — mais seulement une approximation, à
+      condition que la zone encadre $\text{pH}_E$. La référence reste la
+      lecture par tangentes ou dérivée (rung 10).
+    solution: |
+      L'indicateur repère l'équivalence sans la définir : la définition de
+      référence est la relation de quantités de matière (rung 9),
+      confirmée par la méthode des tangentes ou de la dérivée (rung 10).
+
+# ── Couverture des misconceptions (plancher ≥ 3 items/misconception) ─────────
+# spec-extension.md §6 : les 12 items neufs (RAB-28 → RAB-39) couvrent chacun
+# les 3 misconceptions de leur chapitre (un distracteur par misconception, par
+# item) : chaque misconception du cluster atteint donc exactement 3 items.
+coverage_summary:
+  AB-DIST-1: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+  AB-DIST-2: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+  AB-DIST-3: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+  AB-TIT-1: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+  AB-TIT-2: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+  AB-TIT-3: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+  AB-EQU-1: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+  AB-EQU-2: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+  AB-EQU-3: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+  AB-IND-1: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+  AB-IND-2: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+  AB-IND-3: { count: 3, items: [RAB-37, RAB-38, RAB-39] }

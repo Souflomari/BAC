@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La courbe pH = f(V) d'un dosage, avec trois points distingués : le point où pH = 7 (bien avant le saut, ce n'est pas l'équivalence), la demi-équivalence à V_E/2 = 7,5 mL où pH ≈ pKA ≈ 4,8, et le véritable point d'équivalence E à V_E = 15,0 mL, pH_E ≈ 8,5.">
+  <title>Trois lectures sur la courbe de dosage — lequel est l&#8217;équivalence ?</title>
+  <!--
+    lecture-Ve-courbe-dosage.svg — figure STAGED (4 étapes), rung R10,
+    remplace le marqueur [[embed:lecture-Ve-courbe-dosage]] par une version
+    statique (vague de comblement de couverture, cf. brief). Reprend
+    l'exemple travaillé « les trois lectures sur la même courbe » et vise
+    directement AB-EQU-1 (pH=7 confondu avec l'équivalence) et AB-EQU-3
+    (demi-équivalence confondue avec l'équivalence).
+
+    Même repère que equivalence-methode-tangentes.svg / zone-virage-sur-
+    saut.svg (cohérence du corpus) : x(V)=90+20·V, y(pH)=300−16·pH ; même
+    courbe pH=f(V) (mêmes 4 points ancrés).
+
+    Point pH=7 (le piège AB-EQU-1) : situé sur la branche montante, AVANT le
+    point d'inflexion — calculé en résolvant x(t) sur le tracé Bézier de la
+    courbe pour y=188 (soit pH=7 exact via y=300−16·pH), non deviné : le
+    paramètre t≈0,72 du deuxième segment donne (356,188), soit V≈13,3 mL,
+    nettement avant V_E=15,0 mL. Le texte du rung est explicite sur ce point
+    ("le pH vaut 7 quelque part avant le point d'inflexion") — aucune valeur
+    de V n'est imprimée sur la figure pour ce point (le texte ne la donne
+    pas ; seul le VERDICT qualitatif "avant le saut, donc pas V_E" est monté).
+
+    Rôle des couleurs (une seule idée en accent : LE VRAI POINT
+    D'ÉQUIVALENCE E, distingué des deux points qui lui ressemblent) :
+      point d'équivalence E (le seul valide)     : --figure-accent
+      courbe pH=f(V)                              : --figure-ink
+      point pH=7 (piège) + demi-équivalence       : --figure-ink-soft
+      axes / ticks                                : --figure-ink-soft
+
+    Mise en étapes (axes → données → lecture, dans l'ORDRE du texte : les
+    deux points qui ne sont PAS la réponse, puis la réponse) :
+      step-1 : les axes.
+      step-2 : la courbe pH = f(V).
+      step-3 : deux points qui ne sont PAS l'équivalence — pH = 7 (avant le
+               saut) et la demi-équivalence V_E/2 (pH ≈ pKA).
+      step-4 : le vrai point d'équivalence E, au milieu du saut.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Trois lectures sur la courbe de dosage — lequel est V<tspan dy="3" font-size="8.5">E</tspan><tspan dy="-3"> ?</tspan></text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="34" width="592" height="296" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="78" y1="300" x2="612" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="612,300 600,295.5 600,304.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="312" x2="90" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,50 85.5,61 94.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="614" y="304" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">V (mL)</text>
+    <text x="84" y="44" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">pH</text>
+
+    <line x1="90" y1="297" x2="90" y2="303" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="90" y="316" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <line x1="190" y1="297" x2="190" y2="303" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="190" y="316" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">5</text>
+    <line x1="290" y1="297" x2="290" y2="303" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="290" y="316" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">10</text>
+    <line x1="390" y1="297" x2="390" y2="303" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="390" y="316" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">15</text>
+    <line x1="490" y1="297" x2="490" y2="303" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="490" y="316" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">20</text>
+    <line x1="590" y1="297" x2="590" y2="303" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="590" y="316" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">25</text>
+
+    <line x1="87" y1="300" x2="93" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="80" y="303" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <line x1="87" y1="236" x2="93" y2="236" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="80" y="239" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">4</text>
+    <line x1="87" y1="188" x2="93" y2="188" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="80" y="191" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">7</text>
+    <line x1="87" y1="172" x2="93" y2="172" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="80" y="175" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">8</text>
+    <line x1="87" y1="108" x2="93" y2="108" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="80" y="111" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">12</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la courbe pH = f(V)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M90,253.6
+             C123.3,246.9 193.3,239.9 240,223.2
+             C286.7,206.5 360,200.7 390,164
+             C420,127.3 550,116.2 590,111.2"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — deux points qui ne sont PAS l'équivalence
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- pH = 7 : bien avant le saut (piège AB-EQU-1) -->
+    <line x1="90" y1="188" x2="356" y2="188" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="356" cy="188" r="4" fill="var(--figure-ink-soft)"/>
+    <line x1="352" y1="180" x2="330" y2="166" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="326" y="153" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">ici, pH = 7 — avant le saut,</text>
+    <text x="326" y="166" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">ce n&#8217;est PAS V<tspan dy="3" font-size="8">E</tspan></text>
+
+    <!-- Demi-équivalence : V_E/2 = 7,5 mL, pH ≈ pKA ≈ 4,8 -->
+    <line x1="240" y1="223.2" x2="240" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="240" cy="223.2" r="4" fill="var(--figure-ink-soft)"/>
+    <text x="120" y="216" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">demi-équivalence : V<tspan dy="3" font-size="8">E</tspan><tspan dy="-3">/2 = 7,5 mL</tspan></text>
+    <text x="120" y="229" text-anchor="start" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">pH ≈ pK<tspan dy="3" font-size="7">A</tspan><tspan dy="-3"> ≈ 4,8 — pas non plus V</tspan><tspan dy="3" font-size="7">E</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — le vrai point d'équivalence E
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <line x1="390" y1="164" x2="390" y2="300" stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="90" y1="164" x2="390" y2="164" stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <circle cx="390" cy="164" r="5" fill="var(--figure-accent)"/>
+    <text x="399" y="149" font-size="12.5" font-weight="700" fill="var(--figure-accent)">E</text>
+    <text x="404" y="199" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">V<tspan dy="3" font-size="8">E</tspan><tspan dy="-3"> = 15,0 mL</tspan></text>
+    <text x="98" y="180" text-anchor="start" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">pH<tspan dy="3" font-size="8">E</tspan><tspan dy="-3"> ≈ 8,5</tspan></text>
+    <text x="399" y="215" font-size="9.5" font-style="italic" fill="var(--figure-accent)">le point d&#8217;inflexion, au milieu du saut</text>
+  </g><!-- /step-4 -->
+
+</svg>

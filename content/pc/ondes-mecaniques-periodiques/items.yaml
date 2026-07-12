@@ -1,6 +1,39 @@
 notion: ondes-mecaniques-periodiques
 skill_code: pc_ondes_mecaniques_periodiques
-misconceptions: []
+misconceptions:
+  - id: OND-DIF-1
+    description: >
+      Condition de diffraction inversée : croit qu'il faut une ouverture
+      grande devant $\lambda$ ($a \gg \lambda$) pour observer une
+      diffraction notable, alors que c'est l'inverse ($a \lesssim \lambda$).
+  - id: OND-DIF-2
+    description: >
+      Croit que l'onde diffractée change de fréquence, de longueur d'onde
+      ou de célérité par rapport à l'onde incidente, alors que la
+      diffraction ne change jamais $f$, $\lambda$ ni $c$ — seulement la
+      géométrie de propagation.
+  - id: OND-DIF-3
+    description: >
+      Intuition « jet d'eau » : croit qu'une ouverture plus petite
+      concentre l'onde en un faisceau plus fin, alors qu'au contraire une
+      ouverture de l'ordre de $\lambda$, ou plus petite, fait s'étaler
+      l'onde sur un domaine angulaire plus large.
+  - id: OND-DISP-1
+    description: >
+      Croit que la célérité d'une onde dans un milieu est toujours une
+      constante fixe du milieu, la même pour toutes les fréquences —
+      ignore l'existence des milieux dispersifs.
+  - id: OND-DISP-2
+    description: >
+      Confond « dispersif » avec « qui atténue / absorbe l'onde » : croit
+      que la dispersion est une perte d'énergie, alors qu'elle ne concerne
+      que la dépendance de $c$ en $f$ (dispersion et amortissement sont des
+      propriétés indépendantes).
+  - id: OND-DISP-3
+    description: >
+      Croit que, dans un milieu dispersif, c'est la fréquence de l'onde qui
+      change au cours de la propagation, alors que $f$ reste fixée par la
+      source — c'est la célérité qui diffère d'une fréquence à l'autre.
 
 items:
   - id: OMPP-1
@@ -926,7 +959,7 @@ items:
       dans les deux cas.
 
   - id: OMPP-16
-    rung: "R5"
+    rung: "R7"
     difficulty_level: 4
     skill_code: pc_ondes_mecaniques_periodiques
     tags: [dephasage, concordance_opposition, retard, calcul]
@@ -994,7 +1027,7 @@ items:
       confirmée.
 
   - id: OMPP-17
-    rung: "R5"
+    rung: "R7"
     difficulty_level: 4
     skill_code: pc_ondes_mecaniques_periodiques
     tags: [periodicite_spatiale, milieu_de_propagation, concordance_opposition, calcul]
@@ -1053,7 +1086,7 @@ items:
       0{,}08\ \text{m}$.
 
   - id: OMPP-18
-    rung: "R5"
+    rung: "R7"
     difficulty_level: 5
     skill_code: pc_ondes_mecaniques_periodiques
     tags: [dephasage, calcul, frequence, periodicite_spatiale]
@@ -1110,3 +1143,439 @@ items:
       $$\lambda = \frac{2\pi d}{\Delta\varphi} = \frac{2\pi \times 1{,}8}{6\pi} = 0{,}6\ \text{m}$$
       $$T = \frac{\lambda}{c} = \frac{0{,}6}{3} = 0{,}2\ \text{s}$$
       $$f = \frac{1}{T} = \frac{1}{0{,}2} = 5\ \text{Hz}$$
+
+  - id: OMPP-19
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction]
+    stem: >
+      Une onde progressive périodique, de longueur d'onde $\lambda$, arrive
+      sur une ouverture (une fente) de largeur $a$. Dans quel cas la
+      diffraction sera-t-elle notable derrière l'ouverture ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Quand la fréquence de l'onde diminue au moment où elle franchit
+          l'ouverture.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          Il n'existe aucune diminution de fréquence au passage d'une
+          ouverture : $f$ est fixée par la source, seulement par elle, et
+          une fente n'est pas une source. La condition de diffraction ne
+          porte jamais sur une variation de $f$ — qui n'a pas lieu — mais
+          sur la comparaison entre $a$ et $\lambda$.
+      - id: B
+        text: >-
+          Quand $a$ devient très petite : l'onde se concentre alors en un
+          faisceau de plus en plus étroit derrière l'ouverture.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse de ce que montre l'expérience : quand $a$ diminue
+          vers $\lambda$, ou en dessous, l'onde ne se concentre pas — elle
+          s'étale sur un domaine angulaire de plus en plus large, comme si
+          l'ouverture devenait une nouvelle source.
+      - id: C
+        text: >-
+          Quand $a$ est de l'ordre de $\lambda$, ou inférieure à $\lambda$
+          ($a \lesssim \lambda$).
+        correct: true
+      - id: D
+        text: >-
+          Quand $a$ est très grande devant $\lambda$ ($a \gg \lambda$).
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          C'est l'inverse de la condition réelle : une ouverture très grande
+          devant $\lambda$ laisse l'onde passer presque en ligne droite,
+          sans diffraction notable. C'est au contraire une ouverture petite
+          — de l'ordre de $\lambda$, ou plus petite — qui fait diffracter
+          l'onde nettement.
+    correct_feedback: >
+      La diffraction devient notable dès que la dimension $a$ de
+      l'ouverture se rapproche de $\lambda$, ou devient plus petite qu'elle
+      : c'est une comparaison entre deux longueurs, jamais une valeur
+      absolue de $a$.
+    solution: |
+      La diffraction n'est pas déterminée par la valeur absolue de $a$,
+      mais par sa comparaison à $\lambda$ : $a \lesssim \lambda$. Une
+      ouverture grande devant $\lambda$ laisse l'onde presque inchangée en
+      direction (elle passe tout droit) ; une ouverture de l'ordre de
+      $\lambda$, ou plus petite, force l'onde à s'étaler derrière elle. Ni
+      la fréquence ni la géométrie du faisceau (concentration) n'entrent
+      dans cette condition.
+
+  - id: OMPP-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, application_experimentale]
+    stem: >
+      Dans une expérience de diffraction, un émetteur d'ultrasons de
+      fréquence $f = 25\ \text{kHz}$ envoie une onde dans l'air ($c \approx
+      340\ \text{m/s}$, donc $\lambda \approx 1{,}4\ \text{cm}$) vers une
+      fente de largeur réglable. Un récepteur mobile, placé sur un arc de
+      cercle centré sur la fente, mesure l'amplitude reçue selon la
+      direction. On compare deux fentes : $a_1 = 20\ \text{cm}$ et
+      $a_2 = 1\ \text{cm}$. Avec laquelle des deux le récepteur détecte-t-il
+      un signal sur un large domaine angulaire, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Avec $a_2 = 1\ \text{cm}$, car $a_2$ est du même ordre de
+          grandeur que $\lambda \approx 1{,}4\ \text{cm}$ : l'onde s'étale
+          nettement derrière cette fente.
+        correct: true
+      - id: B
+        text: >-
+          Avec $a_2 = 1\ \text{cm}$, car franchir une ouverture aussi
+          étroite abaisse la fréquence de l'onde reçue, qui se propage
+          alors sur un plus grand domaine angulaire.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La fréquence reçue ne change pas : elle reste $25\ \text{kHz}$,
+          fixée par l'émetteur, quelle que soit la fente traversée. Ce
+          n'est pas une baisse de fréquence qui explique l'étalement, mais
+          la comparaison $a_2 \lesssim \lambda$.
+      - id: C
+        text: >-
+          Avec $a_1 = 20\ \text{cm}$, car il faut une ouverture large
+          devant $\lambda$ pour bien diffuser l'onde tout autour d'elle.
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          $a_1 = 20\ \text{cm}$ est très grande devant $\lambda \approx
+          1{,}4\ \text{cm}$ : l'onde la traverse presque en ligne droite,
+          sans étalement notable — l'inverse d'un large domaine angulaire.
+          C'est une ouverture petite, pas grande, qui produit la
+          diffraction.
+      - id: D
+        text: >-
+          Avec $a_2 = 1\ \text{cm}$, car une ouverture plus étroite
+          concentre l'onde reçue dans un faisceau plus fin, dans le
+          prolongement direct de la fente.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse : avec $a_2$, le récepteur détecte un signal sur
+          un domaine angulaire plus LARGE, pas plus concentré — l'onde
+          s'étale derrière une ouverture étroite, elle ne s'y focalise pas.
+    correct_feedback: >
+      $a_2 = 1\ \text{cm}$ est de l'ordre de $\lambda \approx
+      1{,}4\ \text{cm}$ : la diffraction y est notable, et le récepteur
+      détecte un signal sur un large domaine angulaire. Avec $a_1 =
+      20\ \text{cm} \gg \lambda$, l'onde reste concentrée dans le
+      prolongement de la fente.
+    solution: |
+      $$\lambda = \frac{c}{f} = \frac{340}{25\,000} \approx 1{,}4\times10^{-2}\ \text{m} = 1{,}4\ \text{cm}$$
+      $a_1 = 20\ \text{cm} \gg \lambda$ : diffraction négligeable, signal
+      reçu concentré dans l'axe de la fente. $a_2 = 1\ \text{cm} \lesssim
+      \lambda$ : diffraction notable, signal reçu étalé sur un large
+      domaine angulaire. Dans les deux cas, $f$, $\lambda$ et $c$ de l'onde
+      reçue restent inchangés — seule la géométrie de propagation diffère.
+
+  - id: OMPP-21
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, frequence, periodicite_spatiale, milieu_de_propagation]
+    stem: >
+      Une onde ultrasonore de fréquence $f = 30\ \text{kHz}$ se propage
+      dans l'air ($c \approx 340\ \text{m/s}$, donc $\lambda \approx
+      1{,}13\ \text{cm}$) et traverse une fente de largeur $a =
+      8\ \text{mm}$, avant de continuer sa propagation dans le même air.
+      Que peut-on dire de la fréquence, de la longueur d'onde et de la
+      célérité de l'onde une fois passée la fente, par rapport à l'onde
+      incidente ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'onde ressort concentrée dans l'axe de la fente, en un faisceau
+          plus étroit qu'avant, comme un jet d'eau resserré par un petit
+          trou.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse de ce que montre l'expérience : derrière une
+          ouverture de l'ordre de $\lambda$, l'onde s'étale sur un large
+          domaine angulaire, elle ne se concentre pas en un faisceau fin.
+      - id: B
+        text: >-
+          Comme $a < \lambda$, il n'y a pas de diffraction dans ce cas : il
+          aurait fallu $a \gg \lambda$ pour que l'onde franchisse la
+          fente ; ici, l'onde est arrêtée par l'ouverture.
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          C'est l'inverse : $a = 8\ \text{mm} \lesssim \lambda \approx
+          1{,}13\ \text{cm}$ est précisément la condition d'une diffraction
+          notable, pas d'un blocage. Une ouverture grande devant $\lambda$
+          laisserait l'onde presque tout droit ; une ouverture de l'ordre
+          de $\lambda$ ou plus petite la fait diffracter — jamais
+          l'arrêter.
+      - id: C
+        text: >-
+          La fréquence diminue légèrement après la fente, car l'onde a été
+          perturbée par le passage dans une ouverture étroite.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La fréquence ne dépend que de la source, jamais du passage par
+          une ouverture : une fente n'est pas une source, elle ne peut pas
+          modifier le rythme déjà imposé. $f$ reste $30\ \text{kHz}$ après
+          comme avant la fente.
+      - id: D
+        text: >-
+          La fréquence, la longueur d'onde et la célérité restent toutes
+          les trois inchangées : seule la géométrie de propagation
+          (l'étalement) change.
+        correct: true
+    correct_feedback: >
+      La diffraction ne change jamais $f$ (fixée par la source), ni $c$
+      (fixée par le milieu, ici le même air des deux côtés), ni donc
+      $\lambda = c/f$ : elle ne change que la direction et l'étendue
+      angulaire de la propagation.
+    solution: |
+      $$\lambda = \frac{c}{f} = \frac{340}{30\,000} \approx 1{,}13\times10^{-2}\ \text{m}$$
+      $a = 8\ \text{mm} \lesssim \lambda \approx 1{,}13\ \text{cm}$ : la
+      diffraction est notable. Mais $f$ est fixée par l'émetteur (pas par
+      la fente) et $c$ par le milieu (le même air avant et après) : les
+      deux restent inchangées, donc $\lambda = c/f$ aussi. Seule la
+      géométrie de propagation — l'étalement de l'onde derrière la fente —
+      est modifiée.
+
+  - id: OMPP-22
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [milieu_dispersif]
+    stem: >
+      Qu'est-ce qui définit un milieu dispersif, pour une onde mécanique
+      périodique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un milieu où la célérité de l'onde est une constante fixe, la
+          même pour toutes les fréquences.
+        correct: false
+        misconception: OND-DISP-1
+        feedback: >
+          C'est la définition d'un milieu NON dispersif. Un milieu
+          dispersif, au contraire, est un milieu où la célérité varie
+          d'une fréquence à l'autre : la constance de $c$ pour toutes les
+          fréquences n'est vraie que dans le cas non dispersif.
+      - id: B
+        text: >-
+          Un milieu où la célérité $c$ de l'onde dépend de sa fréquence
+          $f$.
+        correct: true
+      - id: C
+        text: >-
+          Un milieu où la fréquence de l'onde change au cours de sa
+          propagation.
+        correct: false
+        misconception: OND-DISP-3
+        feedback: >
+          La fréquence reste, à chaque instant, celle que la source a
+          imposée — dans un milieu dispersif comme dans un milieu non
+          dispersif. Ce qui dépend de la fréquence, dans un milieu
+          dispersif, c'est la célérité, pas l'inverse.
+      - id: D
+        text: >-
+          Un milieu où l'onde perd de l'énergie en se propageant (elle
+          s'atténue au fur et à mesure).
+        correct: false
+        misconception: OND-DISP-2
+        feedback: >
+          La dispersion ne concerne pas une perte d'énergie : un milieu
+          peut disperser une onde sans l'atténuer, ou l'atténuer sans la
+          disperser. Ce sont deux propriétés indépendantes ; ne confonds
+          pas dispersion et amortissement.
+    correct_feedback: >
+      Un milieu dispersif est un milieu où la célérité $c$ dépend de la
+      fréquence $f$ de l'onde qui le traverse ; il est non dispersif si
+      toutes les fréquences y ont la même célérité.
+    solution: |
+      Le test opératoire : envoyer deux ondes de fréquences différentes
+      dans le milieu et comparer leurs célérités. Si elles sont égales, le
+      milieu est non dispersif ; si elles diffèrent, il est dispersif.
+      Rien, dans cette définition, ne porte sur une perte d'énergie
+      (amortissement) ou sur un changement de fréquence en cours de route :
+      $f$ reste fixée par la source, et $c$ (constante seulement dans le
+      cas non dispersif) est la seule grandeur qui dépend de $f$.
+
+  - id: OMPP-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [milieu_dispersif, frequence, milieu_de_propagation, calcul]
+    stem: >
+      Dans un premier milieu, on mesure la célérité de deux ondes de
+      fréquences différentes : $c_1 = 1500\ \text{m/s}$ à $f_1 =
+      2\ \text{kHz}$, et $c_2 = 1500\ \text{m/s}$ à $f_2 = 8\ \text{kHz}$.
+      Dans un second milieu, on mesure $c_1' = 2{,}0\ \text{m/s}$ à $f_1$,
+      et $c_2' = 1{,}4\ \text{m/s}$ à $f_2$. Que peut-on conclure sur la
+      nature dispersive de ces deux milieux ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Dans le second milieu, c'est la fréquence de l'onde qui a changé
+          entre les deux mesures, pas sa célérité : on a en réalité mesuré
+          la même onde à deux instants différents.
+        correct: false
+        misconception: OND-DISP-3
+        feedback: >
+          Les deux mesures portent sur deux ondes de fréquences
+          différentes, $f_1$ et $f_2$, imposées chacune par leur propre
+          source — la fréquence de chaque onde ne change pas en cours de
+          route. Ce sont leurs célérités qui diffèrent, pas leurs
+          fréquences.
+      - id: B
+        text: >-
+          Les deux milieux sont dispersifs : dans les deux cas, l'onde se
+          propage sur une grande distance et perd donc de l'énergie.
+        correct: false
+        misconception: OND-DISP-2
+        feedback: >
+          La perte d'énergie sur une grande distance (l'atténuation) n'a
+          rien à voir avec le critère de dispersion, qui ne porte que sur
+          la dépendance de $c$ en $f$. Dans le premier milieu, $c_1 = c_2$
+          : ce milieu est non dispersif, quelle que soit la distance
+          parcourue.
+      - id: C
+        text: >-
+          Le premier milieu est non dispersif ($c_1 = c_2$) ; le second est
+          dispersif ($c_1' \neq c_2'$), car sa célérité dépend de la
+          fréquence.
+        correct: true
+      - id: D
+        text: >-
+          On ne peut rien conclure : la célérité d'une onde dans un milieu
+          est toujours une grandeur fixe, indépendante de la fréquence —
+          les valeurs mesurées dans le second milieu doivent contenir une
+          erreur expérimentale.
+        correct: false
+        misconception: OND-DISP-1
+        feedback: >
+          Rien n'empêche $c$ de dépendre de $f$ : c'est exactement ce qui
+          définit un milieu dispersif, et rien dans l'énoncé ne suggère une
+          erreur de mesure. Le second milieu est un exemple parfaitement
+          valide de milieu dispersif.
+    correct_feedback: >
+      Le critère est la comparaison des célérités à fréquences différentes
+      : le premier milieu donne $c_1 = c_2$ (non dispersif), le second
+      donne $c_1' \neq c_2'$ (dispersif).
+    solution: |
+      Premier milieu : $c_1 = c_2 = 1500\ \text{m/s}$ malgré des fréquences
+      différentes → la célérité ne dépend pas de $f$ → milieu **non
+      dispersif**. Second milieu : $c_1' = 2{,}0\ \text{m/s} \neq c_2' =
+      1{,}4\ \text{m/s}$ → la célérité dépend de $f$ → milieu
+      **dispersif**. Dans les deux cas, $f_1$ et $f_2$ restent fixées par
+      leurs sources respectives ; seule la célérité varie, et seulement
+      dans le second milieu.
+
+  - id: OMPP-24
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [milieu_dispersif, frequence]
+    stem: >
+      Un signal sonore complexe, composé de plusieurs fréquences
+      superposées, se propage dans un milieu dispersif. Que va-t-il se
+      passer à ce signal au cours de sa propagation, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il se déforme progressivement, car ses différentes composantes de
+          fréquence voyagent à des célérités différentes et se
+          désynchronisent en avançant.
+        correct: true
+      - id: B
+        text: >-
+          Sa fréquence globale diminue progressivement au cours de la
+          propagation, car le milieu dispersif ralentit les composantes une
+          à une.
+        correct: false
+        misconception: OND-DISP-3
+        feedback: >
+          Chaque composante garde, du début à la fin de son trajet, la
+          fréquence que sa source lui a donnée : la dispersion ne modifie
+          jamais une fréquence. Ce qui varie d'une composante à l'autre,
+          c'est leur célérité — pas leur fréquence.
+      - id: C
+        text: >-
+          Il reste identique à lui-même, car la célérité d'un milieu est
+          une propriété fixe, la même pour toutes les fréquences qui le
+          traversent.
+        correct: false
+        misconception: OND-DISP-1
+        feedback: >
+          C'est précisément ce qui ne se produit PAS dans un milieu
+          dispersif : par définition, la célérité y dépend de la fréquence,
+          elle n'est pas la même pour toutes les composantes du signal.
+      - id: D
+        text: >-
+          Il s'atténue progressivement, en gardant exactement sa forme, car
+          un milieu dispersif est un milieu qui absorbe l'énergie de
+          l'onde.
+        correct: false
+        misconception: OND-DISP-2
+        feedback: >
+          La dispersion n'est pas une absorption d'énergie, mais une
+          dépendance de la célérité en fréquence. Dans un milieu dispersif,
+          c'est la FORME du signal qui se déforme (par désynchronisation
+          des composantes), pas nécessairement son amplitude qui diminue.
+    correct_feedback: >
+      Dans un milieu dispersif, les composantes de fréquences différentes
+      d'un signal voyagent à des célérités différentes : elles se
+      désynchronisent en avançant, et le signal se déforme progressivement
+      au cours de sa propagation.
+    solution: |
+      Un signal complexe est une superposition de plusieurs fréquences.
+      Dans un milieu non dispersif, toutes voyagent à la même célérité et
+      restent synchronisées : la forme du signal est conservée. Dans un
+      milieu dispersif, chaque fréquence a sa propre célérité : les
+      composantes avancent à des vitesses différentes, se désynchronisent,
+      et le signal se déforme en se propageant — sans que sa fréquence
+      globale, ni celle d'aucune composante, ne change.
+
+coverage_summary:
+  - misconception: OND-DIF-1
+    count: 3
+    items: [OMPP-19, OMPP-20, OMPP-21]
+  - misconception: OND-DIF-2
+    count: 3
+    items: [OMPP-19, OMPP-20, OMPP-21]
+  - misconception: OND-DIF-3
+    count: 3
+    items: [OMPP-19, OMPP-20, OMPP-21]
+  - misconception: OND-DISP-1
+    count: 3
+    items: [OMPP-22, OMPP-23, OMPP-24]
+  - misconception: OND-DISP-2
+    count: 3
+    items: [OMPP-22, OMPP-23, OMPP-24]
+  - misconception: OND-DISP-3
+    count: 3
+    items: [OMPP-22, OMPP-23, OMPP-24]
+floor_met: true
+notes: >
+  Coverage floor (>= 3 items/misconception, per spec-extension.md) is met
+  exactly, not padded, for all six new misconceptions (OND-DIF-1/2/3 from
+  R5-diffraction, OND-DISP-1/2/3 from R6-milieu-dispersif): each is covered
+  by all 3 items of its chapter. No item uses theta = lambda/a or tests
+  light diffraction (both out of scope per spec-extension.md section 0,
+  reserved for propagation-onde-lumineuse). Pre-existing items OMPP-1
+  through OMPP-18 do not carry per-distractor misconception ids (that field
+  did not exist in the prior schema) and are intentionally excluded from
+  this accounting — retrofitting them was out of scope for this pass
+  (append/retag only).

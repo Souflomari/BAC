@@ -479,7 +479,7 @@ Reprends le couple $CH_3COOH/CH_3COO^-$, $pK_A = 4{,}8$ (rung 4).
 
 En ne déplaçant le pH que de $\pm 1$ unité autour de $pK_A$, le rapport passe d'environ $1/10$ à $10/1$ — la composition bascule vite, mais jamais brutalement à $0$ ou $100\,\%$ pile à la frontière. Retiens la formule qui résume tout ce chapitre : **prédominer, ce n'est pas être seul.**
 
-[[embed:distribution-curseur-pH]]
+[[figure:distribution-curseur-pH]]
 
 ### Ce que ce chapitre ne couvre pas
 
@@ -621,7 +621,7 @@ Reprends le dosage des rungs précédents : acide éthanoïque, $V_A = 20{,}0\ \
 
 (3) À la demi-équivalence, $V_E/2 = 7{,}5\ \text{mL}$ : on y lit $\text{pH} \approx 4{,}8$ — exactement le $pK_A$ du couple $CH_3COOH/CH_3COO^-$ trouvé au rung 4. Deux points bien distincts sur la même courbe : $7{,}5\ \text{mL}$ (demi-équivalence, $\text{pH} \approx pK_A$) et $15{,}0\ \text{mL}$ (équivalence, le saut).
 
-[[embed:lecture-Ve-courbe-dosage]]
+[[figure:lecture-Ve-courbe-dosage]]
 
 Avec $V_E = 15{,}0\ \text{mL}$ confirmé, tu peux boucler le calcul amorcé au rung 9 : $C_A = C_B V_E / V_A = 7{,}5\times10^{-2}\ \text{mol/L}$.
 

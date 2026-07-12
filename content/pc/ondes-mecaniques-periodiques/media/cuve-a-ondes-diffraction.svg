@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Vue de dessus d'une cuve à ondes : des fronts d'onde plans et parallèles arrivent sur une paroi percée d'une fente étroite. Derrière la fente, les fronts ne continuent pas tout droit : ils deviennent des arcs concentriques qui s'étalent sur un très large domaine, comme si la fente était devenue à elle seule une nouvelle source ponctuelle.">
+  <title>Vue de dessus d'une cuve à ondes : diffraction par une fente étroite</title>
+  <!--
+    cuve-a-ondes-diffraction.svg — R5. Remplace l'ancien [[embed:…]]
+    (cuve à ondes manipulable, largeur de fente réglable en direct) par une
+    figure STATIQUE qui fige la même leçon visuelle que l'élève aurait tirée
+    en réduisant la fente à la main : ici, directement le cas notable,
+    a ≤ λ, dans son état final (le cas a ≫ λ, quasi rectiligne, est montré
+    séparément dans diffraction-fente-fronts.svg — pas de doublon).
+
+    Contrairement à diffraction-fente-fronts.svg (deux panneaux ÉTIQUETÉS
+    a/λ, la comparaison quantitative), cette figure est délibérément SANS
+    étiquette a/λ : un seul panneau, la scène « photographiée d'en haut »,
+    purement phénoménologique — le geste qu'aurait produit la manipulation
+    supprimée, pas une nouvelle démonstration chiffrée.
+
+    Géométrie :
+      cadre x=24,y=30,w=592,h=292,rx=8 (bottom=322) ; centre vertical de la
+      fente cy=176 (=30+292/2).
+      fronts INCIDENTS : 5 droites verticales, pas 30 px, x=70..190,
+        hauteur y=50..302.
+      paroi : épaisseur 14, x=300..314 ; fente étroite, gap y=159..193
+        (a_px=34, nettement inférieur au pas des fronts 30×... en fait du
+        même ordre — condition a ≤ λ illustrée sans l'étiqueter).
+      fronts SORTANTS : 5 arcs concentriques, centrés sur le centre de la
+        fente (314,176), rayons 30/60/90/120/150 (même pas que les fronts
+        incidents : MÊME λ, conservée par la diffraction, R5), chacun
+        balayant ±70° — un large domaine, y compris derrière les bords de
+        la paroi (la « zone d'ombre » géométrique). Arcs vérifiés par le
+        même calcul de centre que diffraction-fente-fronts.svg
+        (fA=0, fS=1 → arc bombé loin de la paroi).
+
+    Lecture (step-3) : un point à l'exact centre de la fente, avec un
+    repère pointant vers l'étiquette « la fente ≈ une nouvelle source » —
+    reprend en une expression la phrase du texte : « comme si l'ouverture
+    était devenue une nouvelle source ».
+
+    Couleurs : fronts incidents + paroi = --figure-ink-soft / --figure-ink
+    (structurel) ; fronts sortants + repère de lecture = --figure-accent
+    (le phénomène, seule idée de cette figure).
+
+    MISE EN ÉTAPES (le geste qu'aurait produit la manipulation supprimée —
+    setup, puis le résultat qui se révèle, puis la lecture) :
+      step-1 : cadre, flèche de propagation, fronts incidents, paroi/fente.
+      step-2 : les arcs sortants — la révélation (l'étalement).
+      step-3 : le repère « source secondaire » — la lecture.
+    Les captions vivent dans cuve-a-ondes-diffraction.stages.json.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="18" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Vue de dessus d'une cuve à ondes</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le montage : cadre, fronts incidents, paroi/fente
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="24" y="30" width="592" height="292" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Flèche de propagation -->
+    <line x1="70" y1="42" x2="130" y2="42" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="130,42 118,37.5 118,46.5" fill="var(--figure-ink-soft)"/>
+
+    <!-- Fronts d'onde incidents (5 droites, pas 30 px) -->
+    <line x1="70" y1="50" x2="70" y2="302" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="100" y1="50" x2="100" y2="302" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="130" y1="50" x2="130" y2="302" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="160" y1="50" x2="160" y2="302" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="190" y1="50" x2="190" y2="302" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Paroi avec fente étroite (a ≤ λ) -->
+    <rect x="300" y="30" width="14" height="129" fill="var(--figure-ink-soft)" fill-opacity="0.22"
+          stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <rect x="300" y="193" width="14" height="129" fill="var(--figure-ink-soft)" fill-opacity="0.22"
+          stroke="var(--figure-ink)" stroke-width="1.5"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le résultat : les fronts sortants s'étalent
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M324.30,147.80 A30,30 0 0,1 324.30,204.20"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <path d="M334.52,119.64 A60,60 0 0,1 334.52,232.36"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <path d="M344.78,91.43 A90,90 0 0,1 344.78,260.57"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <path d="M355.04,63.24 A120,120 0 0,1 355.04,288.76"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <path d="M365.30,35.05 A150,150 0 0,1 365.30,316.95"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : la fente devient une source secondaire
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <circle cx="314" cy="176" r="3.2" fill="var(--figure-accent)"/>
+    <line x1="317" y1="173" x2="420" y2="120" stroke="var(--figure-ink-soft)" stroke-width="1"
+          stroke-dasharray="3,3"/>
+    <text x="424" y="116" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">la fente ≈ une nouvelle source</text>
+  </g><!-- /step-3 -->
+
+</svg>
