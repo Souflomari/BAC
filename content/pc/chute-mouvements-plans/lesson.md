@@ -711,40 +711,28 @@ Les orbites **elliptiques quantitatives restent hors cadre** : les trois lois de
 - À $v_0$ fixé, la portée est maximale pour $\alpha = 45^\circ$ ; deux angles complémentaires donnent la même portée. À $\alpha$ fixé, $f$ et $D$ varient comme $v_0^2$.
 - Une particule chargée qui entre dans un champ magnétique uniforme (avec $\vec{B}\perp\vec{v}_0$) subit la force de Lorentz $\vec{F} = q\,\vec{v}\wedge\vec{B}$, toujours perpendiculaire à la vitesse : elle ne travaille pas, la **norme de la vitesse reste constante** ($v = v_0$), et le mouvement est **circulaire uniforme** de rayon $R = \dfrac{m\,v_0}{|q|\,B}$. La déflexion à la traversée d'un couloir de champ de largeur $\ell$ vérifie $\sin\theta = \dfrac{\ell}{R}$.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Vérifie tes réflexes avant de te lancer
 
-Un joueur de handball tire au but. Le ballon quitte sa main à une hauteur négligeable au-dessus du sol, avec une vitesse initiale de norme $v_0 = 20\ \text{m/s}$, faisant un angle $\alpha$ avec l'horizontale tel que $\sin\alpha = 0{,}50$ et $\cos\alpha \approx 0{,}87$. On prend $g \approx 9{,}8\ \text{m/s}^2$, on néglige les frottements de l'air, et on prend l'origine au point de lancement.
+Avant l'exercice de type bac, teste cinq réflexes-clés du chapitre — un par grande idée traversée. Engage-toi sur chacun *avant* de dérouler la correction : c'est en prenant position qu'on repère ce qu'on croyait acquis.
 
-**1) Établir les équations horaires $x(t)$ et $y(t)$ du mouvement du ballon.**
+[[checkpoint:cp-r0-predict]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement la méthode du rung 2 — bilan des forces (seul le poids agit), deuxième loi, projection sur deux axes indépendants.
+[[checkpoint:cp-symetrie]]
 
-$$v_{0x} = v_0\cos\alpha = 20\times 0{,}87 \approx 17{,}4\ \text{m/s}$$
+[[checkpoint:cp-frottement-vlim]]
 
-$$v_{0y} = v_0\sin\alpha = 20\times 0{,}50 = 10{,}0\ \text{m/s}$$
+[[checkpoint:cp-euler]]
 
-$$x(t) = 17{,}4\,t \qquad y(t) = 10{,}0\,t - 4{,}9\,t^2$$
+[[checkpoint:cp-gravitation-kepler]]
 
-**2) La vitesse horizontale du ballon est-elle la même juste après le tir et juste avant l'impact au sol ? Justifier sans refaire de calcul de trajectoire.**
+### Exercice de type bac
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* cette question teste directement la confusion visée en R0 et R2 — elle ne demande aucun nombre nouveau, seulement de reconnaître ce que dit $a_x = 0$.
+À toi de traiter un vrai sujet d'examen national — la chute verticale d'une bille dans un liquide visqueux (session normale 2020). Il mobilise les deux chapitres neufs au cœur de ce cours : l'équation différentielle de la chute **avec** frottement et sa vitesse limite (R7), puis la résolution numérique pas à pas par la **méthode d'Euler** (R8). Cherche chaque question par toi-même avant de déplier le raisonnement.
 
-Oui, rigoureusement la même. Le poids est une force purement verticale ; sa projection sur l'axe horizontal est nulle à chaque instant, donc $a_x = 0$ tout au long du vol, et $v_x(t) = v_{0x}$ reste constante, du lancer jusqu'à l'impact — qu'importe que le ballon soit en train de monter, d'être à son sommet, ou de redescendre.
+[[exercise:r-bac]]
 
-**3) Calculer la flèche et la portée du tir.**
+### Une variation pour ne pas mémoriser
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* deux formules, deux grandeurs de nature différente — on applique celles établies en R4, sans les confondre.
+Même structure profonde, autre habillage : une autre chute avec frottement, d'autres nombres, et une question sur le retour de la masse. Le but est que tu reconnaisses la procédure plutôt que de recopier une solution.
 
-$$f = \frac{v_{0y}^2}{2g} = \frac{10{,}0^2}{2\times 9{,}8} = \frac{100}{19{,}6} \approx 5{,}1\ \text{m}$$
-
-$$t_{portee} = \frac{2v_{0y}}{g} = \frac{2\times 10{,}0}{9{,}8} \approx 2{,}04\ \text{s}$$
-
-$$D = v_{0x}\times t_{portee} \approx 17{,}4\times 2{,}04 \approx 35{,}5\ \text{m}$$
-
-La flèche vaut environ $5{,}1\ \text{m}$ (une hauteur), la portée environ $35{,}5\ \text{m}$ (une distance au sol) : le ballon franchirait donc une trentaine de mètres au sol tout en ne montant que d'environ cinq mètres au-dessus de sa hauteur de tir.
-
-### À toi
-
-**Variation 1.** Le même joueur reprend son tir, mais cette fois avec un angle complémentaire de celui de l'exercice précédent, c'est-à-dire $\sin\alpha' \approx 0{,}87$ et $\cos\alpha' = 0{,}50$, à la même vitesse $v_0 = 20\ \text{m/s}$. Sans reprendre tout le calcul depuis le début, indique si la portée de ce nouveau tir est plus grande, plus petite, ou égale à celle de l'exercice précédent, et justifie ta réponse à partir de la formule $D = v_0^2\sin(2\alpha)/g$ établie en R5. Indique aussi, en le justifiant, lequel des deux tirs (celui de l'exercice ou celui-ci) a la flèche la plus grande.
-
-**Variation 2.** Une particule de charge $q$ et de masse $m$, animée d'une vitesse initiale de norme $v_0$ perpendiculaire à un champ magnétique uniforme $\vec{B}$, décrit dans ce champ un cercle de rayon $R = \dfrac{m\,v_0}{|q|\,B}$ (méthode du rung 6). Sans reprendre de calcul numérique, réponds à deux questions. (a) Que devient ce rayon si on double la valeur du champ $B$, toutes les autres grandeurs restant égales ? (b) Pendant tout son trajet dans le champ, la norme de la vitesse de la particule augmente-t-elle, diminue-t-elle, ou reste-t-elle constante — et pour quelle raison de fond, liée à la direction de la force de Lorentz ?
+[[exercise:r-variation]]

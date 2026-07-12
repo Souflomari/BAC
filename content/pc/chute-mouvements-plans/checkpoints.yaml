@@ -1,0 +1,355 @@
+notion: chute-mouvements-plans
+skill_code: pc_chute_plans
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — chute-mouvements-plans)
+#
+# FORMATIVE, calm-core probes placed inside the R11 « Pour t'entraîner » summit —
+# NOT the end bank (items.yaml). Same item schema, but NO score/streak/tally.
+# Wrong-answer feedback names the wrong PHYSICAL model, not just the fact of
+# being wrong. The end-bank ≥3-per-misconception floor lives in items.yaml and is
+# NOT altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md, all in R11):
+#   cp-r0-predict        — COMMIT gate: turns the R0 hook's rhetorical "prends
+#                          position" (la vitesse horizontale change-t-elle ?)
+#                          into a real MCQ before the bac exercise. Probes
+#                          vx-varie-pendant-le-vol.
+#   cp-symetrie          — rupture gate: la symétrie/indépendance de la chute
+#                          libre (deux masses tombent pareil). Probes
+#                          masse-influe-en-chute-libre.
+#   cp-frottement-vlim   — rupture gate: la chute AVEC frottement, vitesse limite
+#                          (à v_l l'accélération est nulle, PAS le frottement).
+#                          Probes frottement-disparait-a-vlim.
+#   cp-euler             — rupture gate: la méthode d'Euler (valeur approchée,
+#                          facteur Δt, pente recalculée). Probes
+#                          euler-donne-valeur-exacte.
+#   cp-gravitation-kepler— rupture gate: satellite en orbite (force centripète,
+#                          vitesse indépendante de la masse, 3e loi de Kepler).
+#                          Probes orbite-sans-gravite.
+#
+# Clone note: cp-symetrie clones CMP-8's stem, cp-frottement-vlim clones CMP-25's,
+# cp-euler clones CMP-28's, cp-gravitation-kepler clones CMP-31/CMP-33's. cp-r0-
+# predict is an original commit item (not in the end bank). Distractors are
+# curated so EVERY distractor carries a named misconception tag, and the correct
+# choice is never the longest. No end-bank tally is adjusted — inline surfacing
+# does not double-count.
+#
+# Boundary guard: 2ème Bac PC. Chute libre / projectile (frottements négligés) ;
+# chute AVEC frottement fluide linéaire (v_l = mg/k, régimes) ; méthode d'Euler
+# (seule méthode numérique au programme) ; gravitation → mouvement circulaire
+# uniforme → v = √(GM/r) ; 3e loi de Kepler CAS CIRCULAIRE. Pas d'intégration
+# analytique de l'ODE, pas d'orbite elliptique quantitative.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | COMMIT gate, placed at the head of R11
+  #        Turns the R0 hook ("la vitesse horizontale change-t-elle
+  #        pendant le vol ?") into a real MCQ commit before the bac
+  #        exercise. Probes vx-varie-pendant-le-vol.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [checkpoint, formative, misconception_driven, pc_chute_plans, hook_commit]
+    primary_misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+    item_source: original
+    lesson_placement: in_R11
+
+    stem: |
+      Rappelle-toi la question de l'accroche. On lance un projectile en l'air
+      avec un angle (frottements de l'air négligés). **Pendant tout le vol — du
+      lancer jusqu'à l'impact — que fait sa vitesse horizontale $v_x$ ?**
+      Engage-toi avant de te lancer dans l'exercice.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle reste rigoureusement constante, du premier au dernier instant."
+        correct: true
+        feedback: |
+          Exact — et c'est le réflexe à garder. Le poids est purement vertical,
+          donc $a_x = 0$ à chaque instant : $v_x(t) = v_{0x}$ ne change jamais,
+          que le projectile monte, soit au sommet, ou redescende. Les deux axes
+          sont indépendants.
+
+      - id: B
+        text: "Elle diminue pendant que le projectile monte, puis réaugmente pendant qu'il redescend, exactement comme sa vitesse verticale."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: |
+          Modèle détecté : on lie les deux axes. C'est la vitesse **verticale**
+          $v_y$ qui ralentit puis repart. L'horizontale, elle, n'a aucune raison
+          d'en faire autant : $a_x = 0$ (aucune force horizontale), donc
+          $v_x = v_{0x}$ reste constante tout le vol.
+
+      - id: C
+        text: "Elle s'annule au sommet de la trajectoire, quand le projectile cesse de monter."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: |
+          Modèle détecté : on transpose à l'horizontale ce qui vaut pour la
+          verticale. Au sommet, c'est $v_y$ qui s'annule ; $v_x$ y garde
+          exactement sa valeur de départ $v_{0x}$. La vitesse au sommet est
+          horizontale, pas nulle.
+
+      - id: D
+        text: "Elle augmente régulièrement, entraînée par la chute qui accélère l'ensemble du mouvement."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        feedback: |
+          Modèle détecté : on fait agir le poids sur l'horizontale. Le poids est
+          purement vertical : sa projection horizontale est nulle, donc il ne
+          peut ni accélérer ni ralentir le mouvement horizontal. $a_x = 0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-symetrie | rupture gate (R1), placed in R11
+  #        La symétrie de la chute libre : deux masses tombent pareil.
+  #        Probes masse-influe-en-chute-libre. Clone of CMP-8's stem.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-symetrie
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [checkpoint, formative, misconception_driven, pc_chute_plans]
+    primary_misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+    item_source: clone_of_CMP-8
+    lesson_placement: in_R11
+
+    stem: |
+      On lance deux projectiles de **masses différentes** avec exactement le même
+      vecteur vitesse initiale $\vec{v}_0$ (même valeur, même angle), frottements
+      négligés. Que peut-on dire de leurs trajectoires ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elles sont identiques : $\\vec{a} = \\vec{g}$ ne dépend pas de la masse."
+        correct: true
+        feedback: |
+          Exact. $m\vec{a} = m\vec{g} \Rightarrow \vec{a} = \vec{g}$ : la masse se
+          simplifie. Mêmes conditions initiales et même accélération donnent la
+          même trajectoire — c'est la symétrie profonde de la chute libre. (Garde
+          en tête que cette règle **cesse** dès qu'il y a du frottement.)
+
+      - id: B
+        text: "La plus lourde retombe plus vite et va moins loin, parce que son poids plus grand l'entraîne davantage vers le sol."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: |
+          Modèle détecté : « le plus lourd tombe plus vite ». La 2e loi donne
+          $m\vec{a} = m\vec{g}$, donc $\vec{a} = \vec{g}$ : la masse disparaît. Un
+          poids plus grand n'apporte aucun avantage — mêmes trajectoires.
+
+      - id: C
+        text: "La plus légère va plus loin, étant plus facile à propulser."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: |
+          Modèle détecté : « le plus léger va plus loin ». Sans frottement, la
+          masse n'intervient nulle part dans le mouvement ($\vec{a} = \vec{g}$) :
+          les deux trajectoires se superposent exactement.
+
+      - id: D
+        text: "Elles montent de la même façon, mais la descente est plus rapide que la montée, donc plus courte en durée."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        feedback: |
+          Modèle détecté : on brise la symétrie montée/descente. La courbe $y(t)$
+          est une parabole symétrique par rapport à son sommet : la descente dure
+          exactement autant que la montée. Aller plus vite à l'arrivée ne veut pas
+          dire mettre moins de temps.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-frottement-vlim | rupture gate (R7), placed in R11
+  #        La vitesse limite : à v_l, a = 0 mais le frottement est
+  #        MAXIMAL (= le poids). Probes frottement-disparait-a-vlim.
+  #        Clone of CMP-25's stem.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-frottement-vlim
+    rung: "R7"
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [checkpoint, formative, misconception_driven, pc_chute_plans, frottement_fluide]
+    primary_misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+    item_source: clone_of_CMP-25
+    lesson_placement: in_R11
+
+    stem: |
+      Un solide de masse $m$ tombe verticalement dans un fluide, soumis à un
+      frottement linéaire $\vec{f} = -k\vec{v}$. Après un certain temps, sa vitesse
+      atteint la valeur limite $v_\ell$ et ne varie plus. Que peut-on affirmer, à
+      cet instant, sur l'accélération et sur la force de frottement ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$a = 0$ (somme des forces nulle), mais le frottement est à son maximum : $k\\,v_\\ell = mg$."
+        correct: true
+        feedback: |
+          Exact : à $v_\ell$, $dv/dt = 0$ donc la somme des forces est nulle, ce
+          qui impose $k\,v_\ell = mg$. Le frottement y est **maximal**, égal au
+          poids — pas nul. « Somme nulle » ne veut jamais dire « pas de force ».
+
+      - id: B
+        text: "$a = 0$ et la force de frottement est nulle elle aussi : puisque plus rien ne change, plus aucune force n'agit."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        feedback: |
+          Modèle détecté : « à $v_\ell$, le frottement a disparu ». Si c'était le
+          cas, il ne resterait que le poids et l'accélération vaudrait $g$, pas
+          $0$. Ce qui s'annule, c'est la **somme** des forces ; le frottement, lui,
+          est maximal ($k\,v_\ell = mg$).
+
+      - id: C
+        text: "L'accélération n'atteint jamais zéro : l'objet continue d'accélérer indéfiniment, la « vitesse limite » n'est qu'une impression."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        feedback: |
+          Modèle détecté : « ça accélère sans fin ». C'est l'inverse : le
+          frottement $kv$ croît avec $v$ et finit par égaler le poids, ce qui
+          annule l'accélération. La vitesse limite est réelle, pas une illusion.
+
+      - id: D
+        text: "$v_\\ell$ est la même pour tous les objets, quelle que soit leur masse, comme en chute libre."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        feedback: |
+          Modèle détecté : on prolonge la règle de la chute libre. $v_\ell = mg/k$
+          contient $m$ : avec frottement, deux objets de masses différentes n'ont
+          pas la même vitesse limite. La masse « revient ».
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-euler | rupture gate (R8), placed in R11
+  #        La méthode d'Euler : valeur APPROCHÉE, facteur Δt, pente
+  #        recalculée. Probes euler-donne-valeur-exacte. Clone of CMP-28.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-euler
+    rung: "R8"
+    habilete: resolution
+    skill_code: pc_chute_plans
+    tags: [checkpoint, formative, misconception_driven, pc_chute_plans, methode_euler]
+    primary_misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+    item_source: clone_of_CMP-28
+    lesson_placement: in_R11
+
+    stem: |
+      On résout $\dfrac{dv}{dt} = g - \dfrac{k}{m}v$ par la méthode d'Euler, avec
+      un pas $\Delta t$. Laquelle de ces affirmations décrit correctement $v_{i+1}$
+      et la nature du résultat ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Une valeur approchée : $v_{i+1} = v_i + a_i\\,\\Delta t$, d'autant plus fidèle que $\\Delta t$ est petit."
+        correct: true
+        feedback: |
+          Exact. Le facteur $\Delta t$ est indispensable (accélération × temps =
+          vitesse), $a_i$ se recalcule à chaque pas, et la valeur reste **approchée** :
+          Euler suppose la pente constante sur le pas, ce qui n'est vrai qu'à la
+          limite $\Delta t \to 0$.
+
+      - id: B
+        text: "La valeur exacte de $v(t_{i+1})$, quel que soit le pas $\\Delta t$ choisi : la méthode d'Euler ne fait aucune approximation."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        feedback: |
+          Modèle détecté : « Euler est exact ». C'est une approximation : la pente
+          est supposée constante sur tout le pas, alors qu'elle change en continu.
+          L'écart avec la vraie courbe diminue quand $\Delta t$ diminue, sans jamais
+          s'annuler pour un pas fini.
+
+      - id: C
+        text: "$v_{i+1} = v_i + a_i$ : on ajoute directement l'accélération à la vitesse."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        feedback: |
+          Modèle détecté : oubli du $\Delta t$. $v_i + a_i$ additionne une vitesse
+          et une accélération — incohérence dimensionnelle. Il faut $a_i\,\Delta t$
+          (une accélération × un temps = une vitesse).
+
+      - id: D
+        text: "$v_{i+1} = v_i + g\\,\\Delta t$, en gardant la pente figée à $g$ à chaque pas."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        feedback: |
+          Modèle détecté : pente non recalculée. Garder $a = g$ fixe revient à
+          ignorer le frottement (on retrouve la chute libre). Il faut recalculer
+          $a_i = g - \frac{k}{m}v_i$ à chaque ligne, ce qui fait décroître la pente.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-gravitation-kepler | rupture gate (R9/R10), in R11
+  #        Satellite en orbite : force gravitationnelle centripète,
+  #        vitesse indépendante de la masse, 3e loi de Kepler.
+  #        Probes orbite-sans-gravite. Clone of CMP-31/CMP-33.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-gravitation-kepler
+    rung: "R9"
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [checkpoint, formative, misconception_driven, pc_chute_plans, gravitation_satellite]
+    primary_misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+    item_source: clone_of_CMP-31
+    lesson_placement: in_R11
+
+    stem: |
+      Un satellite décrit une orbite circulaire autour de la Terre (masse $M_T$).
+      Qu'est-ce qui le maintient sur son orbite, et sa vitesse dépend-elle de sa
+      masse ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La force gravitationnelle, centripète ; et $v = \\sqrt{GM_T/r}$ ne dépend pas de la masse du satellite."
+        correct: true
+        feedback: |
+          Exact : la seule force est la gravité, dirigée vers le centre de la Terre
+          (centripète, perpendiculaire à $\vec{v}$) ; elle courbe la trajectoire
+          sans travailler. En projetant la 2e loi sur la normale, la masse du
+          satellite se simplifie : $v = \sqrt{GM_T/r}$. Et pour un satellite
+          géostationnaire, la 3e loi de Kepler $\dfrac{T^2}{r^3} = \dfrac{4\pi^2}{GM_T}$
+          fixe une altitude unique.
+
+      - id: B
+        text: "Rien : à cette altitude il n'y a plus de gravité, le satellite flotte librement sans subir aucune force."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        feedback: |
+          Modèle détecté : « pas de gravité en orbite ». Sans force, le satellite
+          partirait en ligne droite (inertie). S'il reste sur une orbite fermée,
+          c'est qu'une force la courbe — précisément la gravité, à peine plus faible
+          qu'au sol. L'apesanteur est une chute libre permanente, pas une absence de
+          gravité.
+
+      - id: C
+        text: "Un moteur (ou une poussée vers l'avant) qui compense en permanence l'attraction et entretient le mouvement."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        feedback: |
+          Modèle détecté : « il faut une force motrice ». La seule force est
+          centripète (perpendiculaire à $\vec{v}$) : elle ne pousse jamais vers
+          l'avant. Aucune force tangentielle, aucun moteur — la norme de la vitesse
+          se maintient seule, par inertie.
+
+      - id: D
+        text: "La gravité, mais un satellite plus lourd doit aller plus vite sur la même orbite pour ne pas retomber."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        feedback: |
+          Modèle détecté : « le plus lourd va plus vite ». La masse du satellite
+          apparaît des deux côtés de $mv^2/r = GM_Tm/r^2$ et se simplifie :
+          $v = \sqrt{GM_T/r}$ ne la contient pas. Tous les satellites d'une même
+          orbite ont la même vitesse.

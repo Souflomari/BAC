@@ -1,0 +1,179 @@
+# Attempt-first exercises (summit-conversion campaign — chute-mouvements-plans).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2020 session
+# normale, PC BIOF — statut « vérifié » in
+# docs/sujets/pc/chute-mouvements-plans.md, AlloSchool element/109742). It was
+# chosen because it exercises exactly the two new chapters this notion grew in
+# the H-PC wave — chute verticale AVEC frottement fluide (R7 : équation
+# différentielle, vitesse limite) et la méthode d'Euler (R8). r-variation is a
+# fresh anti-memorisation twin (same skills, different numbers/context/object,
+# status not-applicable).
+
+notion: chute-mouvements-plans
+
+exercises:
+  # ── r-bac — the VERIFIED 2020 national sujet (Exercice V, chute d'une bille) ─
+  # Faithful transcription of docs/sujets/pc/chute-mouvements-plans.md →
+  # "2020 — session normale — Exercice V". Bille homogène de masse m lâchée dans
+  # un liquide visqueux ; frottement fluide linéaire f = -k v j (axe (O, j)
+  # orienté vers le bas) ; poussée d'Archimède négligée. Données g = 10 m/s²,
+  # m = 2,5·10⁻² kg. Figure 2 (courbe v = f(t)) transcrite en prose ci-dessous.
+  - id: r-bac
+    title: "Exercice de type bac — chute d'une bille dans un liquide visqueux (2020)"
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice V — étude du mouvement de chute verticale d'une bille dans un
+        liquide visqueux ; barème 2,5 pt). Transcription vérifiée : re-fetch
+        indépendant AlloSchool element/109742 + diff OK (agent-vérificateur,
+        2026-07-11 ; docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »).
+    intro: |-
+      **Étude du mouvement de chute verticale d'une bille dans un liquide visqueux (examen national, session normale 2020).**
+
+      On étudie la chute verticale, avec frottement fluide, d'une bille homogène de masse $m$ dans un liquide visqueux. À l'aide d'une caméra numérique et d'un logiciel adéquat, on suit l'évolution de la vitesse $v$ du centre d'inertie $G$ de la bille au cours de sa chute, dans un référentiel terrestre supposé galiléen. On repère la position de $G$ à chaque instant $t$ par son ordonnée $y$ sur un axe vertical $(O,\vec{j})$ **orienté vers le bas**.
+
+      Les forces de frottement fluide sont modélisées par $\vec{f} = -k\,v\,\vec{j}$, où $v$ est la vitesse instantanée de $G$ et $k$ une constante positive. On **néglige la poussée d'Archimède** devant les autres forces.
+
+      **Données :** $g = 10\ \text{m.s}^{-2}$ ; $m = 2{,}5\times 10^{-2}\ \text{kg}$.
+
+      **Figure 2 (courbe fournie).** La courbe $v = f(t)$ part de $0$ et croît, d'abord vite puis de plus en plus lentement, vers un **palier horizontal** (asymptote) : la vitesse s'y stabilise au voisinage de $v_\ell \approx 1{,}5\ \text{m.s}^{-1}$. L'axe des ordonnées est gradué $0{,}3\ ;\ 0{,}6\ ;\ 0{,}9\ ;\ 1{,}2\ ;\ 1{,}5\ \text{m.s}^{-1}$, l'axe des abscisses $0{,}15\ ;\ 0{,}3\ ;\ 0{,}45\ ;\ 0{,}6\ \text{s}$.
+
+      **Tableau de mesures (pour la méthode d'Euler, pas $\Delta t = 0{,}015\ \text{s}$).**
+
+      | $t$ | $v\ (\text{m.s}^{-1})$ | $a\ (\text{m.s}^{-2})$ |
+      |-----|:---:|:---:|
+      | $t_1$ | $0{,}150$ | $a_1 = \ldots$ |
+      | $t_2$ | $0{,}285$ | $8{,}10$ |
+      | $t_3$ | $v_3 = \ldots$ | / |
+    questions:
+      - id: q1
+        part: "Étude du mouvement de chute avec frottement — établir le modèle"
+        stem: |-
+          **(0,5 pt)** En appliquant la deuxième loi de Newton à la bille, montrer que l'équation différentielle du mouvement du centre d'inertie $G$ s'écrit :
+          $$\frac{dv}{dt} + \frac{k}{m}\,v = g$$
+        reasoning: |-
+          On applique la méthode du chapitre — bilan des forces, deuxième loi, projection sur l'axe choisi. Deux forces s'exercent seulement (la poussée d'Archimède est négligée) : le poids $\vec{P} = m\vec{g}$, dirigé vers le bas donc **dans** le sens de $\vec{j}$, et le frottement $\vec{f} = -k\,v\,\vec{j}$, qui s'oppose au mouvement donc pointe vers le haut. Comme l'axe $(O,\vec{j})$ est orienté vers le bas, le poids se projette positivement et le frottement négativement. On projette la deuxième loi sur $\vec{j}$, puis on divise par $m$ pour faire apparaître la forme demandée : tout doit s'écrire en fonction de la seule inconnue $v$.
+        steps:
+          - math: 'm\vec{a} = \vec{P} + \vec{f}'
+            note: "Deuxième loi de Newton ; seules deux forces (poussée d'Archimède négligée)."
+          - math: 'm\frac{dv}{dt} = mg - k\,v'
+            note: "Projection sur (O, j) orienté vers le bas : le poids +mg, le frottement -kv."
+          - math: '\frac{dv}{dt} = g - \frac{k}{m}\,v'
+            note: "On divise par la masse m."
+          - math: '\boxed{\frac{dv}{dt} + \frac{k}{m}\,v = g}'
+            note: "On range le terme en v à gauche : c'est la forme demandée."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Trouver l'expression de la vitesse limite $v_\ell$ de $G$ en fonction de $g$, $m$ et $k$.
+        reasoning: |-
+          La vitesse limite est celle du **régime permanent** : la vitesse ne varie plus, donc l'accélération est nulle, $\dfrac{dv}{dt} = 0$. On n'a pas besoin de résoudre l'équation différentielle — il suffit d'y **annuler l'accélération** (un calcul d'une ligne, exactement la méthode du cours) et d'isoler $v_\ell$. Physiquement, à cet instant le frottement a grandi jusqu'à compenser exactement le poids.
+        steps:
+          - math: '\frac{dv}{dt} = 0 \implies g - \frac{k}{m}\,v_\ell = 0'
+            note: "En régime permanent, l'accélération s'annule dans l'équation différentielle."
+          - math: '\boxed{v_\ell = \frac{mg}{k}}'
+            note: "On isole la vitesse limite : elle contient m — la masse « revient » (contraste avec la chute libre)."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** La courbe de la figure 2 représente l'évolution de la vitesse $v$ du centre d'inertie $G$ de la bille. Déterminer graphiquement la valeur de $v_\ell$.
+        reasoning: |-
+          En régime permanent, $v$ se stabilise : la courbe $v = f(t)$ atteint un **palier horizontal** (asymptote). La vitesse limite se **lit directement** comme l'ordonnée de ce palier — aucun calcul, une simple lecture d'échelle. Sur la figure fournie, le palier se situe au niveau de la graduation la plus haute de l'axe des ordonnées.
+
+          $$v_\ell \approx 1{,}5\ \text{m.s}^{-1}$$
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Vérifier que, dans le système international d'unités, l'équation différentielle du mouvement de $G$ s'écrit :
+          $$\frac{dv}{dt} = 10 - 6{,}67\,v$$
+        reasoning: |-
+          L'équation établie en question 1 est $\dfrac{dv}{dt} = g - \dfrac{k}{m}\,v$. On connaît déjà $g = 10\ \text{m.s}^{-2}$ (donnée) ; il reste à obtenir le coefficient $\dfrac{k}{m}$. Astuce : on n'a pas besoin de $k$ séparément, car en régime permanent $g = \dfrac{k}{m}\,v_\ell$, donc $\dfrac{k}{m} = \dfrac{g}{v_\ell}$ — et $v_\ell$ vient d'être lu au graphe (question 3). On remplace, et le coefficient tombe.
+        steps:
+          - math: '\frac{k}{m} = \frac{g}{v_\ell} = \frac{10}{1{,}5} \approx 6{,}67\ \text{s}^{-1}'
+            note: "De v_lim = mg/k on tire k/m = g/v_lim, avec v_lim lu sur la figure."
+          - math: '\frac{dv}{dt} = g - \frac{k}{m}\,v = 10 - 6{,}67\,v'
+            note: "On substitue g = 10 et k/m = 6,67 : la forme annoncée est bien vérifiée."
+          - math: 'k = m\times 6{,}67 = 2{,}5\times 10^{-2}\times 6{,}67 \approx 0{,}17\ \text{kg.s}^{-1}'
+            note: "Facultatif : on peut aussi remonter à k lui-même, homogène à une masse par seconde."
+      - id: q5a
+        part: "Résolution numérique par la méthode d'Euler"
+        stem: |-
+          **(0,5 pt)** À l'aide des données du tableau et de la méthode d'Euler, calculer l'accélération $a_1$ à l'instant $t_1$ (où $v_1 = 0{,}150\ \text{m.s}^{-1}$).
+        reasoning: |-
+          L'accélération à un instant ne se lit pas dans le tableau : elle se **calcule à partir de la vitesse** de ce même instant, via l'équation différentielle vérifiée en question 4. C'est le geste central d'Euler : la pente $a_i$ est **recalculée** à chaque ligne à partir de $v_i$ courant (elle n'est pas figée à $g$). On applique donc $a_1 = 10 - 6{,}67\,v_1$ avec $v_1 = 0{,}150\ \text{m.s}^{-1}$.
+        steps:
+          - math: 'a_1 = 10 - 6{,}67\,v_1 = 10 - 6{,}67\times 0{,}150'
+            note: "On évalue l'équation différentielle en v_1 = 0,150 m/s."
+          - math: '\boxed{a_1 \approx 9{,}0\ \text{m.s}^{-2}}'
+            note: "10 - 1,00 = 9,00 : la bille freine déjà un peu (a < g), le frottement a commencé à mordre."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** Calculer la vitesse $v_3$ à l'instant $t_3$, sachant que le pas de calcul est $\Delta t = 0{,}015\ \text{s}$.
+        reasoning: |-
+          On avance d'un pas d'Euler **depuis $t_2$** vers $t_3$ : $v_3 = v_2 + a_2\,\Delta t$. Le tableau fournit directement $v_2 = 0{,}285\ \text{m.s}^{-1}$ et $a_2 = 8{,}10\ \text{m.s}^{-2}$ — inutile de recalculer $a_2$ (on peut vérifier au passage : $10 - 6{,}67\times 0{,}285 \approx 8{,}10$, cohérent). Réflexe d'homogénéité : $a_2\,\Delta t$ est une accélération multipliée par un temps, donc bien une vitesse — le facteur $\Delta t$ est indispensable.
+        steps:
+          - math: 'v_3 = v_2 + a_2\,\Delta t = 0{,}285 + 8{,}10\times 0{,}015'
+            note: "Récurrence d'Euler appliquée entre t_2 et t_3, avec les valeurs du tableau."
+          - math: '\boxed{v_3 = 0{,}285 + 0{,}12 \approx 0{,}41\ \text{m.s}^{-1}}'
+            note: "La suite des vitesses continue de croître vers le palier v_lim = 1,5 m/s."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ───────────
+  # Same deep skills as r-bac (établir l'ODE de la chute avec frottement,
+  # extraire v_lim en annulant l'accélération, avancer par la méthode d'Euler,
+  # et reconnaître le RETOUR de la masse via v_lim = mg/k) with a different
+  # object (petite bille en chute dans la glycérine), different numbers, g = 9,8
+  # instead of 10, and an added qualitative mass-comparison question — so the
+  # student cannot recopy the 2020 sujet and must recognise which procedure applies.
+  - id: r-variation
+    title: "Variation fraîche — une autre chute avec frottement fluide"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2020, sourcé).
+    intro: |-
+      Même structure profonde que le sujet précédent, enrobage différent : autre objet, autres nombres, et une question qualitative en plus sur le rôle de la masse. Le but est que tu ne puisses pas recopier la solution du sujet 2020 — tu dois reconnaître quelle procédure s'applique.
+
+      Une petite bille de masse $m = 5{,}0\times 10^{-3}\ \text{kg}$ est lâchée sans vitesse initiale dans un liquide très visqueux. Le frottement fluide est linéaire, $\vec{f} = -k\,\vec{v}$, avec $k = 0{,}10\ \text{kg.s}^{-1}$. On oriente l'axe vertical vers le bas, on néglige la poussée d'Archimède, et on prend $g = 9{,}8\ \text{m.s}^{-2}$.
+    questions:
+      - id: q1
+        stem: |-
+          Établir l'équation différentielle vérifiée par la vitesse $v(t)$ du centre d'inertie de la bille au cours de sa chute.
+        reasoning: |-
+          La démarche est identique à celle du sujet : bilan (poids $mg$ vers le bas, frottement $-kv$ vers le haut, Archimède négligée), deuxième loi projetée sur l'axe orienté vers le bas, puis division par $m$. Reconnaître que l'habillage a changé mais pas la procédure, c'est exactement le point de l'exercice.
+        steps:
+          - math: 'm\frac{dv}{dt} = mg - k\,v'
+            note: "Deuxième loi projetée sur l'axe vertical orienté vers le bas."
+          - math: '\boxed{\frac{dv}{dt} = g - \frac{k}{m}\,v = 9{,}8 - 20\,v}'
+            note: "Division par m ; k/m = 0,10 / 5,0e-3 = 20 s⁻¹."
+      - id: q2
+        stem: |-
+          Déterminer l'expression puis la valeur de la vitesse limite $v_\ell$ de la bille.
+        reasoning: |-
+          Comme dans le sujet, on **annule l'accélération** dans l'équation différentielle — on ne la résout pas. En régime permanent $\dfrac{dv}{dt} = 0$, ce qui donne $v_\ell = mg/k$, puis l'application numérique.
+        steps:
+          - math: '\frac{dv}{dt} = 0 \implies v_\ell = \frac{mg}{k}'
+            note: "Régime permanent : le frottement compense exactement le poids."
+          - math: 'v_\ell = \frac{5{,}0\times 10^{-3}\times 9{,}8}{0{,}10} = \frac{0{,}049}{0{,}10} = 0{,}49\ \text{m.s}^{-1}'
+            note: "Application numérique."
+      - id: q3
+        stem: |-
+          On résout numériquement par la méthode d'Euler, avec un pas $\Delta t = 0{,}010\ \text{s}$ et $v_0 = 0$. Calculer $v_1$ (à $t_1$) puis $v_2$ (à $t_2$).
+        reasoning: |-
+          On applique la récurrence $v_{i+1} = v_i + a_i\,\Delta t$, en **recalculant $a_i = 9{,}8 - 20\,v_i$ à chaque pas** (jamais figée à $g$). Au premier pas $v_0 = 0$, donc le frottement est nul et l'accélération démarre à $g$ — comme en chute libre ; dès le deuxième pas, elle a déjà diminué.
+        steps:
+          - math: 'a_0 = 9{,}8 - 20\times 0 = 9{,}8 \implies v_1 = v_0 + a_0\,\Delta t = 0 + 9{,}8\times 0{,}010 = 0{,}098\ \text{m.s}^{-1}'
+            note: "Premier pas : a_0 = g (v_0 = 0), régime initial de chute libre."
+          - math: 'a_1 = 9{,}8 - 20\times 0{,}098 = 7{,}84 \implies v_2 = 0{,}098 + 7{,}84\times 0{,}010 \approx 0{,}18\ \text{m.s}^{-1}'
+            note: "Deuxième pas : la pente a déjà décru (7,84 < 9,8), le frottement mord ; v tend vers v_lim = 0,49 m/s."
+      - id: q4
+        stem: |-
+          Une seconde bille, de **même forme** (donc même $k$) mais de masse **double** ($m' = 1{,}0\times 10^{-2}\ \text{kg}$), est lâchée dans le même liquide. Sa vitesse limite est-elle plus grande, plus petite, ou identique à celle de la première bille ? Justifier.
+        reasoning: |-
+          Piège tendu par la chute **libre** (rungs 1 à 3), où la masse disparaissait ($\vec{a} = \vec{g}$) et où tous les objets tombaient pareil. Ici, il y a du frottement, et $v_\ell = mg/k$ **contient $m$** : à $k$ fixé, doubler la masse **double** la vitesse limite. C'est le « retour de la masse » : la bille la plus lourde va plus vite, car il lui faut une vitesse plus grande pour que $kv$ compense son poids plus important.
+        steps:
+          - math: 'v_{\ell,2} = \frac{m_2\,g}{k} = \frac{1{,}0\times 10^{-2}\times 9{,}8}{0{,}10} = 0{,}98\ \text{m.s}^{-1} = 2\,v_\ell'
+            note: "La vitesse limite double avec la masse (à k égal) : contraste direct avec la chute libre."
