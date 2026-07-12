@@ -1,0 +1,139 @@
+# Attempt-first exercises (summit-conversion campaign — ondes-mecaniques-periodiques).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, PC BIOF, code NS28F, AlloSchool element/68300 — statut « vérifié »
+# in docs/sujets/pc/ondes-mecaniques-periodiques.md, Exercice II Partie 1).
+# r-variation is a fresh anti-memorisation twin (same skills — nature de l'onde,
+# lecture de λ, célérité, retard en fonction de T + relation de phase — with a
+# different support, une onde LONGITUDINALE le long d'un ressort, and different
+# numbers, status not-applicable).
+#
+# Figure fidelity (docs/sujets/pc/README.md §1) : la lecture d'échelle de la
+# figure 2019 est reprise du sujet vérifié et SIGNALÉE comme lecture, jamais
+# affirmée au-delà de ce que le scan montre — λ lue entre deux crêtes voisines
+# (double flèche cotée 1,5 cm), SM lue comme « deux arches complètes » ≈ 2λ.
+
+notion: ondes-mecaniques-periodiques
+
+exercises:
+  # ── r-bac — le sujet national VÉRIFIÉ 2019, Exercice II Partie 1 (onde) ────
+  # Transcription fidèle de docs/sujets/pc/ondes-mecaniques-periodiques.md →
+  # « 2019 — session normale — Exercice II (partie 1) ». Cuve à ondes, source S,
+  # onde progressive sinusoïdale de fréquence N = 20 Hz, propagation à t = 0 à
+  # partir de S, sans amortissement ni réflexion. Figure : coupe verticale,
+  # profil sinusoïdal de S (gauche) à M (droite, front de l'onde à t1) ; double
+  # flèche horizontale cotée 1,5 cm au-dessus de deux crêtes voisines ; entre S
+  # et M, environ deux arches complètes du motif.
+  - id: r-bac
+    title: "Exercice de type bac — propagation d'une onde mécanique (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice II, Partie 1 — propagation d'une onde mécanique à la surface
+        de l'eau ; barème 1,75 pt sur les 3,5 pt de l'exercice, la Partie 2
+        « radon 222 » étant sous decroissance-radioactive.md). Transcription
+        vérifiée : re-fetch indépendant AlloSchool element/68300 + diff OK
+        (docs/sujets/pc/ondes-mecaniques-periodiques.md).
+    intro: |-
+      **Propagation d'une onde mécanique (examen national, session normale 2019).**
+
+      Pour étudier la propagation des ondes mécaniques à la surface de l'eau, on utilise une cuve à ondes. À l'aide d'un vibreur, on crée en un point $S$ de la surface libre de l'eau une onde progressive sinusoïdale de fréquence $N = 20\ \text{Hz}$. Cette onde se propage à partir de $S$ (à l'instant $t = 0$), sans amortissement et sans réflexion.
+
+      La figure de l'énoncé représente une coupe, dans un plan vertical, d'une partie de la surface de l'eau à l'instant de date $t_1$ : un profil sinusoïdal partant de $S$ (à gauche) et s'étendant jusqu'au point $M$ (à droite), où la surface redevient plane — $M$ est le **front de l'onde** à la date $t_1$. Une double flèche horizontale, cotée $1{,}5\ \text{cm}$, est tracée au-dessus de **deux crêtes voisines** du profil (elle sert à la question 2). Entre $S$ et $M$, le profil présente environ **deux arches complètes** du motif sinusoïdal.
+    questions:
+      - id: q1
+        part: "Partie 1 — Caractériser l'onde à la surface de l'eau"
+        stem: |-
+          **(0,5 pt)** L'onde qui se propage à la surface de l'eau est-elle transversale ou longitudinale ? Justifier.
+        reasoning: |-
+          Le critère est la direction de la perturbation **comparée** à la direction de propagation. À la surface de l'eau, chaque point du milieu monte et descend **verticalement** (la surface se creuse et se bombe), tandis que l'onde, elle, avance **horizontalement** de $S$ vers $M$. La perturbation est donc perpendiculaire à la direction de propagation : c'est la définition même d'une onde **transversale**. (À l'inverse, le son est longitudinal — la perturbation y est parallèle à la propagation ; ce n'est pas le cas ici.)
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Déterminer la longueur d'onde $\lambda$ de l'onde étudiée.
+        reasoning: |-
+          La longueur d'onde est la plus petite distance séparant deux points qui vibrent en phase — sur une photographie instantanée, c'est l'espacement entre deux motifs identiques consécutifs, par exemple entre **deux crêtes voisines**. C'est exactement ce que mesure la double flèche cotée $1{,}5\ \text{cm}$ tracée au-dessus de deux crêtes voisines. On lit donc directement :
+
+          $$\lambda = 1{,}5\ \text{cm} = 1{,}5\times10^{-2}\ \text{m}$$
+
+          (lecture d'échelle reprise de la figure du sujet : la double flèche couvre l'intervalle entre deux crêtes voisines, soit une longueur d'onde.)
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En déduire la célérité $V$ de l'onde à la surface de l'eau.
+        reasoning: |-
+          La célérité relie la longueur d'onde (répétition spatiale) et la fréquence (répétition temporelle) par la relation dérivée en R2 : $\lambda = V\,T = V/N$, donc $V = \lambda\,N$. Ici la fréquence est donnée ($N = 20\ \text{Hz}$) et $\lambda$ vient d'être lue au graphe — il ne reste qu'à multiplier. On n'a pas besoin de mesurer une durée : la fréquence porte déjà l'information temporelle.
+        steps:
+          - math: 'V = \lambda\,N'
+            note: "On isole V dans la relation λ = V/N = VT (R2), avec N la fréquence donnée."
+          - math: 'V = 1{,}5\times10^{-2} \times 20 = 0{,}30\ \text{m/s}'
+            note: "Application numérique : λ = 1,5 cm = 1,5e-2 m, N = 20 Hz."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Le point $M$, situé à la distance $d = SM$ de $S$, est le front de l'onde à la date $t_1$. Exprimer le retard temporel $\tau$ du mouvement de $M$ par rapport à celui de $S$ en fonction de la période $T$ de l'onde, puis calculer $\tau$.
+        reasoning: |-
+          Le point $M$ ne fait que **rejouer**, avec un retard, le mouvement que $S$ a fait plus tôt : $y_M(t) = y_S(t - \tau)$ avec $\tau = d/V$ (R1). Pour exprimer ce retard **en fonction de $T$**, on remarque que la distance $SM$ se lit sur la figure en nombre de longueurs d'onde : le profil montre deux arches complètes entre $S$ et $M$, soit $SM = 2\lambda$. Or l'onde parcourt exactement une longueur d'onde $\lambda$ pendant une période $T$ (c'est le sens de $\lambda = VT$) ; parcourir $2\lambda$ prend donc $2T$. On peut le retrouver par le calcul en remplaçant $V = \lambda/T$ dans $\tau = d/V$ — la longueur d'onde se simplifie et il ne reste que le compte de périodes.
+        steps:
+          - math: '\tau = \frac{d}{V} = \frac{SM}{\lambda/T} = \frac{SM}{\lambda}\,T'
+            note: "On remplace V = λ/T (de λ = VT) : le retard vaut le nombre de longueurs d'onde SM/λ multiplié par T."
+          - math: 'SM = 2\lambda \implies \tau = \frac{2\lambda}{\lambda}\,T = 2\,T'
+            note: "Lecture de la figure : SM ≈ deux arches complètes = 2λ. La longueur d'onde se simplifie."
+          - math: 'T = \frac{1}{N} = \frac{1}{20} = 0{,}05\ \text{s} \implies \tau = 2\,T = 0{,}10\ \text{s}'
+            note: "T est l'inverse de la fréquence ; d'où τ = 2T = 0,10 s."
+
+  # ── r-variation — twin frais anti-mémorisation (PAS un sujet réel) ────────
+  # Mêmes savoir-faire profonds que r-bac (nature transversale/longitudinale,
+  # lecture de λ sur une photo, célérité V = λf, retard τ en fonction de T) mais
+  # sur un support DIFFÉRENT : une onde LONGITUDINALE le long d'un ressort (la
+  # nature change — c'est le piège anti-copie), d'autres nombres, et une
+  # question de RELATION DE PHASE en plus (transfert de R3). L'élève ne peut pas
+  # recopier le sujet 2019 : il doit reconnaître quelle procédure s'applique.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, support différent : ici l'onde se propage le long d'un **ressort** horizontal (un « slinky »), et non à la surface de l'eau. À une extrémité $S$, une source impose une vibration sinusoïdale de fréquence $f = 25\ \text{Hz}$ ; l'onde progresse le long du ressort sans amortissement, sous forme de zones de compression et de dilatation qui se suivent.
+
+      Sur une photographie du ressort prise à un instant donné, on repère les compressions successives. La distance entre la première et la quatrième compression consécutives vaut $24\ \text{cm}$. Un point $M$ du ressort est situé à la distance $d = SM = 20\ \text{cm}$ de la source.
+    questions:
+      - id: q1
+        stem: |-
+          Le long du ressort, l'onde est-elle transversale ou longitudinale ? Justifier.
+        reasoning: |-
+          On compare, comme toujours, la direction de la perturbation à la direction de propagation. Le long d'un ressort, chaque spire se déplace d'avant en arrière **dans la direction même du ressort** — ce sont des compressions et des dilatations alignées avec la propagation. La perturbation est donc **parallèle** à la direction de propagation : l'onde est **longitudinale**. C'est l'inverse de l'onde à la surface de l'eau (transversale) : le geste de raisonnement est le même, la réponse change parce que le mécanisme physique est différent.
+      - id: q2
+        stem: |-
+          Déterminer la longueur d'onde $\lambda$ de cette onde.
+        reasoning: |-
+          Deux compressions consécutives sont deux motifs identiques : la distance qui les sépare est une longueur d'onde. Ici on ne mesure pas une seule longueur d'onde mais **trois d'un coup** — de la 1ʳᵉ à la 4ᵉ compression, il y a trois intervalles, donc $3\lambda$. Mesurer plusieurs longueurs d'onde à la fois, puis diviser, est plus précis que de lire un seul intervalle.
+        steps:
+          - math: '3\lambda = 24\ \text{cm} \implies \lambda = \frac{24}{3} = 8\ \text{cm} = 8\times10^{-2}\ \text{m}'
+            note: "De la 1re à la 4e compression : trois intervalles, soit 3λ = 24 cm."
+      - id: q3
+        stem: |-
+          Calculer la célérité $V$ de l'onde le long du ressort.
+        reasoning: |-
+          Même relation qu'au sujet précédent, $\lambda = V/f$, donc $V = \lambda\,f$ : la fréquence est imposée par la source, la longueur d'onde vient d'être lue, on multiplie. Attention aux unités : $\lambda$ en mètres pour obtenir $V$ en m/s.
+        steps:
+          - math: 'V = \lambda\,f = 8\times10^{-2} \times 25 = 2{,}0\ \text{m/s}'
+            note: "Application numérique : λ = 8e-2 m, f = 25 Hz."
+      - id: q4
+        stem: |-
+          Exprimer le retard $\tau$ du point $M$ par rapport à $S$ en fonction de la période $T$, calculer $\tau$, puis préciser la relation de phase entre $M$ et $S$.
+        reasoning: |-
+          Comme au sujet, $\tau = d/V$, et pour l'exprimer en fonction de $T$ on compte combien de longueurs d'onde tient la distance $d$ : $\tau = (d/\lambda)\,T$. Ici $d = 20\ \text{cm}$ et $\lambda = 8\ \text{cm}$, donc $d/\lambda = 2{,}5$ — deux longueurs d'onde et demie. Un nombre **entier** de longueurs d'onde donnerait la concordance de phase ; ici il y a un demi de plus, ce qui place $M$ à l'opposé exact du cycle de $S$ : c'est l'**opposition de phase**. On le confirme par le déphasage $\Delta\varphi = 2\pi d/\lambda$, qui doit tomber sur un multiple impair de $\pi$.
+        steps:
+          - math: '\tau = \frac{d}{V} = \frac{d}{\lambda}\,T = \frac{20}{8}\,T = 2{,}5\,T'
+            note: "d/λ = 20/8 = 2,5 : le retard vaut 2,5 périodes."
+          - math: 'T = \frac{1}{f} = \frac{1}{25} = 0{,}04\ \text{s} \implies \tau = 2{,}5 \times 0{,}04 = 0{,}10\ \text{s}'
+            note: "T inverse de f ; d'où τ = 2,5 T = 0,10 s."
+          - math: '\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 20}{8} = 5\pi\ \text{rad}'
+            note: "Vérification : 5π = 4π + π, multiple impair de π → opposition de phase."

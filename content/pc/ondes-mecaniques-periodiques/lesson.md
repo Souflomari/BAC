@@ -14,6 +14,8 @@ Deux façons de regarder cette corde, maintenant.
 
 Avant de lire la suite, prends position, en une phrase : ces deux répétitions — l'espacement des bosses sur la photo, et l'intervalle de temps entre deux passages du point par le même mouvement — sont-elles deux choses complètement indépendantes, qu'on pourrait faire varier librement l'une sans l'autre ? Ou sont-elles nécessairement liées, forcées d'aller ensemble, dès que la corde et le vibreur sont fixés ?
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce que montre l'expérience, si tu resserres le rythme du vibreur (il monte-descend plus vite, sans toucher à la tension de la corde) : les bosses sur la photo se rapprochent aussi. Sans que tu aies touché à l'espacement à la main, il a changé tout seul, exactement au rythme du vibreur. Si les deux répétitions étaient vraiment indépendantes, resserrer le rythme dans le temps n'aurait aucune raison de resserrer l'espacement dans l'espace. Et pourtant, les deux bougent ensemble.
 
 Ce n'est donc pas une coïncidence. Il y a bien deux répétitions dans une onde progressive périodique — l'une dans le temps, l'autre dans l'espace — mais elles ne sont pas indépendantes : elles sont les deux faces d'un même phénomène. Comprendre pourquoi, et comment elles se calculent l'une à partir de l'autre, c'est tout l'objet de cette leçon.
@@ -154,6 +156,8 @@ Vérifions avec l'autre écriture. La fréquence est $f = 1/T = 1/0{,}5 = 2\ \te
 $$\lambda = \frac{c}{f} = \frac{3}{2} = 1{,}5\ \text{m}$$
 
 Les deux calculs coïncident, comme il se doit : ce sont deux écritures de la même relation, dérivée une seule fois.
+
+[[checkpoint:cp-r2-double-periodicite]]
 
 ---
 
@@ -300,6 +304,8 @@ Dans les deux cas, après la fente ou la porte, l'onde garde $f = 40\ \text{kHz}
 
 La diffraction de la **lumière**, et la relation quantitative qui en donne la demi-largeur angulaire, $\theta = \lambda/a$, ne sont pas traitées ici : elles appartiennent à la leçon sur l'onde lumineuse (`propagation-onde-lumineuse`). Ce qu'on vient d'établir — la condition $a \lesssim \lambda$, les caractéristiques conservées, le montage — vaut pour les ondes mécaniques ; le prolongement quantitatif et le cas de la lumière se trouvent ailleurs.
 
+[[checkpoint:cp-r5-diffraction]]
+
 ---
 
 ## R6 — Les milieux dispersifs : quand la célérité dépend de la fréquence
@@ -346,6 +352,8 @@ $c_1 \neq c_2$ : la célérité dépend ici de la fréquence — ce milieu est *
 
 Conséquence, pour un signal qui contiendrait à la fois $f_1$ et $f_2$ : dans le premier milieu, ses deux composantes avancent ensemble, à la même vitesse — le signal garde sa forme en se propageant. Dans le second, elles se désynchronisent en avançant — le signal se déforme au fur et à mesure de sa propagation.
 
+[[checkpoint:cp-r6-dispersif]]
+
 ---
 
 ## R7 — Pour t'entraîner
@@ -360,70 +368,14 @@ Conséquence, pour un signal qui contiendrait à la fois $f_1$ et $f_2$ : dans l
 - Diffraction : notable quand la dimension $a$ de l'ouverture (ou de l'obstacle) est de l'ordre de, ou inférieure à, $\lambda$ ($a \lesssim \lambda$) ; l'onde diffractée conserve $f$, $\lambda$ et $c$ — seule la géométrie de propagation change.
 - Milieu dispersif : milieu où la célérité $c$ dépend de la fréquence $f$ de l'onde (non dispersif si $c$ est la même pour toutes les fréquences) ; dans un milieu dispersif, un signal composé de plusieurs fréquences se déforme en se propageant.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Un vibreur fait osciller l'extrémité $S$ d'une corde tendue horizontalement, à la fréquence $f = 50\ \text{Hz}$. La célérité de l'onde le long de cette corde, pour la tension utilisée, vaut $c = 15\ \text{m/s}$.
+Ce qui suit est le sujet d'examen national **2019 (session normale)** sur la propagation d'une onde mécanique à la surface de l'eau — le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Quelle est la période $T$ de vibration de la source ?**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* $T$ est l'inverse direct de $f$, par définition de la fréquence.
+### Une variation pour ne pas mémoriser
 
-$$T = \frac{1}{f} = \frac{1}{50} = 0{,}02\ \text{s} = 20\ \text{ms}$$
+Même structure profonde, support différent : ici l'onde se propage le long d'un ressort — elle est *longitudinale*, et non transversale — les nombres changent, et on te demande en plus la relation de phase entre deux points. Reconnais quelle procédure s'applique quand le support, la nature de l'onde et les nombres changent.
 
-**2) En déduire la longueur d'onde $\lambda$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la relation dérivée en R2, en utilisant $T$ qu'on vient de calculer.
-
-$$\lambda = cT = 15 \times 0{,}02 = 0{,}3\ \text{m}$$
-
-**3) Un point $M$ de la corde est situé à $d = 0{,}9\ \text{m}$ de $S$. Quel est le retard $\tau$ entre $S$ et $M$ ? Combien de périodes ce retard représente-t-il ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule d'abord $\tau$ par sa définition, puis on le compare à $T$ pour savoir combien de cycles complets se sont écoulés — c'est ce rapport qui dira si $M$ est en phase avec $S$.
-
-$$\tau = \frac{d}{c} = \frac{0{,}9}{15} = 0{,}06\ \text{s} = 60\ \text{ms}$$
-
-$$\frac{\tau}{T} = \frac{0{,}06}{0{,}02} = 3$$
-
-Le retard représente exactement $3$ périodes entières.
-
-**4) Que peut-on en déduire sur la relation de phase entre $M$ et $S$ ? Vérifie en calculant le déphasage $\Delta\varphi$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* un nombre entier de périodes de retard signifie que $M$ est revenu exactement dans le même état que $S$ à chaque instant — c'est la concordance de phase ; le calcul du déphasage doit confirmer ce raisonnement.
-
-Puisque $\tau$ correspond à un nombre entier de périodes, $M$ vibre en **concordance de phase** avec $S$. Vérification :
-
-$$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 0{,}9}{0{,}3} = 6\pi\ \text{rad}$$
-
-$6\pi$ est un multiple entier de $2\pi$ ($6\pi = 3 \times 2\pi$) : la concordance de phase est confirmée.
-
-**5) Un second point $M'$ est situé à $d' = 1{,}05\ \text{m}$ de $S$. Quelle est sa relation de phase avec $S$ ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* même démarche qu'aux questions 3 et 4, sur une nouvelle distance — c'est l'occasion de voir apparaître l'autre cas particulier.
-
-$$\tau' = \frac{d'}{c} = \frac{1{,}05}{15} = 0{,}07\ \text{s}, \qquad \frac{\tau'}{T} = \frac{0{,}07}{0{,}02} = 3{,}5$$
-
-$3{,}5$ périodes : un nombre entier de périodes ($3$), plus une demi-période. Vérifions par le déphasage :
-
-$$\Delta\varphi' = \frac{2\pi d'}{\lambda} = \frac{2\pi \times 1{,}05}{0{,}3} = 7\pi\ \text{rad}$$
-
-$7\pi = 6\pi + \pi$ : c'est un multiple entier de $2\pi$ plus $\pi$, donc un multiple **impair** de $\pi$. $M'$ vibre en **opposition de phase** avec $S$.
-
-**6) Le vibreur change de fréquence : il oscille maintenant deux fois plus vite ($f' = 100\ \text{Hz}$), sans que la tension de la corde soit modifiée. Que devient la longueur d'onde $\lambda'$ ? Et la célérité ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la célérité ne dépend que du milieu (sa nature, son état — ici la tension de la corde), jamais de la source (chapitre précédent) ; elle ne peut donc pas changer ici. C'est $\lambda$ qui doit absorber tout le changement de fréquence.
-
-La tension de la corde ne change pas, donc la célérité reste $c = 15\ \text{m/s}$. La nouvelle période est $T' = 1/f' = 1/100 = 0{,}01\ \text{s}$, et :
-
-$$\lambda' = \frac{c}{f'} = \frac{15}{100} = 0{,}15\ \text{m}$$
-
-La longueur d'onde est divisée par deux, exactement comme la fréquence a été multipliée par deux — mais la célérité, elle, n'a pas bougé : elle est restée fixée par la corde, pas par le vibreur.
-
-### À toi
-
-**Variation 1.** Un diapason vibre à $f = 1000\ \text{Hz}$. Calcule sa longueur d'onde dans l'air ($c_{air} \approx 340\ \text{m/s}$), puis dans l'eau ($c_{eau} \approx 1500\ \text{m/s}$). Sa fréquence a-t-elle changé entre les deux milieux ? Justifie ta réponse en te basant sur ce qui fixe la fréquence d'une onde périodique (R1 et R4).
-
-**Variation 2.** Deux points d'une corde, distants de $d = 2\ \text{m}$, vibrent avec un déphasage $\Delta\varphi = 4\pi\ \text{rad}$. Sachant que la célérité de l'onde le long de cette corde vaut $c = 8\ \text{m/s}$, calcule la longueur d'onde $\lambda$, puis la période $T$ de la source.
-
-**Variation 3.** On envoie des ultrasons de fréquence $f = 40\ \text{kHz}$ (dans l'air, $c \approx 340\ \text{m/s}$) sur une fente de largeur réglable $a$. Pour $a = 3\ \text{cm}$, puis pour $a = 5\ \text{mm}$, calcule $\lambda$ et compare-la à $a$ dans chaque cas : dans lequel des deux cas la diffraction est-elle notable ? Sur un schéma de montage (émetteur → fente → récepteur mobile sur un arc), quel enregistrement attends-tu — un signal reçu concentré dans une direction, ou étalé sur un large domaine angulaire — pour chacune des deux largeurs ?
-
-**Variation 4.** Dans un milieu, on mesure $c_1 = 1500\ \text{m/s}$ à $f_1 = 1\ \text{kHz}$, puis $c_2 = 1500\ \text{m/s}$ à $f_2 = 5\ \text{kHz}$. Dans un second milieu, on mesure $c_1' = 1{,}50\ \text{m/s}$ à $f_1$, puis $c_2' = 1{,}35\ \text{m/s}$ à $f_2$. Pour chacun des deux milieux, ce milieu est-il dispersif ? Justifie ta réponse, puis dis ce qu'il advient, dans chacun des deux milieux, d'un signal qui contiendrait à la fois $f_1$ et $f_2$.
+[[exercise:r-variation]]

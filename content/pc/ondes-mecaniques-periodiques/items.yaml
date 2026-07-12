@@ -34,6 +34,55 @@ misconceptions:
       Croit que, dans un milieu dispersif, c'est la fréquence de l'onde qui
       change au cours de la propagation, alors que $f$ reste fixée par la
       source — c'est la célérité qui diffère d'une fréquence à l'autre.
+  # ── Familles rétro-taguées (double périodicité, fréquence/milieu, phase,
+  #    nature, calcul) — couvrent les distracteurs de OMPP-1…18, qui
+  #    précédaient l'inventaire par-distracteur. OND-DP-1 est la misconception
+  #    GATED de la double périodicité (probe des checkpoints cp-r0-predict et
+  #    cp-r2-double-periodicite).
+  - id: OND-DP-1
+    description: >
+      Double périodicité niée : croit que la répétition temporelle ($T$) et la
+      répétition spatiale ($\lambda$) sont indépendantes (on peut faire varier
+      l'une sans l'autre), qu'elles ne coïncident que par hasard, ou que leur
+      lien n'existe que dans un cas particulier (source sinusoïdale, son) —
+      alors que $\lambda = cT$ les soude pour toute onde périodique.
+  - id: OND-DP-2
+    description: >
+      $T$ et $\lambda$ confondues : croit que ce sont la même grandeur exprimée
+      en deux unités, les lit sur le même (ou le mauvais) graphique, ou confond
+      la longueur d'onde avec le retard $\tau$ ou avec la distance totale déjà
+      parcourue par l'onde.
+  - id: OND-FR-1
+    description: >
+      Fréquence attribuée au milieu : croit que $f$ dépend de la célérité ou du
+      milieu traversé (elle « changerait » proportionnellement à $c$ en passant
+      d'un milieu à l'autre), qu'il faut connaître $\lambda$ pour connaître $f$,
+      ou se trompe sur la grandeur ($f$ ou $\lambda$) qui change réellement au
+      changement de milieu — alors que $f$ est fixée par la seule source.
+  - id: OND-NAT-1
+    description: >
+      Nature ou transport erronés : croit qu'une onde progressive transporte de
+      la matière, que le son est transversal, qu'une onde change de nature d'une
+      période à l'autre, qu'elle vibre dans le vide, ou qu'un changement de
+      milieu interrompt la propagation.
+  - id: OND-CALC-1
+    description: >
+      Erreur dans une relation fondamentale de l'onde : inverse ou mélange les
+      grandeurs — $\tau = c/d$ ou $d\times c$ au lieu de $d/c$ ; $\lambda = c/T$
+      ou $c+T$ au lieu de $cT$ ; déphasage sans le facteur $2\pi$ ou rapport
+      inversé ; $f = T$ au lieu de $1/T$ ; $d/T$ au lieu de $d/\lambda$.
+  - id: OND-PH-2
+    description: >
+      Mauvais classement concordance/opposition de phase : croit qu'un nombre
+      entier de périodes plus une demi-période donne la concordance, confond
+      multiple pair et impair de $\lambda/2$, prend $\lambda/4$ pour
+      l'opposition, ou croit qu'aucun cas particulier ne s'applique.
+  - id: OND-PH-3
+    description: >
+      Malentendu sur le retard $\tau = d/c$ : croit qu'un point plus éloigné
+      vibre avec une période différente (plus grande), que la propagation est
+      instantanée (aucun retard), ou raisonne sur la petitesse relative du
+      retard au lieu du rapport $\tau/T$.
 
 items:
   - id: OMPP-1
@@ -57,6 +106,7 @@ items:
           Sur une photographie de la corde entière à un instant donné,
           montrant l'élongation en fonction de la position $x$.
         correct: false
+        misconception: OND-DP-2
         feedback: >
           Ce graphique donne la longueur d'onde $\lambda$ (la répétition
           spatiale du motif), pas la période $T$. $T$ se lit sur l'évolution
@@ -66,6 +116,7 @@ items:
         text: >-
           Sur un graphique donnant la célérité $c$ en fonction du temps.
         correct: false
+        misconception: OND-DP-2
         feedback: >
           La célérité ne se mesure pas ainsi : dans un milieu homogène, $c$
           reste constante, elle ne se lit pas sur un graphique en fonction du
@@ -76,6 +127,7 @@ items:
           Peu importe : $T$ et $\lambda$ se lisent sur le même graphique, ce
           sont la même grandeur exprimée dans deux unités différentes.
         correct: false
+        misconception: OND-DP-2
         feedback: >
           $T$ et $\lambda$ ne sont pas la même grandeur mesurée dans deux
           unités : l'une est une durée (secondes), lue sur l'évolution
@@ -119,6 +171,7 @@ items:
       - id: B
         text: "La période $T$, exprimée ici en centimètres au lieu de secondes."
         correct: false
+        misconception: OND-DP-2
         feedback: >
           $T$ est une durée : elle ne peut pas s'exprimer en centimètres,
           quelle que soit la convention choisie — une durée et une distance
@@ -130,6 +183,7 @@ items:
           Le retard $\tau$ entre la source et le point le plus éloigné
           visible sur la photo.
         correct: false
+        misconception: OND-DP-2
         feedback: >
           Le retard $\tau$ est aussi une durée (il se calcule par
           $\tau = d/c$), pas une distance ; il ne se lit pas comme un
@@ -140,6 +194,7 @@ items:
           La distance totale parcourue par l'onde depuis le début de
           l'expérience.
         correct: false
+        misconception: OND-DP-2
         feedback: >
           Cette distance totale grandit sans cesse à mesure que l'onde
           avance ; elle n'a rien de fixe. Ce qui reste constant et se répète,
@@ -182,6 +237,7 @@ items:
           Elle vaut $25 \times (6/10) = 15\ \text{Hz}$, car la fréquence
           change proportionnellement à la célérité.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           Il n'existe pas de proportionnalité entre $f$ et $c$ : la
           fréquence est fixée uniquement par la source (le vibreur), elle ne
@@ -193,6 +249,7 @@ items:
           Elle ne peut pas être déterminée sans connaître la longueur d'onde
           dans chaque corde.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           Pas besoin de $\lambda$ pour connaître $f$ : la fréquence est
           entièrement fixée à la source et se conserve dans tout milieu que
@@ -204,6 +261,7 @@ items:
           Elle devient nulle : le changement brusque de corde interrompt la
           vibration périodique.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           Un changement de milieu modifie la célérité (et donc la longueur
           d'onde), mais n'interrompt jamais le relais de la vibration
@@ -242,6 +300,7 @@ items:
       - id: B
         text: "Le son devient plus aigu, car il va plus vite dans l'eau."
         correct: false
+        misconception: OND-FR-1
         feedback: >
           Ce choix confond la célérité $c$ (fixée par le milieu, et qui
           augmente bien ici) avec la fréquence $f$ (fixée par la source, et
@@ -254,6 +313,7 @@ items:
           Le son devient plus grave, car un milieu plus dense ralentit les
           vibrations.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           Un changement de milieu peut modifier la célérité (ici elle
           augmente, l'eau ne « ralentit » pas ce son), mais il ne modifie pas
@@ -265,6 +325,7 @@ items:
           On ne peut pas savoir sans connaître la longueur d'onde du son
           dans l'eau.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           La fréquence est déterminée entièrement par la vibration de la
           source, indépendamment du milieu qu'elle traverse ensuite (R1) :
@@ -303,6 +364,7 @@ items:
       - id: B
         text: "$\\Delta\\varphi = \\dfrac{d}{\\lambda} = 1{,}5\\ \\text{rad}$"
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul oublie le facteur $2\pi$. Le rapport $d/\lambda = 1{,}5$
           compte seulement combien de longueurs d'onde séparent les deux
@@ -312,6 +374,7 @@ items:
       - id: C
         text: "$\\Delta\\varphi = \\dfrac{d}{T} = 6\\ \\text{rad}$"
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul mélange une distance $d$ (en mètres) et une période $T$
           (en secondes) : le rapport $d/T$ n'a pas la dimension d'un angle,
@@ -321,6 +384,7 @@ items:
       - id: D
         text: "$\\Delta\\varphi = 2\\pi \\times \\dfrac{T}{d} \\approx 1{,}05\\ \\text{rad}$"
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul inverse le rapport (et utilise en plus $T$ à la place de
           $\lambda$). Le déphasage se construit à partir de la fraction de
@@ -360,6 +424,7 @@ items:
           $\tau = c/d = 2\ \text{s}$, ce qui correspond à $10$ périodes : $M$
           vibre en concordance de phase avec $S$.
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul inverse le rapport : le retard est une distance DIVISÉE
           par une célérité, $\tau = d/c$, pas $c/d$. De plus, $c/d$ n'a même
@@ -370,6 +435,7 @@ items:
           $\tau = d \times c = 8\ \text{s}$, ce qui correspond à $40$
           périodes : $M$ vibre en concordance de phase avec $S$.
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Le retard se calcule en DIVISANT la distance par la célérité,
           $\tau = d/c$ — pas en les multipliant. Un produit $d \times c$ a la
@@ -381,6 +447,7 @@ items:
           vibre en concordance de phase avec $S$, car $2{,}5$ est un nombre
           entier de demi-périodes.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           Le retard $\tau = 0{,}5\ \text{s}$ et le compte de $2{,}5$ périodes
           sont corrects, mais la conclusion sur la phase est inversée : $2{,}5$
@@ -429,6 +496,7 @@ items:
           Rien ne change sur la photo : l'espacement des bosses ne dépend
           que de la tension de la corde, jamais du rythme du vibreur.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           L'espacement des bosses (la longueur d'onde) dépend à la fois de
           la célérité (fixée par la tension) ET de la période de la source
@@ -440,6 +508,7 @@ items:
           Les bosses s'écartent : resserrer le rythme dans le temps élargit
           automatiquement l'espacement dans l'espace.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           C'est l'inverse : resserrer le rythme temporel (diminuer $T$)
           resserre aussi l'espacement spatial (diminuer $\lambda$), puisque
@@ -451,6 +520,7 @@ items:
           répétition spatiale sur la corde sont deux phénomènes
           indépendants.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           C'est précisément ce que l'expérience contredit : les deux
           répétitions bougent ensemble, sans qu'on touche à l'espacement à
@@ -496,6 +566,7 @@ items:
           Indépendantes : Léa et Yanis observent en réalité deux ondes
           différentes, qui se superposent par hasard sur la même corde.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           Il n'y a qu'UNE seule onde sur la corde. $T$ et $\lambda$ ne sont
           pas deux ondes différentes : ce sont deux façons de décrire le
@@ -507,6 +578,7 @@ items:
           dépend que de la longueur totale de la corde utilisée, pas du
           mouvement du vibreur.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           La longueur totale de la corde ne fait que limiter combien de
           bosses sont visibles ; elle ne fixe pas leur espacement. Cet
@@ -518,6 +590,7 @@ items:
           On ne peut rien affirmer : il pourrait très bien s'agir d'une
           simple coïncidence si les deux valeurs semblent correspondre.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           Ce n'est jamais une coïncidence : dès que la source et le milieu
           sont fixés, la répétition temporelle et la répétition spatiale
@@ -559,6 +632,7 @@ items:
           Ce sont deux phénomènes indépendants : on peut resserrer le rythme
           de la source sans que l'espacement spatial change.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           C'est le contraire de ce que montre l'expérience : resserrer le
           rythme de la source resserre toujours l'espacement spatial en
@@ -569,6 +643,7 @@ items:
           source périodique quelconque, non sinusoïdale, $T$ et $\lambda$ ne
           sont pas reliés.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           Le lien entre $T$ et $\lambda$ est établi sans jamais supposer que
           la source vibre sinusoïdalement : il vient uniquement du fait que
@@ -580,6 +655,7 @@ items:
           Ce lien n'existe que pour les ondes sonores, pas pour les ondes
           sur une corde.
         correct: false
+        misconception: OND-DP-1
         feedback: >
           C'est l'inverse chronologique : le lien entre $T$ et $\lambda$ est
           établi d'abord pour une onde sur une corde, avant d'être appliqué
@@ -618,6 +694,7 @@ items:
           la perturbation transporte de la matière en plus de l'énergie,
           contrairement à une onde progressive simple.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           Une onde progressive — périodique ou non — ne transporte jamais de
           matière, seulement de l'énergie : c'est une propriété de TOUTE
@@ -628,6 +705,7 @@ items:
           la perturbation se propage sans aucun retard entre la source et
           les points du milieu.
         correct: false
+        misconception: OND-PH-3
         feedback: >
           Le retard $\tau = d/c$ entre la source et un point $M$ existe
           toujours, périodicité ou non : $M$ rejoue le mouvement de $S$ avec
@@ -639,6 +717,7 @@ items:
           la perturbation change de nature (une onde transversale devient
           longitudinale) à chaque nouvelle période.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           La nature d'une onde — transversale ou longitudinale — est fixée
           par le mécanisme physique de la source et du milieu, elle ne
@@ -682,6 +761,7 @@ items:
           Oui : plus $M$ est loin de $S$, plus le signal met de temps à
           l'atteindre, donc plus sa période est grande.
         correct: false
+        misconception: OND-PH-3
         feedback: >
           Le retard $\tau$ (le temps que met le signal à atteindre $M$ pour
           la première fois) et la période $T$ (le temps que met $M$, une
@@ -694,6 +774,7 @@ items:
           Oui, mais seulement si le milieu est tel que la célérité $c$ varie
           avec la distance ; sinon la période reste la même.
         correct: false
+        misconception: OND-PH-3
         feedback: >
           La démonstration ($y_M(t+T) = y_M(t)$) ne fait intervenir que la
           périodicité de la source, jamais une propriété particulière du
@@ -705,6 +786,7 @@ items:
           Non, la période ne change pas, mais le déphasage entre $S$ et $M$
           est toujours nul, quelle que soit la distance $d$.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           Le déphasage $\Delta\varphi = 2\pi d/\lambda$ dépend de $d$ et
           n'est nul que si $d$ est un multiple entier de $\lambda$ : il
@@ -743,6 +825,7 @@ items:
         text: >-
           $\lambda = c/T = 12/0{,}4 = 30\ \text{m}$
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul divise $c$ par $T$ au lieu de les multiplier : la
           relation correcte, dérivée en R2, est $\lambda = cT$ (un produit),
@@ -752,6 +835,7 @@ items:
         text: >-
           $\lambda = T/c = 0{,}4/12 \approx 0{,}033\ \text{m}$
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul inverse le rôle de $c$ et $T$ dans la relation
           $\lambda = cT$ : c'est un produit des deux grandeurs, pas un
@@ -761,6 +845,7 @@ items:
         text: >-
           $\lambda = c + T = 12{,}4\ \text{m}$
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           On ne peut jamais additionner une célérité (en m/s) et une durée
           (en s) : ce ne sont pas des grandeurs de même nature. La longueur
@@ -798,6 +883,7 @@ items:
           Opposition de phase : $d$ est un multiple de $\lambda/2$, puisque
           $2\lambda = 4 \times (\lambda/2)$.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           L'opposition de phase exige un multiple IMPAIR de $\lambda/2$, pas
           n'importe quel multiple. Ici $2\lambda = 4 \times (\lambda/2)$, où
@@ -808,6 +894,7 @@ items:
           On ne peut pas savoir sans connaître les valeurs numériques de $d$
           et $\lambda$ ; une relation générale n'existe pas.
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Le rapport $d/\lambda = 2$ suffit entièrement : la relation
           $\Delta\varphi = 2\pi d/\lambda$ ne dépend que de ce rapport, pas
@@ -819,6 +906,7 @@ items:
           Ni concordance ni opposition : $d = 2\lambda$ ne correspond à
           aucun des deux cas particuliers reconnus.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           La concordance de phase correspond à TOUT multiple entier de
           $\lambda$ ($d = k\lambda$, pour n'importe quel entier $k$), pas
@@ -856,6 +944,7 @@ items:
           Elles vibrent perpendiculairement à la direction de propagation,
           comme sur une corde : le son est une onde transversale.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           C'est l'inverse : contrairement à l'onde sur une corde
           (transversale), le son se propage par des compressions et des
@@ -866,6 +955,7 @@ items:
           Elles ne vibrent pas du tout : seule l'énergie se déplace, sans
           que l'air soit localement perturbé.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           Une onde mécanique se propage justement PARCE QUE le milieu est
           perturbé localement, de proche en proche : pour le son, cette
@@ -877,6 +967,7 @@ items:
           Elles vibrent dans le vide, ce qui explique que le son puisse se
           propager dans l'espace.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           Le son est une onde MÉCANIQUE : il a besoin d'un milieu matériel
           pour se propager (ici, l'air) et ne se propage jamais dans le
@@ -917,6 +1008,7 @@ items:
           Leur célérité $c$ : le son de la note aiguë se propage plus vite
           dans l'air que celui de la note grave.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           La célérité est fixée par le milieu de propagation (ici, l'air à
           une température donnée), pas par la hauteur de la note émise :
@@ -928,6 +1020,7 @@ items:
           Seulement leur longueur d'onde $\lambda$, la fréquence étant
           nécessairement la même pour tout son.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           C'est l'inverse : c'est la fréquence qui est imposée par la source
           et qui DIFFÈRE nécessairement entre deux notes de hauteurs
@@ -939,6 +1032,7 @@ items:
           La nature de l'onde : la note grave est une onde longitudinale, la
           note aiguë une onde transversale.
         correct: false
+        misconception: OND-NAT-1
         feedback: >
           Le son est TOUJOURS une onde longitudinale, quelle que soit sa
           fréquence ou la hauteur perçue : la nature d'une onde
@@ -981,6 +1075,7 @@ items:
           Concordance de phase : $\tau/T = 4{,}5$ est un multiple de
           $0{,}5$, ce qui suffit pour la concordance.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           $4{,}5$ périodes, c'est $4$ périodes entières (qui donnent la
           concordance) PLUS une demi-période supplémentaire, qui déplace $M$
@@ -993,6 +1088,7 @@ items:
           On ne peut pas conclure sans connaître la longueur d'onde
           $\lambda$.
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Le rapport $\tau/T$ (le retard divisé par la période) suffit à lui
           seul pour conclure : c'est équivalent à $\Delta\varphi =
@@ -1004,6 +1100,7 @@ items:
           Concordance de phase, car $\tau = 0{,}225\ \text{s}$ est très
           petit devant la durée totale de l'expérience.
         correct: false
+        misconception: OND-PH-3
         feedback: >
           La relation de phase ne dépend jamais de la petitesse du retard
           par rapport à une durée extérieure (comme la durée totale de
@@ -1048,6 +1145,7 @@ items:
           $0{,}2\ \text{m}$, en utilisant la longueur d'onde du milieu 1,
           $\lambda_1 = c_1/f = 0{,}4\ \text{m}$, divisée par deux.
         correct: false
+        misconception: OND-FR-1
         feedback: >
           Une fois l'onde entrée dans le milieu 2, c'est la longueur d'onde
           DANS LE MILIEU 2 qui compte, $\lambda_2 = c_2/f$, pas celle du
@@ -1058,6 +1156,7 @@ items:
         text: >-
           $0{,}16\ \text{m}$, soit $\lambda_2$ tout entier.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           C'est la distance minimale pour la CONCORDANCE de phase (un
           multiple entier de $\lambda$), pas pour l'opposition. La distance
@@ -1067,6 +1166,7 @@ items:
         text: >-
           $0{,}04\ \text{m}$, soit $\lambda_2/4$.
         correct: false
+        misconception: OND-PH-2
         feedback: >
           Un quart de longueur d'onde correspond à un déphasage de $\pi/2$
           (un quart de tour, la quadrature), pas à l'opposition de phase,
@@ -1108,6 +1208,7 @@ items:
           $f \approx 1{,}8\ \text{Hz}$, obtenue en calculant $\lambda =
           \Delta\varphi/(2\pi d) \approx 1{,}67\ \text{m}$.
         correct: false
+        misconception: OND-CALC-1
         feedback: >
           Ce calcul inverse la relation $\Delta\varphi = 2\pi d/\lambda$ :
           pour isoler $\lambda$, il faut écrire
