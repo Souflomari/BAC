@@ -8,6 +8,8 @@ Imagine un ingénieur qui veut construire un petit émetteur de radio pour diffu
 
 Avant de lire la suite, prends position : à ton avis, ce montage va-t-il rayonner efficacement la musique jusqu'à un poste de radio du quartier ? Oui ou non — et pourquoi ?
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce que disent, en réalité, les ingénieurs radio : ce montage ne rayonnera presque rien. L'antenne d'un mètre restera, pour l'essentiel, un fil qui chauffe légèrement — elle ne transmettra qu'une fraction infime de l'énergie électrique en onde électromagnétique utilisable à distance. Et pourtant, la radio, ça marche : des stations diffusent bel et bien de la musique, de la parole, à des dizaines de kilomètres, depuis des antennes qui ne mesurent, elles non plus, que quelques dizaines de mètres tout au plus.
 
 Si tu avais prédit que le montage direct fonctionnerait, ta prédiction et la réalité se contredisent — et c'est exactement cet écart que cette leçon va combler. Si tu avais deviné juste, la question devient : **qu'est-ce que les stations de radio font de différent** pour que ça marche, elles ?
@@ -102,6 +104,8 @@ L'amplitude instantanée, $6 + 3\cos(2\pi \times 3\,000\,t)$, oscille entre $6-3
 
 Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}$, $f_{signal}=3\ \text{kHz}$ — elles reviennent dans les rungs suivants.
 
+[[checkpoint:cp-r2-porteuse-signal]]
+
 ---
 
 ## R3 — La condition de bonne modulation
@@ -158,6 +162,8 @@ $m > 1$ : c'est une surmodulation. À l'instant où $s_m(t)$ atteint son minimum
 
 [[figure:bonne-surmodulation]]
 
+[[checkpoint:cp-r3-taux-modulation]]
+
 ---
 
 ## R4 — La démodulation : retrouver l'enveloppe
@@ -187,6 +193,8 @@ Cette méthode ne fonctionne que si l'enveloppe représente fidèlement $s_m(t)$
 Reprends l'exemple de R2-R3 : l'enveloppe oscille entre $3\ \text{V}$ et $9\ \text{V}$, avec une période de $0{,}33\ \text{ms}$. Un détecteur de crête, branché sur ce signal, délivrerait une tension qui suit cette même enveloppe : elle démarre vers $9\ \text{V}$, redescend doucement vers $3\ \text{V}$ en environ une demi-période ($0{,}17\ \text{ms}$), remonte vers $9\ \text{V}$, et ainsi de suite — reconstituant, une fois l'offset $U_0=6\ \text{V}$ retiré, une tension oscillant entre $-3\ \text{V}$ et $+3\ \text{V}$ à $3\ \text{kHz}$ : exactement $s_m(t)$.
 
 [[figure:detecteur-crete]]
+
+[[checkpoint:cp-r4-condensateur]]
 
 ---
 
@@ -240,6 +248,8 @@ $$C = \frac{1}{3{,}198\times10^{13} \times 3{,}00\times10^{-4}} \approx 1{,}04\t
 
 Une centaine de picofarads : c'est exactement l'ordre de grandeur des condensateurs variables qu'on trouve réellement dans un circuit d'accord de récepteur AM.
 
+[[checkpoint:cp-r5-bande-frequences]]
+
 ---
 
 ## R6 — Pour t'entraîner
@@ -252,52 +262,14 @@ Une centaine de picofarads : c'est exactement l'ordre de grandeur des condensate
 - Démodulation : un détecteur de crête retrace l'enveloppe (charge rapide, décharge lente), et ne fonctionne bien que si la modulation d'origine n'était pas surmodulée.
 - Réception : un circuit oscillant (bobine + condensateur variable) accordé sur $f_0 = 1/(2\pi\sqrt{LC})$ sélectionne, parmi toutes les porteuses captées par l'antenne, celle dont $f_p$ coïncide avec $f_0$.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Une station de radio AM émet une porteuse d'amplitude $U_0 = 5\ \text{V}$ et de fréquence $f_p = 1\,200\ \text{kHz}$. À la réception, juste après le circuit accordé et avant démodulation, on enregistre à l'oscilloscope une tension qui oscille très rapidement ; les sommets successifs de ces oscillations, une fois reliés, dessinent une courbe qui monte progressivement d'un minimum de $3\ \text{V}$ jusqu'à un maximum de $7\ \text{V}$, redescend jusqu'à $3\ \text{V}$, puis recommence à l'identique toutes les $0{,}2\ \text{ms}$.
+Le sujet ci-dessous est un vrai sujet d'examen national (2017). Prends le temps de le chercher toi-même : pose tes expressions, tes lectures de courbe et tes calculs **avant** de dérouler le raisonnement expert. C'est en t'engageant sur ta propre réponse que la correction devient utile.
 
-**1) À partir de la description de l'enveloppe, déterminer l'amplitude $S_m$ du signal informatif et la fréquence $f_{signal}$ portée par cette onde.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* l'enveloppe oscille entre $U_0-S_m$ et $U_0+S_m$ — on retrouve $S_m$ à partir du minimum et du maximum lus sur la courbe, puis $f_{signal}$ à partir de la période de répétition de l'enveloppe.
+### Une variation pour ne pas mémoriser
 
-L'enveloppe varie entre $3\ \text{V}$ et $7\ \text{V}$. Sa valeur moyenne redonne $U_0$ :
+Même structure profonde, un autre habillage : de quoi vérifier que tu as compris la méthode, et non retenu des nombres.
 
-$$U_0 = \frac{3+7}{2} = 5\ \text{V}$$
-
-cohérent avec la valeur donnée. L'écart entre le maximum et cette moyenne donne $S_m$ :
-
-$$S_m = 7 - 5 = 2\ \text{V}$$
-
-La période de répétition de l'enveloppe est $T_{signal} = 0{,}2\ \text{ms} = 2\times10^{-4}\ \text{s}$, donc :
-
-$$f_{signal} = \frac{1}{T_{signal}} = \frac{1}{2\times10^{-4}} = 5\,000\ \text{Hz} = 5\ \text{kHz}$$
-
-**2) Vérifier que les deux conditions de bonne modulation sont respectées.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement les deux critères de R3 avec les valeurs qu'on vient de retrouver.
-
-$$\frac{f_p}{f_{signal}} = \frac{1\,200\,000}{5\,000} = 240$$
-
-$240 \gg 1$ : la première condition est largement vérifiée.
-
-$$m = \frac{S_m}{U_0} = \frac{2}{5} = 0{,}4$$
-
-$m = 0{,}4 < 1$ : la seconde condition est vérifiée aussi. C'est une bonne modulation, sans surmodulation.
-
-**3) Le récepteur utilise une bobine $L = 150\ \mu\text{H}$ dans son circuit accordé. Calculer la valeur du condensateur $C$ à régler pour recevoir cette station.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on veut $f_0=f_p$ ; on reprend la même relation qu'en R5, avec cette nouvelle bobine et cette nouvelle porteuse.
-
-$$C = \frac{1}{(2\pi f_p)^2 L}$$
-
-$$2\pi f_p = 2\pi \times 1{,}20\times10^{6} \approx 7{,}540\times10^{6}\ \text{rad/s}$$
-
-$$(2\pi f_p)^2 \approx 5{,}685\times10^{13}\ \text{rad}^2/\text{s}^2$$
-
-$$C = \frac{1}{5{,}685\times10^{13} \times 1{,}50\times10^{-4}} \approx 1{,}17\times10^{-10}\ \text{F} \approx 117\ \text{pF}$$
-
-### À toi
-
-**Variation 1.** Une porteuse a pour amplitude $U_0 = 4\ \text{V}$. Le signal informatif qu'on veut lui superposer a une amplitude $S_m = 5\ \text{V}$. Calcule le taux de modulation $m$. Y a-t-il surmodulation ? Si oui, décris, en une ou deux phrases, ce qui se passe concrètement sur l'enveloppe à l'instant où $s_m(t)$ atteint son minimum $-5\ \text{V}$, et pourquoi un détecteur de crête ne pourrait plus reconstituer fidèlement le signal d'origine.
-
-**Variation 2.** Explique, avec tes propres mots et sans calcul, pourquoi tourner le bouton de sélection des stations sur un vieux poste de radio (un bouton qui fait varier un condensateur $C$) permet de passer d'une station à l'autre, en partant du fait que l'antenne reçoit, à chaque instant, toutes les porteuses en même temps.
+[[exercise:r-variation]]
