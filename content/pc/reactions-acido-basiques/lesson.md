@@ -693,58 +693,32 @@ Le traitement du choix d'indicateur reste **qualitatif** : on superpose une zone
 - **Repérer $V_E$ :** méthode des tangentes (deux tangentes parallèles + médiane équidistante) ou méthode de la dérivée (le **maximum** de $d\text{pH}/dV$, jamais un zéro). À la demi-équivalence $V_E/2$ : $\text{pH} \approx pK_A$ — un point distinct de l'équivalence.
 - **Choisir l'indicateur :** un indicateur coloré est un couple $HIn/In^-$ ; sa zone de virage ($\approx pK_A(\text{indicateur}) \pm 1$) doit **encadrer** $\text{pH}_E$ pour que le virage se produise au voisinage du saut.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Prends position avant de te lancer
 
-On étudie une solution d'acide benzoïque $C_6H_5COOH$ (couple $C_6H_5COOH/C_6H_5COO^-$), de concentration apportée $c = 1{,}0 \times 10^{-2}\ \text{mol/L}$. Le pH mesuré de cette solution est $3{,}1$.
+Le sommet de cette leçon n'est pas une solution imprimée à lire, mais un vrai sujet à tenter toi-même. Avant de dérouler la courbe de dosage, engage-toi sur une prédiction — c'est en t'y risquant que la lecture qui suit prendra son sens.
 
-**1) Écris la demi-équation du couple $C_6H_5COOH/C_6H_5COO^-$, puis l'équation de la réaction de cet acide avec l'eau.**
+[[checkpoint:cp-r0-predict]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie d'abord l'acide et la base du couple, on écrit sa demi-équation, puis on la combine avec le couple de l'eau agissant comme base — exactement la construction du rung 1.
+### Exercice de type bac
 
-$$C_6H_5COOH \rightleftharpoons C_6H_5COO^- + H^+$$
+Voici un sujet **national vérifié** (session normale 2021, PC BIOF). On dose un acide carboxylique inconnu par la soude, puis on l'identifie à partir de son $pK_A$. Prends le temps de chercher chaque question avant de déplier le raisonnement expert.
 
-$$C_6H_5COOH + H_2O \rightleftharpoons C_6H_5COO^- + H_3O^+$$
+[[exercise:r-bac]]
 
-**2) Calcule $[H_3O^+]$ de cette solution, et détermine si elle est acide, basique ou neutre. Justifie à partir de la comparaison avec $[HO^-]$.**
+### Vérifie que les gestes clés sont solides
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on retrouve $[H_3O^+]$ depuis le pH, puis on compare au pH de neutralité établi au rung 3 — pas à une impression.
+Ce sujet traverse les quatre pièges classiques du cluster titrage/distribution. Teste-les à froid — chaque bonne réponse doit venir d'un modèle, pas d'un réflexe.
 
-$$[H_3O^+] = 10^{-3{,}1} = 10^{-4} \times 10^{0{,}9} \approx 7{,}9 \times 10^{-4}\ \text{mol/L}$$
+[[checkpoint:cp-r9-dosage]]
 
-$\text{pH} = 3{,}1 < 7$, donc $[H_3O^+] > [HO^-]$ : la solution est **acide**.
+[[checkpoint:cp-r10-equivalence]]
 
-**3) En négligeant la contribution de l'autoprotolyse de l'eau, calcule $K_A$ puis $pK_A$ du couple.**
+[[checkpoint:cp-r11-indicateur]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* même démarche qu'au rung 4 — reconstituer les trois concentrations à l'équilibre à partir du pH et de $c$, avant de former le quotient.
+[[checkpoint:cp-r8-distribution]]
 
-$$[C_6H_5COO^-]_{eq} \approx [H_3O^+]_{eq} \approx 7{,}9 \times 10^{-4}\ \text{mol/L}$$
+### Une variation pour ne pas mémoriser
 
-$$[C_6H_5COOH]_{eq} \approx c - [H_3O^+]_{eq} \approx 1{,}0 \times 10^{-2} - 7{,}9 \times 10^{-4} \approx 9{,}2 \times 10^{-3}\ \text{mol/L}$$
+Même cluster de compétences, contexte retourné : une **base faible** dosée par un **acide fort**. La courbe décroît, et le pH à l'équivalence change de côté. Tu ne peux pas recopier le sujet précédent — il faut reconnaître ce qui reste vrai et ce qui bascule.
 
-$$K_A = \frac{(7{,}9 \times 10^{-4})^2}{9{,}2 \times 10^{-3}} \approx 6{,}8 \times 10^{-5} \qquad pK_A = -\log(6{,}8 \times 10^{-5}) \approx 4{,}2$$
-
-**4) Calcule le taux d'avancement final $\tau$ de la réaction de cet acide avec l'eau. L'acide benzoïque est-il un acide fort ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* $\tau$ se lit comme au rung 6, en comparant $[H_3O^+]_{eq}$ à la concentration apportée $c$.
-
-$$\tau = \frac{[H_3O^+]_{eq}}{c} = \frac{7{,}9 \times 10^{-4}}{1{,}0 \times 10^{-2}} \approx 0{,}079$$
-
-$\tau \approx 8\,\%$, très loin de $1$ : l'acide benzoïque est un acide **faible** — cohérent avec un $pK_A$ de $4{,}2$, ni très négatif ni proche de zéro.
-
-**5) À $\text{pH} = 7{,}4$ (pH sanguin), quelle espèce du couple prédomine ? Donne un ordre de grandeur du rapport des deux concentrations.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on compare le pH donné au $pK_A$ trouvé en question 3, exactement la logique du rung 5.
-
-$$\frac{[C_6H_5COO^-]}{[C_6H_5COOH]} = 10^{\text{pH} - pK_A} = 10^{7{,}4 - 4{,}2} = 10^{3{,}2} \approx 1\,585$$
-
-$\text{pH} = 7{,}4 \gg pK_A = 4{,}2$ : la base conjuguée $C_6H_5COO^-$ (l'ion benzoate) prédomine très largement — pour une molécule $C_6H_5COOH$ restante, on compte environ $1\,585$ ions $C_6H_5COO^-$.
-
-### À toi
-
-**Variation 1.** Le couple $HCOOH/HCOO^-$ a pour $pK_A \approx 3{,}8$. Une solution de ce couple a un pH de $5{,}5$. Quelle espèce prédomine ? Calcule le rapport $[HCOO^-]/[HCOOH]$ à ce pH, et donne un ordre de grandeur du pourcentage de méthanoate sous forme ionisée.
-
-**Variation 2.** On mélange, en quantités égales, de l'acide benzoïque ($C_6H_5COOH$, $pK_A = 4{,}2$) et des ions éthanoate ($CH_3COO^-$, base du couple $CH_3COOH/CH_3COO^-$, $pK_A = 4{,}8$). Écris l'équation de la réaction entre ces deux espèces, calcule sa constante d'équilibre $K$, puis dis — sans résoudre le tableau d'avancement en entier — si tu attends un taux d'avancement final $\tau$ plutôt proche de $1$, proche de $0$, ou proche de $0{,}5$. Justifie uniquement à partir de la valeur de $K$ et des deux $pK_A$ en présence.
-
-**Variation 3 (lecture de courbe de dosage réelle).** On dose un volume $V_1 = 10{,}0\ \text{mL}$ d'une solution d'ammoniac $NH_3$ (couple $NH_4^+/NH_3$, $pK_A \approx 9{,}2$) de concentration inconnue $C_1$, par une solution d'acide chlorhydrique de concentration $C_2 = 5{,}0\times10^{-2}\ \text{mol/L}$. Sur la courbe $\text{pH} = f(V)$ fournie, la méthode des tangentes donne $V_E = 8{,}0\ \text{mL}$. Écris l'équation de la réaction support, détermine $C_1$, puis indique — sans calcul, par un raisonnement qualitatif sur l'espèce présente à l'équivalence — si tu attends $\text{pH}_E$ supérieur, inférieur ou égal à $7$.
-
-**Variation 4 (choix de l'indicateur).** Pour le dosage de la variation précédente, le $\text{pH}_E$ lu sur la courbe se situe aux alentours de $5{,}5$. Parmi l'hélianthine ($3{,}1$–$4{,}4$), le bleu de bromothymol ($6{,}0$–$7{,}6$) et le rouge de méthyle ($4{,}4$–$6{,}2$), lequel choisirais-tu comme indicateur coloré pour repérer l'équivalence de ce dosage ? Justifie en comparant chaque zone de virage à $\text{pH}_E$.
+[[exercise:r-variation]]

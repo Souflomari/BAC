@@ -2080,19 +2080,59 @@ items:
       confirmée par la méthode des tangentes ou de la dérivée (rung 10).
 
 # ── Couverture des misconceptions (plancher ≥ 3 items/misconception) ─────────
-# spec-extension.md §6 : les 12 items neufs (RAB-28 → RAB-39) couvrent chacun
-# les 3 misconceptions de leur chapitre (un distracteur par misconception, par
-# item) : chaque misconception du cluster atteint donc exactement 3 items.
+# Comptage au niveau DISTRACTEUR : chaque misconception du cluster est le
+# distracteur ciblé dans exactement 3 items (un distracteur par misconception,
+# par item), sur les 12 items neufs RAB-28 → RAB-39 (spec-extension.md §6). Tous
+# ces distracteurs portent leur tag `misconception:` (per-distractor complet).
+# L'inventaire de misconceptions ne contient que les 12 ids AB-* des chapitres
+# R8-R11 ; les items antérieurs RAB-1 → RAB-27 (R0-R7/R12) sont pré-cluster et
+# ne portent pas d'id (schéma antérieur), donc hors périmètre du plancher.
+#
+# GATED = misconceptions sondées par les checkpoints requis (checkpoints.yaml).
+# Les cinq checkpoints du sommet R12 (cp-r0-predict + 4 rupture-gates) couvrent,
+# entre leurs primary_misconception et leurs distracteurs, les 12 ids AB-* :
+# toute misconception gatée atteint le plancher → gated_floor_met: true. Aucune
+# n'est sous le plancher, donc aucune divulgation SUMMIT-CONVERSION-RECIPE §6
+# n'est requise. Les checkpoints sont des clones formatifs surfacés inline : ils
+# ne modifient pas le décompte du banc (pas de double comptage).
 coverage_summary:
-  AB-DIST-1: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
-  AB-DIST-2: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
-  AB-DIST-3: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
-  AB-TIT-1: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-  AB-TIT-2: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-  AB-TIT-3: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-  AB-EQU-1: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-  AB-EQU-2: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-  AB-EQU-3: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-  AB-IND-1: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
-  AB-IND-2: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
-  AB-IND-3: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+  method: "distracteur-level : chaque misconception = distracteur ciblé dans N items"
+  total_new_items: 12          # RAB-28 → RAB-39
+  floor: 3
+  per_misconception:
+    AB-DIST-1: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+    AB-DIST-2: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+    AB-DIST-3: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+    AB-TIT-1: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-TIT-2: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-TIT-3: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-EQU-1: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-EQU-2: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-EQU-3: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-IND-1: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+    AB-IND-2: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+    AB-IND-3: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+  gated_misconceptions:        # les 12 ids AB-*, tous sondés par un checkpoint R12
+    - AB-DIST-1   # cp-r8-distribution
+    - AB-DIST-2   # cp-r8-distribution
+    - AB-DIST-3   # cp-r8-distribution (primary)
+    - AB-TIT-1    # cp-r0-predict (primary), cp-r9-dosage
+    - AB-TIT-2    # cp-r9-dosage (primary), cp-r0-predict
+    - AB-TIT-3    # cp-r9-dosage
+    - AB-EQU-1    # cp-r10-equivalence, cp-r0-predict
+    - AB-EQU-2    # cp-r10-equivalence (primary)
+    - AB-EQU-3    # cp-r10-equivalence
+    - AB-IND-1    # cp-r11-indicateur (primary)
+    - AB-IND-2    # cp-r11-indicateur
+    - AB-IND-3    # cp-r11-indicateur
+  gated_floor: 3
+  gated_floor_met: true
+  floor_met: true
+  note: >
+    Plancher ATTEINT pour l'intégralité de l'inventaire : les 12 misconceptions
+    AB-* (R8-R11) sont chacune le distracteur ciblé dans 3 items (RAB-28 →
+    RAB-39), tous à tags per-distracteur complets. Les cinq checkpoints du
+    sommet R12 (cp-r0-predict, cp-r9-dosage, cp-r10-equivalence,
+    cp-r11-indicateur, cp-r8-distribution) sondent ces mêmes 12 ids : le plancher
+    gaté est donc lui aussi atteint. Aucune misconception sous le plancher → pas
+    de divulgation SUMMIT-CONVERSION-RECIPE §6 requise.
