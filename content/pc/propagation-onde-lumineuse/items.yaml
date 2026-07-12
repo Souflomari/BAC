@@ -1,6 +1,34 @@
 notion: propagation-onde-lumineuse
 skill_code: pc_propagation_onde_lumineuse
-misconceptions: []
+misconceptions:
+  - id: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
+    label: "« La lumière n'est pas une onde électromagnétique qui traverse le vide : il lui faut un support (éther), ou bien elle se propage instantanément »"
+    description: "L'élève nie que la lumière soit une onde électromagnétique se propageant à vitesse finie sans support : il lui prête un milieu de propagation (éther / substance invisible), ou la croit instantanée / non propagative."
+    contradicts_principle: "La lumière est une onde électromagnétique : des champs électrique et magnétique qui s'entretiennent mutuellement, sans aucun support matériel, et se propageant à vitesse finie (c ≈ 3×10⁸ m/s dans le vide). Ni éther, ni propagation instantanée."
+  - id: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
+    label: "« Le son et la lumière, deux ondes, se comportent de la même façon face au vide »"
+    description: "L'élève applique à la lumière ce qui vaut pour le son (ou l'inverse) : les deux étant des ondes, elles devraient toutes deux franchir — ou toutes deux ne pas franchir — le vide."
+    contradicts_principle: "Le son est une onde mécanique (a besoin d'un milieu matériel, ne franchit pas le vide) ; la lumière est électromagnétique (franchit le vide sans support). Deux natures d'onde, deux comportements face au vide."
+  - id: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
+    label: "« Mauvaise relation indice–vitesse : v ≥ c possible, v = n·c, n < 1, ou v identique dans tous les milieux »"
+    description: "L'élève se trompe sur n = c/v : il multiplie au lieu de diviser (v = n·c), croit v identique partout, pense n < 1 possible, ou qu'un indice plus grand donne une vitesse plus grande."
+    contradicts_principle: "n = c/v, avec v ≤ c dans tout milieu matériel, donc n ≥ 1 (le vide, n = 1, est le cas le plus rapide). Un indice plus grand correspond à une vitesse plus petite : v = c/n."
+  - id: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+    label: "« La diffraction s'observe quand l'ouverture est grande, au lieu d'être comparable à λ »"
+    description: "L'élève croit qu'une ouverture large diffracte davantage (« plus grand = plus visible »), ou que la taille de l'ouverture n'a pas d'importance."
+    contradicts_principle: "La diffraction n'est marquée que si la largeur a de l'ouverture (ou de l'obstacle) est du même ordre de grandeur que λ. Comme a est au dénominateur de θ = λ/a, une ouverture large donne un écart minuscule (optique géométrique)."
+  - id: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+    label: "« Mauvais usage de θ = λ/a : fraction inversée (a/λ), oubli d'unité, θ pris pour une longueur, ou θ indépendant de λ »"
+    description: "L'élève inverse la fraction (θ = a/λ), oublie de convertir les unités, exprime θ en mètres, ou croit que θ ne dépend pas de λ (ou dépend de D)."
+    contradicts_principle: "θ = λ/a est un angle (en radians, sans dimension) : λ et a doivent être dans la même unité. θ croît avec λ et décroît avec a ; il ne dépend pas de D (c'est la largeur L = 2Dθ de la tache qui dépend de D)."
+  - id: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
+    label: "« En changeant de milieu, on se trompe sur ce qui change : λ resterait fixe, ou ν changerait, ou la couleur suivrait λ »"
+    description: "L'élève croit que λ ne change pas d'un milieu à l'autre, ou que c'est ν qui change, ou que la couleur perçue suit la valeur numérique de λ dans le milieu."
+    contradicts_principle: "La fréquence ν est imposée par la source : invariante. La longueur d'onde λ = v/ν = λ0/n change (elle diminue dans un milieu, n ≥ 1). C'est ν, invariante, qui fixe la couleur perçue, jamais la valeur locale de λ."
+  - id: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
+    label: "« Erreurs sur la dispersion : un prisme disperserait aussi la lumière monochromatique, le rouge serait le plus dévié, ou n ne dépendrait pas de la couleur »"
+    description: "L'élève croit qu'un prisme crée des couleurs à partir d'une lumière monochromatique, que le rouge est le plus dévié, ou que l'indice n est le même pour toutes les couleurs."
+    contradicts_principle: "Un prisme ne fait que dévier différemment des couleurs déjà présentes : il ne disperse que de la lumière polychromatique. Comme n dépend de la couleur (n_violet > n_rouge), le violet est le plus dévié (et le plus lent : v = c/n). Sans mélange initial, rien à séparer."
 
 items:
   - id: POL-1
@@ -8,6 +36,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
     stem: >
       Le Soleil est distant de la Terre de plus de 150 millions de
       kilomètres, séparés par le vide quasi parfait de l'espace
@@ -28,6 +57,7 @@ items:
           l'espace, sans laquelle la lumière n'aurait rien qui puisse vibrer
           pour se propager.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           Cette idée d'un support invisible (l'« éther lumineux ») a
           réellement été proposée dans l'histoire des sciences, avant d'être
@@ -40,6 +70,7 @@ items:
           les deux sont des ondes, donc les deux ont les mêmes propriétés de
           propagation.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
         feedback: >
           C'est faux : le son est une onde MÉCANIQUE, qui a absolument besoin
           d'un milieu matériel (air, eau, solide) pour se propager — il ne
@@ -52,6 +83,7 @@ items:
           instantanément partout dès qu'elle est émise, sans traverser de
           distance.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière se propage bel et bien, à une vitesse très grande mais
           finie ($c \approx 3\times10^8\ \text{m/s}$) : la lumière d'une
@@ -81,6 +113,7 @@ items:
     difficulty_level: 3
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
     stem: >
       Dans un verre d'indice de réfraction $n = 1{,}5$, la lumière s'y
       propage à une vitesse $v$. Sachant que $n = c/v$ avec
@@ -93,6 +126,7 @@ items:
       - id: B
         text: "$v \\approx 4{,}5\\times10^8\\ \\text{m/s}$, une valeur supérieure à $c$."
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           Ce calcul multiplie $n$ par $c$ au lieu de diviser : $v = c/n$, pas
           $v = n \times c$. De plus, aucun milieu matériel ne peut faire
@@ -104,6 +138,7 @@ items:
           une constante universelle qui ne change jamais, quel que soit le
           milieu.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           $c$ est la vitesse de la lumière DANS LE VIDE, et c'est elle qui
           est une constante universelle. Dans un milieu matériel, la lumière
@@ -113,6 +148,7 @@ items:
       - id: D
         text: "Cette situation est impossible : un indice de réfraction ne peut jamais dépasser $1$."
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           C'est l'inverse : l'indice de réfraction d'un milieu transparent
           vérifie toujours $n \geq 1$, le vide ($n=1$) étant le cas le plus
@@ -137,6 +173,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
     stem: >
       Le phénomène de diffraction de la lumière par une fente ou un fil
       devient observable lorsque :
@@ -152,6 +189,7 @@ items:
           la largeur de l'ouverture est très supérieure à la longueur d'onde
           (par exemple une ouverture large comme une porte).
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
         feedback: >
           C'est l'inverse : dans la formule $\theta = \lambda/a$, une
           ouverture $a$ beaucoup plus grande que $\lambda$ donne un écart
@@ -163,6 +201,7 @@ items:
           la fréquence de la lumière utilisée est suffisamment élevée,
           indépendamment de la taille de l'ouverture.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
         feedback: >
           La diffraction n'est pas une question de fréquence seule : c'est
           une comparaison entre deux longueurs, la dimension $a$ de
@@ -172,6 +211,7 @@ items:
       - id: D
         text: "on utilise nécessairement un laser, jamais de la lumière blanche ordinaire."
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
         feedback: >
           La diffraction est un phénomène ondulatoire général : toute
           lumière diffracte dès que la condition sur les tailles ($a$
@@ -201,6 +241,7 @@ items:
     difficulty_level: 3
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
     stem: >
       Un faisceau laser de longueur d'onde $\lambda = 600\ \text{nm}$
       traverse une fente fine de largeur $a = 0{,}2\ \text{mm}$. En utilisant
@@ -214,6 +255,7 @@ items:
       - id: B
         text: "$\\theta \\approx 333\\ \\text{rad}$"
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           Ce résultat vient d'avoir calculé $a/\lambda$ au lieu de
           $\lambda/a$ : la fraction a été inversée. Un écart angulaire de
@@ -223,6 +265,7 @@ items:
       - id: C
         text: "$\\theta = 3\\times10^{-6}\\ \\text{rad}$"
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           Cette valeur vient d'un oubli de conversion d'unité : $a = 0{,}2\ \text{mm}$
           n'a pas été convertie en mètres avant la division (on a divisé par
@@ -231,6 +274,7 @@ items:
       - id: D
         text: "$\\theta = 3\\times10^{-3}\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           Le calcul numérique est correct, mais $\theta$ est un écart
           ANGULAIRE (en radians), pas une longueur : la formule
@@ -254,6 +298,7 @@ items:
     difficulty_level: 4
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
     stem: >
       Une radiation lumineuse rouge a une longueur d'onde dans le vide
       $\lambda_0 = 660\ \text{nm}$. Elle pénètre dans un verre d'indice
@@ -273,6 +318,7 @@ items:
           longueur d'onde d'une radiation ne change jamais, quel que soit le
           milieu traversé.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           C'est la fréquence qui ne change jamais en changeant de milieu, pas
           la longueur d'onde. $\lambda = v/\nu$ dépend de la vitesse de
@@ -284,6 +330,7 @@ items:
           $\lambda = 440\ \text{nm}$ à l'intérieur du verre, et la lumière
           est donc perçue comme bleue tant qu'elle reste dans le verre.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           La valeur de $\lambda$ a bien diminué à $440\ \text{nm}$, mais la
           couleur perçue ne dépend pas de la valeur numérique de $\lambda$
@@ -293,6 +340,7 @@ items:
       - id: D
         text: "$\\lambda = 990\\ \\text{nm}$ à l'intérieur du verre, car $\\lambda = n \\times \\lambda_0$."
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           La relation est $\lambda = \lambda_0/n$ (on divise), pas
           $\lambda_0 \times n$ (on ne multiplie pas) : puisque $n \geq 1$
@@ -322,6 +370,7 @@ items:
     difficulty_level: 3
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
     stem: >
       Un faisceau de lumière blanche traverse un prisme de verre. Pour ce
       verre, on mesure $n_{rouge} = 1{,}510$ et $n_{violet} = 1{,}530$.
@@ -341,6 +390,7 @@ items:
           Le rouge est dévié plus fortement que le violet, car le rouge a
           une plus grande longueur d'onde.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           C'est l'indice $n$, pas directement la longueur d'onde, qui
           gouverne la déviation par la loi de Descartes. Et ici
@@ -351,6 +401,7 @@ items:
           Rouge et violet sont déviés de façon identique, car l'indice $n$
           d'un verre ne dépend pas de la couleur de la lumière.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           C'est l'inverse : $n$ dépend légèrement de la couleur (ici
           $1{,}510$ pour le rouge contre $1{,}530$ pour le violet), et c'est
@@ -362,6 +413,7 @@ items:
           On ne peut rien conclure sans connaître les longueurs d'onde
           exactes du rouge et du violet.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           Les indices $n_{rouge}$ et $n_{violet}$ suffisent : la loi de
           Descartes ($\sin i_1 = n \sin r$) compare directement les deux
@@ -389,6 +441,7 @@ items:
     difficulty_level: 1
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
     stem: >
       Sous une cloche à vide, une clochette électrique sonne en continu
       pendant qu'on pompe progressivement l'air. À mesure que le vide
@@ -409,6 +462,7 @@ items:
           plus entendu, c'est seulement qu'il est devenu trop faible pour
           l'oreille humaine, pas qu'il ne s'est pas propagé.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
         feedback: >
           Le son ne s'affaiblit pas dans le vide, il ne s'y propage tout
           simplement pas : une onde mécanique a besoin d'un milieu matériel
@@ -419,6 +473,7 @@ items:
           deux disparaître à mesure que le vide s'installe ; le fait que la
           lumière persiste est donc une anomalie inexpliquée.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           Ce n'est pas une anomalie : la lumière est une onde
           électromagnétique, un type d'onde fondamentalement différent d'une
@@ -430,6 +485,7 @@ items:
           lumière ayant traversé le vide : c'est un reflet produit par la
           vitre elle-même, sans rapport avec le battant.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La vitre ne fait que laisser passer la lumière : ce qu'on observe
           est bien la lumière émise par le battant, ayant traversé le vide
@@ -450,6 +506,7 @@ items:
     difficulty_level: 1
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
     stem: >
       Toute onde mécanique (le son, une vague, une onde sur une corde) a
       besoin d'un milieu matériel pour se propager. Cette affirmation
@@ -467,6 +524,7 @@ items:
           Oui, la lumière est elle aussi une onde mécanique, donc elle a
           besoin d'un milieu matériel comme n'importe quelle autre onde.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière n'est pas une onde mécanique mais une onde
           électromagnétique, ce qui change fondamentalement sa relation au
@@ -476,6 +534,7 @@ items:
           Oui, mais seulement sur de courtes distances : au-delà de quelques
           mètres de vide, même la lumière finit par s'arrêter.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière traverse le vide sur n'importe quelle distance, y
           compris les années-lumière séparant les étoiles de la Terre, sans
@@ -485,6 +544,7 @@ items:
           Non, mais uniquement parce que la lumière transporte tellement
           d'énergie qu'elle peut « forcer » son passage même sans milieu.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière ne traverse pas le vide en le « forçant » : elle n'a
           tout simplement jamais besoin d'un support matériel, quelle que
@@ -504,6 +564,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
     stem: >
       Un élève propose : « Si la lumière traverse le vide, c'est qu'il doit
       forcément exister une substance extrêmement fine et invisible qui
@@ -524,6 +585,7 @@ items:
           invisible s'appelle le champ électromagnétique, et c'est elle qui
           vibre comme le ferait un milieu matériel.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           Le champ électromagnétique n'est pas une substance matérielle qui
           « remplit » l'espace comme un milieu mécanique : c'est justement
@@ -535,6 +597,7 @@ items:
           un vide parfait : il reste toujours suffisamment de matière
           résiduelle pour la faire vibrer.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière traverse un vide poussé en laboratoire exactement comme
           l'air, sans la moindre atténuation liée à l'absence de matière ;
@@ -546,6 +609,7 @@ items:
           elle est perçue instantanément, sans traverser de distance ni de
           support.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière se propage bel et bien, à une vitesse grande mais finie ;
           ce n'est pas un phénomène instantané.
@@ -565,6 +629,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
     stem: >
       Sur la Lune, l'atmosphère est quasiment inexistante. Un astronaute
       laisse tomber un outil sur le sol rocheux, produisant un choc visible,
@@ -583,6 +648,7 @@ items:
           n'est pas perçu, c'est uniquement à cause du casque qui isole les
           oreilles de l'astronaute.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
         feedback: >
           Ce n'est pas le casque qui bloque le son : une onde mécanique comme
           le son a besoin d'un milieu matériel pour exister, et ce milieu
@@ -593,6 +659,7 @@ items:
           astronaute, puisque l'absence d'atmosphère prive les deux ondes de
           tout support pour se propager.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière est une onde électromagnétique qui n'a besoin d'aucun
           support matériel, contrairement au son : seule l'absence d'air
@@ -603,6 +670,7 @@ items:
           Lune, la quasi-absence d'atmosphère n'affectant que la visibilité,
           pas l'audition.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
         feedback: >
           C'est l'inverse : c'est le son, onde mécanique, qui ne peut pas se
           propager sans air, tandis que la visibilité n'est pas affectée par
@@ -622,6 +690,7 @@ items:
     difficulty_level: 3
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
     stem: >
       Qu'est-ce qui « oscille » concrètement dans une onde lumineuse, et
       pourquoi ce mécanisme lui permet-il de se propager sans aucun milieu
@@ -641,6 +710,7 @@ items:
           mécanique, mais avec des oscillations si rapides qu'elles semblent
           se produire même en l'absence de matière.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           S'il n'y a pas de molécules à faire osciller, comme dans le vide,
           il ne peut rien se passer selon ce modèle : la lumière n'a en
@@ -650,6 +720,7 @@ items:
           Un support invisible qui remplit tout l'espace, l'éther, dont la
           vibration transporte l'onde lumineuse de proche en proche.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           L'existence de ce support invisible (l'éther) a été sérieusement
           envisagée puis abandonnée faute de toute preuve expérimentale.
@@ -659,6 +730,7 @@ items:
           simplement de l'énergie d'un point à un autre de façon instantanée,
           sans mécanisme ondulatoire.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
         feedback: >
           La lumière est bien un phénomène ondulatoire qui se propage à une
           vitesse grande mais finie, avec un mécanisme d'entretien mutuel des
@@ -678,6 +750,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
     stem: >
       Le diamant a un indice de réfraction $n \approx 2{,}42$, nettement
       supérieur à celui de l'eau ($n \approx 1{,}33$). Que peut-on en déduire
@@ -696,6 +769,7 @@ items:
           un indice plus élevé signifie que le milieu est plus favorable à la
           propagation de la lumière.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           C'est l'inverse : dans $n=c/v$, un $n$ plus grand correspond à un
           $v$ plus petit, donc à une propagation plus lente, pas plus
@@ -706,6 +780,7 @@ items:
           seule la valeur de l'indice $n$ diffère d'un milieu à l'autre, sans
           lien avec $v$.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           L'indice $n$ est précisément défini à partir de $v$ ($n=c/v$) :
           deux indices différents correspondent nécessairement à deux
@@ -716,6 +791,7 @@ items:
           lumineux par le milieu ; il ne permet pas de connaître leur vitesse
           de propagation.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           L'indice $n=c/v$ est d'abord défini à partir de la vitesse de
           propagation ; c'est cette même grandeur qui, via la loi de
@@ -734,6 +810,7 @@ items:
     difficulty_level: 3
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
     stem: >
       Un rayon laser traverse un morceau de diamant, d'indice de réfraction
       $n = 2{,}42$. Sachant que $n = c/v$ avec $c \approx 3\times10^8\
@@ -746,6 +823,7 @@ items:
       - id: B
         text: "$v \\approx 7{,}26\\times10^8\\ \\text{m/s}$"
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           Ce calcul multiplie $n$ par $c$ au lieu de diviser ($v=c/n$, pas
           $v=n\times c$) ; un résultat supérieur à $c$ signale toujours une
@@ -753,6 +831,7 @@ items:
       - id: C
         text: "$v = c = 3\\times10^8\\ \\text{m/s}$"
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           $c$ est la vitesse dans le vide uniquement ; dans un milieu
           d'indice $n>1$, la lumière est nécessairement ralentie par rapport
@@ -760,6 +839,7 @@ items:
       - id: D
         text: "$v \\approx 5{,}12\\times10^7\\ \\text{m/s}$"
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
         feedback: >
           Ce résultat vient d'avoir divisé par $n^2$ au lieu de $n$ ; la
           définition $n=c/v$ n'élève jamais l'indice au carré.
@@ -776,6 +856,7 @@ items:
     difficulty_level: 4
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
     stem: >
       Deux faisceaux laser, l'un rouge ($\lambda_0 = 650\ \text{nm}$) et
       l'autre bleu ($\lambda_0 = 450\ \text{nm}$), traversent successivement
@@ -795,6 +876,7 @@ items:
           mieux passer à travers une ouverture étroite, donc de s'étaler
           davantage.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           C'est l'inverse : dans $\theta=\lambda/a$, c'est la plus GRANDE
           longueur d'onde (le rouge) qui donne le plus grand écart angulaire,
@@ -805,6 +887,7 @@ items:
           $\theta=\lambda/a$ ne dépend que de la largeur de la fente $a$,
           identique pour les deux.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           $\theta=\lambda/a$ dépend aussi de $\lambda$, au numérateur : à $a$
           fixé, deux longueurs d'onde différentes donnent deux écarts
@@ -814,6 +897,7 @@ items:
           On ne peut pas comparer sans connaître la distance à l'écran $D$,
           car c'est elle qui détermine l'écart angulaire $\theta$.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           L'écart angulaire $\theta=\lambda/a$ ne dépend que de $\lambda$ et
           $a$ ; c'est seulement la largeur linéaire $L=D\theta$ de la tache
@@ -832,6 +916,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
     stem: >
       Un faisceau de lumière verte laser (monochromatique) passe de l'air à
       l'eau. Que peut-on affirmer sur sa fréquence $\nu$ et sa longueur
@@ -851,6 +936,7 @@ items:
           fréquence $\nu$ diminue, car c'est elle qui dépend de la vitesse de
           propagation.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           C'est l'inverse : c'est $\nu$ qui est invariante (imposée par la
           source) et $\lambda=v/\nu$ qui change avec la vitesse locale de
@@ -860,6 +946,7 @@ items:
           La fréquence $\nu$ et la longueur d'onde $\lambda$ diminuent toutes
           les deux en entrant dans l'eau, car la lumière y est ralentie.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           Seule $\lambda$ diminue ; la fréquence $\nu$ est fixée par la
           source et ne change jamais en changeant de milieu, même si $v$
@@ -870,6 +957,7 @@ items:
           seule la vitesse de propagation $v$ est affectée par le changement
           de milieu.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           $\lambda=v/\nu$ dépend directement de $v$ : si $v$ change et que
           $\nu$ est fixe, $\lambda$ change nécessairement aussi.
@@ -887,6 +975,7 @@ items:
     difficulty_level: 4
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
     stem: >
       Une radiation violette a, dans le vide, $\lambda_0 = 420\ \text{nm}$.
       Elle pénètre dans l'eau, d'indice $n = 1{,}33$. Quelle est sa longueur
@@ -906,6 +995,7 @@ items:
           donc invisible (ultraviolet) tant qu'elle reste dans l'eau, car
           cette valeur est sous la limite du violet visible (400 nm).
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           C'est la fréquence $\nu$, invariante, qui détermine la couleur
           perçue par l'œil — pas la valeur numérique locale de $\lambda$, qui
@@ -915,6 +1005,7 @@ items:
           $\lambda = 420 \times 1{,}33 \approx 559\ \text{nm}$ dans l'eau
           (on multiplie par $n$), et la lumière devient donc verte.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           La relation est $\lambda=\lambda_0/n$ (on divise), pas $\lambda_0
           \times n$ : puisque $n\geq1$, la longueur d'onde diminue dans un
@@ -925,6 +1016,7 @@ items:
           longueur d'onde d'une radiation est fixée uniquement par sa source,
           indépendamment du milieu traversé.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           C'est la fréquence qui ne change jamais en changeant de milieu, pas
           la longueur d'onde : $\lambda=\lambda_0/n$ diminue bel et bien dans
@@ -944,6 +1036,7 @@ items:
     difficulty_level: 2
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
     stem: >
       On envoie un faisceau laser (lumière monochromatique) à travers un
       prisme de verre. Que peut-on observer en sortie ?
@@ -960,6 +1053,7 @@ items:
           Un spectre de couleurs, comme avec la lumière blanche, car tout
           prisme disperse nécessairement la lumière qui le traverse.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           La dispersion ne fait qu'écarter différemment des couleurs déjà
           présentes au départ ; sans mélange de longueurs d'onde (lumière
@@ -969,6 +1063,7 @@ items:
           Aucune déviation du faisceau, car un prisme ne peut dévier que de
           la lumière polychromatique.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           La réfraction (donc la déviation) dépend de l'indice $n$ du verre
           et de l'angle d'incidence, pas du caractère mono- ou
@@ -979,6 +1074,7 @@ items:
           Un spectre de couleurs, mais uniquement si l'indice du verre dépend
           fortement de la longueur d'onde utilisée.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           Avec une seule longueur d'onde, la dépendance de $n$ envers
           $\lambda$ n'a aucune couleur supplémentaire à séparer : il ne peut
@@ -998,6 +1094,7 @@ items:
     difficulty_level: 5
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
     stem: >
       Un rayon de lumière blanche arrive sur un prisme de verre avec un angle
       d'incidence $i_1 = 50°$. Pour ce verre, $n_{rouge} = 1{,}620$ et
@@ -1015,6 +1112,7 @@ items:
           $r_{violet} > r_{rouge}$, car une longueur d'onde plus courte
           réfracte davantage, donc s'écarte plus de la normale.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           C'est l'inverse : c'est l'indice $n$ (plus grand pour le violet)
           qui rapproche le rayon réfracté de la normale, pas la longueur
@@ -1025,6 +1123,7 @@ items:
           les rayons se réfractent selon le même angle, indépendamment de
           l'indice.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           La loi de Descartes $\sin i_1 = n \sin r$ fait dépendre $r$ de $n$ ;
           deux indices différents donnent donc deux angles de réfraction
@@ -1034,6 +1133,7 @@ items:
           On ne peut pas conclure sans connaître aussi l'indice de l'air, qui
           influence fortement la déviation.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           L'indice de l'air vaut environ $1$ et est déjà implicite dans
           $\sin i_1 = n \sin r$ ; les deux indices du verre donnés suffisent
@@ -1053,6 +1153,7 @@ items:
     difficulty_level: 4
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
     stem: >
       Un faisceau laser vert, de longueur d'onde dans le vide $\lambda_0 =
       532\ \text{nm}$, traverse une fente de largeur $a = 0{,}3\ \text{mm}$ ;
@@ -1076,6 +1177,7 @@ items:
           longueur d'onde y vaut environ $355\ \text{nm}$, sous la limite du
           violet visible.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           C'est la fréquence, invariante, qui détermine la couleur perçue —
           pas la valeur numérique locale de $\lambda$, qui n'identifie une
@@ -1085,6 +1187,7 @@ items:
           $\theta \approx 564\ \text{rad}$ (formule $a/\lambda_0$) ; la
           lumière reste verte dans le verre.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           Ce résultat inverse la fraction : $\theta=\lambda_0/a$, pas
           $a/\lambda_0$ ; un écart angulaire de $564\ \text{rad}$ n'a
@@ -1095,6 +1198,7 @@ items:
           devient invisible en traversant le verre, car l'indice $n=1{,}5$,
           trop élevé, empêche le vert de le traverser.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
           L'indice de réfraction gouverne la vitesse et la déviation de la
           lumière, jamais sa capacité à traverser un milieu transparent selon
@@ -1114,6 +1218,7 @@ items:
     difficulty_level: 4
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
     stem: >
       Un rayon de lumière blanche traverse un prisme de verre flint, pour
       lequel $n_{rouge} = 1{,}613$ et $n_{violet} = 1{,}632$. La vitesse de
@@ -1132,6 +1237,7 @@ items:
           $v_{rouge} < v_{violet}$, car le rouge est davantage dévié par le
           prisme donc s'y propage plus difficilement.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           C'est le contraire : le rouge est en réalité MOINS dévié que le
           violet (car $n_{rouge}<n_{violet}$), et un $n$ plus petit
@@ -1142,6 +1248,7 @@ items:
           couleurs se propagent à la même vitesse, seul $n$ diffère selon la
           couleur.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           $n$ est défini par $n=c/v$ : deux indices différents pour un même
           verre impliquent nécessairement deux vitesses différentes, une par
@@ -1151,6 +1258,7 @@ items:
           On ne peut pas comparer les vitesses sans connaître les longueurs
           d'onde exactes en nanomètres de chaque couleur.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
           Les deux indices $n_{rouge}$ et $n_{violet}$ suffisent : $v=c/n$
           se calcule directement à partir d'eux, sans connaître $\lambda_0$
@@ -1169,6 +1277,7 @@ items:
     difficulty_level: 5
     skill_code: pc_propagation_onde_lumineuse
     tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
     stem: >
       Lors d'une séance de travaux pratiques, on utilise un laser
       hélium-néon ($\lambda_0 = 632{,}8\ \text{nm}$) pour étudier la
@@ -1193,6 +1302,7 @@ items:
           $\lambda_0$ (environ 125 fois plus grand), donc aucune diffraction
           n'est observable, contrairement à une fente submillimétrique.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
         feedback: >
           « Du même ordre de grandeur » n'exige pas un rapport proche de 1 :
           $0{,}08\ \text{mm}$ reste assez fin (l'ordre du dixième de
@@ -1203,6 +1313,7 @@ items:
           a/\lambda_0 \approx 126\ \text{rad}$, une valeur bien supérieure à
           celle attendue pour un phénomène de diffraction.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           Cette valeur inverse la fraction : $\theta=\lambda_0/a$, pas
           $a/\lambda_0$ ; un angle de $126\ \text{rad}$ n'a d'ailleurs aucun
@@ -1213,6 +1324,7 @@ items:
           distance à l'écran $D$, pas de la taille de l'obstacle : avec $D=2\
           \text{m}$, une figure de diffraction apparaît nécessairement.
         correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >
           La condition de diffraction compare $a$ à $\lambda_0$
           ($\theta=\lambda_0/a$) ; $D$ ne détermine que la largeur $L=D\theta$
@@ -1226,3 +1338,115 @@ items:
       Même si $a$ est environ 125 fois plus grand que $\lambda_0$, il reste
       de l'ordre du dixième de millimètre — assez fin pour une diffraction
       mesurable. L'affirmation de l'élève est donc fausse.
+  - id: POL-22
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+    stem: >
+      On veut mettre en évidence la diffraction d'un laser rouge
+      ($\lambda \approx 0{,}6\ \mu\text{m}$) en le faisant passer par une
+      fente. Parmi les fentes suivantes, laquelle convient le mieux, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une fente de l'ordre du dixième de millimètre
+          ($a \approx 0{,}1\ \text{mm}$) : assez fine pour que $\theta = \lambda/a$
+          soit sensible.
+        correct: true
+      - id: B
+        text: >-
+          Une fente large de quelques centimètres : plus l'ouverture est grande,
+          plus la lumière peut s'étaler.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+        feedback: >
+          C'est l'inverse : dans $\theta = \lambda/a$, $a$ est au dénominateur.
+          Une ouverture de quelques centimètres est des dizaines de milliers de
+          fois plus grande que $\lambda$, ce qui donne un $\theta$ imperceptible
+          (régime de l'optique géométrique). La diffraction se manifeste quand
+          l'ouverture est PETITE, comparable à $\lambda$.
+      - id: C
+        text: >-
+          N'importe quelle fente convient, du moment qu'on utilise un laser : la
+          largeur de la fente n'a aucune importance.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+        feedback: >
+          La nature laser (monochromatique) rend la figure plus nette, mais ne
+          crée pas la diffraction : ce qui la déclenche, c'est la comparaison
+          entre $a$ et $\lambda$. Une fente large ne diffractera pas de façon
+          observable, laser ou non.
+      - id: D
+        text: >-
+          Une fente large ($a \approx 1\ \text{cm}$), car il faudrait que la
+          largeur $a$ soit très grande devant $\lambda$ pour que la diffraction
+          devienne observable.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+        feedback: >
+          La condition est inversée : la diffraction devient observable quand $a$
+          est du même ordre que $\lambda$ (petite ouverture), pas quand
+          $a \gg \lambda$. Une fente de $1\ \text{cm}$ donne un
+          $\theta = \lambda/a$ négligeable.
+    correct_feedback: >
+      La diffraction n'est nette que si la largeur de la fente est comparable à
+      la longueur d'onde — de l'ordre du dixième de millimètre pour la lumière
+      visible. Une ouverture large donne un écart $\theta = \lambda/a$
+      imperceptible.
+    solution: |
+      La diffraction résulte de la comparaison entre la largeur $a$ de
+      l'ouverture et la longueur d'onde $\lambda$. Elle n'est observable que si
+      $a$ est du même ordre de grandeur que $\lambda$ — pour la lumière
+      visible, de l'ordre du dixième de millimètre ou moins. Une fente de
+      quelques centimètres donne $\theta = \lambda/a$ négligeable : c'est le
+      régime de l'optique géométrique, où la lumière semble aller tout droit.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (backfilled in the summit-conversion campaign)
+#
+# This end bank (POL-1…POL-21) was authored BEFORE the misconception inventory
+# existed (`misconceptions: []`). This pass adds the inventory, tags every item
+# with a `primary_misconception`, promotes per-distractor `misconception:` tags
+# on every wrong choice (the checkpoints.yaml gold standard), and adds ONE new
+# item (POL-22) to close the diffraction-condition model to the ≥3 floor.
+# Counts are ITEM-LEVEL (each item counted once, by its `primary_misconception`).
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 22
+  per_misconception:
+    mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee: 3         # POL-8, POL-9, POL-11
+    mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes: 3 # POL-1, POL-7, POL-10
+    mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee: 3       # POL-2, POL-12, POL-13
+    mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille: 3 # POL-3, POL-21, POL-22
+    mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta: 3    # POL-4, POL-14, POL-19
+    mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu: 3  # POL-5, POL-15, POL-16
+    mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme: 4            # POL-6, POL-17, POL-18, POL-20
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3   # POL-7, POL-8, POL-9
+    R1: 3   # POL-1, POL-10, POL-11
+    R2: 3   # POL-2, POL-12, POL-13
+    R3: 4   # POL-3, POL-4, POL-14, POL-22
+    R4: 3   # POL-5, POL-15, POL-16
+    R5: 3   # POL-6, POL-17, POL-18
+    R6: 3   # POL-19, POL-20, POL-21
+  note: >
+    Floor met for all seven models without padding: six models already had ≥3
+    primaries across POL-1…POL-21; only the diffraction-condition model needed
+    one fresh item (POL-22, R3) to reach 3. Per-distractor `misconception:` tags
+    were added to every wrong choice of POL-1…POL-21 (additive only — no stem,
+    feedback, or solution was deleted or weakened). A few items carry mixed
+    distractor tags where a wrong choice voices a neighbouring model (e.g.
+    POL-1 C = son-lumiere-memes-proprietes, POL-7 C/D = lumiere-onde-em-niee,
+    POL-19 B/D = lambda-nu-changement-milieu, POL-21 C/D =
+    diffraction-formule-theta): these are diagnostic metadata layered onto the
+    item-level primary counts and do not change the method or counts above. The
+    R0/R1 model lumiere-onde-em-niee intentionally bundles two faces of the same
+    accroche confusion — « la lumière a besoin d'un support (éther) » and « la
+    lumière est instantanée » — since the R0 hook confronts both with the single
+    idea that light is a finite-speed electromagnetic wave needing no medium.

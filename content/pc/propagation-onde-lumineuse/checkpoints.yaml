@@ -1,0 +1,380 @@
+notion: propagation-onde-lumineuse
+skill_code: pc_propagation_onde_lumineuse
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — propagation pilot)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                                   position" into a real MCQ commit before the
+#                                   cloche-à-vide reveal. Probes lumiere-onde-em-niee.
+#   cp-r2-indice      (after R2)  — rupture gate: indice n = c/v (v ≤ c, n ≥ 1).
+#   cp-r3-diffraction (after R3)  — rupture gate: diffraction θ = λ/a (ouverture
+#                                   fine ~ λ ; θ d'autant plus grand que a petit).
+#   cp-r4-lambda-nu   (after R4)  — rupture gate: en changeant de milieu, ν est
+#                                   invariante et λ change.
+#   cp-r5-dispersion  (after R5)  — rupture gate: un prisme ne disperse que de la
+#                                   lumière polychromatique.
+#
+# Clone note: cp-r2-indice clones POL-2's stem, cp-r3-diffraction clones POL-3's,
+# cp-r4-lambda-nu clones POL-15's, cp-r5-dispersion clones POL-17's. Distractors
+# are curated so EVERY distractor carries a named misconception tag. cp-r0-
+# predict is an original commit item (not in the end bank). No end-bank tally is
+# adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: 2ème Bac PC, propagation d'une onde lumineuse. Onde
+# électromagnétique traversant le vide (pas d'éther, vitesse finie) ; indice
+# n = c/v ≥ 1 ; diffraction θ = λ/a (ouverture ~ λ) ; ν invariante et λ = λ0/n
+# en changeant de milieu ; dispersion d'une lumière polychromatique par un
+# prisme (n dépend de la couleur). Hors champ : interférences, réseaux,
+# optique quantique.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the cloche-à-vide reveal. Probes:
+  #        lumiere-onde-em-niee (éther / propagation instantanée).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_propagation_onde_lumineuse
+    tags: [checkpoint, formative, misconception_driven, pc_propagation_onde_lumineuse, hook_commit]
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On vient d'établir que **toute onde mécanique** (le son, une vague, une onde
+      sur une corde) a besoin d'un milieu matériel pour se propager. Pourtant, la
+      lumière des étoiles nous parvient à travers le vide quasi parfait de
+      l'espace. **Comment l'expliquer ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          La lumière est une onde électromagnétique : deux champs qui
+          s'entretiennent l'un l'autre, sans aucun support matériel.
+        correct: true
+        feedback: |
+          Exact — et c'est tout l'objet de la leçon. Ce qui « oscille » n'est pas
+          de la matière mais un champ électrique et un champ magnétique qui se
+          relaient l'un l'autre : aucun milieu n'est requis. Regarde la clochette
+          sous cloche à vide juste en dessous — le son s'éteint, la lumière passe.
+
+      - id: B
+        text: |
+          Le vide n'est pas si vide : il est rempli d'un support invisible que la
+          lumière fait vibrer pour s'y propager.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
+        feedback: |
+          Modèle détecté : l'« éther lumineux ». Cette idée d'un support invisible
+          a réellement été proposée dans l'histoire des sciences, puis abandonnée
+          faute de toute preuve : la lumière traverse le vide le plus poussé sans
+          la moindre atténuation. Elle n'a besoin d'aucun milieu.
+
+      - id: C
+        text: |
+          La lumière ne se propage pas vraiment : elle est perçue instantanément,
+          sans traverser de distance.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee
+        feedback: |
+          Modèle détecté : la lumière « instantanée ». Elle se propage bel et
+          bien, à une vitesse grande mais **finie** ($c \approx 3\times10^8\
+          \text{m/s}$) : la lumière d'une étoile met de vraies années à nous
+          parvenir. Ce n'est pas instantané, seulement très rapide.
+
+      - id: D
+        text: |
+          La lumière n'est finalement pas une onde ; sinon, comme le son, il lui
+          faudrait un milieu matériel pour se propager et elle ne franchirait
+          jamais le vide interstellaire.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes
+        feedback: |
+          Modèle détecté : « toutes les ondes se comportent comme le son ». La
+          lumière est bien une onde — mais une onde **électromagnétique**, pas
+          mécanique. C'est justement cette différence de nature qui lui permet de
+          franchir le vide que le son, lui, ne franchit pas.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-indice | placed AFTER R2
+  #        Rupture gate: indice n = c/v (v ≤ c donc n ≥ 1).
+  #        Clone of POL-2's stem. Probes indice-vitesse-erronee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-indice
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_propagation_onde_lumineuse
+    tags: [checkpoint, formative, misconception_driven, pc_propagation_onde_lumineuse]
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
+    item_source: clone_of_POL-2
+    lesson_placement: after_R2
+
+    stem: |
+      Dans un verre d'indice de réfraction $n = 1{,}5$, la lumière se propage à la
+      vitesse $v$. Sachant que $n = c/v$ (avec $c \approx 3\times10^8\ \text{m/s}$),
+      que vaut $v$, et comment se compare-t-elle à $c$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $v = c/n \approx 2\times10^8\ \text{m/s}$, une valeur inférieure à $c$.
+        correct: true
+        feedback: |
+          Exact. $v = c/n = (3\times10^8)/1{,}5 \approx 2\times10^8\ \text{m/s}$.
+          Comme $n \geq 1$ pour tout milieu matériel, on a toujours $v \leq c$ :
+          le vide reste la situation la plus rapide possible.
+
+      - id: B
+        text: |
+          $v = n\times c \approx 4{,}5\times10^8\ \text{m/s}$, une valeur
+          supérieure à $c$.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
+        feedback: |
+          Modèle détecté : on multiplie au lieu de diviser. La définition est
+          $v = c/n$, pas $v = n\times c$. Et un résultat $v > c$ doit toujours
+          alerter : aucun milieu matériel ne fait aller la lumière plus vite que
+          dans le vide.
+
+      - id: C
+        text: |
+          $v = c \approx 3\times10^8\ \text{m/s}$ : la vitesse de la lumière est la
+          même dans tous les milieux.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
+        feedback: |
+          Modèle détecté : $c$ prise pour une constante « partout ». $c$ est la
+          vitesse dans le **vide** ; dans un milieu, la lumière interagit avec les
+          atomes et ralentit ($v < c$). C'est précisément cette réduction que
+          mesure l'indice $n = c/v$.
+
+      - id: D
+        text: |
+          Impossible : un indice de réfraction ne peut jamais dépasser $1$.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
+        feedback: |
+          Modèle détecté : la contrainte inversée. C'est $n \geq 1$ qui est la
+          règle (le vide, $n = 1$, étant le cas le plus rapide) : un verre à
+          $n = 1{,}5$ est banal. Ce serait $n < 1$ qui serait impossible, car cela
+          voudrait dire $v > c$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-diffraction | placed AFTER R3
+  #        Rupture gate: diffraction θ = λ/a (ouverture fine ~ λ ;
+  #        θ d'autant plus grand que a est petit). Clone of POL-3's
+  #        stem. Probes diffraction-condition-taille.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-diffraction
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_propagation_onde_lumineuse
+    tags: [checkpoint, formative, misconception_driven, pc_propagation_onde_lumineuse]
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+    item_source: clone_of_POL-3
+    lesson_placement: after_R3
+
+    stem: |
+      Pour observer nettement la diffraction d'un laser, faut-il une fente **large**
+      ou une fente **fine**, et comment l'écart angulaire $\theta$ dépend-il de la
+      largeur $a$ de la fente ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Une fente fine ($a$ comparable à $\lambda$) : dans $\theta = \lambda/a$,
+          un $a$ plus petit donne un $\theta$ plus grand.
+        correct: true
+        feedback: |
+          Exact. La diffraction n'est marquée que si l'ouverture est de l'ordre de
+          $\lambda$. Comme $a$ est au dénominateur de $\theta = \lambda/a$, une
+          fente plus fine donne un écart plus grand ; une fente large donne un
+          $\theta$ minuscule (régime de l'optique géométrique).
+
+      - id: B
+        text: |
+          Une fente large : plus l'ouverture est grande, plus la lumière s'étale.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+        feedback: |
+          Modèle détecté : « plus grand = plus visible ». C'est l'inverse : $a$
+          est au dénominateur de $\theta = \lambda/a$. Une fente large donne un
+          $\theta$ minuscule, imperceptible — la diffraction se manifeste quand
+          l'ouverture est **petite**, comparable à $\lambda$.
+
+      - id: C
+        text: |
+          Peu importe $a$ : l'écart vaut $\theta = a/\lambda$, fixé par le rapport
+          inverse.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: |
+          Modèle détecté : la fraction inversée. La formule est
+          $\theta = \lambda/a$, pas $a/\lambda$. Avec $a/\lambda$, une fente fine
+          donnerait un angle énorme sans aucun sens physique.
+
+      - id: D
+        text: |
+          Une fente large : de toute façon, $\theta$ ne dépend que de la distance
+          $D$ à l'écran, pas de la largeur $a$ de la fente.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: |
+          Modèle détecté : confusion entre l'angle et la tache. $\theta = \lambda/a$
+          ne dépend que de $\lambda$ et $a$ ; c'est seulement la largeur $L = 2D\theta$
+          de la tache sur l'écran qui dépend en plus de $D$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-lambda-nu | placed AFTER R4
+  #        Rupture gate: en changeant de milieu, ν est INVARIANTE et
+  #        λ change. Clone of POL-15's stem. Probes
+  #        lambda-nu-changement-milieu.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-lambda-nu
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_propagation_onde_lumineuse
+    tags: [checkpoint, formative, misconception_driven, pc_propagation_onde_lumineuse]
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
+    item_source: clone_of_POL-15
+    lesson_placement: after_R4
+
+    stem: |
+      Un faisceau laser vert (monochromatique) passe de l'air à l'eau. Que
+      deviennent sa fréquence $\nu$ et sa longueur d'onde $\lambda$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\nu$ reste inchangée (imposée par la source), et $\lambda$ diminue avec
+          la vitesse de propagation.
+        correct: true
+        feedback: |
+          Exact. $\nu$ est fixée par la source : elle est invariante. $\lambda = v/\nu$
+          diminue parce que $v = c/n$ est réduite dans l'eau. C'est $\nu$,
+          invariante, qui fixe la couleur perçue — pas la valeur locale de $\lambda$.
+
+      - id: B
+        text: |
+          $\lambda$ reste inchangée ; c'est la fréquence $\nu$ qui diminue,
+          puisque c'est elle qui dépend de la vitesse de propagation dans le
+          milieu.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
+        feedback: |
+          Modèle détecté : les rôles inversés. C'est $\nu$ qui est invariante
+          (imposée par la source), et $\lambda = v/\nu$ qui change avec la vitesse
+          locale $v$. La fréquence, elle, ne bouge jamais en changeant de milieu.
+
+      - id: C
+        text: |
+          $\nu$ et $\lambda$ diminuent toutes les deux, puisque la lumière est
+          ralentie dans l'eau.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
+        feedback: |
+          Modèle détecté : tout ralentit. Seule $\lambda$ diminue. La fréquence
+          $\nu$ est fixée par la source et reste rigoureusement la même, même si
+          $v$ (donc $\lambda$) diminue.
+
+      - id: D
+        text: |
+          Ni $\nu$ ni $\lambda$ ne changent : seule la vitesse $v$ est affectée
+          par le changement de milieu.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
+        feedback: |
+          Modèle détecté : $\lambda$ « accrochée » à la source. Or $\lambda = v/\nu$
+          dépend directement de $v$ : si $v$ change et que $\nu$ est fixe, alors
+          $\lambda$ change nécessairement aussi ($\lambda = \lambda_0/n$).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r5-dispersion | placed AFTER R5
+  #        Rupture gate: un prisme ne disperse que de la lumière
+  #        POLYCHROMATIQUE. Clone of POL-17's stem. Probes
+  #        dispersion-prisme.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-dispersion
+    rung: "R5"
+    habilete: utilisation
+    skill_code: pc_propagation_onde_lumineuse
+    tags: [checkpoint, formative, misconception_driven, pc_propagation_onde_lumineuse]
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
+    item_source: clone_of_POL-17
+    lesson_placement: after_R5
+
+    stem: |
+      On envoie un faisceau **laser** (lumière monochromatique) sur un prisme de
+      verre. Qu'observe-t-on à la sortie du prisme ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Un unique trait lumineux dévié : une seule couleur est présente, il n'y
+          a rien à séparer.
+        correct: true
+        feedback: |
+          Exact. Un faisceau monochromatique est bien dévié (réfracté), mais
+          ressort en un unique trait. La dispersion ne fait qu'écarter des couleurs
+          **déjà** présentes ; sans mélange au départ, il n'y a rien à disperser.
+
+      - id: B
+        text: |
+          Un spectre de couleurs, comme avec la lumière blanche, car tout prisme
+          disperse nécessairement la lumière qui le traverse.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
+        feedback: |
+          Modèle détecté : le prisme « fabrique » des couleurs. Il n'en crée
+          aucune : il ne fait que dévier différemment des couleurs déjà mélangées.
+          Une seule longueur d'onde ne peut donner qu'un seul trait, pas un spectre.
+
+      - id: C
+        text: |
+          Aucune déviation du faisceau : un prisme ne dévie que de la lumière
+          polychromatique.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
+        feedback: |
+          Modèle détecté : déviation réservée au blanc. La réfraction (donc la
+          déviation) dépend de l'indice $n$ et de l'angle d'incidence, pas du
+          caractère mono- ou polychromatique : un laser est bel et bien dévié.
+
+      - id: D
+        text: |
+          Un spectre de couleurs, mais seulement si l'indice du verre dépend
+          fortement de la longueur d'onde.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
+        feedback: |
+          Modèle détecté : il suffirait d'un indice « très dépendant » de $\lambda$.
+          Avec une seule longueur d'onde, la dépendance de $n$ n'a aucune couleur
+          supplémentaire à séparer, aussi forte soit-elle : pas de spectre possible.

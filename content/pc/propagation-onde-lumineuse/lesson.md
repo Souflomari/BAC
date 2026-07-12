@@ -10,6 +10,8 @@ Maintenant regarde ce fait, en apparence anodin : la nuit, tu lèves les yeux et
 
 Avant de lire la suite, prends position : si une onde a besoin d'un milieu matériel pour se propager — ce qu'on vient d'établir pour toute onde mécanique — comment expliques-tu que la lumière, elle, traverse des distances aussi immenses à travers un vide quasi total ? Est-ce que la lumière n'est finalement pas vraiment une onde ? Est-ce qu'elle voyage instantanément, sans propagation à proprement parler ? Ou bien le vide n'est-il pas si vide que ça ? Engage-toi, en une phrase, avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Fais maintenant l'expérience de pensée inverse. Sous une cloche à vide, on place une clochette électrique qui sonne en continu. Tant que l'air est présent, on l'entend parfaitement. À mesure qu'on pompe l'air et qu'on s'approche du vide, le son faiblit puis disparaît complètement — alors qu'on voit toujours, à travers la vitre de la cloche, le battant qui continue de frapper. Le son ne franchit pas le vide. Mais la lumière, elle, continue de nous parvenir parfaitement à travers cette même vitre, ce même vide.
 
 [[figure:cloche-a-vide-son-lumiere]]
@@ -78,6 +80,8 @@ $$v \approx 2{,}26\times10^8\ \text{m/s}$$
 
 Vérifions la cohérence : $2{,}26\times10^8\ \text{m/s} < 3\times10^8\ \text{m/s} = c$. La lumière est bien ralentie dans l'eau par rapport au vide, comme l'exige $n \geq 1$. Un résultat $v > c$ aurait immédiatement signalé une erreur de calcul, puisqu'aucun milieu matériel ne peut faire voyager la lumière plus vite que dans le vide.
 
+[[checkpoint:cp-r2-indice]]
+
 ---
 
 ## R3 — La diffraction de la lumière
@@ -125,6 +129,8 @@ Une fente de $0{,}2\ \text{mm}$ — invisible à l'œil nu ou presque — produi
 ### Arrête-toi — plus l'ouverture est grande, MOINS on diffracte, pas l'inverse
 
 Une confusion fréquente consiste à croire qu'il faut une ouverture large pour bien observer un phénomène, comme si « plus grand » voulait toujours dire « plus visible ». C'est l'inverse ici. Reprends la formule $\theta = \lambda/a$ : $a$ est au dénominateur. Une fente plus large donne un $\theta$ plus petit, donc une diffraction moins marquée, jusqu'à devenir totalement indétectable pour les ouvertures de la vie courante. La diffraction se manifeste précisément quand l'ouverture est petite, comparable à $\lambda$ — jamais quand elle est grande.
+
+[[checkpoint:cp-r3-diffraction]]
 
 ---
 
@@ -175,6 +181,8 @@ $$\lambda = \frac{\lambda_0}{n} = \frac{660}{1{,}5} = 440\ \text{nm}$$
 
 Numériquement, $440\ \text{nm}$ correspond, dans le tableau ci-dessus, à une longueur d'onde du bleu — et pourtant, cette lumière reste parfaitement rouge à l'œil, même à l'intérieur du verre. Pourquoi ? Parce que ce que l'œil et le cerveau interprètent comme une couleur dépend de la fréquence $\nu$ de la radiation, et cette fréquence n'a pas changé en entrant dans le verre. Seule sa longueur d'onde, une grandeur qui dépend de la vitesse locale de propagation, a diminué. Confondre les deux — croire que la couleur « suit » la valeur numérique de $\lambda$ dans le milieu traversé — est l'erreur à éviter : c'est $\lambda_0$, la longueur d'onde dans le vide, qui identifie une couleur, jamais $\lambda$ dans un milieu quelconque.
 
+[[checkpoint:cp-r4-lambda-nu]]
+
 ---
 
 ## R5 — La dispersion de la lumière par un prisme
@@ -221,6 +229,8 @@ L'écart entre les deux angles de réfraction n'est que d'environ $0{,}4^\circ$ 
 
 Un dernier point, souvent oublié : envoie un faisceau laser (monochromatique) sur un prisme. Il est dévié, comme n'importe quel rayon lumineux qui se réfracte — mais il ressort sous la forme d'un unique point, pas d'un spectre. La dispersion ne sépare pas des couleurs qui n'étaient pas là au départ : elle ne fait que dévier différemment des couleurs qui étaient déjà toutes présentes, superposées, dans la lumière incidente. Sans mélange de longueurs d'onde au départ — donc avec une lumière monochromatique — il n'y a rien à séparer.
 
+[[checkpoint:cp-r5-dispersion]]
+
 ---
 
 ## R6 — Pour t'entraîner
@@ -233,54 +243,14 @@ Un dernier point, souvent oublié : envoie un faisceau laser (monochromatique) s
 - Chaque couleur correspond à une longueur d'onde dans le vide $\lambda_0$ (violet : courte, $\approx 400\ \text{nm}$ ; rouge : longue, $\approx 700\ \text{nm}$) ; une lumière monochromatique n'a qu'une seule $\lambda_0$, une lumière polychromatique (comme la lumière blanche) en mélange plusieurs. La fréquence $\nu$ est invariante : c'est elle, pas $\lambda$, qui fixe la couleur perçue.
 - L'indice $n$ d'un milieu dépend légèrement de la couleur (plus grand pour le violet que pour le rouge) : c'est ce qui permet à un prisme de disperser la lumière blanche en un spectre.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Un faisceau laser hélium-néon, de longueur d'onde dans le vide $\lambda_0 = 633\ \text{nm}$, traverse un fil fin de diamètre $a = 0{,}25\ \text{mm}$, placé à une distance $D = 3\ \text{m}$ d'un écran. Le même faisceau laser est ensuite dirigé, séparément, à travers une cuve remplie d'eau d'indice $n = 1{,}33$.
+À toi. Ce qui suit est l'**exercice II de l'examen national 2021 (session normale)** sur la propagation des ondes lumineuses — le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Calcule l'écart angulaire $\theta$ obtenu par diffraction du faisceau à travers le fil.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique $\theta = \lambda/a$, après avoir converti $\lambda_0$ et $a$ dans la même unité, le mètre.
+### Une variation pour ne pas mémoriser
 
-$$\lambda_0 = 633\ \text{nm} = 6{,}33\times10^{-7}\ \text{m}, \qquad a = 0{,}25\ \text{mm} = 2{,}5\times10^{-4}\ \text{m}$$
+Même structure profonde, habillage différent : un laser vert, une cuve de liquide au lieu d'un prisme, et un calcul direct de l'écart angulaire au lieu d'une lecture de graphe. À toi de reconnaître quelle procédure s'applique quand les nombres, le milieu et la méthode de mesure changent.
 
-$$\theta = \frac{\lambda_0}{a} = \frac{6{,}33\times10^{-7}}{2{,}5\times10^{-4}} \approx 2{,}53\times10^{-3}\ \text{rad}$$
-
-**2) En déduire la largeur $L$ de la tache centrale de diffraction sur l'écran.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on réutilise $\theta$ trouvé à la question précédente ; pour les petits angles, la demi-largeur de la tache vaut $D\theta$.
-
-$$\frac{L}{2} = D \times \theta = 3 \times 2{,}53\times10^{-3} \approx 7{,}6\times10^{-3}\ \text{m}$$
-
-$$L \approx 1{,}5\times10^{-2}\ \text{m} = 1{,}5\ \text{cm}$$
-
-**3) Calcule la vitesse $v$ de la lumière dans l'eau, ainsi que sa longueur d'onde $\lambda$ dans l'eau.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique $v = c/n$ puis $\lambda = \lambda_0/n$, les deux formules établies en R2 et R4.
-
-$$v = \frac{c}{n} = \frac{3\times10^8}{1{,}33} \approx 2{,}26\times10^8\ \text{m/s}$$
-
-$$\lambda = \frac{\lambda_0}{n} = \frac{633}{1{,}33} \approx 476\ \text{nm}$$
-
-**4) La couleur perçue de ce faisceau change-t-elle en pénétrant dans l'eau ? Justifie à partir de la fréquence.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* le piège serait de répondre à partir de la valeur numérique de $\lambda$ ; il faut raisonner sur la grandeur qui détermine réellement la couleur perçue, la fréquence.
-
-La fréquence $\nu = c/\lambda_0 = (3\times10^8)/(6{,}33\times10^{-7}) \approx 4{,}74\times10^{14}\ \text{Hz}$ ne dépend que de la source : elle reste rigoureusement la même dans l'eau. Or c'est $\nu$, invariante, qui détermine la couleur perçue par l'œil — pas la valeur numérique de $\lambda$ dans le milieu traversé. Le faisceau reste donc rouge à l'intérieur de l'eau, même si sa longueur d'onde y vaut numériquement $476\ \text{nm}$.
-
-**5) Si on remplaçait le laser par une lumière blanche traversant le même fil, obtiendrait-on sur l'écran une tache unique ou une tache irisée (colorée) ? Justifie à partir de la formule $\theta = \lambda/a$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la lumière blanche est polychromatique (R4) — elle contient plusieurs $\lambda_0$ à la fois, et $\theta$ dépend de $\lambda$.
-
-La lumière blanche contient simultanément toutes les longueurs d'onde du spectre visible. Comme $a$ est fixée par le fil, chaque couleur diffracte selon son propre écart angulaire $\theta = \lambda/a$ : le rouge (grande $\lambda_0$) diffracte davantage que le violet (petite $\lambda_0$). On n'obtiendrait donc pas une tache unique et nette comme avec le laser monochromatique, mais une tache aux bords irisés, chaque couleur s'étalant sur un angle légèrement différent.
-
-**6) Un camarade affirme : « L'indice de réfraction de l'eau est le même pour toutes les couleurs, donc ça n'a pas de sens de parler de longueur d'onde dans l'eau différente pour chaque couleur. » Commente cette affirmation.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* c'est exactement la confusion levée en R5 — il faut la nommer précisément, en reliant au phénomène de dispersion, pas juste dire que c'est faux.
-
-L'affirmation est fausse : l'indice $n$ d'un milieu transparent dépend, très légèrement, de la couleur de la lumière (R5) — c'est exactement cette petite dépendance qui permet à un prisme de disperser la lumière blanche en un spectre. Pour une seule couleur donnée (comme le rouge de cet exercice), on peut utiliser une seule valeur de $n$ pour calculer $v$ et $\lambda$ dans l'eau ; mais si on comparait le rouge et le violet dans cette même eau, on trouverait deux indices très légèrement différents, et donc deux longueurs d'onde $\lambda$ légèrement différentes de ce que donnerait un indice unique. Loin d'être dénué de sens, c'est précisément cette dépendance de $n$ envers la couleur qui rend la dispersion possible.
-
-### À toi
-
-**Variation 1.** Une lumière laser verte, de longueur d'onde dans le vide $\lambda_0 = 532\ \text{nm}$, traverse la même fente de largeur $a = 0{,}25\ \text{mm}$, avec un écran à la même distance $D = 3\ \text{m}$. Calcule l'écart angulaire $\theta$ et la largeur $L$ de la tache centrale. Compare ce résultat à celui obtenu avec le laser rouge de l'exercice ($\lambda_0 = 633\ \text{nm}$) : quelle couleur diffracte le plus, et pourquoi (relie ta réponse à la formule $\theta = \lambda/a$) ?
-
-**Variation 2.** Pour un certain prisme, on mesure une déviation de $38{,}0^\circ$ pour un rayon rouge et de $39{,}5^\circ$ pour un rayon violet, à angle d'incidence égal. Un camarade affirme : « C'est parce que le violet a une longueur d'onde plus grande que le rouge, ce qui le fait davantage dévier. » Cette affirmation est-elle correcte ? Justifie ta réponse en te basant sur la relation entre indice de réfraction et longueur d'onde (R5).
+[[exercise:r-variation]]
