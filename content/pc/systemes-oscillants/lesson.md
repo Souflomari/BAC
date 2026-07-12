@@ -12,6 +12,8 @@ Beaucoup répondent : « il retourne au point de départ (l'équilibre) et s'arr
 
 Engage vraiment ta réponse avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Maintenant regarde ce qui se passe réellement, avec un ressort dont le frottement est très faible. Le chariot revient vers l'équilibre — oui — mais il ne s'y arrête pas. Il **traverse** la position d'équilibre, file de l'autre côté, s'écarte presque autant qu'au départ, s'arrête un court instant, puis repart en sens inverse. Et ça continue : aller-retour, aller-retour, un mouvement de va-et-vient qui se répète, presque à l'identique à chaque cycle, encore et encore.
 
 Ce n'est pas un retour au repos. C'est une **oscillation**.
@@ -362,6 +364,8 @@ Regarde ce qui figure dans l'équation $m\ddot{x} + h\dot{x} + kx = 0$. Le terme
 
 Résultat, pour un frottement faible : la durée entre deux passages successifs par l'écart maximal du même côté — la **pseudo-période** $T$ — reste très proche de la période propre $T_0 = 2\pi\sqrt{m/k}$, alors même que l'amplitude, elle, décroît nettement d'un aller-retour au suivant. Si tu as prédit que la durée suivrait l'amplitude, ta prédiction et l'observation se séparent ici : ce sont deux effets distincts, gouvernés par deux termes distincts de l'équation. **Le rythme vient du rappel ($k$, $m$) ; la décroissance de l'amplitude vient du frottement ($h$).** Ne les confonds pas.
 
+[[checkpoint:cp-r6-pseudo-periode]]
+
 ### Les régimes d'amortissement
 
 On distingue le cas idéal, déjà étudié — le **régime périodique** ($h \approx 0$), oscillations à amplitude constante, période $T_0$, exactement les rungs précédents — des régimes propres à l'amortissement :
@@ -375,6 +379,8 @@ On distingue le cas idéal, déjà étudié — le **régime périodique** ($h \
 Une deuxième question, avant de continuer — prends position à nouveau. Si on augmente encore le frottement, au-delà du régime pseudo-périodique, le retour à l'équilibre devient-il de plus en plus rapide, tout simplement — « plus de frottement, plus vite arrêté », comme une voiture qui freine plus fort ?
 
 C'est un raisonnement naturel, mais regarde les trois courbes ci-dessus : le retour le plus rapide, c'est le régime **critique** — ni le pseudo-périodique (le solide dépasse l'équilibre, et il faut plusieurs allers-retours avant de se stabiliser), ni l'apériodique (cette fois, c'est le frottement lui-même, devenu trop fort, qui freine le retour). En dessous du seuil critique, le système a trop d'élan et dépasse l'équilibre ; au-dessus, le frottement est si fort qu'il ralentit le retour autant qu'il ralentissait l'écart initial. **Le temps de retour est minimal exactement au régime critique — plus long des deux côtés, pour deux raisons opposées.** « Plus de frottement, plus vite » n'est vrai que jusqu'au seuil critique ; au-delà, c'est le contraire.
+
+[[checkpoint:cp-r6-regimes]]
 
 [[embed:ressort-sandbox]]
 
@@ -431,6 +437,8 @@ Beaucoup répondent que le résonateur « retourne » à sa fréquence propre, o
 
 C'est une intuition naturelle — plus fort ou plus vite devrait donner plus grand. Mais ce n'est pas une question de force ou de vitesse : c'est un **accord de rythme**. Quand $f_{exc} \approx f_0$, les poussées de l'excitateur arrivent en phase avec le mouvement déjà entamé du résonateur — chaque poussée ajoute de l'énergie de la même façon, cycle après cycle, et l'amplitude s'accumule, devient grande. Loin de $f_0$, les poussées tombent partiellement à contretemps — certaines ajoutent de l'énergie, d'autres s'y opposent — et l'apport net, cycle après cycle, reste faible. L'amplitude du résonateur est donc **maximale quand $f_{exc} \approx f_0$** : c'est la **condition de résonance**.
 
+[[checkpoint:cp-r7-resonance]]
+
 [[figure:resonance-sandbox]]
 
 Fais varier $f_{exc}$ sur le montage, de très bas vers très haut : regarde l'amplitude — elle grandit, culmine près de $f_0$, puis redescend. Si « plus vite, plus grand » était vrai, l'amplitude continuerait de grandir avec $f_{exc}$ ; ce n'est pas ce qu'on observe. Elle grandit puis RETOMBE après le pic — la preuve que ce n'est pas une question de vitesse, mais d'un rendez-vous entre deux fréquences.
@@ -440,6 +448,8 @@ Fais varier $f_{exc}$ sur le montage, de très bas vers très haut : regarde l'a
 Une dernière question, elle aussi contre-intuitive. Un frottement plus fort rend-il la résonance plus intense, plus « pointue » — comme s'il concentrait l'énergie sur $f_0$ ?
 
 C'est tentant à imaginer, mais c'est l'inverse qui se produit. L'amplitude du résonateur grandit tant que l'énergie injectée par l'excitateur, à chaque cycle, dépasse l'énergie dissipée par le frottement ; elle se stabilise dès que les deux s'équilibrent. Avec un **amortissement faible**, cet équilibre n'est atteint qu'à très grande amplitude, et seulement dans une bande étroite de fréquences autour de $f_0$ : la résonance est **aiguë** (un pic haut et étroit). Avec un **amortissement fort**, l'équilibre est atteint bien plus tôt, à amplitude modeste, sur une large bande de fréquences : la résonance est **floue** (un pic bas et large). Le frottement, ici comme au rung précédent, ne fait jamais que freiner — il n'aiguise jamais la résonance, il l'émousse.
+
+[[checkpoint:cp-r7-acuite]]
 
 On trace expérimentalement — jamais par le calcul, c'est la limite de ce chapitre — la **courbe de résonance** : l'amplitude du résonateur en fonction de $f_{exc}$, mesurée point par point. Elle prend la forme d'une bosse, culminant près de $f_0$ — plus haute et plus étroite pour un amortissement faible, plus basse et plus large pour un amortissement fort.
 
@@ -486,54 +496,10 @@ On ne cherche pas une formule d'amplitude — on lit le tableau : l'amplitude cu
 - Avec frottement, $E_m$ décroît toujours (le frottement ne fournit jamais d'énergie, il ne fait que la dissiper) ; selon son intensité, le mouvement suit le régime **pseudo-périodique** ($T \approx T_0$, amplitude décroissante), **critique** (retour le plus rapide, sans oscillation), ou **apériodique** (retour plus lent, sans oscillation) — le retour est le plus rapide exactement au régime critique. Un dispositif d'entretien peut compenser cette perte ; son étude complète appartient au chapitre RLC.
 - Un **résonateur** (fréquence propre $f_0$ fixe) forcé par un **excitateur** (fréquence $f_{exc}$ réglable) oscille, en régime établi, à $f_{exc}$ — avec une amplitude maximale quand $f_{exc} \approx f_0$ (la résonance). Un amortissement faible donne une résonance aiguë (pic haut, étroit) ; un amortissement fort, une résonance floue (pic bas, large).
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Un solide $(S)$, de masse $m = 200\ \text{g}$, est accroché à un ressort horizontal de raideur $k$, l'autre extrémité du ressort étant fixe. Le solide peut glisser sans frottement sur un banc horizontal. On repère sa position par $x$, l'écart algébrique par rapport à sa position d'équilibre. On écarte $(S)$ de $x_0 = 4{,}0\ \text{cm}$ par rapport à l'équilibre et on le lâche sans vitesse initiale à l'instant $t=0$. Un dispositif de mesure indique que le solide effectue $10$ allers-retours complets en $6{,}28\ \text{s}$. On prendra $\pi^2 \approx 10$ pour les applications numériques.
+[[exercise:r-bac]]
 
-**1) Déterminer la période propre $T_0$, puis la pulsation propre $\omega_0$ du mouvement.**
+### Une variation pour ne pas mémoriser
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* l'énoncé donne la durée de PLUSIEURS cycles, pas d'un seul — il faut diviser avant d'aller plus loin, sinon on confond « durée totale » et « période ».
-
-$$T_0 = \frac{6{,}28}{10} = 0{,}628\ \text{s}$$
-
-$$\omega_0 = \frac{2\pi}{T_0} = \frac{2\pi}{0{,}628} \approx 10\ \text{rad/s}$$
-
-**2) En déduire la raideur $k$ du ressort.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on inverse la relation $\omega_0 = \sqrt{k/m}$ établie en R1 — c'est le même $\omega_0$ que celui qu'on vient de mesurer, donc $k$ se déduit directement, sans nouvelle expérience.
-
-$$\omega_0^2 = \frac{k}{m} \quad \Longrightarrow \quad k = m\,\omega_0^2$$
-
-$$k = 0{,}200 \times 10^2 = 20\ \text{N/m}$$
-
-**3) Écrire l'équation horaire $x(t)$ du mouvement.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie $X_m$ et $\varphi$ à partir des conditions initiales EXACTEMENT données par l'énoncé (lâcher sans vitesse depuis l'écart maximal) — un cas déjà rencontré en R2, donc reconnu, pas recalculé de zéro.
-
-Le solide est lâché depuis $x_0 = 4{,}0\ \text{cm}$ sans vitesse initiale : c'est exactement la configuration du premier lancer de R2, donc $\varphi = 0$ et $X_m = x_0 = 0{,}040\ \text{m}$.
-
-$$x(t) = 0{,}040\,\cos(10\,t) \quad \text{(en mètres)}$$
-
-**4) Calculer l'énergie mécanique du système, et la vitesse maximale atteinte par le solide.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* $E_m$ se calcule directement avec $k$ et $X_m$ (formule de R5) ; la vitesse maximale s'en déduit en écrivant que TOUTE l'énergie est cinétique au passage par l'équilibre — pas besoin de dériver $x(t)$ une deuxième fois.
-
-$$E_m = \frac{1}{2}k\,X_m^2 = \frac{1}{2}\times 20 \times (0{,}040)^2 = \frac{1}{2}\times 20\times 1{,}6\times 10^{-3} = 1{,}6\times 10^{-2}\ \text{J}$$
-
-$$E_m = \frac{1}{2}m\,v_{max}^2 \quad \Longrightarrow \quad v_{max} = \sqrt{\frac{2E_m}{m}} = \sqrt{\frac{2\times 1{,}6\times 10^{-2}}{0{,}200}} = \sqrt{0{,}16} = 0{,}40\ \text{m/s}$$
-
-**5) On refait la même expérience, mais en frottant légèrement le banc. Le dispositif de mesure indique maintenant que l'intervalle entre deux passages successifs par l'écart maximal (du même côté) est de $0{,}63\ \text{s}$, très proche de $T_0$, mais que l'écart maximal diminue légèrement à chaque aller-retour. Quel régime observe-t-on ? Justifier.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la question teste directement la trichotomie de R6 — reconnaître le régime à partir de deux indices (persistance d'un intervalle régulier + décroissance de l'amplitude), pas juste réciter une définition.
-
-On observe le **régime pseudo-périodique** : les oscillations persistent (un intervalle de temps régulier subsiste entre deux extrêmes successifs, ici $T\approx 0{,}63\ \text{s}\approx T_0$), mais leur amplitude décroît progressivement à chaque cycle à cause du frottement — c'est la signature exacte d'un amortissement faible, ni le régime périodique (l'amplitude ne serait pas décroissante) ni le régime apériodique (il n'y aurait plus d'aller-retour du tout).
-
-### À toi
-
-**Variation 1.** Un pendule simple de longueur $L = 1{,}0\ \text{m}$ oscille avec de petites oscillations au voisinage d'un lieu où $g \approx 10\ \text{m}\cdot\text{s}^{-2}$. Calcule sa période propre $T_0$, sa pulsation propre $\omega_0$ et sa fréquence propre $f_0$ (donne les trois grandeurs avec leurs unités, et fais bien attention à ne pas confondre $\omega_0$ et $f_0$). Un deuxième pendule, de même longueur $L$ mais avec une masse deux fois plus grande, oscille-t-il plus vite, moins vite, ou pareil ? Justifie à partir de l'équation différentielle, pas seulement du résultat final.
-
-**Variation 2.** Un pendule de torsion est constitué d'un disque de moment d'inertie $J = 4{,}0\times 10^{-3}\ \text{kg}\cdot\text{m}^2$, suspendu par un fil de constante de torsion $C = 0{,}16\ \text{N}\cdot\text{m}/\text{rad}$. Détermine sa période propre $T_0$. On lâche le disque, à $t=0$, depuis un angle $\theta_0 = 0{,}20\ \text{rad}$ sans vitesse angulaire initiale : écris l'équation horaire $\theta(t)$ complète (amplitude et phase comprises), en reconnaissant le type de lancer déjà rencontré dans la leçon.
-
-**Variation 3.** Un pendule pesant, lâché avec un angle initial non nul et une vitesse angulaire initiale nulle, est filmé dans trois expériences où seul le frottement au niveau de l'axe change. Expérience A : le pendule dépasse la verticale plusieurs fois, en oscillant avec une amplitude qui décroît visiblement à chaque passage. Expérience B : le pendule revient directement vers la verticale sans jamais la dépasser, en un temps très court. Expérience C : le pendule revient aussi directement, sans la dépasser, mais met nettement plus de temps qu'en B. Nomme le régime de chaque expérience, et classe les trois par temps de retour à l'équilibre croissant, en justifiant chaque réponse par ce qui distingue les régimes (dépassement ou non, rapidité du retour).
-
-**Variation 4.** Un haut-parleur, réglé sur une fréquence $f$ que l'on peut faire varier, est placé face à un diapason de fréquence propre $f_0 = 440\ \text{Hz}$. On balaie lentement $f$ de $300\ \text{Hz}$ à $600\ \text{Hz}$ et on note à l'oreille l'intensité du son émis par le diapason. (a) Identifie, dans cette expérience, qui joue le rôle de l'excitateur et qui joue le rôle du résonateur. (b) À quelle valeur de $f$ le diapason résonne-t-il le plus fort, et pourquoi — sa fréquence propre $f_0$ a-t-elle changé pour l'occasion ? (c) On refait l'expérience en entourant le diapason de mousse absorbante (donc en augmentant l'amortissement) : la résonance observée sera-t-elle plus aiguë ou plus floue qu'avant ? Justifie sans invoquer de formule.
+[[exercise:r-variation]]

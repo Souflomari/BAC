@@ -2499,8 +2499,26 @@ coverage_summary:
     id, whether tagged solo or as part of a dual-tag (cross-misconception
     co-attribution across one distractor — not a stem defect; see SO-27/C,
     SO-35/D, SO-36/D, SO-38/D). Counts below include dual-tag exposures.
+    The floor here is GATED on per-distractor tags: every counted exposure
+    is a real `misconception:` field on a choice (never an item-level-only
+    attribution), so floor_met and gated_floor_met coincide.
+  summit_conversion_note: >-
+    Summit-conversion pass (R8 "Pour t'entraîner"): the legacy worked bac
+    exercise and its "À toi" variations were removed from lesson.md and
+    replaced by [[exercise:r-bac]] (verified 2018 sujet, oscillation part) +
+    [[exercise:r-variation]] in exercises.yaml. Five in-lesson checkpoints
+    were added in checkpoints.yaml (cp-r0-predict + four rupture gates that
+    CLONE SO-25/SO-26/SO-34/SO-35). Inline surfacing does NOT re-count: the
+    per-misconception tally below is unchanged by this pass. The end-bank R8
+    practice items (SO-22, SO-23, SO-24 — isochronisme/masse, énergie de
+    torsion, synthèse analogique) remain in place as foundational-skill
+    items; they carry no M-OSC-* tag because they do not exhibit an
+    amortissement/résonance misconception (the notion's only tagged
+    inventory). Per-distractor tags on ALL floor items (SO-25..SO-41) are
+    verified present.
   floor_target: 3
   floor_met: true
+  gated_floor_met: true
   by_misconception:
     M-OSC-AMO-1: {count: 4, items: [SO-25, SO-27, SO-28, SO-31]}
     M-OSC-AMO-2: {count: 3, items: [SO-26, SO-29, SO-32]}

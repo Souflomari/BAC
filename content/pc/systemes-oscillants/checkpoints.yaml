@@ -1,0 +1,403 @@
+notion: systemes-oscillants
+skill_code: pc_systemes_oscillants
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — systemes-oscillants)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict       (in R0)      — COMMIT gate: turns the rhetorical "prends
+#                                      position" (oscille-t-il ou s'arrête-t-il ?)
+#                                      into a real MCQ commit before the reveal.
+#   cp-r6-pseudo-periode (after R6)  — rupture gate: pendule élastique, la
+#                                      pseudo-période T ≈ T₀ = 2π√(m/k) malgré
+#                                      la décroissance de l'amplitude (M-OSC-AMO-1).
+#   cp-r6-regimes        (after R6)  — rupture gate: ordre des trois régimes
+#                                      d'amortissement, le critique = le plus
+#                                      rapide (M-OSC-AMO-2).
+#   cp-r7-resonance      (after R7)  — rupture gate: condition de résonance
+#                                      f_exc ≈ f₀ (M-OSC-RES-1).
+#   cp-r7-acuite         (after R7)  — rupture gate: l'amortissement émousse la
+#                                      résonance, il ne l'aiguise jamais (M-OSC-RES-2).
+#
+# Clone note: the four rupture gates clone the cleanest end-bank stems —
+#   cp-r6-pseudo-periode ← SO-25 (M-OSC-AMO-1), cp-r6-regimes ← SO-26
+#   (M-OSC-AMO-2), cp-r7-resonance ← SO-34 (M-OSC-RES-1), cp-r7-acuite ← SO-35
+#   (M-OSC-RES-2). On each, EVERY distractor carries a named misconception tag
+#   (M-OSC-* ; SO-26/D and SO-35/D keep their boundary/dual tags). No end-bank
+#   tally is adjusted — inline surfacing does not double-count.
+#
+# cp-r0-predict is an ORIGINAL commit item (not in the end bank). Its distractors
+# are the lesson's R0 naive models (retour-et-arrêt / fuite / arrêt avant
+# l'équilibre). These are MECHANISM-level predictions that PREDATE the notion's
+# amortissement/résonance misconception inventory (which is entirely M-OSC-AMO-*
+# / M-OSC-RES-*, from R6/R7) — so they carry `misconception: null` and are
+# surfaced by their model-naming feedback, exactly as the RLC/rc-charge
+# cp-r0-predict exemplars do for their untagged mechanism lures. Honest, not a
+# faked tag.
+#
+# Boundary guard (spec-extension.md §0.5 / §2 / §3): résonance stays QUALITATIVE
+# — no forced-regime ODE, no closed-form A(ω), no facteur de qualité. Amortissement
+# stops at the damped ODE (LIMITE) — no pseudo-période as f(m,h,k). Entretien is
+# named once and handed to the RLC chapter, never taught here.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the reveal of the real oscillation. Original
+  #        item; distractors are the R0 mechanism lures (no M-OSC-* id).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, pc_systemes_oscillants, hook_commit]
+    primary_misconception: null
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On écarte un chariot accroché à un ressort horizontal (frottement quasi
+      nul) de sa position d'équilibre, puis on le lâche **sans vitesse
+      initiale**. Que va-t-il faire, dans la réalité ?
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Il revient à l'équilibre, le dépasse, s'écarte à peu près autant de
+          l'autre côté, puis repart : un va-et-vient qui se répète.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ce n'est pas un simple retour au
+          repos. Le chariot arrive à l'équilibre **avec de la vitesse** (acquise
+          tout le long du trajet) : l'inertie le fait traverser ce point, encore
+          et encore. La vraie question commence maintenant : **qu'est-ce qui fixe
+          la durée** d'un aller-retour, et de quoi dépend-elle ? C'est toute la
+          leçon.
+
+      - id: B
+        text: >-
+          Il revient à l'équilibre et s'y arrête définitivement : c'est là que le
+          ressort n'exerce plus aucune force.
+        correct: false
+        misconception: null
+        feedback: |
+          Modèle détecté : on confond « force nulle » et « vitesse nulle ». À
+          l'équilibre, le ressort ne pousse plus, c'est vrai — mais le chariot y
+          arrive **lancé**, avec la vitesse accumulée pendant tout le trajet. Rien
+          ne l'arrête net à cet instant : il continue par inertie et traverse
+          l'équilibre. Regarde la trace réelle juste en dessous.
+
+      - id: C
+        text: >-
+          Il revient à l'équilibre, le dépasse, puis continue indéfiniment dans le
+          même sens en s'éloignant de plus en plus.
+        correct: false
+        misconception: null
+        feedback: |
+          Modèle détecté : le mouvement « s'échappe ». Impossible : dès que le
+          chariot dépasse l'équilibre, le ressort change de côté (comprimé au lieu
+          d'étiré, ou l'inverse), donc la force de rappel change de sens et
+          recommence aussitôt à le freiner puis à le ramener. Le va-et-vient est
+          borné, pas une fuite.
+
+      - id: D
+        text: >-
+          Il ralentit et s'arrête avant même d'atteindre l'équilibre, car le
+          ressort perd de sa force en se détendant.
+        correct: false
+        misconception: null
+        feedback: |
+          Modèle détecté : « moins de force ⇒ arrêt ». C'est l'inverse : à mesure
+          que le chariot s'approche de l'équilibre, la force de rappel diminue,
+          mais la vitesse, elle, ne cesse d'**augmenter** (il est de moins en moins
+          freiné) jusqu'à être maximale exactement à l'équilibre. Il ne peut donc
+          pas s'arrêter avant de l'atteindre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r6-pseudo-periode | placed AFTER R6
+  #        Rupture gate: pendule élastique amorti — la pseudo-période
+  #        T ≈ T₀ = 2π√(m/k) reste voisine de la période propre alors
+  #        que l'amplitude décroît. Clone of SO-25. Probes M-OSC-AMO-1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-pseudo-periode
+    rung: "R6"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants]
+    primary_misconception: M-OSC-AMO-1
+    item_source: clone_of_SO-25
+    lesson_placement: after_R6
+
+    stem: |
+      Un solide-ressort ($m$, $k$ fixés) oscille sur un banc à frottement
+      faible. On mesure l'intervalle de temps entre deux passages successifs
+      par l'écart maximal du même côté. Comparé à la période propre
+      $T_0 = 2\pi\sqrt{m/k}$, cet intervalle (la pseudo-période $T$) :
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          vaut approximativement $T_0$ (amortissement faible).
+        correct: true
+        feedback: |
+          Exact. Le frottement fait fuir l'énergie — donc l'amplitude — via le
+          terme $h\dot{x}$, mais il ne touche pas au terme de rappel $kx$ qui
+          fixe le rythme. Pour un amortissement faible, le rythme reste réglé par
+          $m$ et $k$ : $T \approx T_0 = 2\pi\sqrt{m/k}$.
+
+      - id: B
+        text: >-
+          est nettement plus court, car l'amplitude diminue à chaque
+          aller-retour.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: |
+          Modèle détecté : « l'amplitude décroît, donc la période aussi ». Ce sont
+          deux effets distincts, gouvernés par deux termes distincts de
+          $m\ddot{x} + h\dot{x} + kx = 0$ : $h\dot{x}$ fait fuir l'amplitude, $kx$
+          fixe le rythme. Pour un amortissement faible, l'espacement entre extrêmes
+          reste voisin de $T_0$, même si leur hauteur diminue nettement.
+
+      - id: C
+        text: >-
+          n'existe pas : dès qu'il y a du frottement, il n'y a plus de période.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: |
+          Modèle détecté : « une trace amortie n'a plus de période ». Le régime
+          pseudo-périodique garde une pseudo-période bien définie et mesurable —
+          c'est justement ce qui permet de la comparer à $T_0$. Ce n'est que pour
+          un amortissement très fort (régime apériodique) qu'il n'y a plus aucune
+          oscillation.
+
+      - id: D
+        text: >-
+          augmente d'un aller-retour au suivant, à mesure que l'amplitude
+          décroît.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: |
+          Modèle détecté : la décroissance de l'amplitude « traînerait » aussi la
+          période vers le haut. Amplitude et pseudo-période ne dépendent pas des
+          mêmes termes de l'équation : rien n'indique une dérive progressive de
+          $T$ d'un cycle à l'autre. Pour un amortissement faible, $T$ reste voisine
+          de $T_0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r6-regimes | placed AFTER R6
+  #        Rupture gate: ordre des trois régimes d'amortissement — le
+  #        régime CRITIQUE est le retour le plus rapide (cas-limite).
+  #        Clone of SO-26. Probes M-OSC-AMO-2 (+ boundary tripwire /D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-regimes
+    rung: "R6"
+    habilete: application_experimentale
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, document_experimental]
+    primary_misconception: M-OSC-AMO-2
+    item_source: clone_of_SO-26
+    lesson_placement: after_R6
+
+    stem: |
+      On enregistre $x(t)$ pour trois amortissements croissants d'un même
+      pendule élastique. Le premier oscille en s'amortissant. Le second revient
+      à l'équilibre sans osciller, le plus rapidement possible parmi les trois.
+      Le troisième revient à l'équilibre sans osciller lui non plus, mais
+      lentement. Quels sont, dans l'ordre (premier, second, troisième), les
+      trois régimes ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          périodique ; pseudo-périodique ; apériodique.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: |
+          Le régime périodique (amplitude constante, sans frottement) n'est pas un
+          régime d'amortissement : c'est le cas idéal étudié avant ce chapitre. Le
+          premier système oscille **en s'amortissant** : c'est le régime
+          pseudo-périodique, pas le régime périodique.
+
+      - id: B
+        text: >-
+          pseudo-périodique ; apériodique ; critique.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: |
+          Le second et le troisième régime sont inversés. Le second revient le
+          plus vite, sans osciller : c'est le régime **critique**, le cas-limite le
+          plus rapide. Le troisième, plus lent, est l'apériodique — pas l'inverse.
+
+      - id: C
+        text: >-
+          pseudo-périodique ; critique ; apériodique.
+        correct: true
+        feedback: |
+          Exact. Oscille en s'amortissant → pseudo-périodique. Retour le plus
+          rapide, sans dépassement → critique (le cas-limite). Retour sans
+          dépassement lui aussi, mais plus lent que le critique → apériodique. Le
+          temps de retour est minimal exactement au régime critique.
+
+      - id: D
+        text: >-
+          amorti ; critique ; forcé.
+        correct: false
+        misconception: hors_cadre_probe
+        feedback: |
+          « Amorti » n'est pas le nom d'un régime précis (les trois régimes sont
+          pseudo-périodique, critique, apériodique), et « forcé » désigne un régime
+          entretenu par un excitateur extérieur — hors de ce chapitre sur les
+          oscillations libres.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r7-resonance | placed AFTER R7
+  #        Rupture gate: condition de résonance f_exc ≈ f₀ (ni la plus
+  #        haute ni la plus basse fréquence). Clone of SO-34.
+  #        Probes M-OSC-RES-1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-resonance
+    rung: "R7"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, resonance]
+    primary_misconception: M-OSC-RES-1
+    item_source: clone_of_SO-34
+    lesson_placement: after_R7
+
+    stem: |
+      Un résonateur de fréquence propre $f_0$ est forcé par un excitateur de
+      fréquence $f_{exc}$ réglable. Pour quelle valeur de $f_{exc}$ l'amplitude
+      des oscillations du résonateur est-elle maximale ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          $f_{exc} \approx f_0$.
+        correct: true
+        feedback: |
+          Exact. L'amplitude culmine quand l'excitateur pousse au même rythme que
+          la fréquence propre du résonateur : les poussées arrivent en phase et
+          s'accumulent. C'est la condition de résonance — ni la plus haute, ni la
+          plus basse fréquence, mais **celle qui coïncide** avec $f_0$.
+
+      - id: B
+        text: >-
+          Pour $f_{exc}$ la plus grande possible.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: |
+          Modèle détecté : « plus vite ⇒ plus grand ». Une amplitude maximale ne
+          vient pas d'un excitateur rapide, mais d'un **accord de rythme** :
+          au-delà de $f_0$, l'amplitude retombe au lieu de croître avec $f_{exc}$.
+
+      - id: C
+        text: >-
+          Pour n'importe quelle $f_{exc}$, si on attend suffisamment longtemps.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: |
+          Modèle détecté : le temps d'attente remplacerait la coïncidence de
+          fréquences. Il ne la remplace pas : loin de $f_0$, l'amplitude du
+          résonateur reste petite, aussi longtemps qu'on l'excite à cette
+          fréquence-là.
+
+      - id: D
+        text: >-
+          Pour $f_{exc}$ la plus petite possible.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: |
+          Symétrique de l'erreur « le plus vite » : ici non plus, ce n'est ni la
+          fréquence la plus basse ni la plus haute qui maximise l'amplitude, mais
+          celle qui coïncide avec $f_0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r7-acuite | placed AFTER R7
+  #        Rupture gate: l'amortissement ÉMOUSSE la résonance (faible →
+  #        pic haut/étroit aigu ; fort → pic bas/large flou), il ne
+  #        l'aiguise jamais. Clone of SO-35. Probes M-OSC-RES-2
+  #        (+ dual-tag M-OSC-RES-3 on /D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-acuite
+    rung: "R7"
+    habilete: application_experimentale
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, resonance, document_experimental]
+    primary_misconception: M-OSC-RES-2
+    item_source: clone_of_SO-35
+    lesson_placement: after_R7
+
+    stem: |
+      On trace, pour un même résonateur, la courbe amplitude $= f(f_{exc})$
+      dans deux conditions : (1) frottements faibles, (2) frottements forts.
+      Laquelle des deux courbes présente le pic le plus haut et le plus étroit,
+      et comment nomme-t-on cette résonance ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          La courbe à frottements forts ; résonance aiguë.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: |
+          C'est l'inverse : un amortissement fort abaisse et élargit le pic
+          (résonance floue), il ne le rend jamais plus haut ni plus étroit. Le
+          frottement émousse la résonance.
+
+      - id: B
+        text: >-
+          La courbe à frottements faibles ; résonance aiguë.
+        correct: true
+        feedback: |
+          Exact. Un amortissement faible : l'équilibre entre énergie injectée et
+          énergie dissipée n'est atteint qu'à très grande amplitude, et seulement
+          dans une bande étroite autour de $f_0$ → pic haut et étroit, **résonance
+          aiguë**. Le frottement n'aiguise jamais la résonance, il l'émousse.
+
+      - id: C
+        text: >-
+          La courbe à frottements forts, car un fort amortissement concentre
+          l'énergie sur $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: |
+          Le frottement dissipe de l'énergie à chaque cycle, il n'en « concentre »
+          aucune : plus il est fort, plus il faut une large plage de $f_{exc}$ pour
+          entretenir une amplitude notable, d'où un pic bas et large — pas concentré.
+
+      - id: D
+        text: >-
+          Les deux courbes ont le même pic ; l'amortissement ne change que la
+          position de $f_0$.
+        correct: false
+        misconception: [M-OSC-RES-2, M-OSC-RES-3]
+        feedback: |
+          Double erreur : l'amortissement change la hauteur et la largeur du pic
+          (pas seulement une position), et $f_0$ est une propriété **fixe** du
+          résonateur ($m,k$ ou $J,C$) — elle ne se déplace jamais, quel que soit le
+          frottement.
