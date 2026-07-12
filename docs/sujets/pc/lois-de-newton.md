@@ -7,7 +7,7 @@
 
 ## 2019 — session normale — Exercice IV (Partie I)
 Source: https://www.alloschool.com/element/68300
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points (Partie I ≈ 3 points)

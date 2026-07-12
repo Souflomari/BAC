@@ -13,7 +13,7 @@
 
 ## 2020 — session normale — Exercice III
 Source: https://www.alloschool.com/element/109742
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice : 2,5 points

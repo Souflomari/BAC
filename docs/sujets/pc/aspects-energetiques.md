@@ -7,7 +7,7 @@
 
 ## 2018 — session normale — Exercice IV (Partie II) — *cross-list*
 Source: https://www.alloschool.com/element/57726
-Statut: transcrit (non vérifié) — cross-list
+Statut: vérifié — cross-list (contenu vérifié via `systemes-oscillants.md` : re-fetch AlloSchool upload-45118 p.7–8 + diff OK, agent-vérificateur 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème : Partie II = 2 points

@@ -11,8 +11,17 @@
 > profondeur (2017, 2018, 2019, 2020, 2021 N) et une vingtaine d'exercices
 > transcrits couvrant 18 des 25 slugs (voir §4). Les deux slugs `rotation-axe-fixe`
 > et `atome-mecanique-newton` restent **non sourcés** (absents des couvertures
-> 2017–2021). Rien ici n'est « vérifié » au sens du protocole
-> (README §Vérification) tant qu'un second agent n'a pas re-fetché et diffé.
+> 2017–2021).
+>
+> **Passe de vérification (2026-07-11) — FAITE.** Un second agent (vérificateur
+> adversarial) a **re-fetché indépendamment** les 5 examens (upload-IDs re-dérivés
+> depuis les pages `element/`) et **diffé caractère-par-caractère** les 23 entrées
+> `transcrit (non vérifié)` contre les scans. **Résultat : 23/23 conformes → toutes
+> passées à `Statut: vérifié`.** Aucune divergence de valeur, unité, indice ou
+> barème trouvée ; les descriptions de figure (avec leurs « lecture à confirmer »)
+> sont fidèles. Détail des upload-IDs confirmés : 2017 = `upload-45103`,
+> 2018 = `upload-45118`, 2019 = `upload-54757`, 2020 = `upload-80870`,
+> 2021 = `upload-84195` (tous `course-422`, 7–8 pages).
 
 ---
 
@@ -159,8 +168,9 @@ marocain. Écartés.
 
 ## 4. Ce qui a été transcrit dans cette passe
 
-Voir les fichiers `docs/sujets/pc/<slug>.md`. Toutes les entrées sont
-`Statut: transcrit (non vérifié)`.
+Voir les fichiers `docs/sujets/pc/<slug>.md`. **Toutes les entrées transcrites ont
+été vérifiées le 2026-07-11** (re-fetch AlloSchool + diff indépendant) et portent
+désormais `Statut: vérifié`.
 
 **Passe fondation (antérieure) :**
 
@@ -199,31 +209,31 @@ Voir les fichiers `docs/sujets/pc/<slug>.md`. Toutes les entrées sont
 
 | Slug | Année(s)/session transcrite(s) | Statut |
 |------|-------------------------------|--------|
-| `ondes-mecaniques-progressives` | 2018 N | transcrit |
-| `ondes-mecaniques-periodiques` | 2019 N | transcrit |
-| `propagation-onde-lumineuse` | 2021 N | transcrit |
-| `decroissance-radioactive` | 2019 N, 2021 N | transcrit |
-| `noyaux-masse-energie` | 2020 N | transcrit |
-| `rc-charge` | 2019 N, 2018 N | transcrit |
-| `dipole-rl` | 2020 N | transcrit |
-| `rlc-serie` | 2019 N, 2018 N | transcrit |
-| `ondes-em-modulation` | 2017 N | transcrit |
-| `lois-de-newton` | 2019 N | transcrit |
-| `chute-mouvements-plans` | 2020 N | transcrit |
+| `ondes-mecaniques-progressives` | 2018 N | vérifié |
+| `ondes-mecaniques-periodiques` | 2019 N | vérifié |
+| `propagation-onde-lumineuse` | 2021 N | vérifié |
+| `decroissance-radioactive` | 2019 N, 2021 N | vérifié |
+| `noyaux-masse-energie` | 2020 N | vérifié |
+| `rc-charge` | 2019 N, 2018 N | vérifié |
+| `dipole-rl` | 2020 N | vérifié |
+| `rlc-serie` | 2019 N, 2018 N | vérifié |
+| `ondes-em-modulation` | 2017 N | vérifié |
+| `lois-de-newton` | 2019 N | vérifié |
+| `chute-mouvements-plans` | 2020 N | vérifié |
 | `rotation-axe-fixe` | — | **non sourcé** (absent 2017–2021) |
-| `systemes-oscillants` | 2018 N | transcrit |
+| `systemes-oscillants` | 2018 N | vérifié |
 | `aspects-energetiques` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
 | `atome-mecanique-newton` | — | **non sourcé** (absent 2017–2021) |
 | `transformations-lentes-rapides` | (2021 N, cross-list) | cross-list |
-| `suivi-temporel-vitesse` | 2021 N | transcrit |
+| `suivi-temporel-vitesse` | 2021 N | vérifié |
 | `controle-catalyse` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
 | `transformations-deux-sens` | — | non sourcé (recoupe `etat-equilibre`) |
 | `etat-equilibre` | (2019/2020/2021 N, cross-list) | cross-list |
 | `evolution-spontanee` | (2020 N, cross-list) | cross-list ; entrée autonome à sourcer |
-| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N | transcrit |
-| `esterification-hydrolyse` | 2018 N | transcrit |
-| `piles` | 2020 N | transcrit |
-| `electrolyse` | 2019 N | transcrit |
+| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N | vérifié |
+| `esterification-hydrolyse` | 2018 N | vérifié |
+| `piles` | 2020 N | vérifié |
+| `electrolyse` | 2019 N | vérifié |
 
 ---
 
@@ -294,7 +304,9 @@ absents de l'épreuve PC-SPC récente) :**
    (seule piste restante). Sessions **rattrapage** aussi (souvent d'autres thèmes).
 2. Étoffer les slugs existants avec les pages déjà repérées (§6, sans re-fetch
    pour celles en cache) et ajouter les cross-lists manquants (`rlc-serie` 2020).
-3. Lancer le **protocole de vérification** (README §3) : re-fetch indépendant + diff
-   sur les ~20 entrées `transcrit (non vérifié)` — priorité aux entrées à figure
-   (dosages, courbes RL/chute) où une lecture d'échelle est marquée
-   « à confirmer ».
+3. ~~Lancer le **protocole de vérification** (README §3)~~ **FAIT le 2026-07-11** :
+   re-fetch indépendant + diff des 23 entrées → 23/23 conformes, toutes `vérifié`
+   (voir §Statut en tête). Reste à vérifier de la même façon **toute nouvelle
+   entrée** ajoutée lors des passes 2008–2016, et à re-confronter aux **corrigés**
+   les valeurs de figure encore marquées « lecture à confirmer » (lues mais non
+   chiffrées au dixième près sur certaines courbes).

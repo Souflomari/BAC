@@ -11,7 +11,7 @@
 
 ## 2021 — session normale — Exercice I (Partie 1)
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie 1 ≈ 2,5 points)

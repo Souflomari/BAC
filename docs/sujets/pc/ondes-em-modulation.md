@@ -7,7 +7,7 @@
 
 ## 2017 — session normale — Exercice III (Partie II)
 Source: https://www.alloschool.com/element/57711
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points (Partie II ≈ 1,75 point)

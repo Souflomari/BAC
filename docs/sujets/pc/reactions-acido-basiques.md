@@ -11,7 +11,7 @@
 
 ## 2019 — session normale — Exercice I (Partie 2)
 Source: https://www.alloschool.com/element/68300
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie 2 ≈ 5 points)
@@ -71,7 +71,7 @@ $C = 10^{-3}\ \text{mol.L}^{-1}$ et de volume $V = 1\ \text{L}$.
 
 ## 2021 — session normale — Exercice I (Partie 2)
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie 2 ≈ 4,5 points)
@@ -146,7 +146,7 @@ d'équivalence à confirmer par lecture)*.
 
 ## 2020 — session normale — Exercice I (Partie 1)
 Source: https://www.alloschool.com/element/109742
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie 1 ≈ 4,75 points)
