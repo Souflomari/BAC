@@ -1,0 +1,311 @@
+notion: aspects-energetiques
+skill_code: pc_energie
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — aspects-energetiques)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                               position" of the two-balls hook into a real MCQ
+#                               commit before the reveal. Probes
+#                               travail-poids-depend-du-chemin.
+#   cp-r5-epe    (after R5)   — rupture gate: E_pe = ½kx² read off the TRIANGLE
+#                               under F(x) = kx (the ½, not the rectangle kx²).
+#                               Probes epe-force-rappel-traitee-constante.
+#   cp-r6-tor    (after R6)   — rupture gate: E_p,tor = ½Cθ² (C, not J, in the
+#                               reservoir). Probes torsion-moment-traite-constant.
+#   cp-r7-pes    (after R7)   — rupture gate: the pendulum's real height
+#                               z = L(1−cosθ) (never L, never Lθ). Probes
+#                               pendule-hauteur-egale-longueur-fil.
+#
+# Clone note: cp-r5-epe clones AE-22's stem, cp-r6-tor clones AE-25's,
+# cp-r7-pes clones AE-29's. cp-r0-predict clones AE-7's stem (the R0 hook item)
+# but is surfaced as the hook COMMIT. Distractors are curated so EVERY
+# distractor carries a named misconception tag (stricter than the source
+# end-bank items, whose legacy distractors AE-1..AE-16/19..21 predate
+# per-distractor tagging). No end-bank tally is adjusted — inline surfacing
+# does not double-count.
+#
+# Boundary guard: 2ème Bac PC énergie. E_c = ½mv² / ½Jθ̇² ; E_pe = ½kx² ;
+# E_p,tor = ½Cθ² ; E_pp = mgz avec z = L(1−cosθ) ; E_m = E_c + E_p, conservée
+# sans frottement, ΔE_m = W(f) < 0 avec frottement. No off-cadre content
+# (no Lagrangian, no damping envelope, no forced regime).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position, vraiment" (two balls, chute libre vs
+  #        toboggan) into a real MCQ commit before the reveal. Probes:
+  #        travail-poids-depend-du-chemin.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_energie
+    tags: [checkpoint, formative, misconception_driven, pc_energie, hook_commit]
+    primary_misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+    item_source: clone_of_AE-7
+    lesson_placement: in_R0
+
+    stem: |
+      Deux billes identiques, de même masse, sont lâchées sans vitesse initiale
+      depuis la même hauteur $h$. La première tombe en chute libre verticale ; la
+      seconde descend un toboggan incurvé, beaucoup plus long et sinueux, partant
+      du même point et arrivant au même niveau. On néglige les frottements dans
+      les deux cas. **Laquelle arrive au sol avec la plus grande vitesse ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Les deux billes arrivent avec exactement la même vitesse.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni la longueur, ni la forme du
+          chemin ne comptent. Sans frottement, seule la dénivelée $h$ décide de
+          la vitesse d'arrivée, et elle est la même pour les deux billes. La
+          vraie question commence maintenant : **pourquoi** ? C'est le travail du
+          poids, indépendant du chemin, que toute la leçon va construire.
+      - id: B
+        text: |
+          La bille en chute libre arrive plus vite : son trajet est plus court
+          et plus direct.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: |
+          Modèle détecté : « un chemin plus court donne plus de vitesse ». La
+          longueur du trajet n'entre pas dans le travail du poids : celui-ci ne
+          dépend que de la dénivelée $h$, identique ici. La bille en chute libre
+          arrive plus tôt (moins de chemin), mais **pas** plus vite.
+      - id: C
+        text: |
+          La bille du toboggan arrive plus vite : son chemin plus long lui laisse
+          plus d'élan à prendre.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: |
+          Modèle détecté : « un chemin plus long donne plus de vitesse ». C'est
+          la même erreur que la précédente, en sens inverse : la longueur du
+          chemin ne « donne » aucune vitesse. Seule la dénivelée $h$ compte, et
+          elle est commune aux deux billes.
+      - id: D
+        text: |
+          Impossible de trancher sans connaître la forme exacte du toboggan.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: |
+          Modèle détecté : « la forme du chemin change le résultat ». Justement
+          non : la forme n'intervient pas. La dénivelée commune et l'absence de
+          frottement suffisent à conclure, sans rien savoir de la géométrie du
+          toboggan.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r5-epe | placed AFTER R5
+  #        Rupture gate: E_pe = ½kx² is the TRIANGLE under F(x) = kx, not
+  #        the rectangle kx². Clone of AE-22's stem.
+  #        Probes epe-force-rappel-traitee-constante.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-epe
+    rung: "R5"
+    habilete: resolution
+    skill_code: pc_energie
+    tags: [checkpoint, formative, misconception_driven, pc_energie]
+    primary_misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+    item_source: clone_of_AE-22
+    lesson_placement: after_R5
+
+    stem: |
+      On vient d'établir $E_{pe} = \frac{1}{2}kx^2$ à partir de l'aire du triangle
+      sous $F(x) = kx$. On étire un ressort de raideur $k$ depuis l'équilibre
+      jusqu'à un allongement $x$. Quelle énergie potentielle élastique $E_{pe}$
+      y est alors emmagasinée ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $E_{pe} = \frac{1}{2}kx^2$.
+        correct: true
+        feedback: |
+          Exact. La force de rappel croît de $0$ à $kx$ pendant l'étirement : son
+          travail est l'aire du **triangle** sous $F(x) = kx$, soit
+          $\frac{1}{2}\times x \times (kx) = \frac{1}{2}kx^2$. Le facteur
+          $\frac{1}{2}$ est la force moyenne, $\frac{1}{2}kx$.
+      - id: B
+        text: |
+          $E_{pe} = kx^2$ : le travail vaut la force de rappel finale $kx$
+          multipliée par la distance $x$.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        feedback: |
+          Modèle détecté : la force de rappel traitée comme **constante**, égale
+          à sa valeur finale $kx$ dès le premier millimètre. En réalité elle part
+          de $0$ : l'aire sous $F(x) = kx$ est un triangle, $\frac{1}{2}kx^2$ —
+          exactement la moitié du rectangle $kx^2$.
+      - id: C
+        text: |
+          $E_{pe}$ dépend aussi de la masse accrochée et de la vitesse du solide
+          à cet instant.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        feedback: |
+          Modèle détecté : on importe dans $E_{pe}$ des grandeurs de $E_c$.
+          $E_{pe} = \frac{1}{2}kx^2$ ne dépend que de $k$ et de $x$ : ni la masse
+          ni la vitesse n'y figurent — elles vivent dans $E_c$, un réservoir
+          séparé.
+      - id: D
+        text: |
+          $E_{pe} = mgx$ : c'est l'énergie de pesanteur gagnée en étirant le
+          ressort.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-confondue-avec-epp
+        feedback: |
+          Modèle détecté : on confond énergie élastique et énergie de pesanteur.
+          Sur ce ressort horizontal, l'altitude $z$ ne change pas : rien de
+          gravitationnel n'est stocké. L'énergie est **élastique**, dans la
+          déformation du ressort : $E_{pe} = \frac{1}{2}kx^2$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r6-tor | placed AFTER R6
+  #        Rupture gate: E_p,tor = ½Cθ² — the reservoir carries C, never J.
+  #        Clone of AE-25's stem. Probes torsion-moment-traite-constant.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-tor
+    rung: "R6"
+    habilete: resolution
+    skill_code: pc_energie
+    tags: [checkpoint, formative, misconception_driven, pc_energie]
+    primary_misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+    item_source: clone_of_AE-25
+    lesson_placement: after_R6
+
+    stem: |
+      Un fil de torsion de constante $C$ est tordu d'un angle $\theta$ depuis le
+      repos ; le disque suspendu a un moment d'inertie $J$. Quelle est l'énergie
+      potentielle de torsion $E_{p,tor}$ emmagasinée dans le fil ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $E_{p,tor} = \frac{1}{2}C\theta^2$ (ni $J$ ni vitesse).
+        correct: true
+        feedback: |
+          Exact. C'est le strict analogue de $\frac{1}{2}kx^2$ : le moment de
+          rappel $C\theta$ croît de $0$, son travail est l'aire du triangle sous
+          $M(\theta) = C\theta$, soit $\frac{1}{2}C\theta^2$. Seule la constante
+          de torsion $C$ entre ici — le moment d'inertie $J$ vit dans $E_c$.
+      - id: B
+        text: |
+          $E_{p,tor} = C\theta^2$ : moment de rappel final $C\theta$ multiplié
+          par l'angle $\theta$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        feedback: |
+          Modèle détecté : le moment de rappel traité comme constant, égal à sa
+          valeur finale $C\theta$ dès le départ. Il croît en réalité de $0$ à
+          $C\theta$ : le travail est l'aire du triangle, $\frac{1}{2}C\theta^2$ —
+          la moitié de $C\theta^2$. Même erreur que pour le ressort, habillée en
+          rotation.
+      - id: C
+        text: |
+          $E_{p,tor} = \frac{1}{2}J\theta^2$ : c'est le moment d'inertie $J$ qui
+          fixe l'énergie stockée.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        feedback: |
+          Modèle détecté : les deux réservoirs mélangés. $J$ est une **inertie**,
+          pas un rappel : il n'entre que dans l'énergie cinétique de rotation
+          $\frac{1}{2}J\dot\theta^2$. Le réservoir de rappel ne contient que $C$
+          et $\theta$ : $\frac{1}{2}C\theta^2$.
+      - id: D
+        text: |
+          $E_{p,tor} = \frac{1}{2}mv^2$, avec $v$ la vitesse d'un point du bord
+          du disque.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        feedback: |
+          Modèle détecté : la formule de translation appliquée à une rotation.
+          Le disque n'a pas une vitesse unique $v$ : ses points ont une vitesse
+          angulaire $\dot\theta$ commune. Et surtout, $\frac{1}{2}mv^2$ serait une
+          énergie cinétique, pas l'énergie stockée dans le fil, qui vaut
+          $\frac{1}{2}C\theta^2$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r7-pes | placed AFTER R7
+  #        Rupture gate: the pendulum's real height z = L(1−cosθ), never L,
+  #        never the arc Lθ. Clone of AE-29's stem.
+  #        Probes pendule-hauteur-egale-longueur-fil.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-pes
+    rung: "R7"
+    habilete: utilisation
+    skill_code: pc_energie
+    tags: [checkpoint, formative, misconception_driven, pc_energie]
+    primary_misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+    item_source: clone_of_AE-29
+    lesson_placement: after_R7
+
+    stem: |
+      Un pendule simple de longueur $L$ est écarté d'un angle $\theta$ par
+      rapport à la verticale. De quelle hauteur $z$ son point matériel s'est-il
+      élevé par rapport à sa position la plus basse ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $z = L(1 - \cos\theta)$.
+        correct: true
+        feedback: |
+          Exact. À l'angle $\theta$, le point est à la distance verticale
+          $L\cos\theta$ sous le point de suspension, contre $L$ au plus bas : la
+          hauteur gagnée est la différence, $z = L(1 - \cos\theta)$. C'est la
+          seule expression compatible avec $E_{pp} = mgz$.
+      - id: B
+        text: |
+          $z = L$ : la hauteur gagnée est la longueur du fil.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        feedback: |
+          Modèle détecté : la longueur du fil prise pour une hauteur. $L$ est une
+          distance constante (fil), pas une élévation : au plus bas, le point est
+          déjà à $L$ sous la suspension. Ce qui compte est la **variation**
+          verticale, $z = L(1 - \cos\theta)$, toujours plus petite que $L$.
+      - id: C
+        text: |
+          $z = L\theta$ : la hauteur est la longueur de l'arc parcouru.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        feedback: |
+          Modèle détecté : la longueur de l'arc prise pour une hauteur. $L\theta$
+          est une distance curviligne le long de la trajectoire, pas un dénivelé
+          vertical. La vraie élévation est la projection $z = L(1 - \cos\theta)$.
+      - id: D
+        text: |
+          La question n'a pas de sens : en montant, le pendule ralentit et perd
+          son énergie mécanique.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie
+        feedback: |
+          Modèle détecté : « ralentir = perdre de l'énergie ». Sans frottement,
+          $E_m$ se conserve : ce que $E_c$ perd en montant, $E_{pp} = mgz$ le
+          gagne intégralement. La hauteur $z = L(1 - \cos\theta)$ sert justement à
+          quantifier cette conversion — la question a tout son sens.

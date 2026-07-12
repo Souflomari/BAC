@@ -8,6 +8,8 @@ Imagine deux billes identiques, de même masse, lâchées sans vitesse initiale 
 
 Avant de lire la suite, prends position, vraiment : au moment où chacune des deux billes atteint le sol (ou le bas du toboggan), laquelle des deux arrive avec la plus grande vitesse ? La bille en chute libre, qui tombe tout droit ? La bille sur le toboggan, qui a un chemin bien plus long pour "prendre de l'élan" ? Ou bien les deux arrivent-elles avec exactement la même vitesse ?
 
+[[checkpoint:cp-r0-predict]]
+
 Beaucoup de raisonnements naturels penchent pour la chute libre : elle va droit au but, alors que le toboggan s'éternise en détours — on imagine alors que la bille sur le toboggan doit arriver plus lentement, comme si le détour "coûtait" de la vitesse.
 
 Garde ta réponse en tête. Pour trancher cette question proprement, il va falloir un outil qu'on n'a pas encore utilisé dans ce module : jusqu'ici (chapitres lois de Newton, chute et mouvements plans), pour remonter à une vitesse, il fallait toujours écrire le bilan des forces, projeter, puis primitiver — une fois pour la vitesse, une deuxième fois pour la position. Cette leçon construit un raccourci : une grandeur, l'énergie, qui permet de répondre à des questions comme celle-ci sans repasser par tout ce détour de calcul. Et à la fin de cette leçon, on referme cette question avec un argument, pas avec une impression.
@@ -318,6 +320,8 @@ $$W(\vec{F}_{rappel})_{A \to B} = \frac{1}{2}kx_A^2 - \frac{1}{2}kx_B^2 = -\Delt
 
 C'est exactement l'expression $\frac{1}{2}kx^2$ qu'on avait *admise*, sans la démontrer, au chapitre Systèmes oscillants — la voici établie, à partir du travail de la force de rappel et de l'aire du triangle.
 
+[[checkpoint:cp-r5-epe]]
+
 ### L'énergie mécanique du pendule élastique horizontal, et sa conservation
 
 Pour un solide de masse $m$ accroché à un ressort horizontal, sans frottement, l'énergie mécanique est :
@@ -399,6 +403,8 @@ On définit l'**énergie potentielle de torsion** :
 $$E_{p,torsion} = \frac{1}{2}C\theta^2$$
 
 avec, comme pour le ressort, $W(M_{rappel})_{A\to B} = -\Delta E_{p,torsion}$. Regarde ce que dit cette expression : **$J$ n'y figure nulle part.** L'énergie potentielle de torsion ne dépend que de $C$ et de $\theta$ — jamais du moment d'inertie du disque. Si tu avais répondu « $J$ » à la question posée plus haut, voilà l'écart à corriger : $J$ n'est pas un rappel, c'est une inertie — il vit ailleurs, dans l'énergie cinétique.
+
+[[checkpoint:cp-r6-tor]]
 
 ### L'énergie cinétique de rotation
 
@@ -488,6 +494,8 @@ $$z = L - L\cos\theta = L(1-\cos\theta)$$
 
 Ni $L$ seul (ça, c'est la longueur du fil, pas une hauteur), ni $L\theta$ (ça, c'est la longueur de l'**arc** parcouru, une distance le long de la trajectoire courbe — pas un dénivelé vertical) : c'est $L(1-\cos\theta)$, la vraie projection géométrique.
 
+[[checkpoint:cp-r7-pes]]
+
 ### L'énergie mécanique du pendule pesant, et sa conservation
 
 $$E_m = E_c + E_{pp} = \frac{1}{2}mv^2 + mgz, \qquad z = L(1-\cos\theta)$$
@@ -532,23 +540,12 @@ $$v_{max} = \sqrt{2gL(1-\cos\theta_m)} = \sqrt{2\times9{,}8\times1{,}0\times0{,}
 
 ### Exercice de type bac
 
-À toi. Cherche entièrement sur papier avant de regarder quoi que ce soit — engage une réponse à chaque question, puis confronte-la à ce que tu obtiens en reprenant pas à pas.
+À toi. Cherche entièrement sur papier avant de dévoiler la correction — engage une réponse à chaque question, puis confronte-la au raisonnement expert qui n'apparaît qu'après ta tentative.
 
-Un solide de masse $m = 0{,}40\ \text{kg}$ glisse **sans frottement** sur un plan horizontal, accroché à un ressort de raideur $k = 40\ \text{N/m}$. On l'écarte de $X_m = 5{,}0\ \text{cm}$ de sa position d'équilibre et on le lâche sans vitesse initiale.
+[[exercise:r-bac]]
 
-1. Exprime puis calcule l'énergie mécanique du système $\{\text{solide} + \text{ressort}\}$ à l'instant du lâcher.
-2. Déduis-en la vitesse maximale $v_{max}$ du solide, et précise en quel point de la trajectoire elle est atteinte.
-3. Pour quelle élongation $x$ l'énergie cinétique est-elle égale à l'énergie potentielle élastique ? Exprime $x$ en fonction de $X_m$, puis calcule-la.
-4. Trace l'allure des courbes $E_c(x)$, $E_{pe}(x)$ et $E_m(x)$ sur un même diagramme, et place le point de la question 3.
+### Une variation pour ne pas mémoriser
 
-### À toi
+La variation qui suit change l'habillage — d'autres oscillateurs, d'autres nombres — mais tu dois reconnaître la même procédure derrière : identifier le réservoir de rappel, écrire $E_m$, et exploiter sa conservation.
 
-La variation qui suit change l'habillage — un autre oscillateur — mais tu dois reconnaître la même procédure derrière : identifier le réservoir de rappel, écrire $E_m$, et exploiter sa conservation.
-
-Même démarche, autre oscillateur. Un pendule de torsion est constitué d'une tige horizontale de moment d'inertie $J = 4{,}0\times10^{-3}\ \text{kg·m}^2$ suspendue à un fil de constante de torsion $C = 0{,}16\ \text{N·m/rad}$. On l'écarte de $\theta_0 = 0{,}20\ \text{rad}$ et on le lâche sans vitesse initiale (frottements négligés).
-
-1. Exprime l'énergie mécanique du système à l'instant du lâcher, et calcule-la.
-2. Quelle est la vitesse angulaire maximale $\dot\theta_{max}$ ? En quel point est-elle atteinte ?
-3. Sur un diagramme d'énergie en fonction de $\theta$, place $E_p$, $E_c$ et $E_m$. Pour quelle valeur de $\theta$ les courbes $E_c$ et $E_p$ se croisent-elles ?
-
-Compare ensuite ta procédure à celle de l'exercice précédent : qu'est-ce qui change en passant du ressort au fil de torsion, et qu'est-ce qui reste rigoureusement identique ?
+[[exercise:r-variation]]
