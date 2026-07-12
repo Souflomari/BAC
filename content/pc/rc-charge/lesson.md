@@ -10,6 +10,8 @@ Maintenant tu fermes l'interrupteur.
 
 Avant de lire la suite, engage-toi vraiment, en une phrase : à ton avis, la tension $u_C$ aux bornes du condensateur saute-t-elle **instantanément** à $E$ — le condensateur se remplit d'un coup, comme un interrupteur qu'on bascule — ou bien se passe-t-il quelque chose de plus lent ? Prends position avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce qu'on observe réellement, si on branche un oscilloscope sur le condensateur : $u_C$ **ne saute pas**. Elle part de zéro et grimpe progressivement vers $E$ — vite au début, puis de plus en plus lentement, sur une durée qui se mesure en millisecondes. Le condensateur ne se remplit pas d'un coup ; il se charge sur un temps caractéristique bien réel.
 
 [[figure:saut-ou-montee]]
@@ -139,6 +141,8 @@ Et alors il reste tout juste $E = E$. L'équation est vérifiée, **quel que soi
 
 $$\boxed{u_C(t) = E\left(1 - e^{-t/\tau}\right), \qquad \tau = RC}$$
 
+[[checkpoint:cp-r2-uc-continue]]
+
 ### Ce que dit la courbe $u_C(t)$, et le sens exact de $\tau$
 
 Lisons cette solution, valeur par valeur :
@@ -158,6 +162,8 @@ $$u_C(5\tau) = E\left(1 - e^{-5}\right) \approx E \times 0{,}993$$
 soit plus de **99 %** : en pratique, on considère la charge terminée et le régime permanent atteint au bout de $\approx 5\tau$. Voilà la réponse exacte à la question laissée ouverte en R1 : $\tau$ n'est pas l'instant où « ça s'arrête » (ça ne s'arrête jamais tout à fait), c'est l'échelle qui règle toute la montée.
 
 [[figure:uc-charge]]
+
+[[checkpoint:cp-r2-asymptote]]
 
 ### En déduire le courant $i(t)$ — et le point où $u_C$ est continue mais $i$ ne l'est pas
 
@@ -179,6 +185,8 @@ Arrête-toi une seconde sur $t = 0$, parce qu'il s'y joue une dissymétrie que l
 On peut aussi écrire la charge, si on la demande, par $q = Cu_C$ :
 
 $$q(t) = C E\left(1 - e^{-t/\tau}\right), \qquad Q_{max} = CE$$
+
+[[checkpoint:cp-r2-i-initial]]
 
 ### Exemple numérique
 
@@ -233,6 +241,8 @@ Reprenons le circuit de R2 : $R = 1{,}0\ \text{k}\Omega$, $C = 1{,}0\ \mu\text{F
 Par la méthode des 63 % : à $t = 1{,}0\ \text{ms}$, on doit lire $u_C \approx 0{,}63 \times 10 = 6{,}3\ \text{V}$ sur l'oscillogramme — cohérent avec le calcul de R2. Par la tangente : la droite tracée en $t=0$ coupe l'asymptote $u_C = 10\ \text{V}$ à l'abscisse $t = 1{,}0\ \text{ms}$. Les deux méthodes donnent le même $\tau$, et de $\tau = RC$ on remonterait à $C$ (ou à $R$) si l'une des deux était inconnue.
 
 Et si on refait l'expérience en **augmentant $R$** (ou $C$), même générateur : l'asymptote reste à $E = 10\ \text{V}$ — la valeur finale ne dépend que de $E$ — mais la montée est plus lente, $\tau$ plus grand. C'est $\tau = RC$ qui règle la vitesse, pas la hauteur.
+
+[[checkpoint:cp-r3-tau]]
 
 ---
 
@@ -295,50 +305,14 @@ Vérifie tout ça par toi-même, en manipulation directe : construis le montage,
 - Énergie emmagasinée : $E_C = \dfrac{1}{2}Cu_C^2$, soit $\dfrac{1}{2}CE^2$ une fois chargé.
 - Décharge : $u_C(t) = E\,e^{-t/\tau}$, même $\tau$.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On réalise le montage série suivant : un générateur idéal de f.é.m. $E$, un interrupteur $K$, un conducteur ohmique de résistance $R$ inconnue, et un condensateur de capacité $C = 10\ \mu\text{F}$ initialement déchargé. À $t = 0$ on ferme $K$ et on enregistre $u_C(t)$ à l'oscilloscope. La courbe part de $0$ et croît vers une asymptote horizontale à $6\ \text{V}$ ; la tangente à la courbe à l'origine coupe cette asymptote à l'instant $t = 20\ \text{ms}$.
+À toi. Ce qui suit est le sujet d'examen national **2019 (session normale)** sur la charge du condensateur — le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-[[figure:exo-oscillogramme]]
+[[exercise:r-bac]]
 
-**1) Déterminer la f.é.m. $E$ du générateur à partir de la courbe.**
+### Une variation pour ne pas mémoriser
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* en régime permanent, le condensateur est chargé et $i = 0$ ; la loi des mailles $E = Ri + u_C$ se réduit alors à $E = u_C$. La valeur finale de $u_C$ — l'asymptote — est donc directement $E$.
+Même structure profonde, habillage différent : ici on suit $u_C$ au lieu de $q$, et on lit $\tau$ par la méthode des $63\,\%$ au lieu de la tangente. À toi de reconnaître quelle procédure s'applique quand les nombres, la grandeur suivie et la méthode de lecture changent.
 
-$$E = u_C(\infty) = 6\ \text{V}$$
-
-**2) Lire la constante de temps $\tau$, puis en déduire la résistance $R$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la tangente à l'origine coupe l'asymptote à $t = \tau$ — c'est la définition même de cette méthode de lecture (R3). On lit donc $\tau$ directement, puis on remonte à $R$ par $\tau = RC$.
-
-$$\tau = 20\ \text{ms} = 20\times10^{-3}\ \text{s}$$
-
-$$\tau = RC \implies R = \frac{\tau}{C} = \frac{20\times10^{-3}}{10\times10^{-6}} = 2{,}0\times10^{3}\ \Omega = 2{,}0\ \text{k}\Omega$$
-
-**3) Calculer l'intensité $i(0^+)$ juste après la fermeture, et justifier pourquoi $i$ est discontinue à $t=0$ alors que $u_C$ ne l'est pas.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* à $t=0^+$, $u_C$ est encore nulle (elle est continue, et le condensateur était vide), donc toute la tension $E$ tombe sur $R$ — c'est là que le courant est maximal.
-
-$$i(0^+) = \frac{E}{R} = \frac{6}{2000} = 3{,}0\times10^{-3}\ \text{A} = 3{,}0\ \text{mA}$$
-
-$u_C$ est continue parce que $u_C = q/C$ et que la charge $q$ ne peut pas sauter avec un courant fini : $u_C(0^+) = u_C(0^-) = 0$. Le courant, lui, n'a aucune contrainte de continuité : il passe de $i(0^-)=0$ à $i(0^+)=3{,}0\ \text{mA}$ — un saut, donc une discontinuité.
-
-**4) Calculer la tension $u_C$ à l'instant $t = \tau$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* $t = \tau$ est précisément l'instant où le facteur $1 - e^{-t/\tau}$ vaut $1 - e^{-1} \approx 0{,}63$ — on l'applique directement, sans repartir de l'équation.
-
-$$u_C(\tau) = E\left(1 - e^{-1}\right) \approx 6 \times 0{,}63 = 3{,}8\ \text{V}$$
-
-**5) Calculer l'énergie emmagasinée dans le condensateur une fois la charge terminée.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* « charge terminée » signifie régime permanent, $u_C = E$ — on applique $E_C = \frac{1}{2}Cu_C^2$ avec cette valeur finale, pas avec une valeur transitoire.
-
-$$E_C = \frac{1}{2}CE^2 = \frac{1}{2}\times 10\times10^{-6}\times 6^2$$
-
-$$E_C = \frac{1}{2}\times 10\times10^{-6}\times 36 = 1{,}8\times10^{-4}\ \text{J} = 180\ \mu\text{J}$$
-
-### À toi
-
-**Variation 1.** Un circuit RC a pour données $E = 5\ \text{V}$, $R = 4{,}7\ \text{k}\Omega$, $C = 100\ \text{nF}$. Calcule la constante de temps $\tau$, le courant initial $i(0^+)$, la tension $u_C$ à $t = \tau$, et l'énergie emmagasinée une fois le régime permanent atteint. Vérifie ensuite, par le calcul, que $u_C(\tau) \approx 0{,}63 \times E$.
-
-**Variation 2.** On **double la capacité $C$** d'un circuit RC, sans changer ni $R$ ni $E$. Sans calculer de valeurs numériques, explique — à partir des expressions $\tau = RC$, $i(0^+) = E/R$ et $u_C(\infty) = E$ — comment évoluent la constante de temps, le courant initial et la tension finale. Puis donne le sens physique de chaque réponse : le condensateur atteint-il sa charge finale plus vite ou plus lentement, et cette charge finale est-elle plus grande ou inchangée ?
+[[exercise:r-variation]]

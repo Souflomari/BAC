@@ -1,0 +1,175 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, PC BIOF, code NS28F, AlloSchool element/68300 — statut « vérifié »
+# in docs/sujets/pc/rc-charge.md). r-variation is a fresh anti-memorisation
+# twin (same skills, different numbers/context, status not-applicable).
+
+notion: rc-charge
+
+exercises:
+  # ── r-bac — the VERIFIED 2019 national sujet, Partie I (charge) ──────────
+  # Faithful transcription of docs/sujets/pc/rc-charge.md → "2019 — session
+  # normale — Exercice III, Partie I". Circuit: générateur idéal E = 10 V,
+  # condensateur C initialement déchargé, conducteur ohmique R, interrupteur K
+  # en position (1) (charge). La courbe enregistrée est q(t) (µC) ; la tangente
+  # (T) à l'origine coupe l'asymptote q = 100 µC vers t = 1 ms.
+  - id: r-bac
+    title: "Exercice de type bac — charge d'un condensateur (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice III, Partie I — charge du condensateur ; barème 1,75 pt sur
+        les 4,5 pt de l'exercice). Transcription vérifiée : re-fetch AlloSchool
+        element/68300 + diff OK (docs/sujets/pc/rc-charge.md).
+    intro: |-
+      **Charge et décharge d'un condensateur (examen national, session normale 2019).**
+
+      On réalise un montage série constitué d'un générateur idéal de tension de force électromotrice $E = 10\ \text{V}$, d'un condensateur de capacité $C$ initialement déchargé, d'un conducteur ohmique de résistance $R$, et d'un interrupteur $K$ à double position. On place $K$ sur la position (1) à l'instant choisi comme origine des dates ($t = 0$) : le condensateur se charge à travers $R$.
+
+      Un système d'acquisition informatisé trace la courbe d'évolution de la charge $q(t)$ du condensateur. Sur cette courbe, l'axe des ordonnées $q$ est gradué en microcoulombs ($25,\ 50,\ 75,\ 100\ \mu\text{C}$) et l'axe des abscisses $t$ en millisecondes ($0,\ 1,\ 2,\ 3,\ 4\ \text{ms}$). La courbe part de $0$ et croît de façon exponentielle vers un palier horizontal (asymptote) à $q = 100\ \mu\text{C}$. La droite $(T)$ est la tangente à la courbe à la date $t = 0$ ; elle coupe l'asymptote $q = 100\ \mu\text{C}$ au voisinage de $t = 1\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "Partie I — Étude de la charge : établir le modèle"
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par la charge $q(t)$ du condensateur au cours de la charge.
+        reasoning: |-
+          On écrit la loi des mailles sur la boucle série (convention récepteur pour $R$ et $C$) : la f.é.m. $E$ se partage à chaque instant entre la résistance et le condensateur. Puis on exprime chaque tension avec la grandeur qui caractérise son dipôle — la loi d'Ohm pour $R$, la définition de la capacité pour $C$ — et on remplace le courant par le débit de charge $i = \frac{dq}{dt}$. Tout doit finir en fonction de la seule inconnue $q$, sinon l'équation ne se résout pas.
+        steps:
+          - math: 'E = u_R + u_C'
+            note: "Loi des mailles sur la boucle série, en convention récepteur."
+          - math: 'u_R = R\,i = R\frac{dq}{dt}'
+            note: "Loi d'Ohm pour la résistance, avec le courant écrit comme débit de charge : $i$ = dq/dt."
+          - math: 'u_C = \frac{q}{C}'
+            note: "Définition de la capacité : la charge posée sur les armatures fixe la tension."
+          - math: '\boxed{R\frac{dq}{dt} + \frac{q}{C} = E}'
+            note: "On ordonne sous la forme standard, terme en $q$ à gauche, source $E$ à droite."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** La solution de cette équation s'écrit sous la forme $q(t) = A\left(1 - e^{-\alpha t}\right)$. Trouver, en fonction des paramètres du circuit, les expressions des constantes $A$ et $\alpha$.
+        reasoning: |-
+          La méthode du physicien : on ne « résout » pas par une machinerie, on injecte la forme proposée dans l'équation différentielle et on identifie. Deux morceaux doivent s'équilibrer séparément — le terme constant (qui survit quand $t$ devient grand, en régime permanent) fixe $A$, et le terme exponentiel (qui doit s'annuler à chaque instant) fixe $\alpha$. C'est exactement la vérification menée dans la leçon, ici retournée pour livrer $A$ et $\alpha$.
+        steps:
+          - math: 'q(t) = A\left(1 - e^{-\alpha t}\right) \implies \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}'
+            note: "On dérive la forme proposée pour pouvoir l'injecter dans l'équation."
+          - math: 'R\,A\,\alpha\,e^{-\alpha t} + \frac{A}{C}\left(1 - e^{-\alpha t}\right) = E'
+            note: "On substitue $q$ et sa dérivée dans R dq/dt + q/C = E."
+          - math: '\frac{A}{C} = E \implies A = C\,E'
+            note: "Terme constant : il doit valoir $E$ à lui seul (c'est la valeur du palier)."
+          - math: 'R\,A\,\alpha - \frac{A}{C} = 0 \implies \alpha = \frac{1}{RC}'
+            note: "Terme exponentiel : il doit s'annuler à chaque instant, ce qui impose la valeur de α."
+          - math: '\boxed{A = C\,E \qquad \text{et} \qquad \alpha = \frac{1}{RC} = \frac{1}{\tau}}'
+            note: "α est l'inverse de la constante de temps : le groupement RC reparaît, comme dans la leçon."
+      - id: q3
+        part: "Partie I — Exploiter le graphe $q(t)$ et en déduire $C$ et $R$"
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la valeur de la charge $Q$ du condensateur une fois le régime permanent établi.
+        reasoning: |-
+          En régime permanent, $t \gg \tau$, donc $e^{-\alpha t} \to 0$ et $q \to A = Q$. La charge finale se lit donc directement sur le palier horizontal de la courbe — l'asymptote vers laquelle $q(t)$ se stabilise. Aucun calcul : c'est une lecture d'ordonnée.
+
+          $$Q = 100\ \mu\text{C} = 100\times10^{-6}\ \text{C}$$
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la valeur de la constante de temps $\tau$.
+        reasoning: |-
+          On utilise la méthode de la tangente à l'origine : la tangente $(T)$ tracée en $t = 0$ coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$ (c'est une propriété exacte de la pente initiale $A\alpha = A/\tau$, établie en R3 de la leçon). L'énoncé indique que $(T)$ coupe le palier $q = 100\ \mu\text{C}$ vers $t = 1\ \text{ms}$ : on lit donc $\tau$ directement, sans calcul.
+
+          $$\tau = 1\ \text{ms} = 1\times10^{-3}\ \text{s}$$
+      - id: q5
+        stem: |-
+          **(0,25 pt)** Montrer que la capacité du condensateur est $C = 10\ \mu\text{F}$.
+        reasoning: |-
+          La valeur du palier vaut $A = CE$ (question 2). Comme on connaît $Q = A$ (lu au graphe) et $E$ (donnée de l'énoncé), on isole $C$. On n'a pas besoin de $R$ ni de $\tau$ pour cela : la charge finale ne dépend que de $C$ et $E$.
+        steps:
+          - math: 'Q = A = C\,E \implies C = \frac{Q}{E}'
+            note: "On réutilise A = CE de la question 2, avec Q lu sur le palier."
+          - math: 'C = \frac{100\times10^{-6}}{10} = 10\times10^{-6}\ \text{F} = 10\ \mu\text{F}'
+            note: "Application numérique : Q = 100 µC, $E$ = 10 V."
+      - id: q6
+        stem: |-
+          **(0,25 pt)** En déduire la valeur de la résistance $R$.
+        reasoning: |-
+          On dispose maintenant de $\tau$ (lu au graphe) et de $C$ (question précédente), reliés par $\tau = RC$ — c'est le groupement identifié en question 2 via $\alpha = 1/(RC)$. On isole $R$. C'est ici que $\tau$ sert enfin : la constante de temps porte l'information sur $R$, que la charge finale $Q$ ne portait pas.
+        steps:
+          - math: '\tau = RC \implies R = \frac{\tau}{C}'
+            note: "On inverse τ = RC ; τ vient de la question 4, $C$ de la question 5."
+          - math: 'R = \frac{1\times10^{-3}}{10\times10^{-6}} = 100\ \Omega'
+            note: "Application numérique : τ = 1 ms, $C$ = 10 µF."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (établir l'ODE, poser/vérifier la solution, lire
+  # τ, remonter à C ou R, énergie) with different numbers, u_C framing instead
+  # of q, and the 63 % reading method instead of the tangent — so the student
+  # cannot memorise r-bac and must recognise which procedure applies.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : ici on suit la tension $u_C(t)$ (et non la charge $q$), et on lira la constante de temps par la méthode des $63\ \%$ (et non par la tangente). Le but est que tu ne puisses pas recopier la solution du sujet 2019 — tu dois reconnaître quelle procédure s'applique.
+
+      Un dipôle RC série comporte un générateur idéal de f.é.m. $E = 12\ \text{V}$, un conducteur ohmique de résistance $R = 2{,}0\ \text{k}\Omega$, et un condensateur de capacité $C$ inconnue, initialement déchargé. À $t = 0$ on ferme l'interrupteur et on enregistre $u_C(t)$ à l'oscilloscope. La courbe part de $0$ et croît vers une asymptote horizontale à $12\ \text{V}$ ; on relève que $u_C$ atteint $7{,}6\ \text{V}$ à l'instant $t = 4{,}0\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          Établir l'équation différentielle vérifiée par la tension $u_C(t)$ au cours de la charge.
+        reasoning: |-
+          La démarche est identique à celle du sujet, mais en gardant $u_C$ comme inconnue : on part de la loi des mailles $E = u_R + u_C$, on remplace $u_R = Ri$, et on exprime le courant en fonction de $u_C$ grâce à $i = C\frac{du_C}{dt}$ (obtenu de $i = \frac{dq}{dt}$ et $q = Cu_C$). Reconnaître que l'habillage a changé mais pas la procédure, c'est exactement le point de l'exercice.
+        steps:
+          - math: 'E = u_R + u_C'
+            note: "Loi des mailles, convention récepteur pour $R$ et $C$."
+          - math: 'u_R = R\,i = R\,C\frac{du_C}{dt}'
+            note: "Loi d'Ohm, avec $i$ = C du_C/dt (de i = dq/dt et q = C u_C)."
+          - math: '\boxed{RC\frac{du_C}{dt} + u_C = E}'
+            note: "Forme standard en $u_C$ : c'est l'équation de charge du dipôle RC."
+      - id: q2
+        stem: |-
+          Vérifier que $u_C(t) = E\left(1 - e^{-t/\tau}\right)$ est solution, et retrouver l'expression de la constante de temps $\tau$.
+        reasoning: |-
+          On injecte la forme proposée dans l'équation et on exige l'égalité à chaque instant : les termes exponentiels doivent se compenser exactement, ce qui n'est possible que pour une seule valeur de $\tau$. La vérification livre alors gratuitement $\tau = RC$ — le même groupement que dans le sujet, retrouvé par le même geste.
+        steps:
+          - math: 'u_C(t) = E\left(1 - e^{-t/\tau}\right) \implies \frac{du_C}{dt} = \frac{E}{\tau}\,e^{-t/\tau}'
+            note: "On calcule la dérivée à injecter."
+          - math: 'RC\cdot\frac{E}{\tau}\,e^{-t/\tau} + E\left(1 - e^{-t/\tau}\right) = E'
+            note: "Substitution dans RC du_C/dt + u_C = E."
+          - math: '\frac{RC}{\tau} = 1 \implies \boxed{\tau = RC}'
+            note: "Pour que les termes en exponentielle s'annulent à chaque instant : le résidu ne disparaît que si τ = RC."
+      - id: q3
+        stem: |-
+          Lire la constante de temps $\tau$ sur la courbe par la méthode des $63\ \%$, puis en déduire la capacité $C$.
+        reasoning: |-
+          La méthode des $63\ \%$ traduit directement $u_C(\tau) = E(1 - e^{-1}) \approx 0{,}63\,E$ : l'instant où la courbe atteint $63\ \%$ de son asymptote est $\tau$. Ici $0{,}63 \times 12 \approx 7{,}6\ \text{V}$, valeur atteinte à $t = 4{,}0\ \text{ms}$, donc $\tau = 4{,}0\ \text{ms}$. On remonte ensuite à $C$ par $\tau = RC$, puisque $R$ est donnée.
+        steps:
+          - math: 'u_C(\tau) = E\left(1 - e^{-1}\right) \approx 0{,}63\,E = 0{,}63 \times 12 \approx 7{,}6\ \text{V}'
+            note: "La tension à $t$ = τ vaut 63 % de l'asymptote — c'est la signature de τ."
+          - math: '\tau = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}'
+            note: "Instant où u_C = 7,6 V, lu sur la courbe."
+          - math: 'C = \frac{\tau}{R} = \frac{4{,}0\times10^{-3}}{2{,}0\times10^{3}} = 2{,}0\times10^{-6}\ \text{F} = 2{,}0\ \mu\text{F}'
+            note: "On inverse τ = RC ; ici c'est $C$ l'inconnue, pas $R$."
+      - id: q4
+        stem: |-
+          Calculer l'intensité $i(0^+)$ juste après la fermeture, et justifier pourquoi $i$ est discontinue à $t = 0$ alors que $u_C$ ne l'est pas.
+        reasoning: |-
+          À $t = 0^+$, la tension $u_C$ est encore nulle (elle est continue, et le condensateur était déchargé) : toute la f.é.m. $E$ tombe donc sur $R$, et le courant est à son maximum $E/R$. Le courant, lui, saute de $i(0^-) = 0$ à $E/R$ : il est discontinu. La dissymétrie vient de $u_C = q/C$ — la charge $q$ ne peut pas se téléporter avec un courant fini, donc $u_C$ varie continûment ; le courant n'a, lui, aucune contrainte de continuité dans ce circuit.
+        steps:
+          - math: 'i(0^+) = \frac{E}{R} = \frac{12}{2{,}0\times10^{3}} = 6{,}0\times10^{-3}\ \text{A} = 6{,}0\ \text{mA}'
+            note: "À $t$ = 0+, u_C = 0 donc u_R = $E$, d'où i = E/R (courant maximal)."
+      - id: q5
+        stem: |-
+          Calculer l'énergie emmagasinée dans le condensateur une fois le régime permanent atteint.
+        reasoning: |-
+          « Régime permanent atteint » signifie condensateur chargé, $u_C = E$ : on applique $E_C = \frac{1}{2}Cu_C^2$ avec la valeur finale $u_C = E$, pas une valeur transitoire. L'énergie est stockée sous forme électrique dans le champ entre les armatures.
+        steps:
+          - math: 'E_C = \frac{1}{2}C\,E^2 = \frac{1}{2}\times 2{,}0\times10^{-6}\times 12^2'
+            note: "On prend $C$ = 2,0 µF (question 3) et u_C = $E$ = 12 V (valeur finale)."
+          - math: '= \frac{1}{2}\times 2{,}0\times10^{-6}\times 144 = 1{,}44\times10^{-4}\ \text{J} = 144\ \mu\text{J}'
+            note: "Application numérique."

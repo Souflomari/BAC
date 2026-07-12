@@ -1,6 +1,45 @@
 notion: rc-charge
 skill_code: pc_rc_charge
-misconceptions: []
+
+# Misconception inventory (backfilled in the summit-conversion pilot). This
+# end bank was authored BEFORE the inventory existed (`misconceptions: []`),
+# so items carry an item-level `primary_misconception` here; the per-distractor
+# gold standard is demonstrated in checkpoints.yaml. See coverage_summary at
+# the end of this file for honest counts and the under-covered models flagged
+# for a follow-up item pass.
+misconceptions:
+  - id: mc.physics.pc_rc_charge.uc-saute-instantanement
+    label: "« La tension u_C saute instantanément à E : le condensateur se charge d'un coup »"
+    description: "L'élève croit que u_C atteint E dès la fermeture, sans montée progressive."
+    contradicts_principle: "u_C est continue ($u_C = q/C$, et q ne peut pas se téléporter avec un courant fini) : elle part de 0 et croît continûment, jamais un saut."
+  - id: mc.physics.pc_rc_charge.charge-a-debit-constant
+    label: "« La charge se fait à débit constant : u_C monte en ligne droite, i reste constant »"
+    description: "L'élève calque le condensateur sur un verre qu'on remplit au robinet — courant constant, tension linéaire, arrêt net."
+    contradicts_principle: "Le modèle s'auto-contredit : à l'instant où $u_C = E$, la loi des mailles impose $i = 0$, incompatible avec un courant resté constant. $i = (E-u_C)/R$ décroît, la montée décélère."
+  - id: mc.physics.pc_rc_charge.courant-part-de-zero
+    label: "« Le courant part de zéro à t=0 et croît ensuite, comme u_C »"
+    description: "L'élève applique au courant la continuité de u_C : il pense que i(0+) = 0."
+    contradicts_principle: "C'est u_C qui part de 0 (elle est continue) ; le courant est discontinu et part de son MAXIMUM $i(0^+) = E/R$ (à t=0+, u_C=0 donc toute la tension E tombe sur R)."
+  - id: mc.physics.pc_rc_charge.tau-mauvais-groupement
+    label: "« Mauvaise expression/unité de τ (R/C, L/R, RC en farads…) »"
+    description: "L'élève ne retient pas le produit RC ou se trompe d'unité/de groupement."
+    contradicts_principle: "$\\tau = RC$, homogène à un temps ($\\Omega \\times F = s$). Ni R/C, ni L/R (constante RL), ni « RC en farads »."
+  - id: mc.physics.pc_rc_charge.tau-instant-d-arret
+    label: "« τ est l'instant où la charge s'arrête / où u_C = E »"
+    description: "L'élève interprète τ comme un instant terminal plutôt que comme l'échelle caractéristique."
+    contradicts_principle: "À $t = \\tau$, u_C n'a atteint que 63 % de E. La charge ne s'arrête pas (jamais tout à fait) ; τ est l'échelle de temps qui règle la montée, pas un instant d'arrêt."
+  - id: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
+    label: "« Confusion sur le régime où le condensateur conduit / bloque le courant »"
+    description: "L'élève place le blocage du courant à t=0 (au lieu du régime permanent), ou fait persister le courant en régime permanent."
+    contradicts_principle: "À t=0+, le condensateur vide n'oppose aucune tension : i est MAXIMAL. En régime permanent ($t \\gg \\tau$), u_C=E, u_R=0 : i=0. Le blocage du continu, c'est le régime permanent, pas l'instant initial."
+  - id: mc.physics.pc_rc_charge.energie-lineaire-en-u
+    label: "« Énergie du condensateur linéaire en tension (E_C = C·u_C, oubli du carré / du facteur ½) »"
+    description: "L'élève confond l'énergie stockée avec la charge $q = Cu_C$, ou oublie le carré."
+    contradicts_principle: "$E_C = \\frac{1}{2}Cu_C^2$ : la puissance reçue $u_C\\,C\\frac{du_C}{dt}$ est la dérivée de $\\frac{1}{2}Cu_C^2$. $Cu_C$ est une charge, pas une énergie."
+  - id: mc.physics.pc_rc_charge.uc-depasse-E
+    label: "« u_C dépasse E puis redescend (dépassement / oscillation) »"
+    description: "L'élève attend un dépassement transitoire, comme dans un circuit avec bobine."
+    contradicts_principle: "u_C croît de façon monotone vers E sans jamais le franchir (le dépasser demanderait $E - u_C < 0$, donc un courant négatif pendant la charge). Le dépassement est propre au RLC, absent du dipôle RC."
 
 items:
   - id: RC-1
@@ -8,6 +47,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
     stem: >
       On ferme l'interrupteur à $t=0$ sur un circuit série (générateur idéal $E$,
       résistance $R$, condensateur $C$ initialement déchargé). Que vaut la tension
@@ -55,6 +95,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.courant-part-de-zero
     stem: >
       Dans ce même circuit RC (générateur $E$, résistance $R$, condensateur
       initialement déchargé), que vaut l'intensité du courant $i$ juste après la
@@ -103,6 +144,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
     stem: >
       Le régime permanent est atteint (le condensateur est chargé depuis
       longtemps sous l'échelon $E$). Que valent alors $u_C$ et $i$ ?
@@ -149,6 +191,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
     stem: >
       Quelle est l'expression de la constante de temps d'un dipôle RC, et quelle
       est son unité ?
@@ -193,6 +236,7 @@ items:
     difficulty_level: 4
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
     stem: >
       Comment la tension $u_C$ atteint-elle sa valeur finale $E$ lors de la
       charge d'un condensateur sous un échelon de tension ?
@@ -248,6 +292,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.energie-lineaire-en-u
     stem: >
       Quelle est l'expression de l'énergie emmagasinée dans un condensateur de
       capacité $C$ lorsque la tension à ses bornes vaut $u_C$ ?
@@ -292,6 +337,7 @@ items:
     difficulty_level: 1
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
     stem: >
       On ferme l'interrupteur d'un dipôle RC série alimenté par un générateur
       idéal de tension constante $E$, le condensateur étant initialement
@@ -344,6 +390,7 @@ items:
     difficulty_level: 1
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
     stem: >
       Juste avant de fermer l'interrupteur $K$ (donc $K$ encore ouvert), le
       condensateur d'un dipôle RC est initialement déchargé. Que valent alors
@@ -393,6 +440,7 @@ items:
     difficulty_level: 1
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
     stem: >
       Toujours d'après ce qu'on observe à l'oscilloscope lors de la charge
       d'un dipôle RC : la montée de $u_C$ prend-elle un temps nul, un temps
@@ -447,6 +495,7 @@ items:
     difficulty_level: 2
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
     stem: >
       On imagine un modèle simpliste : le condensateur se chargerait à
       **débit constant**, comme un verre qu'on remplit au robinet — le
@@ -507,6 +556,7 @@ items:
     difficulty_level: 2
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
     stem: >
       Pendant la charge, on a établi $i = \dfrac{E-u_C}{R}$. Au fur et à
       mesure que $u_C$ se rapproche progressivement de $E$, comment évolue le
@@ -558,6 +608,7 @@ items:
     difficulty_level: 2
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
     stem: >
       On double la résistance $R$ d'un dipôle RC, sans changer ni $C$ ni $E$.
       D'après le mécanisme de la charge ($i=(E-u_C)/R$), la charge est-elle
@@ -614,6 +665,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
     stem: >
       Sur un oscillogramme de charge d'un dipôle RC, l'asymptote horizontale
       (régime permanent) est à $8{,}0\ \text{V}$. La tangente à la courbe
@@ -672,6 +724,7 @@ items:
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
     stem: >
       Sur un oscillogramme de charge, l'asymptote horizontale (régime
       permanent) est à $E=5{,}0\ \text{V}$. On relève que $u_C$ atteint
@@ -730,6 +783,7 @@ items:
     difficulty_level: 4
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.energie-lineaire-en-u
     stem: >
       Un condensateur de capacité $C=2{,}0\ \mu\text{F}$ se charge sous un
       échelon $E=12\ \text{V}$. Quelle est l'énergie emmagasinée à l'instant
@@ -784,6 +838,7 @@ items:
     difficulty_level: 4
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
     stem: >
       Un condensateur chargé à $E=9{,}0\ \text{V}$ se décharge dans une
       résistance $R$ (le générateur est retiré du circuit). Que peut-on dire
@@ -843,6 +898,7 @@ items:
     difficulty_level: 5
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
     stem: >
       Un dipôle RC série (générateur idéal $E$, résistance $R$, condensateur
       $C=3{,}0\ \mu\text{F}$ initialement déchargé) est soumis à un échelon
@@ -901,6 +957,7 @@ items:
     difficulty_level: 5
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.courant-part-de-zero
     stem: >
       Un dipôle RC ($E=15\ \text{V}$, $R=3{,}0\ \text{k}\Omega$, condensateur
       initialement déchargé) est soumis à un échelon de tension à $t=0$.
@@ -955,6 +1012,7 @@ items:
     difficulty_level: 5
     skill_code: pc_rc_charge
     tags: []
+    primary_misconception: mc.physics.pc_rc_charge.energie-lineaire-en-u
     stem: >
       Un condensateur de capacité $C=4{,}0\ \mu\text{F}$, chargé sous
       $E=10\ \text{V}$, est ensuite déchargé dans une résistance $R$ (le
@@ -1010,3 +1068,62 @@ items:
       l'énergie initiale a été dissipée par effet Joule dans R. Cette
       quantité ne dépend que de C et E ; R fixe seulement tau = RC, donc la
       vitesse de la dissipation, pas son total.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (backfilled in the summit-conversion pilot)
+#
+# This end bank (RC-1…RC-19) was authored BEFORE the misconception inventory
+# existed. The counts below are ITEM-LEVEL (each item counted once, by its
+# `primary_misconception`). They are honest, and they surface a real finding:
+# four models are under the ≥3-item floor in the end bank. The in-lesson
+# checkpoints (checkpoints.yaml) surface three of the four inline, but that
+# does NOT count toward the end-bank floor — a follow-up item-authoring pass
+# is owed (see gaps below).
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 19
+  per_misconception:
+    mc.physics.pc_rc_charge.uc-saute-instantanement: 4      # RC-1, RC-7, RC-8, RC-9
+    mc.physics.pc_rc_charge.charge-a-debit-constant: 3       # RC-5, RC-10, RC-11
+    mc.physics.pc_rc_charge.courant-part-de-zero: 2          # RC-2, RC-18   (UNDER floor)
+    mc.physics.pc_rc_charge.tau-mauvais-groupement: 5        # RC-4, RC-12, RC-13, RC-16, RC-17
+    mc.physics.pc_rc_charge.tau-instant-d-arret: 1           # RC-14         (UNDER floor)
+    mc.physics.pc_rc_charge.condensateur-conduit-en-permanent: 1  # RC-3     (UNDER floor)
+    mc.physics.pc_rc_charge.energie-lineaire-en-u: 3         # RC-6, RC-15, RC-19
+    mc.physics.pc_rc_charge.uc-depasse-E: 0                  # (UNDER floor — only surfaced as distractors + checkpoints)
+  floor: 3
+  floor_met: false
+  gaps:
+    # Under-covered at end-bank level. Each appears as a DISTRACTOR in several
+    # items and/or as an in-lesson checkpoint, but lacks its own ≥3 primary
+    # stems. Owed to a follow-up item pass (item-author).
+    - misconception: mc.physics.pc_rc_charge.uc-depasse-E
+      have: 0
+      surfaced_inline: [cp-r0-predict, cp-r2-uc-continue, cp-r2-asymptote]
+      need_primary_stems: 3
+    - misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
+      have: 1
+      surfaced_inline: [cp-r3-tau]
+      need_primary_stems: 2
+    - misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
+      have: 1
+      surfaced_inline: [cp-r2-i-initial]
+      need_primary_stems: 2
+    - misconception: mc.physics.pc_rc_charge.courant-part-de-zero
+      have: 2
+      surfaced_inline: [cp-r2-i-initial]
+      need_primary_stems: 1
+  ramp_coverage:
+    R0: 3   # RC-7, RC-8, RC-9
+    R1: 3   # RC-10, RC-11, RC-12
+    R2: 4   # RC-1, RC-2, RC-3, RC-5
+    R3: 3   # RC-4, RC-13, RC-14
+    R4: 3   # RC-6, RC-15, RC-16
+    R5: 3   # RC-17, RC-18, RC-19
+  note: >
+    Per-distractor inline tagging was NOT applied to this end bank in the pilot
+    (the existing `feedback:` strings already name the wrong model in prose).
+    The per-distractor gold standard is demonstrated in checkpoints.yaml, where
+    every distractor carries a `misconception:` tag. Promoting the end bank to
+    per-distractor tags + closing the four floor gaps is a scoped follow-up.
