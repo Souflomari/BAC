@@ -10,6 +10,8 @@ Pourtant, entre le début du XVIIe siècle et l'arrivée des calculatrices élec
 
 Avant de lire la suite, prends position : imagine qu'une fonction $L$ ait vraiment cette propriété — transformer tout produit en somme, c'est-à-dire $L(a\times b) = L(a) + L(b)$ pour tous réels $a,b>0$. D'après toi, que doit valoir $L(1)$ ? Et que devient $L(a \div b)$, une fois qu'on sait ce que fait $L$ sur un produit ?
 
+[[checkpoint:cp-r0-predict]]
+
 Cette fonction "magique" existe réellement, et elle porte un nom que tu as sans doute déjà croisé : le **logarithme népérien**, noté $\ln$. Le but de cette leçon est de comprendre d'où elle vient — ce n'est pas une fonction inventée par hasard pour cette seule propriété —, comment elle se construit à partir d'un outil que tu maîtrises déjà (la primitive), et comment elle se manipule : dérivée, limites, équations. À la fin, tu sauras exactement pourquoi $\ln(1)=0$ et pourquoi $\ln(a/b) = \ln(a)-\ln(b)$, et tu sauras le démontrer — pas seulement le croire sur parole.
 
 ---
@@ -55,6 +57,8 @@ $$\ln(x) \geq 0 \iff \ln(x) \geq \ln(1)$$
 $$\iff x \geq 1 \quad (\ln \text{ strictement croissante})$$
 
 L'ensemble des solutions est $[1,+\infty[$.
+
+[[checkpoint:cp-domaine]]
 
 ---
 
@@ -156,6 +160,8 @@ $$\ln(0{,}5) = \ln\left(\frac12\right) = -\ln(2)$$
 
 soit environ $-0{,}693$.
 
+[[checkpoint:cp-produit-somme]]
+
 ---
 
 ## R3 — Dérivée de ln et de ln(u) ; étudier les variations d'une fonction avec un logarithme
@@ -189,6 +195,8 @@ Sur ce domaine, avec $u(x)=3x-2$ et $u'(x)=3$ :
 $$g'(x) = \frac{3}{3x-2}$$
 
 Comme $3x-2>0$ sur tout le domaine de $g$, $g'(x)>0$ partout : $g$ est strictement croissante sur $\left]\dfrac23,+\infty\right[$.
+
+[[checkpoint:cp-derivee-lnu]]
 
 ---
 
@@ -286,6 +294,8 @@ $$\lim_{x \to +\infty} x\left(\frac{\ln(x)}{x}-1\right) = -\infty$$
 
 $$\lim_{x \to +\infty} \big(\ln(x)-x\big) = -\infty$$
 
+[[checkpoint:cp-croissances]]
+
 ---
 
 ## R5 — Étude complète, la courbe de ln, et le nombre e
@@ -331,6 +341,8 @@ Regarde ce que ça donne : l'équation de cette tangente est exactement l'inéga
 En rassemblant tout : la courbe de $\ln$ part de $-\infty$ près de l'asymptote verticale $x=0$, traverse l'axe des abscisses en $(1,0)$, passe par $(e,1)$, et continue de monter indéfiniment vers la droite — mais de plus en plus lentement, puisque $\dfrac{\ln(x)}{x} \to 0$ (R4) : la courbe s'aplatit progressivement, sans jamais redescendre ni se stabiliser sur une horizontale.
 
 [[figure:courbe-logarithme]]
+
+[[checkpoint:cp-lecture-variations]]
 
 ---
 
@@ -416,55 +428,17 @@ C'est cette propriété qui rend $\log$ pratique : $\log(x)$ donne directement "
 
 ## R7 — Pour t'entraîner
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — un exercice d'entraînement construit pour cette leçon), qui combine plusieurs outils du chapitre avec le théorème des valeurs intermédiaires vu au chapitre "Limites et continuité".
+Tu as maintenant tous les outils du chapitre. Voici d'abord un **problème de type bac** — un vrai sujet d'examen national (2019, session normale, Sciences Expérimentales) qui enchaîne l'étude complète d'une fonction avec $\ln$, une aire par intégration par parties, puis une suite $u_{n+1}=f(u_n)$. Cherche chaque question, engage-toi sur une réponse, et **ensuite seulement** déroule le raisonnement d'expert.
 
-### Exercice travaillé
+### Exercice de type bac
 
-Soit $f$ la fonction définie sur $]0,+\infty[$ par $f(x) = x-2+\ln(x)$.
+[[exercise:r-bac]]
 
-**1.** Calcule $\displaystyle\lim_{x \to 0^{+}} f(x)$ et $\displaystyle\lim_{x \to +\infty} f(x)$.
+### Une variation pour ne pas mémoriser
 
-**2.** Calcule $f'(x)$ et détermine son signe sur $]0,+\infty[$. Dresse le tableau de variations de $f$.
+Le même squelette, décor renversé : ici la courbe passe **sous** la première bissectrice $(\Delta):y=x$, la fonction est strictement croissante, et la suite **décroît**. Si tu as compris la mécanique — et pas seulement retenu les réponses du sujet précédent —, tu la reconnaîtras tout de suite sous ce nouvel habillage.
 
-**3.** Montre que l'équation $f(x)=0$ admet une unique solution $\alpha$ dans $]0,+\infty[$, puis que $1<\alpha<2$.
-
-**4.** Déduis le signe de $f(x)$ sur $]0,+\infty[$.
-
-**Raisonnement à voix haute.**
-
-**1.** Quand $x \to 0^{+}$ : $x-2 \to -2$ (fini) et $\ln(x) \to -\infty$ (R4), donc la somme tend vers $-\infty$ :
-
-$$\lim_{x \to 0^{+}} f(x) = -\infty$$
-
-Quand $x \to +\infty$ : $x-2 \to +\infty$ et $\ln(x) \to +\infty$ (R4), donc la somme tend vers $+\infty$ (pas de forme indéterminée ici : $+\infty$ plus $+\infty$ donne $+\infty$) :
-
-$$\lim_{x \to +\infty} f(x) = +\infty$$
-
-**2.** $f$ est une somme d'une fonction affine et de $\ln$ :
-
-$$f'(x) = 1+\frac1x = \frac{x+1}{x}$$
-
-Sur $]0,+\infty[$, $x>0$ donc $x+1>0$ : $f'(x)>0$ partout. $f$ est donc **strictement croissante** sur $]0,+\infty[$, de $-\infty$ (en $0^+$) à $+\infty$ (en $+\infty$).
-
-**3.** **Ce qu'on cherche et pourquoi ce geste :** "$f(x)=0$ admet une unique solution" est le signal caractéristique du corollaire d'existence et d'unicité du TVI — il faut réunir continuité, changement de signe, et stricte monotonie, exactement comme dans le chapitre "Limites et continuité".
-
-$f$ est continue (dérivable) et strictement croissante sur $]0,+\infty[$, avec $\displaystyle\lim_{x\to 0^+} f(x) = -\infty <0$ et $\displaystyle\lim_{x\to+\infty} f(x) = +\infty>0$. Par le corollaire du TVI, l'équation $f(x)=0$ admet une **unique** solution $\alpha \in\, ]0,+\infty[$.
-
-Pour l'encadrer, évalue $f$ en $1$ et en $2$ :
-
-$$f(1) = 1-2+\ln(1) = -1+0 = -1 < 0$$
-
-$$f(2) = 2-2+\ln(2) = \ln(2) \approx 0{,}693 > 0$$
-
-$f$ étant strictement croissante, $f(1)<0<f(2)$ place $\alpha$ strictement entre $1$ et $2$ : $1<\alpha<2$.
-
-**4.** $f$ est strictement croissante sur $]0,+\infty[$ et s'annule uniquement en $\alpha$ : donc $f(x)<0$ pour $x<\alpha$, et $f(x)>0$ pour $x>\alpha$ — la stricte monotonie transforme le passage par $0$ en $\alpha$ en une frontière nette entre les deux signes.
-
-### À toi de jouer
-
-**(a)** Résous dans $\mathbb{R}$ l'équation $\ln(3x-1) = \ln(x+5)$.
-
-**(b)** Résous dans $\mathbb{R}$ l'inéquation $\ln(2x+1) \leq \ln(4-x)$.
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts pour la
      relecture pédagogique, non résolus par cet auteur :
@@ -484,13 +458,15 @@ $f$ étant strictement croissante, $f(1)<0<f(2)$ place $\alpha$ strictement entr
      (fonction exponentielle, réciproque de ln) et n'est pas utilisée ici
      pour éviter toute dépendance circulaire. À confirmer que cet ordre de
      chapitres correspond à la progression réelle du produit.
-     (3) Le R7 (exercice de synthèse) réutilise explicitement le corollaire
-     du théorème des valeurs intermédiaires du chapitre "Limites et
-     continuité" (dont `content/maths/limites-continuite/lesson.md` existe
-     déjà dans le corpus) — dépendance inter-chapitres assumée et
-     cohérente avec cette leçon existante, mais à confirmer si l'ordre
-     réel des notions dans le produit place bien "Limites et continuité"
-     avant "Fonction logarithme".
+     (3) Le R7 est désormais la conversion attempt-first (exercises.yaml) :
+     r-bac est le PROBLÈME de l'examen national 2019 (session normale, SExp
+     BIOF, code NS 22F — vérifié dans docs/sujets/maths/fonction-logarithme.md),
+     r-variation en est le jumeau anti-mémorisation. Ce problème recoupe deux
+     autres chapitres : `calcul-integral` (intégration par parties, Q6) et
+     `suites-numeriques` (récurrence + convergence monotone, 2ᵉ partie) —
+     dépendances inter-chapitres assumées, à confirmer contre l'ordre réel des
+     notions dans le produit (Limites/continuité, Calcul intégral et Suites
+     supposés disponibles avant/à côté de ce chapitre).
      (4) L'existence d'une primitive de t->1/t sur ]0,+infty[ est admise
      (formulation "on admet") plutôt que déduite d'un théorème général
      "toute fonction continue sur un intervalle admet des primitives" —

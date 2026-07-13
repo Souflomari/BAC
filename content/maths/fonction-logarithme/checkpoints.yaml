@@ -1,0 +1,390 @@
+notion: fonction-logarithme
+skill_code: maths_fonction_logarithme
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, fonction-log.)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MATHEMATICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict        (in R0)      — COMMIT gate: turns the R0 "prends
+#                                       position : que doit valoir L(1) ?" into a
+#                                       real MCQ commit before the reveal. Probes
+#                                       M2 (produit-somme-confondus) + M3.
+#   cp-domaine           (after R1)   — rupture gate: ln n'existe que là où
+#                                       l'intérieur est > 0. Probes M1.
+#   cp-produit-somme     (after R2)   — rupture gate: ln(ab)=ln a+ln b, PAS
+#                                       ln a·ln b ni ln(a+b)=ln a+ln b. Probes M2+M3.
+#   cp-derivee-lnu       (after R3)   — rupture gate: (ln u)'=u'/u (ni 1/u, ni u').
+#                                       Probes M5.
+#   cp-croissances       (after R4)   — rupture gate: ∞/∞ n'est pas une conclusion
+#                                       directe ; ln x écrasé par x. Probes M4.
+#   cp-lecture-variations(after R5)   — rupture gate: lire le signe de f' → les
+#                                       variations (sans inverser le sens). Probes M6.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml). Option lengths are balanced so the correct choice is never the
+# conspicuously longest.
+#
+# Boundary guard: 2ème Bac Sciences Expérimentales — fonction logarithme
+# népérien : domaine, signe, monotonie, propriétés algébriques (produit,
+# quotient, puissance), dérivée de ln(u), limites de référence et croissances
+# comparées, tableau de variation, convexité, bijection / TVI, équations et
+# inéquations, logarithme décimal. Pas de développement en série, pas de log en
+# base quelconque au-delà du log décimal.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position : que doit valoir L(1) ?" into a real
+  #        MCQ commit before the reveal that L = ln. Probes M2
+  #        (produit-somme-confondus) — reading the functional equation
+  #        as if L preserved the product / value.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, hook_commit]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Reprends la fonction imaginée dans le texte : $L$ transforme tout produit
+      en somme, c'est-à-dire $L(a\times b) = L(a) + L(b)$ pour tous réels
+      $a,b>0$. **Avant de lire la suite, engage-toi :** que doit alors valoir
+      $L(1)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$L(1) = 0$"
+        correct: true
+        feedback: |
+          Exact, et c'est la première conséquence de la propriété. En posant
+          $a=b=1$ : $L(1\times 1) = L(1) + L(1)$, donc $L(1) = 2L(1)$, ce qui
+          force $L(1) = 0$. C'est pour cela que $\ln(1)=0$ : ce n'est pas un
+          choix arbitraire, c'est imposé par « produit devient somme ».
+      - id: B
+        text: "$L(1) = 1$ : la fonction renvoie son entrée."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: |
+          Modèle détecté : « $L$ conserve sa valeur d'entrée ». Mais la seule
+          règle donnée est $L(a\times b)=L(a)+L(b)$ ; en $a=b=1$ elle donne
+          $L(1)=2L(1)$, donc $L(1)=0$, pas $1$. Aucune raison que $L$ renvoie son
+          entrée — c'est déjà la confusion « ce que $\ln$ fait d'un nombre ».
+      - id: C
+        text: "$L(1) = L(1)^2$ : le produit reste un produit."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: |
+          Modèle détecté : on a écrit $L(1\times 1) = L(1)\times L(1)$, comme si
+          $L$ transformait le produit en **produit**. Or la propriété transforme
+          le produit en **somme** : $L(1)+L(1)$. C'est la confusion centrale du
+          chapitre — $\ln(ab)=\ln a+\ln b$, jamais $\ln a\times\ln b$.
+      - id: D
+        text: "$L(1) = 1$, car $1 = 1\\div 1$ donne $L(1) = L(1)\\div L(1)$."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: |
+          Modèle détecté : « $L$ conserve la division », $L(a\div b)=L(a)\div L(b)$.
+          La règle du quotient donne au contraire une **différence** :
+          $L(1\div 1)=L(1)-L(1)=0$. Une division à l'intérieur devient une
+          soustraction à l'extérieur, pas une division.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-domaine | placed AFTER R1
+  #        Rupture gate: ln(u) n'existe que là où u>0. Clone of LOG-1.
+  #        Probes M1 (domaine-neglige), three surfaces.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-domaine
+    rung: "R1"
+    habilete: utilisation
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, domaine]
+    primary_misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+    item_source: clone_of_LOG-1
+    lesson_placement: after_R1
+
+    stem: |
+      Quel est l'ensemble de définition de la fonction $f(x) = \ln(3-x)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$]-\\infty,\\ 3[$"
+        correct: true
+        feedback: |
+          Exact : $\ln$ n'existe que sur $]0,+\infty[$, donc il faut que
+          l'**intérieur** soit strictement positif : $3-x>0 \iff x<3$. D'où
+          $D_f = \,]-\infty,\ 3[$. Le premier réflexe devant tout $\ln$ : imposer
+          l'intérieur $>0$.
+      - id: B
+        text: "$\\mathbb{R}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+        feedback: |
+          Modèle détecté : $\ln$ traité comme s'il était défini partout. Mais
+          $\ln(3-x)$ n'a de sens que si $3-x>0$ ; pour $x\ge 3$, l'intérieur est
+          nul ou négatif et l'expression n'existe pas. Le domaine n'est pas
+          $\mathbb{R}$.
+      - id: C
+        text: "$]0,\\ +\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+        feedback: |
+          Modèle détecté : on a recopié le domaine de $\ln$ tout seul,
+          $]0,+\infty[$, au lieu de résoudre la condition sur l'intérieur. C'est
+          $3-x$ qui doit être $>0$, pas $x$ : il faut résoudre $3-x>0$.
+      - id: D
+        text: "$]3,\\ +\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+        feedback: |
+          Modèle détecté : la condition $3-x>0$ a été résolue à l'envers.
+          Isoler $x$ donne $x<3$ (pas $x>3$) — on ne change pas le sens ici, on
+          fait passer $x$ de l'autre côté. Le domaine est $]-\infty,3[$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-produit-somme | placed AFTER R2
+  #        Rupture gate: ln(ab)=ln a+ln b, PAS ln a·ln b, et ln ne se
+  #        distribue PAS sur une somme. Clone of LOG-3.
+  #        Probes M2 (produit-somme-confondus) + M3 (quotient).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-produit-somme
+    rung: "R2"
+    habilete: raisonnement
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, proprietes_algebriques]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+    item_source: clone_of_LOG-3
+    lesson_placement: after_R2
+
+    stem: |
+      Pour tous réels $a>0$ et $b>0$, quelle égalité est **toujours** vraie ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\ln(ab) = \\ln a + \\ln b$"
+        correct: true
+        feedback: |
+          Exact : c'est la propriété centrale du chapitre, celle qui transforme
+          un **produit** en **somme**. Toutes les autres propriétés (quotient,
+          puissance, inverse) en découlent.
+      - id: B
+        text: "$\\ln(a+b) = \\ln a + \\ln b$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: |
+          Modèle détecté : on distribue $\ln$ sur une **somme**. Mais la
+          propriété concerne le **produit** $ab$, pas la somme $a+b$. Teste avec
+          $a=b=1$ : $\ln(2)\approx 0{,}69$, alors que $\ln 1+\ln 1=0$ — les deux
+          ne coïncident pas.
+      - id: C
+        text: "$\\ln(ab) = \\ln a \\times \\ln b$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: |
+          Modèle détecté : le produit à l'intérieur reste un produit à
+          l'extérieur. Or tout l'intérêt de $\ln$ est de transformer la
+          multiplication en **addition** : $\ln(ab)=\ln a+\ln b$, pas
+          $\ln a\times\ln b$.
+      - id: D
+        text: "$\\ln a - \\ln b = \\ln(a-b)$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: |
+          Modèle détecté : une différence de logarithmes lue comme le $\ln$
+          d'une différence. La règle du quotient donne
+          $\ln a-\ln b=\ln\!\left(\dfrac{a}{b}\right)$ — un **quotient** à
+          l'intérieur, pas une différence.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-derivee-lnu | placed AFTER R3
+  #        Rupture gate: (ln u)' = u'/u — ni 1/u (u' oublié), ni u'
+  #        (division oubliée). Clone of LOG-4.
+  #        Probes M5 (derivee-de-ln-u), three surfaces.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-derivee-lnu
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, derivee]
+    primary_misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
+    item_source: clone_of_LOG-4
+    lesson_placement: after_R3
+
+    stem: |
+      Quelle est la dérivée de $f(x) = \ln(2x^2+1)$ sur $\mathbb{R}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\dfrac{4x}{2x^2+1}$"
+        correct: true
+        feedback: |
+          Exact : avec $u(x)=2x^2+1$ et $u'(x)=4x$, la règle $(\ln u)'=\dfrac{u'}{u}$
+          donne $\dfrac{4x}{2x^2+1}$. « Dérivée de l'intérieur, divisée par
+          l'intérieur. »
+      - id: B
+        text: "$\\dfrac{1}{2x^2+1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
+        feedback: |
+          Modèle détecté : on a appliqué $\dfrac{1}{u}$ au lieu de $\dfrac{u'}{u}$.
+          La dérivée de l'intérieur, $u'(x)=4x$, ne doit pas disparaître : elle
+          passe au numérateur.
+      - id: C
+        text: "$4x$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
+        feedback: |
+          Modèle détecté : on a gardé $u'(x)=4x$ mais oublié de **diviser** par
+          $u(x)=2x^2+1$. La dérivée d'un $\ln$ composé est un quotient, pas juste
+          la dérivée de l'intérieur.
+      - id: D
+        text: "$\\dfrac{2x}{2x^2+1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
+        feedback: |
+          Modèle détecté : erreur sur $u'$. La dérivée de $2x^2+1$ est $4x$ (le
+          $2$ se multiplie par l'exposant $2$), pas $2x$. La structure
+          $\dfrac{u'}{u}$ était juste, seul le numérateur est faux.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-croissances | placed AFTER R4
+  #        Rupture gate: ∞/∞ n'est pas une conclusion directe ; ln x est
+  #        écrasé par x (croissances comparées). Clone of LOG-5.
+  #        Probes M4 (limites-de-ln), three surfaces.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-croissances
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, limites, croissances_comparees]
+    primary_misconception: mc.math.maths_fonction_logarithme.limites-de-ln
+    item_source: clone_of_LOG-5
+    lesson_placement: after_R4
+
+    stem: |
+      Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{\ln x}{x}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$0$"
+        correct: true
+        feedback: |
+          Exact : c'est le résultat de **croissances comparées**. $x$ grossit
+          infiniment plus vite que $\ln x$, donc leur rapport s'écrase vers $0$.
+          On le démontre via l'inégalité $\ln x < 2\sqrt{x}$ puis le théorème des
+          gendarmes (R4).
+      - id: B
+        text: "$+\\infty$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
+        feedback: |
+          Modèle détecté : « numérateur et dénominateur tendent vers $+\infty$,
+          donc le rapport explose ». $\dfrac{\infty}{\infty}$ est une forme
+          **indéterminée** : elle ne se lit pas directement. Ici $x$ l'emporte,
+          le rapport tend vers $0$, pas vers $+\infty$.
+      - id: C
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
+        feedback: |
+          Modèle détecté : « deux quantités qui tendent vers $+\infty$ ont un
+          rapport égal à $1$ ». Cela dépend de **laquelle** grossit plus vite.
+          $\ln x$ grossit infiniment plus lentement que $x$ : le rapport tend
+          vers $0$.
+      - id: D
+        text: "La limite n'existe pas : forme indéterminée non levée."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
+        feedback: |
+          Modèle détecté : « indéterminée = pas de limite ». Indéterminée
+          signifie seulement qu'un calcul de plus est nécessaire pour trancher.
+          Les croissances comparées lèvent l'indétermination : la limite existe
+          et vaut $0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-lecture-variations | placed AFTER R5
+  #        Rupture gate: lire le signe de f' → les variations de f, sans
+  #        inverser le sens ni ignorer une partie du signe. Mirrors the
+  #        r-bac q3c (tableau de variations).
+  #        Probes M6 (lecture-variations-signe), three surfaces.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-lecture-variations
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, variations, tableau]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+    item_source: clone_of_LOG-14
+    lesson_placement: after_R5
+
+    stem: |
+      Sur $]0,+\infty[$, la dérivée d'une fonction $f$ vérifie : $f'(x)<0$ sur
+      $]0,1[$, $f'(1)=0$, et $f'(x)>0$ sur $]1,+\infty[$. Que peut-on affirmer
+      des variations de $f$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $f$ décroît sur $]0,1]$, croît sur $[1,+\infty[$ : minimum en $x=1$.
+        correct: true
+        feedback: |
+          Exact : $f'<0$ signifie décroissante, $f'>0$ signifie croissante. Le
+          changement de signe de $-$ à $+$ en $x=1$ marque un **minimum**. C'est
+          exactement la lecture d'un tableau de variations.
+      - id: B
+        text: |
+          $f$ croît puis décroît : elle admet un maximum en $x=1$.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+        feedback: |
+          Modèle détecté : le lien signe $\to$ variation est inversé. $f'<0$
+          donne décroissante (pas croissante). Un passage de $-$ à $+$ est un
+          **minimum**, pas un maximum (le maximum correspond à $+$ puis $-$).
+      - id: C
+        text: |
+          $f$ est croissante sur tout $]0,+\infty[$, car $f'$ finit positive.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+        feedback: |
+          Modèle détecté : on ne retient que la fin du signe de $f'$. Or $f'$ est
+          **négative** sur $]0,1[$ : $f$ y décroît. On ne peut pas déclarer $f$
+          croissante partout en ignorant l'intervalle où sa dérivée est négative.
+      - id: D
+        text: |
+          On ne peut rien affirmer sur les variations de $f$ tant qu'on ne
+          connaît pas les valeurs numériques que prend $f$ elle-même.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+        feedback: |
+          Modèle détecté : on croit avoir besoin des valeurs de $f$. Le **signe
+          de $f'$** suffit à déterminer les variations — c'est tout l'intérêt de
+          la dérivée. Les valeurs de $f$ ne servent qu'à placer la courbe, pas à
+          connaître son sens de variation.

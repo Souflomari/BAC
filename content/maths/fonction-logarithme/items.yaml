@@ -1,12 +1,56 @@
 notion: fonction-logarithme
 skill_code: maths_fonction_logarithme
-misconceptions: []
+
+# ── Misconception inventory (summit-conversion floor backfill) ─────────────
+# This legacy end-bank predated per-distractor tagging (`misconceptions: []`).
+# The backfill below (a) names the wrong MODELS this notion must confront —
+# aligned with the lesson's rupture gates —, (b) tags each item with a
+# `primary_misconception`, (c) tags each distractor with the model it embodies
+# (or `null` when it is a generic slip, not a named model), and (d) reports an
+# HONEST `coverage_summary` at the foot of the file. No count is padded.
+misconceptions:
+  - id: mc.math.maths_fonction_logarithme.domaine-neglige
+    label: "« ln est défini partout / on garde les solutions hors domaine »"
+    description: "L'élève écrit ou résout avec un ln sans imposer que son argument soit strictement positif : soit il donne à $\\ln(u)$ un domaine trop large (souvent $\\mathbb{R}$ ou le domaine $]0,+\\infty[$ de $\\ln$ lui-même), soit, après avoir résolu une équation polynomiale, il conserve des racines qui annulent ou rendent négatif l'intérieur d'un $\\ln$."
+    contradicts_principle: "$\\ln$ n'existe que sur $]0,+\\infty[$. Pour $\\ln(u(x))$, le domaine est l'ensemble des $x$ où $u(x)>0$ — à résoudre AVANT toute manipulation, et à confronter aux solutions finales (les racines hors domaine sont rejetées, ce ne sont pas des solutions de l'équation de départ)."
+
+  - id: mc.math.maths_fonction_logarithme.produit-somme-confondus
+    label: "« ln(ab) = ln a · ln b, ou ln(a+b) = ln a + ln b »"
+    description: "L'élève se trompe sur ce que $\\ln$ fait d'un produit : soit il garde le produit à l'extérieur ($\\ln(ab)=\\ln a\\times\\ln b$), soit il distribue $\\ln$ sur une somme ($\\ln(a+b)=\\ln a+\\ln b$), soit il croit que $\\ln$ conserve la valeur d'entrée. La règle « produit → somme » est mal encodée."
+    contradicts_principle: "La propriété fondatrice est $\\ln(ab)=\\ln a+\\ln b$ : un PRODUIT à l'intérieur devient une SOMME à l'extérieur. $\\ln$ ne se distribue PAS sur une somme ($\\ln(a+b)\\neq\\ln a+\\ln b$) et ne transforme JAMAIS un produit en produit ($\\ln(ab)\\neq\\ln a\\times\\ln b$). C'est de cette seule règle que découle $\\ln(1)=0$."
+
+  - id: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+    label: "« ln(a/b) = ln a / ln b, ou ln(aⁿ) avec le mauvais facteur »"
+    description: "L'élève applique mal les règles dérivées du produit : pour le quotient il garde une division ($\\ln(a/b)=\\ln a/\\ln b$) ou traite la division comme une addition ; pour la puissance il multiplie $\\ln a$ par la base, ou ajoute l'exposant, au lieu de multiplier par l'exposant."
+    contradicts_principle: "$\\ln\\!\\left(\\dfrac{a}{b}\\right)=\\ln a-\\ln b$ (quotient → différence) et $\\ln(a^n)=n\\ln a$ (l'EXPOSANT devient le coefficient). Ces deux règles se déduisent de « produit → somme » et de $\\ln(1)=0$ ; elles ne conservent ni la division ni la valeur de la base."
+
+  - id: mc.math.maths_fonction_logarithme.derivee-de-ln-u
+    label: "« (ln u)' = 1/u ou = u' » (au lieu de u'/u)"
+    description: "En dérivant une composée $\\ln(u)$, l'élève oublie un morceau : soit il écrit $\\dfrac{1}{u}$ (dérivée de l'intérieur oubliée), soit il écrit $u'$ (division par l'intérieur oubliée), soit il dérive mal l'intérieur $u$."
+    contradicts_principle: "$(\\ln u)'=\\dfrac{u'}{u}$ là où $u>0$ : « dérivée de l'intérieur, divisée par l'intérieur ». Les deux opérations sont indispensables — dériver l'intérieur ET diviser par lui. C'est la règle de dérivation d'une composée appliquée à $\\ln$."
+
+  - id: mc.math.maths_fonction_logarithme.limites-de-ln
+    label: "« ∞/∞ ou 0×∞ se lisent directement ; ln x croît comme x »"
+    description: "L'élève conclut sur une forme indéterminée sans la lever : il lit $\\dfrac{\\infty}{\\infty}$ comme $+\\infty$ ou $1$, ou $0\\times\\infty$ comme un résultat direct ; il croit que $\\ln x$ croît aussi vite que $x$ ; ou il confond « forme indéterminée » avec « limite inexistante ». Il peut aussi confondre la limite en $0^+$ avec $\\ln(1)=0$."
+    contradicts_principle: "Croissances comparées : $\\displaystyle\\lim_{x\\to+\\infty}\\dfrac{\\ln x}{x}=0$ et $\\displaystyle\\lim_{x\\to 0^+}x\\ln x=0$ — $x$ écrase $\\ln x$. Une forme indéterminée n'est pas une absence de limite : elle exige un calcul (factoriser, encadrer, poser $t=\\sqrt{x}$…) pour trancher. Et $\\displaystyle\\lim_{x\\to 0^+}\\ln x=-\\infty$ (asymptote verticale), pas $0$."
+
+  - id: mc.math.maths_fonction_logarithme.lecture-variations-signe
+    label: "« signe de f' ↔ variations lus à l'envers » (et concavité)"
+    description: "L'élève inverse le lien entre le signe de la dérivée et le sens de variation (croissant/décroissant échangés, minimum pris pour maximum), ne retient qu'une partie du signe de $f'$, croit avoir besoin des valeurs de $f$ pour connaître ses variations, ou lit la concavité à l'envers (courbe au-dessus au lieu d'en dessous de ses tangentes)."
+    contradicts_principle: "$f'>0 \\Rightarrow f$ croissante, $f'<0 \\Rightarrow f$ décroissante ; un changement de signe $-\\!\\to\\!+$ est un minimum, $+\\!\\to\\!-$ un maximum. Le seul signe de $f'$ détermine les variations (les valeurs de $f$ ne servent qu'à placer la courbe). Une fonction concave ($f''<0$) reste EN DESSOUS de chacune de ses tangentes."
+
+  - id: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
+    label: "« mauvaise application de la bijection de ln / du corollaire du TVI »"
+    description: "L'élève applique mal l'existence-unicité : il confond le domaine $]0,+\\infty[$ de $\\ln$ (arguments positifs) avec son image $\\mathbb{R}$ (valeurs, y compris négatives), croit à $0$ ou plusieurs solutions là où la stricte monotonie en garantit exactement une, ou inverse la définition du nombre $e$."
+    contradicts_principle: "$\\ln$ réalise une bijection de $]0,+\\infty[$ sur $\\mathbb{R}$ : pour tout réel $k$ (même négatif), $\\ln(x)=k$ a une unique solution. Le corollaire du TVI (continuité + stricte monotonie + changement de signe) donne existence ET unicité. Le nombre $e$ est défini par $\\ln(e)=1$, pas l'inverse."
+
 items:
   - id: LOG-1
     rung: "R1"
     difficulty_level: 2
     skill_code: maths_fonction_logarithme
     tags: ["domaine-de-definition"]
+    primary_misconception: mc.math.maths_fonction_logarithme.domaine-neglige
     stem: >
       Quel est l'ensemble de définition de la fonction $f(x) = \ln(3-x)$ ?
     type: mcq
@@ -17,6 +61,7 @@ items:
       - id: B
         text: "$\\mathbb{R}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu confonds le domaine de $\ln$ tout seul avec celui de la fonction
           composée $\ln(3-x)$. Il faut que l'INTÉRIEUR, $3-x$, soit
@@ -24,6 +69,7 @@ items:
       - id: C
         text: "$]0, +\\infty[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu as gardé le domaine de $\ln$ lui-même ($]0,+\infty[$) au lieu de
           résoudre la condition sur l'intérieur $3-x>0$. Il faut résoudre
@@ -31,6 +77,7 @@ items:
       - id: D
         text: "$]3, +\\infty[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Erreur de sens en résolvant l'inéquation $3-x>0$ : isoler $x$ en
           divisant par un nombre négatif inverse le sens de l'inégalité. La
@@ -49,6 +96,7 @@ items:
     difficulty_level: 2
     skill_code: maths_fonction_logarithme
     tags: ["proprietes-algebriques", "puissance"]
+    primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
     stem: >
       Sachant que $\ln(2) \approx 0{,}693$, quelle est la valeur exacte de
       $\ln(8)$ en fonction de $\ln(2)$ ?
@@ -60,6 +108,7 @@ items:
       - id: B
         text: "$8\\ln(2)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu as multiplié $\ln(2)$ par $8$ au lieu de reconnaître que
           $8=2^3$. La propriété $\ln(a^n)=n\ln(a)$ utilise l'EXPOSANT comme
@@ -67,6 +116,7 @@ items:
       - id: C
         text: "$\\ln(2)+3$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu as ajouté $3$ à $\ln(2)$, comme si $\ln(a^n)$ devenait
           $\ln(a)+n$. La bonne propriété transforme la puissance en produit
@@ -74,6 +124,7 @@ items:
       - id: D
         text: "$2\\ln(2)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu as compté $8$ comme $2^2$ (donc utilisé l'exposant $2$), alors
           que $8=2^3$. Vérifie la décomposition en puissance de $2$ avant
@@ -90,6 +141,7 @@ items:
     difficulty_level: 2
     skill_code: maths_fonction_logarithme
     tags: ["proprietes-algebriques", "misconception-somme-produit"]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
     stem: >
       Pour tous réels $a>0$ et $b>0$, quelle égalité est toujours vraie ?
     type: mcq
@@ -97,6 +149,7 @@ items:
       - id: A
         text: "$\\ln(a+b) = \\ln(a)+\\ln(b)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           C'est la confusion la plus fréquente sur ce chapitre : la
           propriété qui transforme une opération en somme concerne le
@@ -109,6 +162,7 @@ items:
       - id: C
         text: "$\\ln(ab) = \\ln(a)\\times\\ln(b)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           Le produit $a\times b$ à l'intérieur du logarithme ne devient pas
           un produit de logarithmes à l'extérieur — il devient une SOMME.
@@ -117,6 +171,7 @@ items:
       - id: D
         text: "$\\ln(a)-\\ln(b) = \\ln(a-b)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           La propriété du quotient donne $\ln(a)-\ln(b)=\ln\!\left(\frac{a}{b}\right)$
           (un quotient à l'intérieur), pas $\ln(a-b)$ (une différence à
@@ -134,6 +189,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["derivee", "ln-u"]
+    primary_misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
     stem: >
       Quelle est la dérivée de $f(x) = \ln(2x^2+1)$ ?
     type: mcq
@@ -144,6 +200,7 @@ items:
       - id: B
         text: "$f'(x) = \\dfrac{1}{2x^2+1}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Tu as oublié de multiplier par la dérivée de l'intérieur. La
           formule est $(\ln u)' = \frac{u'}{u}$, pas $\frac1u$ — ici
@@ -151,6 +208,7 @@ items:
       - id: C
         text: "$f'(x) = 4x$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Tu as calculé $u'(x)=4x$ (correct) mais oublié de diviser par
           $u(x)=2x^2+1$. La dérivée d'un logarithme composé est un
@@ -158,6 +216,7 @@ items:
       - id: D
         text: "$f'(x) = \\dfrac{2x}{2x^2+1}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Erreur de dérivation de l'intérieur : $u(x)=2x^2+1$ a pour
           dérivée $u'(x)=4x$ (le facteur $2$ se multiplie par l'exposant
@@ -174,6 +233,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["limites", "croissances-comparees"]
+    primary_misconception: mc.math.maths_fonction_logarithme.limites-de-ln
     stem: >
       Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{\ln(x)}{x}$ ?
     type: mcq
@@ -184,6 +244,7 @@ items:
       - id: B
         text: "$+\\infty$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           Tu as vu que le numérateur ET le dénominateur tendent vers
           $+\infty$ et conclu que le rapport explose aussi — mais
@@ -193,6 +254,7 @@ items:
       - id: C
         text: "$1$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           Un rapport de deux quantités qui tendent toutes deux vers
           $+\infty$ ne vaut pas automatiquement $1$ — ça dépend de LAQUELLE
@@ -203,6 +265,7 @@ items:
           La limite n'existe pas, car $\dfrac{\infty}{\infty}$ est une forme
           indéterminée non levée
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           C'est vrai que $\frac{\infty}{\infty}$ est une forme
           indéterminée — mais "indéterminée" veut dire qu'il faut un calcul
@@ -224,6 +287,7 @@ items:
     difficulty_level: 4
     skill_code: maths_fonction_logarithme
     tags: ["equations", "domaine"]
+    primary_misconception: mc.math.maths_fonction_logarithme.domaine-neglige
     stem: >
       Quel est l'ensemble des solutions de l'équation
       $\ln(x+2) + \ln(x) = \ln(3)$ ?
@@ -235,6 +299,7 @@ items:
       - id: B
         text: "$\\{-3, 1\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu as bien résolu l'équation polynomiale $x^2+2x-3=0$ (qui donne
           $-3$ et $1$), mais tu as oublié de revenir au domaine de départ :
@@ -243,6 +308,7 @@ items:
       - id: C
         text: "$\\{-3\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu as gardé la mauvaise racine : $-3$ ne vérifie pas la condition
           de domaine $x>0$ (nécessaire pour que $\ln(x)$ existe), alors que
@@ -250,6 +316,7 @@ items:
       - id: D
         text: "$\\left\\{\\dfrac12\\right\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           Tu as regroupé $\ln(x+2)+\ln(x)$ en $\ln(2x+2)$ (une SOMME à
           l'intérieur), alors que la propriété du produit donne
@@ -282,6 +349,7 @@ items:
     difficulty_level: 1
     skill_code: maths_fonction_logarithme
     tags: ["accroche", "produit-somme"]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
     stem: >
       D'après le texte, une fonction $L$ vérifie $L(a\times b) = L(a) +
       L(b)$ pour tous réels $a,b>0$. En posant $a=b=1$ dans cette égalité,
@@ -294,6 +362,7 @@ items:
       - id: B
         text: "$L(1) = 1$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           Tu confonds l'entrée $1$ avec une éventuelle sortie $1$ : ce n'est
           pas parce que $1\times1=1$ que $L(1)$ vaut $1$. Il faut résoudre
@@ -302,6 +371,7 @@ items:
       - id: C
         text: "$L(1) = L(1)^2$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           Tu remplaces l'addition du membre de droite par une
           multiplication : la propriété donne $L(1)+L(1)$, pas
@@ -311,6 +381,7 @@ items:
       - id: D
         text: "On ne peut rien conclure sans connaître $L(2)$"
         correct: false
+        misconception: null
         feedback: >
           L'égalité $L(a\times b)=L(a)+L(b)$ appliquée directement à
           $a=b=1$ suffit à elle seule pour déterminer $L(1)$ — inutile de
@@ -331,6 +402,7 @@ items:
     difficulty_level: 1
     skill_code: maths_fonction_logarithme
     tags: ["accroche", "produit-quotient"]
+    primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
     stem: >
       Toujours avec cette fonction $L$ telle que $L(a\times b)=L(a)+L(b)$
       pour tous $a,b>0$, et sachant que $L(1)=0$, que devient $L(a\div b)$
@@ -343,6 +415,7 @@ items:
       - id: B
         text: "$L(a\\div b) = L(a) \\div L(b)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Une division à l'intérieur ne devient pas une division à
           l'extérieur : c'est le produit qui devient une somme, donc un
@@ -351,6 +424,7 @@ items:
       - id: C
         text: "$L(a\\div b) = L(a) + L(b)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu traites $a\div b$ comme si c'était $a\times b$ : la division
           n'est pas la multiplication, donc $L(a\div b)$ n'est pas
@@ -359,6 +433,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans une nouvelle règle spécifique à la division"
         correct: false
+        misconception: null
         feedback: >
           Pas besoin de nouvelle règle : $a\div b=a\times\frac1b$, et
           $\frac1b\times b=1$ donne $L(b)+L(\frac1b)=L(1)=0$, donc
@@ -379,6 +454,7 @@ items:
     difficulty_level: 1
     skill_code: maths_fonction_logarithme
     tags: ["accroche", "misconception-produit-produit"]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
     stem: >
       D'après le texte, pourquoi une table de logarithmes permettait de
       calculer $12\,345 \times 98\,765$ plus rapidement qu'à la main ?
@@ -390,6 +466,7 @@ items:
       - id: B
         text: "Parce qu'elle donne directement le résultat du produit sans aucun calcul supplémentaire"
         correct: false
+        misconception: null
         feedback: >
           Ce n'est pas tout à fait exact : la table remplace la
           multiplication par une addition (plus rapide), mais il faut quand
@@ -400,6 +477,7 @@ items:
       - id: C
         text: "Parce qu'elle remplace le produit des deux nombres par le produit de leurs logarithmes, ce qui revient au même calcul"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           C'est une confusion classique sur ce chapitre : la propriété ne
           transforme pas un produit en un AUTRE produit ($L(a)\times L(b)$
@@ -408,6 +486,7 @@ items:
       - id: D
         text: "Parce qu'elle élimine le besoin de connaître les deux nombres de départ"
         correct: false
+        misconception: null
         feedback: >
           Il faut au contraire connaître les deux nombres de départ pour
           lire leurs logarithmes respectifs dans la table — rien n'est
@@ -430,6 +509,7 @@ items:
     difficulty_level: 2
     skill_code: maths_fonction_logarithme
     tags: ["signe"]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
     stem: >
       Sans calculatrice, quel est le signe de $\ln(0{,}2)$ ?
     type: mcq
@@ -440,6 +520,7 @@ items:
       - id: B
         text: "$\\ln(0{,}2) > 0$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Tu inverses le sens de la règle de signe : $\ln$ est négatif pour
           les nombres compris entre $0$ et $1$, positif pour ceux
@@ -448,6 +529,7 @@ items:
       - id: C
         text: "$\\ln(0{,}2) = 0$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           $\ln(x)=0$ seulement en $x=1$ (c'est la définition même de $\ln$,
           qui s'annule en $1$). Comme $0{,}2\neq1$, $\ln(0{,}2)$ n'est pas
@@ -455,6 +537,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans calculatrice"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Le signe de $\ln(x)$ se lit directement par comparaison à $1$,
           grâce à la stricte croissance de $\ln$ et $\ln(1)=0$ : aucun
@@ -473,6 +556,7 @@ items:
     difficulty_level: 2
     skill_code: maths_fonction_logarithme
     tags: ["signe", "domaine-de-definition"]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
     stem: >
       Résous dans $]0,+\infty[$ l'inéquation $\ln(x) < 0$.
     type: mcq
@@ -483,6 +567,7 @@ items:
       - id: B
         text: "$]1,+\\infty[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Tu as choisi l'intervalle où $\ln$ est POSITIF, pas négatif —
           c'est exactement l'inverse de ce qui est demandé. Compare $x$ à
@@ -490,6 +575,7 @@ items:
       - id: C
         text: "$]-\\infty,1[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu oublies que $\ln$ n'est définie que sur $]0,+\infty[$ : il
           faut intersecter la condition $x<1$ avec le domaine de $\ln$, pas
@@ -498,6 +584,7 @@ items:
       - id: D
         text: "$\\{0\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Tu confonds l'ÉQUATION $\ln(x)=0$ (solution unique $x=1$) avec
           l'INÉQUATION $\ln(x)<0$, dont l'ensemble des solutions est tout
@@ -516,6 +603,7 @@ items:
     difficulty_level: 2
     skill_code: maths_fonction_logarithme
     tags: ["proprietes-algebriques", "quotient"]
+    primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
     stem: >
       Sachant que $\ln(5)\approx1{,}609$ et $\ln(3)\approx1{,}099$, quelle
       est la valeur exacte de $\ln\left(\dfrac{5}{3}\right)$ en fonction de
@@ -528,6 +616,7 @@ items:
       - id: B
         text: "$\\ln(5)+\\ln(3)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu appliques la propriété du PRODUIT à un quotient : $\dfrac53$
           n'est pas un produit $5\times3$, c'est une division. La
@@ -536,6 +625,7 @@ items:
       - id: C
         text: "$\\dfrac{\\ln(5)}{\\ln(3)}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu gardes un quotient à l'extérieur du logarithme au lieu de le
           transformer : un quotient à l'INTÉRIEUR du $\ln$ devient une
@@ -544,6 +634,7 @@ items:
       - id: D
         text: "$\\ln(5)\\times\\ln(3)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           C'est la confusion la plus fréquente sur ce chapitre, ici mal
           appliquée en plus : $\ln(ab)$ devient une SOMME $\ln(a)+\ln(b)$,
@@ -564,6 +655,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["derivee", "ln-u"]
+    primary_misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
     stem: >
       Quelle est la dérivée de $h(x) = \ln(5-2x)$ sur son domaine de
       définition ?
@@ -575,6 +667,7 @@ items:
       - id: B
         text: "$h'(x) = \\dfrac{2}{5-2x}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Erreur de signe sur la dérivée de l'intérieur : $u(x)=5-2x$ a
           pour dérivée $u'(x)=-2$ (le signe moins devant $2x$ se conserve
@@ -582,6 +675,7 @@ items:
       - id: C
         text: "$h'(x) = \\dfrac{1}{5-2x}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Tu appliques directement $\frac1x$ comme si $u(x)=x$, en
           oubliant complètement de multiplier par $u'(x)=-2$, la dérivée
@@ -590,6 +684,7 @@ items:
       - id: D
         text: "$h'(x) = -2\\ln(5-2x)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Tu multiplies par $\ln(u(x))$ lui-même au lieu de diviser par
           $u(x)$ : la formule est $\dfrac{u'(x)}{u(x)}$, un quotient — pas
@@ -606,6 +701,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["derivee", "variations"]
+    primary_misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
     stem: >
       Soit $f(x) = \ln(x) - x$ définie sur $]0,+\infty[$. Quelle
       affirmation, parmi les suivantes, décrit correctement $f'(x)$ et les
@@ -618,6 +714,7 @@ items:
       - id: B
         text: "$f'(x) = \\dfrac1x - 1$ est toujours positive, car $\\dfrac1x>0$ pour tout $x>0$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Tu oublies de tenir compte complètement du $-1$ : le signe de
           $f'(x)=\frac1x-1$ dépend de la comparaison entre $\frac1x$ et
@@ -626,6 +723,7 @@ items:
       - id: C
         text: "$f'(x) = \\dfrac1x - 1$ est toujours négative, donc $f$ est strictement décroissante sur tout $]0,+\\infty[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Le signe de $f'(x)$ change en $x=1$ : positif avant, négatif
           après. Une seule direction de variation sur tout $]0,+\infty[$
@@ -633,6 +731,7 @@ items:
       - id: D
         text: "$f'(x) = \\dfrac{x-1}{x}$, donc $f$ est décroissante sur $]0,1[$ puis croissante sur $]1,+\\infty[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
           Erreur de signe en dérivant $-x$ dans $f(x)=\ln(x)-x$ : la
           dérivée de $-x$ est $-1$, pas $+1$. Donc
@@ -654,6 +753,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["limites"]
+    primary_misconception: mc.math.maths_fonction_logarithme.limites-de-ln
     stem: >
       Que vaut $\displaystyle\lim_{x \to 0^{+}} \ln(x)$ ?
     type: mcq
@@ -664,6 +764,7 @@ items:
       - id: B
         text: "$0$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           Tu confonds $\ln(1)=0$ avec la limite en $0^+$ : $\ln(x)$ ne
           s'annule qu'en $x=1$. Quand $x$ se rapproche de $0$ (pas de
@@ -671,6 +772,7 @@ items:
       - id: C
         text: "$+\\infty$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           Près de $0$, $x$ est dans $]0,1[$, où $\ln$ est NÉGATIF — tu
           confonds avec le comportement en $+\infty$, où $\ln(x)$ tend
@@ -678,6 +780,7 @@ items:
       - id: D
         text: "La limite n'existe pas, car $0$ n'est pas dans le domaine de $\\ln$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           C'est vrai que $\ln(0)$ n'existe pas ($0$ n'est pas dans le
           domaine) — mais cela n'empêche pas d'étudier ce qui se passe
@@ -697,6 +800,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["limites", "croissances-comparees"]
+    primary_misconception: mc.math.maths_fonction_logarithme.limites-de-ln
     stem: >
       Que vaut $\displaystyle\lim_{x \to 0^{+}} x\ln(x)$ ?
     type: mcq
@@ -707,6 +811,7 @@ items:
       - id: B
         text: "$-\\infty$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           Tu vois que $x\to0$ et $\ln(x)\to-\infty$ et tu conclus
           directement que le produit part vers $-\infty$ — mais c'est une
@@ -716,6 +821,7 @@ items:
       - id: C
         text: "$+\\infty$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           Même erreur de forme indéterminée non levée, avec en plus une
           erreur de signe : $x>0$ et $\ln(x)<0$ près de $0^+$, donc le
@@ -724,6 +830,7 @@ items:
       - id: D
         text: "La limite n'existe pas, car $0\\times(-\\infty)$ n'a pas de sens"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
           $0\times\infty$ est en effet une forme INDÉTERMINÉE, ce qui veut
           dire qu'on ne peut pas conclure directement — mais indéterminée
@@ -746,6 +853,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["bijection"]
+    primary_misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
     stem: >
       On admet que $\ln$ réalise une bijection de $]0,+\infty[$ vers
       $\mathbb{R}$. Combien de solutions admet l'équation $\ln(x) = -5$
@@ -758,6 +866,7 @@ items:
       - id: B
         text: "Aucune solution, car $-5$ est négatif et $\\ln$ ne prend que des valeurs positives"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           Tu confonds le DOMAINE de $\ln$ (les $x$ qu'on peut lui donner,
           $]0,+\infty[$, toujours positifs) avec son IMAGE (les valeurs
@@ -767,6 +876,7 @@ items:
       - id: C
         text: "Deux solutions, par symétrie"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           $\ln$ est strictement croissante, donc injective : elle ne peut
           jamais atteindre deux fois la même valeur. Il n'existe aucune
@@ -774,6 +884,7 @@ items:
       - id: D
         text: "Une infinité de solutions"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           La bijectivité de $\ln$ signifie précisément que chaque réel, y
           compris $-5$, est atteint UNE SEULE fois — « bijection » exclut
@@ -793,6 +904,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["nombre-e"]
+    primary_misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
     stem: >
       Par définition, le nombre $e$ est l'unique réel strictement positif
       tel que...
@@ -804,6 +916,7 @@ items:
       - id: B
         text: "$e = \\ln(1)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           Tu inverses la définition : $e$ n'est pas « le logarithme de
           $1$ » (qui vaut $0$, pas $e$) — c'est l'inverse, $e$ est le
@@ -811,6 +924,7 @@ items:
       - id: C
         text: "$\\ln(1) = e$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           Erreur de sens similaire : $\ln(1)=0$ toujours (établi au R1),
           ce n'est pas une définition de $e$. Tu confonds quelle quantité
@@ -819,6 +933,7 @@ items:
       - id: D
         text: "$e^1 = \\ln(1)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           Tu mélanges les rôles de $\ln$ et de sa fonction réciproque
           (l'exponentielle, vue au chapitre suivant) : ici $e$ se
@@ -838,6 +953,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["concavite", "tangente"]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
     stem: >
       La tangente à la courbe de $\ln$ au point d'abscisse $1$ a pour
       équation $y=x-1$. Que peut-on en déduire, grâce à la concavité de
@@ -851,6 +967,7 @@ items:
       - id: B
         text: "La courbe de $\\ln$ reste toujours au-dessus de la droite $y=x-1$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           C'est l'inverse : $\ln$ est concave (sa dérivée seconde
           $-\frac1{x^2}$ est strictement négative sur tout le domaine),
@@ -859,6 +976,7 @@ items:
       - id: C
         text: "La courbe coupe la tangente en $x=1$, puis repasse au-dessus pour $x>1$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           La concavité de $\ln$ vaut sur TOUT le domaine $]0,+\infty[$,
           sans changer de sens en cours de route. La courbe ne repasse
@@ -866,6 +984,7 @@ items:
       - id: D
         text: "On ne peut rien dire sans calculer $\\ln''(x)$ en chaque point de la courbe"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           $\ln''(x)=-\frac1{x^2}$ est strictement négative pour TOUT
           $x>0$ : son signe est déjà connu partout d'un seul coup, pas
@@ -887,6 +1006,7 @@ items:
     difficulty_level: 4
     skill_code: maths_fonction_logarithme
     tags: ["inequations", "domaine"]
+    primary_misconception: mc.math.maths_fonction_logarithme.domaine-neglige
     stem: >
       Quel est l'ensemble des solutions de l'inéquation
       $\ln(x-1) \leq \ln(7-x)$ ?
@@ -898,6 +1018,7 @@ items:
       - id: B
         text: "$]-\\infty,4]$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu résous seulement l'inégalité $x-1\leq7-x$ sans revenir
           vérifier le domaine : il faut $x-1>0$ et $7-x>0$, donc $1<x<7$,
@@ -906,12 +1027,14 @@ items:
       - id: C
         text: "$[4,7[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Tu as inversé le sens de l'inégalité en la résolvant :
           $x-1\leq7-x$ donne $2x\leq8$, donc $x\leq4$, pas $x\geq4$.
       - id: D
         text: "$]1,7[$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu as gardé uniquement les conditions de domaine ($x>1$ et
           $x<7$) sans jamais résoudre l'inégalité elle-même $x-1\leq7-x$
@@ -937,6 +1060,7 @@ items:
     difficulty_level: 3
     skill_code: maths_fonction_logarithme
     tags: ["logarithme-decimal"]
+    primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
     stem: >
       Sachant que $\log(x) = \dfrac{\ln(x)}{\ln(10)}$, que vaut
       $\log(100)$ ?
@@ -948,6 +1072,7 @@ items:
       - id: B
         text: "$100$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu confonds l'argument $100$ avec sa valeur logarithmique :
           $\log(100)$ n'est pas $100$ lui-même — c'est l'exposant qu'il
@@ -956,6 +1081,7 @@ items:
       - id: C
         text: "$\\ln(100)$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu oublies de diviser par $\ln(10)$ dans la définition
           $\log(x)=\frac{\ln(x)}{\ln(10)}$. Laisser $\ln(100)$ tel quel
@@ -964,6 +1090,7 @@ items:
       - id: D
         text: "$10$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Tu confonds la BASE du logarithme décimal ($10$, le nombre dont
           le logarithme décimal vaut $1$) avec sa VALEUR en $x=100$ :
@@ -979,6 +1106,7 @@ items:
     difficulty_level: 4
     skill_code: maths_fonction_logarithme
     tags: ["tvi", "application"]
+    primary_misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
     stem: >
       Soit $h$ la fonction définie sur $]0,+\infty[$ par $h(x) = \ln(x) +
       x - 3$. Sachant que $h$ est continue et strictement croissante sur
@@ -993,6 +1121,7 @@ items:
       - id: B
         text: "Elle n'admet aucune solution, car $h$ ne peut pas s'annuler entre deux infinis"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           C'est l'inverse : passer continûment de $-\infty$ à $+\infty$
           garantit justement, par le TVI, que $h$ traverse la valeur $0$
@@ -1001,6 +1130,7 @@ items:
       - id: C
         text: "Elle admet une infinité de solutions, car $h$ varie sur tout $\\mathbb{R}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           C'est la STRICTE croissance de $h$ qui exclut plusieurs
           solutions : une fonction strictement croissante ne peut prendre
@@ -1010,6 +1140,7 @@ items:
       - id: D
         text: "On ne peut rien conclure sans calculer $h'(x)$ précisément"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
           La stricte croissance de $h$ est déjà donnée dans l'énoncé : il
           n'est pas nécessaire de recalculer $h'(x)$ pour appliquer le
@@ -1033,6 +1164,7 @@ items:
     difficulty_level: 4
     skill_code: maths_fonction_logarithme
     tags: ["signe", "monotonie"]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
     stem: >
       On reprend la fonction $h(x)=\ln(x)+x-3$, continue et strictement
       croissante sur $]0,+\infty[$, qui s'annule en un unique point
@@ -1046,6 +1178,7 @@ items:
       - id: B
         text: "$h(x) < 0$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Tu inverses le sens de la stricte croissance : une fonction
           croissante qui vaut $0$ en $\beta$ devient POSITIVE après
@@ -1053,6 +1186,7 @@ items:
       - id: C
         text: "$h(x) = 0$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           $\beta$ est l'UNIQUE solution de $h(x)=0$ — la stricte
           croissance de $h$ signifie qu'elle est injective. Pour
@@ -1061,6 +1195,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans connaître la valeur exacte de $\\beta$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
           Connaître le sens de variation (croissante) et le point
           d'annulation $\beta$ suffit pour connaître le signe de part et
@@ -1079,6 +1214,7 @@ items:
     difficulty_level: 4
     skill_code: maths_fonction_logarithme
     tags: ["equations", "domaine"]
+    primary_misconception: mc.math.maths_fonction_logarithme.domaine-neglige
     stem: >
       Résous dans $\mathbb{R}$ l'équation $\ln(x-1) + \ln(x+1) = \ln(8)$.
     type: mcq
@@ -1089,6 +1225,7 @@ items:
       - id: B
         text: "$\\{-3, 3\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu gardes les deux racines de l'équation polynomiale sans
           revenir vérifier le domaine : il faut $x-1>0$ ET $x+1>0$, donc
@@ -1097,6 +1234,7 @@ items:
       - id: C
         text: "$\\{-3\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
         feedback: >
           Tu as gardé la mauvaise racine : $-3$ ne vérifie pas la
           condition de domaine $x>1$, alors que $3$ la vérifie. C'est $3$
@@ -1104,6 +1242,7 @@ items:
       - id: D
         text: "$\\{4\\}$"
         correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
         feedback: >
           Tu as regroupé $\ln(x-1)+\ln(x+1)$ en
           $\ln\big((x-1)+(x+1)\big)=\ln(2x)$ — une SOMME à l'intérieur.
