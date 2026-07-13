@@ -47,6 +47,66 @@ misconceptions:
     description: "L'élève confond l'énergie mécanique constante avec l'énergie cinétique, qui elle varie et culmine au point bas ; ou généralise une égalité de passage ($E_c=E_{pp}$, vraie à des positions particulières) en une règle permanente valable partout."
     contradicts_principle: "$E_m$ ne varie pas : elle n'est ni maximale ni minimale nulle part. C'est $E_c$ qui est maximale au point le plus bas et $E_{pp}$ qui est maximale aux écarts extrêmes ; $E_c=E_{pp}$ seulement aux positions où les deux courbes du diagramme d'énergie se croisent."
 
+  # ── Generic-energy misconceptions (R0–R4 / R8) — backfilled during the
+  # summit-conversion pass to give every legacy item a formal misconception
+  # mapping. These items were originally built as a DIFFICULTY RAMP (≈3 per
+  # rung), not as a per-misconception coverage bank, so several of these
+  # generic models sit BELOW the ≥3-item floor (honestly reported in
+  # coverage_summary §6). Only the gate/rupture targets and the R5/R6/R7
+  # oscillator set are guaranteed at floor.
+  - id: mc.physics.pc_energie.travail-poids-depend-du-chemin
+    label: "« Le travail du poids — donc la vitesse d'arrivée — dépend de la longueur ou de la forme du chemin »"
+    description: "L'élève pense qu'un chemin plus long (ou plus court, ou d'une certaine forme) modifie le travail du poids et donc la vitesse d'arrivée : il calcule $mgs$ avec la longueur du chemin $s$, ou conclut qu'une des deux trajectoires arrive plus vite."
+    contradicts_principle: "$W(\\vec P)_{A\\to B}=mg(z_A-z_B)$ ne dépend que de la dénivelée entre le départ et l'arrivée, jamais de la longueur, de la forme ou de la durée du trajet ; à dénivelée et frottements égaux, la vitesse d'arrivée est identique quel que soit le chemin."
+  - id: mc.physics.pc_energie.frottement-restitue-energie
+    label: "« Le frottement peut restituer de l'énergie au solide (l'échauffement lui rend de la vitesse) »"
+    description: "L'élève croit que le frottement fournit de l'énergie au solide, ou que son travail peut être positif — par exemple qu'il augmente $E_m$ ou la vitesse d'arrivée."
+    contradicts_principle: "Le frottement s'oppose toujours au mouvement : son travail est résistant ($W(\\vec f)\\le 0$), il ne fait que dissiper de l'énergie mécanique en chaleur. $\\Delta E_m=W(\\vec f)\\le 0$ : le frottement ne peut jamais augmenter $E_m$ ni la vitesse."
+  - id: mc.physics.pc_energie.energie-oublie-facteur-demi
+    label: "« Énergie cinétique sans le facteur ½ (ou $v^2=gh$ sans le facteur 2) »"
+    description: "L'élève écrit $E_c=mv^2$ au lieu de $\\frac12 mv^2$, ou applique $v^2=gh$ au lieu de $v^2=2gh$ — le facteur numérique de l'énergie cinétique est omis."
+    contradicts_principle: "$E_c=\\frac12 mv^2$ : le facteur $\\frac12$ vient de l'intégration du travail ; le TEC en chute libre donne $\\frac12 mv^2=mgh$, donc $v^2=2gh$, jamais $v^2=gh$."
+  - id: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+    label: "« L'énergie cinétique varie comme $v$ (ou $v^3$, ou pas du tout), pas comme $v^2$ »"
+    description: "L'élève traite $E_c$ comme proportionnelle à $v$ (doubler $v$ doublerait $E_c$), ou à une autre puissance, ou la croit indépendante de la vitesse."
+    contradicts_principle: "$E_c=\\frac12 mv^2\\propto v^2$ : doubler $v$ multiplie $E_c$ par $2^2=4$, jamais par $2$ ni par $8$ ; et $E_c$ dépend bien de $v$, pas seulement de $m$."
+  - id: mc.physics.pc_energie.energie-oublie-masse
+    label: "« Formule d'énergie ou de travail écrite sans la masse »"
+    description: "L'élève omet la masse : il calcule $gh$ au lieu de $mgh$, ou $\\frac12 v^2$ au lieu de $\\frac12 mv^2$, ou oublie de diviser par $m$ pour remonter à la vitesse."
+    contradicts_principle: "L'énergie cinétique $\\frac12 mv^2$ et le travail du poids $mgh$ contiennent tous deux la masse ; l'omettre change la valeur (et les unités) — même si la masse se simplifie parfois, elle doit d'abord être écrite des deux côtés."
+  - id: mc.physics.pc_energie.ec-grandeur-vectorielle
+    label: "« L'énergie cinétique est un vecteur / dépend de la direction du mouvement »"
+    description: "L'élève pense que $E_c$ porte une direction (comme $\\vec v$), ou qu'elle dépend de l'orientation du mouvement, ou qu'elle est « motrice » ou « résistante »."
+    contradicts_principle: "$E_c=\\frac12 mv^2$ est une grandeur scalaire, toujours positive, qui ne dépend que de la NORME $v$ de la vitesse — jamais de sa direction ; « motrice/résistante » qualifie le travail d'une force, pas l'énergie cinétique."
+  - id: mc.physics.pc_energie.travail-oublie-cos
+    label: "« Le travail d'une force vaut $F\\times d$ sans le $\\cos\\theta$ (ou avec $\\sin\\theta$) »"
+    description: "L'élève oublie le facteur $\\cos\\theta$ du produit scalaire, utilise $\\sin\\theta$ à la place, ou se trompe sur le signe (motrice/résistante) qui en découle."
+    contradicts_principle: "$W(\\vec F)=\\vec F\\cdot\\vec{AB}=F\\,d\\,\\cos\\theta$ : c'est la composante de $\\vec F$ ALIGNÉE avec le déplacement qui travaille, donc $\\cos\\theta$ (pas $\\sin\\theta$) ; le signe du travail suit celui de $\\cos\\theta$."
+  - id: mc.physics.pc_energie.force-perpendiculaire-travaille
+    label: "« Une force perpendiculaire au déplacement (réaction normale) travaille »"
+    description: "L'élève attribue un travail non nul à la réaction normale $\\vec N$ (ou à toute force perpendiculaire au déplacement), par exemple $W(\\vec N)=N\\times d$, ou le croit dépendant de l'angle du plan."
+    contradicts_principle: "$\\vec N$ reste perpendiculaire au déplacement : $\\theta=90^\\circ$, $\\cos\\theta=0$, donc $W(\\vec N)=0$ quelle que soit sa norme ou l'inclinaison du plan — une force perpendiculaire au déplacement ne travaille jamais."
+  - id: mc.physics.pc_energie.energie-oublie-g
+    label: "« Énergie potentielle de pesanteur ou travail du poids sans le facteur $g$ »"
+    description: "L'élève écrit $E_{pp}=mz$ ou $W(\\vec P)=mh$ au lieu de $mgz$ / $mgh$ — l'intensité de la pesanteur $g$ est omise."
+    contradicts_principle: "$E_{pp}=mgz$ et $W(\\vec P)=mgh$ contiennent l'intensité de la pesanteur $g\\approx 9{,}8\\ \\text{m/s}^2$ ; l'omettre divise le résultat par $\\approx 9{,}8$ et lui retire ses unités d'énergie."
+  - id: mc.physics.pc_energie.confond-ec-et-em
+    label: "« L'énergie cinétique est confondue avec l'énergie mécanique »"
+    description: "L'élève traite $E_c$ et $E_m$ comme la même grandeur : il pose $E_c=E_m$ à un instant où l'altitude n'est pas nulle, ou en déduit une vitesse sans soustraire $E_{pp}$."
+    contradicts_principle: "$E_m=E_c+E_{pp}$ : $E_c$ n'égale $E_m$ que là où $E_{pp}=0$ ; ailleurs il faut soustraire $E_{pp}$ pour obtenir $E_c$, puis la vitesse. Confondre les deux surestime systématiquement la vitesse."
+  - id: mc.physics.pc_energie.em-conservee-malgre-frottement
+    label: "« L'énergie mécanique se conserve toujours, même en présence de frottement »"
+    description: "L'élève applique la conservation de $E_m$ sans vérifier l'absence de frottement : il ignore le terme $W(\\vec f)$ dans le bilan, ou affirme que $\\Delta E_m=0$ alors qu'un frottement agit."
+    contradicts_principle: "$E_m$ ne se conserve QUE sans frottement ; dès qu'un frottement travaille, $\\Delta E_m=W(\\vec f)<0$ — l'ignorer revient à annoncer une vitesse finale plus grande que la vitesse réelle."
+  - id: mc.physics.pc_energie.signe-travail-poids
+    label: "« Erreur de signe sur le travail du poids ou sur la relation $W(\\vec P)=-\\Delta E_{pp}$ »"
+    description: "L'élève se trompe sur le signe du travail du poids (positif en montée), ou donne à $W(\\vec P)$ et $\\Delta E_{pp}$ le même signe."
+    contradicts_principle: "$W(\\vec P)=-\\Delta E_{pp}$ : à la montée, le poids résiste ($W(\\vec P)<0$) et $E_{pp}$ augmente ($\\Delta E_{pp}>0$) ; les deux sont toujours de signes opposés, jamais identiques."
+  - id: mc.physics.pc_energie.confusion-v-et-v-carre
+    label: "« $v^2$ confondu avec $v$ (oubli de la racine carrée) »"
+    description: "L'élève annonce la valeur de $v^2$ comme si c'était la vitesse, en oubliant de prendre la racine carrée à la fin du calcul."
+    contradicts_principle: "$v^2=2gh$ donne le CARRÉ de la vitesse ; il reste à extraire $v=\\sqrt{2gh}$ — livrer $v^2$ pour $v$ confond une vitesse au carré avec une vitesse."
+
 items:
   - id: AE-1
     rung: "R3"
