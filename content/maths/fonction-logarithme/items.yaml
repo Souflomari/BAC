@@ -1271,3 +1271,53 @@ items:
       $x>1$ :
       $$\mathcal{S} = \{3\}$$
 
+
+# ── Coverage summary (summit-conversion floor backfill — HONEST) ───────────
+# This was a LEGACY end-bank (`misconceptions: []`, item-level tags only). The
+# backfill above added the 7-model inventory, a `primary_misconception` per
+# item, and a per-distractor `misconception` on every wrong choice (null where a
+# choice is a generic slip — e.g. "on ne peut rien conclure" — not a named
+# model). Counts below are BY PRIMARY (each item counted once, toward its
+# primary model); they are real, not padded.
+coverage_summary:
+  total_items: 24
+  per_rung:
+    R0: 3   # LOG-7, LOG-8, LOG-9  (accroche : la fonction L, produit→somme)
+    R1: 3   # LOG-1, LOG-10, LOG-11
+    R2: 3   # LOG-2, LOG-3, LOG-12
+    R3: 3   # LOG-4, LOG-13, LOG-14
+    R4: 3   # LOG-5, LOG-15, LOG-16
+    R5: 3   # LOG-17, LOG-18, LOG-19
+    R6: 3   # LOG-6, LOG-20, LOG-21
+    R7: 3   # LOG-22, LOG-23, LOG-24
+  per_misconception:
+    mc.math.maths_fonction_logarithme.domaine-neglige: 4            # LOG-1, LOG-6, LOG-20, LOG-24
+    mc.math.maths_fonction_logarithme.produit-somme-confondus: 3    # LOG-3, LOG-7, LOG-9
+    mc.math.maths_fonction_logarithme.regles-quotient-puissance: 4  # LOG-2, LOG-8, LOG-12, LOG-21
+    mc.math.maths_fonction_logarithme.derivee-de-ln-u: 3            # LOG-4, LOG-13, LOG-14
+    mc.math.maths_fonction_logarithme.limites-de-ln: 3              # LOG-5, LOG-15, LOG-16
+    mc.math.maths_fonction_logarithme.lecture-variations-signe: 4   # LOG-10, LOG-11, LOG-19, LOG-23
+    mc.math.maths_fonction_logarithme.unicite-bijection-tvi: 3      # LOG-17, LOG-18, LOG-22
+  floor_met: true   # all 7 models have >= 3 primary items; none faked.
+
+  # Distractors whose model differs from their item's primary — SECONDARY
+  # coverage, NOT counted in per_misconception above (an item is counted once,
+  # toward its primary). Listed for honesty and for a future item pass.
+  secondary_coverage:
+    - { item: LOG-3,  choice: D, misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance,   note: "ln a - ln b = ln(a-b) : règle du quotient mal appliquée (item primaire : produit-somme)." }
+    - { item: LOG-6,  choice: D, misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus,      note: "regroupé en ln(2x+2) — somme à l'intérieur (item primaire : domaine)." }
+    - { item: LOG-11, choice: C, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "]-∞,1[ sans intersecter le domaine (item primaire : lecture-variations)." }
+    - { item: LOG-12, choice: D, misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus,      note: "ln5·ln3 : produit de logarithmes (item primaire : quotient-puissance)." }
+    - { item: LOG-14, choice: B, misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe,     note: "signe de f' mal lu, dérivée correcte (item primaire : derivee-de-ln-u)." }
+    - { item: LOG-14, choice: C, misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe,     note: "signe de f' mal lu, dérivée correcte (item primaire : derivee-de-ln-u)." }
+    - { item: LOG-20, choice: C, misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe,     note: "sens de l'inégalité inversé (item primaire : domaine)." }
+    - { item: LOG-24, choice: D, misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus,      note: "regroupé en ln(2x) — somme à l'intérieur (item primaire : domaine)." }
+
+  notes: >-
+    Backfill only : aucun nouvel item écrit, aucun compte gonflé. Les 24 items
+    hérités se répartissent proprement (>= 3 par modèle) sur les 7 modèles alignés
+    sur les rupture-gates de la leçon. Trois distracteurs « on ne peut rien
+    conclure » (LOG-7.D, LOG-8.D, LOG-9.B, LOG-9.D) restent taggés null : ce sont
+    des impasses de raisonnement génériques, pas des modèles nommés. Un futur
+    passage d'items pourra ajouter des items dédiés aux modèles conceptuels R5-R7
+    (bijection/TVI, concavité) pour épaissir leur couverture au-delà du plancher.
