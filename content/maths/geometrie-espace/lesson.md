@@ -12,6 +12,8 @@ Trace mentalement deux segments : la **grande diagonale** $(AG)$, qui traverse l
 
 Avant de lire la suite, prends position : d'après toi, ces deux droites sont-elles perpendiculaires, ou n'ont-elles aucun lien particulier ? Regarde le cube dans ta tête, tourne-le, essaie de trancher à l'oeil.
 
+[[checkpoint:cp-r0-predict]]
+
 C'est difficile, non ? Et c'est bien le problème. À l'oeil, sur un dessin en perspective, deux droites de l'espace peuvent sembler perpendiculaires sans l'être, ou l'inverse — la perspective ment. Pire : $(AG)$ et $(BD)$ ne se croisent même pas (elles ne passent pas par le même point), donc « perpendiculaires » n'a même pas un sens évident ici.
 
 Ce dont on a besoin, c'est d'un moyen de trancher ce genre de question **avec des nombres**, sans dépendre d'un dessin ni d'une intuition. C'est exactement ce que cette leçon construit : une façon de décrire un point, une droite, un plan de l'espace par des coordonnées, puis de calculer à partir de ces coordonnées des distances, des angles, des aires, des volumes — et de répondre à des questions comme celle du cube avec une certitude totale.
@@ -191,6 +193,8 @@ $$\left\|\overrightarrow{AB}\wedge\overrightarrow{AC}\right\| = \sqrt{0^2+0^2+4^
 
 L'aire du parallélogramme construit sur $\overrightarrow{AB}$ et $\overrightarrow{AC}$ vaut $4$. Le triangle $ABC$ en occupe la moitié : $\text{aire}(ABC) = 2$. **Vérification directe :** $AB$ et $AC$ sont perpendiculaires (le tétraèdre est trirectangle en $A$) et mesurent chacun $2$, donc le triangle $ABC$ est rectangle en $A$ avec deux côtés de longueur $2$ : son aire vaut $\frac{1}{2}\times2\times2=2$. Les deux méthodes coïncident.
 
+[[checkpoint:cp-r2-scalaire-vectoriel]]
+
 ---
 
 ## R4 — Produit mixte, déterminant, et volume
@@ -321,6 +325,8 @@ $$\left(SBC\right):\ x+y+z-2=0$$
 
 **Vérification sur les deux autres points :** $B(2,0,0)$ donne $2+0+0-2=0$ ✓ ; $C(0,2,0)$ donne $0+2+0-2=0$ ✓. Les trois points vérifient bien l'équation.
 
+[[checkpoint:cp-r6-plan-normal]]
+
 ---
 
 ## R7 — Positions relatives : droites et plans
@@ -414,6 +420,8 @@ $$d\left(A,(BC)\right) = \frac{\|(0,0,-4)\|}{\|\overrightarrow{BC}\|} = \frac{4}
 
 **Vérification croisée, via l'aire du triangle (R3) :** $\text{aire}(ABC) = \frac12\times BC\times d(A,(BC))$. On a $\text{aire}(ABC)=2$ (R3) et $BC=2\sqrt2$, donc $d(A,(BC)) = \dfrac{2\times2}{2\sqrt2}=\dfrac{4}{2\sqrt2}=\sqrt2$. Même résultat par les deux méthodes.
 
+[[checkpoint:cp-r8-distance]]
+
 ---
 
 ## R9 — La sphère : équation cartésienne et intersection avec un plan
@@ -466,57 +474,23 @@ Puisque $d=2<R=3$, l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}=\sqrt{
 
 ## R10 — Pour t'entraîner
 
-Voici un exercice de type bac, **original** — ce n'est pas un sujet officiel, c'est un exercice d'entraînement construit pour cette leçon, qui rassemble plusieurs des outils vus dans ce chapitre.
+On passe maintenant au format de l'épreuve. D'abord un vrai sujet d'examen national — tu le cherches toi-même, tu t'engages sur une réponse, et le raisonnement expert ne se dévoile qu'ensuite. Puis une variation : mêmes outils, autres nombres, pour vérifier que tu as compris la méthode et pas mémorisé un corrigé.
 
-### Exercice travaillé
+Un dernier réflexe à verrouiller avant de te lancer : quand un plan rencontre une sphère, on calcule la distance du centre au plan, on la compare au rayon, et **c'est cette comparaison** qui décide de la nature de l'intersection.
 
-L'espace est muni d'un repère orthonormé $(O\,;\,\vec{i},\vec{j},\vec{k})$. On considère les points $A(1,1,0)$, $B(3,1,0)$, $C(1,3,0)$, $D(1,1,4)$.
+[[checkpoint:cp-r9-intersection]]
 
-1. Calculer $\overrightarrow{AB}$, $\overrightarrow{AC}$, $\overrightarrow{AD}$, puis montrer que $A$, $B$, $C$, $D$ ne sont pas coplanaires, et en déduire le volume du tétraèdre $ABCD$.
-2. Déterminer un vecteur normal au plan $(BCD)$, puis une équation cartésienne de ce plan.
-3. Calculer la distance du point $A$ au plan $(BCD)$, d'abord directement par la formule du R8, puis à partir du volume trouvé en 1. — et vérifier que les deux méthodes s'accordent.
+### Exercice de type bac
 
-**Raisonnement à voix haute.**
+Un sujet d'examen national (session normale 2019). Prends le temps de le chercher toi-même avant de dérouler le raisonnement.
 
-**Question 1.** On soustrait les coordonnées, comme au R1 :
+[[exercise:r-bac]]
 
-$$\overrightarrow{AB} = (2,0,0) \qquad \overrightarrow{AC} = (0,2,0) \qquad \overrightarrow{AD} = (0,0,4)$$
+### Une variation pour ne pas mémoriser
 
-Pour montrer que les quatre points ne sont pas coplanaires, on calcule le produit mixte (R4) — s'il est non nul, les trois vecteurs (et donc les quatre points) ne sont pas coplanaires, et $ABCD$ est un vrai tétraèdre.
+Mêmes gestes, d'autres nombres — de quoi vérifier que c'est la méthode que tu as retenue, pas un corrigé.
 
-$$\overrightarrow{AB}\wedge\overrightarrow{AC} = (0\times0-0\times2,\ 0\times0-2\times0,\ 2\times2-0\times0) = (0,0,4)$$
-
-$$\left[\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AD}\right] = (0,0,4)\cdot(0,0,4) = 16$$
-
-Le produit mixte vaut $16\neq0$ : les points ne sont pas coplanaires, $ABCD$ est bien un tétraèdre. Son volume (R4) :
-
-$$V_{ABCD} = \frac{1}{6}\times|16| = \frac{16}{6} = \frac{8}{3}$$
-
-**Question 2.** On a besoin d'un vecteur normal au plan $(BCD)$ ; on le fabrique avec deux vecteurs de ce plan, comme au R6.
-
-$$\overrightarrow{BC} = C-B = (-2,2,0) \qquad \overrightarrow{BD} = D-B = (-2,0,4)$$
-
-$$\overrightarrow{BC}\wedge\overrightarrow{BD} = \left(2\times4-0\times0,\ 0\times(-2)-(-2)\times4,\ (-2)\times0-2\times(-2)\right) = (8,8,4)$$
-
-On simplifie en divisant par $4$ : $\vec{n}=(2,2,1)$. L'équation du plan a la forme $2x+2y+z+d=0$ ; on détermine $d$ avec $B(3,1,0)$ :
-
-$$2\times3+2\times1+0+d=0 \implies d=-8$$
-
-$$\left(BCD\right):\ 2x+2y+z-8=0$$
-
-**Vérification :** $C(1,3,0)$ donne $2+6+0-8=0$ ✓ ; $D(1,1,4)$ donne $2+2+4-8=0$ ✓.
-
-**Question 3.** Distance directe, par la formule du R8, avec $A(1,1,0)$ :
-
-$$d\left(A,(BCD)\right) = \frac{|2\times1+2\times1+0-8|}{\sqrt{2^2+2^2+1^2}} = \frac{|2+2-8|}{\sqrt9} = \frac{4}{3}$$
-
-**Vérification via le volume :** $V_{ABCD}=\frac13\times\text{aire}(BCD)\times d(A,(BCD))$. L'aire de $BCD$ vaut $\frac12\|\overrightarrow{BC}\wedge\overrightarrow{BD}\| = \frac12\|(8,8,4)\| = \frac12\sqrt{64+64+16}=\frac12\sqrt{144}=6$. Donc $d(A,(BCD)) = \dfrac{3V_{ABCD}}{\text{aire}(BCD)} = \dfrac{3\times\frac83}{6} = \dfrac{8}{6}=\dfrac43$. Les deux méthodes donnent bien $\frac43$.
-
-### À toi de jouer
-
-**(a)** On considère, avec les mêmes points, la sphère de centre $A$ et de rayon $2$. Donner son équation cartésienne. Cette sphère coupe-t-elle le plan $(BCD)$ ? Si oui, préciser le rayon du cercle d'intersection (tu peux réutiliser la distance $d(A,(BCD))=\frac43$ trouvée ci-dessus).
-
-**(b)** Montrer que la droite $(AD)$ est orthogonale au plan $(ABC)$.
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus par cet
      auteur :
