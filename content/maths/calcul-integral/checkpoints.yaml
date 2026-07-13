@@ -1,0 +1,377 @@
+notion: calcul-integral
+skill_code: maths_calcul_integral
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, calcul-integral)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MATHEMATICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)        — COMMIT gate: turns the car hook's
+#                                      "prends position" into a real MCQ commit.
+#                                      Probes aire-naive-geometrique (a naive
+#                                      geometric shortcut instead of the exact
+#                                      integral).
+#   cp-r1-primitive   (after R1)     — rupture gate: PRIMITIVE vs DÉRIVÉE. To
+#                                      verify F is a primitive of h, one
+#                                      DIFFERENTIATES F, never integrates h nor
+#                                      differentiates h. Probes primitive-vs-derivee.
+#   cp-lin-chasles    (after R3)     — rupture gate: LINÉARITÉ + RELATION DE
+#                                      CHASLES on one stem (decompose with
+#                                      Chasles, then pull the constant factor
+#                                      out). Probes chasles-mal-appliquee, with
+#                                      linearite-abusive.
+#   cp-ipp            (after R7)      — rupture gate: INTÉGRATION PAR PARTIES —
+#                                      the choice of u and v' (derive the factor
+#                                      that simplifies, primitive the one that
+#                                      is immediate). Probes
+#                                      ipp-mauvais-choix-ou-signe.
+#   cp-aire-signe     (after R8)      — rupture gate: L'INTÉGRALE COMME AIRE
+#                                      ALGÉBRIQUE (signe). When f changes sign,
+#                                      the signed integral is NOT the area:
+#                                      split first, then take absolute values.
+#                                      Probes integrale-signee-vs-aire.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml). Option lengths are balanced so the correct choice is never the
+# conspicuously longest.
+#
+# Boundary guard: 2ème Bac SExp (SVT / Sciences Physiques, BIOF) — intégrale
+# d'une fonction continue comme F(b)−F(a), interprétation en aire (f≥0),
+# linéarité, relation de Chasles, positivité / comparaison, inégalité et valeur
+# moyennes, intégration par parties, aire d'un domaine (signe, entre deux
+# courbes), unités d'aire. Pas de sommes de Riemann formelles, pas de
+# changement de variable, pas d'intégrale généralisée.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the car hook's commit)
+  #        Turns "prends position" into a real MCQ commit before the
+  #        reveal (I = 8/3 ≈ 2,67 m au R1). Probes aire-naive-geometrique
+  #        — estimating the area with a naive geometric shortcut instead
+  #        of the exact integral.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, hook_commit]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Une voiture accélère depuis l'arrêt avec la vitesse $v(t) = t^2$ (en m/s)
+      sur $[0,\,2]$. La distance parcourue est l'aire sous la courbe de $v$,
+      c'est-à-dire $\int_0^2 t^2\,\mathrm{d}t$. **Avant de lire la suite,
+      engage-toi :** à ton avis, cette distance est le plus proche de laquelle
+      de ces valeurs ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Environ $8$ m : la vitesse atteint $4$ m/s, et $4 \\times 2 = 8$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: |
+          Modèle détecté : le **rectangle à la vitesse maximale**. Tu as pris la
+          vitesse la plus grande sur l'intervalle ($v(2)=4$ m/s) comme si elle
+          était constante — c'est le grand rectangle qui **contient** la courbe,
+          donc une nette surestimation. La voiture démarre à l'arrêt et n'atteint
+          $4$ m/s qu'à la toute fin. La vraie valeur, calculée au rung suivant,
+          est bien plus basse.
+
+      - id: B
+        text: "Entre $2$ et $3$ m — précisément $\\dfrac{8}{3} \\approx 2{,}67$ m."
+        correct: true
+        feedback: |
+          Exact. Comme la parabole $t^2$ démarre lentement, l'aire réelle est
+          bien plus petite que le rectangle du maximum ($8$ m) ou que le triangle
+          ($4$ m). Aucun découpage en rectangles ou triangles ne donne le
+          contour courbe : seul l'outil de ce chapitre, $\int_0^2 t^2\,\mathrm{d}t = \dfrac{8}{3}$,
+          en donne la valeur exacte. On le construira dès le R1.
+
+      - id: C
+        text: "Environ $4$ m : l'aire du triangle reliant $(0,0)$ à $(2,4)$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: |
+          Modèle détecté : le **triangle**. C'est un bien meilleur candidat que le
+          rectangle, mais toujours une surestimation : sur $[0,2]$ la parabole
+          $t^2$ reste **en dessous** de la droite $y=2t$ (vérifie en $t=1$ :
+          $1 < 2$). Le triangle majore l'aire ; il ne la donne pas. La valeur
+          exacte $\dfrac{8}{3} \approx 2{,}67$ est plus petite que $4$.
+
+      - id: D
+        text: "Environ $2$ m : la vitesse au milieu, $v(1)=1$ m/s, sur $2$ s."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: |
+          Modèle détecté : le **rectangle au point milieu** ($v(1)\times 2 = 2$).
+          C'est proche, mais encore faux : remplacer une courbe par une seule
+          hauteur (même celle du milieu) ne rend pas l'aire exacte tant que le
+          contour est courbe. La valeur exacte est $\dfrac{8}{3} \approx 2{,}67$,
+          un peu au-dessus de ton estimation. Il faut l'intégrale pour trancher.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-primitive | placed AFTER R1
+  #        Rupture gate: PRIMITIVE vs DÉRIVÉE. Verifying that F is a
+  #        primitive of h means checking F' = h (differentiate F) — not
+  #        integrating h, not differentiating h. Probes primitive-vs-derivee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-primitive
+    rung: "R1"
+    habilete: raisonnement
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral]
+    primary_misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Le sujet de type bac te demandera de vérifier que $F(x) = x\,e^x$ est une
+      primitive de $h(x) = (x+1)e^x$ sur $\mathbb{R}$. Quel calcul faut-il faire
+      pour le vérifier ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Dériver $F$ et vérifier que $F'(x) = h(x)$."
+        correct: true
+        feedback: |
+          Exact. Une primitive $F$ de $h$ est, par définition, une fonction dont
+          la **dérivée** est $h$ : $F' = h$. On dérive donc $F$ et on contrôle
+          qu'on retombe sur $h$. Ici $(x\,e^x)' = e^x + x\,e^x = (x+1)e^x = h(x)$.
+
+      - id: B
+        text: "Intégrer $h$ et vérifier qu'on retrouve $F$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: |
+          Intégrer $h$, c'est justement chercher une primitive — l'opération que
+          la question veut t'éviter en te donnant déjà la candidate $F$. Vérifier
+          une primitive va dans l'**autre sens** : on dérive $F$, pas on intègre
+          $h$. Modèle erroné : confondre le sens primitive → dérivée.
+
+      - id: C
+        text: "Dériver $h$ et vérifier que $h'(x) = F(x)$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: |
+          C'est la relation **renversée** : ici tu testes si $F$ est la dérivée de
+          $h$, alors qu'on veut le contraire — $h$ doit être la dérivée de $F$.
+          « $F$ est une primitive de $h$ » signifie $F' = h$, pas $h' = F$. Modèle
+          erroné : intervertir primitive et dérivée.
+
+      - id: D
+        text: "Vérifier que $F(x) = h(x)$ pour tout $x$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: |
+          Une primitive n'est pas égale à la fonction : $F(x) = x\,e^x$ et
+          $h(x) = (x+1)e^x$ sont bien différentes. Ce qui les relie n'est pas
+          l'égalité, mais la dérivation : $F' = h$. Modèle erroné : croire qu'une
+          primitive « est » la fonction.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-lin-chasles | placed AFTER R3
+  #        Rupture gate: LINÉARITÉ + RELATION DE CHASLES on one stem.
+  #        Decompose ∫_2^5 f with Chasles (11 − 3 = 8), then pull the
+  #        constant 2 out by linearity (×2 = 16). Probes
+  #        chasles-mal-appliquee, with linearite-abusive.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-lin-chasles
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, chasles, linearite]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      On donne $\displaystyle\int_{0}^{2} f(x)\,\mathrm{d}x = 3$ et
+      $\displaystyle\int_{0}^{5} f(x)\,\mathrm{d}x = 11$. Que vaut
+      $\displaystyle\int_{2}^{5} 2f(x)\,\mathrm{d}x$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$16$"
+        correct: true
+        feedback: |
+          Exact. Chasles d'abord : $\int_2^5 f = \int_0^5 f - \int_0^2 f = 11 - 3 = 8$.
+          Puis la linéarité sort le facteur $2$ : $\int_2^5 2f = 2 \times 8 = 16$.
+          Deux règles, dans le bon ordre.
+
+      - id: B
+        text: "$8$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: |
+          Tu as bien décomposé avec Chasles ($\int_2^5 f = 11 - 3 = 8$), mais tu
+          as oublié le facteur $2$ devant $f$. La linéarité impose
+          $\int_2^5 2f = 2\int_2^5 f = 2 \times 8 = 16$. Modèle erroné : ignorer un
+          coefficient constant dans l'intégrale.
+
+      - id: C
+        text: "$28$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: |
+          C'est $2 \times (11 + 3) = 28$ : tu as **additionné** les deux
+          intégrales au lieu de les soustraire. Chasles s'écrit
+          $\int_0^5 f = \int_0^2 f + \int_2^5 f$, donc on **isole**
+          $\int_2^5 f = 11 - 3 = 8$. Modèle erroné : additionner là où Chasles
+          soustrait.
+
+      - id: D
+        text: "$22$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: |
+          C'est $2 \times 11 = 22$ : tu as utilisé $\int_0^5 f$ directement, sans
+          retirer la part $\int_0^2 f$ qui ne concerne pas l'intervalle $[2,5]$.
+          Il faut d'abord découper : $\int_2^5 f = 11 - 3 = 8$. Modèle erroné :
+          ignorer le découpage de Chasles.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-ipp | placed AFTER R7
+  #        Rupture gate: INTÉGRATION PAR PARTIES — the choice of u and
+  #        v'. Derive the factor that simplifies ((x+1)^2 → 2(x+1)),
+  #        primitive the one that is immediate (e^x → e^x). Directly
+  #        rehearses the bac's J. Probes ipp-mauvais-choix-ou-signe.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-ipp
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, integration_par_parties, bac_style]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+    item_source: clone_of_CI-25
+    lesson_placement: after_R7
+
+    stem: |
+      Pour calculer $\displaystyle\int_{-1}^{0} (x+1)^2 e^x\,\mathrm{d}x$ par
+      intégration par parties (le calcul de $J$ dans le sujet de type bac), quel
+      choix de $u$ et $v'$ fait avancer le calcul ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$u = (x+1)^2$ et $v' = e^x$"
+        correct: true
+        feedback: |
+          Exact. Dériver $u = (x+1)^2$ donne $2(x+1)$, **plus simple** ; primitiver
+          $v' = e^x$ donne $e^x$, **immédiat**. L'IPP échange alors une intégrale
+          difficile contre $\int 2(x+1)e^x\,\mathrm{d}x$, qui est $2I$ — déjà
+          connue.
+
+      - id: B
+        text: "$u = e^x$ et $v' = (x+1)^2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: |
+          Dériver $e^x$ redonne $e^x$ : ça ne simplifie rien. Et primitiver
+          $(x+1)^2$ donne $\tfrac{(x+1)^3}{3}$, un degré de **plus** — l'intégrale
+          suivante serait pire que celle de départ. Modèle erroné : dériver le
+          facteur qui ne se simplifie pas.
+
+      - id: C
+        text: "$u = (x+1)^2 e^x$ et $v' = 1$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: |
+          Prendre le produit entier comme $u$ ne sépare rien : dériver
+          $(x+1)^2 e^x$ (règle du produit) redonne une expression aussi
+          compliquée. L'IPP n'a d'intérêt que si on **sépare** les deux facteurs
+          $(x+1)^2$ et $e^x$. Modèle erroné : ne pas scinder le produit.
+
+      - id: D
+        text: "L'IPP est inutile : on peut développer et intégrer terme à terme."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: |
+          Développer donnerait $(x^2+2x+1)e^x$ — trois produits, chacun réclamant
+          une IPP : on n'a rien gagné, on a triplé le travail. Le sujet impose
+          d'ailleurs « à l'aide d'une intégration par parties ». Modèle erroné :
+          éviter l'IPP là où elle est le bon outil.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-aire-signe | placed AFTER R8
+  #        Rupture gate: L'INTÉGRALE COMME AIRE ALGÉBRIQUE (signe). When
+  #        f changes sign, ∫ is NOT the area — split at the root, then
+  #        take absolute values. |∫global| does NOT fix it. Probes
+  #        integrale-signee-vs-aire (clone of CI-6).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-aire-signe
+    rung: "R8"
+    habilete: utilisation
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, aires, bac_style]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    item_source: clone_of_CI-6
+    lesson_placement: after_R8
+
+    stem: |
+      Soit $f(x) = x^2 - 4$. Sur $[0,\,3]$, $f \leq 0$ sur $[0,2]$ et $f \geq 0$
+      sur $[2,3]$. Pour obtenir l'**aire** entre la courbe et l'axe des abscisses
+      sur $[0,3]$, quelle démarche est correcte ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "L'intégrale $\\int_0^3 f(x)\\,\\mathrm{d}x$ donne directement l'aire, puisque $F$ est une primitive de $f$ sur tout $[0,3]$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: |
+          Ici $\int_0^3 f(x)\,\mathrm{d}x = -3$ : la partie où $f \leq 0$ retranche
+          au lieu d'ajouter. Un nombre négatif ne peut pas être une aire.
+          L'intégrale « signée » n'est l'aire que si $f$ garde un signe constant.
+          Modèle erroné : intégrale signée = aire.
+
+      - id: B
+        text: "La valeur absolue $\\left|\\int_0^3 f(x)\\,\\mathrm{d}x\\right|$ de l'intégrale globale corrige le signe et donne l'aire."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: |
+          $\left|\int_0^3 f\right| = |-3| = 3$, mais l'aire réelle vaut
+          $\tfrac{23}{3} \approx 7{,}67$. Prendre la valeur absolue **après** avoir
+          tout additionné ne défait pas l'annulation déjà survenue entre partie
+          négative et partie positive. Il faut découper **avant**. Modèle erroné :
+          valeur absolue globale au lieu du découpage.
+
+      - id: C
+        text: "Découper en $x=2$ : $-\\int_0^2 f + \\int_2^3 f$."
+        correct: true
+        feedback: |
+          Exact. On découpe à la racine $x=2$ (Chasles), on prend l'**opposé** de
+          l'intégrale là où $f \leq 0$ et l'intégrale telle quelle là où
+          $f \geq 0$, puis on additionne :
+          $\tfrac{16}{3} + \tfrac{7}{3} = \tfrac{23}{3}$ u.a.
+
+      - id: D
+        text: "Comme une aire est toujours positive, prendre $-\\int_0^3 f(x)\\,\\mathrm{d}x$ suffit à la rendre positive."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: |
+          $-\int_0^3 f = 3$, ce qui n'est toujours pas l'aire ($\tfrac{23}{3}$).
+          Changer le signe global traite tout l'intervalle comme s'il était sous
+          l'axe — faux, puisque $f \geq 0$ sur $[2,3]$. Modèle erroné : un signe
+          global au lieu d'un découpage selon le signe de $f$.

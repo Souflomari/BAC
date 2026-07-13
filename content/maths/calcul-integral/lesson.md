@@ -12,6 +12,8 @@ Tu connais déjà le principe : sur un graphique vitesse-temps, la distance parc
 
 Mais ici, $v(t)=t^2$ trace une parabole, pas une droite. Aucun découpage en rectangles ou en triangles ne donne le contour exact de cette région. Avant de lire la suite, prends position quand même : à vue d'oeil, penses-tu que cette distance est plus proche de $1\ \text{m}$, de $2$ à $3\ \text{m}$, ou de plus de $4\ \text{m}$ ? Engage-toi sur une réponse avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Le problème est là depuis toujours : on sait calculer une aire quand le contour est fait de droites. On ne sait pas encore quoi faire quand le contour est une courbe. C'est exactement l'outil que cette leçon construit — et on va résoudre cette voiture, avec la valeur exacte, dès le prochain rung.
 
 ---
@@ -75,6 +77,8 @@ Ce n'est pas une coïncidence ni un nouveau calcul à apprendre : c'est exacteme
 ### L'erreur à repérer ici
 
 Une confusion fréquente à ce stade : penser qu'il faut « la bonne » primitive, celle qui vérifie une condition particulière (par exemple $F(0)=0$), et que choisir une autre primitive changerait le résultat. Ce n'est pas vrai — on vient de le démontrer : la constante s'annule toujours. Prends n'importe quelle primitive, la moins compliquée à écrire, et applique $F(b)-F(a)$.
+
+[[checkpoint:cp-r1-primitive]]
 
 ---
 
@@ -165,6 +169,8 @@ $$\int_2^5 f(x)\,\mathrm{d}x = 7$$
 C'est tout l'intérêt de Chasles dans les exercices : elle relie des intégrales entre elles par une simple relation additive, même quand $f$ reste une fonction abstraite — c'est aussi l'outil qu'on utilisera au R8 pour découper une aire à l'endroit où une courbe change de signe.
 
 [[figure:chasles-decoupage-aire]]
+
+[[checkpoint:cp-lin-chasles]]
 
 ---
 
@@ -346,6 +352,8 @@ $$= 1$$
 
 Les deux exemples tombent sur $1$ — pas par miracle, juste parce que les nombres ont été choisis pour rester lisibles ; ce qui compte, c'est la méthode : le terme de bord moins l'intégrale du produit dérivé-primitivé.
 
+[[checkpoint:cp-ipp]]
+
 ---
 
 ## R8 — Calculer des aires : sous une courbe, entre deux courbes, et les unités d'aire
@@ -404,51 +412,25 @@ $$1\ \text{u.a.} = 2\ \text{cm} \times 2\ \text{cm} = 4\ \text{cm}^2$$
 
 Pour l'exemple précédent, l'aire réelle serait $\dfrac16 \times 4 = \dfrac23\ \text{cm}^2$. Le réflexe : ne jamais convertir avant d'avoir fini le calcul en unités d'aire — l'intégrale donne toujours un nombre en u.a., et la conversion vers cm² (ou toute autre unité de longueur) vient à la toute fin, en multipliant par le produit des deux échelles du repère.
 
+[[checkpoint:cp-aire-signe]]
+
 ---
 
-## R9 — Pour t'entraîner
+## R9 — Pour t'entraîner : les questions de type bac
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — un exercice d'entraînement construit pour cette leçon), qui combine l'intégration par parties, l'aire sous une courbe, et la valeur moyenne.
+Deux exercices, maintenant, à chercher **sans solution imprimée sous les yeux**. D'abord un **sujet d'examen national authentique** (2022), puis une **variation inédite** qui rejoue les mêmes gestes avec d'autres nombres — pour vérifier que tu reconnais la structure quand l'habillage change. La règle du jeu, c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier, engage une réponse, et **seulement ensuite** ouvre le raisonnement expert pour le comparer au tien.
 
-### Exercice travaillé
+### Exercice de type bac (2022)
 
-Soit $f$ la fonction définie sur $\left]0,+\infty\right[$ par $f(x) = x\ln(x)$.
+Le sujet ci-dessous enchaîne les deux gestes du chapitre les plus fréquents à l'examen : **reconnaître une primitive** (en la dérivant, pas en l'intégrant), puis une **intégration par parties** dont l'intégrale restante se ramène au premier calcul. Deux réflexes suffisent : vérifier une primitive, c'est contrôler $F'=h$ ; et une IPP bien menée réutilise ce qu'on a déjà calculé plutôt que de repartir de zéro.
 
-**1.** Calcule, à l'aide d'une intégration par parties, $\displaystyle\int_1^e f(x)\,\mathrm{d}x$.
+[[exercise:r-bac]]
 
-**2.** Justifie que $f \geq 0$ sur $[1,e]$, puis déduis-en l'aire de la région délimitée par la courbe de $f$, l'axe des abscisses, et les droites $x=1$ et $x=e$.
+### Une variation pour ne pas mémoriser
 
-**3.** Calcule la valeur moyenne de $f$ sur $[1,e]$.
+Même machinerie, autres nombres : une fonction $(x+2)e^x$ au lieu de $(x+1)e^x$, l'intervalle $[0,1]$ au lieu de $[-1,0]$, et un carré $(x+2)^2 e^x$ à intégrer par parties. À toi de reconnaître que « vérifier la primitive, puis une IPP qui réutilise l'intégrale » s'applique exactement pareil.
 
-**Raisonnement à voix haute.**
-
-**1.** **Ce qu'on cherche et pourquoi ce geste :** $x\ln(x)$ est un produit ; on dérive le facteur qui se simplifie ($\ln(x)$, dont la dérivée $\frac1x$ est plus simple) et on primitive l'autre ($x$, dont une primitive immédiate est $\frac{x^2}{2}$). Pose $u=\ln(x)$ ($u'=\frac1x$) et $v'=x$ ($v=\frac{x^2}{2}$) :
-
-$$\int_1^e x\ln(x)\,\mathrm{d}x = \left[\frac{x^2}{2}\ln(x)\right]_1^e - \int_1^e \frac{x^2}{2}\times\frac1x\,\mathrm{d}x$$
-
-$$= \left[\frac{x^2}{2}\ln(x)\right]_1^e - \int_1^e \frac{x}{2}\,\mathrm{d}x$$
-
-Le terme de bord : en $x=e$, $\frac{e^2}{2}\ln(e) = \frac{e^2}{2}$ (car $\ln(e)=1$) ; en $x=1$, $\frac12\ln(1)=0$ (car $\ln(1)=0$). Donc le terme de bord vaut $\frac{e^2}{2}$.
-
-L'intégrale restante : $\displaystyle\int_1^e \frac{x}{2}\,\mathrm{d}x = \left[\frac{x^2}{4}\right]_1^e = \frac{e^2}{4}-\frac14$.
-
-$$\int_1^e x\ln(x)\,\mathrm{d}x = \frac{e^2}{2} - \left(\frac{e^2}{4}-\frac14\right) = \frac{e^2}{4}+\frac14$$
-
-$$\int_1^e x\ln(x)\,\mathrm{d}x = \frac{e^2+1}{4}$$
-
-**2.** **Ce qu'on cherche et pourquoi ce geste :** avant de parler d'aire, il faut vérifier que $f$ ne change pas de signe sur $[1,e]$ — sinon il faudrait découper comme au R8. Sur $[1,e]$, $x>0$ toujours, et $\ln(x) \geq 0$ car $\ln$ est croissante et $\ln(1)=0$ (chapitre "Fonction logarithme"), donc $x \geq 1 \Rightarrow \ln(x) \geq 0$. Un produit de deux facteurs positifs est positif : $f(x)=x\ln(x) \geq 0$ sur tout $[1,e]$. Pas de changement de signe, donc aucun découpage n'est nécessaire : l'aire est directement l'intégrale calculée en 1.
-
-$$\text{aire} = \frac{e^2+1}{4}\ \text{u.a.}$$
-
-**3.** **Ce qu'on cherche et pourquoi ce geste :** appliquer la définition du R6 — diviser l'intégrale déjà calculée par la longueur de l'intervalle, $e-1$.
-
-$$\mu = \frac{1}{e-1}\int_1^e f(x)\,\mathrm{d}x = \frac{e^2+1}{4(e-1)}$$
-
-### À toi de jouer
-
-**(a)** Calcule, à l'aide d'une intégration par parties, $\displaystyle\int_0^1 (x+1)\,e^x\,\mathrm{d}x$.
-
-**(b)** Calcule l'aire de la région délimitée par les courbes d'équations $y=x^2$ et $y=-x^2+4x$ (commence par trouver leurs points d'intersection, et détermine laquelle des deux courbes est au-dessus entre ces points).
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus par
      cet auteur :
