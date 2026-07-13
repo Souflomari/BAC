@@ -1,0 +1,356 @@
+notion: suites-numeriques
+skill_code: sma_suites_numeriques   # proposé — à confirmer par supabase-architect
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, suites).
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MATHEMATICAL model, not just the fact of being wrong.
+# The end-bank floor lives in items.yaml and is NOT altered by these checkpoints
+# (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict            (in R0)         — COMMIT gate: turns the reservoir
+#                                              hook's "note ta réponse" into a
+#                                              real MCQ commit. Probes
+#                                              tendance-implique-limite.
+#   cp-recurrence-deux-etapes(after R1)      — rupture gate: a récurrence needs
+#                                              BOTH initialisation AND hérédité
+#                                              (and the hérédité is an implication
+#                                              on ONE fixed rank, not circular).
+#                                              Probes recurrence-etape-manquante.
+#   cp-majoree-minoree       (after R3)      — rupture gate: a majorant is not
+#                                              unique, not attained, not the
+#                                              limit. Probes majorant-atteint-
+#                                              ou-limite.
+#   cp-sens-variation        (after R4)      — rupture gate: the sens de variation
+#                                              is read on the SIGN of u_{n+1}-u_n
+#                                              for all n, never from a few computed
+#                                              terms. Probes preuve-par-termes-
+#                                              calcules.
+#   cp-convergence-pointfixe (before r-bac)  — rupture gate: L=f(L) gives the VALUE
+#                                              if the limit exists — it never proves
+#                                              convergence. Probes point-fixe-
+#                                              prouve-convergence.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml `misconceptions:`). Option lengths are balanced so the correct
+# choice is never the conspicuously longest.
+#
+# Boundary guard: 2ème Bac (SM) suites numériques — récurrence, suites
+# arithmétiques/géométriques, majoration/minoration/bornage, monotonie,
+# limite et unicité, comparaison / gendarmes, théorème de la limite monotone,
+# suites u_{n+1}=f(u_n) et point fixe, suites adjacentes. Pas de séries, pas de
+# construction des réels, pas de suites de fonctions.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the reservoir hook's commit)
+  #        Turns "Note ta réponse" into a real MCQ commit before the
+  #        first terms are computed. Probes tendance-implique-limite —
+  #        predicting the limit from an intuitive trend.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: sma_suites_numeriques
+    tags: [checkpoint, formative, misconception_driven, sma_suites_numeriques, hook_commit]
+    primary_misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Le réservoir : $u_0 = 100$ et, chaque jour, $u_{n+1} = 0{,}5\,u_n + 10$ (la
+      pompe retire la moitié, puis le robinet ajoute 10). **Avant de calculer le
+      moindre terme, engage-toi :** sur le très long terme, que devient ce
+      volume ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Il se vide : le volume finit par atteindre 0, puisque la pompe retire de l'eau à chaque étape.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+        feedback: |
+          Modèle détecté : « ça retire de l'eau, donc ça finit à 0 ». Mais le
+          robinet réinjecte 10 chaque jour : quand le volume est bas, ce qu'on
+          retire (la moitié) devient petit, et l'ajout de 10 compense. Le volume
+          ne tombe pas à 0 — il se stabilise. Une tendance à la baisse ne dit pas
+          vers *quoi* on tend.
+      - id: B
+        text: |
+          Il se stabilise autour de 20 : le volume se rapproche d'une valeur d'équilibre, ni vide ni débordant.
+        correct: true
+        feedback: |
+          Exact — et c'est le cœur de tout le chapitre. Le volume se rapproche
+          d'une valeur précise (on montrera qu'elle vaut exactement 20 : le point
+          fixe de $x \mapsto 0{,}5x+10$). Ni vidange, ni débordement : un
+          équilibre. Toute la leçon construit les outils pour le prouver et
+          calculer cette valeur.
+      - id: C
+        text: |
+          Il gonfle indéfiniment vers $+\infty$, car on ajoute 10 000 L chaque jour.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: |
+          Modèle détecté : on ne retient que l'ajout de 10 et on lit la règle
+          comme une suite arithmétique « $+10$ à chaque étape ». Mais il y a aussi
+          le facteur $0{,}5$ qui divise le volume par deux avant l'ajout : la
+          suite n'est pas arithmétique, et le halving empêche l'explosion.
+      - id: D
+        text: |
+          Il se stabilise à 10, la quantité qu'on ajoute chaque jour.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: |
+          Modèle détecté : on prend un nombre saillant de la formule (le terme
+          ajouté, 10) pour la limite. Mais la limite d'une suite $u_{n+1}=f(u_n)$
+          n'est pas la constante additive : c'est le point fixe $L=f(L)$, qui vaut
+          ici $L=0{,}5L+10$, soit $L=20$ — pas 10.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-recurrence-deux-etapes | placed AFTER R1
+  #        Rupture gate: a récurrence needs BOTH initialisation and
+  #        hérédité; the hérédité is an implication on ONE fixed rank.
+  #        Clone of SUITES-1's stem shape. Probes recurrence-etape-manquante.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-recurrence-deux-etapes
+    rung: "R1"
+    habilete: raisonnement
+    skill_code: sma_suites_numeriques
+    tags: [checkpoint, formative, misconception_driven, sma_suites_numeriques, recurrence]
+    primary_misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
+    item_source: clone_of_SUITES-1
+    lesson_placement: after_R1
+
+    stem: |
+      Pour prouver que $u_n < 10$ pour tout $n$ (avec $u_{n+1}=0{,}5\,u_n+3$), un
+      élève écrit seulement : « Supposons $u_n < 10$. Alors
+      $u_{n+1}=0{,}5\,u_n+3 < 0{,}5\times 10+3 = 8 < 10$. Donc c'est vrai pour
+      tout $n$. » Que manque-t-il ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          L'initialisation : vérifier la propriété au rang de départ ($u_0 < 10$). Sans le premier domino, l'hérédité ne démarre jamais.
+        correct: true
+        feedback: |
+          Exact. L'élève n'a rédigé que l'hérédité — l'implication « si vrai à un
+          rang, vrai au suivant ». Sans l'initialisation ($u_0 < 10$), cette
+          implication ne s'accroche à rien : aucun domino ne tombe. Les DEUX
+          étapes sont nécessaires.
+      - id: B
+        text: |
+          Rien : l'hérédité qu'il a rédigée suffit à conclure pour tout $n$.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
+        feedback: |
+          Modèle erroné : « l'hérédité seule suffit ». Elle ne donne qu'une
+          implication conditionnelle. Sans initialisation, elle peut être vraie
+          sans qu'aucun rang ne vérifie jamais la propriété.
+      - id: C
+        text: |
+          Il faut refaire l'hérédité séparément pour chaque valeur de $n$ (n=0, n=1, n=2, …).
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
+        feedback: |
+          C'est l'inverse du principe : l'hérédité se démontre UNE fois, pour un
+          rang $n$ quelconque fixé. La refaire pour chaque $n$ reviendrait à une
+          infinité de vérifications — précisément ce que la récurrence évite.
+      - id: D
+        text: |
+          Il faut calculer $u_1$, $u_2$, $u_3$ pour confirmer numériquement.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+        feedback: |
+          Calculer quelques termes ne prouve rien pour l'infinité des rangs
+          restants. Ce n'est pas ce qui manque : ce qui manque, c'est
+          l'initialisation, la première étape de la récurrence.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-majoree-minoree | placed AFTER R3
+  #        Rupture gate: a majorant is not unique, not attained, not
+  #        the limit. Clone of SUITES-15. Probes majorant-atteint-ou-limite.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-majoree-minoree
+    rung: "R3"
+    habilete: raisonnement
+    skill_code: sma_suites_numeriques
+    tags: [checkpoint, formative, misconception_driven, sma_suites_numeriques, bornee]
+    primary_misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+    item_source: clone_of_SUITES-15
+    lesson_placement: after_R3
+
+    stem: |
+      Un élève a démontré que $u_n \le 10$ pour tout $n$ (donc $10$ majore la
+      suite). Il en déduit que $10$ est LE plus petit majorant, et que la suite
+      se rapproche donc de $10$. Qu'en penser ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Incorrect : un majorant n'est ni unique ni forcément le plus serré (si $M$ majore, $M+1$ aussi), et rien ne garantit que la suite s'approche de $10$.
+        correct: true
+        feedback: |
+          Exact. « Majorée par 10 » dit seulement qu'un plafond existe quelque
+          part — pas lequel est le plus serré, ni que la suite s'en approche. Un
+          majorant n'est pas unique ($M+1$ marche aussi), ni forcément atteint.
+      - id: B
+        text: |
+          Correct : un majorant obtenu par démonstration est toujours le plus petit majorant possible.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: |
+          Faux : si $M$ majore $(u_n)$, alors $M+1$, $M+10$… aussi. Démontrer
+          $u_n \le 10$ ne dit rien sur le fait que 10 soit le plus petit majorant.
+      - id: C
+        text: |
+          Incorrect : $10$ ne peut pas majorer la suite, car un majorant doit toujours être atteint par un terme.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: |
+          Un majorant n'a pas à être atteint : $u_n \le M$ pour tout $n$
+          n'exige aucun $n$ avec $u_n=M$. La suite peut rester strictement sous
+          son majorant pour toujours.
+      - id: D
+        text: |
+          Correct : toute suite majorée converge nécessairement vers son plus petit majorant, sans aucune autre condition à vérifier.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
+        feedback: |
+          Être majorée seule ne garantit même pas la convergence (il faut aussi
+          la monotonie — théorème de la limite monotone), et quand la suite
+          converge, sa limite n'est en général pas le majorant utilisé.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-sens-variation | placed AFTER R4
+  #        Rupture gate: the sens de variation is the sign of
+  #        u_{n+1}-u_n for ALL n, never a few computed terms.
+  #        Clone of SUITES-17. Probes preuve-par-termes-calcules.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-sens-variation
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: sma_suites_numeriques
+    tags: [checkpoint, formative, misconception_driven, sma_suites_numeriques, monotonie]
+    primary_misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+    item_source: clone_of_SUITES-17
+    lesson_placement: after_R4
+
+    stem: |
+      Un élève calcule les premiers termes d'une suite : $u_0=50$, $u_1=42$,
+      $u_2=35$, $u_3=29$, et conclut : « La suite est décroissante. » Qu'en
+      penser ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non justifié : observer quelques termes ne prouve rien pour tout $n$ ; il faut étudier le signe de $u_{n+1}-u_n$ (ou de $f(x)-x$) de façon générale.
+        correct: true
+        feedback: |
+          Exact. Voir quatre termes diminuer ne garantit rien sur $u_4$, $u_5$,
+          … Une suite peut décroître au début puis remonter. La seule preuve
+          valable pour tout $n$ est le signe de $u_{n+1}-u_n$, établi une fois
+          pour toutes.
+      - id: B
+        text: |
+          Valide : on voit clairement que les termes diminuent, c'est suffisant.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+        feedback: |
+          Voir une tendance sur quatre termes n'est pas une preuve pour l'infinité
+          des rangs restants. Modèle erroné : quelques termes calculés valent
+          démonstration.
+      - id: C
+        text: |
+          Valide : quatre termes consécutifs suffisent toujours à établir la monotonie d'une suite.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+        feedback: |
+          Aucun nombre fini de termes ne couvre une propriété portant sur « tous
+          les $n$ ». Modèle erroné : un échantillon fini prouve le cas général.
+      - id: D
+        text: |
+          Non : il faudrait d'abord prouver qu'elle est bornée avant de parler de monotonie.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+        feedback: |
+          Bornée et monotone sont deux propriétés indépendantes : aucun ordre
+          n'est imposé. Le vrai problème ici n'est pas l'ordre des preuves, mais
+          l'absence de preuve valable pour tout $n$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-convergence-pointfixe | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: L=f(L) gives the VALUE if the limit exists —
+  #        it never, by itself, proves convergence. Clone of SUITES-27.
+  #        Probes point-fixe-prouve-convergence.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-convergence-pointfixe
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: sma_suites_numeriques
+    tags: [checkpoint, formative, misconception_driven, sma_suites_numeriques, point_fixe, bac_style]
+    primary_misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
+    item_source: clone_of_SUITES-27
+    lesson_placement: before_bac
+
+    stem: |
+      Soit $u_{n+1} = -2\,u_n + 3$ avec $u_0 = 0$. Un élève résout $L = -2L + 3$,
+      trouve $L = 1$, et conclut « donc $u_n \to 1$ ». On n'a établi **ni**
+      monotonie **ni** convergence au préalable. Qu'en penser ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Incorrect : $L=f(L)$ donne la valeur que prendrait la limite SI elle existe — ce n'est pas une preuve de convergence. Ici $u_n$ vaut $0,3,-3,9,-15,\dots$ : elle oscille et diverge.
+        correct: true
+        feedback: |
+          Exact. Le point fixe $L=1$ existe bel et bien, mais la suite calculée
+          ($0, 3, -3, 9, -15, \dots$) oscille en s'amplifiant : elle ne converge
+          pas. Il faut TOUJOURS établir la convergence d'abord, puis chercher la
+          valeur par point fixe.
+      - id: B
+        text: |
+          Correct : résoudre $L=f(L)$ suffit toujours à trouver la limite de la suite.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
+        feedback: |
+          Résoudre $L=f(L)$ trouve un point fixe, mais ne prouve jamais à lui
+          seul la convergence. Ici la suite diverge en oscillant, malgré un point
+          fixe parfaitement valide.
+      - id: C
+        text: |
+          Correct : dès qu'une fonction $f$ admet un point fixe, la suite $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit $f$.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
+        feedback: |
+          Faux, et ce contre-exemple le montre : $f$ a un point fixe ($L=1$) et
+          pourtant $(u_n)$ diverge en oscillant. L'existence d'un point fixe ne
+          garantit jamais la convergence.
+      - id: D
+        text: |
+          Incorrect : la limite vaut $0$, la valeur du terme initial $u_0$.
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
+        feedback: |
+          Rien ne fait converger une suite vers son terme initial. $u_0=0$ n'a
+          aucun rapport avec la limite — et de toute façon, ici, la suite ne
+          converge pas du tout.

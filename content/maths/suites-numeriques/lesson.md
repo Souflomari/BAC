@@ -24,6 +24,8 @@ Avant de continuer, prends position. Sur le long terme — après des mois, des 
 
 Note ta réponse — et si tu penses qu'il se stabilise, essaie même de deviner **autour de quelle valeur**, et pourquoi cette valeur précisément et pas une autre.
 
+[[checkpoint:cp-r0-predict]]
+
 Calculons les premiers termes pour voir ce qui se passe réellement :
 
 $$u_0 = 100, \quad u_1 = 0{,}5 \times 100 + 10 = 60, \quad u_2 = 0{,}5 \times 60 + 10 = 40, \quad u_3 = 0{,}5 \times 40 + 10 = 30$$
@@ -88,6 +90,8 @@ $$u_{n+1} > 20$$
 ### L'erreur à repérer
 
 Une erreur fréquente : oublier l'initialisation, et croire que l'hérédité seule suffit. Mais l'hérédité dit seulement « *si* c'est vrai à un rang, ça reste vrai au suivant » — une implication conditionnelle, un domino qui pousse le suivant. Sans le premier domino pour démarrer la chute, l'implication ne sert à rien : elle est peut-être vraie, mais aucun domino ne tombe jamais. Une hérédité vraie associée à une initialisation fausse — ou absente — ne prouve rien du tout.
+
+[[checkpoint:cp-recurrence-deux-etapes]]
 
 ---
 
@@ -189,6 +193,8 @@ Confondre « majorée » avec « qui augmente vers une valeur qu'elle ne dépass
 
 [[figure:suite-bornee-non-monotone]]
 
+[[checkpoint:cp-majoree-minoree]]
+
 ---
 
 ## R4 — Monotonie : le sens de variation d'une suite
@@ -238,6 +244,8 @@ Vérifions sur notre exemple : $f(x) = 0{,}5x+10$, donc $f(x)-x = 10-0{,}5x = 0{
 ### L'erreur à repérer
 
 Conclure la monotonie à partir des trois ou quatre premiers termes calculés numériquement ($u_0=100$, $u_1=60$, $u_2=40$… « ça diminue, donc c'est décroissant »). Voir une tendance sur quelques termes n'est pas une preuve — exactement le problème que la récurrence (ou ici, le calcul de signe valable pour tout $n$) est faite pour résoudre. Une suite peut très bien décroître sur ses dix premiers termes puis se remettre à croître ensuite.
+
+[[checkpoint:cp-sens-variation]]
 
 ---
 
@@ -501,72 +509,25 @@ Conclure que deux suites sont adjacentes en vérifiant seulement que l'écart te
 
 ---
 
-## R10 — Pour t'entraîner
+## R10 — Pour t'entraîner sur un vrai sujet de bac
 
-Tu as maintenant tous les outils du chapitre : récurrence, majoration/minoration, monotonie, théorème de la limite monotone, passage à la limite dans une relation $u_{n+1}=f(u_n)$, suite auxiliaire géométrique. Voici un exercice qui les enchaîne, dans l'esprit d'un exercice de bac — un exercice d'entraînement original, construit pour ce chapitre, pas un sujet officiel. Cherche chaque question sur papier avant de lire le raisonnement.
+Tu as maintenant tous les outils du chapitre : récurrence, majoration/minoration, monotonie, théorème de la limite monotone, passage à la limite dans une relation $u_{n+1}=f(u_n)$, théorème de comparaison. Il est temps de les enchaîner sur un **vrai sujet d'examen national**, puis sur une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change.
 
-**Énoncé.** On considère la suite $(u_n)$ définie par $u_0 = 4$ et, pour tout entier $n$ :
+La règle du jeu — c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier d'abord, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
 
-$$u_{n+1} = \frac{1}{3}\,u_n + 4$$
+### Exercice de type bac (2019, Sciences Mathématiques)
 
-1. Montrer par récurrence que, pour tout entier $n$, $u_n < 6$.
-2. Montrer que $(u_n)$ est croissante.
-3. Justifier que $(u_n)$ converge, et déterminer sa limite $L$.
-4. On pose $v_n = u_n - 6$ pour tout $n$. Montrer que $(v_n)$ est géométrique, préciser sa raison et son premier terme, puis donner l'expression de $u_n$ en fonction de $n$.
-5. Retrouver la limite de $(u_n)$ à partir de l'expression obtenue à la question 4.
+Ce sujet étudie une suite récurrente $u_{n+1}=f(u_n)+u_n$ bâtie sur une fonction exponentielle. Son fil conducteur est frappant : le comportement de la suite bascule complètement selon la position du premier terme $u_0$ — convergence vers 0 dans un cas, divergence vers $-\infty$ dans l'autre. Un réflexe à trancher avant de te lancer — l'erreur classique du point fixe :
 
-**Raisonnement à voix haute.**
+[[checkpoint:cp-convergence-pointfixe]]
 
-**Question 1.** Récurrence encore une fois — initialisation puis hérédité.
+[[exercise:r-bac]]
 
-Initialisation : $u_0 = 4 < 6$. Vrai.
+### Une variation pour ne pas mémoriser
 
-Hérédité : supposons $u_n < 6$ pour un rang $n$ fixé.
+Même machinerie profonde, autre habillage : une suite récurrente $u_{n+1}=f(u_n)$ bâtie sur une racine carrée, qu'on encadre par récurrence, dont on étudie la monotonie par le signe de $f(x)-x$, et dont on trouve la limite par le point fixe. Ta mission : reconnaître que les mêmes gestes s'appliquent quand la fonction change.
 
-$$u_n < 6 \implies \frac{1}{3}u_n < 2 \implies \frac{1}{3}u_n + 4 < 6$$
-
-Donc $u_{n+1} < 6$. Par récurrence, $u_n < 6$ pour tout $n$.
-
-**Question 2.** On calcule la différence, en la factorisant pour faire apparaître le résultat de la question 1 — exactement le geste du R4 :
-
-$$u_{n+1} - u_n = \left(\frac{1}{3}u_n+4\right) - u_n = 4 - \frac{2}{3}u_n$$
-
-$$u_{n+1} - u_n = \frac{2}{3}(6-u_n)$$
-
-D'après la question 1, $u_n < 6$, donc $6-u_n>0$, donc $u_{n+1}-u_n>0$ : $(u_n)$ est strictement croissante.
-
-**Question 3.** On a réuni les deux hypothèses du théorème de la limite monotone (R7) : $(u_n)$ est croissante (question 2) et majorée par 6 (question 1). Donc $(u_n)$ converge vers une limite $L$, avec $L \leq 6$.
-
-Pour trouver $L$ : la fonction $f(x) = \frac{1}{3}x+4$ est continue, donc on passe à la limite dans $u_{n+1}=f(u_n)$ (R8) :
-
-$$L = \frac{1}{3}L+4$$
-
-$$\frac{2}{3}L = 4$$
-
-$$L = 6$$
-
-**Question 4.**
-
-$$v_{n+1} = u_{n+1} - 6 = \left(\frac{1}{3}u_n+4\right) - 6 = \frac{1}{3}u_n - 2$$
-
-$$v_{n+1} = \frac{1}{3}(u_n-6) = \frac{1}{3}v_n$$
-
-$(v_n)$ est géométrique de raison $\frac{1}{3}$, avec $v_0 = u_0-6 = 4-6 = -2$. Donc $v_n = -2 \times \left(\frac{1}{3}\right)^n$, et :
-
-$$u_n = v_n+6 = 6 - 2\times\left(\frac{1}{3}\right)^n$$
-
-**Question 5.** Comme $-1 < \frac{1}{3} < 1$, $\lim\limits_{n\to+\infty} \left(\frac{1}{3}\right)^n = 0$ (R5), donc :
-
-$$\lim_{n\to+\infty} u_n = 6 - 2\times 0 = 6$$
-
-On retrouve exactement $L=6$ trouvé à la question 3 — les deux méthodes concordent, ce qui confirme le résultat.
-
----
-
-**À toi, sans corrigé.**
-
-1. Soit $(w_n)$ définie par $w_0 = 1$ et $w_{n+1} = \dfrac{1}{2}w_n + 3$ pour tout $n$. Montre que $(w_n)$ est croissante et majorée par 6, justifie sa convergence, puis calcule sa limite de deux façons : par le point fixe, et via la suite auxiliaire $t_n = w_n - 6$.
-2. Soit $(a_n)$ et $(b_n)$ définies par $a_n = 2 - \dfrac{1}{n+1}$ et $b_n = 2 + \dfrac{3}{(n+1)^2}$. Montre que $(a_n)$ et $(b_n)$ sont adjacentes, et donne leur limite commune.
+[[exercise:r-variation]]
 
 <!-- Notes pour la relecture humaine (points d'incertitude, non bloquants) :
      (1) Le degré de formalisme attendu pour la définition de la limite

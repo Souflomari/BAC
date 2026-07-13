@@ -1,0 +1,255 @@
+# Attempt-first exercises (summit-conversion campaign — maths, suites numériques).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, Mathématiques Sciences Mathématiques SM-A/SM-B BIOF, code NS 24F,
+# AlloSchool element/68482, Exercice 4 Partie II — statut « vérifié » in
+# docs/sujets/maths/suites-numeriques.md). This is the ONLY verified entry of
+# that ledger, and it is SM — so this notion's bac summit is sourced SM.
+# r-variation is a fresh anti-memorisation twin (same skills — récurrence,
+# sens de variation via u_{n+1}-u_n, convergence par le théorème de la limite
+# monotone, limite par point fixe — with a different function and clean
+# by-hand numbers; status not-applicable).
+
+notion: suites-numeriques
+
+exercises:
+  # ── r-bac — the VERIFIED 2019 national sujet (Ex. 4 Partie II, SM) ─────────
+  # Faithful transcription of docs/sujets/maths/suites-numeriques.md
+  # → "2019 — session normale — Exercice 4, PARTIE II (filière SM)". La suite
+  # récurrente u_{n+1} = f(u_n) + u_n, où f et α viennent de la Partie I du même
+  # exercice. On étudie la majoration (u_n < α), la monotonie, la convergence et
+  # la limite — puis le comportement change radicalement selon le signe de u_0.
+  # Les faits de la Partie I utilisés ici (transcrits dans le sujet) : le signe
+  # de f (f(x) ≤ 0 pour x ≤ α, question 5-a), l'identité f(x)+x = 4x·g(x), et le
+  # sens de variation de f.
+  - id: r-bac
+    title: "Exercice de type bac — suite récurrente u(n+1)=f(u(n))+u(n), majoration, convergence et limite (2019, SM)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national Sciences Mathématiques
+        (SM-A et SM-B) BIOF, code NS 24F (Exercice 4, Partie II ; barème 4
+        points sur l'exercice, complet 10 points). Filière Sciences
+        Mathématiques, option française. Transcription vérifiée : re-fetch
+        AlloSchool element/68482 (course-436/upload-54931, p.5) + diff
+        caractère-par-caractère conforme au scan
+        (docs/sujets/maths/suites-numeriques.md, statut « vérifié »).
+    intro: |-
+      **Étude d'une suite récurrente (examen national, session normale 2019, Sciences Mathématiques).**
+
+      Cet exercice prolonge une étude de fonction (la Partie I). On y a introduit la fonction $f$ définie sur $\mathbb{R}$ par
+      $$f(x) = 4x\left(e^{-x} + \frac{1}{2}x - 1\right)$$
+      et l'on a montré que $f$ admet exactement deux zéros : $0$ et un réel $\alpha \in \left]\frac{3}{2}\,;\,2\right[$ (l'unique zéro de $f$ dans cet intervalle). On retiendra de la Partie I les trois résultats suivants, qu'on réutilise ici :
+
+      - **(sign de $f$, question 5-a de la Partie I)** : $f(x) \le 0$ pour tout $x \le \alpha$ (avec égalité seulement en $x=0$ et $x=\alpha$) ;
+      - **l'identité** : pour tout réel $x$, $\;f(x) + x = 4x\,g(x)$, où $g(x) = e^{-x} + \dfrac{1}{2}x - \dfrac{3}{4}$ ;
+      - **le sens de variation** : $f$ est croissante sur $\left]-\infty\,;\,0\right]$.
+
+      On considère la suite $(u_n)_{n \in \mathbb{N}}$ définie par
+      $$u_0 < \alpha \qquad \text{et} \qquad (\forall n \in \mathbb{N})\quad u_{n+1} = f(u_n) + u_n.$$
+
+      Le comportement de cette suite dépend, de façon frappante, de la position du premier terme $u_0$ — c'est ce que les trois parties explorent tour à tour.
+    questions:
+      - id: q1a
+        part: "Partie A — Majoration et monotonie (cas $u_0 < \\alpha$)"
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que $(\forall n \in \mathbb{N})\ u_n < \alpha$. *(On pourra utiliser la question 5-a de la Partie I.)*
+        reasoning: |-
+          C'est une propriété portant sur **tous** les rangs $n$ : le raisonnement par récurrence est l'outil adapté (on ne peut pas vérifier une infinité de termes un par un).
+
+          **Initialisation.** Au rang $0$, l'hypothèse de l'énoncé donne directement $u_0 < \alpha$.
+
+          **Hérédité.** Le point clé est de faire apparaître la relation de récurrence sous la forme $u_{n+1} = u_n + f(u_n)$, puis d'utiliser le signe de $f$ fourni par la Partie I : comme $u_n < \alpha$, on a $u_n \le \alpha$, donc $f(u_n) \le 0$. Ajouter une quantité négative (ou nulle) à $u_n$ ne peut que le faire rester en dessous de $\alpha$. La quantité $f(u_n)$ joue ici le rôle du « pas » de la suite, et ce pas est toujours orienté vers le bas tant qu'on est sous $\alpha$.
+        steps:
+          - math: 'u_{n+1} = f(u_n) + u_n'
+            note: "On réécrit la récurrence en isolant le pas f(u_n) ajouté à u_n."
+          - math: 'u_n < \alpha \ \Longrightarrow\ f(u_n) \le 0 \quad \text{(signe de } f \text{ sur } ]-\infty,\alpha], \text{ Partie I)}'
+            note: "D'après la question 5-a de la Partie I : f(x) ≤ 0 pour tout x ≤ α."
+          - math: 'u_{n+1} = u_n + f(u_n) \le u_n < \alpha'
+            note: "Ajouter f(u_n) ≤ 0 ne fait pas franchir α. L'hérédité est établie ; par récurrence, u_n < α pour tout n."
+      - id: q1b
+        stem: |-
+          **(0,25 pt)** En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ est décroissante.
+        reasoning: |-
+          Le sens de variation se lit toujours sur le signe de la différence $u_{n+1} - u_n$. Or cette différence est exactement le pas $f(u_n)$ de la suite. La question précédente a montré que $u_n < \alpha$ pour tout $n$ ; le signe de $f$ (Partie I) donne alors immédiatement $f(u_n) \le 0$. Une suite dont chaque pas est négatif ou nul ne peut que décroître.
+        steps:
+          - math: 'u_{n+1} - u_n = \big(f(u_n) + u_n\big) - u_n = f(u_n)'
+            note: "La différence de deux termes consécutifs est le pas f(u_n)."
+          - math: 'u_n < \alpha \ \Longrightarrow\ f(u_n) \le 0 \ \Longrightarrow\ u_{n+1} - u_n \le 0'
+            note: "Chaque pas est ≤ 0 : la suite (u_n) est décroissante."
+      - id: q2a
+        part: "Partie B — Le cas $0 \\le u_0$ : convergence vers $0$"
+        stem: |-
+          On suppose désormais que $0 \le u_0$ (et toujours $u_0 < \alpha$). On pose, pour tout réel $x$, $g(x) = e^{-x} + \dfrac{1}{2}x - \dfrac{3}{4}$.
+
+          **(0,5 pt)** Montrer que $(\forall x \in \mathbb{R})\ g(x) > 0$. *(On prendra $\ln 2 = 0{,}69$.)*
+        reasoning: |-
+          Pour montrer qu'une fonction est strictement positive partout, la stratégie sûre est d'étudier ses variations et de contrôler son **minimum** : si la plus petite valeur atteinte est déjà strictement positive, toute la fonction l'est.
+
+          On dérive : $g'(x) = -e^{-x} + \dfrac{1}{2}$. Cette dérivée s'annule quand $e^{-x} = \dfrac{1}{2}$, c'est-à-dire en $x = \ln 2$. Elle est négative avant, positive après : $g$ décroît puis croît, donc atteint son minimum en $x = \ln 2$. Il ne reste qu'à calculer $g(\ln 2)$ et à vérifier qu'il est $> 0$.
+        steps:
+          - math: 'g''(x) = -e^{-x} + \dfrac{1}{2}, \qquad g''(x) = 0 \iff e^{-x} = \dfrac{1}{2} \iff x = \ln 2'
+            note: "g' négative pour x < ln 2, positive pour x > ln 2 : minimum de g en x = ln 2."
+          - math: 'g(\ln 2) = e^{-\ln 2} + \dfrac{1}{2}\ln 2 - \dfrac{3}{4} = \dfrac{1}{2} + \dfrac{1}{2}\times 0{,}69 - \dfrac{3}{4}'
+            note: "e^{-ln 2} = 1/2 ; on prend ln 2 = 0,69 comme indiqué."
+          - math: 'g(\ln 2) = 0{,}5 + 0{,}345 - 0{,}75 = 0{,}095 > 0'
+            note: "Le minimum de g est strictement positif, donc g(x) > 0 pour tout réel x."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** En utilisant le résultat précédent, montrer que $(\forall n \in \mathbb{N})\ 0 \le u_n$. *(On remarquera que $f(x) + x = 4x\,g(x)$.)*
+        reasoning: |-
+          On veut minorer la suite par $0$ pour tout rang : encore une propriété sur tous les $n$, donc encore une récurrence. L'indication est décisive : la relation de récurrence se réécrit
+          $$u_{n+1} = f(u_n) + u_n = 4\,u_n\,g(u_n).$$
+          Le signe de $u_{n+1}$ devient alors transparent — c'est un produit de trois facteurs : $4 > 0$, $g(u_n) > 0$ (question 2a, valable pour tout réel), et $u_n$ dont on suppose (hypothèse de récurrence) qu'il est $\ge 0$. Un produit de facteurs positifs ou nuls est positif ou nul.
+
+          **Initialisation.** $u_0 \ge 0$ par hypothèse. **Hérédité.** Si $u_n \ge 0$, alors $u_{n+1} = 4\,u_n\,g(u_n) \ge 0$.
+        steps:
+          - math: 'u_{n+1} = f(u_n) + u_n = 4\,u_n\,g(u_n)'
+            note: "On applique l'identité f(x)+x = 4x·g(x) avec x = u_n."
+          - math: 'u_n \ge 0, \quad g(u_n) > 0, \quad 4 > 0 \ \Longrightarrow\ u_{n+1} = 4\,u_n\,g(u_n) \ge 0'
+            note: "Produit de facteurs ≥ 0 : u_{n+1} ≥ 0. Par récurrence, 0 ≤ u_n pour tout n."
+      - id: q2c
+        stem: |-
+          **(0,25 pt)** Montrer que la suite $(u_n)_{n \in \mathbb{N}}$ est convergente.
+        reasoning: |-
+          On dispose maintenant des deux ingrédients exacts du théorème de la limite monotone. La Partie A a montré que $(u_n)$ est **décroissante** (elle vaut encore ici, puisqu'on a toujours $u_0 < \alpha$). La question 2b vient de montrer que $(u_n)$ est **minorée** par $0$. Une suite décroissante et minorée converge — c'est le théorème, sans aucun calcul supplémentaire.
+        steps:
+          - math: '(u_n) \text{ décroissante (Partie A)} \ \text{ et } \ (u_n) \text{ minorée par } 0 \text{ (question 2b)}'
+            note: "Les deux hypothèses du théorème de la limite monotone sont réunies."
+          - math: '\Longrightarrow\ (u_n) \text{ converge vers une limite } L, \text{ avec } L \ge 0'
+            note: "Théorème de la limite monotone. La limite ne peut pas descendre sous le minorant 0."
+      - id: q2d
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{n \to +\infty} u_n$.
+        reasoning: |-
+          On sait que $(u_n)$ converge vers un réel $L$ ; il reste à trouver **quelle** valeur. La méthode est le passage à la limite dans la relation de récurrence. La fonction $F : x \mapsto f(x) + x$ est continue (somme de fonctions continues), donc en faisant tendre $n$ vers $+\infty$ dans $u_{n+1} = F(u_n)$, on obtient $L = F(L)$, c'est-à-dire $L = f(L) + L$, soit $f(L) = 0$.
+
+          $L$ est donc un zéro de $f$. Or $f$ n'a que deux zéros : $0$ et $\alpha$. Il faut trancher entre les deux : comme $(u_n)$ est décroissante avec $u_0 < \alpha$, on a $L \le u_0 < \alpha$, et par ailleurs $L \ge 0$ (question 2c). Donc $L \in [0\,;\,\alpha[$, ce qui exclut $\alpha$ : la seule possibilité est $L = 0$.
+        steps:
+          - math: 'L = f(L) + L \ \Longrightarrow\ f(L) = 0'
+            note: "Passage à la limite : F(x)=f(x)+x est continue, u_{n+1}=F(u_n) donne L=F(L)."
+          - math: 'f(L) = 0 \ \Longrightarrow\ L = 0 \ \text{ ou } \ L = \alpha'
+            note: "f n'admet que deux zéros : 0 et α (Partie I)."
+          - math: '0 \le L \le u_0 < \alpha \ \Longrightarrow\ L \ne \alpha \ \Longrightarrow\ L = 0'
+            note: "L est dans [0 ; α[, donc L = 0."
+          - math: '\lim_{n \to +\infty} u_n = 0'
+            note: "Dans le cas 0 ≤ u_0 < α, la suite converge vers 0."
+      - id: q3a
+        part: "Partie C — Le cas $u_0 < 0$ : divergence vers $-\\infty$"
+        stem: |-
+          On suppose maintenant que $u_0 < 0$.
+
+          **(0,5 pt)** Montrer que $(\forall n \in \mathbb{N})\ u_{n+1} - u_n \le f(u_0)$.
+        reasoning: |-
+          Quand $u_0 < 0$, la suite bascule dans un tout autre régime. D'abord, elle reste négative et décroît : si $u_n < 0$, alors $u_n < \alpha$ donc $f(u_n) \le 0$, et même $f(u_n) < 0$ car $u_n \ne 0$ et $u_n \ne \alpha$ ; ainsi $u_{n+1} = u_n + f(u_n) < u_n < 0$. Par récurrence, tous les termes vérifient $u_n \le u_0 < 0$.
+
+          Ensuite, on compare les pas. Le pas au rang $n$ est $u_{n+1} - u_n = f(u_n)$. La Partie I nous dit que $f$ est **croissante** sur $]-\infty\,;\,0]$. Comme $u_n \le u_0$ (et les deux sont $\le 0$), la croissance de $f$ donne $f(u_n) \le f(u_0)$. Autrement dit, chaque pas est majoré par le tout premier pas $f(u_0)$.
+        steps:
+          - math: 'u_n < 0 \ \Longrightarrow\ f(u_n) < 0 \ \Longrightarrow\ u_{n+1} = u_n + f(u_n) < u_n'
+            note: "La suite reste < 0 et décroît : par récurrence, u_n ≤ u_0 < 0 pour tout n."
+          - math: 'u_n \le u_0 \le 0, \quad f \text{ croissante sur } ]-\infty,0] \ \Longrightarrow\ f(u_n) \le f(u_0)'
+            note: "Croissance de f (Partie I) appliquée à u_n ≤ u_0."
+          - math: 'u_{n+1} - u_n = f(u_n) \le f(u_0)'
+            note: "Chaque pas est majoré par le premier pas f(u_0)."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Montrer que $(\forall n \in \mathbb{N})\ u_n \le u_0 + n\,f(u_0)$.
+        reasoning: |-
+          On veut transformer l'inégalité « chaque pas $\le f(u_0)$ » en une inégalité sur $u_n$ lui-même. L'idée est d'**empiler** les pas : de $u_0$ à $u_n$, on a franchi exactement $n$ pas, chacun majoré par $f(u_0)$. En sommant, l'écart total $u_n - u_0$ est majoré par $n$ fois $f(u_0)$.
+
+          Rigoureusement, on l'écrit par récurrence (ou par télescopage). Au rang $n$, on ajoute à l'hypothèse $u_n \le u_0 + n\,f(u_0)$ le résultat 3a $u_{n+1} \le u_n + f(u_0)$, ce qui donne $u_{n+1} \le u_0 + (n+1)\,f(u_0)$.
+        steps:
+          - math: 'u_{n+1} = u_n + (u_{n+1} - u_n) \le u_n + f(u_0)'
+            note: "On réinjecte l'inégalité de la question 3a."
+          - math: 'u_{n+1} \le \big(u_0 + n\,f(u_0)\big) + f(u_0) = u_0 + (n+1)\,f(u_0)'
+            note: "Hérédité : on ajoute f(u_0) à l'hypothèse de récurrence. Initialisation u_0 ≤ u_0 triviale."
+          - math: '(\forall n \in \mathbb{N})\quad u_n \le u_0 + n\,f(u_0)'
+            note: "Par récurrence, l'écart total est borné par n·f(u_0)."
+      - id: q3c
+        stem: |-
+          **(0,25 pt)** En déduire $\displaystyle\lim_{n \to +\infty} u_n$.
+        reasoning: |-
+          Le majorant trouvé, $u_0 + n\,f(u_0)$, est une expression **affine en $n$** dont le coefficient directeur est $f(u_0)$. Comme $u_0 < 0$, on a $f(u_0) < 0$ (signe de $f$), donc cette expression tend vers $-\infty$ quand $n \to +\infty$. La suite $(u_n)$, coincée en dessous d'une quantité qui plonge vers $-\infty$, est forcée d'y plonger aussi : c'est le théorème de comparaison.
+        steps:
+          - math: 'f(u_0) < 0 \ \Longrightarrow\ \lim_{n \to +\infty} \big(u_0 + n\,f(u_0)\big) = -\infty'
+            note: "Expression affine en n de coefficient f(u_0) < 0."
+          - math: 'u_n \le u_0 + n\,f(u_0) \ \text{ et } \ u_0 + n\,f(u_0) \to -\infty \ \Longrightarrow\ \lim_{n \to +\infty} u_n = -\infty'
+            note: "Théorème de comparaison : une suite majorée par une suite qui tend vers −∞ tend vers −∞."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep skills as r-bac (montrer un encadrement par récurrence, déduire la
+  # monotonie du signe de u_{n+1}-u_n via f(x)-x, conclure la convergence par le
+  # théorème de la limite monotone, trouver la limite par le point fixe L=f(L)),
+  # mais avec une fonction f différente (une racine carrée) et des nombres qui
+  # donnent des valeurs exactes vérifiables à la main. Le but : que l'élève ne
+  # puisse pas recopier le sujet 2019 et doive reconnaître la même machinerie
+  # sous un autre habillage.
+  - id: r-variation
+    title: "Variation fraîche — suite u(n+1)=racine(2u(n)+3), encadrement, monotonie et limite"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé, SM). Fonction
+        et nombres choisis pour donner un point fixe entier (L=3) et des
+        encadrements exacts vérifiés à la main.
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent : une suite récurrente $u_{n+1} = f(u_n)$ qu'on encadre par récurrence, dont on étudie la monotonie par le signe de $f(x) - x$, dont on prouve la convergence par le théorème de la limite monotone, et dont on calcule la limite par le point fixe. Ici la fonction est une racine carrée et les nombres sont choisis pour tomber juste.
+
+      On considère la suite $(u_n)_{n \in \mathbb{N}}$ définie par
+      $$u_0 = 0 \qquad \text{et} \qquad (\forall n \in \mathbb{N})\quad u_{n+1} = \sqrt{2u_n + 3}.$$
+
+      On pose $f(x) = \sqrt{2x + 3}$, définie pour $x \ge -\dfrac{3}{2}$, de sorte que $u_{n+1} = f(u_n)$.
+    questions:
+      - id: q1
+        part: "Partie A — Encadrement par récurrence"
+        stem: |-
+          Montrer par récurrence que $(\forall n \in \mathbb{N})\ 0 \le u_n \le 3$.
+        reasoning: |-
+          Encadrer tous les termes d'une suite récurrente, c'est le geste type de la récurrence : on montre que l'intervalle $[0\,;\,3]$ est **stable** par $f$ (si on y entre, on y reste), puis on vérifie que $u_0$ y est.
+
+          **Initialisation.** $u_0 = 0 \in [0\,;\,3]$.
+
+          **Hérédité.** Supposons $0 \le u_n \le 3$. On propage l'encadrement à travers $f$ : on multiplie par $2$, on ajoute $3$, puis on prend la racine (fonction croissante, donc l'encadrement est conservé). On obtient $\sqrt{3} \le u_{n+1} \le 3$, et comme $\sqrt{3} \ge 0$, l'encadrement $0 \le u_{n+1} \le 3$ est bien reconduit.
+        steps:
+          - math: '0 \le u_n \le 3 \ \Longrightarrow\ 3 \le 2u_n + 3 \le 9'
+            note: "On multiplie par 2 (>0, sens conservé) puis on ajoute 3."
+          - math: '\sqrt{3} \le \sqrt{2u_n + 3} \le \sqrt{9} = 3'
+            note: "La racine carrée est croissante : elle conserve l'encadrement."
+          - math: '0 \le \sqrt{3} \le u_{n+1} \le 3'
+            note: "Comme √3 ≥ 0, on a 0 ≤ u_{n+1} ≤ 3. Par récurrence, 0 ≤ u_n ≤ 3 pour tout n."
+      - id: q2
+        part: "Partie B — Monotonie"
+        stem: |-
+          Montrer que la suite $(u_n)_{n \in \mathbb{N}}$ est croissante.
+        reasoning: |-
+          On étudie le signe de $u_{n+1} - u_n = f(u_n) - u_n$, en passant par le signe de $f(x) - x$ sur l'intervalle $[0\,;\,3]$ où vivent les $u_n$ (question 1). On compare $\sqrt{2x+3}$ et $x$. Les deux membres étant positifs sur $[0\,;\,3]$, l'inégalité $\sqrt{2x+3} \ge x$ équivaut, en élevant au carré, à $2x + 3 \ge x^2$, soit $x^2 - 2x - 3 \le 0$, c'est-à-dire $(x-3)(x+1) \le 0$ — vrai pour $-1 \le x \le 3$, donc en particulier sur tout $[0\,;\,3]$. Ainsi $f(x) - x \ge 0$ sur $[0\,;\,3]$, d'où $u_{n+1} \ge u_n$.
+        steps:
+          - math: 'u_{n+1} - u_n = \sqrt{2u_n + 3} - u_n'
+            note: "On étudie le signe de f(x) − x = √(2x+3) − x sur [0 ; 3]."
+          - math: '\sqrt{2x+3} \ge x \iff 2x + 3 \ge x^2 \iff x^2 - 2x - 3 \le 0 \iff (x-3)(x+1) \le 0'
+            note: "Sur [0 ; 3] les deux membres sont ≥ 0 : on peut élever au carré."
+          - math: '-1 \le x \le 3 \ \Longrightarrow\ f(x) - x \ge 0 \ \Longrightarrow\ u_{n+1} - u_n \ge 0'
+            note: "Sur [0 ; 3], l'inégalité est vraie : la suite est croissante."
+      - id: q3
+        part: "Partie C — Convergence et limite"
+        stem: |-
+          Montrer que $(u_n)_{n \in \mathbb{N}}$ converge et calculer sa limite.
+        reasoning: |-
+          On réunit les deux résultats précédents : $(u_n)$ est **croissante** (question 2) et **majorée** par $3$ (question 1). Le théorème de la limite monotone garantit alors qu'elle converge vers un réel $L$, avec $L \le 3$.
+
+          Pour la valeur : $f(x) = \sqrt{2x+3}$ est continue sur $[0\,;\,3]$, donc on passe à la limite dans $u_{n+1} = f(u_n)$, ce qui donne $L = \sqrt{2L + 3}$. On résout : en élevant au carré (les deux membres sont positifs), $L^2 = 2L + 3$, soit $L^2 - 2L - 3 = 0$, d'où $(L-3)(L+1) = 0$. Les solutions sont $3$ et $-1$ ; on écarte $-1$ car $L \ge u_0 = 0$. Donc $L = 3$.
+        steps:
+          - math: '(u_n) \text{ croissante et majorée par } 3 \ \Longrightarrow\ (u_n) \text{ converge vers } L \le 3'
+            note: "Théorème de la limite monotone."
+          - math: 'L = \sqrt{2L + 3} \ \Longrightarrow\ L^2 = 2L + 3 \ \Longrightarrow\ L^2 - 2L - 3 = 0'
+            note: "Passage à la limite (f continue) : L est un point fixe de f."
+          - math: '(L - 3)(L + 1) = 0 \ \Longrightarrow\ L = 3 \ \text{ ou } \ L = -1'
+            note: "Deux racines pour l'équation du point fixe."
+          - math: 'L \ge u_0 = 0 \ \Longrightarrow\ L = 3'
+            note: "On écarte L = −1 (la suite est ≥ 0). La limite est 3."
