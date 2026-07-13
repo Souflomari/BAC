@@ -8,6 +8,8 @@ Ton ami a perdu le papier où il avait noté le code de son cadenas à roulettes
 
 Avant de lire la suite, prends position : à ton avis, combien de codes à 4 chiffres existe-t-il en tout ? Et à raison d'un essai par seconde, combien de temps faudrait-il pour tous les essayer, dans le pire des cas ? Note mentalement une estimation avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 La tentation, c'est de vouloir lister : 0000, 0001, 0002... et de perdre patience très vite. Il existe pourtant un moyen de connaître le nombre exact de codes sans en écrire un seul, en observant juste la structure du problème : 4 roues, 10 choix indépendants sur chacune. C'est exactement ce que ce chapitre va t'apprendre à faire — compter sans lister. On y reviendra très précisément à la fin de la deuxième étape, et tu verras que la réponse est nettement plus grande que ce que la plupart des gens imaginent.
 
 ---
@@ -98,6 +100,8 @@ $$26^3 = 17\,576$$
 
 Il y a 17 576 mots de 3 lettres possibles avec répétition.
 
+[[checkpoint:cp-r2-pliste]]
+
 ---
 
 ## R3 — Tirages sans remise, l'ordre compte : les arrangements $A_n^p$
@@ -151,6 +155,8 @@ Dans une course de 12 chevaux, on veut prédire le tiercé exact — quel cheval
 $$A_{12}^3 = 12 \times 11 \times 10 = 1\,320$$
 
 Il y a 1 320 tiercés possibles. **Le repère à garder :** dès que l'énoncé distingue explicitement des rôles ou des rangs différents (1er/2e/3e, président/trésorier/secrétaire), et que chaque élément ne peut occuper qu'un seul rôle, c'est un arrangement.
+
+[[checkpoint:cp-r3-remise]]
 
 ---
 
@@ -252,6 +258,8 @@ Il y a 201 376 mains différentes. **Le repère à garder :** dès que l'énonc�
 
 Le cas particulier $p=n$ d'un arrangement (ranger tous les éléments) donne une **permutation**, $n!$.
 
+[[checkpoint:cp-r5-ordre]]
+
 ---
 
 ## R6 — Propriétés des combinaisons : symétrie et triangle de Pascal
@@ -348,47 +356,23 @@ $$P(E) = \frac{40}{84} = \frac{10}{21} \approx 0{,}476$$
 
 [[figure:urne-deux-couleurs]]
 
+[[checkpoint:cp-r7-proba]]
+
 ---
 
-## R8 — Pour t'entraîner
+## R8 — Pour t'entraîner : un vrai sujet de bac
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — c'est un exercice d'entraînement construit pour cette leçon), pour mettre en pratique plusieurs outils de ce chapitre.
+Place maintenant au chapitre un exercice tel qu'il tombe à l'examen national. Contrairement aux exemples travaillés des rungs précédents, ici tu ne lis pas la solution d'abord : tu prends position, tu tentes, et le raisonnement expert ne se dévoile qu'ensuite. C'est en te confrontant à la question **avant** d'avoir la réponse que la méthode se fixe durablement.
 
-### Exercice travaillé
+### Exercice de type bac
 
-Un comité de gestion d'un club doit être formé à partir de 6 filles et 4 garçons (10 membres au total).
+[[exercise:r-bac]]
 
-**Partie A.** On choisit simultanément 3 membres pour former le comité, sans distinction de rôle. Combien de comités différents peut-on former ?
+### Une variation pour ne pas mémoriser
 
-**Partie B.** Parmi ces comités de 3 membres, combien contiennent exactement 2 filles et 1 garçon ?
+Même machinerie, tout autre habillage — pour vérifier que tu reconnais la structure du problème, et que tu n'as pas seulement retenu les nombres du sujet précédent.
 
-**Partie C.** On tire au hasard un comité de 3 membres parmi les 10 personnes (tous les comités sont équiprobables). Quelle est la probabilité que ce comité contienne exactement 2 filles et 1 garçon ?
-
-**Raisonnement à voix haute.**
-
-**Partie A.** "Simultanément" et "sans distinction de rôle" signalent une combinaison : on choisit 3 personnes parmi 10, sans ordre.
-
-$$\binom{10}{3} = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120$$
-
-Il y a 120 comités possibles.
-
-**Partie B.** Un comité avec exactement 2 filles et 1 garçon se décompose en deux choix indépendants : 2 filles parmi les 6 filles, ET 1 garçon parmi les 4 garçons. Le "ET" entre deux groupes distincts déclenche le principe multiplicatif entre deux combinaisons.
-
-$$\binom{6}{2} \times \binom{4}{1} = 15 \times 4 = 60$$
-
-Il y a 60 comités avec exactement 2 filles et 1 garçon.
-
-**Partie C.** On est dans une situation d'équiprobabilité (tous les comités de 3 parmi 10 ont la même chance d'être tirés) : la probabilité est le rapport des cardinaux trouvés aux parties A et B.
-
-$$P(\text{2 filles et 1 garçon}) = \frac{60}{120} = \frac{1}{2}$$
-
-Il y a exactement une chance sur deux d'obtenir un comité à 2 filles et 1 garçon.
-
-### À toi de jouer
-
-**(a)** Un badge d'accès a un code formé de 3 lettres parmi les 26 lettres de l'alphabet, suivies de 2 chiffres parmi 0 à 9. Les lettres peuvent se répéter entre elles, et les chiffres aussi. Combien de codes de badge différents existe-t-il ?
-
-**(b)** Une urne contient 7 boules numérotées de 1 à 7. On tire simultanément 2 boules. Quelle est la probabilité que la somme des deux numéros tirés soit égale à 8 ?
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — trois points ouverts, non résolus
      par cet auteur :

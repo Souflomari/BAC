@@ -1,12 +1,81 @@
 notion: denombrement
 skill_code: maths_denombrement
-misconceptions: []
+
+misconceptions:
+  - id: mc.math.maths_denombrement.additif-vs-multiplicatif
+    label: >-
+      « On additionne des choix qui se combinent, ou on multiplie des alternatives »
+    description: >-
+      L'élève confond le « et » (des choix qui se font ensemble, l'un AVEC
+      l'autre → on multiplie) et le « ou » (un seul choix entre deux familles
+      séparées → on additionne) : le « et » d'un énoncé est lu comme un « + »,
+      ou le « ou » exclusif comme un « × ». C'est l'erreur la plus fréquente du
+      chapitre.
+    contradicts_principle: >-
+      Des choix faits ENSEMBLE (une entrée ET un plat) se multiplient :
+      $n_1 \times n_2$. Un seul choix entre deux familles disjointes (un bus OU
+      un tram, jamais les deux) s'additionne : $\text{card}(A \cup B) =
+      \text{card}(A) + \text{card}(B)$ lorsque $A \cap B = \emptyset$. « et »
+      multiplie, « ou » (exclusif) additionne.
+  - id: mc.math.maths_denombrement.base-exposant-inverse
+    label: >-
+      « n^p mal assemblé : n×p, p^n, ou mauvais exposant »
+    description: >-
+      L'élève reconnaît le bon TYPE de tirage mais assemble mal les deux nombres
+      $n$ et $p$ : il calcule $n \times p$ au lieu de $n^p$, ou inverse base et
+      exposant ($p^n$), ou se trompe d'exposant. Typiquement $10^4$ devient
+      $4 \times 10 = 40$, ou $26^4$ devient $4^{26}$.
+    contradicts_principle: >-
+      Une p-liste d'un ensemble à $n$ éléments compte $n^p = n \times n \times
+      \cdots \times n$ ($p$ facteurs), pas $n \times p$ et pas $p^n$. La base est
+      le nombre de choix par position ($n$), l'exposant est le nombre de
+      positions ($p$).
+  - id: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+    label: >-
+      « L'ordre compte ou pas : arrangement là où l'ordre est indifférent, ou l'inverse »
+    description: >-
+      L'élève utilise un arrangement $A_n^p$ là où l'ordre n'a pas d'importance
+      (un comité, un tirage simultané), ou une combinaison $\binom{n}{p}$ là où
+      l'ordre distingue des rôles (un podium, des postes). Il sur-compte ou
+      sous-compte d'un facteur $p!$.
+    contradicts_principle: >-
+      Si l'ordre distingue les résultats (rôles, rangs 1er/2e/3e), c'est un
+      arrangement $A_n^p$. Si le résultat est un groupe sans ordre (tirage
+      simultané), c'est une combinaison $\binom{n}{p} = \dfrac{A_n^p}{p!}$ :
+      chaque groupe y est compté $p!$ fois parmi les arrangements.
+  - id: mc.math.maths_denombrement.remise-avec-vs-sans
+    label: >-
+      « Tirage avec remise (n^p) confondu avec sans remise (A_n^p) »
+    description: >-
+      L'élève traite un tirage AVEC remise (répétition autorisée) comme un
+      tirage SANS remise, ou l'inverse : il utilise $A_n^p$ (ou $n!$) là où la
+      répétition est permise ($n^p$), ou $n^p$ là où chaque élément tiré est
+      consommé.
+    contradicts_principle: >-
+      Avec remise (répétition permise), chaque étape garde $n$ choix : $n^p$.
+      Sans remise, chaque étape consomme un élément : $n(n-1)\cdots(n-p+1) =
+      A_n^p$. La question à trancher : l'élément tiré revient-il dans le
+      réservoir ?
+  - id: mc.math.maths_denombrement.proba-quotient-denombrement
+    label: >-
+      « Une probabilité n'est pas un quotient de cardinaux, dénominateur card(Ω) »
+    description: >-
+      L'élève rend un cardinal comme s'il était une probabilité (il oublie de
+      diviser), ou divise par un SOUS-GROUPE au lieu de $\text{card}(\Omega)$,
+      l'univers entier. Le résultat peut dépasser 1, signe que ce n'est pas une
+      probabilité.
+    contradicts_principle: >-
+      Dans un univers équiprobable, $P(E) = \dfrac{\text{card}(E)}{\text{card}
+      (\Omega)}$ : toujours un quotient, et le dénominateur est le nombre TOTAL
+      de résultats possibles sur tout l'univers, jamais un sous-groupe favorable.
+
 items:
   - id: DENOMB-1
     rung: "R1"
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["principe-multiplicatif", "principe-additif"]
+    primary_misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
     stem: >
       Un restaurant propose 4 entrées et 3 plats. Combien de menus complets
       (une entrée et un plat) peut-on composer ?
@@ -18,6 +87,7 @@ items:
       - id: B
         text: "$7$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as additionné $4+3=7$ au lieu de multiplier. L'énoncé demande une
           entrée ET un plat — deux choix qui se combinent l'un avec l'autre,
@@ -26,6 +96,7 @@ items:
       - id: C
         text: "$4$"
         correct: false
+        misconception: null
         feedback: >
           Ce choix ne retient que le nombre d'entrées, en oubliant que chaque
           entrée peut être associée à n'importe lequel des 3 plats. Il faut
@@ -34,6 +105,7 @@ items:
       - id: D
         text: "$3$"
         correct: false
+        misconception: null
         feedback: >
           Ce choix ne retient que le nombre de plats, en oubliant les entrées.
           Un menu complet exige de choisir les deux à la fois : il faut
@@ -55,6 +127,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["p-liste", "tirage-avec-remise"]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
     stem: >
       Un digicode utilise 3 chiffres parmi 0 à 9, avec répétition autorisée
       (par exemple 000, 118 ou 999 sont tous des codes valides). Combien de
@@ -67,6 +140,7 @@ items:
       - id: B
         text: "$720$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($10 \times 9 \times 8$) suppose qu'un chiffre déjà
           utilisé ne peut plus resservir — c'est le calcul d'un arrangement
@@ -76,6 +150,7 @@ items:
       - id: C
         text: "$30$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Ce choix additionne $10+10+10=30$ au lieu de multiplier. Les trois
           positions du code se combinent TOUTES ensemble (1ère position ET
@@ -84,6 +159,7 @@ items:
       - id: D
         text: "$10$"
         correct: false
+        misconception: null
         feedback: >
           Ce choix ne compte que les possibilités d'UNE seule position, en
           oubliant qu'il y a 3 positions indépendantes à combiner.
@@ -102,6 +178,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["arrangement", "tirage-sans-remise", "ordre"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       Dans une course de 6 chevaux, on veut prédire le tiercé exact (quel
       cheval arrive 1er, quel cheval arrive 2e, quel cheval arrive 3e, dans
@@ -114,6 +191,7 @@ items:
       - id: B
         text: "$20$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est $\binom{6}{3}$, une combinaison — elle compte les
           groupes de 3 chevaux SANS les ordonner. Mais l'énoncé distingue
@@ -122,6 +200,7 @@ items:
       - id: C
         text: "$216$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($6^3$) traite le tirage comme s'il y avait remise —
           comme si un même cheval pouvait être classé deux fois. Mais un
@@ -130,6 +209,7 @@ items:
       - id: D
         text: "$720$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat est $6!$, le nombre de façons de ranger les 6 chevaux
           en entier. Mais on ne classe que les 3 premiers, pas les 6 : il
@@ -150,6 +230,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["permutation", "factorielle"]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
     stem: >
       Combien de façons différentes y a-t-il de ranger 5 livres distincts,
       côte à côte, sur une étagère ayant exactement 5 places ?
@@ -161,6 +242,7 @@ items:
       - id: B
         text: "$20$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat ($5 \times 4$) s'arrête après seulement deux facteurs,
           comme s'il n'y avait que 2 places à remplir. Il y a bien 5 places :
@@ -169,6 +251,7 @@ items:
       - id: C
         text: "$3\\,125$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($5^5$) suppose qu'on pourrait reposer un livre déjà
           placé à une autre place (comme un tirage avec remise). Mais un
@@ -178,6 +261,7 @@ items:
       - id: D
         text: "$24$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat est $4!$, comme si une des 5 places ne comptait pas.
           Il y a bien 5 places à remplir avec 5 livres distincts : le produit
@@ -196,6 +280,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["combinaison", "tirage-simultane"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       Un jury de 4 personnes doit être formé à partir de 10 candidats, sans
       distinction de rôle entre les 4 membres. Combien de jurys différents
@@ -208,6 +293,7 @@ items:
       - id: B
         text: "$5\\,040$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est l'arrangement $A_{10}^4 = 10 \times 9 \times 8
           \times 7$, qui distingue l'ordre des 4 personnes. Mais un jury
@@ -217,6 +303,7 @@ items:
       - id: C
         text: "$40$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat ($10 \times 4$) traite la situation comme deux choix
           indépendants à enchaîner. Mais il s'agit d'un seul tirage
@@ -225,6 +312,7 @@ items:
       - id: D
         text: "$10\\,000$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($10^4$) suppose qu'un même candidat pourrait être
           choisi plusieurs fois pour le jury, comme dans une p-liste avec
@@ -245,6 +333,7 @@ items:
     difficulty_level: 4
     skill_code: maths_denombrement
     tags: ["probabilite", "equiprobabilite", "combinaison"]
+    primary_misconception: mc.math.maths_denombrement.proba-quotient-denombrement
     stem: >
       Une urne contient 4 boules blanches et 6 boules noires, indiscernables
       au toucher. On tire simultanément 2 boules. Quelle est la probabilité
@@ -257,6 +346,7 @@ items:
       - id: B
         text: "$6$"
         correct: false
+        misconception: mc.math.maths_denombrement.proba-quotient-denombrement
         feedback: >
           $\binom{4}{2}=6$ est bien le nombre de cas FAVORABLES, mais une
           probabilité n'est jamais un cardinal seul — c'est toujours un
@@ -265,6 +355,7 @@ items:
       - id: C
         text: "$\\dfrac{4}{25}$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce calcul ($\frac{4}{10} \times \frac{4}{10}$) suppose qu'on remet
           la première boule blanche avant de tirer la deuxième — un tirage
@@ -274,6 +365,7 @@ items:
       - id: D
         text: "$\\dfrac{6}{15}$"
         correct: false
+        misconception: mc.math.maths_denombrement.proba-quotient-denombrement
         feedback: >
           Le dénominateur utilisé ici, $\binom{6}{2}=15$, est le nombre de
           façons de choisir 2 boules NOIRES — il n'a aucun rapport avec le
@@ -301,6 +393,7 @@ items:
     difficulty_level: 1
     skill_code: maths_denombrement
     tags: ["p-liste", "accroche", "prediction"]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
     stem: >
       Un cadenas a 4 roues, chacune portant les chiffres de 0 à 9
       (répétitions autorisées, comme dans l'histoire du départ). Avant même
@@ -313,6 +406,7 @@ items:
       - id: B
         text: "$40$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat vient de $4 \times 10$ : tu as multiplié le nombre de
           roues par le nombre de chiffres sur une roue, comme s'il fallait
@@ -323,6 +417,7 @@ items:
       - id: C
         text: "$5\\,040$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($10 \times 9 \times 8 \times 7$) suppose qu'un
           chiffre déjà utilisé sur une roue ne peut plus resservir sur une
@@ -332,6 +427,7 @@ items:
       - id: D
         text: "$10$"
         correct: false
+        misconception: null
         feedback: >
           Ce choix ne compte que les possibilités d'UNE seule roue, en
           oubliant qu'il y a 4 roues indépendantes à combiner.
@@ -350,6 +446,7 @@ items:
     difficulty_level: 1
     skill_code: maths_denombrement
     tags: ["p-liste", "croissance-multiplicative", "prediction"]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
     stem: >
       Le cadenas du départ a 4 roues (chiffres 0 à 9, répétitions
       autorisées), ce qui donne 10 000 codes. Si on ajoutait une 5e roue
@@ -362,6 +459,7 @@ items:
       - id: B
         text: "augmenté de $10$, donc $10\\,010$ codes"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Ajouter une roue ne rajoute pas simplement 10 codes au total :
           chaque roue supplémentaire multiplie TOUTES les combinaisons
@@ -370,6 +468,7 @@ items:
       - id: C
         text: "multiplié par $5$, donc $50\\,000$ codes"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Le facteur multiplicatif à appliquer est le nombre de chiffres
           possibles sur la nouvelle roue ($10$), pas le nombre total de
@@ -378,6 +477,7 @@ items:
       - id: D
         text: "resterait à $10\\,000$, la 5e roue ne change rien"
         correct: false
+        misconception: null
         feedback: >
           Une roue supplémentaire, même avec les mêmes chiffres possibles
           que les autres, ajoute toujours un facteur multiplicatif : chaque
@@ -397,6 +497,7 @@ items:
     difficulty_level: 1
     skill_code: maths_denombrement
     tags: ["p-liste", "comparaison", "prediction"]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
     stem: >
       Cadenas X : 3 roues, chiffres 0 à 9 (répétitions autorisées). Cadenas
       Y : 4 roues, mais seulement les chiffres 0 à 4 (répétitions
@@ -409,6 +510,7 @@ items:
       - id: B
         text: "Le cadenas Y, car il a plus de roues (4 contre 3)"
         correct: false
+        misconception: null
         feedback: >
           Le nombre de roues seul ne suffit pas à comparer : il faut aussi
           tenir compte du nombre de chiffres possibles sur CHAQUE roue. Ici,
@@ -417,6 +519,7 @@ items:
       - id: C
         text: "Le cadenas X, car $10 \\times 3 = 30$ est plus grand que $5 \\times 4 = 20$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Le résultat final (X gagne) est bon, mais pas la méthode : $10
           \times 3$ et $5 \times 4$ ne sont pas les bons calculs. Le nombre
@@ -426,6 +529,7 @@ items:
       - id: D
         text: "Les deux cadenas offrent le même nombre de codes"
         correct: false
+        misconception: null
         feedback: >
           Ce n'est pas le cas : $10^3=1\,000$ pour X contre $5^4=625$ pour
           Y, deux valeurs bien différentes. "Beaucoup de chiffres possibles"
@@ -446,6 +550,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["principe-additif", "principe-multiplicatif"]
+    primary_misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
     stem: >
       Pour te rendre au lycée, tu peux prendre SOIT un bus (3 lignes
       possibles), SOIT un tram (2 lignes possibles), mais jamais les deux à
@@ -459,6 +564,7 @@ items:
       - id: B
         text: "$6$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as multiplié $3 \times 2 = 6$ au lieu d'additionner. Bus et
           tram sont deux façons ALTERNATIVES de faire le trajet (un "ou",
@@ -468,12 +574,14 @@ items:
       - id: C
         text: "$3$"
         correct: false
+        misconception: null
         feedback: >
           Ce choix ne retient que les lignes de bus, en oubliant
           complètement le tram comme option alternative.
       - id: D
         text: "$2$"
         correct: false
+        misconception: null
         feedback: >
           Ce choix ne retient que les lignes de tram, en oubliant
           complètement le bus comme option alternative.
@@ -491,6 +599,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["principe-multiplicatif"]
+    primary_misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
     stem: >
       Pour composer un petit-déjeuner, tu choisis une boisson parmi 4, un
       pain parmi 3, et une confiture parmi 2. Combien de petits-déjeuners
@@ -503,6 +612,7 @@ items:
       - id: B
         text: "$9$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as additionné $4+3+2=9$ au lieu de multiplier. Les trois choix
           se combinent TOUS ensemble (une boisson ET un pain ET une
@@ -511,6 +621,7 @@ items:
       - id: C
         text: "$12$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat ($4 \times 3$) multiplie seulement la boisson et le
           pain, en oubliant d'inclure le choix de la confiture. Un
@@ -519,6 +630,7 @@ items:
       - id: D
         text: "$6$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat ($3 \times 2$) multiplie seulement le pain et la
           confiture, en oubliant d'inclure le choix de la boisson. Il faut
@@ -538,6 +650,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["p-liste", "tirage-avec-remise"]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
     stem: >
       Un digicode utilise des lettres majuscules (26 lettres possibles),
       avec répétition autorisée, sur un code de 4 lettres. Combien de codes
@@ -550,6 +663,7 @@ items:
       - id: B
         text: "$4^{26}$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Tu as inversé les rôles de $n$ (le nombre de possibilités par
           position) et $p$ (le nombre de positions). Ici, il y a $26$
@@ -559,6 +673,7 @@ items:
       - id: C
         text: "$358\\,800$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($26 \times 25 \times 24 \times 23$) calcule un
           arrangement, en supposant qu'une lettre déjà utilisée ne peut plus
@@ -568,6 +683,7 @@ items:
       - id: D
         text: "$104$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat ($26 \times 4$) multiplie le nombre de lettres
           possibles par le nombre de positions, au lieu d'élever à la
@@ -587,6 +703,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["p-liste", "tirage-avec-remise"]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
     stem: >
       On lance un dé à 6 faces trois fois de suite, et on note le résultat
       de chaque lancer dans l'ordre (par exemple $(3,3,6)$ est un résultat
@@ -600,6 +717,7 @@ items:
       - id: B
         text: "$20$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est une combinaison, $\binom{6}{3}=20$, comme si
           l'ordre des trois lancers n'avait pas d'importance et qu'une même
@@ -609,6 +727,7 @@ items:
       - id: C
         text: "$120$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($6 \times 5 \times 4$) calcule un arrangement sans
           répétition, comme si une face déjà obtenue ne pouvait plus
@@ -618,6 +737,7 @@ items:
       - id: D
         text: "$18$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat ($6 \times 3$) multiplie le nombre de faces par le
           nombre de lancers, au lieu d'élever à la puissance. Chaque lancer
@@ -639,6 +759,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["arrangement", "tirage-sans-remise", "ordre"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       Une course rassemble 9 coureurs. On veut connaître le classement
       complet des 4 premières places (1er, 2e, 3e, 4e), dans cet ordre
@@ -651,6 +772,7 @@ items:
       - id: B
         text: "$126$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est une combinaison, $\binom{9}{4}=126$, qui ignore
           l'ordre des 4 premières places. Mais 1er, 2e, 3e et 4e sont quatre
@@ -660,6 +782,7 @@ items:
       - id: C
         text: "$6\\,561$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($9^4$) traite le tirage comme s'il y avait remise,
           comme si un coureur déjà classé pouvait l'être une seconde fois à
@@ -669,6 +792,7 @@ items:
       - id: D
         text: "$362\\,880$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat est $9!$, le nombre de façons de classer les 9
           coureurs EN ENTIER. Mais l'énoncé ne demande que les 4 premières
@@ -689,6 +813,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["arrangement", "tirage-sans-remise", "ordre"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       Un club de 12 membres doit élire un président, un secrétaire et un
       trésorier — trois postes distincts, chacun occupé par une personne
@@ -702,6 +827,7 @@ items:
       - id: B
         text: "$220$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est une combinaison, $\binom{12}{3}=220$, qui compte
           les groupes de 3 personnes SANS distinguer leurs postes. Mais
@@ -713,6 +839,7 @@ items:
       - id: C
         text: "$1\\,728$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($12^3$) traite les trois postes comme s'ils
           pouvaient être occupés par la même personne, alors que l'énoncé
@@ -721,6 +848,7 @@ items:
       - id: D
         text: "$36$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat ($12 \times 3$) multiplie le nombre de membres par le
           nombre de postes, au lieu d'appliquer le mécanisme de
@@ -740,6 +868,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["permutation", "factorielle"]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
     stem: >
       7 amis veulent se placer côte à côte pour une photo, en occupant
       chacun une position différente sur la ligne. Combien de dispositions
@@ -752,6 +881,7 @@ items:
       - id: B
         text: "$823\\,543$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($7^7$) traite le rangement comme si une même
           personne pouvait occuper plusieurs positions à la fois. Mais
@@ -761,6 +891,7 @@ items:
       - id: C
         text: "$720$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat est $6!$ : le produit ne compte que 6 facteurs ($7
           \times 6 \times 5 \times 4 \times 3 \times 2$), comme si une des 7
@@ -769,6 +900,7 @@ items:
       - id: D
         text: "$28$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Ce résultat ($7+6+5+4+3+2+1$) additionne les tailles du réservoir
           restant à chaque étape, au lieu de les multiplier. Placer les amis
@@ -790,6 +922,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["permutation", "factorielle"]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
     stem: >
       Combien d'anagrammes (mots ayant un sens ou non) peut-on former en
       utilisant une seule fois chacune des 6 lettres du mot CAHIER (C, A, H,
@@ -802,6 +935,7 @@ items:
       - id: B
         text: "$46\\,656$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($6^6$) traite les lettres comme réutilisables à
           chaque position (répétition autorisée). Mais chaque lettre du mot
@@ -810,6 +944,7 @@ items:
       - id: C
         text: "$360$"
         correct: false
+        misconception: null
         feedback: >
           Ce résultat divise $6!$ par $2$, comme s'il y avait une lettre
           répétée dans CAHIER à "effacer". Mais les 6 lettres C, A, H, I, E,
@@ -819,6 +954,7 @@ items:
       - id: D
         text: "$21$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Ce résultat ($6+5+4+3+2+1$) additionne les tailles du réservoir
           restant à chaque position, au lieu de les multiplier. Il faut
@@ -838,6 +974,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["combinaison", "tirage-simultane"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       On doit former une équipe de 5 joueurs à partir de 11 candidats, sans
       distinction de poste entre les 5 joueurs retenus. Combien d'équipes
@@ -850,6 +987,7 @@ items:
       - id: B
         text: "$55\\,440$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est l'arrangement $A_{11}^5 = 11 \times 10 \times 9
           \times 8 \times 7 = 55\,440$, qui distingue l'ordre des 5 joueurs.
@@ -860,6 +998,7 @@ items:
       - id: C
         text: "$16$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Ce résultat additionne $11+5=16$ au lieu d'appliquer le mécanisme
           de la combinaison. Former une équipe n'est ni une alternative
@@ -868,6 +1007,7 @@ items:
       - id: D
         text: "$161\\,051$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($11^5$) suppose qu'un même candidat pourrait être
           choisi plusieurs fois pour l'équipe, comme dans une p-liste avec
@@ -889,6 +1029,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["combinaison", "tirage-simultane"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       On choisit une délégation de 4 élèves parmi 15 pour représenter la
       classe, sans aucune hiérarchie entre les 4 élèves choisis. Combien de
@@ -901,6 +1042,7 @@ items:
       - id: B
         text: "$32\\,760$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Ce résultat est l'arrangement $A_{15}^4 = 15 \times 14 \times 13
           \times 12 = 32\,760$, qui distingue l'ordre des 4 élèves. Mais une
@@ -911,6 +1053,7 @@ items:
       - id: C
         text: "$60$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat ($15 \times 4$) multiplie le nombre d'élèves par le
           nombre de places dans la délégation, au lieu d'utiliser le
@@ -919,6 +1062,7 @@ items:
       - id: D
         text: "$50\\,625$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($15^4$) suppose qu'un même élève pourrait être choisi
           plusieurs fois pour la délégation, comme dans une p-liste avec
@@ -940,6 +1084,7 @@ items:
     difficulty_level: 2
     skill_code: maths_denombrement
     tags: ["combinaison", "symetrie"]
+    primary_misconception: null
     stem: >
       On sait que $\binom{12}{5} = 792$. En utilisant la propriété de
       symétrie, que vaut $\binom{12}{7}$ ?
@@ -951,6 +1096,7 @@ items:
       - id: B
         text: "$5$"
         correct: false
+        misconception: null
         feedback: >
           Tu as confondu la propriété de symétrie avec une simple
           différence : $12-7=5$, mais $\binom{12}{7}$ n'est PAS égal à
@@ -960,6 +1106,7 @@ items:
       - id: C
         text: "$396$"
         correct: false
+        misconception: null
         feedback: >
           Tu as divisé $792$ par $2$, comme si $\binom{12}{7}$ et
           $\binom{12}{5}$ se partageaient la valeur totale. En réalité, ces
@@ -969,6 +1116,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans refaire tout le calcul avec les factorielles"
         correct: false
+        misconception: null
         feedback: >
           C'est justement l'intérêt de la propriété de symétrie,
           $\binom{n}{p} = \binom{n}{n-p}$ : elle permet de retrouver
@@ -988,6 +1136,7 @@ items:
     difficulty_level: 3
     skill_code: maths_denombrement
     tags: ["combinaison", "triangle-de-pascal", "relation-de-pascal"]
+    primary_misconception: null
     stem: >
       En utilisant la relation de Pascal, sachant que $\binom{6}{2}=15$ et
       $\binom{6}{3}=20$, que vaut $\binom{7}{3}$ ?
@@ -999,6 +1148,7 @@ items:
       - id: B
         text: "$300$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as multiplié $15 \times 20 = 300$ au lieu d'additionner. La
           relation de Pascal repose sur un principe ADDITIF : un groupe
@@ -1008,6 +1158,7 @@ items:
       - id: C
         text: "$5$"
         correct: false
+        misconception: null
         feedback: >
           Tu as soustrait $20-15=5$ au lieu d'additionner. La relation de
           Pascal additionne les deux cas disjoints (le groupe contient
@@ -1016,6 +1167,7 @@ items:
       - id: D
         text: "$20$"
         correct: false
+        misconception: null
         feedback: >
           Tu n'as gardé que $\binom{6}{3}=20$, en oubliant complètement le
           second terme $\binom{6}{2}=15$ de la relation de Pascal. Il faut
@@ -1035,6 +1187,7 @@ items:
     difficulty_level: 1
     skill_code: maths_denombrement
     tags: ["combinaison", "valeurs-particulieres"]
+    primary_misconception: null
     stem: >
       Sans calculer de factorielle, que vaut $\binom{9}{0}$ ?
     type: mcq
@@ -1045,6 +1198,7 @@ items:
       - id: B
         text: "$0$"
         correct: false
+        misconception: null
         feedback: >
           Tu penses que "choisir 0 élément" signifie "aucune possibilité",
           donc $0$. Mais il existe justement UNE seule façon de ne rien
@@ -1053,6 +1207,7 @@ items:
       - id: C
         text: "$9$"
         correct: false
+        misconception: null
         feedback: >
           Tu confonds $\binom{9}{0}$ avec $\binom{9}{1}$ (choisir 1 élément
           parmi 9, qui vaut bien $9$). Ici c'est $0$ élément à choisir, pas
@@ -1060,6 +1215,7 @@ items:
       - id: D
         text: "Cette expression n'a pas de sens, car on ne peut pas choisir 0 élément"
         correct: false
+        misconception: null
         feedback: >
           $\binom{9}{0}$ est parfaitement défini : c'est le nombre de
           façons de choisir un groupe VIDE parmi 9 éléments, et il n'y en a
@@ -1077,6 +1233,7 @@ items:
     difficulty_level: 4
     skill_code: maths_denombrement
     tags: ["probabilite", "equiprobabilite", "combinaison"]
+    primary_misconception: mc.math.maths_denombrement.proba-quotient-denombrement
     stem: >
       Une urne contient 6 boules rouges et 5 boules bleues, indiscernables
       au toucher. On tire simultanément 4 boules. Quelle est la probabilité
@@ -1089,6 +1246,7 @@ items:
       - id: B
         text: "$\\dfrac{25}{330}$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as additionné $\binom{6}{2} + \binom{5}{2} = 15+10=25$ au lieu
           de multiplier. Mais "2 rouges ET 2 bleues" combine DEUX groupes
@@ -1098,6 +1256,7 @@ items:
       - id: C
         text: "$\\dfrac{150}{15}$"
         correct: false
+        misconception: mc.math.maths_denombrement.proba-quotient-denombrement
         feedback: >
           Tu as utilisé $\binom{6}{4}=15$ comme dénominateur, comme si
           l'univers ne contenait QUE les boules rouges. Mais l'univers est
@@ -1110,6 +1269,7 @@ items:
       - id: D
         text: "$\\dfrac{15}{330}$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as gardé seulement $\binom{6}{2}=15$ au numérateur, en
           oubliant complètement la condition sur les boules bleues.
@@ -1138,6 +1298,7 @@ items:
     difficulty_level: 4
     skill_code: maths_denombrement
     tags: ["probabilite", "equiprobabilite", "arrangement"]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
     stem: >
       On tire successivement et sans remise 3 cartes parmi 10 cartes
       numérotées de 1 à 10, en notant l'ordre du tirage. Quelle est la
@@ -1151,6 +1312,7 @@ items:
       - id: B
         text: "$\\dfrac{6}{720}$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Tu as compté $3!=6$ cas favorables, comme si n'importe quel ORDRE
           des cartes 1, 2, 3 convenait. Mais l'énoncé impose un ordre précis
@@ -1160,6 +1322,7 @@ items:
       - id: C
         text: "$\\dfrac{1}{120}$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Tu as utilisé $\binom{10}{3}=120$ au dénominateur, une
           combinaison qui ignore l'ordre. Mais ici le tirage est SUCCESSIF
@@ -1168,6 +1331,7 @@ items:
       - id: D
         text: "$\\dfrac{1}{1\\,000}$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Tu as utilisé $10^3=1\,000$ au dénominateur, comme si les cartes
           étaient remises après chaque tirage. Mais "sans remise" signifie
@@ -1194,6 +1358,7 @@ items:
     difficulty_level: 4
     skill_code: maths_denombrement
     tags: ["p-liste", "principe-multiplicatif", "application"]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
     stem: >
       Un code de réduction est formé de 2 lettres majuscules (parmi les 26)
       suivies de 3 chiffres (parmi 0 à 9). Les lettres peuvent se répéter
@@ -1207,6 +1372,7 @@ items:
       - id: B
         text: "$1\\,560$"
         correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
         feedback: >
           Ce résultat ($26 \times 2 \times 10 \times 3$) multiplie le
           nombre de lettres par le nombre de positions de lettres, et le
@@ -1218,6 +1384,7 @@ items:
       - id: C
         text: "$1\\,676$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Ce résultat ($676+1\,000$) additionne les deux parties du code
           (lettres et chiffres) au lieu de les multiplier. Un code complet
@@ -1227,6 +1394,7 @@ items:
       - id: D
         text: "$468\\,000$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Ce résultat ($26 \times 25 \times 10 \times 9 \times 8$) calcule
           comme si les lettres ne pouvaient pas se répéter entre elles ($26
@@ -1250,6 +1418,7 @@ items:
     difficulty_level: 5
     skill_code: maths_denombrement
     tags: ["combinaison", "probabilite", "equiprobabilite", "application"]
+    primary_misconception: mc.math.maths_denombrement.proba-quotient-denombrement
     stem: >
       Un jury de 4 personnes est tiré au hasard parmi 8 scientifiques et 5
       littéraires (13 candidats en tout), tous les jurys de 4 étant
@@ -1263,6 +1432,7 @@ items:
       - id: B
         text: "$\\dfrac{61}{715}$"
         correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
         feedback: >
           Tu as additionné $\binom{8}{3} + \binom{5}{1} = 56+5=61$ au lieu
           de multiplier. "3 scientifiques ET 1 littéraire" combine deux
@@ -1271,6 +1441,7 @@ items:
       - id: C
         text: "$\\dfrac{280}{56}$"
         correct: false
+        misconception: mc.math.maths_denombrement.proba-quotient-denombrement
         feedback: >
           Tu as utilisé $\binom{8}{3}=56$ comme dénominateur, comme si
           l'univers ne contenait que les scientifiques. Mais l'univers est
@@ -1280,6 +1451,7 @@ items:
       - id: D
         text: "$\\dfrac{280}{17\\,160}$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Tu as utilisé $A_{13}^4=17\,160$ au dénominateur, un arrangement
           qui distingue l'ordre des 4 membres. Mais un jury n'a pas d'ordre
@@ -1306,6 +1478,7 @@ items:
     difficulty_level: 4
     skill_code: maths_denombrement
     tags: ["combinaison", "probabilite", "equiprobabilite", "application"]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
     stem: >
       Une urne contient 8 boules numérotées de 1 à 8. On tire simultanément
       2 boules. Quelle est la probabilité que la somme des deux numéros
@@ -1318,6 +1491,7 @@ items:
       - id: B
         text: "$\\dfrac{4}{64}$"
         correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
         feedback: >
           Tu as utilisé $8^2=64$ au dénominateur, comme s'il s'agissait
           d'un tirage avec remise (une boule pourrait sortir deux fois, et
@@ -1327,6 +1501,7 @@ items:
       - id: C
         text: "$\\dfrac{8}{28}$"
         correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
         feedback: >
           Tu as compté chaque paire deux fois (par exemple $\{1,8\}$ ET
           $\{8,1\}$ séparément), comme si l'ordre des deux boules avait de
@@ -1336,6 +1511,7 @@ items:
       - id: D
         text: "$\\dfrac{5}{28}$"
         correct: false
+        misconception: null
         feedback: >
           Cette liste inclut une paire invalide. En relisant l'ensemble
           $\{1,\ldots,8\}$, les seules paires de deux boules DISTINCTES dont
@@ -1354,3 +1530,38 @@ items:
 
       **Probabilité :**
       $$P(E) = \frac{4}{28} = \frac{1}{7}$$
+
+coverage_summary:
+  total_items: 27
+  per_rung:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+    R8: 3
+  per_misconception:
+    mc.math.maths_denombrement.additif-vs-multiplicatif: 3          # DENOMB-1, DENOMB-10, DENOMB-11
+    mc.math.maths_denombrement.base-exposant-inverse: 5             # DENOMB-7, DENOMB-8, DENOMB-9, DENOMB-12, DENOMB-25
+    mc.math.maths_denombrement.ordre-arrangement-vs-combinaison: 7  # DENOMB-3, DENOMB-5, DENOMB-14, DENOMB-15, DENOMB-18, DENOMB-19, DENOMB-24
+    mc.math.maths_denombrement.remise-avec-vs-sans: 6               # DENOMB-2, DENOMB-4, DENOMB-13, DENOMB-16, DENOMB-17, DENOMB-27
+    mc.math.maths_denombrement.proba-quotient-denombrement: 3       # DENOMB-6, DENOMB-23, DENOMB-26
+  floor_met: true   # les 5 modeles de l'inventaire ont chacun >= 3 items dont un distracteur porte le tag primaire
+  notes: >-
+    Backfill du bank legacy (27 items ecrits avant le tagging par distracteur) :
+    chaque item recoit un primary_misconception et chaque distracteur un tag
+    (id de l'inventaire, ou null quand il correspond a une erreur hors-modele
+    comme un comptage partiel ou une valeur particuliere). Le plancher >= 3 est
+    atteint pour les 5 modeles. Honnetete (recette summit, etape 6) : trois
+    items (DENOMB-20 symetrie, DENOMB-21 relation de Pascal, DENOMB-22 valeurs
+    particulieres binom(n,0)) portent sur des PROPRIETES des combinaisons et
+    n'ont pas de misconception primaire de l'inventaire ; leur primary est
+    null (hors-inventaire), et ils ne comptent pas dans le plancher. Ces
+    proprietes meriteraient leur propre modele de misconception dans une passe
+    d'items ulterieure. Par ailleurs les items de probabilite DENOMB-24 et
+    DENOMB-27 gatent en priorite les ruptures ordre / remise (choix du bon
+    univers), pas proba-quotient-denombrement : ce dernier est gate par
+    DENOMB-6, DENOMB-23 et DENOMB-26 (exactement au plancher de 3).
