@@ -7,11 +7,33 @@
 > maslak *مسلك العلوم الفيزيائية* (Sciences Physiques, SPC), خيار فرنسية (BIOF) —
 > durée 3 h, coefficient 7** (confirmé sur les en-têtes de scans 2018 et 2019).
 >
-> Statut : **v0.2, passe chimie + physique.** Cinq examens normale lus en
+> Statut : **v0.3, passe cross-sujets (2026-07-13).** Voir le bloc v0.3 ci-dessous.
+> État antérieur (**v0.2, passe chimie + physique**) : cinq examens normale lus en
 > profondeur (2017, 2018, 2019, 2020, 2021 N) et une vingtaine d'exercices
-> transcrits couvrant 18 des 25 slugs (voir §4). Les deux slugs `rotation-axe-fixe`
-> et `atome-mecanique-newton` restent **non sourcés** (absents des couvertures
-> 2017–2021).
+> transcrits couvrant 18 des 25 slugs (voir §4).
+>
+> **Passe v0.3 — cross-sujets (2026-07-13).** Sept slugs qui manquaient d'une
+> annale dédiée vérifiable ont été traités. **Couvertures (page 1) lues via le
+> pipeline JPG→Read pour 21 sessions** : normales 2008→2025 (18) + rattrapage
+> 2011/2014/2016 (3). **Six entrées dédiées transcrites** (`Statut: transcrit
+> (non vérifié)`, à passer au protocole §3) :
+> - `controle-catalyse` ← **2025 N** Ex1 P2 (suivi cinétique estérification :
+>   facteurs température + catalyseur $\text{H}_2\text{SO}_4$) ;
+> - `etat-equilibre` ← **2015 N** Ex1 (acide benzoïque/eau : $\tau=0{,}072$,
+>   $Q_{r,\text{éq}}$, $pK_A$) ;
+> - `evolution-spontanee` ← **2012 N** Chimie P2 (pile Cu-Zn, $K=5\cdot10^{36}$,
+>   sens d'évolution spontané) ;
+> - `transformations-lentes-rapides` ← **2010 N** Chimie P1 (saponification,
+>   suivi conductimétrique, $t_{1/2}$) ;
+> - `transformations-deux-sens` ← **2012 N** Chimie P1 (acide éthanoïque +
+>   ammoniac [réaction limitée] + estérification linalol) ;
+> - `rotation-axe-fixe` ← **2011 Rattrapage** Mécanique (grue modélisée par une
+>   poulie : R.F.D en rotation, moment d'inertie $J_\Delta$) — **seule** annale
+>   PC-SPC dédiée trouvée pour ce thème quasi absent de l'épreuve.
+>
+> **Un slug reste NON SOURCÉ : `atome-mecanique-newton`.** Absent des 21
+> couvertures relevées (chapitre conceptuel, sans exercice national autonome sur
+> la période). Candidat au ship `unsourced` — voir `atome-mecanique-newton.md`.
 >
 > **Passe de vérification (2026-07-11) — FAITE.** Un second agent (vérificateur
 > adversarial) a **re-fetché indépendamment** les 5 examens (upload-IDs re-dérivés
@@ -110,11 +132,30 @@ Notes :
 
 | Examen | Base d'images | Pages |
 |--------|---------------|------:|
+| 2008 Normale — Sujet | `.../course-422/upload-45082/` | 6 |
+| 2009 Normale — Sujet | `.../course-422/upload-45088/` | 8 |
+| 2010 Normale — Sujet | `.../course-422/upload-70311/` | 6 |
+| 2011 **Rattrapage** — Sujet | `.../course-422/upload-70317/` | 7 |
+| 2012 Normale — Sujet | `.../course-422/upload-70320/` | 6 |
+| 2013 Normale — Sujet | `.../course-422/upload-70326/` | 7 |
+| 2014 Normale — Sujet | `.../course-422/upload-70333/` | 7 |
+| 2014 **Rattrapage** — Sujet | `.../course-422/upload-70336/` | 7 |
+| 2015 Normale — Sujet | `.../course-422/upload-70340/` | 7 |
+| 2016 Normale — Sujet | `.../course-422/upload-45091/` | 8 |
+| 2016 **Rattrapage** — Sujet | `.../course-422/upload-45097/` | 7 |
 | 2017 Normale — Sujet | `.../course-422/upload-45103/` | 8 |
 | 2018 Normale — Sujet | `.../course-422/upload-45118/` | 8 |
 | 2019 Normale — Sujet | `.../course-422/upload-54757/` | 7 |
 | 2020 Normale — Sujet | `.../course-422/upload-80870/` | 7 |
 | 2021 Normale — Sujet | `.../course-422/upload-84195/` | 8 |
+| 2022 Normale — Sujet | `.../course-422/upload-84516/` | 8 |
+| 2023 Normale — Sujet | `.../course-422/upload-85304/` | 6 |
+| 2024 Normale — Sujet | `.../course-422/upload-87465/` | 6 |
+| 2025 Normale — Sujet | `.../course-422/upload-87489/` | 6 |
+
+> Note : les bases d'images sont toutes sous `course-422`, y compris pour les
+> **sessions de rattrapage** (résolues via `element/<n>` : 2011 R = `94449`,
+> 2014 R = `94469`, 2016 R = `57705`).
 
 **Carte des exercices par examen (relevée sur les couvertures, page 1) :**
 
@@ -220,16 +261,16 @@ désormais `Statut: vérifié`.
 | `ondes-em-modulation` | 2017 N | vérifié |
 | `lois-de-newton` | 2019 N | vérifié |
 | `chute-mouvements-plans` | 2020 N | vérifié |
-| `rotation-axe-fixe` | — | **non sourcé** (absent 2017–2021) |
+| `rotation-axe-fixe` | **2011 R** (grue/poulie) | **transcrit (non vérifié)** — dédié |
 | `systemes-oscillants` | 2018 N | vérifié |
 | `aspects-energetiques` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
-| `atome-mecanique-newton` | — | **non sourcé** (absent 2017–2021) |
-| `transformations-lentes-rapides` | (2021 N, cross-list) | cross-list |
+| `atome-mecanique-newton` | — | **NON SOURCÉ** (absent 2008–2025, 21 couvertures) |
+| `transformations-lentes-rapides` | **2010 N** (+ 2021 N cross-list) | **transcrit (non vérifié)** — dédié |
 | `suivi-temporel-vitesse` | 2021 N | vérifié |
-| `controle-catalyse` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
-| `transformations-deux-sens` | — | non sourcé (recoupe `etat-equilibre`) |
-| `etat-equilibre` | (2019/2020/2021 N, cross-list) | cross-list |
-| `evolution-spontanee` | (2020 N, cross-list) | cross-list ; entrée autonome à sourcer |
+| `controle-catalyse` | **2025 N** (+ 2018 N cross-list) | **transcrit (non vérifié)** — dédié |
+| `transformations-deux-sens` | **2012 N** (estérification + réaction limitée) | **transcrit (non vérifié)** — dédié |
+| `etat-equilibre` | **2015 N** (+ 2019/2020/2021 N cross-list) | **transcrit (non vérifié)** — dédié |
+| `evolution-spontanee` | **2012 N** (pile Cu-Zn, $K$) | **transcrit (non vérifié)** — dédié |
 | `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N | vérifié |
 | `esterification-hydrolyse` | 2018 N | vérifié |
 | `piles` | 2020 N | vérifié |
@@ -261,13 +302,17 @@ désormais `Statut: vérifié`.
 **Slugs prioritaires non sourcés depuis les scans 2017–2021 (probablement
 absents de l'épreuve PC-SPC récente) :**
 
-- **`rotation-axe-fixe`** — ne figure sur AUCUNE couverture 2017→2021. Confirme le
-  retour de terrain (INDEX §5) : thème quasi absent de l'épreuve PC-SPC récente.
-  **Piste unique :** années **2008–2016** (upload-<ID> non encore résolus). Si
-  introuvable là non plus → candidat à un ship `unsourced` avec note honnête.
-- **`atome-mecanique-newton`** (niveaux d'énergie, quantification) — ne figure sur
-  aucune couverture 2017→2021. Même piste (2008–2016) ; même candidat `unsourced`
-  si introuvable.
+- ~~**`rotation-axe-fixe`**~~ **RÉSOLU (v0.3)** — sourcé via **2011 Rattrapage**
+  (« Étude dynamique d'une grue » : poulie en rotation autour d'un axe fixe,
+  R.F.D en rotation, moment d'inertie). Confirme qu'il est **absent des
+  couvertures normales 2008→2025** ; présent en rattrapage. Voir
+  `rotation-axe-fixe.md`.
+- **`atome-mecanique-newton`** (niveaux d'énergie, quantification) — **toujours NON
+  SOURCÉ (v0.3)** après lecture de **21 couvertures** (normales 2008→2025 +
+  rattrapage 2011/2014/2016). Chapitre conceptuel sans exercice national autonome
+  sur la période. **Candidat au ship `unsourced`** — note honnête dans
+  `atome-mecanique-newton.md`. Pistes résiduelles : rattrapages non lus
+  (2008–2010, 2012–2013, 2015, 2017–2025).
 
 **Slugs couverts seulement en cross-list (entrée autonome souhaitable) :**
 
