@@ -22,6 +22,8 @@ A-t-elle une solution réelle ? Non : le carré d'un nombre réel, positif ou n�
 
 Avant de lire la suite, prends position : d'après le schéma qu'on vient de dérouler trois fois de suite, que devrait-on faire ? S'arrêter là, en disant que $x^2=-1$ est une impasse définitive — ou répéter le geste, et inventer un nouveau nombre pour combler ce manque, comme à chaque étape précédente ?
 
+[[checkpoint:cp-r0-predict]]
+
 Et si un tel nombre existait vraiment, à quoi ressemblerait le calcul avec lui ? Est-ce qu'on pourrait encore additionner, multiplier, diviser, comme avec n'importe quel autre nombre ?
 
 C'est exactement ce choix que les mathématiciens ont fait. Ils ont posé qu'un tel nombre existe, lui ont donné un nom — $i$ — et ont construit, avec lui, tout un système cohérent de calcul : l'ensemble des nombres complexes, noté $\mathbb{C}$. Dans cette leçon, on va faire ce travail : définir ce nombre, apprendre à calculer avec lui, et découvrir qu'il a aussi une image géométrique bien concrète, dans un plan.
@@ -194,6 +196,8 @@ $$z + \overline{z} = (4-3i)+(4+3i) = 8$$
 
 Et $2\,\text{Re}(z) = 2 \times 4 = 8$. Les deux valeurs coïncident : $8=8$.
 
+[[checkpoint:cp-r3-conjugue]]
+
 ### Le conjugué comme outil pour diviser
 
 Voici le problème : comment calculer un quotient comme $\dfrac{2+3i}{1-2i}$ ? On ne peut pas "simplifier" une fraction dont le dénominateur contient un $i$ de la même façon qu'avec des réels — il faut d'abord se débarrasser du $i$ au dénominateur.
@@ -259,6 +263,8 @@ $$|z \times z'| = \sqrt{3^2+1^2} = \sqrt{10}$$
 
 Les deux membres valent $\sqrt{10}$ : la propriété est vérifiée sur cet exemple.
 
+[[checkpoint:cp-r4-module-parties]]
+
 ---
 
 ## R5 — Représentation géométrique : affixe, image, et interprétation de $|z-z'|$
@@ -322,87 +328,47 @@ $AB=AC=5$ : le triangle $ABC$ est bien isocèle en $A$.
 
 **Remarque :** on n'a même pas eu besoin de dessiner la figure pour établir ce résultat — le calcul du module suffit à lui seul à comparer des longueurs.
 
+[[checkpoint:cp-r5-difference]]
+
 ---
 
 ## R6 — Pour t'entraîner
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — c'est un exercice d'entraînement construit pour cette leçon), qui rassemble plusieurs des outils vus dans ce chapitre.
+Place maintenant les outils du chapitre sur un **vrai sujet d'examen national**. Ces exercices sont en mode « essaie d'abord » : lis l'énoncé, cherche par toi-même, engage une réponse — le raisonnement expert ne se dévoile qu'ensuite. C'est en butant, puis en comparant ta démarche à celle d'un expert, que la méthode s'installe.
 
-### Exercice travaillé
+Avant de te lancer, un point de bascule que le sujet exige : relier la forme algébrique d'un nombre complexe à sa forme exponentielle.
 
-On considère les nombres complexes $z_1 = 2-i$ et $z_2 = -1+3i$.
+[[checkpoint:cp-bac-exponentielle]]
 
-**Partie A.**
+Voici le sujet — session normale 2019, filière Sciences Expérimentales (SVT et Sciences Physiques).
 
-1. Calculer $z_1+z_2$ et $z_1 \times z_2$ sous forme algébrique.
-2. Calculer $\dfrac{z_1}{z_2}$ sous forme algébrique.
-3. Calculer le module $|z_1|$.
+[[exercise:r-bac]]
 
-**Partie B.** Soient $A$ et $B$ les points d'affixes respectives $z_1$ et $z_2$.
+Puis, pour vérifier que tu as retenu les **gestes** et non les nombres, une variation à la structure identique mais aux valeurs différentes :
 
-4. Calculer la distance $AB$.
-5. Déterminer l'affixe du point $I$, milieu du segment $[AB]$.
+[[exercise:r-variation]]
 
-**Raisonnement à voix haute.**
-
-**Question 1.** On additionne parties réelles et parties imaginaires séparément :
-
-$$z_1+z_2 = (2-i)+(-1+3i) = (2-1)+(-1+3)i = 1+2i$$
-
-Pour le produit, on développe puis on remplace $i^2$ par $-1$ :
-
-$$z_1 \times z_2 = (2-i)(-1+3i) = -2+6i+i-3i^2$$
-
-$$= -2+7i-3(-1) = -2+7i+3 = 1+7i$$
-
-**Question 2.** On multiplie haut et bas par le conjugué du dénominateur, $\overline{z_2}=-1-3i$ :
-
-$$\frac{z_1}{z_2} = \frac{(2-i)(-1-3i)}{(-1+3i)(-1-3i)}$$
-
-Le dénominateur, produit d'un complexe par son conjugué, vaut $(-1)^2+3^2=10$.
-
-Le numérateur se développe :
-
-$$(2-i)(-1-3i) = -2-6i+i+3i^2 = -2-5i-3 = -5-5i$$
-
-$$\frac{z_1}{z_2} = \frac{-5-5i}{10} = -\frac{1}{2}-\frac{1}{2}i$$
-
-**Question 3.** $|z_1| = |2-i| = \sqrt{2^2+(-1)^2} = \sqrt{5}$.
-
-**Question 4.** La distance $AB$ est le module de la différence des affixes :
-
-$$AB = |z_2-z_1| = |(-1+3i)-(2-i)| = |-3+4i| = \sqrt{(-3)^2+4^2} = \sqrt{25} = 5$$
-
-**Question 5.** L'affixe du milieu est la moyenne des deux affixes :
-
-$$z_I = \frac{z_1+z_2}{2} = \frac{1+2i}{2} = \frac{1}{2}+i$$
-
-### À toi de jouer
-
-**(a)** Calculer, sous forme algébrique, $(1+2i)(3-i)$, puis son module.
-
-**(b)** Soient $A$ et $B$ les points d'affixes respectives $z_A=-2+i$ et $z_B=4-3i$. Déterminer l'affixe du milieu $I$ de $[AB]$, puis calculer la distance $AB$.
-
-<!-- NOTE DE VALIDATION (relecture humaine) — points ouverts pour la relecture
-     pédagogique, non résolus par cet auteur :
-     (1) skill_code proposé ici : `maths_complexes_algebrique` (convention
-     "<subject>_<short>" du brief, choisi pour se distinguer d'un futur
-     chapitre 2 sur la forme trigonométrique/exponentielle). À confirmer
-     contre la convention réelle utilisée en base avant intégration.
-     (2) Périmètre : cette leçon couvre volontairement PARTIE 1 seulement
-     (forme algébrique, opérations, conjugué, module, géométrie du plan
-     complexe) et exclut l'argument, les formes trigonométrique/exponentielle,
-     et les équations du second degré à coefficients complexes — laissés pour
-     un chapitre 2 séparé, comme demandé. À confirmer que ce découpage en deux
-     notions correspond exactement à la progression réelle du manuel/cadre SM.
-     (3) Le module des propriétés listées au R4 omet volontairement l'inégalité
-     triangulaire ($|z+z'| \leq |z|+|z'|$), qui n'était pas dans le périmètre
-     demandé pour cette notion — à confirmer si elle doit être ajoutée ici ou
-     réservée à un usage ultérieur (optimisation géométrique, etc.).
-     (4) L'accroche du R0 (progression historique ℕ → ℤ → ℚ → ℝ → ℂ, chaque
-     extension motivée par une équation sans solution) est un choix
-     pédagogique de cet auteur, pas une citation du cadre officiel ni un fait
-     historique sourcé précisément (l'histoire réelle de i passe surtout par
-     la résolution des équations du troisième degré, hors programme ici) — à
-     valider comme dispositif d'accroche, pas comme contenu à examiner.
+<!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus ici :
+     (1) skill_code : `maths_complexes_algebrique` — à confirmer contre la
+     convention réelle utilisée en base avant intégration.
+     (2) CONVERSION SUMMIT (campagne summit-conversion) : le summit R6 (solution
+     imprimée + « À toi de jouer ») a été remplacé par la couche « essaie
+     d'abord » — exercises.yaml (r-bac = sujet national vérifié 2019 SExp Ex.2 ;
+     r-variation = jumeau anti-mémorisation, not-applicable) et checkpoints.yaml
+     (cp-r0-predict + 4 gates de rupture : conjugué, module vs parties, distance
+     |z_B − z_A|, forme algébrique ↔ exponentielle), câblés par des marqueurs
+     [[exercise:]] / [[checkpoint:]].
+     (3) TENSION DE PÉRIMÈTRE, à arbitrer par la relecture pédagogique : le corps
+     de la leçon (R1–R5) enseigne le socle ALGÉBRIQUE (forme algébrique,
+     conjugué, module, géométrie du plan complexe). Le sujet national vérifié
+     2019 (r-bac) mobilise EN PLUS l'équation du second degré dans ℂ, la rotation
+     z' = e^{iθ}z, et le pont forme algébrique ↔ exponentielle — hors du corps
+     actuel. Le gate cp-bac-exponentielle et les champs `reasoning` de r-bac
+     font le pont au point d'usage, mais un rung d'enseignement « forme
+     trigonométrique / exponentielle et transformations » reste à écrire pour
+     que le summit repose sur un socle complet. Voir aussi items.yaml
+     coverage_summary : la couche trigo/expo n'est pas encore couverte par
+     l'end-bank algébrique.
+     (4) L'accroche R0 (progression ℕ → ℤ → ℚ → ℝ → ℂ) est un dispositif
+     d'accroche, pas une citation du cadre officiel — à valider comme tel.
 -->
