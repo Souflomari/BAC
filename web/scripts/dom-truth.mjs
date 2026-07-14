@@ -374,6 +374,16 @@ try {
 
   for (const [route, entries] of byPage) {
     await page.goto(BASE + route, { waitUntil: "networkidle" });
+    // De-flake: wait for the KaTeX stylesheet to apply before reading innerText.
+    // Until `.katex-mathml { position: absolute; clip … }` lands, the MathML
+    // annotation is briefly visible and innerText leaks it (e.g. "$T_0$" reads
+    // as "T0T_0T0"), which trips the notText heading guard non-deterministically.
+    await page
+      .waitForFunction(() => {
+        const m = document.querySelector(".katex-mathml");
+        return !m || getComputedStyle(m).position === "absolute";
+      }, { timeout: 5000 })
+      .catch(() => {});
     const results = await page.evaluate((specs) => {
       const out = [];
       for (const s of specs) {
