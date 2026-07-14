@@ -16,6 +16,8 @@ Avant de lire la suite, prends position. Imagine une fonction, appelons-la provi
 
 Note tes réponses avant de continuer — engage-toi vraiment, pas juste dans ta tête.
 
+[[checkpoint:cp-r0-predict]]
+
 Cette fonction $E$ existe réellement. Elle porte un nom que tu as probablement déjà croisé : la fonction **exponentielle**, notée $\exp$. C'est elle qui va nous occuper dans ce chapitre : d'où elle vient (elle n'est pas inventée indépendamment de $\ln$ — elle EST la réciproque de $\ln$), comment elle se manipule (propriétés algébriques, dérivée, limites), et comment elle sert à résoudre des équations que $\ln$ seul ne permettait pas de conclure proprement.
 
 À la fin de cette leçon, tu sauras répondre exactement aux deux questions posées ci-dessus — et surtout pourquoi les réponses sont ce qu'elles sont, pas seulement les réciter.
@@ -160,6 +162,8 @@ $$\big(e^2\big)^3 = e^{2 \times 3} = e^{6}$$
 
 Une confusion très fréquente, symétrique de celle vue avec $\ln$ : croire que $e^{a+b} = e^a + e^b$ (garder l'addition au lieu de la transformer en produit). Teste ce modèle avec $a=b=0$ : $e^{0+0} = e^0 = 1$, alors que $e^0+e^0 = 1+1=2$. Les deux ne coïncident pas — l'addition à l'intérieur de $e^{\cdot}$ devient bien un **produit** à l'extérieur, jamais une somme.
 
+[[checkpoint:cp-r2-somme-produit]]
+
 ---
 
 ## R3 — Dérivée de exp : $(e^x)' = e^x$
@@ -209,6 +213,8 @@ $$f'(x) = u'(x)\, e^{u(x)} = 2e^{2x+1}$$
 $$g'(x) = -2x\, e^{-x^2}$$
 
 Comme $e^{-x^2}>0$ toujours, le signe de $g'(x)$ est celui de $-2x$ : $g'(x)>0$ pour $x<0$, $g'(x)<0$ pour $x>0$. $g$ est donc strictement croissante sur $]-\infty,0]$ puis strictement décroissante sur $[0,+\infty[$.
+
+[[checkpoint:cp-r3-derivee-eu]]
 
 ---
 
@@ -294,6 +300,10 @@ $$\lim_{x \to +\infty} \big(e^x - x\big) = +\infty$$
 
 [[figure:exp-au-dessus-de-x-plus-1]]
 
+[[checkpoint:cp-r4-croissances]]
+
+[[checkpoint:cp-r4-asymptote]]
+
 ---
 
 ## R5 — Étude complète et courbe
@@ -321,6 +331,8 @@ $\exp$ et $\ln$ sont réciproques l'une de l'autre (R1). Un fait général sur l
 En rassemblant tout : la courbe de $\exp$ part de très près de $0$ (asymptote horizontale $y=0$) quand $x\to-\infty$, sans jamais toucher l'axe, traverse l'axe des ordonnées en $(0,1)$, passe par $(1,e)$, et monte ensuite de plus en plus vite vers la droite, sans jamais s'aplatir — au contraire de $\ln$, elle **accélère** indéfiniment, puisque $\dfrac{e^x}{x}\to+\infty$ (R4).
 
 [[figure:courbe-exponentielle]]
+
+[[checkpoint:cp-r5-lecture-courbe]]
 
 ---
 
@@ -406,58 +418,17 @@ Il n'y a ici aucune intersection avec un domaine à effectuer — contrairement 
 
 ## R8 — Pour t'entraîner
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — un exercice d'entraînement construit pour cette leçon), qui combine plusieurs outils de ce chapitre.
+Place maintenant tout le chapitre au service d'un vrai problème d'examen. Le premier ci-dessous est un **sujet national tombé au bac** (session normale 2022) : une étude de fonction complète — limites, asymptote, dérivée, variations, concavité, fonction réciproque et suite. Le second est une **variation inédite**, construite exprès sur la même machinerie mais avec un décor renversé, pour que tu reconnaisses les gestes au lieu de mémoriser un corrigé.
 
-### Exercice travaillé
+Dans les deux cas, la consigne est la même : **cherche d'abord, seul, avant de dérouler le raisonnement.** C'est en butant puis en te reprenant que la méthode s'installe.
 
-Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x) = e^{x} + x - 2$.
+### Exercice de type bac — session normale 2022
 
-**1.** Calcule $\displaystyle\lim_{x \to -\infty} f(x)$ et $\displaystyle\lim_{x \to +\infty} f(x)$.
+[[exercise:r-bac]]
 
-**2.** Calcule $f'(x)$ et détermine son signe sur $\mathbb{R}$. Dresse le tableau de variations de $f$.
+### Une variation pour ne pas mémoriser
 
-**3.** Montre que l'équation $f(x)=0$ admet une unique solution $\alpha$ dans $\mathbb{R}$, puis que $0 < \alpha < 1$.
-
-**4.** Déduis le signe de $f(x)$ sur $\mathbb{R}$.
-
-**Raisonnement à voix haute.**
-
-**1.** Quand $x \to -\infty$ : $e^x \to 0$ (R4, valeur finie) et $x-2 \to -\infty$, donc la somme tend vers $-\infty$ (pas de forme indéterminée : un terme fini plus un terme qui diverge suit ce dernier) :
-
-$$\lim_{x \to -\infty} f(x) = -\infty$$
-
-Quand $x \to +\infty$ : $e^x \to +\infty$ et $x-2 \to +\infty$ (R4), donc la somme tend vers $+\infty$ (pas de forme indéterminée non plus : $+\infty$ plus $+\infty$ donne $+\infty$) :
-
-$$\lim_{x \to +\infty} f(x) = +\infty$$
-
-**2.** $f$ est une somme d'une fonction affine et de $\exp$ :
-
-$$f'(x) = e^x + 1$$
-
-Sur $\mathbb{R}$, $e^x>0$ toujours (R1), donc $f'(x) = e^x+1 > 1 > 0$ partout. $f$ est donc **strictement croissante** sur $\mathbb{R}$, de $-\infty$ (en $-\infty$) à $+\infty$ (en $+\infty$).
-
-**3.** **Ce qu'on cherche et pourquoi ce geste :** « $f(x)=0$ admet une unique solution » est le signal caractéristique du corollaire d'existence et d'unicité du TVI — il faut réunir continuité, changement de signe, et stricte monotonie, exactement comme dans le chapitre « Limites et continuité ».
-
-$f$ est continue (dérivable) et strictement croissante sur $\mathbb{R}$, avec $\displaystyle\lim_{x\to-\infty} f(x) = -\infty <0$ et $\displaystyle\lim_{x\to+\infty} f(x) = +\infty>0$. Par le corollaire du TVI, l'équation $f(x)=0$ admet une **unique** solution $\alpha \in \mathbb{R}$.
-
-Pour l'encadrer, évalue $f$ en $0$ et en $1$ :
-
-$$f(0) = e^0+0-2 = 1-2 = -1 < 0$$
-
-$$f(1) = e^1+1-2 = e-1 \approx 1{,}718 > 0$$
-
-$f$ étant strictement croissante, $f(0)<0<f(1)$ place $\alpha$ strictement entre $0$ et $1$ : $0<\alpha<1$.
-
-**4.** $f$ est strictement croissante sur $\mathbb{R}$ et s'annule uniquement en $\alpha$ : donc $f(x)<0$ pour $x<\alpha$, et $f(x)>0$ pour $x>\alpha$ — la stricte monotonie transforme le passage par $0$ en $\alpha$ en une frontière nette entre les deux signes.
-
-[[figure:etude-f-e-x-plus-x-moins-2]]
-
-### À toi de jouer
-
-**(a)** Résous dans $\mathbb{R}$ l'équation $e^{5x-3} = e^{2x+6}$.
-
-**(b)** Étudie le signe de $h(x) = e^{x} - e^{2x-1}$ sur $\mathbb{R}$ (indication : compare directement les deux exposants, en utilisant la stricte croissance de $\exp$).
-
+[[exercise:r-variation]]
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts pour la
      relecture pédagogique, non résolus par cet auteur :
      (1) skill_code proposé ici : `maths_fonction_exponentielle` (même

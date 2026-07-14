@@ -1,0 +1,446 @@
+# Attempt-first exercises (summit-conversion campaign — maths, fonction-exponentielle).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2 failure
+# (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2022 session
+# normale, Mathématiques SExp BIOF — SVT et Sciences Physiques —, code NS 22F,
+# AlloSchool element/136586, statut « corrigé (conforme au scan) » in
+# docs/sujets/maths/fonction-exponentielle.md — Problème, 8,5 points). La figure
+# (C_g) de la Q5b y a été CORRIGÉE d'après le scan : g s'annule en DEUX points
+# (α≈-4,5 et 0), d'où les DEUX points d'inflexion demandés en Q5c ; cette
+# description corrigée est transcrite fidèlement en prose dans le stem de q5b.
+# r-variation is a fresh anti-memorisation twin (same deep skills — limites de
+# e^x, dérivée d'un quotient contenant e^x, tableau de variation, concavité et
+# point d'inflexion, fonction réciproque et (f^{-1})', suite u_{n+1}=f(u_n))
+# with a DIFFERENT function f(x)=(e^x-1)/(e^x+1) dont les asymptotes sont
+# HORIZONTALES (y=±1, et non une droite oblique) et dont la suite est
+# DÉCROISSANTE ; status not-applicable.
+
+notion: fonction-exponentielle
+
+exercises:
+  # ── r-bac — the VERIFIED 2022 national sujet (Problème, SExp) ──────────────
+  # Faithful transcription of docs/sujets/maths/fonction-exponentielle.md →
+  # "2022 — session normale — Problème". Étude de f(x)=x(e^{x/2}-1)^2 : limites,
+  # branche parabolique, asymptote (Δ):y=x et position, dérivée d'un produit,
+  # variations, concavité via g lue sur une courbe fournie (figure corrigée),
+  # deux points d'inflexion, fonction réciproque f^{-1} et (f^{-1})'(ln4), puis
+  # suite u_0=1, u_{n+1}=f(u_n). Les questions du sujet (a/b/c aplaties en
+  # q-ids) sont transcrites une à une, barème d'origine conservé.
+  - id: r-bac
+    title: "Problème de type bac — étude d'une fonction avec l'exponentielle : concavité, points d'inflexion, réciproque et suite (2022)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SVT et Sciences Physiques (BIOF),
+        Mathématiques (3 h, coef 7), code NS 22F, AlloSchool element/136586 —
+        Problème (8,5 points). Transcription vérifiée-corrigée : re-fetch
+        AlloSchool element/136586, diff conforme au scan pages 3 et 4
+        (docs/sujets/maths/fonction-exponentielle.md, statut « corrigé (conforme
+        au scan) »). La figure (C_g) de la question 5b a été corrigée d'après le
+        scan : g s'annule en DEUX points (α≈-4,5 et 0), positive sur ]-∞,α[,
+        négative sur ]α,0[, positive sur ]0,+∞[ — cohérent avec les deux points
+        d'inflexion de la question 5c.
+    intro: |-
+      **Problème (examen national, session normale 2022).**
+
+      On considère la fonction numérique $f$ définie sur $\mathbb{R}$ par :
+
+      $$f(x) = x\left(e^{\frac{x}{2}} - 1\right)^2$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
+
+      Fil conducteur : ce problème enchaîne toute la boîte à outils du chapitre — limites et croissances comparées, position par rapport à une asymptote, dérivée d'un produit contenant $e^{u}$, tableau de variations, concavité lue à travers une fonction auxiliaire $g$, fonction réciproque, puis une suite $u_{n+1}=f(u_n)$. À chaque étape, garde en tête que $e^{\frac{x}{2}}>0$ ne change jamais de signe : c'est ce facteur toujours positif qui pilote tous les signes de l'étude.
+
+      La **Partie A** installe les limites et l'asymptote $(\Delta):y=x$ ; la **Partie B** donne la dérivée et les variations ; la **Partie C** étudie la concavité en lisant le signe de $g$ sur une courbe fournie ; la **Partie D** exploite tout cela pour la réciproque $f^{-1}$ et la suite $(u_n)$.
+    questions:
+      - id: q1
+        part: "Partie A — Limites et asymptote"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et $\displaystyle\lim_{x \to -\infty} f(x)$.
+        reasoning: |-
+          On regarde chaque morceau. En $+\infty$ : $e^{\frac{x}{2}} \to +\infty$ (R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to +\infty$, et le facteur $x \to +\infty$ : le produit tend vers $+\infty$, sans indétermination (deux facteurs qui explosent vers $+\infty$).
+
+          En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur **fini**. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
+        steps:
+          - math: |-
+              \lim_{x \to +\infty} e^{\frac{x}{2}} = +\infty \ \Rightarrow\ \lim_{x \to +\infty}\left(e^{\frac{x}{2}}-1\right)^2 = +\infty
+            note: "En +∞, e^{x/2} → +∞ donc son carré diminué de 1 tend vers +∞."
+          - math: |-
+              \lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} x\left(e^{\frac{x}{2}}-1\right)^2 = +\infty
+            note: "Produit de deux facteurs tendant vers +∞."
+          - math: |-
+              \lim_{x \to -\infty} e^{\frac{x}{2}} = 0 \ \Rightarrow\ \left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1
+            note: "En -∞, e^{x/2} → 0 (limite de référence R4) : le carré tend vers 1, valeur finie."
+          - math: |-
+              \lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} x \times 1 = -\infty
+            note: "x → -∞ multiplié par un facteur → 1 : pas d'indétermination, la limite est -∞."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$ et interpréter géométriquement le résultat.
+        reasoning: |-
+          Au voisinage de $+\infty$, $x\neq 0$ : on peut simplifier $\dfrac{f(x)}{x} = \left(e^{\frac{x}{2}}-1\right)^2$, qui tend vers $+\infty$ (question 1).
+
+          Interprétation : quand $\dfrac{f(x)}{x} \to +\infty$, la courbe monte plus vite que n'importe quelle droite passant par l'origine — $(C)$ admet une **branche parabolique de direction l'axe des ordonnées** $(Oy)$ au voisinage de $+\infty$.
+        steps:
+          - math: |-
+              \frac{f(x)}{x} = \frac{x\left(e^{\frac{x}{2}}-1\right)^2}{x} = \left(e^{\frac{x}{2}}-1\right)^2
+            note: "Simplification par x (non nul au voisinage de +∞)."
+          - math: |-
+              \lim_{x \to +\infty} \frac{f(x)}{x} = +\infty
+            note: "f(x)/x → +∞ : (C) admet une branche parabolique de direction l'axe (Oy) au voisinage de +∞."
+      - id: q3a
+        stem: |-
+          **(0,5 pt)** Montrer que la droite $(\Delta)$ d'équation $y = x$ est asymptote à la courbe $(C)$ au voisinage de $-\infty$.
+        reasoning: |-
+          Une droite $y=x$ est asymptote en $-\infty$ si l'écart $f(x)-x$ tend vers $0$. On calcule cet écart et on le factorise : $f(x)-x = x\left[\left(e^{\frac{x}{2}}-1\right)^2 - 1\right]$, et l'identité $\left(e^{\frac{x}{2}}-1\right)^2 - 1 = e^{x} - 2e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$ met en évidence un facteur $x\,e^{\frac{x}{2}}$.
+
+          Or $x\,e^{\frac{x}{2}} \to 0$ en $-\infty$ par **croissances comparées** (en posant $X=\frac{x}{2}\to-\infty$, $x\,e^{\frac{x}{2}} = 2X\,e^{X} \to 0$), tandis que $e^{\frac{x}{2}}-2 \to -2$. Le produit tend donc vers $0\times(-2)=0$ : $(\Delta):y=x$ est asymptote à $(C)$ en $-\infty$.
+        steps:
+          - math: |-
+              f(x) - x = x\left[\left(e^{\frac{x}{2}}-1\right)^2 - 1\right] = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)
+            note: "(e^{x/2}-1)^2 - 1 = e^x - 2 e^{x/2} = e^{x/2}(e^{x/2}-2)."
+          - math: |-
+              \lim_{x \to -\infty} x\,e^{\frac{x}{2}} = 0 \qquad (\text{croissances comparées},\ X=\tfrac{x}{2})
+            note: "x e^{x/2} = 2X e^X avec X=x/2 → -∞ ; croissances comparées : X e^X → 0."
+          - math: |-
+              f(x) - x = \underbrace{x\,e^{\frac{x}{2}}}_{\to\, 0}\left(e^{\frac{x}{2}}-2\right) \xrightarrow[x \to -\infty]{} 0 \times (-2) = 0
+            note: "L'écart f(x)-x tend vers 0 : la droite (Δ):y=x est asymptote à (C) en -∞."
+      - id: q3b
+        stem: |-
+          **(0,75 pt)** Étudier le signe de $\big(f(x) - x\big)$ pour tout $x$ de $\mathbb{R}$ et en déduire la position relative de la courbe $(C)$ et de la droite $(\Delta)$.
+        reasoning: |-
+          On repart de la forme factorisée $f(x)-x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$. Le facteur $e^{\frac{x}{2}}$ est **toujours strictement positif** (R1) : il ne compte pas dans le signe. Reste le signe de $x\left(e^{\frac{x}{2}}-2\right)$.
+
+          On localise le zéro de $e^{\frac{x}{2}}-2$ : $e^{\frac{x}{2}}=2 \iff \frac{x}{2}=\ln 2 \iff x = 2\ln 2 = \ln 4$. Ainsi $e^{\frac{x}{2}}-2>0 \iff x>\ln 4$. En croisant avec le signe de $x$ (zéro en $0$) :
+
+          — sur $]-\infty,0[$ : $x<0$ et $e^{\frac{x}{2}}-2<0$, produit **positif** ;
+          — sur $]0,\ln 4[$ : $x>0$ et $e^{\frac{x}{2}}-2<0$, produit **négatif** ;
+          — sur $]\ln 4,+\infty[$ : les deux facteurs positifs, produit **positif**.
+
+          Donc $(C)$ est **au-dessus** de $(\Delta)$ sur $]-\infty,0[$ et $]\ln 4,+\infty[$, **en dessous** sur $]0,\ln 4[$ ; les deux se coupent aux points $(0,0)$ et $(\ln 4,\ln 4)$ (car $f(0)=0$ et $f(\ln 4)=\ln 4$).
+        steps:
+          - math: |-
+              f(x) - x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right), \qquad e^{\frac{x}{2}} > 0
+            note: "Le facteur e^{x/2} est toujours > 0 : le signe ne dépend que de x et de (e^{x/2}-2)."
+          - math: |-
+              e^{\frac{x}{2}} - 2 = 0 \iff \tfrac{x}{2} = \ln 2 \iff x = 2\ln 2 = \ln 4
+            note: "e^{x/2}-2 > 0 ⟺ x > ln4 (passage au ln, exp strictement croissante)."
+          - math: |-
+              f(x)-x > 0 \text{ sur } ]-\infty,0[\,\cup\,]\ln 4,+\infty[\ ;\quad f(x)-x < 0 \text{ sur } ]0,\ln 4[\ ;\quad f(0)=0,\ f(\ln 4)=\ln 4
+            note: "(C) au-dessus de (Δ) sur ]-∞,0[ et ]ln4,+∞[, en dessous sur ]0,ln4[ ; contact en (0,0) et (ln4, ln4)."
+      - id: q4a
+        part: "Partie B — Dérivée et variations"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $\mathbb{R}$ : $f'(x) = \left(e^{\frac{x}{2}} - 1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}} - 1\right)$.
+        reasoning: |-
+          $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ est $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, R3). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
+        steps:
+          - math: |-
+              u(x) = x,\quad v(x) = \left(e^{\frac{x}{2}}-1\right)^2,\qquad v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\tfrac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)
+            note: "Dérivée de la composée (e^{x/2}-1)^2 : 2(e^{x/2}-1) fois la dérivée de l'intérieur, (1/2)e^{x/2}."
+          - math: |-
+              f'(x) = u'v + uv' = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)
+            note: "Règle du produit (uv)'=u'v+uv'."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** Vérifier que $x\left(e^{\frac{x}{2}} - 1\right) \ge 0$ pour tout $x$ de $\mathbb{R}$, puis en déduire le signe de la dérivée $f'$ sur $\mathbb{R}$.
+        reasoning: |-
+          Le facteur $e^{\frac{x}{2}}-1$ a **le signe de $x$** : $e^{\frac{x}{2}}-1>0 \iff \frac{x}{2}>0 \iff x>0$ (exp strictement croissante, $e^0=1$). Donc $x$ et $e^{\frac{x}{2}}-1$ ont toujours le même signe, et leur produit $x\left(e^{\frac{x}{2}}-1\right)$ est $\ge 0$, nul seulement en $x=0$.
+
+          On relit alors $f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\cdot x\left(e^{\frac{x}{2}}-1\right)$ : c'est une **somme de deux termes positifs ou nuls** — un carré, et $e^{\frac{x}{2}}>0$ multiplié par la quantité $\ge 0$ qu'on vient d'établir. Donc $f'(x)\ge 0$, nul uniquement en $x=0$ : $f$ est **strictement croissante** sur $\mathbb{R}$.
+        steps:
+          - math: |-
+              e^{\frac{x}{2}} - 1 \text{ a le signe de } x \ \Rightarrow\ x\left(e^{\frac{x}{2}}-1\right) \ge 0 \text{ (nul seulement en } x=0)
+            note: "x et e^{x/2}-1 changent de signe en même temps (en 0) : leur produit est ≥ 0."
+          - math: |-
+              f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\underbrace{\,x\left(e^{\frac{x}{2}}-1\right)\,}_{\ge\, 0} \ge 0
+            note: "Somme d'un carré et de e^{x/2}>0 fois une quantité ≥ 0 : f' ≥ 0, nul seulement en 0. f strictement croissante."
+      - id: q4c
+        stem: |-
+          **(0,25 pt)** Dresser le tableau de variations de la fonction $f$ sur $\mathbb{R}$.
+        reasoning: |-
+          Tout est réuni : $f'(x)\ge 0$ avec égalité seulement en $x=0$ (question 4b), donc $f$ est **strictement croissante** sur $\mathbb{R}$ tout entier — une seule flèche montante. On complète avec les limites de la question 1 : $\displaystyle\lim_{x\to-\infty}f(x)=-\infty$ et $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$, et le passage remarquable $f(0)=0$. Le tableau tient en une ligne, de $-\infty$ à $+\infty$, traversant $0$ en $x=0$.
+      - id: q5a
+        part: "Partie C — Concavité (lecture d'une courbe)"
+        stem: |-
+          **(0,5 pt)** Montrer que $f''(x) = \dfrac{1}{2}e^{\frac{x}{2}}\,g(x)$, où $g(x) = (2x + 4)e^{\frac{x}{2}} - x - 4$, pour tout $x$ de $\mathbb{R}$.
+        reasoning: |-
+          On développe d'abord $f'$ pour en faciliter la dérivation : $\left(e^{\frac{x}{2}}-1\right)^2 = e^{x} - 2e^{\frac{x}{2}} + 1$ et $x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right) = x\,e^{x} - x\,e^{\frac{x}{2}}$, d'où $f'(x) = (1+x)e^{x} - (2+x)e^{\frac{x}{2}} + 1$.
+
+          On dérive terme à terme : $\big((1+x)e^{x}\big)' = (2+x)e^{x}$ et $\big(-(2+x)e^{\frac{x}{2}}\big)' = -\frac{x+4}{2}e^{\frac{x}{2}}$. Il reste à factoriser $\frac{1}{2}e^{\frac{x}{2}}$ : $(2+x)e^{x} = \frac{1}{2}e^{\frac{x}{2}}(2x+4)e^{\frac{x}{2}}$ et $-\frac{x+4}{2}e^{\frac{x}{2}} = \frac{1}{2}e^{\frac{x}{2}}(-x-4)$, ce qui reconstitue exactement $\frac{1}{2}e^{\frac{x}{2}}g(x)$.
+        steps:
+          - math: |-
+              f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right) = (1+x)e^{x} - (2+x)e^{\frac{x}{2}} + 1
+            note: "On développe : (e^{x/2}-1)^2 = e^x - 2 e^{x/2} + 1 et x e^{x/2}(e^{x/2}-1) = x e^x - x e^{x/2}."
+          - math: |-
+              f''(x) = (2+x)e^{x} - \frac{x+4}{2}e^{\frac{x}{2}}
+            note: "Dérivée : ((1+x)e^x)' = (2+x)e^x ; (-(2+x)e^{x/2})' = -((x+4)/2) e^{x/2}."
+          - math: |-
+              f''(x) = \frac{1}{2}e^{\frac{x}{2}}\Big[(2x+4)e^{\frac{x}{2}} - x - 4\Big] = \frac{1}{2}e^{\frac{x}{2}}\,g(x)
+            note: "On factorise (1/2)e^{x/2} ; le crochet est exactement g(x)."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** La courbe $(C_g)$ ci-dessous représente la fonction $g$. En la lisant, déterminer le signe de $g(x)$ sur $\mathbb{R}$. *(Remarque : $g(\alpha) = 0$.)*
+
+          **Description de la courbe $(C_g)$ fournie** *(transcrite fidèlement du scan)* : la courbe de $g$ est tracée sur la fenêtre $x \in [-5\,;\,0{,}5]$, $y \in [-2\,;\,4]$. Elle s'annule en **deux** points : en $x = \alpha \approx -4{,}5$ (marqué sur l'axe des abscisses) et en $x = 0$ (l'origine). Elle est **positive sur $]-\infty,\alpha[$** (petite portion visible au bord gauche, d'ordonnée $\approx +0{,}5$ en $x=-5$), **négative sur $]\alpha,0[$** avec un minimum d'ordonnée $\approx -2$ au voisinage de $x=-2$, puis de nouveau **positive sur $]0,+\infty[$** en croissant fortement (elle atteint $\approx +4$ au bord droit du cadre).
+        reasoning: |-
+          On **lit** les deux changements de signe directement sur $(C_g)$, en s'appuyant sur les deux zéros $x=\alpha$ et $x=0$ :
+
+          $$g(x) > 0 \text{ sur } ]-\infty,\alpha[\ ;\quad g(\alpha)=0\ ;\quad g(x) < 0 \text{ sur } ]\alpha,0[\ ;\quad g(0)=0\ ;\quad g(x) > 0 \text{ sur } ]0,+\infty[.$$
+
+          Un contrôle algébrique confirme le zéro en $0$ : $g(0) = (0+4)e^{0} - 0 - 4 = 4 - 4 = 0$. Ces **deux** changements de signe, en $\alpha$ et en $0$, sont exactement les deux abscisses de points d'inflexion attendues à la question suivante — c'est ce qui rendait l'ancienne description « un seul changement de signe » incohérente, et pourquoi la figure a été corrigée.
+      - id: q5c
+        stem: |-
+          **(0,5 pt)** Étudier la concavité de la courbe $(C)$ et déterminer les abscisses des deux points d'inflexion.
+        reasoning: |-
+          On a $f''(x) = \frac{1}{2}e^{\frac{x}{2}}g(x)$, et $\frac{1}{2}e^{\frac{x}{2}}>0$ toujours : le **signe de $f''$ est exactement celui de $g$** (question 5b). Donc $f''>0$ (courbe **convexe**) sur $]-\infty,\alpha[$ et sur $]0,+\infty[$, et $f''<0$ (courbe **concave**) sur $]\alpha,0[$.
+
+          $f''$ change de signe en $x=\alpha$ et en $x=0$ : la concavité change en ces deux points, qui sont donc les **deux points d'inflexion**, d'abscisses $\alpha$ et $0$.
+        steps:
+          - math: |-
+              \tfrac{1}{2}e^{\frac{x}{2}} > 0 \ \Rightarrow\ \text{signe de } f''(x) = \text{signe de } g(x)
+            note: "Le facteur (1/2)e^{x/2} est toujours positif : f'' a le signe de g (question 5b)."
+          - math: |-
+              f'' > 0 \text{ sur } ]-\infty,\alpha[\,\cup\,]0,+\infty[ \ (\text{convexe})\ ;\quad f'' < 0 \text{ sur } ]\alpha,0[ \ (\text{concave})
+            note: "(C) est convexe là où f''>0, concave là où f''<0."
+          - math: |-
+              f'' \text{ change de signe en } x=\alpha \text{ et } x=0 \ \Rightarrow\ \text{deux points d'inflexion d'abscisses } \alpha \text{ et } 0
+            note: "Aux deux changements de signe de f'' correspondent les deux points d'inflexion."
+      - id: q6
+        stem: |-
+          **(1 pt)** Construire la courbe $(C)$ dans le repère $(O,\vec{i},\vec{j})$. *(On prend $\ln 4 \approx 1{,}4$, $\alpha \approx -4{,}5$ et $f(\alpha) \approx -3{,}5$.)*
+        reasoning: |-
+          On ne trace pas au hasard : on reporte tous les éléments établis.
+
+          — **Asymptote et allure en $-\infty$** : la droite $(\Delta):y=x$ est asymptote en $-\infty$ (question 3a), et $(C)$ y est **au-dessus** de $(\Delta)$ (question 3b) ; la courbe descend le long de $(\Delta)$ vers $-\infty$.
+          — **Croisements avec $(\Delta)$** : $(C)$ coupe $(\Delta)$ en $(0,0)$ et $(\ln 4,\ln 4)\approx(1{,}4\,;\,1{,}4)$, en passant **en dessous** de $(\Delta)$ sur $]0,\ln 4[$ puis **au-dessus** au-delà (question 3b).
+          — **Variations** : $f$ est strictement croissante partout (question 4c), sans extremum, avec $f(0)=0$.
+          — **Branche en $+\infty$** : branche parabolique de direction $(Oy)$ (question 2) — la courbe s'élève de plus en plus vite.
+          — **Concavité** : convexe sur $]-\infty,\alpha[$, concave sur $]\alpha,0[$, convexe sur $]0,+\infty[$ (question 5c), avec deux points d'inflexion, en $x=\alpha\approx-4{,}5$ (où $f(\alpha)\approx-3{,}5$) et en $x=0$.
+
+          On place ces repères, puis on relie par une courbe croissante respectant la concavité annoncée.
+      - id: q7a
+        part: "Partie D — Fonction réciproque et suite"
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $f$ admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$.
+        reasoning: |-
+          $f$ est continue (car dérivable, question 4a) et **strictement croissante** sur $\mathbb{R}$ (question 4b). Une fonction continue et strictement monotone sur un intervalle réalise une **bijection** de cet intervalle sur son image. Ici l'image est $f(\mathbb{R}) = \left]\displaystyle\lim_{x\to-\infty}f,\ \displaystyle\lim_{x\to+\infty}f\right[ = \,]-\infty,+\infty[ = \mathbb{R}$ (question 1). Donc $f$ réalise une bijection de $\mathbb{R}$ sur $\mathbb{R}$, et admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$.
+      - id: q7b
+        stem: |-
+          **(0,25 pt)** Calculer $\left(f^{-1}\right)'(\ln 4)$.
+        reasoning: |-
+          On a montré (question 3b) que $f(\ln 4)=\ln 4$, donc $f^{-1}(\ln 4)=\ln 4$. La dérivée de la réciproque s'obtient par $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\!\left(f^{-1}(y)\right)}$, ici $\left(f^{-1}\right)'(\ln 4) = \dfrac{1}{f'(\ln 4)}$.
+
+          On calcule $f'(\ln 4)$ en remarquant $e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2$ : $f'(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4$. D'où $\left(f^{-1}\right)'(\ln 4) = \dfrac{1}{1+2\ln 4}$.
+        steps:
+          - math: |-
+              f(\ln 4) = \ln 4 \ \Rightarrow\ f^{-1}(\ln 4) = \ln 4\ ;\qquad e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2
+            note: "f(ln4)=ln4 (question 3b) ; e^{(ln4)/2} = e^{ln2} = 2."
+          - math: |-
+              f'(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4
+            note: "On remplace e^{(ln4)/2}=2 dans f'(x)=(e^{x/2}-1)^2 + x e^{x/2}(e^{x/2}-1)."
+          - math: |-
+              \left(f^{-1}\right)'(\ln 4) = \frac{1}{f'(\ln 4)} = \frac{1}{1 + 2\ln 4}
+            note: "Dérivée de la réciproque ; aussi égal à 1/(1+4 ln2) car 2 ln4 = 4 ln2."
+      - id: q8a
+        stem: |-
+          **(0,5 pt)** Soit $(u_n)$ la suite définie par $u_0 = 1$ et $u_{n+1} = f(u_n)$ pour tout $n$ de $\mathbb{N}$. Montrer par récurrence que $0 < u_n < \ln 4$ pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          **Initialisation :** $u_0 = 1$, et $0 < 1 < \ln 4$ (car $\ln 4 \approx 1{,}39$). L'encadrement est vrai au rang $0$.
+
+          **Hérédité :** supposons $0 < u_n < \ln 4$. Comme $f$ est **strictement croissante** (question 4b), elle conserve l'ordre : $f(0) < f(u_n) < f(\ln 4)$. Or $f(0)=0$ et $f(\ln 4)=\ln 4$ (question 3b), donc $0 < u_{n+1} < \ln 4$. L'encadrement se transmet, il est vrai pour tout $n$.
+        steps:
+          - math: |-
+              \text{Initialisation : } u_0 = 1,\quad 0 < 1 < \ln 4 \ \ (\ln 4 \approx 1{,}39)
+            note: "Le rang 0 vérifie l'encadrement."
+          - math: |-
+              0 < u_n < \ln 4 \ \Rightarrow\ f(0) < f(u_n) < f(\ln 4) \ \Rightarrow\ 0 < u_{n+1} < \ln 4
+            note: "f strictement croissante (question 4b) ; f(0)=0 et f(ln4)=ln4."
+      - id: q8b
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)$ est décroissante.
+        reasoning: |-
+          On étudie le signe de $u_{n+1} - u_n = f(u_n) - u_n$. La question 3b a montré que $f(x)-x < 0$ sur $]0,\ln 4[$. Comme $0 < u_n < \ln 4$ (question 8a), on a $f(u_n) - u_n < 0$, c'est-à-dire $u_{n+1} - u_n < 0$ : la suite $(u_n)$ est **décroissante**.
+        steps:
+          - math: |-
+              u_{n+1} - u_n = f(u_n) - u_n < 0 \qquad (\text{car } 0 < u_n < \ln 4)
+            note: "On réutilise f(x)-x < 0 sur ]0,ln4[ (question 3b) avec x = u_n."
+      - id: q8c
+        stem: |-
+          **(0,25 pt)** En déduire que la suite $(u_n)$ est convergente.
+        reasoning: |-
+          La suite $(u_n)$ est **décroissante** (question 8b) et **minorée** par $0$ (question 8a : $0 < u_n$). Par le théorème de la convergence monotone, toute suite décroissante et minorée converge : $(u_n)$ converge vers une limite finie $\ell \ge 0$.
+      - id: q8d
+        stem: |-
+          **(0,5 pt)** Calculer la limite de la suite $(u_n)$.
+        reasoning: |-
+          Notons $\ell$ la limite. En passant l'encadrement $0 < u_n < \ln 4$ à la limite, $\ell \in [0,\ln 4]$. Comme $f$ est continue et $u_{n+1}=f(u_n)$, la limite vérifie $\ell = f(\ell)$, donc $f(\ell)-\ell = 0$, soit $\ell\,e^{\frac{\ell}{2}}\left(e^{\frac{\ell}{2}}-2\right)=0$ : les points fixes possibles sont $\ell = 0$ et $\ell = \ln 4$.
+
+          La suite est **décroissante** et part de $u_0 = 1 < \ln 4$ : tous ses termes, et donc sa limite, sont $< \ln 4$. On écarte $\ell=\ln 4$. La limite est donc $\ell = 0$.
+        steps:
+          - math: |-
+              0 \le \ell \le \ln 4\ ;\quad u_{n+1}=f(u_n),\ f \text{ continue} \ \Rightarrow\ \ell = f(\ell)
+            note: "La limite est un point fixe de f, situé dans [0, ln4]."
+          - math: |-
+              f(\ell) = \ell \iff \ell\,e^{\frac{\ell}{2}}\left(e^{\frac{\ell}{2}}-2\right) = 0 \iff \ell = 0 \ \text{ ou }\ \ell = \ln 4
+            note: "f(x)-x = x e^{x/2}(e^{x/2}-2) ; ses zéros sont 0 et ln4."
+          - math: |-
+              (u_n) \text{ décroissante},\ u_0 = 1 < \ln 4 \ \Rightarrow\ \ell < \ln 4 \ \Rightarrow\ \ell = 0
+            note: "La suite décroît en partant de 1 < ln4 : la limite ne peut pas être ln4, donc lim u_n = 0."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep skills as r-bac (limites de e^x en ±∞, dérivée d'un quotient
+  # contenant e^x, tableau de variation, concavité + point d'inflexion, fonction
+  # réciproque et (f^{-1})', suite u_{n+1}=f(u_n)) but a DIFFERENT function
+  # f(x)=(e^x-1)/(e^x+1) : bornée, à asymptotes HORIZONTALES y=±1 (et non une
+  # droite oblique y=x), un seul point d'inflexion (0,0), réciproque définie sur
+  # ]-1,1[, et suite (u_0=1) DÉCROISSANTE de limite 0. L'élève ne peut pas
+  # recopier le sujet 2022 : il doit reconnaître que la même machinerie tient
+  # quand le décor change.
+  - id: r-variation
+    title: "Variation fraîche — une fonction bornée à asymptotes horizontales, réciproque sur ]-1,1[ et suite décroissante"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à être
+        un sujet réel ; le sujet réel sourcé est r-bac (2022, session normale,
+        code NS 22F). Fonction et valeurs choisies pour donner des résultats
+        exacts vérifiés à la main : asymptotes horizontales y=±1, dérivée
+        2e^x/(e^x+1)^2, point d'inflexion (0,0), (f^{-1})'(0)=2, point fixe 0.
+    intro: |-
+      Même machinerie que le problème précédent, décor entièrement changé — pour t'obliger à reconnaître les gestes plutôt qu'à recopier un corrigé. Soit $f$ la fonction définie sur $\mathbb{R}$ par :
+
+      $$f(x) = \frac{e^{x} - 1}{e^{x} + 1}$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$.
+
+      Trois différences volontaires avec le sujet 2022 : ici les asymptotes sont **horizontales** ($y=1$ et $y=-1$, et non une droite oblique $y=x$), la fonction reste **bornée** entre $-1$ et $1$, et sa réciproque n'est définie que sur $]-1,1[$. Mais les outils sont identiques : limites de $e^x$ en $\pm\infty$, dérivée d'un quotient contenant $e^x$, tableau de variations, concavité et point d'inflexion, fonction réciproque et sa dérivée, puis une suite $u_{n+1}=f(u_n)$.
+    questions:
+      - id: q1
+        part: "Partie A — Limites et asymptotes horizontales"
+        stem: |-
+          Calculer $\displaystyle\lim_{x \to -\infty} f(x)$ et $\displaystyle\lim_{x \to +\infty} f(x)$, puis interpréter géométriquement.
+        reasoning: |-
+          En $-\infty$ : $e^{x} \to 0$ (R4), donc $f(x) \to \dfrac{0-1}{0+1} = -1$. La droite $y=-1$ est **asymptote horizontale** en $-\infty$.
+
+          En $+\infty$ : $e^{x}\to+\infty$ donnerait la forme indéterminée $\frac{\infty}{\infty}$ ; on lève l'indétermination en divisant haut et bas par $e^{x}$ : $f(x) = \dfrac{1-e^{-x}}{1+e^{-x}}$, et $e^{-x}\to 0$, donc $f(x)\to \dfrac{1-0}{1+0} = 1$. La droite $y=1$ est **asymptote horizontale** en $+\infty$.
+        steps:
+          - math: |-
+              \lim_{x \to -\infty} e^{x} = 0 \ \Rightarrow\ \lim_{x \to -\infty} f(x) = \frac{0-1}{0+1} = -1
+            note: "En -∞, e^x → 0 : f tend vers -1. Asymptote horizontale y=-1."
+          - math: |-
+              f(x) = \frac{e^{x}-1}{e^{x}+1} = \frac{1-e^{-x}}{1+e^{-x}} \xrightarrow[x \to +\infty]{} \frac{1-0}{1+0} = 1
+            note: "On divise par e^x ; e^{-x} → 0 en +∞. Asymptote horizontale y=1."
+      - id: q2
+        stem: |-
+          Étudier la position de la courbe $(C)$ par rapport à ses deux asymptotes $y=1$ et $y=-1$.
+        reasoning: |-
+          On compare $f$ à chaque asymptote par une différence, réduite au même dénominateur.
+
+          $f(x)-1 = \dfrac{e^{x}-1-(e^{x}+1)}{e^{x}+1} = \dfrac{-2}{e^{x}+1} < 0$ : $(C)$ est **strictement en dessous** de $y=1$.
+
+          $f(x)+1 = \dfrac{e^{x}-1+e^{x}+1}{e^{x}+1} = \dfrac{2e^{x}}{e^{x}+1} > 0$ : $(C)$ est **strictement au-dessus** de $y=-1$. La courbe reste donc coincée dans la bande $-1 < f(x) < 1$.
+        steps:
+          - math: |-
+              f(x) - 1 = \frac{e^{x}-1-(e^{x}+1)}{e^{x}+1} = \frac{-2}{e^{x}+1} < 0
+            note: "(C) strictement en dessous de l'asymptote y=1 sur tout ℝ."
+          - math: |-
+              f(x) + 1 = \frac{e^{x}-1+e^{x}+1}{e^{x}+1} = \frac{2e^{x}}{e^{x}+1} > 0
+            note: "(C) strictement au-dessus de y=-1 : ainsi -1 < f(x) < 1 partout."
+      - id: q3
+        part: "Partie B — Dérivée et variations"
+        stem: |-
+          Montrer que $f'(x) = \dfrac{2e^{x}}{\left(e^{x}+1\right)^2}$, puis en déduire que $f$ est strictement croissante sur $\mathbb{R}$ et réalise une bijection de $\mathbb{R}$ sur $]-1,1[$.
+        reasoning: |-
+          On dérive le quotient $\dfrac{u}{v}$ avec $u=e^{x}-1$, $v=e^{x}+1$ : $\left(\dfrac{u}{v}\right)' = \dfrac{u'v-uv'}{v^2}$, ici $u'=v'=e^{x}$, et le numérateur $e^{x}(e^{x}+1) - (e^{x}-1)e^{x} = e^{x}\big[(e^{x}+1)-(e^{x}-1)\big] = 2e^{x}$ se simplifie remarquablement.
+
+          Comme $e^{x}>0$ et $(e^{x}+1)^2>0$, on a $f'(x)>0$ partout : $f$ est **strictement croissante**. Continue et strictement croissante d'image $]-1,1[$ (les deux asymptotes, question 1), elle réalise une **bijection** de $\mathbb{R}$ sur $]-1,1[$.
+        steps:
+          - math: |-
+              f'(x) = \frac{e^{x}(e^{x}+1) - (e^{x}-1)e^{x}}{(e^{x}+1)^2} = \frac{2e^{x}}{(e^{x}+1)^2}
+            note: "Règle du quotient (u/v)'=(u'v-uv')/v^2 ; le numérateur se simplifie en 2e^x."
+          - math: |-
+              e^{x} > 0 \ \Rightarrow\ f'(x) > 0 \ \Rightarrow\ f \text{ strictement croissante},\quad f(\mathbb{R}) = \,]-1,1[
+            note: "f continue et strictement croissante d'image ]-1,1[ : bijection de ℝ sur ]-1,1[."
+      - id: q4
+        stem: |-
+          Dresser le tableau de variations de $f$.
+        reasoning: |-
+          Tout est en place : $f'(x)>0$ sur $\mathbb{R}$ (question 3), donc $f$ est **strictement croissante**, avec $\displaystyle\lim_{x\to-\infty}f(x)=-1$ et $\displaystyle\lim_{x\to+\infty}f(x)=1$ (question 1). Le tableau tient en une seule flèche montante, de $-1$ (exclu) à $1$ (exclu), sans extremum, en passant par $f(0)=\dfrac{e^0-1}{e^0+1}=0$.
+      - id: q5
+        part: "Partie C — Concavité et point d'inflexion"
+        stem: |-
+          Montrer que $f''(x) = \dfrac{2e^{x}\left(1-e^{x}\right)}{\left(e^{x}+1\right)^3}$, et en déduire la concavité de $(C)$ et son point d'inflexion.
+        reasoning: |-
+          On dérive $f'(x) = 2e^{x}\left(e^{x}+1\right)^{-2}$ comme un produit : $f''(x) = 2e^{x}\left(e^{x}+1\right)^{-2} + 2e^{x}\cdot(-2)\left(e^{x}+1\right)^{-3}e^{x}$. On factorise $2e^{x}\left(e^{x}+1\right)^{-3}$ et le crochet $(e^{x}+1) - 2e^{x} = 1 - e^{x}$ donne le numérateur.
+
+          Le signe de $f''$ est celui de $1-e^{x}$ : positif pour $x<0$ (courbe **convexe**), négatif pour $x>0$ (courbe **concave**). $f''$ change de signe en $x=0$ : la concavité y change, c'est un **point d'inflexion**, en $(0,f(0))=(0,0)$.
+        steps:
+          - math: |-
+              f''(x) = \frac{2e^{x}(e^{x}+1)^2 - 2e^{x}\cdot 2(e^{x}+1)e^{x}}{(e^{x}+1)^4} = \frac{2e^{x}\left(1-e^{x}\right)}{(e^{x}+1)^3}
+            note: "On dérive f' = 2e^x (e^x+1)^{-2} et on factorise (e^x+1) au numérateur."
+          - math: |-
+              1 - e^{x} > 0 \iff x < 0 \ \Rightarrow\ f'' > 0 \text{ sur } ]-\infty,0[ \ (\text{convexe}),\ f'' < 0 \text{ sur } ]0,+\infty[ \ (\text{concave})
+            note: "Le signe de f'' est celui de 1-e^x ; changement de signe en 0."
+          - math: |-
+              f'' \text{ change de signe en } 0 \ \Rightarrow\ \text{point d'inflexion } (0, f(0)) = (0, 0)
+            note: "L'unique changement de concavité est en x=0 : point d'inflexion à l'origine."
+      - id: q6
+        part: "Partie D — Réciproque et suite"
+        stem: |-
+          Justifier que $f$ admet une réciproque $f^{-1}$ définie sur $]-1,1[$, puis calculer $\left(f^{-1}\right)'(0)$.
+        reasoning: |-
+          $f$ réalise une bijection de $\mathbb{R}$ sur $]-1,1[$ (question 3), donc admet une réciproque $f^{-1}$ définie sur $]-1,1[$. Comme $f(0)=0$, on a $f^{-1}(0)=0$.
+
+          La dérivée de la réciproque donne $\left(f^{-1}\right)'(0) = \dfrac{1}{f'(0)}$. Or $f'(0) = \dfrac{2e^{0}}{(e^{0}+1)^2} = \dfrac{2}{4} = \dfrac{1}{2}$, donc $\left(f^{-1}\right)'(0) = 2$.
+        steps:
+          - math: |-
+              f(0) = \frac{e^{0}-1}{e^{0}+1} = \frac{0}{2} = 0 \ \Rightarrow\ f^{-1}(0) = 0
+            note: "f(0)=0 donc la réciproque envoie 0 sur 0."
+          - math: |-
+              f'(0) = \frac{2e^{0}}{(e^{0}+1)^2} = \frac{2}{4} = \frac{1}{2} \ \Rightarrow\ \left(f^{-1}\right)'(0) = \frac{1}{f'(0)} = 2
+            note: "Dérivée de la réciproque : (f^{-1})'(0) = 1/f'(0) = 2."
+      - id: q7
+        stem: |-
+          Soit $(u_n)$ la suite définie par $u_0 = 1$ et $u_{n+1} = f(u_n)$. Montrer que $0 < f(x) < x$ pour tout $x>0$, puis en déduire par récurrence que $0 < u_n \le 1$ pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          **Lemme $0<f(x)<x$ pour $x>0$.** La dérivée $f'(x) = \dfrac{2e^{x}}{(e^{x}+1)^2}$ atteint son maximum $\dfrac{1}{2}$ en $x=0$, donc $f'(x)\le \dfrac{1}{2}<1$ partout ; ainsi $\big(f(x)-x\big)' = f'(x)-1 < 0$ : la fonction $x\mapsto f(x)-x$ est **strictement décroissante**, et comme $f(0)-0=0$, elle est négative pour $x>0$ — d'où $f(x)<x$. Par ailleurs $f$ est croissante, donc $f(x)>f(0)=0$ pour $x>0$. On a bien $0<f(x)<x$.
+
+          **Récurrence.** $u_0=1$ vérifie $0<1\le 1$. Si $0<u_n\le 1$, alors par croissance de $f$, $0 < f(u_n) \le f(1)$, et $f(1)=\dfrac{e-1}{e+1}\approx 0{,}46 < 1$ : donc $0 < u_{n+1} \le 1$. L'encadrement se transmet.
+        steps:
+          - math: |-
+              f'(x) = \frac{2e^{x}}{(e^{x}+1)^2} \le \frac{1}{2} < 1 \ \Rightarrow\ \big(f(x)-x\big)' = f'(x) - 1 < 0
+            note: "Le maximum de f' est 1/2 (atteint en 0) : donc f(x)-x est strictement décroissante."
+          - math: |-
+              f(0) - 0 = 0 \ \Rightarrow\ \forall x>0,\ f(x) - x < 0,\ \text{ et } f(x) > f(0) = 0 \ \Rightarrow\ 0 < f(x) < x
+            note: "f(x)-x décroissante et nulle en 0 : négative pour x>0. Avec f croissante, 0<f(x)<x."
+          - math: |-
+              0 < u_0 = 1 \le 1\ ;\quad 0 < u_n \le 1 \ \Rightarrow\ 0 < f(u_n) \le f(1) < 1 \ \Rightarrow\ 0 < u_{n+1} \le 1
+            note: "Récurrence : f croissante, f(1)=(e-1)/(e+1)≈0,46<1, et f(u_n)>0."
+      - id: q8
+        stem: |-
+          Montrer que la suite $(u_n)$ est décroissante.
+        reasoning: |-
+          On étudie $u_{n+1} - u_n = f(u_n) - u_n$. Comme $u_n>0$ (question 7), le lemme $f(x)<x$ pour $x>0$ donne $f(u_n) < u_n$, donc $u_{n+1} - u_n < 0$ : la suite est **décroissante** (c'est le miroir du sujet 2022, où l'on avait la même conclusion par une autre voie).
+        steps:
+          - math: |-
+              u_{n+1} - u_n = f(u_n) - u_n < 0 \qquad (\text{car } 0 < u_n \Rightarrow f(u_n) < u_n)
+            note: "On réutilise 0<f(x)<x pour x>0 (question 7) : la suite décroît."
+      - id: q9
+        stem: |-
+          En déduire que la suite $(u_n)$ est convergente et calculer sa limite.
+        reasoning: |-
+          $(u_n)$ est **décroissante** (question 8) et **minorée** par $0$ (question 7) : par le théorème de convergence monotone, elle converge vers une limite $\ell \in [0,1]$.
+
+          Comme $f$ est continue et $u_{n+1}=f(u_n)$, la limite est un point fixe : $\ell = f(\ell)$. Mais pour $x>0$, $f(x)<x$ (question 7) : il n'y a aucun point fixe strictement positif. Le seul point fixe possible dans $[0,1]$ est $\ell = 0$ (et $f(0)=0$). Donc $\displaystyle\lim_{n\to+\infty}u_n = 0$.
+        steps:
+          - math: |-
+              (u_n) \text{ décroissante et minorée par } 0 \ \Rightarrow\ (u_n) \text{ converge},\ \ell \in [0,1]
+            note: "Théorème de la convergence monotone."
+          - math: |-
+              \ell = f(\ell),\ \text{ et } f(x) < x \text{ pour } x>0 \ \Rightarrow\ \ell = 0
+            note: "Aucun point fixe strictement positif (f(x)<x) ; le seul point fixe dans [0,1] est 0."

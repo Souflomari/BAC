@@ -1,0 +1,378 @@
+notion: fonction-exponentielle
+skill_code: maths_fonction_exponentielle
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, fonction-exp.)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MATHEMATICAL model, not just the fact of being wrong.
+# The end-bank >=3-per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict        (in R0)      — COMMIT gate: turns R0's "prends
+#                                       position : que vaut E(0) ? que fait E
+#                                       d'une somme ?" into a real MCQ commit
+#                                       before the reveal. Probes M4 (somme-
+#                                       produit) + M2 (réciprocité).
+#   cp-r2-somme-produit  (after R2)   — rupture gate: e^{a+b}=e^a·e^b, PAS
+#                                       e^a+e^b ni e^{ab}. Probes M4.
+#   cp-r3-derivee-eu     (after R3)   — rupture gate: (e^u)'=u'·e^u (ni e^u seul,
+#                                       ni u', ni u·e^u). Probes M6.
+#   cp-r4-croissances    (after R4)   — rupture gate: e^x/x → +∞ (∞/∞ n'est pas
+#                                       une conclusion directe). Probes M7.
+#   cp-r4-asymptote      (after R4)   — rupture gate: e^x → 0 en -∞, asymptote
+#                                       y=0 jamais franchie. Probes M8 + M1.
+#   cp-r5-lecture-courbe (after R5)   — rupture gate: lire le tableau/la courbe
+#                                       de exp (croissante partout, pas de min).
+#                                       Probes M10 + M8.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml). Option lengths are balanced so the correct choice is never the
+# conspicuously longest.
+#
+# Boundary guard: 2ème Bac Sciences Expérimentales — fonction exponentielle :
+# réciproque de ln, signe et monotonie, propriétés algébriques (produit, opposé,
+# puissance), dérivée de e^u, limites de référence et croissances comparées,
+# tableau de variation, tangente et convexité, primitives, équations et
+# inéquations, bijection / TVI, fonction réciproque. Pas de développement en
+# série, pas d'équation différentielle y'=y comme voie d'introduction.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns the R0 "prends position : que vaut E(0) ? comment E
+  #        agit sur une somme ?" into a real MCQ commit before the
+  #        reveal that E = exp. Probes M4 (propriétés : somme→produit).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, hook_commit]
+    primary_misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Reprends la fonction $E$ imaginée dans le texte : elle **défait** ce que
+      fait $\ln$, donc $\ln\big(E(k)\big)=k$ pour tout réel $k$. **Avant de lire
+      la suite, engage-toi :** que doivent valoir $E(0)$ et $E(a+b)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$E(0)=1$ et $E(a+b)=E(a)\\times E(b)$."
+        correct: true
+        feedback: |
+          Exact, et c'est toute la logique du chapitre. $E(0)$ est le nombre dont
+          le $\ln$ vaut $0$, c'est $1$ (car $\ln 1=0$). Et puisque $\ln$
+          transforme un produit en somme, sa réciproque $E$ transforme une
+          **somme en produit** : $E(a+b)=E(a)\times E(b)$. Le R1 et le R2 le
+          démontreront proprement.
+      - id: B
+        text: "$E(0)=0$ et $E(a+b)=E(a)+E(b)$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: |
+          Modèle détecté : $E$ « recopierait » l'addition. Mais $E$ défait $\ln$,
+          qui change un produit en somme : $E$ doit donc changer une **somme en
+          produit**, pas la garder telle quelle. Et $E(0)=1$ (le nombre dont le
+          $\ln$ vaut $0$), pas $0$.
+      - id: C
+        text: "$E(0)=1$ et $E(a+b)=E(a)+E(b)$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: |
+          Modèle détecté : la valeur $E(0)=1$ est juste, mais on garde
+          l'addition. Or défaire $\ln$ (produit $\to$ somme) impose le trajet
+          inverse : somme $\to$ **produit**. La bonne relation est
+          $E(a+b)=E(a)\times E(b)$.
+      - id: D
+        text: "$E(0)$ n'est pas défini, car $\\ln(0)$ n'existe pas."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: |
+          Modèle détecté : confusion de rôle. Ici $0$ n'est pas l'entrée dont on
+          prendrait le $\ln$, c'est la **valeur** que doit prendre $\ln\big(E(0)\big)$.
+          On cherche le réel dont le $\ln$ vaut $0$ : c'est $1$. Donc $E(0)=1$,
+          parfaitement défini.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-somme-produit | placed AFTER R2
+  #        Rupture gate: e^{a+b}=e^a·e^b, PAS e^a+e^b ni e^{ab}.
+  #        Clone of EXP-2. Probes M4 (propriétés algébriques).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-somme-produit
+    rung: "R2"
+    habilete: raisonnement
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, proprietes_algebriques]
+    primary_misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    item_source: clone_of_EXP-2
+    lesson_placement: after_R2
+
+    stem: |
+      Pour tous réels $a$ et $b$, quelle égalité est **toujours** vraie ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$e^{a+b} = e^{a}\\times e^{b}$"
+        correct: true
+        feedback: |
+          Exact : c'est la propriété centrale du chapitre. Une **somme**
+          d'exposants devient un **produit** d'exponentielles — exactement
+          l'inverse de ce que $\ln$ fait d'un produit.
+      - id: B
+        text: "$e^{a+b} = e^{a}+e^{b}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: |
+          Modèle détecté : on garde l'addition au lieu de la transformer. Teste
+          avec $a=b=0$ : $e^{0+0}=1$, alors que $e^0+e^0=2$. La somme à
+          l'intérieur devient un **produit**, jamais une somme.
+      - id: C
+        text: "$e^{a}\\times e^{b} = e^{a\\times b}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: |
+          Modèle détecté : les exposants seraient multipliés. Quand on multiplie
+          $e^a$ et $e^b$, les exposants s'**additionnent** : $e^a\times e^b=e^{a+b}$,
+          pas $e^{a\times b}$.
+      - id: D
+        text: "$e^{a}-e^{b} = e^{a-b}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: |
+          Modèle détecté : une différence d'exponentielles lue comme
+          l'exponentielle d'une différence. C'est le **quotient** qui donne la
+          différence d'exposants : $\dfrac{e^a}{e^b}=e^{a-b}$, pas la
+          soustraction $e^a-e^b$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-derivee-eu | placed AFTER R3
+  #        Rupture gate: (e^u)' = u'·e^u — ni e^u seul (u' oublié), ni
+  #        u' seul (e^u perdu), ni u·e^u (u au lieu de u'). Clone EXP-13.
+  #        Probes M6 (dérivée de e^u).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-derivee-eu
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, derivee]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    item_source: clone_of_EXP-13
+    lesson_placement: after_R3
+
+    stem: |
+      Quelle est la dérivée de $f(x) = e^{-x^{2}}$ sur $\mathbb{R}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$-2x\\,e^{-x^{2}}$"
+        correct: true
+        feedback: |
+          Exact : avec $u(x)=-x^2$ et $u'(x)=-2x$, la règle $(e^u)'=u'e^u$ donne
+          $-2x\,e^{-x^2}$. « Dérivée de l'intérieur, fois l'exponentielle de
+          l'intérieur. »
+      - id: B
+        text: "$e^{-x^{2}}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: |
+          Modèle détecté : on a oublié le facteur $u'$. La règle est
+          $(e^u)'=u'e^u$, pas $e^u$ tout seul : la dérivée de l'intérieur,
+          $u'(x)=-2x$, ne doit pas disparaître.
+      - id: C
+        text: "$-2x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: |
+          Modèle détecté : on a gardé $u'(x)=-2x$ mais perdu l'exponentielle.
+          La dérivée d'une exponentielle composée est un **produit**
+          $u'e^u$, jamais le seul facteur $u'$.
+      - id: D
+        text: "$-x^{2}\\,e^{-x^{2}}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: |
+          Modèle détecté : on a multiplié par $u(x)=-x^2$ au lieu de $u'(x)=-2x$.
+          La formule $(e^u)'=u'e^u$ fait intervenir la **dérivée** de l'intérieur,
+          pas l'intérieur recopié.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-croissances | placed AFTER R4
+  #        Rupture gate: e^x/x → +∞ (∞/∞ n'est pas une conclusion
+  #        directe ; e^x écrase x). Clone of EXP-5. Probes M7.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-croissances
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, limites, croissances_comparees]
+    primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    item_source: clone_of_EXP-5
+    lesson_placement: after_R4
+
+    stem: |
+      Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{e^{x}}{x}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$+\\infty$"
+        correct: true
+        feedback: |
+          Exact : c'est le résultat de **croissances comparées**. $e^x$ grossit
+          infiniment plus vite que $x$, donc leur rapport explose vers $+\infty$
+          (le sens opposé de $\ln x/x$, qui tendait vers $0$).
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: |
+          Modèle détecté : sens inversé. $\dfrac{\ln x}{x}\to 0$, mais ici c'est
+          $\dfrac{e^x}{x}$ : $e^x$ écrase $x$, le rapport tend vers $+\infty$,
+          pas vers $0$.
+      - id: C
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: |
+          Modèle détecté : « deux quantités qui tendent vers $+\infty$ ont un
+          rapport $1$ ». Cela dépend de **laquelle** l'emporte : $e^x$ grossit
+          infiniment plus vite que $x$, donc le rapport diverge.
+      - id: D
+        text: "La limite n'existe pas : forme indéterminée non levée."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: |
+          Modèle détecté : « indéterminée = pas de limite ». Indéterminée veut
+          seulement dire qu'un calcul de plus est requis. Les croissances
+          comparées lèvent l'indétermination : la limite existe et vaut $+\infty$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-asymptote | placed AFTER R4
+  #        Rupture gate: e^x → 0 en -∞, asymptote horizontale y=0 jamais
+  #        franchie. Clone of EXP-15. Probes M8 (limite en -∞) + M1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-asymptote
+    rung: "R4"
+    habilete: utilisation
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, limites, asymptote]
+    primary_misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+    item_source: clone_of_EXP-15
+    lesson_placement: after_R4
+
+    stem: |
+      Que vaut $\displaystyle\lim_{x \to -\infty} e^{x}$, et qu'en déduit-on
+      pour la courbe de $\exp$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $0$ : la courbe admet l'asymptote horizontale $y=0$ en $-\infty$,
+          jamais franchie.
+        correct: true
+        feedback: |
+          Exact : $\displaystyle\lim_{x\to-\infty}e^x=0$, et comme $e^x>0$
+          toujours, la courbe s'approche de l'axe $y=0$ sans jamais le toucher.
+      - id: B
+        text: "$-\\infty$ : la courbe plonge vers le bas à gauche."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: |
+          Modèle détecté : $e^x$ traité comme $x$ en $-\infty$. Mais $e^x>0$
+          toujours : il ne peut jamais diverger vers $-\infty$, il se rapproche
+          de $0$.
+      - id: C
+        text: "$0$, avec une asymptote $y=0$ en $+\\infty$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: |
+          Modèle détecté : bonne limite, mauvaise branche. C'est en $-\infty$
+          que $e^x\to 0$ (asymptote $y=0$) ; en $+\infty$, au contraire,
+          $e^x\to+\infty$.
+      - id: D
+        text: "$0$, et la courbe finit par toucher l'axe des abscisses."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: |
+          Modèle détecté : $0$ serait atteint. Or $e^x>0$ pour tout réel $x$ :
+          $0$ n'est pas dans l'image de $\exp$. La courbe s'approche de l'axe
+          sans jamais le franchir ni le toucher.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-lecture-courbe | placed AFTER R5
+  #        Rupture gate: lire le tableau/la courbe de exp — croissante
+  #        sur tout ℝ, de 0 à +∞, sans min ni max. Clone of EXP-19.
+  #        Probes M10 (allure) + M8 (limite en -∞).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-lecture-courbe
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, variations, courbe]
+    primary_misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+    item_source: clone_of_EXP-19
+    lesson_placement: after_R5
+
+    stem: |
+      Laquelle de ces affirmations décrit correctement le tableau de variations
+      et l'allure de la courbe de $\exp$ sur $\mathbb{R}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Strictement croissante sur tout $\mathbb{R}$, de $0$ (en $-\infty$) à
+          $+\infty$ (en $+\infty$), sans minimum ni maximum.
+        correct: true
+        feedback: |
+          Exact : $(e^x)'=e^x>0$ partout, donc une seule ligne croissante, de $0$
+          (exclu) à $+\infty$, sans jamais s'annuler ni changer de sens.
+      - id: B
+        text: |
+          Décroissante sur $]-\infty,0]$ puis croissante : minimum en $x=0$.
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: |
+          Modèle détecté : le profil « en creux » de $x\mapsto x^2$. $\exp$ est
+          croissante sur $\mathbb{R}$ **tout entier** — sa dérivée $e^x$ est
+          toujours $>0$, jamais nulle : aucun minimum.
+      - id: C
+        text: |
+          Croissante, mais avec un minimum en $x=0$ à cause de sa convexité.
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: |
+          Modèle détecté : convexité confondue avec minimum. La convexité dit que
+          la courbe reste au-dessus de ses tangentes — pas qu'il y a un minimum.
+          Une fonction strictement croissante partout n'en a aucun.
+      - id: D
+        text: |
+          Strictement croissante, mais de limite $-\infty$ en $-\infty$.
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: |
+          Modèle détecté : mauvaise limite à gauche. $\exp$ reste $>0$ : sa
+          limite en $-\infty$ est $0$ (asymptote $y=0$), jamais $-\infty$.
