@@ -236,6 +236,7 @@ items:
     difficulty_level: 3
     skill_code: maths_complexes_trigo
     tags: ["argument", "quadrant"]
+    primary_misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
     stem: >
       Quel est un argument de $z = -\sqrt3 + i$ ?
     type: mcq
@@ -246,6 +247,7 @@ items:
       - id: B
         text: "$\\dfrac{\\pi}{6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
         feedback: >
           Tu as trouvé le bon angle de référence ($\tan$ vaut $1/\sqrt3$
           en valeur absolue) mais tu as oublié de vérifier le signe de
@@ -256,6 +258,7 @@ items:
       - id: C
         text: "$-\\dfrac{\\pi}{6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
         feedback: >
           Ce choix placerait le point dans le quadrant où $a>0$ et $b<0$.
           Mais ici $a=-\sqrt3<0$ (partie réelle négative) et $b=1>0$
@@ -264,6 +267,7 @@ items:
       - id: D
         text: "$\\dfrac{7\\pi}{6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
         feedback: >
           Cet angle correspond à $\cos\theta<0$ ET $\sin\theta<0$ — c'est
           le quadrant où les DEUX coordonnées sont négatives. Ici
@@ -294,6 +298,7 @@ items:
     difficulty_level: 3
     skill_code: maths_complexes_trigo
     tags: ["produit", "module", "argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.produit-modules-additionnes
     stem: >
       On donne $z = 2e^{i\pi/3}$ et $z' = 3e^{i\pi/6}$. Quelle est la
       forme exponentielle de $zz'$ ?
@@ -305,6 +310,7 @@ items:
       - id: B
         text: "$5e^{i\\pi/2}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-modules-additionnes
         feedback: >
           L'argument est correct, mais le module est faux : tu as
           additionné les modules ($2+3=5$) au lieu de les multiplier. Pour
@@ -314,6 +320,7 @@ items:
       - id: C
         text: "$6e^{i\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
         feedback: >
           Le module est correct, mais l'argument est faux : tu as
           soustrait les arguments ($\pi/3-\pi/6$) au lieu de les
@@ -323,6 +330,7 @@ items:
       - id: D
         text: "$6e^{i\\pi/3}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
         feedback: >
           Tu as multiplié correctement les modules, mais oublié
           d'ajouter l'argument de $z'$ : ce choix ne garde que
@@ -344,6 +352,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["moivre", "puissance"]
+    primary_misconception: mc.math.maths_complexes_trigo.moivre-module-multiplie
     stem: >
       Soit $z = 2e^{i\pi/6}$. Quelle est la forme exponentielle de $z^3$ ?
     type: mcq
@@ -354,6 +363,7 @@ items:
       - id: B
         text: "$6e^{i\\pi/2}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-module-multiplie
         feedback: >
           L'argument est correct, mais le module est faux : tu as
           multiplié le module par $3$ ($2\times3=6$) au lieu de
@@ -363,6 +373,7 @@ items:
       - id: C
         text: "$8e^{i\\pi/18}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
         feedback: >
           Le module est correct, mais l'argument est faux : tu as
           DIVISÉ l'argument par $3$ ($\pi/6\div3=\pi/18$) au lieu de le
@@ -372,6 +383,7 @@ items:
       - id: D
         text: "$8e^{i\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
         feedback: >
           Tu as bien élevé le module à la puissance $3$, mais tu as
           laissé l'argument inchangé, comme si élever à la puissance ne
@@ -392,6 +404,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["racines-n-iemes", "unite"]
+    primary_misconception: mc.math.maths_complexes_trigo.racines-nombre-incomplet
     stem: >
       Quelles sont les solutions, dans $\mathbb{C}$, de l'équation
       $z^4 = 1$ ?
@@ -403,6 +416,7 @@ items:
       - id: B
         text: "$1$ et $-1$ seulement"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.equation-complexe-cherche-reels
         feedback: >
           Cette réponse ne cherche des solutions que parmi les nombres
           RÉELS, comme si l'équation vivait dans $\mathbb{R}$. Mais on
@@ -412,6 +426,7 @@ items:
       - id: C
         text: "$1$ et $i$ seulement"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-nombre-incomplet
         feedback: >
           L'équation $z^4=1$ a exactement $4$ solutions distinctes
           (une pour chaque $k=0,1,2,3$ dans $z_k=e^{i2k\pi/4}$), pas
@@ -420,6 +435,7 @@ items:
       - id: D
         text: "$1,\\ e^{i\\pi/4},\\ e^{i\\pi/2},\\ e^{i3\\pi/4}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
         feedback: >
           L'écart entre deux racines consécutives doit être
           $\dfrac{2\pi}{n}=\dfrac{2\pi}{4}=\dfrac{\pi}{2}$, pas $\pi/4$.
@@ -444,6 +460,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["rotation", "homothetie", "geometrie"]
+    primary_misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
     stem: >
       La transformation qui à $M$ d'affixe $z$ associe $M'$ d'affixe
       $z' = 2i\,z$ est la composée, centrée en $O$, de quelle rotation et
@@ -456,6 +473,7 @@ items:
       - id: B
         text: "Rotation d'angle $\\pi/2$ et homothétie de rapport $2i$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
         feedback: >
           Le rapport d'une homothétie est toujours un nombre RÉEL — ici
           $|2i|=2$. Le nombre complexe $2i$ tout entier code à la fois
@@ -465,6 +483,7 @@ items:
       - id: C
         text: "Rotation d'angle $2$ (en radians) et homothétie de rapport $\\pi/2$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
         feedback: >
           Les rôles sont inversés : c'est l'ARGUMENT de $2i$ qui donne
           l'angle de rotation ($\pi/2$, pas $2$), et le MODULE de $2i$
@@ -473,6 +492,7 @@ items:
       - id: D
         text: "Rotation d'angle $\\pi$ et homothétie de rapport $2$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
         feedback: >
           Multiplier $i$ par le réel positif $2$ ne change pas son
           argument : $\arg(2i) = \arg(2)+\arg(i) = 0+\pi/2 = \pi/2$, pas
@@ -495,6 +515,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["triangle", "configuration", "rapport-complexe"]
+    primary_misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
     stem: >
       $A$, $B$, $C$ ont pour affixes respectives $z_A=0$, $z_B=2$,
       $z_C=1+i\sqrt3$. On calcule
@@ -508,6 +529,7 @@ items:
       - id: B
         text: "Le triangle $ABC$ est rectangle en $A$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Un triangle est rectangle en $A$ quand le rapport est
           imaginaire PUR (argument $\pm\pi/2$), pas pour n'importe quel
@@ -516,6 +538,7 @@ items:
       - id: C
         text: "Les points $A$, $B$, $C$ sont alignés"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           L'alignement correspond à un rapport RÉEL (argument $0$ ou
           $\pi$). Ici le rapport $\frac12+i\frac{\sqrt3}{2}$ a une partie
@@ -524,6 +547,7 @@ items:
       - id: D
         text: "Le triangle est isocèle en $A$, mais on ne peut rien dire de plus"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Le module donne bien $AB=AC$ (isocèle en $A$), mais cette
           réponse ignore l'information de l'argument. Un triangle isocèle
@@ -552,6 +576,7 @@ items:
     difficulty_level: 1
     skill_code: maths_complexes_trigo
     tags: ["multiplication-par-i", "rotation", "intuition-geometrique"]
+    primary_misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
     stem: >
       D'après l'accroche du chapitre, que produit géométriquement la
       multiplication d'un point du plan par $i$ ?
@@ -563,6 +588,7 @@ items:
       - id: B
         text: "Un agrandissement (une homothétie), sans rotation."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           $|i|=1$ : multiplier par $i$ ne change jamais la distance à
           $O$, donc il n'y a aucun agrandissement. Tu as traité $i$
@@ -573,6 +599,7 @@ items:
       - id: C
         text: "Une translation."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           Une translation vient d'une ADDITION d'affixes (comme vu au
           chapitre précédent), pas d'une multiplication. Ici on
@@ -581,6 +608,7 @@ items:
       - id: D
         text: "Une symétrie par rapport à l'axe réel."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           C'est l'effet de la CONJUGAISON ($z\mapsto\overline z$), pas
           de la multiplication par $i$. Vérifie sur un exemple : le
@@ -612,6 +640,7 @@ items:
     difficulty_level: 2
     skill_code: maths_complexes_trigo
     tags: ["multiplication-par-i", "rotation", "sens-direct"]
+    primary_misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
     stem: >
       Le point $M$ a pour affixe $z = 3$. Quelle est l'affixe du point
       $M'$ obtenu en multipliant $z$ par $i$ ?
@@ -620,6 +649,7 @@ items:
       - id: A
         text: "$-3i$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           Ce point correspond à un quart de tour dans le sens INDIRECT
           (horaire), pas direct. Or l'accroche montre que multiplier
@@ -632,6 +662,7 @@ items:
       - id: C
         text: "$-3$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           $-3$ correspond à une multiplication par $-1=i^2$, c'est-à-dire
           un DEMI-tour, pas un quart de tour. Tu as confondu $i$ avec
@@ -639,6 +670,7 @@ items:
       - id: D
         text: "$3$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           Cette réponse revient à dire que multiplier par $i$ ne change
           rien, comme si $i$ jouait le rôle de $1$. Or $i\neq1$ :
@@ -661,6 +693,7 @@ items:
     difficulty_level: 2
     skill_code: maths_complexes_trigo
     tags: ["multiplication-par-i", "composition-rotations"]
+    primary_misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
     stem: >
       On part du point d'affixe $z$, on le multiplie par $i$, puis on
       multiplie le résultat par $i$ une seconde fois (on calcule donc
@@ -671,6 +704,7 @@ items:
       - id: A
         text: "Une rotation de centre $O$ et d'angle $\\pi/2$ (un quart de tour), comme une seule multiplication par $i$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           Faire deux fois la même rotation ne redonne pas le même
           angle : les deux quarts de tour s'ADDITIONNENT
@@ -679,6 +713,7 @@ items:
       - id: B
         text: "Un agrandissement de rapport $2$, sans rotation."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           Tu as pensé qu'appliquer deux fois la même multiplication
           double la distance à $O$, comme si $|i|$ n'était pas $1$
@@ -691,6 +726,7 @@ items:
       - id: D
         text: "Le point revient à sa position de départ (transformation identique)."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
           Tu as peut-être pensé « faire une chose deux fois annule son
           effet », comme pour une symétrie. Mais une ROTATION répétée
@@ -720,6 +756,7 @@ items:
     difficulty_level: 3
     skill_code: maths_complexes_trigo
     tags: ["forme-trigonometrique", "argument", "quadrant"]
+    primary_misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
     stem: >
       Quelle est la forme trigonométrique de $z = 1 - i$ ?
     type: mcq
@@ -727,6 +764,7 @@ items:
       - id: A
         text: "$2\\left(\\cos\\left(-\\dfrac{\\pi}{4}\\right)+i\\sin\\left(-\\dfrac{\\pi}{4}\\right)\\right)$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.module-oubli-racine
         feedback: >
           L'angle est correct, mais le module est faux : tu as calculé
           $r=1^2+(-1)^2=2$ en oubliant de prendre la racine carrée.
@@ -734,6 +772,7 @@ items:
       - id: B
         text: "$\\sqrt2\\left(\\cos\\dfrac{\\pi}{4}+i\\sin\\dfrac{\\pi}{4}\\right)$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
         feedback: >
           Le module est correct, mais tu as oublié de vérifier le
           signe du sinus : ici $b=-1<0$, donc $\sin\theta<0$. Or
@@ -743,6 +782,7 @@ items:
       - id: C
         text: "$\\sqrt2\\left(\\cos\\dfrac{3\\pi}{4}+i\\sin\\dfrac{3\\pi}{4}\\right)$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
         feedback: >
           Cet angle correspond à $\cos\theta<0$ et $\sin\theta>0$, donc
           au point $(-1,1)$. Mais ici $z=1-i$ correspond au point
@@ -773,6 +813,7 @@ items:
     difficulty_level: 3
     skill_code: maths_complexes_trigo
     tags: ["argument", "conjugue", "oppose"]
+    primary_misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
     stem: >
       On sait qu'un complexe $z$ non nul a pour argument
       $\theta=\dfrac{\pi}{5}$. Quel est un argument de $-\overline z$ ?
@@ -784,6 +825,7 @@ items:
       - id: B
         text: "$\\dfrac{6\\pi}{5}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
         feedback: >
           Tu as appliqué la règle de l'opposé ($\arg(-w)=\arg(w)+\pi$)
           directement à $\theta$, sans tenir compte du conjugué. Mais
@@ -793,6 +835,7 @@ items:
       - id: C
         text: "$-\\dfrac{\\pi}{5}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
         feedback: >
           Tu as appliqué seulement la règle du conjugué
           ($\arg(\overline z)=-\theta$), mais oublié le signe « $-$ »
@@ -802,6 +845,7 @@ items:
       - id: D
         text: "$\\dfrac{\\pi}{5}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
         feedback: >
           Tu as sans doute pensé que les deux transformations (le
           conjugué et l'opposé) s'annulent l'une l'autre et redonnent
@@ -828,6 +872,7 @@ items:
     difficulty_level: 3
     skill_code: maths_complexes_trigo
     tags: ["produit", "module", "argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.produit-modules-additionnes
     stem: >
       On donne $z = 3e^{i2\pi/3}$ et $z' = 5e^{-i\pi/6}$. Quelle est la
       forme exponentielle de $zz'$ ?
@@ -836,6 +881,7 @@ items:
       - id: A
         text: "$8e^{i\\pi/2}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-modules-additionnes
         feedback: >
           L'argument est correct, mais le module est faux : tu as
           ADDITIONNÉ les modules ($3+5=8$) au lieu de les multiplier.
@@ -847,6 +893,7 @@ items:
       - id: C
         text: "$15e^{i5\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
         feedback: >
           Le module est correct, mais tu as oublié le signe « $-$ »
           devant l'argument de $z'$ : tu as additionné $2\pi/3+\pi/6$
@@ -855,6 +902,7 @@ items:
       - id: D
         text: "$15e^{i2\\pi/3}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
         feedback: >
           Tu as multiplié correctement les modules, mais oublié
           d'ajouter l'argument de $z'$ : ce choix ne garde que
@@ -876,6 +924,7 @@ items:
     difficulty_level: 2
     skill_code: maths_complexes_trigo
     tags: ["forme-exponentielle", "definition"]
+    primary_misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
     stem: >
       Quelle égalité correspond à la définition de la notation
       $e^{i\theta}$ posée dans ce chapitre ?
@@ -884,6 +933,7 @@ items:
       - id: A
         text: "$\\cos\\theta - i\\sin\\theta$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
         feedback: >
           C'est l'expression de $e^{-i\theta}$ (ou de
           $\overline{e^{i\theta}}$), pas de $e^{i\theta}$ : tu as
@@ -892,6 +942,7 @@ items:
       - id: B
         text: "$\\sin\\theta + i\\cos\\theta$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
         feedback: >
           Tu as inversé les rôles : c'est $\cos\theta$ qui donne la
           partie RÉELLE (en facteur de $1$) et $\sin\theta$ qui donne
@@ -903,6 +954,7 @@ items:
       - id: D
         text: "$1 + i\\theta$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
         feedback: >
           Ce n'est pas la définition posée dans ce chapitre : ici,
           $e^{i\theta}$ est un NOM donné à $\cos\theta+i\sin\theta$,
@@ -926,6 +978,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["quotient", "module", "argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
     stem: >
       On donne $z = 6e^{i\pi/2}$ et $z' = 2e^{i\pi/3}$. Quelle est la
       forme exponentielle de $\dfrac{z}{z'}$ ?
@@ -934,6 +987,7 @@ items:
       - id: A
         text: "$3e^{i5\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
         feedback: >
           Le module est correct, mais tu as ADDITIONNÉ les arguments
           ($\pi/2+\pi/3$) au lieu de les soustraire. L'addition des
@@ -942,6 +996,7 @@ items:
       - id: B
         text: "$4e^{i\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-modules-additionnes
         feedback: >
           L'argument est correct, mais tu as SOUSTRAIT les modules
           ($6-2=4$) au lieu de les diviser. Pour un quotient, les
@@ -950,6 +1005,7 @@ items:
       - id: C
         text: "$3e^{-i\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
         feedback: >
           Le module est correct, mais tu as inversé l'ordre de la
           soustraction : tu as calculé $\arg(z')-\arg(z)$ au lieu de
@@ -974,6 +1030,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["moivre", "puissance", "periodicite"]
+    primary_misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
     stem: >
       Soit $z = e^{i\pi/3}$. Quelle est la forme la plus simple de
       $z^6$ ?
@@ -985,6 +1042,7 @@ items:
       - id: B
         text: "$-1$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-non-2pi-periodique
         feedback: >
           Tu sembles avoir supposé qu'un argument se reproduit tous les
           $\pi$ (comme la tangente), alors que l'argument est
@@ -994,6 +1052,7 @@ items:
       - id: C
         text: "$e^{i2\\pi/3}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
         feedback: >
           Cet argument correspond à $2\times\pi/3$ : tu as multiplié
           l'argument par $2$ au lieu de $6$, comme si tu calculais
@@ -1003,6 +1062,7 @@ items:
       - id: D
         text: "$6$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-module-multiplie
         feedback: >
           Tu as multiplié le module par $6$ ($1\times6=6$) au lieu de
           l'ÉLEVER à la puissance $6$ ($1^6=1$). La formule de Moivre
@@ -1026,6 +1086,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["racines-n-iemes", "complexe-quelconque"]
+    primary_misconception: mc.math.maths_complexes_trigo.racines-module-non-racine
     stem: >
       Quelles sont les trois solutions, dans $\mathbb{C}$, de
       l'équation $z^3 = -8$, sous forme exponentielle ?
@@ -1034,6 +1095,7 @@ items:
       - id: A
         text: "$-2$ seulement"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.equation-complexe-cherche-reels
         feedback: >
           Tu n'as cherché de solution que parmi les RÉELS. Mais dans
           $\mathbb{C}$, une équation $z^n=Z$ (avec $Z\neq0$) a
@@ -1046,6 +1108,7 @@ items:
       - id: C
         text: "$2e^{i\\pi/3},\\ 2e^{i\\pi},\\ 2e^{i7\\pi/3}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-nombre-incomplet
         feedback: >
           Tu as calculé $k=0$ et $k=1$ correctement, mais pour la
           troisième racine tu as pris $k=3$ au lieu de $k=2$. Il n'y a
@@ -1056,6 +1119,7 @@ items:
       - id: D
         text: "$8e^{i\\pi/3},\\ 8e^{i\\pi},\\ 8e^{i5\\pi/3}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-module-non-racine
         feedback: >
           Les arguments sont corrects, mais le module est faux : tu as
           gardé $R=|{-8}|=8$ tel quel, au lieu de prendre sa racine
@@ -1083,6 +1147,7 @@ items:
     difficulty_level: 3
     skill_code: maths_complexes_trigo
     tags: ["racines-n-iemes", "unite", "placement"]
+    primary_misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
     stem: >
       Les six solutions de $z^6=1$ sont placées régulièrement sur le
       cercle trigonométrique. Quel est l'angle, en radians, entre deux
@@ -1092,6 +1157,7 @@ items:
       - id: A
         text: "$2\\pi$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
         feedback: >
           $2\pi$ est l'angle d'un TOUR COMPLET, pas l'écart entre deux
           racines consécutives. Les $n=6$ racines se partagent le tour
@@ -1100,6 +1166,7 @@ items:
       - id: B
         text: "$\\dfrac{\\pi}{6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
         feedback: >
           Tu as calculé $\pi/n$ au lieu de $2\pi/n$ : il manque le
           facteur $2$, qui vient du fait qu'un tour complet mesure
@@ -1111,6 +1178,7 @@ items:
       - id: D
         text: "$6$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
         feedback: >
           Tu as répondu avec le nombre de racines lui-même, pas avec
           un angle. L'écart entre deux racines consécutives est une
@@ -1137,6 +1205,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["rotation", "homothetie", "centre-quelconque"]
+    primary_misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
     stem: >
       On considère la transformation qui à $M$ d'affixe $z$ associe
       $M'$ d'affixe $z'$ telle que $z'-(1+i) = 2\big(z-(1+i)\big)$.
@@ -1146,6 +1215,7 @@ items:
       - id: A
         text: "La composée d'une rotation de centre le point d'affixe $1+i$ et d'angle $\\pi/2$, et d'une homothétie de rapport $2$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
         feedback: >
           Il ne faut pas supposer par défaut qu'il y a une rotation :
           ici $c=2$ est un réel STRICTEMENT POSITIF, donc
@@ -1155,6 +1225,7 @@ items:
       - id: B
         text: "La composée d'une rotation de centre $O$ et d'angle $0$, et d'une homothétie de centre $O$ et de rapport $2$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
         feedback: >
           L'angle et le rapport sont corrects, mais le CENTRE est
           faux : la transformation est écrite avec $z-(1+i)$ des deux
@@ -1164,6 +1235,7 @@ items:
       - id: C
         text: "Une rotation de centre le point d'affixe $1+i$ et d'angle $\\pi$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
         feedback: >
           Multiplier par un réel STRICTEMENT POSITIF ne produit jamais
           un demi-tour : $\arg(2)=0$, pas $\pi$. Tu as peut-être
@@ -1193,6 +1265,7 @@ items:
     difficulty_level: 5
     skill_code: maths_complexes_trigo
     tags: ["rotation", "ecriture-complexe", "centre-quelconque"]
+    primary_misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
     stem: >
       Quelle est l'écriture complexe de la rotation de centre $A$
       d'affixe $z_A=1-i$ et d'angle $\dfrac{\pi}{3}$ ?
@@ -1204,6 +1277,7 @@ items:
       - id: B
         text: "$z' = e^{i\\pi/3}\\,z$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
         feedback: >
           Cette écriture correspond à une rotation centrée en $O$, pas
           en $A$. Comme le centre n'est pas $O$ mais le point d'affixe
@@ -1212,6 +1286,7 @@ items:
       - id: C
         text: "$z' - (1-i) = e^{-i\\pi/3}\\,(z-(1-i))$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
         feedback: >
           Tu as utilisé $e^{-i\pi/3}$ (rotation dans le sens indirect,
           horaire) au lieu de $e^{i\pi/3}$ (sens direct). L'énoncé
@@ -1220,6 +1295,7 @@ items:
       - id: D
         text: "$z' - (1-i) = \\dfrac{\\pi}{3}\\,(z-(1-i))$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient
         feedback: >
           Tu as utilisé l'angle $\pi/3$ lui-même comme coefficient
           multiplicateur, au lieu du nombre complexe $e^{i\pi/3}$ qui
@@ -1245,6 +1321,7 @@ items:
     difficulty_level: 4
     skill_code: maths_complexes_trigo
     tags: ["triangle", "alignement", "rapport-complexe"]
+    primary_misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
     stem: >
       $A$, $B$, $C$ ont pour affixes respectives $z_A=0$, $z_B=1$,
       $z_C=-2$. Que peut-on dire du triangle $ABC$, à partir de
@@ -1254,6 +1331,7 @@ items:
       - id: A
         text: "Les points ne sont pas alignés, car $w=-2$ est négatif : un rapport négatif ne correspond pas à un alignement."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Le critère d'alignement est « $w$ RÉEL non nul », qu'il soit
           positif OU négatif — pas seulement positif. Un $w$ négatif
@@ -1266,6 +1344,7 @@ items:
       - id: C
         text: "Le triangle est rectangle en $A$, car $\\arg(w)=\\pi$ est un multiple de $\\pi/2$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Le critère de « rectangle en $A$ » est « $w$ IMAGINAIRE PUR »
           (argument $\pm\pi/2$ exactement), pas « argument multiple de
@@ -1275,6 +1354,7 @@ items:
       - id: D
         text: "Le triangle est isocèle en $A$ ($AB=AC$), car $|w|=2$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Le critère d'isocèle en $A$ est précisément « $|w|=1$ », pas
           « $|w|$ est un nombre ». Ici $|w|=2\neq1$, donc
@@ -1301,6 +1381,7 @@ items:
     difficulty_level: 5
     skill_code: maths_complexes_trigo
     tags: ["triangle", "rectangle", "rapport-complexe"]
+    primary_misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
     stem: >
       $A$, $B$, $C$ ont pour affixes respectives $z_A=0$, $z_B=2$,
       $z_C=3i$. On calcule
@@ -1311,6 +1392,7 @@ items:
       - id: A
         text: "Rectangle ET isocèle en $A$, car $w$ est imaginaire pur."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           « $w$ imaginaire pur » garantit seulement le caractère
           RECTANGLE en $A$ ; ce n'est pas le critère d'isocèle. Le
@@ -1321,6 +1403,7 @@ items:
       - id: B
         text: "Isocèle en $A$ (car l'argument de $w$ vaut $\\pi/2$), mais pas rectangle (car $|w|\\neq1$)."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Les deux critères sont inversés : c'est l'ARGUMENT de $w$
           (imaginaire pur, $\pm\pi/2$) qui donne le caractère
@@ -1333,6 +1416,7 @@ items:
       - id: D
         text: "Ni rectangle ni isocèle en $A$, car $w$ n'est ni réel ni de module $1$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
         feedback: >
           Tu as bien vu que $w$ n'est pas réel (donc pas d'alignement)
           et que $|w|\neq1$ (donc pas isocèle), mais tu en conclus à
@@ -1360,6 +1444,7 @@ items:
     difficulty_level: 5
     skill_code: maths_complexes_trigo
     tags: ["rotation", "ecriture-complexe", "application"]
+    primary_misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
     stem: >
       On considère le point $A$ d'affixe $z_A=1+i$ et la rotation $r$
       de centre $A$ et d'angle $\dfrac{\pi}{2}$, qui à tout point $M$
@@ -1370,6 +1455,7 @@ items:
       - id: A
         text: "$z' = iz$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
         feedback: >
           Cette écriture correspond à une rotation centrée en $O$, pas
           en $A$. Il faut partir de $z'-z_A=i(z-z_A)$ (car
@@ -1378,6 +1464,7 @@ items:
       - id: B
         text: "$z' = iz+1-i$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante
         feedback: >
           Tu as bien posé $z'-z_A=i(z-z_A)$, mais en isolant $z'$ tu
           as oublié de RAJOUTER $z_A$ à la fin : tu t'es arrêté à
@@ -1386,6 +1473,7 @@ items:
       - id: C
         text: "$z' = -iz+2i$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
         feedback: >
           Tu as utilisé $e^{-i\pi/2}=-i$ (rotation dans le sens
           indirect, horaire) au lieu de $e^{i\pi/2}=i$ (sens direct).
@@ -1414,6 +1502,7 @@ items:
     difficulty_level: 5
     skill_code: maths_complexes_trigo
     tags: ["racines-n-iemes", "application"]
+    primary_misconception: mc.math.maths_complexes_trigo.racines-module-non-racine
     stem: >
       Quelles sont, sous forme exponentielle, les trois solutions dans
       $\mathbb{C}$ de l'équation $z^3 = -8i$ ?
@@ -1425,6 +1514,7 @@ items:
       - id: B
         text: "$8e^{-i\\pi/6},\\ 8e^{i\\pi/2},\\ 8e^{i7\\pi/6}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-module-non-racine
         feedback: >
           Les arguments sont corrects, mais le module est faux : tu as
           gardé $R=|{-8i}|=8$ tel quel au lieu de prendre sa racine
@@ -1433,6 +1523,7 @@ items:
       - id: C
         text: "$2e^{i\\pi/6},\\ 2e^{i5\\pi/6},\\ 2e^{i3\\pi/2}$"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
         feedback: >
           Tu as pris $\Phi=\pi/2$, l'argument de $8i$ (l'exemple du
           cours), au lieu de calculer l'argument de $-8i$. Le signe
@@ -1443,6 +1534,7 @@ items:
       - id: D
         text: "$2e^{-i\\pi/6}$ seulement"
         correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-nombre-incomplet
         feedback: >
           Tu t'es arrêté à $k=0$. Une équation $z^3=Z$ (avec
           $Z\neq0$) a exactement $3$ solutions distinctes, pour
@@ -1471,6 +1563,7 @@ items:
     difficulty_level: 5
     skill_code: maths_complexes_trigo
     tags: ["ensemble-de-points", "cercle", "argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
     stem: >
       Soient $A$ et $B$ d'affixes respectives $z_A=-1$ et $z_B=3$. On
       note $\Gamma$ l'ensemble des points $M$ d'affixe $z\neq z_B$
@@ -1481,6 +1574,7 @@ items:
       - id: A
         text: "La médiatrice du segment $[AB]$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
         feedback: >
           La médiatrice de $[AB]$ correspond à la condition
           $|z-z_A|=|z-z_B|$ (équidistance), pas à « imaginaire pur ».
@@ -1493,6 +1587,7 @@ items:
       - id: C
         text: "Le cercle de centre $A$ et de rayon $AB=4$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
         feedback: >
           Tu as traité cette condition comme si elle donnait « $M$ à
           distance constante de $A$ » (un cercle centré en $A$, comme
@@ -1504,6 +1599,7 @@ items:
       - id: D
         text: "La droite $(AB)$ privée du point $B$."
         correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
         feedback: >
           Tu as inversé les deux lignes de la table de lecture du R6 :
           c'est « $w$ RÉEL » qui donne un alignement (une droite), et
@@ -1532,3 +1628,56 @@ items:
 
       **Centre et rayon :** centre $=\dfrac{z_A+z_B}{2}=\dfrac{-1+3}{2}=1$,
       rayon $=\dfrac{AB}{2}=\dfrac{|z_B-z_A|}{2}=\dfrac{4}{2}=2$.
+
+coverage_summary:
+  total_items: 24
+  floor: 3
+  floor_met: false   # legacy end-bank rétro-tagué ; comptages réels, aucun gonflé.
+  method_primary: "item-level, par primary_misconception (1 item = 1 compte)"
+  method_distractor: "item-level, tout item avec >=1 distracteur tagué X"
+  per_rung: { R0: 3, R1: 3, R2: 3, R3: 3, R4: 3, R5: 3, R6: 3, R7: 3 }
+
+  per_misconception_distractor:
+    mult-par-i-non-rotation: 3            # items 7, 8, 9        OK (GATED cp-r0-predict)
+    argument-un-seul-signe: 3             # items 1, 10, 23      OK
+    produit-modules-additionnes: 3        # items 2, 12, 14      OK
+    produit-quotient-argument-operation: 3 # items 2, 12, 14     OK
+    racines-nombre-incomplet: 3           # items 4, 16, 23      OK (GATED cp-r4-racines)
+    transformation-centre-oublie: 3       # items 18, 19, 22     OK (GATED cp-r5-ecriture)
+    lecture-w-module-argument: 3          # items 6, 20, 21      OK (GATED cp-r6-lecture-w)
+    moivre-module-multiplie: 2            # items 3, 15
+    moivre-argument-mal-transforme: 2     # items 3, 15
+    equation-complexe-cherche-reels: 2    # items 4, 16
+    racines-pas-2pi-sur-n: 2              # items 4, 17
+    racines-module-non-racine: 2          # items 16, 23
+    rotation-sens-inverse: 2              # items 19, 22
+    module-oubli-racine: 1                # item 10
+    arg-conjugue-oppose-compose: 1        # item 11
+    definition-exponentielle-erronee: 1   # item 13
+    argument-non-2pi-periodique: 1        # item 15
+    similitude-module-argument-roles: 1   # item 5
+    homothetie-rapport-complexe: 1        # item 5
+    reel-positif-donne-rotation: 1        # item 18
+    rotation-angle-comme-coefficient: 1   # item 19
+    ecriture-complexe-oubli-constante: 1  # item 22
+    ensemble-points-locus-confondu: 1     # item 24   SOUS PLANCHER (GATED cp-ensemble-points)
+
+  gated_misconceptions:   # les 5 modèles portés par un checkpoint in-leçon
+    meets_floor: [mult-par-i-non-rotation, racines-nombre-incomplet, transformation-centre-oublie, lecture-w-module-argument]
+    under_floor: [ensemble-points-locus-confondu]   # 1 seul item de banque (NBCOMPLEX2-24)
+
+  honest_note: >-
+    PLANCHER NON ATTEINT globalement. Par comptage distracteur, 7 modèles
+    atteignent >=3 (dont 4 des 5 modèles GATÉS par un checkpoint). Le 5e modèle
+    gaté — ensemble-points-locus-confondu, la rupture « ensemble de points » —
+    n'a qu'UN seul item de banque (NBCOMPLEX2-24) : impossible d'atteindre 3
+    sans inventer d'items. Surfacé honnêtement, non gonflé. Une passe item-author
+    est due : porter à >=3 (a) ensemble-points-locus-confondu (lieux définis par
+    module ou argument d'un rapport de complexes — le cœur des configurations
+    SM), (b) les modèles racines/Moivre secondaires (racines-module-non-racine,
+    racines-pas-2pi-sur-n, moivre-module-multiplie, moivre-argument-mal-transforme)
+    et (c) rotation-sens-inverse. Les checkpoints in-leçon (checkpoints.yaml)
+    surfacent EN PLUS, inline, mult-par-i-non-rotation, racines-nombre-incomplet,
+    transformation-centre-oublie, lecture-w-module-argument et
+    ensemble-points-locus-confondu — mais ne sont PAS recomptés ici
+    (clones/formatifs, cf. RLC/PC/nc-1). Comptages ci-dessus réels ; aucun padding.

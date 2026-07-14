@@ -77,10 +77,10 @@ checkpoints:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: |
           Modèle détecté : « on ne descend pas sous le plus petit bidon ». Faux :
-          toute quantité atteignable est de la forme $3u + 5v$ ($u, v \in
-          \mathbb{Z}$), donc un multiple de $\mathrm{PGCD}(3,5) = 1$ — c'est-à-dire
-          **n'importe quel** entier, $1$ L compris. La taille des bidons n'est pas
-          le critère ; le PGCD l'est.
+          toute quantité atteignable est de la forme $3u + 5v$ (avec
+          $u, v \in \mathbb{Z}$), donc un multiple de $\mathrm{PGCD}(3,5) = 1$ —
+          c'est-à-dire **n'importe quel** entier, $1$ L compris. La taille des
+          bidons n'est pas le critère ; le PGCD l'est.
       - id: B
         text: |
           Oui, c'est possible.
@@ -260,10 +260,11 @@ checkpoints:
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: |
-          Modèle détecté : Gauss appliqué sans sa condition. « $a \mid bc \Rightarrow
-          a \mid b$ ou $a \mid c$ » n'est vrai que si $a$ est **premier avec**
-          l'un des facteurs. Ici $\mathrm{PGCD}(12,8)=4$ et $\mathrm{PGCD}(12,9)=3$ :
-          la condition manque, et de fait $12 \nmid 8$, $12 \nmid 9$.
+          Modèle détecté : Gauss appliqué sans sa condition. La règle
+          « $a \mid bc \Rightarrow a \mid b$ ou $a \mid c$ » n'est vraie que si
+          $a$ est **premier avec** l'un des facteurs. Ici
+          $\mathrm{PGCD}(12,8)=4$ et $\mathrm{PGCD}(12,9)=3$ : la condition
+          manque, et de fait $12 \nmid 8$, $12 \nmid 9$.
       - id: B
         text: |
           Non : Gauss exige $\mathrm{PGCD} = 1$, non vérifié ici.
