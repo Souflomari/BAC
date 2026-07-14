@@ -14,7 +14,7 @@
 
 ## 2025 — session normale — Exercice 1 (Chimie), Partie 2
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-14)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème : Exercice 1 = 7 points ; **Partie 2** = 3,25 points

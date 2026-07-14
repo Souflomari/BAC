@@ -13,7 +13,7 @@
 
 ## 2011 — session rattrapage — Exercice Mécanique (1ère situation)
 Source: https://www.alloschool.com/element/94449
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-14)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS28 · Barème de l'exercice « Mécanique » : 5,5 points au total

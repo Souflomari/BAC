@@ -16,7 +16,7 @@
 
 ## 2010 — session normale — Exercice de Chimie (Première partie)
 Source: https://www.alloschool.com/element/94443
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-14)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28 · Barème de l'exercice de Chimie complet : 7 points ;

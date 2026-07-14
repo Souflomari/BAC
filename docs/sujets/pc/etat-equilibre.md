@@ -13,7 +13,7 @@
 
 ## 2015 — session normale — Exercice 1 (Chimie), Deuxième partie (§1)
 Source: https://www.alloschool.com/element/94472
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-14)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28 · Barème : Exercice 1 = 7 points ; **Deuxième partie** =
