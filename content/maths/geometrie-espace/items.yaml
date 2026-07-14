@@ -1,6 +1,318 @@
 notion: geometrie-espace
 skill_code: maths_geometrie_espace   # proposed; supabase-architect reconciles at integration
-misconceptions: []
+misconceptions:
+  # Rétro-inventaire (summit-conversion / floor backfill). La banque a été
+  # rédigée AVANT le tag par distracteur (misconceptions: [] à l'origine) ;
+  # chaque distracteur a été relu et rattaché au modèle d'erreur qu'il teste.
+  # Namespace : mc.math.maths_geometrie_espace.<slug>. Compléments dans coverage_summary (bas de fichier).
+
+  - id: mc.math.maths_geometrie_espace.signe-arithmetique
+    label: "Erreur de signe ou de coefficient dans un calcul coordonnée par coordonnée"
+    description: >-
+      L'élève mène le bon calcul (produit scalaire, produit vectoriel,
+      différence de coordonnées, équation d'un plan) mais perd un signe ou un
+      coefficient en route — typiquement (−1)×4 compté +4, ou m×(−2) traité
+      comme −m.
+    contradicts_principle: >-
+      Chaque coordonnée porte son signe jusqu'au bout : le produit de deux
+      nombres de signes opposés est négatif, et le coefficient d'une inconnue
+      est exactement celui de la donnée. Réinjecter le résultat rattrape la
+      plupart de ces glissements.
+
+  - id: mc.math.maths_geometrie_espace.oubli-racine
+    label: "Oublier la racine carrée finale (norme² prise pour la norme, R² pour R)"
+    description: >-
+      L'élève s'arrête à la somme des carrés : il rend ‖u‖² à la place de ‖u‖,
+      R² à la place de R, ou divise par ‖u‖² au lieu de ‖u‖.
+    contradicts_principle: >-
+      ‖u‖ = √(x²+y²+z²) : la racine carrée est la dernière étape, pas une
+      décoration. 36 est un carré de norme, pas une norme ; 16 est R², pas un
+      rayon.
+
+  - id: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
+    label: "Réduire une opération vectorielle à une addition des coordonnées"
+    description: >-
+      L'élève calcule un produit scalaire, une norme ou un vecteur en
+      additionnant naïvement les coordonnées, au lieu d'appliquer la bonne
+      opération (produits puis somme, ou carrés puis racine, ou différence).
+    contradicts_principle: >-
+      Le produit scalaire est xx′+yy′+zz′ (trois produits, une somme), la norme
+      √(x²+y²+z²), un vecteur AB une différence coordonnée par coordonnée.
+      Aucune de ces opérations n'est « additionner les coordonnées ».
+
+  - id: mc.math.maths_geometrie_espace.oubli-valeur-absolue
+    label: "Rendre négative une grandeur toujours positive (distance, volume, norme)"
+    description: >-
+      L'élève laisse un signe négatif dans un résultat qui mesure une distance,
+      un volume ou une norme, faute d'avoir pris la valeur absolue.
+    contradicts_principle: >-
+      Distances, volumes et normes sont ≥ 0 par définition. La valeur absolue au
+      numérateur d'une distance, ou autour d'un produit mixte pour un volume,
+      n'est pas optionnelle : un résultat négatif signale une étape oubliée.
+
+  - id: mc.math.maths_geometrie_espace.volume-facteur-oubli
+    label: "Oublier tout ou partie du facteur 1/6 reliant produit mixte et volume du tétraèdre"
+    description: >-
+      L'élève rend la valeur absolue du produit mixte (volume du
+      parallélépipède) comme volume du tétraèdre, ou n'applique qu'un des deux
+      facteurs (1/2 pour la base triangulaire, 1/3 pour la pyramide).
+    contradicts_principle: >-
+      V(tétraèdre) = (1/6)|[u,v,w]|. Le facteur 1/6 = 1/2 × 1/3 combine « base
+      triangle = moitié du parallélogramme » et « pyramide = un tiers de
+      base×hauteur ». Ni 1, ni 1/2, ni 1/3 seuls.
+
+  - id: mc.math.maths_geometrie_espace.normal-vs-directeur
+    label: "Confondre vecteur normal à un plan et vecteur du plan / objet droite vs plan"
+    description: >-
+      L'élève prend un vecteur qui vit DANS le plan (un AB, un vecteur
+      directeur) pour le vecteur normal, ou confond les objets droite et plan
+      (cherche une « normale » à une droite, utilise la normale d'un autre plan).
+    contradicts_principle: >-
+      Le vecteur normal est ⟂ au plan, donc orthogonal à tout vecteur du plan :
+      l'opposé géométrique d'un vecteur du plan. Une droite a un vecteur
+      directeur ; un plan a un vecteur normal.
+
+  - id: mc.math.maths_geometrie_espace.distance-denominateur-somme
+    label: "Diviser par a+b+c au lieu de √(a²+b²+c²) dans la distance à un plan"
+    description: >-
+      Au dénominateur de d(M,P), l'élève met la somme des coefficients a+b+c au
+      lieu de la norme du vecteur normal √(a²+b²+c²).
+    contradicts_principle: >-
+      d(M,P) = |ax₀+by₀+cz₀+d| / ‖n‖, et ‖n‖ = √(a²+b²+c²) — jamais a+b+c. Le
+      dénominateur est une longueur (la norme de la normale), pas une somme de
+      coefficients.
+
+  - id: mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus
+    label: "Utiliser le produit scalaire là où il faut le produit vectoriel (ou l'inverse)"
+    description: >-
+      Pour une aire ou une direction perpendiculaire, l'élève emploie le produit
+      scalaire (un nombre lié à l'angle) au lieu du produit vectoriel (un vecteur
+      dont la norme est une aire), ou confond leurs résultats.
+    contradicts_principle: >-
+      Le produit scalaire renvoie un nombre (orthogonalité, angle) ; le produit
+      vectoriel un vecteur ⟂ aux deux, dont la norme est l'aire du
+      parallélogramme. Une aire se lit sur ‖u∧v‖, jamais sur u·v.
+
+  - id: mc.math.maths_geometrie_espace.scalaire-produit-incomplet
+    label: "Produit scalaire calculé incomplètement ou pas du tout"
+    description: >-
+      L'élève ne calcule qu'un terme du produit scalaire (le premier produit),
+      ou donne à sa place ‖u‖‖v‖ / une valeur supposée, sans effectuer réellement
+      xx′+yy′+zz′.
+    contradicts_principle: >-
+      Le produit scalaire est la somme des TROIS produits coordonnée par
+      coordonnée. Un seul terme, ou la valeur ‖u‖‖v‖ (qui suppose la
+      colinéarité), ne le remplace pas.
+
+  - id: mc.math.maths_geometrie_espace.aire-oubli-demi
+    label: "Rendre ‖u∧v‖ (parallélogramme) comme aire du triangle"
+    description: >-
+      L'élève calcule correctement ‖u∧v‖ mais oublie que le triangle n'occupe
+      que la moitié du parallélogramme.
+    contradicts_principle: >-
+      ‖u∧v‖ est l'aire du parallélogramme ; aire(triangle) = ‖u∧v‖ / 2. Le
+      facteur 1/2 n'est pas optionnel.
+
+  - id: mc.math.maths_geometrie_espace.normal-inclut-constante
+    label: "Prendre la constante d de l'équation comme composante du vecteur normal"
+    description: >-
+      Dans ax+by+cz+d=0, l'élève inclut d comme composante de la normale (par
+      ex. n(a,b,d)).
+    contradicts_principle: >-
+      Le vecteur normal est (a,b,c), les coefficients de x,y,z. La constante d ne
+      code que la position du plan le long de n, pas sa direction perpendiculaire.
+
+  - id: mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan
+    label: "Deux droites non parallèles seraient forcément sécantes (réflexe du plan)"
+    description: >-
+      L'élève transpose la règle plane « deux droites non parallèles se coupent »
+      à l'espace, sans envisager les droites non coplanaires.
+    contradicts_principle: >-
+      Dans l'espace, la troisième dimension permet à deux droites non parallèles
+      de se « rater » : ce sont les droites non coplanaires (gauches). Directions
+      non colinéaires n'implique pas point commun ; il faut résoudre le système.
+
+  - id: mc.math.maths_geometrie_espace.colinearite-mal-testee
+    label: "Colinéarité de deux directions mal testée (parallèle / confondu / « pas de point commun ⇒ parallèle »)"
+    description: >-
+      L'élève conclut au parallélisme ou à la confusion, ou déduit un
+      parallélisme de la seule absence de point commun, sans tester correctement
+      la colinéarité des vecteurs directeurs.
+    contradicts_principle: >-
+      Deux droites sont parallèles ssi leurs vecteurs directeurs sont colinéaires
+      (u₂ = k u₁). L'absence de point commun sans colinéarité, c'est le cas non
+      coplanaire, pas le parallélisme.
+
+  - id: mc.math.maths_geometrie_espace.perspective-fiable
+    label: "Se fier à un dessin en perspective pour juger angles / orthogonalité"
+    description: >-
+      L'élève tranche une question d'angle ou d'orthogonalité en regardant le
+      dessin (ou en y posant une équerre), comme si la perspective conservait les
+      angles.
+    contradicts_principle: >-
+      Une perspective déforme angles et longueurs : un angle qui paraît droit ne
+      l'est pas forcément. Seul un calcul de coordonnées (produit scalaire des
+      directions) tranche.
+
+  - id: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
+    label: "Trancher par un « fait » spatial inventé"
+    description: >-
+      L'élève invoque une règle inexistante (diagonales de faces toujours ⟂,
+      droites d'une même face toujours ⟂, longueurs égales ⇒ ⟂) au lieu de
+      calculer.
+    contradicts_principle: >-
+      L'orthogonalité de deux directions se décide par u·v = 0, pas par des
+      slogans sur les cubes ou les longueurs. Aucune de ces « règles » n'est
+      vraie en général.
+
+  - id: mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire
+    label: "Confondre orthogonalité (directions) et perpendicularité (directions + intersection)"
+    description: >-
+      L'élève emploie « perpendiculaires » pour des droites non sécantes, ou
+      refuse de parler d'orthogonalité tant qu'elles ne se coupent pas.
+    contradicts_principle: >-
+      Deux droites sont orthogonales si leurs directions le sont (u·v=0), qu'elles
+      se coupent ou non. « Perpendiculaires » exige EN PLUS qu'elles soient
+      sécantes.
+
+  - id: mc.math.maths_geometrie_espace.distance-plane-en-espace
+    label: "Appliquer la distance du plan (deux coordonnées) dans l'espace"
+    description: >-
+      L'élève calcule AB comme dans le plan, √((Δx)²+(Δy)²), en oubliant l'écart
+      en z (le second Pythagore, à la verticale).
+    contradicts_principle: >-
+      AB = √((Δx)²+(Δy)²+(Δz)²) : la troisième coordonnée entre dans la formule.
+      Oublier z revient à projeter les points au sol.
+
+  - id: mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee
+    label: "Calculer AB comme « départ moins arrivée » (A−B)"
+    description: >-
+      L'élève inverse la soustraction et calcule A−B au lieu de B−A.
+    contradicts_principle: >-
+      AB = (x_B−x_A, y_B−y_A, z_B−z_A) : arrivée moins départ. L'ordre inverse
+      donne le vecteur opposé BA.
+
+  - id: mc.math.maths_geometrie_espace.produit-vectoriel-ordre-composantes
+    label: "Composantes du produit vectoriel correctes mais mal ordonnées"
+    description: >-
+      L'élève calcule les trois bonnes valeurs mais les place dans le mauvais
+      ordre (décalage circulaire des couples de coordonnées).
+    contradicts_principle: >-
+      u∧v = (yz′−zy′, zx′−xz′, xy′−yx′) : la 1ʳᵉ composante croise (y,z), la 2ᵉ
+      (z,x), la 3ᵉ (x,y). L'ordre des couples est fixe.
+
+  - id: mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee
+    label: "D'un produit mixte nul, conclure autre chose que la coplanarité"
+    description: >-
+      De [u,v,w]=0, l'élève déduit l'orthogonalité deux à deux, la colinéarité
+      deux à deux, ou la nullité d'un vecteur.
+    contradicts_principle: >-
+      [u,v,w]=0 signifie volume nul, donc parallélépipède aplati : les trois
+      vecteurs sont coplanaires. Ni orthogonaux, ni colinéaires deux à deux, ni
+      forcément nuls.
+
+  - id: mc.math.maths_geometrie_espace.directeur-vs-point
+    label: "Confondre point et vecteur directeur dans une représentation de droite"
+    description: >-
+      L'élève prend les termes constants (le point pour t=0) comme vecteur
+      directeur, ou intervertit rôle/place du point et du vecteur directeur dans
+      la forme paramétrique ou symétrique.
+    contradicts_principle: >-
+      Dans x = x_A + t·a (…), le vecteur directeur est fait des coefficients de
+      t, le point des termes constants. Dans la forme symétrique, les coordonnées
+      de A sont aux numérateurs, celles de u aux dénominateurs.
+
+  - id: mc.math.maths_geometrie_espace.appartenance-t-non-simultane
+    label: "Accepter un point sur une droite avec un t différent par équation"
+    description: >-
+      L'élève vérifie chaque équation paramétrique séparément et se contente d'un
+      t possible pour chacune, sans exiger le même t partout.
+    contradicts_principle: >-
+      Un point appartient à la droite ssi UNE SEULE valeur de t satisfait les
+      trois équations simultanément. Une valeur différente par équation ne prouve
+      rien.
+
+  - id: mc.math.maths_geometrie_espace.plan-constante-mal-determinee
+    label: "Constante d de l'équation d'un plan mal déterminée"
+    description: >-
+      L'élève prend d comme la somme brute des coordonnées du point, ou laisse
+      d=0 en supposant l'origine dans le plan, au lieu de fixer d avec un point
+      connu.
+    contradicts_principle: >-
+      d = −(a·x_A + b·y_A + c·z_A), obtenu en imposant qu'un point du plan vérifie
+      l'équation. Ni x_A+y_A+z_A, ni 0 (l'origine n'est en général pas dans le
+      plan).
+
+  - id: mc.math.maths_geometrie_espace.position-critere-inverse
+    label: "Critère de position relative inversé ou mal appliqué (droite/plan, plan/plan)"
+    description: >-
+      L'élève inverse le critère : prend u·n≠0 pour un parallélisme au lieu d'une
+      sécance, ou juge la sécance de deux plans à l'identité de leurs équations
+      plutôt qu'à la colinéarité des normales.
+    contradicts_principle: >-
+      Droite/plan : u·n=0 ⇒ parallèle, u·n≠0 ⇒ sécante en un point. Plan/plan :
+      normales colinéaires ⇒ parallèles, sinon sécants. Le test porte sur les
+      directions, pas sur l'aspect des équations.
+
+  - id: mc.math.maths_geometrie_espace.paralleles-vs-confondus
+    label: "Normales colinéaires prises pour des plans confondus"
+    description: >-
+      L'élève conclut que deux plans à normales colinéaires sont confondus, sans
+      vérifier la constante qui distingue « strictement parallèles » de
+      « confondus ».
+    contradicts_principle: >-
+      Normales colinéaires ⇒ plans parallèles. Confondus seulement si les
+      équations sont proportionnelles TERME À TERME, constante comprise
+      (par ex. 5 ≠ 2×1).
+
+  - id: mc.math.maths_geometrie_espace.distance-oubli-division
+    label: "Garder le numérateur sans diviser par la norme"
+    description: >-
+      L'élève rend |n·AM| ou ‖AM∧u‖ tel quel comme distance, en oubliant de
+      diviser par la norme (‖n‖ ou ‖u‖).
+    contradicts_principle: >-
+      d(M,P)=|n·AM|/‖n‖ et d(M,D)=‖AM∧u‖/‖u‖ : le numérateur seul est une aire ou
+      un produit, pas une longueur. La division par la norme est indispensable.
+
+  - id: mc.math.maths_geometrie_espace.distance-numerateur-mal-forme
+    label: "Numérateur de la distance mal formé (constante oubliée ou mauvais point)"
+    description: >-
+      L'élève oublie la constante d dans le numérateur, ou y injecte les
+      coordonnées d'un autre point (l'origine) que celui demandé.
+    contradicts_principle: >-
+      Le numérateur est |a·x₀+b·y₀+c·z₀+d|, évalué au point demandé, constante
+      comprise. Oublier d ou changer de point casse le résultat.
+
+  - id: mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu
+    label: "Centre ou rayon d'une sphère mal lus"
+    description: >-
+      L'élève lit les coordonnées du centre avec le mauvais signe (depuis (x+1)²
+      il prend +1), les intervertit, ou lit directement les coefficients de
+      l'équation développée comme centre.
+    contradicts_principle: >-
+      Sous forme (x−x_Ω)²+…=R², (x+1)²=(x−(−1))² donne x_Ω=−1. Depuis la forme
+      développée, il faut compléter le carré et négativer, pas lire les
+      coefficients bruts ; et R=√(second membre), pas le second membre.
+
+  - id: mc.math.maths_geometrie_espace.sphere-rayon-constante-oubliee
+    label: "Constante oubliée en complétant le carré pour le rayon"
+    description: >-
+      En passant de la forme développée à la forme canonique, l'élève oublie de
+      reporter la constante de l'équation avant de conclure sur R².
+    contradicts_principle: >-
+      R² = (somme des carrés des demi-coefficients) − (constante de l'équation).
+      Oublier de soustraire la constante fausse le rayon (par ex. 4+1+9 au lieu
+      de 4+1+9−5).
+
+  - id: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+    label: "Intersection plan/sphère : critère inversé ou Pythagore mal signé"
+    description: >-
+      L'élève prend d<R pour la tangence (au lieu de d=R), ou calcule le rayon du
+      cercle avec R²+d² au lieu de R²−d².
+    contradicts_principle: >-
+      On compare d et R : d>R rien, d=R tangent, d<R cercle. Le rayon du cercle
+      vient du triangle rectangle ΩHM (hypoténuse R) : r=√(R²−d²), un moins,
+      jamais un plus.
 
 items:
 
@@ -10,6 +322,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [produit_scalaire, coordonnees]
+    primary_misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
     stem: >
       On donne $\vec{u}(3,1,-2)$ et $\vec{v}(2,-3,1)$. Que vaut
       $\vec{u}\cdot\vec{v}$ ?
@@ -21,6 +334,7 @@ items:
       - id: B
         text: "$2$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
         feedback: >
           Ce résultat vient d'une addition terme à terme des coordonnées,
           $(3+2)+(1-3)+(-2+1)=2$, au lieu d'une multiplication coordonnée par
@@ -31,6 +345,7 @@ items:
       - id: C
         text: "$6$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.scalaire-produit-incomplet
         feedback: >
           Ce choix ne calcule que le premier terme, $3\times2=6$, et oublie
           d'ajouter les deux autres produits $yy'=1\times(-3)$ et
@@ -39,6 +354,7 @@ items:
       - id: D
         text: "$5$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           On retrouve ce nombre en oubliant le signe du dernier terme :
           $(-2)\times1=-2$, pas $+2$. Ici $6-3+2=5$ au lieu de $6-3-2=1$ —
@@ -59,6 +375,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [produit_vectoriel, aire]
+    primary_misconception: mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus
     stem: >
       Soit $O$, $A$, $B$ trois points avec $\overrightarrow{OA}=\vec{u}(2,0,0)$
       et $\overrightarrow{OB}=\vec{v}(1,2,0)$. Quelle est l'aire du triangle
@@ -71,6 +388,7 @@ items:
       - id: B
         text: "$4$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.aire-oubli-demi
         feedback: >
           $\|\vec{u}\wedge\vec{v}\|=4$ est bien calculé, mais c'est l'aire du
           PARALLÉLOGRAMME construit sur $\vec{u}$ et $\vec{v}$, pas celle du
@@ -79,6 +397,7 @@ items:
       - id: C
         text: "$1$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus
         feedback: >
           Ce résultat vient du produit SCALAIRE $\vec{u}\cdot\vec{v}=2$,
           divisé par $2$ — c'est-à-dire confondre le produit scalaire (un
@@ -88,6 +407,7 @@ items:
       - id: D
         text: "$8$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           Ce choix correspond à $\|\vec{u}\wedge\vec{v}\|^2/2 = 16/2=8$ : la
           norme au carré a été utilisée à la place de la norme elle-même — la
@@ -113,6 +433,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [produit_mixte, volume, tetraedre]
+    primary_misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
     stem: >
       Un tétraèdre $OABC$ trirectangle en $O$ a pour arêtes
       $\overrightarrow{OA}(2,0,0)$, $\overrightarrow{OB}(0,2,0)$,
@@ -127,6 +448,7 @@ items:
       - id: B
         text: "$12$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           $12$ est le volume du PARALLÉLÉPIPÈDE construit sur les trois
           arêtes (la valeur absolue du produit mixte), pas celui du
@@ -135,6 +457,7 @@ items:
       - id: C
         text: "$6$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           Ce résultat applique seulement un facteur $\frac12$ (comme si on
           ne prenait que l'aire du triangle de base) mais oublie le facteur
@@ -143,6 +466,7 @@ items:
       - id: D
         text: "$4$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           Ce résultat applique seulement un facteur $\frac13$ (le facteur
           pyramide) mais oublie que la base est un TRIANGLE, la moitié du
@@ -161,6 +485,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [plan, vecteur_normal, equation_cartesienne]
+    primary_misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
     stem: >
       Un plan $\mathcal P$ a pour équation cartésienne
       $3x+2y-z+4=0$. Quel est un vecteur normal à $\mathcal P$ ?
@@ -172,6 +497,7 @@ items:
       - id: B
         text: "$\\vec{n}(3,2,4)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-inclut-constante
         feedback: >
           Ce choix prend la constante $d=4$ de l'équation comme troisième
           composante du vecteur normal, à la place du coefficient de $z$
@@ -181,6 +507,7 @@ items:
       - id: C
         text: "$\\vec{n}(0,-2,-4)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           Ce vecteur est bien lié au plan, mais autrement : c'est un vecteur
           directeur d'une droite CONTENUE dans le plan (obtenu à partir de
@@ -190,6 +517,7 @@ items:
       - id: D
         text: "$\\vec{n}(3,2,1)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la composante de $z$ : l'équation est
           $3x+2y-z+4=0$, donc le coefficient de $z$ est $-1$, pas $+1$. Le
@@ -209,6 +537,7 @@ items:
     difficulty_level: 4
     skill_code: maths_geometrie_espace
     tags: [positions_relatives, droites_gauches]
+    primary_misconception: mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan
     stem: >
       La droite $d_1$ passe par $A(0,0,0)$ avec pour vecteur directeur
       $\vec{u_1}(1,1,0)$ ; la droite $d_2$ passe par $B(1,0,1)$ avec pour
@@ -224,6 +553,7 @@ items:
       - id: B
         text: "$d_1$ et $d_2$ sont sécantes, puisque leurs directions ne sont pas colinéaires."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan
         feedback: >
           C'est vrai dans le plan : deux droites non parallèles s'y coupent
           toujours. Mais dans l'espace, ce n'est plus automatique — il existe
@@ -234,6 +564,7 @@ items:
       - id: C
         text: "$d_1$ et $d_2$ sont parallèles, puisque leurs vecteurs directeurs sont proportionnels."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.colinearite-mal-testee
         feedback: >
           $\vec{u_1}(1,1,0)$ et $\vec{u_2}(0,1,1)$ ne sont pas proportionnels
           (aucun réel $k$ ne vérifie $1=0\times k$) : les deux droites n'ont
@@ -241,6 +572,7 @@ items:
       - id: D
         text: "$d_1$ et $d_2$ sont confondues."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.colinearite-mal-testee
         feedback: >
           Deux droites confondues doivent au minimum avoir des vecteurs
           directeurs colinéaires — condition qui échoue déjà ici
@@ -271,6 +603,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [distance, plan]
+    primary_misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
     stem: >
       Le plan $\mathcal P$ a pour équation $x+2y+2z-3=0$. Quelle est la
       distance du point $M(1,1,1)$ au plan $\mathcal P$ ?
@@ -282,6 +615,7 @@ items:
       - id: B
         text: "$2$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-oubli-division
         feedback: >
           Ce choix garde le numérateur $|1+2+2-3|=2$ mais oublie de diviser
           par $\|\vec{n}\|=\sqrt{1^2+2^2+2^2}=3$. Le numérateur seul n'est
@@ -290,6 +624,7 @@ items:
       - id: C
         text: "$\\dfrac{2}{5}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
         feedback: >
           Ce choix divise par la SOMME des coefficients, $1+2+2=5$, au lieu
           de la norme $\sqrt{1^2+2^2+2^2}=3$. La formule utilise
@@ -298,6 +633,7 @@ items:
       - id: D
         text: "$-\\dfrac{2}{3}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-valeur-absolue
         feedback: >
           Une distance est toujours positive ou nulle. Le signe de
           $ax_0+by_0+cz_0+d$ dépend du côté du plan où se trouve le point —
@@ -316,6 +652,7 @@ items:
     difficulty_level: 1
     skill_code: maths_geometrie_espace
     tags: [accroche, perspective, perpendicularite_espace]
+    primary_misconception: mc.math.maths_geometrie_espace.perspective-fiable
     stem: >
       Sur le dessin en perspective du cube $ABCDEFGH$, les diagonales $(AG)$
       et $(BD)$ semblent former un angle droit. Peut-on conclure, à partir
@@ -328,6 +665,7 @@ items:
       - id: B
         text: "Oui, un dessin en perspective conserve fidèlement les angles, donc un angle droit dessiné est un angle droit réel."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.perspective-fiable
         feedback: >
           Une perspective déforme précisément les angles et les distances :
           c'est pour ça qu'on ne peut jamais s'y fier pour trancher une
@@ -335,6 +673,7 @@ items:
       - id: C
         text: "Oui, car les deux diagonales appartiennent à des faces du cube, et deux diagonales de faces sont toujours perpendiculaires."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
         feedback: >
           $(AG)$ n'appartient à aucune face du cube (c'est la grande
           diagonale, qui traverse le solide) ; et même entre diagonales de
@@ -342,6 +681,7 @@ items:
       - id: D
         text: "Non, mais seulement parce que $(AG)$ et $(BD)$ n'ont pas la même longueur — deux droites perpendiculaires doivent être de même longueur."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
         feedback: >
           La perpendicularité de deux droites ne dépend jamais de leurs
           longueurs, seulement de leurs directions : ce critère de longueur
@@ -359,6 +699,7 @@ items:
     difficulty_level: 1
     skill_code: maths_geometrie_espace
     tags: [accroche, orthogonalite, vocabulaire]
+    primary_misconception: mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire
     stem: >
       Les droites $(AG)$ et $(BD)$ du cube ne passent par aucun point commun
       (leurs représentations paramétriques n'ont pas de solution commune).
@@ -369,6 +710,7 @@ items:
       - id: A
         text: "On ne peut employer aucun des deux mots, « orthogonales » et « perpendiculaires », tant que les droites ne se coupent pas."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire
         feedback: >
           L'orthogonalité, elle, ne demande aucune intersection : elle
           compare uniquement les directions, via le produit scalaire des
@@ -379,6 +721,7 @@ items:
       - id: C
         text: "On peut dire qu'elles sont perpendiculaires, puisque leurs vecteurs directeurs vérifient le test du produit scalaire nul — peu importe qu'elles se coupent ou non."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire
         feedback: >
           « Perpendiculaires » exige en plus que les droites se coupent
           réellement ; un produit scalaire nul entre directions ne suffit
@@ -386,6 +729,7 @@ items:
       - id: D
         text: "On peut dire qu'elles sont parallèles, puisqu'elles n'ont pas de point commun."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.colinearite-mal-testee
         feedback: >
           L'absence de point commun ne suffit pas à conclure au parallélisme
           : il faudrait en plus que les vecteurs directeurs soient
@@ -403,6 +747,7 @@ items:
     difficulty_level: 1
     skill_code: maths_geometrie_espace
     tags: [accroche, methode, produit_scalaire]
+    primary_misconception: mc.math.maths_geometrie_espace.perspective-fiable
     stem: >
       Pour trancher avec certitude si deux droites de l'espace comme $(AG)$
       et $(BD)$ ont des directions perpendiculaires, quelle est la méthode
@@ -412,6 +757,7 @@ items:
       - id: A
         text: "Mesurer l'angle apparent sur un dessin fait à main levée, en s'aidant d'une équerre posée sur la feuille."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.perspective-fiable
         feedback: >
           Une équerre posée sur un dessin en perspective mesure l'angle
           dessiné, pas l'angle réel dans l'espace — la perspective l'a déjà
@@ -419,6 +765,7 @@ items:
       - id: B
         text: "Comparer les longueurs des deux diagonales : des diagonales de longueurs différentes sont automatiquement perpendiculaires."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
         feedback: >
           La longueur des segments n'a aucun lien avec l'orthogonalité de
           leurs directions.
@@ -428,6 +775,7 @@ items:
       - id: D
         text: "Vérifier si les deux droites appartiennent à une même face du cube : deux droites d'une même face sont toujours perpendiculaires."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
         feedback: >
           $(AG)$ n'est même pas dans une face du cube ; et l'appartenance à
           une même face ne garantit de toute façon aucune perpendicularité.
@@ -445,6 +793,7 @@ items:
     difficulty_level: 1
     skill_code: maths_geometrie_espace
     tags: [distance, coordonnees]
+    primary_misconception: mc.math.maths_geometrie_espace.distance-plane-en-espace
     stem: >
       On donne $A(1,-2,3)$ et $B(4,2,0)$. Que vaut $AB$ ?
     type: mcq
@@ -452,6 +801,7 @@ items:
       - id: A
         text: "$5$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-plane-en-espace
         feedback: >
           Ce résultat oublie l'écart en $z$ ($0-3=-3$) et ne calcule que
           $\sqrt{3^2+4^2}$, comme dans le plan — il manque le second
@@ -459,11 +809,13 @@ items:
       - id: B
         text: "$34$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           $34$ est $AB^2$, pas $AB$ : la racine carrée finale a été oubliée.
       - id: C
         text: "$10$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
         feedback: >
           Ce résultat additionne $\sqrt{3^2}+\sqrt{4^2}+\sqrt{(-3)^2}=3+4+3$,
           en prenant la racine de chaque terme séparément, au lieu de
@@ -482,6 +834,7 @@ items:
     difficulty_level: 1
     skill_code: maths_geometrie_espace
     tags: [vecteur, coordonnees]
+    primary_misconception: mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee
     stem: >
       On donne $A(2,-1,3)$ et $B(-1,4,0)$. Quelles sont les coordonnées du
       vecteur $\overrightarrow{AB}$ ?
@@ -493,6 +846,7 @@ items:
       - id: B
         text: "$(3,-5,3)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee
         feedback: >
           Ce triplet calcule « départ moins arrivée » ($A-B$) au lieu de
           « arrivée moins départ » ($B-A$) : $\overrightarrow{AB}$ se
@@ -500,6 +854,7 @@ items:
       - id: C
         text: "$(1,3,3)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
         feedback: >
           Ce triplet additionne les coordonnées de $A$ et $B$ terme à terme
           au lieu de les soustraire — un vecteur $\overrightarrow{AB}$ se
@@ -507,6 +862,7 @@ items:
       - id: D
         text: "$(-3,5,3)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Les deux premières coordonnées sont correctes, mais la troisième
           garde le signe de $z_A$ au lieu de faire $z_B-z_A=0-3=-3$.
@@ -521,6 +877,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [norme, vecteur]
+    primary_misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
     stem: >
       Soit $\vec{u}(2,-4,-4)$ un vecteur de l'espace. Que vaut $\|\vec{u}\|$ ?
     type: mcq
@@ -528,6 +885,7 @@ items:
       - id: A
         text: "$36$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           $36$ est $\|\vec{u}\|^2$, pas $\|\vec{u}\|$ : la racine carrée
           finale a été oubliée.
@@ -537,12 +895,14 @@ items:
       - id: C
         text: "$-6$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
         feedback: >
           Une norme n'est jamais négative ; ce résultat confond la norme
           avec une simple somme signée des coordonnées, $2-4-4=-6$.
       - id: D
         text: "$10$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme
         feedback: >
           Ce résultat additionne les valeurs absolues des coordonnées
           ($2+4+4=10$) au lieu d'appliquer $\sqrt{x^2+y^2+z^2}$.
@@ -558,6 +918,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [produit_scalaire, orthogonalite, parametre]
+    primary_misconception: mc.math.maths_geometrie_espace.signe-arithmetique
     stem: >
       On donne $\vec{u}(2,m,-1)$ et $\vec{v}(3,-2,4)$. Pour quelle valeur de
       $m$ les vecteurs $\vec{u}$ et $\vec{v}$ sont-ils orthogonaux ?
@@ -566,12 +927,14 @@ items:
       - id: A
         text: "$m=-1$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe en résolvant $2-2m=0$ : traitée comme
           $2+2m=0$, donnant $m=-1$ au lieu de $m=1$.
       - id: B
         text: "$m=2$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Le coefficient de $m$ dans le produit scalaire est $-2$ (venant
           de $m\times(-2)$), pas $-1$ : l'équation a été résolue comme
@@ -582,6 +945,7 @@ items:
       - id: D
         text: "$m=5$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur le dernier terme : $(-1)\times4$ a été compté
           $+4$ au lieu de $-4$, donnant $10-2m=0$ (donc $m=5$) au lieu de
@@ -598,6 +962,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [produit_scalaire, angle, norme]
+    primary_misconception: mc.math.maths_geometrie_espace.scalaire-produit-incomplet
     stem: >
       On donne $\vec{u}(1,2,2)$ et $\vec{v}(2,-2,1)$, avec $\|\vec{u}\|=3$ et
       $\|\vec{v}\|=3$. Que vaut $\cos(\vec{u},\vec{v})$ ?
@@ -606,6 +971,7 @@ items:
       - id: A
         text: "$9$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.scalaire-produit-incomplet
         feedback: >
           $9=\|\vec{u}\|\times\|\vec{v}\|$ est le dénominateur de la
           formule, pas le cosinus : le produit scalaire (qui vaut $0$)
@@ -613,6 +979,7 @@ items:
       - id: B
         text: "$1$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.scalaire-produit-incomplet
         feedback: >
           Ce résultat suppose $\vec{u}\cdot\vec{v}=\|\vec{u}\|\|\vec{v}\|=9$,
           comme si les vecteurs étaient colinéaires de même sens, au lieu de
@@ -620,6 +987,7 @@ items:
       - id: C
         text: "$\\dfrac{8}{9}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe : le terme $2\times(-2)$ a été compté $+4$ au
           lieu de $-4$, donnant $2+4+2=8$ au lieu de $2-4+2=0$.
@@ -639,6 +1007,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [produit_vectoriel, coordonnees]
+    primary_misconception: mc.math.maths_geometrie_espace.signe-arithmetique
     stem: >
       On donne $\vec{u}(1,3,-2)$ et $\vec{v}(2,0,4)$. Que vaut
       $\vec{u}\wedge\vec{v}$ ?
@@ -650,18 +1019,21 @@ items:
       - id: B
         text: "$(12,8,-6)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la deuxième composante : elle vaut
           $zx'-xz'=(-2)\times2-1\times4=-8$, pas $+8$.
       - id: C
         text: "$(12,-8,6)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la troisième composante : elle vaut
           $xy'-yx'=1\times0-3\times2=-6$, pas $+6$.
       - id: D
         text: "$(-6,12,-8)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.produit-vectoriel-ordre-composantes
         feedback: >
           Les trois composantes correctes ont été calculées mais placées
           dans le mauvais ordre (décalage circulaire) : la première
@@ -679,6 +1051,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [produit_vectoriel, orthogonalite]
+    primary_misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
     stem: >
       Soit $\vec{u}$ et $\vec{v}$ deux vecteurs non colinéaires de l'espace,
       et $\vec{w}=\vec{u}\wedge\vec{v}$. Quelle affirmation est vraie ?
@@ -687,6 +1060,7 @@ items:
       - id: A
         text: "$\\vec{w}$ est colinéaire à $\\vec{u}$ et à $\\vec{v}$, puisqu'il est construit à partir d'eux."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           Être « construit à partir de » deux vecteurs ne signifie pas être
           parallèle à eux : $\vec{w}$ est au contraire perpendiculaire aux
@@ -697,6 +1071,7 @@ items:
       - id: C
         text: "$\\vec{w}$ est orthogonal à $\\vec{u}$ seulement, pas nécessairement à $\\vec{v}$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           La propriété (établie au R3 via $\vec{u}\cdot(\vec{u}\wedge\vec{v})=0$)
           vaut symétriquement pour $\vec{u}$ et pour $\vec{v}$, pas pour un
@@ -704,6 +1079,7 @@ items:
       - id: D
         text: "$\\vec{w}$ appartient toujours au plan formé par $\\vec{u}$ et $\\vec{v}$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           C'est l'inverse : $\vec{w}$ est normal à ce plan (perpendiculaire
           à lui), il n'y « vit » donc jamais.
@@ -722,6 +1098,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [produit_mixte, coplanarite]
+    primary_misconception: mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee
     stem: >
       Trois vecteurs $\vec{u}$, $\vec{v}$, $\vec{w}$ vérifient
       $[\vec{u},\vec{v},\vec{w}]=0$. Que peut-on en conclure ?
@@ -730,12 +1107,14 @@ items:
       - id: A
         text: "$\\vec{u}$, $\\vec{v}$, $\\vec{w}$ sont deux à deux orthogonaux."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee
         feedback: >
           L'orthogonalité se teste avec le produit SCALAIRE de deux
           vecteurs, pas avec le produit mixte de trois vecteurs.
       - id: B
         text: "$\\vec{u}$, $\\vec{v}$, $\\vec{w}$ sont deux à deux colinéaires."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee
         feedback: >
           La colinéarité deux à deux est une condition bien plus forte que
           la coplanarité : trois vecteurs peuvent être coplanaires sans
@@ -746,6 +1125,7 @@ items:
       - id: D
         text: "Au moins un des trois vecteurs est nul."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee
         feedback: >
           Contrairement à une multiplication de nombres, un produit mixte
           nul n'oblige aucun des trois vecteurs à être nul — trois vecteurs
@@ -764,6 +1144,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [produit_mixte, volume, tetraedre]
+    primary_misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
     stem: >
       Un tétraèdre $ABCD$ a pour arêtes $\overrightarrow{AB}(1,0,0)$,
       $\overrightarrow{AC}(0,3,0)$, $\overrightarrow{AD}(0,0,-4)$. Sachant
@@ -774,6 +1155,7 @@ items:
       - id: A
         text: "$-2$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-valeur-absolue
         feedback: >
           Le volume est $\frac16$ de la VALEUR ABSOLUE du produit mixte ;
           la valeur absolue autour de $[\vec u,\vec v,\vec w]=-12$ a été
@@ -781,6 +1163,7 @@ items:
       - id: B
         text: "$12$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           $12$ est le volume du PARALLÉLÉPIPÈDE (la valeur absolue du
           produit mixte), pas celui du tétraèdre — il manque le facteur
@@ -788,6 +1171,7 @@ items:
       - id: C
         text: "$4$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           Seul le facteur $\frac13$ (pyramide) a été appliqué, en oubliant
           le facteur $\frac12$ (base triangulaire) : $\frac13\times12=4$
@@ -809,6 +1193,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [droite, representation_parametrique, vecteur_directeur]
+    primary_misconception: mc.math.maths_geometrie_espace.directeur-vs-point
     stem: >
       Une droite $\mathcal D$ a pour représentation paramétrique
       $\begin{cases} x=1-2t \\ y=3+t \\ z=-4t \end{cases}$, $t\in\mathbb R$.
@@ -821,6 +1206,7 @@ items:
       - id: B
         text: "$\\vec{u}(1,3,0)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.directeur-vs-point
         feedback: >
           Ce triplet est le POINT de $\mathcal D$ obtenu pour $t=0$, pas le
           vecteur directeur : celui-ci est donné par les coefficients de
@@ -828,12 +1214,14 @@ items:
       - id: C
         text: "$\\vec{u}(2,1,4)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur les coefficients de $x$ et de $z$ : ils
           valent $-2$ et $-4$ dans les équations données, pas $+2$ et $+4$.
       - id: D
         text: "$\\vec{u}(-2,1,4)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la seule composante $z$ : le coefficient de
           $t$ dans $z=-4t$ est $-4$, pas $+4$.
@@ -849,6 +1237,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [droite, equation_cartesienne, vecteur_directeur]
+    primary_misconception: mc.math.maths_geometrie_espace.directeur-vs-point
     stem: >
       La droite $\mathcal D$ passe par $A(2,4,-1)$ avec pour vecteur
       directeur $\vec{u}(3,-1,5)$ (aucune coordonnée nulle). Quelle est la
@@ -858,6 +1247,7 @@ items:
       - id: A
         text: "$\\dfrac{x+2}{3}=\\dfrac{y-4}{-1}=\\dfrac{z-1}{5}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe aux numérateurs en $x$ et en $z$ : il faut
           $x-x_A=x-2$ (pas $x+2$) et $z-z_A=z+1$ (pas $z-1$).
@@ -867,6 +1257,7 @@ items:
       - id: C
         text: "$\\dfrac{x-3}{2}=\\dfrac{y+1}{4}=\\dfrac{z-5}{-1}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.directeur-vs-point
         feedback: >
           Les rôles de $A$ et de $\vec u$ ont été échangés : les
           numérateurs doivent contenir les coordonnées de $A$, les
@@ -874,6 +1265,7 @@ items:
       - id: D
         text: "$\\dfrac{x-2}{-1}=\\dfrac{y-4}{3}=\\dfrac{z+1}{5}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.directeur-vs-point
         feedback: >
           Les deux premières coordonnées du vecteur directeur ont été
           échangées : le dénominateur en $x$ doit être $3$ (première
@@ -890,6 +1282,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [droite, representation_parametrique, appartenance]
+    primary_misconception: mc.math.maths_geometrie_espace.appartenance-t-non-simultane
     stem: >
       La droite $\mathcal D$ a pour représentation paramétrique
       $\begin{cases}x=1+2t\\y=-1+t\\z=3-t\end{cases}$. Le point $M(5,1,1)$
@@ -899,12 +1292,14 @@ items:
       - id: A
         text: "Non, car aucune valeur de $t$ ne convient."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.appartenance-t-non-simultane
         feedback: >
           C'est faux : $t=2$ vérifie bien les trois équations à la fois
           ($1+4=5$, $-1+2=1$, $3-2=1$).
       - id: B
         text: "Oui, car il existe une valeur de $t$ qui convient pour chaque équation séparément — peu importe si c'est la même valeur à chaque fois."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.appartenance-t-non-simultane
         feedback: >
           C'est l'erreur classique : il faut UNE SEULE valeur de $t$ qui
           vérifie les trois équations SIMULTANÉMENT, pas une valeur
@@ -915,6 +1310,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans connaître un vecteur normal à la droite."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           Une droite n'a pas de « vecteur normal » (notion réservée aux
           plans, R6) : pour une droite, on utilise le vecteur directeur et
@@ -932,6 +1328,7 @@ items:
     difficulty_level: 2
     skill_code: maths_geometrie_espace
     tags: [plan, vecteur_normal, equation_cartesienne]
+    primary_misconception: mc.math.maths_geometrie_espace.plan-constante-mal-determinee
     stem: >
       Le plan $\mathcal P$ passe par $A(1,-2,3)$ et admet pour vecteur normal
       $\vec{n}(2,-1,4)$. Quelle est une équation cartésienne de $\mathcal P$ ?
@@ -943,18 +1340,21 @@ items:
       - id: B
         text: "$2x-y+4z+16=0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Signe oublié devant la constante $d=-(ax_0+by_0+cz_0)$ : ça donne
           $+16$ au lieu de $-16$.
       - id: C
         text: "$2x-y+4z-2=0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.plan-constante-mal-determinee
         feedback: >
           La constante a été calculée comme la somme brute des coordonnées
           de $A$ ($1-2+3=2$), au lieu de $ax_0+by_0+cz_0=16$.
       - id: D
         text: "$2x+y+4z-12=0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la composante $y$ du vecteur normal ($+1$ au
           lieu de $-1$), ce qui change aussi la constante.
@@ -969,6 +1369,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [plan, vecteur_normal, produit_vectoriel]
+    primary_misconception: mc.math.maths_geometrie_espace.signe-arithmetique
     stem: >
       Le plan $\mathcal P$ passe par les points $A(1,0,1)$, $B(2,1,1)$ et
       $C(1,1,2)$. Quel est un vecteur normal à $\mathcal P$ ?
@@ -980,18 +1381,21 @@ items:
       - id: B
         text: "$\\vec n(1,1,1)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la deuxième composante du produit vectoriel
           ($zx'-xz'=-1$, pas $+1$).
       - id: C
         text: "$\\vec n(1,-1,-1)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la troisième composante du produit vectoriel
           ($xy'-yx'=1$, pas $-1$).
       - id: D
         text: "$\\vec n(1,1,0)$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           Ce triplet est $\overrightarrow{AB}$ lui-même, un vecteur DANS le
           plan, pas le vecteur normal obtenu par produit vectoriel.
@@ -1009,6 +1413,7 @@ items:
     difficulty_level: 4
     skill_code: maths_geometrie_espace
     tags: [positions_relatives, droite_plan]
+    primary_misconception: mc.math.maths_geometrie_espace.position-critere-inverse
     stem: >
       La droite $\mathcal D$ passe par $A(1,0,-1)$ avec pour vecteur
       directeur $\vec u(1,2,-1)$ ; le plan $\mathcal P$ a pour équation
@@ -1023,6 +1428,7 @@ items:
       - id: B
         text: "$\\mathcal D$ et $\\mathcal P$ sont parallèles, car $\\vec u\\cdot\\vec n\\neq0$ signifie que la direction de $\\mathcal D$ est orthogonale à $\\vec n$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.position-critere-inverse
         feedback: >
           C'est l'inverse : un produit scalaire NUL signalerait une
           direction orthogonale à $\vec n$ (cas parallèle) ; ici il est non
@@ -1030,6 +1436,7 @@ items:
       - id: C
         text: "On ne peut rien conclure sans vérifier si $A$ appartient à $\\mathcal P$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.position-critere-inverse
         feedback: >
           Ce test n'est utile que si $\vec u\cdot\vec n=0$ (pour distinguer
           incluse/strictement parallèle) ; produit scalaire non nul suffit
@@ -1037,6 +1444,7 @@ items:
       - id: D
         text: "$\\mathcal D$ et $\\mathcal P$ ne peuvent être sécants que si $\\vec u$ et $\\vec n$ sont colinéaires."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.position-critere-inverse
         feedback: >
           Colinéarité de $\vec u$ et $\vec n$ caractérise une droite
           PERPENDICULAIRE au plan, un cas particulier ; le critère général
@@ -1054,6 +1462,7 @@ items:
     difficulty_level: 4
     skill_code: maths_geometrie_espace
     tags: [positions_relatives, plans_paralleles]
+    primary_misconception: mc.math.maths_geometrie_espace.paralleles-vs-confondus
     stem: >
       Le plan $\mathcal P_1$ a pour équation $x+2y-z+1=0$ et le plan
       $\mathcal P_2$ a pour équation $2x+4y-2z+5=0$. Quelle est leur
@@ -1066,6 +1475,7 @@ items:
       - id: B
         text: "$\\mathcal P_1$ et $\\mathcal P_2$ sont confondus, car $\\vec n_2=2\\vec n_1$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.paralleles-vs-confondus
         feedback: >
           La colinéarité des normales donne le parallélisme, pas la
           confusion des plans ; il faut aussi que la constante suive le même
@@ -1073,6 +1483,7 @@ items:
       - id: C
         text: "$\\mathcal P_1$ et $\\mathcal P_2$ sont sécants, car leurs équations ne sont pas identiques."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.position-critere-inverse
         feedback: >
           Le critère de sécance porte sur la colinéarité des normales, pas
           sur l'identité des équations ; ici $\vec n_1$ et $\vec n_2$ sont
@@ -1080,6 +1491,7 @@ items:
       - id: D
         text: "On ne peut pas savoir si les plans sont parallèles ou sécants sans résoudre le système de leurs deux équations."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.position-critere-inverse
         feedback: >
           Comparer les vecteurs normaux suffit à trancher directement ;
           résoudre un système n'est utile qu'une fois les plans reconnus
@@ -1098,6 +1510,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [distance, droite]
+    primary_misconception: mc.math.maths_geometrie_espace.distance-oubli-division
     stem: >
       La droite $\mathcal D$ passe par $A(0,0,0)$ avec pour vecteur
       directeur $\vec u(3,4,0)$. Quelle est la distance du point $M(0,0,5)$
@@ -1110,18 +1523,21 @@ items:
       - id: B
         text: "$25$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-oubli-division
         feedback: >
           C'est $\|\overrightarrow{AM}\wedge\vec u\|$ seul ; il manque la
           division par $\|\vec u\|=5$.
       - id: C
         text: "$1$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           Division par $\|\vec u\|^2=25$ au lieu de $\|\vec u\|=5$ : la
           racine carrée a été oubliée.
       - id: D
         text: "$0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus
         feedback: >
           Utilise $\vec u\cdot\overrightarrow{AM}$ (formule de distance à un
           PLAN) au lieu de $\|\vec u\wedge\overrightarrow{AM}\|$.
@@ -1138,6 +1554,7 @@ items:
     difficulty_level: 4
     skill_code: maths_geometrie_espace
     tags: [distance, plan]
+    primary_misconception: mc.math.maths_geometrie_espace.distance-numerateur-mal-forme
     stem: >
       Le plan $\mathcal P$ a pour équation $4x-8y+z-6=0$. Quelle est la
       distance du point $M(2,-1,3)$ à $\mathcal P$ ?
@@ -1149,18 +1566,21 @@ items:
       - id: B
         text: "$\\dfrac{19}{9}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-numerateur-mal-forme
         feedback: >
           La constante $-6$ de l'équation a été oubliée dans le numérateur
           ($|8+8+3|=19$ au lieu de $|8+8+3-6|=13$).
       - id: C
         text: "$\\dfrac{13}{3}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
         feedback: >
           Dénominateur pris comme la somme des coefficients $4-8+1=-3$
           (valeur absolue $3$), au lieu de $\sqrt{4^2+8^2+1^2}=9$.
       - id: D
         text: "$\\dfrac13$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur le coefficient de $y$ ($+8$ au lieu de $-8$),
           ce qui change le numérateur en $|8-8+3-6|=3$.
@@ -1176,6 +1596,7 @@ items:
     difficulty_level: 1
     skill_code: maths_geometrie_espace
     tags: [sphere, equation_cartesienne]
+    primary_misconception: mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu
     stem: >
       La sphère $\mathcal S$ a pour équation
       $(x+1)^2+(y-3)^2+(z-2)^2=16$. Quels sont son centre et son rayon ?
@@ -1187,17 +1608,20 @@ items:
       - id: B
         text: "Centre $\\Omega(1,-3,-2)$, rayon $R=4$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu
         feedback: >
           Signe oublié : $(x+1)^2=(x-(-1))^2$ donne $x_\Omega=-1$, pas
           $+1$ (et de même pour $y,z$).
       - id: C
         text: "Centre $\\Omega(-1,3,2)$, rayon $R=16$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           $16$ est $R^2$, pas $R$ : la racine carrée finale a été oubliée.
       - id: D
         text: "Centre $\\Omega(-1,2,3)$, rayon $R=4$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu
         feedback: >
           Les coordonnées $y$ et $z$ du centre ont été échangées.
     correct_feedback: >
@@ -1211,6 +1635,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [sphere, equation_cartesienne, forme_canonique]
+    primary_misconception: mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu
     stem: >
       Quels sont le centre et le rayon de la sphère d'équation
       $x^2+y^2+z^2+4x-2y+6z+5=0$ ?
@@ -1222,17 +1647,20 @@ items:
       - id: B
         text: "Centre $\\Omega(2,-1,3)$, rayon $R=3$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu
         feedback: >
           Les coefficients de l'équation ont été lus directement comme
           coordonnées du centre, sans les négativer.
       - id: C
         text: "Centre $\\Omega(-2,1,-3)$, rayon $R=9$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           $9$ est $R^2$, pas $R$ : la racine carrée finale a été oubliée.
       - id: D
         text: "Centre $\\Omega(-2,1,-3)$, rayon $R=\\sqrt{14}$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.sphere-rayon-constante-oubliee
         feedback: >
           La constante $+5$ de l'équation de départ n'a pas été soustraite
           ($4+1+9=14$ au lieu de $4+1+9-5=9$).
@@ -1247,6 +1675,7 @@ items:
     difficulty_level: 4
     skill_code: maths_geometrie_espace
     tags: [sphere, plan, intersection]
+    primary_misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
     stem: >
       La sphère $\mathcal S$ a pour centre $\Omega(2,0,0)$ et rayon $R=5$.
       Le plan $\mathcal P$ a pour équation $x+2y+2z-11=0$. Quelle est la
@@ -1259,18 +1688,21 @@ items:
       - id: B
         text: "Le plan est tangent à $\\mathcal S$ (un seul point commun), car $d(\\Omega,\\mathcal P)<R$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
         feedback: >
           La tangence correspond à $d=R$, pas $d<R$ ; ici $d=3<R=5$ donne au
           contraire un cercle d'intersection.
       - id: C
         text: "C'est un cercle de rayon $\\sqrt{34}$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
         feedback: >
           Erreur de signe dans Pythagore — $R^2+d^2=34$ a été utilisé au
           lieu de $R^2-d^2=16$.
       - id: D
         text: "C'est un cercle de rayon $16$."
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: >
           $16=R^2-d^2$ est le carré du rayon du cercle ; la racine carrée
           finale a été oubliée.
@@ -1287,6 +1719,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [tetraedre, produit_mixte, volume]
+    primary_misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
     stem: >
       On considère $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$, $D(1,1,1)$. Sachant
       que $\overrightarrow{AB}\wedge\overrightarrow{AC}=(6,3,2)$, quel est
@@ -1299,18 +1732,21 @@ items:
       - id: B
         text: "$5$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           C'est la valeur absolue du produit mixte (volume du
           parallélépipède) ; il manque le facteur $\frac16$.
       - id: C
         text: "$\\dfrac53$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.volume-facteur-oubli
         feedback: >
           Seul le facteur $\frac13$ (pyramide) a été appliqué, en oubliant
           le facteur $\frac12$ (base triangulaire).
       - id: D
         text: "$-\\dfrac56$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-valeur-absolue
         feedback: >
           Le volume utilise la VALEUR ABSOLUE du produit mixte ; le signe
           négatif a été conservé à tort.
@@ -1327,6 +1763,7 @@ items:
     difficulty_level: 3
     skill_code: maths_geometrie_espace
     tags: [plan, vecteur_normal, equation_cartesienne]
+    primary_misconception: mc.math.maths_geometrie_espace.signe-arithmetique
     stem: >
       Avec les mêmes points $B(0,2,0)$, $C(0,0,3)$, $D(1,1,1)$, sachant que
       $\overrightarrow{BC}\wedge\overrightarrow{BD}=(1,3,2)$, quelle est
@@ -1339,18 +1776,21 @@ items:
       - id: B
         text: "$x-3y+2z+6=0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Erreur de signe sur la deuxième composante du produit vectoriel
           utilisé comme normale.
       - id: C
         text: "$x+3y+2z=0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.plan-constante-mal-determinee
         feedback: >
           La constante $d$ n'a pas été déterminée à l'aide d'un point du
           plan ; l'origine n'appartient pourtant pas à $(BCD)$.
       - id: D
         text: "$6x+3y+2z-6=0$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
         feedback: >
           Cette normale vient de $\overrightarrow{AB}\wedge\overrightarrow{AC}=(6,3,2)$,
           normale au plan $(ABC)$, pas à $(BCD)$.
@@ -1365,6 +1805,7 @@ items:
     difficulty_level: 4
     skill_code: maths_geometrie_espace
     tags: [distance, plan, verification_croisee]
+    primary_misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
     stem: >
       Avec le plan $(BCD): x+3y+2z-6=0$, quelle est la distance du point
       $A(1,0,0)$ à ce plan ?
@@ -1376,18 +1817,21 @@ items:
       - id: B
         text: "$-\\dfrac{5\\sqrt{14}}{14}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-valeur-absolue
         feedback: >
           Une distance n'est jamais négative ; la valeur absolue du
           numérateur a été omise.
       - id: C
         text: "$\\dfrac56$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
         feedback: >
           Dénominateur pris comme la somme des coefficients $1+3+2=6$, au
           lieu de $\sqrt{1^2+3^2+2^2}=\sqrt{14}$.
       - id: D
         text: "$\\dfrac{6\\sqrt{14}}{14}$"
         correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-numerateur-mal-forme
         feedback: >
           Le numérateur a été calculé avec les coordonnées de l'origine
           $(0,0,0)$ au lieu de celles de $A(1,0,0)$.
@@ -1396,3 +1840,105 @@ items:
     solution: |
       $d(A,(BCD))=\dfrac{|1-6|}{\sqrt{14}}=\dfrac{5\sqrt{14}}{14}$, cohérent
       avec $V=\frac16\times5$ et l'aire de $(BCD)=\frac12\sqrt{14}$.
+
+coverage_summary:
+  total_items: 33
+  # NOTE (§6 honnête) — banque « legacy » rétro-taguée. Les 33 items ont été
+  # rédigés AVANT la discipline du tag par distracteur (misconceptions: [] à
+  # l'origine) : conçus pour la VARIÉTÉ des pièges de calcul par item, pas pour
+  # la profondeur ≥3 par modèle. DEUX comptages, aucun gonflé :
+  #   • any_distractor = nb d'items où le modèle apparaît sur ≥1 distracteur
+  #     (occasions de le révéler) ;
+  #   • primary        = nb d'items CONSTRUITS pour cibler ce modèle.
+  counting_convention: any_distractor   # métrique retenue pour le plancher ≥3
+  floor_met: false
+  per_rung: { R0: 3, R1: 3, R2: 3, R3: 3, R4: 3, R5: 3, R6: 3, R7: 3, R8: 3, R9: 3, R10: 3 }
+
+  per_misconception_any_distractor:
+    mc.math.maths_geometrie_espace.signe-arithmetique: 12
+    mc.math.maths_geometrie_espace.oubli-racine: 7
+    mc.math.maths_geometrie_espace.normal-vs-directeur: 5
+    mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme: 4
+    mc.math.maths_geometrie_espace.oubli-valeur-absolue: 4
+    mc.math.maths_geometrie_espace.volume-facteur-oubli: 3
+    mc.math.maths_geometrie_espace.distance-denominateur-somme: 3
+    mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus: 2
+    mc.math.maths_geometrie_espace.scalaire-produit-incomplet: 2
+    mc.math.maths_geometrie_espace.colinearite-mal-testee: 2
+    mc.math.maths_geometrie_espace.perspective-fiable: 2
+    mc.math.maths_geometrie_espace.raisonnement-spatial-naif: 2
+    mc.math.maths_geometrie_espace.directeur-vs-point: 2
+    mc.math.maths_geometrie_espace.plan-constante-mal-determinee: 2
+    mc.math.maths_geometrie_espace.position-critere-inverse: 2
+    mc.math.maths_geometrie_espace.distance-oubli-division: 2
+    mc.math.maths_geometrie_espace.distance-numerateur-mal-forme: 2
+    mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu: 2
+    mc.math.maths_geometrie_espace.aire-oubli-demi: 1
+    mc.math.maths_geometrie_espace.normal-inclut-constante: 1
+    mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan: 1
+    mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire: 1
+    mc.math.maths_geometrie_espace.distance-plane-en-espace: 1
+    mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee: 1
+    mc.math.maths_geometrie_espace.produit-vectoriel-ordre-composantes: 1
+    mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee: 1
+    mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 1
+    mc.math.maths_geometrie_espace.paralleles-vs-confondus: 1
+    mc.math.maths_geometrie_espace.sphere-rayon-constante-oubliee: 1
+    mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 1
+
+  per_misconception_primary:
+    mc.math.maths_geometrie_espace.signe-arithmetique: 4
+    mc.math.maths_geometrie_espace.volume-facteur-oubli: 3
+    mc.math.maths_geometrie_espace.normal-vs-directeur: 2
+    mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme: 2
+    mc.math.maths_geometrie_espace.distance-denominateur-somme: 2
+    mc.math.maths_geometrie_espace.perspective-fiable: 2
+    mc.math.maths_geometrie_espace.directeur-vs-point: 2
+    mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu: 2
+    mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus: 1
+    mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan: 1
+    mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire: 1
+    mc.math.maths_geometrie_espace.distance-plane-en-espace: 1
+    mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee: 1
+    mc.math.maths_geometrie_espace.scalaire-produit-incomplet: 1
+    mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee: 1
+    mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 1
+    mc.math.maths_geometrie_espace.plan-constante-mal-determinee: 1
+    mc.math.maths_geometrie_espace.position-critere-inverse: 1
+    mc.math.maths_geometrie_espace.paralleles-vs-confondus: 1
+    mc.math.maths_geometrie_espace.distance-oubli-division: 1
+    mc.math.maths_geometrie_espace.distance-numerateur-mal-forme: 1
+    mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 1
+    # jamais en primary (seulement distracteur secondaire) : oubli-racine,
+    # oubli-valeur-absolue, aire-oubli-demi, normal-inclut-constante,
+    # colinearite-mal-testee, raisonnement-spatial-naif,
+    # produit-vectoriel-ordre-composantes, sphere-rayon-constante-oubliee.
+
+  meets_floor_any_distractor:   # ≥3 items exposent ces 7 modèles
+    - mc.math.maths_geometrie_espace.signe-arithmetique          # 12
+    - mc.math.maths_geometrie_espace.oubli-racine                # 7
+    - mc.math.maths_geometrie_espace.normal-vs-directeur         # 5
+    - mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme  # 4
+    - mc.math.maths_geometrie_espace.oubli-valeur-absolue        # 4
+    - mc.math.maths_geometrie_espace.volume-facteur-oubli        # 3
+    - mc.math.maths_geometrie_espace.distance-denominateur-somme # 3
+
+  under_floor:
+    # <3 items — surfacé honnêtement, PAS gonflé. Les modèles conceptuels
+    # (R0 perspective/vocabulaire, positions relatives, sphère) n'ont pour
+    # l'instant qu'1 ou 2 items ; ils demandent une passe d'items dédiée.
+    count_models_below_floor: 23
+    follow_up: >-
+      Passe d'items à commander (item-author) : porter à ≥3 chacun les modèles
+      conceptuels sous plancher — priorité position-critere-inverse,
+      sphere-centre-rayon-mal-lu, perspective-fiable, orthogonal-vs-perpendiculaire,
+      directeur-vs-point, plan-constante-mal-determinee,
+      scalaire-vectoriel-confondus — qui portent le raisonnement de bac au-delà
+      du calcul. Les modèles purement computationnels (signe, racine, valeur
+      absolue) sont déjà largement couverts.
+    checkpoints_note: >-
+      Les checkpoints in-leçon (checkpoints.yaml) surfacent EN PLUS, inline,
+      perspective-fiable, scalaire-vectoriel-confondus, plan-constante-mal-determinee,
+      distance-denominateur-somme et intersection-sphere-plan-erreur — mais ne
+      sont PAS recomptés dans ce plancher (clones/formatifs, non ajoutés à la
+      banque, cf. RLC/PC).

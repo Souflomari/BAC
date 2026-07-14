@@ -1,7 +1,89 @@
 notion: suites-numeriques
 skill_code: sma_suites_numeriques   # proposé — à confirmer par supabase-architect
 
-misconceptions: []
+# ──────────────────────────────────────────────────────────────────────────────
+# MISCONCEPTION INVENTORY (summit-conversion campaign — maths, suites).
+# Backfilled onto a legacy end-bank authored before per-distractor tagging.
+# Per the recipe's legacy path (SUMMIT-CONVERSION-RECIPE.md §6), each item now
+# carries an item-level `primary_misconception`; the honest floor per model and
+# the follow-up gaps are reported in `coverage_summary` at the foot of the file.
+# The in-lesson checkpoints (checkpoints.yaml) carry FULL per-distractor tags.
+# ──────────────────────────────────────────────────────────────────────────────
+misconceptions:
+  - id: mc.math.sma_suites_numeriques.recurrence-etape-manquante
+    label: "« Une seule étape de la récurrence suffit »"
+    description: "L'élève omet l'initialisation (croit que l'hérédité seule conclut), ou mal-fonde l'hérédité : il suppose $P(n)$ vraie pour TOUT $n$ (raisonnement circulaire) au lieu d'un seul rang fixé, ou refait l'hérédité rang par rang."
+    contradicts_principle: "Une récurrence exige DEUX étapes distinctes : l'initialisation (la propriété est vraie au rang de départ — le premier domino tombe) ET l'hérédité, qui est l'implication $P(n) \\Rightarrow P(n+1)$ démontrée UNE fois pour un rang $n$ quelconque fixé. L'hérédité seule est une implication qui ne démarre jamais ; supposer $P(n)$ pour tout $n$ suppose le résultat cherché."
+
+  - id: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+    label: "« Quelques termes calculés prouvent une propriété pour tout n »"
+    description: "L'élève calcule $u_0, u_1, u_2, \\ldots$ et conclut une propriété portant sur TOUS les rangs (majoration, monotonie, convergence) à partir de la tendance observée sur cet échantillon fini."
+    contradicts_principle: "Un nombre fini de termes ne couvre jamais l'infinité des rangs restants : une suite peut vérifier une inégalité ou décroître sur ses premiers termes puis cesser. Une propriété « pour tout $n$ » demande une preuve générale (récurrence, ou signe d'une expression valable pour tout $n$)."
+
+  - id: mc.math.sma_suites_numeriques.bornee-implique-monotone
+    label: "« Être bornée renseigne sur le sens de variation »"
+    description: "L'élève déduit un sens de variation (croissante/décroissante/constante) du seul fait qu'une suite est majorée, minorée ou bornée."
+    contradicts_principle: "Bornée est une propriété sur les VALEURS (rester dans un intervalle) ; monotone est une propriété sur la VARIATION (signe de $u_{n+1}-u_n$). Elles sont indépendantes : une suite bornée peut osciller, croître, décroître ou être constante."
+
+  - id: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+    label: "« Un majorant/minorant est unique, atteint, ou égal à la limite »"
+    description: "L'élève croit qu'un majorant démontré est LE plus petit possible, qu'il est atteint par la suite, ou que la suite converge vers lui (ou vers une constante saillante de la formule, comme le terme additif)."
+    contradicts_principle: "Un majorant n'est ni unique (si $M$ majore, $M+1$ aussi), ni forcément atteint, ni la limite. Le théorème de la limite monotone donne l'EXISTENCE d'une limite $L$ (avec $L$ au-delà de la borne), pas sa valeur — souvent bien plus grande que la borne utilisée. La valeur exacte vient du point fixe $L=f(L)$."
+
+  - id: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
+    label: "« La méthode du quotient marche sans vérifier la positivité »"
+    description: "L'élève compare $u_{n+1}/u_n$ à 1 pour conclure la monotonie sans vérifier que tous les $u_n$ sont strictement positifs."
+    contradicts_principle: "Comparer $u_{n+1}/u_n$ à 1 revient à diviser $u_{n+1}\\gtrless u_n$ par $u_n$ : diviser par un $u_n<0$ inverse le sens. La méthode du quotient n'est valable que si tous les termes sont strictement positifs ; sinon on revient à la différence $u_{n+1}-u_n$."
+
+  - id: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+    label: "« Le signe de f(x)−x se lit sur n'importe quel intervalle »"
+    description: "Pour une suite $u_{n+1}=f(u_n)$, l'élève étudie le signe de $f(x)-x$ sur un intervalle arbitraire, sans le restreindre à celui où vivent réellement les $u_n$."
+    contradicts_principle: "Le signe de $f(x)-x$ ne détermine la monotonie de la suite que sur l'intervalle stable où les $u_n$ sont confinés (établi par récurrence). Lire ce signe ailleurs peut donner la conclusion inverse."
+
+  - id: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
+    label: "« Le théorème de la limite monotone marche avec une seule hypothèse »"
+    description: "L'élève applique le théorème de la limite monotone en n'ayant qu'une des deux hypothèses (monotone SANS le bornage, ou bornée SANS la monotonie) et conclut à la convergence."
+    contradicts_principle: "Le théorème exige les DEUX conditions ensemble : croissante ET majorée (ou décroissante ET minorée). Croissante non majorée diverge vers $+\\infty$ ; bornée non monotone peut osciller sans converger (ex. $(-1)^n$)."
+
+  - id: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
+    label: "« Résoudre L=f(L) prouve la convergence »"
+    description: "L'élève résout l'équation du point fixe $L=f(L)$ (ou constate qu'un point fixe existe) et en conclut que la suite converge vers cette valeur, sans avoir établi la convergence au préalable."
+    contradicts_principle: "L'équation $L=f(L)$ donne la valeur que prendrait la limite SI elle existe ; elle ne prouve jamais l'existence. Une suite peut avoir un point fixe et diverger (osciller en s'amplifiant). Il faut établir la convergence d'abord (théorème de la limite monotone, ou autre), puis calculer $L$ par le point fixe."
+
+  - id: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
+    label: "« Une forme indéterminée n'a pas de limite / la règle s'applique telle quelle »"
+    description: "L'élève traite une forme indéterminée ($+\\infty-\\infty$, $0\\times\\infty$, $\\infty/\\infty$, $0/0$) soit comme « pas de limite », soit en appliquant aveuglément la règle des opérations sur les limites."
+    contradicts_principle: "« Forme indéterminée » signifie que la règle directe ne conclut pas — pas que la limite n'existe pas. Il faut transformer l'écriture (factoriser, simplifier) avant de conclure ; le résultat dépend de la façon dont chaque suite tend vers l'infini."
+
+  - id: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
+    label: "« Encadrement / comparaison mal utilisé »"
+    description: "L'élève invoque le théorème des gendarmes avec une seule borne, ou avec deux bornes convergeant vers des limites différentes ; ou inverse la conclusion du théorème de comparaison (croit qu'une suite plus grande qu'une suite explosant est majorée)."
+    contradicts_principle: "Les gendarmes exigent un encadrement $u_n\\le w_n\\le v_n$ dont les DEUX bornes convergent vers la MÊME limite. La comparaison : $u_n\\le v_n$ et $v_n\\to+\\infty$ donne $u_n\\ldots$ non — c'est $u_n\\ge v_n$ et $v_n\\to+\\infty$ qui donne $u_n\\to+\\infty$ (la plus grande hérite de l'explosion)."
+
+  - id: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
+    label: "« L'écart→0 (ou la convergence commune) suffit à l'adjacence »"
+    description: "L'élève conclut que deux suites sont adjacentes à partir du seul écart qui tend vers 0 (sans la monotonie opposée), ou croit que la limite commune est exactement le milieu des deux termes à un rang donné."
+    contradicts_principle: "L'adjacence exige TROIS conditions : l'une croissante, l'autre décroissante, et l'écart qui tend vers 0. L'écart→0 seul n'empêche pas deux suites de diverger ensemble. Le théorème garantit un encadrement $u_n\\le L\\le v_n$, pas que $L$ soit au milieu."
+
+  - id: mc.math.sma_suites_numeriques.arith-geom-confondues
+    label: "« Suites arithmétiques et géométriques confondues »"
+    description: "L'élève confond les deux familles : applique la formule/somme arithmétique à une suite géométrique (ou l'inverse), inverse raison et terme initial, se trompe d'exposant, ou tient pour « raison » une expression dépendant de $n$ (arrêt avant factorisation d'une suite auxiliaire)."
+    contradicts_principle: "Arithmétique : $u_{n+1}=u_n+r$, $u_n=u_0+nr$. Géométrique : $u_{n+1}=q\\,u_n$, $u_n=u_0\\,q^n$. Additionner vs multiplier sont deux mécanismes distincts. Une raison géométrique est toujours un NOMBRE fixe, jamais une expression en $n$ ou $u_n$."
+
+  - id: mc.math.sma_suites_numeriques.limite-liee-terme-initial
+    label: "« La limite dépend de / vaut le terme initial u_0 »"
+    description: "L'élève croit qu'une suite converge vers son terme initial $u_0$, que la valeur de $u_0$ change le SENS de la limite d'une suite arithmétique/géométrique, ou qu'une raison $q<0$ empêche à elle seule la convergence."
+    contradicts_principle: "La limite se lit sur la structure de la suite : pour une arithmétique, seul le signe de $r$ décide ($\\pm\\infty$) ; pour une géométrique, seul $q$ décide, et $|q|<1\\Rightarrow q^n\\to0$ quel que soit le signe de $q$. $u_0$ fixe le point de départ, pas le comportement à l'infini."
+
+  - id: mc.math.sma_suites_numeriques.ordre-notation-recurrence
+    label: "« Erreur d'indice ou d'ordre des opérations dans la récurrence »"
+    description: "L'élève se trompe d'indice ($n$ vs $n+1$ : quel terme calcule/nécessite la relation), ou applique les opérations d'une relation $u_{n+1}=a\\,u_n+b$ dans le mauvais ordre (ajoute avant de multiplier)."
+    contradicts_principle: "Dans $u_{n+1}=a\\,u_n+b$, obtenir $u_k$ impose $n+1=k$, soit $n=k-1$ : il faut connaître $u_{k-1}$. Et les opérations suivent l'ordre de la formule : multiplier par $a$ PUIS ajouter $b$."
+
+  - id: mc.math.sma_suites_numeriques.tendance-implique-limite
+    label: "« Le comportement des premiers termes détermine la limite »"
+    description: "Avant toute preuve, l'élève prédit la limite à partir d'une intuition de tendance : « ça diminue donc ça tend vers 0 », « ça monte donc vers $+\\infty$ ». Sonde surtout par le commit-gate d'accroche (cp-r0-predict)."
+    contradicts_principle: "Une tendance apparente (baisse/hausse) ne dit pas vers quelle valeur on tend, ni même s'il y a convergence. Une suite décroissante minorée converge vers une limite qui n'est ni 0 ni le premier terme, mais le point fixe — établi par les outils du chapitre."
 
 items:
 
@@ -10,6 +92,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [recurrence]
+    primary_misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
     stem: >
       Un élève veut démontrer par récurrence que, pour tout entier $n$,
       $u_n < 10$, sachant que $u_{n+1} = 0{,}5\,u_n + 3$. Il rédige
@@ -73,6 +156,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [bornee, monotonie]
+    primary_misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
     stem: >
       On sait qu'une suite $(u_n)$ est bornée : pour tout $n$,
       $2 \leq u_n \leq 8$. Que peut-on en conclure sur son sens de variation ?
@@ -122,6 +206,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [limite, suite_geometrique]
+    primary_misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
     stem: >
       Soit $(u_n)$ définie par $u_n = 5 \times (-0{,}8)^n$. Que vaut
       $\lim\limits_{n \to +\infty} u_n$ ?
@@ -174,6 +259,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [gendarmes, comparaison]
+    primary_misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
     stem: >
       Pour tout $n \geq 1$, on a $1 - \dfrac{1}{n} \leq w_n \leq 3 -
       \dfrac{1}{n}$. Un élève affirme : « Par le théorème des gendarmes,
@@ -230,6 +316,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [suite_recurrente, point_fixe]
+    primary_misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
     stem: >
       Une suite $(u_n)$ vérifie $u_{n+1} = \dfrac{1}{4}u_n + 6$ et $u_0 = 0$.
       On admet qu'elle converge vers une limite $L$. Un élève écrit
@@ -292,6 +379,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [suites_adjacentes]
+    primary_misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
     stem: >
       On considère $u_n = n$ et $v_n = n + \dfrac{1}{n+1}$. On calcule
       $v_n - u_n = \dfrac{1}{n+1} \to 0$. Peut-on conclure que $(u_n)$ et
@@ -353,6 +441,7 @@ items:
     difficulty_level: 1
     skill_code: sma_suites_numeriques
     tags: [calcul_terme, suite_recurrente]
+    primary_misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
     stem: >
       Un bassin contient au départ 80 000 litres d'eau ; on note $u_0=80$ ce
       volume, exprimé en milliers de litres. Chaque jour, dans cet ordre :
@@ -409,6 +498,7 @@ items:
     difficulty_level: 1
     skill_code: sma_suites_numeriques
     tags: [notation, suite_recurrente]
+    primary_misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
     stem: >
       Pour la suite du réservoir, $u_{n+1}=0{,}5\,u_n+10$, on veut calculer
       $u_5$ à l'aide de la relation de récurrence. Quelle valeur de $n$
@@ -459,6 +549,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [conjecture, suite_recurrente]
+    primary_misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
     stem: >
       Dans l'exemple du réservoir ($u_{n+1}=0{,}5\,u_n+10$), les premiers
       volumes calculés sont $100,\ 60,\ 40,\ 30,\ 25,\ 22{,}5,\ldots$ Sans
@@ -517,6 +608,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [recurrence, heredite]
+    primary_misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
     stem: >
       Un élève rédige l'étape d'hérédité d'une récurrence ainsi : « Comme la
       propriété $P(n)$ est vraie pour TOUT $n$, elle est en particulier
@@ -576,6 +668,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [recurrence, inegalite]
+    primary_misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
     stem: >
       On veut démontrer par récurrence que $u_n \leq 5$ pour tout $n$,
       sachant $u_{n+1} = -2\,u_n+3$. Un élève rédige l'hérédité : «
@@ -645,6 +738,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [suite_geometrique]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
     stem: >
       Soit $(u_n)$ définie par $u_0=3$ et $u_{n+1} = u_n \times 4$. Quelle
       est la nature de cette suite, et que vaut $u_3$ ?
@@ -696,6 +790,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [somme, suite_arithmetique]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
     stem: >
       On considère la suite arithmétique $(u_n)$ de premier terme $u_0=2$ et
       de raison $r=3$. Que vaut $S_5 = u_0+u_1+\cdots+u_5$ ?
@@ -750,6 +845,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [suite_arithmetique]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
     stem: >
       Soit $(u_n)$ définie par $u_0=5$ et, pour tout $n$, $u_{n+1}=u_n+3$.
       Quelle est l'expression de $u_n$ en fonction de $n$ ?
@@ -801,6 +897,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [majorant, bornee]
+    primary_misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
     stem: >
       Un élève a démontré que $10$ est un majorant de la suite $(u_n)$
       (c'est-à-dire $u_n \leq 10$ pour tout $n$). Il en déduit que $10$ est
@@ -857,6 +954,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [bornee, recurrence]
+    primary_misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
     stem: >
       Pour démontrer que $u_n \leq 50$ pour tout entier $n$, sachant $u_0=10$
       et $u_{n+1}=0{,}5\,u_n+20$, un élève calcule $u_1=25$, $u_2=32{,}5$,
@@ -918,6 +1016,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [monotonie, preuve]
+    primary_misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
     stem: >
       Un élève calcule les quatre premiers termes d'une suite : $u_0=50$,
       $u_1=42$, $u_2=35$, $u_3=29$, et conclut : « La suite est
@@ -970,6 +1069,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [monotonie, quotient]
+    primary_misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
     stem: >
       Soit $(u_n)$ une suite telle que $u_{n+1}/u_n = 0{,}5$ pour tout $n$,
       mais dont certains termes sont négatifs (par exemple
@@ -1030,6 +1130,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [monotonie, fonction_f]
+    primary_misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
     stem: >
       Soit $f(x) = 0{,}5x+10$ et $(u_n)$ définie par $u_{n+1}=f(u_n)$, avec
       $u_0=100$ (donc tous les $u_n>20$, comme démontré au R1). Un élève
@@ -1093,6 +1194,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [limite, formes_indeterminees]
+    primary_misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
     stem: >
       Soit $u_n = n^2$ et $v_n = -n^2+3n$. On a $\lim u_n=+\infty$ et $\lim
       v_n = -\infty$. Un élève calcule $\lim(u_n+v_n)$ en écrivant : « $
@@ -1151,6 +1253,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [limite, suite_arithmetique]
+    primary_misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
     stem: >
       Soit $(u_n)$ une suite arithmétique de raison $r=-4$ et de premier
       terme $u_0=1000$. Que vaut $\lim\limits_{n\to+\infty}u_n$ ?
@@ -1207,6 +1310,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [comparaison]
+    primary_misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
     stem: >
       On sait que, pour tout $n$, $u_n \geq v_n$, et que $\lim\limits_{n\to
       +\infty} v_n = +\infty$. Un élève conclut : « Donc $\lim u_n$ existe
@@ -1263,6 +1367,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [gendarmes]
+    primary_misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
     stem: >
       Un élève sait que $w_n \leq \dfrac{2}{n+1}$ pour tout $n\geq1$, et que
       $\lim\limits_{n\to+\infty}\dfrac{2}{n+1}=0$. Il conclut : « Par le
@@ -1319,6 +1424,7 @@ items:
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [limite_monotone, majoration]
+    primary_misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
     stem: >
       Une suite $(u_n)$ est croissante mais n'est PAS majorée. Que peut-on
       affirmer sur sa limite ?
@@ -1372,6 +1478,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [limite_monotone, valeur_limite]
+    primary_misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
     stem: >
       Une suite $(u_n)$ est décroissante et minorée par $3$. Un élève
       affirme : « Par le théorème de la limite monotone, $(u_n)$ converge
@@ -1434,6 +1541,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [limite_monotone, bornee]
+    primary_misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
     stem: >
       Une suite $(u_n)$ est bornée ($-5\leq u_n\leq5$ pour tout $n$) mais
       n'est PAS monotone (elle oscille). Peut-on appliquer le théorème de la
@@ -1488,6 +1596,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [point_fixe, convergence]
+    primary_misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
     stem: >
       Soit $f(x) = -2x+3$ et $(u_n)$ définie par $u_{n+1}=f(u_n)$, $u_0=0$.
       Un élève résout $L=f(L)$ : $L=-2L+3 \Rightarrow 3L=3 \Rightarrow
@@ -1556,6 +1665,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [point_fixe, suite_auxiliaire]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
     stem: >
       Soit $u_{n+1} = 0{,}3\,u_n+7$, dont on a établi qu'elle converge vers
       $L=10$ (point fixe : $L=0{,}3L+7 \Rightarrow 0{,}7L=7 \Rightarrow
@@ -1621,6 +1731,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [suites_adjacentes, monotonie]
+    primary_misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
     stem: >
       Soient $u_n = 3-\dfrac{2}{n+1}$ et $v_n = 3-\dfrac{1}{n+1}$, pour
       $n\geq0$. On vérifie que $v_n-u_n=\dfrac{1}{n+1}\to0$, et que les
@@ -1685,6 +1796,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [suites_adjacentes, encadrement]
+    primary_misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
     stem: >
       $(u_n)$ et $(v_n)$ sont adjacentes, avec $(u_n)$ croissante et $(v_n)$
       décroissante. On a calculé $u_{10}=4{,}97$ et $v_{10}=5{,}03$. Un
@@ -1744,6 +1856,7 @@ items:
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [synthese, limite_monotone]
+    primary_misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
     stem: >
       On considère la suite $(u_n)$ définie par $u_0=2$ et $u_{n+1} =
       \dfrac{2}{5}u_n+9$. Un élève veut démontrer que $(u_n)$ converge,
@@ -1806,6 +1919,7 @@ items:
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [synthese, suite_auxiliaire]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
     stem: >
       Pour la suite $(u_n)$ définie par $u_0=2$ et $u_{n+1}=\dfrac{2}{5}u_n+9$
       (dont on a établi que la limite vaut $L=15$), on pose $v_n = u_n -
@@ -1866,6 +1980,7 @@ items:
     difficulty_level: 5
     skill_code: sma_suites_numeriques
     tags: [synthese, point_fixe]
+    primary_misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
     stem: >
       En utilisant $v_n=u_n-15$ et sa raison $\dfrac{2}{5}$ (trouvées
       précédemment), on obtient $u_n = 15-13\times\left(\dfrac{2}{5}\right)^n$.
@@ -1925,3 +2040,63 @@ items:
       méthodes, quand elles sont toutes deux disponibles, doivent
       nécessairement s'accorder (unicité de la limite, R5) : c'est une
       bonne vérification croisée, jamais une redondance inutile.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (summit-conversion backfill — HONEST, not padded)
+#
+# §6 honesty note. This is a LEGACY end-bank (33 items across R0–R10) authored
+# BEFORE the misconception inventory existed. Per SUMMIT-CONVERSION-RECIPE.md §6,
+# the sanctioned backfill for a legacy bank is item-level `primary_misconception`
+# (now present on all 33 items) + a truthful floor report — NOT faked per-model
+# counts. Full PER-DISTRACTOR tagging of the 33 items is a flagged follow-up item
+# pass (the in-lesson checkpoints in checkpoints.yaml already carry full
+# per-distractor tags). The bank's design goal was broad rung coverage (3 items
+# per rung), which is orthogonal to the ≥3-per-misconception depth goal; hence
+# several models sit below the floor. Counts below are by `primary_misconception`.
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  total_items: 33
+  per_rung:
+    R0: 3   # SUITES-7, SUITES-8, SUITES-9
+    R1: 3   # SUITES-1, SUITES-10, SUITES-11
+    R2: 3   # SUITES-12, SUITES-13, SUITES-14
+    R3: 3   # SUITES-2, SUITES-15, SUITES-16
+    R4: 3   # SUITES-17, SUITES-18, SUITES-19
+    R5: 3   # SUITES-3, SUITES-20, SUITES-21
+    R6: 3   # SUITES-4, SUITES-22, SUITES-23
+    R7: 3   # SUITES-24, SUITES-25, SUITES-26
+    R8: 3   # SUITES-5, SUITES-27, SUITES-28
+    R9: 3   # SUITES-6, SUITES-29, SUITES-30
+    R10: 3  # SUITES-31, SUITES-32, SUITES-33
+  per_misconception:
+    # ── floor MET (≥3 end-bank items) ──
+    mc.math.sma_suites_numeriques.recurrence-etape-manquante: 3        # SUITES-1, SUITES-10, SUITES-11
+    mc.math.sma_suites_numeriques.preuve-par-termes-calcules: 3        # SUITES-9, SUITES-16, SUITES-17
+    mc.math.sma_suites_numeriques.majorant-atteint-ou-limite: 3        # SUITES-5, SUITES-15, SUITES-25
+    mc.math.sma_suites_numeriques.monotone-hypothese-partielle: 3      # SUITES-24, SUITES-26, SUITES-31
+    mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique: 3 # SUITES-4, SUITES-22, SUITES-23
+    mc.math.sma_suites_numeriques.adjacentes-condition-incomplete: 3   # SUITES-6, SUITES-29, SUITES-30
+    mc.math.sma_suites_numeriques.arith-geom-confondues: 5             # SUITES-12, SUITES-13, SUITES-14, SUITES-28, SUITES-32
+    # ── floor NOT met (< 3 end-bank items) — flagged for a follow-up item pass ──
+    mc.math.sma_suites_numeriques.point-fixe-prouve-convergence: 2     # SUITES-27, SUITES-33
+    mc.math.sma_suites_numeriques.limite-liee-terme-initial: 2         # SUITES-3, SUITES-21
+    mc.math.sma_suites_numeriques.ordre-notation-recurrence: 2         # SUITES-7, SUITES-8
+    mc.math.sma_suites_numeriques.bornee-implique-monotone: 1          # SUITES-2
+    mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite: 1 # SUITES-18
+    mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine: 1          # SUITES-19
+    mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree: 1      # SUITES-20
+    mc.math.sma_suites_numeriques.tendance-implique-limite: 0          # end-bank: none — gated in-lesson by cp-r0-predict (checkpoints.yaml)
+  floor_met: false   # 7 of 15 models reach ≥3 end-bank items; 8 are under-covered (honest — NOT padded)
+
+  rupture_gate_floor:
+    # The four rupture families the in-lesson checkpoints gate (checkpoints.yaml),
+    # and their END-BANK floor status:
+    recurrence_les_deux_etapes:        { model: recurrence-etape-manquante, end_bank_items: 3, floor_met: true, checkpoint: cp-recurrence-deux-etapes }
+    sens_de_variation_via_difference:  { model: preuve-par-termes-calcules, end_bank_items: 3, floor_met: true, checkpoint: cp-sens-variation }
+    suite_majoree_minoree:             { model: majorant-atteint-ou-limite, end_bank_items: 3, floor_met: true, checkpoint: cp-majoree-minoree }
+    convergence_limite_point_fixe:     { model: point-fixe-prouve-convergence, end_bank_items: 2, floor_met: false, checkpoint: cp-convergence-pointfixe, note: "under floor by 1 — add one R8 point-fixe item; convergence reasoning is additionally covered by monotone-hypothese-partielle (3) and majorant-atteint-ou-limite (3)" }
+
+  followup:
+    - "Per-distractor `misconception:` tagging of the 33 end-bank items (currently item-level primary only, per the legacy path)."
+    - "Add ≥1 item each to reach the ≥3 floor for: point-fixe-prouve-convergence (2→3), limite-liee-terme-initial (2→3), ordre-notation-recurrence (2→3), bornee-implique-monotone (1→3), quotient-monotonie-sans-positivite (1→3), signe-fx-mauvais-domaine (1→3), forme-indeterminee-mal-geree (1→3)."
+    - "skill_code sma_suites_numeriques is proposed — supabase-architect to reconcile."

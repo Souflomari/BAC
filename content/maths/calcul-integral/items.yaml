@@ -1,6 +1,131 @@
 notion: calcul-integral
 skill_code: maths_calcul_integral   # proposed; supabase-architect reconciles at step 7
-misconceptions: []
+
+# ── Misconception inventory (summit-conversion backfill) ──────────────────────
+# Added by the summit-conversion pass: this legacy end-bank (CI-1..CI-30) was
+# authored BEFORE per-distractor misconception tagging. The backfill (a) names
+# the notion's cognitive-error models, (b) sets an item-level
+# `primary_misconception` on every item, (c) adds per-distractor `misconception`
+# tags on the items backing the four rupture-gate checkpoints + the predict gate,
+# and (d) reports the honest floor in `coverage_summary` (§6) — including the
+# models that do NOT yet meet the ≥3 floor. Ids follow mc.math.<skill_code>.<slug>.
+misconceptions:
+  - id: mc.math.maths_calcul_integral.primitive-vs-derivee
+    label: "Confondre primitive et dérivée (mauvais sens de vérification)"
+    description: >-
+      Pour intégrer, l'élève dérive (ou, pour vérifier qu'une fonction $F$ est
+      une primitive de $f$, il l'intègre, ou il teste $h'=F$ au lieu de $F'=h$,
+      ou il croit qu'une primitive « est » la fonction). Les deux opérations
+      inverses — dériver et primitiver — sont interverties.
+    contradicts_principle: >-
+      Une primitive $F$ de $f$ est DÉFINIE par $F'=f$. On vérifie donc une
+      primitive en DÉRIVANT la candidate et en contrôlant qu'on retombe sur $f$ ;
+      on ne l'intègre pas, et $F\neq f$ en général.
+  - id: mc.math.maths_calcul_integral.constante-et-bornes
+    label: "Mauvais traitement de la primitive et de l'évaluation aux bornes"
+    description: >-
+      L'élève croit que la constante d'une primitive change le résultat, ou
+      évalue mal aux bornes : $F(b)$ seul, $F(a)-F(b)$ (ordre inversé), ou
+      $F(b-a)$ au lieu de $F(b)-F(a)$.
+    contradicts_principle: >-
+      $\int_a^b f = F(b)-F(a)$ : la constante additive s'annule dans la
+      soustraction (le résultat ne dépend pas de la primitive choisie), l'ordre
+      est toujours « borne du haut moins borne du bas », et la soustraction porte
+      sur les VALEURS de $F$, pas sur les bornes.
+  - id: mc.math.maths_calcul_integral.linearite-abusive
+    label: "Linéarité mal appliquée (produit, ou coefficient ignoré)"
+    description: >-
+      L'élève étend la linéarité au produit ($\int fg = \int f \cdot \int g$), ou
+      oublie/déplace un coefficient constant, ou traite le terme constant comme
+      s'il ne se multipliait pas par la longueur de l'intervalle.
+    contradicts_principle: >-
+      La linéarité ne porte que sur la SOMME et le FACTEUR CONSTANT :
+      $\int(f+g)=\int f+\int g$ et $\int kf=k\int f$. Elle ne dit rien du produit
+      de deux fonctions, et chaque coefficient doit multiplier sa propre
+      intégrale avant de combiner.
+  - id: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    label: "Relation de Chasles mal appliquée (addition/signe/découpage)"
+    description: >-
+      En reliant des intégrales par Chasles, l'élève additionne là où il faut
+      soustraire, se trompe de signe, ignore le découpage, ou croit que $c$ doit
+      être entre $a$ et $b$ (ou oublie la convention $\int_b^a=-\int_a^b$).
+    contradicts_principle: >-
+      $\int_a^b f = \int_a^c f + \int_c^b f$ pour tout réel $c$ (grâce aux
+      conventions $\int_a^a=0$ et $\int_b^a=-\int_a^b$). On ISOLE le terme
+      cherché par soustraction ; on n'additionne pas les deux intégrales connues.
+  - id: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    label: "L'intégrale signée prise pour l'aire (signe ignoré)"
+    description: >-
+      L'élève prend $\int_a^b f$ pour l'aire même quand $f$ change de signe, ou
+      prend la valeur absolue de l'intégrale GLOBALE, ou change le signe global,
+      au lieu de découper selon le signe de $f$.
+    contradicts_principle: >-
+      $\int_a^b f$ n'est l'aire que si $f$ garde un signe constant. Quand $f$
+      change de signe, il faut DÉCOUPER aux racines (Chasles), prendre l'opposé
+      là où $f\le 0$ et l'intégrale telle quelle là où $f\ge 0$, puis additionner
+      — le découpage précède la valeur absolue.
+  - id: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+    label: "Intégration par parties : mauvais choix de u/v' ou mauvais signe"
+    description: >-
+      L'élève dérive le facteur qui ne se simplifie pas (p. ex. $e^x$), prend le
+      produit entier comme $u$, croit que l'IPP ne s'applique pas à un « seul
+      terme », ou met un « + » au lieu du « − » dans la formule.
+    contradicts_principle: >-
+      $\int_a^b uv' = [uv]_a^b - \int_a^b u'v$ : on choisit $u$ dont la dérivée
+      est plus simple et $v'$ dont une primitive est immédiate ; le terme de bord
+      est soustrait de l'intégrale du produit dérivé-primitivé.
+  - id: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+    label: "Valeur moyenne mal normalisée (division par b−a oubliée)"
+    description: >-
+      L'élève rend l'intégrale elle-même comme valeur moyenne, divise par une
+      borne au lieu de la longueur, multiplie par $b-a$ au lieu de diviser, ou
+      confond la valeur moyenne avec $f$ au milieu de l'intervalle.
+    contradicts_principle: >-
+      $\mu = \dfrac{1}{b-a}\int_a^b f$ : on DIVISE l'intégrale par la LONGUEUR
+      $b-a$ de l'intervalle. Ce n'est ni l'intégrale seule, ni $f\!\left(\frac{a+b}{2}\right)$
+      (sauf pour une fonction affine).
+  - id: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    label: "Inégalité de la moyenne : facteur (b−a) oublié ou m/M mal choisis"
+    description: >-
+      L'élève encadre $\int_a^b f$ par $m$ et $M$ sans multiplier par $b-a$,
+      multiplie par une borne au lieu de la longueur, ou choisit mal le minimum
+      $m$ et le maximum $M$ (bornes de l'intervalle au lieu de valeurs de $f$,
+      ou $m$ et $M$ intervertis).
+    contradicts_principle: >-
+      Si $m\le f\le M$ sur $[a,b]$, alors $m(b-a)\le \int_a^b f\le M(b-a)$ : les
+      DEUX bornes se multiplient par la LONGUEUR $b-a$, et $m,M$ sont le minimum
+      et le maximum des VALEURS de $f$ sur l'intervalle.
+  - id: mc.math.maths_calcul_integral.hypothese-non-verifiee
+    label: "Positivité/comparaison appliquées sans vérifier l'hypothèse"
+    description: >-
+      L'élève applique la positivité sans $a\le b$ (bornes inversées), ou la
+      comparaison en se contentant de l'inégalité aux bornes au lieu de
+      l'intervalle entier, ou conclut à une égalité des intégrales à partir de
+      $f\le g$.
+    contradicts_principle: >-
+      La positivité exige $a\le b$ (sinon $\int_b^a f=-\int_a^b f\le 0$) ; la
+      comparaison exige $f\le g$ sur TOUT $[a,b]$ (elle applique la positivité à
+      $g-f\ge 0$ partout). $f\le g$ donne $\int f\le\int g$, pas l'égalité.
+  - id: mc.math.maths_calcul_integral.aire-naive-geometrique
+    label: "Estimer l'aire sous une courbe par un raccourci géométrique naïf"
+    description: >-
+      Devant une aire sous une courbe, l'élève l'estime par une forme simple
+      (rectangle à la vitesse/hauteur maximale, triangle, rectangle au point
+      milieu) et prend cette estimation pour la valeur exacte.
+    contradicts_principle: >-
+      Une formule de géométrie plane suppose un contour de segments de droite.
+      Sous une courbe, seule l'intégrale $\int_a^b f$ donne l'aire exacte ; les
+      raccourcis rectangle/triangle ne sont que des majorants ou minorants.
+  - id: mc.math.maths_calcul_integral.conversion-unites-aire
+    label: "Conversion u.a. → cm² en multipliant par l'échelle une seule fois"
+    description: >-
+      L'élève convertit une aire en u.a. vers des cm² en multipliant par
+      l'échelle une seule fois (ou en additionnant), au lieu de multiplier par le
+      carré de l'échelle.
+    contradicts_principle: >-
+      $1$ u.a. est l'aire d'un carré de côté $1$ : si l'échelle est $k$ cm par
+      unité sur chaque axe, alors $1$ u.a. $=k^2$ cm² — le facteur s'applique aux
+      DEUX dimensions de l'aire.
 
 items:
 
@@ -9,6 +134,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [primitive_integrale, definition]
+    primary_misconception: mc.math.maths_calcul_integral.constante-et-bornes
     stem: >
       Soit $f(x) = x^2$ sur $[1,3]$. Pour calculer $\int_1^3 f(x)\,\mathrm{d}x$,
       un élève utilise la primitive $F(x) = \dfrac{x^3}{3} + 5$ au lieu de
@@ -62,6 +188,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [linearite]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
     stem: >
       On donne $\int_0^2 f(x)\,\mathrm{d}x = 5$ et $\int_0^2 g(x)\,\mathrm{d}x
       = 3$. Que vaut $\int_0^2 \big(3f(x)-2g(x)\big)\,\mathrm{d}x$ ?
@@ -73,6 +200,7 @@ items:
       - id: B
         text: "$2$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
         feedback: >
           Ce choix calcule $5-3=2$, en ignorant complètement les coefficients
           $3$ et $2$. La linéarité dit que chaque intégrale doit d'abord être
@@ -81,6 +209,7 @@ items:
       - id: C
         text: "$21$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
         feedback: >
           Ce choix calcule $3\times 5 + 2\times 3 = 21$ : le signe moins
           entre les deux termes a été remplacé par un plus. L'expression
@@ -88,6 +217,7 @@ items:
       - id: D
         text: "$-9$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
         feedback: >
           Ce choix calcule $2\times 3 - 3\times 5 = -9$ : les deux termes ont
           été inversés. Le premier terme de l'expression $3f-2g$ correspond
@@ -108,6 +238,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [positivite, comparaison]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
     stem: >
       Pour tout $x \in [1,4]$, on a $0 \leq f(x) \leq g(x)$, et
       $\int_1^4 g(x)\,\mathrm{d}x = 10$. Que peut-on affirmer avec certitude
@@ -158,6 +289,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [valeur_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
     stem: >
       On donne $\int_2^5 f(x)\,\mathrm{d}x = 12$. Quelle est la valeur
       moyenne de $f$ sur $[2,5]$ ?
@@ -201,6 +333,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [integration_par_parties]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
     stem: >
       Pour calculer $\int_0^1 x\,e^{2x}\,\mathrm{d}x$ par intégration par
       parties, quel choix de $u$ et $v'$ est le plus efficace ?
@@ -253,6 +386,7 @@ items:
     difficulty_level: 4
     skill_code: maths_calcul_integral
     tags: [aires, changement_de_signe]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
     stem: >
       La courbe de $f(x)=x^2-4$ change de signe sur $[0,3]$ (racine en
       $x=2$) : $f \leq 0$ sur $[0,2]$ et $f \geq 0$ sur $[2,3]$. Quelle est
@@ -263,6 +397,7 @@ items:
       - id: A
         text: "Calculer directement $\\int_0^3 f(x)\\,\\mathrm{d}x$ et prendre ce nombre comme l'aire."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           $\int_0^3 f(x)\,\mathrm{d}x = -3$ : la partie où $f \leq 0$
           soustrait de la valeur au lieu de s'ajouter à l'aire. Ce nombre
@@ -270,6 +405,7 @@ items:
       - id: B
         text: "Calculer $\\int_0^3 f(x)\\,\\mathrm{d}x$, puis prendre sa valeur absolue."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           $\left|\int_0^3 f(x)\,\mathrm{d}x\right| = |-3| = 3$, mais l'aire
           réelle vaut $\tfrac{23}{3}\approx 7{,}67$. Prendre la valeur
@@ -282,6 +418,7 @@ items:
       - id: D
         text: "Calculer $-\\int_0^3 f(x)\\,\\mathrm{d}x$ directement, en supposant que la courbe entière est sous l'axe."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           $f$ n'est PAS sous l'axe sur tout l'intervalle : elle est positive
           sur $[2,3]$. Traiter tout l'intervalle comme s'il était
@@ -311,6 +448,7 @@ items:
     difficulty_level: 1
     skill_code: maths_calcul_integral
     tags: [accroche, aire_sous_courbe]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
     stem: >
       Sur $[0,2]$, une voiture roule avec $v(t)=t^2$ (en m/s). Pourquoi ne
       peut-on pas calculer la distance parcourue avec une simple formule
@@ -365,6 +503,7 @@ items:
     difficulty_level: 1
     skill_code: maths_calcul_integral
     tags: [accroche, estimation]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
     stem: >
       Toujours avec $v(t)=t^2$ sur $[0,2]$ : la droite reliant les points
       $(0,0)$ et $(2,4)$ délimite, avec l'axe des temps, un triangle
@@ -421,6 +560,7 @@ items:
     difficulty_level: 1
     skill_code: maths_calcul_integral
     tags: [accroche, vitesse_moyenne_intuition]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
     stem: >
       Un élève raisonne ainsi : « La vitesse maximale de la voiture sur
       $[0,2]$ est $v(2)=4$ m/s. Si elle avait roulé tout le temps à cette
@@ -476,6 +616,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [primitive_integrale, variable_muette]
+    primary_misconception: mc.math.maths_calcul_integral.constante-et-bornes
     stem: >
       On sait que $\ln$ est une primitive de $t \mapsto \dfrac1t$ sur
       $\left]0,+\infty\right[$. En appliquant la définition de l'intégrale
@@ -530,6 +671,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [primitive_integrale, definition]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
     stem: >
       Un élève affirme : « Pour calculer $\int_{-2}^{1} x\,\mathrm{d}x$
       avec la définition $F(b)-F(a)$, il faut d'abord vérifier que
@@ -591,6 +733,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [linearite, produit_de_fonctions]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
     stem: >
       On donne $\int_0^1 f(x)\,\mathrm{d}x = 2$ et $\int_0^1 g(x)\,
       \mathrm{d}x = 3$. Un élève en déduit que $\int_0^1 f(x)g(x)\,
@@ -652,6 +795,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [linearite, terme_constant]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
     stem: >
       Calcule $\displaystyle\int_1^4 \big(2x+7\big)\,\mathrm{d}x$.
     type: mcq
@@ -706,6 +850,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [chasles]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
     stem: >
       On donne $\int_0^7 f(x)\,\mathrm{d}x = 20$ et $\int_3^7 f(x)\,
       \mathrm{d}x = 9$. Que vaut $\int_0^3 f(x)\,\mathrm{d}x$ ?
@@ -754,6 +899,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [chasles, convention_bornes]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
     stem: >
       On donne $\int_2^6 f(x)\,\mathrm{d}x = 15$. Que vaut $\int_6^2
       f(x)\,\mathrm{d}x$ ?
@@ -803,6 +949,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [chasles, hors_intervalle]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
     stem: >
       On donne $\int_0^2 f(x)\,\mathrm{d}x = 4$ et $\int_0^5 f(x)\,
       \mathrm{d}x = 10$. Que vaut $\int_2^5 f(x)\,\mathrm{d}x$ ? (Remarque :
@@ -813,6 +960,7 @@ items:
       - id: A
         text: "La relation de Chasles ne s'applique pas ici, car $0$ n'est pas compris entre $2$ et $5$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
           La relation de Chasles est vraie pour n'importe quel réel $c$, y
           compris un $c$ situé en dehors du segment délimité par les deux
@@ -822,6 +970,7 @@ items:
       - id: B
         text: "$14$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
           Ce choix additionne les deux intégrales données, $4+10=14$, sans
           respecter la structure de la relation de Chasles. Ici $c=0$
@@ -831,6 +980,7 @@ items:
       - id: C
         text: "$-6$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
           Ce choix calcule $4-10$ au lieu de $10-4$ : l'ordre de la
           soustraction dans $\int_0^5 f = \int_0^2 f + \int_2^5 f$ a été
@@ -855,6 +1005,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [positivite, ordre_des_bornes]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
     stem: >
       Soit $f$ continue et $f\geq0$ sur $[2,5]$. Un élève en déduit que
       $\int_5^2 f(x)\,\mathrm{d}x \geq 0$. A-t-il raison ?
@@ -909,6 +1060,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [comparaison, intervalle_entier]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
     stem: >
       On sait que $f(1)\leq g(1)$ et $f(4)\leq g(4)$, mais on ne sait rien
       sur le signe de $g(x)-f(x)$ pour les $x$ strictement entre $1$ et
@@ -964,6 +1116,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [inegalite_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
     stem: >
       Soit $f$ continue sur $[3,8]$ avec $2\leq f(x)\leq6$ pour tout
       $x\in[3,8]$. D'après l'inégalité de la moyenne, quel encadrement
@@ -1014,6 +1167,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [inegalite_moyenne, monotonie]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
     stem: >
       Soit $f(x)=\sqrt{x}$ sur $[4,9]$ (fonction croissante). Pour
       appliquer l'inégalité de la moyenne, quelles valeurs faut-il prendre
@@ -1068,6 +1222,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [inegalite_moyenne, valeur_absolue]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
     stem: >
       Soit $f$ continue sur $[0,4]$ avec $|f(x)|\leq3$ pour tout
       $x\in[0,4]$. D'après le corollaire de l'inégalité de la moyenne, que
@@ -1118,6 +1273,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [valeur_moyenne, calcul_complet]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
     stem: >
       Calcule la valeur moyenne de $f(x)=2x+1$ sur $[1,4]$.
     type: mcq
@@ -1164,6 +1320,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [valeur_moyenne, interpretation]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
     stem: >
       Soit $f(x)=x^2$ sur $[0,4]$. Un élève affirme que la valeur moyenne
       de $f$ sur $[0,4]$ est $f\left(\dfrac{0+4}{2}\right) = f(2) = 4$,
@@ -1223,6 +1380,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [integration_par_parties, formule]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
     stem: >
       Pour calculer $\int_0^1 x\,e^x\,\mathrm{d}x$, on pose $u=x$ ($u'=1$)
       et $v'=e^x$ ($v=e^x$). Quelle est la formule correcte issue de
@@ -1279,6 +1437,7 @@ items:
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [integration_par_parties, choix_u_v]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
     stem: >
       Pour calculer $\int_1^2 x^2\ln(x)\,\mathrm{d}x$ par intégration par
       parties, quel choix de $u$ et $v'$ est le plus efficace ?
@@ -1290,6 +1449,7 @@ items:
       - id: B
         text: "$u=x^2$ et $v'=\\ln(x)$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           Ce choix demande de trouver une primitive de $\ln(x)$ pour
           obtenir $v$ — or cette primitive ($x\ln(x)-x$) n'est pas
@@ -1299,6 +1459,7 @@ items:
       - id: C
         text: "$u=x^2\\ln(x)$ et $v'=1$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           Prendre le produit entier comme $u$ ne sépare rien : dériver
           $x^2\ln(x)$ (règle du produit) redonne une expression aussi
@@ -1307,6 +1468,7 @@ items:
       - id: D
         text: "L'intégration par parties ne s'applique pas ici, car $\\ln(x)$ n'est pas un polynôme."
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           L'IPP ne demande à aucun moment que les facteurs soient des
           polynômes — elle s'applique à tout produit de deux fonctions
@@ -1336,6 +1498,7 @@ items:
     difficulty_level: 4
     skill_code: maths_calcul_integral
     tags: [aires, entre_deux_courbes]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
     stem: >
       Les courbes de $f(x)=x+2$ et $g(x)=x^2$ se coupent en $x=-1$ et
       $x=2$. Sur $]-1,2[$, la droite $f$ est au-dessus de la parabole $g$.
@@ -1398,6 +1561,7 @@ items:
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [aires, unites_aire]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-aire
     stem: >
       Dans un repère où chaque axe est gradué à raison de $3\ \text{cm}$
       par unité, une aire calculée par intégration vaut $5$ u.a. Quelle
@@ -1453,6 +1617,7 @@ items:
     difficulty_level: 5
     skill_code: maths_calcul_integral
     tags: [synthese, chasles, integration_par_parties, aires]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
     stem: >
       Soit $f(x)=(x-2)e^x$ sur $[0,3]$. On a établi par IPP qu'une
       primitive de $f$ est $F(x)=(x-3)e^x$. Sachant que $f$ change de
@@ -1512,6 +1677,7 @@ items:
     difficulty_level: 4
     skill_code: maths_calcul_integral
     tags: [synthese, comparaison, valeur_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
     stem: >
       Soient $f$ et $g$ deux fonctions continues sur $[2,6]$ telles que
       $f(x) \leq g(x)$ pour tout $x \in [2,6]$. On donne que la valeur
@@ -1568,6 +1734,7 @@ items:
     difficulty_level: 4
     skill_code: maths_calcul_integral
     tags: [synthese, integration_par_parties, valeur_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
     stem: >
       Soit $q(x)=(2-x)e^x$ sur $[0,2]$. Une intégration par parties donne
       $\int_0^2 q(x)\,\mathrm{d}x = e^2-3$. Quelle est la valeur moyenne de
@@ -1613,3 +1780,70 @@ items:
       $v'=e^x$, $v=e^x$ : $\int_0^2(2-x)e^x\,\mathrm{d}x =
       \big[(2-x)e^x\big]_0^2 + \int_0^2 e^x\,\mathrm{d}x = (0-2) +
       \big[e^x\big]_0^2 = -2+(e^2-1) = e^2-3$.)
+
+# ── Coverage summary (summit-conversion backfill — HONEST STATE) ──────────────
+# Counts are by item-level `primary_misconception` (each of the 30 items has
+# exactly one). The four rupture-gate models (linearite-abusive,
+# chasles-mal-appliquee, integrale-signee-vs-aire, ipp-mauvais-choix-ou-signe)
+# and the predict-gate model (aire-naive-geometrique) all meet the ≥3 floor.
+# Three models do NOT yet meet it — surfaced here, not padded (see §6).
+coverage_summary:
+  total_items: 30
+  per_rung:
+    R0: 3   # CI-7, CI-8, CI-9
+    R1: 3   # CI-1, CI-10, CI-11
+    R2: 3   # CI-2, CI-12, CI-13
+    R3: 3   # CI-14, CI-15, CI-16
+    R4: 3   # CI-3, CI-17, CI-18
+    R5: 3   # CI-19, CI-20, CI-21
+    R6: 3   # CI-4, CI-22, CI-23
+    R7: 3   # CI-5, CI-24, CI-25
+    R8: 3   # CI-6, CI-26, CI-27
+    R9: 3   # CI-28, CI-29, CI-30
+  per_misconception:
+    mc.math.maths_calcul_integral.primitive-vs-derivee: 0            # FLOOR NOT MET — see §6
+    mc.math.maths_calcul_integral.constante-et-bornes: 2             # CI-1, CI-10 — FLOOR NOT MET
+    mc.math.maths_calcul_integral.linearite-abusive: 3              # CI-2, CI-12, CI-13 (rupture gate cp-lin-chasles)
+    mc.math.maths_calcul_integral.chasles-mal-appliquee: 3          # CI-14, CI-15, CI-16 (rupture gate cp-lin-chasles)
+    mc.math.maths_calcul_integral.integrale-signee-vs-aire: 4       # CI-6, CI-11, CI-26, CI-28 (rupture gate cp-aire-signe)
+    mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe: 3     # CI-5, CI-24, CI-25 (rupture gate cp-ipp)
+    mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee: 4  # CI-4, CI-22, CI-23, CI-30
+    mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur: 3 # CI-19, CI-20, CI-21
+    mc.math.maths_calcul_integral.hypothese-non-verifiee: 4         # CI-3, CI-17, CI-18, CI-29
+    mc.math.maths_calcul_integral.aire-naive-geometrique: 3         # CI-7, CI-8, CI-9 (predict gate cp-r0-predict)
+    mc.math.maths_calcul_integral.conversion-unites-aire: 1         # CI-27 — FLOOR NOT MET
+  floor_met: false   # 8 of 11 models meet ≥3; 3 do not (§6). All GATED models (the 4 ruptures + predict) DO meet it.
+
+  # §6 — Honest state / follow-up (do not pad; surfacing the gap IS the deliverable)
+  honest_state:
+    per_distractor_tagging: >-
+      This bank predates per-distractor tagging. The summit-conversion pass set
+      item-level primary_misconception on ALL 30 items and added per-distractor
+      `misconception` tags on the four cleanly-mapping rupture-gate canonicals
+      (CI-2 linéarité, CI-6 signe, CI-16 Chasles, CI-25 IPP). The predict-gate
+      model's per-distractor tags live in checkpoints.yaml (cp-r0-predict, all
+      three distractors tagged). Full per-distractor dual-tagging of the
+      remaining computational items (and of the heterogeneous R0 accroche
+      distractors CI-7/8/9, whose wrong reasons do not all reduce to a single
+      model) is a flagged FOLLOW-UP ITEM PASS.
+    floor_gaps:
+      - misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        count: 0
+        note: >-
+          NEW rupture introduced by the r-bac summit (Part A asks to verify a
+          primitive by DIFFERENTIATING). The formative gate cp-r1-primitive
+          ships in checkpoints.yaml, but the end bank has no dedicated item yet.
+          Follow-up: author ≥3 items (verify-primitive-by-differentiating;
+          integrate-vs-differentiate direction; F' = h vs h' = F).
+      - misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        count: 2
+        note: >-
+          CI-1 (constant of the primitive) and CI-10 (F(b−a) vs F(b)−F(a)).
+          Follow-up: add ≥1 item on order-of-bounds / F(b) alone to reach 3.
+      - misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        count: 1
+        note: >-
+          CI-27 only (u.a. → cm²). A narrow, real bac skill. Follow-up: add ≥2
+          items (different scales; convert-before-vs-after-the-integral) to
+          reach 3, or fold into a broader area-computation model if preferred at
+          review.

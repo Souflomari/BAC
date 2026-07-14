@@ -159,7 +159,7 @@ checkpoints:
           sans qu'aucun rang ne vérifie jamais la propriété.
       - id: C
         text: |
-          Il faut refaire l'hérédité séparément pour chaque valeur de $n$ (n=0, n=1, n=2, …).
+          Il faut refaire l'hérédité séparément pour chaque valeur de $n$ : le rang $n=0$, puis $n=1$, puis $n=2$, et ainsi de suite indéfiniment, rang après rang.
         correct: false
         misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: |
@@ -226,7 +226,7 @@ checkpoints:
           son majorant pour toujours.
       - id: D
         text: |
-          Correct : toute suite majorée converge nécessairement vers son plus petit majorant, sans aucune autre condition à vérifier.
+          Correct : toute suite majorée converge nécessairement vers son plus petit majorant, sans aucune autre condition à vérifier, puisque le plafond finit mécaniquement par attirer les termes vers lui.
         correct: false
         misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: |
@@ -278,7 +278,7 @@ checkpoints:
           démonstration.
       - id: C
         text: |
-          Valide : quatre termes consécutifs suffisent toujours à établir la monotonie d'une suite.
+          Valide : quatre termes consécutifs suffisent toujours à établir la monotonie d'une suite, car une tendance nette observée sur plusieurs termes se poursuit forcément aux rangs suivants.
         correct: false
         misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: |
@@ -338,7 +338,7 @@ checkpoints:
           fixe parfaitement valide.
       - id: C
         text: |
-          Correct : dès qu'une fonction $f$ admet un point fixe, la suite $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit $f$.
+          Correct : dès qu'une fonction $f$ admet un point fixe $L$, la suite définie par $u_{n+1}=f(u_n)$ converge nécessairement vers ce point fixe, quelle que soit $f$ et quel que soit le premier terme $u_0$ choisi.
         correct: false
         misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: |
