@@ -1,0 +1,378 @@
+notion: nombres-complexes-2
+skill_code: maths_complexes_trigo
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, complexes 2)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MATHEMATICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)        — COMMIT gate: turns the accroche's « prends
+#                                      position » (multiplier par i) into a real
+#                                      MCQ commit before the reveal. Probes
+#                                      mult-par-i-non-rotation.
+#   cp-r4-racines     (after R4)     — rupture gate: résoudre z^n = Z, c'est
+#                                      trouver EXACTEMENT n racines distinctes
+#                                      (k = 0..n−1), pas seulement les réelles,
+#                                      espacées de 2π/n. Probes
+#                                      racines-nombre-incomplet.
+#   cp-r5-ecriture    (after R5)     — rupture gate: une rotation/similitude de
+#                                      centre A s'écrit z'−z_A = c(z−z_A) — le
+#                                      centre n'est pas O, le coefficient est
+#                                      e^{iθ} (pas θ), dans le bon sens. Probes
+#                                      transformation-centre-oublie.
+#   cp-r6-lecture-w   (after R6)     — rupture gate: lire w = (z_C−z_A)/(z_B−z_A) :
+#                                      |w| donne le rapport de longueurs (isocèle
+#                                      si =1), arg(w) donne l'angle en A (rectangle
+#                                      si ±π/2) — deux critères SÉPARÉS, non
+#                                      interchangeables. Probes lecture-w-module-
+#                                      argument.
+#   cp-ensemble-points (before bac)  — rupture gate: un ensemble de points défini
+#                                      par une condition sur un rapport de
+#                                      complexes (imaginaire pur → angle droit →
+#                                      cercle de diamètre [AB]) n'est ni la
+#                                      médiatrice, ni un cercle centré en A, ni la
+#                                      droite (AB). Probes ensemble-points-locus-
+#                                      confondu.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml `misconceptions:`). Option lengths are balanced so the correct
+# choice is never the conspicuously longest.
+#
+# Boundary guard: 2ème Bac SM nombres complexes — forme trigonométrique/
+# exponentielle, argument, produit/quotient/Moivre, racines n-ièmes (unité +
+# complexe quelconque), interprétation géométrique (rotation/homothétie, écriture
+# complexe z'−z_A = c(z−z_A)), configurations (nature d'un triangle, alignement,
+# ensembles de points via un rapport de complexes). Et — pour le sujet SM — le
+# pont avec l'équation du second degré à paramètre complexe.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the accroche's commit)
+  #        Turns « prends position » (multiplier par i) into a real MCQ
+  #        commit before the reveal (« ça fait tourner d'un quart de
+  #        tour »). Probes mult-par-i-non-rotation.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_complexes_trigo
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_trigo, hook_commit]
+    primary_misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On multiplie chaque point du plan par $i$ (par exemple $2 \mapsto 2i$,
+      $3i \mapsto -3$, $1+i \mapsto -1+i$). **Avant de lire la suite, engage-toi :**
+      quel effet géométrique produit cette multiplication par $i$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Une rotation d'un quart de tour autour de $O$, sans changer les distances.
+        correct: true
+        feedback: |-
+          Exact — et c'est le fil de toute la leçon. Sur les trois exemples, la
+          distance à $O$ ne change pas ($|2|=|2i|$, etc.) et chaque point tourne
+          d'un quart de tour dans le sens direct. On construira bientôt le
+          « pourquoi » : $i = e^{i\pi/2}$ a pour module $1$ et pour argument
+          $\dfrac{\pi}{2}$.
+
+      - id: B
+        text: |-
+          Un agrandissement (une homothétie) qui éloigne les points de $O$.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
+        feedback: |-
+          Modèle détecté : « multiplier, c'est agrandir ». Vérifie les distances :
+          $|2|=|2i|=2$, $|1+i|=|-1+i|=\sqrt2$ — rien ne s'éloigne de $O$. Comme
+          $|i|=1$, la multiplication par $i$ ne change aucune longueur : elle fait
+          seulement tourner.
+
+      - id: C
+        text: |-
+          Une translation qui déplace tout le plan dans une direction fixe.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
+        feedback: |-
+          Modèle détecté : « c'est un déplacement ». Une translation viendrait
+          d'une **addition** d'affixes (chapitre 1), pas d'une multiplication. Et
+          une translation garderait les directions : ici $2 \mapsto 2i$ change la
+          direction (l'axe réel bascule sur l'axe imaginaire).
+
+      - id: D
+        text: |-
+          Une symétrie par rapport à l'axe réel, comme le conjugué.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
+        feedback: |-
+          Modèle détecté : confusion avec la conjugaison. Le symétrique de $1+i$
+          par rapport à l'axe réel est $1-i$ ; or $i(1+i) = -1+i$, ce n'est pas du
+          tout le même point. La multiplication par $i$ fait tourner, elle ne
+          renverse pas le signe de la partie imaginaire.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r4-racines | placed AFTER R4
+  #        Rupture gate: z^n = Z a EXACTEMENT n racines distinctes
+  #        (k = 0..n−1), pas seulement les réelles. Clone of NBCOMPLEX2-4.
+  #        Probes racines-nombre-incomplet.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-racines
+    rung: "R4"
+    habilete: utilisation
+    skill_code: maths_complexes_trigo
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_trigo, racines_n_iemes]
+    primary_misconception: mc.math.maths_complexes_trigo.racines-nombre-incomplet
+    item_source: clone_of_NBCOMPLEX2-4
+    lesson_placement: after_R4
+
+    stem: |
+      On résout l'équation $z^4 = 1$ dans $\mathbb{C}$. Quel est l'ensemble
+      **complet** de ses solutions ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          $1,\ i,\ -1,\ -i$
+        correct: true
+        feedback: |-
+          Exact : ce sont les quatre racines $4$-ièmes de l'unité,
+          $z_k = e^{i\,2k\pi/4}$ pour $k=0,1,2,3$. Une équation $z^n = 1$ a toujours
+          **exactement $n$** solutions distinctes dans $\mathbb{C}$.
+
+      - id: B
+        text: |-
+          $1$ et $-1$ seulement.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.equation-complexe-cherche-reels
+        feedback: |-
+          On n'a cherché que parmi les nombres **réels**. Mais on résout dans
+          $\mathbb{C}$ : il y a $n=4$ racines, et deux d'entre elles ($i$ et $-i$)
+          ne sont pas réelles. Une équation complexe ne se limite pas à ses
+          solutions réelles évidentes.
+
+      - id: C
+        text: |-
+          $1$ et $i$ seulement.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-nombre-incomplet
+        feedback: |-
+          On s'est arrêté trop tôt : $z^4=1$ a exactement $4$ racines distinctes
+          (une par $k=0,1,2,3$), pas $2$. Il manque $k=2$ et $k=3$, soit $-1$ et
+          $-i$.
+
+      - id: D
+        text: |-
+          $1,\ e^{i\pi/4},\ e^{i\pi/2},\ e^{i3\pi/4}$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
+        feedback: |-
+          L'écart entre deux racines consécutives doit être $\dfrac{2\pi}{n} =
+          \dfrac{\pi}{2}$, pas $\dfrac{\pi}{4}$. D'ailleurs $(e^{i\pi/4})^4 =
+          e^{i\pi} = -1 \neq 1$ : cette valeur n'est même pas solution.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r5-ecriture | placed AFTER R5
+  #        Rupture gate: rotation/similitude de centre A s'écrit
+  #        z'−z_A = c(z−z_A). Clone of NBCOMPLEX2-19. Probes
+  #        transformation-centre-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-ecriture
+    rung: "R5"
+    habilete: utilisation
+    skill_code: maths_complexes_trigo
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_trigo, rotation, ecriture_complexe]
+    primary_misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
+    item_source: clone_of_NBCOMPLEX2-19
+    lesson_placement: after_R5
+
+    stem: |
+      Quelle est l'écriture complexe de la rotation de centre $A$ d'affixe
+      $z_A = 2$ et d'angle $\dfrac{\pi}{2}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          $z' - 2 = i\,(z - 2)$
+        correct: true
+        feedback: |-
+          Exact : une rotation de centre $A$ et d'angle $\theta$ s'écrit
+          $z' - z_A = e^{i\theta}(z - z_A)$, avec ici $e^{i\pi/2} = i$ et $z_A = 2$.
+          Le $z - z_A$ des deux côtés fixe bien le centre en $A$.
+
+      - id: B
+        text: |-
+          $z' = i\,z$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
+        feedback: |-
+          Cette écriture est celle d'une rotation centrée en $O$. Comme le centre
+          est $A$ (affixe $2$), il faut $z - z_A$ des deux côtés :
+          $z' - 2 = i(z-2)$. On ne peut pas oublier le centre.
+
+      - id: C
+        text: |-
+          $z' - 2 = -i\,(z - 2)$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
+        feedback: |-
+          Le coefficient $-i = e^{-i\pi/2}$ correspond à une rotation d'angle
+          $-\dfrac{\pi}{2}$ (sens indirect). L'énoncé demande $+\dfrac{\pi}{2}$ :
+          le coefficient est $e^{i\pi/2} = i$, pas $-i$.
+
+      - id: D
+        text: |-
+          $z' - 2 = \dfrac{\pi}{2}\,(z - 2)$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient
+        feedback: |-
+          On a utilisé l'angle $\dfrac{\pi}{2}$ comme coefficient. Une rotation
+          d'angle $\theta$ multiplie par $e^{i\theta}$ (de module $1$), pas par
+          $\theta$ : ici le coefficient est $e^{i\pi/2} = i$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r6-lecture-w | placed AFTER R6
+  #        Rupture gate: lire |w| (rapport → isocèle) et arg(w) (angle →
+  #        rectangle) comme DEUX critères séparés. Clone of NBCOMPLEX2-21.
+  #        Probes lecture-w-module-argument.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-lecture-w
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_complexes_trigo
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_trigo, triangle, rapport_complexe]
+    primary_misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
+    item_source: clone_of_NBCOMPLEX2-21
+    lesson_placement: after_R6
+
+    stem: |
+      Pour $A$, $B$, $C$, on calcule $w = \dfrac{z_C - z_A}{z_B - z_A} =
+      \dfrac{3}{2}\,i$. Que peut-on en déduire sur le triangle $ABC$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Rectangle en $A$ (car $w$ imaginaire pur), mais pas isocèle en $A$ (car $|w|\neq 1$).
+        correct: true
+        feedback: |-
+          Exact. $\arg(w) = \dfrac{\pi}{2}$ (imaginaire pur) donne l'angle droit en
+          $A$ ; $|w| = \dfrac{3}{2} \neq 1$ donne $AC \neq AB$, donc pas isocèle.
+          Deux critères indépendants, chacun lu sur sa grandeur.
+
+      - id: B
+        text: |-
+          Isocèle en $A$ (car $\arg(w)=\tfrac{\pi}{2}$), mais pas rectangle (car $|w|\neq 1$).
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
+        feedback: |-
+          Les deux critères sont intervertis : c'est l'**argument** (imaginaire pur)
+          qui donne le caractère rectangle, et le **module** ($|w|=1$) qui donne
+          l'isocèle — pas l'inverse. Ici $\arg(w)=\tfrac{\pi}{2}$ signale l'angle
+          droit, pas une égalité de longueurs.
+
+      - id: C
+        text: |-
+          Rectangle **et** isocèle en $A$, puisque $w$ est imaginaire pur.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
+        feedback: |-
+          « $w$ imaginaire pur » ne garantit que le caractère rectangle. L'isocèle
+          est un critère séparé : $|w|=1$. Ici $|w|=\dfrac{3}{2}\neq 1$, donc le
+          triangle n'est pas isocèle en $A$.
+
+      - id: D
+        text: |-
+          Ni rectangle ni isocèle, car $w$ n'est ni réel ni de module $1$.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
+        feedback: |-
+          « $w$ imaginaire pur » **est** le critère du rectangle en $A$ — ce n'est
+          pas la même chose que « $w$ n'est pas réel ». Ici $w$ est bien imaginaire
+          pur, donc le triangle est rectangle en $A$ (mais non isocèle).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-ensemble-points | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: un lieu défini par « (z−z_A)/(z−z_B) imaginaire
+  #        pur » est le cercle de diamètre [AB]. Clone of NBCOMPLEX2-24.
+  #        Probes ensemble-points-locus-confondu.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-ensemble-points
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: maths_complexes_trigo
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_trigo, ensemble_de_points, bac_style]
+    primary_misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+    item_source: clone_of_NBCOMPLEX2-24
+    lesson_placement: before_bac
+
+    stem: |
+      $A$ et $B$ ont pour affixes $z_A = -1$ et $z_B = 3$. Soit $\Gamma$
+      l'ensemble des points $M$ d'affixe $z \neq z_B$ tels que
+      $\dfrac{z - z_A}{z - z_B}$ soit un imaginaire pur non nul. Que représente
+      $\Gamma$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Le cercle de diamètre $[AB]$, privé de $A$ et $B$.
+        correct: true
+        feedback: |-
+          Exact. Le rapport imaginaire pur signifie que l'angle
+          $(\overrightarrow{MB}, \overrightarrow{MA})$ vaut $\pm\dfrac{\pi}{2}$ :
+          $MAB$ est rectangle en $M$. Par la réciproque de Thalès, $M$ décrit le
+          cercle de diamètre $[AB]$, privé de $A$ et $B$.
+
+      - id: B
+        text: |-
+          La médiatrice du segment $[AB]$.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: |-
+          La médiatrice correspond à l'égalité de **distances** $|z-z_A| = |z-z_B|$,
+          donc à un **module** $\left|\dfrac{z-z_A}{z-z_B}\right| = 1$. Ici la
+          condition porte sur l'**argument** (un angle droit), pas sur un module :
+          ce n'est pas le même lieu.
+
+      - id: C
+        text: |-
+          Le cercle de centre $A$ et de rayon $AB$.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: |-
+          Un cercle centré en $A$ viendrait d'une distance constante à $A$
+          ($|z-z_A| = r$). Ici la condition « imaginaire pur » porte sur un
+          **angle** en $M$, pas sur une distance à $A$ : le cercle obtenu est
+          centré au **milieu** de $[AB]$.
+
+      - id: D
+        text: |-
+          La droite $(AB)$, privée du point $B$.
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: |-
+          C'est la condition « rapport **réel** » qui donne l'alignement (une
+          droite). « Imaginaire pur » donne au contraire un angle droit, donc un
+          **cercle** (de diamètre $[AB]$). Les deux lignes de la table de lecture
+          sont interverties ici.

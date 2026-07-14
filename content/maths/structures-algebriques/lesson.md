@@ -19,6 +19,8 @@ Baptisons cette opération d'horloge $\oplus$ : $9 \oplus 5 = 2$. Avant de lire 
 
 Réfléchis vraiment avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici les réponses, et elles sont nettes : oui à tout. $\oplus$ est commutative, associative, il existe un neutre ($0$h, qui ne change rien), et chaque heure a une opposée — l'heure opposée à $5$h est $7$h, puisque $5 \oplus 7 = 12$, et $12$ laisse un reste de $0$ modulo $12$. Cette opération d'horloge, malgré son bouclage étrange, se comporte exactement comme l'addition habituelle sur toutes les propriétés qui comptent vraiment.
 
 Ce n'est pas un hasard isolé. C'est un exemple d'un phénomène général : n'importe quel ensemble, muni d'une opération qui combine deux de ses éléments pour en produire un troisième, peut posséder — ou non — ces mêmes propriétés : commutativité, associativité, existence d'un neutre, existence d'un opposé. Et selon lesquelles il possède, on donne à l'ensemble muni de son opération un nom précis : **groupe**, **anneau**, **corps**. Ce chapitre construit ce vocabulaire — et surtout la méthode pour vérifier, avec certitude et non à l'intuition, qu'un ensemble donné mérite bien ce nom.
@@ -59,6 +61,8 @@ Prenons $n=4$, donc $E = \mathbb{Z}/4\mathbb{Z} = \{0,1,2,3\}$. Construisons la 
 Par exemple, la case ligne $2$, colonne $3$ donne $2+3=5$, et $5$ divisé par $4$ laisse un reste de $1$ : donc $2+3=1$ dans $\mathbb{Z}/4\mathbb{Z}$ — exactement ce qu'affiche la table.
 
 **Vérifier que c'est bien une LCI, directement sur la table :** regarde chaque case du tableau. Toutes contiennent un élément de $\{0,1,2,3\}$ — aucune case ne s'échappe hors de $E$. C'est exactement ce que veut dire "loi interne" : la table est un objet fini, entièrement rempli d'éléments de $E$, sans exception. Si une case avait affiché $4$ ou $-1$, la loi ne serait pas interne sur $E$.
+
+[[checkpoint:cp-r1-stabilite]]
 
 ---
 
@@ -154,6 +158,8 @@ Mais $x'$ est aussi un symétrique de $x$, donc $x' \star x = e$ :
 $$(x' \star x) \star x'' = e \star x''$$
 
 Et $e$ est neutre, donc $e \star x'' = x''$. En suivant la chaîne de ces égalités, $x' = x''$ : les deux symétriques supposés sont en réalité le même élément. Remarque où l'associativité intervient — à la troisième étape, quand on redéplace les parenthèses : sans elle, cette chaîne ne tiendrait pas. C'est pour cette raison que "le" symétrique de $x$ n'a de sens, avec l'article défini, que lorsque la loi est associative.
+
+[[checkpoint:cp-r2-neutre-symetrique]]
 
 ---
 
@@ -335,43 +341,32 @@ La ligne qui sépare l'anneau du corps tient en une seule exigence supplémentai
 
 [[figure:echelle-structures]]
 
+[[checkpoint:cp-r6-structures]]
+
 ---
 
-## R7 — Pour t'entraîner
+## R7 — Isomorphisme et exercices de type bac
 
-### Exercice travaillé
+Tu as maintenant tout l'outillage du chapitre : reconnaître une loi de composition interne (R1), tester ses propriétés (R2), et cocher les axiomes qui font d'un ensemble un groupe, un anneau ou un corps (R3 à R6). Il reste un dernier geste, celui qui revient presque chaque année à l'examen national des Sciences Mathématiques : montrer que deux structures d'apparence différente — l'une habillée en nombres complexes, l'autre en matrices — sont en réalité la même.
 
-On munit l'ensemble $E = \{1, i, -1, -i\}$ (les puissances de $i$ dans $\mathbb{C}$) de la multiplication usuelle des nombres complexes, notée $\times$.
+### Un pont entre deux structures : l'isomorphisme
 
-**(a)** Construire la table de la loi $\times$ sur $E$, et vérifier qu'elle est bien interne.
+Imagine deux groupes $(E, \star)$ et $(F, \times)$, et une application $\varphi : E \to F$ qui soit à la fois **bijective** (elle apparie un à un les éléments des deux ensembles) et **morphisme** — c'est-à-dire qu'elle respecte les lois :
 
-**(b)** Déterminer l'élément neutre de $(E, \times)$.
+$$\varphi(x \star y) = \varphi(x) \times \varphi(y)$$
 
-**(c)** Déterminer, pour chaque élément de $E$, son symétrique.
+Une telle application s'appelle un **isomorphisme**. Son intérêt est considérable : si $(E, \star)$ est déjà connu comme groupe commutatif, alors $\varphi$ **transporte** toute cette structure sur $(F, \times)$ — commutativité, neutre et symétriques compris. On n'a pas à re-vérifier les quatre axiomes un par un sur $F$ : il suffit d'exhiber l'isomorphisme. C'est exactement la stratégie de la dernière question du sujet qui suit.
 
-**(d)** $(E, \times)$ est-il un groupe commutatif ?
+[[checkpoint:cp-r7-morphisme]]
 
-**Raisonnement à voix haute.**
+### Exercice de type bac
 
-**(a)** On utilise $i^2=-1$, $i^3=-i$, $i^4=1$ pour remplir chaque case :
+L'exercice ci-dessous est un sujet d'examen national (Sciences Mathématiques, session normale 2019). Cherche-le toi-même, question par question, avant de dérouler le raisonnement expert : c'est en butant, puis en te corrigeant, que le geste s'installe pour de bon.
 
-| $\times$ | $1$ | $i$ | $-1$ | $-i$ |
-|---|---|---|---|---|
-| $1$ | $1$ | $i$ | $-1$ | $-i$ |
-| $i$ | $i$ | $-1$ | $-i$ | $1$ |
-| $-1$ | $-1$ | $-i$ | $1$ | $i$ |
-| $-i$ | $-i$ | $1$ | $i$ | $-1$ |
+[[exercise:r-bac]]
 
-Toutes les cases contiennent un élément de $E$ — la loi est bien interne.
+### Une variation pour ne pas mémoriser
 
-**(b)** La ligne et la colonne du $1$ recopient l'en-tête : $1$ est l'élément neutre.
+Même chaîne d'outils, un habillage différent : une autre loi, d'autres matrices, et un isomorphisme sans carré. Si tu as compris la méthode plutôt que retenu les nombres du sujet 2019, celle-ci ne te résistera pas.
 
-**(c)** On cherche, pour chaque élément, celui avec lequel il donne $1$ : $1 \times 1 = 1$, donc $1$ est son propre symétrique. $i \times (-i) = -i^2 = 1$, donc le symétrique de $i$ est $-i$ (et réciproquement, celui de $-i$ est $i$). $(-1)\times(-1)=1$, donc $-1$ est son propre symétrique.
-
-**(d)** La loi interne est vérifiée (a), la loi possède un neutre (b), chacun des quatre éléments a un symétrique (c) — reste l'associativité, qu'on admet ici puisqu'elle est héritée de l'associativité de $\times$ sur $\mathbb{C}$, un fait déjà connu (exactement le même type d'argument d'héritage qu'au R2 et au R3). Les quatre axiomes sont vérifiés : $(E,\times)$ est un groupe. Et la table est symétrique par rapport à sa diagonale — la loi est commutative. **$(E,\times)$ est donc un groupe commutatif.**
-
-### À toi de jouer
-
-**(a)** On munit $E=\{0,1,2,3,4\}$ de la loi $\oplus$ définie par l'addition modulo $5$ — c'est-à-dire $(\mathbb{Z}/5\mathbb{Z}, +)$. Construis la table de la loi, détermine l'élément neutre, et donne le symétrique de chaque élément. $(E, \oplus)$ est-il un groupe commutatif ? Justifie en vérifiant les quatre axiomes un par un.
-
-**(b)** On munit cette fois $E=\{0,1,2,3\}$ de la multiplication modulo $4$ — c'est-à-dire $(\mathbb{Z}/4\mathbb{Z}, \times)$, et non plus l'addition. Construis la table. Y a-t-il un élément neutre ? Est-ce que **tous** les éléments de $E$ possèdent un symétrique pour cette loi, ou seulement certains ? $(E, \times)$ est-il un groupe ? Justifie en vérifiant les quatre axiomes un par un, sans en sauter aucun.
+[[exercise:r-variation]]

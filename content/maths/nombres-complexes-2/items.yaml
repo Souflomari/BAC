@@ -1,6 +1,235 @@
 notion: nombres-complexes-2
 skill_code: maths_complexes_trigo
-misconceptions: []
+# Misconception inventory (backfilled in the summit-conversion pass). This end
+# bank was authored BEFORE the inventory existed (`misconceptions: []`), so each
+# item now carries an item-level `primary_misconception` AND every distractor
+# carries a per-distractor `misconception:` field (the gold standard shown in
+# checkpoints.yaml). See coverage_summary at the end for honest counts and the
+# under-covered models flagged for a follow-up item pass — NO counts padded.
+# Namespace: mc.math.maths_complexes_trigo.<slug> (le chapitre 1 utilise
+# maths_complexes_algebrique ; ce chapitre 2 est la forme trigo/exponentielle).
+misconceptions:
+  - id: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
+    label: >-
+      « Multiplier par i vu comme un agrandissement, une translation ou une symétrie, pas une rotation »
+    description: >-
+      L'élève interprète z ↦ iz (ou plus généralement la multiplication par un
+      complexe) comme un changement de taille, un déplacement, ou une symétrie
+      axiale, au lieu d'une rotation d'un quart de tour.
+    contradicts_principle: >-
+      i = e^{iπ/2} a pour module 1 (aucun agrandissement) et pour argument π/2 :
+      multiplier par i est une rotation de centre O et d'angle π/2, ni
+      translation (qui vient d'une addition) ni symétrie (qui vient du conjugué).
+  - id: mc.math.maths_complexes_trigo.argument-un-seul-signe
+    label: >-
+      « Argument lu sur le seul angle de référence, sans fixer le quadrant par cos ET sin »
+    description: >-
+      L'élève donne l'angle de référence (ou son opposé) sans vérifier
+      séparément les signes de cos θ et de sin θ, et se trompe donc de quadrant.
+    contradicts_principle: >-
+      L'argument est déterminé par cos θ = a/r ET sin θ = b/r simultanément : ce
+      sont les DEUX signes qui fixent le quadrant, pas la seule valeur absolue de
+      l'angle de référence.
+  - id: mc.math.maths_complexes_trigo.module-oubli-racine
+    label: >-
+      « Module sans la racine carrée finale (on rend a²+b² au lieu de √(a²+b²)) »
+    description: >-
+      L'élève calcule a²+b² et s'arrête là, oubliant de prendre la racine carrée
+      pour obtenir le module.
+    contradicts_principle: >-
+      Le module est |z| = √(a²+b²) : la racine carrée est la dernière étape
+      obligatoire, a²+b² n'est que le carré du module.
+  - id: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
+    label: >-
+      « Composition erronée de arg(conjugué de z) = −arg(z) et arg(−z) = arg(z)+π »
+    description: >-
+      Devant l'opposé d'un conjugué, l'élève n'applique qu'une des deux règles,
+      les enchaîne dans le mauvais ordre, ou croit qu'elles s'annulent.
+    contradicts_principle: >-
+      arg(conjugué de z) = −arg(z) et arg(−z) = arg(z)+π se COMPOSENT : pour
+      l'opposé du conjugué on change d'abord le signe puis on ajoute π, les deux
+      transformations ne s'annulent pas.
+  - id: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
+    label: >-
+      « Mauvaise définition de e^{iθ} (signe du sinus, cos/sin intervertis, 1+iθ) »
+    description: >-
+      L'élève écrit e^{iθ} = cos θ − i sin θ, ou sin θ + i cos θ, ou l'approxime
+      par 1 + iθ.
+    contradicts_principle: >-
+      Par définition, e^{iθ} = cos θ + i sin θ (cosinus en partie réelle, sinus
+      en partie imaginaire, signe +) : c'est une égalité exacte pour tout θ, pas
+      une approximation.
+  - id: mc.math.maths_complexes_trigo.produit-modules-additionnes
+    label: >-
+      « Modules additionnés (ou soustraits) au lieu d'être multipliés (ou divisés) »
+    description: >-
+      Pour un produit, l'élève additionne les modules ; pour un quotient, il les
+      soustrait.
+    contradicts_principle: >-
+      |zz'| = |z|·|z'| et |z/z'| = |z|/|z'| : les modules se MULTIPLIENT (produit)
+      ou se DIVISENT (quotient) ; seuls les arguments s'additionnent ou se
+      soustraient.
+  - id: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
+    label: >-
+      « Mauvaise opération, ordre ou oubli sur les arguments (produit vs quotient) »
+    description: >-
+      L'élève soustrait les arguments pour un produit, les additionne pour un
+      quotient, inverse l'ordre de la soustraction, ou oublie un terme ou un
+      signe.
+    contradicts_principle: >-
+      arg(zz') = arg(z)+arg(z') (produit) et arg(z/z') = arg(z)−arg(z')
+      (quotient, dans cet ordre) : l'opération sur les arguments suit celle des
+      modules, sans terme ni signe oublié.
+  - id: mc.math.maths_complexes_trigo.moivre-module-multiplie
+    label: >-
+      « Module multiplié par n au lieu d'être élevé à la puissance n (Moivre) »
+    description: >-
+      Pour z^n, l'élève calcule n·|z| au lieu de |z|^n.
+    contradicts_principle: >-
+      Formule de Moivre : |z^n| = |z|^n, le module s'ÉLÈVE à la puissance n ;
+      c'est l'argument, lui, qui se multiplie par n.
+  - id: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
+    label: >-
+      « Argument divisé, laissé inchangé ou mal multiplié au lieu d'être multiplié par n »
+    description: >-
+      Pour z^n, l'élève divise l'argument par n, le laisse tel quel, ou le
+      multiplie par un mauvais facteur.
+    contradicts_principle: >-
+      Formule de Moivre : arg(z^n) = n·arg(z), l'argument se MULTIPLIE par n (le
+      diviser correspondrait à une racine, le laisser inchangé ignore la
+      puissance).
+  - id: mc.math.maths_complexes_trigo.argument-non-2pi-periodique
+    label: >-
+      « Argument traité comme π-périodique au lieu de 2π-périodique »
+    description: >-
+      L'élève réduit un argument modulo π (comme la tangente), confondant par
+      exemple 2π avec π.
+    contradicts_principle: >-
+      L'argument est défini à 2π près : 2π ≡ 0 (retour au point de départ), pas
+      ≡ π. La période est 2π, pas π.
+  - id: mc.math.maths_complexes_trigo.equation-complexe-cherche-reels
+    label: >-
+      « On ne cherche que les solutions réelles de z^n = Z »
+    description: >-
+      L'élève ne donne que les racines réelles évidentes, comme si l'équation
+      vivait dans R.
+    contradicts_principle: >-
+      Dans C, z^n = Z (Z ≠ 0) a exactement n racines distinctes ; se limiter aux
+      réelles en oublie la plupart (ex. z^4 = 1 a aussi i et −i).
+  - id: mc.math.maths_complexes_trigo.racines-nombre-incomplet
+    label: >-
+      « Mauvais nombre de racines : on s'arrête trop tôt, on duplique, pas exactement n »
+    description: >-
+      L'élève donne moins de n racines (arrêt prématuré) ou en répète (mauvais
+      domaine de k), au lieu d'exactement n distinctes.
+    contradicts_principle: >-
+      z^n = Z (Z ≠ 0) a EXACTEMENT n racines distinctes, obtenues pour
+      k = 0,1,…,n−1 ; au-delà on retombe sur une racine déjà trouvée (période n).
+  - id: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
+    label: >-
+      « Mauvais écart angulaire entre racines consécutives (≠ 2π/n) »
+    description: >-
+      L'élève espace les racines de π/n, de 2π, ou d'un autre pas au lieu de
+      2π/n.
+    contradicts_principle: >-
+      Les n racines n-ièmes se répartissent régulièrement sur le cercle, à un
+      écart de 2π/n l'une de l'autre (le tour complet 2π partagé en n parts).
+  - id: mc.math.maths_complexes_trigo.racines-module-non-racine
+    label: >-
+      « Module des racines gardé à R au lieu de R^{1/n} »
+    description: >-
+      Pour z^n = Z avec |Z| = R, l'élève donne des racines de module R au lieu de
+      R^{1/n}.
+    contradicts_principle: >-
+      Le module d'une racine n-ième de Z est R^{1/n} (la racine n-ième réelle de
+      R = |Z|), pas R lui-même : chaque racine élevée à la puissance n doit
+      redonner le module R.
+  - id: mc.math.maths_complexes_trigo.similitude-module-argument-roles
+    label: >-
+      « Rôles du module et de l'argument de c intervertis dans z ↦ cz »
+    description: >-
+      L'élève prend l'argument de c comme rapport d'homothétie et son module
+      comme angle de rotation, ou confond les deux lectures.
+    contradicts_principle: >-
+      Dans z ↦ cz, |c| est le rapport de l'homothétie (une longueur) et arg(c)
+      est l'angle de la rotation : le module ne peut pas être un angle, ni
+      l'argument une longueur.
+  - id: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
+    label: >-
+      « Le complexe c pris tel quel comme rapport d'homothétie »
+    description: >-
+      L'élève annonce un rapport d'homothétie complexe (ex. « rapport 2i ») au
+      lieu du réel |c|.
+    contradicts_principle: >-
+      Le rapport d'une homothétie est toujours un RÉEL : dans z ↦ cz c'est |c|,
+      pas c ; le nombre complexe c code À LA FOIS la rotation et l'homothétie.
+  - id: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
+    label: >-
+      « On suppose une rotation alors que c est un réel strictement positif »
+    description: >-
+      Devant c réel strictement positif, l'élève invente une rotation (souvent
+      d'angle π), au lieu de conclure qu'il n'y en a aucune.
+    contradicts_principle: >-
+      Si c est réel strictement positif, arg(c) = 0 : aucune rotation, seulement
+      une homothétie. Un demi-tour (π) correspondrait à c réel NÉGATIF.
+  - id: mc.math.maths_complexes_trigo.transformation-centre-oublie
+    label: >-
+      « Transformation écrite centrée en O alors que le centre est A »
+    description: >-
+      L'élève écrit z' = c·z (centrée en O) pour une transformation de centre A,
+      oubliant les termes z − z_A.
+    contradicts_principle: >-
+      Une rotation/similitude de centre A s'écrit z' − z_A = c(z − z_A) : le
+      z − z_A des deux côtés est ce qui fixe A comme centre ; z' = cz ne fixe
+      que O.
+  - id: mc.math.maths_complexes_trigo.rotation-sens-inverse
+    label: >-
+      « e^{−iθ} utilisé au lieu de e^{iθ} (mauvais sens de rotation) »
+    description: >-
+      L'élève prend le coefficient e^{−iθ} (sens indirect) pour une rotation
+      d'angle +θ.
+    contradicts_principle: >-
+      Une rotation d'angle +θ (sens direct) a pour coefficient e^{iθ} ; e^{−iθ}
+      code la rotation d'angle −θ (sens indirect, horaire).
+  - id: mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient
+    label: >-
+      « θ utilisé comme coefficient au lieu de e^{iθ} »
+    description: >-
+      L'élève multiplie par l'angle θ lui-même (ex. par π/2) au lieu de e^{iθ}.
+    contradicts_principle: >-
+      Une rotation d'angle θ multiplie par e^{iθ}, de module 1 ; θ n'est qu'un
+      angle (même pas de module 1) et ne peut pas servir de coefficient.
+  - id: mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante
+    label: >-
+      « En isolant z', on oublie de rajouter z_A »
+    description: >-
+      Partant de z' − z_A = c(z − z_A), l'élève s'arrête à z' = cz − c·z_A et
+      oublie le + z_A final.
+    contradicts_principle: >-
+      En développant z' − z_A = c(z − z_A), on obtient z' = cz − c·z_A + z_A :
+      le + z_A terminal est indispensable (sinon A n'est plus fixe).
+  - id: mc.math.maths_complexes_trigo.lecture-w-module-argument
+    label: >-
+      « Lecture partielle ou intervertie de |w| (isocèle) et arg(w) (rectangle/aligné) »
+    description: >-
+      Pour w = (z_C−z_A)/(z_B−z_A), l'élève échange les rôles du module et de
+      l'argument, ou n'en lit qu'un des deux, pour la nature du triangle.
+    contradicts_principle: >-
+      |w| donne le rapport AC/AB (isocèle en A si |w| = 1) et arg(w) donne
+      l'angle en A (rectangle si ±π/2, aligné si réel) : deux critères SÉPARÉS,
+      chacun sur sa grandeur.
+  - id: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+    label: >-
+      « Lieux confondus (médiatrice / cercle centré / droite) pour une condition sur un rapport »
+    description: >-
+      L'élève identifie l'ensemble défini par une condition sur le module ou
+      l'argument d'un rapport de complexes au mauvais lieu (médiatrice, cercle
+      centré en A, droite (AB)).
+    contradicts_principle: >-
+      « Rapport réel » donne un alignement (droite) ; « module constant » donne
+      un cercle ou une médiatrice selon la forme ; « rapport imaginaire pur »
+      donne un angle droit, donc le cercle de diamètre [AB] : chaque condition a
+      son lieu propre.
 items:
   - id: NBCOMPLEX2-1
     rung: "R1"

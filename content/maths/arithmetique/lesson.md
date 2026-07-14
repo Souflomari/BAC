@@ -10,6 +10,8 @@ Peux-tu, avec seulement ces deux bidons, obtenir exactement 1 litre d'eau, mesur
 
 Avant de lire la suite, prends position : possible ou impossible ? Si tu penses que c'est possible, essaie vraiment de construire une suite d'opérations, sur papier, avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici une suite qui fonctionne. Remplis le bidon de 3 L, verse-le entièrement dans le bidon de 5 L : il reste alors 2 L de place dans le grand bidon. Vide le bidon de 3 L, puis remplis-le à nouveau. Verse ce nouveau contenu dans le bidon de 5 L, jusqu'à ce que celui-ci soit plein — cela ne prend que 2 des 3 litres, puisqu'il ne restait que 2 L de place. Il reste alors, dans le bidon de 3 L, exactement $3 - 2 = 1$ litre.
 
 [[figure:bidons-3-5]]
@@ -154,6 +156,8 @@ Le nombre entier est donc congru, modulo 9, à la simple somme de ses chiffres. 
 
 (Le même argument, avec $10 \equiv 1 \pmod 3$, donne le critère de divisibilité par 3 : somme des chiffres divisible par 3.)
 
+[[checkpoint:cp-r2-congruence]]
+
 ---
 
 ## R3 — $\mathrm{PGCD}$ et l'algorithme d'Euclide
@@ -203,6 +207,8 @@ Le dernier reste non nul est $18$ :
 $$\mathrm{PGCD}(252, 198) = 18$$
 
 [[figure:euclide-cascade]]
+
+[[checkpoint:cp-r3-pgcd-ppcm]]
 
 ---
 
@@ -317,6 +323,8 @@ Un entier $n$ vérifie $11 \mid 3n$. Que peut-on en déduire sur $n$ ?
 **Ce qu'on cherche et pourquoi ce geste :** avant d'appliquer Gauss, on vérifie la condition — c'est la première chose à faire, pas la dernière. Ici $a = 11$, $b = 3$, $c = n$, et $\mathrm{PGCD}(11,3) = 1$ (11 est premier, et ne divise pas 3). La condition est vérifiée, donc le théorème s'applique :
 
 $$11 \mid 3n \quad \text{et} \quad \mathrm{PGCD}(11,3)=1 \quad \Longrightarrow \quad 11 \mid n$$
+
+[[checkpoint:cp-r5-gauss]]
 
 ---
 
@@ -446,58 +454,12 @@ Les termes en $t$ s'annulent exactement — ce n'est pas un hasard : $252 \times
 
 ## R8 — Pour t'entraîner
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — c'est un exercice d'entraînement construit pour cette leçon), qui enchaîne les outils du chapitre.
+Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (R4), les congruences et leurs puissances (R2), le lemme d'Euclide « un premier qui divise une puissance divise la base » (R6) — plus un outil supplémentaire du programme, le **petit théorème de Fermat**, que le rupture-gate ci-dessous rappelle avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
 
-### Exercice travaillé
+[[checkpoint:cp-r6-fermat]]
 
-On considère les entiers $a = 112$ et $b = 76$.
+[[exercise:r-bac]]
 
-**Partie A.** Calculer $\mathrm{PGCD}(112,76)$ par l'algorithme d'Euclide.
+Une fois le sujet 2019 compris, voici une **variation fraîche** — un autre nombre premier, un autre exposant — pour vérifier que tu as saisi la chaîne d'outils, et pas seulement mémorisé une suite de calculs.
 
-**Partie B.** En déduire un couple d'entiers $(u,v)$ tel que $112u + 76v = \mathrm{PGCD}(112,76)$.
-
-**Partie C.** Résoudre dans $\mathbb{Z}^2$ l'équation $112x + 76y = 8$.
-
-**Partie D.** Un entier $n$ vérifie $19 \mid 28n$. Montrer que $19 \mid n$.
-
-**Raisonnement à voix haute.**
-
-**Partie A.** On applique la division euclidienne successivement, en remplaçant la paire par (diviseur, reste) à chaque étape.
-
-$$112 = 76 \times 1 + 36$$
-
-$$76 = 36 \times 2 + 4$$
-
-$$36 = 4 \times 9 + 0$$
-
-Dernier reste non nul : $\mathrm{PGCD}(112,76) = 4$.
-
-**Partie B.** On remonte l'algorithme, ligne par ligne, en isolant le reste puis en substituant.
-
-$$4 = 76 - 36 \times 2$$
-
-On remplace $36$ grâce à la première ligne ($36 = 112 - 76 \times 1$) :
-
-$$4 = 76 - (112 - 76) \times 2$$
-
-$$4 = 76 \times 3 - 112 \times 2$$
-
-Donc $112 \times (-2) + 76 \times 3 = 4$ : les coefficients de Bézout sont $u=-2$, $v=3$. Vérification : $112 \times (-2) = -224$, $76 \times 3 = 228$, et $-224+228=4$. ✓
-
-**Partie C.** "Sans distinction" ici serait hors-sujet — on suit la méthode du R7. $d = \mathrm{PGCD}(112,76) = 4$, et $4 \mid 8$ (car $8 = 4 \times 2$) : l'équation est soluble. On multiplie l'égalité de Bézout par $k=2$ :
-
-$$112 \times (-4) + 76 \times 6 = 8$$
-
-Solution particulière : $(x_0,y_0) = (-4,6)$. On pose $a' = \frac{112}{4}=28$ et $b'=\frac{76}{4}=19$ ; on vérifie qu'ils sont premiers entre eux : $28 = 19 \times 1 + 9$, $19 = 9 \times 2 + 1$, $9 = 1 \times 9 + 0$ — dernier reste non nul $1$, donc $\mathrm{PGCD}(28,19)=1$. Solution générale :
-
-$$x = -4 + 19t, \qquad y = 6 - 28t, \qquad t \in \mathbb{Z}$$
-
-**Partie D.** On vient de vérifier, dans la Partie C, que $\mathrm{PGCD}(19,28) = 1$. La condition du théorème de Gauss est donc satisfaite pour $19 \mid 28n$, et on conclut directement :
-
-$$19 \mid 28n \quad \text{et} \quad \mathrm{PGCD}(19,28)=1 \quad \Longrightarrow \quad 19 \mid n$$
-
-### À toi de jouer
-
-**(a)** Calculer $\mathrm{PGCD}(135,54)$ par l'algorithme d'Euclide, puis trouver un couple d'entiers $(u,v)$ tel que $135u + 54v = \mathrm{PGCD}(135,54)$.
-
-**(b)** Les entiers $35$ et $18$ sont-ils premiers entre eux ? Sont-ils des nombres premiers ? Justifie les deux réponses séparément, puis résous dans $\mathbb{Z}^2$ l'équation $35x + 18y = 1$.
+[[exercise:r-variation]]

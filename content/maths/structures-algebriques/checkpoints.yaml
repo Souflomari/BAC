@@ -1,0 +1,419 @@
+notion: structures-algebriques
+skill_code: maths_structures_alg
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths structures alg.)
+#
+# Sondes FORMATIVES, calmes, placées DANS la leçon — PAS la banque de fin
+# (items.yaml). Même schéma d'item, mais NI score, NI streak, NI comptage. Le
+# feedback d'une mauvaise réponse nomme le MODÈLE algébrique erroné, pas
+# seulement le fait de s'être trompé. Le plancher ≥3-par-misconception de la
+# banque de fin vit dans items.yaml et n'est PAS modifié par ces checkpoints
+# (les clones sont surfacés en ligne, jamais recomptés).
+#
+# Placement (les ids correspondent aux marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict           (dans R0)       — GATE d'engagement : transforme le
+#                                             « prends position » de l'horloge en
+#                                             un vrai QCM avant la révélation.
+#                                             Sonde generalisation-hative.
+#   cp-r1-stabilite         (après R1)      — rupture-gate : loi interne &
+#                                             stabilité — UN seul couple qui
+#                                             s'échappe hors de E casse la
+#                                             propriété. Sonde cloture-non-verifiee.
+#   cp-r2-neutre-symetrique (après R2)      — rupture-gate : neutre vs symétrique
+#                                             — le neutre est un élément fixe,
+#                                             le symétrique dépend de l'élément.
+#                                             Sonde neutre-vs-symetrique. Clone SA-2.
+#   cp-r6-structures        (après R6)      — rupture-gate : groupe / anneau /
+#                                             corps — on coche TOUS les axiomes,
+#                                             sans en sauter aucun. Sonde
+#                                             axiome-oublie.
+#   cp-r7-morphisme         (avant r-bac)   — rupture-gate : isomorphisme —
+#                                             bijectif ET morphisme, il transporte
+#                                             la structure sans re-vérifier les
+#                                             axiomes. Sonde axiome-oublie.
+#
+# CHAQUE distracteur porte un id de misconception nommé de l'inventaire de cette
+# notion (items.yaml, namespace mc.math.structures_algebriques.*). Les longueurs
+# d'options sont équilibrées pour que la bonne réponse ne soit jamais la plus
+# longue.
+#
+# Boundary guard : 2ème Bac Sciences Mathématiques (SM) — lois de composition
+# interne, propriétés (commutativité, associativité, neutre, symétrique),
+# groupe, groupe commutatif, sous-groupe, anneau, corps, morphisme /
+# isomorphisme. Chapitre SM uniquement (absent de SVT / Sc. Physiques).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placé DANS R0 (l'engagement de l'horloge)
+  #        Transforme « prends position sur ⊕ » en un vrai QCM d'engagement
+  #        avant la révélation « oui à tout ». Sonde generalisation-hative :
+  #        conclure d'une ressemblance, sans vérifier.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, hook_commit]
+    primary_misconception: mc.math.structures_algebriques.generalisation-hative
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Sur l'horloge à 12 heures, $\oplus$ additionne deux heures puis garde le
+      reste modulo $12$. **Avant de lire la suite, engage-toi :** $\oplus$
+      a-t-elle les mêmes bonnes propriétés que l'addition usuelle
+      (commutativité, associativité, neutre, opposé de chaque heure), et
+      comment peut-on en être certain ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui, forcément : $\oplus$ n'est qu'une addition déguisée, elle hérite
+          donc automatiquement de toutes les propriétés de l'addition, sans
+          qu'on ait quoi que ce soit à vérifier.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : « ça ressemble à l'addition, donc ça se comporte
+          comme elle ». La ressemblance ne prouve rien : $\oplus$ boucle
+          (modulo $12$), ce que l'addition ordinaire ne fait pas. Chaque
+          propriété doit être **vérifiée** pour cette loi précise — c'est même
+          tout le métier du chapitre. (Le résultat, obtenu ensuite : oui, elle
+          les a toutes — mais on ne le sait qu'après vérification.)
+
+      - id: B
+        text: |
+          Oui, elle a bien ces quatre propriétés — mais on ne peut l'affirmer
+          qu'après les avoir vérifiées une par une, pas par simple ressemblance.
+        correct: true
+        feedback: |
+          Exact, et c'est l'esprit du chapitre. Sur l'horloge, $\oplus$ est
+          commutative, associative, admet un neutre ($0$h) et un opposé pour
+          chaque heure — mais la seule façon honnête de le savoir est de le
+          **vérifier**, propriété par propriété, pas de le supposer parce que
+          « c'est comme une addition ».
+
+      - id: C
+        text: |
+          Non : dès que la somme dépasse $12$, le résultat s'échappe du cadran,
+          donc $\oplus$ ne peut pas avoir de neutre ni d'opposé.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : « le résultat sort de l'ensemble ». Justement non :
+          après avoir dépassé $12$, on **réduit modulo $12$**, et le résultat
+          retombe toujours dans $\{0,1,\ldots,11\}$. La loi est bien interne —
+          rien ne s'échappe.
+
+      - id: D
+        text: |
+          Oui pour la commutativité, et comme toute loi commutative est
+          automatiquement associative, ces deux propriétés sont acquises d'un
+          coup, sans calcul.
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: |
+          Modèle détecté : commutativité $\Rightarrow$ associativité. Ce sont
+          deux propriétés **indépendantes** : l'une échange deux termes, l'autre
+          déplace les parenthèses entre trois. Une loi peut avoir l'une sans
+          l'autre — chacune se vérifie séparément.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-stabilite | placé APRÈS R1
+  #        Rupture-gate : loi interne & stabilité. UN seul couple qui sort de
+  #        E suffit à casser la propriété ; il n'y a pas de « loi interne avec
+  #        exceptions ». Sonde cloture-non-verifiee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-stabilite
+    rung: "R1"
+    habilete: utilisation
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, lci, cloture]
+    primary_misconception: mc.math.structures_algebriques.cloture-non-verifiee
+    item_source: clone_of_SA-11
+    lesson_placement: after_R1
+
+    stem: |
+      On munit $E=\{0,1,2,3\}$ de la loi $x \mathbin{\triangle} y = x+y$
+      (addition usuelle, **sans** réduction modulo $4$). Est-ce une loi de
+      composition interne sur $E$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : par exemple $2 \mathbin{\triangle} 3 = 5$, qui n'appartient pas
+          à $E=\{0,1,2,3\}$.
+        correct: true
+        feedback: |
+          Exact. Une loi est interne seulement si le résultat reste dans $E$
+          pour **tous** les couples. Ici $2 \mathbin{\triangle} 3 = 5 \notin E$ :
+          un seul couple qui s'échappe suffit à casser la propriété. (Avec
+          réduction modulo $4$, en revanche, $\triangle$ redeviendrait interne.)
+
+      - id: B
+        text: |
+          Oui : on additionne deux éléments de $E$, donc le résultat est
+          nécessairement encore un élément de $E$.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : « le résultat reste forcément dans $E$ ». Partir de
+          deux éléments de $E$ ne garantit pas d'y rester : $2 \mathbin{\triangle} 3 = 5$
+          sort de $E$. Le caractère interne se **vérifie** sur chaque couple, il
+          ne se suppose pas.
+
+      - id: C
+        text: |
+          Oui : on vérifie sur $0 \mathbin{\triangle} 1 = 1$ et $1 \mathbin{\triangle} 2 = 3$
+          que le résultat reste dans $E$, donc la loi est interne.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : « quelques exemples marchent, donc c'est vrai
+          partout ». Deux couples favorables ne prouvent rien : il aurait fallu
+          les examiner **tous**, et $2 \mathbin{\triangle} 3 = 5$ montre que ça
+          échoue. Un contre-exemple pèse plus que dix exemples réussis.
+
+      - id: D
+        text: |
+          Oui, à quelques exceptions près comme $2 \mathbin{\triangle} 3$ : dans
+          la grande majorité des cas le résultat reste dans $E$, ce qui suffit.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : « une loi interne, mais avec des exceptions ». Il
+          n'existe pas de « presque interne » : dès qu'**un** couple sort de
+          $E$, la loi n'est pas interne du tout. $2 \mathbin{\triangle} 3 = 5$
+          suffit à conclure que non.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-neutre-symetrique | placé APRÈS R2 | clone de SA-2
+  #        Rupture-gate : neutre vs symétrique. Le neutre est UN élément fixe
+  #        pour tout E ; le symétrique de a dépend de a et le ramène au neutre.
+  #        Sonde neutre-vs-symetrique.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-neutre-symetrique
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, symetrique]
+    primary_misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+    item_source: clone_of_SA-2
+    lesson_placement: after_R2
+
+    stem: |
+      On munit $E=\{e,a,b\}$ d'une loi $\star$ de neutre $e$, dont voici la
+      table :
+
+      | $\star$ | $e$ | $a$ | $b$ |
+      |---|---|---|---|
+      | $e$ | $e$ | $a$ | $b$ |
+      | $a$ | $a$ | $b$ | $e$ |
+      | $b$ | $b$ | $e$ | $a$ |
+
+      Quel est le symétrique de $a$ pour cette loi ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $b$
+        correct: true
+        feedback: |
+          Exact : sur la ligne de $a$, c'est à la colonne $b$ qu'apparaît le
+          neutre, $a \star b = e$ (et $b \star a = e$ par symétrie de la table).
+          Le symétrique de $a$ est $b$ — un élément qui **dépend de $a$**, pas le
+          neutre.
+
+      - id: B
+        text: |
+          $e$, l'élément neutre.
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: |
+          Modèle détecté : « le symétrique, c'est le neutre ». Deux rôles
+          distincts : le neutre $e$ ne change rien ($a \star e = a \neq e$),
+          alors que le symétrique de $a$ est l'élément qui, combiné à $a$,
+          **ramène** au neutre. Ici c'est $b$, car $a \star b = e$.
+
+      - id: C
+        text: |
+          $a$ lui-même.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Tu as supposé que $a$ est son propre symétrique sans lire sa ligne :
+          or $a \star a = b \neq e$. On ne devine pas le symétrique, on le
+          **lit** dans la table en cherchant où apparaît le neutre $e$.
+
+      - id: D
+        text: |
+          Aucun : $a$ n'a pas de symétrique pour cette loi.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Conclure trop vite que le symétrique n'existe pas, c'est abandonner le
+          quatrième axiome sans avoir fini de lire la ligne de $a$ : elle
+          contient bien $e$, à la colonne $b$. Donc $a \star b = e$ — le
+          symétrique existe, c'est $b$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r6-structures | placé APRÈS R6 (après [[figure:echelle-structures]])
+  #        Rupture-gate : groupe / anneau / corps. On coche TOUS les axiomes ;
+  #        passer de l'anneau au corps exige de vérifier que TOUT élément non
+  #        nul est inversible. Sonde axiome-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-structures
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, corps, synthese]
+    primary_misconception: mc.math.structures_algebriques.axiome-oublie
+    item_source: clone_of_SA-21
+    lesson_placement: after_R6
+
+    stem: |
+      Un élève veut montrer que $(\mathbb{Z}/6\mathbb{Z},+,\times)$ est un
+      **corps**. Il vérifie que c'est un anneau, puis que $\times$ y est
+      commutative, et conclut : « c'est donc un corps ». Son raisonnement
+      est-il complet ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : il reste à vérifier que **tout** élément non nul est inversible
+          pour $\times$, et $2$ ne l'est pas ($2\times k$ ne vaut jamais $1$
+          modulo $6$).
+        correct: true
+        feedback: |
+          Exact. Le pas anneau $\to$ corps exige une condition en plus : chaque
+          élément non nul doit avoir un symétrique pour $\times$. Or
+          $2\times k \in \{0,2,4\}$ modulo $6$, jamais $1$ : $2$ n'est pas
+          inversible. Donc $(\mathbb{Z}/6\mathbb{Z},+,\times)$ n'est **pas** un
+          corps.
+
+      - id: B
+        text: |
+          Oui : anneau, plus $\times$ commutative, ces deux points suffisent à
+          définir un corps.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : un axiome sauté. Le corps réclame une troisième
+          condition, la plus décisive : **tout élément non nul inversible** pour
+          $\times$. Sans elle, on n'a qu'un anneau commutatif. Ici $2$ n'est pas
+          inversible modulo $6$ : la condition manquante échoue.
+
+      - id: C
+        text: |
+          Oui : puisque c'est un anneau, c'en est automatiquement un corps.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: |
+          Modèle détecté : « un anneau est déjà un corps ». Le corps est
+          strictement plus exigeant. $(\mathbb{Z},+,\times)$ est un anneau mais
+          pas un corps ($2$ n'y est pas inversible) ; de même
+          $(\mathbb{Z}/6\mathbb{Z},+,\times)$ est un anneau qui n'est pas un
+          corps.
+
+      - id: D
+        text: |
+          Oui : il a vérifié que $1$ et $5$ sont inversibles ($1\times1=1$,
+          $5\times5=25\equiv1$), donc tous les éléments le sont.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : deux éléments inversibles, donc tous. Non : la
+          condition du corps porte sur **chaque** élément non nul. $2$, $3$ et
+          $4$ n'ont, eux, aucun inverse modulo $6$ — vérifier $1$ et $5$ ne dit
+          rien d'eux.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r7-morphisme | placé AVANT [[exercise:r-bac]]
+  #        Rupture-gate : isomorphisme. Bijectif ET morphisme ; il transporte
+  #        la structure du groupe connu sans re-vérifier les axiomes. La
+  #        condition « morphisme » est l'axiome à ne pas oublier. Amorce la
+  #        question 4 de r-bac. Sonde axiome-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-morphisme
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, morphisme, bac_style]
+    primary_misconception: mc.math.structures_algebriques.axiome-oublie
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      On veut montrer que $(F,\times)$ est un groupe commutatif à l'aide d'une
+      application $\varphi : E \to F$ **bijective**, où $(E,\ast)$ est déjà connu
+      comme groupe commutatif. Quelle condition sur $\varphi$ rend la déduction
+      valide et dispense de re-vérifier les axiomes sur $F$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\varphi$ doit aussi être un **morphisme** :
+          $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$. Bijective et morphisme,
+          c'est un isomorphisme.
+        correct: true
+        feedback: |
+          Exact. Un isomorphisme, c'est bijectif **et** morphisme : la condition
+          $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$ fait passer la loi $\ast$
+          sur la loi $\times$. La structure de $(E,\ast)$ se transporte alors
+          intégralement sur $(F,\times)$ — c'est exactement la stratégie de la
+          dernière question du sujet.
+
+      - id: B
+        text: |
+          Aucune condition de plus : dès que $\varphi$ est bijective,
+          $(F,\times)$ hérite automatiquement de la structure de $(E,\ast)$.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : la condition « morphisme » oubliée. Une bijection
+          quelconque ne respecte pas les lois : sans
+          $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$, rien ne se transporte.
+          C'est précisément cet axiome-là qui fait l'isomorphisme.
+
+      - id: C
+        text: |
+          Il suffit de vérifier l'égalité $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$
+          sur un couple $(x,y)$ bien choisi.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un couple pour toute une loi. La propriété de
+          morphisme doit tenir pour **tous** les couples $(x,y)$ ; on l'établit
+          par un calcul général, pas sur un exemple. Un cas favorable ne prouve
+          rien pour les autres.
+
+      - id: D
+        text: |
+          La bijectivité seule donne déjà le groupe ; quant à la commutativité
+          de $(F,\times)$, elle est automatique, puisque tout groupe est
+          commutatif.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        feedback: |
+          Modèle détecté : « tout groupe est commutatif ». Faux : la
+          commutativité est une propriété en plus (R4), et il existe des groupes
+          non commutatifs. Ici, elle ne peut venir sur $(F,\times)$ que
+          transportée depuis $(E,\ast)$ par un vrai isomorphisme.

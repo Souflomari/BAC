@@ -10,6 +10,8 @@ Mais il reste une question qu'on n'a pas encore posée : que fait, géométrique
 
 Prends le cas le plus simple : multiplier par $i$. Avant de calculer quoi que ce soit, prends position : d'après toi, multiplier un point du plan par $i$, qu'est-ce que ça produit — un agrandissement ? un déplacement ? une rotation ? autre chose ? Engage-toi vraiment sur une réponse avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Maintenant, calcule, pour trois points différents, l'effet de la multiplication par $i$ :
 
 - $z=2$, le point $(2,0)$ : $i \times 2 = 2i$, soit le point $(0,2)$.
@@ -260,6 +262,8 @@ Les trois racines cubiques de $8i$ sont donc $2e^{i\pi/6}$, $2e^{i5\pi/6}$ et $2
 
 **Vérification sur la dernière racine :** $2e^{i3\pi/2} = 2(\cos\frac{3\pi}{2}+i\sin\frac{3\pi}{2}) = 2(0-i) = -2i$. On calcule $(-2i)^3 = -8i^3 = -8\times(-i) = 8i$, qui est bien $Z$. La racine vérifie l'équation.
 
+[[checkpoint:cp-r4-racines]]
+
 ---
 
 ## R5 — Interprétation géométrique : rotation et homothétie
@@ -305,6 +309,8 @@ La transformation est donc la composée d'une rotation de centre $O$ et d'angle 
 **Vérification géométrique :** $z=3$ a pour module $3$ et pour argument $0$. D'après la règle, $z'$ doit avoir pour module $3\sqrt2$ et pour argument $0+\pi/4=\pi/4$. Or $|3+3i| = \sqrt{9+9}=\sqrt{18}=3\sqrt2$, et $3+3i$ a bien pour argument $\pi/4$ (car $\cos = \sin = \frac{3}{3\sqrt2}=\frac{\sqrt2}{2}$). Les deux méthodes coïncident.
 
 [[figure:rotation-homothetie]]
+
+[[checkpoint:cp-r5-ecriture]]
 
 ---
 
@@ -353,62 +359,25 @@ $w$ est imaginaire pur non nul, donc le triangle est **rectangle en $A$**. Et $|
 
 [[figure:nature-triangle-w]]
 
+[[checkpoint:cp-r6-lecture-w]]
+
 ---
 
 ## R7 — Pour t'entraîner
 
-Voici un exercice de type bac, **original** — ce n'est pas un sujet officiel, c'est un exercice d'entraînement construit pour cette leçon, qui rassemble plusieurs des outils vus dans ce chapitre.
+Tu as maintenant tous les outils du chapitre : l'argument et les formes trigonométrique/exponentielle, les règles du produit, du quotient et de Moivre, les racines n-ièmes, et surtout la lecture géométrique d'un rapport de complexes (rotation, orthogonalité, nature d'un triangle, lieux de points). L'exercice de type bac ci-dessous les rassemble.
 
-### Exercice travaillé
+Avant de te lancer, un dernier réflexe sur les ensembles de points :
 
-On considère les points $A$, $B$, $C$ d'affixes respectives $z_A=2i$, $z_B=3+2i$, $z_C=5i$.
+[[checkpoint:cp-ensemble-points]]
 
-1. Calculer $z_B-z_A$ et $z_C-z_A$ sous forme algébrique, puis donner leur module et un argument.
-2. Calculer $w = \dfrac{z_C-z_A}{z_B-z_A}$, par deux méthodes : directement sous forme algébrique, puis en utilisant les modules et arguments trouvés en 1.
-3. En déduire la nature du triangle $ABC$.
-4. Donner l'écriture complexe de la rotation $r$ de centre $A$ et d'angle $\pi/2$, et vérifier que $r$ transforme $B$ en $C$.
+### Exercice de type bac
 
-**Raisonnement à voix haute.**
+[[exercise:r-bac]]
 
-**Question 1.** On soustrait les affixes, comme au chapitre 1 :
+### Une variation pour ne pas mémoriser
 
-$$z_B - z_A = (3+2i)-2i = 3 \qquad \qquad z_C - z_A = 5i - 2i = 3i$$
-
-$z_B-z_A=3$ est un réel positif : module $3$, argument $0$. $z_C-z_A=3i$ est un imaginaire pur positif : module $3$, argument $\pi/2$.
-
-**Question 2.** Directement, sous forme algébrique :
-
-$$w = \frac{3i}{3} = i$$
-
-Par les modules et arguments (règle du quotient, R3) : module $\dfrac{3}{3}=1$, argument $\dfrac{\pi}{2}-0=\dfrac{\pi}{2}$. Donc $w = 1\times e^{i\pi/2} = \cos\dfrac{\pi}{2}+i\sin\dfrac{\pi}{2} = i$. Les deux méthodes donnent bien $w=i$.
-
-**Question 3.** $w=i$ est imaginaire pur non nul $\implies$ triangle **rectangle en $A$**. Et $|w|=1 \implies$ **isocèle en $A$** ($AB=AC$). Le triangle $ABC$ est **rectangle et isocèle en $A$**.
-
-**Question 4.** La rotation de centre $A$ et d'angle $\pi/2$ a pour écriture complexe (R5, avec $c=e^{i\pi/2}=i$) :
-
-$$z' - z_A = i\,(z - z_A)$$
-
-On isole $z'$ :
-
-$$z' = i\,z - i\,z_A + z_A$$
-
-Avec $z_A=2i$ : $-i\,z_A = -i\times 2i = -2i^2 = 2$. Donc
-
-$$z' = iz + 2 + 2i$$
-
-**Vérification que $r$ transforme $B$ en $C$ :** on remplace $z$ par $z_B=3+2i$.
-
-$$z' = i(3+2i) + 2+2i = 3i + 2i^2 + 2 + 2i = 3i - 2 + 2 + 2i = 5i$$
-
-On retrouve exactement $z_C=5i$. La rotation transforme bien $B$ en $C$ — cohérent avec la question 3 : $A$ étant équidistant de $B$ et de $C$ avec un angle droit entre les deux, une rotation de $\pi/2$ centrée en $A$ devait envoyer l'un sur l'autre.
-
-[[figure:rotation-complexe]]
-
-### À toi de jouer
-
-**(a)** Soient $A$, $B$, $C$ d'affixes respectives $z_A=-1$, $z_B=1$, $z_C=i\sqrt3$. Calculer $w=\dfrac{z_C-z_A}{z_B-z_A}$ sous forme exponentielle, puis en déduire la nature du triangle $ABC$.
-
-**(b)** Déterminer, sous forme exponentielle, les solutions dans $\mathbb{C}$ de l'équation $z^4=-16$.
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus par cet
      auteur :
@@ -427,13 +396,19 @@ On retrouve exactement $z_C=5i$. La rotation transforme bien $B$ en $C$ — coh�
      négatif, etc.) ne sont volontairement PAS traitées ici — à confirmer si
      elles appartiennent à ce chapitre ou à un chapitre séparé dans la
      progression réelle du manuel/cadre SM.
-     (3) La table de lecture du R6 ne couvre que l'angle en A et le rapport
-     AC/AB via w ; le cas "ensemble de points" (lieu géométrique défini par
-     une condition sur un rapport de complexes, du type "l'ensemble des M tels
-     que (z_M-z_A)/(z_M-z_B) est réel ou imaginaire pur") n'est qu'esquissé en
-     filigrane (via la table) et pas traité en exercice dédié — à évaluer si
-     ça mérite un ajout avant la relecture pédagogique finale.
+     (3) Le cas "ensemble de points" (lieu géométrique défini par une
+     condition sur un rapport de complexes, du type "l'ensemble des M tels que
+     (z_M-z_A)/(z_M-z_B) est réel ou imaginaire pur") est désormais traité :
+     item de banque NBCOMPLEX2-24 + checkpoint in-leçon cp-ensemble-points.
+     Reste sous plancher (un seul item de banque) — une passe item-author est
+     due pour le porter à >=3 (voir coverage_summary d'items.yaml).
      (4) L'accroche du R0 (multiplication par i vue comme rotation) est un
      choix pédagogique de cet auteur, pas une citation du cadre officiel — à
      valider comme dispositif d'accroche.
+     (5) SOMMET CONVERTI en couche attempt-first (summit-conversion campaign) :
+     l'exercice travaillé R7 et le "à toi de jouer" imprimés ont été retirés au
+     profit de exercises.yaml (r-bac = sujet vérifié 2019 SM + r-variation
+     jumelle) et checkpoints.yaml (5 checkpoints formatifs placés R0/R4/R5/R6/
+     avant-bac). L'ancien figure media/rotation-complexe.svg n'est plus
+     référencé par la leçon.
 -->
