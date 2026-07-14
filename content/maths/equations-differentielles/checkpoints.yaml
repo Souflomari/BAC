@@ -1,0 +1,267 @@
+notion: equations-differentielles
+skill_code: maths_equations_differentielles
+
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion — maths équations différentielles)
+# FORMATIVE probes inside the lesson — NOT the end bank (items.yaml). Same schema,
+# no score/streak. Wrong-answer feedback names the wrong MATHEMATICAL model.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered
+# by these clones (surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md) :
+#   cp-r0-predict            (in R0)          COMMIT gate : turns "prends position"
+#                                             (modèle A vs B) into a real MCQ before
+#                                             the data reveal. Probes modele-taux-constant.
+#   cp-r1-signe-a            (after R1)        rupture : y'+ay=0 vs y'=ay — le signe de a
+#                                             se lit APRÈS avoir isolé y'. Probes signe-exposant.
+#   cp-r2-palier             (after R2)        rupture : y'=ay+b — le palier est −b/a, jamais b.
+#                                             Probes palier-recopie-b.
+#   cp-r3-condition-initiale (after R3)        rupture : condition initiale en x0≠0 — elle fixe C
+#                                             en résolvant Ce^{ax0}=y0. Probes condition-initiale-sans-decalage.
+#   cp-verif-substitution    (before r-bac)    rupture : vérifier une solution EN LA SUBSTITUANT
+#                                             dans l'équation. Probes signe-exposant.
+#
+# Boundary guard : 2ème Bac SExp — y'=ay, y'=ay+b, conditions initiales, second ordre
+# à coefficients constants (équation caractéristique), y''+ω²y=0, applications RC/RL/LC.
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_equations_differentielles
+    tags: [checkpoint, formative, misconception_driven, maths_equations_differentielles, hook_commit]
+    primary_misconception: mc.math.maths_equations_differentielles.modele-taux-constant
+    item_source: original
+    lesson_placement: in_R0
+    stem: |
+      Un café à $90\ °\text{C}$ refroidit dans une pièce à $20\ °\text{C}$.
+      **Avant de lire les mesures, engage-toi :** comment le rythme de
+      refroidissement évolue-t-il au cours du temps ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Il ralentit à mesure que le café s'approche de $20\ °\text{C}$, sans
+          jamais l'atteindre tout à fait.
+        correct: true
+        feedback: |
+          C'est le modèle B, et c'est ce que montreront les mesures. La vitesse
+          de refroidissement est proportionnelle à l'**écart** $T-20$ : grand au
+          début (écart de $70$), de plus en plus petit ensuite. On formalisera
+          par $T'(t)=-k\big(T(t)-20\big)$.
+      - id: B
+        text: |
+          Il reste constant : le café perd le même nombre de degrés par minute
+          jusqu'à $20\ °\text{C}$, puis s'arrête net.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-taux-constant
+        feedback: |
+          Modèle détecté : « taux constant » (modèle A). Un rythme constant
+          donnerait la même chute de température sur deux intervalles de durée
+          égale — les mesures montreront le contraire (le rythme diminue). Ce
+          n'est pas la réalité d'un refroidissement.
+      - id: C
+        text: |
+          Il est proportionnel à la température $T$ du café elle-même, donc le
+          café tend vers $0\ °\text{C}$.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
+        feedback: |
+          Modèle détecté : la vitesse dépendrait de $T$ seule, sans la pièce.
+          Elle tendrait alors vers $0\ °\text{C}$, pas vers $20$. C'est l'**écart**
+          $T-20$ qui pilote le refroidissement, pas $T$.
+      - id: D
+        text: |
+          Il augmente avec le temps écoulé depuis le début de l'expérience.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
+        feedback: |
+          Ici la vitesse dépendrait du temps $t$, pas de la température. Or le
+          mécanisme d'une équation différentielle relie $T'$ à $T$ (via l'écart
+          $T-20$), pas à $t$ directement.
+
+  - id: cp-r1-signe-a
+    rung: "R1"
+    habilete: utilisation
+    skill_code: maths_equations_differentielles
+    tags: [checkpoint, formative, misconception_driven, maths_equations_differentielles, y_ay]
+    primary_misconception: mc.math.maths_equations_differentielles.signe-exposant
+    item_source: clone_of_EQDIFF-10
+    lesson_placement: after_R1
+    stem: |
+      Une équation est écrite sous la forme $y' + 3y = 0$. Quel est son ensemble
+      de solutions sur $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $y(x) = Ce^{-3x}$, $C \in \mathbb{R}$
+        correct: true
+        feedback: |
+          Exact. On isole d'abord $y'$ : $y'=-3y$, donc $a=-3$, et la solution
+          générale est $Ce^{ax}=Ce^{-3x}$. Le signe de $a$ se lit **après** avoir
+          mis l'équation sous la forme $y'=ay$.
+      - id: B
+        text: |
+          $y(x) = Ce^{3x}$, $C \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
+        feedback: |
+          Le $+3y$ a été recopié tel quel dans l'exposant. Mais $y'+3y=0$ s'écrit
+          $y'=-3y$ : ici $a=-3$, pas $+3$. L'exposant est $-3x$.
+      - id: C
+        text: |
+          $y(x) = e^{-3x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: |
+          Bon exposant, mais ce n'est qu'**une** solution (celle où $C=1$).
+          L'équation en admet une famille entière : $Ce^{-3x}$ pour tout réel $C$.
+      - id: D
+        text: |
+          $y(x) = -3x + C$, $C \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-comme-primitive
+        feedback: |
+          L'équation a été traitée comme $y'=-3$ (primitive d'une constante). Or
+          le membre de droite dépend de $y$, pas de $x$ : $y'=-3y$ a pour
+          solutions des exponentielles, pas une droite affine.
+
+  - id: cp-r2-palier
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_equations_differentielles
+    tags: [checkpoint, formative, misconception_driven, maths_equations_differentielles, y_ay_b, palier]
+    primary_misconception: mc.math.maths_equations_differentielles.palier-recopie-b
+    item_source: clone_of_EQDIFF-2
+    lesson_placement: after_R2
+    stem: |
+      Quelle est la solution générale sur $\mathbb{R}$ de $y' = 4y - 8$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $y(x) = Ce^{4x} + 2$
+        correct: true
+        feedback: |
+          Exact. Le palier est $y_p=-\dfrac{b}{a}=-\dfrac{-8}{4}=2$, et on lui
+          ajoute la famille homogène $Ce^{4x}$ (R1).
+      - id: B
+        text: |
+          $y(x) = Ce^{4x} - 8$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
+        feedback: |
+          $b=-8$ a été recopié tel quel comme palier. Le palier est $-b/a$, pas
+          $b$ : ici $-(-8)/4=2$. Une fonction constante $y=-8$ ne vérifie pas
+          $0=4(-8)-8$.
+      - id: C
+        text: |
+          $y(x) = Ce^{4x} - 2$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-signe
+        feedback: |
+          Bonne idée ($-b/a$), mauvais signe : $-b/a=-(-8)/4=+2$, pas $-2$. Le
+          double signe « moins » (de la formule et de $b<0$) donne un palier
+          positif.
+      - id: D
+        text: |
+          $y(x) = Ce^{4x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
+        feedback: |
+          La solution particulière constante a été oubliée (comme si $b=0$). Ici
+          $b=-8\neq0$ : sans le palier $+2$, l'égalité $y'=4y-8$ n'est jamais
+          vérifiée.
+
+  - id: cp-r3-condition-initiale
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_equations_differentielles
+    tags: [checkpoint, formative, misconception_driven, maths_equations_differentielles, condition_initiale]
+    primary_misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
+    item_source: clone_of_EQDIFF-3
+    lesson_placement: after_R3
+    stem: |
+      La solution de $y' = 2y$ qui vérifie $y(1) = 6$ s'écrit, pour tout
+      $x \in \mathbb{R}$ :
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $y(x) = 6e^{2(x-1)}$
+        correct: true
+        feedback: |
+          Exact. Solution générale $Ce^{2x}$ ; la condition $y(1)=Ce^{2}=6$ donne
+          $C=6e^{-2}$, d'où $y(x)=6e^{-2}e^{2x}=6e^{2(x-1)}$.
+      - id: B
+        text: |
+          $y(x) = 6e^{2x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
+        feedback: |
+          La condition est en $x_0=1$, pas en $0$ : poser $C=6$ directement
+          revient à traiter $y(1)$ comme $y(0)$. Il faut résoudre $Ce^{2}=6$.
+      - id: C
+        text: |
+          $y(x) = 6e^{2x-1}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a
+        feedback: |
+          Le décalage d'exposant est $a\times x_0=2\times1=2$, donc $2x-2=2(x-1)$,
+          pas $2x-1$. Il manque le facteur $a$ devant $x_0$.
+      - id: D
+        text: |
+          $y(x) = 3e^{2x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
+        feedback: |
+          $C=6/2=3$ divise par $a$ de façon linéaire. Mais $C$ sort de
+          $Ce^{2}=6$ (relation exponentielle) : $C=6e^{-2}$, pas $6/2$.
+
+  - id: cp-verif-substitution
+    rung: "R1"
+    habilete: raisonnement
+    skill_code: maths_equations_differentielles
+    tags: [checkpoint, formative, misconception_driven, maths_equations_differentielles, verification, bac_style]
+    primary_misconception: mc.math.maths_equations_differentielles.signe-exposant
+    item_source: clone_of_EQDIFF-10
+    lesson_placement: before_bac
+    stem: |
+      Pour vérifier qu'une fonction est solution de $y' = -4y$, on la **substitue**
+      dans l'équation et on compare les deux membres. Laquelle des fonctions
+      suivantes est bien une solution sur $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $y(x) = 2e^{-4x}$
+        correct: true
+        feedback: |
+          Exact. $y'(x)=-8e^{-4x}$ et $-4y(x)=-8e^{-4x}$ : les deux membres
+          coïncident pour tout $x$. C'est ça, vérifier par substitution.
+      - id: B
+        text: |
+          $y(x) = 2e^{4x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
+        feedback: |
+          Substitue : $y'(x)=8e^{4x}=+4y(x)$, ce qui vérifie $y'=4y$, pas
+          $y'=-4y$. Le signe de $a$ est reporté tel quel dans l'exposant.
+      - id: C
+        text: |
+          $y(x) = -4e^{x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.coefficient-a-mal-identifie
+        feedback: |
+          Le $-4$ a été placé **devant** l'exponentielle (comme constante $C$) au
+          lieu d'être le coefficient $a$ dans l'exposant. Substitue :
+          $y'(x)=-4e^{x}=y(x)$, donc cette fonction vérifie $y'=y$, pas $y'=-4y$.
+      - id: D
+        text: |
+          $y(x) = 2e^{-4x} + 4$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
+        feedback: |
+          Substitue : $y'(x)=-8e^{-4x}$ mais $-4y(x)=-8e^{-4x}-16$. Le terme
+          constant $+4$ ajoute un palier alors que $y'=-4y$ n'a pas de « $+b$ ».

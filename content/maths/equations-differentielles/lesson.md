@@ -12,7 +12,11 @@ Avant de lire la suite, prends position, vraiment — choisis un modèle avant d
 
 **Modèle B.** Le café perd de la chaleur vite au début, quand il est très chaud, et de moins en moins vite à mesure qu'il se rapproche de $20\ °\text{C}$ — sans jamais l'atteindre tout à fait.
 
-Engage-toi sur l'un des deux. Voici maintenant ce qu'on relève réellement, minute après minute :
+Engage-toi sur l'un des deux.
+
+[[checkpoint:cp-r0-predict]]
+
+Voici maintenant ce qu'on relève réellement, minute après minute :
 
 | $t$ (min) | $0$ | $5$ | $10$ | $20$ |
 |---|---|---|---|---|
@@ -105,6 +109,8 @@ $$y(x) = Ce^{-0{,}5x}, \qquad C \in \mathbb{R}$$
 
 Comme $a=-0{,}5<0$, chaque solution (non nulle) tend vers $0$ quand $x \to +\infty$ : c'est une famille de décroissances exponentielles.
 
+[[checkpoint:cp-r1-signe-a]]
+
 ---
 
 ## R2 — $y' = ay+b$ : ajouter un palier
@@ -177,6 +183,8 @@ Une erreur très fréquente : recopier $b$ tel quel dans la solution, en écriva
 
 En toute généralité : si $y(x)=Ce^{ax}+b$ était solution, l'identification des deux membres imposerait $b(a+1)=0$ — donc $b=0$ ou $a=-1$ seulement. Rien de tel n'est vrai en général : recopier $b$ ne marche presque jamais.
 
+[[checkpoint:cp-r2-palier]]
+
 ---
 
 ## R3 — Fixer la constante : la condition initiale choisit UNE solution dans la famille
@@ -246,6 +254,8 @@ La formule qu'on vient d'établir n'est pas juste une courbe qui « ressemble »
 [[figure:famille-solutions]]
 
 La figure ci-dessus rend visible ce que le R1 avait déjà annoncé : l'équation $T'=-0{,}1T+2$, à elle seule, ne dessine pas une courbe mais toute une **famille** — une par valeur de $T_0=T(0)$ — qui partagent toutes le même palier $T_p=-b/a=20$ sans jamais le franchir. La courbe en accent, celle avec $T(0)=90$, est la seule que le calcul ci-dessus a isolée dans cette famille.
+
+[[checkpoint:cp-r3-condition-initiale]]
 
 ---
 
@@ -399,63 +409,23 @@ Cette même équation, $y''+\omega^2y=0$, gouverne n'importe quel **mouvement os
 
 ## R6 — Pour t'entraîner
 
-### Exercice de type bac (entraînement original — pas un sujet officiel)
+Tu as construit tous les outils. Place maintenant à la pratique : cherche chaque question **par toi-même** avant de dérouler le raisonnement.
 
-On considère l'équation différentielle $(E) : y' = -2y+8$, où $y$ désigne une fonction dérivable sur $\mathbb{R}$.
+Un dernier réflexe à verrouiller avant de te lancer : pour savoir si une fonction est solution d'une équation différentielle, on la **substitue** dans l'équation et on compare les deux membres — on ne se fie jamais à sa seule allure.
 
-**1)** Déterminer la solution constante de $(E)$.
+[[checkpoint:cp-verif-substitution]]
 
-**2)** Résoudre $(E)$ sur $\mathbb{R}$.
+### Exercice de type bac
 
-**3)** Déterminer la solution $f$ de $(E)$ qui vérifie $f(0)=3$.
+Un sujet d'examen national (session normale 2022). Prends le temps de le chercher toi-même avant de dérouler le raisonnement.
 
-**4)** Étudier le sens de variation de $f$ sur $\mathbb{R}$, puis déterminer $\displaystyle\lim_{x\to+\infty}f(x)$ et $\displaystyle\lim_{x\to-\infty}f(x)$.
+[[exercise:r-bac]]
 
-**5)** $f$ modélise, en unités adaptées, la concentration d'une substance dans un milieu ($x$ en heures). Déterminer, à $0{,}01$ heure près, l'instant où cette concentration vaut $3{,}5$.
+### Une variation pour ne pas mémoriser
 
-**Raisonnement à voix haute.**
+Mêmes gestes, une autre équation — de quoi vérifier que c'est la méthode que tu as retenue, pas un corrigé.
 
-**1)** *Ce qu'on cherche ici, et pourquoi ce geste :* on identifie $a=-2$, $b=8$, et on applique directement la formule du palier établie au R2, $y_p=-b/a$ — pas besoin de repartir de zéro.
-
-$$y_p = -\frac{b}{a} = -\frac{8}{-2} = 4$$
-
-**2)** *Ce qu'on cherche ici, et pourquoi ce geste :* on applique le résultat général du R2 avec $a=-2$ et le palier trouvé en 1).
-
-$$y(x) = Ce^{-2x}+4, \qquad C \in \mathbb{R}$$
-
-**3)** *Ce qu'on cherche ici, et pourquoi ce geste :* on utilise $f(0)=3$ pour fixer la constante $C$ — la même méthode qu'au R3.
-
-$$f(0) = C+4 = 3 \implies C=-1$$
-
-$$f(x) = 4-e^{-2x}$$
-
-**4)** *Ce qu'on cherche ici, et pourquoi ce geste :* dériver $f$ pour son signe, puis utiliser les limites de référence de $e^{-2x}$ (chapitre précédent) en $\pm\infty$.
-
-$$f'(x) = 2e^{-2x}$$
-
-Pour tout $x \in \mathbb{R}$, $e^{-2x}>0$, donc $f'(x)>0$ : $f$ est **strictement croissante** sur $\mathbb{R}$.
-
-Quand $x\to+\infty$, $e^{-2x}\to 0$ (croissances comparées, chapitre précédent), donc $f(x)\to 4$. Quand $x\to-\infty$, $e^{-2x}\to+\infty$, donc $-e^{-2x}\to-\infty$ et $f(x)\to-\infty$.
-
-$$\lim_{x\to+\infty}f(x) = 4 \qquad\qquad \lim_{x\to-\infty}f(x) = -\infty$$
-
-**5)** *Ce qu'on cherche ici, et pourquoi ce geste :* $f$ étant strictement croissante avec $\lim_{+\infty}f=4$, toute valeur strictement inférieure à $4$ est atteinte une seule fois (corollaire du TVI, chapitre « Limites et continuité ») — $3{,}5<4$, donc l'équation $f(x)=3{,}5$ a bien un sens ; on la résout en isolant l'exponentielle, puis en passant par $\ln$ (chapitre précédent).
-
-$$4-e^{-2x} = 3{,}5$$
-
-$$e^{-2x} = 0{,}5$$
-
-$$-2x = \ln(0{,}5) = -\ln 2$$
-
-$$x = \frac{\ln 2}{2} \approx \frac{0{,}6931}{2} \approx 0{,}35$$
-
-La concentration atteint $3{,}5$ au bout d'environ $0{,}35$ heure.
-
-### À toi de jouer
-
-**(a)** Résous sur $\mathbb{R}$ l'équation différentielle $y'=5y$, puis détermine la solution $g$ qui vérifie $g(0)=-4$. Calcule $g(1)$ (valeur exacte, puis arrondie à $0{,}01$ près).
-
-**(b)** Un point mobile a une position $x(t)$ (en cm) qui vérifie l'équation différentielle $x''+25x=0$. Sachant qu'à l'instant $t=0$ la position est $x(0)=2$ et la vitesse $x'(0)=-15$, détermine $x(t)$. Quelle est la période des oscillations ?
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus par cet auteur :
      (1) skill_code proposé : `maths_equations_differentielles` (convention
@@ -484,7 +454,7 @@ La concentration atteint $3{,}5$ au bout d'environ $0{,}35$ heure.
      conflit avec la constante d'intégration — à valider que cette convention
      ne heurte pas une notation déjà fixée ailleurs en base.
      (4) Les valeurs numériques du R0 (café à 90°C, pièce à 20°C, k=0,1/min)
-     et de l'exercice R6 sont des données ILLUSTRATIVES construites pour cette
-     leçon, choisies pour boucler proprement (cohérence R0 <-> R3) — non
-     sourcées, non présentées comme un relevé réel ni comme un sujet officiel.
+     sont des données ILLUSTRATIVES construites pour cette leçon, choisies pour
+     boucler proprement (cohérence R0 <-> R3) — non sourcées, non présentées
+     comme un relevé réel ni comme un sujet officiel.
 -->

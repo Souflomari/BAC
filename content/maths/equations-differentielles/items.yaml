@@ -1,7 +1,218 @@
 notion: equations-differentielles
 skill_code: maths_equations_differentielles   # proposed; supabase-architect reconciles at step 7
 
-misconceptions: []
+misconceptions:
+  # Rétro-inventaire (summit-conversion / floor backfill). La banque a été
+  # rédigée AVANT le tag par distracteur (misconceptions: [] à l'origine) ;
+  # chaque distracteur a été relu et rattaché au modèle d'erreur qu'il teste.
+  # Namespace : mc.math.maths_equations_differentielles.<slug>. Compléments et
+  # comptages honnêtes dans coverage_summary (bas de fichier).
+
+  - id: mc.math.maths_equations_differentielles.solution-fonction-unique
+    label: "Croire que l'équation différentielle a UNE solution, pas une famille"
+    description: >-
+      L'élève rend une fonction isolée (par exemple $e^{ax}$, le cas $C=1$) au
+      lieu de la famille complète $Ce^{ax}$, comme si l'équation déterminait une
+      seule courbe.
+    contradicts_principle: >-
+      Une équation différentielle, seule, ne détermine jamais une fonction mais
+      une famille indexée par une constante $C$. Il faut une condition initiale
+      pour épingler un membre précis (R1, R3).
+
+  - id: mc.math.maths_equations_differentielles.signe-exposant
+    label: "Signe de a inversé (ou mal isolé) dans l'exposant"
+    description: >-
+      L'élève reporte mal le signe de $a$ : il écrit $Ce^{-ax}$ pour $y'=ay$, ou
+      recopie $y'+ay=0$ tel quel sans l'écrire $y'=-ay$ avant de lire $a$.
+    contradicts_principle: >-
+      $y'=ay \iff y=Ce^{ax}$ garde le signe de $a$ tel quel dans l'exposant. Le
+      signe de $a$ ne se lit qu'APRÈS avoir mis l'équation sous la forme $y'=ay$.
+
+  - id: mc.math.maths_equations_differentielles.ed-comme-primitive
+    label: "Traiter y'=ay comme y'=a (recherche de primitive)"
+    description: >-
+      L'élève ignore que le membre de droite dépend de $y$ et intègre comme si
+      $y'$ était une constante, rendant une réponse affine $ax+C$.
+    contradicts_principle: >-
+      Dans $y'=ay$ le second membre dépend de la fonction inconnue, pas de $x$ :
+      les solutions sont des exponentielles $Ce^{ax}$, jamais une droite affine.
+
+  - id: mc.math.maths_equations_differentielles.coefficient-a-mal-identifie
+    label: "Placer a comme facteur devant l'exponentielle au lieu de l'exposant"
+    description: >-
+      L'élève met le coefficient $a$ en facteur (comme une constante $C$) devant
+      $e^{x}$ — par exemple $-4e^{x}$ pour $y'=-4y$ — au lieu de le porter dans
+      l'exposant.
+    contradicts_principle: >-
+      Dans $y=Ce^{ax}$, le coefficient $a$ vit dans l'exposant et fixe le taux ;
+      $C$ est libre devant. Confondre les deux rôles change l'équation vérifiée.
+
+  - id: mc.math.maths_equations_differentielles.palier-recopie-b
+    label: "Prendre le palier égal à b au lieu de -b/a"
+    description: >-
+      Dans $y'=ay+b$, l'élève recopie $b$ tel quel comme solution particulière
+      constante, écrivant $Ce^{ax}+b$ au lieu de $Ce^{ax}-b/a$.
+    contradicts_principle: >-
+      Le palier est la solution constante $y_p=-b/a$, obtenue par $0=ay_p+b$.
+      Une constante $y=b$ ne vérifie l'équation qu'exceptionnellement.
+
+  - id: mc.math.maths_equations_differentielles.palier-signe
+    label: "Erreur de signe sur le palier -b/a"
+    description: >-
+      L'élève applique bien $-b/a$ mais perd un signe (souvent avec $b<0$ ou
+      $a<0$), rendant $-b/a$ avec le mauvais signe.
+    contradicts_principle: >-
+      $y_p=-b/a$ se calcule en respectant tous les signes ; réinjecter $y_p$
+      dans $0=ay_p+b$ vérifie immédiatement le résultat.
+
+  - id: mc.math.maths_equations_differentielles.palier-oubli
+    label: "Oublier la solution particulière (traiter b≠0 comme b=0)"
+    description: >-
+      L'élève ne garde que la partie homogène $Ce^{ax}$ et oublie d'ajouter le
+      palier, comme si le terme constant $b$ était nul.
+    contradicts_principle: >-
+      Quand $b\neq0$, la solution générale de $y'=ay+b$ est $Ce^{ax}-b/a$ :
+      sans le palier, l'égalité $y'=ay+b$ n'est jamais satisfaite.
+
+  - id: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
+    label: "Condition initiale en x0≠0 traitée comme en 0 (ou palier non retranché)"
+    description: >-
+      L'élève pose $C=y_0$ directement pour une condition en $x_0\neq0$, ou
+      identifie $C$ à $y(0)$ sans d'abord retrancher le palier.
+    contradicts_principle: >-
+      La constante se trouve en résolvant l'équation $Ce^{ax_0}(+y_p)=y_0$ à la
+      valeur exacte $x_0$ ; $y(1)$ n'est pas $y(0)$, et le palier se retire d'abord.
+
+  - id: mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a
+    label: "Décalage d'exposant sans le facteur a (x0 au lieu de a·x0)"
+    description: >-
+      En reportant la condition en $x_0$, l'élève décale l'exposant de $x_0$ au
+      lieu de $a\,x_0$ — par exemple $2x-1$ au lieu de $2x-2$ pour $a=2$, $x_0=1$.
+    contradicts_principle: >-
+      Le report $y(x)=Ce^{ax}$ avec $C=y_0e^{-ax_0}$ donne un exposant décalé de
+      $a\,x_0$, pas de $x_0$ seul : le facteur $a$ ne s'oublie pas.
+
+  - id: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
+    label: "Résoudre une relation exponentielle par une division linéaire"
+    description: >-
+      Pour isoler $C$ dans $Ce^{ax_0}=y_0$ (ou trouver $t$ dans $N_0e^{at}=k$),
+      l'élève divise linéairement par $a$ au lieu de passer par l'exponentielle
+      ou le logarithme.
+    contradicts_principle: >-
+      $C$ sort de $Ce^{ax_0}=y_0$ par $C=y_0e^{-ax_0}$ ; un temps sort par
+      logarithme. Diviser par $a$ confond relation exponentielle et relation affine.
+
+  - id: mc.math.maths_equations_differentielles.signe-a-comportement
+    label: "Mal relier le signe de a au comportement en ±∞"
+    description: >-
+      L'élève associe mal le signe de $a$ à la croissance/décroissance ou à la
+      limite : il conclut $a>0$ pour une décroissance vers $0$, ou l'inverse.
+    contradicts_principle: >-
+      Le signe de $a$ pilote tout : $a<0\Rightarrow e^{ax}\to0$ en $+\infty$,
+      $a>0\Rightarrow e^{ax}\to+\infty$. Le signe de $C$ n'y change rien.
+
+  - id: mc.math.maths_equations_differentielles.nombre-solutions-condition
+    label: "Mal juger le nombre de solutions passant par un point donné"
+    description: >-
+      L'élève répond aucune, une infinité ou deux, au lieu d'une seule, pour le
+      nombre de solutions vérifiant $y(x_0)=y_0$.
+    contradicts_principle: >-
+      Une condition initiale $y(x_0)=y_0$ fixe $C$ à une valeur unique : une
+      seule courbe de la famille passe par ce point.
+
+  - id: mc.math.maths_equations_differentielles.omega-vs-omega2
+    label: "Utiliser ω² au lieu de ω dans cos/sin (oubli de la racine)"
+    description: >-
+      Pour $y''+\omega^2y=0$, l'élève met le coefficient $\omega^2$ directement
+      dans $\cos$ et $\sin$ au lieu de $\omega=\sqrt{\omega^2}$.
+    contradicts_principle: >-
+      C'est $\omega$ (la racine du coefficient) qui apparaît dans
+      $\cos(\omega x)$ et $\sin(\omega x)$, jamais $\omega^2$.
+
+  - id: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
+    label: "Confondre y''+ω²y=0 avec y''-ω²y=0 (solutions exponentielles)"
+    description: >-
+      L'élève traite l'équation de l'oscillateur comme si elle admettait des
+      solutions exponentielles $Ae^{\omega x}+Be^{-\omega x}$.
+    contradicts_principle: >-
+      Le signe $+$ devant $\omega^2y$ impose des solutions oscillantes
+      ($\cos,\sin$) ; seul $y''-\omega^2y=0$ donnerait des exponentielles réelles.
+
+  - id: mc.math.maths_equations_differentielles.oscillateur-B-sans-omega
+    label: "Poser B=y'(0) sans diviser par ω"
+    description: >-
+      En déterminant les constantes de $A\cos(\omega x)+B\sin(\omega x)$, l'élève
+      prend $B=y'(0)$ directement, en oubliant le facteur $\omega$.
+    contradicts_principle: >-
+      $y'(0)=B\omega$, donc $B=y'(0)/\omega$ : le facteur $\omega$ vient de la
+      dérivée de $\sin(\omega x)$ et ne s'oublie pas.
+
+  - id: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
+    label: "Inverser A et B, leurs signes, ou le choix cos/sin selon la CI"
+    description: >-
+      L'élève échange les rôles de $A$ (fixé par $y(0)$) et $B$ (fixé par
+      $y'(0)$), se trompe de signe, ou choisit $\cos$/$\sin$ à l'envers selon
+      la condition initiale.
+    contradicts_principle: >-
+      À $x=0$, $\sin$ s'annule et $\cos$ vaut $1$ : $A=y(0)$ toujours, $B$ vient
+      de $y'(0)$. Une charge maximale au départ impose $\cos$, un départ nul $\sin$.
+
+  - id: mc.math.maths_equations_differentielles.periode-omega
+    label: "Mal appliquer T=2π/ω (×ω, ω², ou T=ω)"
+    description: >-
+      L'élève calcule la période en multipliant par $\omega$, en utilisant
+      $\omega^2$, ou en confondant $T$ avec $\omega$ lui-même.
+    contradicts_principle: >-
+      $T=2\pi/\omega$ : plus $\omega$ est grand, plus $T$ est petit. La pulsation
+      et la période sont deux grandeurs distinctes, reliées par une division.
+
+  - id: mc.math.maths_equations_differentielles.charge-decharge-confondues
+    label: "Confondre charge (palier E, 1-e^{-t/τ}) et décharge (palier 0, e^{-t/τ})"
+    description: >-
+      L'élève applique la forme de la décharge à une charge (ou l'inverse) :
+      mauvais palier, ou $e^{-t/\tau}$ au lieu de $1-e^{-t/\tau}$.
+    contradicts_principle: >-
+      La charge a un palier non nul imposé par la source ($E$, $I_{max}$) et
+      démarre de $0$ ; la décharge a un palier nul. La condition initiale tranche.
+
+  - id: mc.math.maths_equations_differentielles.tau-inverse
+    label: "Constante de temps τ inversée dans l'exposant"
+    description: >-
+      L'élève écrit l'exposant avec $\tau$ à l'envers — par exemple $e^{-Lt/R}$
+      au lieu de $e^{-Rt/L}$ pour un dipôle RL.
+    contradicts_principle: >-
+      La constante de temps est $\tau=L/R$ (RL) ou $\tau=RC_0$ (RC) ; l'exposant
+      est $-t/\tau$, obtenu en réécrivant l'équation sous la forme $y'=ay+b$.
+
+  - id: mc.math.maths_equations_differentielles.modele-taux-constant
+    label: "Modèle A du R0 : taux de refroidissement constant"
+    description: >-
+      L'élève suppose que le café perd le même nombre de degrés par minute
+      jusqu'au palier, puis s'arrête net — un taux de variation constant.
+    contradicts_principle: >-
+      Un taux constant contredit les mesures (le rythme diminue) : la vitesse
+      est proportionnelle à l'écart $T-20$, qui décroît avec le temps.
+
+  - id: mc.math.maths_equations_differentielles.modele-sans-ecart
+    label: "Vitesse liée à T seul (ou à t), pas à l'écart T-20"
+    description: >-
+      L'élève fait dépendre la vitesse de refroidissement de $T$ seule (palier
+      $0$) ou du temps $t$, en ignorant l'écart $T-20$ à la température ambiante.
+    contradicts_principle: >-
+      C'est l'écart $T-20$ qui pilote la vitesse : $T'=-k(T-20)$. Sans cet écart,
+      le café tendrait vers $0\ °\text{C}$, pas vers $20$, et $T'$ ne dépendrait
+      plus de $T$.
+
+  - id: mc.math.maths_equations_differentielles.ed-inconnue-nombre
+    label: "Voir l'inconnue comme un nombre / un point, pas une fonction"
+    description: >-
+      L'élève traite l'équation différentielle comme une équation numérique :
+      inconnue = un nombre, ou recherche des points où $y'=0$, ou fonction donnée
+      explicitement en $x$.
+    contradicts_principle: >-
+      L'inconnue d'une équation différentielle est une fonction tout entière,
+      reliant $y'$ à $y$ en CHAQUE point — pas une valeur numérique ni un point
+      stationnaire isolé.
 
 items:
 
@@ -11,6 +222,7 @@ items:
     difficulty_level: 2
     skill_code: maths_equations_differentielles
     tags: [y_ay, famille_solutions]
+    primary_misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
     stem: >
       Quel est l'ensemble des solutions sur $\mathbb{R}$ de l'équation
       différentielle $y' = 3y$ ?
@@ -22,6 +234,7 @@ items:
       - id: B
         text: "$y(x) = e^{3x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
         feedback: >
           Ce choix oublie qu'il existe une famille entière de solutions, pas
           une seule fonction isolée : pour tout réel $C$, $x \mapsto Ce^{3x}$
@@ -31,6 +244,7 @@ items:
       - id: C
         text: "$y(x) = Ce^{-3x}$, $C \\in \\mathbb{R}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
         feedback: >
           Erreur de signe sur l'exposant. Vérifie : la dérivée de $Ce^{-3x}$
           est $-3Ce^{-3x} = -3y(x)$, ce qui vérifierait $y'=-3y$, pas
@@ -39,6 +253,7 @@ items:
       - id: D
         text: "$y(x) = 3x + C$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-comme-primitive
         feedback: >
           Ce choix traite l'équation comme si elle s'écrivait $y'=3$ (une
           primitive d'une constante), en ignorant que le membre de droite
@@ -65,6 +280,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [y_ay_b, solution_particuliere]
+    primary_misconception: mc.math.maths_equations_differentielles.palier-recopie-b
     stem: >
       Quelle est la solution générale sur $\mathbb{R}$ de
       $y' = -2y + 6$ ?
@@ -76,6 +292,7 @@ items:
       - id: B
         text: "$y(x) = Ce^{-2x} + 6$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
         feedback: >
           Ce choix recopie $b=6$ tel quel comme palier, au lieu de calculer
           $-b/a$. Vérifie : si $y(x)=Ce^{-2x}+6$, alors $y'(x)=-2Ce^{-2x}$,
@@ -85,6 +302,7 @@ items:
       - id: C
         text: "$y(x) = Ce^{-2x} - 3$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-signe
         feedback: >
           Le palier calculé a le mauvais signe : $-b/a = -6/(-2) = 3$, pas
           $-3$. Vérifie : si $y(x)=Ce^{-2x}-3$, alors $-2y(x)+6 =
@@ -93,6 +311,7 @@ items:
       - id: D
         text: "$y(x) = Ce^{-2x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
         feedback: >
           Ce choix oublie complètement la solution particulière constante
           — il ne traite que la partie homogène, comme si $b=0$. Or ici
@@ -118,6 +337,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [condition_initiale, y_ay]
+    primary_misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
     stem: >
       La solution de $y' = 2y$ qui vérifie $y(1) = 6$ s'écrit, pour tout
       $x \in \mathbb{R}$ :
@@ -129,6 +349,7 @@ items:
       - id: B
         text: "$y(x) = 6e^{2x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
         feedback: >
           Ce choix traite la condition $y(1)=6$ comme si elle était donnée
           en $x_0=0$ — il pose $C=6$ directement sans résoudre
@@ -137,6 +358,7 @@ items:
       - id: C
         text: "$y(x) = 6e^{2x-1}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a
         feedback: >
           Erreur dans le décalage de l'exposant : on a $C=6e^{-2}$, donc
           l'exposant correct est $2x-2$ (soit $2(x-1)$), pas $2x-1$. Le
@@ -145,6 +367,7 @@ items:
       - id: D
         text: "$y(x) = 3e^{2x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
         feedback: >
           Ce choix calcule $C = 6/2 = 3$, en divisant la valeur $6$ par le
           coefficient $a=2$ — mais $C$ se trouve en résolvant
@@ -170,6 +393,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [oscillateur, forme_generale]
+    primary_misconception: mc.math.maths_equations_differentielles.omega-vs-omega2
     stem: >
       Les solutions sur $\mathbb{R}$ de l'équation différentielle
       $y'' + 9y = 0$ sont les fonctions :
@@ -181,6 +405,7 @@ items:
       - id: B
         text: "$y(x) = A\\cos(9x) + B\\sin(9x)$, $A, B \\in \\mathbb{R}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.omega-vs-omega2
         feedback: >
           Ce choix utilise directement le coefficient $9$ comme pulsation,
           en oubliant de prendre sa racine carrée. Ici $\omega^2=9$, donc
@@ -189,6 +414,7 @@ items:
       - id: C
         text: "$y(x) = Ae^{3x} + Be^{-3x}$, $A, B \\in \\mathbb{R}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
         feedback: >
           Ce choix confond avec une équation de la forme $y''-9y=0$ (sans le
           signe $+$), qui admettrait effectivement des solutions
@@ -199,6 +425,7 @@ items:
       - id: D
         text: "$y(x) = A\\cos(3x)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
         feedback: >
           Ce choix oublie le terme en $\sin(3x)$. La solution générale a
           DEUX constantes ($A$ et $B$), car l'équation est du second ordre
@@ -221,6 +448,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [oscillateur, condition_initiale]
+    primary_misconception: mc.math.maths_equations_differentielles.oscillateur-B-sans-omega
     stem: >
       On considère l'équation $y'' + 4y = 0$. Quelle est la solution qui
       vérifie $y(0) = 2$ et $y'(0) = 6$ ?
@@ -232,6 +460,7 @@ items:
       - id: B
         text: "$y(x) = 2\\cos(2x) + 6\\sin(2x)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-B-sans-omega
         feedback: >
           Ce choix pose $B=y'(0)=6$ directement, en oubliant de diviser par
           $\omega=2$. Vérifie : avec $B=6$, $y'(x)=-4\sin(2x)+12\cos(2x)$,
@@ -240,6 +469,7 @@ items:
       - id: C
         text: "$y(x) = 3\\cos(2x) + 2\\sin(2x)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
         feedback: >
           Les rôles de $A$ et $B$ sont inversés. $A$ est TOUJOURS fixé par
           $y(0)$ (car $\sin(0)=0$ annule le terme en $B$ à $x=0$) : ici
@@ -247,6 +477,7 @@ items:
       - id: D
         text: "$y(x) = 2\\cos(2x) - 3\\sin(2x)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
         feedback: >
           Erreur de signe sur $B$. La dérivée est
           $y'(x)=-2A\sin(2x)+2B\cos(2x)$ : à $x=0$, seul le terme en $B$
@@ -274,6 +505,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [application_physique, rc, solution_particuliere]
+    primary_misconception: mc.math.maths_equations_differentielles.palier-recopie-b
     stem: >
       Un condensateur de capacité $C_0$ se charge à travers une résistance
       $R$, sous une tension constante $E$. La tension à ses bornes vérifie
@@ -287,6 +519,7 @@ items:
       - id: B
         text: "$u_{C,p} = -E$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-signe
         feedback: >
           Erreur de signe : après avoir écrit l'équation sous la forme
           $u_C'=au_C+b$ avec $a=-1/(RC_0)$ et $b=E/(RC_0)$, le palier est
@@ -296,6 +529,7 @@ items:
       - id: C
         text: "$u_{C,p} = E/(RC_0)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
         feedback: >
           Ce choix recopie $b=E/(RC_0)$ tel quel, sans diviser par $a$ (et
           sans le signe). Le palier d'une équation $y'=ay+b$ est
@@ -304,6 +538,7 @@ items:
       - id: D
         text: "$u_{C,p} = 0$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.charge-decharge-confondues
         feedback: >
           Ce choix suppose que le condensateur tend toujours vers $0$,
           comme dans une DÉCHARGE ($b=0$, pas de générateur). Mais ici on
@@ -331,6 +566,7 @@ items:
     difficulty_level: 1
     skill_code: maths_equations_differentielles
     tags: [modele_refroidissement, ecart_pilote]
+    primary_misconception: mc.math.maths_equations_differentielles.modele-taux-constant
     stem: >
       Reprends le café du R0. Le tableau du R0 montre que le rythme de
       refroidissement (l'écart de température sur des intervalles de $5$
@@ -342,6 +578,7 @@ items:
       - id: A
         text: "Le café perd de la chaleur à un rythme constant jusqu'à atteindre $20\\ °\\text{C}$, puis s'arrête net."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-taux-constant
         feedback: >
           C'est le modèle A du R0, et il contredit directement les
           données : si le rythme était constant, il serait resté à
@@ -354,6 +591,7 @@ items:
       - id: C
         text: "Le café perd de la chaleur proportionnellement à sa propre température $T(t)$, indépendamment de la température de la pièce."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
         feedback: >
           Ce modèle oublie la température de la pièce : s'il pilotait
           vraiment le refroidissement, $T$ tendrait vers $0\ °\text{C}$
@@ -363,6 +601,7 @@ items:
       - id: D
         text: "Le rythme de refroidissement est proportionnel au temps écoulé depuis le début, pas à la température."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
         feedback: >
           Ceci ferait dépendre la dérivée directement de $t$, pas de la
           fonction $T$ elle-même — ce n'est plus le mécanisme d'une
@@ -388,6 +627,7 @@ items:
     difficulty_level: 1
     skill_code: maths_equations_differentielles
     tags: [equation_t, ecart_pilote]
+    primary_misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
     stem: >
       Le café du R0 se refroidit selon un mécanisme où l'écart avec la
       température de la pièce ($20\ °\text{C}$) pilote la vitesse de
@@ -398,6 +638,7 @@ items:
       - id: A
         text: "$T'(t) = -k\\,T(t)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
         feedback: >
           Cette équation dit que le café refroidit proportionnellement à
           SA PROPRE température, sans référence à la pièce — elle
@@ -406,6 +647,7 @@ items:
       - id: B
         text: "$T'(t) = k\\big(T(t)-20\\big)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
         feedback: >
           Erreur de signe : avec $k>0$, ce $+k$ ferait CROÎTRE l'écart
           $T(t)-20$ au lieu de le réduire — le café s'éloignerait de
@@ -417,6 +659,7 @@ items:
       - id: D
         text: "$T'(t) = -20k$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-taux-constant
         feedback: >
           Ce membre de droite est une constante fixe, indépendante de
           $T(t)$ : c'est le modèle A (rythme constant), déjà écarté par
@@ -436,6 +679,7 @@ items:
     difficulty_level: 1
     skill_code: maths_equations_differentielles
     tags: [definition_eq_diff, fonction_inconnue]
+    primary_misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
     stem: >
       D'après le R0, qu'est-ce qui caractérise une « équation
       différentielle », par opposition à une équation « ordinaire »
@@ -445,6 +689,7 @@ items:
       - id: A
         text: "L'inconnue est un nombre, mais l'équation contient une dérivée qu'il faut calculer avant de résoudre."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
         feedback: >
           Ce choix traite encore l'inconnue comme un nombre. Or dans une
           équation différentielle, l'inconnue est une FONCTION tout
@@ -453,6 +698,7 @@ items:
       - id: B
         text: "C'est une équation où on cherche $x$ tel que $y'(x)=0$, c'est-à-dire les points où $y$ est stationnaire."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
         feedback: >
           Ceci décrit la recherche d'un extremum (dérivée nulle en UN
           point) — une équation différentielle porte, elle, sur TOUS les
@@ -461,6 +707,7 @@ items:
       - id: C
         text: "C'est une équation qui relie $y$ à $x$ directement, par exemple $y=3x+2$, qu'on peut ensuite dériver."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
         feedback: >
           Ceci décrit une fonction ordinaire donnée EXPLICITEMENT en
           fonction de $x$. Une équation différentielle, au contraire, ne
@@ -485,6 +732,7 @@ items:
     difficulty_level: 2
     skill_code: maths_equations_differentielles
     tags: [y_ay, verification]
+    primary_misconception: mc.math.maths_equations_differentielles.signe-exposant
     stem: >
       On considère l'équation différentielle $y' = -4y$. Laquelle des
       fonctions suivantes est une solution sur $\mathbb{R}$ ?
@@ -493,6 +741,7 @@ items:
       - id: A
         text: "$y(x) = 2e^{4x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
         feedback: >
           Erreur de signe sur l'exposant : $y'(x)=8e^{4x}=4y(x)$, ce qui
           vérifie $y'=4y$, pas $y'=-4y$. Le signe de $a$ doit être
@@ -503,6 +752,7 @@ items:
       - id: C
         text: "$y(x) = -4e^{x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.coefficient-a-mal-identifie
         feedback: >
           Ici le coefficient $-4$ a été utilisé comme facteur dans
           l'exposant... en fait l'inverse : $y'(x)=-4e^x=y(x)$, donc
@@ -512,6 +762,7 @@ items:
       - id: D
         text: "$y(x) = 2e^{-4x} + 4$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
         feedback: >
           Ce choix ajoute un terme constant comme s'il existait un
           palier, alors que l'équation $y'=-4y$ n'a pas de terme $b$
@@ -532,6 +783,7 @@ items:
     difficulty_level: 2
     skill_code: maths_equations_differentielles
     tags: [y_ay, comportement_asymptotique]
+    primary_misconception: mc.math.maths_equations_differentielles.signe-a-comportement
     stem: >
       Une grandeur $y$ vérifie $y'=ay$ sur $\mathbb{R}$, avec $y$ non
       nulle. On observe que $y(x)$ tend vers $0$ quand $x \to +\infty$.
@@ -541,6 +793,7 @@ items:
       - id: A
         text: "$a>0$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
         feedback: >
           C'est l'inverse : avec $a>0$, $e^{ax}\to+\infty$ quand
           $x\to+\infty$ (croissance exponentielle), donc
@@ -548,6 +801,7 @@ items:
       - id: B
         text: "$a=0$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
         feedback: >
           Si $a=0$, l'équation devient $y'=0$, donc $y$ est constante —
           une fonction constante non nulle ne tend jamais vers $0$
@@ -559,6 +813,7 @@ items:
       - id: D
         text: "On ne peut rien conclure sur le signe de $a$, cela dépend de $C$."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
         feedback: >
           Le signe de $C$ ne joue aucun rôle sur le comportement en
           $+\infty$ (il fixe seulement le point de départ, ou si la
@@ -583,6 +838,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [y_ay_b, solution_particuliere]
+    primary_misconception: mc.math.maths_equations_differentielles.palier-signe
     stem: >
       Soit l'équation différentielle $y' = 5y - 20$. Quelle est sa
       solution particulière constante (le palier) ?
@@ -591,6 +847,7 @@ items:
       - id: A
         text: "$y_p = -4$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-signe
         feedback: >
           Erreur de signe : $y_p=-b/a$ avec $a=5$, $b=-20$, donc
           $y_p=-(-20)/5=20/5=4$, pas $-4$. Le double signe négatif
@@ -601,6 +858,7 @@ items:
       - id: C
         text: "$y_p = -20$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
         feedback: >
           Ce choix recopie $b=-20$ tel quel comme palier, au lieu de
           calculer $-b/a$. Vérifie : si $y=-20$ (constante), $y'=0$,
@@ -609,6 +867,7 @@ items:
       - id: D
         text: "$y_p = 20$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
         feedback: >
           Ce choix calcule $-b$ seul ($-(-20)=20$) sans diviser par
           $a=5$. Vérifie : si $y=20$, $y'=0$, mais
@@ -626,6 +885,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [y_ay_b, distinction_y_ay]
+    primary_misconception: mc.math.maths_equations_differentielles.palier-oubli
     stem: >
       Parmi les quatre équations différentielles suivantes, laquelle a
       pour ensemble de solutions $y(x) = Ce^{2x}$ (sans terme constant
@@ -635,6 +895,7 @@ items:
       - id: A
         text: "$y' = 2y + 3$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
         feedback: >
           Cette équation a un terme constant $b=3\neq 0$ : sa solution
           générale est $y(x)=Ce^{2x}-3/2$ (avec un palier), pas
@@ -643,6 +904,7 @@ items:
       - id: B
         text: "$y' = 2y - 4$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
         feedback: >
           Même erreur : ici $b=-4\neq 0$, donc il existe un palier
           $y_p=-b/a=2$ à ajouter — la solution générale est
@@ -650,6 +912,7 @@ items:
       - id: C
         text: "$y' = -2y$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
         feedback: >
           Erreur de signe sur $a$ : cette équation donne
           $y(x)=Ce^{-2x}$ (décroissance), pas $Ce^{2x}$ (croissance) —
@@ -673,6 +936,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [y_ay_b, condition_initiale]
+    primary_misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
     stem: >
       Détermine la solution $f$ de $y' = -y+5$ qui vérifie $f(0)=8$.
     type: mcq
@@ -683,6 +947,7 @@ items:
       - id: B
         text: "$f(x) = 8e^{-x}+5$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
         feedback: >
           Ce choix pose $C=f(0)=8$ directement, en oubliant de
           soustraire le palier avant d'identifier $C$. Il faut résoudre
@@ -690,6 +955,7 @@ items:
       - id: C
         text: "$f(x) = 3e^{-x} - 5$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-signe
         feedback: >
           Erreur de signe sur le palier : $y_p=-b/a=-5/(-1)=5$, pas
           $-5$. Recopier $-5$ au lieu de $+5$ casse la vérification :
@@ -697,6 +963,7 @@ items:
       - id: D
         text: "$f(x) = 8e^{-x}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-oubli
         feedback: >
           Ce choix oublie complètement le palier (comme si $b=0$) ET
           pose $C=8$ directement. Vérifie : $f'(x)=-8e^{-x}$, alors que
@@ -720,6 +987,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [condition_initiale, famille_solutions]
+    primary_misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
     stem: >
       On considère l'équation $y'=0{,}5y$. Combien de solutions de
       cette équation vérifient $y(2) = 10$ ?
@@ -728,6 +996,7 @@ items:
       - id: A
         text: "Aucune, car $10$ n'appartient pas nécessairement à la famille."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
         feedback: >
           Chaque point du plan est traversé par une unique courbe de la
           famille $Ce^{0{,}5x}$ : il suffit de résoudre $Ce^{1}=10$, ce
@@ -736,6 +1005,7 @@ items:
       - id: B
         text: "Une infinité, car la solution générale contient une constante $C$ quelconque."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
         feedback: >
           Ceci confond la famille COMPLÈTE (avant condition initiale,
           une infinité de courbes, une par $C$) avec ce qui reste APRÈS
@@ -748,6 +1018,7 @@ items:
       - id: D
         text: "Deux, une avec $C>0$ et une avec $C<0$."
         correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
         feedback: >
           L'équation $Ce^{1}=10$ est du premier degré en $C$ : elle a
           une seule solution, pas deux. Il n'y a pas de choix de signe
@@ -771,6 +1042,7 @@ items:
     difficulty_level: 3
     skill_code: maths_equations_differentielles
     tags: [oscillateur, periode]
+    primary_misconception: mc.math.maths_equations_differentielles.periode-omega
     stem: >
       Un point mobile a une position qui vérifie $x'' + 36x = 0$.
       Quelle est la période $T$ des oscillations ?
@@ -782,6 +1054,7 @@ items:
       - id: B
         text: "$T = \\dfrac{2\\pi}{36} = \\dfrac{\\pi}{18}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.omega-vs-omega2
         feedback: >
           Ce choix utilise $\omega^2=36$ directement dans la formule de
           la période au lieu de $\omega=\sqrt{36}=6$. La formule est
@@ -790,6 +1063,7 @@ items:
       - id: C
         text: "$T = 2\\pi \\times 6 = 12\\pi$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.periode-omega
         feedback: >
           Ce choix inverse la formule — multiplie par $\omega$ au lieu
           de diviser. La période est $T=2\pi/\omega$, pas
@@ -798,6 +1072,7 @@ items:
       - id: D
         text: "$T = 6$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.periode-omega
         feedback: >
           Ce choix confond la pulsation $\omega=6$ elle-même avec la
           période $T$ — ce sont deux grandeurs différentes, reliées par
@@ -817,6 +1092,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [application_physique, rl]
+    primary_misconception: mc.math.maths_equations_differentielles.charge-decharge-confondues
     stem: >
       Un dipôle RL (résistance totale $R$, inductance $L$) est alimenté
       sous une tension constante $E$. Le courant vérifie
@@ -827,6 +1103,7 @@ items:
       - id: A
         text: "$i(t) = \\dfrac{E}{R}\\,e^{-Rt/L}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.charge-decharge-confondues
         feedback: >
           Cette formule décrit une DÉCROISSANCE partant de $E/R$ vers
           $0$ — le comportement d'une décharge (courant qui s'éteint),
@@ -836,6 +1113,7 @@ items:
       - id: B
         text: "$i(t) = \\dfrac{E}{L}\\left(1-e^{-Rt/L}\\right)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
         feedback: >
           Ce choix recopie $b=E/L$ comme palier au lieu de calculer
           $-b/a$. Le palier correct est
@@ -843,6 +1121,7 @@ items:
       - id: C
         text: "$i(t) = \\dfrac{E}{R}\\left(1-e^{-Lt/R}\\right)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.tau-inverse
         feedback: >
           Ce choix inverse $L$ et $R$ dans l'exposant. La constante de
           temps est $\tau=L/R$, donc l'exposant est $-Rt/L$ (soit
@@ -873,6 +1152,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [application_physique, oscillateur]
+    primary_misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
     stem: >
       Dans un circuit LC idéal, la charge $q(t)$ du condensateur
       vérifie $q'' + \dfrac{1}{LC_0}q = 0$. À $t=0$, le condensateur
@@ -886,6 +1166,7 @@ items:
       - id: B
         text: "$q(t) = Q_{max}\\sin(\\omega t)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
         feedback: >
           Cette fonction vérifie $q(0)=0$ (car $\sin(0)=0$), pas
           $q(0)=Q_{max}$ — la condition « charge maximale au départ »
@@ -894,6 +1175,7 @@ items:
       - id: C
         text: "$q(t) = Q_{max}\\cos(\\omega t) + Q_{max}\\sin(\\omega t)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
         feedback: >
           Ce choix ajoute un terme en $\sin$ non nul alors que
           $B=q'(0)/\omega=0/\omega=0$ ici (courant nul au départ) — la
@@ -902,6 +1184,7 @@ items:
       - id: D
         text: "$q(t) = Q_{max}\\,e^{-\\omega t}$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
         feedback: >
           Ce choix confond avec une décroissance exponentielle (comme
           pour $y'=ay$) — mais $q''+\omega^2q=0$ est du SECOND ordre en
@@ -929,6 +1212,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [y_ay_b, limite]
+    primary_misconception: mc.math.maths_equations_differentielles.palier-recopie-b
     stem: >
       On considère $(E): y' = -3y+15$, où $y$ désigne une fonction
       dérivable sur $\mathbb{R}$. Quelle est la limite en $+\infty$ de
@@ -938,6 +1222,7 @@ items:
       - id: A
         text: "$1$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
         feedback: >
           Ce choix confond la limite avec la valeur initiale $f(0)$ —
           mais $f$ n'est pas constante ici (le $C$ correspondant n'est
@@ -949,6 +1234,7 @@ items:
       - id: C
         text: "$15$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.palier-recopie-b
         feedback: >
           Ce choix recopie $b=15$ tel quel comme limite, au lieu de
           calculer le palier $-b/a$. Le palier correct est
@@ -956,6 +1242,7 @@ items:
       - id: D
         text: "$+\\infty$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
         feedback: >
           Ce choix suppose que $f$ croît sans borne, comme si $a>0$ —
           ici $a=-3<0$, donc le terme $Ce^{-3x}$ s'AMENUISE vers $0$
@@ -979,6 +1266,7 @@ items:
     difficulty_level: 5
     skill_code: maths_equations_differentielles
     tags: [y_ay, condition_initiale]
+    primary_misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
     stem: >
       Une culture de bactéries a une population $N(t)$ (en milliers,
       $t$ en heures) qui vérifie $N'(t) = 0{,}2\,N(t)$, avec
@@ -992,6 +1280,7 @@ items:
       - id: B
         text: "$t = \\dfrac{\\ln 2}{50} \\approx 0{,}01$ h"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
         feedback: >
           Ce choix divise $\ln 2$ par la condition initiale $50$ au
           lieu du coefficient $a=0{,}2$. Or $50$ s'élimine dès la mise
@@ -1000,6 +1289,7 @@ items:
       - id: C
         text: "$t = \\ln(2\\times 50) = \\ln 100 \\approx 4{,}61$ h"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
         feedback: >
           Ce choix résout $e^{0{,}2t}=100$ au lieu de $e^{0{,}2t}=2$ —
           il oublie de diviser les deux membres par $N(0)=50$ avant
@@ -1008,6 +1298,7 @@ items:
       - id: D
         text: "$t = \\ln 2 \\approx 0{,}69$ h"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
         feedback: >
           Ce choix oublie de diviser par le coefficient $a=0{,}2$ après
           avoir isolé $0{,}2t=\ln 2$ — il répond avec la valeur de
@@ -1029,6 +1320,7 @@ items:
     difficulty_level: 4
     skill_code: maths_equations_differentielles
     tags: [oscillateur, condition_initiale]
+    primary_misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
     stem: >
       Un point mobile a une position $x(t)$ (en cm) qui vérifie
       $x'' + 9x = 0$, avec $x(0) = -1$ et $x'(0) = 6$. Quelle est
@@ -1038,6 +1330,7 @@ items:
       - id: A
         text: "$x(t) = -\\cos(3t) + 6\\sin(3t)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-B-sans-omega
         feedback: >
           Ce choix pose le coefficient de $\sin$ égal à $x'(0)=6$
           directement, en oubliant de diviser par $\omega=3$. La bonne
@@ -1045,6 +1338,7 @@ items:
       - id: B
         text: "$x(t) = \\cos(3t) + 2\\sin(3t)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-A-B-roles
         feedback: >
           Erreur de signe sur $A$ : $A=x(0)=-1$ (négatif), pas $1$.
           Vérifie : $x(0)=A\cos(0)=A$, donc $A$ doit reprendre
@@ -1055,6 +1349,7 @@ items:
       - id: D
         text: "$x(t) = -\\cos(9t) + 2\\sin(9t)$"
         correct: false
+        misconception: mc.math.maths_equations_differentielles.omega-vs-omega2
         feedback: >
           Ce choix utilise $\omega^2=9$ directement comme pulsation
           dans $\cos$ et $\sin$, au lieu de $\omega=\sqrt{9}=3$. C'est
@@ -1073,3 +1368,90 @@ items:
 
       **Solution :**
       $$x(t) = -\cos(3t) + 2\sin(3t)$$
+
+coverage_summary:
+  total_items: 21
+  # NOTE (§6 honnête) — banque « legacy » rétro-taguée. Les 21 items ont été
+  # rédigés AVANT la discipline du tag par distracteur (misconceptions: [] à
+  # l'origine) : conçus pour la VARIÉTÉ des pièges par item, pas pour la
+  # profondeur ≥3 par modèle. DEUX comptages, aucun gonflé :
+  #   • any_distractor = nb d'items où le modèle apparaît sur ≥1 distracteur
+  #     (occasions de le révéler) ;
+  #   • primary        = nb d'items CONSTRUITS pour cibler ce modèle.
+  counting_convention: any_distractor   # métrique retenue pour le plancher ≥3
+  floor_met: false
+  per_rung: { R0: 3, R1: 3, R2: 3, R3: 3, R4: 3, R5: 3, R6: 3 }
+
+  per_misconception_any_distractor:
+    mc.math.maths_equations_differentielles.palier-recopie-b: 5
+    mc.math.maths_equations_differentielles.oscillateur-A-B-roles: 4
+    mc.math.maths_equations_differentielles.palier-signe: 4
+    mc.math.maths_equations_differentielles.palier-oubli: 4
+    mc.math.maths_equations_differentielles.signe-exposant: 3
+    mc.math.maths_equations_differentielles.omega-vs-omega2: 3
+    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre: 2
+    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega: 2
+    mc.math.maths_equations_differentielles.charge-decharge-confondues: 2
+    mc.math.maths_equations_differentielles.condition-initiale-sans-decalage: 2
+    mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire: 2
+    mc.math.maths_equations_differentielles.modele-taux-constant: 2
+    mc.math.maths_equations_differentielles.modele-sans-ecart: 2
+    mc.math.maths_equations_differentielles.signe-a-comportement: 2
+    mc.math.maths_equations_differentielles.solution-fonction-unique: 1
+    mc.math.maths_equations_differentielles.ed-comme-primitive: 1
+    mc.math.maths_equations_differentielles.coefficient-a-mal-identifie: 1
+    mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a: 1
+    mc.math.maths_equations_differentielles.nombre-solutions-condition: 1
+    mc.math.maths_equations_differentielles.periode-omega: 1
+    mc.math.maths_equations_differentielles.tau-inverse: 1
+    mc.math.maths_equations_differentielles.ed-inconnue-nombre: 1
+
+  per_misconception_primary:
+    mc.math.maths_equations_differentielles.palier-recopie-b: 3
+    mc.math.maths_equations_differentielles.condition-initiale-sans-decalage: 2
+    mc.math.maths_equations_differentielles.oscillateur-A-B-roles: 2
+    mc.math.maths_equations_differentielles.solution-fonction-unique: 1
+    mc.math.maths_equations_differentielles.signe-exposant: 1
+    mc.math.maths_equations_differentielles.palier-signe: 1
+    mc.math.maths_equations_differentielles.palier-oubli: 1
+    mc.math.maths_equations_differentielles.omega-vs-omega2: 1
+    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega: 1
+    mc.math.maths_equations_differentielles.periode-omega: 1
+    mc.math.maths_equations_differentielles.charge-decharge-confondues: 1
+    mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire: 1
+    mc.math.maths_equations_differentielles.signe-a-comportement: 1
+    mc.math.maths_equations_differentielles.nombre-solutions-condition: 1
+    mc.math.maths_equations_differentielles.modele-taux-constant: 1
+    mc.math.maths_equations_differentielles.modele-sans-ecart: 1
+    mc.math.maths_equations_differentielles.ed-inconnue-nombre: 1
+    # jamais en primary (seulement distracteur secondaire) : ed-comme-primitive,
+    # coefficient-a-mal-identifie, condition-initiale-exposant-sans-a,
+    # signe-second-membre-second-ordre, tau-inverse.
+
+  meets_floor_any_distractor:   # ≥3 items exposent ces 6 modèles
+    - mc.math.maths_equations_differentielles.palier-recopie-b          # 5
+    - mc.math.maths_equations_differentielles.oscillateur-A-B-roles     # 4
+    - mc.math.maths_equations_differentielles.palier-signe             # 4
+    - mc.math.maths_equations_differentielles.palier-oubli             # 4
+    - mc.math.maths_equations_differentielles.signe-exposant           # 3
+    - mc.math.maths_equations_differentielles.omega-vs-omega2          # 3
+
+  under_floor:
+    # <3 items — surfacé honnêtement, PAS gonflé. Les modèles conceptuels
+    # (R0 modèles de refroidissement, définition de l'ED, condition initiale,
+    # nombre de solutions) n'ont pour l'instant qu'1 ou 2 items ; ils demandent
+    # une passe d'items dédiée.
+    count_models_below_floor: 16
+    follow_up: >-
+      Passe d'items à commander (item-author) : porter à ≥3 chacun les modèles
+      conceptuels sous plancher — priorité modele-taux-constant, modele-sans-ecart,
+      condition-initiale-sans-decalage, signe-a-comportement,
+      nombre-solutions-condition, ed-inconnue-nombre (le raisonnement, pas le
+      calcul). Le second ordre général (cas Δ>0 / Δ=0 par l'équation
+      caractéristique) n'est PAS couvert par la banque — voir la SCOPE NOTE
+      d'exercises.yaml : une passe R4-bis de leçon + items est le suivi.
+    checkpoints_note: >-
+      Les checkpoints in-leçon (checkpoints.yaml) surfacent EN PLUS, inline,
+      modele-taux-constant, signe-exposant, palier-recopie-b et
+      condition-initiale-sans-decalage — mais ne sont PAS recomptés dans ce
+      plancher (clones/formatifs, non ajoutés à la banque, cf. RLC/PC/géométrie).
