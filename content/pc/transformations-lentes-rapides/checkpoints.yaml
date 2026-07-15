@@ -1,0 +1,350 @@
+notion: transformations-lentes-rapides
+skill_code: pc_transformations_lentes_rapides
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — transformations-lentes-rapides)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL/CHEMICAL model, not just the fact of being
+# wrong. The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Every distractor carries a real `misconception:` id (no null tags); in every
+# MCQ the correct choice is NEVER the longest option (anti-length-cue).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict       (in R0)        — COMMIT gate: turns the rhetorical
+#                                        "prends position" of the clou/allumette
+#                                        hook into a real MCQ commit before the
+#                                        reveal. Probes famille-fixe-vitesse.
+#   cp-r3-lente-rapide  (after R3)     — rupture gate: lente vs rapide selon les
+#                                        FACTEURS cinétiques (concentration,
+#                                        température) et leur SENS d'action.
+#   cp-r5-conductimetrie (after r-bac) — rupture gate: pourquoi la conductance
+#                                        décroît/croît selon QUELS ions (leurs λ),
+#                                        pas selon leur nombre. Bridges r-bac.
+#   cp-r5-t-demi        (after r-bac)  — rupture gate: la définition du temps de
+#                                        demi-réaction t½ (x = x_max/2).
+#   cp-r5-vitesse-pente (after r-bac)  — rupture gate: la vitesse volumique = la
+#                                        pente de x(t), et elle DÉCROÎT.
+#
+# Boundary guard: 2ème Bac PC, suivi d'une transformation LENTE. No mécanisme
+# réactionnel détaillé, no loi de vitesse quantitative (v = k[A]^n), no
+# catalyse ici. σ/G lus par additivité des conductivités ioniques ; t½ défini
+# par l'avancement (x = x_max/2) ; vitesse = pente de la tangente à x(t).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position, en une phrase" into a real MCQ commit
+  #        before the lesson reveals that a single equation can change
+  #        duration without changing nature. Probes famille-fixe-vitesse.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_transformations_lentes_rapides
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_lentes_rapides, hook_commit]
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Le clou en fer met des mois à rouiller ; l'allumette s'enflamme en une
+      fraction de seconde. Les deux sont pourtant des réactions de la **même
+      famille chimique** (un transfert d'électrons vers le dioxygène).
+      **Qu'est-ce qui explique un tel écart de vitesse ?** Engage-toi — c'est
+      ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          La famille chimique ne suffit pas : d'autres facteurs, liés aux conditions, doivent intervenir.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe. Deux réactions de même famille
+          peuvent durer des temps radicalement différents : la famille seule ne
+          fixe pas la vitesse. Toute la leçon consiste à identifier ce qui, en
+          plus, la contrôle — et à le voir sur une SEULE équation dont la durée
+          change selon les conditions.
+      - id: B
+        text: |
+          La famille chimique fixe seule la vitesse : deux réactions d'oxydoréduction devraient donc durer à peu près le même temps.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+        feedback: |
+          Modèle détecté : « la nature chimique fixe la vitesse ». C'est
+          justement ce que l'écart contredit — le clou et l'allumette, même
+          famille, ont des durées séparées par un facteur de plusieurs millions.
+          La famille seule ne peut donc pas fixer la vitesse.
+      - id: C
+        text: |
+          L'écart n'est qu'une illusion : avec un chronomètre assez précis, on verrait le clou et l'allumette réagir à la même vitesse.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: |
+          Modèle détecté : « c'est un artefact de mesure ». Plusieurs mois contre
+          une fraction de seconde est un écart bien trop massif pour un défaut de
+          précision : la différence de vitesse est réelle, pas une illusion.
+      - id: D
+        text: |
+          C'est seulement une question de quantité de matière : plus il y a de réactifs, plus c'est rapide, rien d'autre ne joue.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: |
+          Modèle détecté : « seule la quantité (donc la fréquence des
+          rencontres) compte ». La concentration est bien un facteur — mais pas
+          le seul : la température accélère aussi très nettement une
+          transformation. Autre chose que la simple quantité doit intervenir.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r3-lente-rapide | placed AFTER R3
+  #        Rupture gate: rendre une transformation plus LENTE en actionnant
+  #        les deux facteurs cinétiques dans le SENS qui freine. Adapté de
+  #        TLR-14 (distractors curés pour porter des tags distincts).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-lente-rapide
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_transformations_lentes_rapides
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_lentes_rapides]
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+    item_source: clone_of_TLR-14
+    lesson_placement: after_R3
+
+    stem: |
+      Tu veux ralentir une transformation lente, sans changer sa nature
+      chimique, pour avoir le temps de mieux l'étudier. En t'appuyant sur les
+      deux facteurs cinétiques établis en R3, que fais-tu ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Refroidir le mélange ET diluer les réactifs : les deux facteurs poussés dans le sens qui freine.
+        correct: true
+        feedback: |
+          Exact. Les deux facteurs cinétiques agissent dans le même sens :
+          baisser la température et baisser la concentration ralentissent tous
+          deux la transformation, sans changer les réactifs ni les produits.
+      - id: B
+        text: |
+          Chauffer et concentrer les réactifs, pour laisser plus de temps à l'observation.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: |
+          Sens inversé : chauffer et concentrer **accélèrent** la transformation,
+          ils ne la ralentissent pas. Tu la rendrais plus difficile à suivre, pas
+          plus facile.
+      - id: C
+        text: |
+          Rien à faire sur les conditions : la durée ne dépend que de la nature chimique de la réaction.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+        feedback: |
+          Modèle « la nature fixe la vitesse ». Or R3 l'établit
+          expérimentalement : à réaction inchangée, la concentration et la
+          température changent bien la durée. Les conditions sont précisément les
+          leviers qu'on peut actionner.
+      - id: D
+        text: |
+          Diluer très fortement les réactifs, ce qui transforme alors la réaction en une autre, forcément plus lente.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+        feedback: |
+          Diluer ralentit bien — mais ne change **pas** la nature de la réaction :
+          mêmes réactifs, mêmes produits, même équation, seulement plus lente. On
+          agit sur la vitesse, pas sur l'identité chimique de la transformation.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r5-conductimetrie | placed AFTER the r-bac exercise (R5)
+  #        Rupture gate: la conductance décroît (saponification) ou croît
+  #        selon QUELS ions apparaissent/disparaissent et leurs λ, PAS selon
+  #        leur nombre total. Probes conductance-nombre-d-ions.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-conductimetrie
+    rung: "R5"
+    habilete: application_experimentale
+    skill_code: pc_transformations_lentes_rapides
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_lentes_rapides, document_experimental]
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    item_source: original
+    lesson_placement: after_R5_r-bac
+
+    stem: |
+      Dans la saponification suivie ci-dessus, à chaque avancement un ion
+      $\text{OH}^-$ disparaît et un ion $\text{HCO}_2^-$ apparaît (l'ion
+      $\text{Na}^+$ reste inchangé). La conductance $G$ **décroît** au cours du
+      temps. Quelle est la bonne explication ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          L'ion $\text{OH}^-$ consommé conduit bien mieux que l'ion $\text{HCO}_2^-$ qui le remplace : à nombre d'ions quasi constant, $G$ baisse.
+        correct: true
+        feedback: |
+          Exact. On échange, un pour un, un excellent porteur de charge
+          ($\lambda_{\text{OH}^-} = 19{,}9\cdot10^{-3}$) contre un mauvais
+          ($\lambda_{\text{HCO}_2^-} = 5{,}46\cdot10^{-3}$). Le nombre d'ions ne
+          change quasiment pas ; c'est leur **qualité** de conducteur qui change,
+          d'où la baisse de $G$.
+      - id: B
+        text: |
+          Le nombre total d'ions en solution diminue au fur et à mesure de la réaction.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: |
+          Faux comptage : un ion $\text{OH}^-$ consommé est remplacé par un ion
+          $\text{HCO}_2^-$ formé. Le nombre total d'ions reste quasiment
+          constant — ce n'est donc pas « moins d'ions » qui explique la baisse.
+      - id: C
+        text: |
+          Les ions consommés ne sont pas remplacés : il reste de moins en moins de porteurs de charge en solution au fur et à mesure que la réaction avance.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: |
+          Ils sont remplacés, justement : l'équation produit un ion
+          $\text{HCO}_2^-$ pour chaque $\text{OH}^-$ consommé. L'effectif des
+          porteurs de charge est à peu près conservé ; c'est leur pouvoir
+          conducteur qui a chuté.
+      - id: D
+        text: |
+          Elle ne devrait pas baisser : on fabrique l'ion $\text{HCO}_2^-$, donc on ajoute des porteurs et $G$ devrait plutôt augmenter.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: |
+          On n'**ajoute** pas des porteurs : on en **remplace** (un $\text{OH}^-$
+          part quand un $\text{HCO}_2^-$ arrive). Et le nouveau conduit environ
+          $3{,}6$ fois moins : le bilan est une baisse, pas une hausse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r5-t-demi | placed AFTER the r-bac exercise (R5)
+  #        Rupture gate: la DÉFINITION du temps de demi-réaction
+  #        (x = x_max/2), pas « la moitié de la durée ». Probes
+  #        t-demi-mauvaise-def.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-t-demi
+    rung: "R5"
+    habilete: utilisation
+    skill_code: pc_transformations_lentes_rapides
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_lentes_rapides]
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+    item_source: original
+    lesson_placement: after_R5_r-bac
+
+    stem: |
+      Le temps de demi-réaction $t_{1/2}$ d'une transformation, c'est…
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          l'instant où l'avancement $x$ atteint la moitié de sa valeur finale $x_{max}$.
+        correct: true
+        feedback: |
+          Exact. $t_{1/2}$ se définit par l'**avancement** : $x(t_{1/2}) =
+          x_{max}/2$. On calcule $x_{max}/2$, on en déduit la grandeur mesurée
+          ($G$, $\sigma$…) correspondante, puis on lit l'abscisse sur la courbe.
+      - id: B
+        text: |
+          la moitié de la durée totale de la transformation.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: |
+          Non : $t_{1/2}$ se définit par l'avancement atteint, pas par le temps
+          écoulé. La transformation est bien plus lente à la fin qu'au début,
+          donc la demi-réaction ($x = x_{max}/2$) tombe **avant** la moitié de la
+          durée totale, pas en son milieu.
+      - id: C
+        text: |
+          l'instant précis où la transformation s'arrête complètement.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: |
+          Ça, ce serait plutôt la fin de la réaction ($x = x_{max}$). À
+          $t_{1/2}$, seule la **moitié** de l'avancement final est atteinte : la
+          réaction continue encore, de plus en plus lentement.
+      - id: D
+        text: |
+          la durée au bout de laquelle la concentration d'un réactif est divisée par deux — elle dépend donc du réactif que l'on choisit de suivre.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: |
+          $t_{1/2}$ est fixé par l'avancement ($x = x_{max}/2$), une grandeur
+          unique — il ne dépend pas du réactif suivi. En mélange stœchiométrique,
+          les deux réactifs atteignent d'ailleurs leur demi-consommation au même
+          instant.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r5-vitesse-pente | placed AFTER the r-bac exercise (R5)
+  #        Rupture gate: la vitesse volumique se lit comme la PENTE de la
+  #        tangente à x(t), et elle DÉCROÎT (pente forte au départ, qui
+  #        s'aplatit). Probes vitesse-pente-mauvaise.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-vitesse-pente
+    rung: "R5"
+    habilete: application_experimentale
+    skill_code: pc_transformations_lentes_rapides
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_lentes_rapides, document_experimental]
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+    item_source: original
+    lesson_placement: after_R5_r-bac
+
+    stem: |
+      On suit l'avancement $x(t)$ d'une transformation lente : la courbe monte
+      vite au début, puis s'aplatit en approchant du palier $x_{max}$. Comment
+      évolue la vitesse de la réaction, et comment la lit-on sur $x(t)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Elle est proportionnelle à la pente de la tangente à $x(t)$ : forte au début, elle diminue ensuite, donc la vitesse décroît.
+        correct: true
+        feedback: |
+          Exact. La vitesse volumique se lit comme la **pente** de la tangente à
+          $x(t)$ (à un facteur de volume près). Cette pente est maximale au
+          départ, puis s'aplatit à mesure que les réactifs se raréfient : la
+          vitesse décroît tout au long de la transformation.
+      - id: B
+        text: |
+          Elle reste constante tant que la réaction n'est pas finie, puis tombe brutalement à zéro.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: |
+          Une vitesse constante donnerait une droite pour $x(t)$, pas une courbe
+          qui s'aplatit. La pente diminue continûment : la vitesse décroît
+          progressivement, elle ne tombe pas d'un coup.
+      - id: C
+        text: |
+          Elle augmente au cours du temps, puisqu'il se forme de plus en plus de produit.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: |
+          C'est confondre la **quantité** de produit (qui, elle, augmente) avec
+          la **vitesse** à laquelle il se forme (la pente), qui diminue à mesure
+          que les réactifs s'épuisent. La courbe s'aplatit : la vitesse baisse.
+      - id: D
+        text: |
+          Elle se lit directement comme l'ordonnée $x(t)$ et non comme la pente : plus $x$ est grand, plus la vitesse serait grande.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: |
+          La vitesse n'est pas l'ordonnée $x(t)$ mais sa **pente** (sa dérivée).
+          Au palier, $x$ est maximal alors que la vitesse est nulle (courbe
+          plate) : c'est bien la pente, pas la hauteur, qui donne la vitesse.

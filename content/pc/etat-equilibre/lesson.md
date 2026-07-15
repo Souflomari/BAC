@@ -10,6 +10,8 @@ Si tu mesures l'intensité de cette couleur seconde après seconde, elle continu
 
 Avant de lire la suite, prends position : à ton avis, que s'est-il passé, chimiquement, à l'instant où la couleur a cessé de changer ? Le mélange a-t-il épuisé l'un de ses réactifs ? La réaction a-t-elle simplement cessé de se produire ?
 
+[[checkpoint:cp-r0-predict]]
+
 Voici l'expérience qui va trancher. Prends ce même mélange, à cet instant où plus rien ne semble bouger, et ajoute-lui, sans changer le volume, une pincée de thiocyanate de potassium solide (une source supplémentaire d'ions $SCN^-$).
 
 Résultat : la couleur rouge s'intensifie de nouveau, immédiatement. Le mélange, qui semblait figé, était donc parfaitement capable de réagir davantage - à condition qu'on le bouscule un peu.
@@ -54,6 +56,8 @@ C'est la confusion la plus naturelle, et elle mérite d'être affrontée directe
 Reviens à l'expérience de l'accroche. Si la réaction avait vraiment cessé de se produire (dans les deux sens - ni directe, ni inverse), alors les ions $Fe^{3+}$ restants seraient chimiquement inertes : ajouter du $SCN^-$ ne devrait rien changer, puisque plus rien ne réagit. Or la couleur s'intensifie de nouveau, immédiatement, dès l'ajout. Ce résultat contredit directement l'idée d'un arrêt : les ions $Fe^{3+}$ étaient toujours là, toujours capables de réagir avec un $SCN^-$ - la réaction directe a simplement repris, un peu plus vite que la réaction inverse pendant un moment, avant qu'un nouvel équilibre ne s'installe.
 
 Ce qui s'arrête à l'équilibre, ce n'est pas la réaction. C'est l'évolution nette et observable des concentrations - parce que deux réactions opposées, désormais de même vitesse, se compensent exactement.
+
+[[checkpoint:cp-r1-dynamique]]
 
 ---
 
@@ -104,6 +108,8 @@ $$[Fe^{3+}]_{eq} = [SCN^-]_{eq} = c_0 - [FeSCN^{2+}]_{eq} = 2{,}0 \times 10^{-3}
 La transformation est nettement **limitée** : réactifs et produit coexistent à l'équilibre, dans des proportions comparables. Garde ces trois concentrations - elles reviennent dans les rungs suivants.
 
 [[figure:jauge-avancement-tau]]
+
+[[checkpoint:cp-r2-tau-total]]
 
 ---
 
@@ -161,6 +167,8 @@ $$t = \text{équilibre} : \quad [Fe^{3+}]=[SCN^-]=0{,}8\times10^{-3}, \quad Q_r 
 
 $Q_r$ grimpe sans relâche : $0 \to 3{,}1\times10^2 \to 7{,}4\times10^2 \to 1{,}4\times10^3 \to 1{,}9\times10^3$, et il cesse de grimper exactement à l'instant où la couleur cesse de changer. Ce n'est pas une coïncidence - c'est l'objet du rung suivant.
 
+[[checkpoint:cp-r3-qr-evolue]]
+
 ---
 
 ## R4 — $Q_r$ à l'équilibre : la constante $K$, indépendante de l'état initial
@@ -202,6 +210,8 @@ $$[Fe^{3+}]_{eq}' = c_1' - 0{,}75\times10^{-3} = 2{,}75\times10^{-3}-0{,}75\time
 $$K_2 = \frac{0{,}75\times10^{-3}}{2{,}0\times10^{-3}\times0{,}20\times10^{-3}} = \frac{0{,}75\times10^{-3}}{4{,}0\times10^{-7}} = 1875$$
 
 $K_1 = K_2 = 1875$, très exactement, alors que les concentrations initiales n'ont rien à voir entre les deux expériences. Vérifie d'ailleurs que le taux d'avancement final, lui, diffère bel et bien : $\tau_2 = [FeSCN^{2+}]_{eq}'/c_2' = 0{,}75/0{,}95 \approx 0{,}79$, contre $\tau_1 = 0{,}60$ - deux valeurs différentes de $\tau$, pour une seule et même valeur de $K$. C'est exactement ce qu'annonce le principe : $K$ décrit la réaction elle-même, pas la manière dont on l'a préparée.
+
+[[checkpoint:cp-r4-k-constante]]
 
 ---
 
@@ -282,50 +292,14 @@ $\tau'' \approx 0{,}23$, nettement plus petit que $\tau_1 = 0{,}60$ avant diluti
 - Critère d'évolution : on compare $Q_{r,i}$ (calculé à un instant donné, pas nécessairement à l'équilibre) à $K$. $Q_{r,i}<K$ : évolution dans le sens direct. $Q_{r,i}>K$ : évolution dans le sens inverse.
 - Diluer change $\tau$ (via l'effet de la dilution sur $Q_r$ comparé à $K$), mais ne change jamais $K$.
 
-### Exercice de type bac (original - entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On prépare, à une température fixée, un mélange dans lequel les concentrations initiales, juste après mélange, valent toutes deux $c_0 = 1{,}5\times10^{-3}\ \text{mol/L}$ pour les ions $Fe^{3+}$ et pour les ions $SCN^-$ (volume supposé constant). Un suivi spectrophotométrique montre que la teinte rouge cesse d'évoluer après quelques minutes ; à cet instant, $[FeSCN^{2+}]_{eq} \approx 8{,}3\times10^{-4}\ \text{mol/L}$, et elle ne varie plus ensuite.
+Ce qui suit est un vrai sujet d'examen national — **2015, session normale**. Il ne porte pas sur le mélange $Fe^{3+}/SCN^-$ de la leçon, mais sur un autre système à l'équilibre : un acide faible (l'acide benzoïque) dans l'eau. C'est voulu — le jour J, on te demande d'appliquer les mêmes outils (taux d'avancement final $\tau$, quotient de réaction à l'équilibre $Q_{r,eq}$, constante $K$) à une situation que tu n'as jamais vue. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Écris l'équation de la réaction, avec la notation d'équilibre qui convient, et donne l'expression du quotient de réaction $Q_r$ associé.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie les espèces en présence et leurs coefficients, exactement comme au rung 1, puis on construit $Q_r$ en suivant la règle du rung 3 (produits sur réactifs, coefficients en exposants).
+### Une variation pour ne pas mémoriser
 
-$$Fe^{3+} + SCN^- \rightleftharpoons FeSCN^{2+} \qquad\qquad Q_r = \frac{[FeSCN^{2+}]}{[Fe^{3+}][SCN^-]}$$
+Même trio de compétences ($\tau$, $Q_{r,eq}$, constante d'acidité), mais un autre acide faible et surtout une **mesure différente** : ici c'est le $pH$ qui donne l'avancement, pas la conductivité. À toi de reconnaître quelle procédure s'applique quand la grandeur suivie change, sans pouvoir recopier le sujet précédent.
 
-**2) Détermine le taux d'avancement final $\tau$ de cette transformation. Conclus sur son caractère total ou limité.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* concentrations initiales égales et stoechiométrie un pour un (rung 2) : l'avancement maximal, en concentration, vaut $c_0$.
-
-$$\tau = \frac{[FeSCN^{2+}]_{eq}}{c_0} = \frac{8{,}3\times10^{-4}}{1{,}5\times10^{-3}} \approx 0{,}55$$
-
-$\tau \approx 0{,}55 < 1$ : la transformation est **limitée**.
-
-**3) Détermine $[Fe^{3+}]_{eq}$ et $[SCN^-]_{eq}$, puis calcule $K$ pour cette réaction à cette température. Compare cette valeur à celle trouvée dans la leçon.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* bilan de matière (rung 2), puis on forme le quotient à l'équilibre (rung 4).
-
-$$[Fe^{3+}]_{eq} = [SCN^-]_{eq} = c_0 - [FeSCN^{2+}]_{eq} = 1{,}5\times10^{-3} - 8{,}3\times10^{-4} = 6{,}7\times10^{-4}\ \text{mol/L}$$
-
-$$K = \frac{8{,}3\times10^{-4}}{(6{,}7\times10^{-4})^2} \approx 1{,}8\times10^3$$
-
-Aux incertitudes de mesure près, on retrouve un ordre de grandeur identique à celui trouvé au rung 4 ($K = 1875$) pour cette même réaction à cette même température - alors que les concentrations initiales utilisées ici ($1{,}5\times10^{-3}\ \text{mol/L}$) sont différentes de celles du rung 4. C'est une confirmation supplémentaire que $K$ ne dépend que de la réaction et de la température, jamais des concentrations de départ.
-
-**4) On ajoute, sans changer le volume, du thiocyanate de potassium solide, ce qui élève instantanément $[SCN^-]$ à $2{,}0\times10^{-3}\ \text{mol/L}$ (les concentrations des deux autres espèces restant, à cet instant, inchangées). Calcule le nouveau quotient de réaction $Q_{r,i}$ juste après cet ajout, compare-le à $K$, et prédis dans quel sens le système va évoluer.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le critère du rung 5 - comparer $Q_{r,i}$, calculé avec les concentrations de l'instant, à la valeur de $K$ trouvée en question 3.
-
-$$Q_{r,i} = \frac{8{,}3\times10^{-4}}{6{,}7\times10^{-4}\times2{,}0\times10^{-3}} \approx 6{,}2\times10^2$$
-
-$Q_{r,i} \approx 6{,}2\times10^2$, inférieur à $K \approx 1{,}8\times10^3$ : le système va évoluer dans le sens direct - davantage de complexe $FeSCN^{2+}$ va se former, jusqu'à ce que $Q_r$ rejoigne $K$.
-
-**5) Si, au lieu d'ajouter du thiocyanate, on avait dilué le mélange à l'équilibre (celui de la question 3) par un facteur $2$, prédis, sans calcul complet, si le taux d'avancement final de ce nouveau système serait plus grand, plus petit, ou égal à celui trouvé en question 2. Justifie uniquement à partir du sens de variation de $Q_r$ lors d'une dilution pour cette réaction.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le raisonnement général du rung 6, sans refaire tout le calcul numérique.
-
-Pour cette réaction, $(a+b)=2$ (les deux réactifs) contre $(c+d)=1$ (un seul produit) : diluer multiplie $Q_r$ par $f^{(a+b)-(c+d)} = f^1 = f > 1$. Le nouveau $Q_{r,i}$ (juste après dilution) serait donc supérieur à $K$, ce qui impose une évolution dans le sens inverse - une partie du complexe se dissocierait. Le taux d'avancement final serait donc **plus petit** que celui de la question 2.
-
-### À toi
-
-**Variation 1.** On étudie, à une température fixée, la réaction de formation du complexe diammine-argent(I) : $Ag^+ + 2\,NH_3 \rightleftharpoons Ag(NH_3)_2^+$. On mélange une solution d'ions $Ag^+$ et une solution d'ammoniac $NH_3$, avec des concentrations initiales $c_1 = 1{,}0 \times 10^{-3}\ \text{mol/L}$ (pour $Ag^+$) et $c_2 = 4{,}0 \times 10^{-3}\ \text{mol/L}$ (pour $NH_3$, volontairement en excès). À l'équilibre, on mesure $[Ag(NH_3)_2^+]_{eq} = 0{,}9 \times 10^{-3}\ \text{mol/L}$. Écris l'expression de $Q_r$ pour cette réaction, calcule le taux d'avancement final $\tau$ (par rapport au réactif limitant), puis détermine $K$. Enfin, prédis, en justifiant uniquement à partir des ordres du réactif et du produit (sans calcul), si diluer ce mélange ferait augmenter ou diminuer $\tau$.
-
-**Variation 2.** Un élève affirme : « Si je double les concentrations initiales des deux réactifs d'une réaction, alors sa constante d'équilibre $K$ double aussi, car il y a deux fois plus de matière au départ. » Explique pourquoi ce raisonnement est faux, en t'appuyant sur ce que tu as vu au rung 4 de cette leçon, puis indique ce qui, lui, change réellement quand on double les concentrations initiales (à $K$ fixée).
+[[exercise:r-variation]]

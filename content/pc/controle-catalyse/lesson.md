@@ -20,6 +20,8 @@ Voici l'idée qu'on va tester. Au lieu de partir de l'acide éthanoïque, on par
 
 Engage-toi sur une des trois avant de continuer. Puis on tranche — et on verra pourquoi un simple changement de réactif peut réussir ce qu'aucun réglage de température ne fera jamais. Ensuite, une fois l'ester fabriqué, on apprendra à le défaire proprement — jusqu'au savon.
 
+[[checkpoint:cp-r0-predict]]
+
 ---
 
 ## R1 — Contrôle par un réactif : passer à l'anhydride d'acide
@@ -85,10 +87,16 @@ Changer de réactif fait passer le rendement de $67\,\%$ à $100\,\%$ — et en 
 
 Un **catalyseur** est une espèce chimique qui **accélère** une réaction sans être consommée : il participe au déroulement de la transformation, mais il en ressort intact, en même quantité et de même nature qu'au départ. On l'écrit au-dessus de la flèche de l'équation, jamais parmi les réactifs ni parmi les produits — puisqu'il n'appartient ni à l'un ni à l'autre camp.
 
+[[checkpoint:cp-r2-catalyseur-bilan]]
+
 Le programme lui reconnaît deux rôles, qu'il faut savoir nommer :
 
 - un rôle **accélérateur** : il augmente la vitesse de la réaction ;
 - un rôle **sélectif** : lorsque plusieurs réactions concurrentes sont possibles à partir des mêmes réactifs, un catalyseur donné peut n'en accélérer qu'une seule, et orienter ainsi le système vers le produit voulu plutôt qu'un autre. (Les enzymes, qu'on verra au rung suivant, poussent cette sélectivité à l'extrême.)
+
+Le catalyseur rejoint ainsi les autres **facteurs cinétiques** déjà rencontrés — la température et la concentration des réactifs : tous des leviers qui agissent sur la **vitesse** d'une transformation, jamais sur son état final.
+
+[[checkpoint:cp-r2-facteurs-cinetiques]]
 
 ### Ce qu'un catalyseur ne change jamais : l'état final
 
@@ -124,6 +132,8 @@ Retiens la formule qui résume tout : un catalyseur qui n'accélérerait qu'un s
 
 Reprends le parfumeur du R0, resté sur la voie de l'acide (lente, limitée à $\tau \approx 2/3$). Il se dit : « je vais ajouter plus de catalyseur acide, ça poussera la réaction plus loin. » Faux — et tu sais maintenant l'argumenter. Le catalyseur accélère l'estérification et l'hydrolyse dans les mêmes proportions ; le rapport de leurs vitesses ne bouge pas, donc l'équilibre se rétablit au même $\tau \approx 2/3$, simplement atteint plus vite. Pour dépasser les deux tiers, il lui faut un autre type de levier : soit déplacer l'équilibre (excès d'un réactif, élimination d'un produit — chapitre précédent), soit changer de réactif (l'anhydride — rung R1). Le catalyseur, lui, ne fait gagner que du temps.
 
+[[checkpoint:cp-r2-catalyseur-equilibre]]
+
 ---
 
 ## R3 — Les trois visages de la catalyse : homogène, hétérogène, enzymatique
@@ -155,6 +165,8 @@ Une **enzyme** est un catalyseur biologique, une protéine produite par les cell
 Exemple concret : l'amylase salivaire catalyse l'hydrolyse de l'amidon, une grosse molécule, en molécules de sucre bien plus petites — une réaction d'hydrolyse, de la même famille que celle qu'on va rencontrer pour les esters au rung suivant, mais ici accélérée par une enzyme plutôt que par un acide ou une base.
 
 [[figure:trois-catalyses]]
+
+[[checkpoint:cp-r3-types-catalyse]]
 
 ---
 
@@ -191,6 +203,8 @@ Cette réaction porte un nom : la **saponification**. Ses deux produits sont :
 
 Comme toute hydrolyse basique, la saponification est **lente mais totale** — c'est pour ça qu'on l'emploie pour fabriquer le savon depuis des siècles : tout le corps gras finit par être transformé.
 
+[[checkpoint:cp-r4-vitesse-avancement]]
+
 ### La structure d'un savon : une tête et une queue
 
 Regarde de près un ion du savon, $R-COO^-$, avec $R$ une longue chaîne carbonée (souvent quinze à dix-sept atomes de carbone). Il a deux bouts qui ne se ressemblent pas du tout :
@@ -222,56 +236,14 @@ C'est cette double personnalité qui explique le pouvoir lavant du savon. Face �
 - L'**hydrolyse basique** d'un ester (ester + $HO^-$ $\rightarrow$ carboxylate + alcool) est **totale**, contrairement à l'hydrolyse acide, limitée. Appliquée à un corps gras, c'est la **saponification** : triglycéride + $HO^-$ $\rightarrow$ savon ($R-COO^-$) + glycérol.
 - Un ion de savon $R-COO^-$ est **amphiphile** : tête $-COO^-$ **hydrophile** (chargée), longue queue carbonée **hydrophobe** — d'où son pouvoir lavant.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-**Partie A — Synthèse par l'anhydride.** On veut préparer de l'éthanoate d'éthyle. On dispose d'anhydride éthanoïque $(CH_3CO)_2O$ et d'éthanol $C_2H_5OH$.
+C'est un sujet d'examen national — **2025 (session normale)** : un suivi cinétique d'estérification mené dans trois conditions (deux températures, puis avec catalyseur). Le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Écris l'équation de la réaction entre l'anhydride éthanoïque et l'éthanol. Nomme l'ester formé et l'autre produit.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique l'équation générale du rung R1 — un anhydride donne un ester et un acide carboxylique, avec une seule flèche.
+### Une variation pour ne pas mémoriser
 
-$$(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$$
+Même structure profonde, habillage différent : un autre couple acide/alcool, d'autres nombres, deux expériences au lieu de trois. À toi de reconnaître, sous les nombres qui changent, quelle idée s'applique — la vitesse ou l'état final.
 
-L'ester formé est l'**éthanoate d'éthyle** ; l'autre produit est l'**acide éthanoïque** (pas de l'eau).
-
-**2) On introduit $n_0 = 0{,}20\ \text{mol}$ d'éthanol et l'anhydride en excès. Quelle quantité d'ester obtient-on ? Quel est le rendement ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la réaction étant rapide et totale, le réactif limitant (l'éthanol, l'anhydride étant en excès) est intégralement consommé — on n'a aucun équilibre à résoudre.
-
-L'éthanol est limitant et entièrement consommé, donc $n(\text{ester}) = 0{,}20\ \text{mol}$. La quantité maximale théorique est la même, $0{,}20\ \text{mol}$ :
-
-$$\eta = \frac{0{,}20}{0{,}20} = 1 = 100\,\%$$
-
-**3) Un camarade propose plutôt de partir d'acide éthanoïque et d'éthanol en quantités égales ($0{,}20\ \text{mol}$ chacun), avec quelques gouttes d'acide sulfurique. Obtiendra-t-il autant d'ester ? Justifie en distinguant vitesse et état final.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on sépare explicitement ce qui change la vitesse (le catalyseur) de ce qui change la position de l'état final (le choix du réactif).
-
-Non. L'acide sulfurique n'est qu'un catalyseur : il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans déplacer l'équilibre. Le mélange plafonne donc à $\tau \approx 2/3$, soit $n(\text{ester}) \approx \tfrac{2}{3} \times 0{,}20 \approx 0{,}13\ \text{mol}$ ($\eta \approx 67\,\%$) — moins que par l'anhydride, malgré le catalyseur. Le catalyseur ne fait qu'atteindre plus vite ce même état final limité ; seul le changement de réactif rendait la réaction totale.
-
-**Partie B — Défaire l'ester : la saponification.** On chauffe à reflux un corps gras (triglycéride) avec de la soude concentrée.
-
-**4) Écris l'équation générale de la saponification d'un triglycéride $C_3H_5(O-CO-R)_3$ par les ions $HO^-$. Nomme les deux produits.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* un triglycéride porte trois fonctions ester ; il faut donc trois ions $HO^-$ pour les hydrolyser toutes, ce qui libère trois carboxylates et un glycérol.
-
-$$C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$$
-
-Les deux produits sont le **savon** (les ions carboxylate à longue chaîne $R-COO^-$) et le **glycérol** $C_3H_5(OH)_3$.
-
-**5) Cette hydrolyse basique est-elle limitée ou totale ? En quoi diffère-t-elle de l'hydrolyse acide du même ester ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* le critère décisif est la présence ou l'absence d'une réaction inverse, qui dépend du produit formé (acide ou carboxylate).
-
-Elle est **totale**. L'hydrolyse acide redonne l'acide carboxylique $R-COOH$, qui peut se réestérifier — la réaction est donc limitée par un équilibre. L'hydrolyse basique donne l'ion carboxylate $R-COO^-$, qui ne s'estérifie pas : sans réaction inverse, la transformation va jusqu'au bout.
-
-**6) Sur l'ion carboxylate $R-COO^-$ du savon obtenu, identifie la partie hydrophile et la partie hydrophobe, et explique en une phrase le pouvoir lavant.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on classe les deux bouts par la charge, pas par la taille.
-
-La tête $-COO^-$, chargée, est **hydrophile** ; la longue chaîne carbonée $R$, neutre, est **hydrophobe**. Le pouvoir lavant vient de cette double affinité : la queue hydrophobe plonge dans la tache de gras tandis que la tête hydrophile reste tournée vers l'eau, si bien que les ions savon enrobent les gouttes de gras et les emportent au rinçage.
-
-### À toi
-
-**Variation 1.** On fait réagir l'anhydride éthanoïque $(CH_3CO)_2O$ avec du méthanol $CH_3OH$ (l'anhydride en excès, $n_0(\text{méthanol}) = 0{,}10\ \text{mol}$). Écris l'équation, nomme l'ester formé, puis calcule la quantité d'ester obtenue et le rendement, sachant que la réaction est rapide et totale. Compare au rendement qu'on obtiendrait par la voie de l'acide éthanoïque + méthanol en quantités égales ($\tau \approx 2/3$), et dis en une phrase pourquoi un catalyseur ne comblerait pas l'écart.
-
-**Variation 2.** Un savon est fabriqué par saponification d'une huile végétale ; l'ion carboxylate obtenu est $C_{17}H_{35}-COO^-$. (a) Un élève affirme : « la saponification est un équilibre, comme l'estérification ». Corrige-le en une phrase, en t'appuyant sur le produit formé. (b) Identifie la partie hydrophile et la partie hydrophobe de cet ion, et indique lequel des deux bouts va se planter dans une tache de gras.
+[[exercise:r-variation]]

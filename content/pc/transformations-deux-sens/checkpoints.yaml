@@ -1,0 +1,357 @@
+notion: transformations-deux-sens
+skill_code: pc_transformations_deux_sens
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — transformations-deux-sens)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong CHEMICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict       (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                                     position" (le mélange ira-t-il jusqu'au
+#                                     bout ?) into a real MCQ commit before the
+#                                     reveal. Probes reaction-toujours-totale.
+#   cp-r1-deux-sens     (after R1)  — rupture gate: réaction DANS LES DEUX SENS /
+#                                     état d'équilibre dynamique (les deux
+#                                     réactions ne s'arrêtent pas). New stem.
+#   cp-r2-tau           (after R2)  — rupture gate: réaction LIMITÉE (τ<1) vs
+#                                     TOTALE (τ=1) — ce que mesure τ. New stem.
+#   cp-r3-sens          (after R3)  — rupture gate: le SENS direct/inverse dépend
+#                                     de la composition initiale. Clone of TDS-13.
+#   cp-r4-esterification (after r-bac, in R4) — rupture gate: l'ESTÉRIFICATION est
+#                                     limitée (équilibre) ; ce qui déplace vraiment
+#                                     le rendement. New stem.
+#
+# Every distractor carries a named `misconception:` tag (no null tags); in every
+# item the correct option is NOT the longest choice. Clones surface an end-bank
+# stem inline and do NOT adjust the items.yaml tally (no double-counting).
+#
+# Boundary guard (2ème Bac PC, unité « transformations dans les deux sens ») :
+# double flèche / réaction limitée vs totale / taux d'avancement final τ = x_f/x_max
+# / sens qui dépend de la composition initiale. La quantification fine (Q_r, K,
+# déplacement chiffré) relève des unités « État d'équilibre » et « Estérification–
+# hydrolyse » — ici on l'effleure qualitativement, jamais on ne la formalise.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position : le mélange ira-t-il jusqu'au bout ?"
+  #        into a real MCQ commit before the test result is revealed.
+  #        Probes reaction-toujours-totale. NOT a clone of any end-bank item.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_transformations_deux_sens
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_deux_sens, hook_commit]
+    primary_misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Tu chauffes à reflux le mélange d'acide éthanoïque et d'éthanol. **Si tu le
+      laisses réagir encore plus longtemps — une journée, une semaine — tout
+      l'acide et tout l'alcool finiront-ils par se transformer entièrement en
+      ester et en eau ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Oui : toute réaction finit par consommer entièrement ses réactifs, il suffit d'attendre assez longtemps."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
+        feedback: |
+          Modèle détecté : « toute réaction va jusqu'au bout avec assez de temps ».
+          C'est la prédiction la plus fréquente — et le test juste en dessous va la
+          contredire : de l'acide et de l'alcool restent détectables, indéfiniment.
+          Le temps seul ne fait pas disparaître un réactif quand la réaction
+          inverse coexiste.
+
+      - id: B
+        text: "Oui, à condition d'ajouter suffisamment de catalyseur pour pousser la réaction jusqu'au bout."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
+        feedback: |
+          Modèle détecté : « le catalyseur change l'état final ». Un catalyseur
+          accélère seulement l'arrivée à l'état stabilisé — il n'en change pas la
+          composition. Avec plus de catalyseur, il resterait exactement autant
+          d'acide et d'alcool.
+
+      - id: C
+        text: "Non : il restera toujours de l'acide et de l'alcool, aux côtés de l'ester et de l'eau."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni le temps ni le catalyseur ne font
+          disparaître les réactifs. La vraie question commence maintenant :
+          **pourquoi** cette transformation s'arrête-t-elle avant la fin, et
+          **comment l'écrire** honnêtement ? C'est toute la leçon.
+
+      - id: D
+        text: "Non, et d'ailleurs il ne s'est presque rien passé : la quantité d'ester formée est négligeable."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
+        feedback: |
+          Bonne intuition sur le « non », mauvais motif : une quantité tout à fait
+          notable d'ester et d'eau se forme (assez pour une odeur fruitée franche).
+          « S'arrêter avant la fin » n'est pas « ne presque rien produire ». On y
+          revient au rung 2.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-deux-sens | placed AFTER R1
+  #        Rupture gate: réaction DANS LES DEUX SENS / état d'équilibre
+  #        DYNAMIQUE — à l'état stabilisé, les deux réactions n'ont pas
+  #        cessé. Probes equilibre-coexistence-signifie-arret. New stem.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-deux-sens
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_transformations_deux_sens
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_deux_sens]
+    primary_misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+    item_source: new
+    lesson_placement: after_R1
+
+    stem: |
+      Dans le ballon d'estérification, l'odeur ne change plus : le système s'est
+      stabilisé, et acide, alcool, ester et eau coexistent. **À l'échelle des
+      molécules, à cet instant, que se passe-t-il ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Les deux réactions, directe et inverse, se sont arrêtées : plus aucune molécule ne réagit, tout est figé."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+        feedback: |
+          Modèle détecté : « stabilisé = arrêté ». Ce qui ne change plus, ce sont
+          les quantités globales — pas l'activité des molécules. L'estérification et
+          l'hydrolyse continuent toutes deux, en se compensant exactement : c'est un
+          équilibre **dynamique**, pas un arrêt.
+
+      - id: B
+        text: "Les deux réactions continuent de se produire en même temps, en se compensant, si bien que les quantités ne changent plus."
+        correct: true
+        feedback: |
+          Exact. À l'état stabilisé, l'estérification consomme de l'acide et de
+          l'alcool au même rythme que l'hydrolyse en régénère : les deux sens
+          coexistent en permanence. Rien n'est figé — c'est un équilibre entre deux
+          réactions qui tournent encore.
+
+      - id: C
+        text: "Seule l'estérification continue, jusqu'à finir par épuiser tout l'acide et tout l'alcool."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
+        feedback: |
+          Modèle détecté : « le sens direct finit par gagner ». Non : si
+          l'estérification était seule à tourner, l'acide et l'alcool
+          disparaîtraient — or le test montre qu'ils subsistent. C'est justement
+          l'hydrolyse inverse, qui tourne en même temps, qui les régénère.
+
+      - id: D
+        text: "Le mélange est figé parce que la réaction est devenue trop lente pour continuer d'avancer."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
+        feedback: |
+          Modèle détecté : confusion avec la vitesse. Le mélange ne se stabilise
+          pas parce qu'il « ralentit », mais parce que les deux sens se compensent.
+          Rapide ou lente, une transformation limitée s'arrête au même état — la
+          vitesse est une autre question.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-tau | placed AFTER R2
+  #        Rupture gate: réaction LIMITÉE (τ<1) vs TOTALE (τ=1) — ce que
+  #        MESURE le taux d'avancement final (jusqu'où, pas la vitesse).
+  #        Probes reversible-jamais-quasi-totale. New stem.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-tau
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_transformations_deux_sens
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_deux_sens]
+    primary_misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+    item_source: new
+    lesson_placement: after_R2
+
+    stem: |
+      Le test du rung 2 se chiffre avec le **taux d'avancement final**
+      $\tau = x_f / x_{max}$ ($x_f$ : avancement à l'état stabilisé ; $x_{max}$ :
+      avancement d'une réaction supposée totale). Pour le mélange acide + alcool,
+      on mesure $\tau = 0{,}67$. Qu'en conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\tau < 1$ : la transformation est limitée. $\\tau$ dit jusqu'où va la réaction, pas à quelle vitesse."
+        correct: true
+        feedback: |
+          Exact. $\tau = 1$ signalerait une transformation totale ; $\tau = 0{,}67 < 1$
+          signale qu'il reste de l'acide et de l'alcool, tout en ayant formé les deux
+          tiers de l'ester maximal. $\tau$ mesure *jusqu'où* la réaction est allée —
+          et il peut valoir presque n'importe quoi entre $0$ et $1$.
+
+      - id: B
+        text: "$\\tau = 0{,}67$ prouve que la réaction est lente : elle n'a pas eu le temps de finir, et en attendant $\\tau$ montera jusqu'à $1$."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
+        feedback: |
+          Modèle détecté : $\tau$ confondu avec la vitesse. $\tau$ est mesuré à
+          l'état **stabilisé** : attendre plus longtemps ne le fait pas monter. Une
+          réaction limitée peut être très rapide ; $\tau < 1$ n'a rien à voir avec la
+          lenteur.
+
+      - id: C
+        text: "Dès qu'il se forme de l'ester, la réaction est totale : $\\tau = 1$."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
+        feedback: |
+          Modèle détecté : « produit formé = réaction totale ». Former de l'ester ne
+          suffit pas : il faut qu'un réactif ait **totalement** disparu. Ici il reste
+          de l'acide et de l'alcool, donc $x_f < x_{max}$ et $\tau < 1$.
+
+      - id: D
+        text: "Une réaction écrite avec une double flèche reste toujours nettement limitée : son $\\tau$ ne peut jamais s'approcher de $1$."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+        feedback: |
+          Modèle détecté : « réversible = forcément loin du total ». Faux : une
+          transformation à double flèche peut avoir un $\tau$ très proche de $1$
+          (presque totale) — comme la réaction acide éthanoïque + ammoniac, dont on
+          calcule $\tau \approx 0{,}99$. « Réversible » dit *les deux sens existent*,
+          pas *jusqu'où ça va*.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-sens | placed AFTER R3
+  #        Rupture gate: le SENS direct/inverse dépend de la composition
+  #        INITIALE, pas d'une propriété fixe de la réaction.
+  #        Clone of TDS-13's stem. Probes sens-propriete-fixe.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-sens
+    rung: "R3"
+    habilete: resolution
+    skill_code: pc_transformations_deux_sens
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_deux_sens]
+    primary_misconception: mc.physics.pc_transformations_deux_sens.sens-propriete-fixe
+    item_source: clone_of_TDS-13
+    lesson_placement: after_R3
+
+    stem: |
+      On dissout du chlorure d'ammonium solide $NH_4Cl$ (qui libère des ions
+      $NH_4^+$) dans une solution déjà riche en ions $HO^-$ et pauvre en ammoniac
+      $NH_3$ libre. La réaction en jeu est
+      $NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$. **Quel sens va dominer au
+      départ ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le sens inverse : le mélange est riche en produits ($NH_4^+$, $HO^-$) et pauvre en réactif $NH_3$."
+        correct: true
+        feedback: |
+          Exact. Un mélange chargé en produits et pauvre en réactif voit le sens
+          inverse l'emporter au début : $NH_4^+$ et $HO^-$ réagissent entre eux pour
+          régénérer $NH_3$ et $H_2O$. C'est la composition de départ qui décide, pas
+          une propriété fixe de la réaction — le miroir de l'expérience A du cours.
+
+      - id: B
+        text: "Le sens direct l'emporte toujours dans une solution contenant de l'ammoniac, quelle que soit la composition initiale du mélange."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.sens-propriete-fixe
+        feedback: |
+          Modèle détecté : « le sens est une propriété fixe de la réaction ». Non :
+          le sens qui domine dépend de ce qu'on a mis au départ. Ici le mélange est
+          riche en produits — c'est le sens inverse qui l'emporte.
+
+      - id: C
+        text: "Le sens direct, car $NH_4Cl$ est l'espèce qu'on vient d'ajouter, et c'est l'espèce introduite qui impose le sens."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
+        feedback: |
+          Modèle détecté : « l'espèce ajoutée pilote le sens ». $NH_4^+$ est un
+          **produit** de la réaction directe : en ajouter pousse au contraire vers le
+          sens **inverse**. Ce qui compte, c'est la quantité relative de réactifs et
+          de produits, pas laquelle on vient de verser.
+
+      - id: D
+        text: "Aucun sens ne domine : les deux sens coexistant toujours, ils s'annulent exactement dès le départ."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+        feedback: |
+          Modèle détecté : « coexistence = aucun sens net ». Les deux sens coexistent,
+          mais l'un peut nettement l'emporter à un instant donné. Loin de l'équilibre,
+          le mélange (riche en produits) évolue clairement dans le sens inverse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-esterification | placed AFTER [[exercise:r-bac]] (in R4)
+  #        Rupture gate: l'ESTÉRIFICATION est limitée (équilibre) ; seul un
+  #        changement de composition déplace vraiment le rendement.
+  #        Probes catalyseur-ou-temps-change-etat-final. New stem.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-esterification
+    rung: "R4"
+    habilete: resolution
+    skill_code: pc_transformations_deux_sens
+    tags: [checkpoint, formative, misconception_driven, pc_transformations_deux_sens, esterification]
+    primary_misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
+    item_source: new
+    lesson_placement: after_R4_exercise
+
+    stem: |
+      L'estérification acide + alcool s'arrête à un état d'équilibre ($\tau = 0{,}67$ :
+      il reste de l'acide et de l'alcool). Un chimiste veut obtenir **plus d'ester**.
+      **Quel geste augmente réellement la quantité finale d'ester ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Partir d'un excès de l'un des réactifs, ou retirer l'eau au fur et à mesure."
+        correct: true
+        feedback: |
+          Exact — seuls ces gestes changent la composition, donc déplacent l'état
+          final. Un excès de réactif pousse la conversion de l'autre ; retirer un
+          produit empêche l'hydrolyse inverse de le reconsommer. Les deux augmentent
+          réellement le rendement.
+
+      - id: B
+        text: "Ajouter davantage de catalyseur (acide sulfurique) : la réaction produira plus d'ester."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
+        feedback: |
+          Modèle détecté : « le catalyseur augmente le rendement ». Le catalyseur
+          accélère l'estérification et l'hydrolyse dans les mêmes proportions : il
+          mène au **même** état final, seulement plus vite. Il ne change pas la
+          quantité d'ester.
+
+      - id: C
+        text: "Chauffer beaucoup plus longtemps : avec assez de temps, tout l'acide finira par se convertir en ester."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
+        feedback: |
+          Modèle détecté : « attendre finit par tout convertir ». Une fois
+          l'équilibre atteint, $\tau$ ne bouge plus : chauffer plus longtemps ne fait
+          qu'y arriver plus tôt, sans dépasser $\tau \approx 0{,}67$.
+
+      - id: D
+        text: "Rien ne peut augmenter le rendement : il est fixé une fois pour toutes par l'équation de la réaction, quoi qu'on fasse."
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
+        feedback: |
+          Modèle détecté : « la composition finale est intouchable ». Au contraire :
+          agir sur les conditions initiales (excès d'un réactif, retrait d'un produit)
+          déplace bel et bien l'état final vers plus d'ester. Ce n'est pas l'équation
+          qu'on change, ce sont les conditions.

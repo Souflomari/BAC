@@ -12,6 +12,8 @@ $$CH_3COOH + C_2H_5OH \rightarrow CH_3COOC_2H_5 + H_2O$$
 
 Avant de lire la suite, prends position : si tu laisses ce mélange chauffer encore plus longtemps - toute une journée, une semaine - est-ce que tout l'acide éthanoïque et tout l'éthanol finiront, à un moment ou un autre, par se transformer entièrement en ester et en eau ? Engage-toi sur une réponse avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce que montre un test chimique, effectué sur ce même mélange après plusieurs heures, une fois que l'odeur ne semble plus évoluer : en cherchant précisément la présence d'acide éthanoïque et d'éthanol dans le ballon, on en détecte encore - en quantité loin d'être négligeable. Et si tu laisses chauffer encore plus longtemps, rien ne change : la même quantité d'acide et d'alcool reste là, indéfiniment.
 
 Si tu avais prédit une conversion totale, cet écart - une portion d'acide et d'alcool qui ne disparaît jamais, quel que soit le temps qu'on attend - est justement ce qu'on va comprendre. Si tu avais deviné qu'il resterait toujours un peu d'acide et d'alcool, la vraie question commence maintenant : comment écrire une équation qui dise honnêtement ça ? Comment savoir, à l'avance, si une réaction ira jusqu'au bout ou non ? Et est-ce que le sens dans lequel une réaction évolue peut lui-même changer, selon ce qu'on met dans le ballon au départ ?
@@ -58,6 +60,8 @@ Ce n'est pas ça du tout. La double flèche ne dit strictement rien sur la vites
 
 « Rapide ou lente » (le chapitre précédent) et « totale ou limitée » (celui-ci) sont deux axes séparés pour décrire une réaction. Ne les confonds pas.
 
+[[checkpoint:cp-r1-deux-sens]]
+
 ---
 
 ## R2 — Transformation totale ou limitée : le test qui tranche
@@ -82,6 +86,8 @@ Comment savoir, concrètement, si une transformation est totale ou limitée ? Le
 Une deuxième confusion, tout aussi naturelle : en entendant « transformation limitée », on peut imaginer que rien - ou presque rien - ne s'est réellement produit, puisque les réactifs sont encore là.
 
 Regarde à nouveau le mélange acide + alcool : une quantité tout à fait notable d'ester et d'eau S'EST FORMÉE - assez pour dégager une odeur fruitée franche, assez pour la mesurer précisément au laboratoire. La transformation a bel et bien eu lieu, et elle a produit quelque chose de réel. « Limitée » ne veut absolument pas dire « rien ne s'est passé » - ça veut dire seulement que la transformation s'est arrêtée avant que l'un des réactifs de départ ait totalement disparu. Les deux réactions, directe et inverse, ont bien fonctionné - simplement, aucune des deux n'a eu le dernier mot.
+
+[[checkpoint:cp-r2-tau]]
 
 ---
 
@@ -115,6 +121,8 @@ $$NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$$
 
 évolue nettement dans le sens direct : des ions $NH_4^+$ et $HO^-$ apparaissent. Mais elle ne va pas jusqu'au bout - une quantité importante de $NH_3$ intact subsiste indéfiniment aux côtés de ces ions, exactement comme l'acide et l'alcool subsistaient aux côtés de l'ester. Si, à l'inverse, on partait d'une solution déjà riche en ions $NH_4^+$ et $HO^-$ et pauvre en $NH_3$ libre, c'est le sens inverse qui dominerait au départ. Tu retrouveras cette réaction, avec des outils bien plus précis, dans le chapitre sur les réactions acido-basiques.
 
+[[checkpoint:cp-r3-sens]]
+
 ---
 
 ## R4 — Pour t'entraîner
@@ -131,40 +139,12 @@ $$NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$$
 
 [[figure:avancement-limite]]
 
-### Exercice de type bac (original - entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Un chimiste mélange, dans un ballon, de l'acide propanoïque $CH_3CH_2COOH$ et du méthanol $CH_3OH$, avec quelques gouttes d'acide sulfurique comme catalyseur, puis chauffe doucement à reflux pendant plusieurs heures. Après ce temps, une analyse du mélange révèle la présence de propanoate de méthyle $CH_3CH_2COOCH_3$ et d'eau, mais aussi - en quantité clairement détectable - de l'acide propanoïque et du méthanol n'ayant pas réagi. Prolonger le chauffage de plusieurs heures supplémentaires ne change rien à ces quantités.
+[[exercise:r-bac]]
 
-**1) Écris l'équation de cette réaction avec la notation qui convient, et justifie ton choix de flèche.**
+[[checkpoint:cp-r4-esterification]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le test du rung 2 - chercher si chaque réactif de départ reste détectable une fois que le mélange s'est stabilisé.
+### Une variation pour ne pas mémoriser
 
-$$CH_3CH_2COOH + CH_3OH \rightleftharpoons CH_3CH_2COOCH_3 + H_2O$$
-
-L'acide propanoïque et le méthanol restent tous les deux détectables, indéfiniment, aux côtés de l'ester et de l'eau formés : aucun des deux réactifs n'a disparu. La transformation est non totale - c'est la double flèche qui convient.
-
-**2) Explique, avec le mécanisme du rung 1, pourquoi cette réaction ne peut pas aller jusqu'au bout, même en chauffant beaucoup plus longtemps.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on relie l'observation à sa cause chimique, pas seulement au constat expérimental.
-
-Dans ce ballon, l'acide, l'alcool, l'ester et l'eau sont tous les quatre mélangés, en contact permanent, dans le même liquide. Rien n'empêche l'ester et l'eau déjà formés de réagir entre eux pour redonner de l'acide et de l'alcool - c'est la réaction inverse (l'hydrolyse), qui se produit en même temps que l'estérification. Chauffer plus longtemps ne change rien à ce fait : les deux réactions, directe et inverse, continuent de coexister quel que soit le temps écoulé, donc aucun des deux réactifs ne peut disparaître totalement.
-
-**3) Si, au lieu du mélange initial ci-dessus, le chimiste était parti uniquement de propanoate de méthyle pur et d'eau pure - sans la moindre trace d'acide propanoïque ni de méthanol au départ - prédis, sans calcul, ce qui se produirait, et justifie avec le raisonnement du rung 3.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le raisonnement des deux expériences miroir, sans refaire toute l'expérience.
-
-Un mélange qui démarre chargé en ester et en eau, et vide en acide et en alcool, voit d'abord le sens inverse (l'hydrolyse) l'emporter : de l'acide propanoïque et du méthanol apparaîtraient progressivement, aux dépens de l'ester. La réaction est la même, gouvernée par la même équation $\rightleftharpoons$ - seule la composition de départ a changé, et c'est elle qui décide quel sens domine au début.
-
-**4) Un autre chimiste réalise, séparément, le mélange d'une solution contenant des ions $Ag^+$ en large excès avec une solution contenant une petite quantité d'ions $Cl^-$. Une fois la réaction terminée, un test supplémentaire (ajout de quelques gouttes de solution d'ions $Ag^+$) ne fait apparaître aucun nouveau précipité. Écris l'équation de cette réaction avec la notation qui convient, et compare le caractère de cette transformation à celui de la question 1.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le même test qu'à la question 1, sur une réaction de nature complètement différente, pour bien voir que le critère - et non la famille chimique - décide.
-
-$$Ag^+ + Cl^- \rightarrow AgCl$$
-
-Le test supplémentaire ne révèle plus aucun ion $Cl^-$ : ce réactif a totalement disparu. Contrairement à la réaction de la question 1, cette transformation est **totale** - flèche simple. Les deux réactions appartiennent à des familles chimiques différentes (précipitation contre estérification), et pourtant c'est le même critère - la détectabilité des réactifs de départ une fois le mélange stabilisé - qui décide, dans chaque cas, du caractère totale ou limité.
-
-### À toi
-
-**Variation 1.** On dissout du chlorure d'ammonium solide $NH_4Cl$ (qui libère des ions $NH_4^+$) dans une solution déjà riche en ions hydroxyde $HO^-$ et pauvre en ammoniac $NH_3$ libre. Sachant que la réaction en jeu est $NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$, prédis, sans calcul, quel sens - direct ou inverse - va dominer au départ dans ce nouveau mélange, et justifie en une ou deux phrases à partir de la composition initiale.
-
-**Variation 2.** Un camarade affirme : « Puisque la transformation entre l'acide propanoïque et le méthanol est limitée, ça veut dire qu'il ne s'est presque rien passé dans le ballon. » Explique, en une ou deux phrases, pourquoi cette affirmation est incorrecte, en t'appuyant sur ce que révèle le test du rung 2.
+[[exercise:r-variation]]

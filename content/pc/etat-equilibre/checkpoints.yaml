@@ -1,0 +1,360 @@
+notion: etat-equilibre
+skill_code: pc_etat_equilibre
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — etat-equilibre)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong CHEMICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict    (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                                  position" of the accroche into a real MCQ
+#                                  commit before the SCN⁻-relance reveal.
+#                                  Probes equilibre-est-un-arret.
+#   cp-r1-dynamique  (after R1)  — rupture gate: ÉQUILIBRE DYNAMIQUE — les deux
+#                                  réactions continuent à vitesses égales, ce
+#                                  n'est jamais un arrêt. Probes
+#                                  equilibre-est-un-arret.
+#   cp-r2-tau-total  (after R2)  — rupture gate: le taux d'avancement final τ,
+#                                  comparé à 1, distingue TOTALE de LIMITÉE (et
+#                                  ne mesure pas « le réactif restant »). Probes
+#                                  tau-mal-interprete.
+#   cp-r3-qr-evolue  (after R3)  — rupture gate: Qr ÉVOLUE à chaque instant et
+#                                  tend vers K, qui reste FIXE (Qr ≠ K tant que
+#                                  l'équilibre n'est pas atteint). Probes
+#                                  confond-qr-et-k.
+#   cp-r4-k-constante (after R4) — rupture gate: Qr,éq = K, constante à T donnée,
+#                                  INDÉPENDANTE de l'état initial (deux τ
+#                                  différents, un seul K). Probes
+#                                  k-depend-etat-initial.
+#
+# Clone note: cp-r1-dynamique clones EE-1's stem, cp-r2-tau-total clones EE-13's,
+# cp-r3-qr-evolue clones EE-4's, cp-r4-k-constante clones EE-5's. Distractors are
+# curated so EVERY distractor carries a named misconception tag, and the correct
+# choice is never the longest. cp-r0-predict is an original commit item (not in
+# the end bank). No end-bank tally is adjusted — inline surfacing does not
+# double-count.
+#
+# Boundary guard: état d'équilibre d'un système chimique en solution aqueuse —
+# τ = xf/xmax, quotient de réaction Qr = produits/réactifs (solvant exclu),
+# Qr,éq = K, critère Qr,i vs K. Pas de cinétique détaillée, pas de
+# thermodynamique (ΔrG), pas de calcul de pH d'une solution tampon : ces objets
+# relèvent d'autres notions. L'équilibre est DYNAMIQUE (les deux réactions
+# continuent), K ne dépend que de la réaction et de la température.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the SCN⁻-relance reveal. Probes:
+  #        equilibre-est-un-arret (« la couleur s'est figée = la réaction
+  #        est terminée / s'est arrêtée »).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_etat_equilibre
+    tags: [checkpoint, formative, misconception_driven, pc_etat_equilibre, hook_commit]
+    primary_misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Dans le mélange $Fe^{3+}/SCN^-$, la couleur rouge grimpe quelques
+      instants puis se fige à une valeur constante, et n'évolue plus.
+      **À ton avis, que s'est-il passé, chimiquement, à l'instant précis où
+      la couleur a cessé de changer ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le mélange a épuisé l'un de ses réactifs : la transformation est terminée, comme lorsqu'une réaction totale atteint son avancement maximal $x_{max}$."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+        feedback: |
+          Modèle détecté : « couleur figée = réactif épuisé ». L'expérience va
+          le contredire : ajoute une pincée de $SCN^-$ solide au mélange figé,
+          et la couleur repart aussitôt — preuve que les ions $Fe^{3+}$ étaient
+          toujours là, disponibles. Un réactif n'a pas été épuisé ; la
+          transformation est **limitée**, pas terminée.
+
+      - id: B
+        text: "La réaction a tout simplement cessé de se produire : plus aucune transformation, ni directe ni inverse, n'a désormais lieu dans le mélange."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: |
+          Modèle détecté : « l'équilibre, c'est l'arrêt de la réaction ». C'est
+          la confusion la plus naturelle — et la plus fausse. Si tout s'était
+          arrêté, ajouter du $SCN^-$ ne changerait rien ; or la couleur repart
+          immédiatement. Ce qui s'arrête, c'est l'évolution **nette** des
+          concentrations, pas les réactions.
+
+      - id: C
+        text: "Les deux réactions, directe et inverse, continuent à la même vitesse : le bilan net est nul, mais aucune ne s'arrête."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni arrêt, ni réactif épuisé. La
+          couleur se fige parce que deux réactions opposées, désormais de même
+          vitesse, se compensent exactement. C'est un **équilibre dynamique** —
+          et toute la leçon consiste maintenant à le décrire et à le prévoir.
+
+      - id: D
+        text: "La réaction inverse a définitivement pris le dessus et empêche désormais la réaction directe de se produire."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: |
+          Modèle détecté : une réaction qui « bloque » l'autre. Aucune des deux
+          ne domine ni n'empêche l'autre : à l'équilibre elles se produisent
+          **toutes les deux, à la même vitesse**. C'est justement cette égalité,
+          pas une domination, qui fige la couleur.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-dynamique | placed AFTER R1
+  #        Rupture gate: ÉQUILIBRE DYNAMIQUE — les deux réactions
+  #        continuent à vitesses égales. Clone of EE-1's stem.
+  #        Probes equilibre-est-un-arret.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-dynamique
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_etat_equilibre
+    tags: [checkpoint, formative, misconception_driven, pc_etat_equilibre]
+    primary_misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    item_source: clone_of_EE-1
+    lesson_placement: after_R1
+
+    stem: |
+      On vient de le voir : une fois l'équilibre atteint, les concentrations ne
+      varient plus. Que font alors, à cet instant, la réaction directe et la
+      réaction inverse ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Seule la réaction directe continue ; la réaction inverse ne se produit plus du tout."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: |
+          Si seule la directe continuait, le produit s'accumulerait sans cesse
+          et les concentrations ne cesseraient pas de varier. Pour que le bilan
+          net soit nul, les **deux** réactions doivent se produire, à la même
+          vitesse.
+
+      - id: B
+        text: "Les deux continuent, exactement à la même vitesse."
+        correct: true
+        feedback: |
+          Exact. À l'équilibre, la vitesse de la réaction directe égale celle de
+          la réaction inverse : chaque seconde, autant de complexe se forme
+          qu'il s'en dissocie. Rien ne s'arrête — c'est un équilibre
+          **dynamique**.
+
+      - id: C
+        text: "Les deux réactions se sont arrêtées : plus aucune transformation, même microscopique, n'a lieu."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: |
+          Modèle détecté : « l'équilibre, c'est l'arrêt ». C'est confondre
+          l'arrêt de l'évolution **observable** des concentrations avec l'arrêt
+          des réactions. Microscopiquement, les deux réactions n'ont jamais
+          cessé — elles se compensent, voilà tout.
+
+      - id: D
+        text: "Seule la réaction inverse continue désormais, la réaction directe étant devenue impossible."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: |
+          Même erreur que le choix A, dans l'autre sens : si seule l'inverse
+          continuait, le produit serait consommé sans être reformé et les
+          concentrations varieraient encore. Les deux réactions coexistent, à
+          vitesses égales.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-tau-total | placed AFTER R2
+  #        Rupture gate: τ comparé à 1 distingue TOTALE de LIMITÉE, et ne
+  #        mesure pas « le réactif restant ». Clone of EE-13's stem.
+  #        Probes tau-mal-interprete.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-tau-total
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_etat_equilibre
+    tags: [checkpoint, formative, misconception_driven, pc_etat_equilibre]
+    primary_misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+    item_source: clone_of_EE-13
+    lesson_placement: after_R2
+
+    stem: |
+      Une transformation atteint son équilibre avec un taux d'avancement final
+      $\tau = 0{,}072$. Que peut-on en conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La transformation est totale : atteindre un état d'équilibre signifie justement que les réactifs ont fini par être entièrement consommés."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: |
+          Modèle détecté : « équilibre atteint = réaction totale ». Seul
+          $\tau = 1$ (ou très proche) signale une transformation totale. Ici
+          $\tau = 0{,}072$, très loin de $1$ : la transformation est nettement
+          **limitée**, et il reste beaucoup de réactif à l'équilibre.
+
+      - id: B
+        text: "Il reste exactement $7{,}2\\ \\%$ des réactifs de départ à l'équilibre."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: |
+          $\tau$ n'est pas la fraction de réactif restant : c'est la fraction de
+          l'avancement **maximal** qui a été atteinte, $\tau = x_f/x_{max}$. Ici
+          $\tau = 0{,}072$ veut dire que $7{,}2\ \%$ de l'avancement possible a
+          eu lieu — donc qu'il reste au contraire $\approx 93\ \%$ du réactif.
+
+      - id: C
+        text: "Rien, tant qu'on ne connaît pas d'abord la valeur de la constante d'équilibre $K$."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: |
+          $\tau$ se calcule uniquement à partir de l'avancement final observé et
+          de l'avancement maximal ($x_f/x_{max}$) : il ne nécessite pas de
+          connaître $K$. Comparé à $1$, il tranche à lui seul entre totale et
+          limitée.
+
+      - id: D
+        text: "La transformation est limitée ($\\tau \\ll 1$) : réactifs et produits coexistent à l'équilibre."
+        correct: true
+        feedback: |
+          Exact. $\tau = x_f/x_{max}$ comparé à $1$ est le critère : $\tau = 1$
+          (ou proche) = totale ; $\tau = 0{,}072 \ll 1$ = limitée. À l'équilibre,
+          il reste une quantité notable de chaque réactif.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-qr-evolue | placed AFTER R3
+  #        Rupture gate: Qr ÉVOLUE à chaque instant et tend vers K, qui
+  #        reste FIXE (Qr ≠ K tant que l'équilibre n'est pas atteint).
+  #        Clone of EE-4's stem. Probes confond-qr-et-k.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-qr-evolue
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_etat_equilibre
+    tags: [checkpoint, formative, misconception_driven, pc_etat_equilibre]
+    primary_misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+    item_source: clone_of_EE-4
+    lesson_placement: after_R3
+
+    stem: |
+      Pendant qu'une transformation avance vers son équilibre (à température
+      fixée), comment évoluent le quotient de réaction $Q_r$ et la constante
+      d'équilibre $K$ de la réaction ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$Q_r$ et $K$ augmentent tous les deux au fil du temps, jusqu'à finir par se rejoindre."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: |
+          $K$ n'évolue pas : c'est une **constante** (à température fixée). Seul
+          $Q_r$ varie, en se rapprochant de la valeur fixe $K$. C'est justement
+          ce qui rend $Q_r$ utile : il suit l'avancement, $K$ non.
+
+      - id: B
+        text: "$Q_r$ reste constant, égal à $K$, tout au long de la transformation."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: |
+          $Q_r = K$ **seulement à l'équilibre**. Tant que la réaction avance,
+          $Q_r$ prend des valeurs différentes de $K$ (il évolue) — c'est
+          normal, et c'est même l'information la plus utile de $Q_r$.
+
+      - id: C
+        text: "$Q_r$ évolue à chaque instant et tend vers $K$, qui reste fixe."
+        correct: true
+        feedback: |
+          Exact. $Q_r$ se recalcule à chaque instant à partir des concentrations
+          présentes et se rapproche de $K$ ; $K$, fixé par la réaction et la
+          température, ne bouge pas. À l'équilibre, $Q_r$ atteint $K$ et s'y fige.
+
+      - id: D
+        text: "$K$ diminue progressivement pour venir rejoindre la valeur de $Q_r$, qui est plus faible au tout début de la transformation."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: |
+          C'est l'inverse des rôles : c'est $Q_r$ qui se déplace (ici il
+          **augmente**) vers $K$, pas $K$ qui descendrait vers $Q_r$. $K$ est
+          une constante, fixée par la réaction et la température.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-k-constante | placed AFTER R4
+  #        Rupture gate: Qr,éq = K, constante à T donnée, INDÉPENDANTE de
+  #        l'état initial (deux τ différents, un seul K). Clone of EE-5's
+  #        stem. Probes k-depend-etat-initial.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-k-constante
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_etat_equilibre
+    tags: [checkpoint, formative, misconception_driven, pc_etat_equilibre]
+    primary_misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+    item_source: clone_of_EE-5
+    lesson_placement: after_R4
+
+    stem: |
+      Deux expériences portent sur la **même** réaction, à la **même**
+      température, mais avec des concentrations initiales différentes ; elles
+      atteignent des taux d'avancement finaux $\tau$ différents. Que peut-on
+      dire de leurs constantes d'équilibre $K_1$ et $K_2$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$K_1 \\neq K_2$ : des taux d'avancement différents signalent forcément des constantes d'équilibre différentes."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: |
+          $\tau$ dépend de l'état initial, mais $K$ non. C'est justement ce qui
+          permet d'obtenir deux $\tau$ différents pour un **seul** $K$. Un $\tau$
+          différent ne prouve rien sur $K$.
+
+      - id: B
+        text: "$K_1 = K_2$ : $K$ ne dépend que de la réaction et de la température."
+        correct: true
+        feedback: |
+          Exact. $Q_{r,eq} = K$ est fixé par la réaction et la température, jamais
+          par les concentrations de départ ni le volume : $K_1 = K_2$, même si
+          $\tau_1 \neq \tau_2$.
+
+      - id: C
+        text: "Celle qui atteint le plus grand $\\tau$ possède forcément le plus grand $K$ des deux."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: |
+          Un $\tau$ plus grand ne vient pas d'un $K$ plus grand : il vient de
+          l'état initial choisi (concentrations plus ou moins déséquilibrées).
+          À réaction et température données, $K$ est le même pour les deux.
+
+      - id: D
+        text: "On ne peut rien conclure sans connaître les concentrations initiales exactes utilisées dans chacune des deux expériences."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: |
+          C'est l'inverse : le principe est précisément que $K$ ne dépend
+          **pas** des concentrations initiales. Pour une même réaction à une même
+          température, $K_1 = K_2$ sans même avoir besoin de les connaître.

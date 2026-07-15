@@ -1,0 +1,205 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2012 session
+# normale, PC BIOF, code NS28, AlloSchool element/94452 — statut « vérifié »
+# in docs/sujets/pc/transformations-deux-sens.md, Exercice de Chimie, Première
+# partie : réactions de l'acide éthanoïque). r-variation is a fresh anti-
+# memorisation twin (same skills, different couple/numbers, status
+# not-applicable).
+#
+# Boundary note (2ème Bac PC, unité « transformations dans les deux sens »):
+# le cœur de la notion est QUALITATIF (double flèche, totale/limitée, sens qui
+# dépend de la composition initiale) + le taux d'avancement final τ = x_f/x_max.
+# Le sujet 2012 est un problème de synthèse : sa question 1-2 (quotient de
+# réaction Q_r,eq exprimé avec les pK_A) mobilise des outils formalisés dans
+# les unités « État d'équilibre » et « réactions acido-basiques ». On la
+# transcrit par fidélité au sujet, en nommant explicitement l'outil emprunté —
+# le reste (tableau d'avancement, τ, estérification limitée, rendement,
+# facteurs sur le rendement) est pleinement dans la notion.
+
+notion: transformations-deux-sens
+
+exercises:
+  # ── r-bac — VERIFIED 2012 national sujet (acide éthanoïque : ammoniac + linalol)
+  # Faithful transcription of docs/sujets/pc/transformations-deux-sens.md →
+  # "2012 — session normale — Exercice de Chimie (Première partie)". Deux
+  # réactions du même acide : (1) avec l'ammoniac NH3, une réaction limitée
+  # (double flèche) qui se révèle QUASI TOTALE (τ ≈ 0,99) ; (2) avec le linalol
+  # ROH (alcool tertiaire), une estérification FORTEMENT limitée (rendement
+  # ≈ 4 %). Le sujet illustre ainsi les deux extrêmes de l'axe « jusqu'où va la
+  # réaction » — le thème prospectif de la notion (récap R4).
+  - id: r-bac
+    title: "Exercice de type bac — réactions de l'acide éthanoïque (2012)"
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national Sciences Physiques (SPC) BIOF,
+        code NS28, Exercice de Chimie, Première partie (« Réaction de l'acide
+        éthanoïque avec l'ammoniac et avec un alcool » ; barème de l'exercice
+        de Chimie : 7 pt). Transcription vérifiée : re-fetch AlloSchool
+        element/94452 + diff OK (docs/sujets/pc/transformations-deux-sens.md,
+        statut « vérifié »).
+    intro: |-
+      **Réactions de l'acide éthanoïque (examen national, session normale 2012).**
+
+      L'acide éthanoïque $CH_3COOH$ est utilisé dans la conservation des aliments et la synthèse de nombreux composés. On étudie ici deux réactions du même acide : d'abord sa réaction avec l'ammoniac $NH_3$, puis son estérification avec le linalol, un alcool qu'on notera $ROH$.
+
+      **Données :**
+
+      - $pK_{A1}$ du couple $(CH_3COOH / CH_3COO^-)$ : $pK_{A1} = 4{,}8$ ;
+      - $pK_{A2}$ du couple $(NH_4^+ / NH_3)$ : $pK_{A2} = 9{,}2$ ;
+      - masse molaire de l'alcool : $M(ROH) = 154\ \text{g}\cdot\text{mol}^{-1}$ ;
+      - masse molaire de l'ester $E$ : $M(E) = 196\ \text{g}\cdot\text{mol}^{-1}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Réaction de l'acide éthanoïque avec l'ammoniac"
+        stem: |-
+          **(0,5 pt)** On prépare un mélange en introduisant $n_1 = 10^{-3}\ \text{mol}$ d'acide éthanoïque et $n_2 = 10^{-3}\ \text{mol}$ d'ammoniac dans de l'eau distillée. La transformation est modélisée par :
+          $$CH_3COOH_{(aq)} + NH_{3(aq)} \rightleftharpoons CH_3COO^-_{(aq)} + NH_{4(aq)}^+$$
+          Construire le tableau d'avancement de cette réaction.
+        reasoning: |-
+          Un tableau d'avancement suit, ligne par ligne, ce que deviennent les quantités de matière à mesure que la réaction progresse d'un avancement $x$. Comme tous les coefficients stœchiométriques valent $1$, chaque réactif perd $x$ et chaque produit gagne $x$. Le mélange est équimolaire ($n_1 = n_2 = 10^{-3}\ \text{mol}$) et il n'y a aucun produit au départ.
+
+          $$\begin{array}{lcccc}\hline \text{État} & n(CH_3COOH) & n(NH_3) & n(CH_3COO^-) & n(NH_4^+)\\ \hline \text{Initial} & n_1 & n_2 & 0 & 0\\ \text{En cours} & n_1-x & n_2-x & x & x\\ \text{Final} & n_1-x_f & n_2-x_f & x_f & x_f\\ \hline\end{array}$$
+
+          La double flèche du modèle rappelle que la transformation est, a priori, limitée : $x_f$ est l'avancement à l'état stabilisé, pas forcément l'avancement maximal.
+      - id: q2
+        stem: |-
+          **(1 pt)** Établir l'expression du quotient de réaction à l'équilibre $Q_{r,eq}$ en fonction de $pK_{A1}$ et $pK_{A2}$, puis calculer sa valeur.
+        reasoning: |-
+          Cette question mobilise le **quotient de réaction** $Q_r$ et les **constantes d'acidité** $K_A$ — des outils qu'on formalise dans les unités « État d'équilibre » et « réactions acido-basiques ». On l'inclut par fidélité au sujet ; l'idée à retenir pour cette notion, elle, est simple : ce nombre va nous dire *jusqu'où* penche la réaction.
+
+          À l'équilibre, $Q_{r,eq}$ est le rapport des concentrations des produits sur celles des réactifs. On le relie aux deux couples acide/base en faisant apparaître, puis disparaître, la concentration $[H_3O^+]$ commune aux deux constantes d'acidité : il reste le rapport $K_{A1}/K_{A2}$, soit une puissance de $10$ pilotée par l'écart des $pK_A$.
+        steps:
+          - math: 'Q_{r,eq} = \dfrac{[CH_3COO^-]_{eq}\,[NH_4^+]_{eq}}{[CH_3COOH]_{eq}\,[NH_3]_{eq}}'
+            note: "Produits au numérateur, réactifs au dénominateur (coefficients tous égaux à 1)."
+          - math: '= \dfrac{K_{A1}}{K_{A2}} = 10^{\,pK_{A2}-pK_{A1}}'
+            note: "En introduisant [H_3O^+] dans chaque rapport, les deux constantes d'acidité apparaissent et [H_3O^+] se simplifie."
+          - math: '= 10^{\,9{,}2-4{,}8} = 10^{4{,}4} \approx 2{,}5\times10^{4}'
+            note: "Application numérique : Q_r,eq est très grand devant 1 — la réaction penche fortement vers les produits."
+      - id: q3
+        stem: |-
+          **(1 pt)** Trouver le taux d'avancement final $\tau$ de cette réaction, et vérifier que la transformation peut être considérée comme totale.
+        reasoning: |-
+          Le taux d'avancement final compare l'avancement réellement atteint à celui d'une réaction totale : $\tau = \dfrac{x_f}{x_{max}}$. L'avancement maximal correspond à l'épuisement du réactif limitant ; le mélange étant équimolaire et les coefficients égaux à $1$, les deux réactifs s'épuiseraient ensemble, donc $x_{max} = n_1 = n_2 = n$.
+
+          Pour $x_f$, on exploite $Q_{r,eq}$ (qui joue ici le rôle de la constante d'équilibre $K$). Comme les deux réactifs partent en quantités égales, leurs quantités restantes à l'équilibre sont égales, et le rapport se simplifie en un carré.
+        steps:
+          - math: 'K = Q_{r,eq} = \dfrac{x_f^2}{(n-x_f)^2} = \left(\dfrac{x_f}{n-x_f}\right)^2'
+            note: "Concentrations : le volume commun se simplifie ; mélange équimolaire, donc mêmes quantités restantes."
+          - math: '\dfrac{x_f}{n-x_f} = \sqrt{K} = \sqrt{2{,}5\times10^{4}} \approx 158'
+            note: "On prend la racine des deux membres."
+          - math: 'x_f = \dfrac{158}{159}\,n \approx 0{,}99\,n \quad\Rightarrow\quad \tau = \dfrac{x_f}{x_{max}} = \dfrac{x_f}{n} \approx 0{,}99'
+            note: "τ ≈ 0,99, très proche de 1 : la transformation est quasi totale, on la considère comme totale."
+      - id: q4
+        part: "Partie 2 — Estérification de l'acide éthanoïque avec le linalol"
+        stem: |-
+          **(0,5 pt)** Pour synthétiser l'ester $E$ (acétate de linalyle), on chauffe à reflux un mélange équimolaire d'acide éthanoïque et de linalol $ROH$, en présence d'un catalyseur. Quel est l'intérêt du chauffage à reflux ?
+        reasoning: |-
+          Deux effets, à ne pas confondre :
+
+          - **Chauffer accélère la réaction.** La température est un facteur cinétique : elle augmente la fréquence et l'énergie des chocs efficaces, donc la vitesse à laquelle le mélange atteint son état final. L'estérification étant lente à froid, sans chauffage il faudrait des jours.
+          - **Le reflux évite les pertes de matière.** Les vapeurs (acide, alcool, ester) montent, se condensent au contact du réfrigérant et retombent dans le ballon : on chauffe fort sans rien perdre par évaporation.
+
+          Attention : le chauffage change *quand* on atteint l'état final, pas *où* il se situe — il n'augmente pas le rendement.
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Écrire l'équation modélisant la réaction entre l'acide éthanoïque et l'alcool $ROH$.
+        reasoning: |-
+          Le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent : il part une molécule d'eau, et il se forme l'ester $E$. Parce que l'ester et l'eau formés peuvent, à leur tour, réagir en sens inverse (l'hydrolyse), la transformation est limitée — c'est la **double flèche** qui convient, exactement comme pour l'estérification vue en cours :
+
+          $$CH_3COOH + ROH \rightleftharpoons E + H_2O$$
+
+          où $E$ (l'acétate de linalyle, $CH_3COOR$) et l'eau coexistent durablement avec l'acide et l'alcool restants.
+      - id: q6
+        stem: |-
+          **(1 pt)** Partant d'une masse $m_A = 38{,}5\ \text{g}$ d'alcool $ROH$, on obtient à la fin de la réaction une masse $m_E = 2\ \text{g}$ d'ester $E$. Calculer le rendement $r$ de cette réaction.
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = \dfrac{n_E}{n_{E,max}}$. Il faut donc trois quantités : l'ester maximal (via l'avancement maximal), et l'ester réellement formé (via sa masse). Le mélange est équimolaire et les coefficients valent $1$, donc l'ester maximal vaut la quantité initiale d'alcool.
+        steps:
+          - math: 'n_0 = \dfrac{m_A}{M(ROH)} = \dfrac{38{,}5}{154} = 0{,}25\ \text{mol}'
+            note: "Quantité initiale d'alcool ; mélange équimolaire, donc autant d'acide."
+          - math: 'n_{E,max} = x_{max} = n_0 = 0{,}25\ \text{mol}'
+            note: "Si la réaction était totale (équimolaire, coefficients 1), l'ester maximal vaudrait n_0."
+          - math: 'n_E = \dfrac{m_E}{M(E)} = \dfrac{2}{196} \approx 1{,}0\times10^{-2}\ \text{mol}'
+            note: "Ester réellement obtenu, déduit de sa masse."
+          - math: 'r = \dfrac{n_E}{n_{E,max}} = \dfrac{1{,}0\times10^{-2}}{0{,}25} \approx 0{,}041 = 4{,}1\ \%'
+            note: "Rendement très faible : le linalol est un alcool tertiaire, dont l'estérification est particulièrement limitée."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Proposer deux méthodes différentes permettant d'augmenter le rendement de cette réaction.
+        reasoning: |-
+          On cherche à déplacer la position de l'état final vers plus d'ester — pas à l'atteindre plus vite. Deux leviers agissent réellement sur la composition finale :
+
+          - **Partir d'un excès de l'un des réactifs** (par exemple un excès d'acide éthanoïque, peu coûteux). Le réactif limitant, mieux « poussé », est converti dans une plus grande proportion : le rendement rapporté à ce réactif augmente.
+          - **Éliminer l'un des produits au fur et à mesure** qu'il se forme (par exemple distiller l'ester, ou piéger l'eau). En retirant un produit, on empêche la réaction inverse de le reconsommer, et la réaction directe avance davantage.
+
+          Ce qui ne marche **pas** : ajouter du catalyseur ou chauffer davantage. Ces gestes accélèrent seulement l'arrivée à l'état final, sans en changer la composition. La justification chiffrée (critère $Q_r/K$) est développée dans le chapitre « Estérification–hydrolyse ».
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Même structure profonde que r-bac (écrire l'équation avec la bonne flèche,
+  # tableau d'avancement, taux d'avancement final τ, sens direct/inverse selon
+  # la composition initiale, facteurs sur le rendement) avec un couple et des
+  # chiffres différents (acide éthanoïque + propan-1-ol) et une expérience
+  # miroir en plus — pour que l'élève ne puisse pas recopier le sujet 2012 et
+  # doive reconnaître quelle procédure s'applique.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2012, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, couple et chiffres différents. Le but est que tu ne puisses pas recopier la solution du sujet 2012 — tu dois reconnaître quelle procédure s'applique.
+
+      On réalise l'estérification entre l'acide éthanoïque $CH_3COOH$ et le propan-1-ol $C_3H_7OH$. On chauffe à reflux un mélange équimolaire de $n_0 = 3{,}0\ \text{mol}$ d'acide et $n_0 = 3{,}0\ \text{mol}$ d'alcool, avec quelques gouttes d'acide sulfurique comme catalyseur. Une fois l'état final atteint, on mesure une quantité $n(\text{ester}) = 2{,}0\ \text{mol}$.
+    questions:
+      - id: q1
+        stem: |-
+          Écrire l'équation de cette réaction avec la notation qui convient, et justifier le choix de la flèche.
+        reasoning: |-
+          À l'état final, l'acide et l'alcool restent tous deux détectables aux côtés de l'ester et de l'eau : la transformation est limitée, car l'hydrolyse inverse coexiste en permanence avec l'estérification. C'est donc la **double flèche** qui convient :
+
+          $$CH_3COOH + C_3H_7OH \rightleftharpoons CH_3COOC_3H_7 + H_2O$$
+
+          L'ester formé est l'éthanoate de propyle. Une flèche simple affirmerait, à tort, qu'un réactif disparaît complètement.
+      - id: q2
+        stem: |-
+          Construire le tableau d'avancement de la réaction.
+        reasoning: |-
+          Tous les coefficients valent $1$ et le mélange est équimolaire ($n_0 = 3{,}0\ \text{mol}$), sans produit au départ. Chaque réactif perd $x$, chaque produit gagne $x$ :
+
+          $$\begin{array}{lcccc}\hline \text{État} & n(CH_3COOH) & n(C_3H_7OH) & n(\text{ester}) & n(H_2O)\\ \hline \text{Initial} & n_0 & n_0 & 0 & 0\\ \text{En cours} & n_0-x & n_0-x & x & x\\ \text{Final} & n_0-x_f & n_0-x_f & x_f & x_f\\ \hline\end{array}$$
+      - id: q3
+        stem: |-
+          Sachant que l'avancement final vaut $x_f = 2{,}0\ \text{mol}$, calculer le taux d'avancement final $\tau$ et conclure sur le caractère de la transformation.
+        reasoning: |-
+          On compare l'avancement atteint à celui d'une réaction totale. Mélange équimolaire, coefficients égaux à $1$ : les deux réactifs s'épuiseraient ensemble, donc $x_{max} = n_0$. L'avancement final se lit sur la quantité d'ester formée ($x_f = n(\text{ester}) = 2{,}0\ \text{mol}$).
+        steps:
+          - math: 'x_{max} = n_0 = 3{,}0\ \text{mol}'
+            note: "Réaction supposée totale : le réactif limitant s'épuise (équimolaire, coefficients 1)."
+          - math: '\tau = \dfrac{x_f}{x_{max}} = \dfrac{2{,}0}{3{,}0} \approx 0{,}67'
+            note: "τ < 1 : la transformation est limitée — de l'acide et de l'alcool subsistent."
+      - id: q4
+        stem: |-
+          On refait l'expérience en partant cette fois uniquement de $3{,}0\ \text{mol}$ d'éthanoate de propyle et de $3{,}0\ \text{mol}$ d'eau, sans la moindre trace d'acide éthanoïque ni de propan-1-ol au départ. Prédire, sans calcul, quel sens va dominer au début, et justifier.
+        reasoning: |-
+          C'est le raisonnement des deux expériences miroir. Le mélange démarre chargé en produits (ester, eau) et vide en réactifs (acide, alcool) : il n'y a, au départ, que des molécules capables de réagir en sens **inverse**. C'est donc le sens inverse — l'hydrolyse de l'ester — qui domine au début, régénérant de l'acide éthanoïque et du propan-1-ol, jusqu'à ce que le mélange se stabilise.
+
+          C'est la même réaction, gouvernée par la même équation $\rightleftharpoons$ : seule la composition de départ a changé, et c'est elle qui décide quel sens l'emporte au début — pas une propriété fixe de la réaction.
+      - id: q5
+        stem: |-
+          Proposer deux moyens d'augmenter le taux d'avancement final $\tau$ de cette estérification, et indiquer un geste qui, au contraire, ne le modifierait pas.
+        reasoning: |-
+          Deux gestes déplacent réellement l'état final :
+
+          - **partir d'un excès de l'un des réactifs** (par exemple $6{,}0\ \text{mol}$ d'alcool pour $3{,}0\ \text{mol}$ d'acide) : l'acide, mieux poussé, est converti dans une plus grande proportion ;
+          - **retirer un produit au fur et à mesure** (distiller l'ester, ou éliminer l'eau) : la réaction inverse ne peut plus le reconsommer.
+
+          Un geste qui **ne change pas** $\tau$ : ajouter plus de catalyseur (ou chauffer davantage). L'acide sulfurique accélère l'estérification et l'hydrolyse dans les mêmes proportions — il fait arriver plus vite au *même* état final, sans le déplacer.

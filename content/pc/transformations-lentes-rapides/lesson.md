@@ -10,6 +10,8 @@ Maintenant, gratte une allumette. Le bois et le soufre s'enflamment, réagissent
 
 Avant de lire la suite, prends position, en une phrase : si les deux transformations appartiennent à la même famille chimique (un transfert d'électrons vers le dioxygène), pourquoi l'une prend-elle des mois et l'autre une fraction de seconde ? Est-ce que la « famille » d'une réaction — oxydoréduction, précipitation, réaction acido-basique — fixe à elle seule sa vitesse ? Ou est-ce qu'autre chose, en dehors de cette famille, décide si une transformation sera lente ou rapide ?
 
+[[checkpoint:cp-r0-predict]]
+
 Si tu as répondu que la famille chimique fixe la vitesse, l'écart va se voir vite : dans cette leçon, tu vas rencontrer une seule et même réaction chimique — exactement la même équation — qui se termine en quelques dizaines de secondes dans une expérience et en plusieurs minutes dans une autre, sans changer de nature. C'est cet écart qu'on va comprendre : qu'est-ce qui rend une transformation lente ou rapide, quels leviers on peut actionner pour la ralentir ou l'accélérer, et pourquoi ces leviers fonctionnent, jusqu'à l'échelle des molécules elles-mêmes.
 
 ---
@@ -111,6 +113,8 @@ Ces deux faits ne sont pas de simples curiosités de laboratoire : ils expliquen
 
 Pourquoi ces deux leviers, concentration et température, fonctionnent-ils ? Établir le fait expérimental est une chose ; comprendre le mécanisme en est une autre. Il faut descendre à l'échelle des molécules elles-mêmes pour répondre — c'est l'objet du rung suivant.
 
+[[checkpoint:cp-r3-lente-rapide]]
+
 ---
 
 ## R4 — Interprétation microscopique : les chocs efficaces
@@ -160,45 +164,22 @@ Dans le prochain chapitre, tu apprendras à SUIVRE une transformation comme cell
 - Facteurs cinétiques établis expérimentalement : augmenter la **concentration** des réactifs ou la **température** accélère une transformation.
 - Interprétation microscopique : seuls les **chocs efficaces** (orientation favorable + énergie suffisante) font avancer la réaction. La concentration augmente leur fréquence ; la température augmente à la fois leur fréquence et la proportion de chocs suffisamment énergétiques.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On étudie la transformation entre les ions peroxodisulfate $S_2O_8^{2-}$ et les ions iodure $I^-$, dont les couples oxydant/réducteur sont $S_2O_8^{2-}/SO_4^{2-}$ et $I_2/I^-$.
+La réaction fil rouge (peroxodisulfate + iodure) est **lente**, donc *suivable* : puisqu'elle s'étale sur une durée mesurable, on peut relever une grandeur physique à intervalles réguliers et tracer son évolution — ce qu'une transformation rapide, déjà terminée, ne permettrait pas. L'exercice ci-dessous, tiré d'un examen national, met exactement cela en œuvre sur une autre transformation lente : une saponification suivie par conductimétrie.
 
-On réalise deux expériences, en mélangeant à chaque fois un volume $V_1$ de solution de peroxodisulfate de potassium et un volume $V_2$ de solution d'iodure de potassium, et on chronomètre l'apparition d'une teinte jaune-brune bien visible :
+[[exercise:r-bac]]
 
-- **Expérience 1** : concentrations initiales usuelles, température ambiante ($\theta \approx 20\,^\circ\text{C}$) — la teinte apparaît après $40$ minutes.
-- **Expérience 2** : mêmes concentrations initiales, mélange placé dans un bain-marie à $50\,^\circ\text{C}$ — la teinte apparaît après $6$ minutes.
+Trois points méritent qu'on s'y arrête avant de continuer — ils reviennent dans presque tous les suivis de transformation lente.
 
-**1) Écrire l'équation de la réaction entre les ions peroxodisulfate et les ions iodure, à partir des deux couples donnés.**
+[[checkpoint:cp-r5-conductimetrie]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie d'abord qui est oxydant (réduit) et qui est réducteur (oxydé), on écrit les deux demi-équations dans le bon sens, puis on vérifie que le nombre d'électrons échangés coïncide avant d'additionner.
+[[checkpoint:cp-r5-t-demi]]
 
-$$S_2O_8^{2-} + 2e^- \rightarrow 2SO_4^{2-}$$
+[[checkpoint:cp-r5-vitesse-pente]]
 
-$$2I^- \rightarrow I_2 + 2e^-$$
+### Une variation pour ne pas mémoriser
 
-$$S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$$
+Même démarche profonde, habillage inversé : cette fois la conductivité *augmente* au lieu de décroître. À toi de reconnaître la procédure et d'expliquer pourquoi le sens de variation s'inverse — tu ne pourras pas recopier la solution du sujet précédent.
 
-**2) La transformation étudiée est-elle lente ou rapide ? Justifier à partir du critère posé en R1.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* le critère n'est pas une impression, c'est une comparaison entre la durée observée et ce qu'on peut suivre au chronomètre.
-
-Dans les deux expériences, la transformation s'étale sur plusieurs minutes — une durée largement mesurable au chronomètre, sans aucun instrument spécialisé. C'est donc une transformation **lente**, dans les deux cas, malgré l'écart de durée entre elles.
-
-**3) Comparer les durées observées dans les deux expériences et expliquer l'écart à l'aide du modèle des chocs efficaces.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* un seul paramètre diffère entre les deux expériences (la température) ; l'écart de durée doit donc s'expliquer par l'effet de ce seul paramètre sur les chocs efficaces.
-
-La transformation est presque sept fois plus rapide à $50\,^\circ\text{C}$ qu'à $20\,^\circ\text{C}$ ($6$ minutes contre $40$). Seule la température a changé entre les deux expériences : l'agitation thermique des entités $S_2O_8^{2-}$ et $I^-$ est plus grande à $50\,^\circ\text{C}$, ce qui augmente à la fois la fréquence des chocs entre ces entités et la proportion de chocs suffisamment énergétiques pour être efficaces. Plus de chocs efficaces par seconde : la transformation avance plus vite, d'où la durée nettement plus courte observée en expérience 2.
-
-**4) Sans changer la température, propose une modification expérimentale qui, d'après le modèle des chocs efficaces, devrait elle aussi raccourcir la durée de la transformation.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la question demande de mobiliser le second levier établi en R3 — la concentration — plutôt que de répéter l'effet de la température déjà traité en question 3.
-
-Augmenter les concentrations initiales des réactifs (par exemple en dissolvant une plus grande quantité de peroxodisulfate ou d'iodure de potassium dans le même volume) augmente le nombre d'entités réactives par unité de volume, donc la fréquence de leurs rencontres, donc le nombre de chocs efficaces par seconde : la teinte jaune-brune apparaîtrait plus tôt.
-
-### À toi
-
-**Variation 1.** Les couples $Fe^{3+}/Fe^{2+}$ et $MnO_4^-/Mn^{2+}$ interviennent dans une réaction d'oxydoréduction (milieu acide, le couple $MnO_4^-/Mn^{2+}$ échange 5 électrons et fait intervenir l'eau et les ions $H^+$ pour conserver les éléments oxygène et hydrogène — on te donne directement sa demi-équation : $MnO_4^- + 8H^+ + 5e^- \rightleftharpoons Mn^{2+} + 4H_2O$). Le couple $Fe^{3+}/Fe^{2+}$ s'écrit $Fe^{3+} + e^- \rightleftharpoons Fe^{2+}$. Identifie qui est oxydé, qui est réduit, ajuste les nombres d'électrons échangés, puis écris l'équation globale de la réaction.
-
-**Variation 2.** On verse du lait dans deux récipients identiques : l'un reste à température ambiante, l'autre est placé au réfrigérateur. Sans calcul, explique, à l'aide du modèle des chocs efficaces, pourquoi le lait tourne (transformation chimique de dégradation) beaucoup plus vite dans le récipient laissé à température ambiante.
+[[exercise:r-variation]]

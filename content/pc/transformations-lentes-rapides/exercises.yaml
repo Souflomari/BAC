@@ -1,0 +1,209 @@
+# Attempt-first exercises (summit-conversion campaign — transformations-lentes-rapides).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is the VERIFIED national sujet (2010 session
+# normale, PC BIOF, code NS28 — statut « vérifié » in
+# docs/sujets/pc/transformations-lentes-rapides.md, re-fetch AlloSchool
+# element/94443 + diff OK). r-variation is a fresh anti-memorisation twin
+# (same skills — inventaire des ions, tableau d'avancement, conductance/x,
+# sens de variation de σ selon les ions, temps de demi-réaction — but a
+# DIFFERENT reaction whose conductivité CROÎT, status not-applicable).
+#
+# Why THIS sujet for THIS notion: the 2010 Première partie is a transformation
+# LENTE (saponification) followed in time by conductimétrie — and it is BECAUSE
+# the transformation is lente that this minute-by-minute suivi is possible (the
+# practical consequence established in R1: a lente transformation can be SUIVIE
+# pendant qu'elle se déroule, une rapide ne se laisse voir qu'après coup).
+
+notion: transformations-lentes-rapides
+
+exercises:
+  # ── r-bac — the VERIFIED 2010 national sujet, Première partie (Chimie) ─────
+  # Faithful transcription of docs/sujets/pc/transformations-lentes-rapides.md
+  # → "2010 — session normale — Exercice de Chimie (Première partie)". Suivi
+  # conductimétrique de l'hydrolyse basique (saponification) du méthanoate de
+  # méthyle par les ions hydroxyde ; barème Première partie = 4,25 pt.
+  - id: r-bac
+    title: "Exercice de type bac — suivi conductimétrique d'une transformation lente (2010)"
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF, code NS28, AlloSchool
+        element/94443 (Exercice de Chimie, Première partie — suivi de
+        l'hydrolyse d'un ester en milieu basique par conductimétrie ; barème
+        4,25 pt sur les 7 pt de l'exercice, la Deuxième partie « pile à
+        combustible » relevant de `piles`). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (docs/sujets/pc/transformations-lentes-rapides.md).
+    intro: |-
+      **Étude de l'hydrolyse d'un ester en milieu basique — une transformation lente suivie par conductimétrie (examen national, session normale 2010).**
+
+      L'hydrolyse basique des esters (la *saponification*) est un moyen de préparation des alcools. On suit ici, par conductimétrie, la réaction entre le méthanoate de méthyle et une solution d'hydroxyde de sodium. Comme cette transformation est **lente**, on peut enregistrer l'évolution de sa conductance minute par minute pendant qu'elle se déroule.
+
+      **Données** (toutes les mesures sont faites à $25\ ^\circ\text{C}$) :
+
+      - Conductance à un instant $t$ : $G = k\sum_i \lambda_i [X_i]$, où $\lambda_i$ est la conductivité molaire ionique de l'ion $X_i$ et $k = 0{,}01\ \text{m}$ la constante de la cellule de mesure.
+      - Conductivités molaires ioniques (en $\text{S}\cdot\text{m}^2\cdot\text{mol}^{-1}$) : $\lambda(\text{Na}^+) = 5{,}01\cdot10^{-3}$, $\lambda(\text{OH}^-) = 19{,}9\cdot10^{-3}$, $\lambda(\text{HCO}_2^-) = 5{,}46\cdot10^{-3}$.
+      - On néglige la concentration des ions hydronium $\text{H}_3\text{O}^+$ devant celles des autres ions.
+
+      On verse dans un bécher un volume $V = 2\cdot10^{-4}\ \text{m}^3$ d'une solution d'hydroxyde de sodium de concentration $C_B = 10\ \text{mol}\cdot\text{m}^{-3}$, puis on ajoute à l'instant $t_0 = 0$ une quantité de méthanoate de méthyle $n_E$ égale à la quantité $n_B$ d'hydroxyde de sodium ($n_E = n_B$). Le volume reste constant, $V = 2\cdot10^{-4}\ \text{m}^3$. La transformation est modélisée par :
+
+      $$\text{HCO}_2\text{CH}_3\,(aq) + \text{OH}^-(aq) \longrightarrow \text{HCO}_2^-(aq) + \text{CH}_3\text{OH}\,(aq)$$
+
+      Un dispositif d'acquisition trace la conductance $G$ du mélange en fonction du temps (Figure 1) : l'ordonnée $G$ est graduée en millisiemens ($0{,}5\,;\ 1\,;\ 1{,}5\,;\ 2\,;\ 2{,}5\ \text{mS}$), l'abscisse $t$ en minutes (de $0$ à $90$). La courbe part de $G \approx 2{,}5\ \text{mS}$ à $t = 0$ et **décroît** de façon monotone vers un palier voisin de $G \approx 1\ \text{mS}$.
+    questions:
+      - id: q1
+        part: "Première partie — Inventaire des espèces et tableau d'avancement"
+        stem: |-
+          **(0,75 pt)** Faire l'inventaire des ions présents dans le mélange réactionnel à un instant $t$.
+        reasoning: |-
+          On recense les espèces **chargées**, en distinguant leur rôle. La solution d'hydroxyde de sodium apporte $\text{Na}^+$ et $\text{OH}^-$ ; l'équation montre qu'on consomme $\text{OH}^-$ et qu'on produit l'ion méthanoate $\text{HCO}_2^-$. L'ester $\text{HCO}_2\text{CH}_3$ et le méthanol $\text{CH}_3\text{OH}$ sont des molécules **neutres** : elles ne comptent pas dans un inventaire d'ions. Le sodium, lui, ne participe pas à la réaction — c'est un ion **spectateur**, présent d'un bout à l'autre.
+
+          Les ions présents à l'instant $t$ sont donc : $\text{Na}^+$ (spectateur), $\text{OH}^-$ (réactif, sa quantité diminue) et $\text{HCO}_2^-$ (produit, sa quantité augmente). Les ions $\text{H}_3\text{O}^+$ sont négligés, comme l'autorise l'énoncé.
+      - id: q2
+        stem: |-
+          **(1 pt)** Construire le tableau descriptif de l'évolution de la transformation ($x$ = avancement à l'instant $t$).
+        reasoning: |-
+          On calcule d'abord les quantités initiales. La solution d'hydroxyde de sodium apporte $n_B = C_B \cdot V = 10 \times 2\cdot10^{-4} = 2\cdot10^{-3}\ \text{mol}$, et l'énoncé impose $n_E = n_B = 2\cdot10^{-3}\ \text{mol}$ : le mélange est **stœchiométrique**. Chaque avancement $x$ consomme une mole d'ester et une mole d'ion hydroxyde, et forme une mole d'ion méthanoate et une mole de méthanol. Le sodium n'apparaît pas dans le tableau d'avancement (il ne réagit pas), mais reste présent à concentration constante.
+
+          $$\begin{array}{l|cccc}
+          \text{état} & \text{HCO}_2\text{CH}_3 & \text{OH}^- & \text{HCO}_2^- & \text{CH}_3\text{OH} \\
+          \hline
+          \text{initial}\ (x=0) & n_E & n_B & 0 & 0 \\
+          \text{en cours}\ (x) & n_E - x & n_B - x & x & x \\
+          \text{final}\ (x_{max}) & n_E - x_{max} & n_B - x_{max} & x_{max} & x_{max}
+          \end{array}$$
+
+          Comme $n_E = n_B$ et que la réaction est totale, les deux réactifs s'épuisent ensemble : $x_{max} = n_B = 2\cdot10^{-3}\ \text{mol}$.
+      - id: q3
+        part: "Première partie — Exploiter la conductance et en déduire $t_{1/2}$"
+        stem: |-
+          **(1 pt)** Montrer que la conductance du mélange vérifie la relation $G = -0{,}72\,x + 2{,}5\cdot10^{-3}$ (en siemens), où $x$ est en moles.
+        reasoning: |-
+          On applique la loi d'additivité $G = k\sum_i \lambda_i[X_i]$ aux **trois** ions inventoriés en q1, en exprimant chaque concentration à partir du tableau (divisée par le volume $V$). Le sodium a une concentration constante ; l'ion hydroxyde décroît en $(n_B - x)/V$ ; l'ion méthanoate croît en $x/V$. On factorise ensuite par $k/V$ et on regroupe le terme constant et le terme en $x$ : c'est le terme en $x$, porté par la **différence** des conductivités de l'ion qui disparaît et de l'ion qui apparaît, qui donne la pente.
+        steps:
+          - math: '[\text{Na}^+] = \frac{n_B}{V}, \quad [\text{OH}^-] = \frac{n_B - x}{V}, \quad [\text{HCO}_2^-] = \frac{x}{V}'
+            note: "Concentrations tirées du tableau d'avancement ; [Na⁺] est constante (spectateur)."
+          - math: 'G = \frac{k}{V}\Big(\lambda_{\text{Na}^+} n_B + \lambda_{\text{OH}^-}(n_B - x) + \lambda_{\text{HCO}_2^-}\,x\Big)'
+            note: "On remplace dans G = k·Σλ[X] et on met k/V en facteur."
+          - math: 'G = \frac{k}{V}\Big[(\lambda_{\text{Na}^+} + \lambda_{\text{OH}^-})\,n_B + (\lambda_{\text{HCO}_2^-} - \lambda_{\text{OH}^-})\,x\Big]'
+            note: "On sépare le terme constant (indépendant de $x$) et le terme en $x$."
+          - math: '\frac{k}{V} = \frac{0{,}01}{2\cdot10^{-4}} = 50\ \text{m}^{-2}'
+            note: "Calcul du préfacteur, à réutiliser dans les deux termes."
+          - math: '50 \times (5{,}01 + 19{,}9)\cdot10^{-3} \times 2\cdot10^{-3} = 2{,}49\cdot10^{-3}\ \text{S}'
+            note: "Terme constant : (λ_Na + λ_OH)·n_B, soit ≈ 2,5 mS — c'est bien G à t = 0."
+          - math: '50 \times (5{,}46 - 19{,}9)\cdot10^{-3} = -0{,}72\ \text{S}\cdot\text{mol}^{-1}'
+            note: "Pente : λ_HCO2 − λ_OH est négatif, d'où le signe moins."
+          - math: '\boxed{G = -0{,}72\,x + 2{,}5\cdot10^{-3}\ \ (\text{S})}'
+            note: "On rassemble les deux termes : la relation demandée est établie."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Justifier la décroissance de la conductance $G$ au cours de la réaction.
+        reasoning: |-
+          Deux lectures se recoupent. **Algébrique :** le coefficient de $x$ vaut $-0{,}72 < 0$, et l'avancement $x$ ne fait que croître au cours du temps ; donc $G$ ne peut que décroître.
+
+          **Physique — et c'est le cœur du raisonnement :** à chaque avancement, un ion $\text{OH}^-$ **disparaît** et un ion $\text{HCO}_2^-$ **apparaît** ; le sodium reste inchangé. Le **nombre total d'ions ne change quasiment pas** (un ion échangé contre un ion). Ce n'est donc pas une histoire de « moins d'ions ». Ce qui change, c'est **quels** ions : l'ion hydroxyde, excellent conducteur ($\lambda = 19{,}9\cdot10^{-3}$), est remplacé par l'ion méthanoate, bien moins conducteur ($\lambda = 5{,}46\cdot10^{-3}$, environ $3{,}6$ fois moins). On échange un bon porteur de charge contre un mauvais, à effectif constant : la conductance diminue.
+      - id: q5
+        stem: |-
+          **(1 pt)** Déterminer la valeur du temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          Le temps de demi-réaction est l'instant où l'avancement atteint la **moitié de sa valeur finale**, $x(t_{1/2}) = x_{max}/2$. On calcule d'abord $x_{max}/2$, puis la conductance $G$ correspondante grâce à la relation de q3 ; on **projette** enfin cette valeur de $G$ sur la Figure 1 pour lire l'abscisse $t_{1/2}$. La demi-réaction se repère par l'avancement, pas par le temps : « demi-réaction » n'est pas la moitié de la durée totale (la courbe est bien plus lente à la fin qu'au début).
+        steps:
+          - math: 'x_{max} = n_B = 2\cdot10^{-3}\ \text{mol} \implies \frac{x_{max}}{2} = 1\cdot10^{-3}\ \text{mol}'
+            note: "Mélange stœchiométrique et réaction totale : x_max = n_B."
+          - math: 'G(t_{1/2}) = -0{,}72 \times 1\cdot10^{-3} + 2{,}5\cdot10^{-3} = 1{,}78\cdot10^{-3}\ \text{S} = 1{,}78\ \text{mS}'
+            note: "Conductance à la demi-réaction : à mi-chemin entre G(0) ≈ 2,5 mS et G(final) ≈ 1,05 mS."
+          - math: 't_{1/2} \approx 20\ \text{min}'
+            note: "Lecture graphique : abscisse du point de la courbe (Figure 1) d'ordonnée G ≈ 1,78 mS."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (inventaire des ions, tableau d'avancement,
+  # conductance/conductivité en fonction de x, SENS de variation selon les λ des
+  # ions, temps de demi-réaction), mais une réaction DIFFÉRENTE dont la
+  # conductivité σ CROÎT (des ions apparaissent à partir d'une molécule neutre) —
+  # pour que l'élève ne recopie pas la solution 2010 et doive reconnaître quelle
+  # procédure s'applique et dans quel SENS σ varie.
+  - id: r-variation
+    title: "Variation fraîche — une hydrolyse dont la conductivité augmente"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2010, sourcé). Ici la
+        conductivité CROÎT, à l'inverse de la saponification, pour tester le
+        sens de variation, pas sa mémorisation.
+    intro: |-
+      Même structure profonde que l'exercice précédent, habillage inversé : on suit ici la **conductivité** $\sigma$ (et non la conductance $G$), et surtout $\sigma$ va **croître** au lieu de décroître. À toi de reconnaître la procédure et de dire *pourquoi* le sens s'inverse.
+
+      On étudie l'hydrolyse lente d'un composé chloré $\text{RCl}$ (le 2-chloro-2-méthylpropane, une molécule neutre) dans l'eau, à $25\ ^\circ\text{C}$. La transformation est modélisée par :
+
+      $$\text{RCl} + 2\,\text{H}_2\text{O} \longrightarrow \text{ROH} + \text{H}_3\text{O}^+ + \text{Cl}^-$$
+
+      On introduit $n_0 = 1{,}0\cdot10^{-3}\ \text{mol}$ de $\text{RCl}$ dans un volume $V = 1{,}0\cdot10^{-4}\ \text{m}^3$ d'eau (l'eau, solvant, est en large excès ; le volume reste constant). On mesure la conductivité $\sigma = \sum_i \lambda_i[X_i]$ au cours du temps.
+
+      **Données** (en $\text{S}\cdot\text{m}^2\cdot\text{mol}^{-1}$) : $\lambda(\text{H}_3\text{O}^+) = 35{,}0\cdot10^{-3}$, $\lambda(\text{Cl}^-) = 7{,}63\cdot10^{-3}$. On néglige les ions de l'eau pure devant les ions formés. La courbe $\sigma(t)$ part de $\sigma \approx 0$ et croît vers un palier ; elle atteint la moitié de sa valeur finale à $t = 10\ \text{min}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Inventaire et tableau"
+        stem: |-
+          Faire l'inventaire des ions présents à un instant $t$, et expliquer pourquoi la conductivité $\sigma$ part d'une valeur quasi nulle à $t = 0$.
+        reasoning: |-
+          Le réactif $\text{RCl}$ et le produit $\text{ROH}$ sont des molécules **neutres** ; l'eau l'est aussi. Les seules espèces chargées apparaissent au fil de la réaction : l'ion oxonium $\text{H}_3\text{O}^+$ et l'ion chlorure $\text{Cl}^-$, produits à parts égales. À $t = 0$, la réaction n'a pas commencé : il n'y a (pratiquement) **aucun ion** en solution — d'où $\sigma \approx 0$. C'est l'inverse exact du sujet 2010, où le mélange contenait déjà $\text{Na}^+$ et $\text{OH}^-$ dès le départ.
+      - id: q2
+        stem: |-
+          Construire le tableau d'avancement de la transformation.
+        reasoning: |-
+          Chaque avancement $x$ consomme une mole de $\text{RCl}$ (et deux d'eau, en excès, qu'on ne suit pas) et forme une mole de $\text{ROH}$, une mole de $\text{H}_3\text{O}^+$ et une mole de $\text{Cl}^-$. Le réactif limitant est $\text{RCl}$ (l'eau est en large excès), donc $x_{max} = n_0$.
+
+          $$\begin{array}{l|cccc}
+          \text{état} & \text{RCl} & \text{ROH} & \text{H}_3\text{O}^+ & \text{Cl}^- \\
+          \hline
+          \text{initial}\ (x=0) & n_0 & 0 & 0 & 0 \\
+          \text{en cours}\ (x) & n_0 - x & x & x & x \\
+          \text{final}\ (x_{max}) & 0 & x_{max} & x_{max} & x_{max}
+          \end{array}$$
+
+          avec $x_{max} = n_0 = 1{,}0\cdot10^{-3}\ \text{mol}$.
+      - id: q3
+        part: "Partie 2 — Conductivité et demi-réaction"
+        stem: |-
+          Établir l'expression de la conductivité $\sigma$ en fonction de l'avancement $x$, puis calculer sa valeur finale $\sigma_{max}$.
+        reasoning: |-
+          Les deux ions produits ont la même quantité $x$, donc la même concentration $x/V$. On somme leurs contributions $\lambda_i[X_i]$ : la conductivité est **proportionnelle à $x$**, coefficient positif, donc elle croît — le signe opposé à celui du sujet 2010, parce qu'ici on *fabrique* des ions au lieu d'en échanger un bon contre un mauvais.
+        steps:
+          - math: '[\text{H}_3\text{O}^+] = [\text{Cl}^-] = \frac{x}{V}'
+            note: "Les deux ions sont produits en quantités égales x (tableau d'avancement)."
+          - math: '\sigma = \lambda_{\text{H}_3\text{O}^+}\frac{x}{V} + \lambda_{\text{Cl}^-}\frac{x}{V} = \frac{\lambda_{\text{H}_3\text{O}^+} + \lambda_{\text{Cl}^-}}{V}\,x'
+            note: "Loi d'additivité, puis on met x/V en facteur."
+          - math: '\sigma = \frac{(35{,}0 + 7{,}63)\cdot10^{-3}}{1{,}0\cdot10^{-4}}\,x = 4{,}26\cdot10^{2}\,x'
+            note: "Coefficient POSITIF : σ croît avec x (σ en S·m⁻¹, $x$ en mol)."
+          - math: '\sigma_{max} = 4{,}26\cdot10^{2} \times 1{,}0\cdot10^{-3} = 0{,}43\ \text{S}\cdot\text{m}^{-1}'
+            note: "Valeur finale, atteinte quand x = x_max = n_0."
+      - id: q4
+        stem: |-
+          Justifier, à l'aide des conductivités molaires ioniques, pourquoi $\sigma$ **croît** ici, alors que la conductance **décroissait** dans l'exercice précédent.
+        reasoning: |-
+          Tout tient à *quels* ions apparaissent ou disparaissent, et à leur pouvoir conducteur. Dans le sujet 2010, on **échangeait** un ion très conducteur ($\text{OH}^-$) contre un ion peu conducteur ($\text{HCO}_2^-$), à nombre d'ions constant : la conductance baissait. Ici, on **crée** des ions à partir d'une molécule neutre : la solution passe de « presque aucun ion » à « des ions $\text{H}_3\text{O}^+$ et $\text{Cl}^-$ en quantité croissante ». Le nombre de porteurs de charge augmente franchement, donc $\sigma$ augmente. Le sens de variation n'est jamais une règle à mémoriser : il se lit sur le bilan des ions et de leurs $\lambda_i$.
+      - id: q5
+        stem: |-
+          Déterminer le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          Même définition que dans le sujet : $t_{1/2}$ est l'instant où $x = x_{max}/2$. Comme $\sigma$ est proportionnelle à $x$, la demi-réaction correspond exactement à la **moitié de la conductivité finale**, $\sigma = \sigma_{max}/2$. L'énoncé indique que la courbe atteint la moitié de sa valeur finale à $t = 10\ \text{min}$ : on lit donc $t_{1/2}$ directement.
+        steps:
+          - math: '\frac{x_{max}}{2} = \frac{1{,}0\cdot10^{-3}}{2} = 5{,}0\cdot10^{-4}\ \text{mol}'
+            note: "Moitié de l'avancement final."
+          - math: '\sigma(t_{1/2}) = \frac{\sigma_{max}}{2} = \frac{0{,}43}{2} \approx 0{,}21\ \text{S}\cdot\text{m}^{-1}'
+            note: "σ proportionnelle à $x$ : demi-avancement ⇔ demi-conductivité."
+          - math: '\boxed{t_{1/2} = 10\ \text{min}}'
+            note: "Lu sur la courbe : instant où σ atteint la moitié de σ_max."
+      - id: q6
+        part: "Partie 3 — Lien avec le cours"
+        stem: |-
+          Ce suivi conductimétrique n'aurait aucun sens pour une transformation rapide : pourquoi ? Propose ensuite un moyen d'accélérer cette hydrolyse.
+        reasoning: |-
+          Pour **suivre** une transformation — prélever, mesurer $\sigma$ à des instants successifs, tracer une courbe — il faut qu'elle dure assez longtemps pour que ces mesures aient le temps de se faire : c'est le propre d'une transformation **lente** (R1). Une transformation rapide serait déjà terminée avant la première mesure : on ne verrait que l'état final, plat, sans évolution à suivre.
+
+          Pour l'accélérer, on actionne un **facteur cinétique** (R3) : chauffer le mélange (l'agitation thermique augmente le nombre de chocs efficaces par seconde), ou augmenter la concentration initiale en $\text{RCl}$ (plus d'entités par unité de volume, donc plus de rencontres). Le palier de $\sigma$ serait alors atteint plus tôt.
