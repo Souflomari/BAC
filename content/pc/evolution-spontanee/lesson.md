@@ -8,6 +8,8 @@ Plonge une lame de zinc métallique dans un tube à essai contenant une solution
 
 Avant de lire la suite, prends position, en une phrase : pourquoi la réaction se produit-elle dans CE sens précis - le zinc qui cède des électrons, les ions $Cu^{2+}$ qui les captent - et pas dans l'autre sens ? Si tu plongeais, à la place, une lame de cuivre métallique dans une solution d'ions $Zn^{2+}$, penses-tu que tu observerais la réaction inverse, tout aussi spontanément ?
 
+[[checkpoint:cp-r0-predict]]
+
 La réponse la plus fréquente ressemble à ceci : « c'est comme ça, le zinc est plus réactif que le cuivre » - une propriété qu'on attache au métal lui-même, presque une hiérarchie à mémoriser, couple par couple. Garde cette réponse en tête ; on va la mettre à l'épreuve.
 
 Ce dont tu as vraiment besoin, ce n'est pas une liste de métaux à classer par coeur. C'est un outil qui prédit, par le calcul, dans quel sens N'IMPORTE QUELLE transformation spontanée va évoluer - que ce soit celle-ci, une réaction acido-basique, ou une précipitation. Tu as déjà construit cet outil, dans le chapitre sur l'état d'équilibre : le quotient de réaction $Q_r$ comparé à la constante d'équilibre $K$. Cette leçon montre comment l'appliquer ici, à une transformation d'oxydoréduction qui se produit par simple contact direct - et elle répond à trois questions que le tube à essai laisse ouvertes : comment écrire précisément ce qui se passe (le langage des demi-équations électroniques), pourquoi cette énergie part en chaleur ici plutôt qu'ailleurs, et si c'est toujours le cas pour toute transformation spontanée.
@@ -104,17 +106,23 @@ $$Q_{r,i} = \frac{[Zn^{2+}]_i}{[Cu^{2+}]_i} = \frac{1{,}0\times10^{-6}}{1{,}0\ti
 
 $Q_{r,i} = 1{,}0\times10^{-5}$, et $K \approx 1{,}8\times10^{37}$ : $Q_{r,i}$ est plus petit que $K$ de $42$ ordres de grandeur. Le critère est sans appel : le système évolue dans le sens direct - le zinc s'oxyde, les ions $Cu^{2+}$ se réduisent. C'est très exactement ce que le tube à essai montre.
 
+[[checkpoint:cp-r2-qr-calcul]]
+
 ### Teste l'idée avant de la croire : « un petit $Q_{r,i}$, ça doit vouloir dire que ça recule »
 
 Confusion fréquente : inverser la conclusion du critère, et croire qu'un $Q_{r,i}$ petit annonce un sens INVERSE - peut-être parce que « petit » évoque intuitivement un recul plutôt qu'une progression à venir.
 
 Reviens au mécanisme (chapitre état d'équilibre) : un $Q_{r,i}$ petit signifie qu'il y a, à cet instant, proportionnellement peu de produits et beaucoup de réactifs par rapport à ce que l'équilibre exigerait. La réaction directe - celle qui consomme les réactifs abondants et forme le produit encore rare - l'emporte alors sur la réaction inverse, et $Q_r$ grimpe vers $K$. « $Q_{r,i}$ petit » ne signifie donc jamais « ça recule » : ça signifie « la réaction directe a encore beaucoup de chemin à faire pour rejoindre $K$ », donc elle avance. Vérifie sur l'exemple : $Q_{r,i}=1{,}0\times10^{-5} \ll K$, et c'est exactement le sens direct - la production de $Zn^{2+}$, la disparition de $Cu^{2+}$ - qu'on observe.
 
+[[checkpoint:cp-r2-critere]]
+
 Et si, au contraire, on avait préparé un mélange où $Q_{r,i} > K$ ? Imagine une solution où $[Zn^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$ mais où $[Cu^{2+}]_i$ serait aussi infime que $1{,}0\times10^{-40}\ \text{mol/L}$ (une concentration inaccessible en pratique - bien moins d'un ion pour des litres de solution) :
 
 $$Q_{r,i} = \frac{1{,}0\times10^{-1}}{1{,}0\times10^{-40}} = 1{,}0\times10^{39}$$
 
 Ici $Q_{r,i} \approx 1{,}0\times10^{39} > K \approx 1{,}8\times10^{37}$ : le critère imposerait alors le sens inverse - ce serait le cuivre métallique qui céderait ses électrons aux ions $Zn^{2+}$. Ce n'est pas « le zinc qui a une propriété fixe de céder ses électrons » : c'est la comparaison $Q_{r,i}$ face à $K$, à cet instant précis, qui décide - et avec un $K$ aussi écrasant pour ce couple, il faudrait des concentrations extrêmes, presque jamais rencontrées en pratique, pour renverser le verdict.
+
+[[checkpoint:cp-r2-equilibre]]
 
 ---
 
@@ -214,50 +222,16 @@ Trois familles de réactions - oxydoréduction, acido-basique, précipitation - 
 - Transfert direct (réactifs dans le même récipient, pas de courant mesurable) et pile (réactifs séparés, détour forcé par un circuit, courant mesurable) mettent en jeu la même réaction et le même critère - seul le montage diffère.
 - Ce critère $Q_{r,i}$ face à $K$ est universel : il s'applique de la même façon aux réactions acido-basiques et aux précipitations, pas seulement à l'oxydoréduction.
 
-### Exercice de type bac (original - entraînement, non un sujet officiel)
+[[checkpoint:cp-r6-vitesse]]
 
-On plonge une pointe de fer métallique, directement, dans un bécher contenant une solution de nitrate d'argent fraîchement préparée, telle que $[Ag^+]_i = 2{,}0\times10^{-1}\ \text{mol/L}$. Avant la réaction, on considère que $[Fe^{2+}]_i \approx 1{,}0\times10^{-6}\ \text{mol/L}$ (trace). On donne, pour la réaction entre le fer métallique et les ions argent(I), à la température de l'expérience : $K \approx 4{,}0\times10^{15}$. Un dépôt métallique gris argenté se forme sur la pointe de fer, et le bécher tiédit légèrement.
+### Exercice de type bac
 
-**1) Écris les deux demi-équations électroniques des couples $Ag^+/Ag$ et $Fe^{2+}/Fe$, puis combine-les pour obtenir l'équation-bilan de la réaction entre le fer métallique et les ions argent(I).**
+À toi. Ce qui suit est le sujet d'examen national **2012 (session normale)** sur la pile cuivre-zinc — le format que tu retrouveras le jour J. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on écrit chaque couple sous sa forme demi-équation (rung 1), puis on repère que le fer échange $2$ électrons par atome oxydé alors que l'argent n'en échange qu'$1$ par ion réduit - il faut donc multiplier la demi-équation de l'argent par $2$ avant d'additionner.
+[[exercise:r-bac]]
 
-$$Ag^+ + e^- \rightleftharpoons Ag \qquad\qquad Fe^{2+} + 2\,e^- \rightleftharpoons Fe$$
+### Une variation pour ne pas mémoriser
 
-$$Fe \rightleftharpoons Fe^{2+} + 2\,e^-$$
+Même structure profonde, couples différents : ici la pile met en jeu l'argent et le cuivre au lieu du cuivre et du zinc, avec une stoechiométrie 1:2 (donc un exposant dans $Q_r$) au lieu d'une stoechiométrie 1:1. À toi de reconnaître quelle procédure s'applique quand les couples, les nombres et les exposants changent.
 
-$$2\,Ag^+ + 2\,e^- \rightleftharpoons 2\,Ag$$
-
-$$Fe + 2\,Ag^+ \rightleftharpoons Fe^{2+} + 2\,Ag$$
-
-**2) Calcule $Q_{r,i}$ à l'instant initial, compare-le à $K$, et déduis-en le sens d'évolution spontané : quelle espèce est oxydée, quelle espèce est réduite ?**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le critère du rung 2 - calculer $Q_{r,i}$ avec les concentrations de l'énoncé (le fer et l'argent solides sont exclus de $Q_r$), et comparer à $K$.
-
-$$Q_{r,i} = \frac{[Fe^{2+}]_i}{[Ag^+]_i^{\,2}} = \frac{1{,}0\times10^{-6}}{(2{,}0\times10^{-1})^2} = 2{,}5\times10^{-5}$$
-
-$Q_{r,i} = 2{,}5\times10^{-5} \ll K \approx 4{,}0\times10^{15}$ : le système évolue dans le sens direct. Le fer est oxydé ($Fe \to Fe^{2+}+2\,e^-$), les ions $Ag^+$ sont réduits ($Ag^++e^- \to Ag$).
-
-**3) Un camarade affirme : « Un ampèremètre plongé n'importe où dans ce bécher devrait dévier, puisqu'il y a bien un courant d'électrons qui circule du fer vers les ions $Ag^+$. » Explique pourquoi ce raisonnement est faux.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le test du rung 4 - la seule présence d'une oxydoréduction ne suffit pas à définir un courant mesurable ; il faut un circuit extérieur réel.
-
-Les électrons passent directement, sur quelques couches atomiques, du fer aux ions $Ag^+$ en contact - ils ne traversent aucun fil, aucun circuit extérieur qu'un ampèremètre pourrait mesurer. Un ampèremètre plongé dans le bécher ne mesurerait rien, car il n'existe aucun trajet organisé et macroscopique pour ces électrons : c'est un transfert direct, pas une pile. Pour obtenir un courant mesurable, il faudrait séparer physiquement le fer et les ions $Ag^+$ dans deux compartiments reliés par un fil (et une jonction) - un montage totalement différent de celui décrit ici, même si la réaction chimique sous-jacente serait rigoureusement la même.
-
-**4) Le bécher ne tiédit que « légèrement », alors que la réaction est nettement spontanée ($Q_{r,i} \ll K$). Un camarade en déduit que la réaction n'est « pas vraiment spontanée, sinon ça chaufferait plus fort ». Explique pourquoi cette déduction est fausse, et cite un facteur qui, ici, limite l'élévation de température perçue.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le rung 3 - la spontanéité se juge uniquement sur $Q_{r,i}$ face à $K$ ; la chaleur perçue dépend d'autre chose.
-
-Le critère de spontanéité ($Q_{r,i}\ll K$) ne dit rien sur la quantité de chaleur perceptible : c'est une comparaison de concentrations, pas une mesure d'énergie. La chaleur ressentie dépend, elle, de la quantité de matière qui réagit réellement. Si la pointe de fer est petite et la solution modérément concentrée, seule une quantité limitée de réactif est consommée en peu de temps, donc l'énergie totale libérée à cet instant reste modeste - même si le critère de spontanéité est aussi net que possible. « Peu de chaleur perceptible » ne remet donc absolument pas en cause le fait que la réaction soit spontanée.
-
-**5) Si, au lieu du contact direct, on séparait le fer et les ions $Ag^+$ dans deux compartiments reliés par un fil et une jonction, prédis (sans calcul) ce que deviendrait la chaleur dégagée dans les deux compartiments par rapport au montage en contact direct, et pourquoi.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique le contraste du rung 3 entre contact direct et détour forcé.
-
-Elle serait nettement plus faible, car une grande partie de l'énergie libérée par la réaction emprunterait alors le fil sous forme de courant électrique, plutôt que de se dissiper sur place, localement, en agitation thermique. La réaction chimique et son critère de spontanéité ($Q_{r,i}\ll K$) resteraient pourtant rigoureusement identiques - seul le chemin emprunté par l'énergie change.
-
-### À toi
-
-**Variation 1.** On plonge un ruban de magnésium métallique, directement, dans un bécher contenant une solution de nitrate d'argent telle que $[Ag^+]_i = 3{,}0\times10^{-1}\ \text{mol/L}$, avec $[Mg^{2+}]_i \approx 1{,}0\times10^{-6}\ \text{mol/L}$ avant réaction. On donne, pour la réaction entre le magnésium et les ions argent(I), $K$ extrêmement grand (de l'ordre de $10^{80}$). Écris les deux demi-équations électroniques des couples $Mg^{2+}/Mg$ et $Ag^+/Ag$, combine-les pour obtenir l'équation-bilan, calcule $Q_{r,i}$ et compare-le à $K$ pour prédire le sens d'évolution. Enfin, un ampèremètre est plongé directement dans ce même bécher : va-t-il dévier ? Justifie à partir du rung 4.
-
-**Variation 2.** Un élève affirme : « Le critère $Q_{r,i}$ face à $K$, vu dans cette leçon, ne peut pas s'appliquer à une précipitation comme $AgCl_{(s)} \rightleftharpoons Ag^+ + Cl^-$, puisqu'il n'y a ici aucun transfert d'électrons. » Explique pourquoi ce raisonnement est faux, en t'appuyant sur ce que tu as vu au rung 5.
+[[exercise:r-variation]]

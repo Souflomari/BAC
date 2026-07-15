@@ -1,0 +1,371 @@
+notion: evolution-spontanee
+skill_code: pc_evolution_spontanee
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — evolution-spontanee)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong CONCEPTUAL model, not just the fact of being
+# wrong. The end-bank floor lives in items.yaml and is NOT altered by these
+# checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)      — COMMIT gate: turns the rhetorical "prends
+#                                    position" into a real MCQ commit before
+#                                    the "réponse la plus fréquente" reveal.
+#   cp-r2-qr-calcul   (after R2 worked example) — rupture gate: computing
+#                                    Qr,i FROM CONCENTRATIONS (solids excluded).
+#   cp-r2-critere     (after the "petit Qr, ça recule ?" rupture section) —
+#                                    rupture gate: Qr vs K sens — the direction
+#                                    of the comparison itself.
+#   cp-r2-equilibre   (end of R2)  — rupture gate: Qr = K → équilibre atteint,
+#                                    plus d'évolution macroscopique.
+#   cp-r6-vitesse     (in R6, after the récap) — rupture gate: le critère ne
+#                                    dit rien de la VITESSE (spontané ≠
+#                                    instantané / spontané ≠ lent).
+#
+# Clone note: cp-r2-qr-calcul is an original stem built on the same numbers
+# family as items.yaml's ES-19 (Sn/Pb); cp-r2-critere clones ES-1's stem
+# (Fe/Ag, Qr,i = 3,0e2); cp-r6-vitesse clones ES-9's stem. cp-r2-equilibre is
+# an original commit item — no dedicated end-bank stem probes "Qr has just
+# reached K" in isolation, and that gap is noted honestly rather than padded.
+# Distractors are curated so EVERY distractor carries a named misconception
+# tag. cp-r0-predict is an original commit item (not in the end bank). No
+# end-bank tally is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: le critère Qr,i face à K, tel que vu dans le chapitre état
+# d'équilibre, appliqué ici à l'oxydoréduction par contact direct et à la
+# pile. Pas de potentiel standard, pas d'enthalpie libre ΔG, pas de constante
+# de vitesse — hors programme de cette notion (2ème Bac PC).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the "réponse la plus fréquente" reveal. Probes
+  #        sens-symetrique (would the reverse experiment run just as
+  #        spontaneously?) and reactivite-metal-fixe (the "zinc is more
+  #        reactive" reflex the lesson names and sets out to dismantle).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: [checkpoint, formative, misconception_driven, pc_evolution_spontanee, hook_commit]
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.sens-symetrique
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Tu observes le zinc céder ses électrons aux ions $\text{Cu}^{2+}$ dans
+      le tube à essai. Si, à la place, tu plongeais une lame de **cuivre**
+      métallique dans une solution d'ions $\text{Zn}^{2+}$, observerais-tu,
+      tout aussi spontanément, la réaction inverse ?
+      **Engage-toi — c'est ta prédiction.**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Oui, forcément : si une réaction est spontanée dans un sens, la réaction inverse l'est tout autant dans l'autre sens, selon le mélange choisi."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.sens-symetrique
+        feedback: |
+          Modèle détecté : une symétrie automatique. Rien ne la garantit :
+          chaque mélange a son propre $Q_{r,i}$, à comparer à $K$ pour ce
+          mélange précis — pas à deviner par miroir. Il faudra refaire le
+          calcul avec les concentrations de CE nouveau mélange.
+
+      - id: B
+        text: "Non, jamais : le cuivre métallique ne peut pas céder d'électrons, seul le zinc en est capable parmi ces deux métaux."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
+        feedback: |
+          Modèle détecté : une propriété fixe attachée au métal, à mémoriser.
+          Rien n'empêche le cuivre métallique de céder des électrons — c'est
+          uniquement la comparaison $Q_{r,i}$ face à $K$, pour le mélange
+          considéré, qui décide, jamais une hiérarchie de réactivité figée.
+
+      - id: C
+        text: "Impossible à dire sans refaire le calcul : il faut comparer le $Q_{r,i}$ de ce nouveau mélange à $K$."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : aucune symétrie à supposer,
+          aucune propriété à mémoriser. La suite de la leçon donne l'outil
+          exact pour trancher n'importe quel mélange : comparer $Q_{r,i}$ à
+          $K$.
+
+      - id: D
+        text: "Oui, mais beaucoup plus lentement, car la réaction inverse est toujours plus lente que la réaction directe observée en premier."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
+        feedback: |
+          Modèle détecté : confondre le sens (ce qui est spontané) avec une
+          vitesse comparée. Le critère $Q_{r,i}$ face à $K$ ne dit rien sur
+          la vitesse d'aucune des deux réactions — et ici, il ne dit même pas
+          encore si le sens inverse serait spontané du tout pour ce nouveau
+          mélange.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-qr-calcul | placed AFTER the R2 worked example
+  #        Rupture gate: computing Qr,i FROM CONCENTRATIONS, solids
+  #        excluded. Original stem (Sn/Pb numbers, same family as ES-19).
+  #        Probes solide-dans-qr and qr-produits-reactifs-inverses.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-qr-calcul
+    rung: "R2"
+    habilete: application_experimentale
+    skill_code: pc_evolution_spontanee
+    tags: [checkpoint, formative, misconception_driven, pc_evolution_spontanee]
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
+    item_source: original
+    lesson_placement: after_R2_worked_example
+
+    stem: |
+      Pour la réaction $\text{Sn} + \text{Pb}^{2+} \rightleftharpoons
+      \text{Sn}^{2+} + \text{Pb}$, avec $[\text{Sn}^{2+}]_i =
+      5{,}0\times10^{-3}\ \text{mol/L}$ et $[\text{Pb}^{2+}]_i =
+      1{,}0\times10^{-2}\ \text{mol/L}$, quelle est l'expression correcte de
+      $Q_{r,i}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$Q_{r,i} = \\dfrac{[\\text{Sn}^{2+}]_i}{[\\text{Pb}^{2+}]_i} = 0{,}50$"
+        correct: true
+        feedback: |
+          Exact. Le produit de l'équation écrite, $\text{Sn}^{2+}$, au
+          numérateur ; le réactif dissous, $\text{Pb}^{2+}$, au dénominateur.
+          L'étain et le plomb métalliques, tous deux solides, n'entrent pas
+          dans $Q_r$.
+
+      - id: B
+        text: "$Q_{r,i} = \\dfrac{[\\text{Pb}^{2+}]_i}{[\\text{Sn}^{2+}]_i} = 2{,}0$"
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
+        feedback: |
+          Numérateur et dénominateur sont inversés. $Q_r$ place toujours le
+          produit de l'équation écrite ($\text{Sn}^{2+}$ ici) au numérateur,
+          et le réactif dissous ($\text{Pb}^{2+}$) au dénominateur — jamais
+          l'inverse.
+
+      - id: C
+        text: "$Q_{r,i} = \\dfrac{[\\text{Sn}^{2+}]_i \\times m_{\\text{Pb}}}{[\\text{Pb}^{2+}]_i \\times m_{\\text{Sn}}}$, en tenant compte des masses des métaux solides."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
+        feedback: |
+          Un solide pur — ici l'étain et le plomb métalliques — n'entre
+          jamais dans l'expression de $Q_r$, quelle que soit la grandeur
+          utilisée pour le représenter (masse ou autre). Seules les
+          concentrations des espèces dissoutes comptent.
+
+      - id: D
+        text: "$Q_{r,i}$ ne peut pas être calculé tant que le système n'a pas atteint l'équilibre."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
+        feedback: |
+          $Q_r$ se calcule à n'importe quel instant, à partir des
+          concentrations de cet instant — c'est justement ce qui permet de
+          prédire le sens avant l'équilibre. C'est $K$, et $K$ seul, qui est
+          la valeur particulière prise par $Q_r$ une fois l'équilibre
+          atteint.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-critere | placed AFTER the "petit Qr, ça recule ?"
+  #        rupture section. Rupture gate: the DIRECTION of the Qr vs K
+  #        comparison itself. Clone of ES-1's stem (Fe/Ag, Qr,i = 3,0e2).
+  #        Probes critere-inverse.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-critere
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: [checkpoint, formative, misconception_driven, pc_evolution_spontanee]
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
+    item_source: clone_of_ES-1
+    lesson_placement: after_R2_rupture
+
+    stem: |
+      Pour la réaction $\text{Fe} + 2\,\text{Ag}^+ \rightleftharpoons
+      \text{Fe}^{2+} + 2\,\text{Ag}$, $K \approx 4{,}0\times10^{15}$. Dans un
+      mélange qui vient d'être préparé, on calcule
+      $Q_{r,i} = 3{,}0\times10^{2}$. Quel est le sens d'évolution du
+      système ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$Q_{r,i} \\ll K$ : sens direct — le fer s'oxyde, les ions $\\text{Ag}^+$ se réduisent."
+        correct: true
+        feedback: |
+          Exact. $Q_{r,i} = 3{,}0\times10^2$ est bien plus petit que
+          $K \approx 4{,}0\times10^{15}$ : le critère impose le sens direct.
+          $Q_r$ va augmenter jusqu'à rejoindre $K$.
+
+      - id: B
+        text: "$Q_{r,i} \\ll K$, donc le système évolue dans le sens inverse : un petit $Q_{r,i}$ annonce un recul."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
+        feedback: |
+          C'est l'inverse. Un $Q_{r,i}$ petit signifie qu'il y a,
+          proportionnellement, peu de produits et beaucoup de réactifs par
+          rapport à ce que l'équilibre exige : c'est la réaction DIRECTE qui
+          l'emporte alors, et $Q_r$ grimpe vers $K$. « Petit » n'annonce
+          jamais un recul.
+
+      - id: C
+        text: "Le système est déjà à l'équilibre, puisque $Q_{r,i}$ est une valeur numérique bien définie à cet instant."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
+        feedback: |
+          Avoir une valeur numérique ne signifie pas être à l'équilibre :
+          $Q_r$ se calcule à tout instant. L'équilibre correspond
+          précisément au cas où $Q_r$ cesse de varier et devient égal à $K$ ;
+          ici $Q_{r,i} \neq K$, donc ce n'est pas encore le cas.
+
+      - id: D
+        text: "La valeur de $K$ annoncée doit être fausse, puisque $Q_{r,i} \\neq K$ pour ce mélange."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
+        feedback: |
+          $Q_r$ et $K$ ne sont censés être égaux qu'À L'ÉQUILIBRE. Tant que
+          la transformation n'a pas atteint son état final, $Q_r$ prend
+          n'importe quelle valeur différente de $K$ — ce n'est pas une
+          contradiction, c'est le fonctionnement normal du quotient de
+          réaction en cours de transformation.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r2-equilibre | placed at the END of R2
+  #        Rupture gate: Qr = K → équilibre atteint, plus d'évolution
+  #        macroscopique. Original commit item — no dedicated end-bank
+  #        stem isolates "Qr has just reached K"; that gap is noted
+  #        honestly (see header) rather than papered over with a fake
+  #        clone_of tag. Probes equilibre-egale-arret-total.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-equilibre
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: [checkpoint, formative, misconception_driven, pc_evolution_spontanee]
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total
+    item_source: original
+    lesson_placement: end_of_R2
+
+    stem: |
+      Le système évolue dans le sens direct, $Q_r$ augmente progressivement,
+      et finit par atteindre exactement $K$. Que se passe-t-il alors ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "L'équilibre est atteint : $Q_r$ reste égal à $K$, sans évolution macroscopique supplémentaire."
+        correct: true
+        feedback: |
+          Exact. $Q_r = K$ est, par définition, l'état d'équilibre : le
+          critère ne désigne alors ni sens direct ni sens inverse, et les
+          concentrations n'évoluent plus à l'échelle macroscopique.
+
+      - id: B
+        text: "$Q_r$ continue d'augmenter au-delà de $K$, tant qu'il reste des réactifs non consommés."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
+        feedback: |
+          $Q_r$ ne dépasse pas $K$ par la seule progression du sens direct :
+          dès que $Q_r = K$, le critère cesse d'imposer un sens, et le
+          système reste à $Q_r = K$. Un $Q_r$ qui dépasserait $K$ viendrait
+          d'un mélange préparé ainsi dès le départ, pas d'une progression
+          naturelle au-delà de l'équilibre.
+
+      - id: C
+        text: "L'équilibre signifie que tous les réactifs ont été totalement consommés — il n'en reste plus du tout."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total
+        feedback: |
+          Modèle détecté : équilibre confondu avec épuisement total. Sauf cas
+          particulier ($K$ extrêmement grand ou extrêmement petit),
+          l'équilibre laisse coexister réactifs ET produits en proportions
+          figées par $K$ — ce n'est pas une consommation totale.
+
+      - id: D
+        text: "Même à l'échelle microscopique, plus aucune réaction ne se produit une fois $Q_r = K$ atteint."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total
+        feedback: |
+          À l'équilibre, les réactions directe et inverse continuent de se
+          produire à l'échelle microscopique, à la même vitesse l'une que
+          l'autre — c'est ce qui rend les concentrations globales stables.
+          Seule l'évolution MACROSCOPIQUE (les concentrations mesurables)
+          s'arrête, pas l'activité microscopique.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r6-vitesse | placed in R6, after the récapitulatif
+  #        Rupture gate: le critère Qr,i face à K ne dit RIEN de la
+  #        VITESSE. Clone of ES-9's stem. Probes spontane-egale-instantane.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-vitesse
+    rung: "R6"
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: [checkpoint, formative, misconception_driven, pc_evolution_spontanee]
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
+    item_source: clone_of_ES-9
+    lesson_placement: in_R6_after_recap
+
+    stem: |
+      Dans l'accroche, la couleur bleue de la solution pâlit
+      progressivement, minute après minute — la réaction ne se termine pas
+      en une fraction de seconde. Un élève en déduit que cette réaction
+      « n'est pas vraiment spontanée, puisqu'une transformation spontanée
+      devrait être instantanée ». Que penser de cette déduction ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle est fausse : « spontané » décrit un sens ($Q_{r,i}$ face à $K$), jamais une vitesse."
+        correct: true
+        feedback: |
+          Exact. Le critère $Q_{r,i}$ face à $K$ est une comparaison de
+          concentrations, sans aucune grandeur temporelle. La réaction de
+          l'accroche est spontanée dès la première minute, même si elle se
+          termine bien plus tard.
+
+      - id: B
+        text: "Elle est juste : une transformation spontanée doit toujours se produire quasi instantanément, sinon elle n'est pas gouvernée par le critère $Q_{r,i}$ face à $K$."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
+        feedback: |
+          Modèle détecté : spontané confondu avec instantané. Le critère
+          $Q_{r,i}$ face à $K$ ne contient aucune information de vitesse : il
+          donne un sens, pas une durée. La vitesse dépend d'autres facteurs
+          (chapitre transformations lentes et rapides).
+
+      - id: C
+        text: "Elle est fausse, car au contraire une transformation spontanée est nécessairement lente — c'est une transformation forcée qui serait rapide."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
+        feedback: |
+          La vitesse n'est pas plus liée à la spontanéité dans ce sens que
+          dans l'autre : les deux notions sont simplement indépendantes. Une
+          réaction spontanée peut être rapide ou lente, tout comme une
+          réaction forcée.
+
+      - id: D
+        text: "Elle est fausse, car la vitesse et le sens d'une réaction sont la même chose : une réaction rapide va forcément dans le sens direct, une réaction lente dans le sens inverse."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
+        feedback: |
+          Le sens vient uniquement de $Q_{r,i}$ face à $K$ ; la vitesse est
+          une tout autre question, sans lien avec ce critère. Une réaction
+          lente dans le sens direct reste une réaction dans le sens direct.

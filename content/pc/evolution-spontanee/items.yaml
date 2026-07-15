@@ -1,6 +1,83 @@
 notion: evolution-spontanee
 skill_code: pc_evolution_spontanee
-misconceptions: []
+
+# Misconception inventory (backfilled in the summit-conversion pilot). This
+# end bank was authored BEFORE the inventory existed (`misconceptions: []`),
+# so items carry an item-level `primary_misconception` here; the
+# per-distractor gold standard is demonstrated in checkpoints.yaml (which
+# also introduces one checkpoint-only model, equilibre-egale-arret-total,
+# not yet probed by any end-bank item — see coverage_summary at the end of
+# this file for honest counts and the under-covered models flagged for a
+# follow-up item pass.
+misconceptions:
+  - id: mc.chemistry.pc_evolution_spontanee.critere-inverse
+    label: "« Qr,i petit annonce un recul (ou Qr,i grand annonce une avancée) : le sens de la comparaison Qr,i face à K est inversé »"
+    description: "L'élève inverse le sens du critère : il croit qu'un Qr,i petit signifie que le système va reculer (sens inverse), ou qu'un Qr,i grand signifie qu'il avance (sens direct)."
+    contradicts_principle: "Qr,i < K signifie qu'il y a, proportionnellement, peu de produits par rapport à l'équilibre : c'est la réaction DIRECTE qui l'emporte alors, et Qr grimpe vers K. Qr,i > K impose au contraire le sens INVERSE. « Petit » n'annonce jamais un recul, « grand » n'annonce jamais une avancée dans le sens direct."
+  - id: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
+    label: "« Qr et K sont la même chose, ou Qr,i ≠ K est une anomalie / une preuve d'erreur »"
+    description: "L'élève traite Qr et K comme interchangeables : croit que Qr n'est calculable qu'à l'équilibre, que Qr,i≠K signifie qu'une donnée est fausse, ou que K seul (sans comparaison à Qr) renseigne sur l'état du système."
+    contradicts_principle: "Qr se calcule à tout instant à partir des concentrations présentes ; K est LA valeur particulière que Qr prend UNIQUEMENT à l'équilibre. Qr,i ≠ K est le fonctionnement normal d'une transformation en cours, pas une anomalie."
+  - id: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
+    label: "« Un métal a une réactivité fixe, à mémoriser couple par couple, qui détermine seule le sens d'une réaction »"
+    description: "L'élève attache au métal lui-même une propriété fixe de réactivité (ou nie qu'un métal solide puisse céder des électrons), plutôt que de calculer Qr,i face à K pour le mélange considéré."
+    contradicts_principle: "Aucune propriété fixe : c'est la comparaison Qr,i face à K, propre à chaque mélange, qui décide du sens. Un métal solide est un réducteur typique, capable de céder des électrons dans le bon contexte de concentrations."
+  - id: mc.chemistry.pc_evolution_spontanee.sens-symetrique
+    label: "« Si une réaction est spontanée dans un sens, la réaction inverse l'est tout aussi spontanément »"
+    description: "L'élève suppose une symétrie automatique entre le sens direct et le sens inverse d'une réaction, sans recalculer Qr,i pour le nouveau mélange."
+    contradicts_principle: "Le sens n'est jamais une propriété fixe attachée à un couple : il dépend du mélange précis, via Qr,i face à K. Rien n'interdit, pour un mélange différent, un Qr,i qui impose un sens différent — ni ne le garantit."
+  - id: mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif
+    label: "« Le sens d'une réaction ne peut jamais être prédit à l'avance, il faut toujours l'observer »"
+    description: "L'élève nie qu'un calcul (Qr,i face à K) puisse prédire le sens d'évolution avant toute observation expérimentale."
+    contradicts_principle: "C'est tout l'intérêt du critère Qr,i face à K : il prédit le sens par le calcul, à partir des seules concentrations, avant toute observation."
+  - id: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
+    label: "« Spontané veut dire instantané (ou, à l'inverse, nécessairement lent) : la spontanéité impose une vitesse »"
+    description: "L'élève lie la notion de spontanéité à une vitesse particulière — croit qu'une réaction spontanée doit être quasi instantanée, ou au contraire nécessairement lente, ou confond vitesse et sens."
+    contradicts_principle: "Le critère Qr,i face à K est une comparaison de concentrations, sans aucune grandeur temporelle. Spontané décrit un SENS, jamais une vitesse ; une réaction spontanée peut être rapide ou lente."
+  - id: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
+    label: "« Une transformation spontanée dégage toujours une chaleur perceptible / la chaleur mesure le degré de spontanéité »"
+    description: "L'élève lie la spontanéité à un dégagement de chaleur perceptible (voire à sa quantité), ou pense qu'une absence de chaleur détectable remet en cause le critère ou l'application de la spontanéité."
+    contradicts_principle: "La spontanéité se juge uniquement sur Qr,i face à K, une comparaison de concentrations sans aucune grandeur thermique. La chaleur perçue dépend d'autre chose (quantité de matière qui réagit, chemin emprunté par l'énergie) — jamais un juge, ni une mesure de degré, de la spontanéité."
+  - id: mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees
+    label: "« Les définitions d'oxydé et de réduit sont inversées : perdre des électrons serait être réduit »"
+    description: "L'élève intervertit les définitions : croit que céder des électrons définit la réduction et capter des électrons définit l'oxydation (ou applique un autre critère erroné, comme la quantité de matière)."
+    contradicts_principle: "Oxydé = a cédé des électrons (réducteur transformé) ; réduit = a capté des électrons (oxydant transformé). C'est un lien au sens des électrons échangés, jamais à la quantité de matière présente."
+  - id: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
+    label: "« Une demi-équation électronique isolée décrit à elle seule une transformation réelle »"
+    description: "L'élève croit qu'une seule demi-équation (ou un nombre insuffisant/incorrect de couples) suffit à décrire la réaction réelle, sans la combiner avec l'autre demi-équation qui absorbe/fournit exactement les électrons échangés."
+    contradicts_principle: "Une demi-équation seule fait apparaître des électrons libres, qui n'existent pas durablement en solution : ce n'est qu'une brique. Il faut toujours la combiner avec l'autre demi-équation du couple partenaire pour obtenir l'équation-bilan réelle, sans électrons libres."
+  - id: mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres
+    label: "« On peut additionner deux demi-équations sans équilibrer d'abord le nombre d'électrons échangés »"
+    description: "L'élève additionne directement deux demi-équations dont les nombres d'électrons échangés diffèrent, sans les multiplier au préalable par le facteur qui les égalise."
+    contradicts_principle: "Avant d'additionner, il faut multiplier chaque demi-équation par le facteur qui rend le nombre d'électrons échangés identique des deux côtés (le plus petit commun multiple) — sinon un électron libre subsiste, ce qui est physiquement impossible."
+  - id: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
+    label: "« Un solide pur doit figurer dans l'expression de Qr (concentration, masse…) »"
+    description: "L'élève inclut un solide pur (métal, précipité) dans l'expression de Qr, sous une forme ou une autre, au lieu de l'exclure."
+    contradicts_principle: "Un solide pur n'entre jamais dans l'expression de Qr, quelle que soit la grandeur utilisée pour le représenter : seules les concentrations des espèces dissoutes y figurent."
+  - id: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
+    label: "« Qr peut placer indifféremment produits ou réactifs au numérateur, ou l'ordre est inversé »"
+    description: "L'élève inverse le numérateur et le dénominateur dans l'expression de Qr (produits et réactifs échangés), ou mélange quelle espèce doit apparaître à quelle position."
+    contradicts_principle: "Qr se construit toujours avec les produits (tels qu'écrite l'équation) au numérateur et les réactifs au dénominateur — inverser change la valeur de Qr (et son sens de comparaison à K), ce n'est jamais un choix arbitraire."
+  - id: mc.chemistry.pc_evolution_spontanee.exposants-oublies
+    label: "« Les coefficients stoechiométriques n'interviennent pas comme exposants dans Qr (omis, ou utilisés comme multiplicateurs) »"
+    description: "L'élève omet les exposants dans Qr correspondant aux coefficients stoechiométriques de l'équation-bilan, ou les utilise comme facteurs multiplicatifs au lieu de puissances."
+    contradicts_principle: "Chaque concentration dans Qr est élevée à la puissance de son coefficient stoechiométrique dans l'équation-bilan telle qu'écrite — jamais omis, jamais un simple facteur multiplicatif."
+  - id: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
+    label: "« La seule présence d'une oxydoréduction suffit à définir une pile »"
+    description: "L'élève croit qu'un montage est une pile dès qu'une réaction d'oxydoréduction s'y produit (ou dès qu'il dégage de la chaleur, ou par tout autre indice indirect), sans vérifier la séparation physique des réactifs et un courant mesurable dans un circuit extérieur."
+    contradicts_principle: "Le test qui distingue transfert direct et pile n'est jamais « y a-t-il une oxydoréduction ? » mais « les réactifs sont-ils physiquement séparés, avec un courant mesurable dans un circuit extérieur ? ». Une même réaction, avec le même K, peut se produire par contact direct (pas de courant) ou en pile (courant mesurable) — seul le montage diffère, jamais la réaction elle-même ni K."
+  - id: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
+    label: "« Le fil conducteur et la jonction (pont salin) jouent un rôle interchangeable dans une pile »"
+    description: "L'élève confond le rôle du fil conducteur (trajet des électrons, courant mesurable) avec celui de la jonction/pont salin (électroneutralité des solutions), ou nie leur nécessité."
+    contradicts_principle: "Le fil conducteur est l'unique trajet des électrons du circuit extérieur, le seul que mesure un ampèremètre. La jonction assure un rôle différent, purement ionique : maintenir l'électroneutralité des deux compartiments, sans transporter les électrons du circuit."
+  - id: mc.chemistry.pc_evolution_spontanee.critere-limite-redox
+    label: "« Le critère Qr,i face à K ne s'applique qu'à l'oxydoréduction (ou, à l'inverse, pas du tout à l'oxydoréduction) »"
+    description: "L'élève croit que le critère Qr,i face à K est propre à un mécanisme particulier (oxydoréduction, ou au contraire uniquement acido-basique/précipitation), plutôt qu'universel à toute réaction chimique."
+    contradicts_principle: "Le critère Qr,i face à K ne dépend jamais du mécanisme microscopique de la réaction (électrons, protons, réseau cristallin) — seulement de l'écart entre où en est le système et où il « veut » être à l'équilibre. Il s'applique identiquement à l'oxydoréduction, aux réactions acido-basiques et aux précipitations."
+  - id: mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total
+    label: "« Atteindre l'équilibre (Qr = K) signifie que les réactifs sont totalement consommés, ou que plus rien ne se passe, même à l'échelle microscopique »"
+    description: "L'élève croit que Qr = K signifie un épuisement total des réactifs, ou un arrêt complet de toute réaction même microscopique, plutôt qu'un état macroscopiquement stable où réactions directe et inverse se compensent."
+    contradicts_principle: "L'équilibre laisse généralement coexister réactifs ET produits en proportions figées par K (sauf cas extrême) ; à l'échelle microscopique, les réactions directe et inverse continuent à la même vitesse l'une que l'autre. Seule l'évolution MACROSCOPIQUE (les concentrations mesurables) s'arrête."
 
 items:
 
@@ -10,6 +87,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
     stem: >
       Pour la réaction $Fe + 2\,Ag^+ \rightleftharpoons Fe^{2+} + 2\,Ag$, à une
       température donnée, $K \approx 4{,}0\times10^{15}$. Dans un mélange qui
@@ -23,6 +101,7 @@ items:
       - id: B
         text: "$Q_{r,i} \\ll K$ : le système évolue dans le sens inverse, puisque $Q_{r,i}$ est bien plus petit que $K$."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
         feedback: >
           C'est l'inverse. Un $Q_{r,i}$ petit signifie qu'il y a, à cet
           instant, proportionnellement peu de produits et beaucoup de
@@ -34,6 +113,7 @@ items:
       - id: C
         text: "Le système est déjà à l'équilibre, puisque $Q_{r,i}$ est une valeur bien définie à cet instant."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           $Q_r$ est calculable à n'importe quel instant d'une transformation,
           pas seulement à l'équilibre - avoir une valeur numérique ne signifie
@@ -44,6 +124,7 @@ items:
       - id: D
         text: "La valeur de $K$ annoncée doit être fausse, puisque $Q_{r,i} \\neq K$ pour ce mélange."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           $Q_r$ et $K$ ne sont censés être égaux QU'À L'ÉQUILIBRE. Tant que la
           transformation n'a pas atteint son état final, $Q_r$ prend
@@ -69,6 +150,7 @@ items:
     difficulty_level: 4
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
     stem: >
       Pour la réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$,
       $K \approx 1{,}8\times10^{37}$. On prépare un mélange très concentré en
@@ -82,6 +164,7 @@ items:
       - id: B
         text: "$Q_{r,i} > K$ : le système évolue dans le sens direct, car $Q_{r,i}$ est une très grande valeur, donc la réaction \"avance beaucoup\"."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
         feedback: >
           Une grande valeur de $Q_{r,i}$ ne signifie pas que la réaction
           directe avance : elle signifie qu'il y a déjà, à cet instant,
@@ -92,6 +175,7 @@ items:
       - id: C
         text: "Le zinc reste forcément le réducteur qui cède ses électrons, quelle que soit la valeur de $Q_{r,i}$, car c'est sa propriété chimique fixe."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
           Aucun couple n'a de rôle fixé une fois pour toutes : c'est
           uniquement la comparaison $Q_{r,i}$ face à $K$, à l'instant
@@ -103,6 +187,7 @@ items:
       - id: D
         text: "Une telle situation est impossible : $Q_{r,i}$ ne peut jamais dépasser $K$."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           $Q_r$ peut prendre n'importe quelle valeur selon les concentrations
           choisies au départ - rien n'empêche $Q_{r,i}$ de dépasser $K$ si le
@@ -131,6 +216,7 @@ items:
     difficulty_level: 2
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
     stem: >
       Un élève plonge une pointe de fer de quelques milligrammes dans une
       goutte de solution très diluée de sulfate de cuivre. La réaction
@@ -145,6 +231,7 @@ items:
       - id: B
         text: "Que la transformation n'est en réalité pas spontanée, puisqu'une transformation spontanée dégage toujours une chaleur qu'on peut sentir."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           La spontanéité se juge uniquement sur la comparaison $Q_{r,i}$ face
           à $K$ - une comparaison de concentrations, pas une mesure de
@@ -155,6 +242,7 @@ items:
       - id: C
         text: "Que le critère $Q_{r,i}$ face à $K$ ne s'applique pas ici, puisqu'il n'y a pas de dégagement de chaleur détectable."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           Le critère $Q_{r,i}$ face à $K$ s'applique à toute réaction, quelle
           que soit la chaleur qu'elle dégage : il ne contient aucune grandeur
@@ -164,6 +252,7 @@ items:
       - id: D
         text: "Que la réaction s'est arrêtée avant même de commencer, faute d'énergie suffisante pour démarrer."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           Rien n'indique un arrêt : le dépôt de cuivre et la disparition
           progressive de la couleur bleue (si on pouvait les observer sur une
@@ -192,6 +281,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
     stem: >
       La réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$ chauffe
       nettement un tube à essai où le zinc est en contact direct avec la
@@ -207,6 +297,7 @@ items:
       - id: B
         text: "Elle sera la même, car une transformation spontanée dégage toujours la même quantité de chaleur, quel que soit le montage utilisé."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           La quantité de chaleur dégagée dépend du chemin emprunté par
           l'énergie libérée, pas seulement de la réaction elle-même. Séparer
@@ -217,6 +308,7 @@ items:
       - id: C
         text: "La réaction ne sera plus spontanée du tout, puisqu'elle ne peut plus libérer de chaleur directement au point de contact."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           La spontanéité ne dépend que de $Q_{r,i}$ face à $K$, qui ne change
           pas selon que les réactifs sont en contact direct ou séparés : ce
@@ -226,6 +318,7 @@ items:
       - id: D
         text: "Il n'y aura plus aucune énergie libérée du tout, puisque le circuit électrique capte la totalité de l'énergie de la réaction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           Le circuit ne capte jamais la totalité de l'énergie libérée : une
           partie continue à se dissiper localement en chaleur (les
@@ -254,6 +347,7 @@ items:
     difficulty_level: 2
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
     stem: >
       On plonge directement une lame de zinc dans une solution de sulfate de
       cuivre, dans un seul et même bécher, sans fil ni compartiments séparés.
@@ -267,6 +361,7 @@ items:
       - id: B
         text: "Oui, puisqu'il s'agit d'une réaction d'oxydoréduction, et qu'une pile est définie par la présence d'une oxydoréduction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           La présence d'une oxydoréduction ne suffit pas à définir une pile.
           Ce qui distingue une pile d'un simple contact direct, c'est la
@@ -277,6 +372,7 @@ items:
       - id: C
         text: "Non, car le zinc et le cuivre ne forment pas des couples oxydant/réducteur valides pour construire une pile."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           Le couple $Zn^{2+}/Zn$ et le couple $Cu^{2+}/Cu$ sont au contraire
           les couples classiquement utilisés pour construire une pile (la
@@ -286,6 +382,7 @@ items:
       - id: D
         text: "Oui, car la réaction dégage de la chaleur, ce qui est la signature caractéristique d'une pile en fonctionnement."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           Dégager de la chaleur est au contraire la signature d'un transfert
           direct, PAS d'une pile : une pile en fonctionnement dévie une
@@ -313,6 +410,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
     stem: >
       Deux montages A et B mettent en jeu exactement la même réaction
       $Fe + 2\,Ag^+ \rightleftharpoons Fe^{2+} + 2\,Ag$ et la même valeur de
@@ -329,6 +427,7 @@ items:
       - id: B
         text: "A et B sont tous deux des piles, puisque la même réaction spontanée s'y produit dans les deux cas."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           Le fait qu'il s'agisse de la même réaction spontanée, avec le même
           $K$, ne suffit pas à faire de B une pile. Dans B, les réactifs sont
@@ -339,6 +438,7 @@ items:
       - id: C
         text: "Seul B est une véritable réaction chimique ; dans A, il ne s'agit que d'un phénomène purement électrique, sans réaction chimique sous-jacente."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           Une pile n'est pas un phénomène « purement électrique » détaché de
           la chimie : c'est exactement la même transformation chimique
@@ -349,6 +449,7 @@ items:
       - id: D
         text: "On ne peut rien affirmer sans connaître la valeur de $K$ pour chaque montage séparément."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           $K$ ne dépend que de la réaction et de la température (chapitre
           état d'équilibre) - jamais de la façon dont les réactifs sont
@@ -378,6 +479,7 @@ items:
     difficulty_level: 1
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
     stem: >
       On reprend l'expérience de l'accroche : une lame de zinc plongée dans
       une solution de sulfate de cuivre. Un élève explique le sens de la
@@ -392,18 +494,21 @@ items:
       - id: B
         text: "Elle est correcte et suffisante : chaque métal possède un classement de réactivité fixe, à retenir couple par couple, qui détermine le sens de n'importe quelle réaction entre deux métaux."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
           Il n'existe pas de classement à mémoriser : c'est le calcul de
           $Q_{r,i}$ face à $K$, propre à chaque mélange, qui décide du sens.
       - id: C
         text: "Elle est incorrecte, car un métal solide ne peut jamais céder d'électrons - seuls les ions en solution réagissent entre eux."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
           Un métal solide est au contraire un réducteur typique : c'est
           justement le zinc solide qui cède ses électrons ici.
       - id: D
         text: "Elle est incorrecte, car le sens d'une réaction ne peut jamais être prédit à l'avance : il faut toujours l'observer expérimentalement pour le connaître."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif
         feedback: >
           C'est tout l'intérêt du critère $Q_{r,i}$ face à $K$ : il prédit le
           sens par le calcul, avant toute observation.
@@ -422,6 +527,7 @@ items:
     difficulty_level: 1
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.sens-symetrique
     stem: >
       Toujours à propos de l'accroche : si on réalisait l'expérience
       symétrique - plonger une lame de cuivre métallique dans une solution
@@ -437,12 +543,14 @@ items:
       - id: B
         text: "C'est vrai : toute réaction d'oxydoréduction spontanée dans un sens l'est tout autant dans l'autre sens, selon le mélange choisi."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.sens-symetrique
         feedback: >
           Le sens n'est jamais symétrique par principe : il dépend du
           calcul $Q_{r,i}$ face à $K$ pour le mélange considéré.
       - id: C
         text: "C'est faux, car le cuivre métallique ne peut jamais être un réducteur - seul le zinc peut céder des électrons parmi ces deux métaux."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
           Rien n'empêche le cuivre métallique de céder des électrons : c'est
           uniquement la comparaison $Q_{r,i}$ face à $K$, pas une propriété
@@ -450,6 +558,7 @@ items:
       - id: D
         text: "C'est faux, car dès qu'une réaction a eu lieu dans un sens, $K$ change de valeur et empêche la réaction inverse de se produire."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           $K$ ne dépend que de la réaction et de la température, jamais de
           l'historique du système.
@@ -467,6 +576,7 @@ items:
     difficulty_level: 2
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
     stem: >
       Dans l'accroche, la couleur bleue de la solution pâlit
       progressivement, minute après minute - la réaction ne se termine pas
@@ -481,18 +591,21 @@ items:
       - id: B
         text: "Elle est juste : une transformation spontanée doit toujours se produire quasi instantanément, sinon elle n'est pas gouvernée par le critère $Q_{r,i}$ face à $K$."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
         feedback: >
           Le critère $Q_{r,i}$ face à $K$ ne contient aucune information de
           vitesse : il donne un sens, pas une durée.
       - id: C
         text: "Elle est fausse, car au contraire une transformation spontanée est nécessairement lente - c'est une transformation forcée qui serait rapide."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
         feedback: >
           La vitesse n'est pas plus liée à la spontanéité dans ce sens que
           dans l'autre : les deux notions sont simplement indépendantes.
       - id: D
         text: "Elle est fausse, car la vitesse et le sens d'une réaction sont la même chose : une réaction rapide va forcément dans le sens direct, une réaction lente dans le sens inverse."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane
         feedback: >
           Le sens vient uniquement de $Q_{r,i}$ face à $K$ ; la vitesse est
           une tout autre question, sans lien avec ce critère.
@@ -513,6 +626,7 @@ items:
     difficulty_level: 2
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees
     stem: >
       Pour la réaction $Fe + 2\,Ag^+ \rightleftharpoons Fe^{2+} + 2\,Ag$, un
       élève écrit : « le fer est réduit, puisqu'il perd des électrons ; les
@@ -526,18 +640,21 @@ items:
       - id: B
         text: "Elle est correcte : \"réduit\" décrit une espèce qui perd de la matière (des électrons), et \"oxydé\" décrit une espèce qui en gagne."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees
         feedback: >
           C'est l'inverse : céder des électrons définit l'oxydation, en
           capter définit la réduction.
       - id: C
         text: "Elle est fausse pour une autre raison : ni le fer ni les ions $Ag^+$ ne changent réellement d'état ici, seul un déplacement macroscopique de matière a lieu, sans transfert d'électrons véritable."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
           Un transfert d'électrons bien réel a lieu entre le fer et les ions
           $Ag^+$ : c'est la définition même d'une oxydoréduction.
       - id: D
         text: "Elle est fausse pour une autre raison : le terme \"réduit\" doit s'appliquer à l'espèce présente en plus petite quantité dans le mélange, indépendamment du sens des électrons échangés."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees
         feedback: >
           « Réduit » est un terme chimique lié au sens des électrons
           échangés, pas à la quantité de matière présente.
@@ -557,6 +674,7 @@ items:
     difficulty_level: 2
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
     stem: >
       Un élève affirme : « pour décrire complètement ce qui se passe quand
       le fer réagit avec les ions $Ag^+$, il suffit d'écrire la
@@ -571,18 +689,21 @@ items:
       - id: B
         text: "Elle est correcte : une demi-équation, à elle seule, décrit toujours une transformation qui peut réellement se produire seule en solution."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
           Des électrons libres ne s'accumulent jamais en solution : une
           demi-équation seule n'est qu'une brique, pas une réaction réelle.
       - id: C
         text: "Elle est incorrecte pour une autre raison : c'est la demi-équation du couple $Ag^+/Ag$, et non celle du fer, qui décrit à elle seule la transformation réelle."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
           Aucune des deux demi-équations, seule, ne suffit : il faut
           toujours les combiner pour éliminer les électrons libres.
       - id: D
         text: "Elle est incorrecte pour une autre raison : il manque un troisième couple oxydant/réducteur, en plus de $Fe^{2+}/Fe$ et $Ag^+/Ag$, pour que la réaction soit complète."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
           Deux couples suffisent dès que leurs électrons échangés
           s'équilibrent exactement ; un troisième n'est pas nécessaire ici.
@@ -604,6 +725,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres
     stem: >
       Pour obtenir l'équation-bilan de la réaction entre l'aluminium
       métallique et les ions $Zn^{2+}$, un élève part des deux
@@ -620,18 +742,21 @@ items:
       - id: B
         text: "Il est correct : additionner directement les deux demi-équations, sans les ajuster, donne toujours l'équation-bilan correcte, quel que soit le nombre d'électrons échangés par chaque couple."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres
         feedback: >
           Sans ajustement préalable, un électron libre subsiste dans le
           bilan - ce qui est physiquement impossible en solution.
       - id: C
         text: "Il est faux, mais uniquement parce que l'ordre des espèces est incorrect - il faudrait écrire $Zn^{2+} + Al \\rightleftharpoons Zn + Al^{3+} + e^-$, ce qui règle le problème."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres
         feedback: >
           L'ordre d'écriture n'est pas le problème : c'est le nombre
           d'électrons échangés, non équilibré, qui laisse un $e^-$ libre.
       - id: D
         text: "Il est faux, car l'aluminium et les ions $Zn^{2+}$ ne peuvent pas réagir ensemble : un métal solide et un ion métallique ne peuvent jamais échanger d'électrons."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
           Un métal solide peut au contraire céder des électrons à un ion
           métallique en solution : c'est le mécanisme même de cette réaction.
@@ -653,6 +778,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
     stem: >
       Pour la réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$, un
       élève écrit le quotient de réaction ainsi :
@@ -667,18 +793,21 @@ items:
       - id: B
         text: "Elle est correcte : toute espèce présente dans l'équation-bilan, solide ou dissoute, doit apparaître dans $Q_r$, à sa concentration ou à sa masse selon son état."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
         feedback: >
           Un solide pur n'entre jamais dans $Q_r$, quelle que soit la
           grandeur utilisée pour le représenter.
       - id: C
         text: "Elle est fausse, mais uniquement parce qu'il faudrait utiliser les concentrations molaires des solides plutôt que leurs masses - le principe d'inclure les solides serait, lui, correct."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
         feedback: >
           Le problème n'est pas l'unité utilisée : c'est le principe même
           d'inclure un solide pur dans $Q_r$ qui est faux.
       - id: D
         text: "Elle est fausse, car c'est l'inverse qu'il fallait écrire : ce sont les concentrations $[Zn^{2+}]$ et $[Cu^{2+}]$ qu'il faut exclure de $Q_r$, et les masses des solides qu'il faut garder."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
         feedback: >
           C'est l'inverse : ce sont les espèces dissoutes qui entrent dans
           $Q_r$, jamais les solides purs.
@@ -696,6 +825,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
     stem: >
       Deux réactions sont toutes deux spontanées ($Q_{r,i} < K$ pour
       chacune). La première dégage une chaleur nette, perceptible au
@@ -711,18 +841,21 @@ items:
       - id: B
         text: "Elle est juste : plus une réaction dégage de chaleur perceptible, plus elle est spontanée - la chaleur mesure justement le degré de spontanéité d'une transformation."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           $Q_{r,i}$ face à $K$ ne donne qu'un sens (direct, inverse,
           équilibre), jamais un degré mesuré par la chaleur.
       - id: C
         text: "Elle n'a pas de sens, mais pour une autre raison : c'est en réalité la seconde réaction qui est la plus spontanée, car dégager peu de chaleur signifie que la réaction est presque totalement terminée."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           La quantité de chaleur ne renseigne ni sur l'avancement ni sur un
           quelconque degré de spontanéité.
       - id: D
         text: "Elle n'a pas de sens, car en toute rigueur, seule une réaction qui ne dégage aucune chaleur du tout peut être qualifiée de spontanée."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
           La spontanéité ne dépend que de $Q_{r,i}$ face à $K$ ; dégager de
           la chaleur ne la remet jamais en cause.
@@ -741,6 +874,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
     stem: >
       Dans un montage à détour forcé (réactifs séparés dans deux
       compartiments, reliés par un fil conducteur ET par une jonction), un
@@ -755,18 +889,21 @@ items:
       - id: B
         text: "Elle est correcte : le fil et la jonction jouent un rôle interchangeable, tous deux permettant aux électrons de circuler d'un compartiment à l'autre."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
         feedback: >
           Seul le fil conducteur transporte les électrons du circuit ; la
           jonction a un rôle différent, l'électroneutralité des solutions.
       - id: C
         text: "Elle est fausse, mais pour la raison inverse : c'est la jonction, et non le fil, qui transporte les électrons du circuit extérieur, mesurables à l'ampèremètre."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
         feedback: >
           C'est l'inverse : c'est le fil qui transporte les électrons
           mesurables, la jonction ne fait que maintenir l'électroneutralité.
       - id: D
         text: "Elle est fausse, car ni le fil ni la jonction ne sont réellement nécessaires : les électrons peuvent directement traverser la solution d'un compartiment à l'autre sans aucun support matériel."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
         feedback: >
           Sans fil conducteur, les électrons n'ont aucun trajet macroscopique
           possible : c'est justement ce qui distingue une pile d'un
@@ -788,6 +925,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.critere-limite-redox
     stem: >
       Un élève affirme : « le critère qui compare $Q_{r,i}$ à $K$, ça ne
       marche que pour les réactions d'oxydoréduction, puisque c'est dans
@@ -802,18 +940,21 @@ items:
       - id: B
         text: "Elle est correcte : chaque famille de réactions (oxydoréduction, acido-basique, précipitation) obéit à son propre critère de spontanéité, propre à son mécanisme."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-limite-redox
         feedback: >
           Un seul et même critère, $Q_{r,i}$ face à $K$, s'applique aux
           trois familles de réactions, quel que soit leur mécanisme.
       - id: C
         text: "Elle est fausse, mais pour une autre raison : c'est en réalité l'inverse - le critère $Q_{r,i}$ face à $K$ ne s'applique qu'aux réactions acido-basiques et aux précipitations, jamais à l'oxydoréduction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-limite-redox
         feedback: >
           Le critère s'applique aux trois familles sans exception, y compris
           l'oxydoréduction, où il a d'ailleurs été introduit.
       - id: D
         text: "Elle est fausse, car aucune réaction acido-basique ni aucune précipitation ne possède de constante d'équilibre $K$ - cette notion serait propre à l'oxydoréduction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-limite-redox
         feedback: >
           Toute réaction, quel que soit son mécanisme, possède une constante
           d'équilibre $K$ à une température donnée.
@@ -833,6 +974,7 @@ items:
     difficulty_level: 4
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
     stem: >
       On écrit l'équation de dissolution
       $AgCl_{(s)} \rightleftharpoons Ag^+ + Cl^-$. Dans une solution donnée,
@@ -848,18 +990,21 @@ items:
       - id: B
         text: "Elle est correcte : $Q_{r,i} > K$ signifie toujours que la réaction avance dans le sens direct de l'équation telle qu'elle est écrite, quelle que soit la réaction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
         feedback: >
           C'est l'inverse : $Q_{r,i} > K$ impose le sens inverse de
           l'équation écrite, ici la formation du précipité.
       - id: C
         text: "Elle est fausse, mais pour une autre raison : $Q_{r,i} > K$ signifierait ici que le système est déjà à l'équilibre, donc qu'aucune évolution supplémentaire n'a lieu."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           L'équilibre correspond à $Q_{r,i} = K$, pas à $Q_{r,i} > K$ ; ici
           le système évolue bien, dans le sens inverse.
       - id: D
         text: "Elle est fausse, car le critère $Q_{r,i}$ face à $K$ ne s'applique pas aux équations de dissolution, seulement aux réactions où toutes les espèces sont dissoutes des deux côtés."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-limite-redox
         feedback: >
           Le critère s'applique aussi aux dissolutions/précipitations,
           en excluant simplement le solide pur de $Q_r$.
@@ -879,6 +1024,7 @@ items:
     difficulty_level: 3
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
     stem: >
       Pour la réaction acido-basique $AH + B \rightleftharpoons A^- + BH^+$,
       un élève écrit le quotient de réaction ainsi :
@@ -892,18 +1038,21 @@ items:
       - id: B
         text: "Elle est correcte : peu importe que ce soient les produits ou les réactifs au numérateur, tant que les mêmes espèces apparaissent, la comparaison à $K$ reste valable."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
         feedback: >
           Inverser numérateur et dénominateur change la valeur de $Q_r$
           (et son inverse) : ce n'est pas un choix arbitraire.
       - id: C
         text: "Elle est fausse, mais pour une autre raison : il manque la concentration de l'eau au numérateur, solvant de la réaction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
         feedback: >
           Seules les espèces qui figurent réellement dans l'équation-bilan
           écrite entrent dans $Q_r$ ; l'eau n'y apparaît pas ici.
       - id: D
         text: "Elle est fausse, car les concentrations initiales ne doivent jamais être utilisées dans $Q_r$ - seules les concentrations à l'équilibre permettent de le calculer."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           $Q_r$ se calcule à tout instant, avec les concentrations de cet
           instant ; ce n'est qu'à l'équilibre qu'il devient égal à $K$.
@@ -922,6 +1071,7 @@ items:
     difficulty_level: 4
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
     stem: >
       On plonge une lame d'étain (Sn) métallique dans un bécher contenant
       une solution de nitrate de plomb(II), telle que
@@ -939,12 +1089,14 @@ items:
       - id: B
         text: "$Q_{r,i} = 0{,}50 < K$, donc le système évolue dans le sens inverse - c'est le plomb métallique qui serait oxydé."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
         feedback: >
           C'est l'inverse : $Q_{r,i} < K$ impose le sens direct, pas le
           sens inverse.
       - id: C
         text: "$Q_{r,i} = \\dfrac{[Pb^{2+}]_i}{[Sn^{2+}]_i} = 2{,}0$, ce qui est inférieur à $K$ : le système évolue dans le sens direct, mais c'est le plomb qui est oxydé."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
         feedback: >
           Le numérateur et le dénominateur sont inversés (produit au
           dénominateur au lieu du numérateur), ce qui fausse aussi
@@ -952,6 +1104,7 @@ items:
       - id: D
         text: "Puisque $K$ est proche de $1$, cela signifie que le système est presque à l'équilibre et qu'aucune évolution nette n'aura lieu, quelle que soit la valeur de $Q_{r,i}$."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
           La valeur de $K$ seule ne dit rien sur l'état du système ; seule
           la comparaison à $Q_{r,i}$ le détermine.
@@ -971,6 +1124,7 @@ items:
     difficulty_level: 4
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.exposants-oublies
     stem: >
       Pour la réaction $2\,Al + 3\,Sn^{2+} \rightleftharpoons 2\,Al^{3+} +
       3\,Sn$ (obtenue en combinant les demi-équations des couples
@@ -985,12 +1139,14 @@ items:
       - id: B
         text: "Elle est correcte : les coefficients stoechiométriques de l'équation-bilan n'interviennent jamais dans l'expression de $Q_r$, seules les concentrations comptent, sans exposant."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.exposants-oublies
         feedback: >
           Les coefficients stoechiométriques deviennent des exposants dans
           $Q_r$ ; les omettre donne une expression incomplète.
       - id: C
         text: "Elle est incorrecte, mais pour une autre raison : il faudrait inverser $Al^{3+}$ et $Sn^{2+}$, puisque l'aluminium est le réactif et non le produit dans cette réaction."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
         feedback: >
           $Al^{3+}$ est bien un produit de cette réaction (l'aluminium
           métal, lui, est le réactif) : le numérateur est correctement
@@ -998,6 +1154,7 @@ items:
       - id: D
         text: "Elle est incorrecte, car il faudrait utiliser les coefficients 2 et 3 comme multiplicateurs devant les concentrations, et non comme exposants : $Q_r = \\dfrac{2\\,[Al^{3+}]}{3\\,[Sn^{2+}]}$."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.exposants-oublies
         feedback: >
           Les coefficients stoechiométriques s'utilisent comme exposants
           dans $Q_r$, jamais comme facteurs multiplicatifs.
@@ -1017,6 +1174,7 @@ items:
     difficulty_level: 5
     skill_code: pc_evolution_spontanee
     tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
     stem: >
       On verse quelques gouttes d'une solution de nitrate d'argent
       directement dans un bécher contenant de la limaille de cuivre, telle
@@ -1036,12 +1194,14 @@ items:
       - id: B
         text: "Le sens est direct, et l'affirmation est juste : toute réaction spontanée fait dévier un ampèremètre, qu'il y ait ou non un circuit extérieur."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           La spontanéité ne suffit pas : sans réactifs séparés reliés par
           un fil, il n'existe aucun circuit où mesurer un courant.
       - id: C
         text: "Le sens est inverse ($Q_{r,i} > K$), donc l'affirmation est fausse car la réaction ne se produit même pas dans le sens observé."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
         feedback: >
           $Q_{r,i} \approx 6{,}3\times10^{-4}$ est bien plus petit que
           $K \approx 4{,}0\times10^{15}$ : le sens est direct, conforme au
@@ -1049,6 +1209,7 @@ items:
       - id: D
         text: "Le sens est direct, mais l'affirmation sur l'ampèremètre serait juste seulement si l'on remplaçait le bécher par un tube en U - la présence d'un simple récipient fermé suffit alors à créer un circuit mesurable."
         correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           Un contenant fermé ne crée pas de circuit : il faut des réactifs
           physiquement séparés et reliés par un fil conducteur.
@@ -1065,3 +1226,71 @@ items:
       choses distinctes (rung 4) : ici, cuivre et $Ag^+$ sont en contact
       direct dans le même bécher, sans fil ni circuit extérieur, donc aucun
       ampèremètre n'y mesurerait de courant.
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (backfilled in the summit-conversion pilot)
+#
+# This end bank (ES-1…ES-21) was authored BEFORE the misconception inventory
+# existed. This pass backfills item-level `primary_misconception` tags on
+# every item AND per-distractor `misconception` tags on every distractor
+# (mirroring checkpoints.yaml's gold standard), without altering any
+# existing stem, choice text, feedback, or solution — additive only.
+#
+# It does NOT close the floor. Counts below are ITEM-LEVEL (each item
+# counted once, by its `primary_misconception`) against a floor of 3. Only
+# 3 of the 17 inventory models reach that floor from this end bank alone;
+# 11 sit at exactly 1, and 2 sit at 0 (confond-qr-et-k and
+# pas-de-critere-predictif are real, well-attested distractor-level models —
+# they simply never happen to be any item's PRIMARY target here).
+# equilibre-egale-arret-total is checkpoint-only (cp-r2-equilibre probes it)
+# and is not yet targeted by any end-bank item at all. This gap is surfaced
+# honestly, not padded: a follow-up item-authoring pass should add fresh
+# items (not memorizable restatements) for the 14 under-covered models,
+# spanning the ramp, before this notion's end bank can claim floor_met: true.
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 21
+  per_misconception:
+    mc.chemistry.pc_evolution_spontanee.critere-inverse: 4               # ES-1, ES-2, ES-17, ES-19
+    mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur: 3        # ES-3, ES-4, ES-14
+    mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile: 3     # ES-5, ES-6, ES-21
+    mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe: 1         # ES-7
+    mc.chemistry.pc_evolution_spontanee.sens-symetrique: 1               # ES-8
+    mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane: 1     # ES-9
+    mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees: 1 # ES-10
+    mc.chemistry.pc_evolution_spontanee.demi-equation-isolee: 1          # ES-11
+    mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres: 1      # ES-12
+    mc.chemistry.pc_evolution_spontanee.solide-dans-qr: 1                # ES-13
+    mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus: 1        # ES-15
+    mc.chemistry.pc_evolution_spontanee.critere-limite-redox: 1          # ES-16
+    mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses: 1 # ES-18
+    mc.chemistry.pc_evolution_spontanee.exposants-oublies: 1             # ES-20
+    mc.chemistry.pc_evolution_spontanee.confond-qr-et-k: 0               # distractor-only (ES-1,2,8,17,18,19 C/D)
+    mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif: 0      # distractor-only (ES-7 D)
+    mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total: 0   # checkpoint-only (cp-r2-equilibre)
+  floor: 3
+  floor_met: false
+  ramp_coverage:
+    R0: 3   # ES-7, ES-8, ES-9
+    R1: 3   # ES-10, ES-11, ES-12
+    R2: 3   # ES-1, ES-2, ES-13
+    R3: 3   # ES-3, ES-4, ES-14
+    R4: 3   # ES-5, ES-6, ES-15
+    R5: 3   # ES-16, ES-17, ES-18
+    R6: 3   # ES-19, ES-20, ES-21
+  note: >
+    Floor NOT closed in this pass — reported honestly rather than padded.
+    14 of 17 models sit under the floor of 3 (11 at 1, 3 at 0). A follow-up
+    item-authoring pass is needed: fresh stems (not memorizable restatements
+    of existing items or of the r-bac/r-variation exercises) for
+    reactivite-metal-fixe, sens-symetrique, spontane-egale-instantane,
+    oxydation-reduction-inversees, demi-equation-isolee,
+    electrons-non-equilibres, solide-dans-qr, fil-jonction-confondus,
+    critere-limite-redox, qr-produits-reactifs-inverses, exposants-oublies
+    (1→3 each), confond-qr-et-k, pas-de-critere-predictif, and
+    equilibre-egale-arret-total (0→3 each), spanning R0–R6 to keep the ramp
+    populated. Per-distractor tags are diagnostic metadata layered onto the
+    existing item-level `primary_misconception` floor count; they do not
+    themselves change the coverage method or counts above.

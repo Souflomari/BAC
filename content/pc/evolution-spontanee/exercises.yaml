@@ -1,0 +1,236 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2012 session
+# normale, PC BIOF, code NS28, AlloSchool element/94452 — statut « vérifié »
+# in docs/sujets/pc/evolution-spontanee.md). r-variation is a fresh
+# anti-memorisation twin (same skills, different couples/numbers/context,
+# status not-applicable).
+
+notion: evolution-spontanee
+
+exercises:
+  # ── r-bac — the VERIFIED 2012 national sujet, Deuxième partie (pile Cu-Zn) ──
+  # Faithful transcription of docs/sujets/pc/evolution-spontanee.md → "2012 —
+  # session normale — Exercice de Chimie (Deuxième partie)". Pile Cu-Zn : deux
+  # compartiments V = 200 mL, [Cu2+]i = [Zn2+]i = 1,0e-2 mol/L, pont salin,
+  # K = 5e36 pour Zn + Cu2+ ⇌ Zn2+ + Cu. Barème 2 pt sur les 7 pt de
+  # l'exercice complet (0,5 + 0,5 + 1).
+  - id: r-bac
+    title: "Exercice de type bac — pile cuivre-zinc et sens d'évolution spontané (2012)"
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF, AlloSchool NS28
+        (Exercice de Chimie, Deuxième partie — pile cuivre-zinc ; barème 2 pt
+        sur les 7 pt de l'exercice complet : 0,5 + 0,5 + 1). Transcription
+        vérifiée : re-fetch AlloSchool element/94452 + diff OK
+        (docs/sujets/pc/evolution-spontanee.md).
+    intro: |-
+      **La pile cuivre-zinc (examen national, session normale 2012).**
+
+      « La première pile électrique a été inventée, à la fin du XVIIIᵉ siècle,
+      par le savant Volta, en utilisant le cuivre et le zinc et un papier
+      imbibé d'eau salée. Dès lors, on a pu inventer et développer plusieurs
+      sortes de piles électrochimiques. » On propose ici une étude simplifiée
+      de la pile cuivre-zinc.
+
+      On réalise la pile constituée des couples $(\text{Cu}^{2+}_{(aq)}/\text{Cu}_{(s)})$
+      et $(\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)})$, en immergeant l'électrode de
+      cuivre dans une solution de sulfate de cuivre de volume $V = 200\ \text{mL}$
+      et de concentration initiale $[\text{Cu}^{2+}_{(aq)}]_i = 1{,}0\times10^{-2}\
+      \text{mol}\cdot\text{L}^{-1}$, et l'électrode de zinc dans une solution de
+      sulfate de zinc de volume $V = 200\ \text{mL}$ et de concentration
+      initiale $[\text{Zn}^{2+}_{(aq)}]_i = 1{,}0\times10^{-2}\
+      \text{mol}\cdot\text{L}^{-1}$. Les solutions des deux compartiments sont
+      reliées par un pont salin. Au cours du fonctionnement de la pile se
+      produit une transformation modélisée par l'équation suivante :
+
+      $$\text{Zn}_{(s)} + \text{Cu}^{2+}_{(aq)} \;\underset{2}{\overset{1}{\rightleftarrows}}\; \text{Zn}^{2+}_{(aq)} + \text{Cu}_{(s)}$$
+
+      **Données :** la constante d'équilibre associée à cette transformation
+      est $K = 5\times10^{36}$ ; la constante de Faraday
+      $\mathcal{F} = 9{,}65\times10^{4}\ \text{C}\cdot\text{mol}^{-1}$.
+    questions:
+      - id: q1
+        part: "Deuxième partie — Sens d'évolution spontané"
+        stem: |-
+          **(0,5 pt)** Préciser le sens d'évolution spontané du système
+          constituant la pile.
+        reasoning: |-
+          On applique le critère construit au rung 2 : calculer le quotient
+          de réaction à l'instant initial, $Q_{r,i}$, à partir des
+          concentrations telles qu'elles sont données par l'énoncé, puis le
+          comparer à $K$. Les espèces solides — le zinc et le cuivre
+          métalliques — n'entrent jamais dans $Q_r$ ; seules les espèces
+          dissoutes, $\text{Zn}^{2+}$ et $\text{Cu}^{2+}$, y figurent. Ici les
+          deux concentrations initiales sont égales, donc le quotient vaut
+          exactement $1$ — et $1$ est écrasé par un $K$ de $36$ ordres de
+          grandeur : le verdict ne fait aucun doute.
+        steps:
+          - math: 'Q_{r,i} = \frac{[\text{Zn}^{2+}]_i}{[\text{Cu}^{2+}]_i}'
+            note: "Expression de Qr pour l'équation écrite (rung 2) : les deux solides, zinc et cuivre métalliques, sont exclus."
+          - math: 'Q_{r,i} = \frac{1{,}0\times10^{-2}}{1{,}0\times10^{-2}} = 1'
+            note: "Application numérique : les deux concentrations initiales sont égales."
+          - math: 'Q_{r,i} = 1 \ll K = 5\times10^{36}'
+            note: "Qr,i est écrasé par K de 36 ordres de grandeur : le critère est sans appel."
+          - math: '\boxed{Q_{r,i} < K}'
+            note: "Sens direct (sens 1 de l'équation) : le zinc s'oxyde, les ions cuivre(II) se réduisent — exactement ce que montre le tube à essai de l'accroche."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Représenter le schéma conventionnel de la pile
+          étudiée.
+        reasoning: |-
+          Le schéma conventionnel place le pôle négatif ($\ominus$) à gauche
+          et le pôle positif ($\oplus$) à droite, avec la double barre du
+          pont salin au centre. La question précédente vient de trancher le
+          sens : le zinc est oxydé, il cède des électrons — c'est l'anode, le
+          pôle négatif ; les ions cuivre(II) sont réduits à l'électrode de
+          cuivre — la cathode, le pôle positif. Chaque compartiment s'écrit
+          réducteur $\mid$ oxydant du même couple :
+
+          $$\ominus\ \text{Zn}_{(s)} \mid \text{Zn}^{2+}_{(aq)} \parallel \text{Cu}^{2+}_{(aq)} \mid \text{Cu}_{(s)}\ \oplus$$
+      - id: q3
+        part: "Deuxième partie — Durée maximale de fonctionnement"
+        stem: |-
+          **(1 pt)** Au cours du fonctionnement de la pile, le circuit est
+          traversé par un courant d'intensité constante $I = 75\ \text{mA}$.
+          Trouver l'expression de la durée maximale de fonctionnement de la
+          pile $\Delta t_{\max}$, en fonction de $[\text{Cu}^{2+}_{(aq)}]_i$,
+          $V$, $\mathcal{F}$ et $I$, puis calculer $\Delta t_{\max}$.
+        reasoning: |-
+          On raisonne sur la quantité d'électricité : le courant $I$ constant
+          correspond à un débit d'électrons constant, $Q = I\,\Delta t$. La
+          pile s'arrête de fonctionner dès que l'un des réactifs dissous est
+          épuisé — ici, les deux concentrations initiales sont égales et le
+          zinc solide (électrode) est en large excès dans son compartiment,
+          donc c'est la disparition complète des ions $\text{Cu}^{2+}$ qui
+          limite la durée. Chaque ion $\text{Cu}^{2+}$ réduit consomme $2$
+          électrons (couple $\text{Cu}^{2+}/\text{Cu}$), donc la quantité
+          d'électricité totale disponible est
+          $Q_{\max} = n(\text{Cu}^{2+})_i \times 2 \times \mathcal{F}$. On
+          égale les deux expressions de $Q$ pour isoler $\Delta t_{\max}$.
+        steps:
+          - math: 'n(\text{Cu}^{2+})_i = [\text{Cu}^{2+}]_i\,V'
+            note: "Quantité initiale d'ions cuivre(II) disponibles dans le compartiment cuivre."
+          - math: 'Q_{\max} = 2\,n(\text{Cu}^{2+})_i\,\mathcal{F} = 2\,[\text{Cu}^{2+}]_i\,V\,\mathcal{F}'
+            note: "2 électrons échangés par ion Cu2+ réduit (couple Cu2+/Cu)."
+          - math: 'Q_{\max} = I\,\Delta t_{\max}'
+            note: "Le courant constant I débite une quantité d'électricité proportionnelle à la durée."
+          - math: '\boxed{\Delta t_{\max} = \frac{2\,[\text{Cu}^{2+}]_i\,V\,\mathcal{F}}{I}}'
+            note: "On isole Δt_max en égalant les deux expressions de Q."
+          - math: '\Delta t_{\max} = \frac{2\times 1{,}0\times10^{-2}\times 0{,}200\times 9{,}65\times10^{4}}{75\times10^{-3}} \approx 5{,}1\times10^{3}\ \text{s}'
+            note: "Application numérique : [Cu2+]i = 1,0e-2 mol/L, V = 200 mL = 0,200 L, F = 9,65e4 C/mol, I = 75 mA = 75e-3 A. Soit environ 1 h 26 min."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (critère Qr,i face à K, schéma conventionnel,
+  # quantité d'électricité) with different couples (Ag+/Ag et Cu2+/Cu instead
+  # of Zn2+/Zn et Cu2+/Cu), a non-1:1 stoechiométrie (exposant 2 sur [Ag+]
+  # dans Qr, 1 électron par Ag+ réduit instead of 2), and the copper that
+  # switches pole (⊖ here, ⊕ in r-bac) — so the student cannot recopy r-bac's
+  # answer and must recognise which procedure/exponent applies. Reuses the
+  # Cu/Ag couple and K ≈ 4,0e15 already worked in items.yaml's ES-21 (end
+  # bank), for internal consistency across the notion.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2012, sourcé). Le couple
+        Cu2+/Cu et Ag+/Ag et la valeur K ≈ 4,0e15 reprennent la réaction déjà
+        travaillée dans la banque de fin de leçon (items.yaml, ES-21).
+    intro: |-
+      Même structure profonde que l'exercice précédent, couples différents :
+      ici la pile met en jeu les couples $(\text{Ag}^+_{(aq)}/\text{Ag}_{(s)})$
+      et $(\text{Cu}^{2+}_{(aq)}/\text{Cu}_{(s)})$. On immerge une électrode
+      d'argent dans une solution de nitrate d'argent de volume
+      $V = 100\ \text{mL}$ et de concentration initiale
+      $[\text{Ag}^+_{(aq)}]_i = 1{,}0\times10^{-1}\ \text{mol}\cdot\text{L}^{-1}$,
+      et une électrode de cuivre, en large excès, dans une solution de
+      sulfate de cuivre de volume $V = 100\ \text{mL}$ et de concentration
+      initiale $[\text{Cu}^{2+}_{(aq)}]_i = 5{,}0\times10^{-2}\
+      \text{mol}\cdot\text{L}^{-1}$. Les deux compartiments sont reliés par
+      un pont salin. La transformation qui se produit est modélisée par :
+
+      $$\text{Cu}_{(s)} + 2\,\text{Ag}^+_{(aq)} \rightleftharpoons \text{Cu}^{2+}_{(aq)} + 2\,\text{Ag}_{(s)}$$
+
+      **Donnée :** $K \approx 4{,}0\times10^{15}$ pour cette réaction, à la
+      température de l'expérience.
+    questions:
+      - id: q1
+        part: "Étude de la pile cuivre-argent — sens d'évolution"
+        stem: |-
+          Préciser le sens d'évolution spontané du système constituant cette
+          pile.
+        reasoning: |-
+          Même critère qu'à la question précédente, mais attention à
+          l'exposant : l'équation-bilan comporte un coefficient $2$ devant
+          $\text{Ag}^+$, qui devient une puissance $2$ dans l'expression de
+          $Q_r$ (rung 2). Les deux solides, argent et cuivre métalliques,
+          restent exclus.
+        steps:
+          - math: 'Q_{r,i} = \frac{[\text{Cu}^{2+}]_i}{[\text{Ag}^+]_i^{\,2}}'
+            note: "Exposant 2 sur [Ag+], hérité du coefficient stoechiométrique de l'équation-bilan."
+          - math: 'Q_{r,i} = \frac{5{,}0\times10^{-2}}{(1{,}0\times10^{-1})^2} = 5{,}0'
+            note: "Application numérique : [Cu2+]i = 5,0e-2 mol/L, [Ag+]i = 1,0e-1 mol/L."
+          - math: 'Q_{r,i} = 5{,}0 \ll K \approx 4{,}0\times10^{15}'
+            note: "Comparaison au critère du rung 2."
+          - math: '\boxed{Q_{r,i} < K}'
+            note: "Sens direct : le cuivre s'oxyde, les ions argent(I) se réduisent."
+      - id: q2
+        stem: |-
+          Représenter le schéma conventionnel de la pile étudiée.
+        reasoning: |-
+          Piège à éviter : dans le sujet précédent, le cuivre recevait des
+          électrons et occupait le pôle positif. Ici, c'est l'inverse — le
+          cuivre CÈDE des électrons (il est oxydé, question précédente), donc
+          il occupe cette fois le pôle négatif ; l'argent, qui capte les
+          électrons, occupe le pôle positif. Aucune propriété fixe n'attache
+          un métal à un pôle : c'est le sens trouvé au calcul qui décide, à
+          chaque mélange.
+
+          $$\ominus\ \text{Cu}_{(s)} \mid \text{Cu}^{2+}_{(aq)} \parallel \text{Ag}^+_{(aq)} \mid \text{Ag}_{(s)}\ \oplus$$
+      - id: q3
+        part: "Durée maximale de fonctionnement"
+        stem: |-
+          Le circuit est traversé par un courant d'intensité constante
+          $I = 50\ \text{mA}$. Trouver l'expression de la durée maximale de
+          fonctionnement de la pile $\Delta t_{\max}$, en fonction de
+          $[\text{Ag}^+_{(aq)}]_i$, $V$, $\mathcal{F}$ et $I$, puis calculer
+          $\Delta t_{\max}$.
+        reasoning: |-
+          Même démarche qu'à la question précédente, mais attention au
+          facteur d'électrons : ici c'est l'argent qui est en défaut (le
+          cuivre est en large excès), et chaque ion $\text{Ag}^+$ réduit ne
+          consomme qu'un seul électron (couple $\text{Ag}^+/\text{Ag}$), et
+          non deux comme pour $\text{Cu}^{2+}$ dans le sujet précédent — le
+          facteur $2$ disparaît donc de la formule.
+        steps:
+          - math: 'n(\text{Ag}^+)_i = [\text{Ag}^+]_i\,V'
+            note: "Quantité initiale d'ions argent(I), l'espèce limitante ici (cuivre en large excès)."
+          - math: 'Q_{\max} = n(\text{Ag}^+)_i\,\mathcal{F} = [\text{Ag}^+]_i\,V\,\mathcal{F}'
+            note: "Un seul électron échangé par ion Ag+ réduit — pas de facteur 2 ici."
+          - math: 'Q_{\max} = I\,\Delta t_{\max}'
+            note: "Même relation charge-courant-durée que précédemment."
+          - math: '\boxed{\Delta t_{\max} = \frac{[\text{Ag}^+]_i\,V\,\mathcal{F}}{I}}'
+            note: "On isole Δt_max, sans le facteur 2 de la question précédente."
+          - math: '\Delta t_{\max} = \frac{1{,}0\times10^{-1}\times 0{,}100\times 9{,}65\times10^{4}}{50\times10^{-3}} \approx 1{,}93\times10^{4}\ \text{s}'
+            note: "Application numérique : [Ag+]i = 1,0e-1 mol/L, V = 100 mL = 0,100 L, F = 9,65e4 C/mol, I = 50 mA. Soit environ 5 h 22 min."
+      - id: q4
+        stem: |-
+          Une fois la pile totalement usée (elle ne débite plus aucun
+          courant), que vaut $Q_r$ pour cette réaction, et pourquoi ?
+        reasoning: |-
+          « Usée » signifie que le système n'évolue plus macroscopiquement :
+          c'est exactement le troisième cas du critère du rung 2, celui où
+          $Q_{r,i}$ a rejoint $K$. Tant que $Q_r < K$, la réaction directe
+          continue de faire grimper $Q_r$ ; elle ne s'arrête que lorsque
+          $Q_r = K$ — l'équilibre est atteint, et plus aucune évolution nette
+          ne se produit, donc plus aucun courant mesurable.
+
+          $$Q_r = K \approx 4{,}0\times10^{15}$$
