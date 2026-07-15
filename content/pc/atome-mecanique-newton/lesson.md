@@ -10,6 +10,8 @@ Tu viens de passer tout un chapitre à maîtriser la deuxième loi de Newton, le
 
 Avant de lire la suite, prends position, vraiment : d'après toi, ce modèle planétaire de l'atome, traité avec les seules lois de la mécanique que tu connais, prédit-il un atome stable pour toujours ? Ou bien y voit-on déjà, rien qu'avec la mécanique, une raison de douter ?
 
+[[checkpoint:cp-r0-predict]]
+
 Garde ta réponse en tête. Voici ce qu'on va découvrir, pas à pas, dans ce chapitre : la mécanique de Newton, appliquée correctement à ce modèle, donne effectivement une orbite parfaitement stable — on va même la calculer précisément, vitesse et période, avec exactement la même méthode que pour n'importe quel mouvement circulaire. Mais un ingrédient qui n'appartient pas à la mécanique va s'inviter dans l'histoire, et il va tout changer : une charge électrique qui accélère — et un électron en orbite accélère en permanence, même à vitesse constante — rayonne de l'énergie. Cette énergie doit venir de quelque part. Et la matière qui t'entoure, elle, ne s'effondre pas : tu es fait d'atomes stables depuis des milliards d'années.
 
 C'est ce paradoxe — un calcul mécanique parfaitement correct, et pourtant contredit par ce qu'on observe — qu'on va construire et refermer dans ce chapitre : d'abord la force qui tient ce modèle (R1), puis le calcul complet de l'orbite (R2), puis pourquoi ce calcul, aussi juste soit-il, ne suffit pas (R3), et enfin, très brièvement, ce que la physique moderne met à la place (R4).
@@ -56,6 +58,10 @@ $$\frac{F_C}{F_G} \approx 2{,}3 \times 10^{39}$$
 La force électrostatique est environ $10^{39}$ fois plus grande que la force gravitationnelle entre l'électron et le proton — un facteur si énorme qu'il n'a pas d'équivalent à l'échelle humaine. Remarque aussi que ce rapport ne dépend pas de $r$ : les deux forces varient toutes les deux en $1/r^2$, donc ce facteur $1/r^2$ se simplifie exactement dans le rapport, quelle que soit la distance choisie.
 
 **Conclusion, à retenir précisément :** à l'échelle de l'atome, la gravitation existe bel et bien entre l'électron et le noyau, mais elle est totalement négligeable devant la force électrostatique. C'est donc la seule force de Coulomb qui gouverne le mouvement de l'électron dans ce modèle — pas parce qu'on l'a décidé arbitrairement, mais parce que le calcul le montre. Les deux forces se ressemblent dans leur écriture (la même forme en $1/r^2$), mais ce sont deux interactions distinctes, de grandeurs sans commune mesure à cette échelle : ne les confonds jamais l'une avec l'autre.
+
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r1-gravitation]]
 
 ---
 
@@ -133,6 +139,10 @@ $$T = \frac{2\pi r}{v} = \frac{2\pi \times 5{,}3 \times 10^{-11}}{2{,}2 \times 1
 
 L'électron, dans ce modèle, tournerait à plus de deux millions de mètres par seconde, en faisant un tour complet en un dixième de milliardième de milliardième de seconde. Une vitesse et une période parfaitement définies, parfaitement stables dans le temps — rien, dans ce calcul, ne dit que $r$ devrait un jour changer. Retiens bien ce point : on y revient au rung suivant.
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r2-mcu]]
+
 ---
 
 ## R3 — Le retour du paradoxe : les limites de la mécanique de Newton
@@ -164,6 +174,10 @@ Ce n'est pas un détail, ni une approximation qu'on pourrait améliorer en calcu
 
 C'est exactement la limite qu'il faut retenir de ce chapitre : la mécanique de Newton n'est pas fausse dans ce qu'elle calcule (R2 tient toujours, comme description instantanée d'une orbite à rayon fixe) — elle est **incomplète** face à ce que l'atome fait réellement dans le temps.
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r3-limites]]
+
 ---
 
 ## R4 — Vers un modèle quantifié
@@ -184,6 +198,10 @@ où $\Delta E$ est la différence d'énergie entre les deux niveaux, $\nu$ la fr
 
 Rien, dans la deuxième loi de Newton ni dans la force de Coulomb, ne prédit cette quantification : ces lois, à elles seules, autoriseraient un continuum d'orbites et d'énergies, exactement le modèle de R2. C'est précisément pour rendre compte de cette quantification — et, du même coup, de la stabilité de l'atome, puisqu'il existe un niveau d'énergie le plus bas en dessous duquel l'électron ne peut pas descendre — qu'un cadre entièrement nouveau a été nécessaire. Ce cadre, la mécanique quantique, sort du programme de ce chapitre ; retiens seulement, de ce rung, le constat qui referme la boucle ouverte en R0 : la mécanique de Newton permet de calculer une orbite (R2), mais elle ne permet pas d'expliquer pourquoi l'énergie de l'atome est quantifiée, ni pourquoi l'atome, en définitive, ne s'effondre pas.
 
+Vérifie ta compréhension.
+
+[[checkpoint:cp-r4-planck]]
+
 ---
 
 ## R5 — Pour t'entraîner
@@ -196,38 +214,12 @@ Rien, dans la deuxième loi de Newton ni dans la force de Coulomb, ne prédit ce
 - Ce calcul est incomplet : une charge accélérée rayonne de l'énergie (électromagnétisme), ce qui devrait faire s'effondrer l'électron sur le noyau presque instantanément. C'est une limite de la mécanique de Newton (et de l'électromagnétisme classique), pas une erreur de calcul.
 - La résolution passe par la quantification de l'énergie de l'atome ($\Delta E = h\nu$), un fait expérimental que la mécanique classique ne peut pas expliquer.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-On modélise un ion hélium simplement ionisé, $\text{He}^+$ (un noyau de charge $+2e$ autour duquel tourne un seul électron), par le modèle planétaire de ce chapitre. On donne $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$, $e \approx 1{,}6 \times 10^{-19}\ \text{C}$, $m_e \approx 9{,}1 \times 10^{-31}\ \text{kg}$, et on prend, pour cet ion, un rayon d'orbite $r = 2{,}6 \times 10^{-11}\ \text{m}$.
+Ce qui suit est un exercice de synthèse construit pour ce chapitre — pas un sujet d'examen national transcrit : la recherche menée (18 sessions normales et 3 sessions de rattrapage, 2008–2025) n'a trouvé aucun exercice national dédié à ce thème (voir `docs/sujets/pc/atome-mecanique-newton.md`). Cherche sur papier d'abord, engage une réponse à chaque question, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Établir l'expression de la force de Coulomb entre l'électron et le noyau de cet ion, en fonction de $k$, $e$ et $r$.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* le noyau porte une charge $+2e$ (deux protons) et non $+e$ — c'est le seul changement par rapport à l'hydrogène de R1-R2 ; il faut le faire apparaître dès la mise en équation, pas seulement à la fin.
+### Une variation pour ne pas mémoriser
 
-Le noyau a pour charge $q_1 = +2e$, l'électron $q_2 = -e$. La norme de la force est :
-
-$$F_C = k\frac{\lvert q_1 q_2 \rvert}{r^2} = k\frac{2e \times e}{r^2} = \frac{2ke^2}{r^2}$$
-
-**2) En appliquant la deuxième loi de Newton au mouvement circulaire uniforme de l'électron, établir l'expression de sa vitesse $v$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* même méthode qu'en R2 — seule la force change (facteur $2$ en plus), donc on refait le même calcul avec ce facteur, sans repartir de zéro.
-
-$$\frac{2ke^2}{r^2} = m_e\frac{v^2}{r} \quad \Longrightarrow \quad v^2 = \frac{2ke^2}{m_e r} \quad \Longrightarrow \quad v = \sqrt{\frac{2ke^2}{m_e r}}$$
-
-**3) Calculer numériquement $v$, puis la période de révolution $T$.**
-
-$$v = \sqrt{\frac{2 \times 9{,}0 \times 10^{9} \times (1{,}6 \times 10^{-19})^2}{9{,}1 \times 10^{-31} \times 2{,}6 \times 10^{-11}}} \approx 3{,}1 \times 10^{6}\ \text{m/s}$$
-
-$$T = \frac{2\pi r}{v} = \frac{2\pi \times 2{,}6 \times 10^{-11}}{3{,}1 \times 10^{6}} \approx 5{,}3 \times 10^{-17}\ \text{s}$$
-
-**4) Cet électron reste-t-il indéfiniment sur cette orbite ? Justifier en une ou deux phrases à l'aide des limites de la mécanique de Newton discutées dans ce chapitre.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la question ne demande aucun calcul supplémentaire — elle teste si tu distingues ce que la mécanique calcule (une orbite stable, en apparence) de ce qu'elle est incapable d'expliquer (la stabilité réelle de l'atome).
-
-Non, pas d'après la physique classique complète : l'électron, en accélération centripète permanente, devrait rayonner de l'énergie électromagnétique et s'effondrer sur le noyau en une fraction de seconde extrêmement courte — exactement le paradoxe de R3. Le calcul mécanique de la question 3 décrit une orbite à rayon fixe, mais il ne prouve pas que ce rayon reste fixe dans le temps : c'est précisément là où la mécanique de Newton (associée à l'électromagnétisme classique) atteint sa limite.
-
-### À toi de jouer
-
-**Prompt 1.** Reprends la méthode de l'exercice précédent pour un noyau de charge $+3e$ (par exemple un ion lithium doublement ionisé, $\text{Li}^{2+}$, un seul électron autour d'un noyau de charge $+3e$), avec un rayon d'orbite $r = 1{,}8 \times 10^{-11}\ \text{m}$. Établis l'expression de $v$ en fonction de $k$, $e$, $m_e$, $r$, puis calcule sa valeur numérique et celle de $T$.
-
-**Prompt 2.** Un élève affirme : « Puisque la gravitation existe aussi entre l'électron et le noyau, il faudrait l'ajouter à la force de Coulomb dans le calcul de R2, sinon le résultat est faux. » Cette affirmation est-elle correcte ? Justifie ta réponse, sans calcul, en t'appuyant sur le rapport des deux forces établi en R1.
+[[exercise:r-variation]]

@@ -1,6 +1,266 @@
 notion: atome-mecanique-newton
 skill_code: pc_atome_mecanique_newton
-misconceptions: []
+
+# Misconception inventory (backfilled in the summit-conversion pass, PC named
+# exception — see docs/sujets/pc/atome-mecanique-newton.md). This end bank
+# (AMN-1…18) was authored before the inventory existed (`misconceptions: []`),
+# so every item now carries an item-level `primary_misconception`, and every
+# distractor carries a `misconception:` tag (a handful are honestly `null` —
+# pure arithmetic/algebra slips, not a stable conceptual model). See
+# `coverage_summary` at the end of this file for honest counts: this is a
+# short, single-arc conceptual chapter, not a computation-heavy one, so its
+# 18 items span mostly-distinct facets rather than repeating a handful of
+# models 3+ times each — only 1 of 19 misconceptions meets the ≥3 floor.
+misconceptions:
+  - id: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
+    label: >-
+      « La gravitation compte, ou est comparable à la force de Coulomb, à
+      l'échelle atomique »
+    description: >-
+      L'élève croit que la présence de deux masses suffit à rendre la
+      gravitation significative (voire dominante) entre l'électron et le
+      noyau, au lieu de comparer réellement les ordres de grandeur des deux
+      forces.
+    contradicts_principle: >-
+      Le calcul du rapport (R1) donne F_C/F_G ≈ 2,3 × 10^39, un facteur
+      indépendant de r et pratiquement indépendant de Z : la gravitation
+      existe mais est totalement négligeable devant la force de Coulomb à
+      cette échelle.
+
+  - id: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
+    label: >-
+      « Une autre interaction (nucléaire, de contact) retient l'électron, ou
+      Coulomb ne s'applique qu'aux charges libres »
+    description: >-
+      L'élève propose une interaction qui n'a pas cours à l'échelle de
+      l'orbite électronique (force nucléaire à courte portée, force de
+      contact) ou restreint à tort la loi de Coulomb aux charges non liées.
+    contradicts_principle: >-
+      La force de Coulomb s'applique dès que deux charges sont en présence,
+      liées ou non ; l'interaction nucléaire forte agit entre nucléons, à
+      très courte portée, bien en-deçà de la distance électron-noyau ; il
+      n'existe aucun lien matériel entre les deux.
+
+  - id: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
+    label: >-
+      « La force électrostatique est toujours attractive, comme la
+      gravitation »
+    description: >-
+      L'élève généralise à tort la propriété « toujours attractive » de la
+      gravitation à la force de Coulomb, qui peut au contraire être
+      répulsive.
+    contradicts_principle: >-
+      F_C = k|q1 q2|/r² est attractive si q1 et q2 sont de signes opposés,
+      répulsive s'ils sont de même signe — contrairement à la gravitation,
+      toujours attractive entre deux masses.
+
+  - id: mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge
+    label: >-
+      « C'est la proximité électron-noyau qui rend la force attractive »
+    description: >-
+      L'élève attribue le caractère attractif de la force à la distance
+      (l'électron est « très proche »), au lieu du signe des charges en
+      présence.
+    contradicts_principle: >-
+      La distance règle uniquement l'intensité de la force (en 1/r²) ; son
+      caractère attractif ou répulsif ne dépend que du signe du produit
+      q1 q2, quelle que soit la distance.
+
+  - id: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
+    label: "« Mouvement circulaire uniforme ⇒ accélération nulle »"
+    description: >-
+      L'élève confond la norme constante du vecteur vitesse (« uniforme »)
+      avec un vecteur vitesse constant, et en déduit à tort que
+      l'accélération est nulle.
+    contradicts_principle: >-
+      La direction de la vitesse change à chaque instant même si sa norme
+      reste constante : l'accélération est non nulle, purement normale
+      (centripète), de norme a_N = v²/r.
+
+  - id: mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale
+    label: >-
+      « L'accélération du mouvement circulaire uniforme est tangentielle »
+    description: >-
+      L'élève place la composante non nulle de l'accélération dans le sens
+      du mouvement (tangentielle) au lieu de la composante normale
+      (centripète).
+    contradicts_principle: >-
+      En mouvement circulaire uniforme, a_T = dv/dt = 0 (norme de v
+      constante) ; c'est la composante NORMALE a_N = v²/r, liée au
+      changement de direction, qui est non nulle.
+
+  - id: mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante
+    label: >-
+      « La norme de l'accélération centripète varie au cours du temps en
+      MCU »
+    description: >-
+      L'élève pense que le vecteur accélération change à la fois de norme
+      et de direction, alors qu'en mouvement circulaire uniforme seule la
+      direction tourne.
+    contradicts_principle: >-
+      a_N = v²/r : puisque v et r sont constants dans un mouvement
+      circulaire uniforme, la norme de l'accélération l'est aussi ; seule sa
+      direction, toujours dirigée vers le centre, tourne avec l'électron.
+
+  - id: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
+    label: "« La vitesse orbitale v augmente avec r, ou n'en dépend pas »"
+    description: >-
+      L'élève inverse le sens de variation de v = √(ke²/(m_e r)) avec r, ou
+      croit que le mouvement circulaire uniforme impose une même vitesse
+      quelle que soit la taille de l'orbite.
+    contradicts_principle: >-
+      v est inversement proportionnelle à √r : plus l'orbite est grande,
+      plus l'électron tourne lentement — chaque rayon possède sa propre
+      vitesse ; « uniforme » qualifie la constance de v dans le temps sur
+      une orbite donnée, pas l'égalité entre orbites.
+
+  - id: mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r
+    label: "« Le rapport F_C/F_G dépend de r (ou de Z) »"
+    description: >-
+      L'élève pense qu'il faut connaître r (ou que le résultat ne vaudrait
+      que pour un r particulier, ou changerait notablement avec Z) pour
+      comparer les deux forces.
+    contradicts_principle: >-
+      Les deux forces varient de la même façon en 1/r² : ce facteur se
+      simplifie exactement dans le rapport F_C/F_G = ke²/(G m_e m_p),
+      indépendant de r et, à un facteur Z près (quelques unités),
+      pratiquement indépendant du noyau considéré.
+
+  - id: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
+    label: >-
+      « Le calcul mécanique de l'orbite (R2) suffit à expliquer la
+      stabilité réelle de l'atome »
+    description: >-
+      L'élève croit que puisque la mécanique de Newton donne une orbite
+      stable, elle rend compte à elle seule de la stabilité observée de la
+      matière — voire qu'elle prédirait directement la quantification des
+      niveaux d'énergie.
+    contradicts_principle: >-
+      Le calcul de R2 est correct mais incomplet : une charge accélérée
+      (l'électron en orbite) rayonne de l'énergie électromagnétique, ce qui
+      devrait faire s'effondrer l'électron sur le noyau — un ingrédient
+      extérieur à la mécanique, qu'elle ne prédit ni n'explique.
+
+  - id: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
+    label: >-
+      « Puisque la réalité contredit la mécanique seule, le calcul de R2
+      était faux »
+    description: >-
+      L'élève conclut, du paradoxe de R3, que la deuxième loi de Newton a
+      été mal appliquée en R2 ou que la force utilisée n'était pas la
+      bonne, au lieu de distinguer un calcul correct-mais-incomplet.
+    contradicts_principle: >-
+      Le calcul de R2 reste une description instantanée correcte d'une
+      orbite à rayon fixe ; ce qui manque, c'est un ingrédient extérieur à
+      la mécanique (le rayonnement d'une charge accélérée), pas une erreur
+      dans l'application de la deuxième loi de Newton.
+
+  - id: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+    label: >-
+      « Le mécanisme qui bouleverse la conclusion mécanique n'est pas le
+      rayonnement d'une charge accélérée »
+    description: >-
+      L'élève propose un autre mécanisme (perte de masse, force de Coulomb
+      qui changerait de signe, noyau non immobile) pour expliquer pourquoi
+      la conclusion de R2 doit être révisée.
+    contradicts_principle: >-
+      L'ingrédient manquant est un résultat de l'électromagnétisme : toute
+      charge électrique accélérée rayonne de l'énergie. L'électron, en
+      accélération centripète permanente, perd donc de l'énergie en
+      continu — aucun autre mécanisme n'est en jeu.
+
+  - id: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
+    label: "« L'énergie de l'atome varie de façon continue (comme le prédit R2) »"
+    description: >-
+      L'élève garde l'idée d'un continuum d'énergies possibles,
+      éventuellement borné par une valeur minimale, au lieu du fait
+      expérimental de la quantification.
+    contradicts_principle: >-
+      L'énergie d'un atome ne peut prendre qu'un ensemble discret de
+      valeurs — des niveaux, comme des marches d'escalier, pas une rampe
+      continue même bornée — contrairement à ce qu'autoriserait la
+      mécanique classique seule.
+
+  - id: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
+    label: >-
+      « Ce qui arrête l'effondrement, ce n'est pas l'existence d'un niveau
+      d'énergie minimal »
+    description: >-
+      L'élève invoque un mécanisme erroné pour expliquer l'arrêt de
+      l'effondrement classique (la quantification empêcherait le
+      rayonnement, la force de Coulomb s'annulerait, l'électron cesserait
+      d'accélérer).
+    contradicts_principle: >-
+      Ce qui arrête l'effondrement, c'est l'existence d'un niveau d'énergie
+      le plus bas (l'état fondamental) en dessous duquel l'électron ne peut
+      pas descendre — le rayonnement et l'accélération centripète, eux,
+      restent des faits physiques, non supprimés par la quantification.
+
+  - id: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
+    label: >-
+      « ΔE = hν mal manipulée (inversée, en somme, au carré, ou mauvais
+      isolement de ν) »
+    description: >-
+      L'élève inverse la relation de Planck-Einstein (h/ν, h+ν, hν²), ou
+      isole mal ν lors d'une application numérique.
+    contradicts_principle: >-
+      ΔE = h·ν est un produit, linéaire en ν ; pour en tirer ν, on divise
+      ΔE par h (pas l'inverse), h et ν n'étant homogènes ni pour une somme
+      ni pour un carré.
+
+  - id: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
+    label: >-
+      « La formule de v (ou T) établie pour l'hydrogène se généralise sans
+      adapter le facteur de charge Z »
+    description: >-
+      L'élève réapplique la formule de R2 (Z=1) sans changement, ou adapte
+      mal le facteur Z (mauvaise puissance, mauvais placement sous la
+      racine) pour un ion à charge nucléaire différente.
+    contradicts_principle: >-
+      Le noyau de charge +Ze donne F_C = kZe²/r² : le facteur Z entre
+      linéairement dans la force, doit rester sous la racine dans
+      v = √(Zke²/(m_e r)), et ne doit ni disparaître, ni être élevé au
+      carré, ni sortir de la racine.
+
+  - id: mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges
+    label: >-
+      « La mécanique de Newton ne s'applique pas à une particule chargée
+      microscopique »
+    description: >-
+      L'élève pense que la deuxième loi de Newton est réservée aux objets
+      macroscopiques (satellites, planètes) et ne peut pas s'appliquer à
+      l'électron.
+    contradicts_principle: >-
+      La deuxième loi de Newton s'applique à toute particule soumise à une
+      force, quelle que soit son origine ; R2 l'applique précisément à
+      l'électron avec la force de Coulomb et obtient un résultat cohérent.
+
+  - id: mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement
+    label: >-
+      « La force de Coulomb diminue avec le temps, ce qui ferait fuir
+      l'électron »
+    description: >-
+      L'élève imagine que la force s'affaiblit spontanément dans le temps
+      et en déduit une fuite de l'électron, inversant la relation
+      cause-conséquence réelle.
+    contradicts_principle: >-
+      La force de Coulomb ne dépend que de la distance r, pas explicitement
+      du temps : c'est la perte d'énergie par rayonnement qui fait DIMINUER
+      r (donc AUGMENTER la force), pas l'inverse — et le mouvement
+      résultant est un rapprochement, pas une fuite.
+
+  - id: mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire
+    label: >-
+      « Le modèle aurait dû utiliser une trajectoire elliptique, pas
+      circulaire »
+    description: >-
+      L'élève importe la généralisation képlérienne (orbites elliptiques)
+      vue en gravitation, alors que le modèle de ce chapitre pose
+      explicitement une trajectoire circulaire uniforme.
+    contradicts_principle: >-
+      Le paradoxe de R3 ne porte pas sur la forme de l'orbite : il vient du
+      rayonnement d'une charge accélérée, qui empêche r de rester constant
+      dans le temps quelle que soit la trajectoire supposée au départ.
 
 items:
 
@@ -10,6 +270,7 @@ items:
     difficulty_level: 2
     skill_code: pc_atome_mecanique_newton
     tags: [force_coulomb, force_gravitationnelle, comparaison]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
     stem: >
       Un élève affirme : « c'est la force gravitationnelle qui maintient
       l'électron en orbite autour du noyau, exactement comme pour un
@@ -25,6 +286,7 @@ items:
       - id: B
         text: "Oui : les deux particules ont une masse, donc la gravitation s'applique en premier."
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           La gravitation existe bien entre l'électron et le noyau, mais elle
           est totalement négligeable face à la force électrostatique
@@ -37,6 +299,7 @@ items:
           Oui : la force électrostatique ne s'applique qu'à des charges
           libres, pas à des particules liées dans un atome.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
         feedback: >
           La force électrostatique s'applique dès que deux charges sont en
           présence, liées ou non. Rien ne la désactive à l'intérieur d'un
@@ -46,6 +309,7 @@ items:
           Aucune des deux ne s'applique : seule une force nucléaire retient
           l'électron autour du noyau.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
         feedback: >
           L'interaction nucléaire forte agit entre nucléons, à très courte
           portée, à l'intérieur du noyau — elle n'a aucune action sur
@@ -72,6 +336,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [force_coulomb, force_gravitationnelle, ordre_de_grandeur]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
     stem: >
       On donne $G \approx 6{,}67 \times 10^{-11}\ \text{N}\cdot\text{m}^2\cdot\text{kg}^{-2}$,
       $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$,
@@ -88,6 +353,7 @@ items:
       - id: B
         text: "$F_C$ et $F_G$ sont du même ordre de grandeur, car les deux forces varient en $1/r^2$."
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           Varier de la même façon avec $r$ (en $1/r^2$) ne veut pas dire
           avoir la même valeur : ce sont les constantes ($k$ et $G$) et les
@@ -97,6 +363,7 @@ items:
       - id: C
         text: "$F_G$ est plus grande que $F_C$, car la masse du proton est très supérieure à celle de l'électron."
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           Le rapport des masses ($m_p/m_e \approx 1836$) reste bien plus
           petit que l'écart entre les deux forces (facteur $10^{39}$). C'est
@@ -106,6 +373,7 @@ items:
           On ne peut pas comparer les deux forces sans connaître la valeur
           précise de $r$.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r
         feedback: >
           Le rapport $F_C/F_G$ ne dépend pas de $r$ : les deux forces
           contiennent le même facteur $1/r^2$, qui se simplifie exactement
@@ -129,6 +397,7 @@ items:
     difficulty_level: 2
     skill_code: pc_atome_mecanique_newton
     tags: [mouvement_circulaire_uniforme, acceleration_centripete]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
     stem: >
       Dans le modèle planétaire, l'électron effectue un mouvement circulaire
       uniforme autour du noyau. Que peut-on dire de son vecteur accélération
@@ -144,6 +413,7 @@ items:
       - id: B
         text: "$\\vec{a}_G = \\vec{0}$, car le mouvement est uniforme, donc la vitesse ne change pas."
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
         feedback: >
           « Uniforme » ne veut dire que la NORME de la vitesse reste
           constante — pas que le vecteur vitesse lui-même reste constant. Sa
@@ -154,6 +424,7 @@ items:
           $\vec{a}_G \neq \vec{0}$, mais elle est purement tangentielle,
           dans le sens du mouvement.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale
         feedback: >
           C'est l'inverse : puisque le mouvement est uniforme (norme de $v$
           constante), la composante TANGENTIELLE de l'accélération est
@@ -164,6 +435,7 @@ items:
           $\vec{a}_G$ change de norme à chaque instant, en plus de changer de
           direction.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante
         feedback: >
           La norme de $\vec{a}_G$ vaut $v^2/r$ : puisque $v$ et $r$ sont
           constants dans ce mouvement circulaire uniforme, la norme de
@@ -187,6 +459,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [mouvement_circulaire_uniforme, deuxieme_loi_newton]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
     stem: >
       Un élève écrit, pour l'électron en mouvement circulaire uniforme
       autour du noyau : $\sum \vec{F}_{ext} = \vec{0}$, « car "uniforme"
@@ -205,6 +478,7 @@ items:
           Oui : « uniforme » veut dire vitesse constante, donc accélération
           nulle, donc somme des forces nulle par la deuxième loi.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
         feedback: >
           « Uniforme » porte sur la norme de la vitesse, pas sur le vecteur
           vitesse entier. Ici la direction de $\vec{v}_G$ change en
@@ -215,6 +489,7 @@ items:
           Oui, car la force de Coulomb et le poids de l'électron se
           compensent exactement.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           Le poids de l'électron n'intervient nulle part dans ce modèle : à
           cette échelle, seule la force électrostatique de Coulomb compte
@@ -225,6 +500,7 @@ items:
           Non, mais seulement parce qu'il faudrait aussi inclure la force
           gravitationnelle du noyau dans le bilan.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           La conclusion (l'équation est fausse) est correcte, mais la
           raison ne l'est pas : la gravitation est négligeable ici, elle
@@ -253,6 +529,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [limites_mecanique_newton, rayonnement, paradoxe]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
     stem: >
       Que prédit la mécanique de Newton, complétée par l'électromagnétisme
       classique, pour un électron en mouvement circulaire autour du noyau
@@ -270,6 +547,7 @@ items:
           L'électron reste indéfiniment sur son orbite, exactement comme une
           planète autour du Soleil, sans aucune perte d'énergie.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
         feedback: >
           C'est ce que prédit la mécanique SEULE (R2), mais ce n'est pas la
           prédiction complète. Une charge en accélération (comme l'électron
@@ -283,6 +561,7 @@ items:
           L'électron s'échapperait du noyau, car la force de Coulomb
           diminue avec le temps.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement
         feedback: >
           La force de Coulomb ne dépend que de la distance $r$, pas du
           temps directement : elle ne « diminue » pas toute seule. C'est la
@@ -293,6 +572,7 @@ items:
           La mécanique de Newton prédit directement la quantification des
           niveaux d'énergie observée expérimentalement.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
         feedback: >
           C'est l'inverse : rien dans la deuxième loi de Newton ni dans la
           force de Coulomb ne prédit une quantification. Ces lois
@@ -324,6 +604,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [limites_mecanique_newton, quantification]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
     stem: >
       Quelle affirmation décrit correctement une limite de la mécanique de
       Newton à l'échelle de l'atome ?
@@ -339,6 +620,7 @@ items:
           Elle prédit exactement les niveaux d'énergie observés : il n'y a
           donc aucune limite à signaler.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
         feedback: >
           C'est l'inverse : la mécanique de Newton et la force de Coulomb,
           seules, n'imposent aucune restriction sur les valeurs possibles de
@@ -349,6 +631,7 @@ items:
           Elle ne s'applique qu'aux objets macroscopiques comme les
           satellites, jamais à une particule chargée comme l'électron.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges
         feedback: >
           Ce n'est pas vrai : R2 applique justement la deuxième loi de
           Newton à l'électron, avec la force de Coulomb, et obtient un
@@ -361,6 +644,7 @@ items:
           Elle prédit que l'atome devrait être stable indéfiniment, sans
           aucune perte d'énergie, ce qui est confirmé par l'expérience.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
         feedback: >
           C'est le sens inverse du paradoxe : la mécanique, combinée à
           l'électromagnétisme classique, prédit au contraire un effondrement
@@ -392,6 +676,7 @@ items:
     difficulty_level: 1
     skill_code: pc_atome_mecanique_newton
     tags: [modele_planetaire, force_electrique, accroche]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
     stem: >
       D'après le texte d'introduction (R0), dans le modèle planétaire de
       l'atome, quelle interaction joue le rôle tenu par la gravitation dans
@@ -408,6 +693,7 @@ items:
           La gravitation elle-même : comme pour une planète, ce sont les
           masses de l'électron et du noyau qui expliquent l'orbite.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           Le texte le précise explicitement : « ce n'est pas la gravitation
           qui retient l'électron ». À l'échelle de l'atome, c'est
@@ -417,6 +703,7 @@ items:
           L'interaction nucléaire forte entre les nucléons du noyau et
           l'électron.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
         feedback: >
           L'interaction forte agit entre nucléons, à l'intérieur du noyau, à
           très courte portée : elle n'a aucune action sur l'électron, situé
@@ -426,6 +713,7 @@ items:
           Une force de contact, comme un fil qui relierait l'électron au
           noyau.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
         feedback: >
           Il n'y a aucun contact ni aucun lien matériel entre l'électron et
           le noyau : l'attraction est une force à distance, de nature
@@ -448,6 +736,7 @@ items:
     difficulty_level: 1
     skill_code: pc_atome_mecanique_newton
     tags: [modele_planetaire, mecanique_newton, accroche]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
     stem: >
       Toujours d'après l'accroche du chapitre (R0), si on applique
       uniquement les lois de la mécanique de Newton au modèle planétaire —
@@ -460,6 +749,7 @@ items:
           Une orbite instable, qui s'effondre presque immédiatement, dès la
           seule mécanique de Newton.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
         feedback: >
           C'est l'inverse : la mécanique de Newton seule (sans
           l'électromagnétisme) prédit une orbite stable. C'est un ingrédient
@@ -476,6 +766,7 @@ items:
           Aucune prédiction n'est possible, car la mécanique de Newton ne
           s'applique pas à une particule chargée comme l'électron.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges
         feedback: >
           La mécanique de Newton s'applique à toute particule soumise à une
           force, quelle que soit son origine (électrique, gravitationnelle...).
@@ -486,6 +777,7 @@ items:
           Le rayon de l'orbite augmente progressivement avec le temps,
           jusqu'à ce que l'électron s'échappe du noyau.
         correct: false
+        misconception: null
         feedback: >
           Ce n'est pas ce que prédit la mécanique seule : sans ingrédient
           extérieur, rien ne fait varier le rayon $r$, qui reste constant.
@@ -508,6 +800,7 @@ items:
     difficulty_level: 1
     skill_code: pc_atome_mecanique_newton
     tags: [rayonnement, accroche, paradoxe]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
     stem: >
       Quel est, d'après l'accroche du chapitre (R0), l'élément extérieur à
       la mécanique de Newton qui vient bouleverser la conclusion du calcul
@@ -519,6 +812,7 @@ items:
           Le fait que l'électron perd de la masse à mesure qu'il tourne
           autour du noyau.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
         feedback: >
           Aucune perte de masse n'est en jeu ici : le texte parle d'une
           perte d'énergie, pas de masse. C'est une charge électrique qui
@@ -528,6 +822,7 @@ items:
           Le fait que la force de Coulomb change de signe lorsque l'électron
           s'approche du noyau.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
         feedback: >
           La force de Coulomb ne change pas de signe ici : elle reste
           attractive tant que les charges de l'électron et du noyau restent
@@ -542,6 +837,7 @@ items:
         text: >-
           Le fait que le noyau, en réalité, n'est pas parfaitement immobile.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
         feedback: >
           Le texte suppose au contraire le noyau quasiment immobile (il est
           bien plus massif que l'électron) : ce n'est pas cette hypothèse
@@ -565,6 +861,7 @@ items:
     difficulty_level: 2
     skill_code: pc_atome_mecanique_newton
     tags: [force_coulomb, signe_des_charges, attractive_repulsive]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
     stem: >
       Le noyau porte une charge $+Ze$ et l'électron une charge $-e$.
       Pourquoi la force électrostatique entre eux est-elle attractive ?
@@ -575,6 +872,7 @@ items:
           Parce que toute force électrostatique est nécessairement
           attractive, tout comme la force gravitationnelle.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
         feedback: >
           C'est faux : contrairement à la gravitation (toujours attractive
           entre deux masses), la force de Coulomb peut être répulsive. Entre
@@ -585,6 +883,7 @@ items:
         text: >-
           Parce que le noyau est beaucoup plus massif que l'électron.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           La masse des particules ne détermine pas le caractère attractif ou
           répulsif de la force électrostatique — c'est un critère propre à
@@ -595,6 +894,7 @@ items:
           Parce que l'électron est très proche du noyau, à l'échelle
           atomique.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge
         feedback: >
           La distance influence l'intensité de la force (en $1/r^2$), pas
           son caractère attractif ou répulsif. Une force de Coulomb reste
@@ -627,6 +927,7 @@ items:
     difficulty_level: 2
     skill_code: pc_atome_mecanique_newton
     tags: [vitesse_orbitale, dependance_en_r, lecture_de_formule]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
     stem: >
       D'après la relation $v = \sqrt{\dfrac{k e^2}{m_e r}}$ établie en R2,
       que devient la vitesse $v$ de l'électron lorsque le rayon $r$ de son
@@ -643,6 +944,7 @@ items:
           $v$ augmente, car une orbite plus grande permet à l'électron de
           développer une vitesse plus élevée.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
         feedback: >
           C'est l'inverse de ce que montre la formule : $r$ apparaît au
           DÉNOMINATEUR sous la racine. Quand $r$ augmente, la quantité sous
@@ -652,6 +954,7 @@ items:
           $v$ reste constante, car le mouvement circulaire uniforme impose
           une vitesse identique quelle que soit la taille de l'orbite.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
         feedback: >
           « Uniforme » signifie que $v$ est constante AU COURS DU TEMPS, sur
           une orbite de rayon $r$ donné — pas que $v$ serait la même pour
@@ -662,6 +965,7 @@ items:
           On ne peut pas savoir sans connaître la valeur du numéro atomique
           $Z$.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
         feedback: >
           Le sens de variation de $v$ avec $r$ (une diminution) est fixé par
           la présence de $r$ au dénominateur sous la racine, quel que soit
@@ -685,6 +989,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [limites_mecanique_newton, calcul_correct_vs_incomplet]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
     stem: >
       Le paradoxe du rayonnement, présenté en R3, remet-il en cause
       l'exactitude du calcul de la vitesse et de la période effectué en R2 à
@@ -696,6 +1001,7 @@ items:
           Oui : la deuxième loi de Newton a été mal appliquée en R2, ce qui
           invalide les expressions de $v$ et $T$.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
         feedback: >
           Le texte est explicite sur ce point : le calcul de R2 est
           « parfaitement correct ». Ce n'est pas une erreur de calcul qui
@@ -713,6 +1019,7 @@ items:
           Oui : la force de Coulomb utilisée en R2 n'est en réalité pas la
           bonne force à l'échelle de l'atome.
         correct: false
+        misconception: null
         feedback: >
           R1 a établi, calcul à l'appui, que la force de Coulomb domine bien
           la gravitation d'un facteur $10^{39}$ : ce n'est pas la force
@@ -722,6 +1029,7 @@ items:
           Non, mais uniquement parce que R2 aurait dû utiliser une
           trajectoire elliptique plutôt que circulaire.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire
         feedback: >
           La forme de l'orbite (circulaire ou elliptique) n'est pas ce qui
           est en jeu dans le paradoxe : le problème vient du rayonnement
@@ -752,6 +1060,7 @@ items:
     difficulty_level: 2
     skill_code: pc_atome_mecanique_newton
     tags: [quantification_energie, niveaux_discrets]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
     stem: >
       Dans le modèle classique de R2, l'énergie de l'électron pouvait varier
       de façon continue en fonction de $r$. Que dit, à l'inverse, le constat
@@ -763,6 +1072,7 @@ items:
           L'énergie de l'atome reste continue, comme le prédit la mécanique
           de Newton, mais elle est bornée par une valeur minimale.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
         feedback: >
           C'est l'inverse du constat expérimental : l'énergie n'est pas
           continue-avec-un-plancher, elle est quantifiée — un ensemble de
@@ -773,6 +1083,7 @@ items:
           L'énergie de l'atome ne dépend plus du tout de la configuration de
           l'électron autour du noyau.
         correct: false
+        misconception: null
         feedback: >
           L'énergie reste bien liée à la configuration de l'électron (à quel
           niveau il se trouve) — simplement, seules certaines
@@ -789,6 +1100,7 @@ items:
           L'énergie de l'atome varie de façon continue, exactement comme le
           prédit R2, mais uniquement pour l'atome d'hydrogène.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
         feedback: >
           La quantification n'est pas une exception propre à l'hydrogène :
           c'est un fait expérimental général, qui contredit justement ce que
@@ -812,6 +1124,7 @@ items:
     difficulty_level: 2
     skill_code: pc_atome_mecanique_newton
     tags: [relation_planck, delta_E_h_nu]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
     stem: >
       Un atome passe d'un niveau d'énergie à un autre en émettant un photon
       de fréquence $\nu$. Quelle relation relie correctement la différence
@@ -824,6 +1137,7 @@ items:
           $\Delta E = \dfrac{h}{\nu}$, car une fréquence plus grande
           correspond à une énergie échangée plus faible.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
         feedback: >
           C'est l'inverse : plus la fréquence est grande, plus le photon
           transporte d'énergie. La relation correcte est une
@@ -834,6 +1148,7 @@ items:
           $\Delta E = h\,\nu^2$, par analogie avec l'énergie cinétique qui
           varie en $v^2$.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
         feedback: >
           Cette analogie avec l'énergie cinétique ne s'applique pas ici : la
           relation de Planck est linéaire en fréquence, pas quadratique. Il
@@ -843,6 +1158,7 @@ items:
           $\Delta E = h + \nu$, la constante de Planck s'ajoutant à la
           fréquence.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
         feedback: >
           $h$ et $\nu$ n'ont pas la même unité (J·s pour $h$, Hz pour
           $\nu$) : on ne peut pas les additionner. La relation correcte est
@@ -866,6 +1182,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [quantification_energie, stabilite_atome, synthese]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
     stem: >
       En quoi le fait que l'énergie de l'atome soit quantifiée, évoqué en
       R4, permet-il de comprendre pourquoi l'atome ne s'effondre pas
@@ -884,6 +1201,7 @@ items:
           Parce que la quantification empêche toute charge accélérée de
           rayonner de l'énergie électromagnétique.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
         feedback: >
           Le rayonnement d'une charge accélérée reste un fait de
           l'électromagnétisme ; la quantification ne l'annule pas. Ce que
@@ -895,6 +1213,7 @@ items:
           Parce que la force de Coulomb devient nulle lorsque l'électron
           s'approche suffisamment du noyau.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
         feedback: >
           Aucun seuil de ce type n'apparaît dans la force de Coulomb, qui
           varie continûment en $1/r^2$ sans jamais s'annuler à distance
@@ -905,6 +1224,7 @@ items:
           Parce que l'électron cesse totalement d'accélérer une fois la
           quantification prise en compte.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
         feedback: >
           L'électron en orbite reste en accélération centripète ; la
           quantification ne supprime pas cette accélération. Ce qu'elle
@@ -933,6 +1253,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [application_bac, vitesse_orbitale, generalisation_Z]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
     stem: >
       On modélise un ion lithium doublement ionisé, $\text{Li}^{2+}$ (noyau
       de charge $+3e$, un seul électron), par le modèle planétaire de ce
@@ -944,6 +1265,7 @@ items:
       - id: A
         text: "$v = \\sqrt{\\dfrac{k e^2}{m_e r}}$"
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
         feedback: >
           Cette expression oublie le facteur $3$ dû à la charge $+3e$ du
           noyau : elle correspond au calcul de l'hydrogène (charge $+e$),
@@ -954,6 +1276,7 @@ items:
       - id: C
         text: "$v = \\sqrt{\\dfrac{9 k e^2}{m_e r}}$"
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
         feedback: >
           Cette expression utilise $Z^2 = 9$ au lieu de $Z = 3$ : seule la
           charge du noyau ($+3e$) intervient linéairement dans la force de
@@ -961,6 +1284,7 @@ items:
       - id: D
         text: "$v = 3\\sqrt{\\dfrac{k e^2}{m_e r}}$"
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
         feedback: >
           Le facteur $3$, issu de la charge du noyau, doit rester SOUS la
           racine carrée (car il multiplie $v^2$, pas $v$) : le sortir de la
@@ -988,6 +1312,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [force_gravitationnelle, ordre_de_grandeur, application_bac]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
     stem: >
       Pour le même ion $\text{Li}^{2+}$ (noyau de charge $+3e$), un élève
       affirme qu'il faudrait ajouter la force gravitationnelle à la force de
@@ -1001,6 +1326,7 @@ items:
           renforce l'effet de la gravitation, qu'il faut alors prendre en
           compte.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           La charge du noyau intervient dans la force de Coulomb, pas dans
           la force gravitationnelle, qui ne dépend que des masses.
@@ -1012,6 +1338,7 @@ items:
           devient comparable à celle de l'électron, ce qui rend la
           gravitation non négligeable.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
           Même pour un noyau plus lourd, celui-ci reste des milliers de fois
           plus massif que l'électron, jamais comparable. Et surtout, le
@@ -1030,6 +1357,7 @@ items:
           Non, mais uniquement parce que le rayon $r$ choisi ici est trop
           petit pour que la gravitation ait un effet mesurable.
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r
         feedback: >
           Le rapport $F_C/F_G$ ne dépend pas de $r$ : les deux forces
           varient en $1/r^2$, donc ce facteur se simplifie exactement dans
@@ -1054,6 +1382,7 @@ items:
     difficulty_level: 3
     skill_code: pc_atome_mecanique_newton
     tags: [relation_planck, application_numerique, delta_E_h_nu]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
     stem: >
       Un atome émet un photon lorsqu'il passe d'un niveau d'énergie à un
       autre, avec une différence d'énergie $\Delta E = 3{,}0 \times
@@ -1065,12 +1394,14 @@ items:
       - id: A
         text: "$\\nu = \\Delta E \\times h \\approx 2{,}0 \\times 10^{-52}\\ \\text{Hz}$"
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
         feedback: >
           Cette expression inverse la relation $\Delta E = h\nu$ : il faut
           DIVISER $\Delta E$ par $h$ pour obtenir $\nu$, pas les multiplier.
       - id: B
         text: "$\\nu = \\dfrac{h}{\\Delta E} \\approx 2{,}2 \\times 10^{-15}\\ \\text{Hz}$"
         correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
         feedback: >
           C'est la fraction inversée : à partir de $\Delta E = h\nu$, on
           isole $\nu$ en divisant $\Delta E$ par $h$ ($\nu = \Delta E / h$),
@@ -1078,6 +1409,7 @@ items:
       - id: C
         text: "$\\nu \\approx 4{,}5 \\times 10^{-14}\\ \\text{Hz}$"
         correct: false
+        misconception: null
         feedback: >
           La méthode ($\nu = \Delta E / h$) est correcte, mais l'exposant
           est faux : $10^{-19} / 10^{-34} = 10^{-19-(-34)} = 10^{15}$, pas
@@ -1097,3 +1429,106 @@ items:
       Attention à la soustraction des exposants négatifs :
       $10^{-19}/10^{-34} = 10^{-19-(-34)} = 10^{15}$, pas $10^{-14}$ — une
       erreur de signe fréquente à surveiller.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY — honest, not padded (recipe's "never fake counts" rule).
+# Counts below are ITEM-LEVEL (each item counted once, by its
+# `primary_misconception`), matching the rc-charge pilot's method. The
+# checkpoints.yaml commit/rupture-gates and the exercises.yaml r-bac/
+# r-variation do NOT alter these counts (same convention as rlc-serie /
+# rc-charge: they are formative surfaces, not end-bank items).
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  method: "item-level, by primary_misconception (one item = one count)"
+  total_items: 18
+  per_misconception:
+    mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative: 4
+    # AMN-1, AMN-2, AMN-7, AMN-17
+    mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee: 0
+    # distractor-only: AMN-1.C, AMN-1.D, AMN-7.C, AMN-7.D
+    mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation: 1
+    # AMN-10
+    mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge: 0
+    # distractor-only: AMN-10.C
+    mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle: 2
+    # AMN-3, AMN-4
+    mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale: 0
+    # distractor-only: AMN-3.C
+    mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 0
+    # distractor-only: AMN-3.D
+    mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise: 1
+    # AMN-11
+    mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 0
+    # distractor-only: AMN-2.D, AMN-17.D
+    mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite: 2
+    # AMN-5, AMN-6
+    mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux: 2
+    # AMN-8, AMN-12
+    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 1
+    # AMN-9
+    mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 1
+    # AMN-13
+    mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris: 1
+    # AMN-15
+    mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee: 2
+    # AMN-14, AMN-18
+    mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 1
+    # AMN-16
+    mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges: 0
+    # distractor-only: AMN-6.C, AMN-8.C
+    mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement: 0
+    # distractor-only: AMN-5.C
+    mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire: 0
+    # distractor-only: AMN-12.D
+  floor: 3
+  floor_met: false
+  under_covered:
+    - mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee            # 0/3
+    - mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation   # 1/3
+    - mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge            # 0/3
+    - mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle                 # 2/3
+    - mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale      # 0/3
+    - mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante            # 0/3
+    - mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise      # 1/3
+    - mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r                  # 0/3
+    - mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite   # 2/3
+    - mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux      # 2/3
+    - mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie               # 1/3
+    - mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee           # 1/3
+    - mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris        # 1/3
+    - mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee                   # 2/3
+    - mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z                    # 1/3
+    - mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges        # 0/3
+    - mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement       # 0/3
+    - mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire      # 0/3
+  ramp_coverage:
+    R0: 3   # AMN-7, AMN-8, AMN-9
+    R1: 3   # AMN-1, AMN-2, AMN-10
+    R2: 3   # AMN-3, AMN-4, AMN-11
+    R3: 3   # AMN-5, AMN-6, AMN-12
+    R4: 3   # AMN-13, AMN-14, AMN-15
+    R5: 3   # AMN-16, AMN-17, AMN-18
+  note: >
+    Ride-along backfill for the summit-conversion pass on
+    atome-mecanique-newton — the campaign's one deliberately unsourced PC
+    lesson (see docs/sujets/pc/atome-mecanique-newton.md). This end bank
+    (AMN-1…18) was authored before the misconception-inventory discipline
+    existed (`misconceptions: []`); this pass adds the inventory (19
+    entries), an item-level `primary_misconception` on all 18 items, and a
+    `misconception:` tag on every distractor (4 are honestly `null` —
+    AMN-8.D, AMN-12.C, AMN-13.B, AMN-18.C — pure wrong-guess or
+    arithmetic/exponent-sign slips, not stable conceptual models). Additive
+    only: no existing stem, choice text, feedback, or solution was
+    reweakened, reworded, or removed. Only 1 of 19 misconceptions
+    (gravitation-consideree-significative, the recurring R1/R5 theme) meets
+    the ≥3-item floor; the other 18 sit at 0–2 items. This is an honest
+    reflection of the source material, not an artifact of under-effort: this
+    is a short, single-arc CONCEPTUAL chapter (paradox → limits → 5
+    qualitatively distinct rungs), not a computation-heavy chapter like RLC
+    or rc-charge where the same handful of models recur across many numeric
+    variations — its 18 items were written to span mostly-distinct facets of
+    the chapter rather than to repeat 6-8 models 3+ times each. Closing the
+    floor honestly would require a genuine follow-up item-writing pass (new
+    stems per under-covered model, spanning the ramp, none a memorizable
+    restatement of an existing item) — flagged here, not executed as part of
+    this ride-along backfill, per the recipe's "never fake counts" rule.
