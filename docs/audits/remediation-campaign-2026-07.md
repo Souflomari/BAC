@@ -99,17 +99,17 @@ scope-based, not search failures)
 | Lesson | Wave | Sourced | Converted |
 |---|---|---|---|
 | analyse-de-texte (NEW) | PH1 | vérifié (3 نص+حلّل sources) | converted, born-converted (9a89083) |
-| la-verite | PH1 | transcrit non vérifié | — |
-| la-liberte | PH1 (PH-pilot) | transcrit non vérifié | — |
-| le-devoir | PH1 | transcrit non vérifié | — |
-| le-bonheur | PH1 | **EXC — hors-programme sciences (2 sources concordantes; contredit son propre statut "contesté" au cadre — flag pour révision humaine)** | — |
-| autrui | PH1 | transcrit non vérifié | — |
-| l-etat | PH2 | transcrit non vérifié (2023 N, 2022 N secondaire non confronté au scan) | — |
-| le-droit-la-justice | PH2 | transcrit non vérifié (2023 rattrapage) | — |
-| la-violence | PH2 | transcrit non vérifié (2021 N) | — |
-| l-histoire | PH2 | **EXC — non examiné en filières scientifiques (scope, pas un échec de recherche)** | — |
-| la-personne | PH2 | transcrit non vérifié | — |
-| theorie-experience | PH2 | transcrit non vérifié | — |
+| la-verite | PH1 | vérifié | converted (04d55ee) |
+| la-liberte | PH-pilot | vérifié | converted (f3ddf79) |
+| le-devoir | PH2 | vérifié (reproduction typée) | — |
+| le-bonheur | — | **EXC — hors-programme sciences (2 sources concordantes; cadre-challenger corrobore) — see Named unsourced exceptions** | — |
+| autrui | PH1 | vérifié | converted (d4e4e77) |
+| l-etat | PH2 | vérifié (2023 N reproduction typée, 2022 N source secondaire) | — |
+| le-droit-la-justice | PH2 | vérifié (reproduction typée) | — |
+| la-violence | PH2 | vérifié (reproduction typée) — cadre-challenger confirms in-scope | — |
+| l-histoire | — | **EXC — non examiné en filières scientifiques (scope, pas un échec de recherche) — see Named unsourced exceptions** | — |
+| la-personne | PH1 | vérifié | converted (20e86d4) |
+| theorie-experience | PH1 | vérifié | converted (e7414fe) |
 
 **New philo finding (from the sujets-bank pass, needs Sitting-2 triage):**
 exam-format research corrected an earlier campaign assumption — science-stream
@@ -260,6 +260,27 @@ either de-scoped from the curriculum or explicitly marked supplementary.
 _(dated compte-rendus of Owner Sittings 1–3 appended here)_
 
 ## Wave log
+
+**2026-07-15 (cont'd) — PH-pilot + PH1: philo notion conversions, 5/9
+convertible notions done (la-liberte f3ddf79, autrui d4e4e77, la-verite
+04d55ee, theorie-experience e7414fe, la-personne 20e86d4).** Every single
+one of these 5 lessons' pre-existing item banks started with the correct
+answer as the strict-longest option in the overwhelming majority of MCQs
+(15/15, 18/24, 23/30, 18/24, 18/24 respectively across the 5 legacy
+banks) — a live, repeated confirmation of the campaign's cited ~97%
+historical tell, not a one-off. Fixed on every lesson by enriching
+distractors with genuine philosophical substance (never trimming correct
+answers), independently re-verified programmatically after commit
+(several rounds of fix-and-recheck needed each time — hand-estimated
+lengths were consistently off by tens of characters). Post-wave
+`item-stats.mjs`: philo length-tell now **30%** across all 343 philo
+items (partially-converted subject average — target range 25-35%), down
+from the ~97% baseline; rendered position uniform (27/26/24/23%). Full
+philo lane: `validate --strict` 12/12 dirs clean, build 89 pages,
+dom-truth 161/0. Named exceptions confirmed: `l-histoire` and
+`le-bonheur` stay unconverted pending owner Sitting-2 scope confirmation.
+Remaining for PH2: `l-etat`, `la-violence`, `le-devoir`,
+`le-droit-la-justice` (all sourced+vérifié, ready to convert).
 
 **2026-07-15 (cont'd) — P3: philo/analyse-de-texte, the 12th philo lesson
 (9a89083).** Born converted (no legacy summit ever existed). pedagogy-
