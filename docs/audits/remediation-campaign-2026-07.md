@@ -192,7 +192,53 @@ Sitting 2 is the authority gate.
 
 ## Cadre-findings triage log
 
-_(appended when extractions land; only binding breaches enter the fix docket)_
+**2026-07-15 — philo cadre challenge (P2.3).** `research-challenger` attacked
+the `derived` layer of `docs/cadre/curriculum/philo.yaml` and specifically
+re-examined the 3 contested notions, cross-checking against the newly-built
+(and now challenger-verified) sujets bank as independent evidence:
+
+- **`la_violence` — SUPPORTED, keep in scope.** Two independent scan-level
+  national exam hits (2021 N سؤال, 2023 N قولة) confirm it via the État-
+  legitimacy axis. One sub-finding not binding: the `formes_violence`
+  sub-chapitre (typology physique/symbolique/institutionnelle) has zero
+  corroborating exam evidence — plausible standard content, just unevidenced;
+  ledgered, not urgent.
+- **`l_histoire` — ASSERTED (over-reach), reclassify OUT of exam scope.**
+  A multi-year exam census (2008–2024, science streams) found zero
+  occurrences; explicitly confirmed as a literary-stream notion by an
+  independent source. The cadre's original "flagged/non tranché" status
+  conflated "named in the module's notion list" with "drawn on for a
+  science-stream exam question" — that conflation doesn't hold.
+- **`le_bonheur` — ASSERTED (over-reach), reclassify OUT of exam scope.**
+  Same pattern, same evidentiary strength: two science-stream-specific
+  platforms list the ethics module as devoir+liberté only; zero science-
+  stream exam hits found; confirmed literary/humanities notion elsewhere.
+- **No binding breach found** — current `content/philo/l-histoire` and
+  `le-bonheur` lessons don't actively misrepresent exam scope (no "this is
+  on your bac" claims found). **One ledger item, not urgent**: both lessons
+  are structured as full-parity content indistinguishable from the 9
+  confirmed-examinable notions, with no student-facing "not tested for your
+  filière" signal — worth a UI treatment if/when the owner confirms the
+  reclassification, so any future scheduling/recommendation logic doesn't
+  misallocate study time toward untested notions.
+- Rest of the derived layer (limites, other exclusions) checked out as
+  well-supported against ~12 real sourced exam texts now in the bank; no
+  other over-reach found. Grille /20 sub-point-splits remain unverifiable
+  without the official PDF — acknowledged gap, low risk (point-allocation
+  nuance, not scope).
+
+**Disposition:** per the campaign's own triage rule (only binding breaches
+enter a capped fix docket; the rest is ledgered), this is NOT executed as an
+autonomous edit to `docs/cadre/curriculum/philo.yaml` — that file's authority
+gate is owner validation at Sitting 2. Superseding the earlier "keep in
+scope, default" language from the R2 owner-questions section above: the
+evidence is now strong and asymmetric (unlike when that default was set),
+so **`l-histoire` and `le-bonheur` are treated as named exceptions
+(unconverted, EXC) pending the owner's Sitting-2 call**, while `la-violence`
+proceeds as a normal in-scope conversion. If the owner confirms the
+reclassification, `docs/cadre/curriculum/philo.yaml`'s exclusions entry #3
+should be split (currently treats all 3 uniformly) and the two lessons
+either de-scoped from the curriculum or explicitly marked supplementary.
 
 ## Gate log
 
