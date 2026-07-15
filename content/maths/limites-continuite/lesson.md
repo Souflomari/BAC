@@ -16,6 +16,8 @@ Mais voici la question intéressante : **que fait $f$ tout près de $1$, même s
 
 Avant de lire la suite, prends position : d'après toi, quand $x$ se rapproche de plus en plus de $1$, est-ce que $f(x)$ se rapproche d'un nombre précis, ou est-ce que ça part n'importe où, de façon imprévisible ?
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce que donne une calculatrice quand on prend des valeurs de $x$ de plus en plus proches de $1$, par la gauche et par la droite :
 
 | $x$ | $0{,}9$ | $0{,}99$ | $0{,}999$ | $\to 1 \leftarrow$ | $1{,}001$ | $1{,}01$ | $1{,}1$ |
@@ -68,6 +70,8 @@ Limite à droite (on utilise la formule $x \geq 1$, donc $x^2$) :
 $$\lim_{x \to 1^{+}} f(x) = \lim_{x \to 1^{+}} x^2 = 1$$
 
 $2 \neq 1$. Les deux limites latérales sont différentes, donc **$\lim_{x \to 1} f(x)$ n'existe pas**. Ce n'est pas grave que $f(1) = 1^2 = 1$ soit parfaitement défini — la limite, elle, ne l'est pas. On reviendra sur cet exemple précis dans la leçon, parce qu'il va aussi nous servir à comprendre la continuité.
+
+[[checkpoint:cp-r1-lateral]]
 
 ### Quand la limite explose : la limite infinie en un point
 
@@ -148,6 +152,8 @@ Les choses se compliquent quand $L$ ou $L'$ vaut $+\infty$ ou $-\infty$. Voici l
 
 Quatre cases sont marquées **forme indéterminée (FI)** : $+\infty - \infty$, $0 \times \infty$, $\frac{0}{0}$, $\frac{\infty}{\infty}$. Dans ces quatre cas précis, les règles générales ne suffisent pas — il faut retravailler l'expression avant de conclure. C'est l'objet du prochain rung.
 
+[[checkpoint:cp-r2-forme-indeterminee]]
+
 ### Pourquoi ces quatre cas sont vraiment "indéterminés"
 
 "Indéterminé" ne veut pas dire "impossible à calculer" — ça veut dire que **la forme symbolique seule ne suffit pas à connaître la réponse**. Deux expressions qui ont exactement la même forme "$\infty - \infty$" peuvent avoir des limites totalement différentes. Regarde ces trois fonctions, toutes de la forme "$+\infty - \infty$" quand $x \to +\infty$ :
@@ -200,6 +206,8 @@ Il ne reste plus qu'à faire tendre $x$ vers $1$ dans cette expression simplifi�
 $$\lim_{x \to 1} (x+1) = 2$$
 
 **Le tableau du R0 avait raison** : les valeurs se resserraient bien vers $2$. Maintenant tu sais pourquoi, et tu peux le prouver sans calculatrice.
+
+[[checkpoint:cp-r3-factorisation]]
 
 ### Technique 2 — Le quotient conjugué (formes $\frac{0}{0}$ avec une racine carrée)
 
@@ -419,49 +427,29 @@ Face à une limite trigonométrique de la forme $\frac{0}{0}$ :
 3. Si la forme ne correspond pas exactement (coefficient manquant, argument différent en haut et en bas), transformer l'expression par multiplication/division pour la faire apparaître — sans jamais changer la valeur de l'expression.
 4. Si l'argument ne tend pas vers $0$, le formulaire ne s'applique pas : revenir à la substitution directe ou aux tableaux d'opérations du R2.
 
+[[checkpoint:cp-r6-trig]]
+
 ---
 
-## R7 — Pour t'entraîner
+## Pour t'entraîner — les questions de type bac
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — c'est un exercice d'entraînement construit pour cette leçon), pour mettre en pratique plusieurs des outils qu'on vient de voir.
+Un dernier palier de la rampe, maintenant : d'abord une **question authentique d'examen national**, puis une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change. Cette notion n'a pas d'exercice national qui lui soit entièrement dédié : la question ci-dessous est un **extrait** d'un problème d'analyse plus large (2022, session normale, filière SExp), transcrit pour la partie qui porte sur les limites à l'infini et le comportement asymptotique. La règle du jeu reste la même — pour chaque question, cherche sur papier d'abord, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
 
-### Exercice travaillé
+### Exercice de type bac
 
-Soit $f$ la fonction définie sur $[-3,3]$ par $f(x) = x^3-3x$.
+Extrait du problème d'analyse de l'examen national 2022 (session normale, filière SExp) : trois réflexes du chapitre s'enchaînent ici — un produit de limites à l'infini (R2, à distinguer d'une forme indéterminée), une asymptote oblique obtenue en montrant que $f(x)-x \to 0$ (le même geste de « retravailler l'expression » qu'au R3, appliqué à une différence plutôt qu'à un quotient), et une étude de signe pour situer la courbe par rapport à cette asymptote.
 
-**Partie A.** Calculer $\displaystyle\lim_{x \to +\infty} (x^3-3x)$ et $\displaystyle\lim_{x \to -\infty} (x^3-3x)$.
+[[checkpoint:cp-bac-produit-infini]]
 
-**Partie B.** On admet le tableau de variations suivant de $f$ sur $[-3,3]$ : $f$ est strictement croissante sur $[-3,-1]$ (de $f(-3)=-18$ à $f(-1)=2$), strictement décroissante sur $[-1,1]$ (de $f(-1)=2$ à $f(1)=-2$), puis strictement croissante sur $[1,3]$ (de $f(1)=-2$ à $f(3)=18$). Montrer que l'équation $f(x)=0$ admet exactement trois solutions dans $[-3,3]$.
+[[exercise:r-bac]]
 
-**Raisonnement à voix haute.**
+### Une variation pour ne pas mémoriser
 
-**Partie A.** $x^3-3x$ est de la forme $\infty - \infty$ à l'infini : on factorise le terme dominant $x^3$.
+Même machinerie, autre fonction : $g(x)=x(e^{-x}-1)^2$ au lieu de $f(x)=x(e^{x/2}-1)^2$. La branche parabolique et l'asymptote oblique n'apparaissent pas du même côté qu'au sujet précédent — à toi de reconnaître la structure plutôt que de recopier une réponse mémorisée.
 
-$$x^3-3x = x^3\left(1-\frac{3}{x^2}\right)$$
+[[exercise:r-variation]]
 
-Quand $x \to +\infty$, $\frac{3}{x^2} \to 0$ donc le facteur entre parenthèses tend vers $1$, et $x^3 \to +\infty$ :
-
-$$\lim_{x \to +\infty} x^3\left(1-\frac{3}{x^2}\right) = +\infty$$
-
-Quand $x \to -\infty$, le même facteur tend encore vers $1$, mais cette fois $x^3 \to -\infty$ :
-
-$$\lim_{x \to -\infty} x^3\left(1-\frac{3}{x^2}\right) = -\infty$$
-
-**Partie B.** Le tableau de variations découpe $[-3,3]$ en trois intervalles où $f$ est strictement monotone. Sur chacun, on vérifie que $0$ est bien compris entre les deux valeurs aux bornes, ce qui donne exactement une solution par le corollaire d'existence et d'unicité (le calcul le plus important ici : $f$ étant un polynôme, elle est continue sur les trois intervalles sans qu'on ait besoin de le redémontrer).
-
-- Sur $[-3,-1]$ : $f$ continue et strictement croissante, $f(-3)=-18 < 0$ et $f(-1)=2>0$. $0$ est compris entre les deux : il existe une unique solution $c_1 \in \, ]-3,-1[$.
-- Sur $[-1,1]$ : $f$ continue et strictement décroissante, $f(-1)=2>0$ et $f(1)=-2<0$. $0$ est compris entre les deux : il existe une unique solution $c_2 \in \, ]-1,1[$.
-- Sur $[1,3]$ : $f$ continue et strictement croissante, $f(1)=-2<0$ et $f(3)=18>0$. $0$ est compris entre les deux : il existe une unique solution $c_3 \in \, ]1,3[$.
-
-Les trois intervalles ouverts $]-3,-1[$, $]-1,1[$, $]1,3[$ sont disjoints, et aux points de jonction $f(-1)=2 \neq 0$ et $f(1)=-2 \neq 0$ (donc ces points ne sont pas eux-mêmes solutions). Les solutions $c_1$, $c_2$, $c_3$ sont donc bien trois solutions **distinctes**. L'équation $f(x)=0$ admet **exactement trois** solutions dans $[-3,3]$.
-
-[[figure:cubique-trois-racines]]
-
-### À toi de jouer
-
-**(a)** Calculer $\displaystyle\lim_{x \to 2} \frac{x^2-x-2}{x-2}$.
-
-**(b)** Une fonction $h$ est continue sur $[0,4]$ et vérifie $h(0)=-3$ et $h(4)=5$. Justifier que l'équation $h(x)=1$ admet au moins une solution dans $]0,4[$.
+---
 
 <!-- NOTE DE VALIDATION (relecture humaine) — trois points ouverts pour la
      relecture pédagogique, non résolus par cet auteur :
@@ -472,14 +460,18 @@ Les trois intervalles ouverts $]-3,-1[$, $]-1,1[$, $]1,3[$ sont disjoints, et au
      (2) Le périmètre demandé ("limite en un point et à l'infini, opérations,
      formes indéterminées, continuité, TVI") est large — certains manuels
      marocains le scindent en deux chapitres séparés ("Limites" puis
-     "Continuité et TVI"). Cette leçon les traite comme un seul notion en 6
-     rungs de contenu (R1-R5 + R6 entraînement) ; à confirmer que le
-     découpage en une seule notion correspond à l'intention du produit.
-     (3) R5 justifie la stricte croissance de x^3+x-1 et de l'exercice R6 par
-     la monotonie connue des fonctions de référence (x -> x^3, x -> x),
-     jamais par un calcul de dérivée, et le tableau de variations de
-     l'exercice R6 est donné comme admis plutôt que dérivé — choix
-     délibéré pour que la leçon reste autonome quel que soit l'ordre réel
-     entre ce chapitre et le chapitre "Dérivation" dans la progression. À
-     confirmer que cet ordre de progression correspond au programme réel.
+     "Continuité et TVI"). Cette leçon les traite comme une seule notion en
+     sept rungs de contenu (R0 accroche, R1-R5, R6 limites
+     trigonométriques), suivis d'un sommet d'entraînement attempt-first
+     (exercice de type bac sourcé par extrait + variation fraîche) ; à
+     confirmer que le découpage en une seule notion correspond à
+     l'intention du produit.
+     (3) R5 justifie la stricte croissance de x^3+x-1 par la monotonie
+     connue des fonctions de référence (x -> x^3, x -> x), jamais par un
+     calcul de dérivée — choix délibéré pour que la leçon reste autonome
+     quel que soit l'ordre réel entre ce chapitre et le chapitre
+     "Dérivation" dans la progression. (Le sommet d'entraînement, lui,
+     s'appuie sur des limites et une étude de signe, sans tableau de
+     variations admis.) À confirmer que cet ordre de progression
+     correspond au programme réel.
 -->

@@ -1,0 +1,364 @@
+notion: derivabilite-etude-fonctions
+skill_code: maths_derivabilite_etude_fonctions
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MENTAL MODEL, not just the fact of being wrong. The
+# end-bank floor lives in items.yaml and is NOT altered by these checkpoints.
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict    (in R0)                  — COMMIT gate: turns "prends
+#                                               position" into a real MCQ.
+#                                               Probes A (limite-non-comprise).
+#   cp-r4-extremum   (after R4)               — rupture gate: f'(a)=0 alone
+#                                               does not conclude an extremum.
+#                                               Probes D.
+#   cp-r5-inflexion  (after R5)               — rupture gate: distinguishing
+#                                               the f''-sign-change criterion
+#                                               from f'-based extremum
+#                                               criteria. Probes F.
+#   cp-bac-rolle     (before r-bac)           — rupture gate: what Rolle's
+#                                               hypothesis actually requires
+#                                               (equal VALUES of f', applied
+#                                               to f' not f). Probes J.
+#   cp-bac-taf       (before r-variation)     — rupture gate: what the TAF's
+#                                               conclusion actually gives
+#                                               (existence + sign, not an
+#                                               exact value of c). Probes J.
+#
+# EVERY distractor carries a named misconception id from this notion's
+# inventory (items.yaml). Option lengths are balanced so the correct choice is
+# never the conspicuously longest.
+#
+# Boundary guard: 2ème Bac SM dérivabilité / étude de fonctions — nombre
+# dérivé, tangente, règles de dérivation (produit, quotient, composée), signe
+# de f' / sens de variation / extremums, concavité / point d'inflexion,
+# théorème de Rolle et théorème des accroissements finis appliqués comme
+# outils (jamais démontrés — hors programme à ce niveau). Pas de fonctions
+# à plusieurs variables, pas de développements limités.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0
+  #        Turns "prends position" into a real MCQ commit before the
+  #        tableau reveals the limit. Probes A
+  #        (limite-non-comprise-comme-processus).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [checkpoint, formative, misconception_driven, maths_derivabilite_etude_fonctions, hook_commit]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Avant de lire la suite : a-t-on le droit de parler d'une vitesse « à un
+      instant précis », comme ce qu'afficherait un compteur de vitesse collé
+      sur la bille — ou est-ce qu'une vitesse n'a de sens que « sur une
+      durée » ? Engage-toi avant de continuer.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Oui : la vitesse à un instant précis est parfaitement définie — c'est la LIMITE de la vitesse moyenne sur [t, t+h] quand h tend vers 0, pas une mesure directe sur un intervalle."
+        correct: true
+        feedback: |
+          Exact — et c'est tout l'objet de cette leçon. On va construire cette
+          limite pas à pas : d'abord le taux d'accroissement (une vitesse
+          moyenne, calculable directement), puis sa limite quand l'intervalle
+          se resserre vers zéro. C'est cette limite qui donne un sens rigoureux
+          à « la vitesse à un instant précis ».
+
+      - id: B
+        text: "Non : une vitesse n'a de sens que mesurée sur une durée non nulle ; à un instant précis, aucun déplacement n'a lieu, donc aucune vitesse n'est définie."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus
+        feedback: |
+          C'est exactement la position que cette leçon va remettre en cause.
+          Le tableau qui suit va montrer que les vitesses moyennes se
+          stabilisent autour d'un nombre précis à mesure que l'intervalle
+          rétrécit — c'est ce processus de limite, et lui seul, qui donne un
+          sens parfaitement rigoureux à une vitesse « à un instant ».
+
+      - id: C
+        text: "Oui, mais seulement de façon approximative : il suffit de prendre un intervalle de temps très court, sans qu'il soit vraiment nécessaire de parler de limite."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus
+        feedback: |
+          Aussi petit soit l'intervalle choisi (tant qu'il reste non nul), le
+          calcul reste une vitesse MOYENNE — jamais la vitesse instantanée
+          elle-même. Il faut le processus de limite (faire tendre l'intervalle
+          vers zéro, pas seulement le rendre petit) pour obtenir un nombre
+          exact, pas une approximation.
+
+      - id: D
+        text: "On ne peut pas répondre avant d'avoir calculé la position exacte de la bille à cet instant précis, puisque la vitesse se déduirait forcément et uniquement de cette position déjà connue, jamais autrement."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: |
+          La position de la bille (« où » elle est) et sa vitesse (« à quelle
+          allure » elle s'y déplace) sont deux nombres complètement
+          différents : l'un ne dépend pas de l'autre pour être défini. On
+          n'a besoin d'aucun calcul de position pour donner un sens à la
+          question posée sur la vitesse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r4-extremum | placed AFTER R4
+  #        Rupture gate: f'(a)=0 alone does not conclude an extremum
+  #        without checking the sign change of f' around a. Probes D
+  #        (derivee-nulle-suffit-extremum), fresh twin of DERIVFCT-5.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-extremum
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [checkpoint, formative, misconception_driven, maths_derivabilite_etude_fonctions, extremum_local]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+    item_source: clone_of_DERIVFCT-5
+    lesson_placement: after_R4
+
+    stem: |
+      Soit $h(x) = -x^3$. On calcule $h'(x) = -3x^2$, donc $h'(0) = 0$.
+      Peut-on conclure que $h$ admet un extremum local en $x=0$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Non : $h'(x) \\leq 0$ des deux côtés de $0$ (pas de changement de signe), donc $h$ est strictement décroissante sur $\\mathbb{R}$, sans extremum en $0$."
+        correct: true
+        feedback: |
+          Exact : $h'(x)=-3x^2$ ne change jamais de signe (négative ou
+          nulle partout), donc $h$ décroît sur $\mathbb{R}$ tout entier, y
+          compris en traversant $0$. $h'(0)=0$ correspond ici à une tangente
+          horizontale passagère, pas à un extremum.
+
+      - id: B
+        text: "Oui, car $h'(0)=0$ signifie automatiquement un extremum local."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+        feedback: |
+          $h'(a)=0$ signale seulement un CANDIDAT à l'extremum, jamais une
+          conclusion à lui seul. Ici $h'(x)=-3x^2 \leq 0$ partout, sans
+          jamais changer de signe autour de $0$ : il faut toujours vérifier
+          ce changement de signe, pas seulement l'annulation.
+
+      - id: C
+        text: "Oui, c'est un maximum local, car $h'(x) \\leq 0$ signifie que $h$ « s'arrête de monter » en $0$."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+        feedback: |
+          $h$ ne monte jamais ici ($h'(x) \leq 0$ sur tout $\mathbb{R}$) : il
+          n'y a donc rien dont elle « s'arrêterait ». Un maximum exige que
+          $h'$ soit positive avant $0$ puis négative après — ce n'est pas le
+          cas, le signe (négatif) est le même des deux côtés.
+
+      - id: D
+        text: "On ne peut rien dire du tout sans calculer $h''(0)$ au préalable, comme pour n'importe quelle étude d'extremum d'une fonction dérivable deux fois sur tout $\\mathbb{R}$."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+        feedback: |
+          Au niveau du programme, la méthode fiable est le changement de
+          signe de $h'$, pas $h''$ — et $h''(x)=-6x$ donne $h''(0)=0$ ici
+          aussi, un test qui ne trancherait même pas. Vérifier le signe de
+          $h'$ autour de $0$ suffit à conclure qu'il n'y a pas d'extremum.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r5-inflexion | placed AFTER R5
+  #        Rupture gate: distinguishing the f''-sign-change criterion
+  #        (point d'inflexion) from f'-based criteria (extremum).
+  #        Probes F (criteres-inflexion-extremum-confondus), fresh
+  #        twin of DERIVFCT-6/17.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-inflexion
+    rung: "R5"
+    habilete: utilisation
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [checkpoint, formative, misconception_driven, maths_derivabilite_etude_fonctions, point_inflexion]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus
+    item_source: clone_of_DERIVFCT-6
+    lesson_placement: after_R5
+
+    stem: |
+      Soit $k(x) = x^3 + 3x^2$, avec $k'(x) = 3x^2+6x = 3x(x+2)$ et
+      $k''(x) = 6x+6 = 6(x+1)$. En quel point la courbe de $k$ admet-elle un
+      point d'inflexion ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "En $x=-1$, car $k''$ s'annule et change de signe en $-1$."
+        correct: true
+        feedback: |
+          Exact : $k''(x)=6(x+1)$ est négative pour $x<-1$ (concave) et
+          positive pour $x>-1$ (convexe) — elle change bien de signe en
+          $x=-1$, qui appartient au domaine $\mathbb{R}$ de $k$.
+
+      - id: B
+        text: "En $x=0$ et $x=-2$, car ce sont les points où $k'(x)=0$."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus
+        feedback: |
+          $x=0$ et $x=-2$ sont les points où $k'$ s'annule — ce sont les
+          candidats aux EXTREMUMS locaux, pas au point d'inflexion. Le point
+          d'inflexion se cherche avec $k''$, pas $k'$ : ce sont deux
+          conditions différentes, sur deux dérivées différentes.
+
+      - id: C
+        text: "En $x=0$, car $k(0)=0$."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus
+        feedback: |
+          Que $k(0)=0$ (que $0$ soit une racine de $k$) n'a aucun rapport
+          avec le point d'inflexion — c'est une coïncidence, pas le
+          critère. Le critère est le changement de signe de $k''$, pas
+          l'annulation de $k$ elle-même.
+
+      - id: D
+        text: "Il n'y a pas de point d'inflexion, car $k''(x)=6x+6$ ne s'annule qu'en un seul point."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus
+        feedback: |
+          Un seul zéro de $k''$ suffit parfaitement, à condition qu'il y ait
+          bien un changement de signe à cet endroit — exactement ce qui se
+          passe en $-1$. Un point d'inflexion est justement défini par UN
+          changement de signe de $k''$, pas par plusieurs zéros.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-bac-rolle | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: what Rolle's hypothesis actually requires —
+  #        equal VALUES of f' (applied to f', not to f), not f'=0 at
+  #        the endpoints individually. Probes J
+  #        (rolle-taf-hypotheses-mal-identifiees).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-rolle
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [checkpoint, formative, misconception_driven, maths_derivabilite_etude_fonctions, rolle, bac_style]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Dans le sujet qui suit, on applique le théorème de Rolle à la fonction
+      $f'$ (pas à $f$) sur l'intervalle $[0,1]$, pour obtenir un
+      renseignement sur $f''$. Quelle est l'hypothèse-clé à vérifier sur
+      $f'$ avant de conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que $f'(0) = f'(1)$ : les valeurs de $f'$ (pas de $f$) coïncident aux deux bornes. La conclusion portera alors sur la dérivée de $f'$, c'est-à-dire $f''$."
+        correct: true
+        feedback: |
+          Exact. Rolle s'applique ici à $f'$ jouant le rôle de la fonction
+          « $g$ » du théorème : il faut que $f'$ soit continue sur $[0,1]$,
+          dérivable sur $]0,1[$, et que $f'(0)=f'(1)$. La conclusion — un
+          point où la dérivée de $f'$ s'annule — porte donc sur $f''$.
+
+      - id: B
+        text: "Que $f(0) = f(1)$ : les valeurs de $f$ elle-même coïncident aux deux bornes."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: |
+          C'est l'hypothèse qu'il faudrait vérifier si on appliquait Rolle à
+          $f$ directement (pour conclure sur $f'$). Ici, on applique Rolle à
+          $f'$ elle-même : c'est donc $f'(0)=f'(1)$ qu'il faut vérifier, pas
+          $f(0)=f(1)$.
+
+      - id: C
+        text: "Que $f'$ soit positive sur tout l'intervalle $[0,1]$, pour garantir que la dérivée ne change pas de sens entre les deux bornes de l'intervalle étudié tout du long."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: |
+          Le signe de $f'$ sur l'intervalle n'entre pour rien dans les
+          hypothèses de Rolle. Ce qui compte est la continuité, la
+          dérivabilité, et l'égalité des valeurs aux deux bornes — jamais
+          un signe constant.
+
+      - id: D
+        text: "Que $f'(0)$ et $f'(1)$ soient tous les deux non nuls."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: |
+          C'est l'inverse de ce qu'il faut : Rolle n'exige pas que ces
+          valeurs soient non nulles, mais qu'elles soient ÉGALES entre elles
+          (ici, elles sont même toutes les deux nulles — ce qui vérifie
+          bien l'égalité demandée).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-bac-taf | placed BEFORE [[exercise:r-variation]]
+  #        Rupture gate: the TAF's conclusion gives EXISTENCE + SIGN,
+  #        never an exact computable value of c. Probes J.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-taf
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [checkpoint, formative, misconception_driven, maths_derivabilite_etude_fonctions, accroissements_finis, bac_style]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+    item_source: original
+    lesson_placement: before_variation
+
+    stem: |
+      Le théorème des accroissements finis donne l'existence d'un réel $c$
+      tel que $f''(x) - f''(x_0) = f'''(c)\,(x-x_0)$. Une fois cette égalité
+      obtenue, que peut-on effectivement affirmer sur $c$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "On ne calcule pas $c$ : on sait seulement qu'il existe entre $x$ et $x_0$ — mais ça suffit pour connaître le signe de $f'''(c)$."
+        correct: true
+        feedback: |
+          Exact — c'est tout l'intérêt du théorème : il garantit l'EXISTENCE
+          d'un point $c$ sans en donner la valeur, mais savoir que $c$ est
+          dans un intervalle où le signe de $f'''$ est déjà connu suffit
+          pour conclure sur le signe du quotient, sans jamais calculer $c$.
+
+      - id: B
+        text: "On peut calculer la valeur exacte de $c$ en résolvant l'équation."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: |
+          Le théorème des accroissements finis est un théorème
+          d'EXISTENCE : il affirme qu'un tel $c$ existe, sans fournir de
+          méthode pour le calculer. On n'a d'ailleurs pas besoin de sa
+          valeur exacte — seulement de savoir dans quel intervalle il se
+          trouve, pour en déduire un signe.
+
+      - id: C
+        text: "$c$ est nécessairement égal au point $x_0$ lui-même, puisque c'est le point de départ de l'égalité et le seul déjà connu dans le calcul."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: |
+          Le théorème garantit que $c$ est strictement ENTRE $x$ et $x_0$ —
+          jamais égal à l'une des deux bornes. C'est précisément parce que
+          $c$ est distinct de $x_0$ que l'égalité reste utile.
+
+      - id: D
+        text: "Le théorème ne s'applique que si on connaît déjà la valeur de $c$."
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: |
+          C'est l'inverse : le théorème s'applique dès que $f''$ est
+          continue sur l'intervalle fermé et dérivable à l'intérieur — ce
+          sont ces conditions qui GARANTISSENT l'existence de $c$, sans
+          qu'on ait besoin de le connaître au préalable.

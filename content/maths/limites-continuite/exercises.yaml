@@ -1,0 +1,227 @@
+# Attempt-first exercises (summit-conversion campaign — maths, notion 2).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. This notion has NO dedicated national exercise
+# (docs/sujets/maths/INDEX.md: "cross-list — pas d'exercice dédié"). Per the
+# campaign's locked decision, r-bac is sourced by EXCERPT (Q1, Q2, Q3a, Q3b)
+# from the already-verified 2022 session normale problème (filière SExp,
+# code NS 22F) — see docs/sujets/maths/limites-continuite.md for the full
+# provenance and docs/sujets/maths/fonction-exponentielle.md for the source
+# transcription (statut "corrigé", the correction concerns only Q5b's figure,
+# not the excerpted questions, which are pure text diffed clean against the
+# scan). r-variation is a fresh anti-memorisation twin (same skills — limite
+# d'un produit à l'infini, quotient f(x)/x et branche parabolique, asymptote
+# oblique via f(x)-x→0, position relative par étude de signe — with a
+# different function, and the branche parabolique / asymptote oblique
+# deliberately mirrored to the OPPOSITE infinities; status not-applicable).
+
+notion: limites-continuite
+
+exercises:
+  # ── r-bac — EXCERPT of the VERIFIED 2022 national problème (SExp) ────────
+  # Q1, Q2, Q3a, Q3b of docs/sujets/maths/fonction-exponentielle.md's 2022
+  # session normale entry. f(x) = x(e^{x/2}-1)^2. Three reflexes chain here:
+  # a product-of-limits read (R2, NOT a forme indéterminée at either infinity
+  # once each factor's own limit is identified), an oblique asymptote shown
+  # via f(x)-x → 0 (the same "retravailler l'expression" move as R3, applied
+  # to a difference instead of a quotient), and a sign study to place the
+  # curve relative to that asymptote.
+  - id: r-bac
+    title: "Exercice de type bac — limites, asymptote oblique et position relative (2022, extrait)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — extrait du problème d'analyse déjà vérifié
+        (docs/sujets/maths/fonction-exponentielle.md, Q1-Q3, filière SExp,
+        code NS 22F).
+    intro: |-
+      **Extrait du problème d'analyse (examen national, session normale 2022, filière SExp).**
+
+      On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = x\left(e^{\frac{x}{2}} - 1\right)^2$. Soit $(C)$ sa courbe représentative dans un repère orthonormé $(O;\vec{i},\vec{j})$.
+
+      Ce sujet n'a pas d'exercice national qui lui soit entièrement dédié aux limites : les quatre questions ci-dessous sont extraites d'un problème d'étude de fonction plus large (le reste du problème — dérivée, concavité, fonction réciproque, suite — relève d'autres notions).
+    questions:
+      - id: q1
+        part: "Partie A — Limites à l'infini"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et $\displaystyle\lim_{x \to -\infty} f(x)$.
+        reasoning: |-
+          Le réflexe R1/R2 : identifier séparément la limite de chaque facteur du produit $x \times (e^{x/2}-1)^2$, puis appliquer la règle du produit — **à condition de vérifier qu'on n'est pas dans un des quatre cas de forme indéterminée**.
+
+          Quand $x \to +\infty$, $e^{x/2} \to +\infty$ (limite de référence du R1), donc $(e^{x/2}-1)^2 \to +\infty$ aussi. Les deux facteurs partent vers $+\infty$ : ce n'est **pas** une forme indéterminée (le tableau du produit, R2, donne directement $+\infty \times +\infty = +\infty$).
+
+          Quand $x \to -\infty$, c'est différent : $e^{x/2} \to 0$, donc $(e^{x/2}-1)^2 \to (0-1)^2 = 1$, un nombre **fini non nul**. Le premier facteur $x$ part vers $-\infty$. On multiplie un facteur qui part à l'infini par un facteur qui tend vers une constante non nulle : encore une fois, pas de forme indéterminée — le tableau du produit (R2) donne directement le résultat, avec le signe du facteur fini ($1>0$) qui laisse le signe de $x$ inchangé.
+        steps:
+          - math: '\lim_{x\to+\infty} e^{x/2} = +\infty \quad\Longrightarrow\quad \lim_{x\to+\infty}\left(e^{x/2}-1\right)^2 = +\infty'
+            note: "Limite de référence de l'exponentielle en +∞, puis carré d'une quantité qui part à l'infini."
+          - math: '\lim_{x\to+\infty} f(x) = \lim_{x\to+\infty} x\left(e^{x/2}-1\right)^2 = +\infty'
+            note: "Produit de deux facteurs tendant vers +∞ : le tableau du produit (R2) donne +∞ directement, ce n'est pas une forme indéterminée."
+          - math: '\lim_{x\to-\infty} e^{x/2} = 0 \quad\Longrightarrow\quad \lim_{x\to-\infty}\left(e^{x/2}-1\right)^2 = (0-1)^2 = 1'
+            note: "En -∞, l'exponentielle tend vers 0 : le second facteur tend vers un nombre FINI non nul, 1."
+          - math: '\lim_{x\to-\infty} f(x) = \lim_{x\to-\infty} x\left(e^{x/2}-1\right)^2 = -\infty'
+            note: "x tend vers -∞, multiplié par un facteur qui tend vers 1 (fini non nul, positif) : le produit part vers -∞, signe de x conservé."
+
+      - id: q2
+        part: "Partie B — Le quotient f(x)/x et son interprétation géométrique"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$ et interpréter géométriquement le résultat.
+        reasoning: |-
+          Le quotient $f(x)/x$ se simplifie immédiatement : $x$ apparaît en facteur au numérateur, il suffit de le simplifier avec le $x$ du dénominateur (licite car $x \neq 0$ au voisinage de $+\infty$). Il reste exactement le second facteur déjà rencontré à la question précédente, qui tend vers $+\infty$.
+
+          **L'interprétation géométrique** est ce qui fait tout l'intérêt de cette question. On a vu au R1 que si $f(x)$ tend vers un nombre fini $L$ à l'infini, la courbe admet une asymptote horizontale $y=L$. Ici $f(x)$ lui-même part à l'infini (question 1), donc pas d'asymptote horizontale — mais le quotient $f(x)/x$ tend *aussi* vers l'infini, ce qui est encore plus fort qu'une simple absence d'asymptote : cela signifie que $f(x)$ grandit **plus vite qu'une droite quelconque**. La courbe s'écarte de toute droite passant par l'origine, de plus en plus vite. Ce comportement porte un nom : une **branche parabolique de direction asymptotique $(Oy)$** (l'axe des ordonnées).
+        steps:
+          - math: '\dfrac{f(x)}{x} = \dfrac{x\left(e^{x/2}-1\right)^2}{x} = \left(e^{x/2}-1\right)^2 \quad (x\neq 0)'
+            note: "Le facteur x se simplifie : il ne reste que le second facteur de f(x)."
+          - math: '\lim_{x\to+\infty} \dfrac{f(x)}{x} = \lim_{x\to+\infty}\left(e^{x/2}-1\right)^2 = +\infty'
+            note: "Repris de la question 1 : ce facteur part vers +∞."
+          - math: '\text{La courbe } (C) \text{ admet une branche parabolique de direction asymptotique } (Oy) \text{ au voisinage de } +\infty'
+            note: "Quand f(x)/x tend vers l'infini, la courbe s'éloigne de TOUTE droite : c'est la signature d'une branche parabolique de direction (Oy), pas d'une asymptote."
+
+      - id: q3a
+        part: "Partie C — Une asymptote oblique en -∞"
+        stem: |-
+          **(0,5 pt)** Montrer que la droite $(\Delta)$ d'équation $y = x$ est asymptote à la courbe $(C)$ au voisinage de $-\infty$.
+        reasoning: |-
+          Montrer qu'une droite $y=x$ est asymptote revient, par définition, à montrer que l'écart entre la courbe et la droite s'annule à la limite : $\lim_{x\to-\infty}\left[f(x)-x\right] = 0$.
+
+          On développe $f(x)-x = x\left[(e^{x/2}-1)^2-1\right]$, puis on développe le carré comme au R3 (l'identité $(u-1)^2-1 = u^2-2u$, avec $u=e^{x/2}$) pour retomber sur des exponentielles pures. Il reste alors deux termes du type "$x$ fois une exponentielle qui décroît", et c'est exactement le résultat de **croissances comparées** vu ailleurs dans le programme : à $-\infty$, une exponentielle $e^{kx}$ (avec $k>0$) l'emporte toujours sur $x$, donc le produit $x\,e^{kx}$ tend vers $0$, quel que soit le signe ou la vitesse de $x$.
+        steps:
+          - math: 'f(x)-x = x\left[\left(e^{x/2}-1\right)^2-1\right]'
+            note: "On factorise par x."
+          - math: '\left(e^{x/2}-1\right)^2-1 = e^{x}-2e^{x/2}+1-1 = e^{x}-2e^{x/2}'
+            note: "On développe le carré : (u-1)² - 1 = u² - 2u avec u = e^{x/2}, donc u² = e^x."
+          - math: 'f(x)-x = x\,e^{x}-2x\,e^{x/2}'
+            note: "On distribue le facteur x sur les deux termes."
+          - math: '\lim_{x\to-\infty} x\,e^{x} = 0 \qquad\qquad \lim_{x\to-\infty} x\,e^{x/2} = 0'
+            note: "Croissances comparées : à -∞, l'exponentielle l'emporte toujours sur x — le produit tend vers 0."
+          - math: '\lim_{x\to-\infty}\left[f(x)-x\right] = 0 - 2\times 0 = 0'
+            note: "L'écart entre la courbe et la droite tend vers 0 : (Δ) d'équation y=x est bien asymptote à (C) au voisinage de -∞."
+
+      - id: q3b
+        stem: |-
+          **(0,75 pt)** Étudier le signe de $(f(x) - x)$ pour tout $x$ de $\mathbb{R}$ et en déduire la position relative de la courbe $(C)$ et de la droite $(\Delta)$.
+        reasoning: |-
+          On repart de l'expression $f(x)-x$ factorisée à la question précédente, mais on la factorise encore une fois, par $e^{x/2}$ cette fois : $x\,e^{x}-2x\,e^{x/2} = x\,e^{x/2}\left(e^{x/2}-2\right)$ (on sort $e^{x/2}$ des deux termes, et $e^{x} = e^{x/2}\times e^{x/2}$).
+
+          Le facteur $e^{x/2}$ est **toujours strictement positif** (une exponentielle ne s'annule et ne change jamais de signe) : il ne joue donc aucun rôle dans le signe du produit. Le signe de $f(x)-x$ est exactement celui de $x\left(e^{x/2}-2\right)$.
+
+          Il reste à localiser où $e^{x/2}-2$ s'annule et change de signe : $e^{x/2}=2 \iff x/2=\ln 2 \iff x = 2\ln 2 = \ln 4$. On a donc deux valeurs qui annulent le produit, $x=0$ (le facteur $x$) et $x=\ln 4$ (le facteur $e^{x/2}-2$), qui découpent $\mathbb{R}$ en trois intervalles. Sur chacun, on détermine le signe de chaque facteur puis on multiplie les signes.
+
+          **Interprétation en position relative :** $f(x)-x>0$ signifie $f(x)>x$, donc $(C)$ est **au-dessus** de $(\Delta)$ ; $f(x)-x<0$ signifie $(C)$ est **en dessous** de $(\Delta)$ ; $f(x)-x=0$ signifie que les deux courbes se **croisent**.
+        steps:
+          - math: 'f(x)-x = x\,e^{x}-2x\,e^{x/2} = x\,e^{x/2}\left(e^{x/2}-2\right)'
+            note: "On factorise par e^{x/2} (toujours strictement positif) : e^x = e^{x/2} × e^{x/2}."
+          - math: 'e^{x/2}-2 = 0 \iff \dfrac{x}{2} = \ln 2 \iff x = 2\ln 2 = \ln 4'
+            note: "Le second facteur s'annule en x = ln 4 (environ 1,39)."
+          - math: '\text{signe de } f(x)-x = \text{signe de } x\left(e^{x/2}-2\right) \quad (\text{car } e^{x/2}>0 \text{ toujours})'
+            note: "Le facteur e^{x/2} ne change jamais le signe du produit : il suffit d'étudier le signe de x(e^{x/2}-2)."
+          - math: '\begin{array}{c|ccccc} x & -\infty & & 0 & & \ln 4 & & +\infty \\ \hline x & & - & 0 & + & + & + & \\ e^{x/2}-2 & & - & - & - & 0 & + & \\ \hline f(x)-x & & + & 0 & - & 0 & + & \end{array}'
+            note: "Tableau de signes : produit des deux facteurs sur chaque intervalle."
+          - math: '(C) \text{ au-dessus de } (\Delta) \text{ sur } ]-\infty,0[\, \cup\, ]\ln 4,+\infty[, \quad (C) \text{ en dessous sur } ]0,\ln 4[, \quad \text{et } (C) \text{ croise } (\Delta) \text{ en } x=0 \text{ et } x=\ln 4'
+            note: "Conclusion en termes de position relative : le signe de f(x)-x traduit directement la position de la courbe par rapport à l'asymptote."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (produit de limites à l'infini via R2, quotient
+  # f(x)/x et branche parabolique, asymptote oblique via f(x)-x→0, position
+  # relative par étude de signe) with a mirror-image function g(x)=x(e^{-x}-1)^2
+  # — the branche parabolique and the oblique asymptote sit at the OPPOSITE
+  # infinities compared to r-bac, so the student cannot recopy the answer's
+  # shape and must recompute.
+  - id: r-variation
+    title: "Variation fraîche — même machinerie, fonction miroir"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2022, extrait sourcé).
+        Fonction choisie pour donner les mêmes techniques (produit à
+        l'infini, asymptote oblique via f(x)-x→0, étude de signe) avec la
+        branche parabolique et l'asymptote échangées d'infini par rapport à
+        r-bac, et des zéros vérifiés à la main.
+    intro: |-
+      Même structure profonde que le sujet précédent, fonction différente : $g(x) = x\left(e^{-x} - 1\right)^2$, définie sur $\mathbb{R}$, de courbe représentative $(C')$.
+
+      Attention, piège pour qui a mémorisé le sujet précédent sans le comprendre : ici, la branche parabolique et l'asymptote oblique **ne sont pas du même côté** qu'avec $f$. Il faut reconnaître la même machinerie (produit de limites, développement du carré, croissances comparées, étude de signe) plutôt que recopier une réponse.
+    questions:
+      - id: q1
+        part: "Partie A — Limites à l'infini"
+        stem: |-
+          Calculer $\displaystyle\lim_{x \to +\infty} g(x)$ et $\displaystyle\lim_{x \to -\infty} g(x)$.
+        reasoning: |-
+          Même geste qu'à la question 1 du sujet : on identifie la limite de chaque facteur du produit $x\times(e^{-x}-1)^2$, puis on applique la règle du produit — en vérifiant qu'on n'est dans aucun des quatre cas de forme indéterminée.
+
+          Quand $x\to+\infty$, $e^{-x}\to 0$ (l'exposant $-x$ part vers $-\infty$), donc $(e^{-x}-1)^2 \to 1$, un nombre fini non nul. Le premier facteur $x$ part vers $+\infty$ : produit "infini × fini non nul", pas de forme indéterminée.
+
+          Quand $x\to-\infty$, c'est l'inverse : $-x\to+\infty$, donc $e^{-x}\to+\infty$, et $(e^{-x}-1)^2\to+\infty$ aussi. Les deux facteurs partent à l'infini ($x\to-\infty$, l'autre facteur $\to+\infty$) : encore une fois, le tableau du produit tranche directement, sans forme indéterminée, avec le signe de $x$ (négatif) qui l'emporte.
+
+          C'est exactement l'inverse de ce qui se passait pour $f$ à la question 1 du sujet : là-bas, le "facteur fini" apparaissait en $-\infty$ ; ici, il apparaît en $+\infty$. Le comportement est mirroré.
+        steps:
+          - math: '\lim_{x\to+\infty} e^{-x} = 0 \quad\Longrightarrow\quad \lim_{x\to+\infty}\left(e^{-x}-1\right)^2 = (0-1)^2 = 1'
+            note: "Quand x→+∞, -x→-∞ donc e^{-x}→0 : le second facteur tend vers un nombre FINI non nul, 1."
+          - math: '\lim_{x\to+\infty} g(x) = \lim_{x\to+\infty} x\left(e^{-x}-1\right)^2 = +\infty'
+            note: "x part vers +∞, multiplié par un facteur qui tend vers 1 : pas de forme indéterminée, le produit part vers +∞."
+          - math: '\lim_{x\to-\infty} e^{-x} = +\infty \quad\Longrightarrow\quad \lim_{x\to-\infty}\left(e^{-x}-1\right)^2 = +\infty'
+            note: "Quand x→-∞, -x→+∞ donc e^{-x}→+∞ : le second facteur part aussi à l'infini."
+          - math: '\lim_{x\to-\infty} g(x) = \lim_{x\to-\infty} x\left(e^{-x}-1\right)^2 = -\infty'
+            note: "Produit de deux facteurs infinis (x→-∞, l'autre facteur →+∞) : le tableau du produit donne -∞ directement, signe de x conservé."
+
+      - id: q2
+        part: "Partie B — Le quotient g(x)/x et son interprétation géométrique"
+        stem: |-
+          Calculer $\displaystyle\lim_{x \to -\infty} \dfrac{g(x)}{x}$ et interpréter géométriquement le résultat.
+        reasoning: |-
+          Comme pour $f$, le quotient $g(x)/x$ se simplifie immédiatement en le second facteur seul, valable pour $x\neq 0$.
+
+          Ici, c'est en $-\infty$ (et non en $+\infty$ comme pour $f$) que ce facteur part à l'infini — cohérent avec la question 1, où on a trouvé que le facteur $(e^{-x}-1)^2$ part à l'infini en $-\infty$, pas en $+\infty$. La courbe $(C')$ admet donc une **branche parabolique de direction asymptotique $(Oy)$**, mais au voisinage de $-\infty$ — le miroir exact de ce qui se passait pour $(C)$ en $+\infty$.
+        steps:
+          - math: '\dfrac{g(x)}{x} = \dfrac{x\left(e^{-x}-1\right)^2}{x} = \left(e^{-x}-1\right)^2 \quad (x\neq 0)'
+            note: "Simplification par x, comme pour f."
+          - math: '\lim_{x\to-\infty} \dfrac{g(x)}{x} = \lim_{x\to-\infty}\left(e^{-x}-1\right)^2 = +\infty'
+            note: "Repris de la question 1 : ce facteur part vers +∞ quand x→-∞ (pas quand x→+∞)."
+          - math: '\text{La courbe } (C^{\prime}) \text{ admet une branche parabolique de direction asymptotique } (Oy) \text{ au voisinage de } -\infty'
+            note: "Même conclusion géométrique que pour f, mais à l'infini opposé."
+
+      - id: q3a
+        part: "Partie C — Une asymptote oblique en +∞"
+        stem: |-
+          Montrer que la droite $(\Delta)$ d'équation $y = x$ est asymptote à la courbe $(C')$ au voisinage de $+\infty$.
+        reasoning: |-
+          Même définition qu'au sujet : il faut montrer $\lim_{x\to+\infty}\left[g(x)-x\right]=0$.
+
+          On développe $g(x)-x=x\left[(e^{-x}-1)^2-1\right]=x\left[e^{-2x}-2e^{-x}\right]$ (identité $(u-1)^2-1=u^2-2u$ avec $u=e^{-x}$, donc $u^2=e^{-2x}$). On retombe encore sur deux produits "$x$ fois une exponentielle qui décroît" — mais cette fois l'exponentielle décroît quand $x\to+\infty$ (et non $x\to-\infty$ comme pour $f$), donc c'est en $+\infty$ que les croissances comparées s'appliquent : $xe^{-2x}\to 0$ et $xe^{-x}\to 0$ quand $x\to+\infty$.
+        steps:
+          - math: 'g(x)-x = x\left[\left(e^{-x}-1\right)^2-1\right]'
+            note: "On factorise par x, comme pour f."
+          - math: '\left(e^{-x}-1\right)^2-1 = e^{-2x}-2e^{-x}+1-1 = e^{-2x}-2e^{-x}'
+            note: "On développe le carré : (u-1)² - 1 = u² - 2u avec u = e^{-x}, donc u² = e^{-2x}."
+          - math: 'g(x)-x = x\,e^{-2x}-2x\,e^{-x}'
+            note: "On distribue le facteur x."
+          - math: '\lim_{x\to+\infty} x\,e^{-2x} = 0 \qquad\qquad \lim_{x\to+\infty} x\,e^{-x} = 0'
+            note: "Croissances comparées : à +∞ cette fois (l'exponentielle décroissante l'emporte sur x), le produit tend vers 0."
+          - math: '\lim_{x\to+\infty}\left[g(x)-x\right] = 0 - 2\times 0 = 0'
+            note: "L'écart tend vers 0 : (Δ) d'équation y=x est asymptote à (C') au voisinage de +∞ — l'infini opposé à celui de f."
+
+      - id: q3b
+        stem: |-
+          Étudier le signe de $(g(x) - x)$ pour tout $x$ de $\mathbb{R}$ et en déduire la position relative de la courbe $(C')$ et de la droite $(\Delta)$.
+        reasoning: |-
+          On refactorise $x\,e^{-2x}-2x\,e^{-x} = x\,e^{-x}\left(e^{-x}-2\right)$ (on sort $e^{-x}$, et $e^{-2x}=e^{-x}\times e^{-x}$).
+
+          Le facteur $e^{-x}$ est toujours strictement positif, comme $e^{x/2}$ l'était pour $f$ : il ne joue aucun rôle dans le signe. Le signe de $g(x)-x$ est celui de $x\left(e^{-x}-2\right)$.
+
+          On localise le second zéro : $e^{-x}=2 \iff -x=\ln 2 \iff x=-\ln 2$. Les deux zéros du produit sont donc $x=-\ln 2$ (environ $-0{,}69$) et $x=0$ — cette fois-ci, contrairement au sujet, le zéro "supplémentaire" ($-\ln 2$) est **négatif**, alors qu'il était positif ($\ln 4$) pour $f$ : encore un signe que la structure est mirroée. On construit le tableau de signes sur les trois intervalles délimités par ces deux zéros.
+        steps:
+          - math: 'g(x)-x = x\,e^{-2x}-2x\,e^{-x} = x\,e^{-x}\left(e^{-x}-2\right)'
+            note: "On factorise par e^{-x} (toujours strictement positif)."
+          - math: 'e^{-x}-2 = 0 \iff -x = \ln 2 \iff x = -\ln 2'
+            note: "Le second facteur s'annule en x = -ln 2 (environ -0,69) — négatif, contrairement au ln 4 positif du sujet."
+          - math: '\text{signe de } g(x)-x = \text{signe de } x\left(e^{-x}-2\right) \quad (\text{car } e^{-x}>0 \text{ toujours})'
+            note: "Comme pour f, le facteur exponentiel positif ne change pas le signe du produit."
+          - math: '\begin{array}{c|ccccc} x & -\infty & & -\ln 2 & & 0 & & +\infty \\ \hline x & & - & - & - & 0 & + & \\ e^{-x}-2 & & + & 0 & - & - & - & \\ \hline g(x)-x & & - & 0 & + & 0 & - & \end{array}'
+            note: "Tableau de signes : produit des deux facteurs sur chaque intervalle."
+          - math: '(C^{\prime}) \text{ en dessous de } (\Delta) \text{ sur } ]-\infty,-\ln 2[\, \cup\, ]0,+\infty[, \quad (C^{\prime}) \text{ au-dessus sur } ]-\ln 2,0[, \quad \text{et } (C^{\prime}) \text{ croise } (\Delta) \text{ en } x=-\ln 2 \text{ et } x=0'
+            note: "Position relative inversée par rapport à f sur les intervalles extrêmes : encore la signature de la structure miroir."

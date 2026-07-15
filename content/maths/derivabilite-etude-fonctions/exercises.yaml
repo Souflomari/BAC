@@ -1,0 +1,224 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. This notion has NO dedicated national exercise
+# (docs/sujets/maths/INDEX.md: "cross-list — pas d'exercice dédié"). Per the
+# campaign's locked sourcing decision, r-bac is sourced by EXCERPT from an
+# already-verified transcribed problème — docs/sujets/maths/fonction-exponentielle.md,
+# "2019 — session normale — Exercice 4 (filière SM)", Partie I, questions 2a
+# and 3(a,b,c) only (dérivabilité + f', Rolle appliqué à f', TAF appliqué à f'',
+# point d'inflexion). That entry's own "Recoupe" line already cross-lists this
+# notion explicitly. Full provenance carried over in
+# docs/sujets/maths/derivabilite-etude-fonctions.md (new file, this campaign).
+# r-variation is a fresh anti-memorisation twin (same skills — dérivabilité,
+# Rolle, TAF, point d'inflexion — with a different function, different
+# coefficient, and different roots: 0 and 2, not 0 and 1; status not-applicable).
+#
+# Note on scope: lesson.md's R4/R5 deliberately do NOT teach Rolle's theorem or
+# the théorème des accroissements finis (TAF) — see the lesson's own closing
+# validation note, item (3): "sans démonstration par les accroissements finis /
+# le théorème de Rolle — choix délibéré pour rester au niveau bac." Since the
+# sourced sujet uses both by name, each theorem is stated inline (hypotheses +
+# conclusion) the first time it is used, in `reasoning` — so the exercise is
+# self-teaching without requiring a lesson.md rewrite.
+
+notion: derivabilite-etude-fonctions
+
+exercises:
+  # ── r-bac — sourced EXCERPT of the 2019 SM N sujet (Ex.4, Partie I, Q2a+Q3) ─
+  - id: r-bac
+    title: "Exercice de type bac — dérivabilité, Rolle, accroissements finis, point d'inflexion (2019)"
+    sourcing:
+      status: sourced
+      required_for_done: true
+      note: >-
+        2019 session normale — extrait du problème d'analyse déjà vérifié
+        (docs/sujets/maths/fonction-exponentielle.md, Exercice 4, Partie I
+        Q2a+Q3, filière SM, code NS 24F).
+    intro: |-
+      **Étude d'une fonction avec $e^{-x}$ (examen national, session normale 2019, filière Sciences Mathématiques — Exercice 4, Partie I).**
+
+      On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = 4x\left(e^{-x} + \dfrac{1}{2}x - 1\right)$, et on note $(C)$ sa courbe représentative dans un repère orthonormé.
+
+      Cet extrait porte sur un enchaînement précis : montrer que $f$ est dérivable et calculer $f'$, puis utiliser le théorème de **Rolle** et le théorème des **accroissements finis** (deux outils énoncés ici au moment où on s'en sert, la leçon ne les ayant pas couverts) pour localiser un point d'inflexion de $(C)$ sans jamais calculer $x_0$ explicitement.
+    questions:
+      - id: q-2a
+        part: "Partie A — Dérivabilité de f et calcul de f'"
+        stem: |-
+          **(0,5 pt)** Montrer que $f$ est dérivable sur $\mathbb{R}$ et que, pour tout $x$ réel, $f'(x) = 4\left(e^{-x}-1\right)(1-x)$.
+        reasoning: |-
+          $f$ est une somme de produits de fonctions qu'on sait dérivables sur $\mathbb{R}$ tout entier : $x \mapsto x$, $x \mapsto e^{-x}$ (composée de $x \mapsto -x$ et de $\exp$), et les fonctions constantes. Une somme et un produit de fonctions dérivables restent dérivables — ce sont exactement les règles vues en R2-R3 de cette leçon, ici appliquées telles quelles : $f$ est donc dérivable sur $\mathbb{R}$, sans qu'il soit besoin de revenir à la définition par la limite du taux d'accroissement.
+
+          Pour calculer $f'$, on développe d'abord $f(x)$, puis on dérive terme à terme : le terme en $x \cdot e^{-x}$ demande la règle du produit (R2), les deux autres termes sont des dérivées usuelles. Le résultat brut ne ressemble pas encore à la forme factorisée demandée par l'énoncé — il faut ensuite factoriser en repérant le facteur commun $(1-x)$.
+        steps:
+          - math: 'f(x) = 4x\,e^{-x} + 2x^2 - 4x'
+            note: "On développe f pour pouvoir dériver terme à terme."
+          - math: '\left(4x\,e^{-x}\right)'' = 4e^{-x} + 4x\times(-e^{-x}) = 4e^{-x} - 4x\,e^{-x}'
+            note: "Règle du produit sur 4x fois e^(-x) : u=4x (u'=4), v=e^(-x) (v'=-e^(-x))."
+          - math: 'f''(x) = 4e^{-x} - 4x\,e^{-x} + 4x - 4'
+            note: "On ajoute la dérivée de 2x carré moins 4x, qui vaut 4x-4."
+          - math: 'f''(x) = 4e^{-x}(1-x) - 4(1-x)'
+            note: "On factorise : 4e^(-x) - 4x e^(-x) = 4e^(-x)(1-x), et 4x-4 = -4(1-x)."
+          - math: 'f''(x) = 4(1-x)\left(e^{-x}-1\right) = 4\left(e^{-x}-1\right)(1-x)'
+            note: "Un produit ne dépend pas de l'ordre des facteurs : c'est exactement la forme demandée par l'énoncé."
+
+      - id: q-3a
+        part: "Partie B — Rolle, les accroissements finis, et le point d'inflexion"
+        stem: |-
+          **(0,5 pt)** En appliquant le théorème de Rolle à la fonction $f'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,1[$ tel que $f''(x_0) = 0$.
+        reasoning: |-
+          Premier théorème nouveau : le théorème de **Rolle**. Il énonce que si une fonction $g$ est continue sur $[a,b]$, dérivable sur $]a,b[$, et si $g(a) = g(b)$, alors il existe (au moins) un réel $c \in\ ]a,b[$ tel que $g'(c) = 0$.
+
+          Ici, on applique ce théorème non pas à $f$ mais à $f'$ elle-même, qui joue le rôle de « $g$ » — sa dérivée est alors $f''$, et la conclusion du théorème porte donc sur $f''$, pas sur $f'$.
+
+          $f'$ est construite comme somme/produit de fonctions dérivables sur $\mathbb{R}$ (mêmes arguments qu'à la question précédente) : elle est donc continue sur $[0,1]$ et dérivable sur $]0,1[$ — les deux hypothèses de régularité sont acquises sans calcul supplémentaire. Reste à vérifier l'hypothèse-clé, $f'(0) = f'(1)$. On calcule les deux valeurs à partir de la forme factorisée obtenue à la question précédente — et il se trouve qu'elles s'annulent toutes les deux, mais chacune pour une raison différente : en $x=0$, c'est le facteur $(e^{-x}-1)$ qui s'annule ; en $x=1$, c'est le facteur $(1-x)$. Rolle s'applique donc à $f'$ sur $[0,1]$, et sa conclusion porte sur la dérivée de $f'$, c'est-à-dire $f''$.
+        steps:
+          - math: 'f''(0) = 4\left(e^{0}-1\right)(1-0) = 4\times 0\times 1 = 0'
+            note: "En x=0, c'est le facteur (e^(-x)-1) qui s'annule, car e^0=1."
+          - math: 'f''(1) = 4\left(e^{-1}-1\right)(1-1) = 4\left(e^{-1}-1\right)\times 0 = 0'
+            note: "En x=1, c'est le facteur (1-x) qui s'annule — pour une raison différente qu'en 0."
+          - math: 'f''(0) = f''(1) = 0'
+            note: "Hypothèse de Rolle vérifiée : f' est continue sur [0,1], dérivable sur ]0,1[, et prend la même valeur aux deux bornes."
+          - math: '\exists\ x_0 \in\ ]0,1[,\quad f''''(x_0) = 0'
+            note: "Conclusion du théorème de Rolle appliqué à f' : sa propre dérivée, f seconde, s'annule en un point intérieur de l'intervalle ]0,1[."
+
+      - id: q-3b
+        stem: |-
+          **(0,5 pt)** En appliquant le théorème des accroissements finis à la fonction $f''$, montrer que, pour tout réel $x$ différent de $x_0$ de l'intervalle $[0,1]$, on a $\dfrac{f''(x)}{x - x_0} > 0$.
+        reasoning: |-
+          Deuxième théorème nouveau : le **théorème des accroissements finis** (TAF). Il énonce que si une fonction $h$ est continue sur $[p,q]$ et dérivable sur $]p,q[$, alors il existe (au moins) un réel $c$ strictement entre $p$ et $q$ tel que $h(q) - h(p) = h'(c)\,(q-p)$ — la pente moyenne entre $p$ et $q$ est atteinte **exactement** par la dérivée en un point intermédiaire $c$. (Rolle est le cas particulier où $h(p)=h(q)$ : alors $h'(c)=0$, exactement la question précédente.)
+
+          Ici, on applique le TAF à $h = f''$ entre $x_0$ (fixé par la question précédente) et un $x$ quelconque de $[0,1]$, $x \neq x_0$. Comme $f''$ est elle-même dérivable sur $\mathbb{R}$ (encore une fois somme/produit de fonctions usuelles — sa dérivée est $f'''$), le TAF donne : il existe $c$ strictement entre $x$ et $x_0$ tel que $f''(x) - f''(x_0) = f'''(c)\,(x-x_0)$. Or $f''(x_0) = 0$ (question précédente) : l'égalité se simplifie en $f''(x) = f'''(c)\,(x-x_0)$, soit $\dfrac{f''(x)}{x-x_0} = f'''(c)$ (le quotient a un sens car $x \neq x_0$).
+
+          Il ne reste qu'à établir le signe de $f'''(c)$. On calcule $f'''$ à partir de $f''$ (question précédente), et on montre qu'elle est strictement positive sur tout $[0,1]$ — donc en particulier au point $c$, qui est lui-même dans $[0,1]$ puisqu'il est strictement compris entre $x$ et $x_0$, deux réels de $[0,1]$.
+        steps:
+          - math: 'f''''(x) = 4\left[1+(x-2)e^{-x}\right]'
+            note: "On dérive f' (question A) par la règle du produit : c'est le calcul de f seconde."
+          - math: 'f''''''(x) = 4\left[e^{-x} + (x-2)\times(-e^{-x})\right] = 4e^{-x}\left[1-(x-2)\right] = 4e^{-x}(3-x)'
+            note: "On dérive f seconde à son tour, encore par la règle du produit, pour obtenir f tierce."
+          - math: '\forall x\in[0,1],\quad 3-x \geq 2 > 0 \quad\text{et}\quad e^{-x}>0'
+            note: "Sur [0,1], le facteur (3-x) reste au moins égal à 2, et l'exponentielle est toujours strictement positive."
+          - math: '\Longrightarrow\ f''''''(x) > 0 \quad\text{pour tout } x\in[0,1]'
+            note: "f tierce est strictement positive sur tout l'intervalle [0,1]."
+          - math: '\exists\ c \text{ strictement entre } x \text{ et } x_0,\quad f''''(x) - f''''(x_0) = f''''''(c)\,(x-x_0)'
+            note: "Théorème des accroissements finis appliqué à f seconde entre x et x0, les deux dans [0,1]."
+          - math: 'f''''(x_0) = 0 \ \Longrightarrow\ \dfrac{f''''(x)}{x-x_0} = f''''''(c)'
+            note: "On simplifie grâce à f seconde de x0 = 0 (question précédente), puis on divise par x-x0, non nul car x différent de x0."
+          - math: 'c \in [0,1] \ \Longrightarrow\ f''''''(c) > 0 \ \Longrightarrow\ \dfrac{f''''(x)}{x-x_0} > 0'
+            note: "c est strictement entre x et x0, deux réels de [0,1], donc c y est aussi : le signe établi plus haut s'applique."
+
+      - id: q-3c
+        stem: |-
+          **(0,25 pt)** En déduire que $I\left(x_0, f(x_0)\right)$ est un point d'inflexion de la courbe $(C)$.
+        reasoning: |-
+          La question précédente a établi que, pour tout $x \neq x_0$ dans $[0,1]$, le quotient $\dfrac{f''(x)}{x-x_0}$ est strictement positif. Un quotient positif signifie que le numérateur et le dénominateur ont le même signe. Donc : si $x < x_0$ (donc $x-x_0 < 0$), alors $f''(x) < 0$ aussi ; si $x > x_0$ (donc $x-x_0>0$), alors $f''(x) > 0$ aussi.
+
+          Autrement dit, $f''$ est négative avant $x_0$ et positive après — elle change de signe exactement en $x_0$ (où elle s'annule, d'après la question A). Un changement de signe de $f''$ est précisément le critère du point d'inflexion (vu en R5 de cette leçon) : la concavité de la courbe $(C)$ bascule en ce point, de concave (avant $x_0$) à convexe (après $x_0$).
+
+          Reste la condition de domaine, vue en R5 comme le piège qui empêchait l'asymptote verticale de l'exemple $\frac{x^2-x+1}{x-1}$ d'être un point d'inflexion : il faut que $f$ soit réellement définie (et deux fois dérivable) en $x_0$. Ici, $f$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,1[ \subset \mathbb{R}$ : la condition est automatiquement acquise, sans qu'il y ait le moindre piège de ce type. Le point $I(x_0, f(x_0))$ est donc bien un point d'inflexion de $(C)$ — sans qu'on ait eu besoin de connaître $x_0$ explicitement.
+        steps:
+          - math: 'x < x_0 \ \Longrightarrow\ x - x_0 < 0 \ \Longrightarrow\ f''''(x) < 0'
+            note: "Un quotient positif impose que le numérateur et le dénominateur aient le même signe."
+          - math: 'x > x_0 \ \Longrightarrow\ x - x_0 > 0 \ \Longrightarrow\ f''''(x) > 0'
+            note: "Même raisonnement de l'autre côté de x0."
+          - math: 'f'''' \text{ change de signe en } x_0, \quad x_0 \in\ ]0,1[\ \subset\ \mathbb{R} = \text{dom}(f)'
+            note: "f est definie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu en R5."
+          - math: '\Longrightarrow\ I\left(x_0, f(x_0)\right) \text{ est un point d''inflexion de } (C)'
+            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critere pose en R5."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  - id: r-variation
+    title: "Variation fraîche — une autre fonction en e(-x), d'autres racines"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé par extrait).
+        Fonction reconstruite pour donner, par construction, exactement la
+        forme factorisée voulue pour g' (vérifiée à la main, deux fois).
+    intro: |-
+      Même mécanisme que le sujet précédent — dérivabilité, théorème de Rolle appliqué à la dérivée, théorème des accroissements finis appliqué à la dérivée seconde, conclusion sur un point d'inflexion — mais avec une fonction différente, un coefficient différent, et surtout des **racines différentes** ($0$ et $2$, pas $0$ et $1$). Impossible de recopier les nombres du sujet précédent : il faut refaire chaque étape du raisonnement, en particulier l'intervalle sur lequel Rolle s'applique.
+
+      On considère la fonction $g$ définie sur $\mathbb{R}$ par $g(x) = 2(x-1)e^{-x} + x^2 - 4x$, et on note $(\Gamma)$ sa courbe représentative.
+    questions:
+      - id: q-g1
+        part: "Partie A — Dérivabilité de g et calcul de g'"
+        stem: |-
+          Montrer que $g$ est dérivable sur $\mathbb{R}$ et que, pour tout $x$ réel, $g'(x) = 2\left(e^{-x}-1\right)(2-x)$.
+        reasoning: |-
+          Même argument que pour $f$ : $g$ est une somme d'un produit $2(x-1)\cdot e^{-x}$ (produit de deux fonctions dérivables sur $\mathbb{R}$) et d'un polynôme $x^2-4x$ — $g$ est donc dérivable sur $\mathbb{R}$ tout entier, sans détour par la définition en limite.
+
+          Pour le calcul, on dérive le produit $2(x-1)e^{-x}$ avec $u(x)=2(x-1)$ ($u'(x)=2$) et $v(x)=e^{-x}$ ($v'(x)=-e^{-x}$), on ajoute la dérivée du polynôme, puis on factorise — le facteur commun est cette fois $(2-x)$, pas $(1-x)$ : c'est exactement là qu'un élève qui aurait mémorisé le sujet précédent trébucherait s'il recopiait le mauvais facteur.
+        steps:
+          - math: 'g(x) = 2(x-1)e^{-x} + x^2 - 4x'
+            note: "Fonction donnee par l'enonce."
+          - math: '\left(2(x-1)e^{-x}\right)'' = 2e^{-x} + 2(x-1)\times(-e^{-x}) = e^{-x}\left[2-2(x-1)\right] = 2e^{-x}(2-x)'
+            note: "Regle du produit : u=2(x-1) (u'=2), v=e^(-x) (v'=-e^(-x)), puis on factorise par e^(-x)."
+          - math: 'g''(x) = 2e^{-x}(2-x) + 2x - 4'
+            note: "On ajoute la derivee de x carre moins 4x, qui vaut 2x-4."
+          - math: 'g''(x) = 2e^{-x}(2-x) - 2(2-x) = 2(2-x)\left(e^{-x}-1\right)'
+            note: "On factorise par (2-x) : 2x-4 = -2(2-x)."
+          - math: 'g''(x) = 2\left(e^{-x}-1\right)(2-x)'
+            note: "Forme demandee (l'ordre des facteurs d'un produit n'importe pas)."
+
+      - id: q-g2
+        part: "Partie B — Rolle, les accroissements finis, et le point d'inflexion"
+        stem: |-
+          En appliquant le théorème de Rolle à la fonction $g'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,2[$ tel que $g''(x_0) = 0$.
+        reasoning: |-
+          Même théorème que dans le sujet précédent (voir son énoncé complet là-bas) : il faut vérifier que $g'$ est continue sur $[0,2]$, dérivable sur $]0,2[$ — acquis, comme pour $f'$, par construction — puis que $g'(0) = g'(2)$.
+
+          Attention à l'intervalle : ce n'est plus $[0,1]$ mais $[0,2]$, parce que les racines de $g'$ ne sont plus $0$ et $1$ mais $0$ et $2$ — ce sont les valeurs qui annulent chacun des deux facteurs de la forme factorisée obtenue à la question précédente. On vérifie les deux valeurs séparément, comme pour $f'$.
+        steps:
+          - math: 'g''(0) = 2\left(e^{0}-1\right)(2-0) = 2\times 0\times 2 = 0'
+            note: "En x=0, c'est le facteur (e^(-x)-1) qui s'annule."
+          - math: 'g''(2) = 2\left(e^{-2}-1\right)(2-2) = 2\left(e^{-2}-1\right)\times 0 = 0'
+            note: "En x=2, c'est le facteur (2-x) qui s'annule."
+          - math: 'g''(0) = g''(2) = 0'
+            note: "Hypothese de Rolle verifiee sur [0,2] (et non [0,1] : les racines de g' sont 0 et 2)."
+          - math: '\exists\ x_0 \in\ ]0,2[,\quad g''''(x_0) = 0'
+            note: "Conclusion de Rolle applique a g' : sa derivee, g seconde, s'annule en un point interieur de ]0,2[."
+
+      - id: q-g3
+        stem: |-
+          En appliquant le théorème des accroissements finis à la fonction $g''$, montrer que, pour tout réel $x$ différent de $x_0$ de l'intervalle $[0,2]$, on a $\dfrac{g''(x)}{x - x_0} > 0$.
+        reasoning: |-
+          Même TAF que dans le sujet précédent, appliqué maintenant à $h=g''$ entre $x_0$ et un $x$ quelconque de $[0,2]$ : il donne un $c$ strictement entre $x$ et $x_0$ tel que $g''(x) - g''(x_0) = g'''(c)\,(x-x_0)$, qui se simplifie, grâce à $g''(x_0)=0$, en $\dfrac{g''(x)}{x-x_0} = g'''(c)$.
+
+          Il faut donc calculer $g'''$ et vérifier son signe — cette fois sur $[0,2]$, pas $[0,1]$. On dérive $g''$ à son tour, on factorise, et on vérifie que le facteur variable reste strictement positif sur ce nouvel intervalle, plus large que celui du sujet précédent.
+        steps:
+          - math: 'g''''(x) = 2\left[1+(x-3)e^{-x}\right]'
+            note: "On derive g' par la regle du produit : c'est le calcul de g seconde."
+          - math: 'g''''''(x) = 2\left[e^{-x} + (x-3)\times(-e^{-x})\right] = 2e^{-x}\left[1-(x-3)\right] = 2e^{-x}(4-x)'
+            note: "On derive g seconde a son tour pour obtenir g tierce."
+          - math: '\forall x\in[0,2],\quad 4-x \geq 2 > 0 \quad\text{et}\quad e^{-x}>0'
+            note: "Sur [0,2] (plus large que [0,1] du sujet precedent), le facteur (4-x) reste au moins egal a 2."
+          - math: '\Longrightarrow\ g''''''(x) > 0 \quad\text{pour tout } x\in[0,2]'
+            note: "g tierce est strictement positive sur tout l'intervalle [0,2]."
+          - math: '\exists\ c \text{ strictement entre } x \text{ et } x_0,\quad g''''(x) - g''''(x_0) = g''''''(c)\,(x-x_0)'
+            note: "Theoreme des accroissements finis applique a g seconde entre x et x0, les deux dans [0,2]."
+          - math: 'g''''(x_0) = 0 \ \Longrightarrow\ \dfrac{g''''(x)}{x-x_0} = g''''''(c)'
+            note: "On simplifie grace a g seconde de x0 = 0, puis on divise par x-x0, non nul."
+          - math: 'c \in [0,2] \ \Longrightarrow\ g''''''(c) > 0 \ \Longrightarrow\ \dfrac{g''''(x)}{x-x_0} > 0'
+            note: "c est strictement entre x et x0, deux reels de [0,2], donc c y est aussi."
+
+      - id: q-g4
+        stem: |-
+          En déduire que $J\left(x_0, g(x_0)\right)$ est un point d'inflexion de la courbe $(\Gamma)$.
+        reasoning: |-
+          Exactement le même argument que pour $f$ : le quotient $\dfrac{g''(x)}{x-x_0}$ strictement positif pour tout $x \neq x_0$ de $[0,2]$ impose que $g''(x)$ et $(x-x_0)$ aient le même signe — donc $g''$ négative avant $x_0$, positive après. $g''$ change bien de signe en $x_0$ : c'est le critère du point d'inflexion.
+
+          Et comme pour $f$, la condition de domaine ne pose aucun problème ici : $g$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,2[ \subset \mathbb{R}$. Le point $J(x_0, g(x_0))$ est donc un point d'inflexion de $(\Gamma)$.
+        steps:
+          - math: 'x < x_0 \ \Longrightarrow\ x - x_0 < 0 \ \Longrightarrow\ g''''(x) < 0'
+            note: "Meme raisonnement que pour f : un quotient positif impose le meme signe au numerateur et au denominateur."
+          - math: 'x > x_0 \ \Longrightarrow\ x - x_0 > 0 \ \Longrightarrow\ g''''(x) > 0'
+            note: "Meme raisonnement de l'autre cote de x0."
+          - math: 'g'''' \text{ change de signe en } x_0, \quad x_0 \in\ ]0,2[\ \subset\ \mathbb{R} = \text{dom}(g)'
+            note: "g est definie sur R tout entier : aucune restriction de domaine ici non plus."
+          - math: '\Longrightarrow\ J\left(x_0, g(x_0)\right) \text{ est un point d''inflexion de } (\Gamma)'
+            note: "Changement de signe de g seconde + domaine verifie = point d'inflexion."

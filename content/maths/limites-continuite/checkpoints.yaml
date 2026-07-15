@@ -1,0 +1,434 @@
+notion: limites-continuite
+skill_code: maths_limites_continuite
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, notion 2)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong model, not just the fact of being wrong. The
+# end-bank floor (items.yaml, coverage_summary) is NOT altered by these
+# checkpoints — clones are surfaced inline, not re-counted.
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict            (in R0)             — COMMIT gate: turns the
+#                                                   "prends position" prompt
+#                                                   into a real MCQ commit.
+#   cp-r1-lateral             (after R1)          — rupture gate: clone of
+#                                                   LIMCONT-1's shape, new
+#                                                   piecewise function.
+#   cp-r2-forme-indeterminee  (after R2)          — rupture gate: clone of
+#                                                   LIMCONT-2's shape, new
+#                                                   scenarios.
+#   cp-r3-factorisation       (after R3 techn. 1) — rupture gate: clone of
+#                                                   LIMCONT-3/4's shape.
+#   cp-r6-trig                (after R6)          — rupture gate: clone of
+#                                                   LIMCONT-23's shape (new
+#                                                   coefficient).
+#   cp-bac-produit-infini     (before r-bac)      — readiness gate for the
+#                                                   r-bac exercise's Q1:
+#                                                   product of an infinite
+#                                                   factor and a finite
+#                                                   nonzero factor is NOT a
+#                                                   forme indéterminée.
+#
+# EVERY distractor carries a `misconception:` key from this notion's
+# inventory (items.yaml) — value is a real id, or `null` when the wrong
+# answer is a pure arithmetic/technique slip with no stable conceptual
+# pattern (the key itself is still present, matching items.yaml's own
+# precedent for such cases). Option lengths are balanced so the correct
+# choice is never the conspicuously longest.
+#
+# Boundary guard: 2ème Bac SM/SExp limites et continuité — limite en un
+# point (latérales), limite à l'infini, opérations sur les limites, les
+# quatre formes indéterminées et leur levée (factorisation, conjugué, terme
+# dominant), continuité en un point/sur un intervalle, TVI et ses
+# corollaires, limites trigonométriques de référence. Aucune notion de
+# dérivée n'est requise ici (dérivabilité = notion voisine, hors périmètre).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0
+  #        Turns "prends position" into a real MCQ commit before the
+  #        table/reveal. Probes confond-point-et-voisinage (and, as a
+  #        distractor, forme-indeterminee-traitee-comme-valeur-litterale).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, hook_commit]
+    primary_misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Reprends la fonction $f(x)=\dfrac{x^2-1}{x-1}$ : on sait déjà que
+      $f(1)$ n'existe pas ($\frac{0}{0}$). **Avant de lire la suite,
+      engage-toi :** quand $x$ se rapproche de plus en plus de $1$, est-ce
+      que $f(x)$ se rapproche d'un nombre précis, ou pas ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle se rapproche d'un nombre précis, malgré le trou en x=1 : le fait que f(1) n'existe pas ne dit rien sur ce qui se passe tout PRÈS de 1."
+        correct: true
+        feedback: |
+          Exact — et c'est tout l'objet de cette leçon : construire les
+          outils pour trouver CE nombre précis (tu verras au R3 que c'est
+          $2$) sans avoir besoin d'un tableau de valeurs. Le trou au point
+          $x=1$ n'empêche absolument pas la fonction de se comporter
+          proprement tout autour.
+
+      - id: B
+        text: "Elle part n'importe où, de façon imprévisible, puisque f(1) n'existe pas : sans valeur au point, il ne peut rien y avoir de prévisible autour."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: |
+          Modèle détecté : confondre « $f(1)$ n'existe pas » (un fait sur le
+          point $x=1$ lui-même) avec « $f(x)$ ne se comporte pas de façon
+          prévisible près de $1$ » (une affirmation sur le voisinage de
+          $1$). Ce sont deux questions différentes. Une fonction peut très
+          bien avoir un trou en un point et se resserrer parfaitement vers
+          un nombre précis tout autour — c'est exactement ce qui arrive ici.
+
+      - id: C
+        text: "Elle se rapproche de 0, car $\\frac{0}{0}$ vaut 0."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: |
+          Modèle détecté : lire $\frac{0}{0}$ comme s'il désignait le nombre
+          $0$. Mais $\frac{0}{0}$ n'a pas de valeur numérique — ni $0$, ni
+          rien d'autre : c'est un signal qui dit « il faut retravailler
+          l'expression avant de conclure », pas une réponse déjà écrite.
+
+      - id: D
+        text: "Elle se rapproche de 1, car c'est la valeur dont x se rapproche."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: |
+          Modèle détecté : recopier la valeur cible de $x$ (ici, $1$) comme
+          si c'était aussi la valeur cible de $f(x)$. Ce sont deux
+          grandeurs différentes — la colonne des $x$ et la colonne des
+          $f(x)$ n'ont aucune raison de converger vers le même nombre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-lateral | placed AFTER R1
+  #        Rupture gate: clone of LIMCONT-1's shape (piecewise function,
+  #        compare both one-sided limits), new function and point.
+  #        Probes limite-laterale-non-verifiee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-lateral
+    rung: "R1"
+    habilete: utilisation
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, limites-laterales]
+    primary_misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+    item_source: clone_of_LIMCONT-1
+    lesson_placement: after_R1
+
+    stem: |
+      Soit $f$ définie par $f(x) = 2x+3$ si $x < 0$ et $f(x) = x^2+1$ si
+      $x \geq 0$. Que peut-on dire de $\lim_{x \to 0} f(x)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La limite n'existe pas, car les limites à gauche et à droite sont différentes (3 ≠ 1)."
+        correct: true
+        feedback: |
+          Exact : $\lim_{x\to0^-}(2x+3)=3$ et $\lim_{x\to0^+}(x^2+1)=1$.
+          Comme $3\neq1$, la limite en $0$ n'existe pas — même si $f(0)=1$
+          est parfaitement défini par ailleurs.
+
+      - id: B
+        text: "$\\lim_{x\\to 0} f(x) = 1$, car $f(0)=1$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: |
+          Tu confonds la valeur $f(0)$ (l'image du point) avec la limite en
+          ce point. L'existence d'une limite se vérifie en étudiant le
+          comportement de $f$ des deux côtés de $0$ — pas en relisant
+          simplement la formule qui définit $f(0)$.
+
+      - id: C
+        text: "$\\lim_{x\\to 0} f(x) = 3$, car on approche par la gauche seulement."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: |
+          Tu n'as calculé que la limite à gauche ($2(0)+3=3$) et tu l'as
+          prise pour LA limite. Il faut vérifier aussi la limite à droite —
+          ici elle vaut $1$, donc différente, et la conclusion change
+          complètement.
+
+      - id: D
+        text: "$\\lim_{x\\to 0} f(x) = 2$, en faisant la moyenne arithmétique des deux limites latérales obtenues précédemment (3 et 1)."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: |
+          Il n'existe aucune règle qui autorise à « faire la moyenne » de
+          deux limites latérales différentes. Quand elles diffèrent, la
+          conclusion est simplement que la limite n'existe pas — il n'y a
+          pas de valeur de compromis à calculer.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-forme-indeterminee | placed AFTER R2
+  #        Rupture gate: clone of LIMCONT-2's shape (classify which of
+  #        four scenarios is genuinely a forme indéterminée).
+  #        Probes sur-generalise-forme-indeterminee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-forme-indeterminee
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, forme-indeterminee]
+    primary_misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+    item_source: clone_of_LIMCONT-2
+    lesson_placement: after_R2
+
+    stem: |
+      Parmi les quatre situations suivantes (avec $x \to +\infty$), laquelle
+      correspond à une **forme indéterminée** ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\lim f=+\\infty$ et $\\lim g=+\\infty$ ; on calcule $\\lim(f-g)$."
+        correct: true
+        feedback: |
+          Exact : soustraire deux quantités qui partent toutes deux vers
+          $+\infty$ est précisément le cas $+\infty-\infty$, l'une des
+          quatre formes indéterminées. Il faudrait retravailler
+          l'expression (R3) pour trancher.
+
+      - id: B
+        text: "$\\lim f=-2$ et $\\lim g=+\\infty$ ; on calcule $\\lim(f+g)$, en pensant qu'un infini rend toute situation indéterminée."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: |
+          Ce n'est pas une forme indéterminée : « nombre fini plus l'infini »
+          donne toujours l'infini ($-2+\infty=+\infty$). Le simple fait
+          qu'un $\infty$ apparaisse dans le calcul ne rend pas
+          automatiquement la situation indéterminée.
+
+      - id: C
+        text: "$\\lim f=0$ et $\\lim g=7$ ; on calcule $\\lim(f \\times g)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: |
+          Ce n'est pas une forme indéterminée : $g$ tend vers un nombre fini
+          non nul ($7$), pas vers l'infini. $0 \times 7 = 0$ directement. La
+          forme indéterminée $0\times\infty$ exige que l'AUTRE facteur
+          tende vraiment vers l'infini, pas vers un nombre fini.
+
+      - id: D
+        text: "$\\lim f=3$ et $\\lim g=0^{+}$ ; on calcule $\\lim(f/g)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: |
+          Ce n'est pas la forme indéterminée $\frac{0}{0}$ : le numérateur
+          tend vers $3$, pas vers $0$. C'est le cas « nombre non nul divisé
+          par $0$ », qui donne un résultat infini déterminé (ici
+          $+\infty$), pas une forme indéterminée.
+
+    correct_feedback: |
+      Oui : additionner... soustraire $+\infty$ et $+\infty$ met en jeu deux
+      infinis qui s'opposent dans la soustraction, et c'est précisément le
+      cas où la règle générale ne suffit pas — il faut retravailler
+      l'expression (R3) avant de conclure.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-factorisation | placed AFTER R3 Technique 1
+  #        Rupture gate: clone of LIMCONT-3/4's shape (0/0 lu
+  #        littéralement, factorisation).
+  #        Probes forme-indeterminee-traitee-comme-valeur-litterale.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-factorisation
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, factorisation]
+    primary_misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    item_source: clone_of_LIMCONT-3
+    lesson_placement: after_R3_technique1
+
+    stem: |
+      Calculer $\lim_{x \to 2} \dfrac{x^2 - 4}{x - 2}$.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$4$"
+        correct: true
+        feedback: |
+          Bien vu : $x^2-4=(x-2)(x+2)$, on simplifie par $(x-2)$ car
+          $x \neq 2$ pendant le calcul de la limite, il reste $x+2$, et
+          $\lim_{x\to 2}(x+2)=4$.
+
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: |
+          Tu as sans doute lu la forme $\frac{0}{0}$ obtenue en remplaçant
+          $x$ par $2$ directement, et conclu « $0$ » par réflexe. Une forme
+          $\frac{0}{0}$ n'est pas égale à $0$ — c'est un signal qu'il faut
+          factoriser avant de conclure quoi que ce soit.
+
+      - id: C
+        text: "La limite n'existe pas, car on divise par $0$ en $x=2$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: |
+          Tu confonds « la fonction n'est pas définie en $2$ » (vrai) avec
+          « la limite n'existe pas quand $x$ s'approche de $2$ » (faux
+          ici). Justement, factoriser permet de voir ce qui se passe tout
+          PRÈS de $2$, sans jamais évaluer EN $2$.
+
+      - id: D
+        text: "$2$"
+        correct: false
+        misconception: null
+        feedback: |
+          Erreur de factorisation : $x^2-4=(x-2)(x+2)$, pas $(x-2)\times x$.
+          En simplifiant par $(x-2)$, il reste $x+2$ — pas $x$ seul — et
+          c'est $x+2$ qu'il faut évaluer en $2$, ce qui donne $4$, pas $2$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r6-trig | placed AFTER R6
+  #        Rupture gate: clone of LIMCONT-23's shape (coefficient à
+  #        absorber dans le formulaire trigonométrique), new coefficient.
+  #        Probes trig-coefficient-argument-non-ajuste.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-trig
+    rung: "R6"
+    habilete: utilisation
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, limites-trigonometriques]
+    primary_misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    item_source: clone_of_LIMCONT-23
+    lesson_placement: after_R6
+
+    stem: |
+      Calculer $\lim_{x \to 0} \dfrac{\sin(5x)}{x}$.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+        feedback: |
+          Exact : en écrivant $\frac{\sin(5x)}{x}=5\times\frac{\sin(5x)}{5x}$,
+          et comme $5x\to 0$ quand $x\to 0$, le formulaire donne
+          $\frac{\sin(5x)}{5x}\to 1$, d'où une limite égale à $5\times1=5$.
+
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: |
+          Tu as repéré le motif « $\sin$(quelque chose) divisé par quelque
+          chose » et répondu directement $1$, sans vérifier que c'est le
+          MÊME « quelque chose » en haut et en bas. Ici le numérateur est
+          $\sin(5x)$ mais le dénominateur est $x$, pas $5x$ : il faut
+          d'abord écrire $\frac{\sin(5x)}{x}=5\times\frac{\sin(5x)}{5x}$
+          avant d'appliquer le formulaire.
+
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: |
+          Tu as lu la forme $\frac{0}{0}$ obtenue par substitution directe
+          comme « $0$ ». Cette forme n'a pas de valeur littérale : il faut
+          passer par le formulaire de référence (après avoir ajusté
+          l'argument), pas par une lecture directe de « 0/0 ».
+
+      - id: D
+        text: "$25$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: |
+          Le facteur à sortir devant $\frac{\sin(5x)}{5x}$ est $5$ (celui
+          qui manque au dénominateur pour retrouver EXACTEMENT l'argument
+          du sinus), pas $5^2$. On ne multiplie qu'une seule fois par ce
+          facteur.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-bac-produit-infini | placed BEFORE [[exercise:r-bac]]
+  #        Readiness gate for r-bac's Q1: a product of an infinite factor
+  #        and a finite NONZERO factor is not a forme indéterminée.
+  #        Probes sur-generalise-forme-indeterminee (+ parité/signe as
+  #        a distractor).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-produit-infini
+    rung: "R-bac"
+    habilete: raisonnement
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, forme-indeterminee, bac_style]
+    primary_misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Dans le sujet qui suit, $f(x) = x\left(e^{x/2}-1\right)^2$. Quand
+      $x \to -\infty$ : $e^{x/2} \to 0$, donc $\left(e^{x/2}-1\right)^2 \to
+      1$ (fini, non nul). Que vaut $\lim_{x\to-\infty} x\left(e^{x/2}-1\right)^2$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$-\\infty$ : produit d'un facteur qui tend vers $-\\infty$ (x) par un facteur qui tend vers 1 (fini non nul) — ce n'est pas une forme indéterminée."
+        correct: true
+        feedback: |
+          Exact. « Infini fois fini non nul » n'est jamais indéterminé : le
+          tableau du produit (R2) tranche directement, et le signe du
+          résultat suit celui de $x$ puisque le facteur fini ($1$) est
+          positif.
+
+      - id: B
+        text: "C'est une forme indéterminée $-\\infty \\times 1$, on ne peut rien conclure tant que l'expression n'a pas été retravaillée comme pour un cas 0/0 ou ∞-∞."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: |
+          Ce n'est pas une forme indéterminée : les quatre seules formes
+          indéterminées sont $+\infty-\infty$, $0\times\infty$,
+          $\frac{0}{0}$ et $\frac{\infty}{\infty}$. Ici le second facteur
+          tend vers $1$, un nombre fini **non nul** — le tableau du produit
+          (R2) donne directement le résultat, sans retravailler quoi que ce
+          soit.
+
+      - id: C
+        text: "$+\\infty$, car un produit de deux limites est toujours positif."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: |
+          Un produit de limites n'est pas « toujours positif » : son signe
+          dépend des signes des deux facteurs. Ici $x\to-\infty$ (négatif)
+          multiplié par un facteur qui tend vers $1$ (positif) donne un
+          résultat négatif, $-\infty$ — il faut suivre le signe, pas le
+          supposer positif par défaut.
+
+      - id: D
+        text: "$0$, car $\\left(e^{x/2}-1\\right)^2$ se rapproche d'une quantité proche de 0."
+        correct: false
+        misconception: null
+        feedback: |
+          C'est une erreur de lecture de la limite du facteur : quand
+          $x\to-\infty$, $e^{x/2}\to 0$, donc $\left(e^{x/2}-1\right)^2 \to
+          (0-1)^2 = 1$ — pas $0$. Le facteur tend vers $1$, un nombre fini
+          non nul, comme rappelé dans l'énoncé de la question.

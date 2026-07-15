@@ -10,6 +10,8 @@ Une question simple : **quelle est la vitesse de la bille exactement à $t=2$ se
 
 Avant de lire la suite, prends position : d'après toi, a-t-on le droit de parler d'une vitesse "à un instant précis", ou est-ce qu'une vitesse n'a de sens que "sur une durée" ?
 
+[[checkpoint:cp-r0-predict]]
+
 Ce qu'on sait calculer facilement, c'est une **vitesse moyenne** entre deux instants. Entre $t=2$ et $t=2+h$ (pour un petit $h>0$), la bille parcourt $d(2+h)-d(2)$ mètres en $h$ secondes, donc sa vitesse moyenne sur cet intervalle est $\dfrac{d(2+h)-d(2)}{h}$.
 
 Voici ce que donne ce calcul pour des valeurs de $h$ de plus en plus petites, c'est-à-dire pour des intervalles de plus en plus courts autour de $t=2$ :
@@ -305,6 +307,8 @@ Ce sont exactement les valeurs $f(-1)=2$ et $f(1)=-2$ que le chapitre précéden
 
 [[figure:tableau-variations-courbe]]
 
+[[checkpoint:cp-r4-extremum]]
+
 ---
 
 ## R5 — Concavité, dérivée seconde, point d'inflexion — et l'étude complète d'une fonction
@@ -378,47 +382,27 @@ $$f'(x) = \frac{x(x-2)}{(x-1)^2}$$
 
 [[figure:etude-fonction-rationnelle]]
 
+[[checkpoint:cp-r5-inflexion]]
+
 ---
 
-## R6 — Pour t'entraîner
+### Exercice de type bac
 
-Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — c'est un exercice d'entraînement construit pour cette leçon), qui reprend toute la méthode du R5 sur une fonction polynôme.
+Le sujet ci-dessous est un **extrait** d'un problème d'analyse déjà vérifié (examen national, session normale 2019, filière Sciences Mathématiques) : cette notion n'a pas d'exercice dédié au bac, elle apparaît toujours en filigrane dans un problème plus large — voici la portion qui te concerne directement, dérivabilité, Rolle, accroissements finis et point d'inflexion.
 
-### Exercice travaillé
+Un piège à trancher avant de te lancer — ce que le théorème de Rolle exige exactement quand on l'applique à $f'$ plutôt qu'à $f$ :
 
-Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x) = x^3-3x^2+4$.
+[[checkpoint:cp-bac-rolle]]
 
-**1.** Étudier les variations de $f$ et donner ses extremums locaux.
-**2.** Étudier la concavité de $f$ et donner les coordonnées de son point d'inflexion.
-**3.** Donner l'équation de la tangente à la courbe de $f$ en son point d'inflexion.
+[[exercise:r-bac]]
 
-**Raisonnement à voix haute.**
+### Une variation pour ne pas mémoriser
 
-**1. Variations.**
+Même enchaînement — dérivabilité, Rolle, accroissements finis, point d'inflexion — mais une autre fonction, un autre coefficient, et surtout d'autres racines : impossible de recopier les nombres du sujet précédent. Un dernier réflexe sur ce que le théorème des accroissements finis donne réellement, avant de te lancer :
 
-$$f'(x) = 3x^2-6x = 3x(x-2)$$
+[[checkpoint:cp-bac-taf]]
 
-Racines $0$ et $2$, trinôme de coefficient dominant positif : $f'(x)>0$ sur $]-\infty,0[$, $f'(x)<0$ sur $]0,2[$, $f'(x)>0$ sur $]2,+\infty[$. Donc $f$ croît sur $]-\infty,0]$, décroît sur $[0,2]$, croît sur $[2,+\infty[$.
-
-$f'$ change de signe en $0$ (de $+$ à $-$) et en $2$ (de $-$ à $+$) : $f(0)=4$ est un **maximum local**, $f(2) = 8-12+4=0$ est un **minimum local**.
-
-**2. Concavité.**
-
-$$f''(x) = 6x-6 = 6(x-1)$$
-
-$f''(x)<0$ sur $]-\infty,1[$ (concave), $f''(x)>0$ sur $]1,+\infty[$ (convexe). $f''$ change de signe en $x=1$, qui appartient bien au domaine $\mathbb{R}$ de $f$ : c'est un **point d'inflexion**, de coordonnées $\big(1, f(1)\big)$ avec $f(1) = 1-3+4=2$, soit $(1,2)$.
-
-**3. Tangente au point d'inflexion.** Il faut $f'(1)$ :
-
-$$f'(1) = 3(1)-6(1) = 3-6=-3$$
-
-$$T_1 : \quad y = -3(x-1)+2 = -3x+3+2 = -3x+5$$
-
-### À toi de jouer
-
-**(a)** Soit $g(x) = 2x^3-6x+1$, définie sur $\mathbb{R}$. Étudier le signe de $g'$, en déduire les variations de $g$, puis donner ses extremums locaux.
-
-**(b)** Soit $h(x) = \sqrt{x+3}$, définie sur $[-3,+\infty[$. Calculer $h'(x)$, puis donner l'équation de la tangente à la courbe de $h$ au point d'abscisse $1$.
+[[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts pour la relecture
      pédagogique, non résolus par cet auteur :
