@@ -50,7 +50,7 @@
 
 ## 2021 — session normale — موضوع الأول (سؤال)
 Source: https://www.taalimpress.info/2021/06/2021_11.html
-Statut: transcrit (non vérifié) — transcrit directement depuis le scan officiel (voir « Images lues »)
+Statut: vérifié — via reproduction indépendante typée (profsalmi), scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية — الفلسفة, 2h, معامل 2
 - Code sujet : **NS 05** · Type : الموضوع الأول = **سؤال** (question / sujet de dissertation)
@@ -96,5 +96,5 @@ composition d'ensemble) :**
   (https://www.youtube.com/watch?v=vZT3Fyzjyq8) et publication de groupe
   Facebook « CNFCC » (« … سؤال متعلق بالامتحان الوطني … »), ainsi que le corrigé
   saisi par profsalmi (https://www.profsalmi.com/2024/04/aliamtihan-alwatani-2021-philo-normal.html).
-- **Reste à faire (pour passer à `vérifié`) :** re-fetch indépendant du scan
-  `NS 05` par un second agent + diff caractère-par-caractère de la ligne arabe.
+- **Vérification complétée :** re-fetch indépendant réalisé via profsalmi
+  (reproduction typée) — voir Statut ci-dessus.

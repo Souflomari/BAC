@@ -10,7 +10,7 @@
 
 ## 2025 — session normale — Sujet 3 (نص)
 Source: https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية والأصيلة — الفلسفة, 2 h, coef 2
 - Notion (مفهوم) : الحقيقة — mappe `content/philo/la-verite`

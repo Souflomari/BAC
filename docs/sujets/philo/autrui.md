@@ -16,7 +16,7 @@
 
 ## 2024 — session normale — Sujet 2 (قولة)
 Source: https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية والأصيلة — الفلسفة, 2 h, coef 2
 - Notion (مفهوم) : الغير — axe « معرفة الغير » — mappe `content/philo/autrui`

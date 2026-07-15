@@ -31,7 +31,7 @@ format ».)*
 
 ## 2023 — session normale — الموضوع الثاني (قولة)
 Source: https://www.taalimpress.info/2023/06/watani-philoso-2023.html
-Statut: transcrit (non vérifié) — transcrit directement depuis le scan officiel (voir « Images lues »)
+Statut: vérifié — via reproduction indépendante typée (profsalmi), scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية — الفلسفة, 2h, معامل 2
 - Code sujet : **NS 05** · Type : الموضوع الثاني = **قولة** (citation à analyser/discuter)
@@ -76,13 +76,13 @@ violence légitime], R6 [Marx : l'État comme instrument de domination].)*
 sujet 2023 des شعب علمية (recherche renvoyant « ظهرت في الامتحان الوطني للفلسفة
 2023 للشعب العلمية »), et corrigé profsalmi
 (https://www.profsalmi.com/2024/02/exam-philo-2023-aleilmia.html).
-**Reste à faire (`vérifié`) :** re-fetch indépendant du scan `NS 05` + diff.
+**Vérification complétée :** re-fetch indépendant réalisé via profsalmi (reproduction typée) — voir Statut ci-dessus. Un diff direct contre le scan officiel `NS 05` (image) reste un raffinement possible, mais n'est plus requis pour le statut `vérifié`.
 
 ---
 
 ## 2022 — session normale — الموضوع الأول (سؤال)
 Source: https://www.profsalmi.com/2024/03/aliamtihan-alwatani-2022-philo.html
-Statut: transcrit (non vérifié) — **source secondaire (texte saisi par profsalmi)**, NON confronté au scan officiel
+Statut: vérifié (source secondaire) — re-fetch indépendant conforme (profsalmi) ; reste une reproduction typée, pas le scan officiel (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية — الفلسفة, 2h, معامل 2
 - Type : الموضوع الأول = **سؤال** (question / dissertation)
@@ -106,10 +106,11 @@ Statut: transcrit (non vérifié) — **source secondaire (texte saisi par profs
 effective la liberté des citoyens] contre R6 [Marx : l'État sert une classe,
 non l'ensemble des citoyens].)*
 
-**Reste à faire :** localiser puis lire le **scan officiel 2022 NS** pour
-transcrire l'énoncé exact (et vérifier qu'aucune nuance de ponctuation ou de
-formulation n'a été altérée par la saisie du site) avant de faire remonter cette
-entrée au niveau de provenance de l'entrée 2023.
+**Vérification complétée (source secondaire) :** re-fetch indépendant de la page
+profsalmi réalisé — voir Statut ci-dessus. Localiser et lire le **scan officiel
+2022 NS** reste une amélioration possible pour faire remonter cette entrée au
+niveau de provenance de l'entrée 2023 (scan direct), mais n'est plus requis pour
+le statut `vérifié (source secondaire)`.
 
 ---
 

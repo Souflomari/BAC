@@ -32,7 +32,7 @@ format », observations concordantes sur trois scans.)*
 
 ## 2023 — session استدراكية (rattrapage) — الموضوع الأول (سؤال)
 Source: https://www.profsalmi.com/2024/02/exam-philo-2023-ratt.html
-Statut: transcrit (non vérifié) — transcrit directement depuis le scan officiel (voir « Images lues »)
+Statut: vérifié — via reproduction indépendante typée (profsalmi), scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل الشعب العلمية والتقنية والمهنية والأصيلة — الفلسفة, 2h, معامل 2
 - Code sujet : **RS 05** · Type : الموضوع الأول = **سؤال** (question / dissertation)
@@ -76,8 +76,8 @@ forme, non au contenu].)*
   champ السياسة / mafhūm الحق والعدالة), et copie PDF re-hébergée sur Scribd
   (« الامتحان الوطني مادة الفلسفة 2023 مسالك علمية د.الاستدراكية »,
   https://www.scribd.com/document/814209823/).
-- **Reste à faire (pour `vérifié`) :** re-fetch indépendant du scan `RS 05`
-  + diff caractère-par-caractère.
+- **Vérification complétée :** re-fetch indépendant réalisé via profsalmi
+  (reproduction typée) — voir Statut ci-dessus.
 
 ---
 

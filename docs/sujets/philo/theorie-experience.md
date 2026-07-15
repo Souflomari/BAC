@@ -14,7 +14,7 @@
 
 ## 2025 — session normale — Sujet 1 (سؤال)
 Source: https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية والأصيلة — الفلسفة, 2 h, coef 2
 - Notion (مفهوم) : النظرية والتجربة — mappe `content/philo/theorie-experience`
@@ -41,7 +41,7 @@ Statut: transcrit (non vérifié)
 
 ## 2024 — session normale — Sujet 3 (نص)
 Source: https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html
-Statut: transcrit (non vérifié)
+Statut: corrigé (conforme à la source après correction) — consigne rectifiée : « حلّل وناقش » était une abréviation infidèle de « حلّل (ي) النص وناقشه (يه) » (agent-vérificateur, 2026-07-15).
 
 - Filière / épreuve : كل مسالك الشعب العلمية والتقنية والمهنية والأصيلة — الفلسفة, 2 h, coef 2
 - Notion (مفهوم) : النظرية والتجربة — mappe `content/philo/theorie-experience`
@@ -68,7 +68,7 @@ Statut: transcrit (non vérifié)
 > هناك دائما إمكانية لوجود عدد من الأنساق النظرية المتناقضة فيما بينها، لكننا نختار
 > من بينها تلك التي يتوفر فيها شرطا اليُسر والانسجام.
 >
-> المطلوب : حلّل وناقش.
+> المطلوب : حلّل (ي) النص وناقشه (يه).
 
 **Traduction de travail (français) — non vérifiée au même titre que l'arabe :**
 
@@ -96,7 +96,7 @@ Statut: transcrit (non vérifié)
 > contradictoires entre eux ; mais nous choisissons parmi eux celui qui satisfait
 > aux deux conditions de commodité et de cohérence.
 >
-> Consigne : analyse et discute.
+> Consigne : analyse le texte et discute-le.
 
 > Lien avec la leçon : ce texte défend une position **conventionnaliste /
 > cohérentiste** (le critère n'est pas l'expérience mais la cohérence interne ;

@@ -14,7 +14,7 @@
 
 ## 2022 — session normale — Sujet (قولة)
 Source: https://www.profsalmi.com/2024/07/Exam-nat-alwade3-albachari.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15) : source citée (compilation profsalmi) re-fetchée et recoupée par la page de l'examen 2022 (où cette قولة est le الموضوع الثاني) ; القولة « لا شيء يدعونا إلى احترام الشخص وتقديره سوى سلطته وثروته المادية » + المطلوب + session (عادية 2022) conformes mot à mot. Sources = reproductions typées (profsalmi), pas le scan officiel.
 
 - Filière / épreuve : filières scientifiques (شعب علمية) — الفلسفة, 2 h, coef 2
 - Notion (مفهوم) : الشخص — axe « الشخص بوصفه قيمة » — mappe `content/philo/la-personne`
@@ -45,7 +45,7 @@ Statut: transcrit (non vérifié)
 
 ## 2015 — session normale — Sujet (قولة)
 Source: https://www.profsalmi.com/2024/07/Exam-nat-alwade3-albachari.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15) : source citée (compilation profsalmi) re-fetchée ; القولة « عندما أرفض أن أُعامَل بوصفي شيئا، فإنني أؤكد ذاتي باعتباري شخصا » + المطلوب (« مصدر قيمة الشخص ») + session (عادية 2015) conformes mot à mot. Source = reproduction typée (profsalmi), pas le scan officiel.
 
 - Filière / épreuve : filières scientifiques (شعب علمية) — الفلسفة, 2 h, coef 2
 - Notion (مفهوم) : الشخص — axe « الشخص بوصفه قيمة » — mappe `content/philo/la-personne`

@@ -21,7 +21,7 @@
 Source: https://www.alloschool.com/element/146054 (page sujet AlloSchool)
 Scan lu : https://www.alloschool.com/assets/documents/course-109/upload-87685/0001-big.jpg
 Provenance secondaire (rendu texte) : https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — via reproduction indépendante typée (profsalmi), scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : الفلسفة — كل مسلك الشعب العلمية والتقنية والمهنية والأصيلة — 2 h, coef 2
 - Code sujet : **NS 05** · Page du scan : 1 (sur 1)
@@ -60,14 +60,14 @@ arabe :**
 ## 2024 — session de rattrapage (الدورة الاستدراكية) — Moujaz III (نص)
 Source: https://www.alloschool.com/element/146036 (page sujet AlloSchool)
 Scan lu : https://www.alloschool.com/assets/documents/course-109/upload-87667/0001-big.jpg
-Statut: transcrit (non vérifié)
+Statut: vérifié — via reproduction indépendante typée (profsalmi), scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur, 2026-07-15)
 
-> **Note de provenance à confirmer :** la page AlloSchool `element/146036` a été
-> atteinte via un index tiers qui l'étiquetait « 2025 استدراكية ». **L'en-tête du
-> scan lu dit clairement `الدورة الاستدراكية 2024` (code RS 05)** — et, par règle
-> de campagne, *l'en-tête du scan fait foi*. L'entrée est donc datée **2024 R**.
-> Le vérificateur devra reconfirmer le couple (element → scan) et lever cette
-> divergence d'étiquetage.
+> **Note de provenance — RÉSOLU :** la page AlloSchool `element/146036` avait été
+> initialement atteinte via un index tiers qui l'étiquetait « 2025 استدراكية ». Le
+> re-fetch indépendant confirme que le titre de la page AlloSchool et la page
+> profsalmi s'accordent tous deux avec l'en-tête du scan officiel
+> (`الدورة الاستدراكية 2024`, code RS 05) : il s'agit définitivement de la session
+> **2024 rattrapage**, ce n'est plus une ambiguïté (agent-vérificateur, 2026-07-15).
 
 - Filière / épreuve : الفلسفة — كل مسالك الشعب العلمية والتقنية والمهنية والأصيلة — 2 h, coef 2
 - Code sujet : **RS 05** · Page du scan : 1 (sur 1)

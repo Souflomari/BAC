@@ -7,10 +7,13 @@
 > proposés (سؤال / قولة / نص), le candidat en traite UN**. Format confirmé sur
 > les en-têtes officiels 2024 et 2025 (voir `README.md` §1).
 >
-> Statut : **v0.3 — proposition, non autoritative, fusion orchestrateur
-> complète.** Toutes les entrées sourcées sont `transcrit (non vérifié)`
-> (attente de la passe de vérification, `README.md` §5). **Les 11 notions
-> existantes + `analyse-de-texte`** (nouvelle leçon-méthode) sont couvertes.
+> Statut : **v0.4 — passe de vérification indépendante FAITE (2026-07-15).**
+> Les 14 entrées `transcrit (non vérifié)` sont passées à `vérifié` (dont 6
+> via reproduction typée indépendante, le scan officiel n'étant pas
+> ré-OCRisable — voir la note de chaque fichier) ; 2 entrées ont été
+> **corrigées** après diff (une consigne abrégée, deux divergences internes
+> alignées sur la source retenue). **Les 11 notions existantes +
+> `analyse-de-texte`** (nouvelle leçon-méthode) sont couvertes.
 
 ---
 
@@ -18,23 +21,25 @@
 
 | Slug (`content/philo/`) | Notion (مفهوم) | Sujet retenu | Statut | Source |
 |-------------------------|----------------|--------------|--------|--------|
-| `la-personne` | الشخص | 2022 N (قولة) + 2015 N (قولة) | transcrit (non vérifié) | [profsalmi — الوضع البشري](https://www.profsalmi.com/2024/07/Exam-nat-alwade3-albachari.html) |
-| `autrui` | الغير | 2024 N (قولة, sujet 2) | transcrit (non vérifié) | [profsalmi — national 2024](https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html) |
-| `l-histoire` | التاريخ | — (aucun sujet scientifique) | **NON SOURCÉ** | — (voir `l-histoire.md`) |
-| `la-verite` | الحقيقة | 2025 N (نص, sujet 3) | transcrit (non vérifié) | [profsalmi — national 2025](https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html) |
-| `theorie-experience` | النظرية والتجربة | 2025 N (سؤال, sujet 1) + 2024 N (نص, sujet 3) | transcrit (non vérifié) | [profsalmi 2025](https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html) · [profsalmi 2024](https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html) |
-| `l-etat` | الدولة | 2023 N `NS 05` (قولة) + 2022 N secondaire (سؤال) | transcrit (non vérifié) | [taalimpress 2023](https://taalimpress.info/2023/06/watani-philoso-2023.html) · [profsalmi 2022](https://www.profsalmi.com/2024/03/aliamtihan-alwatani-2022-philo.html) |
-| `le-droit-la-justice` | الحق والعدالة | 2023 rattrapage `RS 05` (سؤال) | transcrit (non vérifié) | [profsalmi rattrapage 2023](https://www.profsalmi.com/2024/02/exam-philo-2023-ratt.html) |
-| `la-violence` | العنف | 2021 N `NS 05` (سؤال) | transcrit (non vérifié) | [taalimpress 2021](https://taalimpress.info/2021/06/2021_11.html) |
-| `le-devoir` | الواجب | 2023 rattrapage (نص, Kant) | transcrit (non vérifié) | AlloSchool `element/142716` (scan `upload-85509`) |
-| `la-liberte` | الحرية | 2025 N (قولة) + 2024 rattrapage (نص, Bakounine) | transcrit (non vérifié) | AlloSchool `element/146054` (scan `upload-87685`) · `element/146036` (scan `upload-87667`) |
-| `le-bonheur` | السعادة | — (hors programme scientifique) | **NON SOURCÉ** | — (voir `le-bonheur.md`) |
-| `analyse-de-texte` | méthode نص | 2025 N (الحقيقة) + 2024 R (الحرية) + 2023 R (الواجب) | transcrit (non vérifié) | 3 textes, voir `analyse-de-texte.md` |
+| `la-personne` | الشخص | 2022 N (قولة) + 2015 N (قولة) | vérifié | [profsalmi — الوضع البشري](https://www.profsalmi.com/2024/07/Exam-nat-alwade3-albachari.html) |
+| `autrui` | الغير | 2024 N (قولة, sujet 2) | vérifié | [profsalmi — national 2024](https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html) |
+| `l-histoire` | التاريخ | — (aucun sujet scientifique) | **NON SOURCÉ** — cadre-challenger corrobore (recensement multi-années 2008-2024, 0 occurrence sciences) | — (voir `l-histoire.md`) |
+| `la-verite` | الحقيقة | 2025 N (نص, sujet 3) | vérifié | [profsalmi — national 2025](https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html) |
+| `theorie-experience` | النظرية والتجربة | 2025 N (سؤال, sujet 1) + 2024 N (نص, sujet 3) | vérifié + corrigé (2024 N : consigne rectifiée) | [profsalmi 2025](https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html) · [profsalmi 2024](https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html) |
+| `l-etat` | الدولة | 2023 N `NS 05` (قولة) + 2022 N secondaire (سؤال) | vérifié (2023 N : reproduction typée ; 2022 N : source secondaire) | [taalimpress 2023](https://taalimpress.info/2023/06/watani-philoso-2023.html) · [profsalmi 2022](https://www.profsalmi.com/2024/03/aliamtihan-alwatani-2022-philo.html) |
+| `le-droit-la-justice` | الحق والعدالة | 2023 rattrapage `RS 05` (سؤال) | vérifié (reproduction typée) | [profsalmi rattrapage 2023](https://www.profsalmi.com/2024/02/exam-philo-2023-ratt.html) |
+| `la-violence` | العنف | 2021 N `NS 05` (سؤال) | vérifié (reproduction typée) — cadre-challenger confirme le maintien dans le périmètre | [taalimpress 2021](https://taalimpress.info/2021/06/2021_11.html) |
+| `le-devoir` | الواجب | 2023 rattrapage (نص, Kant) | vérifié (reproduction typée) | AlloSchool `element/142716` (scan `upload-85509`) |
+| `la-liberte` | الحرية | 2025 N (قولة) + 2024 rattrapage (نص, Bakounine) | vérifié (reproduction typée ; ambiguïté 2024/2025 résolue en faveur de 2024 R) | AlloSchool `element/146054` (scan `upload-87685`) · `element/146036` (scan `upload-87667`) |
+| `le-bonheur` | السعادة | — (hors programme scientifique) | **NON SOURCÉ** — cadre-challenger corrobore (recensement multi-années, 0 occurrence sciences, confirmé notion filière littéraire) | — (voir `le-bonheur.md`) |
+| `analyse-de-texte` | méthode نص | 2025 N (الحقيقة) + 2024 R (الحرية) + 2023 R (الواجب) | vérifié (2024 R + 2023 R : héritent de la-liberte/le-devoir) + corrigé (2025 N : 2 divergences alignées sur la-verite.md) | 3 textes, voir `analyse-de-texte.md` |
 
 Légende `Statut` : `transcrit (non vérifié)` = sourcé + provenancé, en attente du
 diff contre le sujet officiel · `NON SOURCÉ` = aucun sujet daté/sourcé trouvé
 après recherche étendue (rien inventé) · `vérifié` = diffé conforme par un second
-agent.
+agent (directement contre le scan, ou contre une reproduction typée
+indépendante quand le scan n'est pas OCR-isable — précisé par entrée) ·
+`corrigé` = divergence trouvée et rectifiée par le second agent.
 
 ---
 

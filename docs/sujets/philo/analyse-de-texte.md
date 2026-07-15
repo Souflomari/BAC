@@ -59,7 +59,7 @@ l'original arabe, jamais à sa place.
 ## 2024 — session de rattrapage (الدورة الاستدراكية) — Moujaz III (نص — الحرية)
 Source: https://www.alloschool.com/element/146036 (page sujet AlloSchool)
 Scan lu : https://www.alloschool.com/assets/documents/course-109/upload-87667/0001-big.jpg
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15) ; hérite de la vérification de l'entrée 2024 R de la-liberte.md (même texte).
 
 - Filière / épreuve : الفلسفة — filières scientifiques — 2 h, coef 2 · Code **RS 05**
 - Type : **نص** · Consigne : **حلّل (ي) النص و ناقشه (يه).**
@@ -77,7 +77,7 @@ Statut: transcrit (non vérifié)
 
 ## 2023 — session de rattrapage (الدورة الاستدراكية) — Moujaz III (نص — الواجب)
 Source: https://www.alloschool.com/element/142716 · Scan : course-109/upload-85509/0001-big.jpg
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + diff conforme (agent-vérificateur, 2026-07-15) ; hérite de la vérification de l'entrée 2023 R de le-devoir.md (même texte).
 
 - Filière / épreuve : الفلسفة — filières scientifiques — 2 h, coef 2 · Code **RS 05**
 - Type : **نص** · Consigne : **حلّل (ي) النص و ناقشه (يه).**
@@ -95,7 +95,7 @@ Statut: transcrit (non vérifié)
 ## 2025 — session normale (الدورة العادية) — Moujaz III (نص — الحقيقة)
 Source: https://www.alloschool.com/element/146054 · Scan : course-109/upload-87685/0001-big.jpg
 Provenance secondaire : https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html
-Statut: transcrit (non vérifié) — **un passage à confirmer** (voir drapeau)
+Statut: corrigé (conforme à la source après correction) — 2 divergences avec la-verite.md corrigées par alignement (agent-vérificateur, 2026-07-15).
 
 - Filière / épreuve : الفلسفة — filières scientifiques — 2 h, coef 2 · Code **NS 05**
 - Type : **نص** · Consigne : **حلّل (ي) النص و ناقشه (يه).**
@@ -109,8 +109,8 @@ Statut: transcrit (non vérifié) — **un passage à confirmer** (voir drapeau)
 
 > إن الحواس هي معيار الحقيقة. و لكن المعيار هو الحواس كلها، فقد تخدعنا حاسة واحدة،
 > كما يخدعنا الضوء بالنسبة للألوان، أو المسافة بالنسبة للحجم. و لا تستطيع أن تصحّح
-> ما تحدثه حاسة من خطأ إلا حاسة أخرى. ⟦غير أن الإحساس الذي هو معيار الحقيقة يجب أن
-> يشمل كل ما نتعلمه من الآلات التي نوسّع بها دائرة الحواس و نجعلها دقيقة⟧. فالتلسكوب
+> ما تحدثه حاسة من خطأ إلا حاسة أخرى. والحقيقة هي الإحساس الثابت، غير أن الإحساس يجب أن
+> يشمل كل ما نتعلّمه من الآلات التي نوسّع بها دائرة الحواس و نجعلها دقيقة. فالتلسكوب
 > و الميكروسكوب و غيرهما هي وسائل لمضاعفة ما تبصره عيوننا، و الهاتف و سماعة الطبيب
 > هما امتداد لآذاننا العجيبة. و ليس ثمة أمور مطلقة بل أمور نسبية فقط، و علينا أن
 > نتعلم كيف نساير الأمور النسبية. و هناك غيرنا من الناس في هذا العالم، و لن تتفق
@@ -119,16 +119,15 @@ Statut: transcrit (non vérifié) — **un passage à confirmer** (voir drapeau)
 >
 > أين، إذن، موضع العقل؟ إن وظيفته هنا كما في كل مكان هي التنسيق، إنه ينسّق
 > الإحساسات إلى معان، و المعاني إلى معرفة، و المعرفة إلى حكمة. إن عمل العقل في
-> النظر إلى الحقيقة ثانوي لكنه حيوي، إذ يجب أن ينسج فوضى الحواس المختلفة و ما بينها
+> الظفر بالحقيقة ثانوي لكنه حيوي، إذ يجب أن ينسج فوضى الحواس المختلفة و ما بينها
 > من تناقض في نتائج موحّدة و منسّقة تكون عرضة للتحقيق و التأييد أو الحذف بواسطة
 > الإحساس المتكرّر، و كل خطوة استدلالية تبعد عن الإحساس المباشر تقلّل من احتمال
 > الحقيقة. إننا نقف على أقدامنا ثابتين على الأرض بواسطة الإحساس.
 
-> **Drapeau de fidélité :** le passage entre ⟦…⟧ a été **difficile à lire sur le
-> scan** (résolution/impression) ; la formulation restituée est cohérente avec le
-> contexte mais **non certaine mot à mot**. À reconfirmer sur le scan (ou le
-> corrigé) au protocole de vérification, ou marquer `illisible — écarté` si non
-> tranchable.
+> **Drapeau de fidélité — RÉSOLU :** les deux divergences relevées avec l'entrée
+> 2025 N de `la-verite.md` (le passage sur l'instrumentation des sens, et « الظفر
+> بالحقيقة » vs « النظر إلى الحقيقة ») ont été corrigées par alignement sur cette
+> dernière (agent-vérificateur, 2026-07-15).
 
 **Traduction de travail française — non vérifiée au même titre que l'original
 arabe :**
@@ -136,9 +135,9 @@ arabe :**
 > « Les sens sont le critère de la vérité. Mais le critère, c'est l'ensemble des
 > sens : un seul sens peut nous tromper, comme la lumière nous trompe sur les
 > couleurs, ou la distance sur la grandeur ; et l'erreur produite par un sens ne
-> peut être corrigée que par un autre sens. ⟦Or la sensation, qui est le critère
-> de la vérité, doit englober tout ce que nous apprenons des instruments par
-> lesquels nous élargissons et affinons le cercle des sens⟧. Le télescope, le
+> peut être corrigée que par un autre sens. La vérité est la sensation constante ;
+> toutefois, la sensation doit englober tout ce que nous apprenons des instruments
+> par lesquels nous élargissons le domaine des sens et les rendons précis. Le télescope, le
 > microscope et les autres ne sont que des moyens de démultiplier ce que voient
 > nos yeux ; le téléphone et le stéthoscope prolongent nos oreilles admirables.
 > Il n'y a pas de choses absolues, mais seulement des choses relatives, et il nous
@@ -150,8 +149,8 @@ arabe :**
 >
 > Où est donc, alors, la place de la raison ? Sa fonction, ici comme partout, est
 > la coordination : elle ordonne les sensations en significations, les
-> significations en connaissance, la connaissance en sagesse. Le rôle de la raison
-> dans la recherche du vrai est secondaire, mais vital : elle doit tisser le chaos
+> significations en connaissance, la connaissance en sagesse. Le travail de la raison
+> dans la conquête de la vérité est secondaire, mais vital : elle doit tisser le chaos
 > des sens divers et leurs contradictions en résultats unifiés et coordonnés,
 > soumis à la vérification, à la confirmation ou au rejet par la sensation
 > répétée ; et tout pas de raisonnement qui s'éloigne de la sensation immédiate

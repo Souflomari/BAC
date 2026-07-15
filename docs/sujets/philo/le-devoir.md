@@ -25,7 +25,7 @@
 Source: https://www.alloschool.com/element/142716 (page sujet AlloSchool)
 Scan lu : https://www.alloschool.com/assets/documents/course-109/upload-85509/0001-big.jpg
 Provenance secondaire (rendu texte + éléments de réponse) : https://www.profsalmi.com/2024/02/exam-philo-2023-ratt.html
-Statut: transcrit (non vérifié)
+Statut: vérifié — via reproduction indépendante typée (profsalmi), scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur, 2026-07-15)
 
 - Filière / épreuve : الفلسفة — كل الشعب العلمية والتقنية والمهنية والأصيلة — 2 h, coef 2
 - Code sujet : **RS 05** · Page du scan : 1 (sur 1)
