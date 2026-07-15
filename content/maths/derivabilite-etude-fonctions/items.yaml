@@ -158,7 +158,7 @@ items:
           l'existence de $f(2)$, mais le fait que la pente calculée à gauche
           et à droite de $2$ ne coïncide pas.
       - id: D
-        text: "$f$ est dérivable en $2$ avec $f'(2)=0$, car $2$ est un minimum de $f$."
+        text: "$f$ est dérivable en $2$ avec $f'(2)=0$, car $2$ est un minimum de $f$, ce qui garantirait forcément une tangente bien définie en ce point précis."
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
         feedback: >
@@ -296,7 +296,7 @@ items:
           traversant $0$, donc il n'y a pas d'extremum. Il faut toujours
           vérifier le changement de signe de $f'$, pas juste son annulation.
       - id: C
-        text: "Oui, c'est un minimum local, car $f'(x) \\geq 0$ signifie que $f$ « s'arrête de descendre » en $0$."
+        text: "Oui, c'est un minimum local, car $f'(x) \\geq 0$ signifie que $f$ « s'arrête de descendre » en $0$, avant de repartir vers le haut juste après ce point-là."
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
         feedback: >
@@ -922,7 +922,7 @@ items:
         text: "La courbe de $f$ est concave sur $]-\\infty,2[$ : elle se situe en dessous de chacune de ses tangentes."
         correct: true
       - id: D
-        text: "$f$ admet un point d'inflexion en tout point de $]-\\infty,2[$, puisque $f''$ y est non nulle."
+        text: "$f$ admet un point d'inflexion en tout point de $]-\\infty,2[$, puisque $f''$ y est non nulle sur la totalité de cet intervalle."
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus
         feedback: >
@@ -957,7 +957,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, car le changement de signe de $h''$ autour de $0$ suffit à lui seul, peu importe si $h$ y est définie ou non."
+        text: "Oui, car le changement de signe de $h''$ autour de $0$ suffit toujours à lui seul, peu importe si $h$ y est réellement définie ou non à cet endroit précis du domaine complet."
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine
         feedback: >
