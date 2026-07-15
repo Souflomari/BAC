@@ -26,6 +26,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Il suffit de croire la version portée par le plus de témoins, ou par les témoins qui semblent les plus sûrs d'eux. »
 - « Sans preuve extérieure — une vidéo, un enregistrement —, on ne peut jamais vraiment savoir ce qui s'est dit : chacun a, au fond, sa propre vérité, et personne n'a plus raison qu'un autre. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux.
 
 Le nombre de témoins sûrs d'eux, ou la force de leur assurance, ne garantit rien : des groupes entiers de témoins parfaitement sincères se sont déjà trompés ensemble, en reconstruisant sans le vouloir un souvenir commun à partir de suggestions échangées entre eux après coup. Compter les têtes, ou mesurer le degré de conviction, ne dit encore rien sur ce qui s'est réellement passé.
@@ -64,6 +66,8 @@ Ce que ce découpage permet de voir, précisément, dans la situation de R0 : il
 
 > **Erreur à éviter :** ne confonds jamais opinion et vérité, comme si la sincérité ou la force d'une conviction suffisait à garantir qu'un énoncé est vrai. Ne confonds pas non plus vérité et réel : le réel n'est ni vrai ni faux en lui-même (une pierre n'est ni vraie ni fausse) — c'est un énoncé à propos du réel qui peut l'être.
 
+[[checkpoint:cp-r1-rupture]]
+
 ---
 
 ## R2 — La théorie de la correspondance : le vrai comme adéquation (Aristote)
@@ -95,6 +99,8 @@ Une difficulté surgit dès qu'on cherche à appliquer ce critère concrètement
 **Pousse ce raisonnement jusqu'au bout, avec l'exemple de R0.** Imagine qu'il existe, par chance, une vidéo de la soirée. Tu pourrais croire qu'elle donne enfin un accès direct au réel, hors de toute pensée. Mais il faut encore regarder cette vidéo, entendre ce qu'elle enregistre, interpréter une image parfois floue ou un son parfois confus — et cette interprétation est, elle aussi, une pensée, une perception, potentiellement faillible (un bruit de fond peut faire croire qu'on entend un mot qui n'a jamais été prononcé). Même la preuve la plus « objective » en apparence doit être lue par un esprit : on ne sort jamais complètement de la pensée pour vérifier, de l'extérieur, l'adéquation de la pensée au réel.
 
 > **Erreur à éviter :** ne confonds jamais la théorie de la correspondance avec l'idée qu'il suffirait de « s'en remettre aux faits », comme si les faits parlaient d'eux-mêmes sans jamais requérir d'interprétation. La correspondance reste, malgré cette limite, une réponse cohérente à la question de ce qui **fait** qu'un énoncé est vrai (l'adéquation elle-même) ; ce que la limite montre, c'est seulement la difficulté pratique à vérifier cette adéquation avec une certitude absolue — une difficulté que la théorie suivante va tenter de contourner autrement.
+
+[[checkpoint:cp-r2-rupture]]
 
 ---
 
@@ -148,6 +154,8 @@ Renoncer au modèle géocentrique (R3) n'a pas consisté à accumuler plus d'obs
 
 > **Erreur à éviter :** ne confonds jamais un obstacle épistémologique (interne, logé dans une habitude de pensée ou une évidence trop vite acceptée) avec un obstacle purement matériel ou pratique (un manque de données, un instrument insuffisant, un manque de temps) : ce dernier peut se résorber en accumulant plus de moyens ; l'obstacle épistémologique, lui, exige une rupture active avec une manière de penser, pas seulement plus de données dans le même sens.
 
+[[checkpoint:cp-r4-rupture]]
+
 ---
 
 ## R5 — Descartes : le doute méthodique et le cogito
@@ -186,6 +194,8 @@ Appliquer le doute cartésien à la dispute entre Sarah et Karim, ce serait, d'a
 
 > **Erreur à éviter :** ne confonds jamais le doute méthodique de Descartes avec un scepticisme qui conclurait qu'on ne peut jamais rien savoir : le doute cartésien est un outil, provisoire, au service d'une certitude à trouver, pas une conclusion négative définitive. Et ne fais pas du cogito une preuve qui s'étendrait automatiquement à tout ce que je pense ou crois : il garantit seulement que j'existe en tant qu'être pensant, pas que le contenu particulier de telle ou telle de mes pensées soit vrai.
 
+[[checkpoint:cp-r5-rupture]]
+
 ---
 
 ## R6 — Certitude et vérité : deux choses qu'il ne faut jamais confondre
@@ -207,6 +217,8 @@ Descartes a trouvé, avec le cogito, un point précis où la certitude subjectiv
 Sarah est absolument certaine — elle donne des détails précis, elle est sincère, rien dans son comportement ne trahit le mensonge. Mais cette certitude, aussi totale soit-elle, ne garantit rien quant à la vérité de son souvenir : des témoins parfaitement sincères et sûrs d'eux se sont déjà trompés, ensemble, dans l'histoire (des témoignages oculaires concordants, entièrement de bonne foi, ont conduit à des erreurs judiciaires aujourd'hui bien documentées). C'est exactement l'erreur que commettrait quiconque déciderait « qui a raison » en se fiant seulement au degré d'assurance de chacun, plutôt qu'en cherchant ce qui correspond effectivement à ce qui s'est passé.
 
 > **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne dis jamais qu'un énoncé est vrai parce que quelqu'un en est certain, ni qu'un énoncé est faux simplement parce qu'on en doute. Certitude et vérité appartiennent à deux plans distincts — l'un psychologique et subjectif, l'autre logique (ou factuel) et objectif — et le cogito de Descartes (R5) n'est justement remarquable que parce qu'il constitue l'exception qui fait coïncider les deux, pas la règle générale.
+
+[[checkpoint:cp-r6-rupture]]
 
 ---
 
@@ -235,6 +247,8 @@ Si la certitude ne garantit jamais la vérité, une question se pose avec une ac
 Même l'enquête sur la soirée de R0 pourrait, en un sens, être menée de cette manière : formuler l'hypothèse « Karim a dit cette phrase à cet instant » comme une hypothèse falsifiable, et chercher activement ce qui pourrait la **réfuter** — un enregistrement, un témoin neutre, non impliqué dans le groupe d'amis de l'un ou de l'autre — plutôt que de ne chercher que ce qui la confirme, et accepter de la réviser si un fait vient effectivement la contredire, plutôt que de la maintenir coûte que coûte comme le ferait un système à la Ptolémée.
 
 > **Erreur à éviter :** ne confonds jamais « non-encore-réfutée » avec « à moitié fausse » ou « douteuse » : une théorie qui a résisté aux tests les plus sévères qu'on ait pu lui faire subir est dite **corroborée**, et cette solidité est bien réelle — simplement, elle n'équivaut jamais à une preuve absolue et définitive. Et ne confonds pas non plus la falsifiabilité avec le fait d'être souvent réfutée : une bonne théorie scientifique est falsifiable **en principe** (elle pourrait, hypothétiquement, être mise en défaut par une observation), ce qui n'implique évidemment pas qu'elle le sera.
+
+[[checkpoint:cp-r7-rupture]]
 
 ---
 
@@ -277,6 +291,8 @@ Et ce dernier rung ajouterait ceci : quelle que soit la difficulté à trancher,
 Sept regards, une même dispute — mais aucun ne réduit la question « qu'est-ce qui est vraiment arrivé samedi soir ? » à une réponse simple, ni ne dispense de continuer à la chercher.
 
 > **Erreur à éviter :** ne confonds jamais le fallibilisme — l'idée qu'aucune connaissance n'est jamais absolument et définitivement certaine (Popper, R7) — avec le relativisme — l'idée que toutes les opinions se valent et qu'aucune vérité ne mérite d'être recherchée. Accepter qu'une certitude parfaite soit hors de portée dans presque tous les cas n'implique pas que la version de Sarah et celle de Karim se valent également : l'une correspond aux faits, l'autre non, même si l'établir avec certitude reste difficile — et c'est cette différence, précisément, que le mensonge et la propagande comptent sur ta lassitude pour te faire oublier.
+
+[[checkpoint:cp-r8-rupture]]
 
 ---
 
@@ -328,14 +344,23 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer la thèse cartésienne — il la fait *fonctionner* sur l'escalade précise du doute (sens, rêve, malin génie), comme la leçon l'a fait. Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — cette coïncidence parfaite entre certitude et vérité, obtenue ici sur un seul point très particulier, se retrouve-t-elle ailleurs, ou est-elle au contraire une exception qu'il ne faut surtout pas généraliser ?
 
-#### À toi de continuer
+### Exercice de type bac — les sens, critère de la vérité ?
 
-Rédige maintenant, à ton tour :
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il ne t'emmène sur aucun axe nouveau : c'est le terrain
+déjà connu de R2 (correspondance), R4 (Bachelard), R5 (Descartes) et R7-R8
+(fallibilisme, relativisme) — à toi de mobiliser ce que tu sais déjà pour
+l'affronter sous un habillage différent, un texte à analyser plutôt qu'un
+sujet construit pour l'exercice.
 
-1. Un paragraphe de la partie II (l'antithèse), en t'appuyant SOIT sur la distinction certitude/vérité (R6), SOIT sur le fallibilisme popperien (R7) — pas les deux à la fois dans un seul paragraphe.
-2. Un paragraphe de la partie III (le dépassement), en croisant le fallibilisme de Popper (R7) et la rupture bachelardienne (R4), pour montrer en quoi renoncer à la certitude absolue ne dispense jamais de l'exigence de chercher le vrai (R8).
+[[exercise:r-bac]]
 
-Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
+### Une variation pour ne pas mémoriser
 
-- *La vérité est-elle affaire de découverte, ou de construction ?*
-- *Le doute est-il l'ennemi de la vérité ?*
+Ce second sujet est construit pour cette leçon — pas un sujet d'examen
+authentique, contrairement au précédent. Il revient sur le même terrain,
+sous un habillage complètement différent (une affirmation sur le nombre,
+pas un texte sur les sens) : reconnaître que la même argumentation
+s'applique quand l'habillage change est tout le but de cette variation.
+
+[[exercise:r-variation]]
