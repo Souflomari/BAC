@@ -1,0 +1,474 @@
+# Attempt-first exercises (summit-conversion campaign). Rendered by
+# AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md: the
+# student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the full
+# philosophical argument in prose — thèse identification, argument analysis,
+# position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (documented per the task's judgment
+# call, and per the recipe addendum's decision rule): docs/sujets/philo/
+# theorie-experience.md carries TWO verified entries for this notion —
+# 2025 session normale, Sujet 1 (سؤال, "بمَ تكتسب النظرية طابعها العلمي؟" —
+# statut vérifié) and 2024 session normale, Sujet 3 (نص, un texte
+# conventionnaliste/cohérentiste niant l'expérience cruciale — statut
+# corrigé, une abréviation de consigne infidèle ayant été rectifiée le
+# 2026-07-15 ; le corps du texte lui-même avait déjà été diffé conforme).
+#
+# r-bac uses the نص (2024 N): it is the richer, more novel text — it opens
+# an axis (un critère de cohérence interne, indépendant de l'expérience, et
+# la négation de « l'expérience cruciale ») that this lesson's R0-R7 body
+# never teaches directly, unlike Bernard's méthode expérimentale (R3) or
+# Popper's falsifiabilité (R4), which both make experience the arbiter. Its
+# `reasoning` fields bridge explicitly back to R2 (Hume), R3 (Bernard), R4
+# (Popper) and R6 (clôture) rather than silently assuming the student
+# already knows conventionalism/coherentism — exactly the recipe's
+# instruction for routing the richer/more novel text to r-bac. A dedicated
+# checkpoint (cp-bac-coherentisme, in checkpoints.yaml) primes the
+# misconception this axis opens (mc.philo.theorie_experience.critere-
+# scientifique-reduit-a-falsifiabilite) immediately before the exercise.
+#
+# r-variation reuses the سؤال (2025 N) rather than fabricating a
+# not-applicable twin: this notion's philo house precedent
+# (content/philo/la-liberte/exercises.yaml, content/philo/analyse-de-texte/
+# exercises.yaml, both r-variation) already established that fabricating a
+# philosophical text risks bad philosophy and breaks the no-fabrication
+# norm, and a second real sourced text is available here too. The سؤال maps
+# directly onto R2 (critique de l'induction), R3 (méthode expérimentale) and
+# R4 (falsifiabilité) — the very rungs the lesson's own R7 training sujet
+# ("Une théorie scientifique peut-elle être prouvée par l'expérience ?")
+# already drills with the same dissertation method (analyse des termes →
+# problématique → plan dialectique) — no new axis to introduce, which is
+# why it was kept for r-variation rather than r-bac. Both exercises
+# therefore carry `status: sourced`.
+
+notion: theorie-experience
+
+exercises:
+  # ── r-bac — VERIFIED 2024 session normale sujet (نص) ──────────────────────
+  # Faithful transcription of docs/sujets/philo/theorie-experience.md →
+  # "2024 — session normale — Sujet 3 (نص)". Real bac text, not built for
+  # this lesson. Its axis — un critère de cohérence interne, la négation de
+  # l'expérience cruciale — is NOT taught directly by R0-R7 (which cover
+  # empirisme/rationalisme, Hume, Claude Bernard, Popper, Kant, fallibilisme/
+  # relativisme); the reasoning below bridges deliberately back to R2, R3,
+  # R4 and R6 rather than inventing new authors wholesale.
+  - id: r-bac
+    title: "Exercice de type bac — un critère sans expérience cruciale (نص, 2024 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — texte transcrit intégralement dans
+        docs/sujets/philo/theorie-experience.md (entrée « 2024 — session
+        normale — Sujet 3 (نص) »), statut « corrigé » : une abréviation de
+        consigne infidèle (« حلّل وناقش ») a été rectifiée en « حلّل (ي)
+        النص وناقشه (يه) » le 2026-07-15 par l'agent-vérificateur ; le corps
+        du texte arabe lui-même avait déjà été diffé conforme contre la
+        source (profsalmi.com/2024/06/exam-national-falsafa-2bac.html) lors
+        d'un passage antérieur. Auteur non indiqué dans la source consultée ;
+        la thèse est proche du conventionnalisme/cohérentisme associé dans
+        la tradition à des auteurs comme Duhem, SANS que l'attribution de ce
+        texte précis à un auteur nommé soit confirmée sur un scan officiel —
+        à ne pas affirmer comme un fait établi en copie.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2024 (session normale) —
+      troisième sujet (un texte à analyser et discuter) :**
+
+      > حلّل (ي) النص وناقشه (يه).
+      >
+      > *(« Analyse le texte et discute-le. »)*
+
+      **Texte arabe (original) :**
+
+      > إن القوانين والنظريات قواعد عمل ليس معيار صدقها هو التجربة، بل إن المعيار هو
+      > الانسجام بين مكوّناتها. ويترتب عن ذلك أن « التجربة الحاسمة » لا توجد في العلم، أي
+      > أنه يستحيل العثور على تجربة تدحض دحضا تاما فرضية من الفرضيات أو تؤكدها تأكيدا
+      > قاطعا. إننا لا نجد فرضية صحيحة صحة مطلقة، بل نجد فرضيات نصحّحها باستمرار كي تتلاءم
+      > مع مطلبي البساطة والانسجام، فليست التجربة وحدها هي التي تؤدي إلى تطوير نظرياتنا بل
+      > نجاعة هذه النظريات نفسها؛ لهذا، فإن الاستقراء بمفهومه التقليدي غير موجود. إن
+      > اختياراتنا لا تصدر، أساسا، عن معطيات تجريبية، بل عن اعتبارات تتعلق بالتماسك
+      > والملاءمة. وبناءً عليه، تكون النظريات الفيزيائية، مثلا، مبنيّة وليست معطاة؛ ويتم
+      > إثبات الفرضيات أو نفيها انطلاقا من فرضيات أخرى اعتمادا على اعتبارات اليُسر
+      > والبساطة وليس بإملاء من اعتبارات تجريبية. وهكذا، فإن تحقيق الفرضية لا يسير من
+      > الفرضية إلى التجربة ومن التجربة إلى الفرضية، بل يسير في اتجاه دائري من الفرضية
+      > المعنية بالبحث إلى فرضيات أو تركيبات أخرى من النوع نفسه. وحيث إن الفرضيات يحقق
+      > بعضها بعضا تأكيدا أو تكذيبا في استقلال عن التجربة وعن الوقائع الأولى الخام، فإن
+      > هناك دائما إمكانية لوجود عدد من الأنساق النظرية المتناقضة فيما بينها، لكننا نختار
+      > من بينها تلك التي يتوفر فيها شرطا اليُسر والانسجام.
+      >
+      > المطلوب : حلّل (ي) النص وناقشه (يه).
+
+      **Traduction de travail française :**
+
+      > Les lois et les théories sont des règles d'action dont le critère de vérité
+      > n'est pas l'expérience, mais bien la cohérence entre leurs composantes. Il en
+      > résulte que « l'expérience cruciale » n'existe pas en science, c'est-à-dire
+      > qu'il est impossible de trouver une expérience qui réfute totalement une
+      > hypothèse ou la confirme de façon décisive. Nous ne trouvons jamais une
+      > hypothèse vraie d'une vérité absolue ; nous trouvons plutôt des hypothèses que
+      > nous corrigeons sans cesse pour les accorder aux deux exigences de simplicité et
+      > de cohérence. Ce n'est donc pas l'expérience seule qui conduit au développement
+      > de nos théories, mais l'efficacité de ces théories elles-mêmes ; c'est pourquoi
+      > l'induction, en son sens traditionnel, n'existe pas. Nos choix ne procèdent pas,
+      > fondamentalement, de données expérimentales, mais de considérations relatives à
+      > la cohérence et à la convenance. En conséquence, les théories physiques, par
+      > exemple, sont construites et non données ; les hypothèses sont établies ou
+      > infirmées à partir d'autres hypothèses, en s'appuyant sur des considérations de
+      > commodité et de simplicité, et non sous la dictée de considérations
+      > expérimentales. Ainsi, la vérification d'une hypothèse ne va pas de l'hypothèse
+      > à l'expérience et de l'expérience à l'hypothèse, mais suit une direction
+      > circulaire, de l'hypothèse en question vers d'autres hypothèses ou compositions
+      > du même type. Et puisque les hypothèses se vérifient les unes les autres —
+      > confirmation ou infirmation — indépendamment de l'expérience et des faits
+      > premiers bruts, il y a toujours la possibilité de plusieurs systèmes théoriques
+      > contradictoires entre eux ; mais nous choisissons parmi eux celui qui satisfait
+      > aux deux conditions de commodité et de cohérence.
+      >
+      > Consigne : analyse le texte et discute-le.
+
+      Ce texte porte sur un axe que R0-R7 n'ont pas encore nommé
+      frontalement : un critère du caractère scientifique d'une théorie qui
+      n'est NI l'expérience de Bernard (R3) NI la falsifiabilité de Popper
+      (R4), mais la cohérence interne entre les composantes d'un système.
+      Il te demande de mobiliser ce que tu sais déjà — la critique humienne
+      de l'induction (R2), la méthode expérimentale (R3), la falsifiabilité
+      (R4) — et de les confronter à une thèse qui va plus loin qu'aucune des
+      trois.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse"
+        stem: |-
+          Le texte affirme un rapport précis entre la vérité d'une théorie et
+          l'expérience. Formule sa position en une phrase : c'est
+          l'expérience qui juge une théorie, ou autre chose ? Appuie-toi sur
+          le texte, pas sur ce que R3 et R4 t'ont déjà appris.
+        reasoning: |-
+          Le texte est explicite dès sa première phrase : « les lois et les
+          théories sont des règles d'action dont le critère de vérité n'est
+          pas l'expérience, mais bien la cohérence entre leurs composantes. »
+          Le critère de vérité, pour ce texte, n'est donc pas l'exposition à
+          l'expérience — c'est la cohérence interne d'un système de
+          théories et d'hypothèses entre elles.
+
+          Le texte tire de cette thèse une conséquence radicale, qu'il faut
+          nommer précisément : « l'expérience cruciale » — une expérience
+          capable de réfuter totalement une hypothèse ou de la confirmer de
+          façon décisive — « n'existe pas en science ». Ce n'est pas une
+          nuance : c'est une négation directe de l'idée, développée en R3 et
+          R4, qu'une expérience bien construite puisse trancher entre une
+          hypothèse et son contraire.
+
+          Attention à ne pas prendre pour la thèse une conséquence qui la
+          sert sans la remplacer : « les théories physiques sont construites
+          et non données » ou « la vérification suit une direction
+          circulaire » sont des développements de la thèse centrale (le
+          critère est la cohérence, pas l'expérience), pas la thèse
+          elle-même — demande-toi toujours « tout ça, c'est pour dire
+          quoi ? ».
+
+      - id: q2
+        part: "Partie 2 — Confronter à R3 (Claude Bernard)"
+        stem: |-
+          Bernard (R3) fait de l'expérience — comparer un groupe traité à un
+          groupe non traité — le juge d'une hypothèse. Le texte semble
+          rejeter l'expérience comme critère. Ce rejet est-il total, ou
+          faut-il le nuancer ? Appuie-toi précisément sur ce que le texte dit
+          et ne dit pas.
+        reasoning: |-
+          Il faut résister à une lecture trop rapide : le texte ne dit
+          jamais que l'expérience ne sert à rien, ou que les scientifiques ne
+          devraient plus rien tester. Il dit une chose plus précise :
+          l'expérience n'est pas le CRITÈRE DE VÉRITÉ des théories — ce
+          critère est la cohérence entre leurs composantes. Le texte
+          reconnaît même un rôle à l'expérience à un moment : « ce n'est
+          donc pas l'expérience seule qui conduit au développement de nos
+          théories, mais l'efficacité de ces théories elles-mêmes » — le mot
+          « seule » indique que l'expérience garde un rôle, subordonné à
+          l'efficacité et à la cohérence.
+
+          Ce qui s'oppose frontalement à Bernard, en revanche, c'est le
+          point le plus fort du texte : « l'expérience cruciale » — une
+          expérience qui, seule, réfuterait ou confirmerait DÉCISIVEMENT une
+          hypothèse — n'existe pas. Or c'est très exactement ce que le
+          protocole de Bernard (groupe traité / non traité, résultat prédit
+          à l'avance) cherche à construire : un résultat qui, s'il survient,
+          règle la question dans un sens ou dans l'autre. Le texte affirme
+          qu'aucun protocole, aussi bien construit soit-il, ne peut
+          atteindre ce pouvoir décisif — parce qu'un résultat gênant peut
+          toujours, selon lui, être absorbé en révisant une hypothèse
+          voisine plutôt que celle visée par le test, un mouvement que le
+          texte décrit lui-même : « les hypothèses sont établies ou
+          infirmées à partir d'autres hypothèses ».
+
+      - id: q3
+        part: "Partie 3 — Confronter à R4 (Popper) et R2 (Hume)"
+        stem: |-
+          Popper (R4) dit qu'une théorie n'est jamais prouvée, seulement
+          corroborée ou réfutée. Le texte dit qu'aucune expérience ne peut
+          réfuter « totalement » une hypothèse. Ces deux thèses se
+          rejoignent-elles, ou s'opposent-elles sur un point précis ? Relie
+          aussi le rejet de l'induction du texte à Hume (R2).
+        reasoning: |-
+          Un point commun réel, à ne pas manquer : ni Popper ni ce texte
+          n'accordent à l'expérience un pouvoir de PROUVER une théorie avec
+          une certitude absolue. Les deux rejettent l'idée d'une preuve
+          expérimentale définitive.
+
+          Mais le désaccord est plus profond qu'un simple air de famille. Le
+          fallibilisme de Popper (R4, la-verite R7-R8) garde à l'expérience
+          un pouvoir asymétrique fort : elle ne peut jamais prouver, mais
+          elle PEUT réfuter — une seule observation contraire suffit, en
+          principe, à mettre une théorie en défaut. C'est précisément ce
+          pouvoir de réfutation ponctuelle que le texte nie : « il est
+          impossible de trouver une expérience qui réfute totalement une
+          hypothèse ». Pour Popper, l'expérience reste l'arbitre, seulement
+          un arbitre à sens unique (elle réfute, ne prouve pas) ; pour ce
+          texte, l'expérience n'est même plus l'arbitre — la cohérence
+          interne l'est, et un résultat expérimental gênant peut toujours
+          être absorbé ailleurs dans le système plutôt que de trancher.
+
+          Sur l'induction, le texte va plus loin encore que Hume (R2). Hume
+          montre qu'aucune quantité d'observations passées ne peut
+          logiquement garantir une loi universelle — mais il ne nie pas que
+          l'observation joue un rôle réel, quoique non démonstratif, dans la
+          formation de nos croyances. Le texte, lui, affirme frontalement
+          que « l'induction, en son sens traditionnel, n'existe pas » : ce
+          n'est plus seulement que l'induction ne PROUVE rien (Hume) — c'est
+          qu'elle ne serait même pas le mécanisme réel par lequel les
+          théories se développent, la cohérence et l'efficacité en tenant
+          lieu.
+
+      - id: q4
+        part: "Partie 4 — Discuter : le risque du relativisme"
+        stem: |-
+          Le texte dit que le choix entre plusieurs systèmes théoriques
+          contradictoires se fait « sur des considérations de commodité et
+          de simplicité ». R6 a distingué fallibilisme et relativisme : à
+          quel risque ce texte s'expose-t-il, et le texte lui-même
+          l'évite-t-il, ou pas ?
+        reasoning: |-
+          Le risque est réel et il faut le nommer précisément : si le
+          critère de vérité d'une théorie n'est plus l'expérience mais
+          seulement la cohérence interne, et si plusieurs systèmes
+          cohérents et mutuellement contradictoires peuvent exister « en
+          indépendance de l'expérience et des faits premiers bruts », qu'est-
+          ce qui empêche de choisir n'importe lequel — ou de dire qu'ils se
+          valent tous, comme R6 met en garde contre le relativisme (aucune
+          théorie ne vaudrait mieux qu'une autre, faute de certitude
+          absolue) ?
+
+          Le texte lui-même ne va pas jusque-là, et c'est un point à
+          souligner en discussion plutôt qu'à lui reprocher sans nuance : il
+          maintient deux exigences, la simplicité ET la cohérence, comme
+          critères de choix — « nous choisissons parmi eux celui qui
+          satisfait aux deux conditions de commodité et de cohérence » — et
+          non un « tout se vaut » sans critère aucun. La cohérence interne
+          n'est pas rien : un système qui se contredit lui-même ne
+          satisferait pas ce critère, même en l'absence de tout appel à
+          l'expérience.
+
+          Mais l'objection reste sérieuse, et c'est elle qu'une discussion
+          doit développer : la cohérence interne d'un système ne garantit en
+          rien qu'il décrive le monde réel plutôt qu'un monde purement
+          imaginaire mais logiquement cohérent — c'est précisément
+          l'objection que R0 formule contre le rejet total de l'expérience
+          (« une théorie jamais confrontée à aucune expérience resterait une
+          pure spéculation »), et qu'un défenseur de Bernard ou de Popper
+          adresserait directement à ce texte : sans AUCUN rôle laissé à
+          l'expérience, même subordonné, comment ce texte évite-t-il de
+          transformer la physique en un jeu de cohérence purement formel ?
+
+      - id: q5
+        part: "Partie 5 — Synthétiser"
+        stem: |-
+          En une phrase, situe la position de ce texte par rapport aux trois
+          positions déjà rencontrées dans la leçon (Bernard R3, Popper R4,
+          Kant R5) : est-elle une variante de l'une d'elles, ou une
+          quatrième position distincte ?
+        reasoning: |-
+          Ce n'est ni Bernard (pour qui l'expérience, bien construite,
+          demeure le juge), ni Popper (pour qui l'expérience ne prouve
+          jamais mais réfute), ni tout à fait Kant (dont la synthèse fait
+          collaborer nécessairement une matière donnée par l'expérience et
+          une forme fournie par la raison) : le texte défend une QUATRIÈME
+          position, où le critère de vérité d'une théorie est interne au
+          système théorique lui-même — sa cohérence — et où l'expérience
+          perd jusqu'à son rôle d'arbitre ponctuel, fût-il seulement
+          négatif.
+
+          Le point de contact le plus proche, dans ce que la leçon a déjà
+          construit, reste paradoxalement Kant : les deux positions
+          refusent qu'une observation brute, seule et sans structure
+          préalable, puisse trancher quoi que ce soit — pour Kant, parce
+          qu'aucune perception n'est jamais reçue sans les formes a priori
+          de l'entendement ; pour ce texte, parce qu'aucune hypothèse n'est
+          jamais jugée hors d'un système de hypothèses qui la précède et la
+          contraint. Mais Kant maintient une matière sensible nécessaire, «
+          donnée » par l'expérience, là où ce texte affirme au contraire que
+          les théories sont « construites et non données » — un écart que
+          ta copie devrait nommer plutôt que gommer.
+
+  # ── r-variation — VERIFIED 2025 session normale sujet (سؤال) ─────────────
+  # Reuses the OTHER verified text rather than fabricating a twin (see the
+  # file-header note on this decision). Faithful transcription of
+  # docs/sujets/philo/theorie-experience.md → "2025 — session normale —
+  # Sujet 1 (سؤال)". Maps directly onto R2/R3/R4's own content (critique de
+  # l'induction, méthode expérimentale, falsifiabilité) and onto R7's own
+  # training sujet method — no new axis to bridge, unlike r-bac.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — le caractère scientifique d'une théorie (سؤال, 2025 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — texte transcrit intégralement dans
+        docs/sujets/philo/theorie-experience.md (entrée « 2025 — session
+        normale — Sujet 1 (سؤال) »), statut « vérifié » (re-fetch indépendant
+        + diff conforme, agent-vérificateur, 2026-07-15). Sujet 1 d'une
+        épreuve dont le sujet 3 (نص) fournit le texte de r-bac ci-dessus —
+        même session, même notion, deux sujets réels distincts.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2025 (session normale) —
+      premier sujet (une question à traiter en dissertation) :**
+
+      > بمَ تكتسب النظرية طابعها العلمي ؟
+
+      **Traduction de travail française :**
+
+      > Par quoi la théorie acquiert-elle son caractère scientifique ?
+
+      Contrairement à r-bac, cette question ne t'emmène pas sur un axe
+      nouveau : c'est exactement le terrain de R2 (Hume), R3 (Bernard) et R4
+      (Popper), déjà entraîné en R7 sur un sujet voisin (« Une théorie
+      scientifique peut-elle être prouvée par l'expérience ? »). Le but
+      n'est pas d'apprendre autre chose, c'est de reconnaître que la même
+      méthode s'applique à une question formulée différemment — et de la
+      construire cette fois toi-même, du début à la fin.
+    questions:
+      - id: q1
+        part: "Partie 1 — Analyser les termes"
+        stem: |-
+          Le sujet demande « par quoi » une théorie ACQUIERT son caractère
+          scientifique — pas si elle est vraie. Pourquoi ce choix de mot («
+          acquérir ») change-t-il ce que le sujet attend de toi, par rapport
+          à une question qui demanderait si une théorie est prouvée ?
+        reasoning: |-
+          « Acquérir » suppose qu'une théorie n'est pas scientifique par
+          défaut, du seul fait qu'elle prétend décrire le monde : elle doit
+          GAGNER ce statut par quelque chose qu'elle fait ou qu'elle subit —
+          exactement le geste de R4 (Popper), pour qui une théorie mérite le
+          nom de scientifique seulement si elle est falsifiable, c'est-à-
+          dire si elle s'expose, structurellement, au risque d'être
+          contredite par une observation future.
+
+          Le sujet ne demande donc pas « cette théorie est-elle prouvée
+          vraie ? » (une question que R2 et R4 ont déjà montré mal posée :
+          aucune théorie n'est jamais prouvée avec cette certitude). Il
+          demande quelle PROPRIÉTÉ, quel critère, permet de reconnaître
+          qu'une théorie appartient au domaine de la science plutôt qu'à
+          celui de la spéculation ou de la croyance — la question de la
+          démarcation, pas celle de la vérité définitive. Confondre les deux
+          conduirait à répondre à côté du sujet.
+
+      - id: q2
+        part: "Partie 2 — Mobiliser R4 (Popper) et R3 (Bernard)"
+        stem: |-
+          Construis la réponse centrale du sujet en articulant Popper et
+          Bernard : qu'est-ce qui, concrètement et logiquement, fait
+          qu'une théorie mérite le nom de scientifique ?
+        reasoning: |-
+          La réponse logique vient de Popper (R4) : une théorie acquiert son
+          caractère scientifique si elle est falsifiable — si elle interdit
+          certains résultats observables possibles, de telle sorte qu'une
+          observation future pourrait, en principe, la contredire. Une
+          théorie compatible avec absolument n'importe quel résultat (comme
+          la formulation de grand-mère, « ça marche, je l'ai vu ») ne prend
+          jamais aucun risque, et n'acquiert donc jamais ce caractère,
+          quelle que soit par ailleurs la quantité de confirmations qu'elle
+          accumule.
+
+          La réponse pratique vient de Bernard (R3) : la falsifiabilité
+          n'est pas qu'un critère logique abstrait, elle se construit
+          concrètement — une hypothèse précise, un dispositif de comparaison
+          (groupe traité / non traité), un résultat prédit à l'avance qui,
+          s'il ne se produit pas, réfute l'hypothèse. C'est ce protocole qui
+          transforme la falsifiabilité de Popper, qui reste sinon un critère
+          sur le papier, en une pratique effective de laboratoire.
+
+          Une théorie acquiert donc son caractère scientifique par la
+          conjonction des deux : une structure logique qui l'expose au
+          risque de la réfutation (Popper), mise en pratique par un
+          protocole qui construit réellement ce risque plutôt que de
+          l'affirmer sans le vérifier (Bernard).
+
+      - id: q3
+        part: "Partie 3 — Mobiliser R2 (Hume) comme antithèse"
+        stem: |-
+          Une réponse spontanée et fausse consisterait à dire qu'une théorie
+          acquiert son caractère scientifique par L'ACCUMULATION de
+          confirmations expérimentales. Pourquoi cette réponse échoue-t-elle,
+          selon R2 ?
+        reasoning: |-
+          C'est très exactement l'erreur qu'incarne grand-mère (R0, R2) :
+          quarante ans de confirmations sans exception n'établissent, au
+          mieux, qu'une conjonction constante — jamais une preuve logique,
+          et encore moins un critère de scientificité. Le problème de
+          l'induction, posé par Hume, est qu'aucun nombre d'observations
+          passées ne peut garantir logiquement une conclusion universelle
+          valable pour tous les cas, y compris ceux qu'on n'a jamais
+          observés — voir mille cygnes blancs ne prouve pas que tous les
+          cygnes le sont.
+
+          Appliqué à la question du sujet, cela signifie qu'une théorie qui
+          n'aurait fait qu'accumuler des confirmations, sans jamais avoir
+          été exposée à un risque réel de réfutation, n'a en réalité rien
+          acquis de spécifiquement scientifique : le modèle de Ptolémée
+          (la-verite, R3 et R7) a été confirmé, prédictif et cohérent
+          pendant plus de mille ans — et pourtant faux. La confirmation
+          prolongée, seule, n'a jamais été le signe du caractère
+          scientifique d'une théorie ; c'est l'exposition au risque de la
+          réfutation (R4), pas le nombre de confirmations accumulées, qui
+          fait la différence.
+
+      - id: q4
+        part: "Partie 4 — Esquisser une réponse argumentée (méthode de R7)"
+        stem: |-
+          En t'appuyant sur la méthode construite en R7 (analyse des termes,
+          problématique, plan dialectique), esquisse en quelques lignes
+          comment répondre à la question : par quoi une théorie acquiert-elle
+          son caractère scientifique ?
+        reasoning: |-
+          Analyse des termes : « acquérir » désigne un statut à gagner, pas
+          une propriété donnée d'avance (partie 1 ci-dessus) ; « caractère
+          scientifique » renvoie à un critère de démarcation, pas à une
+          preuve de vérité définitive. Problématique : si l'accumulation de
+          confirmations expérimentales, aussi nombreuses soient-elles, ne
+          suffit jamais à établir ce caractère (R2), et si l'expérience ne
+          peut, structurellement, que réfuter et jamais prouver (R4),
+          comment une théorie peut-elle malgré tout ACQUÉRIR un statut
+          scientifique réel, plutôt que rester une simple hypothèse parmi
+          d'autres ?
+
+          Plan dialectique esquissé : **I. Thèse** — une théorie semble
+          acquérir son caractère scientifique par la confirmation répétée de
+          l'expérience : plus elle prédit correctement, plus elle mérite ce
+          nom (l'intuition que R3, Bernard, rend rigoureuse par la
+          comparaison contrôlée). **II. Antithèse** — cette confirmation ne
+          suffit jamais : R2 (Hume) montre qu'aucune accumulation
+          d'observations ne prouve une loi universelle, et le modèle de
+          Ptolémée (la-verite) a été confirmé pendant un millénaire tout en
+          étant faux. **III. Dépassement** — le caractère scientifique ne
+          tient donc pas au nombre de confirmations, mais à l'exposition
+          structurelle au risque de la réfutation (Popper, R4), mise en
+          pratique par un protocole qui construit réellement ce risque
+          (Bernard, R3) plutôt que de l'affirmer sans le vérifier. Retiens
+          la structure, pas seulement le contenu : c'est le même mouvement
+          thèse/antithèse/dépassement pratiqué en R7 sur un sujet voisin —
+          reconnaître cette structure sous un nouvel habillage est tout le
+          but de cette variation.

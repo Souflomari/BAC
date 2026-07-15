@@ -22,6 +22,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Oui, évidemment : quarante ans sans exception, c'est une preuve largement suffisante — on ne peut pas accumuler autant de confirmations et se tromper. »
 - « Non, l'expérience personnelle ne prouve jamais rien de façon rigoureuse — seule une expérience scientifique, en laboratoire, aurait une quelconque valeur. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux.
 
 Il se trouve qu'un rhume ordinaire, tisane ou pas tisane, disparaît de lui-même en quelques jours, presque toujours — c'est le cours naturel de la maladie, pas un effet du remède. Si bien que ta grand-mère aurait observé exactement la même chose — un rhume qui passe en quelques jours — même si sa tisane n'avait strictement aucun effet et n'était que de l'eau chaude aromatisée. Quarante ans de confirmations « sans exception » n'excluent donc même pas l'hypothèse la plus radicale : que la tisane ne fait rigoureusement rien.
@@ -62,6 +64,8 @@ Ce que ce découpage permet de voir, précisément, dans la situation de R0 : la
 
 > **Erreur à éviter :** ne confonds jamais empirisme et rationalisme en pensant que l'un dit « il faut observer » et l'autre « il ne faut jamais observer ». Le rationalisme ne rejette pas l'observation en bloc : il soutient seulement qu'elle ne suffit jamais, à elle seule, à établir certaines vérités (mathématiques, métaphysiques), et qu'elle doit être encadrée, interprétée, jugée par la raison. Ne confonds pas non plus l'empirisme avec l'idée naïve que « voir, c'est déjà savoir » : R2 va montrer que Hume lui-même refuse cette naïveté.
 
+[[checkpoint:cp-r1-empirisme-rationalisme]]
+
 ---
 
 ## R2 — Hume et la critique de l'induction : confirmer n'est jamais prouver
@@ -85,6 +89,8 @@ Raisonner par **induction**, c'est partir d'un ensemble d'observations particuli
 Ce que la critique de Hume permet de voir, précisément, dans la situation de R0 : quarante années d'observations concordantes — tisane suivie de guérison, sans exception apparente — établissent, au mieux, une conjonction constante entre les deux événements. Elles ne prouvent, ni logiquement ni définitivement, ni que la tisane est la cause de la guérison (le rhume aurait pu guérir seul), ni qu'elle continuera de « fonctionner » la prochaine fois. Ce n'est pas que grand-mère se trompe forcément sur le fond — c'est que son raisonnement, aussi sincère et répété soit-il, ne constitue jamais, à lui seul, une preuve.
 
 > **Erreur à éviter :** ne confonds jamais confirmer une hypothèse et la prouver définitivement. Accumuler des observations qui vont dans le même sens — même par milliers, même par dizaines d'années — rend une hypothèse plus *probable*, mieux *corroborée* (tu retrouveras ce mot exact chez Popper, R4) ; cela ne la rend jamais logiquement certaine, puisqu'un seul cas contraire suffirait à la réfuter. Ne confonds pas non plus « on ne peut pas prouver que ça marche » avec « on a prouvé que ça ne marche pas » : l'absence de preuve définitive en faveur de la tisane ne prouve pas davantage son inefficacité — R3 va montrer ce qu'il faudrait faire pour trancher sérieusement la question.
+
+[[checkpoint:cp-r2-induction]]
 
 ---
 
@@ -126,6 +132,8 @@ Ce protocole ne « prouve » toujours rien avec une certitude absolue (R2 le rap
 
 > **Erreur à éviter :** ne confonds jamais l'observation, au sens de Bernard, avec un simple regard passif posé sur les choses : même la observation la plus attentive reste orientée par une théorie qui décide ce qu'il faut regarder. Et ne confonds pas non plus la méthode expérimentale avec l'idée qu'il suffirait de « faire des expériences » au hasard, sans hypothèse préalable : sans idée directrice, l'expérimentation la plus minutieuse ne produit que des données sans lien, pas une connaissance.
 
+[[checkpoint:cp-r3-experimentation]]
+
 ---
 
 ## R4 — Retour à Popper : la théorie propose, l'expérience ne fait que réfuter
@@ -145,6 +153,8 @@ Rappelle-toi le critère central : une théorie mérite le nom de scientifique s
 Formule maintenant l'hypothèse de grand-mère de façon rigoureusement falsifiable, au sens de Popper : « la tisane raccourcit la durée du rhume, comparée à l'absence de traitement. » Cette hypothèse interdit un résultat précis — que les deux groupes guérissent au même rythme — et pourrait donc, en principe, être réfutée par l'expérience de R3. Compare-la à la version de grand-mère, telle qu'elle la formule elle-même : « ça marche, je l'ai vu. » Cette version-là n'interdit, en réalité, aucun résultat observable — elle est compatible avec « ça a marché cette fois », mais aussi, si le rhume avait duré plus longtemps qu'attendu, avec « ça a quand même sûrement aidé, sans la tisane ç'aurait été pire » : une théorie qui absorbe n'importe quel résultat de cette manière n'est jamais mise sérieusement à l'épreuve, exactement comme le modèle de Ptolémée absorbait n'importe quelle anomalie en ajoutant un épicycle (la-verite, R3 et R7).
 
 > **Erreur à éviter :** ne confonds jamais une hypothèse falsifiable réfutée avec une hypothèse sans valeur : une hypothèse qui a résisté à un test sérieusement construit pour pouvoir la réfuter (R3) sort renforcée, **corroborée** — ce qui est très différent d'une conviction, comme celle de grand-mère, qu'aucune observation possible n'aurait jamais pu mettre en défaut faute d'avoir été formulée de façon testable.
+
+[[checkpoint:cp-r4-falsifiabilite]]
 
 ---
 
@@ -175,6 +185,8 @@ Reprends le point de Hume (R2) : la nécessité causale n'est jamais donnée dir
 
 > **Erreur à éviter :** ne confonds jamais l'a priori kantien avec une idée innée, présente toute faite dans l'esprit avant même toute expérience et portant déjà un contenu sur le monde (ce que Kant ne soutient pas) : l'a priori kantien est une **forme**, une structure vide de contenu propre, qui ne produit une connaissance qu'appliquée à une matière donnée par l'expérience. Et ne fais pas de Kant un simple compromis mou entre empirisme et rationalisme : c'est une position à part entière, qui explique pourquoi aucun des deux camps, pris séparément, ne rend compte de la connaissance.
 
+[[checkpoint:cp-r5-kant]]
+
 ---
 
 ## R6 — Fermeture de l'arc : retour à la tisane de grand-mère, et clôture du module « La connaissance »
@@ -200,6 +212,8 @@ Et Bachelard, déjà rencontré dans la leçon sur la vérité (la-verite, R4), 
 Ce chapitre clôt le module « La connaissance » ouvert par la leçon sur la vérité. Cette dernière avait établi qu'aucune certitude, hors le cogito cartésien, n'échappe jamais totalement au risque de l'erreur — et que la science elle-même n'avance que par théories provisoires, jamais définitivement prouvées (Popper), en rompant activement avec les évidences premières (Bachelard). Cette leçon-ci a montré *comment*, concrètement, la connaissance scientifique tient malgré tout : ni en se fiant à l'expérience seule (Hume), ni en s'en passant totalement (le rationalisme le plus radical), mais en articulant sans cesse une théorie qui propose et une expérience qui, seule, peut la mettre en échec (Bernard, Popper) — le tout reposant sur des formes a priori que ni l'expérience ni la raison seule n'auraient pu produire l'une sans l'autre (Kant).
 
 > **Erreur à éviter :** ne confonds jamais reconnaître qu'aucune preuve n'est jamais définitive (le fallibilisme de Popper, déjà signalé en la-verite R8) avec l'idée que toute théorie ou toute conviction se vaudrait, faute de certitude absolue (le relativisme). La conviction de grand-mère et l'hypothèse rigoureusement testée par la méthode de Bernard ne sont pas logées à la même enseigne : l'une n'a jamais été exposée au risque d'être réfutée, l'autre l'a été et y a, éventuellement, résisté — et cette différence, précisément, sépare une connaissance qui progresse d'une conviction qui se contente de se répéter.
+
+[[checkpoint:cp-r6-fallibilisme]]
 
 ---
 
@@ -262,3 +276,27 @@ Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse 
 
 - *L'expérience peut-elle se passer de toute théorie ?*
 - *Faut-il opposer la raison et l'expérience dans la connaissance scientifique ?*
+
+### Exercice de type bac
+
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il porte sur un axe (un critère de vérité qui n'est ni
+l'expérience de Bernard ni la falsifiabilité de Popper, mais la cohérence
+interne d'un système théorique) que les rungs précédents n'ont pas encore
+nommé frontalement : à toi de mobiliser ce que tu sais déjà sur la critique
+de l'induction (R2), la méthode expérimentale (R3) et la falsifiabilité (R4)
+pour l'affronter.
+
+[[checkpoint:cp-bac-coherentisme]]
+
+[[exercise:r-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Ce second sujet, également réel, revient sur le terrain déjà connu de R2, R3
+et R4 — sous un habillage différent (une question directe de dissertation,
+sans le contexte narratif de la tisane de grand-mère). Le but n'est pas
+d'apprendre autre chose : c'est de reconnaître que la même méthode
+s'applique quand l'habillage change.
+
+[[exercise:r-variation]]

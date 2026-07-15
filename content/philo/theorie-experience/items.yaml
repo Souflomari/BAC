@@ -1,6 +1,256 @@
 notion: theorie-experience
 skill_code: philo_theorie_experience
-misconceptions: []
+
+# Misconception inventory — summit-conversion campaign (Gap-4 fix: this file
+# previously carried `misconceptions: []`, no tags on any distractor).
+# Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code with the
+# "philo_" prefix stripped (philo_theorie_experience → theorie_experience) —
+# matches the precedent set in content/philo/la-liberte/items.yaml and
+# content/philo/analyse-de-texte/items.yaml.
+# Built by reading the lesson (R0-R7) rung by rung: the six rungs R1-R6 each
+# carry an explicit "Erreur à éviter" box (recipe's mandated primary source —
+# mine these first), which yields most of the inventory below; the remaining
+# tags cover distractors that target a real wrong model central to a rung's
+# content but not literally boxed (R0's opening dilemma; Hume's causality
+# point in R2; R7's dissertation-method errors, cross-checked for shared
+# vocabulary against la-liberte's own methode-dissertation-appliquee-
+# mecaniquement, per the recipe's instruction — same tag name kept, own
+# namespace). critere-scientifique-reduit-a-falsifiabilite is NEW: it comes
+# from the r-bac conventionalist/coherentist نص (docs/sujets/philo/theorie-
+# experience.md, 2024 session normale), an axis (a rival, non-falsifiability
+# criterion for scientific character) this lesson's R0-R7 body does not teach
+# directly — see the coverage_summary note below for the honest floor gap
+# this opens.
+
+misconceptions:
+  - id: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
+    label: "« Il faut choisir entre confirmation totale = preuve et expérience non scientifique = sans valeur » (le dilemme d'ouverture)"
+    description: >-
+      L'élève traite les deux réponses spontanées de R0 (« 40 ans sans
+      exception, c'est une preuve » / « seul le laboratoire compte, le reste
+      ne vaut rien ») comme un choix exhaustif entre lequel il faudrait
+      trancher, sans voir qu'aucune des deux, prise seule, ne rend compte du
+      problème que la leçon va construire.
+    contradicts_principle: >-
+      Ni l'accumulation de confirmations sans exception ni le rejet en bloc
+      de toute expérience non contrôlée ne suffit : la première n'exclut pas
+      une explication concurrente (la guérison naturelle du rhume), le second
+      réduirait toute théorie non testée à une pure spéculation.
+
+  - id: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
+    label: "« Empirisme et rationalisme ne sont pas deux réponses vraiment rivales »"
+    description: >-
+      L'élève n'arrive pas à garder l'empirisme (Hume) et le rationalisme
+      (Descartes) comme deux réponses distinctes et rivales à la question de
+      la source de la connaissance — en inversant les auteurs, en les
+      déclarant équivalents, en désignant un mauvais axe de désaccord, ou en
+      transformant leur articulation possible (R1, R5) en un choix binaire
+      forcé.
+    contradicts_principle: >-
+      Hume ramène toute idée à des impressions sensibles (aucune idée n'est
+      innée) ; Descartes soutient qu'au moins certaines vérités (le cogito,
+      la cire) sont accessibles à la raison seule, indépendamment des sens —
+      deux réponses rivales, pas un désaccord de vocabulaire ni un faux choix.
+
+  - id: mc.philo.theorie_experience.rationalisme-rejette-observation
+    label: "« Le rationalisme dit qu'il ne faut jamais observer »"
+    description: >-
+      L'élève réduit l'opposition empirisme/rationalisme à « il faut
+      observer » contre « il ne faut jamais observer », alors que le
+      rationalisme n'exclut pas l'observation : il soutient seulement
+      qu'elle ne suffit jamais seule à établir certaines vérités.
+    contradicts_principle: >-
+      Le rationalisme ne rejette pas l'observation en bloc — il soutient
+      qu'elle doit être encadrée, interprétée, jugée par la raison, et
+      qu'elle ne suffit jamais seule pour certaines vérités (mathématiques,
+      métaphysiques).
+
+  - id: mc.philo.theorie_experience.confirmation-egale-preuve
+    label: "« Accumuler des confirmations, c'est prouver »"
+    description: >-
+      L'élève traite un grand nombre d'observations ou de résultats
+      favorables — même répétés pendant des décennies, même sans la moindre
+      exception apparente — comme une preuve logique et définitive, plutôt
+      que comme une corroboration qui reste, par principe, révisable.
+    contradicts_principle: >-
+      Aucun nombre d'observations passées ne peut logiquement garantir une
+      conclusion universelle valable pour tous les cas, y compris ceux qu'on
+      n'a jamais observés — voir mille cygnes blancs ne prouve pas que tous
+      les cygnes le sont.
+
+  - id: mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire
+    label: "« Ne pas pouvoir prouver que ça marche, c'est prouver que ça ne marche pas »"
+    description: >-
+      L'élève confond l'absence de preuve définitive en faveur d'une
+      hypothèse avec une preuve de son inefficacité ou de sa fausseté — un
+      glissement inverse et symétrique de « confirmer = prouver ».
+    contradicts_principle: >-
+      L'absence de preuve définitive en faveur de la tisane ne prouve pas
+      davantage son inefficacité : ne pas pouvoir démontrer qu'une chose
+      marche n'est pas la même chose que démontrer qu'elle ne marche pas.
+
+  - id: mc.philo.theorie_experience.observation-passive-suffit
+    label: "« Observer beaucoup, sans hypothèse ni comparaison, suffit à faire de la science »"
+    description: >-
+      L'élève confond l'accumulation d'observations passives — répéter,
+      constater, attendre — avec l'expérimentation véritable, qui suppose
+      toujours une hypothèse préalable et un dispositif de comparaison
+      construit pour exposer cette hypothèse à un risque réel d'échec.
+    contradicts_principle: >-
+      Une expérience part toujours d'une idée préconçue qui décide à
+      l'avance ce qu'il faut observer et comment le tester ; sans elle, un
+      chercheur peut accumuler des observations pendant des années sans
+      jamais rien découvrir — « celui qui ne sait pas ce qu'il cherche ne
+      comprend pas ce qu'il trouve. »
+
+  - id: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
+    label: "« Une hypothèse qui a résisté à un test est prouvée avec certitude — ou alors résister à un test ne prouve rien »"
+    description: >-
+      L'élève confond deux issues distinctes : soit il traite une hypothèse
+      corroborée (ayant résisté à un test sérieusement construit pour la
+      réfuter) comme définitivement et absolument prouvée, soit il
+      dévalorise à tort cette même corroboration comme n'ayant aucune valeur
+      réelle.
+    contradicts_principle: >-
+      Une hypothèse qui résiste à un test sérieusement construit pour la
+      réfuter sort renforcée, corroborée — ce qui est très différent d'une
+      preuve définitive, et très différent aussi d'une conviction qu'aucune
+      observation n'aurait jamais pu mettre en défaut faute d'avoir été
+      formulée de façon testable.
+
+  - id: mc.philo.theorie_experience.a-priori-confondu-avec-inne
+    label: "« L'a priori kantien est une idée innée qui porte déjà un contenu sur le monde »"
+    description: >-
+      L'élève confond la forme a priori de l'entendement chez Kant — vide de
+      tout contenu propre, qui ne produit une connaissance qu'appliquée à
+      une matière donnée par l'expérience — avec une idée innée, présente
+      toute faite dans l'esprit et porteuse d'un contenu déterminé sur le
+      monde avant toute expérience.
+    contradicts_principle: >-
+      L'a priori kantien (la causalité, l'espace, le temps) est une forme,
+      une structure vide de contenu propre : elle ne produit une
+      connaissance qu'appliquée à une matière donnée par la sensibilité —
+      ce n'est jamais une idée innée porteuse d'un contenu déjà déterminé.
+
+  - id: mc.philo.theorie_experience.kant-reduit-a-compromis
+    label: "« Kant n'est qu'un empiriste, qu'un rationaliste, ou qu'un compromis mou entre les deux »"
+    description: >-
+      L'élève réduit la synthèse kantienne à l'un des deux camps qu'elle
+      dépasse (pur empirisme, pur rationalisme) ou à un simple mélange sans
+      nécessité logique des deux thèses, sans voir que la sensibilité et
+      l'entendement doivent nécessairement collaborer, chacune apportant ce
+      que l'autre ne peut pas fournir seule.
+    contradicts_principle: >-
+      « Sans la sensibilité, aucun objet ne nous serait donné ; sans
+      l'entendement, aucun ne serait pensé » : ni l'empirisme (qui réduit
+      tout à l'expérience) ni le rationalisme (qui se passerait de
+      l'expérience) ne rendent compte, seuls, de la connaissance — et ce
+      n'est pas un compromis, mais une collaboration nécessaire.
+
+  - id: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+    label: "« Puisqu'aucune preuve n'est absolue, toute conviction en vaut une autre »"
+    description: >-
+      L'élève confond le fallibilisme (aucune connaissance scientifique
+      n'est jamais absolument et définitivement certaine) avec le
+      relativisme (toute conviction ou théorie se vaudrait, faute de
+      certitude absolue) — deux thèses distinctes que la leçon distingue
+      explicitement à sa clôture.
+    contradicts_principle: >-
+      La conviction de grand-mère et une hypothèse rigoureusement testée
+      selon la méthode de Bernard ne sont pas logées à la même enseigne :
+      l'une n'a jamais été exposée au risque d'être réfutée, l'autre l'a été
+      et y a, éventuellement, résisté — cette différence sépare une
+      connaissance qui progresse d'une conviction qui se répète.
+
+  - id: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+    label: "« Le seul critère possible du caractère scientifique d'une théorie est la falsifiabilité »"
+    description: >-
+      L'élève suppose que tout texte portant sur ce qui rend une théorie
+      scientifique doit nécessairement reconduire le critère de Popper
+      (falsifiabilité, R4), sans envisager qu'un texte puisse défendre un
+      critère rival — par exemple un critère de cohérence interne entre les
+      composantes d'un système théorique, indépendant de l'exposition au
+      risque de la réfutation expérimentale.
+    contradicts_principle: >-
+      Le texte de r-bac défend que le critère de vérité des lois et théories
+      n'est pas l'expérience mais la cohérence entre leurs composantes, et
+      qu'« il est impossible de trouver une expérience qui réfute
+      totalement une hypothèse ou la confirme de façon décisive » — une
+      position qui n'invoque jamais la falsifiabilité comme critère.
+
+  - id: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
+    label: "« Les gestes de la méthode (problématiser, construire un plan) sont interchangeables ou décoratifs »"
+    description: >-
+      L'élève traite la problématisation comme une simple reformulation du
+      sujet, confond un exemple illustratif avec la tension conceptuelle
+      elle-même, ou méconnaît la fonction précise d'une partie du plan
+      dialectique (thèse, antithèse, dépassement), en la traitant comme une
+      répétition, un retour en arrière ou une digression plutôt qu'un geste
+      à fonction propre.
+    contradicts_principle: >-
+      Une problématique met en évidence une tension entre deux positions
+      également légitimes en apparence — elle ne reformule pas le sujet ; et
+      chaque partie d'un plan dialectique a une fonction précise (poser la
+      thèse intuitive, la fragiliser, puis dépasser la tension sans
+      l'annuler), non interchangeable avec les autres.
+
+  - id: mc.philo.theorie_experience.critere-methodologique-mal-identifie
+    label: "« Ce qui rend une démarche scientifique, c'est qui la mène, son coût, ou son étiquette — pas sa méthode »"
+    description: >-
+      L'élève attribue le caractère scientifique ou rigoureux d'une démarche
+      à un critère social, matériel ou lexical (le statut professionnel de
+      qui l'exécute, son coût, son origine étymologique) plutôt qu'au
+      critère méthodologique réel : une hypothèse précise exposée à un
+      dispositif de comparaison ou de réfutation.
+    contradicts_principle: >-
+      Le critère de Bernard n'est pas social ou institutionnel (qui mène
+      l'expérience) mais méthodologique : une hypothèse précise et un
+      dispositif de comparaison qui expose cette hypothèse au risque d'être
+      mise en défaut.
+
+  - id: mc.philo.theorie_experience.probleme-philosophique-reduit
+    label: "« Les questions générales que pose R0 se réduisent à l'anecdote de la tisane »"
+    description: >-
+      L'élève réduit les deux questions philosophiques générales que R0
+      annonce (la source de la connaissance ; la neutralité possible de
+      l'observation) à l'anecdote concrète elle-même, à une question sans
+      rapport, ou à un choix forcé entre deux camps, plutôt que de les
+      reconnaître comme les deux questions ouvertes que toute la leçon va
+      construire.
+    contradicts_principle: >-
+      R0 annonce deux questions générales, non anecdotiques : d'où vient la
+      connaissance (expérience seule, raison seule, ou leur articulation) et
+      l'observation peut-elle jamais être neutre, ou est-elle toujours déjà
+      orientée par une théorie.
+
+  - id: mc.philo.theorie_experience.necessite-causale-percue
+    label: "« Les sens perçoivent directement le lien de nécessité causale »"
+    description: >-
+      L'élève croit que la nécessité causale elle-même — ce qui ferait
+      qu'un effet DOIT se produire — est directement perçue par les sens,
+      plutôt que seulement une conjonction constante (succession répétée)
+      entre deux événements, qui est tout ce que Hume accorde à la
+      perception.
+    contradicts_principle: >-
+      Quand une boule de billard en heurte une seconde, les sens perçoivent
+      une succession répétée — le contact, puis le mouvement — jamais le
+      lien de nécessité lui-même, qui ferait que la seconde boule *devait*
+      nécessairement se mettre en mouvement.
+
+  - id: mc.philo.theorie_experience.evidence-spontanee-fiable
+    label: "« La certitude la plus immédiate est le meilleur point de départ pour connaître »"
+    description: >-
+      L'élève traite une certitude spontanée, jamais interrogée — comme
+      celle de grand-mère (« je l'ai vu, encore et encore ») — comme un
+      point de départ fiable pour la connaissance, plutôt que comme un
+      obstacle épistémologique (Bachelard) qu'il faudrait activement
+      rompre pour progresser.
+    contradicts_principle: >-
+      La connaissance ne se construit jamais en confirmant simplement ce
+      qu'on croyait déjà, mais en rompant avec l'évidence spontanée pour la
+      mettre activement à l'épreuve — la certitude la plus immédiate est
+      précisément le genre d'évidence qu'il faut interroger, pas un point de
+      départ fiable.
 
 items:
   - id: THEXP-1
@@ -17,6 +267,7 @@ items:
       - id: A
         text: "Hume pense que la raison seule peut établir des vérités certaines, indépendamment de toute expérience, tandis que Descartes réduit toute connaissance à l'expérience sensible et fait de l'observation la seule source du savoir."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           C'est exactement l'inverse des deux positions : c'est Hume
           l'empiriste (toute connaissance vient des impressions sensibles) et
@@ -25,6 +276,7 @@ items:
       - id: B
         text: "Les deux soutiennent en réalité la même position sur la source de la connaissance, sous un vocabulaire différent."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           Empirisme et rationalisme sont deux réponses rivales, et non
           équivalentes, à la question de savoir d'où vient la connaissance --
@@ -33,6 +285,7 @@ items:
       - id: C
         text: "Hume et Descartes s'opposent seulement sur l'existence de Dieu, pas sur la source de la connaissance."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           Ce n'est pas l'axe de désaccord construit dans cette leçon : R1
           oppose les deux philosophes précisément sur la source de la
@@ -74,6 +327,7 @@ items:
       - id: A
         text: "Qu'elle prouve, avec une quasi-certitude, que la tisane est bien efficace et qu'elle est la cause de la guérison, puisqu'aucune exception n'a jamais été observée en quarante ans d'usage répété, sans le moindre échec ni la moindre exception."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           C'est exactement l'erreur inductiviste que Hume dénonce : voir mille
           cygnes blancs ne prouve pas que tous les cygnes le sont -- aucune
@@ -82,6 +336,7 @@ items:
       - id: B
         text: "Qu'elle ne prouve rigoureusement rien, et qu'il faut donc conclure que la tisane n'a aucun effet."
         correct: false
+        misconception: mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire
         feedback: >
           L'absence de preuve définitive de l'efficacité de la tisane ne
           prouve pas non plus son inefficacité -- c'est l'erreur inverse,
@@ -92,6 +347,7 @@ items:
       - id: D
         text: "Qu'elle prouve seulement que grand-mère croit sincèrement en sa tisane, ce qui suffit à en garantir l'efficacité réelle."
         correct: false
+        misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
         feedback: >
           C'est confondre certitude (la conviction, sincère, de grand-mère) et
           vérité ou efficacité réelle -- une conviction, même totale, ne rend
@@ -132,6 +388,7 @@ items:
       - id: B
         text: "L'expérience scientifique consiste seulement à répéter l'observation un plus grand nombre de fois, jusqu'à atteindre un nombre de cas suffisant pour conclure avec assurance, sans jamais formuler la moindre hypothèse préalable ni construire de comparaison entre des conditions différentes."
         correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
         feedback: >
           Cela reste une simple accumulation inductive (le problème même de
           R2), pas une expérimentation au sens de Bernard -- ce qui manque,
@@ -140,6 +397,7 @@ items:
       - id: C
         text: "L'expérience scientifique consiste à observer sans aucune idée préconçue, pour ne pas influencer ce qu'on va constater."
         correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
         feedback: >
           C'est l'inverse exact de la thèse de Bernard : sans idée
           directrice, l'observation la plus attentive ne mène nulle part --
@@ -148,6 +406,7 @@ items:
       - id: D
         text: "L'expérience scientifique se distingue seulement parce qu'elle est menée par un professionnel plutôt que par une personne ordinaire."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Le critère de Bernard n'est pas social ou institutionnel (qui mène
           l'expérience) mais méthodologique : une hypothèse précise et un
@@ -185,6 +444,7 @@ items:
       - id: A
         text: "En accumulant le plus grand nombre possible d'observations favorables à l'hypothèse, jusqu'à ce qu'elle devienne certaine et qu'aucun doute ne subsiste, sans jamais construire de test qui pourrait, en principe, la mettre en défaut ou chercher à la réfuter par une observation contraire."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           C'est reproduire exactement la confusion inductiviste que R2 et R4
           rejettent toutes les deux : la falsifiabilité ne consiste pas à
@@ -196,6 +456,7 @@ items:
       - id: C
         text: "En modifiant l'hypothèse après coup pour qu'elle explique n'importe quel résultat observé, quel qu'il soit."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           C'est exactement le geste que Popper condamne -- celui du modèle de
           Ptolémée, qui absorbait toute observation gênante en ajoutant un
@@ -203,6 +464,7 @@ items:
       - id: D
         text: "En s'assurant que l'expérience confirme toujours la théorie de départ, pour ne jamais avoir à la remettre en cause."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           C'est l'inverse de la logique popperienne : une théorie qui ne
           pourrait jamais échouer à son propre test n'est pas scientifique --
@@ -240,6 +502,7 @@ items:
       - id: A
         text: "Kant affirme, comme l'empirisme, que toute connaissance dérive uniquement de l'expérience sensible, sans qu'aucun concept a priori de l'entendement ne soit jamais nécessaire pour l'organiser ou la mettre en forme."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           C'est mal lire Kant comme un pur empiriste : « des intuitions sans
           concepts sont aveugles » dit précisément le contraire -- la
@@ -248,6 +511,7 @@ items:
       - id: B
         text: "Kant affirme, comme le rationalisme, que la raison seule, sans le secours d'aucune expérience, peut connaître le contenu du monde réel."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           C'est mal lire Kant comme un pur rationaliste : « des pensées sans
           contenu sont vides » dit précisément que les concepts seuls, sans
@@ -256,6 +520,7 @@ items:
       - id: C
         text: "Les concepts a priori de l'entendement sont des idées innées qui contiennent déjà, avant toute expérience, une information précise sur le monde."
         correct: false
+        misconception: mc.philo.theorie_experience.a-priori-confondu-avec-inne
         feedback: >
           C'est confondre l'a priori kantien -- une forme vide de tout
           contenu propre, qui ne produit une connaissance qu'appliquée à une
@@ -294,6 +559,7 @@ items:
       - id: A
         text: "Puisqu'aucune théorie scientifique n'est jamais prouvée avec une certitude absolue, la conviction de grand-mère et une hypothèse rigoureusement testée se valent finalement autant l'une que l'autre."
         correct: false
+        misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
         feedback: >
           C'est confondre le fallibilisme (aucune connaissance n'est
           absolument et définitivement certaine) avec le relativisme (toutes
@@ -303,6 +569,7 @@ items:
       - id: B
         text: "Puisque la méthode de Bernard permet de tester une hypothèse, elle permet forcément d'arriver à une certitude absolue, contrairement à la conviction non testée de grand-mère."
         correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
         feedback: >
           Cela contredit R2 et R4 : même une hypothèse rigoureusement testée
           et corroborée n'est jamais prouvée avec une certitude absolue --
@@ -313,6 +580,7 @@ items:
       - id: D
         text: "La conviction de grand-mère est en réalité plus fiable, puisqu'elle repose sur quarante années d'expérience personnelle directe et sans faille, alors que la méthode de Bernard ne repose que sur des groupes artificiellement construits en laboratoire, loin de toute expérience réelle."
         correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
         feedback: >
           C'est l'inverse du point établi par la leçon : quarante ans
           d'observation non guidée (R2) ne prouvent logiquement rien, tandis
@@ -354,21 +622,24 @@ items:
       - id: B
         text: "Que quarante années d'observations concordantes, sans la moindre exception, suffisent à établir une preuve rigoureuse, puisqu'aucun contre-exemple n'a jamais été rencontré."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           Confond confirmation répétée et preuve rigoureuse -- exactement
           l'erreur que R0 met en évidence en montrant qu'une autre explication
           (la guérison naturelle) reste compatible avec les mêmes
           observations.
       - id: C
-        text: "Que l'expérience personnelle de grand-mère ne vaut absolument rien, et qu'il faudrait rejeter en bloc toute observation qui n'est pas menée en laboratoire."
+        text: "Que l'expérience personnelle de grand-mère ne vaut absolument rien, et qu'il faudrait rejeter en bloc toute observation qui n'est pas menée dans un laboratoire, sous peine de ne jamais pouvoir distinguer une simple croyance populaire d'une connaissance véritablement digne de ce nom."
         correct: false
+        misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
         feedback: >
           Pousse la seconde réponse envisagée par R0 à un excès que le texte
           juge lui-même intenable -- une théorie jamais confrontée à aucune
           expérience resterait une pure spéculation.
       - id: D
-        text: "Que les deux réponses données par les élèves reviennent, en réalité, à dire exactement la même chose sous une formulation différente."
+        text: "Que les deux réponses données par les élèves reviennent, en réalité, à dire exactement la même chose sous une formulation différente, de sorte qu'il serait inutile de chercher entre elles la moindre tension philosophique à explorer dans la suite de la leçon."
         correct: false
+        misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
         feedback: >
           Les deux réponses sont au contraire deux positions opposées, dont la
           tension est précisément ce que R0 construit pour lancer la leçon.
@@ -396,8 +667,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Aucun problème réel ne se pose : seule l'expérience de laboratoire, rigoureusement contrôlée, a jamais la moindre valeur en matière de connaissance."
+        text: "Aucun problème réel ne se pose : seule l'expérience de laboratoire, rigoureusement contrôlée et menée par des spécialistes reconnus, a jamais la moindre valeur en matière de connaissance, toute autre forme d'observation devant être écartée sans discussion possible."
         correct: false
+        misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
         feedback: >
           Nie exactement la tension que R0 construit -- le texte affirme au
           contraire qu'une théorie jamais confrontée à aucune expérience
@@ -408,6 +680,7 @@ items:
       - id: C
         text: "Le problème est que le laboratoire coûte cher et prend du temps, ce qui rend cette exigence peu réaliste en pratique."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Déplace la question vers un obstacle matériel et pratique, alors
           que R0 pose un problème épistémologique -- l'absence de toute
@@ -415,6 +688,7 @@ items:
       - id: D
         text: "Le problème est que grand-mère aurait alors raison, puisque aucune preuve rigoureuse n'existerait pour la contredire."
         correct: false
+        misconception: mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire
         feedback: >
           Non-séquitur -- l'absence de preuve rigoureuse contre la tisane ne
           donne pas non plus raison à grand-mère ; R0 ne tranche jamais en
@@ -443,15 +717,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Faut-il croire les grands-mères ou les scientifiques ? Et la tisane guérit-elle vraiment le rhume ?"
+        text: "Faut-il croire les grands-mères ou les scientifiques quand ils se contredisent sur une question de tous les jours ? Et la tisane de grand-mère guérit-elle vraiment le rhume, au fond, une fois pour toutes ?"
         correct: false
+        misconception: mc.philo.theorie_experience.probleme-philosophique-reduit
         feedback: >
           Réduit les deux questions philosophiques annoncées à l'anecdote
           elle-même, alors que R0 les formule en termes généraux (source de
           la connaissance, neutralité de l'observation).
       - id: B
-        text: "La science peut-elle un jour être complètement achevée ? Et existe-t-il des vérités éternelles ?"
+        text: "La science peut-elle un jour être complètement achevée, au point qu'il ne resterait plus rien à découvrir ni à corriger ? Et existe-t-il, quelque part, des vérités éternelles que rien ne pourrait jamais remettre en cause ?"
         correct: false
+        misconception: mc.philo.theorie_experience.probleme-philosophique-reduit
         feedback: >
           Ce ne sont pas les questions posées par R0 -- elles ne concernent
           ni la source de la connaissance ni la neutralité de l'observation.
@@ -459,8 +735,9 @@ items:
         text: "D'où vient la connaissance -- de l'expérience seule, de la raison seule, ou de leur articulation ? Et l'observation peut-elle jamais être neutre, ou est-elle toujours déjà orientée par une théorie ?"
         correct: true
       - id: D
-        text: "Faut-il préférer l'empirisme au rationalisme, ou l'inverse, une fois pour toutes ?"
+        text: "Faut-il préférer, une bonne fois pour toutes et sans retour possible, l'empirisme au rationalisme, ou au contraire l'inverse, sans jamais chercher à articuler ensemble ces deux sources rivales de la connaissance humaine ?"
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           Transforme une question ouverte (expérience, raison, ou leur
           articulation) en un choix forcé entre deux camps, alors que R0
@@ -490,6 +767,7 @@ items:
       - id: A
         text: "Cette idée est innée, présente dans l'esprit indépendamment de toute expérience sensible antérieure."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           Contredit directement Hume, pour qui aucune idée n'est innée --
           toute idée se ramène, en dernière analyse, à des impressions
@@ -497,12 +775,14 @@ items:
       - id: B
         text: "Cette idée provient d'une impression sensible unique et directe, celle d'avoir déjà vu une montagne d'or quelque part."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           Méconnaît l'exemple de Hume -- il n'y a aucune impression unique de
           ce genre, seulement une combinaison de deux idées distinctes.
       - id: C
-        text: "Cette idée montre que la raison seule, indépendamment de toute expérience, peut produire des contenus nouveaux sur le monde."
+        text: "Cette idée montre que la raison seule, indépendamment de toute expérience sensible passée ou présente, peut produire des contenus véritablement nouveaux et informatifs sur le monde réel, sans jamais avoir besoin de s'appuyer sur la moindre perception."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           Attribue à Hume une thèse rationaliste qu'il rejette explicitement
           -- pour lui, rien dans l'esprit ne peut être connu indépendamment
@@ -533,24 +813,27 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il prévient que le rationalisme rejette totalement l'observation, la jugeant sans aucune valeur, tandis que l'empirisme fait au contraire de l'observation son unique voie d'accès à la vérité."
+        text: "Il prévient que le rationalisme rejette totalement l'observation, la jugeant sans aucune valeur ni utilité, tandis que l'empirisme fait au contraire de l'observation directe sa seule et unique voie d'accès légitime à la vérité, sans aucune exception possible."
         correct: false
+        misconception: mc.philo.theorie_experience.rationalisme-rejette-observation
         feedback: >
           C'est exactement la confusion que l'encadré interdit -- le
           rationalisme ne rejette pas l'observation, il soutient seulement
           qu'elle ne suffit jamais seule à établir certaines vérités.
       - id: B
-        text: "Il prévient qu'il ne faut pas réduire l'opposition à « il faut observer » contre « il ne faut jamais observer » : le rationalisme ne rejette pas l'observation, il soutient seulement qu'elle ne suffit jamais seule à établir certaines vérités et doit être encadrée par la raison."
+        text: "Il prévient qu'il ne faut pas réduire l'opposition à « il faut observer » contre « il ne faut jamais observer » : le rationalisme ne rejette pas l'observation, il soutient qu'elle ne suffit jamais seule à établir certaines vérités."
         correct: true
       - id: C
         text: "Il prévient que Hume commet une erreur en refusant les idées innées, erreur que R2 va corriger."
         correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
         feedback: >
           R2 prolonge la ligne humienne, il ne la corrige pas -- et ce n'est
           de toute façon pas le point que cet encadré met en garde.
       - id: D
         text: "Il prévient qu'il ne faut jamais employer, dans une copie de dissertation, les mots « empirisme » et « rationalisme » dans le même paragraphe."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Mécompréhension pure du contenu de l'encadré, qui porte sur une
           confusion doctrinale, pas sur une consigne de rédaction.
@@ -580,8 +863,9 @@ items:
         text: "Qu'aucun nombre d'observations passées, même très grand, ne peut logiquement garantir une conclusion universelle valable pour tous les cas, y compris ceux qu'on n'a jamais observés."
         correct: true
       - id: B
-        text: "Que les scientifiques européens de l'époque manquaient simplement de rigueur expérimentale, un défaut que la méthode moderne aurait permis d'éviter."
+        text: "Que les scientifiques européens de l'époque manquaient simplement de rigueur expérimentale et de moyens d'observation suffisants, un défaut purement technique que la méthode moderne, mieux outillée, aurait permis d'éviter entièrement."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Réduit à un défaut de méthode ce qui est, pour Hume, une limite
           logique de l'induction elle-même -- aucune rigueur supplémentaire
@@ -589,13 +873,15 @@ items:
       - id: C
         text: "Que les cygnes noirs prouvent que la nature n'est pas régulière, contrairement à ce que suppose tout raisonnement inductif."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           Surinterprète un contre-exemple isolé en une thèse générale sur
           l'irrégularité de la nature, alors que l'exemple illustre
           seulement la faille logique de l'induction.
       - id: D
-        text: "Que l'observation de nombreux cygnes blancs ne constituait déjà, en elle-même, aucune connaissance authentique, avant même la découverte des cygnes noirs."
+        text: "Que l'observation de nombreux cygnes blancs ne constituait déjà, en elle-même, absolument aucune connaissance authentique, y compris avant même la découverte des cygnes noirs, puisque toute généralisation reposant sur l'expérience serait par nature dépourvue de valeur."
         correct: false
+        misconception: mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire
         feedback: >
           Confond « ne prouve pas définitivement » et « n'a aucune valeur »
           -- exactement l'erreur inverse déjà signalée dans l'encadré de R2.
@@ -623,8 +909,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Les sens perçoivent directement la nécessité causale elle-même, qui garantit que la seconde boule devra toujours se mettre en mouvement dans les mêmes circonstances."
+        text: "Les sens perçoivent directement la nécessité causale elle-même, exactement comme ils perçoivent une couleur ou un son, ce qui garantit avec certitude que la seconde boule devra toujours se mettre en mouvement dans des circonstances rigoureusement identiques."
         correct: false
+        misconception: mc.philo.theorie_experience.necessite-causale-percue
         feedback: >
           Exact inverse de la thèse de Hume -- la nécessité causale n'est
           jamais perçue par les sens, seulement une conjonction constante
@@ -632,6 +919,7 @@ items:
       - id: B
         text: "Les sens ne perçoivent rien du tout dans cette situation, ni succession ni conjonction, seule la raison peut appréhender un tel événement."
         correct: false
+        misconception: mc.philo.theorie_experience.necessite-causale-percue
         feedback: >
           Contredit Hume, qui affirme au contraire que les sens perçoivent
           bien la succession et sa répétition -- ce qu'ils ne perçoivent
@@ -642,6 +930,7 @@ items:
       - id: D
         text: "Les sens perçoivent la cause et l'effet séparément, mais aussi le raisonnement logique qui les relie nécessairement l'un à l'autre."
         correct: false
+        misconception: mc.philo.theorie_experience.necessite-causale-percue
         feedback: >
           Attribue aux sens une opération de raisonnement logique que Hume
           leur refuse explicitement -- percevoir n'est pas raisonner sur un
@@ -671,22 +960,25 @@ items:
         text: "Sans hypothèse préalable qui oriente ce qu'il faut observer, un chercheur peut accumuler des observations pendant des années sans jamais rien découvrir, parce qu'il ne sait pas ce que ces observations signifient."
         correct: true
       - id: B
-        text: "Il vaut mieux ignorer ce qu'on cherche pour ne pas influencer, par ses préjugés, ce qu'on va observer."
+        text: "Il vaut mieux ignorer complètement ce qu'on cherche, et même s'interdire de formuler la moindre hypothèse à l'avance, pour ne jamais influencer, par ses préjugés personnels, ce qu'on va ensuite observer sur le terrain."
         correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
         feedback: >
           Exact inverse de la thèse de Bernard, déjà signalé comme l'erreur
           à éviter de R3 -- sans idée directrice, l'observation la plus
           attentive ne mène nulle part.
       - id: C
-        text: "Cette formule signifie que seuls les chercheurs déjà expérimentés peuvent comprendre leurs résultats, contrairement aux débutants."
+        text: "Cette formule signifie que seuls les chercheurs déjà expérimentés et reconnus par leurs pairs peuvent véritablement comprendre leurs résultats, contrairement aux débutants qui, quelle que soit leur hypothèse, ne sauraient rien en tirer d'utile."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Transforme une exigence méthodologique (avoir une hypothèse
           précise) en une question d'ancienneté professionnelle, ce que la
           formule ne dit pas.
       - id: D
-        text: "Cette formule signifie qu'il faut connaître à l'avance le résultat exact de l'expérience pour qu'elle ait une quelconque valeur."
+        text: "Cette formule signifie qu'il faut connaître à l'avance le résultat exact de l'expérience, dans le moindre détail, pour qu'elle ait la moindre valeur scientifique, sans quoi toute la démarche expérimentale perdrait entièrement son sens."
         correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
         feedback: >
           Confond avoir une hypothèse précise à tester avec connaître déjà
           la réponse -- ce qui viderait l'expérience de tout son sens,
@@ -714,25 +1006,28 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Les deux soutiennent que l'observation scientifique doit se faire sans aucune hypothèse préalable, pour rester la plus neutre et la plus objective possible."
+        text: "Les deux soutiennent que l'observation scientifique doit toujours se faire sans aucune hypothèse préalable, pour rester la plus neutre, la plus pure et la plus rigoureusement objective possible, en toute circonstance et sans exception."
         correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
         feedback: >
           Contredit à la fois Bernard et Bachelard, qui rejettent tous deux
           l'idée d'une observation neutre et sans théorie directrice.
       - id: B
         text: "Bachelard et Bernard s'opposent en réalité sur ce point précis : Bachelard défend l'observation neutre, tandis que Bernard exige une hypothèse préalable."
         correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
         feedback: >
           Oppose faussement deux auteurs qui convergent exactement sur ce
           point, selon le parallèle explicite établi par la leçon.
       - id: C
         text: "Les deux affirment que seule l'expérimentation en laboratoire, et jamais l'observation de terrain, peut produire une connaissance scientifique valable."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Introduit une opposition méthodologique (laboratoire contre
           terrain) qu'aucun des deux auteurs ne défend dans la leçon.
       - id: D
-        text: "Les deux refusent l'idée d'une lecture immédiate et neutre du réel : la connaissance ne se contente jamais de recevoir passivement des faits donnés, elle est orientée, construite, activement dirigée par une théorie ou en rupture avec l'évidence première."
+        text: "Les deux refusent l'idée d'une lecture immédiate et neutre du réel : la connaissance ne reçoit jamais passivement des faits donnés, elle est orientée par une théorie, ou en rupture avec l'évidence première."
         correct: true
     correct_feedback: >
       Bernard (l'idée préconçue) et Bachelard (la rupture avec l'évidence
@@ -762,6 +1057,7 @@ items:
       - id: B
         text: "La formulation de grand-mère est plus scientifique, car elle repose sur une observation directe et répétée, contrairement à l'hypothèse abstraite du chercheur."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           Inverse le critère de Popper, qui juge scientifique une théorie
           falsifiable, non une théorie simplement confirmée par la
@@ -769,13 +1065,15 @@ items:
       - id: C
         text: "Les deux formulations sont en réalité équivalentes, puisqu'elles portent toutes deux sur l'efficacité de la même tisane."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           Confond identité du sujet traité et identité de structure logique
           -- c'est justement la falsifiabilité, pas le sujet, qui distingue
           les deux formulations.
       - id: D
-        text: "La formulation de grand-mère est fausse par définition, alors que l'hypothèse du chercheur est vraie par définition, du simple fait d'être formulée par un scientifique."
+        text: "La formulation de grand-mère est fausse par définition et ne mérite donc aucune considération, alors que l'hypothèse du chercheur est vraie par définition et digne d'une confiance absolue, du simple fait d'avoir été formulée par un scientifique reconnu, diplômé, et travaillant dans un laboratoire équipé des instruments les plus modernes."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Confond falsifiabilité (une propriété logique de la formulation)
           et vérité déterminée par l'autorité de celui qui parle.
@@ -802,8 +1100,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est désormais prouvée définitivement vraie, puisqu'elle a survécu à un test rigoureux conçu pour la réfuter."
+        text: "Elle est désormais prouvée définitivement vraie, une fois pour toutes et sans plus aucun doute possible, puisqu'elle a survécu avec succès à un test rigoureux spécialement conçu pour tenter de la réfuter."
         correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
         feedback: >
           Confond corroboration et preuve définitive -- une erreur déjà
           écartée en R2 et R4, aucune hypothèse n'atteint jamais une
@@ -812,15 +1111,17 @@ items:
         text: "Elle sort renforcée, corroborée -- ce qui est très différent d'une conviction qu'aucune observation possible n'aurait jamais pu mettre en défaut faute d'avoir été formulée de façon testable."
         correct: true
       - id: C
-        text: "Elle n'a en réalité aucune valeur particulière, puisque avoir résisté à un test n'est jamais qu'une question de chance."
+        text: "Elle n'a en réalité aucune valeur scientifique particulière, puisque avoir résisté à un test sérieusement construit pour la réfuter n'est jamais, au fond, qu'une pure question de chance, comparable à un simple coup de dés répété plusieurs fois."
         correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
         feedback: >
           Dévalue à tort la corroboration -- résister à un test sérieusement
           construit pour réfuter l'hypothèse constitue au contraire un
           renforcement réel, non un simple hasard.
       - id: D
-        text: "Elle doit être aussitôt abandonnée, puisque le simple fait d'avoir été mise à l'épreuve de la réfutation suffit à la disqualifier."
+        text: "Elle doit être aussitôt abandonnée et considérée comme fausse, puisque le simple fait d'avoir été mise à l'épreuve d'un test de réfutation, quel qu'en soit le résultat, suffit à lui seul à la disqualifier définitivement aux yeux de la science."
         correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
         feedback: >
           Confond avoir été exposée au risque de réfutation et avoir été
           effectivement réfutée -- ce sont deux issues bien distinctes.
@@ -852,19 +1153,22 @@ items:
       - id: B
         text: "Parce que la causalité est une impression sensible parmi d'autres, que grand-mère a fini par percevoir directement après quarante ans de répétition."
         correct: false
+        misconception: mc.philo.theorie_experience.necessite-causale-percue
         feedback: >
           Exactement ce que Hume et Kant excluent tous deux -- la nécessité
           causale n'est jamais une impression sensible perçue directement.
       - id: C
         text: "Parce que la causalité est une idée innée, présente toute faite dans son esprit avant même toute expérience et portant déjà un contenu déterminé sur le monde."
         correct: false
+        misconception: mc.philo.theorie_experience.a-priori-confondu-avec-inne
         feedback: >
           Confond l'a priori kantien, une forme vide de contenu propre, avec
           une idée innée porteuse d'un contenu -- exactement l'erreur
           signalée par l'encadré de R5.
       - id: D
-        text: "Parce que grand-mère raisonne, sans le savoir, exactement comme un rationaliste cartésien qui n'aurait besoin d'aucune donnée sensible pour connaître le monde."
+        text: "Parce que grand-mère raisonne, sans le savoir ni s'en douter le moins du monde, exactement comme un rationaliste cartésien pur et dur qui n'aurait strictement besoin d'aucune donnée sensible, ni tisane bue ni guérison observée, pour connaître quoi que ce soit du monde qui l'entoure, à aucun moment de sa vie."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           Ignore la moitié empiriste de la synthèse kantienne -- il faut
           bien que la sensibilité fournisse une matière, la tisane bue, la
@@ -894,21 +1198,24 @@ items:
       - id: A
         text: "Parce que Kant est en réalité un pur empiriste, qui ne fait que reformuler la thèse de Hume avec un vocabulaire différent."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           Réduit Kant à l'un des deux camps que sa synthèse dépasse
           précisément.
       - id: B
         text: "Parce que Kant est en réalité un pur rationaliste, qui ne fait que reformuler la thèse de Descartes avec un vocabulaire différent."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           Même erreur inversée -- réduit Kant à l'autre camp, ce que sa
           synthèse dépasse tout autant.
       - id: C
-        text: "Parce que Kant ne se contente pas de mélanger un peu des deux thèses : il montre pourquoi aucune des deux, prise séparément, ne peut rendre compte de la connaissance -- la sensibilité et l'entendement doivent nécessairement collaborer, chacune apportant ce que l'autre ne peut pas fournir."
+        text: "Parce que Kant montre pourquoi aucune des deux thèses, prise séparément, ne peut rendre compte de la connaissance -- la sensibilité et l'entendement doivent nécessairement collaborer."
         correct: true
       - id: D
-        text: "Parce qu'il n'existe, en réalité, aucune différence substantielle entre un compromis et une position à part entière -- la distinction n'a pas de sens philosophique."
+        text: "Parce qu'il n'existe, en réalité, aucune différence substantielle entre un compromis mou et une position philosophique construite et originale à part entière -- toute cette distinction n'aurait, au fond, aucun sens philosophique véritable."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           Évacue la question plutôt que d'y répondre, en ignorant ce que la
           leçon établit précisément sur la nécessité de la collaboration des
@@ -940,18 +1247,21 @@ items:
       - id: B
         text: "Que cette perception est une pure donnée des sens, sans aucune intervention de l'entendement, exactement comme le soutient l'empirisme le plus strict."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           Contredit directement la thèse kantienne de R5, qui exige la
           collaboration nécessaire de la sensibilité et de l'entendement.
       - id: C
-        text: "Que cette perception est entièrement construite par la raison seule, sans que les sens de grand-mère n'y jouent le moindre rôle réel."
+        text: "Que cette perception est entièrement construite par la raison toute seule, indépendamment de toute donnée sensible quelle qu'elle soit, sans que les sens mêmes de grand-mère -- la tisane bue, la guérison observée -- n'y jouent jamais le moindre rôle réel, la raison suffisant à elle seule à produire la totalité du contenu de cette conviction."
         correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
         feedback: >
           Erreur inverse -- ignore la matière sensible que la sensibilité
           doit nécessairement fournir, selon Kant lui-même.
       - id: D
-        text: "Que cette perception est totalement indépendante de toute question de causalité, puisque grand-mère ne fait que constater deux événements sans les relier l'un à l'autre."
+        text: "Que cette perception est totalement indépendante de toute question de causalité, puisque grand-mère ne fait que constater deux événements séparés et sans lien logique entre eux, sans jamais chercher, même inconsciemment, à les relier l'un à l'autre sous quelque forme que ce soit."
         correct: false
+        misconception: mc.philo.theorie_experience.a-priori-confondu-avec-inne
         feedback: >
           Contredit le texte, qui affirme précisément que grand-mère relie
           les deux événements sous l'idée d'une cause, spontanément et sans
@@ -982,6 +1292,7 @@ items:
       - id: A
         text: "Parce que Bachelard pense que toute conviction personnelle, sans exception, est nécessairement fausse et doit être rejetée en bloc."
         correct: false
+        misconception: mc.philo.theorie_experience.evidence-spontanee-fiable
         feedback: >
           Généralise abusivement la thèse bachelardienne en un rejet
           systématique et absolu de toute conviction, ce que le texte ne
@@ -990,14 +1301,16 @@ items:
         text: "Parce que cette certitude immédiate est précisément le genre d'évidence spontanée que la connaissance doit rompre pour progresser -- elle ne se construit jamais en confirmant simplement ce qu'on croyait déjà, mais en mettant activement cette évidence à l'épreuve."
         correct: true
       - id: C
-        text: "Parce que Bachelard, contrairement à ce qu'affirme la-verite (R4), considère au contraire que les évidences spontanées sont le meilleur point de départ pour construire une connaissance rigoureuse."
+        text: "Parce que Bachelard, contrairement à ce qu'affirme explicitement la-verite (R4) à ce sujet, considère au contraire que les évidences spontanées et immédiatement ressenties sont, en toutes circonstances, le meilleur point de départ possible pour construire une connaissance rigoureuse et durable."
         correct: false
+        misconception: mc.philo.theorie_experience.evidence-spontanee-fiable
         feedback: >
           Inverse exactement la thèse bachelardienne de l'obstacle
           épistémologique déjà établie en la-verite R4.
       - id: D
         text: "Parce que Bachelard pense que quarante ans d'observation constituent, en réalité, une expérimentation rigoureuse au sens de Claude Bernard."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Confond l'obstacle épistémologique bachelardien avec la méthode
           expérimentale de Bernard (R3), deux points distincts de la leçon.
@@ -1026,20 +1339,23 @@ items:
         text: "Parce qu'il suggère une démonstration définitive, close, qui ne pourrait plus jamais être remise en cause -- exactement ce que le problème de l'induction (R2) et le critère de Popper (R4) refusent d'accorder à quelque théorie scientifique que ce soit."
         correct: true
       - id: B
-        text: "Parce qu'il s'agit d'un terme purement juridique, étranger au vocabulaire philosophique, qu'il faudrait donc éviter d'employer dans la copie."
+        text: "Parce qu'il s'agit d'un terme purement juridique et technique, totalement étranger au vocabulaire philosophique habituel des classes de terminale, qu'il faudrait par conséquent éviter soigneusement d'employer dans une copie de dissertation digne de ce nom."
         correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
         feedback: >
           Mécomprend l'exercice d'analyse des termes, qui porte sur le sens
           philosophique du mot dans le sujet, pas sur son origine lexicale.
       - id: C
-        text: "Parce qu'il faudrait comprendre « prouvée » comme un synonyme exact de « observée », ce qui rendrait le sujet trivial et sans intérêt philosophique."
+        text: "Parce qu'il faudrait comprendre « prouvée » comme un synonyme exact et interchangeable de « observée », ce qui rendrait aussitôt le sujet trivial, purement descriptif, et totalement dépourvu du moindre intérêt philosophique réel."
         correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
         feedback: >
           Aplatit la distinction entre observer et prouver, alors que c'est
           précisément cet écart que le sujet met en question.
       - id: D
-        text: "Parce que ce mot n'a, en réalité, aucune importance particulière pour traiter ce sujet : seule l'expression « théorie scientifique » mérite d'être analysée."
+        text: "Parce que ce mot n'a, en réalité, strictement aucune importance particulière pour traiter ce sujet correctement : seule l'expression « théorie scientifique » mériterait, selon cette lecture, d'être véritablement analysée en détail dans la copie."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Ignore que l'analyse des termes porte sur chaque mot-clé du sujet,
           dont « prouvée » est ici l'un des plus décisifs.
@@ -1065,8 +1381,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'elle oppose la position de grand-mère à celle d'un scientifique professionnel, ce qui suffit à constituer une tension philosophique digne d'une dissertation."
+        text: "Parce qu'elle oppose la position de grand-mère, avec ses quarante années d'observations répétées, à celle d'un scientifique professionnel équipé d'un laboratoire, ce qui suffirait à lui seul, selon cette lecture, à constituer une tension philosophique digne d'une dissertation entière."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Confond l'exemple concret, utile pour illustrer, avec la tension
           conceptuelle elle-même, qui porte sur des thèses, pas sur des
@@ -1074,6 +1391,7 @@ items:
       - id: B
         text: "Parce qu'une bonne problématique doit toujours reformuler le sujet avec des mots plus compliqués, pour donner une impression de profondeur."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Méconnaît ce qu'est une problématique -- une reformulation
           stylistique n'en est pas une, à la différence d'une mise en
@@ -1081,6 +1399,7 @@ items:
       - id: C
         text: "Parce qu'elle affirme d'emblée que l'expérience ne peut jamais rien prouver, réglant ainsi la question avant même le développement."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Une problématique ne tranche pas le sujet à l'avance, elle ouvre
           une tension à examiner -- trancher d'emblée manquerait précisément
@@ -1112,23 +1431,26 @@ items:
       - id: A
         text: "Répéter, avec d'autres exemples, exactement les arguments déjà développés dans l'antithèse, pour les renforcer par accumulation."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Confond dépassement et répétition -- un dépassement doit apporter
           un élément nouveau qui résout la tension, pas la reformuler avec
           d'autres exemples.
       - id: B
-        text: "Montrer que renoncer à la preuve absolue, établi par l'antithèse, n'oblige pas à renoncer à toute exigence de rigueur : une théorie sérieusement exposée au risque de la réfutation et jamais mise en défaut mérite une confiance réelle, sans devenir pour autant équivalente à n'importe quelle conviction non testée."
+        text: "Montrer que renoncer à la preuve absolue n'oblige pas à renoncer à toute exigence de rigueur : une théorie exposée au risque de la réfutation mérite confiance, sans devenir équivalente à une conviction non testée."
         correct: true
       - id: C
         text: "Revenir purement et simplement à la thèse de la partie I, en admettant que l'antithèse s'était trompée depuis le début."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Méconnaît la logique du plan dialectique -- le dépassement
           n'annule pas l'antithèse, il élabore une position qui intègre ce
           que thèse et antithèse ont chacune établi de valable.
       - id: D
-        text: "Introduire un exemple totalement nouveau, sans lien avec les parties précédentes, pour montrer l'étendue de sa culture philosophique."
+        text: "Introduire un exemple totalement nouveau, sans aucun lien véritable ou pertinent avec les parties précédentes, uniquement pour montrer l'étendue impressionnante de sa propre culture philosophique personnelle au correcteur."
         correct: false
+        misconception: mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Un dépassement doit répondre à la tension construite par les deux
           parties précédentes, pas constituer une digression déconnectée.
@@ -1142,3 +1464,78 @@ items:
 
       **Ce qu'il fait :** intègre ce que thèse et antithèse ont chacune
       établi, sans effacer leur tension par un relativisme facile.
+
+coverage_summary:
+  # Computed by loading this file with js-yaml and tallying every
+  # choices[].misconception (+ also_reveals[]) value per item — an item
+  # counts once per misconception if ANY of its distractors carries that id
+  # (house convention, matching content/philo/la-liberte/items.yaml and
+  # content/philo/analyse-de-texte/items.yaml).
+  # This is a LEGACY end-bank (THEXP-1..THEXP-24 predate per-distractor
+  # tagging — Gap-4 finding, task instruction) retrofitted in this pass:
+  # every one of the 72 distractors across the 24 items now carries a real
+  # misconception id (no null tags). Per the recipe's "Honest coverage"
+  # judgment call, floor gaps below are reported truthfully rather than
+  # padded.
+  total_items: 24
+  floor: 3
+  floor_met: false
+  # Counted PER ITEM (an item counts once per misconception id if ANY of its
+  # distractors carries that id), matching the house convention stated
+  # above and in la-liberte/analyse-de-texte's own items.yaml — NOT a raw
+  # count of tagged distractors. A first draft of this block miscounted
+  # distractor-occurrences instead of item-occurrences (e.g. counted 8 for
+  # empirisme-rationalisme-non-distingues instead of the correct 4); caught
+  # and fixed by loading this file with js-yaml and tallying programmatically
+  # rather than trusting the hand count — the same "verify programmatically"
+  # discipline the recipe's philo addendum mandates for length, applied here
+  # to coverage arithmetic too.
+  per_misconception:
+    mc.philo.theorie_experience.faux-dilemme-confirmation-rejet: 3
+    mc.philo.theorie_experience.empirisme-rationalisme-non-distingues: 4
+    mc.philo.theorie_experience.rationalisme-rejette-observation: 1
+    mc.philo.theorie_experience.confirmation-egale-preuve: 6
+    mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire: 3
+    mc.philo.theorie_experience.observation-passive-suffit: 4
+    mc.philo.theorie_experience.corroboration-egale-preuve-definitive: 3
+    mc.philo.theorie_experience.a-priori-confondu-avec-inne: 3
+    mc.philo.theorie_experience.kant-reduit-a-compromis: 4
+    mc.philo.theorie_experience.fallibilisme-confondu-relativisme: 1
+    mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite: 0
+    mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement: 3
+    mc.philo.theorie_experience.critere-methodologique-mal-identifie: 9
+    mc.philo.theorie_experience.probleme-philosophique-reduit: 1
+    mc.philo.theorie_experience.necessite-causale-percue: 2
+    mc.philo.theorie_experience.evidence-spontanee-fiable: 1
+  notes: >-
+    Every distractor across the 24 legacy items now carries a real
+    misconception id (no null tags) — the Gap-4 fix this pass exists to
+    make. 10 of 16 models clear the ≥3 floor. SIX do not, and floor_met is
+    reported honestly rather than padded: rationalisme-rejette-observation
+    (1, THEXP-11), fallibilisme-confondu-relativisme (1, THEXP-6),
+    probleme-philosophique-reduit (1, THEXP-9), necessite-causale-percue
+    (2, THEXP-13 and THEXP-18), evidence-spontanee-fiable (1, THEXP-21) are
+    real but thin in the legacy bank — a follow-up item pass should add
+    1-2 items each. critere-scientifique-reduit-a-falsifiabilite (0) is a
+    genuinely NEW axis this pass surfaces: it comes from the r-bac
+    conventionalist/coherentist نص (2024 session normale —
+    docs/sujets/philo/theorie-experience.md), which argues a criterion for
+    scientific character (coherence between a system's components) that is
+    NOT falsifiability and that this lesson's R0-R7 body never teaches
+    directly, so no legacy item exercises it — it is covered by
+    checkpoints.yaml's cp-bac-coherentisme instead (checkpoints do not
+    count toward this floor, per house convention), and is flagged here as
+    the clearest item-authoring gap for a follow-up pass. All six
+    under-floor models additionally receive checkpoint exposure in
+    checkpoints.yaml (cp-r0-predict, cp-r1-empirisme-rationalisme,
+    cp-r2-induction, cp-r6-fallibilisme, cp-bac-coherentisme) so every
+    student meets each model at least once in-lesson regardless of the
+    item-bank gap.
+    Length rebalance (recipe's philo addendum): the legacy bank's correct
+    answer was the LONGEST option in 18 of the 24 items (75%) before this
+    pass — close to the campaign's cited ~97% historical tell. Distractors
+    were enriched with additional philosophical substance (never by
+    trimming the correct answer's content) so the correct choice is now
+    longest in 6/24, shortest in 3/24, and a middle length in 15/24 —
+    verified programmatically (a js-yaml length-comparison script), not
+    eyeballed; net correct=longest rate down to 25%.
