@@ -1,6 +1,104 @@
 notion: limites-continuite
 skill_code: maths_limites_continuite
-misconceptions: []
+misconceptions:
+  # Ajout ciblé (pass "limites de fonctions trigonométriques", nouveau R6).
+  # La banque pré-existante (LIMCONT-1 à LIMCONT-21) reste non rétro-taguée
+  # (elle a été rédigée avant cet inventaire et n'est pas touchée par cette
+  # passe) ; ces 5 entrées ne couvrent que les items LIMCONT-22 à LIMCONT-26
+  # ajoutés ci-dessous, qui les référencent via primary_misconception /
+  # choices[].misconception.
+  - id: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+    label: "La forme 0/0 d'une limite trigonométrique de référence se traite comme n'importe quelle autre forme indéterminée"
+    description: >-
+      Face à la forme $0/0$ obtenue en substituant $x=0$ dans $\sin(x)/x$,
+      $\tan(x)/x$ ou $\dfrac{1-\cos x}{x^2}$, l'élève ne reconnaît pas qu'il
+      s'agit d'une limite de référence admise, et retombe sur un réflexe
+      erroné : conclure que la limite vaut $0$ (lecture littérale de
+      « 0/0 »), conclure qu'elle n'existe pas (en essayant d'appliquer la
+      factorisation du R3 à une expression non polynomiale), ou confondre
+      « forme indéterminée » avec « nécessairement infinie ou inexistante ».
+    contradicts_principle: >-
+      $\lim_{x\to 0}\frac{\sin x}{x}=1$ est une limite de RÉFÉRENCE, établie
+      une fois pour toutes par un argument géométrique et admise au
+      programme — pas par factorisation algébrique (le R3 ne s'applique
+      qu'aux polynômes et racines). La forme $0/0$ qu'on obtient en
+      substituant ne signale donc pas un blocage à résoudre par les
+      techniques déjà vues : c'est le signal qu'il faut invoquer directement
+      le résultat de référence (éventuellement après une substitution).
+
+  - id: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    label: "Confusion sur la condition « l'argument doit tendre vers 0 »"
+    description: >-
+      L'élève applique une limite trigonométrique de référence sans vérifier
+      que l'expression À L'INTÉRIEUR de sin, tan ou cos tend effectivement
+      vers $0$ — soit en l'appliquant alors que ce n'est pas le cas (motif
+      visuel « sin / quelque chose » repéré sans vérification), soit, à
+      l'inverse, en croyant qu'une substitution valide (par exemple $u=x-a$
+      quand $x\to a$) laisse malgré tout le résultat dépendant du paramètre
+      de décalage utilisé pour la construire ; ou, une fois correctement
+      redirigé vers les tableaux du R2, en oubliant d'étudier le signe du
+      dénominateur des deux côtés.
+    contradicts_principle: >-
+      La condition d'application est unique et non négociable : SEUL compte
+      le fait que l'expression entre les parenthèses de sin/tan/cos
+      (l'« argument ») tende vers $0$. Si $u\to 0$, alors
+      $\frac{\sin u}{u}\to 1$ — quelle que soit la façon dont $u$ est
+      construite, et le résultat ne garde AUCUNE trace du paramètre utilisé
+      pour construire $u$. Si l'argument ne tend PAS vers $0$, le formulaire
+      ne s'applique pas du tout : il faut revenir aux outils généraux (R2),
+      en étudiant le signe des deux côtés comme pour toute limite infinie.
+
+  - id: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    label: "On ne réajuste pas le coefficient quand l'argument est k·x"
+    description: >-
+      Pour une limite du type $\lim_{x\to 0}\frac{\sin(kx)}{x}$ ($k\neq 1$),
+      l'élève repère le motif « sin(quelque chose)/quelque chose » et répond
+      directement $1$, sans réécrire l'expression pour faire apparaître
+      EXACTEMENT le même argument au numérateur et au dénominateur ($kx$, et
+      non $x$) ; ou, à l'inverse, sur-corrige et multiplie par $k^2$ au lieu
+      de $k$.
+    contradicts_principle: >-
+      La limite de référence exige que l'argument de $\sin$ (ou $\tan$) soit
+      RIGOUREUSEMENT identique à ce qui divise. Pour
+      $\lim_{x\to 0}\frac{\sin(kx)}{x}$, il faut multiplier et diviser par
+      $k$ pour faire apparaître $\frac{\sin(kx)}{kx}$ :
+      $\frac{\sin(kx)}{x} = k \times \frac{\sin(kx)}{kx} \to k \times 1 = k$.
+      Le facteur à sortir est $k$, une seule fois — ni $1$ (oublié), ni
+      $k^2$ (sur-corrigé).
+
+  - id: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+    label: "Toutes les limites trigonométriques de référence valent 1"
+    description: >-
+      L'élève généralise à outrance et attribue la valeur $1$ à toute
+      limite trigonométrique de référence, y compris
+      $\lim_{x\to 0}\frac{1-\cos x}{x^2}$, qui vaut en réalité $\frac12$ —
+      en oubliant le rôle du carré au dénominateur et le facteur
+      $\frac{1}{1+\cos x}$ qui apparaît dans sa dérivation.
+    contradicts_principle: >-
+      Chaque limite de référence a sa propre valeur, liée à sa propre
+      structure : $\lim\frac{\sin x}{x}=1$, $\lim\frac{\tan x}{x}=1$, mais
+      $\lim\frac{1-\cos x}{x^2}=\frac12$. Ce dernier résultat se déduit du
+      premier par multiplication par le conjugué $1+\cos x$ (identité
+      $1-\cos^2 x=\sin^2 x$), ce qui fait apparaître un facteur
+      $\frac{1}{1+\cos x}\to\frac12$ — ce n'est pas une coquille, c'est une
+      conséquence directe du carré au dénominateur.
+
+  - id: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+    label: "Confusion de signe entre (1 − cos x) et (cos x − 1)"
+    description: >-
+      L'élève permute l'ordre de la soustraction dans
+      $\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac12$, ou n'est pas certain du
+      signe du résultat, et répond $-\frac12$ (le résultat correct pour
+      $\lim_{x\to 0}\frac{\cos x - 1}{x^2}$, l'expression aux signes
+      inversés).
+    contradicts_principle: >-
+      $1-\cos x \geq 0$ au voisinage de $0$ (car $\cos x \leq 1$), et
+      $x^2 \geq 0$ toujours : le quotient $\frac{1-\cos x}{x^2}$ est donc
+      TOUJOURS positif ou nul près de $0$, et sa limite ne peut pas être
+      négative. Inverser l'ordre de la soustraction inverse le signe du
+      résultat — il faut vérifier lequel des deux, $1-\cos x$ ou
+      $\cos x - 1$, est réellement au numérateur avant de citer la valeur
+      de référence.
 items:
   - id: LIMCONT-1
     rung: "R1"
@@ -889,7 +987,7 @@ items:
       somme $g$ l'est aussi : la solution est donc unique.
 
   - id: LIMCONT-19
-    rung: "R6"
+    rung: "R7"
     difficulty_level: 4
     skill_code: maths_limites_continuite
     tags: ["limites-a-l-infini", "terme-dominant"]
@@ -943,7 +1041,7 @@ items:
       $$\lim_{x \to -\infty} f(x) = -\infty \times (-1) = +\infty$$
 
   - id: LIMCONT-20
-    rung: "R6"
+    rung: "R7"
     difficulty_level: 4
     skill_code: maths_limites_continuite
     tags: ["tvi", "monotonie"]
@@ -1006,7 +1104,7 @@ items:
       dans $[-2,4]$.
 
   - id: LIMCONT-21
-    rung: "R6"
+    rung: "R7"
     difficulty_level: 4
     skill_code: maths_limites_continuite
     tags: ["factorisation", "continuite"]
@@ -1054,3 +1152,310 @@ items:
       $$\lim_{x \to 2} f(x) = 2+2 = 4$$
       Pour que $f$ soit continue en $2$, il faut $f(2)=\lim_{x\to2}f(x)$,
       donc $m=4$.
+
+  - id: LIMCONT-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "limite-de-reference"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+    stem: >
+      On veut calculer $\lim_{x \to 0} \dfrac{\sin x}{x}$. La substitution
+      directe donne $\dfrac{\sin 0}{0} = \dfrac{0}{0}$. Que peut-on en
+      conclure avec certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une limite de référence : $\lim_{x\to 0}\frac{\sin x}{x}=1$.
+          La forme $\frac{0}{0}$ obtenue par substitution ne remet pas en
+          cause ce résultat — elle indique seulement qu'il ne faut pas
+          conclure par simple substitution, comme pour toute forme
+          indéterminée.
+        correct: true
+      - id: B
+        text: "$\\dfrac{0}{0}=0$, donc $\\lim_{x\\to 0}\\frac{\\sin x}{x}=0$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          $\frac{0}{0}$ n'est pas une valeur numérique — ce n'est pas $0$
+          (déjà vu au R0 pour $f(1)$ avec $\frac{x^2-1}{x-1}$). C'est
+          précisément parce que cette forme ne se lit pas littéralement
+          qu'il faut un outil séparé : ici, le résultat de référence
+          $\lim\frac{\sin x}{x}=1$, pas une lecture directe de « 0/0 ».
+      - id: C
+        text: >-
+          La limite n'existe pas : comme au R3, il faudrait factoriser
+          $\sin x$ et $x$ par un facteur commun, mais $\sin x$ n'étant pas
+          un polynôme, cette factorisation est impossible.
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          L'impossibilité de factoriser algébriquement ne veut pas dire que
+          la limite n'existe pas — elle veut dire que la technique du R3
+          (réservée aux polynômes et aux racines) ne s'applique pas ICI.
+          $\frac{\sin x}{x}$ a bien une limite, $1$ : c'est un résultat de
+          référence à connaître, pas à redémontrer par factorisation à
+          chaque fois.
+      - id: D
+        text: >-
+          La forme $\frac{0}{0}$ est indéterminée, donc par définition elle
+          ne peut jamais donner un résultat fini : la limite est
+          nécessairement infinie ou inexistante.
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          « Indéterminée » ne veut pas dire « forcément infinie » — ça veut
+          dire que la forme symbolique seule ne suffit pas à connaître la
+          réponse (rappel du R2 : trois expressions en « $\infty-\infty$ »
+          donnaient trois réponses différentes). Ici, le calcul de référence
+          (géométrique, admis) donne une valeur finie et non nulle : $1$.
+    correct_feedback: >
+      Exact : $\lim_{x\to 0}\frac{\sin x}{x}=1$ est un résultat de référence
+      (établi géométriquement, admis pour ce chapitre) — la forme
+      $\frac{0}{0}$ obtenue par substitution directe ne le contredit pas,
+      elle indique seulement qu'il faut invoquer ce résultat plutôt que
+      substituer.
+    solution: |
+      La substitution directe donne $\frac{\sin 0}{0}=\frac{0}{0}$, une
+      forme indéterminée qu'aucune des techniques du R3 (factorisation,
+      conjugué, terme dominant) ne permet de lever, puisque $\sin x$ n'est
+      pas un polynôme. $\frac{\sin x}{x}$ est une limite de RÉFÉRENCE,
+      établie par un argument géométrique et admise :
+      $$\lim_{x \to 0} \frac{\sin x}{x} = 1$$
+
+  - id: LIMCONT-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "substitution"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{\sin(4x)}{x}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$4$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          Tu as repéré le motif « $\sin$(quelque chose) divisé par quelque
+          chose » et répondu directement $1$, sans vérifier que c'est le
+          MÊME « quelque chose » en haut et en bas. Ici le numérateur est
+          $\sin(4x)$ mais le dénominateur est $x$, pas $4x$ : il faut
+          d'abord écrire $\frac{\sin(4x)}{x}=4\times\frac{\sin(4x)}{4x}$
+          avant d'appliquer le formulaire.
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          Tu as lu la forme $\frac{0}{0}$ obtenue par substitution directe
+          comme « $0$ ». Cette forme n'a pas de valeur littérale : il faut
+          passer par le formulaire de référence (après avoir ajusté
+          l'argument), pas par une lecture directe de « 0/0 ».
+      - id: D
+        text: "$16$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          Le facteur à sortir devant $\frac{\sin(4x)}{4x}$ est $4$ (celui
+          qui manque au dénominateur pour retrouver EXACTEMENT l'argument
+          du sinus), pas $4^2$. On ne multiplie qu'une seule fois par ce
+          facteur : $\frac{\sin(4x)}{x}=4\times\frac{\sin(4x)}{4x}\to
+          4\times 1=4$.
+    correct_feedback: >
+      Exact : en écrivant $\frac{\sin(4x)}{x}=4\times\frac{\sin(4x)}{4x}$,
+      et comme $4x\to 0$ quand $x\to 0$, le formulaire donne
+      $\frac{\sin(4x)}{4x}\to 1$, d'où une limite égale à $4\times 1=4$.
+    solution: |
+      Le dénominateur ($x$) ne correspond pas encore à l'argument du sinus
+      ($4x$) : on multiplie et on divise par $4$.
+      $$\frac{\sin(4x)}{x} = 4 \times \frac{\sin(4x)}{4x}$$
+      $4x \to 0$ quand $x \to 0$, donc par le formulaire
+      $\frac{\sin(4x)}{4x} \to 1$ :
+      $$\lim_{x \to 0} \frac{\sin(4x)}{x} = 4 \times 1 = 4$$
+
+  - id: LIMCONT-24
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "limite-de-reference"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{1-\cos x}{x^2}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{2}$"
+        correct: true
+      - id: B
+        text: "$1$, comme les deux autres limites trigonométriques de référence."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Ce n'est pas parce que $\lim\frac{\sin x}{x}=1$ et
+          $\lim\frac{\tan x}{x}=1$ que TOUTE limite trigonométrique de
+          référence vaut $1$. En multipliant par le conjugué $1+\cos x$, on
+          obtient $\left(\frac{\sin x}{x}\right)^2 \times
+          \frac{1}{1+\cos x} \to 1 \times \frac{1}{2}$ : le facteur
+          $\frac{1}{1+\cos x}$, dû au carré au dénominateur, fait baisser
+          le résultat à $\frac12$.
+      - id: C
+        text: "$-\\dfrac{1}{2}$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+        feedback: >
+          $-\frac12$ est le résultat de $\lim_{x\to 0}\frac{\cos x-1}{x^2}$
+          (l'ordre des termes inversé), pas de $\lim_{x\to
+          0}\frac{1-\cos x}{x^2}$. Comme $\cos x \leq 1$ près de $0$,
+          $1-\cos x \geq 0$ et $x^2\geq 0$ : le quotient est toujours
+          positif ou nul, sa limite ne peut donc pas être négative.
+      - id: D
+        text: "$0$, car $\\dfrac{1-\\cos 0}{0^2}=\\dfrac{0}{0}$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          $\frac{0}{0}$ n'est pas une valeur numérique. Cette forme indique
+          qu'il faut passer par la dérivation via le conjugué $1+\cos x$
+          (comme au R3), pas conclure « $0$ » directement.
+    correct_feedback: >
+      Exact : en multipliant par le conjugué $1+\cos x$, on fait apparaître
+      $1-\cos^2 x=\sin^2 x$, d'où
+      $\frac{1-\cos x}{x^2}=\left(\frac{\sin x}{x}\right)^2 \times
+      \frac{1}{1+\cos x} \to 1^2 \times \frac{1}{2} = \frac{1}{2}$.
+    solution: |
+      $$\frac{1-\cos x}{x^2} = \frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)}
+      = \frac{1-\cos^2 x}{x^2(1+\cos x)} = \frac{\sin^2 x}{x^2(1+\cos x)}
+      = \left(\frac{\sin x}{x}\right)^2 \times \frac{1}{1+\cos x}$$
+      Quand $x \to 0$ : $\left(\frac{\sin x}{x}\right)^2 \to 1$ et
+      $\frac{1}{1+\cos x} \to \frac{1}{1+1}=\frac12$, donc
+      $$\lim_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$$
+
+  - id: LIMCONT-25
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "substitution"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    stem: >
+      Soit $a$ un réel fixé quelconque. Calculer
+      $\lim_{x \to a} \dfrac{\sin(x-a)}{x-a}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$, quelle que soit la valeur de $a$."
+        correct: true
+      - id: B
+        text: "$0$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          En substituant $x=a$ directement, on tombe sur
+          $\frac{\sin 0}{0}=\frac{0}{0}$, qui n'est pas une valeur
+          numérique. Il faut reconnaître la structure $\frac{\sin(u)}{u}$
+          avec $u=x-a\to 0$, et invoquer le formulaire de référence.
+      - id: C
+        text: "$a$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          Le résultat ne dépend PAS de $a$ : en posant $u=x-a$, on a
+          $u\to 0$ quand $x\to a$ — quelle que soit la valeur de $a$ — et
+          $\frac{\sin(x-a)}{x-a}=\frac{\sin u}{u}\to 1$. Le paramètre $a$
+          sert uniquement à construire $u$ ; il ne survit pas dans le
+          résultat final.
+      - id: D
+        text: "Cette limite ne se calcule que si $a=0$ ; pour $a\\neq 0$, elle n'existe pas."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          La condition du formulaire porte sur $u=x-a$, pas sur $a$
+          lui-même : ce qui compte, c'est que $u\to 0$ quand $x\to a$, ce
+          qui est vrai pour N'IMPORTE QUEL $a$ fixé. Il n'y a aucune raison
+          de restreindre ce résultat au seul cas $a=0$.
+    correct_feedback: >
+      Exact : en posant $u=x-a$, on a $u\to 0$ quand $x\to a$, donc
+      $\frac{\sin(x-a)}{x-a}=\frac{\sin u}{u}\to 1$ — et ce, pour n'importe
+      quel $a$ fixé, sans que $a$ n'apparaisse dans le résultat.
+    solution: |
+      Posons $u=x-a$. Quand $x\to a$, $u\to 0$, et
+      $$\frac{\sin(x-a)}{x-a} = \frac{\sin u}{u}$$
+      qui est exactement la forme du formulaire de référence avec
+      $u\to 0$ :
+      $$\lim_{x \to a} \frac{\sin(x-a)}{x-a} = \lim_{u \to 0} \frac{\sin u}{u} = 1$$
+      Le résultat ne dépend pas de $a$.
+
+  - id: LIMCONT-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "operations-sur-les-limites"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{\sin(x+1)}{x}$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle n'existe pas comme limite finie : l'argument $x+1$ ne tend
+          pas vers $0$ (il tend vers $1$), donc le formulaire trigonométrique
+          ne s'applique pas. Le numérateur tend vers $\sin(1)\neq 0$ et le
+          dénominateur vers $0$ : c'est le cas « nombre non nul divisé par
+          $0$ » du R2, qui donne un résultat infini de signes opposés à
+          gauche et à droite.
+        correct: true
+      - id: B
+        text: "$1$, car l'expression est de la forme $\\sin(\\text{quelque chose})$ divisé par quelque chose."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          Le formulaire $\lim\frac{\sin u}{u}=1$ n'est valable QUE si
+          $u\to 0$. Ici $u=x+1\to 1$ quand $x\to 0$ — pas $0$ — donc la
+          condition d'application échoue : ce n'est pas ce cas de figure,
+          malgré l'apparence du motif.
+      - id: C
+        text: "$0$, car en $x=0$ on obtient une forme $\\frac{0}{0}$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          Ce n'est même pas une forme $\frac{0}{0}$ : le numérateur tend
+          vers $\sin(1)\approx 0{,}84$, un nombre NON NUL — seul le
+          dénominateur tend vers $0$. Avant d'invoquer un réflexe sur les
+          formes trigonométriques, il faut vérifier ce vers quoi tend
+          chaque morceau ; ici c'est le cas « non nul divisé par $0$ » du
+          R2, pas une forme indéterminée.
+      - id: D
+        text: >-
+          $+\infty$ des deux côtés, car $\sin(1)\approx 0{,}84$ est positif
+          et un nombre positif divisé par quelque chose qui tend vers $0$
+          donne toujours $+\infty$.
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          Le signe de $\sin(1)$ est bien positif, mais le signe du
+          DÉNOMINATEUR change selon le côté (rappel du R2) : pour
+          $x\to 0^{+}$, $x>0$ donc $\frac{\sin(1)}{x}\to+\infty$ ; pour
+          $x\to 0^{-}$, $x<0$ donc $\frac{\sin(1)}{x}\to-\infty$. Les deux
+          limites latérales étant différentes, la limite globale n'existe
+          pas.
+    correct_feedback: >
+      Exact : l'argument $x+1$ ne tend pas vers $0$, donc le formulaire
+      trigonométrique ne s'applique pas ici. Comme $\sin(x+1)\to\sin(1)\neq
+      0$ et $x\to 0$, on retombe sur le cas « non nul divisé par $0$ » du
+      R2 : la limite est infinie, de signe opposé à gauche et à droite —
+      elle n'existe donc pas globalement.
+    solution: |
+      L'argument $x+1$ de $\sin$ tend vers $1$ quand $x\to 0$, pas vers
+      $0$ : ce n'est pas la forme $\frac{\sin(u)}{u}$ avec $u\to 0$, le
+      formulaire trigonométrique ne s'applique donc pas.
+
+      Le numérateur $\sin(x+1) \to \sin(1) \neq 0$, et le dénominateur
+      $x\to 0$ : c'est le cas « nombre non nul divisé par $0$ » du R2.
+      $$\lim_{x \to 0^{+}} \frac{\sin(x+1)}{x} = +\infty \qquad\qquad
+      \lim_{x \to 0^{-}} \frac{\sin(x+1)}{x} = -\infty$$
+      Les deux limites latérales diffèrent : la limite globale n'existe
+      pas.

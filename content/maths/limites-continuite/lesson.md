@@ -336,7 +336,92 @@ Face à une question du type "montrer que l'équation $f(x)=k$ admet une solutio
 
 ---
 
-## R6 — Pour t'entraîner
+## R6 — Limites de fonctions trigonométriques : le formulaire de référence
+
+### Un $\frac{0}{0}$ qui résiste à tout ce qu'on connaît déjà
+
+Essaie de calculer $\lim_{x \to 0} \dfrac{\sin x}{x}$ avec les outils du R3. Substitution directe : $\dfrac{\sin 0}{0} = \dfrac{0}{0}$ — une forme indéterminée, comme prévu. Réflexe du R3 : factoriser le numérateur et le dénominateur par leur facteur commun. Mais essaie : quel facteur commun peux-tu sortir de $\sin x$ et de $x$ ? Il n'y en a aucun — $\sin x$ n'est pas un polynôme, et il n'existe pas de factorisation algébrique de $\sin x$ qui fasse apparaître $x$ en facteur. La factorisation, le conjugué, le terme dominant : aucune des trois techniques du R3 ne s'applique ici. Il va falloir un outil différent.
+
+Avant de le construire, regarde ce qui se passe numériquement :
+
+| $x$ | $0{,}1$ | $0{,}01$ | $0{,}001$ | $\to 0 \leftarrow$ | $-0{,}001$ | $-0{,}01$ | $-0{,}1$ |
+|---|---|---|---|---|---|---|---|
+| $\frac{\sin x}{x}$ | $0{,}9983$ | $0{,}999983$ | $0{,}99999983$ | $?$ | $0{,}99999983$ | $0{,}999983$ | $0{,}9983$ |
+
+Le resserrement est net, des deux côtés, vers $1$ — pas vers $0$, et la limite existe bel et bien. **C'est le premier piège de ce rung** : face à $\frac{\sin x}{x}$ en $x=0$, deux réflexes faux sont extrêmement fréquents — soit lire "$\frac{0}{0}$" comme "$0$" (en oubliant que $\frac{0}{0}$ n'est justement pas une valeur numérique, comme déjà vu au R0), soit conclure "la limite n'existe pas" parce que la factorisation du R3 échoue. Le tableau dément les deux : la limite existe, et elle vaut $1$.
+
+Ce résultat se démontre rigoureusement par un argument géométrique (comparaison d'aires sur le cercle trigonométrique), qu'on n'a pas besoin de détailler ici — mais, exactement comme les limites de référence à l'infini du R1 ($\lim x^n$, etc.), c'est un résultat qu'on **admet et qu'on utilise directement**, sans avoir à le redémontrer à chaque fois.
+
+### Le formulaire à connaître
+
+$$\lim_{x \to 0} \frac{\sin x}{x} = 1 \qquad \qquad \lim_{x \to 0} \frac{\tan x}{x} = 1 \qquad \qquad \lim_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$$
+
+De ces trois résultats, un seul est vraiment "nouveau" et admis : $\lim_{x\to 0} \frac{\sin x}{x}=1$. Les deux autres se **déduisent** de celui-là avec des outils déjà construits dans ce chapitre — une bien meilleure nouvelle que de devoir mémoriser trois faits indépendants.
+
+**Pourquoi $\lim_{x\to 0}\frac{\tan x}{x}=1$ découle du premier résultat.** Écris $\tan x = \dfrac{\sin x}{\cos x}$, donc :
+
+$$\frac{\tan x}{x} = \frac{\sin x}{x} \times \frac{1}{\cos x}$$
+
+Quand $x \to 0$ : $\dfrac{\sin x}{x} \to 1$ (le résultat admis), et $\cos x \to \cos 0 = 1$ par substitution directe ($\cos$ est continue en $0$, R4), donc $\dfrac{1}{\cos x} \to 1$. Par la règle du produit des limites (R2, deux limites finies) :
+
+$$\lim_{x \to 0} \frac{\tan x}{x} = 1 \times 1 = 1$$
+
+**Pourquoi $\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac{1}{2}$ découle, elle aussi, du même résultat.** Le geste est exactement celui du quotient conjugué du R3 : multiplier haut et bas par la quantité conjuguée $1+\cos x$, pour faire apparaître l'identité $1-\cos^2 x = \sin^2 x$.
+
+$$\frac{1-\cos x}{x^2} = \frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)} = \frac{1-\cos^2 x}{x^2(1+\cos x)} = \frac{\sin^2 x}{x^2(1+\cos x)} = \left(\frac{\sin x}{x}\right)^2 \times \frac{1}{1+\cos x}$$
+
+Quand $x \to 0$ : $\left(\dfrac{\sin x}{x}\right)^2 \to 1^2 = 1$, et $\dfrac{1}{1+\cos x} \to \dfrac{1}{1+1} = \dfrac{1}{2}$ (substitution directe, $\cos$ continue en $0$). Par la règle du produit :
+
+$$\lim_{x \to 0} \frac{1-\cos x}{x^2} = 1 \times \frac{1}{2} = \frac{1}{2}$$
+
+**Le carré au dénominateur n'est pas un détail** : c'est lui qui produit le facteur $\frac12$. Confondre $\dfrac{1-\cos x}{x^2}$ avec $\dfrac{1-\cos x}{x}$, ou avec $\dfrac{\cos x - 1}{x^2}$ (l'ordre inversé, qui donnerait $-\frac12$), change le résultat — vérifie toujours la forme exacte de l'expression avant de citer le formulaire. Un repère utile : $1-\cos x \geq 0$ près de $0$ (car $\cos x \leq 1$), et $x^2 \geq 0$ toujours — le quotient est donc toujours positif ou nul près de $0$, ce qui exclut d'emblée une réponse négative comme $-\frac12$.
+
+### Utiliser le formulaire ailleurs qu'en $x \to 0$ tout seul : la substitution
+
+Le formulaire ne s'applique que dans une situation très précise : une expression $\dfrac{\sin(u)}{u}$ (ou $\dfrac{\tan(u)}{u}$, ou $\dfrac{1-\cos(u)}{u^2}$) où **le "quelque chose" à l'intérieur du sinus est EXACTEMENT le même "quelque chose" qui divise**, et où **ce "quelque chose" tend vers $0$**. C'est cette deuxième condition — l'argument doit tendre vers $0$ — qui est la plus souvent oubliée. On la met à l'épreuve sur trois exemples.
+
+**Exemple travaillé 1 — un coefficient à absorber.** Calculer $\displaystyle\lim_{x \to 0} \frac{\sin(3x)}{x}$.
+
+**Ce qu'on cherche et pourquoi ce geste :** le numérateur est $\sin(3x)$, mais le dénominateur est $x$, pas $3x$ — ce n'est **pas encore** la forme du formulaire, où le même terme doit apparaître aux deux étages. Le réflexe : faire apparaître $3x$ au dénominateur aussi, en multipliant et divisant par $3$ (une opération qui ne change pas la valeur de l'expression, exactement comme au R3).
+
+$$\frac{\sin(3x)}{x} = 3 \times \frac{\sin(3x)}{3x}$$
+
+Maintenant $\dfrac{\sin(3x)}{3x}$ a bien la forme $\dfrac{\sin(u)}{u}$ avec $u = 3x$. Et $u = 3x \to 0$ quand $x \to 0$ (c'est la condition à vérifier), donc, par le formulaire :
+
+$$\lim_{x \to 0} \frac{\sin(3x)}{3x} = 1 \qquad \Longrightarrow \qquad \lim_{x \to 0} \frac{\sin(3x)}{x} = 3 \times 1 = 3$$
+
+**Le piège à éviter ici :** répondre "$1$" en repérant juste le motif "$\sin$ de quelque chose, divisé par quelque chose", sans vérifier que c'est **le même** quelque chose des deux côtés. Le formulaire donne $1$ pour $\dfrac{\sin(3x)}{3x}$ — pas pour $\dfrac{\sin(3x)}{x}$, qui vaut $3$ fois plus.
+
+**Exemple travaillé 2 — une limite en un point quelconque, par substitution.** Calculer $\displaystyle\lim_{x \to a} \frac{\sin(x-a)}{x-a}$, pour $a$ réel fixé quelconque.
+
+**Ce qu'on cherche et pourquoi ce geste :** ici, $x$ ne tend pas vers $0$ mais vers $a$. Pourtant, l'expression est déjà exactement à la forme $\dfrac{\sin(u)}{u}$ avec $u = x - a$ — reste à vérifier que $u \to 0$. Or $u = x-a$ et $x \to a$, donc $u \to a - a = 0$. La condition est vérifiée, quel que soit $a$ : c'est la variable $u=x-a$ qui doit tendre vers $0$, pas $x$ lui-même.
+
+$$\lim_{x \to a} \frac{\sin(x-a)}{x-a} = 1$$
+
+Ce résultat ne dépend pas de la valeur de $a$ — il disparaît complètement du résultat final, exactement comme le "$3$" de l'exemple précédent disparaissait dans $\frac{\sin(3x)}{3x}$ une fois que $u=3x$ était mis en place. Seule compte la structure $\frac{\sin(u)}{u}$ avec $u \to 0$.
+
+**Exemple travaillé 3 — quand le formulaire NE s'applique PAS.** Calculer $\displaystyle\lim_{x \to 0} \frac{\sin(x+2)}{x}$.
+
+**Ce qu'on cherche et pourquoi ce geste :** au premier coup d'œil, ça ressemble au formulaire — un sinus divisé par quelque chose. Mais regarde l'argument du sinus : c'est $x+2$, et $x+2 \to 2$ quand $x \to 0$ — **pas $0$**. La condition d'application du formulaire échoue : ce n'est pas une forme $\frac{\sin(u)}{u}$ avec $u\to 0$, donc le formulaire ne donne rien ici. Il faut revenir aux outils du R2.
+
+Le numérateur $\sin(x+2)$ tend vers $\sin(2)$, un nombre **non nul** (ce n'est pas un des angles remarquables qui annulent le sinus). Le dénominateur $x$ tend vers $0$. C'est exactement le cas "nombre non nul divisé par $0$" du tableau des quotients (R2) — un résultat infini, dont le signe dépend du côté :
+
+$$\lim_{x \to 0^{+}} \frac{\sin(x+2)}{x} = +\infty \qquad \qquad \lim_{x \to 0^{-}} \frac{\sin(x+2)}{x} = -\infty$$
+
+(en admettant $\sin(2) > 0$, ce qu'une calculatrice confirme). Les deux limites latérales diffèrent : la limite globale n'existe pas. **Le réflexe à garder** : avant d'appliquer une limite de référence trigonométrique, vérifie toujours que l'argument à l'intérieur de $\sin$, $\tan$ ou $\cos$ tend réellement vers $0$ — sinon, ce n'est pas ce cas de figure, et il faut retourner aux outils généraux (substitution directe si tout est continu, ou tableaux du R2 en cas de division par $0$).
+
+### Le réflexe à retenir
+
+Face à une limite trigonométrique de la forme $\frac{0}{0}$ :
+
+1. Identifier si l'expression est bien du type $\frac{\sin(u)}{u}$, $\frac{\tan(u)}{u}$ ou $\frac{1-\cos(u)}{u^2}$ — avec le **même** $u$ en haut et en bas.
+2. Vérifier que $u \to 0$ (peu importe ce que fait $x$ : c'est $u$ qui doit tendre vers $0$).
+3. Si la forme ne correspond pas exactement (coefficient manquant, argument différent en haut et en bas), transformer l'expression par multiplication/division pour la faire apparaître — sans jamais changer la valeur de l'expression.
+4. Si l'argument ne tend pas vers $0$, le formulaire ne s'applique pas : revenir à la substitution directe ou aux tableaux d'opérations du R2.
+
+---
+
+## R7 — Pour t'entraîner
 
 Voici un exercice de type bac, **original** (ce n'est pas un sujet officiel — c'est un exercice d'entraînement construit pour cette leçon), pour mettre en pratique plusieurs des outils qu'on vient de voir.
 
