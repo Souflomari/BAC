@@ -22,6 +22,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Rien de bien mystérieux : j'ai eu peur d'être jugé par quelqu'un dont je connais le regard un peu moqueur — une gêne ordinaire, pas un problème philosophique. »
 - « Ce qui a changé, c'est que j'ai brusquement pris conscience d'exister aussi POUR quelqu'un d'autre — comme si, un instant plus tôt, je n'existais que pour moi, et que je me découvre, d'un coup, également regardé, jugé, situé dans le monde de quelqu'un d'autre. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux.
 
 Si ce n'était qu'une gêne ordinaire liée à la personne précise qui te connaît et pourrait se moquer, pourquoi exactement le même effondrement se produit-il aussi devant un inconnu croisé par hasard, dont tu ne sais rien et dont tu n'as, en toute rigueur, aucune raison de redouter le jugement en particulier ? Ce n'est donc pas seulement la personne connue qui produit cet effet.
@@ -54,6 +56,8 @@ Husserl nomme ce mécanisme l'**aprésentation** (ou co-présentation) : je per�
 
 > **Erreur à éviter :** ne dis jamais que, pour Husserl, « on perçoit directement la conscience d'autrui » — c'est l'inverse exact de sa thèse : on ne perçoit jamais directement que le corps, la conscience n'étant jamais qu'aprésentée, par analogie. Ne confonds pas non plus l'aprésentation husserlienne avec une simple « imagination » de ce que l'autre pourrait ressentir : c'est un mécanisme plus précis, fondé sur la ressemblance structurelle des corps vécus, que Husserl distingue soigneusement d'une simple projection imaginaire.
 
+[[checkpoint:cp-r1-rupture]]
+
 ---
 
 ## R2 — Hegel : la dialectique de la reconnaissance, du maître et de l'esclave
@@ -81,6 +85,8 @@ Naît alors une relation dissymétrique : celui qui a préféré la mort à la s
 **Le point général qu'il faut retenir, au-delà du récit lui-même :** une reconnaissance obtenue de façon asymétrique — en dominant l'autre, en refusant de le reconnaître à son tour comme un égal — ne satisfait jamais complètement celui qui l'obtient ainsi. Pour Hegel, la reconnaissance qui fonde authentiquement la conscience de soi doit être **mutuelle** : je ne deviens pleinement moi-même que dans un rapport où je reconnais l'autre comme un sujet à part entière, en même temps qu'il me reconnaît comme tel. Autrui n'est donc plus seulement, comme chez Husserl, un objet que je cherche à connaître par analogie : il devient la **médiation nécessaire** par laquelle je deviens moi-même une conscience pleinement consciente d'elle-même.
 
 > **Erreur à éviter :** ne réduis pas la dialectique du maître et de l'esclave à une simple leçon sur la domination sociale ou économique (encore moins à une allégorie de l'esclavage historique au sens strict) — c'est un mouvement de la conscience de soi en général, dont Hegel tire une conclusion universelle : la reconnaissance non réciproque ne satisfait ni celui qui domine ni celui qui est dominé, chacun à sa façon. Ne confonds pas non plus « le maître obtient ce qu'il voulait » — c'est l'inverse : c'est précisément parce que sa victoire est asymétrique qu'elle échoue à lui donner une reconnaissance pleinement satisfaisante.
+
+[[checkpoint:cp-r2-rupture]]
 
 ---
 
@@ -110,6 +116,8 @@ Sartre (XXe siècle, *L'Être et le Néant*, 1943) prolonge, à sa manière, l'i
 **Ce que ce mécanisme permet de voir, précisément, dans la scène de R0 :** ce qui a basculé, dans l'instant où ta sœur est entrée, ce n'est pas seulement une peur ordinaire de son jugement — c'est la découverte brutale que tu existes aussi comme un objet regardé, en train de te donner en spectacle à toi-même sans public — une dimension de ton être qu'aucune répétition solitaire, aussi longue soit-elle, n'aurait jamais pu te révéler par elle-même. Le rougissement, la voix qui se casse : les signes mêmes de cette découverte, imposée de l'extérieur.
 
 > **Erreur à éviter :** ne confonds pas la honte sartrienne avec une simple émotion sociale, comparable à la peur d'un enfant pris en faute par un adulte qui pourrait le punir. Chez Sartre, la honte est structurelle, pas psychologique au sens ordinaire : elle révèle un mode d'être (exister-pour-autrui) que je ne produis jamais moi-même et qu'aucune absence de sanction ne peut annuler. Ne dis pas non plus que Sartre reprend simplement Hegel à l'identique : Hegel construit un mouvement de reconnaissance mutuelle possible (R2) ; Sartre, on va le voir en R4, insiste au contraire sur le conflit presque inévitable entre ma liberté de regarder et celle d'autrui qui me regarde.
+
+[[checkpoint:cp-r3-rupture]]
 
 ---
 
@@ -142,6 +150,8 @@ Reviens, une nouvelle fois, à la scène de R0. Le regard de ta sœur ne t'a pas
 
 > **Erreur à éviter :** ne traduis jamais « l'enfer, c'est les autres » par « les autres sont un enfer, il vaudrait mieux vivre seul » — Sartre ne prône nulle part la solitude comme solution : rester seul ne supprimerait pas le besoin, vu en R3, du regard d'autrui pour accéder à certaines dimensions de mon propre être ; cela supprimerait simplement toute vie avec autrui, prix bien plus lourd que le conflit qu'elle engendre. La phrase décrit une structure difficile du rapport à autrui, elle ne recommande pas de le fuir.
 
+[[checkpoint:cp-r4-rupture]]
+
 ---
 
 ## R5 — Levinas : le visage d'autrui, un appel qui m'oblige avant tout choix
@@ -173,6 +183,8 @@ Husserl cherchait à connaître autrui (par analogie) ; Hegel et Sartre décriva
 **Ce que Levinas changerait à la lecture de la scène de R0 :** là où Sartre voyait, dans le regard de ta sœur, une menace pour ta liberté (elle te fige, elle t'objective), Levinas verrait, dans son seul fait d'être là, présente, vulnérable elle-même dans cet instant, un appel muet à être reconnue, respectée — un appel qui ne dépend pas de ce qu'elle pense de toi, ni de ce que tu ressens face à elle, mais qui s'impose dès qu'un visage humain se trouve devant toi.
 
 > **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne confonds jamais le **visage** de Levinas avec le **regard** de Sartre. Le regard sartrien objective, menace ma liberté, m'enferme dans une image que je n'ai pas choisie — il installe un rapport de force. Le visage lévinassien, au contraire, n'objective rien : il résiste à toute réduction, il commande sans contraindre par la force, et il fonde ma responsabilité au lieu de menacer ma liberté. Les deux auteurs partent d'une même intuition — autrui n'est pas un simple objet — mais en tirent des conséquences opposées : conflit chez Sartre, responsabilité chez Levinas.
+
+[[checkpoint:cp-r5-rupture]]
 
 ---
 
@@ -262,14 +274,21 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer que j'ai besoin d'autrui — il fait *fonctionner* le mécanisme précis de Hegel (la reconnaissance qui confirme la conscience de soi) avant d'y ajouter celui de Sartre (le regard qui révèle une dimension inaccessible à l'introspection seule). Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — ce même regard qui révèle peut-il aussi, dans le même mouvement, devenir une menace ?
 
-#### À toi de continuer
+### Exercice de type bac
 
-Rédige maintenant, à ton tour :
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il porte sur la connaissance certaine d'autrui : à toi de
+mobiliser ce que tu sais déjà sur le problème des autres consciences et sur
+l'aprésentation (R1) pour l'affronter.
 
-1. Un paragraphe de la partie II (l'antithèse), en t'appuyant sur le conflit des regards chez Sartre (R4) et sur le sens exact de « l'enfer, c'est les autres ».
-2. Un paragraphe de la partie III (le dépassement), en choisissant SOIT l'angle lévinassien (le visage qui oblige), SOIT l'angle kantien (traiter l'humanité comme une fin) — pas les deux à la fois dans un seul paragraphe.
+[[exercise:r-bac]]
 
-Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
+### Une variation pour ne pas mémoriser
 
-- *Puis-je vraiment connaître autrui ?*
-- *Le respect d'autrui limite-t-il ma liberté, ou la fonde-t-il ?*
+Ce second exercice, construit pour cette leçon, revient sur le terrain déjà
+connu de R2 (Hegel) — sous un habillage différent (une citation construite
+pour l'entraînement, sans le récit narratif du maître et de l'esclave). Le
+but n'est pas d'apprendre autre chose : c'est de reconnaître que la même
+argumentation s'applique quand l'habillage change.
+
+[[exercise:r-variation]]

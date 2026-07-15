@@ -1,0 +1,357 @@
+# Attempt-first exercises (summit-conversion campaign). Rendered by
+# AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md: the
+# student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the
+# full philosophical argument in prose — thèse identification, argument
+# analysis, position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (per the recipe addendum's decision
+# rule): docs/sujets/philo/autrui.md carries exactly ONE verified entry for
+# this notion — "2024 — session normale — Sujet 2 (قولة)", statut
+# « vérifié — re-fetch indépendant + diff conforme (agent-vérificateur,
+# 2026-07-15) », source profsalmi. Unlike la-liberte (which had TWO verified
+# texts and could reuse the second one for r-variation), this notion has
+# only one — so per the recipe's fallback rule, r-variation is a FRESH
+# fabricated twin, `status: not-applicable`, rather than a second sourced
+# text. To respect the addendum's caution against fabricating "bad
+# philosophy" (a philosophical paraphrase can subtly misstate a thesis with
+# nothing to catch it, unlike a maths/PC twin), r-variation is written as an
+# HONESTLY-LABELLED constructed practice exercise (French only, no invented
+# Arabic original dressed up as a translated bac citation — a real Moroccan
+# bac text IS bilingual by provenance; a fabricated one has no business
+# pretending to be) — mirroring how R4/R7 of this same lesson.md already
+# labels its own training subject "not presented as an authentic national
+# exam subject". Its angle is Hegel's dialectic of recognition (R2) — an
+# axis this lesson's own rungs already teach in full, per the addendum's
+# rule for the fabricated-fallback case ("pick the sujet whose axis the
+# lesson's own rungs already teach, so it doesn't smuggle in new content").
+# r-bac's own axis (معرفة الغير — knowledge of autrui, certainty, access to
+# another's interiority) maps directly onto R1 (Husserl, the problème des
+# autres consciences, aprésentation) — also already taught, so neither
+# exercise opens an axis this lesson's body doesn't cover (unlike
+# la-liberte's Bakounine r-bac, which needed a dedicated priming
+# checkpoint); no equivalent priming checkpoint was added here for that
+# reason — see checkpoints.yaml's header for what WAS prioritized instead
+# (the item-bank's thinnest/zero-coverage models).
+
+notion: autrui
+
+exercises:
+  # ── r-bac — VERIFIED 2024 session normale sujet (قولة) ───────────────────
+  # Faithful transcription of docs/sujets/philo/autrui.md → "2024 — session
+  # normale — Sujet 2 (قولة)". Real bac text, not built for this lesson.
+  # Arabic + French copied verbatim from the sujets-bank file (verified
+  # programmatically — see the task's verification pass, not eyeballed).
+  - id: r-bac
+    title: "Exercice de type bac — la connaissance certaine d'autrui (قولة, 2024 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — source profsalmi
+        (https://www.profsalmi.com/2024/06/exam-national-falsafa-2bac.html),
+        sujet 2 (قولة) des trois sujets proposés cette session ; texte
+        transcrit intégralement dans docs/sujets/philo/autrui.md (entrée
+        « 2024 — session normale — Sujet 2 (قولة) »), statut « vérifié —
+        re-fetch indépendant + diff conforme (agent-vérificateur,
+        2026-07-15) ». Filière : كل مسالك الشعب العلمية والتقنية والمهنية
+        والأصيلة — الفلسفة, 2 h, coef 2. Aucun AlloSchool element/scan code
+        n'est donné pour cette entrée précise de la banque (contrairement à
+        certaines entrées de la-liberte.md) — la note ci-dessus reprend
+        exactement, et seulement, la provenance que l'entrée fournit
+        réellement, sans en inventer une.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2024 (session normale) —
+      deuxième sujet (une citation à expliquer et discuter) :**
+
+      > « إنني عاجز عن تكوين معرفة أكيدة عن الغير لأنني لا أدري ما يدور
+      > بداخله. »
+      >
+      > المطلوب : انطلاقا من القولة، بيّن ما إذا كانت المعرفة اليقينية
+      > بالغير تقتضي بالضرورة الاطلاع على أعماقه.
+
+      **Traduction de travail française :**
+
+      > « Je suis incapable de former une connaissance certaine d'autrui,
+      > parce que je ne sais pas ce qui se passe en son for intérieur. »
+      >
+      > Consigne : à partir de cette citation, montre si la connaissance
+      > certaine d'autrui exige nécessairement d'accéder à son intériorité
+      > (ses profondeurs).
+
+      Cette citation pose, dans le vocabulaire même du sujet, exactement ce
+      que R1 appelle le problème des autres consciences : peux-tu être
+      assuré qu'il existe, derrière le corps que tu perçois, une vie
+      intérieure comparable à la tienne ? Le texte pousse la question plus
+      loin qu'une simple affirmation d'incertitude : il en fait une
+      IMPOSSIBILITÉ ("je suis incapable"), et la consigne te demande de
+      juger si cette impossibilité est bien nécessaire — ou si Husserl,
+      vu en R1, offre un chemin que la citation ne mentionne pas.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse"
+        stem: |-
+          Formule en une phrase précise ce que la citation affirme : selon
+          elle, pourquoi une connaissance certaine d'autrui serait-elle
+          impossible ? Sur quelle raison précise la citation appuie-t-elle
+          cette impossibilité ?
+        reasoning: |-
+          La citation est construite comme une inférence resserrée : « je
+          suis incapable de former une connaissance certaine d'autrui »
+          (la conclusion) « parce que je ne sais pas ce qui se passe en son
+          for intérieur » (la raison). La thèse n'est donc pas un simple
+          constat d'ignorance ponctuelle — c'est une impossibilité de
+          principe : toute connaissance CERTAINE d'autrui exigerait un accès
+          à son for intérieur ; or cet accès n'existe pas ; donc la
+          certitude n'existe pas non plus.
+
+          Il faut résister à la tentation de reformuler cette thèse en une
+          version plus faible et plus consensuelle (« on connaît mal
+          autrui ») : le texte dit « incapable », pas « connaît
+          imparfaitement ». C'est cette radicalité — l'impossibilité, pas la
+          simple difficulté — que la consigne te demande ensuite de
+          discuter, pas de contourner.
+      - id: q2
+        part: "Partie 2 — Confronter à Husserl (R1)"
+        stem: |-
+          La citation énonce, sans le nommer, exactement le problème que R1
+          appelle le problème des autres consciences. Rappelle ce que
+          Husserl répond à ce problème avec l'aprésentation — puis explique
+          en quoi la citation, prise à la lettre, semble ignorer cette
+          réponse.
+        reasoning: |-
+          Le « for intérieur » que la citation dit inaccessible, c'est
+          exactement ce que R1 appelle la conscience d'autrui : « de ta
+          propre conscience... tu as un accès direct. Mais de la conscience
+          d'autrui, tu n'as et n'auras jamais qu'un accès indirect. » Sur ce
+          point précis, la citation et Husserl s'accordent entièrement — ni
+          l'un ni l'autre ne prétend qu'un accès direct existe.
+
+          Mais Husserl ne s'arrête pas à ce constat d'inaccessibilité : il
+          construit, avec l'aprésentation, un mécanisme par lequel j'attribue
+          quand même, par analogie avec mon propre corps vécu, une vie
+          intérieure PROBABLE à autrui — une attribution raisonnable, pas
+          une preuve, mais pas rien non plus. La citation, en passant
+          directement de « je n'ai pas accès à son for intérieur » à « je
+          suis incapable de toute connaissance certaine », semble ignorer
+          cette étape intermédiaire : elle traite l'absence de certitude
+          absolue comme s'il ne restait alors plus rien du tout à connaître.
+      - id: q3
+        part: "Partie 3 — Discuter la consigne : la certitude exige-t-elle l'accès à l'intériorité ?"
+        stem: |-
+          La consigne demande explicitement : la connaissance certaine
+          d'autrui exige-t-elle NÉCESSAIREMENT d'accéder à son intériorité ?
+          Distingue deux lectures possibles de cette question, et prends
+          position en t'appuyant sur R1.
+        reasoning: |-
+          Une première lecture accepte la prémisse implicite de la citation :
+          "connaissance" = "connaissance certaine, absolue" ; dans ce cas,
+          oui, elle exigerait l'accès à l'intériorité, et cet accès
+          n'existant pas, la citation a raison — c'est un tout ou rien.
+
+          Une seconde lecture, celle que R1 permet de construire, distingue
+          deux exigences qu'on a fondues en une seule : la CERTITUDE absolue
+          d'un côté, la CONNAISSANCE raisonnable de l'autre. L'aprésentation
+          husserlienne ne donne jamais la première — Husserl ne prétend à
+          aucun moment que l'analogie prouve quoi que ce soit avec
+          certitude. Mais elle donne bien la seconde : une attribution
+          fondée, appuyée sur la ressemblance des corps vécus, qui n'a rien
+          d'arbitraire même si elle reste faillible.
+
+          Le point à assumer clairement : R1 ne réfute pas la citation sur
+          le terrain de la certitude — Husserl te donnerait raison sur ce
+          point précis, aucune certitude absolue n'existe. Il déplace le
+          terrain : la question n'est peut-être pas la bonne, si elle exige
+          d'entrée de jeu une certitude que même la connaissance de soi
+          n'atteint pas toujours parfaitement.
+      - id: q4
+        part: "Partie 4 — Élargir : la relation à autrui dépend-elle de cette certitude ?"
+        stem: |-
+          Même en admettant qu'aucune connaissance certaine d'autrui n'est
+          possible, ma relation à lui en dépend-elle entièrement ? Mobilise
+          au moins un autre auteur de la leçon (Hegel, Sartre ou Levinas)
+          pour nuancer la portée de la citation.
+        reasoning: |-
+          La citation raisonne comme si tout rapport à autrui passait
+          d'abord par une CONNAISSANCE de lui — et comme si l'échec de cette
+          connaissance emportait tout le reste. Or plusieurs positions de la
+          leçon montrent des rapports à autrui qui ne dépendent pas
+          d'abord d'une connaissance certaine de son for intérieur.
+
+          Hegel (R2) : ma conscience de moi-même se construit dans la
+          RECONNAISSANCE par une autre conscience — un rapport qui suppose
+          qu'autrui existe comme conscience, pas que je connaisse le détail
+          de son for intérieur. Sartre (R3) : la honte au trou de la
+          serrure me révèle que j'existe pour un regard, sans que j'aie
+          besoin de savoir CE QUE cet autre pense précisément de moi — le
+          simple fait d'être regardé suffit. Levinas (R5) : le visage
+          m'oblige avant toute connaissance, justement parce qu'il précède
+          la connaissance plutôt que d'en dépendre.
+
+          Le point à ne pas manquer : ces trois positions ne contredisent
+          pas la citation sur le terrain qu'elle choisit (la connaissance
+          certaine du for intérieur reste hors de portée) — elles montrent
+          plutôt que ce terrain n'épuise pas tout le rapport à autrui. La
+          citation a raison sur l'impossibilité qu'elle affirme ; elle a
+          tort si on en tire que rien, dans mon rapport à autrui, ne
+          resterait alors solide.
+
+  # ── r-variation — FABRICATED twin (not-applicable), only one verified ────
+  # text exists for this notion (see file header). Angle: Hegel's dialectic
+  # of recognition (R2), an axis this lesson's own rungs already teach in
+  # full — chosen per the recipe's fallback rule for exactly this case.
+  # Honestly labelled as a constructed exercise, not dressed up as a
+  # translated bac citation (see file header for why).
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — autrui et la conscience de soi (Hegel, exercice construit)"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Exercice construit pour cette leçon, sur le modèle d'un sujet-citation
+        — pas tiré des annales. docs/sujets/philo/autrui.md ne compte qu'UNE
+        seule entrée vérifiée pour cette notion (voir r-bac) ; per la règle
+        de repli de l'addendum philo du recipe, une seconde citation
+        fabriquée est préférable à une réutilisation forcée du même texte
+        vérifié, à condition d'être honnêtement étiquetée `not-applicable`
+        et de ne mobiliser qu'un axe déjà enseigné par la leçon (ici, R2,
+        Hegel) plutôt que d'introduire un contenu nouveau non couvert par
+        les rungs.
+    intro: |-
+      **Exercice construit pour cette leçon** — ce sujet n'est pas tiré des
+      annales nationales : il te permet de retravailler, sous un angle
+      différent, un axe déjà enseigné (R2, Hegel).
+
+      > « Une conscience seule, face à des choses qui ne peuvent jamais la
+      > regarder en retour, ne parvient jamais à se prouver à elle-même
+      > qu'elle existe comme sujet : c'est seulement dans la rencontre d'une
+      > autre conscience, capable de la reconnaître, qu'elle atteint cette
+      > certitude. »
+
+      Consigne : à partir de cette citation, explique en quel sens autrui
+      serait, selon cette thèse, une CONDITION plutôt qu'un obstacle à ma
+      propre conscience de moi-même — puis discute les limites de cette
+      thèse à la lumière d'un autre auteur de la leçon.
+
+      Contrairement à r-bac, cette citation ne t'emmène pas sur un axe
+      nouveau : c'est exactement le terrain de R2 (Hegel, la dialectique de
+      la reconnaissance). Le but n'est pas d'apprendre autre chose, c'est de
+      reconnaître que la même argumentation s'applique à un habillage
+      différent — une citation construite pour l'entraînement, sans le récit
+      narratif du maître et de l'esclave que R2 développe en détail.
+    questions:
+      - id: q1
+        part: "Partie 1 — Comprendre la citation"
+        stem: |-
+          Reformule la thèse de la citation en une phrase, puis explique
+          contre quelle intuition spontanée elle s'oppose.
+        reasoning: |-
+          L'intuition spontanée serait qu'une conscience puisse se suffire à
+          elle-même : je sais que j'existe et que je pense, cela devrait me
+          suffire, sans avoir besoin d'un regard extérieur pour me le
+          confirmer. La citation affirme l'inverse : une conscience "seule",
+          face à des objets incapables de la regarder en retour, ne parvient
+          jamais à se prouver à elle-même qu'elle existe comme sujet.
+
+          C'est très exactement la thèse de Hegel telle que R2 la formule :
+          « une conscience de soi ne peut atteindre la certitude d'elle-même
+          qu'en étant reconnue par une autre conscience de soi. » Le mot clé
+          de la citation, « regarder en retour », traduit en langage courant
+          ce que R2 appelle la reconnaissance : une chose ne me reconnaît
+          jamais, elle subit seulement d'être regardée — pour obtenir cette
+          confirmation, il me faut une AUTRE conscience.
+      - id: q2
+        part: "Partie 2 — Mobiliser Hegel plus précisément"
+        stem: |-
+          R2 ne s'arrête pas à cette thèse générale : elle construit un
+          récit précis (la lutte à mort, le maître, l'esclave) pour montrer
+          COMMENT cette reconnaissance s'obtient, et pourquoi elle échoue
+          souvent. Résume ce mécanisme, et explique ce qu'il ajoute à la
+          citation.
+        reasoning: |-
+          La citation dit QUE la reconnaissance est nécessaire ; R2 explique
+          POURQUOI elle est difficile à obtenir. Quand deux consciences se
+          rencontrent, chacune cherche à être reconnue, mais aucune n'est
+          prête d'emblée à reconnaître l'autre en retour — d'où une lutte à
+          mort pour la reconnaissance. Cette lutte rencontre une impasse
+          logique : un être mort ne reconnaît plus rien, donc la victoire
+          par la mort de l'adversaire s'annule elle-même. Elle se résout par
+          la soumission de l'un des deux, qui devient l'esclave du vainqueur,
+          le maître.
+
+          Ce que ce récit ajoute à la citation : même quand une reconnaissance
+          est obtenue, elle peut être défectueuse. Le maître obtient une
+          reconnaissance, mais d'un être qu'il ne reconnaît pas lui-même
+          comme un égal — une reconnaissance qui, de l'aveu même de R2, "ne
+          vaut presque rien". La citation, prise seule, pourrait laisser
+          croire que N'IMPORTE QUELLE reconnaissance suffit à fonder la
+          certitude de soi ; R2 précise que non : seule une reconnaissance
+          MUTUELLE satisfait authentiquement une conscience de soi.
+      - id: q3
+        part: "Partie 3 — Discuter avec Sartre (R3-R4)"
+        stem: |-
+          Sartre reprend l'intuition que j'ai besoin d'autrui pour accéder à
+          une part de moi-même — mais il y ajoute un revers que la citation
+          hégélienne ne mentionne pas. Lequel ? En quoi complique-t-il
+          l'idée qu'autrui soit simplement une « condition » ?
+        reasoning: |-
+          Sartre (R3) prolonge l'intuition hégélienne : par le regard
+          effectif d'un autre, je découvre une dimension de mon être — le
+          moi-pour-autrui — qu'aucune introspection solitaire ne pourrait
+          jamais me révéler seule. Jusqu'ici, cela confirme la citation :
+          autrui reste bien une condition, pas un obstacle.
+
+          Mais R4 ajoute un revers : ce même regard qui me révèle à
+          moi-même me transforme aussi, dans le même mouvement, en objet
+          figé dans le monde de l'autre. Les deux consciences ne peuvent pas
+          occuper simultanément la position de sujet : si je suis regardé,
+          je deviens objet dans le monde d'autrui, exactement comme il
+          devient objet dans le mien si je le regarde à mon tour.
+
+          Ce que cela complique dans la citation : dire qu'autrui est la
+          « condition » de ma conscience de moi-même reste vrai, mais
+          incomplet, si l'on n'ajoute pas que cette même condition m'expose
+          structurellement à devenir un objet fixé dans une image que je
+          n'ai pas choisie — le prix, chez Sartre, de cette confirmation
+          par autrui n'est jamais nul.
+      - id: q4
+        part: "Partie 4 — Esquisser une réponse argumentée (méthode de R7)"
+        stem: |-
+          En t'appuyant sur la méthode construite en R7 (analyse des termes,
+          problématique, plan dialectique), esquisse en quelques lignes
+          comment répondre à la consigne : autrui est-il, selon cette
+          citation, une condition plutôt qu'un obstacle à ma conscience de
+          moi-même ?
+        reasoning: |-
+          Analyse des termes : « se prouver à elle-même qu'elle existe comme
+          sujet » désigne ce que R2 appelle la certitude de soi, distincte
+          de la simple existence — une conscience pourrait exister sans
+          jamais atteindre cette certitude confirmée. Problématique :
+          si autrui est nécessaire à cette certitude (R2, R3), comment
+          concilier cela avec le fait que ce même autrui, par son regard,
+          m'expose aussi à devenir un objet dans son monde (R4) — faut-il
+          alors continuer à parler d'autrui comme d'une simple
+          « condition », sans reste ?
+
+          Plan dialectique esquissé : **I. Thèse** — autrui est bien la
+          condition de ma conscience de moi-même : seule une autre
+          conscience peut me reconnaître, là où les choses ne font que
+          subir mon regard (Hegel, R2). **II. Antithèse** — cette
+          reconnaissance est risquée et parfois défectueuse : la lutte à
+          mort peut aboutir à une reconnaissance asymétrique qui ne
+          satisfait pas (Hegel, R2), et même réussie, elle m'expose au
+          conflit des regards décrit par Sartre (R4). **III. Dépassement**
+          — ce n'est donc pas la simple présence d'autrui qui fait de lui
+          une condition ou un obstacle, mais la façon dont la relation se
+          noue : une reconnaissance mutuelle plutôt qu'asymétrique (R2), un
+          rapport transformé en responsabilité plutôt qu'en pur conflit
+          (R5, R6). Retiens la structure, pas seulement le contenu : c'est
+          le même mouvement thèse/antithèse/dépassement pratiqué en R7 sur
+          un sujet différent — reconnaître cette structure sous un nouvel
+          habillage est tout le but de cette variation.

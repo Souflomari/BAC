@@ -1,6 +1,291 @@
 notion: autrui
 skill_code: philo_autrui
-misconceptions: []
+
+# Misconception inventory — summit-conversion campaign. This file previously
+# carried `misconceptions: []` and no `misconception:` tag on any distractor
+# (the same Gap-4-shaped state la-liberte's items.yaml was found in before
+# its own retrofit). Built from scratch, per the recipe's philo addendum, by
+# mining the lesson's own "Erreur à éviter" / "Point de vigilance" boxes
+# FIRST (R1 Husserl, R2 Hegel, R3 Sartre, R4 "l'enfer c'est les autres", R5
+# Levinas, R6 Kant — six boxes, most naming TWO distinct confusions each),
+# then adding cross-cutting models the lesson's prose makes central but no
+# box names explicitly (R0's opening "double question", the recurring
+# cross-author mis-attribution/conflation pattern this seven-author notion
+# invites, R7's method errors). Id convention: mc.philo.<slug>.<name>, where
+# <slug> is skill_code with the "philo_" prefix stripped (philo_autrui →
+# autrui) — matches la-liberte (mc.philo.liberte.*) and analyse-de-texte
+# (mc.philo.analyse_texte.*). Every one of the 72 distractors across the 24
+# legacy items (AUT-1..AUT-24) now carries a real misconception id (no null
+# tags) — stricter than house default, matching the task's instruction.
+misconceptions:
+  - id: mc.philo.autrui.gene-sociale-reduction
+    label: "« Ce n'est qu'une gêne sociale ordinaire, propre à cette personne précise »"
+    description: >-
+      L'élève réduit le phénomène de R0 (le basculement au moment où l'on se
+      sait regardé) à une gêne psychologique banale, liée à la personne
+      précise qui surprend et à son jugement redouté — sans voir que le même
+      effondrement se produit devant un inconnu, ce qui exclut une
+      explication purement personnelle.
+    contradicts_principle: >-
+      Le même effondrement se produit aussi devant un inconnu croisé par
+      hasard, dont on n'a, en toute rigueur, aucune raison particulière de
+      redouter le jugement — la gêne n'est donc pas d'abord affaire de la
+      personne qui entre, mais du fait même d'être regardé.
+
+  - id: mc.philo.autrui.double-question-reduite
+    label: "« La double question de R0 se réduit en réalité à une seule »"
+    description: >-
+      L'élève collapse la tension à deux volets posée par R0 — le statut
+      d'autrui (semblable ou radicalement inaccessible) ET son rapport à ma
+      liberté (menace ou condition) — en une seule question, ou substitue un
+      vocabulaire technique (perception directe/indirecte) que le texte
+      n'a pas encore introduit à ce stade.
+    contradicts_principle: >-
+      R0 pose deux tensions distinctes que la leçon va construire pièce par
+      pièce : le statut d'autrui, et son rapport à ma liberté — les fondre
+      en une seule, ou plaquer sur R0 un vocabulaire de rung ultérieur,
+      manque la structure même de l'accroche.
+
+  - id: mc.philo.autrui.apresentation-mal-comprise
+    label: "« L'aprésentation husserlienne, c'est une perception directe, une pure imagination, ou une preuve certaine »"
+    description: >-
+      L'élève surestime ou dénature le mécanisme husserlien de
+      l'aprésentation — en le traitant comme un accès direct et sans
+      intermédiaire à la conscience d'autrui, comme une libre invention sans
+      fondement dans la ressemblance des corps vécus, ou comme une preuve
+      logique rigoureuse plutôt qu'une attribution seulement raisonnable.
+    contradicts_principle: >-
+      Je ne perçois jamais directement que le corps d'autrui ; j'attribue,
+      par un transfert d'analogie fondé sur la ressemblance des corps vécus
+      — ni perception directe, ni libre imagination —, une vie intérieure
+      probable, sans jamais obtenir de preuve absolue.
+
+  - id: mc.philo.autrui.alter-ego-mal-compris
+    label: "« Autrui est un pur objet sans vie intérieure, ou au contraire purement identique à moi »"
+    description: >-
+      L'élève rate l'équilibre propre du concept husserlien d'alter ego —
+      soit en traitant autrui comme un pur objet parmi les objets du monde,
+      sans vie intérieure attribuable, soit à l'inverse en le traitant comme
+      rigoureusement identique à moi, sans la moindre altérité de
+      perspective ou de vécu qui lui resterait propre.
+    contradicts_principle: >-
+      Husserl refuse les deux issues faciles : autrui m'apparaît comme un
+      alter ego — un AUTRE moi-même, semblable à moi par la structure de son
+      corps vécu, mais jamais réductible à moi, puisque sa conscience
+      demeure un centre d'expérience que je ne vis jamais moi-même à sa
+      place.
+
+  - id: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
+    label: "« La dialectique du maître et de l'esclave, réduite à une domination sociale ou mal comprise dans son mécanisme »"
+    description: >-
+      L'élève réduit la dialectique hégélienne à une simple leçon de
+      domination sociale ou économique historique (voire une allégorie de
+      l'esclavage au sens strict), ou mécomprend la mécanique même de la
+      lutte à mort — qui la gagne, pourquoi elle ne peut s'achever par la
+      mort, en quel sens l'impasse est logique et non morale, légale ou
+      physique.
+    contradicts_principle: >-
+      C'est un mouvement universel de la conscience de soi, pas une leçon de
+      domination sociale ; et l'impasse de la lutte à mort est logique, pas
+      morale ni physique : un être mort ne reconnaît plus rien ni personne,
+      la reconnaissance obtenue par sa mort s'annulant elle-même.
+
+  - id: mc.philo.autrui.maitre-satisfait-par-reconnaissance
+    label: "« Le maître obtient, par la lutte, une reconnaissance qui le satisfait pleinement »"
+    description: >-
+      L'élève croit que le maître, ayant gagné la lutte à mort et étant
+      reconnu par l'esclave, obtient par là une reconnaissance qui le
+      satisfait réellement — sans voir que cette reconnaissance est
+      structurellement asymétrique et donc vide.
+    contradicts_principle: >-
+      Une reconnaissance obtenue d'un être qu'on ne reconnaît pas soi-même
+      comme un égal ne vaut presque rien : le maître reste, paradoxalement,
+      insatisfait dans la certitude même qu'il croyait avoir obtenue —
+      précisément parce que sa victoire est asymétrique.
+
+  - id: mc.philo.autrui.honte-mal-comprise
+    label: "« La honte sartrienne n'est qu'une peur de sanction, ou n'est pas un sentiment réellement vécu »"
+    description: >-
+      L'élève réduit la honte décrite par Sartre au trou de la serrure à une
+      peur ordinaire d'être puni par une personne précise, ou la traite
+      comme une construction purement intellectuelle, dépourvue de toute
+      dimension affective réellement vécue.
+    contradicts_principle: >-
+      La honte peut surgir même en l'absence totale de risque de sanction :
+      elle révèle simplement, de façon immédiate et vécue, la reconnaissance
+      que j'existe, à cet instant, comme l'objet du regard d'un autre.
+
+  - id: mc.philo.autrui.sartre-reduit-hegel
+    label: "« Sartre ne fait que reprendre Hegel à l'identique »"
+    description: >-
+      L'élève traite l'apport sartrien (la honte, le médiateur indispensable
+      entre moi et moi-même) comme une simple répétition de la
+      reconnaissance hégélienne, sans voir le conflit propre que Sartre y
+      ajoute, ou confond directement les deux mécanismes (honte comme
+      recherche d'approbation).
+    contradicts_principle: >-
+      Si Hegel construit un mouvement de reconnaissance mutuelle possible,
+      Sartre, en prolongeant cette intuition, insiste au contraire sur un
+      conflit presque inévitable entre ma liberté de regarder et celle
+      d'autrui qui me regarde — deux mécanismes distincts, pas un seul.
+
+  - id: mc.philo.autrui.moi-pour-autrui-seul
+    label: "« Le moi-pour-autrui est atteignable par la seule introspection, ou n'existe pas réellement »"
+    description: >-
+      L'élève sous-estime ou sur-estime le rôle du regard effectif d'un
+      autre dans la révélation du "moi-pour-autrui" sartrien — en niant
+      toute introspection possible, en croyant qu'une réflexion solitaire
+      suffisamment poussée pourrait l'atteindre seule, ou en la traitant
+      comme une pure fiction sans réalité.
+    contradicts_principle: >-
+      Cette dimension de mon être n'existe, structurellement, que dans et
+      par le regard effectif d'un autre : aucune réflexion sur moi-même,
+      aussi poussée soit-elle, ne peut la faire apparaître à elle seule.
+
+  - id: mc.philo.autrui.revelation-objectivation-opposees
+    label: "« La révélation de R3 et l'objectivation de R4 se contredisent »"
+    description: >-
+      L'élève traite la révélation d'une part de moi-même par le regard
+      d'autrui (R3) et l'objectivation qui me fige dans une image non
+      choisie (R4) comme deux thèses contradictoires — l'une réfutant
+      l'autre — plutôt que comme deux effets simultanés du même mécanisme du
+      regard.
+    contradicts_principle: >-
+      R3 et R4 décrivent deux effets simultanés du même regard : la
+      révélation d'une part de moi-même et l'objectivation qui me fige dans
+      une image non choisie — le second ne dément ni n'annule le premier.
+
+  - id: mc.philo.autrui.conflit-libertes-mal-compris
+    label: "« Le conflit sartrien des libertés est une hiérarchie fixe, ou une question de coprésence physique »"
+    description: >-
+      L'élève mécomprend la structure du conflit sartrien — en supposant une
+      hiérarchie naturelle entre deux consciences, en littéralisant
+      l'alternance sujet/objet comme une question de coexistence physique
+      dans une pièce, ou en niant l'égale liberté des deux consciences en
+      présence.
+    contradicts_principle: >-
+      Si je regarde autrui, c'est lui qui devient objet dans mon monde ; s'il
+      me regarde en retour, c'est moi qui redeviens objet dans le sien — il
+      n'existe aucune position stable où les deux resteraient sujets en même
+      temps, et le conflit existe précisément parce que les deux consciences
+      sont également libres.
+
+  - id: mc.philo.autrui.enfer-mal-interprete
+    label: "« L'enfer, c'est les autres » lu comme plainte ordinaire ou châtiment religieux"
+    description: >-
+      L'élève lit la formule de Sartre comme une simple plainte sur le
+      caractère pénible de la compagnie d'autrui (avec la solitude comme
+      remède, ou la domination préventive comme stratégie), ou comme un
+      châtiment religieux littéral, plutôt que comme la dépendance
+      structurelle envers un regard qu'on ne contrôle jamais.
+    contradicts_principle: >-
+      La formule désigne la dépendance structurelle envers un regard qui me
+      fige dans une image que je n'ai pas choisie et que je ne peux jamais
+      reprendre en main — ni une plainte sur la fréquentation d'autrui, ni
+      un encouragement à la solitude ou à la domination préventive.
+
+  - id: mc.philo.autrui.visage-regard-confondus
+    label: "« Le visage lévinassien et le regard sartrien désignent le même phénomène »"
+    description: >-
+      L'élève traite le visage de Levinas et le regard de Sartre comme des
+      synonymes, ou inverse leurs effets respectifs (le visage engendrant un
+      conflit, le regard fondant une responsabilité) — manquant que les deux
+      auteurs tirent des conséquences opposées d'une même intuition de
+      départ.
+    contradicts_principle: >-
+      Le regard sartrien objective autrui et menace ma liberté, engendrant
+      un conflit entre deux consciences ; le visage lévinassien, lui, ne
+      m'objective ni ne me menace : il commande une responsabilité
+      asymétrique qui précède tout choix.
+
+  - id: mc.philo.autrui.visage-apparence-physique
+    label: "« Le visage de Levinas, c'est le visage physique — traits, expression, catégorie sociale »"
+    description: >-
+      L'élève réduit le concept lévinassien de visage à l'apparence physique
+      descriptible (forme, traits, expression) ou à une catégorie/un rôle
+      social attribuable d'emblée — manquant que le visage désigne
+      précisément ce qui, en autrui, résiste à toute réduction de ce genre.
+    contradicts_principle: >-
+      Il ne s'agit pas du visage au sens physique, descriptible — ce
+      visage-là resterait un objet parmi d'autres. Le visage, chez Levinas,
+      désigne ce par quoi autrui échappe à toute totalisation : sa
+      vulnérabilité nue, qui déborde toujours ce que j'en ai saisi.
+
+  - id: mc.philo.autrui.responsabilite-symetrisee
+    label: "« La responsabilité lévinassienne est mutuelle, comme la reconnaissance hégélienne »"
+    description: >-
+      L'élève traite la responsabilité asymétrique de Levinas comme une
+      reconnaissance mutuelle à construire à deux (sur le modèle hégélien),
+      ou inverse le sens de l'obligation en exigeant qu'autrui me reconnaisse
+      en premier — manquant le caractère à sens unique de cette
+      responsabilité.
+    contradicts_principle: >-
+      Chez Hegel, la reconnaissance qui fonde authentiquement la conscience
+      de soi doit être mutuelle, construite à deux ; chez Levinas, la
+      responsabilité est asymétrique — je suis responsable d'autrui
+      indépendamment de ce que lui-même fait ou ne fait pas en retour.
+
+  - id: mc.philo.autrui.kant-formule-mal-comprise
+    label: "« Traiter l'humanité comme une fin interdit tout usage instrumental d'autrui »"
+    description: >-
+      L'élève méconnaît la formule kantienne exacte — en croyant qu'elle
+      interdit tout usage d'autrui comme moyen (même légitime), en la
+      restreignant aux seuls inconnus, en la subordonnant à la légalité, ou
+      en niant purement que Kant ait quoi que ce soit écrit sur autrui ou
+      son existence.
+    contradicts_principle: >-
+      Kant n'interdit pas d'utiliser autrui pour quoi que ce soit : il
+      interdit de le réduire ENTIÈREMENT à un instrument, sans jamais le
+      traiter aussi comme une fin en soi, digne de respect — la formule
+      exacte est « jamais SIMPLEMENT comme un moyen ».
+
+  - id: mc.philo.autrui.questions-auteurs-confondues
+    label: "« Les questions distinctes des différents auteurs se fondent en une seule »"
+    description: >-
+      L'élève aplatit les questions de nature différente posées par les
+      auteurs de la leçon — connaissance d'autrui (Husserl), structure de la
+      rencontre des consciences (Hegel, Sartre), responsabilité qui précède
+      tout choix (Levinas), règle d'action valable quelle que soit la
+      réponse aux questions précédentes (Kant) — en une seule et même
+      question, ou substitue la question d'un auteur à celle, distincte, que
+      pose réellement un autre.
+    contradicts_principle: >-
+      Husserl demande comment je connais qu'autrui existe comme conscience ;
+      Hegel et Sartre décrivent ce qui se joue dans la rencontre des
+      consciences ; Levinas fonde une responsabilité qui précède tout choix ;
+      Kant prescrit une règle d'action valable quelle que soit la réponse aux
+      questions précédentes — quatre niveaux de questions à ne pas fondre en
+      un seul.
+
+  - id: mc.philo.autrui.auteurs-mal-attribues
+    label: "« Tel concept ou telle formule appartient en réalité à un autre auteur »"
+    description: >-
+      L'élève attribue au mauvais auteur un concept ou une formule précise
+      de la leçon — l'aprésentation confondue avec un mécanisme sartrien, «
+      l'enfer, c'est les autres » attribuée à Hegel, le travail de l'esclave
+      prêté à Sartre, la formule morale de Kant attribuée à Levinas, ou
+      inversement.
+    contradicts_principle: >-
+      Chaque concept appartient à un auteur précis et à un mécanisme précis
+      de la leçon — l'aprésentation à Husserl, la dialectique et le travail
+      de l'esclave à Hegel, la honte et « l'enfer, c'est les autres » à
+      Sartre, le visage et l'ordre qui précède le choix à Levinas, traiter
+      l'humanité comme une fin à Kant — les confondre manque la spécificité
+      du mécanisme de chacun.
+
+  - id: mc.philo.autrui.methode-dissertation-mal-appliquee
+    label: "« Les gestes de la méthode — problématiser, construire un plan, juger la pertinence d'un auteur — sont mal appliqués »"
+    description: >-
+      L'élève applique mécaniquement ou mal les gestes méthodologiques de
+      R7 : traiter une simple répétition du sujet ou une question à un seul
+      terme comme une véritable problématique, exiger qu'elle annonce déjà
+      la réponse finale, ou juger à tort qu'un auteur ou une partie du plan
+      n'a aucun rapport avec le sujet traité.
+    contradicts_principle: >-
+      Une problématique met en évidence une tension entre deux positions
+      également légitimes en apparence — elle ne se réduit ni à une
+      répétition du sujet, ni à la définition d'un seul terme, ni à
+      l'annonce anticipée de la réponse finale.
 
 items:
   - id: AUT-1
@@ -17,6 +302,7 @@ items:
       - id: A
         text: "Elle confond Husserl et Sartre : c'est la honte, pas l'aprésentation, qui permettrait un accès direct à la conscience d'autrui."
         correct: false
+        misconception: mc.philo.autrui.auteurs-mal-attribues
         feedback: >
           Ce n'est pas la confusion en jeu ici, et ce n'est de toute façon
           vrai ni de Husserl ni de Sartre : la honte, chez Sartre (R3), ne
@@ -26,6 +312,7 @@ items:
       - id: B
         text: "Elle manque le fait que Husserl nie toute possibilité d'attribuer une vie intérieure à autrui, qui resterait, pour lui, un pur objet parmi les objets du monde."
         correct: false
+        misconception: mc.philo.autrui.alter-ego-mal-compris
         feedback: >
           C'est l'inverse : Husserl refuse justement de traiter autrui comme
           un pur objet -- il explique, par l'analogie des corps vécus,
@@ -38,6 +325,7 @@ items:
       - id: D
         text: "Elle manque le fait que, pour Husserl, autrui n'est pas vraiment un « autre » moi-même mais purement et simplement moi-même, un moi rigoureusement identique au mien, sans la moindre différence de perspective ni de vécu qui lui appartiendrait en propre."
         correct: false
+        misconception: mc.philo.autrui.alter-ego-mal-compris
         feedback: >
           L'alter ego husserlien reste littéralement un AUTRE moi-même :
           semblable à moi par la structure de son corps vécu, mais jamais
@@ -77,6 +365,7 @@ items:
       - id: B
         text: "Parce que le maître, en réalité, perd physiquement le combat contre l'esclave, ce qui rend sa position intenable."
         correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
         feedback: >
           C'est l'inverse dans le récit de Hegel : c'est celui qui a préféré
           la mort à la soumission qui devient le maître. L'insatisfaction du
@@ -85,6 +374,7 @@ items:
       - id: C
         text: "Parce que l'esclave, privé de toute conscience de lui-même par son travail forcé, ne peut littéralement offrir aucune reconnaissance, quelle qu'elle soit."
         correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
         feedback: >
           C'est le contraire : Hegel montre que l'esclave, par son travail --
           en façonnant et en maîtrisant la matière --, développe une
@@ -93,6 +383,7 @@ items:
       - id: D
         text: "Parce que la dialectique du maître et de l'esclave décrit avant tout un rapport historique et social de domination économique entre les classes, sans réelle portée sur la structure de la conscience de soi en général."
         correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
         feedback: >
           Réduire la dialectique à une simple leçon sur la domination
           sociale ou économique manque son enjeu véritable : c'est un
@@ -132,6 +423,7 @@ items:
       - id: A
         text: "Parce que, dans cette scène précise, la personne qui surprend le voyeur est une autorité particulièrement sévère, ce qui rend la peur de la sanction hors de propos."
         correct: false
+        misconception: mc.philo.autrui.honte-mal-comprise
         feedback: >
           L'identité ou la sévérité de la personne qui surprend n'est pas le
           point de Sartre : la honte surgirait structurellement de la même
@@ -141,6 +433,7 @@ items:
       - id: B
         text: "Parce que Sartre nie que la honte soit un sentiment réellement vécu : ce serait, chez lui, une pure construction intellectuelle et abstraite, entièrement dépourvue de la moindre dimension affective ou émotionnelle."
         correct: false
+        misconception: mc.philo.autrui.honte-mal-comprise
         feedback: >
           Sartre décrit au contraire la honte comme un sentiment vécu et
           immédiat, qui envahit la conscience dès le basculement du regard --
@@ -150,6 +443,7 @@ items:
       - id: C
         text: "Parce que la honte, chez Sartre, exprime avant tout le désir d'obtenir la reconnaissance et l'approbation de l'autre, comme chez Hegel."
         correct: false
+        misconception: mc.philo.autrui.sartre-reduit-hegel
         feedback: >
           C'est confondre le mécanisme de Sartre avec celui de Hegel (R2) :
           Hegel décrit une reconnaissance mutuelle recherchée activement ;
@@ -191,6 +485,7 @@ items:
       - id: A
         text: "Elle manque le fait que Sartre recommande, au contraire, de chercher systématiquement à dominer et à devancer le regard de l'autre, afin de le fixer comme objet avant même qu'il ne puisse me regarder et me figer le premier dans ce duel des consciences."
         correct: false
+        misconception: mc.philo.autrui.enfer-mal-interprete
         feedback: >
           Sartre décrit un conflit structurel entre deux libertés qui
           alternent entre regarder et être regardé -- il n'en tire aucune
@@ -202,6 +497,7 @@ items:
       - id: C
         text: "Elle manque le fait que cette formule appartient en réalité à Hegel, dans sa description du maître et de l'esclave."
         correct: false
+        misconception: mc.philo.autrui.auteurs-mal-attribues
         feedback: >
           C'est une mauvaise attribution : « l'enfer, c'est les autres » est
           une réplique de la pièce Huis clos (1944) de Sartre, pas un énoncé
@@ -211,6 +507,7 @@ items:
       - id: D
         text: "Elle manque le fait que Sartre parle ici littéralement d'un châtiment religieux réservé à ceux qui font du mal à autrui."
         correct: false
+        misconception: mc.philo.autrui.enfer-mal-interprete
         feedback: >
           La formule n'a aucun sens religieux ou punitif chez Sartre : elle
           désigne une structure du rapport aux autres consciences (être figé
@@ -248,6 +545,7 @@ items:
       - id: A
         text: "Le visage et le regard sont, chez Levinas comme chez Sartre, deux mots pour désigner exactement le même phénomène de conflit entre consciences."
         correct: false
+        misconception: mc.philo.autrui.visage-regard-confondus
         feedback: >
           Ce ne sont pas des synonymes : les deux auteurs partent bien d'une
           même intuition (autrui n'est pas un simple objet), mais en tirent
@@ -256,6 +554,7 @@ items:
       - id: B
         text: "C'est le regard, chez Sartre, qui fonde une responsabilité asymétrique envers autrui ; c'est le visage, chez Levinas, qui engendre un conflit des libertés."
         correct: false
+        misconception: mc.philo.autrui.visage-regard-confondus
         feedback: >
           C'est l'inverse exact des deux thèses : chez Sartre, c'est le
           regard qui objective et engendre le conflit des libertés (R4) ;
@@ -267,6 +566,7 @@ items:
       - id: D
         text: "Les deux concepts désignent, chez l'un comme chez l'autre, uniquement l'apparence physique et extérieure du visage -- sa forme, ses traits, la couleur des yeux ou de la peau --, indépendamment de toute portée proprement philosophique ou éthique."
         correct: false
+        misconception: mc.philo.autrui.visage-apparence-physique
         feedback: >
           Ni Sartre ni Levinas ne s'arrêtent à l'apparence physique : le
           regard sartrien désigne une structure de la conscience qui
@@ -309,6 +609,7 @@ items:
       - id: B
         text: "Elle manque le fait que Kant autorise, au contraire, de traiter autrui uniquement comme un moyen dès lors que cela reste légal."
         correct: false
+        misconception: mc.philo.autrui.kant-formule-mal-comprise
         feedback: >
           Ce n'est pas non plus la position de Kant : la légalité d'un acte
           ne suffit jamais, chez lui, à en garantir la valeur morale. Le
@@ -318,6 +619,7 @@ items:
       - id: C
         text: "Elle manque le fait que cette formule appartient en réalité à Levinas, et non à Kant."
         correct: false
+        misconception: mc.philo.autrui.auteurs-mal-attribues
         feedback: >
           C'est une erreur d'attribution : traiter l'humanité toujours comme
           une fin, jamais simplement comme un moyen, est une formule de Kant
@@ -327,6 +629,7 @@ items:
       - id: D
         text: "Elle manque le fait que ce principe ne s'appliquerait, chez Kant, qu'aux seules relations avec des inconnus croisés une seule fois, et jamais aux personnes proches que je connais et fréquente de longue date, au quotidien et en qui j'ai toute confiance."
         correct: false
+        misconception: mc.philo.autrui.kant-formule-mal-comprise
         feedback: >
           La formule kantienne vise explicitement « la personne de tout
           autre », sans distinction entre proches et inconnus -- rien, dans
@@ -362,8 +665,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "On ne peut pas ressentir cette gêne face à quelqu'un qu'on connaît bien, comme une sœur -- ce sentiment ne concernerait, par définition, que des inconnus."
+        text: "On ne peut pas ressentir cette gêne face à quelqu'un qu'on connaît déjà très bien, comme une sœur -- ce sentiment ne concernerait, par définition et sans aucune exception possible, que des inconnus rencontrés par hasard."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           Rien dans le texte n'exclut la gêne face à un proche -- c'est même
           la scène de départ (la sœur). Le problème posé n'est pas là.
@@ -371,14 +675,16 @@ items:
         text: "Le même effondrement se produit aussi devant un inconnu croisé par hasard, dont on n'a, en toute rigueur, aucune raison particulière de redouter le jugement."
         correct: true
       - id: C
-        text: "Le texte affirme que cette gêne ne serait jamais un sentiment sincère, mais toujours une comédie jouée pour impressionner autrui."
+        text: "Le texte affirme que cette gêne ne serait jamais un sentiment réellement sincère, mais toujours une comédie savamment jouée pour impressionner ou attendrir autrui, quelle que soit la situation précise dans laquelle elle survient."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           Le texte ne dit jamais cela -- il prend la gêne au sérieux comme un
           phénomène réel, dont il cherche justement à comprendre l'origine.
       - id: D
-        text: "Le texte prouve que la personne qui entre n'avait, en réalité, aucune intention de juger, ce qui rendrait toute gêne injustifiée."
+        text: "Le texte prouve que la personne qui entre n'avait, en réalité, aucune intention de juger, ce qui rendrait toute gêne injustifiée et ramènerait tout le problème à un simple malentendu sur les intentions d'autrui, sans qu'aucune question plus générale ne se pose."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           Le texte ne tranche jamais sur l'intention réelle de la personne
           qui entre -- son argument est que l'effet se produit même face à
@@ -408,12 +714,14 @@ items:
       - id: A
         text: "La seule question posée est de savoir si autrui existe réellement, indépendamment de toute question de liberté."
         correct: false
+        misconception: mc.philo.autrui.double-question-reduite
         feedback: >
           Cela réduit les deux tensions du texte à une seule -- il manque la
           seconde question, sur le rapport entre autrui et ma liberté.
       - id: B
         text: "La question est de savoir si je peux percevoir directement le corps d'autrui, ou seulement son âme."
         correct: false
+        misconception: mc.philo.autrui.double-question-reduite
         feedback: >
           Ce n'est pas la dichotomie posée par R0 -- ce vocabulaire
           appartient à la construction ultérieure de Husserl (R1), pas à la
@@ -422,8 +730,9 @@ items:
         text: "Autrui est-il un autre moi-même semblable au mien, ou son intériorité m'est-elle radicalement inaccessible ; et le rapport à autrui menace-t-il ma liberté, ou est-il ce sans quoi je ne pourrais devenir pleinement moi-même ?"
         correct: true
       - id: D
-        text: "La question est de savoir si autrui me juge positivement ou négativement, et comment obtenir son admiration."
+        text: "La question posée n'est, au fond, que de savoir si autrui me juge positivement ou négativement à cet instant précis, et comment s'y prendre ensuite pour obtenir son admiration ou éviter sa désapprobation -- une préoccupation sociale ordinaire, sans portée philosophique propre."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           Cela réduit la question philosophique à une préoccupation sociale
           ordinaire, alors que R0 vise le statut d'autrui et son rapport à
@@ -451,20 +760,23 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le fait d'avoir enfin obtenu un public pour son exposé, ce qui devrait être une source de fierté plutôt que de gêne."
+        text: "Le fait d'avoir enfin obtenu, sans le chercher, un public réel pour répéter son exposé, ce qui devrait logiquement être vécu comme une source de fierté plutôt que comme une gêne quelconque."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           Cela contredit le sentiment décrit -- l'effondrement, pas la
           fierté -- et ne correspond pas à la seconde réponse citée.
       - id: B
-        text: "Le simple fait d'avoir été interrompu dans son activité, un problème de concentration plus qu'une question philosophique."
+        text: "Le simple fait d'avoir été interrompu dans son activité en cours, un problème pratique de concentration perdue plutôt qu'une véritable question philosophique méritant qu'on s'y attarde davantage."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           C'est plus proche de la première réponse, jugée insuffisante -- la
           seconde va plus loin : exister désormais POUR quelqu'un d'autre.
       - id: C
-        text: "La certitude immédiate d'avoir blessé sa sœur en la dérangeant, ce qui expliquerait la honte ressentie."
+        text: "La certitude immédiate d'avoir blessé sa sœur en la dérangeant en plein exposé, ce qui suffirait à expliquer entièrement la honte ressentie, sans qu'aucune autre dimension du rapport à autrui n'ait besoin d'être invoquée ici."
         correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
         feedback: >
           Le texte ne parle jamais d'une culpabilité envers la sœur -- il
           porte sur la découverte d'exister comme objet regardé.
@@ -498,19 +810,22 @@ items:
       - id: B
         text: "Elle manque le fait que l'aprésentation serait en réalité une perception directe et sans intermédiaire de la conscience d'autrui, qui rendrait tout raisonnement par ressemblance inutile."
         correct: false
+        misconception: mc.philo.autrui.apresentation-mal-comprise
         feedback: >
           C'est l'erreur inverse : pour Husserl, je ne perçois jamais
           directement la conscience d'autrui, seulement son corps.
       - id: C
         text: "Elle manque le fait que, pour Husserl, la ressemblance entre corps ne jouerait aucun rôle : je pourrais tout aussi bien attribuer une conscience à une pierre qu'à un être humain."
         correct: false
+        misconception: mc.philo.autrui.alter-ego-mal-compris
         feedback: >
           C'est l'inverse : c'est la ressemblance des corps vécus qui
           déclenche l'analogie -- Husserl refuse de traiter autrui comme un
           pur objet, tel une pierre.
       - id: D
-        text: "Elle manque le fait que ce transfert par analogie constituerait, chez Husserl, une preuve logique rigoureuse et démonstrative de l'existence d'une conscience chez autrui."
+        text: "Elle manque le fait que ce transfert par analogie constituerait, chez Husserl, une preuve logique rigoureuse et parfaitement démonstrative de l'existence d'une conscience chez autrui, à la manière d'une démonstration mathématique qui ne laisserait place à aucun doute raisonnable une fois établie."
         correct: false
+        misconception: mc.philo.autrui.apresentation-mal-comprise
         feedback: >
           C'est l'inverse : Husserl n'obtient jamais de preuve absolue,
           seulement une attribution raisonnable.
@@ -538,6 +853,7 @@ items:
       - id: A
         text: "Comment puis-je faire en sorte qu'autrui me reconnaisse comme une conscience digne de respect ?"
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           C'est une question de reconnaissance entre consciences, pas le
           problème posé par Husserl -- il s'agit de savoir si autrui a une
@@ -548,13 +864,15 @@ items:
       - id: C
         text: "Comment puis-je échapper au regard d'autrui, qui menacerait en permanence ma liberté ?"
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           C'est une question de conflit entre libertés, pas le problème que
           pose ici Husserl, qui porte sur la connaissance d'une vie
           intérieure chez autrui.
       - id: D
-        text: "Comment puis-je démontrer, avec une certitude absolue, que ma propre conscience existe réellement ?"
+        text: "Comment puis-je démontrer, avec une certitude absolue et sans laisser place au moindre doute possible, que ma propre conscience existe réellement -- une question qui porterait sur moi seul, non sur la vie intérieure d'autrui que je ne fais que percevoir de l'extérieur ?"
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le texte prend au contraire pour acquis l'accès direct à ma propre
           conscience -- le problème concerne l'accès à celle d'autrui.
@@ -581,15 +899,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que Hegel considère que tuer autrui est moralement condamnable, et qu'aucune conscience ne consentirait à violer cet interdit."
+        text: "Parce que Hegel considère que tuer autrui est par nature moralement condamnable, et qu'aucune conscience de soi digne de ce nom ne consentirait jamais, en aucune circonstance, à violer un interdit aussi fondamental."
         correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
         feedback: >
           C'est confondre l'argument logique de Hegel avec un interdit
           moral -- un ordre qui précède tout choix appartient plutôt à
           Levinas (R5, « tu ne tueras point »).
       - id: B
-        text: "Parce que la loi, dans la société décrite par Hegel, interdirait formellement le duel à mort entre deux consciences."
+        text: "Parce que la loi, dans la société décrite par Hegel, interdirait formellement et sans exception le duel à mort entre deux consciences rivales, rendant ainsi toute lutte pour la reconnaissance juridiquement impossible."
         correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
         feedback: >
           Le texte n'invoque aucune loi sociale -- l'argument porte sur la
           structure logique de la reconnaissance elle-même.
@@ -597,8 +917,9 @@ items:
         text: "Parce qu'un être mort ne reconnaît plus rien ni personne : la reconnaissance obtenue par la mort de l'adversaire s'annule elle-même au moment où elle serait obtenue."
         correct: true
       - id: D
-        text: "Parce que les deux consciences seraient, selon Hegel, physiquement incapables de se vaincre l'une l'autre, la lutte se soldant toujours par un match nul."
+        text: "Parce que les deux consciences seraient, selon Hegel, physiquement incapables de se vaincre l'une l'autre, la lutte se soldant toujours par un match nul -- une impossibilité purement physique qui n'aurait rien à voir avec la structure logique de la reconnaissance elle-même."
         correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
         feedback: >
           C'est contraire au texte : la lutte se résout par la soumission de
           l'un des deux, non par une incapacité physique à vaincre.
@@ -626,20 +947,23 @@ items:
       - id: A
         text: "Les deux poseraient en réalité exactement la même question, seulement formulée avec un vocabulaire différent."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le texte présente la question de Hegel comme « différente, et
           plus radicale encore » que celle de Husserl -- pas une simple
           reformulation.
       - id: B
-        text: "Husserl s'interrogerait sur la conscience de moi-même, tandis que Hegel s'interrogerait sur la conscience d'autrui."
+        text: "Husserl s'interrogerait avant tout sur la conscience de moi-même et sur la façon d'y accéder avec certitude, tandis que Hegel s'interrogerait plutôt sur la conscience d'autrui et sur les conditions mêmes de son existence indépendante de la mienne."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           C'est l'inverse : c'est Husserl qui s'interroge sur la
           connaissance de la conscience d'autrui ; Hegel s'interroge sur ma
           propre conscience de moi-même.
       - id: C
-        text: "Husserl et Hegel poseraient tous deux une question morale : comment dois-je traiter autrui pour agir de façon juste ?"
+        text: "Husserl et Hegel poseraient en réalité tous deux une seule et même question morale : comment dois-je traiter autrui pour agir envers lui de façon juste, indépendamment de toute question de connaissance ou de reconnaissance mutuelle ?"
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Aucun des deux ne pose ici une question morale -- celle-ci
           appartient à Kant (R6).
@@ -674,6 +998,7 @@ items:
       - id: B
         text: "Elle manque le fait que Sartre, contrairement à Hegel, nierait complètement qu'autrui soit nécessaire à ma conscience de moi-même."
         correct: false
+        misconception: mc.philo.autrui.sartre-reduit-hegel
         feedback: >
           C'est l'inverse : par la formule du médiateur indispensable,
           Sartre affirme qu'autrui est nécessaire -- il ajoute seulement un
@@ -681,11 +1006,13 @@ items:
       - id: C
         text: "Elle manque le fait que Hegel et Sartre utiliseraient tous deux le terme précis d'« aprésentation » pour décrire ce mécanisme."
         correct: false
+        misconception: mc.philo.autrui.auteurs-mal-attribues
         feedback: >
           Ce terme appartient à Husserl (R1), ni à Hegel ni à Sartre.
       - id: D
-        text: "Elle manque le fait que, pour Sartre, c'est le travail sur la matière, comme chez l'esclave hégélien, qui permettrait d'accéder à une conscience de soi."
+        text: "Elle manque le fait que, pour Sartre, c'est le travail sur la matière, exactement comme chez l'esclave hégélien décrit en R2, qui permettrait seul d'accéder à une véritable conscience de soi, sans qu'aucun regard effectif d'un autre n'ait besoin d'intervenir dans ce mécanisme."
         correct: false
+        misconception: mc.philo.autrui.auteurs-mal-attribues
         feedback: >
           Le travail sur la matière est le mécanisme de l'esclave chez Hegel
           (R2) -- chez Sartre, c'est la honte face au regard effectif d'un
@@ -713,8 +1040,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que l'introspection serait, chez Sartre, totalement impossible : je n'aurais aucun accès, même partiel, à mes propres pensées."
+        text: "Parce que l'introspection serait, chez Sartre, totalement et définitivement impossible : je n'aurais strictement aucun accès, même partiel ou fragmentaire, à mes propres pensées, quelle que soit la situation où je me trouve."
         correct: false
+        misconception: mc.philo.autrui.moi-pour-autrui-seul
         feedback: >
           Le texte compare au contraire mon accès direct, quoique imparfait,
           à ma propre conscience à l'accès seulement indirect à celle
@@ -723,8 +1051,9 @@ items:
         text: "Parce que cette dimension de mon être n'existe, structurellement, que dans et par le regard effectif d'un autre : aucune réflexion sur moi-même, aussi poussée soit-elle, ne peut la faire apparaître."
         correct: true
       - id: C
-        text: "Parce que Sartre penserait que je pourrais très bien atteindre cette dimension seul, à condition d'y consacrer suffisamment de temps et de concentration."
+        text: "Parce que Sartre penserait, au fond, que je pourrais très bien atteindre cette dimension tout seul, à condition d'y consacrer suffisamment de temps, de concentration et d'effort réflexif, sans qu'aucun regard effectif d'un autre n'ait jamais besoin d'intervenir."
         correct: false
+        misconception: mc.philo.autrui.moi-pour-autrui-seul
         feedback: >
           C'est l'inverse exact : il faut, structurellement, le regard
           effectif d'un autre -- aucune durée de réflexion solitaire n'y
@@ -732,6 +1061,7 @@ items:
       - id: D
         text: "Parce que cette dimension de mon être serait, selon Sartre, purement imaginaire et sans réalité, ni pour moi ni pour autrui."
         correct: false
+        misconception: mc.philo.autrui.moi-pour-autrui-seul
         feedback: >
           C'est l'inverse : Sartre traite le moi-pour-autrui comme une
           dimension réelle de mon être, pas comme une fiction.
@@ -758,13 +1088,15 @@ items:
       - id: A
         text: "Parce que l'une des deux consciences serait toujours, par nature, supérieure à l'autre, et destinée à dominer."
         correct: false
+        misconception: mc.philo.autrui.conflit-libertes-mal-compris
         feedback: >
           Sartre ne décrit aucune hiérarchie naturelle -- l'alternance
           sujet/objet est structurelle et symétrique, pas une domination
           fixe comme dans une lecture déformée du maître et de l'esclave (R2).
       - id: B
-        text: "Parce qu'une seule conscience pourrait exister physiquement dans une pièce à la fois, l'autre devant nécessairement quitter les lieux."
+        text: "Parce qu'une seule conscience pourrait exister physiquement dans une même pièce à un instant donné, l'autre devant nécessairement, selon cette lecture beaucoup trop littérale de Sartre, quitter aussitôt les lieux pour lui laisser toute la place disponible."
         correct: false
+        misconception: mc.philo.autrui.conflit-libertes-mal-compris
         feedback: >
           C'est une littéralisation absurde -- l'alternance sujet/objet est
           une structure du regard, pas une question de coprésence physique.
@@ -772,8 +1104,9 @@ items:
         text: "Parce que si je regarde autrui, c'est lui qui devient objet dans mon monde ; s'il me regarde en retour, c'est moi qui redeviens objet dans le sien -- il n'existe aucune position stable où les deux resteraient sujets en même temps."
         correct: true
       - id: D
-        text: "Parce que, pour Sartre, l'une des deux consciences serait toujours dépourvue de liberté réelle, contrairement à l'autre qui la posséderait pleinement."
+        text: "Parce que, pour Sartre, l'une des deux consciences serait toujours structurellement dépourvue de liberté réelle, contrairement à l'autre qui la posséderait pleinement et définitivement, sans qu'aucun renversement de cette hiérarchie ne soit jamais concevable."
         correct: false
+        misconception: mc.philo.autrui.conflit-libertes-mal-compris
         feedback: >
           C'est contraire à Sartre : le conflit existe précisément parce que
           les deux consciences sont également libres.
@@ -801,18 +1134,21 @@ items:
       - id: A
         text: "R4 montrerait que Sartre s'est en réalité trompé en R3 : le regard d'autrui ne révélerait jamais rien, il ne ferait qu'objectiver."
         correct: false
+        misconception: mc.philo.autrui.revelation-objectivation-opposees
         feedback: >
           R4 ne contredit pas R3 -- ce sont deux effets simultanés du même
           mécanisme du regard, pas un reniement de l'un par l'autre.
       - id: B
-        text: "R4 montrerait que le regard d'autrui, contrairement à ce que R3 laissait penser, ne concernerait en réalité que les inconnus, jamais les proches."
+        text: "R4 montrerait que le regard d'autrui, contrairement à ce que R3 laissait clairement penser, ne concernerait en réalité que les inconnus croisés par hasard, et jamais les proches que je connais bien, comme ma propre sœur dans la scène de R0."
         correct: false
+        misconception: mc.philo.autrui.revelation-objectivation-opposees
         feedback: >
           Rien ne restreint ainsi le mécanisme -- l'exemple de la sœur,
           repris en R4, concerne justement une proche.
       - id: C
-        text: "R4 montrerait que le sentiment de honte, décrit en R3, disparaîtrait complètement dès qu'on comprend le conflit des libertés."
+        text: "R4 montrerait que le sentiment de honte, pourtant décrit avec une grande précision en R3, disparaîtrait complètement et définitivement dès qu'on comprend, ne serait-ce qu'intellectuellement, le mécanisme du conflit des libertés qui l'accompagne toujours."
         correct: false
+        misconception: mc.philo.autrui.revelation-objectivation-opposees
         feedback: >
           R4 ne fait pas disparaître la honte -- il en précise seulement le
           revers structurel, sans annuler le phénomène décrit en R3.
@@ -846,19 +1182,22 @@ items:
       - id: B
         text: "Comme l'expression physique précise du visage -- un sourire, une grimace -- qui permettrait, par une lecture attentive des traits, de déduire avec certitude ce que l'autre pense."
         correct: false
+        misconception: mc.philo.autrui.visage-apparence-physique
         feedback: >
           Cela confond le visage lévinassien avec le corps expressif dont
           parlait Husserl (R1) -- Levinas récuse toute réduction du visage
           à des traits descriptibles.
       - id: C
-        text: "Comme un synonyme du regard sartrien : ce qui m'objective et me fige dans une image que je n'ai pas choisie."
+        text: "Comme un simple synonyme du regard sartrien : ce qui m'objective et me fige dans une image que je n'ai pas choisie, au point que les deux concepts pourraient être utilisés l'un pour l'autre sans perte de sens, Levinas et Sartre partageant alors une seule et même conception du rapport à autrui."
         correct: false
+        misconception: mc.philo.autrui.visage-regard-confondus
         feedback: >
           C'est précisément la confusion à éviter : le visage lévinassien
           n'objective rien, à l'inverse du regard sartrien.
       - id: D
         text: "Comme une catégorie ou un rôle social (un métier, un statut) que je pourrais clairement attribuer à autrui dès que je le rencontre."
         correct: false
+        misconception: mc.philo.autrui.visage-apparence-physique
         feedback: >
           C'est l'inverse : le visage résiste justement à toute réduction à
           une catégorie ou un rôle fixé à l'avance.
@@ -884,8 +1223,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Chez Hegel comme chez Levinas, la reconnaissance ou la responsabilité ne concerneraient que les rapports de pouvoir entre maître et esclave."
+        text: "Chez Hegel comme chez Levinas, la reconnaissance ou la responsabilité ne concerneraient toutes deux, en dernière analyse, que les seuls rapports de pouvoir entre un maître et un esclave, sans qu'aucune autre configuration de la rencontre entre consciences ne soit jamais envisagée."
         correct: false
+        misconception: mc.philo.autrui.responsabilite-symetrisee
         feedback: >
           Levinas rompt précisément avec le terrain du rapport de force
           hérité de Hegel et Sartre -- sa responsabilité ne s'inscrit pas
@@ -896,13 +1236,15 @@ items:
       - id: C
         text: "Les deux décriraient en réalité exactement le même mouvement réciproque, seulement avec un vocabulaire différent."
         correct: false
+        misconception: mc.philo.autrui.responsabilite-symetrisee
         feedback: >
           Le texte insiste au contraire sur l'écart entre les deux : pas une
           reconnaissance mutuelle à construire à deux, chez Levinas, mais un
           appel à sens unique.
       - id: D
-        text: "Chez Levinas, contrairement à Hegel, ce serait moi qui exigerais d'autrui qu'il me reconnaisse en premier, avant de le reconnaître en retour."
+        text: "Chez Levinas, contrairement à Hegel, ce serait en réalité toujours moi qui exigerais d'autrui qu'il me reconnaisse le premier, avant même que je consente à le reconnaître moi-même en retour, inversant ainsi complètement et sans exception le sens véritable de l'obligation décrite par le texte."
         correct: false
+        misconception: mc.philo.autrui.responsabilite-symetrisee
         feedback: >
           C'est l'inverse : c'est moi qui suis obligé par le visage
           d'autrui, sans condition ni retour attendu.
@@ -929,13 +1271,15 @@ items:
       - id: A
         text: "Parce que Kant, en réalité, n'aurait jamais rien écrit à propos d'autrui ou de la personne humaine, sa philosophie portant uniquement sur la connaissance scientifique."
         correct: false
+        misconception: mc.philo.autrui.kant-formule-mal-comprise
         feedback: >
           C'est faux : Kant formule précisément, dans les Fondements de la
           métaphysique des mœurs (1785), le principe de traiter l'humanité
           toujours comme une fin.
       - id: B
-        text: "Parce que Kant contredirait directement les quatre autres auteurs, en niant qu'autrui existe réellement en dehors de ma propre conscience."
+        text: "Parce que Kant contredirait directement et sur absolument tous les points les quatre autres auteurs étudiés dans la leçon, en niant purement et simplement qu'autrui puisse exister réellement en dehors de ma propre conscience et de ce qu'elle en perçoit, fût-ce indirectement."
         correct: false
+        misconception: mc.philo.autrui.kant-formule-mal-comprise
         feedback: >
           Rien dans le texte n'attribue à Kant une thèse sur l'existence
           d'autrui -- son principe est une règle pratique, pas une réponse
@@ -944,8 +1288,9 @@ items:
         text: "Parce que ce sont des questions différentes : Husserl demande comment je connais qu'autrui existe comme conscience ; Hegel et Sartre décrivent la rencontre des consciences ; Levinas fonde une responsabilité qui précède tout choix ; Kant prescrit une règle d'action valable quelle que soit la réponse aux questions précédentes."
         correct: true
       - id: D
-        text: "Parce que Kant reformulerait en réalité, avec d'autres mots, exactement la même thèse que Levinas sur le visage qui m'oblige avant tout choix."
+        text: "Parce que Kant reformulerait en réalité, seulement avec d'autres mots et un vocabulaire différent, exactement la même thèse que Levinas sur le visage qui m'oblige avant tout choix, au point que sa formule pourrait se substituer mot pour mot à celle de Levinas dans n'importe quelle copie sans que le correcteur y voie la moindre différence de fond."
         correct: false
+        misconception: mc.philo.autrui.auteurs-mal-attribues
         feedback: >
           Ce sont deux fondements distincts -- le texte les présente comme
           rejoignant la même exigence sur un terrain différent, non comme
@@ -974,22 +1319,25 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il prouverait que le conflit décrit par Sartre est une pure invention, sans aucune réalité dans les rapports humains effectifs."
+        text: "Il prouverait, à lui seul et de façon définitive, que le conflit décrit par Sartre serait une pure invention théorique, sans la moindre réalité dans les rapports humains effectifs, réduisant ainsi toute la phénoménologie sartrienne du regard à une simple fiction sans portée pratique."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le texte ne dément jamais la description sartrienne -- il ajoute
           une règle pratique, sans nier que le conflit demeure une
           tentation structurelle.
       - id: B
-        text: "Il remplacerait la description sartrienne par une nouvelle description du même conflit, en des termes simplement plus optimistes."
+        text: "Il remplacerait purement et simplement la description sartrienne par une nouvelle description du même conflit, formulée en des termes simplement plus optimistes, sans rien changer à la nature structurelle du problème qu'elle décrit initialement."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le principe kantien n'est pas une description concurrente du
           rapport à autrui -- c'est une règle d'action, d'un ordre
           différent de la description ontologique de Sartre.
       - id: C
-        text: "Il n'aurait, selon le texte, strictement aucun rapport avec ce que décrit Sartre en R4."
+        text: "Il n'aurait, selon le texte, strictement aucun rapport avec ce que décrit Sartre en R4 : la morale kantienne et la description sartrienne du regard appartiendraient à deux domaines de la philosophie totalement étrangers l'un à l'autre, sans le moindre point de contact possible entre eux."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le texte relie explicitement les deux : « Face à Sartre (R4) : le
           principe kantien donne un horizon pour sortir du pur conflit des
@@ -1024,8 +1372,9 @@ items:
         text: "« Si autrui expose bien, par son regard, ma liberté à un risque réel, comment expliquer que ce même autrui me permette d'accéder à la conscience de moi-même, voire fonde ma responsabilité la plus profonde -- faut-il s'en protéger, ou transformer ce rapport de menace en rapport de reconnaissance ? »"
         correct: true
       - id: B
-        text: "« Autrui est-il une menace pour ma liberté, ou la condition de mon humanité ? »"
+        text: "« Autrui est-il, oui ou non, et quelle que soit la manière précise dont on choisit de l'envisager ou de le définir au préalable dans une copie de dissertation, une menace véritable et sérieuse pour ma liberté propre, ou au contraire la condition même et absolument nécessaire de mon humanité tout entière ? »"
         correct: false
+        misconception: mc.philo.autrui.methode-dissertation-mal-appliquee
         feedback: >
           C'est une simple répétition du sujet, mot pour mot -- une
           problématique doit mettre en évidence la tension entre deux
@@ -1034,13 +1383,15 @@ items:
       - id: C
         text: "« Qu'est-ce que la liberté ? »"
         correct: false
+        misconception: mc.philo.autrui.methode-dissertation-mal-appliquee
         feedback: >
           Cette question ignore entièrement le second terme du sujet
           (autrui, la condition de mon humanité) -- elle se réduit à la
           définition d'un seul mot.
       - id: D
-        text: "« Sartre a-t-il raison de dire que l'enfer, c'est les autres ? »"
+        text: "« Sartre a-t-il vraiment raison de dire que l'enfer, c'est les autres, et faudrait-il en conclure, si l'on suit sa formule célèbre à la lettre et sans aucune nuance, qu'il vaudrait mieux, autant que faire se peut, vivre entièrement seul et couper radicalement tout lien avec autrui, quel qu'il soit ? »"
         correct: false
+        misconception: mc.philo.autrui.methode-dissertation-mal-appliquee
         feedback: >
           Cette question ne porte que sur un seul auteur et une seule
           formule, alors que le sujet mobilise plusieurs statuts d'autrui --
@@ -1068,8 +1419,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Dans l'antithèse (II), aux côtés de Sartre, car Levinas décrirait lui aussi un conflit entre deux libertés qui se disputent la position de sujet."
+        text: "Dans l'antithèse (II), aux côtés de Sartre et pour la même raison que lui, car Levinas décrirait lui aussi, selon cette lecture, un conflit structurel entre deux libertés qui se disputeraient également la position de sujet l'une envers l'autre."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           C'est une erreur : Levinas rompt précisément avec le terrain du
           conflit de pouvoir -- sa responsabilité asymétrique n'est pas un
@@ -1080,13 +1432,15 @@ items:
       - id: C
         text: "Dans la thèse (I), à la place de Hegel, car la responsabilité lévinassienne prouverait que la reconnaissance mutuelle hégélienne serait fausse."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le plan ne présente pas Levinas comme une réfutation de Hegel --
           Hegel reste dans la thèse pour sa propre raison ; Levinas
           intervient dans le dépassement.
       - id: D
-        text: "Nulle part dans ce plan, car Levinas n'aurait aucun rapport avec la question de la liberté ou de l'humanité posée par le sujet."
+        text: "Nulle part dans ce plan tout entier, car Levinas n'aurait, selon cette lecture, strictement aucun rapport avec la question de la liberté ou de l'humanité posée par le sujet, son œuvre portant, croit-on, sur un tout autre domaine de la philosophie."
         correct: false
+        misconception: mc.philo.autrui.methode-dissertation-mal-appliquee
         feedback: >
           Le plan mobilise explicitement Levinas dans le dépassement, pour
           transformer la relation de conflit en relation de responsabilité.
@@ -1114,15 +1468,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Hegel (R2), parce que sa dialectique de la reconnaissance porterait, comme celle de Husserl, sur les conditions de la connaissance d'autrui."
+        text: "Hegel (R2), parce que sa dialectique de la reconnaissance porterait, exactement et sans la moindre nuance comme celle de Husserl en R1, sur les conditions précises de la connaissance d'autrui et sur la façon dont je pourrais un jour m'assurer, avec certitude, de l'existence d'une vie intérieure chez lui."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Hegel pose une question différente : non pas comment je connais
           qu'autrui existe comme conscience, mais comment je deviens, moi,
           une conscience de moi-même par la reconnaissance.
       - id: B
-        text: "Kant (R6), parce que le principe de traiter l'humanité comme une fin répondrait directement à la question de savoir si je peux connaître autrui."
+        text: "Kant (R6), parce que le principe de traiter l'humanité toujours comme une fin et jamais simplement comme un moyen répondrait directement et complètement à la question de savoir si je peux vraiment connaître autrui dans sa singularité la plus propre et la plus intime."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le principe kantien est une règle d'action morale, pas une thèse
           sur la connaissance d'autrui -- il répond à « comment dois-je le
@@ -1133,6 +1489,7 @@ items:
       - id: D
         text: "Sartre (R4), parce que le conflit des libertés démontrerait qu'il serait rigoureusement impossible de connaître quoi que ce soit d'autrui."
         correct: false
+        misconception: mc.philo.autrui.questions-auteurs-confondues
         feedback: >
           Le conflit sartrien porte sur un rapport de pouvoir entre
           consciences, pas sur une thèse épistémologique -- c'est le
@@ -1147,3 +1504,87 @@ items:
 
       **L'auteur le plus pertinent :** Husserl (R1) -- l'aprésentation, un
       accès seulement indirect, jamais une preuve absolue.
+
+coverage_summary:
+  # Computed by loading this file with js-yaml and tallying every
+  # choices[].misconception value per item -- an item counts once per
+  # misconception if ANY of its distractors carries that id (house
+  # convention, matching content/philo/la-liberte/items.yaml and
+  # content/philo/analyse-de-texte/items.yaml). Re-verified programmatically
+  # (grep -o "misconception: mc.philo.autrui.[a-z-]*" | sort | uniq -c)
+  # against the per_misconception tallies below before this file was closed
+  # out -- not hand-counted.
+  #
+  # This is a LEGACY end-bank (AUT-1..AUT-24 predate per-distractor
+  # tagging -- misconceptions: [] and no misconception: field on any
+  # distractor, this pass's starting state) retrofitted here: every one of
+  # the 72 distractors across the 24 items now carries a real misconception
+  # id (no null tags), stricter than the house default. Per the recipe's
+  # "Honest coverage" judgment call, floor gaps below are reported
+  # truthfully rather than padded.
+  total_items: 24
+  floor: 3
+  floor_met: false
+  per_misconception:
+    mc.philo.autrui.gene-sociale-reduction: 7
+    mc.philo.autrui.double-question-reduite: 2
+    mc.philo.autrui.apresentation-mal-comprise: 2
+    mc.philo.autrui.alter-ego-mal-compris: 3
+    mc.philo.autrui.dialectique-maitre-esclave-mal-comprise: 6
+    mc.philo.autrui.maitre-satisfait-par-reconnaissance: 0
+    mc.philo.autrui.honte-mal-comprise: 2
+    mc.philo.autrui.sartre-reduit-hegel: 2
+    mc.philo.autrui.moi-pour-autrui-seul: 3
+    mc.philo.autrui.revelation-objectivation-opposees: 3
+    mc.philo.autrui.conflit-libertes-mal-compris: 3
+    mc.philo.autrui.enfer-mal-interprete: 2
+    mc.philo.autrui.visage-regard-confondus: 3
+    mc.philo.autrui.visage-apparence-physique: 3
+    mc.philo.autrui.responsabilite-symetrisee: 3
+    mc.philo.autrui.kant-formule-mal-comprise: 4
+    mc.philo.autrui.questions-auteurs-confondues: 14
+    mc.philo.autrui.auteurs-mal-attribues: 6
+    mc.philo.autrui.methode-dissertation-mal-appliquee: 4
+  notes: >-
+    Every distractor across the 24 legacy items now carries a real
+    misconception id (no null tags) -- the from-scratch inventory build this
+    pass exists to make (the file previously had misconceptions: [] and zero
+    tags). 13 of 19 models clear the >=3 floor. SIX do not, and floor_met is
+    reported honestly rather than padded: apresentation-mal-comprise (2,
+    AUT-10), honte-mal-comprise (2, AUT-3), sartre-reduit-hegel (2, AUT-3/
+    AUT-14), enfer-mal-interprete (2, AUT-4), double-question-reduite (2,
+    AUT-8) are real but thin in the legacy bank -- a follow-up item pass
+    should add 1-2 items each. maitre-satisfait-par-reconnaissance (0) is
+    the one model with ZERO item-bank coverage: the "erreur à éviter" box in
+    R2 names it explicitly ("ne dis pas que le maître obtient ce qu'il
+    voulait"), and AUT-2's own CORRECT choice states the corrected model,
+    but no legacy distractor restates the naive belief itself as a wrong
+    answer -- it is covered instead by checkpoints.yaml's cp-r2-rupture
+    (checkpoints do not count toward this floor, per house convention, but
+    give every student in-lesson exposure regardless), and flagged here as
+    the clearest item-authoring gap for a follow-up pass. Two further models
+    that ARE central to a boxed "erreur à éviter" surface only at the STEM
+    level of their anchor item rather than as a tagged distractor
+    (apresentation-mal-comprise's "perception directe" and "imagination
+    libre" readings are the literal premise AUT-1's and AUT-10's stems test,
+    corrected by the choice marked correct rather than restated by a wrong
+    one) -- same honest-gap logic, same follow-up-pass flag.
+    questions-auteurs-confondues (14) is, by a wide margin, the most-tested
+    model in this bank -- deliberately so: with seven authors across R0-R6,
+    conflating what two different authors are each actually asking is this
+    notion's single most recurring failure mode (R2-vs-R1, R3-vs-R2, R6-vs-
+    the-other-four, and every R7 method item that asks which author suits
+    which sub-question all cash out to the same underlying model), not an
+    artifact of lazy tagging -- see individual item feedback for the
+    specific author pair being distinguished each time.
+    Length rebalance (recipe's philo addendum, mandatory -- verified
+    programmatically with a js-yaml length-check script, not eyeballed): the
+    legacy bank's correct answer was the STRICT-LONGEST option in 18/24
+    items before this pass (the campaign's cited ~97% tell, again live).
+    Distractors were enriched with additional philosophical substance --
+    a named premise, a spelled-out consequence, a qualifying clause -- never
+    by trimming the correct answer's content, so the correct choice is
+    strict-longest in 0/24 after this pass: 2nd-longest in 12/24, 3rd in
+    9/24, and shortest (4th) in 3/24 -- genuinely varied, not a monotonic
+    "always longest" pattern, and not simply shifted into a new "always
+    2nd-longest" tell either.
