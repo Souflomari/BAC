@@ -22,6 +22,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Bien sûr que je suis tenu : c'est moi qui ai écrit ces mots, le même corps a grandi, le même nom figure sur la couverture du cahier — il n'y a jamais eu deux personnes, seulement une qui a vieilli. »
 - « Pas du tout : je ne me reconnais presque plus dans ce texte — ni les pensées, ni les peurs, ni même certains souvenirs qu'il rapporte comme si je les avais vécus. Lire ce journal, c'est un peu comme lire celui de quelqu'un d'autre. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux.
 
 Si le seul fait que ton corps ait persisté suffisait à garantir que tu restes, en tout point qui compte, la même personne, pourquoi ce sentiment d'étrangeté est-il si fort en lisant ces pages — plus fort, souvent, que celui que tu éprouves en retrouvant un vieil ami que tu n'as pas vu depuis dix ans, et en qui, pourtant, tu reconnais immédiatement « la même personne » ?
@@ -56,6 +58,8 @@ L'**identité personnelle**, enfin, désigne ce qui fait qu'un individu-personne
 
 > **Erreur à éviter :** ne confonds jamais « individu » et « personne » comme s'ils étaient de purs synonymes — tout être humain vivant est un individu, mais son statut de personne engage un critère philosophique distinct (R2). Ne confonds pas non plus « identité personnelle » avec une simple identité numérique ou administrative (le même nom, le même numéro sur une carte d'identité) : c'est précisément ce qu'interroge cette leçon, pas ce qu'elle présuppose déjà réglé.
 
+[[checkpoint:cp-r1-rupture]]
+
 ---
 
 ## R2 — Kant : le critère de la personne — un être raisonnable, une fin en soi
@@ -83,6 +87,8 @@ Kant formule ce principe dans une phrase restée célèbre :
 **Ce que ce critère permet de voir, précisément, dans la situation de R0 :** quel que soit le fossé psychologique entre l'enfant qui a écrit ce journal et toi aujourd'hui, ce fossé ne change rien à un fait : les deux, à dix ans comme aujourd'hui, possèdent la même nature raisonnable, la même capacité à se donner à eux-mêmes une loi — la même dignité, donc, indépendamment du contenu précis, embarrassant ou oublié, de ce cahier. Mais remarque bien ce que ce critère NE dit PAS : il ne dit rien sur la question de savoir si TU es le même sujet que celui qui a fait cette promesse — cette question-là, distincte, appelle un autre critère (R3).
 
 > **Erreur à éviter :** ne confonds jamais le critère kantien de la personne (être un être raisonnable, une fin en soi, doté d'une dignité sans équivalent) avec le critère lockéen que tu vas voir en R3 (la continuité de conscience et de mémoire). Ce sont deux réponses à deux questions différentes : Kant répond à « qu'est-ce qui fait qu'un être MÉRITE le respect dû à une personne, ici et maintenant ? » ; Locke répond à « qu'est-ce qui fait que CE MÊME être, à deux moments différents, compte comme une seule et même personne ? ». Ne fonds pas ces deux questions en une seule.
+
+[[checkpoint:cp-r2-rupture]]
 
 ---
 
@@ -119,6 +125,8 @@ Pour rendre ce point tranchant, Locke imagine une expérience de pensée restée
 
 > **Erreur à éviter :** ne dis jamais que, pour Locke, c'est la continuité du CORPS qui fonde l'identité personnelle — c'est exactement l'inverse de sa thèse : le corps peut changer entièrement (l'exemple du prince et du savetier le montre) sans que l'identité personnelle en soit affectée. Ne dis pas non plus que Locke fait reposer cette identité sur une âme substantielle immatérielle : il évite précisément de s'appuyer sur une substance qu'on ne peut jamais observer. Et ne confonds pas la position de Locke avec celle de Hume, qu'on va voir en R4 : Locke suppose encore une conscience capable de se ressaisir elle-même par la mémoire ; c'est Hume qui va remettre en question jusqu'à l'existence de cette continuité-là.
 
+[[checkpoint:cp-r3-rupture]]
+
 ---
 
 ## R4 — Hume : la critique du moi-substance — un « faisceau de perceptions »
@@ -151,6 +159,8 @@ Locke fonde l'identité personnelle sur la continuité de la conscience. Mais ce
 
 > **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne dis jamais que c'est **Locke** qui réduit le moi à un « faisceau de perceptions » sans unité réelle — c'est l'inverse : Locke, en R3, suppose encore une conscience continue, capable de s'approprier ses états passés par la mémoire. C'est **Hume** qui va plus loin et remet en question l'existence même de cette unité, y compris celle que Locke prenait pour acquise. Confondre les deux, c'est manquer précisément ce qui fait la radicalité de Hume par rapport à Locke.
 
+[[checkpoint:cp-r4-rupture]]
+
 ---
 
 ## R5 — La personne, sujet de droit : la condition de l'imputabilité
@@ -174,6 +184,8 @@ Hume semble avoir dissous jusqu'au fil le plus ténu qui reliait le moi d'hier �
 **Ce que ce principe permet de voir, précisément, dans la situation de R0 :** que l'enfant qui a écrit cette promesse soit, métaphysiquement, « le même » que toi ou non, la morale — comme le droit — a besoin, pour fonctionner, de te traiter comme suffisamment continu avec lui pour que cette promesse conserve un sens aujourd'hui. C'est exactement ce qui fait la différence entre ignorer une promesse d'inconnu et ressentir un malaise à l'idée d'ignorer la tienne : une continuité, au moins pratique, est reconnue dans le second cas, refusée dans le premier.
 
 > **Erreur à éviter :** ne confonds pas « personne physique » (un individu humain concret, seul en jeu dans les critères de Kant, Locke et Hume vus jusqu'ici) et « personne morale » (une entreprise, une association, un État — une fiction juridique qui peut, elle aussi, être titulaire de droits et d'obligations, sans posséder ni conscience ni mémoire). Ne confonds pas non plus l'imputabilité avec une simple responsabilité causale : un rocher qui tombe et brise un objet n'a rien « fait » d'imputable, car il n'était capable ni de comprendre, ni de choisir autrement — c'est précisément ce que le statut de personne (R2) ajoute au pur enchaînement des causes.
+
+[[checkpoint:cp-r5-rupture]]
 
 ---
 
@@ -214,6 +226,8 @@ Et R6, enfin, ferait remarquer que la vraie question posée par ce vieux cahier 
 Six regards, un même cahier — mais aucun ne réduit ce qui se joue, dans cette boîte à chaussures, à une réponse simple.
 
 > **Erreur à éviter :** ne réduis jamais la dépersonnalisation à un simple sentiment de solitude ou d'anonymat ordinaire (« se sentir un numéro parmi d'autres dans une grande ville ») — c'est, au sens construit ici, une opération précise : retirer à quelqu'un le statut moral et juridique de fin en soi et de sujet responsable, pas simplement éprouver une émotion passagère.
+
+[[checkpoint:cp-r6-rupture]]
 
 ---
 
@@ -265,14 +279,23 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer que l'identité est donnée — il *fait fonctionner* l'intuition précise de la continuité corporelle (l'image du fleuve) avant d'y ajouter l'hypothèse, plus ancienne, d'une substance spirituelle stable. Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — cette continuité, aussi évidente semble-t-elle, résiste-t-elle vraiment à un examen plus attentif ?
 
-#### À toi de continuer
+### Exercice de type bac
 
-Rédige maintenant, à ton tour :
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il te demande de trouver la SOURCE de la valeur de la
+personne : à toi de mobiliser ce que tu sais déjà sur le critère kantien
+(R2) et sur la dépersonnalisation (R6) pour l'affronter.
 
-1. Un paragraphe de la partie II (l'antithèse), en t'appuyant sur la continuité de conscience chez Locke (R3) et sur la critique humienne du moi-substance (R4).
-2. Un paragraphe de la partie III (le dépassement), en choisissant SOIT l'angle de l'imputabilité (R5 — la construction nécessaire au fonctionnement de la morale et du droit), SOIT l'angle kantien et celui de la dépersonnalisation (R2 et R6 — ce qui fonde le respect dû à une personne, et ce que sa négation historique révèle) — pas les deux à la fois dans un seul paragraphe.
+[[checkpoint:cp-bac-affirmation]]
 
-Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
+[[exercise:r-bac]]
 
-- *Suffit-il d'être un individu pour être une personne ?*
-- *Peut-on cesser d'être une personne ?*
+### Une variation pour ne pas mémoriser
+
+Ce second sujet, également réel, revient sur le terrain déjà connu de R2
+(Kant, prix et dignité) — sous un habillage différent (une affirmation
+cynique plutôt qu'une question ouverte). Le but n'est pas d'apprendre autre
+chose : c'est de reconnaître que la même argumentation s'applique quand
+l'habillage change.
+
+[[exercise:r-variation]]

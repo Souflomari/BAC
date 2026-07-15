@@ -1,6 +1,295 @@
 notion: la-personne
 skill_code: philo_la_personne
-misconceptions: []
+
+# Misconception inventory — summit-conversion campaign. This file previously
+# carried `misconceptions: []` and no `misconception:` tag on any distractor
+# (the same Gap-4-shaped state la-liberte's and autrui's items.yaml were
+# found in before their own retrofits). Built from scratch, per the recipe's
+# philo addendum, by mining the lesson's own "Erreur à éviter" boxes FIRST
+# (R1 individu/personne, R2 Kant, R3 Locke, R4 Hume — "la confusion la plus
+# fréquente sur ce point du programme", R5 personne physique/morale +
+# imputabilité, R6 dépersonnalisation — six boxes, most naming TWO distinct
+# confusions each), then adding cross-cutting models the lesson's prose makes
+# central but no box names explicitly (R0's opening triple question, the
+# recurring cross-author mis-attribution pattern this four-author notion
+# invites — Kant/Locke/Hume criteria answer three DIFFERENT questions and get
+# swapped constantly —, and R7's method errors). A handful of narrowly-scoped
+# candidate ids (e.g. a standalone "interdiction totale du moyen" tag, a
+# standalone "âme substantielle" tag) were deliberately MERGED into broader
+# siblings during authoring, once it was clear each would otherwise land at
+# n=1 in a 24-item legacy bank — same judgment call as choosing inventory
+# granularity anywhere else, made explicit here rather than silently produced
+# by an unexamined 1:1 "one distractor, one brand-new id" default.
+# Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code with the
+# "philo_" prefix stripped (philo_la_personne → la_personne) — matches
+# la-liberte (mc.philo.liberte.*) and autrui (mc.philo.autrui.*). Every one
+# of the 72 distractors across the 24 legacy items (PERS-1..PERS-24) now
+# carries a real misconception id (no null tags) — stricter than house
+# default, matching the task's instruction.
+misconceptions:
+  - id: mc.philo.la_personne.individu-personne-synonymes
+    label: "« Individu » et « personne » sont de purs synonymes"
+    description: >-
+      L'élève traite « individu » et « personne » comme interchangeables,
+      sans voir que « personne » désigne un statut plus exigeant, qui
+      suppose un critère supplémentaire (Kant, R2) — ou, inversement,
+      surcharge la seule notion d'individu de tout ce que R2 réserve à la
+      personne.
+    contradicts_principle: >-
+      « Individu » désigne une simple unité numérique, sans rien impliquer
+      quant à la raison ou aux droits ; « personne » désigne un statut,
+      reconnu à un être capable de se représenter lui-même dans le temps,
+      jugé digne de droits et tenu pour responsable — un critère
+      supplémentaire, précisé en R2, jamais automatique.
+
+  - id: mc.philo.la_personne.personne-reduite-a-espece
+    label: "« Personne » désigne la seule appartenance biologique à l'espèce humaine"
+    description: >-
+      L'élève réduit le statut de personne au seul fait biologique
+      d'appartenir à l'espèce humaine, sans voir que R2 fonde ce statut sur
+      un critère précis (la nature raisonnable, l'autonomie), distinct de la
+      seule appartenance à une espèce.
+    contradicts_principle: >-
+      Ce qui fait qu'un être mérite le statut de personne, pour Kant, tient
+      à sa nature raisonnable et à sa capacité d'autonomie — pas à sa seule
+      appartenance biologique à l'espèce humaine, qui relève du simple
+      registre de l'individu (R1).
+
+  - id: mc.philo.la_personne.individu-identite-personnelle-confondus
+    label: "La continuité de l'individu suffit à trancher l'identité personnelle"
+    description: >-
+      L'élève croit que la seule continuité spatio-temporelle d'un même
+      corps (le niveau de l'individu) suffit, à elle seule, à garantir ou à
+      trancher la question, distincte et plus difficile, de l'identité
+      personnelle — ou, à l'inverse, nie qu'il existe la moindre continuité
+      même au simple niveau de l'individu.
+    contradicts_principle: >-
+      Il existe une continuité simple, spatio-temporelle, au niveau de
+      l'individu — mais ce seul fait ne tranche rien quant à savoir si l'on
+      reste, au sens plein, la MÊME personne : c'est une question distincte,
+      que R3 et R4 vont attaquer.
+
+  - id: mc.philo.la_personne.identite-numerique-confondue-personnelle
+    label: "Le même nom ou numéro administratif règle déjà la question de l'identité personnelle"
+    description: >-
+      L'élève confond l'identité numérique ou administrative (même nom, même
+      numéro de carte d'identité) avec l'identité personnelle au sens
+      philosophique — comme si porter le même nom depuis l'enfance suffisait
+      à garantir qu'on reste, au sens plein, le même sujet.
+    contradicts_principle: >-
+      Le même nom ou numéro administratif ne fait que suivre un individu
+      dans le temps ; l'identité personnelle, elle, demande si l'on reste,
+      au sens plein, le même sujet — une question que ce seul fait ne règle
+      jamais.
+
+  - id: mc.philo.la_personne.criteres-des-auteurs-confondus
+    label: "Les critères de Kant, Locke et Hume répondent tous, au fond, à la même question"
+    description: >-
+      L'élève fond en une seule question ce que Kant (ce qui fait qu'un être
+      MÉRITE le respect dû à une personne, ici et maintenant), Locke (ce qui
+      fait que CE MÊME être reste, dans le temps, une seule et même
+      personne) et Hume (si cette continuité même existe réellement)
+      répondent à des questions distinctes — en attribuant le critère de
+      l'un à la question de l'autre.
+    contradicts_principle: >-
+      Kant répond à « qu'est-ce qui fait qu'un être MÉRITE le respect dû à
+      une personne ? » ; Locke répond à « qu'est-ce qui fait que CE MÊME
+      être, à deux moments différents, compte comme une seule et même
+      personne ? » ; Hume conteste l'existence même de l'unité que Locke
+      présupposait. Ne pas fondre ces trois questions en une seule.
+
+  - id: mc.philo.la_personne.kant-prix-dignite-mal-compris
+    label: "La formule kantienne (prix/dignité, fin/moyen) est mal comprise ou mal appliquée"
+    description: >-
+      L'élève dénature le critère kantien — en traitant la dignité comme un
+      prix élevé plutôt qu'une valeur sans équivalent, en la faisant
+      dépendre de l'utilité sociale ou de l'ancienneté, ou en croyant que
+      Kant interdit TOUT usage d'un être raisonnable comme moyen plutôt que
+      sa seule réduction ENTIÈRE à un instrument.
+    contradicts_principle: >-
+      Ce qui a un prix est remplaçable par un équivalent ; la dignité est
+      une valeur absolue, sans équivalent. Kant n'interdit pas d'utiliser un
+      être raisonnable comme moyen dans un échange (payer un artisan) : il
+      interdit de le réduire ENTIÈREMENT à un instrument, sans jamais
+      reconnaître en lui une fin en soi.
+
+  - id: mc.philo.la_personne.dignite-fondee-sur-privilege
+    label: "La dignité serait un privilège hérité (naissance, groupe social), pas un critère universel"
+    description: >-
+      L'élève fait dépendre le statut de personne, ou la dignité, de la
+      naissance, de l'appartenance à tel groupe social jugé respectable, ou
+      d'un privilège hérité — plutôt que de la seule nature raisonnable de
+      l'être, universelle chez Kant.
+    contradicts_principle: >-
+      Le critère kantien est universel : il vaut pour tout être raisonnable,
+      indépendamment de sa naissance ou de son appartenance sociale — en
+      faire un privilège hérité est l'inverse exact du geste kantien.
+
+  - id: mc.philo.la_personne.locke-critere-mal-identifie
+    label: "Locke ferait reposer l'identité personnelle sur le corps ou sur une âme substantielle"
+    description: >-
+      L'élève attribue à Locke un critère qu'il rejette explicitement — soit
+      la continuité du corps (« même homme »), soit une âme substantielle
+      immatérielle — au lieu de la continuité de la conscience, seul
+      critère que Locke retient.
+    contradicts_principle: >-
+      Ce n'est ni la continuité du corps (qui change constamment de matière
+      sans affecter l'identité PERSONNELLE), ni une substance spirituelle
+      sous-jacente (dont l'existence reste, pour Locke, indémontrable), qui
+      fonde l'identité personnelle — c'est la continuité de la conscience.
+
+  - id: mc.philo.la_personne.locke-hume-confondus
+    label: "« La confusion la plus fréquente sur ce point du programme » : Locke et Hume échangés"
+    description: >-
+      L'élève attribue à Locke la critique humienne du moi comme « faisceau
+      de perceptions » sans unité réelle, ou attribue à Hume la conscience
+      continue et capable de mémoire que Locke, lui, suppose encore — les
+      deux auteurs occupent, sur ce point précis, des positions opposées.
+    contradicts_principle: >-
+      Locke, en R3, suppose encore une conscience continue, capable de
+      s'approprier ses états passés par la mémoire. C'est Hume qui va plus
+      loin et remet en question l'existence même de cette unité-là.
+      Confondre les deux, c'est manquer précisément ce qui fait la
+      radicalité de Hume par rapport à Locke.
+
+  - id: mc.philo.la_personne.hume-these-mal-comprise
+    label: "Hume nierait toute succession de perceptions, ou affirmerait une âme substantielle"
+    description: >-
+      L'élève dénature ce que Hume affirme réellement — en lui prêtant soit
+      la négation de toute expérience mentale (« rien n'existe »), soit,
+      à l'inverse, la confirmation par introspection d'une substance
+      unificatrice — alors que Hume affirme la succession réelle des
+      perceptions et nie seulement l'existence d'un « moi » distinct qui les
+      porterait.
+    contradicts_principle: >-
+      Hume ne nie pas que des perceptions se succèdent réellement dans un
+      esprit. Il nie seulement qu'on puisse observer, derrière cette
+      succession, une substance permanente, un « moi » distinct de ses
+      perceptions, qui les porterait toutes.
+
+  - id: mc.philo.la_personne.locke-mecanisme-details-mal-compris
+    label: "Le mécanisme précis de Locke (même homme/même personne, chaîne de souvenirs) est mal saisi"
+    description: >-
+      L'élève confond ou inverse la distinction lockéenne entre « même
+      homme » (continuité organique) et « même personne » (terme forensique,
+      continuité de conscience), ou croit que Locke exige une mémoire totale
+      et parfaite plutôt qu'une chaîne ininterrompue de souvenirs qui se
+      chevauchent partiellement.
+    contradicts_principle: >-
+      « Même homme » ne suppose qu'une continuité organique ; « même
+      personne » — terme forensique — suppose la continuité de la
+      conscience. Et il suffit d'une chaîne ininterrompue de souvenirs qui
+      se chevauchent : Locke n'exige à aucun moment une mémoire totale et
+      parfaite de chaque épisode passé.
+
+  - id: mc.philo.la_personne.personne-physique-morale-confondues
+    label: "« Personne physique » et « personne morale » sont mal distinguées"
+    description: >-
+      L'élève mécomprend la distinction juridique entre personne physique
+      (un individu humain concret) et personne morale (une fiction
+      juridique comme une entreprise ou un État) — en réservant l'un des
+      deux statuts à l'un des deux seulement, en confondant « morale » avec
+      la vertu individuelle, ou en niant que la personne morale ait aussi
+      des obligations.
+    contradicts_principle: >-
+      La personne physique désigne un individu humain concret ; la personne
+      morale, une fiction juridique à qui l'on reconnaît aussi des droits ET
+      des obligations, bien qu'elle ne possède ni conscience ni mémoire —
+      les deux catégories peuvent, l'une comme l'autre, être sujets de
+      droit.
+
+  - id: mc.philo.la_personne.imputabilite-mal-fondee
+    label: "L'imputabilité serait une pure causalité, un statut administratif, ou une capacité de mouvement"
+    description: >-
+      L'élève réduit l'imputabilité à un pur enchaînement causal
+      (indépendant de la compréhension et du choix), la fait dépendre d'un
+      statut purement administratif ou d'un lien de propriété plutôt que du
+      discernement du sujet lui-même, ou confond l'autonomie rationnelle
+      kantienne avec la simple capacité biologique de se mouvoir seul.
+    contradicts_principle: >-
+      L'imputabilité suppose qu'on puisse attribuer un acte à un sujet
+      capable d'en comprendre la portée et d'avoir pu agir autrement — ni un
+      pur enchaînement causal, ni un statut administratif ou un lien de
+      propriété, ni une simple autonomie de mouvement, ne suffisent à eux
+      seuls à fonder cette responsabilité.
+
+  - id: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
+    label: "La dépersonnalisation serait un simple sentiment, un trouble individuel, ou un acte anodin"
+    description: >-
+      L'élève réduit la dépersonnalisation, au sens construit par la leçon,
+      à un sentiment ordinaire de solitude ou d'anonymat, à un trouble
+      psychiatrique purement individuel, à un simple changement
+      administratif de nom, ou à un manque de respect ponctuel — plutôt
+      qu'à l'opération précise que R6 construit : retirer à quelqu'un le
+      statut moral et juridique de fin en soi et de sujet responsable.
+    contradicts_principle: >-
+      Dépersonnaliser, c'est cesser de traiter un individu comme une fin en
+      soi et un sujet de droit, pour le réduire à un pur moyen ou objet
+      interchangeable — un acte le plus souvent commis par d'autres, pas un
+      sentiment ordinaire, un trouble individuel, ou un simple manque
+      ponctuel de politesse.
+
+  - id: mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale
+    label: "La dignité kantienne dépendrait de la reconnaissance sociale, ou disparaîtrait avec elle"
+    description: >-
+      L'élève confond la reconnaissance sociale et juridique d'un statut
+      (que le droit peut refuser, comme dans l'esclavage) avec la dignité
+      kantienne elle-même, intrinsèque à la nature raisonnable de l'être —
+      en croyant que retirer la première fait disparaître la seconde.
+    contradicts_principle: >-
+      La reconnaissance sociale d'un statut peut être refusée par le droit
+      (l'esclavage en est l'exemple radical) ; la dignité kantienne, elle,
+      tient à la seule nature raisonnable de l'être et ne dépend d'aucune
+      reconnaissance extérieure — aucune décision humaine ne peut la
+      retirer, même quand elle refuse de la reconnaître.
+
+  - id: mc.philo.la_personne.r0-tension-non-tenue
+    label: "La double tension de R0 est prématurément résolue, ou réduite à une seule question"
+    description: >-
+      L'élève tranche trop vite en faveur de l'une des deux réponses
+      spontanées de R0 (le même corps suffit / l'enfant est un pur
+      étranger), nie que la scène pose un problème philosophique réel, ou
+      réduit les trois questions que R0 fait émerger à une seule — avant
+      qu'aucun auteur n'ait encore été mobilisé.
+    contradicts_principle: >-
+      Chacune des deux réponses spontanées se heurte à une difficulté
+      symétrique : ni la seule continuité du corps, ni la seule étrangeté
+      ressentie, ne suffit à trancher. R0 pose trois questions distinctes,
+      sans nommer encore aucun auteur ni trancher en faveur d'aucune
+      doctrine — Kant, Locke et Hume n'interviennent que plus loin.
+
+  - id: mc.philo.la_personne.methode-dissertation-mal-appliquee
+    label: "Les gestes de la méthode (problématiser, construire un plan, situer un auteur) sont mal appliqués"
+    description: >-
+      L'élève traite une simple reformulation du sujet comme une véritable
+      problématique, inverse ou aplatit le mouvement thèse/antithèse/
+      dépassement, restreint indûment la portée d'un auteur ou d'un concept
+      à un seul débat, ou croit qu'une seule partie du plan doit
+      mobiliser un auteur donné à l'exclusion de tous les autres.
+    contradicts_principle: >-
+      Une problématique met en évidence une tension entre deux positions
+      également légitimes en apparence — elle ne se réduit ni à une
+      reformulation du sujet, ni à un problème de style. Le plan
+      dialectique va de l'intuition spontanée (thèse) vers sa remise en
+      cause construite (antithèse) puis son dépassement — jamais l'inverse.
+
+  - id: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+    label: "Le refus actif d'être traité comme une chose n'aurait aucune pertinence philosophique pour le statut de personne"
+    description: >-
+      L'élève traite l'acte, par le sujet lui-même, de refuser d'être réduit
+      à une chose comme un fait purement psychologique ou rhétorique, sans
+      voir qu'il fait écho, sous un angle actif et non plus seulement
+      statique, à deux points déjà construits par la leçon — le critère
+      kantien du moyen/de la fin en soi (R2) et le mécanisme de la
+      dépersonnalisation comme reconnaissance qui peut être retirée, mais
+      aussi revendiquée (R6).
+    contradicts_principle: >-
+      Refuser d'être traité comme une chose, c'est refuser d'être réduit à
+      un pur moyen (l'envers du critère kantien, R2) ; et les luttes
+      historiques pour faire reconnaître comme personnes à part entière des
+      individus qu'on ne traitait que comme de simples individus (R6)
+      montrent que cette reconnaissance peut aussi être activement
+      revendiquée, pas seulement passivement constatée ou retirée.
 
 items:
   - id: PERS-1
@@ -16,6 +305,7 @@ items:
       - id: A
         text: "Les deux mots sont de purs synonymes, interchangeables dans n'importe quel contexte : tout individu est immédiatement une personne, et toute distinction que l'on voudrait tracer entre eux relève d'une subtilité verbale sans portée philosophique réelle."
         correct: false
+        misconception: mc.philo.la_personne.individu-personne-synonymes
         feedback: >
           Ce n'est pas ce que la leçon établit : « personne » désigne un
           statut supplémentaire, qui suppose un critère précis (cf. R2), pas
@@ -27,14 +317,16 @@ items:
       - id: C
         text: "« Personne » désigne uniquement le fait, purement biologique, d'appartenir à l'espèce humaine, indépendamment de toute autre considération."
         correct: false
+        misconception: mc.philo.la_personne.personne-reduite-a-espece
         feedback: >
           Réduire « personne » à la seule appartenance biologique manque le
           critère que la leçon va construire (R2) : ce qui fait qu'un être
           mérite le statut de personne, pour Kant, tient à sa nature
           raisonnable, pas à sa seule appartenance à une espèce.
       - id: D
-        text: "« Individu » et « identité personnelle » désignent la même chose : être un individu, c'est déjà posséder une identité personnelle stable dans le temps."
+        text: "« Individu » et « identité personnelle » désignent la même chose : être un individu, c'est déjà posséder une identité personnelle stable dans le temps -- au point qu'aucune des deux questions ne resterait jamais distincte l'une de l'autre, quel que soit le contexte philosophique envisagé."
         correct: false
+        misconception: mc.philo.la_personne.individu-identite-personnelle-confondus
         feedback: >
           Ce sont deux questions distinctes : l'individu est une simple unité
           comptable ; l'identité personnelle est le problème, bien plus
@@ -68,14 +360,16 @@ items:
       - id: A
         text: "Posséder, comme toute chose de grande valeur sur un marché, un prix particulièrement élevé, bien supérieur à celui des objets ordinaires, qui suffirait à le distinguer de ces derniers et à fonder son statut de personne."
         correct: false
+        misconception: mc.philo.la_personne.kant-prix-dignite-mal-compris
         feedback: >
           C'est confondre dignité et prix -- Kant oppose justement les deux :
           ce qui a un prix reste, par définition, remplaçable par un
           équivalent ; la dignité désigne au contraire une valeur qui
           n'admet aucun équivalent, quel que soit son montant.
       - id: B
-        text: "Être capable de se souvenir de ses états passés et d'étendre sa conscience jusqu'à eux."
+        text: "Être capable de se souvenir de ses états passés et d'étendre sa conscience jusqu'à eux -- un critère qui, s'il valait pour Kant, rendrait la dignité d'un nourrisson ou d'un grand amnésique strictement nulle, ce que R2 ne dit nulle part."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est le critère de Locke (continuité de conscience et de mémoire,
           R3), pas celui de Kant. Kant répond à une question différente : ce
@@ -83,8 +377,9 @@ items:
           qui fait que ce même être reste, dans le temps, un seul et même
           sujet.
       - id: C
-        text: "Appartenir, par sa seule naissance, à telle famille ou tel groupe social reconnu comme respectable."
+        text: "Appartenir, par sa seule naissance, à telle famille ou tel groupe social reconnu comme respectable -- une dignité qui varierait alors d'une famille à l'autre, et qu'aucun individu né hors de ce cercle ne pourrait jamais espérer acquérir, quels que soient par ailleurs sa raison et son autonomie propres."
         correct: false
+        misconception: mc.philo.la_personne.dignite-fondee-sur-privilege
         feedback: >
           Cela ferait du statut de personne un privilège hérité plutôt qu'un
           statut fondé sur la nature raisonnable de l'être -- exactement
@@ -127,6 +422,7 @@ items:
       - id: B
         text: "Elle manque le fait que Locke fonde en réalité l'identité personnelle sur le même critère que Kant : être un être raisonnable, une fin en soi."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est confondre deux questions différentes : Kant (R2) répond à
           ce qui fait qu'un être MÉRITE le respect dû à une personne ; Locke
@@ -135,14 +431,16 @@ items:
       - id: C
         text: "Elle manque le fait que, pour Locke, c'est une âme substantielle et immatérielle, rigoureusement identique à elle-même à travers tout le cours du temps, qui garantit seule l'identité personnelle du sujet."
         correct: false
+        misconception: mc.philo.la_personne.locke-critere-mal-identifie
         feedback: >
           C'est l'inverse : Locke évite précisément de fonder l'identité
           personnelle sur une substance (âme ou corps) dont on ne peut
           jamais être sûr qu'elle demeure identique -- son critère est la
           continuité de conscience, pas une substance sous-jacente.
       - id: D
-        text: "Elle manque le fait que Locke réduit lui-même le moi à un pur « faisceau de perceptions » sans aucune continuité réelle."
+        text: "Elle manque le fait que Locke réduit lui-même le moi à un pur « faisceau de perceptions » sans aucune continuité réelle -- une lecture qui effacerait purement et simplement la distinction entre les deux auteurs que R4 prend justement soin de nommer comme la confusion la plus fréquente du programme."
         correct: false
+        misconception: mc.philo.la_personne.locke-hume-confondus
         feedback: >
           C'est la thèse de Hume (R4), pas celle de Locke. Locke suppose
           encore une conscience capable de se ressaisir elle-même par la
@@ -174,16 +472,18 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "C'est Locke, et non Hume, qui a le premier réduit le moi à un simple « faisceau de perceptions » sans unité réelle."
+        text: "C'est Locke, et non Hume, qui a le premier réduit le moi à un simple « faisceau de perceptions » sans unité réelle -- une attribution qui viderait alors de tout sens la mise en garde de R4 sur « la confusion la plus fréquente sur ce point du programme »."
         correct: false
+        misconception: mc.philo.la_personne.locke-hume-confondus
         feedback: >
           C'est une mauvaise attribution : Locke suppose une conscience
           continue, capable de mémoire, qui s'approprie ses états passés ;
           c'est Hume qui va plus loin et conteste jusqu'à l'existence d'une
           telle unité derrière les perceptions.
       - id: B
-        text: "Hume confirme, par l'introspection, l'existence d'une âme substantielle qui unifie toutes les perceptions successives."
+        text: "Hume confirme, par l'introspection, l'existence d'une âme substantielle qui unifie toutes les perceptions successives -- une conclusion diamétralement opposée à celle que Hume tire réellement de sa propre méthode empiriste, fondée sur ce que l'introspection livre effectivement."
         correct: false
+        misconception: mc.philo.la_personne.hume-these-mal-comprise
         feedback: >
           C'est l'inverse exact de la conclusion de Hume : il ne trouve
           jamais, par introspection, ce genre de substance unificatrice,
@@ -195,6 +495,7 @@ items:
       - id: D
         text: "Hume soutient que le moi se définit avant tout par sa capacité à se donner à lui-même une loi morale universelle, tout à fait indépendamment des perceptions particulières que l'introspection pourrait lui livrer au fil du temps."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est le critère kantien de l'être raisonnable et autonome (R2),
           sans rapport avec la démarche empiriste de Hume, qui n'examine que
@@ -231,6 +532,7 @@ items:
       - id: A
         text: "Parce que seule une « personne morale » au sens juridique -- une entreprise, une association, une collectivité territoriale -- peut être poursuivie et condamnée devant un tribunal, jamais un simple individu, une personne physique en chair et en os."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           C'est l'inverse de la distinction juridique : personne physique et
           personne morale peuvent toutes deux être sujets de droit ; la
@@ -242,6 +544,7 @@ items:
       - id: C
         text: "Parce que le droit tient pour responsable quiconque a matériellement causé un dommage, indépendamment de sa capacité à comprendre ou à choisir autrement."
         correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
         feedback: >
           C'est réduire la responsabilité à un pur enchaînement causal, en
           manquant exactement ce que l'imputabilité ajoute : la capacité de
@@ -250,8 +553,9 @@ items:
           d'un enfant en bas âge ou d'un individu jugé irresponsable
           pénalement.
       - id: D
-        text: "Parce que la nationalité d'un individu détermine, à elle seule, s'il peut être tenu pour responsable de ses actes."
+        text: "Parce que la nationalité d'un individu détermine, à elle seule, s'il peut être tenu pour responsable de ses actes -- comme si un citoyen et un étranger, à discernement et capacité de choix parfaitement égaux, ne pouvaient jamais être jugés selon les mêmes critères d'imputabilité."
         correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
         feedback: >
           La nationalité, statut purement administratif, est sans rapport
           avec le critère philosophique de l'imputabilité, qui concerne la
@@ -289,6 +593,7 @@ items:
       - id: A
         text: "Se sentir seul ou anonyme dans une grande ville, parmi des inconnus qui ne nous remarquent pas."
         correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
         feedback: >
           C'est trop faible et trop psychologique : la dépersonnalisation,
           ici, désigne une opération précise -- retirer à quelqu'un le
@@ -297,13 +602,15 @@ items:
       - id: B
         text: "Changer légalement de nom, de prénom ou de numéro d'identité administrative auprès des services de l'État civil, sans que rien d'autre ne change dans le traitement concret et quotidien qui continue de vous être réservé par les autres."
         correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
         feedback: >
           Un simple changement administratif, sans perte de dignité ni de
           reconnaissance comme sujet responsable, n'est pas ce que la leçon
           appelle dépersonnalisation.
       - id: C
-        text: "Perdre, avec l'âge, une partie de ses souvenirs d'enfance, comme le montre Hume à propos du moi."
+        text: "Perdre, avec l'âge, une partie de ses souvenirs d'enfance, comme le montre Hume à propos du moi -- comme si la critique épistémologique de Hume sur l'absence d'un moi-substance équivalait déjà, à elle seule, à l'opération morale et sociale que R6 appelle dépersonnalisation."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est confondre la critique métaphysique de Hume sur l'absence
           d'un moi-substance (R4) avec l'acte social et moral de
@@ -343,6 +650,7 @@ items:
       - id: A
         text: "Si tenir un journal intime est une pratique psychologiquement bénéfique, recommandée pour mieux se connaître soi-même."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           C'est ignorer l'enjeu philosophique de la scène : la question
           n'est pas l'utilité du journal, mais l'identité de celui qui l'a
@@ -351,8 +659,9 @@ items:
         text: "Ce qui fait qu'un individu est une personne ; si l'identité qui relie l'enfant de dix ans à l'adulte est un fait donné ou une construction qui pourrait se défaire ; et si l'on reste, au fond, la même personne à travers le temps."
         correct: true
       - id: C
-        text: "Si les souvenirs consignés dans ce cahier sont fiables ou déformés par le temps."
+        text: "Si les souvenirs consignés dans ce cahier sont fiables ou déformés par le temps -- une question empirique de mémoire exacte, entièrement distincte de la question philosophique de savoir qui, au juste, a vécu et signé ces souvenirs il y a dix ans."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           C'est une question de fiabilité de la mémoire, distincte de
           celle -- posée par R0 -- de savoir si tu es encore le même sujet
@@ -360,6 +669,7 @@ items:
       - id: D
         text: "Si la promesse notée dans le cahier est juridiquement contraignante devant un tribunal."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           C'est réduire un problème philosophique d'identité à une question
           de validité légale d'un contrat -- ce n'est pas ce que R0
@@ -388,12 +698,14 @@ items:
       - id: A
         text: "La première réponse (même corps) est manifestement correcte, et le malaise ressenti en lisant le journal n'est qu'une réaction irrationnelle sans portée philosophique."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           R0 ne tranche pas en faveur de la première réponse : il montre au
           contraire que chacune des deux se heurte à une difficulté réelle.
       - id: B
-        text: "La réponse « même corps » a du mal à expliquer pourquoi on reconnaît un vieil ami après dix ans, alors que la réponse « pur étranger » n'a, elle, aucune difficulté à affronter."
+        text: "La réponse « même corps » a du mal à expliquer pourquoi on reconnaît un vieil ami après dix ans, alors que la réponse « pur étranger » n'a, elle, aucune difficulté à affronter -- comme si l'une des deux réponses spontanées échappait entièrement à toute objection, quand R0 montre au contraire que chacune se heurte, à sa manière, à une difficulté symétrique."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           C'est l'inverse : c'est la réponse « même corps » qui peine à
           expliquer le malaise du journal, plus fort que face à un vieil
@@ -403,8 +715,9 @@ items:
         text: "Si la continuité du corps suffisait à garantir la même personne, le malaise en lisant ce journal serait inexplicable ; mais si l'enfant était un pur étranger, le malaise à l'idée d'ignorer sa promesse le serait tout autant."
         correct: true
       - id: D
-        text: "La tension est déjà résolue par le simple fait que le même prénom figure sur la couverture du cahier."
+        text: "La tension est déjà résolue par le simple fait que le même prénom figure sur la couverture du cahier -- un même nom suffirait, à lui seul, à garantir juridiquement et philosophiquement la continuité complète du sujet, sans qu'aucune autre question ne reste ouverte."
         correct: false
+        misconception: mc.philo.la_personne.identite-numerique-confondue-personnelle
         feedback: >
           C'est confondre identité personnelle et simple identité numérique
           ou administrative -- exactement l'erreur que R1 met en garde de
@@ -432,20 +745,23 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "On ne peut rien objecter : R0 est bien la présentation implicite de la thèse de Locke, développée ensuite en détail."
+        text: "On ne peut rien objecter : R0 est bien la présentation implicite de la thèse de Locke, développée ensuite en détail -- comme si l'accroche d'une leçon philosophique devait toujours, en réalité, être lue comme l'exposé déguisé d'une doctrine déjà choisie d'avance par son auteur."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           R0 ne prend pas parti et ne mobilise aucun auteur -- il pose la
           tension, il ne la résout pas encore en faveur de qui que ce soit.
       - id: B
-        text: "On doit objecter que c'est en réalité la thèse de Hume, et non celle de Locke, qu'illustre déjà la scène du journal intime."
+        text: "On doit objecter que c'est en réalité la thèse de Hume, et non celle de Locke, qu'illustre déjà la scène du journal intime -- une lecture qui prêterait à une simple accroche narrative la radicalité d'une thèse que R4 ne développera, en réalité, que bien plus loin dans la leçon."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           Ni l'un ni l'autre : R0 ne nomme aucun philosophe et ne tranche
           pas la tension qu'il expose.
       - id: C
-        text: "On doit objecter que R0 illustre plutôt la thèse de Kant sur la dignité, non celle de Locke sur la mémoire."
+        text: "On doit objecter que R0 illustre plutôt la thèse de Kant sur la dignité, non celle de Locke sur la mémoire -- puisque le malaise ressenti en lisant le journal proviendrait, selon cette lecture, d'un manquement au respect dû à sa propre personne, pas d'un problème de continuité de conscience."
         correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
           R0 ne mobilise aucun critère kantien non plus : il expose une
           tension brute, avant toute doctrine.
@@ -478,21 +794,24 @@ items:
         text: "Elle confond l'identité numérique ou administrative (même nom, même numéro) avec l'identité personnelle au sens philosophique -- la question, non encore réglée par ce seul fait, de savoir si l'on reste, au sens plein, LE MÊME sujet à travers les changements psychologiques."
         correct: true
       - id: B
-        text: "Elle manque le fait que le nom et le numéro administratif appartiennent au concept de « personne », et non à celui d'« individu »."
+        text: "Elle manque le fait que le nom et le numéro administratif appartiennent au concept de « personne », et non à celui d'« individu » -- une confusion qui inverserait exactement le sens des deux notions telles que R1 les construit."
         correct: false
+        misconception: mc.philo.la_personne.identite-numerique-confondue-personnelle
         feedback: >
           C'est l'inverse : nom et numéro relèvent du simple suivi
           numérique de l'individu, pas du statut de personne, qui suppose
           un critère supplémentaire (R2).
       - id: C
-        text: "Elle manque le fait qu'être un individu suppose déjà, par définition, la conscience de soi et la responsabilité."
+        text: "Elle manque le fait qu'être un individu suppose déjà, par définition, la conscience de soi et la responsabilité -- de sorte qu'aucune distinction supplémentaire avec le statut de personne ne serait, en toute rigueur, jamais nécessaire pour aucun être vivant, humain ou non."
         correct: false
+        misconception: mc.philo.la_personne.individu-personne-synonymes
         feedback: >
           R1 dit explicitement le contraire : la seule notion d'individu
           n'exige ni raison, ni conscience de soi, ni statut moral.
       - id: D
-        text: "Elle manque le fait que seule une « personne morale » (une entreprise, une association) peut poser la question de son identité personnelle."
+        text: "Elle manque le fait que seule une « personne morale » (une entreprise, une association) peut poser la question de son identité personnelle, et jamais un individu humain concret comme l'élève lui-même, qui en serait, par nature, exclu."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           La question de l'identité personnelle concerne les personnes
           physiques comme l'élève lui-même, pas seulement les fictions
@@ -518,8 +837,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Cette continuité de l'individu suffit à elle seule à garantir que tu restes, au sens plein, engagé par les mêmes promesses qu'à dix ans."
+        text: "Cette continuité de l'individu suffit à elle seule à garantir que tu restes, au sens plein, engagé par les mêmes promesses qu'à dix ans -- puisqu'aucune autre condition, mentale ou morale, ne viendrait jamais s'ajouter à la simple persistance corporelle pour fonder un tel engagement."
         correct: false
+        misconception: mc.philo.la_personne.individu-identite-personnelle-confondus
         feedback: >
           C'est exactement la confusion que R1 met en garde d'éviter : la
           continuité de l'individu ne tranche pas, à elle seule, la
@@ -530,6 +850,7 @@ items:
       - id: C
         text: "Aucune continuité, même au simple niveau de l'individu, ne peut être établie, puisque la matière du corps se renouvelle sans cesse."
         correct: false
+        misconception: mc.philo.la_personne.individu-identite-personnelle-confondus
         feedback: >
           R1 affirme au contraire qu'une continuité spatio-temporelle
           simple existe bel et bien au niveau de l'individu -- c'est
@@ -537,6 +858,7 @@ items:
       - id: D
         text: "Le seul fait d'être un individu suffit déjà à garantir un statut de personne, puisque tout être humain vivant est automatiquement une personne au sens plein."
         correct: false
+        misconception: mc.philo.la_personne.individu-personne-synonymes
         feedback: >
           R1 est clair : tout être humain vivant est un individu, mais lui
           reconnaître le statut de personne suppose un critère
@@ -565,13 +887,15 @@ items:
       - id: A
         text: "Elle manque le fait que Kant autorise, au contraire, de traiter n'importe quel être raisonnable comme un pur moyen, dès lors que cela sert une fin utile à la société."
         correct: false
+        misconception: mc.philo.la_personne.kant-prix-dignite-mal-compris
         feedback: >
           C'est l'excès inverse : Kant interdit précisément la réduction
           entière à un instrument, quelle que soit l'utilité sociale
           invoquée.
       - id: B
-        text: "Elle manque le fait que, pour Kant, seul le prix d'un service détermine s'il est moralement acceptable de payer quelqu'un."
+        text: "Elle manque le fait que, pour Kant, seul le prix d'un service détermine s'il est moralement acceptable de payer quelqu'un -- une lecture qui ferait dépendre toute la moralité de l'échange du seul montant versé, sans jamais faire intervenir la dignité de la personne payée."
         correct: false
+        misconception: mc.philo.la_personne.kant-prix-dignite-mal-compris
         feedback: >
           C'est confondre prix et dignité : le prix d'un service ne dit
           rien du respect dû, par ailleurs, à la personne qui le rend.
@@ -581,6 +905,7 @@ items:
       - id: D
         text: "Elle manque le fait que cette interdiction ne vaut, chez Kant, que pour les personnes morales (entreprises, associations), jamais pour les individus concrets."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           C'est l'inverse : le principe kantien de la fin en soi concerne
           d'abord les êtres raisonnables concrets, pas les fictions
@@ -608,20 +933,23 @@ items:
       - id: A
         text: "Parce que le prix concerne seulement les objets naturels, tandis que la dignité concerne exclusivement les objets fabriqués par l'homme."
         correct: false
+        misconception: mc.philo.la_personne.kant-prix-dignite-mal-compris
         feedback: >
           Le partage prix/dignité suit, chez Kant, la présence ou
           l'absence de raison et d'autonomie -- pas l'origine naturelle ou
           fabriquée de la chose.
       - id: B
-        text: "Parce que la dignité, comme le prix, admet des degrés : certains êtres ont plus de dignité que d'autres selon leur utilité sociale."
+        text: "Parce que la dignité, comme le prix, admet des degrés : certains êtres ont plus de dignité que d'autres selon leur utilité sociale, un peu comme deux objets du même genre peuvent avoir un prix différent selon leur qualité ou leur rareté."
         correct: false
+        misconception: mc.philo.la_personne.kant-prix-dignite-mal-compris
         feedback: >
           C'est le contraire : Kant définit la dignité comme une valeur
           absolue, sans degrés ni équivalent -- l'utilité sociale relève,
           elle, du seul registre du prix.
       - id: C
-        text: "Parce que seuls les objets ayant une longue histoire ou une grande ancienneté acquièrent, avec le temps, une dignité que les objets récents n'ont pas."
+        text: "Parce que seuls les objets ayant une longue histoire ou une grande ancienneté acquièrent, avec le temps, une dignité que les objets récents n'ont pas -- une dignité qui grandirait donc avec les années, exactement comme le prix d'un objet ancien sur un marché d'antiquités, plutôt que de tenir, comme chez Kant, à la seule raison."
         correct: false
+        misconception: mc.philo.la_personne.dignite-fondee-sur-privilege
         feedback: >
           C'est confondre la dignité kantienne avec une valeur sentimentale
           ou patrimoniale liée à l'ancienneté -- sans rapport avec le
@@ -655,17 +983,20 @@ items:
       - id: B
         text: "Les deux expressions désignent exactement la même chose chez Locke, employées comme synonymes interchangeables."
         correct: false
+        misconception: mc.philo.la_personne.locke-mecanisme-details-mal-compris
         feedback: >
           Locke insiste au contraire sur la distinction : ce sont deux
           questions différentes, l'une biologique, l'autre forensique.
       - id: C
         text: "« Même homme » est le terme forensique, lié au jugement moral et juridique, tandis que « même personne » ne désigne qu'une continuité purement biologique."
         correct: false
+        misconception: mc.philo.la_personne.locke-mecanisme-details-mal-compris
         feedback: >
           C'est l'inverse exact des deux définitions de Locke.
       - id: D
-        text: "« Même personne » suppose seulement que le corps ait persisté sans changement, la conscience n'intervenant que comme un indice secondaire."
+        text: "« Même personne » suppose seulement que le corps ait persisté sans le moindre changement notable au fil de tout ce temps qui passe inexorablement, la conscience n'intervenant jamais que comme un indice tout à fait secondaire et négligeable dans ce jugement."
         correct: false
+        misconception: mc.philo.la_personne.locke-critere-mal-identifie
         feedback: >
           Chez Locke, c'est la conscience qui est le critère décisif de la
           même personne, jamais le corps ni un indice secondaire.
@@ -692,6 +1023,7 @@ items:
       - id: A
         text: "Que cette objection est décisive : l'absence de souvenir direct d'un épisode rompt, à elle seule, l'identité personnelle avec l'enfant qu'on a été."
         correct: false
+        misconception: mc.philo.la_personne.locke-mecanisme-details-mal-compris
         feedback: >
           Locke précise au contraire qu'une mémoire totale et parfaite
           n'est pas exigée -- une chaîne de maillons qui se recouvrent
@@ -702,12 +1034,14 @@ items:
       - id: C
         text: "Que ce n'est pas un problème, puisque l'identité personnelle, chez lui, ne dépend de toute façon que de la continuité du corps, jamais de la mémoire."
         correct: false
+        misconception: mc.philo.la_personne.locke-critere-mal-identifie
         feedback: >
           C'est l'inverse exact de la thèse de Locke : c'est la conscience,
           non le corps, qui fonde l'identité personnelle.
       - id: D
-        text: "Qu'il suffit, pour rester la même personne, de porter le même nom depuis l'enfance, indépendamment de toute continuité de conscience."
+        text: "Qu'il suffit, pour rester la même personne, de porter le même nom depuis l'enfance, indépendamment de toute continuité de conscience -- un critère purement administratif que Locke, pourtant, ne mentionne à aucun moment dans sa définition forensique de la personne."
         correct: false
+        misconception: mc.philo.la_personne.identite-numerique-confondue-personnelle
         feedback: >
           C'est confondre identité personnelle et simple identité numérique
           ou administrative -- exactement ce que R1 met en garde d'éviter.
@@ -735,12 +1069,14 @@ items:
       - id: A
         text: "Il manque le fait que Hume affirme, à l'inverse, avec certitude l'existence d'une âme substantielle qui explique la succession des perceptions."
         correct: false
+        misconception: mc.philo.la_personne.hume-these-mal-comprise
         feedback: >
           C'est l'inverse exact de la conclusion de Hume, qui ne trouve
           jamais, par introspection, une telle substance.
       - id: B
-        text: "Il manque le fait que cette question ne concerne, chez Hume, que les personnes morales au sens juridique, jamais l'esprit d'un individu concret."
+        text: "Il manque le fait que cette question ne concerne, chez Hume, que les personnes morales au sens juridique, jamais l'esprit d'un individu concret -- une restriction qu'aucune ligne de R4 ne pose, puisque Hume interroge, par introspection, l'esprit d'un individu concret, pas le statut juridique d'une entreprise ou d'une association."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           La critique humienne du moi porte sur l'esprit d'un individu
           concret par introspection, sans rapport avec la notion juridique
@@ -749,8 +1085,9 @@ items:
         text: "La nuance précise de Hume : il ne nie pas que des perceptions se succèdent réellement -- il nie seulement qu'on puisse observer, derrière cette succession, une substance permanente, un « moi » distinct des perceptions qui les porterait toutes."
         correct: true
       - id: D
-        text: "Il manque le fait que Hume, comme Locke, fonde malgré tout l'identité personnelle sur une conscience capable de se ressaisir elle-même."
+        text: "Il manque le fait que Hume, comme Locke, fonde malgré tout l'identité personnelle sur une conscience capable de se ressaisir elle-même -- comme si les deux philosophes défendaient, au fond, exactement la même thèse sur ce point précis du programme."
         correct: false
+        misconception: mc.philo.la_personne.locke-hume-confondus
         feedback: >
           C'est la confusion la plus fréquente sur ce point : c'est Locke
           qui suppose une telle conscience continue -- Hume va plus loin et
@@ -778,6 +1115,7 @@ items:
       - id: A
         text: "Il compare le moi à un fleuve qui garde son identité malgré le changement constant de son eau -- image empruntée à Locke pour illustrer la permanence du même homme biologique."
         correct: false
+        misconception: mc.philo.la_personne.locke-hume-confondus
         feedback: >
           Cette image du fleuve, chez Locke, illustre la continuité du
           « même homme » biologique -- pas la fiction du moi que dénonce
@@ -785,13 +1123,15 @@ items:
       - id: B
         text: "Il compare le moi à un contrat juridique, dont la validité repose sur la reconnaissance mutuelle des parties, comme la promesse imputable à une personne responsable."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est un vocabulaire de R5 (imputabilité, sujet de droit), sans
           rapport avec l'argument épistémologique de Hume sur
           l'introspection.
       - id: C
-        text: "Il compare le moi à la dignité kantienne, une valeur absolue et sans équivalent qui persiste indépendamment de toute perception."
+        text: "Il compare le moi à la dignité kantienne, une valeur absolue et sans équivalent qui persiste indépendamment de toute perception -- une analogie qui rattacherait, à tort, l'argument épistémologique de Hume au vocabulaire moral tout différent de Kant."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est confondre la critique humienne du moi avec le concept
           kantien de dignité, une notion d'un tout autre registre (R2).
@@ -825,20 +1165,23 @@ items:
       - id: B
         text: "Seule la personne morale, en tant que fiction juridique, peut être sujet de droit ; la personne physique n'est jamais, à elle seule, qu'un individu, sans statut juridique propre."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           C'est l'inverse : personne physique et personne morale peuvent
           toutes deux être sujets de droit -- ce n'est pas un privilège
           réservé à la seule fiction juridique.
       - id: C
-        text: "« Personne morale » désigne un individu humain reconnu pour sa vertu et son sens moral exceptionnel, par opposition aux personnes ordinaires."
+        text: "« Personne morale » désigne un individu humain reconnu pour sa vertu et son sens moral exceptionnel, par opposition aux personnes ordinaires -- comme si le mot « morale » désignait ici un mérite individuel plutôt qu'une catégorie du droit civil."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           C'est une confusion de vocabulaire : « morale » est ici un terme
           juridique (une fiction comme une entreprise), sans rapport avec
           la vertu individuelle d'une personne physique.
       - id: D
-        text: "Une personne morale, en tant que fiction juridique, jouit de droits mais n'est, par nature, jamais soumise à aucune obligation ni à aucune responsabilité."
+        text: "Une personne morale, en tant que fiction juridique, jouit de droits mais n'est, par nature, jamais soumise à aucune obligation ni à aucune responsabilité -- comme si une entreprise pouvait indéfiniment engranger des droits sans jamais répondre d'une seule dette, d'un seul contrat rompu ou d'une seule obligation légale envers qui que ce soit."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           La leçon dit le contraire : la personne morale se voit reconnaître
           à la fois des droits ET des obligations -- être sujet de droit n'a
@@ -871,13 +1214,15 @@ items:
       - id: B
         text: "Oui : dès qu'un événement cause matériellement un dommage, on peut, au sens plein du terme, l'imputer à sa cause -- qu'il s'agisse d'un objet ou d'un sujet raisonnable."
         correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
         feedback: >
           C'est réduire l'imputabilité à la pure causalité -- exactement
           l'erreur à éviter : comprendre et pouvoir choisir autrement sont
           les conditions qui manquent au rocher.
       - id: C
-        text: "Oui, mais seulement parce que le propriétaire du terrain, en tant que personne morale, devient alors automatiquement responsable pénalement de tout ce qui s'y trouve."
+        text: "Oui, mais seulement parce que le propriétaire du terrain, en tant que personne morale, devient alors automatiquement responsable pénalement de tout ce qui s'y trouve -- une responsabilité qui se transmettrait ainsi mécaniquement du seul fait de la propriété, sans aucune question de discernement."
         correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
         feedback: >
           Confusion : être sujet de droit (R5) ne rend personne
           « automatiquement » responsable pénal d'un événement naturel --
@@ -885,6 +1230,7 @@ items:
       - id: D
         text: "Non, mais uniquement parce qu'un rocher n'est pas un individu au sens biologique -- s'il s'agissait d'un animal capable de mouvement autonome, l'imputabilité s'appliquerait de la même façon qu'à un être humain."
         correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
         feedback: >
           C'est confondre l'autonomie rationnelle kantienne (se donner à
           soi-même sa propre loi, R2) avec une simple autonomie de
@@ -917,6 +1263,7 @@ items:
       - id: B
         text: "Rien à objecter : tout manque de respect, aussi minime soit-il, équivaut, par nature, à retirer entièrement à quelqu'un son statut de personne."
         correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
         feedback: >
           C'est confondre deux échelles très différentes : un manque de
           respect ponctuel n'annule pas la reconnaissance d'une fin en soi
@@ -924,13 +1271,15 @@ items:
       - id: C
         text: "Il faut objecter que seule une décision de justice formelle peut dépersonnaliser quelqu'un -- aucun acte social ou historique, comme l'esclavage, ne le peut réellement."
         correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
         feedback: >
           C'est l'inverse de ce que montre l'exemple de l'esclavage : la
           dépersonnalisation est d'abord une reconnaissance SOCIALE
           refusée, pas seulement un acte de justice formel.
       - id: D
-        text: "Il faut objecter que la dépersonnalisation, dans cette leçon, désigne uniquement un trouble psychiatrique individuel, sans lien avec la manière dont autrui nous traite."
+        text: "Il faut objecter que la dépersonnalisation, telle que définie très précisément et explicitement dans cette leçon, désigne uniquement un trouble psychiatrique purement individuel et intérieur, sans aucun lien réel ou direct avec la manière dont autrui nous traite au quotidien."
         correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
         feedback: >
           La leçon écarte ce sens-là : la dépersonnalisation qu'elle
           construit est d'abord un acte commis par d'autres, pas un trouble
@@ -962,8 +1311,9 @@ items:
         text: "Elles ont perdu la reconnaissance sociale et juridique de leur statut de personne, traitées comme un bien ; mais, selon le critère kantien, leur dignité -- leur nature d'êtres raisonnables -- ne pouvait, elle, leur être retirée par aucune décision humaine."
         correct: true
       - id: B
-        text: "Elles ont perdu, du même coup, et la reconnaissance sociale de leur statut, et leur nature raisonnable elle-même, qui cesse purement et simplement d'exister dès qu'un système juridique refuse de la reconnaître."
+        text: "Elles ont perdu, du même coup et sans aucune distinction possible, et la reconnaissance sociale de leur statut, et leur nature raisonnable elle-même, qui cesse purement et simplement d'exister dès qu'un système juridique refuse de la reconnaître comme telle."
         correct: false
+        misconception: mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale
         feedback: >
           C'est confondre reconnaissance sociale (que le droit peut
           refuser) et nature raisonnable kantienne (qui ne dépend d'aucune
@@ -972,6 +1322,7 @@ items:
       - id: C
         text: "Rien n'a réellement été perdu : le seul fait de posséder un corps humain garantissait, à lui seul et en toute circonstance, la pleine reconnaissance sociale du statut de personne, y compris durant l'esclavage."
         correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
         feedback: >
           C'est l'inverse exact de ce que montre l'exemple : le statut de
           personne n'est pas une évidence biologique automatique -- il peut
@@ -979,6 +1330,7 @@ items:
       - id: D
         text: "Elles ont perdu leur statut de personne physique, mais ont conservé, à travers cette période, leur statut de personne morale au sens juridique du terme."
         correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
         feedback: >
           Mélange de catégories : la personne morale (une fiction comme une
           entreprise ou un État) n'a rien à voir avec le statut, refusé
@@ -1014,13 +1366,15 @@ items:
       - id: B
         text: "Cette proposition est déjà une excellente problématique, puisqu'elle reprend fidèlement les deux termes du sujet, donnée et construction, sans en omettre aucun."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           Reprendre les termes du sujet ne suffit pas : une problématique
           doit faire naître une TENSION entre deux positions, pas
           seulement redire la question posée.
       - id: C
-        text: "Le problème est seulement stylistique : il suffirait de la reformuler en une phrase plus longue et plus soutenue pour qu'elle devienne une problématique correcte."
+        text: "Le problème est seulement stylistique : il suffirait de la reformuler en une phrase plus longue et plus soutenue pour qu'elle devienne une problématique correcte, sans qu'il soit besoin de rien changer à son contenu ni d'y introduire la moindre tension véritable."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           Ce n'est pas une question de longueur ou de style, mais de
           structure : sans tension entre deux positions légitimes, aucune
@@ -1028,6 +1382,7 @@ items:
       - id: D
         text: "Une problématique ne devrait, en réalité, jamais être formulée sous forme de question, mais uniquement comme une affirmation déclarative annonçant directement la thèse du devoir."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           C'est faux : le modèle donné dans la leçon est lui-même une
           question -- annoncer d'emblée « la thèse » viderait le devoir de
@@ -1062,6 +1417,7 @@ items:
       - id: B
         text: "Aucune objection : thèse et antithèse sont, par construction, interchangeables -- l'ordre dans lequel on les présente n'a aucune incidence sur la validité du plan."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           Un plan dialectique suit un mouvement précis, de l'intuition
           spontanée vers sa remise en cause : intervertir thèse et
@@ -1069,13 +1425,15 @@ items:
       - id: C
         text: "Le vrai problème est que Locke n'a rien à faire dans un plan sur ce sujet : sa théorie concerne exclusivement ce qui fait qu'un être MÉRITE le statut de personne, pas l'identité personnelle."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           C'est l'inverse : c'est Kant (R2) qui répond à ce qui fait qu'un
           être mérite le statut de personne -- Locke (R3) répond
           précisément à l'identité personnelle, au cœur de ce sujet.
       - id: D
-        text: "Le vrai problème est que ce plan aurait dû comporter uniquement deux parties, thèse et antithèse, sans jamais de troisième partie de dépassement, qui n'est jamais exigée dans une dissertation de philosophie."
+        text: "Le vrai problème est que ce plan aurait dû comporter uniquement deux parties, thèse et antithèse, sans jamais aucune troisième partie de dépassement, laquelle n'est en réalité absolument jamais exigée dans une bonne dissertation de philosophie très sérieuse et rigoureuse."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           La leçon construit un plan en trois temps -- thèse, antithèse,
           dépassement : une dissertation dialectique sans dépassement
@@ -1109,6 +1467,7 @@ items:
       - id: B
         text: "Il n'y a rien à objecter : c'est précisément ainsi que la leçon présente le rapport entre Kant et la mémoire, comme une seule et même exigence."
         correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
         feedback: >
           La leçon met justement en garde contre cette confusion : Kant
           (dignité, être raisonnable) et Locke (mémoire, conscience)
@@ -1116,13 +1475,15 @@ items:
       - id: C
         text: "L'objection à faire est plutôt que Kant n'a aucune place dans un dépassement sur ce sujet, la notion de dignité étant réservée exclusivement aux débats sur la peine de mort."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           Rien, dans la leçon, ne réserve la dignité kantienne à un seul
           débat : R6 l'emploie pour penser la dépersonnalisation, bien
           au-delà de ce cas particulier.
       - id: D
-        text: "L'objection à faire est que ce dépassement aurait dû mobiliser exclusivement Hume, puisque lui seul, parmi les auteurs vus, aborde la question du dépassement thèse/antithèse dans une dissertation."
+        text: "L'objection à faire est que ce dépassement aurait dû mobiliser exclusivement Hume, puisque lui seul, parmi les auteurs vus, aborde la question du dépassement thèse/antithèse dans une dissertation -- une exigence qu'aucune étape de la méthode présentée en R7 ne formule pourtant nulle part."
         correct: false
+        misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           Hume appartient à l'antithèse (R4), pas au dépassement : l'étape
           3 de la leçon mobilise plutôt R5 (l'imputabilité) ou R2 et R6
@@ -1137,3 +1498,84 @@ items:
       de conscience.
       **Le dépassement attendu :** R5 ou R2/R6 -- jamais Hume, qui
       appartient à l'antithèse.
+
+coverage_summary:
+  # Computed by loading this file with js-yaml and tallying every
+  # choices[].misconception value per item — an item counts once per
+  # misconception if ANY of its distractors carries that id (house
+  # convention, matching content/philo/la-liberte and autrui's items.yaml).
+  # This is a LEGACY end-bank (PERS-1..PERS-24 predate per-distractor
+  # tagging — same Gap-4-shaped state as la-liberte/autrui before their own
+  # retrofits) tagged in this pass: every one of the 72 distractors across
+  # the 24 items now carries a real misconception id (no null tags), which
+  # is stricter than the house default. Per the recipe's "Honest coverage"
+  # judgment call, floor gaps below are reported truthfully rather than
+  # padded.
+  total_items: 24
+  floor: 3
+  floor_met: false
+  per_misconception:
+    mc.philo.la_personne.individu-personne-synonymes: 3
+    mc.philo.la_personne.personne-reduite-a-espece: 1
+    mc.philo.la_personne.individu-identite-personnelle-confondus: 3
+    mc.philo.la_personne.identite-numerique-confondue-personnelle: 3
+    mc.philo.la_personne.criteres-des-auteurs-confondus: 8
+    mc.philo.la_personne.kant-prix-dignite-mal-compris: 5
+    mc.philo.la_personne.dignite-fondee-sur-privilege: 2
+    mc.philo.la_personne.locke-critere-mal-identifie: 3
+    mc.philo.la_personne.locke-hume-confondus: 4
+    mc.philo.la_personne.hume-these-mal-comprise: 2
+    mc.philo.la_personne.locke-mecanisme-details-mal-compris: 3
+    mc.philo.la_personne.personne-physique-morale-confondues: 8
+    mc.philo.la_personne.imputabilite-mal-fondee: 5
+    mc.philo.la_personne.depersonnalisation-reduite-a-sentiment: 6
+    mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale: 1
+    mc.philo.la_personne.r0-tension-non-tenue: 8
+    mc.philo.la_personne.methode-dissertation-mal-appliquee: 7
+    mc.philo.la_personne.affirmation-de-soi-non-pertinente: 0
+  notes: >-
+    Every distractor across the 24 legacy items now carries a real
+    misconception id (no null tags) — the Gap-4-shaped fix this pass exists
+    to make (this file was found with `misconceptions: []` and zero tags,
+    same starting state as la-liberte's and autrui's items.yaml before their
+    own retrofits). 13 of 18 models clear the ≥3 floor. FIVE do not, and
+    floor_met is reported honestly rather than padded:
+    personne-reduite-a-espece (1, PERS-1), dignite-fondee-sur-privilege (2,
+    PERS-2/PERS-13), hume-these-mal-comprise (2, PERS-4/PERS-16), and
+    dignite-confondue-avec-reconnaissance-sociale (1, PERS-21) are real but
+    thin in the legacy bank — a follow-up item pass should add 1-2 items
+    each. affirmation-de-soi-non-pertinente (0) is a genuinely NEW axis this
+    pass surfaces: it comes from the r-bac 2015 قولة text (« lorsque je
+    refuse d'être traité comme une chose, j'affirme mon moi en tant que
+    personne »), whose active self-affirmation-through-refusal framing the
+    lesson's own R0-R7 body never poses directly (R2's Kant and R6's
+    dépersonnalisation are both more STATIC — a fact possessed or a status
+    retired by others — never a status the subject actively claims by
+    refusing objectification) — see exercises.yaml's header for the full
+    routing rationale. It is covered by checkpoints.yaml's cp-bac-affirmation
+    instead (checkpoints do not count toward this floor, per house
+    convention), and is flagged here as the clearest item-authoring gap for
+    a follow-up pass. All four thin-but-nonzero models above also each get a
+    reinforcing checkpoint distractor (see checkpoints.yaml's coverage note)
+    so no under-floor model is left without at least some in-lesson
+    exposure, even though checkpoints never count toward this tally.
+    Length rebalance (recipe's philo addendum, mandatory — cited ~97% tell):
+    the legacy bank's correct answer was the LONGEST option in 18/24 items
+    (75%) before this pass — a clear instance of the campaign's cited
+    "longest = correct" tell, confirmed with a scratch js-yaml length-check
+    script (not eyeballed) before any edit was made. Distractors were
+    enriched with additional philosophical substance (an extra justifying
+    clause, a named premise, a consequence spelled out — never by trimming
+    the correct answer's content), in two passes: a first pass fixed 14 of
+    the 18 rank-1 items down to rank 2, then a second pass (re-running the
+    same script, which showed the first pass had only relocated the tell to
+    "correct is always 2nd-of-4" — 19/24 at rank 2, 0/24 at rank 3 or 4, a
+    monotonic pattern just as real as the original one) enriched a further
+    distractor on 8 of those items (pushing correct to rank 3) and on 3
+    items (PERS-2, PERS-4, PERS-9 — pushing correct to rank 4, the
+    shortest). Final distribution, re-verified with the same script:
+    longest in 5/24 (20.8% — kept deliberately on PERS-10, PERS-14, PERS-20,
+    PERS-21 and PERS-23, each of which legitimately has to state a two-part
+    distinction or definition in full), 2nd-longest in 8/24, 3rd in 8/24,
+    shortest in 3/24 — genuinely varied across all four ranks, not a
+    monotonic pattern relocated to a different rank.
