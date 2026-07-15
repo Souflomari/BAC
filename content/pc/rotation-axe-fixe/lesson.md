@@ -10,6 +10,8 @@ Imagine un manège de cour de récréation : un disque horizontal qui tourne aut
 
 Avant de lire la suite, prends position : dans lequel des deux essais le manège tourne-t-il le plus vite au bout de la même poussée ? Le fait que les deux enfants aient exactement la même masse dans les deux cas change-t-il quelque chose, à ton avis, ou seule la masse totale embarquée compte-t-elle ?
 
+[[checkpoint:cp-r0-predict]]
+
 Beaucoup répondent : « la masse totale est la même dans les deux essais, donc le manège réagit pareil — ce qui compte, c'est combien de kilos on pousse, pas où ils sont assis. » C'est un raisonnement qui a l'air solide : en translation, après tout, seule la masse totale intervient dans $\vec F = m\vec a$, peu importe comment elle est répartie à l'intérieur de l'objet.
 
 Et pourtant, ce n'est pas ce qu'on observe. Le manège où les enfants sont assis **près du centre** s'élance nettement plus vite que celui où ils sont assis **au bord**, pour la même poussée, pendant la même durée. La masse totale n'a pas bougé d'un gramme — seule sa répartition autour de l'axe a changé, et cela suffit à changer complètement la façon dont le manège répond à la poussée.
@@ -78,6 +80,8 @@ Le bord va cinq fois plus vite que le point proche du centre — alors que $\ome
 
 [[figure:omega-vitesse-point]]
 
+[[checkpoint:cp-r1-omega-v]]
+
 ---
 
 ## R2 — Le moment d'une force par rapport à l'axe : ce qui fait vraiment tourner
@@ -116,6 +120,8 @@ Ce deuxième fait est celui qu'on va réutiliser tout au long du chapitre : la r
 Voici le piège qui s'installe silencieusement : confondre « il y a une force » avec « ça va tourner ». Teste-le : imagine que tu pousses de toutes tes forces exactement sur l'axe du manège, en plein sur le pivot central. Le manège tourne-t-il ?
 
 Non — quelle que soit l'intensité de ta poussée. $d = 0$ à cet endroit précis, donc $\mathcal{M}_\Delta(\vec F) = 0$, quelle que soit la valeur de $F$. Une force réelle, mesurable, peut donc avoir un effet de rotation strictement nul. Ce qui fait tourner un solide n'est jamais « la force » toute seule : c'est le **moment** de la force, qui tient compte à la fois de son intensité et de son bras de levier.
+
+[[checkpoint:cp-r2-bras-levier]]
 
 ### Exemple travaillé : pousser le manège à deux endroits différents
 
@@ -194,6 +200,8 @@ $$J_{halt\grave{e}re} = 2 \times m_{point} \times d^2 = 2 \times 1{,}0 \times 0{
 Même masse totale ($2{,}0\ \text{kg}$), même longueur totale ($1{,}0\ \text{m}$) — et pourtant $J_{halt\grave{e}re}$ vaut **trois fois** $J_{tige}$. La différence ne vient pas de « combien de masse », mais uniquement de **comment** cette masse est répartie par rapport à l'axe : concentrée aux extrémités (loin de l'axe), ou étalée uniformément (dont une bonne partie reste proche de l'axe). « Même masse » ne veut jamais dire « même $J_\Delta$ ».
 
 [[figure:moment-inertie]]
+
+[[checkpoint:cp-r3-repartition]]
 
 ### Exemple travaillé : chiffrer l'énigme du manège
 
@@ -298,6 +306,8 @@ $$v_{bord,A} = 1{,}5 \times 2{,}5 = 3{,}75\ \text{m/s} \qquad v_{bord,B} = 1{,}5
 
 Le bord du manège de la configuration A file deux fois et demie plus vite que celui de la configuration B, après la même poussée pendant la même durée. C'est exactement ce que l'accroche annonçait qualitativement — et maintenant on sait précisément pourquoi, et de combien.
 
+[[checkpoint:cp-r4-relation-fondamentale]]
+
 ---
 
 ## R5 — L'énergie cinétique de rotation
@@ -398,6 +408,8 @@ $$\ddot\theta = -\frac{mg\,d\sin\theta}{J_\Delta} = -\frac{5{,}88\times 0{,}174}
 
 Le signe négatif confirme que le moment du poids ramène toujours la tige vers la verticale, quel que soit le côté d'où on l'a lâchée — exactement le mécanisme de rappel déjà rencontré pour le pendule simple, ici porté par le moment du poids plutôt que par une composante tangentielle de force sur un point isolé.
 
+[[checkpoint:cp-r6-pendule-pesant]]
+
 ---
 
 ## R7 — Pour t'entraîner
@@ -412,50 +424,14 @@ Le signe négatif confirme que le moment du poids ramène toujours la tige vers 
 - L'**énergie cinétique de rotation** $E_c = \frac12 J_\Delta \omega^2$ suit la même forme que $\frac12 m v^2$, avec la même substitution.
 - Le **pendule pesant** applique tout ceci : $J_\Delta\,\ddot\theta = -mg\,d\sin\theta$, qui redonne, aux petites oscillations, l'équation harmonique et $T_0 = 2\pi\sqrt{J_\Delta/(mg\,d)}$.
 
-### Exercice de type bac (original — entraînement, non un sujet officiel)
+### Exercice de type bac
 
-Une meule de moulin, assimilée à un disque homogène de masse $m = 10\ \text{kg}$ et de rayon $R = 0{,}40\ \text{m}$, peut tourner sans frottement autour d'un axe fixe $\Delta$ confondu avec son axe de symétrie, horizontal. Un moteur exerce sur la jante (le bord) du disque une force tangentielle constante $F = 16\ \text{N}$, pendant une durée $t_1 = 2{,}0\ \text{s}$, la meule partant du repos.
+À toi. L'exercice qui suit est la transcription fidèle d'un sujet officiel : la 1ère situation de l'exercice « Mécanique » de la session rattrapage 2011 (« Étude dynamique d'une grue »), la seule occurrence nationale dédiée trouvée pour cette notion. Cherche sur papier d'abord, engage une réponse à chaque question, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
-**1) Calculer le moment de la force motrice par rapport à $\Delta$.**
+[[exercise:r-bac]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* application directe de R2 — la force est tangentielle, appliquée sur le bord, donc son bras de levier est simplement le rayon $R$.
+### Une variation pour ne pas mémoriser
 
-$$\mathcal{M}_\Delta(\vec F) = R \times F = 0{,}40 \times 16 = 6{,}4\ \text{N}\cdot\text{m}$$
+Même structure profonde, enrobage différent : un treuil de chantier au lieu d'une grue, pour vérifier que tu reconnais la procédure plutôt que le décor.
 
-**2) Calculer le moment d'inertie de la meule par rapport à $\Delta$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la meule est un disque plein homogène tournant autour de son axe de symétrie — exactement la valeur usuelle de R3, pas besoin de sommer point par point.
-
-$$J_\Delta = \frac{1}{2}mR^2 = \frac{1}{2}\times 10\times 0{,}40^2 = \frac{1}{2}\times 10\times 0{,}16 = 0{,}80\ \text{kg}\cdot\text{m}^2$$
-
-**3) En déduire l'accélération angulaire $\ddot\theta$ de la meule pendant que le moteur agit.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* la réaction de l'axe a un moment nul (R2), donc le moment du moteur est le seul terme du bilan — application directe de la relation fondamentale de R4.
-
-$$\ddot\theta = \frac{\mathcal{M}_\Delta(\vec F)}{J_\Delta} = \frac{6{,}4}{0{,}80} = 8{,}0\ \text{rad/s}^2$$
-
-**4) Calculer la vitesse angulaire $\omega$ atteinte à l'instant $t_1$, ainsi que la vitesse linéaire d'un point du bord à cet instant.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* $\ddot\theta$ est constante, donc on intègre exactement comme pour un mouvement uniformément accéléré en translation ($\omega = \ddot\theta\,t$, en partant du repos) ; puis on reconvertit en vitesse linéaire avec $v = R\,\omega$ (R1).
-
-$$\omega(t_1) = \ddot\theta \times t_1 = 8{,}0 \times 2{,}0 = 16\ \text{rad/s}$$
-
-$$v_{bord} = R\,\omega(t_1) = 0{,}40 \times 16 = 6{,}4\ \text{m/s}$$
-
-**5) Calculer l'énergie cinétique de rotation de la meule à l'instant $t_1$.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* application directe de R5, avec les valeurs de $J_\Delta$ et $\omega(t_1)$ déjà obtenues.
-
-$$E_c = \frac{1}{2}J_\Delta\,\omega(t_1)^2 = \frac{1}{2}\times 0{,}80\times 16^2 = \frac{1}{2}\times 0{,}80\times 256 = 102{,}4\ \text{J}$$
-
-**6) À l'instant $t_1$, le moteur s'arrête d'exercer sa force, l'axe restant sans frottement. Que devient le mouvement de la meule ensuite ? Justifier à l'aide de la relation fondamentale.**
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* question de principe, pas de calcul — elle teste si tu confonds « il n'y a plus de moment moteur » avec « la rotation s'arrête ».
-
-Une fois le moteur coupé, plus aucune force n'exerce de moment non nul par rapport à $\Delta$ (l'axe est sans frottement, et sa réaction a de toute façon un moment nul) : $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$. Par la relation fondamentale, $\ddot\theta = 0$ : la vitesse angulaire reste constante, égale à $16\ \text{rad/s}$, indéfiniment. La meule continue de tourner à cette vitesse angulaire sans jamais ralentir — exactement comme un solide en translation, une fois qu'aucune force résultante ne s'exerce plus sur lui, continue à vitesse constante.
-
-### À toi
-
-**Variation 1.** Un disque plein et un cylindre plein ont exactement la même masse $m$ et le même rayon $R$, mais le cylindre est deux fois plus long que le disque n'est épais. On exerce sur chacun, tangentiellement au bord, le même moment de force. Lequel des deux atteint la plus grande vitesse angulaire après la même durée ? Justifie ta réponse à partir des valeurs usuelles de $J_\Delta$ données en R3, sans reprendre tout le calcul.
-
-**Variation 2.** Une porte est un solide qui pivote autour d'un axe fixe vertical (ses gonds). Explique, en une ou deux phrases et sans calcul, pourquoi il est beaucoup plus difficile de l'ouvrir en poussant tout près des gonds qu'en poussant sur la poignée, alors que la force exercée est la même dans les deux cas — puis explique pourquoi pousser exactement sur l'axe des gonds, même très fort, ne fait strictement rien tourner.
+[[exercise:r-variation]]
