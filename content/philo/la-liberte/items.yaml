@@ -1,6 +1,162 @@
 notion: la-liberte
 skill_code: philo_liberte
-misconceptions: []
+
+# Misconception inventory — summit-conversion campaign, philo pilot (Gap-4
+# fix: this file previously carried `misconceptions: []`, no tags on any
+# distractor). Id convention: mc.philo.<slug>.<name>, where <slug> is
+# skill_code with the "philo_" prefix stripped (philo_liberte → liberte) —
+# matches the precedent set in content/philo/analyse-de-texte/items.yaml
+# (mc.philo.analyse_texte.*, from skill_code philo_analyse_texte).
+# Built from scratch by reading the lesson (R0-R4) rung by rung and asking,
+# at each rung's own named "erreur à éviter" box or central move, what real
+# wrong model a student would carry into an item. autrui-limite-par-nature is
+# new: it comes from the r-bac Bakounine text (docs/sujets/philo/la-liberte.md,
+# 2024 R), an axis (liberté et autrui) this lesson's R0-R4 body does not teach
+# directly — see the coverage_summary note below for the honest floor gap
+# this opens.
+
+misconceptions:
+  - id: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
+    label: "« Il faut choisir entre libre arbitre total et déterminisme total » (la méconception maîtresse)"
+    description: >-
+      L'élève traite la liberté et le déterminisme comme deux camps exclusifs
+      entre lesquels il faudrait trancher définitivement, sans envisager
+      qu'aucun des deux extrêmes, pris seul, ne rend compte de l'expérience
+      réelle du choix.
+    contradicts_principle: >-
+      Ni le pur libre arbitre indéterminé ni le déterminisme intégral ne
+      suffisent à rendre compte de ce qui se passe réellement dans un choix —
+      les positions étudiées déplacent le problème plutôt que de trancher en
+      piochant un camp.
+
+  - id: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
+    label: "« Être libre exige qu'aucune cause n'influence mon choix »"
+    description: >-
+      L'élève définit la liberté comme un pouvoir de choisir qui ne serait
+      déterminé par absolument rien — ni le passé, ni le tempérament, ni
+      l'éducation — confondant liberté et absence totale d'antécédent causal.
+    contradicts_principle: >-
+      Un événement absolument sans cause n'est pas pour autant un choix
+      voulu : c'est un pur hasard, comme un dé qui tombe sur une face « pour
+      rien ». Si mes choix échappaient entièrement à toute causalité, ils ne
+      seraient plus les miens, mais un accident.
+
+  - id: mc.philo.liberte.contrainte-egale-determination
+    label: "« Être contraint et être déterminé, c'est la même chose »"
+    description: >-
+      L'élève confond l'obstacle extérieur identifiable (une porte fermée,
+      une menace) avec le fait, plus général, d'avoir une cause — et en
+      conclut, à tort, que l'absence de contrainte visible garantit
+      l'absence de détermination.
+    contradicts_principle: >-
+      Être contraint suppose un obstacle extérieur identifiable ; être
+      déterminé, au sens philosophique, c'est seulement avoir une cause — ce
+      qui peut très bien se produire sans aucun obstacle visible, comme
+      devant un écran à 23h.
+
+  - id: mc.philo.liberte.echapper-a-la-liberte
+    label: "« On peut échapper à la liberté et à la responsabilité qu'elle implique »"
+    description: >-
+      L'élève croit qu'on peut se soustraire à la liberté (et à la
+      responsabilité qu'elle engage) — soit en niant purement qu'elle existe
+      malgré une thèse qui la redéfinit plutôt que la nier (Spinoza), soit
+      en refusant de choisir (Sartre), soit en se prétendant intégralement
+      déterminé par une cause extérieure (société, algorithme), soit en
+      croyant qu'une solution pratique règle à elle seule le problème
+      philosophique.
+    contradicts_principle: >-
+      Ne pas choisir est encore une manière de choisir (Sartre) ; redéfinir
+      la liberté n'est pas la nier (Spinoza) ; et un déterminisme total, pris
+      au pied de la lettre, dissoudrait aussi bien la responsabilité que la
+      liberté — ce qui est un problème pour cette position, pas une
+      échappatoire.
+
+  - id: mc.philo.liberte.sentiment-de-liberte-suffit
+    label: "« Si je sens que je choisis librement, alors je suis libre »"
+    description: >-
+      L'élève prend le sentiment ou la conscience de vouloir/décider comme
+      une preuve suffisante de liberté, sans se demander s'il a conscience
+      des causes qui produisent effectivement ce vouloir.
+    contradicts_principle: >-
+      Nous avons conscience de nos décisions sans avoir conscience de tout
+      ce qui les cause. Le sentiment d'être libre, pris seul, ne prouve
+      rien : il peut être celui de la pierre qui, lancée, se sent voler
+      librement.
+
+  - id: mc.philo.liberte.negative-confondue-avec-positive
+    label: "« Liberté-absence-de-contrainte et liberté intérieure, c'est pareil »"
+    description: >-
+      L'élève traite comme identiques, ou mesure avec le même critère, la
+      liberté comme absence d'obstacle extérieur et la liberté intérieure
+      comme autonomie rationnelle — alors que les deux peuvent se dissocier.
+    contradicts_principle: >-
+      On peut être libre au sens de l'absence de contrainte extérieure sans
+      l'être au sens intérieur : être maître de soi suppose d'agir selon ce
+      qu'on juge vraiment bon, plutôt que sous l'effet de la peur, de la
+      colère ou d'une habitude non choisie.
+
+  - id: mc.philo.liberte.liberte-confondue-avec-pouvoir
+    label: "« Être libre, c'est pouvoir tout faire »"
+    description: >-
+      L'élève confond la liberté (l'absence de nature qui déterminerait mes
+      actes à l'avance, ou le droit d'agir dans un cadre donné) avec le
+      pouvoir ou la capacité illimitée d'agir sur le monde.
+    contradicts_principle: >-
+      « L'homme est condamné à être libre » ne signifie pas qu'il peut tout
+      faire — cela signifie qu'aucune nature ne le dispense de choisir et
+      d'en porter la responsabilité, dans les limites bien réelles de ce
+      qu'il peut concrètement accomplir.
+
+  - id: mc.philo.liberte.loi-liberte-mal-articulees
+    label: "« La loi et la liberté sont, par nature, opposées — ou automatiquement compatibles »"
+    description: >-
+      L'élève articule mal le rapport entre loi et liberté : soit il pense
+      qu'une loi limite nécessairement la liberté individuelle, sans voir la
+      possibilité rousseauiste d'une loi qu'on se prescrit à soi-même ; soit
+      il pense, à l'inverse, que N'IMPORTE QUELLE loi rend libre du seul
+      fait qu'on lui obéit, sans la condition de la volonté générale.
+    contradicts_principle: >-
+      « L'obéissance à la loi qu'on s'est prescrite est liberté » (Rousseau)
+      — mais cela ne vaut que si la loi exprime réellement la volonté
+      générale, pas n'importe quelle loi imposée par un pouvoir arbitraire.
+
+  - id: mc.philo.liberte.licence-est-liberte-achevee
+    label: "« Une société sans aucune loi serait la liberté la plus achevée »"
+    description: >-
+      L'élève croit que l'absence totale de règle commune constituerait la
+      forme la plus complète de liberté, sans voir qu'une telle absence
+      livre la liberté de chacun à la loi du plus fort.
+    contradicts_principle: >-
+      Si chacun pouvait vraiment faire tout ce qu'il veut, sans aucune
+      limite, la liberté de chacun entrerait immédiatement en collision avec
+      celle des autres — une liberté sans borne commune ne protège personne,
+      elle finit par ne protéger que les plus puissants.
+
+  - id: mc.philo.liberte.autrui-limite-par-nature
+    label: "« Autrui est, par nature, une limite à ma liberté »"
+    description: >-
+      L'élève traite la présence d'autrui comme mécaniquement limitante pour
+      ma liberté — chaque personne libre autour de moi serait, par
+      construction, un obstacle de plus — sans envisager qu'elle puisse au
+      contraire en être la condition.
+    contradicts_principle: >-
+      Pour Bakounine, la liberté d'autrui n'est pas une limite à la mienne :
+      elle en est la condition nécessaire et la pleine confirmation — je ne
+      suis réellement libre que par la liberté des autres ; c'est leur
+      servitude, non leur liberté, qui se dresse entre moi et la liberté.
+
+  - id: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
+    label: "« Les gestes de la méthode (problématiser, placer un auteur) sont interchangeables »"
+    description: >-
+      L'élève traite la problématisation comme une simple reformulation du
+      sujet en question fermée, ou pense qu'un auteur ne peut être mobilisé
+      qu'une seule fois dans un plan, sans voir que chaque geste
+      méthodologique a une fonction précise, propre à chaque étape.
+    contradicts_principle: >-
+      Une problématique n'est pas une reformulation : c'est la mise en
+      évidence d'une tension entre deux positions également légitimes en
+      apparence. Et un même auteur (Spinoza) peut revenir à deux moments
+      différents d'un plan pour un usage différent à chaque fois.
 
 items:
   - id: LIB-1
@@ -14,8 +170,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Nous ne sommes jamais libres : la liberté est une pure illusion, sans exception."
+        text: "Nous ne sommes jamais libres : la liberté est une pure illusion, sans exception, puisque tout événement — y compris chaque pensée — obéit strictement à une cause antérieure qui ne laisse aucune place à un choix véritable."
         correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
         feedback: >
           Ce choix confond le déterminisme spinoziste avec une négation totale
           de la liberté. Spinoza ne dit pas que la liberté n'existe pas : il la
@@ -27,16 +184,18 @@ items:
         text: "Être libre ne consiste pas à échapper à la nécessité, mais à la comprendre et à agir comme cause rationnelle de ses actes."
         correct: true
       - id: C
-        text: "Nous sommes libres uniquement dans les instants où aucune cause n'influence notre choix."
+        text: "Nous sommes libres uniquement dans les instants rares où aucune cause n'influence notre choix — des instants où la volonté agirait comme à partir de rien, sans le moindre antécédent qui la détermine."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est la définition du libre arbitre comme indétermination totale —
           exactement ce que Spinoza écarte. Pour lui, rien n'échappe jamais à
           la nécessité, pas même l'esprit humain ; chercher des instants
           « sans cause » revient à chercher ce qui, selon lui, n'existe pas.
       - id: D
-        text: "Le déterminisme ne concerne que les objets physiques : nos décisions, elles, échappent par nature à toute causalité."
+        text: "Le déterminisme ne concerne que les objets physiques : nos décisions, elles, échappent par nature à toute causalité, exactement comme une pensée échapperait, par définition, aux lois qui régissent la matière inerte."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est l'inverse du geste de Spinoza. Il étend délibérément le
           déterminisme à l'esprit humain (nos volitions ont des causes,
@@ -74,8 +233,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Que l'homme peut faire absolument tout ce qu'il désire, sans aucune limite extérieure."
+        text: "Que l'homme peut faire absolument tout ce qu'il désire, sans aucune limite extérieure, puisqu'aucune nature préalable ne vient jamais restreindre le champ de ses actions possibles sur le monde."
         correct: false
+        misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
         feedback: >
           Ce choix confond la liberté radicale de Sartre (l'absence de nature
           humaine préalable qui déterminerait nos actes) avec l'absence de
@@ -83,8 +243,9 @@ items:
           affirme. Sartre parle de l'absence d'excuse par une nature donnée
           d'avance, pas d'un pouvoir sans limites sur le monde.
       - id: B
-        text: "Que la liberté est une punition dont on peut se libérer en refusant de choisir."
+        text: "Que la liberté est une punition dont on peut se libérer en refusant de choisir — en restant délibérément passif, on échapperait ainsi à la responsabilité que ce choix impliquerait."
         correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
         feedback: >
           Pour Sartre, ne pas choisir est encore une manière de choisir : on
           ne peut pas s'extraire de la responsabilité en s'abstenant. Croire
@@ -94,8 +255,9 @@ items:
         text: "N'ayant pas de nature qui le détermine à l'avance, l'homme ne peut échapper à la nécessité de choisir et porte l'entière responsabilité de ses actes."
         correct: true
       - id: D
-        text: "Que l'homme est entièrement déterminé par la société, et n'a donc aucune part de responsabilité."
+        text: "Que l'homme est entièrement déterminé par la société, et n'a donc aucune part de responsabilité dans ce qu'il devient, puisque son milieu et son éducation décident entièrement à sa place."
         correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
         feedback: >
           C'est l'exact opposé de la position de Sartre. Il rejette
           précisément l'idée qu'une cause extérieure (la société, le milieu,
@@ -134,8 +296,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que toute loi, quelle que soit son origine, doit être obéie sans discussion dès qu'elle est votée."
+        text: "Parce que toute loi, quelle que soit son origine, doit être obéie sans discussion dès qu'elle est votée par une autorité en place, même si son contenu ne reflète en rien les intérêts de la majorité qui doit s'y plier."
         correct: false
+        misconception: mc.philo.liberte.loi-liberte-mal-articulees
         feedback: >
           Ce choix oublie la condition posée par Rousseau : la loi n'est
           libératrice que si elle exprime la volonté générale, c'est-à-dire
@@ -146,16 +309,18 @@ items:
         text: "Parce qu'en obéissant à une loi qui exprime la volonté générale, à laquelle il participe comme citoyen, l'individu obéit en un sens à sa propre volonté rationnelle plutôt qu'à un pouvoir extérieur arbitraire."
         correct: true
       - id: C
-        text: "Parce que la loi supprime toute liberté individuelle au profit du collectif, ce qui est justement le but recherché."
+        text: "Parce que la loi supprime toute liberté individuelle au profit du collectif, ce qui est justement le but recherché par toute organisation politique digne de ce nom."
         correct: false
+        misconception: mc.philo.liberte.loi-liberte-mal-articulees
         feedback: >
           C'est une caricature de la thèse de Rousseau : il ne dit pas que la
           liberté individuelle doit disparaître au profit du groupe, mais
           que la loi, quand elle exprime la volonté générale, est une forme
           d'auto-législation — le citoyen s'obéit, en un sens, à lui-même.
       - id: D
-        text: "Parce qu'une société sans aucune loi serait la forme la plus achevée de la liberté."
+        text: "Parce qu'une société sans aucune loi serait la forme la plus achevée de la liberté, chacun y disposant enfin d'un espace d'action totalement dégagé de toute règle commune."
         correct: false
+        misconception: mc.philo.liberte.licence-est-liberte-achevee
         feedback: >
           C'est exactement la thèse naïve (la licence) que Rousseau et
           Montesquieu écartent : une liberté sans aucune règle commune permet
@@ -195,8 +360,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Spinoza pense qu'aucune cause ne détermine nos actes, alors que Sartre pense que tout est déterminé par la société."
+        text: "Spinoza pense qu'aucune cause ne détermine jamais nos actes, alors que Sartre pense au contraire que tout est déterminé d'avance par la société et l'éducation — les deux philosophes se rejoignent seulement dans le vocabulaire qu'ils emploient, pas dans leurs thèses réelles."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est l'inverse des deux positions. Spinoza assume au contraire un
           déterminisme intégral (tout a une cause, y compris l'esprit) ; et
@@ -207,8 +373,9 @@ items:
         text: "Spinoza soutient que nous sommes toujours déterminés par des causes mais pouvons devenir libres en les comprenant par la raison ; Sartre soutient qu'aucune nature humaine préalable ne nous détermine, ce qui rend la liberté totale et la responsabilité absolue."
         correct: true
       - id: C
-        text: "Les deux philosophes affirment exactement la même chose : la liberté consiste à ignorer les causes de ses actes."
+        text: "Les deux philosophes affirment exactement la même chose : la liberté consiste à ignorer les causes de ses actes, qu'elles soient intérieures comme le tempérament ou extérieures comme le milieu social."
         correct: false
+        misconception: mc.philo.liberte.sentiment-de-liberte-suffit
         feedback: >
           C'est un contresens partagé sur les deux positions. Pour Spinoza,
           ignorer les causes est justement la situation de la « pierre qui
@@ -216,8 +383,9 @@ items:
           de son côté, ne parle pas d'ignorer des causes mais d'assumer
           qu'il n'y en a pas qui nous dispenseraient de choisir.
       - id: D
-        text: "Spinoza et Sartre nient tous deux, chacun à sa manière, l'existence de toute liberté humaine."
+        text: "Spinoza et Sartre nient tous deux, chacun à sa manière, l'existence de toute liberté humaine, l'un en dissolvant le sujet dans la nécessité universelle, l'autre en le dissolvant dans les déterminismes sociaux."
         correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
         feedback: >
           Aucun des deux ne nie la liberté : chacun la redéfinit. Spinoza en
           fait une affaire de compréhension rationnelle des causes qui nous
@@ -263,8 +431,9 @@ items:
         text: "Parce que rien ne t'empêche d'arrêter et que, pourtant, tu ne le fais pas pendant une heure : ta conduite réelle contredit la volonté que tu annonces."
         correct: true
       - id: B
-        text: "Parce qu'une porte fermée à clé t'empêche réellement d'éteindre ton téléphone à cet instant."
+        text: "Parce qu'une porte fermée à clé t'empêche réellement d'éteindre ton téléphone à cet instant, ce qui expliquerait pourquoi tu restes malgré la volonté que tu avais annoncée."
         correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
         feedback: >
           La scène ne comporte aucun obstacle extérieur identifiable —
           c'est précisément ce qui la rend intéressante : rien ne
@@ -272,16 +441,18 @@ items:
           « être empêché » et « ne pas agir comme on l'a annoncé », c'est
           confondre contrainte extérieure et défaillance de la volonté.
       - id: C
-        text: "Parce que cela démontre, sans discussion possible, que le déterminisme est vrai et que le libre arbitre n'existe pas."
+        text: "Parce que cela démontre, sans discussion possible, que le déterminisme est vrai et que le libre arbitre n'existe pas — la scène tranche déjà, à elle seule, la question posée par toute la leçon."
         correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
         feedback: >
           Le texte ne tranche pas ainsi : il expose une tension, pas une
           démonstration définitive en faveur du déterminisme. Conclure
           aussi vite revient à sauter par-dessus le problème que la leçon
           va justement construire.
       - id: D
-        text: "Parce qu'en réalité, vouloir et agir sont toujours parfaitement alignés chez un individu libre, donc cette situation est sans intérêt philosophique."
+        text: "Parce qu'en réalité, vouloir et agir sont toujours parfaitement alignés chez un individu libre, donc cette situation est sans intérêt philosophique et ne mérite pas qu'on s'y attarde davantage."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est nier la tension même que le texte met en scène : le
           décalage entre la volonté annoncée (« j'arrête ») et l'acte réel
@@ -315,16 +486,18 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce qu'en réalité, aucune application n'est conçue pour influencer le comportement de ses utilisateurs."
+        text: "Parce qu'en réalité, aucune application n'est conçue pour influencer le comportement de ses utilisateurs — ce sont des outils neutres, dont l'usage ne dépend que de la volonté de la personne qui les tient."
         correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
         feedback: >
           Le texte affirme au contraire explicitement que l'application
           est conçue pour exploiter des mécanismes psychologiques
           identifiés (récompense imprévisible, peur de rater quelque
           chose). Nier cela, c'est nier une prémisse du texte lui-même.
       - id: B
-        text: "Parce que si l'algorithme décide réellement à ta place, cela prouve à l'inverse que tu es totalement libre."
+        text: "Parce que si l'algorithme décide vraiment à ta place, cela prouve au contraire que tu es totalement libre : un mécanisme extérieur qui choisit pour toi te délivrerait, par le fait même, de toute responsabilité dans cette affaire précise, ce soir-là comme n'importe quel autre soir."
         correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
         feedback: >
           C'est l'inverse de ce que le texte établit : il ne s'agit pas de
           faire basculer la conclusion vers la liberté totale, mais de
@@ -334,8 +507,9 @@ items:
         text: "Parce qu'un algorithme propose une vidéo mais ne referme pas ta main sur l'écran à ta place ; et si tu n'y étais vraiment pour rien, tu ne pourrais plus non plus te reprocher d'avoir raté ton réveil — le déterminisme total dissout jusqu'à l'idée de responsabilité."
         correct: true
       - id: D
-        text: "Parce que cette réponse est en réalité la seule totalement exacte, et qu'elle ne pose aucun problème philosophique."
+        text: "Parce que cette réponse est en réalité la seule totalement exacte, et qu'elle ne pose aucun problème philosophique particulier — le sujet est réglé dès qu'on admet que l'algorithme a décidé à ta place."
         correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
         feedback: >
           C'est nier la tension que le texte construit délibérément : les
           deux réponses spontanées posent chacune un problème, ni l'une ni
@@ -370,22 +544,25 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Qu'il faut choisir immédiatement et définitivement entre le libre arbitre total et le déterminisme total, la suite de la leçon tranchant en faveur de l'un des deux."
+        text: "Qu'il faut choisir immédiatement et définitivement entre le libre arbitre total et le déterminisme total, la suite de la leçon tranchant nécessairement en faveur de l'un des deux camps — la tension posée n'étant qu'une façon rhétorique d'amener le sujet."
         correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
         feedback: >
           C'est l'inverse de la démarche annoncée : le texte dit
           explicitement que les positions étudiées ensuite « ne tranchent
           pas ce problème en piochant un camp », mais le déplacent.
       - id: B
-        text: "Que la question de la liberté devant un écran n'a en réalité aucun intérêt philosophique, puisqu'il ne s'agit que d'une habitude ordinaire."
+        text: "Que la question de la liberté devant un écran n'a en réalité aucun intérêt philosophique, puisqu'il ne s'agit que d'une habitude ordinaire, sans rapport avec les grandes questions de la philosophie classique."
         correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
         feedback: >
           C'est nier l'enjeu que le texte pose au contraire comme un
           véritable problème philosophique — celui qui va structurer toute
           la leçon.
       - id: C
-        text: "Que la seule solution est de couper complètement son téléphone, ce qui réglerait à lui seul le problème philosophique de la liberté."
+        text: "Que la seule solution est de couper complètement son téléphone, ce qui réglerait à lui seul le problème philosophique de la liberté, sans qu'il soit besoin d'aller chercher plus loin du côté des philosophes."
         correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
         feedback: >
           C'est confondre une solution pratique (couper les notifications)
           avec la résolution du problème philosophique lui-même — le texte
@@ -419,8 +596,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Les deux expressions désignent en réalité exactement la même chose : l'absence de toute cause, interne comme externe."
+        text: "Les deux expressions désignent en réalité exactement la même chose : l'absence de toute cause, interne comme externe, qui pourrait entraver ou infléchir la moindre de mes décisions."
         correct: false
+        misconception: mc.philo.liberte.negative-confondue-avec-positive
         feedback: >
           Le texte distingue au contraire nettement les deux : l'une se
           mesure aux obstacles extérieurs, l'autre concerne le fait d'être
@@ -429,16 +607,18 @@ items:
         text: "On peut être libre au premier sens — rien ne m'empêche extérieurement d'agir — sans l'être au second : être maître de soi suppose d'agir selon ce qu'on juge vraiment bon, plutôt que sous l'effet de la peur, de la colère ou d'une habitude non choisie."
         correct: true
       - id: C
-        text: "La liberté intérieure se mesure, comme la liberté d'absence de contrainte, au nombre d'obstacles extérieurs présents : plus il y en a, moins on est libre intérieurement."
+        text: "La liberté intérieure se mesure, comme la liberté d'absence de contrainte, au nombre d'obstacles extérieurs présents : plus il y en a, moins on est libre intérieurement, selon la même logique comptable, au point qu'on pourrait calculer un seul indice de liberté commun aux deux registres."
         correct: false
+        misconception: mc.philo.liberte.negative-confondue-avec-positive
         feedback: >
           C'est appliquer à la liberté intérieure le critère propre à la
           liberté négative. Le texte est explicite : on peut n'avoir aucun
           obstacle extérieur et pourtant ne pas être maître de soi — le
           critère n'est donc pas le même.
       - id: D
-        text: "Si l'on est libre au sens de l'absence de contrainte extérieure, on est automatiquement libre aussi au sens intérieur."
+        text: "Si l'on est libre au sens de l'absence de contrainte extérieure, on est automatiquement libre aussi au sens intérieur, les deux libertés progressant nécessairement du même pas."
         correct: false
+        misconception: mc.philo.liberte.negative-confondue-avec-positive
         feedback: >
           C'est exactement l'implication que l'exemple du téléphone
           contredit : à 23h, la liberté « absence de contrainte » est
@@ -471,22 +651,25 @@ items:
         text: "On oublie qu'être contraint suppose un obstacle extérieur identifiable (porte fermée, menace), alors qu'être déterminé, au sens philosophique, c'est seulement avoir une cause — ce qui peut se produire sans aucun obstacle visible, comme devant l'écran à 23h."
         correct: true
       - id: B
-        text: "Être déterminé et être contraint désignent en réalité la même réalité : il n'existe aucune différence philosophique entre les deux termes."
+        text: "Être déterminé et être contraint désignent en réalité la même réalité : il n'existe aucune différence philosophique sérieuse entre les deux termes, qui ne seraient que de simples synonymes utilisés par pure commodité de style dans ce texte précis, comme dans n'importe quel autre texte de philosophie."
         correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
         feedback: >
           C'est nier purement et simplement la distinction que le texte
           établit comme un point de vigilance explicite.
       - id: C
-        text: "Le déterminisme, tel que R1 le définit, ne porte que sur les contraintes visibles, comme les interdictions ou les obstacles physiques."
+        text: "Le déterminisme, tel que R1 le définit, ne porte que sur les contraintes visibles, comme les interdictions ou les obstacles physiques que l'on peut montrer du doigt et énumérer un par un."
         correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
         feedback: >
           C'est l'inverse exact de ce que dit le texte : « le problème du
           déterminisme ne porte pas sur les contraintes visibles ; il porte
           sur la question de savoir si nos décisions elles-mêmes ont
           toujours des causes. »
       - id: D
-        text: "Être contraint est une notion plus large qui inclut toujours, comme cas particulier, le fait d'être déterminé par une cause."
+        text: "Être contraint est une notion plus large qui inclut toujours, comme cas particulier, le fait d'être déterminé par une cause, cette dernière n'étant jamais qu'une forme discrète de contrainte."
         correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
         feedback: >
           C'est inverser la relation logique entre les deux notions : le
           texte présente au contraire le fait d'être déterminé comme la
@@ -519,23 +702,26 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que le libre arbitre, correctement compris, exige au contraire qu'une cause extérieure précise détermine chaque choix à l'avance."
+        text: "Parce que le libre arbitre, correctement compris, exige au contraire qu'une cause extérieure précise détermine chaque choix à l'avance, sans quoi ce choix ne pourrait même pas être qualifié de choix."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est l'inverse de la définition donnée par le texte : le libre
           arbitre y est défini précisément comme un pouvoir qui ne serait
           déterminé par rien d'antérieur — ni le passé, ni le tempérament,
           ni l'éducation.
       - id: B
-        text: "Parce qu'un choix sans aucune cause serait au contraire la preuve la plus pure d'une liberté totale et pleinement responsable."
+        text: "Parce qu'un choix sans aucune cause serait au contraire la preuve la plus pure d'une liberté totale et pleinement responsable, puisque rien d'extérieur ne viendrait alors entacher la pureté de la décision."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est l'inverse de la thèse du texte : un événement sans cause y
           est comparé à un dé qui tombe « pour rien » — un pur hasard, pas
           l'expression d'une responsabilité.
       - id: C
-        text: "Parce que le déterminisme intégral, en donnant une cause à chaque acte, est la seule façon de garantir que je reste responsable de mes choix."
+        text: "Parce que le déterminisme intégral, en donnant une cause à chaque acte, est la seule façon de garantir que je reste responsable de mes choix, la responsabilité exigeant justement une chaîne causale complète, du début jusqu'à la fin, sans qu'aucun maillon n'y échappe."
         correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
         feedback: >
           C'est l'inverse du point que fait le texte : il montre au
           contraire que le déterminisme intégral, pris à la lettre,
@@ -569,15 +755,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Que cet exemple, portant sur un objet physique, ne concerne en rien l'esprit humain selon Spinoza."
+        text: "Que cet exemple, portant sur un objet physique, ne concerne en rien l'esprit humain selon Spinoza, dont la philosophie réserverait un statut à part aux phénomènes de conscience."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est l'inverse du geste de Spinoza : le texte étend
           explicitement l'image à l'esprit humain (« c'est exactement,
           selon Spinoza, ce qui nous arrive »).
       - id: B
-        text: "Que la pierre est réellement libre, puisqu'elle a conscience de son propre mouvement."
+        text: "Que la pierre est réellement libre, puisqu'elle a conscience de son propre mouvement, ce qui suffit, pour n'importe quel être conscient, à définir la liberté véritable."
         correct: false
+        misconception: mc.philo.liberte.sentiment-de-liberte-suffit
         feedback: >
           C'est prendre pour un critère de liberté ce que Spinoza dénonce
           comme une illusion : avoir conscience de son mouvement, sans
@@ -587,8 +775,9 @@ items:
         text: "Que le sentiment d'être libre, quand on a seulement conscience de son mouvement (ou de sa décision) sans avoir conscience des causes qui le déterminent entièrement, ne prouve rien : ce sentiment peut n'être que celui de la pierre qui vole."
         correct: true
       - id: D
-        text: "Que Spinoza se sert de cet exemple pour montrer qu'aucun être, pierre ou homme, n'a jamais conscience de quoi que ce soit."
+        text: "Que Spinoza se sert de cet exemple pour montrer qu'aucun être, pierre ou homme, n'a jamais conscience de quoi que ce soit, la conscience elle-même n'étant qu'une illusion supplémentaire à dissiper, au même titre que le sentiment de liberté qu'elle prétend expliquer."
         correct: false
+        misconception: mc.philo.liberte.sentiment-de-liberte-suffit
         feedback: >
           C'est déformer l'image : la pierre a bien conscience de son
           mouvement (elle « sent » qu'elle vole) ; ce qui lui manque, c'est
@@ -621,8 +810,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'homme libre échappe totalement à toute cause, tandis que l'homme en servitude, lui, reste soumis à la nécessité."
+        text: "L'homme libre échappe totalement à toute cause, tandis que l'homme en servitude, lui, reste soumis à la nécessité, prisonnier d'un enchaînement causal dont le premier serait, par contraste, entièrement affranchi — un affranchissement total qu'aucune servitude, si légère soit-elle, ne viendrait jamais entamer."
         correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
         feedback: >
           C'est exactement l'erreur classique que le texte signale : chez
           Spinoza, l'homme libre n'échappe jamais, lui non plus, à la
@@ -631,15 +821,17 @@ items:
         text: "Ni l'un ni l'autre n'échappe à la nécessité causale ; mais l'homme libre est cause adéquate de ses actes, les comprenant par sa propre raison, tandis que l'homme en servitude subit des causes extérieures — des passions — qu'il ne comprend pas."
         correct: true
       - id: C
-        text: "L'homme libre est celui qui ignore les causes de ses actes sans s'en soucier, ce qui lui laisse agir spontanément."
+        text: "L'homme libre est celui qui ignore les causes de ses actes sans s'en soucier, ce qui lui laisse agir spontanément, porté par ses seules impressions du moment sans jamais avoir à les interroger."
         correct: false
+        misconception: mc.philo.liberte.sentiment-de-liberte-suffit
         feedback: >
           C'est inverser la position de Spinoza : c'est l'ignorance des
           causes qui caractérise la servitude — la position de la pierre
           qui vole — pas la liberté.
       - id: D
-        text: "La différence tient uniquement à la quantité de contraintes extérieures visibles que chacun subit, non à la compréhension des causes."
+        text: "La différence tient uniquement à la quantité de contraintes extérieures visibles que chacun subit, non à la compréhension des causes, un peu comme on compterait des obstacles sur un parcours."
         correct: false
+        misconception: mc.philo.liberte.negative-confondue-avec-positive
         feedback: >
           C'est confondre la liberté négative (absence de contrainte
           visible, vue en R1) avec la redéfinition spinoziste de la
@@ -677,22 +869,25 @@ items:
         text: "Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne se contente pas de redire le sujet avec d'autres mots."
         correct: true
       - id: B
-        text: "Une problématique réussie doit annoncer directement, dès l'introduction, la réponse finale du devoir, pour ne laisser aucun suspense."
+        text: "Une problématique réussie doit annoncer directement, dès l'introduction, la réponse finale du devoir, pour ne laisser aucun suspense au correcteur qui découvre la copie."
         correct: false
+        misconception: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est confondre la fonction de la problématique (poser une
           tension à explorer) avec celle du dépassement final, qui vient y
           répondre au terme du devoir.
       - id: C
-        text: "Une problématique consiste à reformuler le sujet sous forme de question fermée, à laquelle on répond ensuite simplement par « oui » ou par « non »."
+        text: "Une problématique consiste à reformuler le sujet sous forme de question fermée, à laquelle on répond ensuite simplement par « oui » ou par « non », sans qu'aucun développement supplémentaire ne soit véritablement requis."
         correct: false
+        misconception: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est exactement l'erreur que le texte signale : « une bonne
           dissertation ne répond jamais simplement oui ou non ; elle
           montre pourquoi la réponse spontanée pose un problème. »
       - id: D
-        text: "Une problématique doit obligatoirement citer au moins un auteur du programme pour être recevable, quel que soit le sujet."
+        text: "Une problématique doit obligatoirement citer au moins un auteur du programme pour être recevable, quel que soit le sujet traité, sous peine d'être jugée trop vague par le correcteur."
         correct: false
+        misconception: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Rien dans la méthode présentée n'exige cela : la problématique
           est définie par la tension qu'elle formule, pas par une
@@ -723,15 +918,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "À la thèse (partie I), pour illustrer que faire ce que l'on veut, sans aucune entrave, est la définition même de la liberté."
+        text: "À la thèse (partie I), pour illustrer que faire ce que l'on veut, sans aucune entrave, est la définition même de la liberté qu'il s'agira ensuite de nuancer progressivement."
         correct: false
+        misconception: mc.philo.liberte.licence-est-liberte-achevee
         feedback: >
           Mauvais emplacement : la partie I mobilise la liberté négative
           et le libre arbitre (R1), pas la servitude des passions
           spinoziste, qui sert au contraire à fragiliser cette thèse.
       - id: B
-        text: "Uniquement au dépassement (partie III), à travers l'idée de connaissance de la nécessité, et jamais à l'antithèse."
+        text: "Uniquement au dépassement (partie III), à travers l'idée de connaissance de la nécessité, et jamais à l'antithèse, Spinoza n'ayant, selon cette lecture, rien à apporter à la critique de la thèse spontanée."
         correct: false
+        misconception: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Le plan mobilise bien Spinoza en III (connaissance de la
           nécessité), mais nie à tort qu'il apparaisse aussi en II, pour
@@ -740,8 +937,9 @@ items:
         text: "À l'antithèse (partie II) : elle montre que « faire ce que je veux » peut signifier suivre aveuglément des désirs dont j'ignore les causes — la servitude des passions."
         correct: true
       - id: D
-        text: "Nulle part dans le développement : Spinoza n'intervient que dans l'introduction, à titre d'accroche."
+        text: "Nulle part dans le développement : Spinoza n'intervient que dans l'introduction, à titre d'accroche, avant de céder toute la place aux auteurs réellement mobilisés dans le devoir."
         correct: false
+        misconception: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est méconnaître la structure du plan, où Spinoza est mobilisé
           deux fois dans le développement lui-même — en II pour la
@@ -774,22 +972,26 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle suppose que « vouloir » et « pouvoir » désignent exactement la même chose, et qu'aucune distinction n'est nécessaire entre eux."
+        text: "Elle suppose que « vouloir » et « pouvoir » désignent exactement la même chose, et qu'aucune distinction n'est nécessaire entre eux, puisque vouloir suffirait toujours, en pratique, à obtenir ce que l'on désire."
         correct: false
+        misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
         feedback: >
           Ce n'est pas la distinction que pointe le texte à cette étape :
           il interroge l'origine du vouloir lui-même, pas son rapport à un
           quelconque pouvoir d'agir.
       - id: B
-        text: "Elle suppose que le sujet ne porte que sur la liberté politique, à l'exclusion de toute dimension individuelle."
+        text: "Elle suppose que le sujet ne porte que sur la liberté politique, à l'exclusion de toute dimension individuelle, la question du « vouloir » personnel n'ayant ici aucune place légitime."
         correct: false
+        misconception: mc.philo.liberte.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est restreindre indûment la portée du sujet en la confondant
           avec le seul terrain politique (R3), alors que l'analyse des
           termes porte ici sur la structure même du vouloir individuel.
       - id: C
-        text: "Elle suppose que « tout ce que l'on veut » désigne la liberté intérieure telle que définie en R1, et non la licence."
+        text: "Elle suppose que « tout ce que l'on veut » désigne la liberté intérieure telle que définie en R1, et non la licence, les deux notions se recouvrant en réalité entièrement l'une l'autre."
         correct: false
+        misconception: mc.philo.liberte.licence-est-liberte-achevee
+        also_reveals: [mc.philo.liberte.negative-confondue-avec-positive]
         feedback: >
           C'est contredire directement le texte, qui nomme explicitement
           cette expression « la licence » — une absence de toute limite,
@@ -811,3 +1013,53 @@ items:
 
       **Pourquoi c'est important :** c'est exactement ce point aveugle que
       l'antithèse (Spinoza, servitude des passions) va exploiter.
+
+coverage_summary:
+  # Computed by loading this file with js-yaml and tallying every
+  # choices[].misconception (+ also_reveals[]) value per item — an item
+  # counts once per misconception if ANY of its distractors carries that id
+  # (house convention, matching content/philo/analyse-de-texte/items.yaml).
+  # This is a LEGACY end-bank (LIB-1..LIB-15 predate per-distractor tagging —
+  # Gap-4 finding, task instruction) retrofitted in this pass: every one of
+  # the 45 distractors across the 15 items now carries a real misconception
+  # id (no null tags), which is stricter than the house default. Per the
+  # recipe's "Honest coverage" judgment call, floor gaps below are reported
+  # truthfully rather than padded.
+  total_items: 15
+  floor: 3
+  floor_met: false
+  per_misconception:
+    mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme: 4
+    mc.philo.liberte.libre-arbitre-exige-absence-de-cause: 6
+    mc.philo.liberte.contrainte-egale-determination: 3
+    mc.philo.liberte.echapper-a-la-liberte: 5
+    mc.philo.liberte.sentiment-de-liberte-suffit: 3
+    mc.philo.liberte.negative-confondue-avec-positive: 3
+    mc.philo.liberte.liberte-confondue-avec-pouvoir: 2
+    mc.philo.liberte.loi-liberte-mal-articulees: 1
+    mc.philo.liberte.licence-est-liberte-achevee: 3
+    mc.philo.liberte.autrui-limite-par-nature: 0
+    mc.philo.liberte.methode-dissertation-appliquee-mecaniquement: 3
+  notes: >-
+    Every distractor across the 15 legacy items now carries a real
+    misconception id (no null tags) — the Gap-4 fix this pass exists to make.
+    8 of 11 models clear the ≥3 floor. THREE do not, and floor_met is
+    reported honestly rather than padded: liberte-confondue-avec-pouvoir (2,
+    LIB-2/LIB-15) and loi-liberte-mal-articulees (1, LIB-3) are real but
+    thin in the legacy bank — a follow-up item pass should add 1-2 items each.
+    autrui-limite-par-nature (0) is a genuinely NEW axis this pass surfaces:
+    it comes from the r-bac Bakounine text (liberté et autrui), which the
+    lesson's own R0-R4 body does not teach directly, so no legacy item
+    exercises it — it is covered by checkpoints.yaml's cp-bac-autrui instead
+    (checkpoints do not count toward this floor, per house convention), and
+    is flagged here as the clearest item-authoring gap for a follow-up pass.
+    Dual-tagging is used once, deliberately: LIB-15's choice C is filed
+    primarily under licence-est-liberte-achevee with also_reveals
+    negative-confondue-avec-positive, since it conflates the lesson's two
+    named senses of "faire tout ce que l'on veut" at once.
+    Length rebalance (recipe's philo addendum): the legacy bank's correct
+    answer was the LONGEST option in all 15/15 items before this pass — an
+    exact instance of the campaign's cited ~97% tell. Distractors were
+    enriched with additional philosophical substance (never by trimming the
+    correct answer's content) so the correct choice is now longest in only
+    3/15, shortest in 5/15, and a middle length in 7/15.

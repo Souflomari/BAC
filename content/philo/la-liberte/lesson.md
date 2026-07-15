@@ -22,6 +22,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Bien sûr que je suis libre : si je voulais vraiment éteindre, je le ferais. Personne ne me tient la main. »
 - « Non, je ne suis pas libre : l'application est conçue par des ingénieurs pour me faire rester, mon cerveau réagit à la dopamine, je n'ai pas vraiment le choix. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Et les deux posent un problème dès qu'on les prend au sérieux.
 
 Si tu dis « je suis libre, je pourrais arrêter si je voulais » — alors pourquoi n'arrêtes-tu pas ? Si rien ne t'y oblige, ta propre conduite te contredit : une heure durant, ta volonté annoncée (« j'arrête ») ne produit pas l'acte (arrêter). Ou bien ta liberté ne pèse pas grand-chose face à l'habitude, ou bien ce que tu appelles « vouloir arrêter » n'est pas si sincère que ça.
@@ -72,6 +74,8 @@ Affirmer le déterminisme intégral et en conclure que la liberté n'existe pas 
 
 > **Erreur à éviter :** ne confonds pas « déterminé » et « contraint ». Être contraint, c'est subir un obstacle extérieur identifiable (une porte fermée, une menace). Être déterminé, au sens philosophique, c'est avoir une cause — ce qui peut très bien se produire sans aucun obstacle extérieur, comme devant ton téléphone. Le problème du déterminisme ne porte pas sur les contraintes visibles ; il porte sur la question de savoir si nos décisions elles-mêmes ont toujours des causes.
 
+[[checkpoint:cp-r1-rupture]]
+
 ---
 
 ## R2 — Spinoza : être libre, ce n'est pas échapper à la nécessité, c'est la comprendre
@@ -110,6 +114,8 @@ Celui qui, au contraire, comprend le mécanisme — qui sait *pourquoi* l'applic
 
 > **Erreur classique à éviter :** ne dis pas « Spinoza pense qu'on n'est jamais libres. » Ce n'est pas sa thèse. Sa thèse est plus fine : le libre arbitre *au sens de l'indétermination totale* n'existe pas — mais une liberté véritable existe, comprise comme le fait d'être la cause rationnelle et comprise de ses actes, plutôt que leur simple théâtre. Confondre les deux, c'est manquer précisément le geste qui fait l'originalité de Spinoza.
 
+[[checkpoint:cp-r2-spinoza]]
+
 ---
 
 ## R3 — Sartre, puis Rousseau et Montesquieu : la liberté par la responsabilité, la liberté par la loi
@@ -125,6 +131,8 @@ Sartre (XXe siècle, *L'existentialisme est un humanisme*) part d'un désaccord 
 **Le mécanisme de la fuite : la mauvaise foi.** Sartre appelle *mauvaise foi* le geste par lequel on se ment à soi-même en se faisant passer pour une chose déterminée — « je suis comme ça », « je n'ai pas pu faire autrement » — précisément pour échapper au poids d'être l'auteur de ses actes. C'est une fuite psychologiquement compréhensible : assumer qu'on est totalement responsable de ce qu'on devient est une pensée angoissante ; se présenter comme déterminé de part en part est plus confortable, parce que ça déplace la responsabilité ailleurs.
 
 **Retour au téléphone, avec Sartre :** dire « je n'ai pas pu m'empêcher, l'algorithme m'a eu » pourrait bien être, à ses yeux, un exemple de mauvaise foi — une façon de se présenter comme un objet mécaniquement programmé pour éviter d'assumer qu'à chaque seconde, c'est bien toi qui as continué de faire glisser ton pouce sur l'écran. Note la différence avec Spinoza : Spinoza dirait que tu es réellement déterminé par des causes, et qu'il s'agit de les comprendre pour en devenir la cause rationnelle ; Sartre dirait qu'il n'y a, à la racine, structurellement rien qui te détermine d'avance — ni nature, ni tempérament fixé — et que se dire déterminé est déjà une échappatoire. Ce sont deux philosophies incompatibles sur ce point précis ; ne les fonds pas ensemble sous prétexte qu'elles parlent toutes les deux de liberté et de causes.
+
+[[checkpoint:cp-r3-pouvoir]]
 
 #### Rousseau et Montesquieu : la liberté par la loi
 
@@ -153,6 +161,8 @@ Sartre refuserait toute excuse : même en connaissant le mécanisme, c'est toi q
 Rousseau ferait remarquer qu'une règle que tu te prescris toi-même à l'avance — une limite de temps d'écran que tu as toi-même fixée, plutôt qu'imposée par un parent — n'est pas une contrainte étrangère à ta liberté : c'est, comme la loi civile, une auto-limitation qui peut au contraire l'exercer, exactement comme « l'obéissance à la loi qu'on s'est prescrite est liberté ».
 
 Les trois auteurs, malgré leurs désaccords réels, convergent sur un même point : la vraie liberté ne consiste pas à échapper à toute nécessité, toute responsabilité ou toute règle — elle se noue avec elles, à condition qu'elles viennent, d'une manière ou d'une autre, de soi-même (par la raison, par l'assomption de sa responsabilité, ou par la loi qu'on a soi-même prescrite) plutôt que d'un pouvoir extérieur qu'on subirait aveuglément.
+
+[[checkpoint:cp-r3-loi]]
 
 ---
 
@@ -205,14 +215,23 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Pourquoi ce paragraphe est construit ainsi :** une partie de thèse ne doit pas être un paragraphe faible qu'on écrit vite pour arriver à l'antithèse — elle doit être développée avec autant de rigueur que les parties suivantes, sans quoi la tension du III perd toute sa force : si la thèse n'a jamais été prise au sérieux, sa remise en cause n'a rien d'un dépassement. Remarque aussi la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — ce pouvoir de « faire autrement » est-il réellement sans cause ?
 
-#### À toi de continuer
+### Exercice de type bac
 
-Rédige maintenant, à ton tour :
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il porte sur un axe (liberté et autrui) que les rungs
+précédents n'ont pas encore nommé frontalement : à toi de mobiliser ce que
+tu sais déjà sur la liberté négative (R1) et sur la liberté par la loi (R3)
+pour l'affronter.
 
-1. Un paragraphe de la partie II (l'antithèse), en choisissant SOIT l'angle du déterminisme et de Spinoza, SOIT l'angle politique de Montesquieu — pas les deux à la fois dans un seul paragraphe.
-2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur Sartre OU sur Rousseau.
+[[checkpoint:cp-bac-autrui]]
 
-Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
+[[exercise:r-bac]]
 
-- *La liberté est-elle incompatible avec l'obéissance aux lois ?*
-- *Sommes-nous responsables de ce que nous voulons ?*
+### Une variation pour ne pas mémoriser
+
+Ce second sujet, également réel, revient sur le terrain déjà connu de R3 —
+sous un habillage différent (une citation brute, sans le contexte narratif
+du code de la route). Le but n'est pas d'apprendre autre chose : c'est de
+reconnaître que la même argumentation s'applique quand l'habillage change.
+
+[[exercise:r-variation]]
