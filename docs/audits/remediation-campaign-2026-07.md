@@ -98,7 +98,7 @@ sourced `transcrit (non vérifié)` pending challenger diff; 2 honest EXC —
 scope-based, not search failures)
 | Lesson | Wave | Sourced | Converted |
 |---|---|---|---|
-| analyse-de-texte (NEW) | PH1 | transcrit non vérifié (3 نص+حلّل sources) | — |
+| analyse-de-texte (NEW) | PH1 | vérifié (3 نص+حلّل sources) | converted, born-converted (9a89083) |
 | la-verite | PH1 | transcrit non vérifié | — |
 | la-liberte | PH1 (PH-pilot) | transcrit non vérifié | — |
 | le-devoir | PH1 | transcrit non vérifié | — |
@@ -260,6 +260,22 @@ either de-scoped from the curriculum or explicitly marked supplementary.
 _(dated compte-rendus of Owner Sittings 1–3 appended here)_
 
 ## Wave log
+
+**2026-07-15 (cont'd) — P3: philo/analyse-de-texte, the 12th philo lesson
+(9a89083).** Born converted (no legacy summit ever existed). pedagogy-
+architect spec first (`docs/pipeline/PHILO-ANALYSE-DE-TEXTE-SPEC.md`,
+32535ef) — R0-R7 ramp on the official 4-moment method, demonstrated on the
+verified Bakounine text, summit on Kant (r-bac) + vérité (r-variation, a
+second real text rather than a fabricated twin — documented deviation from
+the recipe's `not-applicable` default). 15-model misconception inventory,
+49 items, 2 coded structural diagrams. New curriculum.ts unit "Méthode de
+l'épreuve". Post-hoc audit found the length-tell bug on 22/49 items +
+4/6 checkpoints (fixed by the authoring agent itself before reporting,
+independently re-verified at 0/55 flagged). validate --strict clean,
+build 89 pages, dom-truth 161/0 (62 tokens == 62 notions on disk).
+**Philo dirs now 12/12** — conversion (exercises.yaml/checkpoints.yaml
+present) still pending for the other 11 (Phase P4), and `l-histoire` +
+`le-bonheur` remain named exceptions pending owner Sitting-2 confirmation.
 
 **2026-07-15 (cont'd) — maths-wave-3 (RC-4 close, task P1): maths 14/14.**
 `limites-continuite` + `derivabilite-etude-fonctions` (ff861f8), both
