@@ -75,13 +75,12 @@ Status legend: `—` pending · `sourced` (bank entry verified) · `converted` (
 | esterification-hydrolyse | PC1 | vérifié | converted (b7c1595) |
 | controle-catalyse | PC4 | vérifié (2025 N) | converted (89decac) |
 
-### Maths (12/14 — limites-continuite + derivabilite-etude-fonctions remain,
-both blocked on sujet excerpt per plan §6/locked-decision-2)
+### Maths (14/14 — DONE 2026-07-15)
 | Lesson | Wave | Sourced | Converted |
 |---|---|---|---|
 | probabilites-conditionnelles | PILOT | vérifié (2023 N) | converted (1e0075c) |
-| limites-continuite (+trig limits) | M1 | no dedicated sujet (cross-list) — trig-limits extension landed (5295ad2) | — pending excerpt sourcing |
-| derivabilite-etude-fonctions | M1 | no dedicated sujet (cross-list) | — pending excerpt sourcing |
+| limites-continuite (+trig limits) | M1/wave-3 | extrait vérifié (2022 N SExp, fonction-exponentielle.md) — trig-limits extension (5295ad2) | converted (ff861f8) |
+| derivabilite-etude-fonctions | M1/wave-3 | extrait vérifié (2019 N SM, fonction-exponentielle.md) | converted (ff861f8) |
 | fonction-logarithme | M1 | vérifié | converted (8920491) |
 | fonction-exponentielle | M1/wave-2 | vérifié (2019 N) + corrigé (2022 SExp) | converted (81f0ae2) |
 | suites-numeriques | M1 | vérifié | converted (dc2aafd) |
@@ -142,7 +141,7 @@ Deferred in full, with pointers for the future session that picks SVT up:
 | Subject | Inventory | Entries verified | Notes |
 |---|---|---|---|
 | pc | 25 slugs | 24 vérifié, 1 EXC non sourcé (atome-mecanique-newton, 18N+3R cherchées) | `docs/sujets/pc/` |
-| maths | 14 slugs | 12 vérifié (1 corrigé: fonction-exponentielle 2022 SExp), 2 cross-list sans exercice dédié (limites-continuite, derivabilite-etude-fonctions — sourcing par extrait prévu) | `docs/sujets/maths/` |
+| maths | 14 slugs | 12 vérifié (1 corrigé: fonction-exponentielle 2022 SExp) + 2 extraits vérifiés (limites-continuite, derivabilite-etude-fonctions — sourcés par extrait de fonction-exponentielle.md, converted ff861f8) | `docs/sujets/maths/` |
 | philo | 12 slugs (11 + analyse-de-texte) | 0 vérifié — 10 `transcrit (non vérifié)` pending challenger diff, 2 EXC scope-based (l-histoire, le-bonheur) | `docs/sujets/philo/` — NEW bank, built 2026-07-15 (7301685) |
 
 ## Named unsourced exceptions (target ≤5, cap reached at 3)
@@ -261,6 +260,22 @@ either de-scoped from the curriculum or explicitly marked supplementary.
 _(dated compte-rendus of Owner Sittings 1–3 appended here)_
 
 ## Wave log
+
+**2026-07-15 (cont'd) — maths-wave-3 (RC-4 close, task P1): maths 14/14.**
+`limites-continuite` + `derivabilite-etude-fonctions` (ff861f8), both
+sourced by EXCERPT from the already-verified `fonction-exponentielle.md`
+problème (2022 N SExp / 2019 N SM respectively) — no new web sourcing
+needed, new `docs/sujets/maths/{limites-continuite,derivabilite-etude-fonctions}.md`
+document the excerpt provenance. Post-hoc audit found the length-tell bug
+(correct choice = strict-longest option) on several checkpoints in BOTH
+lessons (1/6 and initially 4/5) — fixed by lengthening the paired distractor
+or trimming the correct answer, re-verified 0 flagged before commit.
+Full maths lane: `validate --strict` 14/14 clean, build 88 pages, dom-truth
+161/0, pushed. Also completed this session: P2 (philo research lane) in
+full — sujets bank (7301685), challenger verify (04016d3, 16 entries
+adjudicated, 2 corrections), cadre challenge (7fa5ecf, la-violence
+confirmed in-scope, l-histoire + le-bonheur flagged as likely out-of-scope
+pending owner Sitting-2 confirmation).
 
 **2026-07-15 — PC-wave-5 (RC-4 close, task P0) + trig-limits C2 (task P1.1) +
 philo sujets bank (task P2.1). Orchestrated from a pre-authored execution
