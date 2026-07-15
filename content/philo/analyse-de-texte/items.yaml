@@ -1,0 +1,2371 @@
+notion: analyse-de-texte
+skill_code: philo_analyse_texte
+
+# Misconception inventory — spec §3 (docs/pipeline/PHILO-ANALYSE-DE-TEXTE-SPEC.md),
+# used AS-IS per the resolved human-gate decision (task instruction, open flag §8.1).
+# Id convention: mc.philo.<notion>.<slug> — matches the house convention observed
+# in content/maths/limites-continuite/items.yaml (mc.math.<notion>.<slug>); no
+# other philo notion is tagged yet (content/philo/la-liberte/items.yaml carries
+# `misconceptions: []`), so this lesson sets the philo precedent.
+
+misconceptions:
+  - id: mc.philo.analyse_texte.paraphrase-est-analyse
+    label: "« Analyser, c'est redire le texte avec mes mots » (la méconception maîtresse)"
+    description: >-
+      L'élève traite la paraphrase fidèle et complète comme si elle
+      constituait déjà une analyse : la copie suit le texte phrase par
+      phrase, le reformule, sans jamais nommer la thèse, les concepts, la
+      structure argumentative ou les procédés.
+    contradicts_principle: >-
+      Analyser, c'est expliquer COMMENT le texte soutient sa thèse (thèse +
+      concepts + procédés + mouvement) — pas répéter CE QU'il dit. Une
+      paraphrase, même parfaitement fidèle, n'a encore rien analysé.
+
+  - id: mc.philo.analyse_texte.theme-est-these
+    label: "« Le thème EST la thèse »"
+    description: >-
+      L'élève prend le sujet du texte (« la liberté », « le devoir ») pour la
+      thèse elle-même, sans jamais formuler l'affirmation précise que
+      l'auteur défend.
+    contradicts_principle: >-
+      Le thème dit de quoi ça parle ; la thèse est ce que l'auteur AFFIRME —
+      une phrase assertive et discutable, jamais une simple étiquette de
+      sujet.
+
+  - id: mc.philo.analyse_texte.exemple-est-these
+    label: "« Un exemple ou une prémisse EST la thèse »"
+    description: >-
+      L'élève désigne comme thèse une prémisse, un exemple ou un
+      renforcement au service de l'argumentation, plutôt que l'affirmation
+      centrale que ces éléments servent à soutenir.
+    contradicts_principle: >-
+      La thèse est ce que les exemples et prémisses SERVENT à démontrer ; on
+      la trouve en demandant « tout ça, c'est POUR dire quoi ? », jamais en
+      isolant la phrase la plus développée ou la plus concrète.
+
+  - id: mc.philo.analyse_texte.propos-rapporte-attribue
+    label: "« Tout ce qui est écrit dans le texte EST la position de l'auteur »"
+    description: >-
+      L'élève attribue à l'auteur une vue que le texte mentionne pour
+      l'écarter, la nuancer ou la combattre (via des connecteurs comme
+      « mais », « à l'inverse », « or »), en confondant ce que le texte
+      RAPPORTE et ce qu'il DÉFEND.
+    contradicts_principle: >-
+      Il faut suivre QUI parle et à quelle fin, et distinguer thèse
+      défendue / thèse rapportée-réfutée / concession, en s'appuyant sur les
+      connecteurs qui signalent ces bascules.
+
+  - id: mc.philo.analyse_texte.problematique-est-reformulation
+    label: "« La problématique, c'est reformuler la consigne ou le thème en question »"
+    description: >-
+      L'élève transforme le thème en question fermée sans faire apparaître
+      aucune tension entre deux réponses également défendables — la
+      problématique se réduit à une reformulation sans enjeu.
+    contradicts_principle: >-
+      La problématique est une TENSION entre deux réponses également
+      défendables, que la thèse va trancher — c'est la compétence cardinale
+      de l'الأشكلة, pas une reformulation en style interrogatif.
+
+  - id: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+    label: "« Je dois rédiger la copie dans l'ordre où elle sera lue »"
+    description: >-
+      L'élève rédige l'introduction en premier, avant d'avoir vraiment
+      compris et analysé le texte, ce qui produit une intro provisoire ou
+      contredite par l'analyse qui suit.
+    contradicts_principle: >-
+      L'ordre de LECTURE (compris d'abord, thèse trouvée) est différent de
+      l'ordre de RÉDACTION (l'intro se rédige en dernier, et se PLACE en
+      premier seulement au moment de recopier au propre).
+
+  - id: mc.philo.analyse_texte.toutes-phrases-egales
+    label: "« Toutes les phrases du texte se valent, je les commente dans l'ordre »"
+    description: >-
+      L'élève traite chaque phrase de façon interchangeable — un commentaire
+      linéaire et plat, sans hiérarchie entre claims porteuses et éléments de
+      support, sans jamais dire ce que chaque phrase FAIT dans la
+      démonstration.
+    contradicts_principle: >-
+      Un texte BOUGE : il faut repérer les articulations et distinguer ce qui
+      porte l'argumentation de ce qui la soutient, pas commenter phrase après
+      phrase comme si elles avaient toutes le même poids.
+
+  - id: mc.philo.analyse_texte.procedes-ignores
+    label: "« La structure, c'est la liste des sujets dans l'ordre » (procédés/connecteurs ignorés)"
+    description: >-
+      L'élève décrit ce dont parle chaque partie du texte sans jamais nommer
+      les procédés argumentatifs (exemple, comparaison, opposition,
+      causalité, définition, concession) ni les connecteurs qui les
+      signalent (« car », « à l'inverse », « toutefois »).
+    contradicts_principle: >-
+      Il faut nommer les procédés argumentatifs et ce que chacun accomplit
+      dans la démonstration — un connecteur raté (« à l'inverse », « car »)
+      fait rater le mouvement entier du texte.
+
+  - id: mc.philo.analyse_texte.concept-defini-par-cours
+    label: "« Un concept se définit par le cours ou le dictionnaire »"
+    description: >-
+      L'élève plaque une définition apprise en cours sur un concept du
+      texte, sans vérifier qu'elle correspond à l'usage précis que CE texte
+      en fait.
+    contradicts_principle: >-
+      Il faut définir les concepts TELS QUE CE TEXTE les emploie et leurs
+      relations propres — l'exigence de fidélité interdit une définition de
+      cours plaquée qui ne colle pas à l'usage réel du texte.
+
+  - id: mc.philo.analyse_texte.aucun-presuppose
+    label: "« Seul ce qui est écrit compte ; il n'y a rien « sous » le texte »"
+    description: >-
+      L'élève refuse ou ignore la recherche des présupposés implicites, en
+      considérant qu'un texte n'affirme que ce qu'il énonce explicitement.
+    contradicts_principle: >-
+      Il faut identifier ce que l'auteur doit TENIR POUR ACQUIS pour que sa
+      thèse tienne — un présupposé implicite n'est pas une invention, c'est
+      une condition silencieuse du raisonnement.
+
+  - id: mc.philo.analyse_texte.discuter-avant-analyser
+    label: "« Discuter, c'est dire tout de suite si je suis d'accord »"
+    description: >-
+      L'élève ouvre sa copie, ou une partie de sa copie, sur un jugement de
+      valeur avant d'avoir analysé la thèse — la discussion précède ou
+      remplace l'analyse au lieu de la suivre.
+    contradicts_principle: >-
+      La discussion vient APRÈS l'analyse et porte sur la thèse ANALYSÉE — on
+      ne peut évaluer ce qu'on n'a pas encore précisément identifié.
+
+  - id: mc.philo.analyse_texte.discuter-est-avis
+    label: "« Discuter, c'est donner mon opinion personnelle »"
+    description: >-
+      L'élève réduit la discussion à une assertion non argumentée (« à mon
+      avis… », « je pense que… ») sans mobiliser aucun argument ni aucune
+      position philosophique.
+    contradicts_principle: >-
+      Discuter, c'est mobiliser des ARGUMENTS et des POSITIONS PHILOSOPHIQUES
+      (convergentes puis divergentes) et une critique interne — jamais une
+      opinion non justifiée, même sincère, même juste sur le fond.
+
+  - id: mc.philo.analyse_texte.citation-decorative
+    label: "« Citer des auteurs montre ma culture, peu importe la pertinence »"
+    description: >-
+      L'élève mobilise des références philosophiques sans établir leur lien
+      avec la thèse précise du texte — name-dropping décoratif plutôt
+      qu'argument.
+    contradicts_principle: >-
+      Il faut mobiliser des positions PERTINENTES pour la notion et la thèse
+      précises du texte — une référence non reliée au texte, même savante,
+      ne vaut rien pour la discussion.
+
+  - id: mc.philo.analyse_texte.discussion-hors-sol
+    label: "« La discussion, c'est un mini-cours sur la notion, à côté du texte »"
+    description: >-
+      L'élève transforme la discussion en exposé général sur la notion
+      (toute l'histoire du concept, toutes les positions connues) sans
+      jamais revenir à la thèse précise et aux concepts propres du texte.
+    contradicts_principle: >-
+      Il faut critiquer CETTE thèse avec SES concepts et rester ancré au
+      texte — un panorama général, même exact, qui ne revient jamais au
+      texte précis est hors-sol.
+
+  - id: mc.philo.analyse_texte.conclure-est-resumer
+    label: "« Conclure, c'est résumer » ou « la position personnelle, c'est un avis non argumenté »"
+    description: >-
+      L'élève rédige une conclusion qui redit l'introduction ou le thème,
+      sans bilan articulé de l'analyse et de la discussion, sans réponse
+      explicite à la problématique, ou avec une position finale non
+      argumentée.
+    contradicts_principle: >-
+      Synthétiser, c'est faire le BILAN de l'analyse et de la discussion,
+      RÉPONDRE à la problématique posée, puis proposer une POSITION
+      PERSONNELLE ARGUMENTÉE qui ROUVRE une question — jamais un résumé, et
+      jamais un avis final sans argument.
+
+items:
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-01 — paraphrase-est-analyse (3 items) — R0
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M01-1
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Sur la phrase de Kant « Il est conforme au devoir que le marchand ne
+      surfasse pas le prix au client inexpérimenté… », deux débuts de copie :
+
+      **Copie A.** « L'auteur dit que le marchand ne doit pas faire payer plus
+      cher un client qui ne s'y connaît pas. »
+
+      **Copie B.** « L'auteur ouvre sur un cas qui semble d'emblée moral — un
+      marchand honnête — pour en interroger ensuite le mobile réel. »
+
+      Laquelle des deux ANALYSE le texte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La copie B : elle nomme la fonction de l'exemple, pas seulement son contenu."
+        correct: true
+      - id: B
+        text: "La copie A : elle reprend fidèlement ce que dit le texte, sans rien y ajouter."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          La fidélité n'est pas le critère. La copie A redit le contenu sans
+          dire ce que ce cas ACCOMPLIT dans l'argumentation de Kant — elle
+          paraphrase.
+      - id: C
+        text: "Les deux : l'important est seulement de ne pas déformer le texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Ne pas déformer le texte est une condition nécessaire, pas
+          suffisante. La copie A ne le déforme pas et pourtant n'analyse
+          rien : il manque le geste qui dit COMMENT le texte argumente.
+      - id: D
+        text: "Aucune des deux : il manque un jugement personnel sur le marchand."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Un jugement personnel n'est pas ce qui manque ici, et il n'a de
+          toute façon pas sa place avant l'analyse : discuter vient après
+          avoir analysé, jamais à la place de l'analyse.
+    correct_feedback: |-
+      La copie B ne redit pas le contenu de la phrase : elle identifie ce que
+      cet exemple FAIT dans l'argumentation — c'est le geste qui distingue
+      analyser de paraphraser.
+
+  - id: ATX-M01-2
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      Sur la phrase « La vérité est comme un dôme de cristal aux mille
+      couleurs, où chacun, depuis son angle, aperçoit un agencement singulier
+      de couleurs », deux copies :
+
+      **Copie 1.** « L'auteur compare la vérité à un dôme de cristal
+      multicolore, où chaque personne voit une combinaison différente de
+      couleurs. »
+
+      **Copie 2.** « Cette comparaison traduit, en image, la thèse
+      relativiste du texte : la vérité perçue dépend du point d'observation
+      de chacun, sans qu'on nie l'existence d'une réalité commune — le
+      dôme. »
+
+      Laquelle est une PARAPHRASE plutôt qu'une analyse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La copie 1 : elle reformule l'image sans dire ce qu'elle démontre."
+        correct: true
+      - id: B
+        text: "La copie 2 : elle est plus longue, donc plus proche du texte original."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          La longueur n'est pas le critère de fidélité, et la copie 2 est en
+          réalité la plus analytique des deux : elle nomme le procédé (la
+          comparaison) et ce qu'il accomplit.
+      - id: C
+        text: "Aucune des deux : il faudrait citer le texte mot pour mot, sans reformuler."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Citer mot pour mot n'est pas non plus une analyse : c'est encore
+          rester au niveau du texte, sans dire comment il argumente. La copie
+          2 fait ce pas supplémentaire.
+      - id: D
+        text: "Les deux : toutes deux restent fidèles au texte, sans le trahir."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          La fidélité ne suffit pas à faire une analyse — seule la copie 2
+          dit ce que la comparaison DÉMONTRE, pas seulement ce qu'elle dit.
+    correct_feedback: |-
+      La copie 1 reformule l'image dans d'autres mots sans jamais dire ce
+      qu'elle établit pour la thèse du texte : c'est une paraphrase, pas une
+      analyse.
+
+  - id: ATX-M01-3
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      Une copie commence ainsi : « Le texte dit d'abord que les sens sont le
+      critère de la vérité, puis qu'un seul sens peut se tromper, puis qu'une
+      erreur d'un sens est corrigée par un autre sens… » et continue ainsi
+      jusqu'à la fin du texte. Indépendamment de son exactitude, que manque-t-il
+      fondamentalement à ce début de copie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucune thèse n'est nommée, aucun procédé n'est identifié."
+        correct: true
+      - id: B
+        text: "Une critique personnelle de la thèse, dès l'introduction."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Une critique n'a de toute façon pas sa place avant l'analyse. Le
+          vrai manque ici est en amont : aucune thèse n'a encore été
+          identifiée à discuter.
+      - id: C
+        text: "Rien : suivre fidèlement l'ordre du texte est déjà une bonne analyse."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Suivre l'ordre du texte décrit CE QU'il dit, jamais COMMENT il
+          l'argumente — c'est exactement le réflexe de paraphrase que cette
+          leçon apprend à rompre.
+      - id: D
+        text: "Une citation supplémentaire, pour prouver que le texte a été lu en entier."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Ajouter une citation ne répare pas l'absence d'analyse : le
+          problème n'est pas un manque de preuve de lecture, c'est l'absence
+          de thèse, de concepts et de procédés nommés.
+    correct_feedback: |-
+      La copie décrit l'ORDRE des phrases, jamais ce qu'elles ARGUMENTENT :
+      aucune thèse n'est nommée, aucun procédé n'est identifié — c'est le
+      réflexe de paraphrase dans toute sa forme.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-02 — theme-est-these (3 items) — R1
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M02-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Un élève écrit : « La thèse du texte de Bakounine, c'est la liberté et
+      autrui. » Que penser de cette formulation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ce n'est pas une thèse : c'est le thème, sans affirmation assertive."
+        correct: true
+      - id: B
+        text: "C'est une bonne thèse : elle nomme exactement de quoi parle le texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Nommer de quoi ça parle, c'est précisément la définition du thème —
+          il manque l'affirmation elle-même : « je ne suis libre que par la
+          liberté des autres ».
+      - id: C
+        text: "C'est une bonne thèse, si on la reformule en question : « la liberté et autrui, est-ce lié ? »"
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Reformuler un thème en question ne crée pas de thèse, et ne crée
+          pas non plus une vraie problématique : il n'y a toujours aucune
+          tension entre deux réponses défendables.
+      - id: D
+        text: "C'est une thèse incomplète : il suffit d'ajouter « c'est important » à la fin."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Ajouter un jugement de valeur vague ne transforme pas un thème en
+          thèse. Il faut l'affirmation précise que l'auteur défend, pas une
+          appréciation générale.
+    correct_feedback: |-
+      « La liberté et autrui » nomme un sujet, pas une affirmation
+      contestable : c'est le thème. La thèse doit dire ce que l'auteur
+      SOUTIENT sur ce thème.
+
+  - id: ATX-M02-2
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Un élève résume ainsi la thèse du texte de Kant : « Le texte parle du
+      devoir et de l'intérêt personnel. » Quel est le problème de cette
+      formulation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est le thème : il manque l'affirmation que Kant défend réellement."
+        correct: true
+      - id: B
+        text: "Aucun problème : le texte parle bien de ces deux notions."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Que le texte « parle de » ces deux notions ne dit toujours pas ce
+          que Kant AFFIRME à leur sujet — que le mobile, pas le résultat de
+          l'acte, détermine sa valeur morale.
+      - id: C
+        text: "Le problème est ailleurs : il manque une comparaison avec un autre philosophe."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Une comparaison ne répare pas l'absence de thèse, et elle n'a de
+          toute façon pas sa place à ce stade de l'analyse : le problème
+          précède la discussion.
+      - id: D
+        text: "C'est correct si on ajoute le nom de l'auteur devant."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Nommer l'auteur ne transforme pas un sujet en affirmation. Il
+          manque toujours la thèse précise, pas une attribution de nom.
+    correct_feedback: |-
+      C'est le thème, pas la thèse : il manque l'affirmation que Kant
+      défend — agir PAR devoir se distingue d'agir CONFORMÉMENT au devoir,
+      même quand le résultat extérieur est identique.
+
+  - id: ATX-M02-3
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      « Le thème du texte, c'est la vérité et la relativité. » Cette phrase
+      peut-elle servir de thèse dans une copie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : c'est un thème, pas une affirmation sur ce thème."
+        correct: true
+      - id: B
+        text: "Oui, à condition de la citer entre guillemets."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Le guillemet ne change pas la nature de la phrase : elle nomme un
+          sujet, elle n'affirme rien de contestable sur ce sujet.
+      - id: C
+        text: "Oui : « thème » et « thèse » désignent la même chose en philosophie."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Ce sont deux notions différentes et complémentaires : le thème est
+          le sujet, la thèse est l'affirmation que l'auteur défend sur ce
+          sujet.
+      - id: D
+        text: "Non, il manque juste le numéro du paragraphe où se trouve cette idée."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Une référence de paragraphe ne transforme pas un thème en
+          affirmation. Ce qui manque est le contenu même de la thèse, pas sa
+          localisation.
+    correct_feedback: |-
+      C'est un thème (deux mots-clés juxtaposés), pas une thèse. La thèse
+      devrait dire par exemple que le critère de la vérité est l'ensemble des
+      sens, coordonné par la raison.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-03 — exemple-est-these (3 items) — R1 (aigu au summit Kant)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M03-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Un élève affirme : « La thèse du texte, c'est que plus il y a d'hommes
+      libres autour de moi, plus mon cercle de liberté s'élargit. » Cette
+      phrase est bien dans le texte — est-ce la thèse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : c'est un renforcement qui SERT la thèse, pas la thèse elle-même."
+        correct: true
+      - id: B
+        text: "Oui : cette phrase se trouve dans le texte et peut être citée mot pour mot."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          Être citable mot pour mot ne fait pas de cette phrase la thèse.
+          Demande toujours : « tout ça, c'est POUR dire quoi ? » — la réponse
+          ramène à « je ne suis libre que par la liberté des autres ».
+      - id: C
+        text: "Oui : c'est la phrase la plus longue et la plus détaillée du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          La longueur ou le détail d'une phrase n'en fait pas la thèse. Une
+          prémisse développée reste une prémisse au service d'une
+          affirmation plus générale.
+      - id: D
+        text: "Oui : c'est la première idée développée après la phrase d'ouverture."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          La position dans le texte ne détermine pas non plus le statut
+          d'une phrase. Ce renforcement vient développer la thèse déjà
+          posée, il ne la remplace pas.
+    correct_feedback: |-
+      C'est un renforcement, pas la thèse elle-même : il montre que la thèse
+      (je ne suis libre que par la liberté des autres) devient plus vraie
+      encore à mesure que le cercle des hommes libres s'élargit.
+
+  - id: ATX-M03-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Dans le texte de Kant, un élève écrit : « La thèse du texte, c'est que
+      le marchand traite ses clients avec probité. » Est-ce exact ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : c'est une prémisse que Kant va ensuite examiner."
+        correct: true
+      - id: B
+        text: "Oui : c'est la première affirmation forte du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          Être la première affirmation ne fait pas d'une phrase la thèse.
+          Kant introduit ce cas pour en interroger ensuite le mobile — c'est
+          ce mouvement-là qui porte la thèse.
+      - id: C
+        text: "Oui : le texte ne la contredit jamais explicitement dans ce passage."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Le texte la NUANCE explicitement, une ligne plus loin : « ce
+          traitement honnête ne suffit nullement à affirmer que le marchand
+          ait agi par foi dans le devoir ». Ne pas voir cette bascule, c'est
+          confondre ce que le texte rapporte et ce qu'il défend.
+      - id: D
+        text: "Oui : elle contient le mot « devoir »."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          La présence d'un mot-clé ne suffit pas à désigner la thèse. Il faut
+          identifier ce que le texte AFFIRME au sujet de ce mot, pas
+          seulement où il apparaît.
+    correct_feedback: |-
+      C'est une prémisse : la thèse de Kant est ce qu'il en conclut — que ce
+      comportement honnête, motivé par l'intérêt, n'a en lui-même aucune
+      valeur morale, contrairement à agir par devoir.
+
+  - id: ATX-M03-3
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Même texte de Kant : « La thèse, c'est que conserver sa vie est un
+      devoir. » Que répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une prémisse admise par Kant, pas sa thèse."
+        correct: true
+      - id: B
+        text: "C'est exact : c'est la phrase qui ouvre le second exemple."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          Ouvrir un exemple n'en fait pas la thèse. Kant admet ce point
+          (conserver sa vie est un devoir) pour ensuite s'interroger sur le
+          MOBILE qui fait ou non de cet acte un acte moral.
+      - id: C
+        text: "C'est exact : c'est une vérité universellement admise."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          Qu'une prémisse soit largement admise ne la transforme pas en
+          thèse du texte. La thèse porte sur ce qui rend l'acte moral, pas
+          sur l'acte lui-même.
+      - id: D
+        text: "C'est exact, à condition d'ajouter « selon Kant » devant."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          Attribuer la phrase à Kant ne change pas son statut de prémisse.
+          La thèse reste à chercher plus loin, dans ce que Kant en tire.
+    correct_feedback: |-
+      C'est une prémisse : la thèse de Kant porte sur ce qui rend un acte
+      moral ou non — le mobile (devoir vs. inclination), pas l'acte lui-même.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-04 — propos-rapporte-attribue (3 items) — R1 / R3
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M04-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Le texte de Kant décrit le marchand qui « traite ses clients avec
+      probité ». Un élève en conclut : « Selon Kant, ce marchand agit
+      moralement, par devoir. » Où est l'erreur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le texte nie explicitement cette lecture, une ligne plus loin."
+        correct: true
+      - id: B
+        text: "Aucune erreur : le texte décrit un comportement honnête, donc moral."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          « Honnête » n'est pas « moral » pour Kant : « ce traitement honnête
+          ne suffit nullement à affirmer que le marchand ait agi par foi
+          dans le devoir, car son intérêt le lui commandait. »
+      - id: C
+        text: "L'erreur est seulement de vocabulaire : il fallait dire « conforme au devoir »."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Ce n'est pas un problème de mot mais de logique de l'argument :
+          l'élève attribue à Kant une affirmation que le texte écarte
+          explicitement, pas une qu'il défend.
+      - id: D
+        text: "Aucune erreur : Kant ne dit jamais explicitement que le marchand est immoral."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Kant dit exactement ce qu'il faut pour trancher : le mobile du
+          marchand est « la seule » son intérêt personnel, donc son acte
+          n'est ni par devoir, ni par inclination — la question de
+          l'immoralité n'a pas besoin d'être posée séparément.
+    correct_feedback: |-
+      « Ce traitement honnête ne suffit nullement à affirmer que le marchand
+      ait agi par foi dans le devoir, car son intérêt le lui commandait » —
+      le texte écarte explicitement la lecture que l'élève lui attribue.
+
+  - id: ATX-M04-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      « À l'inverse, c'est la servitude des hommes qui se dresse entre moi et
+      la liberté. » Un élève en tire : « La thèse du texte, c'est que la
+      servitude fonde ma liberté. » Que penser de cette lecture ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle inverse le sens du contre-cas : « à l'inverse » confirme la thèse par contraste."
+        correct: true
+      - id: B
+        text: "Elle est correcte : le mot « servitude » apparaît juste après « à l'inverse »."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          La proximité d'un mot ne dit rien de la fonction de la phrase :
+          « à l'inverse » introduit ici un contre-cas NÉGATIF, pas une
+          nouvelle thèse positive.
+      - id: C
+        text: "Elle est correcte : le texte mentionne la servitude deux fois."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          La fréquence d'un mot ne détermine pas non plus ce que le texte en
+          affirme. La servitude y est ce que la thèse écarte, pas ce
+          qu'elle fonde.
+      - id: D
+        text: "Elle est correcte, car un texte peut toujours vouloir dire l'inverse de ce qu'il écrit."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          On ne peut pas prêter à un texte le contraire de ce qu'il énonce
+          sans preuve textuelle précise ; ici, le connecteur « à l'inverse »
+          indique clairement un contre-cas qui confirme la thèse, pas un
+          renversement de celle-ci.
+    correct_feedback: |-
+      Le connecteur introduit un contre-cas qui confirme la thèse par
+      contraste (c'est la liberté d'autrui, non sa servitude, qui me fonde) —
+      pas une affirmation indépendante qui la remplacerait.
+
+  - id: ATX-M04-3
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      Le texte affirme que « les sens sont le critère de la vérité » puis,
+      presque aussitôt, qu'« un seul sens peut nous tromper ». Un élève en
+      conclut : « La thèse, c'est que les sens nous trompent, donc ils ne
+      peuvent pas être un critère fiable. » Où est l'erreur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une concession qui sert la thèse, sans la renverser."
+        correct: true
+      - id: B
+        text: "Aucune erreur : le texte dit littéralement qu'un sens peut nous tromper."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Le texte le dit, mais comme une CONCESSION partielle, pas comme sa
+          conclusion : la phrase suivante précise que l'erreur d'un sens est
+          corrigée par un autre.
+      - id: C
+        text: "Aucune erreur : la suite du texte n'est pas nécessaire pour comprendre cette phrase."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Isoler une phrase de son voisinage immédiat fait perdre exactement
+          ce qui en fait une concession et non une conclusion — le mouvement
+          du texte se joue dans l'enchaînement, pas dans une phrase seule.
+      - id: D
+        text: "Aucune erreur : c'est même l'idée principale du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          L'idée principale du texte est au contraire que l'ENSEMBLE des
+          sens, coordonné par la raison, constitue un critère fiable — la
+          phrase sur l'erreur d'un sens isolé sert cette thèse, elle ne la
+          renverse pas.
+    correct_feedback: |-
+      Le texte concède qu'un sens isolé peut tromper pour mieux affirmer que
+      c'est l'ENSEMBLE des sens, coordonné par la raison, qui constitue le
+      critère fiable — la concession sert la thèse, elle ne la renverse pas.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-05 — problematique-est-reformulation (3 items) — R2
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M05-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Un élève propose cette problématique pour le texte de Bakounine : « Le
+      texte parle de la liberté. La liberté est-elle importante ? » Que
+      lui manque-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucune tension entre deux réponses également défendables que la thèse tranche."
+        correct: true
+      - id: B
+        text: "Rien : toute question ouverte sur le thème est une bonne problématique."
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Une question ouverte n'est pas encore une problématique : il
+          manque la mise en face-à-face de deux réponses plausibles que le
+          texte va départager.
+      - id: C
+        text: "Il manque juste un point d'interrogation supplémentaire."
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Ce n'est pas une question de ponctuation : c'est l'absence de
+          toute tension réelle entre deux positions.
+      - id: D
+        text: "Il manque une référence à un autre philosophe pour rendre la question plus savante."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Une référence supplémentaire n'a rien à voir avec la construction
+          d'une problématique, et arrive de toute façon trop tôt dans la
+          méthode — la discussion vient après l'analyse.
+    correct_feedback: |-
+      Une vraie problématique opposerait par exemple : la liberté d'autrui
+      LIMITE-t-elle la mienne, ou la FONDE-t-elle ? C'est cette tension que la
+      thèse du texte tranche.
+
+  - id: ATX-M05-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Pour le texte de Kant, un élève écrit : « Le texte parle du devoir.
+      Qu'est-ce que le devoir ? » Est-ce une problématique satisfaisante ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : c'est une reformulation du thème en question, sans tension."
+        correct: true
+      - id: B
+        text: "Oui : toute question qui commence par « qu'est-ce que » est une problématique."
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          La forme interrogative ne suffit pas. Une problématique doit
+          opposer deux réponses défendables, pas seulement demander une
+          définition.
+      - id: C
+        text: "Oui, à condition de répondre ensuite par une définition de cours."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Répondre par une définition de cours plaquée serait une seconde
+          erreur, pas une réparation de la première : la définition doit
+          venir de l'usage du texte, pas du cours.
+      - id: D
+        text: "Oui : elle porte bien sur le concept central du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Porter sur le bon concept ne suffit pas : il manque toujours la
+          tension entre deux réponses également plausibles.
+    correct_feedback: |-
+      Une problématique adaptée opposerait par exemple : suffit-il d'AGIR
+      CONFORMÉMENT au devoir pour agir moralement, ou faut-il agir PAR
+      devoir ?
+
+  - id: ATX-M05-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      « Le texte parle de la vérité et de la relativité. La vérité est-elle
+      relative ? » — cette problématique convient-elle au texte sur la
+      vérité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste une reformulation du thème sans tension explicite."
+        correct: true
+      - id: B
+        text: "Oui : une problématique doit toujours reprendre exactement les mots du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Reprendre le vocabulaire du texte n'est pas un défaut en soi, mais
+          ne construit pas à lui seul une tension entre deux réponses
+          défendables.
+      - id: C
+        text: "Oui : elle est déjà formulée comme une question fermée."
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Une question fermée n'est pas non plus le critère : il manque la
+          mise en tension de deux positions, pas seulement un « oui/non » à
+          trancher.
+      - id: D
+        text: "Oui, si on ajoute ensuite trois exemples tirés d'autres textes."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Ajouter des exemples externes ne construit pas une problématique
+          et relève, de toute façon, d'un moment différent de la méthode.
+    correct_feedback: |-
+      Une problématique plus précise opposerait : le critère de la vérité
+      peut-il être purement sensible, ou suppose-t-il nécessairement la
+      coordination de la raison ?
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-06 — ordre-lecture-est-ordre-redaction (3 items) — R2
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M06-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Un élève commence à rédiger son introduction dès la première lecture du
+      texte de Bakounine, avant d'avoir identifié précisément la thèse. Quel
+      risque cela fait-il courir à sa copie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'introduction annonce une thèse contredite par l'analyse."
+        correct: true
+      - id: B
+        text: "Aucun risque : l'introduction doit toujours être écrite en premier."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          Être écrite en premier sur la copie finale ne veut pas dire être
+          rédigée en premier au brouillon — c'est justement la confusion à
+          éviter.
+      - id: C
+        text: "Aucun risque, tant que l'introduction est écrite avec soin."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          Le soin n'empêche pas le risque de fond : une intro écrite avant
+          d'avoir trouvé la thèse peut être soignée et néanmoins fausse.
+      - id: D
+        text: "Un risque seulement d'orthographe, pas de méthode."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          C'est un risque de méthode, pas de forme : le contenu même de
+          l'introduction (la thèse annoncée) peut se révéler faux une fois
+          l'analyse terminée.
+    correct_feedback: |-
+      On trouve la thèse d'abord, on rédige l'intro en dernier, on la place
+      en premier seulement au moment de recopier.
+
+  - id: ATX-M06-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte]
+    stem: |-
+      « Puisque l'introduction se lit en premier, il faut aussi la RÉDIGER
+      en premier, avant même d'avoir terminé l'analyse. » Vrai ou faux ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Faux : l'ordre de lecture et l'ordre de rédaction sont deux choses différentes."
+        correct: true
+      - id: B
+        text: "Vrai, car sinon l'introduction manquerait de spontanéité."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          La spontanéité n'est pas le critère recherché dans une
+          introduction philosophique — sa justesse par rapport à l'analyse
+          l'est.
+      - id: C
+        text: "Vrai : tout ce qui apparaît en premier sur la copie doit être écrit en premier."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          C'est exactement la confusion entre ordre de lecture et ordre de
+          rédaction qu'il faut éviter.
+      - id: D
+        text: "Vrai, sauf si le texte est très court."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          La longueur du texte ne change rien au principe : comprendre
+          avant de rédiger l'introduction vaut pour tout texte, court ou
+          long.
+    correct_feedback: |-
+      On comprend le texte, on trouve la thèse, PUIS on rédige l'intro,
+      qu'on place en tête seulement au moment de recopier.
+
+  - id: ATX-M06-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Sur le texte de Kant, l'élève 1 écrit son introduction en dernier,
+      après avoir terminé son brouillon d'analyse et de discussion. L'élève 2
+      l'écrit en tout premier, avant même d'avoir relu le texte une seconde
+      fois. Lequel suit la meilleure méthode ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'élève 1 : son intro annonce une thèse déjà établie."
+        correct: true
+      - id: B
+        text: "L'élève 2, car il gagne du temps sur l'épreuve."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          Le temps gagné à l'écriture peut se payer cher si l'intro doit
+          être réécrite une fois la vraie thèse trouvée — ou pire, rester
+          fausse.
+      - id: C
+        text: "Les deux méthodes se valent : l'ordre de rédaction n'a pas d'importance."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          L'ordre de rédaction a une conséquence directe sur la justesse de
+          l'introduction : rédigée trop tôt, elle risque d'annoncer une
+          thèse qui n'est pas celle du texte.
+      - id: D
+        text: "L'élève 2, car une introduction spontanée est plus convaincante."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          Ce qui convainc un correcteur, c'est la justesse de l'introduction
+          par rapport à l'analyse qui suit, pas son caractère spontané.
+    correct_feedback: |-
+      Rédiger l'introduction en dernier permet qu'elle annonce fidèlement une
+      thèse et une problématique déjà établies, pas une intuition de premier
+      contact avec le texte.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-07 — toutes-phrases-egales (3 items) — R3
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M07-1
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Une copie commente ainsi le texte de Bakounine : « Puis l'auteur dit
+      que plus il y a d'hommes libres, plus je suis libre. Puis il dit que la
+      servitude nie mon humanité. Puis il dit que ma liberté s'élargit sans
+      fin. » Quel défaut cette copie partage-t-elle avec la copie A de
+      l'accroche de cette leçon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle traite chaque phrase pareil, sans dire ce qu'elle FAIT."
+        correct: true
+      - id: B
+        text: "Aucun défaut : elle suit fidèlement l'ordre du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Suivre l'ordre fidèlement ne suffit pas : un renforcement, un
+          contre-cas et un élargissement n'ont pas la même fonction, même
+          énumérés dans le bon ordre.
+      - id: C
+        text: "Le seul défaut est de ne pas citer le texte entre guillemets."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Ajouter des guillemets ne réparerait rien : le problème est
+          l'absence de hiérarchie et de fonction assignée à chaque étape, pas
+          une question de citation.
+      - id: D
+        text: "Le seul défaut est la longueur, trop courte pour une bonne copie."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Le problème n'est pas la quantité de texte produit, mais la
+          structure plate d'un « puis… puis… puis… » sans hiérarchie
+          argumentative.
+    correct_feedback: |-
+      Un renforcement n'a pas la même fonction qu'un contre-cas : la copie
+      ne le dit jamais, elle se contente d'énumérer.
+
+  - id: ATX-M07-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Dans le texte de Kant, l'exemple du marchand et l'exemple de la
+      conservation de la vie jouent-ils le même rôle dans l'argumentation, ou
+      des rôles différents ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Des rôles complémentaires : ensemble, ils isolent le mobile."
+        correct: true
+      - id: B
+        text: "Le même rôle : ce sont deux exemples interchangeables illustrant la même idée."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Les deux exemples ne sont pas interchangeables : le premier
+          illustre un acte conforme au devoir sans valeur morale (mobile
+          intéressé), le second un même geste dont la valeur morale dépend
+          du mobile.
+      - id: C
+        text: "Le même rôle : les deux prouvent que Kant est contre le commerce."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Kant n'affirme rien de tel : le commerce n'est pas jugé en soi,
+          c'est le MOBILE de l'acte du marchand qui est examiné.
+      - id: D
+        text: "Aucun rôle particulier : ce sont des digressions, pas des étapes de l'argumentation."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Ce ne sont pas des digressions : chaque exemple est une étape
+          construite pour isoler, par comparaison, ce qui fait la valeur
+          morale d'un acte.
+    correct_feedback: |-
+      Le marchand illustre un acte conforme au devoir SANS valeur morale ; la
+      conservation de la vie illustre le même type de geste, dont la valeur
+      dépend entièrement du mobile — ensemble, ils isolent ce critère.
+
+  - id: ATX-M07-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      Dans le texte sur la vérité, la première partie (le rôle des sens) et
+      la question finale (« où est donc la place de la raison ? ») jouent-elles
+      le même rôle argumentatif ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : la question fait basculer le texte vers la raison."
+        correct: true
+      - id: B
+        text: "Oui, ce sont deux façons de dire la même chose."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Ce n'est pas une redite : la première partie établit un critère
+          sensible avec ses limites, la question ouvre un second mouvement
+          nécessaire à la thèse — la coordination rationnelle.
+      - id: C
+        text: "Oui, l'ordre des paragraphes n'a pas d'importance pour l'analyse."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          L'ordre compte au contraire beaucoup ici : sans la première partie
+          (les sens, leurs limites), la question sur la raison n'aurait
+          aucune tension à résoudre.
+      - id: D
+        text: "Oui, il suffit de les résumer l'une après l'autre sans les relier."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Les résumer côte à côte sans relation manque précisément le
+          basculement que le texte opère entre les deux mouvements.
+    correct_feedback: |-
+      La première partie établit le critère sensible (avec ses limites), et
+      la question sur la raison fait basculer le texte vers un second
+      mouvement — sans lequel la thèse resterait incomplète.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-08 — procedes-ignores (3 items) — R3
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M08-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      « À l'inverse, c'est la servitude des hommes qui se dresse entre moi et
+      la liberté. » Quel procédé argumentatif ce connecteur introduit-il, et
+      quelle est sa fonction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une opposition (un contre-cas) qui renforce la thèse par contraste."
+        correct: true
+      - id: B
+        text: "Aucun procédé particulier : « à l'inverse » sert juste à changer de paragraphe."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          « À l'inverse » n'est pas un simple connecteur de transition : il
+          signale précisément un mouvement d'opposition dans
+          l'argumentation.
+      - id: C
+        text: "Une définition, puisque le texte y précise ce qu'est la servitude."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          Le texte ne définit pas la servitude ici : il l'oppose à la
+          liberté pour renforcer la thèse par contraste — c'est le geste
+          d'opposition, pas de définition.
+      - id: D
+        text: "Un exemple, puisque la servitude est un cas concret."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          Ce n'est pas un exemple isolé mais un cas structurellement
+          OPPOSÉ à la thèse, introduit par un connecteur d'opposition — la
+          fonction, pas seulement le contenu, définit le procédé.
+    correct_feedback: |-
+      « À l'inverse » ne répète pas la thèse : il la met à l'épreuve du cas
+      contraire pour la renforcer par contraste.
+
+  - id: ATX-M08-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Le texte de Kant multiplie les « mais », « car » et « et donc » autour
+      des deux exemples. Quelle erreur commet une copie qui ignore ces
+      connecteurs ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle rate la logique interne de l'argumentation."
+        correct: true
+      - id: B
+        text: "Aucune erreur : les connecteurs sont des mots de liaison sans intérêt."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          Ces connecteurs portent au contraire toute la structure logique de
+          la démonstration de Kant — sans eux, les exemples restent
+          juxtaposés sans montrer comment ils s'articulent.
+      - id: C
+        text: "Une erreur seulement de style, pas de fond."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          C'est une erreur de fond : sans les connecteurs, la distinction
+          entre devoir et inclination n'est plus démontrée, seulement
+          suggérée.
+      - id: D
+        text: "Une erreur seulement si le correcteur les compte un par un."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          Ce n'est pas une question de comptage : c'est la logique même de
+          l'argumentation qui devient invisible sans eux.
+    correct_feedback: |-
+      Ignorer les connecteurs empêche de voir comment Kant construit sa
+      distinction entre devoir et inclination — la copie décrit alors les
+      exemples côte à côte, sans montrer comment ils s'articulent.
+
+  - id: ATX-M08-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      « La vérité est la sensation constante ; toutefois, la sensation doit
+      englober tout ce que nous apprenons des instruments… » Que signale le
+      mot « toutefois » ici ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une concession qui affine la thèse, sans la contredire."
+        correct: true
+      - id: B
+        text: "Rien de particulier : c'est interchangeable avec « et »."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          « Toutefois » et « et » ne sont pas interchangeables : le premier
+          signale une nuance apportée à ce qui précède, le second une simple
+          addition.
+      - id: C
+        text: "Que l'auteur se contredit et abandonne sa thèse initiale."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Une concession n'est pas une contradiction : l'auteur restreint sa
+          propre affirmation pour la rendre plus précise, il ne l'abandonne
+          pas.
+      - id: D
+        text: "Que la phrase suivante est moins importante que la précédente."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          L'importance relative des phrases ne se lit pas dans ce
+          connecteur : « toutefois » signale une nuance nécessaire, pas une
+          hiérarchie d'importance.
+    correct_feedback: |-
+      L'auteur restreint sa propre affirmation (la sensation ne suffit pas
+      telle quelle, elle doit être étendue par les instruments) plutôt que de
+      la contredire — repérer ce geste, c'est voir le texte se complexifier
+      lui-même.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-09 — concept-defini-par-cours (3 items) — R4
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M09-1
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Pour analyser la « liberté » dans le texte de Bakounine, un élève
+      recopie la définition de cours : « la liberté est l'absence de
+      contrainte extérieure. » Est-ce la bonne démarche ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : le texte définit la liberté autrement — elle s'ACCROÎT avec autrui."
+        correct: true
+      - id: B
+        text: "Oui : une définition de cours est toujours plus sûre qu'une définition du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          C'est l'inverse : l'exigence de fidélité demande de définir avec
+          le texte, pas avec une définition apprise ailleurs qui peut ne pas
+          correspondre à son usage.
+      - id: C
+        text: "Oui : toutes les définitions philosophiques de la liberté se valent."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Les définitions ne sont pas interchangeables : chaque texte
+          emploie ses concepts d'une manière précise, qu'il faut restituer
+          fidèlement.
+      - id: D
+        text: "Oui, à condition de la citer avec le nom d'un philosophe."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Une attribution ne rend pas la définition plus fidèle au texte
+          étudié : c'est l'usage du texte lui-même qui doit gouverner la
+          définition, pas une source externe.
+    correct_feedback: |-
+      Le texte définit la liberté comme quelque chose qui s'ACCROÎT avec
+      celle d'autrui, pas comme une simple absence de contrainte — il faut
+      définir le concept tel que CE texte l'emploie.
+
+  - id: ATX-M09-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Pour le mot « devoir » dans le texte de Kant, faut-il utiliser
+      directement la définition apprise en cours, ou d'abord observer
+      comment CE texte l'emploie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "D'abord observer l'usage du texte, pas la définition de cours."
+        correct: true
+      - id: B
+        text: "Utiliser directement la définition de cours, sans vérifier l'usage du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          C'est le réflexe à éviter : la leçon de notion aide à comprendre,
+          mais c'est l'usage précis du texte qui doit gouverner l'analyse.
+      - id: C
+        text: "Peu importe : tout texte sur le devoir utilise nécessairement la même définition."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Chaque texte construit ses propres relations conceptuelles : ici,
+          le devoir se définit précisément par son opposition à
+          l'inclination et à l'intérêt.
+      - id: D
+        text: "Utiliser un dictionnaire général de philosophie plutôt que le texte lui-même."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Un dictionnaire général risque, comme le cours, de ne pas
+          correspondre à l'usage précis que ce texte fait du mot.
+    correct_feedback: |-
+      Un acte est moral seulement s'il procède du devoir, non de
+      l'inclination ou de l'intérêt, même quand l'acte extérieur est
+      identique — c'est cet usage précis qu'il faut restituer.
+
+  - id: ATX-M09-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      Dans le texte sur la vérité, le mot « raison » n'est pas défini
+      abstraitement : le texte dit qu'elle « ordonne les sensations en
+      significations, les significations en connaissance, la connaissance en
+      sagesse ». Comment une bonne analyse doit-elle traiter ce mot ?
+    type: mcq
+    choices:
+      - id: A
+        text: "En reprenant la définition fonctionnelle propre à ce texte."
+        correct: true
+      - id: B
+        text: "En important la définition cartésienne de la raison, plus prestigieuse."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Le prestige d'une définition externe ne garantit pas sa fidélité à
+          l'usage de CE texte, qui définit la raison par sa fonction de
+          coordination.
+      - id: C
+        text: "En ignorant cette phrase, car ce n'est pas une vraie définition philosophique."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          C'est bien une définition — fonctionnelle plutôt qu'abstraite —
+          et l'ignorer prive l'analyse de l'usage précis que le texte fait
+          du concept.
+      - id: D
+        text: "En remplaçant « raison » par « intelligence », synonyme dans tous les contextes."
+        correct: false
+        misconception: mc.philo.analyse_texte.concept-defini-par-cours
+        feedback: |-
+          Substituer un synonyme supposé efface la définition précise et
+          fonctionnelle que le texte construit lui-même pour ce mot.
+    correct_feedback: |-
+      Le texte définit la raison par sa fonction (coordination, en trois
+      étapes), pas par une définition générale apprise ailleurs qui
+      risquerait de ne pas correspondre à cet usage précis.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-10 — aucun-presuppose (3 items) — R4
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M10-1
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Pour que la thèse de Bakounine tienne (« je ne suis libre que par la
+      liberté des autres »), quelque chose doit être admis, alors même que le
+      texte ne le dit jamais explicitement. Quoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la liberté est relationnelle, non définissable pour un individu isolé."
+        correct: true
+      - id: B
+        text: "Rien : un texte n'affirme que ce qu'il écrit noir sur blanc."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Un raisonnement peut tenir sur des conditions qu'il ne formule
+          jamais : sans l'idée que la liberté est relationnelle, celle
+          d'autrui n'aurait aucune raison d'affecter la mienne.
+      - id: C
+        text: "Rien : chercher un présupposé revient à inventer une idée que l'auteur n'a pas eue."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Ce n'est pas inventer : c'est rendre explicite une condition
+          silencieuse sans laquelle l'argument ne fonctionnerait pas.
+      - id: D
+        text: "Seulement que Bakounine aime la compagnie des autres hommes."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Ce n'est pas un présupposé philosophique nécessaire à
+          l'argument : le texte n'a besoin d'aucune préférence personnelle
+          de l'auteur pour que sa thèse tienne, seulement de cette hypothèse
+          sur la nature relationnelle de la liberté.
+    correct_feedback: |-
+      Sans cette supposition implicite, la liberté d'autrui n'aurait aucune
+      raison d'affecter la mienne — c'est une condition silencieuse de tout
+      le raisonnement.
+
+  - id: ATX-M10-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Pour que la distinction de Kant entre « agir par devoir » et « agir
+      conformément au devoir » ait un sens, quel présupposé le texte doit-il
+      tenir pour acquis, sans jamais l'énoncer comme tel ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que le mobile d'un acte détermine sa valeur morale, non son résultat."
+        correct: true
+      - id: B
+        text: "Aucun : Kant énonce absolument tout ce qu'il pense dans ce court extrait."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Un texte aussi bref ne peut pas tout énoncer : sans cette
+          hypothèse sur le rôle du mobile, la distinction entre les deux
+          exemples ne serait pas justifiée.
+      - id: C
+        text: "Que le commerce est une activité moralement suspecte en général."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Ce n'est pas un présupposé nécessaire à l'argument : Kant ne juge
+          pas le commerce en général, seulement le mobile d'un acte
+          particulier.
+      - id: D
+        text: "Que tous les marchands sont malhonnêtes par nature."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Le texte ne suppose rien de tel : le marchand décrit est au
+          contraire honnête dans son comportement — c'est justement ce qui
+          rend la distinction avec le mobile intéressante.
+    correct_feedback: |-
+      Sans cette supposition, les deux exemples (identiques dans leurs actes
+      extérieurs) ne pourraient jamais être distingués moralement comme le
+      fait le texte.
+
+  - id: ATX-M10-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite]
+    stem: |-
+      Le texte sur la vérité affirme que la raison « coordonne » les sens
+      sans jamais les remplacer. Quel présupposé cette affirmation
+      suppose-t-elle, sans le dire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que les sens restent la seule source de matière pour la connaissance."
+        correct: true
+      - id: B
+        text: "Rien : tout ce que le texte affirme sur la raison est écrit noir sur blanc."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Le texte ne dit jamais explicitement que les sens restent la
+          source exclusive de la connaissance — et pourtant, sans cette
+          hypothèse, l'idée que « c'est par la sensation que nous nous
+          tenons debout » n'aurait aucun sens.
+      - id: C
+        text: "Que les instruments scientifiques sont inutiles à la connaissance."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          C'est l'inverse : le texte affirme explicitement que les
+          instruments (télescope, microscope) étendent le domaine des sens.
+      - id: D
+        text: "Que la raison est plus importante que les sens dans tous les cas."
+        correct: false
+        misconception: mc.philo.analyse_texte.aucun-presuppose
+        feedback: |-
+          Le texte affirme au contraire que le travail de la raison est
+          « secondaire, mais vital » — ce n'est pas une supériorité
+          générale de la raison qui est supposée.
+    correct_feedback: |-
+      La raison ne fabrique rien de rien, elle organise ce que les sens
+      fournissent — sans cette supposition, on ne comprendrait pas pourquoi
+      le texte affirme que la sensation nous tient « debout, les pieds
+      fermes sur la terre ».
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-11 — discuter-avant-analyser (4 items, cluster pondéré) — R5
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M11-1
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine, discussion]
+    stem: |-
+      Une copie sur Bakounine commence sa discussion dès le premier
+      paragraphe : « Je pense que l'auteur a raison », avant même d'avoir
+      dégagé la thèse précise et sa structure. Quelle erreur méthodologique
+      commet cette copie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle discute avant d'avoir analysé la thèse qu'elle prétend juger."
+        correct: true
+      - id: B
+        text: "Aucune erreur : commencer par donner son avis capte l'attention du correcteur."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Capter l'attention n'est pas l'objectif d'une copie de
+          philosophie : juger un texte avant de l'avoir analysé revient à
+          juger une thèse qu'on n'a pas encore vraiment identifiée.
+      - id: C
+        text: "Aucune erreur, du moment que l'analyse arrive quelque part dans la copie."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          L'ordre compte : discuter une thèse non encore analysée revient à
+          discuter une thèse qu'on n'a pas encore précisément identifiée.
+      - id: D
+        text: "Une erreur de forme seulement : il suffirait de déplacer la phrase à la fin."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Ce n'est pas qu'une question de place : c'est le raisonnement lui-
+          même qui doit suivre l'analyse, pas seulement la formulation
+          finale.
+    correct_feedback: |-
+      La discussion porte sur une thèse déjà analysée (sa structure, ses
+      concepts, ses présupposés) — sauter directement à « je pense » revient
+      à juger un texte qu'on n'a pas encore vraiment démonté.
+
+  - id: ATX-M11-2
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, discussion]
+    stem: |-
+      Pourquoi l'épreuve place-t-elle toujours la discussion (مناقشة) APRÈS
+      l'analyse (تحليل), et jamais l'inverse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il faut d'abord bien identifier une thèse pour l'évaluer."
+        correct: true
+      - id: B
+        text: "Par pure convention d'écriture, sans raison de fond."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Ce n'est pas une convention arbitraire : évaluer une thèse suppose
+          de l'avoir d'abord précisément identifiée et structurée.
+      - id: C
+        text: "Parce que la discussion est moins importante que l'analyse."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          La discussion pèse exactement autant que l'analyse dans la grille
+          (5 points chacune) — l'ordre n'est pas une hiérarchie
+          d'importance.
+      - id: D
+        text: "Parce que la discussion prend plus de temps à rédiger."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Le temps de rédaction n'explique pas la place de la discussion
+          dans la méthode — sa dépendance logique à l'analyse, si.
+    correct_feedback: |-
+      On ne peut évaluer la valeur, la portée ou les limites d'une thèse
+      qu'après l'avoir précisément identifiée et structurée.
+
+  - id: ATX-M11-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant, discussion]
+    stem: |-
+      Sur le texte de Kant, un élève écrit dès l'introduction : « Cette
+      distinction entre devoir et inclination me semble trop rigide, je ne
+      suis pas d'accord. » Quel est le problème, indépendamment de la
+      validité de cette objection ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'objection arrive avant toute analyse de ce que le texte affirme réellement."
+        correct: true
+      - id: B
+        text: "Aucun problème : une bonne copie doit annoncer son point de vue dès la première ligne."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Une copie de philosophie n'annonce pas un point de vue en
+          introduction : elle pose une problématique, puis analyse, avant de
+          discuter.
+      - id: C
+        text: "Aucun problème, tant que l'objection est formulée poliment."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Le ton n'est pas en cause : c'est la place de l'objection, avant
+          toute analyse, qui pose problème.
+      - id: D
+        text: "Le seul problème est que l'objection est trop courte."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Développer davantage la même objection au même endroit ne
+          résoudrait rien : le problème est sa PLACE, avant toute analyse.
+    correct_feedback: |-
+      Une discussion vaut ce que vaut l'analyse qui la précède ; ici, rien
+      n'a encore été établi sur la thèse elle-même.
+
+  - id: ATX-M11-4
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, discussion]
+    stem: |-
+      Classe ces trois débuts de paragraphe : (1) « L'auteur affirme que… »
+      (2) « On peut objecter à cette thèse que… » (3) « Le texte définit la
+      liberté comme… ». Lequel relève de la discussion, et pourquoi placer
+      les deux autres avant lui ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le (2) : on ne peut objecter à une thèse pas encore identifiée."
+        correct: true
+      - id: B
+        text: "Les trois relèvent également de la discussion, l'ordre n'a pas d'importance."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          (1) et (3) relèvent de l'analyse (thèse, concepts) ; seul (2)
+          évalue la thèse depuis l'extérieur — ce n'est pas indifférent.
+      - id: C
+        text: "Le (1) relève de la discussion, car il commence par nommer l'auteur."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Nommer l'auteur ne fait pas d'une phrase une discussion : « l'auteur
+          affirme que… » est une phrase d'ANALYSE, qui rapporte la thèse.
+      - id: D
+        text: "Aucun des trois : discuter, c'est seulement donner son avis à la fin."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Discuter mobilise des arguments et des positions philosophiques,
+          pas seulement un avis final — le (2) en est un exemple correct dès
+          lors qu'il s'appuie sur un argument.
+    correct_feedback: |-
+      Le (2) évalue la thèse depuis l'extérieur ; (1) et (3) relèvent de
+      l'analyse et doivent être écrits (et pensés) avant, puisqu'on ne peut
+      objecter à une thèse qu'on n'a pas encore identifiée ni définie.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-12 — discuter-est-avis (4 items, cluster pondéré) — R5
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M12-1
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine, discussion]
+    stem: |-
+      Une copie discute ainsi la thèse de Bakounine : « À mon avis, c'est
+      vrai, la liberté des autres m'aide à être libre. » Que manque-t-il pour
+      que ce soit une vraie discussion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un argument ou une position philosophique qui justifie cette évaluation."
+        correct: true
+      - id: B
+        text: "Rien : une opinion personnelle sincère suffit pour discuter un texte philosophique."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          La sincérité ne remplace pas l'argument : discuter suppose de
+          MONTRER pourquoi, pas seulement d'affirmer un accord.
+      - id: C
+        text: "Rien, à condition que l'opinion soit exprimée avec assurance."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          L'assurance du ton ne vaut pas argument : un avis assuré reste un
+          avis, tant qu'il n'est pas justifié.
+      - id: D
+        text: "Rien : le correcteur veut surtout savoir ce que pense l'élève, pas d'autres auteurs."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Le correcteur évalue la capacité à ARGUMENTER une position, ce qui
+          suppose souvent de la confronter à d'autres positions
+          philosophiques, pas de l'affirmer isolément.
+    correct_feedback: |-
+      Il manque un argument, par exemple montrer avec Rousseau ou Sartre EN
+      QUOI et POURQUOI la liberté se construit avec autrui — pas seulement
+      affirmer un accord.
+
+  - id: ATX-M12-2
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant, discussion]
+    stem: |-
+      « Personnellement, je trouve que Kant a raison sur le marchand. »
+      Pourquoi cette phrase, seule, ne constitue-t-elle pas une discussion
+      recevable ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle n'engage aucun argument ni aucune position philosophique."
+        correct: true
+      - id: B
+        text: "Parce qu'il faudrait la reformuler à la troisième personne."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Le problème n'est pas grammatical : même reformulée, cette phrase
+          resterait une opinion non argumentée.
+      - id: C
+        text: "Parce qu'il manque le mot « donc » à la fin."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Un connecteur logique ne suffit pas à créer un argument absent :
+          il manque une raison, pas un mot de liaison.
+      - id: D
+        text: "Elle constitue déjà une discussion recevable, il n'y a rien à ajouter."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Une discussion recevable mobilise des arguments ou des positions
+          philosophiques ; cette phrase n'en contient aucun.
+    correct_feedback: |-
+      Discuter, c'est mobiliser des raisons — par exemple confronter la
+      position de Kant à une éthique qui jugerait l'acte à ses seuls
+      résultats — pas déclarer un accord.
+
+  - id: ATX-M12-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite, discussion]
+    stem: |-
+      Sur le texte de la vérité, un élève conclut sa discussion par : « Moi,
+      je pense que la vérité est relative, chacun a la sienne. » Quel est le
+      problème de cette phrase ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle énonce une opinion sans argument ni confrontation rivale."
+        correct: true
+      - id: B
+        text: "Rien : exprimer son avis personnel est exactement le but de la discussion."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Le but de la discussion est d'argumenter une évaluation de la
+          thèse, pas d'exprimer un avis pour lui-même.
+      - id: C
+        text: "Rien, sinon qu'elle est un peu courte."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Le problème n'est pas la longueur : même développée, cette phrase
+          resterait un avis tant qu'aucun argument ne la soutient.
+      - id: D
+        text: "Rien, du moment qu'elle reprend les mots du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Reprendre le vocabulaire du texte ne fait pas de cette phrase un
+          argument : c'est encore un avis, formulé avec les mots du texte.
+    correct_feedback: |-
+      Un relativisme intégral se heurte d'ailleurs à une objection classique
+      (si toute vérité est relative, cette affirmation même n'est-elle pas
+      seulement relative ?), qu'une vraie discussion devrait au moins
+      mentionner.
+
+  - id: ATX-M12-4
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, discussion]
+    stem: |-
+      Pourquoi « donner son avis » ne suffit-il jamais à constituer une
+      discussion recevable, même quand l'avis est juste sur le fond ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une discussion s'évalue à son argumentation, pas à sa conclusion."
+        correct: true
+      - id: B
+        text: "Parce que les correcteurs n'aiment pas qu'on ait un avis personnel."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Ce n'est pas une question de goût du correcteur : c'est que la
+          discussion évalue une démarche argumentative, pas une opinion en
+          soi.
+      - id: C
+        text: "Parce qu'il est interdit de donner son avis à l'examen."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          La position personnelle a bien sa place (notamment à la
+          synthèse), mais toujours ARGUMENTÉE — jamais affirmée seule.
+      - id: D
+        text: "Parce qu'un avis doit toujours rester neutre et n'exprimer aucune préférence."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          La neutralité n'est pas exigée : c'est la justification qui l'est,
+          quelle que soit la position finalement défendue.
+    correct_feedback: |-
+      Un avis vrai mais non justifié ne montre aucune maîtrise de la
+      méthode : un correcteur ne peut noter que ce qui est argumenté.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-13 — citation-decorative (4 items, cluster pondéré) — R5
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M13-1
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine, discussion]
+    stem: |-
+      Pour discuter le texte de Bakounine, un élève mobilise longuement
+      Nietzsche sur la volonté de puissance, sans jamais relier cette
+      référence à la thèse précise du texte. Quel est le problème ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le lien avec cette thèse précise n'est pas établi : c'est du name-dropping."
+        correct: true
+      - id: B
+        text: "Aucun problème : plus on cite de philosophes, plus la copie paraît savante."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Le nombre de références n'est pas ce qui est évalué : c'est leur
+          pertinence démontrée pour la thèse précise discutée.
+      - id: C
+        text: "Aucun problème : Nietzsche est un philosophe important, donc toujours pertinent."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          L'importance générale d'un philosophe ne garantit pas la
+          pertinence de sa position pour CETTE thèse précise.
+      - id: D
+        text: "Aucun problème, tant que le nom est correctement orthographié."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          L'orthographe du nom n'a aucun rapport avec le vrai problème :
+          l'absence de lien démontré avec la thèse du texte.
+    correct_feedback: |-
+      Citer un philosophe pour montrer sa culture, sans que sa position
+      éclaire, confirme ou conteste spécifiquement l'affirmation du texte,
+      est un name-dropping décoratif, pas une discussion.
+
+  - id: ATX-M13-2
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant, discussion]
+    stem: |-
+      Sur le texte de Kant, lequel de ces deux usages d'une référence est
+      pertinent plutôt que décoratif : (a) citer Rousseau sur la volonté
+      générale, sans expliquer le rapport avec le mobile moral ; (b) opposer
+      une éthique qui jugerait l'acte du marchand à ses seuls résultats à la
+      position de Kant centrée sur le mobile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le (b) : il confronte directement une position rivale au point précis discuté."
+        correct: true
+      - id: B
+        text: "Le (a), car Rousseau est plus proche chronologiquement de Kant."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          La proximité chronologique n'est pas un critère de pertinence
+          philosophique : seul le lien avec la thèse discutée compte.
+      - id: C
+        text: "Les deux sont également pertinents : toute référence enrichit une copie."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Une référence n'enrichit une copie que si son lien avec la thèse
+          précise du texte est démontré, ce que (a) ne fait pas.
+      - id: D
+        text: "Aucun des deux : il ne faut jamais citer d'autre philosophe que l'auteur du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          C'est l'excès inverse : la discussion externe, PERTINENTE pour la
+          notion, est explicitement demandée par la méthode — l'essentiel
+          est le lien démontré avec la thèse, pas l'absence totale de
+          référence.
+    correct_feedback: |-
+      Le (b) confronte une position rivale précisément au point que le texte
+      défend ; le (a) reste un rapprochement de surface, sans lien démontré
+      avec la thèse discutée.
+
+  - id: ATX-M13-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite, discussion]
+    stem: |-
+      Sur le texte de la vérité, quelle discussion est pertinente plutôt que
+      décorative : (a) énumérer cinq philosophes ayant parlé de la vérité,
+      sans les relier au texte ; (b) confronter la thèse relativiste du texte
+      à une objection réaliste, selon laquelle une vérité peut être commune à
+      tous malgré des perspectives différentes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le (b) : l'objection porte directement sur ce que le texte affirme."
+        correct: true
+      - id: B
+        text: "Le (a), car plus il y a de noms cités, plus la copie semble complète."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Le nombre de noms cités ne mesure pas la qualité d'une discussion,
+          seulement la pertinence de chaque référence pour la thèse en jeu.
+      - id: C
+        text: "Les deux se valent : citer un philosophe est toujours un plus, quel que soit le lien."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Sans lien démontré avec la thèse, une citation n'ajoute rien à la
+          discussion — c'est exactement la définition du name-dropping.
+      - id: D
+        text: "Aucun des deux : il vaut mieux ne citer personne pour rester concentré sur le texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Rester concentré sur le texte n'exige pas d'exclure toute
+          référence externe : (b) reste concentré sur la thèse tout en la
+          confrontant à une position rivale pertinente.
+    correct_feedback: |-
+      Le (a) accumule des noms sans jamais les faire travailler sur la thèse
+      précise du texte ; le (b) reste ancré sur cette thèse tout en la
+      confrontant à une position rivale.
+
+  - id: ATX-M13-4
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, discussion]
+    stem: |-
+      Un correcteur reçoit deux copies : la copie X cite trois auteurs sans
+      jamais reformuler leur position par rapport à la thèse précise du
+      texte ; la copie Y cite un seul auteur, mais explique précisément en
+      quoi sa position converge ou diverge de cette thèse. Laquelle vaut la
+      meilleure note sur ce point de la grille ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La copie Y : la grille évalue la pertinence, pas le nombre de références."
+        correct: true
+      - id: B
+        text: "La copie X, car trois références valent toujours mieux qu'une."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Ce n'est pas une question de nombre : une référence bien articulée
+          vaut mieux que plusieurs plaquées sans lien avec le texte.
+      - id: C
+        text: "Les deux copies valent exactement la même note, seul le nombre de mots compte."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Le volume de texte produit n'est pas le critère : c'est la
+          pertinence démontrée de chaque référence pour la thèse discutée.
+      - id: D
+        text: "La copie X, car elle montre une culture philosophique plus étendue."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          La culture générale affichée sans lien avec le texte n'est pas ce
+          que la grille de discussion récompense.
+    correct_feedback: |-
+      Ce que la grille évalue, ce n'est pas le nombre de références
+      mobilisées, mais leur pertinence démontrée pour la thèse précise du
+      texte.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-14 — discussion-hors-sol (4 items, cluster pondéré) — R5
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M14-1
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine, discussion]
+    stem: |-
+      Une copie consacre sa discussion à un développement général sur
+      « qu'est-ce que la liberté ? », sans jamais revenir à la thèse précise
+      de Bakounine. Quel est le problème ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La discussion devient un mini-cours détaché, sans jamais revenir au texte."
+        correct: true
+      - id: B
+        text: "Aucun problème : plus la discussion est générale, plus elle montre une bonne culture."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Une discussion générale, aussi savante soit-elle, ne remplace pas
+          la confrontation à la thèse précise du texte — c'est exactement ce
+          qu'exige la méthode.
+      - id: C
+        text: "Aucun problème, une discussion sur la notion en général est toujours acceptée."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          La discussion doit rester ancrée sur la thèse et les concepts
+          précis du texte, pas devenir un exposé général sur la notion.
+      - id: D
+        text: "Aucun problème, tant que le mot « liberté » revient souvent."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          La récurrence d'un mot-clé ne garantit pas l'ancrage au texte :
+          seul le retour explicite à SA thèse précise le garantit.
+    correct_feedback: |-
+      La discussion doit rester ancrée sur cette thèse précise et ses
+      concepts — chaque position mobilisée doit revenir se confronter à
+      l'affirmation exacte du texte.
+
+  - id: ATX-M14-2
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant, discussion]
+    stem: |-
+      Sur le texte de Kant, laquelle de ces deux discussions reste ancrée au
+      texte : (a) un développement général sur l'histoire de la morale
+      kantienne et ses trois formulations de l'impératif catégorique ; (b)
+      une discussion centrée sur l'exemple du marchand — est-il vraiment
+      impossible de juger moralement un acte à son seul résultat ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le (b) : il confronte une position rivale précisément au point que le texte défend."
+        correct: true
+      - id: B
+        text: "Le (a), car il est plus complet et plus savant."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          La complétude d'un exposé général ne compense pas son
+          détachement du texte précis étudié.
+      - id: C
+        text: "Les deux sont équivalents : toute connaissance sur Kant est pertinente."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Une connaissance générale sur Kant ne devient pertinente que
+          reliée précisément à la thèse et à l'exemple discutés dans CE
+          texte.
+      - id: D
+        text: "Le (a), car un texte de Kant appelle nécessairement un développement sur toute sa philosophie."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Rien n'appelle un tel développement : l'exigence de fidélité
+          demande au contraire de rester collé au texte précis, pas à
+          l'œuvre entière de son auteur.
+    correct_feedback: |-
+      Le (b) confronte une position rivale précisément au point que le texte
+      défend, sur SON exemple ; le (a), même savant, s'éloigne du texte pour
+      devenir un exposé de cours sur Kant en général.
+
+  - id: ATX-M14-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, discussion]
+    stem: |-
+      Pourquoi une discussion qui reste « ancrée au texte » est-elle plus
+      exigeante qu'une discussion générale sur la notion — et pas plus
+      facile, comme on pourrait le croire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle oblige à revenir aux concepts et à la formulation exacts du texte, pas du cours."
+        correct: true
+      - id: B
+        text: "Elle n'est pas plus exigeante : réciter le cours sur la notion est toujours suffisant."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Réciter le cours est justement ce que la discussion ancrée
+          interdit : il faut revenir à ce que CE texte affirme précisément.
+      - id: C
+        text: "Elle est plus facile : il suffit de replacer ce qu'on a appris sans réfléchir au texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          C'est l'inverse : « replacer ce qu'on a appris » sans lien avec le
+          texte est exactement le geste que la discussion ancrée exclut.
+      - id: D
+        text: "Elle n'a aucune exigence particulière, elle est toujours notée de la même façon."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Le lien avec le texte précis est un critère réel de la grille,
+          pas un détail sans conséquence sur la note.
+    correct_feedback: |-
+      Rester ancré demande d'avoir vraiment compris la thèse précise du
+      texte, plutôt que de réciter un savoir déjà prêt — c'est ce qui rend
+      cette discussion plus exigeante, pas plus facile.
+
+  - id: ATX-M14-4
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_verite, discussion]
+    stem: |-
+      Sur le texte de la vérité, un élève développe un exposé complet sur
+      l'empirisme et le rationalisme depuis Hume jusqu'à Kant, sans jamais
+      revenir à la formule du texte (« la vérité est la sensation
+      constante », coordonnée par la raison). Que devrait faire cette copie
+      pour rester dans les clous de la discussion attendue ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Resserrer chaque référence mobilisée sur la thèse précise du texte."
+        correct: true
+      - id: B
+        text: "Rien : un panorama complet et savant est toujours la meilleure stratégie."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Un panorama complet, sans retour au texte précis, est exactement
+          la dérive hors-sol que la méthode demande d'éviter.
+      - id: C
+        text: "Ajouter encore plus de philosophes au panorama, pour être exhaustif."
+        correct: false
+        misconception: mc.philo.analyse_texte.discussion-hors-sol
+        feedback: |-
+          Élargir encore le panorama aggrave l'éloignement du texte, ça ne
+          le corrige pas.
+      - id: D
+        text: "Retirer toute référence à un philosophe, pour éviter tout hors-sujet."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Ce n'est pas la solution : la discussion externe pertinente est
+          attendue par la méthode — l'essentiel est de relier chaque
+          référence à la thèse précise, pas de n'en citer aucune.
+    correct_feedback: |-
+      Confronter directement l'idée du texte (les sens coordonnés par la
+      raison) à une objection empiriste stricte ou rationaliste stricte,
+      plutôt que dérouler un panorama général déjà appris ailleurs.
+
+  # ══════════════════════════════════════════════════════════════
+  # MC-15 — conclure-est-resumer (3 items) — R6
+  # ══════════════════════════════════════════════════════════════
+
+  - id: ATX-M15-1
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_bakounine]
+    stem: |-
+      Une copie termine ainsi : « En conclusion, ce texte parle de la liberté
+      et de la liberté d'autrui, et l'auteur pense qu'elles sont liées. »
+      Quel est le problème de cette conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle résume le thème, sans bilan ni réponse à la problématique."
+        correct: true
+      - id: B
+        text: "Aucun problème : une bonne conclusion doit toujours redire le thème du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Redire le thème n'est pas conclure : il manque le bilan de
+          l'analyse et de la discussion, la réponse à la problématique, et
+          une position personnelle argumentée.
+      - id: C
+        text: "Aucun problème, du moment qu'elle est courte."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          La brièveté n'est pas le défaut : c'est l'absence de bilan, de
+          réponse à la problématique et de position argumentée.
+      - id: D
+        text: "Aucun problème, une conclusion sert seulement à signaler la fin de la copie."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Une conclusion a une fonction bien plus précise que signaler la
+          fin : bilan, réponse à la problématique, position argumentée qui
+          rouvre.
+    correct_feedback: |-
+      Il manque un bilan qui articule l'analyse ET la discussion, une
+      réponse explicite à la problématique posée, et une position
+      personnelle argumentée qui rouvre une question.
+
+  - id: ATX-M15-2
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte, texte_kant]
+    stem: |-
+      Un élève conclut sa copie sur Kant par : « Moi je pense qu'il faut
+      toujours agir par devoir, c'est mon avis. » Que manque-t-il pour que ce
+      soit une conclusion recevable ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un bilan, une réponse, et un argument pour cette position."
+        correct: true
+      - id: B
+        text: "Rien : une position personnelle affirmée à la fin suffit toujours."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Une position affirmée sans lien avec ce qui précède, ni argument,
+          n'est pas une conclusion : c'est un avis collé à la fin.
+      - id: C
+        text: "Rien, tant qu'elle est formulée à la première personne."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          La personne grammaticale n'est pas en cause : c'est l'absence de
+          bilan et d'argument qui pose problème, comme pour toute opinion
+          non justifiée.
+      - id: D
+        text: "Rien, une conclusion doit surtout être brève et catégorique."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          La brièveté catégorique n'est pas ce qui est demandé : une
+          conclusion doit articuler un bilan et rouvrir une question, pas
+          seulement trancher sèchement.
+    correct_feedback: |-
+      Il manque un bilan qui articule l'analyse (devoir/inclination) et la
+      discussion menée juste avant, une réponse explicite à la
+      problématique, et un argument qui justifie cette position.
+
+  - id: ATX-M15-3
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: philo_analyse_texte
+    tags: [misconception_driven, philo_analyse_texte]
+    stem: |-
+      Pourquoi une bonne conclusion doit-elle « rouvrir une question » plutôt
+      que fermer définitivement le sujet sur une certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une position personnelle reste elle-même une thèse discutable, pas un point final."
+        correct: true
+      - id: B
+        text: "Parce qu'il est interdit de conclure fermement en philosophie, quel que soit le sujet."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Ce n'est pas un interdit formel : une position peut être défendue
+          fermement, à condition d'être argumentée et de laisser la
+          question ouverte à d'autres réponses possibles.
+      - id: C
+        text: "Parce qu'une conclusion doit toujours se terminer par une question recopiée de l'introduction."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Recopier la question de l'introduction serait encore un résumé,
+          pas une ouverture réelle vers une question nouvelle.
+      - id: D
+        text: "Parce que le correcteur préfère les copies qui n'osent jamais trancher."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Ce n'est pas une question de préférence pour l'indécision : une
+          position personnelle argumentée EST attendue — c'est son
+          caractère non-final, pas son absence, qui est demandé.
+    correct_feedback: |-
+      Rouvrir une question montre que l'élève a compris que la réflexion ne
+      s'arrête pas à sa propre copie — ce n'est ni un aveu de faiblesse, ni
+      une esquive.
+
+coverage_summary:
+  # Computed by direct tally of every choices[].misconception value across
+  # the 49 items above (grep-verified — see validation notes). Counts an
+  # item toward a misconception whenever ANY of its distractors carries that
+  # id — cross-section dual-tagged distractors (e.g. an MC-02-section item
+  # with a distractor tagged problematique-est-reformulation) contribute to
+  # BOTH misconceptions' counts, which is why several counts below exceed
+  # the number of items "filed under" that model.
+  total_items: 49
+  floor: 3
+  floor_met: true
+  discussion_cluster_weighted: true   # MC-11..MC-14 carry 4 items each, per spec §3/§7
+  # Recomputed by loading this file with js-yaml and tallying every
+  # choices[].misconception (+ also_reveals[]) value per item — not hand-
+  # counted. An item counts once per misconception if ANY of its distractors
+  # carries that id (a cross-tagged distractor filed under a different
+  # model's section counts toward BOTH models — see notes below).
+  per_misconception:
+    mc.philo.analyse_texte.paraphrase-est-analyse: 5
+    mc.philo.analyse_texte.theme-est-these: 3
+    mc.philo.analyse_texte.exemple-est-these: 3
+    mc.philo.analyse_texte.propos-rapporte-attribue: 6
+    mc.philo.analyse_texte.problematique-est-reformulation: 4
+    mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction: 3
+    mc.philo.analyse_texte.toutes-phrases-egales: 4
+    mc.philo.analyse_texte.procedes-ignores: 3
+    mc.philo.analyse_texte.concept-defini-par-cours: 4
+    mc.philo.analyse_texte.aucun-presuppose: 3
+    mc.philo.analyse_texte.discuter-avant-analyser: 4
+    mc.philo.analyse_texte.discuter-est-avis: 8
+    mc.philo.analyse_texte.citation-decorative: 8
+    mc.philo.analyse_texte.discussion-hors-sol: 4
+    mc.philo.analyse_texte.conclure-est-resumer: 3
+  notes: >-
+    Every distractor across the 49 items carries a real misconception id (no
+    null tags), per the task's stricter-than-house-default instruction. All
+    15 models clear the ≥3 floor; the discussion cluster (MC-11..MC-14)
+    clears ≥4 on every model, reaching 8 for discuter-est-avis and
+    citation-decorative once cross-tagged distractors from OTHER sections are
+    counted in (dual-tagging, not a defect — spec §3 stem-design notes).
+    Dual/cross-tagged distractors are common and intentional — e.g.
+    ATX-M02-1's choice C reaches problematique-est-reformulation from a
+    theme-est-these stem; ATX-M11-4's choice D reaches discuter-est-avis from
+    a discuter-avant-analyser stem; ATX-M14-4's choice D reaches
+    citation-decorative from a discussion-hors-sol stem; ATX-M01-1's choice D
+    and ATX-M15-2's choice C both reach discuter-est-avis from outside R5.

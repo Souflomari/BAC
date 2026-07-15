@@ -1,0 +1,350 @@
+# In-lesson checkpoint items (born-converted — no legacy summit ever existed).
+# Formative, calm-core probes placed inside the lesson via [[checkpoint:<id>]]
+# markers — NOT the end bank (items.yaml). No score/streak/tally fields.
+# Every distractor carries a real `misconception:` id (no null tags), per the
+# task's stricter-than-house-default instruction for this lesson.
+#
+# cp-r0-predict is the commit-gate (predict-then-confront, R0, item_source:
+# original — not a clone of any end-bank item). The other five are
+# rupture-gates placed per spec §4: R1 (thème/thèse — MC-02/03/04), R2
+# (problématique — MC-05/06), R3 (structure/procédés — MC-07/08), R5
+# (discussion — MC-11/12/13/14), R6 (synthèse — MC-15).
+
+notion: analyse-de-texte
+skill_code: philo_analyse_texte
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit-gate)
+  #        Probes: MC-01 (paraphrase-est-analyse), MC-12 lure
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_analyse_texte
+    tags: [checkpoint, formative, misconception_driven, philo_analyse_texte, hook_commit]
+    primary_misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Sur l'extrait du texte sur la vérité, tu as lu deux copies : la copie A
+      redit le texte phrase après phrase ; la copie B nomme la thèse, le
+      concept en jeu et le procédé qui la soutient.
+
+      **Laquelle des deux ANALYSE le texte ?** Engage-toi — c'est ta
+      prédiction.
+
+    type: mcq
+    choices:
+      - id: A
+        text: "La copie A : elle est fidèle et complète, sans rien oublier du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.paraphrase-est-analyse
+        feedback: |-
+          Modèle détecté : « analyser, c'est redire le texte avec mes mots ».
+          La copie A est fidèle, mais elle ne nomme ni thèse, ni concept, ni
+          procédé — elle décrit CE que le texte dit, jamais COMMENT il
+          argumente. C'est une paraphrase, aussi propre soit-elle.
+      - id: B
+        text: "La copie B : elle nomme la thèse, le concept, le procédé."
+        correct: true
+        feedback: |-
+          Exact — et c'est le réflexe qu'il faut garder pour toute la
+          leçon : ne jamais se contenter de redire le texte, toujours dire
+          COMMENT il soutient ce qu'il affirme.
+      - id: C
+        text: "Aucune des deux : il manque un avis personnel sur la vérité."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Un avis personnel n'est ni ce qui manque ici, ni ce qui vient en
+          premier dans la méthode : la discussion vient APRÈS l'analyse,
+          jamais à sa place — et la copie A, elle, manque bien d'autre chose
+          d'abord (une thèse nommée).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-these | placed AFTER R1
+  #        Probes: MC-02 (theme-est-these), MC-03 (exemple-est-these),
+  #        MC-04 (propos-rapporte-attribue)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-these
+    rung: "R1"
+    skill_code: philo_analyse_texte
+    tags: [checkpoint, formative, misconception_driven, philo_analyse_texte, texte_bakounine]
+    primary_misconception: mc.philo.analyse_texte.theme-est-these
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Quelle est la thèse du texte de Bakounine — l'affirmation précise que
+      l'auteur défend, et non le sujet, une prémisse, ou une vue qu'il
+      écarte ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Je ne suis réellement libre que par la liberté des autres."
+        correct: true
+        feedback: |-
+          Exact : c'est une phrase assertive et discutable, que le reste du
+          texte (renforcement, contre-cas, élargissement) vient soutenir.
+      - id: B
+        text: "Le texte défend l'idée que la liberté et la servitude s'opposent."
+        correct: false
+        misconception: mc.philo.analyse_texte.theme-est-these
+        feedback: |-
+          Modèle détecté : « le thème EST la thèse ». Cette phrase reste au
+          niveau du sujet (de quoi ça parle), sans dire ce que l'auteur
+          AFFIRME sur ce rapport.
+      - id: C
+        text: "Plus il y a d'hommes libres autour de moi, plus ma liberté s'élargit."
+        correct: false
+        misconception: mc.philo.analyse_texte.exemple-est-these
+        feedback: |-
+          Modèle détecté : « un renforcement EST la thèse ». Cette phrase
+          existe bien dans le texte, mais elle SERT la thèse (je ne suis
+          libre que par la liberté des autres) — demande toujours « tout ça,
+          c'est POUR dire quoi ? ».
+      - id: D
+        text: "C'est la servitude des hommes, non leur liberté, qui fonde ma liberté."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Modèle détecté : lecture qui inverse le sens du contre-cas. « À
+          l'inverse, c'est la servitude des hommes qui se dresse ENTRE moi et
+          la liberté » : la servitude est ce que la thèse écarte, pas ce
+          qu'elle fonde.
+
+    correct_feedback: |-
+      La liberté d'autrui n'est pas une limite à la mienne, elle en est la
+      condition — c'est cette phrase, discutable et précise, qui organise
+      tout le reste de l'analyse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-problematique | placed AFTER R2
+  #        Probes: MC-05 (problematique-est-reformulation),
+  #        MC-06 (ordre-lecture-est-ordre-redaction)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-problematique
+    rung: "R2"
+    skill_code: philo_analyse_texte
+    tags: [checkpoint, formative, misconception_driven, philo_analyse_texte]
+    primary_misconception: mc.philo.analyse_texte.problematique-est-reformulation
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Laquelle de ces quatre démarches construit une VRAIE problématique pour
+      un texte sur la liberté et autrui ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "La liberté d'autrui me limite-t-elle, ou me fonde-t-elle ?"
+        correct: true
+        feedback: |-
+          Exact : deux réponses également plausibles avant lecture, que la
+          thèse va trancher — c'est exactement une problématique.
+      - id: B
+        text: "Reformuler le thème en question : « la liberté d'autrui, est-ce important ? »"
+        correct: false
+        misconception: mc.philo.analyse_texte.problematique-est-reformulation
+        feedback: |-
+          Modèle détecté : « problématiser, c'est reformuler en question ».
+          Aucune tension entre deux réponses rivales n'apparaît ici — c'est
+          encore le thème, au style interrogatif.
+      - id: C
+        text: "Rédiger l'introduction dès la première lecture, avant d'avoir trouvé la thèse."
+        correct: false
+        misconception: mc.philo.analyse_texte.ordre-lecture-est-ordre-redaction
+        feedback: |-
+          Modèle détecté : confusion entre ordre de lecture et ordre de
+          rédaction. On trouve la thèse D'ABORD ; l'introduction — et donc la
+          problématique qu'elle contient — se rédige EN DERNIER.
+      - id: D
+        text: "Citer un philosophe connu pour rendre la question plus savante."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        feedback: |-
+          Une référence ne construit pas une problématique, et arrive de
+          toute façon trop tôt dans la méthode : la discussion vient après
+          l'analyse, pas à l'étape de l'introduction.
+
+    correct_feedback: |-
+      Une problématique met face à face deux réponses également défendables
+      en apparence — c'est la compétence cardinale de l'الأشكلة, la même
+      qu'en dissertation.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-structure | placed AFTER R3
+  #        Probes: MC-07 (toutes-phrases-egales), MC-08 (procedes-ignores)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-structure
+    rung: "R3"
+    skill_code: philo_analyse_texte
+    tags: [checkpoint, formative, misconception_driven, philo_analyse_texte, texte_bakounine]
+    primary_misconception: mc.philo.analyse_texte.procedes-ignores
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      « À l'inverse, c'est la servitude des hommes qui se dresse entre moi et
+      la liberté. » Comment une bonne analyse doit-elle traiter cette phrase ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Nommer le procédé (une opposition) et dire qu'il renforce la thèse par contraste."
+        correct: true
+        feedback: |-
+          Exact : le connecteur « à l'inverse » signale un contre-cas, qui
+          met la thèse à l'épreuve du cas opposé pour la confirmer.
+      - id: B
+        text: "La commenter au même rang que les phrases précédentes, dans l'ordre du texte."
+        correct: false
+        misconception: mc.philo.analyse_texte.toutes-phrases-egales
+        feedback: |-
+          Modèle détecté : « toutes les phrases se valent ». Cette phrase n'a
+          pas la même fonction que le renforcement qui précède — elle
+          l'oppose, pour le confirmer par contraste.
+      - id: C
+        text: "L'ignorer, car le connecteur « à l'inverse » n'est qu'un mot de liaison sans intérêt."
+        correct: false
+        misconception: mc.philo.analyse_texte.procedes-ignores
+        feedback: |-
+          Modèle détecté : « la structure, c'est la liste des sujets, les
+          connecteurs ne comptent pas ». Rater ce connecteur fait rater le
+          mouvement entier de cette partie du texte.
+      - id: D
+        text: "En conclure que l'auteur change d'avis et abandonne sa thèse initiale."
+        correct: false
+        misconception: mc.philo.analyse_texte.propos-rapporte-attribue
+        feedback: |-
+          Modèle détecté : contre-cas confondu avec contradiction. Un
+          contre-cas met la thèse à l'épreuve pour la renforcer ; il ne
+          l'abandonne pas.
+
+    correct_feedback: |-
+      Ce mouvement — thèse, renforcement, contre-cas, élargissement — a
+      chaque étape sa fonction propre : traiter toutes les phrases de la même
+      façon fait manquer comment le texte avance.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r5-discussion | placed AFTER R5
+  #        Probes: MC-11 (discuter-avant-analyser), MC-12 (discuter-est-avis),
+  #        MC-13 (citation-decorative), MC-14 (discussion-hors-sol) —
+  #        the 4-model discussion cluster, dual-tagged across 3 distractors
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-discussion
+    rung: "R5"
+    skill_code: philo_analyse_texte
+    tags: [checkpoint, formative, misconception_driven, philo_analyse_texte, discussion, texte_bakounine]
+    primary_misconception: mc.philo.analyse_texte.discuter-est-avis
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Laquelle de ces quatre façons de poursuivre la discussion sur
+      Bakounine est philosophiquement recevable ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Rousseau et Sartre (convergents), puis une objection libérale (divergente)."
+        correct: true
+        feedback: |-
+          Exact : des positions pertinentes pour CETTE thèse, convergentes
+          puis divergentes — exactement ce que la discussion demande.
+      - id: B
+        text: "Écrire, dès le premier paragraphe : « je pense que l'auteur a raison »."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-avant-analyser
+        feedback: |-
+          Modèle détecté : discuter avant d'analyser. Un jugement sans
+          analyse préalable de la thèse n'est pas encore une discussion —
+          elle vient toujours APRÈS l'analyse.
+      - id: C
+        text: "Citer Nietzsche et Descartes sans expliquer leur lien avec cette thèse précise."
+        correct: false
+        misconception: mc.philo.analyse_texte.citation-decorative
+        also_reveals: [mc.philo.analyse_texte.discussion-hors-sol]
+        feedback: |-
+          Modèle détecté : name-dropping décoratif — et, dans le même geste,
+          une discussion qui risque de devenir un mini-cours détaché plutôt
+          que de rester ancrée sur la thèse précise de Bakounine.
+      - id: D
+        text: "Conclure : « à mon avis, la liberté des autres m'aide à être libre »."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        feedback: |-
+          Modèle détecté : discuter réduit à donner son avis. Aucun argument
+          ni position philosophique n'est mobilisé — c'est une opinion, pas
+          une discussion.
+
+    correct_feedback: |-
+      Discuter, c'est mobiliser des arguments et des positions philosophiques
+      pertinentes pour CETTE thèse — convergentes d'abord, divergentes
+      ensuite — jamais un jugement précoce, une opinion seule, ou une
+      référence sans lien démontré.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r6-synthese | placed AFTER R6
+  #        Probes: MC-15 (conclure-est-resumer)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-synthese
+    rung: "R6"
+    skill_code: philo_analyse_texte
+    tags: [checkpoint, formative, misconception_driven, philo_analyse_texte]
+    primary_misconception: mc.philo.analyse_texte.conclure-est-resumer
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |-
+      Laquelle de ces quatre conclusions constitue une vraie synthèse (تركيب),
+      plutôt qu'un résumé ou un avis final ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Bilan, réponse à la problématique, position argumentée qui rouvre."
+        correct: true
+        feedback: |-
+          Exact : les trois gestes attendus, dans cet ordre — c'est
+          exactement ce que synthétiser veut dire.
+      - id: B
+        text: "Redire le thème et rappeler que l'auteur pense que tout est lié."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Modèle détecté : « conclure, c'est résumer ». Aucun bilan articulé,
+          aucune réponse à la problématique, aucune position — c'est
+          l'introduction redite.
+      - id: C
+        text: "Terminer par : « moi je pense que c'est vrai », sans aucun argument."
+        correct: false
+        misconception: mc.philo.analyse_texte.discuter-est-avis
+        also_reveals: [mc.philo.analyse_texte.conclure-est-resumer]
+        feedback: |-
+          Modèle détecté : la position personnelle réduite à un avis non
+          argumenté — la synthèse demande une position ARGUMENTÉE, qui rouvre
+          une question, pas une opinion assertée.
+      - id: D
+        text: "Trancher définitivement le débat, sans laisser aucune question ouverte."
+        correct: false
+        misconception: mc.philo.analyse_texte.conclure-est-resumer
+        feedback: |-
+          Modèle détecté : fermer le sujet plutôt que le rouvrir. Une bonne
+          synthèse propose une position argumentée qui laisse une question
+          réelle en suspens, elle ne prétend pas clore la réflexion.
+
+    correct_feedback: |-
+      Synthétiser, ce n'est jamais résumer : c'est articuler un bilan,
+      répondre à la problématique posée, et proposer une position personnelle
+      argumentée qui rouvre — jamais un avis final sans argument.

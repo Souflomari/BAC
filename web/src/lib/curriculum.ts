@@ -286,6 +286,12 @@ const PHILO: Subject = {
         { slug: "theorie-experience", title: "La théorie et l'expérience" },
       ],
     },
+    {
+      title: "Méthode de l'épreuve",
+      chapters: [
+        { slug: "analyse-de-texte", title: "Méthode de l'analyse de texte philosophique" },
+      ],
+    },
   ],
 };
 
