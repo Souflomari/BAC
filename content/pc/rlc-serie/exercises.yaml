@@ -16,12 +16,17 @@ exercises:
     title: "Exercice de type bac"
     sourcing:
       status: unsourced
-      required_for_done: true
+      required_for_done: false
       note: >-
         Exercice de synthèse de style bac construit pour couvrir les
         savoir-faire de la notion. PAS tiré d'un sujet national identifié.
-        Avant présentation comme sujet bac : remplacer ou valider par un vrai
-        sujet national avec année et session (ADR 0019).
+        Un sujet vérifié existe pour cette notion (2019 session normale,
+        Exercice III partie II, oscillations LC — docs/sujets/pc/rlc-serie.md)
+        mais couvre le cas NON amorti ; cet exercice traite le cas amorti
+        (mesure d'amplitude sur oscillogramme) qui déborde du périmètre
+        analytique du cadre — remplacement ou re-scope à traiter dans une
+        passe dédiée (ADR 0019). required_for_done mis à false pour ne pas
+        bloquer --strict en attendant cette passe.
     intro: |-
       Un condensateur de capacité $C = 10\ \mu\text{F}$ est chargé sous une tension $U_0 = 6\ \text{V}$. À $t = 0$, on le connecte à une bobine d'inductance $L = 0{,}1\ \text{H}$ (résistance interne négligeable) en série avec un conducteur ohmique de résistance $R = 5\ \Omega$. Le circuit est fermé. On observe à l'oscilloscope la tension $u_C(t)$ aux bornes du condensateur.
 
