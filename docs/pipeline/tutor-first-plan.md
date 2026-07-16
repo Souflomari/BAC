@@ -159,4 +159,12 @@ outputs.
 
 ## Execution log
 
-- _(maintained per step: date, what, sha)_
+- 2026-07-16 — Evaluation #2 committed (`docs/audits/completion-evaluation-2026-07.md`, 470432f).
+- 2026-07-16 — Plan + cutover runbook committed (e20fb01).
+- 2026-07-16 — **Lane E autonomous half COMPLETE** (66c1595): write path
+  wired at all four surfaces; payload builder + emitter wire behavior
+  unit-proven (12/12); dom-truth off-mode network-silence sweep added
+  (162/162 green); learner-input maps regenerated (5 → 48 notions with
+  coverage — they were stale since before the remediation campaign).
+  Remaining in this lane: the owner sittings (engine-cutover-runbook.md),
+  never autonomous.
