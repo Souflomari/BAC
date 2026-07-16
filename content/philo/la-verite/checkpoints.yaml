@@ -184,8 +184,9 @@ checkpoints:
 
   # ════════════════════════════════════════════════════════════════
   # CP-2 | id: cp-r2-rupture | placed AFTER R2
-  #        Probes: coherence-confondue-correspondance (primary),
-  #        acces-direct-au-reel-sans-interpretation (choice C),
+  #        Probes: acces-direct-au-reel-sans-interpretation (primary,
+  #        choice B+C — R2-native, no forward-reference to R3's
+  #        coherence/correspondence distinction),
   #        critere-restreint-a-un-domaine-a-tort (choice D, under-floor)
   # ════════════════════════════════════════════════════════════════
 
@@ -193,7 +194,7 @@ checkpoints:
     rung: "R2"
     skill_code: philo_la_verite
     tags: [checkpoint, formative, misconception_driven, philo_la_verite]
-    primary_misconception: mc.philo.la_verite.coherence-confondue-correspondance
+    primary_misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
     item_source: original
     lesson_placement: after_R2
 
@@ -216,12 +217,13 @@ checkpoints:
       - id: B
         text: "Il a raison sur les deux points : hors des sciences exactes, seule la cohérence interne d'un récit compte pour juger de sa vérité, et une preuve matérielle bien conservée se passe entièrement de toute interprétation humaine, aussi faillible soit-elle par ailleurs."
         correct: false
-        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
         feedback: |-
-          Modèle détecté : substituer la cohérence à la correspondance
-          comme si elles étaient interchangeables selon le domaine. Un récit
-          peut être parfaitement cohérent — comme le modèle de Ptolémée —
-          et pourtant faux.
+          Modèle détecté : croire qu'une preuve matérielle « parle
+          d'elle-même » — c'est l'erreur de C, ici combinée à une
+          restriction du domaine de la correspondance que rien dans R2 ne
+          justifie non plus (voir D). Une vidéo doit toujours être
+          regardée, entendue, interprétée par un esprit faillible.
 
       - id: C
         text: "Il a tort seulement sur le premier point : une vidéo donne bien un accès direct au réel sans interprétation possible."
