@@ -22,6 +22,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Je ne regarde pas : c'est interdit, et si j'étais pris, je serais sanctionné — annulation de la copie, voire pire. »
 - « Je ne regarde pas, même si j'étais certain de ne jamais être pris. Ce n'est pas une question de risque : c'est que ce serait mal, et ça resterait mal même si personne au monde ne le savait jamais. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux, dans *cette* situation précise.
 
 Si la seule raison de ne pas regarder est la peur d'être pris — alors le surveillant vient de sortir. Le risque vient de tomber à zéro. Si ton obéissance ne tenait qu'à la surveillance, plus rien, à cet instant, ne devrait te retenir. Or beaucoup d'élèves, dans cette situation réelle, ne regardent pas quand même. Quelque chose continue de leur dire « non », alors même que la contrainte extérieure — le risque d'être vu — a disparu.
@@ -62,6 +64,8 @@ Mais affirmer un devoir moral pur, détaché de toute contrainte, sans jamais in
 
 > **Erreur à éviter :** ne confonds pas « légal » et « moral », ni dans un sens ni dans l'autre. Une règle légale n'a pas besoin d'être morale pour être valide juridiquement (payer une amende de stationnement n'a rien de moralement héroïque). Et un devoir moral n'a pas besoin d'être inscrit dans une loi pour t'obliger réellement. Le problème du devoir ne porte pas sur ce que dit le règlement ; il porte sur ce qui, en toi, ferait qu'une action est due, indépendamment de ce que le règlement en dit.
 
+[[checkpoint:cp-r1-rupture]]
+
 ---
 
 ## R2 — Kant : le devoir pour le devoir
@@ -85,6 +89,8 @@ Ce commerçant peut agir ainsi pour deux raisons très différentes, qui produis
 
 Applique cette distinction à la salle d'examen. Ne pas regarder la copie de ta voisine parce que tu crains d'être pris, c'est agir *conformément* au devoir — et l'action s'effondre dès que le surveillant sort. Ne pas la regarder alors même que tu es certain de ne jamais être découvert, c'est agir *par* devoir — l'action, pour Kant, ne dépend d'aucune circonstance extérieure, elle vient du seul respect que tu portes à l'exigence morale elle-même.
 
+[[checkpoint:cp-r2-devoir-par]]
+
 #### L'impératif catégorique : la loi universelle
 
 Reste une question : comment savoir, concrètement, ce que le devoir exige dans une situation donnée ? Kant propose un test, qu'il appelle l'**impératif catégorique** — « catégorique » parce qu'il commande sans condition, sans « si » (contrairement à un conseil du type « si tu veux réussir, travaille », qui ne vaut que pour qui veut réussir).
@@ -107,6 +113,8 @@ Ce principe éclaire un point souvent oublié : le devoir, chez Kant, ne concern
 
 > **Erreur à éviter :** ne confonds pas l'impératif catégorique avec une obéissance aveugle à des règles imposées de l'extérieur. C'est même l'inverse : pour Kant, la loi morale n'est pas dictée par une autorité étrangère à moi — c'est ma propre raison qui se la donne, en testant elle-même la cohérence de ses maximes. Il appelle cela l'**autonomie** (littéralement : se donner à soi-même sa propre loi), par opposition à l'**hétéronomie** (obéir à une loi reçue du dehors — une autorité, la peur, ses propres désirs). Le devoir kantien n'est pas la négation de ta liberté : il en est, à ses yeux, la plus haute expression — on y reviendra en R3.
 
+[[checkpoint:cp-r2-autonomie]]
+
 ---
 
 ## R3 — Les limites du formalisme : conséquences, sentiment, société
@@ -121,6 +129,8 @@ Cette perspective met en lumière une faille réelle du formalisme kantien pouss
 
 > **Point de vigilance :** ne présente pas Kant comme quelqu'un pour qui « les conséquences ne comptent jamais dans la vie ». Sa thèse est plus précise : la valeur MORALE d'une action — ce qui la rend digne d'estime — ne doit pas dépendre de ses conséquences, parce que celles-ci échappent en partie à notre contrôle (le hasard, les autres) alors que notre intention nous appartient entièrement. La critique utilitariste ne porte pas sur un détail : elle conteste ce principe même, en jugeant au contraire que le résultat est ce qui compte en dernier ressort.
 
+[[checkpoint:cp-r3-formalisme]]
+
 #### Bergson : l'obligation sociale et l'élan qui la dépasse
 
 Bergson (*Les Deux Sources de la morale et de la religion*, 1932) propose une analyse différente, qui ne se place pas du côté des conséquences mais du côté de l'origine psychologique et sociale du devoir.
@@ -133,13 +143,17 @@ La **morale ouverte**, à l'inverse, ne procède pas d'une pression mais d'un **
 
 > **Point de vigilance :** ne fais pas dire à Bergson que « le devoir n'est qu'une pression sociale sans valeur » — la morale close reste, chez lui, une condition réelle et nécessaire de la vie en société. Son geste est plus fin : montrer qu'à côté de cette morale de l'obligation, il existe une autre source de l'exigence morale, l'élan, que le seul vocabulaire du devoir kantien (universaliser une maxime) ne suffit pas à décrire.
 
+[[checkpoint:cp-r3-bergson]]
+
 #### Fermeture de l'arc : le devoir suppose la liberté
 
 Un dernier fil relie tout ce qu'on vient de voir, et il faut le rendre explicite : parler de devoir n'a de sens que si celui à qui on l'adresse est **libre** de faire autrement.
 
-Kant le formule sans détour : on ne peut être tenu à un devoir que si l'on est réellement capable de l'accomplir — on résume souvent cette idée par la formule : *tu dois, donc tu peux*. Si tu n'avais physiquement aucun moyen d'agir autrement (main forcée, contrainte absolue), la question « devais-tu le faire ? » perdrait tout son sens : on ne reproche rien à quelqu'un pour ce qu'il ne pouvait, de toute façon, pas éviter. Inversement, s'interroger sur ce qu'on doit faire — comme tu l'as fait à 23h05 devant une copie qui traînait — n'a de poids que parce que tu pouvais, à cet instant précis, choisir l'un ou l'autre. Le devoir ne s'oppose donc pas à la liberté : il la présuppose absolument. C'est même, pour Kant, la meilleure preuve qu'on est libre : le simple fait de se sentir obligé par une exigence morale, alors que rien d'extérieur ne nous y contraint, révèle qu'on est le genre d'être capable de faire autrement.
+Kant le formule sans détour : on ne peut être tenu à un devoir que si l'on est réellement capable de l'accomplir — on résume souvent cette idée par la formule : *tu dois, donc tu peux*. Si tu n'avais physiquement aucun moyen d'agir autrement (main forcée, contrainte absolue), la question « devais-tu le faire ? » perdrait tout son sens : on ne reproche rien à quelqu'un pour ce qu'il ne pouvait, de toute façon, pas éviter. Inversement, s'interroger sur ce qu'on doit faire — comme tu l'as fait devant la copie de ta voisine qui traînait — n'a de poids que parce que tu pouvais, à cet instant précis, choisir l'un ou l'autre. Le devoir ne s'oppose donc pas à la liberté : il la présuppose absolument. C'est même, pour Kant, la meilleure preuve qu'on est libre : le simple fait de se sentir obligé par une exigence morale, alors que rien d'extérieur ne nous y contraint, révèle qu'on est le genre d'être capable de faire autrement.
 
-Reviens, une dernière fois, à la salle d'examen. Kant dirait que ne pas regarder la copie n'a de valeur morale que si ce choix vient de ton seul respect pour une règle que tu pourrais universaliser — et que ce choix, précisément parce qu'il continue de valoir sans surveillant, montre que tu es capable d'agir par devoir, non par peur. L'utilitariste ferait remarquer qu'il faudrait aussi se demander ce que produit chaque choix : tricher une fois pour ne pas rater une année entière n'a pas les mêmes conséquences que tricher sans raison sérieuse — la seule pureté du motif ne dit pas tout. Bergson ajouterait qu'au-delà de la simple obligation de ne pas tricher, il existe une autre voie, plus rare : celle où l'honnêteté ne serait plus un devoir qu'on respecte à contrecœur, mais un élan qu'on n'aurait même plus l'idée de contourner. Les trois positions convergent pourtant sur un point : aucune n'aurait de sens si, à 23h05 comme dans cette salle d'examen, tu n'étais pas, d'abord, libre de faire les deux.
+Reviens, une dernière fois, à la salle d'examen. Kant dirait que ne pas regarder la copie n'a de valeur morale que si ce choix vient de ton seul respect pour une règle que tu pourrais universaliser — et que ce choix, précisément parce qu'il continue de valoir sans surveillant, montre que tu es capable d'agir par devoir, non par peur. L'utilitariste ferait remarquer qu'il faudrait aussi se demander ce que produit chaque choix : tricher une fois pour ne pas rater une année entière n'a pas les mêmes conséquences que tricher sans raison sérieuse — la seule pureté du motif ne dit pas tout. Bergson ajouterait qu'au-delà de la simple obligation de ne pas tricher, il existe une autre voie, plus rare : celle où l'honnêteté ne serait plus un devoir qu'on respecte à contrecœur, mais un élan qu'on n'aurait même plus l'idée de contourner. Les trois positions convergent pourtant sur un point : aucune n'aurait de sens si, dans cette salle d'examen, tu n'étais pas, d'abord, libre de faire les deux.
+
+[[checkpoint:cp-r3-liberte]]
 
 ---
 
@@ -201,3 +215,27 @@ Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse 
 
 - *Avons-nous des devoirs envers nous-mêmes ?*
 - *Le devoir est-il la négation de la liberté ?*
+
+### Exercice de type bac
+
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Son premier exemple (le marchand honnête) est celui que R2
+a déjà travaillé ; son second (la conservation de la vie) ne l'est pas : à
+toi de mobiliser ce que tu sais déjà — légalité/moralité (R1), agir
+conformément au devoir vs agir par devoir (R2), la critique utilitariste et
+le lien devoir/liberté (R3) — pour l'étendre à ce cas neuf.
+
+[[checkpoint:cp-bac-devoir]]
+
+[[exercise:r-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Ce second texte n'est pas réel — il est construit pour cette leçon, avec des
+personnages différents (un pharmacien, une amitié rompue) mais exactement la
+même structure argumentative que le texte de Kant. Le but n'est pas
+d'apprendre autre chose : c'est de reconnaître que le même critère
+(l'élimination méthodique des mobiles concurrents) s'applique quand
+l'habillage change.
+
+[[exercise:r-variation]]

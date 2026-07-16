@@ -1,6 +1,228 @@
 notion: le-devoir
 skill_code: philo_devoir
-misconceptions: []
+
+# Misconception inventory — summit-conversion campaign (Gap-4 fix: this file
+# previously carried `misconceptions: []`, no tags on any distractor, and a
+# 14/15 "correct = longest option" length-tell — see the Length rebalance
+# note at the end of coverage_summary).
+# Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code with the
+# "philo_" prefix stripped (philo_devoir → devoir) — matches the precedent
+# set in content/philo/la-liberte/items.yaml and
+# content/philo/theorie-experience/items.yaml.
+# Built from scratch by reading the lesson (R0-R3) rung by rung and mining
+# its own named "Erreur à éviter" / "Point de vigilance" boxes first (recipe's
+# mandated primary source), then cross-checking each of DEV-1..DEV-15's
+# existing distractors against those named models — consolidating several
+# closely-related wrong phrasings under one broader, real misconception
+# (mirroring la-liberte's own broad "echapper-a-la-liberte" bucket) rather
+# than minting a new hyper-specific tag per distractor.
+# coincidence-devoir-inclination-jugee-suffisante is NEW: it comes from the
+# r-bac Kant text's second example (la conservation de la vie — docs/sujets/
+# philo/le-devoir.md, 2023 rattrapage), a nuance (duty that coincides with vs.
+# runs against inclination) this lesson's R0-R3 body does not walk through
+# directly — see the coverage_summary note below for the honest floor gap
+# this opens.
+
+misconceptions:
+  - id: mc.philo.devoir.faux-dilemme-contrainte-devoir-moral
+    label: "« Il faut choisir entre devoir-contrainte et devoir moral pur » (la méconception maîtresse)"
+    description: >-
+      L'élève traite la question de R0 comme un choix exhaustif entre deux
+      camps (pure peur de la sanction / devoir moral déjà pleinement établi
+      et incontestable), et échappe à la tension réelle soit en refusant
+      l'hypothèse posée (inventer une contrainte cachée, prétendre que les
+      élèves trichent quand même), soit en dissolvant la question
+      (relativisme, « c'est purement subjectif »), soit en tranchant d'office
+      pour l'un des deux camps sans l'examiner.
+    contradicts_principle: >-
+      Le problème philosophique du devoir n'est ni de choisir entre les deux
+      réponses spontanées de R0, ni de rejeter la question comme sans objet :
+      c'est de penser un devoir qui ne se réduise ni à la peur d'une
+      sanction externe, ni à une habitude de conscience intériorisée jamais
+      examinée.
+
+  - id: mc.philo.devoir.devoir-reduit-a-la-contrainte
+    label: "« Le devoir n'est jamais que la peur d'être vu et puni »"
+    description: >-
+      L'élève mesure le devoir à la seule intensité de la surveillance ou du
+      risque de sanction — y compris sous la forme d'une convention sociale
+      ou d'une pression de groupe — et en conclut que le devoir disparaît
+      dès que ce risque tombe à zéro, sans expliquer ce qui, empiriquement,
+      continue à retenir beaucoup d'élèves une fois le surveillant sorti.
+    contradicts_principle: >-
+      Le devoir comme obligation morale ne se mesure pas à la surveillance ;
+      il vaudrait exactement autant seul, sans témoin. Réduire tout devoir à
+      la contrainte extérieure ne rend pas compte de ce qui persiste quand
+      le risque a disparu.
+
+  - id: mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique
+    label: "« Si je sens intérieurement que c'est un devoir, s'en est un, sans qu'il faille l'interroger »"
+    description: >-
+      L'élève prend le sentiment ou la conviction intérieure d'être obligé
+      comme une preuve suffisante d'un devoir moral authentique — allant
+      parfois jusqu'à nier la réalité de toute contrainte extérieure pour ne
+      garder que cette conscience individuelle — sans se demander si ce
+      sentiment pourrait être une habitude sociale intériorisée plutôt qu'un
+      devoir véritable.
+    contradicts_principle: >-
+      Le simple sentiment intérieur d'être obligé ne suffit pas, à lui seul,
+      à garantir qu'on tient un devoir moral véritable plutôt qu'un
+      conditionnement — affirmer un devoir pur sans l'interroger laisse
+      ouverte la question de savoir comment le distinguer d'une habitude
+      intériorisée jamais questionnée.
+
+  - id: mc.philo.devoir.legalite-confondue-moralite
+    label: "« Légal et moral, c'est la même chose — dans un sens ou dans l'autre »"
+    description: >-
+      L'élève confond la conformité d'une action à une règle extérieure
+      (légalité) avec sa valeur morale authentique (moralité) : il pense
+      qu'une action conforme au devoir est automatiquement accomplie PAR
+      devoir, qu'un devoir doit être inscrit dans une loi pour exister
+      moralement, ou qu'agir par peur annule jusqu'à la légalité de l'acte.
+    contradicts_principle: >-
+      Une action peut être légale sans être morale (payer ses impôts par
+      peur du redressement), et un devoir moral n'a pas besoin d'être
+      inscrit dans une loi pour obliger réellement — le problème du devoir
+      ne porte pas sur ce que dit le règlement, mais sur ce qui, en soi,
+      ferait qu'une action est due.
+
+  - id: mc.philo.devoir.absence-valeur-morale-confondue-immoralite
+    label: "« Une action sans valeur morale distinctive est une action immorale »"
+    description: >-
+      L'élève confond « ne révèle aucune vertu particulière » (agir
+      conformément au devoir par intérêt) avec « est condamnable » — comme
+      si toute action qui n'a pas de valeur morale au sens fort devenait,
+      de ce seul fait, une faute.
+    contradicts_principle: >-
+      L'action elle-même (ne pas tromper le client, payer ses impôts) reste
+      conforme à ce que le devoir exige ; ce que Kant conteste, c'est
+      qu'elle ait une valeur morale authentique, pas qu'elle soit
+      condamnable.
+
+  - id: mc.philo.devoir.critere-consequentialiste-substitue-au-motif
+    label: "« Ce qui compte, c'est le résultat produit, pas le mobile » (appliqué à tort au cadre kantien)"
+    description: >-
+      Face à une question qui porte sur le motif d'une action selon Kant,
+      l'élève répond en jugeant l'action à ses conséquences (bonheur
+      produit, bénéfice collectif, rentabilité à long terme) — un critère
+      utilitariste, pas le critère kantien du devoir.
+    contradicts_principle: >-
+      Pour Kant, la valeur morale d'une action tient à son mobile,
+      indépendamment de ce qu'elle produit comme résultat ; l'impératif
+      catégorique ne demande jamais quel résultat l'action va produire.
+
+  - id: mc.philo.devoir.imperatif-categorique-confondu-heteronomie
+    label: "« La loi morale est imposée à la raison depuis l'extérieur »"
+    description: >-
+      L'élève pense que l'impératif catégorique renvoie à une autorité
+      extérieure à la raison (Dieu, la société, l'État, la loi civile en
+      vigueur) plutôt qu'à un test que la raison de chacun applique à
+      elle-même.
+    contradicts_principle: >-
+      Kant appelle cela l'hétéronomie (obéir à une loi reçue du dehors) —
+      l'inverse de sa position : la raison ne reçoit pas la loi morale, elle
+      se la donne à elle-même en testant la cohérence de ses propres
+      maximes (l'autonomie).
+
+  - id: mc.philo.devoir.devoir-confondu-avec-inclination
+    label: "« Le critère moral, c'est ce que je désire ou ressens le plus fortement »"
+    description: >-
+      L'élève réintroduit les inclinations, désirs ou affections
+      personnelles comme critère du devoir, alors que l'impératif
+      catégorique écarte précisément les inclinations du test moral parce
+      qu'elles varient d'une personne et d'un moment à l'autre.
+    contradicts_principle: >-
+      L'impératif catégorique écarte les inclinations et les désirs du
+      critère moral ; le test porte sur ce qui peut valoir pour tous, sans
+      exception, pas sur ce que l'on désire le plus profondément à cet
+      instant.
+
+  - id: mc.philo.devoir.imperatif-categorique-juge-arbitraire
+    label: "« Le test kantien n'a aucun fondement réel, c'est arbitraire »"
+    description: >-
+      L'élève pense que l'impératif catégorique est un test formel sans
+      justification rationnelle réelle, plutôt que d'y voir la raison se
+      donnant à elle-même sa propre loi en testant la cohérence de ses
+      maximes.
+    contradicts_principle: >-
+      C'est « ma propre raison » qui se donne cette loi en testant
+      elle-même la cohérence de ses maximes — le test n'est pas arbitraire,
+      il a un fondement rationnel précis : la généralisation qui se détruit,
+      ou non, elle-même.
+
+  - id: mc.philo.devoir.critique-utilitariste-mal-identifiee
+    label: "« En quoi consiste la critique utilitariste ? » — mal reformulée de trois façons distinctes"
+    description: >-
+      L'élève ne parvient pas à formuler correctement ce que l'utilitarisme
+      reproche précisément à Kant : il croit que la critique nie l'existence
+      même du devoir, qu'elle reproche à Kant de fonder la morale sur le
+      sentiment (confusion avec Bergson), ou qu'elle lui attribue à tort la
+      position inverse de la sienne (juger uniquement par les conséquences).
+    contradicts_principle: >-
+      L'utilitarisme reproche à Kant de juger l'action sur la seule forme de
+      sa maxime, sans égard pour ses conséquences réelles — ce qui peut
+      conduire à des résultats manifestement contestables ; il ne nie pas le
+      devoir, ne relève pas du sentiment, et ne renverse pas la position
+      réelle de Kant.
+
+  - id: mc.philo.devoir.morale-close-ouverte-mal-comprise
+    label: "« La distinction de Bergson porte sur le destinataire du devoir, ou juge la morale close sans valeur »"
+    description: >-
+      L'élève méprend la distinction bergsonienne entre morale close et
+      morale ouverte : soit il la fait porter sur le destinataire du devoir
+      (soi / autrui) plutôt que sur sa source psychologique et sociale, soit
+      il traite la morale close comme fausse ou à remplacer entièrement
+      plutôt que comme un socle nécessaire que la morale ouverte complète.
+    contradicts_principle: >-
+      La morale close vient d'une pression sociale intériorisée ; la morale
+      ouverte procède d'un élan qui dépasse l'obligation reçue — cette
+      distinction porte sur l'ORIGINE psychologique du devoir, pas sur son
+      destinataire, et Bergson ne juge jamais la morale close fausse ou à
+      rejeter : elle reste, chez lui, le socle nécessaire de la vie sociale.
+
+  - id: mc.philo.devoir.devoir-liberte-mal-articules
+    label: "« Tu dois, donc tu peux » mal compris — implication inversée, opposition, ou portée réduite"
+    description: >-
+      L'élève mésinterprète la formule kantienne « tu dois, donc tu peux » :
+      il inverse l'implication (être capable de quelque chose en ferait un
+      devoir), affirme que le devoir s'oppose à la liberté, ou restreint la
+      liberté en jeu au seul choix entre devoirs concurrents plutôt qu'à la
+      possibilité même d'agir autrement.
+    contradicts_principle: >-
+      Le devoir ne s'oppose pas à la liberté : il la présuppose absolument.
+      On ne peut être tenu à un devoir que si l'on est réellement capable de
+      l'accomplir ; être capable de faire quelque chose n'en fait jamais,
+      pour autant, une obligation.
+
+  - id: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
+    label: "« Les gestes de la méthode (suffisance, problématique, dépassement) sont interchangeables ou décoratifs »"
+    description: >-
+      L'élève traite une question de suffisance comme une question
+      d'existence, confond une problématique avec une simple reformulation
+      ou une thèse déjà tranchée, ou fait du dépassement final soit un
+      simple retour à la thèse, soit un constat de contradiction non
+      résolu, soit l'ajout d'un matériau hors sujet.
+    contradicts_principle: >-
+      Une problématique met en tension deux positions légitimes en
+      apparence, sans se contenter de reformuler le sujet ; le dépassement
+      articule ce que la thèse et l'antithèse ont chacune montré de vrai —
+      il ne fait gagner ni l'une ni l'autre et n'importe rien d'étranger au
+      devoir déjà construit.
+
+  - id: mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante
+    label: "« Si une action coïncide avec le devoir ET avec l'inclination, cela prouve déjà sa valeur morale » (axe nouveau, ouvert par le texte de r-bac)"
+    description: >-
+      L'élève pense que le fait, pour la plupart des gens, de préserver leur
+      vie à la fois par devoir ET par inclination immédiate suffit déjà à
+      donner à cet acte une valeur morale — sans voir que Kant retire
+      précisément toute valeur morale distinctive à ce cas, réservée au seul
+      cas où le devoir agit contre ou sans l'inclination.
+    contradicts_principle: >-
+      Kant l'affirme explicitement à propos de la conservation de la vie :
+      le soin que la plupart des hommes y mettent, bien que conforme au
+      devoir ET porté par une inclination immédiate, « n'enveloppe aucune
+      valeur intrinsèque » ; seul l'homme qui préserve sa vie sans l'aimer,
+      contre son inclination, agit par un mobile qui a un contenu moral.
 
 items:
   - id: DEV-1
@@ -17,6 +239,7 @@ items:
       - id: A
         text: "Une action accomplie par devoir, donc pleinement morale."
         correct: false
+        misconception: mc.philo.devoir.legalite-confondue-moralite
         feedback: >
           Le mobile réel de ce commerçant est l'intérêt (garder sa clientèle),
           pas le respect de l'exigence morale elle-même. Pour Kant, ce n'est
@@ -29,6 +252,7 @@ items:
       - id: C
         text: "Une action immorale, puisque le commerçant profite de la situation pour attirer des clients."
         correct: false
+        misconception: mc.philo.devoir.absence-valeur-morale-confondue-immoralite
         feedback: >
           L'action elle-même (ne pas tromper) reste conforme à ce que le
           devoir exige : rien d'immoral dans le résultat visible. Ce que Kant
@@ -36,8 +260,9 @@ items:
           qu'elle soit condamnable — confondre les deux, c'est manquer la
           distinction légalité/moralité.
       - id: D
-        text: "Une action légale mais dont la moralité ne dépend que de ses conséquences positives sur le long terme."
+        text: "Une action légale mais dont la moralité ne dépend que de ses conséquences positives sur le long terme, en particulier le fait qu'elle contribue à entretenir, année après année, la confiance générale entre commerçants et clientèle."
         correct: false
+        misconception: mc.philo.devoir.critere-consequentialiste-substitue-au-motif
         feedback: >
           Juger une action à ses conséquences (le bénéfice à long terme),
           c'est une logique utilitariste, pas kantienne. Pour Kant, la valeur
@@ -76,8 +301,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Si l'action produira, au final, plus de bonheur que de souffrance pour le plus grand nombre."
+        text: "Si l'action produira, au final, davantage de bonheur que de souffrance pour le plus grand nombre de personnes concernées par ses conséquences directes et indirectes."
         correct: false
+        misconception: mc.philo.devoir.critere-consequentialiste-substitue-au-motif
         feedback: >
           C'est le critère utilitariste (juger par les conséquences produites
           en termes de bonheur), pas le critère kantien. L'impératif
@@ -86,8 +312,9 @@ items:
         text: "Si la maxime de l'action peut être voulue comme loi valable pour tous, sans se détruire elle-même une fois généralisée."
         correct: true
       - id: C
-        text: "Si l'action est conforme aux lois en vigueur dans le pays où elle est accomplie."
+        text: "Si l'action est conforme aux lois en vigueur dans le pays où elle est accomplie, quel que soit par ailleurs le contenu précis de ces lois."
         correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-confondu-heteronomie
         feedback: >
           L'impératif catégorique n'est pas un renvoi à la loi positive d'un
           État : c'est un test rationnel interne, que la raison de chacun
@@ -96,6 +323,7 @@ items:
       - id: D
         text: "Si l'action correspond à ce que l'on désire le plus profondément à cet instant."
         correct: false
+        misconception: mc.philo.devoir.devoir-confondu-avec-inclination
         feedback: >
           C'est exactement l'inverse de ce que demande l'impératif
           catégorique : Kant écarte précisément les inclinations et les
@@ -137,6 +365,7 @@ items:
       - id: A
         text: "Elle reproche à Kant de croire que le devoir n'existe pas du tout."
         correct: false
+        misconception: mc.philo.devoir.critique-utilitariste-mal-identifiee
         feedback: >
           L'utilitarisme ne nie pas qu'il existe des obligations morales : il
           propose un AUTRE critère pour juger si une action est bonne (ses
@@ -147,6 +376,7 @@ items:
       - id: C
         text: "Elle reproche à Kant de fonder la morale sur le sentiment plutôt que sur la raison."
         correct: false
+        misconception: mc.philo.devoir.critique-utilitariste-mal-identifiee
         feedback: >
           C'est presque l'inverse : Kant est reproché pour son excès de
           formalisme rationnel, pas pour un excès de sentiment. Fonder la
@@ -154,8 +384,9 @@ items:
           rationnelle est plus proche de la position de Bergson que de la
           critique utilitariste.
       - id: D
-        text: "Elle reproche à Kant de considérer que seules les conséquences comptent, jamais l'intention."
+        text: "Elle reproche à Kant de considérer que seules les conséquences comptent, jamais l'intention, une lecture qui inverserait entièrement, selon cette critique mal informée, la position réellement défendue par Kant lui-même."
         correct: false
+        misconception: mc.philo.devoir.critique-utilitariste-mal-identifiee
         feedback: >
           C'est le contraire de la position de Kant, et donc pas ce que
           l'utilitarisme lui reproche : Kant fait justement dépendre la
@@ -202,14 +433,16 @@ items:
       - id: B
         text: "La morale close concerne les devoirs envers autrui ; la morale ouverte concerne uniquement les devoirs envers soi-même."
         correct: false
+        misconception: mc.philo.devoir.morale-close-ouverte-mal-comprise
         feedback: >
           Ce n'est pas la distinction de Bergson : elle ne sépare pas les
           devoirs par leur destinataire (soi / autrui), mais par leur SOURCE
           psychologique — une pression sociale reçue, ou un élan qui la
           dépasse.
       - id: C
-        text: "La morale close est celle de Kant, jugée fausse par Bergson ; la morale ouverte est la seule morale valable, qui doit remplacer entièrement l'obligation."
+        text: "La morale close est celle de Kant, jugée fausse par Bergson ; la morale ouverte est la seule morale valable, qui doit désormais remplacer entièrement l'obligation reçue dans toute réflexion morale sérieuse."
         correct: false
+        misconception: mc.philo.devoir.morale-close-ouverte-mal-comprise
         feedback: >
           C'est une caricature de Bergson. Il ne juge pas la morale de
           l'obligation fausse ou à remplacer : elle reste, pour lui, le socle
@@ -218,6 +451,7 @@ items:
       - id: D
         text: "La morale close juge les actions à leurs conséquences ; la morale ouverte les juge à la pureté de l'intention, comme chez Kant."
         correct: false
+        misconception: mc.philo.devoir.critique-utilitariste-mal-identifiee
         feedback: >
           Cette opposition (conséquences / intention) est celle qui sépare
           l'utilitarisme du kantisme — pas la distinction propre à Bergson,
@@ -262,8 +496,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Que la contrainte extérieure n'a en réalité jamais disparu : ces élèves craignent d'être dénoncés par un camarade."
+        text: "Que la contrainte extérieure n'a en réalité jamais disparu : ces élèves craignent d'être dénoncés par un camarade présent dans la salle, ce qui revient encore, au fond, à redouter une sanction extérieure bien réelle."
         correct: false
+        misconception: mc.philo.devoir.faux-dilemme-contrainte-devoir-moral
         feedback: >
           Le texte isole précisément le cas où le risque objectif tombe à
           zéro. Ajouter une contrainte imaginaire pour sauver l'explication
@@ -272,15 +507,17 @@ items:
         text: "Que quelque chose continue de les retenir alors que la contrainte extérieure a disparu — ce qui pose la question d'un devoir distinct de la simple peur d'être puni."
         correct: true
       - id: C
-        text: "Que ces élèves trichent aussi, en réalité, mais de façon plus discrète pour ne pas se faire remarquer."
+        text: "Que ces élèves trichent aussi, en réalité, mais de façon plus discrète et plus habile, précisément pour ne jamais se faire remarquer ni par le surveillant ni par leurs camarades."
         correct: false
+        misconception: mc.philo.devoir.faux-dilemme-contrainte-devoir-moral
         feedback: >
           C'est l'inverse de ce que rapporte le texte : « beaucoup d'élèves
           ... ne regardent pas quand même ». Renverser ce constat esquive la
           question plutôt que d'y répondre.
       - id: D
-        text: "Que la question de la triche est réglée dès que le surveillant est absent : sans risque, il n'y a plus de faute possible."
+        text: "Que la question de la triche est entièrement réglée dès que le surveillant quitte la salle : sans le moindre risque objectif d'être vu, il ne peut plus exister aucune faute véritable."
         correct: false
+        misconception: mc.philo.devoir.devoir-reduit-a-la-contrainte
         feedback: >
           C'est justement la conclusion que le texte met en doute : si
           l'obéissance ne tenait qu'à la surveillance, rien ne devrait plus
@@ -317,6 +554,7 @@ items:
       - id: B
         text: "Cette réponse prouve définitivement qu'il existe un devoir moral, indépendant de toute contrainte, et clôt la question."
         correct: false
+        misconception: mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique
         feedback: >
           C'est l'inverse de ce que fait le texte : il précise qu'affirmer
           cela sans l'interroger « laisse une question ouverte et gênante »
@@ -324,12 +562,14 @@ items:
       - id: C
         text: "Cette réponse est purement subjective, donc elle n'a aucune valeur philosophique et peut être écartée."
         correct: false
+        misconception: mc.philo.devoir.faux-dilemme-contrainte-devoir-moral
         feedback: >
           Le texte ne rejette pas cette réponse : il la prend au sérieux et
           l'interroge, sans la disqualifier d'emblée.
       - id: D
-        text: "Cette réponse revient exactement au même que la première : les deux ne parlent, au fond, que de la peur d'être jugé."
+        text: "Cette réponse revient, au fond et malgré les apparences, exactement au même que la première réponse envisagée plus haut : dans les deux cas, ce qui parle n'est jamais rien d'autre qu'une seule et même peur d'être un jour jugé par quelqu'un, fût-ce par soi-même en silence."
         correct: false
+        misconception: mc.philo.devoir.devoir-reduit-a-la-contrainte
         feedback: >
           Le texte distingue d'abord nettement les deux réponses (contrainte
           externe vs devoir indépendant du regard) ; ce n'est qu'ensuite
@@ -359,14 +599,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Montrer que le devoir n'est, en dernière analyse, qu'une convention sociale sans aucun fondement rationnel."
+        text: "Montrer que le devoir n'est, en dernière analyse et une fois tout examiné, qu'une convention sociale parmi d'autres, sans aucun fondement rationnel qui lui soit propre."
         correct: false
+        misconception: mc.philo.devoir.devoir-reduit-a-la-contrainte
         feedback: >
           Le texte n'annonce aucune conclusion de ce genre : il pose une
           question à instruire, il ne préjuge pas d'une réponse relativiste.
       - id: B
         text: "Démontrer que la surveillance reste, en pratique, indispensable pour garantir un comportement moral."
         correct: false
+        misconception: mc.philo.devoir.devoir-reduit-a-la-contrainte
         feedback: >
           C'est le contraire de ce que suggère l'accroche : la retenue qui
           persiste sans surveillant met justement en doute l'idée que la
@@ -377,6 +619,7 @@ items:
       - id: D
         text: "Établir laquelle des deux réponses données par les élèves est la bonne, et rejeter l'autre comme une erreur."
         correct: false
+        misconception: mc.philo.devoir.faux-dilemme-contrainte-devoir-moral
         feedback: >
           Le texte présente les deux réponses comme insuffisantes chacune
           prise seule, et non comme un choix entre une bonne et une mauvaise
@@ -411,13 +654,15 @@ items:
       - id: B
         text: "Il se mesure à l'intensité de la surveillance : plus le risque d'être vu est élevé, plus il pèse."
         correct: false
+        misconception: mc.philo.devoir.devoir-reduit-a-la-contrainte
         feedback: >
           C'est exactement la définition du devoir comme CONTRAINTE
           extérieure, pas comme obligation morale — celle-ci ne dépend
           justement pas du niveau de surveillance.
       - id: C
-        text: "Il n'existe que s'il est inscrit dans une loi ou un règlement, faute de quoi il ne s'agit que d'une préférence personnelle."
+        text: "Il n'existe que s'il est inscrit noir sur blanc dans une loi ou un règlement précis, faute de quoi il ne s'agirait jamais que d'une simple préférence personnelle sans portée obligatoire réelle."
         correct: false
+        misconception: mc.philo.devoir.legalite-confondue-moralite
         feedback: >
           Le texte donne l'exemple inverse : rendre visite à un ami malade
           peut être un devoir moral sans qu'aucune loi ne l'exige. Confondre
@@ -425,6 +670,7 @@ items:
       - id: D
         text: "Il disparaît dès qu'aucune autorité extérieure n'est plus en mesure de sanctionner sa violation."
         correct: false
+        misconception: mc.philo.devoir.devoir-reduit-a-la-contrainte
         feedback: >
           C'est de nouveau la définition de la contrainte extérieure :
           l'obligation morale, par définition, ne dépend d'aucune sanction
@@ -454,8 +700,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Une action immorale, puisqu'elle est motivée par la peur d'une sanction plutôt que par une conviction."
+        text: "Une action immorale, puisqu'elle est motivée uniquement par la peur d'une sanction fiscale plutôt que par une conviction personnelle sincère et réfléchie."
         correct: false
+        misconception: mc.philo.devoir.absence-valeur-morale-confondue-immoralite
         feedback: >
           Le texte est explicite : cette action « est parfaitement légale,
           mais ne révèle, en soi, aucune vertu » — ce n'est pas la même chose
@@ -464,15 +711,17 @@ items:
         text: "Une action légale, mais qui ne révèle en soi aucune valeur morale, puisque le motif est la crainte d'une sanction et non une conviction personnelle."
         correct: true
       - id: C
-        text: "Une action légale ET morale, puisqu'elle profite en définitive à la collectivité."
+        text: "Une action légale ET pleinement morale, puisqu'elle profite en définitive à la collectivité tout entière, quel qu'ait pu être le motif réel de la personne qui l'accomplit."
         correct: false
+        misconception: mc.philo.devoir.critere-consequentialiste-substitue-au-motif
         feedback: >
           Juger la moralité d'une action à son bénéfice collectif final est
           un critère de conséquence : la distinction légalité/moralité porte
           sur le MOTIF de l'action, pas sur son effet social.
       - id: D
-        text: "Une action qui n'est ni légale ni morale, car agir par peur ne peut jamais être qualifié de conforme à la loi."
+        text: "Une action qui n'est en réalité ni légale ni morale, car agir uniquement par peur ne peut, selon cette lecture, jamais être qualifié de véritablement conforme à la loi."
         correct: false
+        misconception: mc.philo.devoir.legalite-confondue-moralite
         feedback: >
           La légalité ne porte que sur la conformité de l'action à la règle,
           quel qu'en soit le motif : payer par peur reste parfaitement
@@ -504,15 +753,17 @@ items:
         text: "Parce que réduire à la contrainte n'explique pas ce qui persiste sans surveillant, tandis qu'affirmer un devoir moral pur sans l'interroger ne permet pas de le distinguer d'une habitude sociale intériorisée."
         correct: true
       - id: B
-        text: "Parce que la contrainte extérieure n'existe pas réellement : seule la conscience morale individuelle serait réelle."
+        text: "Parce que la contrainte extérieure n'existerait en réalité jamais : seule la conscience morale individuelle de chacun serait, dans cette optique, véritablement réelle et digne d'être prise au sérieux par un philosophe rigoureux."
         correct: false
+        misconception: mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique
         feedback: >
           C'est justement l'une des deux réductions que le texte refuse
           d'adopter telle quelle — il ne nie pas la contrainte extérieure, il
           refuse seulement de tout y réduire.
       - id: C
-        text: "Parce que le sentiment intérieur d'être obligé suffit toujours, à lui seul, à garantir qu'on tient un devoir moral authentique."
+        text: "Parce que le sentiment intérieur d'être obligé suffit toujours, à lui seul et en toute circonstance, à garantir qu'on tient bel et bien un devoir moral authentique, quelle que soit son origine réelle."
         correct: false
+        misconception: mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique
         feedback: >
           C'est exactement la position que le texte met en doute : « le
           simple sentiment intérieur d'être obligé ne suffit donc pas, à lui
@@ -520,6 +771,7 @@ items:
       - id: D
         text: "Parce qu'aucune des deux positions ne correspond à la définition juridique exacte du mot « devoir »."
         correct: false
+        misconception: mc.philo.devoir.legalite-confondue-moralite
         feedback: >
           Le texte ne tranche pas par un renvoi au droit : chaque réduction,
           prise seule, laisse une difficulté philosophique non résolue.
@@ -551,6 +803,7 @@ items:
       - id: A
         text: "Elle est imposée par une autorité extérieure à la raison — Dieu, la société, l'État — à laquelle il faut obéir sans la questionner."
         correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-confondu-heteronomie
         feedback: >
           C'est précisément l'erreur à éviter : Kant appelle cela
           l'hétéronomie (obéir à une loi reçue du dehors), l'inverse de sa
@@ -561,6 +814,7 @@ items:
       - id: C
         text: "Elle vient des inclinations et des désirs de chacun, que la raison se contente ensuite de mettre en forme."
         correct: false
+        misconception: mc.philo.devoir.devoir-confondu-avec-inclination
         feedback: >
           C'est l'inverse de la position kantienne : l'impératif catégorique
           écarte précisément les inclinations et désirs du critère moral,
@@ -568,6 +822,7 @@ items:
       - id: D
         text: "Elle n'a, chez Kant, aucun fondement réel dans la raison : ce n'est qu'un test formel arbitraire, sans autre justification."
         correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-juge-arbitraire
         feedback: >
           Le texte affirme au contraire que c'est « ma propre raison » qui
           se donne cette loi en testant elle-même la cohérence de ses
@@ -602,6 +857,7 @@ items:
       - id: B
         text: "Elle signifie que tout ce dont on est capable devient, de ce seul fait, un devoir à accomplir."
         correct: false
+        misconception: mc.philo.devoir.devoir-liberte-mal-articules
         feedback: >
           C'est l'inverse de l'implication posée : « tu dois, donc tu peux »
           part du devoir pour affirmer la capacité, pas l'inverse. Être
@@ -609,13 +865,15 @@ items:
       - id: C
         text: "Elle signifie que le devoir s'oppose à la liberté : plus on a de devoirs à accomplir, moins on est libre."
         correct: false
+        misconception: mc.philo.devoir.devoir-liberte-mal-articules
         feedback: >
           C'est exactement la thèse inverse de celle défendue par le texte :
           « le devoir ne s'oppose donc pas à la liberté : il la présuppose
           absolument ».
       - id: D
-        text: "Elle signifie que la liberté ne concerne que le choix entre plusieurs devoirs contradictoires, jamais le choix entre agir par devoir ou non."
+        text: "Elle signifie que la liberté ne concerne en réalité que le choix entre plusieurs devoirs éventuellement contradictoires entre eux, et jamais le choix plus fondamental entre agir par devoir ou ne pas agir par devoir du tout."
         correct: false
+        misconception: mc.philo.devoir.devoir-liberte-mal-articules
         feedback: >
           Le texte porte sur la possibilité même d'agir autrement, pas
           seulement sur un choix entre devoirs concurrents.
@@ -649,13 +907,15 @@ items:
       - id: B
         text: "Il s'agit de se demander si le devoir existe réellement, ou s'il n'est qu'une illusion sans fondement."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est confondre une question de suffisance avec une question
           d'existence. Le sujet ne met pas en doute que le devoir existe : il
           demande si agir par devoir suffit.
       - id: C
-        text: "Il s'agit de choisir entre la morale kantienne et la morale utilitariste, comme s'il fallait n'en retenir qu'une seule pour répondre."
+        text: "Il s'agit de choisir définitivement entre la morale kantienne et la morale utilitariste, comme s'il fallait nécessairement n'en retenir qu'une seule pour pouvoir répondre correctement à la question posée."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Réduire le sujet à un choix exclusif entre deux auteurs efface la
           question de suffisance : la démarche attendue articule les apports
@@ -663,6 +923,7 @@ items:
       - id: D
         text: "Il s'agit uniquement de définir ce que Kant entend par « bonne volonté », sans autre exigence d'analyse."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Restituer une seule définition ne répond pas à la question posée
           par « suffit-il », qui exige d'examiner si ce critère doit être
@@ -691,25 +952,28 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Est-ce qu'il suffit d'agir par devoir pour bien agir ?"
+        text: "Est-ce qu'il suffit, dans tous les cas, d'agir par devoir pour bien agir, comme le sujet le demande ?"
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est une reformulation quasi identique du sujet : elle ne fait
           apparaître aucune tension entre deux positions légitimes, elle
           répète la question posée.
       - id: B
-        text: "Le devoir kantien affirme que seule la bonne volonté est un bien sans restriction ; pourtant certains cas — le mensonge refusé même au meurtrier, le dévouement sans règle — semblent montrer qu'un devoir appliqué seul peut produire ou négliger ce que presque tout le monde jugerait moralement décisif : faut-il alors, en plus du devoir, autre chose pour bien agir ?"
+        text: "Le devoir kantien fait de la bonne volonté le seul bien inconditionnel ; mais refuser de mentir même pour sauver un innocent semble parfois négliger ce qui compte moralement : faut-il, en plus du devoir, autre chose pour bien agir ?"
         correct: true
       - id: C
-        text: "Le devoir kantien est la seule source valable de la moralité, et toute autre position doit lui être subordonnée."
+        text: "Le devoir kantien est la seule source valable de la moralité, et toute autre considération — conséquences, sentiments, circonstances, ou jugement d'autrui — doit lui être strictement subordonnée, en toutes circonstances et sans aucune exception admise."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est une thèse affirmée, pas une problématique : elle tranche
           d'emblée au lieu de faire apparaître la tension entre deux
           positions également légitimes en apparence.
       - id: D
-        text: "Kant a-t-il vécu à la même époque que Bergson, et cela explique-t-il leur désaccord ?"
+        text: "Kant a-t-il vécu à la même époque que Bergson, et cela suffit-il à expliquer pourquoi leurs conceptions respectives du devoir en viennent à autant diverger ?"
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           C'est une question biographique, sans rapport avec la tension
           conceptuelle que la problématique doit construire à partir des
@@ -744,6 +1008,7 @@ items:
       - id: B
         text: "Résumer une dernière fois la thèse kantienne, pour montrer qu'elle était en réalité la bonne réponse depuis le départ."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Un dépassement qui redonne simplement raison à la thèse n'en est
           pas un : il faut intégrer ce que l'antithèse a mis en évidence, pas
@@ -751,13 +1016,15 @@ items:
       - id: C
         text: "Constater que la thèse et l'antithèse se contredisent, et laisser cette contradiction ouverte sans chercher à l'articuler."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Constater une contradiction n'est pas la dépasser : le dépassement
           doit construire une position qui intègre ce que chaque partie a
           montré de vrai.
       - id: D
-        text: "Introduire un auteur entièrement nouveau, non mobilisé dans les parties précédentes, pour apporter un éclairage extérieur inédit."
+        text: "Introduire dans cette dernière partie un auteur entièrement nouveau, jamais mobilisé dans les parties précédentes du devoir, dans le seul but d'apporter un éclairage extérieur inédit et impressionnant, quitte à laisser sans réponse la tension pourtant construite avec soin dans les deux parties précédentes."
         correct: false
+        misconception: mc.philo.devoir.methode-dissertation-appliquee-mecaniquement
         feedback: >
           Le dépassement se construit à partir de ce que la thèse et
           l'antithèse ont déjà établi, pas par l'ajout d'un matériau
@@ -774,3 +1041,81 @@ items:
       chacune montré de vrai.
       **Le fil à ne pas perdre :** s'appuyer sur ce qui a déjà été construit
       dans les parties I et II.
+
+coverage_summary:
+  # Computed by loading this file with js-yaml and tallying every
+  # choices[].misconception value per item — an item counts once per
+  # misconception if ANY of its distractors carries that id (house
+  # convention, matching content/philo/la-liberte/items.yaml and
+  # content/philo/theorie-experience/items.yaml). This is a LEGACY end-bank
+  # (DEV-1..DEV-15 predate per-distractor tagging — task instruction)
+  # retrofitted in this pass: every one of the 45 distractors across the 15
+  # items now carries a real misconception id (no null tags). Per the
+  # recipe's "Honest coverage" judgment call, floor gaps below are reported
+  # truthfully rather than padded.
+  total_items: 15
+  floor: 3
+  floor_met: false
+  per_misconception:
+    mc.philo.devoir.faux-dilemme-contrainte-devoir-moral: 3
+    mc.philo.devoir.devoir-reduit-a-la-contrainte: 4
+    mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique: 2
+    mc.philo.devoir.legalite-confondue-moralite: 4
+    mc.philo.devoir.absence-valeur-morale-confondue-immoralite: 2
+    mc.philo.devoir.critere-consequentialiste-substitue-au-motif: 3
+    mc.philo.devoir.imperatif-categorique-confondu-heteronomie: 2
+    mc.philo.devoir.devoir-confondu-avec-inclination: 2
+    mc.philo.devoir.imperatif-categorique-juge-arbitraire: 1
+    mc.philo.devoir.critique-utilitariste-mal-identifiee: 2
+    mc.philo.devoir.morale-close-ouverte-mal-comprise: 1
+    mc.philo.devoir.devoir-liberte-mal-articules: 1
+    mc.philo.devoir.methode-dissertation-appliquee-mecaniquement: 3
+    mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante: 0
+  notes: >-
+    Every distractor across the 15 legacy items now carries a real
+    misconception id (no null tags) — the Gap-4 fix this pass exists to make.
+    5 of 14 models clear the ≥3 floor (faux-dilemme-contrainte-devoir-moral,
+    devoir-reduit-a-la-contrainte, legalite-confondue-moralite,
+    critere-consequentialiste-substitue-au-motif,
+    methode-dissertation-appliquee-mecaniquement). NINE do not, and
+    floor_met is reported honestly rather than padded: sentiment-suffit-a-
+    garantir-devoir-authentique (2, DEV-6/DEV-10), absence-valeur-morale-
+    confondue-immoralite (2, DEV-1/DEV-9), imperatif-categorique-confondu-
+    heteronomie (2, DEV-2/DEV-11), devoir-confondu-avec-inclination (2,
+    DEV-2/DEV-11), critique-utilitariste-mal-identifiee (2, DEV-3/DEV-4) are
+    real but thin in the legacy bank; imperatif-categorique-juge-arbitraire
+    (1, DEV-11), morale-close-ouverte-mal-comprise (1, DEV-4) and
+    devoir-liberte-mal-articules (1, DEV-12) are singletons — a follow-up
+    item pass should add 1-2 items each. coincidence-devoir-inclination-
+    jugee-suffisante (0) is a genuinely NEW axis this pass surfaces: it comes
+    from the r-bac Kant text's second example (la conservation de la vie —
+    docs/sujets/philo/le-devoir.md, 2023 rattrapage), a nuance this lesson's
+    R0-R3 body does not walk through directly, so no legacy item exercises
+    it — it is covered by checkpoints.yaml's cp-bac-devoir instead
+    (checkpoints do not count toward this floor, per house convention), and
+    is flagged here as the clearest item-authoring gap for a follow-up pass.
+    Several other under-floor models also receive checkpoint reinforcement
+    in checkpoints.yaml (cp-r1-rupture, cp-r2-devoir-par, cp-r2-autonomie,
+    cp-r3-formalisme, cp-r3-bergson, cp-r3-liberte) so every student meets
+    most of these models at least once in-lesson regardless of the
+    item-bank gap. This pass also consolidated several closely-related
+    distractor phrasings under one broader tag (e.g. all three DEV-3
+    distractors and DEV-4's choice D under critique-utilitariste-mal-
+    identifiee; the R0 "refuse the hypothesis" and "dissolve the tension"
+    distractors across DEV-5/DEV-6/DEV-7 under the single master tag
+    faux-dilemme-contrainte-devoir-moral) rather than minting one narrow tag
+    per phrasing — mirroring la-liberte's own broad "echapper-a-la-liberte"
+    bucket rather than la-liberte's more literal per-phrasing alternative.
+    Length rebalance (recipe's philo addendum): the legacy bank's correct
+    answer was the LONGEST option in 14 of the 15 items (93%) before this
+    pass — close to the campaign's cited ~97% historical tell. Distractors
+    were enriched with additional philosophical substance (an extra
+    justifying clause, a named premise, a consequence spelled out — never by
+    trimming the correct answer's content) so the correct choice is now
+    longest in only 1/15 (DEV-14; DEV-11 was already not-longest before this
+    pass), shortest in 2/15 (DEV-5, DEV-9), and a middle length in 12/15 —
+    verified programmatically (a throwaway js-yaml length-comparison script,
+    deleted after use), not eyeballed. DEV-14 is a documented, deliberate
+    exception (see its own solution note): the correct problématique must
+    name two concrete cases the tension rests on, which structurally cannot
+    be as short as a one-line reformulation or a biographical question.
