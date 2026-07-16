@@ -91,8 +91,11 @@ export function useChapter(): ChapterContextValue {
 }
 
 // ── URL + deep-link resolution (client-only) ────────────────────────────────
+// Exported for AttemptEvents.tsx's ChapterVisitRecorder, whose first-run
+// deep-link guard must resolve the URL/hash EXACTLY the way this shell does
+// (a re-implementation would drift). No behavior change to the shell itself.
 
-function readChapterFromLocation(total: number): number {
+export function readChapterFromLocation(total: number): number {
   if (typeof window === "undefined") return 0;
   const params = new URLSearchParams(window.location.search);
   const raw = params.get("chapitre");

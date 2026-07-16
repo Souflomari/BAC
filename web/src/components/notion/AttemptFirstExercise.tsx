@@ -34,6 +34,7 @@ import type { NotionExercise, DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { Derivation } from "./Derivation";
+import { useAttemptRecorder } from "./AttemptEvents";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose). */
 function MdBlock({ children, className }: { children: string; className?: string }) {
@@ -56,6 +57,7 @@ function Question({
   reasoning,
   steps,
   qid,
+  exerciseId,
 }: {
   index: number;
   part?: string;
@@ -63,8 +65,20 @@ function Question({
   reasoning: string;
   steps?: DerivationStep[];
   qid: string;
+  exerciseId: string;
 }) {
   const [revealed, setRevealed] = useState(false);
+  const { recordExerciseReveal } = useAttemptRecorder();
+
+  function handleReveal() {
+    if (revealed) return;
+    setRevealed(true);
+    // Attempt-event write path (Lane E): the self-declared attempt commit is
+    // the honest observable — recorded as kind "exercise_reveal" with
+    // item_id "<exercise_id>:<question_id>" (nulls for choice/correctness,
+    // per draft-048). Fire-and-forget, inert in off/mock builds.
+    recordExerciseReveal(exerciseId, qid);
+  }
 
   return (
     <>
@@ -90,7 +104,7 @@ function Question({
                     earned, not celebrated. */}
                 <button
                   type="button"
-                  onClick={() => setRevealed(true)}
+                  onClick={handleReveal}
                   className={cn(
                     "inline-flex items-center gap-1.5 px-3 py-2",
                     "min-h-[48px] rounded-md",
@@ -164,6 +178,7 @@ export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise })
           <Question
             key={q.id}
             qid={q.id}
+            exerciseId={exercise.id}
             index={i + 1}
             part={q.part}
             stem={q.stem}

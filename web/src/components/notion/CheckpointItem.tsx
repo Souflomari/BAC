@@ -44,6 +44,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/utils";
 import { ChoiceButton, MathText, ResultRow } from "@/components/notion/ChoiceButton";
 import { shuffledChoices } from "@/lib/shuffle";
+import { useAttemptRecorder } from "@/components/notion/AttemptEvents";
 
 // ── Main CheckpointItem component ─────────────────────────────────────────────
 
@@ -55,6 +56,7 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
   const baseId = useId();
+  const { recordCheckpointAnswer } = useAttemptRecorder();
 
   // Deterministic per-item shuffle — see McqItem.tsx for the full rationale.
   const choices = useMemo(
@@ -66,6 +68,9 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
     if (answered) return;
     setSelectedId(choiceId);
     setAnswered(true);
+    // Attempt-event write path (Lane E) — same shape as McqItem: authored
+    // choices as the frame of reference, fire-and-forget, inert off-mode.
+    recordCheckpointAnswer(item.id, item.choices, choiceId);
   }
 
   const selectedChoice = choices.find((c) => c.id === selectedId);

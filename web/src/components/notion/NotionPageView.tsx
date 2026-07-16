@@ -29,6 +29,7 @@ import { NotionBody } from "@/components/notion/NotionBody";
 import { buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
 import { ChapterShell, ChapterPosition } from "@/components/notion/ChapterShell";
+import { AttemptEventProvider, ChapterVisitRecorder } from "@/components/notion/AttemptEvents";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { cn } from "@/lib/utils";
@@ -265,6 +266,12 @@ export function NotionPageView({
           below are the ONLY things ChapterShell toggles visibility on — the
           shell itself renders no lesson content of its own. */}
       <ChapterShell totalChapters={totalChapters}>
+        {/* Attempt-event wiring (tutor-first plan, Lane E): the provider
+            gives McqItem/CheckpointItem/AttemptFirstExercise the notion id;
+            the recorder emits one visit event per chapter activation. Both
+            are behaviorally inert in off/mock builds (emitter hard-gate). */}
+        <AttemptEventProvider notionId={`${meta.subject}/${meta.slug}`}>
+        <ChapterVisitRecorder />
         <div className="notion-page-grid">
           {lessonMd ? (
             <MarginRail lessonMd={lessonMd} hasItems={false} />
@@ -333,6 +340,7 @@ export function NotionPageView({
             )}
           </div>
         </div>
+        </AttemptEventProvider>
       </ChapterShell>
     </PageShell>
   );

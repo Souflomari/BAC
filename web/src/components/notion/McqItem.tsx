@@ -43,6 +43,7 @@ import type { NotionItem } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { ChoiceButton, MathText, ResultRow } from "@/components/notion/ChoiceButton";
 import { shuffledChoices } from "@/lib/shuffle";
+import { useAttemptRecorder } from "@/components/notion/AttemptEvents";
 
 // ── Main McqItem component ────────────────────────────────────────────────────
 interface McqItemProps {
@@ -55,6 +56,7 @@ export function McqItem({ item, index }: McqItemProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
   const baseId = useId();
+  const { recordItemAnswer } = useAttemptRecorder();
 
   // Deterministic per-item shuffle (seeded by the item's own globally-unique
   // id) — same order on server render and client hydration, stable across
@@ -69,6 +71,11 @@ export function McqItem({ item, index }: McqItemProps) {
     if (answered) return;
     setSelectedId(choiceId);
     setAnswered(true);
+    // Attempt-event write path (Lane E): fire-and-forget, from the AUTHORED
+    // choices (item.choices — the shuffle reorders a copy, so the authored
+    // array is the payload's stable frame of reference). Inert in off/mock
+    // builds; never throws into the learning session.
+    recordItemAnswer(item.id, item.choices, choiceId);
   }
 
   const selectedChoice = choices.find((c) => c.id === selectedId);

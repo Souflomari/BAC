@@ -2229,6 +2229,81 @@ try {
     else console.log(`  ✓ data-reco-source ∈ {${KNOWN_RECO_SOURCES.join(", ")}} (found: ${sources.join(", ")})`);
   }
 
+  // (Attempt-event write path, Lane E) OFF-MODE NETWORK SILENCE: the answer
+  // components now call the attempt-event emitter (McqItem/CheckpointItem/
+  // AttemptFirstExercise + ChapterVisitRecorder), and the emitter's contract
+  // is a HARD no-op outside live mode (AUTH-SPEC §5: the off build is
+  // byte-behavior identical). This sweep proves it against the real rendered
+  // app: exercise every emit surface — chapter navigation, an MCQ answer, a
+  // checkpoint answer — while intercepting ALL requests; assert zero calls
+  // to record-notion-event (or any /functions/v1/ endpoint). If this ever
+  // fires, the off build is leaking student-interaction traffic — an
+  // honest-state and privacy regression at once.
+  {
+    console.log(`\n[${NOTION}] SWEEP: attempt-event emitter — OFF mode emits zero network traffic`);
+    const epage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const emitterCalls = [];
+    epage.on("request", (req) => {
+      const url = req.url();
+      if (url.includes("record-notion-event") || url.includes("/functions/v1/")) {
+        emitterCalls.push(url);
+      }
+    });
+    await epage.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
+
+    // Surface 1: chapter navigation (ChapterVisitRecorder fires on activation).
+    await epage.keyboard.press("ArrowRight");
+    await epage.waitForTimeout(150);
+
+    // Surfaces 2 + 3: answer an MCQ item and a checkpoint. Chapters other
+    // than the active one are `hidden` (ChapterShell), so only VISIBLE
+    // choice buttons are candidates — walk forward through chapters until
+    // one of each has been answered (rlc-serie has both; fail if neither
+    // surface was ever exercised, since then the sweep proved nothing).
+    let answeredMcq = false;
+    let answeredCheckpoint = false;
+    for (let hop = 0; hop < 12 && !(answeredMcq && answeredCheckpoint); hop++) {
+      if (!answeredMcq) {
+        const btn = epage
+          .locator("[data-chapter-active='true'] [data-item-id] ul[aria-label^='Choix pour la question'] button:visible")
+          .first();
+        if ((await btn.count()) > 0) {
+          await btn.click({ timeout: 3000 });
+          answeredMcq = true;
+        }
+      }
+      if (!answeredCheckpoint) {
+        const btn = epage
+          .locator("[data-chapter-active='true'] [aria-label='Vérifie ta compréhension'] ul[aria-label='Choix'] button:visible")
+          .first();
+        if ((await btn.count()) > 0) {
+          await btn.click({ timeout: 3000 });
+          answeredCheckpoint = true;
+        }
+      }
+      if (!(answeredMcq && answeredCheckpoint)) {
+        await epage.keyboard.press("ArrowRight");
+        await epage.waitForTimeout(120);
+      }
+    }
+
+    await epage.waitForTimeout(400); // outlive the emitter's fire-and-forget dispatch
+    await epage.close();
+
+    checks++;
+    if (!answeredMcq && !answeredCheckpoint) {
+      failures += fail("sweep exercised NO answer surface (no visible MCQ or checkpoint found) — proves nothing");
+    } else if (emitterCalls.length > 0) {
+      failures += fail(
+        `OFF-mode build sent ${emitterCalls.length} emitter request(s): ${emitterCalls.slice(0, 3).join(", ")}`
+      );
+    } else {
+      console.log(
+        `  ✓ chapter nav + ${answeredMcq ? "MCQ answer" : "(no MCQ reached)"} + ${answeredCheckpoint ? "checkpoint answer" : "(no checkpoint reached)"} → 0 requests to record-notion-event`
+      );
+    }
+  }
+
   await browser.close();
   console.log(`\n━━ dom-truth: ${checks} checks, ${failures} failure(s) ━━`);
   process.exitCode = failures > 0 ? 1 : 0;
