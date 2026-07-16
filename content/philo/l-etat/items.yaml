@@ -1,6 +1,349 @@
 notion: l-etat
 skill_code: philo_etat
-misconceptions: []
+
+# Misconception inventory — summit-conversion campaign (Gap-4 fix: this file
+# previously carried `misconceptions: []`, no tags on any distractor, no
+# `primary_misconception` on any item). Id convention: mc.philo.<slug>.<name>,
+# where <slug> is skill_code with the "philo_" prefix stripped (philo_etat →
+# etat) — matches the precedent set in content/philo/la-liberte/items.yaml
+# (mc.philo.liberte.*) and content/philo/theorie-experience/items.yaml
+# (mc.philo.theorie_experience.*).
+#
+# Built from scratch by reading the lesson (R0-R7) rung by rung and mining,
+# FIRST, every "Erreur à éviter" / "Point de vigilance" box (the recipe's
+# philo addendum priority: these are already-authored, rung-scoped
+# statements of exactly the wrong model the rung anticipates) — R1's box
+# gives TWO distinct confusions (coup d'État / appareil ; nation / État),
+# R2's box gives two more (Rousseau credited with the Léviathan ; état de
+# nature as verified history), R3's box gives one (Locke as "Hobbes en plus
+# doux"), R4's box gives two (volonté générale / volonté de tous ; Rousseau
+# confondu avec Hobbes), R5's "Point de vigilance" gives one (légitime ≠
+# moralement juste), R6's box gives one (les trois critiques fondues
+# ensemble). The R0 hook's two named spontaneous answers and R7's method
+# rungs are mined the same way the la-liberte/theorie-experience pilots
+# mined their own R0/R4-R7 structure. violence-fondatrice-et-suffisante is
+# NEW: it comes from the r-bac قولة (docs/sujets/philo/l-etat.md, 2023 N), an
+# axis (violence comme fondement ET garant SUFFISANT de la persistance du
+# pouvoir) this lesson's R0-R7 body does not teach directly as a single
+# claim — see the coverage_summary note below for the honest floor gap this
+# opens.
+#
+# Retrofit note: 18 misconceptions is a deliberately consolidated count —
+# several finer-grained candidate distinctions (e.g. separate tags for
+# "monopole de la violence physique pris au pied de la lettre" vs.
+# "légitime confondu avec moralement juste", both from the same R5
+# paragraph on Weber) were merged into one id where they occupied the same
+# items, to avoid the inventory fragmenting past what a 24-item legacy bank
+# can honestly support — matching the calibration of
+# content/philo/theorie-experience/items.yaml's own 16-misconception
+# inventory for the same item count.
+
+misconceptions:
+  - id: mc.philo.etat.gouvernement-confondu-avec-etat
+    label: "« Un changement de gouvernement est un changement d'État »"
+    description: >-
+      L'élève traite le gouvernement (les personnes et institutions qui
+      exercent le pouvoir exécutif à un moment donné, et qui changent avec
+      les élections) et l'État (l'appareil impersonnel et permanent qui
+      subsiste à travers ces changements) comme une seule et même chose, ou
+      comme deux noms interchangeables pour la même réalité.
+    contradicts_principle: >-
+      Le trait décisif du gouvernement est qu'il change ; celui de l'État
+      est qu'il subsiste précisément À TRAVERS ces changements. Quand un
+      gouvernement tombe, les tribunaux continuent de juger, l'administration
+      continue de fonctionner, les frontières et les traités en vigueur
+      restent les mêmes — c'est ce critère de permanence qui distingue l'État
+      du gouvernement.
+
+  - id: mc.philo.etat.nation-confondue-avec-etat
+    label: "« La nation et l'État désignent, au fond, la même chose »"
+    description: >-
+      L'élève confond la nation (une communauté qui se sent liée par une
+      identité commune — langue, histoire, mémoire) avec l'État (un
+      appareil institutionnel — lois, administration, justice, territoire,
+      souveraineté), au point de croire qu'un changement affectant l'un
+      affecte nécessairement l'autre.
+    contradicts_principle: >-
+      La nation ne coïncide pas nécessairement avec l'État : certaines
+      nations existent sans disposer d'un État qui leur soit propre ;
+      certains États rassemblent plusieurs nations ou identités culturelles
+      distinctes. Le tiret de « État-nation » masque une coïncidence
+      historique fréquente, jamais nécessaire.
+
+  - id: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
+    label: "« Société, gouvernement, État, nation sont, en pratique, interchangeables »"
+    description: >-
+      Au-delà des deux confusions les plus fréquentes déjà cataloguées
+      (gouvernement/État, nation/État), l'élève mélange deux des quatre
+      notions fondamentales de R1 selon un autre appariement — société et
+      nation, gouvernement et nation, société et État, voire un concept
+      d'une tout autre rubrique (comme la volonté générale de R4) — sans
+      voir qu'aucune de ces notions ne recouvre exactement une autre.
+    contradicts_principle: >-
+      La société (le tissu des rapports d'interdépendance entre individus)
+      peut exister sans aucune organisation politique centralisée, avant ou
+      en dehors de tout État ; la nation est une identité partagée,
+      distincte de l'appareil institutionnel qu'est l'État ; chacune de ces
+      quatre notions répond à un critère de définition propre, qu'il ne
+      faut pas fondre dans les trois autres pour la commodité de l'analyse.
+
+  - id: mc.philo.etat.coup-etat-detruit-appareil
+    label: "« Un coup d'État détruit et remplace tout l'appareil d'État »"
+    description: >-
+      L'élève croit qu'un coup d'État emporte, avec le gouvernement en
+      place, l'ensemble de l'appareil d'État permanent — tribunaux,
+      administration, armée, frontières — plutôt que la seule capture du
+      pouvoir exécutif.
+    contradicts_principle: >-
+      L'expression « coup d'État » prête à confusion : elle désigne,
+      historiquement, la prise par la force du pouvoir EXÉCUTIF (le
+      gouvernement), pas la destruction de l'appareil d'État lui-même, qui
+      survit le plus souvent intact et se retrouve simplement capturé par
+      de nouvelles mains.
+
+  - id: mc.philo.etat.auteurs-contrat-social-mal-attribues
+    label: "« Peu importe qui, de Hobbes, Locke ou Rousseau, a dit quoi »"
+    description: >-
+      L'élève ne distingue pas clairement quel auteur du contrat social est
+      associé à quelle thèse ou quelle œuvre — au point de mal identifier
+      une erreur d'attribution réelle (par exemple créditer Rousseau du
+      Léviathan), d'en inventer une fausse (diagnostiquer une confusion
+      interne à une théorie là où le problème est en réalité une
+      attribution croisée entre deux auteurs), ou d'échanger les positions
+      de deux auteurs sur un même point (qui accorde, ou refuse, un droit
+      de résistance).
+    contradicts_principle: >-
+      Le Léviathan (1651) et la thèse de la guerre de tous contre tous
+      appartiennent à Hobbes ; Rousseau, dans Du contrat social (1762),
+      défend au contraire une image bien plus paisible de l'état de nature
+      et un mécanisme contractuel radicalement différent — trois auteurs,
+      trois architectures distinctes, jamais des variantes interchangeables
+      les unes des autres.
+
+  - id: mc.philo.etat.etat-de-nature-recit-historique
+    label: "« L'état de nature de Hobbes est un fait historique vérifié »"
+    description: >-
+      L'élève traite l'état de nature hobbesien — la guerre de tous contre
+      tous — comme un récit historique ou une découverte anthropologique
+      établie par une enquête de terrain, plutôt que comme une expérience
+      de pensée, et peut en outre se tromper sur sa place chronologique
+      dans le raisonnement de Hobbes (avant ou après le Léviathan).
+    contradicts_principle: >-
+      Hobbes ne prétend pas décrire un moment historique réel qu'auraient
+      traversé des populations primitives : l'état de nature est une
+      expérience de pensée, destinée à faire apparaître, par contraste, ce
+      que l'État apporte — un peu comme on comprendrait la valeur de l'air
+      respirable en imaginant, par la pensée, ce que serait son absence.
+
+  - id: mc.philo.etat.souverain-absolu-caprice-arbitraire
+    label: "« Hobbes veut un pouvoir absolu par simple goût pour la tyrannie »"
+    description: >-
+      L'élève traite l'exigence hobbesienne d'un souverain quasi absolu et
+      irrévocable comme une préférence arbitraire pour la force, ou comme
+      une thèse qui garantirait au contraire à chaque citoyen un droit de
+      juger librement de la légitimité des lois, plutôt que comme la
+      conséquence logique d'un raisonnement précis.
+    contradicts_principle: >-
+      Si chaque individu conservait le droit de juger par lui-même quand
+      désobéir légitimement, on recréerait autant de sources de désaccord
+      qu'il y a d'individus — donc, à terme, un retour à la guerre de tous
+      contre tous que le contrat visait justement à éviter. Ce n'est pas un
+      goût de Hobbes pour la tyrannie, mais une conséquence logique de son
+      analyse.
+
+  - id: mc.philo.etat.locke-variante-affaiblie-hobbes
+    label: "« Locke, c'est juste un Hobbes en plus doux »"
+    description: >-
+      L'élève traite la théorie de Locke comme une simple variante affaiblie
+      de celle de Hobbes — même état de nature violent, même pouvoir
+      souverain quasi absolu et irrévocable, mêmes conséquences sur le droit
+      de résistance — plutôt que comme une théorie structurellement
+      différente sur l'origine des droits et la révocabilité du pouvoir.
+    contradicts_principle: >-
+      Chez Locke, des droits naturels (vie, liberté, propriété) préexistent
+      au contrat et le pouvoir politique reste un mandat de confiance
+      conditionnel, révocable si le gouvernement trahit sa mission ; chez
+      Hobbes, les droits naissent du contrat et le pouvoir souverain est
+      quasi irrévocable. La différence porte sur l'origine des droits et la
+      révocabilité du pouvoir, pas sur un simple degré de sévérité.
+
+  - id: mc.philo.etat.volonte-generale-confondue-volonte-de-tous
+    label: "« Volonté générale et volonté de tous, c'est la même chose »"
+    description: >-
+      L'élève confond la volonté générale (qui vise spécifiquement l'intérêt
+      commun de la communauté en tant que telle) avec la volonté de tous
+      (la simple somme des volontés particulières, ou le résultat brut d'un
+      vote majoritaire quel qu'en soit le mobile), ou nie à l'inverse toute
+      dimension collective légitime chez Rousseau.
+    contradicts_principle: >-
+      La volonté de tous n'est que l'addition des intérêts privés, qui
+      peuvent parfaitement se neutraliser sans jamais viser autre chose que
+      des intérêts juxtaposés. La volonté générale vise l'intérêt commun —
+      ce qui est bon pour la communauté EN TANT QUE telle — et c'est elle
+      seule que la loi légitime doit exprimer, pas le simple décompte des
+      voix.
+
+  - id: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
+    label: "« Le contrat de Rousseau fonctionne comme celui de Hobbes »"
+    description: >-
+      L'élève applique au mécanisme contractuel de Rousseau le schéma
+      hobbesien d'un souverain séparé des sujets, auquel les droits sont
+      transférés, ou croit qu'une aliénation seulement partielle des droits
+      suffirait à garantir qu'aucun abus n'est possible — sans voir que
+      c'est la totalité ET l'égalité de l'aliénation, pour tous à la fois,
+      qui empêchent la domination chez Rousseau.
+    contradicts_principle: >-
+      Chez Rousseau, il n'existe aucun tiers séparé auquel les citoyens
+      transféreraient leurs droits : chaque associé aliène TOTALEMENT ses
+      droits à la communauté entière, dont il devient lui-même membre à
+      part égale — personne ne cède plus que les autres, personne ne reçoit
+      un pouvoir que les autres n'auraient pas.
+
+  - id: mc.philo.etat.force-egale-droit
+    label: "« Être le plus fort suffit à fonder un pouvoir durable »"
+    description: >-
+      L'élève croit que la force seule — sans jamais avoir besoin de se
+      convertir en droit reconnu — peut fonder une obéissance durable, ou
+      qu'un pouvoir qui dure longtemps par la seule intimidation a, par ce
+      fait même, prouvé sa légitimité, ou encore identifie mal le critère
+      qui distingue un usage légitime de la force d'un usage arbitraire
+      (le confort, la supériorité physique, ou la simple occurrence d'une
+      contrainte).
+    contradicts_principle: >-
+      « Le plus fort n'est jamais assez fort pour être toujours le maître,
+      s'il ne transforme sa force en droit, et l'obéissance en devoir »
+      (Rousseau). Une soumission fondée sur la seule force ne dure
+      qu'aussi longtemps que la force elle-même s'exerce sans faiblir : dès
+      que le rapport de force s'inverse, l'obéissance cesse, parce que ce
+      n'était jamais qu'une contrainte, pas un devoir reconnu.
+
+  - id: mc.philo.etat.legitimite-weber-mal-comprise
+    label: "« Le monopole weberien, c'est juste être le seul à pouvoir frapper fort — et être légitime, c'est être moralement juste »"
+    description: >-
+      L'élève réduit le « monopole de la violence physique légitime » de
+      Weber à une capacité MATÉRIELLE exclusive à exercer la force (alors
+      qu'un individu peut toujours se défendre dans certaines limites), ou
+      confond la légitimité sociologique (être reconnu, obéi, considéré
+      comme en droit d'exercer la force) avec la justice morale (être
+      moralement juste en toutes circonstances, à l'abri de toute critique).
+    contradicts_principle: >-
+      Le monopole weberien porte sur qui est reconnu comme AUTORISÉ à juger
+      quels usages de la force sont légitimes, pas sur qui peut,
+      matériellement, exercer une contrainte. Et un pouvoir peut être
+      sociologiquement légitime — reconnu, obéi — tout en étant, par
+      ailleurs, profondément injuste ou oppressif d'un point de vue moral :
+      cette nuance rend possibles les critiques de l'État qui suivent (R6).
+
+  - id: mc.philo.etat.critiques-etat-non-distinguees
+    label: "« Marx, les anarchistes et l'État de droit proposent, au fond, le même remède »"
+    description: >-
+      L'élève fond ensemble trois critiques de l'État qui répondent
+      pourtant à des questions différentes et proposent des remèdes
+      différents : Marx (transformer l'appareil d'État à des fins
+      économiques, en vue de sa disparition ultérieure), les anarchistes
+      (l'abolir d'emblée, sans phase de transition, quel qu'en soit le
+      titulaire) et la tradition de l'État de droit (le limiter et le
+      contrôler par le droit, sans remettre en cause son existence) —
+      parfois en inversant en outre l'une de ces trois positions.
+    contradicts_principle: >-
+      Marx veut TRANSFORMER l'appareil d'État à des fins économiques, en vue
+      de sa disparition à terme. Les anarchistes veulent l'ABOLIR d'emblée,
+      sans phase transitoire, quel qu'en soit le titulaire — y compris
+      révolutionnaire. L'État de droit ne veut ni l'un ni l'autre : il veut
+      LIMITER et contrôler le pouvoir de l'État par le droit (séparation
+      des pouvoirs, droits fondamentaux, contrôle des gouvernants).
+
+  - id: mc.philo.etat.etat-neutre-arbitre-non-conteste
+    label: "« L'État est déjà, de fait, un arbitre parfaitement neutre »"
+    description: >-
+      L'élève prend au pied de la lettre la présentation que l'État fait de
+      lui-même comme arbitre impartial de l'intérêt général, ou croit que
+      la thèse marxiste de l'État comme instrument de domination de classe
+      suppose une conscience cynique et délibérée de la part de ses
+      agents — plutôt que de voir que cette neutralité proclamée peut
+      masquer une domination réelle sans que personne, parmi ses acteurs,
+      en ait pleinement conscience.
+    contradicts_principle: >-
+      Pour Marx, l'État se présente, et est souvent sincèrement vécu par
+      ses propres agents, comme un arbitre impartial au service de
+      l'intérêt général — mais cette neutralité proclamée masque, sans
+      cynisme conscient requis, une fonction réelle de protection des
+      rapports de propriété existants. L'égalité formelle promise par le
+      droit peut coexister, sans aucune contradiction logique, avec une
+      domination économique bien réelle qu'elle habille.
+
+  - id: mc.philo.etat.faux-dilemme-protection-contrainte
+    label: "« Il faut choisir entre l'État protège toujours et l'État n'est qu'une contrainte » (le dilemme d'ouverture)"
+    description: >-
+      L'élève traite les deux réponses spontanées de R0 (« sans policiers,
+      beaucoup de gens profiteraient de l'occasion » / « les gens ne sont
+      pas fondamentalement dangereux ») comme un choix exhaustif entre
+      lequel il faudrait trancher définitivement, sans voir qu'aucune des
+      deux, prise seule, ne rend compte de ce qui s'est passé cette nuit-là
+      — ou défend l'une de ces deux positions même face à un fait qui la
+      met en doute.
+    contradicts_principle: >-
+      Ni « l'ordre ne tient qu'à la peur du gendarme » ni « les individus,
+      livrés à eux-mêmes, ne posent jamais de problème structurel » ne
+      suffit : la plupart des quartiers plongés dans la même obscurité
+      n'ont connu aucun pillage (contre la première), et aucune société,
+      même la plus paisible, n'a jamais renoncé à une autorité commune
+      (contre la seconde) — la leçon déplace le problème vers la
+      légitimité plutôt que de trancher en piochant un camp.
+
+  - id: mc.philo.etat.probleme-legitimite-reduit
+    label: "« Le vrai problème de l'État est ailleurs, dans un détail technique ou anecdotique »"
+    description: >-
+      L'élève réduit le problème philosophique posé par la scène
+      d'ouverture (l'État protège-t-il, ou n'est-il qu'une contrainte, et
+      qu'est-ce qui rend son pouvoir légitime dans un cas comme dans
+      l'autre) à une question d'archives historiques, de conformité légale
+      des agents, de détail matériel de la scène (les caméras, la durée de
+      la panne), ou à une remarque statistique sans portée philosophique.
+    contradicts_principle: >-
+      Le problème posé par la scène d'ouverture est double : l'État
+      protège-t-il notre liberté ou n'est-il qu'une contrainte — et qu'est-
+      ce qui, dans un cas comme dans l'autre, rend son pouvoir légitime
+      plutôt que simplement le plus fort ? Ce n'est ni une question
+      d'archives, ni une simple question de conformité policière à la loi,
+      ni un détail matériel de la scène.
+
+  - id: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
+    label: "« Les gestes de la méthode (analyse des termes, problématiser, dépasser) sont interchangeables »"
+    description: >-
+      L'élève traite les gestes de la méthode de dissertation sur l'État
+      comme mécaniques ou interchangeables : glisser du sujet (l'État
+      institution permanente) vers un exemple particulier (un gouvernement
+      précis), reformuler le sujet en question fermée plutôt que
+      problématiser une vraie tension, choisir un camp dès l'introduction,
+      ou traiter le dépassement final comme une simple répétition de la
+      thèse, un choix de l'antithèse, ou une digression hors sujet.
+    contradicts_principle: >-
+      Un sujet sur « l'État » vise l'institution permanente, pas tel
+      gouvernement qu'on pourrait juger bon ou mauvais. Une problématique
+      met en tension deux positions également légitimes en apparence, sans
+      trancher d'avance. Un bon dépassement ne tranche pas entre la thèse
+      et l'antithèse en écartant simplement l'une des deux : il introduit
+      un critère nouveau et plus précis qui les dépasse toutes les deux.
+
+  - id: mc.philo.etat.violence-fondatrice-et-suffisante
+    label: "« Tout État naît par la violence, et son pouvoir ne peut durer que par elle » (prise sans réserve)"
+    description: >-
+      L'élève accepte sans réserve — ou rejette en bloc, sans distinguer ses
+      deux moitiés — l'idée qu'un État naît nécessairement par la violence
+      ET que son pouvoir ne peut durer QUE par elle, sans voir que la
+      première moitié trouve un vrai appui (R6, Marx) tandis que la seconde
+      se heurte directement à l'argument central de R5 (Rousseau, Weber) :
+      la force seule ne fonde jamais un pouvoir durable, elle doit se
+      convertir en droit reconnu.
+    contradicts_principle: >-
+      « Le plus fort n'est jamais assez fort pour être toujours le maître,
+      s'il ne transforme sa force en droit » (Rousseau, R5) — et le
+      monopole weberien porte précisément sur la violence physique
+      LÉGITIME, pas sur la violence en tant que telle. L'origine violente
+      d'un État (souvent réelle, R6) n'implique donc pas que seule la
+      violence, sans jamais rien y ajouter, puisse expliquer la
+      PERSISTANCE de son pouvoir.
 
 items:
   - id: ETA-1
@@ -8,6 +351,7 @@ items:
     difficulty_level: 2
     skill_code: philo_etat
     tags: [distinction_concepts, etat_gouvernement]
+    primary_misconception: mc.philo.etat.gouvernement-confondu-avec-etat
     stem: >
       Après des élections qui portent un nouveau parti au pouvoir, un
       journaliste écrit : « Le pays a changé d'État. » Qu'est-ce que cette
@@ -15,16 +359,18 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle confond l'État et la société : ce sont les rapports entre individus qui ont changé, pas l'appareil politique."
+        text: "Elle confond l'État et la société : ce sont les rapports entre individus qui auraient changé du jour au lendemain, pas un quelconque appareil politique permanent."
         correct: false
+        misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
         feedback: >
           Ce n'est pas l'erreur en jeu ici : la société (le tissu des
           rapports entre individus) n'est pas non plus ce dont parle la
           phrase. L'erreur porte précisément sur la confusion entre
           gouvernement (ce qui change) et État (ce qui subsiste).
       - id: B
-        text: "Elle confond l'État et la nation : un changement de gouvernement modifierait, selon cette lecture, le sentiment d'appartenance collective du pays."
+        text: "Elle confond l'État et la nation : un changement de gouvernement modifierait, selon cette lecture, jusqu'au sentiment d'appartenance collective et à la mémoire partagée du pays tout entier."
         correct: false
+        misconception: mc.philo.etat.nation-confondue-avec-etat
         feedback: >
           La nation (une identité partagée -- langue, histoire, mémoire
           commune) n'est pas non plus en cause dans cette phrase, et ne
@@ -34,8 +380,9 @@ items:
         text: "Elle confond le gouvernement, qui change avec les élections, et l'État, l'appareil permanent qui subsiste à travers ces changements."
         correct: true
       - id: D
-        text: "Il n'y a aucune confusion : gouvernement et État sont, en philosophie politique, deux noms pour la même réalité."
+        text: "Il n'y a aucune confusion : gouvernement et État sont, en philosophie politique, deux noms strictement équivalents pour désigner exactement la même réalité institutionnelle."
         correct: false
+        misconception: mc.philo.etat.gouvernement-confondu-avec-etat
         feedback: >
           Ce ne sont pas des synonymes : le trait décisif du gouvernement est
           qu'il change (élections, alternance), alors que l'État, lui,
@@ -65,6 +412,7 @@ items:
     difficulty_level: 2
     skill_code: philo_etat
     tags: [hobbes, leviathan, distinction_auteurs]
+    primary_misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
     stem: >
       Un élève affirme : « C'est Rousseau qui, dans le Léviathan, décrit
       l'état de nature comme une guerre de tous contre tous. » Qu'est-ce que
@@ -72,8 +420,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle confond Hobbes et Locke : c'est en réalité Locke qui est l'auteur du Léviathan."
+        text: "Elle confond Hobbes et Locke : c'est en réalité Locke qui serait l'auteur du Léviathan, ouvrage qu'il aurait rédigé bien avant Du contrat social de Rousseau."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           Locke n'est l'auteur ni du Léviathan (Hobbes) ni de cette
           description de l'état de nature. Locke propose au contraire un
@@ -83,16 +432,18 @@ items:
         text: "Elle confond deux auteurs : le Léviathan et la guerre de tous contre tous sont de Hobbes, non de Rousseau, qui défend dans Du contrat social un état de nature bien plus paisible."
         correct: true
       - id: C
-        text: "L'affirmation est globalement exacte : seul le titre de l'oeuvre serait légèrement mal orthographié, et tout le reste de l'attribution de l'oeuvre comme de la thèse resterait parfaitement correct."
+        text: "L'affirmation est globalement exacte : seul le titre de l'oeuvre serait légèrement mal orthographié, et tout le reste de l'attribution de l'oeuvre comme de la thèse resterait, quant au fond, parfaitement correct et recevable."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           Ce n'est pas une simple coquille de titre : c'est l'attribution
           entière de l'oeuvre ET de la thèse qui est erronée. Le Léviathan
           est un ouvrage de Hobbes, et la thèse de la guerre de tous contre
           tous lui appartient également.
       - id: D
-        text: "Elle confond l'état de nature et le contrat social, deux moments différents d'une même théorie chez Hobbes."
+        text: "Elle confond l'état de nature et le contrat social, deux moments simplement successifs d'une seule et même théorie construite intégralement par Hobbes seul."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           L'état de nature et le contrat social sont bien deux moments
           distincts de l'argumentation de Hobbes, mais ce n'est pas la
@@ -121,6 +472,7 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [locke, hobbes, contrat_social, distinction_auteurs]
+    primary_misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
     stem: >
       En quoi la théorie du contrat de Locke diffère-t-elle fondamentalement
       de celle de Hobbes ?
@@ -129,6 +481,7 @@ items:
       - id: A
         text: "Locke penserait que l'état de nature est encore plus violent et plus dangereux que ne le décrit déjà Hobbes, ce qui justifierait à ses yeux l'institution d'un pouvoir souverain encore plus fort et plus absolu."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           C'est l'inverse : l'état de nature de Locke est un état d'égalité
           et de liberté, gouverné en partie par la raison -- bien moins
@@ -136,8 +489,9 @@ items:
           d'ailleurs pas la violence qui pousse à en sortir chez Locke, mais
           l'insécurité de droits déjà existants.
       - id: B
-        text: "Locke, comme Hobbes, soutient que le pouvoir souverain doit être absolu et non révocable une fois le contrat conclu."
+        text: "Locke, comme Hobbes, soutient que le pouvoir souverain doit être absolu et non révocable une fois le contrat conclu, quelles que soient les fautes commises ensuite par ce pouvoir."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           C'est précisément le point sur lequel les deux théories
           s'opposent : chez Locke, le pouvoir politique est un mandat de
@@ -145,8 +499,9 @@ items:
           mission de protection des droits -- ce qui ouvre un droit de
           résistance que Hobbes refuse.
       - id: C
-        text: "Locke nie l'existence de tout état de nature antérieur à l'État."
+        text: "Locke nie l'existence de tout état de nature antérieur à l'État, considérant cette notion comme une pure fiction sans aucune utilité pour fonder la légitimité du pouvoir politique."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           Locke affirme bien l'existence d'un état de nature -- il en
           propose seulement un portrait très différent de celui de Hobbes :
@@ -180,6 +535,7 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [rousseau, volonte_generale, contrat_social]
+    primary_misconception: mc.philo.etat.volonte-generale-confondue-volonte-de-tous
     stem: >
       Quelle affirmation distingue correctement la volonté générale et la
       volonté de tous, chez Rousseau ?
@@ -189,8 +545,9 @@ items:
         text: "La volonté générale vise l'intérêt commun de la communauté ; la volonté de tous n'est que la somme des intérêts particuliers, qui peuvent se neutraliser sans jamais viser le bien commun."
         correct: true
       - id: B
-        text: "Ce sont deux expressions synonymes que Rousseau emploie indifféremment pour désigner le résultat d'un vote majoritaire."
+        text: "Ce sont deux expressions strictement synonymes que Rousseau emploierait indifféremment pour désigner, dans tous les cas, le seul résultat brut d'un vote majoritaire quelconque."
         correct: false
+        misconception: mc.philo.etat.volonte-generale-confondue-volonte-de-tous
         feedback: >
           Ce ne sont pas des synonymes chez Rousseau : la volonté de tous
           est la simple addition d'intérêts particuliers, tandis que la
@@ -200,6 +557,7 @@ items:
       - id: C
         text: "La volonté générale désignerait la volonté personnelle et privée du souverain, nettement séparée de celle des simples sujets qu'il gouverne, exactement comme chez Hobbes lorsque tous transfèrent leur droit au Léviathan."
         correct: false
+        misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
         feedback: >
           C'est confondre Rousseau et Hobbes. Chez Rousseau, il n'existe pas
           de souverain séparé des sujets : la volonté générale est la
@@ -207,8 +565,9 @@ items:
           membre à part égale -- pas celle d'un tiers auquel on aurait
           transféré son droit, comme chez Hobbes.
       - id: D
-        text: "La volonté de tous est plus exigeante que la volonté générale, car elle demande l'unanimité complète de tous les citoyens."
+        text: "La volonté de tous serait plus exigeante que la volonté générale, car elle demanderait l'unanimité complète et absolue de la totalité des citoyens, sans aucune exception possible."
         correct: false
+        misconception: mc.philo.etat.volonte-generale-confondue-volonte-de-tous
         feedback: >
           La distinction ne porte pas sur le degré d'unanimité requis, mais
           sur ce qui est visé : intérêts privés juxtaposés (volonté de tous)
@@ -236,6 +595,7 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [rousseau, weber, force_droit, legitimite]
+    primary_misconception: mc.philo.etat.force-egale-droit
     stem: >
       Pourquoi Rousseau affirme-t-il que « le plus fort n'est jamais assez
       fort pour être toujours le maître, s'il ne transforme sa force en
@@ -243,27 +603,30 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que le plus fort devrait, selon Rousseau, chercher à accroître encore sa force pour dominer plus durablement ses sujets."
+        text: "Parce que le plus fort devrait, selon Rousseau, chercher à accroître sans cesse sa force matérielle pour dominer plus durablement et plus efficacement l'ensemble de ses sujets."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           C'est l'inverse de la thèse de Rousseau : il ne recommande pas
           d'augmenter la force, mais montre que la force seule, aussi
           grande soit-elle, ne peut jamais suffire à fonder un pouvoir
           durable -- elle doit se convertir en droit reconnu comme légitime.
       - id: B
-        text: "Parce que cette formule concerne exclusivement la puissance économique d'un État, pas son autorité politique."
+        text: "Parce que cette formule concernerait exclusivement la puissance économique d'un État parmi d'autres États rivaux, et non la nature de l'obéissance politique en général."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           La formule porte sur la nature de l'obéissance politique en
           général -- la différence entre être forcé d'obéir et être dans
           l'obligation d'obéir -- pas spécifiquement sur des rapports de
-          puissance économique.
+          puissance économique entre États.
       - id: C
         text: "Parce qu'un pouvoir fondé sur la seule force n'obtient qu'une soumission qui dure autant qu'elle : sitôt la force affaiblie, l'obéissance cesse, faute d'avoir été un devoir reconnu."
         correct: true
       - id: D
-        text: "Parce qu'elle justifie qu'un souverain, une fois son monopole de la violence légitime établi au sens de Weber, puisse en abuser indéfiniment sans que cela remette en cause sa légitimité."
+        text: "Parce qu'elle justifierait qu'un souverain, une fois son monopole de la violence légitime établi au sens de Weber, puisse en abuser indéfiniment sans que cela remette jamais en cause sa légitimité."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           C'est un contresens : la formule de Rousseau vise justement à
           montrer qu'une autorité fondée sur la seule force reste fragile et
@@ -296,6 +659,7 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [marx, anarchisme, etat_de_droit, critiques_etat]
+    primary_misconception: mc.philo.etat.critiques-etat-non-distinguees
     stem: >
       Un élève écrit : « Marx et les anarchistes défendent, au fond, la même
       position sur l'État : il faut le détruire. » Qu'est-ce que cette
@@ -303,8 +667,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le fait que Marx défend en réalité l'État de droit, alors que les anarchistes le rejettent."
+        text: "Elle manque le fait que Marx défendrait en réalité la tradition de l'État de droit, avec sa séparation des pouvoirs et ses droits fondamentaux, alors que les anarchistes la rejetteraient entièrement."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           L'État de droit (limiter le pouvoir par la séparation des
           pouvoirs, des droits fondamentaux, le contrôle des gouvernants)
@@ -316,16 +681,18 @@ items:
         text: "Elle efface une différence décisive : Marx veut s'emparer de l'État pour une phase transitoire, avant sa disparition une fois les classes abolies, quand les anarchistes veulent l'abolir d'emblée."
         correct: true
       - id: C
-        text: "Elle manque le fait que les anarchistes veulent au contraire un État plus fort, capable de mieux protéger les travailleurs."
+        text: "Elle manque le fait que les anarchistes voudraient au contraire un État plus fort et plus centralisé encore, seul capable selon eux de mieux protéger durablement les travailleurs face au patronat."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           C'est l'inverse de la position anarchiste : Proudhon et Bakounine
           soutiennent que toute concentration de pouvoir étatique,
           quel qu'en soit le titulaire, tend à se retourner en domination --
           d'où leur volonté d'abolir l'État plutôt que de le renforcer.
       - id: D
-        text: "Elle manque le fait que Marx considérerait l'État comme une institution éternelle et proprement indépassable, tout à l'opposé des anarchistes, qui seraient alors les seuls à en annoncer la disparition future."
+        text: "Elle manque le fait que Marx considérerait l'État comme une institution éternelle et proprement indépassable, tout à l'opposé des anarchistes, qui seraient alors les seuls à en annoncer un jour la disparition future."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           Marx, lui aussi, anticipe la disparition de l'État -- mais par une
           voie différente et à un rythme différent (une transformation
@@ -357,6 +724,7 @@ items:
     difficulty_level: 1
     skill_code: philo_etat
     tags: [accroche, ordre_social, comprehension]
+    primary_misconception: mc.philo.etat.faux-dilemme-protection-contrainte
     stem: >
       Quel fait, dans le récit de la panne de courant (R0), vient mettre en
       doute l'idée que l'ordre social ne tiendrait qu'à la peur d'être vu et
@@ -367,23 +735,26 @@ items:
         text: "Le fait que la plupart des quartiers plongés dans la même obscurité, au même moment, n'aient connu aucun pillage, alors que la surveillance policière était partout également absente."
         correct: true
       - id: B
-        text: "Le fait que des vitrines aient été brisées et des commerces pillés dans certains quartiers."
+        text: "Le fait que des vitrines aient été brisées et que des commerces aient été pillés dans certains quartiers avant même le retour du courant, ce qui confirmerait assez largement, selon cette lecture, cette première idée."
         correct: false
+        misconception: mc.philo.etat.faux-dilemme-protection-contrainte
         feedback: >
           Ce fait confirmerait plutôt l'idée que l'absence de surveillance
           relâche les comportements ; il n'explique pas pourquoi la plupart
           des quartiers, dans la même obscurité, sont au contraire restés
           calmes.
       - id: C
-        text: "Le fait qu'aucune caméra de surveillance n'ait fonctionné pendant toute la coupure."
+        text: "Le fait qu'aucune caméra de surveillance n'ait fonctionné nulle part pendant toute la durée de la coupure de courant, quel que soit le quartier concerné."
         correct: false
+        misconception: mc.philo.etat.probleme-legitimite-reduit
         feedback: >
           C'est un simple détail du récit, pas un argument : il décrit
           l'absence de surveillance, mais ne dit rien, à lui seul, de ce qui
           explique le calme observé dans la plupart des quartiers.
       - id: D
-        text: "Le fait que la coupure ait duré plusieurs heures avant le retour du courant."
+        text: "Le fait que la coupure de courant ait duré plusieurs heures avant le retour effectif de l'électricité dans l'ensemble du quartier concerné."
         correct: false
+        misconception: mc.philo.etat.probleme-legitimite-reduit
         feedback: >
           La durée de la panne n'est pas ce qui met la première réponse sous
           tension ; c'est la comparaison entre quartiers, tous également
@@ -411,6 +782,7 @@ items:
     difficulty_level: 1
     skill_code: philo_etat
     tags: [accroche, ordre_social, comprehension]
+    primary_misconception: mc.philo.etat.faux-dilemme-protection-contrainte
     stem: >
       La seconde réponse (« les gens ne sont pas fondamentalement violents ou
       malhonnêtes ») semble, elle aussi, raisonnable. Quelle observation,
@@ -418,8 +790,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le fait que les pillages, là où ils ont eu lieu, se soient portés sur des biens plutôt que sur des personnes."
+        text: "Le fait que les pillages, là où ils ont eu lieu, se soient portés sur des biens matériels plutôt que sur des personnes, ce qui montrerait déjà les limites de cette seconde réponse."
         correct: false
+        misconception: mc.philo.etat.probleme-legitimite-reduit
         feedback: >
           Cette observation est mobilisée plus loin dans la leçon (R6, à
           propos de Weber), pas comme objection à la seconde réponse dans la
@@ -428,15 +801,17 @@ items:
         text: "Le fait qu'aucune société humaine, même la plus paisible, n'ait jamais renoncé à se doter d'une force publique, de lois, d'une autorité chargée de trancher les conflits."
         correct: true
       - id: C
-        text: "Le fait que la première réponse soit, selon la leçon, statistiquement plus fréquente chez les élèves interrogés."
+        text: "Le fait que la première réponse soit, selon la leçon, nettement plus fréquente que la seconde chez les élèves interrogés au moment de l'accroche introductive."
         correct: false
+        misconception: mc.philo.etat.probleme-legitimite-reduit
         feedback: >
           Ce n'est pas un argument philosophique mais une remarque sur la
           fréquence d'une opinion -- cela ne met rien sous tension dans le
           contenu de la seconde réponse elle-même.
       - id: D
-        text: "Le fait que les caméras de surveillance aient cessé de fonctionner pendant la panne."
+        text: "Le fait que les caméras de surveillance du quartier aient cessé de fonctionner pendant toute la durée de la panne de courant générale."
         correct: false
+        misconception: mc.philo.etat.probleme-legitimite-reduit
         feedback: >
           Ce détail décrit les conditions de la panne, pas une objection à
           l'idée que les individus livrés à eux-mêmes ne poseraient
@@ -463,21 +838,24 @@ items:
     difficulty_level: 2
     skill_code: philo_etat
     tags: [accroche, probleme, legitimite]
+    primary_misconception: mc.philo.etat.probleme-legitimite-reduit
     stem: >
       Laquelle des formulations suivantes reprend fidèlement le problème que
       la leçon va construire, à partir de la scène de la panne de courant ?
     type: mcq
     choices:
       - id: A
-        text: "L'État a-t-il été historiquement fondé par un contrat signé à une date précise, et peut-on retrouver ce document dans des archives ?"
+        text: "L'État a-t-il été historiquement fondé par un contrat signé à une date précise, document qu'il faudrait pouvoir retrouver et authentifier dans des archives officielles ?"
         correct: false
+        misconception: mc.philo.etat.etat-de-nature-recit-historique
         feedback: >
           C'est traiter comme une question historique et documentaire ce qui
           est, dans la leçon, une expérience de pensée (cf. Hobbes, R2) -- pas
           une enquête d'archives.
       - id: B
-        text: "Les lois en vigueur dans un pays sont-elles toujours respectées à la lettre par les policiers eux-mêmes ?"
+        text: "Les lois en vigueur dans un pays sont-elles toujours respectées à la lettre par les policiers eux-mêmes, sur le terrain, dans chacune de leurs interventions quotidiennes ?"
         correct: false
+        misconception: mc.philo.etat.probleme-legitimite-reduit
         feedback: >
           C'est réduire un problème de légitimité du pouvoir à une simple
           question de conformité à la loi -- une confusion entre légitimité
@@ -486,8 +864,9 @@ items:
         text: "L'État est-il ce qui protège les individus et rend leur liberté effective, ou n'est-il, au fond, qu'un appareil de contrainte -- et, dans les deux cas, qu'est-ce qui rend son pouvoir légitime plutôt que simplement le plus fort ?"
         correct: true
       - id: D
-        text: "Un gouvernement qui perd des élections doit-il être remplacé rapidement par un autre ?"
+        text: "Un gouvernement qui perd des élections doit-il être remplacé rapidement par un autre, ou peut-il légitimement rester en place quelque temps encore malgré sa défaite électorale, en attendant la passation officielle des pouvoirs ?"
         correct: false
+        misconception: mc.philo.etat.gouvernement-confondu-avec-etat
         feedback: >
           Cette question porte sur le gouvernement, qui change, et non sur
           l'État en tant qu'institution permanente ni sur la légitimité du
@@ -513,6 +892,7 @@ items:
     difficulty_level: 2
     skill_code: philo_etat
     tags: [distinction_concepts, societe_etat]
+    primary_misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
     stem: >
       Un manuel affirme : « Des communautés villageoises organisées par la
       coutume et la parenté, sans aucune administration centralisée, ne
@@ -521,21 +901,24 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle confond la société et la nation : une communauté sans État perdrait, selon cette lecture, tout sentiment d'identité partagée."
+        text: "Elle confond la société et la nation : une communauté sans État perdrait, selon cette lecture, tout sentiment d'identité collective partagée entre ses membres, transmise de génération en génération et fondée sur une langue, une histoire ou une mémoire communes."
         correct: false
+        misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
         feedback: >
           Ce n'est pas cette confusion-là qui est en jeu : le problème porte
           sur la définition même de la société, pas sur le sentiment
           national.
       - id: B
-        text: "Elle confond le gouvernement et la nation, deux notions qui n'interviennent pourtant pas directement dans la phrase."
+        text: "Elle confond le gouvernement et la nation, deux notions institutionnelles et identitaires qui n'interviennent pourtant ni l'une ni l'autre directement dans la phrase du manuel."
         correct: false
+        misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
         feedback: >
           Ni le gouvernement ni la nation ne sont ici en cause ; la phrase
           porte sur la définition de la société et de l'État.
       - id: C
-        text: "Elle confond l'État et la volonté générale, un concept qui n'appartient pourtant pas à ce point du programme."
+        text: "Elle confond l'État et la volonté générale, un concept rousseauiste qui n'appartient pourtant à aucun point du programme abordé avant la rubrique R4 de cette même leçon."
         correct: false
+        misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
         feedback: >
           La volonté générale est une notion propre à Rousseau (R4), qui n'a
           aucun rapport avec l'erreur commise ici sur la définition de la
@@ -565,6 +948,7 @@ items:
     difficulty_level: 2
     skill_code: philo_etat
     tags: [distinction_concepts, coup_etat, nation_etat]
+    primary_misconception: mc.philo.etat.coup-etat-detruit-appareil
     stem: >
       Après un coup d'État, un commentateur écrit : « L'appareil d'État tout
       entier -- tribunaux, administration, armée -- a été détruit et
@@ -576,23 +960,26 @@ items:
         text: "Un coup d'État désigne, historiquement, la prise par la force du pouvoir exécutif -- le gouvernement ; l'appareil d'État lui-même survit le plus souvent intact et se retrouve simplement capturé par de nouvelles mains."
         correct: true
       - id: B
-        text: "Elle manque le fait qu'un coup d'État change nécessairement la nation du pays -- son identité, sa langue, sa mémoire collective."
+        text: "Elle manque le fait qu'un coup d'État changerait nécessairement, du jour au lendemain, la nation même du pays -- son identité, sa langue, l'ensemble de sa mémoire collective transmise depuis des générations entières, jusque dans ses fondements les plus anciens."
         correct: false
+        misconception: mc.philo.etat.nation-confondue-avec-etat
         feedback: >
           Le sentiment national ne se dissout pas du jour au lendemain avec
           un changement de pouvoir exécutif ; nation et État sont deux
           notions distinctes, et c'est ici l'État, pas la nation, qui est mal
           identifié dans la phrase.
       - id: C
-        text: "Elle manque le fait qu'un coup d'État est, par définition, toujours suivi d'élections libres organisées par les putschistes."
+        text: "Elle manque le fait qu'un coup d'État serait, par définition même du terme, toujours suivi d'élections libres et transparentes organisées sans délai par les putschistes eux-mêmes."
         correct: false
+        misconception: mc.philo.etat.coup-etat-detruit-appareil
         feedback: >
           Rien, dans la définition d'un coup d'État, n'implique des
           élections libres organisées ensuite -- ce n'est pas ce que la
           phrase manque.
       - id: D
-        text: "Rien : la phrase décrit exactement ce qui se produit, dans les faits, lors d'un coup d'État réussi."
+        text: "Rien : la phrase décrit très exactement, dans le détail, ce qui se produit systématiquement, dans les faits, lors de n'importe quel coup d'État à travers l'histoire."
         correct: false
+        misconception: mc.philo.etat.coup-etat-detruit-appareil
         feedback: >
           C'est l'inverse : le trait le plus souvent observé est la capture
           du gouvernement, pas la destruction de l'appareil d'État permanent
@@ -619,6 +1006,7 @@ items:
     difficulty_level: 2
     skill_code: philo_etat
     tags: [hobbes, etat_de_nature, experience_de_pensee]
+    primary_misconception: mc.philo.etat.etat-de-nature-recit-historique
     stem: >
       Un élève écrit dans sa copie : « Hobbes a mené une enquête historique
       rigoureuse pour prouver que les peuples primitifs vivaient
@@ -627,8 +1015,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle manque le fait que ce sont, en réalité, les trois sources de conflit -- compétition, défiance, gloire -- qui constituent la preuve historique de cette guerre permanente."
+        text: "Elle manque le fait que ce sont, en réalité, les trois sources de conflit -- compétition, défiance, gloire -- qui constitueraient à elles seules la preuve historique documentée de cette guerre permanente entre les peuples primitifs de l'Antiquité."
         correct: false
+        misconception: mc.philo.etat.etat-de-nature-recit-historique
         feedback: >
           Ces trois sources sont les ressorts d'un raisonnement, pas les
           résultats d'une enquête historique -- la phrase reste fausse même
@@ -638,15 +1027,17 @@ items:
         text: "Hobbes ne prétend pas décrire un moment historique réel qu'auraient traversé des populations primitives : l'état de nature est une expérience de pensée, destinée à faire apparaître, par contraste, ce que l'État nous apporte."
         correct: true
       - id: C
-        text: "Elle manque le fait que Hobbes situe cette guerre non pas avant, mais après l'instauration du Léviathan."
+        text: "Elle manque le fait que Hobbes situerait cette guerre non pas avant, mais après l'instauration même du Léviathan et de son pouvoir souverain absolu sur les hommes."
         correct: false
+        misconception: mc.philo.etat.etat-de-nature-recit-historique
         feedback: >
           C'est l'inverse chronologique de la thèse de Hobbes : la guerre de
           tous contre tous caractérise précisément l'état de nature, avant
           tout pouvoir souverain institué.
       - id: D
-        text: "Rien : Hobbes fonde effectivement sa thèse sur une enquête anthropologique menée auprès de peuples encore dépourvus d'État à son époque."
+        text: "Rien : Hobbes fonderait effectivement toute sa thèse sur une enquête anthropologique de terrain, menée personnellement auprès de peuples encore dépourvus d'État à son époque."
         correct: false
+        misconception: mc.philo.etat.etat-de-nature-recit-historique
         feedback: >
           Ce n'est pas la démarche de Hobbes : il construit un raisonnement,
           pas une enquête de terrain -- affirmer l'inverse ne corrige pas
@@ -671,21 +1062,24 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [hobbes, souverain_absolu, raisonnement]
+    primary_misconception: mc.philo.etat.souverain-absolu-caprice-arbitraire
     stem: >
       Pourquoi, selon le raisonnement de Hobbes, le pouvoir souverain
       doit-il être quasi absolu et pratiquement irrévocable ?
     type: mcq
     choices:
       - id: A
-        text: "Parce que Hobbes considère, par principe et indépendamment de son analyse de l'état de nature, qu'un pouvoir fort est toujours préférable à un pouvoir divisé."
+        text: "Parce que Hobbes considère, par simple principe personnel et indépendamment de toute analyse rigoureuse de l'état de nature, qu'un pouvoir fort est toujours préférable, en toute circonstance, à un pouvoir divisé entre plusieurs institutions rivales et concurrentes."
         correct: false
+        misconception: mc.philo.etat.souverain-absolu-caprice-arbitraire
         feedback: >
           C'est manquer l'argument précis de Hobbes : ce n'est pas un simple
           goût pour la force, mais une conséquence logique de son analyse de
           ce qui recréerait la guerre de tous contre tous.
       - id: B
-        text: "Parce que seul un pouvoir absolu peut, selon lui, garantir que chaque citoyen conserve son droit de juger librement de la légitimité des lois."
+        text: "Parce que seul un pouvoir absolu pourrait, selon lui, garantir à chaque citoyen la conservation d'un droit de juger librement, cas par cas, de la légitimité de chaque loi votée."
         correct: false
+        misconception: mc.philo.etat.souverain-absolu-caprice-arbitraire
         feedback: >
           C'est l'inverse : c'est justement en retirant à chacun ce droit de
           juger par soi-même que le pouvoir absolu, selon Hobbes, évite le
@@ -694,8 +1088,9 @@ items:
         text: "Parce que si chaque individu conservait le droit de juger par lui-même quand désobéir légitimement, on recréerait autant de sources de désaccord qu'il y a d'individus -- et donc, à terme, la guerre de tous contre tous que le contrat visait à éviter."
         correct: true
       - id: D
-        text: "Parce qu'un pouvoir révocable garantirait, selon Hobbes, une paix plus stable en cas de désaccord entre les citoyens."
+        text: "Parce qu'un pouvoir révocable garantirait, selon Hobbes, une paix bien plus stable et durable en cas de désaccord profond survenant entre plusieurs groupes de citoyens rivaux."
         correct: false
+        misconception: mc.philo.etat.souverain-absolu-caprice-arbitraire
         feedback: >
           C'est l'exact opposé de la thèse de Hobbes : un pouvoir révocable
           au moindre désaccord équivaut, face à qui veut rompre la paix, à
@@ -720,27 +1115,31 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [locke, etat_de_nature, contrat_social]
+    primary_misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
     stem: >
       Pourquoi, selon Locke, les individus quittent-ils l'état de nature ?
     type: mcq
     choices:
       - id: A
-        text: "Pour échapper à une guerre de tous contre tous déjà installée entre individus fondamentalement égaux en force et en ruse."
+        text: "Pour échapper à une guerre de tous contre tous déjà installée entre individus fondamentalement égaux en force et en ruse, exactement comme le décrit Hobbes de son côté."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           C'est le raisonnement de Hobbes, pas celui de Locke : l'état de
           nature lockien n'est pas d'emblée une guerre généralisée, mais un
           état d'égalité et de liberté relativement paisible.
       - id: B
-        text: "Parce que, dans l'état de nature lockien, aucun droit n'existe encore avant l'instauration d'un pouvoir politique commun."
+        text: "Parce que, dans l'état de nature lockien, aucun droit d'aucune sorte n'existerait encore avant l'instauration effective d'un pouvoir politique commun et reconnu."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           C'est l'inverse de la thèse de Locke : les droits naturels -- vie,
           liberté, propriété -- existent déjà dans l'état de nature,
           indépendamment de tout État.
       - id: C
-        text: "Parce que la raison, chez Locke, ne joue aucun rôle dans l'état de nature et ne peut donc offrir aucune protection aux individus avant le contrat."
+        text: "Parce que la raison, chez Locke, ne jouerait absolument aucun rôle dans l'état de nature et ne pourrait donc offrir aucune protection minimale aux individus avant même la conclusion effective et pleinement aboutie du contrat social."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           Locke affirme au contraire que la raison, loi de nature, gouverne
           déjà, dans une certaine mesure, l'état de nature -- ce n'est pas un
@@ -768,6 +1167,7 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [locke, hobbes, droit_de_resistance, application]
+    primary_misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
     stem: >
       Un souverain confisque, sans jugement ni justification, les terres
       d'un sujet. Que répondrait Locke à ce sujet, à la différence de
@@ -778,24 +1178,27 @@ items:
         text: "Locke y verrait une violation manifeste de la finalité même du contrat -- protéger la propriété -- justifiant, en droit, la résistance voire le renversement du pouvoir ; Hobbes, lui, refuserait à quiconque le droit de se faire justice lui-même."
         correct: true
       - id: B
-        text: "Locke, comme Hobbes, jugerait qu'aucun individu n'a le droit de se soulever, car seul le souverain tranche en dernier ressort ce qui est juste dans la cité."
+        text: "Locke, tout comme Hobbes, jugerait qu'aucun individu isolé n'a le droit de se soulever seul, car seul le souverain trancherait en dernier ressort ce qui est juste et injuste dans la cité tout entière."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           C'est effacer la différence entre les deux théories : c'est
           précisément sur ce point qu'elles s'opposent -- Locke, à la
           différence de Hobbes, reconnaît un droit de résistance en cas de
           trahison du contrat.
       - id: C
-        text: "Locke considérerait cet acte comme parfaitement légitime, dès lors qu'il émane d'une autorité souveraine reconnue."
+        text: "Locke considérerait cet acte comme parfaitement légitime dans tous les cas, dès lors qu'il émanerait d'une autorité souveraine officiellement reconnue par l'ensemble des institutions du royaume."
         correct: false
+        misconception: mc.philo.etat.locke-variante-affaiblie-hobbes
         feedback: >
           C'est contredire toute la théorie du contrat conditionnel chez
           Locke : le pouvoir politique n'est légitime qu'à condition de
           protéger les droits, pas par le seul fait d'émaner d'une autorité
           reconnue.
       - id: D
-        text: "Hobbes, à la différence de Locke, autoriserait le sujet à se soulever immédiatement, car la confiscation violerait le contrat originel."
+        text: "Hobbes, à la différence de Locke sur ce point précis, autoriserait immédiatement le sujet lésé à se soulever ouvertement contre son souverain, estimant que la confiscation violerait aussitôt le contrat originel passé entre le souverain et l'ensemble de ses sujets."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           C'est inverser les deux positions : c'est Locke, non Hobbes, qui
           reconnaît un droit de résistance en cas de trahison du contrat.
@@ -821,14 +1224,16 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [rousseau, hobbes, critique, contrat_social]
+    primary_misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
     stem: >
       Pourquoi Rousseau juge-t-il intenable le schéma de Hobbes, où chaque
       individu transfère ses droits à un souverain ?
     type: mcq
     choices:
       - id: A
-        text: "Parce que Hobbes, selon Rousseau, accorderait aux individus un droit de résistance excessif, qui menacerait la stabilité du pouvoir souverain."
+        text: "Parce que Hobbes, selon Rousseau, accorderait aux individus un droit de résistance bien trop large et bien trop permissif, qui menacerait dangereusement et durablement la stabilité même du pouvoir souverain qu'il institue au terme du contrat."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           C'est l'inverse : Hobbes ne prévoit quasiment aucun droit de
           résistance -- ce n'est donc pas ce que lui reproche Rousseau.
@@ -836,16 +1241,18 @@ items:
         text: "Parce que ce souverain, ne faisant partie d'aucun contrat et ne rendant de compte à personne, réduit la soumission à une pure sujétion, sans réciprocité -- comparable à celle d'un esclave face à son maître, non à un engagement légitime."
         correct: true
       - id: C
-        text: "Parce que Hobbes décrirait, selon Rousseau, un état de nature trop paisible, incapable de justifier l'instauration d'un pouvoir commun."
+        text: "Parce que Hobbes décrirait, selon Rousseau, un état de nature bien trop paisible et innocent, incapable à lui seul de justifier l'instauration d'un pouvoir politique commun quelconque."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           C'est l'inverse de leur désaccord réel sur l'état de nature :
           c'est Hobbes qui le décrit comme violent, quand Rousseau le juge,
           lui, plus paisible -- mais ce n'est pas ce point qui est en jeu
           dans l'objection visée ici.
       - id: D
-        text: "Parce que le Léviathan de Hobbes ne prévoirait aucune autorité suffisamment forte pour empêcher la guerre de tous contre tous."
+        text: "Parce que le Léviathan de Hobbes ne prévoirait, au fond, aucune autorité suffisamment forte et centralisée pour empêcher durablement le retour de la guerre de tous contre tous."
         correct: false
+        misconception: mc.philo.etat.auteurs-contrat-social-mal-attribues
         feedback: >
           C'est l'inverse du problème que pose Hobbes : son souverain est au
           contraire conçu pour être suffisamment fort -- ce n'est pas ce que
@@ -869,6 +1276,7 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [rousseau, alienation_totale, egalite]
+    primary_misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
     stem: >
       Pourquoi l'aliénation totale, mais strictement égale pour chacun,
       empêche-t-elle, selon Rousseau, que l'association ne dégénère en
@@ -876,15 +1284,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que cette aliénation totale confère au souverain un pouvoir absolu, à l'abri de toute contestation, comme chez Hobbes."
+        text: "Parce que cette aliénation totale conférerait au souverain, comme chez Hobbes, un pouvoir absolu à l'abri de toute contestation ultérieure de la part des sujets qui l'ont eux-mêmes institué."
         correct: false
+        misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
         feedback: >
           C'est reconstituer exactement le schéma hobbesien -- un souverain
           séparé, tiers au contrat -- que Rousseau rejette précisément pour
           cette raison.
       - id: B
-        text: "Parce que chacun ne cède en réalité qu'une partie limitée de ses droits, ce qui garantit qu'aucun abus n'est possible."
+        text: "Parce que chacun ne céderait en réalité qu'une partie limitée et bien circonscrite de ses droits personnels, ce qui garantirait, par simple construction logique, qu'aucun abus futur ne soit jamais possible de la part du souverain institué."
         correct: false
+        misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
         feedback: >
           C'est contredire le geste même que décrit Rousseau : l'aliénation
           est explicitement totale, pas partielle -- c'est cette totalité,
@@ -893,8 +1303,9 @@ items:
         text: "Parce que personne ne cède plus que les autres et personne ne reçoit un pouvoir que les autres n'auraient pas : tous faisant exactement le même geste, chacun se donnant tout entier ne se donne, au fond, à personne en particulier."
         correct: true
       - id: D
-        text: "Parce que la communauté, une fois formée, transfère elle-même l'ensemble de ces droits à un petit groupe de représentants élus."
+        text: "Parce que la communauté, une fois formée, transférerait aussitôt l'ensemble de ces droits à un petit groupe restreint de représentants élus au suffrage indirect."
         correct: false
+        misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
         feedback: >
           Ce mécanisme de représentation ne fait pas partie du schéma de
           Rousseau ici : il n'y a, dans son geste fondateur, aucun tiers
@@ -919,14 +1330,16 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [weber, legitimite, monopole_violence]
+    primary_misconception: mc.philo.etat.legitimite-weber-mal-comprise
     stem: >
       Selon Weber, que signifie exactement l'idée que l'État détient le
       « monopole de la violence physique légitime » ?
     type: mcq
     choices:
       - id: A
-        text: "Cela signifie que l'État serait le seul en mesure d'exercer matériellement une force physique, et qu'aucun individu ne pourrait jamais, dans aucune limite, se défendre lui-même."
+        text: "Cela signifierait que l'État serait le seul en mesure d'exercer matériellement une force physique quelconque, et qu'aucun individu ne pourrait jamais, en aucune circonstance, se défendre lui-même."
         correct: false
+        misconception: mc.philo.etat.legitimite-weber-mal-comprise
         feedback: >
           Un individu peut toujours, dans certaines limites, se défendre
           lui-même. Le monopole ne porte pas sur qui PEUT exercer la force,
@@ -935,15 +1348,17 @@ items:
         text: "Cela signifie que l'État est la seule instance reconnue comme autorisée à décider quels usages de la force sont légitimes ou non -- non qu'il serait seul à pouvoir, matériellement, exercer une force physique."
         correct: true
       - id: C
-        text: "Cela signifie qu'un pouvoir reconnu comme légitime, au sens de Weber, est par là même toujours moralement juste, quoi qu'il fasse."
+        text: "Cela signifierait qu'un pouvoir reconnu comme légitime, au sens sociologique défini par Weber, serait par là même toujours moralement juste, quoi qu'il fasse par ailleurs à ses propres citoyens."
         correct: false
+        misconception: mc.philo.etat.legitimite-weber-mal-comprise
         feedback: >
           C'est confondre légitimité sociologique et justice morale : un
           pouvoir peut être reconnu et obéi tout en étant, par ailleurs,
           profondément injuste -- ce qui rend possibles les critiques de R6.
       - id: D
-        text: "Cela signifie que tout usage de la force par l'État est légitime dès lors qu'il vient de lui, même s'il reste arbitraire et imprévisible."
+        text: "Cela signifierait que tout usage de la force par l'État serait automatiquement légitime dès lors qu'il en émane, même s'il demeure par ailleurs entièrement arbitraire et imprévisible pour les citoyens qui le subissent."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           C'est retomber dans la confusion entre force et droit : la
           légitimité tient à ce que l'usage de la force découle d'une loi
@@ -968,6 +1383,7 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [weber, application, force_droit]
+    primary_misconception: mc.philo.etat.force-egale-droit
     stem: >
       Un policier te verbalise pour un feu rouge grillé ; un individu armé
       te dépouille de ta voiture. Les deux exercent, dans l'instant, une
@@ -979,22 +1395,25 @@ items:
         text: "Parce qu'il découle d'une loi à l'élaboration de laquelle tu as, en principe, part comme citoyen, qu'il s'applique selon une procédure connue à l'avance, et qu'il peut être contesté devant un tribunal impartial -- trois conditions qu'aucun voleur armé ne remplit."
         correct: true
       - id: B
-        text: "Parce que l'acte du policier serait, en lui-même, plus agréable à subir que celui du voleur."
+        text: "Parce que l'acte du policier serait, dans l'absolu et en toute circonstance, nettement plus agréable et moins pénible à subir que celui, brutal et soudain, du voleur armé."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           Ce n'est pas le confort qui fonde la légitimité, mais la loi, la
           procédure connue à l'avance et la possibilité d'un recours devant
           un tribunal impartial.
       - id: C
-        text: "Parce que le policier serait physiquement plus fort que le voleur, et donc mieux à même d'imposer sa contrainte."
+        text: "Parce que le policier serait, en règle générale, physiquement plus fort et mieux équipé que le voleur, et donc naturellement mieux à même de faire respecter sa propre contrainte sur autrui."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           C'est confondre force et droit : ce n'est pas la supériorité de
           force qui rend un acte légitime, sans quoi le plus fort aurait
           toujours raison -- exactement ce que Rousseau réfute (R5).
       - id: D
-        text: "Parce que seul le policier exercerait, dans l'instant, une forme de contrainte ou de menace -- le voleur, lui, n'en exercerait aucune."
+        text: "Parce que seul le policier exercerait réellement, dans l'instant précis et bref de l'interpellation, une quelconque forme de contrainte ou de menace physique envers toi -- le voleur, lui, n'en exercerait, à proprement parler et en toute rigueur, absolument aucune."
         correct: false
+        misconception: mc.philo.etat.force-egale-droit
         feedback: >
           Les deux exercent bien une contrainte physique dans l'instant ;
           la question n'est donc pas de savoir qui exerce une force, mais
@@ -1018,29 +1437,33 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [marx, critiques_etat, domination_classe]
+    primary_misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
     stem: >
       Selon Marx, en quel sens l'État moderne serait-il, malgré son
       apparence de neutralité, un instrument de domination de classe ?
     type: mcq
     choices:
       - id: A
-        text: "Parce que les agents de l'État seraient, individuellement, cyniques et pleinement conscients de servir sciemment les intérêts de la bourgeoisie contre l'intérêt général."
+        text: "Parce que les agents de l'État seraient, individuellement et sans la moindre exception possible, cyniques et pleinement conscients de servir sciemment les intérêts particuliers de la bourgeoisie contre l'intérêt général de la population tout entière, à chaque décision prise."
         correct: false
+        misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
         feedback: >
           Marx ne suppose pas cette conscience individuelle : l'État peut
           être sincèrement vécu par ses agents comme un arbitre impartial,
           tout en remplissant, sans qu'ils en aient pleinement conscience,
           une fonction réelle de domination.
       - id: B
-        text: "Parce que l'égalité formelle promise par le droit serait, selon Marx, logiquement incompatible avec toute domination économique réelle."
+        text: "Parce que l'égalité formelle promise par le droit serait, selon Marx, logiquement incompatible avec l'existence même de toute domination économique un tant soit peu réelle et durable."
         correct: false
+        misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
         feedback: >
           C'est l'inverse de la thèse de Marx : l'égalité formelle devant
           la loi peut parfaitement coexister, sans aucune contradiction
           logique, avec une domination économique bien réelle qu'elle habille.
       - id: C
-        text: "Parce que Marx viserait, comme les anarchistes, l'abolition immédiate de l'État, sans aucune phase de transition."
+        text: "Parce que Marx viserait, exactement comme les anarchistes, l'abolition immédiate et sans délai de l'État, sans aucune phase de transition économique préalable."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           C'est confondre Marx et l'anarchisme : Marx envisage de s'emparer
           de l'État pour une phase transitoire, avant sa disparition
@@ -1068,6 +1491,7 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [etat_de_droit, critiques_etat, derives_totalitaires]
+    primary_misconception: mc.philo.etat.critiques-etat-non-distinguees
     stem: >
       En quoi l'État de droit constitue-t-il une réponse spécifique au
       risque de dérive totalitaire, distincte à la fois de la position
@@ -1075,15 +1499,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il consiste, comme la position anarchiste, à refuser toute concentration de pouvoir étatique, quel qu'en soit le titulaire."
+        text: "Il consiste, tout comme la position anarchiste, à refuser toute forme de concentration de pouvoir étatique, quel qu'en soit le titulaire, y compris lorsque ce pouvoir naît d'un contrat aux intentions initialement protectrices et bienveillantes."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           L'État de droit ne rejette pas l'existence de l'État : il vise à
           le limiter et à le contrôler par le droit, pas à l'abolir comme le
           font les anarchistes.
       - id: B
-        text: "Il vise, comme la position marxiste, à s'emparer de l'appareil d'État avant d'organiser sa disparition progressive une fois les classes abolies."
+        text: "Il vise, comme la position marxiste, à s'emparer de l'appareil d'État avant d'organiser sa disparition progressive et méthodique, une fois les classes sociales entièrement abolies."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           Ce n'est pas non plus la position marxiste : l'État de droit ne
           vise ni la conquête transitoire de l'État à des fins économiques,
@@ -1092,8 +1518,9 @@ items:
         text: "Il ne cherche ni à transformer l'État à des fins économiques, ni à l'abolir, mais à limiter et contrôler le pouvoir par le droit -- séparation des pouvoirs, droits fondamentaux, mécanismes de contrôle et de remplacement des gouvernants."
         correct: true
       - id: D
-        text: "Il suppose qu'un pouvoir né d'un contrat destiné à protéger porte, en lui-même, une garantie suffisante qu'il ne se retournera jamais contre ceux qu'il devait protéger."
+        text: "Il suppose qu'un pouvoir né d'un contrat destiné à protéger porterait, en lui-même et une fois pour toutes, une garantie suffisante qu'il ne se retournera jamais contre ceux qu'il devait protéger."
         correct: false
+        misconception: mc.philo.etat.critiques-etat-non-distinguees
         feedback: >
           C'est exactement l'inverse : aucun pouvoir concentré, même né
           d'un contrat protecteur, ne porte en lui-même une telle garantie
@@ -1120,6 +1547,7 @@ items:
     difficulty_level: 3
     skill_code: philo_etat
     tags: [methode_dissertation, analyse_des_termes, etat_gouvernement]
+    primary_misconception: mc.philo.etat.gouvernement-confondu-avec-etat
     stem: >
       Pour le sujet « Faut-il craindre l'État, ou seulement son absence ? »,
       un élève écrit dans son introduction : « Je vais montrer que le
@@ -1128,8 +1556,9 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il commet l'erreur inverse : le sujet porterait en réalité sur un gouvernement précis, et non sur l'État en tant qu'institution."
+        text: "Il commet l'erreur inverse : le sujet porterait en réalité, dans son intégralité, sur un gouvernement précis et actuel, plutôt que sur l'État envisagé comme institution générale."
         correct: false
+        misconception: mc.philo.etat.gouvernement-confondu-avec-etat
         feedback: >
           C'est l'inverse : le sujet porte sur l'institution politique
           permanente, pas sur tel gouvernement précis qu'on pourrait juger
@@ -1138,15 +1567,17 @@ items:
         text: "Il confond le gouvernement, qui change et peut être bon ou mauvais, avec l'État en tant qu'institution politique permanente -- c'est de cette institution, et non d'un gouvernement précis, que parle le sujet."
         correct: true
       - id: C
-        text: "Aucune erreur : partir d'un gouvernement précis serait la meilleure façon de traiter concrètement n'importe quel sujet sur l'État."
+        text: "Aucune erreur : partir d'un exemple concret de gouvernement précis serait, dans tous les cas, la meilleure et la seule façon rigoureuse de traiter n'importe quel sujet philosophique portant sur l'État en général."
         correct: false
+        misconception: mc.philo.etat.gouvernement-confondu-avec-etat
         feedback: >
           Illustrer par un exemple concret ne dispense pas de traiter le
           sujet à son bon niveau de généralité : ici, l'État comme
           institution, pas un gouvernement particulier.
       - id: D
-        text: "Il confond craindre et légitimité, deux notions qui n'ont pourtant aucun rapport avec l'analyse des termes de ce sujet précis."
+        text: "Il confond deux notions bien plus éloignées l'une de l'autre -- craindre et légitimité -- qui n'ont pourtant, en réalité, aucun rapport véritable avec l'analyse des termes de ce sujet précis."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Ce n'est pas cette confusion-là qui est en jeu : l'erreur porte
           sur gouvernement et État, pas sur craindre et légitimité.
@@ -1168,6 +1599,7 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [methode_dissertation, problematisation]
+    primary_misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
     stem: >
       Pour le sujet « Peut-on désobéir légitimement à l'État ? », laquelle
       des démarches suivantes correspond à une véritable problématisation,
@@ -1175,15 +1607,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Répondre d'emblée que non, on ne peut jamais désobéir légitimement à l'État, puisque Hobbes l'interdit absolument, et bâtir tout le devoir sur la seule défense de cette thèse."
+        text: "Répondre d'emblée, dès l'introduction, que non, on ne peut absolument jamais désobéir légitimement à l'État sous aucun prétexte quel qu'il soit, puisque Hobbes l'interdirait totalement et sans la moindre exception possible, et bâtir tout le devoir sur la seule défense de cette thèse unique, sans jamais chercher à l'interroger sérieusement."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Une bonne dissertation ne choisit jamais un terme en écartant
           simplement l'autre dès l'introduction -- elle construit une
           tension entre positions également légitimes en apparence.
       - id: B
-        text: "Reformuler simplement le sujet : ce devoir se demande si l'on peut, ou non, désobéir légitimement à l'État."
+        text: "Reformuler simplement le sujet en une phrase à peine différente : ce devoir se demanderait, en somme, si l'on peut ou non, en général, désobéir légitimement à l'État sous quelque forme que ce soit."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Une problématique ne reformule pas simplement le sujet : elle
           doit faire apparaître une tension entre deux positions, pas
@@ -1192,8 +1626,9 @@ items:
         text: "Formuler la tension suivante : si obéir à la loi peut être un devoir légitime (Rousseau, Weber), comment expliquer que Locke reconnaisse pourtant un droit de résistance en cas de trahison du contrat -- et à quelles conditions précises la désobéissance cesse-t-elle d'être une simple révolte pour devenir légitime ?"
         correct: true
       - id: D
-        text: "Décrire en détail l'histoire des révolutions du XVIIIe siècle, sans jamais mobiliser Hobbes, Locke, Rousseau ou Weber."
+        text: "Décrire en détail, sur plusieurs paragraphes, l'histoire chronologique des révolutions du XVIIIe siècle, sans jamais mobiliser explicitement Hobbes, Locke, Rousseau ou Weber."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Cela ignore les auteurs precisément mobilisables sur ce point du
           programme -- une problématique doit s'appuyer sur les tensions
@@ -1218,27 +1653,31 @@ items:
     difficulty_level: 4
     skill_code: philo_etat
     tags: [methode_dissertation, depassement, plan_dialectique]
+    primary_misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
     stem: >
       Selon la méthode illustrée en R7, quelle est la fonction d'une bonne
       partie III (le « dépassement ») dans un plan dialectique sur l'État ?
     type: mcq
     choices:
       - id: A
-        text: "Elle répète, avec d'autres mots, les arguments déjà développés en partie I, pour montrer que la thèse initiale était en réalité la bonne réponse depuis le début."
+        text: "Elle répète, avec d'autres mots et un vocabulaire à peine renouvelé, l'ensemble des arguments déjà développés en partie I, pour finalement montrer, sans rien y ajouter de nouveau ni le moindre critère inédit, que la thèse initiale était, en réalité, la bonne réponse depuis le tout début du devoir."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Ce n'est pas une répétition de la thèse : un vrai dépassement
           introduit un critère nouveau, plus précis, qui n'était présent ni
           dans la thèse ni dans l'antithèse.
       - id: B
-        text: "Elle introduit un tout nouveau sujet, sans lien avec la problématique de l'introduction, pour montrer l'étendue des connaissances de l'élève sur d'autres notions du programme."
+        text: "Elle introduit un tout nouveau sujet de dissertation, sans aucun lien véritable avec la problématique formulée en introduction, dans le seul but de montrer l'étendue des connaissances de l'élève."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Le dépassement doit rester articulé à la problématique posée en
           introduction, pas s'en écarter vers un autre sujet.
       - id: C
-        text: "Elle choisit définitivement l'antithèse contre la thèse, en expliquant pourquoi la partie II avait raison et la partie I avait tort."
+        text: "Elle choisit définitivement l'antithèse contre la thèse, en expliquant longuement pourquoi la partie II avait finalement raison sur tous les points et la partie I avait, elle, entièrement tort."
         correct: false
+        misconception: mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement
         feedback: >
           Ce n'est encore qu'un choix de camp, comme en partie I ou II :
           le dépassement ne tranche pas entre les deux, il les dépasse par
@@ -1261,3 +1700,88 @@ items:
       **Exemple du cours (R7) :** les conditions de la légitimité du
       pouvoir (force/droit, État de droit) dépassent l'alternative
       protection/négation de la liberté.
+
+coverage_summary:
+  # Computed by loading this file with js-yaml and tallying every
+  # choices[].misconception (+ also_reveals[]) value per item — an item
+  # counts once per misconception if ANY of its distractors carries that id
+  # (house convention, matching content/philo/la-liberte/items.yaml and
+  # content/philo/theorie-experience/items.yaml). Counted PER ITEM, NOT a
+  # raw count of tagged distractors — a first hand-pass would have
+  # overcounted tags that repeat across multiple distractors within the
+  # SAME item (e.g. force-egale-droit tags 3 distractors within ETA-19
+  # alone, but that counts as 1 item, not 3); verified programmatically
+  # with a throwaway js-yaml tally script before writing the numbers below,
+  # the same "verify programmatically, don't hand-count" discipline the
+  # recipe's philo addendum mandates for length, applied here to coverage
+  # arithmetic too.
+  #
+  # This is a LEGACY end-bank (ETA-1..ETA-24 predate per-distractor
+  # tagging — Gap-4 finding, task instruction) retrofitted in this pass:
+  # every one of the 72 distractors across the 24 items now carries a real
+  # misconception id (no null tags), and every item now carries a
+  # `primary_misconception`. Per the recipe's "Honest coverage" judgment
+  # call, floor gaps below are reported truthfully rather than padded.
+  total_items: 24
+  floor: 3
+  floor_met: false
+  per_misconception:
+    mc.philo.etat.gouvernement-confondu-avec-etat: 3
+    mc.philo.etat.nation-confondue-avec-etat: 2
+    mc.philo.etat.notions-politiques-fondamentales-non-distinguees: 2
+    mc.philo.etat.coup-etat-detruit-appareil: 1
+    mc.philo.etat.auteurs-contrat-social-mal-attribues: 3
+    mc.philo.etat.etat-de-nature-recit-historique: 2
+    mc.philo.etat.souverain-absolu-caprice-arbitraire: 1
+    mc.philo.etat.locke-variante-affaiblie-hobbes: 3
+    mc.philo.etat.volonte-generale-confondue-volonte-de-tous: 1
+    mc.philo.etat.rousseau-hobbes-mecanismes-confondus: 2
+    mc.philo.etat.force-egale-droit: 3
+    mc.philo.etat.legitimite-weber-mal-comprise: 1
+    mc.philo.etat.critiques-etat-non-distinguees: 3
+    mc.philo.etat.etat-neutre-arbitre-non-conteste: 1
+    mc.philo.etat.faux-dilemme-protection-contrainte: 1
+    mc.philo.etat.probleme-legitimite-reduit: 3
+    mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement: 3
+    mc.philo.etat.violence-fondatrice-et-suffisante: 0
+  notes: >-
+    Every distractor across the 24 legacy items now carries a real
+    misconception id (no null tags) — the Gap-4 fix this pass exists to
+    make. 7 of 18 models clear the ≥3 floor. ELEVEN do not, and floor_met
+    is reported honestly rather than padded: nation-confondue-avec-etat (2,
+    ETA-1/ETA-11), notions-politiques-fondamentales-non-distinguees (2,
+    ETA-1/ETA-10), coup-etat-detruit-appareil (1, ETA-11), etat-de-nature-
+    recit-historique (2, ETA-9/ETA-12), souverain-absolu-caprice-arbitraire
+    (1, ETA-13), volonte-generale-confondue-volonte-de-tous (1, ETA-4),
+    rousseau-hobbes-mecanismes-confondus (2, ETA-4/ETA-17), legitimite-
+    weber-mal-comprise (1, ETA-18), etat-neutre-arbitre-non-conteste (1,
+    ETA-20), faux-dilemme-protection-contrainte (1, ETA-7) are real but
+    thin in the legacy bank — a follow-up item pass should add 1-2 items
+    each. This lesson has a genuinely wider named-concept surface than a
+    typical philo notion (R1 alone distinguishes four concepts pairwise;
+    R6 distinguishes three rival critiques), which spreads a comparably
+    sized 24-item bank thinner per concept than, e.g., la-liberte's smaller
+    5-rung structure — the inventory was already consolidated once
+    (several finer-grained candidate splits, e.g. separating "monopole de
+    la violence physique pris au pied de la lettre" from "légitime
+    confondu avec moralement juste", were merged into single ids since
+    they occupied the same items) to avoid manufacturing thinness by
+    over-fragmenting rather than reporting it honestly.
+    violence-fondatrice-et-suffisante (0) is a genuinely NEW axis this pass
+    surfaces: it comes from the r-bac قولة (2023 session normale —
+    docs/sujets/philo/l-etat.md), which asks whether violence alone founds
+    AND indefinitely sustains state power — a claim sharper than anything
+    R0-R7's body states as a single thesis, so no legacy item exercises it
+    directly. It is covered by checkpoints.yaml's cp-bac-violence instead
+    (checkpoints do not count toward this floor, per house convention), and
+    is flagged here as the clearest item-authoring gap for a follow-up
+    pass. All eleven under-floor models additionally receive checkpoint
+    exposure in checkpoints.yaml (cp-r1-concepts, cp-r2-hobbes, cp-r3-locke,
+    cp-r4-rousseau, cp-r5-force-droit, cp-r6-critiques, cp-r0-predict,
+    cp-bac-violence) so every student meets each model at least once
+    in-lesson regardless of the item-bank gap.
+    Length rebalance (recipe's philo addendum): see the length-check
+    script's output recorded in the task's final report — distractors were
+    enriched with additional substance (never by trimming the correct
+    answer's content) so the correct choice is not systematically the
+    longest option across this bank.

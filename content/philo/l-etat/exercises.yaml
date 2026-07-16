@@ -1,0 +1,447 @@
+# Attempt-first exercises (summit-conversion campaign). Rendered by
+# AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md: the
+# student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the full
+# philosophical argument in prose — thèse identification, argument analysis,
+# position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (documented per the task's judgment
+# call, and per the recipe addendum's decision rule): docs/sujets/philo/
+# l-etat.md carries TWO verified entries for this notion — 2023 session
+# normale, الموضوع الثاني (قولة, « Tout État naît par la violence... » —
+# statut vérifié via reproduction indépendante typée, profsalmi, scan
+# officiel non ré-OCRisé) and 2022 session normale, الموضوع الأول (سؤال,
+# « La finalité de l'État coïncide-t-elle toujours avec la finalité des
+# citoyens ? » — statut vérifié, source secondaire de moindre provenance :
+# lu uniquement dans le texte saisi par profsalmi, pas sur le scan officiel).
+#
+# r-bac uses the قولة (2023 N): it is the text of BETTER provenance (a scan-
+# adjacent verification, vs. the 2022 entry's own note flagging itself as
+# "de moindre niveau"), and it is the RICHER text in the sense that matters
+# for routing: its consigne demands testing a single reductive claim against
+# THREE distinct rungs at once — Hobbes's founding contract (R2), Rousseau's
+# force/droit distinction and Weber's LEGITIMATE monopoly (R5), and Marx's
+# domination critique (R6) — rather than mapping cleanly onto one already-
+# drilled essay shape. Its second half ("son pouvoir ne peut durer que par
+# la violence") is in direct, productive tension with the single most
+# subtle and easily-flattened argument in the whole lesson (R5's force ≠
+# droit), which is exactly why it earns its own priming checkpoint
+# (cp-bac-violence, checkpoints.yaml) rather than being treated as pure
+# recall. r-bac's `reasoning` fields bridge explicitly back to R2, R5 and R6
+# rather than silently assuming the student already knows how to weigh a
+# reductive citation against three authors at once.
+#
+# r-variation reuses the سؤال (2022 N) rather than fabricating a not-
+# applicable twin: this notion's philo house precedent (content/philo/
+# la-liberte/exercises.yaml, content/philo/theorie-experience/exercises.yaml,
+# content/philo/analyse-de-texte/exercises.yaml, all r-variation) already
+# established that fabricating a philosophical text risks bad philosophy and
+# breaks the no-fabrication norm, and a second real sourced text is
+# available here too. The سؤال ("la fin de l'État coïncide-t-elle avec la
+# fin des citoyens ?") maps almost exactly onto R7's OWN already-taught
+# training dissertation ("L'État est-il au service de notre liberté, ou en
+# est-il la négation ?") — the same protection/domination tension, the same
+# R2-R4-vs-R6 cast of authors, just reworded around "fins" (goals) instead
+# of "service" — no new axis to bridge, unlike r-bac. This is why it was
+# kept for r-variation rather than r-bac. Both exercises therefore carry
+# `status: sourced`.
+
+notion: l-etat
+
+exercises:
+  # ── r-bac — VERIFIED 2023 session normale sujet (قولة) ────────────────────
+  # Faithful transcription of docs/sujets/philo/l-etat.md → "2023 — session
+  # normale — الموضوع الثاني (قولة)". Real bac text, not built for this
+  # lesson. Its consigne asks the student to test a single reductive claim
+  # against R2 (Hobbes), R5 (Rousseau's force/droit, Weber's legitimate
+  # monopoly) and R6 (Marx) at once — the reasoning below bridges explicitly
+  # back to all three rather than inventing new authors wholesale.
+  - id: r-bac
+    title: "Exercice de type bac — l'État naît-il et ne dure-t-il que par la violence ? (قولة, 2023 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — code sujet NS 05 ; texte transcrit
+        intégralement dans docs/sujets/philo/l-etat.md (entrée « 2023 —
+        session normale — الموضوع الثاني (قولة) »), statut « vérifié — via
+        reproduction indépendante typée (profsalmi), scan officiel non
+        ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur,
+        2026-07-15) ». La citation est communément attribuée à Trotski dans
+        les manuels marocains ; l'attribution n'est PAS imprimée sur le scan
+        — à ne pas affirmer comme provenant du sujet lui-même. Note honnête
+        sur le médium : l'épreuve réelle se passe intégralement en ARABE ;
+        la version ci-dessous est une traduction de travail, jamais
+        « vérifiée » au même titre que l'arabe (voir docs/sujets/philo/
+        l-etat.md, en-tête).
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2023 (session normale) —
+      deuxième sujet (une citation à expliquer et discuter). Note honnête :
+      l'épreuve se passe en arabe ; la version française ci-dessous est une
+      traduction de travail, pas le texte officiel de l'examen.**
+
+      > **الموضوع الثاني :**
+      > « كل دولة تولد عن طريق العنف، ولا يمكن لسلطتها أن تدوم إلا بواسطة العنف. »
+      > انطلاقا من القولة، بيّن (ي) ما إذا كان العنف، فعلا، أساس قيام الدولة وضامن
+      > بقاء سلطتها.
+
+      **Traduction de travail française :**
+
+      > **Sujet second :**
+      > « Tout État naît par la violence, et son pouvoir ne peut durer que par la
+      > violence. »
+      > À partir de la citation, montre si la violence est, effectivement, le
+      > fondement de l'établissement de l'État et le garant de la persistance de son
+      > pouvoir.
+
+      Cette citation te demande de mobiliser trois rungs à la fois — Hobbes
+      (R2), Rousseau et Weber (R5), Marx (R6) — pour tester une affirmation
+      qui va plus loin qu'aucun des trois pris isolément : elle prétend que
+      la violence, SEULE, explique à la fois la naissance ET la durée de
+      tout pouvoir étatique.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse (comprendre, problématiser)"
+        stem: |-
+          La citation affirme deux choses distinctes, pas une seule.
+          Formule-les séparément : que dit-elle sur l'ORIGINE de l'État, et
+          que dit-elle sur la PERSISTANCE de son pouvoir ? Pourquoi est-il
+          important, méthodologiquement, de les séparer avant de discuter ?
+        reasoning: |-
+          La citation contient deux affirmations liées mais distinctes,
+          et une bonne analyse doit commencer par les désolidariser plutôt
+          que de les traiter comme un seul bloc. Premièrement, une thèse sur
+          l'origine : « tout État naît par la violence » — un jugement sur
+          la FONDATION historique du pouvoir politique. Deuxièmement, une
+          thèse plus forte sur la persistance : « son pouvoir ne peut durer
+          que par la violence » — un jugement sur ce qui EXPLIQUE la
+          continuité du pouvoir une fois établi.
+
+          Pourquoi séparer les deux avant de discuter ? Parce qu'elles ne
+          sont pas de même force, et qu'une discussion qui les traite en
+          bloc risque soit d'accepter les deux ensemble sans examen, soit de
+          les rejeter les deux ensemble sans nuance. On verra (partie 2,
+          partie 3) que la leçon donne des raisons de traiter ces deux
+          moitiés très différemment : la première trouve un appui réel dans
+          ce que la leçon a construit (R6, Marx), la seconde se heurte de
+          plein fouet à son argument le plus central (R5, Rousseau). Une
+          bonne problématique pour ce sujet ne demanderait donc pas
+          seulement « la citation est-elle vraie ? » mais : la violence
+          suffit-elle à expliquer l'origine ET la durée du pouvoir, ou
+          seulement l'une des deux ?
+
+      - id: q2
+        part: "Partie 2 — Analyser : l'origine, avec Hobbes (R2) et Marx (R6)"
+        stem: |-
+          La première moitié de la citation — « tout État naît par la
+          violence » — trouve-t-elle un appui dans ce que tu as appris en R2
+          et R6 ? Sois précis : Hobbes dit-il vraiment que l'État naît PAR
+          la violence, ou dit-il autre chose de plus subtil ?
+        reasoning: |-
+          Il faut résister à une lecture trop rapide de Hobbes. R2 ne dit
+          pas que l'État naît PAR la violence, au sens où la violence en
+          serait la cause directe et voulue : Hobbes décrit un état de
+          nature — la guerre de tous contre tous — que les hommes cherchent
+          précisément à FUIR par la raison, en instituant un pouvoir commun.
+          L'État hobbesien naît donc d'un contrat qui répond à la violence
+          généralisée, plutôt que d'un acte de violence qui le fonderait
+          directement. C'est une nuance importante : la citation, prise au
+          pied de la lettre, dirait presque le contraire de Hobbes si on la
+          lisait comme « la violence fonde volontairement l'État » plutôt
+          que « l'État naît en réaction à une violence qu'il faut fuir ».
+
+          C'est plutôt Marx (R6) qui donne un appui direct et sans détour à
+          cette première moitié. Pour Marx, dès qu'une société se divise en
+          classes aux intérêts opposés, la classe dominante a besoin d'un
+          appareil capable de protéger sa position — l'État est le produit
+          de ce rapport de force réel entre classes, pas d'un contrat
+          rationnel entre égaux. Historiquement, d'ailleurs, la formation de
+          nombreux États s'est faite par la conquête, la domination d'un
+          groupe sur un autre, ou l'imposition d'un ordre par la force — un
+          fait que ni Hobbes ni Locke ni Rousseau ne nient complètement,
+          même s'ils le racontent chacun autrement (Hobbes : fuir la
+          violence par un contrat ; Marx : la violence structure directement
+          le rapport de classes qui produit l'État). La première moitié de
+          la citation a donc un vrai point d'appui — mais il vient
+          davantage de Marx que d'une lecture littérale de Hobbes.
+
+      - id: q3
+        part: "Partie 3 — Analyser : la persistance, avec Rousseau et Weber (R5)"
+        stem: |-
+          La seconde moitié — « son pouvoir ne peut durer que par la
+          violence » — est la plus forte, et la plus vulnérable. Mobilise
+          précisément la formule de Rousseau vue en R5 pour expliquer
+          pourquoi elle pose un problème sérieux.
+        reasoning: |-
+          C'est ici que la citation rencontre l'obstacle le plus direct de
+          toute la leçon. R5 construit précisément l'outil qui la met en
+          tension : « le plus fort n'est jamais assez fort pour être
+          toujours le maître, s'il ne transforme sa force en droit, et
+          l'obéissance en devoir. » Le raisonnement de Rousseau, rappelle la
+          leçon, est mécanique : une soumission fondée sur la seule force ne
+          dure qu'aussi longtemps que la force elle-même s'exerce sans
+          faiblir — dès que le rapport de force s'inverse, l'obéissance
+          cesse, parce que ce n'était jamais qu'une contrainte, pas un
+          devoir reconnu comme tel par celui qui obéissait. Un pouvoir qui
+          ne reposerait QUE sur la violence serait donc, par construction,
+          structurellement instable — il devrait sans cesse regagner par la
+          force ce qu'il n'a jamais obtenu autrement, ce qui est très
+          exactement l'inverse de ce que suggère « durer ».
+
+          Weber ajoute une précision décisive, que la citation omet
+          entièrement : l'État revendique le monopole de la violence
+          physique LÉGITIME — pas simplement le monopole de la violence.
+          Le mot « légitime » n'est pas un ornement : c'est lui qui
+          distingue un pouvoir reconnu comme AUTORISÉ à juger des usages
+          légitimes de la force d'un pouvoir qui ne fait qu'imposer, par la
+          contrainte brute, une obéissance de circonstance. Un régime qui ne
+          gouvernerait que par l'intimidation constante, sans jamais
+          convertir sa force en droit reconnu, correspondrait précisément à
+          ce que R5 identifie comme la position la plus fragile — pas la
+          plus durable. La citation confond donc, sur ce second point, la
+          possibilité qu'un pouvoir NAISSE dans la violence avec l'idée
+          qu'il pourrait DURER par elle seule, sans jamais rien y ajouter.
+
+      - id: q4
+        part: "Partie 4 — Discuter : que dirait Marx de la seconde moitié ?"
+        stem: |-
+          Marx, l'auteur le plus critique envers l'État étudié dans la
+          leçon, soutiendrait-il pour autant que le pouvoir des classes
+          dominantes ne tient que par la violence brute et continue ? Discute
+          précisément ce point, en t'appuyant sur R6.
+        reasoning: |-
+          C'est le point le plus fin de la discussion, et il faut éviter
+          d'enrôler Marx trop vite du côté de la citation. R6 montre que la
+          domination de classe, pour Marx, ne se maintient pas seulement par
+          la violence brute et visible : l'État moderne se présente, et est
+          souvent sincèrement vécu par ses propres agents, comme un arbitre
+          neutre au service de l'intérêt général. Cette neutralité
+          proclamée masque, sans que la plupart de ses acteurs en aient
+          pleinement conscience, une fonction réelle de protection des
+          rapports de propriété existants. Le mécanisme décrit par Marx est
+          donc plus retors qu'une simple intimidation permanente : c'est un
+          mélange de coercition RÉELLE (la police, l'armée restent
+          disponibles) et de légitimation IDÉOLOGIQUE (l'ordre existant
+          apparaît comme allant de soi, juste, naturel) — pas la violence
+          continue et visible que suggère la citation.
+
+          Cela complique la seconde moitié de la citation d'une façon
+          instructive : même l'auteur le plus critique envers l'État
+          étudié dans la leçon ne dirait pas que son pouvoir dure UNIQUEMENT
+          par la violence. Il dirait plutôt que le pouvoir dure grâce à une
+          combinaison de force disponible ET d'une forme de légitimité —
+          même trompeuse, même construite pour masquer une domination
+          réelle — qui fait que la plupart des gens n'ont pas le sentiment
+          de subir une contrainte permanente. C'est, à sa manière, une autre
+          façon de confirmer le point de Rousseau : même une domination que
+          Marx juge profondément injuste a besoin de PARAÎTRE légitime pour
+          durer, pas seulement de rester forte.
+
+      - id: q5
+        part: "Partie 5 — Synthétiser une position argumentée"
+        stem: |-
+          En une réponse construite, que faut-il répondre à la consigne : la
+          violence est-elle, effectivement, le fondement de l'établissement
+          de l'État et le garant de la persistance de son pouvoir ?
+        reasoning: |-
+          Une réponse construite ne rejette ni n'accepte la citation en
+          bloc — elle sépare ses deux moitiés, comme demandé en partie 1, et
+          leur donne un traitement différent, en s'appuyant sur ce qui a été
+          établi dans les parties précédentes.
+
+          Sur l'origine : la citation a un vrai point d'appui. De nombreux
+          États naissent effectivement dans un rapport de force réel —
+          conquête, domination de classe (Marx, R6), ou réponse
+          institutionnelle à une violence antérieure qu'il faut fuir
+          (Hobbes, R2, dans un sens plus indirect). Refuser cela reviendrait
+          à nier une part réelle de l'histoire politique.
+
+          Sur la persistance, en revanche, la citation échoue : R5 montre
+          qu'un pouvoir fondé sur la seule force reste structurellement
+          instable, puisqu'il doit sans cesse regagner par la contrainte ce
+          qu'il n'a jamais obtenu comme devoir reconnu ; et même Marx (R6),
+          l'auteur le plus sévère envers l'État, décrit sa durée comme
+          tenant à un mélange de coercition et de légitimation, jamais à la
+          violence seule. Le monopole weberien de la violence PHYSIQUE
+          LÉGITIME (R5) résume bien ce que la citation manque : ce n'est pas
+          la violence en tant que telle qui fait durer un pouvoir, c'est sa
+          conversion, réussie ou non, en quelque chose de reconnu comme
+          légitime — un droit, même quand cette légitimité est, comme chez
+          Marx, elle-même contestable et construite pour masquer une
+          domination réelle. La citation a donc raison de souligner que la
+          violence est souvent bien réelle à l'origine des États ; elle a
+          tort de prétendre qu'elle suffit, SEULE, à en expliquer la durée.
+
+  # ── r-variation — VERIFIED 2022 session normale sujet (سؤال) ──────────────
+  # Reuses the OTHER verified text rather than fabricating a twin (see the
+  # file-header note on this decision). Faithful transcription of
+  # docs/sujets/philo/l-etat.md → "2022 — session normale — الموضوع الأول
+  # (سؤال)". Maps almost exactly onto R7's own training dissertation
+  # ("L'État est-il au service de notre liberté, ou en est-il la
+  # négation ?") — no new axis to bridge, unlike r-bac.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — les fins de l'État et celles des citoyens (سؤال, 2022 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — texte transcrit intégralement dans
+        docs/sujets/philo/l-etat.md (entrée « 2022 — session normale —
+        الموضوع الأول (سؤال) »), statut « vérifié (source secondaire) —
+        re-fetch indépendant conforme (profsalmi) ; reste une reproduction
+        typée, pas le scan officiel (agent-vérificateur, 2026-07-15) ».
+        Provenance de moindre niveau que r-bac : libellé lu uniquement dans
+        le texte saisi par profsalmi, pas sur un scan officiel — signalé
+        comme tel dans la banque de sujets. Note honnête sur le médium :
+        l'épreuve réelle se passe intégralement en ARABE ; la version
+        ci-dessous est une traduction de travail.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2022 (session normale) —
+      premier sujet (une question à traiter en dissertation). Note honnête :
+      l'épreuve se passe en arabe ; la version française ci-dessous est une
+      traduction de travail, pas le texte officiel de l'examen.**
+
+      > **الموضوع الأول :**
+      > هل تتطابق غاية الدولة دائما مع غاية المواطنين؟
+
+      **Traduction de travail française :**
+
+      > **Sujet premier :**
+      > « La finalité de l'État coïncide-t-elle toujours avec la finalité des
+      > citoyens ? »
+
+      Contrairement à r-bac, ce sujet ne t'emmène pas sur un axe nouveau :
+      c'est exactement le terrain de R2-R4 (les théories du contrat : la fin
+      de l'État est de protéger et rendre effective la liberté des
+      citoyens) contre R6 (Marx : l'État sert une classe, non l'ensemble des
+      citoyens) — la même tension qu'a déjà entraînée le sujet de R7
+      (« L'État est-il au service de notre liberté, ou en est-il la
+      négation ? »), sous un habillage différent (« finalité » plutôt que
+      « service »).
+    questions:
+      - id: q1
+        part: "Partie 1 — Analyser les termes"
+        stem: |-
+          Le sujet demande si la finalité de l'État coïncide « toujours »
+          avec celle des citoyens. Pourquoi ce mot « toujours » change-t-il
+          ce qu'on attend de toi, par rapport à une question qui demanderait
+          simplement si l'État sert les citoyens ?
+        reasoning: |-
+          Le mot « toujours » transforme une question déjà connue (l'État
+          sert-il, en général, les citoyens ?) en une question plus
+          exigeante : même s'il existe des cas où l'État sert bien les
+          citoyens, suffit-il d'un seul contre-exemple pour répondre non à
+          la question posée ? Une bonne dissertation ne peut donc pas se
+          contenter de montrer QUE l'État peut servir les citoyens (ce que
+          R2-R4 établissent assez facilement) : elle doit aussi examiner si
+          cette coïncidence est GARANTIE, structurellement, ou seulement
+          possible, parfois défaite. C'est exactement le geste que R7 avait
+          déjà pratiqué avec le mot « négation » : ne jamais répondre à un
+          sujet en alternative comme s'il fallait choisir un terme en
+          écartant simplement l'autre.
+
+      - id: q2
+        part: "Partie 2 — Mobiliser les théories du contrat (R2-R4)"
+        stem: |-
+          Construis la réponse « thèse » du sujet : pourquoi, selon Hobbes,
+          Locke et Rousseau, la finalité de l'État coïncide-t-elle, en
+          principe, avec celle des citoyens ?
+        reasoning: |-
+          Les trois auteurs du contrat, chacun à sa manière, fondent
+          l'État sur ce qu'il apporte AUX citoyens eux-mêmes, pas sur un
+          intérêt qui lui serait propre et distinct du leur. Pour Hobbes
+          (R2), la fin de l'État est de sortir les individus de la guerre de
+          tous contre tous — leur sécurité, condition de toute vie possible,
+          EST la finalité recherchée par le contrat. Pour Locke (R3), l'État
+          existe pour protéger des droits déjà là — vie, liberté, propriété
+          — que les individus possédaient avant lui et qui restaient
+          fragiles sans juge ni force communs : la finalité de l'État est
+          donc, par construction, celle des citoyens, puisqu'il n'est qu'un
+          instrument à leur service, révocable s'il y manque. Pour Rousseau
+          (R4), la loi légitime exprime la volonté générale — ce que la
+          communauté des citoyens se prescrit collectivement à elle-même :
+          obéir à cette loi, ce n'est pas obéir à un pouvoir étranger dont
+          la fin diffèrerait de la nôtre, c'est obéir à ce que nous voulons
+          nous-mêmes, en tant que corps politique.
+
+          Dans les trois cas, la coïncidence entre la fin de l'État et celle
+          des citoyens n'est pas un heureux hasard : elle est ce qui rend le
+          pouvoir politique légitime à leurs yeux — un État dont la
+          finalité ne coïnciderait pas avec celle des citoyens ne serait,
+          dans ce cadre, tout simplement pas ce que le contrat visait à
+          instituer.
+
+      - id: q3
+        part: "Partie 3 — Mobiliser Marx (R6) comme antithèse"
+        stem: |-
+          Marx conteste-t-il directement cette coïncidence ? Précise bien ce
+          que sa critique attaque : la coïncidence elle-même, ou seulement
+          la façon dont l'État la présente ?
+        reasoning: |-
+          Marx (R6) ne se contente pas de nuancer la coïncidence : il la
+          conteste frontalement, mais sur un point précis qu'il faut bien
+          identifier pour ne pas caricaturer sa position. Il ne dit pas que
+          l'État PROCLAME ouvertement servir une classe plutôt que tous les
+          citoyens — il dit l'inverse : l'État se présente, et est souvent
+          sincèrement vécu par ses agents, comme un arbitre neutre au
+          service de l'intérêt général, exactement la promesse des théories
+          du contrat. Sa critique porte sur l'écart entre cette promesse
+          proclamée et la fonction RÉELLE de l'appareil d'État : protéger
+          en pratique la position de la classe qui possède les moyens de
+          production, en stabilisant un ordre économique dont il n'est
+          jamais le juge neutre.
+
+          Il en tire une conséquence directe pour le sujet posé ici :
+          l'égalité formelle promise par le droit (les mêmes droits pour
+          tous les citoyens) peut coexister, sans aucune contradiction
+          logique, avec une domination économique bien réelle — la finalité
+          PROCLAMÉE (servir tous les citoyens) et la finalité RÉELLE
+          (protéger une classe) divergent alors précisément là où les
+          théories du contrat promettaient qu'elles coïncideraient. Ce
+          n'est donc pas un simple accident historique ponctuel : c'est,
+          pour Marx, un écart structurel entre ce que l'État dit faire et ce
+          qu'il fait réellement.
+
+      - id: q4
+        part: "Partie 4 — Esquisser une réponse argumentée (méthode de R7)"
+        stem: |-
+          En t'appuyant sur la méthode construite en R7 (analyse des termes,
+          problématique, plan dialectique), esquisse en quelques lignes
+          comment répondre à la question : la finalité de l'État coïncide-
+          t-elle toujours avec celle des citoyens ?
+        reasoning: |-
+          Analyse des termes : « toujours » exige d'examiner non seulement
+          si la coïncidence est possible, mais si elle est garantie
+          (partie 1). Problématique : si les théories du contrat fondent
+          l'État précisément sur cette coïncidence, comment expliquer que
+          Marx y voie, au contraire, un écart structurel entre finalité
+          proclamée et finalité réelle — et faut-il en conclure que la
+          coïncidence n'est jamais qu'une façade, ou plutôt qu'elle reste un
+          horizon à construire et à contrôler plutôt qu'un fait acquis une
+          fois pour toutes ?
+
+          Plan dialectique esquissé : **I. Thèse** — la finalité de l'État
+          coïncide, en principe, avec celle des citoyens : sécurité
+          (Hobbes), protection de droits préexistants (Locke), volonté
+          générale (Rousseau) — l'État n'est, dans ce cadre, qu'un
+          instrument à leur service. **II. Antithèse** — cette coïncidence
+          proclamée peut masquer un écart réel : pour Marx, l'appareil
+          d'État protège en pratique une classe, sous couvert de neutralité,
+          sans que cela suppose un cynisme conscient de ses agents.
+          **III. Dépassement** — reprends R5 et R6 (l'État de droit) : ce
+          qui distingue un État dont la finalité coïncide réellement avec
+          celle des citoyens d'un État qui ne fait que le proclamer n'est
+          pas une garantie acquise à l'origine, mais des mécanismes concrets
+          de contrôle et de limitation du pouvoir (séparation des pouvoirs,
+          droits fondamentaux, possibilité de remplacer les gouvernants).
+          Retiens la structure, pas seulement le contenu : c'est exactement
+          le mouvement thèse/antithèse/dépassement déjà pratiqué en R7 sur
+          le sujet voisin « L'État est-il au service de notre liberté, ou en
+          est-il la négation ? » — reconnaître cette structure sous un
+          nouvel habillage est tout le but de cette variation.

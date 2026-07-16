@@ -22,6 +22,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Sans policiers, sans loi qui s'applique réellement dans l'instant, beaucoup de gens profiteraient de l'occasion — l'ordre qu'on observe d'habitude tient largement à la peur d'être vu et puni. »
 - « Les gens ne sont pas fondamentalement violents ou malhonnêtes : s'il y a eu des pillages ici ou là, c'est que la misère ou la colère accumulée ont trouvé une occasion de s'exprimer — pas que l'être humain, livré à lui-même, devient automatiquement un danger pour les autres. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux.
 
 Si l'ordre social ne tenait qu'à la surveillance et à la peur de la sanction, pourquoi la plupart des quartiers plongés dans la même obscurité, cette nuit-là, n'ont-ils connu aucun pillage ? Si la peur du gendarme était la seule chose qui nous retienne, son absence totale, cette nuit-là et partout à la fois, aurait dû produire un désordre généralisé — ce qui n'est pourtant pas ce qui s'est passé.
@@ -60,6 +62,8 @@ La **nation**, enfin, désigne une communauté qui se sent liée par une identit
 
 > **Erreur à éviter :** l'expression « coup d'État » elle-même prête à confusion — elle désigne, historiquement, la prise par la force du pouvoir EXÉCUTIF (le gouvernement), pas la destruction de l'appareil d'État lui-même, qui, le plus souvent, survit intact à l'événement et se retrouve simplement capturé par de nouvelles mains. Ne confonds pas non plus « nation » et « État » : parler de la « nation » d'un pays renvoie à un sentiment d'appartenance partagé, parler de son « État » renvoie à un appareil institutionnel — les deux peuvent, historiquement, se dissocier.
 
+[[checkpoint:cp-r1-concepts]]
+
 ---
 
 ## R2 — Hobbes : l'état de nature, la guerre de tous contre tous, et le Léviathan
@@ -91,6 +95,8 @@ Hobbes nomme ce souverain artificiel le **Léviathan**, empruntant le nom d'un m
 
 > **Erreur à éviter :** ne va jamais écrire que c'est **Rousseau** qui a écrit le *Léviathan* ou qui décrit l'état de nature comme une guerre de tous contre tous — c'est l'une des confusions les plus fréquentes sur ce point du programme. Le *Léviathan* (1651) est un ouvrage de **Hobbes**. Rousseau, on le verra en R4, écrit *Du contrat social* (1762) et défend une image de l'état de nature radicalement différente — bien plus paisible, presque innocente — précisément pour contester la vision hobbesienne. Ne confonds pas non plus « état de nature violent » avec « récit historique vérifié » : c'est, chez Hobbes, avant tout un outil de raisonnement.
 
+[[checkpoint:cp-r2-hobbes]]
+
 ---
 
 ## R3 — Locke : un état de nature moins violent, un contrat pour protéger des droits déjà là
@@ -112,6 +118,8 @@ Locke (XVIIe siècle, *Second traité du gouvernement civil*, 1690) reprend l'id
 **Prends un même événement et regarde ce que chaque théorie en dirait.** Un souverain confisque, sans jugement ni justification, les terres d'un sujet. Pour Hobbes, aussi choquant cet acte puisse-t-il paraître, aucun individu n'a le droit de se faire justice lui-même ou de se soulever : accorder à chacun ce droit de juger reviendrait à redonner à chacun le pouvoir de désobéir « au nom de la justice », ce qui rouvrirait la porte à la guerre de tous contre tous que le contrat visait justement à fermer — seul le souverain, en dernier ressort, tranche ce qui est juste dans la cité. Pour Locke, au contraire, cet acte constitue une violation manifeste de la finalité même du contrat (protéger la propriété) : il justifie, en droit, la résistance, voire le renversement du pouvoir en place. Le même fait produit deux verdicts opposés, parce que les deux théories ne fondent pas le pouvoir politique sur la même chose.
 
 > **Erreur à éviter :** ne présente jamais Locke comme une simple variante affaiblie de Hobbes. Les deux théories divergent sur un point de fond, pas de degré : pour Hobbes, les droits n'existent qu'à PARTIR du contrat, et le pouvoir souverain est (quasiment) irrévocable ; pour Locke, les droits existent AVANT le contrat et lui préexistent, et le pouvoir politique reste conditionnel, révocable si la confiance est trahie.
+
+[[checkpoint:cp-r3-locke]]
 
 ---
 
@@ -136,6 +144,8 @@ Cet acte d'association fait naître un corps moral et collectif, dont Rousseau n
 Puisque la loi légitime, chez Rousseau, exprime la volonté générale — celle-là même à laquelle chaque citoyen participe comme membre du corps politique — obéir à cette loi n'est pas obéir à un pouvoir étranger : c'est, en un sens profond, obéir à ce que la communauté, dont on fait partie, se prescrit collectivement à elle-même (cf. la leçon « La liberté », où ce mécanisme précis est développé : « l'obéissance à la loi qu'on s'est prescrite est liberté »).
 
 > **Erreur à éviter :** ne confonds pas la volonté générale avec la simple « volonté de la majorité » ou avec l'addition des intérêts privés (la volonté de tous) — ce sont, chez Rousseau, deux choses different. Et ne confonds surtout pas, encore une fois, Rousseau et Hobbes : c'est Hobbes, non Rousseau, qui imagine un état de nature violent et un souverain séparé des sujets ; Rousseau construit, à l'inverse, un contrat où l'autorité n'est jamais qu'une émanation directe et égalitaire de la communauté elle-même.
+
+[[checkpoint:cp-r4-rousseau]]
 
 ---
 
@@ -164,6 +174,8 @@ Max Weber (sociologue et philosophe politique, début du XXe siècle, *Le savant
 **Applique cette distinction à un exemple concret.** Un policier qui te verbalise pour un feu rouge grillé, et un individu armé qui te dépouille de ta voiture, exercent tous deux, dans l'instant, une forme de contrainte physique ou de menace. Pourtant, seul le premier acte est reconnu comme légitime — non parce qu'il serait, en lui-même, plus agréable à subir, mais parce qu'il découle d'une loi à l'élaboration de laquelle, en principe, tu as part comme citoyen (cf. R4, la volonté générale), qu'il s'applique selon une procédure connue à l'avance, et qu'il peut être contesté devant un tribunal impartial — trois conditions qu'aucun voleur armé ne remplit jamais.
 
 > **Point de vigilance :** ne confonds pas « légitime », au sens de Weber, avec « moralement juste en toutes circonstances ». Un pouvoir peut être sociologiquement légitime — reconnu, obéi, considéré comme en droit d'exercer la force — tout en étant, par ailleurs, profondément injuste ou oppressif d'un point de vue moral. Cette nuance n'est pas un détail : c'est elle qui rend possibles les critiques de l'État qu'on va voir maintenant.
+
+[[checkpoint:cp-r5-force-droit]]
 
 ---
 
@@ -212,6 +224,8 @@ Marx demanderait si ce n'est pas un hasard que les quartiers touchés par les pi
 Les anarchistes, enfin, feraient remarquer que le fait même que l'ordre ait largement tenu, dans la plupart des quartiers, sans aucune présence policière visible pendant plusieurs heures, montre que la paix sociale ordinaire doit sans doute autant aux liens informels de coopération qu'au seul monopole étatique de la force — exactement ce qu'ils avancent pour contester le caractère indispensable de ce monopole.
 
 Six regards, six mécanismes différents — mais aucun ne réduit ce qui s'est passé cette nuit-là à une réponse simple.
+
+[[checkpoint:cp-r6-critiques]]
 
 ---
 
@@ -263,14 +277,25 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer que l'État protège la liberté — il fait *fonctionner* le mécanisme précis de Hobbes (les trois sources de conflit, la fonction du pouvoir commun) avant d'y ajouter la précision de Locke (la nature des droits protégés). Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — un pouvoir institué pour protéger la liberté peut-il, lui-même, en devenir la menace ?
 
-#### À toi de continuer
+### Exercice de type bac
 
-Rédige maintenant, à ton tour :
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Sa citation te demande de mobiliser trois rungs à la fois
+(Hobbes en R2, Rousseau et Weber en R5, Marx en R6) pour tester une
+affirmation qui va plus loin qu'aucun d'entre eux pris isolément : la
+violence explique-t-elle, à elle seule, à la fois la naissance ET la durée
+de tout pouvoir étatique ?
 
-1. Un paragraphe de la partie II (l'antithèse), en choisissant SOIT l'angle marxiste (l'État comme instrument de domination de classe), SOIT l'angle des dérives totalitaires (un pouvoir non limité qui écrase les droits qu'il devait protéger) — pas les deux à la fois dans un seul paragraphe.
-2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur la distinction entre force et droit (Rousseau, R5) et sur la notion d'État de droit (R6).
+[[checkpoint:cp-bac-violence]]
 
-Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
+[[exercise:r-bac]]
 
-- *Faut-il craindre l'État, ou seulement son absence ?*
-- *Peut-on désobéir légitimement à l'État ?*
+### Une variation pour ne pas mémoriser
+
+Ce second sujet, également réel, revient sur un terrain déjà connu — les
+théories du contrat (R2-R4) face à Marx (R6) — sous un habillage différent
+(la question des « fins » de l'État plutôt que de son « service »). Le but
+n'est pas d'apprendre autre chose : c'est de reconnaître que la même
+argumentation, déjà entraînée en R7, s'applique à un sujet reformulé.
+
+[[exercise:r-variation]]
