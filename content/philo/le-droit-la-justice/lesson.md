@@ -24,6 +24,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Le tribunal a fait exactement ce qu'on attend de lui : il applique la loi telle qu'elle existe, pas ses propres sentiments sur ce qui serait juste ou injuste — sinon, ce ne sont plus des juges mais des moralistes qui décident. »
 - « Le tribunal a manqué à sa mission la plus fondamentale : rendre justice. Un enfant malade et une rivière empoisonnée constituent un tort réel, peu importe qu'un texte de loi l'ait, par accident, laissé passer. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la première au sérieux.
 
 Si le rôle du tribunal se limite strictement à vérifier la conformité à la loi écrite, alors n'importe quelle loi — aussi injuste soit-elle dans son contenu — devrait être appliquée sans discussion possible, du moment qu'elle a été adoptée dans les formes. Or c'est très exactement l'argument qu'ont invoqué certains responsables poursuivis, après la Seconde Guerre mondiale, lors des procès de Nuremberg, pour leur défense : « je n'ai fait qu'appliquer une loi en vigueur ». Si cet argument suffisait toujours à excuser n'importe quoi, aucune loi ne pourrait jamais être jugée, de l'extérieur, injuste — ce qui semble pourtant excessif.
@@ -54,6 +56,8 @@ La **justice**, en revanche, désigne un idéal — un principe d'après lequel 
 
 > **Erreur à éviter :** ne conclus jamais de cet exemple que « le droit ne sert à rien » ou qu'« il vaudrait mieux n'avoir aucune loi écrite ». Le droit reste, dans l'immense majorité des cas, l'instrument par lequel une société cherche à réaliser la justice — il protège contre l'arbitraire, fixe des règles connues de tous, permet de trancher les conflits sans recourir à la force privée (cf. la leçon « L'État », R5, sur ce que l'absence de droit rend possible). Le point de R0 n'est pas que le droit est inutile, mais qu'il n'est pas AUTOMATIQUEMENT identique à la justice — un droit positif peut, dans certains de ses contenus, rester injuste, et c'est cet écart possible qu'il faut savoir repérer.
 
+[[checkpoint:cp-r1-rupture]]
+
 ---
 
 ## R2 — Droit positif et droit naturel : deux manières de fonder le droit
@@ -77,6 +81,8 @@ Le **droit naturel**, à l'inverse, désigne — selon la tradition jusnaturalis
 **Voici pourquoi cette distinction est décisive.** Si l'on ne disposait d'aucun critère extérieur au droit positif lui-même, on ne pourrait jamais dire d'une loi qu'elle est injuste — on pourrait seulement dire qu'elle existe, ou qu'elle n'existe pas. Le droit naturel fournit précisément ce point d'appui extérieur : un étalon indépendant des lois écrites, à l'aune duquel celles-ci peuvent être évaluées, critiquées, et parfois jugées illégitimes dans leur contenu même — exactement le geste que la plupart des élèves faisaient, sans le nommer, face à la situation de R0.
 
 > **Erreur à éviter :** ne confonds pas le droit naturel, au sens où on l'entend ici (des principes de justice universels), avec les « lois de la nature » au sens des sciences physiques (la gravitation, par exemple). Une loi physique DÉCRIT ce qui se passe nécessairement ; le droit naturel, lui, PRESCRIT ce qui devrait être respecté — deux emplois du mot « loi » (et du mot « nature ») qu'il ne faut jamais superposer.
+
+[[checkpoint:cp-r2-rupture]]
 
 ---
 
@@ -106,6 +112,8 @@ C'est précisément ce genre de situation qui a relancé, après-guerre, la trad
 
 > **Erreur à éviter :** ne présente jamais Kelsen comme quelqu'un qui APPROUVE moralement les lois injustes qu'il déclare « valides » — sa thèse est méthodologique (séparer l'analyse juridique de l'évaluation morale), pas une apologie du contenu de telle ou telle loi. Ne confonds pas non plus « positivisme juridique » (une thèse sur ce qui rend une loi valide) avec un rejet général de toute réflexion morale : Kelsen lui-même peut, à titre personnel, juger une loi injuste — il soutient seulement que ce jugement moral n'affecte pas sa validité JURIDIQUE.
 
+[[checkpoint:cp-r3-rupture]]
+
 ---
 
 ## R4 — Aristote : la justice comme égalité, deux manières de l'appliquer
@@ -131,6 +139,8 @@ La **justice distributive**, elle, régit la répartition des biens, des honneur
 **Un tribunal condamne une entreprise à indemniser un client pour un produit défectueux, à hauteur exacte du préjudice subi — sans tenir compte de la taille de l'entreprise ni du statut du client.** C'est un cas de justice commutative : l'égalité stricte de la réparation à la faute prime, indépendamment de qui sont les parties. **Une bourse d'études est répartie entre plusieurs candidats selon leurs résultats scolaires et leurs besoins financiers respectifs, plutôt qu'à parts strictement égales entre tous les candidats.** C'est un cas de justice distributive : la proportionnalité au mérite et au besoin prime sur l'égalité stricte.
 
 > **Erreur à éviter :** ne dis jamais que la justice distributive est « plus juste » ou « plus généreuse » que la justice commutative, ni l'inverse — ce ne sont pas deux degrés d'une même échelle, mais deux principes adaptés à deux types de situations différents (l'échange entre parties égales ; la répartition d'un bien commun entre contributions inégales). Confondre les deux — appliquer une proportionnalité au mérite dans un simple remboursement de dette, ou une égalité stricte dans le partage d'un bien commun — est l'erreur la plus fréquente sur ce point du programme.
+
+[[checkpoint:cp-r4-rupture]]
 
 ---
 
@@ -162,6 +172,8 @@ Rawls soutient que des participants raisonnant ainsi, derrière le voile d'ignor
 **Relie ce point aux rungs précédents.** Rawls ne fonde pas la justice sur des droits déjà donnés par la nature, indépendamment de toute procédure (ce serait la position jusnaturaliste de R2) ; il ne la réduit pas non plus à la simple conformité procédurale d'une loi existante, sans aucun critère de contenu (ce serait la position positiviste de R3). Il propose une troisième voie : une PROCÉDURE hypothétique (la position originelle, le voile d'ignorance) construite précisément pour produire des principes dont le CONTENU peut ensuite servir à évaluer et à réformer le droit positif réel — un peu comme Aristote (R4) cherchait un principe d'égalité applicable à la répartition, mais en proposant, ici, une méthode pour déterminer ce principe de façon impartiale plutôt qu'en le posant directement.
 
 > **Erreur à éviter :** ne confonds pas le voile d'ignorance avec un état réel dans lequel vivraient les citoyens d'une société — c'est une expérience de pensée, purement hypothétique, qui sert à choisir des principes, pas une description de la vie en société une fois ces principes adoptés (une fois le voile levé, chacun retrouve parfaitement conscience de sa situation réelle). Ne confonds pas non plus le principe de différence avec une exigence d'égalité stricte des richesses : Rawls accepte des inégalités, à condition qu'elles bénéficient aux plus désavantagés — ce n'est pas un égalitarisme absolu.
+
+[[checkpoint:cp-r5-rupture]]
 
 ---
 
@@ -196,6 +208,8 @@ Rawls ajouterait que des participants placés derrière un voile d'ignorance, ig
 Et la distinction légalité/légitimité, enfin, permet de nommer précisément ce que la plupart des élèves ressentaient d'emblée face à ce dossier : une décision parfaitement légale, mais qu'une partie au moins d'entre eux jugeait, malgré tout, illégitime dans son résultat — deux jugements qui, on le voit maintenant, n'ont jamais à coïncider automatiquement.
 
 > **Erreur à éviter :** ne conclus pas de cette leçon qu'« une loi légale ne mérite jamais l'obéissance si elle est illégitime à mes yeux » — la distinction légalité/légitimité sert à ANALYSER pourquoi un décalage est possible, pas à justifier automatiquement la désobéissance individuelle à toute loi qu'on trouve personnellement injuste (question distincte, que tu creuseras dans les sujets d'entraînement ci-dessous).
+
+[[checkpoint:cp-r6-rupture]]
 
 ---
 
@@ -258,3 +272,25 @@ Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse 
 
 - *Une loi peut-elle être légale sans être légitime ?*
 - *La justice est-elle affaire d'égalité ?*
+
+### Exercice de type bac
+
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il porte exactement sur le terrain déjà construit en R2
+(droit positif contre droit naturel) et R3 (le positivisme juridique de
+Kelsen) : à toi de mobiliser ce que tu sais déjà pour l'affronter, sans
+qu'aucun contenu nouveau ne soit à apprendre.
+
+[[checkpoint:cp-bac-positivisme]]
+
+[[exercise:r-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Ce second exercice n'est pas un sujet d'examen réel : c'est une variation
+fabriquée pour ce point précis de la leçon (voir la note de sourcing dans
+exercises.yaml), construite pour reconnaître que le même raisonnement
+s'applique quand l'habillage change — une citation à discuter plutôt
+qu'une question directe.
+
+[[exercise:r-variation]]
