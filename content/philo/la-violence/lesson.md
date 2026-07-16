@@ -24,6 +24,8 @@ La plupart des élèves donnent l'une de ces deux réponses :
 - « Ce ne sont pas des policiers, ils n'avaient aucune autorité pour faire ce qu'ils ont fait — même face à un coupable, frapper quelqu'un jusqu'à ce qu'il ne puisse plus se relever, c'est de la violence, un point c'est tout. »
 - « Ils n'ont fait, au fond, que ce que la police aurait fait de toute façon — arrêter un voleur pris en flagrant délit — sauf qu'ils l'ont fait eux-mêmes, parce que personne d'autre n'était là pour le faire à temps. Ce n'est pas franchement différent. »
 
+[[checkpoint:cp-r0-predict]]
+
 Les deux réponses semblent raisonnables. Mais regarde ce qui se passe si tu prends la seconde au sérieux.
 
 Si le seul fait d'arrêter un coupable pris en flagrant délit suffisait à rendre légitime tout ce qui s'ensuit, pourquoi la police elle-même n'a-t-elle pas le droit de frapper un suspect déjà maîtrisé et désarmé, une fois l'arrestation faite ? Si « arrêter un voleur » légitimait n'importe quel usage de la force qui accompagne cette arrestation, cette limite, pourtant bien réelle, n'aurait aucun sens.
@@ -60,6 +62,8 @@ Trois conditions, déjà esquissées dans la leçon « L'État », permettent de
 
 > **Erreur à éviter :** ne confonds jamais « légitime », au sens de Weber, avec « moralement juste en toutes circonstances » (point de vigilance déjà rencontré dans « L'État », R5) : un acte peut être légitime — issu d'une procédure reconnue — tout en produisant, dans tel cas précis, une injustice (une erreur judiciaire) ; et un acte peut viser une personne authentiquement coupable tout en restant, faute de procédure et de tiers impartial, un acte de violence. Ne confonds pas non plus « force » et « violence » comme si les deux mots désignaient la même chose : un coup porté dans un match de boxe, encadré par des règles acceptées d'avance par les deux adversaires, est de la force ; le même coup, porté hors de ce cadre consenti, devient de la violence.
 
+[[checkpoint:cp-r1-force-legitime]]
+
 ---
 
 ## R2 — La violence comme négation de la personne : ce que la douleur n'épuise pas
@@ -86,6 +90,8 @@ On peut relire ce mécanisme à la lumière du conflit des libertés décrit par
 
 > **Erreur à éviter :** ne réduis jamais la violence à la seule douleur physique infligée — une piqûre douloureuse et consentie n'est pas violente, une gifle inattendue l'est, alors même que la douleur qu'elle cause peut être bien moindre. Ne confonds pas non plus l'objectivation réversible du regard sartrien (« Autrui », R4) avec l'objectivation, bien plus radicale et momentanément irréversible, que produit la contrainte physique : ce sont deux degrés d'un même mécanisme, pas deux mécanismes identiques. Retiens enfin que la violence n'est pas nécessairement physique — la leçon y reviendra en R7.
 
+[[checkpoint:cp-r2-negation-personne]]
+
 ---
 
 ## R3 — Hobbes : la violence, un fait structurel de la nature humaine sans autorité commune
@@ -107,6 +113,8 @@ Tu as déjà rencontré, dans la leçon « L'État » (R2), le raisonnement de H
 **Ce que Hobbes dirait de la scène de R0 :** ce que les quatre voisins ont fait, cette nuit-là, c'est reprendre, l'espace de vingt minutes, ce droit de nature que le contrat social est censé leur avoir fait déposer entre les mains d'une autorité commune — un retour local et passager à la condition même que l'État existe pour empêcher.
 
 > **Erreur à éviter :** ne dis jamais que Hobbes fait l'apologie de la violence ou la juge souhaitable — il la décrit comme un fait structurel de l'absence d'autorité commune, précisément pour justifier la nécessité du Léviathan (« L'État », R2). Ne confonds pas non plus le « droit de nature » (une liberté de fait, en l'absence de toute loi commune) avec un droit moralement approuvé : Hobbes le constate, il ne le recommande pas.
+
+[[checkpoint:cp-r3-hobbes]]
 
 ---
 
@@ -150,6 +158,8 @@ Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégal
 
 > **Erreur à éviter — l'une des confusions les plus fréquentes sur ce point du programme :** ne va jamais écrire que c'est **Rousseau** qui attribue à l'homme une nature originellement violente, ni que Rousseau décrit l'état de nature comme une guerre de tous contre tous — c'est exactement l'inverse de sa thèse, et c'est **Hobbes** (R3) à qui appartient cette idée. Rousseau soutient, au contraire, que l'homme naturel est paisible et compatissant, et que la violence est un produit de la société — en particulier de la propriété et de l'amour-propre qu'elle engendre — et non un donné de nature.
 
+[[checkpoint:cp-r4-rousseau]]
+
 ---
 
 ## R5 — La violence peut-elle servir une fin juste ? Le débat sur la violence révolutionnaire
@@ -178,6 +188,8 @@ Frantz Fanon (XXe siècle, psychiatre et essayiste, *Les Damnés de la terre*, 1
 **Ce que cette tension permet de voir, à une tout autre échelle, dans la scène de R0 :** le geste des quatre voisins pose déjà, en miniature, exactement ce dilemme — une fin jugée juste (protéger le quartier, faire cesser les cambriolages) suffit-elle à légitimer n'importe quel moyen mis à son service, ou la nature du moyen employé reste-t-elle, elle aussi, à juger indépendamment de la fin poursuivie ?
 
 > **Erreur à éviter :** ne confonds jamais la légitime défense individuelle, encadrée par le droit (R1), avec la violence révolutionnaire collective visant à renverser un ordre entier jugé illégitime (ce rung) — ce sont deux échelles et deux problèmes distincts, que la copie ne doit jamais fondre en un seul. Ne dis pas non plus que Fanon et Marx défendent une position identique : Marx vise la transformation, puis la disparition, de l'appareil d'État par une classe qui s'en empare (« L'État », R6) ; Fanon pose un problème spécifique, celui de la violence propre au rapport colonial lui-même.
+
+[[checkpoint:cp-r5-violence-juste]]
 
 ---
 
@@ -211,6 +223,8 @@ Comparé à la violence révolutionnaire (R5), le satyagraha refuse de nier la p
 
 > **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne confonds jamais la non-violence gandhienne avec la passivité, la résignation, ou un simple refus de se défendre. C'est, à l'inverse, une résistance ACTIVE, organisée et publique, qui accepte consciemment la répression pour convaincre — pas une absence de résistance à l'injustice. Confondre les deux, c'est manquer précisément ce qui fait la radicalité du satyagraha : résister sans jamais nier, y compris chez l'adversaire, le statut de personne.
 
+[[checkpoint:cp-r6-gandhi]]
+
 ---
 
 ## R7 — Au-delà du monopole légitime : l'État peut-il être lui-même une forme de violence ?
@@ -230,6 +244,8 @@ Pierre Bourdieu (avec Jean-Claude Passeron, XXe siècle, *La Reproduction*, 1970
 #### Ce que cela n'implique pas
 
 **Un point à ne pas manquer :** cela ne signifie pas que tout pouvoir légitime ne serait, par principe, qu'une violence déguisée — Bourdieu décrit un mécanisme précis, observable dans des institutions particulières (l'école, la culture, le langage), qui vient COMPLÉTER l'analyse de Weber, pas l'annuler. De la même façon que la critique marxiste de l'État (« L'État », R6) n'efface pas les théories du contrat, mais en révèle un envers, la violence symbolique révèle un envers du monopole légitime décrit par Weber, sans prétendre que ce monopole n'existe pas ou que toute obéissance serait, par nature, illégitime.
+
+[[checkpoint:cp-r7-bourdieu]]
 
 #### Fermeture de l'arc : la nuit du quartier, une dernière fois
 
@@ -312,3 +328,24 @@ Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse 
 
 - *Peut-on répondre à la violence par la violence ?*
 - *La non-violence est-elle une forme de faiblesse ?*
+
+### Exercice de type bac
+
+Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
+pour cette leçon. Il ne t'emmène pas sur un axe nouveau : il porte
+exactement sur ce que R1 (force légitime vs violence, le monopole
+wébérien) et R7 (l'État peut-il être lui-même une forme de violence ?) ont
+déjà construit — à toi de mobiliser ce que tu sais déjà pour l'affronter.
+
+[[exercise:r-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Ce second sujet est un exercice construit pour cette leçon — il n'est pas
+tiré des annales nationales. Il revient sur un terrain déjà connu, mais
+différent de r-bac : R5 (violence révolutionnaire, Fanon, Marx) et R6
+(Gandhi, moyens et fins), sous l'habillage d'une citation construite. Le
+but n'est pas d'apprendre autre chose : c'est de reconnaître que la même
+argumentation s'applique à un habillage différent.
+
+[[exercise:r-variation]]

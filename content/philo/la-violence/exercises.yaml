@@ -1,0 +1,405 @@
+# Attempt-first exercises (summit-conversion campaign). Rendered by
+# AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md: the
+# student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the
+# full philosophical argument in prose — thèse identification, argument
+# analysis, position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (per the recipe addendum's decision
+# rule): docs/sujets/philo/la-violence.md carries exactly ONE verified entry
+# for this notion — "2021 — session normale — موضوع الأول (سؤال)", statut
+# « vérifié — via reproduction indépendante typée (profsalmi), scan officiel
+# non ré-OCRisé ; citation/consigne/en-tête conformes (agent-vérificateur,
+# 2026-07-15) ». This notion was CONFIRMED in-scope by the cadre-challenger
+# (not contested). Unlike la-liberte (which had TWO verified texts and could
+# reuse the second one for r-variation), this notion has only one — so per
+# the recipe's fallback rule, r-variation is a FRESH fabricated twin,
+# `status: not-applicable`, rather than a second sourced text. To respect
+# the addendum's caution against fabricating "bad philosophy" (a
+# philosophical paraphrase can subtly misstate a thesis with nothing to
+# catch it, unlike a maths/PC twin), r-variation is written as an
+# HONESTLY-LABELLED constructed practice exercise — mirroring the house
+# precedent set by content/philo/autrui/exercises.yaml for the identical
+# single-verified-text case (French only, no invented Arabic original
+# dressed up as a translated bac citation — a real Moroccan bac text IS
+# bilingual by provenance; a fabricated one has no business pretending to
+# be). r-bac's own axis (اللجوء إلى العنف / recours à la violence, دولة
+# الحق / État de droit) maps directly onto R1 (force légitime vs violence,
+# le monopole wébérien) and R7 (l'État peut-il être lui-même une forme de
+# violence) — both already taught in full — so, exactly as in the autrui
+# precedent, no dedicated "new axis" priming checkpoint was added before
+# [[exercise:r-bac]] (see checkpoints.yaml's header for what was
+# prioritized instead: the item-bank's thinnest/zero-coverage models).
+# r-variation targets a DIFFERENT already-taught axis (R5/R6 — violence
+# révolutionnaire and moyens/fins chez Gandhi) rather than re-walking R1/R7,
+# so the two exercises exercise genuinely different parts of the lesson
+# rather than paraphrasing each other.
+
+notion: la-violence
+
+exercises:
+  # ── r-bac — VERIFIED 2021 session normale sujet (سؤال) ────────────────────
+  # Faithful transcription of docs/sujets/philo/la-violence.md → "2021 —
+  # session normale — موضوع الأول (سؤال)". Real bac text, not built for this
+  # lesson. It is a سؤال (a direct dissertation question), not a نص/قولة to
+  # analyze — so its questions follow the R8 method's own apparatus (analyse
+  # des termes → thèse → nuance conceptuelle → discussion → plan), the same
+  # shape used for theorie-experience's own سؤال-type r-variation, rather
+  # than a "dégager la thèse d'un texte" opening question.
+  - id: r-bac
+    title: "Exercice de type bac — l'État, la violence et l'État de droit (سؤال, 2021 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — reproduction indépendante typée (profsalmi,
+        https://www.profsalmi.com/2024/04/aliamtihan-alwatani-2021-philo-normal.html),
+        recoupée avec le scan officiel AlloSchool NS 05 et une vidéo de cours
+        indépendante (بيت الحكمة للدرس الفلسفي) ; texte transcrit
+        intégralement dans docs/sujets/philo/la-violence.md (entrée « 2021 —
+        session normale — موضوع الأول (سؤال) »), statut « vérifié » (agent-
+        vérificateur, 2026-07-15). Filière : كل مسالك الشعب العلمية والتقنية
+        والمهنية — الفلسفة, 2h, معامل 2. Auteur non indiqué : c'est un سؤال
+        (une question), pas une citation attribuée.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2021 (session normale) —
+      premier sujet (une question à traiter en dissertation) :**
+
+      > **الموضوع الأول :**
+      > هل اللجوء إلى العنف ينفي عن الدولة صفة دولة الحق؟
+
+      **Traduction de travail — non vérifiée au même titre que l'original
+      arabe :**
+
+      > **Sujet premier :**
+      > « Le recours à la violence retire-t-il à l'État sa qualité d'État de
+      > droit ? »
+
+      **Note sur le médium :** l'épreuve réelle se déroule intégralement en
+      langue arabe (voir docs/sujets/philo/la-violence.md, note « Médium &
+      format ») — le candidat marocain compose ce sujet en arabe, pas en
+      français. La version française ci-dessus est une traduction de
+      travail, jamais qualifiée de « vérifiée » au même titre que l'original
+      arabe.
+
+      Ce sujet ne t'emmène pas sur un axe nouveau : il porte exactement sur
+      ce que R1 (force légitime vs violence, le monopole wébérien) et R7
+      (l'État peut-il être lui-même une forme de violence ?) ont déjà
+      construit. C'est un سؤال — une question directe à traiter en
+      dissertation, pas un texte à analyser — mobilise donc la méthode de
+      R8 (analyse des termes, problématique, plan dialectique) autant que le
+      contenu de R1 et R7.
+    questions:
+      - id: q1
+        part: "Partie 1 — Analyser les termes et problématiser"
+        stem: |-
+          Le sujet demande si le RECOURS à la violence retire à l'État sa
+          qualité d'État de droit. Décortique les termes : de quoi
+          l'expression « État de droit » a-t-elle besoin pour avoir un
+          sens précis, et quelle confusion le sujet risque-t-il d'entretenir
+          si on ne la lève pas ?
+        reasoning: |-
+          « État de droit » ne peut pas vouloir dire simplement « État qui
+          produit des lois » — n'importe quel régime, même le plus
+          arbitraire, légifère. Ce que R1 permet de préciser : un État de
+          droit est un État dont l'action à LUI-MÊME reste soumise au droit
+          qu'il édicte — encadrée par une procédure connue à l'avance,
+          contestable devant un tiers impartial. C'est exactement le triple
+          critère (loi, procédure, tiers impartial) que R1 construit pour
+          distinguer force légitime et violence, appliqué cette fois à
+          l'État lui-même plutôt qu'à un particulier.
+
+          La confusion à éviter, et que le sujet risque d'entretenir si on
+          ne l'examine pas : traiter « recours à la violence » et « recours
+          à la force » comme synonymes. Un État a nécessairement recours à
+          la force — police, justice, prison — sans que cela, à lui seul,
+          menace sa qualité d'État de droit ; R1 est explicite sur ce point,
+          la force est une capacité neutre. Le sujet, en parlant précisément
+          de « اللجوء إلى العنف » (le recours à la VIOLENCE, pas à la force
+          en général), présuppose déjà cette distinction — le travail de la
+          copie est de la rendre explicite, pas de l'inventer.
+      - id: q2
+        part: "Partie 2 — Construire la thèse : oui, la violence retire l'État de droit"
+        stem: |-
+          Construis l'argument en faveur du « oui » : montre, en mobilisant
+          R1 et R2, pourquoi un État qui a recours à la violence perd, par
+          ce geste même, sa qualité d'État de droit.
+        reasoning: |-
+          Applique directement le triple critère de R1 : si l'État agit hors
+          de toute loi, sans procédure connue à l'avance, sans qu'aucun
+          tiers impartial ne puisse contrôler son geste, il commet, au sens
+          précis construit par la leçon, un acte de violence — exactement ce
+          que R0 a mis en scène avec les quatre voisins, devenus à la fois
+          accusateurs, juges et exécuteurs. Un État qui agirait ainsi
+          redeviendrait juge et partie dans sa propre cause : la contradiction
+          est directe, puisque l'État de droit se définit justement par la
+          soumission de l'action publique à un cadre que personne, pas même
+          l'État, ne peut s'octroyer le droit de contourner seul.
+
+          Ajoute R2 : même indépendamment de la procédure suivie, un État
+          qui a recours à la violence traite alors ses citoyens (ou toute
+          personne sur son territoire) comme de purs moyens ou objets plutôt
+          que comme des sujets dont la liberté devrait être respectée ou, à
+          défaut, confrontée par une procédure contestable — exactement le
+          critère kantien et sartrien construit en R2. Un État qui se
+          comporte ainsi ne se contente pas de violer une règle procédurale :
+          il nie, dans son geste, le statut même de sujet de droit qu'un
+          État de droit est censé garantir à chacun.
+      - id: q3
+        part: "Partie 3 — Nuancer avec les concepts : force légitime n'est pas violence"
+        stem: |-
+          Nuance maintenant la thèse à l'aide de la définition wébérienne du
+          monopole de la violence légitime (R1) : le simple fait qu'un État
+          ait recours à la FORCE emporte-t-il nécessairement qu'il commet
+          une violence ?
+        reasoning: |-
+          Non — et c'est ici que l'analyse des termes de la partie 1 porte
+          ses fruits. La formule même de Weber, rappelée en R1, est « le
+          monopole de la violence physique LÉGITIME » : elle inscrit la
+          légitimité au cœur même de la définition, elle ne l'ajoute pas
+          après coup. Un État qui agit dans le cadre des trois critères de
+          R1 — loi, procédure connue, tiers impartial — n'exerce pas une
+          violence au sens précis que la leçon construit : il exerce une
+          force légitime, exactement au même titre qu'un policier qui
+          respecte la procédure n'est pas l'auteur d'une violence, même
+          lorsqu'il maîtrise physiquement un suspect (R1, VIO-1).
+
+          Ce qui retire à un État sa qualité d'État de droit, ce n'est donc
+          pas le simple recours à la force — un État sans aucune force,
+          incapable de faire respecter ses propres lois, ne serait
+          d'ailleurs guère plus un État de droit effectif qu'un État
+          arbitraire — mais très précisément le recours à la violence,
+          c'est-à-dire à une force qui échappe à ce cadre : hors la loi,
+          hors procédure, hors contrôle d'un tiers impartial. Le sujet, en
+          choisissant le mot العنف (violence) plutôt que القوة (la force),
+          ne pose donc pas la question « l'État peut-il agir ? » mais
+          « l'État peut-il agir hors du cadre qui définit sa propre
+          légitimité ? » — deux questions très différentes qu'une copie
+          hâtive risquerait de confondre.
+      - id: q4
+        part: "Partie 4 — Discuter : un État procéduralement irréprochable est-il pour autant à l'abri de toute violence ?"
+        stem: |-
+          Va plus loin, en discutant : même un État qui respecte
+          formellement les trois critères de R1 peut-il rester, en un autre
+          sens, l'auteur d'une violence ? Mobilise R7.
+        reasoning: |-
+          R7 complique précisément cette belle clôture. Bourdieu montre
+          qu'une domination peut s'exercer SANS aucune contrainte physique,
+          par la seule « méconnaissance » : des normes arbitraires (scolaires,
+          culturelles, linguistiques) imposées par un État et ses
+          institutions en viennent à être perçues par les dominés eux-mêmes
+          comme naturelles, méritées, allant de soi. Un État peut donc
+          respecter à la lettre les trois critères procéduraux de R1 — lois
+          votées, procédures suivies, tribunaux saisissables — tout en
+          continuant d'exercer, par ses institutions, une forme de violence
+          symbolique que ces critères, à eux seuls, ne permettent pas de
+          détecter.
+
+          Ajoute, pour discuter plus loin encore, la critique de R5 (Fanon,
+          Marx) : un ordre légal peut lui-même reposer, à sa racine, sur un
+          rapport de force déjà violent — une conquête, une domination de
+          classe ou coloniale — que la seule conformité procédurale
+          présente ne suffit jamais à effacer rétroactivement. Attention
+          cependant à ne pas conclure trop vite que « tout État de droit
+          n'est donc qu'une violence déguisée » (R7, erreur détectée par
+          VIO-24) : Bourdieu et la critique marxiste COMPLÈTENT l'analyse
+          wébérienne de R1, ils ne l'annulent pas — un État peut être, à la
+          fois et sans contradiction, procéduralement un État de droit au
+          sens strict de R1, et le lieu d'une violence plus discrète que ce
+          sens strict ne capture pas.
+      - id: q5
+        part: "Partie 5 — Synthétiser (méthode de R8)"
+        stem: |-
+          En t'appuyant sur la méthode construite en R8 (analyse des termes,
+          problématique, plan dialectique), esquisse en quelques lignes un
+          plan pour répondre à la question posée : le recours à la violence
+          retire-t-il à l'État sa qualité d'État de droit ?
+        reasoning: |-
+          Problématique possible : si un État de droit se définit par la
+          soumission de sa propre action au droit qu'il édicte (R1), le
+          recours à la violence — au sens strict d'une force qui échappe à
+          ce cadre — semble bien lui retirer cette qualité par définition ;
+          mais un État peut alors rester procéduralement irréprochable tout
+          en portant, par ses institutions, une violence plus discrète (R7)
+          que ce critère ne suffit pas à exclure — faut-il alors élargir ce
+          que « violence » désigne pour juger vraiment si un État reste un
+          État de droit ?
+
+          Plan dialectique esquissé : **I. Thèse** — oui, tout recours d'un
+          État à une force hors des critères de R1 (loi, procédure, tiers
+          impartial) lui retire sa qualité d'État de droit : il redevient
+          juge et partie dans sa propre cause, comme les quatre voisins de
+          R0. **II. Antithèse** — mais l'État a nécessairement recours à la
+          force (police, justice, prison) sans perdre pour autant ce statut,
+          tant qu'il respecte ces critères (Weber, R1) : le sujet, en
+          parlant précisément de « violence » et non de « force », présuppose
+          déjà cette distinction qu'une copie hâtive risquerait d'aplatir.
+          **III. Dépassement** — même un État procéduralement irréprochable
+          peut porter une violence plus discrète — symbolique (Bourdieu,
+          R7), ou structurelle si son ordre légal repose lui-même sur un
+          rapport de force injuste (Fanon, Marx, R5) — de sorte qu'une
+          réponse rigoureuse ne se referme pas sur un simple oui/non, mais
+          distingue plusieurs sens de « violence » que l'État peut, ou non,
+          exercer selon le sens retenu. Retiens la structure, pas seulement
+          le contenu : c'est le même mouvement thèse/antithèse/dépassement
+          pratiqué en R8 sur un sujet voisin.
+
+  # ── r-variation — FABRICATED twin (not-applicable), only one verified ────
+  # text exists for this notion (see file header). Angle: violence
+  # révolutionnaire et moyens/fins chez Gandhi (R5/R6) — DIFFERENT
+  # already-taught axis from r-bac's R1/R7, so the two exercises exercise
+  # genuinely different parts of the lesson. Honestly labelled as a
+  # constructed exercise, not dressed up as a translated bac citation (see
+  # file header for why) — same house convention as content/philo/autrui/
+  # exercises.yaml's own r-variation.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — la violence peut-elle se justifier par sa fin ? (exercice construit)"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Exercice construit pour cette leçon, sur le modèle d'un
+        sujet-citation — pas tiré des annales. docs/sujets/philo/
+        la-violence.md ne compte qu'UNE seule entrée vérifiée pour cette
+        notion (voir r-bac) ; per la règle de repli de l'addendum philo du
+        recipe, une seconde citation fabriquée est préférable à une
+        réutilisation forcée du même texte vérifié, à condition d'être
+        honnêtement étiquetée `not-applicable` et de ne mobiliser que des
+        axes déjà enseignés par la leçon (ici, R5 et R6) plutôt que
+        d'introduire un contenu nouveau non couvert par les rungs.
+    intro: |-
+      **Exercice construit pour cette leçon** — ce sujet n'est pas tiré des
+      annales nationales : il te permet de retravailler, sous un angle
+      différent de r-bac, deux axes déjà enseignés (R5 et R6) plutôt que de
+      revenir sur R1 et R7.
+
+      > « Celui qui renverse une tyrannie par les armes fonde un pouvoir
+      > nouveau sur la même violence qu'il prétendait abolir ; seule une
+      > force qui s'interdit à elle-même de reproduire ce qu'elle combat
+      > peut espérer construire autre chose. »
+
+      Consigne : à partir de cette citation, discute si la violence peut
+      être un moyen légitime de combattre une injustice, ou si elle se nie
+      nécessairement elle-même dès qu'elle est employée à cette fin.
+
+      Contrairement à r-bac, ce sujet ne te ramène pas sur la distinction
+      force légitime / violence (R1) ni sur l'État (R7) : c'est exactement
+      le terrain de R5 (violence révolutionnaire, Fanon, Marx, la critique
+      anarchiste) et R6 (Gandhi, moyens et fins). Le but n'est pas
+      d'apprendre autre chose : c'est de reconnaître que la même
+      argumentation s'applique à un habillage différent — une citation
+      construite, sans le contexte narratif des quatre voisins de R0.
+    questions:
+      - id: q1
+        part: "Partie 1 — Comprendre la citation"
+        stem: |-
+          Explique ce que la citation affirme précisément, et à quelle
+          intuition spontanée sur la violence révolutionnaire elle
+          s'oppose.
+        reasoning: |-
+          L'intuition spontanée, nommée en R5, est simple : si la cause est
+          juste — renverser une tyrannie — alors la violence employée pour
+          l'atteindre est, de ce seul fait, pleinement justifiée ; la fin
+          efface la nature du moyen. Cette citation affirme exactement
+          l'inverse sur un point précis : le pouvoir NOUVEAU fondé par cette
+          violence repose sur « la même violence » que celle qu'il
+          prétendait abolir — la violence employée ne disparaît pas une fois
+          la fin atteinte, elle se prolonge dans le nouvel ordre qui en
+          résulte.
+
+          La seconde phrase pose une condition, pas une interdiction pure et
+          simple : seule une force qui « s'interdit à elle-même » de
+          reproduire ce qu'elle combat peut construire autre chose — ce qui
+          suppose qu'une telle auto-limitation est possible, sans trancher
+          encore si elle l'est en pratique. C'est précisément cette
+          condition que la suite de l'exercice va devoir examiner.
+      - id: q2
+        part: "Partie 2 — Mobiliser R5 : le risque du retournement du pouvoir"
+        stem: |-
+          Quelle limite, déjà construite en R5, permet de justifier
+          précisément la première partie de la citation — « fonde un
+          pouvoir nouveau sur la même violence » ?
+        reasoning: |-
+          R5 construit exactement ce mécanisme sous le nom de critique
+          anarchiste : toute concentration de pouvoir, même conquise par une
+          lutte jugée juste, tend structurellement à se retourner contre
+          ceux qu'elle devait libérer. La leçon le formule sans détour :
+          « la violence, une fois mobilisée comme moyen, ne s'arrête pas
+          nécessairement une fois la fin visée atteinte : elle peut se
+          retourner contre d'anciens alliés, ou fonder un nouvel ordre qui
+          reproduit, sous une autre bannière, des logiques de contrainte
+          comparables à celles qu'il combattait. »
+
+          Applique cette logique à la citation : le « pouvoir nouveau »
+          qu'installe une révolution victorieuse n'est pas fondé sur rien —
+          il est fondé sur l'appareil de contrainte qui a permis la victoire
+          elle-même. Rien, dans le seul fait d'avoir gagné, ne garantit que
+          cet appareil se dissout de lui-même une fois la tyrannie renversée
+          — c'est précisément ce risque structurel, pas un simple accident
+          de parcours, que R5 met en garde et que la citation résume en une
+          phrase.
+      - id: q3
+        part: "Partie 3 — Mobiliser R6 : la condition posée par Gandhi"
+        stem: |-
+          La seconde phrase de la citation pose une condition : seule une
+          force qui « s'interdit à elle-même » de reproduire ce qu'elle
+          combat peut construire autre chose. En quoi cette condition
+          rejoint-elle très précisément l'argument de Gandhi en R6 ?
+        reasoning: |-
+          C'est très exactement l'image gandhienne de la graine et de
+          l'arbre (R6, Hind Swaraj) : les moyens sont à la fin ce que la
+          graine est à l'arbre, un rapport aussi nécessaire qu'entre une
+          cause et son effet — des moyens violents ne peuvent produire une
+          fin authentiquement juste et libre, quelle que soit par ailleurs
+          la noblesse de cette fin. « S'interdire à soi-même de reproduire
+          ce qu'on combat », dans la citation, c'est reformuler cette même
+          exigence : ne pas planter une graine violente si l'on espère
+          récolter un arbre de liberté.
+
+          Le satyagraha (R6) est la réponse concrète de Gandhi à cette
+          exigence : une résistance ACTIVE, publique et organisée
+          (désobéissance civile), qui accepte consciemment la répression
+          pour convaincre, plutôt que de contraindre par la force —
+          exactement le type de force qui « s'interdit à elle-même » de
+          reproduire la violence qu'elle combat, sans pour autant renoncer à
+          résister. Ne confonds pas cette auto-limitation avec une simple
+          passivité (erreur détectée par VIO-5, VIO-22) : le satyagraha
+          reste une résistance déterminée, seulement d'une nature différente
+          de celle qu'il affronte.
+      - id: q4
+        part: "Partie 4 — Discuter et synthétiser"
+        stem: |-
+          La citation semble, en creux, trancher en faveur de Gandhi contre
+          la violence révolutionnaire. Cette conclusion est-elle pour autant
+          totalement acquise ? Esquisse une réponse nuancée, en t'appuyant
+          sur R5 et R6 ensemble.
+        reasoning: |-
+          Rien n'oblige à trancher aussi vite. R5 rappelle une objection
+          sérieuse à toute solution purement gandhienne : Fanon soutient que
+          certains rapports de domination — coloniaux en particulier — sont
+          eux-mêmes déjà violents à leur racine, de sorte que s'y opposer
+          par des moyens strictement pacifiques reviendrait à accepter les
+          termes, seulement pacifiques en apparence, d'un rapport qui ne l'a
+          jamais été. Si cette thèse est vraie dans certains contextes, la
+          condition posée par la citation (« s'interdire à soi-même de
+          reproduire ce qu'on combat ») pourrait se heurter à des situations
+          où l'adversaire, lui, ne respecte aucune limite de ce genre.
+
+          Une réponse nuancée retiendrait donc de la citation moins une
+          interdiction absolue de toute violence en toutes circonstances
+          qu'un avertissement structurel, confirmé par R5 : la violence
+          employée comme moyen porte en elle un risque réel de se prolonger
+          au-delà de la fin visée, et ce risque doit peser lourd dans
+          l'appréciation de tout moyen violent — sans que cela dispense,
+          pour autant, d'examiner au cas par cas la situation historique
+          précise (Fanon) plutôt que de trancher a priori dans un sens ou
+          dans l'autre. Retiens la structure de cette discussion : c'est le
+          même mouvement — reconnaître la force d'un argument sans en faire
+          une loi universelle qui dispenserait d'examiner chaque cas — que
+          la méthode de R8 pratique sur d'autres sujets.

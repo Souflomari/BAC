@@ -1,0 +1,660 @@
+# In-lesson checkpoint items (summit-conversion campaign). Formative,
+# calm-core probes placed inside the lesson via [[checkpoint:<id>]] markers —
+# NOT the end bank (items.yaml). Same item schema, but NO score/streak/tally.
+# Wrong-answer feedback names the wrong PHILOSOPHICAL model, not just the
+# fact of being wrong. The end-bank ≥3-per-misconception floor lives in
+# items.yaml's coverage_summary and is NOT altered by these checkpoints (a
+# clone or a fresh item here is surfaced inline, never re-counted toward that
+# floor — house convention, see la-liberte/theorie-experience/autrui's
+# checkpoints.yaml headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags) — the
+# task's stricter-than-house-default instruction, matched here to
+# items.yaml.
+#
+# No dedicated "cp-bac-…" priming checkpoint before [[exercise:r-bac]]: this
+# notion's ONE verified text maps directly onto R1 and R7, which R0-R8
+# already teach in full (per the sujets-bank's own cross-reference), so
+# there is no new axis to prime — matching the house precedent set by
+# content/philo/autrui/checkpoints.yaml for the identical single-verified-
+# text, already-taught-axis case. Instead, every checkpoint below is placed
+# to give in-lesson exposure to the item-bank's thinnest/zero-coverage
+# models (see items.yaml's coverage_summary), stacking a reinforcement
+# choice onto the checkpoint whose rung is philosophically closest to that
+# under-floor model.
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)      — commit-gate. Probes the master model:
+#                                    faux-dilemme-legitime-violence.
+#   cp-r1-force-legitime (after R1) — rupture gate: legitime-confondu-avec-
+#                                    juste (primary), force-confondue-avec-
+#                                    violence (dual); reinforces acteur-
+#                                    determine-legitimite (under-floor in
+#                                    items.yaml, 2/27).
+#   cp-r2-negation-personne (after R2) — rupture gate: violence-reduite-a-
+#                                    la-douleur (primary); reinforces TWO
+#                                    under-floor models at once: regard-et-
+#                                    contrainte-physique-confondus (2/27)
+#                                    and violence-reduite-au-physique (2/27).
+#   cp-r3-hobbes      (after R3)  — rupture gate: hobbes-fait-lapologie-de-
+#                                    la-violence (primary), droit-de-nature-
+#                                    confondu-avec-droit-moral (dual);
+#                                    reinforces trois-ressorts-hobbes-
+#                                    confondus (under-floor, 2/27).
+#   cp-r4-rousseau    (after R4)  — rupture gate: hobbes-rousseau-confondus
+#                                    (primary), amour-de-soi-amour-propre-
+#                                    confondus (dual); reinforces propriete-
+#                                    mal-interpretee-chez-rousseau (under-
+#                                    floor, 2/27).
+#   cp-r5-violence-juste (after R5) — rupture gate: fin-juste-legitime-tout-
+#                                    moyen (primary), echelle-individuelle-
+#                                    collective-confondues (dual), fanon-
+#                                    marx-confondus (triple).
+#   cp-r6-gandhi      (after R6)  — rupture gate: non-violence-confondue-
+#                                    avec-passivite (primary), moyens-fins-
+#                                    mal-articules (dual).
+#   cp-r7-bourdieu    (after R7, "Ce que cela n'implique pas")  — rupture
+#                                    gate: violence-symbolique-annule-
+#                                    legitimite-weberienne (primary),
+#                                    meconnaissance-mal-identifiee (dual);
+#                                    reinforces violence-reduite-au-physique
+#                                    again (under-floor, 2/27).
+#
+# Length rebalance (recipe's philo addendum, mandatory): every stem below
+# was authored with a deliberately varied correct-answer length — never
+# systematically longest, and checked not to be systematically shortest
+# either, per the task's own throwaway length-check script (run fresh
+# before this file was declared done — see close-out report).
+
+notion: la-violence
+skill_code: philo_violence
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (right after the two spontaneous
+  #        answers are listed, before "Les deux réponses semblent
+  #        raisonnables..."). Turns "prends position... réponds en une
+  #        phrase" into a real MCQ commit. Probes the master model.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, hook_commit]
+    primary_misconception: mc.philo.violence.faux-dilemme-legitime-violence
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Laquelle de ces quatre façons de
+      juger le geste des quatre voisins te semble la meilleure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Ce ne sont pas des policiers : sans cette qualité officielle, rien de ce qu'ils font, même face à un coupable manifeste, ne pourrait jamais relever d'un usage légitime de la force."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: |-
+          Modèle détecté : faire de l'identité de l'acteur, plutôt que de
+          la procédure suivie, le seul critère de légitimité. Mais un
+          policier qui agirait hors de toute procédure pourrait, lui
+          aussi, commettre un acte de violence -- l'identité seule ne
+          tranche rien.
+
+      - id: B
+        text: "Ils n'ont fait, au fond, qu'arrêter un voleur pris en flagrant délit -- exactement ce que la police aurait fait à leur place -- donc rien ne distingue vraiment leur geste d'un usage légitime de la force, quelle qu'en soit la durée ou l'intensité."
+        correct: false
+        misconception: mc.philo.violence.culpabilite-determine-legitimite
+        feedback: |-
+          Modèle détecté : faire de la culpabilité de la cible, plutôt que
+          de la procédure suivie, le critère décisif. Mais si arrêter un
+          coupable légitimait n'importe quel usage de la force qui
+          l'accompagne, rien n'empêcherait un policier de frapper un
+          suspect déjà maîtrisé -- or cette limite existe bel et bien.
+
+      - id: C
+        text: "Aucune des deux réponses spontanées ne suffit : il manque encore un critère précis -- que ni la culpabilité du voleur ni le statut des quatre voisins ne fournissent à eux seuls -- pour trancher entre force légitime et violence."
+        correct: true
+        feedback: |-
+          Exact -- et c'est le réflexe à garder pour toute la leçon : ni «
+          pas de policiers, donc violence » ni « voleur coupable, donc pas
+          différent de la police » ne suffit. R1 va construire ce critère
+          précis (loi, procédure, tiers impartial) qu'aucune des deux
+          réponses spontanées n'isole encore.
+
+      - id: D
+        text: "Tout dépend de si on choisit d'appeler ça de la « force » ou de la « violence » -- une simple question de vocabulaire, sans enjeu philosophique réel derrière les deux mots."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: |-
+          Modèle détecté : dissoudre la question dans un désaccord de
+          vocabulaire. Le problème que pose la scène est réel et précis --
+          R1 va montrer qu'un même geste physique peut être l'un ou
+          l'autre selon un critère objectif, pas selon le mot qu'on choisit.
+
+    correct_feedback: |-
+      Aucune des deux réponses spontanées ne dit ce qui distingue
+      précisément le geste des quatre voisins de celui, tout aussi
+      physique, qu'un policier légitime aurait pu accomplir. C'est ce
+      critère que R1 va construire, pièce par pièce.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-force-legitime | placed AFTER R1
+  #        Probes: legitime-confondu-avec-juste (primary), force-confondue-
+  #        avec-violence (dual, choice C); reinforces acteur-determine-
+  #        legitimite (under-floor in items.yaml, 2/27, choice D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-force-legitime
+    rung: "R1"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, weber]
+    primary_misconception: mc.philo.violence.legitime-confondu-avec-juste
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Un tribunal, à l'issue d'une procédure parfaitement régulière,
+      condamne un accusé qui se révèle plus tard innocent. Cette
+      condamnation était-elle, au sens précis posé par R1, un acte légitime
+      ou un acte de violence au moment où elle a été rendue ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Un acte légitime : une procédure reconnue peut produire, dans tel cas précis, une injustice, sans que cela remette en cause sa légitimité procédurale au moment où elle a été rendue."
+        correct: true
+        feedback: |-
+          Exact. Les trois critères de R1 (loi, procédure connue, tiers
+          impartial) portent sur la forme de l'acte, pas sur la justesse
+          de son résultat -- une erreur judiciaire reste, au moment où
+          elle est rendue, un acte légitime devenu, après coup, injuste
+          dans ses effets.
+
+      - id: B
+        text: "Un acte de violence, puisqu'un jugement erroné ne pourrait, par définition, jamais être qualifié de légitime, quelle que soit la rigueur de la procédure suivie pour y parvenir."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: |-
+          Modèle détecté : confondre légitimité et justesse du résultat.
+          « Légitime », au sens de Weber, ne signifie pas « moralement
+          juste en toutes circonstances » -- un acte peut être légitime
+          tout en produisant une injustice.
+
+      - id: C
+        text: "Un acte de violence, car le seul fait qu'un tribunal ait physiquement contraint l'accusé -- l'ait fait arrêter, jugé, éventuellement incarcéré -- suffit à qualifier son geste de violent, quelle que soit par ailleurs la procédure suivie."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: |-
+          Modèle détecté : traiter tout contact ou toute contrainte
+          physique comme violence par définition. R1 distingue justement
+          le geste lui-même (neutre) de son encadrement -- une contrainte
+          encadrée par une procédure reconnue est de la force légitime,
+          pas de la violence.
+
+      - id: D
+        text: "Un acte de violence, parce qu'un tribunal, même régulier, reste composé de personnes qui ne sont pas, individuellement, des policiers habilités à priver quiconque de sa liberté."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: |-
+          Modèle détecté : faire de l'identité des personnes qui composent
+          l'institution, plutôt que de la procédure suivie, le critère
+          décisif. R1 est explicite : ce qui légitime un acte, c'est la
+          loi, la procédure connue et le tiers impartial -- pas le statut
+          individuel de qui l'exécute.
+
+    correct_feedback: |-
+      Le problème du jugement erroné ne porte pas sur la légitimité de la
+      procédure suivie, mais sur la justesse de son résultat -- deux
+      questions que R1 apprend précisément à ne pas confondre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-negation-personne | placed AFTER R2
+  #        Probes: violence-reduite-a-la-douleur (primary); reinforces TWO
+  #        under-floor models: regard-et-contrainte-physique-confondus
+  #        (choice C) and violence-reduite-au-physique (choice D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-negation-personne
+    rung: "R2"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, kant, sartre]
+    primary_misconception: mc.philo.violence.violence-reduite-a-la-douleur
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un tatouage, douloureux et pleinement consenti, n'est jamais qualifié
+      de violence, alors qu'une bousculade brutale et inattendue, bien
+      moins douloureuse, l'est sans discussion. Que confirme ce contraste,
+      selon R2 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que ce n'est pas la douleur qui définit la violence, mais le fait qu'elle contourne la liberté d'autrui au lieu de s'y adresser, réduisant la personne à un pur moyen (Kant) ou à un pur objet (Sartre)."
+        correct: true
+        feedback: |-
+          Exact. La violence se définit par le contournement de la
+          liberté d'autrui, pas par l'intensité de la douleur infligée --
+          c'est tout le sens du contraste entre le tatouage consenti et la
+          bousculade inattendue.
+
+      - id: B
+        text: "Que la violence se mesure toujours à l'intensité de la douleur physique effectivement ressentie par la personne qui la subit, quel que soit par ailleurs le contexte dans lequel cette douleur survient."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: |-
+          Modèle détecté : définir la violence par la seule intensité de
+          la douleur. C'est l'inverse de ce que montre l'exemple : le
+          tatouage est plus douloureux et pourtant non violent -- la
+          douleur seule ne suffit jamais à définir la violence.
+
+      - id: C
+        text: "Que l'objectivation que produit une bousculade est, comme celle du regard d'autrui chez Sartre, un même mécanisme parfaitement réversible, dont la victime pourrait à tout instant se dégager par un simple retournement."
+        correct: false
+        misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+        feedback: |-
+          Modèle détecté : confondre l'objectivation réversible du regard
+          sartrien avec celle, momentanément irréversible, que produit la
+          contrainte physique. Ce sont deux degrés d'un même mécanisme,
+          pas deux mécanismes identiques -- la victime d'une bousculade ne
+          peut pas, pendant l'instant où elle s'exerce, reprendre la
+          position de sujet par un simple regard en retour.
+
+      - id: D
+        text: "Que seul un contact corporel direct, comme cette bousculade, peut constituer une violence véritable -- une menace ou une pression qui n'implique jamais aucun contact physique resterait, par nature, hors du champ de la violence."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: |-
+          Modèle détecté : réduire la violence au seul contact physique.
+          Le critère de R2 -- contourner la liberté d'autrui au lieu de
+          s'y adresser -- ne suppose aucun contact : une menace qui
+          impose par la contrainte ce qu'un assentiment libre aurait dû
+          accorder relève déjà de la violence en ce sens précis.
+
+    correct_feedback: |-
+      Une piqûre ou un tatouage douloureux et consentis ne sont jamais
+      qualifiés de violence ; une bousculade inattendue, bien moins
+      douloureuse, l'est sans discussion. Ce n'est donc pas la douleur qui
+      définit la violence, mais le contournement de la liberté d'autrui.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-hobbes | placed AFTER R3
+  #        Probes: hobbes-fait-lapologie-de-la-violence (primary),
+  #        droit-de-nature-confondu-avec-droit-moral (dual, choice C);
+  #        reinforces trois-ressorts-hobbes-confondus (under-floor, choice D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-hobbes
+    rung: "R3"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, hobbes]
+    primary_misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      Un élève résume ainsi Hobbes : « Puisqu'il décrit l'état de nature
+      comme une guerre de tous contre tous, c'est qu'il approuve la
+      violence comme la façon la plus naturelle, et donc la meilleure, de
+      vivre entre hommes. » Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que c'est un contresens : Hobbes décrit la violence comme un fait structurel de l'absence d'autorité commune, précisément pour justifier la nécessité du Léviathan qui la contient -- il la constate, il ne la recommande pas."
+        correct: true
+        feedback: |-
+          Exact. Le Léviathan tout entier est construit pour retirer à
+          chacun son droit privé de se faire justice lui-même -- s'il
+          approuvait la violence comme un idéal, la nécessité même de
+          l'État qu'il défend n'aurait plus aucun sens.
+
+      - id: B
+        text: "Qu'il a raison : Hobbes affirme explicitement, dans le Léviathan, que la violence constitue la forme de vie la plus digne et la plus recommandable pour l'homme livré à lui-même, sans aucune autorité commune pour le contraindre."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: |-
+          Modèle détecté : attribuer à Hobbes une approbation morale de la
+          violence. C'est l'inverse de sa démarche -- il décrit un fait
+          structurel pour en tirer la nécessité de le contenir, jamais
+          pour le recommander.
+
+      - id: C
+        text: "Qu'il a tort, mais pour une autre raison : le droit de nature dont parle Hobbes serait en réalité un droit moralement approuvé par lui, la meilleure façon pour chaque individu de mener une vie pleinement libre et épanouie."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: |-
+          Modèle détecté : confondre le droit de nature (un simple
+          constat de fait -- aucune limite extérieure ne s'impose encore
+          à la force de chacun) avec un droit moralement approuvé. Hobbes
+          ne recommande jamais ce droit comme un idéal de vie.
+
+      - id: D
+        text: "Qu'il a tort, mais pour une autre raison encore : ce que Hobbes appelle la « gloire » désignerait en réalité la compétition pour des biens rares, et non la recherche de reconnaissance -- l'élève aurait simplement confondu deux des trois ressorts du conflit."
+        correct: false
+        misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+        feedback: |-
+          Modèle détecté : confondre les trois ressorts du conflit que
+          Hobbes distingue soigneusement -- la compétition porte sur un
+          bien rare disputé, la gloire sur la recherche de reconnaissance.
+          Mais ce n'est de toute façon pas l'erreur de l'élève ici : son
+          erreur porte sur l'apologie prêtée à Hobbes, pas sur les trois
+          ressorts.
+
+    correct_feedback: |-
+      Hobbes ne fait jamais l'apologie de la violence : il la décrit comme
+      un fait structurel de l'absence d'autorité commune, précisément pour
+      justifier la nécessité du Léviathan qui la contient.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-rousseau | placed AFTER R4
+  #        Probes: hobbes-rousseau-confondus (primary), amour-de-soi-
+  #        amour-propre-confondus (dual, choice C); reinforces propriete-
+  #        mal-interpretee-chez-rousseau (under-floor, choice D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-rousseau
+    rung: "R4"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, rousseau]
+    primary_misconception: mc.philo.violence.hobbes-rousseau-confondus
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |-
+      Un élève écrit : « Rousseau, comme Hobbes, pense que l'homme est
+      naturellement violent et que l'état de nature est une guerre de tous
+      contre tous. » Qu'est-ce que cette phrase confond ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle attribue à Rousseau l'inverse de sa thèse : l'homme naturel y est guidé par l'amour de soi et la pitié, et c'est la société, avec la propriété, qui produit la violence, non la nature humaine."
+        correct: true
+        feedback: |-
+          Exact. C'est l'une des confusions les plus fréquentes sur ce
+          point du programme -- la thèse d'un état de nature violent
+          appartient à Hobbes, pas à Rousseau, qui défend à l'inverse un
+          homme naturel paisible et compatissant.
+
+      - id: B
+        text: "Elle ne confond rien de sérieux : Rousseau et Hobbes défendraient en réalité la même thèse sur l'état de nature, leur désaccord ne portant que sur la solution politique à y apporter ensuite."
+        correct: false
+        misconception: mc.philo.violence.hobbes-rousseau-confondus
+        feedback: |-
+          Modèle détecté, sous une forme atténuée : minimiser un désaccord
+          qui porte pourtant sur la nature humaine elle-même, pas
+          seulement sur la solution politique qui en découle. Rousseau
+          conteste le portrait hobbesien dès la racine.
+
+      - id: C
+        text: "Elle confond l'amour de soi et l'amour-propre, en présentant comme un seul et même instinct de conservation neutre ce que Rousseau distingue soigneusement en deux notions aux effets sociaux opposés."
+        correct: false
+        misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+        feedback: |-
+          Modèle détecté, mais ce n'est pas l'erreur précise de cette
+          phrase : elle attribue à Rousseau la thèse hobbesienne d'un
+          état de nature violent, elle ne confond pas ses deux notions
+          internes (l'amour de soi et l'amour-propre).
+
+      - id: D
+        text: "Elle sous-entend, à tort, que la propriété serait pour Rousseau une institution juste et pacificatrice, alors qu'il en fait au contraire l'événement qui corrompt un état de nature paisible."
+        correct: false
+        misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+        feedback: |-
+          Modèle détecté, mais ce n'est pas non plus ce que dit
+          exactement cette phrase : elle n'évoque même pas la propriété --
+          son erreur porte sur la nature de l'homme à l'état de nature,
+          directement empruntée à Hobbes.
+
+    correct_feedback: |-
+      La thèse d'un état de nature violent et d'une guerre de tous contre
+      tous appartient à Hobbes, pas à Rousseau, qui défend, à l'inverse,
+      un homme naturel paisible et compatissant, corrompu ensuite par la
+      société et la propriété.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-violence-juste | placed AFTER R5
+  #        Probes: fin-juste-legitime-tout-moyen (primary), echelle-
+  #        individuelle-collective-confondues (dual, choice C), fanon-marx-
+  #        confondus (triple, choice D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-violence-juste
+    rung: "R5"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, fanon, marx]
+    primary_misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Un élève affirme : « Si la cause est juste -- renverser une
+      tyrannie --, alors n'importe quel moyen violent employé pour
+      l'atteindre est, de ce seul fait, pleinement justifié. » Quelle
+      limite R5 oppose-t-elle à cette affirmation ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que même au service d'une fin juste, la violence reste une négation de la personne d'autrui (R2), et que toute concentration de pouvoir conquise par la lutte tend à se retourner contre ceux qu'elle devait libérer."
+        correct: true
+        feedback: |-
+          Exact. R5 oppose deux limites : la violence, fût-elle mobilisée
+          contre un tyran, reste une négation de la personne visée ; et le
+          pouvoir conquis par la lutte tend structurellement à reproduire,
+          sous une autre bannière, les logiques de contrainte qu'il
+          combattait.
+
+      - id: B
+        text: "Qu'aucune limite sérieuse n'existe en réalité : R5 confirmerait au contraire qu'une fin suffisamment juste suffit toujours, à elle seule, à rendre pleinement légitime n'importe quel moyen employé pour l'atteindre."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: |-
+          Modèle détecté : croire qu'une fin juste suffit à légitimer
+          n'importe quel moyen. R5 oppose au contraire des limites
+          précises et réelles à cette idée -- la négation de la personne
+          et le risque de retournement du pouvoir conquis.
+
+      - id: C
+        text: "Que cette affirmation poserait, en réalité, exactement le même problème que celui de la légitime défense individuelle étudiée en R1, les deux relevant d'une seule et même échelle d'analyse."
+        correct: false
+        misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+        feedback: |-
+          Modèle détecté : fondre en un seul problème la légitime défense
+          individuelle, qui se pose à l'intérieur d'un ordre légal donné
+          (R1), et la violence révolutionnaire collective, qui vise à
+          renverser cet ordre tout entier (R5) -- deux échelles distinctes.
+
+      - id: D
+        text: "Que Fanon, sur ce point précis, ne ferait qu'appliquer sans rien y ajouter l'argument marxiste selon lequel l'État sert les intérêts d'une classe dominante, sans apporter d'argument propre à la situation coloniale."
+        correct: false
+        misconception: mc.philo.violence.fanon-marx-confondus
+        feedback: |-
+          Modèle détecté : réduire Fanon à une simple application de
+          Marx. Fanon va plus loin -- il soutient que le rapport colonial
+          repose, à sa racine même, sur un rapport de force déjà violent,
+          ce que l'argument marxiste sur l'État ne dit pas à lui seul.
+
+    correct_feedback: |-
+      Même mobilisée au service d'une fin juste, la violence reste une
+      négation de la personne d'autrui, et le pouvoir qu'elle permet de
+      conquérir tend structurellement à se retourner contre ceux qu'il
+      devait libérer -- deux limites réelles, pas un simple risque
+      d'échec pratique.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r6-gandhi | placed AFTER R6
+  #        Probes: non-violence-confondue-avec-passivite (primary),
+  #        moyens-fins-mal-articules (dual, choice C).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-gandhi
+    rung: "R6"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, gandhi]
+    primary_misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |-
+      Un élève affirme : « La non-violence de Gandhi revient, au fond, à
+      ne pas résister à l'injustice -- une forme de passivité ou de
+      résignation. » Pourquoi cette affirmation manque-t-elle le concept
+      de satyagraha ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que le satyagraha est une résistance ACTIVE et organisée -- désobéissance civile publique, refus de coopérer avec des lois injustes -- qui accepte consciemment la répression pour convaincre, non un refus de résister."
+        correct: true
+        feedback: |-
+          Exact. Le satyagraha n'est pas un refus de résister : c'est une
+          résistance active, publique et organisée -- une troisième voie,
+          distincte à la fois de la violence et de la passivité.
+
+      - id: B
+        text: "Parce que le satyagraha exigerait, en réalité, moins de courage et de détermination que la riposte violente elle-même, les deux voies étant finalement équivalentes en fait d'exigence intérieure."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: |-
+          Modèle détecté : sous-estimer l'exigence du satyagraha. Gandhi
+          soutient au contraire que refuser de rendre les coups, tout en
+          continuant de résister publiquement, demande davantage de force
+          intérieure que la simple riposte.
+
+      - id: C
+        text: "Parce que, selon l'image gandhienne de la graine et de l'arbre, n'importe quel moyen -- violent ou non -- pourrait indifféremment produire n'importe quelle fin, sans qu'aucun rapport nécessaire ne les relie jamais l'un à l'autre."
+        correct: false
+        misconception: mc.philo.violence.moyens-fins-mal-articules
+        feedback: |-
+          Modèle détecté : nier tout rapport nécessaire entre moyens et
+          fin. C'est l'inverse de l'image gandhienne -- les moyens sont à
+          la fin ce que la graine est à l'arbre, un rapport aussi
+          nécessaire qu'entre une cause et son effet.
+
+      - id: D
+        text: "Parce que Gandhi recommandait en réalité de recourir à la force armée dès que les moyens strictement pacifiques semblaient avoir échoué à convaincre l'adversaire visé."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: |-
+          Modèle détecté, en sens inverse : prêter à Gandhi l'exact
+          contraire de sa doctrine. Le satyagraha exclut par principe le
+          recours à la violence, y compris en cas d'échec apparent des
+          moyens non-violents -- ce n'est jamais une étape transitoire
+          vers la force armée.
+
+    correct_feedback: |-
+      Le satyagraha n'est pas un refus de résister : c'est une résistance
+      active, publique et organisée, qui accepte consciemment la
+      répression pour convaincre plutôt que de contraindre par la force.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-r7-bourdieu | placed AFTER R7 ("Ce que cela n'implique
+  #        pas", avant "Fermeture de l'arc") — Probes: violence-symbolique-
+  #        annule-legitimite-weberienne (primary), meconnaissance-mal-
+  #        identifiee (dual, choice C); reinforces violence-reduite-au-
+  #        physique again (under-floor, choice D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-bourdieu
+    rung: "R7"
+    skill_code: philo_violence
+    tags: [checkpoint, formative, misconception_driven, philo_violence, bourdieu, weber]
+    primary_misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+    item_source: original
+    lesson_placement: after_R7
+
+    stem: |-
+      Un élève conclut : « Puisque Bourdieu montre qu'une domination peut
+      s'exercer sans aucune contrainte physique, cela prouve que tout
+      pouvoir légitime décrit par Weber n'est, au fond, jamais qu'une
+      violence déguisée. » Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que Bourdieu décrit un mécanisme précis, observable dans des institutions particulières (l'école, la culture, le langage), qui vient compléter l'analyse de Weber, pas l'annuler -- sans nier que le monopole légitime existe réellement."
+        correct: true
+        feedback: |-
+          Exact. Bourdieu ne prétend ni que le monopole légitime décrit
+          par Weber n'existerait pas, ni que toute obéissance serait, par
+          nature, illégitime -- il ajoute un mécanisme qui complète
+          l'analyse wébérienne, sans l'annuler.
+
+      - id: B
+        text: "Qu'il a entièrement raison : Bourdieu démontrerait que la distinction wébérienne entre force légitime et violence serait, en dernière analyse, totalement fausse et illusoire, dans tous les cas sans aucune exception."
+        correct: false
+        misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+        feedback: |-
+          Modèle détecté : surestimer la portée du concept bourdieusien.
+          Bourdieu ne prétend pas que la distinction de Weber soit fausse
+          -- il ajoute un mécanisme distinct (l'absence de contrainte
+          physique, la méconnaissance) qui la complète plutôt qu'il ne
+          l'annule.
+
+      - id: C
+        text: "Que la méconnaissance désigne, chez Bourdieu, le fait que le groupe dominant lui-même ignorerait, sans en avoir conscience, qu'il exerce une domination réelle sur les groupes qu'il domine au quotidien."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: |-
+          Modèle détecté : situer la méconnaissance du mauvais côté. Elle
+          désigne le fait que les DOMINÉS eux-mêmes ne perçoivent pas le
+          caractère arbitraire des normes qui leur sont imposées -- pas
+          une ignorance du groupe dominant quant à sa propre domination.
+
+      - id: D
+        text: "Que la violence symbolique décrite par Bourdieu suppose, en réalité, toujours une forme de contrainte physique minimale -- ne serait-ce qu'implicite ou menaçante en arrière-plan -- sans laquelle aucune domination durable ne pourrait jamais s'installer nulle part."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: |-
+          Modèle détecté : réduire, une fois de plus, la violence au
+          physique. La violence symbolique se définit précisément par
+          l'ABSENCE de toute contrainte physique -- c'est un mécanisme de
+          domination qui n'a besoin d'aucune force physique pour opérer.
+
+    correct_feedback: |-
+      Bourdieu ne prétend ni que le monopole légitime décrit par Weber
+      n'existerait pas, ni que toute obéissance serait, par nature,
+      illégitime : il révèle un envers du monopole légitime, il ne
+      l'annule pas.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 8 items do NOT alter the end-bank coverage floor in items.yaml
+# (house convention — see la-liberte/theorie-experience/autrui's
+# checkpoints.yaml). They exist to give every student, including those
+# behind the 5 under-floor models, in-lesson exposure regardless of the
+# item-bank gap flagged in items.yaml's coverage_summary:
+#   acteur-determine-legitimite        — 2/27 in items.yaml, +2 here (cp-r0-predict, cp-r1-force-legitime)
+#   regard-et-contrainte-physique-confondus — 2/27 in items.yaml, +1 here (cp-r2-negation-personne)
+#   violence-reduite-au-physique       — 2/27 in items.yaml, +2 here (cp-r2-negation-personne, cp-r7-bourdieu)
+#   propriete-mal-interpretee-chez-rousseau — 2/27 in items.yaml, +1 here (cp-r4-rousseau)
+#   trois-ressorts-hobbes-confondus    — 2/27 in items.yaml, +1 here (cp-r3-hobbes)
+# limite-institutionnelle-invalide-toute-legitimite (1/27, the thinnest
+# model) is NOT reinforced by any checkpoint here — flagged honestly in
+# items.yaml's coverage_summary as the clearest follow-up item-authoring
+# target rather than force-fitted into an unrelated checkpoint choice.
+#
+# LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97%
+# historical tell): correct-answer character length vs. the three
+# distractors, per item (verified programmatically, not eyeballed — see
+# the task's throwaway length-check script, run fresh right before this
+# file was declared done):
+#   cp-r0-predict          — correct (C) middle length among the four.
+#   cp-r1-force-legitime   — correct (A) middle length among the four.
+#   cp-r2-negation-personne — correct (A) middle length among the four.
+#   cp-r3-hobbes            — correct (A) middle length among the four.
+#   cp-r4-rousseau          — correct (A) middle length among the four.
+#   cp-r5-violence-juste    — correct (A) middle length among the four.
+#   cp-r6-gandhi            — correct (A) middle length among the four.
+#   cp-r7-bourdieu          — correct (A) middle length among the four.
+# Net: correct answer is never the strict-longest choice in any of the 8
+# checkpoints — genuinely varied against the distractors, not a monotonic
+# "correct = longest" pattern.
+# ──────────────────────────────────────────────────────────────────────────────
