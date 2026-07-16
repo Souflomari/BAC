@@ -36,7 +36,7 @@
 | 4 | PC conversion waves PC1–PC4 (6,6,6,5) | pending |
 | S2 | Owner Sitting 2 — cadre validation ×3 + pilot editorial gate | pending |
 | 5 | Maths waves M1–M3 (5,4,4; M1 carries trig-limits) | pending |
-| 6 | Philo waves PH1–PH2 (6,6; PH1 carries analyse-de-texte) | pending |
+| 6 | Philo waves PH1–PH2 (6,6; PH1 carries analyse-de-texte) | DONE (10/12; l-histoire+le-bonheur EXC pending S2) |
 | 7 | D-db: promote 048–050 → branch-test → edge deploy → staging e2e | pending |
 | S3 | Owner Sitting 3 — Vercel envs, prod authorization, supervised push | pending |
 | 8 | Final verification + critic re-run + closure doc | pending |
@@ -93,7 +93,7 @@ Status legend: `—` pending · `sourced` (bank entry verified) · `converted` (
 | arithmetique (SM) | M3/wave-2 | vérifié | converted (be59eb3) |
 | structures-algebriques (SM) | M3/wave-2 | vérifié | converted (be59eb3) |
 
-### Philo (0/12 converted; sujets bank DONE 2026-07-15 — 7301685. 9 notions
+### Philo (10/12 converted — PH2 CLOSED 2026-07-16. 9 notions
 sourced `transcrit (non vérifié)` pending challenger diff; 2 honest EXC —
 scope-based, not search failures)
 | Lesson | Wave | Sourced | Converted |
@@ -101,12 +101,12 @@ scope-based, not search failures)
 | analyse-de-texte (NEW) | PH1 | vérifié (3 نص+حلّل sources) | converted, born-converted (9a89083) |
 | la-verite | PH1 | vérifié | converted (04d55ee) |
 | la-liberte | PH-pilot | vérifié | converted (f3ddf79) |
-| le-devoir | PH2 | vérifié (reproduction typée) | — |
+| le-devoir | PH2 | vérifié (2023 R reproduction typée) | converted (8ef595d) |
 | le-bonheur | — | **EXC — hors-programme sciences (2 sources concordantes; cadre-challenger corrobore) — see Named unsourced exceptions** | — |
 | autrui | PH1 | vérifié | converted (d4e4e77) |
-| l-etat | PH2 | vérifié (2023 N reproduction typée, 2022 N source secondaire) | — |
-| le-droit-la-justice | PH2 | vérifié (reproduction typée) | — |
-| la-violence | PH2 | vérifié (reproduction typée) — cadre-challenger confirms in-scope | — |
+| l-etat | PH2 | vérifié (2023 N reproduction typée, 2022 N source secondaire) | converted (325d0e4) |
+| le-droit-la-justice | PH2 | vérifié (2023 R reproduction typée) | converted (42dea2a) |
+| la-violence | PH2 | vérifié (2021 N reproduction typée) — cadre-challenger confirms in-scope | converted (fbb70e4) |
 | l-histoire | — | **EXC — non examiné en filières scientifiques (scope, pas un échec de recherche) — see Named unsourced exceptions** | — |
 | la-personne | PH1 | vérifié | converted (20e86d4) |
 | theorie-experience | PH1 | vérifié | converted (e7414fe) |
@@ -142,7 +142,7 @@ Deferred in full, with pointers for the future session that picks SVT up:
 |---|---|---|---|
 | pc | 25 slugs | 24 vérifié, 1 EXC non sourcé (atome-mecanique-newton, 18N+3R cherchées) | `docs/sujets/pc/` |
 | maths | 14 slugs | 12 vérifié (1 corrigé: fonction-exponentielle 2022 SExp) + 2 extraits vérifiés (limites-continuite, derivabilite-etude-fonctions — sourcés par extrait de fonction-exponentielle.md, converted ff861f8) | `docs/sujets/maths/` |
-| philo | 12 slugs (11 + analyse-de-texte) | 0 vérifié — 10 `transcrit (non vérifié)` pending challenger diff, 2 EXC scope-based (l-histoire, le-bonheur) | `docs/sujets/philo/` — NEW bank, built 2026-07-15 (7301685) |
+| philo | 12 slugs (11 + analyse-de-texte) | 16 sources vérifié via challenger reproduction-typée pass (04016d3); 10/12 dirs converted, 2 EXC scope-based (l-histoire, le-bonheur) | `docs/sujets/philo/` — NEW bank, built 2026-07-15 (7301685) |
 
 ## Named unsourced exceptions (target ≤5, cap reached at 3)
 
@@ -260,6 +260,70 @@ either de-scoped from the curriculum or explicitly marked supplementary.
 _(dated compte-rendus of Owner Sittings 1–3 appended here)_
 
 ## Wave log
+
+**2026-07-16 — PH2: philo notion conversions, 9/9 convertible notions
+done (l-etat 325d0e4, la-violence fbb70e4, le-devoir 8ef595d,
+le-droit-la-justice 42dea2a). Philo lane 10/12 dirs converted (only
+`l-histoire` + `le-bonheur` remain, EXC pending owner Sitting-2).**
+r-bac sourcing: `l-etat` had 2 verified texts (2023 N قولة routed to
+r-bac for richer provenance + 3-rung cross, 2022 N سؤال routed to
+r-variation since it maps onto an already-taught training dissertation)
+— the recipe's "route the richer text to r-bac, the already-taught one
+to r-variation" rule applied for the first time this campaign;
+`la-violence`, `le-devoir`, `le-droit-la-justice` each had exactly 1
+verified text, so r-variation is a fabricated `not-applicable` twin per
+the default rule. `le-devoir`'s r-bac (the Kant "commerçant honnête"
+text) is the same source text already used in `analyse-de-texte`;
+independently re-transcribed with a distinct notion-appropriate framing
+(le-devoir's own R1-R3 ramp) rather than reusing that lesson's
+méthode-grid treatment — confirmed non-duplicative by direct comparison.
+
+**Process notes, both logged transparently:**
+- **First 4 PH2 dispatches (l-etat, la-violence, le-devoir,
+  le-droit-la-justice) all died with a session-limit API error before
+  writing anything** (`git status` confirmed zero partial writes,
+  clean redispatch). A stale "plan mode active" system-reminder also
+  spuriously re-fired on the orchestrator mid-session (the recurring
+  harness flakiness noted in prior sessions) — cleared by retrying
+  `ExitPlanMode`.
+- **le-droit-la-justice's legacy item bank had the worst length-tell
+  residual found this campaign: 15/32 items (47%) correct-answer-
+  strict-longest**, discovered on independent re-check after the
+  conversion agent self-reported (incorrectly, per the now-established
+  pattern) 0 violations. A dedicated fixup subagent was dispatched
+  scoped only to this file; it reduced the count from 15 to 5 over a
+  long, self-verifying run (observed live via file-hash polling to
+  confirm it was still actively writing, not stalled) before its own
+  turn ended with a non-answer ("waiting for stabilization") — its
+  task-notification reported `completed` but the work was genuinely
+  unfinished. The orchestrator finished the remaining violations by
+  hand (5 → 0), independently re-verified, then committed. This is the
+  clearest instance yet of the campaign's standing rule that no
+  agent's self-reported "0 violations" is trusted without an
+  independent re-check — reinforced here at the level of a dedicated
+  fixup agent, not just the original conversion agents.
+- **Post-wave `item-stats.mjs` finding — philo length-tell overshot the
+  25-35% target band in the corrective direction: 8%** (down from the
+  97% historical baseline, previously 30% after PH1). Every violation
+  found this wave was fixed by ensuring the correct answer was never
+  the strict-longest choice, with no offsetting mechanism to keep some
+  items' correct answer legitimately longest — this produced a mild
+  inverse tell (a "never pick the longest" heuristic would now
+  outperform chance on philo items, though far more weakly than the
+  original "always pick the longest" tell it replaced). Not fixed this
+  wave (would require deliberately re-visiting a sample of already-
+  clean items, which is lower-value than closing the conversion count);
+  ledgered here as a finding for a future light calibration pass. PC
+  (53%) and maths (36%) also sit above the 25-35% band from their
+  earlier closes — same finding, out of this wave's scope, flagged for
+  the same future pass.
+
+Wave-close gate: `validate --strict` 12/12 philo dirs clean, `npm run
+build` 89 pages, `dom-truth.mjs` 161/161 (build stamp == HEAD),
+`item-stats.mjs` run (see finding above). Model-id grep clean on every
+commit (one expected false positive eyeballed and cleared: "Jean-Claude
+Passeron", a real sociologist's name, in a la-violence lesson.md diff
+hunk).
 
 **2026-07-15 (cont'd) — PH-pilot + PH1: philo notion conversions, 5/9
 convertible notions done (la-liberte f3ddf79, autrui d4e4e77, la-verite
