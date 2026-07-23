@@ -32,13 +32,13 @@
 | 1 | R1-PC sujets bank · R2 cadre maths · D1 persistence code | pending |
 | 2 | H-PC wave (6 PC hole extensions) | pending |
 | 3 | Conversion pilots: maths/probabilites-conditionnelles + pc/rc-charge | pending |
-| S1 | Owner Sitting 1 — supervised production-sync check (GO/NO-GO) | pending |
+| S1 | Owner Sitting 1 — supervised production-sync check (GO/NO-GO) | GO (2026-07-23) |
 | 4 | PC conversion waves PC1–PC4 (6,6,6,5) | pending |
 | S2 | Owner Sitting 2 — cadre validation ×3 + pilot editorial gate | pending |
 | 5 | Maths waves M1–M3 (5,4,4; M1 carries trig-limits) | pending |
 | 6 | Philo waves PH1–PH2 (6,6; PH1 carries analyse-de-texte) | DONE (10/12; l-histoire+le-bonheur EXC pending S2) |
-| 7 | D-db: promote 048–050 → branch-test → edge deploy → staging e2e | pending |
-| S3 | Owner Sitting 3 — Vercel envs, prod authorization, supervised push | pending |
+| 7 | D-db: promote 048–050 → branch-test → edge deploy → staging e2e | DONE (2026-07-23, Sitting 2) |
+| S3 | Owner Sitting 3 — prod migrations + edge fn DONE (2026-07-23); Vercel env flip = owner dashboard step |
 | 8 | Final verification + critic re-run + closure doc | pending |
 
 ## Conversion map (50 lessons: 2 pilots + 48 fan-out; flagship rlc-serie already done)
@@ -341,7 +341,36 @@ e2e evidence green. **Prod remains untouched** — Sitting 3 (prod
 migrations, prod edge deploy, Vercel envs, smoke) requires its own
 explicit owner authorization per RULES §3.
 
-_(Sitting-3 compte-rendu appended here)_
+**2026-07-23 — OWNER SITTING 3 — PRODUCTION: migrations + edge fn
+deployed, ALL GREEN.** Explicit owner authorization given via a dedicated
+gated prompt ("Authorize — do it now") — separate from the Sitting-1 GO,
+per RULES §3. Same session, owner present throughout.
+
+1. **Migrations 048/049/050 applied to prod** (`iwoydyudjondihzzsqay`)
+   one at a time; every verify block passed. History registered → prod
+   reads …047,048,049,050 (bijection with the repo maintained).
+2. **Read-only post-checks, all green**: RLS active on the 3 new tables;
+   zero forbidden EXECUTE grants across all 4 new RPCs;
+   `on_auth_user_created` present; 0 orphans; new tables empty
+   (post-state cardinality).
+3. **Edge fn v2 deployed to prod** (the fixed imported-module build, sha
+   5f0ccf1e…): OPTIONS 200, unauthenticated POST 401.
+4. **REST RLS proof from outside** (prod anon key): INSERT denied with
+   true 401s on all 3 new tables (valid-shaped bodies; the 400-artifact
+   class from Sitting 2 re-checked here too), SELECT returns [].
+
+**State: RC-6 / P5 is DONE.** The engine's entire gated chain is live on
+production infrastructure. The DEPLOYED APP remains dark (off-mode) —
+flipping it live is the owner's Vercel env step, deliberately separate:
+(1) FIRST configure prod auth (email confirmations are ON with the
+built-in 2/h-rate-limited mailer — disable confirmations or configure
+real SMTP in the Supabase dashboard, and verify signups are enabled);
+(2) THEN set `NEXT_PUBLIC_AUTH_MODE=live` +
+`NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` in Vercel
+and redeploy. Rollback at any time = remove the AUTH_MODE var (app
+returns to today's dark build; no migration revert — append-only).
+Owner close-out: the temporary management token is revoked
+(Account → Access Tokens).
 
 ## Wave log
 
