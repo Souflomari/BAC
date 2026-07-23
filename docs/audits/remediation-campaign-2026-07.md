@@ -372,6 +372,39 @@ returns to today's dark build; no migration revert — append-only).
 Owner close-out: the temporary management token is revoked
 (Account → Access Tokens).
 
+**2026-07-23 — GO-LIVE ADDENDUM (same sitting): the app is LIVE.** Owner
+kept both dashboards in the loop and provided a scoped Vercel token; all
+actions narrated live:
+
+1. Vercel env vars set via API on production+preview:
+   `NEXT_PUBLIC_AUTH_MODE=live` + prod Supabase URL + prod anon (public)
+   key. Confirmed: the project's production branch IS the working branch,
+   so bac-pink.vercel.app is the production deployment.
+2. Rebuild triggered (empty marker commit); deployment READY.
+3. Deployed-truth check: /connexion now renders the real email+password
+   form; the off-mode "pas encore ouverte" text is gone.
+4. **Deployed production smoke** (throwaway student, admin-created since
+   prod signups send no confirmation email — owner verified confirmations
+   already OFF on prod): sign-in via the form's exact auth call ✓ →
+   visit + answer recorded through the PROD edge function ✓ → RLS
+   self-read with the student's own token (useStudentState's exact
+   queries) returns the rows ✓ → server-side truth: fold =
+   chapters_visited [0], 1 attempted, 1 correct ✓ → throwaway deleted,
+   zero residue ✓.
+   Caveat (environment, not product): this container's proxy resets
+   browser-originated TLS to vercel.app, so the pixel-level dashboard
+   render was not machine-verified from here — the data path it consumes
+   was verified exactly; the owner's own first sign-in is the human
+   editorial check (RULES §2).
+5. Rollback stays one step: remove NEXT_PUBLIC_AUTH_MODE in Vercel +
+   redeploy.
+
+**The tutor engine is live end-to-end on production: accounts, event
+journal, misconception diagnosis, clearing, and the dashboard read
+path.** Next build lane: tutor-first-plan.md Lane G (guided arc +
+edge engagement), workhorse-model execution.
+
+
 ## Wave log
 
 **2026-07-16 — PH2: philo notion conversions, 9/9 convertible notions
