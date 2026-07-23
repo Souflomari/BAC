@@ -257,7 +257,37 @@ either de-scoped from the curriculum or explicitly marked supplementary.
   a management access token at Sitting 1, the read-only sync checks can run from
   here; pushes stay owner-side regardless.
 
-_(dated compte-rendus of Owner Sittings 1–3 appended here)_
+**2026-07-16 — OWNER SITTING 1 — production-sync check: GO.** Owner
+present live; both Supabase projects were found paused (long dormancy) and
+resumed by the owner; both reported ACTIVE_HEALTHY. Owner provided a
+temporary management access token (revocation after the sitting is the
+owner's close-out step); every check of
+`docs/pipeline/production-sync-session.md` A–D ran read-only from the
+session via the management API, results narrated live:
+
+| Check | Observed |
+|---|---|
+| A. Prod migrations ↔ repo | **exact bijection** — 45 = 45 (001–047, gaps 019/035 both sides), zero unknown remote (no out-of-band writes ever), zero unapplied local |
+| B.1 RLS (9 tables, prod) | all `relrowsecurity = t` |
+| B.2 user_misconception_states policies | exactly 3 (SELECT/INSERT/UPDATE, authenticated, self-only) |
+| B.3 record_misconception_exhibited grants | EXECUTE: service_role + postgres(owner) only |
+| B.4 skill_prerequisites | **201** |
+| B.5 Prod auth trigger | `on_auth_user_created` present |
+| B.6 Prod orphans | 0 |
+| C.2 Staging migrations | **identical to prod** (45 versions — better than the partial-dump expectation) |
+| C.3 Staging auth trigger | ABSENT — exactly the documented ADR 0013 gap draft-050 closes |
+| C.4 Staging orphans | 0 — no backfill prerequisite for 050's verify |
+| C.5 handle_new_user | byte-identical definitions on both projects (same sha256) |
+| C.6 Staging RLS | all `t` |
+
+**Verdict: owner said GO** (2026-07-16). Zero deviations to explain — the
+cleanest possible outcome. **The CLAUDE.md "production sync UNVERIFIED"
+flag is hereby lifted by this compte-rendu.** Promotion path: drafts
+048–050 → `backend/supabase/migrations/` → staging application → branch-
+test → e2e evidence → prod only on further explicit authorization
+(Sitting 3 of `docs/pipeline/engine-cutover-runbook.md`).
+
+_(dated compte-rendus of Owner Sittings 2–3 appended here)_
 
 ## Wave log
 
