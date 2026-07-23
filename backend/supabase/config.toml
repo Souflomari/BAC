@@ -45,7 +45,7 @@ verify_jwt = false
 [functions.record-notion-event]
 # JWT is verified INSIDE the function (anon client auth.getUser → 401),
 # same pattern as submit-answer; gateway verification stays off so the
-# CORS preflight (OPTIONS) can pass. item-misconceptions.json is read at
-# runtime via Deno.readTextFile — it must ship as a static file.
+# CORS preflight (OPTIONS) can pass. The misconception map ships as an
+# IMPORTED module (item-misconceptions.ts) — a static_files .json entry
+# proved unreliable under eszip bundling (Sitting-2 e2e, 2026-07-23).
 verify_jwt = false
-static_files = ["./functions/record-notion-event/item-misconceptions.json"]
