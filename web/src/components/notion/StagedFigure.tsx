@@ -83,6 +83,20 @@ export interface StagedFigureStage {
   caption: string;
 }
 
+/**
+ * MP-V1 step-text legibility candidates (docs/pipeline/mastery-push-plan.md
+ * Lane V1; owner finding: the stage explanation renders too small and
+ * under-emphasized — "the explanation IS the teaching"). Rendered ONLY by
+ * /options/figtext/[v] (same lifecycle as /options/wide); the default surface
+ * is byte-identical while `figTextOption` is undefined.
+ *
+ *   a1 — promote in place: body-scale, primary tone, below the figure.
+ *   a2 — lede treatment: body-lg reading serif + a small accent ordinal.
+ *   a3 — side-by-side ≥1280px (text beside the figure, centered on the
+ *        active stage); a1's below-figure treatment on narrow viewports.
+ */
+export type FigTextOption = "a1" | "a2" | "a3";
+
 interface StagedFigureProps {
   /** Raw SVG string from media/<slug>.svg, authored with <g id="step-N"> groups. */
   svg: string;
@@ -104,6 +118,11 @@ interface StagedFigureProps {
    * exactly as a plain staged figure (graceful degradation, §2.2).
    */
   interactiveConfig?: InteractiveFigureConfigSpec;
+  /**
+   * MP-V1 legibility candidate (owner review pending). Undefined on every
+   * default surface — the shipped caption treatment renders unchanged.
+   */
+  figTextOption?: FigTextOption;
 }
 
 // ── extractStepGroups ─────────────────────────────────────────────────────────
@@ -262,6 +281,7 @@ export function StagedFigure({
   initialStage,
   className,
   interactiveConfig,
+  figTextOption,
 }: StagedFigureProps) {
   const totalStages = stages.length;
   const initialStageClamped = clampStage(initialStage, totalStages);
@@ -555,12 +575,24 @@ export function StagedFigure({
     reapplyRef.current = reapply;
   }, [reapply]);
 
+  // MP-V1 (a3 only): at the wide tier (≥1280px — the site's design base,
+  // Tailwind `xl`) the figure becomes a two-column grid: visual + its
+  // controls in column 1, the step text BESIDE it in column 2, vertically
+  // centered on the active stage. 20rem (320px, on the 8-pt grid) text
+  // column, gap-x-8 gutter. Below xl, normal flow — a1's below-figure
+  // fallback. Static layout only: no new motion (DESIGN-BIBLE §5).
+  const sideBySide = figTextOption === "a3";
+
   return (
     <figure
       aria-label={label}
       data-figure={slug}
       data-stage-current={stage}
-      className={cn("my-8 notion-wide-band", className)}
+      className={cn(
+        "my-8 notion-wide-band",
+        sideBySide && "xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] xl:gap-x-8",
+        className
+      )}
     >
       {/* SVG wrapper — identical chrome to MediaDiagramFigure (MediaDiagram.tsx:221-264) */}
       <div
@@ -577,7 +609,8 @@ export function StagedFigure({
             ? // Structural: cap to natural size, center in band
               "w-full mx-auto"
             : // Wide-band: full width
-              "w-full"
+              "w-full",
+          sideBySide && "xl:col-start-1"
         )}
         style={isStructural ? { maxWidth: "680px" } : undefined}
         dangerouslySetInnerHTML={{ __html: initialSvgContent }}
@@ -591,6 +624,8 @@ export function StagedFigure({
           model={interactiveModel}
           value={interactiveValue}
           onChange={setInteractiveValue}
+          figTextOption={figTextOption}
+          className={sideBySide ? "xl:col-start-1" : undefined}
         />
       )}
 
@@ -600,7 +635,10 @@ export function StagedFigure({
           static CSS backstop independent of the JS printing state. */}
       {!fullyRevealed && (
         <div
-          className="mt-3 flex items-center gap-2 flex-wrap print:hidden"
+          className={cn(
+            "mt-3 flex items-center gap-2 flex-wrap print:hidden",
+            sideBySide && "xl:col-start-1"
+          )}
           role="group"
           aria-label={`Contrôles : ${accessibleName}`}
         >
@@ -646,8 +684,28 @@ export function StagedFigure({
       )}
 
       {/* Caption for the current stage — one line, capped at 65ch, matching
-          MediaDiagramFigure's stepCaption placement exactly. */}
-      {currentCaption && (
+          MediaDiagramFigure's stepCaption placement exactly.
+
+          MP-V1 (owner finding: this text is the teaching, not a caption —
+          too small, not visible enough). While figTextOption is undefined
+          (every default surface) the shipped treatment below renders
+          byte-identically; the three candidates render only under
+          /options/figtext/[v]:
+
+            a1 — promoted in place: body scale, primary tone, a step more
+                 top separation (mt-4). Minimal change, maximal legibility.
+            a2 — lede: body-lg on the reading serif (§3 — teaching prose is
+                 the serif's job), the stage number as a small accent
+                 ordinal beside it (aria-hidden: the aria-live "Étape n / N"
+                 indicator already announces the stage; meaning is carried
+                 by the number itself, never color alone — §2/§9).
+            a3 — beside the figure at the wide tier (grid cell, column 2,
+                 self-center = vertically centered on the active stage);
+                 a1's treatment as the narrow fallback.
+
+          All type/color/measure values are tokens (text-body, text-body-lg,
+          --color-text-primary, max-w-reading = --measure-prose ≤ 75ch). */}
+      {currentCaption && figTextOption === undefined && (
         <figcaption
           id={captionId}
           className={cn(
@@ -655,6 +713,54 @@ export function StagedFigure({
             "text-body-sm text-[var(--color-text-secondary)]",
             "leading-relaxed",
             "max-w-[65ch]"
+          )}
+        >
+          {frenchTypography(currentCaption)}
+        </figcaption>
+      )}
+      {currentCaption && figTextOption === "a1" && (
+        <figcaption
+          id={captionId}
+          className={cn(
+            "mt-4 px-2",
+            "text-body text-[var(--color-text-primary)]",
+            "leading-relaxed",
+            "max-w-reading"
+          )}
+        >
+          {frenchTypography(currentCaption)}
+        </figcaption>
+      )}
+      {currentCaption && figTextOption === "a2" && (
+        <figcaption
+          id={captionId}
+          className={cn("mt-6 px-2", "flex items-baseline gap-3", "max-w-reading")}
+        >
+          <span
+            aria-hidden="true"
+            className={cn(
+              "text-body-sm font-medium text-accent",
+              "tabular-nums select-none"
+            )}
+          >
+            {stage}
+          </span>
+          <span className="font-serif text-body-lg text-[var(--color-text-primary)]">
+            {frenchTypography(currentCaption)}
+          </span>
+        </figcaption>
+      )}
+      {currentCaption && figTextOption === "a3" && (
+        <figcaption
+          id={captionId}
+          className={cn(
+            // Narrow fallback = a1's promoted below-figure treatment.
+            "mt-4 px-2",
+            "text-body text-[var(--color-text-primary)]",
+            "leading-relaxed",
+            "max-w-reading",
+            // Wide tier: the right column, centered on the active stage.
+            "xl:col-start-2 xl:row-start-1 xl:self-center xl:mt-0 xl:px-0"
           )}
         >
           {frenchTypography(currentCaption)}

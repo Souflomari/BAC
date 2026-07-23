@@ -22,6 +22,8 @@
 
 import type { InteractiveFigureConfigSpec } from "@/lib/content";
 import type { InteractiveFigureModel } from "@/lib/interactive-figures";
+import type { FigTextOption } from "./StagedFigure";
+import { cn } from "@/lib/utils";
 
 function fillTemplate(
   template: string,
@@ -45,22 +47,49 @@ interface InteractiveControlProps {
   model: InteractiveFigureModel;
   value: number;
   onChange: (value: number) => void;
+  /**
+   * MP-V1 step-text legibility candidate (StagedFigure.tsx — owner review
+   * pending). The readout IS teaching text too: variants promote it from
+   * body-sm to body (a1/a3) or body-lg (a2), and the hint from caption to
+   * body-sm. Undefined on every default surface — byte-identical output.
+   */
+  figTextOption?: FigTextOption;
+  /** Layout hook for StagedFigure's a3 side-by-side grid (column placement). */
+  className?: string;
 }
 
-export function InteractiveControl({ config, model, value, onChange }: InteractiveControlProps) {
+export function InteractiveControl({
+  config,
+  model,
+  value,
+  onChange,
+  figTextOption,
+  className,
+}: InteractiveControlProps) {
   const { control, readoutTemplate } = config;
   const hint =
     control.kind === "drag-point"
       ? "Faites glisser le point sur la courbe, ou utilisez le curseur."
       : "Utilisez le curseur.";
 
+  const hintClass =
+    figTextOption === undefined
+      ? "text-caption text-[var(--color-text-secondary)]"
+      : "text-body-sm text-[var(--color-text-secondary)]";
+  const readoutClass =
+    figTextOption === undefined
+      ? "text-body-sm text-[var(--color-text-primary)] tabular-nums"
+      : figTextOption === "a2"
+        ? "text-body-lg text-[var(--color-text-primary)] tabular-nums"
+        : "text-body text-[var(--color-text-primary)] tabular-nums";
+
   return (
     <div
-      className="mt-4 flex flex-col gap-2 print:hidden"
+      className={cn("mt-4 flex flex-col gap-2 print:hidden", className)}
       role="group"
       aria-label="Manipuler la figure"
     >
-      <p className="text-caption text-[var(--color-text-secondary)]">{hint}</p>
+      <p className={hintClass}>{hint}</p>
       <input
         type="range"
         min={control.domain[0]}
@@ -73,7 +102,7 @@ export function InteractiveControl({ config, model, value, onChange }: Interacti
       />
       {readoutTemplate && (
         <p
-          className="text-body-sm text-[var(--color-text-primary)] tabular-nums"
+          className={readoutClass}
           aria-live="polite"
           aria-atomic="true"
         >
