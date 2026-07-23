@@ -257,7 +257,7 @@ either de-scoped from the curriculum or explicitly marked supplementary.
   a management access token at Sitting 1, the read-only sync checks can run from
   here; pushes stay owner-side regardless.
 
-**2026-07-16 — OWNER SITTING 1 — production-sync check: GO.** Owner
+**2026-07-23 — OWNER SITTING 1 — production-sync check: GO.** Owner
 present live; both Supabase projects were found paused (long dormancy) and
 resumed by the owner; both reported ACTIVE_HEALTHY. Owner provided a
 temporary management access token (revocation after the sitting is the
@@ -280,7 +280,7 @@ session via the management API, results narrated live:
 | C.5 handle_new_user | byte-identical definitions on both projects (same sha256) |
 | C.6 Staging RLS | all `t` |
 
-**Verdict: owner said GO** (2026-07-16). Zero deviations to explain — the
+**Verdict: owner said GO** (2026-07-23). Zero deviations to explain — the
 cleanest possible outcome. **The CLAUDE.md "production sync UNVERIFIED"
 flag is hereby lifted by this compte-rendu.** Promotion path: drafts
 048–050 → `backend/supabase/migrations/` → staging application → branch-
