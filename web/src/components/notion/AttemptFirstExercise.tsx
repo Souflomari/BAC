@@ -30,14 +30,15 @@ import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
 import rehypeKatex from "rehype-katex";
-import type { NotionExercise, DerivationStep } from "@/lib/content";
+import type { NotionExercise, ExerciseQuestion, DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { Derivation } from "./Derivation";
 import { useAttemptRecorder } from "./AttemptEvents";
 
-/** Block-level markdown + KaTeX renderer (stems and reasoning are prose). */
-function MdBlock({ children, className }: { children: string; className?: string }) {
+/** Block-level markdown + KaTeX renderer (stems and reasoning are prose).
+ *  Exported so the bank card's intro renders identically (BANK-SPEC §3). */
+export function MdBlock({ children, className }: { children: string; className?: string }) {
   return (
     <div className={cn("prose-lesson max-w-none [&_.katex-display]:my-3", className)}>
       <ReactMarkdown
@@ -152,6 +153,41 @@ function Question({
   );
 }
 
+/**
+ * The question list, extracted so OTHER surfaces can reuse the EXACT
+ * attempt-first contract without re-implementing it (BANK-SPEC §3.3: the
+ * « S'entraîner » bank card reuses this verbatim — stem visible, reasoning
+ * never in the DOM before the per-question commit, the same `recordExerciseReveal`
+ * composite-id write path). The caller owns the surrounding `data-exercise`
+ * container and any header/intro; this renders only the numbered questions.
+ */
+export function AttemptFirstQuestions({
+  exerciseId,
+  questions,
+  className,
+}: {
+  exerciseId: string;
+  questions: ExerciseQuestion[];
+  className?: string;
+}) {
+  return (
+    <div className={cn("mt-2", className)}>
+      {questions.map((q, i) => (
+        <Question
+          key={q.id}
+          qid={q.id}
+          exerciseId={exerciseId}
+          index={i + 1}
+          part={q.part}
+          stem={q.stem}
+          reasoning={q.reasoning}
+          steps={q.steps}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise }) {
   return (
     <section
@@ -173,20 +209,7 @@ export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise })
         </div>
       )}
 
-      <div className="mt-2">
-        {exercise.questions.map((q, i) => (
-          <Question
-            key={q.id}
-            qid={q.id}
-            exerciseId={exercise.id}
-            index={i + 1}
-            part={q.part}
-            stem={q.stem}
-            reasoning={q.reasoning}
-            steps={q.steps}
-          />
-        ))}
-      </div>
+      <AttemptFirstQuestions exerciseId={exercise.id} questions={exercise.questions} />
     </section>
   );
 }

@@ -41,19 +41,22 @@ import { useChapter, ChapterPosition } from "./ChapterShell";
 interface RailEntry {
   title: string;
   shortTitle: string;
+  /** Honest sujet count on the trailing « S'entraîner » entry (BANK-SPEC §1). */
+  count?: number;
 }
 
 interface MarginRailProps {
   /** Raw lesson markdown — used to extract chapter headings */
   lessonMd: string;
-  /** Whether a synthetic final "S'entraîner" chapter follows (itemsData exists). */
+  /** Whether a synthetic final "S'entraîner" chapter follows (bank.yaml exists). */
   hasItems?: boolean;
+  /** Bank entry count — renders « N sujets » on the practice entry (BANK-SPEC §1). */
+  bankCount?: number;
 }
 
 const FALLBACK_ENTRY: ChapterHeadingInfo = { title: "Leçon", shortTitle: "Leçon" };
-const PRACTICE_ENTRY: RailEntry = { title: "S'entraîner", shortTitle: "S'entraîner" };
 
-export function MarginRail({ lessonMd, hasItems = false }: MarginRailProps) {
+export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRailProps) {
   const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
   const { current, goTo } = useChapter();
 
@@ -69,7 +72,14 @@ export function MarginRail({ lessonMd, hasItems = false }: MarginRailProps) {
   // an extra "S'entraîner" entry onto the SAME cached array on every
   // subsequent render while lessonMd is unchanged.
   const realEntries: RailEntry[] = headings.length > 0 ? headings : [FALLBACK_ENTRY];
-  const entries: RailEntry[] = hasItems ? [...realEntries, PRACTICE_ENTRY] : realEntries;
+  // A FRESH practice entry per render (never a module-level constant mutated in
+  // place): the honest count is derived from `bankCount` at call time.
+  const practiceEntry: RailEntry = {
+    title: "S'entraîner",
+    shortTitle: "S'entraîner",
+    count: bankCount,
+  };
+  const entries: RailEntry[] = hasItems ? [...realEntries, practiceEntry] : realEntries;
 
   return (
     <nav className="notion-rail" aria-label="Navigation par chapitre de la leçon">
@@ -183,6 +193,16 @@ export function MarginRail({ lessonMd, hasItems = false }: MarginRailProps) {
                   <span className="tabular-nums">{i + 1}</span>
                   {" · "}
                   {entry.shortTitle}
+                  {/* Honest sujet count on the trailing bank entry (BANK-SPEC
+                      §1) — a quiet parenthetical, never a progress meter. */}
+                  {entry.count != null && (
+                    <span
+                      data-bank-rail-count
+                      className="ml-1 text-[var(--color-text-tertiary)] tabular-nums"
+                    >
+                      · {entry.count} sujet{entry.count > 1 ? "s" : ""}
+                    </span>
+                  )}
                 </span>
 
                 {/*

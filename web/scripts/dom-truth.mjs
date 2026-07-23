@@ -133,6 +133,11 @@ const GRID_UNIT = 4; // TOKENS.md §3 — Tailwind scale: 1 unit = 4px (p-6 = 24
  * against computed style (the rendered-truth rule).
  */
 const NOTION = "/notions/pc/rlc-serie";
+// BANK-SPEC §5/§6 pilot notion — the ONLY notion with a bank.yaml today, so the
+// trailing « S'entraîner » chapter + card assertions live on it (near the end,
+// in the PILOT BANK sweep). rlc-serie deliberately has NO bank, proving the
+// trailing chapter is absent (and pagination unchanged) for every other notion.
+const BANK_NOTION = "/notions/pc/reactions-acido-basiques";
 const BATTERY = [
   // ── U1 table (the audit's measured victims) ──
   { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Source Serif", colorVar: "--color-text-primary" },
@@ -2190,6 +2195,10 @@ try {
       "/notions/pc/transformations-deux-sens",        // 67px + formule inline longue
       "/notions/maths/limites-continuite",            // tableau plus large que 390
       "/notions/maths/nombres-complexes-2",           // 61px
+      BANK_NOTION,                                    // BANK-SPEC pilot — leçon
+      // BANK-SPEC §6 : la banque « S'entraîner » (dernier chapitre) — cartes
+      // sujets, badges, tableaux de données. Chapitre 14 (13 rungs + banque).
+      `${BANK_NOTION}?chapitre=14`,
     ];
     for (const route of MOBILE_SAMPLE) {
       await mpage.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
@@ -2302,6 +2311,136 @@ try {
         `  ✓ chapter nav + ${answeredMcq ? "MCQ answer" : "(no MCQ reached)"} + ${answeredCheckpoint ? "checkpoint answer" : "(no checkpoint reached)"} → 0 requests to record-notion-event`
       );
     }
+  }
+
+  // ══ PILOT BANK (BANK-SPEC §5) — the « S'entraîner » trailing chapter ══════
+  // Four assertions, all derived from bank.yaml on disk (never hardcoded):
+  //  (a) rail sujet-count == on-disk entry count + the trailing chapter exists
+  //  (b) an EXPANDED bank card is attempt-first (no « Raisonnement expert »
+  //      pre-commit; revealed on commit) — the summit guard, extended verbatim
+  //  (d) the provenance badge text matches bank.yaml
+  //  (c) off-mode: zero « fait » marks AND zero emitter traffic from a bank
+  //      interaction (extends the network-silence sweep to the bank)
+  //  (e) 390px: expanded bank cards never widen the page (the brief's concern)
+  {
+    const bankYaml = yaml.load(
+      readFileSync(path.join(CONTENT_ROOT, "pc/reactions-acido-basiques/bank.yaml"), "utf8")
+    );
+    const bankEntries = Array.isArray(bankYaml?.entries) ? bankYaml.entries : [];
+    const expectedCount = bankEntries.length;
+    const first = bankEntries[0] ?? {};
+    const firstId = first.id;
+    const sessMap = { normale: "Normale", rattrapage: "Rattrapage" };
+    const expectedProvenance = `Bac ${first.source?.year} · ${sessMap[first.source?.session] ?? first.source?.session}`;
+    const lessonSrc = readFileSync(
+      path.join(CONTENT_ROOT, "pc/reactions-acido-basiques/lesson.md"),
+      "utf8"
+    );
+    const realChapterN = (lessonSrc.match(/^##\s/gm) || []).length; // real `##` chapters
+    const bankChapterNum = realChapterN + 1; // 1-based route param for the bank chapter
+    const bankRoute = `${BANK_NOTION}?chapitre=${bankChapterNum}`;
+
+    // (a) rail count == on-disk entry count + trailing-chapter anatomy.
+    console.log(`\n[${bankRoute}] SWEEP: bank anatomy — rail count == on-disk entry count`);
+    const bpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await bpage.goto(`${BASE}${bankRoute}`, { waitUntil: "networkidle" });
+    await bpage.waitForSelector("[data-bank-card] > button", { state: "visible", timeout: 5000 }).catch(() => {});
+    const anatomy = await bpage.evaluate((idx) => {
+      const railCountEl = document.querySelector(".notion-rail [data-bank-rail-count]");
+      const railNum = railCountEl ? parseInt((railCountEl.textContent || "").replace(/[^\d]/g, ""), 10) : null;
+      const sec = document.querySelector(`[data-chapter-section][data-chapter-index='${idx}']`);
+      return {
+        railNum,
+        secPresent: !!sec,
+        secActive: sec?.getAttribute("data-chapter-active"),
+        bankPresent: !!sec?.querySelector("[data-exercise-bank]"),
+        cardCount: sec ? sec.querySelectorAll("[data-bank-card]").length : 0,
+      };
+    }, realChapterN);
+    checks++;
+    if (!anatomy.secPresent) failures += fail(`trailing bank chapter section (index ${realChapterN}) missing`);
+    else if (!anatomy.bankPresent) failures += fail("trailing chapter has no [data-exercise-bank]");
+    else if (anatomy.cardCount !== expectedCount) failures += fail(`rendered ${anatomy.cardCount} bank cards ≠ ${expectedCount} entries on disk`);
+    else if (anatomy.railNum !== expectedCount) failures += fail(`rail count (${anatomy.railNum}) ≠ ${expectedCount} entries on disk`);
+    else console.log(`  ✓ rail count == cards == ${expectedCount} on-disk entries; trailing chapter present (active=${anatomy.secActive})`);
+
+    // (d) provenance badge text matches bank.yaml (first card).
+    console.log(`\n[${bankRoute}] SWEEP: provenance badge text matches bank.yaml`);
+    const badgeText = await bpage.evaluate(
+      () => document.querySelector("[data-bank-card] [data-bank-provenance]")?.textContent?.trim() ?? null
+    );
+    checks++;
+    if (badgeText !== expectedProvenance) failures += fail(`first card provenance "${badgeText}" ≠ "${expectedProvenance}" (from bank.yaml)`);
+    else console.log(`  ✓ provenance badge "${badgeText}" matches bank.yaml`);
+
+    // (b) attempt-first on an EXPANDED bank card: no reasoning pre-commit,
+    //     revealed on commit — the summit's attempt-first guard, verbatim.
+    console.log(`\n[${bankRoute}] SWEEP: expanded bank card is attempt-first (no printed solutions)`);
+    await bpage.locator("[data-bank-card] > button").first().click();
+    await bpage.waitForTimeout(150);
+    const preCommit = await bpage.evaluate((eid) => {
+      const ex = document.querySelector(`[data-exercise='${eid}']`);
+      // Case-insensitive: the label renders `text-transform:uppercase`, so
+      // innerText reads "RAISONNEMENT EXPERT" once revealed.
+      return { exPresent: !!ex, hasReasoning: /raisonnement expert/i.test(ex?.innerText || "") };
+    }, firstId);
+    await bpage.locator(`[data-exercise='${firstId}'] button:has-text('tentative')`).first().click();
+    await bpage.waitForTimeout(150);
+    const postCommit = await bpage.evaluate(
+      (eid) => /raisonnement expert/i.test(document.querySelector(`[data-exercise='${eid}']`)?.innerText || ""),
+      firstId
+    );
+    checks++;
+    if (!preCommit.exPresent) failures += fail(`[data-exercise='${firstId}'] absent after expanding the card`);
+    else if (preCommit.hasReasoning) failures += fail("« Raisonnement expert » present in an expanded bank card BEFORE any commit — attempt-first broken");
+    else if (!postCommit) failures += fail("« Raisonnement expert » did NOT appear after committing a bank question — reveal broken");
+    else console.log(`  ✓ no reasoning pre-commit, revealed on commit (attempt-first holds on the bank)`);
+    await bpage.close();
+
+    // (c) off-mode: zero « fait » marks AND zero emitter traffic from a bank
+    //     interaction (extends the network-silence sweep to the bank).
+    console.log(`\n[${bankRoute}] SWEEP: bank OFF-mode — zero « fait » marks + zero emitter traffic`);
+    const opage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const emitterCalls = [];
+    opage.on("request", (req) => {
+      const url = req.url();
+      if (url.includes("record-notion-event") || url.includes("/functions/v1/")) emitterCalls.push(url);
+    });
+    await opage.goto(`${BASE}${bankRoute}`, { waitUntil: "networkidle" });
+    await opage.waitForSelector("[data-bank-card] > button", { state: "visible", timeout: 5000 }).catch(() => {});
+    const faitBefore = await opage.evaluate(() => document.querySelectorAll("[data-bank-fait]").length);
+    await opage.locator("[data-bank-card] > button").first().click(); // expand
+    await opage.waitForTimeout(120);
+    await opage.locator(`[data-exercise='${firstId}'] button:has-text('tentative')`).first().click(); // commit → recordExerciseReveal
+    await opage.waitForTimeout(400); // outlive the fire-and-forget dispatch
+    const faitAfter = await opage.evaluate(() => document.querySelectorAll("[data-bank-fait]").length);
+    await opage.close();
+    checks++;
+    if (emitterCalls.length > 0) failures += fail(`OFF-mode bank interaction sent ${emitterCalls.length} emitter request(s): ${emitterCalls.slice(0, 3).join(", ")}`);
+    else if (faitBefore !== 0 || faitAfter !== 0) failures += fail(`OFF-mode shows « fait » marks (before=${faitBefore}, after=${faitAfter}) — honest-state broken`);
+    else console.log(`  ✓ bank expand + commit → 0 emitter requests, 0 « fait » marks (off-mode silent & honest)`);
+
+    // (e) 390px: expanded bank cards (intros/tables + questions/math) never
+    //     widen the page (the brief's explicit concern).
+    console.log(`\n[${bankRoute}] SWEEP: 390px — expanded bank cards, zéro défilement horizontal`);
+    const mctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const mpage = await mctx.newPage();
+    await mpage.goto(`${BASE}${bankRoute}`, { waitUntil: "networkidle" });
+    await mpage.waitForSelector("[data-bank-card] > button", { state: "visible", timeout: 5000 }).catch(() => {});
+    const cardButtons = mpage.locator("[data-bank-card] > button");
+    const nCards = await cardButtons.count();
+    for (let i = 0; i < nCards; i++) {
+      await cardButtons.nth(i).click();
+      await mpage.waitForTimeout(80);
+    }
+    await mpage.waitForTimeout(150);
+    const over = await mpage.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+    );
+    await mctx.close();
+    checks++;
+    if (over > 1) failures += fail(`expanded bank cards overflow-x ${over}px à 390`);
+    else console.log(`  ✓ ${nCards} expanded bank cards — 0px overflow à 390`);
   }
 
   await browser.close();

@@ -28,10 +28,11 @@ import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
 import { buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail } from "@/components/notion/MarginRail";
-import { ChapterShell, ChapterPosition } from "@/components/notion/ChapterShell";
+import { ChapterShell, ChapterPosition, ChapterTransport } from "@/components/notion/ChapterShell";
 import { AttemptEventProvider, ChapterVisitRecorder } from "@/components/notion/AttemptEvents";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
+import { ExerciseBank } from "@/components/notion/ExerciseBank";
 import { cn } from "@/lib/utils";
 import { Cover } from "@/components/covers/Cover";
 import { subjectLabel, subjectHref } from "@/lib/subjects";
@@ -114,6 +115,7 @@ export function NotionPageView({
     itemsData,
     checkpoints,
     exercises,
+    bank,
     derivations,
     mediaSvgs,
     motionSvgs,
@@ -151,15 +153,21 @@ export function NotionPageView({
     Object.keys(motionSvgs).length > 0 ||
     Object.keys(mediaEmbeds).length > 0;
 
-  // ── Pagination (LESSON-EXPERIENCE-SPEC §1) ────────────────────────────────
+  // ── Pagination (LESSON-EXPERIENCE-SPEC §1 + BANK-SPEC §1) ─────────────────
   // `realChapters` = the lesson's own `## ` chapters (lib/chapters.ts — the
-  // SAME rule MarginRail uses, so the two never disagree). Under the inline-
-  // items model each chapter hosts its own diagnostic questions, so there is
-  // no longer a synthetic trailing "S'entraîner" chapter: the chapter count is
-  // exactly the real chapters. `totalChapters` is what ChapterShell uses to
-  // size keyboard/URL clamping and the "Chapitre n / N" affordance.
+  // SAME rule MarginRail uses, so the two never disagree). Each chapter hosts
+  // its own diagnostic questions inline. BANK-SPEC §1 revives the trailing
+  // « S'entraîner » chapter (the `hasTrailingChapter` slot NotionBody carries)
+  // — but ONLY when the notion has a bank.yaml. Every other notion's chapter
+  // count is exactly the real chapters, unchanged. `totalChapters` is what
+  // ChapterShell uses to size keyboard/URL clamping and the "Chapitre n / N".
   const realChapters = lessonMd ? realChapterCount(lessonMd) : 0;
-  const totalChapters = Math.max(1, realChapters);
+  const realChapterCountClamped = Math.max(1, realChapters);
+  // A non-null bank (bank.yaml present, even with zero entries) gets the
+  // trailing chapter — its honest empty state IS a real render (BANK-SPEC §1).
+  const hasBank = bank !== null;
+  const trailingChapterIndex = realChapterCountClamped; // 0-based: after the last real chapter
+  const totalChapters = realChapterCountClamped + (hasBank ? 1 : 0);
 
   // Masthead title classes per variant (Set A). a1 = shipped control.
   const titleClass = {
@@ -279,7 +287,11 @@ export function NotionPageView({
         <ChapterVisitRecorder />
         <div className="notion-page-grid">
           {lessonMd ? (
-            <MarginRail lessonMd={lessonMd} hasItems={false} />
+            <MarginRail
+              lessonMd={lessonMd}
+              hasItems={hasBank}
+              bankCount={hasBank ? bank!.entries.length : undefined}
+            />
           ) : (
             <div className="notion-rail" aria-hidden="true" />
           )}
@@ -310,7 +322,7 @@ export function NotionPageView({
                 mediaEmbeds={mediaEmbeds}
                 checkpoints={checkpoints}
                 itemsByRung={itemsByRung}
-                hasTrailingChapter={false}
+                hasTrailingChapter={hasBank}
                 lessonEnd={hasAnyContent ? <LessonEnd next={nextNotion} /> : undefined}
                 figTextOption={figTextOption}
               />
@@ -328,9 +340,32 @@ export function NotionPageView({
 
             {/* Inline-items model (spec §1.1): each chapter's diagnostic
                 questions render inside that chapter (NotionBody →
-                ChapterQuestions). There is no separate end-of-lesson
-                "S'entraîner" chapter, and LessonEnd closes NotionBody's own
-                last real chapter. */}
+                ChapterQuestions). The trailing « S'entraîner » chapter below
+                (BANK-SPEC §1) is the ONE synthetic chapter — present only when
+                the notion has a bank.yaml. */}
+
+            {/* ── Trailing « S'entraîner » bank chapter (BANK-SPEC §1) ──────
+                Rendered as ONE more paginated chapter section (same
+                data-chapter-section contract NotionBody's chapters use, so
+                ChapterShell toggles it identically) at index
+                `trailingChapterIndex` — after the lesson's last real chapter.
+                It hosts the bank cards + LessonEnd (which no longer closes
+                NotionBody's last chapter, since hasTrailingChapter is true) +
+                the chapter's own prev transport. Absent entirely for notions
+                without a bank.yaml — their pagination is unchanged. */}
+            {hasBank && (
+              <section
+                data-chapter-section
+                data-chapter-index={trailingChapterIndex}
+                data-chapter-active="false"
+                hidden
+                className="chapter-view"
+              >
+                <ExerciseBank bank={bank!} />
+                {hasAnyContent && <LessonEnd next={nextNotion} />}
+                <ChapterTransport index={trailingChapterIndex} />
+              </section>
+            )}
 
             {/* Fallback: notion directory exists but all content is absent */}
             {!hasAnyContent && (

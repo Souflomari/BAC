@@ -45,7 +45,13 @@ export function LessonEnd({ next }: { next: NotionMeta | null }) {
           href={notionHref(next.subject, next.slug)}
           className={cn(
             "group mt-4 flex items-center justify-between gap-6",
-            "-mx-6 px-6 py-6 rounded-xl",
+            // The -mx-6 bleed (so the state-layer hover extends past the text
+            // measure) only at ≥600px, where the centered notion-prose column
+            // has room for it. At compact width the column is full-bleed and a
+            // 24px negative margin overshoots the 16px page gutter → 8px of
+            // horizontal page scroll (bible §1: never at 390). Compact keeps
+            // the padding, drops the bleed.
+            "px-6 py-6 rounded-xl bp-medium:-mx-6",
             "state-layer focus-ring [--focus-radius:16px]"
           )}
         >

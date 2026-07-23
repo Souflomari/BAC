@@ -214,6 +214,45 @@ export interface NotionExercise {
 }
 
 /**
+ * Bank entry provenance — STUDENT-VISIBLE (BANK-SPEC §2/§3.1, decision D1):
+ * the year/session badge motivates and matches prep culture. `filiere`/
+ * `exerciseLabel` are the exam paper's own stream + position on the paper.
+ */
+export interface NotionBankEntrySource {
+  year: number;
+  /** "normale" | "rattrapage". */
+  session: string;
+  /** The exam paper's stream (PC: "SPC"; maths: "SM" | "SExp"). */
+  filiere?: string;
+  /** Position on the real paper, e.g. "Exercice I — Partie 2 (Chimie)". */
+  exerciseLabel?: string;
+}
+
+/**
+ * A single « S'entraîner » bank entry (bank.yaml — BANK-SPEC §2). Shares the
+ * exercises.yaml QUESTION schema exactly (AttemptFirstExercise reuse), plus a
+ * student-visible provenance block, barème, and honest duration. As with
+ * exercises.yaml, the authoring-side `sourcing` block is deliberately NOT
+ * loaded — it must never reach the student DOM.
+ */
+export interface NotionBankEntry {
+  id: string;
+  title: string;
+  source: NotionBankEntrySource;
+  /** Points on the paper for what this card transcribes (from the scan). */
+  baremeTotal?: number;
+  /** Honest duration estimate from the barème weight (minutes). */
+  durationMin?: number;
+  intro?: string;
+  questions: ExerciseQuestion[];
+}
+
+export interface NotionBank {
+  notion: string;
+  entries: NotionBankEntry[];
+}
+
+/**
  * Parsed checkpoints.yaml top-level shape.
  */
 export interface NotionCheckpoints {
@@ -235,6 +274,13 @@ export interface NotionContent {
   checkpoints: Record<string, CheckpointItem>;
   /** Attempt-first exercises keyed by id, from exercises.yaml. */
   exercises: Record<string, NotionExercise>;
+  /**
+   * The « S'entraîner » bank (bank.yaml — BANK-SPEC §2), or null when the
+   * notion carries no bank.yaml. NotionPageView renders a trailing
+   * « S'entraîner » chapter ONLY when this is non-null — every other notion's
+   * pagination is unchanged.
+   */
+  bank: NotionBank | null;
   /** Stepped derivations keyed by id, from derivations.yaml. */
   derivations: Record<string, NotionDerivation>;
   /**
@@ -545,6 +591,77 @@ export function loadNotion(id: string): NotionContent | null {
     }
   }
 
+  // ── bank.yaml (the « S'entraîner » bank — BANK-SPEC §2) ──
+  // Same fail-safe discipline as every loader here: malformed/absent → null,
+  // never a thrown page. The authoring-side `sourcing` block is deliberately
+  // NOT loaded (it must never reach the student DOM — same rule as exercises).
+  let bank: NotionBank | null = null;
+  const bankRaw = safeReadFile(path.join(dir, "bank.yaml"));
+  if (bankRaw) {
+    try {
+      const parsed = yaml.load(bankRaw) as {
+        notion?: string;
+        entries?: Array<{
+          id?: string;
+          title?: string;
+          source?: {
+            year?: number;
+            session?: string;
+            filiere?: string;
+            exercise_label?: string;
+          };
+          bareme_total?: number;
+          duration_min?: number;
+          intro?: string;
+          questions?: Array<{ id?: string; part?: string; stem?: string; reasoning?: string }>;
+        }>;
+      } | null;
+      if (parsed && Array.isArray(parsed.entries)) {
+        const entries: NotionBankEntry[] = [];
+        for (const e of parsed.entries) {
+          if (!e || typeof e.id !== "string" || !Array.isArray(e.questions)) continue;
+          const src = e.source ?? {};
+          if (typeof src.year !== "number" || typeof src.session !== "string") continue;
+          const questions: ExerciseQuestion[] = [];
+          for (const q of e.questions) {
+            if (q && typeof q.id === "string" && typeof q.stem === "string" && typeof q.reasoning === "string") {
+              const qq = q as typeof q & { steps?: Array<{ math?: string; note?: string | null }> };
+              const steps: DerivationStep[] = [];
+              if (Array.isArray(qq.steps)) {
+                for (const st of qq.steps) {
+                  if (st && typeof st.math === "string") {
+                    steps.push({ math: st.math, note: typeof st.note === "string" ? st.note : null });
+                  }
+                }
+              }
+              questions.push({ id: q.id, part: q.part, stem: q.stem, reasoning: q.reasoning, steps: steps.length > 0 ? steps : undefined });
+            }
+          }
+          if (questions.length === 0) continue;
+          entries.push({
+            id: e.id,
+            title: typeof e.title === "string" ? e.title : e.id,
+            source: {
+              year: src.year,
+              session: src.session,
+              filiere: typeof src.filiere === "string" ? src.filiere : undefined,
+              exerciseLabel: typeof src.exercise_label === "string" ? src.exercise_label : undefined,
+            },
+            baremeTotal: typeof e.bareme_total === "number" ? e.bareme_total : undefined,
+            durationMin: typeof e.duration_min === "number" ? e.duration_min : undefined,
+            intro: typeof e.intro === "string" ? e.intro : undefined,
+            questions,
+          });
+        }
+        // Non-null bank even with zero entries: the trailing chapter's honest
+        // empty state (BANK-SPEC §1) is a real, different render from "no bank".
+        bank = { notion: typeof parsed.notion === "string" ? parsed.notion : `${subject}/${slug}`, entries };
+      }
+    } catch {
+      // Malformed YAML — treat as absent, never crash the page
+    }
+  }
+
   // ── derivations.yaml (stepped derivations, Day-6 — DESIGN-BIBLE §7) ──
   const derivations: Record<string, NotionDerivation> = {};
   const derivationsRaw = safeReadFile(path.join(dir, "derivations.yaml"));
@@ -813,5 +930,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, mediaInteractive, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, bank, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, mediaInteractive, mediaEmbeds, embed };
 }

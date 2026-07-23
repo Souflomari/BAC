@@ -203,3 +203,63 @@ export function useStudentState(): LearnerModelSnapshot {
 
   return snapshot;
 }
+
+// ── Bank « fait » state (BANK-SPEC §3.4) ──────────────────────────────────
+//
+// The bank card shows a quiet « fait » ONLY when the journal already holds an
+// `exercise_reveal` for one of the entry's questions (item_id
+// "<entry_id>:<question_id>" — AttemptFirstExercise's existing composite
+// convention). This hook returns the SET of item_ids that have such a reveal,
+// read live from `user_answer_events` (the same RLS self-read + gating as
+// `useStudentState` above). In off/mock/logged-out it resolves `null` — and
+// because `@supabase/*` is only ever imported inside the `mode === "live"`
+// branch, the off build makes ZERO network calls (AUTH-SPEC §2/§5). A card
+// reads `null` as "no fait marks, no placeholder" — honest-state, never a
+// fabricated tick.
+export function useExerciseRevealIds(): Set<string> | null {
+  const { mode, user } = useAuth();
+  const [ids, setIds] = useState<Set<string> | null>(null);
+
+  useEffect(() => {
+    if (mode !== "live" || !user) {
+      setIds(null);
+      return;
+    }
+
+    let cancelled = false;
+
+    import("@/lib/auth/supabase-client")
+      .then(async ({ getBrowserSupabase }) => {
+        if (cancelled) return;
+        const supabase = getBrowserSupabase();
+        const { data, error } = await supabase
+          .from("user_answer_events")
+          .select("item_id")
+          .eq("user_id", user.id)
+          .eq("kind", "exercise_reveal");
+        if (cancelled) return;
+        if (error) {
+          console.error("[bank-fait] échec de lecture (RLS self-read) :", error);
+          setIds(null);
+          return;
+        }
+        const set = new Set<string>();
+        for (const row of data ?? []) {
+          const itemId = (row as { item_id?: unknown }).item_id;
+          if (typeof itemId === "string") set.add(itemId);
+        }
+        setIds(set);
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        console.error("[bank-fait] échec du chargement live :", err);
+        setIds(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [mode, user]);
+
+  return ids;
+}

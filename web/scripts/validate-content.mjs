@@ -188,7 +188,7 @@ for (const dir of dirs) {
   // Parse the YAML sidecars once (also used for marker id-resolution).
   const yamlIds = {}; // filename → Set of ids
   const yamlDocs = {}; // filename → parsed doc (absent if missing/parse-failed)
-  for (const y of ["items.yaml", "checkpoints.yaml", "exercises.yaml", "derivations.yaml"]) {
+  for (const y of ["items.yaml", "checkpoints.yaml", "exercises.yaml", "derivations.yaml", "bank.yaml"]) {
     const yp = path.join(abs, y);
     if (fs.existsSync(yp)) {
       const rawYaml = fs.readFileSync(yp, "utf8");
@@ -301,6 +301,107 @@ for (const dir of dirs) {
       }
       if (missingReasoning.length) {
         console.error(`  ✗ ${dir}/exercises.yaml: question(s) missing non-empty "reasoning" → ${missingReasoning.join(", ")}`);
+        dirFail += missingReasoning.length;
+      }
+    }
+  }
+
+  // bank.yaml — the « S'entraîner » bank (BANK-SPEC §5). Same question schema
+  // and sourcing contract as exercises.yaml (KaTeX-in-YAML on intro/stem/
+  // reasoning + raw steps[].math; reasoning required on every question; the
+  // --strict sourcing gate), PLUS bank-specific checks: `bk-` id convention,
+  // unique entry ids, source.year/session present and CONSISTENT with the
+  // sourcing note, and no MCQs (exactly-one-correct is n/a in v1).
+  {
+    const doc = yamlDocs["bank.yaml"];
+    if (doc) {
+      const arr = Array.isArray(doc.entries) ? doc.entries : [];
+      const missingReasoning = [];
+      const seenIds = new Set();
+      for (const e of arr) {
+        const eId = typeof e?.id === "string" ? e.id : "?";
+
+        // bk- id convention + uniqueness.
+        if (!/^bk-/.test(eId)) {
+          console.error(`  ✗ ${dir}/bank.yaml: entry id "${eId}" must follow the bk-<year>-<n|r>-x<pos> convention (start with "bk-")`);
+          dirFail++;
+        }
+        if (seenIds.has(eId)) {
+          console.error(`  ✗ ${dir}/bank.yaml: duplicate entry id "${eId}"`);
+          dirFail++;
+        }
+        seenIds.add(eId);
+
+        // source.year + source.session present and well-formed.
+        const src = e?.source ?? {};
+        const yearOk = typeof src.year === "number" && SOURCE_YEAR_RE.test(String(src.year));
+        const sessionOk = typeof src.session === "string" && SOURCE_SESSION_RE.test(src.session);
+        if (!yearOk) {
+          console.error(`  ✗ ${dir}/bank.yaml: ${eId} source.year missing or not a bac year (19|20)\\d{2}`);
+          dirFail++;
+        }
+        if (!sessionOk) {
+          console.error(`  ✗ ${dir}/bank.yaml: ${eId} source.session missing or not normale|rattrapage`);
+          dirFail++;
+        }
+
+        katexField("bank.yaml", `${eId}.intro`, e?.intro);
+
+        // Sourcing gate — SAME contract as exercises.yaml (authoring-side only,
+        // never rendered). "sourced" needs year + session in the note; under
+        // --strict, required_for_done while not-sourced is a hard fail.
+        const sourcing = e?.sourcing;
+        const validStatus = !!sourcing && typeof sourcing === "object" && SOURCING_STATUSES.has(sourcing.status);
+        if (!validStatus) {
+          console.error(`  ✗ ${dir}/bank.yaml: ${eId} has no valid sourcing.status (must be sourced|unsourced|not-applicable)`);
+          dirFail++;
+        } else {
+          const note = typeof sourcing.note === "string" ? sourcing.note : "";
+          if (sourcing.status === "sourced") {
+            if (!SOURCE_YEAR_RE.test(note) || !SOURCE_SESSION_RE.test(note)) {
+              console.error(`  ✗ ${dir}/bank.yaml: ${eId} sourcing.status=sourced but note lacks a bac year (19|20)\\d{2} and/or normale|rattrapage`);
+              dirFail++;
+            }
+            // source.year/session CONSISTENT with the sourcing note (BANK-SPEC
+            // §5) — the note must cite the SAME year and session the badge shows.
+            if (yearOk && !note.includes(String(src.year))) {
+              console.error(`  ✗ ${dir}/bank.yaml: ${eId} source.year=${src.year} not found in the sourcing note (year/note mismatch)`);
+              dirFail++;
+            }
+            if (sessionOk && !new RegExp(src.session).test(note)) {
+              console.error(`  ✗ ${dir}/bank.yaml: ${eId} source.session="${src.session}" not found in the sourcing note (session/note mismatch)`);
+              dirFail++;
+            }
+          }
+          if (sourcing.required_for_done === true && sourcing.status !== "sourced") {
+            const msg = `${dir}/bank.yaml: ${eId} required_for_done=true but status="${sourcing.status}" (not sourced)`;
+            if (strictMode) { console.error(`  ✗ ${msg}`); dirFail++; }
+            else { console.error(`  ⚠ ${msg}`); }
+          }
+        }
+
+        const questions = Array.isArray(e?.questions) ? e.questions : [];
+        for (const q of questions) {
+          const qid = typeof q?.id === "string" ? q.id : "?";
+          katexField("bank.yaml", `${eId}.${qid}.stem`, q?.stem);
+          katexField("bank.yaml", `${eId}.${qid}.reasoning`, q?.reasoning);
+          if (typeof q?.reasoning !== "string" || !q.reasoning.trim().length) {
+            missingReasoning.push(`${eId}.${qid}`);
+          }
+          // No MCQs in v1 (BANK-SPEC §5/§7): exactly-one-correct is n/a, and a
+          // stray choices[] would mean a mis-typed schema.
+          if (Array.isArray(q?.choices)) {
+            console.error(`  ✗ ${dir}/bank.yaml: ${eId}.${qid} carries choices[] — the bank has no MCQs in v1`);
+            dirFail++;
+          }
+          const steps = Array.isArray(q?.steps) ? q.steps : [];
+          steps.forEach((s, i) => {
+            katexField("bank.yaml", `${eId}.${qid}.steps[${i}].math`, s?.math, true);
+          });
+        }
+      }
+      if (missingReasoning.length) {
+        console.error(`  ✗ ${dir}/bank.yaml: question(s) missing non-empty "reasoning" → ${missingReasoning.join(", ")}`);
         dirFail += missingReasoning.length;
       }
     }
