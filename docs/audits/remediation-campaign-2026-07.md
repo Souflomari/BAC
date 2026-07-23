@@ -287,7 +287,61 @@ flag is hereby lifted by this compte-rendu.** Promotion path: drafts
 test → e2e evidence → prod only on further explicit authorization
 (Sitting 3 of `docs/pipeline/engine-cutover-runbook.md`).
 
-_(dated compte-rendus of Owner Sittings 2–3 appended here)_
+**2026-07-23 — OWNER SITTING 2 — staging: migrate + deploy + e2e: ALL
+GREEN (after one real catch).** Same session as Sitting 1, owner present,
+same temporary management token (owner revokes at close). Everything ran
+against STAGING only; prod untouched.
+
+1. **Promotion**: drafts 048/049/050 copied byte-identical (diff-proven)
+   to `backend/supabase/migrations/` (commit 1a0bce5).
+2. **Application**: applied to staging via the management API one at a
+   time; every migration's own verify block passed (an exception would
+   have failed the response). Independent post-checks confirmed: RLS
+   active on all 3 new tables, write-RPCs service_role-only, 043 twin
+   intact, `on_auth_user_created` NOW PRESENT on staging (the ADR 0013
+   gap is closed), history registered → staging reads …047,048,049,050.
+3. **Branch-test equivalent** (the .ps1's assertion suite replicated
+   from the session over HTTPS, incl. its REST/anon checks): per-stream
+   attribution EXACT (SMA=98 SMB=31 PC=21 SVT=9 hum=42, total 201,
+   cross=0); anon INSERT denied (401) on subjects,
+   user_misconception_states, AND the 3 new tables (first probe used a
+   malformed body and returned 400 — re-proven with valid shapes, true
+   401s); anon SELECT returns [] on all user-state tables; JSONB
+   defaults round-trip; all 4 misconception indexes present. ALL PASS.
+4. **Edge function deployed** to staging (direct management-API deploy;
+   the CLI's finalize call fails through this container's proxy —
+   TransportError, twice — the curl multipart path works).
+5. **The e2e caught a real bug** — the reason the evidence loop exists:
+   v1's clearing check silently no-oped. Root cause (verified by
+   downloading the deployed eszip): a standalone .json static file does
+   NOT ship in the bundle (module graph only), so the function's
+   graceful-degradation fallback returned an empty targets map. Fix:
+   the map is now a GENERATED, IMPORTED .ts module
+   (build-learner-inputs.mjs artifact 3) — always in the module graph; a
+   missing generation now fails the deploy loudly instead of no-opping
+   the clearing silently. Redeployed as version 2.
+6. **Full e2e transcript, v2 — ALL GREEN**: admin-created throwaway
+   student → profile row via the 050 trigger ✓ → chapter visit folds ✓ →
+   2 wrong answers on a tagged distractor → misconception ACTIVE
+   (exhibited_count=2) ✓ → 2 DISTINCT correct targeting items →
+   **cleared_at set (Cleared)** ✓ → journal 4 item events +
+   exercise_reveal recorded ✓ → student-side RLS self-read sees own rows
+   ✓ → user deleted, zero residue across all 4 tables ✓.
+
+**Findings for Sitting 3 (owner dashboard items):** (a) staging auth has
+email confirmations ON with the built-in mailer (rate-limit 2/h;
+example.com blocked) — before real students sign up, the owner must
+either disable confirmations or configure real SMTP, on BOTH projects;
+(b) the model-id commit gate hit a new false-positive class: the English
+word "diffable" contains "fable" — eyeballed and cleared, precedent
+noted alongside "Jean-Claude".
+
+**State after Sitting 2**: staging fully migrated + function v2 ACTIVE +
+e2e evidence green. **Prod remains untouched** — Sitting 3 (prod
+migrations, prod edge deploy, Vercel envs, smoke) requires its own
+explicit owner authorization per RULES §3.
+
+_(Sitting-3 compte-rendu appended here)_
 
 ## Wave log
 
