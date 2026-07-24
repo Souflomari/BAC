@@ -1,0 +1,279 @@
+# CENSUS — Examens nationaux Mathématiques (2ème Bac), 2008–2025, N + R
+
+> **Phase B1 du plan `docs/pipeline/mastery-push-plan.md` (Lane B).** Carte de
+> tout sujet de maths du national trouvable, **deux épreuves jamais fondues**
+> (README §0) : **SM** (Sciences Maths A & B, `NS 24F`, 4 h, coef 9) et
+> **SExp** (Sciences Expérimentales = SVT + Sc. Physiques, même sujet,
+> `NS 22F`, 3 h, coef 7). Décomposition en exercices mappés sur les 14 slugs
+> de `content/maths/` (`arithmetique` et `structures-algebriques` : SM
+> seulement ; `nombres-complexes-1` : SExp ; `nombres-complexes-2` : SM).
+> Ce document est un **recensement**, pas une transcription (transcription =
+> B2, protocole README §3).
+>
+> **Honnêteté de cette passe (2026-07-24).** Session interrompue par un
+> redémarrage d'infrastructure ; ce census converge sur : (a) l'inventaire
+> `element/<n>` consigné dans `INDEX.md` avant redémarrage ; (b) les scans
+> p. 1 téléchargés avant redémarrage (dossier de travail) relus par **cinq
+> lecteurs** post-redémarrage ; (c) les 4 sujets déjà décomposés et
+> **vérifiés** en passe v0.2 (SM 2019 N ; SExp 2019/2022/2023 N). Le lecteur
+> des années SM anciennes (2010–2016 N) **n'a jamais rendu** : ces sessions
+> sont marquées `non lu`, pas devinées. La décomposition vient de la lecture
+> de la **page 1** (« composantes » + premiers énoncés) sauf pour les 4
+> sujets v0.2 lus en entier : le contenu intérieur des problèmes d'analyse
+> reste `(?)` / `contenu à transcrire`. **Aucune ligne n'est inventée.**
+> Aucun sujet n'est marqué `introuvable` : les trous restants n'ont pas fait
+> l'objet d'une recherche ayant survécu au redémarrage (≠ recherche réelle
+> infructueuse).
+>
+> **FLAG global (lecteur SExp 2009–2015)** : les 7 fichiers SExp N
+> 2009–2015 sont des **retypes enseignant (AGOUZAL/2BPCF), PAS des scans
+> officiels** — pas de code NS/RS, ni durée, ni coef ; fidélité non
+> vérifiable. Reporté verbatim sur chaque ligne concernée.
+
+**Légende statut** ·
+`sourcé-confirmé` = scan officiel ouvert et lu (en-tête/composantes) ·
+`sourcé-listé` = URL `element/<n>` relevée sur le hub, jamais ouverte ·
+`retype-non-officiel` = document lu mais recomposé/retypé, pas un scan officiel ·
+`non lu` = scan téléchargé, lecteur jamais rendu ·
+`non recherché` = jamais atteint dans ce qui a survécu.
+
+**Patterns d'URL (AlloSchool, source primaire — INDEX §2)** ·
+page sujet : `https://www.alloschool.com/element/<ID>` ·
+images : `https://www.alloschool.com/assets/documents/course-<X>/upload-<Y>/000k-big.jpg` ·
+hub SM : `section/4660` (annonce 2010→2025 N+R, images `course-436`) ·
+hub SExp : `section/5321` (annonce 2009→2024 N+R, images `course-438`).
+
+---
+
+## 1. Table par session — SM (NS 24F, 36 sujets attendus)
+
+| Année | Session | Code lu | Source (element ; corrigé) | Statut | Note |
+|------:|:-------:|:-------:|-----------------------------|--------|------|
+| 2008 | N | — | — | non recherché | hors annonce hub (2010→) |
+| 2008 | R | — | — | non recherché | |
+| 2009 | N | — | — | non recherché | hors annonce hub |
+| 2009 | R | — | — | non recherché | |
+| 2010 | N | — | hub 4660, élément non consigné ; scan p.1 sur disque | non lu | lecteur jamais rendu |
+| 2010 | R | — | — | non recherché | sur le hub, élément non relevé |
+| 2011 | N | — | idem 2010 N | non lu | |
+| 2011 | R | — | — | non recherché | |
+| 2012 | N | — | idem | non lu | |
+| 2012 | R | — | — | non recherché | |
+| 2013 | N | — | idem | non lu | |
+| 2013 | R | — | — | non recherché | |
+| 2014 | N | — | idem | non lu | |
+| 2014 | R | — | — | non recherché | |
+| 2015 | N | — | idem | non lu | |
+| 2015 | R | — | — | non recherché | |
+| 2016 | N | — | idem | non lu | |
+| 2016 | R | — | — | non recherché | |
+| 2017 | N | NS25 | `57970` ; corrigé `57972` | sourcé-confirmé | code ≠ NS24F, lu sur scan |
+| 2017 | R | — | — | non recherché | |
+| 2018 | N | — | `65508` ; corrigé `65510` | retype-non-officiel | recomposé, sans en-tête ministériel ; p.1 seule énumérée |
+| 2018 | R | — | — | non recherché | |
+| 2019 | N | NS24F | `68482` (`upload-54931`, 5 p.) ; corrigé `106425` | sourcé-confirmé | décomposé v0.2, 4 entrées `vérifié` |
+| 2019 | R | RS25 | `94396` | sourcé-confirmé | code sans F, lu sur scan |
+| 2020 | N | NS25 | `109635` ; corrigé `109637` | sourcé-confirmé | format à CHOIX (Ex1 OU Ex2) |
+| 2020 | R | — | `109639` | sourcé-listé | jamais ouvert |
+| 2021 | N | NS24F | `127193` ; corrigé `136837` | sourcé-confirmé | 3 exercices seulement |
+| 2021 | R | — | `127195` | sourcé-listé | |
+| 2022 | N | NS24F | `136604` ; corrigé `136841` | sourcé-confirmé | |
+| 2022 | R | RS24F | `136606` | sourcé-confirmé | |
+| 2023 | N | NS24F | `142490` ; corrigé `142492` | sourcé-confirmé | |
+| 2023 | R | RS24F | `142494` | sourcé-confirmé | |
+| 2024 | N | NS24F | `145739` ; corrigé `145737` | sourcé-confirmé | |
+| 2024 | R | RS25 | `145741` | sourcé-confirmé | FLAG lecteur : code sans « F » |
+| 2025 | N | NS24F | `145783` ; corrigé non listé | sourcé-confirmé | scan 2 p. lues (p.1+p.2) |
+| 2025 | R | RS24F | `145785` | sourcé-confirmé | |
+
+**SM : 13 sourcé-confirmé · 1 retype-non-officiel · 2 sourcé-listé ·
+7 non lu · 13 non recherché.**
+
+## 1bis. Table par session — SExp (NS 22F, 36 sujets attendus)
+
+| Année | Session | Code lu | Source (element ; corrigé) | Statut | Note |
+|------:|:-------:|:-------:|-----------------------------|--------|------|
+| 2008 | N | — | — | non recherché | hors annonce hub (2009→) |
+| 2008 | R | — | — | non recherché | |
+| 2009 | N | — (retype) | retype AGOUZAL/2BPCF, élément non consigné | retype-non-officiel | scan officiel probable sur hub (`course-438`), non téléchargé |
+| 2009 | R | — | — | non recherché | |
+| 2010 | N | — (retype) | idem | retype-non-officiel | |
+| 2010 | R | — | — | non recherché | |
+| 2011 | N | — (retype) | idem | retype-non-officiel | atypique : ni géométrie ni probas |
+| 2011 | R | — | — | non recherché | |
+| 2012 | N | — (retype) | idem | retype-non-officiel | |
+| 2012 | R | — | — | non recherché | |
+| 2013 | N | — (retype) | idem | retype-non-officiel | |
+| 2013 | R | — | — | non recherché | |
+| 2014 | N | — (retype) | idem | retype-non-officiel | |
+| 2014 | R | — | — | non recherché | |
+| 2015 | N | — (retype) | idem | retype-non-officiel | FLAG lecteur : session annulée ; barème visible 17/20 |
+| 2015 | R | — | — | non recherché | |
+| 2016 | N | NS22F | `94485` ; corrigé `94490` | sourcé-confirmé | |
+| 2016 | R | — | `94502` | sourcé-listé | jamais ouvert |
+| 2017 | N | NS22F | `94525` ; corrigé `94530` | sourcé-confirmé | |
+| 2017 | R | — | — | non recherché | élément non relevé |
+| 2018 | N | NS22F | `94699` ; corrigé `94704` | sourcé-confirmé | |
+| 2018 | R | — | — | non recherché | |
+| 2019 | N | NS22F | `68527` (`upload-54971`, 4 p.) ; corrigé `100965` | sourcé-confirmé | décomposé v0.2, entrées `vérifié` |
+| 2019 | R | RS22F | `106247` | sourcé-confirmé | |
+| 2020 | N | NS22F | `109797` ; corrigé `109803` | sourcé-confirmé | ATYPIQUE : ni géométrie ni probas |
+| 2020 | R | — | `109808` | sourcé-listé | |
+| 2021 | N | NS22F | `127180` ; corrigé `136793` | sourcé-confirmé | ATYPIQUE : ni géométrie ni probas |
+| 2021 | R | — | `127185` | sourcé-listé | |
+| 2022 | N | NS22F | `136586` (`upload-84495`, 4 p.) ; corrigé `136803` | sourcé-confirmé | décomposé v0.2 |
+| 2022 | R | RS22F | `136591` | sourcé-confirmé | |
+| 2023 | N | NS22F | `137482` (`upload-84924`, 4 p.) ; corrigé `137472` | sourcé-confirmé | décomposé v0.2 — **pilote** |
+| 2023 | R | RS22F | `142250` | sourcé-confirmé | |
+| 2024 | N | NS22F | `144505` ; corrigé `144510` | sourcé-confirmé | |
+| 2024 | R | RS22F | `145811` | sourcé-confirmé | |
+| 2025 | N | NS-22F | élément non consigné (scan téléchargé pré-redémarrage) | sourcé-confirmé | |
+| 2025 | R | RS22F | élément non consigné | retype-non-officiel | FLAG lecteur : doc recomposé LaTeX, provenance à confirmer ; incohérence « trois exercices » vs tableau de 4 |
+
+**SExp : 14 sourcé-confirmé · 8 retype-non-officiel · 3 sourcé-listé ·
+11 non recherché.**
+
+---
+
+## 2. Décomposition par sujet (36 sujets énumérés / 72)
+
+Barèmes entre parenthèses (points). `(?)` = mapping incertain (lecture p.1
+seulement). Problèmes d'analyse : mappés sur **tous** leurs slugs avec la
+notation maison `(problème — extraits)` ; quand la fonction dominante n'a
+pas été identifiée, `contenu à transcrire` — jamais deviné.
+
+### SM (14 sujets énumérés ; 57 exercices)
+
+| Sujet | Exercices → slugs |
+|-------|-------------------|
+| 2017 N | Ex1 structures algébriques (3,5) → `structures-algebriques` · Ex2 complexes (3,5) → `nombres-complexes-2` · Ex3 arithmétique (3) → `arithmetique` · Problème analyse (10) → `derivabilite-etude-fonctions` (?) + autres slugs — contenu à transcrire |
+| 2018 N *(retype ; p.1 seule)* | Ex1 structures algébriques (3,5) → `structures-algebriques` · Ex2 arithmétique (3) → `arithmetique` · **suite du sujet non lue** |
+| 2019 N *(v0.2, vérifié)* | Ex1 loi interne sur ℂ, groupe, isomorphisme (3,5) → `structures-algebriques` · Ex2 équation paramétrée, rotation (3,5) → `nombres-complexes-2` · Ex3 congruences mod 2969, Bézout, Fermat (3) → `arithmetique` · Ex4 fonction $e^{-x}$, Rolle/TAF, intégrale, suite (10) → `fonction-exponentielle` + `derivabilite-etude-fonctions` + `limites-continuite` + `calcul-integral` + `suites-numeriques` (problème — extraits) |
+| 2019 R | Ex1 complexes (3,5) → `nombres-complexes-2` · Ex2 calcul des probabilités (3) → `probabilites-conditionnelles` (?) · Ex3 structures algébriques (3,5) → `structures-algebriques` · Problème analyse (10) → (?) contenu à transcrire |
+| 2020 N | Ex1 arithmétique (3,5, **au choix** ; visible p.1 : $7x^3-13y=5$) → `arithmetique` · Ex2 structures algébriques (3,5, **au choix**) → `structures-algebriques` · Ex3 complexes (3,5, obligatoire) → `nombres-complexes-2` · Problème analyse (13, obligatoire) → (?) contenu à transcrire |
+| 2021 N | Problème analyse (12) → (?) contenu à transcrire · Ex complexes (4) → `nombres-complexes-2` · Ex arithmétique (4) → `arithmetique` — **pas de structures algébriques** |
+| 2022 N | Problème analyse (10) → (?) · complexes (3,5) → `nombres-complexes-2` · arithmétique (3) → `arithmetique` · structures algébriques (3,5) → `structures-algebriques` |
+| 2022 R | Problème analyse (10) → (?) · complexes (3,5) → `nombres-complexes-2` · structures algébriques (3,5) → `structures-algebriques` · arithmétique (3) → `arithmetique` |
+| 2023 N | Analyse (7,75) → (?) · Analyse (2,25) → `calcul-integral` \| `suites-numeriques` (?) · complexes (3,5) → `nombres-complexes-2` · arithmétique (3) → `arithmetique` · structures algébriques (3,5) → `structures-algebriques` |
+| 2023 R | Problème analyse (10) → (?) · complexes (3,5) → `nombres-complexes-2` · structures algébriques (3,5) → `structures-algebriques` · arithmétique (3) → `arithmetique` |
+| 2024 N | Analyse (7,5) → (?) · Analyse (2,5) → (?) · complexes (3,5) → `nombres-complexes-2` · arithmétique (3) → `arithmetique` · structures algébriques (3,5) → `structures-algebriques` |
+| 2024 R | Analyse (6,5) → (?) · Analyse (3,5) → (?) · complexes (3,5) → `nombres-complexes-2` · structures algébriques (3,5) → `structures-algebriques` · arithmétique (3) → `arithmetique` |
+| 2025 N | Problème analyse (10) → (?) · complexes (3,5) → `nombres-complexes-2` · arithmétique (3) → `arithmetique` · structures algébriques (3,5) → `structures-algebriques` |
+| 2025 R | Analyse (7,75) → (?) · Analyse (2,25) → (?) · complexes (3,5) → `nombres-complexes-2` · arithmétique (3) → `arithmetique` · structures algébriques (3,5) → `structures-algebriques` |
+
+> Note lecteur SM 2023–2025 : **aucune trace de probabilités/dénombrement**
+> dans ces six sujets. Le seul exercice de probabilité SM relevé est 2019 R
+> (classement conditionnelle vs dénombrement incertain → `(?)`).
+
+### SExp (22 sujets énumérés ; 99 exercices)
+
+| Sujet | Exercices → slugs |
+|-------|-------------------|
+| 2009 N *(retype)* | géométrie espace (3) → `geometrie-espace` · complexes (3) → `nombres-complexes-1` · calcul intégral (2) → `calcul-integral` · dénombrement (3) → `denombrement` · Problème (9) → `fonction-exponentielle` (?) + `limites-continuite` + `derivabilite-etude-fonctions` + `suites-numeriques` (problème — extraits) — numérotation double « Ex2 » |
+| 2010 N *(retype)* | géométrie espace (3) · complexes (3) · dénombrement (3) · suites (3) → `suites-numeriques` · Problème (8) → `fonction-exponentielle` + `limites-continuite` + `derivabilite-etude-fonctions` + `calcul-integral` (extraits) |
+| 2011 N *(retype)* | fonction ln (2,5) → `fonction-logarithme` (?) · suites (3) · complexes (5) · Problème (9,5) → `fonction-exponentielle` + `limites-continuite` + `derivabilite-etude-fonctions` + `calcul-integral` (extraits) — ATYPIQUE : ni géométrie ni probas |
+| 2012 N *(retype)* | géométrie espace (3) · complexes (3) · dénombrement (3) · suites (3) · Problème (8) → `fonction-logarithme` + `limites-continuite` + `derivabilite-etude-fonctions` + `calcul-integral` (extraits) — double « Ex3 » |
+| 2013 N *(retype)* | géométrie espace (3) · complexes (3) · dénombrement (3) · suites (3) · Problème (8) → `fonction-exponentielle` + `limites-continuite` + `derivabilite-etude-fonctions` + `calcul-integral` (extraits) — double « Ex3 » |
+| 2014 N *(retype)* | géométrie espace (3) · complexes (3) · suites (3) · dénombrement (3) · Problème (8) → `fonction-logarithme` + `limites-continuite` + `derivabilite-etude-fonctions` (pas d'intégrale visible) |
+| 2015 N *(retype ; session annulée — flag lecteur)* | géométrie espace (3) · complexes (3) · dénombrement (3) (+ `probabilites-conditionnelles` (?) partie II, deux urnes) · Problème (8) → `fonction-logarithme` + `limites-continuite` + `derivabilite-etude-fonctions` — barème visible 17/20 ; suites manquantes (?) |
+| 2016 N | suites (2,5) → `suites-numeriques` · géométrie espace (3) · complexes (3) · probas (3) → `probabilites-conditionnelles` (?) · Problème (8,5) → `fonction-logarithme` (?) + `calcul-integral` + `limites-continuite`/`derivabilite-etude-fonctions` (?) (extraits) |
+| 2017 N | géométrie espace (3) · probas (3) → `denombrement` \| `probabilites-conditionnelles` (?) · complexes (3) · Problème (11) → ln (?) + `calcul-integral` + `suites-numeriques` + limites/dérivabilité (?) (extraits) |
+| 2018 N | géométrie espace (3) · complexes (3) · probas (3) (?) · Problème (11) → `calcul-integral` + `suites-numeriques` + ln\|exp (?) + limites/dérivabilité (?) (extraits) |
+| 2019 N *(v0.2, vérifié)* | Ex1 géométrie espace (3) → `geometrie-espace` · Ex2 complexes (3) → `nombres-complexes-1` · Ex3 probabilité par dénombrement (3) → `denombrement` · Problème fonction ln, IPP, suite (11) → `fonction-logarithme` + `limites-continuite` + `derivabilite-etude-fonctions` + `calcul-integral` + `suites-numeriques` (problème — extraits) |
+| 2019 R | géométrie espace (3) · complexes (3) · probas (3) (?) · Problème (11) → `calcul-integral` + `suites-numeriques` + ln\|exp (?) (extraits) — limites/dérivabilité non relevées (?) |
+| 2020 N *(ATYPIQUE)* | suites (4) → `suites-numeriques` · complexes (5) · limites + dérivabilité + intégrale (4) → `limites-continuite`/`derivabilite-etude-fonctions`/`calcul-integral` (?) · Problème (7) → ln (?) — ni géométrie ni probas |
+| 2021 N *(ATYPIQUE)* | fonctions numériques (2) → `derivabilite-etude-fonctions` \| `limites-continuite` (?) · suites (4) · complexes (5) · Problème (9) → ln (?) + `calcul-integral` (extraits) — ni géométrie ni probas |
+| 2022 N *(v0.2, vérifié)* | Ex1 géométrie espace (3) · Ex2 complexes (3) · Ex3 probabilité par dénombrement (3) → `denombrement` · Ex4 éq. diff. $y''-2y'+y=0$ + primitive/IPP (2,5) → `equations-differentielles` + `calcul-integral` · Problème fonction $e^{x/2}$, suite (8,5) → `fonction-exponentielle` + `limites-continuite` + `derivabilite-etude-fonctions` + `suites-numeriques` (problème — extraits) |
+| 2022 R | suites (2,5) · géométrie espace (3) · complexes (3) · probas (3) (?) · Problème (8,5) → ln (?) + intégrale (?) + limites/dérivabilité (?) (extraits) |
+| 2023 N *(v0.2, vérifié — pilote)* | Ex1 géométrie espace (3) · Ex2 complexes (3) · Ex3 **probabilités conditionnelles** (arbre, $p(A/B)$, v.a. $X$) (3) → `probabilites-conditionnelles` · Problème fonction ln, IPP, suite (11) → `fonction-logarithme` + `limites-continuite` + `derivabilite-etude-fonctions` + `calcul-integral` + `suites-numeriques` (problème — extraits) |
+| 2023 R | suites (3) · géométrie espace (3) · complexes (3) · probas (3) (?) · Problème (8) → ln (?) + intégrale (?) + limites/dérivabilité (?) (extraits) |
+| 2024 N | suites (3) · géométrie espace (3) · complexes (4) · probas (2) (?) · Problème (8) → ln (?) + intégrale (?) + limites/dérivabilité (?) (extraits) |
+| 2024 R | géométrie espace (3) · complexes (4) · probas (2) (?) · Problème (11) → ln (?) + intégrale (?) + `suites-numeriques` + limites/dérivabilité (?) (extraits) |
+| 2025 N | géométrie espace (3) · complexes (3,5) · probas (2,5) (?) · Problème (11) → ln\|exp (?) + intégrale (?) + `suites-numeriques` + limites/dérivabilité (?) (extraits) |
+| 2025 R *(retype LaTeX — flag lecteur)* | suites (3) · géométrie espace (3) · complexes (3,5) · probas (2,5) (?) · Problème (8) → ln (?) + limites/dérivabilité (?) (extraits) |
+
+---
+
+## 3. Rollup par notion (14 slugs)
+
+« Fermes » = attributions sans `(?)` (lecture v0.2 vérifiée, ou slug nommé
+sans réserve par le lecteur — les retypes comptent, flag porté). Les
+extraits de problème comptent 1 par slug (discipline cross-list maison).
+
+| Slug | SM fermes | SM (?) | SExp fermes | SExp (?) | Années/sessions (fermes ; puis (?)) |
+|------|:---:|:---:|:---:|:---:|--------------------------------------|
+| `nombres-complexes-1` | — | — | **22** | 0 | présent dans les 22 sujets SExp énumérés (2009–2015 N retype · 2016 N → 2025 R) |
+| `suites-numeriques` | 1 | 1 | **20** | 1 | SM : 2019 N (extraits) ; (?) 2023 N. SExp dédiés : 2010/2012/2013/2014 N (retype), 2016 N, 2020 N, 2021 N, 2022 R, 2023 R, 2024 N, 2025 R ; extraits : 2009 N (retype), 2017 N, 2018 N, 2019 N, 2019 R, 2022 N, 2023 N, 2024 R, 2025 N ; (?) 2015 N |
+| `geometrie-espace` | — | — | **19** | 0 | 2009/2010/2012/2013/2014/2015 N (retype) + 2016–2019 N, 2019 R, 2022 N/R, 2023 N/R, 2024 N/R, 2025 N/R — absent 2011 N, 2020 N, 2021 N |
+| `calcul-integral` | 1 | 1 | **12** | 6 | SM : 2019 N (extraits) ; (?) 2023 N. SExp dédiés : 2009 N (retype), 2022 N ; extraits : 2010–2013 N (retype), 2016 N, 2017 N, 2018 N, 2019 N, 2019 R, 2021 N, 2023 N ; (?) 2020 N, 2022 R, 2023 R, 2024 N/R, 2025 N |
+| `structures-algebriques` (SM) | **13** | 0 | — | — | 2017 N, 2018 N (retype), 2019 N/R, 2020 N (choix), 2022 N/R, 2023 N/R, 2024 N/R, 2025 N/R — absent 2021 N |
+| `arithmetique` (SM) | **13** | 0 | — | — | 2017 N, 2018 N (retype), 2019 N, 2020 N (choix), 2021 N, 2022 N/R, 2023 N/R, 2024 N/R, 2025 N/R — absent 2019 R |
+| `nombres-complexes-2` (SM) | **13** | 0 | — | — | 2017 N, 2019 N/R, 2020 N, 2021 N, 2022 N/R, 2023 N/R, 2024 N/R, 2025 N/R |
+| `derivabilite-etude-fonctions` | 1 | 1 | **10** | 12 | SM : 2019 N (Rolle/TAF, extraits) ; (?) 2017 N. SExp : 2009–2015 N (retype, extraits) + 2019/2022/2023 N (extraits) ; (?) 2016–2018 N, 2019 R, 2020 N, 2021 N, 2022 R, 2023 R, 2024 N/R, 2025 N/R |
+| `limites-continuite` | 1 | 0 | **10** | 12 | mêmes listes que dérivabilité (embarqué — jamais d'exercice dédié, convention maison) |
+| `denombrement` | 0 | 0 | **8** | 9† | SExp : 2009/2010/2012/2013/2014/2015 N (retype) + 2019 N, 2022 N ; † 9 probas non classées (voir note) |
+| `fonction-logarithme` | 0 | 0 | **5** | 13 | SExp : 2012/2014/2015 N (retype, extraits) + 2019 N, 2023 N ; (?) 2011 N (dédié), 2016 N, 2017 N, 2020 N, 2021 N, 2022 R, 2023 R, 2024 N/R, 2025 R + ln\|exp 2018 N, 2019 R, 2025 N |
+| `fonction-exponentielle` | 1 | 0 | **4** | 4 | SM : 2019 N. SExp : 2010/2011/2013 N (retype, extraits) + 2022 N ; (?) 2009 N (retype) + ln\|exp 2018 N, 2019 R, 2025 N |
+| `probabilites-conditionnelles` | 0 | 1 | **1** | 11† | SM (?) : 2019 R. SExp ferme : **2023 N (pilote, vérifié)** ; (?) 2015 N pII, 2016 N + † les 9 non classées |
+| `equations-differentielles` | 0 | 0 | **1** | 0 | SExp : 2022 N Ex4 — **seule occurrence sur les 22 sujets SExp énumérés** |
+
+† **Probas non classées (ne pas additionner)** : 9 exercices SExp
+« probas » (2017 N, 2018 N, 2019 R, 2022 R, 2023 R, 2024 N, 2024 R,
+2025 N, 2025 R) dont le format (dénombrement pur vs conditionnelle) n'est
+pas lisible en p.1 — comptés `(?)` à la fois sous `denombrement` et
+`probabilites-conditionnelles`.
+
+**Segments d'analyse SM non identifiés : 16 sur 17.** Seul le problème
+2019 N est attribué (v0.2). Les 16 autres (2017 N → 2025 R, 21–79 % du
+barème selon l'année) restent `contenu à transcrire` : leur répartition
+ln/exp/limites/dérivabilité/intégrale/suites fera bouger fortement les
+colonnes SM du rollup — c'est **la plus grosse inconnue de ce census**.
+
+---
+
+## 4. Résumé de couverture — honnête
+
+- **Sujets tracés : 48/72** — 27 `sourcé-confirmé` (SM 13, SExp 14),
+  9 `retype-non-officiel` (SExp N 2009–2015, SExp R 2025, SM N 2018),
+  5 `sourcé-listé` jamais ouverts (SM R 2020/2021 ; SExp R 2016/2020/2021),
+  7 `non lu` (SM N 2010–2016 : scans sur disque, lecteur jamais rendu).
+  **24 `non recherché`** (2008 ×4, rattrapages 2008–2018 des deux épreuves
+  sauf exceptions, SExp R 2017/2018). Aucun `introuvable` avéré.
+- **Énumération : 36/72 sujets décomposés** (14 SM dont 2018 N partiel ;
+  22 SExp) = **156 exercices énumérés** (57 SM + 99 SExp) sur ~280 attendus
+  (sizing Lane B) ≈ **56 %**. Mais l'énumération est en profondeur p.1 :
+  les intérieurs de problèmes restent non lus hors v0.2.
+- **Banque transcrite existante : 14 entrées** (v0.2), 13 `vérifié` +
+  1 `corrigé`, couvrant 12 slugs / 14.
+- **Top-5 fermes** : `nombres-complexes-1` 22 · `suites-numeriques` 21 ·
+  `geometrie-espace` 19 · `structures-algebriques` / `arithmetique` /
+  `nombres-complexes-2` / `calcul-integral` 13 chacun.
+- **Notions minces** : `equations-differentielles` **1** (2022 N SExp —
+  une seule occurrence sur 22 sujets SExp : rare au national, à confronter
+  au cadre de référence avant d'en conclure) ; `probabilites-conditionnelles`
+  **1 ferme** (le pilote) + 11 (?) à départager ; `fonction-exponentielle` 5 ;
+  `fonction-logarithme` 5 (les deux montent dès que les dominantes de
+  problèmes seront identifiées) ; `limites-continuite` /
+  `derivabilite-etude-fonctions` : jamais dédiés, toujours extraits
+  (convention maison confirmée sur 36 sujets — exceptions partielles :
+  SExp 2020 N Ex3 et 2021 N Ex1, seuls candidats « exercice court dédié »
+  repérés, à lire en B2).
+- **Constats systématiques** : (1) le squelette SM est ultra-stable —
+  structures + arithmétique + complexes-2 + analyse (~10 pts), zéro
+  probabilité en 2023–2025, une seule vue (2019 R (?)) ; (2) le squelette
+  SExp — géométrie + complexes-1 + probas + problème ln — avec **2020 N et
+  2021 N atypiques** (ni géométrie ni probas, période COVID) comme 2011 N ;
+  (3) les probas SExp passent de 3 pts à 2–2,5 pts à partir de 2024 ;
+  (4) codes sujet SM non uniformes : NS25/RS25 lus sur 2017 N, 2019 R,
+  2020 N, 2024 R (flag lecteur) vs NS24F/RS24F ailleurs — à vérifier en B2
+  sur l'en-tête ; (5) 2020 N SM est **à choix** (Ex1 OU Ex2) — unique dans
+  le corpus lu.
+- **Prochain incrément B1 (avant B2)** — ~45 lectures/fetchs pour clore :
+  (a) **0 fetch** : lire les 7 scans SM N 2010–2016 déjà sur disque ;
+  (b) ouvrir les 5 `sourcé-listé` ; (c) relever sur les hubs les éléments
+  R 2010–2018 (SM) et R 2009–2015 + 2017/2018 (SExp) + re-consigner les
+  éléments SExp 2025 N/R ; (d) remplacer les 8 retypes par les scans
+  officiels du hub (`course-438` couvre 2009→) ; (e) lire les pages
+  intérieures des 16 problèmes SM et 12 problèmes SExp non identifiés pour
+  fermer les (?) du rollup. Ensuite B2 : transcription par vagues,
+  plus-fréquents d'abord (analyse, complexes, probabilités — plan §B2).
