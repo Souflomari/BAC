@@ -80,7 +80,7 @@ export function FontSizeStepper({ className }: { className?: string }) {
         // a recessed container-low tone (ADR 0024 tonal ladder) so the lifted
         // overlay-toned thumb reads as raised in tone as well as shadow.
         "shadow-elevation-1",
-        "bg-[var(--color-surface-container-low)]",
+        "bg-surface-container-low",
         "p-0.5",
         className
       )}
@@ -99,7 +99,7 @@ export function FontSizeStepper({ className }: { className?: string }) {
             className={cn(
               "inline-flex items-center justify-center",
               // §9 touch target: 48px (raised from 44px per audit finding #2)
-              "min-w-[48px] min-h-[48px] px-2",
+              "min-w-touch min-h-touch px-2",
               "rounded",
               "text-caption font-semibold",
               "transition-colors duration-micro",
@@ -114,15 +114,15 @@ export function FontSizeStepper({ className }: { className?: string }) {
                     // step gives the same hover/pressed feedback as every control
                     // (ADR 0024 — one feedback language, no dead interactive).
                     "state-layer",
-                    "bg-[var(--color-surface-overlay)]",
-                    "text-[var(--color-text-primary)]",
+                    "bg-surface-overlay",
+                    "text-primary",
                     "shadow-elevation-2",
                   ]
                 : [
                     // #1: inactive step button at caption size — must pass 4.5:1.
                     // Promoted from tertiary to secondary.
-                    "text-[var(--color-text-secondary)]",
-                    "hover:text-[var(--color-text-primary)]",
+                    "text-secondary",
+                    "hover:text-primary",
                     // ADR 0024: ghost hover via the uniform neutral state-layer
                     // (replaces the bespoke hover:bg-surface-base wash).
                     "state-layer",

@@ -105,7 +105,7 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
       <div
         className={cn(
           "mb-5",
-          "text-body-lg text-[var(--color-text-primary)]",
+          "text-body-lg text-primary",
           "leading-[1.6]",
           "[&_.katex-display]:my-3"
         )}
@@ -133,12 +133,12 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
             // option rows read on the same RAISED tone (surface-raised) as the
             // MCQ rows, not the page BASE tone. An elevation-1 chip toned at the
             // page base contradicted its own lift; surface-raised resolves it.
-            idleSurface="bg-[var(--color-surface-raised)]"
+            idleSurface="bg-surface-raised"
             disabledExtra={[
               // The single dimmed/inert treatment (ADR 0024) replaces opacity-50.
               "cursor-default",
-              "bg-[var(--color-surface-raised)]",
-              "border-[var(--color-border-subtle)]",
+              "bg-surface-raised",
+              "border-subtle",
               "shadow-elevation-0",
             ]}
           />

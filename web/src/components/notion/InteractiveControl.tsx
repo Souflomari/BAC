@@ -74,14 +74,14 @@ export function InteractiveControl({
 
   const hintClass =
     figTextOption === undefined
-      ? "text-caption text-[var(--color-text-secondary)]"
-      : "text-body-sm text-[var(--color-text-secondary)]";
+      ? "text-caption text-secondary"
+      : "text-body-sm text-secondary";
   const readoutClass =
     figTextOption === undefined
-      ? "text-body-sm text-[var(--color-text-primary)] tabular-nums"
+      ? "text-body-sm text-primary tabular-nums"
       : figTextOption === "a2"
-        ? "text-body-lg text-[var(--color-text-primary)] tabular-nums"
-        : "text-body text-[var(--color-text-primary)] tabular-nums";
+        ? "text-body-lg text-primary tabular-nums"
+        : "text-body text-primary tabular-nums";
 
   return (
     <div

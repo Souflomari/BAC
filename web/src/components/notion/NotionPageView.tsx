@@ -75,7 +75,7 @@ function MastheadMeta({
   if (readingMinutes) parts.push(`${readingMinutes} min de lecture`);
   if (updatedAt) parts.push(`mis à jour ${updatedAt}`);
   return (
-    <p className="mt-4 text-body-sm text-[var(--color-text-secondary)]">
+    <p className="mt-4 text-body-sm text-secondary">
       {parts.join("  ·  ")}
     </p>
   );
@@ -185,7 +185,7 @@ export function NotionPageView({
       <header className={cn(onSpine ? "mb-0" : "notion-prose mb-10")}>
         <h1
           className={cn(
-            "font-serif font-bold text-[var(--color-text-primary)]",
+            "font-serif font-bold text-primary",
             titleClass
           )}
         >
@@ -208,7 +208,7 @@ export function NotionPageView({
           "sr-only focus:not-sr-only",
           "focus:fixed focus:top-4 focus:left-4 focus:z-50",
           "focus:px-4 focus:py-2 focus:rounded-lg",
-          "focus:bg-accent focus:text-[var(--color-text-on-accent)] focus:text-body-sm focus:font-medium"
+          "focus:bg-accent focus:text-on-accent focus:text-body-sm focus:font-medium"
         )}
       >
         Aller au contenu de la leçon
@@ -227,9 +227,9 @@ export function NotionPageView({
             // margin instead of empty band interior. All other variants keep
             // the shipped full-bleed plane.
             wideOption === "m2"
-              ? "rounded-xl px-8 border border-[var(--color-border-subtle)]"
-              : "mx-[calc(50%-50vw)] px-[calc(50vw-50%)] border-b border-[var(--color-border-subtle)]",
-            "bg-[var(--color-surface-container-low)]",
+              ? "rounded-xl px-8 border border-subtle"
+              : "mx-[calc(50%-50vw)] px-[calc(50vw-50%)] border-b border-subtle",
+            "bg-surface-container-low",
             // Set-M3 candidate needs a clipping context for its watermark.
             wideOption === "m3" && "relative overflow-hidden"
           )}
@@ -329,9 +329,9 @@ export function NotionPageView({
             ) : (
               <div
                 className={cn(
-                  "rounded-xl border border-dashed border-[var(--color-border-subtle)]",
+                  "rounded-xl border border-dashed border-subtle",
                   "px-8 py-10 text-center",
-                  "text-body-sm text-[var(--color-text-secondary)]"
+                  "text-body-sm text-secondary"
                 )}
               >
                 Leçon en cours de préparation.
@@ -371,9 +371,9 @@ export function NotionPageView({
             {!hasAnyContent && (
               <div
                 className={cn(
-                  "mt-12 rounded-xl border border-dashed border-[var(--color-border-subtle)]",
+                  "mt-12 rounded-xl border border-dashed border-subtle",
                   "px-8 py-10 text-center",
-                  "text-body-sm text-[var(--color-text-secondary)]"
+                  "text-body-sm text-secondary"
                 )}
               >
                 Contenu en cours de préparation.

@@ -35,10 +35,10 @@ export function Eyebrow({
       aria-hidden={decorative || undefined}
       className={cn(
         "flex items-center gap-2.5",
-        "text-caption font-medium uppercase tracking-[0.14em]",
+        "text-caption font-medium uppercase tracking-eyebrow",
         // muted uses SECONDARY (not tertiary): a 12px label is functional text and
         // must pass WCAG AA (secondary = 6.8:1 light / 7.7:1 dark; tertiary fails).
-        muted ? "text-[var(--color-text-secondary)]" : "text-accent",
+        muted ? "text-secondary" : "text-accent",
         className
       )}
     >
@@ -46,7 +46,7 @@ export function Eyebrow({
         aria-hidden="true"
         className={cn(
           "inline-block h-px w-6",
-          muted ? "bg-[var(--color-border-soft)]" : "bg-accent/60"
+          muted ? "bg-border-soft" : "bg-accent/60"
         )}
       />
       {children}

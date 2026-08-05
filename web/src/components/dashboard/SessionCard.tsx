@@ -53,14 +53,14 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
         )}
       >
         <div className="px-8 py-8">
-          <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
             {session.kind === "start" ? "Commence ici" : "Aujourd’hui"} ·{" "}
             {subjectLabel(notion.subject)}
           </p>
-          <h2 className="mt-2 font-serif text-h2 font-bold text-[var(--color-text-primary)]">
+          <h2 className="mt-2 font-serif text-h2 font-bold text-primary">
             {notion.title}
           </h2>
-          <p className="mt-2 text-body text-[var(--color-text-secondary)]">
+          <p className="mt-2 text-body text-secondary">
             {session.kind === "start" ? (
               <>
                 Nouvelle notion — on la prend depuis le début
@@ -77,7 +77,7 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
           {/* Progress renders ONLY from real resume state — never fabricated. */}
           {session.kind === "resume" && (
             <div
-              className="mt-5 h-1 rounded-full bg-[var(--color-border-subtle)]"
+              className="mt-5 h-1 rounded-full bg-border-subtle"
               role="progressbar"
               aria-valuenow={Math.round((session.step / session.totalSteps) * 100)}
               aria-valuemin={0}

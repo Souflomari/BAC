@@ -23,7 +23,7 @@ const CONTAINER = "w-full mx-auto px-4 bp-medium:px-6 bp-expanded:px-8 max-w-con
 
 export default function EndC1() {
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--color-surface-base)]">
+    <div className="min-h-screen flex flex-col bg-surface-base">
       <SiteHeader container={CONTAINER} />
 
       <main className={cn(CONTAINER, "flex-1 py-12 md:py-16")}>
@@ -43,11 +43,11 @@ export default function EndC1() {
       </main>
 
       {/* ── C1: the quiet colophon ── */}
-      <footer className="mt-24 border-t border-[var(--color-border-subtle)] bg-[var(--color-surface-base)]">
+      <footer className="mt-24 border-t border-subtle bg-surface-base">
         <div className={cn(CONTAINER, "py-10")}>
           <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <p className="text-body-sm text-[var(--color-text-secondary)]">
-              <span className="font-semibold text-[var(--color-text-primary)]">BAC</span>
+            <p className="text-body-sm text-secondary">
+              <span className="font-semibold text-primary">BAC</span>
               <span aria-hidden="true"> · </span>sciences — préparer le bac
               marocain, calmement.
             </p>
@@ -56,7 +56,7 @@ export default function EndC1() {
                 href="/"
                 className={cn(
                   "text-body-sm font-medium",
-                  "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                  "state-layer text-secondary hover:text-primary",
                   "transition-colors duration-micro ease-enter",
                   "rounded px-2 py-1 focus-ring [--focus-radius:8px]"
                 )}
@@ -65,7 +65,7 @@ export default function EndC1() {
               </Link>
             </nav>
           </div>
-          <p className="mt-4 text-caption text-[var(--color-text-secondary)]">
+          <p className="mt-4 text-caption text-secondary">
             © 2026 — contenu aligné sur le cadre de référence national.
           </p>
         </div>

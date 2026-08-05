@@ -46,12 +46,12 @@ export function Dashboard({ subjects }: { subjects: SubjectSummary[] }) {
 
   return (
     <section aria-label="Tes matières" className="mt-16">
-      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b border-[var(--color-border-subtle)] pb-3">
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b border-subtle pb-3">
         <div>
-          <h2 className="text-h4 font-semibold text-[var(--color-text-primary)]">
+          <h2 className="text-h4 font-semibold text-primary">
             {f ? "Tes matières" : "Les matières"}
           </h2>
-          <p className="mt-0.5 text-caption text-[var(--color-text-secondary)]">
+          <p className="mt-0.5 text-caption text-secondary">
             {/* mounted-gated so the neutral server text and the client text
                 agree on first paint (no hydration flash). */}
             {mounted && f
@@ -62,7 +62,7 @@ export function Dashboard({ subjects }: { subjects: SubjectSummary[] }) {
         <Link
           href="/commencer"
           className={cn(
-            "text-body-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+            "text-body-sm font-medium text-secondary hover:text-primary",
             "state-layer rounded px-2 py-1 -mx-2 focus-ring [--focus-radius:8px]",
             "transition-colors duration-micro ease-enter"
           )}
@@ -72,7 +72,7 @@ export function Dashboard({ subjects }: { subjects: SubjectSummary[] }) {
       </div>
 
       {mounted && !f && (
-        <p className="mb-6 flex items-center gap-2 rounded-lg border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)] px-4 py-3 text-body-sm text-[var(--color-text-secondary)]">
+        <p className="mb-6 flex items-center gap-2 rounded-lg border border-subtle bg-surface-raised px-4 py-3 text-body-sm text-secondary">
           <Icon name="arrow-right" size={14} className="flex-shrink-0 text-accent" />
           <span>
             Choisis ta filière pour voir ton programme et tes coefficients.

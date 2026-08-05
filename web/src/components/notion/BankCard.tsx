@@ -69,8 +69,8 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
   const badgePill =
     "inline-flex items-center rounded-full px-2.5 py-0.5 " +
     "text-caption font-medium " +
-    "bg-[var(--color-surface-raised)] text-[var(--color-text-secondary)] " +
-    "border border-[var(--color-border-subtle)]";
+    "bg-surface-raised text-secondary " +
+    "border border-subtle";
 
   return (
     <article
@@ -78,8 +78,8 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
       data-entry-id={entry.id}
       className={cn(
         "rounded-xl overflow-hidden",
-        "border border-[var(--color-border-subtle)]",
-        "bg-[var(--color-surface-container)] shadow-elevation-1"
+        "border border-subtle",
+        "bg-surface-container shadow-elevation-1"
       )}
     >
       <button
@@ -95,13 +95,13 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
       >
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-3">
-            <h3 className="font-serif text-h3 font-semibold text-[var(--color-text-primary)]">
+            <h3 className="font-serif text-h3 font-semibold text-primary">
               {entry.title}
             </h3>
             {fait && (
               <span
                 data-bank-fait
-                className="mt-1 inline-flex flex-shrink-0 items-center gap-1 text-caption font-medium text-[var(--color-text-secondary)]"
+                className="mt-1 inline-flex flex-shrink-0 items-center gap-1 text-caption font-medium text-secondary"
               >
                 <Icon name="check" size={14} className="text-accent" />
                 fait
@@ -110,7 +110,7 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
           </div>
 
           {/* Provenance — student-visible by design (BANK-SPEC §3.1 / D1). */}
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-caption text-[var(--color-text-secondary)]">
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-caption text-secondary">
             <span data-bank-provenance className={badgePill}>
               {provenance}
             </span>
@@ -120,7 +120,7 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
           </div>
 
           {entry.source.exerciseLabel && (
-            <p className="mt-1.5 text-caption text-[var(--color-text-tertiary)]">
+            <p className="mt-1.5 text-caption text-tertiary">
               {entry.source.exerciseLabel}
             </p>
           )}
@@ -130,7 +130,7 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
           name="chevron-right"
           size={18}
           className={cn(
-            "mt-1 flex-shrink-0 text-[var(--color-text-secondary)]",
+            "mt-1 flex-shrink-0 text-secondary",
             "transition-transform duration-micro ease-enter",
             open && "rotate-90"
           )}

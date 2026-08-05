@@ -59,8 +59,8 @@ function EmbedPlaceholder() {
       className={cn(
         "flex flex-col items-center justify-center gap-3",
         "w-full rounded-xl",
-        "bg-[var(--color-surface-raised)]",
-        "border border-dashed border-[var(--color-border-soft)]",
+        "bg-surface-raised",
+        "border border-dashed border-soft",
         "px-8 py-12",
         "text-center"
       )}
@@ -69,12 +69,12 @@ function EmbedPlaceholder() {
     >
       {/* Visual placeholder — shared interactive glyph, simple, calm, never flashy.
           Same glyph as the opt-in state so both embed states draw alike. */}
-      <InteractiveIcon size={40} className="text-[var(--color-border-soft)]" />
+      <InteractiveIcon size={40} className="text-border-soft" />
       {/* #1: small text in placeholder promoted to secondary for contrast floor */}
-      <p className="text-body-sm text-[var(--color-text-secondary)] font-medium">
+      <p className="text-body-sm text-secondary font-medium">
         Interactif à venir
       </p>
-      <p className="text-caption text-[var(--color-text-secondary)] max-w-[36ch]">
+      <p className="text-caption text-secondary max-w-[36ch]">
         Un outil interactif sera disponible ici pour explorer ce concept en
         manipulation directe.
       </p>
@@ -122,7 +122,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           className={cn(
             "flex flex-col items-center justify-center gap-4",
             "w-full rounded-xl",
-            "bg-[var(--color-surface-raised)]",
+            "bg-surface-raised",
             // Shadow-first panel (ADR 0023): elevation-1 hairline ring, no border.
             "shadow-elevation-1",
             "px-8 py-14",
@@ -130,15 +130,15 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           )}
         >
           {/* Icon — circuit/interactive hint */}
-          <InteractiveIcon size={36} className="text-[var(--color-border-soft)]" />
+          <InteractiveIcon size={36} className="text-border-soft" />
 
           <div className="flex flex-col gap-1">
-            <p className="text-body-sm font-medium text-[var(--color-text-secondary)]">
+            <p className="text-body-sm font-medium text-secondary">
               Bac à sable interactif
             </p>
             {embed.caption && (
               // #1: caption at 12px must pass 4.5:1 — promoted from tertiary to secondary
-              <p className="text-caption text-[var(--color-text-secondary)] max-w-[48ch] leading-relaxed">
+              <p className="text-caption text-secondary max-w-[48ch] leading-relaxed">
                 {frenchTypography(embed.caption.slice(0, 120))}{embed.caption.length > 120 ? "…" : ""}
               </p>
             )}
@@ -236,13 +236,13 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
                 <div
                   className={cn(
                     "w-8 h-8 rounded-full",
-                    "border-2 border-[var(--color-border-subtle)]",
-                    "border-t-[var(--color-text-secondary)]"
+                    "border-2 border-subtle",
+                    "border-t-text-secondary"
                   )}
                   aria-hidden="true"
                 />
                 {/* Visible loading label — not aria-hidden; satisfies §9 */}
-                <p className="text-caption text-[var(--color-text-secondary)]">
+                <p className="text-caption text-secondary">
                   Chargement de l’interactif…
                 </p>
               </div>
@@ -268,7 +268,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             <div className="mt-3">
               <p
                 className={cn(
-                  "text-caption text-[var(--color-text-secondary)]",
+                  "text-caption text-secondary",
                   "max-w-[56ch] leading-relaxed"
                 )}
               >
@@ -286,8 +286,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             <p
               className={cn(
                 "mt-3 pt-3",
-                "border-t border-[var(--color-border-subtle)]",
-                "text-caption text-[var(--color-text-secondary)]",
+                "border-t border-subtle",
+                "text-caption text-secondary",
                 "leading-relaxed"
               )}
             >

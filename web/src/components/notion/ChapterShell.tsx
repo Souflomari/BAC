@@ -243,7 +243,7 @@ export function ChapterPosition({ className }: { className?: string }) {
     <p
       aria-live="polite"
       className={cn(
-        "chapter-position text-body-sm text-[var(--color-text-secondary)]",
+        "chapter-position text-body-sm text-secondary",
         className
       )}
     >

@@ -45,10 +45,10 @@ export function ItemsSection({ itemsData, checkpointCloneIds }: ItemsSectionProp
       <div
         className={cn(
           "rounded-xl",
-          "border border-dashed border-[var(--color-border-subtle)]",
+          "border border-dashed border-subtle",
           "px-8 py-10 text-center",
           // #1: informational text at 14px — promoted to secondary
-          "text-body-sm text-[var(--color-text-secondary)]"
+          "text-body-sm text-secondary"
         )}
       >
         Aucun exercice disponible pour cette notion.
@@ -62,12 +62,12 @@ export function ItemsSection({ itemsData, checkpointCloneIds }: ItemsSectionProp
       <div className="mb-8">
         <h2
           id="items-heading"
-          className="font-serif text-h2 font-bold text-[var(--color-text-primary)]"
+          className="font-serif text-h2 font-bold text-primary"
         >
           Exercices
         </h2>
         {/* Running text: measure-capped (July-2026 audit F2 sweep). */}
-        <p className="mt-2 text-body text-[var(--color-text-secondary)] max-w-[var(--measure-wide)]">
+        <p className="mt-2 text-body text-secondary max-w-content">
           {items.length} question{items.length > 1 ? "s" : ""} — réponds
           directement, le résultat s’affiche immédiatement.
         </p>

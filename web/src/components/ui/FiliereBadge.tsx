@@ -41,8 +41,8 @@ export function FiliereBadge() {
             "state-layer focus-ring [--focus-radius:9999px]",
             "transition-colors duration-micro ease-enter",
             f
-              ? "bg-[var(--color-accent-subtle)] text-accent"
-              : "border border-[var(--color-border-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+              ? "bg-accent-subtle text-accent"
+              : "border border-subtle text-secondary hover:text-primary"
           )}
           title={f ? `Filière : ${f.name}` : undefined}
         >
@@ -55,7 +55,7 @@ export function FiliereBadge() {
           align="end"
           className={cn(
             "z-50 min-w-[240px] rounded-xl p-1.5",
-            "border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)]",
+            "border border-subtle bg-surface-raised",
             "shadow-elevation-2",
             // Calm opacity/scale settle — no bounce/overshoot (§5). Plain CSS
             // transition (no framer-motion/GSAP) keyed to Radix's data-state.
@@ -75,13 +75,13 @@ export function FiliereBadge() {
                   "state-layer focus-ring [--focus-radius:6px]",
                   "transition-colors duration-micro ease-between",
                   active
-                    ? "bg-[var(--color-accent-subtle)] text-accent"
-                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                    ? "bg-accent-subtle text-accent"
+                    : "text-secondary hover:text-primary"
                 )}
               >
                 <span className="flex flex-col">
                   <span className="text-body-sm font-medium">{fil.name}</span>
-                  <span className="text-caption text-[var(--color-text-tertiary)]">
+                  <span className="text-caption text-tertiary">
                     {fil.short}
                   </span>
                 </span>
@@ -92,7 +92,7 @@ export function FiliereBadge() {
             );
           })}
 
-          <div className="my-1 border-t border-[var(--color-border-subtle)]" />
+          <div className="my-1 border-t border-subtle" />
 
           <DropdownMenu.Item asChild>
             <Link
@@ -100,7 +100,7 @@ export function FiliereBadge() {
               className={cn(
                 "block rounded-md px-2.5 py-2",
                 "state-layer focus-ring [--focus-radius:6px]",
-                "text-body-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                "text-body-sm text-secondary hover:text-primary",
                 "transition-colors duration-micro ease-between"
               )}
             >

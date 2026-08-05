@@ -174,9 +174,9 @@ export const invariant: TokenVars = {
   "--measure-wide": "72ch",
   "--measure-lead": "52ch",
   "--measure-list": "42rem",
-  // Small-caps eyebrow tracking — was `tracking-[0.14em]` in 13 files.
+  // Small-caps eyebrow tracking — was `tracking-eyebrow` in 13 files.
   "--tracking-eyebrow": "0.14em",
-  // A11y touch target (DESIGN-BIBLE §9) — was `min-h-[48px]`.
+  // A11y touch target (DESIGN-BIBLE §9) — was `min-h-touch`.
   "--touch-target": "48px",
   // Z-index scale — semantic names for the three stacking tiers (were raw
   // z-10 / z-40 / z-50 magic numbers).

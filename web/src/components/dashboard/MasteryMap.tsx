@@ -84,8 +84,8 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
 
   return (
     <section aria-label="Carte de maîtrise">
-      <div className="flex items-center justify-between gap-3 mb-2 pb-3 border-b border-[var(--color-border-subtle)]">
-        <h2 className="text-h4 font-semibold text-[var(--color-text-primary)]">
+      <div className="flex items-center justify-between gap-3 mb-2 pb-3 border-b border-subtle">
+        <h2 className="text-h4 font-semibold text-primary">
           Carte de maîtrise
         </h2>
 
@@ -97,7 +97,7 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
               className={cn(
                 "group inline-flex items-center gap-1 rounded-md px-2 py-1 -mx-2",
                 "state-layer focus-ring [--focus-radius:6px]",
-                "text-body-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                "text-body-sm font-medium text-secondary hover:text-primary",
                 "transition-colors duration-micro ease-enter"
               )}
             >
@@ -119,7 +119,7 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
               align="end"
               className={cn(
                 "z-50 min-w-[200px] rounded-xl p-1.5",
-                "border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)]",
+                "border border-subtle bg-surface-raised",
                 "shadow-elevation-2",
                 // Calm opacity/scale settle — no bounce/overshoot (§5). Plain
                 // CSS transition (no framer-motion/GSAP) keyed to Radix's
@@ -136,8 +136,8 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
                   "state-layer focus-ring [--focus-radius:6px]",
                   "text-body-sm transition-colors duration-micro ease-between",
                   activeSubject === null
-                    ? "bg-[var(--color-accent-subtle)] text-accent"
-                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                    ? "bg-accent-subtle text-accent"
+                    : "text-secondary hover:text-primary"
                 )}
               >
                 {frenchTypography("Toutes les matières")}
@@ -151,8 +151,8 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
                     "state-layer focus-ring [--focus-radius:6px]",
                     "text-body-sm transition-colors duration-micro ease-between",
                     activeSubject === id
-                      ? "bg-[var(--color-accent-subtle)] text-accent"
-                      : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                      ? "bg-accent-subtle text-accent"
+                      : "text-secondary hover:text-primary"
                   )}
                 >
                   {subjectLabel(id)}
@@ -163,7 +163,7 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
         </DropdownMenu.Root>
       </div>
 
-      <p className="mt-2 mb-6 text-caption text-[var(--color-text-secondary)]">
+      <p className="mt-2 mb-6 text-caption text-secondary">
         Le sommaire des notions déjà écrites, matière par matière.
       </p>
 
@@ -178,7 +178,7 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
           const list = bySubject.get(subjectId)!;
           return (
             <div key={subjectId}>
-              <h3 className="mb-2 text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+              <h3 className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
                 {subjectLabel(subjectId)}
               </h3>
               <ul role="list" className="space-y-0.5">
@@ -196,7 +196,7 @@ export function MasteryMap({ notions }: { notions: NotionMeta[] }) {
                         className={cn(
                           "group block rounded-md px-2 py-1.5 -mx-2",
                           "state-layer focus-ring [--focus-radius:6px]",
-                          "text-body-sm text-[var(--color-text-secondary)]",
+                          "text-body-sm text-secondary",
                           "transition-colors duration-micro ease-between"
                         )}
                       >

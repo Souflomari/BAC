@@ -27,12 +27,12 @@ export function ExerciseBank({ bank }: { bank: NotionBank }) {
   return (
     <div data-exercise-bank>
       <div className="notion-prose">
-        <h2 className="font-serif text-h2 font-semibold text-[var(--color-text-primary)]">
+        <h2 className="font-serif text-h2 font-semibold text-primary">
           S’entraîner
         </h2>
         {count > 0 ? (
-          <p className="mt-2 text-body text-[var(--color-text-secondary)]">
-            <span data-bank-count className="font-medium text-[var(--color-text-primary)]">
+          <p className="mt-2 text-body text-secondary">
+            <span data-bank-count className="font-medium text-primary">
               {bankCountLabel(count)}
             </span>{" "}
             du bac national à faire à la manière de l’examen — cherche d’abord sur
@@ -42,7 +42,7 @@ export function ExerciseBank({ bank }: { bank: NotionBank }) {
           // Honest empty state (BANK-SPEC §1) — no census count is asserted here
           // (the second half of the spec sentence is omitted until a census
           // exists), so nothing implies work already done.
-          <p className="mt-2 text-body text-[var(--color-text-secondary)]">
+          <p className="mt-2 text-body text-secondary">
             La banque d’exercices de cette notion arrive — en cours de
             vérification.
           </p>

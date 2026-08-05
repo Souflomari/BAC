@@ -26,7 +26,7 @@ const CONTAINER = "w-full mx-auto px-4 bp-medium:px-6 bp-expanded:px-8 max-w-con
 
 export default function EndC2() {
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--color-surface-base)]">
+    <div className="min-h-screen flex flex-col bg-surface-base">
       <SiteHeader container={CONTAINER} />
 
       <main className={cn(CONTAINER, "flex-1 py-12 md:py-16")}>
@@ -49,10 +49,10 @@ export default function EndC2() {
           )}
         >
           <div>
-            <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+            <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
               Et maintenant
             </p>
-            <p className="mt-2 font-serif text-h3 font-semibold text-[var(--color-text-primary)]">
+            <p className="mt-2 font-serif text-h3 font-semibold text-primary">
               Les exercices t’attendent plus bas — ou passe à la suite.
             </p>
           </div>
@@ -64,47 +64,47 @@ export default function EndC2() {
       </main>
 
       {/* ── C2 part 2: the three-column colophon ── */}
-      <footer className="mt-24 border-t border-[var(--color-border-subtle)] bg-[var(--color-surface-container-low)]">
+      <footer className="mt-24 border-t border-subtle bg-surface-container-low">
         <div className={cn(CONTAINER, "py-12")}>
           <div className="grid gap-10 bp-medium:grid-cols-3">
             <div>
-              <h2 className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+              <h2 className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
                 Matières
               </h2>
               <ul className="mt-3 space-y-2">
                 <li>
-                  <Link href="/" className="text-body-sm text-[var(--color-text-primary)] hover:text-accent transition-colors duration-micro rounded focus-ring">
+                  <Link href="/" className="text-body-sm text-primary hover:text-accent transition-colors duration-micro rounded focus-ring">
                     Physique-Chimie
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="text-body-sm text-[var(--color-text-primary)] hover:text-accent transition-colors duration-micro rounded focus-ring">
+                  <Link href="/" className="text-body-sm text-primary hover:text-accent transition-colors duration-micro rounded focus-ring">
                     Mathématiques
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+              <h2 className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
                 La méthode
               </h2>
-              <p className="mt-3 text-body-sm text-[var(--color-text-secondary)] max-w-[36ch]">
+              <p className="mt-3 text-body-sm text-secondary max-w-[36ch]">
                 Un tuteur patient qui décortique chaque notion, montre le
                 raisonnement, et te fait monter jusqu’aux vrais sujets du bac.
               </p>
             </div>
             <div>
-              <h2 className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+              <h2 className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
                 Repères
               </h2>
-              <ul className="mt-3 space-y-2 text-body-sm text-[var(--color-text-secondary)]">
+              <ul className="mt-3 space-y-2 text-body-sm text-secondary">
                 <li>Aligné sur le cadre de référence national</li>
                 <li>2ᵉ Bac · filières scientifiques</li>
               </ul>
             </div>
           </div>
-          <p className="mt-10 pt-6 border-t border-[var(--color-border-subtle)] text-caption text-[var(--color-text-secondary)]">
-            <span className="font-semibold text-[var(--color-text-primary)]">BAC</span>
+          <p className="mt-10 pt-6 border-t border-subtle text-caption text-secondary">
+            <span className="font-semibold text-primary">BAC</span>
             <span aria-hidden="true"> · </span>sciences — © 2026.
           </p>
         </div>

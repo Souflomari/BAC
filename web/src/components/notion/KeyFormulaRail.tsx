@@ -65,15 +65,15 @@ export function KeyFormulaRail({ formulas }: { formulas: KeyFormula[] }) {
     >
       <div className="sticky top-24">
         {active && (
-          <aside className="rounded-lg px-5 py-4 bg-[var(--color-surface-raised)] border border-[var(--color-border-subtle)]">
-            <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          <aside className="rounded-lg px-5 py-4 bg-surface-raised border border-subtle">
+            <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
               À retenir
             </p>
-            <p className="mt-1 text-body-sm font-medium text-[var(--color-text-primary)]">
+            <p className="mt-1 text-body-sm font-medium text-primary">
               {active.title}
             </p>
             <div
-              className="mt-2 text-[15px] text-[var(--color-text-primary)]"
+              className="mt-2 text-[15px] text-primary"
               dangerouslySetInnerHTML={{
                 __html: katex.renderToString(active.tex, { throwOnError: false }),
               }}

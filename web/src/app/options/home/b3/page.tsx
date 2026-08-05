@@ -36,15 +36,15 @@ function SubjectStrip({
   return (
     <div className="py-5">
       <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-body font-semibold text-[var(--color-text-primary)]">
+        <h3 className="text-body font-semibold text-primary">
           {label}
         </h3>
-        <span className="text-caption text-[var(--color-text-secondary)] tabular-nums">
+        <span className="text-caption text-secondary tabular-nums">
           {done} / {total} notions
         </span>
       </div>
       <div
-        className="mt-3 h-1 rounded-full bg-[var(--color-border-subtle)]"
+        className="mt-3 h-1 rounded-full bg-border-subtle"
         role="progressbar"
         aria-valuenow={pct}
         aria-valuemin={0}
@@ -53,7 +53,7 @@ function SubjectStrip({
       >
         <div className="h-1 rounded-full bg-accent/70" style={{ width: `${pct}%` }} />
       </div>
-      <p className="mt-2 text-body-sm text-[var(--color-text-secondary)]">{detail}</p>
+      <p className="mt-2 text-body-sm text-secondary">{detail}</p>
     </div>
   );
 }
@@ -62,10 +62,10 @@ export default function HomeB3() {
   return (
     <PageShell width="content">
       <header className="mb-10">
-        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+        <h1 className="font-serif text-display font-bold text-primary">
           Où tu en es
         </h1>
-        <p className="mt-4 text-lead text-[var(--color-text-secondary)] max-w-lead">
+        <p className="mt-4 text-lead text-secondary max-w-lead">
           Une vue honnête de ta préparation — et le prochain pas, déjà choisi.
         </p>
       </header>
@@ -80,13 +80,13 @@ export default function HomeB3() {
           )}
         >
           <div className="min-w-0">
-            <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+            <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
               Aujourd’hui
             </p>
-            <p className="mt-2 font-serif text-h3 font-semibold text-[var(--color-text-primary)]">
+            <p className="mt-2 font-serif text-h3 font-semibold text-primary">
               Terminer « Oscillations libres » — les trois régimes
             </p>
-            <p className="mt-1 text-body-sm text-[var(--color-text-secondary)]">
+            <p className="mt-1 text-body-sm text-secondary">
               ≈ 40 min · reprend à la section 5 sur 10
             </p>
           </div>
@@ -102,10 +102,10 @@ export default function HomeB3() {
 
       {/* ── The honest map — calm strips, stated fractions ── */}
       <section aria-label="Progression par matière" className="mt-14 max-w-list">
-        <h2 className="mb-2 pb-3 border-b border-[var(--color-border-subtle)] text-h4 font-semibold text-[var(--color-text-secondary)]">
+        <h2 className="mb-2 pb-3 border-b border-subtle text-h4 font-semibold text-secondary">
           Par matière
         </h2>
-        <div className="divide-y divide-[var(--color-border-subtle)]">
+        <div className="divide-y divide-border-subtle">
           <SubjectStrip
             label="Physique-Chimie"
             done={0}
@@ -126,7 +126,7 @@ export default function HomeB3() {
         <Link
           href="/"
           className={cn(
-            "text-body-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+            "text-body-sm font-medium text-secondary hover:text-primary",
             "state-layer rounded px-2 py-1 focus-ring [--focus-radius:8px]",
             "transition-colors duration-micro ease-enter"
           )}

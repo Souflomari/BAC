@@ -21,7 +21,7 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
   return (
     <nav
       aria-label="Fil d’Ariane"
-      className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-[var(--color-text-secondary)]"
+      className="mb-8 flex items-center gap-2 flex-wrap text-body-sm text-secondary"
     >
       {segments.map((seg, i) => {
         const last = i === segments.length - 1;
@@ -41,8 +41,8 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
               <span
                 className={cn(
                   last
-                    ? "text-[var(--color-text-primary)] font-medium truncate max-w-[28ch]"
-                    : "text-[var(--color-text-secondary)]"
+                    ? "text-primary font-medium truncate max-w-[28ch]"
+                    : "text-secondary"
                 )}
                 aria-current={last ? "page" : undefined}
                 title={last ? seg.label : undefined}
@@ -54,7 +54,7 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
               <Icon
                 name="chevron-right"
                 size={16}
-                className="text-[var(--color-text-tertiary)]"
+                className="text-tertiary"
               />
             )}
           </span>

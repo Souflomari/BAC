@@ -176,10 +176,10 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
             ]
           : [
               // At-top state: flat, hairline only
-              "bg-[var(--color-surface-base)]",
+              "bg-surface-base",
               "supports-[backdrop-filter]:backdrop-blur-sm",
               "shadow-elevation-0",
-              "border-b border-[var(--color-border-subtle)]",
+              "border-b border-subtle",
             ],
         className
       )}
@@ -197,7 +197,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           href="/"
           className={cn(
             "flex items-center gap-2",
-            "text-[var(--color-text-primary)] no-underline",
+            "text-primary no-underline",
             // Neutral state-layer wash on the rounded hit-area so chrome shares
             // the content hover language (ADR 0024). -mx/-px pad the overlay out
             // around the wordmark; focus stays the ring+halo.
@@ -217,7 +217,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           </span>
           {/* #1: decorative but visible at 14px — promoted to secondary for contrast */}
           <span
-            className="hidden sm:inline text-body-sm text-[var(--color-text-secondary)] font-medium"
+            className="hidden sm:inline text-body-sm text-secondary font-medium"
             aria-hidden="true"
           >
             · sciences
@@ -247,7 +247,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                     "text-body-sm font-medium",
                     // Neutral state-layer wash leads; the text-color shift stays as
                     // a secondary cue (ADR 0024). Both share the calm micro timing.
-                    "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                    "state-layer text-secondary hover:text-primary",
                     "transition-colors duration-micro ease-enter",
                     "rounded px-2 py-1",
                     "focus-ring [--focus-radius:8px]"
@@ -271,7 +271,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                   align="end"
                   className={cn(
                     "z-50 min-w-[200px] rounded-xl p-1.5",
-                    "border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)]",
+                    "border border-subtle bg-surface-raised",
                     "shadow-elevation-2",
                     // Calm opacity/scale settle — no bounce/overshoot (§5). Plain
                     // CSS transition (no framer-motion/GSAP) keyed to Radix's own
@@ -288,7 +288,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                         className={cn(
                           "block rounded-md px-2.5 py-2",
                           "state-layer focus-ring [--focus-radius:6px]",
-                          "text-body-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                          "text-body-sm text-secondary hover:text-primary",
                           "transition-colors duration-micro ease-between"
                         )}
                       >
@@ -321,7 +321,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                   aria-label={`Compte — ${user.displayName}`}
                   className={cn(
                     "flex h-8 w-8 items-center justify-center rounded-full",
-                    "bg-[var(--color-accent-subtle)] text-accent",
+                    "bg-accent-subtle text-accent",
                     "text-body-sm font-semibold select-none"
                   )}
                 >
@@ -332,7 +332,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                   onClick={handleSignOut}
                   className={cn(
                     "text-body-sm font-medium",
-                    "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                    "state-layer text-secondary hover:text-primary",
                     "transition-colors duration-micro ease-enter",
                     "rounded px-2 py-1",
                     "focus-ring [--focus-radius:8px]"
@@ -346,7 +346,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
                 href="/connexion"
                 className={cn(
                   "text-body-sm font-medium",
-                  "state-layer text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+                  "state-layer text-secondary hover:text-primary",
                   "transition-colors duration-micro ease-enter",
                   "rounded px-2 py-1",
                   "focus-ring [--focus-radius:8px]"

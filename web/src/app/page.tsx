@@ -58,10 +58,10 @@ export default function HomePage() {
   return (
     <PageShell width="page">
       <header className="mb-10 max-w-lead">
-        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+        <h1 className="font-serif text-display font-bold text-primary">
           Ta session
         </h1>
-        <p className="mt-4 text-lead text-[var(--color-text-secondary)]">
+        <p className="mt-4 text-lead text-secondary">
           Deux heures calmes, une notion à fond. Voilà par où commencer.
         </p>
       </header>

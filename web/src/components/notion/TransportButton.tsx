@@ -24,20 +24,20 @@ import { cn } from "@/lib/utils";
 export const TRANSPORT_BTN_CLASS = cn(
   "inline-flex items-center gap-1.5 px-3 py-2",
   // §9 touch target: 48px
-  "min-h-[48px] min-w-[48px] rounded-md",
+  "min-h-touch min-w-touch rounded-md",
   "text-caption font-medium",
   // Resting: text-secondary (calm, not primary)
-  "text-[var(--color-text-secondary)]",
-  "border border-[var(--color-border-subtle)]",
-  "bg-[var(--color-surface-raised)]",
-  "hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-soft)]",
+  "text-secondary",
+  "border border-subtle",
+  "bg-surface-raised",
+  "hover:text-primary hover:border-soft",
   "transition-colors duration-micro",
   // One interaction-feedback language (ADR 0024): neutral state-layer wash.
   "state-layer",
   // Focus ring matches the rounded-md (8px) host corner (ADR 0024).
   "focus-ring [--focus-radius:8px]",
   // The single disabled mechanism.
-  "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
+  "disabled:opacity-disabled disabled:cursor-not-allowed"
 );
 
 export const TransportButton = forwardRef<

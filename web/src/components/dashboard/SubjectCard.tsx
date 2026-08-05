@@ -36,21 +36,21 @@ export function SubjectCard({ subject }: { subject: SubjectSummary }) {
       href={subjectHref(id)}
       className={cn(
         "group flex h-full w-full flex-col rounded-xl overflow-hidden",
-        "bg-[var(--color-surface-raised)] shadow-elevation-1",
+        "bg-surface-raised shadow-elevation-1",
         "hover:shadow-elevation-2 hover:-translate-y-px",
         "transition-all duration-micro ease-out",
         "state-layer focus-ring [--focus-radius:16px]"
       )}
     >
-      <div className="relative aspect-[8/5] overflow-hidden border-b border-[var(--color-border-subtle)]">
+      <div className="relative aspect-[8/5] overflow-hidden border-b border-subtle">
         <Cover subject={id} />
         {coefficient != null && (
           <span
             className={cn(
               "absolute right-3 top-3 rounded-full px-2.5 py-0.5",
-              "bg-[var(--color-surface-overlay)]/90 backdrop-blur-sm",
-              "text-caption font-medium tabular-nums text-[var(--color-text-secondary)]",
-              "border border-[var(--color-border-subtle)]"
+              "bg-surface-overlay/90 backdrop-blur-sm",
+              "text-caption font-medium tabular-nums text-secondary",
+              "border border-subtle"
             )}
             title="Coefficient au baccalauréat"
           >
@@ -59,13 +59,13 @@ export function SubjectCard({ subject }: { subject: SubjectSummary }) {
         )}
       </div>
       <div className="flex flex-1 flex-col px-5 py-4">
-        <span className="block font-serif text-lead leading-snug text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro">
+        <span className="block font-serif text-lead leading-snug text-primary group-hover:text-accent transition-colors duration-micro">
           {label}
         </span>
-        <span className="mt-1 text-body-sm text-[var(--color-text-secondary)] line-clamp-2">
+        <span className="mt-1 text-body-sm text-secondary line-clamp-2">
           {blurb}
         </span>
-        <span className="mt-3 text-caption text-[var(--color-text-secondary)] tabular-nums">
+        <span className="mt-3 text-caption text-secondary tabular-nums">
           {meta}
         </span>
       </div>

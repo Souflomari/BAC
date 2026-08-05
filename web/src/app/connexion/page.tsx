@@ -74,28 +74,28 @@ function liveErrorMessage(raw: string): string {
 // ── Shared field/control classes (tokens only — no hard-coded color/spacing) ──
 
 const INPUT_CLASS = cn(
-  "block w-full min-h-[48px] rounded-md px-3 py-2",
-  "text-body text-[var(--color-text-primary)]",
-  "bg-[var(--color-surface-raised)]",
-  "border border-[var(--color-border-subtle)]",
-  "placeholder:text-[var(--color-text-tertiary)]",
+  "block w-full min-h-touch rounded-md px-3 py-2",
+  "text-body text-primary",
+  "bg-surface-raised",
+  "border border-subtle",
+  "placeholder:text-tertiary",
   "focus-ring [--focus-radius:8px]",
   // The single disabled mechanism (ADR 0024) — matches TransportButton.
-  "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
+  "disabled:opacity-disabled disabled:cursor-not-allowed"
 );
 
 const LABEL_CLASS =
-  "block mb-2 text-body-sm font-medium text-[var(--color-text-secondary)]";
+  "block mb-2 text-body-sm font-medium text-secondary";
 
 const GOOGLE_BTN_CLASS = cn(
   "inline-flex w-full items-center justify-center gap-3",
-  "min-h-[48px] px-4 rounded-md",
-  "text-body font-medium text-[var(--color-text-primary)]",
-  "bg-[var(--color-surface-raised)]",
-  "border border-[var(--color-border-subtle)]",
+  "min-h-touch px-4 rounded-md",
+  "text-body font-medium text-primary",
+  "bg-surface-raised",
+  "border border-subtle",
   "state-layer",
   "focus-ring [--focus-radius:8px]",
-  "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed"
+  "disabled:opacity-disabled disabled:cursor-not-allowed"
 );
 
 const SUBMIT_BTN_CLASS = cn(
@@ -103,7 +103,7 @@ const SUBMIT_BTN_CLASS = cn(
   // disabled rule of its own, so the disabled treatment is added here with
   // the same single mechanism every other control uses.
   "btn-primary w-full",
-  "disabled:opacity-[var(--state-disabled)] disabled:cursor-not-allowed disabled:shadow-none"
+  "disabled:opacity-disabled disabled:cursor-not-allowed disabled:shadow-none"
 );
 
 /**
@@ -140,9 +140,9 @@ function GoogleGlyph() {
 function OrDivider() {
   return (
     <div className="my-8 flex items-center gap-4" aria-hidden="true">
-      <span className="h-px flex-1 bg-[var(--color-border-subtle)]" />
-      <span className="text-body-sm text-[var(--color-text-tertiary)]">ou</span>
-      <span className="h-px flex-1 bg-[var(--color-border-subtle)]" />
+      <span className="h-px flex-1 bg-border-subtle" />
+      <span className="text-body-sm text-tertiary">ou</span>
+      <span className="h-px flex-1 bg-border-subtle" />
     </div>
   );
 }
@@ -199,17 +199,17 @@ export default function ConnexionPage() {
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Se connecter" }]} />
 
       <div className="max-w-sm">
-        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+        <h1 className="font-serif text-display font-bold text-primary">
           {isSignup ? "Créer un compte" : "Se connecter"}
         </h1>
 
         {mode === "off" ? (
-          <p className="mt-6 text-lead text-[var(--color-text-secondary)]">
+          <p className="mt-6 text-lead text-secondary">
             {frenchTypography("La connexion n'est pas encore ouverte.")}
           </p>
         ) : (
           <>
-            <p className="mt-4 text-body text-[var(--color-text-secondary)]">
+            <p className="mt-4 text-body text-secondary">
               {frenchTypography("E-mail et mot de passe, avec Google en accès rapide.")}
             </p>
 
@@ -267,7 +267,7 @@ export default function ConnexionPage() {
               </button>
 
               {isLive && error && (
-                <p role="alert" className="text-body-sm text-[var(--color-error)]">
+                <p role="alert" className="text-body-sm text-error">
                   {error}
                 </p>
               )}
@@ -275,7 +275,7 @@ export default function ConnexionPage() {
               {!isLive && (
                 <p
                   id="connexion-mode-note"
-                  className="text-body-sm text-[var(--color-text-secondary)]"
+                  className="text-body-sm text-secondary"
                 >
                   {frenchTypography(
                     "Mode démonstration — la connexion réelle arrive avec la persistance."
@@ -285,7 +285,7 @@ export default function ConnexionPage() {
             </form>
 
             {isLive && (
-              <p className="mt-4 text-body-sm text-[var(--color-text-secondary)]">
+              <p className="mt-4 text-body-sm text-secondary">
                 {action === "signin" ? (
                   <>
                     {frenchTypography("Pas encore de compte ?")}{" "}
@@ -325,8 +325,8 @@ export default function ConnexionPage() {
             </button>
 
             {mode === "mock" && (
-              <div className="mt-10 border-t border-[var(--color-border-subtle)] pt-8">
-                <p className="mb-4 text-body-sm text-[var(--color-text-secondary)]">
+              <div className="mt-10 border-t border-subtle pt-8">
+                <p className="mb-4 text-body-sm text-secondary">
                   {frenchTypography("Pour explorer l'interface sans compte réel :")}
                 </p>
                 <TransportButton onClick={handleEnterDemo} className="w-full justify-center">

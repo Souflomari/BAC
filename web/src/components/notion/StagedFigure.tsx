@@ -600,7 +600,7 @@ export function StagedFigure({
         className={cn(
           "overflow-hidden",
           "rounded-xl",
-          "bg-[var(--color-surface-raised)]",
+          "bg-surface-raised",
           // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
           // edge; no drawn border. Reads as lifted, not boxed-in.
           "shadow-elevation-1",
@@ -654,7 +654,7 @@ export function StagedFigure({
           {/* Step indicator — functional UI text, promoted to secondary for 4.5:1. */}
           <span
             className={cn(
-              "text-caption text-[var(--color-text-secondary)]",
+              "text-caption text-secondary",
               "tabular-nums select-none min-w-[6ch] text-center"
             )}
             aria-live="polite"
@@ -710,9 +710,9 @@ export function StagedFigure({
           id={captionId}
           className={cn(
             "mt-3 px-2",
-            "text-body-sm text-[var(--color-text-secondary)]",
+            "text-body-sm text-secondary",
             "leading-relaxed",
-            "max-w-[65ch]"
+            "max-w-reading"
           )}
         >
           {frenchTypography(currentCaption)}
@@ -723,7 +723,7 @@ export function StagedFigure({
           id={captionId}
           className={cn(
             "mt-4 px-2",
-            "text-body text-[var(--color-text-primary)]",
+            "text-body text-primary",
             "leading-relaxed",
             "max-w-reading"
           )}
@@ -745,7 +745,7 @@ export function StagedFigure({
           >
             {stage}
           </span>
-          <span className="font-serif text-body-lg text-[var(--color-text-primary)]">
+          <span className="font-serif text-body-lg text-primary">
             {frenchTypography(currentCaption)}
           </span>
         </figcaption>
@@ -756,7 +756,7 @@ export function StagedFigure({
           className={cn(
             // Narrow fallback = a1's promoted below-figure treatment.
             "mt-4 px-2",
-            "text-body text-[var(--color-text-primary)]",
+            "text-body text-primary",
             "leading-relaxed",
             "max-w-reading",
             // Wide tier: the right column, centered on the active stage.

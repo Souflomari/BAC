@@ -51,8 +51,8 @@ import { cn } from "@/lib/utils";
 import type { NotionMeta } from "@/lib/content";
 
 const RECO_LINK_CLASS = cn(
-  "font-medium text-[var(--color-text-primary)]",
-  "underline decoration-[var(--color-border-soft)] underline-offset-2",
+  "font-medium text-primary",
+  "underline decoration-border-soft underline-offset-2",
   "hover:text-accent state-layer focus-ring [--focus-radius:4px]",
   "transition-colors duration-micro ease-between"
 );
@@ -132,7 +132,7 @@ export function NextUp({ notions }: { notions: NotionMeta[] }) {
       const { before, after } = recoParts(nextUp);
       return (
         <section aria-label="Quoi étudier ensuite" className="max-w-list">
-          <p data-reco-source={nextUp.source} className="text-body-sm text-[var(--color-text-secondary)]">
+          <p data-reco-source={nextUp.source} className="text-body-sm text-secondary">
             {frenchTypography(before)}
             <Link href={notionHref(stateMeta.subject, stateMeta.slug)} className={RECO_LINK_CLASS}>
               {frenchTypography(stateMeta.title)}
@@ -155,14 +155,14 @@ export function NextUp({ notions }: { notions: NotionMeta[] }) {
     <section aria-label="Quoi étudier ensuite" className="max-w-list">
       <p
         data-reco-source="parcours"
-        className="text-body-sm text-[var(--color-text-secondary)]"
+        className="text-body-sm text-secondary"
       >
         {frenchTypography("Ensuite dans le parcours :")}{" "}
         <Link
           href={notionHref(pick.subject, pick.slug)}
           className={cn(
-            "font-medium text-[var(--color-text-primary)]",
-            "underline decoration-[var(--color-border-soft)] underline-offset-2",
+            "font-medium text-primary",
+            "underline decoration-border-soft underline-offset-2",
             "hover:text-accent state-layer focus-ring [--focus-radius:4px]",
             "transition-colors duration-micro ease-between"
           )}

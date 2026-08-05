@@ -106,7 +106,7 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                     // Positioned from the dot center (top: ~22px) down to bottom of li
                     "absolute left-[5.5px] top-[22px] bottom-0 w-px",
                     // Read segment: accent color; unread: border-subtle
-                    isRead ? "bg-accent" : "bg-[var(--color-border-subtle)]"
+                    isRead ? "bg-accent" : "bg-border-subtle"
                   )}
                 />
               )}
@@ -123,7 +123,7 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                 className={cn(
                   // §9 touch target: 48px (raised from 44px per audit finding #2)
                   "group relative flex w-full items-center gap-2 text-left",
-                  "min-h-[48px] py-2 pr-2 rounded-sm",
+                  "min-h-touch py-2 pr-2 rounded-sm",
                   "bg-transparent",
                   "text-caption font-medium",
                   // Unified neutral interaction wash on the rounded hit-area
@@ -138,7 +138,7 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                     ? "text-accent"
                     // #1: idle entry label is 12px functional text — must pass 4.5:1.
                     // Promoted from tertiary to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1).
-                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                    : "text-secondary hover:text-primary"
                 )}
               >
                 {/* Entry node on the spine */}
@@ -171,8 +171,8 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                           ]
                         : [
                             "w-1.5 h-1.5",
-                            "bg-[var(--color-border-soft)]",
-                            "group-hover:bg-[var(--color-text-tertiary)]",
+                            "bg-border-soft",
+                            "group-hover:bg-text-tertiary",
                             "scale-100 opacity-100",
                           ]
                   )}
@@ -198,7 +198,7 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                   {entry.count != null && (
                     <span
                       data-bank-rail-count
-                      className="ml-1 text-[var(--color-text-tertiary)] tabular-nums"
+                      className="ml-1 text-tertiary tabular-nums"
                     >
                       · {entry.count} sujet{entry.count > 1 ? "s" : ""}
                     </span>
@@ -218,9 +218,9 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                     "absolute left-full ml-3",
                     "whitespace-nowrap",
                     "px-2 py-1 rounded",
-                    "text-caption text-[var(--color-text-secondary)]",
-                    "bg-[var(--color-surface-overlay)]",
-                    "border border-[var(--color-border-subtle)]",
+                    "text-caption text-secondary",
+                    "bg-surface-overlay",
+                    "border border-subtle",
                     "shadow-elevation-2",
                     "pointer-events-none",
                     "z-50",

@@ -83,8 +83,8 @@ export interface ChoiceButtonProps {
   /** Fully-resolved id for the per-choice feedback element (aria-describedby). */
   feedbackId: string;
   /**
-   * Idle option background utility. MCQ: "bg-[var(--color-surface-raised)]";
-   * inline checkpoint: "bg-[var(--color-surface-base)]".
+   * Idle option background utility. MCQ: "bg-surface-raised";
+   * inline checkpoint: "bg-surface-base".
    */
   idleSurface: string;
   /**
@@ -135,7 +135,7 @@ export function ChoiceButton({
           // Transition — 250ms (standard) ease-between for correctness reveals
           "transition-all duration-standard ease-between",
           // Touch target ≥ 48px (§9)
-          "min-h-[48px]",
+          "min-h-touch",
           // Focus ring — migrated to .focus-ring utility; match the rounded-lg
           // (12px) corner so the outline rounds with the host (ADR 0024).
           "focus-ring [--focus-radius:12px]",
@@ -146,37 +146,37 @@ export function ChoiceButton({
           state === "idle" && !isRevealedCorrect && [
             "state-layer",
             idleSurface,
-            "border-[var(--color-border-subtle)]",
-            "text-[var(--color-text-primary)]",
+            "border-subtle",
+            "text-primary",
             "shadow-elevation-1",
             "hover:shadow-elevation-2",
-            "hover:border-[var(--color-border-soft)]",
+            "hover:border-soft",
             "active:shadow-elevation-0",
             "active:scale-[0.99]",
             "cursor-pointer",
           ],
           // Selected & correct
           state === "selected-correct" && [
-            "bg-[var(--color-success-subtle)]",
-            "border-[var(--color-success)]",
-            "text-[var(--color-text-primary)]",
+            "bg-success-subtle",
+            "border-success",
+            "text-primary",
             "shadow-elevation-0",
             "cursor-default",
           ],
           // Selected & incorrect
           state === "selected-incorrect" && [
-            "bg-[var(--color-error-subtle)]",
-            "border-[var(--color-error)]",
-            "text-[var(--color-text-primary)]",
+            "bg-error-subtle",
+            "border-error",
+            "text-primary",
             "shadow-elevation-0",
             "cursor-default",
           ],
           // After answering: reveal correct answer (unselected) — keep its
           // success colors fully lit (it is the answer to read), not dimmed.
           isRevealedCorrect && [
-            "bg-[var(--color-success-subtle)]",
-            "border-[var(--color-success)]",
-            "text-[var(--color-text-primary)]",
+            "bg-success-subtle",
+            "border-success",
+            "text-primary",
             "shadow-elevation-0",
             "cursor-default",
           ],
@@ -198,28 +198,28 @@ export function ChoiceButton({
             "text-caption font-semibold",
             "transition-colors duration-standard ease-between",
             state === "idle" && !isRevealedCorrect && [
-              "bg-[var(--color-border-subtle)]",
-              "text-[var(--color-text-secondary)]",
+              "bg-border-subtle",
+              "text-secondary",
             ],
             // On-semantic text: a letter on a FILLED success/error chip uses the
             // on-color (dark-mode contrast fix — text-white fails where the dark
             // success/error fills are light).
             state === "selected-correct" && [
-              "bg-[var(--color-success)]",
+              "bg-success",
               "text-success-on",
             ],
             state === "selected-incorrect" && [
-              "bg-[var(--color-error)]",
+              "bg-error",
               "text-error-on",
             ],
             isRevealedCorrect && [
-              "bg-[var(--color-success)]",
+              "bg-success",
               "text-success-on",
             ],
             answered && !isSelected && !isRevealedCorrect && [
-              "bg-[var(--color-border-subtle)]",
+              "bg-border-subtle",
               // #1: 12px letter badge text — promoted from tertiary to secondary
-              "text-[var(--color-text-secondary)]",
+              "text-secondary",
             ]
           )}
           aria-hidden="true"
@@ -237,8 +237,8 @@ export function ChoiceButton({
               className={cn(
                 "ml-2 inline-flex items-center gap-1",
                 "text-caption font-semibold",
-                state === "selected-correct" && "text-[var(--color-success)]",
-                state === "selected-incorrect" && "text-[var(--color-error)]"
+                state === "selected-correct" && "text-success",
+                state === "selected-incorrect" && "text-error"
               )}
               aria-hidden="true"
             >
@@ -273,14 +273,14 @@ export function ChoiceButton({
             "border-l-2",
             "text-body-sm",
             state === "selected-correct" && [
-              "bg-[var(--color-success-subtle)]",
-              "border-[var(--color-success)]",
-              "text-[var(--color-text-primary)]",
+              "bg-success-subtle",
+              "border-success",
+              "text-primary",
             ],
             state === "selected-incorrect" && [
-              "bg-[var(--color-error-subtle)]",
-              "border-[var(--color-error)]",
-              "text-[var(--color-text-primary)]",
+              "bg-error-subtle",
+              "border-error",
+              "text-primary",
             ]
           )}
         >
@@ -310,12 +310,12 @@ export function ResultRow({
     <div
       className={cn(
         "mt-5 pt-5",
-        "border-t border-[var(--color-border-subtle)]",
+        "border-t border-subtle",
         "flex items-center gap-2",
         "text-body-sm font-medium",
         isCorrect
-          ? "text-[var(--color-success)]"
-          : "text-[var(--color-error)]"
+          ? "text-success"
+          : "text-error"
       )}
       role="status"
       aria-live="polite"

@@ -23,10 +23,10 @@ export default function CommencerPage() {
     <PageShell width="content">
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Ta filière" }]} />
       <header className="mb-10 max-w-lead">
-        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+        <h1 className="font-serif text-display font-bold text-primary">
           Choisis ta filière
         </h1>
-        <p className="mt-4 text-lead text-[var(--color-text-secondary)]">
+        <p className="mt-4 text-lead text-secondary">
           Ton programme et tes coefficients s’adaptent à ta filière. Tu pourras
           en changer à tout moment.
         </p>

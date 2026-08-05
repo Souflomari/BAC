@@ -43,33 +43,33 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
               aria-pressed={active}
               className={cn(
                 "group w-full text-left rounded-xl px-6 py-5",
-                "bg-[var(--color-surface-raised)]",
+                "bg-surface-raised",
                 "border transition-all duration-micro ease-out",
                 "state-layer focus-ring [--focus-radius:16px]",
                 active
                   ? "border-accent shadow-elevation-2"
-                  : "border-[var(--color-border-subtle)] shadow-elevation-1 hover:shadow-elevation-2 hover:-translate-y-px"
+                  : "border-subtle shadow-elevation-1 hover:shadow-elevation-2 hover:-translate-y-px"
               )}
             >
               <div className="flex items-baseline justify-between gap-3">
-                <span className="font-serif text-h4 font-semibold text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro">
+                <span className="font-serif text-h4 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
                   {f.name}
                 </span>
                 <span
                   className={cn(
                     "flex-shrink-0 rounded-full px-2.5 py-0.5 text-caption font-semibold tabular-nums",
                     active
-                      ? "bg-accent text-[var(--color-text-on-accent)]"
-                      : "bg-[var(--color-accent-subtle)] text-accent"
+                      ? "bg-accent text-on-accent"
+                      : "bg-accent-subtle text-accent"
                   )}
                 >
                   {f.short}
                 </span>
               </div>
-              <p className="mt-1.5 text-body-sm text-[var(--color-text-secondary)]">
+              <p className="mt-1.5 text-body-sm text-secondary">
                 {f.blurb}
               </p>
-              <p className="mt-3 text-caption text-[var(--color-text-secondary)]">
+              <p className="mt-3 text-caption text-secondary">
                 {subjectNames}
               </p>
               {active && (

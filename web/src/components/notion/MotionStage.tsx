@@ -460,7 +460,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
       <div
         className={cn(
           "relative w-full overflow-hidden rounded-xl",
-          "bg-[var(--color-surface-raised)]",
+          "bg-surface-raised",
           // Shadow-first card (ADR 0023): elevation-1 hairline ring holds the
           // edge; the drawn border is dropped.
           "shadow-elevation-1",
@@ -502,7 +502,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
             Promoted from tertiary (#1 fix) to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1) */}
         <span
           className={cn(
-            "text-caption text-[var(--color-text-secondary)]",
+            "text-caption text-secondary",
             "tabular-nums select-none min-w-[6ch] text-center"
           )}
           aria-live="polite"
@@ -541,8 +541,8 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
         <figcaption
           id={captionId}
           className={cn(
-            "mt-2 text-body-sm text-[var(--color-text-secondary)]",
-            "text-center max-w-[65ch] mx-auto"
+            "mt-2 text-body-sm text-secondary",
+            "text-center max-w-reading mx-auto"
           )}
           aria-live="polite"
         >

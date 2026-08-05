@@ -109,7 +109,7 @@ export function McqItem({ item, index }: McqItemProps) {
             "flex-shrink-0",
             "w-7 h-7 rounded-full",
             "flex items-center justify-center",
-            "bg-[var(--color-accent-subtle)]",
+            "bg-accent-subtle",
             "text-caption font-semibold text-accent",
             "mt-0.5"
           )}
@@ -122,7 +122,7 @@ export function McqItem({ item, index }: McqItemProps) {
         <div
           className={cn(
             "flex-1 min-w-0",
-            "text-body-lg text-[var(--color-text-primary)]",
+            "text-body-lg text-primary",
             "leading-[1.6]",
             "[&_.katex-display]:my-3"
           )}
@@ -146,10 +146,10 @@ export function McqItem({ item, index }: McqItemProps) {
             selectedId={selectedId}
             onSelect={handleSelect}
             feedbackId={`${itemId}-choice-${choice.id}-feedback`}
-            idleSurface="bg-[var(--color-surface-raised)]"
+            idleSurface="bg-surface-raised"
             disabledExtra={[
-              "bg-[var(--color-surface-raised)]",
-              "border-[var(--color-border-subtle)]",
+              "bg-surface-raised",
+              "border-subtle",
               "shadow-elevation-0",
             ]}
           />
@@ -169,8 +169,8 @@ export function McqItem({ item, index }: McqItemProps) {
               // triangle is hidden so it doesn't collide with the padded wash.
               "inline-flex w-fit items-center",
               "cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden",
-              "text-body-sm font-medium text-[var(--color-text-secondary)]",
-              "hover:text-[var(--color-text-primary)]",
+              "text-body-sm font-medium text-secondary",
+              "hover:text-primary",
               "transition-colors duration-micro ease-enter",
               // The one neutral hover/pressed feedback language (ADR 0024); the
               // text-color shift is the secondary cue. -mx keeps the text edge
@@ -184,10 +184,10 @@ export function McqItem({ item, index }: McqItemProps) {
           <div
             className={cn(
               "mt-3 px-4 py-4",
-              "bg-[var(--color-surface-base)]",
+              "bg-surface-base",
               "rounded-lg",
-              "border border-[var(--color-border-subtle)]",
-              "text-body-sm text-[var(--color-text-primary)]",
+              "border border-subtle",
+              "text-body-sm text-primary",
               "prose-lesson",
               "max-w-none",
               "[&_.katex-display]:my-2"

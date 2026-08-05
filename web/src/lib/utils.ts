@@ -11,7 +11,7 @@ import { typeScale, motion } from "./tokens";
  * it and SILENTLY DELETES it when a same-prefix class follows in one cn() call.
  *
  * This was audit finding U1 (docs/audits/fable-ui-content-audit.md §1): with
- * the default config, `cn("text-h1", …, "text-[var(--color-text-primary)]")`
+ * the default config, `cn("text-h1", …, "text-primary")`
  * classified `text-h1` as a text COLOR and dropped it — the entire designed
  * type hierarchy rendered at 16px on every page, unnoticed for five audit
  * rounds. The same mechanism hit `font-regular` (misread as a font FAMILY,
@@ -32,9 +32,11 @@ const twMerge = extendTailwindMerge({
       "font-size": [{ text: Object.keys(typeScale) }],
       // textColor — text-<key> COLORS (tailwind.config `textColor`). Distinct
       // group from font-size so cn("text-h1", "text-primary") keeps BOTH.
-      "text-color": [{ text: ["primary", "secondary", "tertiary", "onAccent"] }],
+      "text-color": [{ text: ["primary", "secondary", "tertiary", "on-accent", "border-soft"] }],
       // borderColor — border-<key> (tailwind.config `borderColor`).
-      "border-color": [{ border: ["subtle", "soft"] }],
+      "border-color": [{ border: ["subtle", "soft", "text-secondary"] }],
+      // opacity — opacity-disabled (the one state-layer opacity token).
+      opacity: [{ opacity: ["disabled"] }],
       // fontWeight — the one non-default key (font-regular)
       "font-weight": [{ font: ["regular"] }],
       // boxShadow — elevation scale (shadow-elevation-<n>). The legacy

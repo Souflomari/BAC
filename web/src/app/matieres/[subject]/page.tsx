@@ -75,21 +75,21 @@ export default function SubjectPage({ params }: { params: { subject: string } })
         className={cn(
           "-mt-12 md:-mt-16 mb-12 py-12",
           "mx-[calc(50%-50vw)] px-[calc(50vw-50%)]",
-          "bg-[var(--color-surface-container-low)]",
-          "border-b border-[var(--color-border-subtle)]"
+          "bg-surface-container-low",
+          "border-b border-subtle"
         )}
       >
         {/* Content sits on the page spine by construction — the band's
             full-bleed calc padding re-aligns it to main's content box
             (same trick as NotionPageView; no extra container). */}
         <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: subjectLabel(subject.id) }]} />
-        <h1 className="font-serif text-display-lg font-bold text-[var(--color-text-primary)] max-w-[26ch]">
+        <h1 className="font-serif text-display-lg font-bold text-primary max-w-[26ch]">
           {subjectLabel(subject.id)}
         </h1>
-        <p className="mt-4 max-w-lead text-lead text-[var(--color-text-secondary)]">
+        <p className="mt-4 max-w-lead text-lead text-secondary">
           {subject.blurb}
         </p>
-        <p className="mt-3 text-body-sm text-[var(--color-text-secondary)] tabular-nums">
+        <p className="mt-3 text-body-sm text-secondary tabular-nums">
           2ᵉ Bac · Sciences · {metaLine}
         </p>
       </div>

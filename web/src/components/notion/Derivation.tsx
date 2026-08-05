@@ -87,13 +87,13 @@ export function Derivation({
       className={cn(
         !bare && [
           "my-8 rounded-lg px-5 py-5 bp-medium:px-6",
-          "bg-[var(--color-surface-raised)] shadow-elevation-1",
+          "bg-surface-raised shadow-elevation-1",
         ],
         bare && "my-4"
       )}
     >
       {title && (
-        <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+        <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
           {title}
         </p>
       )}
@@ -106,7 +106,7 @@ export function Derivation({
         // --measure-prose (not -wide): the per-step NOTES render at 14px, and
         // 75ch of 14px ≈ 630px — a 72ch-of-16px container (≈691px) still
         // over-measures them (caught by the dom-truth sweep on first run).
-        className="mt-1 max-w-[var(--measure-prose)]"
+        className="mt-1 max-w-reading"
         aria-label={title ?? "Dérivation pas à pas"}
       >
         {steps.slice(0, shown).map((step, i) => {
@@ -129,8 +129,8 @@ export function Derivation({
                   className={cn(
                     "mb-3 pl-3 border-l-2 text-body-sm",
                     isCurrent
-                      ? "border-[var(--color-accent)] text-[var(--color-text-primary)]"
-                      : "border-[var(--color-border-subtle)] text-[var(--color-text-secondary)]"
+                      ? "border-accent text-primary"
+                      : "border-subtle text-secondary"
                   )}
                 >
                   <Note>{step.note}</Note>
@@ -151,7 +151,7 @@ export function Derivation({
             <span>Étape suivante</span>
             <Icon name="chevron-right" size={14} />
           </TransportButton>
-          <span className="text-caption text-[var(--color-text-secondary)] tabular-nums" aria-live="polite">
+          <span className="text-caption text-secondary tabular-nums" aria-live="polite">
             {shown} / {steps.length}
           </span>
         </div>

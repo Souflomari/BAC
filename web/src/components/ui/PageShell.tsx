@@ -63,7 +63,7 @@ export function PageShell({
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--color-surface-base)]">
+    <div className="min-h-screen flex flex-col bg-surface-base">
       <SiteHeader container={container} />
 
       <main

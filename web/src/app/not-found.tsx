@@ -21,7 +21,7 @@ export default function NotFound() {
         <span
           className={cn(
             "font-serif text-display font-bold",
-            "text-[var(--color-border-soft)]",
+            "text-border-soft",
             "select-none"
           )}
           aria-hidden="true"
@@ -30,12 +30,12 @@ export default function NotFound() {
         </span>
         <h1
           className={cn(
-            "mt-4 font-serif text-h2 font-bold text-[var(--color-text-primary)]"
+            "mt-4 font-serif text-h2 font-bold text-primary"
           )}
         >
           Page introuvable
         </h1>
-        <p className="mt-3 text-body text-[var(--color-text-secondary)] max-w-[40ch]">
+        <p className="mt-3 text-body text-secondary max-w-[40ch]">
           Cette page n’existe pas ou a été déplacée.
         </p>
         <Link href="/" className={cn("mt-8", "btn-primary")}>

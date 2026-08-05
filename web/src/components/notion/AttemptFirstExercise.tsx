@@ -84,14 +84,14 @@ function Question({
   return (
     <>
       {part && (
-        <p className="mt-8 mb-2 text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+        <p className="mt-8 mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
           {part}
         </p>
       )}
-      <div className="py-5 border-b border-[var(--color-border-subtle)] last:border-b-0">
+      <div className="py-5 border-b border-subtle last:border-b-0">
         <div className="flex items-start gap-3">
           <span
-            className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-sm mt-1 bg-[var(--color-border-subtle)] text-caption font-semibold text-[var(--color-text-secondary)] tabular-nums"
+            className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-sm mt-1 bg-border-subtle text-caption font-semibold text-secondary tabular-nums"
             aria-hidden="true"
           >
             {index}
@@ -108,12 +108,12 @@ function Question({
                   onClick={handleReveal}
                   className={cn(
                     "inline-flex items-center gap-1.5 px-3 py-2",
-                    "min-h-[48px] rounded-md",
+                    "min-h-touch rounded-md",
                     "text-body-sm font-medium",
-                    "text-[var(--color-text-secondary)]",
-                    "border border-[var(--color-border-subtle)]",
-                    "bg-[var(--color-surface-raised)]",
-                    "hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-soft)]",
+                    "text-secondary",
+                    "border border-subtle",
+                    "bg-surface-raised",
+                    "hover:text-primary hover:border-soft",
                     "transition-colors duration-micro",
                     "state-layer focus-ring [--focus-radius:8px]"
                   )}
@@ -121,7 +121,7 @@ function Question({
                   J’ai fait ma tentative — voir le raisonnement
                   <Icon name="chevron-right" size={14} />
                 </button>
-                <p className="mt-2 text-caption text-[var(--color-text-secondary)]">
+                <p className="mt-2 text-caption text-secondary">
                   Cherche d’abord sur papier — c’est la tentative qui construit
                   le réflexe, pas la lecture.
                 </p>
@@ -130,14 +130,14 @@ function Question({
               <div
                 className={cn(
                   "mt-4 px-4 py-4 rounded-lg border-l-2",
-                  "border-[var(--color-accent)]",
-                  "bg-[var(--color-surface-raised)]"
+                  "border-accent",
+                  "bg-surface-raised"
                 )}
                 role="region"
                 aria-live="polite"
                 aria-label="Raisonnement expert"
               >
-                <p className="mb-2 text-caption font-medium uppercase tracking-[0.14em] text-accent">
+                <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-accent">
                   Raisonnement expert
                 </p>
                 <MdBlock>{reasoning}</MdBlock>
@@ -199,7 +199,7 @@ export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise })
         "bg-surface-container-high shadow-elevation-2"
       )}
     >
-      <h3 className="font-serif text-h3 font-semibold text-[var(--color-text-primary)]">
+      <h3 className="font-serif text-h3 font-semibold text-primary">
         {exercise.title}
       </h3>
 

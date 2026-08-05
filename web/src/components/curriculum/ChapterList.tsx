@@ -51,21 +51,21 @@ function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterVie
           className={cn(
             "block text-body",
             chapter.available
-              ? "text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro"
-              : "text-[var(--color-text-secondary)]"
+              ? "text-primary group-hover:text-accent transition-colors duration-micro"
+              : "text-secondary"
           )}
         >
           {chapter.title}
         </span>
         {chapter.available && chapter.minutes != null && (
-          <span className="mt-0.5 block text-caption text-[var(--color-text-secondary)] tabular-nums">
+          <span className="mt-0.5 block text-caption text-secondary tabular-nums">
             {chapter.minutes} min de lecture
           </span>
         )}
       </span>
       {chapter.available ? (
         <span className="flex flex-shrink-0 items-center gap-2">
-          <span className="rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-0.5 text-caption font-medium text-accent">
+          <span className="rounded-full bg-accent-subtle px-2.5 py-0.5 text-caption font-medium text-accent">
             Disponible
           </span>
           <Icon
@@ -75,7 +75,7 @@ function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterVie
           />
         </span>
       ) : (
-        <span className="flex-shrink-0 rounded-full border border-[var(--color-border-subtle)] px-2.5 py-0.5 text-caption font-medium text-[var(--color-text-tertiary)]">
+        <span className="flex-shrink-0 rounded-full border border-subtle px-2.5 py-0.5 text-caption font-medium text-tertiary">
           À venir
         </span>
       )}
@@ -122,15 +122,15 @@ export function ChapterList({ subject, units }: { subject: string; units: UnitVi
         role="status"
         className={cn(
           "flex flex-col items-center justify-center rounded-2xl py-20 text-center",
-          "border border-dashed border-[var(--color-border-subtle)]",
-          "bg-[var(--color-surface-raised)]"
+          "border border-dashed border-subtle",
+          "bg-surface-raised"
         )}
       >
-        <Icon name="empty-doc" size={44} className="mb-5 text-[var(--color-border-soft)]" />
-        <h2 className="mb-1 text-h4 font-semibold text-[var(--color-text-primary)]">
+        <Icon name="empty-doc" size={44} className="mb-5 text-border-soft" />
+        <h2 className="mb-1 text-h4 font-semibold text-primary">
           Programme à venir
         </h2>
-        <p className="max-w-[44ch] text-body-sm text-[var(--color-text-secondary)]">
+        <p className="max-w-[44ch] text-body-sm text-secondary">
           Les chapitres de cette matière seront ajoutés prochainement.
         </p>
       </div>
@@ -141,10 +141,10 @@ export function ChapterList({ subject, units }: { subject: string; units: UnitVi
     <div className="space-y-10">
       {visibleUnits.map((unit) => (
         <section key={unit.title} aria-label={unit.title}>
-          <h2 className="mb-2 pb-2 border-b border-[var(--color-border-subtle)] text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          <h2 className="mb-2 pb-2 border-b border-subtle text-caption font-medium uppercase tracking-eyebrow text-secondary">
             {unit.title}
           </h2>
-          <ul role="list" className="divide-y divide-[var(--color-border-subtle)]">
+          <ul role="list" className="divide-y divide-border-subtle">
             {unit.chapters.map((c) => (
               <ChapterRow key={c.slug} subject={subject} chapter={c} />
             ))}

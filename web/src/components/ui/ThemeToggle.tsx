@@ -63,7 +63,7 @@ export function ThemeToggle() {
       className={cn(
         "flex items-center justify-center",
         "h-8 w-8 rounded-lg",
-        "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+        "text-secondary hover:text-primary",
         "state-layer focus-ring [--focus-radius:8px]",
         "transition-colors duration-micro ease-enter"
       )}

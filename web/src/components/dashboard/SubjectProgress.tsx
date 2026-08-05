@@ -49,7 +49,7 @@ export function SubjectProgress({ notions }: { notions: NotionMeta[] }) {
 
   return (
     <section aria-label="Progrès par matière">
-      <h2 className="mb-2 pb-3 border-b border-[var(--color-border-subtle)] text-h4 font-semibold text-[var(--color-text-primary)]">
+      <h2 className="mb-2 pb-3 border-b border-subtle text-h4 font-semibold text-primary">
         Progrès par matière
       </h2>
       <ul role="list" className="mt-4 space-y-3">
@@ -58,10 +58,10 @@ export function SubjectProgress({ notions }: { notions: NotionMeta[] }) {
           const totalMinutes = list.reduce((sum, n) => sum + (n.readingMinutes ?? 0), 0);
           return (
             <li key={subjectId} className="text-body-sm">
-              <span className="block font-medium text-[var(--color-text-primary)]">
+              <span className="block font-medium text-primary">
                 {subjectLabel(subjectId)}
               </span>
-              <span className="block text-[var(--color-text-secondary)] tabular-nums">
+              <span className="block text-secondary tabular-nums">
                 {list.length} leçon{list.length > 1 ? "s" : ""} · ~
                 {formatHours(totalMinutes)}&nbsp;h de lecture
               </span>

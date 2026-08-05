@@ -767,7 +767,7 @@ export function NotionBody({
               with the markdown-rendered `##` heading below it: that heading
               is produced deep inside LessonRenderer/react-markdown, a
               shared, chapter-agnostic renderer this task does not touch. */}
-          <p className="notion-prose mb-2 text-body-sm text-[var(--color-text-secondary)]">
+          <p className="notion-prose mb-2 text-body-sm text-secondary">
             {`~${chapter.minutes} min`}
           </p>
           {chapter.segments.map((seg, i) => renderSegment(seg, `${chapter.index}-${i}`))}

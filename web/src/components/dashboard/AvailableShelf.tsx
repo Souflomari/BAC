@@ -49,10 +49,10 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
 
   return (
     <section aria-label="Notions disponibles">
-      <h2 className="mb-2 pb-3 border-b border-[var(--color-border-subtle)] text-h4 font-semibold text-[var(--color-text-primary)]">
+      <h2 className="mb-2 pb-3 border-b border-subtle text-h4 font-semibold text-primary">
         Disponible maintenant
       </h2>
-      <p className="mt-2 mb-6 text-caption text-[var(--color-text-secondary)]">
+      <p className="mt-2 mb-6 text-caption text-secondary">
         Les notions déjà écrites, groupées par matière — déplie une matière pour les voir.
       </p>
 
@@ -65,7 +65,7 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
               value={subject}
               className={cn(
                 "rounded-xl overflow-hidden",
-                "bg-[var(--color-surface-raised)] shadow-elevation-1"
+                "bg-surface-raised shadow-elevation-1"
               )}
             >
               <Accordion.Header>
@@ -76,19 +76,19 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
                     "text-left"
                   )}
                 >
-                  <div className="w-14 flex-shrink-0 rounded-md overflow-hidden border border-[var(--color-border-subtle)]">
+                  <div className="w-14 flex-shrink-0 rounded-md overflow-hidden border border-subtle">
                     <Cover subject={subject} />
                   </div>
                   <span className="flex-1 min-w-0">
                     <span
                       data-shelf-subject-label=""
-                      className="block font-serif text-lead leading-tight text-[var(--color-text-primary)]"
+                      className="block font-serif text-lead leading-tight text-primary"
                     >
                       {subjectLabel(subject)}
                     </span>
                     <span
                       data-shelf-subject-count=""
-                      className="block text-caption text-[var(--color-text-secondary)] tabular-nums"
+                      className="block text-caption text-secondary tabular-nums"
                     >
                       {list.length} leçon{list.length > 1 ? "s" : ""}
                     </span>
@@ -99,7 +99,7 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
                     name="chevron-right"
                     size={16}
                     className={cn(
-                      "flex-shrink-0 text-[var(--color-text-secondary)]",
+                      "flex-shrink-0 text-secondary",
                       "rotate-90 transition-transform duration-micro ease-enter",
                       "group-data-[state=open]:rotate-[270deg]"
                     )}
@@ -118,21 +118,21 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
                         href={notionHref(n.subject, n.slug)}
                         className={cn(
                           "group/card block rounded-xl overflow-hidden",
-                          "bg-[var(--color-surface-container-low)] shadow-elevation-1",
+                          "bg-surface-container-low shadow-elevation-1",
                           "hover:shadow-elevation-2 hover:-translate-y-px",
                           "transition-all duration-micro ease-out",
                           "state-layer focus-ring [--focus-radius:16px]"
                         )}
                       >
-                        <div className="aspect-[8/5] overflow-hidden border-b border-[var(--color-border-subtle)]">
+                        <div className="aspect-[8/5] overflow-hidden border-b border-subtle">
                           <Cover subject={n.subject} slug={n.slug} />
                         </div>
                         <div className="px-5 py-4">
-                          <span className="block font-serif text-lead leading-snug text-[var(--color-text-primary)] group-hover/card:text-accent transition-colors duration-micro">
+                          <span className="block font-serif text-lead leading-snug text-primary group-hover/card:text-accent transition-colors duration-micro">
                             {n.title}
                           </span>
                           {n.readingMinutes && (
-                            <span className="mt-1 block text-caption text-[var(--color-text-secondary)] tabular-nums">
+                            <span className="mt-1 block text-caption text-secondary tabular-nums">
                               {n.readingMinutes} min de lecture
                             </span>
                           )}

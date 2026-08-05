@@ -28,7 +28,7 @@ function StateWord({ state }: { state: "en cours" | "vu" | "à venir" }) {
         "text-caption flex-shrink-0 tabular-nums",
         state === "en cours"
           ? "text-accent font-medium"
-          : "text-[var(--color-text-secondary)]"
+          : "text-secondary"
       )}
     >
       {state}
@@ -54,7 +54,7 @@ function ContentsRow({
           "focus-ring [--focus-radius:8px]"
         )}
       >
-        <span className="font-serif text-lead text-[var(--color-text-primary)]">
+        <span className="font-serif text-lead text-primary">
           {title}
         </span>
         <StateWord state={state} />
@@ -67,10 +67,10 @@ export default function HomeB2() {
   return (
     <PageShell width="content">
       <header className="mb-12">
-        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+        <h1 className="font-serif text-display font-bold text-primary">
           Notions
         </h1>
-        <p className="mt-4 text-lead text-[var(--color-text-secondary)] max-w-lead">
+        <p className="mt-4 text-lead text-secondary max-w-lead">
           Chaque notion est enseignée jusqu’au bout — décortiquée, illustrée,
           exercée.
         </p>
@@ -82,19 +82,19 @@ export default function HomeB2() {
           href="/notions/pc/rlc-serie"
           className={cn(
             "group flex items-center justify-between gap-6",
-            "border-t-2 border-b border-accent/70 border-b-[var(--color-border-subtle)]",
+            "border-t-2 border-b border-accent/70 border-b-subtle",
             "py-5 px-2",
             "state-layer focus-ring [--focus-radius:8px]"
           )}
         >
           <div>
-            <p className="text-caption font-medium uppercase tracking-[0.14em] text-accent">
+            <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
               Reprendre
             </p>
-            <p className="mt-1 font-serif text-h3 font-semibold text-[var(--color-text-primary)]">
+            <p className="mt-1 font-serif text-h3 font-semibold text-primary">
               Oscillations libres dans un circuit RLC série
             </p>
-            <p className="mt-1 text-body-sm text-[var(--color-text-secondary)]">
+            <p className="mt-1 text-body-sm text-secondary">
               « Les trois régimes » — section 5 sur 10
             </p>
           </div>
@@ -111,11 +111,11 @@ export default function HomeB2() {
         <section aria-labelledby="b2-pc">
           <h2
             id="b2-pc"
-            className="mb-2 text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]"
+            className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary"
           >
             Physique-Chimie
           </h2>
-          <ul role="list" className="divide-y divide-[var(--color-border-subtle)] border-y border-[var(--color-border-subtle)]">
+          <ul role="list" className="divide-y divide-border-subtle border-y border-subtle">
             <ContentsRow
               href="/notions/pc/rlc-serie"
               title="Oscillations libres dans un circuit RLC série"
@@ -127,11 +127,11 @@ export default function HomeB2() {
         <section aria-labelledby="b2-maths">
           <h2
             id="b2-maths"
-            className="mb-2 text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]"
+            className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary"
           >
             Mathématiques
           </h2>
-          <ul role="list" className="divide-y divide-[var(--color-border-subtle)] border-y border-[var(--color-border-subtle)]">
+          <ul role="list" className="divide-y divide-border-subtle border-y border-subtle">
             <ContentsRow
               href="/notions/maths/probabilites-conditionnelles"
               title="Probabilités conditionnelles"

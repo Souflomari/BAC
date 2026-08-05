@@ -34,7 +34,7 @@ export function LessonEnd({ next }: { next: NotionMeta | null }) {
     <aside
       data-lesson-end
       aria-label="Et maintenant"
-      className="notion-prose mt-20 pt-8 border-t border-[var(--color-border-subtle)]"
+      className="notion-prose mt-20 pt-8 border-t border-subtle"
     >
       <Eyebrow tone="muted" decorative>Et maintenant</Eyebrow>
 
@@ -56,10 +56,10 @@ export function LessonEnd({ next }: { next: NotionMeta | null }) {
           )}
         >
           <span className="min-w-0">
-            <span className="block text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+            <span className="block text-caption font-medium uppercase tracking-eyebrow text-secondary">
               Changer de matière — {subjectLabel(next.subject)}
             </span>
-            <span className="mt-2 block font-serif text-h3 font-semibold text-[var(--color-text-primary)] group-hover:text-accent transition-colors duration-micro">
+            <span className="mt-2 block font-serif text-h3 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
               {next.title}
             </span>
           </span>
@@ -71,7 +71,7 @@ export function LessonEnd({ next }: { next: NotionMeta | null }) {
         href="/"
         className={cn(
           "mt-6 inline-block",
-          "text-body-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
+          "text-body-sm text-secondary hover:text-primary",
           "transition-colors duration-micro ease-enter",
           "state-layer rounded px-2 py-1 -mx-2",
           "focus-ring [--focus-radius:8px]"

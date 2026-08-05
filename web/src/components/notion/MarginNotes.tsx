@@ -62,14 +62,14 @@ export function MarginNotes({ notes }: { notes: MarginNote[] }) {
       {placed.map(({ top, note }, i) => (
         <aside
           key={i}
-          className="absolute w-full pl-4 border-l border-[var(--color-border-soft)]"
+          className="absolute w-full pl-4 border-l border-soft"
           style={{ top }}
         >
-          <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
             {note.label}
           </p>
           <div
-            className="mt-1 text-body-sm leading-relaxed text-[var(--color-text-secondary)]"
+            className="mt-1 text-body-sm leading-relaxed text-secondary"
             dangerouslySetInnerHTML={{ __html: note.html }}
           />
         </aside>

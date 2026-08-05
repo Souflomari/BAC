@@ -159,8 +159,8 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
         className={cn(
           "relative w-full overflow-hidden",
           "rounded-xl",
-          "bg-[var(--color-surface-raised)]",
-          "border border-[var(--color-border-subtle)]",
+          "bg-surface-raised",
+          "border border-subtle",
           // elevation-1 — figure panel at rest (per TOKENS.md §6.3)
           "shadow-elevation-1",
           // Cap the display area so a tall, sparsely-populated canvas at early
@@ -218,7 +218,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
               #1: promoted from tertiary to secondary (12px must pass 4.5:1) */}
           <span
             className={cn(
-              "text-caption text-[var(--color-text-secondary)]",
+              "text-caption text-secondary",
               "tabular-nums select-none",
               "min-w-[6ch] text-center"
             )}
@@ -255,7 +255,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
         <p
           className={cn(
             "mt-2",
-            "text-caption text-[var(--color-text-secondary)]",
+            "text-caption text-secondary",
             "italic"
           )}
         >
@@ -269,8 +269,8 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
         <figcaption
           className={cn(
             "mt-2",
-            "text-body-sm text-[var(--color-text-secondary)]",
-            "text-center max-w-[65ch] mx-auto"
+            "text-body-sm text-secondary",
+            "text-center max-w-reading mx-auto"
           )}
         >
           {label}

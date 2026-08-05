@@ -36,10 +36,10 @@ export default function HomeB1() {
   return (
     <PageShell width="content">
       <header className="mb-10">
-        <h1 className="font-serif text-display font-bold text-[var(--color-text-primary)]">
+        <h1 className="font-serif text-display font-bold text-primary">
           Ta session
         </h1>
-        <p className="mt-4 text-lead text-[var(--color-text-secondary)] max-w-lead">
+        <p className="mt-4 text-lead text-secondary max-w-lead">
           On reprend là où tu t’es arrêté — deux heures calmes, une notion à
           fond.
         </p>
@@ -53,20 +53,20 @@ export default function HomeB1() {
             "bg-surface-container-high shadow-elevation-2"
           )}
         >
-          <p className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
             En cours · {CONTINUE.subject}
           </p>
-          <h2 className="mt-2 font-serif text-h2 font-bold text-[var(--color-text-primary)]">
+          <h2 className="mt-2 font-serif text-h2 font-bold text-primary">
             {CONTINUE.notion}
           </h2>
-          <p className="mt-2 text-body text-[var(--color-text-secondary)]">
+          <p className="mt-2 text-body text-secondary">
             Reprise à « {CONTINUE.position} » — section {CONTINUE.step} sur{" "}
             {CONTINUE.totalSteps}.
           </p>
 
           {/* Honest progress: one thin bar, fraction stated, no celebration */}
           <div
-            className="mt-5 h-1 rounded-full bg-[var(--color-border-subtle)]"
+            className="mt-5 h-1 rounded-full bg-border-subtle"
             role="progressbar"
             aria-valuenow={pct}
             aria-valuemin={0}
@@ -87,10 +87,10 @@ export default function HomeB1() {
 
         {/* Next up — quiet, one suggestion, the app's plan */}
         <div className="mt-6 flex items-baseline gap-3 px-2">
-          <span className="text-caption font-medium uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
+          <span className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
             Ensuite
           </span>
-          <span className="text-body-sm text-[var(--color-text-secondary)]">
+          <span className="text-body-sm text-secondary">
             Révision courte — Probabilités conditionnelles (15 min)
           </span>
         </div>
@@ -98,19 +98,19 @@ export default function HomeB1() {
 
       {/* ── The library — compact rows, no cards ── */}
       <section aria-label="Toutes les notions" className="mt-16 max-w-list">
-        <h2 className="mb-4 pb-3 border-b border-[var(--color-border-subtle)] text-h4 font-semibold text-[var(--color-text-secondary)]">
+        <h2 className="mb-4 pb-3 border-b border-subtle text-h4 font-semibold text-secondary">
           Toutes les notions
         </h2>
-        <ul role="list" className="divide-y divide-[var(--color-border-subtle)]">
+        <ul role="list" className="divide-y divide-border-subtle">
           <li>
             <Link
               href="/notions/pc/rlc-serie"
               className="state-layer rounded flex items-baseline justify-between gap-4 py-3 px-2 focus-ring [--focus-radius:8px]"
             >
-              <span className="text-body text-[var(--color-text-primary)]">
+              <span className="text-body text-primary">
                 Oscillations libres dans un circuit RLC série
               </span>
-              <span className="text-caption text-[var(--color-text-secondary)] flex-shrink-0">
+              <span className="text-caption text-secondary flex-shrink-0">
                 en cours
               </span>
             </Link>
@@ -120,10 +120,10 @@ export default function HomeB1() {
               href="/notions/maths/probabilites-conditionnelles"
               className="state-layer rounded flex items-baseline justify-between gap-4 py-3 px-2 focus-ring [--focus-radius:8px]"
             >
-              <span className="text-body text-[var(--color-text-primary)]">
+              <span className="text-body text-primary">
                 Probabilités conditionnelles
               </span>
-              <span className="text-caption text-[var(--color-text-secondary)] flex-shrink-0">
+              <span className="text-caption text-secondary flex-shrink-0">
                 vu récemment
               </span>
             </Link>

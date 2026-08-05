@@ -254,7 +254,7 @@ export function MediaDiagram({
         className={cn(
           "overflow-hidden",
           "rounded-xl",
-          "bg-[var(--color-surface-raised)]",
+          "bg-surface-raised",
           // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
           // edge; no drawn border. Reads as lifted, not boxed-in.
           "shadow-elevation-1",
@@ -271,9 +271,9 @@ export function MediaDiagram({
           className={cn(
             "mt-3 px-2",
             // #9: explanatory prose at body-sm (14px), #1: secondary color for 4.5:1
-            "text-body-sm text-[var(--color-text-secondary)]",
+            "text-body-sm text-secondary",
             "leading-relaxed",
-            "max-w-[65ch]" // cap caption width
+            "max-w-reading" // cap caption width
           )}
         >
           {frenchTypography(stepCaption)}
@@ -329,7 +329,7 @@ export function MediaDiagramFigure({
         className={cn(
           "overflow-hidden",
           "rounded-xl",
-          "bg-[var(--color-surface-raised)]",
+          "bg-surface-raised",
           // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
           // edge; no drawn border. Reads as lifted, not boxed-in.
           "shadow-elevation-1",
@@ -350,9 +350,9 @@ export function MediaDiagramFigure({
           className={cn(
             "mt-3 px-2",
             // #9: explanatory prose at body-sm (14px), #1: secondary color for 4.5:1
-            "text-body-sm text-[var(--color-text-secondary)]",
+            "text-body-sm text-secondary",
             "leading-relaxed",
-            "max-w-[65ch]"
+            "max-w-reading"
           )}
         >
           {frenchTypography(stepCaption)}

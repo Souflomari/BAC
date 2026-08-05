@@ -90,16 +90,40 @@ const config: Config = {
         },
       },
       // Text color hierarchy → `text-primary` / `text-secondary` / … (never #000).
+      // `border-soft` is here too because it is used as a text color in a few
+      // places (a neutral inked hairline label).
       textColor: {
         primary: v("color-text-primary"),
         secondary: v("color-text-secondary"),
         tertiary: v("color-text-tertiary"),
-        onAccent: v("color-text-on-accent"),
+        "on-accent": v("color-text-on-accent"),
+        "border-soft": v("color-border-soft"),
       },
-      // Border color → `border-subtle` / `border-soft`.
+      // Border color → `border-subtle` / `border-soft`. `text-secondary` is used
+      // as a border color on a couple of emphasized rules.
       borderColor: {
         subtle: v("color-border-subtle"),
         soft: v("color-border-soft"),
+        "text-secondary": v("color-text-secondary"),
+      },
+      // Cross-role neutrals used as BACKGROUNDS (thin hairline fills). Surfaces,
+      // accent-subtle, and the semantic fills come from `colors` above.
+      backgroundColor: {
+        "border-subtle": v("color-border-subtle"),
+        "border-soft": v("color-border-soft"),
+        "text-tertiary": v("color-text-tertiary"),
+      },
+      // Divider color → `divide-border-subtle`.
+      divideColor: {
+        "border-subtle": v("color-border-subtle"),
+      },
+      // Text-decoration color → `decoration-border-soft`.
+      textDecorationColor: {
+        "border-soft": v("color-border-soft"),
+      },
+      // The single dimmed/inert opacity (state-layer) → `opacity-disabled`.
+      opacity: {
+        disabled: v("state-disabled"),
       },
 
       // ── Typography (DESIGN-BIBLE §3, ADR 0023) ─────────────────────────────
