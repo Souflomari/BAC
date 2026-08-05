@@ -35,7 +35,7 @@ Soient $n$ et $m$ deux entiers naturels vérifiant : $n^8 + m^8 \equiv 0\ [2969]
 
 ## 2020 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/109635
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element 109635 → course-436/upload-80775 re-dérivé), diff caractère-par-caractère conforme au scan (valeurs, exposants, indices, congruences, barèmes, énoncé) ; glyphes mojibake confirmés (¢´¢ = ℤ×ℤ, Î = ∈, o = ≡) ; code sujet NS 25 (sans F) confirmé au zoom sur l'en-tête (p.1 et p.2).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة بالفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 25 · Barème de l'exercice : 3,5 points (au choix : EXERCICE1 arithmétique **ou bien** EXERCICE2 structures algébriques)
@@ -61,7 +61,7 @@ On considère dans $\mathbb{Z}\times\mathbb{Z}$ l'équation $(D) : 7x^3 - 13y = 
 
 ## 2022 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/136604
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element 136604 → course-436/upload-84506 re-dérivé), diff caractère-par-caractère conforme au scan (valeurs, exposants, indices, congruences, barèmes, énoncé) ; glyphes mojibake confirmés (¥ = ℕ, o = ≡, ³ = ≥, et les trois cases tofu identiques Q2 / Q3-a / Q3-d = ℤ² — le Bézout $nu+(p-1)v=1$ de la Q3-a le force).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — مسلك العلوم الرياضية – أ و ب – خيار فرنسية — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3 points
@@ -89,7 +89,7 @@ Soit $(x,y)$ une solution de l'équation $(E_n)$ dans $\mathbb{N}^2$ et soit $p$
 
 ## 2024 — session normale — Exercice 5
 Source: https://www.alloschool.com/element/145739
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element 145739 → course-436/upload-87447 re-dérivé), diff caractère-par-caractère conforme au scan (valeurs, exposants, congruences, barèmes, énoncé) ; Unicode propre (pas de mojibake) ; en-tête du corps EXERCICE5 (3 points, arithmétique, p.5) confirmé — les consignes p.1 étiquettent l'arithmétique EXERCICE4 (3 pts) et les structures EXERCICE5 (3,5 pts), tandis que le corps p.4 porte EXERCICE4 (3,5 pts, structures) : inversion de numérotation confirmée.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3 points
