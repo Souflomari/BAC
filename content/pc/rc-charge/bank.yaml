@@ -1,0 +1,200 @@
+# bank.yaml — la banque « S'entraîner » de rc-charge (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/rc-charge.md (re-fetch AlloSchool + diff
+# indépendant, agent-vérificateur 2026-07-11). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R1–R4 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
+# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash).
+#
+# NOTE ÉDITORIALE (pour la revue) : les deux sujets « vérifié » de cette
+# notion sont 2018 N et 2019 N. Le 2019 N (Exercice III, Partie I — charge)
+# sert AUSSI de sommet de leçon (r-bac, exercises.yaml, marqueur
+# [[exercise:r-bac]] à R5) : mêmes données, mêmes réponses numériques
+# (Q = 100 µC, τ = 1 ms, C = 10 µF, R = 100 Ω), reprises ici à l'identique
+# pour rester cohérentes avec le sommet. Il figure ici pour que la banque
+# soit le corpus complet des annales de la notion (BANK-SPEC §1 : « la
+# banque est le volume derrière le sommet, jamais son remplacement ») —
+# recoupement assumé, même disposition que reactions-acido-basiques
+# bk-2021-n-x1. À l'arbitrage de l'owner si l'on préfère l'écarter de la
+# banque pour éviter le recoupement sur la même page.
+#
+# Le 2018 N (Exercice III, sous-partie I-2 — décharge à travers R seule)
+# n'apparaît nulle part ailleurs dans la notion : c'est la seule entrée qui
+# traite explicitement la décharge avec un raisonnement guidé question par
+# question (la leçon la couvre en R4, mais sans exercice chiffré associé).
+
+notion: pc/rc-charge
+
+entries:
+  # ── bk-2019-n-x3 — 2019 N, Exercice III (Partie I) : charge, lecture graphique ──
+  - id: bk-2019-n-x3
+    title: "Charge d'un condensateur à travers une résistance : équation différentielle et exploitation graphique"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — I. Étude de la charge du condensateur"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF (Sciences Physiques, SPC),
+        AlloSchool NS28F, element/68300 (Exercice III, Partie I — étude de la
+        charge d'un condensateur à travers une résistance ; barème de la
+        partie ≈ 2,0 pt sur les 4,5 pt de l'exercice, qui comporte aussi une
+        Partie II sur les oscillations LC, transcrite sous rlc-serie.md).
+        Transcription vérifiée : re-fetch indépendant AlloSchool + diff OK
+        (docs/sujets/pc/rc-charge.md, statut « vérifié » agent-vérificateur
+        2026-07-11). NB : ce même sujet sous-tend le sommet de leçon r-bac
+        (exercises.yaml, marqueur [[exercise:r-bac]] à R5) — recoupement
+        assumé, à arbitrer en revue.
+    intro: |-
+      **Charge et décharge d'un condensateur (examen national, session normale 2019).**
+
+      Les condensateurs et les bobines sont des composants essentiels de nombreux appareils électriques tels ceux utilisés pour l'émission et la réception des ondes électromagnétiques. Cet exercice se propose d'étudier la charge d'un condensateur et sa décharge dans une bobine.
+
+      On réalise le montage électrique schématisé sur la figure 1, constitué d'un générateur idéal de tension de force électromotrice $E = 10\ \text{V}$, d'un condensateur de capacité $C$ initialement déchargé, d'un conducteur ohmique de résistance $R$, d'une bobine d'inductance $L$ et de résistance négligeable, et d'un interrupteur $K$ à double position : la position (1) connecte l'ensemble $E$–$R$ au condensateur (charge), la position (2) connecte le condensateur à la bobine $L$ (oscillations).
+
+      **I — Étude de la charge du condensateur.** On met l'interrupteur $K$ sur la position (1) à un instant choisi comme origine des dates ($t = 0$). Un système d'acquisition informatisé trace la courbe d'évolution de la charge $q(t)$ du condensateur (figure 2) : elle part de $0$ et croît de façon exponentielle vers un palier horizontal à $q = 100\ \mu\text{C}$ (axe $q$ gradué $25,\ 50,\ 75,\ 100\ \mu\text{C}$ ; axe $t$ gradué $0,\ 1,\ 2,\ 3,\ 4\ \text{ms}$). La droite $(T)$, tangente à la courbe à la date $t = 0$, coupe l'asymptote $q = 100\ \mu\text{C}$ au voisinage de $t = 1\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "I — Étude de la charge du condensateur : établir le modèle"
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par $q(t)$ au cours de la charge du condensateur.
+        reasoning: |-
+          Même geste qu'en R1 de la leçon, mais avec la charge $q$ comme inconnue plutôt que $u_C$ : on part de la loi des mailles sur la boucle série, $E = u_R + u_C$ (convention récepteur), puis on exprime chaque tension avec la grandeur qui caractérise son dipôle — la loi d'Ohm pour $R$, la définition de la capacité pour $C$ — et le courant avec le débit de charge $i = \dfrac{dq}{dt}$. Tout doit finir en fonction de la seule inconnue $q$, sinon l'équation mélange deux grandeurs et ne se résout pas.
+        steps:
+          - math: 'E = u_R + u_C'
+            note: "Loi des mailles sur la boucle série, convention récepteur pour R et C."
+          - math: 'u_R = R\,i = R\frac{dq}{dt}'
+            note: "Loi d'Ohm, avec le courant écrit comme débit de charge i = dq/dt."
+          - math: 'u_C = \frac{q}{C}'
+            note: "Définition de la capacité : la charge posée sur les armatures fixe la tension."
+          - math: '\boxed{R\frac{dq}{dt} + \frac{q}{C} = E}'
+            note: "Forme standard : terme en q à gauche, source E à droite."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Trouver, en fonction des paramètres du circuit, les expressions des constantes $A$ et $\alpha$ pour que la solution de cette équation différentielle s'écrive sous la forme $q(t) = A\left(1 - e^{-\alpha t}\right)$.
+        reasoning: |-
+          La méthode du physicien, exactement celle de R2 de la leçon : on n'intègre pas par une machinerie, on injecte la forme proposée dans l'équation différentielle et on identifie. Deux morceaux doivent s'équilibrer séparément — le terme constant, seul survivant quand $t$ devient grand (le régime permanent), fixe $A$ ; le terme en exponentielle, qui doit s'annuler à chaque instant, fixe $\alpha$.
+        steps:
+          - math: 'q(t) = A\left(1 - e^{-\alpha t}\right) \implies \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}'
+            note: "Dérivée de la forme proposée, à injecter dans l'équation."
+          - math: 'R\,A\,\alpha\,e^{-\alpha t} + \frac{A}{C}\left(1 - e^{-\alpha t}\right) = E'
+            note: "Substitution de q et de sa dérivée dans R dq/dt + q/C = E."
+          - math: '\frac{A}{C} = E \implies A = C\,E'
+            note: "Terme constant : il doit valoir E à lui seul, c'est la valeur du palier."
+          - math: 'R\,A\,\alpha - \frac{A}{C} = 0 \implies \alpha = \frac{1}{RC}'
+            note: "Terme exponentiel : il doit s'annuler à chaque instant, ce qui impose alpha."
+          - math: '\boxed{A = C\,E \qquad \alpha = \frac{1}{RC} = \frac{1}{\tau}}'
+            note: "alpha est l'inverse de la constante de temps : le groupement RC de R1 reparaît."
+      - id: q3
+        part: "I — Exploitation graphique de la courbe q(t)"
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la valeur de la charge $Q$ du condensateur quand le régime permanent est établi.
+        reasoning: |-
+          En régime permanent, $t \gg \tau$ donc $e^{-\alpha t} \to 0$ et $q \to A = Q$ — le même raisonnement qu'en R2 pour $u_C \to E$. La charge finale se lit donc directement sur le palier horizontal de la courbe, l'asymptote vers laquelle $q(t)$ se stabilise, sans aucun calcul.
+
+          $$Q = 100\ \mu\text{C} = 100\times10^{-6}\ \text{C}$$
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la valeur de la constante de temps $\tau$.
+        reasoning: |-
+          C'est la méthode de la tangente à l'origine, vue en R3 : la tangente $(T)$ tracée en $t=0$ coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$ — une propriété exacte de la pente initiale, $A\alpha = A/\tau$. L'énoncé indique que $(T)$ coupe le palier $q = 100\ \mu\text{C}$ vers $t = 1\ \text{ms}$ : on lit $\tau$ directement, sans calcul.
+
+          $$\tau = 1\ \text{ms} = 1\times10^{-3}\ \text{s}$$
+      - id: q5
+        stem: |-
+          **(0,25 pt)** Montrer que la capacité du condensateur est $C = 10\ \mu\text{F}$.
+        reasoning: |-
+          La valeur du palier vaut $A = CE$ (question 2). On connaît $Q = A$ (lu au graphe, question 3) et $E$ (donnée de l'énoncé) : on isole $C$. Pas besoin de $R$ ni de $\tau$ ici — la charge finale ne dépend que de $C$ et $E$, pas de la vitesse à laquelle on y arrive.
+        steps:
+          - math: 'Q = A = C\,E \implies C = \frac{Q}{E}'
+            note: "On réutilise A = CE de la question 2, avec Q lu sur le palier."
+          - math: 'C = \frac{100\times10^{-6}}{10} = 10\times10^{-6}\ \text{F} = 10\ \mu\text{F}'
+            note: "Application numérique : Q = 100 µC, E = 10 V."
+      - id: q6
+        stem: |-
+          **(0,25 pt)** Trouver la valeur de la résistance $R$.
+        reasoning: |-
+          On dispose maintenant de $\tau$ (question 4) et de $C$ (question 5), reliés par $\tau = RC$ — le groupement identifié en question 2 via $\alpha = 1/(RC)$. On isole $R$ : c'est ici que $\tau$ sert enfin, la constante de temps porte l'information sur $R$ que la charge finale $Q$ ne portait pas.
+        steps:
+          - math: '\tau = RC \implies R = \frac{\tau}{C}'
+            note: "On inverse tau = RC ; tau vient de la question 4, C de la question 5."
+          - math: 'R = \frac{1\times10^{-3}}{10\times10^{-6}} = 100\ \Omega'
+            note: "Application numérique : tau = 1 ms, C = 10 µF."
+
+  # ── bk-2018-n-x3 — 2018 N, Exercice III (sous-partie I-2) : décharge, échelon ──
+  - id: bk-2018-n-x3
+    title: "Décharge d'un condensateur dans une résistance : équation différentielle et détermination de la capacité"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — I-2. Réponse du dipôle RC à un échelon de tension (décharge)"
+    bareme_total: 1.5
+    duration_min: 8
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques, SPC),
+        AlloSchool NS28F, element/57726 (Exercice III, sous-partie I-2 —
+        détermination expérimentale d'une capacité par la réponse du dipôle RC
+        à un échelon de tension, c'est-à-dire la décharge du condensateur dans
+        la résistance seule ; barème de la sous-partie ≈ 1,5 pt sur les 5 pt
+        de l'exercice complet, qui comporte aussi la sous-partie I-1 —
+        générateur de courant — et une Partie II sur le circuit RLC série,
+        transcrite sous rlc-serie.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (docs/sujets/pc/rc-charge.md, statut
+        « vérifié » agent-vérificateur 2026-07-11).
+    intro: |-
+      **Détermination expérimentale de la capacité d'un condensateur, par la réponse du dipôle RC à un échelon de tension (examen national, session normale 2018).**
+
+      Un groupe d'élèves réalise le montage représenté par la figure 3, constitué d'un générateur idéal de tension de force électromotrice $E$, d'un conducteur ohmique de résistance $R = 1600\ \Omega$, du condensateur étudié précédemment dans l'exercice, de capacité $C_2$, et d'un interrupteur $K$ à double position.
+
+      Après avoir chargé totalement le condensateur, un élève bascule l'interrupteur $K$ sur la position (2) à l'instant $t_0 = 0$ : le condensateur se décharge alors dans la résistance $R$ seule. À l'aide d'un système d'acquisition informatisé, le groupe obtient la courbe des variations de la tension $u_{C_2}(t)$ aux bornes du condensateur (figure 4) : elle part de $u_{C_2}(0) = 9\ \text{V}$ (axe $t$ gradué $4,\ 8,\ 12\ \text{ms}$) et décroît de façon exponentielle vers $0$. La tangente à la courbe à l'origine, en pointillés, coupe l'axe des abscisses vers $t = 4\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_{C_2}(t)$ au cours de la décharge du condensateur.
+        reasoning: |-
+          Même situation que le paragraphe « Et si on décharge ? » de R4 : le générateur est déconnecté, il ne reste que $R$ et $C_2$ en boucle fermée. La loi des mailles perd son second membre — plus de f.é.m. qui pousse — et devient $u_R + u_{C_2} = 0$. On exprime chaque tension comme pendant la charge : $u_R = R\,i$ par la loi d'Ohm, et $i = C_2\dfrac{du_{C_2}}{dt}$ par $i = \dfrac{dq}{dt}$ et $q = C_2 u_{C_2}$ — la même relation courant-tension qu'à la charge, le condensateur ne « sait » pas s'il charge ou décharge.
+        steps:
+          - math: 'u_R + u_{C_2} = 0'
+            note: "Loi des mailles sur la boucle R-C2 seule, générateur déconnecté."
+          - math: 'u_R = R\,i = R\,C_2\frac{du_{C_2}}{dt}'
+            note: "Loi d'Ohm, avec i = C2 du_C2/dt (de i = dq/dt et q = C2 u_C2)."
+          - math: '\boxed{R\,C_2\frac{du_{C_2}}{dt} + u_{C_2} = 0}'
+            note: "Forme standard : même équation qu'à la charge, mais second membre nul."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** La solution de cette équation différentielle est de la forme $u_{C_2}(t) = E\, e^{-t/\tau}$. Trouver l'expression de la constante de temps $\tau$ en fonction de $R$ et $C_2$.
+        reasoning: |-
+          Encore le geste de R2 : on injecte la forme proposée dans l'équation et on exige l'égalité à chaque instant. Ici l'équation est homogène, second membre nul, donc il n'y a qu'un seul terme exponentiel à annuler : son coefficient doit être nul quel que soit $t$, ce qui fixe $\tau$ directement.
+        steps:
+          - math: 'u_{C_2}(t) = E\,e^{-t/\tau} \implies \frac{du_{C_2}}{dt} = -\frac{E}{\tau}\,e^{-t/\tau}'
+            note: "Dérivée de la forme proposée, à injecter dans l'équation."
+          - math: 'R\,C_2\left(-\frac{E}{\tau}\right)e^{-t/\tau} + E\,e^{-t/\tau} = E\,e^{-t/\tau}\left(1 - \frac{R\,C_2}{\tau}\right)'
+            note: "Substitution ; on factorise E fois l'exponentielle, jamais nulle."
+          - math: '1 - \frac{R\,C_2}{\tau} = 0 \implies \boxed{\tau = R\,C_2}'
+            note: "Le facteur restant doit s'annuler a tout instant : ceci impose tau = R C2, le meme groupement qu'a la charge."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer de nouveau la valeur de la capacité $C_2$.
+        reasoning: |-
+          On lit $\tau$ sur la courbe par la méthode de la tangente à l'origine — la même construction qu'en R3, mais appliquée à une décroissance : la pente à l'origine vaut $-E/\tau$, donc une droite partant de $E$ avec cette pente atteint $0$ après une durée $\tau$. La tangente à l'origine coupe donc l'axe des abscisses exactement en $t = \tau$, et l'énoncé indique que cela se produit vers $t = 4\ \text{ms}$. On remonte ensuite à $C_2$ par $\tau = RC_2$, puisque $R$ est donnée.
+        steps:
+          - math: '\tau = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}'
+            note: "Lecture graphique : la tangente a l'origine coupe l'axe des abscisses a t = tau."
+          - math: 'C_2 = \frac{\tau}{R} = \frac{4{,}0\times10^{-3}}{1600} = 2{,}5\times10^{-6}\ \text{F} = 2{,}5\ \mu\text{F}'
+            note: "On inverse tau = R C2 ; application numerique avec R = 1600 ohms."

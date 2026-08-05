@@ -1,0 +1,456 @@
+# bank.yaml — la banque « S'entraîner » de nombres-complexes-1 (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, [[exercise:]] à R6), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les trois entrées sont des transcriptions FIDÈLES des trois
+# entrées « vérifié » de docs/sujets/maths/nombres-complexes-1.md (re-fetch
+# AlloSchool indépendant + diff caractère-par-caractère, agent-vérificateur-
+# adversarial, 2026-07-12) — les SEULS sujets vérifiés recensés pour cette
+# notion : 2019, 2022, 2023, tous session normale, filière Sciences
+# Expérimentales (SVT et Sciences Physiques, BIOF), tous « Exercice 2 » sur
+# leur copie (barème 3 points chacun). Aucun autre sujet n'est disponible —
+# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix experte
+# de la maison sur 100 % des questions ; barème transcrit tel quel dans les
+# énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut entre
+# apostrophes simples dans steps[].math, notes sans backslash).
+#
+# SCOPE NOTE (divulgation honnête, authoring-side — reprend la note déjà
+# posée dans exercises.yaml) : les trois sujets mobilisent tous la forme
+# trigonométrique/exponentielle et les formules de rotation (z' = e^{iθ}z, sa
+# version décentrée z' - ω = e^{iθ}(z - ω), argument d'un produit / d'un
+# quotient / d'un conjugué) — un registre que le corps de la leçon (R1–R5,
+# socle algébrique/conjugué/module/géométrie du plan complexe) ne couvre pas
+# encore formellement. Le rung R6 le signale déjà pour r-bac (note de
+# validation en pied de lesson.md, checkpoint cp-bac-exponentielle) ; les
+# champs `reasoning` des trois entrées ci-dessous bridgent le même écart au
+# point d'usage, en nommant explicitement la propriété mobilisée chaque fois
+# qu'elle sort du corps R1–R5 actuel.
+#
+# NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x2 transcrit le MÊME sujet que
+# le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R6). Il
+# figure ici pour que la banque soit le corpus complet des annales vérifiées
+# de la notion (BANK-SPEC §1 : « la banque est le volume derrière le sommet,
+# jamais son remplacement »). À l'arbitrage de l'owner si l'on préfère
+# l'écarter de la banque pour éviter le recoupement sur la même page — voir la
+# même décision, prise dans le même sens, sur bk-2021-n-x1 de
+# content/pc/reactions-acido-basiques/bank.yaml.
+
+notion: maths/nombres-complexes-1
+
+entries:
+  # ── bk-2019-n-x2 — 2019 N, Exercice 2 : équation, alignement, rotation, triangle rectangle isocèle ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir note éditoriale en tête.
+  - id: bk-2019-n-x2
+    title: "Équation du second degré, alignement et rotation (triangle rectangle isocèle)"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 3
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/68527 (Exercice 2, « Nombres
+        complexes » ; barème 3 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/nombres-complexes-1.md, section
+        « 2019 — session normale — Exercice 2 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        agent-vérificateur-adversarial, 2026-07-12). NB : ce même sujet
+        sous-tend aussi le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R6) — recoupement assumé, voir note éditoriale
+        en tête de fichier.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2019, Sciences Expérimentales).**
+
+      Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+
+      $$a = 1 - i\sqrt{3}, \qquad b = 2 + 2i, \qquad c = \sqrt{3} + i, \qquad d = -2 + 2\sqrt{3}.$$
+    questions:
+      - id: q1
+        part: "Une équation du second degré dans ℂ"
+        stem: |-
+          **(0,75 pt)** Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $z^2 - 2z + 4 = 0$
+        reasoning: |-
+          L'équation est du second degré à coefficients réels : le réflexe est de calculer le discriminant $\Delta$. Ici $\Delta$ est strictement négatif, donc pas de solution réelle — mais dans $\mathbb{C}$ on écrit quand même $\sqrt{\Delta}$ à l'aide de $i$ (rung R0 : c'est exactement pour ça qu'on a construit $\mathbb{C}$). Les deux solutions sont alors complexes et **conjuguées** l'une de l'autre, données par la formule habituelle $\dfrac{-b\pm\sqrt{\Delta}}{2a}$.
+
+          Garde en tête l'une des deux solutions, $1 - i\sqrt{3}$ : c'est exactement l'affixe $a$ du point $A$ qui porte toute la suite de l'exercice — l'équation et la configuration géométrique partagent le même nombre.
+        steps:
+          - math: '\Delta = (-2)^2 - 4\times 1\times 4 = 4 - 16 = -12'
+            note: "Discriminant de z carré moins 2z plus 4 : ici strictement négatif."
+          - math: '\Delta < 0 \implies \sqrt{\Delta} = i\sqrt{12} = 2i\sqrt{3}'
+            note: "Delta négatif : on écrit sa racine avec i (racine de -12 = i fois racine de 12 = 2i racine de 3)."
+          - math: 'z = \dfrac{2 \pm 2i\sqrt{3}}{2} = 1 \pm i\sqrt{3}'
+            note: "Formule usuelle (-b plus ou moins racine de Delta) sur 2a, avec a = 1, b = -2."
+          - math: 'S = \left\{\, 1 - i\sqrt{3}\ ;\ 1 + i\sqrt{3} \,\right\}'
+            note: "Deux solutions conjuguées. On garde a = 1 - i racine de 3, celle qui sert dans la suite."
+      - id: q2
+        part: "Une configuration de points alignés"
+        stem: |-
+          **(0,5 pt)** Vérifier que $a - d = -\sqrt{3}\,(c - d)$.
+        reasoning: |-
+          C'est une vérification algébrique directe : on calcule séparément les deux différences d'affixes $a - d$ et $c - d$, puis on montre que la première vaut $-\sqrt{3}$ fois la seconde. Pas d'astuce ici — on remplace par les valeurs et on développe soigneusement, en surveillant les signes, surtout devant $d = -2 + 2\sqrt{3}$ qui est un nombre **réel** (sa partie imaginaire est nulle).
+        steps:
+          - math: 'a - d = (1 - i\sqrt{3}) - (-2 + 2\sqrt{3}) = (3 - 2\sqrt{3}) - i\sqrt{3}'
+            note: "On soustrait le réel d : la partie réelle devient 1 plus 2 moins 2 racine de 3."
+          - math: 'c - d = (\sqrt{3} + i) - (-2 + 2\sqrt{3}) = (2 - \sqrt{3}) + i'
+            note: "Même soustraction pour c moins d."
+          - math: '-\sqrt{3}\,(c - d) = -\sqrt{3}\,(2 - \sqrt{3}) - \sqrt{3}\,i = (3 - 2\sqrt{3}) - i\sqrt{3}'
+            note: "On développe : moins racine de 3 fois (2 moins racine de 3) donne 3 moins 2 racine de 3."
+          - math: 'a - d = -\sqrt{3}\,(c - d)'
+            note: "Les deux expressions coïncident : l'égalité est vérifiée."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** En déduire que les points $A$, $C$ et $D$ sont alignés.
+        reasoning: |-
+          La relation $a - d = -\sqrt{3}(c - d)$ n'est pas qu'une identité numérique. Rappelle-toi l'interprétation vue au rung R5 : une différence d'affixes $z_B - z_A$ est l'affixe du vecteur $\overrightarrow{AB}$. Donc $a - d$ est l'affixe de $\overrightarrow{DA}$, et $c - d$ celle de $\overrightarrow{DC}$.
+
+          L'égalité dit alors $\overrightarrow{DA} = -\sqrt{3}\,\overrightarrow{DC}$ : deux vecteurs **colinéaires** (le coefficient $-\sqrt{3}$ est réel), issus du même point $D$ — ce qui impose que $A$, $C$ et $D$ soient **alignés**.
+        steps:
+          - math: 'a - d = z_{\overrightarrow{DA}}, \qquad c - d = z_{\overrightarrow{DC}}'
+            note: "Une différence d'affixes est l'affixe du vecteur correspondant (rung R5)."
+          - math: '\overrightarrow{DA} = -\sqrt{3}\;\overrightarrow{DC}'
+            note: "Coefficient réel : les deux vecteurs sont colinéaires."
+          - math: 'A,\ C,\ D \ \text{alignés}'
+            note: "Deux vecteurs colinéaires issus de D : les trois points sont alignés."
+      - id: q4
+        part: "La rotation, traduite en écriture complexe"
+        stem: |-
+          **(0,5 pt)** On considère $z$ l'affixe d'un point $M$ et $z'$ l'affixe de $M'$ image de $M$ par la rotation $R$ de centre $O$ et d'angle $\dfrac{-\pi}{3}$. Vérifier que $z' = \dfrac{1}{2}az$.
+        reasoning: |-
+          Une rotation de centre $O$ et d'angle $\theta$ se traduit sur les affixes par $z' = e^{i\theta}z$ — le pont entre transformation géométrique et écriture complexe (forme exponentielle, au-delà du socle R1–R5 mais indispensable ici). Ici $\theta = -\dfrac{\pi}{3}$, donc $z' = e^{-i\pi/3}\,z$.
+
+          Tout revient alors à reconnaître que $\dfrac{1}{2}a$ **est** ce facteur $e^{-i\pi/3}$ : on écrit les deux sous forme algébrique et on constate qu'ils coïncident. Le module de $a = 1 - i\sqrt{3}$ vaut $2$ (rung R4 : $|a| = \sqrt{1^2+(\sqrt3)^2} = \sqrt4 = 2$) et son argument vaut $-\dfrac{\pi}{3}$ ; donc $\dfrac{1}{2}a$ a pour module $1$ et pour argument $-\dfrac{\pi}{3}$ — exactement $e^{-i\pi/3}$.
+        steps:
+          - math: 'z'' = e^{i\theta}\,z = e^{-i\pi/3}\,z'
+            note: "La rotation de centre O et d'angle theta = -pi/3 : z prime = e puissance i theta fois z."
+          - math: 'e^{-i\pi/3} = \cos\!\left(-\dfrac{\pi}{3}\right) + i\sin\!\left(-\dfrac{\pi}{3}\right) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}\,i'
+            note: "Forme algébrique de l'exponentielle."
+          - math: '\dfrac{1}{2}\,a = \dfrac{1}{2}\,(1 - i\sqrt{3}) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}\,i'
+            note: "Forme algébrique de un demi a : mêmes parties réelle et imaginaire que e puissance moins i pi sur 3."
+          - math: '\dfrac{1}{2}\,a = e^{-i\pi/3} \implies z'' = e^{-i\pi/3}\,z = \dfrac{1}{2}\,a\,z'
+            note: "Les deux nombres coïncident : la rotation s'écrit bien z prime = un demi a z."
+      - id: q5
+        part: "Triangle rectangle isocèle"
+        stem: |-
+          Soient $H$ l'image du point $B$ par la rotation $R$, $h$ son affixe et $P$ le point d'affixe $p$ tel que $p = a - c$.
+
+          **(0,5 pt)** Vérifier que $h = i\,p$.
+        reasoning: |-
+          $H$ est l'image de $B$ par la rotation $R$ : son affixe s'obtient directement avec la formule établie à la question précédente, $h = \dfrac{1}{2}a\,b$. On développe ce produit et on réduit avec $i^2 = -1$ (rung R2).
+
+          Il reste à calculer $p = a - c$ de la même façon, puis à vérifier que multiplier $p$ par $i$ redonne $h$. Multiplier par $i$ n'est pas anodin : géométriquement, c'est une rotation d'un quart de tour — ce qui prépare directement la question suivante.
+        steps:
+          - math: 'h = \dfrac{1}{2}\,a\,b = \dfrac{1}{2}\,(1 - i\sqrt{3})(2 + 2i)'
+            note: "H = R(B), donc h = un demi a b, d'après la formule de la question précédente."
+          - math: '(1 - i\sqrt{3})(2 + 2i) = 2 + 2i - 2i\sqrt{3} - 2i^2\sqrt{3} = (2 + 2\sqrt{3}) + i\,(2 - 2\sqrt{3})'
+            note: "On développe et on remplace i carré par -1."
+          - math: 'h = (1 + \sqrt{3}) + i\,(1 - \sqrt{3})'
+            note: "On multiplie par un demi."
+          - math: 'p = a - c = (1 - i\sqrt{3}) - (\sqrt{3} + i) = (1 - \sqrt{3}) - i\,(1 + \sqrt{3})'
+            note: "Différence d'affixes p = a moins c."
+          - math: 'i\,p = i\,(1 - \sqrt{3}) - i^2(1 + \sqrt{3}) = (1 + \sqrt{3}) + i\,(1 - \sqrt{3}) = h'
+            note: "i fois p redonne exactement h : l'égalité h = ip est vérifiée."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que le triangle $OHP$ est rectangle et isocèle en $O$.
+        reasoning: |-
+          On lit les **deux** informations contenues dans $h = i\,p$.
+
+          D'abord les modules : $|h| = |i|\times|p| = |p|$, car $|i| = 1$ (rung R4). Donc $OH = OP$ — le triangle est **isocèle en $O$**.
+
+          Ensuite l'argument : $\dfrac{h}{p} = i$, dont un argument est $\dfrac{\pi}{2}$ ; or $\arg\dfrac{h}{p}$ est une mesure de l'angle $\left(\overrightarrow{OP}, \overrightarrow{OH}\right)$, qui vaut donc $\dfrac{\pi}{2}$ — l'angle en $O$ est **droit**. Isocèle en $O$ et rectangle en $O$ à la fois : c'est un triangle rectangle isocèle en $O$.
+        steps:
+          - math: '|h| = |i\,p| = |i|\times|p| = |p| \implies OH = OP'
+            note: "Module de i égal à 1, donc |h| = |p| : les deux côtés issus de O sont égaux (isocèle en O)."
+          - math: '\dfrac{h}{p} = i \implies \arg\!\left(\dfrac{h}{p}\right) = \dfrac{\pi}{2} \equiv \left(\overrightarrow{OP},\ \overrightarrow{OH}\right)'
+            note: "h sur p vaut i, d'argument pi sur 2 : c'est une mesure de l'angle (OP, OH)."
+          - math: 'OH = OP \ \text{et}\ \left(\overrightarrow{OP},\ \overrightarrow{OH}\right) = \dfrac{\pi}{2} \implies OHP \ \text{rectangle isocèle en}\ O'
+            note: "Isocèle en O et angle droit en O : triangle rectangle isocèle en O."
+
+  # ── bk-2022-n-x2 — 2022 N, Exercice 2 : translation, rotation, forme trigonométrique, deux cercles ──
+  - id: bk-2022-n-x2
+    title: "Translation, rotation et intersection de deux cercles"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 3
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/136586 (Exercice 2, « Nombres
+        complexes » ; barème 3 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/nombres-complexes-1.md, section
+        « 2022 — session normale — Exercice 2 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        agent-vérificateur-adversarial, 2026-07-12).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2022, Sciences Expérimentales).**
+
+      Dans le plan complexe rapporté à un repère orthonormé $(O,\vec{u},\vec{v})$, on considère le point $A$ d'affixe $a = -1 - i\sqrt{3}$, le point $B$ d'affixe $b = -1 + i\sqrt{3}$ et la translation $t$ de vecteur $\overrightarrow{OA}$.
+    questions:
+      - id: q1
+        part: "Une translation, puis une rotation"
+        stem: |-
+          **(0,5 pt)** Prouver que l'affixe du point $D$ image du point $B$ par la translation $t$ est $d = -2$.
+        reasoning: |-
+          Une translation de vecteur $\vec{w}$ transforme un point $M$ d'affixe $z$ en un point $M'$ d'affixe $z' = z + z_{\vec{w}}$ — additionner l'affixe du vecteur, c'est additionner les deux vecteurs correspondants (rung R5). Ici $\vec{w} = \overrightarrow{OA}$, et l'affixe d'un vecteur $\overrightarrow{OM}$ est celle de $M$ lui-même : donc $z_{\overrightarrow{OA}} = a$, et $d = b + a$.
+        steps:
+          - math: 'd = b + a = (-1 + i\sqrt{3}) + (-1 - i\sqrt{3})'
+            note: "Translation de vecteur OA : on ajoute l'affixe a à celle de B."
+          - math: 'd = -2'
+            note: "Les parties imaginaires s'annulent : il reste le réel -2."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** On considère la rotation $R$ de centre $D$ et d'angle $\left(\dfrac{2\pi}{3}\right)$. Montrer que l'affixe du point $C$ image du point $B$ par la rotation $R$ est $c = -4$.
+        reasoning: |-
+          Une rotation de centre $\Omega$ (affixe $\omega$) et d'angle $\theta$ se traduit par $z' - \omega = e^{i\theta}(z - \omega)$ — la version « décentrée » de la formule $z' = e^{i\theta}z$ vue à l'origine : on retranche le centre avant de faire tourner, puis on le rajoute. Ici $\Omega = D$ (affixe $d = -2$, question précédente) et $\theta = \dfrac{2\pi}{3}$, donc $c - d = e^{i2\pi/3}(b - d)$.
+        steps:
+          - math: 'c - d = e^{i2\pi/3}(b - d)'
+            note: "Rotation de centre D et d'angle 2 pi sur 3, appliquée à B pour obtenir C."
+          - math: 'b - d = (-1 + i\sqrt{3}) - (-2) = 1 + i\sqrt{3}'
+            note: "On calcule d'abord b moins d."
+          - math: 'e^{i2\pi/3} = \cos\!\left(\dfrac{2\pi}{3}\right) + i\sin\!\left(\dfrac{2\pi}{3}\right) = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\,i'
+            note: "Forme algébrique de l'exponentielle."
+          - math: 'c - d = \left(-\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\,i\right)(1 + i\sqrt{3}) = -2'
+            note: "On développe le produit et on réduit avec i carré = -1 : les parties imaginaires s'annulent."
+          - math: 'c = d - 2 = -2 - 2 = -4'
+            note: "On ajoute d = -2 pour retrouver c."
+      - id: q3
+        part: "Forme trigonométrique et un carré"
+        stem: |-
+          **(0,5 pt)** Écrire le nombre $\dfrac{b-c}{a-c}$ sous forme trigonométrique.
+        reasoning: |-
+          On calcule d'abord $b - c$ et $a - c$, deux différences d'affixes ordinaires. Puis on détermine module et argument du quotient à partir de ceux du numérateur et du dénominateur : le module d'un quotient est le quotient des modules (rung R4, $\left|\dfrac{z}{z'}\right| = \dfrac{|z|}{|z'|}$), et — propriété analogue côté arguments, qui déborde du socle R1–R5 — l'argument d'un quotient est la **différence** des arguments.
+        steps:
+          - math: 'b - c = (-1+i\sqrt{3}) - (-4) = 3 + i\sqrt{3}, \qquad a - c = (-1-i\sqrt{3}) - (-4) = 3 - i\sqrt{3}'
+            note: "Deux différences d'affixes."
+          - math: '|b-c| = \sqrt{3^2+3} = 2\sqrt{3}, \qquad |a-c| = \sqrt{3^2+3} = 2\sqrt{3}'
+            note: "Les deux modules sont égaux."
+          - math: '\arg(b-c) = \dfrac{\pi}{6}, \qquad \arg(a-c) = -\dfrac{\pi}{6}'
+            note: "Arguments de 3 plus i racine de 3 et de 3 moins i racine de 3, lus sur leur tangente."
+          - math: '\dfrac{b-c}{a-c} \ \text{a pour module}\ \dfrac{2\sqrt3}{2\sqrt3}=1 \ \text{et pour argument}\ \dfrac{\pi}{6}-\left(-\dfrac{\pi}{6}\right) = \dfrac{\pi}{3}'
+            note: "Module du quotient = quotient des modules ; argument du quotient = différence des arguments."
+          - math: '\dfrac{b-c}{a-c} = \cos\!\left(\dfrac{\pi}{3}\right) + i\sin\!\left(\dfrac{\pi}{3}\right)'
+            note: "Forme trigonométrique du quotient."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** En déduire que $\left(\dfrac{b-c}{a-c}\right)^2 = \dfrac{c-d}{b-d}$.
+        reasoning: |-
+          Pas besoin de recalculer quoi que ce soit : la rotation de la question 2 donne exactement $c - d = e^{i2\pi/3}(b-d)$, c'est-à-dire $\dfrac{c-d}{b-d} = e^{i2\pi/3}$ (car $b \neq d$). Or la question précédente donne $\dfrac{b-c}{a-c} = \cos\dfrac{\pi}{3}+i\sin\dfrac{\pi}{3} = e^{i\pi/3}$. Élever au carré un nombre de module $1$ et d'argument $\dfrac{\pi}{3}$ double l'argument : $\left(e^{i\pi/3}\right)^2 = e^{i2\pi/3}$. Les deux membres valent donc le même nombre — l'égalité s'obtient en relisant ce qu'on a déjà prouvé, pas en recalculant.
+        steps:
+          - math: '\left(\dfrac{b-c}{a-c}\right)^2 = \left(e^{i\pi/3}\right)^2 = e^{i2\pi/3}'
+            note: "On élève au carré la forme trigonométrique de la question précédente."
+          - math: '\dfrac{c-d}{b-d} = e^{i2\pi/3}'
+            note: "Relecture directe de la relation de rotation c - d = e puissance i2pi/3 fois (b-d), établie à la question 2."
+          - math: '\left(\dfrac{b-c}{a-c}\right)^2 = \dfrac{c-d}{b-d}'
+            note: "Les deux membres valent le même nombre e puissance i2pi/3."
+      - id: q5
+        part: "Deux cercles, un point commun"
+        stem: |-
+          Soient $(\Gamma)$ le cercle de centre $D$ et de rayon $2$, $(\Gamma')$ le cercle de centre $O$ et de rayon $4$ et $M$ un point d'affixe $z$ appartenant aux deux cercles $(\Gamma)$ et $(\Gamma')$.
+
+          **(0,25 pt)** Vérifier que $|z+2| = 2$.
+        reasoning: |-
+          $M$ appartient au cercle $(\Gamma)$ de centre $D$ et de rayon $2$ : par définition même d'un cercle vu à travers les affixes (rung R5, « l'équation d'un cercle »), cela signifie $|z - z_D| = 2$. Avec $d = -2$ (question 1), $z - d = z + 2$.
+        steps:
+          - math: 'M \in (\Gamma) \iff |z - d| = 2 \iff |z - (-2)| = 2 \iff |z+2| = 2'
+            note: "Équation du cercle de centre D et de rayon 2, avec d = -2."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Prouver que $z + \bar{z} = -8$ *(remarquer que $|z| = 4$)*.
+        reasoning: |-
+          $M$ appartient aussi à $(\Gamma')$, de centre $O$ et de rayon $4$ : donc $|z| = 4$, l'indication donnée. On part de $|z+2| = 2$ et on élève au carré en utilisant $|Z|^2 = Z\bar{Z}$ (rungs R3–R4) pour faire apparaître $z\bar{z} = |z|^2$ et $z + \bar{z}$ ensemble.
+        steps:
+          - math: '|z+2|^2 = (z+2)\overline{(z+2)} = (z+2)(\bar{z}+2) = z\bar{z} + 2z + 2\bar{z} + 4'
+            note: "On développe le produit par le conjugué."
+          - math: '|z+2|^2 = |z|^2 + 2(z+\bar{z}) + 4 = 2^2 = 4'
+            note: "z fois z barre vaut |z| carré ; on égale au carré du rayon, qui vaut 2."
+          - math: '16 + 2(z+\bar{z}) + 4 = 4 \implies z + \bar{z} = -8'
+            note: "|z| = 4 donc |z| carré = 16 ; on isole z plus z barre."
+      - id: q7
+        stem: |-
+          **(0,25 pt)** En déduire que les cercles $(\Gamma)$ et $(\Gamma')$ se coupent en un point unique qu'on déterminera.
+        reasoning: |-
+          Écris $z = x+iy$. La relation $z+\bar{z} = -8$ donne $2x = -8$, donc $x = -4$ (rung R3 : $z + \bar{z} = 2\,\text{Re}(z)$). Avec $|z| = 4$, c'est-à-dire $x^2+y^2 = 16$, on reporte : $16 + y^2 = 16$, donc $y = 0$. Un seul couple $(x,y)$ satisfait les deux conditions à la fois : le point commun est unique, d'affixe $z = -4$.
+
+          (Lecture géométrique de contrôle : la distance $OD = |d| = 2$ est exactement la différence des deux rayons, $4-2$ — les cercles sont donc tangents intérieurement, et deux cercles tangents ne peuvent se couper qu'en un seul point.)
+        steps:
+          - math: 'z + \bar{z} = -8, \quad z = x+iy \implies 2x = -8 \implies x = -4'
+            note: "Partie réelle de z, tirée de z plus z barre."
+          - math: '|z| = 4 \implies x^2+y^2 = 16 \implies 16 + y^2 = 16 \implies y = 0'
+            note: "On reporte x = -4 dans l'équation du deuxième cercle."
+          - math: 'z = -4'
+            note: "Unique solution : les deux cercles se coupent en un seul point, d'affixe -4."
+
+  # ── bk-2023-n-x2 — 2023 N, Exercice 2 : forme trigonométrique, alignement, rotation, angle orienté ──
+  - id: bk-2023-n-x2
+    title: "Forme trigonométrique, alignement et angle orienté par rotation"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 3
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/137482 (Exercice 2, « Nombres
+        complexes » ; barème 3 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/nombres-complexes-1.md, section
+        « 2023 — session normale — Exercice 2 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        agent-vérificateur-adversarial, 2026-07-12).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2023, Sciences Expérimentales).**
+
+      Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+
+      $$a = \sqrt{2} + i\sqrt{2}, \qquad b = 1 + \sqrt{2} + i, \qquad c = \bar{b}, \qquad d = 2i.$$
+    questions:
+      - id: q1
+        part: "Forme trigonométrique d'un affixe"
+        stem: |-
+          **(0,25 pt)** Écrire le nombre complexe $a$ sous forme trigonométrique.
+        reasoning: |-
+          On calcule module et argument à partir de la forme algébrique : le module par $|a|=\sqrt{\text{Re}(a)^2+\text{Im}(a)^2}$ (rung R4), l'argument en lisant $\cos\theta = \dfrac{\text{Re}(a)}{|a|}$ et $\sin\theta = \dfrac{\text{Im}(a)}{|a|}$. Ici les parties réelle et imaginaire de $a$ sont égales : c'est le signal d'un angle remarquable.
+        steps:
+          - math: '|a| = \sqrt{(\sqrt{2})^2+(\sqrt{2})^2} = \sqrt{4} = 2'
+            note: "Module de a, rung R4."
+          - math: '\cos\theta = \dfrac{\sqrt2}{2}, \quad \sin\theta = \dfrac{\sqrt2}{2} \implies \theta = \dfrac{\pi}{4}'
+            note: "Parties réelle et imaginaire égales et positives : angle remarquable pi sur 4."
+          - math: 'a = 2\left(\cos\dfrac{\pi}{4} + i\sin\dfrac{\pi}{4}\right)'
+            note: "Forme trigonométrique de a."
+      - id: q2
+        part: "Une identité, puis un alignement"
+        stem: |-
+          **(0,25 pt)** Vérifier que $b - d = c$.
+        reasoning: |-
+          Vérification directe : on calcule $b - d$ à partir des valeurs données, et on compare au conjugué de $b$ — puisque $c = \bar{b}$ (rung R3 : conjuguer, c'est changer le signe de la partie imaginaire).
+        steps:
+          - math: 'b - d = (1+\sqrt2+i) - 2i = (1+\sqrt2) - i'
+            note: "On soustrait d = 2i."
+          - math: '\bar{b} = \overline{(1+\sqrt2)+i} = (1+\sqrt2) - i'
+            note: "Conjugué de b : on change le signe de la partie imaginaire."
+          - math: 'b - d = (1+\sqrt2) - i = \bar{b} = c'
+            note: "Les deux expressions coïncident."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Montrer que $(\sqrt{2} + 1)(b - a) = b - d$ et déduire que les points $A$, $B$ et $D$ sont alignés.
+        reasoning: |-
+          On calcule $b - a$, on le multiplie par $\sqrt2+1$, et on compare au résultat $b - d$ déjà obtenu à la question précédente — c'est une vérification algébrique, pas un nouveau calcul de $b-d$.
+
+          L'interprétation vient ensuite (rung R5) : $b-a$ est l'affixe du vecteur $\overrightarrow{AB}$, et $b-d$ celle du vecteur $\overrightarrow{DB}$. Les deux vecteurs se terminent au même point $B$ ; si l'égalité tombe juste avec un coefficient **réel**, ils sont colinéaires, ce qui force $A$, $D$ et $B$ à être alignés.
+        steps:
+          - math: 'b - a = (1+\sqrt2+i) - (\sqrt2+i\sqrt2) = 1 + i(1-\sqrt2)'
+            note: "Différence d'affixes b moins a."
+          - math: '(\sqrt2+1)(b-a) = (\sqrt2+1)\left[1+i(1-\sqrt2)\right] = (\sqrt2+1) + i(\sqrt2+1)(1-\sqrt2)'
+            note: "On développe."
+          - math: '(\sqrt2+1)(1-\sqrt2) = \sqrt2-2+1-\sqrt2 = -1'
+            note: "Ce facteur se réduit à -1 (identité remarquable déployée)."
+          - math: '(\sqrt2+1)(b-a) = (\sqrt2+1) - i = (1+\sqrt2) - i = b - d'
+            note: "On retrouve exactement b moins d, calculé à la question précédente."
+          - math: '\overrightarrow{DB} = (\sqrt2+1)\,\overrightarrow{AB} \implies A,\ D,\ B\ \text{alignés}'
+            note: "Coefficient réel : les deux vecteurs, partageant le point B, sont colinéaires."
+      - id: q4
+        part: "Un produit, puis un argument"
+        stem: |-
+          **(0,25 pt)** Vérifier que $ac = 2b$.
+        reasoning: |-
+          Vérification algébrique directe : on calcule $ac$ à partir de $a = \sqrt2+i\sqrt2 = \sqrt2(1+i)$ et de $c = (1+\sqrt2)-i$ (obtenu à la question 2), puis on compare à $2b$.
+        steps:
+          - math: 'ac = \sqrt2(1+i)\left[(1+\sqrt2)-i\right]'
+            note: "a factorisé en racine de 2 fois (1+i) ; c déjà connu (question 2)."
+          - math: '(1+i)\left[(1+\sqrt2)-i\right] = (1+\sqrt2) - i + i(1+\sqrt2) - i^2 = (2+\sqrt2) + i\sqrt2'
+            note: "On développe et on remplace i carré par -1."
+          - math: 'ac = \sqrt2\left[(2+\sqrt2)+i\sqrt2\right] = (2\sqrt2+2) + 2i'
+            note: "On distribue racine de 2."
+          - math: '2b = 2(1+\sqrt2+i) = (2+2\sqrt2) + 2i = ac'
+            note: "Les deux expressions coïncident."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** En déduire que $2\arg(b) \equiv \dfrac{\pi}{4}\ [2\pi]$.
+        reasoning: |-
+          On passe aux arguments dans l'égalité $ac = 2b$ (argument d'un produit = somme des arguments ; le facteur réel positif $2$ ne change rien à l'argument) : $\arg(a) + \arg(c) \equiv \arg(b)\ [2\pi]$.
+
+          Or $c = \bar{b}$, et le rung R5 dit que le point d'affixe $\bar{z}$ est le symétrique du point d'affixe $z$ par rapport à l'axe des réels — ce qui revient à changer le signe de l'argument : $\arg(c) = -\arg(b)$.
+
+          En reportant, $\arg(a) - \arg(b) \equiv \arg(b)\ [2\pi]$, c'est-à-dire $\arg(a) \equiv 2\arg(b)\ [2\pi]$. La question 1 donne $\arg(a) = \dfrac{\pi}{4}$ : c'est exactement le résultat annoncé.
+        steps:
+          - math: 'ac = 2b \implies \arg(a) + \arg(c) \equiv \arg(b)\ [2\pi]'
+            note: "Argument d'un produit = somme des arguments ; le facteur réel positif 2 ne change rien."
+          - math: 'c = \bar{b} \implies \arg(c) = -\arg(b)\ [2\pi]'
+            note: "Conjugué : symétrique par rapport à l'axe des réels, donc argument opposé (rung R5)."
+          - math: '\arg(a) - \arg(b) \equiv \arg(b)\ [2\pi] \implies \arg(a) \equiv 2\arg(b)\ [2\pi]'
+            note: "On reporte l'argument de c."
+          - math: '\arg(a) = \dfrac{\pi}{4} \implies 2\arg(b) \equiv \dfrac{\pi}{4}\ [2\pi]'
+            note: "Valeur de arg(a) obtenue à la question 1."
+      - id: q6
+        part: "La rotation d'angle π/4"
+        stem: |-
+          Soit $R$ la rotation de centre $O$ et d'angle $\dfrac{\pi}{4}$ et qui transforme chaque point $M$ du plan d'affixe $z$ en un point $M'$ d'affixe $z'$.
+
+          **(0,25 pt)** Montrer que $z' = \dfrac{1}{2}az$.
+        reasoning: |-
+          Même mécanisme qu'à chaque rotation de centre $O$ : $z' = e^{i\theta}z$, ici avec $\theta = \dfrac{\pi}{4}$. Il reste à reconnaître $\dfrac{1}{2}a$ sous cette forme : $a$ a pour module $2$ et pour argument $\dfrac{\pi}{4}$ (question 1), donc $\dfrac{1}{2}a$ a pour module $1$ et le même argument $\dfrac{\pi}{4}$ — exactement $e^{i\pi/4}$.
+        steps:
+          - math: 'z'' = e^{i\theta}\,z = e^{i\pi/4}\,z'
+            note: "Rotation de centre O et d'angle pi sur 4."
+          - math: 'e^{i\pi/4} = \cos\dfrac{\pi}{4} + i\sin\dfrac{\pi}{4} = \dfrac{\sqrt2}{2} + \dfrac{\sqrt2}{2}\,i'
+            note: "Forme algébrique de l'exponentielle."
+          - math: '\dfrac{1}{2}\,a = \dfrac{1}{2}(\sqrt2+i\sqrt2) = \dfrac{\sqrt2}{2} + \dfrac{\sqrt2}{2}\,i'
+            note: "Forme algébrique de un demi a : mêmes parties que e puissance i pi sur 4."
+          - math: '\dfrac{1}{2}\,a = e^{i\pi/4} \implies z'' = \dfrac{1}{2}\,a\,z'
+            note: "Les deux nombres coïncident : la rotation s'écrit bien z prime = un demi a z."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** En déduire que $R(C) = B$ et que $R(A) = D$.
+        reasoning: |-
+          La formule $z' = \dfrac{1}{2}az$ de la question précédente donne l'affixe de l'image de n'importe quel point : il suffit d'y injecter l'affixe de départ.
+
+          Pour $R(C)$ : l'affixe est $\dfrac{1}{2}ac$, et la question 4 a déjà établi $ac = 2b$, donc $\dfrac{1}{2}ac = \dfrac{1}{2}(2b) = b$ — l'image de $C$ est bien $B$.
+
+          Pour $R(A)$ : l'affixe est $\dfrac{1}{2}a\cdot a = \dfrac{1}{2}a^2$. Comme $a$ a pour module $2$ et pour argument $\dfrac{\pi}{4}$, son carré a pour module $4$ et pour argument $\dfrac{\pi}{2}$, c'est-à-dire $a^2 = 4i$ — d'où $\dfrac{1}{2}a^2 = 2i = d$. L'image de $A$ est bien $D$.
+        steps:
+          - math: 'R(C):\quad \dfrac{1}{2}ac = \dfrac{1}{2}(2b) = b \implies R(C) = B'
+            note: "On réutilise ac = 2b, établi à la question 4."
+          - math: 'a^2:\quad |a^2| = |a|^2 = 4, \quad \arg(a^2) = 2\arg(a) = \dfrac{\pi}{2} \implies a^2 = 4i'
+            note: "Module au carré, argument doublé : a a pour module 2 et argument pi sur 4 (question 1)."
+          - math: 'R(A):\quad \dfrac{1}{2}a^2 = \dfrac{1}{2}(4i) = 2i = d \implies R(A) = D'
+            note: "d = 2i est l'affixe donnée pour D."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Montrer que $\dfrac{b-a}{c-a} = \left(\dfrac{\sqrt2-1}{2}\right)a$, puis déduire une mesure de l'angle $\left(\overrightarrow{AC}, \overrightarrow{AB}\right)$.
+        reasoning: |-
+          On calcule $b-a$ (déjà obtenu à la question 3) et $c-a$, puis on réduit le quotient à une forme algébrique pour le comparer au membre de droite.
+
+          Une fois l'égalité établie, l'interprétation géométrique du rung R5 prend le relais : $\dfrac{b-a}{c-a}$ est le quotient des affixes des vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$, et son argument est une mesure de l'angle $\left(\overrightarrow{AC}, \overrightarrow{AB}\right)$. Comme $\dfrac{\sqrt2-1}{2}$ est un réel **positif** (donc ne change pas l'argument), l'argument du membre de droite est simplement celui de $a$ — déjà connu depuis la question 1.
+        steps:
+          - math: 'c - a = \left[(1+\sqrt2)-i\right] - (\sqrt2+i\sqrt2) = 1 - i(1+\sqrt2)'
+            note: "Différence d'affixes c moins a (b moins a déjà obtenu à la question 3)."
+          - math: '\dfrac{b-a}{c-a} = \dfrac{1+i(1-\sqrt2)}{1-i(1+\sqrt2)}'
+            note: "On forme le quotient avec b moins a de la question 3."
+          - math: '\dfrac{b-a}{c-a} = \dfrac{\left[1+i(1-\sqrt2)\right]\left[1+i(1+\sqrt2)\right]}{\left[1-i(1+\sqrt2)\right]\left[1+i(1+\sqrt2)\right]} = \dfrac{2+2i}{4+2\sqrt2}'
+            note: "On multiplie haut et bas par le conjugué du dénominateur."
+          - math: '\dfrac{b-a}{c-a} = \dfrac{1+i}{2+\sqrt2} = \dfrac{(1+i)(2-\sqrt2)}{2} = \dfrac{2-\sqrt2}{2}\,(1+i)'
+            note: "On simplifie, puis on rationalise en multipliant par 2 moins racine de 2."
+          - math: '\left(\dfrac{\sqrt2-1}{2}\right)a = \left(\dfrac{\sqrt2-1}{2}\right)\sqrt2(1+i) = \dfrac{2-\sqrt2}{2}\,(1+i)'
+            note: "On développe le membre de droite en factorisant a = racine de 2 fois (1+i)."
+          - math: '\dfrac{b-a}{c-a} = \left(\dfrac{\sqrt2-1}{2}\right)a'
+            note: "Les deux expressions coïncident."
+          - math: '\arg\!\left(\dfrac{b-a}{c-a}\right) = \arg(a) = \dfrac{\pi}{4} \quad \text{car}\ \dfrac{\sqrt2-1}{2} > 0'
+            note: "Un coefficient réel positif ne change pas l'argument."
+          - math: '\left(\overrightarrow{AC},\ \overrightarrow{AB}\right) \equiv \dfrac{\pi}{4}\ [2\pi]'
+            note: "L'argument du quotient des affixes-vecteurs est une mesure de l'angle (AC, AB)."
