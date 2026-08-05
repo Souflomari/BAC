@@ -93,18 +93,30 @@ const BASE = `http://localhost:${PORT}`;
 
 // ── Expectations, derived from the token sources ──────────────────────────────
 
-/** Parse tailwind.config.ts fontSize entries → { key: { px, lineHeightPx } } */
+/** Load the type scale from the single source (src/lib/tokens.ts) →
+ *  { key: { px, lineHeightPx } }. Same shape and same numbers the old
+ *  regex-of-tailwind.config parser produced — but sourced from the module
+ *  tailwind.config itself consumes, so the harness can never drift from the
+ *  rendered scale. Throws LOUDLY if the module moved (the self-syncing rule). */
 function parseFontSizes() {
-  const src = readFileSync(path.join(WEB, "tailwind.config.ts"), "utf8");
+  let typeScale;
+  try {
+    const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
+    ({ typeScale } = jiti(path.join(WEB, "src/lib/tokens.ts")));
+  } catch (e) {
+    throw new Error(
+      "dom-truth: failed to load typeScale from src/lib/tokens.ts — did the token source move? (" +
+        e.message +
+        ")",
+    );
+  }
   const out = {};
-  const re = /"([\w-]+)":\s*\["([\d.]+)rem",\s*\{\s*lineHeight:\s*"([\d.]+)"/g;
-  let m;
-  while ((m = re.exec(src)) !== null) {
-    const px = parseFloat(m[2]) * 16;
-    out[m[1]] = { px, lineHeightPx: px * parseFloat(m[3]) };
+  for (const [key, t] of Object.entries(typeScale ?? {})) {
+    const px = t.rem * 16;
+    out[key] = { px, lineHeightPx: px * t.lineHeight };
   }
   if (!out.h1 || !out.display || !out.caption) {
-    throw new Error("dom-truth: failed to parse fontSize tokens from tailwind.config.ts — update the parser with the config format");
+    throw new Error("dom-truth: typeScale from src/lib/tokens.ts is missing h1/display/caption — token source changed shape");
   }
   return out;
 }

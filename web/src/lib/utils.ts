@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
+import { typeScale } from "./tokens";
 
 /**
  * Merge Tailwind classes safely — deduplicate conflicting utilities.
@@ -26,32 +27,19 @@ import { extendTailwindMerge } from "tailwind-merge";
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      // fontSize — tailwind.config.ts `fontSize` (text-<key>)
-      "font-size": [
-        {
-          text: [
-            "caption",
-            "body-sm",
-            "body",
-            "body-lg",
-            "lead",
-            "h4",
-            "h3",
-            "h2",
-            "h1",
-            "display",
-            "display-lg",
-          ],
-        },
-      ],
+      // fontSize — text-<key>, derived from tokens.ts typeScale (the source
+      // tailwind.config also consumes) so this list can never drift from it.
+      "font-size": [{ text: Object.keys(typeScale) }],
+      // textColor — text-<key> COLORS (tailwind.config `textColor`). Distinct
+      // group from font-size so cn("text-h1", "text-primary") keeps BOTH.
+      "text-color": [{ text: ["primary", "secondary", "tertiary", "onAccent"] }],
+      // borderColor — border-<key> (tailwind.config `borderColor`).
+      "border-color": [{ border: ["subtle", "soft"] }],
       // fontWeight — the one non-default key (font-regular)
       "font-weight": [{ font: ["regular"] }],
-      // boxShadow — elevation scale + legacy aliases (shadow-<key>)
-      shadow: [
-        {
-          shadow: ["subtle", "soft", { elevation: ["0", "1", "2", "3", "4"] }],
-        },
-      ],
+      // boxShadow — elevation scale (shadow-elevation-<n>). The legacy
+      // shadow-subtle/soft aliases were removed in Phase A (dead + off-palette).
+      shadow: [{ shadow: [{ elevation: ["0", "1", "2", "3", "4"] }] }],
       // transitionDuration — duration-<key>
       duration: [{ duration: ["micro", "standard", "slow"] }],
       // transitionTimingFunction — ease-<key>

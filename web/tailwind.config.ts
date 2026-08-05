@@ -1,4 +1,30 @@
 import type { Config } from "tailwindcss";
+import { typeScale, radius, screens } from "./src/lib/tokens";
+
+// ── Single source of truth ──────────────────────────────────────────────────
+// Scales come from src/lib/tokens.ts (the ONE place design values live). The
+// color keys below reference the CSS custom properties that tokens.ts also
+// generates into src/app/tokens.generated.css — so a value has exactly one home
+// and the tailwind aliases are just named handles onto it.
+//
+// MAINTENANCE: a custom key added here MUST be registered in cn()'s classGroups
+// (src/lib/utils.ts) in the same commit, or tailwind-merge silently drops it
+// (audit U1). dom-truth's cn() tripwire asserts this on every run.
+
+/** Reference a CSS custom property by name: v("color-accent") → "var(--color-accent)". */
+const v = (name: string) => `var(--${name})`;
+
+/** typeScale → Tailwind fontSize tuples: [size, { lineHeight, letterSpacing? }]. */
+type FontSizeValue = [string, { lineHeight: string; letterSpacing?: string }];
+const fontSize: Record<string, FontSizeValue> = Object.fromEntries(
+  Object.entries(typeScale).map(([key, t]): [string, FontSizeValue] => [
+    key,
+    [
+      `${t.rem}rem`,
+      { lineHeight: String(t.lineHeight), ...(t.tracking ? { letterSpacing: t.tracking } : {}) },
+    ],
+  ]),
+);
 
 const config: Config = {
   darkMode: "class",
@@ -9,217 +35,135 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // ── Adaptive window-size classes (ADR 0024 — M3 breakpoints) ────────────
-      // Added alongside Tailwind's defaults (sm/md/lg/xl). Use bp-medium /
-      // bp-expanded for per-window-class gutters + layout, keyed to M3's 600/840.
-      screens: {
-        "bp-medium": "600px",
-        "bp-expanded": "840px",
-        // Wide desktop tier (Day-8 owner review: composition rules exist per
-        // viewport tier — 1280 / 1536 / 1920; bible §11).
-        "bp-wide": "1536px",
-      },
+      // ── Adaptive window-size classes (ADR 0024 — M3 600/840, + wide 1536) ──
+      screens,
 
-      // ── Design-token color palette ─────────────────────────────────────────
-      // DESIGN-BIBLE §2: tinted neutrals, never pure black/white, single
-      // restrained blue accent.
+      // ── Color palette (DESIGN-BIBLE §2) — values are the generated CSS vars ──
+      // text + border moved to textColor/borderColor below so the classes read
+      // `text-primary` / `border-subtle` (not the dead `text-text-primary`).
       colors: {
-        // Tinted neutrals — light mode surfaces
         surface: {
-          base:    "var(--color-surface-base)",    // page background
-          raised:  "var(--color-surface-raised)",  // cards, panels
-          overlay: "var(--color-surface-overlay)", // modals, tooltips
+          base: v("color-surface-base"),
+          raised: v("color-surface-raised"),
+          overlay: v("color-surface-overlay"),
           // Surface-container tonal ladder (ADR 0024 — M3 tone-based surfaces).
-          // Tone steps with elevation: a higher tier sits on a lighter warm surface.
-          "container-lowest":  "var(--color-surface-container-lowest)",
-          "container-low":     "var(--color-surface-container-low)",
-          container:           "var(--color-surface-container)",
-          "container-high":    "var(--color-surface-container-high)",
-          "container-highest": "var(--color-surface-container-highest)",
+          "container-lowest": v("color-surface-container-lowest"),
+          "container-low": v("color-surface-container-low"),
+          container: v("color-surface-container"),
+          "container-high": v("color-surface-container-high"),
+          "container-highest": v("color-surface-container-highest"),
         },
-        border: {
-          subtle: "var(--color-border-subtle)",
-          soft:   "var(--color-border-soft)",
-        },
-        // Text hierarchy — never pure #000
-        text: {
-          primary:   "var(--color-text-primary)",
-          secondary:  "var(--color-text-secondary)",
-          tertiary:   "var(--color-text-tertiary)",
-          onAccent:   "var(--color-text-on-accent)",
-        },
-        // Single signature accent — promoted to CSS vars (ADR 0023) so the
-        // direction studies + rollout swap it centrally.
+        // Single signature accent (ADR 0023).
         accent: {
-          DEFAULT: "var(--color-accent)",
-          strong:  "var(--color-accent-strong)",   // hover / active
-          light:   "var(--color-accent-light)",
-          subtle:  "var(--color-accent-subtle)",   // very light tint for hovers
+          DEFAULT: v("color-accent"),
+          strong: v("color-accent-strong"),
+          light: v("color-accent-light"),
+          subtle: v("color-accent-subtle"),
         },
-        // Semantic — DEFAULT is the fill; `on` is the text/icon color that sits ON
-        // that fill (dark in dark-mode, where the fills are light — ADR 0024 a11y).
+        // Semantic — DEFAULT is the fill; `on` is the text/icon color on that fill.
         success: {
-          DEFAULT: "var(--color-success)",
-          subtle:  "var(--color-success-subtle)",
-          on:      "var(--color-on-success)",
+          DEFAULT: v("color-success"),
+          subtle: v("color-success-subtle"),
+          on: v("color-on-success"),
         },
         warning: {
-          DEFAULT: "var(--color-warning)",
-          subtle:  "var(--color-warning-subtle)",
+          DEFAULT: v("color-warning"),
+          subtle: v("color-warning-subtle"),
         },
         error: {
-          DEFAULT: "var(--color-error)",
-          subtle:  "var(--color-error-subtle)",
-          on:      "var(--color-on-error)",
+          DEFAULT: v("color-error"),
+          subtle: v("color-error-subtle"),
+          on: v("color-on-error"),
         },
         // Figure palette — consumed by figure containers and SVG wrappers.
-        // The actual SVG elements reference these via CSS vars; see globals.css.
         figure: {
-          surface:          "var(--figure-surface)",
-          ink:              "var(--figure-ink)",
-          "ink-soft":       "var(--figure-ink-soft)",
-          grid:             "var(--figure-grid)",
-          accent:           "var(--figure-accent)",
-          "energy-C":       "var(--figure-energy-C)",
-          "energy-L":       "var(--figure-energy-L)",
-          "regime-periodic":    "var(--figure-regime-periodic)",
-          "regime-pseudo":      "var(--figure-regime-pseudo)",
-          "regime-aperiodic":   "var(--figure-regime-aperiodic)",
+          surface: v("figure-surface"),
+          ink: v("figure-ink"),
+          "ink-soft": v("figure-ink-soft"),
+          grid: v("figure-grid"),
+          accent: v("figure-accent"),
+          "energy-C": v("figure-energy-C"),
+          "energy-L": v("figure-energy-L"),
+          "regime-periodic": v("figure-regime-periodic"),
+          "regime-pseudo": v("figure-regime-pseudo"),
+          "regime-aperiodic": v("figure-regime-aperiodic"),
         },
       },
+      // Text color hierarchy → `text-primary` / `text-secondary` / … (never #000).
+      textColor: {
+        primary: v("color-text-primary"),
+        secondary: v("color-text-secondary"),
+        tertiary: v("color-text-tertiary"),
+        onAccent: v("color-text-on-accent"),
+      },
+      // Border color → `border-subtle` / `border-soft`.
+      borderColor: {
+        subtle: v("color-border-subtle"),
+        soft: v("color-border-soft"),
+      },
 
-      // ── Typography ──────────────────────────────────────────────────────────
-      // DESIGN-BIBLE §3: IBM Plex Sans, body ≥ 16px, 65ch reading column,
-      // line-height 1.5, two weights.
-      // ADR 0023 — editorial pairing: serif for reading prose + headings,
-      // sans for UI chrome/labels/math labels, mono for code.
+      // ── Typography (DESIGN-BIBLE §3, ADR 0023) ─────────────────────────────
       fontFamily: {
         serif: ["var(--font-reading-serif)", "Georgia", "Times New Roman", "serif"],
-        sans:  ["var(--font-ibm-plex-sans)", "system-ui", "sans-serif"],
-        mono:  ["var(--font-ibm-plex-mono)", "ui-monospace", "monospace"],
+        sans: ["var(--font-ibm-plex-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-ibm-plex-mono)", "ui-monospace", "monospace"],
       },
-      fontSize: {
-        // Tracking: looser on small (caption), tighter on display sizes (ADR 0023).
-        "caption": ["0.75rem",  { lineHeight: "1.5", letterSpacing: "0.02em" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
-        "body":    ["1rem",     { lineHeight: "1.5" }],
-        "body-lg": ["1.0625rem",{ lineHeight: "1.6" }], // 17px — kinder over long sessions
-        "lead":    ["1.125rem", { lineHeight: "1.55" }],
-        "h4":      ["1.125rem", { lineHeight: "1.4",  letterSpacing: "-0.01em" }],
-        "h3":      ["1.25rem",  { lineHeight: "1.35", letterSpacing: "-0.012em" }],
-        "h2":      ["1.5rem",   { lineHeight: "1.3",  letterSpacing: "-0.018em" }],
-        "h1":      ["1.875rem", { lineHeight: "1.18", letterSpacing: "-0.022em" }],
-        "display": ["2.25rem",  { lineHeight: "1.12", letterSpacing: "-0.03em" }],
-        // Display-LG — the masthead-band tier (Day-4 freeze, Set A pick A3):
-        // the ONE display-voice moment a lesson surface gets. Never in chrome,
-        // never more than once per surface (DESIGN-BIBLE page-anatomy section).
-        "display-lg": ["3.5rem", { lineHeight: "1.06", letterSpacing: "-0.03em" }],
-      },
+      // fontSize derived from tokens.ts typeScale (was literal rem/lineHeight here).
+      fontSize,
       fontWeight: {
-        regular:  "400",
-        medium:   "500",
+        regular: "400",
+        medium: "500",
         semibold: "600",
-        bold:     "700", // serif display headings (ADR 0023)
+        bold: "700",
       },
 
-      // ── Spacing — 8-pt grid ─────────────────────────────────────────────────
-      // DESIGN-BIBLE §4: multiples of 8, 4px half-step available via Tailwind's
-      // default scale (1 = 4px, 2 = 8px, 4 = 16px, …). The default Tailwind
-      // scale already uses a 4px base, so 2 = 8px, 4 = 16px, 6 = 24px, etc.
-      // Nothing extra needed — the design tokens map directly.
+      // ── Spacing — Tailwind's default 4px-base scale is the 8-pt grid (§4). ──
 
-      // ── Reading column ──────────────────────────────────────────────────────
-      // Note: --measure-prose (65ch) is the canonical CSS-var source. These
-      // tailwind maxWidth values mirror it. For prose containers, prefer the
-      // CSS class (.prose-lesson / .notion-prose) over ad-hoc max-w-reading.
+      // ── Reading column ─────────────────────────────────────────────────────
+      // --measure-prose (65ch) is the canonical CSS-var source; these mirror it.
       maxWidth: {
         reading: "65ch",
-        content: "72ch",   // slightly wider for items with choices
-        wide:    "90ch",   // for embed + prose side-by-side
-        lead:    "var(--measure-lead)", // standfirst / intro lead — tighter than body
-        list:    "var(--measure-list)", // home notion-card column (one cap per spine)
-        page:    "1280px",
-        notion:  "1140px", // notion page outer band — prose + wide-band figures
+        content: "72ch",
+        wide: "90ch",
+        lead: v("measure-lead"),
+        list: v("measure-list"),
+        page: "1280px",
+        notion: "1140px",
       },
 
-      // ── Border radius ───────────────────────────────────────────────────────
-      // DESIGN-BIBLE §4 / §6: soft radii
-      borderRadius: {
-        none:  "0",
-        sm:    "4px",
-        DEFAULT:"8px",
-        md:    "8px",
-        lg:    "12px",
-        xl:    "16px",
-        "2xl": "20px",
-        full:  "9999px",
-      },
+      // ── Border radius (DESIGN-BIBLE §4/§6) — derived from tokens.ts ─────────
+      borderRadius: radius,
 
-      // ── Motion / transitions ────────────────────────────────────────────────
-      // DESIGN-BIBLE §5: 100–200ms micro, 200–300ms standard, ease-out enter,
-      // ease-in leave, ease-in-out between states. Never bounce.
-      // ADR 0022: two craft easing curves added (emphasized, standard-svg).
+      // ── Motion / transitions (DESIGN-BIBLE §5, ADR 0022) — never bounce. ────
       transitionDuration: {
-        micro:    "150ms",
+        micro: "150ms",
         standard: "250ms",
-        slow:     "400ms", // entering deep study only
+        slow: "400ms",
       },
       transitionTimingFunction: {
-        // ── Existing utility curves ──────────────────────────────────────────
-        enter:   "cubic-bezier(0, 0, 0.2, 1)",   // ease-out (elements arriving)
-        leave:   "cubic-bezier(0.4, 0, 1, 1)",   // ease-in  (elements departing)
-        between: "cubic-bezier(0.4, 0, 0.2, 1)", // ease-in-out (state transitions)
-
-        // ── Craft easing curves (ADR 0022) ──────────────────────────────────
-        // "emphasized": the premium decelerate — strong initial velocity,
-        // gentle deliberate settle. Reads as confident and considered.
-        // No overshoot. Use for: beat entrances, panel slides, KaTeX assembly.
-        "emphasized":   "cubic-bezier(0.2, 0, 0, 1)",
-
-        // "standard-svg": CSS analogue of GSAP power2.out.
-        // For SVG-adjacent CSS transitions (hover highlights, fill transitions
-        // on SVG wrapper elements). The JS motion engine uses GSAP eases
-        // directly on timeline tweens; this is the CSS-side companion.
+        enter: "cubic-bezier(0, 0, 0.2, 1)",
+        leave: "cubic-bezier(0.4, 0, 1, 1)",
+        between: "cubic-bezier(0.4, 0, 0.2, 1)",
+        // Craft easing curves (ADR 0022) — no overshoot.
+        emphasized: "cubic-bezier(0.2, 0, 0, 1)",
         "standard-svg": "cubic-bezier(0.25, 0.1, 0.25, 1)",
-
-        // HARD RULE (see docs/design/MOTION-CHOREOGRAPHY.md):
-        // Never bounce, never overshoot, never elastic in the learning core.
-        // Spring/bounce curves are the texture of games — not this product.
       },
 
-      // ── Box shadow — elevation through layered luminance, not heavy drops ──
-      // ADR 0022: full 5-step elevation scale via CSS vars. The existing
-      // `subtle` and `soft` aliases are kept for backward compatibility and
-      // map conceptually to elevation-1 and elevation-2 respectively.
+      // ── Box shadow — 5-step elevation via CSS vars (ADR 0022) ──────────────
+      // The legacy cool-palette `subtle`/`soft` aliases were removed in Phase A
+      // (dead: 0 uses, and they contradicted the warm ADR 0023 palette).
       boxShadow: {
-        // ── Legacy aliases (kept; do not remove) ────────────────────────────
-        subtle: "0 1px 3px 0 rgba(30, 45, 70, 0.06), 0 1px 2px -1px rgba(30, 45, 70, 0.04)",
-        soft:   "0 4px 12px 0 rgba(30, 45, 70, 0.08), 0 2px 4px -2px rgba(30, 45, 70, 0.05)",
-        none:   "none",
-
-        // ── 5-step elevation scale (ADR 0022) ───────────────────────────────
-        // Light: tinted blue-gray drops (rgba 30,45,70). See globals.css for
-        // dark-mode values (luminance elevation via inset hairline + soft drop).
-        // Usage:
-        //   elevation-0  flat (no shadow)        — inline figure elements
-        //   elevation-1  barely lifted            — figure panels, cards at rest
-        //   elevation-2  clearly above page       — checkpoints, raised cards
-        //   elevation-3  floating (on-scroll)     — site header after scroll
-        //   elevation-4  overlay level            — modals, popovers, drawers
-        "elevation-0": "var(--elevation-0)",
-        "elevation-1": "var(--elevation-1)",
-        "elevation-2": "var(--elevation-2)",
-        "elevation-3": "var(--elevation-3)",
-        "elevation-4": "var(--elevation-4)",
+        none: "none",
+        "elevation-0": v("elevation-0"),
+        "elevation-1": v("elevation-1"),
+        "elevation-2": v("elevation-2"),
+        "elevation-3": v("elevation-3"),
+        "elevation-4": v("elevation-4"),
       },
 
-      // ── Focus ring ──────────────────────────────────────────────────────────
-      // DESIGN-BIBLE §9: visible, clear focus indicators.
-      // The .focus-ring CSS component class in globals.css is the preferred
-      // delivery mechanism. These ring tokens back the global :focus-visible
-      // catch-all and any bespoke Tailwind ring usage.
+      // ── Focus ring (DESIGN-BIBLE §9) ───────────────────────────────────────
       ringColor: {
-        focus: "var(--color-accent)",
+        focus: v("color-accent"),
       },
       ringOffsetWidth: {
         DEFAULT: "2px",
