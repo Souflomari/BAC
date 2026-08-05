@@ -42,7 +42,7 @@ $$\left(\forall (x,y) \in \mathbb{R}^2\right)\left(\forall (a,b) \in \mathbb{R}^
 
 ## 2020 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/109635
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element/109635 → course-436/upload-80775 re-dérivé, 5 pages), diff caractère-par-caractère conforme au scan (valeurs, indices, exposants, entrées de matrices, barèmes, numérotation, énoncé, consignes) ; code sujet « NS 25 » (sans suffixe F) confirmé sur l'en-tête ; glyphes mojibake confirmés (ℝ=«¡», ℝ*=«¡*», ×=«´», ∈=«Î», ∀=«"», φ=«j») ; coin haut-gauche de la matrice de $E$ = **1** (non $x$) et $F$ : $M(x)=\left(\begin{smallmatrix}1&x-1\\0&x\end{smallmatrix}\right)$ confirmés au zoom.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) (شعبة العلوم الرياضية (أ) و (ب)), خيار فرنسية (BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 25 · Barème de l'exercice : 3,5 points
@@ -73,7 +73,7 @@ $$E = \left\{ \begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} \ /\ x \in \mathbb{R}
 
 ## 2022 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/136604
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element/136604 → course-436/upload-84506 re-dérivé, 5 pages), diff caractère-par-caractère conforme au scan (valeurs, indices, exposants, entrées de matrices, barèmes, énoncé) ; code sujet « NS 24F » confirmé ; deux glyphes d'ensembles **visuellement distincts** confirmés au zoom du scan — «¡»=ℝ dans $M_2(\cdot)$ (trait vertical, point d'exclamation inversé) et «¢»=ℤ pour l'anneau des scalaires (signe cent, barre traversant le c) ; lecture ℤ corroborée doublement : par la logique de l'énoncé (3-b, 4-b/c) ET par l'emploi identique de «¢» pour ℤ² dans l'exercice d'arithmétique 2020 (« ¢´¢ », équation diophantienne) ; $M(a,b)=\left(\begin{smallmatrix}a&3b\\b&a\end{smallmatrix}\right)$ et $M(a,b)\times M(c,d)=M(ac+3bd,\ ad+bc)$ confirmés.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) (مسلك العلوم الرياضية – أ و ب – خيار فرنسية / BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points
@@ -104,7 +104,7 @@ Soit $E = \left\{ M(a,b) = \begin{pmatrix} a & 3b \\ b & a \end{pmatrix} \ /\ (a
 
 ## 2024 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/145739
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element/145739 → course-436/upload-87447 re-dérivé, 5 pages), diff caractère-par-caractère conforme au scan (valeurs, exposants, barèmes, énoncé) ; code sujet « NS 24F » confirmé ; numérotation confirmée sur le corps — l'exercice de structures y est bien intitulé **EXERCICE4** (p.4/5, 3,5 pts) et l'arithmétique **EXERCICE5** (p.5/5, 3 pts), à l'inverse des libellés de la page de consignes (p.1/5) ; loi $T$ : $(a,b)\,T\,(c,d)=(a\bar d+c,\ bd)$ et inverse $\left(-\frac{a}{\bar b},\ \frac1b\right)$ avec **barre de conjugaison sur $b$** au dénominateur confirmés au zoom ; sujet en Unicode propre (aucun mojibake).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) (شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) / BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points
