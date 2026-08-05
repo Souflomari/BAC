@@ -1,0 +1,109 @@
+/* GENERATED FILE — DO NOT EDIT.
+   Source of truth: src/lib/tokens.ts
+   Regenerate: node scripts/generate-tokens.mjs
+   Verify (runs as `prebuild`): node scripts/generate-tokens.mjs --check
+   Every value here is transcribed from tokens.ts; edit the source, not this file. */
+
+:root {
+  --color-surface-base: #F4EFE6;
+  --color-surface-raised: #FBF7F0;
+  --color-surface-overlay: #FFFDF8;
+  --color-surface-container-lowest: #F1EBE0;
+  --color-surface-container-low: #F7F2E9;
+  --color-surface-container: #FBF7F0;
+  --color-surface-container-high: #FEFAF4;
+  --color-surface-container-highest: #FFFDF8;
+  --color-border-subtle: #E6DECF;
+  --color-border-soft: #D2C6B2;
+  --color-text-primary: #2A2018;
+  --color-text-secondary: #5C5043;
+  --color-text-tertiary: #8A7E6E;
+  --color-text-on-accent: #FFFDF8;
+  --color-accent: #1F6F6B;
+  --color-accent-strong: #185C58;
+  --color-accent-light: #5FB6AE;
+  --color-accent-subtle: #E4F0EE;
+  --focus-halo: rgba(31,111,107,.18);
+  --color-success: #3F6B4E;
+  --color-success-subtle: #E8F0E6;
+  --color-on-success: #FFFDF8;
+  --color-warning: #8A6A1E;
+  --color-warning-subtle: #F6EEDA;
+  --color-error: #9A3B2E;
+  --color-error-subtle: #F6E6E1;
+  --color-on-error: #FFFDF8;
+  --elevation-0: none;
+  --elevation-1: 0 0 0 1px rgba(60,45,30,.05), 0 1px 2px -1px rgba(60,45,30,.08), 0 2px 6px 0 rgba(60,45,30,.06);
+  --elevation-2: 0 0 0 1px rgba(60,45,30,.06), 0 2px 4px -2px rgba(60,45,30,.08), 0 8px 20px -2px rgba(60,45,30,.10);
+  --elevation-3: 0 6px 12px -4px rgba(60,45,30,.10), 0 14px 34px -4px rgba(60,45,30,.14);
+  --elevation-4: 0 10px 22px -6px rgba(60,45,30,.12), 0 24px 56px -8px rgba(60,45,30,.18);
+  --figure-surface: #FBF7F0;
+  --figure-ink: #2A2018;
+  --figure-ink-soft: #5C5043;
+  --figure-grid: #E6DECF;
+  --figure-accent: var(--color-accent);
+  --figure-energy-C: #4C6088;
+  --figure-energy-L: #3C7A5E;
+  --figure-regime-periodic: #4C6088;
+  --figure-regime-pseudo: #9A6B3C;
+  --figure-regime-aperiodic: #6E4A86;
+  --focus-radius: 6px;
+  --state-color: var(--color-text-primary);
+  --state-hover: 0.06;
+  --state-pressed: 0.10;
+  --state-dragged: 0.16;
+  --state-disabled: 0.38;
+  --ease-between: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-micro: 150ms;
+  --duration-standard: 250ms;
+  --duration-view: 300ms;
+  --measure-prose: 65ch;
+  --measure-wide: 72ch;
+  --measure-lead: 52ch;
+  --measure-list: 42rem;
+}
+
+.dark {
+  --color-surface-base: #1A1612;
+  --color-surface-raised: #231E18;
+  --color-surface-overlay: #2C261F;
+  --color-surface-container-lowest: #15110D;
+  --color-surface-container-low: #1E1914;
+  --color-surface-container: #231E18;
+  --color-surface-container-high: #2A241D;
+  --color-surface-container-highest: #322B23;
+  --color-border-subtle: #352E26;
+  --color-border-soft: #473E33;
+  --color-text-primary: #EFE8DC;
+  --color-text-secondary: #B5A893;
+  --color-text-tertiary: #7E7264;
+  --color-text-on-accent: #11302C;
+  --color-accent: #5FB6AE;
+  --color-accent-strong: #7FC8C0;
+  --color-accent-light: #5FB6AE;
+  --color-accent-subtle: #16312F;
+  --focus-halo: rgba(95,182,174,.22);
+  --color-success: #7FB890;
+  --color-success-subtle: #16271B;
+  --color-on-success: #112019;
+  --color-warning: #E0BE6E;
+  --color-warning-subtle: #2A2110;
+  --color-error: #E08C7E;
+  --color-error-subtle: #2C1611;
+  --color-on-error: #2C1611;
+  --elevation-0: none;
+  --elevation-1: 0 0 0 1px rgba(255,250,240,.05), 0 1px 2px 0 rgba(0,0,0,.22), inset 0 1px 0 0 rgba(255,250,240,.05);
+  --elevation-2: 0 0 0 1px rgba(255,250,240,.06), 0 3px 10px 0 rgba(0,0,0,.32), inset 0 1px 0 0 rgba(255,250,240,.06);
+  --elevation-3: 0 0 0 1px rgba(255,250,240,.07), 0 6px 20px 0 rgba(0,0,0,.36), inset 0 1px 0 0 rgba(255,250,240,.07);
+  --elevation-4: 0 0 0 1px rgba(255,250,240,.09), 0 12px 32px 0 rgba(0,0,0,.44), inset 0 1px 0 0 rgba(255,250,240,.09);
+  --figure-surface: #231E18;
+  --figure-ink: #EFE8DC;
+  --figure-ink-soft: #B5A893;
+  --figure-grid: #352E26;
+  --figure-accent: var(--color-accent-light);
+  --figure-energy-C: #7E93BE;
+  --figure-energy-L: #5FA886;
+  --figure-regime-periodic: #7E93BE;
+  --figure-regime-pseudo: #C49A6C;
+  --figure-regime-aperiodic: #A98BD0;
+}
