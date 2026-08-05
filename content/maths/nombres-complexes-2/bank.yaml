@@ -1,0 +1,681 @@
+# bank.yaml — la banque « S'entraîner » de nombres-complexes-2 (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, [[exercise:]] à R7), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les quatre entrées sont des transcriptions FIDÈLES des
+# quatre entrées « vérifié » de docs/sujets/maths/nombres-complexes-2.md
+# (re-fetch AlloSchool indépendant + diff caractère-par-caractère,
+# agent-vérificateur-adversarial, 2026-07-12 pour 2019, 2026-08-05 pour
+# 2020/2022/2024) — les SEULS sujets vérifiés recensés pour cette notion :
+# 2019, 2020, 2022, 2024, tous session normale, filière SCIENCES
+# MATHÉMATIQUES (A) et (B), BIOF. Aucun autre sujet n'est disponible —
+# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions ; barème transcrit tel quel
+# dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX
+# brut entre apostrophes simples dans steps[].math — apostrophe littérale
+# doublée, ex. 'z'' = e^{i\theta}\,z' pour rendre z′ —, notes sans backslash).
+#
+# EDITORIAL NOTE (recoupement, pour la revue) : bk-2019-n-x2 transcrit le
+# MÊME sujet que le sommet de leçon r-bac (exercises.yaml,
+# [[exercise:r-bac]] à R7). Il figure quand même ici pour que la banque soit
+# le corpus complet des annales vérifiées de la notion (BANK-SPEC §1 : « la
+# banque est le volume derrière le sommet, jamais son remplacement »). C'est
+# la DEUXIÈME instance du même arbitrage dans ce même sous-dossier :
+# content/maths/nombres-complexes-1/bank.yaml (bk-2019-n-x2 sur ce
+# frère-notion) fait exactement le même choix pour la même raison, avec la
+# même note. À l'arbitrage de l'owner si l'on préfère écarter la présente
+# entrée de la banque pour éviter le recoupement sur la même page.
+#
+# SCOPE NOTE (divulgation honnête, authoring-side). Les quatre sujets
+# reposent tous sur la RÉSOLUTION D'UNE ÉQUATION DU SECOND DEGRÉ À
+# COEFFICIENTS COMPLEXES (discriminant Δ potentiellement complexe non réel,
+# racine carrée de Δ obtenue en la reconnaissant comme un carré parfait,
+# formule (−b±δ)/(2a), relations coefficients-racines de Viète) — un outil
+# qu'AUCUN des deux frères-notions ne couvre formellement dans son corps de
+# rungs : ni R0–R6 de la présente leçon (nombres-complexes-2 : argument,
+# formes trigonométrique/exponentielle, produit/quotient/Moivre, racines
+# n-ièmes, rotation/homothétie, nature de triangle), ni R1–R5 de
+# nombres-complexes-1 (forme algébrique, conjugué, module, géométrie du plan
+# complexe) — les deux notes de validation en pied de chaque lesson.md le
+# signalent déjà (« équation du second degré dans ℂ : hors du corps actuel »).
+# C'est un écart de périmètre déjà connu, pas inventé ici : le sommet r-bac
+# de cette notion (exercises.yaml) mobilise déjà ce même outil et le nomme
+# au point d'usage (« le calcul se mène comme dans ℝ, mais avec des nombres
+# complexes… (1+i)² = 2i, déjà vu au chapitre précédent »). Les champs
+# `reasoning` des quatre entrées ci-dessous suivent exactement la même
+# convention : ils exposent le geste (reconnaître Δ comme un carré parfait)
+# au moment où il sert, sans prétendre qu'il est enseigné par un rung
+# nommé. Une passe pédagogique reste due, à l'arbitrage de l'owner : soit un
+# rung dédié « équations du second degré dans ℂ » (probablement en tête de
+# nombres-complexes-1, avant le socle algébrique), soit la confirmation que
+# ce savoir est un acquis de la classe de 1ère (extension directe de la
+# formule réelle, déjà stable avant le bac) et n'a pas besoin d'un rung
+# propre.
+
+notion: maths/nombres-complexes-2
+
+entries:
+  # ── bk-2019-n-x2 — 2019 N, Exercice 2 : équation à paramètre, rotation, milieu, perpendicularité ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir EDITORIAL NOTE en tête.
+  - id: bk-2019-n-x2
+    title: "Équation à paramètre complexe, rotation et perpendicularité"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 3,5 points (Exercice 2, nombres
+        complexes). Source AlloSchool element/68482. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, section « 2019 — session
+        normale — Exercice 2 » (statut « vérifié », agent-vérificateur-
+        adversarial, 2026-07-12, source re-fetchée indépendamment et diff
+        caractère-par-caractère conforme au scan ; filière SM et code NS 24F
+        confirmés sur l'en-tête). NB : ce même sujet sous-tend aussi le
+        sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
+        R7) — recoupement assumé, voir EDITORIAL NOTE en tête de fichier.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2019, Sciences Mathématiques).**
+
+      Soit $m$ un nombre complexe **non réel** ($m \in \mathbb{C} - \mathbb{R}$).
+
+      L'exercice se déroule en deux temps. La **partie I** étudie une équation du second degré dont un coefficient dépend de $m$ : on montre que son discriminant ne s'annule pas, on calcule ses deux racines, puis on lit le module et un argument de leur somme. La **partie II** place ces mêmes nombres dans le plan complexe et en fait une configuration géométrique (rotation, milieu, orthogonalité, point d'intersection). Le fil conducteur : un rapport de deux affixes encode à la fois un rapport de longueurs (son module) et un angle (son argument) — l'outil central du chapitre (rung R6).
+    questions:
+      - id: q1a
+        part: "Partie I — L'équation $(E)\\ :\\ z^2 - (1+i)(1+m)z + 2im = 0$"
+        stem: |-
+          **(0,25 pt)** Montrer que le discriminant de l'équation $(E)$ est non nul.
+        reasoning: |-
+          Le discriminant d'une équation du second degré $az^2+bz+c=0$ est $\Delta = b^2-4ac$. Le calcul se mène comme dans $\mathbb{R}$, mais avec des nombres complexes : le geste qui débloque tout est de reconnaître $(1+i)^2 = 2i$ (déjà vu au chapitre précédent), ce qui fait apparaître un carré parfait.
+
+          Une fois $\Delta$ mis sous la forme d'un facteur non nul multiplié par $(m-1)^2$, on conclut : $m$ étant **non réel**, on a $m \neq 1$, donc $(m-1)^2 \neq 0$, et $2i \neq 0$ — le produit est non nul.
+        steps:
+          - math: '\Delta = \big[(1+i)(1+m)\big]^2 - 4\times 1\times 2im = (1+i)^2(1+m)^2 - 8im'
+            note: "Δ = b² − 4ac, avec b = −(1+i)(1+m), a = 1, c = 2im."
+          - math: '(1+i)^2 = 2i \implies \Delta = 2i(1+m)^2 - 8im = 2i\big[(1+m)^2 - 4m\big]'
+            note: "On met 2i en facteur ; c'est (1+i)² = 2i qui amorce le carré parfait."
+          - math: '(1+m)^2 - 4m = m^2 - 2m + 1 = (m-1)^2 \implies \Delta = 2i\,(m-1)^2'
+            note: "Identité remarquable : le crochet est (m−1)²."
+          - math: 'm \notin \mathbb{R} \implies m \neq 1 \implies (m-1)^2 \neq 0, \quad\text{et } 2i \neq 0 \implies \Delta \neq 0'
+            note: "m non réel donc m ≠ 1 : le discriminant ne s'annule pas."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Déterminer $z_1$ et $z_2$, les deux solutions de l'équation $(E)$.
+        reasoning: |-
+          Pour résoudre, il faut une **racine carrée** du discriminant, c'est-à-dire un complexe $\delta$ tel que $\delta^2 = \Delta$. Ici on n'a rien à chercher : $\Delta = 2i(m-1)^2$ est déjà un carré, car $2i = (1+i)^2$. Donc $\Delta = \big[(1+i)(m-1)\big]^2$ et une racine carrée est $\delta = (1+i)(m-1)$.
+
+          On applique alors la formule des racines $z = \dfrac{-b \pm \delta}{2a}$, avec $-b = (1+i)(1+m)$. Les deux termes se factorisent par $(1+i)$, et tout se simplifie.
+        steps:
+          - math: '\Delta = 2i\,(m-1)^2 = (1+i)^2(m-1)^2 = \big[(1+i)(m-1)\big]^2 \implies \delta = (1+i)(m-1)'
+            note: "Δ est un carré parfait : δ = (1+i)(m−1) en est une racine carrée."
+          - math: 'z = \frac{(1+i)(1+m) \pm (1+i)(m-1)}{2} = \frac{(1+i)\big[(1+m) \pm (m-1)\big]}{2}'
+            note: "Formule (−b ± δ)/(2a), avec −b = (1+i)(1+m) ; on factorise par (1+i)."
+          - math: 'z_1 = \frac{(1+i)(2m)}{2} = (1+i)m, \qquad z_2 = \frac{(1+i)(2)}{2} = 1+i'
+            note: "Signe + : (1+m)+(m−1) = 2m. Signe − : (1+m)−(m−1) = 2."
+      - id: q2a
+        part: "Partie I (suite) — On suppose $m = e^{i\\theta}$ avec $0 < \\theta < \\pi$"
+        stem: |-
+          **(0,5 pt)** Déterminer le module et un argument de $z_1 + z_2$.
+        reasoning: |-
+          La somme se factorise : $z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1)$. Le module d'un produit est le produit des modules, l'argument d'un produit est la somme des arguments (R2) — on traite donc les deux facteurs séparément.
+
+          Pour $1+i$ : module $\sqrt2$, argument $\dfrac{\pi}{4}$. Pour $m+1 = e^{i\theta}+1$, on utilise la **factorisation par l'angle moitié** : mettre $e^{i\theta/2}$ en facteur fait apparaître $e^{i\theta/2}+e^{-i\theta/2} = 2\cos\dfrac{\theta}{2}$. Comme $0<\theta<\pi$, on a $0<\dfrac{\theta}{2}<\dfrac{\pi}{2}$, donc $\cos\dfrac{\theta}{2} > 0$ : c'est bien un module (positif), et $\dfrac{\theta}{2}$ est bien l'argument.
+        steps:
+          - math: 'z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1) = (1+i)\big(e^{i\theta}+1\big)'
+            note: "On factorise la somme par (1+i)."
+          - math: 'e^{i\theta}+1 = e^{i\theta/2}\big(e^{i\theta/2}+e^{-i\theta/2}\big) = 2\cos\tfrac{\theta}{2}\,e^{i\theta/2}'
+            note: "Angle moitié : e^{iθ/2}+e^{−iθ/2} = 2cos(θ/2), positif car 0 < θ/2 < π/2."
+          - math: '1+i = \sqrt2\,e^{i\pi/4} \implies z_1+z_2 = 2\sqrt2\,\cos\tfrac{\theta}{2}\; e^{i\left(\frac{\pi}{4}+\frac{\theta}{2}\right)}'
+            note: "Produit : modules × modules, arguments + arguments (R2)."
+          - math: '|z_1+z_2| = 2\sqrt2\,\cos\tfrac{\theta}{2}, \qquad \arg(z_1+z_2) = \frac{\pi}{4} + \frac{\theta}{2}\ [2\pi]'
+            note: "Module positif (cos(θ/2) > 0) ; argument π/4 + θ/2."
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** Montrer que si $z_1 z_2 \in \mathbb{R}$, alors $z_1 + z_2 = 2i$.
+        reasoning: |-
+          On calcule d'abord le produit : $z_1 z_2 = (1+i)m \times (1+i) = (1+i)^2 m = 2im$ (encore $(1+i)^2=2i$). Dire que $z_1 z_2 = 2im$ est réel, c'est dire que $im$ est réel, donc que $m$ est un imaginaire pur.
+
+          Or $m = e^{i\theta}$ avec $0<\theta<\pi$ : le seul imaginaire pur de module $1$ dans ce demi-plan (partie imaginaire $>0$) est $m = i$ (soit $\theta = \dfrac{\pi}{2}$). On remplace alors dans $z_1+z_2$.
+        steps:
+          - math: 'z_1 z_2 = (1+i)m\times(1+i) = (1+i)^2 m = 2im'
+            note: "Produit des deux racines ; (1+i)² = 2i."
+          - math: '2im \in \mathbb{R} \iff im \in \mathbb{R} \iff m \in i\mathbb{R} \quad(m \text{ imaginaire pur})'
+            note: "2im réel équivaut à m imaginaire pur."
+          - math: 'm = e^{i\theta},\ 0<\theta<\pi,\ m\in i\mathbb{R} \implies \theta = \frac{\pi}{2} \implies m = i'
+            note: "Seul imaginaire pur de module 1 avec 0 < θ < π : m = i."
+          - math: 'z_1 + z_2 = (1+i)(m+1) = (1+i)(i+1) = (1+i)^2 = 2i'
+            note: "On remplace m = i : la somme vaut 2i."
+      - id: q1a2
+        part: "Partie II — Le plan complexe $(O;\\vec{u},\\vec{v})$ : $a=1+i$, $b=(1+i)m$, $c=1-i$"
+        stem: |-
+          $A$, $B$, $C$ ont pour affixes $a=1+i$, $b=(1+i)m$, $c=1-i$. $D$ est l'image de $B$ par la rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$, et $\Omega$ est le milieu de $[CD]$.
+
+          **(0,5 pt)** Montrer que l'affixe du point $\Omega$ est $\omega = \dfrac{(1-i)(1-m)}{2}$.
+        reasoning: |-
+          Deux outils, chacun déjà construit. **La rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$** s'écrit $z \mapsto e^{i\pi/2}z = iz$ (R5). Donc l'affixe de $D$ est $d = i\,b$.
+
+          **Le milieu** de $[CD]$ a pour affixe la moyenne des affixes : $\omega = \dfrac{c+d}{2}$. Il ne reste qu'à simplifier, en repérant que $i(1+i) = i - 1 = -(1-i)$.
+        steps:
+          - math: 'd = e^{i\pi/2}\,b = i\,b = i(1+i)m'
+            note: "Rotation de centre O et d'angle π/2 : z ↦ iz (R5)."
+          - math: 'i(1+i) = i + i^2 = i - 1 = -(1-i) \implies d = -(1-i)m'
+            note: "Simplification de i(1+i)."
+          - math: '\omega = \frac{c+d}{2} = \frac{(1-i) - (1-i)m}{2} = \frac{(1-i)(1-m)}{2}'
+            note: "Affixe du milieu = moyenne des affixes ; on factorise par (1−i)."
+      - id: q1b2
+        stem: |-
+          **(0,25 pt)** Calculer $\dfrac{b-a}{\omega}$.
+        reasoning: |-
+          On exprime numérateur et dénominateur en facteurs simples. Le numérateur $b-a = (1+i)m - (1+i) = (1+i)(m-1)$ ; le dénominateur $\omega = \dfrac{(1-i)(1-m)}{2}$. Le facteur $(m-1)$ (au signe près, car $1-m = -(m-1)$) se simplifie.
+
+          Reste $\dfrac{1+i}{1-i}$, qu'on sait valoir $i$ (méthode du conjugué, chapitre 1 : $\dfrac{1+i}{1-i} = \dfrac{(1+i)^2}{(1-i)(1+i)} = \dfrac{2i}{2} = i$).
+        steps:
+          - math: 'b-a = (1+i)m - (1+i) = (1+i)(m-1), \qquad \omega = \frac{(1-i)(1-m)}{2} = -\frac{(1-i)(m-1)}{2}'
+            note: "Numérateur et dénominateur factorisés ; 1−m = −(m−1)."
+          - math: '\frac{b-a}{\omega} = \frac{(1+i)(m-1)}{-\frac{(1-i)(m-1)}{2}} = \frac{-2(1+i)}{1-i}'
+            note: "Le facteur (m−1) se simplifie."
+          - math: '\frac{1+i}{1-i} = \frac{(1+i)^2}{(1-i)(1+i)} = \frac{2i}{2} = i \implies \frac{b-a}{\omega} = -2i'
+            note: "(1+i)/(1−i) = i (méthode du conjugué)."
+      - id: q1c2
+        stem: |-
+          **(0,5 pt)** En déduire que $(O\Omega) \perp (AB)$ et que $AB = 2\,O\Omega$.
+        reasoning: |-
+          Le nombre $\dfrac{b-a}{\omega} = \dfrac{b-a}{\omega - 0}$ est le rapport de l'affixe de $\vec{AB}$ à celle de $\vec{O\Omega}$. Comme tout rapport de deux affixes de vecteurs, il **encode deux informations** (R6) : son **module** est le rapport des longueurs $\dfrac{AB}{O\Omega}$, et son **argument** est l'angle $(\vec{O\Omega}, \vec{AB})$.
+
+          On lit donc directement sur $-2i$ : module $2$, argument $-\dfrac{\pi}{2}$. Le module donne $AB = 2\,O\Omega$ ; l'argument, égal à $-\dfrac{\pi}{2}$, dit que les deux directions sont orthogonales, donc $(O\Omega) \perp (AB)$.
+        steps:
+          - math: '\frac{b-a}{\omega} = \frac{\text{aff}(\vec{AB})}{\text{aff}(\vec{O\Omega})} = -2i'
+            note: "ω = ω − 0 est l'affixe du vecteur OΩ ; b − a celle de AB."
+          - math: '\left|\frac{b-a}{\omega}\right| = |-2i| = 2 = \frac{AB}{O\Omega} \implies AB = 2\,O\Omega'
+            note: "Le module donne le rapport des longueurs."
+          - math: '\arg\!\left(\frac{b-a}{\omega}\right) = \arg(-2i) = -\frac{\pi}{2} = \big(\vec{O\Omega},\,\vec{AB}\big) \implies (O\Omega)\perp(AB)'
+            note: "Argument ±π/2 : les directions sont orthogonales."
+      - id: q2a2
+        part: "Partie II (suite) — La droite $(O\\Omega)$ coupe $(AB)$ au point $H$ d'affixe $h$"
+        stem: |-
+          **(0,5 pt)** Montrer que $\dfrac{h-a}{b-a}$ est un réel et que $\dfrac{h}{b-a}$ est un imaginaire pur.
+        reasoning: |-
+          Deux appartenances, deux traductions par un rapport de complexes (R6).
+
+          $H \in (AB)$ signifie que $A$, $H$, $B$ sont alignés : le vecteur $\vec{AH}$ (affixe $h-a$) est colinéaire à $\vec{AB}$ (affixe $b-a$), donc $\dfrac{h-a}{b-a}$ est **réel**.
+
+          $H \in (O\Omega)$ signifie que $O$, $H$, $\Omega$ sont alignés : $\dfrac{h}{\omega}$ est réel. Or $\dfrac{b-a}{\omega} = -2i$ (question précédente), donc $\dfrac{\omega}{b-a} = \dfrac{1}{-2i} = \dfrac{i}{2}$. En écrivant $\dfrac{h}{b-a} = \dfrac{h}{\omega}\times\dfrac{\omega}{b-a}$, on multiplie un **réel** par $\dfrac{i}{2}$ : le résultat est un **imaginaire pur**.
+        steps:
+          - math: 'H \in (AB) \iff \vec{AH}\ \text{colinéaire à}\ \vec{AB} \iff \frac{h-a}{b-a} \in \mathbb{R}'
+            note: "Alignement A, H, B : rapport des affixes réel."
+          - math: 'H \in (O\Omega) \iff \frac{h}{\omega} \in \mathbb{R}'
+            note: "Alignement O, H, Ω : h/ω réel (ω = affixe de OΩ)."
+          - math: '\frac{b-a}{\omega} = -2i \implies \frac{\omega}{b-a} = \frac{1}{-2i} = \frac{i}{2}'
+            note: "On inverse la relation précédente : 1/(−2i) = i/2."
+          - math: '\frac{h}{b-a} = \frac{h}{\omega}\times\frac{\omega}{b-a} = \underbrace{\frac{h}{\omega}}_{\in\,\mathbb{R}}\times\frac{i}{2} \in i\mathbb{R}'
+            note: "Réel × (i/2) = imaginaire pur."
+      - id: q2b2
+        stem: |-
+          **(0,25 pt)** En déduire $h$ en fonction de $m$.
+        reasoning: |-
+          On pose $\dfrac{h-a}{b-a} = t$ (réel, question 2a) et $\dfrac{h}{b-a} = is$ (imaginaire pur, $s$ réel). La différence des deux fait disparaître $h$ :
+          $$\frac{h}{b-a} - \frac{h-a}{b-a} = \frac{a}{b-a} = is - t.$$
+          Or $\dfrac{a}{b-a} = \dfrac{1+i}{(1+i)(m-1)} = \dfrac{1}{m-1}$. En identifiant partie réelle et partie imaginaire, $s = \operatorname{Im}\!\dfrac{1}{m-1}$. Comme $H \in (O\Omega)$, on a aussi $h = \lambda\omega$ ($\lambda$ réel) ; le report donne $\lambda = 2\operatorname{Im}\!\dfrac{1}{m-1}$, d'où $h = \lambda\omega$.
+        steps:
+          - math: '\frac{a}{b-a} = \frac{1+i}{(1+i)(m-1)} = \frac{1}{m-1}'
+            note: "Le facteur (1+i) se simplifie."
+          - math: '\frac{a}{b-a} = is - t \implies s = \operatorname{Im}\frac{1}{m-1} \quad(t,\,s\ \text{réels})'
+            note: "Identification : la partie imaginaire de 1/(m−1) donne s."
+          - math: 'h = \lambda\,\omega,\ \lambda = 2\operatorname{Im}\frac{1}{m-1} \implies h = \operatorname{Im}\!\left(\frac{1}{m-1}\right)(1-i)(1-m)'
+            note: "h = λω avec ω = (1−i)(1−m)/2. Contrôle m = i : h = i (H(0,1))."
+
+  # ── bk-2020-n-x3 — 2020 N, Exercice 3 : cubique à racine donnée, rotations d'angle π/2 ──
+  - id: bk-2020-n-x3
+    title: "Équation du troisième degré à paramètre, rotations d'angle π/2"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), الترجمة بالفرنسية (BIOF), Mathématiques
+        (4 h, coef 9), code sujet NS 25, barème 3,5 points (Exercice 3,
+        nombres complexes). Source AlloSchool element/109635. Transcription
+        vérifiée : docs/sujets/maths/nombres-complexes-2.md, section
+        « 2020 — session normale — Exercice 3 » (statut « vérifié »,
+        agent-vérificateur-adversarial, 2026-08-05, source re-fetchée
+        indépendamment, diff caractère-par-caractère conforme au scan ;
+        glyphes mojibake confirmés sans incidence sur les valeurs
+        transcrites).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2020, Sciences Mathématiques).**
+
+      Soit $m$ un nombre complexe **non nul**.
+
+      La **première partie** résout une équation du troisième degré dont $m$ est, par construction, une solution donnée — il reste à factoriser et résoudre le facteur restant. La **deuxième partie** place les deux autres racines comme affixes des points $A$ et $B$, puis construit trois centres de rotation d'angle $\dfrac{\pi}{2}$ ($P$, $Q$, $R$) et compare deux longueurs et deux directions — encore une fois via un unique rapport de complexes (rung R6).
+    questions:
+      - id: q1
+        part: "Première partie — L'équation $(E)\\ :\\ z^3 - 2mz^2 + 2m^2 z - m^3 = 0$"
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\mathbb{C}$ l'équation $(E)$ (On remarque que $m$ est une solution de l'équation $(E)$).
+        reasoning: |-
+          L'énoncé donne la clé : $m$ est racine. On factorise donc $(E)$ par $(z-m)$ ; le quotient est un polynôme du second degré, qu'on retrouve par identification des coefficients (ou par division), puis qu'on vérifie en redéveloppant.
+
+          Il reste à résoudre ce facteur quadratique comme au sujet 2019 de cette notion : discriminant, puis reconnaissance d'un carré parfait — ici $-3m^2$, dont $im\sqrt3$ est une racine carrée immédiate.
+        steps:
+          - math: '(E)\ :\ z^3-2mz^2+2m^2z-m^3=(z-m)(z^2-mz+m^2)'
+            note: "m est racine (donné) : on factorise par (z−m). On vérifie en développant : ça redonne bien (E)."
+          - math: 'z^2-mz+m^2=0 \implies \Delta = m^2-4m^2=-3m^2 = \big(im\sqrt3\big)^2'
+            note: "Discriminant du facteur restant. Comme au sujet 2019 (r-bac) de cette notion : −3m² est déjà un carré, ici celui de im√3."
+          - math: 'z = \dfrac{m \pm im\sqrt3}{2} = \dfrac{m(1\pm i\sqrt3)}{2}'
+            note: "Formule (−b±δ)/(2a), avec −b=m ici, δ=im√3."
+          - math: 'S = \left\{\, m,\ \ \dfrac{m(1+i\sqrt3)}{2},\ \ \dfrac{m(1-i\sqrt3)}{2} \,\right\}'
+            note: "Les trois solutions de (E) : m (donnée) et les deux racines du facteur quadratique."
+      - id: q2a
+        part: "Première partie (suite) — $z_1$ et $z_2$, les deux autres solutions de $(E)$, autres que $m$"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $\dfrac{1}{z_1} + \dfrac{1}{z_2} = \dfrac{1}{m}$.
+        reasoning: |-
+          Pas besoin de reprendre les valeurs explicites : les relations coefficients-racines (Viète) sur $z^2-mz+m^2=0$ donnent directement la somme et le produit de $z_1$ et $z_2$. En regroupant $\dfrac1{z_1}+\dfrac1{z_2}$ au même dénominateur, on retombe exactement sur ces deux quantités.
+        steps:
+          - math: 'z_1+z_2=m, \qquad z_1z_2=m^2'
+            note: "Relations coefficients-racines (Viète) sur z²−mz+m²=0 : somme = m, produit = m²."
+          - math: '\dfrac{1}{z_1}+\dfrac{1}{z_2} = \dfrac{z_1+z_2}{z_1z_2} = \dfrac{m}{m^2} = \dfrac{1}{m}'
+            note: "On regroupe au même dénominateur puis on simplifie par m (m non nul, donné)."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Dans le cas où $m = 1 + e^{i\frac{\pi}{3}}$, écrire sous la forme algébrique $z_1$ et $z_2$.
+        reasoning: |-
+          On relit d'abord la question 1 en forme exponentielle : $1+i\sqrt3 = 2e^{i\pi/3}$ et $1-i\sqrt3=2e^{-i\pi/3}$, donc $z_1=me^{i\pi/3}$ et $z_2=me^{-i\pi/3}$ (ce sont d'ailleurs exactement les affixes $a$ et $b$ de la partie II — pas un hasard).
+
+          Reste à mettre $m$ lui-même sous forme exponentielle. Même geste qu'au sujet 2019 (r-bac) de cette notion, question 2a : on factorise $1+e^{i\pi/3}$ par l'angle moitié $e^{i\pi/6}$, ce qui fait apparaître $2\cos\dfrac{\pi}{6}$.
+        steps:
+          - math: 'z_1 = \dfrac{m(1+i\sqrt3)}{2} = m\,e^{i\pi/3}, \qquad z_2 = \dfrac{m(1-i\sqrt3)}{2} = m\,e^{-i\pi/3}'
+            note: "Relecture de la question 1 en forme exponentielle : 1+i√3 = 2e^{iπ/3} et 1−i√3 = 2e^{−iπ/3}."
+          - math: 'm = 1+e^{i\pi/3} = 2\cos\!\left(\dfrac{\pi}{6}\right)e^{i\pi/6} = \sqrt3\,e^{i\pi/6}'
+            note: "Factorisation par l'angle moitié (même geste qu'au sujet 2019, question 2a) : cos(π/6)=√3/2."
+          - math: 'z_1 = \sqrt3\,e^{i\pi/6}\times e^{i\pi/3} = \sqrt3\,e^{i\pi/2} = i\sqrt3'
+            note: "Produit : arguments additionnés (R2). π/6+π/3=π/2."
+          - math: 'z_2 = \sqrt3\,e^{i\pi/6}\times e^{-i\pi/3} = \sqrt3\,e^{-i\pi/6} = \dfrac{3}{2} - i\dfrac{\sqrt3}{2}'
+            note: "π/6−π/3=−π/6 ; cos(π/6)=√3/2, sin(π/6)=1/2."
+      - id: q3
+        part: "Deuxième partie — $A(a=m\\,e^{i\\pi/3})$, $B(b=m\\,e^{-i\\pi/3})$ ; $P$, $Q$, $R$ centres des rotations d'angle $\\pi/2$ ($O\\to A$, $A\\to B$, $B\\to O$)"
+        stem: |-
+          **(0,25 pt)** Montrer que les points $O$, $A$ et $B$ ne sont pas alignés.
+        reasoning: |-
+          Rung R6 : $O$, $A$, $B$ sont alignés si et seulement si le rapport $\dfrac{b}{a}$ (rapport des affixes de $\vec{OB}$ et $\vec{OA}$) est réel. Ici $a$ et $b$ ont même module ($|m|$) mais des arguments opposés : le rapport se simplifie en une exponentielle pure, d'argument non nul et non égal à $\pi$ — donc pas réel.
+        steps:
+          - math: '\dfrac{b}{a} = \dfrac{m\,e^{-i\pi/3}}{m\,e^{i\pi/3}} = e^{-i2\pi/3}'
+            note: "Rapport des affixes de B et A (rung R6) ; m non nul se simplifie (donné)."
+          - math: '\arg\!\left(\dfrac{b}{a}\right) = -\dfrac{2\pi}{3} \not\equiv 0\ [\pi] \implies \dfrac{b}{a}\notin\mathbb{R}'
+            note: "L'argument n'est ni 0 ni π (mod 2π) : le rapport n'est pas réel."
+          - math: 'O,\ A,\ B \ \text{non alignés}'
+            note: "R6 : rapport non réel ⟹ pas d'alignement."
+      - id: q4a
+        stem: |-
+          **(1 pt)** Montrer que l'affixe de $P$ est $p = m\,\dfrac{\sqrt{2}}{2}\,e^{i\frac{7\pi}{12}}$ et que l'affixe de $R$ est $r = m\,\dfrac{\sqrt{2}}{2}\,e^{-i\frac{7\pi}{12}}$.
+        reasoning: |-
+          $P$ est le centre d'une rotation d'angle $\dfrac{\pi}{2}$ qui envoie $O$ sur $A$ : la formule décentrée du R5, $z'-p = e^{i\pi/2}(z-p)$, se résout en $p$ une fois pour toutes — utile ici et pour $R$. Avec $z=0$, $z'=a$ pour $P$, et $z=b$, $z'=0$ pour $R$.
+
+          Le facteur commun $\dfrac{1}{1-i} = \dfrac{\sqrt2}{2}\,e^{i\pi/4}$ (R3, inverse d'un complexe) fait le reste : il ne reste qu'à additionner les arguments.
+        steps:
+          - math: 'z'' - p = e^{i\pi/2}(z-p) \implies p = \dfrac{z'' - e^{i\pi/2}z}{1-e^{i\pi/2}} = \dfrac{z''-iz}{1-i}'
+            note: "Centre d'une rotation d'angle π/2 envoyant M(z) sur M′(z′) (rung R5, résolu en p)."
+          - math: '\dfrac{1}{1-i} = \dfrac{\sqrt2}{2}\,e^{i\pi/4}'
+            note: "1−i = √2 e^{−iπ/4} (R1) ; son inverse a pour module √2/2 et pour argument π/4 (R3)."
+          - math: 'P:\ (z,z'')=(0,a) \implies p = a\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,e^{i\pi/3}\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,\dfrac{\sqrt2}{2}\,e^{i\frac{7\pi}{12}}'
+            note: "P envoie O sur A : z=0, z′=a. π/3+π/4=7π/12."
+          - math: 'R:\ (z,z'')=(b,0) \implies r = \dfrac{0-ib}{1-i} = -ib\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,e^{-i\pi/3}\times\dfrac{\sqrt2}{2}e^{-i\pi/4} = m\,\dfrac{\sqrt2}{2}\,e^{-i\frac{7\pi}{12}}'
+            note: "R envoie B sur O : z=b, z′=0. −i=e^{−iπ/2}, donc −π/2+π/4=−π/4, puis −π/3−π/4=−7π/12."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** Montrer que l'affixe de $Q$ est $q = m\sqrt{2}\,\sin\!\left(\dfrac{7\pi}{12}\right)$.
+        reasoning: |-
+          Même formule que pour $P$ et $R$ (rung R5), appliquée à $Q$ qui envoie $A$ sur $B$ : $q = \dfrac{b-ia}{1-i}$. Cette fois, la voie exponentielle directe ne se simplifie pas aussi proprement — on repasse en forme algébrique pour développer le numérateur, et le facteur $(1-i)$ **se simplifie exactement**, laissant $q$ comme un pur multiple réel de $m$.
+
+          Le nombre obtenu, $\dfrac{1+\sqrt3}{2}$, ne ressemble pas de prime abord à $\sqrt2\sin\!\left(\dfrac{7\pi}{12}\right)$ : c'est le signal qu'il faut vérifier l'identité via la formule d'addition du sinus plutôt que de la considérer comme acquise.
+        steps:
+          - math: 'q = \dfrac{b-ia}{1-i}'
+            note: "Même formule que pour P, R (rung R5), appliquée à Q : A → B, donc (z,z′)=(a,b)."
+          - math: 'a = m\left(\tfrac12+i\tfrac{\sqrt3}{2}\right),\ b = m\left(\tfrac12-i\tfrac{\sqrt3}{2}\right) \implies b-ia = m\,\dfrac{1+\sqrt3}{2}\,(1-i)'
+            note: "On repasse en forme algébrique (e^{±iπ/3}=½±i√3/2) pour développer b−ia ; le résultat se factorise par (1−i)."
+          - math: 'q = \dfrac{m\,\frac{1+\sqrt3}{2}(1-i)}{1-i} = m\,\dfrac{1+\sqrt3}{2}'
+            note: "Le facteur (1−i) se simplifie : q est un multiple réel de m."
+          - math: '\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right) = \sqrt2\,\sin\!\left(\dfrac{\pi}{3}+\dfrac{\pi}{4}\right) = \sqrt2\left(\sin\tfrac{\pi}{3}\cos\tfrac{\pi}{4}+\cos\tfrac{\pi}{3}\sin\tfrac{\pi}{4}\right) = \dfrac{1+\sqrt3}{2}'
+            note: "Formule d'addition du sinus : on vérifie que ce nombre est bien celui annoncé."
+          - math: 'q = m\,\dfrac{1+\sqrt3}{2} = m\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right)'
+            note: "Les deux écritures coïncident."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Montrer que $OQ = PR$ et que les deux droites $(OQ)$ et $(PR)$ sont perpendiculaires.
+        reasoning: |-
+          On calcule $r-p$, l'affixe du vecteur $\vec{PR}$, en factorisant par $m\dfrac{\sqrt2}{2}$ : la différence de deux exponentielles opposées se réduit à un sinus (comme $e^{i\alpha}-e^{-i\alpha}=2i\sin\alpha$, au signe près). Le nombre $\sqrt2\sin\!\left(\dfrac{7\pi}{12}\right)$ vient d'être calculé à la question précédente — pas besoin de le refaire.
+
+          Le rapport $\dfrac{r-p}{q}$ (rung R6) encode alors, en un seul calcul, les deux faits demandés : son module donne l'égalité des longueurs, son argument donne la perpendicularité.
+        steps:
+          - math: 'r-p = m\dfrac{\sqrt2}{2}\left(e^{-i\frac{7\pi}{12}}-e^{i\frac{7\pi}{12}}\right) = -i\,m\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right)'
+            note: "e^{−iα}−e^{iα} = −2i sin α (R1, propriétés du conjugué en forme exponentielle)."
+          - math: '\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right) = \dfrac{1+\sqrt3}{2} = \dfrac{q}{m} \implies r-p = -i\,q'
+            note: "On réutilise l'identité et la valeur de q établies à la question précédente."
+          - math: '\dfrac{r-p}{q} = -i'
+            note: "Rapport des affixes de PR et OQ (rung R6)."
+          - math: '\left|\dfrac{r-p}{q}\right| = 1 \implies PR = OQ, \qquad \arg\!\left(\dfrac{r-p}{q}\right) = -\dfrac{\pi}{2} \implies (PR)\perp(OQ)'
+            note: "Un seul rapport encode les deux faits : module 1 (longueurs égales), argument ±π/2 (perpendicularité)."
+
+  # ── bk-2022-n-x2 — 2022 N, Exercice 2 : équation avec j, transformation φ, triangle équilatéral ──
+  - id: bk-2022-n-x2
+    title: "Équation avec la racine cubique de l'unité, transformation et triangle équilatéral"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 3,5 points (Exercice 2, nombres
+        complexes). Source AlloSchool element/136604. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, section « 2022 — session
+        normale — Exercice 2 » (statut « vérifié », agent-vérificateur-
+        adversarial, 2026-08-05, source re-fetchée indépendamment, diff
+        caractère-par-caractère conforme au scan). Le scan porte deux glyphes
+        Symbol mutilés (la forme de Δ en I.2a, le nom de la transformation φ
+        en II) que le transcripteur restitue par calcul direct et signale
+        explicitement ; la présente entrée re-dérive Δ indépendamment
+        (question 2a ci-dessous) et confirme la forme restituée.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2022, Sciences Mathématiques).**
+
+      Soit $m$ un nombre complexe non nul donné et $j = -\dfrac12 + \dfrac{\sqrt3}{2}\,i = e^{i\frac{2\pi}{3}}$.
+
+      La **partie I** résout une équation du second degré dont les coefficients utilisent $j$, puis étudie une puissance élevée de la somme des racines. La **partie II** construit, à partir d'une transformation $\varphi$ du plan et de trois milieux $P$, $Q$, $R$, une relation caractéristique qui, relue à travers le rung R6, prouve que le triangle $PQR$ est équilatéral.
+    questions:
+      - id: q1
+        part: "Partie I — L'équation $(E_m)\\ :\\ z^2 + mj^2 z + m^2 j = 0$"
+        stem: |-
+          **(0,5 pt)** Vérifier que : $j^3 = 1$ et $1 + j + j^2 = 0$.
+        reasoning: |-
+          $j=e^{i2\pi/3}$ est exactement l'une des racines cubiques de l'unité construites au rung R4 ($n=3$, $k=1$) : $j^3$ s'obtient directement par la formule de Moivre (R3). Pour la somme $1+j+j^2$, le plus direct est de repasser $j$ et $j^2$ en forme algébrique et d'additionner : les parties imaginaires s'annulent deux à deux.
+        steps:
+          - math: 'j^3 = \left(e^{i2\pi/3}\right)^3 = e^{i2\pi} = 1'
+            note: "Formule de Moivre (R3) : (e^{iθ})^n=e^{inθ}."
+          - math: 'j^2 = e^{i4\pi/3} = -\tfrac12-\tfrac{\sqrt3}{2}i'
+            note: "Carré de j, en forme algébrique."
+          - math: '1+j+j^2 = 1+\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right)+\left(-\tfrac12-\tfrac{\sqrt3}{2}i\right) = 0'
+            note: "Les parties imaginaires s'annulent deux à deux ; il reste 1−½−½=0."
+      - id: q2a
+        stem: |-
+          **(0,25 pt)** Montrer que le discriminant de l'équation $(E_m)$ est : $\Delta = \big(m(1-j)\big)^2$.
+        reasoning: |-
+          Même geste qu'au sujet 2019 (r-bac) de cette notion : calculer $\Delta = b^2-4ac$, puis reconnaître un carré parfait dans le résultat. Ici $j^4$ se ramène à $j$ via $j^3=1$ (question 1), et $(1-j)^2$ se simplifie via $1+j+j^2=0$ (même question).
+        steps:
+          - math: '\Delta = (mj^2)^2-4\times1\times m^2j = m^2j^4-4m^2j'
+            note: "Δ=b²−4ac, avec a=1, b=mj², c=m²j."
+          - math: 'j^4=j^3\times j=j \implies \Delta = m^2(j-4j) = -3m^2j'
+            note: "j³=1 (question 1) donne j⁴=j."
+          - math: '(1-j)^2 = 1-2j+j^2 = (1+j^2)-2j = -j-2j=-3j'
+            note: "1+j+j²=0 (question 1) donne 1+j²=−j."
+          - math: '\big(m(1-j)\big)^2 = m^2(1-j)^2 = m^2(-3j) = -3m^2j = \Delta'
+            note: "Les deux expressions coïncident."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Déterminer $z_1$ et $z_2$ les deux solutions de l'équation $(E_m)$.
+        reasoning: |-
+          $\Delta$ est déjà un carré (question précédente) : $\delta = m(1-j)$ en est une racine, et la formule $\dfrac{-b\pm\delta}{2a}$ donne les deux racines. Il faut ensuite simplifier chaque numérateur — encore une fois avec l'identité $1+j+j^2=0$, réécrite sous deux formes utiles ($j+j^2=-1$, puis $j^2=-1-j$).
+        steps:
+          - math: 'z = \dfrac{-mj^2 \pm m(1-j)}{2}'
+            note: "Formule (−b±δ)/(2a), avec −b=−mj², δ=m(1−j) (question 2a)."
+          - math: 'z_1 = \dfrac{m(1-j-j^2)}{2}; \quad j+j^2=-1 \implies 1-j-j^2 = 1-(-1) = 2 \implies z_1=m'
+            note: "On réutilise 1+j+j²=0, donc j+j²=−1."
+          - math: 'z_2 = \dfrac{m(j-1-j^2)}{2}; \quad j^2=-1-j \implies j-1-j^2 = j-1-(-1-j)=2j \implies z_2=mj'
+            note: "Même identité, réinjectée pour isoler j²."
+          - math: 'z_1=m, \qquad z_2=mj \qquad (\text{contrôle : } z_1+z_2=m(1+j)=-mj^2\ \checkmark,\ z_1z_2=m^2j\ \checkmark)'
+            note: "Vérification par les relations coefficients-racines (Viète) sur (E_m)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Dans cette question, on suppose que $m = 1 + i$. Montrer que $(z_1 + z_2)^{2022}$ est un imaginaire pur.
+        reasoning: |-
+          On repart de $z_1+z_2=-mj^2$ (Viète, question précédente) et on met chaque facteur sous forme exponentielle pour appliquer la règle du produit (R2), puis Moivre (R3) pour la puissance $2022$-ième. Le seul point délicat est de réduire un angle multiplié par $2022$ : on travaille en unités de $\dfrac{\pi}{12}$ et on réduit l'entier modulo $24$ (un tour complet), plutôt que de manipuler un angle énorme.
+        steps:
+          - math: 'z_1+z_2 = m(1+j) = -mj^2'
+            note: "Somme des racines (Viète, question 2b) ; on réutilise directement −mj² plutôt que m(1+j)."
+          - math: 'm=1+i=\sqrt2\,e^{i\pi/4}, \qquad -j^2 = e^{i\pi}e^{i4\pi/3}=e^{i\frac{7\pi}{3}}=e^{i\pi/3}'
+            note: "Formes exponentielles de m et de −j² (R1–R2) ; 7π/3 − 2π = π/3."
+          - math: 'z_1+z_2 = \sqrt2\,e^{i\pi/4}\times e^{i\pi/3} = \sqrt2\,e^{i\frac{7\pi}{12}}'
+            note: "Produit : modules × modules, arguments + arguments (R2). π/4+π/3=7π/12."
+          - math: '(z_1+z_2)^{2022} = \big(\sqrt2\big)^{2022}\,e^{i\times2022\times\frac{7\pi}{12}}'
+            note: "Moivre (R3) : module puissance 2022, argument multiplié par 2022."
+          - math: '2022\times7 = 14154 \equiv 18\ [24] \implies 2022\times\dfrac{7\pi}{12} \equiv \dfrac{18\pi}{12} = \dfrac{3\pi}{2}\ [2\pi]'
+            note: "24 unités de π/12 = un tour complet ; on réduit 14154 modulo 24 plutôt que de garder l'angle brut."
+          - math: '(z_1+z_2)^{2022} = \big(\sqrt2\big)^{2022}e^{i\,3\pi/2}, \qquad e^{i3\pi/2}=-i'
+            note: "Argument 3π/2 : c'est un imaginaire pur (axe imaginaire, direction −i)."
+      - id: q4
+        part: "Partie II — La transformation $\\varphi$ : $M(z)\\mapsto M'(z')$ avec $z' = (1+j)z$"
+        stem: |-
+          **(0,25 pt)** Déterminer la nature et les éléments caractéristiques de l'application $\varphi$.
+        reasoning: |-
+          $\varphi$ a la forme $z\mapsto cz$ étudiée au rung R5, avec $c=1+j$. On calcule $c$ en forme exponentielle : sa partie réelle et sa partie imaginaire sont exactement $\cos\dfrac{\pi}{3}$ et $\sin\dfrac{\pi}{3}$, donc $c=e^{i\pi/3}$, de module $1$. Un module $1$ signifie qu'il n'y a aucune homothétie (R5) : $\varphi$ est une rotation pure.
+        steps:
+          - math: '1+j = 1+\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right) = \tfrac12+\tfrac{\sqrt3}{2}i = e^{i\pi/3}'
+            note: "Forme exponentielle de 1+j : module 1, argument π/3."
+          - math: '|1+j|=1, \quad \arg(1+j)=\dfrac{\pi}{3}'
+            note: "Module 1 : pas d'homothétie (rung R5)."
+          - math: '\varphi\ \text{est la rotation de centre}\ O\ \text{et pour angle}\ \dfrac{\pi}{3}'
+            note: "z′=cz avec |c|=1 : rotation pure, de centre O (z=0 fixe) et d'angle arg(c)=π/3 (R5)."
+      - id: q5
+        stem: |-
+          **(0,75 pt)** On considère les points $A$, $B$ et $C$ d'affixes respectives $m$, $mj$ et $mj^2$, et $A'(a')$, $B'(b')$, $C'(c')$ leurs images par $\varphi$. Montrer que : $a' = -mj^2$, $b' = -m$ et $c' = -mj$.
+        reasoning: |-
+          Il suffit d'appliquer $\varphi$ (question précédente) à chacun des trois points, en remplaçant systématiquement $1+j$ par $-j^2$ (l'identité $1+j+j^2=0$, question 1, réécrite) : cela fait apparaître des puissances de $j$ supérieures à $2$, qu'on ramène ensuite avec $j^3=1$.
+        steps:
+          - math: '1+j=-j^2'
+            note: "Réécriture de 1+j+j²=0 (question 1)."
+          - math: 'a''=(1+j)m=-mj^2'
+            note: "φ(A) : on remplace 1+j par −j²."
+          - math: 'b''=(1+j)(mj)=-mj^3=-m'
+            note: "φ(B) ; j³=1 (question 1)."
+          - math: 'c''=(1+j)(mj^2)=-mj^4=-mj'
+            note: "φ(C) ; j⁴=j³×j=j."
+      - id: q6
+        stem: |-
+          **(0,25 pt)** Soient $P(p)$, $Q(q)$ et $R(r)$ les milieux respectifs de $[BA']$, $[CB']$ et $[AC']$. Montrer que : $p + qj + rj^2 = 0$.
+        reasoning: |-
+          Chaque milieu s'écrit comme la moyenne des deux affixes qui le définissent, en réutilisant $a'$, $b'$, $c'$ de la question précédente. En multipliant $q$ par $j$ et $r$ par $j^2$ (et en simplifiant avec $j^3=1$), les six termes de la somme $p+qj+rj^2$ s'annulent exactement deux à deux — un télescopage complet.
+        steps:
+          - math: 'p=\dfrac{b+a''}{2}=\dfrac{m(j-j^2)}{2}, \quad q=\dfrac{c+b''}{2}=\dfrac{m(j^2-1)}{2}, \quad r=\dfrac{a+c''}{2}=\dfrac{m(1-j)}{2}'
+            note: "Milieux = moyennes des affixes ; on réutilise a′, b′, c′ (question 2a de la partie II)."
+          - math: 'qj = \dfrac{m(j^3-j)}{2} = \dfrac{m(1-j)}{2}, \qquad rj^2 = \dfrac{m(j^2-j^3)}{2} = \dfrac{m(j^2-1)}{2}'
+            note: "On multiplie q par j et r par j², en utilisant j³=1."
+          - math: 'p+qj+rj^2 = \dfrac{m}{2}\Big[(j-j^2)+(1-j)+(j^2-1)\Big] = \dfrac{m}{2}\times 0 = 0'
+            note: "Les six termes s'annulent deux à deux (télescopage)."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** En déduire que le triangle $PQR$ est équilatéral.
+        reasoning: |-
+          On réécrit la relation $p+qj+rj^2=0$ pour faire apparaître un rapport de complexes : en remplaçant $j^2$ par $-1-j$ (identité de la question 1), on isole $\dfrac{p-r}{q-r}$, qui vaut exactement $-j$. Or $-j$ a pour module $1$ et pour argument $-\dfrac{\pi}{3}$ — exactement la condition du rung R6 pour un triangle équilatéral, lue au sommet $R$.
+        steps:
+          - math: 'j^2=-1-j \implies p+qj+r(-1-j)=0 \implies (p-r)+j(q-r)=0'
+            note: "On substitue j² (identité 1+j+j²=0)."
+          - math: '\dfrac{p-r}{q-r} = -j'
+            note: "On isole le rapport (Q ≠ R, sinon deux des trois milieux coïncident, ce que la question précédente exclut par construction)."
+          - math: '-j = -\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right) = \tfrac12-\tfrac{\sqrt3}{2}i = e^{-i\pi/3}'
+            note: "Forme exponentielle de −j : module 1, argument −π/3."
+          - math: '\left|\dfrac{p-r}{q-r}\right|=1 \ \text{et}\ \arg\!\left(\dfrac{p-r}{q-r}\right) = -\dfrac{\pi}{3}\ [2\pi] \implies PQR\ \text{équilatéral}'
+            note: "Rung R6, sommet R : module 1 et argument ±π/3 caractérisent un triangle équilatéral."
+
+  # ── bk-2024-n-x3 — 2024 N, Exercice 3 : équation à paramètre α, orthogonalité, lieu géométrique ──
+  - id: bk-2024-n-x3
+    title: "Équation à paramètre, orthogonalité en O et lieu géométrique"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 3,5 points (Exercice 3, nombres
+        complexes). Source AlloSchool element/145739. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, section « 2024 — session
+        normale — Exercice 3 » (statut « vérifié », agent-vérificateur-
+        adversarial, 2026-08-05, source re-fetchée indépendamment, diff
+        caractère-par-caractère conforme au scan ; glyphes mojibake
+        confirmés sans incidence sur les valeurs transcrites).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2024, Sciences Mathématiques).**
+
+      Le plan complexe est rapporté à un repère orthonormé direct $(O,\vec u,\vec v)$. On considère dans $\mathbb{C}$ l'équation d'inconnue $z$ :
+
+      $$(E_\alpha)\ :\ z^2 - 2iz + \alpha = 0 \qquad \text{où } \alpha \in \mathbb{C}$$
+
+      La **partie I** étudie $(E_\alpha)$ en général : discriminant, condition de deux solutions distinctes, somme et produit des racines. La **partie II** place $\Omega(\alpha)$, $M_1(z_1)$ et $M_2(z_2)$ dans le plan et cherche, pour finir, l'ensemble des $\alpha$ qui rendent le triangle $OM_1M_2$ rectangle en $O$ — une synthèse qui réutilise chaque résultat de la partie précédente.
+    questions:
+      - id: q1a
+        part: "Partie I — L'équation $(E_\\alpha)\\ :\\ z^2 - 2iz + \\alpha = 0$"
+        stem: |-
+          **(0,25 pt)** Montrer que le discriminant de l'équation $(E_\alpha)$ est $\Delta = -4(1 + \alpha)$.
+        reasoning: |-
+          Application directe de $\Delta=b^2-4ac$, avec $b=-2i$ (donc $b^2=-4$) — aucun geste caché ici, juste factoriser par $-4$ à la fin pour retrouver la forme demandée.
+        steps:
+          - math: '\Delta = (-2i)^2-4\times1\times\alpha = -4-4\alpha'
+            note: "Δ=b²−4ac, avec a=1, b=−2i, c=α."
+          - math: '\Delta = -4(1+\alpha)'
+            note: "On factorise par −4."
+      - id: q1b
+        stem: |-
+          **(0,25 pt)** Déterminer l'ensemble des valeurs $\alpha$ pour lesquelles l'équation $(E_\alpha)$ admette dans l'ensemble $\mathbb{C}$ deux solutions distinctes.
+        reasoning: |-
+          Dans $\mathbb{C}$, à la différence de $\mathbb{R}$, tout nombre non nul a exactement deux racines carrées distinctes (rung R4, $n=2$) : une équation du second degré a donc deux solutions distinctes **dès que** $\Delta\neq0$ — pas besoin de discuter le signe de $\Delta$ comme dans $\mathbb{R}$. Si $\Delta=0$, en revanche, la racine est double.
+        steps:
+          - math: '(E_\alpha)\ \text{a deux solutions distinctes} \iff \Delta\neq0'
+            note: "Dans ℂ, tout nombre non nul a exactement deux racines carrées distinctes (rung R4, n=2) ; Δ=0 donnerait une racine double."
+          - math: '\Delta\neq0 \iff -4(1+\alpha)\neq0 \iff \alpha\neq -1'
+            note: "On résout l'inéquation."
+          - math: '\alpha \in \mathbb{C}-\{-1\}'
+            note: "Ensemble cherché : tout le plan complexe, sauf le point −1."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** On note $z_1$ et $z_2$ les deux solutions de l'équation $(E_\alpha)$. Déterminer $z_1 + z_2$ et $z_1 z_2$.
+        reasoning: |-
+          Les relations coefficients-racines (Viète) lisent directement la somme et le produit sur les coefficients de $(E_\alpha)$, sans avoir besoin de calculer $z_1$ et $z_2$ individuellement.
+        steps:
+          - math: 'z_1+z_2 = -\dfrac{b}{a} = 2i'
+            note: "Relations coefficients-racines (Viète), somme."
+          - math: 'z_1z_2 = \dfrac{c}{a} = \alpha'
+            note: "Viète, produit."
+      - id: q3a
+        part: "Partie II — $\\Omega(\\alpha)$, $M_1(z_1)$, $M_2(z_2)$ ; on suppose $\\alpha = m^2-2m$ avec $m\\in\\mathbb{R}$"
+        stem: |-
+          **(0,5 pt)** Déterminer $z_1$ et $z_2$ en fonction de $m$.
+        reasoning: |-
+          On remplace $\alpha$ par $m^2-2m$ dans $\Delta=-4(1+\alpha)$ : l'expression $1+m^2-2m$ est l'identité remarquable $(m-1)^2$, donc $\Delta$ se réduit à un carré parfait — encore le même geste qu'aux questions précédentes de cette notion, avec $2i(m-1)$ comme racine carrée.
+        steps:
+          - math: '\Delta = -4(1+\alpha) = -4\big(1+m^2-2m\big) = -4(m-1)^2 = \big[2i(m-1)\big]^2'
+            note: "On remplace α ; 1+m²−2m=(m−1)² (identité remarquable) ; −4 fois un carré réel est le carré de 2i fois ce réel."
+          - math: 'z = \dfrac{2i \pm 2i(m-1)}{2} = i\big[1\pm(m-1)\big]'
+            note: "Formule (−b±δ)/(2a), avec −b=2i, δ=2i(m−1)."
+          - math: 'z_1 = i\big[1+(m-1)\big] = im, \qquad z_2 = i\big[1-(m-1)\big] = i(2-m)'
+            note: "On développe les deux crochets."
+      - id: q3b
+        stem: |-
+          **(0,25 pt)** En déduire que les points $O$, $M_1$ et $M_2$ sont alignés.
+        reasoning: |-
+          $z_1=im$ et $z_2=i(2-m)$ sont tous deux des multiples réels de $i$ (puisque $m$ et $2-m$ sont réels) : les deux points $M_1$ et $M_2$ sont donc sur l'axe imaginaire — la droite qui passe justement par $O$. Trois points sur une même droite : alignés.
+        steps:
+          - math: 'z_1=im,\ z_2=i(2-m),\quad m,\ 2-m \in \mathbb{R}'
+            note: "Les deux affixes sont des multiples réels de i."
+          - math: 'M_1,\ M_2 \in (O; \vec{v}) \ \text{(axe des imaginaires purs, passant par O)}'
+            note: "Un multiple réel de i place le point sur l'axe imaginaire."
+          - math: 'O,\ M_1,\ M_2\ \text{alignés}'
+            note: "Trois points portés par la même droite (l'axe imaginaire) sont alignés."
+      - id: q4a
+        part: "Partie II (suite) — on suppose désormais que $O$, $M_1$, $M_2$ ne sont pas alignés"
+        stem: |-
+          **(0,25 pt)** Montrer que $\dfrac{z_1}{z_2}$ est un imaginaire pur si et seulement si $\mathrm{Re}\!\left(z_1\overline{z_2}\right) = 0$.
+        reasoning: |-
+          Sous l'hypothèse de non-alignement, $z_1$ et $z_2$ sont tous deux non nuls (sinon un des deux points serait $O$ lui-même). On multiplie donc $\dfrac{z_1}{z_2}$ par $\dfrac{\overline{z_2}}{\overline{z_2}}$ (méthode du conjugué, chapitre 1) : le dénominateur devient le réel positif $|z_2|^2$, qui ne change ni le signe ni la nullité de la partie réelle du numérateur.
+        steps:
+          - math: '\dfrac{z_1}{z_2} = \dfrac{z_1\overline{z_2}}{z_2\overline{z_2}} = \dfrac{z_1\overline{z_2}}{|z_2|^2}'
+            note: "On multiplie par le conjugué (méthode du chapitre 1) ; z2 ≠ 0 car sinon M2=O, contredisant l'hypothèse."
+          - math: '\mathrm{Re}\!\left(\dfrac{z_1}{z_2}\right) = \dfrac{\mathrm{Re}\!\left(z_1\overline{z_2}\right)}{|z_2|^2}'
+            note: "Diviser par le réel strictement positif |z2|² ne change pas le signe ni la nullité de la partie réelle."
+          - math: '\dfrac{z_1}{z_2}\ \text{imaginaire pur} \iff \mathrm{Re}\!\left(\dfrac{z_1}{z_2}\right)=0 \iff \mathrm{Re}\!\left(z_1\overline{z_2}\right)=0'
+            note: "|z2|² > 0 : le quotient est nul exactement quand le numérateur l'est."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** Montrer que : $|z_1 - z_2|^2 = |z_1 + z_2|^2 - 4\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)$.
+        reasoning: |-
+          On développe $|z_1-z_2|^2$ et $|z_1+z_2|^2$ avec l'outil $|Z|^2=Z\overline Z$ (chapitre 1) : les deux développements ne diffèrent que par le signe du double produit croisé, qui vaut $\pm2\,\mathrm{Re}(z_1\overline{z_2})$. En combinant les deux identités, on élimine $|z_1|^2+|z_2|^2$ pour arriver directement à la relation demandée.
+        steps:
+          - math: '|z_1-z_2|^2 = (z_1-z_2)\overline{(z_1-z_2)} = |z_1|^2+|z_2|^2-2\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)'
+            note: "On développe avec |Z|²=Z z̄ (chapitre 1) ; le double produit croisé se regroupe en 2Re(z1 z2 barre)."
+          - math: '|z_1+z_2|^2 = (z_1+z_2)\overline{(z_1+z_2)} = |z_1|^2+|z_2|^2+2\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)'
+            note: "Même développement, avec le signe + cette fois."
+          - math: '|z_1|^2+|z_2|^2 = |z_1+z_2|^2-2\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)'
+            note: "On isole |z1|²+|z2|² dans la deuxième identité."
+          - math: '|z_1-z_2|^2 = \Big[|z_1+z_2|^2-2\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)\Big]-2\,\mathrm{Re}\!\left(z_1\overline{z_2}\right) = |z_1+z_2|^2-4\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)'
+            note: "On reporte dans la première identité."
+      - id: q4c
+        stem: |-
+          **(0,25 pt)** En déduire que $\dfrac{z_1}{z_2}$ est un imaginaire pur si et seulement si $|z_1 - z_2| = 2$.
+        reasoning: |-
+          La partie I (question 2) donne déjà $z_1+z_2=2i$, donc $|z_1+z_2|=2$ : une valeur numérique fixe, indépendante d'$\alpha$. En reportant dans l'identité de la question précédente puis en enchaînant avec l'équivalence de la question (a), la chaîne se referme directement sur $|z_1-z_2|=2$.
+        steps:
+          - math: 'z_1+z_2=2i \ (\text{Partie I}) \implies |z_1+z_2| = 2 \implies |z_1+z_2|^2=4'
+            note: "Valeur déjà connue (Partie I, question 2)."
+          - math: '|z_1-z_2|^2 = 4-4\,\mathrm{Re}\!\left(z_1\overline{z_2}\right)'
+            note: "On reporte dans l'identité de la question précédente."
+          - math: '\dfrac{z_1}{z_2}\ \text{imaginaire pur} \iff \mathrm{Re}\!\left(z_1\overline{z_2}\right)=0 \iff |z_1-z_2|^2=4 \iff |z_1-z_2|=2'
+            note: "On enchaîne avec l'équivalence de la question (a) ; le module est positif, donc |z1−z2|²=4 équivaut à |z1−z2|=2."
+      - id: q5a
+        part: "Partie II (fin) — retour au cas général de $(E_\\alpha)$"
+        stem: |-
+          **(0,25 pt)** Montrer que : $(z_1 - z_2)^2 = \Delta$.
+        reasoning: |-
+          Identité algébrique valable pour n'importe quels complexes $z_1,z_2$ : $(z_1-z_2)^2=(z_1+z_2)^2-4z_1z_2$. Il suffit d'y injecter la somme et le produit trouvés en partie I, question 2.
+        steps:
+          - math: '(z_1-z_2)^2 = (z_1+z_2)^2-4z_1z_2'
+            note: "Identité algébrique (z1−z2)²=(z1+z2)²−4z1z2, valable pour tous complexes."
+          - math: '(z_1-z_2)^2 = (2i)^2-4\alpha = -4-4\alpha'
+            note: "On remplace par les valeurs de la Partie I, question 2."
+          - math: '(z_1-z_2)^2 = -4(1+\alpha) = \Delta'
+            note: "C'est exactement Δ (Partie I, question 1a)."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** Déterminer l'ensemble $\Gamma$ des points $\Omega$ pour que le triangle $OM_1 M_2$ soit rectangle en $O$.
+        reasoning: |-
+          C'est la synthèse de tout l'exercice. « Rectangle en $O$ » signifie $\vec{OM_1}\perp\vec{OM_2}$, c'est-à-dire $\dfrac{z_1}{z_2}$ imaginaire pur (rung R6) — condition déjà traduite, question après question, en $|z_1-z_2|=2$ (2c), puis en $|\Delta|=4$ (via la question 3a), puis en $|\alpha+1|=1$ : l'équation d'un cercle.
+
+          Reste un dernier geste, propre à cette question : un « triangle » suppose trois points distincts. Le produit $z_1z_2=\alpha$ (Partie I) s'annule exactement quand $\alpha=0$ — c'est-à-dire quand l'un des deux points $M_1,M_2$ coïncide avec $O$. Ce point $\alpha=0$ est justement situé sur le cercle trouvé : il faut donc l'exclure explicitement, sans quoi $\Gamma$ contiendrait un cas dégénéré.
+        steps:
+          - math: '\text{rectangle en } O \iff \overrightarrow{OM_1}\perp\overrightarrow{OM_2} \iff \dfrac{z_1}{z_2}\ \text{imaginaire pur} \iff |z_1-z_2|=2'
+            note: "Perpendicularité via le rapport des affixes (rung R6), puis l'équivalence de la question 2c."
+          - math: '|z_1-z_2|=2 \iff |z_1-z_2|^2=4 \iff |\Delta| = 4'
+            note: "Question 3a : (z1−z2)²=Δ, donc |z1−z2|²=|Δ|."
+          - math: '|\Delta|=4 \iff |{-4(1+\alpha)}|=4 \iff 4\,|1+\alpha|=4 \iff |\alpha+1|=1'
+            note: "Δ=−4(1+α) (Partie I) ; module d'un produit."
+          - math: '|\alpha+1|=1\ \text{définit le cercle de centre}\ -1\ \text{et de rayon}\ 1'
+            note: "Lecture géométrique du module d'une différence : ensemble des points à distance 1 du point d'affixe −1."
+          - math: 'z_1z_2=\alpha=0 \implies z_1=0\ \text{ou}\ z_2=0 \implies M_1=O\ \text{ou}\ M_2=O\ (\text{triangle dégénéré})'
+            note: "α=0 est sur ce cercle (|0+1|=1) mais y est exclu : sans trois points distincts, il n'y a pas de triangle."
+          - math: '\Gamma = \big\{\,\Omega(\alpha)\ :\ |\alpha+1|=1\,\big\}\setminus\big\{\Omega(0)\big\}'
+            note: "Cercle de centre le point d'affixe −1, rayon 1, privé du point d'affixe 0."
