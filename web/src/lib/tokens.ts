@@ -169,16 +169,51 @@ export const invariant: TokenVars = {
   "--state-pressed": "0.10",
   "--state-dragged": "0.16",
   "--state-disabled": "0.38",
-  // CSS-side motion (mirrors the tailwind transition tokens; no bounce)
-  "--ease-between": "cubic-bezier(0.4, 0, 0.2, 1)",
-  "--duration-micro": "150ms",
-  "--duration-standard": "250ms",
-  "--duration-view": "300ms",
   // Measure / line-length (do not change in dark mode)
   "--measure-prose": "65ch",
   "--measure-wide": "72ch",
   "--measure-lead": "52ch",
   "--measure-list": "42rem",
+  // Small-caps eyebrow tracking — was `tracking-[0.14em]` in 13 files.
+  "--tracking-eyebrow": "0.14em",
+  // A11y touch target (DESIGN-BIBLE §9) — was `min-h-[48px]`.
+  "--touch-target": "48px",
+  // Z-index scale — semantic names for the three stacking tiers (were raw
+  // z-10 / z-40 / z-50 magic numbers).
+  "--z-raised": "10",
+  "--z-header": "40",
+  "--z-overlay": "50",
+};
+
+/**
+ * Motion — the ONE source for durations and easing curves. The generator
+ * emits `--duration-<k>` / `--ease-<k>` CSS custom properties from this (so
+ * the CSS motion layer reads them), and tailwind.config maps the SAME object
+ * into transitionDuration / transitionTimingFunction (referencing those vars).
+ * No bounce / overshoot / elastic in the learning core (MOTION-CHOREOGRAPHY).
+ */
+export const motion: {
+  duration: Record<string, string>;
+  ease: Record<string, string>;
+} = {
+  duration: {
+    micro: "150ms",
+    standard: "250ms",
+    // Chapter-view enter transition — a full-view swap reads calmer a touch
+    // slower than a hover/state change (LESSON-EXPERIENCE-SPEC §1.3).
+    view: "300ms",
+    // Entering deep study only.
+    slow: "400ms",
+  },
+  ease: {
+    between: "cubic-bezier(0.4, 0, 0.2, 1)", // ease-in-out (state transitions)
+    enter: "cubic-bezier(0, 0, 0.2, 1)", // ease-out (elements arriving)
+    leave: "cubic-bezier(0.4, 0, 1, 1)", // ease-in (elements departing)
+    // The premium decelerate (ADR 0022) — no overshoot.
+    emphasized: "cubic-bezier(0.2, 0, 0, 1)",
+    // CSS analogue of GSAP power2.out, for SVG-adjacent transitions.
+    "standard-svg": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+  },
 };
 
 /**

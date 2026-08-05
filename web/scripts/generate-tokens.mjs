@@ -29,7 +29,15 @@ const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const OUT = path.join(WEB, "src/app/tokens.generated.css");
 
 const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
-const { themes, invariant } = jiti(path.join(WEB, "src/lib/tokens.ts"));
+const { themes, invariant, motion } = jiti(path.join(WEB, "src/lib/tokens.ts"));
+
+/** Motion → flat CSS custom properties (`--duration-*`, `--ease-*`). */
+function motionVars() {
+  const out = {};
+  for (const [k, v] of Object.entries(motion.duration)) out[`--duration-${k}`] = v;
+  for (const [k, v] of Object.entries(motion.ease)) out[`--ease-${k}`] = v;
+  return out;
+}
 
 const HEADER = `/* GENERATED FILE — DO NOT EDIT.
    Source of truth: src/lib/tokens.ts
@@ -46,10 +54,13 @@ function emitBlock(selector, vars) {
 
 function generate() {
   const blocks = Object.values(themes).map((theme) => {
-    // The theme-independent tokens live in :root alongside the light theme;
-    // every other selector carries only its own theme-varying overrides.
+    // The theme-independent tokens (invariant + the flattened motion vars)
+    // live in :root alongside the light theme; every other selector carries
+    // only its own theme-varying overrides.
     const vars =
-      theme.selector === ":root" ? { ...theme.vars, ...invariant } : theme.vars;
+      theme.selector === ":root"
+        ? { ...theme.vars, ...invariant, ...motionVars() }
+        : theme.vars;
     return emitBlock(theme.selector, vars);
   });
   return `${HEADER}\n${blocks.join("\n")}`;
@@ -81,6 +92,7 @@ if (isCheck) {
   const count =
     Object.keys(themes.light.vars).length +
     Object.keys(invariant).length +
+    Object.keys(motionVars()).length +
     Object.keys(themes.dark.vars).length;
   console.log(
     `generate-tokens: wrote ${OUT} (${count} custom-property declarations across ${Object.keys(themes).length} themes) ✓`

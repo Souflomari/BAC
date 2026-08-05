@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
-import { typeScale } from "./tokens";
+import { typeScale, motion } from "./tokens";
 
 /**
  * Merge Tailwind classes safely — deduplicate conflicting utilities.
@@ -40,12 +40,10 @@ const twMerge = extendTailwindMerge({
       // boxShadow — elevation scale (shadow-elevation-<n>). The legacy
       // shadow-subtle/soft aliases were removed in Phase A (dead + off-palette).
       shadow: [{ shadow: [{ elevation: ["0", "1", "2", "3", "4"] }] }],
-      // transitionDuration — duration-<key>
-      duration: [{ duration: ["micro", "standard", "slow"] }],
-      // transitionTimingFunction — ease-<key>
-      ease: [
-        { ease: ["enter", "leave", "between", "emphasized", "standard-svg"] },
-      ],
+      // transitionDuration / transitionTimingFunction — derived from tokens.ts
+      // motion so these lists can never drift from the config's keys.
+      duration: [{ duration: Object.keys(motion.duration) }],
+      ease: [{ ease: Object.keys(motion.ease) }],
       // maxWidth — max-w-<key>
       "max-w": [
         {
@@ -62,6 +60,13 @@ const twMerge = extendTailwindMerge({
       ],
       // ringColor — ring-focus
       "ring-color": [{ ring: ["focus"] }],
+      // letterSpacing — tracking-eyebrow (Phase A / W3)
+      tracking: [{ tracking: ["eyebrow"] }],
+      // zIndex — semantic tiers (Phase A / W3)
+      z: [{ z: ["raised", "header", "overlay"] }],
+      // minHeight / minWidth — touch target (Phase A / W3)
+      "min-h": [{ "min-h": ["touch"] }],
+      "min-w": [{ "min-w": ["touch"] }],
     },
   },
 });

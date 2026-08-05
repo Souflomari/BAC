@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { typeScale, radius, screens } from "./src/lib/tokens";
+import { typeScale, radius, screens, motion } from "./src/lib/tokens";
 
 // ── Single source of truth ──────────────────────────────────────────────────
 // Scales come from src/lib/tokens.ts (the ONE place design values live). The
@@ -135,18 +135,34 @@ const config: Config = {
       borderRadius: radius,
 
       // ── Motion / transitions (DESIGN-BIBLE §5, ADR 0022) — never bounce. ────
-      transitionDuration: {
-        micro: "150ms",
-        standard: "250ms",
-        slow: "400ms",
+      // Derived from tokens.ts `motion`; each key references the CSS var the
+      // generator emits, so the tailwind utility and the CSS-side var are one
+      // definition (was: two literal copies that had drifted — CSS lacked
+      // `slow`, tailwind lacked `view`).
+      transitionDuration: Object.fromEntries(
+        Object.keys(motion.duration).map((k) => [k, v(`duration-${k}`)]),
+      ),
+      transitionTimingFunction: Object.fromEntries(
+        Object.keys(motion.ease).map((k) => [k, v(`ease-${k}`)]),
+      ),
+
+      // ── New systemized families (Phase A / W3) ─────────────────────────────
+      // Eyebrow small-caps tracking — replaces `tracking-[0.14em]` (13 files).
+      letterSpacing: {
+        eyebrow: v("tracking-eyebrow"),
       },
-      transitionTimingFunction: {
-        enter: "cubic-bezier(0, 0, 0.2, 1)",
-        leave: "cubic-bezier(0.4, 0, 1, 1)",
-        between: "cubic-bezier(0.4, 0, 0.2, 1)",
-        // Craft easing curves (ADR 0022) — no overshoot.
-        emphasized: "cubic-bezier(0.2, 0, 0, 1)",
-        "standard-svg": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+      // A11y touch target — replaces `min-h-[48px]` / `min-w-[48px]`.
+      minHeight: {
+        touch: v("touch-target"),
+      },
+      minWidth: {
+        touch: v("touch-target"),
+      },
+      // Semantic z-index tiers — replace raw z-10 / z-40 / z-50.
+      zIndex: {
+        raised: v("z-raised"),
+        header: v("z-header"),
+        overlay: v("z-overlay"),
       },
 
       // ── Box shadow — 5-step elevation via CSS vars (ADR 0022) ──────────────

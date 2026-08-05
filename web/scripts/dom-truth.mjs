@@ -136,6 +136,31 @@ const FS = parseFontSizes();
 const PROSE = parseProseSizes();
 const GRID_UNIT = 4; // TOKENS.md §3 — Tailwind scale: 1 unit = 4px (p-6 = 24px)
 
+// ── Token source, for the generated token sweep + the cn() merge tripwire ─────
+// Loaded from the SAME module the app renders from (src/lib/tokens.ts) via jiti,
+// so the sweep's "expected" set can never be a stale hand-copy. Every CSS var is
+// asserted in both themes with zero hand-listing; a token added to tokens.ts is
+// covered on the next run automatically (§13: assert the class, not the instance).
+const TOKENS = (() => {
+  const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
+  return jiti(path.join(WEB, "src/lib/tokens.ts"));
+})();
+const CN = (() => {
+  const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
+  return jiti(path.join(WEB, "src/lib/utils.ts")).cn;
+})();
+/** Motion → flat CSS custom properties (mirror of the generator's motionVars). */
+function tokenMotionVars() {
+  const out = {};
+  for (const [k, v] of Object.entries(TOKENS.motion.duration)) out[`--duration-${k}`] = v;
+  for (const [k, v] of Object.entries(TOKENS.motion.ease)) out[`--ease-${k}`] = v;
+  return out;
+}
+const EXPECTED_VARS = {
+  light: { ...TOKENS.themes.light.vars, ...TOKENS.invariant, ...tokenMotionVars() },
+  dark: { ...TOKENS.themes.dark.vars, ...TOKENS.invariant, ...tokenMotionVars() },
+};
+
 /**
  * The battery. Each entry:
  *  { name, page, sel, text?, fontKey? | fontPx?, lineHeight?: true,
@@ -2453,6 +2478,88 @@ try {
     checks++;
     if (over > 1) failures += fail(`expanded bank cards overflow-x ${over}px à 390`);
     else console.log(`  ✓ ${nCards} expanded bank cards — 0px overflow à 390`);
+  }
+
+  // ── SWEEP: token source parity — every CSS custom property resolves to its
+  //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
+  //    against the rendered DOM (not the source files). Reads getPropertyValue
+  //    on <html> (nested var() refs stay literal, so this compares declared
+  //    values, theme-correctly — .dark overrides win by source order).
+  for (const theme of ["light", "dark"]) {
+    console.log(`\n[/] SWEEP: token source parity — every CSS var == tokens.ts (${theme})`);
+    await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    await page.evaluate((t) => localStorage.setItem("bac-theme", t), theme);
+    await page.reload({ waitUntil: "networkidle" });
+    const expected = EXPECTED_VARS[theme];
+    // Compare the APP's computed var against the SAME source value serialized by
+    // the SAME browser: inject each source token onto a hidden probe (which
+    // inherits :root, so nested var() resolves theme-correctly), then compare
+    // both via getPropertyValue. Identical browser normalization (hex case,
+    // comma spacing, trailing zeros, var() substitution) cancels on both sides —
+    // so a mismatch means the DEPLOYED token genuinely differs from tokens.ts.
+    const got = await page.evaluate((expectedMap) => {
+      const html = document.documentElement;
+      const probe = document.createElement("div");
+      probe.style.position = "absolute";
+      probe.style.visibility = "hidden";
+      for (const [k, val] of Object.entries(expectedMap)) probe.style.setProperty(k, val);
+      document.body.appendChild(probe);
+      const csH = getComputedStyle(html);
+      const csP = getComputedStyle(probe);
+      // Normalize away the browser's serialization quirks that differ between
+      // stylesheet-parsed (app) and inline setProperty (probe) custom props:
+      // hex case, spaces after commas, and fractional trailing zeros (.10→.1).
+      // Distinct values stay distinct (48px ≠ 40px) — verified in Node.
+      const norm = (s) =>
+        s
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .replace(/(\.\d*?)0+(?=\D|$)/g, "$1")
+          .replace(/\.(?=\D|$)/g, "");
+      const mism = [];
+      for (const k of Object.keys(expectedMap)) {
+        const app = norm(csH.getPropertyValue(k));
+        const src = norm(csP.getPropertyValue(k));
+        if (app !== src) mism.push(`${k}: app "${app}" ≠ src "${src}"`);
+      }
+      probe.remove();
+      return { darkOn: html.classList.contains("dark"), mism, total: Object.keys(expectedMap).length };
+    }, expected);
+    checks++;
+    if (theme === "dark" && !got.darkOn) { failures += fail("dark theme not active for token sweep"); continue; }
+    if (got.mism.length) failures += fail(`${got.mism.length}/${got.total} token var(s) drifted (${theme}):\n      ${got.mism.slice(0, 10).join("\n      ")}`);
+    else console.log(`  ✓ ${got.total}/${got.total} CSS vars resolve to tokens.ts (${theme})`);
+  }
+  await page.evaluate(() => localStorage.removeItem("bac-theme"));
+
+  // ── SWEEP: cn() merge tripwire — every custom token class survives a merge
+  //    against a DIFFERENT-property class that shares its prefix. This makes the
+  //    U1 failure (tailwind-merge silently deleting text-h1 next to a text color)
+  //    a permanent HARD GATE, not a maintenance promise. Pairs are generated from
+  //    the token families, so new type/color keys are covered automatically.
+  {
+    console.log(`\n[cn] SWEEP: tailwind-merge keeps every custom token class (U1 tripwire)`);
+    const fontKeys = Object.keys(TOKENS.typeScale);
+    const textColors = ["primary", "secondary", "tertiary", "onAccent"];
+    const pairs = [];
+    for (const f of fontKeys) for (const c of textColors) pairs.push([`text-${f}`, `text-${c}`]);
+    for (const c of ["subtle", "soft"]) pairs.push(["border-2", `border-${c}`]);
+    pairs.push(["font-regular", "font-serif"]);
+    pairs.push(
+      ["shadow-elevation-2", "rounded-lg"],
+      ["duration-slow", "ease-emphasized"],
+      ["min-h-touch", "z-header"],
+      ["tracking-eyebrow", "max-w-reading"],
+    );
+    const broken = [];
+    for (const [a, b] of pairs) {
+      const out = CN(`${a} ${b}`).split(" ");
+      if (!out.includes(a) || !out.includes(b)) broken.push(`cn("${a} ${b}") → "${out.join(" ")}"`);
+    }
+    checks++;
+    if (broken.length) failures += fail(`${broken.length}/${pairs.length} cn() pair(s) dropped a class (U1 regression):\n      ${broken.slice(0, 10).join("\n      ")}`);
+    else console.log(`  ✓ ${pairs.length} cross-group class pairs all survive the merge`);
   }
 
   await browser.close();
