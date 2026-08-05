@@ -47,7 +47,7 @@ $A$ le point d'affixe $a = 1+i$, $B$ le point d'affixe $b = (1+i)m$, $C$ le poin
 
 ## 2020 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/109635
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element → course/upload re-dérivé), diff caractère-par-caractère conforme au scan ; glyphes mojibake confirmés.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), الترجمة بالفرنسية (BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 25 · Barème de l'exercice : 3,5 points
@@ -86,7 +86,7 @@ On note $P$ le centre de la rotation d'angle $\dfrac{\pi}{2}$ qui transforme $O$
 
 ## 2022 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/136604
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element → course/upload re-dérivé), diff caractère-par-caractère conforme au scan ; glyphes mojibake confirmés.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), خيار فرنسية (BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points
@@ -119,7 +119,7 @@ Soit $\varphi$ la transformation du plan complexe qui à tout point $M(z)$ fait 
 
 ## 2024 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/145739
-Statut: transcrit (non vérifié)
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-05 : source re-fetchée indépendamment (element → course/upload re-dérivé), diff caractère-par-caractère conforme au scan ; glyphes mojibake confirmés.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), خيار فرنسية (BIOF) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points
