@@ -6,9 +6,15 @@
 > are built from. It answers to `VISION.md` and `RULES.md`; where this and the
 > vision conflict, the vision wins.
 >
-> Companion to the architecture diagram (the visual of this roster) and to
-> `docs/pipeline/`. Decisions here are recorded as an ADR so they are not
-> re-litigated.
+> **Roster of record.** This file — together with the `.claude/agents/*.md`
+> files it describes and the roster ADR — IS the record. The old
+> `docs/architecture/agent-workflow-v2.mermaid` diagram is retired (it named
+> agents that no longer exist); do not resurrect it. `docs/pipeline/pipeline.md`
+> is superseded by this file for the cast/routing.
+>
+> **v2 (2026-08-05).** Refreshed for the 5-family model era (Fable 5 / Opus 5 /
+> Sonnet 5) and to record the roster as-lived: all 17 agent files are built,
+> both critic waves have fired, and the wave-commissioning scaffolding is spent.
 
 ---
 
@@ -20,14 +26,20 @@ separate from the agents that *judge* it. Critics are adversaries to producers
 quality system — averaging judgment inside one head loses the tension that
 makes evaluation real.
 
-**Model routing across three budgets** (RULES §5):
-- **Opus** — orchestration and hard reasoning/judgment: the orchestrator, the
-  pedagogy design, every critic, the schema/migration design, the research
-  extraction. Reserved for where being subtly wrong is costly and hard to catch.
-- **Sonnet** — high-volume structured execution *from a spec*: content,
+**Model routing across three budgets** (RULES §5) — the 5-family era:
+- **Fable 5 — orchestration & planning.** The main session: plans a build,
+  routes to specialists, runs the producer→critic→revise loop, holds both
+  gates, arbitrates conflicting findings, and does the audit/reconciliation
+  passes. Not a subagent file.
+- **Opus 5 — hard reasoning & judgment.** The pedagogy design, every critic,
+  the schema/migration design, the research extraction. Reserved for where
+  being subtly wrong is costly and hard to catch (and the gated 10%). This is
+  also the tier the orchestrator escalates to for the hardest judgment calls.
+- **Sonnet 5 — high-volume structured execution *from a spec*.** Content,
   items, coded visuals, frontend, and the adversarial research check. The
-  thinking is done upstream; Sonnet executes it faithfully, fast.
-- **Gemini** — media generation and long-context bulk. A separate budget,
+  thinking is done upstream; Sonnet 5 executes it faithfully, fast. Most
+  wave/fan-out volume runs here.
+- **Gemini — media generation & long-context bulk.** A separate budget,
   accessed via the MCP/API lane — **not** a Claude Code subagent file.
 
 **Two kinds of work, two gates** (RULES §0, §2):
@@ -40,8 +52,8 @@ makes evaluation real.
 
 **Triangulated grounding.** The one artifact whose error silently corrupts
 everything downstream (the curriculum boundary) is checked by three independent
-readers — Opus extracts, Gemini checks coverage, Sonnet challenges the derived
-layer — and then the human validates depth.
+readers — Opus 5 extracts, Gemini checks coverage, Sonnet 5 challenges the
+derived layer — and then the human validates depth.
 
 ---
 
@@ -53,8 +65,8 @@ coverage; `research-challenger` attacks the derived layer; the human validates.
 The result feeds the **shared reference layer** (curriculum boundary, exam-shape,
 design tokens, ADR trail) that every agent below reads.
 
-**Phase 1 · Design.** The orchestrator dispatches `pedagogy-architect`, which
-reads the boundary and produces the pedagogy spec. Everything downstream
+**Phase 1 · Design.** The orchestrator (Fable 5) dispatches `pedagogy-architect`,
+which reads the boundary and produces the pedagogy spec. Everything downstream
 executes this spec.
 
 **Phase 2 · Produce** *(parallel).* From the spec: `content-author` writes the
@@ -80,24 +92,28 @@ push after the branch-test passes.
 
 ## 3. The roster
 
-Legend: **[built]** file exists today · **[new]** to build · **[lane]** not a
-subagent file (Gemini, via MCP/API) · *Bash* and *gated* marked where they apply.
+All 17 agent files exist and are **[live]**. Model tier and tools are on each
+row. *Bash* and *gated* are marked where they apply. **[lane]** = not a subagent
+file (Gemini, via MCP/API).
 
 ### Orchestration
 
-**orchestrator** · Opus · *the main session (`claude --model opus`), not a file*
+**orchestrator** · **Fable 5** · *the main session, not a file*
 - **Scope:** plan a notion's build, route to specialists, run the
   producer→critic→revise loop, hold both gates, arbitrate conflicting critic
-  findings, invoke only *commissioned* critics (see §4).
+  findings, invoke only *commissioned* critics (see §4). Also owns the
+  audit / reconciliation / planning passes (this roster refresh among them).
 - **Reads:** VISION, RULES, this roster, the shared reference layer.
 - **Produces:** the build plan, routing, the arbitration of findings, the gate
   hand-offs to the human.
 - **Guardrails:** never touches production directly (routes to
-  supabase-architect); never bypasses a gate; does not author content itself.
+  supabase-architect); never bypasses a gate; does not author content itself;
+  escalates the hardest single judgment calls to an Opus 5 subagent rather than
+  deciding blind.
 
 ### Grounding *(per subject)*
 
-**research-lead** · Opus · *file read/write, may use the Gemini lane* · **[new]**
+**research-lead** · **Opus 5** · *file read/write, may use the Gemini lane* · **[live]**
 - **Scope:** source & extract official cadres and bac standards into the
   curriculum boundary and exam-shape reference.
 - **Reads:** cadre PDFs in `docs/cadre/sources/`, existing boundary files.
@@ -109,8 +125,10 @@ subagent file (Gemini, via MCP/API) · *Bash* and *gated* marked where they appl
   top-level key. Follows the established schema (domaines → sous_domaines →
   chapitres → {programme, savoir_faire, limites} + poids/habiletes/
   competences_ciblees/travaux_pratiques/exclusions).
+- **Standing debt:** only the **PC** cadre is owner-authoritative; maths-sm,
+  maths-sexp, philo, svt are PROPOSITION pending their validation gates.
 
-**research-challenger** · Sonnet · *file read* · **[new]**
+**research-challenger** · **Sonnet 5** · *file read* · **[live]**
 - **Scope:** adversarial scrutiny of `research-lead`'s **derived** layer (the
   `limites` and `exclusions`).
 - **Reads:** the proposed boundary + the source cadre.
@@ -126,25 +144,30 @@ subagent file (Gemini, via MCP/API) · *Bash* and *gated* marked where they appl
 
 ### Design
 
-**pedagogy-architect** · Opus · *file read/write* · **[built — reconcile]**
-- **Scope:** notion → the pedagogy spec.
+**pedagogy-architect** · **Opus 5** · *file read/write* · **[live]**
+- **Scope:** notion → the pedagogy spec. As-lived, this agent also carries
+  **judgment-at-scale** (spec + standard-setting across many notions) and has
+  **absorbed the design-review role** it once handed off — it reviews authored
+  output against its own spec before the human sees it.
 - **Reads:** the curriculum boundary (already wired), VISION, the misconception
   framework.
 - **Produces:** bounded scope (the `savoir_faire`), the misconception inventory,
   the graduated ramp (easy → hard → past-bac → fresh variations), the
   expert-reasoning structure, the per-subject teaching approach, and **typed
-  media callouts** (each carrying `type` ∈ {atmospheric-illustration |
+  media callouts** — each carrying `type` ∈ {atmospheric-illustration |
   structural-diagram | manipulable | motion} and `tool` ∈ {gemini | svg+katex |
-  geogebra/desmos/falstad/phet | manim}).
+  interactive-svg | geogebra/desmos/falstad/phet | motion (`.motion.json` via
+  MotionStage/GSAP)}.
 - **Guardrails:** bounds scope to the boundary's `savoir_faire`; honors `limites`
   and `exclusions` as **hard** constraints (e.g. RLC: establish the damped ODE
   only — closed-form solution is undamped-only; forced resonance/impedance is
   out). **Subject-aware** — holds the maths / PC / SVT approaches in one agent;
-  per-subject splitting is **PARKED** (see §6).
+  per-subject splitting is **PARKED** (see §6). SVT's document-reasoning
+  exercise type (Phase C) lands as a charter extension here, not a new agent.
 
 ### Producers *(execute the spec)*
 
-**content-author** · Sonnet · *file read/write, no Bash* · **[built]**
+**content-author** · **Sonnet 5** · *file read/write, no Bash* · **[live]**
 - **Scope:** spec → lesson prose.
 - **Reads:** the pedagogy spec.
 - **Produces:** the hook, the décortiquer, the worked examples with reasoning
@@ -152,43 +175,63 @@ subagent file (Gemini, via MCP/API) · *Bash* and *gated* marked where they appl
   callouts where the spec calls for visuals.
 - **Guardrails:** no Bash; executes faithfully; never exceeds scope.
 
-**item-author** · Sonnet · *file read/write, no Bash* · **[built]**
-- **Scope:** spec → diagnostic items.
+**item-author** · **Sonnet 5** · *file read/write, no Bash* · **[live]**
+- **Scope:** spec → diagnostic items. As-lived, the charter includes the
+  **high-volume fan-out** it performed (tagging/authoring items across many
+  notions in a campaign), not just one notion at a time — the ledgered
+  deviation is now the charter.
 - **Reads:** the spec (misconception inventory + ramp).
 - **Produces:** the ramp's items + misconception-targeting items (**≥3 per
-  misconception**) as **files**, with stem-defect and dual-tag checks.
+  misconception**) as **files**, with stem-defect and dual-tag checks; the
+  choice-level `misconception` tags the attempt-event pipeline consumes.
 - **Guardrails:** no Bash; items as files (DB is supabase-architect's gated job);
   a wrong answer must reveal *which* misconception.
 
-**diagram-author** · Sonnet · *file read/write* · **[new]** *(visual lane 1)*
-- **Scope:** coded structural / labelled diagrams.
-- **Reads:** callouts where `tool = svg+katex`.
+**diagram-author** · **Sonnet 5** · *file read/write* · **[live]** *(visual lane 1)*
+- **Scope:** coded structural / labelled diagrams **and** bespoke first-party
+  interactive figures.
+- **Reads:** callouts where `tool = svg+katex` or `tool = interactive-svg`.
 - **Produces:** coded SVG + KaTeX (probability trees, circuit schematics, SVT
-  schemas).
+  schemas); and small bespoke interactives — a draggable point, a slider bound
+  to one known function — as a StagedFigure extension
+  (`docs/design/INTERACTIVE-FIGURE-SPEC.md`).
 - **Guardrails:** structural diagrams are **coded, never Gemini** (ADR 0017);
   labels live with the diagram (split-attention); only essential marks
-  (coherence principle); palette-coherent with the design tokens.
+  (coherence principle); palette-coherent with the design tokens; a bespoke
+  interactive is preferred over an embed when the manipulation is simple and the
+  math is already known.
 
-**interactive-author** · Sonnet · *file read/write* · **[new]** *(visual lane 2)*
-- **Scope:** manipulable embeds.
+**interactive-author** · **Sonnet 5** · *file read/write* · **[live]** *(visual lane 2; deprioritized)*
+- **Scope:** manipulable omnibus embeds (third-party).
 - **Reads:** callouts where `tool = geogebra/desmos/falstad/phet`.
 - **Produces:** configured/embedded interactives wired to the notion.
 - **Guardrails:** manipulation must serve understanding, not entertainment
   (seductive-details principle); Falstad is critical for circuit chapters.
+  **Deprioritized in practice** — bespoke `interactive-svg` (diagram-author) is
+  preferred where it suffices; embeds can't be verified headlessly (a fake embed
+  is worse than none), so they need a human in the loop.
 
-**motion-author** · Sonnet · *file read/write* · **[new]** *(visual lane 3)*
-- **Scope:** coded motion / animation.
-- **Reads:** callouts where `tool = manim`.
-- **Produces:** Manim animations — calm, clarifying reveals.
-- **Guardrails:** motion serves comprehension (DESIGN-BIBLE §5); calm pacing, no
-  fast cuts; respects `prefers-reduced-motion`.
+**motion-author** · **Sonnet 5** · *file read/write* · **[live]** *(visual lane 3)*
+- **Scope:** in-product coded motion for concepts where seeing a thing evolve
+  over time is what makes it land.
+- **Reads:** callouts where `tool = motion`.
+- **Produces:** a stable-id SVG + a declarative **`.motion.json` beat spec**,
+  played by the **MotionStage engine (GSAP)** — curves DRAW on, bars FILL,
+  equation terms ASSEMBLE, paths MORPH. (NOT Manim — the engine is first-party
+  GSAP over inline SVG so math stays live KaTeX in `<foreignObject>`.)
+- **Guardrails:** motion serves comprehension (DESIGN-BIBLE §5); calm,
+  learner-paced, click-to-advance, never autoplay; no fast cuts; respects
+  `prefers-reduced-motion`; the engine's ease allow-list forbids
+  bounce/overshoot/elastic.
 
-**[lane] Gemini media** · Gemini · *MCP/API, orchestrator-invoked, capped, off the work PC*
-- Atmospheric / illustrative imagery only (ADR 0017). Never structural diagrams.
+**[lane] Gemini media** · Gemini · *MCP/API, orchestrator-invoked, capped (15/hr, $3/hr)*
+- Atmospheric / illustrative imagery only (ADR 0017), with the DESIGN-BIBLE §6
+  style preamble appended verbatim. **Never** structural diagrams, never
+  load-bearing content. (The generative-media rules are Phase E.)
 
 ### Adversarial critics *(judge the notion)*
 
-**bac-fidelity-critic** · Opus · *file read* · **[new] · WAVE 1**
+**bac-fidelity-critic** · **Opus 5** · *file read* · **[live] · WAVE 1**
 - **Scope:** scope · cognitive mix · format · exclusions, vs the boundary &
   exam-shape.
 - **Reads:** the produced notion + the curriculum boundary + the exam-shape ref.
@@ -198,33 +241,33 @@ subagent file (Gemini, via MCP/API) · *Bash* and *gated* marked where they appl
 - **Guardrails:** has a real rubric (the cadre). Catches the Bayes-in-probability
   / damped-RLC-closed-form class of drift. Highest leverage.
 
-**pedagogy-critic** · Opus · *file read* · **[new] · WAVE 1**
+**pedagogy-critic** · **Opus 5** · *file read* · **[live] · WAVE 1**
 - **Scope:** teaching quality vs the SOTA standard.
 - **Reads:** the produced notion + VISION (the notion anatomy).
 - **Produces:** findings — does the décortiquer truly take it apart? Is the ramp
   right (reasoning-demand rising)? Is expert reasoning shown? Does it confront
   the misconception (per subject)?
 
-**coherence-critic** · Opus · *file read* · **[new] · WAVE 2**
+**coherence-critic** · **Opus 5** · *file read* · **[live] · WAVE 2**
 - **Scope:** consistency across the product.
 - **Reads:** the produced notion + neighboring notions + the conventions.
 - **Produces:** findings — voice, notation (`p_A(B)`), terminology, contradictions
   with other notions.
 
-**visual-design-critic** · Opus · *file read* · **[new] · WAVE 2**
+**visual-design-critic** · **Opus 5** · *file read* · **[live] · WAVE 2**
 - **Scope:** visual craft, DESIGN-BIBLE §2–4.
 - **Reads:** the rendered notion + design tokens + DESIGN-BIBLE.
 - **Produces:** findings — typography, spacing, palette, grid, hierarchy. Premium
   or templated?
 
-**ergonomics-flow-critic** · Opus · *file read* · **[new] · WAVE 2**
+**ergonomics-flow-critic** · **Opus 5** · *file read* · **[live] · WAVE 2**
 - **Scope:** interaction & usability, DESIGN-BIBLE §1 / §9.
 - **Reads:** the rendered notion.
 - **Produces:** findings — bounded reading column, keyboard navigation, focus and
   hover states, touch targets, long-session ergonomics. *Does it work for two
   hours at a desk?*
 
-**calm-load-critic** · Opus · *file read* · **[new] · WAVE 2**
+**calm-load-critic** · **Opus 5** · *file read* · **[live] · WAVE 2**
 - **Scope:** the flow-protection principle, DESIGN-BIBLE §0 / §5 / §7.
 - **Reads:** the rendered notion.
 - **Produces:** findings — too loud? ADHD-inducing? Seductive details? Gratuitous
@@ -234,49 +277,56 @@ subagent file (Gemini, via MCP/API) · *Bash* and *gated* marked where they appl
 
 ### Integration *(the gated 10%)*
 
-**frontend-builder** · Sonnet · *file read/write* · **[new]**
-- **Scope:** build the Next.js/React components that render the notion.
-- **Reads:** the produced notion + design tokens + DESIGN-BIBLE.
+**frontend-builder** · **Sonnet 5** · *file read/write* · **[live]**
+- **Scope:** build the Next.js/React components that render the notion — and the
+  product-shell surfaces (the Mastery-Push lanes: dashboard v2, the S'entraîner
+  bank cards, the account page). This is the frontend agent; there is **no
+  separate `nextjs-frontend` shell agent** (open decision #2 resolved:
+  frontend-builder owns the frontend).
+- **Reads:** the produced notion + design tokens (the single source,
+  `web/src/lib/tokens.ts`) + DESIGN-BIBLE + the relevant build spec
+  (DASHBOARD-V2-SPEC, BANK-SPEC).
 - **Produces:** React components (Tailwind + Radix via the shadcn pattern), KaTeX
-  rendering, the calm UI.
+  rendering, the calm UI — consuming the **named token aliases only** (Phase A;
+  the token-gate bars arbitrary values).
 - **Guardrails:** building components is content-lane; **deploys are gated**
-  (production gate). Uses the design tokens; no browser storage in artifacts.
+  (production gate). No browser storage in artifacts. UI work routes here rather
+  than being done in the orchestrator by hand.
 
-**supabase-architect** · Opus · *Bash + all* · *gated* · **[built]**
-- **Scope:** the **only** DB-toucher — items→DB, migrations, the §3 sync check.
+**supabase-architect** · **Opus 5** · *Bash + all* · *gated* · **[live]**
+- **Scope:** the **only** DB-toucher — items→DB, migrations, the §3 sync check,
+  the write-path (RPCs, edge functions that write user data).
 - **Reads:** the items (files), the schema, RULES §3.
 - **Produces:** migrations with verify blocks asserting **cardinality + content
   identity**, DB writes — all **human-gated**.
 - **Guardrails:** sole Bash; **never autonomous**; §3 production-sync must be
   verified before any migration; RLS in the creating migration; service_role-only
-  on write-RPCs; migrations are append-only.
+  on write-RPCs; migrations are append-only; down-migrations convention owed
+  before the first non-additive migration.
 
-**pr-reviewer** · Opus · *file read, Bash for branch-test* · **[new — was drafted]**
+**pr-reviewer** · **Opus 5** · *file read, Bash for branch-test only* · **[live — not yet run]**
 - **Scope:** the automated technical safety check before a push.
 - **Reads:** the change + the branch-test results.
 - **Produces:** a pass/fail verdict — branch-test green? RLS present? cardinality
   assertions present? — that the human's authorization rests on.
 - **Guardrails:** this is the **machinery that makes the gate real** (not theater).
-  The check is technical; the human's authorization is the decision.
+  The check is technical; the human's authorization is the decision. **Honest
+  status:** the file is active by roster but has **never actually run** — its
+  first real use is the next production push that goes through the gate.
 
 ---
 
-## 4. Commissioning plan — what fires, and when
+## 4. Commissioning — both waves are LIVE
 
-All agent **files are built now**. What the orchestrator **invokes** is staged,
-because the autonomous multi-critic loop has emergent behavior that must be
-proven on one notion before all critics turn it at once.
+All agent files are built, and **both critic waves have fired** on real notions
+(the wave-1 producer→critic loop converged; the wave-2 design/coherence critics
+ran against rendered UI). The staging that once governed which critics the
+orchestrator invoked is **spent** — the orchestrator now commissions the full
+panel, still choosing per task which critics a given change warrants (a
+copy-edit doesn't need the whole design triad).
 
-- **Wave 1 (commissioned first):** the full producer path +
-  `bac-fidelity-critic` + `pedagogy-critic`. Run one real notion through this
-  loop. Confirm the loop *converges* (revisions improve, don't oscillate) and the
-  orchestrator's arbitration behaves.
-- **Wave 2 (commissioned after wave 1 converges once):** `coherence-critic`,
-  `visual-design-critic`, `ergonomics-flow-critic`, `calm-load-critic`. The four
-  design/coherence critics that mostly need a *rendered* UI to judge.
-
-A critic's file existing ≠ the orchestrator invoking it. The wave is recorded in
-each critic's frontmatter `description` so it is unambiguous which are live.
+The WAVE-1 / WAVE-2 label survives only as documentation of firing order in each
+critic's `description`; it is no longer a gate.
 
 ---
 
@@ -302,11 +352,11 @@ the editorial gate rather than the orchestrator guessing.
 
 - **Per-subject pedagogy split.** `pedagogy-architect` is one subject-aware agent.
   Whether maths / PC / SVT eventually need *separate* architects is **parked** —
-  decided by the first cross-subject evidence (when authoring a maths notion and a
-  PC notion reveals whether one agent strains to hold two pedagogies). Do not
-  pre-split.
+  decided by the first cross-subject evidence. Do not pre-split. (SVT's
+  document-reasoning need is being met as a charter extension, not a split.)
 - **Visual-author granularity.** Split into three lanes (diagram / interactive /
-  motion). Revisit only if volume proves a lane too broad.
+  motion), with `interactive-author` deprioritized in favor of bespoke
+  `interactive-svg`. Revisit only if volume proves a lane too broad.
 
 ---
 
@@ -316,15 +366,20 @@ the editorial gate rather than the orchestrator guessing.
 2. **Six critics**, including the design triad (visual-design / ergonomics-flow /
    calm-load) split from a single design critic — because they fail differently
    and the calm critic must be the explicit adversary to polish.
-3. **Fully autonomous** producer→critic→revise loop, gated by the editorial gate.
-4. **Wave-1 / wave-2 commissioning** — all files built; bac-fidelity + pedagogy
-   fire first; the design/coherence critics after the loop converges once.
-5. **Triangulated grounding** — research-lead (Opus) extracts; Gemini checks
-   coverage; research-challenger (Sonnet) attacks the derived layer; the human
+3. **Fully autonomous** producer→critic→revise loop, gated by the editorial gate;
+   both waves now live.
+4. **Triangulated grounding** — research-lead (Opus 5) extracts; Gemini checks
+   coverage; research-challenger (Sonnet 5) attacks the derived layer; the human
    validates depth.
-6. **Visual-author split** into three coded lanes; Gemini is a media lane, not a
+5. **Visual-author split** into three coded lanes; motion runs on the
+   first-party **MotionStage/GSAP** engine via `.motion.json` (not Manim);
+   diagram-author owns bespoke `interactive-svg`; Gemini is a media lane, not a
    subagent.
-7. **pedagogy-architect stays one subject-aware agent**; per-subject split parked.
-8. **Model routing**: Opus for orchestration/judgment/critics/schema; Sonnet for
-   execution; Gemini (lane) for media + long-context bulk. **Bash is exclusive to
-   supabase-architect** (and pr-reviewer for branch-tests).
+6. **pedagogy-architect stays one subject-aware agent**; per-subject split parked;
+   it carries judgment-at-scale and absorbed design-review.
+7. **frontend-builder is the frontend agent** — no `nextjs-frontend` shell agent
+   (open decision #2 resolved).
+8. **Model routing (5-family):** **Fable 5** orchestrates/plans/audits;
+   **Opus 5** for judgment/critics/schema/research + the gated 10%; **Sonnet 5**
+   for high-volume execution; **Gemini** (lane) for media + long-context bulk.
+   **Bash is exclusive to supabase-architect** (and pr-reviewer for branch-tests).

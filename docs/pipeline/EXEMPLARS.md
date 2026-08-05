@@ -1,7 +1,7 @@
 # Exemplars — the gold-standard samples (Day 5)
 
 > The concrete executions that template v2's boxes point at. The Day-6
-> portability test asks Sonnet 4.8 to produce work of this standard from the
+> portability test asks Sonnet 5 to produce work of this standard from the
 > template alone; these are the comparison keys.
 
 ## 1. Attempt-first summit with full reasoning annotation — R9

@@ -1,5 +1,10 @@
 # The content pipeline (v0.1)
 
+> **⚠ SUPERSEDED (2026-08-05).** This v0.1 doc predates the full roster (it
+> names "the four subagent files"). The cast, routing, and per-agent model/tools
+> are now authoritative in **`docs/agents/ROSTER.md` (v2)** + the roster ADR.
+> Kept only as an early-slice record; do not treat its cast table as current.
+
 > How a single notion flows through the agents. This is the operational
 > companion to the four subagent files in `.claude/agents/`. It is **v0.1**,
 > scoped to the first slice (Probabilités · SM, and RLC · PC), and is meant to

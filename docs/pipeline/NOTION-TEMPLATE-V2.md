@@ -4,7 +4,7 @@
 > content diagnosis (`docs/audits/fable-ui-content-audit.md` §3, findings
 > C1–C5). **Replaces adjectives with checkable boxes** (the C4 fix): the
 > authors build to these, the critics CHECK these — a box is pass/fail with a
-> line citation, never a vibe. Audience includes Sonnet 4.8 cold.
+> line citation, never a vibe. Audience includes Sonnet 5 cold.
 >
 > Gold-standard executions to imitate: `docs/pipeline/EXEMPLARS.md`.
 

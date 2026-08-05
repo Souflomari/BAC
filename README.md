@@ -1,80 +1,55 @@
-# BacPrep
+# BAC — a Moroccan baccalauréat prep app
 
-A Moroccan Baccalauréat exam prep app. Long-form textbook chapters,
-adaptive quizzes, past exam papers (annales), and 33 native interactive
-widgets for math/physics/chemistry/SVT.
+A preparation app for Moroccan science-stream *2ème Bac* students (SM-A, SM-B,
+Sciences Physiques, SVT — French first). The goal is to replace private tutoring
+with a patient, omniscient, infinitely-available tutor that takes a struggling
+student to excelling at the bac.
 
-**Live:** https://bacapp.vercel.app
-
-**Status:** functional spine + 32 SMA chapters + 32 SMB chapters as v2
-long-form lessons. SMA + SMB exam papers seeded for 2023–2024. Detailed
-status in [PROJECT_STATUS.md](PROJECT_STATUS.md).
+**Read `docs/product/VISION.md` before making any product decision** — it is the
+canonical statement of what the app is and why.
 
 ## Stack
 
 | Layer | Tech |
 |---|---|
-| Frontend | Flutter 3.x (web + iOS/Android-ready, single codebase) |
-| State | Riverpod (FutureProvider, StreamProvider, Notifier) |
-| Routing | `go_router` with `ShellRoute` |
-| Backend | Supabase — Postgres + Auth + Storage + Edge Functions |
-| LaTeX | `flutter_math_fork` |
-| Web hosting | Vercel |
-| Observability | Sentry + PostHog SDKs (no-op when env unset) |
+| Frontend | **Next.js** (App Router) + React + Tailwind, in `web/` |
+| Backend | **Supabase** (Postgres + Auth + Storage + Edge Functions) |
+| Deploy | **Vercel** |
+| Content | authored as files under `content/` (Markdown lessons + YAML items) |
 
-## Quick start
+> The app was rebuilt from a Flutter Web MVP to Next.js (ADR 0016). No Flutter
+> remains in the running app; any lingering Flutter artifacts are to be deleted,
+> never patched (`docs/Rules/RULES.md`).
 
-```powershell
-# Install Flutter deps
-cd mobile\bac_app
-flutter pub get
+## Develop
 
-# Run web in dev (replace with your Supabase project)
-flutter run -d chrome `
-  --dart-define=SUPABASE_URL=https://your-project.supabase.co `
-  --dart-define=SUPABASE_ANON_KEY=your-anon-key
+```bash
+cd web
+npm install
+npm run dev          # local dev server
+npm run build        # production build (runs the token --check first)
+npm run dom-truth    # the rendered-truth harness (computed-style assertions)
+npm run token-gate   # the design-token guard (one consumption syntax)
 ```
 
-For production deploys, see [PROJECT_STATUS.md §9](PROJECT_STATUS.md#9-deployment-runbook).
+Content is validated by `web/scripts/validate-content.mjs`; item length-tells by
+`web/scripts/item-stats.mjs`.
 
-## Repository layout
+## Where things live
 
-```
-mobile/bac_app/        Flutter app
-  lib/
-    config/            Theme tokens, router
-    models/            Profile, Subject, Skill, LessonV2, Item, Exam
-    providers/         Riverpod providers (auth, progress, exam, ...)
-    screens/           Routed screens (auth, home, subjects, lesson, exams, profile)
-    services/          ApiService (Supabase wrapper), CacheService (Hive),
-                       NotificationService, AnalyticsService
-    widgets/           Papier design system + interactive math/physics/chemistry widgets
-    l10n/              Generated AppLocalizations + .arb sources (FR + AR)
-  web/                 PWA shell (index.html, manifest, robots.txt, sitemap.xml)
-backend/
-  supabase/
-    migrations/        SQL migrations 001–020+ (idempotent, applied via supabase db push)
-    functions/         Deno edge functions (progress, daily-quests, delete-self-account, ...)
-  seed/                Dart scripts that emit seed migrations for content
-shared/                Skill maps (per-stream JSON) + skill-map validator
-PROJECT_STATUS.md      Current state, runbook, outstanding TODOs (canonical)
-ARCHITECTURE.md        Subsystem overviews + how things fit together
-CONTRIBUTING.md        How to run, style, tests, migrations
-```
+- **`.claude/CLAUDE.md`** — the orientation index (read first in any session).
+- **`docs/product/VISION.md`** — the product vision (the north star).
+- **`docs/Rules/RULES.md`** — how we work (build discipline, gates, cadence).
+- **`docs/agents/ROSTER.md`** — the agent roster (who does what, which model).
+- **`docs/decisions/`** — the ADR trail (numbered, append-only).
+- **`docs/HANDOFF.md`** — the current handoff / open-gates list.
+- **`docs/design/`** — the design specs (TOKENS, DESIGN-BIBLE, page anatomies…).
 
-## Where to start reading code
+## Production safety (always in force)
 
-- **Routing & app shell:** [lib/config/router.dart](mobile/bac_app/lib/config/router.dart), [lib/screens/shell/app_shell.dart](mobile/bac_app/lib/screens/shell/app_shell.dart)
-- **A representative screen:** [lib/screens/subjects/long_lesson_screen.dart](mobile/bac_app/lib/screens/subjects/long_lesson_screen.dart) — the v2 lesson reader
-- **A representative interactive widget:** [lib/widgets/math/derivative_graph_widget.dart](mobile/bac_app/lib/widgets/math/derivative_graph_widget.dart)
-- **The Papier design system:** [lib/config/theme.dart](mobile/bac_app/lib/config/theme.dart) (color tokens), [lib/widgets/papier/papier_primitives.dart](mobile/bac_app/lib/widgets/papier/papier_primitives.dart) (text styles)
-- **A migration:** [backend/supabase/migrations/014_long_lessons_sma_complete.sql](backend/supabase/migrations/014_long_lessons_sma_complete.sql)
-
-## Status & follow-ups
-
-PROJECT_STATUS.md §11 lists the current outstanding TODOs (e.g. PC + SVT
-stream content, Arabic translation pass, real Sentry/PostHog DSN
-provisioning).
+Production pushes are human-gated; no autonomous push to production. Schema and
+seed data flow only through migration files (append-only, with verify blocks).
+See `docs/Rules/RULES.md` and the non-negotiables in `.claude/CLAUDE.md`.
 
 ## License
 

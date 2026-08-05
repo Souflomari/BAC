@@ -58,12 +58,15 @@ Read the right document for the task at hand:
 
 ## Stack (current, verified)
 
-- **Frontend:** Flutter Web, deployed to **Vercel**.
+- **Frontend:** **Next.js** (App Router) + React + Tailwind, deployed to
+  **Vercel**. This is the whole frontend — the Flutter Web MVP was retired
+  in the rebuild (ADR 0016); there is no shell/hybrid and no Flutter left in
+  the running app.
 - **Backend:** Supabase (Postgres + Auth + Storage + Edge Functions),
   project ref `iwoydyudjondihzzsqay`, EU-Central.
-- **Note:** a hybrid model (Next.js shell + Flutter Web for interactive
-  practice) was discussed but the shell does not exist and the decision
-  is **not yet recorded** — see "Open decisions."
+- **Design system:** single source of truth in `web/src/lib/tokens.ts`
+  (generates the CSS vars + Tailwind config); component code speaks named
+  token aliases only, enforced by `scripts/token-gate.mjs` (Phase A).
 
 ---
 
@@ -114,18 +117,20 @@ over them.
    cadence and working loop, the multi-model architecture, and the
    documentation/rebuild discipline). A living document that continues to
    evolve as the build is figured out.
-2. **The frontend architecture.** Flutter-on-Vercel today; a hybrid
-   (Next.js shell + Flutter practice) was discussed but never built or
-   recorded. The agent roster references a `nextjs-frontend` shell agent
-   that has no file. Decide and record.
-3. **The agent roster.** Needs revision to match the locked vision and
-   the generative-content tooling (see below). Some agents may merge,
-   some may be added.
+2. **The frontend architecture — RESOLVED.** Next.js (App Router) on
+   Vercel is the whole frontend (ADR 0016). There is no hybrid and no
+   `nextjs-frontend` shell agent — `frontend-builder` IS the frontend
+   agent (`docs/agents/ROSTER.md` §3, the roster refresh ADR).
+3. **The agent roster — RESOLVED.** Refreshed for the 5-family model
+   (Fable 5 orchestration / Opus 5 judgment / Sonnet 5 volume / Gemini
+   media lane) and recorded as-lived in `docs/agents/ROSTER.md` v2 + the
+   roster ADR. No new agents added; the lean roster held.
 4. **Generative-content tooling.** Gemini (imagery, video) and ElevenLabs
    (narration) are intended production tools. Their sanctioned uses — and
    the hard line that generated assets never substitute for a manipulable
    interactive where the pedagogy requires manipulation — need to be
-   written into the rules and the relevant agents.
+   written into the rules and the relevant agents. **[Phase E of the
+   perfect-product plan resolves this.]**
 5. **Production sync verification.** See non-negotiables above.
 
 ---

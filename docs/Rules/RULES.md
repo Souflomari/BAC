@@ -155,41 +155,42 @@ calibrated as the rebuild gets underway and recorded here when settled.
 
 ## 5. The multi-model architecture
 
-Work routes to the best-fit model across **three separate budgets**, to
-maximize capability without wasting any one budget.
+Work routes to the best-fit model across the **5-family budgets** (Fable 5,
+Opus 5, Sonnet 5, and the Gemini media lane), to maximize capability without
+wasting any one budget.
 
-- **Opus** — orchestration and hard-reasoning/judgment work: the
-  orchestrator that plans and routes, the pedagogy-design judgment calls, the
-  curriculum/correctness review, the schema/migration design (the risky
-  10%). Reserved for work where being subtly wrong is costly and hard to
-  catch.
-- **Sonnet** — high-volume structured execution *from Opus's specs*: content
-  authoring, exercise authoring, frontend component building. The thinking is
-  done upstream by Opus; Sonnet executes it faithfully, fast, at quality.
-- **Gemini** (via API key) — media generation (imagery, diagrams, video) and
-  long-context bulk processing (ingesting curriculum documents, the exam
-  corpus, source material). A separate budget; pure additive capacity.
+- **Fable 5 — orchestration & planning.** The main session: plans a build,
+  routes to specialists, runs the producer→critic→revise loop, holds both
+  gates, arbitrates conflicting findings, and does the audit / reconciliation /
+  planning passes.
+- **Opus 5 — hard reasoning & judgment.** The pedagogy-design judgment calls,
+  every critic, the curriculum/correctness review, the schema/migration design
+  (the risky 10%), the research extraction. Reserved for work where being subtly
+  wrong is costly and hard to catch; the orchestrator escalates the hardest
+  single calls here.
+- **Sonnet 5 — high-volume structured execution *from a spec*.** Content
+  authoring, item authoring, coded visuals, frontend component building, the
+  adversarial research check. The thinking is done upstream; Sonnet 5 executes
+  it faithfully, fast, at quality.
+- **Gemini** (via API key) — media generation (imagery, video) and long-context
+  bulk processing (ingesting curriculum documents, the exam corpus, source
+  material). A separate budget; pure additive capacity.
 
-The Opus→Sonnet handoff quality depends entirely on the spec quality: Opus
-must produce specs detailed enough that Sonnet executes faithfully rather
-than guessing. This handoff quality is to be **verified early** (author
-sample content both ways, compare), not assumed.
+The spec→execution handoff quality depends entirely on the spec: the design
+tier must produce specs detailed enough that Sonnet 5 executes faithfully
+rather than guessing. Verified early (author sample content both ways,
+compare), not assumed.
 
 Narration (**ElevenLabs**) is **deferred** — content is authored
 *voice-ready* (written to be spoken aloud) now, so narration drops in cleanly
 later.
 
-`[STATUS: not yet decided]` — the exact agent roster, each agent's specific
-model assignment, and the precise mechanics of how a single notion flows
-through the agents (the content-production pipeline) are being designed and
-will be recorded here and as actual files in `.claude/agents/` when settled.
-The fate of the previously-drafted-but-never-activated `pr-reviewer` agent is
-also undecided.
-
-> **Now specified** — the full agent roster, the per-agent model/tools, and the
-> notion workflow live in **`docs/agents/ROSTER.md`** (built into the
-> `.claude/agents/*.md` files and recorded as an ADR), which resolves the
-> `[STATUS: not yet decided]` note above.
+**RESOLVED.** The full agent roster, each agent's model tier and tools, and
+the notion workflow live in **`docs/agents/ROSTER.md`** (v2 — the 5-family era),
+built into the `.claude/agents/*.md` files and recorded in the roster ADR. All
+17 agent files are live and both critic waves have fired. `pr-reviewer` is
+active by roster; its first real run is the next production push that goes
+through the gate.
 
 ---
 

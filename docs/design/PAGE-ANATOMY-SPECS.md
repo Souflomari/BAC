@@ -1,7 +1,7 @@
 # Page-anatomy component specs
 
 > **Authority:** DESIGN-BIBLE §11–§13 (Day-4 amendments). **Audience: a model
-> with NO session context** (Sonnet 4.8 cold) building or maintaining these
+> with NO session context** (Sonnet 5 cold) building or maintaining these
 > components after 2026-07-07. Every spec states: purpose, anatomy, tokens,
 > invariants (what dom-truth asserts), and the swap points (what the owner may
 > still override — marked OWNER-REVIEW-PENDING in

@@ -2,7 +2,7 @@
 
 > **Authority:** DESIGN-BIBLE §6 (generated-visual language) + §11 (page
 > anatomy). Kills the "Wikipedia home" (owner verdict): notion cards carry
-> covers — a designed shelf, not an index. Audience includes Sonnet 4.8 cold
+> covers — a designed shelf, not an index. Audience includes Sonnet 5 cold
 > AND the future Gemini asset lane: the coded starter set in
 > `web/src/components/covers/` is the spec made flesh; generated covers must
 > be indistinguishable in language from the coded ones.
