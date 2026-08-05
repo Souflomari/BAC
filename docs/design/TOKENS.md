@@ -17,12 +17,69 @@
 > + Plex sans pairing**; `elevation-1/2` lead with a hairline **ring**; muted
 > semantics.
 >
-> **Implementation:** `web/src/app/globals.css` (CSS custom properties) and
-> `web/tailwind.config.ts` (Tailwind mappings to those vars). All component
-> code consumes the CSS vars or Tailwind aliases; hard-coded hex is forbidden.
+> **Implementation — single source of truth (Phase A, 2026-08-05):** every value
+> lives exactly once in **`web/src/lib/tokens.ts`**. From it: `scripts/generate-
+> tokens.mjs` emits `web/src/app/tokens.generated.css` (the `:root`/`.dark`
+> custom-property blocks, `@import`ed by globals.css); `tailwind.config.ts`
+> derives the type scale, radius, breakpoints, motion, and the color aliases; and
+> `dom-truth.mjs` + `cn()` read the same module so definition, render, and
+> assertion cannot drift. Editing a value means editing `tokens.ts` and nothing
+> else — a `prebuild` `--check` fails the build if the generated CSS is stale.
 >
-> **Living document.** Add tokens here before implementing them. Remove nothing
-> without a migration note.
+> **Enforcement:** component code speaks named aliases ONLY (`text-secondary`,
+> `bg-surface-raised`, `tracking-eyebrow`, `min-h-touch`, …). `scripts/token-
+> gate.mjs` (a commit gate and dom-truth's first gate) rejects any arbitrary
+> token utility — `-[var(--…)]`, `-[#hex]`, `tracking-[…]`, `z-[…]`,
+> `min-h/w-[48px]`, `duration/ease-[…]`; a deliberate one-off carries a
+> `token-gate-allow` marker. dom-truth's token-parity sweep asserts every var
+> resolves to its `tokens.ts` value in both themes, and the cn() tripwire keeps
+> tailwind-merge from silently dropping a custom class (audit U1).
+>
+> **Living document (v2 — Phase A).** Add a token to `tokens.ts` AND here in the
+> same change; remove nothing without a migration note. Changelog at the foot.
+
+---
+
+## 0. Phase A reconciliation (2026-08-05) — read first
+
+The design system was fully systemized in Phase A. This section reconciles the
+doc with the code; the detailed tables below (§1–§8) remain authoritative for
+values.
+
+**Tokens that were code-only and are now on the record (values unchanged):**
+
+| Token / family | Value | Where |
+|---|---|---|
+| `--duration-view` | `300ms` | chapter-view enter (motion, §5) |
+| `--focus-halo` | accent @18% / @22% dark | focus jewel halo |
+| `--focus-radius` | `6px` (host-tracking) | focus ring |
+| Breakpoints | `bp-medium` 600 · `bp-expanded` 840 · `bp-wide` 1536 | tailwind `screens` (TS-only — media queries can't read CSS vars) |
+| `--font-scale` | `1` default (0.9375 / 1 / 1.125) | FontSizeStepper A−/A/A+, injected on `<html>` (not a themed token) |
+| `max-w-page` / `max-w-notion` | `1280px` / `1140px` | layout bands |
+
+**New families added in Phase A (W3):**
+
+| Token | Value | Alias |
+|---|---|---|
+| `--tracking-eyebrow` | `0.14em` | `tracking-eyebrow` |
+| `--touch-target` | `48px` | `min-h-touch` / `min-w-touch` |
+| `--z-raised` / `--z-header` / `--z-overlay` | `10` / `40` / `50` | `z-raised` / `z-header` / `z-overlay` |
+| `--duration-slow` | `400ms` | `duration-slow` (CSS var added; tailwind already had it) |
+| `--ease-enter/leave/emphasized/standard-svg` | (curves, §5.2) | `ease-*` (CSS vars added; tailwind already had them) |
+
+**Removed:** the legacy cool-palette `shadow-subtle` / `shadow-soft` aliases (0
+uses, off the warm ADR-0023 palette).
+
+**Explicitly out of scope (not tokenized):** the ~125 raw px/rem literals inside
+globals.css `@layer components` (component-level styling that already consumes
+the color/motion vars); one-off figure/layout geometry in `ch`/`px` (`w-[36ch]`,
+`h-[460px]`, …), which is content-shaped, not a design-system value.
+
+**Multi-theme registry deferred:** `THEME-ARCHITECTURE.md` specs a `data-theme`
+registry (a `craie` theme, `next-themes`). It is NOT built (`next-themes` is not
+a dependency) — treat it as a deferred target, not a spec-in-force. `tokens.ts`
+is shaped to accept it: a new theme is one more entry in `themes` keyed by
+`[data-theme="…"]`, with nothing else in the pipeline moving.
 
 ---
 
@@ -375,10 +432,10 @@ damping, natural physical progression).
 | Modal / overlay | `bg-surface-overlay shadow-elevation-4` |
 | Prose body text + headings | `.prose-lesson` (serif, `max-width: var(--measure-prose)`) |
 | Heading outside prose | `font-serif text-h1/display font-bold` |
-| Secondary label | `text-text-secondary text-caption` |
-| Eyebrow (the ONE per surface) | accent hairline `<span class="h-px w-6 bg-accent/60">` + `uppercase tracking-[0.14em] text-accent` |
+| Secondary label | `text-secondary text-caption` |
+| Eyebrow (the ONE per surface) | accent hairline `<span class="h-px w-6 bg-accent/60">` + `uppercase tracking-eyebrow text-accent` |
 | **The one** primary action | `.btn-primary` (deep-teal fill, `text-on-accent`, elevation-2 → hover accent-strong) — used sparingly |
-| Quiet / secondary control | ghost: `text-text-secondary border-border-soft` or text-only |
+| Quiet / secondary control | ghost: `text-secondary border-soft` or text-only |
 | Focus ring | `.focus-ring` class (or global `:focus-visible` catch-all) — 2px accent, 6px radius |
 | Success state | `text-success bg-success-subtle` + icon |
 | Error state | `text-error bg-error-subtle` + icon |
@@ -388,3 +445,19 @@ damping, natural physical progression).
 | Elevation (floating header) | `shadow-elevation-3` |
 | Standard enter transition | `duration-standard ease-enter` |
 | Beat entrance (GSAP) | `ease-emphasized` (via GSAP `power3.out` equivalent) |
+
+---
+
+## Changelog
+
+- **v2 — 2026-08-05 (Phase A: full systemization).** Single source of truth
+  moved to `web/src/lib/tokens.ts`; `tokens.generated.css` now carries the
+  `:root`/`.dark` blocks (globals.css `@import`s it); tailwind.config, dom-truth,
+  and `cn()` all derive from `tokens.ts`. Added the eyebrow-tracking, touch-
+  target, and z-index token families and the missing motion CSS vars
+  (`--duration-slow`, `--ease-enter/leave/emphasized/standard-svg`); removed the
+  dead `shadow-subtle`/`soft` aliases. Component code migrated to named aliases
+  (429 arbitrary usages codemodded); `scripts/token-gate.mjs` now bars new
+  arbitraries; dom-truth gained the token-parity sweep + cn() tripwire.
+  Documented the previously code-only tokens (§0). No token VALUES changed.
+- **v1** — ADR 0022 → 0023 (warm-editorial) → 0024 (Hybrid-Material). See §1–§8.

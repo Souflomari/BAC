@@ -172,6 +172,8 @@ export function NotionPageView({
   // Masthead title classes per variant (Set A). a1 = shipped control.
   const titleClass = {
     a1: "text-h1",
+    // a2 is a deliberate A/B display spec; it becomes a token when V1 encodes
+    // it as the default (Phase C). token-gate-allow
     a2: "text-[2.75rem] leading-[1.1] tracking-[-0.026em]",
     a3: "text-display-lg max-w-[26ch]", // frozen display tier (TOKENS v2); measure-capped
   }[mastheadVariant];

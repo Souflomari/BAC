@@ -29,6 +29,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import jitiFactory from "jiti";
 import yaml from "js-yaml";
+import { scanTokenGate } from "./token-gate.mjs";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CONTENT_ROOT = path.join(path.dirname(WEB), "content");
@@ -394,6 +395,19 @@ const BATTERY = [
 function fail(msg) {
   console.error(`  ✗ ${msg}`);
   return 1;
+}
+
+// ── Gate 0: the arbitrary-value guard, before spinning up the server (fail fast).
+//    One consumption syntax is a rendered-truth invariant too — a re-introduced
+//    -[var(--…)] or hex bypasses the token system the rest of this file checks.
+{
+  const v = scanTokenGate();
+  if (v.length) {
+    console.error(`\n━━ token-gate: ${v.length} arbitrary-value violation(s) — aborting dom-truth ━━`);
+    for (const x of v) console.error(`  ${x.file}:${x.line}  [${x.rule}] ${x.hint}\n      ${x.text}`);
+    process.exit(1);
+  }
+  console.log("token-gate: no arbitrary token usage — one syntax holds ✓");
 }
 
 // detached → own process group, so the finally-block kill reaches the actual
