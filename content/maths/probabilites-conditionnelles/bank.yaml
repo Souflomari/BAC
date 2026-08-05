@@ -1,0 +1,180 @@
+# bank.yaml — la banque « S'entraîner » de probabilites-conditionnelles
+# (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, [[exercise:]] en fin de rampe), pas
+# la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). UNE SEULE entrée : c'est le SEUL sujet « vérifié » recensé
+# pour cette notion dans docs/sujets/maths/probabilites-conditionnelles.md —
+# 2023, session normale, Exercice 3, filière SVT et Sciences Physiques (BIOF),
+# barème 3 points (re-fetch AlloSchool indépendant, element/137482 →
+# course-438/upload-84924, 4 p. + diff page 3 OK ; en-tête filière/code/barème
+# confirmés page 1 du scan — agent-vérificateur-adversarial, 2026-07-12).
+# Introuvable = absent, jamais inventé : aucun autre sujet vérifié n'existe à
+# ce jour pour cette notion, donc la banque ne compte qu'une carte. Raisonnement
+# rédigé à la voix experte de la maison sur 100 % des questions ; barème
+# transcrit tel quel dans les énoncés ; conventions KaTeX (block scalars pour
+# la prose, KaTeX brut entre apostrophes simples dans steps[].math, notes sans
+# backslash).
+#
+# NOTE ÉDITORIALE (pour la revue, BANK-SPEC §1) : bk-2023-n-x3 transcrit le
+# MÊME sujet que le sommet de leçon r-bac (exercises.yaml,
+# [[exercise:r-bac]], en fin de rampe — palier 6 de la table de progression).
+# Il figure ici quand même, pour que la banque reste le corpus complet des
+# annales vérifiées de la notion : « la banque est le volume derrière le
+# sommet, jamais son remplacement » (BANK-SPEC §1). Même décision, prise dans
+# le même sens, que bk-2019-n-x2 de content/maths/nombres-complexes-1/bank.yaml.
+# À l'arbitrage de l'owner si l'on préfère l'écarter pour éviter le
+# recoupement sur la même page. Le `reasoning` ci-dessous est rédigé
+# indépendamment de celui d'exercises.yaml (voix distincte, mêmes
+# mathématiques, mêmes résultats numériques — vérifiés en double) : ce n'est
+# pas une recopie.
+#
+# SCOPE NOTE (divulgation honnête, authoring-side) : la question 3 introduit
+# une variable aléatoire $X = ab$ et sa loi de probabilité — un ingrédient que
+# le corps de la leçon (R1–R5 : formule conditionnelle, arbre pondéré,
+# indépendance/incompatibilité, probabilités totales, lecture inverse) ne
+# couvre pas formellement ; l'exercice le signale déjà lui-même avant de
+# commencer (intro de [[exercise:r-bac]] dans exercises.yaml). Le champ
+# `reasoning` de la question q3a nomme explicitement ce pont, au point d'usage.
+
+notion: maths/probabilites-conditionnelles
+
+entries:
+  # ── bk-2023-n-x3 — 2023 N, Exercice 3 : deux urnes, arbre à branches
+  # conditionnelles, p(A/B), variable aléatoire X=ab et sa loi ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir note
+  # éditoriale en tête de fichier.
+  - id: bk-2023-n-x3
+    title: "Deux urnes en cascade, probabilité conditionnelle et loi du produit"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), code sujet NS 22F, AlloSchool
+        element/137482 (Exercice 3, « Calcul des probabilités » ; barème 3
+        points). Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/probabilites-conditionnelles.md, section « 2023 —
+        session normale — Exercice 3 » (re-fetch AlloSchool indépendant,
+        course-438/upload-84924, 4 p., diff page 3 OK ; en-tête filière/code/
+        barème confirmés page 1 du scan — agent-vérificateur-adversarial,
+        2026-07-12). NB : ce même sujet sous-tend aussi le sommet de leçon
+        r-bac (exercises.yaml, marqueur [[exercise:r-bac]] en fin de rampe) —
+        recoupement assumé, voir note éditoriale en tête de fichier.
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2023, SVT et Sciences Physiques, BIOF).**
+
+      Une urne $U_1$ contient six boules portant les nombres : $0\ ;\ 0\ ;\ 1\ ;\ 1\ ;\ 1\ ;\ 2$ et une urne $U_2$ contient cinq boules portant les nombres : $1\ ;\ 1\ ;\ 1\ ;\ 2\ ;\ 2$. On suppose que les boules des deux urnes sont indiscernables au toucher.
+
+      On considère l'expérience aléatoire suivante : « On tire une boule de l'urne $U_1$ et on note le nombre $a$ qu'elle porte, puis on la met dans l'urne $U_2$, ensuite on tire une boule de l'urne $U_2$ et on note le nombre $b$ qu'elle porte ».
+
+      On considère les événements suivants :
+      - $A$ : « la boule tirée de l'urne $U_1$ porte le nombre $1$ »
+      - $B$ : « le produit $ab$ est égal à $2$ »
+    questions:
+      - id: q1a
+        part: "Question 1 — Calculer p(A) et p(B) à l'aide de l'arbre"
+        stem: |-
+          **(0,5 pt)** Calculer $p(A)$ ; la probabilité de l'événement $A$.
+        reasoning: |-
+          L'événement $A$ ne porte que sur le tirage dans $U_1$ : ce qui se passera ensuite dans $U_2$ n'entre pas en jeu. Comme les six boules sont indiscernables au toucher, chaque boule a la même chance d'être tirée — on compte donc simplement combien, parmi les six boules de $U_1$, portent le chiffre 1.
+        steps:
+          - math: 'p(A) = \dfrac{3}{6} = \dfrac{1}{2}'
+            note: "Trois boules « 1 » parmi les six de U1 : tirage équiprobable, boules indiscernables."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Montrer que $p(B) = \dfrac{1}{4}$. *(On peut utiliser l'arbre des possibilités.)*
+        reasoning: |-
+          $B$ se réalise si $ab=2$, ce qui n'arrive que de deux façons : $a=1$ puis $b=2$, ou $a=2$ puis $b=1$ (dès que $a=0$, le produit est nul). Deux chemins de l'arbre, donc.
+
+          Sur chacun, la probabilité de la deuxième branche est **conditionnelle** : c'est justement le piège identifié avant l'exercice — transférer la boule tirée dans $U_2$ en change la composition, donc le second tirage dépend du premier. On applique la règle d'or de l'arbre (rung R2) : multiplier le long de chaque branche avec la bonne probabilité conditionnelle, puis additionner les deux chemins, puisqu'ils sont incompatibles.
+        steps:
+          - math: 'p(a=1) = \dfrac{3}{6} = \dfrac{1}{2}, \qquad p(a=2) = \dfrac{1}{6}'
+            note: "Composition de U1 : trois boules « 1 » et une boule « 2 » sur six."
+          - math: 'p(b=2 \mid a=1) = \dfrac{2}{6} = \dfrac{1}{3}'
+            note: "Après avoir déposé le « 1 » tiré, U2 devient {1,1,1,1,2,2} : deux « 2 » sur six."
+          - math: 'p(a=1,\ b=2) = \dfrac{1}{2}\times\dfrac{1}{3} = \dfrac{1}{6}'
+            note: "On multiplie le long de la branche a=1 puis b=2 (règle d'or de l'arbre, rung R2)."
+          - math: 'p(b=1 \mid a=2) = \dfrac{3}{6} = \dfrac{1}{2}'
+            note: "Après avoir déposé le « 2 » tiré, U2 devient {1,1,1,2,2,2} : trois « 1 » sur six."
+          - math: 'p(a=2,\ b=1) = \dfrac{1}{6}\times\dfrac{1}{2} = \dfrac{1}{12}'
+            note: "Deuxième chemin : a=2 puis b=1."
+          - math: 'p(B) = \dfrac{1}{6}+\dfrac{1}{12} = \dfrac{2}{12}+\dfrac{1}{12} = \dfrac{1}{4}'
+            note: "Les deux chemins sont incompatibles : on additionne (règle d'or de l'arbre, « additionner en travers »)."
+      - id: q2
+        part: "Question 2 — La probabilité conditionnelle p(A/B)"
+        stem: |-
+          **(0,75 pt)** Calculer $p(A/B)$ ; probabilité de l'événement $A$ sachant que l'événement $B$ est réalisé.
+        reasoning: |-
+          « Sachant $B$ » signale un conditionnement : on restreint l'univers à $B$ — le geste même de la formule $P_A(B) = P(A\cap B)/P(A)$ du rung R1, appliquée ici dans l'autre sens, à $B$.
+
+          Concrètement, on repère les feuilles où $B$ se produit — il y en a deux, calculées à la question précédente — et on regarde laquelle réalise aussi $A$ (rung R5, lecture à rebours de l'arbre) : seul le chemin $a=1,\,b=2$ convient, c'est la feuille $p(A\cap B)=1/6$ déjà obtenue. On divise ensuite par $p(B)=1/4$ — surtout pas par $p(A)$, ce qui donnerait la question renversée $p(B/A)$.
+        steps:
+          - math: 'p(A \cap B) = p(a=1,\ b=2) = \dfrac{1}{6}'
+            note: "Seule la feuille a=1, b=2 réalise à la fois A et B ; déjà calculée à la question précédente."
+          - math: 'p(A/B) = \dfrac{p(A\cap B)}{p(B)} = \dfrac{1/6}{1/4} = \dfrac{4}{6} = \dfrac{2}{3}'
+            note: "On divise par p(B), le dénominateur qui restreint l'univers à B (rung R1) — pas par p(A)."
+      - id: q3a
+        part: "Question 3 — La variable aléatoire X = ab et sa loi"
+        stem: |-
+          Soit $X$ la variable aléatoire qui associe à chaque résultat de l'expérience le produit $ab$.
+
+          **(0,25 pt)** Montrer que $p(X = 0) = \dfrac{1}{3}$.
+        reasoning: |-
+          Nouvel ingrédient ici : une variable aléatoire attache un nombre à chaque issue de l'expérience — une notion que le corps de la leçon n'introduit pas formellement (R1–R5 portent sur des événements, pas sur des variables), mais qui reste l'arbre et le conditionnement, seulement organisés autrement.
+
+          Un produit est nul dès que l'un des deux facteurs l'est. Peut-on avoir $b=0$ ? Une boule « 0 » ne se trouve qu'à l'intérieur de $U_1$ au départ ; elle n'atterrit dans $U_2$ que si c'est justement celle qu'on y a transportée, c'est-à-dire seulement quand $a=0$. Si $a \neq 0$, aucune boule « 0 » n'entre dans $U_2$, donc $b \neq 0$ non plus. L'événement « $X=0$ » se ramène donc entièrement à « $a=0$ », et sa probabilité se lit directement sur $U_1$.
+        steps:
+          - math: 'X=0 \iff a=0'
+            note: "Si a est différent de 0, aucune boule « 0 » n'entre dans U2 : b ne peut donc pas non plus valoir 0."
+          - math: 'p(X=0) = p(a=0) = \dfrac{2}{6} = \dfrac{1}{3}'
+            note: "Deux boules « 0 » parmi les six de U1."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Donner la loi de probabilité de $X$. *(Remarquer que les valeurs prises par $X$ sont $0$ ; $1$ ; $2$ et $4$.)*
+        reasoning: |-
+          $X$ prend quatre valeurs : 0, 1, 2, 4. Deux probabilités sont déjà connues : $p(X=0)=1/3$ (question précédente) et $p(X=2)=p(B)=1/4$ (question 1.b, puisque « $ab=2$ » et « $X=2$ » désignent le même événement).
+
+          Restent $p(X=1)$ et $p(X=4)$ : chacune ne provient que d'un seul chemin de l'arbre — $a=1$ puis $b=1$ pour l'une, $a=2$ puis $b=2$ pour l'autre — donc un seul produit à faire, avec la probabilité conditionnelle correcte sur la deuxième branche. Dernier réflexe, celui que rappelle l'énoncé de l'exercice lui-même : une loi de probabilité somme toujours à 1 ; on le vérifie avant de conclure.
+        steps:
+          - math: 'p(b=1 \mid a=1) = \dfrac{4}{6} = \dfrac{2}{3}'
+            note: "Après le transfert du « 1 », U2 = {1,1,1,1,2,2} : quatre « 1 » sur six."
+          - math: 'p(X=1) = p(a=1,\ b=1) = \dfrac{1}{2}\times\dfrac{2}{3} = \dfrac{1}{3}'
+            note: "Seul chemin donnant le produit 1 : a=1 puis b=1."
+          - math: 'p(X=2) = p(B) = \dfrac{1}{4}'
+            note: "Déjà obtenu à la question 1.b : « ab=2 » et « X=2 » sont le même événement."
+          - math: 'p(b=2 \mid a=2) = \dfrac{3}{6} = \dfrac{1}{2}'
+            note: "Après le transfert du « 2 », U2 = {1,1,1,2,2,2} : trois « 2 » sur six."
+          - math: 'p(X=4) = p(a=2,\ b=2) = \dfrac{1}{6}\times\dfrac{1}{2} = \dfrac{1}{12}'
+            note: "Seul chemin donnant le produit 4 : a=2 puis b=2."
+          - math: '\dfrac{1}{3}+\dfrac{1}{3}+\dfrac{1}{4}+\dfrac{1}{12} = \dfrac{4}{12}+\dfrac{4}{12}+\dfrac{3}{12}+\dfrac{1}{12} = 1'
+            note: "Contrôle : la somme des quatre probabilités de la loi vaut bien 1."
+          - math: '\begin{array}{c|cccc} x_i & 0 & 1 & 2 & 4 \\ \hline p(X=x_i) & \dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{4} & \dfrac{1}{12} \end{array}'
+            note: "Loi de probabilité de X, présentée en tableau."
+      - id: q3c
+        stem: |-
+          On considère les événements $M$ : « le produit $ab$ est pair non nul » et $N$ : « le produit $ab$ est égal à $1$ ».
+
+          **(0,5 pt)** Montrer que les événements $M$ et $N$ sont équiprobables.
+        reasoning: |-
+          On traduit chaque événement en valeurs de $X$ avant de comparer quoi que ce soit. $M$ demande $ab$ pair **et** non nul : parmi 0, 1, 2, 4, seules 2 et 4 sont paires et non nulles (0 est pair mais nul ; 1 est impair) — donc $M$ correspond à « $X=2$ ou $X=4$ ». $N$ demande $ab=1$, c'est-à-dire directement « $X=1$ ». Il ne reste qu'à lire les probabilités sur la loi de la question précédente et à les comparer.
+        steps:
+          - math: 'M = (X=2)\cup(X=4), \qquad N = (X=1)'
+            note: "Valeurs paires non nulles de X : 2 et 4. Valeur donnant ab=1 : uniquement X=1."
+          - math: 'p(M) = \dfrac{1}{4}+\dfrac{1}{12} = \dfrac{3}{12}+\dfrac{1}{12} = \dfrac{1}{3}'
+            note: "X=2 et X=4 sont incompatibles : on additionne leurs probabilités."
+          - math: 'p(N) = p(X=1) = \dfrac{1}{3}'
+            note: "Probabilité lue directement sur la loi de X établie à la question précédente."
+          - math: 'p(M) = p(N) = \dfrac{1}{3}'
+            note: "Même valeur : M et N sont équiprobables."

@@ -1,0 +1,130 @@
+# bank.yaml — la banque « S'entraîner » de piles (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, exercises.yaml), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'entrée est une transcription FIDÈLE de l'unique entrée
+# « vérifié » de docs/sujets/pc/piles.md (re-fetch AlloSchool + diff
+# indépendant, agent-vérificateur 2026-07-11). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R3/R6 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
+# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash).
+#
+# NOTE ÉDITORIALE #1 (recoupement, pour la revue) : docs/sujets/pc/piles.md
+# ne recense QU'UN SEUL sujet « vérifié » à ce jour — 2020 N, Exercice I
+# (Partie 2), la pile argent-chrome. C'est EXACTEMENT le même sujet que le
+# sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à R7) :
+# mêmes données, mêmes questions, mêmes réponses numériques (Δm ≈ -1,0 mg de
+# chrome). Il figure ici pour que la banque soit le corpus complet des
+# annales vérifiées de la notion (BANK-SPEC §1 : « la banque est le volume
+# derrière le sommet, jamais son remplacement ») — recoupement assumé, même
+# disposition que rc-charge bk-2019-n-x3 et reactions-acido-basiques
+# bk-2021-n-x1. Conséquence honnête : la banque de « piles » ne compte qu'UNE
+# entrée pour l'instant (la rail affichera « 1 sujet », pas un pluriel de
+# façade) tant qu'aucun autre sujet vérifié n'est recensé. À l'arbitrage de
+# l'owner si l'on préfère l'écarter de la banque pour éviter le recoupement
+# sur la même page.
+#
+# NOTE ÉDITORIALE #2 (schéma conventionnel, pour la revue) : la question 2 du
+# sujet demande de « représenter le schéma conventionnel de la pile »
+# (notation à barres : anode/borne − à gauche, cathode/borne + à droite,
+# barre simple = interface électrode/solution, double barre = pont salin).
+# Cette notation n'est PAS explicitement enseignée dans lesson.md (R3 établit
+# la polarité anode/cathode, mais pas l'écriture conventionnelle à barres) —
+# le même écart existe déjà dans exercises.yaml r-bac q2, dont cette entrée
+# reprend fidèlement le raisonnement. Signalé ici pour l'orchestrateur /
+# pedagogy-architect : soit la convention à barres mérite un ajout au rung R3
+# (ou un rung dédié), soit elle est jugée hors-scope de cette notion et la
+# question reste balisée comme telle. Pas corrigé unilatéralement ici.
+
+notion: pc/piles
+
+entries:
+  # ── bk-2020-n-x1 — 2020 N, Exercice I (Partie 2) : pile argent-chrome ──────
+  - id: bk-2020-n-x1
+    title: "Étude d'une pile argent-chrome : anode, schéma conventionnel, équations et usure par la quantité d'électricité"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 2 : étude de la pile argent-chrome"
+    bareme_total: 2.25
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool element/109742 (Exercice I,
+        Partie 2 — étude de la pile argent-chrome ; barème de la partie
+        ≈ 2,25 pt sur les 7 pt de l'exercice complet, qui comporte aussi une
+        Partie 1 sur le dosage pH-métrique d'une solution d'ammoniac,
+        transcrite sous reactions-acido-basiques.md). Transcription
+        vérifiée : re-fetch indépendant AlloSchool + diff OK
+        (docs/sujets/pc/piles.md, statut « vérifié » agent-vérificateur
+        2026-07-11). NB : ce même sujet sous-tend le sommet de leçon r-bac
+        (exercises.yaml, marqueur [[exercise:r-bac]] à R7) — recoupement
+        assumé (voir NOTE ÉDITORIALE #1 en tête de fichier) ; c'est
+        l'unique sujet « vérifié » recensé pour cette notion à ce jour, donc
+        la banque ne compte qu'une entrée.
+    intro: |-
+      **Étude d'une pile argent-chrome (examen national, session normale 2020).**
+
+      Cette partie se propose d'étudier une pile électrochimique. Cette pile est constituée :
+
+      - d'une électrode en chrome ($Cr$) plongée dans une solution aqueuse de nitrate de chrome (III) $Cr^{3+}_{(aq)} + 3\,NO_3^{-}{}_{(aq)}$ ;
+      - d'une électrode en argent ($Ag$) plongée dans une solution aqueuse de nitrate d'argent $Ag^{+}_{(aq)} + NO_3^{-}{}_{(aq)}$ ;
+      - d'un pont salin qui relie les deux solutions.
+
+      On branche un conducteur ohmique en série avec un ampèremètre, et on place le dipôle, ainsi constitué, entre les pôles de la pile (figure 2). L'ampèremètre indique le passage d'un courant électrique, d'intensité constante, dans le circuit. Après une durée $\Delta t$ de fonctionnement de la pile, on observe un dépôt sur l'électrode d'argent et une diminution de la masse de l'électrode de chrome.
+
+      **Données :** masse molaire du chrome $M(Cr) = 52\ \text{g.mol}^{-1}$ ; $1\,\text{F} = 96500\ \text{C.mol}^{-1}$.
+
+      *Figure 2 (schéma de la pile, décrite en mots) :* deux béchers reliés par un pont salin. Bécher de gauche : électrode $Ag$ dans une solution $Ag^{+}_{(aq)} + NO_3^{-}{}_{(aq)}$. Bécher de droite : électrode $Cr$ dans une solution $Cr^{3+}_{(aq)} + 3\,NO_3^{-}{}_{(aq)}$. En partie haute, un conducteur ohmique en série avec un ampèremètre relie les deux électrodes.
+    questions:
+      - id: q1
+        part: "Partie 2 — Identifier le fonctionnement de la pile"
+        stem: |-
+          **(0,5 pt)** Préciser l'anode de la pile. Justifier.
+        reasoning: |-
+          Ne pars pas d'une règle apprise « électrode par électrode » — c'est exactement le piège testé en R3 (« réduction, ça diminue, donc c'est négatif »). Pars de l'observation expérimentale, elle décide tout. La masse de l'électrode de chrome **diminue** : du chrome métallique disparaît donc de la lame, ce qui signifie qu'il est **oxydé**, $Cr \rightarrow Cr^{3+} + 3\,e^-$. Or, par définition (R3), l'électrode où se produit l'oxydation est l'**anode**. L'électrode de chrome est donc l'anode. Le dépôt observé sur l'argent confirme la cohérence de l'ensemble : c'est la trace d'une réduction $Ag^{+} + e^- \rightarrow Ag$, donc l'argent est la cathode.
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Représenter le schéma conventionnel de la pile.
+        reasoning: |-
+          La polarité vient directement de R3 : l'anode (le chrome, siège de l'oxydation établi à la question 1) est la borne −, la cathode (l'argent, siège de la réduction) est la borne +. Le schéma conventionnel s'écrit ensuite selon une convention d'écriture fixe, utilisée sur toutes les annales : la borne − à gauche, la borne + à droite, une barre simple pour chaque interface électrode/solution, une double barre pour le pont salin qui sépare les deux demi-piles.
+        steps:
+          - math: '(-)\ Cr_{(s)}\ \vert\ Cr^{3+}_{(aq)}\ \Vert\ Ag^{+}_{(aq)}\ \vert\ Ag_{(s)}\ (+)'
+            note: "Anode (borne moins, chrome) a gauche ; cathode (borne plus, argent) a droite ; barre simple = interface electrode-solution, double barre = pont salin."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Écrire les équations aux électrodes ainsi que l'équation bilan lors du fonctionnement de la pile.
+        reasoning: |-
+          Chaque électrode est le siège d'une demi-réaction : oxydation à l'anode (le chrome, question 1), réduction à la cathode (l'argent). On écrit chaque demi-équation, puis on ne peut les sommer que si le nombre d'électrons échangés est le même de part et d'autre. Le chrome libère 3 électrons, l'argent n'en capte qu'un : on multiplie donc la demi-équation de l'argent par 3 avant d'additionner, et les électrons — qui ne sont ni réactif ni produit de la réaction globale — disparaissent de l'équation bilan.
+        steps:
+          - math: 'Cr \rightarrow Cr^{3+} + 3\,e^-'
+            note: "A l'anode : oxydation du chrome (l'electrode dont la masse diminue), 3 electrons liberes."
+          - math: 'Ag^{+} + e^- \rightarrow Ag'
+            note: "A la cathode : reduction des ions argent (le depot observe sur l'electrode d'argent), 1 electron capte."
+          - math: '3\,Ag^{+} + 3\,e^- \rightarrow 3\,Ag'
+            note: "On multiplie la reduction par 3 pour que les 3 electrons liberes par le chrome soient tous captes, condition pour pouvoir sommer."
+          - math: 'Cr + 3\,Ag^{+} \rightarrow Cr^{3+} + 3\,Ag'
+            note: "Equation bilan : somme des deux demi-equations equilibrees ; les electrons s'annulent."
+      - id: q4
+        part: "Partie 2 — Quantifier l'usure de l'électrode de chrome"
+        stem: |-
+          **(0,5 pt)** Sachant que la quantité d'électricité débitée par la pile pendant la durée $\Delta t$ est $Q = 5{,}79\ \text{C}$, déterminer la variation $\Delta m$ de la masse de l'électrode de chrome.
+        reasoning: |-
+          La charge débitée porte l'information sur le nombre d'électrons échangés, via $Q = n(e^-)\,F$ (R6). Ici $Q$ est donné directement — pas besoin de $Q = I\,\Delta t$ — donc on convertit d'abord en moles d'électrons en divisant par $F$. On passe ensuite des électrons au chrome par la stœchiométrie de la demi-équation de la question 3 : chaque atome de chrome oxydé libère 3 électrons, donc $n(Cr) = n(e^-)/3$. On termine par $m = n\,M$. La variation $\Delta m$ est négative : c'est le même constat qu'au « teste l'idée avant de la croire » de R6 — une pile qui débite s'use réellement, la lame de chrome perd de la masse de façon irréversible.
+        steps:
+          - math: 'n(e^-) = \frac{Q}{F} = \frac{5{,}79}{96500} = 6{,}0\times10^{-5}\ \text{mol}'
+            note: "Conversion de la charge debitee en quantite de matiere d'electrons, via la constante de Faraday (rung R6)."
+          - math: 'n(Cr) = \frac{n(e^-)}{3} = \frac{6{,}0\times10^{-5}}{3} = 2{,}0\times10^{-5}\ \text{mol}'
+            note: "Stoechiometrie de l'oxydation Cr -> Cr3+ + 3 e- (question 3) : 3 electrons par atome de chrome consomme."
+          - math: '\Delta m = -\,n(Cr)\times M(Cr) = -\,2{,}0\times10^{-5}\times 52 \approx -1{,}0\times10^{-3}\ \text{g}'
+            note: "Signe negatif : la masse de l'electrode de chrome diminue. Environ 1,0 mg de chrome a quitte la lame."

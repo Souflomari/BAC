@@ -1,0 +1,252 @@
+# bank.yaml — la banque « S'entraîner » de structures-algebriques (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte AUCUN marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, [[exercise:]] à R7), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'unique entrée ci-dessous est une transcription FIDÈLE de
+# l'unique entrée « vérifié » de docs/sujets/maths/structures-algebriques.md
+# (re-fetch AlloSchool indépendant + diff caractère-par-caractère,
+# agent-vérificateur-adversarial, 2026-07-12) — le SEUL sujet vérifié
+# recensé pour cette notion : 2019, session normale, filière Sciences
+# Mathématiques (A et B, BIOF), « Exercice 1 » sur la copie (barème
+# 3,5 points). Un seul sujet est disponible parce que « Structures
+# algébriques » est un chapitre spécifique à la filière SM (absent de
+# l'épreuve Sciences Expérimentales) — un recensement à une seule entrée
+# vérifiée est donc l'état attendu, pas un signal de recherche incomplète ;
+# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, citant les rungs R1–R4 et
+# R7 ; barème transcrit tel quel dans les énoncés ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes sans backslash entre guillemets doubles).
+#
+# NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x1 transcrit le MÊME sujet que
+# le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R7). Il
+# figure ici pour que la banque soit le corpus complet des annales vérifiées
+# de la notion (BANK-SPEC §1 : « la banque est le volume derrière le
+# sommet, jamais son remplacement »). À l'arbitrage de l'owner si l'on
+# préfère l'écarter de la banque pour éviter le recoupement sur la même
+# page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
+# content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
+# content/pc/reactions-acido-basiques/bank.yaml.
+#
+# SCOPE NOTE (divulgation honnête, authoring-side) : la question 3 du sujet
+# (« Montrer que G est un sous-groupe de (E,∗) ») mobilise la notion de
+# SOUS-GROUPE, que lesson.md ne définit nulle part comme un rung à part
+# entière — R3 pose les quatre axiomes du groupe, R4 la commutativité, mais
+# aucun rung n'introduit le critère de sous-groupe ni même le mot
+# « sous-groupe » en tant que concept enseigné (grep vérifié : zéro
+# occurrence dans lesson.md hors ce recoupement d'exercice). exercises.yaml
+# (r-bac, q3) contourne déjà ce trou en invoquant un « critère du
+# sous-groupe » sans le rattacher à un rung. Le champ `reasoning` de la
+# question q7 ci-dessous évite d'aggraver ce trou : au lieu d'invoquer ce
+# critère non enseigné, il re-décline le CHECKLIST À QUATRE AXIOMES du R3
+# (déjà appliqué à E en q6) un cran plus bas, sur G — une technique
+# strictement « dans le cadre », déjà démontrée dans cette notion, plutôt
+# qu'un concept neuf non couvert. Le trou pédagogique sous-jacent (aucun
+# rung « sous-groupe ») reste réel et mérite l'attention du
+# pédagogy-architect si ce chapitre est repris.
+
+notion: maths/structures-algebriques
+
+entries:
+  # ── bk-2019-n-x1 — 2019 N, Exercice 1 : loi interne sur ℂ, groupe, sous-groupe, isomorphisme vers des matrices ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir note éditoriale en tête.
+  - id: bk-2019-n-x1
+    title: "Loi interne sur ℂ, groupe, sous-groupe et isomorphisme vers des matrices"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, AlloSchool element/68482 (Exercice 1, « Structures
+        algébriques » ; barème 3,5 points). Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/maths/structures-algebriques.md,
+        section « 2019 — session normale — Exercice 1 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan, filière
+        et code NS..F confirmés sur l'en-tête du scan,
+        agent-vérificateur-adversarial, 2026-07-12). NB : ce même sujet
+        sous-tend aussi le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R7) — recoupement assumé, voir note éditoriale
+        en tête de fichier.
+    intro: |-
+      **Structures algébriques (examen national, session normale 2019, Sciences Mathématiques).**
+
+      On rappelle que $(\mathbb{C},+,\times)$ est un corps commutatif et que $(M_2(\mathbb{R}),+,\times)$ est un anneau unitaire de zéro la matrice nulle $O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$.
+
+      Soit $\ast$ la loi de composition interne définie sur $\mathbb{C}$ par :
+
+      $$\left(\forall (x,y) \in \mathbb{R}^2\right)\left(\forall (a,b) \in \mathbb{R}^2\right) \quad ; \quad (x+yi)\ast(a+bi) = xa + \left(x^2 b + a^2 y\right)i$$
+    questions:
+      - id: q1
+        part: "La loi $\\ast$ : commutativité, associativité, neutre et symétrique"
+        stem: |-
+          **(0,25 pt)** Montrer que la loi $\ast$ est commutative sur $\mathbb{C}$
+        reasoning: |-
+          La commutativité (rung R2) demande $z_1 \ast z_2 = z_2 \ast z_1$ pour **tous** $z_1,z_2 \in \mathbb{C}$ — pas sur un exemple isolé. On calcule les deux membres directement avec la définition de $\ast$, en échangeant les rôles des deux complexes dans la formule, puis on compare partie réelle et partie imaginaire.
+
+          Le calcul se ramène entièrement à la commutativité de $+$ et $\times$ sur $\mathbb{R}$, déjà connue depuis le collège : $xa=ax$, et $x^2b+a^2y$ n'est qu'une réécriture, dans un autre ordre, de $a^2y+x^2b$.
+        steps:
+          - math: '(x+yi)\ast(a+bi) = xa + (x^2 b + a^2 y)\, i'
+            note: "Membre de gauche, par la définition de la loi."
+          - math: '(a+bi)\ast(x+yi) = ax + (a^2 y + x^2 b)\, i'
+            note: "Membre de droite : on échange les rôles des deux complexes dans la même définition."
+          - math: 'xa = ax \quad \text{et} \quad x^2 b + a^2 y = a^2 y + x^2 b'
+            note: "Égalité des parties réelles et imaginaires, par commutativité de + et de × dans R."
+          - math: '(x+yi)\ast(a+bi) = (a+bi)\ast(x+yi)'
+            note: "Les deux membres coïncident : la loi est commutative sur C."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Montrer que la loi $\ast$ est associative sur $\mathbb{C}$
+        reasoning: |-
+          Contrairement à la commutativité, l'associativité (rung R2) ne se lit jamais directement — elle met en jeu **trois** éléments à la fois, et ici $\mathbb{C}$ est infini : pas de table possible, seulement le calcul. On pose trois complexes $z_1=x+yi$, $z_2=a+bi$, $z_3=c+di$, on développe les deux parenthésages $(z_1\ast z_2)\ast z_3$ et $z_1\ast(z_2\ast z_3)$ jusqu'au bout, et on vérifie qu'ils coïncident terme à terme.
+
+          Le point de vigilance : on applique la définition de $\ast$ **deux fois de suite**, en réutilisant à chaque étape la partie réelle et la partie imaginaire du résultat intermédiaire — une erreur de recopie à ce stade casse tout le calcul.
+        steps:
+          - math: 'z_1=x+yi,\quad z_2=a+bi,\quad z_3=c+di'
+            note: "Trois complexes quelconques, pour tester tous les triplets à la fois."
+          - math: '(z_1\ast z_2)\ast z_3 = \big(xa+(x^2b+a^2y)i\big)\ast(c+di) = xac + \big(x^2a^2d + c^2x^2b + c^2a^2y\big)i'
+            note: "On combine d'abord z1 et z2 (résultat de q1), puis ce résultat avec z3."
+          - math: 'z_1\ast(z_2\ast z_3) = (x+yi)\ast\big(ac+(a^2d+c^2b)i\big) = xac + \big(x^2a^2d + x^2c^2b + a^2c^2y\big)i'
+            note: "On combine d'abord z2 et z3, puis z1 avec ce résultat."
+          - math: '(z_1\ast z_2)\ast z_3 = z_1\ast(z_2\ast z_3)'
+            note: "Mêmes trois termes de part et d'autre, juste réordonnés : les deux parenthésages coïncident."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Montrer que la loi $\ast$ admet un élément neutre $e$ que l'on déterminera.
+        reasoning: |-
+          Un neutre (rung R2) est un complexe $e$ fixe, unique, tel que $z\ast e=z$ pour **tout** $z\in\mathbb{C}$. On pose $e=p+qi$ et on impose cette égalité ; comme elle doit tenir pour tous $x,y$ réels à la fois, on identifie séparément le coefficient qui multiplie $x$ (partie réelle) et celui qui doit annuler tout terme parasite (partie imaginaire), pour en déduire $p$ et $q$.
+
+          La commutativité déjà établie à la question précédente dispense de vérifier $e\ast z=z$ séparément : les deux membres sont automatiquement égaux.
+        steps:
+          - math: 'e=p+qi;\quad (x+yi)\ast(p+qi)=xp+(x^2q+p^2y)\,i \overset{!}{=} x+yi'
+            note: "On impose z ∗ e = z, avec e = p + qi, pour tout x, y réels."
+          - math: 'xp=x \ \text{pour tout } x \ \Longrightarrow\ p=1'
+            note: "Identification de la partie réelle : p vaut 1."
+          - math: 'x^2q+y=y \ \text{pour tout } x,y \ \Longrightarrow\ q=0'
+            note: "Avec p = 1, identification de la partie imaginaire : q vaut 0."
+          - math: 'e=1'
+            note: "Vérification : (x+yi) ∗ 1 = x + (0+y)i = x+yi. Le neutre est e = 1."
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Soit $(x,y) \in \mathbb{R}^* \times \mathbb{R}$. Montrer que le nombre complexe $x+yi$ admet le nombre complexe $\dfrac{1}{x} - \dfrac{y}{x^4}i$ comme symétrique pour la loi $\ast$
+        reasoning: |-
+          Un symétrique (rung R2) de $x+yi$ est un complexe $s$ tel que $(x+yi)\ast s$ redonne le neutre $e=1$ trouvé à la question précédente. La condition $x\neq0$ sert uniquement à garantir que $\dfrac1x$ et $\dfrac{y}{x^4}$ existent — c'est exactement pour ça que l'énoncé exclut $x=0$ du domaine.
+
+          Rien à deviner ici : le candidat est donné, il suffit de **vérifier** — poser $a=\dfrac1x$, $b=-\dfrac{y}{x^4}$ dans la définition de $\ast$, et constater que le résultat vaut $1$.
+        steps:
+          - math: 's=\dfrac{1}{x}-\dfrac{y}{x^4}\,i,\quad x\neq0'
+            note: "Le candidat symétrique proposé par l'énoncé (x non nul, sinon 1/x et y/x⁴ n'existent pas)."
+          - math: '(x+yi)\ast s = x\cdot\dfrac1x + \left(x^2\left(-\dfrac{y}{x^4}\right)+\left(\dfrac1x\right)^2 y\right) i'
+            note: "Application directe de la définition, avec a = 1/x et b = −y/x⁴."
+          - math: '(x+yi)\ast s = 1 + \left(-\dfrac{y}{x^2}+\dfrac{y}{x^2}\right) i = 1 = e'
+            note: "Partie réelle 1, partie imaginaire nulle : s ramène bien au neutre. C'est le symétrique de x+yi."
+      - id: q5
+        part: "Le sous-ensemble $E$ : stabilité et structure de groupe"
+        stem: |-
+          On considère le sous-ensemble $E$ de $\mathbb{C}$ défini par : $E = \left\{ x+yi \ / \ x \in \mathbb{R}_+^*\ ;\ y \in \mathbb{R} \right\}$. **(0,25 pt)** Montrer que $E$ est stable pour la loi $\ast$ dans $\mathbb{C}$
+        reasoning: |-
+          La stabilité de $E$ (rung R1, la condition « interne » restreinte à un sous-ensemble) demande que $z_1\ast z_2$ reste dans $E$ dès que $z_1,z_2\in E$. Appartenir à $E$ signifie une seule chose : avoir une partie réelle strictement positive. $E$ est infini — impossible de le vérifier sur une table comme au R1 — donc on regarde directement la formule de $\ast$ et on observe le signe de la partie réelle du résultat.
+
+          La partie réelle de $z_1\ast z_2$ est $xa$, produit de deux réels strictement positifs, donc strictement positif : le résultat reste dans $E$, sans condition supplémentaire sur sa partie imaginaire (elle peut être n'importe quel réel dans $E$).
+        steps:
+          - math: 'z_1=x+yi,\ z_2=a+bi\in E \ \Longrightarrow\ x>0,\ a>0'
+            note: "Deux éléments quelconques de E : parties réelles strictement positives."
+          - math: 'z_1\ast z_2 = xa + (x^2b+a^2y)\,i,\qquad xa>0'
+            note: "La partie réelle xa est un produit de deux réels > 0, donc > 0."
+          - math: 'z_1\ast z_2 \in E'
+            note: "Le résultat a une partie réelle > 0 et une partie imaginaire réelle quelconque : E est stable pour ∗."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que $(E,\ast)$ est un groupe commutatif.
+        reasoning: |-
+          On reprend la liste de contrôle du groupe (rung R3), cette fois restreinte à $E$ — en réutilisant, sans les refaire, tous les résultats déjà établis : la loi interne, c'est la stabilité de la question précédente ; l'associativité et la commutativité sont héritées de $\mathbb{C}$ tout entier (questions 1 et 2 : ce qui est vrai pour tous les complexes reste vrai en particulier pour ceux de $E$).
+
+          Restent le neutre et les symétriques, à vérifier **dans $E$**, pas seulement dans $\mathbb{C}$ : le neutre $e=1=1+0i$ a une partie réelle $1>0$, donc $e\in E$ ; et le symétrique de $x+yi$ (avec $x>0$, donc $x\neq0$, le domaine de la question 4) a pour partie réelle $\dfrac1x$, qui reste $>0$ dès que $x>0$ — c'est là que la condition $x>0$ paie. Les quatre axiomes tiennent dans $E$, et la commutativité aussi (rung R4) : $(E,\ast)$ est un groupe commutatif.
+        steps:
+          - math: '\ast \ \text{interne sur } E\ (\text{q5}); \quad \text{associative et commutative}\ (\text{q2, q1})'
+            note: "Deux axiomes hérités de C, un obtenu à la question précédente."
+          - math: 'e=1 \in E \quad (1>0)'
+            note: "Le neutre appartient bien à E."
+          - math: '\text{sym}(x+yi) = \dfrac1x - \dfrac{y}{x^4}\,i \in E \quad \left(\dfrac1x>0\right)'
+            note: "Le symétrique reste dans E, car x > 0 donne 1/x > 0."
+          - math: '(E,\ast) \ \text{est un groupe commutatif}'
+            note: "Les quatre axiomes sont vérifiés dans E, et ∗ y est commutative."
+      - id: q7
+        part: "Le sous-groupe $G$"
+        stem: |-
+          On considère le sous-ensemble $G$ de $E$ défini par : $G = \left\{ 1+yi\ /\ y \in \mathbb{R} \right\}$. **(0,5 pt)** Montrer que $G$ est un sous-groupe de $(E,\ast)$
+        reasoning: |-
+          $G$ est inclus dans $E$ (partie réelle $1>0$ pour tout élément de $G$) — reste à montrer que $(G,\ast)$ est **lui-même** un groupe, exactement la même démarche qu'à la question précédente pour $E$, un cran plus bas : on recoche les quatre axiomes du R3, mais cette fois restreints à $G$.
+
+          Stabilité : combiner deux éléments de $G$ redonne un résultat de partie réelle $1\times1=1$, donc encore dans $G$. Associativité : héritée automatiquement de $\mathbb{C}$ (question 2), donc valable a fortiori sur $G$. Neutre : $e=1=1+0i \in G$ (cas $y=0$). Symétrique : celui de $1+yi$, donné par la formule de la question 4 avec $x=1$, vaut $1-yi$ — encore de la forme $1+(\cdot)i$, donc dans $G$. Les quatre axiomes tenant dans $G$, $(G,\ast)$ est un groupe : c'est exactement ce que signifie « $G$ est un sous-groupe de $(E,\ast)$ ».
+        steps:
+          - math: 'G\subset E \quad (\text{partie réelle }1>0\text{ pour tout élément de }G)'
+            note: "Tout élément de G appartient bien à E."
+          - math: '(1+yi)\ast(1+ci) = 1\cdot1 + (1^2c+1^2y)\,i = 1+(y+c)\,i \in G'
+            note: "Stabilité : deux éléments de G, combinés par ∗, restent dans G (partie réelle 1)."
+          - math: 'e=1=1+0i \in G'
+            note: "Le neutre de (E,∗) appartient à G."
+          - math: '\text{sym}(1+yi) = \dfrac{1}{1} - \dfrac{y}{1^4}\,i = 1-yi \in G'
+            note: "Symétrique de la question 4 avec x = 1 : reste dans G."
+          - math: '(G,\ast) \ \text{est un groupe} \ \Longrightarrow\ G \ \text{est un sous-groupe de} \ (E,\ast)'
+            note: "Mêmes quatre axiomes vérifiés, un cran plus bas ; associativité héritée automatiquement de C."
+      - id: q8
+        part: "Un isomorphisme vers un ensemble de matrices"
+        stem: |-
+          On considère l'ensemble $F = \left\{ M(x,y) = \begin{pmatrix} x & y \\ 0 & x \end{pmatrix} \ / \ x \in \mathbb{R}_+^*\ ;\ y \in \mathbb{R} \right\}$. **(0,25 pt)** Montrer que $F$ est stable pour la loi $\times$ dans $M_2(\mathbb{R})$
+        reasoning: |-
+          Même geste que pour $E$ à la question 5 (rung R1, stabilité), mais transposé aux matrices et à la loi $\times$ de $M_2(\mathbb{R})$ : on calcule le produit de deux matrices quelconques de $F$ et on vérifie que le résultat garde la même forme, avec un coefficient diagonal strictement positif.
+
+          Le produit de deux matrices triangulaires supérieures à coefficients diagonaux égaux (la forme $M(x,y)$) reste de cette même forme — c'est ce que le calcul matriciel, ligne par colonne, confirme directement.
+        steps:
+          - math: 'M(x,y)\times M(a,b) = \begin{pmatrix} x & y \\ 0 & x \end{pmatrix}\begin{pmatrix} a & b \\ 0 & a \end{pmatrix} = \begin{pmatrix} xa & xb+ya \\ 0 & xa \end{pmatrix}'
+            note: "Produit matriciel usuel, ligne par colonne."
+          - math: 'M(x,y)\times M(a,b) = M(xa,\ xb+ya), \qquad xa>0'
+            note: "Résultat de la forme M(·,·) ; coefficient diagonal xa produit de deux réels > 0."
+          - math: 'M(x,y)\times M(a,b) \in F'
+            note: "F est stable pour × dans M2(R)."
+      - id: q9
+        stem: |-
+          Soit $\varphi$ l'application de $E$ vers $F$ qui à tout nombre complexe $x+yi$ de $E$ fait correspondre la matrice $M(x^2,y) = \begin{pmatrix} x^2 & y \\ 0 & x^2 \end{pmatrix}$ de $F$. **(0,5 pt)** Montrer que $\varphi$ est un isomorphisme de $(E,\ast)$ vers $(F,\times)$
+        reasoning: |-
+          Un isomorphisme (rung R7) est **à la fois** bijectif et morphisme — le pont introduit juste avant l'exercice dans la leçon. Trois choses à établir, dans cet ordre : $\varphi$ transforme la loi $\ast$ en la loi $\times$ (le morphisme, le cœur du calcul), $\varphi$ ne colle jamais deux éléments distincts de $E$ sur la même image (injectivité), et $\varphi$ atteint bien toute matrice de $F$ (surjectivité).
+
+          Le morphisme se vérifie en développant $\varphi(z_1\ast z_2)$ d'un côté et $\varphi(z_1)\times\varphi(z_2)$ de l'autre (avec la règle de produit de la question précédente) : c'est précisément le carré dans la définition $\varphi(x+yi)=M(x^2,y)$ qui fait coïncider $(xa)^2$ et $x^2a^2$ — sans ce carré, les deux membres ne coïncideraient pas. Pour l'injectivité, $x,a>0$ et $x^2=a^2$ forcent $x=a$ (le carré est injectif sur les réels strictement positifs, pas sur $\mathbb{R}$ tout entier — c'est exactement pourquoi $E$ exige $x>0$). Pour la surjectivité, toute matrice $M(u,v)$ de $F$ (donc $u>0$) admet l'antécédent $\sqrt{u}+vi \in E$.
+        steps:
+          - math: '\varphi(z_1\ast z_2) = \varphi\big(xa+(x^2b+a^2y)i\big) = M\big((xa)^2,\ x^2b+a^2y\big)'
+            note: "Image par φ du produit z1 ∗ z2 : la partie réelle xa est élevée au carré."
+          - math: '\varphi(z_1)\times\varphi(z_2) = M(x^2,y)\times M(a^2,b) = M\big(x^2a^2,\ x^2b+a^2y\big)'
+            note: "Produit des images, via la règle de la question précédente."
+          - math: '(xa)^2 = x^2a^2 \ \Longrightarrow\ \varphi(z_1\ast z_2) = \varphi(z_1)\times\varphi(z_2)'
+            note: "Les deux membres coïncident : φ est un morphisme."
+          - math: '\varphi(x+yi)=\varphi(a+bi) \ \Longrightarrow\ x^2=a^2,\ y=b;\quad x,a>0 \ \Longrightarrow\ x=a'
+            note: "Injectivité : x et a strictement positifs, donc x² = a² force x = a."
+          - math: 'M(u,v) \in F \ (u>0):\quad \varphi\big(\sqrt{u}+vi\big) = M(u,v)'
+            note: "Surjectivité : toute matrice de F a un antécédent dans E."
+          - math: '\varphi \ \text{est un isomorphisme de} \ (E,\ast) \ \text{vers} \ (F,\times)'
+            note: "Bijective et morphisme : les trois conditions sont réunies."
+      - id: q10
+        stem: |-
+          **(0,25 pt)** En déduire que $(F,\times)$ est un groupe commutatif.
+        reasoning: |-
+          C'est le rendement direct de l'isomorphisme (rung R7) : puisque $(E,\ast)$ est un groupe commutatif (question 6) et que $\varphi$ en est un isomorphisme vers $(F,\times)$ (question précédente), toute la structure se **transporte** — commutativité, neutre, symétriques compris. Aucun axiome n'a besoin d'être re-vérifié directement sur $F$.
+
+          Comme repère concret : l'image du neutre $e=1$ de $E$ est $\varphi(1)=M(1^2,0)=M(1,0)=I$, la matrice unité — cohérent avec le fait que $(M_2(\mathbb{R}),+,\times)$ admet $I$ comme unité, rappelé en tête d'énoncé.
+        steps:
+          - math: '(E,\ast) \ \text{groupe commutatif}\ (\text{q6}), \quad \varphi \ \text{isomorphisme}\ (\text{q9})'
+            note: "Les deux ingrédients du transport de structure."
+          - math: '\varphi(1) = M(1^2,0) = M(1,0) = I'
+            note: "L'image du neutre de E est l'unité I, neutre de (F,×)."
+          - math: '(F,\times) \ \text{est un groupe commutatif}'
+            note: "La structure de groupe commutatif est transportée de E à F par φ, sans re-vérifier les axiomes sur F."

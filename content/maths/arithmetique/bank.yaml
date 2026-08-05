@@ -1,0 +1,161 @@
+# bank.yaml — la banque « S'entraîner » de arithmetique (BANK-SPEC v1).
+#
+# Sujet réel d'examen national, carte attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). UNE SEULE entrée ici : docs/sujets/maths/arithmetique.md
+# ne recense qu'un seul sujet au statut « vérifié » — 2019, session normale,
+# Exercice 3 (code NS 24F, AlloSchool element/68482 ; re-fetch indépendant +
+# diff caractère-par-caractère conforme au scan, agent-vérificateur-
+# adversarial, 2026-07-12). Introuvable = absent, jamais inventé : pas de
+# deuxième entrée tant qu'un second sujet d'arithmétique n'est pas vérifié.
+# Chapitre SPÉCIFIQUE à la filière Sciences Mathématiques (SM) — absent de
+# l'épreuve Sciences Expérimentales (SVT / Sc. Physiques).
+#
+# NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x3 transcrit le MÊME sujet que
+# le sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
+# R8). Il figure ici pour que la banque soit le corpus complet des annales
+# vérifiées de la notion (BANK-SPEC §1 : « la banque est le volume derrière
+# le sommet, jamais son remplacement »). À l'arbitrage de l'owner si l'on
+# préfère l'écarter de la banque pour éviter le recoupement sur la même
+# page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
+# content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
+# content/pc/reactions-acido-basiques/bank.yaml.
+#
+# OUTIL HORS-RUNG : la question q4 mobilise le PETIT THÉORÈME DE FERMAT
+# (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié dans la
+# leçon (R0–R8 couvrent divisibilité, division euclidienne, congruences,
+# PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes —
+# pas Fermat). Le théorème est nommé et justifié au point d'usage dans le
+# champ `reasoning` de q4, exactement comme le fait déjà le rupture-gate
+# cp-r6-fermat côté lesson.md, juste avant [[exercise:r-bac]].
+#
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions, citant les rungs mobilisés (R2, R4, R6) ; barème transcrit tel
+# quel dans les énoncés (0,5 pt par question, 6 questions, 3 points au
+# total) ; conventions KaTeX (block scalars pour la prose, KaTeX brut entre
+# apostrophes simples dans steps[].math, notes sans backslash).
+
+notion: maths/arithmetique
+
+entries:
+  # ── bk-2019-n-x3 — 2019 N, Exercice 3 : Bézout, inverse modulaire, congruences ──
+  # de puissances, petit théorème de Fermat, lemme d'Euclide. Même sujet que le
+  # sommet de leçon r-bac (exercises.yaml). Voir note éditoriale en tête.
+  - id: bk-2019-n-x3
+    title: "Congruences modulo un premier, Bézout et petit théorème de Fermat (2019)"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national Sciences Mathématiques (A) et
+        (B), option française (BIOF), Mathématiques, 4 h, coef 9, code NS 24F,
+        barème 3 points (Exercice 3, « Arithmétique »). Source AlloSchool
+        element/68482. Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/arithmetique.md, section « 2019 — session normale —
+        Exercice 3 » (re-fetch AlloSchool indépendant + diff caractère-par-
+        caractère conforme au scan, agent-vérificateur-adversarial,
+        2026-07-12). NB : ce même sujet sous-tend aussi le sommet de leçon
+        r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à R8) —
+        recoupement assumé, voir note éditoriale en tête de fichier.
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session normale 2019).**
+
+      On admet que $2969$ (l'année amazighe actuelle) est un **nombre premier**. Soient $n$ et $m$ deux entiers naturels vérifiant $n^8 + m^8 \equiv 0\ [2969]$.
+
+      L'exercice enchaîne, en une seule chaîne serrée, le théorème de Bézout (R4), les congruences et leurs puissances (R2), le petit théorème de Fermat — hors-rung, rappelé au moment où il sert — et le lemme d'Euclide « un premier qui divise une puissance divise la base » (R6).
+    questions:
+      - id: q1
+        part: "Partie A — Un inverse de $n$ modulo $2969$ par Bézout"
+        stem: |-
+          **(0,5 pt)** On suppose dans cette question que $2969$ **ne divise pas** $n$. En utilisant le théorème de BEZOUT, montrer que : $(\exists u \in \mathbb{Z})\ ;\ u \times n \equiv 1\ [2969]$
+        reasoning: |-
+          $2969$ est premier (admis) : ses seuls diviseurs positifs sont $1$ et lui-même. Comme on suppose $2969 \nmid n$, leur seul diviseur commun possible est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ — ils sont **premiers entre eux** (rung R4).
+
+          Le théorème de Bézout (rung R4) donne alors des entiers $u, v$ tels que $u\,n + 2969\,v = 1$. On lit cette égalité **modulo $2969$** : le terme $2969\,v$ est un multiple de $2969$, donc congru à $0$ (rung R2), et il reste $u\,n \equiv 1 \pmod{2969}$. L'entier $u$ est un **inverse de $n$** modulo $2969$.
+        steps:
+          - math: '\mathrm{PGCD}(2969,\,n) = 1'
+            note: "2969 premier et 2969 ne divise pas n : leur seul diviseur commun possible est 1."
+          - math: 'u\,n + 2969\,v = 1'
+            note: "Theoreme de Bezout, applique a une paire d'entiers premiers entre eux."
+          - math: 'u\,n \equiv 1 \pmod{2969}'
+            note: "On reduit modulo 2969 : le terme 2969 fois v est congru a 0."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** En déduire que : $(u \times m)^8 \equiv -1\ [2969]$ et que $(u \times m)^{2968} \equiv -1\ [2969]$ *(On remarque que : $2968 = 8 \times 371$)*
+        reasoning: |-
+          On part de la relation de l'énoncé $n^8 + m^8 \equiv 0 \pmod{2969}$, donc $m^8 \equiv -\,n^8$. On multiplie par $u^8$ pour faire apparaître $(u\,m)^8$ d'un côté et $(u\,n)^8$ de l'autre — et $(u\,n)^8 \equiv 1$ puisque $u\,n \equiv 1$ (compatibilité des congruences avec les puissances, rung R2).
+
+          Il reste à monter en exposant. Comme $2968 = 8 \times 371$, on écrit $(u\,m)^{2968} = \big((u\,m)^8\big)^{371}$, donc $(u\,m)^{2968} \equiv (-1)^{371}$. L'exposant $371$ est **impair**, donc $(-1)^{371} = -1$ : c'est là que le « $371$ impair » fait tout le travail.
+        steps:
+          - math: 'm^8 \equiv -\,n^8 \pmod{2969}'
+            note: "Reecriture directe de n huit plus m huit congru a 0."
+          - math: '(u\,m)^8 = u^8\,m^8 \equiv u^8\,(-\,n^8) = -\,(u\,n)^8 \equiv -1 \pmod{2969}'
+            note: "On multiplie par u puissance 8 ; (u fois n) puissance 8 est congru a 1 car u fois n est congru a 1 (R2)."
+          - math: '(u\,m)^{2968} = \big((u\,m)^8\big)^{371} \equiv (-1)^{371} = -1 \pmod{2969}'
+            note: "2968 egale 8 fois 371 ; 371 est impair, donc moins un puissance 371 vaut moins un."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Montrer que $2969$ ne divise pas $u \times m$
+        reasoning: |-
+          Raisonnement par l'absurde. Si $2969 \mid u\,m$, alors $u\,m \equiv 0 \pmod{2969}$, donc toute puissance de $u\,m$ est aussi $\equiv 0$ ; en particulier $(u\,m)^8 \equiv 0$.
+
+          Or la question précédente donne $(u\,m)^8 \equiv -1 \pmod{2969}$. On aurait donc $0 \equiv -1$, c'est-à-dire $2969 \mid 1$ — impossible, puisque $2969 > 1$. La supposition est absurde : $2969$ ne divise pas $u\,m$.
+        steps:
+          - math: '(u\,m)^8 \equiv 0 \pmod{2969}'
+            note: "Supposons par l'absurde que 2969 divise u fois m : sa puissance huitieme est alors congrue a 0."
+          - math: '0 \equiv -1 \pmod{2969} \implies 2969 \mid 1'
+            note: "Mais (u fois m) puissance 8 est congru a moins 1 (question precedente) : d'ou 0 congru a moins 1, soit 2969 divise 1."
+          - math: '2969 \nmid 1 \implies 2969 \nmid u\,m'
+            note: "2969 est plus grand que 1 et ne le divise pas : la supposition tombe."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** En déduire qu'on a aussi $(u \times m)^{2968} \equiv 1\ [2969]$
+        reasoning: |-
+          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps de rungs de la leçon (aucun rung dédié ; R0–R8 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$.
+
+          On applique ce théorème avec $p = 2969$ (premier, admis) et $a = u\,m$. La condition $p \nmid a$ est exactement le résultat de la question précédente : $2969 \nmid u\,m$. Comme $p - 1 = 2968$, il vient directement $(u\,m)^{2968} \equiv 1 \pmod{2969}$.
+        steps:
+          - math: '(u\,m)^{2968} \equiv 1 \pmod{2969}'
+            note: "Petit theoreme de Fermat : p premier et p ne divise pas a entraine a puissance p moins 1 congru a 1 modulo p. Ici p = 2969, p moins 1 = 2968, et 2969 ne divise pas u fois m (question precedente)."
+      - id: q5
+        part: "Partie B — $2969$ divise $n$, puis l'équivalence"
+        stem: |-
+          **(0,5 pt)** En utilisant les résultats précédents, montrer que $2969$ **divise** $n$
+        reasoning: |-
+          On confronte les deux congruences obtenues pour **le même nombre** $(u\,m)^{2968}$ : la question 2 donne $-1$, la question 4 donne $1$. Donc $-1 \equiv 1 \pmod{2969}$, c'est-à-dire $2969 \mid \big(1 - (-1)\big) = 2$.
+
+          Mais $2969 > 2$ ne peut pas diviser $2$ : contradiction. Or tout ce raisonnement (Partie A, questions 1 à 4) reposait sur la seule supposition $2969 \nmid n$. C'est donc cette supposition qui est fausse : $2969$ divise $n$.
+        steps:
+          - math: '-1 \equiv (u\,m)^{2968} \equiv 1 \pmod{2969}'
+            note: "Meme nombre, deux valeurs : la question 2 donne moins 1, la question 4 donne 1."
+          - math: '-1 \equiv 1 \pmod{2969} \implies 2969 \mid 2'
+            note: "1 moins moins 1, soit 2, devrait etre un multiple de 2969."
+          - math: '2969 \nmid 2 \implies 2969 \mid n'
+            note: "Contradiction : la supposition 2969 ne divise pas n est intenable, donc 2969 divise n."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que : $n^8 + m^8 \equiv 0\ [2969] \iff n \equiv 0\ [2969]$ et $m \equiv 0\ [2969]$
+        reasoning: |-
+          Deux implications à établir.
+
+          **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0 \pmod{2969}$, alors $n^8 \equiv 0$ et $m^8 \equiv 0$, donc leur somme $n^8 + m^8 \equiv 0$ (rung R2 : compatibilité de la congruence avec l'addition). Immédiat.
+
+          **Sens direct ($\Longrightarrow$).** Supposons $n^8 + m^8 \equiv 0 \pmod{2969}$. Le raisonnement de la Partie A (questions 1 à 5) montre que l'hypothèse $2969 \nmid n$ mène à une contradiction ; donc $2969 \mid n$, soit $n \equiv 0$. Alors $m^8 \equiv -\,n^8 \equiv 0 \pmod{2969}$, donc $2969 \mid m^8$. Comme $2969$ est **premier**, le lemme d'Euclide (rung R6) donne $2969 \mid m$, c'est-à-dire $m \equiv 0$.
+        steps:
+          - math: 'n \equiv 0 \ \text{et}\ m \equiv 0 \pmod{2969} \implies n^8 + m^8 \equiv 0 \pmod{2969}'
+            note: "Sens reciproque : une somme de deux multiples de 2969 est un multiple de 2969."
+          - math: 'n^8 + m^8 \equiv 0 \pmod{2969} \implies 2969 \mid n \implies n \equiv 0 \pmod{2969}'
+            note: "Sens direct : la question 5 donne 2969 divise n."
+          - math: 'm^8 \equiv 0 \pmod{2969} \implies 2969 \mid m^8 \implies 2969 \mid m'
+            note: "Puis m puissance 8 congru a 0 ; 2969 premier, le lemme d'Euclide (R6) donne 2969 divise m, soit m congru a 0."

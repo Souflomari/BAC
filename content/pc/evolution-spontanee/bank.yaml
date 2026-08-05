@@ -1,0 +1,115 @@
+# bank.yaml — la banque « S'entraîner » de evolution-spontanee (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'entrée ci-dessous est une transcription FIDÈLE de
+# l'unique entrée « vérifié » de docs/sujets/pc/evolution-spontanee.md
+# (re-fetch AlloSchool + diff indépendant, agent-vérificateur 2026-07-14).
+# Raisonnement rédigé à la voix experte de la maison, en citant les rungs de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
+# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash).
+#
+# NOTE ÉDITORIALE (pour la revue) : docs/sujets/pc/evolution-spontanee.md ne
+# recense QU'UNE SEULE entrée « vérifié » — le 2012 N (pile Cuivre-Zinc, sens
+# d'évolution spontané). Ce même sujet sous-tend DÉJÀ le sommet de leçon
+# complet (r-bac, exercises.yaml, marqueur [[exercise:r-bac]] à R6) : mêmes
+# données ($V = 200$ mL, $[Cu^{2+}]_i = [Zn^{2+}]_i = 1{,}0\times10^{-2}$
+# mol/L, $K = 5\times10^{36}$), mêmes trois questions, mêmes réponses
+# numériques ($Q_{r,i} = 1$, sens direct, $\Delta t_{\max} \approx
+# 5{,}1\times10^{3}$ s). Il est repris ici à l'identique pour que la banque
+# soit le corpus complet des annales sourcées de la notion (BANK-SPEC §1 :
+# « la banque est le volume derrière le sommet, jamais son remplacement »)
+# — recoupement total assumé, même disposition que rc-charge bk-2019-n-x3
+# et reactions-acido-basiques (2021 N recoupant r-bac). À l'arbitrage de
+# l'owner si l'on préfère l'écarter de la banque pour éviter le
+# recoupement sur la même page — mais avec une seule entrée sourcée pour
+# toute la notion, l'écarter viderait entièrement la banque (chapitre à
+# état vide « N sujets recensés » avec N = 1, ce qui n'apporte rien de plus
+# que le sommet déjà présent). Aucune autre transcription vérifiée n'existe
+# pour cette notion à ce jour : la « Première partie » du même exercice de
+# Chimie 2012 N (acide éthanoïque) est hors périmètre — transcrite sous
+# transformations-deux-sens.md, une autre notion.
+
+notion: pc/evolution-spontanee
+
+entries:
+  # ── bk-2012-n-x2 — 2012 N, Exercice de Chimie (Deuxième partie) : pile Cu-Zn ──
+  - id: bk-2012-n-x2
+    title: "La pile cuivre-zinc : sens d'évolution spontané, schéma conventionnel et durée de vie"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Chimie — Deuxième partie (pile cuivre-zinc)"
+    bareme_total: 2
+    duration_min: 10
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28, element/94452 (Exercice de Chimie, Deuxième
+        partie — pile cuivre-zinc, sens d'évolution spontané, schéma
+        conventionnel et durée maximale de fonctionnement ; barème de la
+        partie = 2 pt sur les 7 pt de l'exercice complet : 0,5 + 0,5 + 1).
+        Transcription vérifiée : re-fetch indépendant AlloSchool + diff OK
+        (docs/sujets/pc/evolution-spontanee.md, statut « vérifié »
+        agent-vérificateur 2026-07-14). NB : ce même sujet sous-tend DÉJÀ le
+        sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
+        R6) — recoupement total assumé, seule entrée sourcée de la notion
+        (voir note éditoriale en tête de fichier).
+    intro: |-
+      **Étude de la pile cuivre-zinc (examen national, session normale 2012).**
+
+      « La première pile électrique a été inventée, à la fin du XVIIIᵉ siècle, par le savant Volta, en utilisant le cuivre et le zinc et un papier imbibé d'eau salée. Dès lors, on a pu inventer et développer plusieurs sortes de piles électrochimiques. » On propose ici une étude simplifiée de la pile cuivre-zinc.
+
+      On réalise la pile constituée des couples $(\text{Cu}^{2+}_{(aq)}/\text{Cu}_{(s)})$ et $(\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)})$, en immergeant l'électrode de cuivre dans une solution de sulfate de cuivre de volume $V = 200\ \text{mL}$ et de concentration initiale $[\text{Cu}^{2+}_{(aq)}]_i = 1{,}0\times10^{-2}\ \text{mol}\cdot\text{L}^{-1}$, et l'électrode de zinc dans une solution de sulfate de zinc de volume $V = 200\ \text{mL}$ et de concentration initiale $[\text{Zn}^{2+}_{(aq)}]_i = 1{,}0\times10^{-2}\ \text{mol}\cdot\text{L}^{-1}$. Les solutions des deux compartiments sont reliées par un pont salin. Au cours du fonctionnement de la pile se produit une transformation modélisée par l'équation suivante :
+
+      $$\text{Zn}_{(s)} + \text{Cu}^{2+}_{(aq)} \;\underset{2}{\overset{1}{\rightleftarrows}}\; \text{Zn}^{2+}_{(aq)} + \text{Cu}_{(s)}$$
+
+      **Données :** la constante d'équilibre associée à cette transformation est $K = 5\times10^{36}$ ; la constante de Faraday $\mathcal{F} = 9{,}65\times10^{4}\ \text{C}\cdot\text{mol}^{-1}$.
+    questions:
+      - id: q1
+        part: "Deuxième partie — Sens d'évolution spontané"
+        stem: |-
+          **(0,5 pt)** Préciser le sens d'évolution spontané du système constituant la pile.
+        reasoning: |-
+          On applique le critère du rung 2 : calculer le quotient de réaction à l'instant initial, $Q_{r,i}$, à partir des concentrations données par l'énoncé, puis le comparer à $K$. Les espèces solides — zinc et cuivre métalliques — n'entrent jamais dans $Q_r$ (rung 2) ; seules les espèces dissoutes, $\text{Zn}^{2+}$ et $\text{Cu}^{2+}$, y figurent. Ici les deux concentrations initiales sont strictement égales, donc le quotient vaut exactement $1$ — et ce $1$ est écrasé par un $K$ de $36$ ordres de grandeur : le verdict ne fait aucun doute, exactement comme dans l'exemple travaillé du rung 2.
+        steps:
+          - math: 'Q_{r,i} = \frac{[\text{Zn}^{2+}]_i}{[\text{Cu}^{2+}]_i}'
+            note: "Expression de Qr pour l'equation ecrite (rung 2) : les deux solides, zinc et cuivre metalliques, sont exclus."
+          - math: 'Q_{r,i} = \frac{1{,}0\times10^{-2}}{1{,}0\times10^{-2}} = 1'
+            note: "Application numerique : les deux concentrations initiales sont egales."
+          - math: 'Q_{r,i} = 1 \ll K = 5\times10^{36}'
+            note: "Qr,i est ecrase par K de 36 ordres de grandeur."
+          - math: '\boxed{Q_{r,i} < K}'
+            note: "Sens direct (sens 1 de l'equation) : le zinc s'oxyde, les ions cuivre(II) se reduisent."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Représenter le schéma conventionnel de la pile étudiée.
+        reasoning: |-
+          Le schéma conventionnel place le pôle négatif ($\ominus$) à gauche et le pôle positif ($\oplus$) à droite, avec la double barre du pont salin au centre, chaque compartiment s'écrivant réducteur $\mid$ oxydant du même couple. La question précédente vient de trancher le sens (rung 2) : le zinc est oxydé, il cède des électrons — c'est l'électrode où l'oxydation a lieu, le pôle négatif ; les ions cuivre(II) sont réduits à l'électrode de cuivre — le pôle positif. C'est exactement la logique du rung 4 : dans une pile, réducteur et oxydant sont séparés dans deux compartiments distincts, et c'est le sens trouvé au calcul — jamais une propriété fixe attachée à un métal — qui décide quel compartiment est quel pôle.
+
+          $$\ominus\ \text{Zn}_{(s)} \mid \text{Zn}^{2+}_{(aq)} \parallel \text{Cu}^{2+}_{(aq)} \mid \text{Cu}_{(s)}\ \oplus$$
+      - id: q3
+        part: "Deuxième partie — Durée maximale de fonctionnement"
+        stem: |-
+          **(1 pt)** Au cours du fonctionnement de la pile, le circuit est traversé par un courant d'intensité constante $I = 75\ \text{mA}$. Trouver l'expression de la durée maximale de fonctionnement de la pile $\Delta t_{\max}$, en fonction de $[\text{Cu}^{2+}_{(aq)}]_i$, $V$, $\mathcal{F}$ et $I$, puis calculer $\Delta t_{\max}$.
+        reasoning: |-
+          Ce calcul de quantité d'électricité relève du chapitre piles plutôt que du critère de spontanéité proprement dit (la leçon note en R4 que le montage en pile force les électrons à passer par un circuit mesurable — c'est cette quantité totale d'électrons disponibles qu'on chiffre ici). Le courant $I$ constant correspond à un débit d'électrons constant, $Q = I\,\Delta t$. La pile s'arrête de fonctionner dès que l'un des réactifs dissous est épuisé — ici, les deux concentrations initiales sont égales et le zinc solide (électrode) est en large excès dans son compartiment, donc c'est la disparition complète des ions $\text{Cu}^{2+}$ qui limite la durée. Chaque ion $\text{Cu}^{2+}$ réduit consomme $2$ électrons (couple $\text{Cu}^{2+}/\text{Cu}$), donc la quantité d'électricité totale disponible est $Q_{\max} = n(\text{Cu}^{2+})_i \times 2 \times \mathcal{F}$. On égale les deux expressions de $Q$ pour isoler $\Delta t_{\max}$.
+        steps:
+          - math: 'n(\text{Cu}^{2+})_i = [\text{Cu}^{2+}]_i\,V'
+            note: "Quantite initiale d'ions cuivre(II) disponibles dans le compartiment cuivre."
+          - math: 'Q_{\max} = 2\,n(\text{Cu}^{2+})_i\,\mathcal{F} = 2\,[\text{Cu}^{2+}]_i\,V\,\mathcal{F}'
+            note: "2 electrons echanges par ion Cu2+ reduit (couple Cu2+/Cu)."
+          - math: 'Q_{\max} = I\,\Delta t_{\max}'
+            note: "Le courant constant I debite une quantite d'electricite proportionnelle a la duree."
+          - math: '\boxed{\Delta t_{\max} = \frac{2\,[\text{Cu}^{2+}]_i\,V\,\mathcal{F}}{I}}'
+            note: "On isole Δt_max en egalant les deux expressions de Q."
+          - math: '\Delta t_{\max} = \frac{2\times 1{,}0\times10^{-2}\times 0{,}200\times 9{,}65\times10^{4}}{75\times10^{-3}} \approx 5{,}1\times10^{3}\ \text{s}'
+            note: "Application numerique : [Cu2+]i = 1,0e-2 mol/L, V = 200 mL = 0,200 L, F = 9,65e4 C/mol, I = 75 mA = 75e-3 A. Soit environ 1 h 26 min."

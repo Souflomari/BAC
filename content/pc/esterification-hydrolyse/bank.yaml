@@ -1,0 +1,121 @@
+# bank.yaml — la banque « S'entraîner » de esterification-hydrolyse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'entrée ci-dessous est une transcription FIDÈLE de l'unique
+# entrée « vérifié » de docs/sujets/pc/esterification-hydrolyse.md (re-fetch
+# AlloSchool + diff indépendant, agent-vérificateur 2026-07-11). Raisonnement
+# rédigé à la voix experte de la maison, en citant les rungs R1–R4/R6 de la
+# leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans les
+# énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash).
+#
+# NOTE ÉDITORIALE (pour la revue) : docs/sujets/pc/esterification-hydrolyse.md
+# ne contient à ce jour QU'UNE SEULE entrée « vérifié » — le sujet 2018 N,
+# Exercice I (Partie 2, sous-partie 2, « Réaction entre l'acide lactique et le
+# méthanol »). Ce même sujet sous-tend AUSSI le sommet de leçon r-bac
+# (exercises.yaml, marqueur [[exercise:r-bac]] à R6) : mêmes données, mêmes
+# réponses numériques (n0 = 1e-3 mol, n_E = 6e-4 mol, r = 60 %), reprises ici
+# à l'identique pour rester cohérentes avec le sommet — y compris les mêmes
+# regroupements « part » (Partie 1 — Caractériser la réaction / Partie 2 —
+# Équation et rendement), qui étaient déjà une structuration ajoutée par
+# exercises.yaml et non un intitulé verbatim du sujet (celui-ci ne numérote
+# que 4 questions sous un unique sous-titre « 2. Réaction entre l'acide
+# lactique et le méthanol »). Recoupement assumé, même disposition que
+# rc-charge bk-2019-n-x3 — à l'arbitrage de l'owner si l'on préfère l'écarter
+# de la banque pour éviter le recoupement sur la même page.
+#
+# La sous-partie voisine du même exercice (dosage pH-métrique de l'acide
+# lactique, Partie 2 sous-partie 1) n'est pas transcrite dans docs/sujets/pc/
+# esterification-hydrolyse.md (hors périmètre de cette notion) ; la Partie 1
+# de l'exercice (électrolyse du bromure de plomb) est cross-listée sous la
+# notion `electrolyse`. Aucune autre entrée « vérifié » n'existe aujourd'hui
+# pour esterification-hydrolyse dans docs/sujets/pc/ : la banque ne couvre
+# donc, pour l'instant, ni le calcul direct de K/Qr sur un tableau d'avancement
+# chiffré, ni un cas de déplacement d'équilibre par excès de réactif — ces
+# gestes ne sont exercés qu'au sommet de leçon (R3, R5) et devront attendre un
+# futur sujet vérifié pour entrer dans cette banque (pas de fabrication).
+
+notion: pc/esterification-hydrolyse
+
+entries:
+  # ── bk-2018-n-x1 — 2018 N, Exercice I (Partie 2, sous-partie 2) : estérification acide lactique + méthanol ──
+  - id: bk-2018-n-x1
+    title: "Estérification de l'acide lactique par le méthanol : caractéristiques, facteurs cinétiques et rendement"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 2, sous-partie 2 : Réaction entre l'acide lactique et le méthanol"
+    bareme_total: 2.25
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques, SPC),
+        code NS28F, AlloSchool element/57726 (Exercice I, Partie 2, sous-partie 2
+        — réaction entre l'acide lactique et le méthanol ; barème de la
+        sous-partie ≈ 2,25 pt sur les 7 pt de l'exercice complet, qui comporte
+        aussi une sous-partie dosage pH-métrique de l'acide lactique — Partie 2,
+        sous-partie 1, non transcrite dans docs/sujets/pc — et une Partie 1 sur
+        l'électrolyse du bromure de plomb, cross-listée sous la notion
+        `electrolyse`). Transcription vérifiée : re-fetch indépendant AlloSchool
+        + diff OK (docs/sujets/pc/esterification-hydrolyse.md, statut
+        « vérifié » agent-vérificateur 2026-07-11). NB : ce même sujet
+        sous-tend le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R6) — recoupement assumé, à arbitrer en revue.
+    intro: |-
+      **Réaction entre l'acide lactique et le méthanol (examen national, session normale 2018).**
+
+      On mélange dans un ballon la quantité $n_0 = 10^{-3}\ \text{mol}$ d'acide lactique $CH_3-CH(OH)-COOH$ avec la même quantité $n_0 = 10^{-3}\ \text{mol}$ de méthanol pur $CH_3-OH$, puis on chauffe à reflux le mélange réactionnel pendant une certaine durée.
+
+      On obtient à la fin de la réaction la quantité $n_E = 6\times10^{-4}\ \text{mol}$ d'un ester E.
+    questions:
+      - id: q1
+        part: "Partie 1 — Caractériser la réaction"
+        stem: |-
+          **(0,5 pt)** Citer deux caractéristiques de cette réaction.
+        reasoning: |-
+          On demande la « carte d'identité » de l'estérification, celle que la leçon construit dès R2 et R4. Deux traits suffisent :
+
+          - **Elle est lente** : à température ambiante et sans catalyseur, plusieurs jours seraient nécessaires pour atteindre l'état d'équilibre (rung R4) — c'est précisément pourquoi l'énoncé chauffe à reflux au lieu de laisser le ballon à froid.
+          - **Elle est limitée (non totale)** : l'acide et l'alcool ne disparaissent jamais complètement, parce que l'hydrolyse inverse coexiste en permanence avec l'estérification dans le même mélange (rung R2). Le rendement $r < 1$ trouvé à la question 4 en sera la confirmation chiffrée.
+
+          (Un troisième trait accepté : la réaction est **athermique** — son effet thermique est presque négligeable, rung R4.)
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Proposer deux facteurs cinétiques pour accélérer la réaction d'estérification.
+        reasoning: |-
+          Un **facteur cinétique** change la vitesse à laquelle on atteint l'équilibre, jamais sa position (rung R4). Les deux facteurs cinétiques au programme, ici disponibles, sont :
+
+          - **La température** : chauffer (le reflux de l'énoncé) augmente l'agitation thermique, donc la fréquence et l'énergie des chocs efficaces entre l'acide lactique et le méthanol.
+          - **La concentration des réactifs** : partir de réactifs plus concentrés augmente elle aussi la fréquence de ces chocs.
+
+          Le piège à éviter, formulé explicitement au rung R4 : ces deux leviers ne déplacent pas l'équilibre. Le rendement final resterait le même qu'on les actionne ou non — seule la durée pour l'atteindre change. (Un catalyseur acide accélère également la réaction, par un mécanisme distinct — ce n'est pas, au sens strict du programme, un facteur cinétique.)
+      - id: q3
+        part: "Partie 2 — Équation et rendement"
+        stem: |-
+          **(0,5 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction ayant lieu entre l'acide lactique et le méthanol.
+        reasoning: |-
+          On applique le geste de R1 : le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. Ici, c'est le $-OH$ du méthanol qui réagit avec le $-COOH$ de l'acide lactique ; le $-OH$ porté par le carbone central de l'acide lactique (un alcool secondaire, sur la chaîne elle-même) ne participe pas à cette estérification. Avec la double flèche de la réaction limitée (rung R2) :
+
+          $$CH_3-CH(OH)-COOH + CH_3-OH \rightleftharpoons CH_3-CH(OH)-COO-CH_3 + H_2O$$
+
+          (L'ester ainsi formé se nomme, par la règle du rung R1, le 2-hydroxypropanoate de méthyle — non demandé ici, mais utile à vérifier : le radical de l'acide lactique donne « 2-hydroxypropanoate », celui du méthanol donne « méthyle ».)
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Calculer le rendement $r$ à la fin de la réaction.
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = \dfrac{n_E}{n_{max}}$ — le même geste qu'au rung R3, où $\tau$ rapporte l'avancement réel à l'avancement maximal. Il faut donc d'abord $n_{max}$. Le mélange est équimolaire et tous les coefficients stoechiométriques valent $1$ : si la réaction était totale, acide et alcool s'épuiseraient exactement ensemble, donc $x_{max} = n_0$ et l'ester maximal $n_{max} = x_{max} = n_0$. Il ne reste qu'à rapporter l'ester réellement formé à ce maximum.
+        steps:
+          - math: 'x_{max} = n_0 = 10^{-3}\ \text{mol} \implies n_{max} = x_{max} = 10^{-3}\ \text{mol}'
+            note: "Mélange équimolaire, coefficients tous égaux à 1 : les deux réactifs s'épuiseraient en même temps si la réaction était totale, donc l'ester maximal vaut n0."
+          - math: 'r = \frac{n_E}{n_{max}} = \frac{6\times10^{-4}}{10^{-3}}'
+            note: "On rapporte l'ester réellement formé (6e-4 mol) à l'ester maximal possible (1e-3 mol)."
+          - math: '\boxed{r = 0{,}60 = 60\ \%}'
+            note: "r < 1 confirme le trait 'limitée' de la question 1 : la réaction n'a pas épuisé les réactifs, l'hydrolyse inverse a toujours été présente."
