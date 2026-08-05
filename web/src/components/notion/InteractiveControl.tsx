@@ -22,7 +22,6 @@
 
 import type { InteractiveFigureConfigSpec } from "@/lib/content";
 import type { InteractiveFigureModel } from "@/lib/interactive-figures";
-import type { FigTextOption } from "./StagedFigure";
 import { cn } from "@/lib/utils";
 
 function fillTemplate(
@@ -47,14 +46,7 @@ interface InteractiveControlProps {
   model: InteractiveFigureModel;
   value: number;
   onChange: (value: number) => void;
-  /**
-   * MP-V1 step-text legibility candidate (StagedFigure.tsx — owner review
-   * pending). The readout IS teaching text too: variants promote it from
-   * body-sm to body (a1/a3) or body-lg (a2), and the hint from caption to
-   * body-sm. Undefined on every default surface — byte-identical output.
-   */
-  figTextOption?: FigTextOption;
-  /** Layout hook for StagedFigure's a3 side-by-side grid (column placement). */
+  /** Layout hook for StagedFigure's column placement. */
   className?: string;
 }
 
@@ -63,7 +55,6 @@ export function InteractiveControl({
   model,
   value,
   onChange,
-  figTextOption,
   className,
 }: InteractiveControlProps) {
   const { control, readoutTemplate } = config;
@@ -72,16 +63,10 @@ export function InteractiveControl({
       ? "Faites glisser le point sur la courbe, ou utilisez le curseur."
       : "Utilisez le curseur.";
 
-  const hintClass =
-    figTextOption === undefined
-      ? "text-caption text-secondary"
-      : "text-body-sm text-secondary";
-  const readoutClass =
-    figTextOption === undefined
-      ? "text-body-sm text-primary tabular-nums"
-      : figTextOption === "a2"
-        ? "text-body-lg text-primary tabular-nums"
-        : "text-body text-primary tabular-nums";
+  // MP-V1 (Phase C1): the readout and hint ARE teaching text too, not mere
+  // caption furniture — the a2 (lede) treatment is the shipped default.
+  const hintClass = "text-body-sm text-secondary";
+  const readoutClass = "text-body-lg text-primary tabular-nums";
 
   return (
     <div

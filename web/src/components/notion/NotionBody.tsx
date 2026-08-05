@@ -69,7 +69,7 @@ import { LessonRenderer } from "./LessonRenderer";
 import { MediaDiagramFigure } from "./MediaDiagram";
 import { MotionDiagram } from "./MotionDiagram";
 import { MotionStage } from "./MotionStage";
-import { StagedFigure, type FigTextOption } from "./StagedFigure";
+import { StagedFigure } from "./StagedFigure";
 import { EmbedPanel } from "./EmbedPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
@@ -533,11 +533,6 @@ interface NotionBodyProps {
    * and LessonEnd always closes the last chapter (spec §1.1).
    */
   lessonEnd?: ReactNode;
-  /**
-   * MP-V1 step-text legibility candidate (StagedFigure.tsx). Threaded only
-   * by /options/figtext/[v]; undefined on every default surface.
-   */
-  figTextOption?: FigTextOption;
 }
 
 export function NotionBody({
@@ -554,7 +549,6 @@ export function NotionBody({
   itemsByRung,
   hasTrailingChapter,
   lessonEnd,
-  figTextOption,
 }: NotionBodyProps) {
   // Build a slug-keyed SVG map for static figures (strip ".svg" extension)
   const svgBySlug: Record<string, string> = {};
@@ -618,7 +612,6 @@ export function NotionBody({
             stages={stagesSpec.stages}
             initialStage={Math.min(occurrence, stagesSpec.stages.length)}
             interactiveConfig={mediaInteractive[seg.slug]}
-            figTextOption={figTextOption}
           />
         );
       }

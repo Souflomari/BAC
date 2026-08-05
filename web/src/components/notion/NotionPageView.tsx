@@ -39,7 +39,6 @@ import { subjectLabel, subjectHref } from "@/lib/subjects";
 import { Breadcrumb as SharedBreadcrumb } from "@/components/ui/Breadcrumb";
 import { MarginNotes, type MarginNote } from "./MarginNotes";
 import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
-import type { FigTextOption } from "./StagedFigure";
 
 export { subjectLabel };
 
@@ -95,16 +94,12 @@ export function NotionPageView({
   wideOption,
   marginNotes,
   keyFormulas,
-  figTextOption,
 }: {
   id: string;
   mastheadVariant?: MastheadVariant;
   wideOption?: WideOption;
   marginNotes?: MarginNote[];
   keyFormulas?: KeyFormula[];
-  /** MP-V1 step-text legibility candidates (StagedFigure.tsx); rendered only
-   *  by /options/figtext/[v] — the default surface is unchanged. */
-  figTextOption?: FigTextOption;
 }) {
   const notion = loadNotion(id);
   if (!notion) notFound();
@@ -326,7 +321,6 @@ export function NotionPageView({
                 itemsByRung={itemsByRung}
                 hasTrailingChapter={hasBank}
                 lessonEnd={hasAnyContent ? <LessonEnd next={nextNotion} /> : undefined}
-                figTextOption={figTextOption}
               />
             ) : (
               <div

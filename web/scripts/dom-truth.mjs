@@ -207,7 +207,12 @@ const BATTERY = [
   // li scoping: the header FontSizeStepper buttons also carry aria-pressed
   { name: "MCQ choice row", page: NOTION, sel: "li button[aria-pressed]", fontKey: "body", weight: "400" },
   { name: "motion step indicator", page: NOTION, sel: "span[aria-live='polite']", text: "Étape", fontKey: "caption" },
-  { name: "motion figcaption", page: NOTION, sel: "figcaption", fontKey: "body-sm" },
+  // MP-V1 (Phase C): the step text under a staged figure IS the teaching, so
+  // it ships as the a2 lede — the reading serif at body-lg (not a body-sm
+  // caption), preceded by a small accent ordinal (aria-hidden; the aria-live
+  // indicator above already announces the stage).
+  { name: "figure step-text (a2 lede: serif body-lg)", page: NOTION, sel: "figcaption span.font-serif", fontKey: "body-lg", family: "Source Serif" },
+  { name: "figure step-text ordinal is the accent (meaning, not colour alone)", page: NOTION, sel: "figcaption span[aria-hidden='true']", fontKey: "body-sm" },
   // TODO(post-answer states): the solution <summary> and correctness rows only
   // exist after answering an item — battery v2 should drive one interaction.
   // ── de-jargon guards (audit U3, Day-2/3 items) ──
@@ -663,7 +668,7 @@ try {
   // (F3 + F4) Contrast in BOTH themes, dark reached through the REAL toggle
   // (never a forced class — the forced-class habit hid F4 for four days).
   const CONTRAST_TARGETS = [
-    { page: NOTION, sel: "figcaption", label: "figcaption" },
+    { page: NOTION, sel: "figcaption span.font-serif", label: "figure step-text" },
     { page: NOTION, sel: "[data-band='masthead'] p", label: "masthead metadata" },
     { page: NOTION, sel: ".notion-rail button span[class*='bp-expanded']", label: "rail idle label" },
     { page: NOTION, sel: "footer p", label: "footer" },
