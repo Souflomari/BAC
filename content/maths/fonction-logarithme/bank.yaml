@@ -1,0 +1,523 @@
+# bank.yaml — la banque « S'entraîner » de fonction-logarithme (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, [[exercise:]] à R7), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les deux entrées sont des transcriptions FIDÈLES des deux
+# entrées « vérifié » de docs/sujets/maths/fonction-logarithme.md (re-fetch
+# AlloSchool indépendant + diff caractère-par-caractère, agent-vérificateur-
+# adversarial, 2026-07-12) — les SEULS sujets vérifiés recensés pour cette
+# notion : 2019 et 2023, tous deux session normale, filière Sciences
+# Expérimentales (SVT et Sciences Physiques, BIOF), tous deux le « Problème »
+# (4ᵉ composante du sujet NS 22F, après les trois exercices) sur leur copie
+# (barème 11 points chacun). Aucun autre sujet n'est disponible — introuvable
+# = absent, jamais inventé. Raisonnement rédigé à la voix experte de la maison
+# sur 100 % des questions ; barème transcrit tel quel dans les énoncés ;
+# conventions KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes
+# simples dans steps[].math, notes sans backslash).
+#
+# Chaque calcul (limites, dérivées, IPP, aires, points fixes/limites de suite)
+# a été refait et vérifié indépendamment par l'auteur de ce fichier avant
+# transcription des `reasoning`/`steps` — en particulier l'intégralité du
+# problème 2023, qui n'avait aucune solution préexistante dans le corpus
+# (contrairement à 2019, dont la résolution complète existe déjà comme sommet
+# de leçon r-bac, exercises.yaml).
+#
+# SCOPE NOTE (divulgation honnête, authoring-side — reprend la note déjà
+# posée dans exercises.yaml et dans docs/sujets/maths/fonction-logarithme.md) :
+# les deux problèmes sont des problèmes d'ANALYSE complets et recoupent deux
+# autres notions au-delà du socle R1–R6 de cette leçon : `calcul-integral`
+# (intégration par parties, pour l'aire) et `suites-numeriques` (récurrence +
+# convergence monotone, pour la suite $u_{n+1}=f(u_n)$). Les dérivées de
+# produit/quotient (ex. $(x\ln x)'$, $(\ln x / x)'$) relèvent aussi de
+# `derivabilite-etude-fonctions`, pas de cette leçon. Les champs `reasoning`
+# nomment explicitement la technique et la notion source chaque fois qu'elle
+# sort du corps R1–R6 de cette leçon.
+#
+# NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x4 transcrit le MÊME sujet que
+# le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R7). Il
+# figure ici pour que la banque soit le corpus complet des annales vérifiées
+# de la notion (BANK-SPEC §1 : « la banque est le volume derrière le sommet,
+# jamais son remplacement »). À l'arbitrage de l'owner si l'on préfère
+# l'écarter de la banque pour éviter le recoupement sur la même page — même
+# décision, prise dans le même sens, sur bk-2021-n-x1 de
+# content/pc/reactions-acido-basiques/bank.yaml et bk-2019-n-x2 de
+# content/maths/nombres-complexes-1/bank.yaml. bk-2023-n-x4, en revanche, est
+# un ajout NEUF au corpus (absent d'exercises.yaml, dont r-variation est une
+# variation fraîche construite, pas ce sujet réel).
+#
+# ID : `bk-<année>-<n|r>-x<position sur la copie>`. Sur un sujet NS 22F
+# (Sciences Expérimentales), la composition normalisée est « 3 exercices + 1
+# problème » (docs/sujets/maths/README.md §0 ; INDEX.md §2) : Ex1 géométrie de
+# l'espace, Ex2 nombres complexes, Ex3 probabilités, puis le Problème — d'où
+# la position `x4` pour les deux entrées ci-dessous.
+
+notion: maths/fonction-logarithme
+
+entries:
+  # ── bk-2019-n-x4 — 2019 N, Problème : étude de f avec ln, IPP, suite ──────
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir note éditoriale en tête.
+  - id: bk-2019-n-x4
+    title: "Étude d'une fonction avec ln, aire par intégration par parties et suite récurrente"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Problème"
+    bareme_total: 11
+    duration_min: 75
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), Mathématiques (3 h, coef 7), code NS 22F, AlloSchool
+        NS22F, element/68527 (Problème, 11 points, pages 3-4 du scan).
+        Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/fonction-logarithme.md, section « 2019 — session
+        normale — Problème » (re-fetch AlloSchool indépendant
+        element/68527 → course-438/upload-54971 + diff caractère-par-
+        caractère conforme au scan, y compris le tableau de variations et la
+        figure, agent-vérificateur-adversarial, 2026-07-12). NB : ce même
+        sujet sous-tend aussi le sommet de leçon r-bac (exercises.yaml,
+        marqueur [[exercise:r-bac]] à R7) — recoupement assumé, voir note
+        éditoriale en tête de fichier. Recoupe aussi `calcul-integral` (Q6,
+        IPP) et `suites-numeriques` (deuxième partie).
+    intro: |-
+      **Problème (examen national, session normale 2019, Sciences Expérimentales).**
+
+      Soit $f$ la fonction numérique définie sur $]0,+\infty[$ par :
+
+      $$f(x) = x + \frac{1}{2} - \ln x + \frac{1}{2}(\ln x)^2$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
+
+      Point de vigilance qui traverse tout le problème : $\ln$ n'existe que sur $]0,+\infty[$, et $(\ln u)' = \dfrac{u'}{u}$ ne se lit que là où $u>0$. Garde en tête la hiérarchie des croissances vue en cours (R4) : $x$ écrase $\ln x$ à l'infini.
+
+      La **première partie** étudie $f$ (limites, variations, convexité, position par rapport à la droite $(\Delta):y=x$, puis une aire). La **deuxième partie** exploite cette étude pour la suite $(u_n)$ définie par $u_0=1$ et $u_{n+1}=f(u_n)$.
+    questions:
+      - id: q1
+        part: "Première partie — Limites, asymptote et branche parabolique"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} f(x)$ puis interpréter le résultat géométriquement.
+        reasoning: |-
+          En $0^+$, on examine chaque morceau de $f$ séparément : $x\to 0$ (fini), mais $\ln x \to -\infty$ (limite de référence, R4), donc $-\ln x\to+\infty$ et $(\ln x)^2\to+\infty$. Tous les termes qui bougent partent vers $+\infty$ — aucune indétermination, la somme suit. Une limite infinie en une borne finie du domaine se lit toujours de la même façon géométriquement : $x=0$ est asymptote verticale à $(C)$.
+        steps:
+          - math: '\lim_{x \to 0^+} \ln x = -\infty \implies \lim_{x \to 0^+} (\ln x)^2 = +\infty'
+            note: "Limite de reference en 0+ (R4), au carre."
+          - math: '\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+}\left(x+\tfrac12-\ln x+\tfrac12(\ln x)^2\right) = +\infty'
+            note: "Somme de termes qui partent tous vers +infini : pas d'indetermination. Asymptote verticale x=0."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Vérifier que pour tout $x$ de $]0,+\infty[$, $f(x) = x + \dfrac{1}{2} + \left(\dfrac{1}{2}\ln x - 1\right)\ln x$.
+        reasoning: |-
+          Une vérification se fait dans le sens le plus sûr : on développe le membre proposé et on retombe sur $f$. Le facteur $\left(\frac12\ln x-1\right)\ln x$ se distribue en $\frac12(\ln x)^2-\ln x$ ; il ne reste qu'à ajouter $x+\frac12$.
+        steps:
+          - math: '\left(\tfrac12\ln x - 1\right)\ln x = \tfrac12(\ln x)^2 - \ln x'
+            note: "On distribue le facteur sur ln x."
+          - math: 'x+\tfrac12+\tfrac12(\ln x)^2-\ln x = x+\tfrac12-\ln x+\tfrac12(\ln x)^2 = f(x)'
+            note: "On retrouve f(x) : egalite verifiee."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = +\infty$.
+        reasoning: |-
+          La forme factorisée de la question précédente sert exactement à lever l'indétermination $\infty-\infty$ qui apparaîtrait sinon. Quand $x\to+\infty$, $\ln x\to+\infty$ (R4), donc $\frac12\ln x - 1 \to+\infty$ : le produit de deux facteurs tendant vers $+\infty$ tend vers $+\infty$, et $x+\frac12\to+\infty$ s'ajoute sans changer le sens.
+        steps:
+          - math: '\lim_{x\to+\infty}\left(\tfrac12\ln x - 1\right) = +\infty, \quad \lim_{x\to+\infty}\ln x = +\infty'
+            note: "Les deux facteurs du produit tendent vers +infini."
+          - math: '\lim_{x\to+\infty}\left(\tfrac12\ln x-1\right)\ln x = +\infty \implies \lim_{x\to+\infty} f(x) = +\infty'
+            note: "Produit de deux termes vers +infini, plus x+1/2 vers +infini."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $\dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2$ puis en déduire que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$.
+        reasoning: |-
+          On part du membre de droite : $\ln\sqrt x = \frac12\ln x$ (propriété racine carrée, R2) et $(\sqrt x)^2=x$. Le carré fait apparaître $\frac14\frac{(\ln x)^2}{x}$, et le facteur $4$ compense exactement ce quart. Une fois l'égalité posée, la limite se lit sur le carré de $\frac{\ln\sqrt x}{\sqrt x}$ : en posant $t=\sqrt x$ (qui tend vers $+\infty$ avec $x$), c'est $\left(\frac{\ln t}{t}\right)^2$, qui tend vers $0$ par croissances comparées (R4).
+        steps:
+          - math: '\ln\sqrt{x} = \tfrac12\ln x, \qquad (\sqrt{x})^2 = x'
+            note: "Propriete racine carree (R2)."
+          - math: '4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2 = 4\cdot\dfrac{\frac14(\ln x)^2}{x} = \dfrac{(\ln x)^2}{x}'
+            note: "Le carre du 1/2 donne 1/4, compense par le facteur 4."
+          - math: 't=\sqrt{x}\to+\infty, \quad \dfrac{\ln t}{t}\to 0 \implies \dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln t}{t}\right)^2 \to 0'
+            note: "Croissances comparees (R4) appliquees a t = racine de x."
+      - id: q5
+        stem: |-
+          **(0,75 pt)** Montrer que $(C)$ admet au voisinage de $+\infty$ une branche parabolique de direction asymptotique la droite $(\Delta)$ d'équation $y = x$.
+        reasoning: |-
+          Une branche parabolique de direction $(\Delta):y=x$ demande deux vérifications : la pente $\frac{f(x)}{x}$ tend vers $1$ (la direction), mais l'écart $f(x)-x$ ne tend pas vers un réel fini — sinon $(\Delta)$ serait une vraie asymptote. Pour la pente, on divise chaque terme par $x$ et on utilise les croissances comparées : $\frac{\ln x}{x}\to0$ (R4) et $\frac{(\ln x)^2}{x}\to0$ (question précédente). Pour l'écart, $\frac12(\ln x)^2$ domine et pousse vers $+\infty$.
+        steps:
+          - math: '\dfrac{f(x)}{x} = 1+\dfrac{1}{2x}-\dfrac{\ln x}{x}+\dfrac{(\ln x)^2}{2x} \xrightarrow[x\to+\infty]{} 1'
+            note: "Chaque terme sauf 1 tend vers 0 (croissances comparees) : la pente tend vers 1."
+          - math: 'f(x)-x = \tfrac12-\ln x+\tfrac12(\ln x)^2 \xrightarrow[x\to+\infty]{} +\infty'
+            note: "Le terme en (ln x) carre l'emporte : pas d'asymptote, branche parabolique de direction y=x."
+      - id: q6
+        part: "Première partie — Dérivée, variations et convexité"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,1]$ : $(x-1) + \ln x \le 0$ et que pour tout $x$ de $[1,+\infty[$ : $(x-1) + \ln x \ge 0$.
+        reasoning: |-
+          On fixe le signe d'une expression par sa monotonie : soit $g(x)=x-1+\ln x$. $g'(x)=1+\frac1x>0$ sur $]0,+\infty[$ (somme de deux termes positifs), donc $g$ est strictement croissante. Comme $g(1)=0$, la stricte croissance fait tout le travail : avant $1$, $g$ est en dessous de $g(1)=0$ ; après $1$, au-dessus.
+        steps:
+          - math: 'g(x)=x-1+\ln x, \qquad g''(x) = 1+\dfrac1x > 0 \text{ sur } ]0,+\infty['
+            note: "g strictement croissante."
+          - math: 'g(1) = 1-1+\ln 1 = 0'
+            note: "Zero de g en x=1."
+          - math: 'x\le 1 \implies g(x)\le 0 \qquad ; \qquad x\ge 1 \implies g(x)\ge 0'
+            note: "Lecture directe de la stricte croissance autour du zero."
+      - id: q7
+        stem: |-
+          **(1 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $f'(x) = \dfrac{x - 1 + \ln x}{x}$.
+        reasoning: |-
+          On dérive terme à terme, en traitant $\frac12(\ln x)^2$ comme une composée : $(\ln u)'=\frac{u'}{u}$ étendu au carré (rung R3) donne $\left(\frac12u^2\right)'=u'u$ avec $u=\ln x$, $u'=\frac1x$, soit $\frac{\ln x}{x}$. Les deux autres termes donnent $1$ et $-\frac1x$. On réduit au même dénominateur $x$.
+        steps:
+          - math: 'f''(x) = 1-\dfrac1x+\dfrac{\ln x}{x}'
+            note: "Derivee de x, -ln x, et 1/2 (ln x) carre (regle (ln u)'=u'/u, R3)."
+          - math: 'f''(x) = \dfrac{x-1+\ln x}{x}'
+            note: "Reduction au meme denominateur x."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Dresser le tableau de variations de la fonction $f$.
+        reasoning: |-
+          Le dénominateur de $f'(x)$ est $x>0$ : le signe de $f'$ est donc celui du numérateur $x-1+\ln x$, connu par la question précédente (négatif sur $]0,1]$, positif sur $[1,+\infty[$, nul en $1$). On lit les variations : $f$ décroît sur $]0,1]$, croît sur $[1,+\infty[$, avec un minimum en $x=1$. On complète avec les limites déjà établies ($+\infty$ en $0^+$ et en $+\infty$) et $f(1)=1+\frac12-0+0=\frac32$.
+        steps:
+          - math: 'f''(x)=\dfrac{x-1+\ln x}{x}, \quad x>0 \implies \text{signe}(f'') = \text{signe}(x-1+\ln x)'
+            note: "Denominateur positif : le signe est celui du numerateur (question precedente)."
+          - math: 'f(1) = 1+\tfrac12-\ln 1+\tfrac12(\ln 1)^2 = \tfrac32'
+            note: "Minimum de f, atteint en x=1 : f decroit de +infini a 3/2, puis croit de 3/2 a +infini."
+      - id: q9
+        stem: |-
+          **(0,5 pt)** Montrer que $f''(x) = \dfrac{2 - \ln x}{x^2}$ pour tout $x$ de $]0,+\infty[$.
+        reasoning: |-
+          On dérive $f'(x)=1-\frac1x+\frac{\ln x}{x}$. Le terme $-\frac1x$ donne $\frac1{x^2}$. Le terme $\frac{\ln x}{x}$ est un quotient : $\left(\frac{\ln x}{x}\right)'=\frac{\frac1x\cdot x-\ln x}{x^2}=\frac{1-\ln x}{x^2}$ (dérivée d'un quotient, hors socle de cette leçon — vu au chapitre « Dérivabilité et étude de fonctions »). On additionne et on regroupe sur $x^2$.
+        steps:
+          - math: 'f''''(x) = \dfrac{1}{x^2}+\dfrac{1-\ln x}{x^2}'
+            note: "Derivee de -1/x, plus derivee du quotient ln x sur x."
+          - math: 'f''''(x) = \dfrac{2-\ln x}{x^2}'
+            note: "On regroupe les numerateurs."
+      - id: q10
+        stem: |-
+          **(0,5 pt)** En déduire que $(C)$ admet un point d'inflexion dont on déterminera les coordonnées.
+        reasoning: |-
+          Un point d'inflexion est un point où $f''$ change de signe. Le dénominateur $x^2>0$ ne change jamais de signe : tout dépend du numérateur $2-\ln x$, qui s'annule en $x=e^2$ en passant du positif au négatif. La convexité change bien là : c'est un point d'inflexion. On calcule l'ordonnée en remplaçant $\ln(e^2)=2$.
+        steps:
+          - math: 'f''''(x)=0 \iff \ln x = 2 \iff x=e^2'
+            note: "f'' change de signe en x = e au carre : point d'inflexion."
+          - math: 'f(e^2) = e^2+\tfrac12-2+\tfrac12\cdot 2^2 = e^2+\tfrac12'
+            note: "ln(e^2)=2. Point d'inflexion I(e^2 , e^2 + 1/2)."
+      - id: q11
+        part: "Première partie — Position relative et aire"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $f(x) - x = \dfrac{1}{2}(\ln x - 1)^2$ et déduire la position relative de $(C)$ et $(\Delta)$.
+        reasoning: |-
+          On calcule $f(x)-x=\frac12-\ln x+\frac12(\ln x)^2$ et on y reconnaît un carré : $(\ln x)^2-2\ln x+1=(\ln x-1)^2$. Un carré est toujours $\ge0$, donc $f(x)\ge x$ : $(C)$ reste au-dessus de $(\Delta)$ sur tout le domaine, avec contact seulement quand le carré est nul, c'est-à-dire $\ln x=1$, soit $x=e$.
+        steps:
+          - math: 'f(x)-x = \tfrac12-\ln x+\tfrac12(\ln x)^2 = \tfrac12\left[(\ln x)^2-2\ln x+1\right] = \tfrac12(\ln x-1)^2'
+            note: "Identite remarquable : carre parfait."
+          - math: '\tfrac12(\ln x-1)^2 \ge 0 \implies f(x)\ge x, \quad \text{egalite} \iff x=e'
+            note: "(C) au-dessus de (Delta) partout, contact unique en (e,e)."
+      - id: q12
+        stem: |-
+          **(1 pt)** Construire $(\Delta)$ et $(C)$ dans le même repère $(O,\vec{i},\vec{j})$.
+        reasoning: |-
+          On ne construit pas au hasard : on reporte les éléments déjà établis. La droite $(\Delta):y=x$ d'abord. Pour $(C)$ : l'asymptote verticale $x=0$ (question 1), le minimum $\left(1,\frac32\right)$ (question sur les variations), le point d'inflexion $I\left(e^2,e^2+\frac12\right)$ (question précédente), le fait que $(C)$ reste au-dessus de $(\Delta)$ en la touchant seulement en $(e,e)$, et la branche parabolique de direction $(\Delta)$ au voisinage de $+\infty$ (la courbe s'écarte de plus en plus au-dessus de la première bissectrice). $(C)$ descend de $+\infty$ le long de $x=0$ jusqu'au minimum en $1$, puis remonte en restant au-dessus de $(\Delta)$.
+      - id: q13
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $H : x \mapsto x\ln x - x$ est une primitive de la fonction $h : x \mapsto \ln x$ sur $]0,+\infty[$.
+        reasoning: |-
+          Montrer que $H$ est une primitive de $h$, c'est vérifier $H'=h$. On dérive $x\ln x$ comme un produit : $(x\ln x)'=1\cdot\ln x+x\cdot\frac1x=\ln x+1$ (règle du produit, hors socle de cette leçon). En retirant la dérivée de $-x$, qui vaut $-1$, il reste $\ln x$.
+        steps:
+          - math: '(x\ln x)'' = \ln x + x\cdot\dfrac1x = \ln x+1'
+            note: "Derivee d'un produit u=x, v=ln x."
+          - math: 'H''(x) = (\ln x+1)-1 = \ln x = h(x)'
+            note: "H'=h sur ]0,+infini[ : H est une primitive de h."
+      - id: q14
+        stem: |-
+          **(0,75 pt)** À l'aide d'une intégration par parties, montrer que $\displaystyle\int_1^e (\ln x)^2\, dx = e - 2$.
+        reasoning: |-
+          L'intégration par parties (technique du chapitre « Calcul intégral ») lit $(\ln x)^2=\ln x\cdot\ln x$ : on dérive $u=\ln x$ (plus simple, $u'=\frac1x$) et on primitive $v'=\ln x$ en $v=H(x)=x\ln x-x$ (question précédente). Le crochet $\big[\ln x\,(x\ln x-x)\big]_1^e$ s'annule aux deux bornes ($\ln e=1$ et $e-e=0$ ; $\ln1=0$). Il reste $-\int_1^e\frac1x(x\ln x-x)\,dx=-\int_1^e(\ln x-1)\,dx$, qu'on calcule avec $H$.
+        steps:
+          - math: 'u=\ln x,\ u''=\dfrac1x\ ; \quad v''=\ln x,\ v=H(x)=x\ln x-x'
+            note: "Choix IPP : deriver ln x, primitiver ln x via H."
+          - math: '\int_1^e(\ln x)^2\,dx = \big[\ln x\,(x\ln x-x)\big]_1^e - \int_1^e\dfrac1x(x\ln x-x)\,dx'
+            note: "Formule de l'IPP. Le crochet vaut 0 aux deux bornes."
+          - math: '\int_1^e(\ln x-1)\,dx = \big[x\ln x-2x\big]_1^e = (e-2e)-(0-2) = 2-e'
+            note: "Une primitive de ln x - 1 est x ln x - 2x."
+          - math: '\int_1^e(\ln x)^2\,dx = 0-(2-e) = e-2'
+            note: "Crochet nul moins (2-e)."
+      - id: q15
+        stem: |-
+          **(0,5 pt)** Calculer en $\text{cm}^2$ l'aire du domaine plan limité par $(C)$ et $(\Delta)$ et les droites d'équations $x = 1$ et $x = e$.
+        reasoning: |-
+          Sur $[1,e]$, $(C)$ est au-dessus de $(\Delta)$ (question sur la position relative), donc l'aire vaut $\int_1^e(f(x)-x)\,dx=\int_1^e\frac12(\ln x-1)^2\,dx$. On développe le carré et on réutilise $\int_1^e(\ln x)^2\,dx=e-2$ (question précédente) et $\int_1^e\ln x\,dx=[H]_1^e=1$. Le repère étant orthonormé d'unité $1$ cm, une unité d'aire vaut $1\ \text{cm}^2$.
+        steps:
+          - math: '\mathcal{A} = \int_1^e(f(x)-x)\,dx = \int_1^e\left(\tfrac12(\ln x)^2-\ln x+\tfrac12\right)dx'
+            note: "(C) au-dessus de (Delta) sur [1,e] : aire = integrale de f(x)-x."
+          - math: '\int_1^e \ln x\,dx = \big[x\ln x-x\big]_1^e = (e-e)-(0-1) = 1'
+            note: "Avec la primitive H."
+          - math: '\mathcal{A} = \tfrac12(e-2)-1+\tfrac12(e-1) = e-\tfrac52'
+            note: "En reutilisant les deux integrales de reference."
+          - math: '\mathcal{A} = \left(e-\tfrac52\right)\text{cm}^2 \approx 0{,}22\ \text{cm}^2'
+            note: "Unite orthonormee 1 cm : aire positive, comme attendu."
+      - id: q16
+        part: "Deuxième partie — La suite $u_0=1$, $u_{n+1}=f(u_n)$"
+        stem: |-
+          Soit $(u_n)$ la suite numérique définie par : $u_0 = 1$ et $u_{n+1} = f(u_n)$ pour tout $n$ de $\mathbb{N}$.
+
+          **(0,5 pt)** Montrer par récurrence que $1 \le u_n \le e$ pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          Récurrence d'encadrement classique pour $u_{n+1}=f(u_n)$ (chapitre « Suites numériques »). Initialisation : $u_0=1$ vérifie $1\le1\le e$. Hérédité : on suppose $1\le u_n\le e$, et on exploite que $f$ est croissante sur $[1,e]$ (établi dans le tableau de variations, valable car $[1,e]\subset[1,+\infty[$) : $f(1)\le f(u_n)\le f(e)$. Avec $f(1)=\frac32$ et $f(e)=e+\frac12-1+\frac12=e$, on obtient $\frac32\le u_{n+1}\le e$, et comme $\frac32\ge1$, l'encadrement passe au rang $n+1$.
+        steps:
+          - math: '\text{Initialisation : } u_0=1, \quad 1\le1\le e \ \checkmark'
+            note: "Rang 0."
+          - math: 'f \text{ croissante sur } [1,e] \implies f(1)\le f(u_n)\le f(e)'
+            note: "Monotonie de f appliquee a l'hypothese de recurrence."
+          - math: 'f(1)=\tfrac32, \quad f(e)=e \implies 1\le\tfrac32\le u_{n+1}\le e'
+            note: "f(e)=e car ln e=1. L'encadrement passe au rang n+1."
+      - id: q17
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)$ est croissante.
+        reasoning: |-
+          On étudie le signe de $u_{n+1}-u_n=f(u_n)-u_n$. C'est exactement la différence calculée plus haut : $f(x)-x=\frac12(\ln x-1)^2\ge0$. Appliquée à $x=u_n$, elle donne $u_{n+1}-u_n\ge0$.
+        steps:
+          - math: 'u_{n+1}-u_n = f(u_n)-u_n = \tfrac12(\ln u_n-1)^2 \ge 0'
+            note: "Reutilisation de f(x)-x = 1/2 (ln x - 1) carre, un carre donc positif."
+      - id: q18
+        stem: |-
+          **(0,5 pt)** En déduire que la suite $(u_n)$ est convergente.
+        reasoning: |-
+          $(u_n)$ est croissante (question précédente) et majorée par $e$ (question sur l'encadrement) : le théorème de convergence monotone (chapitre « Suites numériques ») conclut directement.
+        steps:
+          - math: '(u_n) \text{ croissante et majoree par } e \implies (u_n) \text{ converge}'
+            note: "Theoreme de la convergence monotone."
+      - id: q19
+        stem: |-
+          **(0,75 pt)** Calculer la limite de la suite $(u_n)$.
+        reasoning: |-
+          Notons $\ell$ la limite. En passant l'encadrement $1\le u_n\le e$ à la limite, $\ell\in[1,e]$, en particulier $\ell>0$. Comme $f$ est continue (composée/somme de fonctions continues sur $]0,+\infty[$) et $u_{n+1}=f(u_n)$, en passant à la limite : $\ell=f(\ell)$. Or $f(\ell)=\ell\iff\frac12(\ln\ell-1)^2=0\iff\ln\ell=1\iff\ell=e$, et $e\in[1,e]$.
+        steps:
+          - math: '1\le u_n\le e \implies \ell\in[1,e]\ ; \quad u_{n+1}=f(u_n), f \text{ continue} \implies \ell=f(\ell)'
+            note: "La limite est un point fixe de f, dans [1,e]."
+          - math: 'f(\ell)=\ell \iff \tfrac12(\ln\ell-1)^2=0 \iff \ell=e'
+            note: "Reutilisation de f(x)-x = 1/2 (ln x -1) carre. Comme e appartient a [1,e] : lim u_n = e."
+
+  # ── bk-2023-n-x4 — 2023 N, Problème : f avec ln, 2 points d'inflexion, aire, suite ──
+  - id: bk-2023-n-x4
+    title: "Étude d'une fonction avec ln, deux points d'inflexion, aire par IPP et suite récurrente"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Problème"
+    bareme_total: 11
+    duration_min: 75
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), Mathématiques (3 h, coef 7), code NS 22F, AlloSchool
+        element/137482 (Problème, 11 points, pages 3-4 du scan). Transcription
+        fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/fonction-logarithme.md, section « 2023 — session
+        normale — Problème » (re-fetch AlloSchool indépendant element/137482
+        → course-438/upload-84924 + diff caractère-par-caractère conforme au
+        scan, y compris le tableau de variations de $f'$ et la courbe
+        $(C_g)$, agent-vérificateur-adversarial, 2026-07-12). Recoupe aussi
+        `calcul-integral` (Q6, IPP) et `suites-numeriques` (Q7).
+    intro: |-
+      **Problème (examen national, session normale 2023, Sciences Expérimentales).**
+
+      On considère la fonction numérique $f$ définie sur $]0,+\infty[$ par $f(x) = 2 - \dfrac{2}{x} + (1 - \ln x)^2$, et $(C_f)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
+
+      Deux techniques reviennent tout au long du problème et méritent d'être repérées d'emblée : la substitution $t=\sqrt x$ pour ramener une limite en $x$ à une croissance comparée de référence (R4), et la lecture du signe de $f''$ directement sur les VARIATIONS déjà connues de $f'$ (pas besoin de recalculer $f''$ à chaque fois : $f''=(f')'$).
+    questions:
+      - id: q1
+        part: "Partie 1 — Limites, asymptote et branche parabolique"
+        stem: |-
+          **(0,25 pt)** Vérifier que pour tout $x \in ]0,+\infty[$ : $f(x) = \dfrac{3x - 2 - 2x\ln x + x(\ln x)^2}{x}$.
+        reasoning: |-
+          Vérification directe : on développe $(1-\ln x)^2=1-2\ln x+(\ln x)^2$, on ajoute $2-\frac2x$, puis on réduit tout au même dénominateur $x$.
+        steps:
+          - math: 'f(x) = 2-\dfrac2x+(1-\ln x)^2 = 3-\dfrac2x-2\ln x+(\ln x)^2'
+            note: "On developpe le carre : (1-ln x) carre = 1 - 2 ln x + (ln x) carre."
+          - math: 'f(x) = \dfrac{3x-2-2x\ln x+x(\ln x)^2}{x}'
+            note: "Chaque terme mis sur le denominateur commun x."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Montrer que $\displaystyle\lim_{x \to 0^+} x(\ln x)^2 = 0$ et que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$ *(On peut poser : $t = \sqrt{x}$)*.
+        reasoning: |-
+          Les deux limites se ramènent, via $t=\sqrt x$, aux résultats de référence du cours (R4). En $0^+$ : $x=t^2$, $t\to0^+$, et $\ln x=2\ln t$, donc $x(\ln x)^2=4t^2(\ln t)^2=4(t\ln t)^2$ ; or $t\ln t\to0$ (corollaire des croissances comparées, R4), donc le carré aussi. En $+\infty$ : $t\to+\infty$, $\frac{(\ln x)^2}{x}=\frac{4(\ln t)^2}{t^2}=4\left(\frac{\ln t}{t}\right)^2\to0$ par croissances comparées (R4).
+        steps:
+          - math: 't=\sqrt{x}\to0^+, \quad x(\ln x)^2 = t^2(2\ln t)^2 = 4(t\ln t)^2 \to 0'
+            note: "t ln t tend vers 0 en 0+ (corollaire des croissances comparees, R4)."
+          - math: 't=\sqrt{x}\to+\infty, \quad \dfrac{(\ln x)^2}{x} = \dfrac{4(\ln t)^2}{t^2} = 4\left(\dfrac{\ln t}{t}\right)^2 \to 0'
+            note: "Croissances comparees en +infini (R4)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déduire que $\displaystyle\lim_{x \to 0^+} f(x) = -\infty$, puis donner une interprétation géométrique du résultat.
+        reasoning: |-
+          On repart de la forme de la question 1 : $f(x)=\frac{3x-2-2x\ln x+x(\ln x)^2}{x}$. Au numérateur, quand $x\to0^+$ : $3x\to0$, $x\ln x\to0$ (limite de référence, R4) et $x(\ln x)^2\to0$ (question précédente) — il ne reste que le $-2$. Le numérateur tend donc vers $-2$, et le dénominateur $x\to0^+$ : le quotient tend vers $-\infty$. Une limite infinie en une borne finie du domaine signifie que $x=0$ est asymptote verticale à $(C_f)$.
+        steps:
+          - math: '3x-2-2x\ln x+x(\ln x)^2 \xrightarrow[x\to0^+]{} 0-2-2\times0+0 = -2'
+            note: "x ln x tend vers 0 (R4), x (ln x) carre tend vers 0 (question precedente)."
+          - math: '\lim_{x\to0^+} f(x) = \lim_{x\to0^+}\dfrac{-2}{x} = -\infty'
+            note: "Numerateur vers -2, denominateur vers 0+ : asymptote verticale x=0."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$, puis montrer que la courbe $(C_f)$ admet une branche parabolique de direction l'axe des abscisses au voisinage de $+\infty$.
+        reasoning: |-
+          Pour la limite : $-\frac2x\to0$ et $(1-\ln x)^2\to+\infty$ (car $\ln x\to+\infty$), donc $f(x)\to+\infty$. Pour la branche parabolique de direction l'axe des abscisses, il faut montrer $\frac{f(x)}{x}\to0$ (la courbe monte, mais infiniment plus lentement qu'aucune droite non horizontale). On développe $(1-\ln x)^2/x$ et on reconnaît des croissances comparées : $\frac{(\ln x)^2}{x}\to0$ (question 2) et $\frac{\ln x}{x}\to0$ (R4).
+        steps:
+          - math: '\lim_{x\to+\infty}\left(2-\dfrac2x\right) = 2, \quad \lim_{x\to+\infty}(1-\ln x)^2 = +\infty \implies \lim_{x\to+\infty} f(x) = +\infty'
+            note: "(1-ln x) carre part vers +infini."
+          - math: '\dfrac{f(x)}{x} = \dfrac2x-\dfrac{2}{x^2}+\dfrac{(\ln x)^2-2\ln x+1}{x} \xrightarrow[x\to+\infty]{} 0'
+            note: "Chaque terme tend vers 0 (croissances comparees, R4, et question 2) : branche parabolique de direction l'axe des abscisses."
+      - id: q5
+        part: "Partie 2 — Dérivée, variations et concavité"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x \in ]0,+\infty[$ : $f'(x) = \dfrac{2(1 - x + x\ln x)}{x^2}$.
+        reasoning: |-
+          On dérive $f(x)=2-\frac2x+(1-\ln x)^2$ terme à terme. $-\frac2x$ se dérive en $\frac{2}{x^2}$. Le carré est une composée : $\left((1-\ln x)^2\right)'=2(1-\ln x)\cdot\left(-\frac1x\right)$, en appliquant $(\ln u)'=\frac{u'}{u}$ à l'intérieur $1-\ln x$ (règle du R3, ici combinée à la règle de la composée par un carré). On réduit ensuite au même dénominateur $x^2$.
+        steps:
+          - math: 'f''(x) = \dfrac{2}{x^2} - 2(1-\ln x)\cdot\dfrac1x = \dfrac{2}{x^2}-\dfrac{2(1-\ln x)}{x}'
+            note: "Derivee de -2/x, et du carre (1-ln x) au carre via (ln u)'=u'/u (R3)."
+          - math: 'f''(x) = \dfrac{2-2x(1-\ln x)}{x^2} = \dfrac{2-2x+2x\ln x}{x^2} = \dfrac{2(1-x+x\ln x)}{x^2}'
+            note: "Reduction au denominateur commun x carre, puis facteur 2."
+      - id: q6
+        stem: |-
+          En exploitant le tableau de variation ci-dessous, de la fonction dérivée $f'$ de $f$ sur $]0,+\infty[$ *(on donne $\beta \approx 4{,}9$)* : $f'$ part de $+\infty$ en $0^+$, décroît jusqu'à $0$ en $x=1$, croît jusqu'à $f'(\beta)$, puis décroît vers $0$ en $+\infty$ — autrement dit $f'(x) \ge 0$ sur $]0,+\infty[$, nul seulement en $x=1$.
+
+          **(0,5 pt)** Prouver que $f$ est strictement croissante sur $]0,+\infty[$ puis dresser le tableau de variations de $f$.
+        reasoning: |-
+          Le tableau donné dit exactement $f'(x)\ge0$ sur tout le domaine, avec égalité seulement au point isolé $x=1$ : une dérivée positive ou nulle, nulle en un point isolé seulement, suffit pour une stricte croissance. Le tableau de variations de $f$ tient donc en une seule flèche montante, de $\displaystyle\lim_{x\to0^+}f(x)=-\infty$ (question 3) à $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$ (question 4), avec un point de repère utile $f(1)=2-2+(1-0)^2=1$.
+        steps:
+          - math: 'f''(x)\ge0 \text{ sur } ]0,+\infty[, \text{ nul seulement en } x=1 \implies f \text{ strictement croissante}'
+            note: "Derivee positive ou nulle, nulle en un point isole : stricte croissance."
+          - math: 'f(1) = 2-2+(1-\ln1)^2 = 1'
+            note: "Point de repere. f croit de -infini (en 0+) a +infini, en passant par 1 en x=1."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Donner le tableau de signe de la dérivée seconde $f''$ de la fonction $f$ sur $]0,+\infty[$.
+        reasoning: |-
+          Pas besoin de recalculer $f''$ explicitement : $f''=(f')'$, donc le signe de $f''$ est celui de la variation de $f'$, déjà donnée dans le tableau : $f'$ décroît sur $]0,1[$ (donc $f''<0$), croît sur $]1,\beta[$ (donc $f''>0$), décroît sur $]\beta,+\infty[$ (donc $f''<0$), avec $f''(1)=0$ et $f''(\beta)=0$ aux deux points où $f'$ change de sens de variation.
+        steps:
+          - math: 'f'' \text{ decroissante sur } ]0,1[ \implies f''''(x)<0 \text{ sur } ]0,1['
+            note: "Le signe de f'' est celui de la variation de f'."
+          - math: 'f'' \text{ croissante sur } ]1,\beta[ \implies f''''(x)>0 \text{ sur } ]1,\beta['
+            note: "f' croit : sa derivee f'' est positive."
+          - math: 'f'' \text{ decroissante sur } ]\beta,+\infty[ \implies f''''(x)<0 \text{ sur } ]\beta,+\infty[, \quad f''''(1)=f''''(\beta)=0'
+            note: "Aux deux points ou f' change de sens (x=1 et x=beta), f'' s'annule."
+      - id: q8
+        stem: |-
+          **(1 pt)** Déduire la concavité de la courbe $(C_f)$ en précisant les abscisses de ses deux points d'inflexion.
+        reasoning: |-
+          $f''<0$ signifie $(C_f)$ concave, $f''>0$ signifie $(C_f)$ convexe. D'après le tableau de signe précédent : $(C_f)$ est concave sur $]0,1[$, convexe sur $]1,\beta[$, de nouveau concave sur $]\beta,+\infty[$. La concavité change en $x=1$ et en $x=\beta$ : ce sont les abscisses des deux points d'inflexion de $(C_f)$.
+        steps:
+          - math: '(C_f) \text{ concave sur } ]0,1[, \text{ convexe sur } ]1,\beta[, \text{ concave sur } ]\beta,+\infty['
+            note: "Lecture directe du tableau de signe de f'' (question precedente)."
+          - math: '\text{Points d''inflexion en } x=1 \text{ et } x=\beta'
+            note: "La concavite change exactement la ou f'' s'annule en changeant de signe."
+      - id: q9
+        part: "Partie 3 — Position de (Δ) par rapport à (C_f), à partir de (C_g)"
+        stem: |-
+          La courbe $(C_g)$ ci-contre est la représentation graphique de la fonction $g : x \mapsto f(x) - x$, qui s'annule en $\alpha$ et $1$ ($\alpha \approx 0{,}3$) : $g$ est négative sur $]0,\alpha[$, s'annule en $x=\alpha$, devient positive (maximum faible, ordonnée $<0{,}5$) sur $]\alpha,1[$, s'annule de nouveau en $x=1$, puis reste négative sur $]1,+\infty[$. Soit $(\Delta)$ la droite d'équation $y = x$.
+
+          **(0,5 pt)** À partir de la courbe $(C_g)$, déterminer le signe de la fonction $g$ sur $]0,+\infty[$.
+        reasoning: |-
+          On lit directement le signe sur la description de $(C_g)$ : elle est sous l'axe des abscisses (négative) avant $\alpha$, au-dessus (positive) entre $\alpha$ et $1$, de nouveau en dessous après $1$.
+        steps:
+          - math: 'g(x)<0 \text{ sur } ]0,\alpha[, \quad g(x)>0 \text{ sur } ]\alpha,1[, \quad g(x)<0 \text{ sur } ]1,+\infty['
+            note: "Lecture directe de la courbe (Cg) : g(alpha)=g(1)=0."
+      - id: q10
+        stem: |-
+          **(0,5 pt)** Déduire que la droite $(\Delta)$ est en dessous de $(C_f)$ sur l'intervalle $[\alpha,1]$ et au-dessus de $(C_f)$ sur les intervalles $]0,\alpha]$ et $[1,+\infty[$.
+        reasoning: |-
+          $g(x)=f(x)-x$ ; $g>0$ signifie $f(x)>x$, c'est-à-dire $(C_f)$ au-dessus de $(\Delta)$, donc $(\Delta)$ en dessous. $g<0$ signifie l'inverse. D'après la question précédente : $g>0$ sur $]\alpha,1[$ donne $(\Delta)$ en dessous de $(C_f)$ sur $[\alpha,1]$ ; $g<0$ sur $]0,\alpha[$ et $]1,+\infty[$ donne $(\Delta)$ au-dessus de $(C_f)$ sur ces deux intervalles.
+        steps:
+          - math: 'g(x)>0 \iff f(x)>x \iff (C_f) \text{ au-dessus de } (\Delta)'
+            note: "g = f(x) - x : son signe donne la position relative."
+          - math: 'g>0 \text{ sur } ]\alpha,1[ \implies (\Delta) \text{ en dessous de } (C_f) \text{ sur } [\alpha,1]'
+            note: "Traduction geometrique directe."
+          - math: 'g<0 \text{ sur } ]0,\alpha[ \text{ et } ]1,+\infty[ \implies (\Delta) \text{ au-dessus de } (C_f) \text{ sur ces intervalles}'
+            note: "Meme traduction, signe oppose."
+      - id: q11
+        part: "Partie 4 — Construction de la courbe"
+        stem: |-
+          **(1,5 pt)** Construire la courbe $(C_f)$ et la droite $(\Delta)$ dans le repère $(O,\vec{i},\vec{j})$. *(On prend : $\alpha \approx 0{,}3$, $\beta \approx 4{,}9$ et $f(\beta) \approx 1{,}9$)*.
+        reasoning: |-
+          On reporte tout ce qui a déjà été établi. La droite $(\Delta):y=x$ d'abord. Pour $(C_f)$ : l'asymptote verticale $x=0$ avec $f\to-\infty$ (question 3), la stricte croissance sur tout le domaine (question 6) avec $f(1)=1$, les deux points d'inflexion en $x=1$ et $x=\beta\approx4{,}9$ (avec $f(\beta)\approx1{,}9$ donné), la branche parabolique de direction l'axe des abscisses au voisinage de $+\infty$ (question 4 — la courbe s'aplatit), et la position par rapport à $(\Delta)$ (question précédente : $(C_f)$ en dessous de $(\Delta)$ avant $\alpha$ et après $1$, au-dessus entre $\alpha$ et $1$). La courbe monte de $-\infty$ le long de $x=0$ jusqu'à croiser $(\Delta)$ en $\alpha$, reste au-dessus entre $\alpha$ et $1$, la recroise en $1$, puis continue de monter en dessous de $(\Delta)$, de plus en plus lentement.
+      - id: q12
+        part: "Partie 5 — Primitive, intégration par parties et aire"
+        stem: |-
+          **(0,5 pt)** Vérifier que la fonction $x \mapsto 2x - x\ln x$ est une primitive de la fonction $x \mapsto 1 - \ln x$ sur $[\alpha,1]$.
+        reasoning: |-
+          On dérive $F(x)=2x-x\ln x$ : $F'(x)=2-\left(\ln x+x\cdot\frac1x\right)=2-\ln x-1=1-\ln x$ (dérivée d'un produit pour $x\ln x$, hors socle de cette leçon). C'est exactement la fonction annoncée.
+        steps:
+          - math: 'F(x)=2x-x\ln x, \quad F''(x) = 2-\left(\ln x + x\cdot\dfrac1x\right) = 2-\ln x-1'
+            note: "Derivee d'un produit pour x ln x."
+          - math: 'F''(x) = 1-\ln x'
+            note: "F est bien une primitive de 1 - ln x sur [alpha,1]."
+      - id: q13
+        stem: |-
+          **(1 pt)** En utilisant une intégration par parties, montrer que $\displaystyle\int_\alpha^1 (1 - \ln x)^2\, dx = 5(1 - \alpha) + \alpha(4 - \ln\alpha)\ln\alpha$.
+        reasoning: |-
+          On lit $(1-\ln x)^2=(1-\ln x)\cdot(1-\ln x)$ : on dérive $u=1-\ln x$ ($u'=-\frac1x$) et on primitive $v'=1-\ln x$ en $v=F(x)=2x-x\ln x$ (question précédente) — technique d'IPP du chapitre « Calcul intégral ». Le crochet $\big[(1-\ln x)(2x-x\ln x)\big]_\alpha^1$ vaut $2$ en $x=1$ (car $\ln1=0$). Il reste $+\int_\alpha^1(2x-x\ln x)\cdot\frac1x\,dx=\int_\alpha^1(2-\ln x)\,dx$, dont une primitive est $3x-x\ln x$.
+        steps:
+          - math: 'u=1-\ln x,\ u''=-\dfrac1x\ ; \quad v''=1-\ln x,\ v=F(x)=2x-x\ln x'
+            note: "Choix IPP : deriver 1-ln x, primitiver 1-ln x via F (question precedente)."
+          - math: '\int_\alpha^1(1-\ln x)^2 dx = \big[(1-\ln x)(2x-x\ln x)\big]_\alpha^1 + \int_\alpha^1(2-\ln x)\,dx'
+            note: "Formule de l'IPP : le u prime negatif transforme le moins en plus."
+          - math: '\big[(1-\ln x)(2x-x\ln x)\big]_\alpha^1 = 2 - \alpha(1-\ln\alpha)(2-\ln\alpha) = 2-2\alpha+3\alpha\ln\alpha-\alpha(\ln\alpha)^2'
+            note: "Valeur en 1 : (1-0)(2-0)=2. Valeur en alpha developpee."
+          - math: '\int_\alpha^1(2-\ln x)\,dx = \big[3x-x\ln x\big]_\alpha^1 = 3-(3\alpha-\alpha\ln\alpha) = 3-3\alpha+\alpha\ln\alpha'
+            note: "Primitive de 2 - ln x : 3x - x ln x."
+          - math: '\int_\alpha^1(1-\ln x)^2 dx = 5-5\alpha+4\alpha\ln\alpha-\alpha(\ln\alpha)^2 = 5(1-\alpha)+\alpha(4-\ln\alpha)\ln\alpha'
+            note: "Somme des deux morceaux, factoree."
+      - id: q14
+        stem: |-
+          **(0,75 pt)** Déduire en fonction de $\alpha$ l'aire de la partie du plan délimitée par la courbe $(C_f)$, l'axe des abscisses et les droites d'équations $x = \alpha$ et $x = 1$.
+        reasoning: |-
+          Sur $[\alpha,1]$, $(\Delta):y=x$ est en dessous de $(C_f)$ (question 10), et $y=x>0$ sur ce domaine puisque $x>0$ ; donc $f(x)\ge x>0$ sur $[\alpha,1]$ : $(C_f)$ reste au-dessus de l'axe des abscisses, pas besoin de valeur absolue. L'aire est $\int_\alpha^1 f(x)\,dx$, qu'on décompose en trois morceaux élémentaires, dont le carré $(1-\ln x)^2$ calculé à la question précédente.
+        steps:
+          - math: '\int_\alpha^1 f(x)\,dx = \int_\alpha^1 2\,dx - \int_\alpha^1\dfrac2x\,dx + \int_\alpha^1(1-\ln x)^2\,dx'
+            note: "On decompose f(x) = 2 - 2/x + (1-ln x) carre (position au-dessus de l'axe garantie par la question 10)."
+          - math: '\int_\alpha^1 2\,dx = 2(1-\alpha), \qquad \int_\alpha^1\dfrac2x\,dx = 2\big[\ln x\big]_\alpha^1 = -2\ln\alpha'
+            note: "Deux integrales elementaires."
+          - math: '\mathcal{A} = 2(1-\alpha)+2\ln\alpha+5(1-\alpha)+\alpha(4-\ln\alpha)\ln\alpha'
+            note: "On reutilise le resultat de la question precedente pour le troisieme morceau."
+          - math: '\mathcal{A} = 7(1-\alpha) + 2(1+2\alpha)\ln\alpha - \alpha(\ln\alpha)^2 \quad \text{cm}^2'
+            note: "Regroupement final en fonction de alpha (aire en cm carre, repere orthonorme unite 1 cm)."
+      - id: q15
+        part: "Partie 6 — La suite (u_n)"
+        stem: |-
+          Soit la suite numérique $(u_n)$ définie par $u_0 \in ]\alpha,1[$ et la relation $u_{n+1} = f(u_n)$, pour tout $n \in \mathbb{N}$.
+
+          **(0,5 pt)** Montrer par récurrence que $\alpha < u_n < 1$, pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          Le point clé : $\alpha$ et $1$ sont tous deux des zéros de $g=f(x)-x$ (donnés dans l'énoncé), donc des points fixes de $f$ : $f(\alpha)=\alpha$ et $f(1)=1$ (déjà calculé, question 6). Comme $f$ est strictement croissante sur $]0,+\infty[$ (question 6), pour $x\in]\alpha,1[$ : $f(\alpha)<f(x)<f(1)$, c'est-à-dire $\alpha<f(x)<1$. Initialisation : $u_0\in]\alpha,1[$ donné. Hérédité : si $\alpha<u_n<1$, la stricte croissance donne $\alpha=f(\alpha)<f(u_n)<f(1)=1$, soit $\alpha<u_{n+1}<1$.
+        steps:
+          - math: 'f(\alpha)=\alpha, \quad f(1)=1 \quad (\alpha \text{ et } 1 \text{ sont des zeros de } g=f(x)-x)'
+            note: "Points fixes de f, donnes par l'enonce de la question 9."
+          - math: '\alpha<u_n<1, \ f \text{ strict. croissante} \implies f(\alpha)<f(u_n)<f(1) \implies \alpha<u_{n+1}<1'
+            note: "On applique la stricte croissance de f (question 6) a l'hypothese de recurrence."
+      - id: q16
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)$ est croissante. *(on peut utiliser la question 4) b))*
+        reasoning: |-
+          $u_{n+1}-u_n=f(u_n)-u_n=g(u_n)$. La question 10 donne $(\Delta)$ en dessous de $(C_f)$ sur $[\alpha,1]$, c'est-à-dire $g>0$ sur cet intervalle. Comme $u_n\in]\alpha,1[$ (question précédente), $g(u_n)>0$, donc $u_{n+1}>u_n$.
+        steps:
+          - math: 'u_{n+1}-u_n = f(u_n)-u_n = g(u_n)'
+            note: "Difference consecutive = g evaluee en u_n."
+          - math: 'u_n\in\,]\alpha,1[ \text{ et } g>0 \text{ sur } ]\alpha,1[ \ (\text{question 9-10}) \implies g(u_n)>0 \implies u_{n+1}>u_n'
+            note: "(u_n) est croissante."
+      - id: q17
+        stem: |-
+          **(0,75 pt)** En déduire que la suite $(u_n)$ est convergente et calculer sa limite.
+        reasoning: |-
+          $(u_n)$ est croissante (question précédente) et majorée par $1$ (question sur l'encadrement) : elle converge, vers une limite $\ell$ avec $\ell\le1$ (passage à la limite dans $u_n<1$) et $\ell\ge u_0>\alpha$ (suite croissante à partir de $u_0$). Comme $f$ est continue et $u_{n+1}=f(u_n)$, $\ell$ vérifie $\ell=f(\ell)$, c'est-à-dire $g(\ell)=0$. Les seuls zéros de $g$ sur $]0,+\infty[$ sont $\alpha$ et $1$ (donnés) ; comme $\ell>\alpha$, il reste $\ell=1$.
+        steps:
+          - math: '(u_n) \text{ croissante et majoree par } 1 \implies (u_n) \text{ converge vers } \ell, \quad \ell>\alpha, \ \ell\le1'
+            note: "Theoreme de la convergence monotone ; u_0 > alpha et suite croissante donnent la limite > alpha."
+          - math: '\ell=f(\ell) \iff g(\ell)=0 \iff \ell=\alpha \text{ ou } \ell=1'
+            note: "Les seuls zeros de g sont alpha et 1 (donnes dans l'enonce)."
+          - math: '\ell>\alpha \implies \ell = 1'
+            note: "On elimine alpha : la limite de la suite est 1."

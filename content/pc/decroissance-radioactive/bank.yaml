@@ -1,0 +1,238 @@
+# bank.yaml — la banque « S'entraîner » de decroissance-radioactive (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml, marqueurs à R6), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les deux entrées sont des transcriptions FIDÈLES des deux
+# entrées « vérifié » de docs/sujets/pc/decroissance-radioactive.md (re-fetch
+# AlloSchool + diff indépendant, agent-vérificateur 2026-07-11) — c'est la
+# SEULE source de stems + provenance pour ce fichier ; aucun autre sujet n'est
+# inventé. Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions, en citant les rungs R1–R5 de la leçon (lesson.md) là où c'est
+# naturel ; barème transcrit tel quel dans les énoncés (tag « (x,xx pt) »
+# ajouté — la source docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, décimales françaises entre accolades `{,}` en mode math —
+# convention déjà utilisée dans lesson.md et exercises.yaml de cette notion,
+# même quand docs/sujets transcrit la virgule nue —, notes sans backslash).
+#
+# NOTES ÉDITORIALES (pour la revue) :
+#
+# 1. bk-2019-n-x2 (radon 222, Exercice II Partie 2) : le fichier source
+#    signale lui-même que les questions 1–3 (stabilité comparée, énergie de
+#    liaison de l'hélium, énergie libérée) relèvent THÉMATIQUEMENT de la
+#    notion noyaux-masse-energie, seule la question 4 (demi-vie/activité)
+#    étant propre à decroissance-radioactive. Elles sont reprises ici EN
+#    ENTIER : la banque est le corpus complet des annales rattachées à cette
+#    page source (BANK-SPEC §1), pas un découpage par thème. Recoupement
+#    possible avec une future entrée noyaux-masse-energie sur le même sujet —
+#    à arbitrage de l'owner, même disposition assumée que rc-charge
+#    bk-2019-n-x3 (charge/décharge dupliquée entre bank et sommet).
+# 2. bk-2021-n-x3 (plutonium 238, Exercice III) : sujet IDENTIQUE au sommet de
+#    leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à R6) — mêmes
+#    données, mêmes réponses numériques (t_1/2 ≈ 88 ans, λ ≈ 7,88×10⁻³ ans⁻¹,
+#    N0 ≈ 4,0×10²⁰ noyaux, t_max ≈ 45 ans), reprises ici à l'identique pour
+#    rester cohérentes avec le sommet. Recoupement assumé, même disposition
+#    que rc-charge bk-2019-n-x3 — à l'arbitrage de l'owner si l'on préfère
+#    l'écarter de la banque pour éviter le recoupement sur la même page.
+
+notion: pc/decroissance-radioactive
+
+entries:
+  # ── bk-2019-n-x2 — 2019 N, Exercice II (Partie 2) : désintégration du radon 222 ──
+  - id: bk-2019-n-x2
+    title: "Désintégration du radon 222 : stabilité, énergie de liaison et loi de décroissance"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice II — Partie 2. Étude de la désintégration du radon 222"
+    bareme_total: 1.75
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/68300 (Exercice II, Partie 2 — étude
+        de la désintégration du radon 222 ; barème de la partie ≈ 1,75 pt sur
+        les 3,5 pt de l'exercice complet, qui comporte aussi une Partie 1 sur
+        une onde mécanique périodique, transcrite sous
+        ondes-mecaniques-periodiques.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (docs/sujets/pc/decroissance-radioactive.md,
+        statut « vérifié » agent-vérificateur 2026-07-11). NB : les questions
+        1–3 (stabilité comparée, énergie de liaison de l'hélium, énergie
+        libérée) relèvent thématiquement de la notion noyaux-masse-energie —
+        signalé dans le fichier source ; reprises ici en entier pour que la
+        banque reste le corpus complet des annales attachées à cette page
+        (recoupement assumé, à arbitrer en revue, même disposition que
+        rc-charge bk-2019-n-x3).
+    intro: |-
+      **Étude de la désintégration du radon 222 (examen national, session normale 2019).**
+
+      Le radon de symbole Rn est un gaz rare naturellement présent dans l'atmosphère. Il est issu par décompositions successives de l'uranium présent dans les roches granitiques. L'isotope 222 du radon est radioactif. On se propose d'étudier dans cette partie la désintégration nucléaire de cet isotope.
+
+      **Données.** La demi-vie du radon 222 est : $t_{1/2} = 3{,}8\ \text{jours}$.
+
+      Tableau des énergies de liaison par nucléon :
+
+      | Noyau | Hélium | Radon | Polonium |
+      |-------|:------:|:-----:|:--------:|
+      | Symbole | $^{4}_{2}\text{He}$ | $^{222}_{86}\text{Rn}$ | $^{218}_{84}\text{Po}$ |
+      | Énergie de liaison par nucléon (MeV/nucléon) | 7,07 | 7,69 | 7,73 |
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Parmi les deux noyaux $^{222}_{86}\text{Rn}$ et $^{218}_{84}\text{Po}$, lequel est le plus stable ? Justifier la réponse.
+        reasoning: |-
+          Ce critère de stabilité n'est pas celui du R1 de cette leçon (le rapport $N/Z$, la vallée de stabilité) : c'est celui, complémentaire, de la notion noyaux-masse-energie — plus l'énergie de liaison par nucléon $E_\ell/A$ est grande, plus chaque nucléon est fortement retenu, donc plus le noyau est stable. Il suffit de comparer les deux valeurs données dans le tableau, sans aucun calcul.
+
+          $$E_\ell/A(\text{Po}) = 7{,}73\ \text{MeV/nucléon} \; > \; E_\ell/A(\text{Rn}) = 7{,}69\ \text{MeV/nucléon}$$
+
+          Le polonium 218 est donc le noyau le plus stable des deux.
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Montrer que l'énergie de liaison d'un noyau d'hélium $^{4}_{2}\text{He}$ est : $E_{\ell}(\text{He}) = 28{,}28\ \text{MeV}$.
+        reasoning: |-
+          Le tableau donne l'énergie de liaison PAR nucléon ; on veut l'énergie de liaison TOTALE. Le passage de l'une à l'autre est une simple multiplication par le nombre de nucléons $A$ du noyau considéré — ici $A(\text{He}) = 4$, pas $A(\text{Rn})$ ni $A(\text{Po})$.
+        steps:
+          - math: 'E_\ell(\text{He}) = \frac{E_\ell}{A}(\text{He}) \times A(\text{He})'
+            note: "L'énergie de liaison totale est l'énergie de liaison par nucléon multipliée par le nombre de nucléons du noyau."
+          - math: '\boxed{E_\ell(\text{He}) = 7{,}07 \times 4 = 28{,}28\ \text{MeV}}'
+            note: "Application numérique : 7,07 MeV/nucléon, A = 4 pour l'hélium 4 (2 protons + 2 neutrons)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** L'équation de désintégration du radon 222 s'écrit :
+
+          $$^{222}_{86}\text{Rn} \longrightarrow\ ^{218}_{84}\text{Po} +\ ^{4}_{2}\text{He}.$$
+
+          Choisir la réponse juste parmi les propositions suivantes : l'énergie libérée lors de la désintégration d'un noyau du radon 222 est :
+          - $E_{lib} = 7{,}11\ \text{MeV}$
+          - $E_{lib} = 22{,}56\ \text{MeV}$
+          - $E_{lib} = 6{,}24\ \text{MeV}$
+          - $E_{lib} = 3420{,}6\ \text{MeV}$
+        reasoning: |-
+          Toujours hors des rungs de cette leçon (domaine noyaux-masse-energie), mais le principe se déduit directement de la question précédente : l'énergie libérée est l'écart entre l'énergie de liaison totale des produits (plus liés, donc à plus basse énergie) et celle du noyau père. On a besoin des trois énergies de liaison totales — celle du radon et celle du polonium, obtenues comme à la question 2 en multipliant par $A$, et celle de l'hélium, déjà calculée. Plutôt que de calculer les quatre propositions une par une, on calcule directement $E_{lib}$ et on regarde laquelle des quatre elle égale.
+        steps:
+          - math: 'E_{lib} = \big[E_\ell(\text{Po}) + E_\ell(\text{He})\big] - E_\ell(\text{Rn})'
+            note: "L'énergie libérée est l'écart entre l'énergie de liaison totale des produits et celle du père."
+          - math: 'E_\ell(\text{Rn}) = 7{,}69 \times 222 = 1707{,}18\ \text{MeV}'
+            note: "Énergie de liaison totale du radon 222 : énergie par nucléon multipliée par A = 222."
+          - math: 'E_\ell(\text{Po}) = 7{,}73 \times 218 = 1685{,}14\ \text{MeV}'
+            note: "Énergie de liaison totale du polonium 218 : A = 218."
+          - math: 'E_{lib} = (1685{,}14 + 28{,}28) - 1707{,}18 = 1713{,}42 - 1707{,}18'
+            note: "On additionne les deux produits (Po + He, dont l'énergie vient de la question 2) et on soustrait le père."
+          - math: '\boxed{E_{lib} \approx 6{,}24\ \text{MeV}}'
+            note: "Ce résultat correspond exactement à la troisième proposition."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** On considère un échantillon de noyaux du radon 222 ayant, à l'instant $t=0$, une activité $a_0$. Trouver, en jours, l'instant de date $t_1$ à laquelle cet échantillon a une activité $a_1 = \dfrac{a_0}{4}$.
+        reasoning: |-
+          Ici on retombe en plein cœur de cette leçon (R4) : l'activité suit exactement la même loi exponentielle que le nombre de noyaux, donc la propriété « après $n$ demi-vies, il reste $1/2^n$ » s'applique aussi bien à $a(t)$. Le réflexe à avoir avant de se jeter sur le logarithme : $1/4$ est-elle une puissance entière de $1/2$ ? Oui, $1/4 = (1/2)^2$ — donc $t_1$ correspond à exactement deux demi-vies, sans avoir besoin de résoudre quoi que ce soit.
+        steps:
+          - math: '\frac{a_1}{a_0} = \frac{1}{4} = \left(\frac{1}{2}\right)^2'
+            note: "Le rapport demandé est une puissance entière de 1/2 : deux demi-vies exactement, pas besoin du logarithme."
+          - math: 't_1 = 2 \times t_{1/2}'
+            note: "Propriété du R4 : après n demi-vies, il reste 1/2^n du départ, sur N comme sur l'activité."
+          - math: '\boxed{t_1 = 2 \times 3{,}8 = 7{,}6\ \text{jours}}'
+            note: "Application numérique avec la demi-vie donnée t_1/2 = 3,8 jours."
+
+  # ── bk-2021-n-x3 — 2021 N, Exercice III : désintégration du plutonium 238 ──
+  - id: bk-2021-n-x3
+    title: "Le plutonium 238 d'un stimulateur cardiaque : désintégration α, demi-vie et activité"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — Désintégration du plutonium 238"
+    bareme_total: 2.5
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/127287 (Exercice III — désintégration
+        du plutonium 238 dans un stimulateur cardiaque ; barème de l'exercice
+        complet 2,5 pt). Transcription vérifiée : re-fetch indépendant
+        AlloSchool + diff OK (docs/sujets/pc/decroissance-radioactive.md,
+        statut « vérifié » agent-vérificateur 2026-07-11). NB : ce même sujet
+        sous-tend le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R6) — mêmes données, mêmes réponses numériques,
+        reprises ici à l'identique pour rester cohérentes avec le sommet ;
+        recoupement assumé, même disposition que rc-charge bk-2019-n-x3.
+    intro: |-
+      **Un stimulateur cardiaque au plutonium 238 (examen national, session normale 2021).**
+
+      Le stimulateur cardiaque (pacemaker) est un dispositif qui, une fois implanté dans l'organisme, fournit des impulsions électriques destinées à stimuler les muscles cardiaques. Ces impulsions permettent d'accélérer la pulsation du cœur lorsqu'il est trop lent. Certains stimulateurs cardiaques fonctionnent à partir de l'énergie libérée lors de la désintégration alpha des noyaux du plutonium 238. Cet exercice se propose d'étudier un stimulateur cardiaque au plutonium 238.
+
+      **Données.**
+
+      | noyau | Protactinium 238 | Uranium 234 | Uranium 238 | Neptunium 238 | Plutonium 238 |
+      |-------|:----------------:|:-----------:|:-----------:|:-------------:|:-------------:|
+      | symbole | $^{238}_{91}\text{Pa}$ | $^{234}_{92}\text{U}$ | $^{238}_{92}\text{U}$ | $^{238}_{93}\text{Np}$ | $^{238}_{94}\text{Pu}$ |
+
+      On prend $1\ \text{an} = 365\ \text{jours}$.
+
+      **La courbe.** La courbe de la figure représente l'évolution de l'activité $a(t)$ d'un échantillon de plutonium 238 présent dans le stimulateur cardiaque. On choisit l'instant d'implantation de ce stimulateur dans l'organisme d'un patient comme origine des dates $t = 0$. L'axe des ordonnées $a$ (en Bq) est gradué en $2{,}5\times10^{10},\ 5\times10^{10},\ 7{,}5\times10^{10},\ 10^{11}$ ; l'axe des abscisses $t$ (en ans) est gradué en $20,\ 40,\ 60,\ 80,\ 100$. La courbe est une décroissance exponentielle qui part de $a_0 \approx 10^{11}\ \text{Bq}$ à $t = 0$ et décroît régulièrement.
+    questions:
+      - id: q1
+        part: "Partie I — La transformation nucléaire"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de désintégration alpha du plutonium 238 en identifiant le noyau fils.
+        reasoning: |-
+          Une désintégration $\alpha$ émet un noyau d'hélium $^{4}_{2}\text{He}$. On ne connaît que le père et le type de particule émise : les deux lois de conservation de Soddy, posées au R2, suffisent à reconstruire le fils sans rien d'autre. On pose le fils inconnu $^{A}_{Z}\text{Y}$ et on applique les deux conservations ensemble — nombre de nucléons ET charge. Le piège classique de l'$\alpha$ est de ne toucher qu'à une seule des deux grandeurs : ici $A$ et $Z$ diminuent tous les deux, car la particule $\alpha$ emporte à la fois 4 nucléons et 2 charges positives. Le $Z$ trouvé se lit ensuite dans le tableau des données.
+        steps:
+          - math: '^{238}_{94}\text{Pu} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{4}_{2}\text{He}'
+            note: "On pose l'équation avec le noyau fils inconnu et la particule alpha."
+          - math: 'A + 4 = 238 \implies A = 234'
+            note: "Conservation du nombre de nucléons : la somme des A est la même avant et après."
+          - math: 'Z + 2 = 94 \implies Z = 92'
+            note: "Conservation de la charge : la particule alpha emporte 2 charges positives, donc Z du fils diminue de 2."
+          - math: '\boxed{^{238}_{94}\text{Pu} \longrightarrow\ ^{234}_{92}\text{U} +\ ^{4}_{2}\text{He}}'
+            note: "Z = 92 correspond à l'uranium : le fils est l'uranium 234 du tableau."
+      - id: q2
+        part: "Partie II — Exploiter la courbe d'activité a(t)"
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement la demi-vie $t_{1/2}$ du plutonium 238.
+        reasoning: |-
+          La demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale — l'activité suit exactement la même loi que le nombre de noyaux (R4), donc $t_{1/2}$ se lit aussi bien sur $a(t)$ que sur $N(t)$. On part de $a_0 \approx 10^{11}\ \text{Bq}$, on repère l'ordonnée $a_0/2 = 5\times10^{10}\ \text{Bq}$ — une graduation de l'axe donnée dans l'énoncé —, on rejoint la courbe, puis on redescend sur l'axe des temps.
+
+          $$\frac{a_0}{2} = 5\times10^{10}\ \text{Bq} \quad\Longrightarrow\quad t_{1/2} \approx 88\ \text{ans}$$
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En déduire que la valeur de la constante radioactive $\lambda$ est : $\lambda \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}$.
+        reasoning: |-
+          $\lambda$ ne se lit pas directement sur la courbe : on le déduit de $t_{1/2}$ par la relation du R4, $t_{1/2} = \ln 2/\lambda$, qu'on inverse. C'est précisément le point à garder net du R4 : $t_{1/2}$ et $\lambda$ ne sont pas la même grandeur ni de simples inverses l'une de l'autre — elles sont reliées par le facteur $\ln 2 \approx 0{,}693$.
+        steps:
+          - math: 't_{1/2} = \frac{\ln 2}{\lambda} \implies \lambda = \frac{\ln 2}{t_{1/2}}'
+            note: "On inverse la relation demi-vie ↔ constante radioactive du R4."
+          - math: '\boxed{\lambda = \frac{\ln 2}{88} \approx \frac{0{,}693}{88} \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}}'
+            note: "Application numérique avec t_1/2 ≈ 88 ans (question 2) : on retrouve bien la valeur annoncée."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Trouver le nombre $N_0$ de noyaux de plutonium 238 présents à $t = 0$ dans ce stimulateur cardiaque (on prend : $1\ \text{an} = 365\ \text{jours}$).
+        reasoning: |-
+          Le lien entre l'activité et le nombre de noyaux est $a = \lambda N$ (R4) : l'activité n'est pas le nombre de noyaux, c'est le nombre de désintégrations par seconde, et $\lambda$ est justement le facteur qui relie les deux. À $t = 0$ : $a_0 = \lambda N_0$, donc $N_0 = a_0/\lambda$. Le vrai piège de la question est l'unité, pas la formule : $a_0$ est en becquerels, donc en désintégrations PAR SECONDE, alors que $\lambda$ vient d'être calculée en $\text{ans}^{-1}$. Il faut convertir $\lambda$ en $\text{s}^{-1}$ avant de diviser — d'où la donnée $1\ \text{an} = 365\ \text{jours}$ fournie dans l'énoncé.
+        steps:
+          - math: 'a_0 = \lambda N_0 \implies N_0 = \frac{a_0}{\lambda}'
+            note: "On inverse la relation activité ↔ nombre de noyaux a = λN."
+          - math: '\lambda = \frac{7{,}88\times10^{-3}}{365\times24\times3600} \approx 2{,}50\times10^{-10}\ \text{s}^{-1}'
+            note: "Conversion de λ en s⁻¹ : le becquerel compte des désintégrations par seconde, pas par an."
+          - math: '\boxed{N_0 = \frac{10^{11}}{2{,}50\times10^{-10}} \approx 4{,}0\times10^{20}\ \text{noyaux}}'
+            note: "Application numérique avec a_0 ≈ 10¹¹ Bq lu à l'origine sur la courbe."
+      - id: q5
+        part: "Partie III — Durée de fonctionnement efficace"
+        stem: |-
+          **(0,5 pt)** On considère que ce stimulateur fonctionne de façon efficace lorsque le nombre de noyaux de plutonium 238 qui se désintègrent ne dépasse pas 30 % du nombre de noyaux présents dans l'échantillon à $t = 0$. Déterminer, en ans, la durée maximale $t_{max}$ du fonctionnement efficace du stimulateur cardiaque.
+        reasoning: |-
+          Premier geste : traduire la condition en une condition sur $N(t)$. Le nombre de noyaux désintégrés à l'instant $t$ vaut $N_0 - N(t)$. « Pas plus de 30 % désintégrés » signifie donc $N_0 - N(t) \leq 0{,}30\,N_0$, c'est-à-dire qu'il reste AU MOINS 70 % des noyaux : $N(t) \geq 0{,}70\,N_0$. À la limite $t_{max}$, il en reste exactement 70 %. Contrairement à la question 4 de l'exercice précédent (le radon), $0{,}70$ n'est pas une puissance de $1/2$ : on ne peut pas compter des demi-vies entières, il faut inverser la loi de décroissance par le logarithme, exactement comme au R5 (datation). On garde ici $\lambda$ en $\text{ans}^{-1}$ pour obtenir directement $t_{max}$ en années.
+        steps:
+          - math: 'N_0 - N(t) \leq 0{,}30\,N_0 \iff N(t) \geq 0{,}70\,N_0'
+            note: "Traduction de la condition : pas plus de 30 % désintégrés, donc au moins 70 % restants."
+          - math: '0{,}70 = e^{-\lambda t_{max}} \implies t_{max} = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}70}\right)'
+            note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode d'inversion du R5)."
+          - math: '\boxed{t_{max} = \frac{\ln(1{,}43)}{7{,}88\times10^{-3}} \approx \frac{0{,}357}{7{,}88\times10^{-3}} \approx 45\ \text{ans}}'
+            note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."

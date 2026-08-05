@@ -1,0 +1,718 @@
+# bank.yaml — la banque « S'entraîner » de fonction-exponentielle (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les DEUX entrées transcrivent fidèlement les DEUX entrées
+# de docs/sujets/maths/fonction-exponentielle.md — LE SEUL CENSUS pour cette
+# notion : 2019 session normale (Exercice 4, filière SM, barème 10 points,
+# statut « vérifié » — agent-vérificateur-adversarial, 2026-07-12) et 2022
+# session normale (Problème, filière SExp, barème 8,5 points, statut «
+# corrigé (conforme au scan) », PAS « vérifié » — voir la note de sourcing de
+# l'entrée pour le détail de la correction de figure). Les deux STATUTS
+# DIFFÈRENT, tout comme les deux FILIÈRES (SM vs SExp) : c'est reporté
+# honnêtement, entrée par entrée, dans `sourcing.note` ci-dessous — aucun des
+# deux n'est requalifié. Aucun autre sujet n'est disponible pour cette
+# notion : introuvable = absent, jamais inventé. Raisonnement rédigé à la
+# voix experte de la maison sur 100 % des questions ; barème transcrit tel
+# quel dans les énoncés ; conventions KaTeX (block scalars pour la prose,
+# KaTeX brut entre apostrophes simples dans steps[].math, notes sans
+# backslash).
+#
+# SCOPE NOTE (divulgation honnête, authoring-side — même discipline que la
+# SCOPE NOTE de content/maths/nombres-complexes-1/bank.yaml) : l'entrée 2019
+# (bk-2019-n-x4) mobilise plusieurs outils qui ne font PAS partie du corps
+# R0–R7 de cette leçon :
+#   - les théorèmes de ROLLE et des ACCROISSEMENTS FINIS (TAF), et la
+#     technique du point d'inflexion par changement de signe de f'' — du
+#     ressort de la notion `derivabilite-etude-fonctions` ;
+#   - le calcul de primitive par INTÉGRATION PAR PARTIES (IPP) pour
+#     $\int 4x\,e^{-x}\,dx$ — le R6 de cette leçon ne couvre que la
+#     reconnaissance directe $u'e^{u}$, pas l'IPP — du ressort de la notion
+#     `calcul-integral` ;
+#   - le théorème de la limite monotone (suite décroissante minorée
+#     converge) pour l'étude de $(u_n)$ — du ressort de la notion
+#     `suites-numeriques`.
+# Ce recoupement est déjà noté dans docs/sujets/maths/fonction-exponentielle.md.
+# Les champs `reasoning` ci-dessous nomment explicitement chaque propriété
+# mobilisée à l'endroit précis où elle sert, sans prétendre qu'elle sort du
+# rung R0–R7 courant. Notation : pour éviter l'empilement d'apostrophes dans
+# les champs `steps[].math` (contrat single-quoted), les dérivées seconde et
+# troisième de $f$ y sont notées $f^{(2)}$ et $f^{(3)}$ plutôt que $f''$ et
+# $f'''$ — même fonction, notation équivalente à celle de l'énoncé (qui,
+# dans les champs `stem`/`reasoning` en block scalar, garde $f''$ sans
+# contrainte).
+#
+# NOTE ÉDITORIALE (pour la revue) : bk-2022-n-x3 transcrit LE MÊME sujet que
+# le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R8) — le
+# seul sujet 2022 recensé pour cette notion. Il figure ici pour que la
+# banque soit le corpus complet des annales de la notion (BANK-SPEC §1 :
+# « la banque est le volume derrière le sommet, jamais son remplacement »).
+# À l'arbitrage de l'owner si l'on préfère l'écarter pour éviter le
+# recoupement sur la même page — même décision déjà posée sur bk-2019-n-x2
+# de content/maths/nombres-complexes-1/bank.yaml et bk-2021-n-x1 de
+# content/pc/reactions-acido-basiques/bank.yaml. Position sur la copie
+# DÉDUITE (x3, pas lue littéralement — l'énoncé source dit « Problème », pas
+# « Exercice 3 ») : le sujet 2022 SExp NS22F partage la même page AlloSchool
+# (element/136586) que l'Exercice 2 « Nombres complexes » transcrit dans
+# content/maths/nombres-complexes-1/bank.yaml (bk-2022-n-x2) — le Problème
+# suit donc au moins un Exercice 1 (non recensé, hors périmètre de toutes
+# nos notions actuelles) et cet Exercice 2 ; à confirmer contre le scan si
+# une relecture veut la position exacte.
+
+notion: maths/fonction-exponentielle
+
+entries:
+  # ── bk-2019-n-x4 — 2019 N, Exercice 4 (SM) : Rolle, TAF, intégrale, suite ──
+  - id: bk-2019-n-x4
+    title: "Étude d'une fonction avec l'exponentielle : Rolle, accroissements finis, intégrale et suite récurrente"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 10
+    duration_min: 70
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national Sciences Mathématiques (SM-A
+        et SM-B, BIOF), Mathématiques (4 h, coef 9), code NS 24F, AlloSchool
+        element/68482 (Exercice 4, 10 points). Transcription VÉRIFIÉE :
+        re-fetch AlloSchool indépendant (→ course-436/upload-54931, pages
+        4-5) et diff caractère-par-caractère conforme au scan,
+        agent-vérificateur-adversarial, 2026-07-12
+        (docs/sujets/maths/fonction-exponentielle.md, statut « vérifié »).
+    intro: |-
+      **Étude de fonction (examen national, session normale 2019, Sciences Mathématiques).**
+
+      **PARTIE I.** On considère la fonction $f$ définie sur $\mathbb{R}$ par :
+
+      $$f(x) = 4x\left(e^{-x} + \dfrac{1}{2}x - 1\right)$$
+
+      et on note $(C)$ sa courbe représentative dans un repère orthonormé $(O;\vec{i},\vec{j})$.
+    questions:
+      - id: q1
+        part: "Partie I, 1 — Limites de f"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to -\infty} f(x)$ et $\displaystyle\lim_{x \to +\infty} f(x)$.
+        reasoning: |-
+          Développe d'abord le produit pour séparer les deux régimes : $f(x) = 4x\,e^{-x} + 2x^2 - 4x$. C'est cette forme qui rend chaque limite lisible.
+
+          En $+\infty$ : $x\,e^{-x}\to 0$ — c'est l'inverse de la croissance comparée $\dfrac{e^x}{x}\to+\infty$ (R4) — donc $4x\,e^{-x}\to 0$. Le reste, $2x^2-4x$, est dominé par $2x^2\to+\infty$. Une quantité qui tend vers $0$ plus une quantité qui tend vers $+\infty$ : pas d'indétermination, la somme suit le terme qui diverge.
+
+          En $-\infty$, c'est plus délicat : $x\,e^{-x}$ est un produit de $x\to-\infty$ par $e^{-x}\to+\infty$ — jamais indéterminé, un produit de deux limites infinies de signes opposés donne directement $-\infty$ — donc $4x\,e^{-x}\to-\infty$ ; mais $2x^2-4x\to+\infty$ aussi. Cette fois on a $-\infty+\infty$, une vraie indétermination : il faut comparer la vitesse des deux termes. On factorise par le terme exponentiel, qui l'emporte toujours sur un polynôme :
+
+          $$f(x) = 4x\,e^{-x}\left[1 + \frac{2x^2-4x}{4x\,e^{-x}}\right] = 4x\,e^{-x}\left[1 + \frac{(x-2)e^{x}}{2}\right]$$
+
+          Le crochet tend vers $1$ : $x\,e^{x}\to 0$ en $-\infty$ (c'est le corollaire du R4) et $e^{x}\to 0$, donc $(x-2)e^x = xe^x - 2e^x \to 0$. Il reste $4x\,e^{-x}\to-\infty$ multiplié par un facteur qui tend vers $1$ : la limite est $-\infty$.
+        steps:
+          - math: 'f(x) = 4x\,e^{-x} + 2x^2 - 4x'
+            note: "On développe le produit : 4x fois e puissance moins x, plus 4x fois un demi x moins 4x."
+          - math: '\lim_{x\to+\infty} x\,e^{-x} = 0 \quad (\text{inverse de } e^x/x\to+\infty,\ R4)'
+            note: "En plus l'infini, x fois e puissance moins x tend vers 0 : c'est l'inverse de la croissance comparée du rung R4."
+          - math: '\lim_{x\to+\infty} (2x^2-4x) = +\infty \ \Rightarrow\ \lim_{x\to+\infty} f(x) = +\infty'
+            note: "Le polynôme 2x carré moins 4x tend vers plus l'infini ; la somme suit ce terme, pas d'indétermination."
+          - math: 'f(x) = 4x\,e^{-x}\left[1 + \frac{(x-2)e^{x}}{2}\right]'
+            note: "On factorise par le terme exponentiel pour lever l'indétermination en moins l'infini."
+          - math: '\lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire } R4) \ \Rightarrow\ \lim_{x\to-\infty}\left[1+\frac{(x-2)e^x}{2}\right] = 1'
+            note: "x fois e puissance x tend vers 0 en moins l'infini (corollaire du rung R4) : le crochet tend vers 1."
+          - math: '\lim_{x\to-\infty} 4x\,e^{-x} = -\infty \ \Rightarrow\ \lim_{x\to-\infty} f(x) = -\infty'
+            note: "Produit direct, x vers moins l'infini fois e puissance moins x vers plus l'infini : moins l'infini, multiplié par un facteur qui tend vers 1."
+      - id: q2a
+        part: "Partie I, 2 — Dérivée, variations et existence de α"
+        stem: |-
+          **(0,5 pt)** Montrer que $f$ est dérivable sur $\mathbb{R}$ et que $(\forall x \in \mathbb{R})\ ;\ f'(x) = 4\left(e^{-x} - 1\right)(1 - x)$
+        reasoning: |-
+          $f$ est bâtie sur $x\mapsto e^{-x}$, dérivable sur $\mathbb{R}$ sans aucune condition de signe à vérifier (R3 : $e^{u}$ est dérivable dès que $u$ l'est, ici $u(x)=-x$), et sur des termes polynomiaux. Somme et produit de fonctions dérivables sur $\mathbb{R}$ : $f$ est dérivable sur $\mathbb{R}$.
+
+          On dérive à partir de la forme développée $f(x)=4xe^{-x}+2x^2-4x$ (question 1) : $(4xe^{-x})' = 4e^{-x} - 4xe^{-x}$ (règle du produit, avec $(e^{-x})'=-e^{-x}$ par R3), et $(2x^2-4x)'=4x-4$. Il reste à vérifier que la somme obtenue coïncide avec la forme factorisée demandée, en développant celle-ci à l'envers.
+        steps:
+          - math: '(4x\,e^{-x})'' = 4e^{-x} + 4x(-e^{-x}) = 4e^{-x} - 4x\,e^{-x}'
+            note: "Dérivée du produit 4x fois e puissance moins x, avec la dérivée de e puissance moins x égale à moins e puissance moins x (rung R3)."
+          - math: 'f''(x) = 4e^{-x} - 4x\,e^{-x} + 4x - 4'
+            note: "On ajoute la dérivée du reste, 2x carré moins 4x, qui vaut 4x moins 4."
+          - math: '4(e^{-x}-1)(1-x) = 4\left[e^{-x} - x\,e^{-x} - 1 + x\right] = 4e^{-x} - 4x\,e^{-x} - 4 + 4x'
+            note: "On développe l'expression demandée : elle coïncide terme à terme avec f prime."
+      - id: q2b
+        stem: |-
+          **(0,75 pt)** Étudier les variations de $f$ sur $\mathbb{R}$, puis donner son tableau de variations.
+        reasoning: |-
+          Le facteur $4$ est positif : le signe de $f'$ est celui du produit $(e^{-x}-1)(1-x)$. On étudie chaque facteur séparément.
+
+          $e^{-x}-1$ : $\exp$ est strictement croissante (R1), donc $e^{-x}>e^0=1 \iff -x>0 \iff x<0$. Ce facteur est positif pour $x<0$, nul en $0$, négatif pour $x>0$.
+
+          $1-x$ : positif pour $x<1$, nul en $1$, négatif pour $x>1$.
+
+          On croise les deux signes : sur $]-\infty,0[$ les deux facteurs sont positifs ($f'>0$) ; sur $]0,1[$ le premier devient négatif, le second reste positif ($f'<0$) ; sur $]1,+\infty[$ les deux sont négatifs ($f'>0$ à nouveau). $f'$ s'annule exactement en $0$ et en $1$.
+
+          $f$ est donc strictement croissante sur $]-\infty,0]$, strictement décroissante sur $[0,1]$, strictement croissante sur $[1,+\infty[$. Valeurs remarquables : $f(0)=0$ (le facteur $x$ s'annule dans la définition de $f$), et $f(1)=4\left(e^{-1}+\tfrac12-1\right)=\dfrac{4}{e}-2\approx-0{,}53$.
+        steps:
+          - math: 'f''(x) = 4(e^{-x}-1)(1-x)'
+            note: "Le facteur 4 est positif : il ne compte pas dans le signe."
+          - math: 'e^{-x}-1>0 \iff x<0 \quad (\exp \text{ strictement croissante, } e^0=1)'
+            note: "e puissance moins x moins 1 change de signe en x = 0."
+          - math: '1-x>0 \iff x<1'
+            note: "1 moins x change de signe en x = 1."
+          - math: 'f''>0 \text{ sur } ]-\infty,0[\, ;\quad f''<0 \text{ sur } ]0,1[\, ;\quad f''>0 \text{ sur } ]1,+\infty['
+            note: "En croisant les deux signes : f croît, puis décroît, puis croît de nouveau."
+          - math: 'f(0) = 0\ ;\qquad f(1) = 4\left(e^{-1}+\tfrac12-1\right) = \dfrac{4}{e}-2 \approx -0{,}53'
+            note: "Valeurs remarquables aux deux points où f prime s'annule."
+      - id: q2c
+        stem: |-
+          **(0,5 pt)** Montrer qu'il existe un unique réel $\alpha$ dans l'intervalle $\left]\dfrac{3}{2},2\right[$ tel que $f(\alpha) = 0$ *(On prendra $e^{\frac{3}{2}} = 4,5$)*
+        reasoning: |-
+          $f$ est continue (car dérivable) et strictement croissante sur $[1,+\infty[$ (question précédente) — en particulier sur $\left[\tfrac32,2\right]$. Il suffit de vérifier un changement de signe aux deux bornes : le corollaire du théorème des valeurs intermédiaires, pour une fonction continue strictement monotone, garantit alors une unique solution entre elles.
+
+          $f\!\left(\tfrac32\right) = 6\left(e^{-3/2}-\tfrac14\right)$. Avec l'indication $e^{3/2}=4{,}5$, $e^{-3/2}=\tfrac{1}{4{,}5}=\tfrac29\approx0{,}222$, donc $f\!\left(\tfrac32\right)\approx6(0{,}222-0{,}25)<0$.
+
+          $f(2)=8e^{-2}$, strictement positif ($e^{-2}>0$ toujours, R1).
+
+          $f\!\left(\tfrac32\right)<0<f(2)$ sur un intervalle où $f$ est continue et strictement croissante : il existe un unique $\alpha\in\left]\tfrac32,2\right[$ tel que $f(\alpha)=0$.
+        steps:
+          - math: 'f\!\left(\tfrac32\right) = 4\times\tfrac32\left(e^{-3/2}+\tfrac34-1\right) = 6\left(e^{-3/2}-\tfrac14\right)'
+            note: "On évalue f en trois demis, en remplaçant x par 3/2 dans la définition de f."
+          - math: 'e^{-3/2} = \dfrac{1}{4{,}5} = \dfrac{2}{9} \approx 0{,}222 \ \Rightarrow\ f\!\left(\tfrac32\right) \approx 6(0{,}222-0{,}25) < 0'
+            note: "Avec e puissance trois demis égal 4,5 (indication de l'énoncé), e puissance moins trois demis vaut environ 0,222 : f(3/2) est négatif."
+          - math: 'f(2) = 8e^{-2} > 0 \quad (e^{-2}>0 \text{ toujours, } R1)'
+            note: "f(2) est strictement positif, car e puissance moins 2 est toujours strictement positif."
+          - math: 'f\!\left(\tfrac32\right)<0<f(2) \ \Rightarrow\ \exists!\,\alpha\in\left]\tfrac32,2\right[,\ f(\alpha)=0'
+            note: "Changement de signe entre 3/2 et 2, sur un intervalle où f est continue et strictement croissante : existence et unicité de alpha."
+      - id: q2d
+        stem: |-
+          **(0,25 pt)** Vérifier que : $e^{-\alpha} = 1 - \dfrac{\alpha}{2}$
+        reasoning: |-
+          $f(\alpha)=0$ se traduit par $4\alpha\left(e^{-\alpha}+\tfrac{\alpha}{2}-1\right)=0$. Comme $\alpha\in\left]\tfrac32,2\right[$, $\alpha\neq0$, donc on divise par le facteur non nul $4\alpha$ : il reste $e^{-\alpha}+\tfrac{\alpha}{2}-1=0$, c'est-à-dire $e^{-\alpha}=1-\tfrac{\alpha}{2}$.
+        steps:
+          - math: '4\alpha\left(e^{-\alpha}+\tfrac{\alpha}{2}-1\right)=0,\ \alpha\neq 0 \ \Rightarrow\ e^{-\alpha}+\tfrac{\alpha}{2}-1=0'
+            note: "f(alpha)=0 et alpha différent de 0 : on divise par 4 alpha."
+          - math: 'e^{-\alpha} = 1 - \dfrac{\alpha}{2}'
+            note: "On isole e puissance moins alpha."
+      - id: q3a
+        part: "Partie I, 3 — Théorèmes de Rolle et des accroissements finis"
+        stem: |-
+          **(0,5 pt)** En appliquant le théorème de ROLLE à la fonction $f'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,1[$ tel que : $f''(x_0) = 0$
+        reasoning: |-
+          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (R0–R7) — ce sont des outils de la notion `derivabilite-etude-fonctions` ; on les mobilise ici tels quels, en admettant leurs énoncés (voir la SCOPE NOTE en tête de fichier). Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
+
+          Le théorème de Rolle s'applique à une fonction continue sur $[a,b]$, dérivable sur $]a,b[$, prenant la même valeur aux deux bornes : il garantit alors un point où la dérivée s'annule. On l'applique ici à $f'$ elle-même (pas à $f$) sur $[0,1]$ : $f'$ est continue sur $[0,1]$ et dérivable sur $]0,1[$ (construite comme $f$, à partir de $e^{-x}$ et d'un polynôme), et $f'(0)=f'(1)=0$ (question 2b) — les deux bornes coïncident. Rolle appliqué à $f'$ garantit donc l'existence d'un réel $x_0\in\,]0,1[$ tel que $(f')'(x_0)=f^{(2)}(x_0)=0$.
+        steps:
+          - math: 'f''(0) = f''(1) = 0'
+            note: "Les deux valeurs de f prime aux bornes de [0,1] coïncident (question 2b) : c'est l'hypothèse de Rolle."
+          - math: '\exists\,x_0\in\,]0,1[,\ f^{(2)}(x_0) = 0 \quad (\text{Rolle appliqué à } f'' \text{ sur } [0,1])'
+            note: "f prime continue sur [0,1], dérivable sur ]0,1[, mêmes valeurs aux bornes : Rolle donne un point où sa dérivée, f seconde, s'annule."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** En appliquant le théorème des accroissements finis à la fonction $f''$, montrer que, pour tout réel $x$ différent de $x_0$ de l'intervalle $[0,1]$, on a : $\dfrac{f''(x)}{x - x_0} > 0$
+        reasoning: |-
+          On calcule d'abord $f^{(2)}$ explicitement, en dérivant $f'(x)=4e^{-x}-4xe^{-x}+4x-4$ (question 2a) : $f^{(2)}(x) = -4e^{-x} - 4\left(e^{-x}-xe^{-x}\right) + 4 = 4\left[1+(x-2)e^{-x}\right]$. On en déduit $f^{(3)}$, sa dérivée : $f^{(3)}(x) = 4e^{-x}(3-x)$.
+
+          Sur $[0,1]$, $3-x\in[2,3]$, donc $f^{(3)}(x)>0$ pour tout $x$ de $[0,1]$ (produit de $4e^{-x}>0$ par $3-x>0$).
+
+          Fixe $x\in[0,1]$, $x\neq x_0$. Le théorème des accroissements finis, appliqué à $f^{(2)}$ entre $x$ et $x_0$ ($f^{(2)}$ continue sur $[0,1]$, dérivable sur $]0,1[$, de dérivée $f^{(3)}$), donne un réel $c$ strictement compris entre $x$ et $x_0$ tel que $f^{(2)}(x)-f^{(2)}(x_0) = f^{(3)}(c)(x-x_0)$. Or $f^{(2)}(x_0)=0$ (question 3a), donc $f^{(2)}(x) = f^{(3)}(c)(x-x_0)$, c'est-à-dire, puisque $x\neq x_0$ : $\dfrac{f^{(2)}(x)}{x-x_0} = f^{(3)}(c)$.
+
+          Comme $c$ est entre $x$ et $x_0$, deux points de $[0,1]$, $c$ appartient lui aussi à $[0,1]$ : donc $f^{(3)}(c)>0$ (établi ci-dessus). D'où $\dfrac{f''(x)}{x-x_0}>0$.
+        steps:
+          - math: 'f^{(2)}(x) = -4e^{-x} - 4\left(e^{-x}-xe^{-x}\right) + 4 = 4\left[1+(x-2)e^{-x}\right]'
+            note: "On dérive f prime, obtenue à la question 2a."
+          - math: 'f^{(3)}(x) = 4\left[e^{-x} - (x-2)e^{-x}\right] = 4e^{-x}(3-x)'
+            note: "On dérive f seconde ; le facteur se simplifie en 4 e puissance moins x fois (3 moins x)."
+          - math: 'x\in[0,1] \ \Rightarrow\ 3-x \in [2,3] \ \Rightarrow\ f^{(3)}(x) > 0 \text{ sur } [0,1]'
+            note: "Sur [0,1], 3 moins x est toujours strictement positif : f troisième est strictement positive sur tout l'intervalle."
+          - math: '\exists\,c \text{ entre } x \text{ et } x_0,\quad f^{(2)}(x)-f^{(2)}(x_0) = f^{(3)}(c)(x-x_0) \quad (\text{TAF appliqué à } f^{(2)})'
+            note: "Théorème des accroissements finis appliqué à f seconde entre x et x0."
+          - math: 'f^{(2)}(x_0)=0 \ \Rightarrow\ \dfrac{f^{(2)}(x)}{x-x_0} = f^{(3)}(c) > 0 \quad (c\in[0,1])'
+            note: "f seconde de x0 est nulle (question 3a) ; c est aussi dans [0,1], donc f troisième de c est positive : le quotient est positif."
+      - id: q3c
+        stem: |-
+          **(0,25 pt)** En déduire que $I\left(x_0, f(x_0)\right)$ est un point d'inflexion de la courbe $(C)$
+        reasoning: |-
+          Le quotient $\dfrac{f''(x)}{x-x_0}>0$ pour $x\neq x_0$ dans $[0,1]$ (question précédente) dit exactement que $f''(x)$ a le même signe que $(x-x_0)$ : négatif pour $x<x_0$, positif pour $x>x_0$. Combiné à $f''(x_0)=0$ (question 3a), c'est un changement de signe complet de $f''$ autour de $x_0$ — la définition même d'un point d'inflexion : la concavité de $(C)$ passe de concave ($f''<0$) à convexe ($f''>0$) en $x_0$. Donc $I(x_0,f(x_0))$ est un point d'inflexion de $(C)$.
+        steps:
+          - math: 'x<x_0 \ \Rightarrow\ f^{(2)}(x)<0 \quad (\text{concave})\, ;\qquad x>x_0 \ \Rightarrow\ f^{(2)}(x)>0 \quad (\text{convexe})'
+            note: "Le quotient positif de la question précédente dit que f seconde change de signe exactement en x0."
+          - math: '\Rightarrow\ I\big(x_0,\,f(x_0)\big) \text{ est un point d''inflexion de } (C)'
+            note: "Changement de concavité en x0 : c'est la définition d'un point d'inflexion."
+      - id: q4a
+        part: "Partie I, 4 — Branches infinies et courbe (C)"
+        stem: |-
+          **(0,5 pt)** Étudier les branches infinies de la courbe $(C)$
+        reasoning: |-
+          On a déjà $f(x)\to+\infty$ en $+\infty$ et $f(x)\to-\infty$ en $-\infty$ (question 1) : reste à savoir si ces branches sont des directions asymptotiques (oblique) ou paraboliques. Le test standard : la limite de $\dfrac{f(x)}{x}$.
+
+          $\dfrac{f(x)}{x} = 4e^{-x}+2x-4$ pour $x\neq0$. En $+\infty$ : $4e^{-x}\to0$, $2x-4\to+\infty$, donc $\dfrac{f(x)}{x}\to+\infty$ — branche parabolique de direction $(Oy)$.
+
+          En $-\infty$, même indétermination qu'à la question 1 (le terme exponentiel contre le terme linéaire) : on factorise exactement de la même façon, $\dfrac{f(x)}{x} = 4e^{-x}\left[1+\dfrac{(x-2)e^x}{2}\right]$, le crochet tendant vers $1$ (mêmes limites de référence R4). Donc $\dfrac{f(x)}{x}\to+\infty$ aussi en $-\infty$ : branche parabolique de direction $(Oy)$ des deux côtés — le terme exponentiel écrase toujours le terme linéaire, quel que soit le sens.
+        steps:
+          - math: '\dfrac{f(x)}{x} = 4e^{-x}+2x-4 \quad (x\neq 0)'
+            note: "On divise f(x) par x, terme à terme."
+          - math: '\lim_{x\to+\infty} 4e^{-x} = 0,\quad \lim_{x\to+\infty}(2x-4) = +\infty \ \Rightarrow\ \lim_{x\to+\infty}\dfrac{f(x)}{x} = +\infty'
+            note: "En plus l'infini, pas d'indétermination : branche parabolique de direction (Oy)."
+          - math: '\dfrac{f(x)}{x} = 4e^{-x}\left[1+\dfrac{(x-2)e^x}{2}\right] \quad (\text{même factorisation, voir question 1})'
+            note: "Même technique qu'à la question 1 pour lever l'indétermination en moins l'infini."
+          - math: '\lim_{x\to-\infty}\left[1+\dfrac{(x-2)e^x}{2}\right] = 1 \ \Rightarrow\ \lim_{x\to-\infty}\dfrac{f(x)}{x} = \lim_{x\to-\infty} 4e^{-x} = +\infty'
+            note: "Le crochet tend vers 1 (mêmes limites que question 1) ; le produit tend donc vers plus l'infini aussi."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** Représenter graphiquement la courbe $(C)$ dans le repère $(O;\vec{i},\vec{j})$ *(On prendra : $\|\vec{i}\| = \|\vec{j}\| = 1\,cm$, $f(1) = -0,5$ et il n'est pas demandé de représenter le point $I$)*
+        reasoning: |-
+          On ne trace pas au hasard : on reporte les éléments déjà établis.
+
+          — **Pas d'asymptote** : les deux branches infinies sont paraboliques de direction $(Oy)$ (question précédente) — aucune droite asymptote à tracer ici.
+          — **Variations** : $(C)$ monte de $-\infty$ à $f(0)=0$ sur $]-\infty,0]$, descend de $0$ à $f(1)\approx-0{,}5$ sur $[0,1]$, puis remonte de $f(1)$ à $+\infty$ sur $[1,+\infty[$ (question 2b) — un maximum local en $(0,0)$, un minimum local en $(1\,;\,-0{,}5)$.
+          — **Second zéro** : la courbe recoupe l'axe des abscisses une seconde fois en $x=\alpha$, avec $\tfrac32<\alpha\le\sqrt3$ (question 5b) — entre $x\approx1{,}5$ et $x\approx1{,}73$.
+          — **Concavité locale** : un point d'inflexion existe quelque part dans $]0,1[$ (question 3c) — l'énoncé demande explicitement de ne pas le représenter.
+
+          On place ces repères, puis on relie par une courbe respectant montée-descente-montée.
+      - id: q5a
+        part: "Partie I, 5 — Signe de f et calcul intégral"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $(\forall x \in ]-\infty,\alpha])\ ;\ f(x) \le 0$
+        reasoning: |-
+          On découpe $]-\infty,\alpha]$ selon le tableau de variations de $f$ (question 2b) et on utilise la monotonie sur chaque morceau.
+
+          Sur $]-\infty,0]$ : $f$ croissante, donc $f(x)\le f(0)=0$ pour $x\le0$.
+
+          Sur $[0,1]$ : $f$ décroissante à partir de $f(0)=0$, donc $f(x)\le f(0)=0$ pour $x\in[0,1]$.
+
+          Sur $[1,\alpha]\subset[1,+\infty[$ : $f$ croissante, donc $f(x)\le f(\alpha)=0$ pour $x\le\alpha$.
+
+          Les trois morceaux recouvrent $]-\infty,\alpha]$ tout entier : $f(x)\le0$ partout sur cet intervalle.
+        steps:
+          - math: 'x\le 0 \ \Rightarrow\ f(x)\le f(0) = 0 \quad (f \text{ croissante sur } ]-\infty,0])'
+            note: "Premier morceau : f croissante, valeur de départ nulle."
+          - math: '0\le x\le 1 \ \Rightarrow\ f(x)\le f(0) = 0 \quad (f \text{ décroissante sur } [0,1])'
+            note: "Deuxième morceau : f décroissante à partir de 0."
+          - math: '1\le x\le \alpha \ \Rightarrow\ f(x)\le f(\alpha) = 0 \quad (f \text{ croissante sur } [1,+\infty[)'
+            note: "Troisième morceau : f croissante jusqu'à sa valeur nulle en alpha."
+          - math: '\Rightarrow\ (\forall x\in\,]-\infty,\alpha])\ f(x)\le 0'
+            note: "Les trois morceaux recouvrent tout l'intervalle : f est négative ou nulle partout dessus."
+      - id: q5b
+        stem: |-
+          **(0,75 pt)** Montrer que : $\displaystyle\int_0^\alpha f(x)\,dx = \dfrac{2}{3}\alpha\left(\alpha^2 - 3\right)$, en déduire que : $\dfrac{3}{2} < \alpha \le \sqrt{3}$
+        reasoning: |-
+          On cherche une primitive de $f(x)=4xe^{-x}+2x^2-4x$. Le terme $2x^2-4x$ se primitive directement. Le terme $4xe^{-x}$ n'est PAS de la forme $u'e^u$ (R6 ne s'applique pas ici : l'exposant est $-x$ mais le facteur devant est $4x$, pas une constante fois $-1$) — il faut une intégration par parties (IPP), un outil de la notion `calcul-integral`, pas du corps R0–R7 de cette leçon. Avec $u=x$, $dv=4e^{-x}dx$ : $\int 4xe^{-x}dx = -4xe^{-x}+\int4e^{-x}dx = -4(x+1)e^{-x}$.
+
+          Une primitive de $f$ est donc $F(x) = -4(x+1)e^{-x} + \tfrac23x^3 - 2x^2$. On calcule $F(0)=-4$ et $F(\alpha)$, en utilisant l'identité $e^{-\alpha}=1-\tfrac{\alpha}2$ (question 2d) pour remplacer $e^{-\alpha}$ et simplifier : les termes en $\alpha^2$ s'annulent, il reste $F(\alpha)=\tfrac23\alpha^3-2\alpha-4$.
+
+          $\displaystyle\int_0^\alpha f = F(\alpha)-F(0) = \tfrac23\alpha^3-2\alpha = \tfrac23\alpha(\alpha^2-3)$ — exactement la formule demandée.
+
+          Pour l'encadrement : $f\le0$ sur $[0,\alpha]\subset\,]-\infty,\alpha]$ (question 5a), donc l'intégrale d'une fonction $\le0$ sur $[0,\alpha]$ (avec $\alpha>0$) est $\le0$. Or elle vaut $\tfrac23\alpha(\alpha^2-3)$, avec $\tfrac23\alpha>0$ (car $\alpha>\tfrac32>0$) : le signe de l'intégrale est celui de $(\alpha^2-3)$. Intégrale $\le0$ force donc $\alpha^2\le3$, soit $\alpha\le\sqrt3$ (car $\alpha>0$). Combiné à $\alpha>\tfrac32$ (question 2c) : $\tfrac32<\alpha\le\sqrt3$.
+        steps:
+          - math: 'F(x) = -4(x+1)e^{-x} + \dfrac{2}{3}x^3 - 2x^2 \quad (\text{primitive de } f,\ \text{IPP sur } 4xe^{-x})'
+            note: "Primitive obtenue par intégration par parties sur le terme 4x e puissance moins x."
+          - math: 'F(0) = -4'
+            note: "On évalue la primitive en 0."
+          - math: 'F(\alpha) = -4(\alpha+1)e^{-\alpha} + \dfrac{2}{3}\alpha^3 - 2\alpha^2'
+            note: "On évalue la primitive en alpha."
+          - math: 'e^{-\alpha} = 1-\dfrac{\alpha}{2} \ \Rightarrow\ -4(\alpha+1)e^{-\alpha} = 2\alpha^2-2\alpha-4'
+            note: "On remplace e puissance moins alpha par l'identité de la question 2d, puis on développe."
+          - math: 'F(\alpha) = \dfrac{2}{3}\alpha^3 - 2\alpha - 4 \quad (\text{les deux termes en } \alpha^2 \text{ se compensent})'
+            note: "Après substitution, les deux termes en alpha carré se compensent exactement."
+          - math: '\int_0^\alpha f(x)\,dx = F(\alpha)-F(0) = \dfrac{2}{3}\alpha^3-2\alpha = \dfrac{2}{3}\alpha(\alpha^2-3)'
+            note: "On soustrait F(0) = -4 et on factorise : c'est la formule demandée."
+          - math: '\int_0^\alpha f(x)\,dx \le 0 \quad (f\le 0 \text{ sur } [0,\alpha],\ \text{question 5-a})'
+            note: "f est négative ou nulle sur [0, alpha] : son intégrale sur cet intervalle est négative ou nulle."
+          - math: '\dfrac{2}{3}\alpha(\alpha^2-3)\le 0,\ \alpha>0 \ \Rightarrow\ \alpha^2\le 3 \ \Rightarrow\ \alpha\le\sqrt3'
+            note: "Comme deux tiers alpha est positif, le signe de l'intégrale est celui de alpha carré moins 3."
+          - math: '\Rightarrow\ \dfrac32<\alpha\le\sqrt3 \quad (\text{borne basse : question 2-c})'
+            note: "On combine avec l'encadrement déjà connu, trois demis inférieur à alpha."
+      - id: q5c
+        stem: |-
+          **(0,5 pt)** Calculer en fonction de $\alpha$, en $cm^2$, l'aire du domaine plan limité par la courbe $(C)$ et les droites d'équations respectives : $y = 0$, $x = 0$ et $x = \alpha$
+        reasoning: |-
+          Sur $[0,\alpha]$, $f\le0$ (question 5a) : la courbe est sous l'axe des abscisses, donc l'aire entre $(C)$, l'axe $y=0$ et les droites $x=0$, $x=\alpha$ vaut $\displaystyle\int_0^\alpha\big(-f(x)\big)dx = -\int_0^\alpha f(x)\,dx$, l'opposé de l'intégrale déjà calculée. Le repère est orthonormé d'unité $1\,cm$ (donnée à la question 4b) : une unité d'aire vaut donc $1\,cm^2$, et le résultat s'exprime directement en $cm^2$.
+        steps:
+          - math: 'f\le 0 \text{ sur } [0,\alpha] \ \Rightarrow\ \text{Aire} = \int_0^\alpha \big(-f(x)\big)\,dx = -\int_0^\alpha f(x)\,dx'
+            note: "La courbe est sous l'axe : l'aire est l'opposé de l'intégrale de f."
+          - math: '\text{Aire} = -\dfrac{2}{3}\alpha(\alpha^2-3) = \dfrac{2}{3}\alpha(3-\alpha^2) \ \text{cm}^2'
+            note: "On reprend le résultat de la question 5-b, changé de signe ; unité d'aire = 1 cm carré (repère à 1 cm)."
+      - id: q6a
+        part: "Partie II, 1 — La suite (u_n) : majoration par α et décroissance"
+        stem: |-
+          **PARTIE II.** On considère la suite numérique $(u_n)_{n \in \mathbb{N}}$ définie par $u_0 < \alpha$ et $(\forall n \in \mathbb{N})\ ;\ u_{n+1} = f(u_n) + u_n$.
+
+          **(0,5 pt)** Montrer par récurrence que : $(\forall n \in \mathbb{N})\ u_n < \alpha$ *(utiliser la question 5-a) de la PARTIE I)*
+        reasoning: |-
+          Le théorème de la limite monotone, invoqué plus loin dans cette partie, est un outil de la notion `suites-numeriques` (voir la SCOPE NOTE en tête de fichier).
+
+          **Initialisation :** $u_0<\alpha$ est l'hypothèse de départ sur la suite.
+
+          **Hérédité :** suppose $u_n<\alpha$. En particulier $u_n\le\alpha$, donc la question 5a de la Partie I s'applique : $f(u_n)\le0$. Alors $u_{n+1}=f(u_n)+u_n\le u_n<\alpha$ (on ajoute une quantité $\le0$ à $u_n$, puis on utilise $u_n<\alpha$ strictement) : $u_{n+1}<\alpha$. La propriété se transmet, donc pour tout $n$, $u_n<\alpha$.
+        steps:
+          - math: 'u_0 < \alpha \quad (\text{hypothèse initiale sur la suite})'
+            note: "Rang 0 : c'est la définition même de la suite."
+          - math: 'u_n<\alpha \ \Rightarrow\ u_n\le\alpha \ \Rightarrow\ f(u_n)\le 0 \quad (\text{Partie I, question 5-a})'
+            note: "On applique le résultat de la question 5-a de la partie I, valable pour tout x inférieur ou égal à alpha."
+          - math: 'u_{n+1} = f(u_n)+u_n \le u_n < \alpha'
+            note: "On ajoute une quantité négative ou nulle à u_n : u_{n+1} reste inférieur à alpha."
+      - id: q6b
+        stem: |-
+          **(0,25 pt)** En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ est décroissante.
+        reasoning: |-
+          $u_{n+1}-u_n = f(u_n)$, directement par définition de la récurrence. Comme $u_n<\alpha$ pour tout $n$ (question précédente), le résultat 5a de la Partie I donne $f(u_n)\le0$, donc $u_{n+1}-u_n\le0$ : la suite $(u_n)$ est décroissante.
+        steps:
+          - math: 'u_{n+1}-u_n = f(u_n) \le 0 \quad (u_n<\alpha,\ \text{Partie I question 5-a}) \ \Rightarrow\ (u_n) \text{ décroissante}'
+            note: "u_{n+1} moins u_n vaut f(u_n), négatif ou nul : la suite décroît."
+      - id: q7a
+        part: "Partie II, 2 — Cas 0 ≤ u₀ : minoration et limite"
+        stem: |-
+          **On suppose que $0 \le u_0$** et on pose $(\forall x \in \mathbb{R})\ ;\ g(x) = e^{-x} + \dfrac{1}{2}x - \dfrac{3}{4}$
+
+          **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\ g(x) > 0$ *(On prendra : $\ln 2 = 0,69$)*
+        reasoning: |-
+          $g$ est construite comme $f$, à partir de $e^{-x}$ et d'un polynôme : dérivable sur $\mathbb{R}$ (R3), $g'(x)=-e^{-x}+\tfrac12$. Cette dérivée s'annule quand $e^{-x}=\tfrac12$, c'est-à-dire $x=\ln2$ (en passant au $\ln$, R1). $g$ décroît avant $\ln2$, croît après : $g$ atteint son minimum global en $x=\ln2$.
+
+          $g(\ln2) = e^{-\ln2}+\tfrac{\ln2}{2}-\tfrac34 = \tfrac12+\tfrac{\ln2}{2}-\tfrac34 = \tfrac{\ln2}{2}-\tfrac14$. Avec l'indication $\ln2\approx0{,}69$ : $g(\ln2)\approx0{,}345-0{,}25=0{,}095>0$.
+
+          Le minimum de $g$ sur $\mathbb{R}$ est strictement positif : donc $g(x)>0$ pour tout réel $x$.
+        steps:
+          - math: 'g''(x) = -e^{-x}+\dfrac12'
+            note: "Dérivée de g, construite comme f : dérivable partout (rung R3)."
+          - math: 'g''(x) = 0 \iff e^{-x} = \dfrac12 \iff x = \ln 2'
+            note: "On résout g prime égale zéro, en passant au logarithme."
+          - math: 'g \text{ décroît sur } ]-\infty,\ln2],\ \text{croît sur } [\ln2,+\infty[ \ \Rightarrow\ \min_{\mathbb{R}} g = g(\ln2)'
+            note: "Tableau de variations de g : minimum global atteint en ln2."
+          - math: 'g(\ln2) = e^{-\ln2}+\dfrac{\ln2}{2}-\dfrac34 = \dfrac12+\dfrac{\ln2}{2}-\dfrac34 = \dfrac{\ln2}{2}-\dfrac14'
+            note: "On évalue g en ln2, avec e puissance moins ln2 égal un demi."
+          - math: 'g(\ln2) \approx \dfrac{0{,}69}{2}-0{,}25 = 0{,}095 > 0 \ \Rightarrow\ (\forall x\in\mathbb{R})\ g(x)>0'
+            note: "Avec l'indication ln2 = 0,69, le minimum vaut environ 0,095, strictement positif : g est positive partout."
+      - id: q7b
+        stem: |-
+          **(0,5 pt)** En utilisant le résultat de la question précédente, montrer que : $(\forall n \in \mathbb{N})\ ;\ 0 \le u_n$ *(On remarque que : $f(x) + x = 4x\,g(x)$)*
+        reasoning: |-
+          On vérifie d'abord la remarque : $f(x)+x = 4x\left(e^{-x}+\tfrac12x-1\right)+x = 4xe^{-x}+2x^2-3x$, et $4x\,g(x) = 4x\left(e^{-x}+\tfrac12x-\tfrac34\right) = 4xe^{-x}+2x^2-3x$ — les deux coïncident.
+
+          Donc $u_{n+1}=f(u_n)+u_n=4u_n\,g(u_n)$. Récurrence : au rang $0$, $u_0\ge0$ (hypothèse de ce cas) et $g(u_0)>0$ (question précédente), donc $u_1=4u_0g(u_0)\ge0$. Hérédité : si $u_n\ge0$, alors $g(u_n)>0$ toujours, donc $u_{n+1}=4u_n\,g(u_n)\ge0$ (produit d'un facteur $\ge0$ par un facteur $>0$). La propriété se transmet.
+        steps:
+          - math: 'f(x)+x = 4x\left(e^{-x}+\tfrac12x-1\right)+x = 4xe^{-x}+2x^2-3x'
+            note: "On développe f(x) + x."
+          - math: '4x\,g(x) = 4x\left(e^{-x}+\tfrac12x-\tfrac34\right) = 4xe^{-x}+2x^2-3x \ \Rightarrow\ f(x)+x=4x\,g(x)'
+            note: "On développe 4x g(x) : les deux expressions coïncident, ce qui vérifie la remarque de l'énoncé."
+          - math: 'u_{n+1} = f(u_n)+u_n = 4u_n\,g(u_n)'
+            note: "On applique la remarque à x = u_n."
+          - math: 'u_0\ge0,\ g(u_0)>0 \ \Rightarrow\ u_1 = 4u_0\,g(u_0)\ge0 \quad (\text{initialisation})'
+            note: "Rang 0 : u_0 positif ou nul, g(u_0) strictement positif, le produit est positif ou nul."
+          - math: 'u_n\ge0,\ g(u_n)>0 \ \Rightarrow\ u_{n+1}=4u_n\,g(u_n)\ge0 \quad (\text{hérédité})'
+            note: "Même argument au rang n : la propriété se transmet."
+      - id: q7c
+        stem: |-
+          **(0,25 pt)** Montrer que la suite $(u_n)_{n \in \mathbb{N}}$ est convergente.
+        reasoning: |-
+          $(u_n)$ est décroissante (question 6b, valable dans tous les cas) et minorée par $0$ (question précédente, sous l'hypothèse $0\le u_0$). Le théorème de la limite monotone — une suite décroissante et minorée converge — s'applique : $(u_n)$ converge.
+        steps:
+          - math: '(u_n) \text{ décroissante (6-b) et minorée par } 0 \text{ (7-b)} \ \Rightarrow\ (u_n) \text{ converge}'
+            note: "Théorème de la limite monotone : décroissante et minorée entraîne convergente."
+      - id: q7d
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{n \to +\infty} u_n$
+        reasoning: |-
+          Notons $\ell$ la limite. En passant $0\le u_n<\alpha$ à la limite : $0\le\ell\le\alpha$. La suite vérifie $u_{n+1}=f(u_n)+u_n$ et $f$ est continue : en passant à la limite, $\ell=f(\ell)+\ell$, donc $f(\ell)=0$.
+
+          D'après le tableau de variations de $f$ (question 2b) : $f$ croît de $-\infty$ à $0$ sur $]-\infty,0]$ sans s'annuler avant $0$, décroît puis recroît ensuite sans s'annuler avant $\alpha$ : les SEULS zéros de $f$ sur $\mathbb{R}$ sont $0$ et $\alpha$. Donc $\ell\in\{0,\alpha\}$.
+
+          Or $(u_n)$ est décroissante (question 6b) et $u_0<\alpha$ (hypothèse de départ de la suite) : tous les termes, et donc la limite, vérifient $\ell\le u_0<\alpha$. On écarte $\ell=\alpha$. Il reste $\ell=0$.
+        steps:
+          - math: '0\le u_n<\alpha \ \Rightarrow\ 0\le\ell\le\alpha \quad (\text{passage à la limite})'
+            note: "L'encadrement de u_n passe à la limite."
+          - math: 'u_{n+1}=f(u_n)+u_n,\ f \text{ continue} \ \Rightarrow\ \ell=f(\ell)+\ell \ \Rightarrow\ f(\ell)=0'
+            note: "La limite est un point fixe de la relation de récurrence."
+          - math: 'f(x)=0 \iff x=0 \text{ ou } x=\alpha \quad (\text{seuls zéros de } f,\ \text{tableau de variations, question 2-b})'
+            note: "D'après les variations de f, ses seuls zéros sur R sont 0 et alpha."
+          - math: '(u_n) \text{ décroissante},\ u_0<\alpha \ \Rightarrow\ \ell\le u_0<\alpha \ \Rightarrow\ \ell\neq\alpha \ \Rightarrow\ \ell=0'
+            note: "La suite décroît depuis u_0, strictement inférieur à alpha : la limite ne peut pas être alpha."
+      - id: q8a
+        part: "Partie II, 3 — Cas u₀ < 0 : comportement et limite"
+        stem: |-
+          **On suppose que $u_0 < 0$**
+
+          **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\ u_{n+1} - u_n \le f(u_0)$
+        reasoning: |-
+          $u_{n+1}-u_n=f(u_n)$, comme toujours. $(u_n)$ est décroissante (question 6b), donc $u_n\le u_0<0$ pour tout $n$ : tous les termes restent dans $]-\infty,0]$, là où $f$ est strictement croissante (question 2b). Croissance de $f$ appliquée à $u_n\le u_0$ : $f(u_n)\le f(u_0)$. D'où $u_{n+1}-u_n\le f(u_0)$.
+        steps:
+          - math: 'u_{n+1}-u_n = f(u_n)'
+            note: "Différence de deux termes consécutifs, par définition de la récurrence."
+          - math: '(u_n) \text{ décroissante} \ \Rightarrow\ u_n\le u_0<0 \quad (\text{tous les termes dans } ]-\infty,0])'
+            note: "La décroissance (question 6-b) place tous les termes sous u_0, lui-même négatif."
+          - math: 'f \text{ croissante sur } ]-\infty,0] \quad (\text{Partie I, question 2-b})\ \Rightarrow\ u_n\le u_0 \ \Rightarrow\ f(u_n)\le f(u_0)'
+            note: "f est croissante sur cette zone : elle conserve l'ordre."
+          - math: '\Rightarrow\ u_{n+1}-u_n\le f(u_0)'
+            note: "On combine les deux lignes précédentes."
+      - id: q8b
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\ u_n \le u_0 + n\,f(u_0)$
+        reasoning: |-
+          C'est une somme télescopique à partir de l'inégalité précédente. Pour chaque $k$ de $0$ à $n-1$ : $u_{k+1}-u_k\le f(u_0)$. On additionne ces $n$ inégalités : à gauche, les termes intermédiaires se compensent et il reste $u_n-u_0$ ; à droite, on additionne $n$ fois la même constante $f(u_0)$.
+        steps:
+          - math: '\text{Pour } k=0,\dots,n-1:\quad u_{k+1}-u_k\le f(u_0) \quad (\text{question précédente})'
+            note: "L'inégalité de la question précédente, valable à chaque rang k."
+          - math: '\sum_{k=0}^{n-1}(u_{k+1}-u_k) \le n\,f(u_0) \ \Rightarrow\ u_n-u_0\le n\,f(u_0)'
+            note: "On additionne les n inégalités : la somme télescope à gauche en u_n moins u_0."
+          - math: '\Rightarrow\ u_n\le u_0+n\,f(u_0)'
+            note: "On isole u_n."
+      - id: q8c
+        stem: |-
+          **(0,25 pt)** En déduire $\displaystyle\lim_{n \to +\infty} u_n$
+        reasoning: |-
+          $u_0<0$ et $f$ est strictement croissante sur $]-\infty,0]$ avec $f(0)=0$ (question 2b) : donc $f(u_0)<f(0)=0$, une constante strictement négative.
+
+          Dans l'inégalité de la question précédente, $u_0+n\,f(u_0)$ est une expression linéaire en $n$ de coefficient directeur $f(u_0)<0$ : elle tend vers $-\infty$ quand $n\to+\infty$. Comme $u_n$ reste toujours en dessous de cette quantité qui part vers $-\infty$, $u_n$ est forcé de suivre : $\displaystyle\lim_{n\to+\infty}u_n=-\infty$.
+        steps:
+          - math: 'u_0<0 \ \Rightarrow\ f(u_0)<f(0)=0 \quad (f \text{ croissante sur } ]-\infty,0],\ \text{Partie I question 2-b})'
+            note: "u_0 négatif et f croissante avec f(0)=0 : f(u_0) est strictement négatif."
+          - math: '\lim_{n\to+\infty}\big(u_0+n\,f(u_0)\big) = -\infty \quad (f(u_0)<0)'
+            note: "Expression linéaire en n de coefficient négatif : elle tend vers moins l'infini."
+          - math: 'u_n\le u_0+n\,f(u_0) \ \Rightarrow\ \lim_{n\to+\infty} u_n = -\infty'
+            note: "u_n reste toujours sous une quantité qui tend vers moins l'infini : il est forcé de suivre."
+
+  # ── bk-2022-n-x3 — 2022 N, Problème (SExp) : concavité, réciproque, suite ──
+  # Même sujet que r-bac (exercises.yaml) — voir NOTE ÉDITORIALE en tête de
+  # fichier. Reasoning/steps ci-dessous reprennent la même mathématique déjà
+  # vérifiée dans exercises.yaml, reformatés pour le contrat bank.yaml
+  # (steps[].math single-quoted, plutôt que block scalar).
+  - id: bk-2022-n-x3
+    title: "Étude d'une fonction avec l'exponentielle : concavité, points d'inflexion, réciproque et suite"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Problème"
+    bareme_total: 8.5
+    duration_min: 60
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SVT et Sciences Physiques
+        (BIOF), Mathématiques (3 h, coef 7), code NS 22F, AlloSchool
+        element/136586 — Problème (8,5 points). Transcription
+        VÉRIFIÉE-CORRIGÉE, PAS « vérifié » au sens strict : re-fetch
+        AlloSchool indépendant (→ course-438/upload-84495, pages 3-4) et
+        diff conforme au scan, MAIS la description de la figure $(C_g)$ de
+        la question 5b était erronée dans une première lecture (un seul
+        changement de signe indiqué) — le scan montre $g$ s'annulant en
+        DEUX points ($\alpha\approx-4,5$ et $0$), cohérent avec les deux
+        points d'inflexion demandés en 5c ; description corrigée d'après le
+        scan, agent-vérificateur-adversarial, 2026-07-12
+        (docs/sujets/maths/fonction-exponentielle.md, statut « corrigé
+        (conforme au scan) »). Même sujet que le sommet de leçon r-bac
+        (exercises.yaml, [[exercise:r-bac]]) — voir la NOTE ÉDITORIALE en
+        tête de ce fichier.
+    intro: |-
+      **Problème (examen national, session normale 2022).**
+
+      On considère la fonction numérique $f$ définie sur $\mathbb{R}$ par :
+
+      $$f(x) = x\left(e^{\frac{x}{2}} - 1\right)^2$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
+
+      Fil conducteur : ce problème enchaîne toute la boîte à outils du chapitre — limites et croissances comparées, position par rapport à une asymptote, dérivée d'un produit contenant $e^{u}$, tableau de variations, concavité lue à travers une fonction auxiliaire $g$, fonction réciproque, puis une suite $u_{n+1}=f(u_n)$. À chaque étape, garde en tête que $e^{\frac{x}{2}}>0$ ne change jamais de signe : c'est ce facteur toujours positif qui pilote tous les signes de l'étude.
+    questions:
+      - id: q1
+        part: "Partie A — Limites et asymptote"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et $\displaystyle\lim_{x \to -\infty} f(x)$.
+        reasoning: |-
+          On regarde chaque morceau. En $+\infty$ : $e^{\frac{x}{2}} \to +\infty$ (R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to +\infty$, et le facteur $x \to +\infty$ : le produit tend vers $+\infty$, sans indétermination (deux facteurs qui explosent vers $+\infty$).
+
+          En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur fini. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
+        steps:
+          - math: '\lim_{x \to +\infty} e^{\frac{x}{2}} = +\infty \ \Rightarrow\ \lim_{x \to +\infty}\left(e^{\frac{x}{2}}-1\right)^2 = +\infty'
+            note: "En plus l'infini, e puissance x sur 2 tend vers plus l'infini donc son carré diminué de 1 tend vers plus l'infini."
+          - math: '\lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} x\left(e^{\frac{x}{2}}-1\right)^2 = +\infty'
+            note: "Produit de deux facteurs tendant vers plus l'infini."
+          - math: '\lim_{x \to -\infty} e^{\frac{x}{2}} = 0 \ \Rightarrow\ \left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1'
+            note: "En moins l'infini, e puissance x sur 2 tend vers 0 (limite de référence R4) : le carré tend vers 1, valeur finie."
+          - math: '\lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} x \times 1 = -\infty'
+            note: "x tend vers moins l'infini multiplié par un facteur qui tend vers 1 : pas d'indétermination, la limite est moins l'infini."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$ et interpréter géométriquement le résultat.
+        reasoning: |-
+          Au voisinage de $+\infty$, $x\neq 0$ : on simplifie $\dfrac{f(x)}{x} = \left(e^{\frac{x}{2}}-1\right)^2$, qui tend vers $+\infty$ (question 1).
+
+          Interprétation : quand $\dfrac{f(x)}{x} \to +\infty$, la courbe monte plus vite que n'importe quelle droite passant par l'origine — $(C)$ admet une branche parabolique de direction l'axe des ordonnées $(Oy)$ au voisinage de $+\infty$.
+        steps:
+          - math: '\frac{f(x)}{x} = \frac{x\left(e^{\frac{x}{2}}-1\right)^2}{x} = \left(e^{\frac{x}{2}}-1\right)^2'
+            note: "Simplification par x (non nul au voisinage de plus l'infini)."
+          - math: '\lim_{x \to +\infty} \frac{f(x)}{x} = +\infty'
+            note: "f(x)/x tend vers plus l'infini : (C) admet une branche parabolique de direction l'axe (Oy) au voisinage de plus l'infini."
+      - id: q3a
+        stem: |-
+          **(0,5 pt)** Montrer que la droite $(\Delta)$ d'équation $y = x$ est asymptote à la courbe $(C)$ au voisinage de $-\infty$.
+        reasoning: |-
+          Une droite $y=x$ est asymptote en $-\infty$ si l'écart $f(x)-x$ tend vers $0$. On factorise cet écart : $f(x)-x = x\left[\left(e^{\frac{x}{2}}-1\right)^2 - 1\right] = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$.
+
+          Or $x\,e^{\frac{x}{2}} \to 0$ en $-\infty$ par croissances comparées (en posant $X=\frac{x}{2}\to-\infty$, $x\,e^{\frac{x}{2}} = 2X\,e^{X} \to 0$), tandis que $e^{\frac{x}{2}}-2 \to -2$. Le produit tend donc vers $0\times(-2)=0$ : $(\Delta):y=x$ est asymptote à $(C)$ en $-\infty$.
+        steps:
+          - math: 'f(x) - x = x\left[\left(e^{\frac{x}{2}}-1\right)^2 - 1\right] = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)'
+            note: "On factorise l'écart entre f(x) et x."
+          - math: '\lim_{x \to -\infty} x\,e^{\frac{x}{2}} = 0 \qquad (X=\tfrac{x}{2},\ \text{croissances comparées})'
+            note: "x fois e puissance x sur 2 vaut 2X e puissance X avec X = x/2 tendant vers moins l'infini ; croissances comparées : X e^X tend vers 0."
+          - math: 'f(x) - x = \underbrace{x\,e^{\frac{x}{2}}}_{\to\, 0}\left(e^{\frac{x}{2}}-2\right) \xrightarrow[x \to -\infty]{} 0 \times (-2) = 0'
+            note: "L'écart f(x)-x tend vers 0 : la droite (Delta) d'équation y=x est asymptote à (C) en moins l'infini."
+      - id: q3b
+        stem: |-
+          **(0,75 pt)** Étudier le signe de $\big(f(x) - x\big)$ pour tout $x$ de $\mathbb{R}$ et en déduire la position relative de la courbe $(C)$ et de la droite $(\Delta)$.
+        reasoning: |-
+          On repart de la forme factorisée $f(x)-x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$. Le facteur $e^{\frac{x}{2}}$ est toujours strictement positif (R1) : il ne compte pas dans le signe. Reste le signe de $x\left(e^{\frac{x}{2}}-2\right)$.
+
+          On localise le zéro de $e^{\frac{x}{2}}-2$ : $e^{\frac{x}{2}}=2 \iff \frac{x}{2}=\ln 2 \iff x = 2\ln 2 = \ln 4$. Ainsi $e^{\frac{x}{2}}-2>0 \iff x>\ln 4$. En croisant avec le signe de $x$ (zéro en $0$) :
+
+          — sur $]-\infty,0[$ : $x<0$ et $e^{\frac{x}{2}}-2<0$, produit positif ;
+          — sur $]0,\ln 4[$ : $x>0$ et $e^{\frac{x}{2}}-2<0$, produit négatif ;
+          — sur $]\ln 4,+\infty[$ : les deux facteurs positifs, produit positif.
+
+          Donc $(C)$ est au-dessus de $(\Delta)$ sur $]-\infty,0[$ et $]\ln 4,+\infty[$, en dessous sur $]0,\ln 4[$ ; les deux se coupent aux points $(0,0)$ et $(\ln 4,\ln 4)$ (car $f(0)=0$ et $f(\ln 4)=\ln 4$).
+        steps:
+          - math: 'f(x) - x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right), \qquad e^{\frac{x}{2}} > 0'
+            note: "Le facteur e^{x/2} est toujours positif : le signe ne dépend que de x et de (e^{x/2}-2)."
+          - math: 'e^{\frac{x}{2}} - 2 = 0 \iff \tfrac{x}{2} = \ln 2 \iff x = 2\ln 2 = \ln 4'
+            note: "e^{x/2}-2 est positif si et seulement si x est supérieur à ln4 (passage au ln, exp strictement croissante)."
+          - math: 'f(x)-x > 0 \text{ sur } ]-\infty,0[\,\cup\,]\ln 4,+\infty[\ ;\quad f(x)-x < 0 \text{ sur } ]0,\ln 4[\ ;\quad f(0)=0,\ f(\ln 4)=\ln 4'
+            note: "(C) au-dessus de (Delta) sur les deux extrémités, en dessous sur l'intervalle intermédiaire ; contact en (0,0) et (ln4, ln4)."
+      - id: q4a
+        part: "Partie B — Dérivée et variations"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $\mathbb{R}$ : $f'(x) = \left(e^{\frac{x}{2}} - 1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}} - 1\right)$.
+        reasoning: |-
+          $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ vaut $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, R3). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
+        steps:
+          - math: 'u(x) = x,\quad v(x) = \left(e^{\frac{x}{2}}-1\right)^2,\qquad v''(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\tfrac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)'
+            note: "Dérivée de la composée (e^{x/2}-1) au carré : 2(e^{x/2}-1) fois la dérivée de l'intérieur, un demi e^{x/2}."
+          - math: 'f''(x) = u''v + uv'' = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)'
+            note: "Règle du produit (uv)' = u'v + uv'."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** Vérifier que $x\left(e^{\frac{x}{2}} - 1\right) \ge 0$ pour tout $x$ de $\mathbb{R}$, puis en déduire le signe de la dérivée $f'$ sur $\mathbb{R}$.
+        reasoning: |-
+          Le facteur $e^{\frac{x}{2}}-1$ a le signe de $x$ : $e^{\frac{x}{2}}-1>0 \iff \frac{x}{2}>0 \iff x>0$ (exp strictement croissante, $e^0=1$). Donc $x$ et $e^{\frac{x}{2}}-1$ ont toujours le même signe, et leur produit $x\left(e^{\frac{x}{2}}-1\right)$ est $\ge 0$, nul seulement en $x=0$.
+
+          On relit alors $f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\cdot x\left(e^{\frac{x}{2}}-1\right)$ : c'est une somme de deux termes positifs ou nuls — un carré, et $e^{\frac{x}{2}}>0$ multiplié par la quantité $\ge 0$ qu'on vient d'établir. Donc $f'(x)\ge 0$, nul uniquement en $x=0$ : $f$ est strictement croissante sur $\mathbb{R}$.
+        steps:
+          - math: 'e^{\frac{x}{2}} - 1 \text{ a le signe de } x \ \Rightarrow\ x\left(e^{\frac{x}{2}}-1\right) \ge 0'
+            note: "x et e^{x/2}-1 changent de signe en même temps, en 0 : leur produit est positif ou nul."
+          - math: 'f''(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\underbrace{\,x\left(e^{\frac{x}{2}}-1\right)\,}_{\ge\, 0} \ge 0'
+            note: "Somme d'un carré et de e^{x/2} positif fois une quantité positive ou nulle : f prime est positive ou nulle, nulle seulement en 0."
+      - id: q4c
+        stem: |-
+          **(0,25 pt)** Dresser le tableau de variations de la fonction $f$ sur $\mathbb{R}$.
+        reasoning: |-
+          Tout est réuni : $f'(x)\ge 0$ avec égalité seulement en $x=0$ (question précédente), donc $f$ est strictement croissante sur $\mathbb{R}$ tout entier — une seule flèche montante. On complète avec les limites de la question 1 : $\displaystyle\lim_{x\to-\infty}f(x)=-\infty$ et $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$, et le passage remarquable $f(0)=0$. Le tableau tient en une ligne, de $-\infty$ à $+\infty$, traversant $0$ en $x=0$.
+      - id: q5a
+        part: "Partie C — Concavité (lecture d'une courbe)"
+        stem: |-
+          **(0,5 pt)** Montrer que $f''(x) = \dfrac{1}{2}e^{\frac{x}{2}}\,g(x)$, où $g(x) = (2x + 4)e^{\frac{x}{2}} - x - 4$, pour tout $x$ de $\mathbb{R}$.
+        reasoning: |-
+          Pour éviter d'empiler les apostrophes dans les champs de calcul, on note ici $f^{(2)}$ la dérivée seconde de $f$ — même objet que $f''$ dans l'énoncé.
+
+          On développe d'abord $f'$ pour en faciliter la dérivation : $\left(e^{\frac{x}{2}}-1\right)^2 = e^{x} - 2e^{\frac{x}{2}} + 1$ et $x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right) = x\,e^{x} - x\,e^{\frac{x}{2}}$, d'où $f'(x) = (1+x)e^{x} - (2+x)e^{\frac{x}{2}} + 1$.
+
+          On dérive terme à terme : $\big((1+x)e^{x}\big)' = (2+x)e^{x}$ et $\big(-(2+x)e^{\frac{x}{2}}\big)' = -\frac{x+4}{2}e^{\frac{x}{2}}$. Il reste à factoriser $\frac{1}{2}e^{\frac{x}{2}}$ : $(2+x)e^{x} = \frac{1}{2}e^{\frac{x}{2}}(2x+4)e^{\frac{x}{2}}$ et $-\frac{x+4}{2}e^{\frac{x}{2}} = \frac{1}{2}e^{\frac{x}{2}}(-x-4)$, ce qui reconstitue exactement $\frac{1}{2}e^{\frac{x}{2}}g(x)$.
+        steps:
+          - math: 'f''(x) = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right) = (1+x)e^{x} - (2+x)e^{\frac{x}{2}} + 1'
+            note: "On développe f prime, établi à la question 4-a."
+          - math: 'f^{(2)}(x) = (2+x)e^{x} - \frac{x+4}{2}e^{\frac{x}{2}}'
+            note: "Dérivée terme à terme : ((1+x)e^x)' = (2+x)e^x ; (-(2+x)e^{x/2})' = -((x+4)/2) e^{x/2}."
+          - math: 'f^{(2)}(x) = \frac{1}{2}e^{\frac{x}{2}}\Big[(2x+4)e^{\frac{x}{2}} - x - 4\Big] = \frac{1}{2}e^{\frac{x}{2}}\,g(x)'
+            note: "On factorise un demi e^{x/2} ; le crochet est exactement g(x)."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** La courbe $(C_g)$ ci-dessous représente la fonction $g$. En la lisant, déterminer le signe de $g(x)$ sur $\mathbb{R}$. *(Remarque : $g(\alpha) = 0$.)*
+
+          **Description de la courbe $(C_g)$ fournie** *(transcrite fidèlement du scan)* : la courbe de $g$ est tracée sur la fenêtre $x \in [-5\,;\,0{,}5]$, $y \in [-2\,;\,4]$. Elle s'annule en **deux** points : en $x = \alpha \approx -4{,}5$ (marqué sur l'axe des abscisses) et en $x = 0$ (l'origine). Elle est **positive sur $]-\infty,\alpha[$** (petite portion visible au bord gauche, d'ordonnée $\approx +0{,}5$ en $x=-5$), **négative sur $]\alpha,0[$** avec un minimum d'ordonnée $\approx -2$ au voisinage de $x=-2$, puis de nouveau **positive sur $]0,+\infty[$** en croissant fortement (elle atteint $\approx +4$ au bord droit du cadre).
+        reasoning: |-
+          On lit les deux changements de signe directement sur $(C_g)$, en s'appuyant sur les deux zéros $x=\alpha$ et $x=0$ :
+
+          $$g(x) > 0 \text{ sur } ]-\infty,\alpha[\ ;\quad g(\alpha)=0\ ;\quad g(x) < 0 \text{ sur } ]\alpha,0[\ ;\quad g(0)=0\ ;\quad g(x) > 0 \text{ sur } ]0,+\infty[.$$
+
+          Un contrôle algébrique confirme le zéro en $0$ : $g(0) = (0+4)e^{0} - 0 - 4 = 4 - 4 = 0$. Ces deux changements de signe, en $\alpha$ et en $0$, sont exactement les deux abscisses de points d'inflexion attendues à la question suivante — c'est ce qui rendait l'ancienne description « un seul changement de signe » incohérente, et pourquoi la figure a été corrigée (voir `sourcing.note` de cette entrée).
+      - id: q5c
+        stem: |-
+          **(0,5 pt)** Étudier la concavité de la courbe $(C)$ et déterminer les abscisses des deux points d'inflexion.
+        reasoning: |-
+          On a $f''(x) = \frac{1}{2}e^{\frac{x}{2}}g(x)$, et $\frac{1}{2}e^{\frac{x}{2}}>0$ toujours : le signe de $f''$ est exactement celui de $g$ (question 5b). Donc $f''>0$ (courbe convexe) sur $]-\infty,\alpha[$ et sur $]0,+\infty[$, et $f''<0$ (courbe concave) sur $]\alpha,0[$.
+
+          $f''$ change de signe en $x=\alpha$ et en $x=0$ : la concavité change en ces deux points, qui sont donc les deux points d'inflexion, d'abscisses $\alpha$ et $0$.
+        steps:
+          - math: '\tfrac{1}{2}e^{\frac{x}{2}} > 0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } g(x)'
+            note: "Le facteur un demi e^{x/2} est toujours positif : f seconde a le signe de g (question 5-b)."
+          - math: 'f^{(2)} > 0 \text{ sur } ]-\infty,\alpha[\,\cup\,]0,+\infty[ \ (\text{convexe})\ ;\quad f^{(2)} < 0 \text{ sur } ]\alpha,0[ \ (\text{concave})'
+            note: "(C) est convexe là où f seconde est positive, concave là où elle est négative."
+          - math: 'f^{(2)} \text{ change de signe en } x=\alpha \text{ et en } x=0'
+            note: "f seconde change de signe en alpha et en 0 : ce sont les deux points d'inflexion, d'abscisses alpha et 0."
+      - id: q6
+        stem: |-
+          **(1 pt)** Construire la courbe $(C)$ dans le repère $(O,\vec{i},\vec{j})$. *(On prend $\ln 4 \approx 1{,}4$, $\alpha \approx -4{,}5$ et $f(\alpha) \approx -3{,}5$.)*
+        reasoning: |-
+          On ne trace pas au hasard : on reporte tous les éléments établis.
+
+          — **Asymptote et allure en $-\infty$** : la droite $(\Delta):y=x$ est asymptote en $-\infty$ (question 3a), et $(C)$ y est au-dessus de $(\Delta)$ (question 3b) ; la courbe descend le long de $(\Delta)$ vers $-\infty$.
+          — **Croisements avec $(\Delta)$** : $(C)$ coupe $(\Delta)$ en $(0,0)$ et $(\ln 4,\ln 4)\approx(1{,}4\,;\,1{,}4)$, en passant en dessous de $(\Delta)$ sur $]0,\ln 4[$ puis au-dessus au-delà (question 3b).
+          — **Variations** : $f$ est strictement croissante partout (question 4c), sans extremum, avec $f(0)=0$.
+          — **Branche en $+\infty$** : branche parabolique de direction $(Oy)$ (question 2) — la courbe s'élève de plus en plus vite.
+          — **Concavité** : convexe sur $]-\infty,\alpha[$, concave sur $]\alpha,0[$, convexe sur $]0,+\infty[$ (question 5c), avec deux points d'inflexion, en $x=\alpha\approx-4{,}5$ (où $f(\alpha)\approx-3{,}5$) et en $x=0$.
+
+          On place ces repères, puis on relie par une courbe croissante respectant la concavité annoncée.
+      - id: q7a
+        part: "Partie D — Fonction réciproque et suite"
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $f$ admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$.
+        reasoning: |-
+          $f$ est continue (car dérivable, question 4a) et strictement croissante sur $\mathbb{R}$ (question 4b). Une fonction continue et strictement monotone sur un intervalle réalise une bijection de cet intervalle sur son image. Ici l'image est $f(\mathbb{R}) = \left]\displaystyle\lim_{x\to-\infty}f,\ \displaystyle\lim_{x\to+\infty}f\right[ = \,]-\infty,+\infty[ = \mathbb{R}$ (question 1). Donc $f$ réalise une bijection de $\mathbb{R}$ sur $\mathbb{R}$, et admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$.
+      - id: q7b
+        stem: |-
+          **(0,25 pt)** Calculer $\left(f^{-1}\right)'(\ln 4)$.
+        reasoning: |-
+          On a montré (question 3b) que $f(\ln 4)=\ln 4$, donc $f^{-1}(\ln 4)=\ln 4$. La dérivée de la réciproque s'obtient par $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\!\left(f^{-1}(y)\right)}$, ici $\left(f^{-1}\right)'(\ln 4) = \dfrac{1}{f'(\ln 4)}$.
+
+          On calcule $f'(\ln 4)$ en remarquant $e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2$ : $f'(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4$. D'où $\left(f^{-1}\right)'(\ln 4) = \dfrac{1}{1+2\ln 4}$.
+        steps:
+          - math: 'f(\ln 4) = \ln 4 \ \Rightarrow\ f^{-1}(\ln 4) = \ln 4\ ;\qquad e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2'
+            note: "f(ln4)=ln4 (question 3-b) ; e^{(ln4)/2} = e^{ln2} = 2."
+          - math: 'f''(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4'
+            note: "On remplace e^{(ln4)/2}=2 dans f'(x)=(e^{x/2}-1)^2 + x e^{x/2}(e^{x/2}-1)."
+          - math: '\left(f^{-1}\right)''(\ln 4) = \frac{1}{f''(\ln 4)} = \frac{1}{1 + 2\ln 4}'
+            note: "Dérivée de la réciproque : (f inverse) prime de ln4 vaut 1 sur f prime de ln4."
+      - id: q8a
+        stem: |-
+          **(0,5 pt)** Soit $(u_n)$ la suite numérique définie par $u_0 = 1$ et $u_{n+1} = f(u_n)$ pour tout $n$ de $\mathbb{N}$. Montrer par récurrence que $0 < u_n < \ln 4$ pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          **Initialisation :** $u_0 = 1$, et $0 < 1 < \ln 4$ (car $\ln 4 \approx 1{,}39$). L'encadrement est vrai au rang $0$.
+
+          **Hérédité :** supposons $0 < u_n < \ln 4$. Comme $f$ est strictement croissante (question 4b), elle conserve l'ordre : $f(0) < f(u_n) < f(\ln 4)$. Or $f(0)=0$ et $f(\ln 4)=\ln 4$ (question 3b), donc $0 < u_{n+1} < \ln 4$. L'encadrement se transmet, il est vrai pour tout $n$.
+        steps:
+          - math: '\text{Initialisation : } u_0 = 1,\quad 0 < 1 < \ln 4 \ \ (\ln 4 \approx 1{,}39)'
+            note: "Le rang 0 vérifie l'encadrement."
+          - math: '0 < u_n < \ln 4 \ \Rightarrow\ f(0) < f(u_n) < f(\ln 4) \ \Rightarrow\ 0 < u_{n+1} < \ln 4'
+            note: "f strictement croissante (question 4-b) ; f(0)=0 et f(ln4)=ln4."
+      - id: q8b
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)$ est décroissante.
+        reasoning: |-
+          On étudie le signe de $u_{n+1} - u_n = f(u_n) - u_n$. La question 3b a montré que $f(x)-x < 0$ sur $]0,\ln 4[$. Comme $0 < u_n < \ln 4$ (question 8a), on a $f(u_n) - u_n < 0$, c'est-à-dire $u_{n+1} - u_n < 0$ : la suite $(u_n)$ est décroissante.
+        steps:
+          - math: 'u_{n+1} - u_n = f(u_n) - u_n < 0 \qquad (\text{car } 0 < u_n < \ln 4)'
+            note: "On réutilise f(x)-x < 0 sur ]0,ln4[ (question 3-b) avec x = u_n."
+      - id: q8c
+        stem: |-
+          **(0,25 pt)** En déduire que la suite $(u_n)$ est convergente.
+        reasoning: |-
+          La suite $(u_n)$ est décroissante (question 8b) et minorée par $0$ (question 8a : $0 < u_n$). Par le théorème de la convergence monotone, toute suite décroissante et minorée converge : $(u_n)$ converge vers une limite finie $\ell \ge 0$.
+      - id: q8d
+        stem: |-
+          **(0,5 pt)** Calculer la limite de la suite $(u_n)$.
+        reasoning: |-
+          Notons $\ell$ la limite. En passant l'encadrement $0 < u_n < \ln 4$ à la limite, $\ell \in [0,\ln 4]$. Comme $f$ est continue et $u_{n+1}=f(u_n)$, la limite vérifie $\ell = f(\ell)$, donc $f(\ell)-\ell = 0$, soit $\ell\,e^{\frac{\ell}{2}}\left(e^{\frac{\ell}{2}}-2\right)=0$ : les points fixes possibles sont $\ell = 0$ et $\ell = \ln 4$.
+
+          La suite est décroissante et part de $u_0 = 1 < \ln 4$ : tous ses termes, et donc sa limite, sont $< \ln 4$. On écarte $\ell=\ln 4$. La limite est donc $\ell = 0$.
+        steps:
+          - math: '0 \le \ell \le \ln 4\ ;\quad u_{n+1}=f(u_n),\ f \text{ continue} \ \Rightarrow\ \ell = f(\ell)'
+            note: "La limite est un point fixe de f, situé dans [0, ln4]."
+          - math: 'f(\ell) = \ell \iff \ell\,e^{\frac{\ell}{2}}\left(e^{\frac{\ell}{2}}-2\right) = 0 \iff \ell = 0 \ \text{ ou }\ \ell = \ln 4'
+            note: "f(x)-x = x e^{x/2}(e^{x/2}-2) ; ses zéros sont 0 et ln4."
+          - math: '(u_n) \text{ décroissante},\ u_0 = 1 < \ln 4 \ \Rightarrow\ \ell < \ln 4 \ \Rightarrow\ \ell = 0'
+            note: "La suite décroît en partant de 1, inférieur à ln4 : la limite ne peut pas être ln4, donc lim u_n = 0."

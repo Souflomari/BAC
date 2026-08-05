@@ -1,0 +1,193 @@
+# bank.yaml — la banque « S'entraîner » de denombrement (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les deux entrées sont des transcriptions FIDÈLES des deux
+# entrées « vérifié » de docs/sujets/maths/denombrement.md (re-fetch AlloSchool
+# indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial,
+# 2026-07-12) — les SEULS sujets vérifiés recensés pour cette notion : 2019 et
+# 2022, tous deux session normale, filière Sciences Expérimentales (SVT et
+# Sciences Physiques, BIOF), tous deux « Exercice 3 » sur leur copie (barème
+# 3 points chacun). Aucun autre sujet n'est disponible — introuvable = absent,
+# jamais inventé. Raisonnement rédigé à la voix experte de la maison sur
+# 100 % des questions (citant les rungs R1/R5/R7 de lesson.md), tous les
+# comptages et probabilités re-dérivés et vérifiés à la main avant
+# transcription ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math, notes sans backslash).
+#
+# NOTE ÉDITORIALE (pour la revue) : bk-2022-n-x3 transcrit le MÊME sujet que
+# le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R8 — urne de
+# 10 boules, 3 blanches/3 vertes/4 rouges, tirage simultané de 3, événements
+# A/B/C/D). Il figure ici pour que la banque soit le corpus complet des
+# annales vérifiées de la notion (BANK-SPEC §1 : « la banque est le volume
+# derrière le sommet, jamais son remplacement »). À l'arbitrage de l'owner si
+# l'on préfère l'écarter de la banque pour éviter le recoupement sur la même
+# page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
+# content/maths/nombres-complexes-1/bank.yaml et bk-2021-n-x1 de
+# content/pc/reactions-acido-basiques/bank.yaml. Le raisonnement ci-dessous
+# est rédigé indépendamment de exercises.yaml (même mathématiques, formulation
+# fraîche), pour que la carte tienne seule.
+
+notion: maths/denombrement
+
+entries:
+  # ── bk-2019-n-x3 — 2019 N, Exercice 3 : urne à trois couleurs, même couleur / au moins deux ──
+  - id: bk-2019-n-x3
+    title: "Urne à trois couleurs — même couleur et au moins deux boules identiques"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/68527 (Exercice 3, « Calcul des
+        probabilités » ; barème 3 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/denombrement.md, section « 2019 —
+        session normale — Exercice 3 » (re-fetch AlloSchool indépendant +
+        diff caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-07-12).
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2019).**
+
+      Une urne contient dix boules : trois boules vertes, six boules rouges et une boule noire, indiscernables au toucher. On tire au hasard et simultanément trois boules de l'urne.
+
+      On considère les événements suivants :
+      - $A$ : « Obtenir trois boules vertes. »
+      - $B$ : « Obtenir trois boules de même couleur. »
+      - $C$ : « Obtenir au moins deux boules de même couleur. »
+
+      Point de méthode : « simultanément » signale un tirage **sans ordre et sans remise** — chaque résultat est un sous-ensemble de 3 boules parmi les 10, compté par une **combinaison** (rung R5). Les boules étant indiscernables au toucher, tous ces tirages sont **équiprobables** (rung R7) : chaque probabilité demandée est un quotient de dénombrements, $\dfrac{\text{card}(E)}{\text{card}(\Omega)}$, avec $\text{card}(\Omega) = \binom{10}{3} = 120$ commun à toutes les questions.
+    questions:
+      - id: q1
+        part: "Deux probabilités directes"
+        stem: |-
+          **(2 pt)** Montrer que $p(A) = \dfrac{1}{120}$ et $p(B) = \dfrac{7}{40}$
+        reasoning: |-
+          **Pour $A$** (« trois vertes ») : il n'y a que 3 boules vertes dans toute l'urne, donc il n'existe qu'**une seule** façon de les prendre toutes les trois à la fois — $\binom{3}{3} = 1$. D'où $p(A) = \dfrac{1}{120}$, directement sur le dénominateur commun $120$.
+
+          **Pour $B$** (« trois de même couleur ») : trois couleurs sont en jeu, donc trois façons DISJOINTES de réaliser $B$ — trois vertes, ou trois rouges, ou trois noires — et le mot « ou » entre ces trois cas déclenche le **principe additif** (rung R1) : on compte chaque cas séparément puis on additionne. Un piège discret à repérer : il n'y a qu'**une seule** boule noire dans l'urne, donc il est strictement impossible d'en tirer trois — ce cas contribue $0$, mais il faut le voir et l'écarter explicitement plutôt que l'oublier en ne considérant que le vert et le rouge.
+        steps:
+          - math: '\text{card}(\Omega) = \binom{10}{3} = \dfrac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120'
+            note: "Tirage simultané de 3 boules parmi 10 : dénominateur commun à toute la suite de l'exercice."
+          - math: '\text{card}(A) = \binom{3}{3} = 1 \implies p(A) = \dfrac{1}{120}'
+            note: "Une seule façon de prendre les 3 boules vertes, il n'y en a que 3 dans l'urne."
+          - math: '\text{card}(B) = \underbrace{\binom{3}{3}}_{\text{3 vertes}} + \underbrace{\binom{6}{3}}_{\text{3 rouges}} + \underbrace{\binom{1}{3}}_{\text{3 noires}} = 1 + 20 + 0 = 21'
+            note: "Trois couleurs, trois cas incompatibles : principe additif. Impossible de tirer 3 boules noires (il n'y en a qu'une), ce terme vaut 0."
+          - math: 'p(B) = \dfrac{21}{120} = \dfrac{7}{40}'
+            note: "On simplifie la fraction par 3 : 21 sur 120 égale 7 sur 40."
+      - id: q2
+        part: "Au moins deux boules de même couleur"
+        stem: |-
+          **(1 pt)** Calculer $p(C)$.
+        reasoning: |-
+          « Au moins deux boules de même couleur » se décompose en deux cas incompatibles : soit les **trois** boules sont de la même couleur — c'est exactement l'événement $B$ de la question précédente, déjà compté ($\text{card}(B) = 21$) — soit **exactement deux** boules sont d'une même couleur et la troisième d'une couleur différente. Ces deux cas ne peuvent pas se produire ensemble, donc principe additif (rung R1) : on calcule le second cas puis on l'ajoute au premier.
+
+          Le second cas se compte couleur par couleur, et chaque couleur est elle-même un « et » entre deux groupes — la paire d'une couleur, ET une boule d'une AUTRE couleur — donc principe multiplicatif (rung R1) à l'intérieur de chaque couleur. Paire verte : $\binom{3}{2}$ façons, et la troisième boule est prise parmi les $10-3=7$ boules non vertes. Paire rouge : $\binom{6}{2}$ façons, troisième boule parmi les $10-6=4$ non rouges. Une paire noire est impossible : il n'y a qu'une seule boule noire, donc $\binom{1}{2}=0$ — ce cas ne contribue rien, comme pour $B$.
+        steps:
+          - math: '\binom{3}{2}\times\binom{7}{1} = 3\times 7 = 21'
+            note: "Exactement deux vertes : la paire verte (2 parmi 3) ET une boule non verte (1 parmi les 7 rouges ou noire)."
+          - math: '\binom{6}{2}\times\binom{4}{1} = 15\times 4 = 60'
+            note: "Exactement deux rouges : la paire rouge (2 parmi 6) ET une boule non rouge (1 parmi les 4 vertes ou noire)."
+          - math: '\binom{1}{2} = 0'
+            note: "Une paire de boules noires est impossible : il n'y a qu'une seule boule noire dans l'urne, ce cas ne contribue rien."
+          - math: '\text{card}(C) = \underbrace{21}_{\text{trois même couleur }(B)} + \underbrace{(21+60+0)}_{\text{exactement deux même couleur}} = 21 + 81 = 102'
+            note: "Union de deux cas incompatibles : au moins deux de même couleur, c'est trois de même couleur OU exactement deux."
+          - math: 'p(C) = \dfrac{102}{120} = \dfrac{17}{20}'
+            note: "On simplifie la fraction par 6 : 102 sur 120 égale 17 sur 20."
+          - math: '\text{Contrôle : } p(\text{3 couleurs différentes}) = \dfrac{\binom{3}{1}\binom{6}{1}\binom{1}{1}}{120} = \dfrac{18}{120} = \dfrac{3}{20}, \quad 1-\dfrac{3}{20} = \dfrac{17}{20}'
+            note: "Vérification par le complémentaire : C est le contraire de « les trois boules sont de trois couleurs différentes ». Même résultat, cohérence confirmée."
+
+  # ── bk-2022-n-x3 — 2022 N, Exercice 3 : urne à trois couleurs, quatre événements ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note éditoriale en tête.
+  - id: bk-2022-n-x3
+    title: "Urne à trois couleurs — quatre probabilités par dénombrement"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/136586 (Exercice 3, « Calcul
+        des probabilités » ; barème 3 points). Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/maths/denombrement.md, section
+        « 2022 — session normale — Exercice 3 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan, agent-
+        vérificateur-adversarial, 2026-07-12). NB : ce même sujet sous-tend
+        aussi le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R8) — recoupement assumé, voir note éditoriale
+        en tête de fichier.
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2022).**
+
+      Une urne contient dix boules : trois boules blanches, trois boules vertes et quatre boules rouges, indiscernables au toucher. On tire au hasard simultanément trois boules de l'urne.
+
+      Même point de méthode qu'à la question précédente : « simultanément » signale une **combinaison** (rung R5) pour compter les tirages, et l'indiscernabilité des boules donne l'**équiprobabilité** (rung R7) — chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{10}{3} = 120$.
+    questions:
+      - id: q1
+        part: "Partie A — L'univers et un comptage direct"
+        stem: |-
+          **(0,75 pt)** Montrer que $p(A) = \dfrac{1}{6}$ ; où $A$ est l'évènement « N'obtenir aucune boule rouge »
+        reasoning: |-
+          « Aucune boule rouge » signifie que les trois boules tirées sont prises **exclusivement parmi les non-rouges** : $3+3=6$ boules (blanches et vertes). Le tirage étant simultané, on choisit un sous-ensemble de 3 parmi ces 6, sans ordre : $\binom{6}{3}$.
+        steps:
+          - math: '\text{card}(\Omega) = \binom{10}{3} = \dfrac{10\times 9\times 8}{3\times 2\times 1} = 120'
+            note: "Dénominateur commun à toute la suite de l'exercice."
+          - math: '\text{card}(A) = \binom{6}{3} = \dfrac{6\times 5\times 4}{3\times 2\times 1} = 20'
+            note: "Aucune rouge : les 3 boules sont choisies parmi les 6 non-rouges (blanches + vertes)."
+          - math: 'p(A) = \dfrac{20}{120} = \dfrac{1}{6}'
+            note: "Quotient de dénombrements, simplifié par 20."
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Calculer $p(B)$ ; où $B$ est l'évènement « Obtenir trois boules blanches ou trois boules vertes »
+        reasoning: |-
+          Le « ou » relie ici deux événements qui ne peuvent pas se produire ensemble — un tirage de 3 boules ne peut pas être à la fois « les 3 blanches » et « les 3 vertes » — donc principe additif (rung R1) : on additionne les deux cardinaux. Il n'y a qu'une seule façon de prendre les 3 blanches ($\binom{3}{3}=1$) et une seule de prendre les 3 vertes ($\binom{3}{3}=1$), les deux groupes ayant exactement 3 boules chacun.
+        steps:
+          - math: '\text{card}(B) = \underbrace{\binom{3}{3}}_{\text{3 blanches}} + \underbrace{\binom{3}{3}}_{\text{3 vertes}} = 1+1 = 2'
+            note: "Deux cas incompatibles, chacun réduit à une seule combinaison possible : principe additif."
+          - math: 'p(B) = \dfrac{2}{120} = \dfrac{1}{60}'
+            note: "Même dénominateur 120 que pour toutes les questions de l'exercice."
+      - id: q3
+        part: "Partie B — Un tirage « mixte » : le principe multiplicatif"
+        stem: |-
+          **(0,75 pt)** Montrer que $p(C) = \dfrac{1}{2}$ ; où $C$ est l'évènement « Obtenir exactement une boule rouge »
+        reasoning: |-
+          « Exactement une rouge » se décompose en deux choix qui se font ENSEMBLE : choisir **la** boule rouge parmi les 4 rouges, ET choisir les **2 autres** boules parmi les 6 non-rouges. Le « et » entre deux groupes distincts déclenche le principe multiplicatif (rung R1) — on multiplie les deux combinaisons, on ne les additionne surtout pas.
+        steps:
+          - math: '\binom{4}{1} = 4'
+            note: "Choisir la seule boule rouge parmi les 4 rouges."
+          - math: '\binom{6}{2} = \dfrac{6\times 5}{2\times 1} = 15'
+            note: "Choisir les 2 autres boules parmi les 6 non-rouges (blanches ou vertes)."
+          - math: '\text{card}(C) = \binom{4}{1}\times\binom{6}{2} = 4\times 15 = 60'
+            note: "« une rouge ET deux non-rouges » : deux choix qui se combinent, principe multiplicatif."
+          - math: 'p(C) = \dfrac{60}{120} = \dfrac{1}{2}'
+            note: "Quotient de dénombrements, dénominateur 120."
+      - id: q4
+        part: "Partie C — « Au moins » : réunir tous les cas favorables"
+        stem: |-
+          **(0,75 pt)** Calculer $p(D)$ ; où $D$ est l'évènement « Obtenir au moins deux boules rouges »
+        reasoning: |-
+          « Au moins deux rouges » n'est pas un comptage d'un seul geste : il faut d'abord le traduire en cas disjoints. « Au moins deux » signifie « exactement deux » OU « exactement trois » — il ne peut pas y avoir plus de trois rouges dans un tirage de 3 boules. Ces deux cas sont incompatibles, donc principe additif : on compte chacun, puis on additionne. Chaque cas est lui-même un comptage multiplicatif (des rouges ET des non-rouges), comme à la question précédente ; on n'oublie pas $\binom{6}{0}=1$ pour le cas « trois rouges » — il n'y a qu'une seule façon de ne prendre aucune boule non-rouge.
+        steps:
+          - math: '\binom{4}{2}\times\binom{6}{1} = 6\times 6 = 36'
+            note: "Exactement 2 rouges : 2 rouges parmi 4, ET 1 non-rouge parmi 6."
+          - math: '\binom{4}{3}\times\binom{6}{0} = 4\times 1 = 4'
+            note: "Exactement 3 rouges : 3 rouges parmi 4, et aucune non-rouge (une seule façon de n'en choisir aucune)."
+          - math: '\text{card}(D) = 36+4 = 40'
+            note: "« au moins 2 » = « exactement 2 » ou « exactement 3 » : deux cas incompatibles, on additionne."
+          - math: 'p(D) = \dfrac{40}{120} = \dfrac{1}{3}'
+            note: "Contrôle : p(0 rouge) + p(1 rouge) + p(2 rouges) + p(3 rouges) = (20+60+36+4)/120 = 120/120 = 1. Cohérent."
