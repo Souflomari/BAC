@@ -7,20 +7,22 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). L'unique entrée ci-dessous est une transcription FIDÈLE de
-# l'unique entrée « vérifié » de docs/sujets/maths/structures-algebriques.md
-# (re-fetch AlloSchool indépendant + diff caractère-par-caractère,
-# agent-vérificateur-adversarial, 2026-07-12) — le SEUL sujet vérifié
-# recensé pour cette notion : 2019, session normale, filière Sciences
-# Mathématiques (A et B, BIOF), « Exercice 1 » sur la copie (barème
-# 3,5 points). Un seul sujet est disponible parce que « Structures
+# exercises.yaml). Les QUATRE entrées ci-dessous sont des transcriptions
+# FIDÈLES des quatre entrées « vérifié » de
+# docs/sujets/maths/structures-algebriques.md (re-fetch AlloSchool
+# indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial)
+# — TOUS les sujets vérifiés recensés à ce jour pour cette notion : 2019
+# (Exercice 1, vérifié 2026-07-12), 2020 (Exercice 2, vérifié 2026-08-05),
+# 2022 (Exercice 4, vérifié 2026-08-05), 2024 (Exercice 4, vérifié
+# 2026-08-05) ; les quatre en session normale, filière Sciences
+# Mathématiques (A et B, BIOF), barème 3,5 points chacun. « Structures
 # algébriques » est un chapitre spécifique à la filière SM (absent de
-# l'épreuve Sciences Expérimentales) — un recensement à une seule entrée
-# vérifiée est donc l'état attendu, pas un signal de recherche incomplète ;
+# l'épreuve Sciences Expérimentales) — un recensement borné aux sujets SM
+# est donc l'état attendu, pas un signal de recherche incomplète ;
 # introuvable = absent, jamais inventé. Raisonnement rédigé à la voix
-# experte de la maison sur 100 % des questions, citant les rungs R1–R4 et
-# R7 ; barème transcrit tel quel dans les énoncés ; conventions KaTeX
-# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# experte de la maison sur 100 % des questions, citant les rungs R1–R7 ;
+# barème transcrit tel quel dans les énoncés ; conventions KaTeX (block
+# scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash entre guillemets doubles).
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x1 transcrit le MÊME sujet que
@@ -31,24 +33,45 @@
 # préfère l'écarter de la banque pour éviter le recoupement sur la même
 # page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
-# content/pc/reactions-acido-basiques/bank.yaml.
+# content/pc/reactions-acido-basiques/bank.yaml. bk-2020-n-x2, bk-2022-n-x4
+# et bk-2024-n-x4 (ajoutés 2026-08-05) ne recoupent aucun autre sommet :
+# aucun ne figure dans exercises.yaml.
 #
-# SCOPE NOTE (divulgation honnête, authoring-side) : la question 3 du sujet
-# (« Montrer que G est un sous-groupe de (E,∗) ») mobilise la notion de
-# SOUS-GROUPE, que lesson.md ne définit nulle part comme un rung à part
-# entière — R3 pose les quatre axiomes du groupe, R4 la commutativité, mais
-# aucun rung n'introduit le critère de sous-groupe ni même le mot
-# « sous-groupe » en tant que concept enseigné (grep vérifié : zéro
-# occurrence dans lesson.md hors ce recoupement d'exercice). exercises.yaml
-# (r-bac, q3) contourne déjà ce trou en invoquant un « critère du
-# sous-groupe » sans le rattacher à un rung. Le champ `reasoning` de la
-# question q7 ci-dessous évite d'aggraver ce trou : au lieu d'invoquer ce
-# critère non enseigné, il re-décline le CHECKLIST À QUATRE AXIOMES du R3
-# (déjà appliqué à E en q6) un cran plus bas, sur G — une technique
-# strictement « dans le cadre », déjà démontrée dans cette notion, plutôt
-# qu'un concept neuf non couvert. Le trou pédagogique sous-jacent (aucun
-# rung « sous-groupe ») reste réel et mérite l'attention du
+# SCOPE NOTE 1 (divulgation honnête, authoring-side — SOUS-GROUPE) : la
+# question 3 du sujet 2019 (« Montrer que G est un sous-groupe de (E,∗) »)
+# mobilise la notion de SOUS-GROUPE, que lesson.md ne définit nulle part
+# comme un rung à part entière — R3 pose les quatre axiomes du groupe, R4 la
+# commutativité, mais aucun rung n'introduit le critère de sous-groupe ni
+# même le mot « sous-groupe » en tant que concept enseigné (grep vérifié :
+# zéro occurrence dans lesson.md hors ces recoupements d'exercices).
+# exercises.yaml (r-bac, q3) contourne déjà ce trou en invoquant un
+# « critère du sous-groupe » sans le rattacher à un rung. Le champ
+# `reasoning` de la question q7 de bk-2019-n-x1 évite d'aggraver ce trou :
+# au lieu d'invoquer ce critère non enseigné, il re-décline le CHECKLIST À
+# QUATRE AXIOMES du R3 (déjà appliqué à E en q6) un cran plus bas, sur G —
+# une technique strictement « dans le cadre », déjà démontrée dans cette
+# notion, plutôt qu'un concept neuf non couvert. LA MÊME SITUATION RECURRE
+# DEUX FOIS dans les entrées ajoutées 2026-08-05, et reçoit le MÊME
+# traitement (checklist à quatre axiomes restreinte, jamais de « critère »
+# non enseigné) : bk-2022-n-x4 q1 (« E est un sous-groupe de (M2(ℝ),+) ») et
+# bk-2024-n-x4 q8 (« ℝ×ℝ* est un sous-groupe de (ℂ×ℂ*,T) »). Le trou
+# pédagogique sous-jacent (aucun rung « sous-groupe ») reste réel — trois
+# sujets sur quatre le mobilisent désormais — et mérite l'attention du
 # pédagogy-architect si ce chapitre est repris.
+#
+# SCOPE NOTE 2 (divulgation honnête, authoring-side — INTÈGRE, nouveau
+# 2026-08-05) : bk-2022-n-x4 (questions 4-a à 4-c) demande de montrer que
+# l'anneau E est INTÈGRE, puis d'en déduire qu'il n'est pas un corps ; le
+# rappel de tête d'énoncé du sujet lui-même qualifie déjà (ℤ,+,×)
+# d'« anneau commutatif unitaire et intègre ». Ce mot n'est défini NULLE
+# PART dans lesson.md (grep vérifié : zéro occurrence de « intègre » ou
+# « intégrité ») — R5 (anneau) et R6 (corps) ne l'introduisent pas, alors
+# que c'est un troisième pilier classique du même trio anneau/intègre/corps.
+# Le champ `reasoning` de la question q9 ci-dessous introduit la définition
+# directement (absence de diviseurs de zéro), à l'aide du rappel de tête
+# d'énoncé sur ℤ plutôt que d'un rung — même logique de contournement
+# honnête que pour le sous-groupe. Trou pédagogique réel, distinct de celui
+# du sous-groupe : mérite lui aussi l'attention du pédagogy-architect.
 
 notion: maths/structures-algebriques
 
@@ -250,3 +273,499 @@ entries:
             note: "L'image du neutre de E est l'unité I, neutre de (F,×)."
           - math: '(F,\times) \ \text{est un groupe commutatif}'
             note: "La structure de groupe commutatif est transportée de E à F par φ, sans re-vérifier les axiomes sur F."
+
+  # ── bk-2020-n-x2 — 2020 N, Exercice 2 : partie stable de (M2(R),×), groupe non commutatif, homomorphisme depuis (R*,×) ──
+  - id: bk-2020-n-x2
+    title: "Partie stable de M2(ℝ), groupe non commutatif, homomorphisme depuis (ℝ*,×)"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 25 (sans suffixe F), AlloSchool element/109635. Exercice « au
+        choix » sur la copie (la page de consignes impose Exercice 3 et
+        Exercice 4, et laisse choisir Exercice 1 ou Exercice 2 ; cette
+        entrée transcrit Exercice 2, « Structures algébriques », barème
+        3,5 points). Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/structures-algebriques.md, section « 2020 —
+        session normale — Exercice 2 » (re-fetch AlloSchool indépendant +
+        diff caractère-par-caractère conforme au scan — valeurs, indices,
+        exposants, entrées de matrices, barèmes, numérotation, énoncé,
+        consignes — code sujet NS 25 et coin haut-gauche de la matrice de
+        E = 1 confirmés au zoom ; glyphes mojibake du scan ré-exporté
+        restitués et confirmés (ℝ=«¡», ×=«´», ∈=«Î», φ=«j»),
+        agent-vérificateur-adversarial, 2026-08-05).
+    intro: |-
+      **Structures algébriques (examen national, session normale 2020, Sciences Mathématiques — exercice au choix).**
+
+      On note par $M_2(\mathbb{R})$ l'ensemble des matrices carrées d'ordre deux. On rappelle que $(M_2(\mathbb{R}),+,\times)$ est un anneau non commutatif unitaire d'unité $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ et que $(\mathbb{R}^*,\times)$ est un groupe commutatif.
+
+      On considère le sous-ensemble $E$ de $M_2(\mathbb{R})$ défini par :
+
+      $$E = \left\{ \begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} \ /\ x \in \mathbb{R}\ \text{ et }\ y \in \mathbb{R}^* \right\}$$
+
+      L'exercice enchaîne stabilité (rung R1), groupe non commutatif (rung R3, avec le contraste du rung R4), puis un homomorphisme (rung R7) qui transporte cette fois la structure d'un groupe **déjà connu**, $(\mathbb{R}^*,\times)$, vers un sous-ensemble plus restreint $F$ — le sens inverse de l'isomorphisme du sujet 2019, mais le même geste.
+    questions:
+      - id: q1
+        part: "L'ensemble $E$ : stabilité, non-commutativité, un calcul de vérification"
+        stem: |-
+          **(0,5 pt)** Montrer que $E$ est une partie stable de $(M_2(\mathbb{R}),\times)$
+        reasoning: |-
+          La stabilité de $E$ (rung R1, ici restreinte à ce sous-ensemble de $M_2(\mathbb{R})$) demande que le produit de deux éléments de $E$ reste dans $E$. Appartenir à $E$ signifie une forme précise : un $1$ fixe en haut à gauche, un $0$ fixe en bas à gauche, un réel quelconque en haut à droite, et un réel **non nul** en bas à droite. On calcule le produit matriciel de deux éléments génériques de $E$ et on vérifie que le résultat garde cette forme.
+
+          Le seul point qui demande un peu d'attention est le coefficient en bas à droite du résultat : c'est un produit de deux réels non nuls, donc lui-même non nul — c'est précisément ce qui maintient le résultat dans $E$, et non dans un ensemble plus large où ce coefficient pourrait s'annuler.
+        steps:
+          - math: '\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix}\begin{pmatrix} 1 & a \\ 0 & b \end{pmatrix} = \begin{pmatrix} 1 & a+xb \\ 0 & yb \end{pmatrix}'
+            note: "Produit matriciel usuel, avec x,a réels quelconques et y,b réels non nuls."
+          - math: 'y \neq 0, \ b \neq 0 \ \Longrightarrow\ yb \neq 0'
+            note: "Produit de deux réels non nuls : le coefficient bas-droit du résultat reste non nul."
+          - math: '\begin{pmatrix} 1 & a+xb \\ 0 & yb \end{pmatrix} \in E'
+            note: "Le résultat a exactement la forme de E : E est stable pour × dans M2(R)."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Montrer que la multiplication n'est pas commutative dans $E$
+        reasoning: |-
+          Pour réfuter la commutativité (rung R2), un seul contre-exemple numérique suffit — pas besoin de traiter le cas général en entier, contrairement à ce qui serait nécessaire pour la **prouver**. On compare d'abord les deux formules générales, obtenues en échangeant les rôles des deux facteurs dans le calcul de la question précédente : les coefficients bas-droit coïncident toujours ($yb=by$, car $\times$ est commutative dans $\mathbb{R}$), mais rien ne garantit que les coefficients haut-droit coïncident.
+
+          Il suffit alors de choisir des valeurs numériques simples où ces deux coefficients haut-droit diffèrent effectivement, pour obtenir deux matrices produits distinctes selon l'ordre.
+        steps:
+          - math: '\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix}\begin{pmatrix} 1 & a \\ 0 & b \end{pmatrix} = \begin{pmatrix} 1 & a+xb \\ 0 & yb \end{pmatrix}, \qquad \begin{pmatrix} 1 & a \\ 0 & b \end{pmatrix}\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} = \begin{pmatrix} 1 & x+ay \\ 0 & by \end{pmatrix}'
+            note: "Les deux produits, dans les deux ordres : coefficients bas-droit égaux, mais coefficients haut-droit a priori différents."
+          - math: 'x=0,\ y=2,\ a=1,\ b=1: \qquad \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}'
+            note: "Un exemple numérique concret, produit dans le premier ordre."
+          - math: '\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 2 \\ 0 & 2 \end{pmatrix}'
+            note: "Le produit des deux mêmes matrices, dans l'autre ordre : le coefficient haut-droit passe de 1 à 2."
+          - math: '\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} \neq \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}'
+            note: "Un seul contre-exemple suffit : la multiplication n'est pas commutative dans E."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Vérifier que : $(\forall x \in \mathbb{R})(\forall y \in \mathbb{R}^*)$ ;
+
+          $$\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix}\begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix} = \begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix}\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$
+        reasoning: |-
+          Ce calcul prépare directement le symétrique du rung R2, mais dans un ensemble déjà su non commutatif (question précédente) : il faut donc vérifier les **deux** produits, dans les deux ordres, sans supposer que l'un entraîne l'autre. Rien à deviner — le candidat est donné par l'énoncé, il suffit d'appliquer deux fois la règle de multiplication établie à la question 1, et de constater que les deux produits valent l'unité $I$.
+
+          Le quotient par $y$ est licite à chaque étape : $y \in \mathbb{R}^*$, donc jamais nul.
+        steps:
+          - math: '\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix}\begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix} = \begin{pmatrix} 1 & -\dfrac{x}{y}+x\cdot\dfrac{1}{y} \\ 0 & y\cdot\dfrac{1}{y} \end{pmatrix}'
+            note: "Produit dans le premier ordre, règle de la question 1."
+          - math: '= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}'
+            note: "Les deux termes en x/y s'annulent, et y fois 1/y vaut 1 : le résultat est I."
+          - math: '\begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix}\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} = \begin{pmatrix} 1 & x-\dfrac{x}{y}\cdot y \\ 0 & \dfrac{1}{y}\cdot y \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}'
+            note: "Produit dans l'ordre inverse : mêmes annulations, même résultat I."
+      - id: q4
+        part: "$(E,\\times)$ : un groupe non commutatif"
+        stem: |-
+          **(0,5 pt)** Montrer que $(E,\times)$ est un groupe non commutatif.
+        reasoning: |-
+          On reprend la liste de contrôle du groupe (rung R3), restreinte à $E$, en réutilisant sans les refaire les résultats déjà établis : loi interne, c'est la stabilité de la question 1 ; associativité, un fait général admis — la multiplication des matrices est **toujours** associative dans $M_2(\mathbb{R})$, exactement comme la composition des applications l'était pour le groupe des symétries du rectangle au rung R3.
+
+          Restent le neutre et le symétrique. Le neutre $I = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ appartient à $E$ (avec $x=0$ réel et $y=1$ non nul) — c'est le rappel de tête d'énoncé. Le symétrique de chaque élément est exactement le candidat vérifié à la question 3 : il reste dans $E$ car $y \neq 0$ entraîne $\dfrac{1}{y} \neq 0$. Les quatre axiomes tiennent dans $E$ : $(E,\times)$ est un groupe, non commutatif par la question 2 (rung R4, mais en négatif — c'est le contre-exemple qui compte ici, pas la définition positive).
+        steps:
+          - math: '\times \ \text{interne sur } E \ (\text{q1}); \qquad \times \ \text{associative} \ (\text{produit matriciel, toujours associatif})'
+            note: "Deux axiomes : le premier vient de la question 1, le second est un fait général admis."
+          - math: 'I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \in E \quad (x=0,\ y=1\neq 0)'
+            note: "Le neutre I appartient à E."
+          - math: '\text{sym}\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} = \begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix} \in E \quad (\text{q3})'
+            note: "Le symétrique vérifié à la question 3 reste dans E, car y non nul donne 1/y non nul."
+          - math: '(E,\times) \ \text{est un groupe, non commutatif} \ (\text{q2})'
+            note: "Les quatre axiomes sont vérifiés dans E ; la non-commutativité vient de la question 2."
+      - id: q5
+        part: "Le sous-ensemble $F$ : un homomorphisme depuis $(\\mathbb{R}^*,\\times)$"
+        stem: |-
+          On considère le sous-ensemble $F$ de $E$ défini par : $F = \left\{ M(x) = \begin{pmatrix} 1 & x-1 \\ 0 & x \end{pmatrix} \ /\ x \in \mathbb{R}^* \right\}$. **(0,5 pt)** Montrer que l'application $\varphi$ définie par : $(\forall x \in \mathbb{R}^*)$ ; $\varphi(x) = M(x)$ est un homomorphisme de $(\mathbb{R}^*,\times)$ vers $(E,\times)$.
+        reasoning: |-
+          Un homomorphisme (le geste-pont du rung R7, sans exiger la bijectivité pour l'instant) demande que $\varphi$ transforme la loi $\times$ de $\mathbb{R}^*$ en la loi $\times$ de $E$ : $\varphi(x \times t)$ doit égaler $\varphi(x) \times \varphi(t)$, pour tous $x,t \in \mathbb{R}^*$. On développe le produit matriciel $\varphi(x) \times \varphi(t)$ avec la règle de la question 1 (adaptée : ici le coefficient haut-droit vaut $x-1$, pas un réel libre), et on doit retrouver exactement $\varphi(xt) = M(xt)$.
+
+          Le calcul se ramène à une simplification algébrique sur $\mathbb{R}$ : le $-1$ et le $t$ introduits par la formule de la question 1 s'annulent pour laisser $xt-1$, exactement le coefficient haut-droit attendu de $M(xt)$.
+        steps:
+          - math: '\varphi(x) = M(x) = \begin{pmatrix} 1 & x-1 \\ 0 & x \end{pmatrix}, \qquad \varphi(t) = M(t) = \begin{pmatrix} 1 & t-1 \\ 0 & t \end{pmatrix}'
+            note: "Les images de x et t par φ, deux réels non nuls quelconques."
+          - math: '\varphi(x)\times\varphi(t) = \begin{pmatrix} 1 & (t-1)+(x-1)t \\ 0 & xt \end{pmatrix}'
+            note: "Produit matriciel, règle de la question 1."
+          - math: '(t-1)+(x-1)t = t-1+xt-t = xt-1'
+            note: "Développement du coefficient haut-droit : les termes en t s'annulent."
+          - math: '\varphi(x)\times\varphi(t) = \begin{pmatrix} 1 & xt-1 \\ 0 & xt \end{pmatrix} = M(xt) = \varphi(x\times t)'
+            note: "Le résultat vaut exactement M(xt) : φ transforme × de ℝ* en × de E, c'est un homomorphisme."
+      - id: q6
+        stem: |-
+          **(1 pt)** En déduire que $(F,\times)$ est un groupe commutatif dont on précisera l'élément neutre.
+        reasoning: |-
+          On mobilise le pont du rung R7 une seconde fois, mais dans l'autre sens que le sujet 2019 : ici $\varphi$ part d'un groupe **déjà connu**, $(\mathbb{R}^*,\times)$, commutatif par le rappel de tête d'énoncé, et son homomorphisme (question précédente) a pour image exactement $F$ — $F$ est **défini** comme l'ensemble des $M(x)$ pour $x \in \mathbb{R}^*$, c'est-à-dire $\varphi(\mathbb{R}^*)$ lui-même. $\varphi$ est de plus trivialement bijective de $\mathbb{R}^*$ vers $F$ : deux réels distincts $x$ et $t$ donnent deux matrices distinctes, puisque leur coefficient bas-droit ($x$ ou $t$) les distingue déjà — $\varphi$ est injective, et surjective sur $F$ par construction même de $F$.
+
+          $\varphi$ est donc un isomorphisme de $(\mathbb{R}^*,\times)$ vers $(F,\times)$ : toute la structure de $(\mathbb{R}^*,\times)$ se transporte, sans re-vérifier aucun axiome sur $F$. $(F,\times)$ est un groupe commutatif, de neutre $\varphi(1) = M(1) = I$.
+        steps:
+          - math: 'F = \{M(x) : x \in \mathbb{R}^*\} = \varphi(\mathbb{R}^*)'
+            note: "F est par définition l'image de φ : φ est surjective de ℝ* sur F."
+          - math: '\varphi(x) = \varphi(t) \ \Longrightarrow\ x = t'
+            note: "Deux réels distincts donnent deux matrices distinctes (coefficient bas-droit x ou t) : φ est injective."
+          - math: '\varphi \ \text{est un isomorphisme de} \ (\mathbb{R}^*,\times) \ \text{vers} \ (F,\times)'
+            note: "Bijective et morphisme (question précédente) : φ est un isomorphisme."
+          - math: '(\mathbb{R}^*,\times) \ \text{groupe commutatif} \ \Longrightarrow\ (F,\times) \ \text{groupe commutatif}'
+            note: "La structure se transporte par φ, sans re-vérifier les axiomes sur F."
+          - math: '\varphi(1) = M(1) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I'
+            note: "Le neutre de F est l'image du neutre 1 de ℝ* : c'est l'unité I."
+
+  # ── bk-2022-n-x4 — 2022 N, Exercice 4 : anneau de matrices E≅Z[√3], homomorphisme, inversibilité, intégrité, corps ──
+  - id: bk-2022-n-x4
+    title: "Anneau de matrices E, homomorphisme vers (ℤ,×), inversibilité et intégrité"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, AlloSchool element/136604 (Exercice 4, « Structures
+        algébriques », barème 3,5 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/structures-algebriques.md, section
+        « 2022 — session normale — Exercice 4 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        agent-vérificateur-adversarial, 2026-08-05). Deux glyphes
+        d'ensembles distincts confirmés au zoom du scan — «¡»=ℝ (dans
+        M2(·)) et «¢»=ℤ (l'anneau des scalaires) — la lecture ℤ est
+        corroborée par la logique interne de l'énoncé (3-b, 4-b/c ne sont
+        vraies que sur ℤ) ET par l'usage identique de «¢» pour ℤ² dans
+        l'exercice d'arithmétique 2020 ; le glyphe «¢»=ℤ reste néanmoins
+        noté « à confirmer sur le scan » dans la source elle-même — caveat
+        porté ici tel quel, pas résolu par cette conversion.
+    intro: |-
+      **Structures algébriques (examen national, session normale 2022, Sciences Mathématiques).**
+
+      On rappelle que $(M_2(\mathbb{R}),+,\times)$ est un anneau unitaire non commutatif d'unité $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ et que $(\mathbb{Z},+,\times)$ est un anneau commutatif unitaire et intègre.
+
+      Soit $E = \left\{ M(a,b) = \begin{pmatrix} a & 3b \\ b & a \end{pmatrix} \ /\ (a,b) \in \mathbb{Z}^2 \right\}$
+
+      L'exercice construit un anneau de matrices à coefficients entiers (rung R5, avec deux propriétés supplémentaires — commutativité et unité, un cran plus loin que la définition de base), puis un homomorphisme multiplicatif (rung R7) vers $(\mathbb{Z},\times)$ qui sert d'outil de mesure : c'est lui qui décide, plus loin, quels éléments de $E$ sont inversibles.
+    questions:
+      - id: q1
+        part: "L'ensemble $E$ : sous-groupe additif, produit, anneau commutatif et unitaire"
+        stem: |-
+          **(0,25 pt)** Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$
+        reasoning: |-
+          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au rung R3, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$.
+
+          La stabilité se lit sur l'addition matricielle coefficient par coefficient : les coefficients de $M(a,b)+M(c,d)$ restent des entiers, puisque $\mathbb{Z}$ est stable pour $+$. L'associativité est héritée de $M_2(\mathbb{R})$ tout entier, où elle est déjà acquise. Le neutre $O$ et l'opposé de chaque $M(a,b)$ ont eux aussi des coefficients entiers, puisque $\mathbb{Z}$ est stable par passage à l'opposé — les quatre axiomes tiennent dans $E$.
+        steps:
+          - math: 'M(a,b)+M(c,d) = \begin{pmatrix} a & 3b \\ b & a \end{pmatrix} + \begin{pmatrix} c & 3d \\ d & c \end{pmatrix} = \begin{pmatrix} a+c & 3(b+d) \\ b+d & a+c \end{pmatrix} = M(a+c,\ b+d)'
+            note: "Addition coefficient par coefficient : a+c et b+d sont des entiers, E est stable pour +."
+          - math: '+ \ \text{associative sur } M_2(\mathbb{R}) \ (\text{fait général}) \ \Longrightarrow\ \text{associative sur } E'
+            note: "Héritée de M2(R) tout entier."
+          - math: 'O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = M(0,0) \in E, \qquad -M(a,b) = M(-a,\ -b) \in E'
+            note: "Le neutre O et l'opposé de chaque élément ont des coefficients entiers : ils restent dans E."
+          - math: 'E \ \text{est un sous-groupe de} \ (M_2(\mathbb{R}),+)'
+            note: "Les quatre axiomes sont vérifiés dans E."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Vérifier que pour tout $a,b,c$ et $d$ de $\mathbb{Z}$, on a : $M(a,b)\times M(c,d) = M(ac+3bd,\ ad+bc)$
+        reasoning: |-
+          Un calcul de vérification, pas de recherche : on développe le produit matriciel usuel, coefficient par coefficient, et on regroupe pour retrouver la forme $M(\cdot,\cdot)$. Ce calcul sera réutilisé tel quel dans presque toutes les questions qui suivent — il vaut la peine de le mener sans erreur une bonne fois pour toutes.
+        steps:
+          - math: 'M(a,b)\times M(c,d) = \begin{pmatrix} a & 3b \\ b & a \end{pmatrix}\begin{pmatrix} c & 3d \\ d & c \end{pmatrix} = \begin{pmatrix} ac+3bd & 3ad+3bc \\ bc+ad & 3bd+ac \end{pmatrix}'
+            note: "Produit matriciel usuel, ligne par colonne."
+          - math: '= \begin{pmatrix} ac+3bd & 3(ad+bc) \\ ad+bc & ac+3bd \end{pmatrix} = M(ac+3bd,\ ad+bc)'
+            note: "Regroupement : le résultat a exactement la forme M(·,·) annoncée."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Montrer que $(E,+,\times)$ est un anneau commutatif et unitaire.
+        reasoning: |-
+          La définition de base d'un anneau (rung R5) demande $(E,+)$ groupe commutatif, $\times$ associative, et $\times$ distributive par rapport à $+$. Ici, on nous demande d'aller un cran plus loin — exactement comme le rung R6 ajoute deux exigences à la définition de l'anneau pour obtenir un corps, sauf qu'ici on s'arrête à « commutatif et unitaire », sans exiger l'inversibilité de tous les éléments non nuls.
+
+          $(E,+)$ est un groupe (question 1) ; sa commutativité est héritée de $+$ sur $M_2(\mathbb{R})$, où elle tient toujours (même quand $\times$ ne l'est pas). Associativité et distributivité de $\times$ sont héritées de $M_2(\mathbb{R})$ tout entier, qui est déjà un anneau (rappel de tête d'énoncé). Reste ce qui ne s'hérite **pas** automatiquement : $M_2(\mathbb{R})$ lui-même n'est **pas** commutatif pour $\times$ (rappel), donc la commutativité de $\times$ sur $E$ doit être vérifiée directement, avec la formule de la question 2. L'unité $I=M(1,0)$, elle, s'hérite sans difficulté : $I$ est déjà l'unité de tout $M_2(\mathbb{R})$, et $I \in E$.
+        steps:
+          - math: '(E,+) \ \text{groupe commutatif} \ (\text{q1, hérité de } +\text{ sur } M_2(\mathbb{R}))'
+            note: "Premier ingrédient de l'anneau."
+          - math: '\times \ \text{associative et distributive par rapport à} \ + \ \text{sur } E \ (\text{héritées de } M_2(\mathbb{R}))'
+            note: "Deuxième et troisième ingrédients, hérités du grand anneau."
+          - math: 'M(a,b)\times M(c,d) = M(ac+3bd,\ ad+bc) = M(ca+3db,\ cb+da) = M(c,d)\times M(a,b)'
+            note: "Commutativité de × sur E : ne s'hérite pas de M2(R) (qui n'est pas commutatif), se vérifie directement via la formule de la question 2, et repose sur la commutativité de + et × dans Z."
+          - math: 'I = M(1,0) \in E \quad (1,0 \in \mathbb{Z})'
+            note: "I, déjà unité de tout M2(R), appartient à E : (E,+,×) est unitaire d'unité I."
+          - math: '(E,+,\times) \ \text{est un anneau commutatif et unitaire}'
+            note: "Toutes les conditions sont réunies."
+      - id: q4
+        part: "Un homomorphisme multiplicatif $\\varphi$ vers $(\\mathbb{Z},\\times)$"
+        stem: |-
+          Soit $\varphi$ l'application définie de $E$ vers $\mathbb{Z}$ par : $\forall(a,b) \in \mathbb{Z}^2$ ; $\varphi(M(a,b)) = |a^2 - 3b^2|$. **(0,5 pt)** Montrer que $\varphi$ est un homomorphisme de $(E,\times)$ vers $(\mathbb{Z},\times)$.
+        reasoning: |-
+          Le geste-pont du rung R7, appliqué à une application qui ne sera **pas** bijective (deux matrices peuvent avoir la même valeur $\varphi$) — mais un homomorphisme n'a besoin que de transformer la loi, pas d'être bijectif. Il faut montrer $\varphi(M(a,b)\times M(c,d)) = \varphi(M(a,b)) \times \varphi(M(c,d))$, c'est-à-dire $|(ac+3bd)^2 - 3(ad+bc)^2| = |a^2-3b^2| \cdot |c^2-3d^2|$, en utilisant la formule du produit établie à la question 2.
+
+          Le calcul algébrique clé — développer $(ac+3bd)^2 - 3(ad+bc)^2$ et le factoriser en $(a^2-3b^2)(c^2-3d^2)$ — est un peu long, mais chaque terme se simplifie proprement ; la valeur absolue neutralise ensuite tout problème de signe.
+        steps:
+          - math: '\varphi\big(M(a,b)\times M(c,d)\big) = \varphi\big(M(ac+3bd,\ ad+bc)\big) = |(ac+3bd)^2 - 3(ad+bc)^2|'
+            note: "Image par φ du produit, via la formule de la question 2."
+          - math: '(ac+3bd)^2 - 3(ad+bc)^2 = a^2c^2+6abcd+9b^2d^2 - 3a^2d^2-6abcd-3b^2c^2'
+            note: "Développement des deux carrés."
+          - math: '= a^2c^2 - 3b^2c^2 - 3a^2d^2 + 9b^2d^2 = c^2(a^2-3b^2) - 3d^2(a^2-3b^2) = (a^2-3b^2)(c^2-3d^2)'
+            note: "Regroupement : le facteur commun (a²−3b²) apparaît dans les deux moitiés."
+          - math: '\varphi\big(M(a,b)\times M(c,d)\big) = |a^2-3b^2|\cdot|c^2-3d^2| = \varphi\big(M(a,b)\big)\times\varphi\big(M(c,d)\big)'
+            note: "Valeur absolue d'un produit = produit des valeurs absolues : φ est un homomorphisme."
+      - id: q5
+        part: "Inversibilité dans $(E,\\times)$"
+        stem: |-
+          Soit $M(a,b) \in E$. **(0,25 pt)** Montrer que $M(a,b)\times M(a,-b) = (a^2 - 3b^2)\cdot I$
+        reasoning: |-
+          Un calcul de vérification direct, avec la formule de la question 2 : on remplace $c$ par $a$ et $d$ par $-b$, et on doit retrouver un multiple scalaire de l'unité $I$. Ce résultat sert de charnière pour les deux questions suivantes : il relie $\varphi(M(a,b))$ (le nombre $a^2-3b^2$, au signe près) à la question, très concrète, de l'inversibilité de $M(a,b)$.
+        steps:
+          - math: 'M(a,b)\times M(a,-b) = M\big(a\cdot a + 3b\cdot(-b),\ a\cdot(-b)+b\cdot a\big)'
+            note: "Formule de la question 2, avec c = a et d = −b."
+          - math: '= M(a^2-3b^2,\ 0)'
+            note: "Le second terme s'annule : −ab+ab = 0."
+          - math: 'M(a^2-3b^2,\ 0) = \begin{pmatrix} a^2-3b^2 & 0 \\ 0 & a^2-3b^2 \end{pmatrix} = (a^2-3b^2)\cdot I'
+            note: "Une matrice M(k,0) est exactement k fois l'unité I."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que si $M(a,b)$ est inversible dans $(E,\times)$ alors $\varphi(M(a,b)) = 1$
+        reasoning: |-
+          On suppose $M(a,b)$ inversible dans $E$ : il existe $N \in E$ avec $M(a,b)\times N = I$ (l'unité de $E$, question 3). On applique $\varphi$ aux deux membres, en utilisant qu'il s'agit d'un homomorphisme (question 4) : $\varphi(M(a,b))\times \varphi(N) = \varphi(I)$.
+
+          Reste à calculer $\varphi(I)$ et à conclure : $\varphi(I) = \varphi(M(1,0)) = |1-0| = 1$. Or $\varphi(M(a,b))$ et $\varphi(N)$ sont, par définition, des valeurs absolues d'entiers — donc des entiers **positifs ou nuls**. Un produit de deux entiers positifs ou nuls qui vaut $1$ ne laisse qu'une possibilité : les deux valent $1$.
+        steps:
+          - math: 'M(a,b) \ \text{inversible dans} \ E: \quad \exists N \in E,\ M(a,b)\times N = I'
+            note: "Définition de l'inversibilité dans (E,×)."
+          - math: '\varphi\big(M(a,b)\times N\big) = \varphi(M(a,b))\times\varphi(N) = \varphi(I) \quad (\varphi\ \text{homomorphisme, q4})'
+            note: "On applique φ aux deux membres."
+          - math: '\varphi(I) = \varphi(M(1,0)) = |1^2-3\cdot0^2| = 1'
+            note: "Calcul direct de φ sur l'unité I = M(1,0)."
+          - math: '\varphi(M(a,b))\times\varphi(N) = 1, \quad \varphi(M(a,b)),\varphi(N) \in \mathbb{N} \ \Longrightarrow\ \varphi(M(a,b)) = 1'
+            note: "Produit de deux entiers positifs ou nuls égal à 1 : les deux facteurs valent 1."
+      - id: q7
+        stem: |-
+          On suppose que $\varphi(M(a,b)) = 1$. **(0,5 pt)** Montrer que $M(a,b)$ est inversible dans $(E,\times)$ et préciser son inverse.
+        reasoning: |-
+          $\varphi(M(a,b))=1$ signifie $|a^2-3b^2|=1$, donc $a^2-3b^2 = 1$ ou $a^2-3b^2=-1$ — deux cas, selon le signe. Dans les deux cas, on repart de l'identité de la question 5 : $M(a,b)\times M(a,-b) = (a^2-3b^2)\cdot I$, et il suffit de multiplier chaque membre par le scalaire $(a^2-3b^2)$ lui-même (qui vaut $\pm1$, donc son carré vaut $1$) pour faire apparaître $I$ tout seul.
+
+          Le résultat se formule d'un coup, sans distinguer les deux cas dans la réponse finale : l'inverse de $M(a,b)$ est $(a^2-3b^2)\cdot M(a,-b)$ — une matrice à coefficients entiers (donc bien dans $E$), puisque $a^2-3b^2=\pm1 \in \mathbb{Z}$.
+        steps:
+          - math: 'M(a,b)\times M(a,-b) = (a^2-3b^2)\cdot I \quad (\text{q5}), \qquad a^2-3b^2 = \pm 1'
+            note: "On repart de l'identité de la question 5 ; le facteur vaut ±1 puisque φ(M(a,b))=1."
+          - math: '(a^2-3b^2)\cdot\Big[M(a,b)\times M(a,-b)\Big] = (a^2-3b^2)^2\cdot I = I'
+            note: "On multiplie les deux membres par (a²−3b²) ; son carré vaut 1."
+          - math: 'M(a,b)\times\Big[(a^2-3b^2)\cdot M(a,-b)\Big] = I'
+            note: "Le scalaire (a²−3b²) se déplace librement dans le produit matriciel."
+          - math: '(a^2-3b^2)\cdot M(a,-b) \in E \quad (\text{coefficients entiers, car } a^2-3b^2=\pm1)'
+            note: "L'inverse proposé reste bien dans E."
+          - math: 'M(a,b) \ \text{est inversible dans} \ (E,\times), \quad M(a,b)^{-1} = (a^2-3b^2)\cdot M(a,-b)'
+            note: "Grâce à la commutativité de × sur E (q3), l'identité tient aussi dans l'autre ordre : c'est bien l'inverse."
+      - id: q8
+        part: "Intégrité de l'anneau, et $(E,+,\\times)$ est-il un corps ?"
+        stem: |-
+          **(0,25 pt)** Montrer que : $\forall(a,b) \in \mathbb{Z}^2$ ; $\varphi(M(a,b)) = 0 \Longleftrightarrow a = b = 0$
+        reasoning: |-
+          Le sens facile d'abord : si $a=b=0$, alors $a^2-3b^2=0$, donc $\varphi(M(0,0))=0$. Le sens qui demande un peu plus : si $\varphi(M(a,b))=0$, c'est-à-dire $a^2=3b^2$, montrer que $a$ et $b$ sont **forcément** nuls tous les deux.
+
+          On raisonne par l'absurde sur $b$ : si $b \neq 0$, l'égalité $a^2=3b^2$ donnerait $\left(\dfrac{a}{b}\right)^2 = 3$, c'est-à-dire $\sqrt{3} = \left|\dfrac{a}{b}\right|$, un rationnel — or $\sqrt{3}$ est irrationnel, un fait classique du cursus (preuve par l'absurde, comme pour $\sqrt{2}$), pas un nouvel outil de ce chapitre. Contradiction : $b=0$, puis $a^2=0$ donne $a=0$.
+        steps:
+          - math: 'a=b=0 \ \Longrightarrow\ a^2-3b^2 = 0 \ \Longrightarrow\ \varphi(M(0,0)) = 0'
+            note: "Sens direct, immédiat."
+          - math: '\varphi(M(a,b))=0 \ \Longleftrightarrow\ a^2 = 3b^2'
+            note: "Reformulation de l'hypothèse : |a²−3b²|=0 équivaut à a²=3b²."
+          - math: '\text{Si } b\neq 0: \quad \left(\dfrac{a}{b}\right)^2 = 3 \ \Longrightarrow\ \sqrt{3} = \left|\dfrac{a}{b}\right| \in \mathbb{Q}'
+            note: "Supposer b non nul forcerait √3 à être rationnel."
+          - math: '\sqrt{3} \notin \mathbb{Q} \ (\text{fait classique}) \ \Longrightarrow\ b = 0 \ \Longrightarrow\ a^2 = 0 \ \Longrightarrow\ a = 0'
+            note: "Contradiction : b doit être nul, puis a aussi."
+      - id: q9
+        stem: |-
+          **(0,25 pt)** En déduire que l'anneau $(E,+,\times)$ est intègre.
+        reasoning: |-
+          Un anneau est **intègre** quand il n'a pas de « diviseurs de zéro » : aucun produit de deux éléments non nuls ne peut donner l'élément nul, autrement dit $M\times N = O \Rightarrow M=O$ ou $N=O$ — exactement la propriété que le rappel de tête d'énoncé attribue déjà à $(\mathbb{Z},+,\times)$.
+
+          Avec cette définition, la démonstration tient en une ligne grâce à ce qui précède : si $M(a,b)\times M(c,d) = O = M(0,0)$, on applique $\varphi$ (homomorphisme, question 4) pour obtenir $\varphi(M(a,b))\times\varphi(M(c,d)) = \varphi(O) = 0$ dans $\mathbb{Z}$ — un produit d'entiers nul force l'un des deux facteurs à être nul, et la question précédente (8) traduit chaque facteur nul en $M(a,b)=O$ ou $M(c,d)=O$.
+        steps:
+          - math: 'M(a,b)\times M(c,d) = O = M(0,0)'
+            note: "Hypothèse de départ : un produit qui donne la matrice nulle."
+          - math: '\varphi\big(M(a,b)\times M(c,d)\big) = \varphi(M(a,b))\times\varphi(M(c,d)) = \varphi(O) = 0'
+            note: "On applique φ (homomorphisme, q4) ; φ(O) = |0²−3·0²| = 0."
+          - math: '\varphi(M(a,b))\times\varphi(M(c,d)) = 0 \ \text{dans} \ \mathbb{Z} \ \Longrightarrow\ \varphi(M(a,b))=0 \ \text{ou} \ \varphi(M(c,d))=0'
+            note: "Un produit d'entiers nul force l'un des deux facteurs à être nul."
+          - math: '\varphi(M(a,b))=0 \ \Longrightarrow\ M(a,b)=O \quad (\text{q8}); \qquad \text{de même pour} \ M(c,d)'
+            note: "La question 8 traduit φ nul en matrice nulle."
+          - math: '(E,+,\times) \ \text{est intègre}'
+            note: "Aucun produit de deux éléments non nuls ne peut donner O."
+      - id: q10
+        stem: |-
+          **(0,25 pt)** Est-ce que $(E,+,\times)$ est un corps ? justifier votre réponse.
+        reasoning: |-
+          Un corps (rung R6) demande, en plus de l'anneau commutatif et unitaire déjà établi (question 3), que **tout** élément non nul possède un symétrique pour $\times$ — pas seulement certains d'entre eux. La question 6 donne exactement le test : un élément inversible doit forcément avoir $\varphi = 1$. Il suffit donc d'exhiber un seul élément non nul de $E$ dont $\varphi$ diffère de $1$ pour conclure que ce n'est **pas** un corps — même logique de contre-exemple qu'au rung R6 pour $(\mathbb{Z},+,\times)$.
+
+          $M(2,0)$ convient : il est non nul ($a=2\neq0$), mais $\varphi(M(2,0)) = |4-0| = 4 \neq 1$. Par la contraposée de la question 6, $M(2,0)$ n'est pas inversible dans $(E,\times)$.
+        steps:
+          - math: 'M(2,0) = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} \in E, \qquad M(2,0) \neq O'
+            note: "Un élément non nul de E, choisi pour le test."
+          - math: '\varphi(M(2,0)) = |2^2 - 3\cdot0^2| = 4 \neq 1'
+            note: "Sa valeur par φ n'est pas 1."
+          - math: '\text{Si } M(2,0) \ \text{était inversible}, \ \text{alors} \ \varphi(M(2,0))=1 \quad (\text{q6, contraposée})'
+            note: "Or ce n'est pas le cas : contradiction."
+          - math: 'M(2,0) \ \text{est non nul et non inversible dans} \ (E,\times) \ \Longrightarrow\ (E,+,\times) \ \text{ne constitue pas un corps}'
+            note: "Un seul contre-exemple suffit."
+
+  # ── bk-2024-n-x4 — 2024 N, Exercice 4 : loi interne T sur C×C*, groupe non commutatif, sous-groupe R×R* ──
+  - id: bk-2024-n-x4
+    title: "Loi interne sur ℂ×ℂ*, groupe non commutatif et sous-groupe ℝ×ℝ*"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, AlloSchool element/145739 (Exercice 4 sur le corps de
+        l'épreuve, « Structures algébriques », barème 3,5 points — la page
+        de consignes annonce par erreur ces deux exercices sous des
+        libellés inversés, Exercice 5 pour les structures et Exercice 4
+        pour l'arithmétique ; cette entrée suit l'intitulé confirmé sur le
+        corps de l'épreuve, Exercice 4). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/structures-algebriques.md, section
+        « 2024 — session normale — Exercice 4 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        numérotation confirmée sur le corps de l'épreuve, loi T et formule
+        de l'inverse avec barre de conjugaison sur b confirmées au zoom,
+        agent-vérificateur-adversarial, 2026-08-05). Sujet transcrit en
+        Unicode propre (aucun mojibake sur ce scan).
+    intro: |-
+      **Structures algébriques (examen national, session normale 2024, Sciences Mathématiques).**
+
+      On considère dans $\mathbb{C}\times\mathbb{C}^*$ la loi de composition interne $T$ définie par :
+
+      $$\forall\big((a,b),(c,d)\big) \in \big(\mathbb{C}\times\mathbb{C}^*\big)^2 \ ; \ (a,b)\,T\,(c,d) = \big(a\bar{d}+c,\ bd\big)$$
+
+      ($\bar{d}$ étant le conjugué du nombre complexe $d$)
+
+      L'exercice reprend l'enchaînement complet du chapitre — commutativité, associativité, neutre et symétrique (rung R2), puis les quatre axiomes du groupe (rung R3) et le contraste avec un groupe non commutatif (rung R4), pour finir sur un sous-groupe (même technique que pour $G$ au sujet 2019). La loi $T$ vit sur un ensemble de **couples**, pas sur $\mathbb{C}$ seul : chaque calcul mobilise en plus les propriétés du conjugué déjà connues du chapitre sur les nombres complexes.
+    questions:
+      - id: q1
+        part: "La loi $T$ : un exemple qui casse la commutativité"
+        stem: |-
+          **(0,5 pt)** Vérifier que $(i,2)\,T\,(1,i) = (2,2i)$, puis calculer $(1,i)\,T\,(i,2)$
+        reasoning: |-
+          Un calcul de vérification, deux fois : on applique la définition de $T$ à chaque couple, en faisant attention à ne conjuguer que la **seconde** composante du second couple — c'est elle, $\bar{d}$, qui porte la barre dans la formule, jamais $b$ ni $c$.
+
+          Le second calcul, $(1,i)\,T\,(i,2)$, utilise exactement les mêmes deux couples que le premier, mais dans l'ordre inverse : c'est ce contraste, voulu, qui va servir à la question suivante.
+        steps:
+          - math: '(i,2)\,T\,(1,i) = \big(i\cdot\bar{i}+1,\ 2\cdot i\big)'
+            note: "Définition de T, avec a=i, b=2, c=1, d=i : on conjugue d, pas b ni c."
+          - math: '\bar{i} = -i, \quad i\cdot(-i) = -i^2 = 1 \ \Longrightarrow\ (i,2)\,T\,(1,i) = (1+1,\ 2i) = (2,\ 2i)'
+            note: "Le conjugué de i est −i ; i fois −i vaut 1 (car i² = −1)."
+          - math: '(1,i)\,T\,(i,2) = \big(1\cdot\bar{2}+i,\ i\cdot2\big) = (2+i,\ 2i)'
+            note: "Même formule, couples échangés : 2 est réel, son conjugué vaut 2 lui-même."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** En déduire que la loi $T$ n'est pas commutative dans $\mathbb{C}\times\mathbb{C}^*$
+        reasoning: |-
+          La question précédente a calculé, pour les deux mêmes couples $(i,2)$ et $(1,i)$, le résultat de $T$ dans les deux ordres possibles : $(2,2i)$ d'un côté, $(2+i,2i)$ de l'autre. Il suffit de comparer : les premières composantes diffèrent ($2 \neq 2+i$), donc les deux couples résultats sont distincts. Un seul contre-exemple suffit pour réfuter la commutativité, exactement comme au rung R2.
+        steps:
+          - math: '(i,2)\,T\,(1,i) = (2,\ 2i), \qquad (1,i)\,T\,(i,2) = (2+i,\ 2i) \quad (\text{q1})'
+            note: "Les deux résultats déjà calculés."
+          - math: '2 \neq 2+i \ \Longrightarrow\ (i,2)\,T\,(1,i) \neq (1,i)\,T\,(i,2)'
+            note: "Les premières composantes diffèrent : les deux couples résultats sont distincts."
+          - math: 'T \ \text{est non commutative dans} \ \mathbb{C}\times\mathbb{C}^*'
+            note: "Un contre-exemple suffit pour réfuter la commutativité."
+      - id: q3
+        part: "Associativité de $T$"
+        stem: |-
+          **(0,5 pt)** Montrer que la loi $T$ est associative dans $\mathbb{C}\times\mathbb{C}^*$
+        reasoning: |-
+          Comme au rung R2, l'associativité met en jeu **trois** éléments à la fois et ne se lit sur aucune table : on la teste par le calcul, en développant les deux parenthésages jusqu'au bout. Ici, chaque application de $T$ fait apparaître un conjugué — le point de vigilance est de bien conjuguer le **produit** $df$ dans le second parenthésage, en utilisant la propriété déjà connue du chapitre sur les complexes : le conjugué d'un produit est le produit des conjugués.
+
+          Les deux parenthésages, une fois développés, donnent exactement la même paire — la clé étant que $\overline{df} = \bar{d}\,\bar{f}$.
+        steps:
+          - math: '\big((a,b)\,T\,(c,d)\big)\,T\,(e,f) = \big(a\bar{d}+c,\ bd\big)\,T\,(e,f) = \big((a\bar{d}+c)\bar{f}+e,\ bdf\big)'
+            note: "On combine d'abord (a,b) et (c,d), puis le résultat avec (e,f)."
+          - math: '(c,d)\,T\,(e,f) = (c\bar{f}+e,\ df)'
+            note: "On combine d'abord (c,d) et (e,f)."
+          - math: '(a,b)\,T\big((c,d)\,T\,(e,f)\big) = (a,b)\,T\,(c\bar{f}+e,\ df) = \big(a\,\overline{df}+(c\bar{f}+e),\ bdf\big)'
+            note: "On combine (a,b) avec le résultat précédent."
+          - math: '\overline{df} = \bar{d}\,\bar{f} \ \Longrightarrow\ a\,\overline{df} = a\bar{d}\bar{f}'
+            note: "Propriété connue du conjugué : le conjugué d'un produit est le produit des conjugués."
+          - math: '\big((a,b)\,T\,(c,d)\big)\,T\,(e,f) = \big(a\bar{d}\bar{f}+c\bar{f}+e,\ bdf\big) = (a,b)\,T\big((c,d)\,T\,(e,f)\big)'
+            note: "Les deux parenthésages coïncident : T est associative."
+      - id: q4
+        part: "L'élément neutre de $T$"
+        stem: |-
+          **(0,25 pt)** Vérifier que $(0,1)$ est l'élément neutre pour $T$ dans $\mathbb{C}\times\mathbb{C}^*$
+        reasoning: |-
+          Un neutre (rung R2) doit vérifier l'égalité **dans les deux ordres** — $(a,b)\,T\,(0,1) = (a,b)$ **et** $(0,1)\,T\,(a,b) = (a,b)$ — puisque $T$ vient de se révéler non commutative (question 2) : l'une des deux égalités ne garantit jamais l'autre ici. On applique simplement la définition de $T$ dans les deux sens, en se rappelant que le conjugué d'un réel est lui-même.
+        steps:
+          - math: '(a,b)\,T\,(0,1) = \big(a\bar{1}+0,\ b\cdot1\big) = (a,\ b)'
+            note: "Le conjugué de 1 (réel) est 1 lui-même."
+          - math: '(0,1)\,T\,(a,b) = \big(0\cdot\bar{b}+a,\ 1\cdot b\big) = (a,\ b)'
+            note: "Cette fois c'est 0 fois le conjugué de b, quel qu'il soit, qui vaut 0."
+          - math: '(a,b)\,T\,(0,1) = (0,1)\,T\,(a,b) = (a,b)'
+            note: "Les deux ordres redonnent (a,b) : (0,1) est bien le neutre."
+      - id: q5
+        part: "Le symétrique pour $T$, et la structure de groupe"
+        stem: |-
+          **(0,5 pt)** Vérifier que $\forall(a,b) \in \mathbb{C}\times\mathbb{C}^*$ ; $(a,b)\,T\left(-\dfrac{a}{\bar{b}},\ \dfrac{1}{b}\right) = (0,1)$
+        reasoning: |-
+          Rien à deviner : le candidat symétrique est donné par l'énoncé, il suffit de l'injecter dans la définition de $T$ et de retrouver le neutre $(0,1)$ de la question précédente. Le calcul mobilise une propriété du conjugué déjà connue : le conjugué d'un quotient est le quotient des conjugués, donc $\overline{1/b} = 1/\bar{b}$ — c'est précisément ce qui fait s'annuler la première composante.
+        steps:
+          - math: '(a,b)\,T\left(-\dfrac{a}{\bar{b}},\ \dfrac{1}{b}\right) = \left(a\cdot\overline{\left(\dfrac1b\right)} + \left(-\dfrac{a}{\bar b}\right),\ \ b\cdot\dfrac1b\right)'
+            note: "Application directe de la définition de T."
+          - math: '\overline{\left(\dfrac1b\right)} = \dfrac{1}{\bar b} \ \Longrightarrow\ a\cdot\dfrac{1}{\bar b} - \dfrac{a}{\bar b} = 0'
+            note: "Conjugué d'un quotient : les deux termes de la première composante s'annulent."
+          - math: '(a,b)\,T\left(-\dfrac{a}{\bar{b}},\ \dfrac{1}{b}\right) = (0,\ 1)'
+            note: "Première composante nulle, seconde égale à 1 : c'est bien le neutre."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que $(\mathbb{C}\times\mathbb{C}^*,\ T)$ est un groupe non commutatif.
+        reasoning: |-
+          On coche les quatre axiomes du rung R3, sur $\mathbb{C}\times\mathbb{C}^*$ tout entier cette fois, en réutilisant ce qui précède. Loi interne : pour $(a,b),(c,d)$ avec $b,d$ non nuls, $bd$ reste non nul (produit de deux complexes non nuls) et $a\bar{d}+c$ reste un complexe — le résultat reste dans $\mathbb{C}\times\mathbb{C}^*$. Associativité : question 3. Neutre : $(0,1)$, question 4. Symétrique de chaque $(a,b)$ : le candidat vérifié à la question 5, dont la seconde composante $\dfrac{1}{b}$ reste non nulle puisque $b\neq0$.
+
+          Les quatre axiomes tiennent : $(\mathbb{C}\times\mathbb{C}^*,T)$ est un groupe. Non commutatif, par la question 2.
+        steps:
+          - math: 'b,d \neq 0 \ \Longrightarrow\ bd \neq 0 \ \Longrightarrow\ (a,b)\,T\,(c,d) = (a\bar d + c,\ bd) \in \mathbb{C}\times\mathbb{C}^*'
+            note: "Loi interne : le produit de deux complexes non nuls reste non nul."
+          - math: '\text{Associative (q3), neutre } (0,1) \ (\text{q4})'
+            note: "Deux axiomes déjà établis aux questions précédentes."
+          - math: '\text{sym}(a,b) = \left(-\dfrac{a}{\bar b},\ \dfrac1b\right) \in \mathbb{C}\times\mathbb{C}^* \quad (\text{q5}, \ b\neq0 \Rightarrow \tfrac1b\neq0)'
+            note: "Le symétrique vérifié à la question 5 reste dans l'ensemble."
+          - math: '(\mathbb{C}\times\mathbb{C}^*,\ T) \ \text{est un groupe, non commutatif} \ (\text{q2})'
+            note: "Les quatre axiomes sont vérifiés ; la non-commutativité vient de la question 2."
+      - id: q7
+        part: "Le sous-ensemble $\\mathbb{R}\\times\\mathbb{R}^*$ : stabilité et sous-groupe"
+        stem: |-
+          **(0,5 pt)** Montrer que $\mathbb{R}\times\mathbb{R}^*$ est stable par la loi de composition interne $T$
+        reasoning: |-
+          Comme au rung R1, la stabilité demande que le résultat de $T$ reste dans $\mathbb{R}\times\mathbb{R}^*$ dès que les deux couples de départ y sont. Ici, la différence avec $\mathbb{C}\times\mathbb{C}^*$ tout entier tient à un seul détail : quand $d$ est réel, son conjugué $\bar{d}$ vaut $d$ lui-même — la barre de conjugaison disparaît purement et simplement.
+        steps:
+          - math: '(a,b),(c,d) \in \mathbb{R}\times\mathbb{R}^* \ \Longrightarrow\ a,c \in \mathbb{R},\ b,d \in \mathbb{R}^*, \quad \bar{d} = d'
+            note: "d est réel, donc égal à son propre conjugué."
+          - math: '(a,b)\,T\,(c,d) = (ad+c,\ bd)'
+            note: "La barre de conjugaison disparaît : la définition de T se réduit à des opérations réelles."
+          - math: 'ad+c \in \mathbb{R}, \qquad bd \neq 0 \ (\text{produit de deux réels non nuls})'
+            note: "Les deux composantes du résultat restent dans ℝ, et bd reste non nul."
+          - math: '(a,b)\,T\,(c,d) \in \mathbb{R}\times\mathbb{R}^*'
+            note: "ℝ×ℝ* est stable pour T."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Montrer que $\mathbb{R}\times\mathbb{R}^*$ est un sous-groupe du groupe $(\mathbb{C}\times\mathbb{C}^*,\ T)$
+        reasoning: |-
+          Montrer qu'un sous-ensemble est un sous-groupe, c'est montrer qu'il est **lui-même** un groupe pour la même loi — la démarche déjà suivie pour $G$ au sujet 2019 : on recoche les quatre axiomes du rung R3, restreints cette fois à $\mathbb{R}\times\mathbb{R}^*$.
+
+          Stabilité : question précédente. Associativité : héritée de $\mathbb{C}\times\mathbb{C}^*$ tout entier (question 3), où elle tient pour tous les éléments, donc en particulier pour ceux de $\mathbb{R}\times\mathbb{R}^*$. Neutre : $(0,1)$ a bien $0 \in \mathbb{R}$ et $1 \in \mathbb{R}^*$, donc $(0,1) \in \mathbb{R}\times\mathbb{R}^*$. Symétrique : pour $(a,b)$ réel, la barre de conjugaison sur $b$ disparaît, donc le symétrique $\left(-\dfrac{a}{b},\dfrac1b\right)$ (question 5, avec $\bar b = b$) a ses deux composantes réelles, la seconde non nulle — il reste dans $\mathbb{R}\times\mathbb{R}^*$.
+        steps:
+          - math: '\text{stable} \ (\text{q7}); \qquad \text{associative, héritée de } \mathbb{C}\times\mathbb{C}^* \ (\text{q3})'
+            note: "Deux axiomes : le premier vient de la question précédente, le second est hérité de l'ensemble tout entier."
+          - math: '(0,1) \in \mathbb{R}\times\mathbb{R}^* \quad (0 \in \mathbb{R},\ 1 \in \mathbb{R}^*)'
+            note: "Le neutre appartient bien à ℝ×ℝ*."
+          - math: '(a,b) \in \mathbb{R}\times\mathbb{R}^* \ \Longrightarrow\ \bar b = b \ \Longrightarrow\ \text{sym}(a,b) = \left(-\dfrac{a}{b},\ \dfrac1b\right) \in \mathbb{R}\times\mathbb{R}^*'
+            note: "Le symétrique de la question 5, avec b réel : les deux composantes restent réelles, la seconde non nulle."
+          - math: '\mathbb{R}\times\mathbb{R}^* \ \text{est un sous-groupe de} \ (\mathbb{C}\times\mathbb{C}^*,\ T)'
+            note: "Les quatre axiomes sont vérifiés dans ℝ×ℝ*."
