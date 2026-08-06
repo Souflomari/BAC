@@ -43,7 +43,7 @@ On considère la suite numérique $(u_n)_{n \in \mathbb{N}}$ définie par : $u_0
 
 ## 2020 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/109797
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-80918, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 109797 → course-438/upload-80918 re-dérivé, 4 pages) ; diff caractère-par-caractère conforme au scan p.2 ($u_0=\frac{3}{2}$, $u_{n+1}=\frac{2u_n}{2u_n+5}$, encadrement $0<u_{n+1}\le\frac{2}{5}u_n$ puis $0<u_n\le\frac{3}{2}\left(\frac{2}{5}\right)^n$, suite auxiliaire $v_n=\frac{4u_n}{2u_n+3}$ de raison $\frac{2}{5}$, numérotation 1/2/3-a-b/4-a-b et barème imprimé 0,25 + 0,5 + 1 + 0,5 + 0,75 + 1 = 4 pts, conforme aux 4 points de la table des composantes p.1) ; mathématiques re-dérivées : $v_{n+1}=\frac{8u_n}{5(2u_n+3)}=\frac{2}{5}v_n$ — $(v_n)$ est bien géométrique de raison $\frac{2}{5}$ ($v_0=1$) ; encadrement cohérent ($u_1=\frac{3}{8}\le\frac{3}{5}$) et terme général $u_n=\frac{3\left(\frac{2}{5}\right)^n}{4-2\left(\frac{2}{5}\right)^n}$ retrouvé et recoupé sur $u_0,u_1$ ; filière Sciences Expérimentales et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 4 points
@@ -75,7 +75,7 @@ Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{3}{2}$ et $u_{n+1}
 
 ## 2021 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/127180
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-84139, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 127180 → course-438/upload-84139 re-dérivé, 4 pages) ; diff caractère-par-caractère conforme au scan p.2 ($u_0=\frac{1}{2}$, $u_{n+1}=\frac{u_n}{3-2u_n}$, encadrement $0<u_n\le\frac{1}{2}$, rapport $\frac{u_{n+1}}{u_n}\le\frac{1}{2}$, majoration $0<u_n\le\left(\frac{1}{2}\right)^{n+1}$, $v_n=\ln(3-2u_n)$, invariant $\frac{1}{u_{n+1}}-1=3\left(\frac{1}{u_n}-1\right)$, numérotation 1/2/3/4/5 et barème imprimé 0,25 + 0,5 + 0,5 + 0,5 + 0,75 + 0,5 + 0,5 + 0,5 = 4 pts, conforme aux 4 points de la table des composantes p.1 ; doublon d'étiquette « Exercice 2 » sur la page 2 re-constaté) ; mathématiques re-dérivées : $\frac{1}{u_{n+1}}=\frac{3}{u_n}-2$ donc $\frac{1}{u_{n+1}}-1=3\left(\frac{1}{u_n}-1\right)$ — suite auxiliaire géométrique de raison 3 confirmée ($w_0=1$, $w_n=3^n$), d'où $u_n=\frac{1}{1+3^n}$, recoupé sur $u_0=\frac{1}{2}$ et $u_1=\frac{1}{4}$ ; encadrements cohérents ($3-2u_n\in[2,3)$ ⟹ rapport $\le\frac{1}{2}$ ⟹ $u_n\le\left(\frac{1}{2}\right)^{n+1}$) ; filière Sciences Expérimentales et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 4 points
@@ -112,7 +112,7 @@ Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{1}{2}$ et $u_{n+1}
 
 ## 2024 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/144505
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 144505 → course-438/upload-87124 re-dérivé, 4 pages) ; diff caractère-par-caractère conforme au scan p.2 ($u_0=4$, $u_{n+1}=\frac{4u_n-2}{1+u_n}$, forme $u_{n+1}=4-\frac{6}{1+u_n}$, encadrement $2\le u_n\le 4$, différence $u_{n+1}-u_n=\frac{(u_n-1)(2-u_n)}{1+u_n}$, $v_n=\frac{2-u_n}{1-u_n}$ de raison $\frac{2}{3}$, terme général $u_n=1+\frac{1}{1-\left(\frac{2}{3}\right)^{n+1}}$ avec l'exposant $n+1$ vérifié au zoom, numérotation 1/2/3 et barème imprimé 0,25 + 0,5 + 0,25 + 0,5 + 0,5 + 0,5 + 0,5 = 3 pts, conforme aux 3 points de la table des composantes p.1) ; mathématiques re-dérivées : $2-u_{n+1}=\frac{2(2-u_n)}{1+u_n}$ et $1-u_{n+1}=\frac{3(1-u_n)}{1+u_n}$ donc $v_{n+1}=\frac{2}{3}v_n$ — géométrique de raison $\frac{2}{3}$ confirmée ($v_0=\frac{2}{3}$, $v_n=\left(\frac{2}{3}\right)^{n+1}$) ; inversion $u=\frac{2-v}{1-v}=1+\frac{1}{1-v}$ redonne exactement la formule de 3-b, recoupée sur $u_0=4$ et $u_1=\frac{14}{5}$ ; décroissance et limite 2 cohérentes avec l'encadrement ; filière Sciences Expérimentales et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 3 points
