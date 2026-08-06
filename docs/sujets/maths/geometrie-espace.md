@@ -83,7 +83,7 @@ Dans l'espace rapporté à un repère orthonormé direct $(O,\vec{i},\vec{j},\ve
 
 ## 2024 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/144505
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page 2. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 144505 → course-438/upload-87124 re-dérivé, 4 pages, page 2), diff caractère-par-caractère conforme au scan (points $A(-1,0,-1)$, $B(1,2,-1)$, vecteur normal $\vec{n}(2,-2,1)$, centre $\Omega(2,-1,0)$ et rayon $5$ — glyphe zoomé : c'est bien un rayon $5$ et non $r^2=25$ —, énoncé/numérotation et barème $0{,}25+0{,}25+0{,}5\times5 = 3$) ; maths re-dérivées : plan $(P)$ $2x-2y+z+3=0$ (via $\vec{n}\cdot\overrightarrow{AM}=0$ en $A$), $d(\Omega,(P))=|9|/3=3$, cercle $(\Gamma)$ de rayon $\sqrt{5^2-3^2}=4$, $(\Delta):(2+2t,-1-2t,t)$, $H(0,1,-1)$ sur $(\Delta)$ à $t=-1$ avec $\Omega H=3$ et $H$ = milieu de $[AB]$, $\vec{n}\cdot\overrightarrow{AB}=0$ ⇒ médiatrice ; filière Sciences Expérimentales (مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية خيار فرنسية) et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 3 points

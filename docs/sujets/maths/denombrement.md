@@ -55,7 +55,7 @@ Une urne contient dix boules : trois boules blanches, trois boules vertes et qua
 
 ## 2024 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/144505
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page 3. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 144505 → course-438/upload-87124 re-dérivé, 4 pages, page 3), diff caractère-par-caractère conforme au scan (urne de 7 boules : 4 portant le n°1, 2 portant le n°2, 1 portant le n°3 ; tirage simultané de 2 ; $p(A)=\tfrac13$, $p(B)=\tfrac{5}{21}$, questions $p(A\cap B)$ et indépendance ; barème $0{,}5\times4 = 2$) ; maths re-dérivées : $\binom{7}{2}=21$, $A$ = même numéro → $\binom{4}{2}+\binom{2}{2}=6+1=7$ ⇒ $p(A)=\tfrac{7}{21}=\tfrac13$, $B$ = somme $4$ → $(1,3):4\times1$ et $(2,2):1$ = $5$ ⇒ $p(B)=\tfrac{5}{21}$, $A\cap B=\{(2,2)\}$ ⇒ $p(A\cap B)=\tfrac{1}{21}$, $p(A)p(B)=\tfrac{5}{63}\neq\tfrac{1}{21}$ ⇒ non indépendants ; classification combinatoire-pure confirmée indépendamment (tirage simultané unique, comptage par combinaisons, aucun conditionnement / arbre pondéré / $p(A/B)$ / loi d'une variable aléatoire) — c'est bien du dénombrement et non des probabilités conditionnelles ; filière Sciences Expérimentales (مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية خيار فرنسية) et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 2 points
