@@ -127,7 +127,7 @@ non confirmé par lecture des pages intérieures.
 | I | Cinétique saponification + dosage acide carboxylique | `suivi-temporel-vitesse` ✓ (cross `transformations-lentes-rapides`) + `reactions-acido-basiques` ✓ |
 | II | Dispersion prisme + diffraction | `propagation-onde-lumineuse` ✓ |
 | III | Plutonium 238 (décroissance, activité) | `decroissance-radioactive` ✓ |
-| IV | RC (échelon) + LC + modulation d'amplitude | `rc-charge` + `rlc-serie` + `ondes-em-modulation` (couverture ; p.6–8 à transcrire) |
+| IV | RC (échelon) + LC + modulation d'amplitude | `rc-charge` + `rlc-serie` + `ondes-em-modulation` — **transcrit (non vérifié) 2026-08-06** (p.5–7, 3 entrées, README §3) |
 | V | Mouvement d'un parachutiste | `chute-mouvements-plans` |
 
 ### Sujets à carte partielle (5) — seul l'exercice transcrit est consigné

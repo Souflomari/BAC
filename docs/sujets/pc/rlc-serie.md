@@ -287,3 +287,60 @@ $t = 27,5$ (fin du tracé). Les extrema tombent donc sur les multiples impairs
 de $2,5\ \text{ms}$ et les passages par zéro sur les repères
 $0, 5, 10, 15, 20, 25$ : période **$T_0 = 10\ \text{ms}$** (lectures
 confirmées à la mesure de pixels lors de la vérification).
+
+---
+
+## 2021 — session normale — Exercice IV (Partie II)
+Source: https://www.alloschool.com/element/127287
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84195, page(s) 6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de
+  la Partie II transcrite ici : 2,0 points
+- Images lues : `.../course-422/upload-84195/0006-big.jpg`
+- Pages du scan : 6 (sur 8)
+- Portée : **Partie II (oscillations non amorties dans un circuit LC)** de
+  l'exercice IV du sujet 2021 N, transcrite ici. La **Partie I (réponse d'un
+  dipôle RC à un échelon)** est sous `rc-charge.md` ; la **Partie III
+  (modulation d'amplitude)** est sous `ondes-em-modulation.md`. Régime
+  respecté : la courbe (figure 4) est purement sinusoïdale d'amplitude
+  constante (cas non amorti au programme, cf. rappel de périmètre en tête de
+  fichier).
+
+**II- Oscillations électriques non amorties dans un circuit LC.**
+
+On réalise le montage représenté sur le schéma de la figure 3. Ce montage est
+constitué du condensateur précédent $D$, initialement chargé, et d'une bobine
+d'inductance $L$ et de résistance négligeable. Un système d'acquisition
+informatisé permet de tracer la courbe représentant l'évolution de la charge
+$q(t)$ du condensateur (figure 4).
+
+1. (0,25) Préciser, parmi les trois régimes d'oscillations, le régime mis en
+   évidence par la courbe de la figure 4.
+2. (0,5) Établir l'équation différentielle vérifiée par la charge $q(t)$ du
+   condensateur.
+3. (0,5) Trouver l'expression de la période propre $T_0$ de l'oscillateur en
+   fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(
+   \dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
+4. (0,25) Déterminer graphiquement la valeur de $T_0$.
+5. (0,5) En déduire la valeur de $L$. (on prend $\pi^{2} = 10$).
+
+*Figure 3 (schéma) :* boucle série ; à gauche, la bobine $L$ (dessinée en
+spires, étiquette « L » à côté) ; flèche de courant $i$ en haut, orientée vers
+la droite ; à droite, le condensateur $D$ (deux traits parallèles) avec une
+flèche $u_C$ orientée vers le haut à côté.
+
+*Figure 4 (courbe) :* ordonnée $q\ (\mu\text{C})$ graduée $72$, $0$, $-72$
+(traits horizontaux) ; abscisse $t\ (\text{ms})$ graduée aux repères $7$,
+$14$, $21$, $28$ (graduations secondaires régulières et égales entre ces
+repères). Courbe sinusoïdale d'allure cosinus, d'**amplitude constante** :
+elle part d'une valeur proche du maximum au voisinage de $t = 0$ (au-delà de
+la graduation $72$, valeur exacte non chiffrée sur l'axe), décroît en coupant
+l'axe des abscisses au voisinage du repère $t = 7$, atteint un minimum
+(au-delà de $-72$, valeur exacte non chiffrée) au voisinage de $t = 14$,
+remonte en coupant l'axe au voisinage du repère $t = 21$, et retrouve un
+maximum comparable à celui du départ au voisinage du repère $t = 28$, avant de
+redescendre en fin de tracé *(alignement des passages par zéro et des
+extrema sur les repères imprimés lu au zoom ; amplitude exacte au-delà de
+$72\ \mu\text{C}$ non chiffrée — lecture à confirmer)*.

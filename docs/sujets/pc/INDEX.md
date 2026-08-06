@@ -340,8 +340,9 @@ absents de l'épreuve PC-SPC récente) :**
   lue.
 - 2020 N Ex IV-II/III (RLC amortissement/entretien → `rlc-serie`) — pages 5–6 lues,
   transcription à ajouter sous `rlc-serie.md`.
-- 2021 N Ex IV (RC + LC + modulation), Ex V (parachutiste →
-  `chute-mouvements-plans`) — pages 6–8 non lues.
+- ~~2021 N Ex IV (RC + LC + modulation)~~ **transcrit 2026-08-06** — 3
+  entrées (`rc-charge`, `rlc-serie`, `ondes-em-modulation`), pages 5–7. Ex V
+  (parachutiste → `chute-mouvements-plans`) déjà transcrit et vérifié.
 
 ## 7. Prochaine passe recommandée
 1. **Années 2008–2016** : résoudre les `upload-<ID>` (fetch `element/<n>`) et lire

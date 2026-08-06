@@ -115,3 +115,65 @@ l'axe des abscisses vers $t = 4\ \text{ms}$ *(lecture d'échelle à confirmer)*.
 > charge deux condensateurs $C_1 = 7,5\ \mu\text{F}$ et $C_2$ (inconnue) montés
 > **en parallèle**, et l'on exploite la droite $q = f(u_{AB})$ (figure 2) pour
 > obtenir la capacité équivalente $C_{eq}$ puis $C_2$.
+
+---
+
+## 2021 — session normale — Exercice IV (Partie I)
+Source: https://www.alloschool.com/element/127287
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84195, page(s) 5–6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de
+  la Partie I transcrite ici : 1,0 point
+- Images lues : `.../course-422/upload-84195/0005-big.jpg`, `.../0006-big.jpg`
+- Pages du scan : 5 et 6 (sur 8)
+- Portée : Exercice IV (« Réponse d'un dipôle RC à un échelon de tension /
+  Oscillations électriques non amorties dans un circuit LC / Modulation
+  d'amplitude d'un signal ») se compose de trois parties partageant le même
+  condensateur $D$. **Partie I (réponse RC)** est transcrite ici. **Partie II
+  (oscillations LC)** est transcrite sous `rlc-serie.md`. **Partie III
+  (modulation d'amplitude)** est transcrite sous `ondes-em-modulation.md`.
+
+**Exercice IV — Les circuits des appareils électriques.**
+
+Les circuits des appareils électriques, utilisés dans plusieurs domaines de la
+vie courante, sont constitués de condensateurs, de bobines, de conducteurs
+ohmiques, de circuits intégrés … L'objectif de cet exercice est d'étudier :
+- la réponse d'un dipôle RC à un échelon de tension ;
+- les oscillations électriques non amorties dans un circuit LC ;
+- la modulation d'amplitude d'un signal.
+
+**I- Réponse d'un dipôle RC à un échelon de tension**
+
+On réalise le montage, représenté sur le schéma de la figure 1, constitué des
+éléments suivants :
+- un générateur idéal de tension de force électromotrice $E$ ;
+- un condensateur $D$ de capacité $C$ initialement déchargé ;
+- un conducteur ohmique de résistance $R = 10^{3}\ \Omega$ ;
+- un interrupteur $K$.
+
+On ferme l'interrupteur à un instant choisi comme origine des dates $t = 0$.
+Un système d'acquisition informatisé permet de tracer la courbe de la
+figure 2, représentant les variations de $\dfrac{du_c}{dt}$ en fonction de
+$u_c$ ; $u_c$ étant la tension à un instant $t$ aux bornes du condensateur et
+$\dfrac{du_c}{dt}$ sa dérivée par rapport au temps.
+
+1. (0,5) Montrer que l'équation différentielle vérifiée par la tension
+   $u_c(t)$ s'écrit sous la forme : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c +
+   \dfrac{E}{RC}$.
+2. (0,5) En exploitant la courbe de la figure 2, montrer que la capacité du
+   condensateur est : $C = 12\ \mu\text{F}$.
+
+*Figure 1 (schéma) :* boucle série ; à gauche, un générateur idéal $E$
+(symbole cercle) ; flèche de courant $i$ en haut à gauche, orientée vers la
+droite ; branche haute = conducteur ohmique $R$ (rectangle, étiquette « R »
+au-dessus) ; à droite, le condensateur $D$ (deux traits parallèles), avec une
+flèche $u_C$ orientée vers le haut à côté ; branche basse = interrupteur $K$
+(étiquette « K » en dessous), refermant la boucle vers le générateur.
+
+*Figure 2 (courbe) :* ordonnée $\dfrac{du_c}{dt}\ (\text{V.s}^{-1})$ graduée
+$0$, $500$, $1000$ (traits horizontaux) ; abscisse $u_c\ (\text{V})$ graduée
+$0$, $6$, $12$. Droite décroissante partant exactement du point $(0\,;\,
+1000)$, passant exactement par $(6\,;\,500)$, et atteignant l'axe des
+abscisses exactement en $(12\,;\,0)$.
