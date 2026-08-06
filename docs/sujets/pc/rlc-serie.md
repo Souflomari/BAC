@@ -113,8 +113,71 @@ confirmer)*.
 
 ## 2020 — session normale — Exercice IV (parties II et III)
 Source: https://www.alloschool.com/element/109742
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-80870, page(s) 5-6. À faire vérifier (README §3).
+Statut: vérifié — 2026-08-06, vérification adverse indépendante par un second
+agent (README §3), **figures re-lues élément par élément sur l'image et
+lectures graphiques arbitrées à la mesure de pixels**. `element/109742`
+re-fetché sans reprendre les URLs citées : `course-422/upload-80870`
+(**7 pages**) re-dérivé et **conforme** ; pp. 5–6 confirmées comme portant
+les parties II et III. En-tête **confirmé sur l'image du scan** (p. 1 :
+« NS 28F » ; « شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » =
+Sciences Physiques BIOF ; مدة الإنجاز 3 h ; المعامل 7 ; « Exercice IV
+(5 points) ») ; le chapeau et le bandeau « **EXERCICE IV ( 5 points)** »
+figurent en bas de la **p. 4** (non transcrits, hors portée RLC) —
+*NB : le résumé HTML d'AlloSchool annonce « 2ème BAC Sciences Mathématiques
+B », ce que l'image dément ; seule l'image fait foi.* Diff caractère par
+caractère des pp. 5–6 (libellés, numérotation, indices/exposants, valeurs et
+unités : $R = 90\ \Omega$, $L = 1\ \text{H}$, $\pi^{2} = 10$,
+$u_G(t) = k.i(t)$, $i(t) = I_m\cos(\frac{2\pi}{T_0}.t + \varphi)$,
+$t_1 = 16\ \text{ms}$, grandeurs $C$, $k_0$, $I_m$, $T_0$, $\varphi$, $E_t$,
+$E_{e1}$) — **aucun écart** (seules différences : accents/espaces
+typographiques, « Etablir » → « Établir »). **Partition du barème vérifiée
+sur la marge du scan** : partie I (p. 5) $0{,}5{+}0{,}5{+}0{,}5 = 1{,}5$ ;
+partie II (p. 6) $0{,}25{+}0{,}5{+}0{,}5 = 1{,}25$ ; partie III (p. 6)
+$0{,}5{+}0{,}75{+}0{,}5{+}0{,}5 = 2{,}25$ ⇒ portée transcrite ici
+$1{,}25 + 2{,}25 = 3{,}5$ pts sur $5{,}0$ — **conforme**, et la partie I est
+bien un échelon de tension sur dipôle RL (portée `dipole-rl.md`).
+**Schémas jugés élément par élément (zooms, jamais d'après la prose de
+l'entrée)** — *fig. 3* : flèche $i$ vers la droite au coin haut-gauche,
+$R$ (rectangle, étiquette sous le rectangle) en haut, bobine $(L,r)$ en
+spires à droite (étiquette à gauche du symbole), condensateur $C$ (deux
+traits parallèles, étiquette à droite) sur la branche gauche, branche basse
+= simple fil : **conforme**, avec la précision ajoutée ci-dessous que la
+figure 3 ne porte **ni interrupteur $K$ ni flèche $u_L$**, contrairement à
+la figure 1 (le raccourci « même disposition que la figure 1, avec $E$
+remplacé par $C$ » pouvait laisser croire le contraire). *Fig. 5* :
+identique à la figure 3 **plus** un générateur $G$ (cercle étiqueté « G »)
+inséré **dans la branche basse**, entre le pied de la branche $C$ et le pied
+de la branche $(L,r)$ : **conforme**. **Lectures graphiques arbitrées**
+(grilles et courbes mesurées au pixel) — *fig. 4* : pas de graduation
+numérique sur l'axe $u_C$ (seul « 0 » est écrit), repères $5/10/15/20/25$
+portés par les traits noirs (pas de 5 ms, quadrillage bleu à mi-carreau) ;
+les extrema tombent **exactement** sur ces repères (maxima $t = 0$ / 10 / 20
+et un dernier vers 30, minima $t = 5$ / 15 / 25 ; passages par zéro à
+$2{,}5$ / $7{,}5$ / $12{,}5$ / $17{,}5$ / $22{,}5$ / $27{,}5$ ms) ⇒
+**pseudo-période $T = 10\ \text{ms}$ confirmée, drapeau levé**. *Fig. 6* :
+ordonnées $8/4/0/-4/-8$ mA, quadrillage fin bleu au pas de $1\ \text{ms}$ et
+$0{,}8\ \text{mA}$ ; amplitude **constante** $\pm 8\ \text{mA}$ ; la courbe
+part de l'axe à $t=0$ en décroissant ; minima à $2{,}5$ / $12{,}5$ /
+$22{,}5$ ms, maxima à $7{,}5$ / $17{,}5$ / $27{,}5$ ms, passages par zéro
+sur $0/5/10/15/20/25$ ⇒ **$T_0 = 10\ \text{ms}$ et $\varphi = \pi/2$ —
+les six drapeaux « lecture à confirmer » sont levés**. **Physique
+re-dérivée et cohérente** : $T = T_0 = 2\pi\sqrt{LC}$ avec $T = 10$ ms,
+$L = 1$ H et $\pi^2 = 10$ ⇒ $C = T^{2}/(4\pi^{2}L) = 2{,}5\ \mu\text{F}$
+(valeur ronde — corrobore indépendamment la lecture $T = 10$ ms) ; la
+période lue sur la fig. 6 est identique à la pseudo-période de la fig. 4,
+comme l'énoncé l'affirme ; entretien ⇔ $k_0 = R + r$, et la partie I donne
+$r = u_L(\infty)/I_0 = 1/0{,}1 = 10\ \Omega$ d'où $k_0 = 100$ SI, cohérent
+avec $\tau = L/(R+r) = 10$ ms lu sur la tangente de la fig. 2 (ce qui
+« vérifie $L = 1$ H ») ; $E_t = \frac12 L I_m^{2} = 3{,}2\times10^{-5}$ J ;
+à $t_1 = 16$ ms, $i = I_m\cos(3{,}7\pi) \approx +4{,}7$ mA (la courbe donne
+$\approx +5$ mA, écart d'un demi-carreau fin, dans l'épaisseur du trait) ⇒
+$E_{e1} \approx 2{,}1\times10^{-5}$ J. Équation de la partie I imprimée sur
+la p. 5 dimensionnellement homogène ($\text{A.s}^{-1}$ partout). **Aucune
+divergence bloquante** ⇒ promue. *(Quatre corrections de précision ont été
+apportées pendant cette passe — descriptions des figures 3, 4 et 6, et la
+ligne de titre, qui présentait l'intitulé de la partie I comme celui de
+l'exercice alors que la page de garde en donne deux ; elles demandent, par
+discipline, une re-lecture par un tiers.)*
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan : « الفيزياء والكيمياء » / « شعبة العلوم التجريبية مسلك
@@ -122,7 +185,9 @@ course-422/upload-80870, page(s) 5-6. À faire vérifier (README §3).
 - Code sujet : NS 28F · Barème de l'exercice complet (Ex IV) : 5 points ·
   Barème de la portée RLC transcrite ici (parties II + III) : 3,5 points
 - Images lues : `.../course-422/upload-80870/0005-big.jpg`,
-  `.../0006-big.jpg` (et `0001-big.jpg` pour la couverture / le barème)
+  `.../0006-big.jpg` (et `0001-big.jpg` pour la couverture / le barème ;
+  `0004-big.jpg`, relue à la vérification, porte le bandeau « EXERCICE IV
+  ( 5 points) » et le chapeau de l'exercice)
 - Pages du scan : 5 et 6 (sur 7)
 - Portée : Exercice IV du sujet 2020 N est composé de trois parties **I, II,
   III** partageant le même montage (bobine $(L,r)$, résistance $R = 90\
@@ -135,9 +200,10 @@ course-422/upload-80870, page(s) 5-6. À faire vérifier (README §3).
   figure 5-6) forment le circuit RLC série proprement dit et sont
   transcrites intégralement ci-dessous.
 
-**Réponse d'un dipôle RL à un échelon de tension — II. Décharge d'un
-condensateur dans un dipôle RL — III. Entretien des oscillations dans un
-circuit RLC série.**
+**Exercice IV — intitulés de la page de garde : « Réponse d'un dipôle RL à un
+échelon de tension » / « Etude de l'amortissement et de l'entretien des
+oscillations dans un circuit RLC série » — II. Décharge d'un condensateur dans
+un dipôle RL — III. Entretien des oscillations dans un circuit RLC série.**
 
 **II - Décharge d'un condensateur dans un dipôle RL**
 
@@ -172,27 +238,34 @@ circuit dans le cas où $k = k_0$.
 4. (0,5) Trouver l'énergie électrique $E_{e1}$ emmagasinée dans le
    condensateur à l'instant $t_1 = 16\ \text{ms}$.
 
-*Figure 3 (schéma) :* boucle série (même disposition que la figure 1 de la
-partie I, avec $E$ remplacé par $C$) : coin haut-gauche, flèche $i$ vers la
-droite ; branche haute = $R$ (rectangle) ; coin haut-droit → descend vers la
-branche de droite = bobine $(L, r)$ (dessinée en spires) ; branche basse
-referme le circuit vers le coin bas-gauche ; branche gauche (remontant vers
-le coin haut-gauche) = condensateur $C$ (symbole à deux traits parallèles).
+*Figure 3 (schéma) :* boucle série : coin haut-gauche, flèche $i$ vers la
+droite ; branche haute = $R$ (rectangle, étiquette « R » sous le rectangle) ;
+coin haut-droit → descend vers la branche de droite = bobine $(L, r)$
+(dessinée en spires, étiquette « (L,r) » à gauche du symbole) ; branche basse
+= **simple fil** qui referme le circuit vers le coin bas-gauche ; branche
+gauche (remontant vers le coin haut-gauche) = condensateur $C$ (symbole à deux
+traits parallèles, étiquette « C » à droite). Même disposition que la figure 1
+de la partie I avec $E$ remplacé par $C$, **mais la figure 3 ne porte ni
+l'interrupteur $K$ ni la flèche de tension $u_L$** qui figurent, eux, sur la
+figure 1.
 
 *Figure 4 (courbe) :* $u_C$ (V) en fonction de $t$ (ms) ; **aucune valeur
-numérique** portée sur l'axe $u_C$ (seul le niveau $0$ est repéré) ; axe des
-temps gradué avec repères $5, 10, 15, 20, 25$. Oscillation pseudopériodique
-d'**amplitude décroissante** : la courbe part d'un maximum au voisinage de
-$t=0$ (le plus haut de la courbe), descend à un premier minimum (le plus
-profond de la courbe) au voisinage du repère $t=5$, remonte à un maximum
-(plus bas que celui de départ) au voisinage du repère $t=10$, redescend à un
-second minimum (moins profond que le premier) au voisinage du repère $t=15$,
-remonte à un maximum (plus bas que celui de $t=10$) au voisinage du repère
-$t=20$, puis redescend à un troisième minimum (le moins profond des trois) au
-voisinage du repère $t=25$, avant de remonter en fin de tracé. Les extrema
-successifs paraissent alignés sur les repères $5, 10, 15, 20, 25$, ce qui
-donnerait une pseudo-période lisible $T \approx 10\ \text{ms}$ *(lecture à
-confirmer)*.
+numérique** portée sur l'axe $u_C$ (seul le niveau $0$ est repéré, à gauche de
+l'origine) ; axe des temps gradué avec repères $5, 10, 15, 20, 25$ (traits
+noirs tous les $5\ \text{ms}$, quadrillage bleu secondaire à mi-carreau, soit
+$2,5\ \text{ms}$). Oscillation pseudopériodique d'**amplitude décroissante** :
+la courbe part à $t = 0$ de sa valeur la plus élevée (elle démarre au bord
+supérieur du cadre), descend à un premier minimum — le plus profond de la
+courbe — en $t = 5$, remonte à un maximum (plus bas que celui de départ) en
+$t = 10$, redescend à un second minimum (moins profond que le premier) en
+$t = 15$, remonte à un maximum (plus bas que celui de $t = 10$) en $t = 20$,
+redescend à un troisième minimum (le moins profond des trois) en $t = 25$,
+puis remonte vers un dernier maximum en fin de tracé, au voisinage du bord
+droit du cadre ($t \approx 30$). Les extrema tombent **exactement** sur les
+repères $5, 10, 15, 20, 25$ et les passages par zéro à mi-chemin
+($2,5$ ; $7,5$ ; $12,5$ ; $17,5$ ; $22,5$ ; $27,5\ \text{ms}$) : la
+pseudo-période lue vaut **$T = 10\ \text{ms}$** (lecture confirmée à la mesure
+de pixels lors de la vérification).
 
 *Figure 5 (schéma) :* même boucle série que la figure 3 (condensateur $C$ à
 gauche, $R$ en haut avec flèche $i$, bobine $(L, r)$ à droite), mais la
@@ -201,18 +274,16 @@ en série entre le bas de la branche $C$ et le bas de la branche $(L, r)$.
 
 *Figure 6 (courbe) :* $i$ (mA) en fonction de $t$ (ms) ; axe des ordonnées
 gradué $8, 4, 0, -4, -8$ ; axe des temps gradué avec repères $5, 10, 15, 20,
-25$, quadrillage secondaire fin (bleu). Sinusoïde d'**amplitude constante**,
-oscillant entre $+8$ et $-8$ mA. À $t=0$, la courbe est légèrement **sous**
-l'axe (valeur négative proche de $0$). Elle descend à un premier minimum
-$-8\ \text{mA}$ un peu avant le repère $t=5$ *(lecture à confirmer)*, remonte
-en coupant l'axe au voisinage du repère $t=5$, atteint un maximum $+8\
-\text{mA}$ entre les repères $5$ et $10$ *(lecture à confirmer)*, redescend
-en coupant l'axe au voisinage du repère $t=10$, atteint un minimum $-8\
-\text{mA}$ entre $10$ et $15$ *(lecture à confirmer)*, remonte en coupant
-l'axe au voisinage de $t=15$, atteint un maximum $+8\ \text{mA}$ entre $15$
-et $20$ *(lecture à confirmer)*, redescend en coupant l'axe au voisinage de
-$t=20$, atteint un minimum $-8\ \text{mA}$ entre $20$ et $25$ *(lecture à
-confirmer)*, puis remonte en coupant l'axe au voisinage de $t=25$ et amorce
-un nouveau maximum en fin de tracé. Le motif se répète avec une période
-lisible $T_0 \approx 10\ \text{ms}$ (écart entre maxima/minima de même type
-successifs) *(lecture à confirmer)*.
+25$ ; quadrillage secondaire fin (bleu) au pas de $1\ \text{ms}$ en abscisse
+et $0,8\ \text{mA}$ en ordonnée (5 subdivisions par carreau dans les deux
+directions). Sinusoïde d'**amplitude constante**, oscillant entre $+8$ et
+$-8$ mA. La courbe **part de l'axe à $t = 0$** ($i \approx 0$) en décroissant
+immédiatement, atteint un minimum $-8\ \text{mA}$ en $t = 2,5$, coupe l'axe
+en $t = 5$, atteint un maximum $+8\ \text{mA}$ en $t = 7,5$, coupe l'axe en
+$t = 10$, minimum $-8\ \text{mA}$ en $t = 12,5$, axe en $t = 15$, maximum
+$+8\ \text{mA}$ en $t = 17,5$, axe en $t = 20$, minimum $-8\ \text{mA}$ en
+$t = 22,5$, axe en $t = 25$, puis un dernier maximum $+8\ \text{mA}$ en
+$t = 27,5$ (fin du tracé). Les extrema tombent donc sur les multiples impairs
+de $2,5\ \text{ms}$ et les passages par zéro sur les repères
+$0, 5, 10, 15, 20, 25$ : période **$T_0 = 10\ \text{ms}$** (lectures
+confirmées à la mesure de pixels lors de la vérification).
