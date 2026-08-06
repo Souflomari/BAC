@@ -1,0 +1,439 @@
+# bank.yaml — la banque « S'entraîner » de suites-numeriques (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, [[exercise:]] à R10), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les trois entrées ci-dessous sont des transcriptions
+# FIDÈLES des trois entrées « vérifié — agent-vérificateur-adversarial,
+# 2026-08-06 » de docs/sujets/maths/suites-numeriques.md — les SEULES
+# entrées de ce lot vérifiées à ce jour : 2020 session normale, Exercice 1
+# (4 points), 2021 session normale, Exercice 2 (4 points) et 2024 session
+# normale, Exercice 1 (3 points) — toutes filière Sciences Expérimentales,
+# BIOF (SVT et Sciences Physiques). L'entrée 2019 (SM, Exercice 4 Partie II)
+# N'EST PAS reprise ici : elle est déjà le sommet de leçon r-bac
+# (exercises.yaml, marqueur [[exercise:r-bac]] à R10), et c'est la seule
+# entrée SM vérifiée du lot — il n'y a donc pas d'autre sujet SM vérifié
+# disponible pour peupler la banque de ce côté. Les entrées cross-listées
+# (fin de problème d'analyse : 2019 SM Partie II déjà citée, 2019/2022/2023
+# SExp — voir la section « Cross-lists » du fichier de transcription) ne
+# sont pas reprises non plus : ce ne sont pas des études de suite autonomes
+# et complètes au sens de la note de tête du fichier source. Raisonnement
+# rédigé à la voix experte de la maison sur 100 % des questions ; barème
+# transcrit tel quel dans les énoncés ; conventions KaTeX (block scalars
+# pour la prose, KaTeX brut entre apostrophes simples dans steps[].math,
+# notes sans backslash).
+#
+# SCOPE NOTE (divulgation honnête, authoring-side) : les trois sujets sont
+# des suites récurrentes HOMOGRAPHIQUES (u_{n+1} = (au_n+b)/(cu_n+d)) et
+# mobilisent, pour trouver le terme général, une suite auxiliaire dont la
+# forme dépasse ce que R8 enseigne formellement. R8 n'enseigne QUE le geste
+# « v_n = u_n − L » (recentrer sur le point fixe d'une suite u_{n+1} =
+# f(u_n) dont la convergence est déjà acquise) ; les trois sujets ci-dessous
+# utilisent plutôt un RATIO de deux expressions affines de u_n — la
+# technique dite « de la suite homographique », qui n'est pas un rung formel
+# de cette leçon :
+#   - bk-2020-n-x1 (q4a) : v_n = 4u_n/(2u_n+3) ;
+#   - bk-2021-n-x2 (q5b) : w_n = 1/u_n − 1 ;
+#   - bk-2024-n-x1 (q3a) : v_n = (2−u_n)/(1−u_n).
+# bk-2021-n-x2 (q4b) mobilise en plus un passage à la limite à travers une
+# fonction FIXE (ln), une extension du principe de continuité que R8
+# introduit (« f continue ⟹ f(u_n) → f(L) ») mais appliquée ici à une
+# fonction extérieure à la récurrence elle-même, pas à la résolution d'un
+# point fixe de f. Les champs `reasoning` ci-dessous bridgent chaque écart
+# au point d'usage, en nommant explicitement le geste et son rung de
+# rattache le plus proche, sans jamais prétendre que R8 enseigne la forme
+# utilisée telle quelle.
+
+notion: maths/suites-numeriques
+
+entries:
+  # ── bk-2020-n-x1 — 2020 N, Exercice 1 : positivité, majoration géométrique, suite auxiliaire ──
+  - id: bk-2020-n-x1
+    title: "Suite homographique positive, majoration géométrique et terme général"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 1"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/109797 (Exercice 1, « Suites
+        numériques » ; barème 4 points). Transcription fidèle de l'entrée
+        « vérifié — agent-vérificateur-adversarial, 2026-08-06 » de
+        docs/sujets/maths/suites-numeriques.md, section « 2020 — session
+        normale — Exercice 1 » (re-fetch AlloSchool indépendant + diff
+        caractère-par-caractère conforme au scan). Voir SCOPE NOTE en tête
+        de fichier : la suite auxiliaire v_n = 4u_n/(2u_n+3) (question 4a)
+        est la technique dite « de la suite homographique », au-delà de ce
+        que R8 enseigne formellement (R8 n'enseigne que v_n = u_n − L).
+    intro: |-
+      **Suites numériques (examen national, session normale 2020, Sciences Expérimentales).**
+
+      Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{3}{2}$ et $u_{n+1} = \dfrac{2u_n}{2u_n + 5}$ pour tout $n$ de $\mathbb{N}$
+    questions:
+      - id: q1
+        part: "Premier terme"
+        stem: |-
+          **(0,25 pt)** Calculer $u_1$
+        reasoning: |-
+          Calcul direct : on applique la relation de récurrence en $n=0$, en remplaçant $u_0$ par sa valeur $\dfrac{3}{2}$.
+        steps:
+          - math: 'u_1 = \dfrac{2u_0}{2u_0+5}'
+            note: "On applique la relation de récurrence en n=0."
+          - math: 'u_1 = \dfrac{2\times\frac{3}{2}}{2\times\frac{3}{2}+5} = \dfrac{3}{3+5} = \dfrac{3}{8}'
+            note: "On remplace u0 par 3/2 et on simplifie."
+      - id: q2
+        part: "Positivité par récurrence"
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que pour tout $n$ de $\mathbb{N}$, $u_n > 0$
+        reasoning: |-
+          C'est une propriété portant sur **tous** les rangs $n$ : le raisonnement par récurrence (R1) est l'outil naturel. Le point délicat de l'hérédité est de contrôler le signe du dénominateur $2u_n+5$ — s'il reste strictement positif, le quotient garde le signe de son numérateur.
+        steps:
+          - math: 'u_0 = \dfrac{3}{2} > 0'
+            note: "Initialisation : vrai au rang 0."
+          - math: 'u_n > 0 \implies 2u_n > 0 \implies 2u_n+5 > 5 > 0'
+            note: "Hypothèse de récurrence : le dénominateur reste strictement positif."
+          - math: 'u_{n+1} = \dfrac{2u_n}{2u_n+5} > 0'
+            note: "Quotient de deux nombres strictement positifs. Par récurrence, u_n > 0 pour tout n."
+      - id: q3a
+        part: "Majoration par une suite géométrique"
+        stem: |-
+          **(1 pt)** Montrer que pour tout $n$ de $\mathbb{N}$, $0 < u_{n+1} \le \dfrac{2}{5}u_n$, puis en déduire que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \dfrac{3}{2}\left(\dfrac{2}{5}\right)^n$
+        reasoning: |-
+          Deux gestes en un. D'abord une comparaison algébrique directe (pas de récurrence) : on compare $u_{n+1}$ à $\dfrac{2}{5}u_n$ en divisant par $u_n>0$ (question 2), ce qui ramène tout à comparer $\dfrac{2}{2u_n+5}$ à $\dfrac{2}{5}$ — deux fractions de même numérateur, où le plus grand dénominateur donne la plus petite valeur.
+
+          Ensuite, pour « en déduire » l'encadrement géométrique, on récidive le mécanisme du R1 : au lieu de majorer par une constante (R3), on majore par une suite géométrique qui se resserre à chaque rang — l'hérédité empile l'inégalité $u_{n+1}\le\frac{2}{5}u_n$ qu'on vient de démontrer sur l'hypothèse de récurrence.
+        steps:
+          - math: 'u_n>0 \implies \left(u_{n+1}\le\dfrac{2}{5}u_n \iff \dfrac{2u_n}{2u_n+5}\le\dfrac{2}{5}u_n \iff \dfrac{2}{2u_n+5}\le\dfrac{2}{5}\right)'
+            note: "On part de l'inégalité à montrer et on divise par u_n, strictement positif (question 2) : le sens est conservé."
+          - math: '\dfrac{2}{2u_n+5}\le\dfrac{2}{5} \iff 10\le 2(2u_n+5) \iff 0\le 4u_n'
+            note: "Même numérateur : on compare en produit-en-croix (les deux dénominateurs sont positifs)."
+          - math: '0\le 4u_n \implies 0<u_{n+1}\le\dfrac{2}{5}u_n \quad \text{pour tout } n'
+            note: "L'inégalité est vraie car u_n > 0 : le premier encadrement est établi."
+          - math: 'u_0=\dfrac{3}{2}=\dfrac{3}{2}\left(\dfrac{2}{5}\right)^0'
+            note: "Initialisation de la deuxième récurrence : égalité au rang 0."
+          - math: '0<u_n\le\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n \implies u_{n+1}\le\dfrac{2}{5}u_n\le\dfrac{2}{5}\times\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n=\dfrac{3}{2}\left(\dfrac{2}{5}\right)^{n+1}'
+            note: "Hérédité : on réinjecte l'inégalité du premier encadrement dans l'hypothèse de récurrence."
+          - math: '0 < u_n \le \dfrac{3}{2}\left(\dfrac{2}{5}\right)^n \quad \text{pour tout } n \text{ de } \mathbb{N}'
+            note: "Par récurrence, l'encadrement géométrique est établi."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Calculer $\lim u_n$
+        reasoning: |-
+          On dispose d'un minorant constant $u_n>0$ et d'un majorant explicite $u_n\le\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n$ (question 3a). Ce majorant est une suite géométrique de raison $\dfrac{2}{5}\in\,]{-1};1[$, donc elle tend vers 0 (R5). Deux suites qui encadrent $(u_n)$ et convergent toutes deux vers 0 : c'est exactement la structure du théorème des gendarmes (R6), même si l'une des deux bornes — ici 0 — est constante.
+        steps:
+          - math: '\left|\dfrac{2}{5}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{2}{5}\right)^n = 0 \implies \lim_{n\to+\infty}\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n = 0'
+            note: "Suite géométrique de raison entre -1 et 1 (R5) : elle tend vers 0."
+          - math: '0 < u_n \le \dfrac{3}{2}\left(\dfrac{2}{5}\right)^n, \quad \lim_{n\to+\infty}\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n = 0'
+            note: "u_n est encadrée par 0 et une suite qui tend vers 0 (théorème des gendarmes, R6)."
+          - math: '\lim_{n\to+\infty} u_n = 0'
+            note: "Conclusion."
+      - id: q4a
+        part: "Une suite géométrique auxiliaire"
+        stem: |-
+          On considère la suite numérique $(v_n)$ définie par $v_n = \dfrac{4u_n}{2u_n + 3}$ pour tout $n$ de $\mathbb{N}$.
+
+          **(0,75 pt)** Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{5}$
+        reasoning: |-
+          On calcule $v_{n+1}$ à partir de la définition et de la relation de récurrence de $(u_n)$, puis on cherche à faire réapparaître $v_n$ dans le résultat — c'est le geste dit « de la suite homographique » (voir SCOPE NOTE en tête de fichier) : une transformation qui ne se limite pas à soustraire le point fixe, contrairement à ce que le R8 enseigne ($v_n=u_n-L$), mais qui combine numérateur et dénominateur de $u_n$ dans un rapport choisi. On travaille en fraction, en réduisant tout au même dénominateur $2u_n+5$ avant de simplifier.
+        steps:
+          - math: 'v_{n+1} = \dfrac{4u_{n+1}}{2u_{n+1}+3}, \qquad u_{n+1}=\dfrac{2u_n}{2u_n+5}'
+            note: "On part de la définition de v à n+1 et on y injecte la relation de récurrence de u."
+          - math: '2u_{n+1}+3 = \dfrac{4u_n}{2u_n+5}+3 = \dfrac{4u_n+3(2u_n+5)}{2u_n+5} = \dfrac{10u_n+15}{2u_n+5} = \dfrac{5(2u_n+3)}{2u_n+5}'
+            note: "On réduit le dénominateur de v à n+1 au même dénominateur 2u_n+5."
+          - math: '4u_{n+1} = \dfrac{8u_n}{2u_n+5}'
+            note: "De même pour le numérateur de v à n+1."
+          - math: 'v_{n+1} = \dfrac{\frac{8u_n}{2u_n+5}}{\frac{5(2u_n+3)}{2u_n+5}} = \dfrac{8u_n}{5(2u_n+3)}'
+            note: "Le dénominateur commun 2u_n+5 se simplifie entre haut et bas du grand quotient."
+          - math: 'v_{n+1} = \dfrac{8}{5}\times\dfrac{u_n}{2u_n+3} = \dfrac{2}{5}\times\dfrac{4u_n}{2u_n+3} = \dfrac{2}{5}v_n'
+            note: "On fait réapparaître v_n : (v_n) est bien géométrique de raison 2/5."
+      - id: q4b
+        stem: |-
+          **(1 pt)** Déterminer $v_n$ en fonction de $n$ et en déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          La formule explicite d'une suite géométrique (R2) donne directement $v_n$ à partir de $v_0$ et de la raison. Il reste ensuite à inverser la définition $v_n=\dfrac{4u_n}{2u_n+3}$ pour isoler $u_n$ — une manipulation algébrique une fois qu'on connaît $v_n$.
+        steps:
+          - math: 'v_0 = \dfrac{4u_0}{2u_0+3} = \dfrac{4\times\frac{3}{2}}{2\times\frac{3}{2}+3} = \dfrac{6}{6} = 1'
+            note: "Premier terme de la suite géométrique v."
+          - math: 'v_n = v_0\left(\dfrac{2}{5}\right)^n = \left(\dfrac{2}{5}\right)^n'
+            note: "Formule explicite d'une suite géométrique (R2), avec v0 = 1."
+          - math: 'v_n=\dfrac{4u_n}{2u_n+3} \implies v_n(2u_n+3) = 4u_n \implies 2v_nu_n+3v_n = 4u_n \implies u_n(4-2v_n) = 3v_n'
+            note: "On repart de la définition de v_n et on isole les termes en u_n."
+          - math: 'u_n = \dfrac{3v_n}{4-2v_n} = \dfrac{3\left(\frac{2}{5}\right)^n}{4-2\left(\frac{2}{5}\right)^n}'
+            note: "On résout en u_n puis on remplace v_n par sa valeur trouvée à l'étape précédente."
+
+  # ── bk-2021-n-x2 — 2021 N, Exercice 2 : encadrement, monotonie par quotient, suite auxiliaire 1/u_n ──
+  - id: bk-2021-n-x2
+    title: "Suite homographique : encadrement, monotonie et terme général par la méthode de l'inverse"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/127180 (Exercice 2, « suites
+        numériques » ; barème 4 points — la table des composantes p.1 fait
+        autorité sur le doublon d'étiquette « Exercice 2 » constaté page 2
+        du scan, voir docs/sujets/maths/suites-numeriques.md). Transcription
+        fidèle de l'entrée « vérifié — agent-vérificateur-adversarial,
+        2026-08-06 », section « 2021 — session normale — Exercice 2 »
+        (re-fetch AlloSchool indépendant + diff caractère-par-caractère
+        conforme au scan). Voir SCOPE NOTE en tête de fichier : la suite
+        auxiliaire w_n = 1/u_n − 1 (question 5) est la technique de la
+        suite homographique, au-delà de ce que R8 enseigne formellement ;
+        et le passage à la limite de v_n = ln(3−2u_n) (question 4b)
+        mobilise la continuité du logarithme sur une fonction extérieure à
+        la récurrence — une extension du principe de continuité du R8, pas
+        son application directe (R8 ne traite que le point fixe L = f(L)
+        de la récurrence elle-même).
+    intro: |-
+      **Suites numériques (examen national, session normale 2021, Sciences Expérimentales).**
+
+      Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{1}{2}$ et $u_{n+1} = \dfrac{u_n}{3 - 2u_n}$ pour tout $n$ de $\mathbb{N}$
+    questions:
+      - id: q1
+        part: "Premier terme"
+        stem: |-
+          **(0,25 pt)** Calculer $u_1$
+        reasoning: |-
+          Calcul direct : on applique la relation de récurrence en $n=0$.
+        steps:
+          - math: 'u_1 = \dfrac{u_0}{3-2u_0} = \dfrac{\frac{1}{2}}{3-2\times\frac{1}{2}}'
+            note: "On applique la relation de récurrence en n=0, avec u0 = 1/2."
+          - math: 'u_1 = \dfrac{\frac{1}{2}}{3-1} = \dfrac{\frac{1}{2}}{2} = \dfrac{1}{4}'
+            note: "Le dénominateur vaut 2 ; on simplifie."
+      - id: q2
+        part: "Encadrement par récurrence"
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \dfrac{1}{2}$
+        reasoning: |-
+          Propriété portant sur tous les rangs $n$ : récurrence (R1). Le point à surveiller à l'hérédité est le dénominateur $3-2u_n$ — il faut d'abord le contrôler pour être sûr que la fraction garde un signe connu, avant de comparer $u_{n+1}$ à $\dfrac{1}{2}$.
+        steps:
+          - math: 'u_0 = \dfrac{1}{2}, \quad 0 < \dfrac{1}{2} \le \dfrac{1}{2}'
+            note: "Initialisation : vrai au rang 0 (égalité large)."
+          - math: '0 < u_n \le \dfrac{1}{2} \implies 0 \le 2u_n \le 1 \implies 2 \le 3-2u_n'
+            note: "Hypothèse de récurrence : le dénominateur reste au moins égal à 2, donc strictement positif."
+          - math: 'u_{n+1} = \dfrac{u_n}{3-2u_n} > 0'
+            note: "Numérateur et dénominateur strictement positifs : u_{n+1} > 0."
+          - math: 'u_{n+1} \le \dfrac{1}{2} \iff u_n \le \dfrac{1}{2}(3-2u_n) \iff u_n \le \dfrac{3}{2}-u_n \iff u_n \le \dfrac{3}{4}'
+            note: "On multiplie par le dénominateur positif (3-2u_n) puis on isole u_n."
+          - math: 'u_n \le \dfrac{1}{2} < \dfrac{3}{4} \implies u_{n+1} \le \dfrac{1}{2}'
+            note: "L'hypothèse de récurrence donne bien u_n <= 3/4 : l'hérédité est vérifiée. Par récurrence, 0 < u_n <= 1/2 pour tout n."
+      - id: q3a
+        part: "Monotonie via le quotient"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $n$ de $\mathbb{N}$, $\dfrac{u_{n+1}}{u_n} \le \dfrac{1}{2}$
+        reasoning: |-
+          Variante du quotient pour la monotonie (R4, utile ici car $(u_n)$ est strictement positive d'après la question 2) : plutôt que d'étudier le signe de $u_{n+1}-u_n$, on compare directement $\dfrac{u_{n+1}}{u_n}$ à $\dfrac{1}{2}$.
+        steps:
+          - math: 'u_n>0 \implies \dfrac{u_{n+1}}{u_n} = \dfrac{1}{3-2u_n}'
+            note: "On divise u_{n+1} par u_n, licite car u_n > 0 (question 2)."
+          - math: '0<u_n\le\dfrac{1}{2} \implies 2\le 3-2u_n'
+            note: "On réutilise le contrôle du dénominateur (question 2)."
+          - math: '2\le 3-2u_n \implies \dfrac{1}{3-2u_n}\le\dfrac{1}{2}'
+            note: "La fonction inverse est décroissante sur les positifs : le plus grand dénominateur donne la plus petite fraction."
+          - math: '\dfrac{u_{n+1}}{u_n}\le\dfrac{1}{2} \quad \text{pour tout } n'
+            note: "Conclusion."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** En déduire la monotonie de la suite $(u_n)$
+        reasoning: |-
+          On relit le résultat précédent avec la méthode du quotient (R4) : pour une suite strictement positive, comparer $\dfrac{u_{n+1}}{u_n}$ à $1$ donne le sens de variation. Ici le quotient est majoré par $\dfrac{1}{2}$, strictement inférieur à $1$.
+        steps:
+          - math: '\dfrac{u_{n+1}}{u_n}\le\dfrac{1}{2}<1, \quad u_n>0 \implies u_{n+1}\le\dfrac{1}{2}u_n < u_n'
+            note: "u_n strictement positif : multiplier l'inégalité par u_n conserve le sens."
+          - math: 'u_{n+1} < u_n \quad \text{pour tout } n'
+            note: "La suite (u_n) est (strictement) décroissante."
+      - id: q4a
+        part: "Majoration géométrique et limite"
+        stem: |-
+          **(0,75 pt)** Montrer que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1}$ ; puis calculer la limite de la suite $(u_n)$
+        reasoning: |-
+          Même mécanisme qu'en bk-2020-n-x1 (question 3a) : on transforme $u_{n+1}\le\dfrac{1}{2}u_n$ (issu de la question 3a, en multipliant le quotient par $u_n>0$) en un encadrement géométrique par récurrence, en empilant l'inégalité à chaque rang. La limite s'obtient ensuite par le théorème des gendarmes (R6), le majorant géométrique tendant vers 0 (R5).
+        steps:
+          - math: 'u_0 = \dfrac{1}{2} = \left(\dfrac{1}{2}\right)^{0+1}'
+            note: "Initialisation : égalité au rang 0."
+          - math: '0<u_n\le\left(\dfrac{1}{2}\right)^{n+1} \implies u_{n+1}\le\dfrac{1}{2}u_n\le\dfrac{1}{2}\left(\dfrac{1}{2}\right)^{n+1} = \left(\dfrac{1}{2}\right)^{n+2}'
+            note: "Hérédité : on réinjecte l'inégalité u_{n+1} <= (1/2)u_n (question 3a) dans l'hypothèse de récurrence."
+          - math: '0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1} \quad \text{pour tout } n \text{ de } \mathbb{N}'
+            note: "Par récurrence, l'encadrement géométrique est établi."
+          - math: '\left|\dfrac{1}{2}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{1}{2}\right)^{n+1} = 0'
+            note: "Suite géométrique de raison entre -1 et 1 (R5) : elle tend vers 0."
+          - math: '0<u_n\le\left(\dfrac{1}{2}\right)^{n+1}, \quad \left(\dfrac{1}{2}\right)^{n+1}\to 0 \implies \lim_{n\to+\infty} u_n = 0'
+            note: "Théorème des gendarmes (R6) : u_n est coincée entre 0 et une suite qui tend vers 0."
+      - id: q4b
+        stem: |-
+          On pose $v_n = \ln\left(3 - 2u_n\right)$ pour tout $n$ de $\mathbb{N}$.
+
+          **(0,5 pt)** Calculer $\lim v_n$
+        reasoning: |-
+          $(u_n)$ tend vers $0$ (question 4a), donc $3-2u_n$ tend vers $3$ par les opérations usuelles sur les limites (R5). Reste à faire passer le logarithme à travers cette limite : $\ln$ est une fonction continue en $3$, donc $\ln(3-2u_n)$ tend vers $\ln(3)$ — le même principe de continuité que le R8 utilise pour justifier $f(u_n)\to f(L)$, mais appliqué ici à une fonction extérieure à la récurrence ($\ln$, pas la fonction de la relation $u_{n+1}=f(u_n)$) plutôt qu'à la résolution d'un point fixe.
+        steps:
+          - math: '\lim_{n\to+\infty} u_n = 0 \implies \lim_{n\to+\infty} (3-2u_n) = 3-2\times 0 = 3'
+            note: "Opérations usuelles sur les limites (R5)."
+          - math: '\lim_{n\to+\infty} v_n = \lim_{n\to+\infty} \ln(3-2u_n) = \ln(3)'
+            note: "Continuité du logarithme en 3 : la limite passe à travers ln."
+      - id: q5a
+        part: "Une identité sur l'inverse, puis le terme général"
+        stem: |-
+          **(0,5 pt)** Vérifier que pour tout $n$ de $\mathbb{N}$, $\dfrac{1}{u_{n+1}} - 1 = 3\left(\dfrac{1}{u_n} - 1\right)$
+        reasoning: |-
+          C'est une vérification algébrique directe (pas de récurrence ici) : on part de la définition de $u_{n+1}$, on en prend l'inverse (licite car $u_n>0$, question 2), puis on soustrait $1$ des deux côtés pour faire apparaître $\dfrac{1}{u_n}-1$.
+        steps:
+          - math: 'u_{n+1} = \dfrac{u_n}{3-2u_n} \implies \dfrac{1}{u_{n+1}} = \dfrac{3-2u_n}{u_n}'
+            note: "On inverse la relation de récurrence, licite car u_n > 0."
+          - math: '\dfrac{1}{u_{n+1}} = \dfrac{3}{u_n} - 2'
+            note: "On sépare la fraction en deux termes."
+          - math: '\dfrac{1}{u_{n+1}} - 1 = \dfrac{3}{u_n} - 3 = 3\left(\dfrac{1}{u_n}-1\right)'
+            note: "On soustrait 1 puis on factorise par 3 : l'égalité est vérifiée."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** En déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$
+        reasoning: |-
+          L'égalité précédente dit que la suite $w_n = \dfrac{1}{u_n}-1$ vérifie $w_{n+1}=3w_n$ : elle est géométrique de raison $3$ (R2) — c'est la technique de la suite homographique évoquée en tête de fichier (SCOPE NOTE), une transformation par « inverse moins une constante », différente de la forme $v_n=u_n-L$ enseignée au R8. Une fois $w_n$ connue explicitement, on inverse la définition pour revenir à $u_n$.
+        steps:
+          - math: 'w_n = \dfrac{1}{u_n} - 1, \quad w_{n+1} = 3w_n \quad \text{(question 5a)}'
+            note: "On nomme la suite auxiliaire : elle est géométrique de raison 3 (R2)."
+          - math: 'w_0 = \dfrac{1}{u_0} - 1 = \dfrac{1}{\frac{1}{2}} - 1 = 2-1 = 1'
+            note: "Premier terme de la suite géométrique w."
+          - math: 'w_n = w_0\times 3^n = 3^n'
+            note: "Formule explicite d'une suite géométrique (R2), avec w0 = 1."
+          - math: '\dfrac{1}{u_n} - 1 = 3^n \implies \dfrac{1}{u_n} = 1+3^n \implies u_n = \dfrac{1}{1+3^n}'
+            note: "On inverse la définition de w_n pour retrouver u_n."
+
+  # ── bk-2024-n-x1 — 2024 N, Exercice 1 : réécriture homographique, encadrement, décroissance, suite auxiliaire ──
+  - id: bk-2024-n-x1
+    title: "Suite homographique : encadrement, décroissance et suite auxiliaire géométrique"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 1"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/144505 (Exercice 1, « Suites
+        numériques » ; barème 3 points). Transcription fidèle de l'entrée
+        « vérifié — agent-vérificateur-adversarial, 2026-08-06 », section
+        « 2024 — session normale — Exercice 1 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        exposant n+1 de la formule explicite vérifié au zoom). Voir SCOPE
+        NOTE en tête de fichier : la suite auxiliaire v_n = (2−u_n)/(1−u_n)
+        (question 3a) est la technique de la suite homographique, au-delà
+        de ce que R8 enseigne formellement.
+    intro: |-
+      **Suites numériques (examen national, session normale 2024, Sciences Expérimentales).**
+
+      On considère la suite $(u_n)$ définie par : $u_0 = 4$ et $u_{n+1} = \dfrac{4u_n - 2}{1 + u_n}$, pour tout entier naturel $n$
+    questions:
+      - id: q1a
+        part: "Une réécriture, puis un encadrement"
+        stem: |-
+          **(0,25 pt)** Vérifier que $u_{n+1} = 4 - \dfrac{6}{1 + u_n}$, pour tout entier naturel $n$
+        reasoning: |-
+          Simple réécriture algébrique : on met $4-\dfrac{6}{1+u_n}$ au même dénominateur et on compare le numérateur obtenu à $4u_n-2$.
+        steps:
+          - math: '4-\dfrac{6}{1+u_n} = \dfrac{4(1+u_n)-6}{1+u_n} = \dfrac{4+4u_n-6}{1+u_n}'
+            note: "On met les deux termes au même dénominateur 1+u_n."
+          - math: '4-\dfrac{6}{1+u_n} = \dfrac{4u_n-2}{1+u_n} = u_{n+1}'
+            note: "On simplifie le numérateur (4 moins 6 égale -2) : l'égalité est vérifiée."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que $2 \le u_n \le 4$, pour tout entier naturel $n$
+        reasoning: |-
+          Encadrement par récurrence (R1, R3) : l'intervalle $[2\,;\,4]$ doit être **stable** par la relation de récurrence. La forme $u_{n+1}=4-\dfrac{6}{1+u_n}$ (question 1a) est idéale pour ça : elle isole le terme variable $\dfrac{6}{1+u_n}$, dont il suffit d'encadrer les valeurs.
+        steps:
+          - math: 'u_0 = 4, \quad 2\le 4\le 4'
+            note: "Initialisation : vrai au rang 0."
+          - math: '2\le u_n\le 4 \implies 3\le 1+u_n\le 5 \implies \dfrac{6}{5}\le\dfrac{6}{1+u_n}\le\dfrac{6}{3}=2'
+            note: "Hypothèse de récurrence : on encadre 1+u_n, positif, puis son inverse (fonction décroissante sur les positifs)."
+          - math: '\dfrac{6}{5}\le\dfrac{6}{1+u_n}\le 2 \implies 4-2\le 4-\dfrac{6}{1+u_n}\le 4-\dfrac{6}{5}'
+            note: "On soustrait à 4 : l'encadrement s'inverse (fonction décroissante)."
+          - math: '2\le u_{n+1}\le\dfrac{14}{5}\le 4'
+            note: "u_{n+1} est bien dans [2;4]. Par récurrence, 2 <= u_n <= 4 pour tout n."
+      - id: q2a
+        part: "Le signe du pas, puis la monotonie"
+        stem: |-
+          **(0,25 pt)** Montrer que $u_{n+1} - u_n = \dfrac{(u_n - 1)(2 - u_n)}{1 + u_n}$, pour tout entier naturel $n$
+        reasoning: |-
+          Vérification algébrique directe : on met $u_{n+1}-u_n$ au même dénominateur $1+u_n$ et on factorise le numérateur obtenu, un trinôme du second degré en $u_n$.
+        steps:
+          - math: 'u_{n+1}-u_n = \dfrac{4u_n-2}{1+u_n} - u_n = \dfrac{4u_n-2-u_n(1+u_n)}{1+u_n}'
+            note: "On met les deux termes au même dénominateur 1+u_n."
+          - math: '4u_n-2-u_n(1+u_n) = 4u_n-2-u_n-u_n^2 = -u_n^2+3u_n-2'
+            note: "On développe et on réduit le numérateur."
+          - math: '-u_n^2+3u_n-2 = -(u_n-1)(u_n-2) = (u_n-1)(2-u_n)'
+            note: "On factorise le trinôme (racines 1 et 2) puis on change un signe pour retrouver la forme demandée."
+          - math: 'u_{n+1}-u_n = \dfrac{(u_n-1)(2-u_n)}{1+u_n}'
+            note: "L'égalité est vérifiée."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)$ est décroissante et en déduire que $(u_n)$ est convergente.
+        reasoning: |-
+          Le signe du pas $u_{n+1}-u_n$ vient de trois facteurs (question 2a), qu'on signe un par un sur l'intervalle $[2\,;\,4]$ établi à la question 1b : $u_n-1\ge 1>0$, $2-u_n\le 0$ (car $u_n\ge2$), et $1+u_n>0$. Un facteur positif fois un facteur négatif ou nul, divisé par un facteur positif, est négatif ou nul — la suite décroît. Combinée à la minoration par $2$ (question 1b), c'est exactement les deux hypothèses du théorème de la limite monotone (R7).
+        steps:
+          - math: '2\le u_n\le 4 \implies u_n-1\ge 1>0, \quad 2-u_n\le 0, \quad 1+u_n\ge 3>0'
+            note: "On signe les trois facteurs sur l'intervalle [2;4] établi à la question 1b."
+          - math: 'u_{n+1}-u_n = \dfrac{(u_n-1)(2-u_n)}{1+u_n} \le 0'
+            note: "Facteur positif fois facteur négatif ou nul, divisé par un facteur positif : le résultat est négatif ou nul."
+          - math: '(u_n) \text{ décroissante et minorée par } 2 \implies (u_n) \text{ converge}'
+            note: "Théorème de la limite monotone (R7) : les deux hypothèses sont réunies."
+      - id: q3a
+        part: "Une suite homographique auxiliaire"
+        stem: |-
+          Soit $(v_n)$ la suite numérique définie par $v_n = \dfrac{2 - u_n}{1 - u_n}$, pour tout entier naturel $n$.
+
+          **(0,5 pt)** Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{3}$
+        reasoning: |-
+          Même geste qu'en bk-2020-n-x1 et bk-2021-n-x2 (SCOPE NOTE en tête de fichier) : on calcule $v_{n+1}$ en injectant la relation de récurrence de $(u_n)$, puis on fait réapparaître $v_n$ dans le résultat. On exprime séparément $2-u_{n+1}$ et $1-u_{n+1}$ (les deux blocs de la définition de $v_{n+1}$), chacun se simplifiant grâce à la forme $u_{n+1}=\dfrac{4u_n-2}{1+u_n}$.
+        steps:
+          - math: '2-u_{n+1} = 2-\dfrac{4u_n-2}{1+u_n} = \dfrac{2(1+u_n)-(4u_n-2)}{1+u_n} = \dfrac{4-2u_n}{1+u_n} = \dfrac{2(2-u_n)}{1+u_n}'
+            note: "On calcule 2 moins u_{n+1} en réduisant au même dénominateur."
+          - math: '1-u_{n+1} = 1-\dfrac{4u_n-2}{1+u_n} = \dfrac{(1+u_n)-(4u_n-2)}{1+u_n} = \dfrac{3-3u_n}{1+u_n} = \dfrac{3(1-u_n)}{1+u_n}'
+            note: "Même démarche pour 1 moins u_{n+1}."
+          - math: 'v_{n+1} = \dfrac{2-u_{n+1}}{1-u_{n+1}} = \dfrac{\frac{2(2-u_n)}{1+u_n}}{\frac{3(1-u_n)}{1+u_n}} = \dfrac{2(2-u_n)}{3(1-u_n)}'
+            note: "Le dénominateur commun 1+u_n se simplifie entre haut et bas du grand quotient."
+          - math: 'v_{n+1} = \dfrac{2}{3}\times\dfrac{2-u_n}{1-u_n} = \dfrac{2}{3}v_n'
+            note: "On fait réapparaître v_n : (v_n) est bien géométrique de raison 2/3."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Montrer que $u_n = 1 + \dfrac{1}{1 - \left(\dfrac{2}{3}\right)^{n+1}}$, pour tout entier naturel $n$
+        reasoning: |-
+          La formule explicite d'une suite géométrique (R2) donne $v_n$ directement. Il reste à inverser la définition $v_n=\dfrac{2-u_n}{1-u_n}$ pour isoler $u_n$ — la même manipulation qu'à la fin de bk-2020-n-x1.
+        steps:
+          - math: 'v_0 = \dfrac{2-u_0}{1-u_0} = \dfrac{2-4}{1-4} = \dfrac{-2}{-3} = \dfrac{2}{3}'
+            note: "Premier terme de la suite géométrique v."
+          - math: 'v_n = v_0\left(\dfrac{2}{3}\right)^n = \left(\dfrac{2}{3}\right)^{n+1}'
+            note: "Formule explicite (R2), avec v0 = 2/3 : l'exposant se décale à n+1."
+          - math: 'v_n = \dfrac{2-u_n}{1-u_n} \implies v_n(1-u_n) = 2-u_n \implies u_n(1-v_n) = 2-v_n'
+            note: "On repart de la définition de v_n et on isole les termes en u_n."
+          - math: 'u_n = \dfrac{2-v_n}{1-v_n} = \dfrac{(1-v_n)+1}{1-v_n} = 1+\dfrac{1}{1-v_n} = 1+\dfrac{1}{1-\left(\frac{2}{3}\right)^{n+1}}'
+            note: "On écrit 2 moins v_n comme (1 moins v_n) plus 1, puis on remplace v_n par sa valeur trouvée à l'étape précédente."
+      - id: q3c
+        stem: |-
+          **(0,5 pt)** Calculer la limite de la suite $(u_n)$
+        reasoning: |-
+          Comme $-1<\dfrac{2}{3}<1$, la suite géométrique $\left(\dfrac{2}{3}\right)^{n+1}$ tend vers $0$ (R5) ; le dénominateur $1-\left(\dfrac{2}{3}\right)^{n+1}$ tend donc vers $1$, non nul, ce qui autorise à passer à la limite dans le quotient (R5, opérations sur les limites). On retrouve — deux méthodes différentes, même réponse — une valeur cohérente avec la convergence déjà garantie par le théorème de la limite monotone à la question 2b.
+        steps:
+          - math: '\left|\dfrac{2}{3}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{2}{3}\right)^{n+1} = 0'
+            note: "Suite géométrique de raison entre -1 et 1 (R5)."
+          - math: '\lim_{n\to+\infty}\left(1-\left(\dfrac{2}{3}\right)^{n+1}\right) = 1-0 = 1'
+            note: "Opérations sur les limites (R5)."
+          - math: '\lim_{n\to+\infty} u_n = 1+\dfrac{1}{1} = 2'
+            note: "Le dénominateur tend vers 1, non nul : on passe à la limite dans le quotient."

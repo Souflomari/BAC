@@ -6,36 +6,50 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R7), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les deux entrées sont des transcriptions FIDÈLES des deux
-# entrées « vérifié » de docs/sujets/maths/fonction-logarithme.md (re-fetch
-# AlloSchool indépendant + diff caractère-par-caractère, agent-vérificateur-
-# adversarial, 2026-07-12) — les SEULS sujets vérifiés recensés pour cette
-# notion : 2019 et 2023, tous deux session normale, filière Sciences
-# Expérimentales (SVT et Sciences Physiques, BIOF), tous deux le « Problème »
-# (4ᵉ composante du sujet NS 22F, après les trois exercices) sur leur copie
-# (barème 11 points chacun). Aucun autre sujet n'est disponible — introuvable
-# = absent, jamais inventé. Raisonnement rédigé à la voix experte de la maison
-# sur 100 % des questions ; barème transcrit tel quel dans les énoncés ;
-# conventions KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes
-# simples dans steps[].math, notes sans backslash).
+# exercises.yaml). Les quatre entrées sont des transcriptions FIDÈLES des
+# quatre entrées « vérifié » de docs/sujets/maths/fonction-logarithme.md —
+# 2019 et 2023 (re-fetch AlloSchool indépendant + diff caractère-par-
+# caractère, agent-vérificateur-adversarial, 2026-07-12), puis 2021 et 2024
+# (même protocole, agent-vérificateur-adversarial, 2026-08-06 ; 2024 porte le
+# statut « vérifié (corrigé sur re-lecture) », deux corrections mineures
+# actées lors de la relecture — voir sourcing.note de bk-2024-n-x4) — les
+# SEULS sujets vérifiés recensés pour cette notion à ce jour : 2019, 2021,
+# 2023 et 2024, tous quatre session normale, filière Sciences Expérimentales,
+# tous quatre le « Problème » (4ᵉ composante du sujet NS 22F, après les trois
+# exercices) sur leur copie (barème : 11, 9, 11 et 8 points respectivement).
+# Aucun autre sujet n'est disponible — introuvable = absent, jamais inventé.
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des questions ;
+# barème transcrit tel quel dans les énoncés ; conventions KaTeX (block
+# scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes sans backslash NI accent — ASCII simple, même
+# convention que les entrées précédentes).
 #
-# Chaque calcul (limites, dérivées, IPP, aires, points fixes/limites de suite)
-# a été refait et vérifié indépendamment par l'auteur de ce fichier avant
-# transcription des `reasoning`/`steps` — en particulier l'intégralité du
-# problème 2023, qui n'avait aucune solution préexistante dans le corpus
-# (contrairement à 2019, dont la résolution complète existe déjà comme sommet
-# de leçon r-bac, exercises.yaml).
+# Chaque calcul (limites, dérivées, IPP, aires, points fixes/limites de
+# suite, dérivée d'une réciproque) a été refait et vérifié indépendamment par
+# l'auteur de ce fichier avant transcription des `reasoning`/`steps` — pour
+# les quatre entrées, y compris 2021 et 2024, qui n'avaient aucune solution
+# préexistante dans le corpus (contrairement à 2019, dont la résolution
+# complète existe déjà comme sommet de leçon r-bac, exercises.yaml).
 #
 # SCOPE NOTE (divulgation honnête, authoring-side — reprend la note déjà
 # posée dans exercises.yaml et dans docs/sujets/maths/fonction-logarithme.md) :
-# les deux problèmes sont des problèmes d'ANALYSE complets et recoupent deux
-# autres notions au-delà du socle R1–R6 de cette leçon : `calcul-integral`
-# (intégration par parties, pour l'aire) et `suites-numeriques` (récurrence +
-# convergence monotone, pour la suite $u_{n+1}=f(u_n)$). Les dérivées de
-# produit/quotient (ex. $(x\ln x)'$, $(\ln x / x)'$) relèvent aussi de
-# `derivabilite-etude-fonctions`, pas de cette leçon. Les champs `reasoning`
-# nomment explicitement la technique et la notion source chaque fois qu'elle
-# sort du corps R1–R6 de cette leçon.
+# les quatre problèmes sont des problèmes d'ANALYSE complets et recoupent
+# d'autres notions au-delà du socle R1–R6 de cette leçon. `calcul-integral`
+# (intégration par parties, pour l'aire — 2019, 2021, 2023, et l'aire de la
+# Partie I de 2024) et `suites-numeriques` (récurrence + convergence
+# monotone — 2019 et 2023 SEULEMENT ; 2021 et 2024 n'ont PAS de volet suites,
+# celui-ci étant porté par l'exercice autonome du même sujet, hors périmètre
+# de cette notion). `derivabilite-etude-fonctions` : dérivées de
+# produit/quotient (ex. $(x\ln x)'$, $(\ln x / x)'$ — 2019, 2021, 2023) ;
+# fonction réciproque et son domaine, corollaire du théorème des valeurs
+# intermédiaires (2021 Q7, 2024 Q5) ; dérivée d'une fonction réciproque en un
+# point (2024 Q5-b, $(g^{-1})'(1)$) — technique neuve dans ce fichier,
+# introduite par 2021 et approfondie par 2024. `fonction-exponentielle` :
+# comparaison graphique de $e^x$ et $x$, identité $\ln(e^x)=x$, limites de
+# référence de l'exponentielle dont $xe^{-x}\to0$ — Partie I et plusieurs
+# questions de la Partie II de 2024 SEULEMENT, notion neuve dans ce fichier.
+# Les champs `reasoning` nomment explicitement la technique et la notion
+# source chaque fois qu'elle sort du corps R1–R6 de cette leçon.
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x4 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R7). Il
@@ -45,15 +59,16 @@
 # l'écarter de la banque pour éviter le recoupement sur la même page — même
 # décision, prise dans le même sens, sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml et bk-2019-n-x2 de
-# content/maths/nombres-complexes-1/bank.yaml. bk-2023-n-x4, en revanche, est
-# un ajout NEUF au corpus (absent d'exercises.yaml, dont r-variation est une
-# variation fraîche construite, pas ce sujet réel).
+# content/maths/nombres-complexes-1/bank.yaml. bk-2023-n-x4, bk-2021-n-x4 et
+# bk-2024-n-x4, en revanche, sont des ajouts NEUFS au corpus (absents
+# d'exercises.yaml, dont r-variation est une variation fraîche construite,
+# pas un sujet réel).
 #
 # ID : `bk-<année>-<n|r>-x<position sur la copie>`. Sur un sujet NS 22F
 # (Sciences Expérimentales), la composition normalisée est « 3 exercices + 1
 # problème » (docs/sujets/maths/README.md §0 ; INDEX.md §2) : Ex1 géométrie de
 # l'espace, Ex2 nombres complexes, Ex3 probabilités, puis le Problème — d'où
-# la position `x4` pour les deux entrées ci-dessous.
+# la position `x4` pour les quatre entrées de ce fichier.
 
 notion: maths/fonction-logarithme
 
@@ -521,3 +536,497 @@ entries:
             note: "Les seuls zeros de g sont alpha et 1 (donnes dans l'enonce)."
           - math: '\ell>\alpha \implies \ell = 1'
             note: "On elimine alpha : la limite de la suite est 1."
+
+  # ── bk-2021-n-x4 — 2021 N, Problème : f prolongee en 0, minimum/inegalite, reciproque, h par morceaux ──
+  - id: bk-2021-n-x4
+    title: "Étude d'une fonction avec ln prolongée en 0, minimum et inégalité, fonction réciproque et fonction par morceaux"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Problème"
+    bareme_total: 9
+    duration_min: 54
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), Mathématiques (3 h, coef 7), code NS 22F, AlloSchool
+        element/127180 (Problème, 9 points, pages 3-4 du scan). Transcription
+        fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/fonction-logarithme.md, section « 2021 — session
+        normale — Problème » (re-fetch AlloSchool indépendant element/127180
+        → course-438/upload-84139 + diff caractère-par-caractère conforme au
+        scan, agent-vérificateur-adversarial, 2026-08-06 ; mathématiques
+        re-dérivées indépendamment par le même agent : f'(x)=2 ln x, minimum
+        f(1)=-2, f(x)=0 en x=e, f(x)=x en x=e^{3/2}, IPP
+        ∫₁^e x ln x dx=(1+e²)/4, J=[-2,+∞[ pour g). Notation « Etudier » sans
+        accent conservée telle quelle aux questions 8-a/8-b (scan, E capital
+        sans accent) ; notation « 4.5 » à point décimal conservée telle
+        quelle à la question 4-b (scan). Recoupe `calcul-integral` (question
+        5, IPP) et `derivabilite-etude-fonctions` (question 7, fonction
+        réciproque et son domaine — corollaire du théorème des valeurs
+        intermédiaires, hors socle R1–R6 de cette leçon ; question 3-a, taux
+        d'accroissement). Pas de volet suites dans ce problème (l'Exercice 2
+        autonome du même sujet porte les suites, hors périmètre de cette
+        notion — voir suites-numeriques.md). Ne recoupe PAS le sommet de
+        leçon r-bac/r-variation (exercises.yaml), qui transcrit le sujet
+        2019, différent de celui-ci.
+    intro: |-
+      **Problème (examen national, session normale 2021, Sciences Expérimentales).**
+
+      Soit $f$ la fonction définie sur $[0,+\infty[$ par : $f(0) = 0$ et $f(x) = 2x\ln x - 2x$ si $x > 0$,
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}, \vec{j})$ *(unité : 1cm)*.
+
+      Point de vigilance qui traverse tout le problème : $f$ est prolongée par continuité en $0$ — le vérifier est justement la première question. Garde en tête le corollaire de croissances comparées vu en cours (R4) : $x\ln x \to 0$ quand $x\to 0^+$, c'est ce qui rend ce prolongement possible.
+    questions:
+      - id: q1
+        part: "Continuité de f en 0"
+        stem: |-
+          **(0,5 pt)** Montrer que $f$ est continue à droite au point $0$.
+        reasoning: |-
+          Continue à droite en $0$ signifie $\displaystyle\lim_{x\to0^+} f(x) = f(0)$. On calcule cette limite avec le corollaire de croissances comparées de la leçon (R4) : $x\ln x \to 0$ quand $x\to0^+$. Comme $f(x)=2x\ln x-2x$ pour $x>0$, chaque terme tend vers $0$, et la limite vaut $f(0)=0$.
+        steps:
+          - math: '\lim_{x \to 0^+} x\ln x = 0'
+            note: "Corollaire de croissances comparees, R4 (limite de reference en 0+)."
+          - math: '\lim_{x\to0^+} f(x) = \lim_{x\to0^+}\left(2x\ln x - 2x\right) = 2\times 0 - 0 = 0 = f(0)'
+            note: "Les deux termes tendent vers 0 : continuite a droite en 0 verifiee."
+      - id: q2
+        part: "Limites en +infini et direction asymptotique"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$.
+        reasoning: |-
+          On met $2x$ en facteur commun : $f(x)=2x(\ln x - 1)$. Quand $x\to+\infty$, $\ln x\to+\infty$ (R4), donc $\ln x - 1\to+\infty$ : les deux facteurs $2x$ et $\ln x-1$ tendent vers $+\infty$, leur produit aussi. Pas d'indétermination.
+        steps:
+          - math: 'f(x) = 2x\ln x - 2x = 2x(\ln x - 1)'
+            note: "Mise en facteur de 2x."
+          - math: '\lim_{x\to+\infty}(\ln x - 1) = +\infty \ \text{(R4)}, \quad \lim_{x\to+\infty} 2x = +\infty \implies \lim_{x\to+\infty} f(x) = +\infty'
+            note: "Produit de deux facteurs qui tendent vers plus l'infini."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$ puis interpréter géométriquement le résultat.
+        reasoning: |-
+          En divisant la forme factorisée de la question précédente par $x$, il reste $\dfrac{f(x)}{x}=2\ln x - 2$, qui tend vers $+\infty$ car $\ln x\to+\infty$ (R4). Quand le rapport $\dfrac{f(x)}{x}$ part lui-même à l'infini, la courbe grossit plus vite que n'importe quelle droite passant par l'origine : c'est une branche parabolique de direction $(O,\vec{j})$ (l'axe des ordonnées).
+        steps:
+          - math: '\dfrac{f(x)}{x} = \dfrac{2x(\ln x - 1)}{x} = 2\ln x - 2'
+            note: "Division par x, x non nul."
+          - math: '\lim_{x\to+\infty} (2\ln x - 2) = +\infty \ \text{(R4)}'
+            note: "Ln x tend vers plus l'infini."
+          - math: '\lim_{x\to+\infty} \dfrac{f(x)}{x} = +\infty \implies (C) \text{ admet une branche parabolique de direction } (O,\vec{j}) \text{ au voisinage de } +\infty'
+            note: "Rapport infini : la courbe grossit plus vite que toute droite issue de l'origine, direction verticale."
+      - id: q4
+        part: "Taux d'accroissement en 0, derivee et tableau de variations"
+        stem: |-
+          **(0,75 pt)** Calculer $\displaystyle\lim_{x \to 0^+} \dfrac{f(x)}{x}$ et interpréter géométriquement le résultat.
+        reasoning: |-
+          Comme $f(0)=0$, ce rapport est exactement le taux d'accroissement de $f$ entre $0$ et $x$ : $\dfrac{f(x)}{x}=\dfrac{f(x)-f(0)}{x-0}$. Sur $]0,+\infty[$, $\dfrac{f(x)}{x}=2\ln x-2$ (même calcul que la question précédente, valable ici aussi), qui tend vers $-\infty$ quand $x\to0^+$ car $\ln x\to-\infty$ (R4). Un taux d'accroissement qui part à l'infini signale une tangente verticale : $(C)$ admet une demi-tangente verticale au point $(0,0)$.
+        steps:
+          - math: '\dfrac{f(x)}{x} = \dfrac{f(x)-f(0)}{x-0} = 2\ln x - 2 \quad (x>0)'
+            note: "Taux d'accroissement en 0, meme formule que f(x)/x."
+          - math: '\lim_{x\to0^+} (2\ln x - 2) = -\infty \ \text{(R4)}'
+            note: "Ln x tend vers moins l'infini en 0+."
+          - math: '\lim_{x\to0^+} \dfrac{f(x)}{x} = -\infty \implies (C) \text{ admet une demi-tangente verticale au point } (0,0)'
+            note: "Taux d'accroissement infini : tangente verticale a l'origine."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Calculer $f'(x)$ pour tout $x$ de $]0, +\infty[$.
+        reasoning: |-
+          $f(x)=2x\ln x-2x$. On dérive $2x\ln x$ comme un produit (dérivée d'un produit, chapitre « Dérivabilité et étude de fonctions », hors socle de cette leçon) : $(2x\ln x)'=2\ln x+2x\cdot\dfrac1x=2\ln x+2$. On retire ensuite la dérivée de $2x$, qui vaut $2$.
+        steps:
+          - math: '(2x\ln x)'' = 2\ln x + 2x\cdot\dfrac1x = 2\ln x + 2'
+            note: "Derivee d'un produit u=2x, v=ln x, hors socle de cette lecon."
+          - math: 'f''(x) = (2\ln x + 2) - 2 = 2\ln x'
+            note: "On retire la derivee de -2x, qui vaut -2."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Dresser le tableau de variations de la fonction $f$ sur $[0, +\infty[$.
+        reasoning: |-
+          Le signe de $f'(x)=2\ln x$ est celui de $\ln x$ (le facteur $2$ est positif) : négatif sur $]0,1[$, nul en $1$, positif sur $]1,+\infty[$ (R1). $f$ décroît donc sur $[0,1]$ puis croît sur $[1,+\infty[$, avec un minimum en $x=1$ valant $f(1)=2\ln1-2=-2$. On complète avec $f(0)=0$ (donné) et $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$ (question 2).
+        steps:
+          - math: 'f''(x) = 2\ln x, \quad x>0 \implies \text{signe}(f'') = \text{signe}(\ln x)'
+            note: "Le facteur 2 est positif : le signe de f' suit celui de ln x."
+          - math: 'f''(x) < 0 \text{ sur } ]0,1[, \quad f''(1)=0, \quad f''(x) > 0 \text{ sur } ]1,+\infty['
+            note: "Signe de ln x autour de 1 (R1)."
+          - math: 'f(1) = 2\ln 1 - 2 = -2'
+            note: "Minimum de f, atteint en x=1. f decroit de f(0)=0 a -2, puis croit de -2 a plus l'infini."
+      - id: q7
+        part: "Equations f(x)=0, f(x)=x et construction de (C)"
+        stem: |-
+          **(0,5 pt)** Résoudre dans l'intervalle $]0, +\infty[$ les équations $f(x) = 0$ et $f(x) = x$.
+        reasoning: |-
+          Pour $f(x)=0$, on repart de la forme factorisée $f(x)=2x(\ln x-1)$ (question 2) : sur $]0,+\infty[$, $x\ne0$, donc l'équation équivaut à $\ln x=1$, soit $x=e$ (définition de $e$, R5). Pour $f(x)=x$, on regroupe : $2x\ln x-3x=0$, soit $x(2\ln x-3)=0$ ; comme $x\ne0$, il reste $\ln x=\dfrac32$, soit $x=e^{3/2}$ — cohérent avec l'indication $e^{3/2}\simeq4.5$ donnée à la question suivante pour la construction.
+        steps:
+          - math: 'f(x)=0 \iff 2x(\ln x - 1) = 0 \iff \ln x = 1 \iff x = e \quad (x\ne0 \text{ sur } ]0,+\infty[)'
+            note: "Produit nul, x non nul sur le domaine considere. x=e par definition de e (R5)."
+          - math: 'f(x)=x \iff 2x\ln x - 3x = 0 \iff x(2\ln x - 3) = 0 \iff \ln x = \dfrac32 \iff x = e^{3/2}'
+            note: "Meme methode, x non nul."
+      - id: q8
+        stem: |-
+          **(1 pt)** Construire la courbe $(C)$ dans le repère $(O, \vec{i}, \vec{j})$ *(on prend $e^{\frac{3}{2}} \simeq 4.5$)*.
+        reasoning: |-
+          On reporte tout ce qui a déjà été établi. La demi-tangente verticale à l'origine $(0,0)$ (question 4) ; le minimum au point $(1,-2)$ (question 6) ; le zéro de $f$ au point $(e,0)$ et le point $(e^{3/2},e^{3/2})\approx(4{,}5\,;\,4{,}5)$ où $(C)$ croise la droite $y=x$ (question 7) ; et la branche parabolique de direction $(O,\vec{j})$ au voisinage de $+\infty$ (question 3), c'est-à-dire une courbe qui remonte de plus en plus abruptement. $(C)$ part du point $(0,0)$ avec une tangente verticale, descend jusqu'au minimum $(1,-2)$, puis remonte en traversant l'axe des abscisses en $e$ et la droite $y=x$ en $e^{3/2}$.
+      - id: q9
+        part: "Integration par parties et aire"
+        stem: |-
+          **(0,5 pt)** En utilisant une intégration par parties, montrer que $\displaystyle\int_1^e x\ln x\, dx = \dfrac{1 + e^2}{4}$.
+        reasoning: |-
+          Technique du chapitre « Calcul intégral », hors socle de cette leçon. On lit $x\ln x$ comme un produit à intégrer par parties : on dérive $u=\ln x$ (plus simple, $u'=\dfrac1x$) et on primitive $v'=x$ en $v=\dfrac{x^2}{2}$. Le crochet se calcule aux bornes $1$ et $e$ avec $\ln e=1$ et $\ln 1=0$, puis il reste une intégrale élémentaire de $x/2$.
+        steps:
+          - math: 'u=\ln x,\ u''=\dfrac1x\ ; \quad v''=x,\ v=\dfrac{x^2}{2}'
+            note: "Choix IPP : deriver ln x, primitiver x."
+          - math: '\int_1^e x\ln x\,dx = \left[\dfrac{x^2}{2}\ln x\right]_1^e - \int_1^e \dfrac{x}{2}\,dx'
+            note: "Formule de l'IPP."
+          - math: '\left[\dfrac{x^2}{2}\ln x\right]_1^e = \dfrac{e^2}{2}\times 1 - \dfrac{1}{2}\times 0 = \dfrac{e^2}{2}'
+            note: "Ln e=1, ln 1=0."
+          - math: '\int_1^e \dfrac{x}{2}\,dx = \left[\dfrac{x^2}{4}\right]_1^e = \dfrac{e^2}{4} - \dfrac{1}{4}'
+            note: "Primitive elementaire de x/2."
+          - math: '\int_1^e x\ln x\,dx = \dfrac{e^2}{2} - \left(\dfrac{e^2}{4} - \dfrac14\right) = \dfrac{e^2}{4} + \dfrac14 = \dfrac{1+e^2}{4}'
+            note: "Regroupement final."
+      - id: q10
+        stem: |-
+          **(0,5 pt)** En déduire : $\displaystyle\int_1^e f(x)\, dx$.
+        reasoning: |-
+          $f(x)=2x\ln x-2x$, donc par linéarité $\displaystyle\int_1^e f(x)\,dx = 2\int_1^e x\ln x\,dx - 2\int_1^e x\,dx$. On réutilise le résultat de la question précédente pour le premier terme, et une primitive élémentaire de $x$ pour le second.
+        steps:
+          - math: '\int_1^e f(x)\,dx = 2\int_1^e x\ln x\,dx - 2\int_1^e x\,dx'
+            note: "Linearite de l'integrale."
+          - math: '\int_1^e x\,dx = \left[\dfrac{x^2}{2}\right]_1^e = \dfrac{e^2-1}{2}'
+            note: "Primitive elementaire."
+          - math: '\int_1^e f(x)\,dx = 2\cdot\dfrac{1+e^2}{4} - 2\cdot\dfrac{e^2-1}{2} = \dfrac{1+e^2}{2} - (e^2-1)'
+            note: "Reutilisation de la question precedente."
+          - math: '\int_1^e f(x)\,dx = \dfrac{3-e^2}{2}'
+            note: "Regroupement final."
+      - id: q11
+        part: "Minimum de f et une inegalite"
+        stem: |-
+          **(0,25 pt)** Déterminer le minimum de $f$ sur $]0, +\infty[$.
+        reasoning: |-
+          Lecture directe du tableau de variations (question 6) : $f$ décroît puis croît, avec un minimum en $x=1$.
+        steps:
+          - math: 'f \text{ decroit sur } ]0,1] \text{ puis croit sur } [1,+\infty[ \implies \min_{]0,+\infty[} f = f(1)'
+            note: "Lecture directe du tableau de variations (question 6)."
+          - math: 'f(1) = 2\ln 1 - 2 = -2'
+            note: "Le minimum de f sur ]0,+infini[ vaut -2, atteint en x=1."
+      - id: q12
+        stem: |-
+          **(0,5 pt)** En déduire que pour tout $x$ de $]0, +\infty[$, $\ln x \ge \dfrac{x - 1}{x}$.
+        reasoning: |-
+          Comme $f(1)=-2$ est le minimum global de $f$ sur $]0,+\infty[$ (question précédente), $f(x)\ge f(1)$ pour tout $x>0$, soit $2x\ln x-2x\ge-2$. On divise par $2x$, strictement positif, ce qui préserve le sens de l'inégalité : $\ln x - 1 \ge -\dfrac1x$, c'est-à-dire $\ln x \ge 1-\dfrac1x=\dfrac{x-1}{x}$.
+        steps:
+          - math: '\forall x>0,\ f(x)\ge f(1) \iff 2x\ln x - 2x \ge -2'
+            note: "f(1)=-2 est le minimum global de f (question precedente)."
+          - math: '2x\ln x - 2x \ge -2 \iff \ln x - 1 \ge -\dfrac1x \quad (\text{division par } 2x>0)'
+            note: "On divise par 2x, strictement positif : le sens de l'inegalite est preserve."
+          - math: '\ln x \ge 1 - \dfrac1x = \dfrac{x-1}{x}'
+            note: "Inegalite demandee."
+      - id: q13
+        part: "Fonction reciproque de la restriction g de f a [1,+infini["
+        stem: |-
+          Soit $g$ la restriction de la fonction $f$ à l'intervalle $[1, +\infty[$.
+
+          **(0,5 pt)** Montrer que la fonction $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ qu'on déterminera.
+        reasoning: |-
+          $g$ hérite de $f$ sa continuité et sa stricte croissance sur $[1,+\infty[$ (question 6). Une fonction continue et strictement monotone sur un intervalle réalise une bijection de cet intervalle vers l'intervalle image (corollaire du théorème des valeurs intermédiaires, chapitre « Dérivabilité et étude de fonctions », hors socle de cette leçon). L'intervalle image se lit aux bornes : $g(1)=f(1)=-2$ (question 11) et $\displaystyle\lim_{x\to+\infty}g(x)=\lim_{x\to+\infty}f(x)=+\infty$ (question 2). Donc $g$ admet une réciproque $g^{-1}$ définie sur $J=[-2,+\infty[$.
+        steps:
+          - math: 'g \text{ continue et strictement croissante sur } [1,+\infty[ \quad (\text{restriction de } f, \text{ question 6})'
+            note: "Continuite et stricte croissance heritees de f."
+          - math: 'g(1) = f(1) = -2 \quad (\text{question 11}), \qquad \lim_{x\to+\infty} g(x) = \lim_{x\to+\infty} f(x) = +\infty \quad (\text{question 2})'
+            note: "Images des bornes de l'intervalle de depart."
+          - math: 'g \text{ realise une bijection de } [1,+\infty[ \text{ sur } J = [-2,+\infty['
+            note: "Corollaire du theoreme des valeurs intermediaires (continuite + stricte monotonie), hors socle de cette lecon."
+      - id: q14
+        stem: |-
+          **(0,75 pt)** Construire dans le même repère $(O, \vec{i}, \vec{j})$ la courbe représentative de la fonction $g^{-1}$.
+        reasoning: |-
+          La courbe d'une fonction réciproque est le symétrique de la courbe de la fonction de départ par rapport à la droite $(\Delta):y=x$. La courbe de $g$ est la portion de $(C)$ pour $x\ge1$ : elle part du minimum $(1,-2)$, passe par $(e,0)$ et par $(e^{3/2},e^{3/2})$, puis remonte indéfiniment (questions 6 et 7). En reflétant cette portion par rapport à $(\Delta)$, on obtient la courbe de $g^{-1}$, définie sur $J=[-2,+\infty[$, qui part du point $(-2,1)$, passe par $(0,e)$ et par $(e^{3/2},e^{3/2})$ (point fixe commun aux deux courbes, sur $(\Delta)$), puis continue de monter.
+      - id: q15
+        part: "Une fonction definie par morceaux : h"
+        stem: |-
+          On considère la fonction $h$ définie sur $\mathbb{R}$ par $\begin{cases} h(x) = x^3 + 3x & ;\ x \le 0 \\ h(x) = 2x\ln x - 2x & ;\ x > 0 \end{cases}$
+
+          **(0,5 pt)** Etudier la continuité de $h$ au point $0$.
+        reasoning: |-
+          On calcule les deux limites latérales et on les compare à $h(0)$. À gauche, $h$ est le polynôme $x^3+3x$, continu partout, donc $\displaystyle\lim_{x\to0^-}h(x)=0=h(0)$. À droite, $h(x)=f(x)$ pour $x>0$ : c'est exactement le calcul de la question 1, qui donnait $\displaystyle\lim_{x\to0^+}f(x)=0$. Les deux limites latérales coïncident avec $h(0)=0$ : $h$ est continue en $0$.
+        steps:
+          - math: '\lim_{x\to0^-} h(x) = \lim_{x\to0^-} (x^3+3x) = 0 = h(0)'
+            note: "Polynome, continu partout."
+          - math: '\lim_{x\to0^+} h(x) = \lim_{x\to0^+} (2x\ln x - 2x) = 0 \quad (\text{meme calcul que la question 1})'
+            note: "Reutilisation du corollaire x ln x tend vers 0."
+          - math: '\lim_{x\to0^-} h(x) = \lim_{x\to0^+} h(x) = h(0) = 0 \implies h \text{ continue en } 0'
+            note: "Limites a gauche et a droite egales a h(0)."
+      - id: q16
+        stem: |-
+          **(0,5 pt)** Etudier la dérivabilité de la fonction $h$ à gauche au point $0$ puis interpréter géométriquement le résultat.
+        reasoning: |-
+          On calcule la limite à gauche du taux d'accroissement de $h$ en $0$ : $\dfrac{h(x)-h(0)}{x-0}=\dfrac{x^3+3x}{x}=x^2+3$ pour $x\ne0$ (on simplifie par $x$). Cette expression a une limite finie, $3$, quand $x\to0^-$ : $h$ est dérivable à gauche en $0$. Géométriquement, $(C_h)$ admet au point $(0,0)$ une demi-tangente à gauche de coefficient directeur $3$.
+        steps:
+          - math: '\dfrac{h(x)-h(0)}{x-0} = \dfrac{x^3+3x}{x} = x^2+3 \quad (x\ne0)'
+            note: "Taux d'accroissement, simplification par x."
+          - math: '\lim_{x\to0^-} (x^2+3) = 3'
+            note: "Limite finie : h derivable a gauche en 0."
+          - math: '\text{Interpretation : } (C_h) \text{ admet en } (0,0) \text{ une demi-tangente a gauche de coefficient directeur } 3'
+            note: "Interpretation geometrique de la derivabilite a gauche."
+      - id: q17
+        stem: |-
+          **(0,25 pt)** La fonction $h$ est-elle dérivable au point $0$ ? justifier.
+        reasoning: |-
+          $h$ est dérivable en $0$ seulement si les deux demi-dérivées existent ET coïncident. À droite, le taux d'accroissement de $h$ en $0$ est exactement celui de $f$ (question 4), qui tend vers $-\infty$ : ce n'est même pas une demi-dérivée finie. À gauche, la demi-dérivée vaut $3$ (question précédente), un nombre fini. Une limite finie ne peut pas égaler une limite infinie : les deux demi-dérivées ne coïncident pas, donc $h$ n'est pas dérivable en $0$.
+        steps:
+          - math: '\lim_{x\to0^+} \dfrac{h(x)-h(0)}{x-0} = \lim_{x\to0^+} \dfrac{f(x)}{x} = -\infty \quad (\text{question 4})'
+            note: "Reutilisation du taux d'accroissement de f en 0, deja calcule."
+          - math: '\lim_{x\to0^-} \dfrac{h(x)-h(0)}{x-0} = 3 \ne \lim_{x\to0^+} \dfrac{h(x)-h(0)}{x-0} = -\infty'
+            note: "Les deux demi-derivees ne coincident pas : l'une finie, l'autre infinie."
+          - math: 'h \text{ n''est pas derivable en } 0'
+            note: "Conclusion : pas de derivabilite en 0 (mais deux demi-tangentes distinctes)."
+
+  # ── bk-2024-n-x4 — 2024 N, Problème : comparaison e^x/x, f(x)=x+1-ln(e^x-x), points fixes, reciproque ──
+  - id: bk-2024-n-x4
+    title: "Comparaison de l'exponentielle et de x, étude d'une fonction avec ln, points fixes et fonction réciproque"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Problème"
+    bareme_total: 8
+    duration_min: 48
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national SExp (mesures Sciences de la
+        Vie et de la Terre, et Sciences Physiques, option française),
+        Mathématiques (3 h, coef 7), code NS 22F, AlloSchool element/144505
+        (Problème, 8 points, page 4 seule du scan — le problème tient sur
+        cette unique page). Transcription fidèle de l'entrée « vérifié
+        (corrigé sur re-lecture) » de docs/sujets/maths/fonction-logarithme.md,
+        section « 2024 — session normale — Problème » (re-fetch AlloSchool
+        indépendant element/144505 → course-438/upload-87124 + diff
+        caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-08-06). Deux corrections actées lors de cette
+        relecture, reprises telles quelles ici : (1) « Etudier » sans accent
+        (E capital) à la question 3-b de la Partie II, conforme au scan ;
+        (2) la position de l'étiquette « (C_f) » sur la figure, mesurée sur
+        le scan à environ (3 ; 1), posée sous la courbe — la courbe
+        elle-même passant par (3 ; 1,16). La description de la figure
+        (C_f), reprise dans la question 4-a de la Partie II (justification
+        graphique des deux solutions α et β de f(x)=x), a été rejugée
+        FIDÈLE au scan après vérification au zoom point par point (cadre
+        x∈[-4,4] / y∈[-3,4], deux tracés — droite de pente 1 par l'origine
+        non étiquetée, courbe (C_f) étiquetée sous elle-même — allure,
+        intersections et asymptote confirmées) et corroborée par le calcul
+        indépendant (α≈-2,65, β≈1,42, f(1)=2-ln(e-1)≈1,46). Recoupe
+        `calcul-integral` (Partie I, question 3 — aire), `derivabilite-
+        etude-fonctions` (Partie II, question 5 — fonction réciproque et
+        dérivée de la réciproque en un point) et surtout `fonction-
+        exponentielle` (Partie I tout entière — comparaison graphique de
+        $e^x$ et $x$ ; Partie II, questions 1-b/1-c/2-a/2-c — l'identité
+        $\ln(e^x)=x$ et les limites de référence de l'exponentielle, dont
+        $xe^{-x}\to0$, sont des outils du chapitre « Fonction
+        exponentielle », hors socle R1–R6 de cette leçon). Pas de volet
+        suites dans ce problème (l'Exercice 1 autonome du même sujet porte
+        les suites, hors périmètre de cette notion). Ne recoupe PAS le
+        sommet de leçon r-bac/r-variation (exercises.yaml), qui transcrit
+        le sujet 2019, différent de celui-ci.
+    intro: |-
+      **Problème (examen national, session normale 2024, Sciences Expérimentales).**
+
+      **Partie I.** On considère les deux fonctions $u$ et $v$ définies sur $\mathbb{R}$ par : $u(x) = e^x$ et $v(x) = x$.
+
+      **Partie II.** On considère la fonction numérique $f$ définie par $f(x) = x + 1 - \ln\left(e^x - x\right)$.
+
+      Point de vigilance qui traverse tout le problème : la Partie I n'est pas un hors-d'œuvre isolé — elle sert à garantir que $e^x-x>0$ pour tout $x$ réel, condition sans laquelle $\ln(e^x-x)$ de la Partie II n'aurait aucun sens (rappel R1 : $\ln$ n'existe que sur $]0,+\infty[$).
+    questions:
+      - id: q1
+        part: "Partie I — Comparer u(x)=e^x et v(x)=x, puis une aire"
+        stem: |-
+          **(0,5 pt)** Tracer dans un même repère orthonormé les courbes $(\mathcal{C}_u)$ et $(\mathcal{C}_v)$ des fonctions $u$ et $v$.
+        reasoning: |-
+          $(\mathcal{C}_v)$ est la droite $y=x$, la première bissectrice. $(\mathcal{C}_u)$ est la courbe de l'exponentielle (chapitre « Fonction exponentielle », hors socle de cette leçon) : elle passe par $(0,1)$, est strictement croissante, tend vers $0$ en $-\infty$ (asymptote horizontale) et vers $+\infty$ en $+\infty$, en restant strictement au-dessus de $(\mathcal{C}_v)$ — c'est justement ce que la question suivante demande de justifier.
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Justifier graphiquement que $e^x - x > 0$ pour tout $x$ de $\mathbb{R}$.
+        reasoning: |-
+          Sur le tracé de la question précédente, $(\mathcal{C}_u)$ reste strictement au-dessus de $(\mathcal{C}_v)$ pour tout $x$ réel — les deux courbes ne se croisent jamais. Lire graphiquement $u(x)>v(x)$ pour tout $x$, c'est lire $e^x>x$, c'est-à-dire $e^x-x>0$.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer l'aire de la partie du plan délimitée par la courbe $(\mathcal{C}_u)$, la courbe $(\mathcal{C}_v)$ et les droites d'équations $x = 0$ et $x = 1$.
+        reasoning: |-
+          $(\mathcal{C}_u)$ est au-dessus de $(\mathcal{C}_v)$ partout (question précédente), donc en particulier sur $[0,1]$ : l'aire vaut $\displaystyle\int_0^1(e^x-x)\,dx$, une primitive élémentaire (technique du chapitre « Calcul intégral », hors socle de cette leçon).
+        steps:
+          - math: '\mathcal{A} = \int_0^1 (u(x)-v(x))\,dx = \int_0^1 (e^x-x)\,dx'
+            note: "u au-dessus de v sur [0,1] (question precedente)."
+          - math: '\int_0^1 (e^x-x)\,dx = \left[e^x - \dfrac{x^2}{2}\right]_0^1 = \left(e-\dfrac12\right) - (1-0)'
+            note: "Primitive elementaire de e^x - x."
+          - math: '\mathcal{A} = e - \dfrac32 \quad \text{unites d''aire}'
+            note: "Aire positive, coherente avec la position relative etablie."
+      - id: q4
+        part: "Partie II — Domaine, une autre ecriture de f et limite en +infini"
+        stem: |-
+          **(0,25 pt)** Vérifier que $f$ est définie sur $\mathbb{R}$.
+        reasoning: |-
+          $f(x)=x+1-\ln(e^x-x)$ n'a de sens que là où $e^x-x>0$ (rappel de domaine du $\ln$, R1). Or c'est précisément ce que la Partie I vient d'établir pour tout $x$ réel : $f$ est donc définie sur $\mathbb{R}$ tout entier.
+        steps:
+          - math: '\forall x\in\mathbb{R},\ e^x - x > 0 \quad (\text{Partie I, question 2})'
+            note: "Reutilisation directe du resultat de la Partie I."
+          - math: 'e^x-x>0 \implies \ln(e^x-x) \text{ existe pour tout } x \implies f \text{ est definie sur } \mathbb{R}'
+            note: "Le domaine du ln (R1) est verifie partout : f est definie sur R tout entier."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x \in \mathbb{R}$, $f(x) = 1 - \ln\left(1 - xe^{-x}\right)$.
+        reasoning: |-
+          On factorise l'intérieur du $\ln$ par $e^x$ (jamais nul) : $e^x-x=e^x\left(1-xe^{-x}\right)$. La propriété du produit (R2) donne $\ln(e^x-x)=\ln(e^x)+\ln(1-xe^{-x})$, et $\ln(e^x)=x$ pour tout réel $x$ (propriété de la réciprocité entre $\ln$ et l'exponentielle, chapitre « Fonction exponentielle », hors socle de cette leçon). En remplaçant dans $f(x)=x+1-\ln(e^x-x)$, les deux $x$ s'annulent.
+        steps:
+          - math: 'e^x - x = e^x\left(1-xe^{-x}\right)'
+            note: "On factorise par e^x, jamais nul."
+          - math: '\ln(e^x-x) = \ln(e^x) + \ln\left(1-xe^{-x}\right) = x + \ln\left(1-xe^{-x}\right)'
+            note: "Propriete du produit (R2) ; ln(e^x)=x, propriete de la reciproque de ln, chapitre Fonction exponentielle, hors socle."
+          - math: 'f(x) = x+1-\Big(x+\ln(1-xe^{-x})\Big) = 1 - \ln\left(1-xe^{-x}\right)'
+            note: "Les x s'annulent."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = 1$, puis interpréter géométriquement ce résultat.
+        reasoning: |-
+          On part de l'écriture de la question précédente. Quand $x\to+\infty$, $xe^{-x}\to0$ (limite de référence de l'exponentielle, analogue de la limite $x\ln x\to0$ du R4 mais pour $e^{-x}$, chapitre « Fonction exponentielle », hors socle de cette leçon), donc $1-xe^{-x}\to1$, et par continuité de $\ln$ en $1$ (R1/R5), $\ln(1-xe^{-x})\to\ln(1)=0$. Donc $f(x)\to1-0=1$. Géométriquement, la droite $y=1$ est asymptote horizontale à $(\mathcal{C}_f)$ au voisinage de $+\infty$.
+        steps:
+          - math: '\lim_{x\to+\infty} xe^{-x} = 0 \quad (\text{limite de reference de l''exponentielle, hors socle})'
+            note: "Analogue, pour l'exponentielle, du corollaire x ln x tend vers 0 du R4."
+          - math: '\lim_{x\to+\infty}\big(1-xe^{-x}\big) = 1 \implies \lim_{x\to+\infty}\ln\big(1-xe^{-x}\big) = \ln(1) = 0'
+            note: "Continuite de ln en 1, deja etablie R1/R5."
+          - math: '\lim_{x\to+\infty} f(x) = 1-0 = 1'
+            note: "Asymptote horizontale y=1 en plus l'infini."
+      - id: q7
+        part: "Partie II — Limite en -infini et branche parabolique"
+        stem: |-
+          **(0,25 pt)** Calculer $\displaystyle\lim_{x \to -\infty} f(x)$.
+        reasoning: |-
+          Quand $x\to-\infty$, $e^x\to0$ (limite de référence de l'exponentielle, hors socle) et $-x\to+\infty$ : leur somme $e^x-x\to+\infty$. Par la limite de référence du $\ln$ en $+\infty$ (R4), $\ln(e^x-x)\to+\infty$. Donc $f(x)=x+1-\ln(e^x-x)$ est somme de deux termes qui tendent tous les deux vers $-\infty$ ($x+1\to-\infty$ et $-\ln(e^x-x)\to-\infty$) : pas d'indétermination, $f(x)\to-\infty$.
+        steps:
+          - math: '\lim_{x\to-\infty} e^x = 0, \quad \lim_{x\to-\infty} (-x) = +\infty \implies \lim_{x\to-\infty} (e^x-x) = +\infty'
+            note: "Limite de reference de l'exponentielle en moins l'infini (hors socle), plus -x qui domine."
+          - math: '\lim_{x\to-\infty} \ln(e^x-x) = +\infty \quad (\text{R4, argument qui tend vers } +\infty)'
+            note: "Limite de reference du ln en plus l'infini, appliquee a l'argument e^x - x."
+          - math: '\lim_{x\to-\infty} (x+1) = -\infty, \quad \lim_{x\to-\infty} \ln(e^x-x) = +\infty \implies \lim_{x\to-\infty} f(x) = -\infty'
+            note: "x+1 tend vers moins l'infini, ln(e^x-x) vers plus l'infini : deux termes qui tirent vers moins l'infini, sans indetermination."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Vérifier que pour tout $x < 0$, $f(x) = x + 1 - \ln(-x) - \ln\left(1 - \dfrac{1}{xe^{-x}}\right)$.
+        reasoning: |-
+          Pour $x<0$, on factorise cette fois par $-x$ (strictement positif) plutôt que par $e^x$ : $e^x-x=-x\left(1-\dfrac{e^x}{x}\right)$, et $\dfrac{e^x}{x}=\dfrac1{xe^{-x}}$. La propriété du produit (R2) s'applique car les deux facteurs $-x$ et $1-\dfrac1{xe^{-x}}$ sont strictement positifs pour $x<0$. En substituant dans $f(x)=x+1-\ln(e^x-x)$, on obtient l'écriture demandée.
+        steps:
+          - math: 'x<0 \implies e^x - x = -x\left(1-\dfrac{e^x}{x}\right) = -x\left(1-\dfrac{1}{xe^{-x}}\right)'
+            note: "On factorise par -x, strictement positif pour x negatif ; e^x/x = 1/(x e^-x)."
+          - math: '\ln(e^x-x) = \ln(-x) + \ln\left(1-\dfrac{1}{xe^{-x}}\right) \quad (\text{propriete du produit, R2})'
+            note: "Les deux facteurs -x et 1-1/(x e^-x) sont strictement positifs pour x<0."
+          - math: 'f(x) = x+1-\ln(e^x-x) = x+1-\ln(-x)-\ln\left(1-\dfrac{1}{xe^{-x}}\right)'
+            note: "Substitution directe dans f(x)."
+      - id: q9
+        stem: |-
+          **(0,75 pt)** Calculer $\displaystyle\lim_{x \to -\infty} \dfrac{f(x)}{x}$ puis déduire que la courbe $(\mathcal{C}_f)$ admet une branche parabolique de direction la droite d'équation $y = x$ au voisinage de $-\infty$.
+        reasoning: |-
+          On divise la forme de la question précédente par $x$ (négatif, non nul) et on pose $X=-x$ (qui tend vers $+\infty$) pour se ramener aux limites de référence. Le terme $\dfrac{\ln(-x)}{x}$ devient $-\dfrac{\ln X}{X}\to0$ par croissances comparées (R4, même limite de référence que dans la leçon, ici appliquée à $X$). Le dernier terme tend aussi vers $0$ : $xe^{-x}=-Xe^X\to-\infty$ (l'exponentielle écrase $X$, hors socle), donc $\dfrac1{xe^{-x}}\to0$ et $\ln\left(1-\dfrac1{xe^{-x}}\right)\to\ln(1)=0$. Il reste $\dfrac{f(x)}{x}\to1$ : c'est la direction de $(\Delta):y=x$. Mais l'écart $f(x)-x=1-\ln(e^x-x)$ tend vers $-\infty$ (question 7) — pas de limite finie, donc pas d'asymptote : c'est une branche parabolique de direction $(\Delta)$.
+        steps:
+          - math: '\dfrac{f(x)}{x} = 1+\dfrac1x-\dfrac{\ln(-x)}{x}-\dfrac1x\ln\left(1-\dfrac{1}{xe^{-x}}\right) \quad (x<0)'
+            note: "On divise par x la forme de la question precedente."
+          - math: 'X=-x\to+\infty,\quad \dfrac{\ln(-x)}{x} = \dfrac{\ln X}{-X} = -\dfrac{\ln X}{X} \to 0 \quad (\text{croissances comparees, R4})'
+            note: "Meme limite de reference que R4, avec le changement de variable X=-x."
+          - math: 'xe^{-x} = -Xe^{X} \to -\infty \implies \dfrac{1}{xe^{-x}} \to 0 \implies \ln\left(1-\dfrac{1}{xe^{-x}}\right) \to \ln(1) = 0'
+            note: "L'exponentielle ecrase X (hors socle) ; continuite de ln en 1 (R1/R5)."
+          - math: '\lim_{x\to-\infty} \dfrac{f(x)}{x} = 1+0-0-0 = 1'
+            note: "La pente tend vers 1 : direction de (Delta):y=x."
+          - math: 'f(x)-x = 1-\ln(e^x-x) \xrightarrow[x\to-\infty]{} -\infty \quad (\text{question 7})'
+            note: "L'ecart ne tend pas vers une limite finie : pas d'asymptote, branche parabolique de direction y=x."
+      - id: q10
+        part: "Partie II — Derivee, tableau de variations et un zero de f"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x \in \mathbb{R}$ : $f'(x) = \dfrac{1 - x}{e^x - x}$.
+        reasoning: |-
+          On dérive $f(x)=x+1-\ln(e^x-x)$ : le terme $\ln(e^x-x)$ est une composée, on applique $(\ln u)'=\dfrac{u'}{u}$ (R3) avec $u(x)=e^x-x$, $u'(x)=e^x-1$. Il reste à réduire $1-\dfrac{e^x-1}{e^x-x}$ au même dénominateur.
+        steps:
+          - math: 'u(x)=e^x-x,\ u''(x)=e^x-1 \implies \big(\ln(e^x-x)\big)'' = \dfrac{e^x-1}{e^x-x} \quad (\text{regle } (\ln u)''=u''/u, \text{ R3})'
+            note: "On derive l'interieur du ln."
+          - math: 'f''(x) = 1-\dfrac{e^x-1}{e^x-x} = \dfrac{(e^x-x)-(e^x-1)}{e^x-x}'
+            note: "Derivee de x+1 moins la derivee du ln, meme denominateur."
+          - math: 'f''(x) = \dfrac{1-x}{e^x-x}'
+            note: "Simplification du numerateur : les e^x s'annulent."
+      - id: q11
+        stem: |-
+          **(0,5 pt)** Etudier le signe de la fonction dérivée de $f$, puis déduire le tableau de variations de $f$ sur $\mathbb{R}$.
+        reasoning: |-
+          Le dénominateur $e^x-x$ est strictement positif pour tout $x$ (Partie I), donc ne compte pas dans le signe : le signe de $f'(x)$ est celui de $1-x$, positif avant $1$, nul en $1$, négatif après. $f$ croît donc sur $]-\infty,1]$ puis décroît sur $[1,+\infty[$, avec un maximum en $x=1$ valant $f(1)=1+1-\ln(e-1)=2-\ln(e-1)$. On complète avec les deux limites déjà établies : $-\infty$ en $-\infty$ (question 7) et $1$ en $+\infty$ (question 6, asymptote).
+        steps:
+          - math: 'e^x-x>0 \text{ pour tout } x \quad (\text{Partie I}) \implies \text{signe}(f'') = \text{signe}(1-x)'
+            note: "Le denominateur ne change jamais de signe."
+          - math: 'f''(x) > 0 \text{ sur } ]-\infty,1[, \quad f''(1)=0, \quad f''(x) < 0 \text{ sur } ]1,+\infty['
+            note: "Signe de 1-x autour de 1."
+          - math: 'f(1) = 1+1-\ln(e-1) = 2-\ln(e-1)'
+            note: "Maximum de f, atteint en x=1. f croit de moins l'infini a 2-ln(e-1), puis decroit vers 1 (asymptote)."
+      - id: q12
+        stem: |-
+          **(0,75 pt)** Montrer que l'équation $f(x) = 0$ admet une solution unique dans l'intervalle $]-1, 0[$.
+        reasoning: |-
+          $f$ est continue et strictement croissante sur $]-\infty,1]$ (question précédente), donc en particulier sur $[-1,0]$ : elle y est injective. On calcule $f(-1)$ et $f(0)$ : les deux valeurs sont de signes opposés, ce qui donne l'existence d'un zéro, et le corollaire du théorème des valeurs intermédiaires (continuité + stricte monotonie, hors socle de cette leçon) garantit que ce zéro est unique.
+        steps:
+          - math: 'f(-1) = -1+1-\ln\left(e^{-1}+1\right) = -\ln\left(\dfrac1e+1\right) < 0 \quad \left(\dfrac1e+1>1\right)'
+            note: "Valeur en -1, negative car l'interieur du ln depasse 1."
+          - math: 'f(0) = 0+1-\ln(e^0-0) = 1-\ln(1) = 1 > 0'
+            note: "Valeur en 0, positive."
+          - math: 'f \text{ continue et strictement croissante sur } [-1,0] \ (\subset\, ]-\infty,1], \text{ question 11}), \quad f(-1)<0<f(0)'
+            note: "Corollaire du theoreme des valeurs intermediaires, hors socle de cette lecon."
+          - math: '\implies \exists!\, x_0 \in\, ]-1,0[,\ f(x_0)=0'
+            note: "Unicite garantie par la stricte monotonie (injectivite) de f sur cet intervalle."
+      - id: q13
+        part: "Partie II — Deux points fixes alpha et beta"
+        stem: |-
+          La courbe $(\mathcal{C}_f)$ ci-contre est la représentation graphique de $f$ dans un repère orthonormé : cadre gradué de $-4$ à $4$ en abscisse et de $-3$ à $4$ en ordonnée, avec deux tracés — une droite non étiquetée passant par l'origine, de pente $1$ (la droite $(\Delta):y=x$), et la courbe $(\mathcal{C}_f)$ elle-même, étiquetée juste en dessous d'elle. La courbe monte depuis le coin inférieur gauche du cadre (où elle est sous $(\Delta)$ et plus pentue qu'elle), coupe $(\Delta)$ une première fois dans le troisième quadrant, coupe l'axe des abscisses une unique fois entre $-1$ et $0$ (question 12), passe par le point $(0,1)$, atteint un maximum aux alentours de $1{,}5$ en $x=1$, recoupe $(\Delta)$ une seconde fois entre $1$ et $2$, puis redescend lentement vers l'asymptote $y=1$ en restant sous $(\Delta)$.
+
+          **(0,5 pt)** Justifier graphiquement que l'équation $f(x) = x$ admet deux solutions $\alpha$ et $\beta$.
+        reasoning: |-
+          Sur le graphique, $(\mathcal{C}_f)$ croise la droite $(\Delta):y=x$ en exactement deux points : l'un dans le troisième quadrant, l'autre entre les abscisses $1$ et $2$. Ce n'est pas seulement une lecture graphique isolée : comme $f$ est strictement croissante sur $]-\infty,1]$ puis strictement décroissante sur $[1,+\infty[$ (question 11), l'équation $f(x)=x$ a au plus une solution sur chacune de ces deux branches monotones (stricte monotonie = injectivité). La lecture graphique montrant une intersection sur chaque branche, il y a donc exactement deux solutions, notées $\alpha$ (sur la branche croissante) et $\beta$ (sur la branche décroissante).
+        steps:
+          - math: '(\mathcal{C}_f) \text{ croise } (\Delta) \text{ en un point du troisieme quadrant, puis en un second point entre } x=1 \text{ et } x=2'
+            note: "Lecture directe de la figure."
+          - math: 'f \text{ strictement croissante sur } ]-\infty,1] \text{ puis strictement decroissante sur } [1,+\infty[ \implies \text{au plus une solution de } f(x)=x \text{ par branche}'
+            note: "Stricte monotonie = injectivite sur chaque branche (question 11)."
+          - math: '\implies \text{exactement deux solutions } \alpha \text{ (branche croissante) et } \beta \text{ (branche decroissante)}'
+            note: "Une intersection observee sur chaque branche : deux solutions au total."
+      - id: q14
+        stem: |-
+          **(0,5 pt)** Montrer que : $e^{\alpha} - e^{\beta} = \alpha - \beta$.
+        reasoning: |-
+          On réécrit d'abord l'équation $f(x)=x$ sous une forme plus maniable, avec la méthode du R6 : isoler le $\ln$ puis utiliser l'injectivité de $\ln$. $f(x)=x \iff \ln(e^x-x)=1$. Or $1=\ln(e)$ (définition de $e$, R5), donc par injectivité de $\ln$ (R1, stricte croissance) : $e^x-x=e$. En appliquant cette équivalence aux deux solutions $\alpha$ et $\beta$ de la question précédente, on obtient deux égalités qu'il suffit de soustraire.
+        steps:
+          - math: 'f(x)=x \iff x+1-\ln(e^x-x)=x \iff \ln(e^x-x)=1'
+            note: "On isole le terme en ln."
+          - math: '\ln(e^x-x) = 1 = \ln(e) \iff e^x-x=e \quad (\text{injectivite de ln, R1/R6}; \ \ln(e)=1 \text{ par definition, R5})'
+            note: "Equation resolue par injectivite, comme au R6."
+          - math: 'f(\alpha)=\alpha,\ f(\beta)=\beta \implies e^{\alpha}-\alpha = e \quad \text{et} \quad e^{\beta}-\beta = e'
+            note: "Alpha et beta sont les deux solutions donnees par la question precedente."
+          - math: '\big(e^{\alpha}-\alpha\big)-\big(e^{\beta}-\beta\big) = 0 \implies e^{\alpha}-e^{\beta} = \alpha-\beta'
+            note: "On soustrait les deux egalites et on regroupe."
+      - id: q15
+        part: "Partie II — Fonction reciproque g et sa derivee en 1"
+        stem: |-
+          Soit $g$ la restriction de la fonction $f$ sur l'intervalle $I = ]-\infty, 1]$.
+
+          **(0,5 pt)** Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ que l'on déterminera. *(Il n'est pas demandé de déterminer $g^{-1}(x)$)*.
+        reasoning: |-
+          $g$ hérite de $f$ sa continuité et sa stricte croissance sur $I=]-\infty,1]$ (question 11). Une fonction continue et strictement monotone sur un intervalle réalise une bijection vers l'intervalle image (corollaire du théorème des valeurs intermédiaires, hors socle de cette leçon). L'intervalle image se lit aux bornes de $I$ : $\displaystyle\lim_{x\to-\infty}g(x)=-\infty$ (question 7) et $g(1)=f(1)=2-\ln(e-1)$ (question 11). Donc $g$ admet une réciproque $g^{-1}$ définie sur $J=\left]-\infty,\,2-\ln(e-1)\right]$.
+        steps:
+          - math: 'g \text{ continue et strictement croissante sur } I=\,]-\infty,1] \quad (\text{restriction de } f, \text{ question 11})'
+            note: "Continuite et stricte monotonie heritees de f."
+          - math: '\lim_{x\to-\infty} g(x) = -\infty \ (\text{question 7}), \qquad g(1) = f(1) = 2-\ln(e-1) \ (\text{question 11})'
+            note: "Images des bornes de l'intervalle I."
+          - math: 'g \text{ realise une bijection de } I \text{ sur } J = \left]-\infty,\, 2-\ln(e-1)\right]'
+            note: "Corollaire du theoreme des valeurs intermediaires (continuite + stricte monotonie), hors socle de cette lecon."
+      - id: q16
+        stem: |-
+          **(0,75 pt)** Vérifier que $g^{-1}$ est dérivable en $1$ et calculer $\left(g^{-1}\right)'(1)$.
+        reasoning: |-
+          Le théorème de la dérivée d'une fonction réciproque (chapitre « Dérivabilité et étude de fonctions », hors socle de cette leçon) dit : si $g$ est dérivable en $x_0$ avec $g'(x_0)\ne0$, alors $g^{-1}$ est dérivable en $y_0=g(x_0)$, et $(g^{-1})'(y_0)=\dfrac1{g'(x_0)}$. Ici on cherche $x_0\in I$ tel que $g(x_0)=1$ : $x_0=0$ convient, car $f(0)=0+1-\ln(e^0-0)=1-\ln1=1$. On calcule ensuite $g'(0)=f'(0)$ avec la formule de la question 10 : $f'(0)=\dfrac{1-0}{e^0-0}=1$, qui est non nul. Le théorème s'applique donc, et $(g^{-1})'(1)=\dfrac1{g'(0)}=1$.
+        steps:
+          - math: 'g(0) = f(0) = 0+1-\ln(e^0-0) = 1-\ln(1) = 1'
+            note: "On cherche x0 tel que g(x0)=1 : x0=0 convient (0 appartient a I)."
+          - math: 'g''(0) = f''(0) = \dfrac{1-0}{e^0-0} = 1 \ne 0'
+            note: "Derivee de f en 0 (formule de la question 10), non nulle."
+          - math: 'g \text{ derivable en } 0,\ g''(0)\ne0 \implies g^{-1} \text{ derivable en } g(0)=1, \quad \left(g^{-1}\right)''(1) = \dfrac{1}{g''(0)} = 1'
+            note: "Theoreme de la derivee d'une reciproque (chapitre Derivabilite et etude de fonctions, hors socle de cette lecon)."

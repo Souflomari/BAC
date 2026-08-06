@@ -1,0 +1,307 @@
+# bank.yaml — la banque « S'entraîner » de limites-continuite (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, [[exercise:]] à R6, r-bac déjà
+# sourcé par EXTRAIT du problème 2022 session normale), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Cette notion n'avait AUCUNE banque avant ce fichier. Les
+# deux entrées ci-dessous sont des transcriptions FIDÈLES des deux SEULES
+# entrées « vérifié — agent-vérificateur-adversarial, 2026-08-06 » de
+# docs/sujets/maths/limites-continuite.md : 2020 (Exercice 3, 4 points,
+# filière SExp, code NS 22F, element/109797) et 2021 (Exercice 1, 2 points,
+# filière SExp, code NS 22F, element/127180). Aucun autre sujet vérifié
+# n'est disponible pour cette notion à ce jour — introuvable = absent,
+# jamais inventé. Raisonnement rédigé à la voix experte de la maison sur
+# 100 % des questions ; barème transcrit tel quel dans les énoncés (tag
+# « pt » ajouté par convention maison, cf.
+# content/maths/nombres-complexes-1/bank.yaml) ; conventions KaTeX (block
+# scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes sans backslash).
+#
+# SCOPE NOTE (divulgation honnête, authoring-side).
+#
+# bk-2020-n-x3 (2020, Exercice 3) déborde largement du corps R1–R6 de cette
+# leçon, qui ne couvre QUE limites/opérations/formes indéterminées/
+# continuité/TVI/limites trigonométriques :
+#   - Q1a/Q1b mobilisent la DÉRIVÉE (calcul de g'(x), puis signe de g' pour
+#     la monotonie) — technique de derivabilite-etude-fonctions, absente de
+#     ce corps de leçon. Le rung R5 de cette même leçon justifie d'ailleurs
+#     explicitement la stricte croissance d'un exemple (x³+x-1) SANS
+#     dérivée, par choix délibéré (note de validation en pied de
+#     lesson.md, point 3) — Q1a/Q1b vont donc à l'encontre de ce parti
+#     pris de conception ; c'est une caractéristique du sujet source, pas
+#     de cette banque.
+#   - Q1c/Q1d mobilisent un ENCADREMENT (théorème des gendarmes) pour
+#     conclure une limite — un mécanisme que R1–R6 n'introduit sous aucune
+#     forme (R6 admet lim sin(x)/x = 1 directement, sans passer par un
+#     encadrement explicite ; R2 ne donne que des règles d'opération, pas
+#     de comparaison).
+#   - Q1d conclut une limite de type « croissances comparées »
+#     (lim (ln x)³/x² en +∞) — un registre absent du formulaire de limites
+#     de référence du R1 (qui ne couvre que x^n et 1/x^n).
+#   - Q2a/Q2b mobilisent PRIMITIVE et INTÉGRALE (vérification G'=g, calcul
+#     de ∫₁⁴g) — contenu de calcul-integral, totalement absent de cette
+#     leçon.
+#   Seule la toute dernière étape de Q1d (passer de l'encadrement à la
+#   limite) touche vraiment au cœur « limites » de la notion — c'est
+#   d'ailleurs la lecture retenue par
+#   docs/sujets/maths/limites-continuite.md lui-même (« dominante limites »
+#   malgré l'intitulé mixte « Limites, dérivabilité et calcul intégral »,
+#   Q1d citée comme la question la plus lourde). Recoupe déjà notée à la
+#   source : calcul-integral (Q2a/Q2b), derivabilite-etude-fonctions
+#   (Q1a/Q1b). Les champs `reasoning` ci-dessous bridgent chaque écart au
+#   point d'usage plutôt que d'inventer un rung — à l'arbitrage de l'owner
+#   / pédagogie-architecte si cette entrée doit être scindée entre les
+#   trois notions plutôt que transcrite ici en entier.
+#
+# bk-2021-n-x1 (2021, Exercice 1) mobilise, pour Q1a/Q1b, une résolution
+# d'équation/inéquation en $e^x$ par changement de variable $t=e^x$ —
+# algèbre de fonction-exponentielle (trinôme en t, puis retour à x via la
+# stricte croissance de l'exponentielle), également hors du corps R1–R6.
+# Q1c (la limite proprement dite, forme 0/0 levée par factorisation via ce
+# même t=e^x) applique fidèlement le MÉCANISME de la Technique 1 du R3
+# (numérateur et dénominateur s'annulent au même point ⇒ facteur commun,
+# licite à simplifier tant que t≠1 pendant le calcul de la limite) —
+# bridgé au point d'usage, pas un écart de fond. Q2 (TVI sur [-1,0]) est du
+# cœur R5 pur, sans écart (continuité de l'exponentielle elle-même admise
+# comme brique de référence, à la manière des fonctions usuelles du R4).
+#
+# Aucun recoupement avec le sommet de leçon (exercises.yaml, r-bac/
+# r-variation, [[exercise:]] à R6) : celui-ci est sourcé par extrait du
+# problème 2022 session normale — année et exercices disjoints des deux
+# entrées ci-dessous.
+
+notion: maths/limites-continuite
+
+entries:
+  # ── bk-2020-n-x3 — 2020 N, Exercice 3 : dérivée, monotonie, encadrement, croissances comparées, primitive, intégrale ──
+  - id: bk-2020-n-x3
+    title: "Croissances comparées par encadrement, primitive et intégrale (fonction en ln x)"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/109797 (Exercice 3,
+        « Limites, dérivabilité et calcul intégral » ; barème 4 points).
+        Transcription fidèle de l'entrée « vérifié —
+        agent-vérificateur-adversarial, 2026-08-06 » de
+        docs/sujets/maths/limites-continuite.md, section « 2020 — session
+        normale — Exercice 3 » (re-fetch AlloSchool indépendant,
+        course-438/upload-80918, diff caractère-par-caractère conforme au
+        scan p.3). Recoupe déjà signalée à la source : calcul-integral
+        (Q2a/Q2b — primitive et intégrale), derivabilite-etude-fonctions
+        (Q1a/Q1b — dérivée et monotonie). Voir SCOPE NOTE en tête de
+        fichier : Q1a/Q1b/Q2a/Q2b débordent du corps R1–R6 de cette leçon
+        (dérivée, primitive, intégrale) ; Q1c/Q1d mobilisent un
+        encadrement (théorème des gendarmes) absent de ce corps ; seule la
+        toute dernière étape de Q1d touche vraiment au cœur limites de la
+        notion.
+    intro: |-
+      **Limites, dérivabilité et calcul intégral (étude de $g(x) = 2\sqrt{x} - 2 - \ln x$ : croissances comparées par encadrement, primitive, intégrale).**
+
+      On considère la fonction numérique $g$ définie sur $]0,+\infty[$ par $g(x) = 2\sqrt{x} - 2 - \ln x$
+    questions:
+      - id: q1a
+        part: "Question 1 — Dérivée, monotonie et encadrement jusqu'à une limite de croissances comparées"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $g'(x) = \dfrac{\sqrt{x} - 1}{x}$
+        reasoning: |-
+          Cette question mobilise le calcul de dérivée — un outil du chapitre dérivabilité (derivabilite-etude-fonctions), en dehors du corps R1–R6 de cette leçon, qui ne traite que limites, continuité et TVI. On admet ici les deux dérivées usuelles : celle de $x\mapsto 2\sqrt{x}$ vaut $\dfrac{1}{\sqrt{x}}$, celle de $x\mapsto -\ln x$ vaut $-\dfrac{1}{x}$ (et la dérivée de la constante $-2$ est nulle). Il ne reste qu'à mettre les deux termes obtenus au même dénominateur $x$ pour retomber exactement sur la forme demandée.
+        steps:
+          - math: 'g''(x) = \dfrac{1}{\sqrt{x}} - \dfrac{1}{x}'
+            note: "Dérivée terme à terme : dérivée de 2 racine de x égale 1 sur racine de x, dérivée de la constante -2 est nulle, dérivée de moins ln x est moins 1 sur x."
+          - math: '\dfrac{1}{\sqrt{x}} = \dfrac{\sqrt{x}}{x}'
+            note: "On met la première fraction au même dénominateur x, en multipliant haut et bas par racine de x."
+          - math: 'g''(x) = \dfrac{\sqrt{x}}{x} - \dfrac{1}{x} = \dfrac{\sqrt{x}-1}{x}'
+            note: "On regroupe sur le même dénominateur x : c'est exactement le résultat annoncé."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Montrer que $g$ est croissante sur $[1,+\infty[$
+        reasoning: |-
+          Toujours hors du corps R1–R6 (chapitre dérivabilité) : le sens de variation se lit sur le signe de la dérivée trouvée à la question précédente. Sur $[1,+\infty[$, le numérateur $\sqrt{x}-1$ est positif ou nul (la racine carrée est croissante et vaut $1$ en $x=1$) et le dénominateur $x$ est strictement positif : le quotient est donc positif ou nul, ce qui signe la croissance de $g$.
+        steps:
+          - math: 'x \ge 1 \implies \sqrt{x} \ge 1 \implies \sqrt{x}-1 \ge 0'
+            note: "La racine carrée est croissante : x supérieur ou égal à 1 entraîne racine de x supérieure ou égale à 1."
+          - math: 'x \ge 1 \implies x > 0'
+            note: "Le dénominateur x est strictement positif sur [1, plus l'infini[."
+          - math: 'g''(x) = \dfrac{\sqrt{x}-1}{x} \ge 0 \ \text{sur}\ [1,+\infty[ \implies g \ \text{croissante sur}\ [1,+\infty['
+            note: "Numérateur positif ou nul, dénominateur strictement positif : le quotient est positif ou nul, donc g est croissante (règle du signe de la dérivée, hors du corps de cette leçon)."
+      - id: q1c
+        stem: |-
+          **(0,5 pt)** en déduire que pour tout $x$ de $[1,+\infty[$, $0 \le \ln x \le 2\sqrt{x}$ *(remarquer que $2\sqrt{x} - 2 \le 2\sqrt{x}$)*
+        reasoning: |-
+          On exploite la monotonie établie à la question précédente : $g$ croissante sur $[1,+\infty[$ signifie que $g(x) \ge g(1)$ pour tout $x \ge 1$. On calcule d'abord $g(1)$, puis on développe l'inégalité $g(x) \ge 0$ pour isoler $\ln x$. L'indication de l'énoncé (retirer $2$ ne peut que diminuer) fournit la seconde moitié de l'encadrement sans calcul supplémentaire. La borne inférieure $\ln x \ge 0$ vient, elle, d'une propriété du logarithme lui-même (croissance de $\ln$, $\ln 1 = 0$) — un fait du chapitre fonction-logarithme, pas de cette leçon, mobilisé ici comme brique déjà connue.
+        steps:
+          - math: 'g(1) = 2\sqrt{1}-2-\ln 1 = 2-2-0 = 0'
+            note: "On évalue g au point 1 : racine de 1 vaut 1, ln de 1 vaut 0."
+          - math: 'x \ge 1 \ \text{et}\ g \ \text{croissante sur}\ [1,+\infty[ \implies g(x) \ge g(1) = 0'
+            note: "g est croissante (question précédente) : à partir de 1, elle ne redescend jamais sous g(1)."
+          - math: '2\sqrt{x}-2-\ln x \ge 0 \implies \ln x \le 2\sqrt{x}-2'
+            note: "On développe g(x) supérieur ou égal à 0 et on isole ln x."
+          - math: '2\sqrt{x}-2 \le 2\sqrt{x} \quad (\text{car}\ -2<0)'
+            note: "Retirer 2 rend l'expression plus petite : c'est l'indication de l'énoncé, immédiate."
+          - math: '0 \le \ln x \le 2\sqrt{x} \quad \text{sur}\ [1,+\infty['
+            note: "On enchaîne les deux inégalités ; la borne inférieure ln x supérieur ou égal à 0 vient de la croissance du logarithme (ln 1 = 0), un résultat de la fonction logarithme."
+      - id: q1d
+        stem: |-
+          **(1 pt)** Montrer que pour tout $x$ de $[1,+\infty[$, $0 \le \dfrac{(\ln x)^3}{x^2} \le \dfrac{8}{\sqrt{x}}$ et en déduire $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^3}{x^2}$
+        reasoning: |-
+          On cube l'encadrement de la question précédente — licite parce que les trois membres sont positifs ou nuls sur $[1,+\infty[$, et que la fonction cube conserve l'ordre entre nombres positifs. On divise ensuite par $x^2$ (strictement positif), ce qui simplifie $8x^{3/2}/x^2$ en $8/\sqrt{x}$.
+
+          Conclure la limite à partir de cet encadrement mobilise le **théorème des gendarmes** (ou théorème d'encadrement) : si une expression est coincée entre deux fonctions qui tendent vers la même limite, elle tend elle-même vers cette limite. C'est un outil qui n'apparaît sous aucune forme dans le corps R1–R6 de cette leçon — R6 admet directement $\lim \sin x/x = 1$ sans passer par un encadrement explicite, et R1 ne couvre que les limites de référence en $x^n$ et $1/x^n$. Ici, les deux bornes de l'encadrement, $0$ et $8/\sqrt{x}$, tendent toutes les deux vers $0$ quand $x\to+\infty$ (cette dernière par un raisonnement analogue à $1/x^n\to 0$ du R1, appliqué à $\sqrt{x}$ plutôt qu'à une puissance entière) — donc l'expression encadrée tend elle aussi vers $0$. C'est le résultat classique dit de **croissances comparées** : $\ln x$, même élevé au cube, reste négligeable devant $x^2$ à l'infini.
+        steps:
+          - math: '0 \le \ln x \le 2\sqrt{x} \implies 0 \le (\ln x)^3 \le \left(2\sqrt{x}\right)^3'
+            note: "On élève au cube : les trois membres sont positifs ou nuls sur [1, plus l'infini[, donc la mise au cube conserve l'ordre."
+          - math: '\left(2\sqrt{x}\right)^3 = 8x\sqrt{x} = 8x^{3/2}'
+            note: "On développe le cube : 2 au cube fait 8, racine de x au cube fait x racine de x."
+          - math: '0 \le \dfrac{(\ln x)^3}{x^2} \le \dfrac{8x^{3/2}}{x^2} = \dfrac{8}{\sqrt{x}}'
+            note: "On divise les trois membres par x carré, strictement positif : l'ordre est conservé, et 8 x puissance trois demis sur x carré se simplifie en 8 sur racine de x."
+          - math: '\lim_{x\to+\infty} 0 = 0 \qquad \lim_{x\to+\infty} \dfrac{8}{\sqrt{x}} = 0'
+            note: "Les deux bornes de l'encadrement tendent vers 0 quand x tend vers plus l'infini."
+          - math: '\lim_{x\to+\infty} \dfrac{(\ln x)^3}{x^2} = 0'
+            note: "Théorème des gendarmes : une expression coincée entre deux bornes qui tendent vers la même limite tend elle aussi vers cette limite (croissances comparées : ln x est négligeable devant x carré)."
+      - id: q2a
+        part: "Question 2 — Primitive et calcul intégral"
+        stem: |-
+          **(0,75 pt)** Montrer que la fonction $G : x \mapsto x\left(-1 + \dfrac{4}{3}\sqrt{x} - \ln x\right)$ est une primitive de $g$ sur $]0,+\infty[$
+        reasoning: |-
+          Vérifier qu'une fonction $G$ est une primitive de $g$ revient à dériver $G$ et à retrouver exactement $g$ — un exercice de dérivation (chapitre dérivabilité, hors du corps R1–R6 de cette leçon) suivi d'une identification. On développe d'abord $G$ pour dériver terme à terme plus facilement, puis on dérive chaque morceau séparément (la dérivée de $x\ln x$ demandant la règle du produit) avant de recombiner et comparer à $g(x) = 2\sqrt{x}-2-\ln x$.
+        steps:
+          - math: 'G(x) = x\left(-1+\dfrac{4}{3}\sqrt{x}-\ln x\right) = -x+\dfrac{4}{3}x^{3/2}-x\ln x'
+            note: "On développe G en distribuant x : x fois racine de x devient x puissance trois demis."
+          - math: '\left(-x+\dfrac{4}{3}x^{3/2}\right)'' = -1+\dfrac{4}{3}\times\dfrac{3}{2}\,x^{1/2} = -1+2\sqrt{x}'
+            note: "Dérivée des deux premiers termes (chapitre dérivabilité) : la dérivée de x puissance trois demis fait apparaître trois demis fois x puissance un demi, qui se simplifie avec le quatre tiers en 2 racine de x."
+          - math: '\left(x\ln x\right)'' = 1\times\ln x+x\times\dfrac{1}{x} = \ln x+1'
+            note: "Dérivée d'un produit : dérivée du premier facteur fois le second, plus le premier facteur fois la dérivée du second (la dérivée de ln x, admise, vaut 1 sur x)."
+          - math: 'G''(x) = \left(-1+2\sqrt{x}\right)-\left(\ln x+1\right) = 2\sqrt{x}-2-\ln x = g(x)'
+            note: "On assemble les deux dérivées : on retrouve exactement g(x). G est donc une primitive de g sur l'intervalle donné."
+      - id: q2b
+        stem: |-
+          **(0,75 pt)** Calculer l'intégrale $\displaystyle\int_1^4 g(x)\,dx$
+        reasoning: |-
+          Une fois la primitive $G$ établie, le calcul de l'intégrale est immédiat par le théorème fondamental du calcul intégral — $\displaystyle\int_a^b g(x)\,dx = G(b)-G(a)$ — un résultat du chapitre calcul-integral, également hors du corps R1–R6 de cette leçon. Le travail se réduit alors à deux évaluations numériques de $G$, en $4$ puis en $1$, et à leur différence.
+        steps:
+          - math: '\displaystyle\int_1^4 g(x)\,dx = G(4)-G(1)'
+            note: "G est une primitive de g (question précédente) : l'intégrale se calcule directement par différence des valeurs de G aux bornes (chapitre calcul intégral)."
+          - math: 'G(4) = 4\left(-1+\dfrac{4}{3}\sqrt{4}-\ln 4\right) = 4\left(-1+\dfrac{8}{3}-\ln 4\right) = 4\left(\dfrac{5}{3}-\ln 4\right) = \dfrac{20}{3}-4\ln 4'
+            note: "On évalue G en 4 : racine de 4 vaut 2."
+          - math: 'G(1) = 1\times\left(-1+\dfrac{4}{3}\times 1-\ln 1\right) = -1+\dfrac{4}{3}-0 = \dfrac{1}{3}'
+            note: "On évalue G en 1 : racine de 1 vaut 1, ln de 1 vaut 0."
+          - math: '\displaystyle\int_1^4 g(x)\,dx = \dfrac{20}{3}-4\ln 4-\dfrac{1}{3} = \dfrac{19}{3}-4\ln 4'
+            note: "On soustrait les deux résultats : vingt tiers moins un tiers fait dix-neuf tiers."
+
+  # ── bk-2021-n-x1 — 2021 N, Exercice 1 : équation/inéquation en e^x, limite 0/0, existence par TVI ──
+  - id: bk-2021-n-x1
+    title: "Équation et inéquation avec l'exponentielle, limite en zéro et existence par TVI"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 1"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/127180 (Exercice 1,
+        « fonctions numériques » ; barème 2 points). Transcription fidèle
+        de l'entrée « vérifié — agent-vérificateur-adversarial,
+        2026-08-06 » de docs/sujets/maths/limites-continuite.md, section
+        « 2021 — session normale — Exercice 1 » (re-fetch AlloSchool
+        indépendant, course-438/upload-84139, diff caractère-par-caractère
+        conforme au scan p.2 ; NB scan : double étiquette « Exercice 2 »
+        p.2, la table des composantes p.1 fait foi — l'exercice transcrit
+        ici est bien l'Exercice 1). Voir SCOPE NOTE en tête de fichier :
+        Q1a/Q1b mobilisent l'algèbre de fonction-exponentielle
+        (changement de variable t = e^x), hors du corps R1–R6 ; Q1c
+        applique fidèlement le mécanisme de factorisation du R3 à travers
+        ce même t ; Q2 est du cœur R5 (TVI) sans écart.
+    intro: |-
+      **Fonctions numériques (équation et inéquation avec $e^x$, limite en $0$, existence d'une solution par TVI).**
+    questions:
+      - id: q1a
+        part: "Question 1 — Équation, inéquation et limite via le changement de variable t = e^x"
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\mathbb{R}$ l'équation : $e^{2x} - 4e^x + 3 = 0$
+        reasoning: |-
+          L'équation mélange $e^{2x}$ et $e^x$ : le réflexe est de reconnaître un trinôme du second degré déguisé, en posant $t=e^x$ (toujours strictement positif — propriété de la fonction exponentielle, chapitre fonction-exponentielle, en dehors du corps R1–R6 de cette leçon). Comme $e^{2x}=(e^x)^2=t^2$, l'équation devient $t^2-4t+3=0$, un trinôme ordinaire qu'on factorise en $(t-1)(t-3)$. Reste à revenir à $x$ : $e^x=t$ s'inverse par $x=\ln t$, l'exponentielle étant une bijection strictement croissante de $\mathbb{R}$ sur $]0,+\infty[$.
+        steps:
+          - math: 't = e^x \quad (t>0)'
+            note: "Changement de variable : on pose t égal e puissance x, toujours strictement positif."
+          - math: 'e^{2x}-4e^x+3 = t^2-4t+3'
+            note: "e puissance 2x est le carré de e puissance x, donc t carré."
+          - math: 't^2-4t+3 = (t-1)(t-3)'
+            note: "Trinôme du second degré ordinaire, factorisé (racines 1 et 3, somme 4, produit 3)."
+          - math: '(t-1)(t-3) = 0 \iff t = 1 \ \text{ou}\ t = 3'
+            note: "Un produit nul : au moins un des deux facteurs est nul."
+          - math: 't=1 \iff e^x=1 \iff x=0, \qquad t=3 \iff e^x=3 \iff x=\ln 3'
+            note: "On revient à x avec e^x = t : l'exponentielle est bijective, ln inverse chaque valeur strictement positive."
+          - math: 'S = \{0\,;\ \ln 3\}'
+            note: "Les deux solutions de l'équation."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\mathbb{R}$ l'inéquation : $e^{2x} - 4e^x + 3 \le 0$
+        reasoning: |-
+          Même changement de variable $t=e^x$ qu'à la question précédente : le trinôme $t^2-4t+3$, factorisé $(t-1)(t-3)$, est négatif ou nul exactement entre ses deux racines, $1\le t\le 3$. Revenir à $x$ demande une précaution supplémentaire par rapport à l'équation : $e^x$ est **strictement croissante** (propriété de l'exponentielle, encore hors du corps R1–R6), donc appliquer $\ln$ aux trois membres de l'encadrement conserve le sens des inégalités — aucune inversion du sens, contrairement à ce qui se passerait avec une fonction décroissante.
+        steps:
+          - math: 'e^{2x}-4e^x+3\le 0 \iff t^2-4t+3\le 0 \iff (t-1)(t-3)\le 0'
+            note: "Même changement de variable t = e^x qu'à la question précédente."
+          - math: '(t-1)(t-3)\le 0 \iff 1\le t\le 3'
+            note: "Un trinôme du second degré à coefficient dominant positif est négatif ou nul entre ses deux racines."
+          - math: '1\le e^x\le 3'
+            note: "On revient à x avec t = e^x."
+          - math: '1\le e^x\le 3 \iff \ln 1\le x\le \ln 3 \iff 0\le x\le \ln 3'
+            note: "L'exponentielle est strictement croissante : elle conserve l'ordre des inégalités, donc on passe au logarithme sans rien inverser."
+          - math: 'S = [0,\ \ln 3]'
+            note: "Ensemble solution de l'inéquation."
+      - id: q1c
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to 0} \dfrac{e^{2x} - 4e^x + 3}{e^{2x} - 1}$
+        reasoning: |-
+          Substitution directe en $x=0$ donne $\dfrac{0}{0}$ : la forme indéterminée du R2, signal qu'il faut retravailler l'expression (R3). Le réflexe de la Technique 1 du R3 — factoriser, parce que numérateur et dénominateur s'annulent au même point et partagent donc un facteur commun — s'applique ici **à travers le changement de variable $t=e^x$** déjà en place aux questions 1a/1b : avec les factorisations obtenues là-bas, numérateur et dénominateur s'annulent tous deux en $t=1$, exactement le mécanisme du R3, transposé à la variable $t$ plutôt qu'à $x$ directement. On simplifie par $(t-1)$, licite tant que $t\ne 1$, ce qui est garanti tant que $x\ne 0$ pendant le calcul de la limite (le même argument que pour $x\ne a$ au R3). Il reste une expression sans problème en $t=1$, qu'on évalue par substitution directe une fois $t\to 1$ (continuité de l'exponentielle en $0$, $e^0=1$).
+        steps:
+          - math: '\dfrac{e^{2x}-4e^x+3}{e^{2x}-1} \xrightarrow[x\to 0]{} \dfrac{1-4+3}{1-1} = \dfrac{0}{0}'
+            note: "Substitution directe en x = 0 (e puissance 0 vaut 1) : numérateur et dénominateur valent tous les deux 0, forme indéterminée."
+          - math: 't = e^x, \qquad e^{2x}-4e^x+3 = (t-1)(t-3), \qquad e^{2x}-1 = t^2-1 = (t-1)(t+1)'
+            note: "On réutilise la factorisation du numérateur trouvée à la question 1a, et on factorise le dénominateur par différence de carrés."
+          - math: '\dfrac{e^{2x}-4e^x+3}{e^{2x}-1} = \dfrac{(t-1)(t-3)}{(t-1)(t+1)}'
+            note: "Les deux expressions partagent le facteur commun (t-1) : numérateur et dénominateur s'annulent tous deux en t = 1."
+          - math: 'x\ne 0 \implies t=e^x\ne 1 \implies \dfrac{(t-1)(t-3)}{(t-1)(t+1)} = \dfrac{t-3}{t+1}'
+            note: "Comme au R3 : pendant le calcul de la limite, x ne vaut jamais 0, donc t ne vaut jamais 1 non plus, et on a le droit de simplifier par (t-1)."
+          - math: 'x\to 0 \implies t=e^x\to 1 \implies \dfrac{t-3}{t+1}\to \dfrac{1-3}{1+1} = -1'
+            note: "Continuité de l'exponentielle en 0 : t tend vers 1, et l'expression simplifiée n'a plus de problème."
+          - math: '\lim_{x\to 0} \dfrac{e^{2x}-4e^x+3}{e^{2x}-1} = -1'
+            note: "Résultat final de la limite."
+      - id: q2
+        part: "Question 2 — Existence d'une solution par le théorème des valeurs intermédiaires"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation $e^{2x} + e^x + 4x = 0$ admet une solution dans l'intervalle $[-1, 0]$
+        reasoning: |-
+          Ce type d'énoncé est un signal direct du corollaire d'existence du R5 : on pose la fonction auxiliaire $\varphi(x)=e^{2x}+e^x+4x$ et on vérifie les ingrédients de la méthode dans l'ordre — continuité, puis signes opposés aux bornes (aucune unicité n'est demandée, donc pas besoin de monotonie).
+
+          $\varphi$ est continue sur $\mathbb{R}$ comme somme de la fonction exponentielle (continue sur $\mathbb{R}$, résultat de référence du chapitre fonction-exponentielle, mobilisé ici comme brique au même titre que les fonctions usuelles listées au R4) et de la fonction polynôme $x\mapsto 4x$ (continue sur $\mathbb{R}$, boîte à outils du R4) — une somme de fonctions continues est continue, R4. On calcule ensuite $\varphi(-1)$ et $\varphi(0)$ : les signes sont opposés, donc le corollaire d'existence du R5 s'applique directement.
+        steps:
+          - math: '\varphi(x) = e^{2x}+e^x+4x'
+            note: "On pose une fonction auxiliaire pour appliquer la méthode du TVI (R5)."
+          - math: '\varphi \ \text{est continue sur } \mathbb{R} \ \text{(somme de la fonction exponentielle et de la fonction polynome, toutes deux continues)}'
+            note: "Fonction exponentielle continue sur R (résultat de référence, fonction-exponentielle) et fonction polynôme 4x continue sur R (boîte à outils R4) : leur somme est continue, R4."
+          - math: '\varphi(-1) = e^{-2}+e^{-1}-4 \approx 0{,}135+0{,}368-4 \approx -3{,}497 < 0'
+            note: "Valeur approchée à la calculatrice : nettement négative."
+          - math: '\varphi(0) = e^0+e^0+0 = 1+1 = 2 > 0'
+            note: "Évaluation directe : e puissance 0 vaut 1."
+          - math: '\varphi(-1) < 0 < \varphi(0)'
+            note: "Les images des deux bornes sont de signes contraires."
+          - math: '\varphi \ \text{continue sur}\ [-1,0]\ \text{et}\ \varphi(-1)\times\varphi(0)<0 \implies \exists\, c\in\,]-1,0[,\ \varphi(c)=0'
+            note: "Corollaire d'existence du TVI (R5) : continuité plus signes opposés aux bornes suffisent pour garantir une solution."
