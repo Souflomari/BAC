@@ -117,3 +117,75 @@ chiffrée, un carreau principal au-delà du repère $2$, soit approximativement
 $i \approx 3\ \text{mA}$ *(lecture à confirmer)*, tout près du coin
 inférieur droit du cadre où débute la flèche de l'axe « $i(\text{mA})$ ».
 Légende : « Figure 4 ».
+
+---
+
+## 2023 — session normale — Exercice 3, §1 (Réponse d'un dipôle RL à un échelon de tension)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ; **§1** =
+  1,75 point ($0{,}25+0{,}5+0{,}5+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0004-big.jpg`
+- Pages du scan : 4 (sur 6)
+- Portée : **§1 — Réponse d'un dipôle RL à un échelon de tension**. Le
+  **§2** (circuit oscillant LC, même bobine (b)) du même exercice est sous
+  `rlc-serie.md` ; le **§3** (modulation d'amplitude) est sous
+  `ondes-em-modulation.md`. Mention en tête de l'exercice : « Cet exercice
+  se propose d'étudier : - la réponse d'un dipôle RL à un échelon de
+  tension ; - un circuit oscillant LC ; - la modulation d'amplitude d'un
+  signal. »
+
+**1- Réponse d'un dipôle RL à un échelon de tension**
+
+On réalise le montage électrique, représenté sur le schéma de la figure 1,
+comportant :
+- un générateur de tension de force électromotrice $E = 24\ \text{V}$ ;
+- un conducteur ohmique de résistance $R$ ;
+- une bobine $(b)$ d'inductance $L$ et de résistance négligeable ;
+- un interrupteur $K$.
+
+On ferme l'interrupteur $K$ à l'instant de date $t_0 = 0$. Un système
+d'acquisition informatisé adéquat permet d'obtenir la courbe représentant
+l'évolution temporelle de l'intensité du courant électrique $i(t)$ dans le
+circuit (figure 2). La droite $(T)$ représente la tangente à la courbe au
+point d'abscisse $t_0 = 0$.
+
+1. **1-1.** (0,25) Établir l'équation différentielle vérifiée par $i(t)$.
+2. **1-2.** L'expression de l'intensité du courant circulant dans le
+   circuit est : $i(t) = A + B.e^{-t/\tau}$ avec $A$ et $B$ deux constantes
+   et $\tau$ la constante de temps du circuit.
+   1. **1-2-1.** (0,5) Déterminer les expressions de $A$ et $B$ en fonction
+      de $E$ et $R$.
+   2. **1-2-2.** (0,5) Montrer que $L = 1\ \text{H}$.
+3. **1-3.** (0,5) Déterminer, en unité SI, l'expression numérique de la
+   tension $u_L(t)$ aux bornes de la bobine lors de l'établissement du
+   courant.
+
+*Figure 1 (schéma) :* boucle rectangulaire. Branche gauche : générateur de
+tension $E$ (cercle), en série avec l'interrupteur $K$ (symbole
+d'interrupteur ouvert) au-dessus de lui. Branche supérieure : fil portant
+la flèche de courant $i$ orientée vers la droite, allant du sommet de la
+branche $K$ jusqu'au coin supérieur droit. Branche droite (verticale) :
+bobine $(b)$ dessinée en spires. Branche inférieure : conducteur ohmique de
+résistance $R$ (rectangle étiqueté « R »), reliant le bas de la bobine au
+bas du générateur $E$. Légende : « Figure 1 ».
+
+*Figure 2 (courbe) :* $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$, sur
+quadrillage à double graduation (traits principaux, sous-quadrillage fin
+bleu). Axe des ordonnées gradué (traits principaux chiffrés) $9{,}6$ et
+$19{,}2$ (un trait principal supplémentaire, non chiffré, apparaît
+au-dessus de $19{,}2$, au niveau du palier de la courbe) ; axe des
+abscisses gradué (traits principaux chiffrés) $2$ et $4$, origine $0$.
+Courbe croissante et concave, partant de l'origine $(0\,;\,0)$, montant
+rapidement puis s'aplatissant vers un palier horizontal (régime permanent)
+situé au-dessus du repère $19{,}2$ *(valeur exacte du palier non chiffrée —
+lecture à confirmer)*. La droite $(T)$, en pointillés, est tangente à la
+courbe à l'origine ; elle est nettement plus raide que la courbe. Légende :
+« Figure 2 ».

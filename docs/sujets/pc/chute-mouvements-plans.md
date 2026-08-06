@@ -781,3 +781,97 @@ pointillés, tangente à la courbe à l'origine, part de $(0\,;\,0)$ et monte
 avec une pente nettement plus raide que la courbe, passant au voisinage du
 repère $t = 0{,}1$ à une hauteur proche du palier de la courbe *(lecture à
 confirmer)*. Légende : « Figure 2 ».
+
+---
+
+## 2023 — session normale — Exercice 4 (Partie I)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 5–6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5,5 points ; **Partie
+  I** = 3,25 points ($0{,}75+0{,}5+0{,}5+0{,}5+0{,}25+0{,}75$, barème en
+  marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0005-big.jpg`
+  (chapeau, données, figure 1, question 1), `.../0006-big.jpg` (questions
+  2-1 à 2-3)
+- Pages du scan : 5 et 6 (sur 6)
+- Portée : **Partie I — Étude de la chute d'une balle** (chute libre puis
+  chute avec frottement fluide linéaire, méthode d'Euler). La **Partie II
+  (mouvement d'une balançoire, pendule pesant)** du même exercice est sous
+  `systemes-oscillants.md`. Mention en tête de l'exercice : « Les deux
+  parties sont indépendantes. »
+
+**EXERCICE 4 (5,5 points).**
+
+*Les deux parties sont indépendantes.*
+
+**Partie I : Étude de la chute d'une balle**
+
+Dans le champ de pesanteur, on lance verticalement vers le haut à l'instant
+$t = 0$, à partir d'un point $O$, une balle $(S)$ de masse $m$ et de centre
+d'inertie $G$, avec une vitesse initiale de valeur $V_0 = 12\ \text{m.s}^{-1}$
+(figure 1).
+
+On étudie le mouvement du centre d'inertie $G$ de la balle dans un repère
+$(O\,;\,\vec{k})$ lié à un référentiel terrestre supposé galiléen en deux
+phases :
+- mouvement de chute libre de la balle dans la première phase.
+- mouvement de chute de la balle avec frottement dans la deuxième phase.
+
+**Données :**
+- La masse : $m = 80\ \text{g}$ ;
+- L'intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$.
+
+**1- Mouvement de la balle en chute libre**
+
+Pendant son mouvement le centre d'inertie $G$ de la balle est considéré en
+chute libre.
+
+1. **1-1.** (0,75) En appliquant la deuxième loi de Newton, déterminer les
+   équations horaires numériques donnant la vitesse $v_z(t)$ et la position
+   $z(t)$ du centre d'inertie $G$ de la balle.
+2. **1-2.** En utilisant les équations $v_z(t)$ et $z(t)$ déterminer :
+   1. **1-2-1.** (0,5) la hauteur maximale $h$ atteinte par $G$.
+   2. **1-2-2.** (0,5) la valeur algébrique $v_{OZ}$ de la vitesse de $G$
+      lors de son passage vers le bas par le point $O$.
+
+**2- Mouvement de chute de la balle avec frottement**
+
+À partir de l'instant du passage du centre d'inertie $G$ par le point $O$
+vers le bas, qu'on prend comme nouvelle origine des dates $t_0 = 0$, la
+balle est soumise, en plus de son poids $\vec{P}$, à une force de
+frottement fluide modélisée par $\vec{f} = -\lambda\vec{v}$ avec
+$\vec{v} = v_z\vec{k}$ et $\lambda = 0{,}12$ S.I. (On néglige la poussée
+d'Archimède devant ces deux forces).
+
+1. **2-1.** (0,5) Montrer que l'équation différentielle vérifiée par la
+   vitesse $v_z$ du centre d'inertie $G$ de la balle s'écrit :
+   $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z + g = 0$ avec $\tau$ le temps
+   caractéristique du mouvement.
+2. **2-2.** (0,25) Déduire la norme de la vitesse limite du mouvement du
+   centre d'inertie $G$ de la balle.
+3. **2-3.** (0,75) Déterminer, en utilisant la méthode d'Euler, la valeur
+   algébrique $v_z(t_i)$ de la vitesse à l'instant $t_i$ sachant que
+   l'accélération du mouvement à l'instant $t_{i-1}$ est
+   $a_{i-1} = 5\ \text{m.s}^{-2}$ et on prend le pas de calcul
+   $\Delta t = 66\ \text{ms}$.
+
+*Figure 1 (schéma) :* axe vertical $Z$ (flèche pleine orientée vers le
+haut, étiquetée « Z » en haut). Une ligne horizontale en pointillés
+traverse l'axe, plus haut sur la figure ; un disque noir plein étiqueté
+« (S) » (la balle) est placé juste en dessous de cette ligne pointillée,
+sur l'axe. Une double flèche verticale, étiquetée « h », relie le niveau de
+l'origine $O$ à cette ligne pointillée (matérialisant la hauteur maximale).
+En dessous de (S), une courte flèche pleine orientée vers le haut,
+étiquetée « $\vec{V_0}$ » (vecteur vitesse initiale). Plus bas, au niveau
+de l'origine, une courte flèche pleine orientée vers le haut étiquetée
+« $\vec{k}$ », avec le point « O » juste à droite ; une ligne horizontale
+en pointillés (bleue) part de O vers la gauche. L'axe $Z$ se poursuit en
+trait plein en dessous de O jusqu'au bas de la figure. Légende :
+« Figure 1 ».

@@ -109,7 +109,7 @@ Format de toutes : **scanned-PDF + JPG par page** (aucun texte machine).
 | 2020 | `109742` | `109745` | `109751` | `109757` | **N-Sujet lu p.1–7** (upload-80870, 7 p.) |
 | 2021 | `127287` | `136826` | `127290` | `136829` | **N-Sujet lu p.1–5** (upload-84195, 8 p.) |
 | 2022 | `136621` | `136832` | `136624` | `136835` | listé (non ré-ouvert) |
-| 2023 | `142476` | `142479` | `142484` | `142487` | N-Sujet PDF testé = scan |
+| 2023 | `142476` | `142479` | `142484` | `142487` | **N-Sujet lu intégralement p.1–6** (upload-85304, 6 p., 2026-08-06) |
 | 2024 | `145763` | `145766` | `145769` | `145772` | N-Sujet PDF testé = scan |
 | 2025 | `145796` | — | `145799` | — | listé ; **corrigés non publiés** |
 
@@ -179,6 +179,14 @@ Notes :
   (dosage + identification) · Ex II = ondes lumineuses (dispersion prisme +
   diffraction) · Ex III = plutonium 238 (décroissance) · Ex IV = RC échelon + LC +
   modulation · Ex V = mouvement d'un parachutiste.
+- **2023 N** (NS28F, `element/142476` · `upload-85304`, 6 p., 2026-08-06) :
+  barème $7+2{,}5+5+5{,}5=20$ recoupé et conforme à la couverture p.1. Ex 1 =
+  réactions de l'acide éthanoïque (eau, ion méthanoate, méthanol) · Ex 2 =
+  transformations nucléaires du tritium (désintégration $\beta^-$ + fusion
+  avec le deutérium) · Ex 3 = dipôle RL échelon + circuit LC + modulation
+  d'amplitude · Ex 4 = chute d'une balle (chute libre + frottement, Euler) +
+  mouvement d'une balançoire (pendule pesant). Sujet **intégralement lu**
+  (les 6 pages) et **intégralement transcrit** en cette passe.
 
 ---
 
@@ -299,6 +307,57 @@ propriétaire du plan (`content/pc/atome-mecanique-newton/exercises.yaml`).
 Toutes les 6 entrées portent `Statut: transcrit (non vérifié)`, à passer au
 protocole README §3.
 
+**Passe 2026-08-06 — harvest complet du 2023 N (NS28F, `element/142476`,
+`course-422/upload-85304`, 6 pages).** Sujet sans aucune entrée
+préexistante (grep préalable sur `2023` et sur « session normale » : seuls
+`CENSUS.md`/`INDEX.md` mentionnaient l'année, dans la liste des couvertures
+lues en v0.3 — aucun exercice n'était transcrit). En-tête du scan (p.1) lu
+directement au pixel et **confirmé** : « شعبة العلوم التجريبية مسلك العلوم
+الفيزيائية (خيار فرنسية) » = Sciences Physiques, BIOF, option française ;
+« NS 28F » ; 3 h ; coef 7 — *NB : le résumé HTML d'AlloSchool pour
+`element/142476` annonce à tort « 2ème BAC Sciences Mathématiques B »,
+piège de fidélité connu (§2 ci-dessus), l'image du scan fait foi.*
+Couverture p.1 lue : Exercice 1 (7 pts, réactions de l'acide éthanoïque) ·
+Exercice 2 (2,5 pts, transformations nucléaires du tritium) · Exercice 3
+(5 pts, dipôle RL + circuit LC + modulation d'amplitude) · Exercice 4
+(5,5 pts, chute d'une balle + mouvement d'une balançoire) — barème
+$7+2{,}5+5+5{,}5=20$ recoupé et conforme. Toutes les pages (2 à 6) lues
+(vision) ; **10 nouvelles entrées** `transcrit (non vérifié)` + 3 notes de
+cross-list :
+
+| Slug | Entrée | Origine |
+|------|--------|---------|
+| `etat-equilibre` | +1 | 2023 N Ex1-§1 (acide éthanoïque + eau, $\tau$, $pK_{A1}$, p.2) |
+| `reactions-acido-basiques` | +1 | 2023 N Ex1-§2 (acide éthanoïque + ion méthanoate, $Q_{r,\text{éq}}(K_{A1},K_{A2})$, pH, p.2) |
+| `esterification-hydrolyse` | +1 | 2023 N Ex1-§3 (acide éthanoïque + méthanol, catalyse, $t_{1/2}$, rendement, K, p.2–3) |
+| `decroissance-radioactive` | +1 | 2023 N Ex2-§1 (désintégration $\beta^-$ du tritium, QCM, $t_{1/2}$–$\lambda$, activité, p.3) |
+| `noyaux-masse-energie` | +1 | 2023 N Ex2-§2 (fusion tritium + deutérium, énergie de dissociation, $E_{lib}$, p.3) |
+| `dipole-rl` | +1 | 2023 N Ex3-§1 (réponse RL à un échelon, p.4) |
+| `rlc-serie` | +1 | 2023 N Ex3-§2 (circuit oscillant LC, p.4) |
+| `ondes-em-modulation` | +1 | 2023 N Ex3-§3 (modulation d'amplitude, p.4–5) |
+| `chute-mouvements-plans` | +1 | 2023 N Ex4-Partie I (chute d'une balle, chute libre + frottement, Euler, p.5–6) |
+| `systemes-oscillants` | +1 | 2023 N Ex4-Partie II (balançoire, pendule pesant, p.6) |
+| `reactions-acido-basiques` | cross-list | → `etat-equilibre` (Ex1-§2, $Q_{r,\text{éq}}(K_{A1},K_{A2})$) |
+| `controle-catalyse` | cross-list | → `esterification-hydrolyse` (Ex1-§3, Q3.2) |
+| `suivi-temporel-vitesse` | cross-list | → `esterification-hydrolyse` (Ex1-§3, Q3.4, $t_{1/2}$) |
+| `aspects-energetiques` | cross-list | → `systemes-oscillants` (Ex4-Partie II, Q1, $E_{pp}$) |
+
+**Décision de routage notable — Exercice 1 (acide éthanoïque) partitionné
+en 3 notions distinctes** (partition discipline, chaque §-partie à son
+fichier) : §1 (acide faible + eau, sans dosage) suit le précédent 2015 N
+et va sous `etat-equilibre.md` plutôt que `reactions-acido-basiques.md` ;
+§2 (réaction entre deux couples acide/base, $K_{A1}/K_{A2}$) va sous
+`reactions-acido-basiques.md`, cas non encore rencontré dans la banque
+(distinct du cas « acide + eau ») ; §3 (estérification) va sous
+`esterification-hydrolyse.md`. **Exercice 2 (tritium) partitionné entre
+décroissance et masse-énergie** sur les deux sous-parties explicitement
+titrées du scan (« 1- Désintégration » / « 2- Réaction de fusion »).
+**Exercice 4-Partie II (balançoire)** classé sous `systemes-oscillants.md`
+(pendule pesant, et non `rotation-axe-fixe.md`, réservé aux exercices de
+type poulie/grue — R.F.D. en rotation pure, cf. `rotation-axe-fixe.md`).
+Toutes les 10 entrées portent `Statut: transcrit (non vérifié)`, à passer
+au protocole README §3.
+
 ### Couverture par slug (25 slugs `content/pc/`) — état après cette passe
 
 | Slug | Année(s)/session transcrite(s) | Statut |
@@ -306,26 +365,26 @@ protocole README §3.
 | `ondes-mecaniques-progressives` | 2018 N | vérifié |
 | `ondes-mecaniques-periodiques` | 2019 N | vérifié |
 | `propagation-onde-lumineuse` | 2021 N | vérifié |
-| `decroissance-radioactive` | 2019 N, 2021 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex2, 2026-08-06) |
-| `noyaux-masse-energie` | 2020 N | vérifié (+ cross-list 2025 N Ex2-Q3-3, non dédié) |
+| `decroissance-radioactive` | 2019 N, 2021 N | vérifié + 2 entrées **transcrit (non vérifié)** (2025 N Ex2 ; 2023 N Ex2-§1, 2026-08-06) |
+| `noyaux-masse-energie` | 2020 N | vérifié + 1 entrée **transcrit (non vérifié)** (2023 N Ex2-§2, 2026-08-06) (+ cross-list 2025 N Ex2-Q3-3, non dédié) |
 | `rc-charge` | 2019 N, 2018 N | vérifié + 2 entrées **transcrit (non vérifié)** (2018 N Ex III-I-1 ; 2025 N Ex3-P1, 2026-08-06) |
-| `dipole-rl` | 2020 N | vérifié |
-| `rlc-serie` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex3-P2, 2026-08-06) |
-| `ondes-em-modulation` | 2017 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex3-P3, 2026-08-06) |
+| `dipole-rl` | 2020 N | vérifié + 1 entrée **transcrit (non vérifié)** (2023 N Ex3-§1, 2026-08-06) |
+| `rlc-serie` | 2019 N, 2018 N | vérifié + 2 entrées **transcrit (non vérifié)** (2025 N Ex3-P2 ; 2023 N Ex3-§2, 2026-08-06) |
+| `ondes-em-modulation` | 2017 N | vérifié + 2 entrées **transcrit (non vérifié)** (2025 N Ex3-P3 ; 2023 N Ex3-§3, 2026-08-06) |
 | `lois-de-newton` | 2019 N | vérifié |
-| `chute-mouvements-plans` | 2020 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex4-P1 satellite, 2026-08-06 — voir note de routage dans le fichier, **pas** `atome-mecanique-newton`) |
+| `chute-mouvements-plans` | 2020 N | vérifié + 2 entrées **transcrit (non vérifié)** (2025 N Ex4-P1 satellite — voir note de routage dans le fichier, **pas** `atome-mecanique-newton` ; 2023 N Ex4-Partie I, 2026-08-06) |
 | `rotation-axe-fixe` | **2011 R** (grue/poulie) | **transcrit (non vérifié)** — dédié |
-| `systemes-oscillants` | 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex4-P2, 2026-08-06) |
-| `aspects-energetiques` | (2018 N, 2025 N — cross-list) | cross-list ; entrée autonome à sourcer |
+| `systemes-oscillants` | 2018 N | vérifié + 2 entrées **transcrit (non vérifié)** (2025 N Ex4-P2 ; 2023 N Ex4-Partie II, 2026-08-06) |
+| `aspects-energetiques` | (2018 N, 2025 N, 2023 N — cross-list) | cross-list ; entrée autonome à sourcer |
 | `atome-mecanique-newton` | — | **NON SOURCÉ** (absent 2008–2025, 21 couvertures ; 2025 N Ex4-P1 confirmé hors périmètre, 2026-08-06) |
 | `transformations-lentes-rapides` | **2010 N** (+ 2021 N cross-list) | **transcrit (non vérifié)** — dédié |
-| `suivi-temporel-vitesse` | 2021 N | vérifié (+ cross-list 2025 N via `controle-catalyse`, non dédié) |
-| `controle-catalyse` | **2025 N** (+ 2018 N cross-list) | **vérifié** (2026-07-14) |
+| `suivi-temporel-vitesse` | 2021 N | vérifié (+ cross-list 2025 N via `controle-catalyse`, 2023 N via `esterification-hydrolyse`, non dédiés) |
+| `controle-catalyse` | **2025 N** (+ 2018 N, 2023 N cross-list) | **vérifié** (2026-07-14) |
 | `transformations-deux-sens` | **2012 N** (estérification + réaction limitée) | **transcrit (non vérifié)** — dédié |
-| `etat-equilibre` | **2015 N** (+ 2019/2020/2021/2025 N cross-list) | **transcrit (non vérifié)** — dédié |
+| `etat-equilibre` | **2015 N**, **2023 N** (Ex1-§1) (+ 2019/2020/2021/2025 N cross-list) | **transcrit (non vérifié)** — 2 dédiés |
 | `evolution-spontanee` | **2012 N** (pile Cu-Zn, $K$) | **transcrit (non vérifié)** — dédié |
-| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N, 2018 N | vérifié + 2 entrées **transcrit (non vérifié)** (2018 N ; 2025 N Ex1-P1, 2026-08-06) |
-| `esterification-hydrolyse` | 2018 N | vérifié |
+| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N, 2018 N | vérifié + 3 entrées **transcrit (non vérifié)** (2018 N ; 2025 N Ex1-P1 ; 2023 N Ex1-§2, 2026-08-06) |
+| `esterification-hydrolyse` | 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2023 N Ex1-§3, 2026-08-06) |
 | `piles` | 2020 N | vérifié |
 | `electrolyse` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N, 2026-08-06) |
 

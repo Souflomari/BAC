@@ -58,6 +58,51 @@ particule $\alpha$.
 
 ---
 
+## 2023 — session normale — Exercice 2, §2 (Réaction de fusion du tritium et du deutérium)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 2,5 points ; **§2
+  (Réaction de fusion)** = 1,0 point ($0{,}25+0{,}25+0{,}5$, barème en
+  marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0003-big.jpg`
+- Pages du scan : 3 (sur 6)
+- Portée : **§2 — Réaction de fusion du tritium $^3_1\text{H}$ et de
+  deutérium $^2_1\text{H}$** (énergie de dissociation, stabilité comparée,
+  énergie libérée). Le **§1** (désintégration $\beta^-$ du tritium,
+  demi-vie, activité) du même exercice est sous `decroissance-radioactive.md`
+  (cross-list ici, données communes : tableau des énergies de liaison,
+  $M(^3_1\text{H})=3\ \text{g.mol}^{-1}$, $N_A=6{,}02\cdot10^{23}\
+  \text{mol}^{-1}$).
+
+**2- Réaction de fusion du tritium $^3_1\text{H}$ et de deutérium
+$^2_1\text{H}$**
+
+La réaction de fusion entre un noyau de deutérium et un noyau de tritium
+conduit à la formation d'un noyau d'hélium $^4_2\text{He}$ et s'accompagne
+de l'émission d'un neutron.
+
+1. **2-1.** Pour chaque affirmation suivante répondre par vrai ou faux en
+   justifiant :
+   1. **a-** (0,25) L'énergie qu'il faut fournir à un noyau de tritium au
+      repos pour le dissocier en ces nucléons au repos est de
+      $8{,}475\ \text{MeV}$.
+   2. **b-** (0,25) Le tritium est plus stable que le deutérium.
+2. **2-2.** (0,5) Calculer, en unité MeV, l'énergie libérée
+   $E_{lib} = |\Delta E|$ par la réaction de fusion d'un noyau de tritium
+   et d'un noyau de deutérium.
+
+*(Aucune figure dans ce §2 ; énoncé textuel. Données — tableau des énergies
+de liaison, partagé avec le §1 : voir `decroissance-radioactive.md`.)*
+
+---
+
 ## Contenu « masse-énergie » présent dans les transcriptions existantes
 
 - **2025 N — Exercice 2** (désintégration du cadmium 107), transcrit sous

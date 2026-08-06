@@ -163,6 +163,24 @@ Ex1-P2, Ex2, Ex3, Ex4-P1, Ex4-P2, Ex5-P1, Ex5-P2) + 1 note de cross-list
 `rotation-axe-fixe.md` (l'entrée 2011 R n'est plus l'unique annale dédiée
 de ce thème). **2024 N passe à carte complète (2026-08-06).**
 
+**2023 N (NS28F)** — 4 exercices, barème 7+2,5+5+5,5 = 20 (couverture p.1,
+`element/142476` · `upload-85304`, 6 p. ; en-tête image confirmé SPC/BIOF,
+NS 28F — le résumé HTML d'AlloSchool annonce à tort « Sciences
+Mathématiques B », README §3)
+| Ex | Sujet | Slug(s) |
+|----|-------|---------|
+| 1 | Réactions de l'acide éthanoïque (eau §1, ion méthanoate §2, méthanol §3) | `etat-equilibre` ✓ (§1) + `reactions-acido-basiques` ✓ (§2) + `esterification-hydrolyse` ✓ (§3, cross `controle-catalyse`, `suivi-temporel-vitesse`) |
+| 2 | Transformations nucléaires du tritium (désintégration §1, fusion §2) | `decroissance-radioactive` ✓ (§1) + `noyaux-masse-energie` ✓ (§2) |
+| 3 | Dipôle RL échelon (§1) + circuit LC (§2) + modulation d'amplitude (§3) | `dipole-rl` ✓ (§1) + `rlc-serie` ✓ (§2) + `ondes-em-modulation` ✓ (§3) |
+| 4 | Chute d'une balle (Partie I) + mouvement d'une balançoire, pendule pesant (Partie II) | `chute-mouvements-plans` ✓ (P1) + `systemes-oscillants` ✓ (P2, cross `aspects-energetiques`) |
+
+**Transcrit (non vérifié) le 2026-08-06 : 10 nouvelles entrées** (Ex1-§1,
+Ex1-§2, Ex1-§3, Ex2-§1, Ex2-§2, Ex3-§1, Ex3-§2, Ex3-§3, Ex4-PI, Ex4-PII) +
+4 notes de cross-list (`etat-equilibre`↔`reactions-acido-basiques`,
+`controle-catalyse`, `suivi-temporel-vitesse`, `aspects-energetiques`). Sujet
+sans aucune entrée préexistante avant cette passe. **2023 N passe à carte
+complète (2026-08-06).**
+
 ### Sujets à carte partielle (4) — seul l'exercice transcrit est consigné
 
 | Sujet | Exercice consigné | Slug(s) | Reste du sujet |
@@ -178,10 +196,11 @@ ci-dessus (§ Sujets à carte complète).
 ### Sujets sans carte (19 sourcés + 7 hors atteinte)
 
 - **Couverture lue en v0.3, carte non consignée (relevé perdu)** : 2008 N,
-  2009 N, 2013 N, 2014 N, 2016 N, 2022 N, 2023 N, 2014 R, 2016 R —
+  2009 N, 2013 N, 2014 N, 2016 N, 2022 N, 2014 R, 2016 R —
   `contenu à transcrire` (une lecture de couverture chacun suffit pour la
-  carte ; pipeline JPG→Read, bases `upload-` connues). **2024 N en est sorti
-  (2026-08-06) : carte complète, voir § Sujets à carte complète.**
+  carte ; pipeline JPG→Read, bases `upload-` connues). **2024 N et 2023 N en
+  sont sortis (2026-08-06) : carte complète, voir § Sujets à carte
+  complète.**
 - **Sourcé-listé, jamais ouvert** : 2017 R, 2018 R, 2019 R, 2020 R, 2021 R,
   2022 R, 2023 R, 2024 R, 2025 R — `contenu à transcrire` (confirmer
   l'en-tête SPC à l'ouverture).
@@ -197,30 +216,30 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
 
 | Slug | Dédiés | Cross/(?) | Années-sessions (dédiés puis cross/?) |
 |------|:-----:|:--------:|----------------------------------------|
-| `rlc-serie` | 6 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2024 N, 2025 N |
-| `chute-mouvements-plans` | 6 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2024 N, 2025 N |
+| `rlc-serie` | 7 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2023 N, 2024 N, 2025 N |
+| `chute-mouvements-plans` | 7 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2023 N, 2024 N, 2025 N |
 | `rc-charge` | 4 | 0 | 2018 N, 2019 N, 2021 N, 2025 N |
-| `reactions-acido-basiques` | 6 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2024 N, 2025 N · (?) 2015 N, 2017 N |
-| `decroissance-radioactive` | 4 | 1 | 2019 N, 2021 N, 2024 N, 2025 N · cross 2020 N |
-| `dipole-rl` | 3 | 0 | 2017 N, 2020 N, 2024 N |
-| `ondes-em-modulation` | 3 | 0 | 2017 N, 2021 N, 2025 N |
+| `reactions-acido-basiques` | 7 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2023 N, 2024 N, 2025 N · (?) 2015 N, 2017 N |
+| `decroissance-radioactive` | 5 | 1 | 2019 N, 2021 N, 2023 N, 2024 N, 2025 N · cross 2020 N |
+| `dipole-rl` | 4 | 0 | 2017 N, 2020 N, 2023 N, 2024 N |
+| `ondes-em-modulation` | 4 | 0 | 2017 N, 2021 N, 2023 N, 2025 N |
 | `piles` | 2 | 1 | 2017 N, 2020 N · (?) 2012 N |
 | `electrolyse` | 2 | 0 | 2018 N, 2019 N |
 | `ondes-mecaniques-periodiques` | 1 | 2 | 2019 N · (?) 2017 N, 2020 N |
 | `ondes-mecaniques-progressives` | 2 | 1 | 2018 N, 2024 N · (?) 2020 N |
 | `propagation-onde-lumineuse` | 1 | 0 | 2021 N |
-| `noyaux-masse-energie` | 1 | 2 | 2020 N · cross 2019 N, 2025 N |
+| `noyaux-masse-energie` | 2 | 2 | 2020 N, 2023 N · cross 2019 N, 2025 N |
 | `lois-de-newton` | 1 | 1 | 2019 N · (?) 2017 N |
 | `rotation-axe-fixe` | 2 | 0 | 2011 R, 2024 N (même type de montage : poulie/cylindre + R.F.D. rotation) |
-| `systemes-oscillants` | 2 | 1 | 2018 N, 2025 N · (?) 2017 N |
-| `suivi-temporel-vitesse` | 2 | 3 | 2021 N, 2024 N · (?) 2010 N, 2025 N · cross 2025 N (via `controle-catalyse`) |
+| `systemes-oscillants` | 3 | 1 | 2018 N, 2023 N, 2025 N · (?) 2017 N |
+| `suivi-temporel-vitesse` | 2 | 4 | 2021 N, 2024 N · (?) 2010 N, 2025 N · cross 2025 N (via `controle-catalyse`), 2023 N (via `esterification-hydrolyse`) |
 | `transformations-lentes-rapides` | 1 | 1 | 2010 N · cross 2021 N |
-| `controle-catalyse` | 1 | 1 | 2025 N · cross 2018 N |
+| `controle-catalyse` | 1 | 2 | 2025 N · cross 2018 N, 2023 N |
 | `transformations-deux-sens` | 1 | 0 | 2012 N |
-| `etat-equilibre` | 1 | 5 | 2015 N · cross 2019/2020/2021 N, 2024 N, 2025 N |
+| `etat-equilibre` | 2 | 5 | 2015 N, 2023 N · cross 2019/2020/2021 N, 2024 N, 2025 N |
 | `evolution-spontanee` | 1 | 1 | 2012 N · cross 2020 N |
-| `esterification-hydrolyse` | 1 | 2 | 2018 N · (?) 2012 N, 2025 N |
-| `aspects-energetiques` | 0 | 3 | cross 2018 N, 2025 N · (?) 2017 N (pendule torsion — entrée autonome cible) |
+| `esterification-hydrolyse` | 2 | 2 | 2018 N, 2023 N · (?) 2012 N, 2025 N |
+| `aspects-energetiques` | 0 | 4 | cross 2018 N, 2023 N, 2025 N · (?) 2017 N (pendule torsion — entrée autonome cible) |
 | `atome-mecanique-newton` | 0 | 0 | **NON SOURCÉ** — absent des 21 couvertures lues 2008–2025 (candidat ship `unsourced`) ; 2025 N Ex IV-P1 (satellite) confirmé **hors périmètre**, classé `chute-mouvements-plans` (voir note de routage) |
 
 ---
@@ -274,3 +293,32 @@ malgré une consigne de routage générale qui aurait pu suggérer ce dernier �
 (`content/pc/atome-mecanique-newton/exercises.yaml`) réaffirmée, pas
 contournée ; voir la note de routage dans `chute-mouvements-plans.md` et la
 note symétrique dans `atome-mecanique-newton.md`.
+
+## 6. Passe 2026-08-06 — harvest complet du 2023 N (NS28F)
+
+**2023 N est passé de « couverture lue en v0.3, carte non consignée » à
+carte complète : 10 nouvelles entrées `transcrit (non vérifié)` + 4 notes
+de cross-list**, sur les 4 exercices/20 points du sujet (barème
+$7+2{,}5+5+5{,}5=20$ recoupé et conforme à la couverture p.1). Détail dans
+`README.md` §4 (chaque fichier `<slug>.md`) et dans la table « Sujets à
+carte complète » ci-dessus. Points notables :
+- l'exercice 1 (« réactions de l'acide éthanoïque ») a été **partitionné en
+  trois notions distinctes** (chaque §-partie à son fichier) : §1
+  (acide + eau, sans dosage) → `etat-equilibre.md`, suivant le précédent
+  2015 N ; §2 (réaction entre deux couples acide/base, $K_{A1}/K_{A2}$) →
+  `reactions-acido-basiques.md`, un cas non encore rencontré dans la
+  banque ; §3 (estérification) → `esterification-hydrolyse.md` ;
+- l'exercice 2 (« transformations nucléaires du tritium ») a été
+  partitionné entre `decroissance-radioactive.md` (§1, désintégration) et
+  `noyaux-masse-energie.md` (§2, fusion), sur les deux sous-parties
+  explicitement titrées du scan ;
+- l'exercice 4-Partie II (« balançoire ») a été classé sous
+  `systemes-oscillants.md` (pendule pesant) et **pas** sous
+  `rotation-axe-fixe.md`, ce dernier restant réservé aux exercices de type
+  poulie/grue (R.F.D. en rotation pure autour d'un axe fixe, sans
+  oscillation).
+- l'en-tête du scan a été lu directement au pixel et confirme sans
+  ambiguïté la filière Sciences Physiques (SPC), BIOF, option française —
+  le résumé HTML d'AlloSchool pour `element/142476` annonce à tort « 2ème
+  BAC Sciences Mathématiques B » (même piège de fidélité que 2018 N et
+  2024 N, README §3).

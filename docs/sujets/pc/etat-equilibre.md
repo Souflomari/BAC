@@ -76,6 +76,62 @@ $$\text{C}_6\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \;\rightleft
 
 ---
 
+## 2023 — session normale — Exercice 1 (Chimie), §1
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 7 points ; **§1** =
+  1,75 point ($0{,}5+0{,}75+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0002-big.jpg`
+- Pages du scan : 2 (sur 6)
+- Portée : **§1 — Étude d'une solution aqueuse d'acide éthanoïque** (réaction
+  acide faible / eau, taux d'avancement, $pK_A$). Le **§2** (réaction de
+  l'acide éthanoïque avec l'ion méthanoate) du même exercice est transcrit
+  sous `reactions-acido-basiques.md` (cross-list ici). Le **§3** (réaction
+  avec le méthanol, estérification) est sous `esterification-hydrolyse.md`.
+  Mention en tête de l'exercice : « Dans cet exercice on se propose
+  d'étudier la réaction d'acide éthanoïque avec : - l'eau ; - une solution
+  aqueuse de méthanoate de sodium ; - le méthanol. »
+
+**EXERCICE 1 (7 points) : Étude de quelques réactions chimiques d'acide
+éthanoïque.**
+
+**1- Étude d'une solution aqueuse d'acide éthanoïque**
+
+On prépare un volume $V$ d'une solution aqueuse $S_A$ d'acide éthanoïque
+$\text{CH}_3\text{COOH}$ de concentration molaire
+$C_A = 5 \cdot 10^{-2}\ \text{mol.L}^{-1}$. Son pH est $pH = 3{,}05$.
+
+1. **1.1-** (0,5) Écrire l'équation de la réaction de l'acide éthanoïque
+   avec l'eau.
+2. **1.2-** (0,75) On définit la proportion de l'espèce $\text{CH}_3\text{COOH}$
+   dans la solution $S_A$ à l'état d'équilibre par :
+   $$\alpha(\text{CH}_3\text{COOH}) = \dfrac{[\text{CH}_3\text{COOH}]_{\text{éq}}}{[\text{CH}_3\text{COOH}]_{\text{éq}} + [\text{CH}_3\text{COO}^-]_{\text{éq}}}.$$
+   En vous aidant du tableau d'avancement, montrer que
+   $\alpha(\text{CH}_3\text{COOH}) = 1 - \tau$ avec $\tau$ étant le taux
+   d'avancement final de la réaction de l'acide éthanoïque avec l'eau.
+   Calculer alors la valeur de $\alpha(\text{CH}_3\text{COOH})$.
+3. **1.3-** (0,5) Montrer que la valeur du
+   $pK_{A1} = pK_A(\text{CH}_3\text{COOH}_{(aq)}/\text{CH}_3\text{COO}^-_{(aq)})$
+   est : $pK_{A1} \simeq 4{,}79$.
+
+*(Aucune figure dans ce §1 ; énoncé intégralement textuel.)*
+
+> §2 et §3 (résumé, non détaillés ici) : §2 — mélange de $S_A$ avec une
+> solution de méthanoate de sodium (réaction entre les ions méthanoate et
+> l'acide éthanoïque, quotient de réaction en fonction de $K_{A1}$/$K_{A2}$,
+> pH du mélange) → `reactions-acido-basiques.md`. §3 — mélange équimolaire de
+> l'acide éthanoïque avec le méthanol (estérification, catalyseur, rendement)
+> → `esterification-hydrolyse.md`.
+
+---
+
 ## Contenu « état d'équilibre » présent dans les transcriptions existantes
 
 - **2019 N — Ex I Partie 2** (acide benzoïque), sous `reactions-acido-basiques.md` :
@@ -109,3 +165,11 @@ $$\text{C}_6\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \;\rightleft
 > inverse). **Résolu (v0.3)** : l'entrée dédiée **2015 N** ci-dessus fournit un
 > exercice national centré sur l'état d'équilibre ($\tau$, $Q_{r,\text{éq}}$,
 > $pK_A$).
+
+- **2023 N — Exercice 1 (Chimie), §2** (réaction acide éthanoïque / ion
+  méthanoate), transcrit sous `reactions-acido-basiques.md` :
+  - Q2.2 (0,75) : expression du quotient de réaction à l'équilibre
+    $Q_{r,\text{éq}}$ en fonction des constantes d'acidité $K_{A1}$ et
+    $K_{A2}$ des deux couples en présence (réaction entre un acide et la
+    base conjuguée d'un autre couple — cas non encore rencontré dans la
+    banque, distinct du cas « acide + eau » de l'entrée 2015 N ci-dessus).

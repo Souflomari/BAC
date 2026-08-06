@@ -153,3 +153,10 @@ tandis que la courbe continue de s'incurver vers son palier. Légende :
   - Non repris ici en entrée autonome pour éviter la duplication : l'exercice
     est classé dans `controle-catalyse.md` (question dominante : comparaison
     de facteurs cinétiques température/catalyseur), cf. `README.md` §4.
+
+- **2023 N — Exercice 1 (Chimie), §3** (estérification acide éthanoïque +
+  méthanol, catalysée vs non catalysée), transcrit sous
+  `esterification-hydrolyse.md` :
+  - Q3.4 (0,5) : détermination de la valeur de $t_{1/2}$, le temps de
+    demi-réaction, dans le cas de la transformation correspondant à la
+    courbe $C_2$ (non catalysée).

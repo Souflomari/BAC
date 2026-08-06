@@ -81,3 +81,9 @@ confirmer sur le corrigé)*. Interprétation attendue : l'expérience $(3)$
 > l'effet de la seule température — exactement le type d'exercice recherché. Le
 > thème reste toutefois **rarement isolé** dans l'épreuve PC-SPC (le plus souvent
 > intégré à un suivi cinétique / une estérification) — cf. INDEX §5.
+
+- **2023 N — Exercice 1 (Chimie), §3** (réaction acide éthanoïque +
+  méthanol, une des deux expériences catalysée), transcrit sous
+  `esterification-hydrolyse.md` :
+  - Q3.2 (0,5) : identification, en justifiant, de la courbe ($C_1$ ou
+    $C_2$) correspondant à la réaction utilisant le catalyseur.

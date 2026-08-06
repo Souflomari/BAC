@@ -558,3 +558,46 @@ $dpH/dV_B = f(V_B)$) : quasi nulle sur presque tout le domaine, avec un pic
 (amplitude non chiffrée). Étiquettes « $(C_1)$ » et « $(C_2)$ » portées
 directement sur le graphe, en retrait du pic/du saut. Légende : « Figure 2 ».
 
+---
+
+## 2023 — session normale — Exercice 1 (Chimie), §2
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 7 points ; **§2** =
+  2,0 points ($0{,}75+0{,}75+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0002-big.jpg`
+- Pages du scan : 2 (sur 6)
+- Portée : **§2 — Étude de la réaction de l'acide éthanoïque avec l'ion
+  méthanoate** (réaction entre deux couples acide/base, quotient de réaction
+  à l'équilibre en fonction de $K_{A1}$ et $K_{A2}$, pH du mélange). Le
+  **§1** (acide éthanoïque + eau, $\tau$, $pK_{A1}$) du même exercice est
+  sous `etat-equilibre.md` (cross-list ici). Le **§3** (réaction avec le
+  méthanol, estérification) est sous `esterification-hydrolyse.md`.
+
+**2- Étude de la réaction de l'acide éthanoïque avec l'ion méthanoate**
+
+On mélange un volume $V_1$ de la solution $S_A$ (acide éthanoïque, voir §1,
+$C_A = 5\cdot10^{-2}\ \text{mol.L}^{-1}$) avec un volume $V_2 = V_1$ d'une
+solution aqueuse $S_B$ de méthanoate de sodium
+$\text{Na}^+_{(aq)} + \text{HCOO}^-_{(aq)}$ de concentration molaire
+$C_B = C_A$.
+
+1. **2.1-** (0,75) Écrire l'équation de la réaction qui se produit entre les
+   ions méthanoate et l'acide éthanoïque.
+2. **2.2-** (0,75) Trouver l'expression du quotient de réaction à
+   l'équilibre $Q_{r,\text{éq}}$ associée à cette réaction en fonction des
+   constantes d'acidité $K_{A1}$ et $K_{A2}$ des couples intervenant.
+   Calculer sa valeur sachant que
+   $pK_{A2} = pK_A(\text{HCOOH}_{(aq)}/\text{HCOO}^-_{(aq)}) = 3{,}75$.
+3. **2.3-** (0,5) Trouver l'expression du pH du mélange réactionnel en
+   fonction de $pK_{A1}$ et $pK_{A2}$. Calculer sa valeur.
+
+*(Aucune figure dans ce §2 ; énoncé intégralement textuel.)*
+

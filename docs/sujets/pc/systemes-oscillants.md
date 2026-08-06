@@ -151,3 +151,81 @@ un troisième maximum tangent à $12{,}5$, où se termine la double flèche
 « $1\text{s}$ » : cet intervalle entre deux maxima consécutifs, directement
 porté sur le scan, donne la période $T_0 = 1\ \text{s}$ *(lecture directe,
 pas une estimation)*. Légende : « Figure 3 ».
+
+---
+
+## 2023 — session normale — Exercice 4 (Partie II)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5,5 points ; **Partie
+  II** = 2,25 points ($0{,}5+0{,}5+0{,}75+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0006-big.jpg`
+- Pages du scan : 6 (sur 6)
+- Portée : **Partie II — Étude du mouvement d'une balançoire** (pendule
+  pesant assimilé à un pendule simple, petites oscillations). La **Partie I
+  (chute d'une balle)** du même exercice est sous `chute-mouvements-plans.md`.
+  Mention en tête de l'exercice : « Les deux parties sont indépendantes. »
+  La question 1 (expression de l'énergie potentielle de pesanteur $E_{pp}$)
+  est cross-listée sous `aspects-energetiques.md`.
+
+**Partie II : Étude du mouvement d'une balançoire**
+
+Un enfant oscille à l'aide d'une balançoire (figure 2). On modélise la
+balançoire avec l'enfant par un pendule formé par un corps solide $(S)$ de
+masse $m$ et de centre d'inertie $G$, suspendu en un point $O$ par une tige
+rigide, de masse négligeable et de longueur $\ell$ pouvant effectuer un
+mouvement de rotation dans un plan vertical autour d'un axe horizontal
+$(\Delta)$ passant par $O$ (figure 3). On étudie le mouvement du pendule
+dans un repère $(G_0\,;\,\vec{k})$ lié à un référentiel terrestre supposé
+galiléen.
+
+On écarte le pendule de sa position d'équilibre stable d'un angle petit
+$\theta_0 = 9°$, dans le sens positif, puis on le lâche sans vitesse
+initiale à l'instant de date $t_0 = 0$. On repère la position du pendule à
+un instant de date $t$ par l'abscisse angulaire $\theta$. On néglige tous
+les frottements et on choisit le plan horizontal passant par $G_0$
+(position de $G$ à l'équilibre stable) comme état de référence de l'énergie
+potentielle de pesanteur ($E_{pp} = 0$).
+
+**Données :**
+- Le moment d'inertie du pendule par rapport à l'axe de rotation $(\Delta)$
+  est : $J_\Delta = m.\ell^2$ ;
+- Accélération de la pesanteur : $g = 10\ \text{m.s}^{-2}$ ;
+  $\ell = 2{,}4\ \text{m}$ ;
+- Pour les oscillations de faible amplitude, on prend
+  $\cos\theta \approx 1 - \dfrac{\theta^2}{2}$ ; $\theta$ en radian.
+
+1. (0,5) Montrer que l'expression de l'énergie potentielle de pesanteur du
+   pendule à un instant $t$ pour les oscillations de faible amplitude est :
+   $E_{pp} = \dfrac{1}{2}mg\ell\theta^2$.
+2. En exploitant la conservation de l'énergie mécanique du pendule :
+   1. **2-1.** (0,5) Déterminer la vitesse angulaire maximale
+      $\dot\theta_{max}$ du centre d'inertie $G$.
+   2. **2-2.** (0,75) Établir l'équation différentielle du mouvement
+      vérifiée par l'abscisse angulaire $\theta(t)$.
+3. (0,5) Calculer la période propre de ce pendule sachant qu'il est
+   analogue à un pendule simple de longueur $\ell$ et de masse $m$.
+
+*Figure 2 (photographie) :* photographie en couleur d'un enfant assis sur
+une balançoire suspendue par des chaînes/cordes à une structure, dans un
+cadre extérieur herbeux. Légende : « Figure 2 ».
+
+*Figure 3 (schéma) :* point $O$ en haut, étiqueté avec « $(\Delta)$ » à sa
+droite (axe de rotation) ; un axe vertical $\vec{z}$ (flèche pleine) part
+de $O$ vers le haut ; une ligne verticale en pointillés descend de $O$
+jusqu'à un point noir étiqueté « $G_0$ » en bas (position d'équilibre de
+$G$) ; un vecteur $\vec{k}$ (courte flèche pleine orientée vers le haut)
+est dessiné juste au-dessus de $G_0$, à gauche de la ligne pointillée. Une
+tige rigide (trait plein) part de $O$ et descend en oblique vers la droite
+jusqu'à un point noir étiqueté « $G$ » suivi de « $(S)$ » (le solide) ;
+l'angle $\theta$ est marqué par un arc fléché entre la ligne verticale en
+pointillés et cette tige, près de $O$. Un arc en pointillés relie $G_0$ à
+$G$, représentant la trajectoire circulaire du pendule. Légende :
+« Figure 3 ».

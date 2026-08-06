@@ -248,3 +248,66 @@ un dernier nœud, d'où la résistance $R_2$ (rectangle) descend vers la masse
 M ; enfin le fil horizontal sort de l'étage 2 et entre dans le second bloc
 « Amplification », dont la sortie porte une flèche étiquetée « HP »
 (haut-parleur). Légende : « Étage 1 », « Étage 2 », « Figure 4 ».
+
+---
+
+## 2023 — session normale — Exercice 3, §3 (Modulation d'amplitude d'un signal)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 4–5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ; **§3** =
+  1,75 point ($0{,}5+0{,}5+0{,}25+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0004-big.jpg`
+  (chapeau du §3), `.../0005-big.jpg` (questions, figure 5)
+- Pages du scan : 4 (fin) et 5 (sur 6)
+- Portée : **§3 — Modulation d'amplitude d'un signal**. Les **§1** (dipôle
+  RL) et **§2** (circuit LC) du même exercice sont sous `dipole-rl.md` et
+  `rlc-serie.md` respectivement.
+
+**3- Modulation d'amplitude d'un signal**
+
+La courbe de la figure 5 représente l'évolution temporelle de la tension
+$u(t)$ associée à un signal modulé en amplitude. L'expression mathématique
+de $u(t)$ est de la forme :
+$u(t) = A\left(1 + m.\cos(2\pi f_s.t)\right).\cos(2\pi f_p.t)$ avec $A$ est
+une constante, $m$ est le taux de modulation, $f_s$ et $f_p$ sont
+respectivement les fréquences du signal modulant et de la porteuse.
+
+1. **3-1.** (0,5) Choisir la bonne proposition :
+
+   | | |
+   |---|---|
+   | A | La fréquence du signal modulant est $4\ \text{kHz}$. |
+   | B | La fréquence de la porteuse est $4\ \text{kHz}$. |
+   | C | La fréquence du signal modulant est $100\ \text{Hz}$. |
+   | D | La fréquence de la porteuse est $200\ \text{Hz}$. |
+
+2. **3-2.** Répondre par vrai ou faux en justifiant :
+   1. **a-** (0,5) Le taux de modulation est $m = 0{,}4$.
+   2. **b-** (0,25) La valeur de la composante continue de la tension est :
+      $U_0 = 2\ \text{V}$.
+3. **3-3.** (0,5) Représenter l'allure du spectre de fréquences du signal
+   modulé $u(t)$ sans respect d'échelle très précise.
+
+*Figure 5 (oscillogramme) :* $u\ (\text{V})$ en fonction de $t\ (\text{ms})$,
+sur quadrillage à double graduation (traits principaux, sous-quadrillage
+fin bleu), origine « 0 » sur l'axe des ordonnées. Un repère d'échelle est
+placé au centre du graphe : flèche verticale étiquetée « 2V » et flèche
+horizontale étiquetée « 1 ms ». Le tracé est un signal modulé en amplitude
+classique : une oscillation dense et rapide (la porteuse) dont l'enveloppe
+varie périodiquement, symétrique par rapport à l'axe des t. Sur la largeur
+visible du graphe, l'enveloppe présente une succession de renflements
+(amplitude localement maximale) séparés par des resserrements (amplitude
+localement minimale) : un renflement à l'extrémité gauche, un resserrement,
+un renflement plus large au centre (juste sous le repère d'échelle
+« 2V »/« 1 ms »), un nouveau resserrement, puis un dernier renflement à
+l'extrémité droite du cadre *(nombre exact d'oscillations de la porteuse
+par renflement et durée précise d'une période de l'enveloppe non chiffrés
+sur le scan — lecture fine à confirmer, cf. précédent similaire dans
+l'entrée 2021 N de ce fichier)*. Légende : « Figure 5 ».

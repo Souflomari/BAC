@@ -50,3 +50,23 @@ sous `systemes-oscillants.md`**. Sa **question 3** constitue le volet
   (solide $(S)$ - ressort) entre les instants $t = 1\ \text{s}$ et
   $t = 2{,}5\ \text{s}$, à partir de $x(t) = X_m\cos(2\pi t/T_0 + \varphi)$
   et de la raideur $K$ déterminées aux questions précédentes.
+
+---
+
+## 2023 — session normale — Exercice 4 (Partie II) — *cross-list*
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — cross-list (contenu transcrit intégralement
+sous `systemes-oscillants.md` : scan course-422/upload-85304, page 6,
+2026-08-06, non encore vérifié). À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS 28F · Barème : Partie II = 2,25 points
+
+L'exercice **« Étude du mouvement d'une balançoire »** (2023 N, Ex 4,
+Partie II, pendule pesant assimilé à un pendule simple) est **transcrit
+intégralement sous `systemes-oscillants.md`**. Sa **question 1** constitue
+le volet « aspects énergétiques » :
+- Q1 (0,5) : établir l'expression de l'énergie potentielle de pesanteur
+  $E_{pp} = \dfrac{1}{2}mg\ell\theta^2$ pour les oscillations de faible
+  amplitude, à partir du développement limité
+  $\cos\theta \approx 1 - \theta^2/2$.

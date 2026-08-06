@@ -218,3 +218,80 @@ $t_{1/2} = 74\ \text{jours} = 6{,}3936 \cdot 10^{6}\ \text{s}$.
 
 *(Aucune figure dans cet exercice ; énoncé entièrement textuel + la donnée
 ci-dessus.)*
+
+---
+
+## 2023 — session normale — Exercice 2, §1 (Désintégration du tritium)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 2,5 points ; **§1
+  (Désintégration du tritium)** = 1,5 point ($0{,}5+0{,}25+0{,}25+0{,}5$,
+  barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0003-big.jpg`
+- Pages du scan : 3 (sur 6)
+- Portée : **§1 — Désintégration du tritium** (QCM, équation de
+  désintégration, relation $t_{1/2}$–$\lambda$, activité). Le **§2**
+  (réaction de fusion du tritium et du deutérium, énergie de dissociation,
+  énergie libérée) du même exercice est sous `noyaux-masse-energie.md`
+  (cross-list ici).
+
+**EXERCICE 2 (2,5 points) : Étude de quelques transformations nucléaires du
+tritium.**
+
+*(Cadrage de l'exercice, transcrit intégralement : « Dans cet exercice on se
+propose d'étudier la désintégration du tritium $^3_1\text{H}$ et sa réaction
+de fusion avec le deutérium $^2_1\text{H}$. $^2_1\text{H}$ et $^3_1\text{H}$
+sont deux isotopes de l'élément hydrogène. »)*
+
+**Données :**
+- Masse molaire du tritium : $M(^3_1\text{H}) = 3\ \text{g.mol}^{-1}$ ;
+- Nombre d'Avogadro : $N_A = 6{,}02 \cdot 10^{23}\ \text{mol}^{-1}$ ;
+- Demi-vie du tritium $^3_1\text{H}$ : $t_{1/2} = 12{,}32\ \text{an}$ ;
+- Énergies de liaison de quelques noyaux :
+
+  | Noyau | $^2_1\text{H}$ | $^3_1\text{H}$ | $^4_2\text{He}$ |
+  |-------|:---:|:---:|:---:|
+  | $E_\ell\ (\text{MeV})$ | 2,366 | 8,475 | 28,296 |
+
+- On prend : $1\ \text{an} = 3{,}16 \cdot 10^{7}\ \text{s}$.
+
+**1- Désintégration du tritium**
+
+Le tritium est un isotope radioactif émetteur $\beta^-$. Le noyau formé est
+l'un des isotopes de l'hélium.
+
+1. **1-1.** (0,5) Choisir parmi les affirmations suivantes l'affirmation
+   juste :
+
+   | | |
+   |---|---|
+   | A | Le noyau $^3_2\text{He}$ a un nombre de masse égal à 5. |
+   | B | La radioactivité $\beta^-$ est caractéristique des noyaux très lourds. |
+   | C | Au bout du temps $t = 2t_{1/2}$, à partir du début de désintégration, le nombre de noyaux désintégrés dans un échantillon radioactif représente 25% du nombre de noyaux initial. |
+   | D | La masse d'un noyau atomique est égale à la somme des masses de ses nucléons. |
+   | E | Lors d'une réaction de fission nucléaire, de la masse est convertie en énergie. |
+
+2. **1-2.** (0,25) Écrire l'équation de la réaction de désintégration du
+   noyau du tritium.
+3. **1-3.** (0,25) Établir la relation entre la demi-vie $t_{1/2}$ et la
+   constante radioactive $\lambda$.
+4. **1-4.** (0,5) À un instant $t_0 = 0$ on a un échantillon du tritium
+   radioactif de masse $m_0 = 2\ \mu\text{g}$. Calculer en unité Bq,
+   l'activité $a_1$ de l'échantillon à l'instant où 90% des noyaux du
+   tritium sont désintégrés.
+
+*(Aucune figure dans ce §1 ; énoncé textuel + le tableau des données
+ci-dessus et le tableau du QCM.)*
+
+> §2 (résumé, non détaillé ici) : réaction de fusion entre un noyau de
+> deutérium et un noyau de tritium conduisant à la formation d'un noyau
+> d'hélium $^4_2\text{He}$ avec émission d'un neutron — questions vrai/faux
+> (énergie de dissociation, stabilité comparée) et calcul de l'énergie
+> libérée $E_{lib}$ → `noyaux-masse-energie.md`.

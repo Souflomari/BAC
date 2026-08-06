@@ -576,3 +576,63 @@ remonte ensuite à un nouveau maximum local (plus bas que le précédent),
 avant de sortir du cadre en fin de tracé. Les amplitudes successives
 diminuent régulièrement d'un extremum au suivant, signature de
 l'amortissement. Légende : « Figure 2 ».
+
+---
+
+## 2023 — session normale — Exercice 3, §2 (Circuit oscillant LC)
+Source: https://www.alloschool.com/element/142476
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-85304, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ; **§2** =
+  1,5 point ($0{,}25+0{,}5+0{,}75$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0004-big.jpg`
+- Pages du scan : 4 (sur 6)
+- Portée : **§2 — Circuit oscillant LC**, réutilisant la bobine $(b)$ du §1
+  (`dipole-rl.md`). Le **§3** (modulation d'amplitude) du même exercice est
+  sous `ondes-em-modulation.md`. Régime respecté : circuit LC pur (pas de
+  conducteur ohmique dans la boucle), cas non amorti au programme (cf.
+  rappel de périmètre en tête de fichier).
+
+**2- Circuit oscillant LC**
+
+On réalise un circuit oscillant LC en associant la bobine (b) précédemment
+utilisée avec un condensateur de capacité $C$ chargé totalement par un
+générateur de tension de force électromotrice $E_0$ (figure 3).
+
+1. **2-1.** (0,25) Établir l'équation différentielle vérifiée par la
+   tension $u_C(t)$ entre les bornes du condensateur.
+2. **2-2.** La courbe de la figure 4 représente les variations de la
+   tension $u_C(t)$ en fonction du temps.
+   1. **2-2-1.** (0,5) Trouver la valeur de la capacité $C$ du condensateur.
+      (On prend $\pi^2 = 10$).
+   2. **2-2-2.** (0,75) Trouver l'énergie magnétique $E_m$ emmagasinée dans
+      la bobine à l'instant $t = 1{,}8\ \text{ms}$.
+
+*Figure 3 (schéma) :* boucle rectangulaire. Branche gauche : condensateur
+$C$ (deux traits parallèles, étiqueté « C »). Branche supérieure : fil
+portant la flèche de courant $i$ orientée vers la droite. Branche droite
+(verticale) : bobine $(b)$ dessinée en spires. Branche inférieure : simple
+fil refermant la boucle. Légende : « Figure 3 ».
+
+*Figure 4 (courbe) :* $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur
+quadrillage à double graduation (traits principaux, sous-quadrillage fin
+bleu). Aucune valeur numérique n'est portée sur l'axe des ordonnées hormis
+l'origine « $0$ » ; un repère combiné, placé près de l'origine, indique
+l'échelle du quadrillage par une double flèche verticale étiquetée « 5V »
+et une flèche horizontale étiquetée « 0,5 ms ». Axe des abscisses non
+chiffré en dehors de ce repère (flèche horizontale simple « t(ms) »).
+Oscillation sinusoïdale d'amplitude apparemment constante : la courbe,
+visible sur un peu plus d'une période et demie, part d'une valeur proche
+d'un maximum juste après $t = 0$, redescend en franchissant l'axe des
+abscisses (« 0 ») vers un premier minimum, remonte en franchissant à
+nouveau l'axe vers un second maximum situé environ au tiers droit du cadre,
+puis redescend vers un second minimum en fin de tracé *(positions
+temporelles exactes des extremums non chiffrées sur l'axe — lecture à
+confirmer, seules les échelles « 5V » / « 0,5 ms » sont des valeurs
+imprimées)*. Légende : « Figure 4 ».
