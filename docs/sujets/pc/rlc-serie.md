@@ -293,7 +293,45 @@ confirmées à la mesure de pixels lors de la vérification).
 ## 2021 — session normale — Exercice IV (Partie II)
 Source: https://www.alloschool.com/element/127287
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84195, page(s) 6. À faire vérifier (README §3).
+course-422/upload-84195, page(s) 6. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue : ÉCART DE FIGURE
+MAJEUR trouvé et corrigé.** `element/127287` re-fetché,
+`course-422/upload-84195` (8 pages) re-dérivé de façon indépendante et
+**conforme** ; en-tête du scan **confirmé** (NS 28F, Sciences Physiques BIOF
+option française, 3 h, coef 7 ; couverture : « Exercice IV (4,75 points) »).
+Diff caractère par caractère de la p. 6 (énoncé, libellés, numérotation,
+expression $q(t) = Q_m\cos(2\pi t/T_0)$, $\pi^2 = 10$, barème en marge) —
+**aucun écart sur le texte**. Barème re-additionné :
+$0{,}25+0{,}5+0{,}5+0{,}25+0{,}5 = 2{,}0$ points ; **partition de l'exercice
+vérifiée** : $1{,}0$ (I) $+\ 2{,}0$ (II) $+\ 1{,}75$ (III) $= 4{,}75$ =
+couverture. **Figure 3 jugée élément par élément au zoom — fidèle** (boucle
+série bobine $L$ dessinée en spires sur la branche gauche + condensateur $D$
+sur la branche droite, flèche $i$ en haut vers la droite, flèche $u_C$ vers le
+haut ; **aucun conducteur ohmique** dans la boucle, cohérent avec le régime
+non amorti).
+**Écart bloquant relevé — figure 4 :** la description précédente affirmait un
+passage par zéro sur le repère $t = 7$, un minimum vers $t = 14$, une remontée
+coupant l'axe vers $t = 21$ et un maximum vers $t = 28$ — c'est-à-dire
+$T_0 = 28$ ms. Le relevé numérique de la courbe sur le scan (repères
+principaux localisés aux colonnes du quadrillage puis tracé échantillonné)
+donne : maximum à $t = 0$, zéro descendant à $t \simeq 5{,}25$ ms, minimum à
+$t \simeq 10{,}5$ ms, zéro montant à $t \simeq 15{,}75$ ms, **maximum
+exactement sur le repère $t = 21$ ms**, zéro descendant à $t \simeq 26{,}25$
+ms, second minimum à $t \simeq 31{,}5$ ms — soit **$T_0 = 21$ ms**, structure
+en quarts de période parfaitement régulière. La description de figure a été
+réécrite en conséquence. *Conséquence pédagogique : la question 4 (« déterminer
+graphiquement $T_0$ ») vaut $21$ ms et non $28$ ms, et la question 5 donne
+$L = T_0^2/(4\pi^2 C) = (21\times10^{-3})^2/(40\times12\times10^{-6})
+\simeq 0{,}92$ H, et non $\simeq 1{,}63$ H.*
+**Drapeau « lecture à confirmer » adjugé et levé** sur l'amplitude : les
+extrema ne sont pas « au-delà de $72$ » de façon indéterminée, ils sont
+**exactement tangents aux traits principaux non chiffrés à $\pm 144\
+\mu\text{C}$** (le pas du quadrillage principal vaut $72\ \mu\text{C}$ ;
+mesure : $108{,}5$ px pour $54{,}5$ px par graduation, soit $2{,}00$
+graduations). Recoupement physique **exact** avec la partie I : $Q_m = C\cdot E
+= 12\ \mu\text{F} \times 12\ \text{V} = 144\ \mu\text{C}$.
+Corrections appliquées ⇒ **une re-lecture est requise avant promotion**
+(README §3).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de
@@ -331,16 +369,25 @@ spires, étiquette « L » à côté) ; flèche de courant $i$ en haut, orienté
 la droite ; à droite, le condensateur $D$ (deux traits parallèles) avec une
 flèche $u_C$ orientée vers le haut à côté.
 
-*Figure 4 (courbe) :* ordonnée $q\ (\mu\text{C})$ graduée $72$, $0$, $-72$
-(traits horizontaux) ; abscisse $t\ (\text{ms})$ graduée aux repères $7$,
-$14$, $21$, $28$ (graduations secondaires régulières et égales entre ces
-repères). Courbe sinusoïdale d'allure cosinus, d'**amplitude constante** :
-elle part d'une valeur proche du maximum au voisinage de $t = 0$ (au-delà de
-la graduation $72$, valeur exacte non chiffrée sur l'axe), décroît en coupant
-l'axe des abscisses au voisinage du repère $t = 7$, atteint un minimum
-(au-delà de $-72$, valeur exacte non chiffrée) au voisinage de $t = 14$,
-remonte en coupant l'axe au voisinage du repère $t = 21$, et retrouve un
-maximum comparable à celui du départ au voisinage du repère $t = 28$, avant de
-redescendre en fin de tracé *(alignement des passages par zéro et des
-extrema sur les repères imprimés lu au zoom ; amplitude exacte au-delà de
-$72\ \mu\text{C}$ non chiffrée — lecture à confirmer)*.
+*Figure 4 (courbe) :* ordonnée $q\ (\mu\text{C})$, seules les valeurs $72$,
+$0$ et $-72$ étant chiffrées sur l'axe ; le quadrillage principal horizontal
+est régulier et de pas $72\ \mu\text{C}$, si bien qu'il existe deux traits
+principaux **non chiffrés** à $+144$ et $-144\ \mu\text{C}$. Abscisse
+$t\ (\text{ms})$ : traits principaux chiffrés $7$, $14$, $21$, $28$ (pas
+régulier de $7$ ms ; un dernier trait principal non chiffré ferme le cadre à
+droite, à $t = 35$ ms), avec quadrillage secondaire régulier entre eux.
+
+Courbe sinusoïdale d'allure cosinus, d'**amplitude constante**, tangente
+exactement aux traits principaux $+144$ et $-144\ \mu\text{C}$ : elle part de
+son **maximum** $Q_m = 144\ \mu\text{C}$ à $t = 0$, coupe l'axe des abscisses
+en descendant vers $t \simeq 5{,}25$ ms (soit **avant** le repère $7$),
+atteint son **minimum** $-144\ \mu\text{C}$ vers $t \simeq 10{,}5$ ms (à
+mi-chemin entre les repères $7$ et $14$), recoupe l'axe en montant vers
+$t \simeq 15{,}75$ ms, retrouve son **maximum** $+144\ \mu\text{C}$
+**exactement sur le repère $t = 21$ ms**, puis recoupe l'axe vers
+$t \simeq 26{,}25$ ms et redescend jusqu'à un second minimum vers
+$t \simeq 31{,}5$ ms en fin de tracé.
+
+La **période propre se lit donc $T_0 = 21$ ms** (maximum à $t = 0$ et maximum
+suivant sur le repère $t = 21$ ; écart entre passages par zéro consécutifs
+$\simeq 10{,}5$ ms $= T_0/2$).

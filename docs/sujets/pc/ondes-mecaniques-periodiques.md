@@ -58,7 +58,30 @@ sinusoïdal.
 ## 2020 — session normale — Exercice II
 Source: https://www.alloschool.com/element/109742
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-80870, page(s) 3–4. À faire vérifier (README §3).
+course-422/upload-80870, page(s) 3–4. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue, une correction
+appliquée.** `element/109742` re-fetché, `course-422/upload-80870` (7 pages)
+re-dérivé de façon indépendante et **conforme** à la citation ; en-tête du
+scan **confirmé** (NS 28F, Sciences Physiques BIOF option française, 3 h,
+coef 7 ; couverture : « Exercice II (3 points) — Propagation des ondes »).
+Diff caractère par caractère des p. 3–4 (valeurs, unités, indices/exposants,
+libellés et numérotation des 5 items du QCM et des 3 questions de la
+partie II, barème imprimé en marge par question) — **aucun écart de contenu**.
+Barème re-additionné : $5\times0{,}25 = 1{,}25$ et $0{,}5+0{,}5+0{,}75 = 1{,}75$,
+total $3{,}0$ = **couverture**. Figure jugée élément par élément au zoom
+(4 cercles concentriques ; point noir central avec « S » juste au-dessus ;
+deux traits verticaux en pointillés tombant bien des **deux cercles les plus
+extérieurs** ; double flèche horizontale cotée « 1cm » entre ces deux traits)
+— **fidèle à l'image**. Physique re-dérivée et cohérente ($\lambda = 1$ cm
+$\Rightarrow N = v/\lambda = 0{,}25/0{,}01 = 25$ Hz ; $\tau = d/v =
+0{,}05/0{,}25 = 0{,}2$ s, soit $5T$ puisque $d = 5\lambda$).
+**Seul écart relevé, corrigé par le vérificateur :** le scan compose l'indice
+de la source en **bas de casse** ($y_M(t) = y_s(\ldots)$) alors que l'entrée
+écrivait $y_S$ — normalisé en $y_s$ (5 occurrences : les 4 items du tableau
+de la question 5 + le rappel de portée). Écart purement typographique (même
+référent), mais correction appliquée ⇒ **une re-lecture est requise avant
+promotion** (README §3). Note hors périmètre : la même graphie $y_S$ subsiste
+dans `ondes-mecaniques-progressives.md` (cross-reference, l. 13).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice : 3 points — Partie I (QCM,
@@ -76,7 +99,7 @@ course-422/upload-80870, page(s) 3–4. À faire vérifier (README §3).
   ci-dessus). La Partie I (QCM général : transport d'énergie/matière,
   transversale, nature du son, diffraction, relation de retard) est
   transcrite avec l'exercice ; son item 5 (relation de retard
-  $y_M(t)=y_S(t-\tau)$) touche une notion `-progressives` — voir
+  $y_M(t)=y_s(t-\tau)$) touche une notion `-progressives` — voir
   cross-reference dans `ondes-mecaniques-progressives.md`.
 
 **Propagation des ondes.**
@@ -119,8 +142,8 @@ proposées, la lettre qui correspond à la réponse juste.**
 
    | | | | |
    |---|------------------------|---|-------------------------|
-   | A | $y_M(t) = y_S(t+\tau)$ | C | $y_M(t) = y_S(t+2\tau)$ |
-   | B | $y_M(t) = y_S(t-2\tau)$ | D | $y_M(t) = y_S(t-\tau)$ |
+   | A | $y_M(t) = y_s(t+\tau)$ | C | $y_M(t) = y_s(t+2\tau)$ |
+   | B | $y_M(t) = y_s(t-2\tau)$ | D | $y_M(t) = y_s(t-\tau)$ |
 
 **II - La pointe S d'un vibreur crée une onde progressive sinusoïdale de
 fréquence N à la surface libre de l'eau d'une cuve à ondes.**

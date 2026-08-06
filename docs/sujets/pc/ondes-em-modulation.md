@@ -54,7 +54,46 @@ maximale de l'enveloppe $\approx 3\ \text{V}$ et minimale $\approx 1\ \text{V}$
 ## 2021 — session normale — Exercice IV (Partie III)
 Source: https://www.alloschool.com/element/127287
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84195, page(s) 6–7. À faire vérifier (README §3).
+course-422/upload-84195, page(s) 6–7. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue : écart de figure
+trouvé et corrigé.** `element/127287` re-fetché, `course-422/upload-84195`
+(8 pages) re-dérivé de façon indépendante et **conforme** ; en-tête du scan
+**confirmé** (NS 28F, Sciences Physiques BIOF option française, 3 h, coef 7 ;
+couverture : « Exercice IV (4,75 points) »). Diff caractère par caractère des
+p. 6–7 (expressions $u_1(t) = P_m\cos(2\pi F_p.t)$ et $u_2(t) = U_0 + s(t)$
+avec $s(t) = S_m\cos(2\pi f_s.t)$, sensibilités $1\ \text{V/div}$ et
+$2\ \text{ms/div}$, libellés, numérotation 1 / 2.1 / 2.2 / 3, barème en marge)
+— **aucun écart**. Barème re-additionné :
+$0{,}25+0{,}5+0{,}5+0{,}5 = 1{,}75$ point ; **partition de l'exercice
+vérifiée** : $1{,}0$ (I) $+\ 2{,}0$ (II) $+\ 1{,}75$ (III) $= 4{,}75$ =
+couverture. **Figure 5 jugée élément par élément au zoom — fidèle** (cadre
+englobant ; rectangle « X » ; deux lignes d'entrée $E_1$ et $E_2$ à gauche,
+chacune reliée au rail de masse par une flèche montante $u_1$, $u_2$ ; une
+sortie $S$ à droite avec flèche montante $u_s$ ; symbole de terre hachuré au
+milieu du rail).
+**Écart bloquant relevé — figure 6 :** la description précédente attribuait à
+$u_1(t)$ une « faible amplitude » et à $u_2(t)$ « une plus grande amplitude ».
+Le relevé numérique sur le scan donne l'**inverse** : le quadrillage fait
+$10\times8$ divisions de $34{,}4$ px ; le faisceau de la porteuse $u_1$ s'étend
+des lignes situées à $-1{,}5$ et $+1{,}5$ division de l'axe central (soit
+$3{,}0$ divisions crête à crête) tandis que $u_2$ oscille entre les traits
+$+1$ et $+2$ divisions (soit $1{,}0$ division crête à crête) — la porteuse a
+**trois fois** l'amplitude de la modulante. Description réécrite d'après
+l'image.
+**Drapeau « lecture à confirmer » adjugé et partiellement levé :** les
+amplitudes **sont** lisibles exactement sur le quadrillage (extrema de $u_2$
+tangents aux traits $+1$ et $+2$ div ; enveloppe de $u_1$ sur les
+demi-divisions $\pm1{,}5$) — la mention « amplitudes non lues avec certitude »
+est **levée** ; en revanche le **comptage exact des oscillations de la
+porteuse** ($\simeq 3$ par division, $\simeq 30$ à l'écran) reste une lecture
+fine et le drapeau est **maintenu** sur ce seul point.
+Physique re-dérivée et cohérente avec les lectures retenues : $S_m = 0{,}5$ V,
+$U_0 = 1{,}5$ V (d'où un taux $m = S_m/U_0 = 1/3 < 1$), $T_s \simeq 4$ div
+$= 8$ ms d'où $f_s \simeq 125$ Hz, et $F_p \simeq 1500$ Hz — soit
+$F_p \gg f_s$ : les deux conditions de la question 3 sont satisfaites, la
+modulation est de bonne qualité.
+Corrections appliquées ⇒ **une re-lecture est requise avant promotion**
+(README §3).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de
@@ -106,14 +145,25 @@ la droite du rectangle, étiquetée $S$, reliée par une flèche verticale
 montante $u_s$ au rail de masse. Le rail de masse porte le symbole de terre
 (hachures) en son milieu.
 
-*Figure 6 (oscillogramme) :* écran d'oscilloscope quadrillé (grille
-rectangulaire, trait pointillé vertical marquant le centre de l'écran). Deux
-tracés superposés : $u_1(t)$, oscillation rapide de faible amplitude occupant
-toute la largeur de l'écran (porteuse, très resserrée) ; $u_2(t)$, oscillation
-nettement plus lente et de plus grande amplitude (enveloppe), visible sur
-environ deux périodes complètes à l'écran, dont les sommets affleurent le haut
-du faisceau formé par $u_1(t)$ — allure caractéristique d'un signal support
-d'une modulation d'amplitude. Les deux courbes sont repérées par des flèches
-et les étiquettes « $u_2(t)$ » et « $u_1(t)$ » en bordure droite de l'écran
-*(nombre exact de divisions et amplitudes chiffrées non lues avec certitude —
-lecture à confirmer)*.
+*Figure 6 (oscillogramme) :* écran d'oscilloscope quadrillé de **10 divisions
+en largeur et 8 divisions en hauteur**, avec un axe vertical central et un axe
+horizontal central portant des petites graduations (trait « pointillé » au
+centre de l'écran). Deux tracés superposés, repérés par des flèches et les
+étiquettes « $u_2(t) $ » (en haut) et « $u_1(t)$ » (en bas) en bordure droite
+de l'écran :
+
+- $u_1(t)$ — la **porteuse** : oscillation très rapide et très resserrée
+  occupant toute la largeur de l'écran, **centrée sur l'axe horizontal
+  central** et d'amplitude **$1,5$ division** (le faisceau s'étend exactement
+  de $-1{,}5$ à $+1{,}5$ division, soit $3{,}0$ divisions crête à crête).
+  Elle compte environ $3$ oscillations par division, soit une trentaine sur la
+  largeur de l'écran *(comptage exact des oscillations — lecture à confirmer)*.
+- $u_2(t)$ — la **modulante décalée** : oscillation nettement plus lente et
+  **de plus faible amplitude que la porteuse**, entièrement située
+  au-dessus de l'axe horizontal central, oscillant **exactement entre les
+  traits $+1$ et $+2$ divisions** (soit $1{,}0$ division crête à crête, autour
+  d'un niveau moyen de $+1{,}5$ division). Sa période vaut environ
+  $4$ divisions, ce qui en rend visibles un peu plus de deux périodes à
+  l'écran. Ses sommets dépassent légèrement le haut du faisceau formé par
+  $u_1(t)$, ses creux y replongent — allure caractéristique d'un signal
+  modulant à composante continue positive.

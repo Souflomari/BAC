@@ -180,7 +180,37 @@ l'axe des abscisses vers $t = 4\ \text{ms}$ *(lecture d'échelle à confirmer)*.
 ## 2021 — session normale — Exercice IV (Partie I)
 Source: https://www.alloschool.com/element/127287
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84195, page(s) 5–6. À faire vérifier (README §3).
+course-422/upload-84195, page(s) 5–6. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue, une correction
+appliquée.** `element/127287` re-fetché, `course-422/upload-84195` (8 pages)
+re-dérivé de façon indépendante et **conforme** à la citation ; en-tête du
+scan **confirmé** (NS 28F, Sciences Physiques BIOF option française, 3 h,
+coef 7 ; couverture : « Exercice IV (4,75 points) — Réponse d'un dipôle RC à
+un échelon de tension / Oscillations électriques non amorties dans un circuit
+LC / Modulation d'amplitude d'un signal »). Diff caractère par caractère des
+p. 5–6 (chapeau de l'exercice, liste des éléments du montage, $R = 10^{3}\
+\Omega$, forme de l'équation différentielle avec ses signes, $C = 12\
+\mu\text{F}$, libellés, numérotation, barème en marge) — **aucun écart**.
+Barème de la partie : $0{,}5+0{,}5 = 1{,}0$ point ; **partition de l'exercice
+vérifiée** : $1{,}0$ (I) $+\ 2{,}0$ (II) $+\ 1{,}75$ (III) $= 4{,}75$ =
+couverture. **Figure 2 jugée élément par élément au zoom — fidèle** : la
+droite part **exactement** de $(0\,;\,1000)$, passe **exactement** par
+$(6\,;\,500)$ et coupe l'axe des abscisses **exactement** en $(12\,;\,0)$ ;
+seules les graduations $0/500/1000$ et $0/6/12$ sont chiffrées. Physique
+re-dérivée et **cohérente** : l'ordonnée à l'origine donne $E/(RC) = 1000$
+V.s⁻¹ et l'abscisse à l'origine donne $E = 12$ V, d'où $RC = 1{,}2\times
+10^{-2}$ s et, avec $R = 10^{3}\ \Omega$, $C = 1{,}2\times10^{-5}$ F $= 12\
+\mu\text{F}$ — exactement la valeur à montrer en question 2 ; la pente
+$(500-1000)/6 = -83{,}3 = -1/(RC)$ recoupe le même résultat.
+**Seul écart relevé, corrigé par le vérificateur — figure 1 :** la description
+plaçait l'étiquette « R » *au-dessus* du rectangle et « K » *en dessous* du
+fil ; sur le scan c'est l'inverse (« R » **sous** le rectangle, « K »
+**au-dessus** du fil). La topologie (boucle série E–R–D–K, flèches $i$ et
+$u_C$) était, elle, correcte. Description réécrite d'après l'image ⇒ **une
+re-lecture est requise avant promotion** (README §3). Observation non
+bloquante : le titre gras « Exercice IV — Les circuits des appareils
+électriques » n'est **pas** imprimé sur le scan (l'exercice n'y porte pas de
+titre propre) ; il est dérivé de la première phrase du chapeau.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de
@@ -224,12 +254,14 @@ $\dfrac{du_c}{dt}$ sa dérivée par rapport au temps.
 2. (0,5) En exploitant la courbe de la figure 2, montrer que la capacité du
    condensateur est : $C = 12\ \mu\text{F}$.
 
-*Figure 1 (schéma) :* boucle série ; à gauche, un générateur idéal $E$
-(symbole cercle) ; flèche de courant $i$ en haut à gauche, orientée vers la
-droite ; branche haute = conducteur ohmique $R$ (rectangle, étiquette « R »
-au-dessus) ; à droite, le condensateur $D$ (deux traits parallèles), avec une
-flèche $u_C$ orientée vers le haut à côté ; branche basse = interrupteur $K$
-(étiquette « K » en dessous), refermant la boucle vers le générateur.
+*Figure 1 (schéma) :* boucle série ; à gauche, un générateur idéal (symbole
+cercle) avec une flèche de tension orientée vers le haut, étiquetée « E », à
+sa gauche ; flèche de courant $i$ en haut à gauche, orientée vers la droite ;
+branche haute = conducteur ohmique (rectangle, étiquette « R » **en dessous**
+du rectangle) ; à droite, le condensateur (deux traits parallèles) avec
+l'étiquette « D » à sa gauche et une flèche $u_C$ orientée vers le haut à sa
+droite ; branche basse = interrupteur (deux plots et un levier ouvert),
+étiquette « K » **au-dessus** du fil, refermant la boucle vers le générateur.
 
 *Figure 2 (courbe) :* ordonnée $\dfrac{du_c}{dt}\ (\text{V.s}^{-1})$ graduée
 $0$, $500$, $1000$ (traits horizontaux) ; abscisse $u_c\ (\text{V})$ graduée
