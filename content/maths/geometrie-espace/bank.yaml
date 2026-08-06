@@ -7,15 +7,17 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les trois entrées sont des transcriptions FIDÈLES des
-# trois entrées « vérifié » de docs/sujets/maths/geometrie-espace.md
+# exercises.yaml). Les quatre entrées sont des transcriptions FIDÈLES des
+# quatre entrées « vérifié » de docs/sujets/maths/geometrie-espace.md
 # (re-fetch AlloSchool indépendant + diff caractère-par-caractère conforme
-# au scan, agent-vérificateur-adversarial, 2026-07-12) — les SEULS sujets
-# vérifiés recensés pour cette notion : 2019, 2022, 2023, tous session
-# normale, filière Sciences Expérimentales (SVT et Sciences Physiques,
-# BIOF), tous « Exercice 1 » sur leur copie — l'exercice d'ouverture
-# récurrent de l'épreuve (barème 3 points chacun). Aucun autre sujet n'est
-# disponible — introuvable = absent, jamais inventé. Raisonnement rédigé à
+# au scan, agent-vérificateur-adversarial, 2026-07-12 pour 2019/2022/2023,
+# 2026-08-06 pour 2024) — les SEULS sujets vérifiés recensés pour cette
+# notion : 2019, 2022, 2023 et 2024, tous session normale, filière Sciences
+# Expérimentales (SVT et Sciences Physiques, BIOF) — 2019, 2022 et 2023 en
+# « Exercice 1 » sur leur copie (l'exercice d'ouverture récurrent de
+# l'épreuve, barème 3 points chacun), 2024 en « Exercice 2 » (même
+# chapitre, barème 3 points). Aucun autre sujet n'est disponible —
+# introuvable = absent, jamais inventé. Raisonnement rédigé à
 # la voix experte de la maison sur 100 % des questions ; barème transcrit
 # tel quel dans les énoncés ; conventions KaTeX (block scalars pour la
 # prose, KaTeX brut entre apostrophes simples dans steps[].math, notes sans
@@ -43,6 +45,17 @@
 # même mécanisme, mais non énoncée telle quelle dans le corps R1–R9 actuel.
 # Signalé ici pour la revue pédagogique ; à absorber dans le corps de la
 # leçon si ce type de question devient courant dans le corpus.
+#
+# SCOPE NOTE 2 (divulgation honnête, authoring-side) : la question 4.c) du
+# sujet 2024 (bk-2024-n-x2, q7) demande de montrer qu'une droite est une
+# MÉDIATRICE d'un segment de l'espace. Ni R1 à R9 ne nomment ni ne
+# construisent cette notion. Le raisonnement de cette entrée la reconstruit
+# entièrement à partir de deux outils déjà établis — le milieu d'un segment
+# (moyenne de coordonnées, R1) et le test d'orthogonalité par produit
+# scalaire (R2) — pour montrer que tout point de la droite est équidistant
+# des deux extrémités. Signalé ici pour la revue pédagogique ; à absorber
+# dans le corps de la leçon si ce type de question devient courant dans le
+# corpus.
 
 notion: maths/geometrie-espace
 
@@ -433,3 +446,125 @@ entries:
             note: "Deux valeurs, une de chaque côté du plan tangent (ABC) qui correspond à k=-9."
           - math: '(Q_1):\ \ 2x+y+2z-12=0, \qquad (Q_2):\ \ 2x+y+2z-24=0'
             note: "Les deux plans cherchés, parallèles à (ABC), chacun à distance 2 du centre Ω."
+
+  # ── bk-2024-n-x2 — 2024 N, Exercice 2 : plan, sphère, section circulaire, droite et médiatrice ──
+  # Voir SCOPE NOTE 2 en tête de fichier (question 4.c, médiatrice non couverte par R1–R9).
+  - id: bk-2024-n-x2
+    title: "Équation d'un plan, sphère, section circulaire et médiatrice d'un segment"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), Mathématiques, code NS 22F, AlloSchool element/144505
+        (Exercice 2, « Géométrie de l'espace » ; barème 3 points).
+        Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/geometrie-espace.md, section « 2024 — session
+        normale — Exercice 2 » (re-fetch AlloSchool indépendant + diff
+        caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-08-06). NB : la question 4.c) invoque la
+        médiatrice d'un segment dans l'espace, notion non introduite
+        formellement dans le corps R1–R9 de lesson.md — voir SCOPE NOTE 2
+        en tête de fichier.
+    intro: |-
+      **Géométrie de l'espace (examen national, session normale 2024, Sciences Expérimentales).**
+
+      Dans l'espace rapporté à un repère orthonormé $(O,\vec{i},\vec{j},\vec{k})$, on considère les deux points $A(-1,0,-1)$ et $B(1,2,-1)$, le plan $(P)$ passant par $A$ et de vecteur normal $\vec{n}(2,-2,1)$ et la sphère $(S)$ de centre $\Omega(2,-1,0)$ et de rayon $5$.
+
+      Le fil de l'exercice : construire l'équation du plan, celle de la sphère, montrer que le plan coupe la sphère selon un cercle, puis faire apparaître une droite qui joue un double rôle — perpendiculaire au plan par le centre de la sphère, et médiatrice du segment $[AB]$.
+    questions:
+      - id: q1
+        part: "Partie A — Équations du plan et de la sphère"
+        stem: |-
+          **(0,25 pt)** Montrer que $2x - 2y + z + 3 = 0$ est une équation cartésienne du plan $(P)$
+        reasoning: |-
+          Le plan $(P)$ est donné directement par un point $A$ et un vecteur normal $\vec n(2,-2,1)$ — on applique donc telle quelle la formule de l'équation cartésienne (R6) : $a(x-x_A)+b(y-y_A)+c(z-z_A)=0$, sans passer par un produit vectoriel puisque la normale est déjà fournie.
+        steps:
+          - math: '2\left(x-(-1)\right) - 2(y-0) + 1\left(z-(-1)\right) = 0'
+            note: "Formule R6, avec le point A(-1,0,-1) et la normale n(2,-2,1) données directement par l'énoncé."
+          - math: '2x+2-2y+z+1=0'
+            note: "On distribue chaque terme."
+          - math: '(P):\ \ 2x-2y+z+3=0'
+            note: "On regroupe les constantes : 2+1=3."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Déterminer une équation cartésienne de la sphère $(S)$
+        reasoning: |-
+          Comme pour la sphère du sujet 2022 (centre et rayon donnés directement), on part de la forme centre-rayon (R9) et on y substitue $\Omega(2,-1,0)$ et $R=5$ — aucun carré à compléter ici, le centre et le rayon sont déjà connus.
+        steps:
+          - math: '(x-2)^2+(y+1)^2+(z-0)^2 = 5^2'
+            note: "Forme centre-rayon (R9), avec le centre et le rayon donnés directement dans l'énoncé."
+          - math: '(S):\ \ (x-2)^2+(y+1)^2+z^2 = 25'
+            note: "Le rayon au carré vaut 25."
+      - id: q3
+        part: "Partie B — Distance du centre au plan, et section circulaire"
+        stem: |-
+          **(0,5 pt)** Vérifier que la distance du point $\Omega$ au plan $(P)$ est $d(\Omega,(P)) = 3$
+        reasoning: |-
+          On applique la formule R8 : au numérateur, l'équation de $(P)$ évaluée en $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal — jamais la somme des coefficients.
+        steps:
+          - math: 'd(\Omega,(P)) = \dfrac{\big|2\times2 - 2\times(-1) + 1\times0 + 3\big|}{\sqrt{2^2+(-2)^2+1^2}}'
+            note: "Formule R8 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
+          - math: 'd(\Omega,(P)) = \dfrac{|4+2+0+3|}{\sqrt{4+4+1}} = \dfrac{9}{3} = 3'
+            note: "On simplifie : 9 sur 3 égale 3."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** En déduire que le plan $(P)$ coupe la sphère $(S)$ suivant un cercle $(\Gamma)$ de rayon à déterminer.
+        reasoning: |-
+          Même réflexe qu'au R9 : on compare la distance $d(\Omega,(P))=3$, tout juste calculée, au rayon $R=5$ de la sphère — c'est cette comparaison, jamais l'inverse, qui tranche. Ici $d=3<R=5$, donc l'intersection est un cercle $(\Gamma)$, de rayon $\sqrt{R^2-d^2}$ par le Pythagore du R9 (le triangle $\Omega HM$, rectangle en $H$, avec $H$ le centre du cercle).
+        steps:
+          - math: 'd(\Omega,(P)) = 3 < R = 5'
+            note: "On compare la distance calculée au rayon de la sphère (R9)."
+          - math: '(P)\cap(S) = (\Gamma)\ \ \text{est un cercle}'
+            note: "Cas d < R du critère R9 : intersection = cercle."
+          - math: '\text{rayon}(\Gamma) = \sqrt{R^2-d^2} = \sqrt{5^2-3^2} = \sqrt{25-9} = \sqrt{16} = 4'
+            note: "Pythagore du R9 : R carré = d carré + rayon carré, appliqué au triangle ΩHM rectangle en H."
+      - id: q5
+        part: "Partie C — La droite $(\\Delta)$ : centre du cercle et médiatrice de $[AB]$"
+        stem: |-
+          **(0,5 pt)** Déterminer une représentation paramétrique de la droite $(\Delta)$ passant par $\Omega$ et perpendiculaire au plan $(P)$
+        reasoning: |-
+          $(\Delta)$ est perpendiculaire à $(P)$ : sa direction est donc exactement le vecteur normal du plan, déjà donné par l'énoncé, $\vec n(2,-2,1)$ — pas besoin de le recalculer. On écrit la représentation paramétrique habituelle (R5) à partir du point $\Omega(2,-1,0)$ et de cette direction.
+        steps:
+          - math: '\vec{u}_\Delta = \vec{n} = (2,\,-2,\,1)'
+            note: "Δ est perpendiculaire à (P) : son vecteur directeur est la normale du plan, donnée par l'énoncé."
+          - math: '(\Delta):\ \begin{cases} x = 2+2t \\ y = -1-2t \\ z = t \end{cases}\quad t\in\mathbb{R}'
+            note: "On part du point Ω(2,-1,0) et on avance selon (2,-2,1), formule R5."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que le point $H(0,1,-1)$ est le centre du cercle $(\Gamma)$
+        reasoning: |-
+          Le centre du cercle $(\Gamma)$, c'est par définition le point $H$ du R9 : le projeté orthogonal de $\Omega$ sur le plan $(P)$, c'est-à-dire le pied de la perpendiculaire abaissée de $\Omega$ — exactement le point où $(\Delta)$ perce le plan $(P)$, puisque $(\Delta)$ porte cette même perpendiculaire (question précédente). Deux choses à vérifier : que $H$ est bien sur $(\Delta)$, et que $H$ est bien sur $(P)$ — les deux ensemble suffisent, car $(\Delta)\cap(P)$ ne contient qu'un seul point (R7, droite et plan non parallèles, puisque le produit scalaire de leurs directions est non nul).
+        steps:
+          - math: '2+2t=0 \iff t=-1;\qquad -1-2(-1) = 1;\qquad z=t=-1'
+            note: "On cherche si H(0,1,-1) correspond à une valeur de t sur (Δ) : t=-1 donne exactement (0,1,-1)."
+          - math: 'H\in(\Delta)'
+            note: "Les trois coordonnées de H sont cohérentes avec la même valeur t=-1 : H appartient à Δ."
+          - math: '2(0) - 2(1) + (-1) + 3 = 0-2-1+3 = 0'
+            note: "On vérifie que H satisfait aussi l'équation de (P), établie à la question 1."
+          - math: 'H\in(P)\ \text{et}\ H\in(\Delta) \implies H\ \text{est le pied de la perpendiculaire depuis}\ \Omega\ \text{sur}\ (P)'
+            note: "H est l'unique point commun à Δ et (P) : c'est exactement le centre du cercle (Γ), défini au R9."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Montrer que la droite $(\Delta)$ est une médiatrice du segment $[AB]$
+        reasoning: |-
+          On sort ici légèrement du terrain balisé par le corps de la leçon : ni R1 à R9 ne nomment la médiatrice d'un segment dans l'espace. Le mécanisme reste pourtant entièrement construit avec les outils déjà en main. Deux faits suffisent : que $(\Delta)$ passe par le milieu de $[AB]$, et que sa direction est orthogonale à $\overrightarrow{AB}$ (test du R2). Ensemble, ces deux faits garantissent que tout point $M$ de $(\Delta)$ vérifie $MA=MB$ — la définition même d'une médiatrice.
+
+          On calcule d'abord le milieu de $[AB]$ (moyenne des coordonnées, comme au R1) : il tombe exactement sur $H$, déjà identifié comme un point de $(\Delta)$ à la question précédente. Puis on teste l'orthogonalité (R2) entre $\overrightarrow{AB}$ et la direction $\vec n$ de $(\Delta)$ : le produit scalaire s'annule, donc les deux directions sont perpendiculaires. Une droite qui passe par le milieu d'un segment et dont la direction est orthogonale à ce segment reste à égale distance des deux extrémités en tout point — c'est exactement ce que « médiatrice » signifie.
+        steps:
+          - math: '\text{milieu de}\ [AB] = \left(\dfrac{-1+1}{2},\,\dfrac{0+2}{2},\,\dfrac{-1+(-1)}{2}\right) = (0,\,1,\,-1) = H'
+            note: "Moyenne des coordonnées de A et B (R1) : le milieu de [AB] est exactement le point H, déjà sur Δ (question précédente)."
+          - math: '\overrightarrow{AB} = B-A = (2,\,2,\,0)'
+            note: "Coordonnées arrivée moins départ (R1)."
+          - math: '\vec{n}\cdot\overrightarrow{AB} = 2\times2 + (-2)\times2 + 1\times0 = 4-4+0 = 0'
+            note: "Produit scalaire coordonnée par coordonnée (R2) : le résultat est nul."
+          - math: '\vec n \perp \overrightarrow{AB}'
+            note: "Test d'orthogonalité du R2 : produit scalaire nul, directions perpendiculaires."
+          - math: 'H\in(\Delta),\ \ H\ \text{milieu de}\ [AB],\ \ \vec{u}_\Delta \perp \overrightarrow{AB} \implies \forall M\in(\Delta),\ MA=MB'
+            note: "Δ passe par le milieu de [AB] et sa direction est orthogonale à AB : Δ est une médiatrice de [AB]."

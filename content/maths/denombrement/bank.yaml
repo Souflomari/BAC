@@ -6,19 +6,20 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les deux entrées sont des transcriptions FIDÈLES des deux
+# exercises.yaml). Les trois entrées sont des transcriptions FIDÈLES des trois
 # entrées « vérifié » de docs/sujets/maths/denombrement.md (re-fetch AlloSchool
 # indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial,
-# 2026-07-12) — les SEULS sujets vérifiés recensés pour cette notion : 2019 et
-# 2022, tous deux session normale, filière Sciences Expérimentales (SVT et
-# Sciences Physiques, BIOF), tous deux « Exercice 3 » sur leur copie (barème
-# 3 points chacun). Aucun autre sujet n'est disponible — introuvable = absent,
-# jamais inventé. Raisonnement rédigé à la voix experte de la maison sur
-# 100 % des questions (citant les rungs R1/R5/R7 de lesson.md), tous les
-# comptages et probabilités re-dérivés et vérifiés à la main avant
-# transcription ; barème transcrit tel quel dans les énoncés ; conventions
-# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
-# dans steps[].math, notes sans backslash).
+# 2026-07-12 pour 2019/2022, 2026-08-06 pour 2024) — les SEULS sujets vérifiés
+# recensés pour cette notion : 2019, 2022 et 2024, tous session normale,
+# filière Sciences Expérimentales (SVT et Sciences Physiques, BIOF) — 2019 et
+# 2022 en « Exercice 3 » sur leur copie (barème 3 points chacun), 2024 en
+# « Exercice 4 » (barème 2 points). Aucun autre sujet n'est disponible —
+# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix experte
+# de la maison sur 100 % des questions (citant les rungs R1/R5/R7 de
+# lesson.md), tous les comptages et probabilités re-dérivés et vérifiés à la
+# main avant transcription ; barème transcrit tel quel dans les énoncés ;
+# conventions KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes
+# simples dans steps[].math, notes sans backslash).
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2022-n-x3 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R8 — urne de
@@ -32,6 +33,18 @@
 # content/pc/reactions-acido-basiques/bank.yaml. Le raisonnement ci-dessous
 # est rédigé indépendamment de exercises.yaml (même mathématiques, formulation
 # fraîche), pour que la carte tienne seule.
+#
+# SCOPE NOTE (divulgation honnête, authoring-side) : la question 4 du sujet
+# 2024 (bk-2024-n-x4, q4) demande si deux événements sont indépendants. Le
+# corps R1–R7 de lesson.md ne définit nulle part l'indépendance de deux
+# événements (le critère p(A∩B) = p(A)×p(B)) — ce chapitre couvre le
+# dénombrement et l'équiprobabilité (R7), pas l'indépendance, qui relève
+# normalement de probabilites-conditionnelles.md. Le raisonnement de cette
+# entrée introduit le critère directement, comme un test calculable à partir
+# des trois probabilités déjà obtenues, sans dépendre d'un rung non écrit.
+# Signalé ici pour la revue pédagogique ; à absorber dans le corps de la
+# leçon (ou à faire pointer explicitement vers l'autre notion) si ce type de
+# question devient courant dans le corpus.
 
 notion: maths/denombrement
 
@@ -191,3 +204,90 @@ entries:
             note: "« au moins 2 » = « exactement 2 » ou « exactement 3 » : deux cas incompatibles, on additionne."
           - math: 'p(D) = \dfrac{40}{120} = \dfrac{1}{3}'
             note: "Contrôle : p(0 rouge) + p(1 rouge) + p(2 rouges) + p(3 rouges) = (20+60+36+4)/120 = 120/120 = 1. Cohérent."
+
+  # ── bk-2024-n-x4 — 2024 N, Exercice 4 : urne à trois numéros, même numéro / somme / indépendance ──
+  # Voir SCOPE NOTE en tête de fichier (question 4, indépendance non couverte par R1–R7).
+  - id: bk-2024-n-x4
+    title: "Urne à trois numéros — même numéro, somme des numéros et indépendance"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 4"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/144505 (Exercice 4, « Calcul
+        des probabilités » ; barème 2 points). Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/maths/denombrement.md, section
+        « 2024 — session normale — Exercice 4 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan, agent-
+        vérificateur-adversarial, 2026-08-06). NB : la question 4 porte sur
+        l'indépendance de deux événements, notion non introduite dans le
+        corps R1–R7 de lesson.md — voir SCOPE NOTE en tête de fichier.
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2024).**
+
+      Une urne contient sept boules : quatre boules portant le numéro 1, deux boules portant le numéro 2 et une boule portant le numéro 3. Toutes les boules sont indiscernables au toucher.
+
+      On tire simultanément au hasard deux boules de cette urne.
+
+      Même point de méthode que dans les deux sujets précédents : « simultanément » signale une combinaison (rung R5) pour compter les tirages, et l'indiscernabilité des boules donne l'équiprobabilité (rung R7) — chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{7}{2} = 21$.
+    questions:
+      - id: q1
+        part: "Partie A — Deux probabilités par comptage direct"
+        stem: |-
+          **(0,5 pt)** Montrer que $p(A) = \dfrac{1}{3}$, où $A$ est l'évènement « les deux boules tirées portent le même numéro »
+        reasoning: |-
+          « Même numéro » pour une paire signifie que les deux boules viennent du MÊME groupe : trois façons disjointes de réaliser $A$ — les deux du groupe n°1, ou les deux du groupe n°2, ou les deux du groupe n°3 — donc principe additif (rung R1) : on compte chaque groupe séparément puis on additionne. Il n'y a qu'une seule boule numéro 3 dans l'urne, donc il est impossible d'en tirer deux : ce cas contribue $0$, à voir et écarter explicitement plutôt qu'oublier.
+        steps:
+          - math: '\text{card}(\Omega) = \binom{7}{2} = \dfrac{7\times6}{2\times1} = 21'
+            note: "Tirage simultané de 2 boules parmi 7 : dénominateur commun à toute la suite de l'exercice."
+          - math: '\text{card}(A) = \underbrace{\binom{4}{2}}_{\text{deux n°1}} + \underbrace{\binom{2}{2}}_{\text{deux n°2}} + \underbrace{\binom{1}{2}}_{\text{deux n°3}} = 6+1+0 = 7'
+            note: "Trois groupes, trois cas incompatibles : principe additif. Impossible de tirer deux boules n°3, il n'y en a qu'une, ce terme vaut 0."
+          - math: 'p(A) = \dfrac{7}{21} = \dfrac13'
+            note: "Quotient de dénombrements, simplifié par 7."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Montrer que $p(B) = \dfrac{5}{21}$, où $B$ est l'évènement « La somme des numéros des boules tirées est 4 »
+        reasoning: |-
+          Une somme de $4$ avec deux numéros parmi $\{1,2,3\}$ n'a que deux décompositions possibles : $1+3$ ou $2+2$. Ces deux cas sont incompatibles (une paire ne peut pas être à la fois « un 1 et un 3 » et « deux 2 »), donc principe additif (rung R1). Le cas $1+3$ est lui-même un « et » entre deux groupes distincts — une boule n°1 ET la boule n°3 — donc principe multiplicatif à l'intérieur de ce cas ; le cas $2+2$ ne demande qu'un seul choix, les deux boules n°2 prises ensemble.
+        steps:
+          - math: '\binom{4}{1}\times\binom{1}{1} = 4\times1 = 4'
+            note: "Somme 4 par (n°1, n°3) : une boule n°1 parmi 4 ET la boule n°3, unique — principe multiplicatif."
+          - math: '\binom{2}{2} = 1'
+            note: "Somme 4 par (n°2, n°2) : les deux boules n°2, une seule façon de les prendre toutes les deux."
+          - math: '\text{card}(B) = \underbrace{4}_{(1,3)} + \underbrace{1}_{(2,2)} = 5'
+            note: "Deux façons disjointes d'obtenir une somme de 4 : principe additif."
+          - math: 'p(B) = \dfrac{5}{21}'
+            note: "Quotient de dénombrements, dénominateur 21."
+      - id: q3
+        part: "Partie B — Intersection, puis indépendance"
+        stem: |-
+          **(0,5 pt)** Calculer $p(A \cap B)$
+        reasoning: |-
+          $A\cap B$ regroupe les tirages qui vérifient les deux conditions à la fois : même numéro ET somme égale à $4$. Si les deux boules portent le même numéro $x$, leur somme vaut $2x$ ; pour que $2x=4$, il faut $x=2$. Les deux conditions ne coïncident donc que sur un seul des cas déjà comptés aux questions précédentes — le tirage des deux boules n°2 — et pas sur le cas $(1,3)$ de la question 2, qui n'a pas le même numéro sur les deux boules.
+        steps:
+          - math: 'A \cap B \iff \text{les deux boules portent le numéro } 2'
+            note: "Si les deux boules ont le même numéro x, leur somme vaut 2x ; 2x=4 impose x=2."
+          - math: '\text{card}(A\cap B) = \binom{2}{2} = 1'
+            note: "Une seule façon de tirer les deux boules numéro 2, déjà comptée aux questions 1 et 2."
+          - math: 'p(A\cap B) = \dfrac{1}{21}'
+            note: "Quotient de dénombrements, dénominateur 21."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Les événements $A$ et $B$ sont-ils indépendants ? Justifier.
+        reasoning: |-
+          On sort ici du terrain strictement balisé par le corps de la leçon : R1 à R7 ne définissent pas l'indépendance de deux événements. Le critère se pose pourtant simplement, et se teste directement avec les trois probabilités déjà obtenues : deux événements sont indépendants si et seulement si la probabilité de leur intersection est égale au produit de leurs probabilités ; sinon, ils ne le sont pas. On compare donc $p(A\cap B)$, calculé à la question précédente, au produit $p(A)\times p(B)$ des questions 1 et 2, sur un dénominateur commun pour rendre la comparaison directe.
+        steps:
+          - math: 'p(A)\times p(B) = \dfrac13\times\dfrac{5}{21} = \dfrac{5}{63}'
+            note: "Produit des deux probabilités calculées aux questions 1 et 2."
+          - math: 'p(A\cap B) = \dfrac{1}{21} = \dfrac{3}{63}'
+            note: "On met la valeur de la question 3 sur le même dénominateur 63 pour comparer directement."
+          - math: '\dfrac{3}{63} \neq \dfrac{5}{63} \implies p(A\cap B) \neq p(A)\times p(B)'
+            note: "Les deux quantités diffèrent."
+          - math: 'A\ \text{et}\ B\ \text{ne sont pas indépendants}'
+            note: "Le critère d'indépendance n'est pas vérifié."

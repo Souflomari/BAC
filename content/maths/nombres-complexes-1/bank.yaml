@@ -6,29 +6,36 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R6), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les trois entrées sont des transcriptions FIDÈLES des trois
+# exercises.yaml). Les six entrées sont des transcriptions FIDÈLES des six
 # entrées « vérifié » de docs/sujets/maths/nombres-complexes-1.md (re-fetch
 # AlloSchool indépendant + diff caractère-par-caractère, agent-vérificateur-
-# adversarial, 2026-07-12) — les SEULS sujets vérifiés recensés pour cette
-# notion : 2019, 2022, 2023, tous session normale, filière Sciences
-# Expérimentales (SVT et Sciences Physiques, BIOF), tous « Exercice 2 » sur
-# leur copie (barème 3 points chacun). Aucun autre sujet n'est disponible —
+# adversarial — 2026-07-12 pour 2019/2022/2023, 2026-08-06 pour 2020/2021/
+# 2024) — les SEULS sujets vérifiés recensés pour cette notion : 2019
+# (Exercice 2, 3 pts), 2020 (Exercice 2, 5 pts), 2021 (Exercice 3, 5 pts —
+# numérotée « Exercice 2 » par erreur dans le corps du scan, Composantes
+# fait autorité), 2022 (Exercice 2, 3 pts), 2023 (Exercice 2, 3 pts) et 2024
+# (Exercice 3, 4 pts), tous session normale, filière Sciences Expérimentales
+# (SVT et Sciences Physiques, BIOF). Aucun autre sujet n'est disponible —
 # introuvable = absent, jamais inventé. Raisonnement rédigé à la voix experte
 # de la maison sur 100 % des questions ; barème transcrit tel quel dans les
 # énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut entre
 # apostrophes simples dans steps[].math, notes sans backslash).
 #
 # SCOPE NOTE (divulgation honnête, authoring-side — reprend la note déjà
-# posée dans exercises.yaml) : les trois sujets mobilisent tous la forme
+# posée dans exercises.yaml) : les six sujets mobilisent tous la forme
 # trigonométrique/exponentielle et les formules de rotation (z' = e^{iθ}z, sa
 # version décentrée z' - ω = e^{iθ}(z - ω), argument d'un produit / d'un
 # quotient / d'un conjugué) — un registre que le corps de la leçon (R1–R5,
 # socle algébrique/conjugué/module/géométrie du plan complexe) ne couvre pas
-# encore formellement. Le rung R6 le signale déjà pour r-bac (note de
-# validation en pied de lesson.md, checkpoint cp-bac-exponentielle) ; les
-# champs `reasoning` des trois entrées ci-dessous bridgent le même écart au
-# point d'usage, en nommant explicitement la propriété mobilisée chaque fois
-# qu'elle sort du corps R1–R5 actuel.
+# encore formellement. bk-2021-n-x3 mobilise en plus une **homothétie** de
+# centre O et de rapport réel : une extension directe de l'argument déjà en
+# place au R5 (« coefficient réel ⇒ vecteurs colinéaires »), mais le mot
+# « homothétie » lui-même n'est pas un terme du corps R1–R5. Le rung R6 le
+# signale déjà pour r-bac (note de validation en pied de lesson.md,
+# checkpoint cp-bac-exponentielle) ; les champs `reasoning` des six entrées
+# ci-dessous bridgent le même écart au point d'usage, en nommant
+# explicitement la propriété mobilisée chaque fois qu'elle sort du corps
+# R1–R5 actuel.
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x2 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R6). Il
@@ -454,3 +461,502 @@ entries:
             note: "Un coefficient réel positif ne change pas l'argument."
           - math: '\left(\overrightarrow{AC},\ \overrightarrow{AB}\right) \equiv \dfrac{\pi}{4}\ [2\pi]'
             note: "L'argument du quotient des affixes-vecteurs est une mesure de l'angle (AC, AB)."
+
+  # ── bk-2020-n-x2 — 2020 N, Exercice 2 : discriminant, formes trigonométriques, rotation, alignement O, B, D ──
+  - id: bk-2020-n-x2
+    title: "Discriminant complexe, formes trigonométriques et alignement par rotation"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 5
+    duration_min: 30
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/109797 (Exercice 2, « Nombres
+        complexes » ; barème 5 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/nombres-complexes-1.md, section
+        « 2020 — session normale — Exercice 2 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan,
+        agent-vérificateur-adversarial, 2026-08-06). Voir SCOPE NOTE en
+        tête de fichier : forme trigonométrique/exponentielle et rotation,
+        au-delà du socle R1–R5 formel.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2020, Sciences Expérimentales).**
+    questions:
+      - id: q1
+        part: "Un discriminant à vérifier, puis une équation à résoudre"
+        stem: |-
+          Dans l'ensemble $\mathbb{C}$ des nombres complexes, on considère l'équation :
+          $$(E)\ :\ z^2 - 2\left(\sqrt{2} + \sqrt{6}\right)z + 16 = 0$$
+
+          **(0,5 pt)** Vérifier que le discriminant de l'équation $(E)$ est $\Delta = -4\left(\sqrt{6} - \sqrt{2}\right)^2$
+        reasoning: |-
+          C'est une vérification, pas une résolution : on calcule $\Delta = b^2-4ac$ à partir des coefficients de $(E)$ (ici $a=1$, $b=-2(\sqrt2+\sqrt6)$, $c=16$), et on développe le carré $(\sqrt2+\sqrt6)^2$ soigneusement (identité remarquable $(x+y)^2=x^2+2xy+y^2$) avant de comparer au résultat annoncé. Pour reconnaître que le résultat coïncide bien avec $-4(\sqrt6-\sqrt2)^2$, on développe ce second carré aussi et on compare les deux expressions obtenues, plutôt que de deviner.
+        steps:
+          - math: '\Delta = \left[-2(\sqrt2+\sqrt6)\right]^2 - 4\times 1\times 16 = 4(\sqrt2+\sqrt6)^2 - 64'
+            note: "Discriminant de (E) : b au carré moins 4ac, avec b = -2(racine de 2 + racine de 6) et c = 16."
+          - math: '(\sqrt2+\sqrt6)^2 = 2 + 2\sqrt{12} + 6 = 8+4\sqrt3'
+            note: "On développe le carré : le double produit 2 fois racine de 2 fois racine de 6 vaut 2 racine de 12, soit 4 racine de 3."
+          - math: '\Delta = 4(8+4\sqrt3) - 64 = 32+16\sqrt3-64 = 16\sqrt3-32'
+            note: "On distribue le 4 et on simplifie."
+          - math: '(\sqrt6-\sqrt2)^2 = 6-2\sqrt{12}+2 = 8-4\sqrt3 \implies -4(\sqrt6-\sqrt2)^2 = -32+16\sqrt3'
+            note: "On développe l'autre carré pour comparer : même valeur, 16 racine de 3 moins 32."
+          - math: '\Delta = 16\sqrt3-32 = -4(\sqrt6-\sqrt2)^2'
+            note: "Les deux expressions coïncident : l'égalité est vérifiée."
+      - id: q2
+        stem: |-
+          **(1 pt)** En déduire les solutions de l'équation $(E)$.
+        reasoning: |-
+          $\Delta$ est strictement négatif (rung R0 : c'est le signal qu'on quitte $\mathbb{R}$), donc on écrit sa racine avec $i$ : $\sqrt{\Delta} = i\sqrt{4(\sqrt6-\sqrt2)^2} = 2i(\sqrt6-\sqrt2)$, le facteur $\sqrt6-\sqrt2$ étant positif. On applique ensuite la formule habituelle $\dfrac{-b\pm\sqrt\Delta}{2a}$, ici avec $b=-2(\sqrt2+\sqrt6)$.
+        steps:
+          - math: '\sqrt{\Delta} = \sqrt{-4(\sqrt6-\sqrt2)^2} = i\sqrt{4(\sqrt6-\sqrt2)^2} = 2i(\sqrt6-\sqrt2)'
+            note: "Delta négatif : on écrit sa racine avec i (racine de 6 moins racine de 2 est positive)."
+          - math: 'z = \dfrac{2(\sqrt2+\sqrt6) \pm 2i(\sqrt6-\sqrt2)}{2} = (\sqrt2+\sqrt6) \pm i(\sqrt6-\sqrt2)'
+            note: "Formule (-b plus ou moins racine de Delta) sur 2a, avec a = 1."
+          - math: 'S = \left\{\, (\sqrt2+\sqrt6) - i(\sqrt6-\sqrt2)\ ;\ (\sqrt2+\sqrt6) + i(\sqrt6-\sqrt2) \,\right\}'
+            note: "Deux solutions conjuguées ; la seconde est exactement le nombre a de la question suivante."
+      - id: q3
+        part: "Trois nombres complexes, une identité et sa conséquence"
+        stem: |-
+          Soient les nombres complexes $a = \left(\sqrt{6} + \sqrt{2}\right) + i\left(\sqrt{6} - \sqrt{2}\right)$, $b = 1 + i\sqrt{3}$ et $c = \sqrt{2} + i\sqrt{2}$
+
+          **(0,75 pt)** Vérifier que $b\bar{c} = a$, puis en déduire que $ac = 4b$
+        reasoning: |-
+          D'abord une vérification directe : on calcule $\bar c$ (rung R3 : on change le signe de la partie imaginaire de $c$), puis le produit $b\bar c$, et on compare à $a$.
+
+          Pour la deuxième partie, pas besoin de recalculer : on multiplie les deux membres de $b\bar c = a$ par $c$, ce qui donne $b\bar c\,c = ac$. Or $\bar c \times c = c\bar c = |c|^2$ (rung R4), un réel qu'on calcule directement à partir de $c=\sqrt2+i\sqrt2$. On en tire $ac$ en fonction de $b$.
+        steps:
+          - math: '\bar c = \sqrt2 - i\sqrt2'
+            note: "Conjugué de c : on change le signe de la partie imaginaire."
+          - math: 'b\bar c = (1+i\sqrt3)(\sqrt2-i\sqrt2) = \sqrt2 - i\sqrt2 + i\sqrt6 - i^2\sqrt6'
+            note: "On développe le produit."
+          - math: 'b\bar c = (\sqrt2+\sqrt6) + i(\sqrt6-\sqrt2) = a'
+            note: "On remplace i carré par -1 et on regroupe : on retrouve exactement a."
+          - math: 'b\bar c = a \implies b\bar c\,c = ac'
+            note: "On multiplie les deux membres par c."
+          - math: '\bar c\,c = |c|^2 = (\sqrt2)^2+(\sqrt2)^2 = 4 \implies ac = 4b'
+            note: "c fois c barre vaut le module de c au carré, ici 4 : on retrouve ac = 4b."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Ecrire les nombres complexes $b$ et $c$ sous forme trigonométrique.
+        reasoning: |-
+          Même méthode pour les deux : module par $|z|=\sqrt{\text{Re}(z)^2+\text{Im}(z)^2}$ (rung R4), argument en lisant $\cos\theta$ et $\sin\theta$ sur la forme algébrique. Pour $b=1+i\sqrt3$ et $c=\sqrt2+i\sqrt2$, les deux paires (partie réelle, partie imaginaire) correspondent à des angles remarquables.
+        steps:
+          - math: '|b| = \sqrt{1^2+(\sqrt3)^2} = \sqrt4 = 2, \quad \cos\theta_b=\dfrac12,\ \sin\theta_b=\dfrac{\sqrt3}{2} \implies \theta_b=\dfrac{\pi}{3}'
+            note: "Module et argument de b, rung R4 : angle remarquable pi sur 3."
+          - math: 'b = 2\left(\cos\dfrac{\pi}{3}+i\sin\dfrac{\pi}{3}\right)'
+            note: "Forme trigonométrique de b."
+          - math: '|c| = \sqrt{(\sqrt2)^2+(\sqrt2)^2} = 2, \quad \cos\theta_c=\dfrac{\sqrt2}{2},\ \sin\theta_c=\dfrac{\sqrt2}{2} \implies \theta_c=\dfrac{\pi}{4}'
+            note: "Module et argument de c : parties égales et positives, angle remarquable pi sur 4."
+          - math: 'c = 2\left(\cos\dfrac{\pi}{4}+i\sin\dfrac{\pi}{4}\right)'
+            note: "Forme trigonométrique de c."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** En déduire que $a = 4\left(\cos\dfrac{\pi}{12} + i\sin\dfrac{\pi}{12}\right)$
+        reasoning: |-
+          On repart de $ac=4b$ (question précédente) : $a = \dfrac{4b}{c}$. Le module d'un quotient est le quotient des modules, et — propriété qui déborde du socle R1–R5, déjà signalée dans les autres entrées de la banque — l'argument d'un quotient est la différence des arguments. Avec les valeurs de la question précédente, $|a| = \dfrac{4\times2}{2}=4$ et $\arg(a) = \arg(4b)-\arg(c) = \dfrac{\pi}{3}-\dfrac{\pi}{4}=\dfrac{\pi}{12}$.
+        steps:
+          - math: 'a = \dfrac{4b}{c} \implies |a| = \dfrac{4\,|b|}{|c|} = \dfrac{4\times2}{2} = 4'
+            note: "Module d'un quotient = quotient des modules (rung R4), avec un facteur réel positif 4 devant b qui ne change rien au module."
+          - math: '\arg(a) = \arg(4b) - \arg(c) = \dfrac{\pi}{3} - \dfrac{\pi}{4} = \dfrac{4\pi-3\pi}{12} = \dfrac{\pi}{12}'
+            note: "Argument d'un quotient = différence des arguments ; le facteur réel positif 4 ne change pas l'argument de b."
+          - math: 'a = 4\left(\cos\dfrac{\pi}{12}+i\sin\dfrac{\pi}{12}\right)'
+            note: "Forme trigonométrique de a, avec module 4 et argument pi sur 12."
+      - id: q6
+        part: "La rotation d'angle π/12, et ses conséquences"
+        stem: |-
+          Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $B$, $C$ et $D$ d'affixes respectives $b$, $c$ et $d$ telle que $d = a^4$. Soit $z$ l'affixe d'un point $M$ du plan et $z'$ l'affixe de $M'$ image de $M$ par la rotation $R$ de centre $O$ et d'angle $\dfrac{\pi}{12}$
+
+          **(0,5 pt)** Vérifier que $z' = \dfrac{1}{4}az$
+        reasoning: |-
+          Une rotation de centre $O$ et d'angle $\theta$ s'écrit $z'=e^{i\theta}z$ — au-delà du socle R1–R5, déjà mobilisé pour les autres sujets de cette banque. Ici $\theta=\dfrac{\pi}{12}$, exactement l'argument de $a$ trouvé à la question précédente ; et $|a|=4$. Donc $\dfrac14 a$ a pour module $1$ et pour argument $\dfrac{\pi}{12}$ : c'est exactement $e^{i\pi/12}$.
+        steps:
+          - math: 'z'' = e^{i\theta}z = e^{i\pi/12}z'
+            note: "Rotation de centre O et d'angle pi sur 12."
+          - math: '\dfrac14\,a = \dfrac14\times 4\left(\cos\dfrac{\pi}{12}+i\sin\dfrac{\pi}{12}\right) = \cos\dfrac{\pi}{12}+i\sin\dfrac{\pi}{12} = e^{i\pi/12}'
+            note: "Un quart de a a pour module 1 et même argument que a (question 5) : c'est e puissance i pi sur 12."
+          - math: '\dfrac14\,a = e^{i\pi/12} \implies z'' = \dfrac14\,a\,z'
+            note: "Les deux coïncident : la rotation s'écrit bien z prime = un quart a z."
+      - id: q7
+        stem: |-
+          **(0,25 pt)** Déterminer l'image du point $C$ par la rotation $R$
+        reasoning: |-
+          L'image de $C$ a pour affixe $\dfrac14 a\,c$, d'après la formule de la question précédente. Or la question 3 a déjà établi $ac=4b$ : donc $\dfrac14 a c = \dfrac14(4b) = b$. Pas de nouveau calcul — on relit un résultat déjà acquis.
+        steps:
+          - math: '\text{affixe de } R(C) = \dfrac14\,a\,c = \dfrac14\,(ac) = \dfrac14(4b) = b'
+            note: "On réutilise ac = 4b, établi à la question 3."
+          - math: 'R(C) = B'
+            note: "L'image de C par R est le point B."
+      - id: q8
+        stem: |-
+          **(0,25 pt)** Déterminer la nature du triangle $OBC$.
+        reasoning: |-
+          On vient de montrer que $R(C)=B$, où $R$ est une rotation de centre $O$. Une rotation conserve les distances au centre : $OC=OB$, donc le triangle est isocèle en $O$. Elle conserve aussi les angles : l'angle $\left(\overrightarrow{OC},\overrightarrow{OB}\right)$ vaut exactement l'angle de la rotation, $\dfrac{\pi}{12}$ — pas un angle droit, donc le triangle est isocèle en $O$ sans être rectangle.
+        steps:
+          - math: 'R(C)=B,\ R \text{ rotation de centre } O \implies OC = OB'
+            note: "Une rotation conserve les distances au centre : les deux côtés issus de O sont égaux."
+          - math: '\left(\overrightarrow{OC},\ \overrightarrow{OB}\right) \equiv \dfrac{\pi}{12}\ [2\pi]'
+            note: "Une rotation conserve les angles : l'angle vaut l'angle de la rotation."
+          - math: 'OBC \ \text{isocèle en}\ O'
+            note: "OC = OB : le triangle est isocèle en O (l'angle en O, pi sur 12, n'est pas droit)."
+      - id: q9
+        stem: |-
+          **(0,75 pt)** Montrer que $a^4 = 128b$ et en déduire que les points $O$, $B$ et $D$ sont alignés
+        reasoning: |-
+          On calcule $a^4$ à partir de la forme trigonométrique de $a$ (module $4$, argument $\dfrac{\pi}{12}$, question 5) : élever à la puissance $4$ élève le module à la puissance $4$ et multiplie l'argument par $4$ (propriété au-delà du socle R1–R5, déjà utilisée dans d'autres entrées de la banque). On retombe sur un angle remarquable, $\dfrac{\pi}{3}$, ce qui permet de repasser en forme algébrique et de reconnaître $128b$.
+
+          Comme $d=a^4$ (donné dans l'énoncé), l'égalité dit $d=128b$ : le vecteur $\overrightarrow{OD}$ (d'affixe $d$) est $128$ fois le vecteur $\overrightarrow{OB}$ (d'affixe $b$), un coefficient réel — donc les deux vecteurs sont colinéaires, issus tous deux de $O$, ce qui force $O$, $B$ et $D$ à être alignés (même argument qu'aux questions d'alignement des autres sujets de cette banque).
+        steps:
+          - math: '|a^4| = |a|^4 = 4^4 = 256, \qquad \arg(a^4) = 4\arg(a) = 4\times\dfrac{\pi}{12} = \dfrac{\pi}{3}'
+            note: "Module à la puissance 4, argument multiplié par 4."
+          - math: 'a^4 = 256\left(\cos\dfrac{\pi}{3}+i\sin\dfrac{\pi}{3}\right) = 256\left(\dfrac12+i\dfrac{\sqrt3}{2}\right) = 128+128i\sqrt3'
+            note: "Angle remarquable pi sur 3 : on repasse en forme algébrique."
+          - math: 'a^4 = 128(1+i\sqrt3) = 128b'
+            note: "On reconnaît b = 1 + i racine de 3 en facteur."
+          - math: 'd = a^4 = 128b \implies \overrightarrow{OD} = 128\,\overrightarrow{OB}'
+            note: "d = a puissance 4 est donné dans l'énoncé ; coefficient réel 128 entre les deux vecteurs issus de O."
+          - math: 'O,\ B,\ D\ \text{alignés}'
+            note: "Deux vecteurs colinéaires issus de O : les trois points sont alignés."
+
+  # ── bk-2021-n-x3 — 2021 N, Exercice 3 : équation, homothétie, rotation, losange, angle orienté ──
+  # Composantes = « Exercice 3 » ; le corps du scan intitule l'exercice « Exercice 2 » par erreur
+  # (coquille : un second « Exercice 2 » après celui des suites), voir docs/sujets et sourcing.note.
+  - id: bk-2021-n-x3
+    title: "Équation du second degré, homothétie, rotation et losange"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 5
+    duration_min: 30
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/127180 (Exercice 3 — Nombres
+        complexes, page Composantes ; barème 5 points ; le corps du scan
+        intitule l'exercice « Exercice 2 » — coquille, un second
+        « Exercice 2 » après celui des suites numériques ; la numérotation
+        des Composantes fait autorité, exercise_label ci-dessus la reprend).
+        Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/nombres-complexes-1.md, section « 2021 — session
+        normale — Exercice 3 » (re-fetch AlloSchool indépendant + diff
+        caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-08-06). Voir SCOPE NOTE en tête de fichier :
+        mobilise en plus une homothétie de rapport réel, au-delà du socle
+        R1–R5 formel.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2021, Sciences Expérimentales).**
+    questions:
+      - id: q1
+        part: "Une équation du second degré dans ℂ"
+        stem: |-
+          **(0,75 pt)** Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes, l'équation : $z^2 - \sqrt{3}z + 1 = 0$
+        reasoning: |-
+          Coefficients réels, discriminant à calculer (même réflexe qu'à chaque équation du second degré dans $\mathbb{C}$) : ici $\Delta$ est strictement négatif, donc on écrit $\sqrt\Delta$ avec $i$, et les deux solutions sont conjuguées. Garde en tête l'une d'elles : elle réapparaît juste après comme le nombre $a$ de la question suivante, sous une autre écriture.
+        steps:
+          - math: '\Delta = (-\sqrt3)^2 - 4\times1\times1 = 3-4 = -1'
+            note: "Discriminant de z carré moins racine de 3 z plus 1."
+          - math: '\Delta<0 \implies \sqrt\Delta = i'
+            note: "Delta négatif : sa racine s'écrit avec i (racine de moins 1 = i)."
+          - math: 'z = \dfrac{\sqrt3 \pm i}{2} = \dfrac{\sqrt3}{2} \pm \dfrac{1}{2}i'
+            note: "Formule (-b plus ou moins racine de Delta) sur 2a, avec a = 1, b = moins racine de 3."
+          - math: 'S = \left\{\, \dfrac{\sqrt3}{2}-\dfrac12 i\ ;\ \dfrac{\sqrt3}{2}+\dfrac12 i \,\right\}'
+            note: "Deux solutions conjuguées."
+      - id: q2
+        part: "Deux nombres complexes, une identité réelle"
+        stem: |-
+          Soient les nombres complexes $a = e^{i\frac{\pi}{6}}$ et $b = \dfrac{3}{2} + i\dfrac{\sqrt{3}}{2}$
+
+          **(0,25 pt)** Ecrire $a$ sous forme algébrique.
+        reasoning: |-
+          $a$ est donné en forme exponentielle — au-delà du socle R1–R5, déjà signalé pour les autres sujets de cette banque. Passer à la forme algébrique, c'est lire $\cos\dfrac{\pi}{6}$ et $\sin\dfrac{\pi}{6}$, deux valeurs remarquables. (Remarque : c'est exactement l'une des solutions de la question 1, $\dfrac{\sqrt3}{2}+\dfrac12 i$ — le même nombre, sous deux écritures différentes.)
+        steps:
+          - math: 'a = e^{i\pi/6} = \cos\dfrac{\pi}{6}+i\sin\dfrac{\pi}{6}'
+            note: "Passage de la forme exponentielle à la forme trigonométrique."
+          - math: 'a = \dfrac{\sqrt3}{2} + \dfrac12 i'
+            note: "Valeurs remarquables : cosinus de pi sur 6 = racine de 3 sur 2, sinus de pi sur 6 = un demi."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Vérifier que $\overline{a}b = \sqrt{3}$
+        reasoning: |-
+          On calcule $\bar a$ à partir de la forme algébrique de la question précédente (rung R3 : on change le signe de la partie imaginaire), puis on développe le produit $\bar a\,b$ et on réduit avec $i^2=-1$ (rung R2) — le résultat doit être un réel pur, sans partie en $i$.
+        steps:
+          - math: '\bar a = \dfrac{\sqrt3}{2} - \dfrac12 i'
+            note: "Conjugué de a."
+          - math: '\bar a\,b = \left(\dfrac{\sqrt3}{2}-\dfrac12 i\right)\left(\dfrac32+i\dfrac{\sqrt3}{2}\right) = \dfrac{3\sqrt3}{4} + i\dfrac34 - i\dfrac34 - i^2\dfrac{\sqrt3}{4}'
+            note: "On développe le produit."
+          - math: '\bar a\,b = \dfrac{3\sqrt3}{4} + \dfrac{\sqrt3}{4} = \dfrac{4\sqrt3}{4} = \sqrt3'
+            note: "Les parties en i s'annulent ; on remplace i carré par -1 dans le dernier terme et on additionne."
+      - id: q4
+        part: "Une homothétie de centre O"
+        stem: |-
+          Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$ et $C$ d'affixes respectives $a$, $b$ et $\overline{a}$.
+
+          **(0,5 pt)** Montrer que le point $B$ est l'image du point $A$ par une homothétie $h$ de centre $O$ dont on déterminera le rapport.
+        reasoning: |-
+          Une homothétie de centre $O$ et de rapport $k$ (réel) transforme un point d'affixe $z$ en un point d'affixe $kz$ — l'extension directe de l'idée de coefficient réel qui rend deux vecteurs colinéaires (rung R5), maintenant appliquée depuis le centre lui-même, et au-delà du socle R1–R5 formel. Montrer que $B$ est l'image de $A$ revient donc à écrire $b=ka$ avec $k$ réel, c'est-à-dire $k=\dfrac{b}{a}$, et à vérifier que ce quotient est bien un réel.
+
+          Le résultat de la question 3, $\bar a\,b=\sqrt3$, donne directement ce quotient : puisque $a\bar a = |a|^2$ et $|a|=1$ (le module de $e^{i\pi/6}$), $\dfrac{b}{a} = \dfrac{b\,\bar a}{a\,\bar a} = \dfrac{\sqrt3}{1} = \sqrt3$ — un réel positif.
+        steps:
+          - math: '\dfrac{b}{a} = \dfrac{b\,\bar a}{a\,\bar a} = \dfrac{\bar a\,b}{|a|^2}'
+            note: "On multiplie haut et bas par a barre (rung R3, l'outil pour diviser)."
+          - math: '|a| = \left|e^{i\pi/6}\right| = 1 \implies |a|^2 = 1'
+            note: "Module de a, forme exponentielle : module 1."
+          - math: '\dfrac{b}{a} = \dfrac{\sqrt3}{1} = \sqrt3'
+            note: "On réutilise a barre fois b = racine de 3, établi à la question 3."
+          - math: 'b = \sqrt3\,a,\ \sqrt3 \in \mathbb{R} \implies B = h(A),\ h \ \text{homothétie de centre}\ O \ \text{et de rapport}\ \sqrt3'
+            note: "Coefficient réel positif entre b et a : B est l'image de A par l'homothétie de centre O et de rapport racine de 3."
+      - id: q5
+        part: "La rotation de centre A et d'angle π/2"
+        stem: |-
+          Soient $z$ l'affixe d'un point $M$ du plan et $z'$ l'affixe du point $M'$ image de $M$ par la rotation $R$ de centre $A$ et d'angle $\dfrac{\pi}{2}$
+
+          **(0,5 pt)** Ecrire $z'$ en fonction de $z$ et $a$.
+        reasoning: |-
+          Une rotation de centre $\Omega$ (affixe $\omega$) et d'angle $\theta$ s'écrit $z'-\omega = e^{i\theta}(z-\omega)$ — la version décentrée de $z'=e^{i\theta}z$, déjà mobilisée pour les rotations de centre $O$ dans les autres sujets de cette banque. Ici le centre est $A$ (affixe $a$) et $\theta=\dfrac{\pi}{2}$, donc $z'-a = e^{i\pi/2}(z-a) = i(z-a)$ puisque $e^{i\pi/2}=i$ (angle remarquable).
+        steps:
+          - math: 'z'' - a = e^{i\pi/2}(z-a)'
+            note: "Rotation de centre A et d'angle pi sur 2 : version décentrée de z prime = e puissance i theta fois z."
+          - math: 'e^{i\pi/2} = \cos\dfrac{\pi}{2}+i\sin\dfrac{\pi}{2} = i'
+            note: "Angle remarquable pi sur 2 : e puissance i pi sur 2 vaut i."
+          - math: 'z'' = a + i(z-a)'
+            note: "On isole z prime."
+      - id: q6
+        stem: |-
+          **(0,25 pt)** Soit $d$ l'affixe du point $D$ image de $C$ par la rotation $R$, montrer que $d = a + 1$.
+        reasoning: |-
+          On applique la formule de la question précédente à $C$, d'affixe $\bar a$ : $d = a+i(\bar a - a)$. Le terme $\bar a - a$ est un imaginaire pur (rung R3 : $z-\bar z$ l'est, donc $\bar z - z$ aussi, au signe près) ; le calculer avec $a=\dfrac{\sqrt3}{2}+\dfrac12 i$ donne un résultat qui, multiplié par $i$, redevient réel — c'est ce qui fait tomber l'expression sur $a+1$.
+        steps:
+          - math: 'd = a + i(\bar a - a)'
+            note: "On applique la formule de la question 5 au point C, d'affixe a barre."
+          - math: '\bar a - a = \left(\dfrac{\sqrt3}{2}-\dfrac12 i\right)-\left(\dfrac{\sqrt3}{2}+\dfrac12 i\right) = -i'
+            note: "Différence entre a barre et a : les parties réelles s'annulent, il reste l'opposé de la partie imaginaire doublée."
+          - math: 'i(\bar a-a) = i\times(-i) = -i^2 = 1'
+            note: "i fois moins i : on remplace i carré par -1."
+          - math: 'd = a+1'
+            note: "On reporte : d = a plus 1."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Soit $I$ le point d'affixe le nombre $1$, montrer que $ADIO$ est un losange.
+        reasoning: |-
+          Deux choses à établir : d'abord que $ADIO$ est un parallélogramme, ensuite que deux côtés adjacents ont la même longueur (ce qui, pour un parallélogramme, suffit à en faire un losange).
+
+          Pour le parallélogramme, on compare deux côtés opposés comme vecteurs (rung R5 : une différence d'affixes est l'affixe du vecteur correspondant) : $\overrightarrow{AD}$ d'affixe $d-a$, et $\overrightarrow{OI}$ d'affixe $1-0=1$. S'ils coïncident, $ADIO$ est un parallélogramme.
+
+          Pour l'égalité des côtés, on compare les longueurs $AD$ et $DI$ via leurs modules (rung R5 : le module d'une différence d'affixes est une distance).
+        steps:
+          - math: 'z_{\overrightarrow{AD}} = d-a = (a+1)-a = 1, \qquad z_{\overrightarrow{OI}} = 1-0 = 1'
+            note: "Les deux vecteurs ont la même affixe : ils sont égaux."
+          - math: '\overrightarrow{AD} = \overrightarrow{OI} \implies ADIO \ \text{est un parallélogramme}'
+            note: "Un côté égal à son opposé, en vecteurs : parallélogramme."
+          - math: 'AD = |d-a| = |1| = 1, \qquad DI = |1-d| = |1-(a+1)| = |{-a}| = |a| = 1'
+            note: "Deux côtés adjacents : AD vaut 1, DI vaut le module de a, qui vaut 1 (a = e puissance i pi sur 6, module 1)."
+          - math: 'AD = DI \implies ADIO \ \text{est un losange}'
+            note: "Parallélogramme avec deux côtés adjacents égaux : c'est un losange."
+      - id: q8
+        part: "Argument de d − b, puis un angle orienté"
+        stem: |-
+          **(0,75 pt)** Vérifier que $d - b = \dfrac{\sqrt{3} - 1}{2}(1 - i)$ ; en déduire un argument du nombre $d - b$
+        reasoning: |-
+          Vérification directe : on calcule $d-b$ à partir de $d=a+1$ (question 6) et $b=\dfrac32+i\dfrac{\sqrt3}{2}$, puis on factorise pour retrouver la forme annoncée.
+
+          Pour l'argument, pas besoin de repasser par module et angle séparément : $\dfrac{\sqrt3-1}{2}$ est un réel positif (car $\sqrt3>1$), et multiplier par un réel positif ne change pas l'argument (propriété au-delà du socle R1–R5, déjà utilisée pour les quotients dans d'autres sujets de cette banque). Il suffit donc de connaître l'argument de $1-i$, un angle remarquable.
+        steps:
+          - math: 'd-b = (a+1) - \left(\dfrac32+i\dfrac{\sqrt3}{2}\right) = \left(\dfrac{\sqrt3}{2}+\dfrac12 i+1\right) - \dfrac32 - i\dfrac{\sqrt3}{2}'
+            note: "On remplace a par sa forme algébrique et on soustrait b."
+          - math: 'd-b = \left(\dfrac{\sqrt3}{2}-\dfrac12\right) + i\left(\dfrac12-\dfrac{\sqrt3}{2}\right) = \dfrac{\sqrt3-1}{2} - i\,\dfrac{\sqrt3-1}{2}'
+            note: "On regroupe parties réelle et imaginaire ; la partie imaginaire est l'opposée de la partie réelle."
+          - math: 'd-b = \dfrac{\sqrt3-1}{2}\,(1-i)'
+            note: "On factorise par racine de 3 moins 1, sur 2 : l'égalité annoncée."
+          - math: '\arg(1-i) = -\dfrac{\pi}{4}, \quad \dfrac{\sqrt3-1}{2}>0 \implies \arg(d-b) = -\dfrac{\pi}{4}\ [2\pi]'
+            note: "1 moins i a pour argument moins pi sur 4 (angle remarquable) ; un coefficient réel positif ne le change pas."
+      - id: q9
+        stem: |-
+          **(0,5 pt)** Ecrire le nombre $1 - b$ sous forme trigonométrique.
+        reasoning: |-
+          Même méthode que partout ailleurs dans ce sujet : module par $|z|=\sqrt{\text{Re}(z)^2+\text{Im}(z)^2}$ (rung R4), argument en lisant $\cos\theta$ et $\sin\theta$. Ici les deux parties sont négatives : l'angle est au-delà de $\pi$ — ou, de façon équivalente, négatif.
+        steps:
+          - math: '1-b = 1-\left(\dfrac32+i\dfrac{\sqrt3}{2}\right) = -\dfrac12 - i\dfrac{\sqrt3}{2}'
+            note: "On soustrait b."
+          - math: '|1-b| = \sqrt{\left(-\dfrac12\right)^2+\left(-\dfrac{\sqrt3}{2}\right)^2} = \sqrt{\dfrac14+\dfrac34} = 1'
+            note: "Module de 1 moins b, rung R4."
+          - math: '\cos\theta = -\dfrac12,\ \sin\theta=-\dfrac{\sqrt3}{2} \implies \theta = -\dfrac{2\pi}{3}'
+            note: "Parties réelle et imaginaire toutes deux négatives : angle moins deux pi sur trois."
+          - math: '1-b = \cos\!\left(-\dfrac{2\pi}{3}\right)+i\sin\!\left(-\dfrac{2\pi}{3}\right)'
+            note: "Forme trigonométrique de 1 moins b (module 1)."
+      - id: q10
+        stem: |-
+          **(0,5 pt)** Déduire une mesure de l'angle $\left(\overrightarrow{BI}, \overrightarrow{BD}\right)$
+        reasoning: |-
+          $\overrightarrow{BI}$ a pour affixe $1-b$ (rung R5), et $\overrightarrow{BD}$ a pour affixe $d-b$. L'argument du quotient de ces deux affixes est une mesure de l'angle entre les deux vecteurs — propriété au-delà du socle R1–R5, déjà mobilisée pour les angles orientés dans d'autres sujets de cette banque. Les deux questions précédentes donnent chacune un argument : il ne reste qu'à soustraire.
+        steps:
+          - math: '\left(\overrightarrow{BI},\ \overrightarrow{BD}\right) \equiv \arg\!\left(\dfrac{d-b}{1-b}\right) = \arg(d-b) - \arg(1-b)\ [2\pi]'
+            note: "L'angle entre deux vecteurs est l'argument du quotient de leurs affixes."
+          - math: '\arg(d-b)-\arg(1-b) = -\dfrac{\pi}{4} - \left(-\dfrac{2\pi}{3}\right) = -\dfrac{\pi}{4}+\dfrac{2\pi}{3}'
+            note: "On reporte les deux arguments trouvés aux questions 8 et 9."
+          - math: '-\dfrac{\pi}{4}+\dfrac{2\pi}{3} = \dfrac{-3\pi+8\pi}{12} = \dfrac{5\pi}{12}'
+            note: "Même dénominateur douze : moins trois douzièmes de pi plus huit douzièmes de pi."
+          - math: '\left(\overrightarrow{BI},\ \overrightarrow{BD}\right) \equiv \dfrac{5\pi}{12}\ [2\pi]'
+            note: "Mesure de l'angle."
+
+  # ── bk-2024-n-x3 — 2024 N, Exercice 3 : module/argument, quotient, rotations en chaîne, triangle rectangle en O ──
+  - id: bk-2024-n-x3
+    title: "Module, argument, rotations successives et triangle rectangle en O"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/144505 (Exercice 3 — Nombres
+        complexes, page Composantes ; barème 4 points). Transcription
+        fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/nombres-complexes-1.md, section « 2024 — session
+        normale — Exercice 3 » (re-fetch AlloSchool indépendant + diff
+        caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-08-06). Voir SCOPE NOTE en tête de fichier :
+        mobilise le registre trigonométrique/exponentielle et deux
+        rotations successives, au-delà du socle R1–R5 formel.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2024, Sciences Expérimentales).**
+
+      Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$ et $B$ d'affixes respectives
+
+      $$a = \sqrt{3}(1-i), \qquad b = 2 + \sqrt{3} + i.$$
+    questions:
+      - id: q1
+        part: "Module et argument de a"
+        stem: |-
+          **(0,5 pt)** Vérifier que $|a| = \sqrt{6}$ et que $\arg(a) \equiv \dfrac{-\pi}{4}\ [2\pi]$
+        reasoning: |-
+          On calcule le module et l'argument de $a=\sqrt3(1-i)$ directement depuis la forme algébrique. Une astuce : $a$ est le produit d'un réel positif $\sqrt3$ et de $1-i$, un nombre d'angle remarquable — le module se factorise ($|a|=\sqrt3\times|1-i|$, rung R4, car le module d'un produit est le produit des modules) et un facteur réel positif ne change pas l'argument (propriété au-delà du socle R1–R5, déjà utilisée ailleurs dans cette banque).
+        steps:
+          - math: '|1-i| = \sqrt{1^2+(-1)^2} = \sqrt2'
+            note: "Module de 1 moins i, rung R4."
+          - math: '|a| = |\sqrt3(1-i)| = \sqrt3\times\sqrt2 = \sqrt6'
+            note: "Module d'un produit = produit des modules ; racine de 3 fois racine de 2 = racine de 6."
+          - math: '\arg(1-i) = -\dfrac{\pi}{4}'
+            note: "Argument de 1 moins i, angle remarquable."
+          - math: '\sqrt3>0 \implies \arg(a) = \arg(1-i) = -\dfrac{\pi}{4}\ [2\pi]'
+            note: "Un facteur réel positif ne change pas l'argument."
+      - id: q2
+        part: "Le quotient b/a, sous deux formes"
+        stem: |-
+          **(0,75 pt)** Montrer que $\dfrac{b}{a} = \dfrac{3 + \sqrt{3}}{6} + \left(\dfrac{1 + \sqrt{3}}{2}\right)i$ puis vérifier que $\dfrac{b}{a} = \dfrac{3 + \sqrt{3}}{3}e^{i\frac{\pi}{3}}$
+        reasoning: |-
+          Pour le quotient $\dfrac{b}{a}$, on multiplie haut et bas par $\overline{a}$ (rung R3, l'outil pour diviser), puisque $a\overline{a}=|a|^2$ est réel. On développe soigneusement, en gardant les fractions exactes plutôt que de passer au décimal, jusqu'à retrouver la forme algébrique annoncée.
+
+          Pour la seconde forme, on reconnaît que $\dfrac{3+\sqrt3}{3}$ est un module (réel positif) et $e^{i\pi/3}$ une forme exponentielle d'angle remarquable — on développe cette dernière en algébrique et on vérifie qu'elle coïncide avec le résultat déjà trouvé.
+        steps:
+          - math: '\dfrac{b}{a} = \dfrac{b\,\overline{a}}{a\,\overline{a}} = \dfrac{b\,\overline{a}}{|a|^2} = \dfrac{b\,\overline{a}}{6}'
+            note: "On multiplie haut et bas par a barre ; le module de a au carré vaut 6 (question 1)."
+          - math: '\overline{a} = \sqrt3(1+i), \qquad b\,\overline{a} = (2+\sqrt3+i)\sqrt3(1+i)'
+            note: "Conjugué de a ; on développe le produit avec b."
+          - math: '(2+\sqrt3+i)(1+i) = (2+\sqrt3) + i(2+\sqrt3) + i + i^2 = (1+\sqrt3) + i(3+\sqrt3)'
+            note: "On développe et on remplace i carré par -1."
+          - math: 'b\,\overline{a} = \sqrt3\left[(1+\sqrt3)+i(3+\sqrt3)\right] = (\sqrt3+3) + i(3\sqrt3+3)'
+            note: "On distribue racine de 3."
+          - math: '\dfrac{b}{a} = \dfrac{(\sqrt3+3)+i(3\sqrt3+3)}{6} = \dfrac{3+\sqrt3}{6} + i\,\dfrac{3\sqrt3+3}{6} = \dfrac{3+\sqrt3}{6} + i\,\dfrac{1+\sqrt3}{2}'
+            note: "On divise par 6 et on simplifie chaque partie."
+          - math: '\dfrac{3+\sqrt3}{3}e^{i\pi/3} = \dfrac{3+\sqrt3}{3}\left(\dfrac12+i\dfrac{\sqrt3}{2}\right) = \dfrac{3+\sqrt3}{6} + i\,\dfrac{(3+\sqrt3)\sqrt3}{6} = \dfrac{3+\sqrt3}{6}+i\,\dfrac{1+\sqrt3}{2}'
+            note: "On développe l'autre écriture : mêmes parties réelle et imaginaire."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** En déduire une forme trigonométrique du complexe $b$ puis vérifier que $b^{24}$ est un nombre réel.
+        reasoning: |-
+          On repart du résultat précédent, $\dfrac{b}{a}=\dfrac{3+\sqrt3}{3}e^{i\pi/3}$, donc $b = a\times\dfrac{3+\sqrt3}{3}e^{i\pi/3}$ — un produit dont on connaît module et argument de chaque facteur (rung R4, au-delà du socle formel : module d'un produit = produit des modules, argument d'un produit = somme des arguments). On calcule $|b|$ et $\arg(b)$ à partir de $|a|=\sqrt6$, $\arg(a)=-\dfrac{\pi}{4}$ (question 1).
+
+          Une fois $b$ écrit en forme trigonométrique (module $r$, argument $\theta$), $b^{24}$ a pour module $r^{24}$ et pour argument $24\theta$ (élever à une puissance multiplie l'argument par cette puissance). Si $24\theta$ tombe sur un multiple de $2\pi$, l'argument de $b^{24}$ est nul modulo $2\pi$ : $b^{24}$ est un réel — et même positif, puisque son module est positif.
+        steps:
+          - math: '|b| = |a|\times\dfrac{3+\sqrt3}{3} = \sqrt6\times\dfrac{3+\sqrt3}{3} = \dfrac{3\sqrt6+\sqrt{18}}{3} = \dfrac{3\sqrt6+3\sqrt2}{3} = \sqrt6+\sqrt2'
+            note: "Module d'un produit ; racine de 18 se simplifie en 3 racine de 2."
+          - math: '\arg(b) = \arg(a) + \dfrac{\pi}{3} = -\dfrac{\pi}{4}+\dfrac{\pi}{3} = \dfrac{-3\pi+4\pi}{12} = \dfrac{\pi}{12}'
+            note: "Argument d'un produit = somme des arguments."
+          - math: 'b = (\sqrt6+\sqrt2)\left(\cos\dfrac{\pi}{12}+i\sin\dfrac{\pi}{12}\right)'
+            note: "Forme trigonométrique de b."
+          - math: '|b^{24}| = (\sqrt6+\sqrt2)^{24}, \qquad \arg(b^{24}) = 24\times\dfrac{\pi}{12} = 2\pi \equiv 0\ [2\pi]'
+            note: "Puissance 24 : module à la puissance 24, argument multiplié par 24."
+          - math: '\arg(b^{24}) \equiv 0\ [2\pi] \implies b^{24} \in \mathbb{R}'
+            note: "Argument nul modulo deux pi : b puissance 24 est réel, et positif."
+      - id: q4
+        part: "Trois rotations en chaîne : R(A), R(A′), R(B)"
+        stem: |-
+          Soit $R$ la rotation de centre $O$ et d'angle $\dfrac{\pi}{6}$, qui transforme chaque point $M$ du plan d'affixe $z$ en un point $M'$ d'affixe $z'$. On pose $R(B) = B'$, $R(A) = A'$ et $R(A') = A''$
+
+          **(0,5 pt)** Vérifier que $z' = \dfrac{1}{2}(\sqrt{3} + i)z$ et que $\arg(a') \equiv \dfrac{-\pi}{12}\ [2\pi]$ où $a'$ est l'affixe du point $A'$
+        reasoning: |-
+          Une rotation de centre $O$ et d'angle $\theta$ s'écrit $z'=e^{i\theta}z$ (au-delà du socle R1–R5, mobilisé partout dans cette banque). On identifie $e^{i\pi/6}$ à sa forme algébrique, un angle remarquable, pour reconnaître $\dfrac12(\sqrt3+i)$.
+
+          Pour $\arg(a')$ : $A'=R(A)$, donc $a'=e^{i\pi/6}a$, un produit dont l'argument est la somme des arguments (au-delà du socle R1–R5) : $\arg(a)+\dfrac{\pi}{6}$, avec $\arg(a)=-\dfrac{\pi}{4}$ (question 1).
+        steps:
+          - math: 'z'' = e^{i\pi/6}\,z'
+            note: "Rotation de centre O et d'angle pi sur 6 : z prime = e puissance i pi sur 6 fois z."
+          - math: 'e^{i\pi/6} = \cos\dfrac{\pi}{6}+i\sin\dfrac{\pi}{6} = \dfrac{\sqrt3}{2}+\dfrac12 i'
+            note: "Forme algébrique de l'exponentielle, angle remarquable pi sur 6."
+          - math: '\dfrac12(\sqrt3+i) = \dfrac{\sqrt3}{2}+\dfrac12 i = e^{i\pi/6} \implies z'' = \dfrac12(\sqrt3+i)z'
+            note: "Un demi fois (racine de 3 + i) a la même forme algébrique que e puissance i pi sur 6 : la rotation s'écrit bien ainsi."
+          - math: 'a'' = e^{i\pi/6}a \implies \arg(a'') = \arg(a) + \dfrac{\pi}{6}'
+            note: "A prime est l'image de A par R, donc a prime = e puissance i pi sur 6 fois a ; argument d'un produit = somme des arguments."
+          - math: '\arg(a'') = -\dfrac{\pi}{4}+\dfrac{\pi}{6} = \dfrac{-3\pi+2\pi}{12} = -\dfrac{\pi}{12}'
+            note: "On reporte l'argument de a, moins pi sur 4 (question 1)."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Montrer que l'affixe du point $A''$ est $a'' = \sqrt{6}\,e^{i\frac{\pi}{12}}$ et en déduire que les points $O$, $A''$ et $B$ sont alignés.
+        reasoning: |-
+          $A''$ est l'image de $A'$ par $R$ : son affixe est $e^{i\pi/6}a'$. Le module d'une rotation ne change pas : $|A''|=|A'|=|A|=\sqrt6$ (deux rotations successives, même centre $O$, conservent chacune la distance à $O$). L'argument s'obtient en ajoutant $\dfrac{\pi}{6}$ à celui de $A'$ trouvé à la question précédente, $-\dfrac{\pi}{12}$, ce qui donne $\dfrac{\pi}{12}$.
+
+          Pour l'alignement : deux points vus depuis $O$ sont alignés avec $O$ si les vecteurs qui les rejoignent depuis $O$ sont colinéaires, c'est-à-dire si leurs affixes ont le même argument (rung R5, étendu ici en langage d'arguments plutôt que de coefficient réel). Or $\arg(b)=\dfrac{\pi}{12}$ (question 3) est exactement l'argument trouvé pour $A''$ : les deux vecteurs pointent dans la même direction depuis $O$.
+        steps:
+          - math: '\left|e^{i\pi/6}\,a''\right| = |a''| = |a| = \sqrt6'
+            note: "Deux rotations successives conservent le module : celui du point deux fois tourné vaut le module de a, racine de 6."
+          - math: '\arg\!\left(e^{i\pi/6}a''\right) = \arg(a'') + \dfrac{\pi}{6} = -\dfrac{\pi}{12}+\dfrac{\pi}{6} = \dfrac{\pi}{12}'
+            note: "On ajoute pi sur 6 à l'argument de a prime, moins pi sur 12 (question précédente)."
+          - math: '\sqrt6\,e^{i\pi/12} = \sqrt6\left(\cos\dfrac{\pi}{12}+i\sin\dfrac{\pi}{12}\right)'
+            note: "Module racine de 6, argument pi sur 12 : c'est exactement l'affixe annoncée pour le point deux fois tourné."
+          - math: '\arg(b) = \dfrac{\pi}{12} = \arg\!\left(\sqrt6\,e^{i\pi/12}\right)'
+            note: "L'argument de b (question 3) est le même que celui de l'affixe trouvée : les deux vecteurs depuis O pointent dans la même direction."
+          - math: '\dfrac{\sqrt6\,e^{i\pi/12}}{b} \in \mathbb{R}_{+}^{*}'
+            note: "Rapport réel strictement positif entre les deux affixes : les vecteurs sont colinéaires, donc les trois points sont alignés."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Montrer que $b'$, l'affixe du point $B'$, vérifie $b' = \left(\dfrac{3 + \sqrt{3}}{3}\right)\overline{a}$
+        reasoning: |-
+          On calcule le module et l'argument de $b'=R(B)$ séparément, puis on les compare à ceux de $\dfrac{3+\sqrt3}{3}\overline{a}$, pour montrer que les deux nombres coïncident — plutôt que de manipuler l'expression algébriquement, ce qui serait un calcul assez lourd.
+
+          Le module : une rotation conserve le module, donc $|b'|=|b|=\sqrt6+\sqrt2$ (question 3). Côté droit, $|\overline a|=|a|=\sqrt6$ (rung R4 : conjuguer ne change pas le module), donc $\left|\dfrac{3+\sqrt3}{3}\overline a\right| = \dfrac{3+\sqrt3}{3}\sqrt6$ — un calcul qui, développé, redonne $\sqrt6+\sqrt2$.
+
+          L'argument : $\arg(b')=\arg(b)+\dfrac{\pi}{6}$ (rotation d'angle $\pi/6$), avec $\arg(b)=\dfrac{\pi}{12}$ (question 3), donc $\arg(b')=\dfrac{\pi}{4}$. Côté droit, $\arg(\overline a) = -\arg(a) = \dfrac{\pi}{4}$ (rung R5 : conjuguer change le signe de l'argument), et le facteur $\dfrac{3+\sqrt3}{3}$ étant réel positif, ne change pas l'argument. Les deux membres ont même module et même argument : ils sont égaux.
+        steps:
+          - math: '|b''| = |b| = \sqrt6+\sqrt2'
+            note: "Une rotation conserve le module ; le module de b vaut racine de 6 plus racine de 2 (question 3)."
+          - math: '\left|\dfrac{3+\sqrt3}{3}\,\overline{a}\right| = \dfrac{3+\sqrt3}{3}\,|a| = \dfrac{3+\sqrt3}{3}\sqrt6 = \sqrt6+\sqrt2'
+            note: "Le module de a barre vaut celui de a, racine de 6 (rung R4) ; on redéveloppe comme à la question 3 pour retrouver racine de 6 plus racine de 2."
+          - math: '\arg(b'') = \arg(b) + \dfrac{\pi}{6} = \dfrac{\pi}{12}+\dfrac{\pi}{6} = \dfrac{\pi}{4}'
+            note: "Rotation d'angle pi sur 6 appliquée à B ; l'argument de b vaut pi sur 12 (question 3)."
+          - math: '\arg(\overline{a}) = -\arg(a) = \dfrac{\pi}{4}, \quad \dfrac{3+\sqrt3}{3}>0'
+            note: "Conjuguer change le signe de l'argument (rung R5) ; le coefficient réel positif ne le change pas."
+          - math: '|b''| = \left|\dfrac{3+\sqrt3}{3}\overline{a}\right| \ \text{et} \ \arg(b'') = \arg\!\left(\dfrac{3+\sqrt3}{3}\overline{a}\right) \implies b'' = \dfrac{3+\sqrt3}{3}\overline{a}'
+            note: "Même module et même argument : les deux nombres sont égaux."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** En déduire que le triangle $OAB'$ est rectangle en $O$
+        reasoning: |-
+          L'angle en $O$ du triangle $OAB'$ est l'argument du quotient $\dfrac{b'}{a}$ (au-delà du socle R1–R5, déjà mobilisé pour les angles orientés dans cette banque) : $\arg\!\left(\dfrac{b'}{a}\right) = \arg(b')-\arg(a)$. On a $\arg(b')=\dfrac{\pi}{4}$ (question précédente) et $\arg(a)=-\dfrac{\pi}{4}$ (question 1) : la différence tombe exactement sur $\dfrac{\pi}{2}$, un angle droit.
+        steps:
+          - math: '\left(\overrightarrow{OA},\ \overrightarrow{OB''}\right) \equiv \arg\!\left(\dfrac{b''}{a}\right) = \arg(b'')-\arg(a)\ [2\pi]'
+            note: "L'angle en O est l'argument du quotient des affixes des deux vecteurs issus de O."
+          - math: '\arg(b'') - \arg(a) = \dfrac{\pi}{4} - \left(-\dfrac{\pi}{4}\right) = \dfrac{\pi}{2}'
+            note: "On reporte l'argument de b prime, pi sur 4 (question précédente), et celui de a, moins pi sur 4 (question 1)."
+          - math: '\left(\overrightarrow{OA},\ \overrightarrow{OB''}\right) \equiv \dfrac{\pi}{2}\ [2\pi] \implies OAB'' \ \text{rectangle en}\ O'
+            note: "Angle droit en O : le triangle est rectangle en O."
