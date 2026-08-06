@@ -204,3 +204,63 @@ Soient $F = \left\{ x + y\sqrt{3} \ /\ (x,y) \in \mathbb{Q}^2 \right\}$ *(glyphe
 4. (0,25) Montrer que $(G, +, \times)$ est un corps commutatif.
 
 ---
+
+## 2017 — session normale — Exercice 1
+Source: https://www.alloschool.com/element/57970
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-45343, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 25 · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-45343/0001-big.jpg` (page de composantes), `.../course-436/upload-45343/0002-big.jpg` (énoncé Exercice 1)
+- Pages du scan : 2 (sur 5) — composantes p.1
+
+> **Note de lecture (mojibake)** : ce scan 2017 substitue plusieurs polices. Glyphes de la legend connue : $\mathbb{R}$ = « ¡ », $\times$ = « ´ ». Glyphes **nouveaux, non couverts par la legend fournie**, résolus par la logique de l'exercice et par le mapping alphabétique standard de la police Symbol (chaque lettre latine occupe la position de son homologue grec) : $\mathbb{C}$ = « £ » *(glyphe à confirmer)* — cohérent avec « (£,+,´) est un corps commutatif » et « £* » comme ensemble de départ de $\varphi$, recoupé avec l'Exercice 2 du même scan où « £ » désigne sans ambiguïté $\mathbb{C}$ (équation posée « dans £ ») ; $\varphi$ = « j » *(glyphe à confirmer)* (position Symbol de φ) ; $\forall$ = « " » *(glyphe à confirmer)* (position Symbol de ∀). L'élément neutre du groupe $(E^*,T)$ est noté par la lettre latine simple « $J$ » — caractère distinct du « j » minuscule (= $\varphi$), lu tel quel, sans mojibake apparent.
+
+**Structures algébriques (matrices $3\times 3$, loi $T$ construite via une matrice pivot $A$, homomorphisme depuis $(\mathbb{C}^*,\times)$, corps commutatif).**
+
+On rappelle que $(M_3(\mathbb{R}),+,\times)$ est un anneau unitaire de zéro la matrice nulle $O = \begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$ et que $(\mathbb{C},+,\times)$ est un corps commutatif.
+
+On pose $A = \begin{pmatrix}1&0&0\\1&1&0\\1&1&1\end{pmatrix}$ et pour tout $(a,b)$ de $\mathbb{R}^2$, $M(a,b) = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix}$
+
+On considère l'ensemble $E = \{M(a,b) \ /\ (a,b) \in \mathbb{R}^2\}$
+
+1. (0,5) Montrer que $E$ est un sous-groupe du groupe $(M_3(\mathbb{R}),+)$
+2. (0,5) On définit dans $M_3(\mathbb{R})$ la loi de composition interne $T$ par : $\forall(a,b,c,d)\in\mathbb{R}^4$ ; $M(a,b)\,T\,M(c,d) = M(a,b)\times A\times M(c,d)$
+   Vérifier que $E$ est stable dans $(M_3(\mathbb{R}),T)$
+3. Soit $\varphi$ l'application de $\mathbb{C}^*$ dans $E$ qui à tout nombre complexe non nul $a+ib$ (où $(a,b)\in\mathbb{R}^2$) fait correspondre la matrice $M(a,b)$ de $E$
+   a) (0,75) Vérifier que $\varphi$ est un homomorphisme de $(\mathbb{C}^*,\times)$ vers $(E,T)$ et que $\varphi(\mathbb{C}^*) = E^*$ où $E^* = E\setminus\{M(0,0)\}$
+   b) (0,75) En déduire que $(E^*,T)$ est un groupe commutatif dont on déterminera l'élément neutre $J$
+4. a) (0,5) Montrer que la loi de composition interne « $T$ » est distributive par rapport à la loi de composition interne « $+$ » dans $E$
+   b) (0,5) En déduire que $(E,+,T)$ est un corps commutatif.
+
+---
+
+## 2018 — session normale — Exercice 1
+Source: https://www.alloschool.com/element/65508
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-52280, page(s) 1. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B), BIOF — d'après le titre du document et la structure du programme ; **aucun code NS ni en-tête administratif arabe visible** sur ce document retype — voir la note à l'entrée `arithmetique.md` 2018 Exercice 2 pour le détail.
+- Code sujet : non visible sur ce scan (document retype) · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-52280/0001-big.jpg`
+- Pages du scan : 1 (sur 4)
+
+> **Note de lecture** : aucun mojibake — document retype Unicode propre. La question 5 imprime littéralement « Montrer que $(E,+,\times)$ est un **groupe** commutatif » (et non « corps », alors que $(E,+,\times)$ vient d'être établi anneau commutatif en Q3-b et $(E^*,\times)$ groupe commutatif en Q4-c) — transcrit **verbatim**, sans correction ; possible coquille de la source elle-même *(à confirmer/corriger seulement si le vérificateur re-fetch confirme la même lecture)*.
+
+**Structures algébriques (sous-espace vectoriel et sous-anneau de $M_2(\mathbb{R})$, base $(I,J)$, homomorphisme depuis $(\mathbb{C}^*,\times)$).**
+
+On rappelle que $(\mathbb{C},+,\times)$ est un corps commutatif et que $(M_2(\mathbb{R}),+,\times)$ est un anneau unitaire, de zéro la matrice nulle $O = \begin{pmatrix}0&0\\0&0\end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ et que $(M_2(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel.
+
+Pour tout couple $(x,y)\in\mathbb{R}^2$, on pose $M(x,y) = \begin{pmatrix}x&-2y\\y&x+2y\end{pmatrix}$ et on considère l'ensemble $E = \{M(x,y) \ /\ (x,y)\in\mathbb{R}^2\}$
+
+1. (0,25) Montrer que $E$ est un sous-groupe du groupe $(M_2(\mathbb{R}),+)$
+2. a) (0,25) Montrer que $E$ est un sous-espace vectoriel de l'espace vectoriel $(M_2(\mathbb{R}),+,\cdot)$
+   b) (0,5) On pose $J = M(0,1)$. Montrer que $(I,J)$ est une base de l'espace vectoriel réel $(E,+,\cdot)$
+3. a) (0,5) Montrer que $E$ est une partie stable de $(M_2(\mathbb{R}),\times)$
+   b) (0,5) Montrer que $(E,+,\times)$ est un anneau commutatif.
+4. Soit $\varphi$ l'application de $\mathbb{C}^*$ vers $M_2(\mathbb{R})$ définie par : $\left(\forall(x,y)\in\mathbb{R}^2-\{(0,0)\}\right)$ ; $\varphi(x+iy) = M(x+y,-y) = \begin{pmatrix}x+y&2y\\-y&x-y\end{pmatrix}$
+   a) (0,5) Montrer que $\varphi$ est un homomorphisme de $(\mathbb{C}^*,\times)$ vers $(M_2(\mathbb{R}),\times)$
+   b) (0,5) On pose $E^* = E - \{O\}$. Montrer que $\varphi(\mathbb{C}^*) = E^*$
+   c) (0,25) En déduire que $(E^*,\times)$ est un groupe commutatif.
+5. (0,25) Montrer que $(E,+,\times)$ est un groupe commutatif.
+
+---

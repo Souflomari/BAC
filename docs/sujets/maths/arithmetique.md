@@ -199,3 +199,53 @@ Soit $p$ **un nombre premier impair**. On considère dans $\mathbb{Z}$ l'équati
 5. (0,5) En déduire que si $p \equiv 5\ [8]$ alors l'équation $(E)$ n'admet pas de solution dans $\mathbb{Z}$.
 
 ---
+
+## 2017 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/57970
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-45343, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 25 · Barème de l'exercice : 3 points
+- Images lues : `.../course-436/upload-45343/0001-big.jpg` (page de composantes), `.../course-436/upload-45343/0004-big.jpg` (énoncé Exercice 3)
+- Pages du scan : 4 (sur 5) — composantes p.1
+
+> **Note de lecture (mojibake)** : ce scan 2017 substitue les blackboard-bold — $\mathbb{N}$ rendu « ¥ » (glyphe de la legend fournie) ; la congruence $\equiv$ rendue par un petit rond « o » (glyphe de la legend fournie). Aucun $\mathbb{Z}$ ni $\geq$ dans cet exercice : l'énoncé écrit « supérieur ou égal à 5 » en toutes lettres.
+
+**Arithmétique (petit théorème de Fermat, couples $(x,y)\in(\mathbb{N}^*)^2$, équation $px+y^{p-1}=2017$, factorisation $2016=2^5 3^2 7$).**
+
+On admet que $2017$ est un nombre premier, et que $2016 = 2^5 3^2 7$
+Soit $p$ **un nombre premier supérieur ou égal à 5**
+
+1. Soit le couple $(x,y)$ de $\mathbb{N}^* \times \mathbb{N}^*$ tel que : $px + y^{p-1} = 2017$
+   a) (0,25) Vérifier que : $p < 2017$
+   b) (0,5) Montrer que : $p$ ne divise pas $y$
+   c) (0,75) Montrer que : $y^{p-1} \equiv 1\ [p]$ et en déduire que $p$ divise $2016$
+   d) (0,5) Montrer que : $p = 7$
+2. (1) Déterminer, suivant les valeurs de $p$, les couples $(x,y)$ de $\mathbb{N}^* \times \mathbb{N}^*$ vérifiant : $px + y^{p-1} = 2017$
+
+---
+
+## 2018 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/65508
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-52280, page(s) 1–2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B), BIOF — d'après le titre du document (« Bac Sciences Mathématiques — National 2018 ») et la structure du programme (structures algébriques, arithmétique, complexes, analyse, dans cet ordre) ; **aucun code NS ni en-tête administratif arabe visible** sur les 4 pages du scan (document retype sans cachet officiel) — durée et coefficient non confirmables sur ce document.
+- Code sujet : non visible sur ce scan (document retype) · Barème de l'exercice : 3 points
+- Images lues : `.../course-436/upload-52280/0001-big.jpg` (fin Exercice 1, début Exercice 2), `.../course-436/upload-52280/0002-big.jpg` (suite et fin Exercice 2, début Exercice 3)
+- Pages du scan : 1–2 (sur 4)
+
+> **Note de lecture** : aucun mojibake — ce document est un retype Unicode propre (pas un scan brut à en-tête administratif), d'où l'absence de code NS/filière officielle confirmable ; voir remarque ci-dessus.
+
+**Arithmétique (nombres premiers $p\equiv 3\ [4]$, petit théorème de Fermat, résolution modulo $67$).**
+
+Soit $p$ un nombre premier tel que : $p = 3+4k$ $(k\in\mathbb{N}^*)$
+
+1. (0,5) Montrer que pour tout entier relatif $x$, si $x^2 \equiv 1\ [p]$ alors $x^{p-5} \equiv 1\ [p]$
+2. Soit $x$ un entier relatif vérifiant : $x^{p-5} \equiv 1\ [p]$
+   a) (0,5) Montrer que $x$ et $p$ sont premiers entre eux.
+   b) (0,5) Montrer que : $x^{p-1} \equiv 1\ [p]$.
+   c) (0,5) Vérifier que : $2+(k-1)(p-1) = k(p-5)$
+   d) (0,5) En déduire que : $x^2 \equiv 1\ [p]$
+3. (0,5) Résoudre dans $\mathbb{Z}$ l'équation : $x^{62} \equiv 1\ [67]$
+
+---

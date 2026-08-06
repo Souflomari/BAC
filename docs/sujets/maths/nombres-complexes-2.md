@@ -255,3 +255,73 @@ Soient $a$, $b$ et $c$ trois nombres complexes non nuls tel que : $a+b \neq c$
    b) (0,5) Montrer que les points $K$, $P$, $Q$ et $D$ sont cocycliques.
 
 ---
+
+## 2017 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/57970
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-45343, page(s) 2–3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 25 · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-45343/0001-big.jpg` (page de composantes), `.../course-436/upload-45343/0002-big.jpg` (Partie 1), `.../course-436/upload-45343/0003-big.jpg` (Partie 2)
+- Pages du scan : 2–3 (sur 5) — composantes p.1
+
+> **Note de lecture (mojibake)** : ce scan 2017 substitue plusieurs polices. Glyphe de la legend connue : $\mathbb{C}$ = « £ » *(glyphe à confirmer, cf. Exercice 1 du même scan)*. Glyphes **nouveaux, non couverts par la legend fournie**, résolus par le mapping alphabétique standard de la police Symbol (chaque lettre latine occupe la position de son homologue grec) : $\pi$ = « p » *(glyphe à confirmer)* — « d'angle de mesure p/2 » lu $\pi/2$, cohérent avec une rotation ; $\Omega$ = « W » *(glyphe à confirmer)* — le point-centre de rotation nommé « W » dans le scan est en réalité $\Omega$ (position Symbol de Ω), employé de façon cohérente sur toute la Partie 2 (« le point W d'affixe w », « les points W, M, M₁ et M₂ ») ; $\Gamma$ = « G » *(glyphe à confirmer)* — « le cercle (G) de diamètre [AB] » lu $(\Gamma)$ (position Symbol de Γ, notation standard pour un cercle).
+
+**Nombres complexes (équation du 2ᵈ degré à paramètre $m$, rotation de centre $\Omega$, cercle $(\Gamma)$, cocyclicité).**
+
+Soit $m$ un nombre complexe **non nul**.
+
+**Partie 1 :** On considère dans $\mathbb{C}$ l'équation :
+$$(E)\ :\ 2z^2 - 2(m+1+i)z + m^2 + (1+i)m + i = 0$$
+
+1. (0,5) Vérifier que le discriminant de l'équation $(E)$ est : $\Delta = (2im)^2$
+2. (0,5) Résoudre dans $\mathbb{C}$ l'équation $(E)$
+
+**Partie 2 :** Le plan complexe est rapporté à un repère orthonormé direct $(O,\vec{e_1},\vec{e_2})$
+
+On suppose que : $m \in \mathbb{C} \setminus \{0,1,i\}$ et on pose : $z_1 = \dfrac{1+i}{2}(m+1)$ et $z_2 = \dfrac{1-i}{2}(m+i)$
+
+On considère les points $A$, $B$, $M$, $M_1$ et $M_2$ d'affixes respectifs $1$, $i$, $m$, $z_1$ et $z_2$
+
+1. a) (0,25) Vérifier que : $z_1 = iz_2 + 1$
+   b) (0,5) Montrer que $M_1$ est l'image de $M_2$ par la rotation de centre le point $\Omega$ d'affixe $\omega = \dfrac{1+i}{2}$ et d'angle de mesure $\dfrac{\pi}{2}$
+2. a) (0,5) Vérifier que : $\dfrac{z_2-m}{z_1-m} = i\,\dfrac{m-1}{m-i}$
+   b) (0,5) Montrer que si les points $M$, $M_1$ et $M_2$ sont alignés alors $M$ appartient au cercle $(\Gamma)$ de diamètre $[AB]$
+   c) (0,75) Déterminer l'ensemble des points $M$ pour que les points $\Omega$, $M$, $M_1$ et $M_2$ soient cocycliques (remarquer que : $\dfrac{z_1-\omega}{z_2-\omega} = i$)
+
+---
+
+## 2018 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/65508
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-52280, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B), BIOF — d'après le titre du document et la structure du programme ; **aucun code NS ni en-tête administratif arabe visible** sur ce document retype — voir la note à l'entrée `arithmetique.md` 2018 Exercice 2 pour le détail.
+- Code sujet : non visible sur ce scan (document retype) · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-52280/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture** : aucun mojibake — document retype Unicode propre ($\mathbb{C}$, $\Omega$, $\pi$ tous lisibles directement).
+
+**Nombres complexes (équation paramétrée du 2ᵈ degré, rotation d'angle $-\frac{\pi}{2}$, alignement $\iff$ cocyclicité, lieu = cercle).**
+
+Soit $m$ un nombre complexe.
+
+**I –** On considère dans l'ensemble complexes $\mathbb{C}$ l'équation $(E_m)$ d'inconnue $z$ :
+$$z^2 + (im+2)z + im+2-m = 0$$
+
+1. a) (0,25) Vérifier que $\Delta = (im-2i)^2$ est le discriminant de l'équation $(E_m)$
+   b) (0,5) Donner, suivant les valeurs de $m$, l'ensemble des solutions de l'équation $(E_m)$
+2. (0,5) Pour $m = i\sqrt{2}$, écrire les deux racines de l'équation $(E_m)$ sous la forme exponentielle.
+
+**II –** Le plan complexe est rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$
+
+On considère les points $A$, $\Omega$, $M$ et $M'$ d'affixes respectifs $a=-1-i$, $\omega=i$, $m$ et $m'=-im-1+i$
+
+1. Soit $R$ la rotation d'angle $-\dfrac{\pi}{2}$ qui transforme $M$ en $M'$
+   a) (0,25) Vérifier que $\Omega$ est le centre de $R$
+   b) (0,5) Déterminer l'affixe $b$ de $B$, où $B$ est le point tel que : $A = R(B)$
+2. a) (0,5) Vérifier que : $m'-a = \dfrac{\omega-a}{\omega-b}(m-b)$
+   b) (0,5) En déduire que les points $A$, $M$ et $M'$ sont alignés si et seulement si les points $A$, $B$, $\Omega$ et $M$ sont cocycliques.
+   c) (0,5) Montrer que l'ensemble des points $M$ tel que les points $A$, $M$ et $M'$ soient alignés est un cercle dont on déterminera le centre et le rayon.
+
+---
