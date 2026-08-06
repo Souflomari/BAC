@@ -53,7 +53,12 @@ la borne $-$).
 
 ## 2018 — session normale — Exercice I (Partie I)
 Source: https://www.alloschool.com/element/57726
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+Statut: vérifié — 2026-08-06, **3ᵉ passe : re-lecture indépendante par un
+troisième agent — la notation corrigée en passe 2 est CONFORME au scan
+⇒ entrée promue** (README §3). Historique : transcription (passe 1), diff
+adverse (passe 2, suppression des indices $(aq)$ inventés). Détail de la
+3ᵉ passe en fin de bloc.
+Transcription initiale : 2026-08-06, depuis scan
 course-422/upload-45118, page 2. **Vérification adverse indépendante
 (second agent) effectuée le 2026-08-06 — entrée NON promue, une correction
 appliquée.** `element/57726` re-fetché, `course-422/upload-45118` (8 pages)
@@ -85,6 +90,22 @@ README §3 ; indices supprimés ⇒ **une re-lecture est requise avant promotion
 Observations non bloquantes : le scan compose « Electrolyse » et « Ecrire »
 sans accent sur la capitale (l'entrée accentue), et « Données: » sans espace
 avant le deux-points.
+
+**PASSE 3 — re-lecture indépendante (troisième agent, 2026-08-06) : notation
+CONFORME, entrée PROMUE.** `element/57726` re-fetché une troisième fois,
+`course-422/upload-45118` (8 pages) re-dérivé indépendamment et conforme ;
+`0002-big.jpg` re-téléchargé ($1240\times1752$). Zoom $\times 9$ sur la
+première puce de la ligne « Données: » (crop $x\in[520,820]$, $y\in[510,552]$)
+— le scan imprime, sans ambiguïté de glyphe :
+« - Les 2 couples mis en jeu : $Pb^{2+} / Pb_{(s)}$   et   $Br_{2(g)}/Br^-$ ; »
+soit **$Pb^{2+}$ sans indice d'état**, **$Pb_{(s)}$** (indice « (s) » en
+italique), **$Br_{2(g)}$** (indice « 2(g) ») et **$Br^-$ sans indice d'état**.
+Les deux mentions $(aq)$ retirées en passe 2 sont donc **bien absentes du
+sujet** : la correction est indépendamment confirmée, et le texte actuel de
+l'entrée reproduit le scan caractère pour caractère. En-tête de page re-lu
+(NS28F, page 2/8, session normale 2018) et absence de figure dans la partie
+re-confirmée.
+Vérifié par agent-relecteur-indépendant le 2026-08-06, diff OK (3 passes).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie I :

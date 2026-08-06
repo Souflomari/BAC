@@ -68,7 +68,13 @@ $t = 1\ \text{ms}$ *(lecture d'échelle à confirmer)*.
 
 ## 2018 — session normale — Exercice III (partie I-1)
 Source: https://www.alloschool.com/element/57726
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+Statut: vérifié — 2026-08-06, **3ᵉ passe : re-lecture indépendante par un
+troisième agent, schéma re-lu au zoom et droite re-régressée de zéro —
+figures CONFORMES ⇒ entrée promue** (README §3). Historique : transcription
+(passe 1), diff adverse (passe 2 : symbole du générateur de courant corrigé,
+étiquettes $C_1$/$C_2$, drapeau de pente adjugé, « (page suivante) » rétabli).
+Détail de la 3ᵉ passe en fin de bloc.
+Transcription initiale : 2026-08-06, depuis scan
 course-422/upload-45118, pages 4–5. **Vérification adverse indépendante
 (second agent) effectuée le 2026-08-06 — entrée NON promue : écart de figure
 trouvé et corrigé, drapeau de pente adjugé et levé.** `element/57726`
@@ -106,6 +112,45 @@ l'axe des temps — les deux méthodes du sujet donnent bien la même capacité.
 Corrections appliquées ⇒ **une re-lecture est requise avant promotion**
 (README §3). Observation non bloquante : le membre « (page suivante) » de la
 phrase de montage, omis à la transcription, a été rétabli.
+
+**PASSE 3 — re-lecture indépendante (troisième agent, 2026-08-06) : figures 1
+et 2 CONFORMES, entrée PROMUE.** `element/57726` re-fetché, `upload-45118`
+(8 pages) re-dérivé indépendamment ; `0004-big.jpg` et `0005-big.jpg`
+re-téléchargés ($1240\times1752$).
+- **Figure 1, zoom $\times 4$** (crop $x\in[220,600]$, $y\in[260,590]$ de la
+  p. 5) : le générateur est bien un **cercle barré d'un unique trait
+  horizontal en son milieu**, et la **flèche verticale montante étiquetée
+  $I_0$ est tracée à l'extérieur, à gauche** du cercle (elle ne le touche
+  pas) — la correction de la passe 2 est confirmée, la graphie « flèche dans
+  un cercle » de la passe 1 était bien fausse. Les deux condensateurs portent
+  sur le schéma les étiquettes **$C_1$** (à gauche de l'armature gauche) et
+  **$C_2$** (à droite de l'armature droite), en **capitale**, sans
+  parenthèses — alors que le corps de texte de la p. 4 écrit bien « (c₁) »
+  et « (c₂) » en bas de casse : les deux graphies coexistent, comme transcrit.
+  Topologie re-vérifiée trait par trait : $R$ (rectangle) sous le générateur,
+  $K$ (levier ouvert, étiquette au-dessus) sur la branche du haut, nœuds $A$
+  (point noir, étiquette au-dessus) et $B$ (point noir, étiquette au-dessous),
+  $C_1 \parallel C_2$ entre $A$ et $B$, boucle refermée par le bas.
+- **Figure 2, régression refaite de zéro** : traits principaux détectés à
+  $x = 753{,}5/795{,}5/837{,}5/879{,}5/921{,}5/963{,}5/1005$ et
+  $y = 287{,}5/328/368{,}5/409/449{,}5/490{,}5/530{,}5$ ⇒ **grille de
+  $6\times6$ divisions**, $41{,}92$ px par division en abscisse, $40{,}50$ px
+  en ordonnée ; seuls $1$ et $2$ sont chiffrés en abscisse, $10$ et $20$ en
+  ordonnée (plus le $0$) ⇒ pas de **$1$ V $\times$ $10\ \mu$C**, cadre
+  jusqu'à $6$ V $/\ 60\ \mu$C. Régression sur **$213$ pixels** du trait
+  (traits de grille exclus) : pente pixel $-0{,}9670$, résidu quadratique
+  moyen **$0{,}30$ px**, soit **pente $= 10{,}008\ \mu\text{C.V}^{-1}$**,
+  ordonnée à l'origine **$-0{,}12\ \mu$C** ; la droite vaut $59{,}93\ \mu$C à
+  $u_{AB} = 6$ V et passe par $(1\,;\,9{,}89)$, $(2\,;\,19{,}89)$,
+  $(3\,;\,29{,}90)$, $(4\,;\,39{,}91)$, $(5\,;\,49{,}92)$ — donc bien
+  **origine $\to$ coin supérieur droit $(6\ \text{V}\,;\,60\ \mu\text{C})$**,
+  lecture gridline-exacte. $\Rightarrow C_{eq} = 10\ \mu$F et
+  $C_2 = 2{,}5\ \mu$F, **indépendamment confirmés** (et $\tau = RC_2 = 4{,}0$
+  ms recoupe la figure 4 de la sous-partie I-2).
+- **« (page suivante) »** re-lu sur la p. 4 : le scan imprime bien
+  « … le montage expérimental de la figure 1 (page suivante) constitué des
+  éléments suivants: » — restitution conforme.
+Vérifié par agent-relecteur-indépendant le 2026-08-06, diff OK (3 passes).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points (sous-partie

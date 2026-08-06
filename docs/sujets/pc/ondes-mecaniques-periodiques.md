@@ -57,7 +57,13 @@ sinusoïdal.
 
 ## 2020 — session normale — Exercice II
 Source: https://www.alloschool.com/element/109742
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+Statut: vérifié — 2026-08-06, **4ᵉ passe : re-lecture indépendante par un
+quatrième agent, mesure refaite de zéro sur le scan, description de figure
+jugée FIDÈLE ⇒ entrée promue** (README §3). Historique : transcription
+(passe 1), diff adverse (passe 2, correction $y_S \to y_s$), re-lecture
+(passe 3, correction de la figure : cote $=2\lambda$). Détail de la 4ᵉ passe
+en fin de bloc.
+Transcription initiale : 2026-08-06, depuis scan
 course-422/upload-80870, page(s) 3–4. **Vérification adverse indépendante
 (second agent) effectuée le 2026-08-06 — entrée NON promue, une correction
 appliquée.** `element/109742` re-fetché, `course-422/upload-80870` (7 pages)
@@ -96,6 +102,37 @@ non $25$ Hz) ; la question 3 donne toujours $\tau = d/v = 0{,}05/0{,}25 =
 0{,}2$ s, mais $d = 5\ \text{cm} = 10\lambda$, soit $\tau = 10\,T$ avec
 $T = 1/N = 0{,}02$ s (et non $5T$). Description de figure réécrite d'après
 l'image ⇒ **une nouvelle re-lecture est requise avant promotion** (README §3).
+
+**PASSE 4 — re-lecture indépendante (quatrième agent, 2026-08-06) : figure
+CONFORME, entrée PROMUE.** `element/109742` re-fetché une quatrième fois ;
+`course-422/upload-80870` (7 pages) re-dérivé indépendamment, `0004-big.jpg`
+re-téléchargé (md5 identique à la lecture annoncée). **Mesure refaite de zéro,
+sans reprendre aucun chiffre des passes précédentes** (image $1240\times1754$,
+figure en haut à droite de la p. 4) :
+- centre : le point noir de $S$ occupe $x\in[1035,1042]$, $y\in[504,511]$ ⇒
+  centre $(1038{,}5\,;\,507{,}5)$ ;
+- balayage de la **ligne médiane** $y = 507$ : intersections à
+  $x = 919{,}5\,/\,949{,}5\,/\,978{,}5\,/\,1008{,}5$ (gauche) et
+  $1067{,}5\,/\,1097\,/\,1126{,}5\,/\,1157{,}5$ (droite) ⇒ par appariement
+  gauche-droite, **rayons $29{,}5$ ; $59{,}25$ ; $88{,}5$ ; $119{,}0$ px**
+  (pas radial constant $29{,}8$ px, rapport $1:2:3:4$) ; le balayage vertical
+  de la **colonne** $x = 1038$ redonne les mêmes rayons ($29{,}5$ ; $59$ ;
+  $88{,}5$ ; $118{,}5$) et confirme qu'il n'y a **que 4 crêtes** ;
+- les deux traits verticaux en pointillés sont isolés par densité de colonne
+  sur la bande $y\in[520,600]$ (hors cercles) : **$x = 1097{,}5$** et
+  **$x = 1158{,}5$**, soit $r = 59{,}0$ et $r = 120{,}0$ ⇒ ils tombent bien de
+  la **crête 2** ($r = 59{,}25$) et de la **crête 4** ($r = 119{,}0$), et la
+  **crête 3** (tangente droite $x = 1126{,}5$) passe **entre** eux ;
+- écart entre les deux traits : $61{,}0$ px $= 2{,}05 \times$ le pas radial
+  $\Rightarrow$ la cote imprimée « 1cm » (double flèche dont les deux pointes
+  s'appuient sur les deux pointillés) couvre **exactement $2\lambda$**.
+$\Rightarrow$ **$\lambda = 0{,}5\ \text{cm} = 5\cdot10^{-3}$ m**,
+**$N = v/\lambda = 0{,}25/0{,}005 = 50\ \text{Hz}$**, $T = 0{,}02$ s, et
+$\tau = d/v = 0{,}05/0{,}25 = 0{,}2\ \text{s} = 10\,T$ ($d = 5$ cm $= 10\lambda$).
+La lecture de la passe 3 est donc **indépendamment confirmée** ; la banque
+enseigne bien $N = 50$ Hz (et non $25$ Hz). Correction $y_s$ (passe 2)
+re-confirmée au zoom du tableau de l'item 5.
+Vérifié par agent-relecteur-indépendant le 2026-08-06, diff OK (4 passes).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice : 3 points — Partie I (QCM,

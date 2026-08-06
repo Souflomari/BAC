@@ -221,7 +221,12 @@ tangentes *(coordonnées du point d'équivalence à confirmer par lecture)*.
 
 ## 2018 — session normale — Exercice I (Partie 2, sous-partie 1)
 Source: https://www.alloschool.com/element/57726
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+Statut: vérifié — 2026-08-06, **3ᵉ passe : re-lecture indépendante par un
+troisième agent, pentes et coordonnées re-mesurées de zéro — figure CONFORME
+⇒ entrée promue** (README §3). Historique : transcription (passe 1), diff
+adverse (passe 2 : tangentes rétablies **parallèles**, drapeau d'équivalence
+adjugé). Détail de la 3ᵉ passe en fin de bloc.
+Transcription initiale : 2026-08-06, depuis scan
 course-422/upload-45118, page(s) 2–3. **Vérification adverse indépendante
 (second agent) effectuée le 2026-08-06 — entrée NON promue : écart de figure
 trouvé et corrigé, drapeau de lecture adjugé et levé.** `element/57726`
@@ -261,6 +266,44 @@ promotion** (README §3). Observations non bloquantes : le scan écrit
 virgule avant « représente », et compose « … réactions biochimiques. on le
 trouve … » (point-minuscule) là où la citation de cadrage normalise la
 ponctuation.
+
+**PASSE 3 — re-lecture indépendante (troisième agent, 2026-08-06) : figure
+CONFORME, entrée PROMUE.** `element/57726` re-fetché, `upload-45118` (8 pages)
+re-dérivé indépendamment ; `0003-big.jpg` re-téléchargé ($1240\times1752$).
+**Calibration du repère refaite de zéro** (détection des traits principaux) :
+verticales à $x = 389/449/508/568/627/686/746/805/864/924/983$ px et
+horizontales à $y = 679/739/798/857/917/976/1035$ px ⇒ **$29{,}70$ px par mL**
+et **$29{,}67$ px par unité de $pH$** (quadrillage carré), origine
+$(389\,;\,1035)$, $V_B = 10$ mL sur $x = 686$, $pH = 8$ sur $y = 798$, cadre
+de $0$ à $12$ en $pH$ et jusqu'à $20$ mL (les deux derniers traits principaux
+non chiffrés = $18$ et $20$ mL) — **tout conforme** à la description.
+- **Tangentes** : régressions séparées sur les tirets isolés (largeur de trait
+  $2$–$7$ px, traits de quadrillage et courbe exclus). Supérieure :
+  $43$ points, pente pixel $-0{,}8899$, résidu $0{,}53$ px
+  $\Rightarrow$ **$0{,}891\ pH\cdot\text{mL}^{-1}$**. Inférieure : $20$ points,
+  pente pixel $-0{,}8892$, résidu $0{,}42$ px $\Rightarrow$
+  **$0{,}890\ pH\cdot\text{mL}^{-1}$**. Écart de pente
+  $7\cdot10^{-4}\ pH\cdot\text{mL}^{-1}$ ($0{,}08$ %) : les deux droites sont
+  **parallèles**, leur « intersection » formelle tombe à $V_B \simeq -6{,}8$ m
+  (hors de toute feuille) — elles **ne se croisent jamais**. Construction des
+  **tangentes parallèles** confirmée.
+- **$V_{BE}$** : le segment quasi vertical de la courbe est traqué ligne à
+  ligne de $y = 790$ à $y = 856$ ; son abscisse reste comprise entre
+  $x = 684{,}5$ et $x = 686{,}5$ — soit **sur le trait principal chiffré
+  $V_B = 10$ mL** ($x = 686$), à moins d'un pixel près. $V_{BE} = 10{,}0$ mL.
+- **$pH_E$** : la parallèle médiane aux deux tangentes ($y = -0{,}8896\,x +
+  1408{,}85$) coupe ce segment vertical à $y = 798{,}6$ px, soit
+  $pH = 7{,}97$ — c'est-à-dire **sur le trait principal $pH = 8$**
+  ($y = 798$), à $0{,}6$ px. $pH_E = 8{,}0$.
+Lecture gridline-exacte **indépendamment confirmée** ; recoupement avec le
+calcul ($pH_E$ théorique $= 7{,}99$) inchangé, et le choix du **rouge de
+crésol** reste le seul cohérent. Observation non bloquante : les extrémités
+des tirets, hachées « $\simeq$ » dans la description, se relèvent à
+$(7{,}4\,;\,8{,}0) \to (11{,}3\,;\,11{,}5)$ et
+$(8{,}7\,;\,4{,}45) \to (12{,}5\,;\,7{,}9)$ — soit $\le 0{,}15$ unité des
+valeurs transcrites, dans la tolérance du signe « $\simeq$ » (l'extrémité
+gauche de la tangente inférieure est noyée dans le trait de la courbe).
+Vérifié par agent-relecteur-indépendant le 2026-08-06, diff OK (3 passes).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (sous-partie
