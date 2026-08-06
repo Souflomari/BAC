@@ -227,7 +227,7 @@ On considère le nombre complexe : $u = 1 + (2 - \sqrt{3})\,i$
 
 ## 2021 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/127193
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-84150, page(s) 3–4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 127193 → course-436/upload-84150 re-dérivé, 4 pages ; énoncé Exercice 2 débutant sur l'image 0003 = p.3/4 et se poursuivant sur 0004 = p.4/4, page de composantes p.1), diff caractère-par-caractère conforme au scan (équation $z^2-(a+b+c)z+c(a+b)=0$, données $a=i$ / $b=e^{i\frac{\pi}{3}}$ / $c=a-b$, rotations d'angles $\frac{\pi}{2}$ et $\left(-\frac{\pi}{2}\right)$, $2p=b+a+(a-b)i$ et $2q=c+a+(c-a)i$, $k=a+\frac{i}{2}(c-b)$, cocyclicité de $K,P,Q,D$, barème par question sommant à 4 pts) ; maths re-dérivées : racines $c$ et $a+b$ par Vieta (somme $a+b+c$, produit $c(a+b)$) ✓, $2p=(a+b)+i(a-b)$ et $2q=(a+c)+i(c-a)$ via $\omega=(z_2-e^{i\theta}z_1)/(1-e^{i\theta})$ ✓ ; Unicode propre (pas de mojibake) ; filière Sciences Mathématiques (A)/(B) خيار فرنسية et code NS 24F confirmés sur l'en-tête du scan (p.1 et p.3–4).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 4 points

@@ -139,7 +139,7 @@ Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
 
 ## 2021 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/127193
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-84150, page(s) 4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 127193 → course-436/upload-84150 re-dérivé, 4 pages ; énoncé complet Exercice 3 sur l'image 0004 = p.4/4, page de composantes p.1), diff caractère-par-caractère conforme au scan (équation $47x-43y=1$ et couple $(11,12)$, congruences $x^{41}\equiv 4\,[43]$ / $x^{47}\equiv 10\,[47]$ / $4x\equiv 1\,[43]$ / $x\equiv 11\,[43]$, système $(S')$ et $x\equiv 527\,[2021]$, exposants et modules, barème par question sommant à 4 pts) ; maths re-dérivées : Bézout $47\cdot11-43\cdot12=517-516=1$ ✓, $527\bmod 43=11$ et $527\bmod 47=10$ avec $2021=43\times47$ ✓, Fermat mod 43 ($x^{42}\equiv1$) donnant $4x\equiv1$ puis $x\equiv11$ (car $4\cdot11\equiv1\,[43]$) ✓ ; Unicode propre (pas de mojibake) ; filière Sciences Mathématiques (A)/(B) خيار فرنسية et code NS 24F confirmés sur l'en-tête du scan (p.1 et p.4).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 4 points
