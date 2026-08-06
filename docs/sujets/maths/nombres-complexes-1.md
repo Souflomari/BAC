@@ -106,3 +106,34 @@ Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\ve
    b) (0,5) Montrer que l'affixe du point $A''$ est $a'' = \sqrt{6}\,e^{i\frac{\pi}{12}}$ et en déduire que les points $O$, $A''$ et $B$ sont alignés.
    c) (0,5) Montrer que $b'$, l'affixe du point $B'$, vérifie $b' = \left(\dfrac{3 + \sqrt{3}}{3}\right)\overline{a}$
    d) (0,5) En déduire que le triangle $OAB'$ est rectangle en $O$
+
+---
+
+## 2021 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/127180
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-84139, pages 2–3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 5 points
+- Images lues : `.../course-438/upload-84139/0002-big.jpg`, `.../course-438/upload-84139/0003-big.jpg`
+- Pages du scan : 2–3 (sur 4)
+
+> **Note de lecture (mojibake)** : aucun (lecture directe du scan image). Le corps du sujet intitule cet exercice « Exercice 2 : (5 points) » — coquille du scan : un second « Exercice 2 » après celui des suites numériques. La page « Composantes du sujet » (page 1) le désigne comme **Exercice 3 — Nombres complexes — 5 points** ; numérotation des composantes retenue ici.
+
+**Nombres complexes (équation du second degré, forme algébrique, forme exponentielle, homothétie, rotation, losange, argument, forme trigonométrique, angle orienté).**
+
+1. (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes, l'équation : $z^2 - \sqrt{3}z + 1 = 0$
+2. Soient les nombres complexes $a = e^{i\frac{\pi}{6}}$ et $b = \dfrac{3}{2} + i\dfrac{\sqrt{3}}{2}$
+   a) (0,25) Ecrire $a$ sous forme algébrique.
+   b) (0,5) Vérifier que $\overline{a}b = \sqrt{3}$
+
+Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$ et $C$ d'affixes respectives $a$, $b$ et $\overline{a}$.
+
+3. (0,5) Montrer que le point $B$ est l'image du point $A$ par une homothétie $h$ de centre $O$ dont on déterminera le rapport.
+4. Soient $z$ l'affixe d'un point $M$ du plan et $z'$ l'affixe du point $M'$ image de $M$ par la rotation $R$ de centre $A$ et d'angle $\dfrac{\pi}{2}$
+   a) (0,5) Ecrire $z'$ en fonction de $z$ et $a$.
+   b) (0,25) Soit $d$ l'affixe du point $D$ image de $C$ par la rotation $R$, montrer que $d = a + 1$
+   c) (0,5) Soit $I$ le point d'affixe le nombre $1$, montrer que $ADIO$ est un losange.
+5. a) (0,75) Vérifier que $d - b = \dfrac{\sqrt{3} - 1}{2}(1 - i)$ ; en déduire un argument du nombre $d - b$
+   b) (0,5) Ecrire le nombre $1 - b$ sous forme trigonométrique.
+   c) (0,5) Déduire une mesure de l'angle $\left(\overrightarrow{BI}, \overrightarrow{BD}\right)$
