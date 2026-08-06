@@ -7,23 +7,28 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les QUATRE entrées ci-dessous sont des transcriptions
-# FIDÈLES des quatre entrées « vérifié » de
+# exercises.yaml). Les SIX entrées ci-dessous sont des transcriptions
+# FIDÈLES des six entrées « vérifié » de
 # docs/sujets/maths/structures-algebriques.md (re-fetch AlloSchool
 # indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial)
 # — TOUS les sujets vérifiés recensés à ce jour pour cette notion : 2019
 # (Exercice 1, vérifié 2026-07-12), 2020 (Exercice 2, vérifié 2026-08-05),
-# 2022 (Exercice 4, vérifié 2026-08-05), 2024 (Exercice 4, vérifié
-# 2026-08-05) ; les quatre en session normale, filière Sciences
-# Mathématiques (A et B, BIOF), barème 3,5 points chacun. « Structures
-# algébriques » est un chapitre spécifique à la filière SM (absent de
-# l'épreuve Sciences Expérimentales) — un recensement borné aux sujets SM
-# est donc l'état attendu, pas un signal de recherche incomplète ;
-# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix
-# experte de la maison sur 100 % des questions, citant les rungs R1–R7 ;
-# barème transcrit tel quel dans les énoncés ; conventions KaTeX (block
-# scalars pour la prose, KaTeX brut entre apostrophes simples dans
-# steps[].math, notes sans backslash entre guillemets doubles).
+# 2022 (Exercice 4, vérifié 2026-08-05), 2023 (Exercice 5, vérifié
+# 2026-08-06), 2024 (Exercice 4, vérifié 2026-08-05), 2025 (Exercice 4,
+# vérifié 2026-08-06) ; les six en session normale, filière Sciences
+# Mathématiques (A et B, BIOF), barème 3,5 points chacun. 2021 NE PORTE
+# AUCUN exercice de structures algébriques dans
+# docs/sujets/maths/structures-algebriques.md — absence vérifiée, pas une
+# lacune de recensement ; aucune entrée bk-2021-… n'est donc créée, en
+# application du principe énoncé juste après. « Structures algébriques »
+# est un chapitre spécifique à la filière SM (absent de l'épreuve Sciences
+# Expérimentales) — un recensement borné aux sujets SM est donc l'état
+# attendu, pas un signal de recherche incomplète ; introuvable = absent,
+# jamais inventé. Raisonnement rédigé à la voix experte de la maison sur
+# 100 % des questions, citant les rungs R1–R7 ; barème transcrit tel quel
+# dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX
+# brut entre apostrophes simples dans steps[].math, notes sans backslash
+# entre guillemets doubles).
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x1 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R7). Il
@@ -33,9 +38,12 @@
 # préfère l'écarter de la banque pour éviter le recoupement sur la même
 # page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
-# content/pc/reactions-acido-basiques/bank.yaml. bk-2020-n-x2, bk-2022-n-x4
-# et bk-2024-n-x4 (ajoutés 2026-08-05) ne recoupent aucun autre sommet :
-# aucun ne figure dans exercises.yaml.
+# content/pc/reactions-acido-basiques/bank.yaml. bk-2020-n-x2, bk-2022-n-x4,
+# bk-2023-n-x5, bk-2024-n-x4 et bk-2025-n-x4 (bk-2023/bk-2025 ajoutés
+# 2026-08-06) ne recoupent aucun autre sommet : exercises.yaml de cette
+# notion ne contient que r-bac (2019, sourcé) et r-variation (jumeau
+# inventé, anti-mémorisation, status not-applicable) — vérifié par grep,
+# aucun sourcé sur 2020, 2022, 2023, 2024 ou 2025.
 #
 # SCOPE NOTE 1 (divulgation honnête, authoring-side — SOUS-GROUPE) : la
 # question 3 du sujet 2019 (« Montrer que G est un sous-groupe de (E,∗) »)
@@ -51,13 +59,16 @@
 # QUATRE AXIOMES du R3 (déjà appliqué à E en q6) un cran plus bas, sur G —
 # une technique strictement « dans le cadre », déjà démontrée dans cette
 # notion, plutôt qu'un concept neuf non couvert. LA MÊME SITUATION RECURRE
-# DEUX FOIS dans les entrées ajoutées 2026-08-05, et reçoit le MÊME
+# À CINQ REPRISES sur les entrées ajoutées ensuite, et reçoit le MÊME
 # traitement (checklist à quatre axiomes restreinte, jamais de « critère »
-# non enseigné) : bk-2022-n-x4 q1 (« E est un sous-groupe de (M2(ℝ),+) ») et
-# bk-2024-n-x4 q8 (« ℝ×ℝ* est un sous-groupe de (ℂ×ℂ*,T) »). Le trou
-# pédagogique sous-jacent (aucun rung « sous-groupe ») reste réel — trois
-# sujets sur quatre le mobilisent désormais — et mérite l'attention du
-# pédagogy-architect si ce chapitre est repris.
+# non enseigné) : bk-2022-n-x4 q1 (« E est un sous-groupe de (M2(ℝ),+) »,
+# 2026-08-05) ; bk-2023-n-x5 q1 (« E est un sous-groupe de (M2(ℝ),+) »,
+# Partie I) ET q8 (« F−{0} est un sous-groupe de (ℝ*,×) », Partie II —
+# ces deux-là ajoutées 2026-08-06) ; bk-2024-n-x4 q8 (« ℝ×ℝ* est un
+# sous-groupe de (ℂ×ℂ*,T) », 2026-08-05). Le trou pédagogique sous-jacent
+# (aucun rung « sous-groupe ») reste réel — quatre sujets sur six le
+# mobilisent désormais, pour cinq occurrences au total — et mérite
+# l'attention du pédagogy-architect si ce chapitre est repris.
 #
 # SCOPE NOTE 2 (divulgation honnête, authoring-side — INTÈGRE, nouveau
 # 2026-08-05) : bk-2022-n-x4 (questions 4-a à 4-c) demande de montrer que
@@ -72,6 +83,55 @@
 # d'énoncé sur ℤ plutôt que d'un rung — même logique de contournement
 # honnête que pour le sous-groupe. Trou pédagogique réel, distinct de celui
 # du sous-groupe : mérite lui aussi l'attention du pédagogy-architect.
+#
+# SCOPE NOTE 3 (divulgation honnête, authoring-side — CORPS PAR CONTRE-
+# EXEMPLE SANS « INTÈGRE » NOMMÉ, et ESPACE VECTORIEL, nouveau 2026-08-06) :
+# bk-2023-n-x5 q6 (Partie I, « En déduire que (E,+,×) n'est pas un corps »)
+# repose sur le MÊME critère de fond que SCOPE NOTE 2 (un produit de deux
+# éléments non nuls qui vaut la matrice nulle contredit l'inversibilité
+# pour ×), mais cette fois le rappel de tête d'énoncé ne qualifie PAS
+# (M2(ℝ),+,×) d'« intègre » — rien à emprunter à l'énoncé cette fois. Le
+# champ `reasoning` de q6 reste donc strictement DANS LE CADRE du rung R6 :
+# au lieu de nommer « diviseurs de zéro » ou « anneau intègre » (concepts
+# toujours absents de lesson.md), il prouve directement par l'absurde, en
+# multipliant les deux membres de M(√3,1)×M(-√3,1)=O par l'inverse supposé
+# de M(√3,1) — une manipulation qui ne mobilise que la définition du corps
+# du R6 (tout élément non nul inversible pour ×) et l'associativité, deux
+# faits déjà couverts. Aucun vocabulaire non enseigné n'est introduit ; le
+# critère sous-jacent (absence de diviseurs de zéro dans un corps) reste
+# néanmoins un fait qu'un élève n'a jamais vu nommé — signalé ici par
+# transparence, mais traité « dans le cadre » par cette rédaction.
+#
+# Par ailleurs, bk-2023-n-x5 q2 (Partie I, « Montrer que E est un sous-
+# espace vectoriel de (M2(ℝ),+,·) ») mobilise la notion d'ESPACE VECTORIEL,
+# qui n'appartient PAS à ce chapitre (lesson.md ne traite que lois, groupes,
+# anneaux et corps — jamais d'algèbre linéaire). C'est le rappel de tête
+# d'énoncé du sujet lui-même qui introduit « (M2(ℝ),+,·) est un espace
+# vectoriel réel », signe que la notion est supposée acquise d'un chapitre
+# antérieur du cursus, pas de celui-ci. Le `reasoning` de q2 traite donc ce
+# point comme un ACQUIS DE PARCOURS ANTÉRIEUR (stabilité pour + et pour ·,
+# exactement le même geste de vérification que R1, transposé à une
+# structure hors chapitre), sans prétendre le rattacher à un rung de cette
+# notion — à l'attention du pédagogy-architect si un pont explicite avec le
+# chapitre « espaces vectoriels » est jugé utile.
+#
+# SCOPE NOTE 4 (divulgation honnête, authoring-side — TRANSPORT DE
+# STRUCTURE SUR DEUX LOIS À LA FOIS, nouveau 2026-08-06) : bk-2025-n-x4 q9
+# (« Montrer que (E,T,×) est un corps commutatif ») étend la technique du
+# rung R7 au-delà de ce qu'il illustre explicitement : dans la leçon, R7 ne
+# transporte structure et propriétés QUE pour une seule loi à la fois
+# (l'isomorphisme φ du sujet 2019 ne transporte que ∗ vers ×). Ici,
+# l'application φ(x) = M((1-x)/2) se trouve compatible à la fois avec +
+# (rung R7, déjà établi aux q7-q8) ET avec × (fait nouveau, vérifié
+# directement dans le `reasoning` de q9 : φ(x)×φ(y) = φ(xy)) — ce qui
+# permet de transporter d'un coup toute la structure de corps de (ℝ,+,×)
+# (un corps archi-connu, au même titre que (ℚ,+,×) au R6) vers (E,T,×). La
+# généralisation (« un isomorphisme qui respecte deux lois à la fois
+# transporte une structure d'anneau/de corps entière ») n'est nulle part
+# énoncée comme telle dans lesson.md — c'est un prolongement naturel, mais
+# un prolongement, du geste du R7. Signalé ici pour le pédagogy-architect ;
+# le `reasoning` de q9 le présente comme la suite directe de ce qui précède,
+# pas comme un rung caché.
 
 notion: maths/structures-algebriques
 
@@ -769,3 +829,458 @@ entries:
             note: "Le symétrique de la question 5, avec b réel : les deux composantes restent réelles, la seconde non nulle."
           - math: '\mathbb{R}\times\mathbb{R}^* \ \text{est un sous-groupe de} \ (\mathbb{C}\times\mathbb{C}^*,\ T)'
             note: "Les quatre axiomes sont vérifiés dans ℝ×ℝ*."
+
+  # ── bk-2023-n-x5 — 2023 N, Exercice 5 : anneau de matrices M(x,y) sur R (pas un corps), corps G≅Q[√3] via un isomorphisme ──
+  - id: bk-2023-n-x5
+    title: "Anneau de matrices M(x,y) sur ℝ (pas un corps), corps G≅ℚ[√3] via un isomorphisme"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 5"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, AlloSchool element/142490 (Exercice 5, « Structures
+        algébriques », barème 3,5 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/structures-algebriques.md, section
+        « 2023 — session normale — Exercice 5 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan —
+        matrice M(x,y), produit M(x,y)×M(x',y')=M(xx'+3yy', xy'+yx'),
+        identité M(√3,1)×M(-√3,1)=O, ensembles F et G, isomorphisme φ,
+        barème par question — agent-vérificateur-adversarial, 2026-08-06).
+        Mojibake massif et incohérent sur les glyphes de domaine (ℝ²/ℚ²)
+        dans le scan source — aucune correspondance glyphe→lettre fiable —
+        résolu par la logique interne de l'énoncé, pas par lecture directe :
+        E=ℝ² (forcé car M(√3,1)∈E exige des coefficients irrationnels), F=ℚ²
+        et G=ℚ² (forcés car « x+y√3=0 ⟺ x=y=0 » n'est vraie que sur ℚ, et G
+        doit être un corps en Partie II Q4 alors que sur ℝ il coïnciderait
+        avec E, qui a des diviseurs de zéro d'après la Partie I Q4). Les
+        marqueurs « (glyphe à confirmer) » du docs/sujets sont conservés
+        tels quels dans les stems ci-dessous, aux cinq endroits où le scan
+        les porte (définitions de F et G, et les trois domaines Q, R*, Q de
+        la Partie II) — non résolus ici, seulement promus par unicité
+        logique de la lecture, pas par relecture du glyphe. Deux points hors
+        du périmètre strict des rungs de cette notion, signalés en tête de
+        fichier (SCOPE NOTE 3) : q2 mobilise la notion de sous-espace
+        vectoriel (chapitre antérieur, jamais enseigné dans lesson.md) ; q6
+        (« (E,+,×) n'est pas un corps ») repose sur un critère de type
+        diviseurs de zéro / anneau intègre, jamais nommé dans lesson.md —
+        bridgé directement via la définition du corps du rung R6
+        (multiplication par l'inverse supposé), sans introduire de
+        vocabulaire non enseigné. q1 et q8 relèvent en outre du trou
+        « sous-groupe » déjà documenté (SCOPE NOTE 1).
+    intro: |-
+      **Structures algébriques (examen national, session normale 2023, Sciences Mathématiques).**
+
+      On rappelle que $(M_2(\mathbb{R}), +, \times)$ est un anneau non commutatif de zéro la matrice $O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$, et que $(M_2(\mathbb{R}), +, \cdot)$ est un espace vectoriel réel.
+
+      On considère l'ensemble $E = \left\{ M(x,y) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} \ /\ (x,y) \in \mathbb{R}^2 \right\}$
+
+      L'exercice construit d'abord, sur $\mathbb{R}$, un anneau commutatif et unitaire de matrices (rung R5, avec les deux extensions déjà rencontrées au sujet 2022) — puis montre, par un contre-exemple, qu'il **n'est pas un corps** (rung R6). La seconde partie restreint les mêmes coefficients à $\mathbb{Q}$ : sur ce sous-ensemble plus étroit, la même famille de matrices devient, cette fois, un véritable corps — identifié par un isomorphisme (rung R7) à $F = \mathbb{Q}[\sqrt3]$.
+    questions:
+      - id: q1
+        part: "Partie I — $E$ : sous-groupe additif et sous-espace vectoriel"
+        stem: |-
+          **(0,5 pt)** Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}), +)$.
+        reasoning: |-
+          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au rung R3, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$. C'est exactement le geste déjà mené pour l'ensemble $E$ du sujet 2022 (matrices à coefficients entiers), ici avec des coefficients réels.
+
+          La stabilité se lit directement sur l'addition matricielle, coefficient par coefficient : le résultat reste de la forme $M(\cdot,\cdot)$. L'associativité est héritée de $M_2(\mathbb{R})$ tout entier. Le neutre $O=M(0,0)$ et l'opposé $-M(x,y)=M(-x,-y)$ restent eux aussi de cette forme — les quatre axiomes tiennent dans $E$.
+        steps:
+          - math: 'M(x,y)+M(a,b) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} + \begin{pmatrix} a+b & b \\ 2b & a-b \end{pmatrix} = \begin{pmatrix} (x+a)+(y+b) & y+b \\ 2(y+b) & (x+a)-(y+b) \end{pmatrix}'
+            note: "Addition matricielle coefficient par coefficient, avec (a,b) pour le second couple."
+          - math: 'M(x,y)+M(a,b) = M(x+a,\ y+b) \in E'
+            note: "E est stable pour + : le résultat est encore de la forme M(·,·)."
+          - math: '+ \ \text{associative sur } M_2(\mathbb{R}) \ (\text{fait général}) \ \Longrightarrow\ \text{associative sur } E'
+            note: "Héritée de M2(R) tout entier, comme pour l'ensemble E du sujet 2022."
+          - math: 'O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = M(0,0) \in E, \qquad -M(x,y) = M(-x,\ -y) \in E'
+            note: "Le neutre O et l'opposé de chaque élément restent de la forme M(·,·) : ils sont dans E."
+          - math: 'E \ \text{est un sous-groupe de} \ (M_2(\mathbb{R}),+)'
+            note: "Les quatre axiomes sont vérifiés dans E."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}), +, \cdot)$.
+        reasoning: |-
+          Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$ mobilise une notion d'un chapitre antérieur du cursus (les espaces vectoriels), rappelée en tête d'énoncé — pas un outil neuf de ce chapitre sur les structures algébriques. Le geste reste néanmoins très proche de la stabilité du rung R1 : $E$ est non vide (il contient $O$, question précédente), stable pour $+$ (déjà établi), et il reste seulement à vérifier la stabilité pour la multiplication par un réel $\lambda$.
+
+          Le calcul est direct : multiplier chaque coefficient de $M(x,y)$ par $\lambda$ revient à multiplier $x$ et $y$ par $\lambda$ dans la même formule, donc le résultat reste de la forme $M(\cdot,\cdot)$.
+        steps:
+          - math: 'E \neq \varnothing \quad (O = M(0,0) \in E,\ \text{q1}), \qquad E \ \text{stable pour} \ + \quad (\text{q1})'
+            note: "Deux des trois conditions d'un sous-espace vectoriel, déjà établies."
+          - math: '\lambda \cdot M(x,y) = \lambda\begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} = \begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix}'
+            note: "Multiplication de chaque coefficient de M(x,y) par le réel λ."
+          - math: '= \begin{pmatrix} \lambda x+\lambda y & \lambda y \\ 2\lambda y & \lambda x-\lambda y \end{pmatrix} = M(\lambda x,\ \lambda y) \in E'
+            note: "Le résultat garde exactement la forme M(·,·) : E est stable pour la multiplication par un scalaire."
+          - math: 'E \ \text{est un sous-espace vectoriel de} \ (M_2(\mathbb{R}),+,\cdot)'
+            note: "Non vide, stable pour + et pour · : les trois conditions sont réunies."
+      - id: q3
+        part: "La multiplication sur $E$ : un anneau commutatif et unitaire"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $\forall(x, y, x', y') \in \mathbb{R}^4$ ; $M(x,y) \times M(x',y') = M(xx' + 3yy',\ xy' + yx')$
+        reasoning: |-
+          Un calcul de vérification, pas de recherche : on développe le produit matriciel usuel, ligne par colonne, et on regroupe pour retrouver la forme $M(\cdot,\cdot)$. Dans les calculs qui suivent, on note $(a,b)$ le second couple de l'énoncé $(x',y')$ — pour éviter la confusion typographique du prime — sans rien changer au fond : c'est exactement le même second facteur.
+
+          Ce résultat sera réutilisé tel quel dans presque toutes les questions qui suivent, dans les deux parties : c'est lui qui donne, à chaque fois, la forme du produit de deux éléments de $E$ (ou de $F$, une fois identifié à $E$ par $\varphi$).
+        steps:
+          - math: 'M(x,y)\times M(a,b) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix}\begin{pmatrix} a+b & b \\ 2b & a-b \end{pmatrix}'
+            note: "Produit matriciel, avec (a,b) pour le second couple (x',y') de l'énoncé."
+          - math: '= \begin{pmatrix} (x+y)(a+b)+2yb & (x+y)b+y(a-b) \\ 2y(a+b)+2b(x-y) & 2yb+(x-y)(a-b) \end{pmatrix}'
+            note: "Développement ligne par colonne."
+          - math: '= \begin{pmatrix} xa+3yb+xb+ya & xb+ya \\ 2(xb+ya) & xa+3yb-xb-ya \end{pmatrix} = M(xa+3yb,\ xb+ya)'
+            note: "Après simplification, le résultat a exactement la forme M(·,·) annoncée."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** En déduire que $(E, +, \times)$ est un anneau commutatif et unitaire.
+        reasoning: |-
+          On va un cran plus loin que la définition de base de l'anneau (rung R5) : après avoir établi que $(E,+)$ est un groupe commutatif (q1, commutativité héritée de $+$ sur $M_2(\mathbb{R})$, où elle tient toujours) et que $\times$ est associative et distributive sur $E$ (héritées de $M_2(\mathbb{R})$ tout entier, déjà un anneau), reste ce qui ne s'hérite **pas** automatiquement : $M_2(\mathbb{R})$ n'est **pas** commutatif pour $\times$ (rappel de tête d'énoncé), donc la commutativité de $\times$ sur $E$ se vérifie directement, avec la formule de la question précédente.
+
+          L'unité s'hérite sans difficulté : $I=M(1,0)$ est déjà l'unité de tout $M_2(\mathbb{R})$, et $I\in E$.
+        steps:
+          - math: '(E,+) \ \text{groupe commutatif} \ (\text{q1, hérité de } +\text{ sur } M_2(\mathbb{R}))'
+            note: "Premier ingrédient de l'anneau."
+          - math: '\times \ \text{associative et distributive par rapport à} \ + \ \text{sur } E \ (\text{héritées de } M_2(\mathbb{R}))'
+            note: "Deuxième et troisième ingrédients, hérités du grand anneau."
+          - math: 'M(x,y)\times M(a,b) = M(xa+3yb,\ xb+ya) = M(ax+3by,\ ay+bx) = M(a,b)\times M(x,y)'
+            note: "Commutativité de × sur E : les deux coordonnées du résultat sont symétriques en (x,y) et (a,b)."
+          - math: 'I = M(1,0) \in E \quad (x+y=1,\ y=0,\ 2y=0,\ x-y=1)'
+            note: "I, déjà unité de tout M2(R), appartient à E."
+          - math: '(E,+,\times) \ \text{est un anneau commutatif et unitaire}'
+            note: "Toutes les conditions sont réunies."
+      - id: q5
+        part: "$(E,+,\\times)$ n'est pas un corps"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $M(\sqrt{3}, 1) \times M(-\sqrt{3}, 1) = O$
+        reasoning: |-
+          Un calcul de vérification direct, avec la formule de la question 3 ($x=\sqrt3, y=1$ pour le premier facteur ; $a=-\sqrt3, b=1$ pour le second, en reprenant la notation $(a,b)$ introduite pour ce second couple).
+        steps:
+          - math: 'M(\sqrt3,1)\times M(-\sqrt3,1) = M\big(\sqrt3\cdot(-\sqrt3)+3\cdot1\cdot1,\ \ \sqrt3\cdot1+1\cdot(-\sqrt3)\big)'
+            note: "Formule de la question 3, avec x=√3, y=1, a=−√3, b=1."
+          - math: '\sqrt3\cdot(-\sqrt3)+3 = -3+3 = 0, \qquad \sqrt3-\sqrt3 = 0'
+            note: "Les deux coordonnées s'annulent."
+          - math: 'M(\sqrt3,1)\times M(-\sqrt3,1) = M(0,0) = O'
+            note: "Une matrice M(0,0) est exactement la matrice nulle."
+      - id: q6
+        stem: |-
+          **(0,25 pt)** En déduire que $(E, +, \times)$ n'est pas un corps.
+        reasoning: |-
+          Un corps exige (rung R6) que **tout** élément non nul possède un symétrique pour $\times$. On vient d'exhiber deux matrices non nulles — $M(\sqrt3,1)$ et $M(-\sqrt3,1)$ ont chacune un coefficient $y=1\neq0$ en haut à droite, donc aucune des deux n'est la matrice nulle $O$ — dont le produit vaut pourtant $O$ (question précédente).
+
+          Or dans un corps, ceci est impossible : si $M(\sqrt3,1)$ admettait un inverse pour $\times$, multiplier les deux membres de $M(\sqrt3,1)\times M(-\sqrt3,1)=O$ par cet inverse donnerait $M(-\sqrt3,1) = M(\sqrt3,1)^{-1}\times O = O$ — contradiction, puisque $M(-\sqrt3,1)$ est non nulle. $M(\sqrt3,1)$ est donc un élément non nul de $E$ sans symétrique pour $\times$ : l'exigence du rung R6 échoue, $(E,+,\times)$ n'est pas un corps.
+        steps:
+          - math: 'M(\sqrt3,1) \neq O \quad \text{et} \quad M(-\sqrt3,1) \neq O \qquad (\text{coefficient } y=1\neq0 \text{ dans les deux})'
+            note: "Les deux facteurs du produit de la question précédente sont non nuls."
+          - math: '\text{Si } M(\sqrt3,1) \ \text{était inversible dans} \ (E,\times): \quad M(\sqrt3,1)^{-1}\times\Big[M(\sqrt3,1)\times M(-\sqrt3,1)\Big] = M(\sqrt3,1)^{-1}\times O = O'
+            note: "On multiplierait les deux membres de l'égalité précédente par l'inverse supposé."
+          - math: 'M(\sqrt3,1)^{-1}\times\Big[M(\sqrt3,1)\times M(-\sqrt3,1)\Big] = \Big[M(\sqrt3,1)^{-1}\times M(\sqrt3,1)\Big]\times M(-\sqrt3,1) = M(-\sqrt3,1)'
+            note: "Associativité, puis inverse fois M(√3,1) donne I : il reste M(−√3,1)."
+          - math: 'M(-\sqrt3,1) = O \quad \text{contredit} \quad M(-\sqrt3,1) \neq O'
+            note: "Contradiction : M(√3,1) ne peut donc pas être inversible dans (E,×)."
+          - math: '(E,+,\times) \ \text{ne constitue pas un corps}'
+            note: "Un seul élément non nul sans symétrique suffit à réfuter l'exigence du rung R6."
+      - id: q7
+        part: "Partie II — $F$ et $G$ : un sous-groupe multiplicatif"
+        stem: |-
+          Soient $F = \left\{ x + y\sqrt{3} \ /\ (x,y) \in \mathbb{Q}^2 \right\}$ *(glyphe à confirmer : $\mathbb{Q}$)* et $G = \left\{ M(x,y) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} \ /\ (x,y) \in \mathbb{Q}^2 \right\}$ *(glyphe à confirmer : $\mathbb{Q}$)*.
+
+          **(0,25 pt)** Montrer que : $\forall(x,y) \in \mathbb{Q}^2$ *(glyphe à confirmer : $\mathbb{Q}$)* ; $x + y\sqrt{3} = 0$ si et seulement si $(x = 0$ et $y = 0)$.
+        reasoning: |-
+          Le sens facile d'abord : si $x=y=0$, alors $x+y\sqrt3=0$, trivialement. Le sens qui demande un peu plus : si $x+y\sqrt3=0$, montrer que $x$ et $y$ sont **forcément** nuls tous les deux — pas juste l'un des deux.
+
+          On raisonne par l'absurde sur $y$ : si $y\neq0$, l'égalité $x+y\sqrt3=0$ donnerait $\sqrt3=-\dfrac{x}{y}$, un rationnel — or $\sqrt3$ est irrationnel, un fait classique du cursus (preuve par l'absurde, comme pour $\sqrt2$), pas un nouvel outil de ce chapitre — exactement le même argument que celui déjà mobilisé au sujet 2022 pour $\sqrt3$. Contradiction : $y=0$, puis $x=0$.
+        steps:
+          - math: 'x=y=0 \ \Longrightarrow\ x+y\sqrt3 = 0'
+            note: "Sens direct, immédiat."
+          - math: '\text{Si } y\neq 0: \quad x+y\sqrt3=0 \ \Longrightarrow\ \sqrt3 = -\dfrac{x}{y} \in \mathbb{Q}'
+            note: "Supposer y non nul forcerait √3 à être rationnel."
+          - math: '\sqrt3 \notin \mathbb{Q} \ (\text{fait classique}) \ \Longrightarrow\ y=0 \ \Longrightarrow\ x=0'
+            note: "Contradiction : y doit être nul, puis x aussi."
+      - id: q8
+        stem: |-
+          **(0,25 pt)** Montrer que $F - \{0\}$ est un sous-groupe de $(\mathbb{R}^*, \times)$ *(glyphe à confirmer : $\mathbb{R}$)*.
+        reasoning: |-
+          Montrer que $F-\{0\}$ est un sous-groupe de $(\mathbb{R}^*,\times)$, c'est montrer que $(F-\{0\},\times)$ est **lui-même** un groupe — même démarche que pour $E$ à la question 1, un cran plus loin dans le chapitre. La question précédente donne le point-clé : $x+y\sqrt3=0$ seulement si $x=y=0$, donc tout élément de $F-\{0\}$ a $(x,y)\neq(0,0)$ et un carré $x^2-3y^2$ **non nul** (même argument par l'absurde qu'à la question précédente, appliqué à $x^2-3y^2=0 \Leftrightarrow x^2=3y^2$).
+
+          Stabilité : le produit de deux éléments de $F$ reste dans $F$ (coefficients rationnels), et le produit de deux réels non nuls est non nul, donc reste dans $F-\{0\}$. Neutre : $1=1+0\sqrt3\in F-\{0\}$. Symétrique : l'inverse réel $\dfrac{1}{x+y\sqrt3}$ se réécrit, en multipliant par le quotient conjugué $x-y\sqrt3$ (même technique de rationalisation que pour les nombres complexes), avec des coefficients rationnels — donc reste dans $F-\{0\}$. Associativité : héritée de $\mathbb{R}^*$.
+        steps:
+          - math: '(x+y\sqrt3)(a+b\sqrt3) = (xa+3yb) + (xb+ya)\sqrt3 \in F'
+            note: "Produit de deux éléments de F : coefficients rationnels, encore de la forme p+q√3."
+          - math: '(x+y\sqrt3)\neq0,\ (a+b\sqrt3)\neq0 \ \Longrightarrow\ (x+y\sqrt3)(a+b\sqrt3)\neq0'
+            note: "Produit de deux réels non nuls : reste dans F−{0}."
+          - math: '1 = 1+0\sqrt3 \in F-\{0\}'
+            note: "Le neutre 1 appartient à F−{0}."
+          - math: '\dfrac{1}{x+y\sqrt3} = \dfrac{x-y\sqrt3}{(x+y\sqrt3)(x-y\sqrt3)} = \dfrac{x}{x^2-3y^2} - \dfrac{y}{x^2-3y^2}\sqrt3'
+            note: "Quotient conjugué : x²−3y² est non nul (même argument qu'à la question précédente), le résultat a des coefficients rationnels."
+          - math: 'F-\{0\} \ \text{est un sous-groupe de} \ (\mathbb{R}^*,\times)'
+            note: "Stabilité, neutre et symétriques restent dans F−{0} ; associativité héritée de R*."
+      - id: q9
+        part: "Un isomorphisme $\\varphi$ vers $G$"
+        stem: |-
+          Soit $\varphi$ l'application définie de $F - \{0\}$ vers $E$ par : $\forall(x,y) \in \mathbb{Q}^2 - \{(0,0)\}$ *(glyphe à confirmer : $\mathbb{Q}$)* ; $\varphi(x + y\sqrt{3}) = M(x,y)$.
+
+          **(0,25 pt)** Vérifier que : $\varphi(F - \{0\}) = G - \{O\}$
+        reasoning: |-
+          $\varphi$ envoie chaque élément $x+y\sqrt3$ de $F-\{0\}$ (donc $(x,y)\in\mathbb{Q}^2-\{(0,0)\}$, par la question 1) sur $M(x,y)$ — une matrice dont les deux coefficients $(x,y)$ sont eux aussi rationnels et non tous deux nuls. C'est très exactement la définition de $G-\{O\}$ : $G$ est l'ensemble des $M(x,y)$ pour $(x,y)\in\mathbb{Q}^2$, et $M(x,y)=O$ équivaut à $x=y=0$ (même critère que pour $E$, restreint ici à $\mathbb{Q}$).
+
+          Deux inclusions à vérifier : tout élément de $\varphi(F-\{0\})$ est bien dans $G-\{O\}$ (par construction), et réciproquement toute matrice de $G-\{O\}$ a un antécédent dans $F-\{0\}$ (celui qu'on lit directement sur ses coefficients).
+        steps:
+          - math: 'z=x+y\sqrt3 \in F-\{0\} \ \Longrightarrow\ (x,y)\in\mathbb{Q}^2-\{(0,0)\} \ \Longrightarrow\ \varphi(z)=M(x,y)\in G,\ M(x,y)\neq O'
+            note: "L'image d'un élément de F−{0} est une matrice de G non nulle."
+          - math: 'M(x,y)\in G-\{O\} \ \Longrightarrow\ (x,y)\in\mathbb{Q}^2-\{(0,0)\} \ \Longrightarrow\ x+y\sqrt3 \in F-\{0\},\quad \varphi(x+y\sqrt3)=M(x,y)'
+            note: "Réciproquement, toute matrice de G−{O} a un antécédent explicite dans F−{0}."
+          - math: '\varphi(F-\{0\}) = G-\{O\}'
+            note: "Les deux inclusions réunies donnent l'égalité des ensembles."
+      - id: q10
+        stem: |-
+          **(0,25 pt)** Montrer que $\varphi$ est un homomorphisme de $(F - \{0\}, \times)$ vers $(E, \times)$.
+        reasoning: |-
+          Le geste-pont du rung R7 : il faut montrer $\varphi(z\times w) = \varphi(z)\times\varphi(w)$ pour tous $z,w\in F-\{0\}$ — en notant $z=x+y\sqrt3$ et $w=a+b\sqrt3$ les deux éléments, pour éviter la confusion des primes. Le produit $z\times w$ a déjà été développé à la question précédente (question 2) : $(xa+3yb)+(xb+ya)\sqrt3$. Son image par $\varphi$ est donc $M(xa+3yb,\ xb+ya)$.
+
+          De l'autre côté, $\varphi(z)\times\varphi(w) = M(x,y)\times M(a,b)$, qui vaut exactement $M(xa+3yb,\ xb+ya)$ par la formule de la question 3 (Partie I) — le même calcul matriciel, appliqué cette fois à des coefficients rationnels. Les deux membres coïncident : $\varphi$ transforme $\times$ en $\times$, c'est un homomorphisme.
+        steps:
+          - math: 'z=x+y\sqrt3,\quad w=a+b\sqrt3 \ \in F-\{0\}'
+            note: "Deux éléments quelconques de F−{0}, notés z et w pour éviter le prime."
+          - math: 'z\times w = (xa+3yb)+(xb+ya)\sqrt3 \quad (\text{q8})'
+            note: "Produit déjà développé à la question précédente."
+          - math: '\varphi(z\times w) = M(xa+3yb,\ xb+ya)'
+            note: "Image par φ, application directe de sa définition."
+          - math: '\varphi(z)\times\varphi(w) = M(x,y)\times M(a,b) = M(xa+3yb,\ xb+ya) \quad (\text{Partie I, q3})'
+            note: "Produit des images, via la formule de la Partie I."
+          - math: '\varphi(z\times w) = \varphi(z)\times\varphi(w)'
+            note: "Les deux membres coïncident : φ est un homomorphisme de (F−{0},×) vers (E,×)."
+      - id: q11
+        stem: |-
+          **(0,25 pt)** En déduire que $(G - \{O\}, \times)$ est un groupe commutatif.
+        reasoning: |-
+          On mobilise le pont du rung R7 : $(F-\{0\},\times)$ est un groupe commutatif (question 2 — sous-groupe de $(\mathbb{R}^*,\times)$, qui est lui-même commutatif, donc $F-\{0\}$ l'hérite), et $\varphi$ en est un homomorphisme (question précédente) dont l'image est exactement $G-\{O\}$ (question 3-a) : $\varphi$ est donc **surjective** de $F-\{0\}$ sur $G-\{O\}$.
+
+          $\varphi$ est de plus injective : deux couples rationnels distincts $(x,y)\neq(a,b)$ donnent deux matrices $M(x,y)\neq M(a,b)$ (leurs coefficients diffèrent déjà), donc deux images distinctes. $\varphi$ est un isomorphisme de $(F-\{0\},\times)$ vers $(G-\{O\},\times)$ : toute la structure de groupe commutatif se transporte, sans re-vérifier aucun axiome sur $G-\{O\}$.
+        steps:
+          - math: '(F-\{0\},\times) \ \text{groupe commutatif} \quad (\text{q8, sous-groupe de } (\mathbb{R}^*,\times) \text{ commutatif})'
+            note: "Premier ingrédient du transport de structure."
+          - math: '\varphi(F-\{0\}) = G-\{O\} \quad (\text{q9}) \ \Longrightarrow\ \varphi \ \text{surjective sur} \ G-\{O\}'
+            note: "L'image de φ est exactement G−{O} : surjectivité."
+          - math: '(x,y)\neq(a,b) \ \Longrightarrow\ M(x,y)\neq M(a,b) \ \Longrightarrow\ \varphi \ \text{injective}'
+            note: "Deux couples distincts donnent deux matrices distinctes : φ est injective."
+          - math: '\varphi \ \text{est un isomorphisme de} \ (F-\{0\},\times) \ \text{vers} \ (G-\{O\},\times)'
+            note: "Bijective et morphisme (q10) : φ est un isomorphisme."
+          - math: '(G-\{O\},\times) \ \text{est un groupe commutatif}'
+            note: "La structure de F−{0} se transporte à G−{O} par φ, sans re-vérifier les axiomes."
+      - id: q12
+        part: "$(G,+,\\times)$ est un corps commutatif"
+        stem: |-
+          **(0,25 pt)** Montrer que $(G, +, \times)$ est un corps commutatif.
+        reasoning: |-
+          Synthèse finale, en réutilisant tout ce qui précède plutôt qu'en repartant de zéro. $(G,+)$ est un sous-groupe de $(E,+)$ : même démarche qu'à la question 1 pour $E$, avec $\mathbb{Q}$ à la place de $\mathbb{R}$ — $\mathbb{Q}$ est stable pour $+$ et le passage à l'opposé, donc $G$ l'est aussi. Associativité, distributivité et commutativité de $\times$ sur $G$ s'héritent directement de $E$ (Partie I, question 3-b) : ce qui est vrai pour **tous** les éléments de $E$ reste vrai en particulier pour ceux de $G\subset E$. L'unité $I=M(1,0)$ appartient à $G$, puisque $(1,0)\in\mathbb{Q}^2$.
+
+          Reste l'exigence propre au corps (rung R6) : **tout** élément non nul de $G$ a-t-il un symétrique pour $\times$ ? C'est exactement ce que dit la question précédente — $(G-\{O\},\times)$ est un groupe, donc chaque élément non nul de $G$ possède un symétrique, qui reste dans $G$. Les conditions du R6 sont réunies : $(G,+,\times)$ est un corps commutatif.
+        steps:
+          - math: '(G,+) \ \text{sous-groupe de} \ (E,+) \quad (\mathbb{Q} \ \text{stable pour} \ + \ \text{et le passage à l opposé, même geste que pour} \ E \ \text{en q1})'
+            note: "Premier ingrédient de l'anneau, restreint à Q."
+          - math: '\times \ \text{associative, distributive, commutative sur} \ G \quad (\text{héritées de } E, \ \text{Partie I q3-b})'
+            note: "Ce qui est vrai pour tout élément de E reste vrai pour ceux de G."
+          - math: 'I = M(1,0) \in G \quad ((1,0)\in\mathbb{Q}^2)'
+            note: "L'unité appartient à G."
+          - math: '(G-\{O\},\times) \ \text{groupe} \quad (\text{q11}) \ \Longrightarrow\ \text{tout élément non nul de } G \text{ a un symétrique pour} \ \times'
+            note: "C'est exactement l'exigence supplémentaire du rung R6, déjà établie."
+          - math: '(G,+,\times) \ \text{est un corps commutatif}'
+            note: "Anneau commutatif unitaire, et tout élément non nul inversible pour × : les conditions du R6 sont réunies."
+
+  # ── bk-2025-n-x4 — 2025 N, Exercice 4 : E=I+xA dans M3(R), groupe pour ×, loi T, corps commutatif via un isomorphisme ──
+  - id: bk-2025-n-x4
+    title: "Ensemble de matrices E=I+xA, groupe pour ×, loi T et corps commutatif via un isomorphisme"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, AlloSchool element/145783 (Exercice 4, « Structures
+        algébriques », barème 3,5 points). Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/structures-algebriques.md, section
+        « 2025 — session normale — Exercice 4 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan —
+        matrice A 3×3, identité A²=−2A, loi T, application
+        φ(x)=M((1−x)/2), barème par question — agent-vérificateur-adversarial,
+        2026-08-06). Sujet transcrit en Unicode propre (aucun mojibake).
+        Point hors du périmètre strict des rungs de cette notion, signalé en
+        tête de fichier (SCOPE NOTE 4) : la question finale q9 (« (E,T,×)
+        est un corps commutatif ») étend la technique de transport de
+        structure du rung R7 — illustré dans la leçon pour une seule loi à
+        la fois — à deux lois simultanément (φ compatible à la fois avec +
+        et avec ×, un fait vérifié directement dans le reasoning de q9, pas
+        fourni comme sous-question séparée par l'énoncé).
+    intro: |-
+      **Structures algébriques (examen national, session normale 2025, Sciences Mathématiques).**
+
+      On rappelle que $(M_3(\mathbb{R}),+,\times)$ est un anneau unitaire et non commutatif de zéro la matrice $O = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$, et que $(M_3(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel.
+
+      Soient la matrice $A = \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix}$ et l'ensemble $E = \left\{ M(x) = I + xA\ /\ x \in \mathbb{R} \right\}$.
+
+      L'exercice enchaîne d'abord un groupe multiplicatif obtenu en retirant un seul élément de $E$ (rung R3, avec une stabilité conditionnelle que les sujets 2019 et 2022 n'avaient pas), puis une seconde loi $T$ sur $E$ tout entier avec un isomorphisme depuis $(\mathbb{R},+)$ (rung R7), pour terminer sur un corps commutatif (rung R6) où $T$ joue le rôle de $+$.
+    questions:
+      - id: q1
+        part: "Le carré de $A$, et le produit $M(x)\\times M(y)$"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $A^2 = -2A$
+        reasoning: |-
+          Un calcul de vérification direct : on développe $A^2 = A\times A$ coefficient par coefficient (produit de deux matrices $3\times3$), et on compare au résultat annoncé, $-2A$. Rien à deviner — la matrice $A$ et le résultat sont tous deux donnés, il suffit de mener le calcul sans erreur.
+
+          Ce résultat sert de pivot pour toute la suite de l'exercice : dès que $A^2$ se ramène à un multiple de $A$ lui-même, n'importe quel produit qui fait apparaître $A^2$ se simplifie de la même façon — c'est exactement ce que la question suivante exploite.
+        steps:
+          - math: 'A = \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix}'
+            note: "La matrice A donnée par l'énoncé."
+          - math: 'A^2 = \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix}\begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix} = \begin{pmatrix} 2 & 2 & 0 \\ 2 & 2 & 0 \\ 2 & -2 & 4 \end{pmatrix}'
+            note: "Produit matriciel usuel, ligne par colonne (calcul mené entièrement, coefficient par coefficient)."
+          - math: '-2A = -2\begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix} = \begin{pmatrix} 2 & 2 & 0 \\ 2 & 2 & 0 \\ 2 & -2 & 4 \end{pmatrix}'
+            note: "Chaque coefficient de A multiplié par −2 : résultat identique à A²."
+          - math: 'A^2 = -2A'
+            note: "Les deux matrices coïncident coefficient par coefficient."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** En déduire que : $\forall(x,y) \in \mathbb{R}^2$ ; $M(x) \times M(y) = M(x + y - 2xy)$
+        reasoning: |-
+          $M(x)\times M(y) = (I+xA)(I+yA)$ se développe comme un produit de deux binômes matriciels — $I$ commute avec tout, donc le développement se fait exactement comme pour des réels. Le seul terme qui ne se réduit pas trivialement est $xyA^2$ : c'est précisément là que sert le résultat de la question précédente, $A^2=-2A$, pour ramener ce terme à un multiple de $A$ et regrouper le tout sous la forme $M(\cdot)$.
+        steps:
+          - math: 'M(x)\times M(y) = (I+xA)(I+yA) = I + yA + xA + xyA^2'
+            note: "Développement du produit, I commutant avec tout."
+          - math: 'xyA^2 = xy\cdot(-2A) = -2xyA \quad (\text{q1})'
+            note: "On remplace A² par −2A."
+          - math: 'M(x)\times M(y) = I + (x+y)A - 2xyA = I + (x+y-2xy)A'
+            note: "Regroupement des termes en A."
+          - math: 'M(x)\times M(y) = M(x+y-2xy)'
+            note: "Le résultat a exactement la forme M(·) annoncée."
+      - id: q3
+        part: "Un élément de $E$ qui n'est pas inversible"
+        stem: |-
+          **(0,25 pt)** Calculer $M\!\left(\dfrac{1}{2}\right) \times \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$
+        reasoning: |-
+          Un calcul matriciel direct. $M\!\left(\dfrac12\right) = I+\dfrac12 A$ se calcule d'abord explicitement, coefficient par coefficient, puis on multiplie par la matrice donnée — qui n'a qu'un seul coefficient non nul, en bas à droite. Multiplier par une matrice aussi creuse ne fait ressortir qu'une seule colonne de $M\!\left(\dfrac12\right)$ : la troisième.
+        steps:
+          - math: 'M\!\left(\dfrac12\right) = I + \dfrac12 A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + \dfrac12\begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix} = \begin{pmatrix} \frac12 & -\frac12 & 0 \\ -\frac12 & \frac12 & 0 \\ -\frac12 & \frac12 & 0 \end{pmatrix}'
+            note: "Calcul explicite de M(1/2), coefficient par coefficient."
+          - math: 'M\!\left(\dfrac12\right) \times \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}'
+            note: "La matrice de droite n'a qu'un coefficient non nul, en position (3,3)."
+          - math: '= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} = O'
+            note: "Seule la troisième colonne de M(1/2) intervient — or elle est entièrement nulle : le produit vaut O."
+      - id: q4
+        stem: |-
+          **(0,25 pt)** En déduire que la matrice $M\!\left(\dfrac{1}{2}\right)$ n'est pas inversible dans $(M_3(\mathbb{R}),\times)$.
+        reasoning: |-
+          Même geste qu'à la Partie I, question 6 du sujet 2023 : si $M\!\left(\dfrac12\right)$ était inversible dans $(M_3(\mathbb{R}),\times)$, on pourrait multiplier les deux membres de l'égalité de la question précédente par son inverse. Notons $N$ la matrice non nulle du membre de droite (celle qui n'a qu'un $1$ en position $(3,3)$) : $M\!\left(\dfrac12\right)\times N = O$ forcerait alors $N=O$ — contradiction, puisque $N$ est manifestement non nulle.
+        steps:
+          - math: 'N = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix} \neq O, \qquad M\!\left(\dfrac12\right)\times N = O \quad (\text{q3})'
+            note: "N est non nulle, mais son produit par M(1/2) vaut O."
+          - math: '\text{Si } M\!\left(\dfrac12\right) \ \text{était inversible}: \quad M\!\left(\dfrac12\right)^{-1}\times\Big[M\!\left(\dfrac12\right)\times N\Big] = N'
+            note: "On multiplierait les deux membres par l'inverse supposé."
+          - math: 'M\!\left(\dfrac12\right)^{-1}\times O = O \ \Longrightarrow\ N = O \quad \text{contredit} \quad N\neq O'
+            note: "Contradiction : l'inverse ne peut pas exister."
+          - math: 'M\!\left(\dfrac12\right) \ \text{ne constitue pas un élément inversible de} \ (M_3(\mathbb{R}),\times)'
+            note: "Il existe une matrice non nulle N annulée par multiplication : M(1/2) n'est pas inversible."
+      - id: q5
+        part: "$E-\\{M(1/2)\\}$ : un groupe commutatif pour $\\times$"
+        stem: |-
+          **(0,25 pt)** Montrer que : $E - \left\{ M\!\left(\dfrac{1}{2}\right) \right\}$ est stable pour la multiplication dans $M_3(\mathbb{R})$
+
+          *(on pourra utiliser l'identité : $\left(x - \dfrac{1}{2}\right)\left(y - \dfrac{1}{2}\right) = -\dfrac{1}{2}\left(x + y - 2xy - \dfrac{1}{2}\right)$)*
+        reasoning: |-
+          On réutilise la formule de la question 1-b : $M(x)\times M(y) = M(x+y-2xy)$, valable pour **tous** $x,y\in\mathbb{R}$ — y compris $x=\dfrac12$ ou $y=\dfrac12$. La question est donc : si $x\neq\dfrac12$ et $y\neq\dfrac12$, est-ce que $x+y-2xy$ peut, lui, valoir $\dfrac12$ ? L'identité donnée dans l'énoncé répond directement : elle relie l'écart à $\dfrac12$ du nouveau paramètre à un **produit** de deux écarts non nuls.
+
+          En réarrangeant l'identité fournie, $x+y-2xy-\dfrac12 = -2\left(x-\dfrac12\right)\left(y-\dfrac12\right)$. Si $x\neq\dfrac12$ et $y\neq\dfrac12$, les deux facteurs sont non nuls, donc leur produit l'est aussi (produit de deux réels non nuls) : le membre de gauche est non nul, donc $x+y-2xy\neq\dfrac12$. Le résultat $M(x+y-2xy)$ reste ainsi dans $E-\left\{M\!\left(\dfrac12\right)\right\}$.
+        steps:
+          - math: '\left(x-\dfrac12\right)\left(y-\dfrac12\right) = -\dfrac12\left(x+y-2xy-\dfrac12\right) \quad (\text{identité fournie})'
+            note: "L'identité donnée par l'énoncé, à réarranger."
+          - math: 'x+y-2xy-\dfrac12 = -2\left(x-\dfrac12\right)\left(y-\dfrac12\right)'
+            note: "On multiplie les deux membres par −2."
+          - math: 'x\neq\dfrac12,\ y\neq\dfrac12 \ \Longrightarrow\ \left(x-\dfrac12\right)\left(y-\dfrac12\right)\neq0 \ \Longrightarrow\ x+y-2xy\neq\dfrac12'
+            note: "Produit de deux réels non nuls : non nul, donc le nouveau paramètre évite 1/2."
+          - math: 'M(x)\times M(y) = M(x+y-2xy) \ \in \ E-\left\{M\!\left(\dfrac12\right)\right\}'
+            note: "Le résultat reste dans l'ensemble privé de M(1/2)."
+      - id: q6
+        stem: |-
+          **(1 pt)** Montrer que : $\left( E - \left\{ M\!\left(\dfrac{1}{2}\right) \right\}, \times \right)$ est un groupe commutatif.
+        reasoning: |-
+          On coche les quatre axiomes du rung R3, sur $E-\left\{M\!\left(\dfrac12\right)\right\}$, en réutilisant ce qui précède. Loi interne : question précédente. Associativité : héritée de $M_3(\mathbb{R})$ tout entier, comme dans tous les exemples de ce chapitre. Commutativité : immédiate sur la formule de la question 1-b, $x+y-2xy$ est symétrique en $x$ et $y$.
+
+          Restent le neutre et le symétrique, à trouver en résolvant sur le paramètre réel $x$ — exactement comme au R2, mais ici l'inconnue est un réel, pas un complexe. Neutre $e$ : $x+e-2xe=x$ pour tout $x$ donne $e(1-2x)=0$ pour tout $x$, donc $e=0$ — soit $M(0)=I$, qui est bien dans l'ensemble car $0\neq\dfrac12$. Symétrique de $x\neq\dfrac12$ : on résout $x+y-2xy=0$ en $y$, ce qui donne $y=\dfrac{x}{2x-1}$ (licite car $x\neq\dfrac12$) — et l'équation $y=\dfrac12$ donnerait $2x=2x-1$, soit $0=-1$, impossible : $y$ n'est jamais égal à $\dfrac12$, quel que soit $x$. Le symétrique reste donc toujours dans l'ensemble.
+        steps:
+          - math: '\times \ \text{interne} \ (\text{q5}); \qquad \times \ \text{associative} \ (\text{produit matriciel, toujours associatif})'
+            note: "Deux axiomes : le premier vient de la question précédente, le second est un fait général."
+          - math: 'M(x)\times M(y) = M(x+y-2xy) = M(y+x-2yx) = M(y)\times M(x)'
+            note: "Commutativité : x+y−2xy est symétrique en x et y."
+          - math: 'e(1-2x)=0 \ \text{pour tout} \ x \ \Longrightarrow\ e=0, \qquad M(0)=I \ \in\ E-\left\{M\!\left(\dfrac12\right)\right\} \quad (0\neq\dfrac12)'
+            note: "Le neutre pour × est M(0) = I."
+          - math: 'y=\dfrac{x}{2x-1} \ \Longrightarrow\ x+y-2xy=0, \qquad y=\dfrac12 \ \text{donnerait} \ 0=-1 \ (\text{impossible})'
+            note: "Le symétrique de M(x) est M(y) avec y = x/(2x−1) ; il n'est jamais égal à M(1/2)."
+          - math: '\left(E-\left\{M\!\left(\dfrac12\right)\right\},\times\right) \ \text{est un groupe commutatif}'
+            note: "Les quatre axiomes sont vérifiés."
+      - id: q7
+        part: "La loi $T$ et un isomorphisme depuis $(\\mathbb{R},+)$"
+        stem: |-
+          On munit $E$ de la loi de composition interne $T$ définie par :
+
+          $$\forall(x,y) \in \mathbb{R}^2\ ;\ M(x)\,T\,M(y) = M\!\left(x + y - \dfrac{1}{2}\right)$$
+
+          et on considère l'application $\varphi$ définie de $\mathbb{R}$ vers $E$ par : $\forall x \in \mathbb{R}$ ; $\varphi(x) = M\!\left(\dfrac{1-x}{2}\right)$.
+
+          **(0,5 pt)** Montrer que $\varphi$ est un homomorphisme de $(\mathbb{R},+)$ vers $(E,T)$ et que $\varphi(\mathbb{R}) = E$.
+        reasoning: |-
+          Le geste-pont du rung R7 : il faut montrer $\varphi(x+y) = \varphi(x)\,T\,\varphi(y)$ pour tous $x,y$ réels, puis que $\varphi$ atteint tout $E$. On applique la définition de $T$ aux deux images $\varphi(x)=M\!\left(\dfrac{1-x}{2}\right)$ et $\varphi(y)=M\!\left(\dfrac{1-y}{2}\right)$, et on doit retrouver exactement $\varphi(x+y)=M\!\left(\dfrac{1-(x+y)}{2}\right)$.
+
+          Pour $\varphi(\mathbb{R})=E$ : tout élément de $E$ s'écrit $M(z)$ pour un certain réel $z$, et $z=\dfrac{1-x}{2}$ se résout en $x=1-2z$ — donc $M(z)=\varphi(1-2z)$, tout élément de $E$ a un antécédent par $\varphi$.
+        steps:
+          - math: '\varphi(x)\,T\,\varphi(y) = M\!\left(\dfrac{1-x}{2}\right)\,T\,M\!\left(\dfrac{1-y}{2}\right) = M\!\left(\dfrac{1-x}{2}+\dfrac{1-y}{2}-\dfrac12\right)'
+            note: "Application de la définition de T aux deux images."
+          - math: '\dfrac{1-x}{2}+\dfrac{1-y}{2}-\dfrac12 = \dfrac{2-x-y}{2}-\dfrac12 = \dfrac{1-x-y}{2} = \dfrac{1-(x+y)}{2}'
+            note: "Simplification algébrique de l'argument."
+          - math: '\varphi(x)\,T\,\varphi(y) = M\!\left(\dfrac{1-(x+y)}{2}\right) = \varphi(x+y)'
+            note: "Le résultat coïncide exactement avec φ(x+y) : φ est un homomorphisme."
+          - math: 'M(z)\in E \ \Longrightarrow\ z=\dfrac{1-x}{2} \ \text{pour} \ x=1-2z \ \Longrightarrow\ M(z)=\varphi(1-2z)'
+            note: "Tout élément de E a un antécédent explicite par φ."
+          - math: '\varphi(\mathbb{R}) = E'
+            note: "φ est surjective de R sur E."
+      - id: q8
+        stem: |-
+          **(0,25 pt)** En déduire que $(E,T)$ est un groupe commutatif.
+        reasoning: |-
+          On mobilise le pont du rung R7 : $(\mathbb{R},+)$ est un groupe commutatif archi-connu, $\varphi$ est un homomorphisme surjectif de $\mathbb{R}$ sur $E$ (question précédente), et $\varphi$ est de plus injective — deux réels distincts $x\neq y$ donnent $\dfrac{1-x}{2}\neq\dfrac{1-y}{2}$, donc $\varphi(x)\neq\varphi(y)$. $\varphi$ est donc un isomorphisme de $(\mathbb{R},+)$ vers $(E,T)$ : toute la structure de groupe commutatif se transporte, sans re-vérifier aucun axiome sur $E$.
+
+          Comme repère concret, le neutre de $(E,T)$ est l'image du neutre $0$ de $(\mathbb{R},+)$ : $\varphi(0)=M\!\left(\dfrac12\right)$ — précisément l'élément qui avait dû être **retiré** pour obtenir un groupe multiplicatif aux questions 3 et 4. Ce n'est pas une coïncidence : c'est le même élément qui joue tour à tour le rôle du neutre pour $T$ et de l'obstacle à l'inversibilité pour $\times$, comme $0$ dans un anneau usuel.
+        steps:
+          - math: '(\mathbb{R},+) \ \text{groupe commutatif}, \qquad \varphi \ \text{surjective sur} \ E \quad (\text{q7})'
+            note: "Deux ingrédients déjà établis."
+          - math: 'x\neq y \ \Longrightarrow\ \dfrac{1-x}{2}\neq\dfrac{1-y}{2} \ \Longrightarrow\ \varphi(x)\neq\varphi(y)'
+            note: "φ est injective : deux réels distincts donnent deux images distinctes."
+          - math: '\varphi \ \text{est un isomorphisme de} \ (\mathbb{R},+) \ \text{vers} \ (E,T)'
+            note: "Bijective et morphisme (q7) : φ est un isomorphisme."
+          - math: '(E,T) \ \text{est un groupe commutatif}, \qquad \text{neutre} \ \varphi(0) = M\!\left(\dfrac12\right)'
+            note: "La structure se transporte ; le neutre de T est exactement M(1/2)."
+      - id: q9
+        part: "$(E,T,\\times)$ est un corps commutatif"
+        stem: |-
+          **(0,5 pt)** Montrer que $(E,T,\times)$ est un corps commutatif.
+        reasoning: |-
+          On pourrait recocher un à un tous les axiomes du corps (rung R6) directement sur $E$, mais un raccourci, dans l'esprit du rung R7, va beaucoup plus vite : on sait déjà que $\varphi(x)\,T\,\varphi(y) = \varphi(x+y)$ (question 5-a) — $\varphi$ transporte $+$ en $T$. Reste à vérifier si $\varphi$ transporte **aussi** $\times$ sur $\mathbb{R}$ en $\times$ sur $E$ : c'est un fait nouveau, pas donné par l'énoncé sous forme de sous-question, mais qui se calcule directement avec la formule de la question 1-b.
+
+          Si les deux vérifications tiennent, $\varphi$ transporte **d'un coup** toute la structure de corps de $(\mathbb{R},+,\times)$ — un corps archi-connu, comme $\mathbb{Q}$ au rung R6 — vers $(E,T,\times)$ : commutativité des deux lois, distributivité, neutres, et inversibilité de tout élément non nul pour $\times$ compris. Ce dernier point recoupe exactement le résultat déjà établi aux questions 3 et 4 : le seul élément sans symétrique pour $\times$, $M\!\left(\dfrac12\right)$, est précisément le neutre de $T$ (question 5-b) — jamais concerné par l'exigence du R6, qui ne porte que sur les éléments non nuls.
+        steps:
+          - math: '\varphi(x)\times\varphi(y) = M\!\left(\dfrac{1-x}{2}\right)\times M\!\left(\dfrac{1-y}{2}\right) = M\!\left(\dfrac{1-x}{2}+\dfrac{1-y}{2}-2\cdot\dfrac{1-x}{2}\cdot\dfrac{1-y}{2}\right)'
+            note: "Produit des images, via la formule × de la question 1-b."
+          - math: '\dfrac{1-x}{2}+\dfrac{1-y}{2}-\dfrac{(1-x)(1-y)}{2} = 1-\dfrac{x+y}{2} - \dfrac{(1-x)(1-y)}{2} = \dfrac{1-xy}{2}'
+            note: "Simplification algébrique (développement de (1−x)(1−y) puis regroupement)."
+          - math: '\varphi(x)\times\varphi(y) = M\!\left(\dfrac{1-xy}{2}\right) = \varphi(xy)'
+            note: "φ transporte aussi × sur R en × sur E : φ(xy) = φ(x)×φ(y)."
+          - math: '\varphi \ \text{isomorphisme pour} \ + \ \text{et pour} \ \times \ \Longrightarrow\ (E,T,\times) \ \text{hérite de toute la structure de} \ (\mathbb{R},+,\times)'
+            note: "Les deux lois se transportent à la fois : corps, commutatif, distributif."
+          - math: '(E,T,\times) \ \text{est un corps commutatif}'
+            note: "Seul M(1/2) = φ(0), le neutre de T, n'a pas de symétrique pour × — cohérent, puisque l'exigence du R6 ne porte que sur les éléments non nuls."

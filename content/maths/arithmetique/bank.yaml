@@ -7,17 +7,20 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). QUATRE entrées ici : les QUATRE sujets au statut
+# exercises.yaml). SEPT entrées ici : les SEPT sujets au statut
 # « vérifié » recensés par docs/sujets/maths/arithmetique.md — 2019
 # (Exercice 3, NS 24F, AlloSchool element/68482), 2020 (Exercice 1, NS 25,
-# AlloSchool element/109635), 2022 (Exercice 3, NS 24F, AlloSchool
-# element/136604) et 2024 (Exercice 5, NS 24F, AlloSchool element/145739) —
-# chacun re-fetché indépendamment et diffé caractère-par-caractère contre
-# son scan par l'agent-vérificateur-adversarial (2026-07-12 pour 2019,
-# 2026-08-05 pour 2020/2022/2024). Introuvable = absent, jamais inventé :
-# pas de cinquième entrée tant qu'un cinquième sujet d'arithmétique n'est
-# pas vérifié. Chapitre SPÉCIFIQUE à la filière Sciences Mathématiques
-# (SM) — absent de l'épreuve Sciences Expérimentales (SVT / Sc. Physiques).
+# AlloSchool element/109635), 2021 (Exercice 3, NS 24F, AlloSchool
+# element/127193), 2022 (Exercice 3, NS 24F, AlloSchool element/136604),
+# 2023 (Exercice 4, NS 24F, AlloSchool element/142490), 2024 (Exercice 5,
+# NS 24F, AlloSchool element/145739) et 2025 (Exercice 3, NS 24F, AlloSchool
+# element/145783) — chacun re-fetché indépendamment et diffé
+# caractère-par-caractère contre son scan par l'agent-vérificateur-
+# adversarial (2026-07-12 pour 2019, 2026-08-05 pour 2020/2022/2024,
+# 2026-08-06 pour 2021/2023/2025). Introuvable = absent, jamais inventé :
+# pas de huitième entrée tant qu'un huitième sujet d'arithmétique n'est pas
+# vérifié. Chapitre SPÉCIFIQUE à la filière Sciences Mathématiques (SM) —
+# absent de l'épreuve Sciences Expérimentales (SVT / Sc. Physiques).
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x3 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
@@ -29,23 +32,44 @@
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml.
 #
-# OUTIL HORS-RUNG : les QUATRE entrées mobilisent le PETIT THÉORÈME DE
+# OUTIL HORS-RUNG : les SEPT entrées mobilisent le PETIT THÉORÈME DE
 # FERMAT (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié
 # dans la leçon (R0–R8 couvrent divisibilité, division euclidienne,
 # congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations
 # diophantiennes — pas Fermat). Le théorème est nommé et justifié au point
 # d'usage dans le champ `reasoning` de chaque question qui le mobilise
-# (bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2022-n-x3 q3 ; bk-2024-n-x5 q1),
+# (bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2021-n-x3 q3, q6 ; bk-2022-n-x3
+# q3 ; bk-2023-n-x4 q1, q4 ; bk-2024-n-x5 q1 ; bk-2025-n-x3 q1, q2),
 # exactement comme le fait déjà le rupture-gate cp-r6-fermat côté
 # lesson.md, juste avant [[exercise:r-bac]].
 #
+# TROIS AUTRES OUTILS HORS-RUNG, propres aux entrées 2021/2023/2025 (chacun
+# nommé et bridgé au point d'usage dans reasoning, jamais supposé acquis,
+# jamais promu au rang de rung — RULES : bridger, ne pas inventer une
+# pédagogie que le spec ne porte pas) :
+#   - bk-2021-n-x3 (q6–q7) : une résolution de système de deux congruences
+#     par combinaison directe des modules via la relation de Bézout de la
+#     Partie I — apparentée au théorème des restes chinois, non nommée
+#     dans l'énoncé, sans rung dédié, construite entièrement à partir de
+#     R4.
+#   - bk-2023-n-x4 (q5, q6–q7, q8) : une identité combinatoire sur les
+#     coefficients binomiaux $C_p^k$ (fournie par l'énoncé lui-même, non
+#     démontrée) PLUS la formule de Moivre / forme trigonométrique d'un
+#     complexe pour $(1+i)^p$ — ce second outil est entièrement extérieur
+#     au corps R0–R8 de la leçon arithmétique, il relève de la notion
+#     nombres complexes.
+#   - bk-2025-n-x3 (q1–q3) : le **critère d'Euler** ($a^{(p-1)/2} \equiv
+#     \pm1\ [p]$), construit ici de A à Z à partir du seul petit théorème
+#     de Fermat et du lemme d'Euclide (R6) — aucun rung dédié, mais rien
+#     n'est admis sans être re-dérivé dans le raisonnement.
+#
 # Raisonnement rédigé à la voix experte de la maison sur 100 % des
 # questions, citant les rungs mobilisés (R1 division euclidienne, R2
-# congruences, R4 Bézout/coprimalité, R5 Gauss, R6 lemme d'Euclide) ;
-# barème transcrit tel quel dans les énoncés (3 points pour 2019/2022/2024,
-# 3,5 points pour 2020) ; conventions KaTeX (block scalars pour la prose,
-# KaTeX brut entre apostrophes simples dans steps[].math, notes sans
-# backslash).
+# congruences, R4 Bézout/coprimalité, R5 Gauss, R6 lemme d'Euclide, R7
+# équations diophantiennes) ; barème transcrit tel quel dans les énoncés
+# (3 points pour 2019/2022/2023/2024/2025, 3,5 points pour 2020, 4 points
+# pour 2021) ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash).
 
 notion: maths/arithmetique
 
@@ -526,3 +550,513 @@ entries:
             note: "On remplace 2024 puissance 192 par 1 : il reste x congru a 3 modulo 221."
           - math: 'S = \{\, 3 + 221k \ : \ k \in \mathbb{Z} \,\}'
             note: "Ensemble des solutions de l'equation dans Z."
+
+  # ── bk-2021-n-x3 — 2021 N, Exercice 3 : Bézout 47x-43y=1, Fermat modulo 43 et 47, restes chinois modulo 2021 ──
+  - id: bk-2021-n-x3
+    title: "Bézout modulo 43, petit théorème de Fermat et restes chinois modulo 2021 (2021)"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national Sciences Mathématiques (A) et
+        (B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, barème 4 points (Exercice 3, « Arithmétique »). Source
+        AlloSchool element/127193. Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/arithmetique.md, section « 2021 —
+        session normale — Exercice 3 » (re-fetch AlloSchool indépendant +
+        diff caractère-par-caractère conforme au scan, maths re-dérivées et
+        confirmées — Bézout 47 fois 11 moins 43 fois 12 égale 1, 527 modulo
+        43 égale 11 et 527 modulo 47 égale 10 avec 2021 égale 43 fois 47 —,
+        agent-vérificateur-adversarial, 2026-08-06). NB : la Partie III
+        (questions q6-q7) mobilise une technique de résolution de système
+        de congruences par combinaison directe des deux modules via la
+        relation de Bézout de la Partie I — apparentée au théorème des
+        restes chinois, non nommée dans l'énoncé et sans rung dédié dans
+        la leçon (R0–R8) ; bridgée au point d'usage dans reasoning, sur le
+        même mode que le petit théorème de Fermat dans les autres entrées
+        de cette banque.
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session normale 2021, Exercice 3).**
+
+      **Partie I :** on considère dans $\mathbb{Z} \times \mathbb{Z}$ l'équation $(E) : 47x - 43y = 1$.
+
+      **Partie II :** on considère dans $\mathbb{Z}$ l'équation $(F) : x^{41} \equiv 4\ [43]$.
+
+      **Partie III :** on considère dans $\mathbb{Z}$ le système à deux équations $(S) : \begin{cases} x^{41} \equiv 4\ [43] \\ x^{47} \equiv 10\ [47] \end{cases}$
+
+      L'exercice enchaîne la résolution complète d'une équation diophantienne (R7, construite sur Bézout R4 et Gauss R5), le petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans rung dédié, construite ici entièrement à partir de R4.
+    questions:
+      - id: q1
+        part: "Partie I — Bézout : $47x - 43y = 1$"
+        stem: |-
+          **(0,25 pt)** Vérifier que le couple $(11,12)$ est une solution particulière de l'équation $(E)$
+        reasoning: |-
+          Une vérification, pas une recherche : on remplace $x$ par $11$ et $y$ par $12$ dans le membre de gauche de $(E)$, et on compare au membre de droite.
+        steps:
+          - math: '47 \times 11 - 43 \times 12 = 517 - 516 = 1'
+            note: "On substitue le couple propose dans le membre de gauche de (E) : le resultat vaut bien 1."
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Résoudre dans $\mathbb{Z} \times \mathbb{Z}$ l'équation $(E)$
+        reasoning: |-
+          C'est exactement la méthode du rung R7 : une fois une solution particulière connue, on soustrait l'équation générale de l'équation particulière, on divise par $\mathrm{PGCD}(47,43)$, puis Gauss (R5) isole l'inconnue.
+
+          $47$ et $43$ sont deux nombres premiers **distincts**, donc $\mathrm{PGCD}(47,43)=1$. On soustrait $(E)$ de sa version au couple particulier $(x_0,y_0)=(11,12)$ (question précédente) : $47(x-11) - 43(y-12) = 0$, c'est-à-dire $47(x-11) = 43(y-12)$.
+
+          Le membre de gauche montre que $43$ divise $47(x-11)$ ; comme $\mathrm{PGCD}(43,47)=1$, le théorème de Gauss (R5) donne $43 \mid (x-11)$. Donc $x - 11 = 43k$ pour un entier $k$, c'est-à-dire $x = 11 + 43k$. En reportant dans l'égalité : $47 \times 43k = 43(y-12)$, donc $47k = y - 12$, c'est-à-dire $y = 12 + 47k$.
+        steps:
+          - math: '47(x-11) = 43(y-12)'
+            note: "On soustrait l'equation (E) de sa version au couple particulier (11,12)."
+          - math: '\mathrm{PGCD}(43,47) = 1 \ \text{et}\ 43 \mid 47(x-11) \implies 43 \mid (x-11)'
+            note: "43 et 47 sont deux premiers distincts, donc premiers entre eux (R4) ; Gauss (R5) isole x moins 11."
+          - math: 'x = 11 + 43k, \qquad y = 12 + 47k \qquad (k \in \mathbb{Z})'
+            note: "On reporte x moins 11 egale 43k dans l'egalite : 47k egale y moins 12."
+      - id: q3
+        part: "Partie II — Fermat modulo $43$, l'équation (F)"
+        stem: |-
+          **(0,5 pt)** Soit $x \in \mathbb{Z}$ une solution de l'équation $(F)$. Montrer que $x$ et $43$ sont premiers entre eux, en déduire que : $x^{42} \equiv 1\ [43]$
+        reasoning: |-
+          Si $43 \mid x$, alors $x^{41} \equiv 0 \pmod{43}$ ; or $(F)$ dit $x^{41} \equiv 4 \pmod{43}$, et $4 \not\equiv 0 \pmod{43}$ (car $0 < 4 < 43$). Contradiction : $43$ ne divise pas $x$. Comme $43$ est premier, son seul diviseur commun possible avec $x$ est alors $1$, donc $\mathrm{PGCD}(43,x)=1$ (rung R4).
+
+          C'est ici qu'intervient le **petit théorème de Fermat** — hors-rung, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
+        steps:
+          - math: '43 \mid x \implies x^{41} \equiv 0 \pmod{43}'
+            note: "Hypothese absurde : si 43 divise x, sa puissance 41-ieme aussi est congrue a 0."
+          - math: '4 \not\equiv 0 \pmod{43} \implies 43 \nmid x \implies \mathrm{PGCD}(43,x) = 1'
+            note: "Or (F) donne x puissance 41 congru a 4, et 4 n'est pas congru a 0 modulo 43. Contradiction, donc 43 premier avec x (R4)."
+          - math: 'x^{42} \equiv 1 \pmod{43}'
+            note: "Petit theoreme de Fermat : p = 43, 43 ne divise pas x, donc x puissance 42 congru a 1."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que : $4x \equiv 1\ [43]$, en déduire que : $x \equiv 11\ [43]$
+        reasoning: |-
+          On écrit $x^{42} = x \times x^{41}$. Comme $x^{41} \equiv 4 \pmod{43}$ (l'équation $(F)$ elle-même) et $x^{42} \equiv 1 \pmod{43}$ (question précédente), la compatibilité des congruences avec le produit (rung R2) donne $x \times 4 \equiv 1 \pmod{43}$, c'est-à-dire $4x \equiv 1 \pmod{43}$.
+
+          Il reste à isoler $x$ : c'est-à-dire trouver un inverse de $4$ modulo $43$. Or la Partie I l'a déjà fourni sans qu'on ait besoin de le chercher par tâtonnement : $47 \equiv 4 \pmod{43}$ (car $47 - 43 = 4$) et $-43 \equiv 0 \pmod{43}$, donc l'identité de Bézout $47 \times 11 - 43 \times 12 = 1$ de la question 1, lue modulo $43$, devient exactement $4 \times 11 \equiv 1 \pmod{43}$.
+
+          On a donc deux congruences pour le même produit : $4x \equiv 1$ et $4 \times 11 \equiv 1 \pmod{43}$. En soustrayant, $4(x-11) \equiv 0 \pmod{43}$, donc $43 \mid 4(x-11)$. Comme $\mathrm{PGCD}(43,4)=1$ ($43$ est premier et ne divise pas $4$), le théorème de Gauss (rung R5) donne $43 \mid (x-11)$, c'est-à-dire $x \equiv 11 \pmod{43}$.
+        steps:
+          - math: 'x^{42} = x \times x^{41} \equiv 4x \pmod{43}'
+            note: "On decompose x puissance 42 en x fois x puissance 41, congru a 4 par (F)."
+          - math: '4x \equiv x^{42} \equiv 1 \pmod{43}'
+            note: "Egalite avec la question precedente : 4x congru a 1."
+          - math: '47 \times 11 - 43 \times 12 = 1 \implies 4 \times 11 \equiv 1 \pmod{43}'
+            note: "L'identite de Bezout de la question 1, lue modulo 43 (47 congru a 4, moins 43 fois 12 congru a 0), donne directement un inverse de 4."
+          - math: '4(x-11) \equiv 0 \pmod{43} \implies 43 \mid (x-11) \implies x \equiv 11 \pmod{43}'
+            note: "43 premier avec 4 (R4) : Gauss (R5) simplifie le facteur 4, laissant x congru a 11."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Donner l'ensemble des solutions dans $\mathbb{Z}$ de l'équation $(F)$
+        reasoning: |-
+          On a montré que toute solution de $(F)$ vérifie $x \equiv 11 \pmod{43}$. Reste la réciproque : est-ce que $x \equiv 11 \pmod{43}$ suffit pour retrouver $x^{41} \equiv 4 \pmod{43}$ ?
+
+          Comme $43$ est premier et $x \equiv 11 \not\equiv 0 \pmod{43}$, le petit théorème de Fermat donne $x^{42} \equiv 1 \pmod{43}$. Et $4x \equiv 4 \times 11 = 44 \equiv 1 \pmod{43}$ (question précédente). Donc $x^{42} \equiv 4x \pmod{43}$, c'est-à-dire $x(x^{41} - 4) \equiv 0 \pmod{43}$. Comme $43$ est premier et ne divise pas $x$, le lemme d'Euclide (rung R6) force $43 \mid (x^{41}-4)$, c'est-à-dire $x^{41} \equiv 4 \pmod{43}$.
+
+          L'équivalence est donc complète : $(F) \iff x \equiv 11 \pmod{43}$. L'ensemble des solutions est $S = \{\, 11 + 43k \ : \ k \in \mathbb{Z} \,\}$.
+        steps:
+          - math: 'x \equiv 11 \pmod{43} \implies x^{42} \equiv 1 \pmod{43} \ \text{et}\ 4x \equiv 44 \equiv 1 \pmod{43}'
+            note: "Reciproque : Fermat redonne x puissance 42 congru a 1, et 4 fois 11 egale 44 congru a 1."
+          - math: 'x^{42} \equiv 4x \pmod{43} \implies x(x^{41}-4) \equiv 0 \pmod{43} \implies x^{41} \equiv 4 \pmod{43}'
+            note: "43 premier et ne divise pas x (lemme d'Euclide, R6) : force x puissance 41 congru a 4."
+          - math: 'S = \{\, 11 + 43k \ : \ k \in \mathbb{Z} \,\}'
+            note: "Ensemble des solutions de (F) dans Z."
+      - id: q6
+        part: "Partie III — Système $(S)$ modulo $43$ et $47$, via la Partie I"
+        stem: |-
+          **(0,5 pt)** Soit $x$ une solution du système $(S)$. Montrer que $x$ est solution du système $(S')$ : $\begin{cases} x \equiv 11\ [43] \\ x \equiv 10\ [47] \end{cases}$
+        reasoning: |-
+          La première équation de $(S)$ est exactement $(F)$ : la question 5 donne directement $x \equiv 11 \pmod{43}$.
+
+          Pour la seconde, $x^{47} \equiv 10 \pmod{47}$, on prend un raccourci que fournit le petit théorème de Fermat sous sa forme la plus générale : pour $p$ premier, $a^p \equiv a \pmod p$ pour **tout** entier $a$ (si $p \mid a$, les deux membres sont $\equiv 0$ ; sinon, $a^{p-1}\equiv1$ donne $a^p = a\times a^{p-1}\equiv a$). Avec $p=47$ et $a=x$ : $x^{47} \equiv x \pmod{47}$, quel que soit $x$ — pas besoin de vérifier une coprimalité au préalable.
+
+          En combinant avec l'hypothèse $x^{47} \equiv 10 \pmod{47}$, il vient directement $x \equiv 10 \pmod{47}$.
+        steps:
+          - math: 'x^{41} \equiv 4 \pmod{43} \implies x \equiv 11 \pmod{43}'
+            note: "Premiere equation de (S), c'est exactement (F) : question 5."
+          - math: 'p\ \text{premier} \implies a^p \equiv a \pmod p \ \text{pour tout entier}\ a'
+            note: "Forme generale du petit theoreme de Fermat, valable meme si p divise a (les deux membres sont alors congrus a 0)."
+          - math: 'x^{47} \equiv x \pmod{47} \ \text{et}\ x^{47} \equiv 10 \pmod{47} \implies x \equiv 10 \pmod{47}'
+            note: "Avec p = 47 : x puissance 47 congru a x, combine a l'hypothese x puissance 47 congru a 10."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** En déduire que : $x \equiv 527\ [2021]$ *(On pourra utiliser la partie I)*
+        reasoning: |-
+          On a $x \equiv 11 \pmod{43}$, donc $x = 11 + 43k$ pour un entier $k$. On reporte dans la seconde congruence $x \equiv 10 \pmod{47}$ : $11 + 43k \equiv 10 \pmod{47}$, c'est-à-dire $43k \equiv -1 \pmod{47}$.
+
+          C'est là que la Partie I sert directement, sans nouveau calcul : l'identité de Bézout $47 \times 11 - 43 \times 12 = 1$, lue modulo $47$ (où $47 \times 11 \equiv 0$), donne $-43 \times 12 \equiv 1 \pmod{47}$, c'est-à-dire $43 \times 12 \equiv -1 \pmod{47}$ — exactement la congruence en $k$ qu'on cherche à résoudre. Donc $k \equiv 12 \pmod{47}$, soit $k = 12 + 47t$ pour un entier $t$.
+
+          En reportant dans $x = 11 + 43k$ : $x = 11 + 43(12+47t) = 11 + 516 + 43 \times 47\,t = 527 + 2021t$ (car $43 \times 47 = 2021$). D'où $x \equiv 527 \pmod{2021}$.
+        steps:
+          - math: 'x \equiv 11 \pmod{43} \implies x = 11 + 43k \ (k \in \mathbb{Z})'
+            note: "On ecrit x a partir de la premiere congruence de (S prime)."
+          - math: '11 + 43k \equiv 10 \pmod{47} \implies 43k \equiv -1 \pmod{47}'
+            note: "On reporte dans la seconde congruence x congru a 10 modulo 47."
+          - math: '47 \times 11 - 43 \times 12 = 1 \implies 43 \times 12 \equiv -1 \pmod{47}'
+            note: "L'identite de Bezout de la Partie I, lue modulo 47 (47 fois 11 congru a 0) : c'est exactement la congruence en k a resoudre."
+          - math: 'k \equiv 12 \pmod{47} \implies k = 12 + 47t \ (t \in \mathbb{Z})'
+            note: "43k congru a moins un et 43 fois 12 congru a moins un modulo 47 : k congru a 12."
+          - math: 'x = 11 + 43(12+47t) = 527 + 2021t \qquad (43 \times 47 = 2021)'
+            note: "On reporte k dans x = 11 + 43k : x congru a 527 modulo 2021."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Donner l'ensemble des solutions dans $\mathbb{Z}$ du système $(S)$
+        reasoning: |-
+          On a montré que toute solution de $(S)$ vérifie $x \equiv 527 \pmod{2021}$. Pour la réciproque, on vérifie d'abord que $527$ se réduit bien aux deux restes attendus : $527 = 43 \times 12 + 11$, donc $527 \equiv 11 \pmod{43}$ ; et $527 = 47 \times 11 + 10$, donc $527 \equiv 10 \pmod{47}$.
+
+          Comme $2021 = 43 \times 47$ est un multiple à la fois de $43$ et de $47$, tout $x \equiv 527 \pmod{2021}$ vérifie encore $x \equiv 11 \pmod{43}$ et $x \equiv 10 \pmod{47}$ — donc, par les équivalences déjà établies (question 5 pour le premier module, le même raisonnement de Fermat pour le second), $x^{41} \equiv 4 \pmod{43}$ et $x^{47} \equiv 10 \pmod{47}$ : $x$ est bien solution de $(S)$.
+
+          L'ensemble des solutions est $S = \{\, 527 + 2021k \ : \ k \in \mathbb{Z} \,\}$.
+        steps:
+          - math: '527 = 43 \times 12 + 11 \implies 527 \equiv 11 \pmod{43}'
+            note: "Verification directe du premier reste."
+          - math: '527 = 47 \times 11 + 10 \implies 527 \equiv 10 \pmod{47}'
+            note: "Verification directe du second reste."
+          - math: '2021 = 43 \times 47 \implies x \equiv 527 \pmod{2021} \implies x \equiv 11\,[43] \ \text{et}\ x \equiv 10\,[47]'
+            note: "2021 est multiple des deux modules : la congruence unique redonne les deux congruences separees."
+          - math: 'S = \{\, 527 + 2021k \ : \ k \in \mathbb{Z} \,\}'
+            note: "Ensemble des solutions du systeme (S) dans Z."
+
+  # ── bk-2023-n-x4 — 2023 N, Exercice 4 : x²≡2[p], Fermat, C_p^k, Moivre, non-résolubilité pour p≡5[8] ──
+  - id: bk-2023-n-x4
+    title: "Résidus quadratiques modulo $p$, petit théorème de Fermat et formule de Moivre (2023)"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national Sciences Mathématiques (A) et
+        (B), option française, Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, barème 3 points (Exercice 4, « Arithmétique »). Source
+        AlloSchool element/142490. Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/arithmetique.md, section « 2023 —
+        session normale — Exercice 4 » (re-fetch AlloSchool indépendant +
+        diff caractère-par-caractère conforme au scan, trois glyphes
+        mojibake de Z résolus par recoupement logique et laissés « glyphe
+        à confirmer », agent-vérificateur-adversarial, 2026-08-06). NB :
+        les questions q6-q7 (formule de Moivre, forme trigonométrique de
+        (1+i) puissance p) mobilisent un registre entièrement extérieur au
+        corps R0–R8 de la leçon arithmétique — relève de la notion nombres
+        complexes — et la question q5 mobilise une identité combinatoire
+        sur les coefficients binomiaux fournie par l'énoncé lui-même,
+        également hors du corps de la leçon ; les deux sont bridgées au
+        point d'usage dans reasoning, jamais supposées acquises.
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session normale 2023, Exercice 4).**
+
+      Soit $p$ un nombre premier impair. On considère dans $\mathbb{Z}$ l'équation $(E) : x^2 \equiv 2\ [p]$.
+
+      L'exercice combine le petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) —, le lemme d'Euclide (R6) et le théorème de Gauss (R5), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
+    questions:
+      - id: q1
+        part: "Partie A — Fermat, puis un carré qui se factorise"
+        stem: |-
+          **(0,25 pt)** Montrer que : $2^{p-1} \equiv 1\ [p]$
+        reasoning: |-
+          $p$ est premier et **impair** (hypothèse de l'énoncé), donc $p \neq 2$ : le seul diviseur premier de $2$ étant $2$ lui-même, $p$ ne divise pas $2$. Comme $p$ est premier, cela donne $\mathrm{PGCD}(p,2)=1$ (rung R4).
+
+          C'est ici qu'intervient le **petit théorème de Fermat** — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
+        steps:
+          - math: 'p\ \text{premier et impair} \implies p \nmid 2 \implies \mathrm{PGCD}(p,2) = 1'
+            note: "p est impair donc different de 2, seul diviseur premier de 2 : p ne divise pas 2 (R4)."
+          - math: '2^{p-1} \equiv 1 \pmod p'
+            note: "Petit theoreme de Fermat avec a = 2 : p premier et p ne divise pas 2."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $2^{\frac{p-1}{2}} \equiv -1\ [p]$ *(On remarque que : $\left(2^{\frac{p-1}{2}} - 1\right)\left(2^{\frac{p-1}{2}} + 1\right) = 2^{p-1} - 1$)*
+        reasoning: |-
+          $p \mid (2^{p-1}-1)$ d'après la question précédente. Le facteur donné par l'énoncé fait apparaître exactement cette quantité comme un produit :
+
+          $$\left(2^{\frac{p-1}{2}}-1\right)\left(2^{\frac{p-1}{2}}+1\right) = 2^{p-1}-1$$
+
+          Donc $p$ divise ce produit. Comme $p$ est premier, le lemme d'Euclide (rung R6 : « un premier qui divise un produit divise l'un des deux facteurs ») donne $p \mid \left(2^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(2^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $2^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $2^{\frac{p-1}{2}} \equiv -1 \pmod p$.
+        steps:
+          - math: 'p \mid (2^{p-1}-1)'
+            note: "Reecriture de la question precedente : 2 puissance p moins 1 congru a 1."
+          - math: '\left(2^{\frac{p-1}{2}}-1\right)\left(2^{\frac{p-1}{2}}+1\right) = 2^{p-1}-1'
+            note: "Identite fournie par l'enonce : le produit indique se developpe exactement en 2 puissance p moins 1, moins 1."
+          - math: 'p\ \text{premier et}\ p \mid \left(2^{\frac{p-1}{2}}-1\right)\left(2^{\frac{p-1}{2}}+1\right) \implies 2^{\frac{p-1}{2}} \equiv 1 \pmod p \ \text{ou}\ 2^{\frac{p-1}{2}} \equiv -1 \pmod p'
+            note: "Lemme d'Euclide (R6) : p premier divise un produit, donc divise l'un des deux facteurs."
+      - id: q3
+        part: "Partie B — Une solution de l'équation (E) : coprimalité avec p"
+        stem: |-
+          **(0,5 pt)** Soit $x$ une solution de l'équation $(E)$. Montrer que $p$ et $x$ sont premiers entre eux.
+        reasoning: |-
+          Si $p \mid x$, alors $x^2 \equiv 0 \pmod p$ ; or $(E)$ dit $x^2 \equiv 2 \pmod p$, donc $0 \equiv 2 \pmod p$, c'est-à-dire $p \mid 2$. Mais $p$ est un premier **impair**, donc $p \geq 3 > 2$ : $p$ ne peut pas diviser $2$. Contradiction : $p$ ne divise pas $x$.
+
+          Comme $p$ est premier, son seul diviseur commun possible avec $x$ est alors $1$ : $\mathrm{PGCD}(p,x)=1$ (rung R4).
+        steps:
+          - math: 'p \mid x \implies x^2 \equiv 0 \pmod p'
+            note: "Hypothese absurde : si p divise x, son carre est congru a 0."
+          - math: '0 \equiv 2 \pmod p \implies p \mid 2'
+            note: "Or (E) donne x carre congru a 2 : contradiction avec 0 congru a 2."
+          - math: 'p\ \text{premier impair} \implies p \geq 3 \implies p \nmid 2 \implies \mathrm{PGCD}(p,x) = 1'
+            note: "p est superieur ou egal a 3 et ne divise pas 2 : impossible, donc p ne divise pas x, et p premier donne p premier avec x (R4)."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ *(On pourra utiliser le théorème de Fermat.)*
+        reasoning: |-
+          C'est le **petit théorème de Fermat**, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid x$ (question précédente) entraîne $x^{p-1} \equiv 1 \pmod p$.
+
+          Or $x^{p-1} = \left(x^2\right)^{\frac{p-1}{2}}$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair, donc $p-1$ est pair). Comme $x^2 \equiv 2 \pmod p$ (l'équation $(E)$), la compatibilité des congruences avec les puissances (rung R2) donne $\left(x^2\right)^{\frac{p-1}{2}} \equiv 2^{\frac{p-1}{2}} \pmod p$.
+
+          En combinant les deux : $2^{\frac{p-1}{2}} \equiv x^{p-1} \equiv 1 \pmod p$.
+        steps:
+          - math: 'p \nmid x \implies x^{p-1} \equiv 1 \pmod p'
+            note: "Petit theoreme de Fermat, applique a x (question precedente)."
+          - math: 'x^{p-1} = \left(x^2\right)^{\frac{p-1}{2}} \equiv 2^{\frac{p-1}{2}} \pmod p'
+            note: "p impair rend (p moins 1)/2 entier ; x carre congru a 2 (equation E), eleve a cette puissance (R2)."
+          - math: '2^{\frac{p-1}{2}} \equiv x^{p-1} \equiv 1 \pmod p'
+            note: "Les deux congruences partagent le meme x puissance p moins 1 : elles se recoupent."
+      - id: q5
+        part: "Partie C — p divise les coefficients binomiaux $C_p^k$"
+        stem: |-
+          **(0,25 pt)** Montrer que pour tout $k \in \{1, 2, \ldots, p-1\}$, $p$ divise $C_p^k$. *(On rappelle que : $\left(\forall k \in \{1, 2, \ldots, p-1\}\right)\ C_p^k = \dfrac{p!}{k!\,(p-k)!}$ et que $k\,C_p^k = p\,C_{p-1}^{k-1}$.)*
+        reasoning: |-
+          L'identité $k\,C_p^k = p\,C_{p-1}^{k-1}$ est **fournie par l'énoncé** — c'est un fait de dénombrement (coefficients binomiaux), extérieur au corps de la leçon arithmétique (R0–R8 ne couvrent pas les $C_p^k$) : on l'utilise telle quelle, sans la redémontrer.
+
+          Elle dit que $p \mid k\,C_p^k$ (le membre de droite est visiblement un multiple de $p$). Pour $k \in \{1, \ldots, p-1\}$, on a $1 \leq k < p$ et $p$ est premier, donc $p \nmid k$, c'est-à-dire $\mathrm{PGCD}(p,k)=1$ (rung R4).
+
+          Le théorème de Gauss (rung R5) s'applique alors : $p \mid k\,C_p^k$ et $\mathrm{PGCD}(p,k)=1$ entraîne $p \mid C_p^k$.
+        steps:
+          - math: 'k\,C_p^k = p\,C_{p-1}^{k-1} \implies p \mid k\,C_p^k'
+            note: "Identite fournie par l'enonce : le membre de droite est un multiple de p."
+          - math: 'k \in \{1,\ldots,p-1\} \implies 1 \leq k < p \implies p \nmid k \implies \mathrm{PGCD}(p,k) = 1'
+            note: "p est premier et strictement superieur a k : p ne divise pas k (R4)."
+          - math: 'p \mid k\,C_p^k \ \text{et}\ \mathrm{PGCD}(p,k)=1 \implies p \mid C_p^k'
+            note: "Theoreme de Gauss (R5) : on simplifie le facteur k, premier avec p."
+      - id: q6
+        part: "Partie D — La formule de Moivre pour $(1+i)^p$"
+        stem: |-
+          **(0,25 pt)** En utilisant la formule de Moivre, montrer que : $(1+i)^p = 2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) + i\,2^{\frac{p}{2}}\sin\!\left(p\dfrac{\pi}{4}\right)$ *($i$ étant le nombre complexe tel que : $i^2 = -1$)*
+        reasoning: |-
+          Cette question quitte entièrement le terrain de l'arithmétique : elle mobilise la **forme trigonométrique** d'un nombre complexe et la **formule de Moivre** — un registre qui relève de la notion nombres complexes, absent du corps R0–R8 de la leçon arithmétique. On le convoque ici tel qu'il est enseigné dans cette autre notion.
+
+          On écrit $1+i$ sous forme trigonométrique : son module est $|1+i| = \sqrt{1^2+1^2} = \sqrt{2}$, et son argument est $\frac{\pi}{4}$ (car $\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt2}{2}$). Donc $1+i = \sqrt{2}\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)$.
+
+          La formule de Moivre, $\left(\cos\theta+i\sin\theta\right)^n = \cos(n\theta)+i\sin(n\theta)$, donne alors, en élevant à la puissance $p$ :
+
+          $$(1+i)^p = \left(\sqrt2\right)^p \left(\cos\frac{p\pi}{4} + i\sin\frac{p\pi}{4}\right) = 2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) + i\,2^{\frac{p}{2}}\sin\!\left(p\frac{\pi}{4}\right)$$
+
+          puisque $\left(\sqrt2\right)^p = \left(2^{1/2}\right)^p = 2^{p/2}$.
+        steps:
+          - math: '1+i = \sqrt{2}\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)'
+            note: "Forme trigonometrique de 1 plus i : module racine de 2, argument pi sur 4 (notion nombres complexes, hors lecon arithmetique)."
+          - math: '(1+i)^p = \left(\sqrt2\right)^p\left(\cos\frac{p\pi}{4} + i\sin\frac{p\pi}{4}\right)'
+            note: "Formule de Moivre, appliquee a la forme trigonometrique precedente."
+          - math: '\left(\sqrt2\right)^p = 2^{\frac{p}{2}} \implies (1+i)^p = 2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) + i\,2^{\frac{p}{2}}\sin\!\left(p\frac{\pi}{4}\right)'
+            note: "Racine de 2 puissance p egale 2 puissance p demi : c'est exactement l'egalite demandee."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** On admet que : $(1+i)^p = \displaystyle\sum_{k=0}^{k=\frac{p-1}{2}} (-1)^k C_p^{2k} + i \sum_{k=0}^{k=\frac{p-1}{2}} (-1)^k C_p^{2k+1}$. Montrer que : $2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) \in \mathbb{Z}$ et $2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) \equiv 1\ [p]$ *(on pourra utiliser la question 3-)*
+        reasoning: |-
+          On égale les parties réelles des deux écritures de $(1+i)^p$ : la question 4-a) donne $2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right)$, et la somme admise par l'énoncé donne $\displaystyle\sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k}$. Ces deux quantités sont donc égales.
+
+          Chaque $C_p^{2k}$ est un coefficient binomial, donc un **entier** — et une somme finie de tels termes (multipliés par $\pm1$) est encore un entier. Donc $2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) \in \mathbb{Z}$.
+
+          Pour la congruence, on isole le terme $k=0$ : $C_p^0 = 1$. Pour $k$ allant de $1$ à $\frac{p-1}{2}$, l'indice $2k$ parcourt $2, 4, \ldots, p-1$ — tous dans $\{1,\ldots,p-1\}$ — donc la question 3 s'applique : $p \mid C_p^{2k}$ pour chacun de ces termes, c'est-à-dire $C_p^{2k} \equiv 0 \pmod p$. Modulo $p$, la somme se réduit donc au seul terme $k=0$ (compatibilité de la congruence avec la somme, rung R2) :
+
+          $$\sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k} \equiv (-1)^0 C_p^0 = 1 \pmod p$$
+
+          Donc $2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) \equiv 1 \pmod p$.
+        steps:
+          - math: '2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) = \sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k}'
+            note: "On egale les deux ecritures de la partie reelle de (1+i) puissance p."
+          - math: 'C_p^{2k} \in \mathbb{Z}\ \text{pour tout}\ k \implies \sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k} \in \mathbb{Z}'
+            note: "Une somme finie de coefficients binomiaux, entiers par nature, reste un entier."
+          - math: 'k \in \{1,\ldots,\tfrac{p-1}{2}\} \implies 2k \in \{1,\ldots,p-1\} \implies p \mid C_p^{2k}'
+            note: "Pour k allant de 1 a (p-1)/2, l'indice 2k reste dans l'intervalle vise par la question 3."
+          - math: '\sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k} \equiv (-1)^0 C_p^0 = 1 \pmod p'
+            note: "Modulo p, tous les termes k de 1 a (p-1)/2 s'annulent (question 3) ; il ne reste que le terme k=0, qui vaut 1."
+      - id: q8
+        part: "Partie E — Conclusion : le cas $p$ congru à $5$ modulo $8$"
+        stem: |-
+          **(0,5 pt)** En déduire que si $p \equiv 5\ [8]$ alors l'équation $(E)$ n'admet pas de solution dans $\mathbb{Z}$.
+        reasoning: |-
+          $p \equiv 5 \pmod 8$ signifie $p = 8m+5$ pour un entier $m$. Alors $p\frac{\pi}{4} = 2m\pi + \frac{5\pi}{4}$, et le cosinus est $2\pi$-périodique, donc $\cos\!\left(p\frac{\pi}{4}\right) = \cos\!\left(\frac{5\pi}{4}\right) = -\frac{\sqrt2}{2}$.
+
+          En reportant dans le résultat de la question 4-b) : $2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) = 2^{\frac{p}{2}} \times \left(-\frac{\sqrt2}{2}\right) = -2^{\frac{p}{2}} \times 2^{-\frac12} = -2^{\frac{p-1}{2}}$. Or la question 4-b) donne aussi que cette quantité est $\equiv 1 \pmod p$. Donc $-2^{\frac{p-1}{2}} \equiv 1 \pmod p$, c'est-à-dire $2^{\frac{p-1}{2}} \equiv -1 \pmod p$.
+
+          Supposons maintenant, par l'absurde, que $(E)$ admette une solution $x$ dans $\mathbb{Z}$. La question 2-b) donnerait alors $2^{\frac{p-1}{2}} \equiv 1 \pmod p$. Combiné à ce qu'on vient d'obtenir, $1 \equiv -1 \pmod p$, c'est-à-dire $p \mid 2$ — impossible, puisque $p$ est un premier impair ($p \geq 3$). Contradiction : $(E)$ n'admet pas de solution dans $\mathbb{Z}$ quand $p \equiv 5 \pmod 8$.
+        steps:
+          - math: 'p \equiv 5 \pmod 8 \implies \cos\!\left(p\frac{\pi}{4}\right) = \cos\!\left(\frac{5\pi}{4}\right) = -\frac{\sqrt2}{2}'
+            note: "p = 8m+5 : p pi sur 4 vaut 2m pi plus 5 pi sur 4, et le cosinus est periodique de periode 2 pi."
+          - math: '2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) = -2^{\frac{p}{2}} \times 2^{-\frac12} = -2^{\frac{p-1}{2}}'
+            note: "On reporte la valeur du cosinus ; racine de 2 sur 2 vaut 2 puissance moins un demi."
+          - math: '-2^{\frac{p-1}{2}} \equiv 1 \pmod p \implies 2^{\frac{p-1}{2}} \equiv -1 \pmod p'
+            note: "La question 4-b donne aussi que cette quantite est congrue a 1 modulo p."
+          - math: '(E)\ \text{a une solution} \implies 2^{\frac{p-1}{2}} \equiv 1 \pmod p \ \text{(question 2-b)} \implies 1 \equiv -1 \pmod p \implies p \mid 2'
+            note: "Si (E) avait une solution, la question 2-b et le resultat precedent donneraient deux valeurs contradictoires pour la meme quantite."
+          - math: 'p\ \text{premier impair} \implies p \geq 3 \implies p \nmid 2'
+            note: "Impossible : l'hypothese de depart, (E) admet une solution, est donc fausse quand p est congru a 5 modulo 8."
+
+  # ── bk-2025-n-x3 — 2025 N, Exercice 3 : critère d'Euler, Fermat, Bézout pour 11x+(2^(2n+1)-1)y=1, résolution modulo 11 ──
+  - id: bk-2025-n-x3
+    title: "Critère d'Euler, petit théorème de Fermat et équation modulo 11 (2025)"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national Sciences Mathématiques (A) et
+        (B), option française, Mathématiques, 4 h, coef 9, code sujet
+        NS 24F, barème 3 points (Exercice 3, « Arithmétique »). Source
+        AlloSchool element/145783. Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/arithmetique.md, section « 2025 —
+        session normale — Exercice 3 » (re-fetch AlloSchool indépendant +
+        diff caractère-par-caractère conforme au scan, équivalence (F)
+        re-dérivée et confirmée, Unicode propre, agent-vérificateur-
+        adversarial, 2026-08-06). NB : l'exercice construit le critère
+        d'Euler de A à Z à partir du petit théorème de Fermat (hors-rung)
+        et du lemme d'Euclide (R6) — aucun rung dédié au critère d'Euler
+        dans la leçon (R0–R8) ; bridgé au point d'usage dans reasoning,
+        comme le petit théorème de Fermat l'est déjà dans les six autres
+        entrées de cette banque.
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session normale 2025, Exercice 3).**
+
+      Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
+
+      L'exercice construit, de A à Z, le **critère d'Euler** — hors-rung, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même hors-rung, déjà rencontré au sommet de leçon 2019, rupture-gate cp-r6-fermat) et du lemme d'Euclide (R6) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (R4), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
+    questions:
+      - id: q1
+        part: "Partie A — Fermat et un carré qui se factorise"
+        stem: |-
+          **(0,5 pt)** Montrer que $a^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $a^{\frac{p-1}{2}} \equiv -1\ [p]$.
+        reasoning: |-
+          $a$ est premier avec $p$ par hypothèse (rung R4), donc le **petit théorème de Fermat** — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
+
+          On retrouve ici le même geste qu'à chaque fois qu'une puissance paire cache une différence de carrés : $a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}\right)^2 - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair). Comme $p \mid (a^{p-1}-1)$, $p$ divise ce produit. $p$ étant premier, le lemme d'Euclide (rung R6) donne $p \mid \left(a^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(a^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $a^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $a^{\frac{p-1}{2}} \equiv -1 \pmod p$.
+        steps:
+          - math: 'a^{p-1} \equiv 1 \pmod p'
+            note: "Petit theoreme de Fermat : a premier avec p."
+          - math: 'a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)'
+            note: "Difference de carres : p impair rend (p moins 1)/2 entier."
+          - math: 'p \mid \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right) \implies a^{\frac{p-1}{2}} \equiv 1 \pmod p \ \text{ou}\ a^{\frac{p-1}{2}} \equiv -1 \pmod p'
+            note: "Lemme d'Euclide (R6) : p premier divise un produit, donc l'un des deux facteurs."
+      - id: q2
+        part: "Partie B — L'équation (E) : une solution $x_0$"
+        stem: |-
+          **(0,5 pt)** On considère dans $\mathbb{Z}$ l'équation : $ax^2 \equiv 1\ [p]$. Soit $x_0$ une solution de cette équation. Montrer que : $x_0^{\,p-1} \equiv 1\ [p]$
+        reasoning: |-
+          Si $p \mid x_0$, alors $x_0^2 \equiv 0 \pmod p$, donc $a\,x_0^2 \equiv 0 \pmod p$ ; or l'équation dit $a\,x_0^2 \equiv 1 \pmod p$, donc $0 \equiv 1 \pmod p$, c'est-à-dire $p \mid 1$ — impossible, puisque $p \geq 2$. Contradiction : $p$ ne divise pas $x_0$.
+
+          Comme $p$ est premier, $\mathrm{PGCD}(p,x_0)=1$ (rung R4). Le petit théorème de Fermat — hors-rung, déjà mobilisé à la question 1 — s'applique alors à $x_0$ : $x_0^{p-1} \equiv 1 \pmod p$.
+        steps:
+          - math: 'p \mid x_0 \implies a\,x_0^2 \equiv 0 \pmod p'
+            note: "Hypothese absurde : si p divise x zero, son carre et donc a fois son carre sont congrus a 0."
+          - math: '0 \equiv 1 \pmod p \implies p \mid 1'
+            note: "Or l'equation donne a fois x zero carre congru a 1 : contradiction, p diviserait 1."
+          - math: 'p \nmid x_0 \implies \mathrm{PGCD}(p,x_0) = 1 \implies x_0^{p-1} \equiv 1 \pmod p'
+            note: "p premier avec x zero (R4) ; petit theoreme de Fermat (question 1)."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** En déduire que : $a^{\frac{p-1}{2}} \equiv 1\ [p]$
+        reasoning: |-
+          On élève l'équation $a\,x_0^2 \equiv 1 \pmod p$ à la puissance $\frac{p-1}{2}$ (rung R2 : compatibilité de la congruence avec les puissances) :
+
+          $$\left(a\,x_0^2\right)^{\frac{p-1}{2}} \equiv 1^{\frac{p-1}{2}} = 1 \pmod p$$
+
+          Le membre de gauche se factorise : $\left(a\,x_0^2\right)^{\frac{p-1}{2}} = a^{\frac{p-1}{2}} \times \left(x_0^2\right)^{\frac{p-1}{2}} = a^{\frac{p-1}{2}} \times x_0^{\,p-1}$. Or $x_0^{\,p-1} \equiv 1 \pmod p$ (question précédente), donc, en substituant :
+
+          $$a^{\frac{p-1}{2}} \times 1 \equiv 1 \pmod p \implies a^{\frac{p-1}{2}} \equiv 1 \pmod p$$
+        steps:
+          - math: '\left(a\,x_0^2\right)^{\frac{p-1}{2}} \equiv 1 \pmod p'
+            note: "On eleve l'equation de depart a la puissance (p-1)/2 (R2)."
+          - math: '\left(a\,x_0^2\right)^{\frac{p-1}{2}} = a^{\frac{p-1}{2}} \times x_0^{\,p-1}'
+            note: "On factorise le membre de gauche."
+          - math: 'x_0^{\,p-1} \equiv 1 \pmod p \implies a^{\frac{p-1}{2}} \equiv 1 \pmod p'
+            note: "On remplace x zero puissance p moins un par 1 (question precedente) : il reste a puissance (p-1)/2 congru a 1."
+      - id: q4
+        part: "Partie C — Un diviseur premier de $2^{2n+1}-1$"
+        stem: |-
+          **(0,5 pt)** Soit $n$ un entier naturel non nul. Montrer que si $p$ divise $2^{2n+1} - 1$ alors $2^{\frac{p-1}{2}} \equiv 1\ [p]$
+        reasoning: |-
+          L'hypothèse $p \mid \left(2^{2n+1}-1\right)$ se lit $2^{2n+1} \equiv 1 \pmod p$. On réécrit l'exposant impair $2n+1 = 1 + 2n$ : $2^{2n+1} = 2 \times \left(2^n\right)^2$. Donc $2 \times \left(2^n\right)^2 \equiv 1 \pmod p$.
+
+          C'est exactement la forme de l'équation $a\,x^2 \equiv 1 \pmod p$ étudiée à la question 2, avec $a=2$ et $x_0 = 2^n$ ($p$ toujours premier impair et, ici, $a=2$ premier avec $p$ puisque $p$ est impair). La question 2-b) s'applique donc directement, avec $a=2$ : $2^{\frac{p-1}{2}} \equiv 1 \pmod p$.
+        steps:
+          - math: 'p \mid \left(2^{2n+1}-1\right) \implies 2^{2n+1} \equiv 1 \pmod p'
+            note: "Reecriture directe de l'hypothese p divise 2 puissance 2n+1 moins 1."
+          - math: '2^{2n+1} = 2 \times \left(2^n\right)^2 \implies 2 \times \left(2^n\right)^2 \equiv 1 \pmod p'
+            note: "L'exposant impair 2n+1 se decompose en 1 plus 2n : on isole un facteur 2 et un carre parfait."
+          - math: '2^{\frac{p-1}{2}} \equiv 1 \pmod p'
+            note: "C'est exactement l'equation a fois x carre congru a 1 de la question 2, avec a = 2 et x zero = 2 puissance n : la question 2-b s'applique."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** En déduire que l'équation $(E) : 11x + \left(2^{2n+1} - 1\right)y = 1$ admet au moins une solution dans $\mathbb{Z}^2$.
+        reasoning: |-
+          Le théorème de Bézout (rung R4, cas particulier à $1$) garantit une solution entière à $11x + \left(2^{2n+1}-1\right)y = 1$ dès que $11$ et $2^{2n+1}-1$ sont premiers entre eux. C'est donc ce qu'il reste à établir.
+
+          $11$ est premier, donc $\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right)$ vaut $1$ ou $11$. Supposons par l'absurde qu'il vaille $11$, c'est-à-dire $11 \mid \left(2^{2n+1}-1\right)$. La question précédente, appliquée avec $p=11$ (bien un premier impair), donnerait alors $2^{\frac{11-1}{2}} \equiv 1 \pmod{11}$, c'est-à-dire $2^5 \equiv 1 \pmod{11}$.
+
+          Or $2^5 = 32 = 2 \times 11 + 10$, donc $2^5 \equiv 10 \pmod{11}$, et $10 \not\equiv 1 \pmod{11}$. Contradiction : $11$ ne divise pas $2^{2n+1}-1$. Donc $\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) = 1$, et le théorème de Bézout (R4) fournit directement des entiers $x,y$ tels que $11x + \left(2^{2n+1}-1\right)y = 1$.
+        steps:
+          - math: '11\ \text{premier} \implies \mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) \in \{1,11\}'
+            note: "Les seuls diviseurs positifs de 11 sont 1 et 11."
+          - math: '11 \mid \left(2^{2n+1}-1\right) \implies 2^{\frac{11-1}{2}} \equiv 1 \pmod{11}\ \text{(question precedente, p=11)}'
+            note: "Hypothese absurde : la question 3-a, appliquee avec p = 11, donne 2 puissance 5 congru a 1."
+          - math: '2^5 = 32 \equiv 10 \pmod{11} \ \text{et}\ 10 \not\equiv 1 \pmod{11}'
+            note: "Calcul direct : 32 egale 2 fois 11 plus 10. Contradiction avec la congruence attendue."
+          - math: '\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) = 1 \implies (\exists\ x,y \in \mathbb{Z})\ 11x + \left(2^{2n+1}-1\right)y = 1'
+            note: "11 ne divise pas 2 puissance 2n+1 moins 1 : le PGCD vaut donc 1, et Bezout (R4) fournit x et y."
+      - id: q6
+        part: "Partie D — L'équation (F) : $x^2+5x+2$ modulo $11$"
+        stem: |-
+          **(0,25 pt)** On considère dans $\mathbb{Z}$ l'équation $(F) : x^2 + 5x + 2 \equiv 0\ [11]$. Montrer que : $(F) \iff 2(2x+5)^2 \equiv 1\ [11]$
+        reasoning: |-
+          On veut faire apparaître un carré parfait : c'est la technique de **complétion du carré**, appliquée modulo $11$. On multiplie d'abord $(F)$ par $4$ — un entier premier avec $11$, donc cette multiplication est réversible modulo $11$ (on peut revenir en arrière en multipliant par l'inverse de $4$) :
+
+          $$x^2+5x+2 \equiv 0 \pmod{11} \iff 4x^2+20x+8 \equiv 0 \pmod{11}$$
+
+          Le membre de gauche est un carré parfait décalé : $4x^2+20x+8 = (2x+5)^2 - 25 + 8 = (2x+5)^2 - 17$. Donc :
+
+          $$4x^2+20x+8 \equiv 0 \pmod{11} \iff (2x+5)^2 \equiv 17 \equiv 6 \pmod{11}$$
+
+          On multiplie enfin par $2$ — de nouveau réversible modulo $11$, puisque $\mathrm{PGCD}(2,11)=1$ :
+
+          $$(2x+5)^2 \equiv 6 \pmod{11} \iff 2(2x+5)^2 \equiv 12 \equiv 1 \pmod{11}$$
+
+          En enchaînant les trois équivalences : $(F) \iff 2(2x+5)^2 \equiv 1 \pmod{11}$.
+        steps:
+          - math: 'x^2+5x+2 \equiv 0 \pmod{11} \iff 4x^2+20x+8 \equiv 0 \pmod{11}'
+            note: "On multiplie par 4, premier avec 11 : equivalence reversible modulo 11."
+          - math: '4x^2+20x+8 = (2x+5)^2 - 17'
+            note: "Completion du carre : identite algebrique directe."
+          - math: '(2x+5)^2 - 17 \equiv 0 \pmod{11} \iff (2x+5)^2 \equiv 6 \pmod{11}'
+            note: "17 modulo 11 vaut 6."
+          - math: '(2x+5)^2 \equiv 6 \pmod{11} \iff 2(2x+5)^2 \equiv 12 \equiv 1 \pmod{11}'
+            note: "On multiplie par 2, premier avec 11 : de nouveau reversible, et 12 modulo 11 vaut 1."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** En déduire que l'équation $(F)$ n'admet pas de solution dans $\mathbb{Z}$.
+        reasoning: |-
+          Supposons par l'absurde que $(F)$ admette une solution entière $x$. Par la question précédente, $2(2x+5)^2 \equiv 1 \pmod{11}$. Pose $y_0 = 2x+5$ (un entier) : cette relation devient $2\,y_0^2 \equiv 1 \pmod{11}$ — exactement la forme $a\,x^2 \equiv 1 \pmod p$ de la question 2, avec $a=2$, $p=11$ (premier impair, $11$ premier avec $2$) et $x_0 = y_0$.
+
+          La question 2-b) s'applique alors, avec $a=2$ et $p=11$ : $2^{\frac{11-1}{2}} \equiv 1 \pmod{11}$, c'est-à-dire $2^5 \equiv 1 \pmod{11}$.
+
+          Or le calcul direct (déjà fait à la question 3-b) donne $2^5 = 32 \equiv 10 \pmod{11}$, et $10 \not\equiv 1 \pmod{11}$. Contradiction : l'hypothèse d'une solution entière est fausse. $(F)$ n'admet pas de solution dans $\mathbb{Z}$.
+        steps:
+          - math: '2(2x+5)^2 \equiv 1 \pmod{11} \implies 2\,y_0^2 \equiv 1 \pmod{11} \qquad (y_0 = 2x+5)'
+            note: "Supposons x solution entiere de (F) ; on pose y zero = 2x+5, un entier."
+          - math: '2\,y_0^2 \equiv 1 \pmod{11} \implies 2^{\frac{11-1}{2}} \equiv 1 \pmod{11}\ \text{(question 2-b, a=2, p=11)}'
+            note: "C'est exactement la forme a fois x carre congru a 1, avec a = 2 et p = 11 : la question 2-b s'applique."
+          - math: '2^5 = 32 \equiv 10 \pmod{11} \ \text{et}\ 10 \not\equiv 1 \pmod{11}'
+            note: "Meme calcul direct qu'a la question 3-b : contradiction."
+          - math: '(F)\ \text{n''admet pas de solution dans}\ \mathbb{Z}'
+            note: "L'hypothese d'une solution entiere est donc fausse."

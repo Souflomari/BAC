@@ -7,18 +7,19 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les quatre entrées sont des transcriptions FIDÈLES des
-# quatre entrées « vérifié » de docs/sujets/maths/nombres-complexes-2.md
-# (re-fetch AlloSchool indépendant + diff caractère-par-caractère,
+# exercises.yaml). Les sept entrées sont des transcriptions FIDÈLES des sept
+# entrées « vérifié » de docs/sujets/maths/nombres-complexes-2.md (re-fetch
+# AlloSchool indépendant + diff caractère-par-caractère,
 # agent-vérificateur-adversarial, 2026-07-12 pour 2019, 2026-08-05 pour
-# 2020/2022/2024) — les SEULS sujets vérifiés recensés pour cette notion :
-# 2019, 2020, 2022, 2024, tous session normale, filière SCIENCES
-# MATHÉMATIQUES (A) et (B), BIOF. Aucun autre sujet n'est disponible —
-# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix
-# experte de la maison sur 100 % des questions ; barème transcrit tel quel
-# dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX
-# brut entre apostrophes simples dans steps[].math — apostrophe littérale
-# doublée, ex. 'z'' = e^{i\theta}\,z' pour rendre z′ —, notes sans backslash).
+# 2020/2022/2024, 2026-08-06 pour 2021/2023/2025) — les SEULS sujets
+# vérifiés recensés pour cette notion : 2019, 2020, 2021, 2022, 2023, 2024,
+# 2025, tous session normale, filière SCIENCES MATHÉMATIQUES (A) et (B),
+# BIOF. Aucun autre sujet n'est disponible — introuvable = absent, jamais
+# inventé. Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math — apostrophe littérale doublée, ex. 'z'' = e^{i\theta}\,z'
+# pour rendre z′ —, notes sans backslash).
 #
 # EDITORIAL NOTE (recoupement, pour la revue) : bk-2019-n-x2 transcrit le
 # MÊME sujet que le sommet de leçon r-bac (exercises.yaml,
@@ -29,17 +30,23 @@
 # content/maths/nombres-complexes-1/bank.yaml (bk-2019-n-x2 sur ce
 # frère-notion) fait exactement le même choix pour la même raison, avec la
 # même note. À l'arbitrage de l'owner si l'on préfère écarter la présente
-# entrée de la banque pour éviter le recoupement sur la même page.
+# entrée de la banque pour éviter le recoupement sur la même page. Les trois
+# entrées ajoutées ensuite (2021, 2023, 2025) ne recoupent NI r-bac ni
+# r-variation (tous deux dérivés du seul sujet 2019, voir exercises.yaml) :
+# aucun recoupement supplémentaire à signaler.
 #
-# SCOPE NOTE (divulgation honnête, authoring-side). Les quatre sujets
-# reposent tous sur la RÉSOLUTION D'UNE ÉQUATION DU SECOND DEGRÉ À
-# COEFFICIENTS COMPLEXES (discriminant Δ potentiellement complexe non réel,
-# racine carrée de Δ obtenue en la reconnaissant comme un carré parfait,
-# formule (−b±δ)/(2a), relations coefficients-racines de Viète) — un outil
-# qu'AUCUN des deux frères-notions ne couvre formellement dans son corps de
-# rungs : ni R0–R6 de la présente leçon (nombres-complexes-2 : argument,
-# formes trigonométrique/exponentielle, produit/quotient/Moivre, racines
-# n-ièmes, rotation/homothétie, nature de triangle), ni R1–R5 de
+# SCOPE NOTE (divulgation honnête, authoring-side). La majorité des sept
+# sujets (2019, 2020, 2021, 2022, 2024, 2025 — pas 2023) reposent, à un
+# moment ou un autre, sur la RÉSOLUTION D'UNE ÉQUATION DU SECOND DEGRÉ À
+# COEFFICIENTS COMPLEXES — le plus souvent par discriminant Δ (potentiellement
+# complexe non réel, racine carrée de Δ obtenue en la reconnaissant comme un
+# carré parfait, formule (−b±δ)/(2a)), et une fois (2021, question 1a) par
+# reconnaissance directe de la forme somme/produit des racines (relations
+# coefficients-racines de Viète, sans même calculer de discriminant) — un
+# outil qu'AUCUN des deux frères-notions ne couvre formellement dans son
+# corps de rungs : ni R0–R6 de la présente leçon (nombres-complexes-2 :
+# argument, formes trigonométrique/exponentielle, produit/quotient/Moivre,
+# racines n-ièmes, rotation/homothétie, nature de triangle), ni R1–R5 de
 # nombres-complexes-1 (forme algébrique, conjugué, module, géométrie du plan
 # complexe) — les deux notes de validation en pied de chaque lesson.md le
 # signalent déjà (« équation du second degré dans ℂ : hors du corps actuel »).
@@ -47,15 +54,33 @@
 # de cette notion (exercises.yaml) mobilise déjà ce même outil et le nomme
 # au point d'usage (« le calcul se mène comme dans ℝ, mais avec des nombres
 # complexes… (1+i)² = 2i, déjà vu au chapitre précédent »). Les champs
-# `reasoning` des quatre entrées ci-dessous suivent exactement la même
-# convention : ils exposent le geste (reconnaître Δ comme un carré parfait)
-# au moment où il sert, sans prétendre qu'il est enseigné par un rung
-# nommé. Une passe pédagogique reste due, à l'arbitrage de l'owner : soit un
-# rung dédié « équations du second degré dans ℂ » (probablement en tête de
-# nombres-complexes-1, avant le socle algébrique), soit la confirmation que
-# ce savoir est un acquis de la classe de 1ère (extension directe de la
-# formule réelle, déjà stable avant le bac) et n'a pas besoin d'un rung
-# propre.
+# `reasoning` de toutes les entrées ci-dessous suivent exactement la même
+# convention : ils exposent le geste (reconnaître Δ comme un carré parfait,
+# ou reconnaître directement la forme Viète) au moment où il sert, sans
+# prétendre qu'il est enseigné par un rung nommé. Une passe pédagogique reste
+# due, à l'arbitrage de l'owner : soit un rung dédié « équations du second
+# degré dans ℂ » (probablement en tête de nombres-complexes-1, avant le
+# socle algébrique), soit la confirmation que ce savoir est un acquis de la
+# classe de 1ère (extension directe de la formule réelle, déjà stable avant
+# le bac) et n'a pas besoin d'un rung propre.
+#
+# SCOPE NOTE 2 (cocyclicité de quatre points, nouvelle avec cette passe).
+# Deux des trois entrées ajoutées ici (2021, question 3b ; 2025, question
+# II.2c) demandent de montrer que QUATRE points sont cocycliques. L'outil
+# « manuel » habituel pour ce type de question est le birapport (quotient de
+# deux rapports du rung R6 pris à deux sommets différents, réel ⟺ cocyclique
+# ou aligné) — un outil qui, comme les équations du second degré ci-dessus,
+# n'est couvert par AUCUN rung du corps actuel des deux frères-notions.
+# Plutôt que d'introduire ce nouvel outil au fil d'une entrée de banque (ce
+# qui reviendrait à enseigner de la pédagogie non spécifiée par cet auteur),
+# les deux entrées concernées empruntent chacune un chemin de géométrie
+# élémentaire déjà accessible avec les outils enseignés : 2021 (parallélo-
+# gramme via les affixes, chapitre 1, puis carré — côtés adjacents égaux et
+# perpendiculaires, rung R6) et 2025 (théorème de Thalès — angle droit
+# inscrit ⟹ point sur le cercle de diamètre [IJ] —, appliqué à deux points
+# via le rapport du rung R6). Choix d'auteur, signalé pour transparence :
+# ce n'est PAS une couverture du birapport par la présente leçon, et une
+# passe pédagogique reste due si l'owner préfère l'outil du birapport.
 
 notion: maths/nombres-complexes-2
 
@@ -679,3 +704,476 @@ entries:
             note: "α=0 est sur ce cercle (|0+1|=1) mais y est exclu : sans trois points distincts, il n'y a pas de triangle."
           - math: '\Gamma = \big\{\,\Omega(\alpha)\ :\ |\alpha+1|=1\,\big\}\setminus\big\{\Omega(0)\big\}'
             note: "Cercle de centre le point d'affixe −1, rayon 1, privé du point d'affixe 0."
+
+  # ── bk-2021-n-x2 — 2021 N, Exercice 2 : équation par Viète, rotations ±π/2, cocyclicité ──
+  - id: bk-2021-n-x2
+    title: "Équation par relations coefficients-racines, rotations d'angle π/2 et cocyclicité"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 4 points (Exercice 2, nombres
+        complexes). Source AlloSchool element/127193. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, section « 2021 — session
+        normale — Exercice 2 » (statut « vérifié », agent-vérificateur-
+        adversarial, 2026-08-06, source re-fetchée indépendamment, diff
+        caractère-par-caractère conforme au scan ; racines c et a+b, et les
+        expressions de 2p et 2q, re-dérivées et confirmées). Écart de
+        périmètre (voir SCOPE NOTE en tête de fichier) : la question 1a
+        résout (E) par reconnaissance directe de la forme somme/produit de
+        ses racines (Viète, sans discriminant ni racine carrée) — une
+        variante plus légère du même outil hors du corps de rungs actuel
+        (équation du second degré dans ℂ). La cocyclicité de K, P, Q, D
+        (question 3b) n'est volontairement PAS démontrée ici par birapport
+        (outil également hors rungs, voir SCOPE NOTE 2) : la présente entrée
+        passe par un argument de géométrie élémentaire déjà accessible
+        (parallélogramme via les affixes, chapitre 1, puis carré — côtés
+        adjacents égaux et perpendiculaires, rung R6), pour rester dans le
+        corps d'outils enseignés ; signalé pour transparence.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2021, Sciences Mathématiques).**
+
+      Soient $a$, $b$, $c$ trois nombres complexes **non nuls** tels que $a+b \neq c$.
+
+      L'exercice se déroule en trois temps. La **première question** résout une équation du second degré déjà écrite sous la forme somme/produit de ses racines — pas besoin de discriminant, la factorisation se lit directement (relations coefficients-racines, Viète). La **deuxième** plante deux centres de rotation d'angle $\pm\dfrac{\pi}{2}$ ($P$, $Q$) autour du triangle $ABC$ et en tire la nature du triangle $PDQ$, $D$ étant le milieu de $[BC]$ — via le rapport de complexes du rung R6. La **troisième** construit deux symétriques et leur milieu $K$, pour aboutir à une cocyclicité de quatre points, obtenue ici par un argument de géométrie élémentaire (parallélogramme puis carré) plutôt qu'un nouvel outil.
+    questions:
+      - id: q1a
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\mathbb{C}$ l'équation d'inconnue $z$ :
+          $$(E)\ :\ z^2 - (a+b+c)z + c(a+b) = 0$$
+        reasoning: |-
+          Pas besoin de discriminant ici : l'équation est déjà écrite sous la forme somme/produit des deux racines qu'elle a. Si $z^2-(a+b+c)z+c(a+b)=0$ a pour racines $z'$ et $z''$, les relations coefficients-racines (Viète) donnent $z'+z''=a+b+c$ et $z'z''=c(a+b)$ — et deux nombres vérifient déjà l'un et l'autre : $c$ et $a+b$, dont la somme vaut $a+b+c$ et le produit $c(a+b)$. Il suffit donc de vérifier que $(z-c)\big(z-(a+b)\big)$ redéveloppe bien $(E)$, sans jamais calculer de discriminant. L'hypothèse $a+b\neq c$, donnée dès l'énoncé, garantit que ces deux racines sont bien distinctes.
+        steps:
+          - math: '(z-c)\big(z-(a+b)\big) = z^2 - \big(c+(a+b)\big)z + c(a+b) = z^2-(a+b+c)z+c(a+b)'
+            note: "On développe le produit (z−c)(z−(a+b)) ; c+(a+b)=a+b+c."
+          - math: '(z-c)\big(z-(a+b)\big) = 0 \iff z=c\ \text{ou}\ z=a+b'
+            note: "Le développement redonne exactement (E) : c et a+b en sont les deux racines."
+          - math: 'S = \{\,c,\ a+b\,\} \qquad (c\neq a+b,\ \text{racines distinctes, hypothèse donnée})'
+            note: "Ensemble des solutions de (E)."
+      - id: q1b
+        part: "On suppose dans cette question que $a = i$, $b = e^{i\\frac{\\pi}{3}}$ et $c = a-b$"
+        stem: |-
+          **(0,5 pt)** Écrire les deux solutions de l'équation $(E)$ sous forme exponentielle.
+        reasoning: |-
+          Les deux solutions sont $c$ et $a+b$ (question précédente) : $a=i=e^{i\pi/2}$ et $b=e^{i\pi/3}$ sont déjà de module $1$, donc $a+b$ et $c=a-b$ sont une somme et une différence de deux exponentielles de même forme — on factorise chacune par l'angle moyen $\dfrac{\pi/2+\pi/3}{2}=\dfrac{5\pi}{12}$, exactement le même geste que $e^{i\theta}+1=2\cos(\theta/2)e^{i\theta/2}$ (déjà rencontré sur ce chapitre), mais entre deux exponentielles quelconques plutôt qu'avec $1$.
+        steps:
+          - math: 'a+b = e^{i\pi/2}+e^{i\pi/3} = e^{i\frac{5\pi}{12}}\left(e^{i\frac{\pi}{12}}+e^{-i\frac{\pi}{12}}\right) = 2\cos\tfrac{\pi}{12}\,e^{i\frac{5\pi}{12}}'
+            note: "Angle moyen 5π/12=(π/2+π/3)/2, demi-écart π/12=(π/2−π/3)/2 ; e^{ix}+e^{−ix}=2cos x (R1)."
+          - math: 'a-b = e^{i\pi/2}-e^{i\pi/3} = e^{i\frac{5\pi}{12}}\left(e^{i\frac{\pi}{12}}-e^{-i\frac{\pi}{12}}\right) = 2i\sin\tfrac{\pi}{12}\,e^{i\frac{5\pi}{12}} = 2\sin\tfrac{\pi}{12}\,e^{i\left(\frac{5\pi}{12}+\frac{\pi}{2}\right)}'
+            note: "e^{ix}−e^{−ix}=2i sin x ; on absorbe le facteur i=e^{iπ/2} dans l'argument."
+          - math: '\cos\tfrac{\pi}{12}=\tfrac{\sqrt6+\sqrt2}{4}>0, \qquad \sin\tfrac{\pi}{12}=\tfrac{\sqrt6-\sqrt2}{4}>0'
+            note: "Valeurs usuelles (formules d'addition, acquis de 1ère) ; toutes deux positives, donc les modules ci-dessus le sont bien."
+          - math: 'a+b = \dfrac{\sqrt6+\sqrt2}{2}\,e^{i\frac{5\pi}{12}}, \qquad c=a-b=\dfrac{\sqrt6-\sqrt2}{2}\,e^{i\left(\frac{5\pi}{12}+\frac{\pi}{2}\right)}=\dfrac{\sqrt6-\sqrt2}{2}\,e^{i\frac{11\pi}{12}}'
+            note: "5π/12+π/2=5π/12+6π/12=11π/12."
+          - math: 'S = \left\{\, \dfrac{\sqrt6-\sqrt2}{2}\,e^{i\frac{11\pi}{12}},\ \ \dfrac{\sqrt6+\sqrt2}{2}\,e^{i\frac{5\pi}{12}} \,\right\}'
+            note: "Les deux solutions de (E), c puis a+b, sous forme exponentielle."
+      - id: q2a
+        part: "Le plan complexe $(O,\\vec{u},\\vec{v})$ : $A(a)$, $B(b)$, $C(c)$ non alignés ; $P(p)$ centre de la rotation d'angle $\\dfrac{\\pi}{2}$ qui transforme $B$ en $A$, $Q(q)$ centre de la rotation d'angle $\\left(-\\dfrac{\\pi}{2}\\right)$ qui transforme $C$ en $A$, $D(d)$ milieu de $[BC]$"
+        stem: |-
+          **(1 pt)** Montrer que : $2p = b+a+(a-b)i$ et $2q = c+a+(c-a)i$.
+        reasoning: |-
+          Chaque centre se retrouve avec la formule décentrée du rung R5, résolue en l'inconnue « centre » : si $M'(z')$ est l'image de $M(z)$ par la rotation de centre $\Omega(\omega)$ et d'angle $\theta$, alors $z'-\omega=e^{i\theta}(z-\omega)$, ce qui se résout en $\omega=\dfrac{z'-e^{i\theta}z}{1-e^{i\theta}}$ — déjà utilisé au sujet 2020 de cette notion pour construire trois centres de rotation d'angle $\dfrac{\pi}{2}$ de la même façon.
+
+          Pour $P$ : la rotation d'angle $\dfrac{\pi}{2}$ ($e^{i\pi/2}=i$) transforme $B$ en $A$, donc $z=b$, $z'=a$. Pour $Q$ : la rotation d'angle $-\dfrac{\pi}{2}$ ($e^{-i\pi/2}=-i$) transforme $C$ en $A$, donc $z=c$, $z'=a$. Il reste à simplifier chaque quotient par la méthode du conjugué (chapitre 1).
+        steps:
+          - math: 'p = \dfrac{a-ib}{1-i}'
+            note: "Centre de la rotation d'angle π/2 (e^{iπ/2}=i) envoyant B(b) sur A(a) : rung R5, résolu en p."
+          - math: 'p = \dfrac{(a-ib)(1+i)}{(1-i)(1+i)} = \dfrac{a+ai-ib+b}{2} = \dfrac{(a+b)+i(a-b)}{2}'
+            note: "Méthode du conjugué (chapitre 1) : on multiplie par (1+i)/(1+i), avec (1−i)(1+i)=2."
+          - math: '2p = (a+b)+i(a-b) = b+a+(a-b)i'
+            note: "Résultat demandé pour p."
+          - math: 'q = \dfrac{a-(-i)c}{1-(-i)} = \dfrac{a+ic}{1+i}'
+            note: "Centre de la rotation d'angle −π/2 (e^{−iπ/2}=−i) envoyant C(c) sur A(a) : même formule, rung R5."
+          - math: 'q = \dfrac{(a+ic)(1-i)}{(1+i)(1-i)} = \dfrac{a-ai+ic+c}{2} = \dfrac{(a+c)+i(c-a)}{2}'
+            note: "Méthode du conjugué, avec (1+i)(1−i)=2."
+          - math: '2q = (a+c)+i(c-a) = c+a+(c-a)i'
+            note: "Résultat demandé pour q."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Calculer : $\dfrac{p-d}{q-d}$.
+        reasoning: |-
+          $D$ est le milieu de $[BC]$, donc $d=\dfrac{b+c}{2}$. On soustrait cette valeur des expressions de $p$ et $q$ trouvées à la question précédente ; le résultat se réécrit en fonction des deux différences $a-b$ et $c-a$, et l'une des deux expressions apparaît comme « $i$ fois » l'autre — c'est ce qui fait apparaître un rapport constant, indépendant de $a,b,c$.
+        steps:
+          - math: 'd=\dfrac{b+c}{2} \implies p-d = \dfrac{(a+b)+i(a-b)}{2}-\dfrac{b+c}{2} = \dfrac{(a-c)+i(a-b)}{2}'
+            note: "Affixe du milieu D ; on réutilise 2p de la question précédente."
+          - math: 'q-d = \dfrac{(a+c)+i(c-a)}{2}-\dfrac{b+c}{2} = \dfrac{(a-b)+i(c-a)}{2}'
+            note: "Même geste pour q."
+          - math: 'i(q-d) = i\dfrac{(a-b)+i(c-a)}{2} = \dfrac{i(a-b)-(c-a)}{2} = \dfrac{(a-c)+i(a-b)}{2} = p-d'
+            note: "On vérifie que p−d = i(q−d) : le numérateur et i fois le dénominateur coïncident terme à terme."
+          - math: '\dfrac{p-d}{q-d} = i \qquad (q\neq d,\ \text{sans quoi}\ D=Q)'
+            note: "Rapport constant, indépendant de a, b, c."
+      - id: q2c
+        stem: |-
+          **(0,5 pt)** En déduire la nature du triangle $PDQ$.
+        reasoning: |-
+          Le rapport qu'on vient de calculer est exactement, au sommet $D$, le rapport du rung R6 : $\dfrac{p-d}{q-d} = \dfrac{z_P-z_D}{z_Q-z_D}$. Il vaut $i$, qui est imaginaire pur et de module $1$ : d'après la table du rung R6, imaginaire pur signale un angle droit en $D$, et module $1$ signale deux côtés égaux issus de $D$.
+        steps:
+          - math: '\dfrac{p-d}{q-d}=i\ \text{imaginaire pur (non nul)} \implies \big(\vec{DP},\vec{DQ}\big) = \pm\dfrac{\pi}{2} \implies PDQ\ \text{rectangle en}\ D'
+            note: "Rung R6 : rapport imaginaire pur ⟺ angle droit au sommet."
+          - math: '\left|\dfrac{p-d}{q-d}\right| = |i| = 1 \implies DP = DQ \implies PDQ\ \text{isocèle en}\ D'
+            note: "Rung R6 : module 1 ⟺ triangle isocèle au sommet."
+          - math: 'PDQ\ \text{est rectangle et isocèle en}\ D'
+            note: "Les deux conclusions combinées."
+      - id: q3a
+        part: "$E$ symétrique de $B$ par rapport à $P$, $F$ symétrique de $C$ par rapport à $Q$, $K$ milieu de $[EF]$"
+        stem: |-
+          **(0,5 pt)** Montrer que l'affixe de $K$ est $k = a + \dfrac{i}{2}(c-b)$.
+        reasoning: |-
+          $E$ symétrique de $B$ par rapport à $P$ signifie que $P$ est le milieu de $[BE]$ : $p=\dfrac{b+e}{2}$, donc $e=2p-b$. De même, $F$ symétrique de $C$ par rapport à $Q$ donne $f=2q-c$. Le milieu $K$ de $[EF]$ a alors pour affixe $k=\dfrac{e+f}{2}=p+q-\dfrac{b+c}{2}=p+q-d$ — on retombe sur les expressions de $2p$, $2q$ et $d$ déjà connues, et tout se simplifie.
+        steps:
+          - math: 'e = 2p-b, \qquad f = 2q-c'
+            note: "P milieu de [BE], Q milieu de [CF] (symétrie centrale : le symétrique de M par rapport à Ω a pour affixe 2ω−z_M)."
+          - math: 'k = \dfrac{e+f}{2} = p+q-\dfrac{b+c}{2} = p+q-d'
+            note: "K milieu de [EF] ; d=(b+c)/2 (question 2b)."
+          - math: '2p+2q = \big[(a+b)+i(a-b)\big]+\big[(a+c)+i(c-a)\big] = 2a+(b+c)+i(c-b)'
+            note: "On additionne les deux expressions de la question 2a ; (a−b)+(c−a)=c−b."
+          - math: 'k = \dfrac{2a+(b+c)+i(c-b)}{2} - \dfrac{b+c}{2} = \dfrac{2a+i(c-b)}{2} = a+\dfrac{i}{2}(c-b)'
+            note: "Le terme (b+c)/2 se simplifie exactement avec d."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Montrer que les points $K$, $P$, $Q$ et $D$ sont cocycliques.
+        reasoning: |-
+          On repart de $k=p+q-d$ (question précédente) : cette égalité se lit $d+k=p+q$, c'est-à-dire que $[DK]$ et $[PQ]$ ont le **même milieu** — exactement le critère du parallélogramme via les affixes (moyenne des affixes, chapitre 1, lu à l'envers). Le quadrilatère $DPKQ$ (dans cet ordre) est donc un parallélogramme, de côtés issus de $D$ égaux aux vecteurs $\vec{DP}$ et $\vec{DQ}$.
+
+          Or la question 2c vient de montrer que ces deux côtés sont **perpendiculaires et de même longueur** ($DP=DQ$, angle droit en $D$). Un parallélogramme dont deux côtés adjacents sont perpendiculaires et égaux est un **carré**. Et les quatre sommets d'un carré sont toujours cocycliques, sur le cercle centré au point commun des deux diagonales — précisément le milieu de $[DK]$ (ou, ce qui revient au même, de $[PQ]$).
+        steps:
+          - math: 'k=p+q-d \iff d+k = p+q'
+            note: "[DK] et [PQ] ont le même milieu (moyenne des affixes, chapitre 1)."
+          - math: 'DPKQ\ \text{est un parallélogramme}\quad(\text{diagonales}\ [DK]\ \text{et}\ [PQ]\ \text{de même milieu})'
+            note: "Critère du parallélogramme via les affixes."
+          - math: 'DP=DQ\ \text{et}\ (DP)\perp(DQ)\quad(\text{question 2c})'
+            note: "Deux côtés adjacents égaux et perpendiculaires."
+          - math: 'DPKQ\ \text{est un carré} \implies K,\,P,\,Q,\,D\ \text{cocycliques}'
+            note: "Un parallélogramme à côtés adjacents égaux et perpendiculaires est un carré ; les 4 sommets d'un carré sont sur son cercle circonscrit (centre = milieu commun des diagonales)."
+
+  # ── bk-2023-n-x3 — 2023 N, Exercice 3 : forme exponentielle, tan(π/12), suites couplées ──
+  - id: bk-2023-n-x3
+    title: "Forme exponentielle, tangente de π/12 et suites couplées"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 3,5 points (Exercice 3, nombres
+        complexes). Source AlloSchool element/142490. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, section « 2023 — session
+        normale — Exercice 3 » (statut « vérifié », agent-vérificateur-
+        adversarial, 2026-08-06, source re-fetchée indépendamment, diff
+        caractère-par-caractère conforme au scan ; formes exponentielles,
+        tan(π/12)=2−√3 et u=(√6−√2)e^{iπ/12} re-dérivés et confirmés). Aucun
+        écart de périmètre à signaler ici : cet exercice ne mobilise aucune
+        équation du second degré — la SCOPE NOTE en tête de fichier ne
+        s'applique pas à cette entrée.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2023, Sciences Mathématiques).**
+
+      On considère le nombre complexe $u = 1+(2-\sqrt3)i$.
+
+      L'exercice construit d'abord la forme exponentielle de $u$ à partir de deux nombres plus simples ($1-i$ et $1+\sqrt3\,i$), et en tire au passage la valeur de $\tan\dfrac{\pi}{12}$. Il utilise ensuite cette forme pour deux applications bien distinctes : une récurrence sur deux suites couplées $(x_n)$, $(y_n)$ définies terme à terme par $u^{n+1}=u^n\times u$, puis une lecture géométrique — alignement, angle droit — sur les points $A_n$ d'affixe $u^n$, via le rapport de complexes du rung R6.
+    questions:
+      - id: q1a
+        stem: |-
+          **(0,5 pt)** Écrire sous forme exponentielle les nombres complexes : $1 - i$ et $1 + \sqrt{3}\,i$.
+        reasoning: |-
+          Méthode du R1 : calculer le module, puis identifier l'argument à partir de $\cos\theta=a/r$ et $\sin\theta=b/r$, en vérifiant les deux signes à la fois (le piège classique du rung).
+        steps:
+          - math: '|1-i| = \sqrt{1^2+(-1)^2} = \sqrt2, \qquad \cos\theta=\dfrac{1}{\sqrt2},\ \sin\theta=-\dfrac{1}{\sqrt2} \implies \theta=-\dfrac{\pi}{4}'
+            note: "Rung R1 : module puis argument, en vérifiant les deux signes (cos et sin)."
+          - math: '1-i = \sqrt2\,e^{-i\pi/4}'
+            note: "Forme exponentielle du premier nombre."
+          - math: '|1+\sqrt3\,i| = \sqrt{1^2+(\sqrt3)^2} = 2, \qquad \cos\theta=\dfrac12,\ \sin\theta=\dfrac{\sqrt3}{2} \implies \theta=\dfrac{\pi}{3}'
+            note: "Même méthode ; valeurs usuelles du tableau (R1)."
+          - math: '1+\sqrt3\,i = 2\,e^{i\pi/3}'
+            note: "Forme exponentielle du second nombre."
+      - id: q1b
+        stem: |-
+          **(0,25 pt)** Montrer que : $\dfrac{(1-i)(1+\sqrt3\,i)}{2\sqrt2} = e^{i\frac{\pi}{12}}$
+        reasoning: |-
+          On multiplie les deux formes exponentielles de la question précédente par la règle du produit (R2) : les modules se multiplient, les arguments s'additionnent. Il ne reste plus qu'à diviser par $2\sqrt2$, qui est exactement le produit des deux modules — le facteur module disparaît, ne laissant que l'exponentielle pure.
+        steps:
+          - math: '(1-i)(1+\sqrt3\,i) = \sqrt2\,e^{-i\pi/4}\times 2\,e^{i\pi/3} = 2\sqrt2\,e^{i\left(\frac{\pi}{3}-\frac{\pi}{4}\right)}'
+            note: "Règle du produit (R2) : modules × modules, arguments + arguments."
+          - math: '\dfrac{\pi}{3}-\dfrac{\pi}{4} = \dfrac{4\pi}{12}-\dfrac{3\pi}{12} = \dfrac{\pi}{12} \implies (1-i)(1+\sqrt3\,i) = 2\sqrt2\,e^{i\pi/12}'
+            note: "On réduit au même dénominateur pour soustraire les angles."
+          - math: '\dfrac{(1-i)(1+\sqrt3\,i)}{2\sqrt2} = \dfrac{2\sqrt2\,e^{i\pi/12}}{2\sqrt2} = e^{i\pi/12}'
+            note: "Le facteur module 2√2 se simplifie exactement."
+      - id: q1c
+        stem: |-
+          **(0,25 pt)** En déduire que : $\tan\!\left(\dfrac{\pi}{12}\right) = 2 - \sqrt{3}$
+        reasoning: |-
+          L'égalité précédente donne aussi une deuxième expression de $e^{i\pi/12}$ : en développant le produit $(1-i)(1+\sqrt3\,i)$ en forme algébrique, puis en divisant par $2\sqrt2$, on obtient $\cos\dfrac{\pi}{12}$ et $\sin\dfrac{\pi}{12}$ par identification (partie réelle, partie imaginaire). Le quotient des deux donne la tangente ; il reste à rationaliser le dénominateur (méthode du conjugué, chapitre 1) pour retrouver la forme demandée.
+        steps:
+          - math: '(1-i)(1+\sqrt3\,i) = 1+\sqrt3\,i-i-\sqrt3\,i^2 = (1+\sqrt3)+i(\sqrt3-1)'
+            note: "Développement algébrique direct."
+          - math: 'e^{i\pi/12} = \dfrac{(1+\sqrt3)+i(\sqrt3-1)}{2\sqrt2} \implies \cos\dfrac{\pi}{12}=\dfrac{1+\sqrt3}{2\sqrt2},\ \ \sin\dfrac{\pi}{12}=\dfrac{\sqrt3-1}{2\sqrt2}'
+            note: "Identification : partie réelle = cos(π/12), partie imaginaire = sin(π/12)."
+          - math: '\tan\dfrac{\pi}{12} = \dfrac{\sin(\pi/12)}{\cos(\pi/12)} = \dfrac{\sqrt3-1}{1+\sqrt3}'
+            note: "Le facteur commun 2√2 se simplifie."
+          - math: '\dfrac{\sqrt3-1}{\sqrt3+1} = \dfrac{(\sqrt3-1)^2}{(\sqrt3+1)(\sqrt3-1)} = \dfrac{4-2\sqrt3}{2} = 2-\sqrt3'
+            note: "Méthode du conjugué (chapitre 1) : on multiplie par (√3−1)/(√3−1)."
+      - id: q1d
+        stem: |-
+          **(0,5 pt)** Montrer que : $u = (\sqrt{6} - \sqrt{2})\,e^{i\frac{\pi}{12}}$
+        reasoning: |-
+          $u=1+(2-\sqrt3)i$ et $2-\sqrt3=\tan\dfrac{\pi}{12}$ (question précédente) : $u$ s'écrit donc $1+i\tan\dfrac{\pi}{12}$, une forme qu'on reconnaît en mettant $\cos\dfrac{\pi}{12}$ en facteur au numérateur — c'est exactement $e^{i\pi/12}$ divisé par $\cos\dfrac{\pi}{12}$. Il ne reste qu'à inverser $\cos\dfrac{\pi}{12}=\dfrac{1+\sqrt3}{2\sqrt2}$ (question 1c) et rationaliser.
+        steps:
+          - math: 'u = 1+(2-\sqrt3)i = 1+i\tan\dfrac{\pi}{12} = \dfrac{\cos(\pi/12)+i\sin(\pi/12)}{\cos(\pi/12)} = \dfrac{e^{i\pi/12}}{\cos(\pi/12)}'
+            note: "1+i tanθ=(cosθ+isinθ)/cosθ, car cos(π/12)≠0."
+          - math: '\cos\dfrac{\pi}{12}=\dfrac{1+\sqrt3}{2\sqrt2}\ (\text{question 1c}) \implies \dfrac{1}{\cos(\pi/12)} = \dfrac{2\sqrt2}{1+\sqrt3}'
+            note: "On réutilise la valeur de cos(π/12) déjà identifiée."
+          - math: '\dfrac{2\sqrt2}{1+\sqrt3} = \dfrac{2\sqrt2(\sqrt3-1)}{(\sqrt3+1)(\sqrt3-1)} = \dfrac{2\sqrt2(\sqrt3-1)}{2} = \sqrt2(\sqrt3-1) = \sqrt6-\sqrt2'
+            note: "Méthode du conjugué ; √2×√3=√6."
+          - math: 'u = (\sqrt6-\sqrt2)\,e^{i\pi/12}, \qquad \text{et de façon équivalente : } u = \dfrac{e^{i\pi/12}}{\cos(\pi/12)}'
+            note: "Les deux écritures de u seront réutilisées : la première ici, la seconde à la question 2b."
+      - id: q2a
+        part: "Deux suites $(x_n)_{n\\in\\mathbb{N}}$ et $(y_n)_{n\\in\\mathbb{N}}$ : $x_0=1$, $y_0=0$, et pour tout $n\\in\\mathbb{N}$, $x_{n+1}=x_n-(2-\\sqrt3)y_n$ et $y_{n+1}=(2-\\sqrt3)x_n+y_n$"
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que pour tout $n \in \mathbb{N}$, $x_n + i y_n = u^n$.
+        reasoning: |-
+          Récurrence classique. L'initialisation se lit directement sur $x_0,y_0$. Pour l'hérédité, le geste clé est de reconnaître que les deux formules de récurrence sur $x_{n+1}$ et $y_{n+1}$ sont exactement les parties réelle et imaginaire du produit $(x_n+iy_n)\times u$ — une fois qu'on développe ce produit, on retombe terme à terme sur les deux formules données.
+        steps:
+          - math: '\text{Initialisation : } x_0+iy_0 = 1+i\times0 = 1 = u^0'
+            note: "n=0 : vrai par les valeurs initiales."
+          - math: '(x_n+iy_n)\times u = (x_n+iy_n)\big(1+(2-\sqrt3)i\big) = \big[x_n-(2-\sqrt3)y_n\big] + i\big[(2-\sqrt3)x_n+y_n\big]'
+            note: "On développe le produit ; on reconnaît les formules de x_{n+1} et y_{n+1} dans les deux crochets."
+          - math: '(x_n+iy_n)\times u = x_{n+1}+iy_{n+1}'
+            note: "Les deux crochets sont exactement x_{n+1} et y_{n+1} (définition des suites)."
+          - math: '\text{Hérédité : si } x_n+iy_n=u^n,\ \text{alors } x_{n+1}+iy_{n+1} = u^n\times u = u^{n+1}'
+            note: "Hypothèse de récurrence injectée dans l'égalité précédente."
+          - math: '\forall n\in\mathbb{N},\ x_n+iy_n=u^n'
+            note: "Initialisation + hérédité : la propriété est vraie pour tout n (principe de récurrence)."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** En déduire que pour tout $n \in \mathbb{N}$ : $x_n = \dfrac{\cos\!\left(\frac{n\pi}{12}\right)}{\left(\cos\frac{\pi}{12}\right)^n}$ et $y_n = \dfrac{\sin\!\left(\frac{n\pi}{12}\right)}{\left(\cos\frac{\pi}{12}\right)^n}$
+        reasoning: |-
+          On reprend la seconde écriture de $u$ trouvée à la question 1d, $u=\dfrac{e^{i\pi/12}}{\cos(\pi/12)}$, bien plus commode ici qu'une puissance de $(\sqrt6-\sqrt2)$ : elle donne $u^n$ par la formule de Moivre (R3) directement en fonction de $\cos\dfrac{n\pi}{12}$ et $\sin\dfrac{n\pi}{12}$, avec $\cos(\pi/12)$ (un réel) au dénominateur. Il suffit ensuite d'identifier avec $x_n+iy_n=u^n$ (question précédente).
+        steps:
+          - math: 'u^n = \left(\dfrac{e^{i\pi/12}}{\cos(\pi/12)}\right)^{\!n} = \dfrac{e^{in\pi/12}}{\left(\cos(\pi/12)\right)^n}'
+            note: "Formule de Moivre (R3) appliquée à u = e^{iπ/12}/cos(π/12) (question 1d)."
+          - math: 'u^n = \dfrac{\cos(n\pi/12)+i\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
+            note: "e^{inπ/12}=cos(nπ/12)+isin(nπ/12) (définition, R2)."
+          - math: 'x_n+iy_n = u^n = \dfrac{\cos(n\pi/12)}{\left(\cos(\pi/12)\right)^n} + i\,\dfrac{\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
+            note: "On réutilise x_n+iy_n=u^n (question 2a)."
+          - math: 'x_n = \dfrac{\cos(n\pi/12)}{\left(\cos(\pi/12)\right)^n}, \qquad y_n = \dfrac{\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
+            note: "Identification partie réelle / partie imaginaire ; (cos π/12)^n est réel."
+      - id: q3a
+        part: "Le plan complexe $(O;\\vec{e_1},\\vec{e_2})$ : pour tout entier naturel $n$, $A_n$ est le point d'affixe $u^n$"
+        stem: |-
+          **(0,5 pt)** Déterminer les entiers $n$ pour lesquels les points $O$, $A_0$ et $A_n$ sont alignés.
+        reasoning: |-
+          Rung R6 : $O$, $A_0$, $A_n$ sont alignés si et seulement si le rapport $\dfrac{z_{A_n}-z_O}{z_{A_0}-z_O} = \dfrac{u^n}{u^0} = u^n$ est réel. Or $u=(\sqrt6-\sqrt2)e^{i\pi/12}$ (question 1d) a pour module un réel strictement positif, donc $u^n$ (Moivre, R3) a pour argument $\dfrac{n\pi}{12}$ : il est réel exactement quand cet angle est un multiple de $\pi$.
+        steps:
+          - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff \dfrac{u^n}{u^0}=u^n\in\mathbb{R}'
+            note: "Rung R6 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
+          - math: 'u^n = (\sqrt6-\sqrt2)^n\,e^{in\pi/12}\quad(\text{Moivre, R3})'
+            note: "u=(√6−√2)e^{iπ/12} (question 1d) ; module (√6−√2)^n réel positif."
+          - math: 'u^n\in\mathbb{R} \iff \dfrac{n\pi}{12} \equiv 0\ [\pi] \iff \dfrac{n}{12}\in\mathbb{Z} \iff n\ \text{multiple de}\ 12'
+            note: "Argument multiple de π ; n entier naturel."
+          - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff n \in \{0,\,12,\,24,\,36,\ldots\}'
+            note: "Les multiples de 12 dans ℕ."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout entier $n$, le triangle $O A_n A_{n+1}$ est rectangle en $A_n$.
+        reasoning: |-
+          Rung R6, cette fois au sommet $A_n$ : le rapport $\dfrac{z_O - z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{-u^n}{u^{n+1}-u^n}$ se simplifie en factorisant $u^n$ au dénominateur — $u^n$ disparaît, et il ne reste qu'une constante $\dfrac{-1}{u-1}$, **indépendante de $n$**. Reste à voir si cette constante est imaginaire pure ; ça dépend uniquement de $u-1$, et $u-1=(2-\sqrt3)i$ est déjà, par construction de $u$, un imaginaire pur — donc son inverse (et son opposé) l'est aussi.
+        steps:
+          - math: '\dfrac{z_O-z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{0-u^n}{u^{n+1}-u^n} = \dfrac{-u^n}{u^n(u-1)} = \dfrac{-1}{u-1}'
+            note: "Rung R6, sommet A_n ; on factorise u^n (u≠0, u^n≠0) au dénominateur, il se simplifie."
+          - math: 'u-1 = \big[1+(2-\sqrt3)i\big]-1 = (2-\sqrt3)i'
+            note: "u−1 est déjà un imaginaire pur, par construction de u = 1+(2−√3)i."
+          - math: '\dfrac{-1}{u-1} = \dfrac{-1}{(2-\sqrt3)i} = \dfrac{-1}{2-\sqrt3}\times\dfrac{1}{i} = \dfrac{i}{2-\sqrt3}'
+            note: "1/i=−i (chapitre 1) ; le facteur réel −1/(2−√3) ne change pas la nature imaginaire pure."
+          - math: '\dfrac{i}{2-\sqrt3}\ \text{est imaginaire pur (non nul), indépendant de } n \implies O A_n A_{n+1}\ \text{rectangle en}\ A_n\ \text{pour tout}\ n'
+            note: "Rung R6 : rapport imaginaire pur au sommet A_n ⟺ angle droit en A_n, vrai pour tout n."
+
+  # ── bk-2025-n-x2 — 2025 N, Exercice 2 : équation à paramètre α, perpendicularités, cocyclicité ──
+  - id: bk-2025-n-x2
+    title: "Équation à paramètre α, perpendicularités et cocyclicité"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 3,5 points (Exercice 2, nombres
+        complexes). Source AlloSchool element/145783. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, section « 2025 — session
+        normale — Exercice 2 » (statut « vérifié », agent-vérificateur-
+        adversarial, 2026-08-06, source re-fetchée indépendamment, diff
+        caractère-par-caractère conforme au scan ; discriminant Δ_α, racines
+        a et b avec b/a=2i, re-dérivés et confirmés). Écart de périmètre
+        (voir SCOPE NOTE en tête de fichier) : la question I.1 résout (E_α)
+        via un discriminant reconnu comme carré parfait puis la formule
+        (−b±δ)/(2a) — exactement l'outil hors du corps de rungs actuel
+        (équation du second degré dans ℂ). La cocyclicité de K, I, H, J
+        (question II.2c) n'est volontairement PAS démontrée ici par
+        birapport (outil également hors rungs, voir SCOPE NOTE 2) : la
+        présente entrée passe par le théorème de Thalès (angle droit inscrit
+        ⟹ point sur le cercle de diamètre [IJ]), appliqué successivement à H
+        puis à K — un fait de géométrie élémentaire, non spécifique aux
+        complexes, pour rester dans le corps d'outils enseignés ; signalé
+        pour transparence.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2025, Sciences Mathématiques).**
+
+      Soit $\alpha \in [0\,;\,2\pi[$. Le plan complexe est rapporté à un repère orthonormé direct $(O;\vec{u},\vec{v})$. On considère dans $\mathbb{C}$ l'équation d'inconnue $z$ :
+
+      $$(E_\alpha)\ :\ z^2 - 2^\alpha e^{i\alpha}(1+2i)z + i\,2^{2\alpha+1}e^{i2\alpha} = 0$$
+
+      La **partie I** en calcule le discriminant (déjà un carré parfait) puis les deux solutions $a$ et $b$, et vérifie que leur rapport est un imaginaire pur — indépendant de $\alpha$. La **partie II** construit, à partir de $H$ tel que $\dfrac{1}{h}=\dfrac{1}{a}+\dfrac{1}{b}$, puis des milieux $I$ et $J$, une suite de perpendicularités et d'alignements — jusqu'à la cocyclicité de quatre points, obtenue ici par le théorème de Thalès plutôt qu'un nouvel outil. Le fil conducteur reste, comme presque partout dans ce chapitre, le rapport de deux affixes (rung R6).
+    questions:
+      - id: q1a
+        stem: |-
+          **(0,25 pt)** Vérifier que le discriminant de l'équation $(E_\alpha)$ est : $\Delta_\alpha = \left(2^\alpha e^{i\alpha}(1-2i)\right)^2$
+        reasoning: |-
+          On calcule $\Delta_\alpha = b^2-4ac$ directement à partir des coefficients de $(E_\alpha)$, avec $b=-2^\alpha e^{i\alpha}(1+2i)$, $a=1$, $c=i\,2^{2\alpha+1}e^{i2\alpha}$. Le geste qui débloque tout est de reconnaître, dans le résultat, le carré $(1-2i)^2$ — même geste qu'aux autres sujets de cette notion, une fois de plus.
+        steps:
+          - math: '\Delta_\alpha = \big[2^\alpha e^{i\alpha}(1+2i)\big]^2 - 4\times1\times i\,2^{2\alpha+1}e^{i2\alpha} = 2^{2\alpha}e^{i2\alpha}(1+2i)^2 - 4i\,2^{2\alpha+1}e^{i2\alpha}'
+            note: "Δ_α = b² − 4ac, avec a=1, b=−2^α e^{iα}(1+2i), c=i·2^{2α+1}e^{i2α}."
+          - math: '\Delta_\alpha = 2^{2\alpha}e^{i2\alpha}\Big[(1+2i)^2 - 4i\times2\Big] = 2^{2\alpha}e^{i2\alpha}\big[(1+2i)^2-8i\big]'
+            note: "On met 2^{2α}e^{i2α} en facteur commun ; 2^{2α+1}=2×2^{2α}."
+          - math: '(1+2i)^2 = 1+4i-4=-3+4i \implies (1+2i)^2-8i = -3-4i'
+            note: "Développement de (1+2i)²."
+          - math: '(1-2i)^2 = 1-4i-4=-3-4i'
+            note: "On vérifie que (1−2i)² donne exactement le même résultat : c'est le carré parfait cherché."
+          - math: '\Delta_\alpha = 2^{2\alpha}e^{i2\alpha}(1-2i)^2 = \big[2^\alpha e^{i\alpha}(1-2i)\big]^2'
+            note: "Les deux expressions coïncident : Δ_α est bien ce carré."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** En déduire les deux solutions $a$ et $b$ de l'équation $(E_\alpha)$ avec $|a| < |b|$.
+        reasoning: |-
+          $\Delta_\alpha$ est déjà un carré parfait (question précédente) : $\delta = 2^\alpha e^{i\alpha}(1-2i)$ en est une racine. La formule $\dfrac{-b\pm\delta}{2a}$, avec $-b=2^\alpha e^{i\alpha}(1+2i)$, donne les deux racines une fois qu'on factorise chaque numérateur par $2^\alpha e^{i\alpha}$. Il reste à comparer les deux modules pour savoir laquelle est $a$ (la plus petite) et laquelle est $b$.
+        steps:
+          - math: 'z = \dfrac{2^\alpha e^{i\alpha}(1+2i) \pm 2^\alpha e^{i\alpha}(1-2i)}{2} = 2^\alpha e^{i\alpha}\,\dfrac{(1+2i)\pm(1-2i)}{2}'
+            note: "Formule (−b±δ)/(2a) ; on factorise par 2^α e^{iα}."
+          - math: '\text{signe}+:\ (1+2i)+(1-2i)=2 \implies z=2^\alpha e^{i\alpha}; \qquad \text{signe}-:\ (1+2i)-(1-2i)=4i \implies z = 2^{\alpha+1}\,i\,e^{i\alpha}'
+            note: "Les deux racines, avant tri par module."
+          - math: '2^{\alpha+1}\,i\,e^{i\alpha} = 2^{\alpha+1}\,e^{i\left(\alpha+\frac{\pi}{2}\right)}'
+            note: "On absorbe i=e^{iπ/2} dans l'argument (règle du produit, R2)."
+          - math: '\left|2^\alpha e^{i\alpha}\right| = 2^\alpha < 2^{\alpha+1} = \left|2^{\alpha+1}e^{i(\alpha+\pi/2)}\right| \implies a = 2^\alpha e^{i\alpha}, \quad b = 2^{\alpha+1}\,e^{i\left(\alpha+\frac{\pi}{2}\right)}'
+            note: "2^α < 2^{α+1} pour tout α réel : la plus petite en module est a."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Vérifier que $\dfrac{b}{a}$ est un imaginaire pur.
+        reasoning: |-
+          Le rapport $b/a$ est direct : les deux formes exponentielles de la question précédente se divisent par la règle du quotient (R3), et le module $2^\alpha$ se simplifie exactement.
+        steps:
+          - math: '\dfrac{b}{a} = \dfrac{2^{\alpha+1}\,e^{i(\alpha+\pi/2)}}{2^\alpha\,e^{i\alpha}} = 2\,e^{i\pi/2}'
+            note: "Règle du quotient (R3) : modules divisés, arguments soustraits."
+          - math: '2\,e^{i\pi/2} = 2i'
+            note: "e^{iπ/2}=i."
+          - math: '\dfrac{b}{a} = 2i\ \text{est un imaginaire pur (non nul), et ne dépend même pas de}\ \alpha'
+            note: "Résultat constant."
+      - id: q3a
+        part: "Partie II. $M(z)$ point d'affixe $z$. On pose $\\dfrac{b}{a}=\\lambda i$ avec $\\lambda=\\mathrm{Im}\\!\\left(\\dfrac{b}{a}\\right)$. $A(a)$, $B(b)$, $H(h)$ avec $\\dfrac{1}{h}=\\dfrac{1}{a}+\\dfrac{1}{b}$"
+        stem: |-
+          **(0,5 pt)** Montrer que : $\dfrac{h}{b-a} = -\left(\dfrac{\lambda}{\lambda^2+1}\right)i$ puis en déduire que les droites $(OH)$ et $(AB)$ sont perpendiculaires.
+        reasoning: |-
+          On calcule d'abord $h$ : $\dfrac1h=\dfrac1a+\dfrac1b=\dfrac{a+b}{ab}$, donc $h=\dfrac{ab}{a+b}$. Le rapport $\dfrac{h}{b-a}$ se réécrit alors en fonction du seul quotient $\dfrac{b}{a}=\lambda i$, en factorisant $a$ au numérateur et au dénominateur (méthode déjà vue : tout ramener au rapport connu). Une fois ce rapport identifié comme imaginaire pur, la perpendicularité de $(OH)$ et $(AB)$ suit du même principe que le rung R6 : le rapport de deux affixes de vecteurs — ici $\vec{OH}$ (affixe $h-0=h$) et $\vec{AB}$ (affixe $b-a$) — encode l'angle entre elles par son argument.
+        steps:
+          - math: '\dfrac1h=\dfrac1a+\dfrac1b=\dfrac{a+b}{ab} \implies h=\dfrac{ab}{a+b}'
+            note: "On inverse la relation donnée."
+          - math: '\dfrac{h}{b-a} = \dfrac{ab}{(a+b)(b-a)} = \dfrac{ab}{b^2-a^2}'
+            note: "On remplace h et on développe (a+b)(b−a)=b²−a² au dénominateur."
+          - math: 'b=\lambda i\,a \implies ab=\lambda i\,a^2, \qquad b^2-a^2 = -\lambda^2a^2-a^2 = -a^2(\lambda^2+1)'
+            note: "On remplace b par λia (donné) ; (λi)²=−λ²."
+          - math: '\dfrac{h}{b-a} = \dfrac{\lambda i\,a^2}{-a^2(\lambda^2+1)} = -\left(\dfrac{\lambda}{\lambda^2+1}\right)i'
+            note: "Le facteur a² se simplifie (a≠0, racine de (E_α))."
+          - math: '\dfrac{h}{b-a} = \dfrac{\text{aff}(\vec{OH})}{\text{aff}(\vec{AB})}\ \text{imaginaire pur (}\lambda\neq0\text{)} \implies (OH)\perp(AB)'
+            note: "Comme au rung R6 : un rapport de deux affixes de vecteurs imaginaire pur signale des directions perpendiculaires."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Montrer que : $\dfrac{h-a}{b-a} = \dfrac{1}{\lambda^2+1}$ puis en déduire que les points $H$, $A$ et $B$ sont alignés.
+        reasoning: |-
+          Même stratégie : on exprime $h-a$ en fonction de $a$ et $b$, puis on divise par $b-a$ en réutilisant $b=\lambda i\,a$ et $b^2-a^2=-a^2(\lambda^2+1)$ déjà calculés à la question précédente. Le résultat est réel : par le rung R6, cela signale l'alignement de $H$, $A$, $B$.
+        steps:
+          - math: 'h-a = \dfrac{ab}{a+b}-a = \dfrac{ab-a(a+b)}{a+b} = \dfrac{-a^2}{a+b}'
+            note: "On réutilise h=ab/(a+b) (question précédente)."
+          - math: '\dfrac{h-a}{b-a} = \dfrac{-a^2}{(a+b)(b-a)} = \dfrac{-a^2}{b^2-a^2}'
+            note: "Même dénominateur qu'à la question précédente."
+          - math: '\dfrac{h-a}{b-a} = \dfrac{-a^2}{-a^2(\lambda^2+1)} = \dfrac{1}{\lambda^2+1}'
+            note: "On réutilise b²−a²=−a²(λ²+1) (question précédente) ; le facteur a² se simplifie."
+          - math: '\dfrac{1}{\lambda^2+1}\in\mathbb{R} \implies \dfrac{h-a}{b-a}\in\mathbb{R} \implies H,\,A,\,B\ \text{alignés}'
+            note: "Rung R6 : rapport (des affixes de AH et AB) réel ⟺ alignement."
+      - id: q4a
+        part: "Soient $I(m)$ le milieu du segment $[OH]$ et $J(n)$ le milieu du segment $[HB]$"
+        stem: |-
+          **(0,5 pt)** Montrer que : $\dfrac{n}{m-a} = -\lambda i$
+        reasoning: |-
+          $I$ et $J$ sont deux milieux, donc $m=\dfrac{h}{2}$ et $n=\dfrac{h+b}{2}$. On exprime $n$ et $m-a$ en fonction de $a$ et $b$ en réutilisant $h=\dfrac{ab}{a+b}$ (question 3a), puis on simplifie : un facteur commun $(2a+b)$ apparaît au numérateur et au dénominateur et se simplifie, laissant $-\dfrac{b}{a}$ — exactement $-\lambda i$.
+        steps:
+          - math: 'm=\dfrac{h}{2}, \qquad n=\dfrac{h+b}{2}'
+            note: "I milieu de [OH] (O est l'origine) ; J milieu de [HB]."
+          - math: 'n = \dfrac{h+b}{2} = \dfrac{\frac{ab}{a+b}+b}{2} = \dfrac{b(2a+b)}{2(a+b)}, \qquad m-a = \dfrac{h-2a}{2} = \dfrac{\frac{ab}{a+b}-2a}{2} = \dfrac{-a(2a+b)}{2(a+b)}'
+            note: "On réutilise h=ab/(a+b) (question 3a) et on met (2a+b) en facteur dans chaque numérateur."
+          - math: '\dfrac{n}{m-a} = \dfrac{b(2a+b)}{-a(2a+b)} = -\dfrac{b}{a}'
+            note: "Le facteur commun (2a+b)/[2(a+b)] se simplifie exactement."
+          - math: '\dfrac{n}{m-a} = -\dfrac{b}{a} = -\lambda i'
+            note: "b/a=λi (notation posée en tête de la partie II)."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** En déduire que les droites $(OJ)$ et $(AI)$ sont perpendiculaires et que $OJ = |\lambda|\,AI$.
+        reasoning: |-
+          Même lecture qu'à la question 3a, cette fois sur le rapport $\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})}$ : imaginaire pur, donc les directions $(OJ)$ et $(AI)$ sont perpendiculaires (rung R6), et son module $|\lambda|$ donne le rapport des longueurs.
+        steps:
+          - math: '\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})} = -\lambda i\ \text{imaginaire pur} \implies (OJ)\perp(AI)'
+            note: "Rung R6 : rapport imaginaire pur ⟹ directions perpendiculaires."
+          - math: '\left|\dfrac{n}{m-a}\right| = |-\lambda i| = |\lambda| = \dfrac{OJ}{AI} \implies OJ = |\lambda|\,AI'
+            note: "Rung R6 : le module donne le rapport des longueurs."
+      - id: q4c
+        stem: |-
+          **(0,25 pt)** Soit $K$ le point d'intersection des droites $(OJ)$ et $(AI)$. Montrer que les points $K$, $I$, $H$ et $J$ sont cocycliques.
+        reasoning: |-
+          $K$ est, par construction, le point d'intersection des droites $(AI)$ et $(OJ)$ : donc $K$, $A$, $I$ sont alignés (même droite $(AI)$) et $K$, $O$, $J$ sont alignés (même droite $(OJ)$). Comme ces deux droites sont perpendiculaires (question précédente), l'angle $\widehat{IKJ}$ est droit — $K$ voit donc le segment $[IJ]$ sous un angle droit, ce qui, par le théorème de Thalès (le cercle de diamètre $[IJ]$ est exactement l'ensemble des points d'où l'on voit $[IJ]$ sous un angle droit), place $K$ sur le cercle de diamètre $[IJ]$.
+
+          Il reste à montrer que $H$ y est aussi. Le rapport $\dfrac{m-h}{n-h}$ (rung R6, au sommet $H$) se calcule en réutilisant $m=\dfrac{h}{2}$, $n=\dfrac{h+b}{2}$ et $h=\dfrac{ab}{a+b}$ : tout se simplifie en $\dfrac{i}{\lambda}$, un imaginaire pur. L'angle $\widehat{IHJ}$ est donc, lui aussi, droit — $H$ est, par le même théorème de Thalès, sur le même cercle de diamètre $[IJ]$.
+
+          $H$ et $K$ sont donc tous deux sur le cercle de diamètre $[IJ]$ : les quatre points $K$, $I$, $H$, $J$ sont cocycliques (sur ce cercle).
+        steps:
+          - math: 'K\in(AI) \implies K,\,A,\,I\ \text{alignés}; \qquad K\in(OJ) \implies K,\,O,\,J\ \text{alignés}'
+            note: "K est le point d'intersection donné des deux droites."
+          - math: '(AI)\perp(OJ)\ (\text{question 4b}) \implies \widehat{IKJ} = \dfrac{\pi}{2}'
+            note: "Les côtés [KI) et [KJ) portent respectivement (AI) et (OJ)."
+          - math: '\widehat{IKJ}=\dfrac{\pi}{2} \implies K\ \text{est sur le cercle de diamètre}\ [IJ]\quad(\text{théorème de Thalès})'
+            note: "Réciproque de Thalès : angle droit inscrit ⟹ point sur le cercle de diamètre [IJ]."
+          - math: 'm-h = \dfrac{h}{2}-h=-\dfrac{h}{2}, \qquad n-h = \dfrac{h+b}{2}-h = \dfrac{b-h}{2} = \dfrac{b^2}{2(a+b)}'
+            note: "On réutilise m=h/2, n=(h+b)/2, et b−h=b²/(a+b) (même simplification qu'aux questions 3a-3b)."
+          - math: '\dfrac{m-h}{n-h} = \dfrac{-h/2}{b^2/(2(a+b))} = \dfrac{-h(a+b)}{b^2} = \dfrac{-\frac{ab}{a+b}(a+b)}{b^2} = -\dfrac{a}{b}'
+            note: "h=ab/(a+b) se simplifie avec (a+b)."
+          - math: '-\dfrac{a}{b} = -\dfrac{1}{\lambda i} = \dfrac{i}{\lambda}\ \text{imaginaire pur (non nul)} \implies \widehat{IHJ}=\dfrac{\pi}{2}'
+            note: "1/i=−i ; a/b=1/(λi) (b/a=λi)."
+          - math: 'H\ \text{est aussi sur le cercle de diamètre}\ [IJ] \implies K,\,I,\,H,\,J\ \text{cocycliques}'
+            note: "H et K sur le même cercle de diamètre [IJ] : les quatre points y sont tous."
+      - id: q4d
+        stem: |-
+          **(0,25 pt)** Montrer que les droites $(IJ)$ et $(OA)$ sont perpendiculaires.
+        reasoning: |-
+          On compare directement les affixes des vecteurs $\vec{IJ}$ (affixe $n-m$) et $\vec{OA}$ (affixe $a$), par le même principe que partout dans cette partie (rung R6, rapport de deux affixes de vecteurs). Le calcul de $n-m$ est immédiat à partir des expressions déjà connues de $m$ et $n$.
+        steps:
+          - math: 'n-m = \dfrac{h+b}{2}-\dfrac{h}{2} = \dfrac{b}{2}'
+            note: "Différence des deux milieux ; h se simplifie entièrement."
+          - math: '\dfrac{n-m}{a} = \dfrac{b/2}{a} = \dfrac12\times\dfrac{b}{a} = \dfrac{\lambda}{2}\,i'
+            note: "b/a=λi (notation de la partie II)."
+          - math: '\dfrac{n-m}{a} = \dfrac{\text{aff}(\vec{IJ})}{\text{aff}(\vec{OA})}\ \text{imaginaire pur (}\lambda\neq0\text{)} \implies (IJ)\perp(OA)'
+            note: "Rung R6 : rapport imaginaire pur ⟹ perpendicularité des directions."
